@@ -11,6 +11,7 @@
 
 #include "AGLWidget.h"
 #include "AMainWindow.h"
+#include "ui_avogadro.h"
 
 using namespace OpenBabel;
 
@@ -27,7 +28,9 @@ int main(int argc, char *argv[])
 	printf("x:%f y:%f z:%f\n", atom->x(), atom->y(), atom->z());
 
 	AMainWindow window;
-	window.show();
-	app.setStyle(QStyleFactory::create("Windows"));
+  Ui_MainWindow form;
+  form.setupUi(&window);
+  window.show();
+  //	app.setStyle(QStyleFactory::create("Windows"));
 	return app.exec();
 }

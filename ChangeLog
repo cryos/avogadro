@@ -1,0 +1,8 @@
+2006-08-07  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/avogadro.ui: Use QDesigner to layout some menu items and toolbar.
+
+	* src/main.cpp, src/AMainWindow.cpp, src/avogadro.pro: Use it.
+
+
+
