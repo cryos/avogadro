@@ -15,6 +15,13 @@ void AGLWidget::initializeGL()
 	glLoadIdentity();
 	glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
 	glMatrixMode(GL_MODELVIEW);
+
+  GLuint testDL = glGenLists(1);
+  static GLUquadric* quad = gluNewQuadric();
+  glNewList(testDL, GL_COMPILE);
+  gluSphere(quad, 0.08, 10, 6);
+  glEndList();
+  addDisplayList(testDL);
 }
 
 void AGLWidget::resizeGL(int width, int height)
@@ -33,14 +40,22 @@ void AGLWidget::paintGL()
 	printf("Painting.\n");
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	glColor3f(1.0, 1.0, 0.0);
-	glBegin(GL_POLYGON);
-	glVertex3f(0.25, 0.25, 0.0);
-	glVertex3f(0.75, 0.25, 0.0);
-	glVertex3f(0.75, 0.75, 0.0);
-	glVertex3f(0.25, 0.75, 0.0);
-	glEnd();
+  std::vector<GLuint>::iterator i;
+  for (i = _displayLists.begin(); i != _displayLists.end(); i++)
+    glCallList(*i);
 
 	glFlush();
 }
 
+void AGLWidget::addDisplayList(GLuint dl)
+{
+  _displayLists.push_back(dl);
+}
+
+void AGLWidget::deleteDisplayList(GLuint dl)
+{
+  std::vector<GLuint>::iterator i;
+  for (i = _displayLists.begin(); i != _displayLists.end(); i++)
+    if (*i == dl)
+      _displayLists.erase(i);
+}
