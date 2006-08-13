@@ -14,4 +14,6 @@ PKGCONFIG += openbabel-2.0
 # Input
 HEADERS += AMainWindow.h AGLWidget.h defines.h
 SOURCES += AMainWindow.cpp AGLWidget.cpp main.cpp
+# HEADERS += ASphereRender.h
+# SOURCES += ASphereRender.cpp
 FORMS *= avogadro.ui

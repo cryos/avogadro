@@ -5,6 +5,9 @@
 #include <QMainWindow>
 #include <QtGui>
 
+#include <openbabel/mol.h>
+#include <openbabel/obconversion.h>
+
 class AMainWindow : public QMainWindow
 {
   Q_OBJECT
@@ -27,6 +30,8 @@ class AMainWindow : public QMainWindow
 
     QAction    *actionQuit;
     QAction    *actionOpen;
+
+    OpenBabel::OBMol view;
 
     void createActions();
     void createMenuBar();

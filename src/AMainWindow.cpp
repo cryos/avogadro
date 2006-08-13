@@ -1,4 +1,8 @@
 #include "AMainWindow.h"
+#include <fstream>
+
+using namespace std;
+using namespace OpenBabel;
 
 AMainWindow::AMainWindow()
 {
@@ -20,10 +24,29 @@ AMainWindow::~AMainWindow()
 void AMainWindow::slotOpen()
 {
   QString s = QFileDialog::getOpenFileName(this);
+  slotOpen(s);
 }
 
 void AMainWindow::slotOpen(QString filename)
 {
+  OBConversion conv;
+  OBFormat     *inFormat = conv.FormatFromExt((filename.toStdString()).c_str());
+  if (!inFormat || !conv.SetInFormat(inFormat))
+    return;
+  ifstream     ifs;
+  ifs.open((filename.toStdString()).c_str());
+  if (!ifs)
+    return;
+
+  view.Clear();
+  if (conv.Read(&view, &ifs) && view.NumAtoms() != 0)
+    {
+      QString status;
+      QTextStream(&status) << "Atoms: " << view.NumAtoms();
+      statusBar->showMessage(status, 2000);
+    }
+  else
+    statusBar->showMessage("Reading molecular file failed.", 2000);
 }
 
 void AMainWindow::createActions()
@@ -62,7 +85,7 @@ void AMainWindow::createStatusBar()
   statusBar->setObjectName(QString::fromUtf8("statusbar"));
   this->setStatusBar(statusBar);
 
-  statusBar->showMessage(tr("Ready."));
+  statusBar->showMessage(tr("Ready."), 10000);
 }
 
 void AMainWindow::createToolbars()
