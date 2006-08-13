@@ -5,21 +5,33 @@
 #include <QMainWindow>
 #include <QtGui>
 
-
 class AMainWindow : public QMainWindow
 {
+  Q_OBJECT
+
 	public:
 		AMainWindow();
+    ~AMainWindow();
+
+ public slots:
+    void slotOpen();
+    void slotOpen(QString filename);
 
 	private:
-		void createActions();
-		void createToolbars();
+		AGLWidget  *gl;
 
-		AGLWidget *gl;
+    QMenuBar   *menubar;
+    QMenu      *menuFile;
+    QStatusBar *statusBar;
+    QToolBar   *toolBar;
 
-		QAction *quitAction;
-		QToolBar *fileToolBar;
+    QAction    *actionQuit;
+    QAction    *actionOpen;
 
+    void createActions();
+    void createMenuBar();
+    void createStatusBar();
+    void createToolbars();
 };
 
 #endif
