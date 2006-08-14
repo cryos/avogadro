@@ -3,6 +3,13 @@
 	* src/ASphereRender.h, src/ASphereRender.cpp: Example rendering
 	class, generates VdW spheres for a given molecule.
 
+	* src/AGLWidget.h, src/AGLWidget.cpp: Add initial support for
+	rotation. Eventually should be moved to a separate class for each
+	tool (rotate, orbit, zoom, translate, etc.).
+
+	* src/AMainWindow.cpp: Add minimum size hint (240x320) and # of
+	bonds when reading a molecule.
+
 2006-08-13  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* src/main.cpp, src/AMainWindow.h, src/AMainWindow.cpp:

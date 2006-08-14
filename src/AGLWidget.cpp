@@ -14,10 +14,21 @@ void AGLWidget::initializeGL()
 
   glShadeModel( GL_SMOOTH );
   glEnable( GL_DEPTH_TEST );
-  glDepthFunc( GL_LEQUAL );
-  //  glEnable( GL_CULL_FACE );
+  glDepthFunc( GL_LESS );
+  glEnable( GL_CULL_FACE );
+
+  GLfloat mat_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
+  GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+  GLfloat mat_shininess[] = { 30.0 };
+
+  glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+  glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+  glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
+
   glEnable(GL_COLOR_MATERIAL);
   glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
   glEnable( GL_NORMALIZE );
   glEnable( GL_LIGHTING );
@@ -32,11 +43,15 @@ void AGLWidget::initializeGL()
   glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
   glLightfv( GL_LIGHT0, GL_POSITION, position );
   glEnable( GL_LIGHT0 );
+
+	glMatrixMode(GL_MODELVIEW);
+  glPushMatrix();
+	glLoadIdentity();
+  glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix);
+  glPopMatrix();
   
 	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glOrtho(10.0, -10.0, 10.0, -10.0, 0.0, 10.0);
-	glMatrixMode(GL_MODELVIEW);
+  glOrtho(10.0, -10.0, 10.0, -10.0, -10.0, 10.0);
 }
 
 void AGLWidget::resizeGL(int width, int height)
@@ -46,21 +61,21 @@ void AGLWidget::resizeGL(int width, int height)
 	glViewport((width - side) / 2, (height - side) / 2, side, side);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(10.0, -10.0, 10.0, -10.0, 0.0, 10.0);
+	glOrtho(10.0, -10.0, 10.0, -10.0, -10.0, 10.0);
 	glMatrixMode(GL_MODELVIEW);
 }
 
 void AGLWidget::paintGL()
 {
 	printf("Painting.\n");
-	glClear(GL_COLOR_BUFFER_BIT);
-  glEnable(GL_COLOR_MATERIAL);
-
-  glEnable(GL_LIGHTING);
-
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  
+  glPushMatrix();
+  glMultMatrixd(_RotationMatrix);
   std::vector<GLuint>::iterator i;
   for (i = _displayLists.begin(); i != _displayLists.end(); i++)
     glCallList(*i);
+  glPopMatrix();
 
 	glFlush();
 }
@@ -68,6 +83,7 @@ void AGLWidget::paintGL()
 void AGLWidget::addDisplayList(GLuint dl)
 {
   _displayLists.push_back(dl);
+  updateGL();
 }
 
 void AGLWidget::deleteDisplayList(GLuint dl)
@@ -76,4 +92,45 @@ void AGLWidget::deleteDisplayList(GLuint dl)
   for (i = _displayLists.begin(); i != _displayLists.end(); i++)
     if (*i == dl)
       _displayLists.erase(i);
+}
+
+void AGLWidget::mousePressEvent( QMouseEvent * event )
+{
+  if( event->buttons() & Qt::LeftButton )
+    {       
+      _leftButtonPressed = true;
+      _movedSinceButtonPressed = false;
+      _lastDraggingPosition = event->pos ();
+      _initialDraggingPosition = event->pos ();
+      updateGL();
+    }
+}
+
+void AGLWidget::mouseReleaseEvent( QMouseEvent * event )
+{
+  if( !( event->buttons() & Qt::LeftButton ) )
+    {
+      _leftButtonPressed = false;
+    }
+}
+
+void AGLWidget::mouseMoveEvent( QMouseEvent * event )
+{
+  if( _leftButtonPressed )
+    {
+      QPoint deltaDragging = event->pos() - _lastDraggingPosition;
+      _lastDraggingPosition = event->pos();
+      if( ( event->pos()
+            - _initialDraggingPosition ).manhattanLength() > 2 )
+        _movedSinceButtonPressed = true;
+      
+      glPushMatrix();
+      glLoadIdentity();
+      glRotated( deltaDragging.x(), 0.0, 1.0, 0.0 );
+      glRotated( deltaDragging.y(), 1.0, 0.0, 0.0 );
+      glMultMatrixd( _RotationMatrix );
+      glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
+      glPopMatrix();
+      updateGL();
+    }
 }

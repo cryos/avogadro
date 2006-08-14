@@ -2,6 +2,7 @@
 #define __AGLWIDGET_H
 
 #include <QGLWidget>
+#include <QMouseEvent>
 #include <vector>
 
 class AGLWidget : public QGLWidget
@@ -15,11 +16,22 @@ class AGLWidget : public QGLWidget
     void deleteDisplayList(GLuint dl);
 
 	protected:
-		void initializeGL();
-		void paintGL();
-		void resizeGL(int, int);
+		virtual void initializeGL();
+		virtual void paintGL();
+		virtual void resizeGL(int, int);
+
+    virtual void mousePressEvent( QMouseEvent * event );
+    virtual void mouseReleaseEvent( QMouseEvent * event );
+    virtual void mouseMoveEvent( QMouseEvent * event );
 
     std::vector<GLuint> _displayLists;
+    bool                _leftButtonPressed;
+    bool                _movedSinceButtonPressed;
+
+    QPoint              _initialDraggingPosition;
+    QPoint              _lastDraggingPosition;
+    
+    GLdouble            _RotationMatrix[16];
 };
 
 #endif

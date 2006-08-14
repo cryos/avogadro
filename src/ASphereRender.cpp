@@ -11,6 +11,7 @@ GLuint ASphereRender::Render(OpenBabel::OBMol &mol)
     dlist = glGenLists(1);
 
   glNewList(dlist, GL_COMPILE);
+  glPushAttrib(GL_ALL_ATTRIB_BITS);
   glPushMatrix();
   glTranslated(0.0, 0.0, 0.0);
   GLUquadricObj *q = gluNewQuadric();
@@ -21,11 +22,12 @@ GLuint ASphereRender::Render(OpenBabel::OBMol &mol)
       rgb = etab.GetRGB(a->GetAtomicNum());
       glColor3f(rgb[0], rgb[1], rgb[2]);
       glTranslated(a->GetX(), a->GetY(), a->GetZ());
-      gluSphere(q, etab.GetVdwRad(a->GetAtomicNum()), 10, 10);
+      gluSphere(q, etab.GetVdwRad(a->GetAtomicNum()), 15, 15);
       glTranslated(-a->GetX(), -a->GetY(), -a->GetZ());
     }
   gluDeleteQuadric(q);
   glPopMatrix();
+  glPopAttrib();
   glEndList();
 
   return dlist;

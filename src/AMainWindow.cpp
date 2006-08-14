@@ -7,6 +7,8 @@ using namespace OpenBabel;
 
 AMainWindow::AMainWindow()
 {
+  resize(QSize(240, 320).expandedTo(this->minimumSizeHint()));
+
 	createActions();
   createMenuBar();
   createStatusBar();
@@ -43,7 +45,8 @@ void AMainWindow::slotOpen(QString filename)
   if (conv.Read(&view, &ifs) && view.NumAtoms() != 0)
     {
       QString status;
-      QTextStream(&status) << "Atoms: " << view.NumAtoms();
+      QTextStream(&status) << "Atoms: " << view.NumAtoms() <<
+        " Bonds: " << view.NumBonds();
       statusBar->showMessage(status, 2000);
 
       ASphereRender sRender;
