@@ -37,28 +37,6 @@ void AGLWidget::initializeGL()
 	glLoadIdentity();
 	glOrtho(10.0, -10.0, 10.0, -10.0, 0.0, 10.0);
 	glMatrixMode(GL_MODELVIEW);
-
-  // example -- this should be done by a render class
-  GLuint dlist = glGenLists(1);
-  glNewList(dlist, GL_COMPILE);
-  glPushMatrix();
-  glTranslated(0.0, 0.0, 0.0);
-  GLUquadricObj* q = gluNewQuadric();
-  gluQuadricDrawStyle(q, GLU_FILL );
-  gluQuadricNormals(q, GLU_SMOOTH );
-
-  glColor3f(1.0, 1.0, 1.0);
-  glTranslated(0.0, 1.7, 0.0);
-  gluSphere(q, 0.7, 10, 10);
-  glTranslated(2.0, 3.2, 0.8);
-  glColor3f(0.0, 0.7, 0.3);
-  gluSphere(q, 0.9, 10, 10);
-
-  gluDeleteQuadric(q);
-  glPopMatrix();
-  glEndList();
-
-  addDisplayList(dlist);
 }
 
 void AGLWidget::resizeGL(int width, int height)

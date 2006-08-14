@@ -1,4 +1,5 @@
 #include "AMainWindow.h"
+#include "ASphereRender.h"
 #include <fstream>
 
 using namespace std;
@@ -44,6 +45,9 @@ void AMainWindow::slotOpen(QString filename)
       QString status;
       QTextStream(&status) << "Atoms: " << view.NumAtoms();
       statusBar->showMessage(status, 2000);
+
+      ASphereRender sRender;
+      gl->addDisplayList(sRender.Render(view));
     }
   else
     statusBar->showMessage("Reading molecular file failed.", 2000);
@@ -64,19 +68,12 @@ void AMainWindow::createActions()
 
 void AMainWindow::createMenuBar()
 {
-  menubar = new QMenuBar(this);
-  menubar->setObjectName(QString::fromUtf8("menubar"));
-  
-  menuFile = new QMenu(menubar);
-  menuFile->setObjectName(QString::fromUtf8("menuFile"));
-  menubar->addAction(menuFile->menuAction());
-  
+  menuFile = menuBar()->addMenu(tr("&File"));
+
   // add actions to menus
   menuFile->addAction(actionOpen);
   menuFile->addSeparator();
   menuFile->addAction(actionQuit);
-  
-  this->setMenuBar(menubar);
 }
 
 void AMainWindow::createStatusBar()

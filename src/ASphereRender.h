@@ -10,11 +10,11 @@ class ASphereRender
  ASphereRender() : dlist(0) {}
   ~ASphereRender() {}
 
-  void Render(OpenBabel::OBMol &mol);
+  GLuint Render(OpenBabel::OBMol &mol);
 
  private:
   GLuint dlist;
 
-}
+};
 
 #endif

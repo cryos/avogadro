@@ -1,3 +1,8 @@
+2006-08-14  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/ASphereRender.h, src/ASphereRender.cpp: Example rendering
+	class, generates VdW spheres for a given molecule.
+
 2006-08-13  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* src/main.cpp, src/AMainWindow.h, src/AMainWindow.cpp:

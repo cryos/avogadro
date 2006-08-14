@@ -23,8 +23,9 @@ class AMainWindow : public QMainWindow
 	private:
 		AGLWidget  *gl;
 
-    QMenuBar   *menubar;
     QMenu      *menuFile;
+    QMenu      *menuEdit;
+    QMenu      *menuHelp;
     QStatusBar *statusBar;
     QToolBar   *toolBar;
 
