@@ -1,27 +1,37 @@
 #ifndef __AMAINWINDOW_H
 #define __AMAINWINDOW_H
 
-#include "AGLWidget.h"
 #include <QMainWindow>
 #include <QtGui>
+
+#include "AGLWidget.h"
 
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 
-class AMainWindow : public QMainWindow
+namespace Avogadro {
+
+class MainWindow : public QMainWindow
 {
   Q_OBJECT
 
 	public:
-		AMainWindow();
-    ~AMainWindow();
+		MainWindow();
+    ~MainWindow();
 
- public slots:
-    void slotOpen();
-    void slotOpen(QString filename);
+ private slots:
+    void newFile();
+    void open();
+    void openRecentFile();
+    void save();
+    void saveAs();
+    void export();
+    void about();
 
 	private:
 		AGLWidget  *gl;
+    OpenBabel::OBMol view;
+    QString    currentFile;
 
     QMenu      *menuFile;
     QMenu      *menuEdit;
@@ -30,14 +40,31 @@ class AMainWindow : public QMainWindow
     QToolBar   *toolBar;
 
     QAction    *actionQuit;
+
+    QAction    *actionNew;
     QAction    *actionOpen;
+    QAction    *actionClose;
+    QAction    *actionSave;
+    QAction    *actionSaveAs;
+    QAction    *actionRevert;
+    QAction    *actionExport;
 
-    OpenBabel::OBMol view;
+    enum { MaxRecentFiles = 5 };
+    QAction    *actionRecentFile[MaxRecentFiles];
+    QAction    *actionSeparator;
 
+    QAction    *actionAbout;
+    
     void createActions();
     void createMenuBar();
     void createStatusBar();
     void createToolbars();
+    void loadFile(const QString &fileName);
+    void saveFile(const QString &fileName);
+    void setCurrentFile(const QString &fileName);
+    void updateRecentFileActions();
+    QString strippedName(const QString &fullFileName);
 };
 
+} // end namespace Avogadro
 #endif

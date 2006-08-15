@@ -13,16 +13,7 @@
    <string>Avogadro</string>
   </property>
   <widget class="QWidget" name="centralwidget" >
-   <widget class="AGLWidget" name="graphicsView" >
-    <property name="geometry" >
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>440</width>
-      <height>494</height>
-     </rect>
-    </property>
-   </widget>
+   <widget class="AGLWidget" name="graphicsView" />
   </widget>
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >
@@ -37,9 +28,19 @@
     <property name="title" >
      <string>File</string>
     </property>
+    <widget class="QMenu" name="menuOpen_Recent" >
+     <property name="title" >
+      <string>Open Recent</string>
+     </property>
+     <addaction name="actionRecent" />
+     <addaction name="separator" />
+     <addaction name="actionClear_Menu" />
+    </widget>
     <addaction name="actionOpen" />
     <addaction name="separator" />
     <addaction name="actionQuit" />
+    <addaction name="separator" />
+    <addaction name="menuOpen_Recent" />
    </widget>
    <addaction name="menuFile" />
   </widget>
@@ -67,12 +68,28 @@
     <string>Q</string>
    </property>
   </action>
+  <action name="actionRecent" >
+   <property name="text" >
+    <string>Recent</string>
+   </property>
+  </action>
+  <action name="actionClear_Menu" >
+   <property name="text" >
+    <string>Clear Menu</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
    <class>AGLWidget</class>
    <extends>QGLWidget</extends>
    <header>AGLWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QGLWidget</class>
+   <extends>QWidget</extends>
+   <header>qglwidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

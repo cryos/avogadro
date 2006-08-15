@@ -6,6 +6,12 @@ AGLWidget::AGLWidget(QWidget *parent)
 	printf("Constructor\n");
 }
 
+AGLWidget::AGLWidget(const QGLFormat &format, QWidget *parent)
+	: QGLWidget(format, parent)
+{
+	printf("Constructor\n");
+}
+
 void AGLWidget::initializeGL()
 {
 	printf("Initializing\n");
@@ -21,11 +27,10 @@ void AGLWidget::initializeGL()
   GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
   GLfloat mat_shininess[] = { 30.0 };
 
+  glEnable(GL_COLOR_MATERIAL);
   glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
   glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
   glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-
-  glEnable(GL_COLOR_MATERIAL);
   glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -51,7 +56,7 @@ void AGLWidget::initializeGL()
   glPopMatrix();
   
 	glMatrixMode(GL_PROJECTION);
-  glOrtho(10.0, -10.0, 10.0, -10.0, -10.0, 10.0);
+  glOrtho(10.0, -10.0, 10.0, -10.0, -30.0, 30.0);
 }
 
 void AGLWidget::resizeGL(int width, int height)
@@ -61,7 +66,7 @@ void AGLWidget::resizeGL(int width, int height)
 	glViewport((width - side) / 2, (height - side) / 2, side, side);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(10.0, -10.0, 10.0, -10.0, -10.0, 10.0);
+	glOrtho(10.0, -10.0, 10.0, -10.0, -30.0, 30.0);
 	glMatrixMode(GL_MODELVIEW);
 }
 

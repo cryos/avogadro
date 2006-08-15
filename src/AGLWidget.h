@@ -11,6 +11,7 @@ class AGLWidget : public QGLWidget
 
 	public:
 		AGLWidget(QWidget *parent = 0);
+		AGLWidget(const QGLFormat &format, QWidget *parent = 0);
 
     void addDisplayList(GLuint dl);
     void deleteDisplayList(GLuint dl);
