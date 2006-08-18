@@ -1,24 +1,48 @@
-#include "AGLWidget.h"
+/**********************************************************************
+GLWidget - general OpenGL display
 
-AGLWidget::AGLWidget(QWidget *parent)
+Copyright (C) 2006 by Geoffrey R. Hutchison
+Some portions Copyright (C) 2006 by Donald E. Curtis
+
+This file is part of the Avogadro molecular editor project.
+For more information, see <http://avogadro.sourceforge.net/>
+
+Some code is based on Open Babel
+For more information, see <http://openbabel.sourceforge.net/>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation version 2 of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+***********************************************************************/
+
+#include "GLWidget.h"
+
+using namespace Avogadro;
+
+GLWidget::GLWidget(QWidget *parent)
 	: QGLWidget(parent)
 {
 	printf("Constructor\n");
 }
 
-AGLWidget::AGLWidget(const QGLFormat &format, QWidget *parent)
+GLWidget::GLWidget(const QGLFormat &format, QWidget *parent)
 	: QGLWidget(format, parent)
 {
 	printf("Constructor\n");
 }
 
-void AGLWidget::initializeGL()
+void GLWidget::initializeGL()
 {
 	printf("Initializing\n");
 
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 
-  glShadeModel( GL_SMOOTH );
+  //  glShadeModel( GL_SMOOTH );
   glEnable( GL_DEPTH_TEST );
   glDepthFunc( GL_LESS );
   glEnable( GL_CULL_FACE );
@@ -57,12 +81,16 @@ void AGLWidget::initializeGL()
   
 	glMatrixMode(GL_PROJECTION);
   glOrtho(10.0, -10.0, 10.0, -10.0, -30.0, 30.0);
+
+  _TranslationVector[0] = 0.0;
+  _TranslationVector[1] = 0.0;
+  _TranslationVector[2] = 0.0;
 }
 
-void AGLWidget::resizeGL(int width, int height)
+void GLWidget::resizeGL(int width, int height)
 {
 	printf("Resizing.\n");
-	int side = qMin(width, height);
+	int side = qMax(width, height);
 	glViewport((width - side) / 2, (height - side) / 2, side, side);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -70,13 +98,15 @@ void AGLWidget::resizeGL(int width, int height)
 	glMatrixMode(GL_MODELVIEW);
 }
 
-void AGLWidget::paintGL()
+void GLWidget::paintGL()
 {
 	printf("Painting.\n");
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   
   glPushMatrix();
   glMultMatrixd(_RotationMatrix);
+  glTranslated(_TranslationVector[0], _TranslationVector[1], _TranslationVector[2]);
+  //  glScaled(1.0, 1.0, 1.0);
   std::vector<GLuint>::iterator i;
   for (i = _displayLists.begin(); i != _displayLists.end(); i++)
     glCallList(*i);
@@ -85,13 +115,13 @@ void AGLWidget::paintGL()
 	glFlush();
 }
 
-void AGLWidget::addDisplayList(GLuint dl)
+void GLWidget::addDisplayList(GLuint dl)
 {
   _displayLists.push_back(dl);
   updateGL();
 }
 
-void AGLWidget::deleteDisplayList(GLuint dl)
+void GLWidget::deleteDisplayList(GLuint dl)
 {
   std::vector<GLuint>::iterator i;
   for (i = _displayLists.begin(); i != _displayLists.end(); i++)
@@ -99,7 +129,7 @@ void AGLWidget::deleteDisplayList(GLuint dl)
       _displayLists.erase(i);
 }
 
-void AGLWidget::mousePressEvent( QMouseEvent * event )
+void GLWidget::mousePressEvent( QMouseEvent * event )
 {
   if( event->buttons() & Qt::LeftButton )
     {       
@@ -109,17 +139,27 @@ void AGLWidget::mousePressEvent( QMouseEvent * event )
       _initialDraggingPosition = event->pos ();
       updateGL();
     }
-}
-
-void AGLWidget::mouseReleaseEvent( QMouseEvent * event )
-{
-  if( !( event->buttons() & Qt::LeftButton ) )
-    {
-      _leftButtonPressed = false;
+  if( event->buttons() & Qt::RightButton )
+    {       
+      _rightButtonPressed = true;
+      _movedSinceButtonPressed = false;
+      _lastDraggingPosition = event->pos ();
+      _initialDraggingPosition = event->pos ();
+      updateGL();
     }
 }
 
-void AGLWidget::mouseMoveEvent( QMouseEvent * event )
+void GLWidget::mouseReleaseEvent( QMouseEvent * event )
+{
+  if( !( event->buttons() & Qt::LeftButton ) ) {
+      _leftButtonPressed = false;
+  }
+  else if ( !( event->buttons() & Qt::RightButton ) ) {
+    _rightButtonPressed = false;
+  }
+}
+
+void GLWidget::mouseMoveEvent( QMouseEvent * event )
 {
   if( _leftButtonPressed )
     {
@@ -131,11 +171,23 @@ void AGLWidget::mouseMoveEvent( QMouseEvent * event )
       
       glPushMatrix();
       glLoadIdentity();
-      glRotated( deltaDragging.x(), 0.0, 1.0, 0.0 );
-      glRotated( deltaDragging.y(), 1.0, 0.0, 0.0 );
+      glRotated( deltaDragging.x(), 1.0, 0.0, 0.0 );
+      glRotated( deltaDragging.y(), 0.0, 1.0, 0.0 );
       glMultMatrixd( _RotationMatrix );
       glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
       glPopMatrix();
+      updateGL();
+    }
+  else if ( _rightButtonPressed )
+    {
+      QPoint deltaDragging = event->pos() - _lastDraggingPosition;
+     _lastDraggingPosition = event->pos();
+      if( ( event->pos()
+            - _initialDraggingPosition ).manhattanLength() > 2 )
+        _movedSinceButtonPressed = true;
+      
+      _TranslationVector[0] = deltaDragging.x();
+      _TranslationVector[1] = deltaDragging.y();
       updateGL();
     }
 }

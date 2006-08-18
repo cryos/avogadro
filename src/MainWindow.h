@@ -1,10 +1,32 @@
-#ifndef __AMAINWINDOW_H
-#define __AMAINWINDOW_H
+/**********************************************************************
+MainWindow.h - main window, menus, main actions
+
+Copyright (C) 2006 by Geoffrey R. Hutchison
+Some portions Copyright (C) 2006 by Donald E. Curtis
+
+This file is part of the Avogadro molecular editor project.
+For more information, see <http://avogadro.sourceforge.net/>
+
+Some code is based on Open Babel
+For more information, see <http://openbabel.sourceforge.net/>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation version 2 of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+***********************************************************************/
+
+#ifndef __MAINWINDOW_H
+#define __MAINWINDOW_H
 
 #include <QMainWindow>
 #include <QtGui>
 
-#include "AGLWidget.h"
+#include "GLWidget.h"
 
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
@@ -17,26 +39,39 @@ class MainWindow : public QMainWindow
 
 	public:
 		MainWindow();
+		MainWindow(const QString &fileName);
     ~MainWindow();
+
+ protected:
+    void closeEvent(QCloseEvent *event);
 
  private slots:
     void newFile();
     void open();
     void openRecentFile();
-    void save();
-    void saveAs();
-    void export();
+    bool save();
+    bool saveAs();
+    void revert();
+    void exportGraphics();
+
+    void undo();
+    void redo();
+
+    void clearRecentFiles();
     void about();
+ 
+    void documentWasModified();
 
 	private:
-		AGLWidget  *gl;
+		GLWidget  *gl;
     OpenBabel::OBMol view;
     QString    currentFile;
+    bool       isModified;
 
     QMenu      *menuFile;
+    QMenu      *menuOpen_Recent;
     QMenu      *menuEdit;
     QMenu      *menuHelp;
-    QStatusBar *statusBar;
     QToolBar   *toolBar;
 
     QAction    *actionQuit;
@@ -49,21 +84,28 @@ class MainWindow : public QMainWindow
     QAction    *actionRevert;
     QAction    *actionExport;
 
-    enum { MaxRecentFiles = 5 };
-    QAction    *actionRecentFile[MaxRecentFiles];
+    enum { maxRecentFiles = 5 };
+    QAction    *actionRecentFile[maxRecentFiles];
+    QAction    *actionClearRecentMenu;
     QAction    *actionSeparator;
+
+    QAction    *actionUndo;
+    QAction    *actionRedo;
 
     QAction    *actionAbout;
     
+    void init();
     void createActions();
     void createMenuBar();
-    void createStatusBar();
     void createToolbars();
-    void loadFile(const QString &fileName);
-    void saveFile(const QString &fileName);
+    bool maybeSave();
+    bool loadFile(const QString &fileName);
+    bool saveFile(const QString &fileName);
     void setCurrentFile(const QString &fileName);
     void updateRecentFileActions();
     QString strippedName(const QString &fullFileName);
+
+    MainWindow *findMainWindow(const QString &fileName);
 };
 
 } // end namespace Avogadro

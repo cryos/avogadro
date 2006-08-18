@@ -1,17 +1,42 @@
-#ifndef __AGLWIDGET_H
-#define __AGLWIDGET_H
+/**********************************************************************
+GLWidget - general OpenGL display
+
+Copyright (C) 2006 by Geoffrey R. Hutchison
+Some portions Copyright (C) 2006 by Donald E. Curtis
+
+This file is part of the Avogadro molecular editor project.
+For more information, see <http://avogadro.sourceforge.net/>
+
+Some code is based on Open Babel
+For more information, see <http://openbabel.sourceforge.net/>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation version 2 of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+***********************************************************************/
+
+#ifndef __GLWIDGET_H
+#define __GLWIDGET_H
 
 #include <QGLWidget>
 #include <QMouseEvent>
+
 #include <vector>
 
-class AGLWidget : public QGLWidget
+namespace Avogadro {
+
+class GLWidget : public QGLWidget
 {
 	Q_OBJECT
 
 	public:
-		AGLWidget(QWidget *parent = 0);
-		AGLWidget(const QGLFormat &format, QWidget *parent = 0);
+		GLWidget(QWidget *parent = 0);
+		GLWidget(const QGLFormat &format, QWidget *parent = 0);
 
     void addDisplayList(GLuint dl);
     void deleteDisplayList(GLuint dl);
@@ -27,12 +52,17 @@ class AGLWidget : public QGLWidget
 
     std::vector<GLuint> _displayLists;
     bool                _leftButtonPressed;
+    bool                _rightButtonPressed;
     bool                _movedSinceButtonPressed;
 
     QPoint              _initialDraggingPosition;
     QPoint              _lastDraggingPosition;
     
     GLdouble            _RotationMatrix[16];
+    GLdouble            _TranslationVector[3];
+    GLdouble            _Scale;
 };
+
+} // end namespace Avogadro
 
 #endif
