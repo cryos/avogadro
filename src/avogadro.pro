@@ -12,8 +12,8 @@ CONFIG += link_pkgconfig
 PKGCONFIG += openbabel-2.0
 
 # Input
-HEADERS += AMainWindow.h AGLWidget.h defines.h
-SOURCES += AMainWindow.cpp AGLWidget.cpp main.cpp
-HEADERS += ASphereRender.h ABSRender.h AStickRender.h
-SOURCES += ASphereRender.cpp ABSRender.cpp AStickRender.cpp
+HEADERS += MainWindow.h GLWidget.h defines.h
+SOURCES += MainWindow.cpp GLWidget.cpp main.cpp
+HEADERS += SphereRender.h BSRender.h StickRender.h
+SOURCES += SphereRender.cpp BSRender.cpp StickRender.cpp
 # FORMS *= avogadro.ui
