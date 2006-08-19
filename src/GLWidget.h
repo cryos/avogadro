@@ -50,9 +50,13 @@ class GLWidget : public QGLWidget
     virtual void mouseReleaseEvent( QMouseEvent * event );
     virtual void mouseMoveEvent( QMouseEvent * event );
 
+    void startScreenCoordinates() const;
+    void stopScreenCoordinates() const;
+
     std::vector<GLuint> _displayLists;
-    bool                _leftButtonPressed;
-    bool                _rightButtonPressed;
+    bool                _leftButtonPressed;  // rotation
+    bool                _rightButtonPressed; // translation
+    bool                _midButtonPressed;   // scale / zoom
     bool                _movedSinceButtonPressed;
 
     QPoint              _initialDraggingPosition;

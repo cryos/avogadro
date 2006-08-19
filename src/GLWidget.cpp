@@ -57,7 +57,8 @@ void GLWidget::initializeGL()
   glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
   glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 
-  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  // Used to display semi-transparent relection rectangle
+  glBlendFunc(GL_ONE, GL_ONE);
 
   glEnable( GL_NORMALIZE );
   glEnable( GL_LIGHTING );
@@ -85,6 +86,8 @@ void GLWidget::initializeGL()
   _TranslationVector[0] = 0.0;
   _TranslationVector[1] = 0.0;
   _TranslationVector[2] = 0.0;
+
+  _Scale = 1.0;
 }
 
 void GLWidget::resizeGL(int width, int height)
@@ -104,9 +107,9 @@ void GLWidget::paintGL()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   
   glPushMatrix();
-  glMultMatrixd(_RotationMatrix);
   glTranslated(_TranslationVector[0], _TranslationVector[1], _TranslationVector[2]);
-  //  glScaled(1.0, 1.0, 1.0);
+  glScaled(_Scale, _Scale, _Scale);
+  glMultMatrixd(_RotationMatrix);
   std::vector<GLuint>::iterator i;
   for (i = _displayLists.begin(); i != _displayLists.end(); i++)
     glCallList(*i);
@@ -131,22 +134,19 @@ void GLWidget::deleteDisplayList(GLuint dl)
 
 void GLWidget::mousePressEvent( QMouseEvent * event )
 {
-  if( event->buttons() & Qt::LeftButton )
-    {       
-      _leftButtonPressed = true;
-      _movedSinceButtonPressed = false;
-      _lastDraggingPosition = event->pos ();
-      _initialDraggingPosition = event->pos ();
-      updateGL();
-    }
-  if( event->buttons() & Qt::RightButton )
-    {       
-      _rightButtonPressed = true;
-      _movedSinceButtonPressed = false;
-      _lastDraggingPosition = event->pos ();
-      _initialDraggingPosition = event->pos ();
-      updateGL();
-    }
+  if ( event->buttons() & Qt::LeftButton ) {
+    _leftButtonPressed = true;
+  }
+  else if ( event->buttons() & Qt::RightButton ) {
+    _rightButtonPressed = true;
+  }
+  else if ( event->buttons() & Qt::MidButton ) {
+    _midButtonPressed = true;
+  }
+
+  _movedSinceButtonPressed = false;
+  _lastDraggingPosition = event->pos ();
+  _initialDraggingPosition = event->pos ();
 }
 
 void GLWidget::mouseReleaseEvent( QMouseEvent * event )
@@ -157,18 +157,21 @@ void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   else if ( !( event->buttons() & Qt::RightButton ) ) {
     _rightButtonPressed = false;
   }
+  else if ( !( event->buttons() & Qt::MidButton ) ) {
+    _midButtonPressed = false;
+  }
 }
 
 void GLWidget::mouseMoveEvent( QMouseEvent * event )
 {
+  QPoint deltaDragging = event->pos() - _lastDraggingPosition;
+  _lastDraggingPosition = event->pos();
+  if( ( event->pos()
+        - _initialDraggingPosition ).manhattanLength() > 2 )
+    _movedSinceButtonPressed = true;
+  
   if( _leftButtonPressed )
-    {
-      QPoint deltaDragging = event->pos() - _lastDraggingPosition;
-      _lastDraggingPosition = event->pos();
-      if( ( event->pos()
-            - _initialDraggingPosition ).manhattanLength() > 2 )
-        _movedSinceButtonPressed = true;
-      
+    {      
       glPushMatrix();
       glLoadIdentity();
       glRotated( deltaDragging.x(), 1.0, 0.0, 0.0 );
@@ -176,18 +179,44 @@ void GLWidget::mouseMoveEvent( QMouseEvent * event )
       glMultMatrixd( _RotationMatrix );
       glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
       glPopMatrix();
-      updateGL();
     }
   else if ( _rightButtonPressed )
     {
-      QPoint deltaDragging = event->pos() - _lastDraggingPosition;
-     _lastDraggingPosition = event->pos();
-      if( ( event->pos()
-            - _initialDraggingPosition ).manhattanLength() > 2 )
-        _movedSinceButtonPressed = true;
-      
-      _TranslationVector[0] = deltaDragging.x();
-      _TranslationVector[1] = deltaDragging.y();
-      updateGL();
+      deltaDragging = _initialDraggingPosition - event->pos();
+
+      _TranslationVector[0] = deltaDragging.x() / 5.0;
+      _TranslationVector[1] = - deltaDragging.y() / 5.0;
     }
+  else if ( _midButtonPressed )
+    {
+      deltaDragging = _initialDraggingPosition - event->pos();
+      int xySum = deltaDragging.x() + deltaDragging.y();
+
+      if (xySum < 0)
+        _Scale = deltaDragging.manhattanLength() / 5.0;
+      else if (xySum > 0)
+        _Scale = 1.0 / deltaDragging.manhattanLength();
+    }
+
+  updateGL();
+}
+
+void GLWidget::startScreenCoordinates() const
+{
+  glMatrixMode(GL_PROJECTION);
+  glPushMatrix();
+  glLoadIdentity();
+  glOrtho(0, width(), height(), 0, 0.0, -1.0);
+  glMatrixMode(GL_MODELVIEW);
+  glPushMatrix();
+  glLoadIdentity();
+}
+
+void GLWidget::stopScreenCoordinates() const
+{
+  glMatrixMode(GL_PROJECTION);
+  glPopMatrix();
+
+  glMatrixMode(GL_MODELVIEW);
+  glPopMatrix();
 }
