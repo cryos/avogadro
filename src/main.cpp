@@ -44,7 +44,23 @@ int main(int argc, char *argv[])
   }
   //  app.setQuitOnLastWindowClosed(false); // remain open until quit()
 
-	MainWindow window;
-  window.show();
+  QStringList files = app.arguments();
+  printf("arguments: %d\n", files.size());
+
+  if (files.size() > 1) {
+    QPoint p(100, 100), offset(40,40);
+    QList<QString>::const_iterator i = files.constBegin();
+    for (++i; i != files.constEnd(); ++i)
+      {
+        MainWindow *other = new MainWindow;
+        p += offset;
+        other->move(p);
+        other->show();
+         other->loadFile(*i);
+      }
+  } else {
+    MainWindow *window = new MainWindow;
+    window->show();
+  }
 	return app.exec();
 }
