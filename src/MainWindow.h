@@ -42,10 +42,13 @@ class MainWindow : public QMainWindow
 		MainWindow(const QString &fileName);
     ~MainWindow();
 
+    bool loadFile(const QString &fileName);
+    bool saveFile(const QString &fileName);
+
  protected:
     void closeEvent(QCloseEvent *event);
 
- private slots:
+ public slots:
     void newFile();
     void open();
     void openRecentFile();
@@ -99,8 +102,6 @@ class MainWindow : public QMainWindow
     void createMenuBar();
     void createToolbars();
     bool maybeSave();
-    bool loadFile(const QString &fileName);
-    bool saveFile(const QString &fileName);
     void setCurrentFile(const QString &fileName);
     void updateRecentFileActions();
     QString strippedName(const QString &fullFileName);

@@ -79,28 +79,45 @@ void MainWindow::open()
 {
   QString fileName = QFileDialog::getOpenFileName(this);
   if (!fileName.isEmpty()) {
-      if (view.Empty())
-        loadFile(fileName);
-      else {
-        MainWindow *other = new MainWindow;
-        other->move(x() + 40, y() + 40);
-        other->loadFile(fileName);
-        other->show();
-      }
+    // check to see if we already have an open window
+    MainWindow *existing = findMainWindow(fileName);
+    if (existing) {
+      existing->show();
+      existing->raise();
+      existing->activateWindow();
+      return;
     }
+    
+    if (view.Empty())
+      loadFile(fileName);
+    else {
+      MainWindow *other = new MainWindow;
+      other->move(x() + 40, y() + 40);
+      other->show();
+      other->loadFile(fileName);
+    }
+  }
 }
 
 void MainWindow::openRecentFile()
 {
   QAction *action = qobject_cast<QAction *>(sender());
   if (action) {
+    MainWindow *existing = findMainWindow(action->data().toString());
+    if (existing) {
+      existing->show();
+      existing->raise();
+      existing->activateWindow();
+      return;
+    }
+    
     if (view.Empty())
       loadFile(action->data().toString());
     else {
       MainWindow *other = new MainWindow;
       other->move(x() + 40, y() + 40);
-      other->loadFile(action->data().toString());
       other->show();
+      other->loadFile(action->data().toString());
     }
   }
 }
@@ -147,8 +164,8 @@ void MainWindow::exportGraphics()
   if (fileName.isEmpty())
     return;
 
-  // render it!
-  if (!gl->renderPixmap(0,0, true).save(fileName))
+  // render it (with alpha channel)
+  if (!gl->grabFrameBuffer(true).save(fileName))
     {
       QMessageBoxEx::warning(this, tr("Avogadro"),
                              tr("Cannot save file %1.").arg(fileName));
@@ -237,7 +254,7 @@ void MainWindow::createActions()
   connect(actionSave, SIGNAL(triggered()), this, SLOT(save()));
   
   actionSaveAs = new QAction(tr("Save &As..."), this);
-  actionSave->setShortcut(tr("Ctrl+Shift+S"));
+  actionSaveAs->setShortcut(tr("Ctrl+Shift+S"));
   actionSaveAs->setStatusTip(tr("Save the document under a new name"));
   connect(actionSaveAs, SIGNAL(triggered()), this, SLOT(saveAs()));
 
@@ -265,12 +282,12 @@ void MainWindow::createActions()
   actionUndo = new QAction(tr("&Undo"), this);
 	actionUndo->setShortcut(QKeySequence::Undo);
 	actionUndo->setStatusTip(tr("Undo change"));
-  //	connect(actionUndo, SIGNAL(triggered()), this, SLOT(undo()));
+ 	connect(actionUndo, SIGNAL(triggered()), this, SLOT(undo()));
 
   actionRedo = new QAction(tr("&Redo"), this);
 	actionRedo->setShortcut(QKeySequence::Redo);
 	actionRedo->setStatusTip(tr("Redo change"));
-  //	connect(actionRedo, SIGNAL(triggered()), this, SLOT(redo()));
+  connect(actionRedo, SIGNAL(triggered()), this, SLOT(redo()));
 
   actionAbout = new QAction(tr("&About Avogadro"), this);
   actionAbout->setStatusTip(tr("About Avogadro"));
@@ -300,6 +317,7 @@ void MainWindow::createMenuBar()
 
   menuEdit = menuBar()->addMenu(tr("&Edit"));
   menuEdit->addAction(actionUndo);
+  menuEdit->addAction(actionRedo);
 
   menuHelp = menuBar()->addMenu(tr("&Help"));
   menuHelp->addAction(actionAbout);
@@ -329,6 +347,8 @@ bool MainWindow::loadFile(const QString &fileName)
   }
   file.close();
   
+  QApplication::setOverrideCursor(Qt::WaitCursor);
+  statusBar()->showMessage(tr("Reading file."), 2000);
   OBConversion conv;
   OBFormat     *inFormat = conv.FormatFromExt((fileName.toStdString()).c_str());
   if (!inFormat || !conv.SetInFormat(inFormat)) {
@@ -347,7 +367,6 @@ bool MainWindow::loadFile(const QString &fileName)
   }
   
   view.Clear();
-  QApplication::setOverrideCursor(Qt::WaitCursor);
   if (conv.Read(&view, &ifs) && view.NumAtoms() != 0)
     {
       QString status;
@@ -378,6 +397,9 @@ bool MainWindow::saveFile(const QString &fileName)
                            .arg(file.errorString()));
     return false;
   }
+  
+  QApplication::setOverrideCursor(Qt::WaitCursor);
+  statusBar()->showMessage(tr("Saving file."), 2000);
 
   OBConversion conv;
   OBFormat     *outFormat = conv.FormatFromExt((fileName.toStdString()).c_str());
@@ -395,8 +417,7 @@ bool MainWindow::saveFile(const QString &fileName)
                            .arg(fileName));
     return false;
   }
-  
-  QApplication::setOverrideCursor(Qt::WaitCursor);
+
   if (conv.Write(&view, &ofs))
     statusBar()->showMessage("Save succeeded.", 5000);
   else
@@ -456,6 +477,18 @@ void MainWindow::updateRecentFileActions()
 QString MainWindow::strippedName(const QString &fullFileName)
 {
   return QFileInfo(fullFileName).fileName();
+}
+
+MainWindow *MainWindow::findMainWindow(const QString &fileName)
+{
+  QString canonicalFilePath = QFileInfo(fileName).canonicalFilePath();
+  
+  foreach (QWidget *widget, qApp->topLevelWidgets()) {
+    MainWindow *mainWin = qobject_cast<MainWindow *>(widget);
+    if (mainWin && mainWin->currentFile == canonicalFilePath)
+      return mainWin;
+  }
+  return 0;
 }
 
 } // end namespace Avogadro

@@ -1,3 +1,29 @@
+2006-08-19  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/GLWidget.cpp: Improved scale/zoom feature and added calls
+	for adding screen coordinates (e.g., for seelction rectangle).
+
+	* src/MainWindow.cpp: Check to see if a file is already in a
+	window -- raise it if needed, rather than opening another
+	copy. Implement exportGraphics with
+	QGLWidget::grabFrameBuffer. Doesn't allow oversampling, but
+	works.
+
+2006-08-18  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/*: Namespace and filename reorganization. All code should
+	now be in the Avogadro namespace. All files should have
+	descriptive names and no "A" prefix.
+
+	* src/GLWidget.h, src/GLWidget.cpp: Fix translation (right button)
+	and add simple zoom (middle button). Doesn't always seem to work
+	on my Mac right now. (Buttons sometimes seem to get "stuck.")
+
+	* src/MainWindow.cpp: Fix bug with opening files in new window --
+	now properly renders. Fix bug with shortcut for Save/SaveAs, and
+	add "Redo" to the menubar. undo() and redo() actions still
+	unimplemented.
+
 2006-08-14  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* src/ASphereRender.h, src/ASphereRender.cpp: Example rendering
