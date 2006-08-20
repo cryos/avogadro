@@ -174,8 +174,8 @@ void GLWidget::mouseMoveEvent( QMouseEvent * event )
     {      
       glPushMatrix();
       glLoadIdentity();
-      glRotated( deltaDragging.x(), 1.0, 0.0, 0.0 );
-      glRotated( deltaDragging.y(), 0.0, 1.0, 0.0 );
+      glRotated( deltaDragging.x(), 0.0, -1.0, 0.0 );
+      glRotated( deltaDragging.y(), -1.0, 0.0, 0.0 );
       glMultMatrixd( _RotationMatrix );
       glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
       glPopMatrix();
