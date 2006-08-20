@@ -134,15 +134,15 @@ void GLWidget::deleteDisplayList(GLuint dl)
 
 void GLWidget::mousePressEvent( QMouseEvent * event )
 {
-  if ( event->buttons() & Qt::LeftButton ) {
-    _leftButtonPressed = true;
-  }
-  else if ( event->buttons() & Qt::RightButton ) {
-    _rightButtonPressed = true;
-  }
-  else if ( event->buttons() & Qt::MidButton ) {
-    _midButtonPressed = true;
-  }
+//   if ( event->buttons() & Qt::LeftButton ) {
+//     _leftButtonPressed = true;
+//   }
+//   else if ( event->buttons() & Qt::RightButton ) {
+//     _rightButtonPressed = true;
+//   }
+//   else if ( event->buttons() & Qt::MidButton ) {
+//     _midButtonPressed = true;
+//   }
 
   _movedSinceButtonPressed = false;
   _lastDraggingPosition = event->pos ();
@@ -151,15 +151,15 @@ void GLWidget::mousePressEvent( QMouseEvent * event )
 
 void GLWidget::mouseReleaseEvent( QMouseEvent * event )
 {
-  if( !( event->buttons() & Qt::LeftButton ) ) {
-      _leftButtonPressed = false;
-  }
-  else if ( !( event->buttons() & Qt::RightButton ) ) {
-    _rightButtonPressed = false;
-  }
-  else if ( !( event->buttons() & Qt::MidButton ) ) {
-    _midButtonPressed = false;
-  }
+//   if( !( event->buttons() & Qt::LeftButton ) ) {
+//       _leftButtonPressed = false;
+//   }
+//   else if ( !( event->buttons() & Qt::RightButton ) ) {
+//     _rightButtonPressed = false;
+//   }
+//   else if ( !( event->buttons() & Qt::MidButton ) ) {
+//     _midButtonPressed = false;
+//   }
 }
 
 void GLWidget::mouseMoveEvent( QMouseEvent * event )
@@ -170,7 +170,7 @@ void GLWidget::mouseMoveEvent( QMouseEvent * event )
         - _initialDraggingPosition ).manhattanLength() > 2 )
     _movedSinceButtonPressed = true;
   
-  if( _leftButtonPressed )
+  if( event->buttons() & Qt::LeftButton )
     {      
       glPushMatrix();
       glLoadIdentity();
@@ -180,14 +180,14 @@ void GLWidget::mouseMoveEvent( QMouseEvent * event )
       glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
       glPopMatrix();
     }
-  else if ( _rightButtonPressed )
+  else if ( event->buttons() & Qt::RightButton )
     {
       deltaDragging = _initialDraggingPosition - event->pos();
 
       _TranslationVector[0] = deltaDragging.x() / 5.0;
       _TranslationVector[1] = - deltaDragging.y() / 5.0;
     }
-  else if ( _midButtonPressed )
+  else if ( event->buttons() & Qt::MidButton )
     {
       deltaDragging = _initialDraggingPosition - event->pos();
       int xySum = deltaDragging.x() + deltaDragging.y();
