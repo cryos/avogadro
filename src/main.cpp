@@ -1,28 +1,28 @@
 /**********************************************************************
-  main.cpp - main program, initialization and launching
+main.cpp - main program, initialization and launching
 
-  Copyright (C) 2006 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006 by Donald E. Curtis
+Copyright (C) 2006 by Geoffrey R. Hutchison
+Some portions Copyright (C) 2006 by Donald E. Curtis
 
-  This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.sourceforge.net/>
+This file is part of the Avogadro molecular editor project.
+For more information, see <http://avogadro.sourceforge.net/>
 
-  Some code is based on Open Babel
-  For more information, see <http://openbabel.sourceforge.net/>
+Some code is based on Open Babel
+For more information, see <http://openbabel.sourceforge.net/>
 
-  This program is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation version 2 of the License.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation version 2 of the License.
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
- ***********************************************************************/
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+***********************************************************************/
 
 // QT Includes
-#include <QtGui/QApplication>
-#include <QtGui/QMessageBoxEx>
+#include <QApplication>
+#include <QMessageBoxEx>
 
 // Avogadro Includes
 #include "MainWindow.h"
@@ -45,19 +45,17 @@ int main(int argc, char *argv[])
   //  app.setQuitOnLastWindowClosed(false); // remain open until quit()
 
   QStringList files = app.arguments();
-  printf("arguments: %d\n", files.size());
-
+  
   if (files.size() > 1) {
     QPoint p(100, 100), offset(40,40);
-    QList<QString>::const_iterator i = files.constBegin();
-    for (++i; i != files.constEnd(); ++i)
-    {
-      MainWindow *other = new MainWindow;
-      p += offset;
-      other->move(p);
-      other->show();
-      other->loadFile(*i);
-    }
+    foreach(QString s, files )
+      {
+        MainWindow *other = new MainWindow;
+        p += offset;
+        other->move(p);
+        other->show();
+        other->loadFile(s);
+      }
   } else {
     MainWindow *window = new MainWindow;
     window->show();
