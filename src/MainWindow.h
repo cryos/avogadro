@@ -98,6 +98,8 @@ class MainWindow : public QMainWindow
     QAction    *actionAbout;
     
     void init();
+    void readSettings();
+    void writeSettings();
     void createActions();
     void createMenuBar();
     void createToolbars();

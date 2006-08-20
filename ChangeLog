@@ -1,3 +1,15 @@
+2006-08-20  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/GLWidget.cpp: Handle mouse events based on QMouseEvent,
+	rather than internal members. Fixes occasional "sticking."
+
+	* src/MainWindow.h, src/MainWindow.cpp: Fix saveFile -- make sure to call
+	SetOutFormat() not SetInFormat()! Works great now. Added code to
+	save settings for window position and size.
+
+	* src/main.cpp: Update with fix from Carsten Niehaus to use
+	cleaner "foreach" mechanism.
+
 2006-08-19  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* src/GLWidget.cpp: Improved scale/zoom feature and added calls
