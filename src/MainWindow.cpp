@@ -79,11 +79,7 @@ namespace Avogadro {
   {
 	QString fileName = QFileDialog::getOpenFileName(this);
 	if (!fileName.isEmpty()) {
-	  // TODO: We need to iterate through our windows to see if 
-      // there is a window with this file already open.
-      //
 	  // check to see if we already have an open window
-      /*
 	  MainWindow *existing = findMainWindow(fileName);
 	  if (existing) {
 		existing->show();
@@ -91,7 +87,6 @@ namespace Avogadro {
 		existing->activateWindow();
 		return;
 	  }
-      */
 
 	  if (view.Empty())
 		loadFile(fileName);
