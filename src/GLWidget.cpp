@@ -1,46 +1,46 @@
 /**********************************************************************
-GLWidget - general OpenGL display
+  GLWidget - general OpenGL display
 
-Copyright (C) 2006 by Geoffrey R. Hutchison
-Some portions Copyright (C) 2006 by Donald E. Curtis
+  Copyright (C) 2006 by Geoffrey R. Hutchison
+  Some portions Copyright (C) 2006 by Donald E. Curtis
 
-This file is part of the Avogadro molecular editor project.
-For more information, see <http://avogadro.sourceforge.net/>
+  This file is part of the Avogadro molecular editor project.
+  For more information, see <http://avogadro.sourceforge.net/>
 
-Some code is based on Open Babel
-For more information, see <http://openbabel.sourceforge.net/>
+  Some code is based on Open Babel
+  For more information, see <http://openbabel.sourceforge.net/>
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation version 2 of the License.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation version 2 of the License.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-***********************************************************************/
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+ ***********************************************************************/
 
 #include "GLWidget.h"
 
+#include "MainWindow.h"
+
 using namespace Avogadro;
 
-GLWidget::GLWidget(QWidget *parent)
-	: QGLWidget(parent)
+GLWidget::GLWidget(QWidget *parent) : QGLWidget(parent)
 {
-	printf("Constructor\n");
+  printf("Constructor\n");
 }
 
-GLWidget::GLWidget(const QGLFormat &format, QWidget *parent)
-	: QGLWidget(format, parent)
+GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent)
 {
-	printf("Constructor\n");
+  printf("Constructor\n");
 }
 
 void GLWidget::initializeGL()
 {
-	printf("Initializing\n");
+  printf("Initializing\n");
 
-	glClearColor(0.0, 0.0, 0.0, 1.0);
+  glClearColor(0.0, 0.0, 0.0, 1.0);
 
   //  glShadeModel( GL_SMOOTH );
   glEnable( GL_DEPTH_TEST );
@@ -67,20 +67,20 @@ void GLWidget::initializeGL()
   GLfloat diffuseLight[] = { 0.8, 0.8, 0.8, 1.0 };
   GLfloat specularLight[] = { 1.0, 1.0, 1.0, 1.0 };
   GLfloat position[] = { 0.8, 0.7, 1.0, 0.0 };
-  
+
   glLightfv( GL_LIGHT0, GL_AMBIENT, ambientLight );
   glLightfv( GL_LIGHT0, GL_DIFFUSE, diffuseLight );
   glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
   glLightfv( GL_LIGHT0, GL_POSITION, position );
   glEnable( GL_LIGHT0 );
 
-	glMatrixMode(GL_MODELVIEW);
+  glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
-	glLoadIdentity();
+  glLoadIdentity();
   glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix);
   glPopMatrix();
-  
-	glMatrixMode(GL_PROJECTION);
+
+  glMatrixMode(GL_PROJECTION);
   glOrtho(10.0, -10.0, 10.0, -10.0, -30.0, 30.0);
 
   _TranslationVector[0] = 0.0;
@@ -88,34 +88,40 @@ void GLWidget::initializeGL()
   _TranslationVector[2] = 0.0;
 
   _Scale = 1.0;
+
 }
 
 void GLWidget::resizeGL(int width, int height)
 {
-	printf("Resizing.\n");
-	int side = qMax(width, height);
-	glViewport((width - side) / 2, (height - side) / 2, side, side);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glOrtho(10.0, -10.0, 10.0, -10.0, -30.0, 30.0);
-	glMatrixMode(GL_MODELVIEW);
+  printf("Resizing.\n");
+  int side = qMax(width, height);
+  glViewport((width - side) / 2, (height - side) / 2, side, side);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  glOrtho(10.0, -10.0, 10.0, -10.0, -30.0, 30.0);
+  glMatrixMode(GL_MODELVIEW);
 }
 
 void GLWidget::paintGL()
 {
-	printf("Painting.\n");
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  
+  printf("Painting.\n");
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
   glPushMatrix();
   glTranslated(_TranslationVector[0], _TranslationVector[1], _TranslationVector[2]);
   glScaled(_Scale, _Scale, _Scale);
   glMultMatrixd(_RotationMatrix);
+
+  ((MainWindow*)parent())->getMolecule()->render();
+
+  /*
   std::vector<GLuint>::iterator i;
   for (i = _displayLists.begin(); i != _displayLists.end(); i++)
     glCallList(*i);
+    */
   glPopMatrix();
 
-	glFlush();
+  glFlush();
 }
 
 void GLWidget::addDisplayList(GLuint dl)
@@ -134,15 +140,15 @@ void GLWidget::deleteDisplayList(GLuint dl)
 
 void GLWidget::mousePressEvent( QMouseEvent * event )
 {
-//   if ( event->buttons() & Qt::LeftButton ) {
-//     _leftButtonPressed = true;
-//   }
-//   else if ( event->buttons() & Qt::RightButton ) {
-//     _rightButtonPressed = true;
-//   }
-//   else if ( event->buttons() & Qt::MidButton ) {
-//     _midButtonPressed = true;
-//   }
+  //   if ( event->buttons() & Qt::LeftButton ) {
+  //     _leftButtonPressed = true;
+  //   }
+  //   else if ( event->buttons() & Qt::RightButton ) {
+  //     _rightButtonPressed = true;
+  //   }
+  //   else if ( event->buttons() & Qt::MidButton ) {
+  //     _midButtonPressed = true;
+  //   }
 
   _movedSinceButtonPressed = false;
   _lastDraggingPosition = event->pos ();
@@ -151,15 +157,15 @@ void GLWidget::mousePressEvent( QMouseEvent * event )
 
 void GLWidget::mouseReleaseEvent( QMouseEvent * event )
 {
-//   if( !( event->buttons() & Qt::LeftButton ) ) {
-//       _leftButtonPressed = false;
-//   }
-//   else if ( !( event->buttons() & Qt::RightButton ) ) {
-//     _rightButtonPressed = false;
-//   }
-//   else if ( !( event->buttons() & Qt::MidButton ) ) {
-//     _midButtonPressed = false;
-//   }
+  //   if( !( event->buttons() & Qt::LeftButton ) ) {
+  //       _leftButtonPressed = false;
+  //   }
+  //   else if ( !( event->buttons() & Qt::RightButton ) ) {
+  //     _rightButtonPressed = false;
+  //   }
+  //   else if ( !( event->buttons() & Qt::MidButton ) ) {
+  //     _midButtonPressed = false;
+  //   }
 }
 
 void GLWidget::mouseMoveEvent( QMouseEvent * event )
@@ -169,34 +175,34 @@ void GLWidget::mouseMoveEvent( QMouseEvent * event )
   if( ( event->pos()
         - _initialDraggingPosition ).manhattanLength() > 2 )
     _movedSinceButtonPressed = true;
-  
+
   if( event->buttons() & Qt::LeftButton )
-    {      
-      glPushMatrix();
-      glLoadIdentity();
-      glRotated( deltaDragging.x(), 0.0, -1.0, 0.0 );
-      glRotated( deltaDragging.y(), -1.0, 0.0, 0.0 );
-      glMultMatrixd( _RotationMatrix );
-      glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
-      glPopMatrix();
-    }
+  {      
+    glPushMatrix();
+    glLoadIdentity();
+    glRotated( deltaDragging.x(), 0.0, -1.0, 0.0 );
+    glRotated( deltaDragging.y(), -1.0, 0.0, 0.0 );
+    glMultMatrixd( _RotationMatrix );
+    glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
+    glPopMatrix();
+  }
   else if ( event->buttons() & Qt::RightButton )
-    {
-      deltaDragging = _initialDraggingPosition - event->pos();
+  {
+    deltaDragging = _initialDraggingPosition - event->pos();
 
-      _TranslationVector[0] = deltaDragging.x() / 5.0;
-      _TranslationVector[1] = - deltaDragging.y() / 5.0;
-    }
+    _TranslationVector[0] = deltaDragging.x() / 5.0;
+    _TranslationVector[1] = - deltaDragging.y() / 5.0;
+  }
   else if ( event->buttons() & Qt::MidButton )
-    {
-      deltaDragging = _initialDraggingPosition - event->pos();
-      int xySum = deltaDragging.x() + deltaDragging.y();
+  {
+    deltaDragging = _initialDraggingPosition - event->pos();
+    int xySum = deltaDragging.x() + deltaDragging.y();
 
-      if (xySum < 0)
-        _Scale = deltaDragging.manhattanLength() / 5.0;
-      else if (xySum > 0)
-        _Scale = 1.0 / deltaDragging.manhattanLength();
-    }
+    if (xySum < 0)
+      _Scale = deltaDragging.manhattanLength() / 5.0;
+    else if (xySum > 0)
+      _Scale = 1.0 / deltaDragging.manhattanLength();
+  }
 
   updateGL();
 }
