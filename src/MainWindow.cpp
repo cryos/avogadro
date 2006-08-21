@@ -21,7 +21,6 @@
  ***********************************************************************/
 
 #include "MainWindow.h"
-#include "BSRender.h"
 
 #include <fstream>
 
@@ -33,13 +32,13 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  MainWindow::MainWindow()
+  MainWindow::MainWindow() : defaultRenderer(0)
   {
     init();
     setCurrentFile("");
   }
 
-  MainWindow::MainWindow(const QString &fileName)
+  MainWindow::MainWindow(const QString &fileName) : defaultRenderer(0)
   {
     init();
     loadFile(fileName);
@@ -61,7 +60,43 @@ namespace Avogadro {
     gl = new GLWidget(format, this);
     setCentralWidget(gl);
 
+    // load rendering engines after initializing the GL widget!
+    loadRenderers();
+
     statusBar()->showMessage(tr("Ready."), 10000);
+  }
+
+  void MainWindow::loadRenderers()
+  {
+    QDir pluginsDir = QDir(qApp->applicationDirPath());
+    pluginsDir.cd("engines");
+    qDebug() << "pluginsDir:" << pluginsDir << endl;
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
+      QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+      RendererFactory *factory = qobject_cast<RendererFactory *>(loader.instance());
+      if (factory) {
+        qDebug() << "Calling Create";
+        Renderer *renderer = factory->createInstance();
+        qDebug() << "Found Plugin: " << renderer->name() << " - " << renderer->description(); 
+        if (!defaultRenderer)
+        {
+          qDebug() << "Setting Default Renderer: " << renderer->name() << " - " << renderer->description(); 
+          defaultRenderer = renderer;
+        }
+      }
+    }
+    /* this is for static plugins - ignoring it for now.
+    foreach (QObject *plugin, QPluginLoader::staticInstances())
+    {
+      Renderer *r = qobject_cast<Renderer *>(plugin);
+      if (r)
+      {
+        qDebug() << "Loaded Renderer: " << r->name() << endl;
+        if( MainWindow::defaultRenderer == NULL )
+          MainWindow::defaultRenderer = r;
+      }
+    }
+    */
   }
 
   MainWindow::~MainWindow()
@@ -367,22 +402,28 @@ namespace Avogadro {
       return false;
     }
 
-    view.Clear();
-    if (conv.Read(&view, &ifs) && view.NumAtoms() != 0)
+    molecule.Clear();
+    if (conv.Read(&molecule, &ifs) && molecule.NumAtoms() != 0)
       {
         QString status;
-        QTextStream(&status) << "Atoms: " << view.NumAtoms() <<
-          " Bonds: " << view.NumBonds();
+        cout << "Atoms: " << molecule.NumAtoms() <<
+          " Bonds: " << molecule.NumBonds();
+        QTextStream(&status) << "Atoms: " << molecule.NumAtoms() <<
+          " Bonds: " << molecule.NumBonds();
         statusBar()->showMessage(status, 5000);
 
+        /*
         BSRender sRender;
         gl->addDisplayList(sRender.Render(view));
+        */
         QApplication::restoreOverrideCursor();
       }
     else {
       statusBar()->showMessage("Reading molecular file failed.", 5000);
       QApplication::restoreOverrideCursor();
     }
+
+    molecule.setWindow(this);
 
     setCurrentFile(fileName);
     return true;
