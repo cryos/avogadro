@@ -70,7 +70,7 @@ namespace Avogadro {
   {
     QDir pluginsDir = QDir(qApp->applicationDirPath());
     pluginsDir.cd("engines");
-    qDebug() << "pluginsDir:" << pluginsDir << endl;
+    qDebug() << "pluginsDir:" << pluginsDir.absolutePath() << endl;
     foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
       QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
       RendererFactory *factory = qobject_cast<RendererFactory *>(loader.instance());
