@@ -46,20 +46,78 @@ void BSEngine::initAtomDL()
   glEndList();
 }
 
-void BSEngine::render(Atom &atom)
+void BSEngine::renderAtom(Atom *atom)
 {
+  // cout << "Render Atom..." << endl;
+
   if( atomDL == 0 )
     initAtomDL();
 
   std::vector<double> rgb;
   glPushAttrib(GL_ALL_ATTRIB_BITS);
   glPushMatrix();
-  glTranslated(atom.GetX(), atom.GetY(), atom.GetZ());
-  rgb = etab.GetRGB(atom.GetAtomicNum());
+  glTranslated(atom->GetX(), atom->GetY(), atom->GetZ());
+  rgb = etab.GetRGB(atom->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
+  GLfloat size = etab.GetVdwRad(atom->GetAtomicNum()) * 0.3;
+  glScalef(size,size,size);
   glCallList(atomDL);
   glPopMatrix();
   glPopAttrib();
+
+}
+
+void BSEngine::renderBond(Bond *b)
+{
+  // cout << "Render Bond..." << endl;
+
+  vector3 v;
+  double arot, xrot, yrot;
+  double w;
+  double l1, l2;
+  double trans, radius = 0.1;
+  std::vector<double> rgb;
+  glPushMatrix();
+  GLUquadricObj *q = gluNewQuadric();
+  OBAtom *bgn = b->GetBeginAtom();
+  OBAtom *end = b->GetEndAtom();
+  glTranslated(bgn->GetX(), bgn->GetY(), bgn->GetZ());
+  v = end->GetVector() - bgn->GetVector();
+  w = sqrt(v.x()*v.x() + v.y()*v.y());
+  if (w > 0.0)
+  {
+    xrot = -v.y() / w;
+    yrot = v.x() / w;
+    arot = atan2(w, v.z()) * RAD_TO_DEG;
+  }
+  else
+  {
+    xrot = 0.0;
+    if (v.z() > 0.0) yrot = arot = 0.0;
+    else
+    {
+      yrot = 1.0;
+      arot = 180.0;
+    }
+  }
+
+  glRotated(arot, xrot, yrot, 0.0);
+  l1 = b->GetLength() * etab.GetVdwRad(bgn->GetAtomicNum()) /
+    (etab.GetVdwRad(bgn->GetAtomicNum()) + etab.GetVdwRad(end->GetAtomicNum()));
+  l2 = b->GetLength() - l1;
+
+  rgb = etab.GetRGB(bgn->GetAtomicNum());
+  glColor3d(rgb[0], rgb[1], rgb[2]);
+
+  gluCylinder(q, radius, radius, l1, 5, 1);
+
+  rgb = etab.GetRGB(end->GetAtomicNum());
+  glColor3d(rgb[0], rgb[1], rgb[2]);
+  glTranslated(0.0, 0.0, l1);
+  gluCylinder(q, radius, radius, l1, 5, 1);
+
+  glPopMatrix();
+}
 
   /*
   glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -74,13 +132,12 @@ void BSEngine::render(Atom &atom)
   glPopMatrix();
   glPopAttrib();
   */
-}
 
-void BSEngine::render(Bond &bond)
-{
-  cout << "Render Bond" << endl;
-}
-
+//X void BSEngine::render(Bond &bond)
+//X {
+//X   cout << "Render Bond..." << endl;
+//X }
+//X 
 /*
 GLuint BSEngine::Render(OBMol &mol)
 {
@@ -161,4 +218,4 @@ GLuint BSEngine::Render(OBMol &mol)
 }
 */
 
-Q_EXPORT_PLUGIN2(BSEngineFactory, BSEngineFactory)
+Q_EXPORT_PLUGIN2(BSEngine, BSEngineFactory)

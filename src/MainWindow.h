@@ -27,8 +27,6 @@
 #include <QtGui>
 
 #include "GLWidget.h"
-#include "Renderer.h"
-
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 
@@ -47,7 +45,6 @@ namespace Avogadro {
       bool saveFile(const QString &fileName);
 
       Molecule *getMolecule() { return(&molecule); }
-      Renderer *defaultRenderer;
 
     protected:
       void closeEvent(QCloseEvent *event);
@@ -72,7 +69,7 @@ namespace Avogadro {
     private:
       GLWidget  *gl;
       Molecule molecule;
-      OpenBabel::OBMol view;
+//X       OpenBabel::OBMol view;
       QString    currentFile;
       bool       isModified;
 
@@ -112,8 +109,6 @@ namespace Avogadro {
       void setCurrentFile(const QString &fileName);
       void updateRecentFileActions();
       QString strippedName(const QString &fullFileName);
-
-      void loadRenderers();
 
       MainWindow *findMainWindow(const QString &fileName);
   };

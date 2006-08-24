@@ -21,48 +21,60 @@
  ***********************************************************************/
 
 #include "Primatives.h"
-
 #include "MainWindow.h"
 
 using namespace Avogadro;
 
-/*
-void Primative::setRenderer(Renderer *r)
-{ 
-  renderer = r; 
-}
-
-Renderer *Primative::getRenderer()
+Atom * Molecule::CreateAtom()
 {
-  if( renderer == NULL )
-  {
-    return NULL;
-  }
-  else
-  {
-    return renderer;
-  }
-}
-*/
+  Atom *atom = new Atom();//(Atom *) OBMol::CreateAtom();
+  emit atomAdded(atom);
 
-void Atom::render()
+  return(atom);
+}
+
+Bond * Molecule::CreateBond()
 {
-  MainWindow *w = ((Molecule *)GetParent())->getWindow();
-  w->defaultRenderer->renderAtom(*this);
+  Bond *bond = new Bond();//(Bond *)OBMol::CreateBond();
+  emit bondAdded(bond);
+  return(bond);
 }
 
-void Bond::render()
-{
-  // MainWindow::defaultRenderer->renderBond(*this);
-}
-
-void Molecule::render()
-{
-  vector<OpenBabel::OBNodeBase*>::iterator i;
-  Atom *atom;
-
-  for(atom = (Atom*)BeginAtom(i); atom; atom = (Atom*)NextAtom(i))
-  {
-    atom->render();
-  }
-}
+//X void Primative::setGLEngine(GLEngine *r)
+//X {
+//X   renderer = r; 
+//X }
+//X 
+//X GLEngine *Primative::getGLEngine()
+//X {
+//X   if( renderer == NULL )
+//X   {
+//X     return NULL;
+//X   }
+//X   else
+//X   {
+//X     return renderer;
+//X   }
+//X }
+//X 
+//X void Atom::render()
+//X {
+//X   MainWindow *w = ((Molecule *)GetParent())->getWindow();
+//X   w->defaultGLEngine->renderAtom(*this);
+//X }
+//X 
+//X void Bond::render()
+//X {
+//X   // MainWindow::defaultGLEngine->renderBond(*this);
+//X }
+//X 
+//X void Molecule::render()
+//X {
+//X   vector<OpenBabel::OBNodeBase*>::iterator i;
+//X   Atom *atom;
+//X 
+//X   for(atom = (Atom*)BeginAtom(i); atom; atom = (Atom*)NextAtom(i))
+//X   {
+//X     atom->render();
+//X   }
+//X }

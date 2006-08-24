@@ -1,5 +1,5 @@
 /**********************************************************************
-  SBSEngine - Engine for "balls and sticks" display
+  StickEngine - Engine for "sticks" display
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "SBSEngine.h"
+#include "StickEngine.h"
 #include "Primatives.h"
 #include <openbabel/obiter.h>
 
@@ -30,7 +30,7 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-void SBSEngine::initAtomDL()
+void StickEngine::initAtomDL()
 {
   // initialize the atom DL
   atomDL = glGenLists(1);
@@ -40,50 +40,90 @@ void SBSEngine::initAtomDL()
   GLUquadricObj *q = gluNewQuadric();
   gluQuadricDrawStyle(q, GLU_FILL );
   gluQuadricNormals(q, GLU_SMOOTH );
-  gluSphere(q, 1, 18, 18);
+  gluSphere(q, 0.1, 18, 18);
   glPopMatrix();
   glPopAttrib();
   glEndList();
 }
 
-void SBSEngine::render(Atom &atom)
+void StickEngine::renderAtom(Atom *atom)
 {
+  // cout << "Render Atom..." << endl;
+
   if( atomDL == 0 )
     initAtomDL();
 
   std::vector<double> rgb;
   glPushAttrib(GL_ALL_ATTRIB_BITS);
   glPushMatrix();
-  glTranslated(atom.GetX(), atom.GetY(), atom.GetZ());
-  rgb = etab.GetRGB(atom.GetAtomicNum());
-  glScalef(.5, .5, .5);
+  glTranslated(atom->GetX(), atom->GetY(), atom->GetZ());
+  rgb = etab.GetRGB(atom->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
   glCallList(atomDL);
   glPopMatrix();
   glPopAttrib();
 
-  /*
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
+}
+
+void StickEngine::renderBond(Bond *b)
+{
+  // cout << "Render Bond..." << endl;
+
+  vector3 v;
+  double arot, xrot, yrot;
+  double w;
+  double l1, l2;
+  double trans, radius = 0.1;
+  std::vector<double> rgb;
   glPushMatrix();
   GLUquadricObj *q = gluNewQuadric();
-  gluQuadricDrawStyle(q, GLU_FILL );
-  gluQuadricNormals(q, GLU_SMOOTH );
-  glTranslated(atom.GetX(), atom.GetY(), atom.GetZ());
-  rgb = etab.GetRGB(atom.GetAtomicNum());
+  OBAtom *bgn = b->GetBeginAtom();
+  OBAtom *end = b->GetEndAtom();
+  glTranslated(bgn->GetX(), bgn->GetY(), bgn->GetZ());
+  v = end->GetVector() - bgn->GetVector();
+  w = sqrt(v.x()*v.x() + v.y()*v.y());
+  if (w > 0.0)
+  {
+    xrot = -v.y() / w;
+    yrot = v.x() / w;
+    arot = atan2(w, v.z()) * RAD_TO_DEG;
+  }
+  else
+  {
+    xrot = 0.0;
+    if (v.z() > 0.0) yrot = arot = 0.0;
+    else
+    {
+      yrot = 1.0;
+      arot = 180.0;
+    }
+  }
+
+  glRotated(arot, xrot, yrot, 0.0);
+  l1 = b->GetLength() * etab.GetVdwRad(bgn->GetAtomicNum()) /
+    (etab.GetVdwRad(bgn->GetAtomicNum()) + etab.GetVdwRad(end->GetAtomicNum()));
+  l2 = b->GetLength() - l1;
+
+  rgb = etab.GetRGB(bgn->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
-  gluSphere(q, 1, 18, 18);
+
+  gluCylinder(q, radius, radius, l1, 5, 1);
+
+  rgb = etab.GetRGB(end->GetAtomicNum());
+  glColor3d(rgb[0], rgb[1], rgb[2]);
+  glTranslated(0.0, 0.0, l1);
+  gluCylinder(q, radius, radius, l1, 5, 1);
+
   glPopMatrix();
-  glPopAttrib();
-  */
 }
 
-void SBSEngine::render(Bond &bond)
-{
-  cout << "Render Bond" << endl;
-}
+//X void StickEngine::render(Bond &bond)
+//X {
+//X   cout << "Render Bond" << endl;
+//X }
 
 /*
-GLuint SBSEngine::Render(OBMol &mol)
+GLuint StickEngine::Render(OBMol &mol)
 {
   std::vector<double> rgb;
   if (!dlist)
@@ -162,4 +202,4 @@ GLuint SBSEngine::Render(OBMol &mol)
 }
 */
 
-Q_EXPORT_PLUGIN2(SBSEngineFactory, SBSEngineFactory)
+Q_EXPORT_PLUGIN2(StickEngine, StickEngineFactory)

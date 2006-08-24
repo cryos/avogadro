@@ -1,5 +1,5 @@
 /**********************************************************************
-  SBSEngine - Engine for "balls and sticks" display
+  StickEngine - Engine for "sticks" display
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __SBSRENDER_H
-#define __SBSRENDER_H
+#ifndef __STICKRENDER_H
+#define __STICKRENDER_H
 
 #include <QGLWidget>
 #include <QObject>
@@ -32,18 +32,18 @@
 
 #include <GLEngine.h>
 
-class SBSEngine : public QObject, public GLEngine
+class StickEngine : public QObject, public GLEngine
 {
   Q_OBJECT
 
   public:
-    SBSEngine() : GLEngine(), atomDL(0), bondDL(0) {}
-    ~SBSEngine() {}
+    StickEngine() : GLEngine(), atomDL(0), bondDL(0) {}
+    ~StickEngine() {}
 
-    QString name() { return(QString(tr("SBSEngine"))); }
-    QString description() { return(QString(tr("Small Ball and Stick Engine"))); }
-    void render(Atom &atom);
-    void render(Bond &bond);
+    QString name() { return(QString(tr("StickEngine"))); }
+    QString description() { return(QString(tr("Stick Engine"))); }
+    void StickEngine::renderAtom(Atom *a);
+    void StickEngine::renderBond(Bond *b);
 
   private:
     GLuint dlist;
@@ -54,13 +54,13 @@ class SBSEngine : public QObject, public GLEngine
 
 };
 
-class SBSEngineFactory : public QObject, public GLEngineFactory
+class StickEngineFactory : public QObject, public GLEngineFactory
 {
   Q_OBJECT
   Q_INTERFACES(GLEngineFactory)
 
   public:
-    GLEngine *createInstance() { return new SBSEngine(); }
+    GLEngine *createInstance() { return new StickEngine(); }
 };
 
 #endif

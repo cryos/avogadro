@@ -14,12 +14,10 @@ PKGCONFIG += openbabel-2.0
 # Input
 HEADERS += MainWindow.h GLWidget.h defines.h
 SOURCES += MainWindow.cpp GLWidget.cpp main.cpp
-#HEADERS += BSRender.h
-#SOURCES += BSRender.cpp
 HEADERS += Primatives.h
 SOURCES += Primatives.cpp
-#HEADERS += SphereRender.h BSRender.h StickRender.h
-#SOURCES += SphereRender.cpp BSRender.cpp StickRender.cpp
+HEADERS += Views.h
+SOURCES += Views.cpp
 
 # LIBS = -Lengines -lBSRenderer
 

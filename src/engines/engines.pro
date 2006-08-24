@@ -1,2 +1,2 @@
 TEMPLATE = subdirs
-SUBDIRS = SBSEngine.pro BSEngine.pro
+SUBDIRS = StickEngine.pro BSEngine.pro

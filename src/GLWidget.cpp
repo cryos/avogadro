@@ -26,14 +26,16 @@
 
 using namespace Avogadro;
 
-GLWidget::GLWidget(QWidget *parent) : QGLWidget(parent)
+GLWidget::GLWidget(QWidget *parent ) : QGLWidget(parent), defaultGLEngine(NULL)
 {
   printf("Constructor\n");
+  loadGLEngines();
 }
 
-GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent)
+GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent), defaultGLEngine(NULL)
 {
   printf("Constructor\n");
+  loadGLEngines();
 }
 
 void GLWidget::initializeGL()
@@ -112,7 +114,8 @@ void GLWidget::paintGL()
   glScaled(_Scale, _Scale, _Scale);
   glMultMatrixd(_RotationMatrix);
 
-  ((MainWindow*)parent())->getMolecule()->render();
+  view->render();
+//X   ((MainWindow*)parent())->getMolecule()->render();
 
   /*
   std::vector<GLuint>::iterator i;
@@ -226,3 +229,41 @@ void GLWidget::stopScreenCoordinates() const
   glMatrixMode(GL_MODELVIEW);
   glPopMatrix();
 }
+
+void GLWidget::setView(View *v)
+{
+  view = v;
+}
+
+void GLWidget::loadGLEngines()
+{
+  QDir pluginsDir = QDir(qApp->applicationDirPath());
+  pluginsDir.cd("engines");
+  qDebug() << "pluginsDir:" << pluginsDir.absolutePath() << endl;
+  foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
+    QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+    GLEngineFactory *factory = qobject_cast<GLEngineFactory *>(loader.instance());
+    if (factory) {
+      GLEngine *engine = factory->createInstance();
+      qDebug() << "Found Plugin: " << (int)engine << ":" << engine->name() << " - " << engine->description(); 
+      if (!defaultGLEngine)
+      {
+        qDebug() << "Setting Default GLEngine: " << engine->name() << " - " << engine->description(); 
+        defaultGLEngine = engine;
+      }
+    }
+  }
+  /* this is for static plugins - ignoring it for now.
+  foreach (QObject *plugin, QPluginLoader::staticInstances())
+  {
+    GLEngine *r = qobject_cast<GLEngine *>(plugin);
+    if (r)
+    {
+      qDebug() << "Loaded GLEngine: " << r->name() << endl;
+      if( MainWindow::defaultGLEngine == NULL )
+        MainWindow::defaultGLEngine = r;
+    }
+  }
+  */
+}
+

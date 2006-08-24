@@ -1,5 +1,5 @@
 /**********************************************************************
-  BSEngine - Engine for "balls and sticks" display
+  GLEngine - QT Plugin Template
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,47 +20,32 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __BSRENDER_H
-#define __BSRENDER_H
+#ifndef __GLENGINE_H
+#define __GLENGINE_H
 
-#include <QGLWidget>
-#include <QObject>
-#include <QStringList>
-#include <QImage>
+#include "Primatives.h"
 
-#include <openbabel/mol.h>
+#include <QString>
 
-#include <GLEngine.h>
+using namespace Avogadro;
 
-class BSEngine : public QObject, public GLEngine
+class GLEngine
 {
-  Q_OBJECT
-
   public:
-    BSEngine() : GLEngine(), atomDL(0), bondDL(0) {}
-    ~BSEngine() {}
+    virtual ~GLEngine() {}
 
-    QString name() { return(QString(tr("BSEngine"))); }
-    QString description() { return(QString(tr("Ball and Stick Engine"))); }
-    void renderAtom(Atom *a);
-    void renderBond(Bond *b);
-
-  private:
-    GLuint dlist;
-
-    void initAtomDL();
-    GLuint atomDL;
-    GLuint bondDL;
-
+    virtual QString name() = 0;
+    virtual QString description() = 0;
+    virtual void renderAtom(Atom *) {}
+    virtual void renderBond(Bond *) {}
 };
 
-class BSEngineFactory : public QObject, public GLEngineFactory
+class GLEngineFactory
 {
-  Q_OBJECT
-  Q_INTERFACES(GLEngineFactory)
-
   public:
-    GLEngine *createInstance() { return new BSEngine(); }
+    virtual GLEngine *createInstance() = 0;
 };
+
+Q_DECLARE_INTERFACE(GLEngineFactory, "net.sourceforge.avogadro/1.0")
 
 #endif

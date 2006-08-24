@@ -6,7 +6,7 @@ PKGCONFIG += openbabel-2.0
 
 CONFIG       += plugin 
 INCLUDEPATH  += ../
-HEADERS       = SBSEngine.h GLEngine.h
-SOURCES       = SBSEngine.cpp
-TARGET        = SBSEngine
+HEADERS       = StickEngine.h GLEngine.h
+SOURCES       = StickEngine.cpp
+TARGET        = StickEngine
 win32:DESTDIR = ./

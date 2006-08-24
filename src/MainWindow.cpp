@@ -32,13 +32,13 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  MainWindow::MainWindow() : defaultRenderer(0)
+  MainWindow::MainWindow()
   {
     init();
     setCurrentFile("");
   }
 
-  MainWindow::MainWindow(const QString &fileName) : defaultRenderer(0)
+  MainWindow::MainWindow(const QString &fileName)
   {
     init();
     loadFile(fileName);
@@ -58,45 +58,14 @@ namespace Avogadro {
     QGLFormat format;
     format.setSampleBuffers(true);
     gl = new GLWidget(format, this);
+
+    qDebug() << "Init Molecule\n" << endl;
+    MoleculeView *view = new MoleculeView(&molecule, gl);
+    qDebug() << "Done Init Molecule\n" << endl;
+    gl->setView(view);
     setCentralWidget(gl);
 
-    // load rendering engines after initializing the GL widget!
-    loadRenderers();
-
     statusBar()->showMessage(tr("Ready."), 10000);
-  }
-
-  void MainWindow::loadRenderers()
-  {
-    QDir pluginsDir = QDir(qApp->applicationDirPath());
-    pluginsDir.cd("engines");
-    qDebug() << "pluginsDir:" << pluginsDir.absolutePath() << endl;
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
-      QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-      RendererFactory *factory = qobject_cast<RendererFactory *>(loader.instance());
-      if (factory) {
-        qDebug() << "Calling Create";
-        Renderer *renderer = factory->createInstance();
-        qDebug() << "Found Plugin: " << renderer->name() << " - " << renderer->description(); 
-        if (!defaultRenderer)
-        {
-          qDebug() << "Setting Default Renderer: " << renderer->name() << " - " << renderer->description(); 
-          defaultRenderer = renderer;
-        }
-      }
-    }
-    /* this is for static plugins - ignoring it for now.
-    foreach (QObject *plugin, QPluginLoader::staticInstances())
-    {
-      Renderer *r = qobject_cast<Renderer *>(plugin);
-      if (r)
-      {
-        qDebug() << "Loaded Renderer: " << r->name() << endl;
-        if( MainWindow::defaultRenderer == NULL )
-          MainWindow::defaultRenderer = r;
-      }
-    }
-    */
   }
 
   MainWindow::~MainWindow()
@@ -123,7 +92,7 @@ namespace Avogadro {
         return;
       }
 
-      if (view.Empty())
+      if (molecule.Empty())
         loadFile(fileName);
       else {
         MainWindow *other = new MainWindow;
@@ -146,7 +115,7 @@ namespace Avogadro {
         return;
       }
 
-      if (view.Empty())
+      if (molecule.Empty())
         loadFile(action->data().toString());
       else {
         MainWindow *other = new MainWindow;
@@ -212,7 +181,7 @@ namespace Avogadro {
   void MainWindow::revert()
   {
     // this currently leaks -- need to free the display list and render, etc.
-    view.Clear();
+    molecule.Clear();
     loadFile(currentFile);
   }
 
@@ -421,11 +390,11 @@ namespace Avogadro {
     else {
       statusBar()->showMessage("Reading molecular file failed.", 5000);
       QApplication::restoreOverrideCursor();
+      return false;
     }
 
-    molecule.setWindow(this);
-
     setCurrentFile(fileName);
+
     return true;
   }
 
@@ -460,7 +429,7 @@ namespace Avogadro {
       return false;
     }
 
-    if (conv.Write(&view, &ofs))
+    if (conv.Write(&molecule, &ofs))
       statusBar()->showMessage("Save succeeded.", 5000);
     else
       statusBar()->showMessage("Saving molecular file failed.", 5000);

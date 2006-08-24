@@ -24,55 +24,59 @@
 #define __PRIMATIVES_H
 
 #include <openbabel/mol.h>
+#include <QObject>
 
-class Renderer;
+class GLEngine;
 
 namespace Avogadro {
 
   class MainWindow;
 
-  /* not necissary yet
-  class Primative
+  /*
+   * Primative 
+   * Used to define signals that all our primatives share.
+   * 
+   */
+
+  class Primative : public QObject
   {
-    public:
-      Primative() : renderer(NULL) {}
-      virtual ~Primative() {}
+    Q_OBJECT
 
-      virtual Renderer *getRenderer();
-      virtual void setRenderer(Renderer *r);
-
-    private:
-      Renderer *renderer;
-  };
-  */
-
-  class Atom : public OpenBabel::OBAtom
-  {
-    public:
-      void render();
-
+      // XXX We'll need this eventually i'm sure.
   };
 
-  class Bond : public OpenBabel::OBBond
+  class Atom : public Primative, public OpenBabel::OBAtom
   {
-    public:
-      void render();
-
+    Q_OBJECT
   };
 
-  class Molecule : public OpenBabel::OBMol
+  class Bond : public Primative, public OpenBabel::OBBond
   {
+    Q_OBJECT
+  };
+
+  class Molecule : public Primative, public OpenBabel::OBMol
+  {
+    Q_OBJECT
+
     public:
       void render();
-      void setWindow(MainWindow *w) { window = w; }
-      MainWindow *getWindow() { return window; }
-
+//X       void setWindow(MainWindow *w) { window = w; }
+//X       MainWindow *getWindow() { return window; }
 
     protected:
+      Atom * CreateAtom();
+      Bond * CreateBond();
+
       MainWindow *window;
       std::vector< Atom * > 	_vatom;
       std::vector< Bond * > 	_vbond;
+
+signals:
+      void atomAdded(Atom *atom);
+      void bondAdded(Bond *bond);
   };
-}
+
+} // namespace Avogadro
 
 #endif
