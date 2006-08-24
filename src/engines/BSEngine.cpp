@@ -46,7 +46,7 @@ void BSEngine::initAtomDL()
   glEndList();
 }
 
-void BSEngine::renderAtom(Atom *atom)
+void BSEngine::render(Atom *atom)
 {
   // cout << "Render Atom..." << endl;
 
@@ -67,7 +67,7 @@ void BSEngine::renderAtom(Atom *atom)
 
 }
 
-void BSEngine::renderBond(Bond *b)
+void BSEngine::render(Bond *b)
 {
   // cout << "Render Bond..." << endl;
 

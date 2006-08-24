@@ -42,8 +42,8 @@ class StickEngine : public QObject, public GLEngine
 
     QString name() { return(QString(tr("StickEngine"))); }
     QString description() { return(QString(tr("Stick Engine"))); }
-    void StickEngine::renderAtom(Atom *a);
-    void StickEngine::renderBond(Bond *b);
+    void render(Atom *a);
+    void render(Bond *b);
 
   private:
     GLuint dlist;

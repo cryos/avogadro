@@ -93,7 +93,7 @@ void AtomView::render()
   }
   else
   {
-    engine->renderAtom(object);
+    engine->render(object);
   }
 }
 
@@ -107,7 +107,7 @@ void BondView::render()
   }
   else
   {
-    engine->renderBond(object);
+    engine->render(object);
   }
 }
 

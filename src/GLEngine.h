@@ -36,8 +36,9 @@ class GLEngine
 
     virtual QString name() = 0;
     virtual QString description() = 0;
-    virtual void renderAtom(Atom *) {}
-    virtual void renderBond(Bond *) {}
+    virtual void render(Primative *) {}
+    virtual void render(Atom *) {}
+    virtual void render(Bond *) {}
 };
 
 class GLEngineFactory

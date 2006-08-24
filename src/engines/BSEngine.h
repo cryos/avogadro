@@ -42,8 +42,8 @@ class BSEngine : public QObject, public GLEngine
 
     QString name() { return(QString(tr("BSEngine"))); }
     QString description() { return(QString(tr("Ball and Stick Engine"))); }
-    void renderAtom(Atom *a);
-    void renderBond(Bond *b);
+    void render(Atom *a);
+    void render(Bond *b);
 
   private:
     GLuint dlist;

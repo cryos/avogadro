@@ -46,7 +46,7 @@ void StickEngine::initAtomDL()
   glEndList();
 }
 
-void StickEngine::renderAtom(Atom *atom)
+void StickEngine::render(Atom *atom)
 {
   // cout << "Render Atom..." << endl;
 
@@ -65,7 +65,7 @@ void StickEngine::renderAtom(Atom *atom)
 
 }
 
-void StickEngine::renderBond(Bond *b)
+void StickEngine::render(Bond *b)
 {
   // cout << "Render Bond..." << endl;
 
