@@ -1,2 +1,2 @@
 TEMPLATE = subdirs
-SUBDIRS = SBSRenderer.pro BSRenderer.pro
+SUBDIRS = SBSEngine.pro BSEngine.pro

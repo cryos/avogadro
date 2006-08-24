@@ -1,5 +1,5 @@
 /**********************************************************************
-  SBSRenderer - Renderer for "balls and sticks" display
+  SBSEngine - Engine for "balls and sticks" display
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -30,20 +30,20 @@
 
 #include <openbabel/mol.h>
 
-#include <Renderer.h>
+#include <GLEngine.h>
 
-class SBSRenderer : public QObject, public Renderer
+class SBSEngine : public QObject, public GLEngine
 {
   Q_OBJECT
 
   public:
-    SBSRenderer() : Renderer(), atomDL(0), bondDL(0) {}
-    ~SBSRenderer() {}
+    SBSEngine() : GLEngine(), atomDL(0), bondDL(0) {}
+    ~SBSEngine() {}
 
-    QString name() { return(QString(tr("SBSRenderer"))); }
-    QString description() { return(QString(tr("Small Ball and Stick Renderer"))); }
-    void renderAtom(Atom &atom);
-    void renderBond(Bond &bond);
+    QString name() { return(QString(tr("SBSEngine"))); }
+    QString description() { return(QString(tr("Small Ball and Stick Engine"))); }
+    void render(Atom &atom);
+    void render(Bond &bond);
 
   private:
     GLuint dlist;
@@ -54,13 +54,13 @@ class SBSRenderer : public QObject, public Renderer
 
 };
 
-class SBSRendererFactory : public QObject, public RendererFactory
+class SBSEngineFactory : public QObject, public GLEngineFactory
 {
   Q_OBJECT
-  Q_INTERFACES(RendererFactory)
+  Q_INTERFACES(GLEngineFactory)
 
   public:
-    Renderer *createInstance() { return new SBSRenderer(); }
+    GLEngine *createInstance() { return new SBSEngine(); }
 };
 
 #endif

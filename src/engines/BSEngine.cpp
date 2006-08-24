@@ -1,5 +1,5 @@
 /**********************************************************************
-  SBSRenderer - Renderer for "balls and sticks" display
+  BSEngine - Engine for "balls and sticks" display
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "SBSRenderer.h"
+#include "BSEngine.h"
 #include "Primatives.h"
 #include <openbabel/obiter.h>
 
@@ -30,7 +30,7 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-void SBSRenderer::initAtomDL()
+void BSEngine::initAtomDL()
 {
   // initialize the atom DL
   atomDL = glGenLists(1);
@@ -46,7 +46,7 @@ void SBSRenderer::initAtomDL()
   glEndList();
 }
 
-void SBSRenderer::renderAtom(Atom &atom)
+void BSEngine::render(Atom &atom)
 {
   if( atomDL == 0 )
     initAtomDL();
@@ -56,7 +56,6 @@ void SBSRenderer::renderAtom(Atom &atom)
   glPushMatrix();
   glTranslated(atom.GetX(), atom.GetY(), atom.GetZ());
   rgb = etab.GetRGB(atom.GetAtomicNum());
-  glScalef(.5, .5, .5);
   glColor3d(rgb[0], rgb[1], rgb[2]);
   glCallList(atomDL);
   glPopMatrix();
@@ -77,13 +76,13 @@ void SBSRenderer::renderAtom(Atom &atom)
   */
 }
 
-void SBSRenderer::renderBond(Bond &bond)
+void BSEngine::render(Bond &bond)
 {
   cout << "Render Bond" << endl;
 }
 
 /*
-GLuint SBSRenderer::Render(OBMol &mol)
+GLuint BSEngine::Render(OBMol &mol)
 {
   std::vector<double> rgb;
   if (!dlist)
@@ -162,4 +161,4 @@ GLuint SBSRenderer::Render(OBMol &mol)
 }
 */
 
-Q_EXPORT_PLUGIN2(SBSRendererFactory, SBSRendererFactory)
+Q_EXPORT_PLUGIN2(BSEngineFactory, BSEngineFactory)

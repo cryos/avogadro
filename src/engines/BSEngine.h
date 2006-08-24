@@ -1,5 +1,5 @@
 /**********************************************************************
-  BSRenderer - Renderer for "balls and sticks" display
+  BSEngine - Engine for "balls and sticks" display
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -30,20 +30,20 @@
 
 #include <openbabel/mol.h>
 
-#include <Renderer.h>
+#include <GLEngine.h>
 
-class BSRenderer : public QObject, public Renderer
+class BSEngine : public QObject, public GLEngine
 {
   Q_OBJECT
 
   public:
-    BSRenderer() : Renderer(), atomDL(0), bondDL(0) {}
-    ~BSRenderer() {}
+    BSEngine() : GLEngine(), atomDL(0), bondDL(0) {}
+    ~BSEngine() {}
 
-    QString name() { return(QString(tr("BSRenderer"))); }
-    QString description() { return(QString(tr("Ball and Stick Renderer"))); }
-    void renderAtom(Atom &atom);
-    void renderBond(Bond &bond);
+    QString name() { return(QString(tr("BSEngine"))); }
+    QString description() { return(QString(tr("Ball and Stick Engine"))); }
+    void render(Atom &atom);
+    void render(Bond &bond);
 
   private:
     GLuint dlist;
@@ -54,13 +54,13 @@ class BSRenderer : public QObject, public Renderer
 
 };
 
-class BSRendererFactory : public QObject, public RendererFactory
+class BSEngineFactory : public QObject, public GLEngineFactory
 {
   Q_OBJECT
-  Q_INTERFACES(RendererFactory)
+  Q_INTERFACES(GLEngineFactory)
 
   public:
-    Renderer *createInstance() { return new BSRenderer(); }
+    GLEngine *createInstance() { return new BSEngine(); }
 };
 
 #endif
