@@ -254,13 +254,12 @@ void GLWidget::loadGLEngines()
   QDir pluginsDir = QDir(qApp->applicationDirPath());
 
   if (!pluginsDir.cd("engines") && getenv("AVOGADRO_PLUGINS") != NULL)
-    {
-      pluginsDir.cd(getenv("AVOGADRO_PLUGINS"));
-    }
+  {
+    pluginsDir.cd(getenv("AVOGADRO_PLUGINS"));
+  }
 
-  qDebug() << "pluginsDir:" << pluginsDir.absolutePath() << endl;
+  qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
   foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
-    qDebug() << " plugin " << fileName << endl;
     QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
     GLEngineFactory *factory = qobject_cast<GLEngineFactory *>(loader.instance());
     if (factory) {
