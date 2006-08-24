@@ -32,6 +32,8 @@
 
 #include <GLEngine.h>
 
+namespace Avogadro {
+
 class StickEngine : public QObject, public GLEngine
 {
   Q_OBJECT
@@ -57,10 +59,12 @@ class StickEngine : public QObject, public GLEngine
 class StickEngineFactory : public QObject, public GLEngineFactory
 {
   Q_OBJECT
-  Q_INTERFACES(GLEngineFactory)
+    Q_INTERFACES(Avogadro::GLEngineFactory)
 
   public:
     GLEngine *createInstance() { return new StickEngine(); }
 };
+
+} // end namespace Avogadro
 
 #endif

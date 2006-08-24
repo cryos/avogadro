@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 #include "StickEngine.h"
-#include "Primatives.h"
+#include "Primitives.h"
 #include <openbabel/obiter.h>
 
 #include <QtGui>

@@ -1,5 +1,5 @@
 /**********************************************************************
-  Views - Wrapper class around the Primative classes
+  Views - Wrapper class around the Primitive classes
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -23,7 +23,7 @@
 #ifndef __VIEWS_H
 #define __VIEWS_H
 
-#include "Primatives.h"
+#include "Primitives.h"
 #include "GLEngine.h"
 
 #include <QList>
@@ -37,7 +37,7 @@ namespace Avogadro {
 
     public:
       View(QObject *parent);
-      View(Primative *p, QObject *parent);
+      View(Primitive *p, QObject *parent);
       View(const View &v);
       virtual ~View() {};
 
@@ -47,7 +47,7 @@ namespace Avogadro {
       GLEngine * getGLEngine();
 
     protected:
-      Primative *object;
+      Primitive *object;
       QList<View *> subViews;
       GLEngine *glEngine;
 

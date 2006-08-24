@@ -1,5 +1,5 @@
 /**********************************************************************
-  Primatives - Wrapper class around the OpenBabel classes
+  Primitives - Wrapper class around the OpenBabel classes
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -33,29 +33,29 @@ namespace Avogadro {
   class MainWindow;
 
   /*
-   * Primative 
+   * Primitive 
    * Used to define signals that all our primatives share.
    * 
    */
 
-  class Primative : public QObject
+  class Primitive : public QObject
   {
     Q_OBJECT
 
       // XXX We'll need this eventually i'm sure.
   };
 
-  class Atom : public Primative, public OpenBabel::OBAtom
+  class Atom : public Primitive, public OpenBabel::OBAtom
   {
     Q_OBJECT
   };
 
-  class Bond : public Primative, public OpenBabel::OBBond
+  class Bond : public Primitive, public OpenBabel::OBBond
   {
     Q_OBJECT
   };
 
-  class Molecule : public Primative, public OpenBabel::OBMol
+  class Molecule : public Primitive, public OpenBabel::OBMol
   {
     Q_OBJECT
 

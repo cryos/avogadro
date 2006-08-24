@@ -23,7 +23,7 @@
 #ifndef __GLWIDGET_H
 #define __GLWIDGET_H
 
-#include "Primatives.h"
+#include "Primitives.h"
 #include "Views.h"
 #include "GLEngine.h"
 

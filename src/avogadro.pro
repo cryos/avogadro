@@ -14,8 +14,8 @@ PKGCONFIG += openbabel-2.0
 # Input
 HEADERS += MainWindow.h GLWidget.h defines.h
 SOURCES += MainWindow.cpp GLWidget.cpp main.cpp
-HEADERS += Primatives.h
-SOURCES += Primatives.cpp
+HEADERS += Primitives.h
+SOURCES += Primitives.cpp
 HEADERS += Views.h
 SOURCES += Views.cpp
 

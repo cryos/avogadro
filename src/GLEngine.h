@@ -1,5 +1,5 @@
 /**********************************************************************
-  GLEngine - QT Plugin Template
+  GLEngine - Qt Plugin Template
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -23,11 +23,11 @@
 #ifndef __GLENGINE_H
 #define __GLENGINE_H
 
-#include "Primatives.h"
+#include "Primitives.h"
 
 #include <QString>
 
-using namespace Avogadro;
+namespace Avogadro {
 
 class GLEngine
 {
@@ -36,17 +36,20 @@ class GLEngine
 
     virtual QString name() = 0;
     virtual QString description() = 0;
-    virtual void render(Primative *) {}
+    virtual void render(Primitive *) {}
     virtual void render(Atom *) {}
     virtual void render(Bond *) {}
 };
 
 class GLEngineFactory
 {
-  public:
-    virtual GLEngine *createInstance() = 0;
+ public:
+  virtual ~GLEngineFactory() {}
+  virtual GLEngine *createInstance() = 0;
 };
 
-Q_DECLARE_INTERFACE(GLEngineFactory, "net.sourceforge.avogadro/1.0")
+} // end namespace Avogadro
+
+Q_DECLARE_INTERFACE(Avogadro::GLEngineFactory, "net.sourceforge.avogadro/1.0")
 
 #endif

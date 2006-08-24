@@ -23,11 +23,11 @@
 #ifndef __RENDERER_H
 #define __RENDERER_H
 
-#include "Primatives.h"
+#include "Primitives.h"
 
 #include <QString>
 
-using namespace Avogadro;
+namespace Avogadro {
 
 class Renderer 
 {
@@ -43,8 +43,12 @@ class Renderer
 class RendererFactory
 {
   public:
-    virtual Renderer *createInstance() = 0;
+  virtual ~RendererFactory {}
+
+  virtual Renderer *createInstance() = 0;
 };
+
+} // end namespace Avogadro
 
 Q_DECLARE_INTERFACE(RendererFactory, "net.sourceforge.avogadro/1.0")
 

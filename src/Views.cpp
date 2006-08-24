@@ -1,5 +1,5 @@
 /**********************************************************************
-  Views - Wrapper class around the Primative classes
+  Views - Wrapper class around the Primitive classes
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -23,7 +23,7 @@
 #include "Views.h"
 #include "MainWindow.h"
 #include "GLWidget.h"
-
+#include "GLEngine.h"
 
 using namespace Avogadro;
 using namespace std;
@@ -32,7 +32,7 @@ View::View( QObject * parent ) : QObject(parent), object(NULL), glEngine(NULL)
 {
 }
 
-View::View( Primative *p, QObject * parent ) : QObject(parent), object(p), glEngine(NULL)
+View::View( Primitive *p, QObject * parent ) : QObject(parent), object(p), glEngine(NULL)
 {
 }
 
@@ -42,7 +42,7 @@ View::View(const View &v) : QObject(v.parent())
   subViews = v.subViews;
 }
 
-GLEngine * View::getDefaultGLEngine()
+Avogadro::GLEngine * View::getDefaultGLEngine()
 {
   View *v = dynamic_cast<View *>(parent());
   if(v)
@@ -59,7 +59,7 @@ GLEngine * View::getDefaultGLEngine()
   return NULL;
 }
 
-GLEngine * View::getGLEngine()
+Avogadro::GLEngine * View::getGLEngine()
 {
   if(!glEngine)
   {

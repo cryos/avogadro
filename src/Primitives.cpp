@@ -1,5 +1,5 @@
 /**********************************************************************
-  Primatives - Wrapper class around the OpenBabel classes
+  Primitives - Wrapper class around the OpenBabel classes
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "Primatives.h"
+#include "Primitives.h"
 #include "MainWindow.h"
 
 using namespace Avogadro;
@@ -40,12 +40,12 @@ Bond * Molecule::CreateBond()
   return(bond);
 }
 
-//X void Primative::setGLEngine(GLEngine *r)
+//X void Primitive::setGLEngine(GLEngine *r)
 //X {
 //X   renderer = r; 
 //X }
 //X 
-//X GLEngine *Primative::getGLEngine()
+//X GLEngine *Primitive::getGLEngine()
 //X {
 //X   if( renderer == NULL )
 //X   {
