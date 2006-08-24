@@ -43,7 +43,7 @@ class StickEngine : public QObject, public GLEngine
     ~StickEngine() {}
 
     QString name() { return(QString(tr("StickEngine"))); }
-    QString description() { return(QString(tr("Stick Engine"))); }
+    QString description() { return(QString(tr("Sticks"))); }
     void render(Atom *a);
     void render(Bond *b);
 

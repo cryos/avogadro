@@ -43,7 +43,7 @@ class BSEngine : public QObject, public GLEngine
     ~BSEngine() {}
 
     QString name() { return(QString(tr("BSEngine"))); }
-    QString description() { return(QString(tr("Ball and Stick Engine"))); }
+    QString description() { return(QString(tr("Ball and Stick"))); }
     void render(Atom *a);
     void render(Bond *b);
 

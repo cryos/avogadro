@@ -49,6 +49,11 @@ namespace Avogadro {
       void setView(View *v);
 
       GLEngine *getDefaultGLEngine() { return defaultGLEngine; }
+      QList<GLEngine *> getGLEngines() { return glEngines; }
+
+    public slots:
+      void setDefaultGLEngine(int i);
+      void setDefaultGLEngine(GLEngine *e);
 
     protected:
       virtual void initializeGL();

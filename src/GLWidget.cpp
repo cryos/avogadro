@@ -235,6 +235,20 @@ void GLWidget::setView(View *v)
   view = v;
 }
 
+void GLWidget::setDefaultGLEngine(int i) 
+{
+  setDefaultGLEngine(glEngines.at(i));
+}
+
+void GLWidget::setDefaultGLEngine(GLEngine *e) 
+{
+  if(e)
+  {
+    defaultGLEngine = e;
+    updateGL();
+  }
+}
+
 void GLWidget::loadGLEngines()
 {
   QDir pluginsDir = QDir(qApp->applicationDirPath());
@@ -251,12 +265,13 @@ void GLWidget::loadGLEngines()
     GLEngineFactory *factory = qobject_cast<GLEngineFactory *>(loader.instance());
     if (factory) {
       GLEngine *engine = factory->createInstance();
-      qDebug() << "Found Plugin: " << (int)engine << ":" << engine->name() << " - " << engine->description(); 
+      qDebug() << "Found Plugin: " << engine->name() << " - " << engine->description(); 
       if (!defaultGLEngine)
       {
         qDebug() << "Setting Default GLEngine: " << engine->name() << " - " << engine->description(); 
         defaultGLEngine = engine;
       }
+      glEngines.append(engine);
     }
   }
   /* this is for static plugins - ignoring it for now.
