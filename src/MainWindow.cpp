@@ -59,11 +59,20 @@ namespace Avogadro {
     format.setSampleBuffers(true);
     gl = new GLWidget(format, this);
 
-    qDebug() << "Init Molecule\n" << endl;
     MoleculeView *view = new MoleculeView(&molecule, gl);
-    qDebug() << "Done Init Molecule\n" << endl;
     gl->setView(view);
     setCentralWidget(gl);
+
+    // add all gl engines to the dropdown
+    QList<GLEngine *> engines = gl->getGLEngines();
+    for(int i=0; i< engines.size(); ++i) {
+      cbGLEngine->insertItem(i, engines.at(i)->description());
+    }
+    // set the default to whatever GL has selected as default on startup
+    cbGLEngine->setCurrentIndex(engines.indexOf(gl->getDefaultGLEngine()));
+    // setup our signal
+    connect(cbGLEngine, SIGNAL(activated(int)), gl, SLOT(setDefaultGLEngine(int)));
+
 
     statusBar()->showMessage(tr("Ready."), 10000);
   }
@@ -335,6 +344,10 @@ namespace Avogadro {
     toolBar->addAction(actionOpen);
     toolBar->addAction(actionClose);
     toolBar->addAction(actionSave);
+
+    // XXX This is a quick hack.
+    cbGLEngine = new QComboBox;
+    (toolBar->addWidget(cbGLEngine))->setVisible(true);
 
     toolBar->setOrientation(Qt::Horizontal);
     this->addToolBar(static_cast<Qt::ToolBarArea>(4), toolBar);
