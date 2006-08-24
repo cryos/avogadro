@@ -320,6 +320,8 @@ namespace Avogadro {
       menuOpen_Recent->addAction(actionRecentFile[i]);
     actionSeparator = menuOpen_Recent->addSeparator();
     menuOpen_Recent->addAction(actionClearRecentMenu);
+    updateRecentFileActions();
+
     menuFile->addSeparator();
     menuFile->addAction(actionClose);
     menuFile->addAction(actionSave);
@@ -394,10 +396,7 @@ namespace Avogadro {
           " Bonds: " << molecule.NumBonds();
         statusBar()->showMessage(status, 5000);
 
-        /*
-        BSRender sRender;
-        gl->addDisplayList(sRender.Render(view));
-        */
+        gl->updateGL();
         QApplication::restoreOverrideCursor();
       }
     else {
