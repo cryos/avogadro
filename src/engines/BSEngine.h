@@ -34,36 +34,50 @@
 
 namespace Avogadro {
 
-class BSEngine : public QObject, public GLEngine
-{
-  Q_OBJECT
+  //! Ball and Stick Engine class.
+  class BSEngine : public QObject, public GLEngine
+  {
+    Q_OBJECT
 
-  public:
-    BSEngine() : GLEngine(), atomDL(0), bondDL(0) {}
-    ~BSEngine() {}
+    public:
+      //! Constructor
+      BSEngine() : GLEngine(), atomDL(0), bondDL(0) {}
+      //! Deconstructor
+      ~BSEngine() {}
 
-    QString name() { return(QString(tr("BSEngine"))); }
-    QString description() { return(QString(tr("Ball and Stick"))); }
-    void render(Atom *a);
-    void render(Bond *b);
+      //! \name Description methods
+      //@{
+      //! Engine Name; "BSEngine"
+      QString name() { return(QString(tr("BSEngine"))); }
+      //! Return Engine description; "Ball and Stick"
+      QString description() { return(QString(tr("Ball and Stick"))); }
+      //@}
 
-  private:
-    GLuint dlist;
+      //! \name Render Methods
+      //@{
+      //! Render an Atom.
+      void render(Atom *a);
+      //! Render a Bond.
+      void render(Bond *b);
+      //@}
 
-    void initAtomDL();
-    GLuint atomDL;
-    GLuint bondDL;
+    private:
+      GLuint dlist;
 
-};
+      void initAtomDL();
+      GLuint atomDL;
+      GLuint bondDL;
 
-class BSEngineFactory : public QObject, public GLEngineFactory
-{
-  Q_OBJECT
-    Q_INTERFACES(Avogadro::GLEngineFactory)
+  };
 
-  public:
-    GLEngine *createInstance() { return new BSEngine(); }
-};
+  class BSEngineFactory : public QObject, public GLEngineFactory
+  {
+    Q_OBJECT
+      Q_INTERFACES(Avogadro::GLEngineFactory)
+
+    public:
+      GLEngine *createInstance() { return new BSEngine(); }
+  };
 
 } // end namespace Avogadro
 

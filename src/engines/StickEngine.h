@@ -34,36 +34,47 @@
 
 namespace Avogadro {
 
-class StickEngine : public QObject, public GLEngine
-{
-  Q_OBJECT
+  class StickEngine : public QObject, public GLEngine
+  {
+    Q_OBJECT
 
-  public:
-    StickEngine() : GLEngine(), atomDL(0), bondDL(0) {}
-    ~StickEngine() {}
+    public:
+      //! Constructor
+      StickEngine() : GLEngine(), atomDL(0), bondDL(0) {}
+      //! Deconstructor
+      ~StickEngine() {}
 
-    QString name() { return(QString(tr("StickEngine"))); }
-    QString description() { return(QString(tr("Sticks"))); }
-    void render(Atom *a);
-    void render(Bond *b);
+      //! \name Description methods
+      //@{
+      //! Engine Name; "StickEngine"
+      QString name() { return(QString(tr("StickEngine"))); }
+      //! Return Engine description; "Sticks"
+      QString description() { return(QString(tr("Sticks"))); }
+      //@}
 
-  private:
-    GLuint dlist;
+      //! \name Render Methods
+      //@{
+      void render(Atom *a);
+      void render(Bond *b);
+      //@}
 
-    void initAtomDL();
-    GLuint atomDL;
-    GLuint bondDL;
+    private:
+      GLuint dlist;
 
-};
+      void initAtomDL();
+      GLuint atomDL;
+      GLuint bondDL;
 
-class StickEngineFactory : public QObject, public GLEngineFactory
-{
-  Q_OBJECT
+  };
+
+  class StickEngineFactory : public QObject, public GLEngineFactory
+  {
+    Q_OBJECT
     Q_INTERFACES(Avogadro::GLEngineFactory)
 
-  public:
-    GLEngine *createInstance() { return new StickEngine(); }
-};
+    public:
+      GLEngine *createInstance() { return new StickEngine(); }
+  };
 
 } // end namespace Avogadro
 

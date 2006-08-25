@@ -29,24 +29,46 @@
 
 namespace Avogadro {
 
-class GLEngine
-{
-  public:
-    virtual ~GLEngine() {}
+  //! Template class for our GL Engines
+  class GLEngine
+  {
+    public:
+      //! Deconstructor
+      virtual ~GLEngine() {}
 
-    virtual QString name() = 0;
-    virtual QString description() = 0;
-    virtual void render(Primitive *) {}
-    virtual void render(Atom *) {}
-    virtual void render(Bond *) {}
-};
+      //! \name Description methods
+      //@{
+      //! Engine Name (ie FoobarEngine)
+      virtual QString name() = 0;
+      //! Engine Description (ie. Ball and Stick / Wireframe)
+      virtual QString description() = 0;
+      //@}
 
-class GLEngineFactory
-{
- public:
-  virtual ~GLEngineFactory() {}
-  virtual GLEngine *createInstance() = 0;
-};
+      //! \name Render Methods
+      //@{
+      //! \brief Render a Primitive object.
+      /*!
+        Engine developers need not implement this function.  It is left here as
+        a precautionary measure in the case we try to render a subclass of
+        Primative we have not yet declared.
+        */
+      virtual void render(Primitive *) {}
+      //! Render an Atom object.
+      virtual void render(Atom *) {}
+      //! Render a Bond object.
+      virtual void render(Bond *) {}
+      //@}
+  };
+
+  //! Generates instances of our GLEngine class
+  class GLEngineFactory
+  {
+    public:
+      //! Desconstructor
+      virtual ~GLEngineFactory() {}
+      //! Create a new instance of our GLEngine and return a pointer to it.
+      virtual GLEngine *createInstance() = 0;
+  };
 
 } // end namespace Avogadro
 
