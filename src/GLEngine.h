@@ -29,7 +29,7 @@
 
 namespace Avogadro {
 
-  //! Template class for our GL Engines
+  //! Template class for our GL engines
   class GLEngine
   {
     public:
@@ -66,7 +66,8 @@ namespace Avogadro {
     public:
       //! Desconstructor
       virtual ~GLEngineFactory() {}
-      //! Create a new instance of our GLEngine and return a pointer to it.
+
+      //! Create a new instance of our engine and return a pointer to it.
       virtual GLEngine *createInstance() = 0;
   };
 

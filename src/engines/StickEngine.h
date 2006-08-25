@@ -34,6 +34,7 @@
 
 namespace Avogadro {
 
+  //! Stick Engine class.
   class StickEngine : public QObject, public GLEngine
   {
     Q_OBJECT
@@ -67,6 +68,7 @@ namespace Avogadro {
 
   };
 
+  //! Generates instances of our StickEngine class
   class StickEngineFactory : public QObject, public GLEngineFactory
   {
     Q_OBJECT

@@ -70,6 +70,7 @@ namespace Avogadro {
 
   };
 
+  //! Generates instances of our BSEngine class
   class BSEngineFactory : public QObject, public GLEngineFactory
   {
     Q_OBJECT
