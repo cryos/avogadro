@@ -58,8 +58,8 @@ namespace Avogadro {
       void revert();
       void exportGraphics();
 
-      void undo();
-      void redo();
+      void fullScreen();
+      void setBackgroundColor();
 
       void clearRecentFiles();
       void about();
@@ -69,13 +69,14 @@ namespace Avogadro {
     private:
       GLWidget  *gl;
       Molecule molecule;
-//X       OpenBabel::OBMol view;
       QString    currentFile;
       bool       isModified;
+      QUndoStack *undo;
 
       QMenu      *menuFile;
       QMenu      *menuOpen_Recent;
       QMenu      *menuEdit;
+      QMenu      *menuView;
       QMenu      *menuHelp;
       QToolBar   *toolBar;
 
@@ -96,6 +97,9 @@ namespace Avogadro {
 
       QAction    *actionUndo;
       QAction    *actionRedo;
+
+      QAction    *actionFullScreen;
+      QAction    *actionSetColor;
 
       QAction    *actionAbout;
 

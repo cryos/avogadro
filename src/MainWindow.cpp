@@ -49,6 +49,8 @@ namespace Avogadro {
     readSettings();
     setAttribute(Qt::WA_DeleteOnClose);
 
+    undo = new QUndoStack(this);
+
     createActions();
     createMenuBar();
     createToolbars();
@@ -194,14 +196,6 @@ namespace Avogadro {
     loadFile(currentFile);
   }
 
-  void MainWindow::undo()
-  {
-  }
-
-  void MainWindow::redo()
-  {
-  }
-
   void MainWindow::documentWasModified()
   {
     setWindowModified(true);
@@ -238,6 +232,27 @@ namespace Avogadro {
   {
     QMessageBoxEx::about(this, tr("About Avogadro"),
                          tr("Avogadro is an avanced molecular editor."));
+  }
+
+  void MainWindow::fullScreen()
+  {
+    if (!this->isFullScreen()) {
+      actionFullScreen->setText("Normal Size");
+      toolBar->hide();
+      statusBar()->hide();
+      this->showFullScreen();
+    } else {
+      this->showNormal();
+      actionFullScreen->setText("Full Screen");
+      toolBar->show();
+      statusBar()->show();
+    }
+  }
+
+  void MainWindow::setBackgroundColor()
+  {
+    QColor current = gl->getClearColor();
+    gl->setClearColor(QColorDialog::getRgba(current.rgba(), NULL, this));
   }
 
   void MainWindow::createActions()
@@ -293,15 +308,22 @@ namespace Avogadro {
     actionClearRecentMenu->setStatusTip(tr("Clear list of recent files"));
     connect(actionClearRecentMenu, SIGNAL(triggered()), this, SLOT(clearRecentFiles()));
 
-    actionUndo = new QAction(tr("&Undo"), this);
+    actionUndo = undo->createUndoAction(this);
     actionUndo->setShortcut(QKeySequence::Undo);
     actionUndo->setStatusTip(tr("Undo change"));
-    connect(actionUndo, SIGNAL(triggered()), this, SLOT(undo()));
 
-    actionRedo = new QAction(tr("&Redo"), this);
+    actionRedo = undo->createRedoAction(this);
     actionRedo->setShortcut(QKeySequence::Redo);
     actionRedo->setStatusTip(tr("Redo change"));
-    connect(actionRedo, SIGNAL(triggered()), this, SLOT(redo()));
+
+    actionFullScreen = new QAction(tr("&Full Screen"), this);
+    actionFullScreen->setStatusTip(tr("Show Full Screen"));
+    actionFullScreen->setShortcut(tr("Ctrl+Shift+R"));
+    connect(actionFullScreen, SIGNAL(triggered()), this, SLOT(fullScreen()));
+
+    actionSetColor = new QAction(tr("Set &Background Color..."), this);
+    actionSetColor->setStatusTip(tr("Set Background Color"));
+    connect(actionSetColor, SIGNAL(triggered()), this, SLOT(setBackgroundColor()));
 
     actionAbout = new QAction(tr("&About Avogadro"), this);
     actionAbout->setStatusTip(tr("About Avogadro"));
@@ -334,6 +356,10 @@ namespace Avogadro {
     menuEdit = menuBar()->addMenu(tr("&Edit"));
     menuEdit->addAction(actionUndo);
     menuEdit->addAction(actionRedo);
+
+    menuView = menuBar()->addMenu(tr("&View"));
+    menuView->addAction(actionFullScreen);
+    menuView->addAction(actionSetColor);
 
     menuHelp = menuBar()->addMenu(tr("&Help"));
     menuHelp->addAction(actionAbout);

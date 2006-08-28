@@ -7,11 +7,16 @@
 	Benoit's vertex array sphere and cylinder from Kalzium.
 
 	* src/engines/WireframeEngine.*: New class for a wireframe
-	view. (Should be made a static plugin and the default view, but
-	don't have time right now.)
+	view.
 
 	* src/engines/SphereEngine.*: New class for van der Waals spheres
 	using Benoit's classes. Very fast.
+
+	* src/engines/BSEngine.*, src/engines/StickEngine.*: Switch to
+	Benoit's vertex array classes.
+
+	* src/MainWindow.h, src/MainWindow.cpp: Add full screen rendering
+	and background color. (Needed for upcoming ACS presentations.)
 
 2006-08-24  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
