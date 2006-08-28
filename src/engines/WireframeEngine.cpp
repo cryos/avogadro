@@ -30,35 +30,30 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-void WireframeEngine::initAtomDL()
-{
-
-  glLineWidth(1.0);
-}
-
 void WireframeEngine::render(Atom *atom)
 {
-  std::vector<double> rgb;
-  rgb = etab.GetRGB(atom->GetAtomicNum());
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
-  glBegin(GL_POINTS);
-  glColor3d(rgb[0], rgb[1], rgb[2]);
-  glPointSize(etab.GetVdwRad(atom->GetAtomicNum()));
-  glVertex3d(atom->GetX(), atom->GetY(), atom->GetZ());
-  glEnd();
-  glPopAttrib();
+//   std::vector<double> rgb;
+//   rgb = etab.GetRGB(atom->GetAtomicNum());
+//   glPushAttrib(GL_ALL_ATTRIB_BITS);
+//   glBegin(GL_POINTS);
+//   glColor3d(rgb[0], rgb[1], rgb[2]);
+//   glPointSize(etab.GetVdwRad(atom->GetAtomicNum()));
+//   glVertex3d(atom->GetX(), atom->GetY(), atom->GetZ());
+//   glEnd();
+//   glPopAttrib();
 }
 
 void WireframeEngine::render(Bond *b)
 {
   std::vector<double> rgb;
   glPushAttrib(GL_ALL_ATTRIB_BITS);
+  glLineWidth(1.0);
   glBegin(GL_LINES);
   rgb = etab.GetRGB(b->GetBeginAtom()->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
   glVertex3d(b->GetBeginAtom()->GetX(), b->GetBeginAtom()->GetY(), b->GetBeginAtom()->GetZ());
-  glColor3d(rgb[0], rgb[1], rgb[2]);
   rgb = etab.GetRGB(b->GetEndAtom()->GetAtomicNum());
+  glColor3d(rgb[0], rgb[1], rgb[2]);
   glVertex3d(b->GetEndAtom()->GetX(), b->GetEndAtom()->GetY(), b->GetEndAtom()->GetZ());
   glEnd();
   glPopAttrib();

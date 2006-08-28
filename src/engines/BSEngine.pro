@@ -4,9 +4,9 @@ QT += opengl
 CONFIG += link_pkgconfig 
 PKGCONFIG += openbabel-2.0
 
-CONFIG       += plugin 
+CONFIG       += plugin
 INCLUDEPATH  += ../
-HEADERS       = BSEngine.h
-SOURCES       = BSEngine.cpp
+HEADERS       = BSEngine.h vertexarray.h
+SOURCES       = BSEngine.cpp vertexarray.cpp
 TARGET        = BSEngine
 win32:DESTDIR = ./

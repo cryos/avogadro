@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __BSRENDER_H
-#define __BSRENDER_H
+#ifndef __BSENGINE_H
+#define __BSENGINE_H
 
 #include <QGLWidget>
 #include <QObject>
@@ -30,7 +30,8 @@
 
 #include <openbabel/mol.h>
 
-#include <GLEngine.h>
+#include "GLEngine.h"
+#include "vertexarray.h"
 
 namespace Avogadro {
 
@@ -41,7 +42,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      BSEngine() : GLEngine(), atomDL(0), bondDL(0) {}
+  BSEngine() : GLEngine() {}
       //! Deconstructor
       ~BSEngine() {}
 
@@ -62,12 +63,8 @@ namespace Avogadro {
       //@}
 
     private:
-      GLuint dlist;
-
-      void initAtomDL();
-      GLuint atomDL;
-      GLuint bondDL;
-
+      Sphere m_sphere;
+      Cylinder m_cylinder;
   };
 
   //! Generates instances of our BSEngine class

@@ -45,6 +45,11 @@ namespace Avogadro {
       // XXX We'll need this eventually i'm sure.
   };
 
+  class Residue : public Primitive, public OpenBabel::OBResidue
+  {
+    Q_OBJECT
+  };
+
   class Atom : public Primitive, public OpenBabel::OBAtom
   {
     Q_OBJECT

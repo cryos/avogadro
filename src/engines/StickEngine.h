@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __STICKRENDER_H
-#define __STICKRENDER_H
+#ifndef __STICKENGINE_H
+#define __STICKENGINE_H
 
 #include <QGLWidget>
 #include <QObject>
@@ -30,7 +30,8 @@
 
 #include <openbabel/mol.h>
 
-#include <GLEngine.h>
+#include "GLEngine.h"
+#include "vertexarray.h"
 
 namespace Avogadro {
 
@@ -41,7 +42,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      StickEngine() : GLEngine(), atomDL(0), bondDL(0) {}
+      StickEngine() : GLEngine() {}
       //! Deconstructor
       ~StickEngine() {}
 
@@ -60,12 +61,8 @@ namespace Avogadro {
       //@}
 
     private:
-      GLuint dlist;
-
-      void initAtomDL();
-      GLuint atomDL;
-      GLuint bondDL;
-
+      Sphere m_sphere;
+      Cylinder m_cylinder;
   };
 
   //! Generates instances of our StickEngine class

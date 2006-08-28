@@ -39,21 +39,13 @@ class WireframeEngine : public QObject, public GLEngine
   Q_OBJECT
 
     public:
- WireframeEngine() : GLEngine(), atomDL(0), bondDL(0) { }
+ WireframeEngine() : GLEngine() {}
   ~WireframeEngine() {}
 
     QString name() { return(QString(tr("WireframeEngine"))); }
     QString description() { return(QString(tr("Wireframe"))); }
     void render(Atom *a);
     void render(Bond *b);
-
-  private:
-    GLuint dlist;
-
-    void initAtomDL();
-    GLuint atomDL;
-    GLuint bondDL;
-
 };
 
 class WireframeEngineFactory : public QObject, public GLEngineFactory

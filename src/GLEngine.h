@@ -29,8 +29,8 @@
 
 namespace Avogadro {
 
-  //! Template class for our GL engines
-  class GLEngine
+  //! Base class for our GL engines
+ class GLEngine
   {
     public:
       //! Deconstructor
@@ -53,10 +53,16 @@ namespace Avogadro {
         Primative we have not yet declared.
         */
       virtual void render(Primitive *) {}
+      /*! Render a Molecule object
+        (all at once, rather than each individual atom or bond)
+      */
+      virtual void render(Molecule *) {}
       //! Render an Atom object.
       virtual void render(Atom *) {}
       //! Render a Bond object.
       virtual void render(Bond *) {}
+      //! Render a Residue object.
+      virtual void render(Residue *) {}
       //@}
   };
 

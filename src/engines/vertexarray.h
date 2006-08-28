@@ -193,6 +193,10 @@ class VertexArray
 		/** This destructor frees the buffers if necessary, and also
 		 * deletes the display list if it has been compiled. */
 		virtual ~VertexArray();
+    
+    /** If this array is a valid, initialized vertex array, return true
+     */
+    bool isValid() { return m_isValid; }
 
 		/** If display list compilation is enabled, then this function
 		 * just calls the display list. Otherwise, it calls do_draw().

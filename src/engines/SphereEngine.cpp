@@ -32,12 +32,17 @@ using namespace Avogadro;
 
 void SphereEngine::render(Atom *atom)
 {
-  m_sphere.setup(2);
+  if (!m_sphere.isValid())
+    m_sphere.setup(4);
   
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
 
-  Color(atom).applyAsMaterials();
+  //  Color(atom).applyAsMaterials();
+  std::vector<double> rgb;
+  rgb = etab.GetRGB(atom->GetAtomicNum());
+  glColor3d(rgb[0], rgb[1], rgb[2]);
+
   m_sphere.draw(atom->GetVector(), etab.GetVdwRad(atom->GetAtomicNum()));
   glEnable( GL_NORMALIZE );
   glDisable( GL_RESCALE_NORMAL );

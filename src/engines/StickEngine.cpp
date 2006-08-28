@@ -30,176 +30,55 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-void StickEngine::initAtomDL()
-{
-  // initialize the atom DL
-  atomDL = glGenLists(1);
-  glNewList(atomDL, GL_COMPILE);
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
-  glPushMatrix();
-  GLUquadricObj *q = gluNewQuadric();
-  gluQuadricDrawStyle(q, GLU_FILL );
-  gluQuadricNormals(q, GLU_SMOOTH );
-  gluSphere(q, 0.1, 18, 18);
-  glPopMatrix();
-  glPopAttrib();
-  glEndList();
-}
-
 void StickEngine::render(Atom *atom)
 {
-  // cout << "Render Atom..." << endl;
+  if (!m_sphere.isValid())
+    m_sphere.setup(2);
 
-  if( atomDL == 0 )
-    initAtomDL();
+  glDisable( GL_NORMALIZE );
+  glEnable( GL_RESCALE_NORMAL );
 
+  //  Color(atom).applyAsMaterials();
   std::vector<double> rgb;
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
-  glPushMatrix();
-  glTranslated(atom->GetX(), atom->GetY(), atom->GetZ());
   rgb = etab.GetRGB(atom->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
-  glCallList(atomDL);
-  glPopMatrix();
-  glPopAttrib();
 
+  m_sphere.draw(atom->GetVector(), 0.3);
+  glEnable( GL_NORMALIZE );
+  glDisable( GL_RESCALE_NORMAL );
 }
 
 void StickEngine::render(Bond *b)
 {
   // cout << "Render Bond..." << endl;
+  if (!m_cylinder.isValid())
+    m_cylinder.setup(6);
 
-  vector3 v;
-  double arot, xrot, yrot;
-  double w;
-  double l1, l2;
-  double trans, radius = 0.1;
+  glDisable( GL_NORMALIZE );
+  glEnable( GL_RESCALE_NORMAL );
+
+  OBAtom *atom1 = static_cast<OBAtom *>( b->GetBgn() );
+  OBAtom *atom2 = static_cast<OBAtom *>( b->GetEnd() );
+  
+  vector3 v1 = atom1->GetVector();
+  vector3 v2 = atom2->GetVector();
+  vector3 v3 = ( v1 + v2 ) / 2;
   std::vector<double> rgb;
-  glPushMatrix();
-  GLUquadricObj *q = gluNewQuadric();
-  OBAtom *bgn = b->GetBeginAtom();
-  OBAtom *end = b->GetEndAtom();
-  glTranslated(bgn->GetX(), bgn->GetY(), bgn->GetZ());
-  v = end->GetVector() - bgn->GetVector();
-  w = sqrt(v.x()*v.x() + v.y()*v.y());
-  if (w > 0.0)
-  {
-    xrot = -v.y() / w;
-    yrot = v.x() / w;
-    arot = atan2(w, v.z()) * RAD_TO_DEG;
-  }
-  else
-  {
-    xrot = 0.0;
-    if (v.z() > 0.0) yrot = arot = 0.0;
-    else
-    {
-      yrot = 1.0;
-      arot = 180.0;
-    }
-  }
 
-  glRotated(arot, xrot, yrot, 0.0);
-  l1 = b->GetLength() * etab.GetVdwRad(bgn->GetAtomicNum()) /
-    (etab.GetVdwRad(bgn->GetAtomicNum()) + etab.GetVdwRad(end->GetAtomicNum()));
-  l2 = b->GetLength() - l1;
+  double radius = 0.3;
+  int order = 1;
 
-  rgb = etab.GetRGB(bgn->GetAtomicNum());
+  glLoadName( atom1->GetIdx() );
+  rgb = etab.GetRGB(atom1->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
-
-  gluCylinder(q, radius, radius, l1, 5, 1);
-
-  rgb = etab.GetRGB(end->GetAtomicNum());
+  m_cylinder.draw( v1, v3, radius, order, 0.0);
+  glLoadName( atom2->GetIdx() );
+  rgb = etab.GetRGB(atom2->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
-  glTranslated(0.0, 0.0, l1);
-  gluCylinder(q, radius, radius, l1, 5, 1);
+  m_cylinder.draw( v2, v3, radius, order, 0.0);
 
-  glPopMatrix();
+  glEnable( GL_NORMALIZE );
+  glDisable( GL_RESCALE_NORMAL );
 }
-
-//X void StickEngine::render(Bond &bond)
-//X {
-//X   cout << "Render Bond" << endl;
-//X }
-
-/*
-GLuint StickEngine::Render(OBMol &mol)
-{
-  std::vector<double> rgb;
-  if (!dlist)
-    dlist = glGenLists(1);
-
-  glNewList(dlist, GL_COMPILE);
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
-  glPushMatrix();
-  //  glTranslated(0.0, 0.0, 0.0);
-  GLUquadricObj *q = gluNewQuadric();
-  gluQuadricDrawStyle(q, GLU_FILL );
-  gluQuadricNormals(q, GLU_SMOOTH );
-  FOR_ATOMS_OF_MOL(a, mol)
-  {
-    rgb = etab.GetRGB(a->GetAtomicNum());
-    glColor3d(rgb[0], rgb[1], rgb[2]);
-    glTranslated(a->GetX(), a->GetY(), a->GetZ());
-    gluSphere(q, etab.GetVdwRad(a->GetAtomicNum()) * 0.3, 9, 9);
-    glTranslated(-a->GetX(), -a->GetY(), -a->GetZ());
-  }
-  OBAtom *bgn, *end;
-  vector3 v;
-  double arot, xrot, yrot;
-  double w;
-  double l1, l2;
-  double trans, radius = 0.1;
-  // Cribbed from Gnome Chemistry Utils (gtkchem3dviewer.c)
-  FOR_BONDS_OF_MOL(b, mol)
-  {
-    glPushMatrix();
-    bgn = b->GetBeginAtom();
-    end = b->GetEndAtom();
-    glTranslated(bgn->GetX(), bgn->GetY(), bgn->GetZ());
-    v = end->GetVector() - bgn->GetVector();
-    w = sqrt(v.x()*v.x() + v.y()*v.y());
-    if (w > 0.0)
-    {
-      xrot = -v.y() / w;
-      yrot = v.x() / w;
-      arot = atan2(w, v.z()) * RAD_TO_DEG;
-    }
-    else
-    {
-      xrot = 0.0;
-      if (v.z() > 0.0) yrot = arot = 0.0;
-      else
-      {
-        yrot = 1.0;
-        arot = 180.0;
-      }
-    }
-
-    glRotated(arot, xrot, yrot, 0.0);
-    l1 = b->GetLength() * etab.GetVdwRad(bgn->GetAtomicNum()) /
-      (etab.GetVdwRad(bgn->GetAtomicNum()) + etab.GetVdwRad(end->GetAtomicNum()));
-    l2 = b->GetLength() - l1;
-
-    rgb = etab.GetRGB(bgn->GetAtomicNum());
-    glColor3d(rgb[0], rgb[1], rgb[2]);
-
-    gluCylinder(q, radius, radius, l1, 5, 1);
-
-    rgb = etab.GetRGB(end->GetAtomicNum());
-    glColor3d(rgb[0], rgb[1], rgb[2]);
-    glTranslated(0.0, 0.0, l1);
-    gluCylinder(q, radius, radius, l1, 5, 1);
-
-    glPopMatrix();
-  }
-  gluDeleteQuadric(q);
-  glPopMatrix();
-  glPopAttrib();
-  glEndList();
-
-  return dlist;
-}
-*/
 
 Q_EXPORT_PLUGIN2(StickEngine, StickEngineFactory)

@@ -6,7 +6,7 @@ PKGCONFIG += openbabel-2.0
 
 CONFIG       += plugin 
 INCLUDEPATH  += ../
-HEADERS       = StickEngine.h 
-SOURCES       = StickEngine.cpp
+HEADERS       = StickEngine.h vertexarray.h
+SOURCES       = StickEngine.cpp vertexarray.cpp
 TARGET        = StickEngine
 win32:DESTDIR = ./

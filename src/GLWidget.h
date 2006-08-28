@@ -51,6 +51,9 @@ namespace Avogadro {
       GLEngine *getDefaultGLEngine() { return defaultGLEngine; }
       QList<GLEngine *> getGLEngines() { return glEngines; }
 
+      void setClearColor(const QColor &c) { _clearColor = c; qglClearColor(c);}
+      QColor getClearColor() const { return _clearColor;}
+
     public slots:
       void setDefaultGLEngine(int i);
       void setDefaultGLEngine(GLEngine *e);
@@ -73,7 +76,6 @@ namespace Avogadro {
       void stopScreenCoordinates() const;
 
       View *view;
-
       std::vector<GLuint> _displayLists;
       bool                _leftButtonPressed;  // rotation
       bool                _rightButtonPressed; // translation
@@ -86,6 +88,7 @@ namespace Avogadro {
       GLdouble            _RotationMatrix[16];
       GLdouble            _TranslationVector[3];
       GLdouble            _Scale;
+      QColor              _clearColor;
   };
 
 } // end namespace Avogadro

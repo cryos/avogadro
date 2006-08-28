@@ -19,6 +19,7 @@ SOURCES += Primitives.cpp
 HEADERS += Views.h
 SOURCES += Views.cpp
 
-# LIBS = -Lengines -lBSRenderer
+# Static plugins
+# LIBS = -Lengines -lBSEngine -lWireframeEngine
 
 # FORMS *= avogadro.ui

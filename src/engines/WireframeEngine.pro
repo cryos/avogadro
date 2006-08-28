@@ -4,7 +4,7 @@ QT += opengl
 CONFIG += link_pkgconfig 
 PKGCONFIG += openbabel-2.0
 
-CONFIG       += plugin 
+CONFIG       += plugin
 INCLUDEPATH  += ../
 HEADERS       = WireframeEngine.h
 SOURCES       = WireframeEngine.cpp

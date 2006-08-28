@@ -29,6 +29,10 @@
 
 using namespace Avogadro;
 
+// Import static plugins
+// Q_IMPORT_PLUGIN(BSEngine)
+// Q_IMPORT_PLUGIN(WireframeEngine)
+
 int main(int argc, char *argv[])
 {
   // set up groups for QSettings

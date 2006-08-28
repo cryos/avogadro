@@ -26,13 +26,13 @@
 
 using namespace Avogadro;
 
-GLWidget::GLWidget(QWidget *parent ) : QGLWidget(parent), defaultGLEngine(NULL)
+GLWidget::GLWidget(QWidget *parent ) : QGLWidget(parent), defaultGLEngine(NULL), _clearColor(Qt::black)
 {
   printf("Constructor\n");
   loadGLEngines();
 }
 
-GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent), defaultGLEngine(NULL)
+GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent), defaultGLEngine(NULL), _clearColor(Qt::black)
 {
   printf("Constructor\n");
   loadGLEngines();
@@ -42,7 +42,7 @@ void GLWidget::initializeGL()
 {
   printf("Initializing\n");
 
-  glClearColor(0.0, 0.0, 0.0, 1.0);
+  qglClearColor ( _clearColor );
 
   //  glShadeModel( GL_SMOOTH );
   glEnable( GL_DEPTH_TEST );
@@ -83,7 +83,7 @@ void GLWidget::initializeGL()
   glPopMatrix();
 
   glMatrixMode(GL_PROJECTION);
-  glOrtho(10.0, -10.0, 10.0, -10.0, -30.0, 30.0);
+  glOrtho(-10.0, 10.0, -10.0, 10.0, -30.0, 30.0);
 
   _TranslationVector[0] = 0.0;
   _TranslationVector[1] = 0.0;
@@ -102,7 +102,7 @@ void GLWidget::resizeGL(int width, int height)
   glViewport((width - side) / 2, (height - side) / 2, side, side);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(10.0, -10.0, 10.0, -10.0, -30.0, 30.0);
+  glOrtho(-10.0, 10.0, -10.0, 10.0, -30.0, 30.0);
   glMatrixMode(GL_MODELVIEW);
 }
 
@@ -117,13 +117,6 @@ void GLWidget::paintGL()
   glMultMatrixd(_RotationMatrix);
 
   view->render();
-//X   ((MainWindow*)parent())->getMolecule()->render();
-
-  /*
-  std::vector<GLuint>::iterator i;
-  for (i = _displayLists.begin(); i != _displayLists.end(); i++)
-    glCallList(*i);
-    */
   glPopMatrix();
 
   glFlush();
@@ -185,8 +178,8 @@ void GLWidget::mouseMoveEvent( QMouseEvent * event )
   {      
     glPushMatrix();
     glLoadIdentity();
-    glRotated( deltaDragging.x(), 0.0, -1.0, 0.0 );
-    glRotated( deltaDragging.y(), -1.0, 0.0, 0.0 );
+    glRotated( deltaDragging.x(), 0.0, 1.0, 0.0 );
+    glRotated( deltaDragging.y(), 1.0, 0.0, 0.0 );
     glMultMatrixd( _RotationMatrix );
     glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
     glPopMatrix();
@@ -195,8 +188,8 @@ void GLWidget::mouseMoveEvent( QMouseEvent * event )
   {
     deltaDragging = _initialDraggingPosition - event->pos();
 
-    _TranslationVector[0] = deltaDragging.x() / 5.0;
-    _TranslationVector[1] = - deltaDragging.y() / 5.0;
+    _TranslationVector[0] = -deltaDragging.x() / 5.0;
+    _TranslationVector[1] = deltaDragging.y() / 5.0;
   }
   else if ( event->buttons() & Qt::MidButton )
   {
@@ -261,6 +254,18 @@ void GLWidget::loadGLEngines()
   }
 
   qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
+  // load static plugins first
+//   foreach (QObject *plugin, QPluginLoader::staticInstances())
+//   {
+//     GLEngine *r = qobject_cast<GLEngine *>(plugin);
+//     if (r)
+//     {
+//       qDebug() << "Loaded GLEngine: " << r->name() << endl;
+//       if( defaultGLEngine == NULL )
+//         defaultGLEngine = r;
+//     }
+//   }
+
   foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
     QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
     GLEngineFactory *factory = qobject_cast<GLEngineFactory *>(loader.instance());
@@ -275,17 +280,5 @@ void GLWidget::loadGLEngines()
       glEngines.append(engine);
     }
   }
-  /* this is for static plugins - ignoring it for now.
-  foreach (QObject *plugin, QPluginLoader::staticInstances())
-  {
-    GLEngine *r = qobject_cast<GLEngine *>(plugin);
-    if (r)
-    {
-      qDebug() << "Loaded GLEngine: " << r->name() << endl;
-      if( MainWindow::defaultGLEngine == NULL )
-        MainWindow::defaultGLEngine = r;
-    }
-  }
-  */
 }
 
