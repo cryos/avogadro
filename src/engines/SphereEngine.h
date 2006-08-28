@@ -40,7 +40,7 @@ class SphereEngine : public QObject, public GLEngine
   Q_OBJECT
 
   public:
- SphereEngine() : GLEngine() {m_sphere.setup(3);}
+ SphereEngine() : GLEngine() {m_sphere.setup(1);}
     ~SphereEngine() {}
 
     QString name() { return(QString(tr("SphereEngine"))); }

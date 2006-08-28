@@ -32,6 +32,8 @@ using namespace Avogadro;
 
 void SphereEngine::render(Atom *atom)
 {
+  m_sphere.setup(2);
+  
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
 
