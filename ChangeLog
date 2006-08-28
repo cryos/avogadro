@@ -1,3 +1,18 @@
+2006-08-28  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/GLWidget.cpp: Make sure to enable vertex arrays (for
+	Benoit's sphere/cylinder classes.
+
+	* src/engines/vertextarray.cpp, src/engines/vertexarray.h: Moved
+	Benoit's vertex array sphere and cylinder from Kalzium.
+
+	* src/engines/WireframeEngine.*: New class for a wireframe
+	view. (Should be made a static plugin and the default view, but
+	don't have time right now.)
+
+	* src/engines/SphereEngine.*: New class for van der Waals spheres
+	using Benoit's classes. Very fast.
+
 2006-08-24  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* src/MainWindow.cpp: Make sure to update recent file list when

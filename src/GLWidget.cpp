@@ -91,6 +91,8 @@ void GLWidget::initializeGL()
 
   _Scale = 1.0;
 
+  glEnableClientState( GL_VERTEX_ARRAY );
+  glEnableClientState( GL_NORMAL_ARRAY );
 }
 
 void GLWidget::resizeGL(int width, int height)
