@@ -93,7 +93,9 @@ void AtomView::render()
   }
   else
   {
+    glPushName(object->GetIdx());
     engine->render(object);
+    glPopName();
   }
 }
 

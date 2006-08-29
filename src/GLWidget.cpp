@@ -24,6 +24,9 @@
 
 #include "MainWindow.h"
 
+#include <stdio.h>
+#define BUFSIZE 512
+
 using namespace Avogadro;
 
 GLWidget::GLWidget(QWidget *parent ) : QGLWidget(parent), defaultGLEngine(NULL), _clearColor(Qt::black)
@@ -77,13 +80,12 @@ void GLWidget::initializeGL()
   glEnable( GL_LIGHT0 );
 
   glMatrixMode(GL_MODELVIEW);
+
+  // Initialize a clean rotation matrix
   glPushMatrix();
   glLoadIdentity();
   glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix);
   glPopMatrix();
-
-  glMatrixMode(GL_PROJECTION);
-  glOrtho(-10.0, 10.0, -10.0, 10.0, -30.0, 30.0);
 
   _TranslationVector[0] = 0.0;
   _TranslationVector[1] = 0.0;
@@ -99,27 +101,57 @@ void GLWidget::resizeGL(int width, int height)
 {
   printf("Resizing.\n");
   int side = qMax(width, height);
+  qDebug("(width - side) / 2: %d  (height - side) / 2: %d", (width - side) / 2,(height - side) / 2);
   glViewport((width - side) / 2, (height - side) / 2, side, side);
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  glOrtho(-10.0, 10.0, -10.0, 10.0, -30.0, 30.0);
-  glMatrixMode(GL_MODELVIEW);
+//X   glViewport(0,0,width,height);
+
 }
 
-void GLWidget::paintGL()
+void GLWidget::setCamera()
 {
-  printf("Painting.\n");
+//X   glViewport((width - side) / 2, (height - side) / 2, side, side);
+//X   glViewport(0, 0, width(), width());
+  glOrtho(-10.0, 10.0, -10.0, 10.0, -30.0, 30.0);
+
+//X   // Reset the projection and set our perspective.
+//X   gluPerspective(45,float(width())/height(),0.1,1000);
+//X 
+//X   // pull the camera back 20
+//X   glTranslated ( 0.0, 0.0, -20.0 );
+}
+
+void GLWidget::render(GLenum mode)
+{
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  glPushMatrix();
+  // TODO: Be careful here.  For the time being we are actually changing the
+  // orientation of our render in 3d space and not changing the camera.  And also
+  // we're not changing the coordinates of the atoms.
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+
+  // Translate our molecule as per user instructions
   glTranslated(_TranslationVector[0], _TranslationVector[1], _TranslationVector[2]);
   glScaled(_Scale, _Scale, _Scale);
   glMultMatrixd(_RotationMatrix);
 
   view->render();
-  glPopMatrix();
 
   glFlush();
+}
+
+void GLWidget::paintGL()
+{ 
+  printf("Painting.\n");
+
+  // Reset the projection
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  setCamera();
+
+  // Reset the model view
+  glMatrixMode(GL_MODELVIEW);
+  render(GL_RENDER);
 }
 
 void GLWidget::addDisplayList(GLuint dl)
@@ -153,8 +185,90 @@ void GLWidget::mousePressEvent( QMouseEvent * event )
   _initialDraggingPosition = event->pos ();
 }
 
+void GLWidget::startPicking(int x, int y)
+{
+  GLint viewport[4];
+
+  glSelectBuffer(BUFSIZE,selectBuf);
+  glRenderMode(GL_SELECT);
+  int side = qMax(width(), height());
+  int xx = (side - width()) + x;
+  int yy = (side - height())  + y;
+  int yy2 = (side - height()) / 2  + y;
+
+  qDebug("side - height(): %d", (side - height()) / 2);
+  glGetIntegerv(GL_VIEWPORT,viewport);
+  qDebug("xx: %d  yy: %d  yy2: %d  x: %d  y: %d  viewport[3]: %d  viewport[3]-yy: %d",xx,yy,yy2,x,y,viewport[3], viewport[3]-yy);
+
+  // Setup our limited viewport for picking.
+  glMatrixMode(GL_PROJECTION);
+  glPushMatrix();
+  glLoadIdentity();
+
+  gluPickMatrix(xx,viewport[3]-yy, 5,5,viewport);
+
+  setCamera();
+
+  // Get ready for rendering
+  glMatrixMode(GL_MODELVIEW);
+  glInitNames();
+}
+
+void GLWidget::stopPicking()
+{
+  int hits;
+
+  // restoring the original projection matrix
+  glPopMatrix();
+  glMatrixMode(GL_PROJECTION);
+  glPopMatrix();
+  glMatrixMode(GL_MODELVIEW);
+  glFlush();
+
+  // returning to normal rendering mode
+  hits = glRenderMode(GL_RENDER);
+
+  // if there are hits process them
+  if (hits != 0)
+    processHits(hits,selectBuf);
+}
+
+void GLWidget::processHits (GLint hits, GLuint buffer[])
+{
+  unsigned int i, j;
+  GLuint ii, jj, names, *ptr;
+
+  printf ("hits = %d\n", hits);
+  ptr = (GLuint *) buffer;
+  for (i = 0; i < hits; i++) {
+    names = *ptr;
+    printf (" number of names for this hit = %d\n", names); ptr++;
+    printf("  z1 is %g;", (float) *ptr/0x7fffffff); ptr++;
+    printf(" z2 is %g\n", (float) *ptr/0x7fffffff); ptr++;
+    printf ("   names are "); 
+    for (j = 0; j < names; j++) { /*  for each name */
+      printf ("%d ", *ptr);
+      if (j == 0)  /*  set row and column  */
+        ii = *ptr;
+      else if (j == 1)
+        jj = *ptr;
+      ptr++;
+    }
+    printf ("\n");
+  }
+}
+
 void GLWidget::mouseReleaseEvent( QMouseEvent * event )
 {
+  if(!_movedSinceButtonPressed)
+  {
+    startPicking(event->pos().x(), event->pos().y());
+    render(GL_SELECT);
+    stopPicking();
+
+    qDebug() << "OUT";
+  }
+
   //   if( !( event->buttons() & Qt::LeftButton ) ) {
   //       _leftButtonPressed = false;
   //   }

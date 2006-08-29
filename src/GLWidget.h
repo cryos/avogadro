@@ -32,6 +32,9 @@
 
 #include <vector>
 
+// TODO: This should probably be something different
+#define BUFSIZE 512
+
 namespace Avogadro {
 
   class GLWidget : public QGLWidget
@@ -68,6 +71,14 @@ namespace Avogadro {
       virtual void mouseMoveEvent( QMouseEvent * event );
 
       void loadGLEngines();
+
+      void setCamera();
+      void render(GLenum mode);
+
+      void startPicking(int x, int y);
+      void stopPicking();
+      void processHits (GLint hits, GLuint buffer[]);
+      GLuint selectBuf[BUFSIZE];
 
       GLEngine *defaultGLEngine;
       QList<GLEngine *> glEngines;
