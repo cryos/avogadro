@@ -1,3 +1,9 @@
+2006-08-29  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* src/GLWidget.cpp: Initial group selection code.  Needs work
+	still.  When you double-click to open a file it registers the
+	mouse as having moved.  This generates a selection box.
+
 2006-08-28  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* src/GLWidget.cpp: Using perspective on 3d views.  There is also

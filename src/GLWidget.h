@@ -32,10 +32,19 @@
 
 #include <vector>
 
-// TODO: This should probably be something different
-#define BUFSIZE 512
 
 namespace Avogadro {
+
+  class GLHit
+  {
+    public:
+      GLHit(GLuint n, GLuint min, GLuint max) { name = n; minZ = min; maxZ = max; }
+      friend bool operator<(const GLHit &h1, const GLHit &h2) { return h1.minZ < h2.minZ; }
+
+      GLuint name;
+      GLuint minZ;
+      GLuint maxZ;
+  };
 
   class GLWidget : public QGLWidget
   {
@@ -62,6 +71,7 @@ namespace Avogadro {
       void setDefaultGLEngine(GLEngine *e);
 
     protected:
+      void init();
       virtual void initializeGL();
       virtual void paintGL();
       virtual void resizeGL(int, int);
@@ -75,10 +85,20 @@ namespace Avogadro {
       void setCamera();
       void render(GLenum mode);
 
-      void startPicking(int x, int y);
-      void stopPicking();
-      void processHits (GLint hits, GLuint buffer[]);
-      GLuint selectBuf[BUFSIZE];
+      void pick(int x, int y);
+
+      //! Draw a selection box.
+      void selectionBox(int sx, int sy, int ex, int ey);
+
+      //! From the GL selection buffer; populate the hits 
+      //! with the closest hit as the frontmost.
+      void updateHitList(GLint hits, GLuint buffer[]);
+
+      //! List of hits from a selection/pick
+      QList<GLHit> _hits;
+
+      //! Temporary var for adding selection box
+      GLuint _selectionDL;
 
       GLEngine *defaultGLEngine;
       QList<GLEngine *> glEngines;
@@ -88,6 +108,8 @@ namespace Avogadro {
 
       View *view;
       std::vector<GLuint> _displayLists;
+
+
       bool                _leftButtonPressed;  // rotation
       bool                _rightButtonPressed; // translation
       bool                _midButtonPressed;   // scale / zoom

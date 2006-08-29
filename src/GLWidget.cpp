@@ -25,19 +25,26 @@
 #include "MainWindow.h"
 
 #include <stdio.h>
-#define BUFSIZE 512
+
+#define GL_SEL_BUF_SIZE 512
 
 using namespace Avogadro;
 
 GLWidget::GLWidget(QWidget *parent ) : QGLWidget(parent), defaultGLEngine(NULL), _clearColor(Qt::black)
 {
   printf("Constructor\n");
-  loadGLEngines();
+  init();
 }
 
 GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent), defaultGLEngine(NULL), _clearColor(Qt::black)
 {
   printf("Constructor\n");
+  init();
+}
+
+void GLWidget::init()
+{
+  _selectionDL = 0;
   loadGLEngines();
 }
 
@@ -130,6 +137,8 @@ void GLWidget::render(GLenum mode)
 
   view->render();
 
+  glCallList(_selectionDL);
+
   glFlush();
 }
 
@@ -173,86 +182,24 @@ void GLWidget::mousePressEvent( QMouseEvent * event )
   //     _midButtonPressed = true;
   //   }
 
+  // See if this click has hit any in our molecule
+  pick(event->pos().x(), event->pos().y());
+
   _movedSinceButtonPressed = false;
   _lastDraggingPosition = event->pos ();
   _initialDraggingPosition = event->pos ();
 }
 
-void GLWidget::startPicking(int x, int y)
-{
-  GLint viewport[4];
-
-  glSelectBuffer(BUFSIZE,selectBuf);
-  glRenderMode(GL_SELECT);
-
-  // Setup our limited viewport for picking.
-  glGetIntegerv(GL_VIEWPORT,viewport);
-  glMatrixMode(GL_PROJECTION);
-  glPushMatrix();
-  glLoadIdentity();
-  gluPickMatrix(x,viewport[3]-y, 5,5,viewport);
-
-  setCamera();
-
-  // Get ready for rendering
-  glMatrixMode(GL_MODELVIEW);
-  glInitNames();
-}
-
-void GLWidget::stopPicking()
-{
-  int hits;
-
-  // restoring the original projection matrix
-  glPopMatrix();
-  glMatrixMode(GL_PROJECTION);
-  glPopMatrix();
-  glMatrixMode(GL_MODELVIEW);
-  glFlush();
-
-  // returning to normal rendering mode
-  hits = glRenderMode(GL_RENDER);
-
-  // if there are hits process them
-  if (hits != 0)
-    processHits(hits,selectBuf);
-}
-
-void GLWidget::processHits (GLint hits, GLuint buffer[])
-{
-  unsigned int i, j;
-  GLuint ii, jj, names, *ptr;
-
-  printf ("hits = %d\n", hits);
-  ptr = (GLuint *) buffer;
-  for (i = 0; i < hits; i++) {
-    names = *ptr;
-    printf (" number of names for this hit = %d\n", names); ptr++;
-    printf("  z1 is %g;", (float) *ptr/0x7fffffff); ptr++;
-    printf(" z2 is %g\n", (float) *ptr/0x7fffffff); ptr++;
-    printf ("   names are "); 
-    for (j = 0; j < names; j++) { /*  for each name */
-      printf ("%d ", *ptr);
-      if (j == 0)  /*  set row and column  */
-        ii = *ptr;
-      else if (j == 1)
-        jj = *ptr;
-      ptr++;
-    }
-    printf ("\n");
-  }
-}
-
 void GLWidget::mouseReleaseEvent( QMouseEvent * event )
 {
-  if(!_movedSinceButtonPressed)
+  // TODO: Fix this!
+  if(_selectionDL)
   {
-    startPicking(event->pos().x(), event->pos().y());
-    render(GL_SELECT);
-    stopPicking();
-
-    qDebug() << "OUT";
+    glNewList(_selectionDL, GL_COMPILE);
+    glEndList();
   }
+
+  updateGL();
 
   //   if( !( event->buttons() & Qt::LeftButton ) ) {
   //       _leftButtonPressed = false;
@@ -273,35 +220,178 @@ void GLWidget::mouseMoveEvent( QMouseEvent * event )
         - _initialDraggingPosition ).manhattanLength() > 2 )
     _movedSinceButtonPressed = true;
 
-  if( event->buttons() & Qt::LeftButton )
-  {      
-    glPushMatrix();
-    glLoadIdentity();
-    glRotated( deltaDragging.x(), 0.0, 1.0, 0.0 );
-    glRotated( deltaDragging.y(), 1.0, 0.0, 0.0 );
-    glMultMatrixd( _RotationMatrix );
-    glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
-    glPopMatrix();
-  }
-  else if ( event->buttons() & Qt::RightButton )
+  if( _hits.size() )
   {
-    deltaDragging = _initialDraggingPosition - event->pos();
+    if( event->buttons() & Qt::LeftButton )
+    {
+      glPushMatrix();
+      glLoadIdentity();
+      glRotated( deltaDragging.x(), 0.0, 1.0, 0.0 );
+      glRotated( deltaDragging.y(), 1.0, 0.0, 0.0 );
+      glMultMatrixd( _RotationMatrix );
+      glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
+      glPopMatrix();
+    }
+    else if ( event->buttons() & Qt::RightButton )
+    {
+      deltaDragging = _initialDraggingPosition - event->pos();
 
-    _TranslationVector[0] = -deltaDragging.x() / 5.0;
-    _TranslationVector[1] = deltaDragging.y() / 5.0;
+      _TranslationVector[0] = -deltaDragging.x() / 5.0;
+      _TranslationVector[1] = deltaDragging.y() / 5.0;
+    }
+    else if ( event->buttons() & Qt::MidButton )
+    {
+      deltaDragging = _initialDraggingPosition - event->pos();
+      int xySum = deltaDragging.x() + deltaDragging.y();
+
+      if (xySum < 0)
+        _Scale = deltaDragging.manhattanLength() / 5.0;
+      else if (xySum > 0)
+        _Scale = 1.0 / deltaDragging.manhattanLength();
+    }
   }
-  else if ( event->buttons() & Qt::MidButton )
+  else
   {
-    deltaDragging = _initialDraggingPosition - event->pos();
-    int xySum = deltaDragging.x() + deltaDragging.y();
-
-    if (xySum < 0)
-      _Scale = deltaDragging.manhattanLength() / 5.0;
-    else if (xySum > 0)
-      _Scale = 1.0 / deltaDragging.manhattanLength();
+    GLint viewport[4];
+    glGetIntegerv(GL_VIEWPORT,viewport);
+    selectionBox(_initialDraggingPosition.x(), _initialDraggingPosition.y(),
+        _lastDraggingPosition.x(), _lastDraggingPosition.y());
   }
 
   updateGL();
+}
+
+void GLWidget::selectionBox(int sx, int sy, int ex, int ey)
+{
+  // XXX: There has to be a better way to do this
+  // besides display lists.  Probably vertex arrays.
+  // Enough for tonite.  Clean later.
+  if(!_selectionDL)
+  {
+    _selectionDL = glGenLists(1);
+  }
+
+  glPushMatrix();
+  glLoadIdentity();
+  GLdouble projection[16];
+  glGetDoublev(GL_PROJECTION_MATRIX,projection);
+  GLdouble modelview[16];
+  glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
+  GLint viewport[4];
+  glGetIntegerv(GL_VIEWPORT,viewport);
+
+  GLdouble startPos[3];
+  GLdouble endPos[3];
+
+  gluUnProject(float(sx), viewport[3] - float(sy), 0.1, modelview, projection, viewport, &startPos[0], &startPos[1], &startPos[2]);
+  gluUnProject(float(ex), viewport[3] - float(ey), 0.1, modelview, projection, viewport, &endPos[0], &endPos[1], &endPos[2]);
+
+  qDebug("(%f, %f, %f)", endPos[0],endPos[1],endPos[2]);
+
+  glNewList(_selectionDL, GL_COMPILE);
+  glMatrixMode(GL_MODELVIEW);
+  glPushAttrib(GL_ALL_ATTRIB_BITS);
+  glPushMatrix();
+  glLoadIdentity();
+  glDisable(GL_CULL_FACE);
+  glEnable(GL_BLEND);
+  glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  glColor4f(1.0, 1.0, 1.0, 0.2);
+  glBegin(GL_POLYGON);
+  glVertex3f(startPos[0],startPos[1],startPos[2]);
+  glVertex3f(startPos[0],endPos[1],startPos[2]);
+  glVertex3f(endPos[0],endPos[1],startPos[2]);
+  glVertex3f(endPos[0],startPos[1],startPos[2]);
+  glEnd();
+  startPos[2] += 0.0001;
+  glColor4f(1.0, 1.0, 1.0, 1.0);
+  glBegin(GL_LINE_LOOP);
+  glVertex3f(startPos[0],startPos[1],startPos[2]);
+  glVertex3f(startPos[0],endPos[1],startPos[2]);
+  glVertex3f(endPos[0],endPos[1],startPos[2]);
+  glVertex3f(endPos[0],startPos[1],startPos[2]);
+  glEnd();
+  glPopMatrix();
+  glPopAttrib();
+  glEndList();
+
+  glPopMatrix();
+
+}
+
+void GLWidget::pick(int x, int y)
+{
+  GLuint selectBuf[GL_SEL_BUF_SIZE];
+  GLint viewport[4];
+  int hits;
+
+  _hits.clear();
+
+  glSelectBuffer(GL_SEL_BUF_SIZE,selectBuf);
+  glRenderMode(GL_SELECT);
+
+  // Setup our limited viewport for picking.
+  glGetIntegerv(GL_VIEWPORT,viewport);
+  glMatrixMode(GL_PROJECTION);
+  glPushMatrix();
+  glLoadIdentity();
+  gluPickMatrix(x,viewport[3]-y, 5,5,viewport);
+
+  setCamera();
+
+  // Get ready for rendering
+  glMatrixMode(GL_MODELVIEW);
+  glInitNames();
+  render(GL_SELECT);
+
+  // restoring the original projection matrix
+  glPopMatrix();
+  glMatrixMode(GL_PROJECTION);
+  glPopMatrix();
+  glMatrixMode(GL_MODELVIEW);
+  glFlush();
+
+  // returning to normal rendering mode
+  hits = glRenderMode(GL_RENDER);
+
+  // if there are hits process them
+  if (hits != 0)
+    updateHitList(hits,selectBuf);
+}
+
+void GLWidget::updateHitList(GLint hits, GLuint buffer[])
+{
+  unsigned int i, j;
+  GLuint names, *ptr;
+  GLuint minZ, maxZ, name;
+
+//X   printf ("hits = %d\n", hits);
+  ptr = (GLuint *) buffer;
+  for (i = 0; i < hits; i++) {
+    names = *ptr++;
+    minZ = *ptr++;
+    maxZ = *ptr++;
+//X     printf (" number of names for this hit = %d\n", names); ptr++;
+//X     printf("  z1 is %g;", (float) *ptr/0x7fffffff); ptr++;
+//X     printf(" z2 is %g\n", (float) *ptr/0x7fffffff); ptr++;
+//X     printf ("   names are "); 
+    name = 0;
+    for (j = 0; j < names; j++) { /*  for each name */
+      name = *ptr++;
+//X       printf ("%d ", *ptr);
+//X       if (j == 0)  /*  set row and column  */
+//X         ii = *ptr;
+//X       else if (j == 1)
+//X         jj = *ptr;
+//X       ptr++;
+    }
+    if(name)
+    {
+      _hits.append(GLHit(name, minZ, maxZ));
+    }
+//X     printf ("\n");
+  }
+  qSort(_hits);
 }
 
 void GLWidget::startScreenCoordinates() const
