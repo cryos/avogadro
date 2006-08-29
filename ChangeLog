@@ -1,3 +1,9 @@
+2006-08-28  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* src/GLWidget.cpp: Using perspective on 3d views.  There is also
+	now code for picking included.  When you click but don't drag it
+	returns the selected item.  The naming system needs work.
+
 2006-08-28  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* src/GLWidget.cpp: Make sure to enable vertex arrays (for

@@ -100,24 +100,17 @@ void GLWidget::initializeGL()
 void GLWidget::resizeGL(int width, int height)
 {
   printf("Resizing.\n");
-  int side = qMax(width, height);
-  qDebug("(width - side) / 2: %d  (height - side) / 2: %d", (width - side) / 2,(height - side) / 2);
-  glViewport((width - side) / 2, (height - side) / 2, side, side);
-//X   glViewport(0,0,width,height);
+  glViewport(0,0,width,height);
 
 }
 
 void GLWidget::setCamera()
 {
-//X   glViewport((width - side) / 2, (height - side) / 2, side, side);
-//X   glViewport(0, 0, width(), width());
-  glOrtho(-10.0, 10.0, -10.0, 10.0, -30.0, 30.0);
+  // Reset the projection and set our perspective.
+  gluPerspective(35,float(width())/height(),0.1,1000);
 
-//X   // Reset the projection and set our perspective.
-//X   gluPerspective(45,float(width())/height(),0.1,1000);
-//X 
-//X   // pull the camera back 20
-//X   glTranslated ( 0.0, 0.0, -20.0 );
+  // pull the camera back 20
+  glTranslated ( 0.0, 0.0, -20.0 );
 }
 
 void GLWidget::render(GLenum mode)
@@ -191,21 +184,13 @@ void GLWidget::startPicking(int x, int y)
 
   glSelectBuffer(BUFSIZE,selectBuf);
   glRenderMode(GL_SELECT);
-  int side = qMax(width(), height());
-  int xx = (side - width()) + x;
-  int yy = (side - height())  + y;
-  int yy2 = (side - height()) / 2  + y;
-
-  qDebug("side - height(): %d", (side - height()) / 2);
-  glGetIntegerv(GL_VIEWPORT,viewport);
-  qDebug("xx: %d  yy: %d  yy2: %d  x: %d  y: %d  viewport[3]: %d  viewport[3]-yy: %d",xx,yy,yy2,x,y,viewport[3], viewport[3]-yy);
 
   // Setup our limited viewport for picking.
+  glGetIntegerv(GL_VIEWPORT,viewport);
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
   glLoadIdentity();
-
-  gluPickMatrix(xx,viewport[3]-yy, 5,5,viewport);
+  gluPickMatrix(x,viewport[3]-y, 5,5,viewport);
 
   setCamera();
 
