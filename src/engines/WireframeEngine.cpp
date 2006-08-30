@@ -30,33 +30,67 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-void WireframeEngine::render(Atom *atom)
+bool WireframeEngine::render(Atom *a)
 {
-//   std::vector<double> rgb;
-//   rgb = etab.GetRGB(atom->GetAtomicNum());
-//   glPushAttrib(GL_ALL_ATTRIB_BITS);
-//   glBegin(GL_POINTS);
-//   glColor3d(rgb[0], rgb[1], rgb[2]);
-//   glPointSize(etab.GetVdwRad(atom->GetAtomicNum()));
-//   glVertex3d(atom->GetX(), atom->GetY(), atom->GetZ());
-//   glEnd();
-//   glPopAttrib();
+   std::vector<double> rgb;
+   rgb = etab.GetRGB(a->GetAtomicNum());
+   glPushAttrib(GL_ALL_ATTRIB_BITS);
+
+   glPushName(atomTypeName);
+   glPushName(a->GetIdx());
+
+  if (a->isSelected()) {
+    glColor4d( 0.3, 0.6, 1.0, 0.7 );
+    glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 4.0);
+    glBegin(GL_POINTS);
+    glVertex3d(a->GetX(), a->GetY(), a->GetZ());
+    glEnd();
+  }
+  else {
+    glColor3d(rgb[0], rgb[1], rgb[2]);
+    glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 3.0);
+    glBegin(GL_POINTS);
+    glVertex3d(a->GetX(), a->GetY(), a->GetZ());
+    glEnd();
+  }
+
+   glPopName();
+   glPopName();
+   glPopAttrib();
+
+   return true;
 }
 
-void WireframeEngine::render(Bond *b)
+bool WireframeEngine::render(Bond *b)
 {
+  OBAtom *atom1 = static_cast<OBAtom *>( b->GetBgn() );
+  OBAtom *atom2 = static_cast<OBAtom *>( b->GetEnd() );
   std::vector<double> rgb;
+
   glPushAttrib(GL_ALL_ATTRIB_BITS);
   glLineWidth(1.0);
   glBegin(GL_LINES);
-  rgb = etab.GetRGB(b->GetBeginAtom()->GetAtomicNum());
+
+  // hard to separate atoms from bonds in this view
+  // so we let the user always select atoms
+  glPushName( atomTypeName );
+  glPushName( atom1->GetIdx() );
+  rgb = etab.GetRGB(atom1->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
-  glVertex3d(b->GetBeginAtom()->GetX(), b->GetBeginAtom()->GetY(), b->GetBeginAtom()->GetZ());
-  rgb = etab.GetRGB(b->GetEndAtom()->GetAtomicNum());
+  glVertex3d(atom1->GetX(), atom1->GetY(), atom1->GetZ());
+  glPopName();
+
+  glPushName( atom2->GetIdx() );
+  rgb = etab.GetRGB(atom2->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
-  glVertex3d(b->GetEndAtom()->GetX(), b->GetEndAtom()->GetY(), b->GetEndAtom()->GetZ());
+  glVertex3d(atom2->GetX(), atom2->GetY(), atom2->GetZ());
+  glPopName();
+  glPopName();
+
   glEnd();
   glPopAttrib();
+
+  return true;
 }
 
 Q_EXPORT_PLUGIN2(WireframeEngine, WireframeEngineFactory)

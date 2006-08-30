@@ -57,12 +57,10 @@ namespace Avogadro {
 
     // at least for now, try to always do multisample OpenGL (i.e., antialias)
     // graphical improvement is great and many cards do this in hardware
+    // At some point, this should be a preference
     QGLFormat format;
     format.setSampleBuffers(true);
     gl = new GLWidget(format, this);
-
-    MoleculeView *view = new MoleculeView(&molecule, gl);
-    gl->setView(view);
     setCentralWidget(gl);
 
     // add all gl engines to the dropdown
@@ -103,7 +101,7 @@ namespace Avogadro {
         return;
       }
 
-      if (molecule.Empty())
+      if (currentFile.isEmpty())
         loadFile(fileName);
       else {
         MainWindow *other = new MainWindow;
@@ -126,7 +124,7 @@ namespace Avogadro {
         return;
       }
 
-      if (molecule.Empty())
+      if (currentFile.isEmpty())
         loadFile(action->data().toString());
       else {
         MainWindow *other = new MainWindow;
@@ -192,8 +190,9 @@ namespace Avogadro {
   void MainWindow::revert()
   {
     // this currently leaks -- need to free the display list and render, etc.
-    molecule.Clear();
-    loadFile(currentFile);
+    if (!currentFile.isEmpty()) {
+      loadFile(currentFile);
+    }
   }
 
   void MainWindow::documentWasModified()
@@ -412,16 +411,15 @@ namespace Avogadro {
       return false;
     }
 
-    molecule.Clear();
-    if (conv.Read(&molecule, &ifs) && molecule.NumAtoms() != 0)
+    Molecule *molecule = new Molecule;
+    if (conv.Read(molecule, &ifs) && molecule->NumAtoms() != 0)
       {
         QString status;
-        cout << "Atoms: " << molecule.NumAtoms() <<
-          " Bonds: " << molecule.NumBonds();
-        QTextStream(&status) << "Atoms: " << molecule.NumAtoms() <<
-          " Bonds: " << molecule.NumBonds();
+        QTextStream(&status) << "Atoms: " << molecule->NumAtoms() <<
+          " Bonds: " << molecule->NumBonds();
         statusBar()->showMessage(status, 5000);
 
+        gl->setMolecule(molecule);
         gl->updateGL();
         QApplication::restoreOverrideCursor();
       }
@@ -467,7 +465,8 @@ namespace Avogadro {
       return false;
     }
 
-    if (conv.Write(&molecule, &ofs))
+    OBMol *molecule = dynamic_cast<OBMol*>(gl->getMolecule());
+    if (conv.Write(molecule, &ofs))
       statusBar()->showMessage("Save succeeded.", 5000);
     else
       statusBar()->showMessage("Saving molecular file failed.", 5000);

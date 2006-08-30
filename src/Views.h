@@ -83,6 +83,20 @@ namespace Avogadro {
       virtual void render();
   };
 
+  class ResidueView : public View
+  {
+    Q_OBJECT
+
+    public:
+  ResidueView(Residue *r, QObject *parent) : View(parent), object(r) {}
+
+    protected:
+      Residue *object;
+
+    public slots:
+      virtual void render();
+  };
+
   class MoleculeView : public View
   {
     Q_OBJECT
@@ -93,6 +107,13 @@ namespace Avogadro {
     public slots:
       void addAtom(Atom *a);
       void addBond(Bond *b);
+
+      virtual void render();
+
+  protected:
+      Molecule *object;
+
+      void setupSubViews();
   };
 
 } // namespace Avogadro

@@ -46,6 +46,9 @@ void GLWidget::init()
 {
   _selectionDL = 0;
   loadGLEngines();
+
+  molecule = NULL;
+  view = new View(this); // nothing to include here
 }
 
 void GLWidget::initializeGL()
@@ -70,7 +73,8 @@ void GLWidget::initializeGL()
   glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 
   // Used to display semi-transparent relection rectangle
-  glBlendFunc(GL_ONE, GL_ONE);
+  //  glBlendFunc(GL_ONE, GL_ONE);
+  glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
   glEnable( GL_NORMALIZE );
   glEnable( GL_LIGHTING );
@@ -156,32 +160,8 @@ void GLWidget::paintGL()
   render(GL_RENDER);
 }
 
-void GLWidget::addDisplayList(GLuint dl)
-{
-  _displayLists.push_back(dl);
-  updateGL();
-}
-
-void GLWidget::deleteDisplayList(GLuint dl)
-{
-  std::vector<GLuint>::iterator i;
-  for (i = _displayLists.begin(); i != _displayLists.end(); i++)
-    if (*i == dl)
-      _displayLists.erase(i);
-}
-
 void GLWidget::mousePressEvent( QMouseEvent * event )
 {
-  //   if ( event->buttons() & Qt::LeftButton ) {
-  //     _leftButtonPressed = true;
-  //   }
-  //   else if ( event->buttons() & Qt::RightButton ) {
-  //     _rightButtonPressed = true;
-  //   }
-  //   else if ( event->buttons() & Qt::MidButton ) {
-  //     _midButtonPressed = true;
-  //   }
-
   // See if this click has hit any in our molecule
   pick(event->pos().x(), event->pos().y());
 
@@ -200,16 +180,6 @@ void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   }
 
   updateGL();
-
-  //   if( !( event->buttons() & Qt::LeftButton ) ) {
-  //       _leftButtonPressed = false;
-  //   }
-  //   else if ( !( event->buttons() & Qt::RightButton ) ) {
-  //     _rightButtonPressed = false;
-  //   }
-  //   else if ( !( event->buttons() & Qt::MidButton ) ) {
-  //     _midButtonPressed = false;
-  //   }
 }
 
 void GLWidget::mouseMoveEvent( QMouseEvent * event )
@@ -385,38 +355,31 @@ void GLWidget::updateHitList(GLint hits, GLuint buffer[])
 //X         jj = *ptr;
 //X       ptr++;
     }
-    if(name)
+    if (name)
     {
       _hits.append(GLHit(name, minZ, maxZ));
+      dynamic_cast<Atom*>(molecule->GetAtom(name))->toggleSelected();
     }
 //X     printf ("\n");
   }
   qSort(_hits);
 }
 
-void GLWidget::startScreenCoordinates() const
-{
-  glMatrixMode(GL_PROJECTION);
-  glPushMatrix();
-  glLoadIdentity();
-  glOrtho(0, width(), height(), 0, 0.0, -1.0);
-  glMatrixMode(GL_MODELVIEW);
-  glPushMatrix();
-  glLoadIdentity();
-}
-
-void GLWidget::stopScreenCoordinates() const
-{
-  glMatrixMode(GL_PROJECTION);
-  glPopMatrix();
-
-  glMatrixMode(GL_MODELVIEW);
-  glPopMatrix();
-}
-
 void GLWidget::setView(View *v)
 {
   view = v;
+}
+
+void GLWidget::setMolecule(Molecule *m)
+{
+  if (molecule)
+    delete molecule;
+
+  molecule = m;
+
+  if (view)
+    delete view;
+  view = new MoleculeView(molecule, this);
 }
 
 void GLWidget::setDefaultGLEngine(int i) 

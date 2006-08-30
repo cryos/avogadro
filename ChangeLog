@@ -1,3 +1,27 @@
+2006-08-30  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/MainWindow.h, src/MainWindow.cpp, src/GLWidget.h,
+	src/GLWidget.cpp: Move molecule storage (for now) to the GL widget
+	to allow atom selection.
+
+	* src/Primitives.h: Add marker to indicate that a particular
+	object was selected by the user.
+
+	* src/Views.h, src/Views.cpp: Add support for ResidueView, as well
+	as whole-molecule rendering.
+
+	* src/engines/ResidueSphereEngine.*: New render engine drawing
+	spheres for residues in PDB files. Illustrates whole molecule
+	render option.
+
+	* src/GLEngine.h: Add glSelection enum for glPushName() entries to
+	deliniate between molecule, atom, bond, residue,
+	etc. picking. Render engines are responsible for using these as
+	appropriate for a particular user view.
+
+	* src/engines/*: Update for glPushName() for atoms and hilights
+	when an atom is selected.
+
 2006-08-29  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* src/GLWidget.cpp: Initial group selection code.  Needs work

@@ -38,36 +38,52 @@ namespace Avogadro {
    * 
    */
 
-  class Primitive : public QObject
+ class Primitive : public QObject
   {
-    Q_OBJECT
-
-      // XXX We'll need this eventually i'm sure.
-  };
-
-  class Residue : public Primitive, public OpenBabel::OBResidue
-  {
-    Q_OBJECT
-  };
-
-  class Atom : public Primitive, public OpenBabel::OBAtom
-  {
-    Q_OBJECT
-  };
-
-  class Bond : public Primitive, public OpenBabel::OBBond
-  {
-    Q_OBJECT
-  };
-
-  class Molecule : public Primitive, public OpenBabel::OBMol
-  {
-    Q_OBJECT
-
+  Q_OBJECT
+    
     public:
+  Primitive() : _selected(false) {}
+    
+    bool isSelected() { return _selected;}
+    void setSelected(bool s) { _selected = s;}
+    void toggleSelected() { _selected = !_selected;}
+    
+  protected:
+    bool _selected;    
+  };
+
+ class Residue : public Primitive, public OpenBabel::OBResidue
+    {
+    Q_OBJECT
+
+      public:
+    Residue() : Primitive() {}
+    };
+
+ class Atom : public Primitive, public OpenBabel::OBAtom
+    {
+    Q_OBJECT
+
+      public:
+    Atom() : Primitive() {}
+    };
+
+ class Bond : public Primitive, public OpenBabel::OBBond
+    {
+    Q_OBJECT
+
+      public:
+    Bond(): Primitive() {}
+    };
+
+ class Molecule : public Primitive, public OpenBabel::OBMol
+    {
+    Q_OBJECT
+
+      public:
+    Molecule() : Primitive() {}
       void render();
-//X       void setWindow(MainWindow *w) { window = w; }
-//X       MainWindow *getWindow() { return window; }
 
     protected:
       Atom * CreateAtom();
@@ -77,10 +93,10 @@ namespace Avogadro {
       std::vector< Atom * > 	_vatom;
       std::vector< Bond * > 	_vbond;
 
-signals:
+    signals:
       void atomAdded(Atom *atom);
       void bondAdded(Bond *bond);
-  };
+    };
 
 } // namespace Avogadro
 

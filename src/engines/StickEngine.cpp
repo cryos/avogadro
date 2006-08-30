@@ -30,7 +30,7 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-void StickEngine::render(Atom *atom)
+bool StickEngine::render(Atom *a)
 {
   if (!m_sphere.isValid())
     m_sphere.setup(2);
@@ -40,19 +40,34 @@ void StickEngine::render(Atom *atom)
 
   //  Color(atom).applyAsMaterials();
   std::vector<double> rgb;
-  rgb = etab.GetRGB(atom->GetAtomicNum());
+  rgb = etab.GetRGB(a->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
 
-  m_sphere.draw(atom->GetVector(), 0.3);
+  glPushName(atomTypeName);
+  glPushName(a->GetIdx());
+  m_sphere.draw(a->GetVector(), 0.3);
+
+  if (a->isSelected())
+    {
+      glColor4d( 0.3, 0.6, 1.0, 0.7 );
+      glEnable( GL_BLEND );
+      m_sphere.draw(a->GetVector(), 0.18 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
+      glDisable( GL_BLEND );
+    }
+
+  glPopName();
+  glPopName();
   glEnable( GL_NORMALIZE );
   glDisable( GL_RESCALE_NORMAL );
+
+  return true;
 }
 
-void StickEngine::render(Bond *b)
+bool StickEngine::render(Bond *b)
 {
   // cout << "Render Bond..." << endl;
   if (!m_cylinder.isValid())
-    m_cylinder.setup(6);
+    m_cylinder.setup(12);
 
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
@@ -68,17 +83,26 @@ void StickEngine::render(Bond *b)
   double radius = 0.3;
   int order = 1;
 
-  glLoadName( atom1->GetIdx() );
+  // hard to separate atoms from bonds in this view
+  // so we let the user always select atoms
+  glPushName( atomTypeName );
+  glPushName( atom1->GetIdx() );
   rgb = etab.GetRGB(atom1->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
   m_cylinder.draw( v1, v3, radius, order, 0.0);
-  glLoadName( atom2->GetIdx() );
+  glPopName();
+
+  glPushName( atom2->GetIdx() );
   rgb = etab.GetRGB(atom2->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
   m_cylinder.draw( v2, v3, radius, order, 0.0);
+  glPopName();
+  glPopName();
 
   glEnable( GL_NORMALIZE );
   glDisable( GL_RESCALE_NORMAL );
+
+  return true;
 }
 
 Q_EXPORT_PLUGIN2(StickEngine, StickEngineFactory)

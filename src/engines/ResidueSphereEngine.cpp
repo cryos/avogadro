@@ -1,5 +1,5 @@
 /**********************************************************************
-  SphereEngine - Engine for van der Waals sphere display
+  ResidueSphereEngine - Engine for "balls and sticks" display
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "SphereEngine.h"
+#include "ResidueSphereEngine.h"
 #include "Primitives.h"
 #include <openbabel/obiter.h>
 
@@ -30,38 +30,41 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-bool SphereEngine::render(Atom *a)
+bool ResidueSphereEngine::render(Molecule *m)
 {
+  if (m->NumResidues() == 0)
+    return false;
+
   if (!m_sphere.isValid())
-    m_sphere.setup(4);
-  
+    m_sphere.setup(3);
+
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
+  glColor3d(0.7, 0.1, 0.1);
+  glPushName(residueTypeName);
 
-  //  Color(atom).applyAsMaterials();
-  std::vector<double> rgb;
-  rgb = etab.GetRGB(a->GetAtomicNum());
-  glColor3d(rgb[0], rgb[1], rgb[2]);
+  vector3 midpoint;
 
-  glPushName(atomTypeName);
-  glPushName(a->GetIdx());
-  m_sphere.draw(a->GetVector(), etab.GetVdwRad(a->GetAtomicNum()));
-
-  if (a->isSelected())
+  vector<OpenBabel::OBResidue*>::iterator i;
+  for(OBResidue *r = m->BeginResidue(i); r; r = m->NextResidue(i))
     {
-      glColor4d( 0.3, 0.6, 1.0, 0.7 );
-      glEnable( GL_BLEND );
-      m_sphere.draw(a->GetVector(), 0.18 + etab.GetVdwRad(a->GetAtomicNum()));
-      glDisable( GL_BLEND );
+      midpoint.Set(0.0, 0.0, 0.0);
+      
+      vector<OpenBabel::OBAtom*>::iterator j;
+      for(OBAtom *a = r->BeginAtom(j); a; a = r->NextAtom(j))
+        midpoint += a->GetVector();
+      
+      midpoint /= r->GetNumAtoms();
+      glPushName(r->GetIdx());
+      m_sphere.draw(midpoint, 2.0);
+      glPopName();
     }
 
   glPopName();
-  glPopName();
-
   glEnable( GL_NORMALIZE );
   glDisable( GL_RESCALE_NORMAL );
 
   return true;
 }
 
-Q_EXPORT_PLUGIN2(SphereEngine, SphereEngineFactory)
+Q_EXPORT_PLUGIN2(ResidueSphereEngine, ResidueSphereEngineFactory)

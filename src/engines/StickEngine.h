@@ -56,8 +56,8 @@ namespace Avogadro {
 
       //! \name Render Methods
       //@{
-      void render(Atom *a);
-      void render(Bond *b);
+      bool render(Atom *a);
+      bool render(Bond *b);
       //@}
 
     private:

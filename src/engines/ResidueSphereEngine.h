@@ -1,5 +1,5 @@
 /**********************************************************************
-  BSEngine - Engine for "balls and sticks" display
+  ResidueSphereEngine - Engine for "balls" for each residue
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -36,45 +36,41 @@
 namespace Avogadro {
 
   //! Ball and Stick Engine class.
-  class BSEngine : public QObject, public GLEngine
+  class ResidueSphereEngine : public QObject, public GLEngine
   {
     Q_OBJECT
 
     public:
       //! Constructor
-  BSEngine() : GLEngine() {}
+  ResidueSphereEngine() : GLEngine() {}
       //! Deconstructor
-      ~BSEngine() {}
+      ~ResidueSphereEngine() {}
 
       //! \name Description methods
       //@{
-      //! Engine Name; "BSEngine"
-      QString name() { return(QString(tr("BSEngine"))); }
+      //! Engine Name; "ResidueSphereEngine"
+      QString name() { return(QString(tr("ResidueSphereEngine"))); }
       //! Return Engine description; "Ball and Stick"
-      QString description() { return(QString(tr("Ball and Stick"))); }
+      QString description() { return(QString(tr("Residue Spheres"))); }
       //@}
 
       //! \name Render Methods
       //@{
-      //! Render an Atom.
-      bool render(Atom *a);
-      //! Render a Bond.
-      bool render(Bond *b);
+      bool render(Molecule *m);
       //@}
 
     private:
       Sphere m_sphere;
-      Cylinder m_cylinder;
   };
 
-  //! Generates instances of our BSEngine class
-  class BSEngineFactory : public QObject, public GLEngineFactory
+  //! Generates instances of our ResidueSphereEngine class
+  class ResidueSphereEngineFactory : public QObject, public GLEngineFactory
   {
     Q_OBJECT
       Q_INTERFACES(Avogadro::GLEngineFactory)
 
     public:
-      GLEngine *createInstance() { return new BSEngine(); }
+      GLEngine *createInstance() { return new ResidueSphereEngine(); }
   };
 
 } // end namespace Avogadro

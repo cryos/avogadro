@@ -45,8 +45,8 @@ class SphereEngine : public QObject, public GLEngine
 
     QString name() { return(QString(tr("SphereEngine"))); }
     QString description() { return(QString(tr("Spheres"))); }
-    void render(Atom *a);
-    void render(Bond *b);
+
+    bool render(Atom *a);
 
   private:
     //! Vertex array for a sphere (used for atoms)

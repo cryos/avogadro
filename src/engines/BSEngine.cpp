@@ -30,26 +30,41 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-void BSEngine::render(Atom *atom)
+bool BSEngine::render(Atom *a)
 {
-  // cout << "Render Atom..." << endl;
   if (!m_sphere.isValid())
     m_sphere.setup(3);
 
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
 
-  //  Color(atom).applyAsMaterials();
+  glPushName(atomTypeName);
+  glPushName(a->GetIdx());
+  //  Color(a).applyAsMaterials();
   std::vector<double> rgb;
-  rgb = etab.GetRGB(atom->GetAtomicNum());
+  rgb = etab.GetRGB(a->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
 
-  m_sphere.draw(atom->GetVector(), etab.GetVdwRad(atom->GetAtomicNum()) * 0.3);
+  m_sphere.draw(a->GetVector(), etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
+
+  if (a->isSelected())
+    {
+      glColor4d( 0.3, 0.6, 1.0, 0.7 );
+      glEnable( GL_BLEND );
+      m_sphere.draw(a->GetVector(), 0.18 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
+      glDisable( GL_BLEND );
+    }
+
+  glPopName();
+  glPopName();
+
   glEnable( GL_NORMALIZE );
   glDisable( GL_RESCALE_NORMAL );
+
+  return true;
 }
 
-void BSEngine::render(Bond *b)
+bool BSEngine::render(Bond *b)
 {
   // cout << "Render Bond..." << endl;
   if (!m_cylinder.isValid())
@@ -70,17 +85,23 @@ void BSEngine::render(Bond *b)
   double shift = 0.15;
   int order = b->GetBO();
 
-  glLoadName( atom1->GetIdx() );
+  // for now, just allow selecting atoms
+  //  glPushName(bondTypeName);
+  //  glPushName(b->GetIdx());
   rgb = etab.GetRGB(atom1->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
   m_cylinder.draw( v1, v3, radius, order, shift);
-  glLoadName( atom2->GetIdx() );
+
   rgb = etab.GetRGB(atom2->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
   m_cylinder.draw( v2, v3, radius, order, shift);
+  //  glPopName();
+  //  glPopName();
 
   glEnable( GL_NORMALIZE );
   glDisable( GL_RESCALE_NORMAL );
+
+  return true;
 }
 
 Q_EXPORT_PLUGIN2(BSEngine, BSEngineFactory)

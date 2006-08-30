@@ -44,8 +44,8 @@ class WireframeEngine : public QObject, public GLEngine
 
     QString name() { return(QString(tr("WireframeEngine"))); }
     QString description() { return(QString(tr("Wireframe"))); }
-    void render(Atom *a);
-    void render(Bond *b);
+    bool render(Atom *a);
+    bool render(Bond *b);
 };
 
 class WireframeEngineFactory : public QObject, public GLEngineFactory

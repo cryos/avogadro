@@ -54,17 +54,17 @@ namespace Avogadro {
       GLWidget(QWidget *parent = 0);
       GLWidget(const QGLFormat &format, QWidget *parent = 0);
 
-      void addDisplayList(GLuint dl);
-      void deleteDisplayList(GLuint dl);
-
-      // TODO: this should probably get moved to the constructor (one view per GLWidget)
       void setView(View *v);
+      View* getView() { return view; }
 
       GLEngine *getDefaultGLEngine() { return defaultGLEngine; }
       QList<GLEngine *> getGLEngines() { return glEngines; }
 
       void setClearColor(const QColor &c) { _clearColor = c; qglClearColor(c);}
       QColor getClearColor() const { return _clearColor;}
+
+      void setMolecule(Molecule *m);
+      Molecule* getMolecule() { return molecule; }
 
     public slots:
       void setDefaultGLEngine(int i);
@@ -103,9 +103,7 @@ namespace Avogadro {
       GLEngine *defaultGLEngine;
       QList<GLEngine *> glEngines;
 
-      void startScreenCoordinates() const;
-      void stopScreenCoordinates() const;
-
+      Molecule *molecule;
       View *view;
       std::vector<GLuint> _displayLists;
 

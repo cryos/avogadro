@@ -29,6 +29,11 @@
 
 namespace Avogadro {
 
+  //! 
+  enum glSelection { moleculeTypeName, atomTypeName, bondTypeName, 
+                     residueTypeName, surfaceTypeName, planeTypeName,
+                     gridTypeName, otherTypeName };
+
   //! Base class for our GL engines
  class GLEngine
   {
@@ -50,19 +55,23 @@ namespace Avogadro {
       /*!
         Engine developers need not implement this function.  It is left here as
         a precautionary measure in the case we try to render a subclass of
-        Primative we have not yet declared.
+        Primitive we have not yet declared.
         */
-      virtual void render(Primitive *) {}
+      virtual bool render(Primitive *) { return false; }
       /*! Render a Molecule object
-        (all at once, rather than each individual atom or bond)
+
+        Render an entire molecule all at once, rather than a specific atom
+        or bond. Note that while this may provide for optimization,
+        additional glue code may be needed to be sure glPushName is used 
+        properly.
       */
-      virtual void render(Molecule *) {}
+      virtual bool render(Molecule *)  { return false; }
       //! Render an Atom object.
-      virtual void render(Atom *) {}
+      virtual bool render(Atom *)      { return false;}
       //! Render a Bond object.
-      virtual void render(Bond *) {}
+      virtual bool render(Bond *)      { return false; }
       //! Render a Residue object.
-      virtual void render(Residue *) {}
+      virtual bool render(Residue *)   { return false;}
       //@}
   };
 

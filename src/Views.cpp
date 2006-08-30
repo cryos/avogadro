@@ -93,9 +93,7 @@ void AtomView::render()
   }
   else
   {
-    glPushName(object->GetIdx());
     engine->render(object);
-    glPopName();
   }
 }
 
@@ -113,20 +111,23 @@ void BondView::render()
   }
 }
 
-MoleculeView::MoleculeView(Molecule *m, QObject *parent) : View(m, parent)
+void ResidueView::render()
 {
-  vector<OpenBabel::OBNodeBase*>::iterator i;
-
-  for(Atom *atom = (Atom*)m->BeginAtom(i); atom; atom = (Atom*)m->NextAtom(i))
+  View::render();
+  GLEngine *engine = getGLEngine();
+  if(!engine)
   {
-    addAtom(atom);
+    cout << "No Default Rendering Engine Set\n" << endl;
   }
-
-  vector<OpenBabel::OBEdgeBase*>::iterator j;
-  for(Bond *bond = (Bond*)m->BeginBond(j); bond; bond = (Bond*)m->NextBond(j))
+  else
   {
-    addBond(bond);
+    engine->render(object);
   }
+}
+
+MoleculeView::MoleculeView(Molecule *m, QObject *parent) : 
+  View(m, parent), object(m)
+{
 
   QObject::connect(m,SIGNAL(atomAdded(Atom*)), this, SLOT(addAtom(Atom*)));
   QObject::connect(m,SIGNAL(bondAdded(Bond*)), this, SLOT(addBond(Bond*)));
@@ -141,4 +142,41 @@ void MoleculeView::addAtom(Atom *a)
 void MoleculeView::addBond(Bond *b)
 {
   addSubView(new BondView(b, this));
+}
+
+void MoleculeView::setupSubViews()
+{
+  if (subViews.size())
+    return;
+
+  vector<OpenBabel::OBNodeBase*>::iterator i;  
+  for(Atom *atom = (Atom*)object->BeginAtom(i); atom; atom = (Atom*)object->NextAtom(i))
+    {
+      addAtom(atom);
+    }
+  
+  vector<OpenBabel::OBEdgeBase*>::iterator j;
+  for(Bond *bond = (Bond*)object->BeginBond(j); bond; bond = (Bond*)object->NextBond(j))
+    {
+      addBond(bond);
+    }
+}
+
+void MoleculeView::render()
+{
+  GLEngine *engine = getGLEngine();
+  if(!engine)
+  {
+    cout << "No Default Rendering Engine Set\n" << endl;
+  }
+  else
+  {
+    bool success = false;
+    success = engine->render(object);
+
+    if (!success) {
+      setupSubViews();
+      View::render();
+    }
+  }
 }

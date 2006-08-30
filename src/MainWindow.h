@@ -44,8 +44,6 @@ namespace Avogadro {
       bool loadFile(const QString &fileName);
       bool saveFile(const QString &fileName);
 
-      Molecule *getMolecule() { return(&molecule); }
-
     protected:
       void closeEvent(QCloseEvent *event);
 
@@ -68,7 +66,6 @@ namespace Avogadro {
 
     private:
       GLWidget  *gl;
-      Molecule molecule;
       QString    currentFile;
       bool       isModified;
       QUndoStack *undo;
