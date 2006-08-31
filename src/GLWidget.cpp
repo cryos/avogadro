@@ -163,7 +163,8 @@ void GLWidget::paintGL()
 void GLWidget::mousePressEvent( QMouseEvent * event )
 {
   // See if this click has hit any in our molecule
-  pick(event->pos().x(), event->pos().y());
+  // Offset by 2 because we want the cursor to be in the middle of the region.
+  selectRegion(event->pos().x()-2, event->pos().y()-2, 5, 5);
 
   _movedSinceButtonPressed = false;
   _lastDraggingPosition = event->pos ();
@@ -186,6 +187,28 @@ void GLWidget::mouseReleaseEvent( QMouseEvent * event )
       {
         ((Atom *)molecule->GetAtom(_hits[i].name))->toggleSelected();
         break;
+      }
+    }
+  }
+  else if(_movedSinceButtonPressed && !_hits.size())
+  {
+    int sx = qMin(_initialDraggingPosition.x(), _lastDraggingPosition.x());
+    int ex = qMax(_initialDraggingPosition.x(), _lastDraggingPosition.x());
+    int sy = qMin(_initialDraggingPosition.y(), _lastDraggingPosition.y());
+    int ey = qMax(_initialDraggingPosition.y(), _lastDraggingPosition.y());
+    qDebug("(%d, %d)", _initialDraggingPosition.x(),_initialDraggingPosition.y());
+    qDebug("(%d, %d)", _lastDraggingPosition.x(),_lastDraggingPosition.y());
+    qDebug("(%d, %d)", sx, sy);
+    qDebug("(%d, %d)", ex, ey);
+    int w = ex-sx;
+    int h = ey-sy;
+    // (sx, sy) = Upper left most position.
+    // (ex, ey) = Bottom right most position.
+    selectRegion(sx, sy, w, h);
+    for(int i=0; i < _hits.size(); i++) {
+      if(_hits[i].type == atomType)
+      {
+        ((Atom *)molecule->GetAtom(_hits[i].name))->toggleSelected();
       }
     }
   }
@@ -300,11 +323,14 @@ void GLWidget::selectionBox(int sx, int sy, int ex, int ey)
 
 }
 
-void GLWidget::pick(int x, int y)
+void GLWidget::selectRegion(int x, int y, int w, int h)
 {
   GLuint selectBuf[GL_SEL_BUF_SIZE];
   GLint viewport[4];
   int hits;
+
+  int cx = w/2 + x;
+  int cy = h/2 + y;
 
   _hits.clear();
 
@@ -316,7 +342,7 @@ void GLWidget::pick(int x, int y)
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
   glLoadIdentity();
-  gluPickMatrix(x,viewport[3]-y, 5,5,viewport);
+  gluPickMatrix(cx,viewport[3]-cy, w, h,viewport);
 
   setCamera();
 
@@ -352,10 +378,10 @@ void GLWidget::updateHitList(GLint hits, GLuint buffer[])
     names = *ptr++;
     minZ = *ptr++;
     maxZ = *ptr++;
-    printf (" number of names for this hit = %d\n", names); names;
-    printf("  z1 is %g;", (float) *ptr/0x7fffffff); minZ;
-    printf(" z2 is %g\n", (float) *ptr/0x7fffffff); maxZ;
-    printf ("   names are "); 
+//X     printf (" number of names for this hit = %d\n", names); names;
+//X     printf("  z1 is %g;", (float) *ptr/0x7fffffff); minZ;
+//X     printf(" z2 is %g\n", (float) *ptr/0x7fffffff); maxZ;
+//X     printf ("   names are "); 
     name = 0;
     for (j = 0; j < names/2; j++) { /*  for each name */
       type = *ptr++;

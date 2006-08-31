@@ -86,7 +86,10 @@ namespace Avogadro {
       void setCamera();
       void render(GLenum mode);
 
-      void pick(int x, int y);
+      //! \brief Select a region of the widget.
+      //! (x,y) top left coordinate of region.
+      //! (w,h) width and heigh of region.
+      void selectRegion(int x, int y, int w, int h);
 
       //! Draw a selection box.
       void selectionBox(int sx, int sy, int ex, int ey);

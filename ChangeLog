@@ -1,3 +1,7 @@
+2006-08-31  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* src/GLWidget.cpp: Added group selection.  see GLWidget::selectRegion()
+
 2006-08-30  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* src/Primitives.h: moved the glnametypeing enum to here as
