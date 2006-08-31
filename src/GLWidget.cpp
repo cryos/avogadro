@@ -148,7 +148,7 @@ void GLWidget::render(GLenum mode)
 
 void GLWidget::paintGL()
 { 
-  printf("Painting.\n");
+//X   printf("Painting.\n");
 
   // Reset the projection
   glMatrixMode(GL_PROJECTION);
@@ -177,6 +177,17 @@ void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   {
     glNewList(_selectionDL, GL_COMPILE);
     glEndList();
+  }
+
+  if(!_movedSinceButtonPressed && _hits.size())
+  {
+    for(int i=0; i < _hits.size(); i++) {
+      if(_hits[i].type == atomType)
+      {
+        ((Atom *)molecule->GetAtom(_hits[i].name))->toggleSelected();
+        break;
+      }
+    }
   }
 
   updateGL();
@@ -332,7 +343,7 @@ void GLWidget::pick(int x, int y)
 void GLWidget::updateHitList(GLint hits, GLuint buffer[])
 {
   unsigned int i, j;
-  GLuint names, *ptr;
+  GLuint names, type, *ptr;
   GLuint minZ, maxZ, name;
 
 //X   printf ("hits = %d\n", hits);
@@ -341,14 +352,15 @@ void GLWidget::updateHitList(GLint hits, GLuint buffer[])
     names = *ptr++;
     minZ = *ptr++;
     maxZ = *ptr++;
-//X     printf (" number of names for this hit = %d\n", names); ptr++;
-//X     printf("  z1 is %g;", (float) *ptr/0x7fffffff); ptr++;
-//X     printf(" z2 is %g\n", (float) *ptr/0x7fffffff); ptr++;
-//X     printf ("   names are "); 
+    printf (" number of names for this hit = %d\n", names); names;
+    printf("  z1 is %g;", (float) *ptr/0x7fffffff); minZ;
+    printf(" z2 is %g\n", (float) *ptr/0x7fffffff); maxZ;
+    printf ("   names are "); 
     name = 0;
-    for (j = 0; j < names; j++) { /*  for each name */
+    for (j = 0; j < names/2; j++) { /*  for each name */
+      type = *ptr++;
       name = *ptr++;
-//X       printf ("%d ", *ptr);
+      printf ("%d(%d)", name,type);
 //X       if (j == 0)  /*  set row and column  */
 //X         ii = *ptr;
 //X       else if (j == 1)
@@ -357,8 +369,7 @@ void GLWidget::updateHitList(GLint hits, GLuint buffer[])
     }
     if (name)
     {
-      _hits.append(GLHit(name, minZ, maxZ));
-      dynamic_cast<Atom*>(molecule->GetAtom(name))->toggleSelected();
+      _hits.append(GLHit(name, type, minZ, maxZ));
     }
 //X     printf ("\n");
   }
@@ -379,6 +390,7 @@ void GLWidget::setMolecule(Molecule *m)
 
   if (view)
     delete view;
+
   view = new MoleculeView(molecule, this);
 }
 

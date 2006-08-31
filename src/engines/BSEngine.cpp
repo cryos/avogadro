@@ -38,7 +38,7 @@ bool BSEngine::render(Atom *a)
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
 
-  glPushName(atomTypeName);
+  glPushName(atomType);
   glPushName(a->GetIdx());
   //  Color(a).applyAsMaterials();
   std::vector<double> rgb;
@@ -86,7 +86,7 @@ bool BSEngine::render(Bond *b)
   int order = b->GetBO();
 
   // for now, just allow selecting atoms
-  //  glPushName(bondTypeName);
+  //  glPushName(bondType);
   //  glPushName(b->GetIdx());
   rgb = etab.GetRGB(atom1->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
@@ -97,6 +97,79 @@ bool BSEngine::render(Bond *b)
   m_cylinder.draw( v2, v3, radius, order, shift);
   //  glPopName();
   //  glPopName();
+
+  glEnable( GL_NORMALIZE );
+  glDisable( GL_RESCALE_NORMAL );
+
+  return true;
+}
+
+bool BSEngine::render(Molecule *m)
+{
+  // Disabled
+  return false;
+
+  if (!m_sphere.isValid())
+    m_sphere.setup(6);
+
+  glDisable( GL_NORMALIZE );
+  glEnable( GL_RESCALE_NORMAL );
+
+  vector<OpenBabel::OBNodeBase*>::iterator i;
+  for(Atom *a = (Atom *)m->BeginAtom(i); a; a = (Atom *)m->NextAtom(i))
+  {
+    glPushName(atomType);
+    glPushName(a->GetIdx());
+    //  Color(a).applyAsMaterials();
+    std::vector<double> rgb;
+    rgb = etab.GetRGB(a->GetAtomicNum());
+    glColor3d(rgb[0], rgb[1], rgb[2]);
+
+    m_sphere.draw(a->GetVector(), etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
+
+    if (a->isSelected())
+      {
+        glColor4d( 0.3, 0.6, 1.0, 0.7 );
+        glEnable( GL_BLEND );
+        m_sphere.draw(a->GetVector(), 0.18 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
+        glDisable( GL_BLEND );
+      }
+
+    glPopName();
+    glPopName();
+  }
+
+  if (!m_cylinder.isValid())
+    m_cylinder.setup(6);
+
+  vector<OpenBabel::OBEdgeBase*>::iterator j;
+  for(OBBond *b = m->BeginBond(j); b; b = m->NextBond(j))
+  {
+    OBAtom *atom1 = static_cast<OBAtom *>( b->GetBgn() );
+    OBAtom *atom2 = static_cast<OBAtom *>( b->GetEnd() );
+    
+    vector3 v1 = atom1->GetVector();
+    vector3 v2 = atom2->GetVector();
+    vector3 v3 = ( v1 + v2 ) / 2;
+    std::vector<double> rgb;
+
+    double radius = 0.1;
+    double shift = 0.15;
+    int order = b->GetBO();
+
+    // for now, just allow selecting atoms
+    //  glPushName(bondType);
+    //  glPushName(b->GetIdx());
+    rgb = etab.GetRGB(atom1->GetAtomicNum());
+    glColor3d(rgb[0], rgb[1], rgb[2]);
+    m_cylinder.draw( v1, v3, radius, order, shift);
+
+    rgb = etab.GetRGB(atom2->GetAtomicNum());
+    glColor3d(rgb[0], rgb[1], rgb[2]);
+    m_cylinder.draw( v2, v3, radius, order, shift);
+    //  glPopName();
+    //  glPopName();
+  }
 
   glEnable( GL_NORMALIZE );
   glDisable( GL_RESCALE_NORMAL );

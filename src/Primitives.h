@@ -32,6 +32,11 @@ namespace Avogadro {
 
   class MainWindow;
 
+  //! 
+  enum primativeType { moleculeType, atomType, bondType, 
+                     residueType, surfaceType, planeType,
+                     gridType, otherType };
+
   /*
    * Primitive 
    * Used to define signals that all our primatives share.
@@ -40,26 +45,18 @@ namespace Avogadro {
 
  class Primitive : public QObject
   {
-  Q_OBJECT
-    
-    public:
-  Primitive() : _selected(false) {}
-    
-    bool isSelected() { return _selected;}
-    void setSelected(bool s) { _selected = s;}
-    void toggleSelected() { _selected = !_selected;}
-    
-  protected:
-    bool _selected;    
-  };
-
- class Residue : public Primitive, public OpenBabel::OBResidue
-    {
     Q_OBJECT
 
-      public:
-    Residue() : Primitive() {}
-    };
+    public:
+      Primitive() : _selected(false) {}
+
+      bool isSelected() { return _selected;}
+      void setSelected(bool s) { _selected = s;}
+      void toggleSelected() { _selected = !_selected;}
+
+    protected:
+      bool _selected;    
+  };
 
  class Atom : public Primitive, public OpenBabel::OBAtom
     {
@@ -77,6 +74,14 @@ namespace Avogadro {
     Bond(): Primitive() {}
     };
 
+ class Residue : public Primitive, public OpenBabel::OBResidue
+    {
+    Q_OBJECT
+
+      public:
+    Residue(): Primitive() {}
+    };
+
  class Molecule : public Primitive, public OpenBabel::OBMol
     {
     Q_OBJECT
@@ -88,6 +93,7 @@ namespace Avogadro {
     protected:
       Atom * CreateAtom();
       Bond * CreateBond();
+      Residue * CreateResidue();
 
       MainWindow *window;
       std::vector< Atom * > 	_vatom;
@@ -96,6 +102,7 @@ namespace Avogadro {
     signals:
       void atomAdded(Atom *atom);
       void bondAdded(Bond *bond);
+      void residueAdded(Residue *residue);
     };
 
 } // namespace Avogadro

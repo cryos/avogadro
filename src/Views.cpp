@@ -76,16 +76,33 @@ void View::render()
   foreach(View *view, subViews) {
     view->render();
   }
+
+  GLEngine *engine = getGLEngine();
+  if(!engine)
+  {
+    cout << "No Default Rendering Engine Set\n" << endl;
+  }
+  else
+  {
+    glPushName(otherType);
+    glPushName(0);
+    engine->render(object);
+    glPopName();
+    glPopName();
+  }
 }
 
-void View::addSubView(View *v)
+void View::addView(View *v)
 {
   subViews.append(v);
 }
 
 void AtomView::render()
 {
-  View::render();
+  foreach(View *view, subViews) {
+    view->render();
+  }
+
   GLEngine *engine = getGLEngine();
   if(!engine)
   {
@@ -93,13 +110,20 @@ void AtomView::render()
   }
   else
   {
+    glPushName(atomType);
+    glPushName(object->GetIdx());
     engine->render(object);
+    glPopName();
+    glPopName();
   }
 }
 
 void BondView::render()
 {
-  View::render();
+  foreach(View *view, subViews) {
+    view->render();
+  }
+
   GLEngine *engine = getGLEngine();
   if(!engine)
   {
@@ -107,13 +131,20 @@ void BondView::render()
   }
   else
   {
+    glPushName(bondType);
+    glPushName(object->GetIdx());
     engine->render(object);
+    glPopName();
+    glPopName();
   }
 }
 
 void ResidueView::render()
 {
-  View::render();
+  foreach(View *view, subViews) {
+    view->render();
+  }
+
   GLEngine *engine = getGLEngine();
   if(!engine)
   {
@@ -121,33 +152,31 @@ void ResidueView::render()
   }
   else
   {
+    glPushName(residueType);
+    glPushName(object->GetIdx());
     engine->render(object);
+    glPopName();
+    glPopName();
   }
 }
 
 MoleculeView::MoleculeView(Molecule *m, QObject *parent) : 
-  View(m, parent), object(m)
+  View(parent)
 {
 
   QObject::connect(m,SIGNAL(atomAdded(Atom*)), this, SLOT(addAtom(Atom*)));
   QObject::connect(m,SIGNAL(bondAdded(Bond*)), this, SLOT(addBond(Bond*)));
+  QObject::connect(m,SIGNAL(residueAdded(Residue*)), this, SLOT(addResidue(Residue*)));
+
+  setMolecule(m);
 
 }
 
-void MoleculeView::addAtom(Atom *a)
+void MoleculeView::setMolecule(Molecule *m)
 {
-  addSubView(new AtomView(a, this));
-}
+  object = m;
 
-void MoleculeView::addBond(Bond *b)
-{
-  addSubView(new BondView(b, this));
-}
-
-void MoleculeView::setupSubViews()
-{
-  if (subViews.size())
-    return;
+  subViews.clear();
 
   vector<OpenBabel::OBNodeBase*>::iterator i;  
   for(Atom *atom = (Atom*)object->BeginAtom(i); atom; atom = (Atom*)object->NextAtom(i))
@@ -160,6 +189,27 @@ void MoleculeView::setupSubViews()
     {
       addBond(bond);
     }
+
+  vector<OpenBabel::OBResidue*>::iterator k;
+  for(Residue *residue = (Residue*)object->BeginResidue(k); residue;
+      residue = (Residue *)object->NextResidue(k)) {
+    addResidue(residue);
+  }
+}
+
+void MoleculeView::addAtom(Atom *a)
+{
+  addView(new AtomView(a, this));
+}
+
+void MoleculeView::addBond(Bond *b)
+{
+  addView(new BondView(b, this));
+}
+
+void MoleculeView::addResidue(Residue *r)
+{
+  addView(new ResidueView(r, this));
 }
 
 void MoleculeView::render()
@@ -171,12 +221,11 @@ void MoleculeView::render()
   }
   else
   {
-    bool success = false;
-    success = engine->render(object);
-
-    if (!success) {
-      setupSubViews();
+    if(!engine->render(object))
+    {
       View::render();
     }
   }
+
 }
+

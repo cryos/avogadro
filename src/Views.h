@@ -41,7 +41,7 @@ namespace Avogadro {
       View(const View &v);
       virtual ~View() {};
 
-      void addSubView(View *v);
+      void addView(View *v);
 
       GLEngine * getDefaultGLEngine();
       GLEngine * getGLEngine();
@@ -51,7 +51,7 @@ namespace Avogadro {
       QList<View *> subViews;
       GLEngine *glEngine;
 
-      public slots:
+    public slots:
       virtual void render();
   };
 
@@ -104,16 +104,18 @@ namespace Avogadro {
     public:
       MoleculeView(Molecule *m, QObject *parent);
 
+      void setMolecule(Molecule *m);
+
     public slots:
       void addAtom(Atom *a);
       void addBond(Bond *b);
+      void addResidue(Residue *r);
 
-      virtual void render();
-
-  protected:
+    protected:
       Molecule *object;
 
-      void setupSubViews();
+    public slots:
+      virtual void render();
   };
 
 } // namespace Avogadro

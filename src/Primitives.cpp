@@ -40,6 +40,13 @@ Bond * Molecule::CreateBond()
   return(bond);
 }
 
+Residue * Molecule::CreateResidue()
+{
+  Residue *residue = new Residue();//(Bond *)OBMol::CreateBond();
+  emit residueAdded(residue);
+  return(residue);
+}
+
 //X void Primitive::setGLEngine(GLEngine *r)
 //X {
 //X   renderer = r; 

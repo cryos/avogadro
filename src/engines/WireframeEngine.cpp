@@ -36,7 +36,7 @@ bool WireframeEngine::render(Atom *a)
    rgb = etab.GetRGB(a->GetAtomicNum());
    glPushAttrib(GL_ALL_ATTRIB_BITS);
 
-   glPushName(atomTypeName);
+   glPushName(atomType);
    glPushName(a->GetIdx());
 
   if (a->isSelected()) {
@@ -73,7 +73,7 @@ bool WireframeEngine::render(Bond *b)
 
   // hard to separate atoms from bonds in this view
   // so we let the user always select atoms
-  glPushName( atomTypeName );
+  glPushName( atomType);
   glPushName( atom1->GetIdx() );
   rgb = etab.GetRGB(atom1->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);

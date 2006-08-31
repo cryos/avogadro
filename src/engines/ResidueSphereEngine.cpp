@@ -41,7 +41,7 @@ bool ResidueSphereEngine::render(Molecule *m)
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
   glColor3d(0.7, 0.1, 0.1);
-  glPushName(residueTypeName);
+  glPushName(residueType);
 
   vector3 midpoint;
 

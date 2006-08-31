@@ -29,11 +29,6 @@
 
 namespace Avogadro {
 
-  //! 
-  enum glSelection { moleculeTypeName, atomTypeName, bondTypeName, 
-                     residueTypeName, surfaceTypeName, planeTypeName,
-                     gridTypeName, otherTypeName };
-
   //! Base class for our GL engines
  class GLEngine
   {

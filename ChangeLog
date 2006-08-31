@@ -1,3 +1,14 @@
+2006-08-30  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* src/Primitives.h: moved the glnametypeing enum to here as
+	enum primativeType
+	
+	* src/Primitives.cpp: Overwrote OBMol::CreateResidue (trunk
+	version of OB)
+
+	* src/GLWidget.cpp: _hits now containts both .type and .name 
+	corresponding to the type if hit and the name of the hit.
+
 2006-08-30  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* src/MainWindow.h, src/MainWindow.cpp, src/GLWidget.h,

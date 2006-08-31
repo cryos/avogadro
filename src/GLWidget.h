@@ -38,9 +38,10 @@ namespace Avogadro {
   class GLHit
   {
     public:
-      GLHit(GLuint n, GLuint min, GLuint max) { name = n; minZ = min; maxZ = max; }
+      GLHit(GLuint n, GLuint t, GLuint min, GLuint max) { type=t; name = n; minZ = min; maxZ = max; }
       friend bool operator<(const GLHit &h1, const GLHit &h2) { return h1.minZ < h2.minZ; }
 
+      GLuint type;
       GLuint name;
       GLuint minZ;
       GLuint maxZ;

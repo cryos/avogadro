@@ -43,7 +43,7 @@ bool SphereEngine::render(Atom *a)
   rgb = etab.GetRGB(a->GetAtomicNum());
   glColor3d(rgb[0], rgb[1], rgb[2]);
 
-  glPushName(atomTypeName);
+  glPushName(atomType);
   glPushName(a->GetIdx());
   m_sphere.draw(a->GetVector(), etab.GetVdwRad(a->GetAtomicNum()));
 
