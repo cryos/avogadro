@@ -18,6 +18,8 @@ HEADERS += Primitives.h
 SOURCES += Primitives.cpp
 HEADERS += Views.h
 SOURCES += Views.cpp
+HEADERS += color.h
+SOURCES += color.cpp
 
 # Static plugins
 # LIBS = -Lengines -lBSEngine -lWireframeEngine

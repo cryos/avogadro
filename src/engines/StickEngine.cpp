@@ -22,6 +22,8 @@
 
 #include "StickEngine.h"
 #include "Primitives.h"
+#include "color.h"
+
 #include <openbabel/obiter.h>
 
 #include <QtGui>
@@ -38,10 +40,7 @@ bool StickEngine::render(Atom *a)
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
 
-  //  Color(atom).applyAsMaterials();
-  std::vector<double> rgb;
-  rgb = etab.GetRGB(a->GetAtomicNum());
-  glColor3d(rgb[0], rgb[1], rgb[2]);
+  Color(a).applyAsMaterials();
 
   glPushName(atomType);
   glPushName(a->GetIdx());
@@ -49,7 +48,7 @@ bool StickEngine::render(Atom *a)
 
   if (a->isSelected())
     {
-      glColor4d( 0.3, 0.6, 1.0, 0.7 );
+      Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
       glEnable( GL_BLEND );
       m_sphere.draw(a->GetVector(), 0.18 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
       glDisable( GL_BLEND );
@@ -78,8 +77,7 @@ bool StickEngine::render(Bond *b)
   vector3 v1 = atom1->GetVector();
   vector3 v2 = atom2->GetVector();
   vector3 v3 = ( v1 + v2 ) / 2;
-  std::vector<double> rgb;
-
+ 
   double radius = 0.3;
   int order = 1;
 
@@ -87,14 +85,12 @@ bool StickEngine::render(Bond *b)
   // so we let the user always select atoms
   glPushName( atomType);
   glPushName( atom1->GetIdx() );
-  rgb = etab.GetRGB(atom1->GetAtomicNum());
-  glColor3d(rgb[0], rgb[1], rgb[2]);
+  Color(atom1).applyAsMaterials();
   m_cylinder.draw( v1, v3, radius, order, 0.0);
   glPopName();
 
   glPushName( atom2->GetIdx() );
-  rgb = etab.GetRGB(atom2->GetAtomicNum());
-  glColor3d(rgb[0], rgb[1], rgb[2]);
+  Color(atom2).applyAsMaterials();
   m_cylinder.draw( v2, v3, radius, order, 0.0);
   glPopName();
   glPopName();

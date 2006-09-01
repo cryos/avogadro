@@ -57,16 +57,16 @@ void GLWidget::initializeGL()
 
   qglClearColor ( _clearColor );
 
-  //  glShadeModel( GL_SMOOTH );
+  glShadeModel( GL_SMOOTH );
   glEnable( GL_DEPTH_TEST );
   glDepthFunc( GL_LESS );
   glEnable( GL_CULL_FACE );
+	glEnable( GL_COLOR_SUM_EXT );
 
   GLfloat mat_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
   GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
   GLfloat mat_shininess[] = { 30.0 };
 
-  glEnable(GL_COLOR_MATERIAL);
   glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
   glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
   glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
@@ -84,6 +84,8 @@ void GLWidget::initializeGL()
   GLfloat specularLight[] = { 1.0, 1.0, 1.0, 1.0 };
   GLfloat position[] = { 0.8, 0.7, 1.0, 0.0 };
 
+	glLightModeli( GL_LIGHT_MODEL_COLOR_CONTROL_EXT,
+                 GL_SEPARATE_SPECULAR_COLOR_EXT );
   glLightfv( GL_LIGHT0, GL_AMBIENT, ambientLight );
   glLightfv( GL_LIGHT0, GL_DIFFUSE, diffuseLight );
   glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
@@ -300,7 +302,7 @@ void GLWidget::selectionBox(int sx, int sy, int ex, int ey)
   glDisable(GL_CULL_FACE);
   glEnable(GL_BLEND);
   glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  glColor4f(1.0, 1.0, 1.0, 0.2);
+  Color(1.0, 1.0, 1.0, 0.2).applyAsMaterials();
   glBegin(GL_POLYGON);
   glVertex3f(startPos[0],startPos[1],startPos[2]);
   glVertex3f(startPos[0],endPos[1],startPos[2]);
@@ -308,7 +310,7 @@ void GLWidget::selectionBox(int sx, int sy, int ex, int ey)
   glVertex3f(endPos[0],startPos[1],startPos[2]);
   glEnd();
   startPos[2] += 0.0001;
-  glColor4f(1.0, 1.0, 1.0, 1.0);
+  Color(1.0, 1.0, 1.0, 1.0).applyAsMaterials();
   glBegin(GL_LINE_LOOP);
   glVertex3f(startPos[0],startPos[1],startPos[2]);
   glVertex3f(startPos[0],endPos[1],startPos[2]);

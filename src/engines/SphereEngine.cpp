@@ -22,6 +22,8 @@
 
 #include "SphereEngine.h"
 #include "Primitives.h"
+#include "color.h"
+
 #include <openbabel/obiter.h>
 
 #include <QtGui>
@@ -38,10 +40,7 @@ bool SphereEngine::render(Atom *a)
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
 
-  //  Color(atom).applyAsMaterials();
-  std::vector<double> rgb;
-  rgb = etab.GetRGB(a->GetAtomicNum());
-  glColor3d(rgb[0], rgb[1], rgb[2]);
+  Color(a).applyAsMaterials();
 
   glPushName(atomType);
   glPushName(a->GetIdx());
@@ -49,7 +48,7 @@ bool SphereEngine::render(Atom *a)
 
   if (a->isSelected())
     {
-      glColor4d( 0.3, 0.6, 1.0, 0.7 );
+      Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
       glEnable( GL_BLEND );
       m_sphere.draw(a->GetVector(), 0.18 + etab.GetVdwRad(a->GetAtomicNum()));
       glDisable( GL_BLEND );

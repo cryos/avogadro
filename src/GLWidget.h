@@ -26,6 +26,7 @@
 #include "Primitives.h"
 #include "Views.h"
 #include "GLEngine.h"
+#include "color.h"
 
 #include <QGLWidget>
 #include <QMouseEvent>

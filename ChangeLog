@@ -1,3 +1,11 @@
+2006-09-01  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/color.h, src/color.cpp: Migrate Color class out of
+	vertexarray files, to allow further colormaps (e.g., color by
+	other atomic or residue properties).
+
+	* src/*: Use Color() class.
+
 2006-08-31  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* src/GLWidget.cpp: Added group selection.  see GLWidget::selectRegion()

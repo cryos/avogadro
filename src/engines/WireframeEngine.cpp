@@ -14,7 +14,7 @@
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation version 2 of the License.
 
-  This program is distributed in the hope that it will be useful,
+ This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
@@ -22,6 +22,9 @@
 
 #include "WireframeEngine.h"
 #include "Primitives.h"
+#include "color.h"
+#include "vertexarray.h"
+
 #include <openbabel/obiter.h>
 
 #include <QtGui>
@@ -32,22 +35,20 @@ using namespace Avogadro;
 
 bool WireframeEngine::render(Atom *a)
 {
-   std::vector<double> rgb;
-   rgb = etab.GetRGB(a->GetAtomicNum());
    glPushAttrib(GL_ALL_ATTRIB_BITS);
 
    glPushName(atomType);
    glPushName(a->GetIdx());
 
   if (a->isSelected()) {
-    glColor4d( 0.3, 0.6, 1.0, 0.7 );
+    Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
     glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 4.0);
     glBegin(GL_POINTS);
     glVertex3d(a->GetX(), a->GetY(), a->GetZ());
     glEnd();
   }
   else {
-    glColor3d(rgb[0], rgb[1], rgb[2]);
+    Color(a).applyAsMaterials();
     glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 3.0);
     glBegin(GL_POINTS);
     glVertex3d(a->GetX(), a->GetY(), a->GetZ());
@@ -75,14 +76,12 @@ bool WireframeEngine::render(Bond *b)
   // so we let the user always select atoms
   glPushName( atomType);
   glPushName( atom1->GetIdx() );
-  rgb = etab.GetRGB(atom1->GetAtomicNum());
-  glColor3d(rgb[0], rgb[1], rgb[2]);
+  Color(atom1).applyAsMaterials();
   glVertex3d(atom1->GetX(), atom1->GetY(), atom1->GetZ());
   glPopName();
 
   glPushName( atom2->GetIdx() );
-  rgb = etab.GetRGB(atom2->GetAtomicNum());
-  glColor3d(rgb[0], rgb[1], rgb[2]);
+  Color(atom2).applyAsMaterials();
   glVertex3d(atom2->GetX(), atom2->GetY(), atom2->GetZ());
   glPopName();
   glPopName();

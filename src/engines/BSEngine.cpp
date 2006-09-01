@@ -22,6 +22,8 @@
 
 #include "BSEngine.h"
 #include "Primitives.h"
+#include "color.h"
+
 #include <openbabel/obiter.h>
 
 #include <QtGui>
@@ -40,16 +42,13 @@ bool BSEngine::render(Atom *a)
 
   glPushName(atomType);
   glPushName(a->GetIdx());
-  //  Color(a).applyAsMaterials();
-  std::vector<double> rgb;
-  rgb = etab.GetRGB(a->GetAtomicNum());
-  glColor3d(rgb[0], rgb[1], rgb[2]);
+  Color(a).applyAsMaterials();
 
   m_sphere.draw(a->GetVector(), etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
 
   if (a->isSelected())
     {
-      glColor4d( 0.3, 0.6, 1.0, 0.7 );
+      Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
       glEnable( GL_BLEND );
       m_sphere.draw(a->GetVector(), 0.18 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
       glDisable( GL_BLEND );
@@ -88,12 +87,10 @@ bool BSEngine::render(Bond *b)
   // for now, just allow selecting atoms
   //  glPushName(bondType);
   //  glPushName(b->GetIdx());
-  rgb = etab.GetRGB(atom1->GetAtomicNum());
-  glColor3d(rgb[0], rgb[1], rgb[2]);
+  Color(atom1).applyAsMaterials();
   m_cylinder.draw( v1, v3, radius, order, shift);
 
-  rgb = etab.GetRGB(atom2->GetAtomicNum());
-  glColor3d(rgb[0], rgb[1], rgb[2]);
+  Color(atom2).applyAsMaterials();
   m_cylinder.draw( v2, v3, radius, order, shift);
   //  glPopName();
   //  glPopName();
