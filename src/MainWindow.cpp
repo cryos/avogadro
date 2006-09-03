@@ -64,14 +64,14 @@ namespace Avogadro {
     setCentralWidget(gl);
 
     // add all gl engines to the dropdown
-    QList<GLEngine *> engines = gl->getGLEngines();
+    QList<Engine *> engines = gl->getEngines();
     for(int i=0; i< engines.size(); ++i) {
-      cbGLEngine->insertItem(i, engines.at(i)->description());
+      cbEngine->insertItem(i, engines.at(i)->description());
     }
     // set the default to whatever GL has selected as default on startup
-    cbGLEngine->setCurrentIndex(engines.indexOf(gl->getDefaultGLEngine()));
+    cbEngine->setCurrentIndex(engines.indexOf(gl->getDefaultEngine()));
     // setup our signal
-    connect(cbGLEngine, SIGNAL(activated(int)), gl, SLOT(setDefaultGLEngine(int)));
+    connect(cbEngine, SIGNAL(activated(int)), gl, SLOT(setDefaultEngine(int)));
 
 
     statusBar()->showMessage(tr("Ready."), 10000);
@@ -373,8 +373,8 @@ namespace Avogadro {
     toolBar->addAction(actionSave);
 
     // XXX This is a quick hack.
-    cbGLEngine = new QComboBox;
-    (toolBar->addWidget(cbGLEngine))->setVisible(true);
+    cbEngine = new QComboBox;
+    (toolBar->addWidget(cbEngine))->setVisible(true);
 
     toolBar->setOrientation(Qt::Horizontal);
     this->addToolBar(static_cast<Qt::ToolBarArea>(4), toolBar);

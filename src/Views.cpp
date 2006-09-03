@@ -23,7 +23,7 @@
 #include "Views.h"
 #include "MainWindow.h"
 #include "GLWidget.h"
-#include "GLEngine.h"
+#include "Engine.h"
 
 using namespace Avogadro;
 using namespace std;
@@ -42,28 +42,28 @@ View::View(const View &v) : QObject(v.parent())
   subViews = v.subViews;
 }
 
-Avogadro::GLEngine * View::getDefaultGLEngine()
+Avogadro::Engine * View::getDefaultEngine()
 {
   View *v = dynamic_cast<View *>(parent());
   if(v)
   {
-    return v->getDefaultGLEngine();
+    return v->getDefaultEngine();
   }
 
   GLWidget *p = dynamic_cast<GLWidget *>(parent());
   if(p)
   {
-    return p->getDefaultGLEngine();
+    return p->getDefaultEngine();
   }
 
   return NULL;
 }
 
-Avogadro::GLEngine * View::getGLEngine()
+Avogadro::Engine * View::getEngine()
 {
   if(!glEngine)
   {
-    return(getDefaultGLEngine());
+    return(getDefaultEngine());
   }
   else
   {
@@ -77,7 +77,7 @@ void View::render()
     view->render();
   }
 
-  GLEngine *engine = getGLEngine();
+  Engine *engine = getEngine();
   if(!engine)
   {
     cout << "No Default Rendering Engine Set\n" << endl;
@@ -103,7 +103,7 @@ void AtomView::render()
     view->render();
   }
 
-  GLEngine *engine = getGLEngine();
+  Engine *engine = getEngine();
   if(!engine)
   {
     cout << "No Default Rendering Engine Set\n" << endl;
@@ -124,7 +124,7 @@ void BondView::render()
     view->render();
   }
 
-  GLEngine *engine = getGLEngine();
+  Engine *engine = getEngine();
   if(!engine)
   {
     cout << "No Default Rendering Engine Set\n" << endl;
@@ -145,7 +145,7 @@ void ResidueView::render()
     view->render();
   }
 
-  GLEngine *engine = getGLEngine();
+  Engine *engine = getEngine();
   if(!engine)
   {
     cout << "No Default Rendering Engine Set\n" << endl;
@@ -214,7 +214,7 @@ void MoleculeView::addResidue(Residue *r)
 
 void MoleculeView::render()
 {
-  GLEngine *engine = getGLEngine();
+  Engine *engine = getEngine();
   if(!engine)
   {
     cout << "No Default Rendering Engine Set\n" << endl;

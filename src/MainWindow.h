@@ -100,7 +100,7 @@ namespace Avogadro {
 
       QAction    *actionAbout;
 
-      QComboBox  *cbGLEngine;
+      QComboBox  *cbEngine;
 
       void init();
       void readSettings();

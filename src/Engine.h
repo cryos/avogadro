@@ -1,5 +1,5 @@
 /**********************************************************************
-  GLEngine - Qt Plugin Template
+  Engine - Qt Plugin Template
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __GLENGINE_H
-#define __GLENGINE_H
+#ifndef __ENGINE_H
+#define __ENGINE_H
 
 #include "Primitives.h"
 
@@ -30,11 +30,11 @@
 namespace Avogadro {
 
   //! Base class for our GL engines
- class GLEngine
+ class Engine
   {
     public:
       //! Deconstructor
-      virtual ~GLEngine() {}
+      virtual ~Engine() {}
 
       //! \name Description methods
       //@{
@@ -70,19 +70,19 @@ namespace Avogadro {
       //@}
   };
 
-  //! Generates instances of our GLEngine class
-  class GLEngineFactory
+  //! Generates instances of our Engine class
+  class EngineFactory
   {
     public:
       //! Desconstructor
-      virtual ~GLEngineFactory() {}
+      virtual ~EngineFactory() {}
 
       //! Create a new instance of our engine and return a pointer to it.
-      virtual GLEngine *createInstance() = 0;
+      virtual Engine *createInstance() = 0;
   };
 
 } // end namespace Avogadro
 
-Q_DECLARE_INTERFACE(Avogadro::GLEngineFactory, "net.sourceforge.avogadro/1.0")
+Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro/1.0")
 
 #endif

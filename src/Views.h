@@ -24,7 +24,7 @@
 #define __VIEWS_H
 
 #include "Primitives.h"
-#include "GLEngine.h"
+#include "Engine.h"
 
 #include <QList>
 #include <openbabel/mol.h>
@@ -43,13 +43,13 @@ namespace Avogadro {
 
       void addView(View *v);
 
-      GLEngine * getDefaultGLEngine();
-      GLEngine * getGLEngine();
+      Engine * getDefaultEngine();
+      Engine * getEngine();
 
     protected:
       Primitive *object;
       QList<View *> subViews;
-      GLEngine *glEngine;
+      Engine *glEngine;
 
     public slots:
       virtual void render();

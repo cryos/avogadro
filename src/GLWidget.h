@@ -25,7 +25,7 @@
 
 #include "Primitives.h"
 #include "Views.h"
-#include "GLEngine.h"
+#include "Engine.h"
 #include "color.h"
 
 #include <QGLWidget>
@@ -59,8 +59,8 @@ namespace Avogadro {
       void setView(View *v);
       View* getView() { return view; }
 
-      GLEngine *getDefaultGLEngine() { return defaultGLEngine; }
-      QList<GLEngine *> getGLEngines() { return glEngines; }
+      Engine *getDefaultEngine() { return defaultEngine; }
+      QList<Engine *> getEngines() { return glEngines; }
 
       void setClearColor(const QColor &c) { _clearColor = c; qglClearColor(c);}
       QColor getClearColor() const { return _clearColor;}
@@ -69,8 +69,8 @@ namespace Avogadro {
       Molecule* getMolecule() { return molecule; }
 
     public slots:
-      void setDefaultGLEngine(int i);
-      void setDefaultGLEngine(GLEngine *e);
+      void setDefaultEngine(int i);
+      void setDefaultEngine(Engine *e);
 
     protected:
       void init();
@@ -82,7 +82,7 @@ namespace Avogadro {
       virtual void mouseReleaseEvent( QMouseEvent * event );
       virtual void mouseMoveEvent( QMouseEvent * event );
 
-      void loadGLEngines();
+      void loadEngines();
 
       void setCamera();
       void render(GLenum mode);
@@ -105,8 +105,8 @@ namespace Avogadro {
       //! Temporary var for adding selection box
       GLuint _selectionDL;
 
-      GLEngine *defaultGLEngine;
-      QList<GLEngine *> glEngines;
+      Engine *defaultEngine;
+      QList<Engine *> glEngines;
 
       Molecule *molecule;
       View *view;

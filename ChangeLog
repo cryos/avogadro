@@ -1,3 +1,7 @@
+2006-09-03  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* src/*, src/engines/*: Refactored GLEngine to Engine.
+
 2006-09-01  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* src/color.h, src/color.cpp: Migrate Color class out of

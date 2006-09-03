@@ -30,16 +30,16 @@
 
 #include <openbabel/mol.h>
 
-#include "GLEngine.h"
+#include "Engine.h"
 
 namespace Avogadro {
 
-class WireframeEngine : public QObject, public GLEngine
+class WireframeEngine : public QObject, public Engine
 {
   Q_OBJECT
 
     public:
- WireframeEngine() : GLEngine() {}
+ WireframeEngine() : Engine() {}
   ~WireframeEngine() {}
 
     QString name() { return(QString(tr("WireframeEngine"))); }
@@ -48,13 +48,13 @@ class WireframeEngine : public QObject, public GLEngine
     bool render(Bond *b);
 };
 
-class WireframeEngineFactory : public QObject, public GLEngineFactory
+class WireframeEngineFactory : public QObject, public EngineFactory
 {
   Q_OBJECT
-    Q_INTERFACES(Avogadro::GLEngineFactory)
+    Q_INTERFACES(Avogadro::EngineFactory)
 
   public:
-    GLEngine *createInstance() { return new WireframeEngine(); }
+    Engine *createInstance() { return new WireframeEngine(); }
 };
 
 } // end namespace Avogadro

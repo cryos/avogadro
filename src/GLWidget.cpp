@@ -30,13 +30,13 @@
 
 using namespace Avogadro;
 
-GLWidget::GLWidget(QWidget *parent ) : QGLWidget(parent), defaultGLEngine(NULL), _clearColor(Qt::black)
+GLWidget::GLWidget(QWidget *parent ) : QGLWidget(parent), defaultEngine(NULL), _clearColor(Qt::black)
 {
   printf("Constructor\n");
   init();
 }
 
-GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent), defaultGLEngine(NULL), _clearColor(Qt::black)
+GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent), defaultEngine(NULL), _clearColor(Qt::black)
 {
   printf("Constructor\n");
   init();
@@ -45,7 +45,7 @@ GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format,
 void GLWidget::init()
 {
   _selectionDL = 0;
-  loadGLEngines();
+  loadEngines();
 
   molecule = NULL;
   view = new View(this); // nothing to include here
@@ -422,21 +422,21 @@ void GLWidget::setMolecule(Molecule *m)
   view = new MoleculeView(molecule, this);
 }
 
-void GLWidget::setDefaultGLEngine(int i) 
+void GLWidget::setDefaultEngine(int i) 
 {
-  setDefaultGLEngine(glEngines.at(i));
+  setDefaultEngine(glEngines.at(i));
 }
 
-void GLWidget::setDefaultGLEngine(GLEngine *e) 
+void GLWidget::setDefaultEngine(Engine *e) 
 {
   if(e)
   {
-    defaultGLEngine = e;
+    defaultEngine = e;
     updateGL();
   }
 }
 
-void GLWidget::loadGLEngines()
+void GLWidget::loadEngines()
 {
   QDir pluginsDir = QDir(qApp->applicationDirPath());
 
@@ -449,25 +449,25 @@ void GLWidget::loadGLEngines()
   // load static plugins first
 //   foreach (QObject *plugin, QPluginLoader::staticInstances())
 //   {
-//     GLEngine *r = qobject_cast<GLEngine *>(plugin);
+//     Engine *r = qobject_cast<Engine *>(plugin);
 //     if (r)
 //     {
-//       qDebug() << "Loaded GLEngine: " << r->name() << endl;
-//       if( defaultGLEngine == NULL )
-//         defaultGLEngine = r;
+//       qDebug() << "Loaded Engine: " << r->name() << endl;
+//       if( defaultEngine == NULL )
+//         defaultEngine = r;
 //     }
 //   }
 
   foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
     QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-    GLEngineFactory *factory = qobject_cast<GLEngineFactory *>(loader.instance());
+    EngineFactory *factory = qobject_cast<EngineFactory *>(loader.instance());
     if (factory) {
-      GLEngine *engine = factory->createInstance();
+      Engine *engine = factory->createInstance();
       qDebug() << "Found Plugin: " << engine->name() << " - " << engine->description(); 
-      if (!defaultGLEngine)
+      if (!defaultEngine)
       {
-        qDebug() << "Setting Default GLEngine: " << engine->name() << " - " << engine->description(); 
-        defaultGLEngine = engine;
+        qDebug() << "Setting Default Engine: " << engine->name() << " - " << engine->description(); 
+        defaultEngine = engine;
       }
       glEngines.append(engine);
     }

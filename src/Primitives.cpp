@@ -47,12 +47,12 @@ Residue * Molecule::CreateResidue()
   return(residue);
 }
 
-//X void Primitive::setGLEngine(GLEngine *r)
+//X void Primitive::setEngine(Engine *r)
 //X {
 //X   renderer = r; 
 //X }
 //X 
-//X GLEngine *Primitive::getGLEngine()
+//X Engine *Primitive::getEngine()
 //X {
 //X   if( renderer == NULL )
 //X   {
@@ -67,12 +67,12 @@ Residue * Molecule::CreateResidue()
 //X void Atom::render()
 //X {
 //X   MainWindow *w = ((Molecule *)GetParent())->getWindow();
-//X   w->defaultGLEngine->renderAtom(*this);
+//X   w->defaultEngine->renderAtom(*this);
 //X }
 //X 
 //X void Bond::render()
 //X {
-//X   // MainWindow::defaultGLEngine->renderBond(*this);
+//X   // MainWindow::defaultEngine->renderBond(*this);
 //X }
 //X 
 //X void Molecule::render()

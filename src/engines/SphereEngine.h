@@ -30,17 +30,17 @@
 
 #include <openbabel/mol.h>
 
-#include "GLEngine.h"
+#include "Engine.h"
 #include "vertexarray.h"
 
 namespace Avogadro {
 
-class SphereEngine : public QObject, public GLEngine
+class SphereEngine : public QObject, public Engine
 {
   Q_OBJECT
 
   public:
- SphereEngine() : GLEngine() {}
+ SphereEngine() : Engine() {}
     ~SphereEngine() {}
 
     QString name() { return(QString(tr("SphereEngine"))); }
@@ -53,13 +53,13 @@ class SphereEngine : public QObject, public GLEngine
     Sphere m_sphere;
 };
 
-class SphereEngineFactory : public QObject, public GLEngineFactory
+class SphereEngineFactory : public QObject, public EngineFactory
 {
   Q_OBJECT
-    Q_INTERFACES(Avogadro::GLEngineFactory)
+    Q_INTERFACES(Avogadro::EngineFactory)
 
   public:
-    GLEngine *createInstance() { return new SphereEngine(); }
+    Engine *createInstance() { return new SphereEngine(); }
 };
 
 } // end namespace Avogadro

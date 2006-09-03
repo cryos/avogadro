@@ -26,7 +26,7 @@
 #include <openbabel/mol.h>
 #include <QObject>
 
-class GLEngine;
+class Engine;
 
 namespace Avogadro {
 

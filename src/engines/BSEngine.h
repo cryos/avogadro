@@ -30,19 +30,19 @@
 
 #include <openbabel/mol.h>
 
-#include "GLEngine.h"
+#include "Engine.h"
 #include "vertexarray.h"
 
 namespace Avogadro {
 
   //! Ball and Stick Engine class.
-  class BSEngine : public QObject, public GLEngine
+  class BSEngine : public QObject, public Engine
   {
     Q_OBJECT
 
     public:
       //! Constructor
-  BSEngine() : GLEngine() {}
+  BSEngine() : Engine() {}
       //! Deconstructor
       ~BSEngine() {}
 
@@ -70,13 +70,13 @@ namespace Avogadro {
   };
 
   //! Generates instances of our BSEngine class
-  class BSEngineFactory : public QObject, public GLEngineFactory
+  class BSEngineFactory : public QObject, public EngineFactory
   {
     Q_OBJECT
-      Q_INTERFACES(Avogadro::GLEngineFactory)
+      Q_INTERFACES(Avogadro::EngineFactory)
 
     public:
-      GLEngine *createInstance() { return new BSEngine(); }
+      Engine *createInstance() { return new BSEngine(); }
   };
 
 } // end namespace Avogadro
