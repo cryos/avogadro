@@ -26,8 +26,30 @@
 #include "Primitives.h"
 
 #include <QString>
+#include <QVector>
+#include <QList>
 
 namespace Avogadro {
+
+  class PrimitiveQueue
+  {
+    public:
+      PrimitiveQueue() { for( int i=0; i<numTypes; i++ ) { _queue.append(new QList<Primitive *>()); } }
+
+      QList<Primitive *>* getTypeQueue(int t) { 
+        return(_queue[t]); 
+      }
+
+      void add(Primitive *p) { _queue[p->getType()]->append(p); }
+      void clear() {
+        for( int i=0; i<_queue.size(); i++ ) {
+          _queue[i]->clear();
+        }
+      }
+
+    private:
+      QList< QList<Primitive *>* > _queue;
+  };
 
   //! Base class for our GL engines
  class Engine
@@ -67,7 +89,10 @@ namespace Avogadro {
       virtual bool render(Bond *)      { return false; }
       //! Render a Residue object.
       virtual bool render(Residue *)   { return false;}
+      //! Render a primitive queue.
+      virtual bool render(PrimitiveQueue *)   { return false;}
       //@}
+
   };
 
   //! Generates instances of our Engine class
@@ -80,6 +105,7 @@ namespace Avogadro {
       //! Create a new instance of our engine and return a pointer to it.
       virtual Engine *createInstance() = 0;
   };
+
 
 } // end namespace Avogadro
 

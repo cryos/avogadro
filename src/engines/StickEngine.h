@@ -58,6 +58,7 @@ namespace Avogadro {
       //@{
       bool render(Atom *a);
       bool render(Bond *b);
+      bool render(PrimitiveQueue *q);
       //@}
 
     private:

@@ -25,6 +25,7 @@
 #include "MainWindow.h"
 
 #include <stdio.h>
+#include <vector>
 
 #define GL_SEL_BUF_SIZE 512
 
@@ -141,7 +142,7 @@ void GLWidget::render(GLenum mode)
   glScaled(_Scale, _Scale, _Scale);
   glMultMatrixd(_RotationMatrix);
 
-  view->render();
+  defaultEngine->render(&defaultQueue);
 
   glCallList(_selectionDL);
 
@@ -190,6 +191,11 @@ void GLWidget::mouseReleaseEvent( QMouseEvent * event )
         ((Atom *)molecule->GetAtom(_hits[i].name))->toggleSelected();
         break;
       }
+      else if(_hits[i].type == bondType)
+      {
+        ((Bond *)molecule->GetBond(_hits[i].name))->toggleSelected();
+        break;
+      }
     }
   }
   else if(_movedSinceButtonPressed && !_hits.size())
@@ -211,6 +217,10 @@ void GLWidget::mouseReleaseEvent( QMouseEvent * event )
       if(_hits[i].type == atomType)
       {
         ((Atom *)molecule->GetAtom(_hits[i].name))->toggleSelected();
+      }
+      else if(_hits[i].type == bondType)
+      {
+        ((Bond *)molecule->GetBond(_hits[i].name))->toggleSelected();
       }
     }
   }
@@ -388,7 +398,7 @@ void GLWidget::updateHitList(GLint hits, GLuint buffer[])
     for (j = 0; j < names/2; j++) { /*  for each name */
       type = *ptr++;
       name = *ptr++;
-      printf ("%d(%d)", name,type);
+      printf ("%d(%d) ", name,type);
 //X       if (j == 0)  /*  set row and column  */
 //X         ii = *ptr;
 //X       else if (j == 1)
@@ -399,8 +409,8 @@ void GLWidget::updateHitList(GLint hits, GLuint buffer[])
     {
       _hits.append(GLHit(name, type, minZ, maxZ));
     }
-//X     printf ("\n");
   }
+  printf ("\n");
   qSort(_hits);
 }
 
@@ -411,10 +421,40 @@ void GLWidget::setView(View *v)
 
 void GLWidget::setMolecule(Molecule *m)
 {
+  for( int i=0; i < queues.size(); i++ ) {
+    queues[i].clear();
+  }
+
+  defaultQueue.clear();
+
   if (molecule)
     delete molecule;
 
   molecule = m;
+
+  // add the atoms to the default queue
+  std::vector<OpenBabel::OBNodeBase*>::iterator i;
+  for(Atom *atom = (Atom*)m->BeginAtom(i); atom; atom = (Atom*)m->NextAtom(i))
+  {
+    defaultQueue.add(atom);
+  }
+
+  // add the bonds to the default queue
+  std::vector<OpenBabel::OBEdgeBase*>::iterator j;
+  for(Bond *bond = (Bond*)m->BeginBond(j); bond; bond = (Bond*)m->NextBond(j))
+  {
+    defaultQueue.add(bond);
+  }
+
+  // add the residues to the default queue
+  std::vector<OpenBabel::OBResidue*>::iterator k;
+  for(Residue *residue = (Residue*)m->BeginResidue(k); residue;
+      residue = (Residue *)m->NextResidue(k)) {
+    defaultQueue.add(residue);
+  }
+
+  // add the molecule to the default queue
+  defaultQueue.add(m);
 
   if (view)
     delete view;
@@ -424,7 +464,7 @@ void GLWidget::setMolecule(Molecule *m)
 
 void GLWidget::setDefaultEngine(int i) 
 {
-  setDefaultEngine(glEngines.at(i));
+  setDefaultEngine(engines.at(i));
 }
 
 void GLWidget::setDefaultEngine(Engine *e) 
@@ -469,7 +509,7 @@ void GLWidget::loadEngines()
         qDebug() << "Setting Default Engine: " << engine->name() << " - " << engine->description(); 
         defaultEngine = engine;
       }
-      glEngines.append(engine);
+      engines.append(engine);
     }
   }
 }

@@ -33,61 +33,65 @@ namespace Avogadro {
   class MainWindow;
 
   //! 
-  enum primativeType { moleculeType, atomType, bondType, 
-                     residueType, surfaceType, planeType,
-                     gridType, otherType };
+  enum primitiveType { moleculeType, atomType, bondType, 
+    residueType, surfaceType, planeType,
+    gridType, otherType, numTypes };
 
   /*
    * Primitive 
-   * Used to define signals that all our primatives share.
+   * Used to define signals that all our primitives share.
    * 
    */
 
- class Primitive : public QObject
+  class Primitive : public QObject
   {
     Q_OBJECT
 
     public:
-      Primitive() : _selected(false) {}
+      Primitive() : _selected(false), _type(otherType) {}
 
       bool isSelected() { return _selected;}
       void setSelected(bool s) { _selected = s;}
       void toggleSelected() { _selected = !_selected;}
 
+      void setType(enum primitiveType type) { _type = type; }
+      enum primitiveType getType() { return _type; }
+
     protected:
-      bool _selected;    
+      bool _selected;
+      enum primitiveType _type;
   };
 
- class Atom : public Primitive, public OpenBabel::OBAtom
-    {
+  class Atom : public Primitive, public OpenBabel::OBAtom
+  {
     Q_OBJECT
 
-      public:
-    Atom() : Primitive() {}
-    };
+    public:
+      Atom() : Primitive() { setType(atomType); }
+  };
 
- class Bond : public Primitive, public OpenBabel::OBBond
-    {
+  class Bond : public Primitive, public OpenBabel::OBBond
+  {
     Q_OBJECT
 
-      public:
-    Bond(): Primitive() {}
-    };
+    public:
+      Bond(): Primitive() { setType(bondType); }
+  };
 
- class Residue : public Primitive, public OpenBabel::OBResidue
-    {
+  class Residue : public Primitive, public OpenBabel::OBResidue
+  {
     Q_OBJECT
 
-      public:
-    Residue(): Primitive() {}
-    };
+    public:
+      Residue(): Primitive() { setType(residueType); }
+  };
 
- class Molecule : public Primitive, public OpenBabel::OBMol
-    {
+  class Molecule : public Primitive, public OpenBabel::OBMol
+  {
     Q_OBJECT
 
-      public:
-    Molecule() : Primitive() {}
+    public:
+      Molecule() : Primitive() { setType(moleculeType); }
       void render();
 
     protected:
@@ -103,7 +107,7 @@ namespace Avogadro {
       void atomAdded(Atom *atom);
       void bondAdded(Bond *bond);
       void residueAdded(Residue *residue);
-    };
+  };
 
 } // namespace Avogadro
 

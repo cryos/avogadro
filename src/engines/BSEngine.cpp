@@ -32,6 +32,23 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
+bool BSEngine::render(PrimitiveQueue *q)
+{
+  QList<Primitive *> *queue;
+
+  queue = q->getTypeQueue(atomType);
+  for( int i=0; i<queue->size(); i++ ) {
+    render((Atom *)(*queue)[i]);
+  }
+
+  queue = q->getTypeQueue(bondType);
+  for( int i=0; i<queue->size(); i++ ) {
+    render((Bond *)(*queue)[i]);
+  }
+
+  return true;
+}
+
 bool BSEngine::render(Atom *a)
 {
   if (!m_sphere.isValid())

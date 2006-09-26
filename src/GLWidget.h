@@ -41,6 +41,7 @@ namespace Avogadro {
     public:
       GLHit(GLuint n, GLuint t, GLuint min, GLuint max) { type=t; name = n; minZ = min; maxZ = max; }
       friend bool operator<(const GLHit &h1, const GLHit &h2) { return h1.minZ < h2.minZ; }
+      friend bool operator==(const GLHit &h1, const GLHit &h2) { return ((h1.type == h2.type) && (h1.name == h2.name)); }
 
       GLuint type;
       GLuint name;
@@ -60,7 +61,7 @@ namespace Avogadro {
       View* getView() { return view; }
 
       Engine *getDefaultEngine() { return defaultEngine; }
-      QList<Engine *> getEngines() { return glEngines; }
+      QList<Engine *> getEngines() { return engines; }
 
       void setClearColor(const QColor &c) { _clearColor = c; qglClearColor(c);}
       QColor getClearColor() const { return _clearColor;}
@@ -106,7 +107,10 @@ namespace Avogadro {
       GLuint _selectionDL;
 
       Engine *defaultEngine;
-      QList<Engine *> glEngines;
+      QList<Engine *> engines;
+
+      PrimitiveQueue defaultQueue;
+      QList<PrimitiveQueue> queues;
 
       Molecule *molecule;
       View *view;

@@ -32,6 +32,24 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
+bool StickEngine::render(PrimitiveQueue *q)
+{
+  QList<Primitive *> *queue;
+
+  queue = q->getTypeQueue(atomType);
+  for( int i=0; i<queue->size(); i++ ) {
+    render((Atom *)(*queue)[i]);
+  }
+
+  queue = q->getTypeQueue(bondType);
+  for( int i=0; i<queue->size(); i++ ) {
+    render((Bond *)(*queue)[i]);
+  }
+
+  return true;
+}
+
+
 bool StickEngine::render(Atom *a)
 {
   if (!m_sphere.isValid())
@@ -83,15 +101,22 @@ bool StickEngine::render(Bond *b)
 
   // hard to separate atoms from bonds in this view
   // so we let the user always select atoms
-  glPushName( atomType);
-  glPushName( atom1->GetIdx() );
+  glPushName( bondType);
+  glPushName( b->GetIdx() );
   Color(atom1).applyAsMaterials();
   m_cylinder.draw( v1, v3, radius, order, 0.0);
-  glPopName();
 
-  glPushName( atom2->GetIdx() );
   Color(atom2).applyAsMaterials();
   m_cylinder.draw( v2, v3, radius, order, 0.0);
+
+  if (b->isSelected())
+    {
+      Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
+      glEnable( GL_BLEND );
+      m_cylinder.draw( v1, v2, radius + 0.18, order, 0.0);
+      glDisable( GL_BLEND );
+    }
+
   glPopName();
   glPopName();
 
