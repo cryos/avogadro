@@ -87,7 +87,7 @@ namespace Avogadro {
       QAction    *actionRevert;
       QAction    *actionExport;
 
-      enum { maxRecentFiles = 5 };
+      enum { maxRecentFiles = 10 };
       QAction    *actionRecentFile[maxRecentFiles];
       QAction    *actionClearRecentMenu;
       QAction    *actionSeparator;

@@ -22,7 +22,7 @@
 
 // QT Includes
 #include <QApplication>
-#include <QMessageBoxEx>
+#include <QMessageBox>
 
 // Avogadro Includes
 #include "MainWindow.h"
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 
   QApplication app(argc, argv);
   if (!QGLFormat::hasOpenGL()) {
-    QMessageBoxEx::information(0, "Avogadro",
+    QMessageBox::information(0, "Avogadro",
         "This system does not support OpenGL.");
     return -1;
   }

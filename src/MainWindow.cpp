@@ -160,13 +160,13 @@ namespace Avogadro {
       return false;
 
     if (QFile::exists(fileName)) {
-      QMessageBoxEx::StandardButton ret;
-      ret = QMessageBoxEx::warning(this, tr("Avogadro"),
+      QMessageBox::StandardButton ret;
+      ret = QMessageBox::warning(this, tr("Avogadro"),
                                    tr("File %1 already exists.\n"
                                       "Do you want to overwrite it?")
                                    .arg(QDir::convertSeparators(fileName)),
-                                   QMessageBoxEx::Yes | QMessageBoxEx::Cancel);
-      if (ret == QMessageBoxEx::Cancel)
+                                   QMessageBox::Yes | QMessageBox::Cancel);
+      if (ret == QMessageBox::Cancel)
         return false;
     }
     return saveFile(fileName);
@@ -181,7 +181,7 @@ namespace Avogadro {
     // render it (with alpha channel)
     if (!gl->grabFrameBuffer(true).save(fileName))
       {
-        QMessageBoxEx::warning(this, tr("Avogadro"),
+        QMessageBox::warning(this, tr("Avogadro"),
                                tr("Cannot save file %1.").arg(fileName));
         return;
       }
@@ -204,15 +204,15 @@ namespace Avogadro {
   bool MainWindow::maybeSave()
   {
     if (isModified) {
-      QMessageBoxEx::StandardButton ret;
-      ret = QMessageBoxEx::warning(this, tr("Avogadro"),
+      QMessageBox::StandardButton ret;
+      ret = QMessageBox::warning(this, tr("Avogadro"),
                                    tr("The document has been modified.\n"
                                       "Do you want to save your changes?"),
-                                   QMessageBoxEx::Save | QMessageBoxEx::Discard
-                                   | QMessageBoxEx::Cancel);
-      if (ret == QMessageBoxEx::Save)
+                                   QMessageBox::Save | QMessageBox::Discard
+                                   | QMessageBox::Cancel);
+      if (ret == QMessageBox::Save)
         return save();
-      else if (ret == QMessageBoxEx::Cancel)
+      else if (ret == QMessageBox::Cancel)
         return false;
     }
     return true;
@@ -229,7 +229,7 @@ namespace Avogadro {
 
   void MainWindow::about()
   {
-    QMessageBoxEx::about(this, tr("About Avogadro"),
+    QMessageBox::about(this, tr("About Avogadro"),
                          tr("Avogadro is an avanced molecular editor."));
   }
 
@@ -384,7 +384,7 @@ namespace Avogadro {
   {
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
-      QMessageBoxEx::warning(this, tr("Avogadro"),
+      QMessageBox::warning(this, tr("Avogadro"),
                              tr("Cannot read file %1:\n%2.")
                              .arg(fileName)
                              .arg(file.errorString()));
@@ -397,7 +397,7 @@ namespace Avogadro {
     OBConversion conv;
     OBFormat     *inFormat = conv.FormatFromExt((fileName.toStdString()).c_str());
     if (!inFormat || !conv.SetInFormat(inFormat)) {
-      QMessageBoxEx::warning(this, tr("Avogadro"),
+      QMessageBox::warning(this, tr("Avogadro"),
                              tr("Cannot read file format of file %1.")
                              .arg(fileName));
       return false;
@@ -405,7 +405,7 @@ namespace Avogadro {
     ifstream     ifs;
     ifs.open((fileName.toStdString()).c_str());
     if (!ifs) { // shouldn't happen, already checked file above
-      QMessageBoxEx::warning(this, tr("Avogadro"),
+      QMessageBox::warning(this, tr("Avogadro"),
                              tr("Cannot read file %1.")
                              .arg(fileName));
       return false;
@@ -438,7 +438,7 @@ namespace Avogadro {
   {
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
-      QMessageBoxEx::warning(this, tr("Avogadro"),
+      QMessageBox::warning(this, tr("Avogadro"),
                              tr("Cannot write to the file %1:\n%2.")
                              .arg(fileName)
                              .arg(file.errorString()));
@@ -451,7 +451,7 @@ namespace Avogadro {
     OBConversion conv;
     OBFormat     *outFormat = conv.FormatFromExt((fileName.toStdString()).c_str());
     if (!outFormat || !conv.SetOutFormat(outFormat)) {
-      QMessageBoxEx::warning(this, tr("Avogadro"),
+      QMessageBox::warning(this, tr("Avogadro"),
                              tr("Cannot write to file format of file %1.")
                              .arg(fileName));
       return false;
@@ -459,7 +459,7 @@ namespace Avogadro {
     ofstream     ofs;
     ofs.open((fileName.toStdString()).c_str());
     if (!ofs) { // shouldn't happen, already checked file above
-      QMessageBoxEx::warning(this, tr("Avogadro"),
+      QMessageBox::warning(this, tr("Avogadro"),
                              tr("Cannot write to the file %1.")
                              .arg(fileName));
       return false;
