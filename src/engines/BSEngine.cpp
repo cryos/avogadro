@@ -89,8 +89,8 @@ bool BSEngine::render(Bond *b)
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
 
-  OBAtom *atom1 = static_cast<OBAtom *>( b->GetBgn() );
-  OBAtom *atom2 = static_cast<OBAtom *>( b->GetEnd() );
+  OBAtom *atom1 = static_cast<OBAtom *>( b->GetBeginAtom() );
+  OBAtom *atom2 = static_cast<OBAtom *>( b->GetEndAtom() );
   
   vector3 v1 = atom1->GetVector();
   vector3 v2 = atom2->GetVector();
@@ -159,8 +159,8 @@ bool BSEngine::render(Molecule *m)
   vector<OpenBabel::OBEdgeBase*>::iterator j;
   for(OBBond *b = m->BeginBond(j); b; b = m->NextBond(j))
   {
-    OBAtom *atom1 = static_cast<OBAtom *>( b->GetBgn() );
-    OBAtom *atom2 = static_cast<OBAtom *>( b->GetEnd() );
+    OBAtom *atom1 = static_cast<OBAtom *>( b->GetBeginAtom() );
+    OBAtom *atom2 = static_cast<OBAtom *>( b->GetEndAtom() );
     
     vector3 v1 = atom1->GetVector();
     vector3 v2 = atom2->GetVector();

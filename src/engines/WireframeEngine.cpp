@@ -64,8 +64,8 @@ bool WireframeEngine::render(Atom *a)
 
 bool WireframeEngine::render(Bond *b)
 {
-  OBAtom *atom1 = static_cast<OBAtom *>( b->GetBgn() );
-  OBAtom *atom2 = static_cast<OBAtom *>( b->GetEnd() );
+  OBAtom *atom1 = static_cast<OBAtom *>( b->GetBeginAtom() );
+  OBAtom *atom2 = static_cast<OBAtom *>( b->GetEndAtom() );
   std::vector<double> rgb;
 
   glPushAttrib(GL_ALL_ATTRIB_BITS);
