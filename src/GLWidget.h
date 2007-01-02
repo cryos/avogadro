@@ -26,6 +26,7 @@
 #include "Primitives.h"
 #include "Views.h"
 #include "Engine.h"
+#include "Tool.h"
 #include "color.h"
 
 #include <QGLWidget>
@@ -53,6 +54,8 @@ namespace Avogadro {
   {
     Q_OBJECT
 
+    friend class Tool;
+
     public:
       GLWidget(QWidget *parent = 0);
       GLWidget(const QGLFormat &format, QWidget *parent = 0);
@@ -63,11 +66,24 @@ namespace Avogadro {
       Engine *getDefaultEngine() { return defaultEngine; }
       QList<Engine *> getEngines() { return engines; }
 
+      void addDL(GLuint dl);
+      void removeDL(GLuint dl);
+
+      void setTool(Tool *tool);
+      Tool* getTool();
+
       void setClearColor(const QColor &c) { _clearColor = c; qglClearColor(c);}
       QColor getClearColor() const { return _clearColor;}
 
+      void rotate(float x, float y, float z);
+      void translate(float x, float y, float z);
+      void setScale(float s);
+      float getScale();
+
       void setMolecule(Molecule *m);
       Molecule* getMolecule() { return molecule; }
+
+      QList<GLHit> getHits(int x, int y, int w, int h);
 
     public slots:
       void setDefaultEngine(int i);
@@ -83,52 +99,30 @@ namespace Avogadro {
       virtual void mouseReleaseEvent( QMouseEvent * event );
       virtual void mouseMoveEvent( QMouseEvent * event );
 
+      void loadTools();
       void loadEngines();
 
       void setCamera();
       void render(GLenum mode);
 
-      //! \brief Select a region of the widget.
-      //! (x,y) top left coordinate of region.
-      //! (w,h) width and heigh of region.
-      void selectRegion(int x, int y, int w, int h);
-
-      //! Draw a selection box.
-      void selectionBox(int sx, int sy, int ex, int ey);
-
-      //! From the GL selection buffer; populate the hits 
-      //! with the closest hit as the frontmost.
-      void updateHitList(GLint hits, GLuint buffer[]);
-
-      //! List of hits from a selection/pick
-      QList<GLHit> _hits;
-
-      //! Temporary var for adding selection box
-      GLuint _selectionDL;
-
       Engine *defaultEngine;
       QList<Engine *> engines;
+
+      Tool *currentTool;
+      QList<Tool *> tools;
 
       PrimitiveQueue defaultQueue;
       QList<PrimitiveQueue> queues;
 
       Molecule *molecule;
       View *view;
-      std::vector<GLuint> _displayLists;
-
-
-      bool                _leftButtonPressed;  // rotation
-      bool                _rightButtonPressed; // translation
-      bool                _midButtonPressed;   // scale / zoom
-      bool                _movedSinceButtonPressed;
-
-      QPoint              _initialDraggingPosition;
-      QPoint              _lastDraggingPosition;
+      QList<GLuint> _displayLists;
 
       GLdouble            _RotationMatrix[16];
       GLdouble            _TranslationVector[3];
       GLdouble            _Scale;
       QColor              _clearColor;
+
   };
 
 } // end namespace Avogadro

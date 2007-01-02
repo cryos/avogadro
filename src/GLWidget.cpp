@@ -27,8 +27,6 @@
 #include <stdio.h>
 #include <vector>
 
-#define GL_SEL_BUF_SIZE 512
-
 using namespace Avogadro;
 
 GLWidget::GLWidget(QWidget *parent ) : QGLWidget(parent), defaultEngine(NULL), _clearColor(Qt::black)
@@ -45,8 +43,8 @@ GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format,
 
 void GLWidget::init()
 {
-  _selectionDL = 0;
   loadEngines();
+  loadTools();
 
   molecule = NULL;
   view = new View(this); // nothing to include here
@@ -62,7 +60,7 @@ void GLWidget::initializeGL()
   glEnable( GL_DEPTH_TEST );
   glDepthFunc( GL_LESS );
   glEnable( GL_CULL_FACE );
-	glEnable( GL_COLOR_SUM_EXT );
+  glEnable( GL_COLOR_SUM_EXT );
 
   GLfloat mat_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
   GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -85,8 +83,8 @@ void GLWidget::initializeGL()
   GLfloat specularLight[] = { 1.0, 1.0, 1.0, 1.0 };
   GLfloat position[] = { 0.8, 0.7, 1.0, 0.0 };
 
-	glLightModeli( GL_LIGHT_MODEL_COLOR_CONTROL_EXT,
-                 GL_SEPARATE_SPECULAR_COLOR_EXT );
+  glLightModeli( GL_LIGHT_MODEL_COLOR_CONTROL_EXT,
+      GL_SEPARATE_SPECULAR_COLOR_EXT );
   glLightfv( GL_LIGHT0, GL_AMBIENT, ambientLight );
   glLightfv( GL_LIGHT0, GL_DIFFUSE, diffuseLight );
   glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
@@ -127,6 +125,35 @@ void GLWidget::setCamera()
   glTranslated ( 0.0, 0.0, -20.0 );
 }
 
+void GLWidget::rotate(float x, float y, float z)
+{
+  glPushMatrix();
+  glLoadIdentity();
+  glRotated( x, 1.0, 0.0, 0.0 );
+  glRotated( y, 0.0, 1.0, 0.0 );
+  glRotated( z, 0.0, 0.0, 1.0 );
+  glMultMatrixd( _RotationMatrix );
+  glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
+  glPopMatrix();
+}
+
+void GLWidget::translate(float x, float y, float z)
+{
+  _TranslationVector[0] = _TranslationVector[0] + x;
+  _TranslationVector[1] = _TranslationVector[1] + y;
+  _TranslationVector[2] = _TranslationVector[2] + z;
+}
+
+void GLWidget::setScale(float s)
+{
+  _Scale = s;
+}
+
+float GLWidget::getScale()
+{
+  return _Scale;
+}
+
 void GLWidget::render(GLenum mode)
 {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -144,14 +171,16 @@ void GLWidget::render(GLenum mode)
 
   defaultEngine->render(&defaultQueue);
 
-  glCallList(_selectionDL);
+  for(int i=0; i<_displayLists.size(); i++) {
+    glCallList(_displayLists[i]);
+  }
 
   glFlush();
 }
 
 void GLWidget::paintGL()
 { 
-//X   printf("Painting.\n");
+  //X   printf("Painting.\n");
 
   // Reset the projection
   glMatrixMode(GL_PROJECTION);
@@ -165,253 +194,27 @@ void GLWidget::paintGL()
 
 void GLWidget::mousePressEvent( QMouseEvent * event )
 {
-  // See if this click has hit any in our molecule
-  // Offset by 2 because we want the cursor to be in the middle of the region.
-  selectRegion(event->pos().x()-2, event->pos().y()-2, 5, 5);
-
-  _movedSinceButtonPressed = false;
-  _lastDraggingPosition = event->pos ();
-  _initialDraggingPosition = event->pos ();
+  currentTool->mousePress(this, event);
 }
 
 void GLWidget::mouseReleaseEvent( QMouseEvent * event )
 {
-  // TODO: Fix this!
-  if(_selectionDL)
-  {
-    glNewList(_selectionDL, GL_COMPILE);
-    glEndList();
-  }
-
-  if(!_movedSinceButtonPressed && _hits.size())
-  {
-    for(int i=0; i < _hits.size(); i++) {
-      if(_hits[i].type == atomType)
-      {
-        ((Atom *)molecule->GetAtom(_hits[i].name))->toggleSelected();
-        break;
-      }
-      else if(_hits[i].type == bondType)
-      {
-        ((Bond *)molecule->GetBond(_hits[i].name))->toggleSelected();
-        break;
-      }
-    }
-  }
-  else if(_movedSinceButtonPressed && !_hits.size())
-  {
-    int sx = qMin(_initialDraggingPosition.x(), _lastDraggingPosition.x());
-    int ex = qMax(_initialDraggingPosition.x(), _lastDraggingPosition.x());
-    int sy = qMin(_initialDraggingPosition.y(), _lastDraggingPosition.y());
-    int ey = qMax(_initialDraggingPosition.y(), _lastDraggingPosition.y());
-    qDebug("(%d, %d)", _initialDraggingPosition.x(),_initialDraggingPosition.y());
-    qDebug("(%d, %d)", _lastDraggingPosition.x(),_lastDraggingPosition.y());
-    qDebug("(%d, %d)", sx, sy);
-    qDebug("(%d, %d)", ex, ey);
-    int w = ex-sx;
-    int h = ey-sy;
-    // (sx, sy) = Upper left most position.
-    // (ex, ey) = Bottom right most position.
-    selectRegion(sx, sy, w, h);
-    for(int i=0; i < _hits.size(); i++) {
-      if(_hits[i].type == atomType)
-      {
-        ((Atom *)molecule->GetAtom(_hits[i].name))->toggleSelected();
-      }
-      else if(_hits[i].type == bondType)
-      {
-        ((Bond *)molecule->GetBond(_hits[i].name))->toggleSelected();
-      }
-    }
-  }
-
-  updateGL();
+  currentTool->mouseRelease(this, event);
 }
 
 void GLWidget::mouseMoveEvent( QMouseEvent * event )
 {
-  QPoint deltaDragging = event->pos() - _lastDraggingPosition;
-  _lastDraggingPosition = event->pos();
-  if( ( event->pos()
-        - _initialDraggingPosition ).manhattanLength() > 2 )
-    _movedSinceButtonPressed = true;
-
-  if( _hits.size() )
-  {
-    if( event->buttons() & Qt::LeftButton )
-    {
-      glPushMatrix();
-      glLoadIdentity();
-      glRotated( deltaDragging.x(), 0.0, 1.0, 0.0 );
-      glRotated( deltaDragging.y(), 1.0, 0.0, 0.0 );
-      glMultMatrixd( _RotationMatrix );
-      glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
-      glPopMatrix();
-    }
-    else if ( event->buttons() & Qt::RightButton )
-    {
-      deltaDragging = _initialDraggingPosition - event->pos();
-
-      _TranslationVector[0] = -deltaDragging.x() / 5.0;
-      _TranslationVector[1] = deltaDragging.y() / 5.0;
-    }
-    else if ( event->buttons() & Qt::MidButton )
-    {
-      deltaDragging = _initialDraggingPosition - event->pos();
-      int xySum = deltaDragging.x() + deltaDragging.y();
-
-      if (xySum < 0)
-        _Scale = deltaDragging.manhattanLength() / 5.0;
-      else if (xySum > 0)
-        _Scale = 1.0 / deltaDragging.manhattanLength();
-    }
-  }
-  else
-  {
-    GLint viewport[4];
-    glGetIntegerv(GL_VIEWPORT,viewport);
-    selectionBox(_initialDraggingPosition.x(), _initialDraggingPosition.y(),
-        _lastDraggingPosition.x(), _lastDraggingPosition.y());
-  }
-
-  updateGL();
+  currentTool->mouseMove(this, event);
 }
 
-void GLWidget::selectionBox(int sx, int sy, int ex, int ey)
+void GLWidget::addDL(GLuint dl)
 {
-  // XXX: There has to be a better way to do this
-  // besides display lists.  Probably vertex arrays.
-  // Enough for tonite.  Clean later.
-  if(!_selectionDL)
-  {
-    _selectionDL = glGenLists(1);
-  }
-
-  glPushMatrix();
-  glLoadIdentity();
-  GLdouble projection[16];
-  glGetDoublev(GL_PROJECTION_MATRIX,projection);
-  GLdouble modelview[16];
-  glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
-  GLint viewport[4];
-  glGetIntegerv(GL_VIEWPORT,viewport);
-
-  GLdouble startPos[3];
-  GLdouble endPos[3];
-
-  gluUnProject(float(sx), viewport[3] - float(sy), 0.1, modelview, projection, viewport, &startPos[0], &startPos[1], &startPos[2]);
-  gluUnProject(float(ex), viewport[3] - float(ey), 0.1, modelview, projection, viewport, &endPos[0], &endPos[1], &endPos[2]);
-
-  qDebug("(%f, %f, %f)", endPos[0],endPos[1],endPos[2]);
-
-  glNewList(_selectionDL, GL_COMPILE);
-  glMatrixMode(GL_MODELVIEW);
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
-  glPushMatrix();
-  glLoadIdentity();
-  glDisable(GL_CULL_FACE);
-  glEnable(GL_BLEND);
-  glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  Color(1.0, 1.0, 1.0, 0.2).applyAsMaterials();
-  glBegin(GL_POLYGON);
-  glVertex3f(startPos[0],startPos[1],startPos[2]);
-  glVertex3f(startPos[0],endPos[1],startPos[2]);
-  glVertex3f(endPos[0],endPos[1],startPos[2]);
-  glVertex3f(endPos[0],startPos[1],startPos[2]);
-  glEnd();
-  startPos[2] += 0.0001;
-  Color(1.0, 1.0, 1.0, 1.0).applyAsMaterials();
-  glBegin(GL_LINE_LOOP);
-  glVertex3f(startPos[0],startPos[1],startPos[2]);
-  glVertex3f(startPos[0],endPos[1],startPos[2]);
-  glVertex3f(endPos[0],endPos[1],startPos[2]);
-  glVertex3f(endPos[0],startPos[1],startPos[2]);
-  glEnd();
-  glPopMatrix();
-  glPopAttrib();
-  glEndList();
-
-  glPopMatrix();
-
+  _displayLists.append(dl);
 }
 
-void GLWidget::selectRegion(int x, int y, int w, int h)
+void GLWidget::removeDL(GLuint dl)
 {
-  GLuint selectBuf[GL_SEL_BUF_SIZE];
-  GLint viewport[4];
-  int hits;
-
-  int cx = w/2 + x;
-  int cy = h/2 + y;
-
-  _hits.clear();
-
-  glSelectBuffer(GL_SEL_BUF_SIZE,selectBuf);
-  glRenderMode(GL_SELECT);
-
-  // Setup our limited viewport for picking.
-  glGetIntegerv(GL_VIEWPORT,viewport);
-  glMatrixMode(GL_PROJECTION);
-  glPushMatrix();
-  glLoadIdentity();
-  gluPickMatrix(cx,viewport[3]-cy, w, h,viewport);
-
-  setCamera();
-
-  // Get ready for rendering
-  glMatrixMode(GL_MODELVIEW);
-  glInitNames();
-  render(GL_SELECT);
-
-  // restoring the original projection matrix
-  glPopMatrix();
-  glMatrixMode(GL_PROJECTION);
-  glPopMatrix();
-  glMatrixMode(GL_MODELVIEW);
-  glFlush();
-
-  // returning to normal rendering mode
-  hits = glRenderMode(GL_RENDER);
-
-  // if there are hits process them
-  if (hits != 0)
-    updateHitList(hits,selectBuf);
-}
-
-void GLWidget::updateHitList(GLint hits, GLuint buffer[])
-{
-  unsigned int i, j;
-  GLuint names, type, *ptr;
-  GLuint minZ, maxZ, name;
-
-//X   printf ("hits = %d\n", hits);
-  ptr = (GLuint *) buffer;
-  for (i = 0; i < hits; i++) {
-    names = *ptr++;
-    minZ = *ptr++;
-    maxZ = *ptr++;
-//X     printf (" number of names for this hit = %d\n", names); names;
-//X     printf("  z1 is %g;", (float) *ptr/0x7fffffff); minZ;
-//X     printf(" z2 is %g\n", (float) *ptr/0x7fffffff); maxZ;
-//X     printf ("   names are "); 
-    name = 0;
-    for (j = 0; j < names/2; j++) { /*  for each name */
-      type = *ptr++;
-      name = *ptr++;
-      printf ("%d(%d) ", name,type);
-//X       if (j == 0)  /*  set row and column  */
-//X         ii = *ptr;
-//X       else if (j == 1)
-//X         jj = *ptr;
-//X       ptr++;
-    }
-    if (name)
-    {
-      _hits.append(GLHit(name, type, minZ, maxZ));
-    }
-  }
-  printf ("\n");
-  qSort(_hits);
+  _displayLists.removeAll(dl);
 }
 
 void GLWidget::setView(View *v)
@@ -476,34 +279,69 @@ void GLWidget::setDefaultEngine(Engine *e)
   }
 }
 
+void GLWidget::setTool(Tool *tool)
+{
+  qDebug() << "Setting Current Tool: " << tool->name() << " - " << tool->description(); 
+  currentTool = tool;
+}
+
+Tool* GLWidget::getTool()
+{
+  return currentTool;
+}
+
+void GLWidget::loadTools()
+{
+  QDir pluginsDir = QDir(qApp->applicationDirPath());
+
+  if (!pluginsDir.cd("tools") && getenv("AVOGADRO_TOOLS") != NULL)
+  {
+    pluginsDir.cd(getenv("AVOGADRO_TOOLS"));
+  }
+
+  qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
+  foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
+    QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+    Tool *tool = qobject_cast<Tool *>(loader.instance());
+    if (tool) {
+      qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
+      if (!currentTool)
+      {
+        setTool(tool);
+      }
+      tools.append(tool);
+    }
+  }
+}
+
 void GLWidget::loadEngines()
 {
   QDir pluginsDir = QDir(qApp->applicationDirPath());
 
-  if (!pluginsDir.cd("engines") && getenv("AVOGADRO_PLUGINS") != NULL)
+  if (!pluginsDir.cd("engines") && getenv("AVOGADRO_ENGINES") != NULL)
   {
-    pluginsDir.cd(getenv("AVOGADRO_PLUGINS"));
+    pluginsDir.cd(getenv("AVOGADRO_ENGINES"));
   }
 
   qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
   // load static plugins first
-//   foreach (QObject *plugin, QPluginLoader::staticInstances())
-//   {
-//     Engine *r = qobject_cast<Engine *>(plugin);
-//     if (r)
-//     {
-//       qDebug() << "Loaded Engine: " << r->name() << endl;
-//       if( defaultEngine == NULL )
-//         defaultEngine = r;
-//     }
-//   }
+  //   foreach (QObject *plugin, QPluginLoader::staticInstances())
+  //   {
+  //     Engine *r = qobject_cast<Engine *>(plugin);
+  //     if (r)
+  //     {
+  //       qDebug() << "Loaded Engine: " << r->name() << endl;
+  //       if( defaultEngine == NULL )
+  //         defaultEngine = r;
+  //     }
+  //   }
 
   foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
     QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
     EngineFactory *factory = qobject_cast<EngineFactory *>(loader.instance());
     if (factory) {
       Engine *engine = factory->createInstance();
-      qDebug() << "Found Plugin: " << engine->name() << " - " << engine->description(); 
+      qDebug() << "Found Engine: " << engine->name() << " - " << engine->description(); 
       if (!defaultEngine)
       {
         qDebug() << "Setting Default Engine: " << engine->name() << " - " << engine->description(); 
@@ -514,3 +352,83 @@ void GLWidget::loadEngines()
   }
 }
 
+#define GL_SEL_BUF_SIZE 512
+
+QList<GLHit> GLWidget::getHits(int x, int y, int w, int h)
+{
+  QList<GLHit> hits;
+  GLuint selectBuf[GL_SEL_BUF_SIZE];
+  GLint viewport[4];
+  unsigned int hit_count;
+
+  int cx = w/2 + x;
+  int cy = h/2 + y;
+
+  //X   hits.clear();
+
+  glSelectBuffer(GL_SEL_BUF_SIZE,selectBuf);
+  glRenderMode(GL_SELECT);
+
+  // Setup our limited viewport for picking.
+  glGetIntegerv(GL_VIEWPORT,viewport);
+  glMatrixMode(GL_PROJECTION);
+  glPushMatrix();
+  glLoadIdentity();
+  gluPickMatrix(cx,viewport[3]-cy, w, h,viewport);
+
+  setCamera();
+
+  // Get ready for rendering
+  glMatrixMode(GL_MODELVIEW);
+  glInitNames();
+  render(GL_SELECT);
+
+  // restoring the original projection matrix
+  glPopMatrix();
+  glMatrixMode(GL_PROJECTION);
+  glPopMatrix();
+  glMatrixMode(GL_MODELVIEW);
+  glFlush();
+
+  // returning to normal rendering mode
+  hit_count = glRenderMode(GL_RENDER);
+
+  // if there are hits process them
+  if (hit_count != 0)
+  {
+    unsigned int i, j;
+    GLuint names, type, *ptr;
+    GLuint minZ, maxZ, name;
+
+    //X   printf ("hits = %d\n", hits);
+    ptr = (GLuint *) selectBuf;
+    for (i = 0; i < hit_count; i++) {
+      names = *ptr++;
+      minZ = *ptr++;
+      maxZ = *ptr++;
+      //X     printf (" number of names for this hit = %d\n", names); names;
+      //X     printf("  z1 is %g;", (float) *ptr/0x7fffffff); minZ;
+      //X     printf(" z2 is %g\n", (float) *ptr/0x7fffffff); maxZ;
+      //X     printf ("   names are "); 
+      name = 0;
+      for (j = 0; j < names/2; j++) { /*  for each name */
+        type = *ptr++;
+        name = *ptr++;
+        printf ("%d(%d) ", name,type);
+        //X       if (j == 0)  /*  set row and column  */
+        //X         ii = *ptr;
+        //X       else if (j == 1)
+        //X         jj = *ptr;
+        //X       ptr++;
+      }
+      if (name)
+      {
+        hits.append(GLHit(name, type, minZ, maxZ));
+      }
+    }
+    printf ("\n");
+    qSort(hits);
+  }
+
+  return(hits);
+}

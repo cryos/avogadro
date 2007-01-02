@@ -11,6 +11,8 @@ QT += opengl
 CONFIG += link_pkgconfig 
 PKGCONFIG += openbabel-2.0
 
+QMAKE_LFLAGS += -rdynamic
+
 # Input
 HEADERS += MainWindow.h GLWidget.h defines.h
 SOURCES += MainWindow.cpp GLWidget.cpp main.cpp
@@ -18,6 +20,8 @@ HEADERS += Primitives.h
 SOURCES += Primitives.cpp
 HEADERS += Views.h
 SOURCES += Views.cpp
+HEADERS += Tool.h
+SOURCES += Tool.cpp
 HEADERS += color.h
 SOURCES += color.cpp
 
