@@ -65,3 +65,4 @@ void Color::applyAsMaterials()
 	glMaterialfv( GL_FRONT, GL_SPECULAR, specularColor );
 	glMaterialf( GL_FRONT, GL_SHININESS, 50.0 );
 }
+

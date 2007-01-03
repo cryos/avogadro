@@ -6,6 +6,8 @@ set(libavogadro_SRCS
 	glwidget.cpp
 	color.cpp
 	primitives.cpp
+	cylinder.cpp
+	sphere.cpp
 )
 
 set(libavogadro_HDRS
@@ -13,6 +15,8 @@ set(libavogadro_HDRS
 	color.h
 	primitives.h
 	engine.h
+	cylinder.h
+	sphere.h
 )
 
 include_directories(${OPENBABEL_INCLUDE_DIR})
