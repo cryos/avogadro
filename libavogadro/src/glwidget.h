@@ -23,17 +23,16 @@
 #ifndef __GLWIDGET_H
 #define __GLWIDGET_H
 
-#include "Primitives.h"
-#include "Views.h"
-#include "Engine.h"
-#include "Tool.h"
+#include "engine.h"
 #include "color.h"
 
 #include <QGLWidget>
 #include <QMouseEvent>
+#include <QDir>
+#include <QDebug>
+#include <QPluginLoader>
 
 #include <vector>
-
 
 namespace Avogadro {
 
@@ -54,23 +53,15 @@ namespace Avogadro {
   {
     Q_OBJECT
 
-    friend class Tool;
-
     public:
       GLWidget(QWidget *parent = 0);
       GLWidget(const QGLFormat &format, QWidget *parent = 0);
-
-      void setView(View *v);
-      View* getView() { return view; }
 
       Engine *getDefaultEngine() { return defaultEngine; }
       QList<Engine *> getEngines() { return engines; }
 
       void addDL(GLuint dl);
       void removeDL(GLuint dl);
-
-      void setTool(Tool *tool);
-      Tool* getTool();
 
       void setClearColor(const QColor &c) { _clearColor = c; qglClearColor(c);}
       QColor getClearColor() const { return _clearColor;}
@@ -99,7 +90,6 @@ namespace Avogadro {
       virtual void mouseReleaseEvent( QMouseEvent * event );
       virtual void mouseMoveEvent( QMouseEvent * event );
 
-      void loadTools();
       void loadEngines();
 
       void setCamera();
@@ -108,14 +98,10 @@ namespace Avogadro {
       Engine *defaultEngine;
       QList<Engine *> engines;
 
-      Tool *currentTool;
-      QList<Tool *> tools;
-
       PrimitiveQueue defaultQueue;
       QList<PrimitiveQueue> queues;
 
       Molecule *molecule;
-      View *view;
       QList<GLuint> _displayLists;
 
       GLdouble            _RotationMatrix[16];

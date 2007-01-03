@@ -23,7 +23,7 @@
 #ifndef __ENGINE_H
 #define __ENGINE_H
 
-#include "Primitives.h"
+#include "primitives.h"
 
 #include <QString>
 #include <QVector>

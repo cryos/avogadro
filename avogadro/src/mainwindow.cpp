@@ -20,7 +20,9 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "MainWindow.h"
+#include "mainwindow.moc"
+#include <avogadro/glwidget.h>
+#include <avogadro/primitives.h>
 
 #include <fstream>
 
@@ -75,10 +77,6 @@ namespace Avogadro {
 
 
     statusBar()->showMessage(tr("Ready."), 10000);
-  }
-
-  MainWindow::~MainWindow()
-  {
   }
 
   void MainWindow::newFile()

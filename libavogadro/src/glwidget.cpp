@@ -20,9 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "GLWidget.h"
-
-#include "MainWindow.h"
+#include "glwidget.moc"
 
 #include <stdio.h>
 #include <vector>
@@ -44,10 +42,8 @@ GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format,
 void GLWidget::init()
 {
   loadEngines();
-  loadTools();
 
   molecule = NULL;
-  view = new View(this); // nothing to include here
 }
 
 void GLWidget::initializeGL()
@@ -169,7 +165,8 @@ void GLWidget::render(GLenum mode)
   glScaled(_Scale, _Scale, _Scale);
   glMultMatrixd(_RotationMatrix);
 
-  defaultEngine->render(&defaultQueue);
+  if(defaultEngine)
+    defaultEngine->render(&defaultQueue);
 
   for(int i=0; i<_displayLists.size(); i++) {
     glCallList(_displayLists[i]);
@@ -194,17 +191,14 @@ void GLWidget::paintGL()
 
 void GLWidget::mousePressEvent( QMouseEvent * event )
 {
-  currentTool->mousePress(this, event);
 }
 
 void GLWidget::mouseReleaseEvent( QMouseEvent * event )
 {
-  currentTool->mouseRelease(this, event);
 }
 
 void GLWidget::mouseMoveEvent( QMouseEvent * event )
 {
-  currentTool->mouseMove(this, event);
 }
 
 void GLWidget::addDL(GLuint dl)
@@ -215,11 +209,6 @@ void GLWidget::addDL(GLuint dl)
 void GLWidget::removeDL(GLuint dl)
 {
   _displayLists.removeAll(dl);
-}
-
-void GLWidget::setView(View *v)
-{
-  view = v;
 }
 
 void GLWidget::setMolecule(Molecule *m)
@@ -259,10 +248,6 @@ void GLWidget::setMolecule(Molecule *m)
   // add the molecule to the default queue
   defaultQueue.add(m);
 
-  if (view)
-    delete view;
-
-  view = new MoleculeView(molecule, this);
 }
 
 void GLWidget::setDefaultEngine(int i) 
@@ -279,50 +264,50 @@ void GLWidget::setDefaultEngine(Engine *e)
   }
 }
 
-void GLWidget::setTool(Tool *tool)
-{
-  qDebug() << "Setting Current Tool: " << tool->name() << " - " << tool->description(); 
-  currentTool = tool;
-}
-
-Tool* GLWidget::getTool()
-{
-  return currentTool;
-}
-
-void GLWidget::loadTools()
-{
-  QDir pluginsDir = QDir(qApp->applicationDirPath());
-
-  if (!pluginsDir.cd("tools") && getenv("AVOGADRO_TOOLS") != NULL)
-  {
-    pluginsDir.cd(getenv("AVOGADRO_TOOLS"));
-  }
-
-  qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
-  foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
-    QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-    Tool *tool = qobject_cast<Tool *>(loader.instance());
-    if (tool) {
-      qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
-      if (!currentTool)
-      {
-        setTool(tool);
-      }
-      tools.append(tool);
-    }
-  }
-}
+//X:void GLWidget::setTool(Tool *tool)
+//X:{
+//X:  qDebug() << "Setting Current Tool: " << tool->name() << " - " << tool->description(); 
+//X:  currentTool = tool;
+//X:}
+//X:
+//X:Tool* GLWidget::getTool()
+//X:{
+//X:  return currentTool;
+//X:}
+//X:
+//X:void GLWidget::loadTools()
+//X:{
+//X:  QDir pluginsDir = QDir(qApp->applicationDirPath());
+//X:
+//X:  if (!pluginsDir.cd("tools") && getenv("AVOGADRO_TOOLS") != NULL)
+//X:  {
+//X:    pluginsDir.cd(getenv("AVOGADRO_TOOLS"));
+//X:  }
+//X:
+//X:  qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
+//X:  foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
+//X:    QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+//X:    Tool *tool = qobject_cast<Tool *>(loader.instance());
+//X:    if (tool) {
+//X:      qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
+//X:      if (!currentTool)
+//X:      {
+//X:        setTool(tool);
+//X:      }
+//X:      tools.append(tool);
+//X:    }
+//X:  }
+//X:}
 
 void GLWidget::loadEngines()
 {
-  QDir pluginsDir = QDir(qApp->applicationDirPath());
+  QDir pluginsDir("/usr/local/lib/avogadro");
 
-  if (!pluginsDir.cd("engines") && getenv("AVOGADRO_ENGINES") != NULL)
-  {
-    pluginsDir.cd(getenv("AVOGADRO_ENGINES"));
-  }
-
+//X:  if (!pluginsDir.cd("") && getenv("AVOGADRO_ENGINES") != NULL)
+//X:  {
+//X:    pluginsDir.cd(getenv("AVOGADRO_ENGINES"));
+//X:  }
+//X:
   qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
   // load static plugins first
   //   foreach (QObject *plugin, QPluginLoader::staticInstances())
@@ -338,6 +323,7 @@ void GLWidget::loadEngines()
 
   foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
     QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+    qDebug() << "File: " << fileName;
     EngineFactory *factory = qobject_cast<EngineFactory *>(loader.instance());
     if (factory) {
       Engine *engine = factory->createInstance();

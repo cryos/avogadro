@@ -26,7 +26,7 @@
 #include <QMainWindow>
 #include <QtGui>
 
-#include "GLWidget.h"
+#include <avogadro/glwidget.h>
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 
@@ -39,7 +39,6 @@ namespace Avogadro {
     public:
       MainWindow();
       MainWindow(const QString &fileName);
-      ~MainWindow();
 
       bool loadFile(const QString &fileName);
       bool saveFile(const QString &fileName);

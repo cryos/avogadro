@@ -20,8 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "Primitives.h"
-#include "MainWindow.h"
+#include "primitives.moc"
 
 using namespace Avogadro;
 

@@ -30,7 +30,7 @@
 
 #include <openbabel/mol.h>
 
-#include "Engine.h"
+#include "../engine.h"
 #include "vertexarray.h"
 
 namespace Avogadro {
@@ -42,7 +42,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-  BSEngine() : Engine() {}
+      BSEngine() : Engine() {}
       //! Deconstructor
       ~BSEngine() {}
 

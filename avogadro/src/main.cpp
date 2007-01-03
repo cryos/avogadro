@@ -25,7 +25,7 @@
 #include <QMessageBox>
 
 // Avogadro Includes
-#include "MainWindow.h"
+#include "mainwindow.h"
 
 using namespace Avogadro;
 
