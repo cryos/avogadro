@@ -18,4 +18,4 @@ TARGET_LINK_LIBRARIES(avogadro ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES} ${AVOGADR
 
 INSTALL(TARGETS avogadro DESTINATION bin)
 
-#add_subdirectory(engines)
+add_subdirectory(tools)

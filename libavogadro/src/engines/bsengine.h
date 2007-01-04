@@ -31,7 +31,8 @@
 #include <openbabel/mol.h>
 
 #include "../engine.h"
-#include "vertexarray.h"
+#include "../sphere.h"
+#include "../cylinder.h"
 
 namespace Avogadro {
 

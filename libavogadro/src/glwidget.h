@@ -80,6 +80,11 @@ namespace Avogadro {
       void setDefaultEngine(int i);
       void setDefaultEngine(Engine *e);
 
+    signals:
+      void mousePress( QMouseEvent * event );
+      void mouseRelease( QMouseEvent * event );
+      void mouseMove( QMouseEvent * event );
+
     protected:
       void init();
       virtual void initializeGL();

@@ -34,13 +34,13 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  MainWindow::MainWindow()
+  MainWindow::MainWindow() : currentTool(NULL)
   {
     init();
     setCurrentFile("");
   }
 
-  MainWindow::MainWindow(const QString &fileName)
+  MainWindow::MainWindow(const QString &fileName) : currentTool(NULL)
   {
     init();
     loadFile(fileName);
@@ -68,13 +68,23 @@ namespace Avogadro {
     // add all gl engines to the dropdown
     QList<Engine *> engines = gl->getEngines();
     for(int i=0; i< engines.size(); ++i) {
-      cbEngine->insertItem(i, engines.at(i)->description());
+      Engine *engine = engines.at(i);
+      cbEngine->insertItem(i, engine->description(), QVariant(engine));
     }
+
+    loadTools();
+
     // set the default to whatever GL has selected as default on startup
     cbEngine->setCurrentIndex(engines.indexOf(gl->getDefaultEngine()));
-    // setup our signal
-    connect(cbEngine, SIGNAL(activated(int)), gl, SLOT(setDefaultEngine(int)));
+    cbTool->setCurrentIndex(tools.indexOf(currentTool));
 
+    connect(cbEngine, SIGNAL(activated(int)), gl, SLOT(setDefaultEngine(int)));
+    connect(cbTool, SIGNAL(activated(int)), this, SLOT(setCurrentTool(int)));
+
+
+    connect(gl, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(glMousePress(QMouseEvent *)));
+    connect(gl, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(glMouseMove(QMouseEvent *)));
+    connect(gl, SIGNAL(mouseRelease(QMouseEvent*)), this, SLOT(glMouseRelease(QMouseEvent *)));
 
     statusBar()->showMessage(tr("Ready."), 10000);
   }
@@ -160,10 +170,10 @@ namespace Avogadro {
     if (QFile::exists(fileName)) {
       QMessageBox::StandardButton ret;
       ret = QMessageBox::warning(this, tr("Avogadro"),
-                                   tr("File %1 already exists.\n"
-                                      "Do you want to overwrite it?")
-                                   .arg(QDir::convertSeparators(fileName)),
-                                   QMessageBox::Yes | QMessageBox::Cancel);
+          tr("File %1 already exists.\n"
+            "Do you want to overwrite it?")
+          .arg(QDir::convertSeparators(fileName)),
+          QMessageBox::Yes | QMessageBox::Cancel);
       if (ret == QMessageBox::Cancel)
         return false;
     }
@@ -178,11 +188,11 @@ namespace Avogadro {
 
     // render it (with alpha channel)
     if (!gl->grabFrameBuffer(true).save(fileName))
-      {
-        QMessageBox::warning(this, tr("Avogadro"),
-                               tr("Cannot save file %1.").arg(fileName));
-        return;
-      }
+    {
+      QMessageBox::warning(this, tr("Avogadro"),
+          tr("Cannot save file %1.").arg(fileName));
+      return;
+    }
   }
 
   void MainWindow::revert()
@@ -204,10 +214,10 @@ namespace Avogadro {
     if (isModified) {
       QMessageBox::StandardButton ret;
       ret = QMessageBox::warning(this, tr("Avogadro"),
-                                   tr("The document has been modified.\n"
-                                      "Do you want to save your changes?"),
-                                   QMessageBox::Save | QMessageBox::Discard
-                                   | QMessageBox::Cancel);
+          tr("The document has been modified.\n"
+            "Do you want to save your changes?"),
+          QMessageBox::Save | QMessageBox::Discard
+          | QMessageBox::Cancel);
       if (ret == QMessageBox::Save)
         return save();
       else if (ret == QMessageBox::Cancel)
@@ -228,7 +238,7 @@ namespace Avogadro {
   void MainWindow::about()
   {
     QMessageBox::about(this, tr("About Avogadro"),
-                         tr("Avogadro is an avanced molecular editor."));
+        tr("Avogadro is an avanced molecular editor."));
   }
 
   void MainWindow::fullScreen()
@@ -298,7 +308,7 @@ namespace Avogadro {
       actionRecentFile[i] = new QAction(this);
       actionRecentFile[i]->setVisible(false);
       connect(actionRecentFile[i], SIGNAL(triggered()),
-              this, SLOT(openRecentFile()));
+          this, SLOT(openRecentFile()));
     }
 
     actionClearRecentMenu = new QAction(tr("&Clear Menu"), this);
@@ -374,6 +384,9 @@ namespace Avogadro {
     cbEngine = new QComboBox;
     (toolBar->addWidget(cbEngine))->setVisible(true);
 
+    cbTool = new QComboBox;
+    (toolBar->addWidget(cbTool))->setVisible(true);
+
     toolBar->setOrientation(Qt::Horizontal);
     this->addToolBar(static_cast<Qt::ToolBarArea>(4), toolBar);
   }
@@ -383,9 +396,9 @@ namespace Avogadro {
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
       QMessageBox::warning(this, tr("Avogadro"),
-                             tr("Cannot read file %1:\n%2.")
-                             .arg(fileName)
-                             .arg(file.errorString()));
+          tr("Cannot read file %1:\n%2.")
+          .arg(fileName)
+          .arg(file.errorString()));
       return false;
     }
     file.close();
@@ -396,31 +409,31 @@ namespace Avogadro {
     OBFormat     *inFormat = conv.FormatFromExt((fileName.toStdString()).c_str());
     if (!inFormat || !conv.SetInFormat(inFormat)) {
       QMessageBox::warning(this, tr("Avogadro"),
-                             tr("Cannot read file format of file %1.")
-                             .arg(fileName));
+          tr("Cannot read file format of file %1.")
+          .arg(fileName));
       return false;
     }
     ifstream     ifs;
     ifs.open((fileName.toStdString()).c_str());
     if (!ifs) { // shouldn't happen, already checked file above
       QMessageBox::warning(this, tr("Avogadro"),
-                             tr("Cannot read file %1.")
-                             .arg(fileName));
+          tr("Cannot read file %1.")
+          .arg(fileName));
       return false;
     }
 
     Molecule *molecule = new Molecule;
     if (conv.Read(molecule, &ifs) && molecule->NumAtoms() != 0)
-      {
-        QString status;
-        QTextStream(&status) << "Atoms: " << molecule->NumAtoms() <<
-          " Bonds: " << molecule->NumBonds();
-        statusBar()->showMessage(status, 5000);
+    {
+      QString status;
+      QTextStream(&status) << "Atoms: " << molecule->NumAtoms() <<
+        " Bonds: " << molecule->NumBonds();
+      statusBar()->showMessage(status, 5000);
 
-        gl->setMolecule(molecule);
-        gl->updateGL();
-        QApplication::restoreOverrideCursor();
-      }
+      gl->setMolecule(molecule);
+      gl->updateGL();
+      QApplication::restoreOverrideCursor();
+    }
     else {
       statusBar()->showMessage("Reading molecular file failed.", 5000);
       QApplication::restoreOverrideCursor();
@@ -437,9 +450,9 @@ namespace Avogadro {
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
       QMessageBox::warning(this, tr("Avogadro"),
-                             tr("Cannot write to the file %1:\n%2.")
-                             .arg(fileName)
-                             .arg(file.errorString()));
+          tr("Cannot write to the file %1:\n%2.")
+          .arg(fileName)
+          .arg(file.errorString()));
       return false;
     }
 
@@ -450,16 +463,16 @@ namespace Avogadro {
     OBFormat     *outFormat = conv.FormatFromExt((fileName.toStdString()).c_str());
     if (!outFormat || !conv.SetOutFormat(outFormat)) {
       QMessageBox::warning(this, tr("Avogadro"),
-                             tr("Cannot write to file format of file %1.")
-                             .arg(fileName));
+          tr("Cannot write to file format of file %1.")
+          .arg(fileName));
       return false;
     }
     ofstream     ofs;
     ofs.open((fileName.toStdString()).c_str());
     if (!ofs) { // shouldn't happen, already checked file above
       QMessageBox::warning(this, tr("Avogadro"),
-                             tr("Cannot write to the file %1.")
-                             .arg(fileName));
+          tr("Cannot write to the file %1.")
+          .arg(fileName));
       return false;
     }
 
@@ -484,17 +497,17 @@ namespace Avogadro {
     }
     else
       setWindowTitle(tr("%1 - %2").arg(strippedName(currentFile))
-                     .arg(tr("Avogadro")));
-    
+          .arg(tr("Avogadro")));
+
     QSettings settings; // already set up properly via main.cpp
     QStringList files = settings.value("recentFileList").toStringList();
     files.removeAll(fileName);
     files.prepend(fileName);
     while (files.size() > maxRecentFiles)
       files.removeLast();
-    
+
     settings.setValue("recentFileList", files);
-    
+
     foreach (QWidget *widget, QApplication::topLevelWidgets()) {
       MainWindow *mainWin = qobject_cast<MainWindow *>(widget);
       if (mainWin)
@@ -551,6 +564,65 @@ namespace Avogadro {
     QSettings settings;
     settings.setValue("pos", pos());
     settings.setValue("size", size());
+  }
+
+  void MainWindow::loadTools()
+  {
+    QDir pluginsDir("/usr/local/lib/avogadro");
+
+    if(getenv("AVOGADRO_TOOLS") != NULL)
+    {
+      pluginsDir.cd(getenv("AVOGADRO_TOOLS"));
+    }
+
+    //dc:  if (!pluginsDir.cd("tools") && getenv("AVOGADRO_TOOLS") != NULL)
+    //dc:  {
+    //dc:    pluginsDir.cd(getenv("AVOGADRO_TOOLS"));
+    //dc:  }
+
+    qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
+      QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+      qDebug() << "File: " << fileName;
+      Tool *tool = qobject_cast<Tool *>(loader.instance());
+      if (tool) {
+        qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
+        if (!currentTool)
+        {
+          setCurrentTool(tool);
+          cbTool->addItem(tool->description(), QVariant(tool));
+        }
+        tools.append(tool);
+      }
+    }
+  }
+
+  void MainWindow::setCurrentTool(int i)
+  {
+    setCurrentTool(tools.at(i));
+  }
+
+  void MainWindow::setCurrentTool(Tool *tool)
+  {
+    currentTool = tool;
+  }
+
+  void MainWindow::glMousePress(QMouseEvent *event)
+  {
+    if(currentTool)
+      currentTool->mousePress(gl, event);
+  }
+
+  void MainWindow::glMouseMove(QMouseEvent *event)
+  {
+    if(currentTool)
+      currentTool->mouseMove(gl, event);
+  }
+
+  void MainWindow::glMouseRelease(QMouseEvent *event)
+  {
+    if(currentTool)
+      currentTool->mouseRelease(gl, event);
   }
 
 } // end namespace Avogadro

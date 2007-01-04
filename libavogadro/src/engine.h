@@ -31,26 +31,6 @@
 
 namespace Avogadro {
 
-  class PrimitiveQueue
-  {
-    public:
-      PrimitiveQueue() { for( int i=0; i<numTypes; i++ ) { _queue.append(new QList<Primitive *>()); } }
-
-      QList<Primitive *>* getTypeQueue(int t) { 
-        return(_queue[t]); 
-      }
-
-      void add(Primitive *p) { _queue[p->getType()]->append(p); }
-      void clear() {
-        for( int i=0; i<_queue.size(); i++ ) {
-          _queue[i]->clear();
-        }
-      }
-
-    private:
-      QList< QList<Primitive *>* > _queue;
-  };
-
   //! Base class for our GL engines
  class Engine
   {

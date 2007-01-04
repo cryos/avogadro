@@ -20,10 +20,10 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "SelectRotate.h"
-#include "Primitives.h"
-#include "color.h"
-#include "GLWidget.h"
+#include "selectrotate.moc"
+#include <avogadro/primitives.h>
+#include <avogadro/color.h>
+#include <avogadro/glwidget.h>
 
 #include <openbabel/obiter.h>
 
@@ -35,7 +35,6 @@ using namespace Avogadro;
 
 SelectRotate::SelectRotate() : Tool()
 {
-  _selectionDL = glGenLists(1);
 }
 
 void SelectRotate::initialize()
@@ -166,6 +165,12 @@ void SelectRotate::mouseMove(GLWidget *widget, const QMouseEvent *event)
 
 void SelectRotate::selectionBox(int sx, int sy, int ex, int ey)
 {
+  if(!_selectionDL)
+  {
+    _selectionDL = glGenLists(1);
+  }
+
+  qDebug() << "Display List: " << _selectionDL;
   glPushMatrix();
   glLoadIdentity();
   GLdouble projection[16];

@@ -30,6 +30,8 @@
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 
+#include "tool.h"
+
 namespace Avogadro {
 
   class MainWindow : public QMainWindow
@@ -63,8 +65,18 @@ namespace Avogadro {
 
       void documentWasModified();
 
+      void setCurrentTool(Tool *tool);
+      void setCurrentTool(int i);
+
+      void glMousePress(QMouseEvent *event);
+      void glMouseMove(QMouseEvent *event);
+      void glMouseRelease(QMouseEvent *event);
+
     private:
       GLWidget  *gl;
+      Tool      *currentTool;
+      QList<Tool *> tools;
+
       QString    currentFile;
       bool       isModified;
       QUndoStack *undo;
@@ -100,6 +112,7 @@ namespace Avogadro {
       QAction    *actionAbout;
 
       QComboBox  *cbEngine;
+      QComboBox  *cbTool;
 
       void init();
       void readSettings();
@@ -111,6 +124,8 @@ namespace Avogadro {
       void setCurrentFile(const QString &fileName);
       void updateRecentFileActions();
       QString strippedName(const QString &fullFileName);
+
+      void loadTools();
 
       MainWindow *findMainWindow(const QString &fileName);
   };

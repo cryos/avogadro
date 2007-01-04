@@ -33,7 +33,8 @@ GLWidget::GLWidget(QWidget *parent ) : QGLWidget(parent), defaultEngine(NULL), _
   init();
 }
 
-GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent), defaultEngine(NULL), _clearColor(Qt::black)
+GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent), 
+  defaultEngine(NULL), _clearColor(Qt::black)
 {
   printf("Constructor\n");
   init();
@@ -169,6 +170,7 @@ void GLWidget::render(GLenum mode)
     defaultEngine->render(&defaultQueue);
 
   for(int i=0; i<_displayLists.size(); i++) {
+    qDebug() << "Calling DL: " << _displayLists[i] << endl;
     glCallList(_displayLists[i]);
   }
 
@@ -177,8 +179,6 @@ void GLWidget::render(GLenum mode)
 
 void GLWidget::paintGL()
 { 
-  //X   printf("Painting.\n");
-
   // Reset the projection
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
@@ -191,18 +191,22 @@ void GLWidget::paintGL()
 
 void GLWidget::mousePressEvent( QMouseEvent * event )
 {
+  emit mousePress(event);
 }
 
 void GLWidget::mouseReleaseEvent( QMouseEvent * event )
 {
+  emit mouseRelease(event);
 }
 
 void GLWidget::mouseMoveEvent( QMouseEvent * event )
 {
+  emit mouseMove(event);
 }
 
 void GLWidget::addDL(GLuint dl)
 {
+  qDebug() << "Adding DL";
   _displayLists.append(dl);
 }
 
@@ -302,6 +306,11 @@ void GLWidget::setDefaultEngine(Engine *e)
 void GLWidget::loadEngines()
 {
   QDir pluginsDir("/usr/local/lib/avogadro");
+
+  if(getenv("AVOGADRO_ENGINES") != NULL)
+  {
+    pluginsDir.cd(getenv("AVOGADRO_ENGINES"));
+  }
 
 //X:  if (!pluginsDir.cd("") && getenv("AVOGADRO_ENGINES") != NULL)
 //X:  {
