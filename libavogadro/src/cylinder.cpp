@@ -11,33 +11,34 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "sphere.h"
+#include "cylinder.h"
 #include <math.h>
 
 using namespace Avogadro;
 using namespace OpenBabel;
+using namespace Eigen;
 
-Sphere::Sphere()
+Cylinder::Cylinder()
 {
 	m_vertexBuffer = 0;
-	m_indexBuffer = 0;
+	m_normalBuffer = 0;
 	m_displayList = 0;
-	m_detail = 0;
+	m_faces = 0;
 }
 
-Sphere::~Sphere()
+Cylinder::~Cylinder()
 {
 	freeBuffers();
 	if( m_displayList )
 		glDeleteLists( m_displayList, 1 );
 }
 
-void Sphere::freeBuffers()
+void Cylinder::freeBuffers()
 {
-	if( m_indexBuffer )
+	if( m_normalBuffer )
 	{
-		delete [] m_indexBuffer;
-		m_indexBuffer = 0;
+		delete [] m_normalBuffer;
+		m_normalBuffer = 0;
 	}
 	if( m_vertexBuffer )
 	{
@@ -46,34 +47,19 @@ void Sphere::freeBuffers()
 	}
 }
 
-void Sphere::do_draw() const
+void Cylinder::setup( int faces )
 {
-	glVertexPointer( 3, GL_FLOAT, 0, m_vertexBuffer );
-	glNormalPointer( GL_FLOAT, 0, m_vertexBuffer );
-	glDrawElements( GL_TRIANGLE_STRIP, m_indexCount,
-			GL_UNSIGNED_SHORT, m_indexBuffer );
+	if( faces == m_faces ) return;
+	m_faces = faces;
+	initialize();
 }
 
-void Sphere::draw( const Eigen::Vector3d &center, double radius ) const
+void Cylinder::initialize()
 {
-	glPushMatrix();
-	glTranslated( center.x(), center.y(), center.z() );
-	glScaled( radius, radius, radius );
-#ifdef USE_DISPLAY_LISTS
-	glCallList( m_displayList );
-#else
-	do_draw();
-#endif
-	glPopMatrix();
-}
+	if( m_faces < 3 ) return;
 
-void Sphere::initialize()
-{
-	if( m_detail < 1 ) return;
-
-	// compute number of vertices and indices
-	m_vertexCount = ( 3 * m_detail + 1 ) * ( 5 * m_detail + 1 );
-	m_indexCount = (2 * ( 2 * m_detail + 1 ) + 2 ) * 5 * m_detail;
+	// compute number of vertices
+	m_vertexCount = 2 * m_faces + 2;
 
 	// deallocate any previously allocated buffer
 	freeBuffers();
@@ -81,41 +67,19 @@ void Sphere::initialize()
 	// allocate memory for buffers
 	m_vertexBuffer = new Vector3f[m_vertexCount];
 	if( ! m_vertexBuffer ) return;
-	m_indexBuffer = new unsigned short[m_indexCount];
-	if( ! m_indexBuffer ) return;
+	m_normalBuffer = new Vector3f[m_vertexCount];
+	if( ! m_normalBuffer ) return;
 
-	// build vertex buffer
-	for( int strip = 0; strip < 5; strip++ )
-	for( int column = 1; column < m_detail; column++ )
-	for( int row = column; row <= 2 * m_detail + column; row++ )
-		computeVertex( strip, column, row );
-
-	for( int strip = 1; strip < 5; strip++ )
-	for( int row = 0; row <= 3 * m_detail; row++ )
-		computeVertex( strip, 0, row );
-
-	for( int row = 0; row <= 2 * m_detail; row++ )
-		computeVertex( 0, 0, row );
-
-	for( int row = m_detail; row <= 3 * m_detail; row++ )
-		computeVertex( 4, m_detail, row );
-
-	// build index buffer
-	unsigned int i = 0;
-	for( int strip = 0; strip < 5; strip++ )
-	for( int column = 0; column < m_detail; column++ )
+	// build vertex and normal buffers
+	for( int i = 0; i <= m_faces; i++ )
 	{
-		int row = column;
-		m_indexBuffer[i++] = indexOfVertex( strip, column, row );
-		for( ; row <= 2 * m_detail + column; row++ )
-		{
-			m_indexBuffer[i++] =
-				indexOfVertex( strip, column, row );
-			m_indexBuffer[i++] =
-				indexOfVertex( strip, column + 1, row + 1 );
-		}
-		m_indexBuffer[i++] = indexOfVertex( strip, column + 1,
-			2 * m_detail + column + 1);
+		float angle = 2 * M_PI * i / m_faces;
+		Vector3f v( cosf(angle), sinf(angle), 0.0f );
+		m_normalBuffer[ 2 * i ] = v;
+		m_normalBuffer[ 2 * i + 1 ] = v;
+		m_vertexBuffer[ 2 * i ] = v;
+		m_vertexBuffer[ 2 * i + 1 ] = v;
+		m_vertexBuffer[ 2 * i ].z() = 1.0f;
 	}
 
 #ifdef USE_DISPLAY_LISTS
@@ -129,108 +93,91 @@ void Sphere::initialize()
 #endif
 }
 
-unsigned short Sphere::indexOfVertex( int strip, int column, int row)
+void Cylinder::do_draw() const
 {
-	return ( row + ( 3 * m_detail + 1 ) * ( column + m_detail * strip ) );
+	glVertexPointer( 3, GL_FLOAT, 0, m_vertexBuffer );
+	glNormalPointer( GL_FLOAT, 0, m_normalBuffer );
+	glDrawArrays( GL_QUAD_STRIP, 0, m_vertexCount );
 }
 
-void Sphere::computeVertex( int strip, int column, int row)
+void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
+	double radius, int order, double shift ) const
 {
-	strip %= 5;
-	int next_strip = (strip + 1) % 5;
-
-	// the index of the vertex we want to store the result in
-	unsigned short index = indexOfVertex( strip, column, row );
-
-	// reference to the vertex we want to store the result in
-	Vector3f & vertex = m_vertexBuffer[ index ];
-
-	// the "golden ratio", useful to construct an icosahedron
-	const float phi = ( 1 + sqrt(5) ) / 2;
-
-	// the 12 vertices of the icosahedron
-	const Vector3f northPole( 0, 1, phi );
-	const Vector3f northVertices[5] = {
-		Vector3f( 0, -1, phi ),
-		Vector3f( phi, 0, 1 ),
-		Vector3f( 1, phi, 0 ),
-		Vector3f( -1, phi, 0 ),
-		Vector3f( -phi, 0, 1 ) };
-	const Vector3f southVertices[5] = {
-		Vector3f( -1, -phi, 0 ),
-		Vector3f( 1, -phi, 0 ),
-		Vector3f( phi, 0, -1 ),
-		Vector3f( 0, 1, -phi ),
-		Vector3f( -phi, 0, -1 )
-		 };
-	const Vector3f southPole( 0, -1, -phi );
-
-	// pointers to the 3 vertices of the face of the icosahedron
-	// in which we are
-	const Vector3f *v0, *v1, *v2;
-
-	// coordinates of our position inside this face.
-	// range from 0 to m_detail.
-	int  c1, c2;
-
-	// first, normalize the global coords row, column
-	if( row >= 2 * m_detail && column == 0 )
-	{
-		strip--;
-		if( strip < 0 ) strip += 5;
-		next_strip--;
-		if( next_strip < 0 ) next_strip += 5;
-		column = m_detail;
+	// the "axis vector" of the cylinder
+	Vector3d axis = end2 - end1;
+	double axisNorm = axis.norm();
+	if( axisNorm == 0.0 ) return;
+	Vector3d axisNormalized = axis / axisNorm;
+	
+	Vector3d ortho1( axisNormalized.y(), -axisNormalized.x(), 0.0 );
+	double ortho1Norm = ortho1.norm();
+	if( ortho1Norm > 0.001 ) ortho1 /= ortho1Norm;
+	else {
+		ortho1 = Vector3d( 0.0,
+		                   axisNormalized.z(),
+		                   -axisNormalized.y() );
+		ortho1.normalize();
 	}
+	ortho1 *= radius;
 
-	// next, determine in which face we are, and determine the coords
-	// of our position inside this face
-	if( row  <= m_detail )
-	{
-		v0 = &northVertices[strip];
-		v1 = &northPole;
-		v2 = &northVertices[next_strip];
-		c1 = m_detail - row;
-		c2 = column;
-	}
-	else if( row >= 2 * m_detail )
-	{
-		v0 = &southVertices[next_strip];
-		v1 = &southPole;
-		v2 = &southVertices[strip];
-		c1 = row - 2 * m_detail;
-		c2 = m_detail - column;
-	}
-	else if( row <= m_detail + column )
-	{
-		v0 = &northVertices[next_strip];
-		v1 = &southVertices[next_strip];
-		v2 = &northVertices[strip];
-		c1 = row - m_detail;
-		c2 = m_detail - column;
-	}
+	Vector3d ortho2 = cross( axisNormalized, ortho1 );
+
+	// construct the 4D transformation matrix
+	Matrix4d matrix;
+
+	matrix(0, 0) = ortho1(0);
+	matrix(1, 0) = ortho1(1);
+	matrix(2, 0) = ortho1(2);
+	matrix(3, 0) = 0.0;
+
+	matrix(0, 1) = ortho2(0);
+	matrix(1, 1) = ortho2(1);
+	matrix(2, 1) = ortho2(2);
+	matrix(3, 1) = 0.0;
+
+	matrix(0, 2) = axis(0);
+	matrix(1, 2) = axis(1);
+	matrix(2, 2) = axis(2);
+	matrix(3, 2) = 0.0;
+
+	matrix(0, 3) = end1(0);
+	matrix(1, 3) = end1(1);
+	matrix(2, 3) = end1(2);
+	matrix(3, 3) = 1.0;
+
+	//now we can do the actual drawing !
+	glPushMatrix();
+	glMultMatrixd( matrix.array() );
+	if( order == 1 )
+#		ifdef USE_DISPLAY_LISTS
+			glCallList( m_displayList );
+#		else
+			do_draw();
+#		endif
 	else
 	{
-		v0 = &southVertices[strip];
-		v1 = &southVertices[next_strip];
-		v2 = &northVertices[strip];
-		c1 = column;
-		c2 = 2 * m_detail - row;
+		double angleOffset = 0.0;
+		if( order >= 3 )
+		{
+			if( order == 3 ) angleOffset = 90.0;
+			else angleOffset = 22.5;
+		}
+		
+		double displacementFactor = shift / radius;
+		for( int i = 0; i < order; i++)
+		{
+			glPushMatrix();
+			glRotated( angleOffset + 360.0 * i / order,
+			           0.0, 0.0, 1.0 );
+			glTranslated( displacementFactor, 0.0, 0.0 );
+#			ifdef USE_DISPLAY_LISTS
+				glCallList( m_displayList );
+#			else
+				do_draw();
+#			endif
+			glPopMatrix();
+		}
 	}
-
-	// now, compute the actual coords of the vertex
-	float u1 = static_cast<float>(c1) / m_detail;
-	float u2 = static_cast<float>(c2) / m_detail;
-	vertex = *v0 + u1 * ( *v1 - *v0 ) + u2 * ( *v2 - *v0 );
-
-	// project the vertex onto the sphere
-	vertex.normalize();
-}
-
-void Sphere::setup( int detail )
-{
-	if( detail == m_detail ) return;
-	m_detail = detail;
-	initialize();
+	glPopMatrix();
 }
 

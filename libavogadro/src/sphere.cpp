@@ -16,6 +16,7 @@
 
 using namespace Avogadro;
 using namespace OpenBabel;
+using namespace Eigen;
 
 Sphere::Sphere()
 {

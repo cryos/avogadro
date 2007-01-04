@@ -54,6 +54,10 @@ namespace Avogadro {
     }
 
     /**
+     * Equal overloading operator */
+    Color &operator=( const Color& other );
+
+    /**
      * Applies nice OpenGL materials using this color as the
      * diffuse color while using different shades for the ambient and
      * specular colors. This is only useful if lighting is enabled. */
