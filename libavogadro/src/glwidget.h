@@ -26,6 +26,8 @@
 #include "engine.h"
 #include "color.h"
 
+#include <eigen/projective.h>
+
 #include <QGLWidget>
 #include <QMouseEvent>
 #include <QDir>
@@ -74,11 +76,16 @@ namespace Avogadro {
       void setMolecule(Molecule *m);
       Molecule* getMolecule() { return molecule; }
 
+      /**
+       * Get the hits for a region starting at (x,y) of size (w x y)
+       */
       QList<GLHit> getHits(int x, int y, int w, int h);
 
     public slots:
       void setDefaultEngine(int i);
       void setDefaultEngine(Engine *e);
+
+      void addAtom(Atom *atom);
 
     signals:
       void mousePress( QMouseEvent * event );

@@ -1,5 +1,5 @@
 /**********************************************************************
-  SelectRotate - Selection and Rotation Tool for Avogadro
+  Draw - Drawing Tool for Avogadro
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __SELECTROTATE_H
-#define __SELECTROTATE_H
+#ifndef __DRAW_H
+#define __DRAW_H
 
 #include <QGLWidget>
 #include <QObject>
@@ -33,26 +33,24 @@
 #include <avogadro/glwidget.h>
 #include "../tool.h"
 
-const double ROTATION_SPEED = 0.005;
-
 namespace Avogadro {
 
- class SelectRotate : public QObject, public Tool
+ class Draw : public QObject, public Tool
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::Tool)
     public:
       //! Constructor
-      SelectRotate();
+      Draw();
       //! Deconstructor
-      virtual ~SelectRotate() {}
+      virtual ~Draw() {}
 
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() { return(QString(tr("Select/Rotate"))); }
+      virtual QString name() { return(QString(tr("Draw"))); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() { return(QString(tr("Selection and Rotation Tool"))); }
+      virtual QString description() { return(QString(tr("Drawing Tool"))); }
       //@}
 
       //! \name Tool Methods
@@ -66,22 +64,6 @@ namespace Avogadro {
       virtual void mousePress(GLWidget *widget, const QMouseEvent *event);
       virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event);
       virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);
-
-    protected:
-      void selectionBox(int sx, int sy, int ex, int ey);
-
-      bool                _leftButtonPressed;  // rotation
-      bool                _rightButtonPressed; // translation
-      bool                _midButtonPressed;   // scale / zoom
-      bool                _movedSinceButtonPressed;
-
-      //! Temporary var for adding selection box
-      GLuint _selectionDL;
-
-      QPoint              _initialDraggingPosition;
-      QPoint              _lastDraggingPosition;
-
-      QList<GLHit> _hits;
 
   };
 

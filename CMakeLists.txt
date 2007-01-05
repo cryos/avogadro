@@ -1,4 +1,4 @@
-project(avogadro) # the name of your project
+project(AVOGADRO) # the name of your project
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 

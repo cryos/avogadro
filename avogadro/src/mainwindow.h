@@ -25,6 +25,7 @@
 
 #include <QMainWindow>
 #include <QtGui>
+#include <QObject>
 
 #include <avogadro/glwidget.h>
 #include <openbabel/mol.h>

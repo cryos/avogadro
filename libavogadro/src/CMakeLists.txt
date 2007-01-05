@@ -23,9 +23,10 @@ include_directories(${OPENBABEL2_INCLUDE_DIR} ${EIGEN_INCLUDE_DIR})
 
 qt4_automoc(${libavogadro_SRCS})
 
-ADD_LIBRARY(avogadro SHARED ${libavogadro_SRCS})
+ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS})
+SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 
-INSTALL(TARGETS avogadro DESTINATION lib)
+INSTALL(TARGETS avogadro-lib DESTINATION lib)
 INSTALL(FILES ${libavogadro_HDRS} DESTINATION include/avogadro)
 
 add_subdirectory(engines)

@@ -37,7 +37,7 @@ using namespace Eigen;
 
 bool BSEngine::render(PrimitiveQueue *q)
 {
-  cout << "BSEngine::render" << endl;
+  qDebug() << "BSEngine::render";
 
   QList<Primitive *> *queue;
 

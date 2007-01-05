@@ -19,9 +19,16 @@ set(selectrotate_SRCS
 	selectrotate.cpp
 )
 
-qt4_automoc(${selectrotate_SRCS})
+set(draw_SRCS
+	draw.cpp
+)
+
+qt4_automoc(${selectrotate_SRCS} ${draw_SRCS})
 
 ADD_LIBRARY(selectrotate SHARED ${selectrotate_SRCS})
 TARGET_LINK_LIBRARIES(selectrotate ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES} ${AVOGADRO_LIBRARIES})
-
 INSTALL(TARGETS selectrotate DESTINATION lib/avogadro)
+
+ADD_LIBRARY(draw SHARED ${draw_SRCS})
+TARGET_LINK_LIBRARIES(draw ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES} ${AVOGADRO_LIBRARIES})
+INSTALL(TARGETS draw DESTINATION lib/avogadro)

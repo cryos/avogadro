@@ -81,12 +81,13 @@ namespace Avogadro {
     connect(cbEngine, SIGNAL(activated(int)), gl, SLOT(setDefaultEngine(int)));
     connect(cbTool, SIGNAL(activated(int)), this, SLOT(setCurrentTool(int)));
 
-
     connect(gl, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(glMousePress(QMouseEvent *)));
     connect(gl, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(glMouseMove(QMouseEvent *)));
     connect(gl, SIGNAL(mouseRelease(QMouseEvent*)), this, SLOT(glMouseRelease(QMouseEvent *)));
 
     statusBar()->showMessage(tr("Ready."), 10000);
+
+    qDebug() << "MainWindow Initialized" << endl;
   }
 
   void MainWindow::newFile()
@@ -590,8 +591,8 @@ namespace Avogadro {
         if (!currentTool)
         {
           setCurrentTool(tool);
-          cbTool->addItem(tool->description(), QVariant(tool));
         }
+        cbTool->addItem(tool->description(), QVariant(tool));
         tools.append(tool);
       }
     }
@@ -626,4 +627,3 @@ namespace Avogadro {
   }
 
 } // end namespace Avogadro
-

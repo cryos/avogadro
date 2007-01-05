@@ -67,7 +67,7 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Atom() : Primitive() { setType(atomType); }
+      Atom() : OpenBabel::OBAtom(), Primitive() { setType(atomType); }
   };
 
   class Bond : public Primitive, public OpenBabel::OBBond
@@ -75,7 +75,7 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Bond(): Primitive() { setType(bondType); }
+      Bond(): OpenBabel::OBBond(), Primitive() { setType(bondType); }
   };
 
   class Residue : public Primitive, public OpenBabel::OBResidue
@@ -83,7 +83,34 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Residue(): Primitive() { setType(residueType); }
+      Residue(): OpenBabel::OBResidue(), Primitive() { setType(residueType); }
+  };
+
+  class Molecule : public Primitive, public OpenBabel::OBMol
+  {
+    Q_OBJECT
+
+    public:
+      Molecule() : OpenBabel::OBMol(), Primitive() { setType(moleculeType); }
+
+      Atom *CreateAtom(void);
+      Bond * CreateBond(void);
+      Residue * CreateResidue(void);
+
+//dc:       // coming soon
+//dc:       Atom * NewAtom();
+//dc:       Bond * NewBond();
+//dc:       Residue * NewResidue();
+
+    protected:
+      MainWindow *window;
+      std::vector< Atom * > 	_vatom;
+      std::vector< Bond * > 	_vbond;
+
+    signals:
+      void atomAdded(Atom *atom);
+      void bondAdded(Bond *bond);
+      void residueAdded(Residue *residue);
   };
 
   class PrimitiveQueue
@@ -95,7 +122,9 @@ namespace Avogadro {
         return(_queue[t]); 
       }
 
-      void add(Primitive *p) { _queue[p->getType()]->append(p); }
+      void add(Primitive *p) { 
+        _queue[p->getType()]->append(p); 
+      }
       void clear() {
         for( int i=0; i<_queue.size(); i++ ) {
           _queue[i]->clear();
@@ -104,29 +133,6 @@ namespace Avogadro {
 
     private:
       QList< QList<Primitive *>* > _queue;
-  };
-
-  class Molecule : public Primitive, public OpenBabel::OBMol
-  {
-    Q_OBJECT
-
-    public:
-      Molecule() : Primitive() { setType(moleculeType); }
-      void render();
-
-    protected:
-      Atom * CreateAtom();
-      Bond * CreateBond();
-      Residue * CreateResidue();
-
-      MainWindow *window;
-      std::vector< Atom * > 	_vatom;
-      std::vector< Bond * > 	_vbond;
-
-    signals:
-      void atomAdded(Atom *atom);
-      void bondAdded(Bond *bond);
-      void residueAdded(Residue *residue);
   };
 
 } // namespace Avogadro

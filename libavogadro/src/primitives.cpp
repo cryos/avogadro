@@ -26,25 +26,43 @@ using namespace Avogadro;
 
 Atom * Molecule::CreateAtom()
 {
-  Atom *atom = new Atom();//(Atom *) OBMol::CreateAtom();
-  emit atomAdded(atom);
-
+  std::cout << "Molecule::CreateAtom" << std::endl;
+  Atom *atom = new Atom();
   return(atom);
 }
 
 Bond * Molecule::CreateBond()
 {
-  Bond *bond = new Bond();//(Bond *)OBMol::CreateBond();
-  emit bondAdded(bond);
+  Bond *bond = new Bond();
   return(bond);
 }
 
 Residue * Molecule::CreateResidue()
 {
-  Residue *residue = new Residue();//(Bond *)OBMol::CreateBond();
-  emit residueAdded(residue);
+  Residue *residue = new Residue();
   return(residue);
 }
+
+//dc: Atom * Molecule::NewAtom()
+//dc: {
+//dc:   Atom *atom = (Atom *) OBMol::NewAtom();
+//dc: //  emit atomAdded(atom);
+//dc:   return(atom);
+//dc: }
+//dc: 
+//dc: Bond * Molecule::NewBond()
+//dc: {
+//dc:   Bond *bond = (Bond *)OBMol::NewBond();
+//dc: //  emit bondAdded(bond);
+//dc:   return(bond);
+//dc: }
+//dc: 
+//dc: Residue * Molecule::NewResidue()
+//dc: {
+//dc:   Residue *residue = (Residue *)OBMol::NewResidue();
+//dc: // emit residueAdded(residue);
+//dc:   return(residue);
+//dc: }
 
 //X void Primitive::setEngine(Engine *r)
 //X {

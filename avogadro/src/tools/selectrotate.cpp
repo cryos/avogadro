@@ -54,7 +54,6 @@ void SelectRotate::mousePress(GLWidget *widget, const QMouseEvent *event)
   _lastDraggingPosition = event->pos();
   _initialDraggingPosition = event->pos();
 
-  cout << "MousePress " << event->pos().x() << endl;
   //! List of hits from a selection/pick
   _hits = widget->getHits(event->pos().x()-2, event->pos().y()-2, 5, 5);
 
@@ -68,8 +67,6 @@ void SelectRotate::mousePress(GLWidget *widget, const QMouseEvent *event)
 
 void SelectRotate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
-  cout << "MouseRelease" << endl;
-
   if(!_hits.size())
   {
     widget->removeDL(_selectionDL);
@@ -96,22 +93,26 @@ void SelectRotate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
     int ex = qMax(_initialDraggingPosition.x(), _lastDraggingPosition.x());
     int sy = qMin(_initialDraggingPosition.y(), _lastDraggingPosition.y());
     int ey = qMax(_initialDraggingPosition.y(), _lastDraggingPosition.y());
-    qDebug("(%d, %d)", _initialDraggingPosition.x(),_initialDraggingPosition.y());
-    qDebug("(%d, %d)", _lastDraggingPosition.x(),_lastDraggingPosition.y());
-    qDebug("(%d, %d)", sx, sy);
-    qDebug("(%d, %d)", ex, ey);
+
+//dc:     qDebug("(%d, %d)", _initialDraggingPosition.x(),_initialDraggingPosition.y());
+//dc:     qDebug("(%d, %d)", _lastDraggingPosition.x(),_lastDraggingPosition.y());
+//dc:     qDebug("(%d, %d)", sx, sy);
+//dc:     qDebug("(%d, %d)", ex, ey);
+
     int w = ex-sx;
     int h = ey-sy;
+
     // (sx, sy) = Upper left most position.
     // (ex, ey) = Bottom right most position.
-    for(int i=0; i < _hits.size(); i++) {
-      if(_hits[i].type == atomType)
+    QList<GLHit> hits = widget->getHits(sx, sy, ex-sx, ey-sy);
+    for(int i=0; i < hits.size(); i++) {
+      if(hits[i].type == atomType)
       {
-        ((Atom *)widget->getMolecule()->GetAtom(_hits[i].name))->toggleSelected();
+        ((Atom *)widget->getMolecule()->GetAtom(hits[i].name))->toggleSelected();
       }
-      else if(_hits[i].type == bondType)
+      else if(hits[i].type == bondType)
       {
-        ((Bond *)widget->getMolecule()->GetBond(_hits[i].name))->toggleSelected();
+        ((Bond *)widget->getMolecule()->GetBond(hits[i].name))->toggleSelected();
       }
     }
   }
@@ -121,39 +122,40 @@ void SelectRotate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 
 void SelectRotate::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
-  cout << "MouseMove" << endl;
+
 
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;
+
   _lastDraggingPosition = event->pos();
-  if( ( event->pos()
-        - _initialDraggingPosition ).manhattanLength() > 2 )
+
+  if( ( event->pos() - _initialDraggingPosition ).manhattanLength() > 2 ) 
     _movedSinceButtonPressed = true;
 
   if( _hits.size() )
   {
     if( event->buttons() & Qt::LeftButton )
     {
-      widget->rotate( deltaDragging.x(), deltaDragging.y(), 0.0 );
+      widget->rotate( deltaDragging.y(), deltaDragging.x(), 0.0 );
     }
     else if ( event->buttons() & Qt::RightButton )
     {
-      deltaDragging = _initialDraggingPosition - event->pos();
-
-      widget->translate(-deltaDragging.x() / 5.0, deltaDragging.y() / 5.0, 0.0);
+//dc:       deltaDragging = _initialDraggingPosition - event->pos();
+      widget->translate( deltaDragging.x() / 50.0, -deltaDragging.y() / 50.0, 0.0);
     }
     else if ( event->buttons() & Qt::MidButton )
     {
-      deltaDragging = _initialDraggingPosition - event->pos();
-      int xySum = deltaDragging.x() + deltaDragging.y();
-
-      if (xySum < 0)
-        widget->setScale(deltaDragging.manhattanLength() / 5.0);
-      else if (xySum > 0)
-        widget->setScale(1.0 / deltaDragging.manhattanLength());
+//dc:       deltaDragging = _initialDraggingPosition - event->pos();
+//dc:       int xySum = deltaDragging.x() + deltaDragging.y();
+//dc: 
+//dc:       if (xySum < 0)
+//dc:         widget->setScale(deltaDragging.manhattanLength() / 5.0);
+//dc:       else if (xySum > 0)
+//dc:         widget->setScale(1.0 / deltaDragging.manhattanLength());
     }
   }
   else
   {
+    // draw the selection box
     GLint viewport[4];
     glGetIntegerv(GL_VIEWPORT,viewport);
     selectionBox(_initialDraggingPosition.x(), _initialDraggingPosition.y(),

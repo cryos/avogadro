@@ -29,14 +29,12 @@ using namespace Avogadro;
 
 GLWidget::GLWidget(QWidget *parent ) : QGLWidget(parent), defaultEngine(NULL), _clearColor(Qt::black)
 {
-  printf("Constructor\n");
   init();
 }
 
 GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent), 
   defaultEngine(NULL), _clearColor(Qt::black)
 {
-  printf("Constructor\n");
   init();
 }
 
@@ -49,7 +47,7 @@ void GLWidget::init()
 
 void GLWidget::initializeGL()
 {
-  printf("Initializing\n");
+  qDebug() << "GLWidget::initializeGL";
 
   qglClearColor ( _clearColor );
 
@@ -108,13 +106,14 @@ void GLWidget::initializeGL()
 
 void GLWidget::resizeGL(int width, int height)
 {
-  printf("Resizing.\n");
+  qDebug() << "GLWidget::resizeGL";
   glViewport(0,0,width,height);
 
 }
 
 void GLWidget::setCamera()
 {
+  qDebug() << "GLWidget::setCamera";
   // Reset the projection and set our perspective.
   gluPerspective(35,float(width())/height(),0.1,1000);
 
@@ -124,6 +123,7 @@ void GLWidget::setCamera()
 
 void GLWidget::rotate(float x, float y, float z)
 {
+  qDebug() << "GLWidget::rotate";
   glPushMatrix();
   glLoadIdentity();
   glRotated( x, 1.0, 0.0, 0.0 );
@@ -136,6 +136,7 @@ void GLWidget::rotate(float x, float y, float z)
 
 void GLWidget::translate(float x, float y, float z)
 {
+  qDebug() << "GLWidget::translate";
   _TranslationVector[0] = _TranslationVector[0] + x;
   _TranslationVector[1] = _TranslationVector[1] + y;
   _TranslationVector[2] = _TranslationVector[2] + z;
@@ -153,11 +154,13 @@ float GLWidget::getScale()
 
 void GLWidget::render(GLenum mode)
 {
+  //qDebug() << "GLWidget::render";
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   // TODO: Be careful here.  For the time being we are actually changing the
-  // orientation of our render in 3d space and not changing the camera.  And also
+  // orientation of our render in 3d space and changing the camera.  And also
   // we're not changing the coordinates of the atoms.
+
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
@@ -179,6 +182,7 @@ void GLWidget::render(GLenum mode)
 
 void GLWidget::paintGL()
 { 
+  //qDebug() << "GLWidget::paintGL";
   // Reset the projection
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
@@ -191,22 +195,25 @@ void GLWidget::paintGL()
 
 void GLWidget::mousePressEvent( QMouseEvent * event )
 {
+  //qDebug() << "GLWidget::mousePressEvent";
   emit mousePress(event);
 }
 
 void GLWidget::mouseReleaseEvent( QMouseEvent * event )
 {
+  //qDebug() << "GLWidget::mouseReleaseEvent";
   emit mouseRelease(event);
 }
 
 void GLWidget::mouseMoveEvent( QMouseEvent * event )
 {
+  //qDebug() << "GLWidget::mouseMoveEvent";
   emit mouseMove(event);
 }
 
 void GLWidget::addDL(GLuint dl)
 {
-  qDebug() << "Adding DL";
+  //qDebug() << "GLWidget::addDL";
   _displayLists.append(dl);
 }
 
@@ -217,6 +224,7 @@ void GLWidget::removeDL(GLuint dl)
 
 void GLWidget::setMolecule(Molecule *m)
 {
+  //qDebug() << "GLWidget::setMolecule";
   for( int i=0; i < queues.size(); i++ ) {
     queues[i].clear();
   }
@@ -252,15 +260,26 @@ void GLWidget::setMolecule(Molecule *m)
   // add the molecule to the default queue
   defaultQueue.add(m);
 
+  // connect our signals so if the molecule gets updated
+  //QObject::connect(m, SIGNAL(atomAdded(Atom *)), this, SLOT(addAtom(Atom *)));
+
+}
+
+void GLWidget::addAtom(Atom *atom)
+{
+  //qDebug() << "GLWidget::addAtom";
+  defaultQueue.add(atom);
 }
 
 void GLWidget::setDefaultEngine(int i) 
 {
+  //qDebug() << "GLWidget::setDefaultEngine";
   setDefaultEngine(engines.at(i));
 }
 
 void GLWidget::setDefaultEngine(Engine *e) 
 {
+  //qDebug() << "GLWidget::setDefaultEngine";
   if(e)
   {
     defaultEngine = e;
