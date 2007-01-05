@@ -37,8 +37,6 @@ using namespace Eigen;
 
 bool BSEngine::render(PrimitiveQueue *q)
 {
-  qDebug() << "BSEngine::render";
-
   QList<Primitive *> *queue;
 
   queue = q->getTypeQueue(atomType);

@@ -165,9 +165,9 @@ void GLWidget::render(GLenum mode)
   glLoadIdentity();
 
   // Translate our molecule as per user instructions
-  glTranslated(_TranslationVector[0], _TranslationVector[1], _TranslationVector[2]);
   glScaled(_Scale, _Scale, _Scale);
   glMultMatrixd(_RotationMatrix);
+  glTranslated(_TranslationVector[0], _TranslationVector[1], _TranslationVector[2]);
 
   if(defaultEngine)
     defaultEngine->render(&defaultQueue);
