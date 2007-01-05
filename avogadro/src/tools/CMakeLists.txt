@@ -1,0 +1,27 @@
+set(QT_USE_QTOPENGL TRUE)
+
+include(${QT_USE_FILE})
+
+ADD_DEFINITIONS(${QT_DEFINITIONS})
+ADD_DEFINITIONS(-DQT_PLUGIN)
+ADD_DEFINITIONS(-DQT_NO_DEBUG)
+ADD_DEFINITIONS(-DQT_SHARED)
+
+include_directories(${OPENBABEL2_INCLUDE_DIR} 
+	${EIGEN_INCLUDE_DIR} 
+	${AVOGADRO_INCLUDE_DIR} 
+	../
+)
+
+link_directories(../)
+
+set(selectrotate_SRCS
+	selectrotate.cpp
+)
+
+qt4_automoc(${selectrotate_SRCS})
+
+ADD_LIBRARY(selectrotate SHARED ${selectrotate_SRCS})
+TARGET_LINK_LIBRARIES(selectrotate ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES} ${AVOGADRO_LIBRARIES})
+
+INSTALL(TARGETS selectrotate DESTINATION lib/avogadro)
