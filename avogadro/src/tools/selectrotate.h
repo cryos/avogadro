@@ -68,7 +68,7 @@ namespace Avogadro {
       virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);
 
     protected:
-      void selectionBox(int sx, int sy, int ex, int ey);
+      void selectionBox(float sx, float sy, float ex, float ey);
 
       bool                _leftButtonPressed;  // rotation
       bool                _rightButtonPressed; // translation

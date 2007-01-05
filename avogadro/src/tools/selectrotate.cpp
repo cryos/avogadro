@@ -165,7 +165,7 @@ void SelectRotate::mouseMove(GLWidget *widget, const QMouseEvent *event)
   widget->updateGL();
 }
 
-void SelectRotate::selectionBox(int sx, int sy, int ex, int ey)
+void SelectRotate::selectionBox(float sx, float sy, float ex, float ey)
 {
   if(!_selectionDL)
   {

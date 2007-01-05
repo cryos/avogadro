@@ -33,6 +33,8 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
+#define _DRAW_DEFAULT_WIN_Z 0.96
+
 Draw::Draw() : Tool()
 {
 }
@@ -53,25 +55,29 @@ void Draw::mousePress(GLWidget *widget, const QMouseEvent *event)
 
 void Draw::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
-//dc:   glPushMatrix();
-//dc:   glLoadIdentity();
-//dc:   GLdouble projection[16];
-//dc:   glGetDoublev(GL_PROJECTION_MATRIX,projection);
-//dc:   GLdouble modelview[16];
-//dc:   glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
-//dc:   GLint viewport[4];
-//dc:   glGetIntegerv(GL_VIEWPORT,viewport);
-//dc: 
-//dc:   GLdouble relPos[3];
-//dc: 
-//dc:   gluUnProject(float(event->pos().x()), viewport[3] - float(event->pos().y()), 0.1, modelview, projection, viewport, &relPos[0], &relPos[1], &relPos[2]);
-//dc: 
-//dc:   glPopMatrix();
-//dc: 
-//dc:   Molecule *mol = widget->getMolecule();
-//dc:   Atom *atom = mol->NewAtom();
-//dc: 
-//dc:   atom->SetVector(relPos[0], relPos[1], relPos[2]);
+  glPushMatrix();
+  //glLoadIdentity();
+  GLdouble projection[16];
+  glGetDoublev(GL_PROJECTION_MATRIX,projection);
+  GLdouble modelview[16];
+  glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
+  GLint viewport[4];
+  glGetIntegerv(GL_VIEWPORT,viewport);
+
+  GLdouble relPos[3];
+
+  gluUnProject(event->pos().x(), viewport[3] - event->pos().y(), _DRAW_DEFAULT_WIN_Z, modelview, projection, viewport, &relPos[0], &relPos[1], &relPos[2]);
+//dc:   qDebug("Matrix %f:(%f, %f, %f)\n", f, relPos[0], relPos[1], relPos[2]);
+
+  glPopMatrix();
+
+  Molecule *mol = widget->getMolecule();
+  Atom *atom = mol->NewAtom();
+
+  atom->SetVector(relPos[0], relPos[1], relPos[2]);
+  atom->SetAtomicNum(1);
+
+  widget->updateGL();
 }
 
 void Draw::mouseMove(GLWidget *widget, const QMouseEvent *event)

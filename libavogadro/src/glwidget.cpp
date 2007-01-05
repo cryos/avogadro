@@ -113,9 +113,9 @@ void GLWidget::resizeGL(int width, int height)
 
 void GLWidget::setCamera()
 {
-  qDebug() << "GLWidget::setCamera";
+  //qDebug() << "GLWidget::setCamera";
   // Reset the projection and set our perspective.
-  gluPerspective(35,float(width())/height(),0.1,1000);
+  gluPerspective(35,float(width())/height(),1.0,100);
 
   // pull the camera back 20
   glTranslated ( 0.0, 0.0, -20.0 );
@@ -123,7 +123,7 @@ void GLWidget::setCamera()
 
 void GLWidget::rotate(float x, float y, float z)
 {
-  qDebug() << "GLWidget::rotate";
+  //qDebug() << "GLWidget::rotate";
   glPushMatrix();
   glLoadIdentity();
   glRotated( x, 1.0, 0.0, 0.0 );
@@ -261,13 +261,13 @@ void GLWidget::setMolecule(Molecule *m)
   defaultQueue.add(m);
 
   // connect our signals so if the molecule gets updated
-  //QObject::connect(m, SIGNAL(atomAdded(Atom *)), this, SLOT(addAtom(Atom *)));
+  QObject::connect(m, SIGNAL(atomAdded(Atom *)), this, SLOT(addAtom(Atom *)));
 
 }
 
 void GLWidget::addAtom(Atom *atom)
 {
-  //qDebug() << "GLWidget::addAtom";
+  qDebug() << "GLWidget::addAtom";
   defaultQueue.add(atom);
 }
 

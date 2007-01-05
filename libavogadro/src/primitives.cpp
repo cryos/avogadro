@@ -43,26 +43,26 @@ Residue * Molecule::CreateResidue()
   return(residue);
 }
 
-//dc: Atom * Molecule::NewAtom()
-//dc: {
-//dc:   Atom *atom = (Atom *) OBMol::NewAtom();
-//dc: //  emit atomAdded(atom);
-//dc:   return(atom);
-//dc: }
-//dc: 
-//dc: Bond * Molecule::NewBond()
-//dc: {
-//dc:   Bond *bond = (Bond *)OBMol::NewBond();
-//dc: //  emit bondAdded(bond);
-//dc:   return(bond);
-//dc: }
-//dc: 
-//dc: Residue * Molecule::NewResidue()
-//dc: {
-//dc:   Residue *residue = (Residue *)OBMol::NewResidue();
-//dc: // emit residueAdded(residue);
-//dc:   return(residue);
-//dc: }
+Atom * Molecule::NewAtom()
+{
+  Atom *atom = (Atom *) OBMol::NewAtom();
+  emit atomAdded(atom);
+  return(atom);
+}
+
+Bond * Molecule::NewBond()
+{
+  Bond *bond = (Bond *) OBMol::NewBond();
+  emit bondAdded(bond);
+  return(bond);
+}
+
+Residue * Molecule::NewResidue()
+{
+  Residue *residue = (Residue *) OBMol::NewResidue();
+ emit residueAdded(residue);
+  return(residue);
+}
 
 //X void Primitive::setEngine(Engine *r)
 //X {

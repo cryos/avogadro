@@ -98,9 +98,9 @@ namespace Avogadro {
       Residue * CreateResidue(void);
 
 //dc:       // coming soon
-//dc:       Atom * NewAtom();
-//dc:       Bond * NewBond();
-//dc:       Residue * NewResidue();
+      Atom * NewAtom();
+      Bond * NewBond();
+      Residue * NewResidue();
 
     protected:
       MainWindow *window;
