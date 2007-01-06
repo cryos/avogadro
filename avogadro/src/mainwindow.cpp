@@ -32,6 +32,8 @@
 using namespace std;
 using namespace OpenBabel;
 
+#define _MW_MIN_DOCK_WIDTH 200
+
 namespace Avogadro {
 
   MainWindow::MainWindow() : currentTool(NULL)
@@ -54,16 +56,28 @@ namespace Avogadro {
     undo = new QUndoStack(this);
 
     createActions();
-    createMenuBar();
+    createMenus();
     createToolbars();
+    createDocks();
 
     // at least for now, try to always do multisample OpenGL (i.e., antialias)
     // graphical improvement is great and many cards do this in hardware
     // At some point, this should be a preference
+//dc:     centralWidget = new QWidget(this);
+
+//dc:     layout = new QGridLayout(centralWidget);
+
     QGLFormat format;
     format.setSampleBuffers(true);
     gl = new GLWidget(format, this);
     setCentralWidget(gl);
+
+//dc:     toolBox = new QToolBox(this);
+//dc:     toolBox->addItem(new QWidget(this), "Tools");
+//dc:     toolBox->addItem(new QWidget(this), "Tool Properties");
+//dc: 
+//dc:     layout->addWidget(gl,0,0);
+//dc:     layout->addWidget(toolBox, 0,1);
 
     // add all gl engines to the dropdown
     QList<Engine *> engines = gl->getEngines();
@@ -246,13 +260,13 @@ namespace Avogadro {
   {
     if (!this->isFullScreen()) {
       actionFullScreen->setText("Normal Size");
-      toolBar->hide();
+      tbFile->hide();
       statusBar()->hide();
       this->showFullScreen();
     } else {
       this->showNormal();
       actionFullScreen->setText("Full Screen");
-      toolBar->show();
+      tbFile->show();
       statusBar()->show();
     }
   }
@@ -338,7 +352,7 @@ namespace Avogadro {
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(about()));
   }
 
-  void MainWindow::createMenuBar()
+  void MainWindow::createMenus()
   {
     menuFile = menuBar()->addMenu(tr("&File"));
 
@@ -369,27 +383,57 @@ namespace Avogadro {
     menuView->addAction(actionFullScreen);
     menuView->addAction(actionSetColor);
 
+    menuSettings = menuBar()->addMenu(tr("&Settings"));
+    menuSettingsToolbars = menuSettings->addMenu(tr("&Toolbars"));
+    menuSettingsDocks = menuSettings->addMenu(tr("&Docks"));
+
     menuHelp = menuBar()->addMenu(tr("&Help"));
     menuHelp->addAction(actionAbout);
   }
 
   void MainWindow::createToolbars()
   {
-    toolBar = addToolBar(tr("File"));
-    toolBar->addAction(actionNew);
-    toolBar->addAction(actionOpen);
-    toolBar->addAction(actionClose);
-    toolBar->addAction(actionSave);
+    tbFile = addToolBar(tr("File"));
+    tbFile->addAction(actionNew);
+    tbFile->addAction(actionOpen);
+    tbFile->addAction(actionClose);
+    tbFile->addAction(actionSave);
 
     // XXX This is a quick hack.
     cbEngine = new QComboBox;
-    (toolBar->addWidget(cbEngine))->setVisible(true);
+    (tbFile->addWidget(cbEngine))->setVisible(true);
 
     cbTool = new QComboBox;
-    (toolBar->addWidget(cbTool))->setVisible(true);
+    (tbFile->addWidget(cbTool))->setVisible(true);
 
-    toolBar->setOrientation(Qt::Horizontal);
-    this->addToolBar(static_cast<Qt::ToolBarArea>(4), toolBar);
+    tbFile->setOrientation(Qt::Horizontal);
+    this->addToolBar(static_cast<Qt::ToolBarArea>(4), tbFile);
+
+    menuSettingsToolbars->addAction(tbFile->toggleViewAction());
+  }
+
+  void MainWindow::createDocks()
+  {
+    dockTools = new QDockWidget(tr("Tools"), this);
+    dockTools->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    dockTools->setMinimumWidth(_MW_MIN_DOCK_WIDTH);
+    dockTools->setWidget(new QWidget());
+    addDockWidget(Qt::LeftDockWidgetArea, dockTools);
+    menuSettingsDocks->addAction(dockTools->toggleViewAction());
+
+    dockToolProperties = new QDockWidget(tr("Tool Properties"), this);
+    dockToolProperties->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    dockToolProperties->setMinimumWidth(_MW_MIN_DOCK_WIDTH);
+    dockToolProperties->setWidget(new QWidget());
+    addDockWidget(Qt::LeftDockWidgetArea, dockToolProperties);
+    menuSettingsDocks->addAction(dockToolProperties->toggleViewAction());
+
+    dockProject = new QDockWidget(tr("Project"), this);
+    dockProject->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    dockProject->setMinimumWidth(_MW_MIN_DOCK_WIDTH);
+    dockProject->setWidget(new QWidget());
+    addDockWidget(Qt::RightDockWidgetArea, dockProject);
+    menuSettingsDocks->addAction(dockProject->toggleViewAction());
   }
 
   bool MainWindow::loadFile(const QString &fileName)
@@ -554,10 +598,10 @@ namespace Avogadro {
   void MainWindow::readSettings()
   {
     QSettings settings;
-    QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
-    QSize size = settings.value("size", QSize(480, 320)).toSize();
+    //QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
+    QSize size = settings.value("size", QSize(640, 480)).toSize();
     resize(size);
-    move(pos);
+    //move(pos);
   }
 
   void MainWindow::writeSettings()
@@ -584,7 +628,7 @@ namespace Avogadro {
     qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
     foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
       QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-      qDebug() << "File: " << fileName;
+      //qDebug() << "File: " << fileName;
       Tool *tool = qobject_cast<Tool *>(loader.instance());
       if (tool) {
         qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 

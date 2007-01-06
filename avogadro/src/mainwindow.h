@@ -26,6 +26,7 @@
 #include <QMainWindow>
 #include <QtGui>
 #include <QObject>
+#include <QDockWidget>
 
 #include <avogadro/glwidget.h>
 #include <openbabel/mol.h>
@@ -82,12 +83,21 @@ namespace Avogadro {
       bool       isModified;
       QUndoStack *undo;
 
+      //QGridLayout *layout;
+      QDockWidget *dockTools;
+      QDockWidget *dockToolProperties;
+      QDockWidget *dockProject;
+      QTreeWidget *treeProject;
+
       QMenu      *menuFile;
       QMenu      *menuOpen_Recent;
       QMenu      *menuEdit;
       QMenu      *menuView;
+      QMenu      *menuSettings;
+      QMenu      *menuSettingsToolbars;
+      QMenu      *menuSettingsDocks;
       QMenu      *menuHelp;
-      QToolBar   *toolBar;
+      QToolBar   *tbFile;
 
       QAction    *actionQuit;
 
@@ -119,8 +129,9 @@ namespace Avogadro {
       void readSettings();
       void writeSettings();
       void createActions();
-      void createMenuBar();
+      void createMenus();
       void createToolbars();
+      void createDocks();
       bool maybeSave();
       void setCurrentFile(const QString &fileName);
       void updateRecentFileActions();
