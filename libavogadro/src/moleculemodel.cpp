@@ -1,5 +1,5 @@
 /**********************************************************************
-  ProjectModel - Project Model
+  MoleculeModel - Molecule Model
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,15 +20,14 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "projectmodel.moc"
+#include "moleculemodel.moc"
 
-#include <avogadro/primitives.h>
 #include <QDebug>
 #include <QApplication>
 
 using namespace Avogadro;
 
-ProjectModel::ProjectModel(Molecule *molecule, QObject *parent)
+MoleculeModel::MoleculeModel(Molecule *molecule, QObject *parent)
   : QAbstractItemModel(parent)
 {
   rootItem = new Primitive(Primitive::LastType);
@@ -36,7 +35,7 @@ ProjectModel::ProjectModel(Molecule *molecule, QObject *parent)
   moleculeItem = molecule;
 }
 
-QVariant ProjectModel::data(const QModelIndex &index, int role) const
+QVariant MoleculeModel::data(const QModelIndex &index, int role) const
 {
   QVariant data;
 
@@ -85,7 +84,7 @@ QVariant ProjectModel::data(const QModelIndex &index, int role) const
   return data;
 }
 
-Qt::ItemFlags ProjectModel::flags(const QModelIndex &index) const
+Qt::ItemFlags MoleculeModel::flags(const QModelIndex &index) const
 {
   if (!index.isValid())
     return Qt::ItemIsEnabled;
@@ -93,7 +92,7 @@ Qt::ItemFlags ProjectModel::flags(const QModelIndex &index) const
   return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 }
 
-QVariant ProjectModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant MoleculeModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
   if (orientation == Qt::Horizontal && role == Qt::DisplayRole)
     return QVariant("Primitives List");
@@ -101,7 +100,7 @@ QVariant ProjectModel::headerData(int section, Qt::Orientation orientation, int 
   return QVariant();
 }
 
-QModelIndex ProjectModel::index(int row, int column, const QModelIndex &parent) const
+QModelIndex MoleculeModel::index(int row, int column, const QModelIndex &parent) const
 {
   Primitive *parentItem;
 
@@ -137,7 +136,7 @@ QModelIndex ProjectModel::index(int row, int column, const QModelIndex &parent) 
     return QModelIndex();
 }
 
-Primitive *ProjectModel::getMoleculeRow(int row) const
+Primitive *MoleculeModel::getMoleculeRow(int row) const
 {
   int natoms = moleculeItem->NumAtoms();
   int nbonds = moleculeItem->NumBonds();
@@ -157,7 +156,7 @@ Primitive *ProjectModel::getMoleculeRow(int row) const
   return NULL;
 }
 
-QModelIndex ProjectModel::parent(const QModelIndex &index) const
+QModelIndex MoleculeModel::parent(const QModelIndex &index) const
 {
   int row=0;
   if (!index.isValid())
@@ -179,7 +178,7 @@ QModelIndex ProjectModel::parent(const QModelIndex &index) const
   return createIndex(row, 0, parentItem);
 }
 
-int ProjectModel::rowCount(const QModelIndex &parent) const
+int MoleculeModel::rowCount(const QModelIndex &parent) const
 {
   Primitive *parentItem;
 
@@ -201,7 +200,7 @@ int ProjectModel::rowCount(const QModelIndex &parent) const
   return 0;
 }
 
-int ProjectModel::columnCount(const QModelIndex &parent) const
+int MoleculeModel::columnCount(const QModelIndex &parent) const
 {
   return 1;
 }

@@ -1,5 +1,5 @@
 /**********************************************************************
-  ProjectModel - Project Model
+  MoleculeModel - Molecule Model
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,48 +20,25 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __PROJECTMODEL_H
-#define __PROJECTMODEL_H
+#ifndef __MOLECULEMODEL_H
+#define __MOLECULEMODEL_H
 
-#include <avogadro/primitives.h>
+#include "primitives.h"
 
-#include<QAbstractItemModel>
+#include <QAbstractItemModel>
 
 namespace Avogadro {
 
-//dc:   class ProjectItem
-//dc:   {
-//dc:     public:
-//dc:       ProjectItem(Primitive *primitive, QList<QVariant> data, ProjectItem *parent=0);
-//dc:       ProjectItem(QList<QVariant> data, ProjectItem *parent=0);
-//dc:       ~ProjectItem();
-//dc: 
-//dc:       void appendChild(ProjectItem *child);
-//dc: 
-//dc:       ProjectItem *child(int row);
-//dc:       int childCount() const;
-//dc:       int columnCount() const;
-//dc:       QVariant data(int column) const;
-//dc:       int row() const;
-//dc:       ProjectItem *parent();
-//dc: 
-//dc:     private:
-//dc:       QList<ProjectItem*> childItems;
-//dc:       QList<QVariant> itemData;
-//dc:       Primitive *userData;
-//dc:       ProjectItem *parentItem;
-//dc:   };
-
   //! Base class for our tools
-  class ProjectModel : public QAbstractItemModel
+  class MoleculeModel : public QAbstractItemModel
   {
     Q_OBJECT
 
     public:
 
-      ProjectModel(Molecule *molecule, QObject *parent=0);
+      MoleculeModel(Molecule *molecule, QObject *parent=0);
       //! Deconstructor
-      ~ProjectModel() {}
+      ~MoleculeModel() {}
 
       QVariant data(const QModelIndex &index, int role) const;
       Qt::ItemFlags flags(const QModelIndex &index) const;

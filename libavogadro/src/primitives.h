@@ -25,6 +25,7 @@
 
 #include <openbabel/mol.h>
 #include <QObject>
+#include <QAbstractItemModel>
 
 class Engine;
 
@@ -38,9 +39,8 @@ namespace Avogadro {
    * 
    */
 
-  class Primitive : public QObject
+  class Primitive 
   {
-    Q_OBJECT
 
 
     public:
@@ -68,7 +68,6 @@ namespace Avogadro {
 
   class Atom : public Primitive, public OpenBabel::OBAtom
   {
-    Q_OBJECT
 
     public:
       Atom() : OpenBabel::OBAtom(), Primitive(AtomType) { }
@@ -76,7 +75,6 @@ namespace Avogadro {
 
   class Bond : public Primitive, public OpenBabel::OBBond
   {
-    Q_OBJECT
 
     public:
       Bond(): OpenBabel::OBBond(), Primitive(BondType) { }
@@ -84,18 +82,17 @@ namespace Avogadro {
 
   class Residue : public Primitive, public OpenBabel::OBResidue
   {
-    Q_OBJECT
 
     public:
       Residue(): OpenBabel::OBResidue(), Primitive(ResidueType) { }
   };
 
-  class Molecule : public Primitive, public OpenBabel::OBMol
+  class Molecule : public QAbstractItemModel, public Primitive, public OpenBabel::OBMol
   {
     Q_OBJECT
 
     public:
-      Molecule() : OpenBabel::OBMol(), Primitive(MoleculeType) { }
+      Molecule(QObject *parent=0);
 
       Atom *CreateAtom(void);
       Bond * CreateBond(void);
@@ -106,9 +103,23 @@ namespace Avogadro {
       Bond * NewBond();
       Residue * NewResidue();
 
+      QVariant data(const QModelIndex &index, int role) const;
+      Qt::ItemFlags flags(const QModelIndex &index);
+      QVariant headerData(int section, Qt::Orientation orientation,
+          int role = Qt::DisplayRole);
+      QModelIndex index(int row, int column,
+          const QModelIndex &parent = QModelIndex()) const;
+      QModelIndex parent(const QModelIndex &index) const;
+      int rowCount(const QModelIndex &parent = QModelIndex()) const;
+      int columnCount(const QModelIndex &parent = QModelIndex()) const;
+
+    private:
+      Primitive *getMoleculeRow(int row) const;
+
 
     protected:
       MainWindow *window;
+      Molecule *_self;
       std::vector< Atom * > 	_vatom;
       std::vector< Bond * > 	_vbond;
 
