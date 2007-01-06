@@ -29,28 +29,28 @@
 
 namespace Avogadro {
 
-  class ProjectItem
-  {
-    public:
-      ProjectItem(Primitive *primitive, QList<QVariant> data, ProjectItem *parent=0);
-      ProjectItem(QList<QVariant> data, ProjectItem *parent=0);
-      ~ProjectItem();
-
-      void appendChild(ProjectItem *child);
-
-      ProjectItem *child(int row);
-      int childCount() const;
-      int columnCount() const;
-      QVariant data(int column) const;
-      int row() const;
-      ProjectItem *parent();
-
-    private:
-      QList<ProjectItem*> childItems;
-      QList<QVariant> itemData;
-      Primitive *userData;
-      ProjectItem *parentItem;
-  };
+//dc:   class ProjectItem
+//dc:   {
+//dc:     public:
+//dc:       ProjectItem(Primitive *primitive, QList<QVariant> data, ProjectItem *parent=0);
+//dc:       ProjectItem(QList<QVariant> data, ProjectItem *parent=0);
+//dc:       ~ProjectItem();
+//dc: 
+//dc:       void appendChild(ProjectItem *child);
+//dc: 
+//dc:       ProjectItem *child(int row);
+//dc:       int childCount() const;
+//dc:       int columnCount() const;
+//dc:       QVariant data(int column) const;
+//dc:       int row() const;
+//dc:       ProjectItem *parent();
+//dc: 
+//dc:     private:
+//dc:       QList<ProjectItem*> childItems;
+//dc:       QList<QVariant> itemData;
+//dc:       Primitive *userData;
+//dc:       ProjectItem *parentItem;
+//dc:   };
 
   //! Base class for our tools
   class ProjectModel : public QAbstractItemModel
@@ -74,7 +74,10 @@ namespace Avogadro {
       int columnCount(const QModelIndex &parent = QModelIndex()) const;
 
     private:
-      ProjectItem *rootItem;
+      Primitive *getMoleculeRow(int row) const;
+
+      Primitive *rootItem;
+      Molecule *moleculeItem;
 
   };
 

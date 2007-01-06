@@ -39,12 +39,12 @@ bool BSEngine::render(PrimitiveQueue *q)
 {
   QList<Primitive *> *queue;
 
-  queue = q->getTypeQueue(atomType);
+  queue = q->getTypeQueue(Primitive::AtomType);
   for( int i=0; i<queue->size(); i++ ) {
     render((Atom *)(*queue)[i]);
   }
 
-  queue = q->getTypeQueue(bondType);
+  queue = q->getTypeQueue(Primitive::BondType);
   for( int i=0; i<queue->size(); i++ ) {
     render((Bond *)(*queue)[i]);
   }
@@ -59,7 +59,7 @@ bool BSEngine::render(Atom *a)
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
 
-  glPushName(atomType);
+  glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
   Color(a).applyAsMaterials();
 

@@ -32,11 +32,6 @@ namespace Avogadro {
 
   class MainWindow;
 
-  //! 
-  enum primitiveType { moleculeType, atomType, bondType, 
-    residueType, surfaceType, planeType,
-    gridType, otherType, numTypes };
-
   /*
    * Primitive 
    * Used to define signals that all our primitives share.
@@ -47,20 +42,28 @@ namespace Avogadro {
   {
     Q_OBJECT
 
+
     public:
-      Primitive() : _selected(false), _type(otherType) {}
-      Primitive(enum primitiveType type) : _selected(false), _type(type) {}
+      //! 
+      enum Type { MoleculeType, AtomType, BondType, 
+        ResidueType, SurfaceType, PlaneType,
+        GridType, OtherType, LastType };
+
+    public:
+      Primitive() : _selected(false), _type(OtherType) {}
+      Primitive(enum Type type) : _selected(false), _type(type) {}
 
       bool isSelected() { return _selected;}
       void setSelected(bool s) { _selected = s;}
       void toggleSelected() { _selected = !_selected;}
 
-      void setType(enum primitiveType type) { _type = type; }
-      enum primitiveType getType() { return _type; }
+      void setType(enum Type type) { _type = type; }
+      enum Type getType() { return _type; }
+
 
     protected:
       bool _selected;
-      enum primitiveType _type;
+      enum Type _type;
   };
 
   class Atom : public Primitive, public OpenBabel::OBAtom
@@ -68,7 +71,7 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Atom() : OpenBabel::OBAtom(), Primitive() { setType(atomType); }
+      Atom() : OpenBabel::OBAtom(), Primitive(AtomType) { }
   };
 
   class Bond : public Primitive, public OpenBabel::OBBond
@@ -76,7 +79,7 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Bond(): OpenBabel::OBBond(), Primitive() { setType(bondType); }
+      Bond(): OpenBabel::OBBond(), Primitive(BondType) { }
   };
 
   class Residue : public Primitive, public OpenBabel::OBResidue
@@ -84,7 +87,7 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Residue(): OpenBabel::OBResidue(), Primitive() { setType(residueType); }
+      Residue(): OpenBabel::OBResidue(), Primitive(ResidueType) { }
   };
 
   class Molecule : public Primitive, public OpenBabel::OBMol
@@ -92,7 +95,7 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Molecule() : OpenBabel::OBMol(), Primitive(moleculeType) { }
+      Molecule() : OpenBabel::OBMol(), Primitive(MoleculeType) { }
 
       Atom *CreateAtom(void);
       Bond * CreateBond(void);
@@ -118,7 +121,7 @@ namespace Avogadro {
   class PrimitiveQueue
   {
     public:
-      PrimitiveQueue() { for( int i=0; i<numTypes; i++ ) { _queue.append(new QList<Primitive *>()); } }
+      PrimitiveQueue() { for( int i=0; i<Primitive::LastType; i++ ) { _queue.append(new QList<Primitive *>()); } }
 
       QList<Primitive *>* getTypeQueue(int t) { 
         return(_queue[t]); 

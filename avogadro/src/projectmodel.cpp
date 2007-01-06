@@ -24,142 +24,65 @@
 
 #include <avogadro/primitives.h>
 #include <QDebug>
+#include <QApplication>
 
 using namespace Avogadro;
-
-  ProjectItem::ProjectItem(Primitive *primitive, QList<QVariant> data, ProjectItem *parent)
-: parentItem(parent), userData(primitive), itemData(data)
-{
-  return;
-}
-
-  ProjectItem::ProjectItem(QList<QVariant> data, ProjectItem *parent) 
-: userData(NULL), parentItem(parent), itemData(data)
-{
-  return;
-}
-
-ProjectItem::~ProjectItem()
-{
-  qDeleteAll(childItems);
-}
-
-void ProjectItem::appendChild(ProjectItem *child)
-{
-  qDebug() << child->data(0);
-  childItems.append(child);
-}
-
-ProjectItem *ProjectItem::child(int row)
-{
-  return childItems.value(row);
-}
-
-int ProjectItem::childCount() const
-{
-  return childItems.size();
-}
-
-int ProjectItem::columnCount() const
-{
-  return itemData.size();
-}
-
-QVariant ProjectItem::data(int column) const
-{
-  return itemData.value(column);
-}
-
-int ProjectItem::row() const
-{
-  if(parentItem)
-    return parentItem->childItems.indexOf(const_cast<ProjectItem*>(this));
-
-  return 0;
-}
-
-ProjectItem *ProjectItem::parent()
-{
-  return parentItem;
-}
 
 ProjectModel::ProjectModel(Molecule *molecule, QObject *parent)
   : QAbstractItemModel(parent)
 {
-  QList<QVariant> rootData;
-  rootData << "" << "" << "";
-  rootItem = new ProjectItem(rootData);
+  rootItem = new Primitive(Primitive::LastType);
 
-  if(molecule)
-  {
-    QList<QVariant> moleculeData;
-    moleculeData << "Molecule";
-    ProjectItem * moleculeItem = new ProjectItem(molecule, moleculeData, rootItem);
-    rootItem->appendChild(moleculeItem);
-
-    QList<QVariant> atomsData;
-    atomsData << "Atoms";
-    ProjectItem * atomsItem = new ProjectItem(atomsData, moleculeItem);
-    moleculeItem->appendChild(atomsItem);
-
-    // add the atoms to the default queue
-    std::vector<OpenBabel::OBNodeBase*>::iterator i;
-    for(Atom *atom = (Atom*)molecule->BeginAtom(i); atom; atom = (Atom*)molecule->NextAtom(i))
-    {
-      QList<QVariant> atomData;
-      atomData << atom->GetAtomicNum();
-      ProjectItem *atomItem = new ProjectItem(atom, atomData, atomsItem);
-      atomsItem->appendChild(atomItem);
-    }
-
-    QList<QVariant> bondsData;
-    bondsData << "Bonds";
-    ProjectItem * bondsItem = new ProjectItem(bondsData, moleculeItem);
-    moleculeItem->appendChild(bondsItem);
-
-    // add the bonds to the default queue
-    std::vector<OpenBabel::OBEdgeBase*>::iterator j;
-    for(Bond *bond = (Bond*)molecule->BeginBond(j); bond; bond = (Bond*)molecule->NextBond(j))
-    {
-      QList<QVariant> bondData;
-      bondData << bond->GetBeginAtomIdx() << bond->GetEndAtomIdx();
-      ProjectItem *bondItem = new ProjectItem(bond, bondData, bondsItem);
-      bondsItem->appendChild(bondItem);
-    }
-
-    QList<QVariant> residuesData;
-    residuesData << "Residues";
-    ProjectItem * residuesItem = new ProjectItem(residuesData, moleculeItem);
-    moleculeItem->appendChild(residuesItem);
-
-    // add the residues to the default queue
-    std::vector<OpenBabel::OBResidue*>::iterator k;
-    for(Residue *residue = (Residue*)molecule->BeginResidue(k); residue;
-        residue = (Residue *)molecule->NextResidue(k)) {
-      QList<QVariant> residueData;
-      residueData << residue->GetNumAtoms();
-      ProjectItem *residueItem = new ProjectItem(residue, residueData, residuesItem);
-      residuesItem->appendChild(residueItem);
-    }
-  } else {
-    QList<QVariant> moleculeData;
-    moleculeData << "No Molecule Loaded";
-    ProjectItem * moleculeItem = new ProjectItem(molecule, moleculeData, rootItem);
-    rootItem->appendChild(moleculeItem);
-  }
+  moleculeItem = molecule;
 }
 
 QVariant ProjectModel::data(const QModelIndex &index, int role) const
 {
+  QVariant data;
+
   if(!index.isValid())
     return QVariant();
 
   if(role != Qt::DisplayRole)
     return QVariant();
 
-  ProjectItem *item = static_cast<ProjectItem*>(index.internalPointer());
+  Primitive *item = static_cast<Primitive*>(index.internalPointer());
+  QDataStream strstr;
+  QString str;
+  enum Primitive::Type type = item->getType();
+  if(type == Primitive::MoleculeType)
+  {
+    data = "Molecule";
+  }
+  else if(type == Primitive::AtomType)
+  {
+    Atom *atom = (Atom*)item;
+    str = tr("Atom ") + QString::number(atom->GetIdx());
+    //strstr << "Atom " << atom->GetIdx() << " (" << atom->GetAtomicNum() << ")";
+    data = str;
+  }
+  else if(type == Primitive::BondType)
+  {
+    Bond *bond = (Bond*)item;
+    str = tr("Bond ") + QString::number(bond->GetIdx()) + tr(" (") + 
+      QString::number(bond->GetBeginAtomIdx()) + tr(",") 
+      + QString::number(bond->GetEndAtomIdx()) + tr(")");
+    //strstr << "Bond " << bond->GetIdx() << " (" << bond->GetBeginAtomIdx() << "," << bond->GetEndAtomIdx() << ")";
+    data = str;
+  }
+  else if(type == Primitive::ResidueType)
+  {
+    Residue *residue = (Residue*)item;
+    str = tr("Residue ") + QString::number(residue->GetIdx());
+    //strstr << "Residue " << residue->GetIdx();
+    data = str;
+  }
+  else
+  {
+    data = "Unknown";
+  }
 
-  return item->data(index.column());
+  return data;
 }
 
 Qt::ItemFlags ProjectModel::flags(const QModelIndex &index) const
@@ -173,57 +96,112 @@ Qt::ItemFlags ProjectModel::flags(const QModelIndex &index) const
 QVariant ProjectModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
   if (orientation == Qt::Horizontal && role == Qt::DisplayRole)
-    return rootItem->data(section);
+    return QVariant("Primitives List");
 
   return QVariant();
 }
 
 QModelIndex ProjectModel::index(int row, int column, const QModelIndex &parent) const
 {
-  ProjectItem *parentItem;
+  Primitive *parentItem;
 
   if (!parent.isValid())
     parentItem = rootItem;
   else
-    parentItem = static_cast<ProjectItem*>(parent.internalPointer());
+    parentItem = static_cast<Primitive*>(parent.internalPointer());
 
-  ProjectItem *childItem = parentItem->child(row);
-  if (childItem)
-    return createIndex(row, column, childItem);
+  // root item
+  Primitive *child = NULL;
+  if (parentItem == rootItem)
+  {
+    if(row == 0)
+    {
+      child = moleculeItem;
+    }
+  } 
+  else if (parentItem == moleculeItem)
+  {
+    child = getMoleculeRow(row);
+    if(!child)
+    {
+      qWarning("%d:Error Getting Row Information",row);
+      qApp->exit(8);
+      exit(8);
+    }
+  }
+
+
+  if (child)
+    return createIndex(row, column, child);
   else
     return QModelIndex();
+}
+
+Primitive *ProjectModel::getMoleculeRow(int row) const
+{
+  int natoms = moleculeItem->NumAtoms();
+  int nbonds = moleculeItem->NumBonds();
+  int nresidues = moleculeItem->NumResidues();
+
+  if(row < 0)
+    return NULL;
+  // atoms start at 1
+  else if(row < natoms)
+    return (Atom *)moleculeItem->GetAtom(row+1);
+  // confusing but bonds (and i believe residues) start at 0
+  else if(row < natoms + nbonds)
+    return (Bond *)moleculeItem->GetBond(row-natoms);
+  else if(row < natoms + nbonds + nresidues)
+    return (Residue *)moleculeItem->GetResidue(row-natoms-nbonds);
+
+  return NULL;
 }
 
 QModelIndex ProjectModel::parent(const QModelIndex &index) const
 {
+  int row=0;
   if (!index.isValid())
     return QModelIndex();
 
-  ProjectItem *childItem = static_cast<ProjectItem*>(index.internalPointer());
-  ProjectItem *parentItem = childItem->parent();
+  Primitive *childItem = static_cast<Primitive*>(index.internalPointer());
+  Primitive *parentItem = NULL;
+  switch(childItem->getType()) {
+    case Primitive::LastType:
+    case Primitive::MoleculeType:
+      return QModelIndex();
+      break;
+    default:
+      row = 0;
+      parentItem = moleculeItem;
+      break;
+  }
 
-  if (parentItem == rootItem)
-    return QModelIndex();
-
-  return createIndex(parentItem->row(), 0, parentItem);
+  return createIndex(row, 0, parentItem);
 }
 
 int ProjectModel::rowCount(const QModelIndex &parent) const
 {
-  ProjectItem *parentItem;
+  Primitive *parentItem;
 
   if (!parent.isValid())
-    parentItem = rootItem;
+  {
+    return 1;
+  }
   else
-    parentItem = static_cast<ProjectItem*>(parent.internalPointer());
+  {
+    parentItem = static_cast<Primitive*>(parent.internalPointer());
+  }
 
-  return parentItem->childCount();
+  if(parentItem == moleculeItem)
+  {
+    return(moleculeItem->NumAtoms() + moleculeItem->NumBonds());
+    return(moleculeItem->NumAtoms() + moleculeItem->NumBonds() + moleculeItem->NumResidues());
+  }
+
+  return 0;
 }
 
 int ProjectModel::columnCount(const QModelIndex &parent) const
 {
-  if (parent.isValid())
-    return static_cast<ProjectItem*>(parent.internalPointer())->columnCount();
-  else
-    return rootItem->columnCount();
+  return 1;
 }

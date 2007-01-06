@@ -72,6 +72,7 @@ namespace Avogadro {
     QGLFormat format;
     format.setSampleBuffers(true);
     gl = new GLWidget(format, this);
+    gl->setMolecule(new Molecule());
     setCentralWidget(gl);
 
 //dc:     toolBox = new QToolBox(this);
@@ -492,9 +493,10 @@ namespace Avogadro {
       model = new ProjectModel(molecule, this);
       treeProject->setModel(model);
       treeProject->expandAll();
-      cout << "rowCount" << model->rowCount() << endl;
-      qDebug() << "Data: " << model->data(model->index(0,0), Qt::DisplayRole);
+      Molecule *oldMolecule = gl->getMolecule();
       gl->setMolecule(molecule);
+      if(oldMolecule)
+        delete(oldMolecule);
       gl->updateGL();
       QApplication::restoreOverrideCursor();
     }

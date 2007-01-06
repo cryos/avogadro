@@ -27,13 +27,14 @@
 
 using namespace Avogadro;
 
-GLWidget::GLWidget(QWidget *parent ) : QGLWidget(parent), defaultEngine(NULL), _clearColor(Qt::black)
+GLWidget::GLWidget(QWidget *parent ) 
+: QGLWidget(parent), defaultEngine(NULL), _clearColor(Qt::black), molecule(NULL)
 {
   init();
 }
 
-GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) : QGLWidget(format, parent), 
-  defaultEngine(NULL), _clearColor(Qt::black)
+GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) 
+: QGLWidget(format, parent), defaultEngine(NULL), _clearColor(Qt::black), molecule(NULL)
 {
   init();
 }
@@ -230,9 +231,6 @@ void GLWidget::setMolecule(Molecule *m)
   }
 
   defaultQueue.clear();
-
-  if (molecule)
-    delete molecule;
 
   molecule = m;
 
