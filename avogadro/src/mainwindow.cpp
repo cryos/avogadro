@@ -55,6 +55,8 @@ namespace Avogadro {
 
     undo = new QUndoStack(this);
 
+    model = new ProjectModel(NULL, this);
+
     createActions();
     createMenus();
     createToolbars();
@@ -431,9 +433,18 @@ namespace Avogadro {
     dockProject = new QDockWidget(tr("Project"), this);
     dockProject->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     dockProject->setMinimumWidth(_MW_MIN_DOCK_WIDTH);
-    dockProject->setWidget(new QWidget());
+    treeProject = new QTreeView();
+    treeProject->setModel(model);
+    treeProject->setAlternatingRowColors(true);
+    treeProject->setAnimated(true);
+    treeProject->setAllColumnsShowFocus(true);
+    treeProject->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    treeProject->setSelectionBehavior(QAbstractItemView::SelectRows);
+    treeProject->setRootIsDecorated(false);
+    dockProject->setWidget(treeProject);
     addDockWidget(Qt::RightDockWidgetArea, dockProject);
     menuSettingsDocks->addAction(dockProject->toggleViewAction());
+
   }
 
   bool MainWindow::loadFile(const QString &fileName)
@@ -475,6 +486,14 @@ namespace Avogadro {
         " Bonds: " << molecule->NumBonds();
       statusBar()->showMessage(status, 5000);
 
+      
+      treeProject->setModel(NULL);
+      delete(model);
+      model = new ProjectModel(molecule, this);
+      treeProject->setModel(model);
+      treeProject->expandAll();
+      cout << "rowCount" << model->rowCount() << endl;
+      qDebug() << "Data: " << model->data(model->index(0,0), Qt::DisplayRole);
       gl->setMolecule(molecule);
       gl->updateGL();
       QApplication::restoreOverrideCursor();

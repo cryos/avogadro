@@ -26,7 +26,6 @@ using namespace Avogadro;
 
 Atom * Molecule::CreateAtom()
 {
-  std::cout << "Molecule::CreateAtom" << std::endl;
   Atom *atom = new Atom();
   return(atom);
 }

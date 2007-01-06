@@ -49,6 +49,7 @@ namespace Avogadro {
 
     public:
       Primitive() : _selected(false), _type(otherType) {}
+      Primitive(enum primitiveType type) : _selected(false), _type(type) {}
 
       bool isSelected() { return _selected;}
       void setSelected(bool s) { _selected = s;}
@@ -91,7 +92,7 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Molecule() : OpenBabel::OBMol(), Primitive() { setType(moleculeType); }
+      Molecule() : OpenBabel::OBMol(), Primitive(moleculeType) { }
 
       Atom *CreateAtom(void);
       Bond * CreateBond(void);
@@ -101,6 +102,7 @@ namespace Avogadro {
       Atom * NewAtom();
       Bond * NewBond();
       Residue * NewResidue();
+
 
     protected:
       MainWindow *window;

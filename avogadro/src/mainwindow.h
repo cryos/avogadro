@@ -33,6 +33,7 @@
 #include <openbabel/obconversion.h>
 
 #include "tool.h"
+#include "projectmodel.h"
 
 namespace Avogadro {
 
@@ -76,6 +77,7 @@ namespace Avogadro {
 
     private:
       GLWidget  *gl;
+      ProjectModel *model;
       Tool      *currentTool;
       QList<Tool *> tools;
 
@@ -87,7 +89,8 @@ namespace Avogadro {
       QDockWidget *dockTools;
       QDockWidget *dockToolProperties;
       QDockWidget *dockProject;
-      QTreeWidget *treeProject;
+      QTreeView *treeProject;
+
 
       QMenu      *menuFile;
       QMenu      *menuOpen_Recent;

@@ -262,6 +262,8 @@ void GLWidget::setMolecule(Molecule *m)
 
   // connect our signals so if the molecule gets updated
   QObject::connect(m, SIGNAL(atomAdded(Atom *)), this, SLOT(addAtom(Atom *)));
+//dc:   QObject::connect(m, SIGNAL(bondAdded(Bond *)), this, SLOT(addBond(Bond *)));
+//dc:   QObject::connect(m, SIGNAL(residueAdded(Residue *)), this, SLOT(addResidue(Residue *)));
 
 }
 
@@ -351,7 +353,7 @@ void GLWidget::loadEngines()
 
   foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
     QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-    qDebug() << "File: " << fileName;
+//dc:     qDebug() << "File: " << fileName;
     EngineFactory *factory = qobject_cast<EngineFactory *>(loader.instance());
     if (factory) {
       Engine *engine = factory->createInstance();
