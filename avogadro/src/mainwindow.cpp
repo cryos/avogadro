@@ -55,8 +55,6 @@ namespace Avogadro {
 
     undo = new QUndoStack(this);
 
-    model = new ProjectModel(NULL, this);
-
     createActions();
     createMenus();
     createToolbars();
@@ -435,7 +433,6 @@ namespace Avogadro {
     dockProject->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     dockProject->setMinimumWidth(_MW_MIN_DOCK_WIDTH);
     treeProject = new QTreeView();
-    treeProject->setModel(model);
     treeProject->setAlternatingRowColors(true);
     treeProject->setAnimated(true);
     treeProject->setAllColumnsShowFocus(true);
@@ -488,10 +485,7 @@ namespace Avogadro {
       statusBar()->showMessage(status, 5000);
 
       
-      treeProject->setModel(NULL);
-      delete(model);
-      model = new ProjectModel(molecule, this);
-      treeProject->setModel(model);
+      treeProject->setModel(molecule);
       treeProject->expandAll();
       Molecule *oldMolecule = gl->getMolecule();
       gl->setMolecule(molecule);

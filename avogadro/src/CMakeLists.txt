@@ -6,7 +6,6 @@ include(${QT_USE_FILE})
 
 set(avogadro_SRCS
 	mainwindow.cpp
-	projectmodel.cpp
 	main.cpp
 	tool.cpp
 )

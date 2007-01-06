@@ -29,11 +29,11 @@
 #include <QDockWidget>
 
 #include <avogadro/glwidget.h>
+#include <avogadro/moleculemodel.h>
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 
 #include "tool.h"
-#include "projectmodel.h"
 
 namespace Avogadro {
 
@@ -77,7 +77,6 @@ namespace Avogadro {
 
     private:
       GLWidget  *gl;
-      ProjectModel *model;
       Tool      *currentTool;
       QList<Tool *> tools;
 
