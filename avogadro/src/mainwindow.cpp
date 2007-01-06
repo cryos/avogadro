@@ -70,7 +70,10 @@ namespace Avogadro {
     QGLFormat format;
     format.setSampleBuffers(true);
     gl = new GLWidget(format, this);
-    gl->setMolecule(new Molecule());
+    Molecule *molecule = new Molecule();
+    gl->setMolecule(molecule);
+    treeProject->setModel(molecule);
+    treeProject->expandAll();
     setCentralWidget(gl);
 
 //dc:     toolBox = new QToolBox(this);

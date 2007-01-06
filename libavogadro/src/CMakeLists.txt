@@ -4,7 +4,6 @@ include(${QT_USE_FILE})
 
 set(libavogadro_SRCS
 	glwidget.cpp
-	moleculemodel.cpp
 	color.cpp
 	primitives.cpp
 	cylinder.cpp
@@ -13,7 +12,6 @@ set(libavogadro_SRCS
 
 set(libavogadro_HDRS
 	glwidget.h
-	moleculemodel.h
 	color.h
 	primitives.h
 	engine.h

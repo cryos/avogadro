@@ -23,6 +23,7 @@
 #include "primitives.moc"
 
 #include <QApplication>
+#include <QDebug>
 
 using namespace Avogadro;
 
@@ -53,22 +54,35 @@ Residue * Molecule::CreateResidue()
 
 Atom * Molecule::NewAtom()
 {
+  int num = NumAtoms();
+  qDebug() << "Adding Atom " << num;
+  beginInsertRows(createIndex(0,0,_self),num,num+1);
   Atom *atom = (Atom *) OBMol::NewAtom();
-  emit atomAdded(atom);
+  endInsertRows();
+  QModelIndex index = createIndex(num,0,atom);
+  emit dataChanged(index, index);
   return(atom);
 }
 
 Bond * Molecule::NewBond()
 {
+  int num = NumAtoms() + NumBonds();
+  beginInsertRows(createIndex(0,0,_self),num,num+1);
   Bond *bond = (Bond *) OBMol::NewBond();
-  emit bondAdded(bond);
+  endInsertRows();
+  QModelIndex index = createIndex(num,0,bond);
+  emit dataChanged(index, index);
   return(bond);
 }
 
 Residue * Molecule::NewResidue()
 {
+  int num = NumAtoms() + NumBonds() + NumResidues();
+  beginInsertRows(createIndex(0,0,_self),num,num+1);
   Residue *residue = (Residue *) OBMol::NewResidue();
- emit residueAdded(residue);
+  endInsertRows();
+  QModelIndex index = createIndex(num,0,residue);
+  emit dataChanged(index, index);
   return(residue);
 }
 
@@ -88,7 +102,7 @@ QVariant Molecule::data(const QModelIndex &index, int role) const
   enum Primitive::Type type = item->getType();
   if(type == Primitive::MoleculeType)
   {
-    data = "Molecule";
+    data = tr("Molecule");
   }
   else if(type == Primitive::AtomType)
   {
