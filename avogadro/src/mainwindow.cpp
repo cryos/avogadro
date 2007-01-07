@@ -72,9 +72,17 @@ namespace Avogadro {
     gl = new GLWidget(format, this);
     Molecule *molecule = new Molecule();
     gl->setMolecule(molecule);
-    treeProject->setModel(molecule);
-    treeProject->expandAll();
     setCentralWidget(gl);
+
+    treeView = new MoleculeTreeView(molecule, dockProject);
+    treeView->setAnimated(true);
+    treeView->setAllColumnsShowFocus(true);
+    treeView->setAlternatingRowColors(true);
+//dc:     treeView->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    treeView->setSelectionMode(QAbstractItemView::MultiSelection);
+    treeView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    dockProject->setWidget(treeView);
+    treeView->header()->hide();
 
 //dc:     toolBox = new QToolBox(this);
 //dc:     toolBox->addItem(new QWidget(this), "Tools");
@@ -435,14 +443,16 @@ namespace Avogadro {
     dockProject = new QDockWidget(tr("Project"), this);
     dockProject->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     dockProject->setMinimumWidth(_MW_MIN_DOCK_WIDTH);
-    treeProject = new QTreeView();
-    treeProject->setAlternatingRowColors(true);
-    treeProject->setAnimated(true);
-    treeProject->setAllColumnsShowFocus(true);
-    treeProject->setSelectionMode(QAbstractItemView::ExtendedSelection);
-    treeProject->setSelectionBehavior(QAbstractItemView::SelectRows);
-    treeProject->setRootIsDecorated(false);
-    dockProject->setWidget(treeProject);
+//dc:     treeView = new MoleculeTreeView();
+//dc:     treeProject->setAlternatingRowColors(true);
+//dc:     treeProject->setAnimated(true);
+//dc:     treeProject->header()->hide();
+//dc:     treeProject->setAllColumnsShowFocus(true);
+//dc:     treeProject->setAlternatingRowColors(true);
+//dc:     treeProject->setSelectionMode(QAbstractItemView::ExtendedSelection);
+//dc:     treeProject->setSelectionBehavior(QAbstractItemView::SelectRows);
+//dc:     treeProject->setRootIsDecorated(false);
+//dc:     dockProject->setWidget(treeProject);
     addDockWidget(Qt::RightDockWidgetArea, dockProject);
     menuSettingsDocks->addAction(dockProject->toggleViewAction());
 
@@ -488,8 +498,8 @@ namespace Avogadro {
       statusBar()->showMessage(status, 5000);
 
       
-      treeProject->setModel(molecule);
-      treeProject->expandAll();
+      treeView->setMolecule(molecule);
+//dc:       treeView->expandAll();
       Molecule *oldMolecule = gl->getMolecule();
       gl->setMolecule(molecule);
       if(oldMolecule)

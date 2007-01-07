@@ -39,15 +39,41 @@ namespace Avogadro {
    * 
    */
 
-  class Primitive 
+  class Primitive : public QObject
   {
 
+    Q_OBJECT
 
     public:
       //! 
       enum Type { MoleculeType, AtomType, BondType, 
         ResidueType, SurfaceType, PlaneType,
         GridType, OtherType, LastType };
+
+//dc:       // do we need/want this?  doesn't work for plurals
+//dc:       // so i think useless
+//dc:       static QString typeString(enum Type type) {
+//dc:         switch(type) {
+//dc:           case MoleculeType:
+//dc:             return tr("Molecule");
+//dc:           case AtomType:
+//dc:             return tr("Atom");
+//dc:           case BondType:
+//dc:             return tr("Bond");
+//dc:           case ResidueType:
+//dc:             return tr("Residue");
+//dc:           case SurfaceType:
+//dc:             return tr("Surface");
+//dc:           case PlaneType:
+//dc:             return tr("Plane");
+//dc:           case GridType:
+//dc:             return tr("Grid");
+//dc:           case OtherType:
+//dc:             return tr("Other");
+//dc:           case LastType:
+//dc:             return tr("Last");
+//dc:         }
+//dc:       }
 
     public:
       Primitive() : _selected(false), _type(OtherType) {}
@@ -57,8 +83,9 @@ namespace Avogadro {
       void setSelected(bool s) { _selected = s;}
       void toggleSelected() { _selected = !_selected;}
 
-      void setType(enum Type type) { _type = type; }
-      enum Type getType() { return _type; }
+      // set using constructor
+      //void setType(enum Type type) { _type = type; }
+      enum Type type() { return _type; }
 
 
     protected:
@@ -68,6 +95,7 @@ namespace Avogadro {
 
   class Atom : public Primitive, public OpenBabel::OBAtom
   {
+    Q_OBJECT
 
     public:
       Atom() : OpenBabel::OBAtom(), Primitive(AtomType) { }
@@ -75,6 +103,7 @@ namespace Avogadro {
 
   class Bond : public Primitive, public OpenBabel::OBBond
   {
+    Q_OBJECT
 
     public:
       Bond(): OpenBabel::OBBond(), Primitive(BondType) { }
@@ -82,12 +111,13 @@ namespace Avogadro {
 
   class Residue : public Primitive, public OpenBabel::OBResidue
   {
+    Q_OBJECT
 
     public:
       Residue(): OpenBabel::OBResidue(), Primitive(ResidueType) { }
   };
 
-  class Molecule : public QAbstractItemModel, public Primitive, public OpenBabel::OBMol
+  class Molecule : public Primitive, public OpenBabel::OBMol
   {
     Q_OBJECT
 
@@ -103,18 +133,18 @@ namespace Avogadro {
       Bond * NewBond();
       Residue * NewResidue();
 
-      QVariant data(const QModelIndex &index, int role) const;
-      Qt::ItemFlags flags(const QModelIndex &index);
-      QVariant headerData(int section, Qt::Orientation orientation,
-          int role = Qt::DisplayRole);
-      QModelIndex index(int row, int column,
-          const QModelIndex &parent = QModelIndex()) const;
-      QModelIndex parent(const QModelIndex &index) const;
-      int rowCount(const QModelIndex &parent = QModelIndex()) const;
-      int columnCount(const QModelIndex &parent = QModelIndex()) const;
-
-    private:
-      Primitive *getMoleculeRow(int row) const;
+//dc:       QVariant data(const QModelIndex &index, int role) const;
+//dc:       Qt::ItemFlags flags(const QModelIndex &index) const;
+//dc:       QVariant headerData(int section, Qt::Orientation orientation,
+//dc:           int role = Qt::DisplayRole) const;
+//dc:       QModelIndex index(int row, int column,
+//dc:           const QModelIndex &parent = QModelIndex()) const;
+//dc:       QModelIndex parent(const QModelIndex &index) const;
+//dc:       int rowCount(const QModelIndex &parent = QModelIndex()) const;
+//dc:       int columnCount(const QModelIndex &parent = QModelIndex()) const;
+//dc: 
+//dc:     private:
+//dc:       Primitive *getPrimitive(int row) const;
 
 
     protected:
@@ -124,9 +154,7 @@ namespace Avogadro {
       std::vector< Bond * > 	_vbond;
 
     signals:
-      void atomAdded(Atom *atom);
-      void bondAdded(Bond *bond);
-      void residueAdded(Residue *residue);
+      void primitiveAdded(Primitive *primitive);
   };
 
   class PrimitiveQueue
@@ -139,7 +167,7 @@ namespace Avogadro {
       }
 
       void add(Primitive *p) { 
-        _queue[p->getType()]->append(p); 
+        _queue[p->type()]->append(p); 
       }
       void clear() {
         for( int i=0; i<_queue.size(); i++ ) {

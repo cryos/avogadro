@@ -4,8 +4,8 @@
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
 
-  This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.sourceforge.net/>
+  This file is part of the Avogadro molecular editor project.  For more
+  information, see <http://avogadro.sourceforge.net/>
 
   Some code is based on Open Babel
   For more information, see <http://openbabel.sourceforge.net/>
@@ -85,7 +85,8 @@ namespace Avogadro {
       void setDefaultEngine(int i);
       void setDefaultEngine(Engine *e);
 
-      void addAtom(Atom *atom);
+//dc:       void rowsInsert(const QModelIndex &parent, int start, int end);
+//dc:       void rowsRemove(const QModelIndex &parent, int start, int end);
 
     signals:
       void mousePress( QMouseEvent * event );

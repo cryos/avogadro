@@ -3,20 +3,22 @@ set(QT_USE_QTOPENGL TRUE)
 include(${QT_USE_FILE})
 
 set(libavogadro_SRCS
-	glwidget.cpp
 	color.cpp
 	primitives.cpp
 	cylinder.cpp
 	sphere.cpp
+	glwidget.cpp
+	moleculetreeview.cpp
 )
 
 set(libavogadro_HDRS
-	glwidget.h
 	color.h
 	primitives.h
 	engine.h
 	cylinder.h
 	sphere.h
+	glwidget.h
+	moleculetreeview.h
 )
 
 include_directories(${OPENBABEL2_INCLUDE_DIR} ${EIGEN_INCLUDE_DIR})

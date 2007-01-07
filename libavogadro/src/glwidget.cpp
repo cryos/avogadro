@@ -259,17 +259,29 @@ void GLWidget::setMolecule(Molecule *m)
   defaultQueue.add(m);
 
   // connect our signals so if the molecule gets updated
-  QObject::connect(m, SIGNAL(atomAdded(Atom *)), this, SLOT(addAtom(Atom *)));
-//dc:   QObject::connect(m, SIGNAL(bondAdded(Bond *)), this, SLOT(addBond(Bond *)));
-//dc:   QObject::connect(m, SIGNAL(residueAdded(Residue *)), this, SLOT(addResidue(Residue *)));
-
+//dc:   QObject::connect(m, SIGNAL(rowsInserted(QModelIndex, int, int)), 
+//dc:       this, SLOT(rowsInsert(QModelIndex, int, int)));
 }
 
-void GLWidget::addAtom(Atom *atom)
-{
-  qDebug() << "GLWidget::addAtom";
-  defaultQueue.add(atom);
-}
+//dc: void GLWidget::rowsInsert(const QModelIndex &parent, int start, int end)
+//dc: {
+//dc:   for(int row = start; row<=end; row++)
+//dc:   {
+//dc:     QModelIndex child = molecule->index(row, 0, parent);
+//dc:     if(!child.isValid())
+//dc:     {
+//dc:       qWarning("GLWidget::rowsInsert : Invalid Child");
+//dc:       return;
+//dc:     }
+//dc:     Primitive *p = static_cast<Primitive*>(child.internalPointer());
+//dc:     if(!p)
+//dc:     {
+//dc:       qWarning("GLWidget::rowsInsert : Invalid Cast");
+//dc:       return;
+//dc:     }
+//dc:     defaultQueue.add(p);
+//dc:   }
+//dc: }
 
 void GLWidget::setDefaultEngine(int i) 
 {

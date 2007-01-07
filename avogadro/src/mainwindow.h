@@ -29,9 +29,9 @@
 #include <QDockWidget>
 
 #include <avogadro/glwidget.h>
-#include <avogadro/moleculemodel.h>
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
+#include <avogadro/moleculetreeview.h>
 
 #include "tool.h"
 
@@ -88,7 +88,7 @@ namespace Avogadro {
       QDockWidget *dockTools;
       QDockWidget *dockToolProperties;
       QDockWidget *dockProject;
-      QTreeView *treeProject;
+      MoleculeTreeView *treeView;
 
 
       QMenu      *menuFile;
