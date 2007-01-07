@@ -30,45 +30,64 @@ using namespace Avogadro;
 Molecule::Molecule(QObject *parent) 
   : OpenBabel::OBMol(), Primitive(MoleculeType) 
 {
-  // hack against qt const functions
-  _self = this;
 }
 
 Atom * Molecule::CreateAtom()
 {
+  qDebug() << "CreateAtom Called()";
   Atom *atom = new Atom();
+  connect(atom, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
+  emit primitiveAdded(atom);
   return(atom);
 }
 
 Bond * Molecule::CreateBond()
 {
   Bond *bond = new Bond();
+  connect(bond, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
+  emit primitiveAdded(bond);
   return(bond);
 }
 
 Residue * Molecule::CreateResidue()
 {
   Residue *residue = new Residue();
-  return(residue);
-}
-
-Atom * Molecule::NewAtom()
-{
-  Atom *atom = (Atom *) OBMol::NewAtom();
-  emit primitiveAdded(atom);
-  return(atom);
-}
-
-Bond * Molecule::NewBond()
-{
-  Bond *bond = (Bond *) OBMol::NewBond();
-  emit primitiveAdded(bond);
-  return(bond);
-}
-
-Residue * Molecule::NewResidue()
-{
-  Residue *residue = (Residue *) OBMol::NewResidue();
+  connect(residue, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
   emit primitiveAdded(residue);
   return(residue);
+}
+
+void Molecule::DestroyAtom(OpenBabel::OBAtom *atom)
+{
+  qDebug() << "DestroyAtom Called";
+  if(atom) {
+    emit primitiveRemoved(static_cast<Atom *>(atom));
+    delete atom;
+  }
+}
+
+void Molecule::DestroyBond(OpenBabel::OBBond *bond)
+{
+  if(bond) {
+    emit primitiveRemoved(static_cast<Bond *>(bond));
+    delete bond;
+  }
+}
+
+void Molecule::DestroyResidue(OpenBabel::OBResidue *residue)
+{
+  if(residue) {
+    emit primitiveRemoved(static_cast<Residue *>(residue));
+    delete residue;
+  }
+}
+
+void Molecule::updatePrimitive(Primitive *primitive)
+{
+  emit primitiveUpdated(primitive);
+}
+
+void Primitive::update()
+{
+  emit updated(this);
 }

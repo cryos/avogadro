@@ -51,33 +51,54 @@ void Draw::cleanup()
 
 void Draw::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
+  _buttons = event->buttons();
+  qDebug() << event->buttons();
 }
 
 void Draw::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
-  glPushMatrix();
-  //glLoadIdentity();
-  GLdouble projection[16];
-  glGetDoublev(GL_PROJECTION_MATRIX,projection);
-  GLdouble modelview[16];
-  glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
-  GLint viewport[4];
-  glGetIntegerv(GL_VIEWPORT,viewport);
+  Molecule *molecule = widget->getMolecule();
 
-  GLdouble relPos[3];
+  qDebug() << event->buttons();
+  if(_buttons & Qt::LeftButton)
+  {
+    glPushMatrix();
+    //glLoadIdentity();
+    GLdouble projection[16];
+    glGetDoublev(GL_PROJECTION_MATRIX,projection);
+    GLdouble modelview[16];
+    glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
+    GLint viewport[4];
+    glGetIntegerv(GL_VIEWPORT,viewport);
 
-  gluUnProject(event->pos().x(), viewport[3] - event->pos().y(), _DRAW_DEFAULT_WIN_Z, modelview, projection, viewport, &relPos[0], &relPos[1], &relPos[2]);
-//dc:   qDebug("Matrix %f:(%f, %f, %f)\n", f, relPos[0], relPos[1], relPos[2]);
+    GLdouble relPos[3];
 
-  glPopMatrix();
+    gluUnProject(event->pos().x(), viewport[3] - event->pos().y(), _DRAW_DEFAULT_WIN_Z, modelview, projection, viewport, &relPos[0], &relPos[1], &relPos[2]);
+  //dc:   qDebug("Matrix %f:(%f, %f, %f)\n", f, relPos[0], relPos[1], relPos[2]);
 
-  Molecule *mol = widget->getMolecule();
-  Atom *atom = mol->NewAtom();
+    glPopMatrix();
 
-  atom->SetVector(relPos[0], relPos[1], relPos[2]);
-  atom->SetAtomicNum(1);
+    Atom *atom = (Atom *)molecule->NewAtom();
+    atom->SetVector(relPos[0], relPos[1], relPos[2]);
+    atom->SetAtomicNum(1);
+    atom->update();
+  }
+  else if(_buttons & Qt::RightButton)
+  {
+    QList<GLHit> hits;
+    hits = widget->getHits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+    if(hits.size())
+    {
+      // get our top hit
+      GLHit hit = hits[0];
+      if(hit.type == Primitive::AtomType)
+      {
+        Atom *atom = (Atom *)molecule->GetAtom(hit.name);
+        molecule->DeleteAtom(atom);
+      }
+    }
 
-  widget->updateGL();
+  }
 }
 
 void Draw::mouseMove(GLWidget *widget, const QMouseEvent *event)

@@ -65,6 +65,9 @@ namespace Avogadro {
       virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event);
       virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);
 
+    private:
+      Qt::MouseButtons _buttons;
+
   };
 
 } // end namespace Avogadro

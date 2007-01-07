@@ -58,6 +58,7 @@ namespace Avogadro {
     public:
       GLWidget(QWidget *parent = 0);
       GLWidget(const QGLFormat &format, QWidget *parent = 0);
+      GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent = 0);
 
       Engine *getDefaultEngine() { return defaultEngine; }
       QList<Engine *> getEngines() { return engines; }
@@ -73,8 +74,8 @@ namespace Avogadro {
       void setScale(float s);
       float getScale();
 
-      void setMolecule(Molecule *m);
-      Molecule* getMolecule() { return molecule; }
+      void setMolecule(Molecule *molecule);
+      Molecule* getMolecule() { return _molecule; }
 
       /**
        * Get the hits for a region starting at (x,y) of size (w x y)
@@ -83,7 +84,11 @@ namespace Avogadro {
 
     public slots:
       void setDefaultEngine(int i);
-      void setDefaultEngine(Engine *e);
+      void setDefaultEngine(Engine *engine);
+
+      void addPrimitive(Primitive *primitive);
+      void updatePrimitive(Primitive *primitive);
+      void removePrimitive(Primitive *primitive);
 
 //dc:       void rowsInsert(const QModelIndex &parent, int start, int end);
 //dc:       void rowsRemove(const QModelIndex &parent, int start, int end);
@@ -114,7 +119,7 @@ namespace Avogadro {
       PrimitiveQueue defaultQueue;
       QList<PrimitiveQueue> queues;
 
-      Molecule *molecule;
+      Molecule *_molecule;
       QList<GLuint> _displayLists;
 
       GLdouble            _RotationMatrix[16];

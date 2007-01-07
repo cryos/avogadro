@@ -48,7 +48,7 @@ namespace Avogadro {
       //! 
       enum Type { MoleculeType, AtomType, BondType, 
         ResidueType, SurfaceType, PlaneType,
-        GridType, OtherType, LastType };
+        GridType, OtherType, LastType, FirstType=MoleculeType };
 
 //dc:       // do we need/want this?  doesn't work for plurals
 //dc:       // so i think useless
@@ -81,16 +81,21 @@ namespace Avogadro {
 
       bool isSelected() { return _selected;}
       void setSelected(bool s) { _selected = s;}
+
+      void update();
+      enum Type type() { return _type; }
+      
+    public slots:
       void toggleSelected() { _selected = !_selected;}
 
-      // set using constructor
-      //void setType(enum Type type) { _type = type; }
-      enum Type type() { return _type; }
 
+    signals:
+      void updated(Primitive*);
 
     protected:
       bool _selected;
       enum Type _type;
+
   };
 
   class Atom : public Primitive, public OpenBabel::OBAtom
@@ -128,24 +133,9 @@ namespace Avogadro {
       Bond * CreateBond(void);
       Residue * CreateResidue(void);
 
-//dc:       // coming soon
-      Atom * NewAtom();
-      Bond * NewBond();
-      Residue * NewResidue();
-
-//dc:       QVariant data(const QModelIndex &index, int role) const;
-//dc:       Qt::ItemFlags flags(const QModelIndex &index) const;
-//dc:       QVariant headerData(int section, Qt::Orientation orientation,
-//dc:           int role = Qt::DisplayRole) const;
-//dc:       QModelIndex index(int row, int column,
-//dc:           const QModelIndex &parent = QModelIndex()) const;
-//dc:       QModelIndex parent(const QModelIndex &index) const;
-//dc:       int rowCount(const QModelIndex &parent = QModelIndex()) const;
-//dc:       int columnCount(const QModelIndex &parent = QModelIndex()) const;
-//dc: 
-//dc:     private:
-//dc:       Primitive *getPrimitive(int row) const;
-
+      void DestroyAtom(OpenBabel::OBAtom*);
+      void DestroyBond(OpenBabel::OBBond*);
+      void DestroyResidue(OpenBabel::OBResidue*);
 
     protected:
       MainWindow *window;
@@ -153,14 +143,19 @@ namespace Avogadro {
       std::vector< Atom * > 	_vatom;
       std::vector< Bond * > 	_vbond;
 
+    public slots:
+      void updatePrimitive(Primitive *primitive);
+
     signals:
       void primitiveAdded(Primitive *primitive);
+      void primitiveUpdated(Primitive *primitive);
+      void primitiveRemoved(Primitive *primitive);
   };
 
   class PrimitiveQueue
   {
     public:
-      PrimitiveQueue() { for( int i=0; i<Primitive::LastType; i++ ) { _queue.append(new QList<Primitive *>()); } }
+      PrimitiveQueue() { for( int i=Primitive::FirstType; i<Primitive::LastType; i++ ) { _queue.append(new QList<Primitive *>()); } }
 
       QList<Primitive *>* getTypeQueue(int t) { 
         return(_queue[t]); 
@@ -169,6 +164,11 @@ namespace Avogadro {
       void add(Primitive *p) { 
         _queue[p->type()]->append(p); 
       }
+
+      void remove(Primitive *p) {
+        _queue[p->type()]->removeAll(p);
+      }
+
       void clear() {
         for( int i=0; i<_queue.size(); i++ ) {
           _queue[i]->clear();
@@ -180,5 +180,7 @@ namespace Avogadro {
   };
 
 } // namespace Avogadro
+
+Q_DECLARE_METATYPE(Avogadro::Primitive*)
 
 #endif

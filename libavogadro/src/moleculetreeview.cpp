@@ -32,7 +32,7 @@ MoleculeTreeView::MoleculeTreeView(Molecule *molecule, QWidget *parent) : QTreeW
   setItemDelegate(new MoleculeItemDelegate(this, this));
   setRootIsDecorated(false);
 
-  for(int t = Primitive::MoleculeType; t < Primitive::LastType; t++)
+  for(int t = Primitive::FirstType; t < Primitive::LastType; t++)
   {
     _groups.append(NULL);
   }
@@ -44,7 +44,8 @@ MoleculeTreeView::MoleculeTreeView(Molecule *molecule, QWidget *parent) : QTreeW
   setMolecule(molecule);
 
   connect(this, SIGNAL(itemPressed(QTreeWidgetItem*,int)), 
-      this, SLOT(handleMousePress(QTreeWidgetItem*)));
+      SLOT(handleMousePress(QTreeWidgetItem*)));
+
 }
 
 void MoleculeTreeView::handleMousePress(QTreeWidgetItem *item)
@@ -64,7 +65,14 @@ void MoleculeTreeView::setMolecule(Molecule *molecule)
   if(!molecule)
     return;
 
-  for(int t = Primitive::MoleculeType; t < Primitive::LastType; t++)
+  // disconnect from our old molecule
+  if(_molecule)
+    disconnect(_molecule);
+
+  _molecule = molecule;
+
+  // clear our group collections
+  for(int t = Primitive::FirstType; t < Primitive::LastType; t++)
   {
     if(_groups[t])
     {
@@ -73,7 +81,6 @@ void MoleculeTreeView::setMolecule(Molecule *molecule)
     }
   }
 
-  _molecule = molecule;
   // add the atoms to the default queue
   std::vector<OpenBabel::OBNodeBase*>::iterator i;
   for(Atom *atom = (Atom*)_molecule->BeginAtom(i); atom; atom = (Atom*)_molecule->NextAtom(i))
@@ -94,6 +101,14 @@ void MoleculeTreeView::setMolecule(Molecule *molecule)
       residue = (Residue *)_molecule->NextResidue(k)) {
     addPrimitive(residue);
   }
+
+  // connect our signals so if the molecule gets updated
+  connect(_molecule, SIGNAL(primitiveAdded(Primitive*)), 
+      this, SLOT(addPrimitive(Primitive*)));
+  connect(_molecule, SIGNAL(primitiveUpdated(Primitive*)), 
+      this, SLOT(updatePrimitive(Primitive*)));
+  connect(_molecule, SIGNAL(primitiveRemoved(Primitive*)), 
+      this, SLOT(removePrimitive(Primitive*)));
 }
 
 QTreeWidgetItem* MoleculeTreeView::addGroup(QString name, enum Primitive::Type type)
@@ -111,15 +126,73 @@ QTreeWidgetItem* MoleculeTreeView::addGroup(QString name, enum Primitive::Type t
 
 QTreeWidgetItem* MoleculeTreeView::addPrimitive(Primitive *primitive)
 {
-  qDebug() << "addPrimitive";
-
-  enum Primitive::Type type = primitive->type();
-
-  QTreeWidgetItem *group = _groups[type];
-  if(_groups[type] == NULL)
+  QTreeWidgetItem *group = _groups[primitive->type()];
+  if(group == NULL)
     return NULL;
 
   QTreeWidgetItem *item = new QTreeWidgetItem(group);
+  item->setText(0, primitiveToItemText(primitive));
+  item->setFlags(item->flags() | Qt::ItemIsSelectable);
+  item->setData(0, Qt::UserRole, qVariantFromValue(primitive));
+
+  return item;
+}
+
+void MoleculeTreeView::updatePrimitive(Primitive *primitive)
+{
+  QTreeWidgetItem *group = _groups[primitive->type()];
+  if(group == NULL)
+    return;
+
+  int num = primitiveToItemIndex(primitive);
+
+  if(num != -1) {
+    updatePrimitiveItem(group->child(num));
+  }
+
+  return;
+}
+
+void MoleculeTreeView::removePrimitive(Primitive *primitive)
+{
+  QTreeWidgetItem *group = _groups[primitive->type()];
+  if(group == NULL)
+    return;
+
+  int num = primitiveToItemIndex(primitive);
+
+  if(num != -1)
+  {
+    qDebug() << "Remove Item:" << num;
+    QTreeWidgetItem *item = group->takeChild(num);
+    if(item)
+      delete item;
+
+    for(int i = 0; i < group->childCount(); i++)
+    {
+      updatePrimitiveItem(group->child(i));
+    }
+  }
+
+  return;
+}
+
+void MoleculeTreeView::updatePrimitiveItem(QTreeWidgetItem *item)
+{
+  if(!item)
+    return;
+
+  Primitive *primitive = item->data(0, Qt::UserRole).value<Primitive *>();
+  if(primitive)
+  {
+    item->setText(0, primitiveToItemText(primitive));
+  }
+}
+
+QString MoleculeTreeView::primitiveToItemText(Primitive *primitive)
+{
+  enum Primitive::Type type = primitive->type();
+
   QString str = "Unknown";
   if(type == Primitive::MoleculeType)
   {
@@ -143,15 +216,39 @@ QTreeWidgetItem* MoleculeTreeView::addPrimitive(Primitive *primitive)
     str = tr("Residue ") + QString::number(residue->GetIdx());
   }
 
-  item->setText(0, str);
-  item->setFlags(item->flags() | Qt::ItemIsSelectable);
-  item->setData(0, Qt::UserRole, primitive);
-
-  return item;
+  return str;
 }
 
-  MoleculeItemDelegate::MoleculeItemDelegate(QTreeView *view, QWidget *parent)
-: QItemDelegate(parent), _view(view)
+int MoleculeTreeView::primitiveToItemIndex(Primitive *primitive)
+{
+  enum Primitive::Type type = primitive->type();
+
+  int num;
+  if(type == Primitive::AtomType)
+  {
+    Atom *atom = (Atom*)primitive;
+    num = atom->GetIdx()-1;
+  }
+  else if(type == Primitive::BondType)
+  {
+    Bond *bond = (Bond*)primitive;
+    num = bond->GetIdx();
+  }
+  else if(type == Primitive::ResidueType)
+  {
+    Residue *residue = (Residue*)primitive;
+    num = residue->GetIdx();
+  }
+  else
+  {
+    return -1;
+  }
+
+  return num;
+}
+
+MoleculeItemDelegate::MoleculeItemDelegate(QTreeView *view, QWidget *parent)
+  : QItemDelegate(parent), _view(view)
 {
 }
 

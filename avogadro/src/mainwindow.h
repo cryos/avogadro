@@ -76,8 +76,10 @@ namespace Avogadro {
       void glMouseRelease(QMouseEvent *event);
 
     private:
-      GLWidget  *gl;
+      GLWidget  *glView;
+      MoleculeTreeView *treeView;
       Tool      *currentTool;
+      Molecule *_molecule;
       QList<Tool *> tools;
 
       QString    currentFile;
@@ -88,7 +90,6 @@ namespace Avogadro {
       QDockWidget *dockTools;
       QDockWidget *dockToolProperties;
       QDockWidget *dockProject;
-      MoleculeTreeView *treeView;
 
 
       QMenu      *menuFile;

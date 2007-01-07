@@ -28,22 +28,27 @@
 using namespace Avogadro;
 
 GLWidget::GLWidget(QWidget *parent ) 
-: QGLWidget(parent), defaultEngine(NULL), _clearColor(Qt::black), molecule(NULL)
+: QGLWidget(parent), defaultEngine(NULL), _clearColor(Qt::black), _molecule(NULL)
 {
   init();
 }
 
 GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) 
-: QGLWidget(format, parent), defaultEngine(NULL), _clearColor(Qt::black), molecule(NULL)
+: QGLWidget(format, parent), defaultEngine(NULL), _clearColor(Qt::black), _molecule(NULL)
 {
   init();
+}
+
+GLWidget::GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent) 
+: QGLWidget(format, parent), defaultEngine(NULL), _clearColor(Qt::black), _molecule(NULL)
+{
+  init();
+  setMolecule(molecule);
 }
 
 void GLWidget::init()
 {
   loadEngines();
-
-  molecule = NULL;
 }
 
 void GLWidget::initializeGL()
@@ -223,65 +228,84 @@ void GLWidget::removeDL(GLuint dl)
   _displayLists.removeAll(dl);
 }
 
-void GLWidget::setMolecule(Molecule *m)
+void GLWidget::setMolecule(Molecule *molecule)
 {
-  //qDebug() << "GLWidget::setMolecule";
+  if(!molecule)
+    return;
+
+  // disconnect from our old molecule
+  if(_molecule)
+    disconnect(_molecule);
+
+  _molecule = molecule;
+
+  // clear our engine queues
   for( int i=0; i < queues.size(); i++ ) {
     queues[i].clear();
   }
 
   defaultQueue.clear();
 
-  molecule = m;
-
   // add the atoms to the default queue
   std::vector<OpenBabel::OBNodeBase*>::iterator i;
-  for(Atom *atom = (Atom*)m->BeginAtom(i); atom; atom = (Atom*)m->NextAtom(i))
+  for(Atom *atom = (Atom*)_molecule->BeginAtom(i); 
+      atom; atom = (Atom*)_molecule->NextAtom(i))
   {
     defaultQueue.add(atom);
   }
 
   // add the bonds to the default queue
   std::vector<OpenBabel::OBEdgeBase*>::iterator j;
-  for(Bond *bond = (Bond*)m->BeginBond(j); bond; bond = (Bond*)m->NextBond(j))
+  for(Bond *bond = (Bond*)_molecule->BeginBond(j); 
+      bond; bond = (Bond*)_molecule->NextBond(j))
   {
     defaultQueue.add(bond);
   }
 
   // add the residues to the default queue
   std::vector<OpenBabel::OBResidue*>::iterator k;
-  for(Residue *residue = (Residue*)m->BeginResidue(k); residue;
-      residue = (Residue *)m->NextResidue(k)) {
+  for(Residue *residue = (Residue*)_molecule->BeginResidue(k); 
+      residue; residue = (Residue *)_molecule->NextResidue(k))
+  {
     defaultQueue.add(residue);
   }
 
   // add the molecule to the default queue
-  defaultQueue.add(m);
+  defaultQueue.add(_molecule);
 
   // connect our signals so if the molecule gets updated
-//dc:   QObject::connect(m, SIGNAL(rowsInserted(QModelIndex, int, int)), 
-//dc:       this, SLOT(rowsInsert(QModelIndex, int, int)));
+  connect(_molecule, SIGNAL(primitiveAdded(Primitive*)), 
+      this, SLOT(addPrimitive(Primitive*)));
+  connect(_molecule, SIGNAL(primitiveUpdated(Primitive*)), 
+      this, SLOT(updatePrimitive(Primitive*)));
+  connect(_molecule, SIGNAL(primitiveRemoved(Primitive*)), 
+      this, SLOT(removePrimitive(Primitive*)));
+
+  updateGL();
 }
 
-//dc: void GLWidget::rowsInsert(const QModelIndex &parent, int start, int end)
-//dc: {
-//dc:   for(int row = start; row<=end; row++)
-//dc:   {
-//dc:     QModelIndex child = molecule->index(row, 0, parent);
-//dc:     if(!child.isValid())
-//dc:     {
-//dc:       qWarning("GLWidget::rowsInsert : Invalid Child");
-//dc:       return;
-//dc:     }
-//dc:     Primitive *p = static_cast<Primitive*>(child.internalPointer());
-//dc:     if(!p)
-//dc:     {
-//dc:       qWarning("GLWidget::rowsInsert : Invalid Cast");
-//dc:       return;
-//dc:     }
-//dc:     defaultQueue.add(p);
-//dc:   }
-//dc: }
+void GLWidget::addPrimitive(Primitive *primitive)
+{
+  if(primitive)
+    defaultQueue.add(primitive);
+}
+
+void GLWidget::updatePrimitive(Primitive *primitive)
+{
+  updateGL();
+}
+
+void GLWidget::removePrimitive(Primitive *primitive)
+{
+  // clear our engine queues
+  for( int i=0; i < queues.size(); i++ ) {
+    queues[i].remove(primitive);
+  }
+
+  defaultQueue.remove(primitive);
+
+  updateGL();
+}
 
 void GLWidget::setDefaultEngine(int i) 
 {
@@ -289,12 +313,12 @@ void GLWidget::setDefaultEngine(int i)
   setDefaultEngine(engines.at(i));
 }
 
-void GLWidget::setDefaultEngine(Engine *e) 
+void GLWidget::setDefaultEngine(Engine *engine) 
 {
   //qDebug() << "GLWidget::setDefaultEngine";
-  if(e)
+  if(engine)
   {
-    defaultEngine = e;
+    defaultEngine = engine;
     updateGL();
   }
 }
