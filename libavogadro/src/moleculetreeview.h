@@ -45,6 +45,8 @@ namespace Avogadro {
       QTreeWidgetItem* addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
+
+      void updateModel();
 //dc:       void update();
 
     private slots:
@@ -55,6 +57,7 @@ namespace Avogadro {
       QVector<QTreeWidgetItem *> _groups;
       QString primitiveToItemText(Primitive *primitive);
       int primitiveToItemIndex(Primitive *primitive);
+      void updateGroup(QTreeWidgetItem *item);
       void updatePrimitiveItem(QTreeWidgetItem *item);
   };
 

@@ -35,7 +35,7 @@ using namespace Avogadro;
 
 #define _DRAW_DEFAULT_WIN_Z 0.96
 
-Draw::Draw() : Tool()
+Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL)
 {
 }
 
@@ -51,37 +51,164 @@ void Draw::cleanup()
 
 void Draw::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
+  Molecule *molecule = widget->getMolecule();
   _buttons = event->buttons();
-  qDebug() << event->buttons();
+
+  _movedSinceButtonPressed = false;
+  _lastDraggingPosition = event->pos();
+  _initialDraggingPosition = event->pos();
+
+  //! List of hits from a selection/pick
+  _hits = widget->getHits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+
+  if(_buttons & Qt::LeftButton)
+  {
+    if(_hits.size())
+    {
+      GLHit hit = _hits[0];
+      if(hit.type == Primitive::AtomType)
+      {
+        _beginAtom = (Atom *)molecule->GetAtom(hit.name);
+      }
+    }
+    else
+    {
+      _beginAtom = newAtom(molecule, event->pos().x(), event->pos().y());
+      _beginAtom->update();
+    }
+  }
+
+}
+
+void Draw::mouseMove(GLWidget *widget, const QMouseEvent *event)
+{
+  Molecule *molecule = widget->getMolecule();
+
+  if((_buttons & Qt::LeftButton) && _beginAtom)
+  {
+    QList<GLHit> hits;
+    hits = widget->getHits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+
+    bool hitBeginAtom = false;
+    Atom *existingAtom = NULL;
+    if(hits.size())
+    {
+      // parser our hits.  we want to know
+      // if we hit another existingAtom that is not
+      // the _endAtom which we created
+      for(int i=0; i < hits.size() & !hitBeginAtom; i++)
+      {
+        GLHit hit = hits[i];
+        if(hit.type == Primitive::AtomType)
+        {
+          // hit the same atom either moved here from somewhere else
+          // or were already here.
+          if(hit.name == _beginAtom->GetIdx())
+          {
+            hitBeginAtom = true;
+          }
+          else if(!_endAtom)
+          {
+            existingAtom = (Atom *)molecule->GetAtom(hit.name);
+          }
+          else
+          {
+            if(hit.name != _endAtom->GetIdx())
+            {
+              existingAtom = (Atom *)molecule->GetAtom(hit.name);
+            }
+          }
+        }
+      }
+    }
+    if(hitBeginAtom)
+    {
+      if(_endAtom)
+      {
+        molecule->DeleteAtom(_endAtom);
+        _bond = NULL;
+        _endAtom = NULL;
+      }
+      else if(_bond)
+      {
+        Atom *oldAtom = (Atom *)_bond->GetEndAtom();
+        oldAtom->DeleteBond(_bond);
+        molecule->DeleteBond(_bond);
+        _bond=NULL;
+      }
+    }
+    else if(existingAtom)
+    {
+      Bond *existingBond = (Bond *)molecule->GetBond(_beginAtom, existingAtom);
+      if(_endAtom && _bond)
+      {
+        if(!existingBond) {
+          _endAtom->DeleteBond(_bond);
+          _bond->SetEnd(existingAtom);
+          existingAtom->AddBond(_bond);
+          _bond->update();
+        }
+
+        molecule->DeleteAtom(_endAtom);
+        _endAtom = NULL;
+
+        if(existingBond) {
+          _bond = NULL;
+        }
+      }
+      else if(!_bond && !existingBond)
+      {
+        _bond = newBond(molecule);
+        _bond->SetBegin(_beginAtom);
+        _bond->SetEnd(existingAtom);
+        _beginAtom->AddBond(_bond);
+        existingAtom->AddBond(_bond);
+        _bond->update();
+      }
+    }
+    else // if(!existingAtom && !hitBeginAtom)
+    {
+      if(!_endAtom)
+      {
+        _endAtom = newAtom(molecule, event->pos().x(), event->pos().y());
+        if(!_bond)
+        {
+          _bond = newBond(molecule);
+          _bond->SetBegin(_beginAtom);
+          _bond->SetEnd(_endAtom);
+          _beginAtom->AddBond(_bond);
+          _endAtom->AddBond(_bond);
+        }
+        else
+        {
+          Atom *oldAtom = (Atom *)_bond->GetEndAtom();
+          oldAtom->DeleteBond(_bond);
+          _bond->SetEnd(_endAtom);
+          _endAtom->AddBond(_bond);
+        }
+        _bond->update();
+        _endAtom->update();
+      }
+      else
+      {
+        moveAtom(_endAtom, event->pos().x(), event->pos().y());
+        _endAtom->update();
+//dc:         _endAtom->update();
+      }
+    }
+  }
+
 }
 
 void Draw::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->getMolecule();
 
-  qDebug() << event->buttons();
   if(_buttons & Qt::LeftButton)
   {
-    glPushMatrix();
-    //glLoadIdentity();
-    GLdouble projection[16];
-    glGetDoublev(GL_PROJECTION_MATRIX,projection);
-    GLdouble modelview[16];
-    glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
-    GLint viewport[4];
-    glGetIntegerv(GL_VIEWPORT,viewport);
-
-    GLdouble relPos[3];
-
-    gluUnProject(event->pos().x(), viewport[3] - event->pos().y(), _DRAW_DEFAULT_WIN_Z, modelview, projection, viewport, &relPos[0], &relPos[1], &relPos[2]);
-  //dc:   qDebug("Matrix %f:(%f, %f, %f)\n", f, relPos[0], relPos[1], relPos[2]);
-
-    glPopMatrix();
-
-    Atom *atom = (Atom *)molecule->NewAtom();
-    atom->SetVector(relPos[0], relPos[1], relPos[2]);
-    atom->SetAtomicNum(1);
-    atom->update();
+    _beginAtom=NULL;
+    _bond=NULL;
+    _endAtom=NULL;
   }
   else if(_buttons & Qt::RightButton)
   {
@@ -101,8 +228,41 @@ void Draw::mouseRelease(GLWidget *widget, const QMouseEvent *event)
   }
 }
 
-void Draw::mouseMove(GLWidget *widget, const QMouseEvent *event)
+void Draw::moveAtom(Atom *atom, int x, int y)
 {
+    glPushMatrix();
+    //glLoadIdentity();
+    GLdouble projection[16];
+    glGetDoublev(GL_PROJECTION_MATRIX,projection);
+    GLdouble modelview[16];
+    glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
+    GLint viewport[4];
+    glGetIntegerv(GL_VIEWPORT,viewport);
+
+    GLdouble relPos[3];
+
+    gluUnProject(x, viewport[3] - y, _DRAW_DEFAULT_WIN_Z, modelview, projection, viewport, &relPos[0], &relPos[1], &relPos[2]);
+  //dc:   qDebug("Matrix %f:(%f, %f, %f)\n", f, relPos[0], relPos[1], relPos[2]);
+    glPopMatrix();
+
+    atom->SetVector(relPos[0], relPos[1], relPos[2]);
+}
+
+Atom *Draw::newAtom(Molecule *molecule, int x, int y)
+{
+    Atom *atom = (Atom *)molecule->NewAtom();
+    moveAtom(atom, x, y);
+    atom->SetAtomicNum(1);
+
+    return atom;
+}
+
+Bond *Draw::newBond(Molecule *molecule)
+{
+  Bond *bond = (Bond *)molecule->NewBond();
+  bond->SetBO(1);
+
+  return bond;
 }
 
 Q_EXPORT_PLUGIN2(Draw, Draw)

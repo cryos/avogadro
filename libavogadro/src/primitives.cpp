@@ -43,6 +43,7 @@ Atom * Molecule::CreateAtom()
 
 Bond * Molecule::CreateBond()
 {
+  qDebug() << "Molecule::CreateBond()";
   Bond *bond = new Bond();
   connect(bond, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
   emit primitiveAdded(bond);
@@ -68,6 +69,7 @@ void Molecule::DestroyAtom(OpenBabel::OBAtom *atom)
 
 void Molecule::DestroyBond(OpenBabel::OBBond *bond)
 {
+  qDebug() << "DestroyBond Called";
   if(bond) {
     emit primitiveRemoved(static_cast<Bond *>(bond));
     delete bond;

@@ -109,6 +109,7 @@ void MoleculeTreeView::setMolecule(Molecule *molecule)
       this, SLOT(updatePrimitive(Primitive*)));
   connect(_molecule, SIGNAL(primitiveRemoved(Primitive*)), 
       this, SLOT(removePrimitive(Primitive*)));
+  connect(_molecule, SIGNAL(updated(Primitive*)), this, SLOT(updateModel()));
 }
 
 QTreeWidgetItem* MoleculeTreeView::addGroup(QString name, enum Primitive::Type type)
@@ -119,6 +120,7 @@ QTreeWidgetItem* MoleculeTreeView::addGroup(QString name, enum Primitive::Type t
   group->setText(0, name);
   group->setFlags(group->flags() & ~Qt::ItemIsSelectable);
   group->setData(0, Qt::UserRole, type);
+  group->setExpanded(true);
   _groups[type] = group;
 
   return group;
@@ -155,6 +157,8 @@ void MoleculeTreeView::updatePrimitive(Primitive *primitive)
 
 void MoleculeTreeView::removePrimitive(Primitive *primitive)
 {
+  qDebug() << "MoleculeTreeView::removePrimitive";
+
   QTreeWidgetItem *group = _groups[primitive->type()];
   if(group == NULL)
     return;
@@ -168,13 +172,29 @@ void MoleculeTreeView::removePrimitive(Primitive *primitive)
     if(item)
       delete item;
 
+    updateGroup(group);
+  }
+
+  return;
+}
+
+void MoleculeTreeView::updateModel()
+{
+  for(int t = Primitive::FirstType; t < Primitive::LastType; t++)
+  {
+    updateGroup(_groups[t]);
+  }
+}
+
+void MoleculeTreeView::updateGroup(QTreeWidgetItem *group)
+{
+  if(group)
+  {
     for(int i = 0; i < group->childCount(); i++)
     {
       updatePrimitiveItem(group->child(i));
     }
   }
-
-  return;
 }
 
 void MoleculeTreeView::updatePrimitiveItem(QTreeWidgetItem *item)
@@ -206,9 +226,23 @@ QString MoleculeTreeView::primitiveToItemText(Primitive *primitive)
   else if(type == Primitive::BondType)
   {
     Bond *bond = (Bond*)primitive;
-    str = tr("Bond ") + QString::number(bond->GetIdx()) + tr(" (") + 
-      QString::number(bond->GetBeginAtomIdx()) + tr(",") 
-      + QString::number(bond->GetEndAtomIdx()) + tr(")");
+    Atom *beginAtom = (Atom *)bond->GetBeginAtom();
+    Atom *endAtom = (Atom *)bond->GetEndAtom();
+    str = tr("Bond ") + QString::number(bond->GetIdx()) + tr(" ("); 
+    if(beginAtom)
+      str += QString::number(beginAtom->GetIdx());
+    else
+      str += "-";
+
+    str += ",";
+
+    if(endAtom)
+      str += QString::number(endAtom->GetIdx());
+    else
+      str += "-";
+
+    str += ")";
+
   }
   else if(type == Primitive::ResidueType)
   {

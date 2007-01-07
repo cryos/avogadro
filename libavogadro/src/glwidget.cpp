@@ -280,7 +280,13 @@ void GLWidget::setMolecule(Molecule *molecule)
       this, SLOT(updatePrimitive(Primitive*)));
   connect(_molecule, SIGNAL(primitiveRemoved(Primitive*)), 
       this, SLOT(removePrimitive(Primitive*)));
+  connect(_molecule, SIGNAL(updated(Primitive*)), this, SLOT(updateModel()));
 
+  updateGL();
+}
+
+void GLWidget::updateModel()
+{
   updateGL();
 }
 
@@ -297,6 +303,7 @@ void GLWidget::updatePrimitive(Primitive *primitive)
 
 void GLWidget::removePrimitive(Primitive *primitive)
 {
+  qDebug() << "GLWidget::removePrimitive";
   // clear our engine queues
   for( int i=0; i < queues.size(); i++ ) {
     queues[i].remove(primitive);
@@ -464,7 +471,7 @@ QList<GLHit> GLWidget::getHits(int x, int y, int w, int h)
       for (j = 0; j < names/2; j++) { /*  for each name */
         type = *ptr++;
         name = *ptr++;
-        printf ("%d(%d) ", name,type);
+        //X printf ("%d(%d) ", name,type);
         //X       if (j == 0)  /*  set row and column  */
         //X         ii = *ptr;
         //X       else if (j == 1)
@@ -476,7 +483,7 @@ QList<GLHit> GLWidget::getHits(int x, int y, int w, int h)
         hits.append(GLHit(name, type, minZ, maxZ));
       }
     }
-    printf ("\n");
+    //printf ("\n");
     qSort(hits);
   }
 

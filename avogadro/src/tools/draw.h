@@ -68,6 +68,19 @@ namespace Avogadro {
     private:
       Qt::MouseButtons _buttons;
 
+      bool                _movedSinceButtonPressed;
+
+      QPoint              _initialDraggingPosition;
+      QPoint              _lastDraggingPosition;
+
+      Atom *_beginAtom;
+      Atom *_endAtom;
+      Bond *_bond;
+      QList<GLHit> _hits;
+
+      Atom *newAtom(Molecule *molecule, int x, int y);
+      Bond *newBond(Molecule *molecule);
+      void moveAtom(Atom *atom, int x, int y);
   };
 
 } // end namespace Avogadro

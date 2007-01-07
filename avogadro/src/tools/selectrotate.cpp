@@ -123,7 +123,6 @@ void SelectRotate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 void SelectRotate::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
 
-
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;
 
   _lastDraggingPosition = event->pos();

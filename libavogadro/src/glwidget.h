@@ -90,6 +90,8 @@ namespace Avogadro {
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
 
+      void updateModel();
+
 //dc:       void rowsInsert(const QModelIndex &parent, int start, int end);
 //dc:       void rowsRemove(const QModelIndex &parent, int start, int end);
 
