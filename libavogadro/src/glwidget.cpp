@@ -117,7 +117,7 @@ void GLWidget::resizeGL(int width, int height)
 
 }
 
-void GLWidget::setCamera()
+void GLWidget::setCamera() const
 {
   //qDebug() << "GLWidget::setCamera";
   // Reset the projection and set our perspective.
@@ -153,12 +153,12 @@ void GLWidget::setScale(float s)
   _Scale = s;
 }
 
-float GLWidget::getScale()
+float GLWidget::getScale() const
 {
   return _Scale;
 }
 
-void GLWidget::render(GLenum mode)
+void GLWidget::render(GLenum mode) const
 {
   //qDebug() << "GLWidget::render";
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -330,40 +330,6 @@ void GLWidget::setDefaultEngine(Engine *engine)
   }
 }
 
-//X:void GLWidget::setTool(Tool *tool)
-//X:{
-//X:  qDebug() << "Setting Current Tool: " << tool->name() << " - " << tool->description(); 
-//X:  currentTool = tool;
-//X:}
-//X:
-//X:Tool* GLWidget::getTool()
-//X:{
-//X:  return currentTool;
-//X:}
-//X:
-//X:void GLWidget::loadTools()
-//X:{
-//X:  QDir pluginsDir = QDir(qApp->applicationDirPath());
-//X:
-//X:  if (!pluginsDir.cd("tools") && getenv("AVOGADRO_TOOLS") != NULL)
-//X:  {
-//X:    pluginsDir.cd(getenv("AVOGADRO_TOOLS"));
-//X:  }
-//X:
-//X:  qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
-//X:  foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
-//X:    QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-//X:    Tool *tool = qobject_cast<Tool *>(loader.instance());
-//X:    if (tool) {
-//X:      qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
-//X:      if (!currentTool)
-//X:      {
-//X:        setTool(tool);
-//X:      }
-//X:      tools.append(tool);
-//X:    }
-//X:  }
-//X:}
 
 void GLWidget::loadEngines()
 {
@@ -411,7 +377,7 @@ void GLWidget::loadEngines()
 
 #define GL_SEL_BUF_SIZE 512
 
-QList<GLHit> GLWidget::getHits(int x, int y, int w, int h)
+QList<GLHit> GLWidget::getHits(int x, int y, int w, int h) const
 {
   QList<GLHit> hits;
   GLuint selectBuf[GL_SEL_BUF_SIZE];

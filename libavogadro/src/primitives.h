@@ -79,11 +79,11 @@ namespace Avogadro {
       Primitive() : _selected(false), _type(OtherType) {}
       Primitive(enum Type type) : _selected(false), _type(type) {}
 
-      bool isSelected() { return _selected;}
+      bool isSelected() const { return _selected;}
       void setSelected(bool s) { _selected = s;}
 
       void update();
-      enum Type type() { return _type; }
+      enum Type type() const { return _type; }
       
     public slots:
       void toggleSelected() { _selected = !_selected;}
@@ -155,9 +155,13 @@ namespace Avogadro {
   class PrimitiveQueue
   {
     public:
-      PrimitiveQueue() { for( int i=Primitive::FirstType; i<Primitive::LastType; i++ ) { _queue.append(new QList<Primitive *>()); } }
+      PrimitiveQueue() { 
+        for( int i=Primitive::FirstType; i<Primitive::LastType; i++ ) { 
+          _queue.append(new QList<Primitive *>()); 
+        } 
+      }
 
-      QList<Primitive *>* getTypeQueue(int t) { 
+      const QList<Primitive *>* getTypeQueue(int t) const { 
         return(_queue[t]); 
       }
 

@@ -35,9 +35,9 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-bool BSEngine::render(PrimitiveQueue *q)
+bool BSEngine::render(const PrimitiveQueue *q)
 {
-  QList<Primitive *> *queue;
+  const QList<Primitive *> *queue;
 
   queue = q->getTypeQueue(Primitive::AtomType);
   for( int i=0; i<queue->size(); i++ ) {
@@ -52,7 +52,7 @@ bool BSEngine::render(PrimitiveQueue *q)
   return true;
 }
 
-bool BSEngine::render(Atom *a)
+bool BSEngine::render(const Atom *a)
 {
   m_sphere.setup(3);
 
@@ -82,7 +82,7 @@ bool BSEngine::render(Atom *a)
   return true;
 }
 
-bool BSEngine::render(Bond *b)
+bool BSEngine::render(const Bond *b)
 {
   // cout << "Render Bond..." << endl;
   m_cylinder.setup(6);
@@ -90,8 +90,8 @@ bool BSEngine::render(Bond *b)
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
 
-  OBAtom *atom1 = static_cast<OBAtom *>( b->GetBeginAtom() );
-  OBAtom *atom2 = static_cast<OBAtom *>( b->GetEndAtom() );
+  const OBAtom *atom1 = static_cast<const OBAtom *>( b->GetBeginAtom() );
+  const OBAtom *atom2 = static_cast<const OBAtom *>( b->GetEndAtom() );
   
   Vector3d v1 (atom1->GetVector().AsArray());
   Vector3d v2 (atom2->GetVector().AsArray());
@@ -119,7 +119,7 @@ bool BSEngine::render(Bond *b)
   return true;
 }
 
-bool BSEngine::render(Molecule *m)
+bool BSEngine::render(const Molecule *m)
 {
   // Disabled
   return false;

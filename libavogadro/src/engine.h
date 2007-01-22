@@ -48,13 +48,6 @@ namespace Avogadro {
 
       //! \name Render Methods
       //@{
-      //! \brief Render a Primitive object.
-      /*!
-        Engine developers need not implement this function.  It is left here as
-        a precautionary measure in the case we try to render a subclass of
-        Primitive we have not yet declared.
-        */
-      virtual bool render(Primitive *) { return false; }
       /*! Render a Molecule object
 
         Render an entire molecule all at once, rather than a specific atom
@@ -62,15 +55,9 @@ namespace Avogadro {
         additional glue code may be needed to be sure glPushName is used 
         properly.
       */
-      virtual bool render(Molecule *)  { return false; }
-      //! Render an Atom object.
-      virtual bool render(Atom *)      { return false;}
-      //! Render a Bond object.
-      virtual bool render(Bond *)      { return false; }
-      //! Render a Residue object.
-      virtual bool render(Residue *)   { return false;}
+
       //! Render a primitive queue.
-      virtual bool render(PrimitiveQueue *)   { return false;}
+      virtual bool render(const PrimitiveQueue *) { return false;}
       //@}
 
   };

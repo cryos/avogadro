@@ -58,12 +58,13 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       //! Render an Atom.
-      bool render(Atom *a);
+      bool render(const Atom *a);
       //! Render a Bond.
-      bool render(Bond *b);
+      bool render(const Bond *b);
       //! Render a Molecule.
-      bool render(Molecule *m);
-      bool render(PrimitiveQueue *q);
+      bool render(const Molecule *m);
+
+      bool render(const PrimitiveQueue *q);
       //@}
 
     private:

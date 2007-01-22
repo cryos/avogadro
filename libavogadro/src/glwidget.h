@@ -72,15 +72,15 @@ namespace Avogadro {
       void rotate(float x, float y, float z);
       void translate(float x, float y, float z);
       void setScale(float s);
-      float getScale();
+      float getScale() const;
 
       void setMolecule(Molecule *molecule);
-      Molecule* getMolecule() { return _molecule; }
+      const Molecule* molecule() const { return _molecule; }
 
       /**
        * Get the hits for a region starting at (x,y) of size (w x y)
        */
-      QList<GLHit> getHits(int x, int y, int w, int h);
+      QList<GLHit> getHits(int x, int y, int w, int h) const;
 
     public slots:
       void setDefaultEngine(int i);
@@ -112,8 +112,8 @@ namespace Avogadro {
 
       void loadEngines();
 
-      void setCamera();
-      void render(GLenum mode);
+      void setCamera() const;
+      void render(GLenum mode) const;
 
       Engine *defaultEngine;
       QList<Engine *> engines;
