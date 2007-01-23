@@ -20,8 +20,7 @@
   GNU General Public License for more details.
 ***********************************************************************/
 
-#include "primitives.moc"
-
+#include <avogadro/primitives.h>
 #include <QApplication>
 #include <QDebug>
 

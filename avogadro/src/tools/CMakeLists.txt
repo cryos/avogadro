@@ -10,30 +10,28 @@ ADD_DEFINITIONS(-DQT_SHARED)
 include_directories(${OPENBABEL2_INCLUDE_DIR} 
 	${EIGEN_INCLUDE_DIR} 
 	${AVOGADRO_INCLUDE_DIR} 
-	../
+	${CMAKE_CURRENT_BINARY_DIR}
 )
 
-link_directories(../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-set(selectrotate_SRCS
-	selectrotate.cpp
-)
-
-set(draw_SRCS
-	draw.cpp
-)
-
-set(draw_RCS
-        draw.qrc
-)
-qt4_add_resources(draw_RC_SRCS ${draw_RCS})
-
-qt4_automoc(${selectrotate_SRCS} ${draw_SRCS})
-
-ADD_LIBRARY(selectrotate SHARED ${selectrotate_SRCS})
-TARGET_LINK_LIBRARIES(selectrotate ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES} ${AVOGADRO_LIBRARIES})
-INSTALL(TARGETS selectrotate DESTINATION lib/avogadro)
-
-ADD_LIBRARY(draw SHARED ${draw_SRCS} ${draw_RC_SRCS})
+qt4_add_resources(draw_RC_SRCS draw.qrc)
+qt4_wrap_cpp(draw_MOC_SRCS draw.h)
+ADD_LIBRARY(draw SHARED draw.cpp ${draw_RC_SRCS} ${draw_MOC_SRCS})
 TARGET_LINK_LIBRARIES(draw ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES} ${AVOGADRO_LIBRARIES})
 INSTALL(TARGETS draw DESTINATION lib/avogadro)
+
+
+qt4_wrap_cpp(selectrotate_MOC_SRCS selectrotate.h)
+ADD_LIBRARY(selectrotate SHARED 
+	selectrotate.cpp 
+	${selectrotate_RC_SRCS} 
+	${selectrotate_MOC_SRCS}
+)
+TARGET_LINK_LIBRARIES(selectrotate 
+	${OPENBABEL2_LIBRARIES} 
+	${QT_LIBRARIES} 
+	${AVOGADRO_LIBRARIES}
+)
+INSTALL(TARGETS selectrotate DESTINATION lib/avogadro)
+

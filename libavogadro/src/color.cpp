@@ -10,7 +10,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#include "color.h"
+#include <avogadro/color.h>
 #include <math.h>
 
 using namespace Avogadro;

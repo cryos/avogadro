@@ -1,4 +1,4 @@
-project(avogadrolib) # the name of your project
+project(libavogadro) # the name of your project
 
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel

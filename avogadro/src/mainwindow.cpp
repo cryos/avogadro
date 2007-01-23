@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "mainwindow.moc"
+#include "mainwindow.h"
 #include <avogadro/primitives.h>
 
 #include <fstream>

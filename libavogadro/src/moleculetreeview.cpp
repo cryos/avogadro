@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "moleculetreeview.moc"
+#include <avogadro/moleculetreeview.h>
 
 #include <QDebug>
 #include <QPainter>

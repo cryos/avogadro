@@ -11,7 +11,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "sphere.h"
+#include <avogadro/sphere.h>
 #include <math.h>
 
 using namespace Avogadro;

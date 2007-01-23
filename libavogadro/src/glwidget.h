@@ -23,8 +23,8 @@
 #ifndef __GLWIDGET_H
 #define __GLWIDGET_H
 
-#include "engine.h"
-#include "color.h"
+#include <avogadro/engine.h>
+#include <avogadro/color.h>
 
 #include <eigen/projective.h>
 

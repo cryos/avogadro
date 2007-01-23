@@ -20,10 +20,10 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "bsengine.moc"
+#include "bsengine.h"
 
-#include "../primitives.h"
-#include "../color.h"
+#include <avogadro/primitives.h>
+#include <avogadro/color.h>
 
 #include <openbabel/obiter.h>
 #include <eigen/regression.h>

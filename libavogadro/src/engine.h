@@ -23,7 +23,7 @@
 #ifndef __ENGINE_H
 #define __ENGINE_H
 
-#include "primitives.h"
+#include <avogadro/primitives.h>
 
 #include <QString>
 #include <QVector>

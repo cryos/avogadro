@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "selectrotate.moc"
+#include "selectrotate.h"
 #include <avogadro/primitives.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>

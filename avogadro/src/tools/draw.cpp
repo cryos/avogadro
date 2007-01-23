@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "draw.moc"
+#include "draw.h"
 #include <avogadro/primitives.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>

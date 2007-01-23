@@ -2,6 +2,14 @@ set(QT_USE_QTOPENGL TRUE)
 
 include(${QT_USE_FILE})
 
+include_directories(
+	${OPENBABEL2_INCLUDE_DIR} 
+	${EIGEN_INCLUDE_DIR}
+	${CMAKE_SOURCE_DIR}
+	${CMAKE_CURRENT_BINARY_DIR}
+	${libavogadro_SOURCE_DIR}/include
+)
+
 set(libavogadro_SRCS
 	color.cpp
 	primitives.cpp
@@ -21,11 +29,16 @@ set(libavogadro_HDRS
 	moleculetreeview.h
 )
 
-include_directories(${OPENBABEL2_INCLUDE_DIR} ${EIGEN_INCLUDE_DIR})
+set(libavogadro_MOC_HDRS
+	primitives.h
+	glwidget.h
+	moleculetreeview.h
+)
 
-qt4_automoc(${libavogadro_SRCS})
+#qt4_automoc(${libavogadro_SRCS})
+qt4_wrap_cpp(libavogadro_MOC_SRCS ${libavogadro_MOC_HDRS})
 
-ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS})
+ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_MOC_SRCS})
 SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 
 INSTALL(TARGETS avogadro-lib DESTINATION lib)

@@ -11,7 +11,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "cylinder.h"
+#include <avogadro/cylinder.h>
 #include <math.h>
 
 using namespace Avogadro;

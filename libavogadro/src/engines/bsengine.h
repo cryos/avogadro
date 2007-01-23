@@ -30,9 +30,9 @@
 
 #include <openbabel/mol.h>
 
-#include "../engine.h"
-#include "../sphere.h"
-#include "../cylinder.h"
+#include <avogadro/engine.h>
+#include <avogadro/sphere.h>
+#include <avogadro/cylinder.h>
 
 namespace Avogadro {
 
