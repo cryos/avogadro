@@ -57,7 +57,7 @@ namespace Avogadro {
       */
 
       //! Render a primitive queue.
-      virtual bool render(const PrimitiveQueue *) { return false;}
+      virtual bool render(const PrimitiveQueue *) = 0;
       //@}
 
   };
@@ -76,6 +76,6 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro/1.0")
+Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro.enginefactory/1.0")
 
 #endif

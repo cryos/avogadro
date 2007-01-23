@@ -21,7 +21,6 @@
  ***********************************************************************/
 
 #include "mainwindow.moc"
-#include <avogadro/glwidget.h>
 #include <avogadro/primitives.h>
 
 #include <fstream>
@@ -32,53 +31,44 @@
 using namespace std;
 using namespace OpenBabel;
 
-#define _MW_MIN_DOCK_WIDTH 200
-
 namespace Avogadro {
 
-  MainWindow::MainWindow() : currentTool(NULL), _molecule(NULL)
+  MainWindow::MainWindow() : QMainWindow(0), m_currentTool(NULL), m_molecule(NULL)
   {
-    init();
+    constructor();
     setCurrentFile("");
   }
 
-  MainWindow::MainWindow(const QString &fileName) : currentTool(NULL), _molecule(NULL)
+  MainWindow::MainWindow(const QString &fileName) : QMainWindow(0), m_currentTool(NULL), m_molecule(NULL)
   {
-    init();
+    constructor();
     loadFile(fileName);
   }
 
-  void MainWindow::init()
+  void MainWindow::constructor()
   {
+    ui.setupUi(this);
+    
     readSettings();
     setAttribute(Qt::WA_DeleteOnClose);
 
-    undo = new QUndoStack(this);
-
-    createActions();
-    createMenus();
-    createToolbars();
-    createDocks();
-
-    _molecule = new Molecule();
+    m_undo = new QUndoStack(this);
+    m_molecule = new Molecule();
+    m_agTools = new QActionGroup(this);
 
     // at least for now, try to always do multisample OpenGL (i.e., antialias)
     // graphical improvement is great and many cards do this in hardware
     // At some point, this should be a preference
-    QGLFormat format;
-    format.setSampleBuffers(true);
-    glView = new GLWidget(_molecule, format, this);
-    setCentralWidget(glView);
-
-    treeView = new MoleculeTreeView(_molecule, dockProject);
-    treeView->setAnimated(true);
-    treeView->setAllColumnsShowFocus(true);
-    treeView->setAlternatingRowColors(true);
-    //treeView->setSelectionMode(QAbstractItemView::ExtendedSelection);
-    treeView->setSelectionMode(QAbstractItemView::MultiSelection);
-    treeView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    treeView->header()->hide();
-    dockProject->setWidget(treeView);
+    ui.glView->setMolecule( m_molecule);
+    
+    ui.treeView->setAnimated(true);
+    ui.treeView->setAllColumnsShowFocus(true);
+    ui.treeView->setAlternatingRowColors(true);
+    //ui.treeView->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    ui.treeView->setSelectionMode(QAbstractItemView::MultiSelection);
+    ui.treeView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui.treeView->setMolecule(m_molecule);
+    ui.treeView->header()->hide();
 
 //dc:     toolBox = new QToolBox(this);
 //dc:     toolBox->addItem(new QWidget(this), "Tools");
@@ -88,24 +78,22 @@ namespace Avogadro {
 //dc:     layout->addWidget(toolBox, 0,1);
 
     // add all gl engines to the dropdown
-    QList<Engine *> engines = glView->getEngines();
+    QList<Engine *> engines = ui.glView->engines();
     for(int i=0; i< engines.size(); ++i) {
       Engine *engine = engines.at(i);
-      cbEngine->insertItem(i, engine->description(), QVariant(engine));
+//       cbEngine->insertItem(i, engine->description(), QVariant(engine));
     }
 
     loadTools();
 
     // set the default to whatever GL has selected as default on startup
-    cbEngine->setCurrentIndex(engines.indexOf(glView->getDefaultEngine()));
-    cbTool->setCurrentIndex(tools.indexOf(currentTool));
+//     cbEngine->setCurrentIndex(engines.indexOf(ui.glView->getDefaultEngine()));
+//     cbTool->setCurrentIndex(m_tools.indexOf(m_currentTool));
 
-    connect(cbEngine, SIGNAL(activated(int)), glView, SLOT(setDefaultEngine(int)));
-    connect(cbTool, SIGNAL(activated(int)), this, SLOT(setCurrentTool(int)));
+//     connect(cbEngine, SIGNAL(activated(int)), ui.glView, SLOT(setDefaultEngine(int)));
+//     connect(cbTool, SIGNAL(activated(int)), this, SLOT(setCurrentTool(int)));
 
-    connect(glView, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(glMousePress(QMouseEvent *)));
-    connect(glView, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(glMouseMove(QMouseEvent *)));
-    connect(glView, SIGNAL(mouseRelease(QMouseEvent*)), this, SLOT(glMouseRelease(QMouseEvent *)));
+    connectUi();
 
     statusBar()->showMessage(tr("Ready."), 10000);
 
@@ -119,7 +107,7 @@ namespace Avogadro {
     other->show();
   }
 
-  void MainWindow::open()
+  void MainWindow::openFile()
   {
     QString fileName = QFileDialog::getOpenFileName(this);
     if (!fileName.isEmpty()) {
@@ -132,7 +120,7 @@ namespace Avogadro {
         return;
       }
 
-      if (currentFile.isEmpty())
+      if (m_currentFile.isEmpty())
         loadFile(fileName);
       else {
         MainWindow *other = new MainWindow;
@@ -155,7 +143,7 @@ namespace Avogadro {
         return;
       }
 
-      if (currentFile.isEmpty())
+      if (m_currentFile.isEmpty())
         loadFile(action->data().toString());
       else {
         MainWindow *other = new MainWindow;
@@ -178,10 +166,10 @@ namespace Avogadro {
 
   bool MainWindow::save()
   {
-    if (currentFile.isEmpty())
+    if (m_currentFile.isEmpty())
       return saveAs();
     else
-      return saveFile(currentFile);
+      return saveFile(m_currentFile);
   }
 
   bool MainWindow::saveAs()
@@ -210,7 +198,7 @@ namespace Avogadro {
       return;
 
     // render it (with alpha channel)
-    if (!glView->grabFrameBuffer(true).save(fileName))
+    if (!ui.glView->grabFrameBuffer(true).save(fileName))
     {
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot save file %1.").arg(fileName));
@@ -221,20 +209,20 @@ namespace Avogadro {
   void MainWindow::revert()
   {
     // this currently leaks -- need to free the display list and render, etc.
-    if (!currentFile.isEmpty()) {
-      loadFile(currentFile);
+    if (!m_currentFile.isEmpty()) {
+      loadFile(m_currentFile);
     }
   }
 
   void MainWindow::documentWasModified()
   {
     setWindowModified(true);
-    isModified = false;
+    m_modified = false;
   }
 
   bool MainWindow::maybeSave()
   {
-    if (isModified) {
+    if (m_modified) {
       QMessageBox::StandardButton ret;
       ret = QMessageBox::warning(this, tr("Avogadro"),
           tr("The document has been modified.\n"
@@ -267,160 +255,63 @@ namespace Avogadro {
   void MainWindow::fullScreen()
   {
     if (!this->isFullScreen()) {
-      actionFullScreen->setText("Normal Size");
-      tbFile->hide();
+      ui.actionFullScreen->setText("Normal Size");
+      ui.tbFile->hide();
       statusBar()->hide();
       this->showFullScreen();
     } else {
       this->showNormal();
-      actionFullScreen->setText("Full Screen");
-      tbFile->show();
+      ui.actionFullScreen->setText("Full Screen");
+      ui.tbFile->show();
       statusBar()->show();
     }
   }
 
   void MainWindow::setBackgroundColor()
   {
-    QColor current = glView->getClearColor();
-    glView->setClearColor(QColorDialog::getRgba(current.rgba(), NULL, this));
+    QColor current = ui.glView->background();
+    ui.glView->setBackground(QColorDialog::getRgba(current.rgba(), NULL, this));
   }
 
-  void MainWindow::createActions()
+  void MainWindow::connectUi()
   {
-    actionQuit = new QAction(tr("&Quit"), this);
-    actionQuit->setShortcut(tr("Ctrl+Q"));
-    actionQuit->setStatusTip(tr("Quit Avogadro"));
-    connect(actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
-
-    actionNew = new QAction(tr("&New"), this);
-    actionNew->setShortcut(QKeySequence::New);
-    actionNew->setStatusTip(tr("Create a new file"));
-    connect(actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
-
-    actionOpen = new QAction(tr("&Open..."), this);
-    actionOpen->setShortcut(QKeySequence::Open);
-    actionOpen->setStatusTip(tr("Open a new document"));
-    connect(actionOpen, SIGNAL(triggered()), this, SLOT(open()));
-
-    actionClose = new QAction(tr("&Close"), this);
-    actionClose->setShortcut(QKeySequence::Close);
-    actionClose->setStatusTip(tr("Close this document"));
-    connect(actionClose, SIGNAL(triggered()), this, SLOT(close()));
-
-    actionSave = new QAction(tr("&Save"), this);
-    actionSave->setShortcut(QKeySequence::Save);
-    actionSave->setStatusTip(tr("Save the document to disk"));
-    connect(actionSave, SIGNAL(triggered()), this, SLOT(save()));
-
-    actionSaveAs = new QAction(tr("Save &As..."), this);
-    actionSaveAs->setShortcut(tr("Ctrl+Shift+S"));
-    actionSaveAs->setStatusTip(tr("Save the document under a new name"));
-    connect(actionSaveAs, SIGNAL(triggered()), this, SLOT(saveAs()));
-
-    actionRevert = new QAction(tr("&Revert to Saved"), this);
-    actionRevert->setStatusTip(tr("Revert to the last saved version"));
-    connect(actionRevert, SIGNAL(triggered()), this, SLOT(revert()));
-
-    actionExport = new QAction(tr("&Export Graphics..."), this);
-    actionExport->setStatusTip(tr("Close this document"));
-    connect(actionExport, SIGNAL(triggered()), this, SLOT(exportGraphics()));
-    actionExport->setEnabled(QGLFramebufferObject::hasOpenGLFramebufferObjects());
-
+    connect(ui.actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect(ui.actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
+    connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(openFile()));
+    connect(ui.actionClose, SIGNAL(triggered()), this, SLOT(close()));
+    connect(ui.actionSave, SIGNAL(triggered()), this, SLOT(save()));
+    connect(ui.actionSaveAs, SIGNAL(triggered()), this, SLOT(saveAs()));
+    connect(ui.actionRevert, SIGNAL(triggered()), this, SLOT(revert()));
+    connect(ui.actionExportGraphics, SIGNAL(triggered()), this, SLOT(exportGraphics()));
+    ui.actionExportGraphics->setEnabled(QGLFramebufferObject::hasOpenGLFramebufferObjects());
 
     for (int i = 0; i < maxRecentFiles; ++i) {
-      actionRecentFile[i] = new QAction(this);
-      actionRecentFile[i]->setVisible(false);
-      connect(actionRecentFile[i], SIGNAL(triggered()),
+      m_actionRecentFile[i] = new QAction(this);
+      m_actionRecentFile[i]->setVisible(false);
+      ui.menuOpenRecent->addAction(m_actionRecentFile[i]);
+      connect(m_actionRecentFile[i], SIGNAL(triggered()),
           this, SLOT(openRecentFile()));
     }
+    
+    ui.menuDocks->addAction(ui.dockProject->toggleViewAction());
+    ui.menuDocks->addAction(ui.dockTools->toggleViewAction());
+    ui.menuDocks->addAction(ui.dockToolProperties->toggleViewAction());
+    ui.menuToolbars->addAction(ui.tbFile->toggleViewAction());
+    
 
-    actionClearRecentMenu = new QAction(tr("&Clear Menu"), this);
-    actionClearRecentMenu->setStatusTip(tr("Clear list of recent files"));
-    connect(actionClearRecentMenu, SIGNAL(triggered()), this, SLOT(clearRecentFiles()));
-
-    actionUndo = undo->createUndoAction(this);
-    actionUndo->setShortcut(QKeySequence::Undo);
-    actionUndo->setStatusTip(tr("Undo change"));
-
-    actionRedo = undo->createRedoAction(this);
-    actionRedo->setShortcut(QKeySequence::Redo);
-    actionRedo->setStatusTip(tr("Redo change"));
-
-    actionFullScreen = new QAction(tr("&Full Screen"), this);
-    actionFullScreen->setStatusTip(tr("Show Full Screen"));
-    actionFullScreen->setShortcut(tr("Ctrl+Shift+R"));
-    connect(actionFullScreen, SIGNAL(triggered()), this, SLOT(fullScreen()));
-
-    actionSetColor = new QAction(tr("Set &Background Color..."), this);
-    actionSetColor->setStatusTip(tr("Set Background Color"));
-    connect(actionSetColor, SIGNAL(triggered()), this, SLOT(setBackgroundColor()));
-
-    actionAbout = new QAction(tr("&About Avogadro"), this);
-    actionAbout->setStatusTip(tr("About Avogadro"));
-    connect(actionAbout, SIGNAL(triggered()), this, SLOT(about()));
+    connect(ui.actionClearRecent, SIGNAL(triggered()), this, SLOT(clearRecentFiles()));
+    connect(ui.actionFullScreen, SIGNAL(triggered()), this, SLOT(fullScreen()));
+    connect(ui.actionSetBackgroundColor, SIGNAL(triggered()), this, SLOT(setBackgroundColor()));
+    connect(ui.actionAbout, SIGNAL(triggered()), this, SLOT(about()));
+    
+    connect(ui.glView, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(glMousePress(QMouseEvent *)));
+    connect(ui.glView, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(glMouseMove(QMouseEvent *)));
+    connect(ui.glView, SIGNAL(mouseRelease(QMouseEvent*)), this, SLOT(glMouseRelease(QMouseEvent *)));
+    
+    connect(m_agTools, SIGNAL(triggered(QAction*)), this, SLOT(setCurrentTool( QAction*)));
   }
 
-  void MainWindow::createMenus()
-  {
-    menuFile = menuBar()->addMenu(tr("&File"));
-
-    // add actions to menus
-    menuFile->addAction(actionNew);
-    menuFile->addAction(actionOpen);
-    menuOpen_Recent = menuFile->addMenu(tr("Open &Recent"));
-    for (int i = 0; i < maxRecentFiles; ++i)
-      menuOpen_Recent->addAction(actionRecentFile[i]);
-    actionSeparator = menuOpen_Recent->addSeparator();
-    menuOpen_Recent->addAction(actionClearRecentMenu);
-    updateRecentFileActions();
-
-    menuFile->addSeparator();
-    menuFile->addAction(actionClose);
-    menuFile->addAction(actionSave);
-    menuFile->addAction(actionSaveAs);
-    menuFile->addAction(actionRevert);
-    menuFile->addSeparator();
-    menuFile->addAction(actionExport);
-    menuFile->addAction(actionQuit);
-
-    menuEdit = menuBar()->addMenu(tr("&Edit"));
-    menuEdit->addAction(actionUndo);
-    menuEdit->addAction(actionRedo);
-
-    menuView = menuBar()->addMenu(tr("&View"));
-    menuView->addAction(actionFullScreen);
-    menuView->addAction(actionSetColor);
-
-    menuSettings = menuBar()->addMenu(tr("&Settings"));
-    menuSettingsToolbars = menuSettings->addMenu(tr("&Toolbars"));
-    menuSettingsDocks = menuSettings->addMenu(tr("&Docks"));
-
-    menuHelp = menuBar()->addMenu(tr("&Help"));
-    menuHelp->addAction(actionAbout);
-  }
-
-  void MainWindow::createToolbars()
-  {
-    tbFile = addToolBar(tr("File"));
-    tbFile->addAction(actionNew);
-    tbFile->addAction(actionOpen);
-    tbFile->addAction(actionClose);
-    tbFile->addAction(actionSave);
-
-    // XXX This is a quick hack.
-    cbEngine = new QComboBox;
-    (tbFile->addWidget(cbEngine))->setVisible(true);
-
-    cbTool = new QComboBox;
-    (tbFile->addWidget(cbTool))->setVisible(true);
-
-    tbFile->setOrientation(Qt::Horizontal);
-    this->addToolBar(static_cast<Qt::ToolBarArea>(4), tbFile);
-
-    menuSettingsToolbars->addAction(tbFile->toggleViewAction());
-  }
-
-  void MainWindow::createDocks()
+/*  void MainWindow::createDocks()
   {
     dockTools = new QDockWidget(tr("Tools"), this);
     dockTools->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
@@ -439,7 +330,7 @@ namespace Avogadro {
     dockProject = new QDockWidget(tr("Project"), this);
     dockProject->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     dockProject->setMinimumWidth(_MW_MIN_DOCK_WIDTH);
-//dc:     treeView = new MoleculeTreeView();
+//dc:     ui.treeView = new MoleculeTreeView();
 //dc:     treeProject->setAlternatingRowColors(true);
 //dc:     treeProject->setAnimated(true);
 //dc:     treeProject->header()->hide();
@@ -453,7 +344,8 @@ namespace Avogadro {
     menuSettingsDocks->addAction(dockProject->toggleViewAction());
 
   }
-
+*/
+  
   bool MainWindow::loadFile(const QString &fileName)
   {
     QFile file(fileName);
@@ -488,17 +380,17 @@ namespace Avogadro {
     Molecule *molecule = new Molecule;
     if (conv.Read(molecule, &ifs) && molecule->NumAtoms() != 0)
     {
-      treeView->setMolecule(molecule);
-      glView->setMolecule(molecule);
-      if(_molecule)
-        delete(_molecule);
-      _molecule = molecule;
+      ui.treeView->setMolecule(molecule);
+      ui.glView->setMolecule(molecule);
+      if(m_molecule)
+        delete(m_molecule);
+      m_molecule = molecule;
 
       QApplication::restoreOverrideCursor();
 
       QString status;
-      QTextStream(&status) << "Atoms: " << _molecule->NumAtoms() <<
-        " Bonds: " << _molecule->NumBonds();
+      QTextStream(&status) << "Atoms: " << m_molecule->NumAtoms() <<
+        " Bonds: " << m_molecule->NumBonds();
       statusBar()->showMessage(status, 5000);
 
       
@@ -545,7 +437,7 @@ namespace Avogadro {
       return false;
     }
 
-    OBMol *molecule = dynamic_cast<OBMol*>(_molecule);
+    OBMol *molecule = dynamic_cast<OBMol*>(m_molecule);
     if (conv.Write(molecule, &ofs))
       statusBar()->showMessage("Save succeeded.", 5000);
     else
@@ -559,13 +451,13 @@ namespace Avogadro {
 
   void MainWindow::setCurrentFile(const QString &fileName)
   {
-    currentFile = fileName;
-    if (currentFile.isEmpty()) {
+    m_currentFile = fileName;
+    if (m_currentFile.isEmpty()) {
       setWindowTitle(tr("Avogadro"));
       return;
     }
     else
-      setWindowTitle(tr("%1 - %2").arg(strippedName(currentFile))
+      setWindowTitle(tr("%1 - %2").arg(strippedName(m_currentFile))
           .arg(tr("Avogadro")));
 
     QSettings settings; // already set up properly via main.cpp
@@ -592,14 +484,14 @@ namespace Avogadro {
     int numRecentFiles = qMin(files.size(), (int)maxRecentFiles);
 
     for (int i = 0; i < numRecentFiles; ++i) {
-      actionRecentFile[i]->setText(strippedName(files[i]));
-      actionRecentFile[i]->setData(files[i]);
-      actionRecentFile[i]->setVisible(true);
+      m_actionRecentFile[i]->setText(strippedName(files[i]));
+      m_actionRecentFile[i]->setData(files[i]);
+      m_actionRecentFile[i]->setVisible(true);
     }
     for (int j = numRecentFiles; j < maxRecentFiles; ++j)
-      actionRecentFile[j]->setVisible(false);
+      m_actionRecentFile[j]->setVisible(false);
 
-    actionSeparator->setVisible(numRecentFiles > 0);
+//     ui.actionSeparator->setVisible(numRecentFiles > 0);
   }
 
   QString MainWindow::strippedName(const QString &fullFileName)
@@ -613,7 +505,7 @@ namespace Avogadro {
 
     foreach (QWidget *widget, qApp->topLevelWidgets()) {
       MainWindow *mainWin = qobject_cast<MainWindow *>(widget);
-      if (mainWin && mainWin->currentFile == canonicalFilePath)
+      if (mainWin && mainWin->m_currentFile == canonicalFilePath)
         return mainWin;
     }
     return 0;
@@ -634,7 +526,7 @@ namespace Avogadro {
     settings.setValue("pos", pos());
     settings.setValue("size", size());
   }
-
+    
   void MainWindow::loadTools()
   {
     QDir pluginsDir("/usr/local/lib/avogadro");
@@ -644,54 +536,69 @@ namespace Avogadro {
       pluginsDir.cd(getenv("AVOGADRO_TOOLS"));
     }
 
-    //dc:  if (!pluginsDir.cd("tools") && getenv("AVOGADRO_TOOLS") != NULL)
+    //dc:  if (!pluginsDir.cd("m_tools") && getenv("AVOGADRO_TOOLS") != NULL)
     //dc:  {
     //dc:    pluginsDir.cd(getenv("AVOGADRO_TOOLS"));
     //dc:  }
 
-    qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
+    qDebug() << "AVOGADRO_TOOLS:" << pluginsDir.absolutePath() << endl;
     foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
       QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
       //qDebug() << "File: " << fileName;
       Tool *tool = qobject_cast<Tool *>(loader.instance());
       if (tool) {
         qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
-        if (!currentTool)
+        m_tools.append(tool);
+
+        QToolButton *button = new QToolButton();
+        QAction *action = tool->action();
+        m_agTools->addAction(action);
+        
+        button->setDefaultAction(action);
+        ui.flowTools->addWidget(button);
+        
+        if (!m_currentTool)
         {
           setCurrentTool(tool);
+          button->click();
         }
-        cbTool->addItem(tool->description(), QVariant(tool));
-        tools.append(tool);
+      
       }
     }
   }
 
   void MainWindow::setCurrentTool(int i)
   {
-    setCurrentTool(tools.at(i));
+    setCurrentTool(m_tools.at(i));
   }
 
+  void MainWindow::setCurrentTool(QAction *action)
+  {
+    Tool *tool = action->data().value<Tool *>();
+    setCurrentTool(tool);
+  }
+  
   void MainWindow::setCurrentTool(Tool *tool)
   {
-    currentTool = tool;
+    m_currentTool = tool;
   }
 
   void MainWindow::glMousePress(QMouseEvent *event)
   {
-    if(currentTool)
-      currentTool->mousePress(glView, event);
+    if(m_currentTool)
+      m_currentTool->mousePress(m_molecule, ui.glView, event);
   }
 
   void MainWindow::glMouseMove(QMouseEvent *event)
   {
-    if(currentTool)
-      currentTool->mouseMove(glView, event);
+    if(m_currentTool)
+      m_currentTool->mouseMove(m_molecule, ui.glView, event);
   }
 
   void MainWindow::glMouseRelease(QMouseEvent *event)
   {
-    if(currentTool)
-      currentTool->mouseRelease(glView, event);
+    if(m_currentTool)
+      m_currentTool->mouseRelease(m_molecule, ui.glView, event);
   }
 
 } // end namespace Avogadro

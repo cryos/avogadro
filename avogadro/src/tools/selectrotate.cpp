@@ -35,6 +35,12 @@ using namespace Avogadro;
 
 SelectRotate::SelectRotate() : Tool()
 {
+  m_action->setText(name());
+  m_action->setToolTip(description());
+}
+
+SelectRotate::~SelectRotate()
+{
 }
 
 void SelectRotate::initialize()
@@ -47,7 +53,7 @@ void SelectRotate::cleanup()
 
 };
 
-void SelectRotate::mousePress(GLWidget *widget, const QMouseEvent *event)
+void SelectRotate::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
 {
 
   _movedSinceButtonPressed = false;
@@ -65,7 +71,7 @@ void SelectRotate::mousePress(GLWidget *widget, const QMouseEvent *event)
   }
 }
 
-void SelectRotate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+void SelectRotate::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
 {
   if(!_hits.size())
   {
@@ -77,12 +83,12 @@ void SelectRotate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
     for(int i=0; i < _hits.size(); i++) {
       if(_hits[i].type == Primitive::AtomType)
       {
-        ((Atom *)widget->getMolecule()->GetAtom(_hits[i].name))->toggleSelected();
+        ((Atom *)molecule->GetAtom(_hits[i].name))->toggleSelected();
         break;
       }
       else if(_hits[i].type == Primitive::BondType)
       {
-        ((Bond *)widget->getMolecule()->GetBond(_hits[i].name))->toggleSelected();
+        ((Bond *)molecule->GetBond(_hits[i].name))->toggleSelected();
         break;
       }
     }
@@ -108,11 +114,11 @@ void SelectRotate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
     for(int i=0; i < hits.size(); i++) {
       if(hits[i].type == Primitive::AtomType)
       {
-        ((Atom *)widget->getMolecule()->GetAtom(hits[i].name))->toggleSelected();
+        ((Atom *)molecule->GetAtom(hits[i].name))->toggleSelected();
       }
       else if(hits[i].type == Primitive::BondType)
       {
-        ((Bond *)widget->getMolecule()->GetBond(hits[i].name))->toggleSelected();
+        ((Bond *)molecule->GetBond(hits[i].name))->toggleSelected();
       }
     }
   }
@@ -120,7 +126,7 @@ void SelectRotate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
   widget->updateGL();
 }
 
-void SelectRotate::mouseMove(GLWidget *widget, const QMouseEvent *event)
+void SelectRotate::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
 {
 
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;

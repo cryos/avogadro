@@ -25,13 +25,14 @@
 
 #include <openbabel/mol.h>
 #include <QObject>
+#include <QDebug>
 #include <QAbstractItemModel>
 
 class Engine;
 
 namespace Avogadro {
 
-  class MainWindow;
+  class PrimitivePrivate;
 
   /*
    * Primitive 
@@ -41,60 +42,40 @@ namespace Avogadro {
 
   class Primitive : public QObject
   {
-
     Q_OBJECT
 
     public:
-      //! 
-      enum Type { MoleculeType, AtomType, BondType, 
-        ResidueType, SurfaceType, PlaneType,
-        GridType, OtherType, LastType, FirstType=MoleculeType };
+      enum Type { 
+        MoleculeType, 
+        AtomType, 
+        BondType, 
+        ResidueType, 
+        SurfaceType, 
+        PlaneType,
+        GridType, 
+        OtherType, 
+        LastType, 
+        FirstType=MoleculeType 
+      };
+      
+      Primitive(QObject *parent=0);
+      Primitive(enum Type type, QObject *parent=0);
+      virtual ~Primitive();
 
-//dc:       // do we need/want this?  doesn't work for plurals
-//dc:       // so i think useless
-//dc:       static QString typeString(enum Type type) {
-//dc:         switch(type) {
-//dc:           case MoleculeType:
-//dc:             return tr("Molecule");
-//dc:           case AtomType:
-//dc:             return tr("Atom");
-//dc:           case BondType:
-//dc:             return tr("Bond");
-//dc:           case ResidueType:
-//dc:             return tr("Residue");
-//dc:           case SurfaceType:
-//dc:             return tr("Surface");
-//dc:           case PlaneType:
-//dc:             return tr("Plane");
-//dc:           case GridType:
-//dc:             return tr("Grid");
-//dc:           case OtherType:
-//dc:             return tr("Other");
-//dc:           case LastType:
-//dc:             return tr("Last");
-//dc:         }
-//dc:       }
-
-    public:
-      Primitive() : _selected(false), _type(OtherType) {}
-      Primitive(enum Type type) : _selected(false), _type(type) {}
-
-      bool isSelected() const { return _selected;}
-      void setSelected(bool s) { _selected = s;}
+      bool isSelected() const;
+      void setSelected(bool s);
 
       void update();
-      enum Type type() const { return _type; }
-      
-    public slots:
-      void toggleSelected() { _selected = !_selected;}
+      enum Primitive::Type type() const;
 
+    public slots:
+      void toggleSelected();
 
     signals:
       void updated(Primitive*);
 
     protected:
-      bool _selected;
-      enum Type _type;
+      PrimitivePrivate *d;
 
   };
 
@@ -138,8 +119,6 @@ namespace Avogadro {
       void DestroyResidue(OpenBabel::OBResidue*);
 
     protected:
-      MainWindow *window;
-      Molecule *_self;
       std::vector< Atom * > 	_vatom;
       std::vector< Bond * > 	_vbond;
 

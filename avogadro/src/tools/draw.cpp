@@ -37,6 +37,14 @@ using namespace Avogadro;
 
 Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL)
 {
+  m_action->setText(name());
+  m_action->setToolTip(description());
+   m_action->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
+}
+
+Draw::~Draw()
+{
+  delete m_action;
 }
 
 void Draw::initialize()
@@ -49,9 +57,9 @@ void Draw::cleanup()
 
 };
 
-void Draw::mousePress(GLWidget *widget, const QMouseEvent *event)
+void Draw::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
 {
-  Molecule *molecule = widget->getMolecule();
+//   Molecule *molecule = widget->getMolecule();
   _buttons = event->buttons();
 
   _movedSinceButtonPressed = false;
@@ -80,9 +88,9 @@ void Draw::mousePress(GLWidget *widget, const QMouseEvent *event)
 
 }
 
-void Draw::mouseMove(GLWidget *widget, const QMouseEvent *event)
+void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
 {
-  Molecule *molecule = widget->getMolecule();
+//   Molecule *molecule = widget->getMolecule();
 
   if((_buttons & Qt::LeftButton) && _beginAtom)
   {
@@ -200,10 +208,8 @@ void Draw::mouseMove(GLWidget *widget, const QMouseEvent *event)
 
 }
 
-void Draw::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+void Draw::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
 {
-  Molecule *molecule = widget->getMolecule();
-
   if(_buttons & Qt::LeftButton)
   {
     _beginAtom=NULL;
@@ -250,9 +256,11 @@ void Draw::moveAtom(Atom *atom, int x, int y)
 
 Atom *Draw::newAtom(Molecule *molecule, int x, int y)
 {
+  molecule->BeginModify();
     Atom *atom = (Atom *)molecule->NewAtom();
     moveAtom(atom, x, y);
     atom->SetAtomicNum(1);
+    molecule->EndModify();
 
     return atom;
 }

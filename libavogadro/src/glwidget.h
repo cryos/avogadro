@@ -37,7 +37,7 @@
 #include <vector>
 
 namespace Avogadro {
-
+  
   class GLHit
   {
     public:
@@ -51,6 +51,8 @@ namespace Avogadro {
       GLuint maxZ;
   };
 
+  class GLWidgetPrivate;
+
   class GLWidget : public QGLWidget
   {
     Q_OBJECT
@@ -60,14 +62,11 @@ namespace Avogadro {
       GLWidget(const QGLFormat &format, QWidget *parent = 0);
       GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent = 0);
 
-      Engine *getDefaultEngine() { return defaultEngine; }
-      QList<Engine *> getEngines() { return engines; }
-
       void addDL(GLuint dl);
       void removeDL(GLuint dl);
 
-      void setClearColor(const QColor &c) { _clearColor = c; qglClearColor(c);}
-      QColor getClearColor() const { return _clearColor;}
+      void setBackground(const QColor &background);
+      QColor background() const;
 
       void rotate(float x, float y, float z);
       void translate(float x, float y, float z);
@@ -75,7 +74,10 @@ namespace Avogadro {
       float getScale() const;
 
       void setMolecule(Molecule *molecule);
-      const Molecule* molecule() const { return _molecule; }
+      const Molecule* molecule() const;
+
+      Engine *defaultEngine() const;
+      QList<Engine *> engines() const;
 
       /**
        * Get the hits for a region starting at (x,y) of size (w x y)
@@ -101,7 +103,8 @@ namespace Avogadro {
       void mouseMove( QMouseEvent * event );
 
     protected:
-      void init();
+      GLWidgetPrivate *d;
+      
       virtual void initializeGL();
       virtual void paintGL();
       virtual void resizeGL(int, int);
@@ -110,24 +113,13 @@ namespace Avogadro {
       virtual void mouseReleaseEvent( QMouseEvent * event );
       virtual void mouseMoveEvent( QMouseEvent * event );
 
+      virtual void setCamera() const;
+      virtual void render(GLenum mode) const;
+      
       void loadEngines();
-
-      void setCamera() const;
-      void render(GLenum mode) const;
-
-      Engine *defaultEngine;
-      QList<Engine *> engines;
-
-      PrimitiveQueue defaultQueue;
-      QList<PrimitiveQueue> queues;
-
-      Molecule *_molecule;
-      QList<GLuint> _displayLists;
-
-      GLdouble            _RotationMatrix[16];
-      GLdouble            _TranslationVector[3];
-      GLdouble            _Scale;
-      QColor              _clearColor;
+      
+    private:
+      void constructor();
 
   };
 

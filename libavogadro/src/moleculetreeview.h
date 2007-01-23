@@ -35,7 +35,8 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      MoleculeTreeView(Molecule *molecule, QWidget *parent=0);
+      MoleculeTreeView(QWidget *parent=0);
+      MoleculeTreeView(Molecule *molecule=0, QWidget *parent=0);
 
       void setMolecule(Molecule *molecule);
       QTreeWidgetItem* addGroup(enum Primitive::Type type);
@@ -53,12 +54,16 @@ namespace Avogadro {
       void handleMousePress(QTreeWidgetItem *item);
 
     protected:
-      Molecule *_molecule;
-      QVector<QTreeWidgetItem *> _groups;
+      Molecule *m_molecule;
+      QVector<QTreeWidgetItem *> m_groups;
+      
       QString primitiveToItemText(Primitive *primitive);
       int primitiveToItemIndex(Primitive *primitive);
       void updateGroup(QTreeWidgetItem *item);
       void updatePrimitiveItem(QTreeWidgetItem *item);
+      
+    private:
+      void constructor();
   };
 
   class MoleculeItemDelegate : public QItemDelegate
@@ -71,7 +76,7 @@ namespace Avogadro {
       virtual QSize sizeHint(const QStyleOptionViewItem &opt, const QModelIndex &index) const;
 
     private:
-      QTreeView *_view;
+      QTreeView *m_view;
 
   };
 

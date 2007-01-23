@@ -5,16 +5,29 @@ LINK_DIRECTORIES(${LINK_DIRECTORIES} ${libavogadro_BINARY_DIR}/src)
 include(${QT_USE_FILE})
 
 set(avogadro_SRCS
+  flowlayout.cpp
 	mainwindow.cpp
 	main.cpp
 	tool.cpp
 )
 
-include_directories(${OPENBABEL2_INCLUDE_DIR} ${EIGEN_INCLUDE_DIR})
+set(avogadro_RCS
+        avogadro.qrc
+)
 
+#set(avogadro_UIS
+#	mainwindow.ui
+#)
+
+include_directories(${OPENBABEL2_INCLUDE_DIR} ${EIGEN_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+
+# designer has some flaws.
+#qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
+qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_automoc(${avogadro_SRCS})
 
-ADD_EXECUTABLE(avogadro-app ${avogadro_SRCS})
+#ADD_EXECUTABLE(avogadro-app ${avogadro_SRCS} ${avogadro_UIS_H} ${avogadro_RC_SRCS})
+ADD_EXECUTABLE(avogadro-app ${avogadro_SRCS} ${avogadro_RC_SRCS})
 
 SET_TARGET_PROPERTIES(avogadro-app PROPERTIES OUTPUT_NAME avogadro)
 

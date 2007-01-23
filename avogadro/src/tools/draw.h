@@ -27,6 +27,7 @@
 #include <QObject>
 #include <QStringList>
 #include <QImage>
+#include <QAction>
 
 #include <openbabel/mol.h>
 
@@ -39,31 +40,32 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::Tool)
+
     public:
       //! Constructor
       Draw();
       //! Deconstructor
-      virtual ~Draw() {}
+      virtual ~Draw();
 
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() { return(QString(tr("Draw"))); }
+      virtual QString name() { return(tr("Draw")); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() { return(QString(tr("Drawing Tool"))); }
+      virtual QString description() { return(tr("Drawing Tool")); }
       //@}
 
       //! \name Tool Methods
       //@{
-      //! \brief Callback methods for actions on the canvas.
+      //! \brief Callback methods for ui.actions on the canvas.
       /*!
         */
       virtual void initialize();
       virtual void cleanup();
 
-      virtual void mousePress(GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);
+      virtual void mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
+      virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
+      virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
 
     private:
       Qt::MouseButtons _buttons;

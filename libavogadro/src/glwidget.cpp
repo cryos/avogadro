@@ -25,433 +25,477 @@
 #include <stdio.h>
 #include <vector>
 
-using namespace Avogadro;
+namespace Avogadro {
+  class GLWidgetPrivate {
+    public:
+      GLWidgetPrivate() : defaultEngine(0), background(Qt::black), molecule(0) {}
+      
+      Engine *defaultEngine;
+      QList<Engine *> engines;
+    
+      PrimitiveQueue defaultQueue;
+      QList<PrimitiveQueue> queues;
+    
+      Molecule *molecule;
+      QList<GLuint> displayLists;
+    
+      GLdouble            rotationMatrix[16];
+      GLdouble            translationVector[3];
+      GLdouble            scale;
+      QColor              background;
+  };
 
-GLWidget::GLWidget(QWidget *parent ) 
-: QGLWidget(parent), defaultEngine(NULL), _clearColor(Qt::black), _molecule(NULL)
-{
-  init();
-}
 
-GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) 
-: QGLWidget(format, parent), defaultEngine(NULL), _clearColor(Qt::black), _molecule(NULL)
-{
-  init();
-}
-
-GLWidget::GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent) 
-: QGLWidget(format, parent), defaultEngine(NULL), _clearColor(Qt::black), _molecule(NULL)
-{
-  init();
-  setMolecule(molecule);
-}
-
-void GLWidget::init()
-{
-  loadEngines();
-}
-
-void GLWidget::initializeGL()
-{
-  qDebug() << "GLWidget::initializeGL";
-
-  qglClearColor ( _clearColor );
-
-  glShadeModel( GL_SMOOTH );
-  glEnable( GL_DEPTH_TEST );
-  glDepthFunc( GL_LESS );
-  glEnable( GL_CULL_FACE );
-  glEnable( GL_COLOR_SUM_EXT );
-
-  GLfloat mat_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
-  GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
-  GLfloat mat_shininess[] = { 30.0 };
-
-  glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-  glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-  glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-  glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-
-  // Used to display semi-transparent relection rectangle
-  //  glBlendFunc(GL_ONE, GL_ONE);
-  glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
-
-  glEnable( GL_NORMALIZE );
-  glEnable( GL_LIGHTING );
-
-  GLfloat ambientLight[] = { 0.4, 0.4, 0.4, 1.0 };
-  GLfloat diffuseLight[] = { 0.8, 0.8, 0.8, 1.0 };
-  GLfloat specularLight[] = { 1.0, 1.0, 1.0, 1.0 };
-  GLfloat position[] = { 0.8, 0.7, 1.0, 0.0 };
-
-  glLightModeli( GL_LIGHT_MODEL_COLOR_CONTROL_EXT,
-      GL_SEPARATE_SPECULAR_COLOR_EXT );
-  glLightfv( GL_LIGHT0, GL_AMBIENT, ambientLight );
-  glLightfv( GL_LIGHT0, GL_DIFFUSE, diffuseLight );
-  glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
-  glLightfv( GL_LIGHT0, GL_POSITION, position );
-  glEnable( GL_LIGHT0 );
-
-  glMatrixMode(GL_MODELVIEW);
-
-  // Initialize a clean rotation matrix
-  glPushMatrix();
-  glLoadIdentity();
-  glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix);
-  glPopMatrix();
-
-  _TranslationVector[0] = 0.0;
-  _TranslationVector[1] = 0.0;
-  _TranslationVector[2] = 0.0;
-
-  _Scale = 1.0;
-
-  glEnableClientState( GL_VERTEX_ARRAY );
-  glEnableClientState( GL_NORMAL_ARRAY );
-}
-
-void GLWidget::resizeGL(int width, int height)
-{
-  qDebug() << "GLWidget::resizeGL";
-  glViewport(0,0,width,height);
-
-}
-
-void GLWidget::setCamera() const
-{
-  //qDebug() << "GLWidget::setCamera";
-  // Reset the projection and set our perspective.
-  gluPerspective(35,float(width())/height(),1.0,100);
-
-  // pull the camera back 20
-  glTranslated ( 0.0, 0.0, -20.0 );
-}
-
-void GLWidget::rotate(float x, float y, float z)
-{
-  //qDebug() << "GLWidget::rotate";
-  glPushMatrix();
-  glLoadIdentity();
-  glRotated( x, 1.0, 0.0, 0.0 );
-  glRotated( y, 0.0, 1.0, 0.0 );
-  glRotated( z, 0.0, 0.0, 1.0 );
-  glMultMatrixd( _RotationMatrix );
-  glGetDoublev( GL_MODELVIEW_MATRIX, _RotationMatrix );
-  glPopMatrix();
-}
-
-void GLWidget::translate(float x, float y, float z)
-{
-  qDebug() << "GLWidget::translate";
-  _TranslationVector[0] = _TranslationVector[0] + x;
-  _TranslationVector[1] = _TranslationVector[1] + y;
-  _TranslationVector[2] = _TranslationVector[2] + z;
-}
-
-void GLWidget::setScale(float s)
-{
-  _Scale = s;
-}
-
-float GLWidget::getScale() const
-{
-  return _Scale;
-}
-
-void GLWidget::render(GLenum mode) const
-{
-  //qDebug() << "GLWidget::render";
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-  // TODO: Be careful here.  For the time being we are actually changing the
-  // orientation of our render in 3d space and changing the camera.  And also
-  // we're not changing the coordinates of the atoms.
-
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-
-  // Translate our molecule as per user instructions
-  glScaled(_Scale, _Scale, _Scale);
-  glMultMatrixd(_RotationMatrix);
-  glTranslated(_TranslationVector[0], _TranslationVector[1], _TranslationVector[2]);
-
-  if(defaultEngine)
-    defaultEngine->render(&defaultQueue);
-
-  for(int i=0; i<_displayLists.size(); i++) {
-    qDebug() << "Calling DL: " << _displayLists[i] << endl;
-    glCallList(_displayLists[i]);
-  }
-
-  glFlush();
-}
-
-void GLWidget::paintGL()
-{ 
-  //qDebug() << "GLWidget::paintGL";
-  // Reset the projection
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  setCamera();
-
-  // Reset the model view
-  glMatrixMode(GL_MODELVIEW);
-  render(GL_RENDER);
-}
-
-void GLWidget::mousePressEvent( QMouseEvent * event )
-{
-  //qDebug() << "GLWidget::mousePressEvent";
-  emit mousePress(event);
-}
-
-void GLWidget::mouseReleaseEvent( QMouseEvent * event )
-{
-  //qDebug() << "GLWidget::mouseReleaseEvent";
-  emit mouseRelease(event);
-}
-
-void GLWidget::mouseMoveEvent( QMouseEvent * event )
-{
-  //qDebug() << "GLWidget::mouseMoveEvent";
-  emit mouseMove(event);
-}
-
-void GLWidget::addDL(GLuint dl)
-{
-  //qDebug() << "GLWidget::addDL";
-  _displayLists.append(dl);
-}
-
-void GLWidget::removeDL(GLuint dl)
-{
-  _displayLists.removeAll(dl);
-}
-
-void GLWidget::setMolecule(Molecule *molecule)
-{
-  if(!molecule)
-    return;
-
-  // disconnect from our old molecule
-  if(_molecule)
-    disconnect(_molecule);
-
-  _molecule = molecule;
-
-  // clear our engine queues
-  for( int i=0; i < queues.size(); i++ ) {
-    queues[i].clear();
-  }
-
-  defaultQueue.clear();
-
-  // add the atoms to the default queue
-  std::vector<OpenBabel::OBNodeBase*>::iterator i;
-  for(Atom *atom = (Atom*)_molecule->BeginAtom(i); 
-      atom; atom = (Atom*)_molecule->NextAtom(i))
+  GLWidget::GLWidget(QWidget *parent ) 
+  : QGLWidget(parent), d(new GLWidgetPrivate)
   {
-    defaultQueue.add(atom);
+    constructor();
   }
-
-  // add the bonds to the default queue
-  std::vector<OpenBabel::OBEdgeBase*>::iterator j;
-  for(Bond *bond = (Bond*)_molecule->BeginBond(j); 
-      bond; bond = (Bond*)_molecule->NextBond(j))
+  
+  GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) 
+  : QGLWidget(format, parent), d(new GLWidgetPrivate)
   {
-    defaultQueue.add(bond);
+    constructor();
   }
-
-  // add the residues to the default queue
-  std::vector<OpenBabel::OBResidue*>::iterator k;
-  for(Residue *residue = (Residue*)_molecule->BeginResidue(k); 
-      residue; residue = (Residue *)_molecule->NextResidue(k))
+  
+  GLWidget::GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent) 
+  : QGLWidget(format, parent), d(new GLWidgetPrivate)
   {
-    defaultQueue.add(residue);
+    constructor();
+    setMolecule(molecule);
   }
-
-  // add the molecule to the default queue
-  defaultQueue.add(_molecule);
-
-  // connect our signals so if the molecule gets updated
-  connect(_molecule, SIGNAL(primitiveAdded(Primitive*)), 
-      this, SLOT(addPrimitive(Primitive*)));
-  connect(_molecule, SIGNAL(primitiveUpdated(Primitive*)), 
-      this, SLOT(updatePrimitive(Primitive*)));
-  connect(_molecule, SIGNAL(primitiveRemoved(Primitive*)), 
-      this, SLOT(removePrimitive(Primitive*)));
-  connect(_molecule, SIGNAL(updated(Primitive*)), this, SLOT(updateModel()));
-
-  updateGL();
-}
-
-void GLWidget::updateModel()
-{
-  updateGL();
-}
-
-void GLWidget::addPrimitive(Primitive *primitive)
-{
-  if(primitive)
-    defaultQueue.add(primitive);
-}
-
-void GLWidget::updatePrimitive(Primitive *primitive)
-{
-  updateGL();
-}
-
-void GLWidget::removePrimitive(Primitive *primitive)
-{
-  qDebug() << "GLWidget::removePrimitive";
-  // clear our engine queues
-  for( int i=0; i < queues.size(); i++ ) {
-    queues[i].remove(primitive);
-  }
-
-  defaultQueue.remove(primitive);
-
-  updateGL();
-}
-
-void GLWidget::setDefaultEngine(int i) 
-{
-  //qDebug() << "GLWidget::setDefaultEngine";
-  setDefaultEngine(engines.at(i));
-}
-
-void GLWidget::setDefaultEngine(Engine *engine) 
-{
-  //qDebug() << "GLWidget::setDefaultEngine";
-  if(engine)
+  
+  void GLWidget::constructor()
   {
-    defaultEngine = engine;
+    loadEngines();
+  }
+  
+  void GLWidget::initializeGL()
+  {
+    qDebug() << "GLWidget::initializeGL";
+  
+    qglClearColor ( d->background );
+  
+    glShadeModel( GL_SMOOTH );
+    glEnable( GL_DEPTH_TEST );
+    glDepthFunc( GL_LESS );
+    glEnable( GL_CULL_FACE );
+    glEnable( GL_COLOR_SUM_EXT );
+  
+    GLfloat mat_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
+    GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat mat_shininess[] = { 30.0 };
+  
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
+    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+  
+    // Used to display semi-transparent relection rectangle
+    //  glBlendFunc(GL_ONE, GL_ONE);
+    glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+  
+    glEnable( GL_NORMALIZE );
+    glEnable( GL_LIGHTING );
+  
+    GLfloat ambientLight[] = { 0.4, 0.4, 0.4, 1.0 };
+    GLfloat diffuseLight[] = { 0.8, 0.8, 0.8, 1.0 };
+    GLfloat specularLight[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat position[] = { 0.8, 0.7, 1.0, 0.0 };
+  
+    glLightModeli( GL_LIGHT_MODEL_COLOR_CONTROL_EXT,
+        GL_SEPARATE_SPECULAR_COLOR_EXT );
+    glLightfv( GL_LIGHT0, GL_AMBIENT, ambientLight );
+    glLightfv( GL_LIGHT0, GL_DIFFUSE, diffuseLight );
+    glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
+    glLightfv( GL_LIGHT0, GL_POSITION, position );
+    glEnable( GL_LIGHT0 );
+  
+    glMatrixMode(GL_MODELVIEW);
+  
+    // Initialize a clean rotation matrix
+    glPushMatrix();
+    glLoadIdentity();
+    glGetDoublev( GL_MODELVIEW_MATRIX, d->rotationMatrix);
+    glPopMatrix();
+  
+    d->translationVector[0] = 0.0;
+    d->translationVector[1] = 0.0;
+    d->translationVector[2] = 0.0;
+  
+    d->scale = 1.0;
+  
+    glEnableClientState( GL_VERTEX_ARRAY );
+    glEnableClientState( GL_NORMAL_ARRAY );
+  }
+  
+  void GLWidget::resizeGL(int width, int height)
+  {
+    qDebug() << "GLWidget::resizeGL";
+    glViewport(0,0,width,height);
+  
+  }
+  
+  void GLWidget::setCamera() const
+  {
+    //qDebug() << "GLWidget::setCamera";
+    // Reset the projection and set our perspective.
+    gluPerspective(35,float(width())/height(),1.0,100);
+  
+    // pull the camera back 20
+    glTranslated ( 0.0, 0.0, -20.0 );
+  }
+  
+  void GLWidget::rotate(float x, float y, float z)
+  {
+    //qDebug() << "GLWidget::rotate";
+    glPushMatrix();
+    glLoadIdentity();
+    glRotated( x, 1.0, 0.0, 0.0 );
+    glRotated( y, 0.0, 1.0, 0.0 );
+    glRotated( z, 0.0, 0.0, 1.0 );
+    glMultMatrixd( d->rotationMatrix );
+    glGetDoublev( GL_MODELVIEW_MATRIX, d->rotationMatrix );
+    glPopMatrix();
+  }
+  
+  void GLWidget::translate(float x, float y, float z)
+  {
+    qDebug() << "GLWidget::translate";
+    d->translationVector[0] = d->translationVector[0] + x;
+    d->translationVector[1] = d->translationVector[1] + y;
+    d->translationVector[2] = d->translationVector[2] + z;
+  }
+  
+  void GLWidget::setBackground(const QColor &background) { 
+    d->background = background; qglClearColor(background);
+  }
+  
+  QColor GLWidget::background() const {
+    return d->background;
+  }
+
+  void GLWidget::setScale(float s)
+  {
+    d->scale = s;
+  }
+  
+  float GLWidget::getScale() const
+  {
+    return d->scale;
+  }
+  
+  void GLWidget::render(GLenum mode) const
+  {
+    //qDebug() << "GLWidget::render";
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  
+    // TODO: Be careful here.  For the time being we are actually changing the
+    // orientation of our render in 3d space and changing the camera.  And also
+    // we're not changing the coordinates of the atoms.
+  
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+  
+    // Translate our molecule as per user instructions
+    glScaled(d->scale, d->scale, d->scale);
+    glMultMatrixd(d->rotationMatrix);
+    glTranslated(d->translationVector[0], d->translationVector[1], d->translationVector[2]);
+  
+    if(d->defaultEngine)
+      d->defaultEngine->render(&(d->defaultQueue));
+  
+    for(int i=0; i<d->displayLists.size(); i++) {
+      qDebug() << "Calling DL: " << d->displayLists[i] << endl;
+      glCallList(d->displayLists[i]);
+    }
+  
+    glFlush();
+  }
+  
+  void GLWidget::paintGL()
+  { 
+    //qDebug() << "GLWidget::paintGL";
+    // Reset the projection
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    setCamera();
+  
+    // Reset the model view
+    glMatrixMode(GL_MODELVIEW);
+    render(GL_RENDER);
+  }
+  
+  void GLWidget::mousePressEvent( QMouseEvent * event )
+  {
+    //qDebug() << "GLWidget::mousePressEvent";
+    emit mousePress(event);
+  }
+  
+  void GLWidget::mouseReleaseEvent( QMouseEvent * event )
+  {
+    //qDebug() << "GLWidget::mouseReleaseEvent";
+    emit mouseRelease(event);
+  }
+  
+  void GLWidget::mouseMoveEvent( QMouseEvent * event )
+  {
+    //qDebug() << "GLWidget::mouseMoveEvent";
+    emit mouseMove(event);
+  }
+  
+  void GLWidget::addDL(GLuint dl)
+  {
+    //qDebug() << "GLWidget::addDL";
+    d->displayLists.append(dl);
+  }
+  
+  void GLWidget::removeDL(GLuint dl)
+  {
+    d->displayLists.removeAll(dl);
+  }
+  
+  void GLWidget::setMolecule(Molecule *molecule)
+  {
+    if(!molecule)
+      return;
+  
+    // disconnect from our old molecule
+    if(d->molecule)
+      disconnect(d->molecule);
+  
+    d->molecule = molecule;
+  
+    // clear our engine queues
+    for( int i=0; i < d->queues.size(); i++ ) {
+      d->queues[i].clear();
+    }
+  
+    d->defaultQueue.clear();
+  
+    // add the atoms to the default queue
+    std::vector<OpenBabel::OBNodeBase*>::iterator i;
+    for(Atom *atom = (Atom*)d->molecule->BeginAtom(i); 
+        atom; atom = (Atom*)d->molecule->NextAtom(i))
+    {
+      d->defaultQueue.add(atom);
+    }
+  
+    // add the bonds to the default queue
+    std::vector<OpenBabel::OBEdgeBase*>::iterator j;
+    for(Bond *bond = (Bond*)d->molecule->BeginBond(j); 
+        bond; bond = (Bond*)d->molecule->NextBond(j))
+    {
+      d->defaultQueue.add(bond);
+    }
+  
+    // add the residues to the default queue
+    std::vector<OpenBabel::OBResidue*>::iterator k;
+    for(Residue *residue = (Residue*)d->molecule->BeginResidue(k); 
+        residue; residue = (Residue *)d->molecule->NextResidue(k))
+    {
+      d->defaultQueue.add(residue);
+    }
+  
+    // add the molecule to the default queue
+    d->defaultQueue.add(d->molecule);
+  
+    // connect our signals so if the molecule gets updated
+    connect(d->molecule, SIGNAL(primitiveAdded(Primitive*)), 
+        this, SLOT(addPrimitive(Primitive*)));
+    connect(d->molecule, SIGNAL(primitiveUpdated(Primitive*)), 
+        this, SLOT(updatePrimitive(Primitive*)));
+    connect(d->molecule, SIGNAL(primitiveRemoved(Primitive*)), 
+        this, SLOT(removePrimitive(Primitive*)));
+    connect(d->molecule, SIGNAL(updated(Primitive*)), this, SLOT(updateModel()));
+  
     updateGL();
   }
-}
-
-
-void GLWidget::loadEngines()
-{
-  QDir pluginsDir("/usr/local/lib/avogadro");
-
-  if(getenv("AVOGADRO_ENGINES") != NULL)
+  
+  inline
+  const Molecule* GLWidget::molecule() const
   {
-    pluginsDir.cd(getenv("AVOGADRO_ENGINES"));
+    return d->molecule;
+  }
+  
+  Engine * GLWidget::defaultEngine() const
+  {
+    return d->defaultEngine;
+  }
+  
+  QList<Engine *> GLWidget::engines() const
+  {
+    return d->engines;
   }
 
-//X:  if (!pluginsDir.cd("") && getenv("AVOGADRO_ENGINES") != NULL)
-//X:  {
-//X:    pluginsDir.cd(getenv("AVOGADRO_ENGINES"));
-//X:  }
-//X:
-  qDebug() << "PluginsDir:" << pluginsDir.absolutePath() << endl;
-  // load static plugins first
-  //   foreach (QObject *plugin, QPluginLoader::staticInstances())
-  //   {
-  //     Engine *r = qobject_cast<Engine *>(plugin);
-  //     if (r)
-  //     {
-  //       qDebug() << "Loaded Engine: " << r->name() << endl;
-  //       if( defaultEngine == NULL )
-  //         defaultEngine = r;
-  //     }
-  //   }
-
-  foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
-    QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-//dc:     qDebug() << "File: " << fileName;
-    EngineFactory *factory = qobject_cast<EngineFactory *>(loader.instance());
-    if (factory) {
-      Engine *engine = factory->createInstance();
-      qDebug() << "Found Engine: " << engine->name() << " - " << engine->description(); 
-      if (!defaultEngine)
-      {
-        qDebug() << "Setting Default Engine: " << engine->name() << " - " << engine->description(); 
-        defaultEngine = engine;
-      }
-      engines.append(engine);
+  void GLWidget::updateModel()
+  {
+    updateGL();
+  }
+  
+  void GLWidget::addPrimitive(Primitive *primitive)
+  {
+    if(primitive)
+      d->defaultQueue.add(primitive);
+  }
+  
+  void GLWidget::updatePrimitive(Primitive *primitive)
+  {
+    updateGL();
+  }
+  
+  void GLWidget::removePrimitive(Primitive *primitive)
+  {
+    qDebug() << "GLWidget::removePrimitive";
+    // clear our engine queues
+    for( int i=0; i < d->queues.size(); i++ ) {
+      d->queues[i].remove(primitive);
+    }
+  
+    d->defaultQueue.remove(primitive);
+  
+    updateGL();
+  }
+  
+  void GLWidget::setDefaultEngine(int i) 
+  {
+    //qDebug() << "GLWidget::setDefaultEngine";
+    setDefaultEngine(d->engines.at(i));
+  }
+  
+  void GLWidget::setDefaultEngine(Engine *engine) 
+  {
+    //qDebug() << "GLWidget::setDefaultEngine";
+    if(engine)
+    {
+      d->defaultEngine = engine;
+      updateGL();
     }
   }
-}
-
-#define GL_SEL_BUF_SIZE 512
-
-QList<GLHit> GLWidget::getHits(int x, int y, int w, int h) const
-{
-  QList<GLHit> hits;
-  GLuint selectBuf[GL_SEL_BUF_SIZE];
-  GLint viewport[4];
-  unsigned int hit_count;
-
-  int cx = w/2 + x;
-  int cy = h/2 + y;
-
-  //X   hits.clear();
-
-  glSelectBuffer(GL_SEL_BUF_SIZE,selectBuf);
-  glRenderMode(GL_SELECT);
-
-  // Setup our limited viewport for picking.
-  glGetIntegerv(GL_VIEWPORT,viewport);
-  glMatrixMode(GL_PROJECTION);
-  glPushMatrix();
-  glLoadIdentity();
-  gluPickMatrix(cx,viewport[3]-cy, w, h,viewport);
-
-  setCamera();
-
-  // Get ready for rendering
-  glMatrixMode(GL_MODELVIEW);
-  glInitNames();
-  render(GL_SELECT);
-
-  // restoring the original projection matrix
-  glPopMatrix();
-  glMatrixMode(GL_PROJECTION);
-  glPopMatrix();
-  glMatrixMode(GL_MODELVIEW);
-  glFlush();
-
-  // returning to normal rendering mode
-  hit_count = glRenderMode(GL_RENDER);
-
-  // if there are hits process them
-  if (hit_count != 0)
+  
+  
+  void GLWidget::loadEngines()
   {
-    unsigned int i, j;
-    GLuint names, type, *ptr;
-    GLuint minZ, maxZ, name;
-
-    //X   printf ("hits = %d\n", hits);
-    ptr = (GLuint *) selectBuf;
-    for (i = 0; i < hit_count; i++) {
-      names = *ptr++;
-      minZ = *ptr++;
-      maxZ = *ptr++;
-      //X     printf (" number of names for this hit = %d\n", names); names;
-      //X     printf("  z1 is %g;", (float) *ptr/0x7fffffff); minZ;
-      //X     printf(" z2 is %g\n", (float) *ptr/0x7fffffff); maxZ;
-      //X     printf ("   names are "); 
-      name = 0;
-      for (j = 0; j < names/2; j++) { /*  for each name */
-        type = *ptr++;
-        name = *ptr++;
-        //X printf ("%d(%d) ", name,type);
-        //X       if (j == 0)  /*  set row and column  */
-        //X         ii = *ptr;
-        //X       else if (j == 1)
-        //X         jj = *ptr;
-        //X       ptr++;
-      }
-      if (name)
-      {
-        hits.append(GLHit(name, type, minZ, maxZ));
+    QDir pluginsDir("/usr/local/lib/avogadro");
+  
+    if(getenv("AVOGADRO_ENGINES") != NULL)
+    {
+      pluginsDir.cd(getenv("AVOGADRO_ENGINES"));
+    }
+  
+  //X:  if (!pluginsDir.cd("") && getenv("AVOGADRO_ENGINES") != NULL)
+  //X:  {
+  //X:    pluginsDir.cd(getenv("AVOGADRO_ENGINES"));
+  //X:  }
+  //X:
+    qDebug() << "AVOGADRO_ENGINES:" << pluginsDir.absolutePath() << endl;
+    // load static plugins first
+    //   foreach (QObject *plugin, QPluginLoader::staticInstances())
+    //   {
+    //     Engine *r = qobject_cast<Engine *>(plugin);
+    //     if (r)
+    //     {
+    //       qDebug() << "Loaded Engine: " << r->name() << endl;
+    //       if( defaultEngine == NULL )
+    //         defaultEngine = r;
+    //     }
+    //   }
+  
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
+      QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+//       qDebug() << "File: " << fileName;
+      EngineFactory *factory = qobject_cast<EngineFactory *>(loader.instance());
+      if (factory) {
+        Engine *engine = factory->createInstance();
+        qDebug() << "Found Engine: " << engine->name() << " - " << engine->description(); 
+        if (!d->defaultEngine)
+        {
+          qDebug() << "Setting Default Engine: " << engine->name() << " - " << engine->description(); 
+          d->defaultEngine = engine;
+        }
+        d->engines.append(engine);
       }
     }
-    //printf ("\n");
-    qSort(hits);
   }
-
-  return(hits);
+  
+  #define GL_SEL_BUF_SIZE 512
+  
+  QList<GLHit> GLWidget::getHits(int x, int y, int w, int h) const
+  {
+    QList<GLHit> hits;
+    GLuint selectBuf[GL_SEL_BUF_SIZE];
+    GLint viewport[4];
+    unsigned int hit_count;
+  
+    int cx = w/2 + x;
+    int cy = h/2 + y;
+  
+    //X   hits.clear();
+  
+    glSelectBuffer(GL_SEL_BUF_SIZE,selectBuf);
+    glRenderMode(GL_SELECT);
+  
+    // Setup our limited viewport for picking.
+    glGetIntegerv(GL_VIEWPORT,viewport);
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    gluPickMatrix(cx,viewport[3]-cy, w, h,viewport);
+  
+    setCamera();
+  
+    // Get ready for rendering
+    glMatrixMode(GL_MODELVIEW);
+    glInitNames();
+    render(GL_SELECT);
+  
+    // restoring the original projection matrix
+    glPopMatrix();
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glFlush();
+  
+    // returning to normal rendering mode
+    hit_count = glRenderMode(GL_RENDER);
+  
+    // if there are hits process them
+    if (hit_count != 0)
+    {
+      unsigned int i, j;
+      GLuint names, type, *ptr;
+      GLuint minZ, maxZ, name;
+  
+      //X   printf ("hits = %d\n", hits);
+      ptr = (GLuint *) selectBuf;
+      for (i = 0; i < hit_count; i++) {
+        names = *ptr++;
+        minZ = *ptr++;
+        maxZ = *ptr++;
+        //X     printf (" number of names for this hit = %d\n", names); names;
+        //X     printf("  z1 is %g;", (float) *ptr/0x7fffffff); minZ;
+        //X     printf(" z2 is %g\n", (float) *ptr/0x7fffffff); maxZ;
+        //X     printf ("   names are "); 
+        name = 0;
+        for (j = 0; j < names/2; j++) { /*  for each name */
+          type = *ptr++;
+          name = *ptr++;
+          //X printf ("%d(%d) ", name,type);
+          //X       if (j == 0)  /*  set row and column  */
+          //X         ii = *ptr;
+          //X       else if (j == 1)
+          //X         jj = *ptr;
+          //X       ptr++;
+        }
+        if (name)
+        {
+          hits.append(GLHit(name, type, minZ, maxZ));
+        }
+      }
+      //printf ("\n");
+      qSort(hits);
+    }
+  
+    return(hits);
+  }
 }

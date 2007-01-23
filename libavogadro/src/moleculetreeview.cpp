@@ -27,24 +27,34 @@
 
 using namespace Avogadro;
 
-MoleculeTreeView::MoleculeTreeView(Molecule *molecule, QWidget *parent) : QTreeWidget(parent), _molecule(NULL)
+MoleculeTreeView::MoleculeTreeView(QWidget *parent)
+  : QTreeWidget(parent), m_molecule(0)
+{
+  constructor();
+}
+
+MoleculeTreeView::MoleculeTreeView(Molecule *molecule, QWidget *parent) : QTreeWidget(parent), m_molecule(0)
+{
+  constructor();
+  setMolecule(molecule);
+}
+
+void MoleculeTreeView::constructor()
 {
   setItemDelegate(new MoleculeItemDelegate(this, this));
   setRootIsDecorated(false);
 
   for(int t = Primitive::FirstType; t < Primitive::LastType; t++)
   {
-    _groups.append(NULL);
+    m_groups.append(0);
   }
 
   addGroup("Atoms", Primitive::AtomType);
   addGroup("Bonds", Primitive::BondType);
   addGroup("Residues", Primitive::ResidueType);
 
-  setMolecule(molecule);
-
   connect(this, SIGNAL(itemPressed(QTreeWidgetItem*,int)), 
-      SLOT(handleMousePress(QTreeWidgetItem*)));
+          SLOT(handleMousePress(QTreeWidgetItem*)));
 
 }
 
@@ -66,50 +76,50 @@ void MoleculeTreeView::setMolecule(Molecule *molecule)
     return;
 
   // disconnect from our old molecule
-  if(_molecule)
-    disconnect(_molecule);
+  if(m_molecule)
+    disconnect(m_molecule);
 
-  _molecule = molecule;
+  m_molecule = molecule;
 
   // clear our group collections
   for(int t = Primitive::FirstType; t < Primitive::LastType; t++)
   {
-    if(_groups[t])
+    if(m_groups[t])
     {
-      QList<QTreeWidgetItem *> children = _groups[t]->takeChildren();
+      QList<QTreeWidgetItem *> children = m_groups[t]->takeChildren();
       qDeleteAll(children);
     }
   }
 
   // add the atoms to the default queue
   std::vector<OpenBabel::OBNodeBase*>::iterator i;
-  for(Atom *atom = (Atom*)_molecule->BeginAtom(i); atom; atom = (Atom*)_molecule->NextAtom(i))
+  for(Atom *atom = (Atom*)m_molecule->BeginAtom(i); atom; atom = (Atom*)m_molecule->NextAtom(i))
   {
     addPrimitive(atom);
   }
 
   // add the bonds to the default queue
   std::vector<OpenBabel::OBEdgeBase*>::iterator j;
-  for(Bond *bond = (Bond*)_molecule->BeginBond(j); bond; bond = (Bond*)_molecule->NextBond(j))
+  for(Bond *bond = (Bond*)m_molecule->BeginBond(j); bond; bond = (Bond*)m_molecule->NextBond(j))
   {
     addPrimitive(bond);
   }
 
   // add the residues to the default queue
   std::vector<OpenBabel::OBResidue*>::iterator k;
-  for(Residue *residue = (Residue*)_molecule->BeginResidue(k); residue;
-      residue = (Residue *)_molecule->NextResidue(k)) {
+  for(Residue *residue = (Residue*)m_molecule->BeginResidue(k); residue;
+      residue = (Residue *)m_molecule->NextResidue(k)) {
     addPrimitive(residue);
   }
 
   // connect our signals so if the molecule gets updated
-  connect(_molecule, SIGNAL(primitiveAdded(Primitive*)), 
+  connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)), 
       this, SLOT(addPrimitive(Primitive*)));
-  connect(_molecule, SIGNAL(primitiveUpdated(Primitive*)), 
+  connect(m_molecule, SIGNAL(primitiveUpdated(Primitive*)), 
       this, SLOT(updatePrimitive(Primitive*)));
-  connect(_molecule, SIGNAL(primitiveRemoved(Primitive*)), 
+  connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)), 
       this, SLOT(removePrimitive(Primitive*)));
-  connect(_molecule, SIGNAL(updated(Primitive*)), this, SLOT(updateModel()));
+  connect(m_molecule, SIGNAL(updated(Primitive*)), this, SLOT(updateModel()));
 }
 
 QTreeWidgetItem* MoleculeTreeView::addGroup(QString name, enum Primitive::Type type)
@@ -121,29 +131,31 @@ QTreeWidgetItem* MoleculeTreeView::addGroup(QString name, enum Primitive::Type t
   group->setFlags(group->flags() & ~Qt::ItemIsSelectable);
   group->setData(0, Qt::UserRole, type);
   group->setExpanded(true);
-  _groups[type] = group;
+  m_groups[type] = group;
 
   return group;
 }
 
 QTreeWidgetItem* MoleculeTreeView::addPrimitive(Primitive *primitive)
 {
-  QTreeWidgetItem *group = _groups[primitive->type()];
-  if(group == NULL)
-    return NULL;
+  qDebug() << "MoleculeTreeView::addPrimitive";
+  QTreeWidgetItem *group = m_groups[primitive->type()];
+  if(group == 0)
+    return 0;
 
   QTreeWidgetItem *item = new QTreeWidgetItem(group);
   item->setText(0, primitiveToItemText(primitive));
   item->setFlags(item->flags() | Qt::ItemIsSelectable);
   item->setData(0, Qt::UserRole, qVariantFromValue(primitive));
+  group->addChild(item);
 
   return item;
 }
 
 void MoleculeTreeView::updatePrimitive(Primitive *primitive)
 {
-  QTreeWidgetItem *group = _groups[primitive->type()];
-  if(group == NULL)
+  QTreeWidgetItem *group = m_groups[primitive->type()];
+  if(group == 0)
     return;
 
   int num = primitiveToItemIndex(primitive);
@@ -159,20 +171,26 @@ void MoleculeTreeView::removePrimitive(Primitive *primitive)
 {
   qDebug() << "MoleculeTreeView::removePrimitive";
 
-  QTreeWidgetItem *group = _groups[primitive->type()];
-  if(group == NULL)
+  QTreeWidgetItem *group = m_groups[primitive->type()];
+  if(group == 0)
     return;
 
-  int num = primitiveToItemIndex(primitive);
+//   this doesn't work because as bonds / atoms get deleted
+//   their index doesn't
+//   int num = primitiveToItemIndex(primitive);
 
-  if(num != -1)
+  for(int i = 0; i < group->childCount(); i++)
   {
-    qDebug() << "Remove Item:" << num;
-    QTreeWidgetItem *item = group->takeChild(num);
-    if(item)
-      delete item;
+    Primitive *child = group->child(i)->data(0, Qt::UserRole).value<Primitive *>();
+    if(primitive == child)
+    {
+      QTreeWidgetItem *item = group->takeChild(i);
+      if(item)
+        delete item;
 
-    updateGroup(group);
+      updateGroup(group);
+      break;
+    }
   }
 
   return;
@@ -182,7 +200,7 @@ void MoleculeTreeView::updateModel()
 {
   for(int t = Primitive::FirstType; t < Primitive::LastType; t++)
   {
-    updateGroup(_groups[t]);
+    updateGroup(m_groups[t]);
   }
 }
 
@@ -282,7 +300,7 @@ int MoleculeTreeView::primitiveToItemIndex(Primitive *primitive)
 }
 
 MoleculeItemDelegate::MoleculeItemDelegate(QTreeView *view, QWidget *parent)
-  : QItemDelegate(parent), _view(view)
+  : QItemDelegate(parent), m_view(view)
 {
 }
 
@@ -297,7 +315,7 @@ void MoleculeItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
 //dc:     headerOption.state = option.state;
 //dc:     headerOption.rect = option.rect;
 //dc:     headerOption.palette = option.palette;
-//dc:     _view->style()->drawControl(QStyle::CE_HeaderSection, &dockOption, painter, _view);
+//dc:     m_view->style()->drawControl(QStyle::CE_HeaderSection, &dockOption, painter, m_view);
 
     QPen pen = painter->pen();
 
@@ -313,7 +331,7 @@ void MoleculeItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     buttonOption.rect = option.rect;
     buttonOption.palette = option.palette;
     buttonOption.features = QStyleOptionButton::None;
-    _view->style()->drawControl(QStyle::CE_PushButton, &buttonOption, painter, _view);
+    m_view->style()->drawControl(QStyle::CE_PushButton, &buttonOption, painter, m_view);
 
     QStyleOption branchOption;
     static const int i = 9; // ### hardcoded in qcommonstyle.cpp
@@ -322,7 +340,7 @@ void MoleculeItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     branchOption.palette = option.palette;
     branchOption.state = QStyle::State_Children;
 
-    if (_view->isExpanded(index))
+    if (m_view->isExpanded(index))
     {
       branchOption.state |= QStyle::State_Open;
     }
@@ -331,14 +349,14 @@ void MoleculeItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
       painter->setPen(Qt::darkGray);
     }
 
-    _view->style()->drawPrimitive(QStyle::PE_IndicatorBranch, &branchOption, painter, _view);
+    m_view->style()->drawPrimitive(QStyle::PE_IndicatorBranch, &branchOption, painter, m_view);
 
     // draw text
     QRect textrect = QRect(r.left() + i*2, r.top(), r.width() - ((5*i)/2), r.height());
     QString text = elidedText(option.fontMetrics, textrect.width(), Qt::ElideMiddle, 
         model->data(index, Qt::DisplayRole).toString());
-    _view->style()->drawItemText(painter, textrect, Qt::AlignCenter,
-        option.palette, _view->isEnabled(), text);
+    m_view->style()->drawItemText(painter, textrect, Qt::AlignCenter,
+        option.palette, m_view->isEnabled(), text);
 
     painter->setPen(pen);
   } else {

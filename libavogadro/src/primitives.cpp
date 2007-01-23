@@ -18,78 +18,121 @@
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
- ***********************************************************************/
+***********************************************************************/
 
 #include "primitives.moc"
 
 #include <QApplication>
 #include <QDebug>
 
-using namespace Avogadro;
+namespace Avogadro {
+  class PrimitivePrivate {
+    public:
+      PrimitivePrivate() : type(Primitive::OtherType), selected(false) {};
+      
+      enum Primitive::Type type;
+      bool selected;
+  };
 
-Molecule::Molecule(QObject *parent) 
-  : OpenBabel::OBMol(), Primitive(MoleculeType) 
-{
-}
-
-Atom * Molecule::CreateAtom()
-{
-  qDebug() << "CreateAtom Called()";
-  Atom *atom = new Atom();
-  connect(atom, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
-  emit primitiveAdded(atom);
-  return(atom);
-}
-
-Bond * Molecule::CreateBond()
-{
-  qDebug() << "Molecule::CreateBond()";
-  Bond *bond = new Bond();
-  connect(bond, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
-  emit primitiveAdded(bond);
-  return(bond);
-}
-
-Residue * Molecule::CreateResidue()
-{
-  Residue *residue = new Residue();
-  connect(residue, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
-  emit primitiveAdded(residue);
-  return(residue);
-}
-
-void Molecule::DestroyAtom(OpenBabel::OBAtom *atom)
-{
-  qDebug() << "DestroyAtom Called";
-  if(atom) {
-    emit primitiveRemoved(static_cast<Atom *>(atom));
-    delete atom;
+  Primitive::Primitive(QObject *parent) : d(new PrimitivePrivate), QObject(parent)
+  {}
+  
+  Primitive::Primitive(enum Type type, QObject *parent) : d(new PrimitivePrivate), QObject(parent)
+  {
+    d->type = type;
   }
-}
-
-void Molecule::DestroyBond(OpenBabel::OBBond *bond)
-{
-  qDebug() << "DestroyBond Called";
-  if(bond) {
-    emit primitiveRemoved(static_cast<Bond *>(bond));
-    delete bond;
+  
+  Primitive::~Primitive()
+  {
+    delete d;
   }
-}
-
-void Molecule::DestroyResidue(OpenBabel::OBResidue *residue)
-{
-  if(residue) {
-    emit primitiveRemoved(static_cast<Residue *>(residue));
-    delete residue;
+  
+  bool Primitive::isSelected() const
+  {
+    return d->selected;
   }
-}
+  
+  void Primitive::setSelected( bool s ) 
+  {
+    d->selected = s;
+  }
+  
+  void Primitive::toggleSelected()
+  {
+    d->selected = !d->selected;
+  }
+  
+  enum Primitive::Type Primitive::type() const
+  {
+    return d->type;
+  }
 
-void Molecule::updatePrimitive(Primitive *primitive)
-{
-  emit primitiveUpdated(primitive);
-}
+  void Primitive::update()
+  {
+    emit updated(this);
+  }
+  
+  Molecule::Molecule(QObject *parent) : OpenBabel::OBMol(), Primitive(MoleculeType) 
+  {}
 
-void Primitive::update()
-{
-  emit updated(this);
+  Atom * Molecule::CreateAtom()
+  {
+    qDebug() << "Molecule::CreateAtom()";
+    Atom *atom = new Atom();
+    connect(atom, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
+    emit primitiveAdded(atom);
+    return(atom);
+  }
+  
+  Bond * Molecule::CreateBond()
+  {
+    qDebug() << "Molecule::CreateBond()";
+    Bond *bond = new Bond();
+    connect(bond, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
+    emit primitiveAdded(bond);
+    return(bond);
+  }
+  
+  Residue * Molecule::CreateResidue()
+  {
+    Residue *residue = new Residue();
+    connect(residue, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
+    emit primitiveAdded(residue);
+    return(residue);
+  }
+  
+  void Molecule::DestroyAtom(OpenBabel::OBAtom *obatom)
+  {
+    qDebug() << "DestroyAtom Called";
+    Atom *atom = static_cast<Atom *>(obatom);
+    if(atom) {
+      emit primitiveRemoved(atom);
+      atom->deleteLater();
+    }
+  }
+  
+  void Molecule::DestroyBond(OpenBabel::OBBond *obbond)
+  {
+    qDebug() << "DestroyBond Called";
+    Bond *bond = static_cast<Bond *>(obbond);
+    if(bond) {
+      emit primitiveRemoved(bond);
+      bond->deleteLater();
+    }
+  }
+  
+  void Molecule::DestroyResidue(OpenBabel::OBResidue *obresidue)
+  {
+    qDebug() << "DestroyResidue Called";
+    Residue *residue = static_cast<Residue *>(obresidue);
+    if(residue) {
+      emit primitiveRemoved(residue);
+      residue->deleteLater();
+    }
+  }
+  
+  void Molecule::updatePrimitive(Primitive *primitive)
+  {
+    emit primitiveUpdated(primitive);
+  }
 }

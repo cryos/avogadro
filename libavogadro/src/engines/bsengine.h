@@ -76,7 +76,7 @@ namespace Avogadro {
   class BSEngineFactory : public QObject, public EngineFactory
   {
     Q_OBJECT
-      Q_INTERFACES(Avogadro::EngineFactory)
+    Q_INTERFACES(Avogadro::EngineFactory)
 
     public:
       Engine *createInstance() { return new BSEngine(); }

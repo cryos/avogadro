@@ -28,11 +28,12 @@
 #include <QObject>
 #include <QDockWidget>
 
-#include <avogadro/glwidget.h>
+#include "avogadro/glwidget.h"
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 #include <avogadro/moleculetreeview.h>
 
+#include "ui_mainwindow.h"
 #include "tool.h"
 
 namespace Avogadro {
@@ -53,7 +54,7 @@ namespace Avogadro {
 
     public slots:
       void newFile();
-      void open();
+      void openFile();
       void openRecentFile();
       bool save();
       bool saveAs();
@@ -68,6 +69,7 @@ namespace Avogadro {
 
       void documentWasModified();
 
+      void setCurrentTool(QAction *action);
       void setCurrentTool(Tool *tool);
       void setCurrentTool(int i);
 
@@ -76,65 +78,26 @@ namespace Avogadro {
       void glMouseRelease(QMouseEvent *event);
 
     private:
-      GLWidget  *glView;
-      MoleculeTreeView *treeView;
-      Tool      *currentTool;
-      Molecule *_molecule;
-      QList<Tool *> tools;
+      Ui::MainWindow ui;
 
-      QString    currentFile;
-      bool       isModified;
-      QUndoStack *undo;
+      Tool      *m_currentTool;
+      Molecule  *m_molecule;
+      QList<Tool *> m_tools;
 
-      //QGridLayout *layout;
-      QDockWidget *dockTools;
-      QDockWidget *dockToolProperties;
-      QDockWidget *dockProject;
-
-
-      QMenu      *menuFile;
-      QMenu      *menuOpen_Recent;
-      QMenu      *menuEdit;
-      QMenu      *menuView;
-      QMenu      *menuSettings;
-      QMenu      *menuSettingsToolbars;
-      QMenu      *menuSettingsDocks;
-      QMenu      *menuHelp;
-      QToolBar   *tbFile;
-
-      QAction    *actionQuit;
-
-      QAction    *actionNew;
-      QAction    *actionOpen;
-      QAction    *actionClose;
-      QAction    *actionSave;
-      QAction    *actionSaveAs;
-      QAction    *actionRevert;
-      QAction    *actionExport;
+      QString    m_currentFile;
+      bool       m_modified;
+      QUndoStack *m_undo;
+      
+      QActionGroup *m_agTools;
 
       enum { maxRecentFiles = 10 };
-      QAction    *actionRecentFile[maxRecentFiles];
-      QAction    *actionClearRecentMenu;
-      QAction    *actionSeparator;
+      QAction    *m_actionRecentFile[maxRecentFiles];
 
-      QAction    *actionUndo;
-      QAction    *actionRedo;
-
-      QAction    *actionFullScreen;
-      QAction    *actionSetColor;
-
-      QAction    *actionAbout;
-
-      QComboBox  *cbEngine;
-      QComboBox  *cbTool;
-
-      void init();
+      void constructor();
       void readSettings();
       void writeSettings();
-      void createActions();
-      void createMenus();
-      void createToolbars();
-      void createDocks();
+      void connectUi();
+      
       bool maybeSave();
       void setCurrentFile(const QString &fileName);
       void updateRecentFileActions();
@@ -143,6 +106,7 @@ namespace Avogadro {
       void loadTools();
 
       MainWindow *findMainWindow(const QString &fileName);
+      
   };
 
 } // end namespace Avogadro

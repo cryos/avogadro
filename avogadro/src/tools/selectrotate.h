@@ -41,31 +41,32 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::Tool)
+        
     public:
       //! Constructor
       SelectRotate();
       //! Deconstructor
-      virtual ~SelectRotate() {}
+      virtual ~SelectRotate();
 
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() { return(QString(tr("Select/Rotate"))); }
+      virtual QString name() { return(tr("Select/Rotate")); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() { return(QString(tr("Selection and Rotation Tool"))); }
+      virtual QString description() { return(tr("Selection and Rotation Tool")); }
       //@}
 
       //! \name Tool Methods
       //@{
-      //! \brief Callback methods for actions on the canvas.
+      //! \brief Callback methods for ui.actions on the canvas.
       /*!
         */
       virtual void initialize();
       virtual void cleanup();
 
-      virtual void mousePress(GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);
+      virtual void mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
+      virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
+      virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
 
     protected:
       void selectionBox(float sx, float sy, float ex, float ey);

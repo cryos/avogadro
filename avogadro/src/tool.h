@@ -26,6 +26,8 @@
 #include <avogadro/primitives.h>
 
 #include <QString>
+#include <QAction>
+#include <QObject>
 #include <QGLWidget>
 #include <QVector>
 #include <QList>
@@ -38,28 +40,39 @@ namespace Avogadro {
   class Tool
   {
     public:
+      Tool() : m_action(new QAction(0)) { 
+        m_action->setText(name());
+        m_action->setToolTip(description());
+        m_action->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
+        m_action->setCheckable(true);
+        m_action->setData(qVariantFromValue(this));
+      }
       //! Deconstructor
-      virtual ~Tool() {}
+      virtual ~Tool() { delete m_action; }
 
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() = 0;
+      virtual QString name() { return QObject::tr("Unknown"); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() = 0;
+      virtual QString description() { return QObject::tr("Unknown Tool"); };
       //@}
 
       //! \name Tool Methods
       //@{
-      //! \brief Callback methods for actions on the canvas.
-      /*! Random calls.  */
+      //! \brief Callback methods for ui.actions on the canvas.
+      //! Random calls.
       virtual void init() {}
       virtual void cleanup() {}
 
-      virtual void mousePress(GLWidget *widget, const QMouseEvent *event) {}
-      virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event) {}
-      virtual void mouseMove(GLWidget *widget, const QMouseEvent *event) {}
+      virtual QAction* action() const { return m_action; }
+      virtual void mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
       //@}
+      
+    protected:
+      QAction *m_action;
 
 //X:     protected:
 //X:       //! \brief Select a region of the widget.
@@ -71,6 +84,8 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-Q_DECLARE_INTERFACE(Avogadro::Tool, "net.sourceforge.avogadro/1.0")
+Q_DECLARE_METATYPE(Avogadro::Tool*)
+Q_DECLARE_INTERFACE(Avogadro::Tool, "net.sourceforge.avogadro.tool/1.0")
+
 
 #endif
