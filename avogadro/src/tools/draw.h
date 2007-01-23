@@ -50,9 +50,9 @@ namespace Avogadro {
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() { return(tr("Draw")); }
+      virtual QString name() const { return(tr("Draw")); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() { return(tr("Drawing Tool")); }
+      virtual QString description() const { return(tr("Drawing Tool")); }
       //@}
 
       //! \name Tool Methods

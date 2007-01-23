@@ -51,9 +51,9 @@ namespace Avogadro {
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() { return(tr("Select/Rotate")); }
+      virtual QString name() const { return(tr("Select/Rotate")); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() { return(tr("Selection and Rotation Tool")); }
+      virtual QString description() const { return(tr("Selection and Rotation Tool")); }
       //@}
 
       //! \name Tool Methods

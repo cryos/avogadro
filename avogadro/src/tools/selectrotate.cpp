@@ -35,8 +35,6 @@ using namespace Avogadro;
 
 SelectRotate::SelectRotate() : Tool()
 {
-  m_action->setText(name());
-  m_action->setToolTip(description());
 }
 
 SelectRotate::~SelectRotate()

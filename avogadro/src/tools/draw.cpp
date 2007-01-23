@@ -39,7 +39,7 @@ Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL)
 {
   m_action->setText(name());
   m_action->setToolTip(description());
-   m_action->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
+  m_action->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
 }
 
 Draw::~Draw()

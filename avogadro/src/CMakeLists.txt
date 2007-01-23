@@ -8,7 +8,7 @@ set(avogadro_SRCS
   flowlayout.cpp
 	mainwindow.cpp
 	main.cpp
-	tool.cpp
+#	tool.cpp
 )
 
 set(avogadro_RCS

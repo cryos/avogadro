@@ -41,11 +41,9 @@ namespace Avogadro {
   {
     public:
       Tool() : m_action(new QAction(0)) { 
-        m_action->setText(name());
-        m_action->setToolTip(description());
-        m_action->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
-        m_action->setCheckable(true);
+        m_action->setCheckable(true); 
         m_action->setData(qVariantFromValue(this));
+        m_action->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
       }
       //! Deconstructor
       virtual ~Tool() { delete m_action; }
@@ -53,9 +51,9 @@ namespace Avogadro {
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() { return QObject::tr("Unknown"); }
+      virtual QString name() const { return QObject::tr("Unknown"); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() { return QObject::tr("Unknown Tool"); };
+      virtual QString description() const { return QObject::tr("Unknown Tool"); };
       //@}
 
       //! \name Tool Methods
@@ -65,7 +63,15 @@ namespace Avogadro {
       virtual void init() {}
       virtual void cleanup() {}
 
-      virtual QAction* action() const { return m_action; }
+      virtual QAction* action() const { 
+        if(m_action->text() == "")
+          m_action->setText(name());
+        
+        if(m_action->toolTip() == "")
+          m_action->setToolTip(description());
+        
+        return m_action; 
+      }
       virtual void mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
       virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
       virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
