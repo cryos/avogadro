@@ -63,12 +63,14 @@ namespace Avogadro {
       virtual void init() {}
       virtual void cleanup() {}
 
-      virtual QAction* action() const { 
+      virtual QAction* action() const {
+        // set tooltip first, else text() will set it.
+        if(m_action->toolTip() == "")
+          m_action->setToolTip(description());
+        
         if(m_action->text() == "")
           m_action->setText(name());
         
-        if(m_action->toolTip() == "")
-          m_action->setToolTip(description());
         
         return m_action; 
       }
