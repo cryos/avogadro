@@ -87,8 +87,8 @@ bool BSEngine::render(const Bond *b)
   // cout << "Render Bond..." << endl;
   m_cylinder.setup(6);
 
-  glDisable( GL_NORMALIZE );
-  glEnable( GL_RESCALE_NORMAL );
+  glDisable( GL_RESCALE_NORMAL);
+  glEnable( GL_NORMALIZE );
 
   const OBAtom *atom1 = static_cast<const OBAtom *>( b->GetBeginAtom() );
   const OBAtom *atom2 = static_cast<const OBAtom *>( b->GetEndAtom() );
@@ -113,8 +113,8 @@ bool BSEngine::render(const Bond *b)
   //  glPopName();
   //  glPopName();
 
-  glEnable( GL_NORMALIZE );
-  glDisable( GL_RESCALE_NORMAL );
+  glEnable( GL_RESCALE_NORMAL );
+  glDisable( GL_NORMALIZE );
 
   return true;
 }
