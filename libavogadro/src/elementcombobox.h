@@ -25,17 +25,19 @@
 
 
 #include <avogadro/primitives.h>
-#include <QTreeWidget>
-#include <QItemDelegate>
+#include <QComboBox>
 
 namespace Avogadro {
 
-  class ElementComboBox : public ElementComboBox
+  class ElementComboBox : public QComboBox
   {
     Q_OBJECT
 
     public:
       ElementComboBox(QWidget *parent=0);
+      
+      void showPopup();
+      void hidePopup();
   };
 
 }
