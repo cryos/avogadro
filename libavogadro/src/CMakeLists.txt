@@ -33,7 +33,6 @@ set(libavogadro_MOC_HDRS
 	primitives.h
 	glwidget.h
 	moleculetreeview.h
-	elementcombobox.h
 )
 
 #qt4_automoc(${libavogadro_SRCS})
