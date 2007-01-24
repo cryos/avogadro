@@ -67,6 +67,7 @@ namespace Avogadro {
   
   void GLWidget::constructor()
   {
+    setSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
     loadEngines();
   }
   
@@ -497,5 +498,15 @@ namespace Avogadro {
     }
   
     return(hits);
+  }
+
+  QSize GLWidget::sizeHint() const
+  {
+    return minimumSizeHint();
+  }
+
+  QSize GLWidget::minimumSizeHint() const
+  {
+    return QSize(200,200);
   }
 }

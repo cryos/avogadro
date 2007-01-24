@@ -59,11 +59,33 @@ namespace Avogadro {
     m_flowTools->setMargin(9);
     m_stackedToolProperties = new QStackedLayout(ui.dockToolPropertiesContents);
 
+    QVBoxLayout *vbCentral = new QVBoxLayout(ui.centralWidget);
+    vbCentral->setMargin(0);
+    m_splitCentral = new QSplitter(Qt::Vertical);
+
     // at least for now, try to always do multisample OpenGL (i.e., antialias)
     // graphical improvement is great and many cards do this in hardware
     // At some point, this should be a preference
-    ui.glView->setMolecule( m_molecule);
-    
+    QGLFormat format;
+    format.setSampleBuffers(true);
+    m_glView = new GLWidget(m_molecule, format, m_splitCentral);
+    m_glView->setMolecule(m_molecule);
+
+    m_tabBottom = new QTabWidget(m_splitCentral);
+    m_tabBottom->setTabPosition(QTabWidget::South);
+
+    QWidget *widgetMessages = new QWidget();
+    QVBoxLayout *vbMessages = new QVBoxLayout(widgetMessages);
+    m_textMessages = new QTextEdit();
+    m_textMessages->setReadOnly(true);
+    vbMessages->setMargin(3);
+    vbMessages->addWidget(m_textMessages);
+    m_tabBottom->addTab(widgetMessages, tr("Messages"));
+    QList<int> sizes = m_splitCentral->sizes();
+    sizes[0] = m_glView->maximumHeight();
+    m_splitCentral->setSizes(sizes);
+    vbCentral->addWidget(m_splitCentral);
+
     ui.treeView->setAnimated(true);
     ui.treeView->setAllColumnsShowFocus(true);
     ui.treeView->setAlternatingRowColors(true);
@@ -81,7 +103,7 @@ namespace Avogadro {
 //dc:     layout->addWidget(toolBox, 0,1);
 
     // add all gl engines to the dropdown
-    QList<Engine *> engines = ui.glView->engines();
+    QList<Engine *> engines = m_glView->engines();
     for(int i=0; i< engines.size(); ++i) {
       Engine *engine = engines.at(i);
 //       cbEngine->insertItem(i, engine->description(), QVariant(engine));
@@ -90,10 +112,10 @@ namespace Avogadro {
     loadTools();
 
     // set the default to whatever GL has selected as default on startup
-//     cbEngine->setCurrentIndex(engines.indexOf(ui.glView->getDefaultEngine()));
+//     cbEngine->setCurrentIndex(engines.indexOf(m_glView->getDefaultEngine()));
 //     cbTool->setCurrentIndex(m_tools.indexOf(m_currentTool));
 
-//     connect(cbEngine, SIGNAL(activated(int)), ui.glView, SLOT(setDefaultEngine(int)));
+//     connect(cbEngine, SIGNAL(activated(int)), m_glView, SLOT(setDefaultEngine(int)));
 //     connect(cbTool, SIGNAL(activated(int)), this, SLOT(setCurrentTool(int)));
 
     connectUi();
@@ -101,6 +123,7 @@ namespace Avogadro {
     statusBar()->showMessage(tr("Ready."), 10000);
 
     qDebug() << "MainWindow Initialized" << endl;
+
   }
 
   void MainWindow::newFile()
@@ -201,7 +224,7 @@ namespace Avogadro {
       return;
 
     // render it (with alpha channel)
-    if (!ui.glView->grabFrameBuffer(true).save(fileName))
+    if (!m_glView->grabFrameBuffer(true).save(fileName))
     {
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot save file %1.").arg(fileName));
@@ -272,8 +295,8 @@ namespace Avogadro {
 
   void MainWindow::setBackgroundColor()
   {
-    QColor current = ui.glView->background();
-    ui.glView->setBackground(QColorDialog::getRgba(current.rgba(), NULL, this));
+    QColor current = m_glView->background();
+    m_glView->setBackground(QColorDialog::getRgba(current.rgba(), NULL, this));
   }
 
   void MainWindow::connectUi()
@@ -307,9 +330,9 @@ namespace Avogadro {
     connect(ui.actionSetBackgroundColor, SIGNAL(triggered()), this, SLOT(setBackgroundColor()));
     connect(ui.actionAbout, SIGNAL(triggered()), this, SLOT(about()));
     
-    connect(ui.glView, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(glMousePress(QMouseEvent *)));
-    connect(ui.glView, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(glMouseMove(QMouseEvent *)));
-    connect(ui.glView, SIGNAL(mouseRelease(QMouseEvent*)), this, SLOT(glMouseRelease(QMouseEvent *)));
+    connect(m_glView, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(glMousePress(QMouseEvent *)));
+    connect(m_glView, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(glMouseMove(QMouseEvent *)));
+    connect(m_glView, SIGNAL(mouseRelease(QMouseEvent*)), this, SLOT(glMouseRelease(QMouseEvent *)));
     
     connect(m_agTools, SIGNAL(triggered(QAction *)), this, SLOT(setCurrentTool(QAction *)));
   }
@@ -384,7 +407,7 @@ namespace Avogadro {
     if (conv.Read(molecule, &ifs) && molecule->NumAtoms() != 0)
     {
       ui.treeView->setMolecule(molecule);
-      ui.glView->setMolecule(molecule);
+      m_glView->setMolecule(molecule);
       if(m_molecule)
         delete(m_molecule);
       m_molecule = molecule;
@@ -595,19 +618,19 @@ namespace Avogadro {
   void MainWindow::glMousePress(QMouseEvent *event)
   {
     if(m_currentTool)
-      m_currentTool->mousePress(m_molecule, ui.glView, event);
+      m_currentTool->mousePress(m_molecule, m_glView, event);
   }
 
   void MainWindow::glMouseMove(QMouseEvent *event)
   {
     if(m_currentTool)
-      m_currentTool->mouseMove(m_molecule, ui.glView, event);
+      m_currentTool->mouseMove(m_molecule, m_glView, event);
   }
 
   void MainWindow::glMouseRelease(QMouseEvent *event)
   {
     if(m_currentTool)
-      m_currentTool->mouseRelease(m_molecule, ui.glView, event);
+      m_currentTool->mouseRelease(m_molecule, m_glView, event);
   }
 
 } // end namespace Avogadro

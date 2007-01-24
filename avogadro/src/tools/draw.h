@@ -34,7 +34,7 @@
 #include <openbabel/mol.h>
 
 #include <avogadro/glwidget.h>
-#include "../tool.h"
+#include <avogadro/tool.h>
 
 namespace Avogadro {
 

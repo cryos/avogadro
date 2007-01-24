@@ -31,7 +31,7 @@
 #include <openbabel/mol.h>
 
 #include <avogadro/glwidget.h>
-#include "../tool.h"
+#include <avogadro/tool.h>
 
 const double ROTATION_SPEED = 0.005;
 

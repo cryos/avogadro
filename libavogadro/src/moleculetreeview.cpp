@@ -189,6 +189,9 @@ void MoleculeTreeView::removePrimitive(Primitive *primitive)
         delete item;
 
       updateGroup(group);
+      if(primitive->type() == Primitive::AtomType)
+        updateGroup(m_groups[Primitive::BondType]);
+
       break;
     }
   }

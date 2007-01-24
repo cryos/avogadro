@@ -11,6 +11,7 @@ include_directories(${OPENBABEL2_INCLUDE_DIR}
 	${EIGEN_INCLUDE_DIR} 
 	${AVOGADRO_INCLUDE_DIR} 
 	${CMAKE_CURRENT_BINARY_DIR}
+	../
 )
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)

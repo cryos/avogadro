@@ -27,6 +27,8 @@
 #include <QtGui>
 #include <QObject>
 #include <QDockWidget>
+#include <QSplitter>
+#include <QTextEdit>
 
 #include "avogadro/glwidget.h"
 #include <openbabel/mol.h>
@@ -92,6 +94,11 @@ namespace Avogadro {
       QActionGroup *m_agTools;
       FlowLayout *m_flowTools;
       QStackedLayout *m_stackedToolProperties;
+
+      GLWidget *m_glView;
+      QSplitter *m_splitCentral;
+      QTextEdit *m_textMessages;
+      QTabWidget *m_tabBottom;
 
       enum { maxRecentFiles = 10 };
       QAction    *m_actionRecentFile[maxRecentFiles];

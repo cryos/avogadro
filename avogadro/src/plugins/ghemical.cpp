@@ -1,8 +1,8 @@
 /**********************************************************************
-  Tool - Qt Plugin Template
+  Ghemical - LibGhemical Plugin for Avogadro
 
+  Copyright (C) 2006 by Donald Ephraim Curtis
   Copyright (C) 2006 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006 by Donald E. Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -20,3 +20,18 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include "ghemical.h"
+#include <avogadro/primitives.h>
+#include <avogadro/color.h>
+#include <avogadro/glwidget.h>
+
+#include <openbabel/obiter.h>
+
+#include <QtGui>
+
+using namespace std;
+using namespace OpenBabel;
+using namespace Avogadro;
+
+
+Q_EXPORT_PLUGIN2(Ghemical, Ghemical)

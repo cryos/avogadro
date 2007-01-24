@@ -65,6 +65,9 @@ namespace Avogadro {
       void addDL(GLuint dl);
       void removeDL(GLuint dl);
 
+      QSize sizeHint() const;
+      QSize minimumSizeHint() const;
+
       void setBackground(const QColor &background);
       QColor background() const;
 

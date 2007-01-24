@@ -6,6 +6,7 @@ include_directories(
 	${OPENBABEL2_INCLUDE_DIR} 
 	${EIGEN_INCLUDE_DIR} 
 	${CMAKE_CURRENT_BINARY_DIR}
+	${avogadro_SOURCE_DIR}/include
 	${libavogadro_SOURCE_DIR}/include
 )
 
@@ -14,21 +15,22 @@ include(${QT_USE_FILE})
 
 set(avogadro_SRCS
   flowlayout.cpp
-	mainwindow.cpp
-	main.cpp
+  mainwindow.cpp
+  main.cpp
 #	tool.cpp
 )
 
 set(avogadro_MOC_HDRS
-	mainwindow.h
+  mainwindow.h
+  plugin.h
 )
 
 set(avogadro_RCS
-        avogadro.qrc
+  avogadro.qrc
 )
 
 set(avogadro_UIS
-	mainwindow.ui
+  mainwindow.ui
 )
 
 
