@@ -17,7 +17,6 @@ set(libavogadro_SRCS
 	sphere.cpp
 	glwidget.cpp
 	moleculetreeview.cpp
-	elementcombobox.cpp
 )
 
 set(libavogadro_HDRS
@@ -28,7 +27,6 @@ set(libavogadro_HDRS
 	sphere.h
 	glwidget.h
 	moleculetreeview.h
-	elementcombobox.h
 )
 
 set(libavogadro_MOC_HDRS
