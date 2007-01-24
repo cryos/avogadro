@@ -55,6 +55,9 @@ namespace Avogadro {
     m_undo = new QUndoStack(this);
     m_molecule = new Molecule();
     m_agTools = new QActionGroup(this);
+    m_flowTools = new FlowLayout(ui.dockToolsContents);
+    m_flowTools->setMargin(9);
+    m_stackedToolProperties = new QStackedLayout(ui.dockToolPropertiesContents);
 
     // at least for now, try to always do multisample OpenGL (i.e., antialias)
     // graphical improvement is great and many cards do this in hardware
@@ -308,7 +311,7 @@ namespace Avogadro {
     connect(ui.glView, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(glMouseMove(QMouseEvent *)));
     connect(ui.glView, SIGNAL(mouseRelease(QMouseEvent*)), this, SLOT(glMouseRelease(QMouseEvent *)));
     
-    connect(m_agTools, SIGNAL(triggered(QAction*)), this, SLOT(setCurrentTool( QAction*)));
+    connect(m_agTools, SIGNAL(triggered(QAction *)), this, SLOT(setCurrentTool(QAction *)));
   }
 
 /*  void MainWindow::createDocks()
@@ -550,12 +553,13 @@ namespace Avogadro {
         qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
         m_tools.append(tool);
 
+        QAction *action = tool->selectAction();
         QToolButton *button = new QToolButton();
-        QAction *action = tool->action();
-        m_agTools->addAction(action);
-        
         button->setDefaultAction(action);
-        ui.flowTools->addWidget(button);
+        m_agTools->addAction(action);
+
+        m_flowTools->addWidget(button);
+        m_stackedToolProperties->addWidget(tool->propertiesWidget());
         
         if (!m_currentTool)
         {
@@ -565,21 +569,26 @@ namespace Avogadro {
       
       }
     }
+
   }
 
   void MainWindow::setCurrentTool(int i)
   {
+    m_stackedToolProperties->setCurrentIndex(i);
     setCurrentTool(m_tools.at(i));
   }
 
   void MainWindow::setCurrentTool(QAction *action)
   {
+    qDebug() << m_flowTools->sizeHint();
+    qDebug() << m_stackedToolProperties->sizeHint();
     Tool *tool = action->data().value<Tool *>();
     setCurrentTool(tool);
   }
-  
+
   void MainWindow::setCurrentTool(Tool *tool)
   {
+    m_stackedToolProperties->setCurrentWidget(tool->propertiesWidget());
     m_currentTool = tool;
   }
 

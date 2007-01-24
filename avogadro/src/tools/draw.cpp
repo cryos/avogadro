@@ -35,14 +35,29 @@ using namespace Avogadro;
 
 #define _DRAW_DEFAULT_WIN_Z 0.96
 
-Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL)
+Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL), m_element(1)
 {
-  m_action->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
+  m_selectAction->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
+
+  m_comboElements = new QComboBox(m_propertiesWidget);
+  m_comboElements->addItem("Hydrogen (1)");
+  m_comboElements->addItem("Helium (2)");
+  m_comboElements->addItem("Lithium (3)");
+  m_comboElements->addItem("Beryllium (4)");
+  m_comboElements->addItem("Boron (5)");
+  m_comboElements->addItem("Carbon (6)");
+  m_comboElements->addItem("Nitrogen (7)");
+  m_comboElements->addItem("Oxygen (8)");
+  m_layout = new QVBoxLayout();
+  m_layout->addWidget(m_comboElements);
+  m_propertiesWidget->setLayout(m_layout);
+  connect(m_comboElements, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(elementChanged(int)));
 }
 
 Draw::~Draw()
 {
-  delete m_action;
+  delete m_selectAction;
 }
 
 void Draw::initialize()
@@ -54,6 +69,21 @@ void Draw::cleanup()
 {
 
 };
+
+void Draw::elementChanged( int index )
+{
+  setElement(index + 1);
+}
+
+void Draw::setElement( int index )
+{
+  m_element = index;
+}
+
+int Draw::element() const
+{
+  return m_element;
+}
 
 void Draw::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
 {
@@ -257,7 +287,7 @@ Atom *Draw::newAtom(Molecule *molecule, int x, int y)
   molecule->BeginModify();
     Atom *atom = (Atom *)molecule->NewAtom();
     moveAtom(atom, x, y);
-    atom->SetAtomicNum(1);
+    atom->SetAtomicNum(element());
     molecule->EndModify();
 
     return atom;

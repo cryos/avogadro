@@ -26,6 +26,8 @@
 #include <QGLWidget>
 #include <QObject>
 #include <QStringList>
+#include <QComboBox>
+#include <QVBoxLayout>
 #include <QImage>
 #include <QAction>
 
@@ -67,8 +69,16 @@ namespace Avogadro {
       virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
       virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
 
+      void setElement(int i);
+      int element() const;
+
+    public slots:
+      void elementChanged( int index );
+
     private:
       Qt::MouseButtons _buttons;
+
+      int m_element;
 
       bool                _movedSinceButtonPressed;
 
@@ -79,6 +89,9 @@ namespace Avogadro {
       Atom *_endAtom;
       Bond *_bond;
       QList<GLHit> _hits;
+
+      QComboBox *m_comboElements;
+      QVBoxLayout *m_layout;
 
       Atom *newAtom(Molecule *molecule, int x, int y);
       Bond *newBond(Molecule *molecule);

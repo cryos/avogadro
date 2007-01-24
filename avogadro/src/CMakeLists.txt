@@ -8,6 +8,8 @@ include_directories(
 	${CMAKE_CURRENT_BINARY_DIR}
 	${libavogadro_SOURCE_DIR}/include
 )
+
+add_definitions(-DQT_DEBUG)
 include(${QT_USE_FILE})
 
 set(avogadro_SRCS
@@ -25,19 +27,24 @@ set(avogadro_RCS
         avogadro.qrc
 )
 
-#set(avogadro_UIS
-#	mainwindow.ui
-#)
+set(avogadro_UIS
+	mainwindow.ui
+)
 
 
 # designer has some flaws.
-#qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
+qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 qt4_wrap_cpp(avogadro_MOC_SRCS ${avogadro_MOC_HDRS})
 qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 #qt4_automoc(${avogadro_SRCS})
 
-#ADD_EXECUTABLE(avogadro-app ${avogadro_SRCS} ${avogadro_UIS_H} ${avogadro_RC_SRCS})
-ADD_EXECUTABLE(avogadro-app ${avogadro_SRCS} ${avogadro_MOC_SRCS} ${avogadro_RC_SRCS})
+ADD_EXECUTABLE(avogadro-app 
+	${avogadro_SRCS} 
+	${avogadro_UIS_H} 
+	${avogadro_MOC_SRCS} 
+	${avogadro_RC_SRCS}
+)
+#ADD_EXECUTABLE(avogadro-app ${avogadro_SRCS} ${avogadro_MOC_SRCS} ${avogadro_RC_SRCS})
 
 SET_TARGET_PROPERTIES(avogadro-app PROPERTIES OUTPUT_NAME avogadro)
 

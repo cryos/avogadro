@@ -35,6 +35,7 @@
 
 #include "ui_mainwindow.h"
 #include "tool.h"
+#include "flowlayout.h"
 
 namespace Avogadro {
 
@@ -89,6 +90,8 @@ namespace Avogadro {
       QUndoStack *m_undo;
       
       QActionGroup *m_agTools;
+      FlowLayout *m_flowTools;
+      QStackedLayout *m_stackedToolProperties;
 
       enum { maxRecentFiles = 10 };
       QAction    *m_actionRecentFile[maxRecentFiles];

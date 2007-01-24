@@ -40,13 +40,13 @@ namespace Avogadro {
   class Tool
   {
     public:
-      Tool() : m_action(new QAction(0)) { 
-        m_action->setCheckable(true); 
-        m_action->setData(qVariantFromValue(this));
-        m_action->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
+      Tool() : m_selectAction(new QAction(0)), m_propertiesWidget(new QWidget(0)) { 
+        m_selectAction->setCheckable(true); 
+        m_selectAction->setData(qVariantFromValue(this));
+        m_selectAction->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
       }
       //! Deconstructor
-      virtual ~Tool() { delete m_action; }
+      virtual ~Tool() { delete m_selectAction; }
 
       //! \name Description methods
       //@{
@@ -63,16 +63,20 @@ namespace Avogadro {
       virtual void init() {}
       virtual void cleanup() {}
 
-      virtual QAction* action() const {
+      virtual QAction* selectAction() const {
         // set tooltip first, else text() will set it.
-        if(m_action->toolTip() == "")
-          m_action->setToolTip(description());
+        if(m_selectAction->toolTip() == "")
+          m_selectAction->setToolTip(description());
         
-        if(m_action->text() == "")
-          m_action->setText(name());
+        if(m_selectAction->text() == "")
+          m_selectAction->setText(name());
         
         
-        return m_action; 
+        return m_selectAction; 
+      }
+
+      virtual QWidget* propertiesWidget() const {
+        return m_propertiesWidget;
       }
       virtual void mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
       virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
@@ -80,7 +84,8 @@ namespace Avogadro {
       //@}
       
     protected:
-      QAction *m_action;
+      QAction *m_selectAction;
+      QWidget *m_propertiesWidget;
 
 //X:     protected:
 //X:       //! \brief Select a region of the widget.

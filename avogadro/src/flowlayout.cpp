@@ -104,7 +104,7 @@ namespace Avogadro {
       foreach (item, itemList)
           size = size.expandedTo(item->minimumSize());
   
-      size += QSize(2*margin(), 2*margin());
+      size += QSize(2*margin(), 0);
       return size;
   }
   
