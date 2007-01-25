@@ -65,6 +65,8 @@ namespace Avogadro {
   class PluginAction : QAction
   {
     Q_OBJECT
+    public:
+      PluginAction(QObject *parent=0) : QAction(parent) {}
 
     signals:
       void triggered(Molecule *molecule);
