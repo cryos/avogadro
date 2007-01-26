@@ -36,7 +36,7 @@
 #include <avogadro/moleculetreeview.h>
 
 #include "ui_mainwindow.h"
-#include "tool.h"
+#include "plugin.h"
 #include "flowlayout.h"
 
 namespace Avogadro {

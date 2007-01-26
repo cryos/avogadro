@@ -555,44 +555,42 @@ namespace Avogadro {
     
   void MainWindow::loadTools()
   {
-    QDir pluginsDir("/usr/local/lib/avogadro");
+    QStringList pluginPaths;
+    pluginPaths << "/usr/lib/avogadro" << "/usr/local/lib/avogadro";
 
-    if(getenv("AVOGADRO_TOOLS") != NULL)
+    if(getenv("AVOGADRO_PLUGINS") != NULL)
     {
-      pluginsDir.cd(getenv("AVOGADRO_TOOLS"));
+      pluginPaths += QString(getenv("AVOGADRO_PLUGINS")).split(';');
     }
 
-    //dc:  if (!pluginsDir.cd("m_tools") && getenv("AVOGADRO_TOOLS") != NULL)
-    //dc:  {
-    //dc:    pluginsDir.cd(getenv("AVOGADRO_TOOLS"));
-    //dc:  }
+    foreach (QString path, pluginPaths)
+    {
+      QDir dir(path); 
+      qDebug() << "SearchPath:" << dir.absolutePath() << endl;
+      foreach (QString fileName, dir.entryList(QDir::Files)) {
+        QPluginLoader loader(dir.absoluteFilePath(fileName));
+        //qDebug() << "File: " << fileName;
+        Tool *tool = qobject_cast<Tool *>(loader.instance());
+        if (tool) {
+          qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
+          m_tools.append(tool);
 
-    qDebug() << "AVOGADRO_TOOLS:" << pluginsDir.absolutePath() << endl;
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
-      QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-      //qDebug() << "File: " << fileName;
-      Tool *tool = qobject_cast<Tool *>(loader.instance());
-      if (tool) {
-        qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
-        m_tools.append(tool);
+          QAction *action = tool->selectAction();
+          QToolButton *button = new QToolButton();
+          button->setDefaultAction(action);
+          m_agTools->addAction(action);
 
-        QAction *action = tool->selectAction();
-        QToolButton *button = new QToolButton();
-        button->setDefaultAction(action);
-        m_agTools->addAction(action);
+          m_flowTools->addWidget(button);
+          m_stackedToolProperties->addWidget(tool->propertiesWidget());
 
-        m_flowTools->addWidget(button);
-        m_stackedToolProperties->addWidget(tool->propertiesWidget());
-        
-        if (!m_currentTool)
-        {
-          setCurrentTool(tool);
-          button->click();
+          if (!m_currentTool)
+          {
+            setCurrentTool(tool);
+            button->click();
+          }
         }
-      
       }
     }
-
   }
 
   void MainWindow::setCurrentTool(int i)

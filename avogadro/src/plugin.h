@@ -1,5 +1,5 @@
 /**********************************************************************
-  Plugin - Qt Plugin Template
+  Plugin - Avogadro Plugin Interfaces
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -33,27 +33,19 @@
 
 namespace Avogadro {
 
-  class PluginAction;
+  class ExtensionAction;
 
-  //! Base class for our plugins
-  class Plugin
+  //! Base class for extension plugins
+  class Extension
   {
     public:
       //! Deconstructor
-      virtual ~Plugin() { }
+      virtual ~Extension() { }
 
-      //! \name Description methods
+      //! \name Extension Methods
       //@{
-      //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("Unknown"); }
-      //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("Unknown Tool"); };
-      //@}
-
-      //! \name Plugin Methods
-      //@{
-      //! \brief Callback methods for ui.actions on the canvas.
-      //! Random calls.
+      //! \brief Returns set of actions which the 
+      //! extension can perform.
       //@}
       virtual QList<QAction *> actions();
       
@@ -62,19 +54,81 @@ namespace Avogadro {
 
   };
 
-  class PluginAction : QAction
+  class ExtensionAction : QAction
   {
     Q_OBJECT
     public:
-      PluginAction(QObject *parent=0) : QAction(parent) {}
+      ExtensionAction(QObject *parent=0) : QAction(parent) {}
 
     signals:
       void triggered(Molecule *molecule);
   };
 
+  class GLWidget;
+
+  //! Base class for tool plugins
+  class Tool
+  {
+    public:
+      Tool() : m_selectAction(new QAction(0)), m_propertiesWidget(new QWidget(0)) { 
+        m_selectAction->setCheckable(true); 
+        m_selectAction->setData(qVariantFromValue(this));
+        m_selectAction->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
+      }
+      //! Deconstructor
+      virtual ~Tool() { delete m_selectAction; }
+
+      //! \name Description methods
+      //@{
+      //! Tool Name (ie Draw)
+      virtual QString name() const { return QObject::tr("Unknown"); }
+      //! Tool Description (ie. Draws atoms and bonds)
+      virtual QString description() const { return QObject::tr("Unknown Tool"); };
+      //@}
+
+      //! \name Tool Methods
+      //@{
+      //! \brief Callback methods for ui.actions on the canvas.
+      //! Random calls.
+      virtual void init() {}
+      virtual void cleanup() {}
+
+      virtual QAction* selectAction() const {
+        // set tooltip first, else text() will set it.
+        if(m_selectAction->toolTip() == "")
+          m_selectAction->setToolTip(description());
+        
+        if(m_selectAction->text() == "")
+          m_selectAction->setText(name());
+        
+        
+        return m_selectAction; 
+      }
+
+      virtual QWidget* propertiesWidget() const {
+        return m_propertiesWidget;
+      }
+      virtual void mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
+      //@}
+      
+    protected:
+      QAction *m_selectAction;
+      QWidget *m_propertiesWidget;
+
+//X:     protected:
+//X:       //! \brief Select a region of the widget.
+//X:       //! (x,y) top left coordinate of region.
+//X:       //! (w,h) width and heigh of region.
+//X:       QList<GLHit> selectRegion(GLWidget *widget, int x, int y, int w, int h);
+
+  };
 } // end namespace Avogadro
 
-Q_DECLARE_INTERFACE(Avogadro::Plugin, "net.sourceforge.avogadro.plugin/1.0")
+Q_DECLARE_METATYPE(Avogadro::Tool*)
+Q_DECLARE_INTERFACE(Avogadro::Tool, "net.sourceforge.avogadro.tool/1.0")
+Q_DECLARE_INTERFACE(Avogadro::Extension, "net.sourceforge.avogadro.extension/1.0")
 
 
 #endif

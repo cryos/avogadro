@@ -59,7 +59,7 @@ void SelectRotate::mousePress(Molecule *molecule, GLWidget *widget, const QMouse
   _initialDraggingPosition = event->pos();
 
   //! List of hits from a selection/pick
-  _hits = widget->getHits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+  _hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
 
   if(!_hits.size())
   {
@@ -108,7 +108,7 @@ void SelectRotate::mouseRelease(Molecule *molecule, GLWidget *widget, const QMou
 
     // (sx, sy) = Upper left most position.
     // (ex, ey) = Bottom right most position.
-    QList<GLHit> hits = widget->getHits(sx, sy, ex-sx, ey-sy);
+    QList<GLHit> hits = widget->hits(sx, sy, ex-sx, ey-sy);
     for(int i=0; i < hits.size(); i++) {
       if(hits[i].type == Primitive::AtomType)
       {

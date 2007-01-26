@@ -377,19 +377,14 @@ namespace Avogadro {
   
   void GLWidget::loadEngines()
   {
-    QDir pluginsDir("/usr/local/lib/avogadro");
-  
+    QStringList pluginPaths;
+    pluginPaths << "/usr/lib/avogadro" << "/usr/local/lib/avogadro";
+
     if(getenv("AVOGADRO_ENGINES") != NULL)
     {
-      pluginsDir.cd(getenv("AVOGADRO_ENGINES"));
+      pluginPaths += QString(getenv("AVOGADRO_ENGINES")).split(';');
     }
-  
-  //X:  if (!pluginsDir.cd("") && getenv("AVOGADRO_ENGINES") != NULL)
-  //X:  {
-  //X:    pluginsDir.cd(getenv("AVOGADRO_ENGINES"));
-  //X:  }
-  //X:
-    qDebug() << "AVOGADRO_ENGINES:" << pluginsDir.absolutePath() << endl;
+
     // load static plugins first
     //   foreach (QObject *plugin, QPluginLoader::staticInstances())
     //   {
@@ -402,19 +397,24 @@ namespace Avogadro {
     //     }
     //   }
   
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
-      QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-//       qDebug() << "File: " << fileName;
-      EngineFactory *factory = qobject_cast<EngineFactory *>(loader.instance());
-      if (factory) {
-        Engine *engine = factory->createInstance();
-        qDebug() << "Found Engine: " << engine->name() << " - " << engine->description(); 
-        if (!d->defaultEngine)
-        {
-          qDebug() << "Setting Default Engine: " << engine->name() << " - " << engine->description(); 
-          d->defaultEngine = engine;
+    foreach (QString path, pluginPaths)
+    {
+      QDir dir(path); 
+      qDebug() << "SearchPath:" << dir.absolutePath() << endl;
+      foreach (QString fileName, dir.entryList(QDir::Files)) {
+        QPluginLoader loader(dir.absoluteFilePath(fileName));
+        //       qDebug() << "File: " << fileName;
+        EngineFactory *factory = qobject_cast<EngineFactory *>(loader.instance());
+        if (factory) {
+          Engine *engine = factory->createInstance();
+          qDebug() << "Found Engine: " << engine->name() << " - " << engine->description(); 
+          if (!d->defaultEngine)
+          {
+            qDebug() << "Setting Default Engine: " << engine->name() << " - " << engine->description(); 
+            d->defaultEngine = engine;
+          }
+          d->engines.append(engine);
         }
-        d->engines.append(engine);
       }
     }
   }
