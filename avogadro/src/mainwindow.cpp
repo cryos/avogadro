@@ -33,13 +33,13 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  MainWindow::MainWindow() : QMainWindow(0), m_currentTool(NULL), m_molecule(NULL)
+  MainWindow::MainWindow() : QMainWindow(0), m_currentTool(NULL), m_molecule(new Molecule(this))
   {
     constructor();
     setCurrentFile("");
   }
 
-  MainWindow::MainWindow(const QString &fileName) : QMainWindow(0), m_currentTool(NULL), m_molecule(NULL)
+  MainWindow::MainWindow(const QString &fileName) : QMainWindow(0), m_currentTool(NULL), m_molecule(new Molecule(this))
   {
     constructor();
     loadFile(fileName);
@@ -53,7 +53,6 @@ namespace Avogadro {
     setAttribute(Qt::WA_DeleteOnClose);
 
     m_undo = new QUndoStack(this);
-    m_molecule = new Molecule();
     m_agTools = new QActionGroup(this);
     m_flowTools = new FlowLayout(ui.dockToolsContents);
     m_flowTools->setMargin(9);
