@@ -26,6 +26,19 @@
 #include <vector>
 
 namespace Avogadro {
+
+  GLHit::GLHit(GLuint n, GLuint t, GLuint min, GLuint max) { 
+    type=t; name = n; minZ = min; maxZ = max; 
+  }
+
+  bool operator<(const GLHit &h1, const GLHit &h2) { 
+    return h1.minZ < h2.minZ; 
+  }
+
+  bool operator==(const GLHit &h1, const GLHit &h2) { 
+    return ((h1.type == h2.type) && (h1.name == h2.name)); 
+  }
+
   class GLWidgetPrivate {
     public:
       GLWidgetPrivate() : defaultEngine(0), background(Qt::black), molecule(0) {}
@@ -181,7 +194,7 @@ namespace Avogadro {
     d->scale = s;
   }
   
-  float GLWidget::getScale() const
+  float GLWidget::scale() const
   {
     return d->scale;
   }
@@ -279,7 +292,7 @@ namespace Avogadro {
     for(Atom *atom = (Atom*)d->molecule->BeginAtom(i); 
         atom; atom = (Atom*)d->molecule->NextAtom(i))
     {
-      d->defaultQueue.add(atom);
+      d->defaultQueue.addPrimitive(atom);
     }
   
     // add the bonds to the default queue
@@ -287,7 +300,7 @@ namespace Avogadro {
     for(Bond *bond = (Bond*)d->molecule->BeginBond(j); 
         bond; bond = (Bond*)d->molecule->NextBond(j))
     {
-      d->defaultQueue.add(bond);
+      d->defaultQueue.addPrimitive(bond);
     }
   
     // add the residues to the default queue
@@ -295,11 +308,11 @@ namespace Avogadro {
     for(Residue *residue = (Residue*)d->molecule->BeginResidue(k); 
         residue; residue = (Residue *)d->molecule->NextResidue(k))
     {
-      d->defaultQueue.add(residue);
+      d->defaultQueue.addPrimitive(residue);
     }
   
     // add the molecule to the default queue
-    d->defaultQueue.add(d->molecule);
+    d->defaultQueue.addPrimitive(d->molecule);
   
     // connect our signals so if the molecule gets updated
     connect(d->molecule, SIGNAL(primitiveAdded(Primitive*)), 
@@ -337,7 +350,7 @@ namespace Avogadro {
   void GLWidget::addPrimitive(Primitive *primitive)
   {
     if(primitive)
-      d->defaultQueue.add(primitive);
+      d->defaultQueue.addPrimitive(primitive);
   }
   
   void GLWidget::updatePrimitive(Primitive *primitive)
@@ -350,10 +363,10 @@ namespace Avogadro {
     qDebug() << "GLWidget::removePrimitive";
     // clear our engine queues
     for( int i=0; i < d->queues.size(); i++ ) {
-      d->queues[i].remove(primitive);
+      d->queues[i].removePrimitive(primitive);
     }
   
-    d->defaultQueue.remove(primitive);
+    d->defaultQueue.removePrimitive(primitive);
   
     updateGL();
   }
@@ -421,7 +434,7 @@ namespace Avogadro {
   
   #define GL_SEL_BUF_SIZE 512
   
-  QList<GLHit> GLWidget::getHits(int x, int y, int w, int h) const
+  QList<GLHit> GLWidget::hits(int x, int y, int w, int h) const
   {
     QList<GLHit> hits;
     GLuint selectBuf[GL_SEL_BUF_SIZE];
@@ -509,4 +522,6 @@ namespace Avogadro {
   {
     return QSize(200,200);
   }
+
+
 }

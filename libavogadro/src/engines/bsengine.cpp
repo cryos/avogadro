@@ -39,12 +39,12 @@ bool BSEngine::render(const PrimitiveQueue *q)
 {
   const QList<Primitive *> *queue;
 
-  queue = q->getTypeQueue(Primitive::AtomType);
+  queue = q->primitiveList(Primitive::AtomType);
   for( int i=0; i<queue->size(); i++ ) {
     render((Atom *)(*queue)[i]);
   }
 
-  queue = q->getTypeQueue(Primitive::BondType);
+  queue = q->primitiveList(Primitive::BondType);
   for( int i=0; i<queue->size(); i++ ) {
     render((Bond *)(*queue)[i]);
   }

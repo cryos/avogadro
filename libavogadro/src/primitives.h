@@ -25,14 +25,11 @@
 
 #include <openbabel/mol.h>
 #include <QObject>
-#include <QDebug>
 #include <QAbstractItemModel>
 
 class Engine;
 
 namespace Avogadro {
-
-  class PrimitivePrivate;
 
   /*
    * Primitive 
@@ -40,9 +37,13 @@ namespace Avogadro {
    * 
    */
 
+  class PrimitivePrivate;
   class Primitive : public QObject
   {
     Q_OBJECT
+    Q_PROPERTY(bool selected READ isSelected WRITE setSelected)
+    Q_PROPERTY(enum Type type READ type)
+    Q_ENUMS(Type)
 
     public:
       enum Type { 
@@ -66,16 +67,16 @@ namespace Avogadro {
       void setSelected(bool s);
 
       void update();
-      enum Primitive::Type type() const;
+      enum Type type() const;
 
-    public slots:
+    public Q_SLOTS:
       void toggleSelected();
 
-    signals:
+    Q_SIGNALS:
       void updated(Primitive*);
 
     protected:
-      PrimitivePrivate *d;
+      PrimitivePrivate * const d;
 
   };
 
@@ -84,7 +85,7 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Atom() : OpenBabel::OBAtom(), Primitive(AtomType) { }
+      Atom(QObject *parent=0) : OpenBabel::OBAtom(), Primitive(AtomType, parent) { }
   };
 
   class Bond : public Primitive, public OpenBabel::OBBond
@@ -92,7 +93,7 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Bond(): OpenBabel::OBBond(), Primitive(BondType) { }
+      Bond(QObject *parent=0): OpenBabel::OBBond(), Primitive(BondType, parent) { }
   };
 
   class Residue : public Primitive, public OpenBabel::OBResidue
@@ -100,7 +101,7 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Residue(): OpenBabel::OBResidue(), Primitive(ResidueType) { }
+      Residue(QObject *parent=0): OpenBabel::OBResidue(), Primitive(ResidueType, parent) { }
   };
 
   class Molecule : public Primitive, public OpenBabel::OBMol
@@ -122,44 +123,32 @@ namespace Avogadro {
       std::vector< Atom * > 	_vatom;
       std::vector< Bond * > 	_vbond;
 
-    public slots:
+    public Q_SLOTS:
       void updatePrimitive(Primitive *primitive);
 
-    signals:
+    Q_SIGNALS:
       void primitiveAdded(Primitive *primitive);
       void primitiveUpdated(Primitive *primitive);
       void primitiveRemoved(Primitive *primitive);
   };
 
+  class PrimitiveQueuePrivate;
   class PrimitiveQueue
   {
     public:
-      PrimitiveQueue() { 
-        for( int i=Primitive::FirstType; i<Primitive::LastType; i++ ) { 
-          _queue.append(new QList<Primitive *>()); 
-        } 
-      }
+      PrimitiveQueue();
+      ~PrimitiveQueue();
 
-      const QList<Primitive *>* getTypeQueue(int t) const { 
-        return(_queue[t]); 
-      }
+      const QList<Primitive *>* primitiveList(enum Primitive::Type type) const;
 
-      void add(Primitive *p) { 
-        _queue[p->type()]->append(p); 
-      }
+      void addPrimitive(Primitive *p);
+      void removePrimitive(Primitive *p);
 
-      void remove(Primitive *p) {
-        _queue[p->type()]->removeAll(p);
-      }
-
-      void clear() {
-        for( int i=0; i<_queue.size(); i++ ) {
-          _queue[i]->clear();
-        }
-      }
+      void clear();
 
     private:
-      QList< QList<Primitive *>* > _queue;
+      PrimitiveQueuePrivate * const d;
+
   };
 
 } // namespace Avogadro

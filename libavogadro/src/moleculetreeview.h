@@ -42,7 +42,7 @@ namespace Avogadro {
       QTreeWidgetItem* addGroup(enum Primitive::Type type);
       QTreeWidgetItem* addGroup(QString name, enum Primitive::Type type);
 
-    public slots:
+    public Q_SLOTS:
       QTreeWidgetItem* addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
@@ -50,7 +50,7 @@ namespace Avogadro {
       void updateModel();
 //dc:       void update();
 
-    private slots:
+    private Q_SLOTS:
       void handleMousePress(QTreeWidgetItem *item);
 
     protected:

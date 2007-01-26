@@ -21,7 +21,6 @@
 ***********************************************************************/
 
 #include <avogadro/primitives.h>
-#include <QApplication>
 #include <QDebug>
 
 namespace Avogadro {
@@ -33,8 +32,7 @@ namespace Avogadro {
       bool selected;
   };
 
-  Primitive::Primitive(QObject *parent) : d(new PrimitivePrivate), QObject(parent)
-  {}
+  Primitive::Primitive(QObject *parent) : d(new PrimitivePrivate), QObject(parent) {}
   
   Primitive::Primitive(enum Type type, QObject *parent) : d(new PrimitivePrivate), QObject(parent)
   {
@@ -71,13 +69,13 @@ namespace Avogadro {
     emit updated(this);
   }
   
-  Molecule::Molecule(QObject *parent) : OpenBabel::OBMol(), Primitive(MoleculeType) 
+  Molecule::Molecule(QObject *parent) : OpenBabel::OBMol(), Primitive(MoleculeType, parent) 
   {}
 
   Atom * Molecule::CreateAtom()
   {
     qDebug() << "Molecule::CreateAtom()";
-    Atom *atom = new Atom();
+    Atom *atom = new Atom(this);
     connect(atom, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
     emit primitiveAdded(atom);
     return(atom);
@@ -86,7 +84,7 @@ namespace Avogadro {
   Bond * Molecule::CreateBond()
   {
     qDebug() << "Molecule::CreateBond()";
-    Bond *bond = new Bond();
+    Bond *bond = new Bond(this);
     connect(bond, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
     emit primitiveAdded(bond);
     return(bond);
@@ -94,7 +92,7 @@ namespace Avogadro {
   
   Residue * Molecule::CreateResidue()
   {
-    Residue *residue = new Residue();
+    Residue *residue = new Residue(this);
     connect(residue, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
     emit primitiveAdded(residue);
     return(residue);
@@ -133,5 +131,43 @@ namespace Avogadro {
   void Molecule::updatePrimitive(Primitive *primitive)
   {
     emit primitiveUpdated(primitive);
+  }
+
+  class PrimitiveQueuePrivate {
+    public:
+      PrimitiveQueuePrivate() {};
+      
+      QList< QList<Primitive *>* > queue;
+  };
+
+  PrimitiveQueue::PrimitiveQueue() : d(new PrimitiveQueuePrivate) { 
+    for( int type=Primitive::FirstType; type<Primitive::LastType; type++ ) { 
+      d->queue.append(new QList<Primitive *>()); 
+    } 
+  }
+
+  PrimitiveQueue::~PrimitiveQueue() { 
+    for( int type=Primitive::FirstType; type<Primitive::LastType; type++ ) { 
+      d->queue[type];
+    } 
+    delete d;
+  }
+
+  const QList<Primitive *>* PrimitiveQueue::primitiveList(enum Primitive::Type type) const { 
+    return(d->queue[type]); 
+  }
+
+  void PrimitiveQueue::addPrimitive(Primitive *p) { 
+    d->queue[p->type()]->append(p); 
+  }
+
+  void PrimitiveQueue::removePrimitive(Primitive *p) {
+    d->queue[p->type()]->removeAll(p);
+  }
+
+  void PrimitiveQueue::clear() {
+    for( int i=0; i<d->queue.size(); i++ ) {
+      d->queue[i]->clear();
+    }
   }
 }

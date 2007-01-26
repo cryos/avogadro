@@ -41,9 +41,9 @@ namespace Avogadro {
   class GLHit
   {
     public:
-      GLHit(GLuint n, GLuint t, GLuint min, GLuint max) { type=t; name = n; minZ = min; maxZ = max; }
-      friend bool operator<(const GLHit &h1, const GLHit &h2) { return h1.minZ < h2.minZ; }
-      friend bool operator==(const GLHit &h1, const GLHit &h2) { return ((h1.type == h2.type) && (h1.name == h2.name)); }
+      GLHit(GLuint n, GLuint t, GLuint min, GLuint max);
+      friend bool operator<(const GLHit &h1, const GLHit &h2);
+      friend bool operator==(const GLHit &h1, const GLHit &h2);
 
       GLuint type;
       GLuint name;
@@ -52,10 +52,11 @@ namespace Avogadro {
   };
 
   class GLWidgetPrivate;
-
   class GLWidget : public QGLWidget
   {
     Q_OBJECT
+    Q_PROPERTY(QColor background READ background WRITE setBackground)
+    Q_PROPERTY(float scale READ scale WRITE setScale)
 
     public:
       GLWidget(QWidget *parent = 0);
@@ -74,7 +75,7 @@ namespace Avogadro {
       void rotate(float x, float y, float z);
       void translate(float x, float y, float z);
       void setScale(float s);
-      float getScale() const;
+      float scale() const;
 
       void setMolecule(Molecule *molecule);
       const Molecule* molecule() const;
@@ -85,9 +86,9 @@ namespace Avogadro {
       /**
        * Get the hits for a region starting at (x,y) of size (w x y)
        */
-      QList<GLHit> getHits(int x, int y, int w, int h) const;
+      QList<GLHit> hits(int x, int y, int w, int h) const;
 
-    public slots:
+    public Q_SLOTS:
       void setDefaultEngine(int i);
       void setDefaultEngine(Engine *engine);
 
@@ -100,13 +101,13 @@ namespace Avogadro {
 //dc:       void rowsInsert(const QModelIndex &parent, int start, int end);
 //dc:       void rowsRemove(const QModelIndex &parent, int start, int end);
 
-    signals:
+    Q_SIGNALS:
       void mousePress( QMouseEvent * event );
       void mouseRelease( QMouseEvent * event );
       void mouseMove( QMouseEvent * event );
 
     protected:
-      GLWidgetPrivate *d;
+      GLWidgetPrivate * const d;
       
       virtual void initializeGL();
       virtual void paintGL();
