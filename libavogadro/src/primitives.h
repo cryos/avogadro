@@ -144,6 +144,7 @@ namespace Avogadro {
       void addPrimitive(Primitive *p);
       void removePrimitive(Primitive *p);
 
+      int size() const;
       void clear();
 
     private:

@@ -147,8 +147,8 @@ namespace Avogadro {
   }
 
   PrimitiveQueue::~PrimitiveQueue() { 
-    for( int type=Primitive::FirstType; type<Primitive::LastType; type++ ) { 
-      d->queue[type];
+    for( int i = 0; i<d->queue.size(); i++ ) { 
+      delete d->queue[i];
     } 
     delete d;
   }
@@ -163,6 +163,14 @@ namespace Avogadro {
 
   void PrimitiveQueue::removePrimitive(Primitive *p) {
     d->queue[p->type()]->removeAll(p);
+  }
+
+  int PrimitiveQueue::size() const {
+    int sum = 0;
+    for( int i=0; i<d->queue.size(); i++ ) {
+      sum += d->queue[i]->size();
+    }
+    return sum;
   }
 
   void PrimitiveQueue::clear() {

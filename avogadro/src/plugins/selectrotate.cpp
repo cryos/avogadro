@@ -79,14 +79,14 @@ void SelectRotate::mouseRelease(Molecule *molecule, GLWidget *widget, const QMou
   if(!_movedSinceButtonPressed && _hits.size())
   {
     for(int i=0; i < _hits.size(); i++) {
-      if(_hits[i].type == Primitive::AtomType)
+      if(_hits[i].type() == Primitive::AtomType)
       {
-        ((Atom *)molecule->GetAtom(_hits[i].name))->toggleSelected();
+        ((Atom *)molecule->GetAtom(_hits[i].name()))->toggleSelected();
         break;
       }
-      else if(_hits[i].type == Primitive::BondType)
+      else if(_hits[i].type() == Primitive::BondType)
       {
-        ((Bond *)molecule->GetBond(_hits[i].name))->toggleSelected();
+        ((Bond *)molecule->GetBond(_hits[i].name()))->toggleSelected();
         break;
       }
     }
@@ -110,13 +110,14 @@ void SelectRotate::mouseRelease(Molecule *molecule, GLWidget *widget, const QMou
     // (ex, ey) = Bottom right most position.
     QList<GLHit> hits = widget->hits(sx, sy, ex-sx, ey-sy);
     for(int i=0; i < hits.size(); i++) {
-      if(hits[i].type == Primitive::AtomType)
+      int type = hits[i].type();
+      if(type == Primitive::AtomType)
       {
-        ((Atom *)molecule->GetAtom(hits[i].name))->toggleSelected();
+        ((Atom *)molecule->GetAtom(hits[i].name()))->toggleSelected();
       }
-      else if(hits[i].type == Primitive::BondType)
+      else if(type == Primitive::BondType)
       {
-        ((Bond *)molecule->GetBond(hits[i].name))->toggleSelected();
+        ((Bond *)molecule->GetBond(hits[i].name()))->toggleSelected();
       }
     }
   }

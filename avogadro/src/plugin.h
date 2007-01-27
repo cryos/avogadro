@@ -28,6 +28,7 @@
 #include <QString>
 #include <QAction>
 #include <QObject>
+#include <QGLWidget>
 #include <QVector>
 #include <QList>
 

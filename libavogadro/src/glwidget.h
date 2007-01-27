@@ -38,19 +38,44 @@
 
 namespace Avogadro {
   
+  class GLHitPrivate;
   class GLHit
   {
     public:
-      GLHit(GLuint n, GLuint t, GLuint min, GLuint max);
-      friend bool operator<(const GLHit &h1, const GLHit &h2);
-      friend bool operator==(const GLHit &h1, const GLHit &h2);
+      GLHit::GLHit();
+      GLHit::GLHit(const GLHit &glHit);
+      GLHit(GLuint name, GLuint type, GLuint minZ, GLuint maxZ);
+      ~GLHit();
+      bool operator<(const GLHit &other) const;
+      bool operator==(const GLHit &other) const;
+      GLHit &operator=(const GLHit &other);
 
-      GLuint type;
-      GLuint name;
-      GLuint minZ;
-      GLuint maxZ;
+      GLuint type() const;
+      GLuint name() const;
+      GLuint minZ() const;
+      GLuint maxZ() const;
+
+      void setType(GLuint type);
+      void setName(GLuint name);
+      void setMinZ(GLuint minZ);
+      void setMaxZ(GLuint maxZ);
+
+    private:
+      GLHitPrivate * const d;
   };
 
+//dc:   class GLHit
+//dc:   {
+//dc:     public:
+//dc:       GLHit(GLuint n, GLuint t, GLuint min, GLuint max) { type=t; name = n; minZ = min; maxZ = max; }
+//dc:       friend bool operator<(const GLHit &h1, const GLHit &h2) { return h1.minZ < h2.minZ; }
+//dc:       friend bool operator==(const GLHit &h1, const GLHit &h2) { return ((h1.type == h2.type) && (h1.name == h2.name)); }
+//dc: 
+//dc:       GLuint type;
+//dc:       GLuint name;
+//dc:       GLuint minZ;
+//dc:       GLuint maxZ;
+//dc:   };
   class GLWidgetPrivate;
   class GLWidget : public QGLWidget
   {

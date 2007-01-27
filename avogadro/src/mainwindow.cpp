@@ -68,7 +68,6 @@ namespace Avogadro {
     QGLFormat format;
     format.setSampleBuffers(true);
     m_glView = new GLWidget(m_molecule, format, m_splitCentral);
-    m_glView->setMolecule(m_molecule);
 
     m_tabBottom = new QTabWidget(m_splitCentral);
     m_tabBottom->setTabPosition(QTabWidget::South);

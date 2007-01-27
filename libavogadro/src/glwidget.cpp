@@ -26,19 +26,67 @@
 #include <vector>
 
 namespace Avogadro {
+  class GLHitPrivate
+  {
+    public:
+      GLHitPrivate() {};
 
-  GLHit::GLHit(GLuint n, GLuint t, GLuint min, GLuint max) { 
-    type=t; name = n; minZ = min; maxZ = max; 
+      GLuint type;
+      GLuint name;
+      GLuint minZ;
+      GLuint maxZ;
+  };
+
+  GLHit::GLHit() : d(new GLHitPrivate) {}
+
+  GLHit::GLHit(const GLHit &other) : d(new GLHitPrivate) { 
+    GLHitPrivate *e = other.d;
+    d->type = e->type;
+    d->name = e->name;
+    d->minZ = e->minZ;
+    d->maxZ = e->maxZ;
   }
 
-  bool operator<(const GLHit &h1, const GLHit &h2) { 
-    return h1.minZ < h2.minZ; 
+  GLHit::GLHit(GLuint name, GLuint type, GLuint minZ, GLuint maxZ) : d(new GLHitPrivate) { 
+    d->name = name;
+    d->type = type;
+    d->minZ = minZ;
+    d->maxZ = maxZ;
   }
 
-  bool operator==(const GLHit &h1, const GLHit &h2) { 
-    return ((h1.type == h2.type) && (h1.name == h2.name)); 
+  GLHit &GLHit::operator=(const GLHit &other)
+  {
+    GLHitPrivate *e = other.d;
+    d->type = e->type;
+    d->name = e->name;
+    d->minZ = e->minZ;
+    d->maxZ = e->maxZ;
   }
 
+  GLHit::~GLHit() {
+    delete d;
+  }
+
+  bool GLHit::operator<(const GLHit &other) const { 
+    GLHitPrivate *e = other.d;
+    return e->minZ < e->minZ; 
+  }
+
+  bool GLHit::operator==(const GLHit &other) const { 
+    GLHitPrivate *e = other.d;
+    return ((d->type == e->type) && (d->name == e->name)); 
+  }
+
+  GLuint GLHit::name() const { return d->name; }
+  GLuint GLHit::type() const { return d->type; }
+  GLuint GLHit::minZ() const { return d->minZ; }
+  GLuint GLHit::maxZ() const { return d->maxZ; }
+
+  void GLHit::setName(GLuint name) { d->name = name; }
+  void GLHit::setType(GLuint type) { d->type = type; }
+  void GLHit::setMinZ(GLuint minZ) { d->minZ = minZ; }
+  void GLHit::setMaxZ(GLuint maxZ) { d->maxZ = maxZ; }
+  
   class GLWidgetPrivate {
     public:
       GLWidgetPrivate() : defaultEngine(0), background(Qt::black), molecule(0) {}
@@ -276,7 +324,7 @@ namespace Avogadro {
   
     // disconnect from our old molecule
     if(d->molecule)
-      disconnect(d->molecule);
+      QObject::disconnect(d->molecule, 0, this, 0);
   
     d->molecule = molecule;
   
@@ -285,7 +333,9 @@ namespace Avogadro {
       d->queues[i].clear();
     }
   
+    qDebug() << d->defaultQueue.size();
     d->defaultQueue.clear();
+    qDebug() << d->defaultQueue.size();
   
     // add the atoms to the default queue
     std::vector<OpenBabel::OBNodeBase*>::iterator i;
@@ -349,6 +399,7 @@ namespace Avogadro {
   
   void GLWidget::addPrimitive(Primitive *primitive)
   {
+    qDebug() << "GLWidget::addPrimitive";
     if(primitive)
       d->defaultQueue.addPrimitive(primitive);
   }
@@ -494,7 +545,6 @@ namespace Avogadro {
         for (j = 0; j < names/2; j++) { /*  for each name */
           type = *ptr++;
           name = *ptr++;
-          //X printf ("%d(%d) ", name,type);
           //X       if (j == 0)  /*  set row and column  */
           //X         ii = *ptr;
           //X       else if (j == 1)
@@ -503,10 +553,11 @@ namespace Avogadro {
         }
         if (name)
         {
-          hits.append(GLHit(name, type, minZ, maxZ));
+//dc:           printf ("%d(%d) ", name,type);
+          hits.append(GLHit(name,type,minZ,maxZ));
         }
       }
-      //printf ("\n");
+//dc:       printf ("\n");
       qSort(hits);
     }
   

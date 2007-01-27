@@ -77,7 +77,7 @@ void MoleculeTreeView::setMolecule(Molecule *molecule)
 
   // disconnect from our old molecule
   if(m_molecule)
-    disconnect(m_molecule);
+    QObject::disconnect(d->molecule, 0, this, 0);
 
   m_molecule = molecule;
 

@@ -95,16 +95,15 @@ void Draw::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *e
   _initialDraggingPosition = event->pos();
 
   //! List of hits from a selection/pick
-  _hits = widget->getHits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+  _hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
 
   if(_buttons & Qt::LeftButton)
   {
     if(_hits.size())
     {
-      GLHit hit = _hits[0];
-      if(hit.type == Primitive::AtomType)
+      if(_hits[0].type() == Primitive::AtomType)
       {
-        _beginAtom = (Atom *)molecule->GetAtom(hit.name);
+        _beginAtom = (Atom *)molecule->GetAtom(_hits[0].name());
       }
     }
     else
@@ -123,7 +122,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
   if((_buttons & Qt::LeftButton) && _beginAtom)
   {
     QList<GLHit> hits;
-    hits = widget->getHits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+    hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
 
     bool hitBeginAtom = false;
     Atom *existingAtom = NULL;
@@ -134,24 +133,23 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
       // the _endAtom which we created
       for(int i=0; i < hits.size() & !hitBeginAtom; i++)
       {
-        GLHit hit = hits[i];
-        if(hit.type == Primitive::AtomType)
+        if(hits[i].type() == Primitive::AtomType)
         {
           // hit the same atom either moved here from somewhere else
           // or were already here.
-          if(hit.name == _beginAtom->GetIdx())
+          if(hits[i].name() == _beginAtom->GetIdx())
           {
             hitBeginAtom = true;
           }
           else if(!_endAtom)
           {
-            existingAtom = (Atom *)molecule->GetAtom(hit.name);
+            existingAtom = (Atom *)molecule->GetAtom(hits[i].name());
           }
           else
           {
-            if(hit.name != _endAtom->GetIdx())
+            if(hits[i].name() != _endAtom->GetIdx())
             {
-              existingAtom = (Atom *)molecule->GetAtom(hit.name);
+              existingAtom = (Atom *)molecule->GetAtom(hits[i].name());
             }
           }
         }
@@ -247,14 +245,13 @@ void Draw::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent 
   else if(_buttons & Qt::RightButton)
   {
     QList<GLHit> hits;
-    hits = widget->getHits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+    hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
     if(hits.size())
     {
       // get our top hit
-      GLHit hit = hits[0];
-      if(hit.type == Primitive::AtomType)
+      if(hits[0].type() == Primitive::AtomType)
       {
-        Atom *atom = (Atom *)molecule->GetAtom(hit.name);
+        Atom *atom = (Atom *)molecule->GetAtom(hits[0].name());
         molecule->DeleteAtom(atom);
       }
     }
