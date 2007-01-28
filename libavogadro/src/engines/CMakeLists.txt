@@ -16,5 +16,7 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
 qt4_wrap_cpp(bsengine_MOC_SRCS bsengine.h)
 ADD_LIBRARY(bsengine SHARED bsengine.cpp ${bsengine_MOC_SRCS})
-TARGET_LINK_LIBRARIES(bsengine avogadro)
+TARGET_LINK_LIBRARIES(bsengine avogadro
+                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                ${OPENGL_LIBRARIES}                                   )
 INSTALL(TARGETS bsengine DESTINATION lib/avogadro)

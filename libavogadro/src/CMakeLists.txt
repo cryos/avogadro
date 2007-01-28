@@ -41,6 +41,9 @@ qt4_wrap_cpp(libavogadro_MOC_SRCS ${libavogadro_MOC_HDRS})
 ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_MOC_SRCS})
 SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 
+TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                   ${OPENGL_LIBRARIES}                                   )
+
 INSTALL(TARGETS avogadro-lib DESTINATION lib)
 INSTALL(FILES ${libavogadro_HDRS} DESTINATION include/avogadro)
 
