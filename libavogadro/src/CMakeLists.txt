@@ -7,7 +7,6 @@ include_directories(
 	${EIGEN_INCLUDE_DIR}
 	${CMAKE_SOURCE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
-	${CMAKE_CURRENT_BINARY_DIR}/..
 	${libavogadro_SOURCE_DIR}/include
 )
 

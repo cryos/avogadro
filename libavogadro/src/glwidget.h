@@ -23,7 +23,7 @@
 #ifndef __GLWIDGET_H
 #define __GLWIDGET_H
 
-#include "config.h"
+#include "config-libavogadro.h"
 
 #include <avogadro/engine.h>
 #include <avogadro/color.h>

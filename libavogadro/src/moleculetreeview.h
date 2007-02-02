@@ -23,7 +23,7 @@
 #ifndef __MOLECULETREEVIEW_H
 #define __MOLECULETREEVIEW_H
 
-#include "config.h"
+#include "config-libavogadro.h"
 
 #include <avogadro/primitives.h>
 #include <QTreeWidget>

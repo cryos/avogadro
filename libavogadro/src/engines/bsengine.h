@@ -23,7 +23,7 @@
 #ifndef __BSENGINE_H
 #define __BSENGINE_H
 
-#include "config.h"
+#include "config-libavogadro.h"
 
 #include <QGLWidget>
 #include <QObject>

@@ -23,7 +23,7 @@
 #ifndef __PRIMATIVES_H
 #define __PRIMATIVES_H
 
-#include "config.h"
+#include "config-libavogadro.h"
 
 #include <openbabel/mol.h>
 #include <QObject>

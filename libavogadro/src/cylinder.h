@@ -14,7 +14,7 @@
 #ifndef __CYLINDER_H
 #define __CYLINDER_H
 
-#include "config.h"
+#include "config-libavogadro.h"
 
 #include <QGLWidget>
 #include <openbabel/mol.h>
