@@ -23,6 +23,8 @@
 #ifndef __BSENGINE_H
 #define __BSENGINE_H
 
+#include "config.h"
+
 #include <QGLWidget>
 #include <QObject>
 #include <QStringList>
