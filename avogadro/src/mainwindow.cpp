@@ -558,7 +558,7 @@ namespace Avogadro {
 
     if(getenv("AVOGADRO_PLUGINS") != NULL)
     {
-      pluginPaths += QString(getenv("AVOGADRO_PLUGINS")).split(';');
+      pluginPaths += QString(getenv("AVOGADRO_PLUGINS")).split(':');
     }
 
     foreach (QString path, pluginPaths)

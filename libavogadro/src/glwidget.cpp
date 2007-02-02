@@ -446,7 +446,7 @@ namespace Avogadro {
 
     if(getenv("AVOGADRO_ENGINES") != NULL)
     {
-      pluginPaths += QString(getenv("AVOGADRO_ENGINES")).split(';');
+      pluginPaths += QString(getenv("AVOGADRO_ENGINES")).split(':');
     }
 
     // load static plugins first
