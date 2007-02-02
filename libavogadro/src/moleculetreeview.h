@@ -37,7 +37,7 @@ namespace Avogadro {
 
     public:
       MoleculeTreeView(QWidget *parent=0);
-      MoleculeTreeView(Molecule *molecule=0, QWidget *parent=0);
+      MoleculeTreeView(Molecule *molecule, QWidget *parent=0);
 
       void setMolecule(Molecule *molecule);
       QTreeWidgetItem* addGroup(enum Primitive::Type type);
