@@ -2,7 +2,7 @@
   Primitives - Wrapper class around the OpenBabel classes
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006 by Donald E. Curtis
+  Copyright (C) 2006 by Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -23,6 +23,8 @@
 #ifndef __PRIMATIVES_H
 #define __PRIMATIVES_H
 
+#include "config.h"
+
 #include <openbabel/mol.h>
 #include <QObject>
 #include <QAbstractItemModel>
@@ -38,7 +40,7 @@ namespace Avogadro {
    */
 
   class PrimitivePrivate;
-  class Primitive : public QObject
+  class A_EXPORT Primitive : public QObject
   {
     Q_OBJECT
     Q_PROPERTY(bool selected READ isSelected WRITE setSelected)

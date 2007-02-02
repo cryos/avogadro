@@ -14,6 +14,8 @@
 #ifndef __SPHERE_H
 #define __SPHERE_H
 
+#include "config.h"
+
 #include <QGLWidget>
 #include <openbabel/mol.h>
 #include <eigen/matrix.h>
@@ -29,7 +31,7 @@ namespace Avogadro {
    *
    * @author Benoit Jacob
    */
-  class Sphere
+  class A_EXPORT Sphere
   {
     protected:
       /** Pointer to the buffer storing the vertex array */

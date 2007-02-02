@@ -23,6 +23,8 @@
 #ifndef __ENGINE_H
 #define __ENGINE_H
 
+#include "config.h"
+
 #include <avogadro/primitives.h>
 
 #include <QString>
@@ -32,7 +34,7 @@
 namespace Avogadro {
 
   //! Base class for our GL engines
- class Engine
+ class A_EXPORT Engine
   {
     public:
       //! Deconstructor
@@ -63,7 +65,7 @@ namespace Avogadro {
   };
 
   //! Generates instances of our Engine class
-  class EngineFactory
+  class A_EXPORT EngineFactory
   {
     public:
       //! Desconstructor

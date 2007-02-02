@@ -23,6 +23,8 @@
 #ifndef __GLWIDGET_H
 #define __GLWIDGET_H
 
+#include "config.h"
+
 #include <avogadro/engine.h>
 #include <avogadro/color.h>
 
@@ -39,7 +41,7 @@
 namespace Avogadro {
   
   class GLHitPrivate;
-  class GLHit
+  class A_EXPORT GLHit
   {
     public:
       GLHit::GLHit();
@@ -77,7 +79,7 @@ namespace Avogadro {
 //dc:       GLuint maxZ;
 //dc:   };
   class GLWidgetPrivate;
-  class GLWidget : public QGLWidget
+  class A_EXPORT GLWidget : public QGLWidget
   {
     Q_OBJECT
     Q_PROPERTY(QColor background READ background WRITE setBackground)

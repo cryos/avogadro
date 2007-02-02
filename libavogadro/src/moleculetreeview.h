@@ -23,6 +23,7 @@
 #ifndef __MOLECULETREEVIEW_H
 #define __MOLECULETREEVIEW_H
 
+#include "config.h"
 
 #include <avogadro/primitives.h>
 #include <QTreeWidget>
@@ -30,7 +31,7 @@
 
 namespace Avogadro {
 
-  class MoleculeTreeView : public QTreeWidget
+  class A_EXPORT MoleculeTreeView : public QTreeWidget
   {
     Q_OBJECT
 
@@ -66,19 +67,6 @@ namespace Avogadro {
       void constructor();
   };
 
-  class MoleculeItemDelegate : public QItemDelegate
-  {
-    Q_OBJECT
-    public:
-      MoleculeItemDelegate(QTreeView *view, QWidget *parent);
-
-      virtual void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-      virtual QSize sizeHint(const QStyleOptionViewItem &opt, const QModelIndex &index) const;
-
-    private:
-      QTreeView *m_view;
-
-  };
 
 }
 

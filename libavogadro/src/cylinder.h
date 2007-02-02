@@ -14,6 +14,8 @@
 #ifndef __CYLINDER_H
 #define __CYLINDER_H
 
+#include "config.h"
+
 #include <QGLWidget>
 #include <openbabel/mol.h>
 #include <eigen/matrix.h>
@@ -25,7 +27,7 @@ namespace Avogadro {
    *
    * @author Benoit Jacob
    */
-  class Cylinder
+  class A_EXPORT Cylinder
   {
     protected:
       /** Pointer to the buffer storing the vertex array */

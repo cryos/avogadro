@@ -7,6 +7,7 @@ include_directories(
 	${EIGEN_INCLUDE_DIR}
 	${CMAKE_SOURCE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
+	${CMAKE_CURRENT_BINARY_DIR}/..
 	${libavogadro_SOURCE_DIR}/include
 )
 
@@ -40,6 +41,7 @@ qt4_wrap_cpp(libavogadro_MOC_SRCS ${libavogadro_MOC_HDRS})
 
 ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_MOC_SRCS})
 SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
+set_target_properties(avogadro-lib PROPERTIES VERSION 0.0.1 SOVERSION 0 )
 
 TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                    ${OPENGL_LIBRARIES}                                   )

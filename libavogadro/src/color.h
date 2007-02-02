@@ -14,6 +14,8 @@
 #ifndef __COLOR_H
 #define __COLOR_H
 
+#include "config.h"
+
 #include <QGLWidget>
 #include <openbabel/mol.h>
 
@@ -24,7 +26,7 @@ namespace Avogadro {
    *
    * @author Benoit Jacob
    */
-  struct Color
+  struct A_EXPORT Color
   {
     ///{ The four components of the color, ranging between 0 and 1.
     GLfloat m_red, m_green, m_blue, m_alpha;
