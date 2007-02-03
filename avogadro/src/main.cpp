@@ -27,8 +27,6 @@
 // Avogadro Includes
 #include "mainwindow.h"
 
-#include <windows.h>
-
 using namespace Avogadro;
 
 // Import static plugins
