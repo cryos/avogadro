@@ -37,10 +37,14 @@
 # define A_DECL_EXPORT
 #endif
 
-#ifdef AVOGADRO_DLL
-# define A_EXPORT A_DECL_EXPORT
+#ifndef A_EXPORT
+# ifdef avogadro_lib_EXPORTS
+#  define A_EXPORT A_DECL_EXPORT
+# else
+#  define A_EXPORT A_DECL_IMPORT
+# endif
 #else
-# define A_EXPORT A_DECL_IMPORT
+# define A_EXPORT
 #endif
 
 #endif  // __GLOBAL_H
