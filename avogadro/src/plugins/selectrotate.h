@@ -23,15 +23,15 @@
 #ifndef __SELECTROTATE_H
 #define __SELECTROTATE_H
 
+#include <avogadro/glwidget.h>
+#include <avogadro/plugin.h>
+
+#include <openbabel/mol.h>
+
 #include <QGLWidget>
 #include <QObject>
 #include <QStringList>
 #include <QImage>
-
-#include <openbabel/mol.h>
-
-#include <avogadro/glwidget.h>
-#include <avogadro/plugin.h>
 
 const double ROTATION_SPEED = 0.005;
 

@@ -83,7 +83,7 @@ namespace Avogadro {
 
   };
 
-  class Atom : public Primitive, public OpenBabel::OBAtom
+  class A_EXPORT Atom : public Primitive, public OpenBabel::OBAtom
   {
     Q_OBJECT
 
@@ -91,7 +91,7 @@ namespace Avogadro {
       Atom(QObject *parent=0) : OpenBabel::OBAtom(), Primitive(AtomType, parent) { }
   };
 
-  class Bond : public Primitive, public OpenBabel::OBBond
+  class A_EXPORT Bond : public Primitive, public OpenBabel::OBBond
   {
     Q_OBJECT
 
@@ -99,7 +99,7 @@ namespace Avogadro {
       Bond(QObject *parent=0): OpenBabel::OBBond(), Primitive(BondType, parent) { }
   };
 
-  class Residue : public Primitive, public OpenBabel::OBResidue
+  class A_EXPORT Residue : public Primitive, public OpenBabel::OBResidue
   {
     Q_OBJECT
 
@@ -107,7 +107,7 @@ namespace Avogadro {
       Residue(QObject *parent=0): OpenBabel::OBResidue(), Primitive(ResidueType, parent) { }
   };
 
-  class Molecule : public Primitive, public OpenBabel::OBMol
+  class A_EXPORT Molecule : public Primitive, public OpenBabel::OBMol
   {
     Q_OBJECT
 
@@ -136,7 +136,7 @@ namespace Avogadro {
   };
 
   class PrimitiveQueuePrivate;
-  class PrimitiveQueue
+  class A_EXPORT PrimitiveQueue
   {
     public:
       PrimitiveQueue();

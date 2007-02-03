@@ -131,7 +131,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
       // parser our hits.  we want to know
       // if we hit another existingAtom that is not
       // the _endAtom which we created
-      for(int i=0; i < hits.size() & !hitBeginAtom; i++)
+      for(int i=0; i < hits.size() && !hitBeginAtom; i++)
       {
         if(hits[i].type() == Primitive::AtomType)
         {

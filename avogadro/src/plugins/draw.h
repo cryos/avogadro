@@ -23,6 +23,11 @@
 #ifndef __DRAW_H
 #define __DRAW_H
 
+#include <avogadro/glwidget.h>
+#include <avogadro/plugin.h>
+
+#include <openbabel/mol.h>
+
 #include <QGLWidget>
 #include <QObject>
 #include <QStringList>
@@ -30,11 +35,6 @@
 #include <QVBoxLayout>
 #include <QImage>
 #include <QAction>
-
-#include <openbabel/mol.h>
-
-#include <avogadro/glwidget.h>
-#include <avogadro/plugin.h>
 
 namespace Avogadro {
 

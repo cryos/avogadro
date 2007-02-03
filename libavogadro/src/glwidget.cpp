@@ -447,6 +447,10 @@ namespace Avogadro {
     QStringList pluginPaths;
     pluginPaths << "/usr/lib/avogadro" << "/usr/local/lib/avogadro";
 
+#ifdef WIN32
+	pluginPaths << "./engines";
+#endif
+
     if(getenv("AVOGADRO_ENGINES") != NULL)
     {
       pluginPaths += QString(getenv("AVOGADRO_ENGINES")).split(':');

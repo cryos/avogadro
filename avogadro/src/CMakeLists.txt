@@ -1,5 +1,9 @@
 set(QT_USE_QTOPENGL TRUE)
 
+if(WIN32)
+	set(QT_USE_QTMAIN TRUE)
+endif(WIN32)
+
 LINK_DIRECTORIES(${LINK_DIRECTORIES} ${libavogadro_BINARY_DIR}/src)
 
 include_directories(
@@ -39,12 +43,21 @@ qt4_wrap_cpp(avogadro_MOC_SRCS ${avogadro_MOC_HDRS})
 qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 #qt4_automoc(${avogadro_SRCS})
 
-ADD_EXECUTABLE(avogadro-app 
+if(WIN32) 
+add_executable(avogadro-app WIN32
 	${avogadro_SRCS} 
 	${avogadro_UIS_H} 
 	${avogadro_MOC_SRCS} 
 	${avogadro_RC_SRCS}
-)
+	)
+else(WIN32) 
+add_executable(avogadro-app 
+	${avogadro_SRCS} 
+	${avogadro_UIS_H} 
+	${avogadro_MOC_SRCS} 
+	${avogadro_RC_SRCS}
+	)
+endif(WIN32)
 #ADD_EXECUTABLE(avogadro-app ${avogadro_SRCS} ${avogadro_MOC_SRCS} ${avogadro_RC_SRCS})
 
 SET_TARGET_PROPERTIES(avogadro-app PROPERTIES OUTPUT_NAME avogadro)
