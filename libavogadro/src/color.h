@@ -14,7 +14,7 @@
 #ifndef __COLOR_H
 #define __COLOR_H
 
-#include "config-libavogadro.h"
+#include <avogadro/global.h>
 
 #include <QGLWidget>
 #include <openbabel/mol.h>

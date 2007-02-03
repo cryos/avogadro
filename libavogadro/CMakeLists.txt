@@ -6,8 +6,8 @@ find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Eigen REQUIRED) # find and setup Eigen
 
 configure_file(
-	${CMAKE_CURRENT_SOURCE_DIR}/config-libavogadro.h.in
-	${CMAKE_CURRENT_BINARY_DIR}/src/config-libavogadro.h
+	${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
+	${CMAKE_CURRENT_BINARY_DIR}/config.h
 )
 
 # tell cmake to process CMakeLists.txt in that subdirectory

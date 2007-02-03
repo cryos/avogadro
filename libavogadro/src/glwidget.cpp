@@ -20,6 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include "config.h"
+
 #include <avogadro/glwidget.h>
 
 #include <stdio.h>

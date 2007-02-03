@@ -20,26 +20,14 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include "config.h"
+
 #include <avogadro/moleculetreeview.h>
 
 #include <QDebug>
 #include <QPainter>
 
 namespace Avogadro {
-
-  class MoleculeItemDelegate : public QItemDelegate
-  {
-    Q_OBJECT
-    public:
-      MoleculeItemDelegate(QTreeView *view, QWidget *parent);
-
-      virtual void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-      virtual QSize sizeHint(const QStyleOptionViewItem &opt, const QModelIndex &index) const;
-
-    private:
-      QTreeView *m_view;
-
-  };
 
   MoleculeTreeView::MoleculeTreeView(QWidget *parent)
     : QTreeWidget(parent), m_molecule(0)

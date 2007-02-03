@@ -23,9 +23,9 @@
 #ifndef __MOLECULETREEVIEW_H
 #define __MOLECULETREEVIEW_H
 
-#include "config-libavogadro.h"
-
+#include <avogadro/global.h>
 #include <avogadro/primitives.h>
+
 #include <QTreeWidget>
 #include <QItemDelegate>
 
@@ -65,6 +65,20 @@ namespace Avogadro {
       
     private:
       void constructor();
+  };
+
+  class MoleculeItemDelegate : public QItemDelegate
+  {
+    Q_OBJECT
+    public:
+      MoleculeItemDelegate(QTreeView *view, QWidget *parent);
+
+      virtual void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+      virtual QSize sizeHint(const QStyleOptionViewItem &opt, const QModelIndex &index) const;
+
+    private:
+      QTreeView *m_view;
+
   };
 
 

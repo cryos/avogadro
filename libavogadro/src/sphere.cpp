@@ -11,6 +11,8 @@
  *                                                                         *
  ***************************************************************************/
 
+#include "config.h"
+
 #include <avogadro/sphere.h>
 #include <math.h>
 

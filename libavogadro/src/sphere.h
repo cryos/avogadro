@@ -14,11 +14,12 @@
 #ifndef __SPHERE_H
 #define __SPHERE_H
 
-#include "config-libavogadro.h"
+#include <avogadro/global.h>
 
-#include <QGLWidget>
 #include <openbabel/mol.h>
 #include <eigen/matrix.h>
+
+#include <QGLWidget>
 
 namespace Avogadro {
 

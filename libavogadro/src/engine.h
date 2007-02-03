@@ -23,8 +23,7 @@
 #ifndef __ENGINE_H
 #define __ENGINE_H
 
-#include "config-libavogadro.h"
-
+#include <avogadro/global.h>
 #include <avogadro/primitives.h>
 
 #include <QString>

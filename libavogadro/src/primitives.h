@@ -23,9 +23,10 @@
 #ifndef __PRIMATIVES_H
 #define __PRIMATIVES_H
 
-#include "config-libavogadro.h"
+#include <avogadro/global.h>
 
 #include <openbabel/mol.h>
+
 #include <QObject>
 #include <QAbstractItemModel>
 

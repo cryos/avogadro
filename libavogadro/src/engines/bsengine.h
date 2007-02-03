@@ -23,18 +23,17 @@
 #ifndef __BSENGINE_H
 #define __BSENGINE_H
 
-#include "config-libavogadro.h"
+#include <avogadro/global.h>
+#include <avogadro/engine.h>
+#include <avogadro/sphere.h>
+#include <avogadro/cylinder.h>
+
+#include <openbabel/mol.h>
 
 #include <QGLWidget>
 #include <QObject>
 #include <QStringList>
 #include <QImage>
-
-#include <openbabel/mol.h>
-
-#include <avogadro/engine.h>
-#include <avogadro/sphere.h>
-#include <avogadro/cylinder.h>
 
 namespace Avogadro {
 
