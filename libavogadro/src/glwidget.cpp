@@ -63,6 +63,7 @@ namespace Avogadro {
     d->name = e->name;
     d->minZ = e->minZ;
     d->maxZ = e->maxZ;
+	return *this;
   }
 
   GLHit::~GLHit() {

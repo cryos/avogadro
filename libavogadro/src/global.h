@@ -47,4 +47,20 @@
 # define A_EXPORT
 #endif
 
+#ifndef GL_RESCALE_NORMAL
+# define GL_RESCALE_NORMAL 0x803A
+#endif
+
+#ifndef GL_COLOR_SUM_EXT
+# define GL_COLOR_SUM_EXT 0x8458
+#endif
+
+#ifndef GL_LIGHT_MODEL_COLOR_CONTROL_EXT
+# define GL_LIGHT_MODEL_COLOR_CONTROL_EXT 0x81F8
+#endif
+
+#ifndef GL_SEPARATE_SPECULAR_COLOR_EXT
+# define GL_SEPARATE_SPECULAR_COLOR_EXT 0x81FA
+#endif
+
 #endif  // __GLOBAL_H
