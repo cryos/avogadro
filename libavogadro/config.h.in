@@ -23,7 +23,4 @@
 #ifndef __CONFIG_H
 #define __CONFIG_H
 
-/* Define for our OS */
-#cmakedefine WIN32 1
-
 #endif  // __CONFIG_H
