@@ -35,7 +35,7 @@ using namespace Avogadro;
 
 #define _DRAW_DEFAULT_WIN_Z 0.96
 
-Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL), m_element(1)
+Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL), m_element(6), m_bondOrder(1)
 {
   m_selectAction->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
 
@@ -48,11 +48,23 @@ Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL), m_element(
   m_comboElements->addItem("Carbon (6)");
   m_comboElements->addItem("Nitrogen (7)");
   m_comboElements->addItem("Oxygen (8)");
+  m_comboElements->setCurrentIndex(5);
+
+  m_comboBondOrder = new QComboBox(m_propertiesWidget);
+  m_comboBondOrder->addItem("Single");
+  m_comboBondOrder->addItem("Double");
+  m_comboBondOrder->addItem("Triple");
+
   m_layout = new QVBoxLayout();
   m_layout->addWidget(m_comboElements);
+  m_layout->addWidget(m_comboBondOrder);
   m_propertiesWidget->setLayout(m_layout);
+
   connect(m_comboElements, SIGNAL(currentIndexChanged(int)),
       this, SLOT(elementChanged(int)));
+
+  connect(m_comboBondOrder, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(bondOrderChanged(int)));
 }
 
 Draw::~Draw()
@@ -83,6 +95,21 @@ void Draw::setElement( int index )
 int Draw::element() const
 {
   return m_element;
+}
+
+void Draw::bondOrderChanged( int index )
+{
+  setBondOrder(index + 1);
+}
+
+void Draw::setBondOrder( int index )
+{
+  m_bondOrder = index;
+}
+
+int Draw::bondOrder() const
+{
+  return m_bondOrder;
 }
 
 void Draw::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
@@ -241,6 +268,9 @@ void Draw::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent 
     _beginAtom=NULL;
     _bond=NULL;
     _endAtom=NULL;
+
+    // create the undo action for creating endAtom and bond
+    //  pass along atom idx, element, vector, bond idx, order, start/end
   }
   else if(_buttons & Qt::RightButton)
   {
@@ -261,40 +291,44 @@ void Draw::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent 
 
 void Draw::moveAtom(Atom *atom, int x, int y)
 {
-    glPushMatrix();
-    //glLoadIdentity();
-    GLdouble projection[16];
-    glGetDoublev(GL_PROJECTION_MATRIX,projection);
-    GLdouble modelview[16];
-    glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
-    GLint viewport[4];
-    glGetIntegerv(GL_VIEWPORT,viewport);
-
-    GLdouble relPos[3];
-
-    gluUnProject(x, viewport[3] - y, _DRAW_DEFAULT_WIN_Z, modelview, projection, viewport, &relPos[0], &relPos[1], &relPos[2]);
+  glPushMatrix();
+  //glLoadIdentity();
+  GLdouble projection[16];
+  glGetDoublev(GL_PROJECTION_MATRIX,projection);
+  GLdouble modelview[16];
+  glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
+  GLint viewport[4];
+  glGetIntegerv(GL_VIEWPORT,viewport);
+  
+  GLdouble relPos[3];
+  
+  gluUnProject(x, viewport[3] - y, _DRAW_DEFAULT_WIN_Z, modelview, projection, viewport, &relPos[0], &relPos[1], &relPos[2]);
   //dc:   qDebug("Matrix %f:(%f, %f, %f)\n", f, relPos[0], relPos[1], relPos[2]);
-    glPopMatrix();
+  glPopMatrix();
 
-    atom->SetVector(relPos[0], relPos[1], relPos[2]);
+  atom->SetVector(relPos[0], relPos[1], relPos[2]);
 }
 
 Atom *Draw::newAtom(Molecule *molecule, int x, int y)
 {
-  molecule->BeginModify();
-    Atom *atom = (Atom *)molecule->NewAtom();
-    moveAtom(atom, x, y);
-    atom->SetAtomicNum(element());
-    molecule->EndModify();
+  // GRH (for reasons I don't understand, calling Begin/EndModify here
+  // causes crashes with multiple bond orders
+  // (need to investigate, probable OB bug.
 
-    return atom;
+  //  molecule->BeginModify();
+  Atom *atom = (Atom *)molecule->NewAtom();
+  moveAtom(atom, x, y);
+  atom->SetAtomicNum(element());
+  //  molecule->EndModify();
+  
+  return atom;
 }
 
 Bond *Draw::newBond(Molecule *molecule)
 {
   Bond *bond = (Bond *)molecule->NewBond();
-  bond->SetBO(1);
-
+  bond->SetBO(bondOrder());
+  
   return bond;
 }
 

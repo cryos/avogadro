@@ -72,13 +72,18 @@ namespace Avogadro {
       void setElement(int i);
       int element() const;
 
+      void setBondOrder(int i);
+      int bondOrder() const;
+
     public slots:
       void elementChanged( int index );
+      void bondOrderChanged( int index );
 
     private:
       Qt::MouseButtons _buttons;
 
       int m_element;
+      int m_bondOrder;
 
       bool                _movedSinceButtonPressed;
 
@@ -91,6 +96,7 @@ namespace Avogadro {
       QList<GLHit> _hits;
 
       QComboBox *m_comboElements;
+      QComboBox *m_comboBondOrder;
       QVBoxLayout *m_layout;
 
       Atom *newAtom(Molecule *molecule, int x, int y);
