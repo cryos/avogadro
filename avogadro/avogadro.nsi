@@ -51,6 +51,7 @@ Section "Avogadro Core (required)"
   File libxml2.dll
   File libinchi.dll
   File msvcp80.dll
+  File msvcr80.dll
   File avogadro.dll
   File avogadro.exe
   File zlib1.dll
