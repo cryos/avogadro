@@ -332,4 +332,4 @@ Bond *Draw::newBond(Molecule *molecule)
   return bond;
 }
 
-Q_EXPORT_PLUGIN2(Draw, Draw)
+Q_EXPORT_PLUGIN2(draw, Draw)

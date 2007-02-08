@@ -226,4 +226,4 @@ void SelectRotate::selectionBox(float sx, float sy, float ex, float ey)
 }
 
 
-Q_EXPORT_PLUGIN2(SelectRotate, SelectRotate)
+Q_EXPORT_PLUGIN2(selectrotate, SelectRotate)
