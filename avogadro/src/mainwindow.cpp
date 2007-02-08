@@ -385,7 +385,7 @@ namespace Avogadro {
     QApplication::setOverrideCursor(Qt::WaitCursor);
     statusBar()->showMessage(tr("Reading file."), 2000);
     OBConversion conv;
-    OBFormat     *inFormat = conv.FormatFromExt((fileName.toStdString()).c_str());
+    OBFormat     *inFormat = conv.FormatFromExt((fileName.toAscii()).data());
     if (!inFormat || !conv.SetInFormat(inFormat)) {
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot read file format of file %1.")
@@ -393,7 +393,7 @@ namespace Avogadro {
       return false;
     }
     ifstream     ifs;
-    ifs.open((fileName.toStdString()).c_str());
+    ifs.open((fileName.toAscii()).data());
     if (!ifs) { // shouldn't happen, already checked file above
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot read file %1.")
@@ -445,7 +445,7 @@ namespace Avogadro {
     statusBar()->showMessage(tr("Saving file."), 2000);
 
     OBConversion conv;
-    OBFormat     *outFormat = conv.FormatFromExt((fileName.toStdString()).c_str());
+    OBFormat     *outFormat = conv.FormatFromExt((fileName.toAscii()).data());
     if (!outFormat || !conv.SetOutFormat(outFormat)) {
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot write to file format of file %1.")
@@ -453,7 +453,7 @@ namespace Avogadro {
       return false;
     }
     ofstream     ofs;
-    ofs.open((fileName.toStdString()).c_str());
+    ofs.open((fileName.toAscii()).data());
     if (!ofs) { // shouldn't happen, already checked file above
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot write to the file %1.")
