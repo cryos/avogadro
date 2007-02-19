@@ -107,7 +107,7 @@ namespace Avogadro {
 //       cbEngine->insertItem(i, engine->description(), QVariant(engine));
     }
 
-    loadTools();
+    loadPlugins();
 
     // set the default to whatever GL has selected as default on startup
 //     cbEngine->setCurrentIndex(engines.indexOf(m_glView->getDefaultEngine()));
@@ -551,7 +551,7 @@ namespace Avogadro {
     settings.setValue("size", size());
   }
     
-  void MainWindow::loadTools()
+  void MainWindow::loadPlugins()
   {
     QStringList pluginPaths;
     pluginPaths << "/usr/lib/avogadro" << "/usr/local/lib/avogadro";
@@ -571,8 +571,19 @@ namespace Avogadro {
       qDebug() << "SearchPath:" << dir.absolutePath() << endl;
       foreach (QString fileName, dir.entryList(QDir::Files)) {
         QPluginLoader loader(dir.absoluteFilePath(fileName));
-        //qDebug() << "File: " << fileName;
-        Tool *tool = qobject_cast<Tool *>(loader.instance());
+        QObject *instance = loader.instance();
+        qDebug() << "File: " << fileName;
+        Extension *extension = qobject_cast<Extension *>(instance);
+        if(extension) {
+          qDebug() << "Found Extension: " << extension->name() << " - " << extension->description();
+          QList<QAction *>actions = extension->actions();
+          foreach(QAction *action, actions)
+          {
+            ui.menuTools->addAction(action);
+            connect(action, SIGNAL(triggered()), this, SLOT(actionTriggered()));
+          }
+        }
+        Tool *tool = qobject_cast<Tool *>(instance);
         if (tool) {
           qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
           m_tools.append(tool);
@@ -595,6 +606,17 @@ namespace Avogadro {
     }
   }
 
+  void MainWindow::actionTriggered()
+  {
+    QAction *action = qobject_cast<QAction *>(sender());
+    qDebug() << "GOGOGO";
+    if(action) {
+      qDebug() << "Action";
+      Extension *extension = dynamic_cast<Extension *>(action->parent());
+      extension->performAction(action, m_molecule);
+    }
+  }
+      
   void MainWindow::setCurrentTool(int i)
   {
     m_stackedToolProperties->setCurrentIndex(i);

@@ -70,6 +70,8 @@ namespace Avogadro {
       void clearRecentFiles();
       void about();
 
+      void actionTriggered();
+
       void documentWasModified();
 
       void setCurrentTool(QAction *action);
@@ -113,7 +115,7 @@ namespace Avogadro {
       void updateRecentFileActions();
       QString strippedName(const QString &fullFileName);
 
-      void loadTools();
+      void loadPlugins();
 
       MainWindow *findMainWindow(const QString &fileName);
       

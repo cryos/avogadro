@@ -22,12 +22,6 @@
      <height>29</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuSettings" >
-    <property name="title" >
-     <string>&amp;Settings</string>
-    </property>
-    <addaction name="actionSetBackgroundColor" />
-   </widget>
    <widget class="QMenu" name="menuHelp" >
     <property name="title" >
      <string>&amp;Help</string>
@@ -82,9 +76,21 @@
     <addaction name="actionClose" />
     <addaction name="actionQuit" />
    </widget>
+   <widget class="QMenu" name="menuSettings" >
+    <property name="title" >
+     <string>&amp;Settings</string>
+    </property>
+    <addaction name="actionSetBackgroundColor" />
+   </widget>
+   <widget class="QMenu" name="menuTools" >
+    <property name="title" >
+     <string>Tools</string>
+    </property>
+   </widget>
    <addaction name="menuFile" />
    <addaction name="menuEdit" />
    <addaction name="menuView" />
+   <addaction name="menuTools" />
    <addaction name="menuSettings" />
    <addaction name="menuHelp" />
   </widget>

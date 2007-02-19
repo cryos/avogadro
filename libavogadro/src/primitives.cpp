@@ -68,17 +68,19 @@ namespace Avogadro {
 
   void Primitive::update()
   {
-    emit updated(this);
+    emit updated();
   }
   
   Molecule::Molecule(QObject *parent) : OpenBabel::OBMol(), Primitive(MoleculeType, parent) 
-  {}
+  {
+    connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
+  }
 
   Atom * Molecule::CreateAtom()
   {
     qDebug() << "Molecule::CreateAtom()";
     Atom *atom = new Atom(this);
-    connect(atom, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
+    connect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
     emit primitiveAdded(atom);
     return(atom);
   }
@@ -87,7 +89,7 @@ namespace Avogadro {
   {
     qDebug() << "Molecule::CreateBond()";
     Bond *bond = new Bond(this);
-    connect(bond, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
+    connect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
     emit primitiveAdded(bond);
     return(bond);
   }
@@ -95,7 +97,7 @@ namespace Avogadro {
   Residue * Molecule::CreateResidue()
   {
     Residue *residue = new Residue(this);
-    connect(residue, SIGNAL(updated(Primitive *)), this, SLOT(updatePrimitive(Primitive *)));
+    connect(residue, SIGNAL(updated()), this, SLOT(updatePrimitive()));
     emit primitiveAdded(residue);
     return(residue);
   }
@@ -130,8 +132,9 @@ namespace Avogadro {
     }
   }
   
-  void Molecule::updatePrimitive(Primitive *primitive)
+  void Molecule::updatePrimitive()
   {
+    Primitive *primitive = qobject_cast<Primitive *>(sender());
     emit primitiveUpdated(primitive);
   }
 

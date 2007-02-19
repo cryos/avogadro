@@ -76,7 +76,7 @@ namespace Avogadro {
       void toggleSelected();
 
     Q_SIGNALS:
-      void updated(Primitive*);
+      void updated();
 
     protected:
       PrimitivePrivate * const d;
@@ -127,7 +127,7 @@ namespace Avogadro {
       std::vector< Bond * > 	_vbond;
 
     public Q_SLOTS:
-      void updatePrimitive(Primitive *primitive);
+      void updatePrimitive();
 
     Q_SIGNALS:
       void primitiveAdded(Primitive *primitive);

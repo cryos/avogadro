@@ -34,37 +34,46 @@
 
 namespace Avogadro {
 
-  class ExtensionAction;
+//dc:   class ExtensionAction;
 
   //! Base class for extension plugins
   class Extension
   {
     public:
       //! Deconstructor
-      virtual ~Extension() { }
+      virtual ~Extension() {}
+
+      //! \name Description methods
+      //@{
+      //! Extension Name
+      virtual QString name() const { return QObject::tr("Unknown"); }
+      //! Extension Description
+      virtual QString description() const { return QObject::tr("Unknown Extension"); };
+      //@}
 
       //! \name Extension Methods
       //@{
       //! \brief Returns set of actions which the 
       //! extension can perform.
       //@}
-      virtual QList<QAction *> actions();
+      virtual QList<QAction *> actions() { return m_actions; }
+      virtual void performAction(QAction *action, Molecule *molecule) {}
       
     protected:
       QList<QAction *> m_actions;
 
   };
 
-  class ExtensionAction : QAction
-  {
-    Q_OBJECT
-    public:
-      ExtensionAction(QObject *parent=0) : QAction(parent) {}
-
-    signals:
-      void triggered(Molecule *molecule);
-  };
-
+//dc:   class ExtensionAction : QAction
+//dc:   {
+//dc:     Q_OBJECT
+//dc:     public:
+//dc:       ExtensionAction(QObject *parent=0) : QAction(parent) {}
+//dc: 
+//dc:     signals:
+//dc:       void triggered(Molecule *molecule);
+//dc:   };
+//dc: 
   class GLWidget;
 
   //! Base class for tool plugins
@@ -128,8 +137,10 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 Q_DECLARE_METATYPE(Avogadro::Tool*)
-Q_DECLARE_INTERFACE(Avogadro::Tool, "net.sourceforge.avogadro.tool/1.0")
-Q_DECLARE_INTERFACE(Avogadro::Extension, "net.sourceforge.avogadro.extension/1.0")
+Q_DECLARE_INTERFACE(Avogadro::Tool, 
+    "net.sourceforge.avogadro.tool/1.0")
+Q_DECLARE_INTERFACE(Avogadro::Extension, 
+    "net.sourceforge.avogadro.extension/1.0")
 
 
 #endif

@@ -25,7 +25,6 @@ set(avogadro_SRCS
 
 set(avogadro_MOC_HDRS
   mainwindow.h
-  plugin.h
 )
 
 set(avogadro_RCS
@@ -62,7 +61,8 @@ endif(WIN32)
 
 SET_TARGET_PROPERTIES(avogadro-app PROPERTIES OUTPUT_NAME avogadro)
 
-TARGET_LINK_LIBRARIES(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES} avogadro)
+TARGET_LINK_LIBRARIES(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+    avogadro-lib)
 
 INSTALL(TARGETS avogadro-app DESTINATION bin)
 

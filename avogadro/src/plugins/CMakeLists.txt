@@ -17,24 +17,46 @@ include_directories(${OPENBABEL2_INCLUDE_DIR}
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
 
+### draw
 qt4_add_resources(draw_RC_SRCS draw.qrc)
 qt4_wrap_cpp(draw_MOC_SRCS draw.h)
-ADD_LIBRARY(draw SHARED draw.cpp ${draw_RC_SRCS} ${draw_MOC_SRCS})
-TARGET_LINK_LIBRARIES(draw ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES} ${OPENGL_LIBRARIES} avogadro)
+ADD_LIBRARY(draw SHARED 
+    draw.cpp 
+    ${draw_RC_SRCS} 
+    ${draw_MOC_SRCS}
+)
+TARGET_LINK_LIBRARIES(draw 
+    ${OPENBABEL2_LIBRARIES} 
+    ${QT_LIBRARIES}
+    ${OPENGL_LIBRARIES} 
+    avogadro-lib)
 INSTALL(TARGETS draw DESTINATION lib/avogadro)
 
+### hydrogens
+qt4_wrap_cpp(hydrogens_MOC_SRCS hydrogens.h)
+ADD_LIBRARY(hydrogens SHARED 
+	hydrogens.cpp 
+	${hydrogens_MOC_SRCS}
+)
+TARGET_LINK_LIBRARIES(hydrogens 
+	${OPENBABEL2_LIBRARIES} 
+	${QT_LIBRARIES} 
+    ${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS hydrogens DESTINATION lib/avogadro)
 
+### selectrotate
 qt4_wrap_cpp(selectrotate_MOC_SRCS selectrotate.h)
 ADD_LIBRARY(selectrotate SHARED 
 	selectrotate.cpp 
-	${selectrotate_RC_SRCS} 
 	${selectrotate_MOC_SRCS}
 )
 TARGET_LINK_LIBRARIES(selectrotate 
 	${OPENBABEL2_LIBRARIES} 
 	${QT_LIBRARIES} 
-  ${OPENGL_LIBRARIES}
-	avogadro
+    ${OPENGL_LIBRARIES}
+	avogadro-lib
 )
 INSTALL(TARGETS selectrotate DESTINATION lib/avogadro)
 

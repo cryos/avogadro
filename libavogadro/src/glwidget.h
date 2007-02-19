@@ -43,8 +43,8 @@ namespace Avogadro {
   class A_EXPORT GLHit
   {
     public:
-      GLHit::GLHit();
-      GLHit::GLHit(const GLHit &glHit);
+      GLHit();
+      GLHit(const GLHit &glHit);
       GLHit(GLuint name, GLuint type, GLuint minZ, GLuint maxZ);
       ~GLHit();
       bool operator<(const GLHit &other) const;
@@ -121,8 +121,6 @@ namespace Avogadro {
       void addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
-
-      void updateModel();
 
 //dc:       void rowsInsert(const QModelIndex &parent, int start, int end);
 //dc:       void rowsRemove(const QModelIndex &parent, int start, int end);

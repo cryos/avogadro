@@ -374,7 +374,6 @@ namespace Avogadro {
         this, SLOT(updatePrimitive(Primitive*)));
     connect(d->molecule, SIGNAL(primitiveRemoved(Primitive*)), 
         this, SLOT(removePrimitive(Primitive*)));
-    connect(d->molecule, SIGNAL(updated(Primitive*)), this, SLOT(updateModel()));
   
     updateGL();
   }
@@ -395,11 +394,6 @@ namespace Avogadro {
     return d->engines;
   }
 
-  void GLWidget::updateModel()
-  {
-    updateGL();
-  }
-  
   void GLWidget::addPrimitive(Primitive *primitive)
   {
     qDebug() << "GLWidget::addPrimitive";

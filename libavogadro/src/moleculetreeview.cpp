@@ -121,7 +121,6 @@ namespace Avogadro {
         this, SLOT(updatePrimitive(Primitive*)));
     connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)), 
         this, SLOT(removePrimitive(Primitive*)));
-    connect(m_molecule, SIGNAL(updated(Primitive*)), this, SLOT(updateModel()));
   }
 
   QTreeWidgetItem* MoleculeTreeView::addGroup(QString name, enum Primitive::Type type)
@@ -156,14 +155,19 @@ namespace Avogadro {
 
   void MoleculeTreeView::updatePrimitive(Primitive *primitive)
   {
-    QTreeWidgetItem *group = m_groups[primitive->type()];
-    if(group == 0)
-      return;
+    if(primitive->type() == Primitive::MoleculeType)
+    {
+      updateModel();
+    } else {
+      QTreeWidgetItem *group = m_groups[primitive->type()];
+      if(group == 0)
+        return;
 
-    int num = primitiveToItemIndex(primitive);
+      int num = primitiveToItemIndex(primitive);
 
-    if(num != -1) {
-      updatePrimitiveItem(group->child(num));
+      if(num != -1) {
+        updatePrimitiveItem(group->child(num));
+      }
     }
 
     return;
