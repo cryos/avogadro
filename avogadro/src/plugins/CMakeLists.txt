@@ -32,6 +32,20 @@ TARGET_LINK_LIBRARIES(draw
     avogadro-lib)
 INSTALL(TARGETS draw DESTINATION lib/avogadro)
 
+### ghemical
+qt4_wrap_cpp(ghemical_MOC_SRCS ghemical.h)
+ADD_LIBRARY(ghemical SHARED 
+	ghemical.cpp 
+	${ghemical_MOC_SRCS}
+)
+TARGET_LINK_LIBRARIES(ghemical 
+	${OPENBABEL2_LIBRARIES} 
+	${QT_LIBRARIES} 
+    ${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS ghemical DESTINATION lib/avogadro)
+
 ### hydrogens
 qt4_wrap_cpp(hydrogens_MOC_SRCS hydrogens.h)
 ADD_LIBRARY(hydrogens SHARED 

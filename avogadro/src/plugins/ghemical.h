@@ -1,5 +1,5 @@
 /**********************************************************************
-  Ghemical - LibGhemical Plugin for Avogadro
+  Ghemical - Ghemical Plugin for Avogadro
 
   Copyright (C) 2006 by Donald Ephraim Curtis
   Copyright (C) 2006 by Geoffrey R. Hutchison
@@ -25,16 +25,21 @@
 
 
 #include <openbabel/mol.h>
+#include <openbabel/forcefield.h>
 
 #include <avogadro/glwidget.h>
 #include <avogadro/plugin.h>
 
+#include <QObject>
+#include <QList>
+#include <QString>
+
 namespace Avogadro {
 
- class Ghemical : public QObject, public Plugin
+ class Ghemical : public QObject, public Extension
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::Plugin)
+    Q_INTERFACES(Avogadro::Extension)
 
     public:
       //! Constructor
@@ -47,15 +52,15 @@ namespace Avogadro {
       //! Plugin Name (ie Draw)
       virtual QString name() const { return QObject::tr("Ghemical"); }
       //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("LibGhemical Plugin"); };
+      virtual QString description() const { return QObject::tr("Ghemical Plugin"); };
+      //! Perform Action
+      virtual void performAction(QAction *action, Molecule *molecule);
       //@}
+
+    private:
+      void optimize(Molecule *molecule);
       
-    public slots:
-      //! \name Plugin Methods
-      //@{
-      //! \brief Callback methods for ui.actions on the canvas.
-      //! Random calls.
-      //@}
+      OpenBabel::OBForceField* pGhemicalFF;
   };
 
 } // end namespace Avogadro
