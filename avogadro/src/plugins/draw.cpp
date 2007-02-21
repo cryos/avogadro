@@ -315,20 +315,22 @@ Atom *Draw::newAtom(Molecule *molecule, int x, int y)
   // causes crashes with multiple bond orders
   // (need to investigate, probable OB bug.
 
-  //  molecule->BeginModify();
+  molecule->BeginModify();
   Atom *atom = (Atom *)molecule->NewAtom();
   moveAtom(atom, x, y);
   atom->SetAtomicNum(element());
-  //  molecule->EndModify();
+  molecule->EndModify();
   
   return atom;
 }
 
 Bond *Draw::newBond(Molecule *molecule)
 {
+  molecule->BeginModify();
   Bond *bond = (Bond *)molecule->NewBond();
   bond->SetBO(bondOrder());
-  
+  molecule->EndModify();
+
   return bond;
 }
 

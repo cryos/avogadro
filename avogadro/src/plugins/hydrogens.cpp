@@ -67,13 +67,17 @@ void Hydrogens::performAction(QAction *action, Molecule *molecule)
 void Hydrogens::addHydrogens(Molecule *molecule)
 {
   qDebug() << "Add Hydrogens on " << molecule;
+  molecule->BeginModify();
   molecule->AddHydrogens(false, true);
+  molecule->EndModify();
   molecule->update();
 }
 
 void Hydrogens::removeHydrogens(Molecule *molecule)
 {
+  molecule->BeginModify();
   molecule->DeleteHydrogens();
+  molecule->EndModify();
   molecule->update();
 }
 
