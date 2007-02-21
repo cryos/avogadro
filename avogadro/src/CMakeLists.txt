@@ -43,6 +43,7 @@ qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 #qt4_automoc(${avogadro_SRCS})
 
 if(WIN32) 
+# Windows here
 add_executable(avogadro-app WIN32
 	${avogadro_SRCS} 
 	${avogadro_UIS_H} 
@@ -50,7 +51,7 @@ add_executable(avogadro-app WIN32
 	${avogadro_RC_SRCS}
 	)
 else(WIN32) 
-add_executable(avogadro-app 
+add_executable(avogadro-app
 	${avogadro_SRCS} 
 	${avogadro_UIS_H} 
 	${avogadro_MOC_SRCS} 
