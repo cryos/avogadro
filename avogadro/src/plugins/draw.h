@@ -100,7 +100,7 @@ namespace Avogadro {
       QVBoxLayout *m_layout;
 
       Atom *newAtom(Molecule *molecule, int x, int y);
-      Bond *newBond(Molecule *molecule);
+      Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
       void moveAtom(Atom *atom, int x, int y);
   };
 

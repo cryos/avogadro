@@ -219,11 +219,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
       }
       else if(!_bond && !existingBond)
       {
-        _bond = newBond(molecule);
-        _bond->SetBegin(_beginAtom);
-        _bond->SetEnd(existingAtom);
-        _beginAtom->AddBond(_bond);
-        existingAtom->AddBond(_bond);
+        _bond = newBond(molecule, _beginAtom, existingAtom);
         _bond->update();
       }
     }
@@ -234,11 +230,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
         _endAtom = newAtom(molecule, event->pos().x(), event->pos().y());
         if(!_bond)
         {
-          _bond = newBond(molecule);
-          _bond->SetBegin(_beginAtom);
-          _bond->SetEnd(_endAtom);
-          _beginAtom->AddBond(_bond);
-          _endAtom->AddBond(_bond);
+          _bond = newBond(molecule, _beginAtom, _endAtom);
         }
         else
         {
@@ -324,11 +316,15 @@ Atom *Draw::newAtom(Molecule *molecule, int x, int y)
   return atom;
 }
 
-Bond *Draw::newBond(Molecule *molecule)
+Bond *Draw::newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom)
 {
   molecule->BeginModify();
   Bond *bond = (Bond *)molecule->NewBond();
   bond->SetBO(bondOrder());
+  bond->SetBegin(beginAtom);
+  bond->SetEnd(endAtom);
+  beginAtom->AddBond(bond);
+  endAtom->AddBond(bond);
   molecule->EndModify();
 
   return bond;
