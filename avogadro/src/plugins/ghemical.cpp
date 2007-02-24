@@ -46,21 +46,22 @@ Ghemical::~Ghemical()
 {
 }
 
-void Ghemical::performAction(QAction *action, Molecule *molecule)
+void Ghemical::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
 {
   qDebug() << "Perform Action";
 
-  optimize(molecule);
+  optimize(molecule, messages);
 }
 
-void Ghemical::optimize(Molecule *molecule)
+void Ghemical::optimize(Molecule *molecule, QTextEdit *messages)
 {
   if (!pGhemicalFF)
     return;
 
   qDebug() << "Optimize Geometry on " << molecule;
 
-  pGhemicalFF->SetLogFile(&clog);
+  ostringstream buff;
+  pGhemicalFF->SetLogFile(&buff);
   pGhemicalFF->SetLogLevel(OBFF_LOGLVL_LOW);
  
   if (!pGhemicalFF->Setup(*molecule)) {
@@ -68,9 +69,13 @@ void Ghemical::optimize(Molecule *molecule)
     return;
   }
 
-  pGhemicalFF->ConjugateGradients(100); // default for now
-  pGhemicalFF->UpdateCoordinates(*molecule);
-  molecule->update();
+  for(int i = 1; i<20; i++)
+  {
+    pGhemicalFF->ConjugateGradients(1); // default for now
+    pGhemicalFF->UpdateCoordinates(*molecule);
+    messages->append(tr(buff.str().c_str()));
+    molecule->update();
+  }
 }
 
 Q_EXPORT_PLUGIN2(ghemical, Ghemical)

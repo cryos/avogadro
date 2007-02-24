@@ -48,7 +48,7 @@ Hydrogens::~Hydrogens()
 {
 }
 
-void Hydrogens::performAction(QAction *action, Molecule *molecule)
+void Hydrogens::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
 {
 
   qDebug() << "Perform Action";

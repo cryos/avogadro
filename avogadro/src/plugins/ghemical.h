@@ -34,6 +34,10 @@
 #include <QList>
 #include <QString>
 
+#ifndef BUFF_SIZE
+#define BUFF_SIZE 256
+#endif
+
 namespace Avogadro {
 
  class Ghemical : public QObject, public Extension
@@ -54,11 +58,11 @@ namespace Avogadro {
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("Ghemical Plugin"); };
       //! Perform Action
-      virtual void performAction(QAction *action, Molecule *molecule);
+      virtual void performAction(QAction *action, Molecule *molecule, QTextEdit *messages);
       //@}
 
     private:
-      void optimize(Molecule *molecule);
+      void optimize(Molecule *molecule, QTextEdit *messages);
       
       OpenBabel::OBForceField* pGhemicalFF;
   };

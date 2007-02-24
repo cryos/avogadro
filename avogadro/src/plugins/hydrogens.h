@@ -53,7 +53,7 @@ namespace Avogadro {
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("Hydrogens Plugin"); };
       //! Perform Action
-      virtual void performAction(QAction *action, Molecule *molecule);
+      virtual void performAction(QAction *action, Molecule *molecule, QTextEdit *messages=NULL);
       //@}
 
     private:

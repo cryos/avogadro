@@ -30,6 +30,7 @@
 #include <QObject>
 #include <QGLWidget>
 #include <QVector>
+#include <QTextEdit>
 #include <QList>
 
 namespace Avogadro {
@@ -57,7 +58,7 @@ namespace Avogadro {
       //! extension can perform.
       //@}
       virtual QList<QAction *> actions() { return m_actions; }
-      virtual void performAction(QAction *action, Molecule *molecule) {}
+      virtual void performAction(QAction *action, Molecule *molecule, QTextEdit *messages = NULL) {}
       
     protected:
       QList<QAction *> m_actions;

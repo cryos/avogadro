@@ -609,11 +609,9 @@ namespace Avogadro {
   void MainWindow::actionTriggered()
   {
     QAction *action = qobject_cast<QAction *>(sender());
-    qDebug() << "GOGOGO";
     if(action) {
-      qDebug() << "Action";
       Extension *extension = dynamic_cast<Extension *>(action->parent());
-      extension->performAction(action, m_molecule);
+      extension->performAction(action, m_molecule, m_textMessages);
     }
   }
       
