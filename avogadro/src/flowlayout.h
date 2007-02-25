@@ -31,11 +31,11 @@
 namespace Avogadro {
   class FlowLayout : public QLayout
   {
-  public:
+    public:
       FlowLayout(QWidget *parent, int margin = 0, int spacing = -1);
       FlowLayout(int spacing = -1);
       ~FlowLayout();
-  
+
       void addItem(QLayoutItem *item);
       Qt::Orientations expandingDirections() const;
       bool hasHeightForWidth() const;
@@ -46,10 +46,10 @@ namespace Avogadro {
       void setGeometry(const QRect &rect);
       QSize sizeHint() const;
       QLayoutItem *takeAt(int index);
-  
-  private:
+
+    private:
       int doLayout(const QRect &rect, bool testOnly) const;
-  
+
       QList<QLayoutItem *> itemList;
   };
 }

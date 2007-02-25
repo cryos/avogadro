@@ -60,17 +60,18 @@ namespace Avogadro {
 
     QVBoxLayout *vbCentral = new QVBoxLayout(ui.centralWidget);
     vbCentral->setMargin(0);
-    m_splitCentral = new QSplitter(Qt::Vertical);
+    vbCentral->setSpacing(0);
 
     // at least for now, try to always do multisample OpenGL (i.e., antialias)
     // graphical improvement is great and many cards do this in hardware
     // At some point, this should be a preference
     QGLFormat format;
     format.setSampleBuffers(true);
-    m_glView = new GLWidget(m_molecule, format, m_splitCentral);
+    m_glView = new GLWidget(m_molecule, format, ui.centralWidget);
+    vbCentral->addWidget(m_glView);
 
-    m_tabBottom = new QTabWidget(m_splitCentral);
-    m_tabBottom->setTabPosition(QTabWidget::South);
+    m_tabBottom = new FlatTabWidget(ui.centralWidget);
+    vbCentral->addWidget(m_tabBottom);
 
     QWidget *widgetMessages = new QWidget();
     QVBoxLayout *vbMessages = new QVBoxLayout(widgetMessages);
@@ -79,10 +80,10 @@ namespace Avogadro {
     vbMessages->setMargin(3);
     vbMessages->addWidget(m_textMessages);
     m_tabBottom->addTab(widgetMessages, tr("Messages"));
-    QList<int> sizes = m_splitCentral->sizes();
-    sizes[0] = m_glView->maximumHeight();
-    m_splitCentral->setSizes(sizes);
-    vbCentral->addWidget(m_splitCentral);
+
+//     QList<int> sizes = m_splitCentral->sizes();
+//     sizes[0] = m_glView->maximumHeight();
+//     m_splitCentral->setSizes(sizes);
 
     ui.treeView->setAnimated(true);
     ui.treeView->setAllColumnsShowFocus(true);

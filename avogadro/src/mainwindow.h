@@ -38,6 +38,8 @@
 #include "ui_mainwindow.h"
 #include "plugin.h"
 #include "flowlayout.h"
+#include "flattabwidget.h"
+#include "splitter.h"
 
 namespace Avogadro {
 
@@ -98,9 +100,9 @@ namespace Avogadro {
       QStackedLayout *m_stackedToolProperties;
 
       GLWidget *m_glView;
-      QSplitter *m_splitCentral;
+      QVBoxLayout *m_splitCentral;
       QTextEdit *m_textMessages;
-      QTabWidget *m_tabBottom;
+      FlatTabWidget *m_tabBottom;
 
       enum { maxRecentFiles = 10 };
       QAction    *m_actionRecentFile[maxRecentFiles];

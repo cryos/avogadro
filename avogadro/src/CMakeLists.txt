@@ -18,21 +18,23 @@ add_definitions(-DQT_DEBUG)
 include(${QT_USE_FILE})
 
 set(avogadro_SRCS
-  flowlayout.cpp
-  mainwindow.cpp
-  main.cpp
+    flowlayout.cpp
+    flattabwidget.cpp
+    mainwindow.cpp
+    main.cpp
 )
 
 set(avogadro_MOC_HDRS
-  mainwindow.h
+    flattabwidget.h
+    mainwindow.h
 )
 
 set(avogadro_RCS
-  avogadro.qrc
+    avogadro.qrc
 )
 
 set(avogadro_UIS
-  mainwindow.ui
+    mainwindow.ui
 )
 
 
