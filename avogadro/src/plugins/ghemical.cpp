@@ -69,13 +69,13 @@ void Ghemical::optimize(Molecule *molecule, QTextEdit *messages)
     return;
   }
 
-  for(int i = 1; i<20; i++)
-  {
-    pGhemicalFF->ConjugateGradients(1); // default for now
+  pGhemicalFF->ConjugateGradientsInitialize(100, 1e-7f); // initialize cg
+  while (pGhemicalFF->ConjugateGradientsTakeNSteps(5)) { // take 5 steps until convergence or 100 steps taken
     pGhemicalFF->UpdateCoordinates(*molecule);
     messages->append(tr(buff.str().c_str()));
     molecule->update();
   }
+
 }
 
 Q_EXPORT_PLUGIN2(ghemical, Ghemical)

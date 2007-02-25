@@ -39,7 +39,6 @@
 #include "plugin.h"
 #include "flowlayout.h"
 #include "flattabwidget.h"
-#include "splitter.h"
 
 namespace Avogadro {
 
