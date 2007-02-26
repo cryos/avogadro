@@ -1,4 +1,6 @@
-FIND_PATH(AVOGADRO_INCLUDE_DIR avogadro/glwidget.h 
+FIND_PATH(AVOGADRO_INCLUDE_DIR NAMES avogadro/glwidget.h 
+     PATHS
+     ${CMAKE_INSTALL_PREFIX}/include
 	/usr/include
 	/usr/local/include
 	/usr/include/avogadro 
@@ -9,6 +11,7 @@ FIND_LIBRARY(AVOGADRO_LIBRARY
 	NAMES 
 		avogadro 
 	PATH 
+		${CMAKE_INSTALL_PREFIX}/lib
 		/usr/lib 
 		/usr/local/lib
 ) 
