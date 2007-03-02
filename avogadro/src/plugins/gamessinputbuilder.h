@@ -26,11 +26,13 @@
 #include <QDialog>
 #include <QLabel>
 #include <QComboBox>
+#include <QFrame>
 #include <QCheckBox>
 #include <QGroupBox>
 #include <QLineEdit>
 #include <QRadioButton>
 #include <QGridLayout>
+#include <QStackedLayout>
 #include <QTextEdit>
 
 #include "gamessinputdata.h"
@@ -48,7 +50,9 @@ namespace Avogadro {
 
     protected:
       //! Create dialog tabs
-      void createTabs();
+      void createModes();
+      void createBasic();
+      void createAdvanced();
       void createPreview();
       void createButtons();
 
@@ -63,9 +67,15 @@ namespace Avogadro {
     private:
       GamessInputData *m_inputData;
 
+//       GamessInputData *m_inputBackup;
+      bool m_advancedChanged;
+//       bool m_previewChanged;
+//       QString m_previewBackup;
+
       QVBoxLayout *m_mainLayout;
-      QHBoxLayout *m_subLayout;
-      QTabWidget *m_tabWidget;
+      QStackedLayout *m_stackedLayout;
+      QFrame *m_basicWidget;
+      QTabWidget  *m_advancedWidget;
 
       QGridLayout *m_basisLayout;
       QGridLayout *m_controlLayout;
@@ -77,7 +87,26 @@ namespace Avogadro {
 
       QTextEdit   *m_previewText;
 
+      QHBoxLayout *m_modeLayout;
       QHBoxLayout *m_buttonLayout;
+
+      // Basic Widgets
+      QLabel    *m_basicCalculateLabel;
+      QComboBox *m_basicCalculateCombo;
+      QLabel    *m_basicWithLabel;
+      QComboBox *m_basicWithLeftCombo;
+      QComboBox *m_basicWithRightCombo;
+      QLabel    *m_basicInLabel;
+      QComboBox *m_basicInCombo;
+      QLabel    *m_basicOnLabel;
+      QComboBox *m_basicOnLeftCombo;
+      QComboBox *m_basicOnRightCombo;
+      QLabel    *m_basicTimeLimitLabel;
+      QLineEdit *m_basicTimeLimitLine;
+      QLabel    *m_basicTimeLimitUnitsLabel;
+      QLabel    *m_basicMemoryLabel;
+      QLineEdit *m_basicMemoryLine;
+      QLabel    *m_basicMemoryUnitsLabel;
 
       // Basis Widgets
       QLabel    *m_basisSetLabel; 
@@ -152,15 +181,15 @@ namespace Avogadro {
       QCheckBox *m_useExternalDataCheck;
       QCheckBox *m_forceParallelCheck;
 
-    public Q_SLOTS:
-      // Button Slots
-      void okClicked();
-      void exportClicked();
-      void cancelClicked();
+      bool verifyAdvancedChange();
+      bool verifyPreviewChange();
 
-      void setDefaults();
+    public Q_SLOTS:
+      void setMode(int mode);
 
       void updatePreviewText();
+
+      void updateBasicWidgets();
 
       void updateWidgets();
       void updateBasisWidgets();
@@ -168,6 +197,29 @@ namespace Avogadro {
       void updateDataWidgets();
       void updateSystemWidgets();
       void updatePointGroupOrderWidgets();
+
+    private Q_SLOTS:
+      // Button Slots
+      void okClicked();
+      void exportClicked();
+      void cancelClicked();
+
+      void setBasicDefaults();
+      void setAdvancedDefaults();
+
+      void basicChanged();
+      void advancedChanged();
+//       void previewChanged();
+
+      // Basic Slots
+      void setBasicCalculateIndex( int index );
+      void setBasicWithLeftIndex( int index );
+      void setBasicWithRightIndex( int index );
+      void setBasicInIndex( int index );
+      void setBasicOnLeftIndex( int index );
+      void setBasicOnRightIndex( int index );
+      void setBasicTimeLimitText( const QString &text );
+      void setBasicMemoryText( const QString &text );
 
       // Basis Slots
       void setBasisSetIndex( int index );

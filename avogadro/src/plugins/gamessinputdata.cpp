@@ -136,19 +136,20 @@ GamessInputData::GamessInputData(Molecule *molecule) :
   DFT(NULL)
 {
   //Always create Control, System, Basis, and Data groups
-//   m_molecule = molecule;
-//   Control = new GamessControlGroup;
-//   System = new GamessSystemGroup;
-//   Basis = new GamessBasisGroup;
-//   Data = new GamessDataGroup;
-//   StatPt = new GamessStatPtGroup;
-//   Guess = new GamessGuessGroup;
-//   SCF = NULL;
-//   MP2 = NULL;
-//   Hessian = NULL;
-//   DFT = NULL;
+  //   m_molecule = molecule;
+  //   Control = new GamessControlGroup;
+  //   System = new GamessSystemGroup;
+  //   Basis = new GamessBasisGroup;
+  //   Data = new GamessDataGroup;
+  //   StatPt = new GamessStatPtGroup;
+  //   Guess = new GamessGuessGroup;
+  //   SCF = NULL;
+  //   MP2 = NULL;
+  //   Hessian = NULL;
+  //   DFT = NULL;
 }
 GamessInputData::GamessInputData(GamessInputData *Copy) {
+  m_molecule = Copy->m_molecule;
   //Always create Control, System, Basis, and Data groups
   Control = new GamessControlGroup(Copy->Control);	//Create the new group and copy over the data
   System = new GamessSystemGroup(Copy->System);
@@ -204,9 +205,9 @@ long GamessInputData::WriteInputFile(ostream &buffer) {
   if (Hessian) Hessian->WriteToFile(buffer, this);
   if (Data) Data->WriteToFile(buffer, m_molecule);
   //     if (Guess) Guess->WriteVecGroup(buffer, molecule);
-//   if(buffer) {
-//     delete buffer;
-//   }
+  //   if(buffer) {
+  //     delete buffer;
+  //   }
   return 1;
 }
 
@@ -1429,50 +1430,48 @@ short GamessDataGroup::SetNumZVar(short NewNum) {
 
 //TODO FIX THIS WRITTING THE MOLECULE DATA
 // commenting this out for now.
-void GamessDataGroup::WriteToFile(ostream &File, Molecule * MainData) {
-  //   char	Out[GAMESS_BUFF_LEN];
-  // 
-  //   Frame * cFrame = MainData->GetCurrentFramePtr();
-  //   BasisSet * lBasis = MainData->GetBasisSet();
+void GamessDataGroup::WriteToFile(ostream &File, Molecule * molecule) {
+  char	Out[GAMESS_BUFF_LEN];
+
+  //   Frame * cFrame = molecule->GetCurrentFramePtr();
+  //   BasisSet * lBasis = molecule->GetBasisSet();
   //   BasisTest = BasisTest && lBasis;	//Make sure there really is a basis set defined
-  //   //	if (BasisTest) File << " $CONTRL NORMP=1 $END" << endl;
-  //   //Punch the group label
-  //   File << " $DATA " << endl;
-  //   //title
-  //   if (Title == NULL) File << "Title goes here" << endl;
-  //   else File << Title << endl;
-  //   //Point Group
-  //   if ((PointGroup>GAMESS_CI)&&(PointGroup<GAMESS_TD)) {
-  //     sprintf(Out, "%s %d", GetPointGroupText(), PGroupOrder);
-  //   } else sprintf(Out, "%s", GetPointGroupText());
-  //   File << Out << endl;
-  //   if ((PointGroup!=0)&&(PointGroup!=1)) File << "" << endl;
-  //   //coordinates
+  //	if (BasisTest) File << " $CONTRL NORMP=1 $END" << endl;
+  //Punch the group label
+  File << endl << " $DATA " << endl;
+  //title
+  if (Title == NULL) File << "Title goes here" << endl;
+  else File << Title << endl;
+  //Point Group
+  if ((PointGroup>GAMESS_CI)&&(PointGroup<GAMESS_TD)) {
+    sprintf(Out, "%s %d", GetPointGroupText(), PGroupOrder);
+  } else sprintf(Out, "%s", GetPointGroupText());
+  File << Out << endl;
+  if ((PointGroup!=0)&&(PointGroup!=1)) File << "" << endl;
+  //coordinates
   //   if (Coord == ZMTCoordType) {	//"normal" style z-matrix
-  //     Internals * IntCoords = MainData->GetInternalCoordinates();
-  //     if (IntCoords) IntCoords->WriteCoordinatesToFile(File, MainData, Prefs);
+  //     Internals * IntCoords = molecule->GetInternalCoordinates();
+  //     if (IntCoords) IntCoords->WriteCoordinatesToFile(File, molecule, Prefs);
   //   } else if (Coord == ZMTMPCCoordType) {
-  //     Internals * IntCoords = MainData->GetInternalCoordinates();
-  //     if (IntCoords) IntCoords->WriteMPCZMatCoordinatesToFile(File, MainData, Prefs);
+  //     Internals * IntCoords = molecule->GetInternalCoordinates();
+  //     if (IntCoords) IntCoords->WriteMPCZMatCoordinatesToFile(File, molecule, Prefs);
   //   } else {
-  //     for (int iatom=0; iatom<cFrame->NumAtoms; iatom++) {
-  //       Str255 AtomLabel;
-  //       Prefs->GetAtomLabel(cFrame->Atoms[iatom].GetType()-1, AtomLabel);
-  //       AtomLabel[AtomLabel[0]+1] = 0;
-  //       sprintf(Out, "%s   %5.1f  %10.5f  %10.5f  %10.5f",
-  //           (char *) &(AtomLabel[1]), (float) (cFrame->Atoms[iatom].GetType()), 
-  //           cFrame->Atoms[iatom].Position.x, cFrame->Atoms[iatom].Position.y,
-  //           cFrame->Atoms[iatom].Position.z);
-  //       File << Out << endl;
-  //       if (BasisTest) lBasis->WriteBasis(File, iatom);
-  //     }
+  FOR_ATOMS_OF_MOL(atom, molecule)
+  {
+    int atomicNumber = atom->GetAtomicNum();
+    sprintf(Out, "%s   %5.1f  %10.5f  %10.5f  %10.5f",
+        etab.GetSymbol(atomicNumber), (float) atomicNumber,
+        atom->GetX(), atom->GetY(), atom->GetZ());
+    File << Out << endl; 
+    //       if (BasisTest) lBasis->WriteBasis(File, iatom);
+  }
   //   }
-  // 
-  //   File << " $END" << endl;
-  //   if (NumZVar) {	//punch out the current connectivity in a $ZMAT group
-  //     Internals * IntCoords = MainData->GetInternalCoordinates();
-  //     if (IntCoords) IntCoords->WriteZMATToFile(File);
-  //   }
+
+  File << " $END" << endl;
+//   if (NumZVar) {	//punch out the current connectivity in a $ZMAT group
+//     Internals * IntCoords = molecule->GetInternalCoordinates();
+//     if (IntCoords) IntCoords->WriteZMATToFile(File);
+//   }
 }
 #pragma mark GamessGuessGroup
 //Guess Group functions
@@ -1536,7 +1535,7 @@ void GamessGuessGroup::WriteToFile(ostream &File, GamessInputData *IData) {
   long	test=false;
   char	Out[GAMESS_BUFF_LEN];
 
-//   Frame * lFrame = MainData->GetCurrentFramePtr();
+  //   Frame * lFrame = MainData->GetCurrentFramePtr();
   //first determine wether or not the Guess group needs to be punched
   if (GetGuess()) test = true;
   if (GetPrintMO()) test = true;
@@ -1556,18 +1555,18 @@ void GamessGuessGroup::WriteToFile(ostream &File, GamessInputData *IData) {
   //FIXME help!  i need somebody
   if (GetGuess()==3) {
     long nOrbs = GetNumOrbs();
-//     if (!nOrbs) {	//Make a guess if the guess comes from local orbs
-//       short tempVec = GetVecSource();
-//       const std::vector<OrbitalRec *> * Orbs = lFrame->GetOrbitalSetVector();
-//       if (Orbs->size() > 0) {
-//         if ((tempVec<=0)||(tempVec>Orbs->size() + 2)) tempVec = 2;
-//         if (tempVec > 1) {
-//           OrbitalRec * OrbSet = (*Orbs)[tempVec-2];
-//           nOrbs = OrbSet->getNumOccupiedAlphaOrbitals();
-//           if (nOrbs <= 0) nOrbs = OrbSet->getNumAlphaOrbitals();
-//         }
-//       }
-//     }
+    //     if (!nOrbs) {	//Make a guess if the guess comes from local orbs
+    //       short tempVec = GetVecSource();
+    //       const std::vector<OrbitalRec *> * Orbs = lFrame->GetOrbitalSetVector();
+    //       if (Orbs->size() > 0) {
+    //         if ((tempVec<=0)||(tempVec>Orbs->size() + 2)) tempVec = 2;
+    //         if (tempVec > 1) {
+    //           OrbitalRec * OrbSet = (*Orbs)[tempVec-2];
+    //           nOrbs = OrbSet->getNumOccupiedAlphaOrbitals();
+    //           if (nOrbs <= 0) nOrbs = OrbSet->getNumAlphaOrbitals();
+    //         }
+    //       }
+    //     }
     sprintf(Out, "NORB=%d ", nOrbs);
     File << Out;
   }	//PrintMO

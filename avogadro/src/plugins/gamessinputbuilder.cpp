@@ -23,82 +23,246 @@
 #include "gamessinputbuilder.h"
 
 #include <QPushButton>
+#include <QButtonGroup>
 #include <QDebug>
+
+#include <QMessageBox>
 
 using namespace Avogadro;
 
-GamessInputBuilder::GamessInputBuilder(GamessInputData *inputData, QWidget *parent, Qt::WindowFlags f) : QDialog(parent, f), m_inputData(inputData)
+GamessInputBuilder::GamessInputBuilder(GamessInputData *inputData, QWidget *parent, Qt::WindowFlags f) : QDialog(parent, f), m_inputData(inputData), 
+  m_advancedChanged(false)
 {
   m_mainLayout = new QVBoxLayout;
-  m_subLayout = new QHBoxLayout;
+  m_stackedLayout = new QStackedLayout;
   setLayout(m_mainLayout);
 
   setWindowTitle(tr("GAMESS Input Deck Builder"));
 
-  createTabs();
+  createModes();
+  createBasic();
+  createAdvanced();
   createPreview();
   createButtons();
 
-  m_mainLayout->addWidget(m_tabWidget);
+  m_stackedLayout->addWidget(m_basicWidget);
+  m_stackedLayout->addWidget(m_advancedWidget);
+  m_mainLayout->addLayout(m_modeLayout);
+  m_mainLayout->addLayout(m_stackedLayout);
   m_mainLayout->addWidget(m_previewText);
+  m_mainLayout->setStretchFactor(m_previewText, 1);
   m_mainLayout->addLayout(m_buttonLayout);
 
   updateWidgets();
 
-  setDefaults();
+  setBasicDefaults();
 }
 
 GamessInputBuilder::~GamessInputBuilder()
 {
 }
 
-void GamessInputBuilder::createTabs()
+void GamessInputBuilder::createBasic()
+{
+  int row=0;
+  QHBoxLayout *layout;
+
+  m_basicWidget = new QFrame(this);
+  m_basicWidget->setFrameShape(QFrame::StyledPanel);
+  m_basicWidget->setFrameShadow(QFrame::Raised);
+  QGridLayout *basicLayout = new QGridLayout(m_basicWidget);
+  m_basicWidget->setLayout(basicLayout);
+
+  basicLayout->setColumnMinimumWidth(0, 120);
+  basicLayout->setColumnStretch(1, 1);
+  basicLayout->setColumnStretch(2, 1);
+
+  // Calculate
+  m_basicCalculateLabel = new QLabel(tr("Calculate:"));
+  m_basicCalculateLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+  basicLayout->addWidget(m_basicCalculateLabel, row, 0);
+  m_basicCalculateCombo = new QComboBox;
+  m_basicCalculateCombo->addItem(tr("Single Point Entry"));
+  m_basicCalculateCombo->addItem(tr("Equilibrium Geometry"));
+  m_basicCalculateCombo->addItem(tr("Transition State"));
+  m_basicCalculateCombo->addItem(tr("Frequencies"));
+  connect(m_basicCalculateCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setBasicCalculateIndex(int)));
+  connect(m_basicCalculateCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
+  connect(m_basicCalculateCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(basicChanged()));
+  basicLayout->addWidget(m_basicCalculateCombo, row, 1);
+
+  row++;
+  // With
+  m_basicWithLabel = new QLabel(tr("With:"));
+  m_basicWithLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+  basicLayout->addWidget(m_basicWithLabel, row, 0);
+  m_basicWithLeftCombo = new QComboBox;
+  m_basicWithLeftCombo->addItem(tr("AM1"));
+  m_basicWithLeftCombo->addItem(tr("PM3"));
+  m_basicWithLeftCombo->addItem(tr("RHF"));
+  m_basicWithLeftCombo->addItem(tr("B3LYP"));
+  m_basicWithLeftCombo->addItem(tr("MP2"));
+  m_basicWithLeftCombo->addItem(tr("CCSD(T)"));
+  connect(m_basicWithLeftCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setBasicWithLeftIndex(int)));
+  connect(m_basicWithLeftCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
+  connect(m_basicWithLeftCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(basicChanged()));
+  basicLayout->addWidget(m_basicWithLeftCombo, row, 1);
+  layout = new QHBoxLayout;
+  m_basicWithRightCombo = new QComboBox;
+  m_basicWithRightCombo->addItem(tr("STO-3G"));
+  m_basicWithRightCombo->addItem(tr("MINI"));
+  m_basicWithRightCombo->addItem(tr("3-21G"));
+  m_basicWithRightCombo->addItem(tr("6-31G(d)"));
+  m_basicWithRightCombo->addItem(tr("6-31G(d,p)"));
+  m_basicWithRightCombo->addItem(tr("6-31+G(d,p)"));
+  m_basicWithRightCombo->addItem(tr("6-31+G(2d,p)"));
+  m_basicWithRightCombo->addItem(tr("6-311++G(2d,p)"));
+  m_basicWithRightCombo->addItem(tr("Core Potential"));
+  connect(m_basicWithRightCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setBasicWithRightIndex(int)));
+  connect(m_basicWithRightCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
+  connect(m_basicWithRightCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(basicChanged()));
+  layout->addWidget(m_basicWithRightCombo);
+  layout->addStretch();
+  basicLayout->addLayout(layout, row, 2);
+
+  row++;
+  // In
+  m_basicInLabel = new QLabel(tr("In:"));
+  m_basicInLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+  basicLayout->addWidget(m_basicInLabel, row, 0);
+  m_basicInCombo = new QComboBox;
+  m_basicInCombo->addItem(tr("Gas Phase"));
+  m_basicInCombo->addItem(tr("Water"));
+  connect(m_basicInCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setBasicInIndex(int)));
+  connect(m_basicInCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
+  connect(m_basicInCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(basicChanged()));
+  basicLayout->addWidget(m_basicInCombo, row, 1);
+
+  row++;
+  // On
+  m_basicOnLabel = new QLabel(tr("On:"));
+  m_basicOnLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+  basicLayout->addWidget(m_basicOnLabel, row, 0);
+  m_basicOnLeftCombo = new QComboBox;
+  m_basicOnLeftCombo->addItem(tr("Singlet"));
+  m_basicOnLeftCombo->addItem(tr("Doublet"));
+  m_basicOnLeftCombo->addItem(tr("Triplet"));
+  connect(m_basicOnLeftCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setBasicOnLeftIndex(int)));
+  connect(m_basicOnLeftCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
+  connect(m_basicOnLeftCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(basicChanged()));
+  basicLayout->addWidget(m_basicOnLeftCombo, row, 1);
+  layout = new QHBoxLayout;
+  m_basicOnRightCombo = new QComboBox;
+  m_basicOnRightCombo->addItem(tr("Dication"));
+  m_basicOnRightCombo->addItem(tr("Cation"));
+  m_basicOnRightCombo->addItem(tr("Neutral"));
+  m_basicOnRightCombo->addItem(tr("Anion"));
+  m_basicOnRightCombo->addItem(tr("Dianion"));
+  connect(m_basicOnRightCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setBasicOnRightIndex(int)));
+  connect(m_basicOnRightCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
+  connect(m_basicOnRightCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(basicChanged()));
+  layout->addWidget(m_basicOnRightCombo);
+  layout->addStretch();
+  basicLayout->addLayout(layout, row, 2);
+
+  row++;
+  // Time Limit
+  m_basicTimeLimitLabel = new QLabel(tr("Time Limit:"));
+  m_basicTimeLimitLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+  basicLayout->addWidget(m_basicTimeLimitLabel, row, 0);
+  m_basicTimeLimitLine = new QLineEdit;
+  connect(m_basicTimeLimitLine, SIGNAL(textChanged(QString)),
+      this, SLOT(setBasicTimeLimitText(QString)));
+  connect(m_basicTimeLimitLine, SIGNAL(textChanged(QString)),
+      this, SLOT(updatePreviewText()));
+  connect(m_basicTimeLimitLine, SIGNAL(textChanged(QString)),
+      this, SLOT(basicChanged()));
+  basicLayout->addWidget(m_basicTimeLimitLine, row, 1);
+  m_basicTimeLimitUnitsLabel = new QLabel(tr("Hour(s)"));
+  basicLayout->addWidget(m_basicTimeLimitUnitsLabel, row, 2);
+
+  row++;
+  // Memory
+  m_basicMemoryLabel = new QLabel(tr("Memory:"));
+  m_basicMemoryLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+  basicLayout->addWidget(m_basicMemoryLabel, row, 0);
+  m_basicMemoryLine = new QLineEdit;
+  connect(m_basicMemoryLine, SIGNAL(textChanged(QString)),
+      this, SLOT(setBasicTimeLimitText(QString)));
+  connect(m_basicMemoryLine, SIGNAL(textChanged(QString)),
+      this, SLOT(updatePreviewText()));
+  connect(m_basicMemoryLine, SIGNAL(textChanged(QString)),
+      this, SLOT(basicChanged()));
+  basicLayout->addWidget(m_basicMemoryLine, row, 1);
+  m_basicMemoryUnitsLabel = new QLabel(tr("MegaBytes"));
+  basicLayout->addWidget(m_basicMemoryUnitsLabel, row, 2);
+}
+
+void GamessInputBuilder::createAdvanced()
 {
   QWidget *widget;
 
   // Tabs
-  m_tabWidget = new QTabWidget(this);
+  m_advancedWidget= new QTabWidget(this);
 
   widget = new QWidget(this);
   m_basisLayout = new QGridLayout(widget);
   widget->setLayout(m_basisLayout);
-  m_tabWidget->addTab(widget, tr("Basis"));
+  m_advancedWidget->addTab(widget, tr("Basis"));
   createBasis();
 
   widget = new QWidget(this);
   m_controlLayout = new QGridLayout(widget);
   widget->setLayout(m_controlLayout);
-  m_tabWidget->addTab(widget, tr("Control"));
+  m_advancedWidget->addTab(widget, tr("Control"));
   createControl();
 
   widget = new QWidget(this);
   m_dataLayout = new QGridLayout(widget);
   widget->setLayout(m_dataLayout);
-  m_tabWidget->addTab(widget, tr("Data"));
+  m_advancedWidget->addTab(widget, tr("Data"));
   createData();
 
   widget = new QWidget(this);
   m_systemLayout = new QGridLayout(widget);
   widget->setLayout(m_systemLayout);
-  m_tabWidget->addTab(widget, tr("System"));
+  m_advancedWidget->addTab(widget, tr("System"));
   createSystem();
 
   widget = new QWidget(this);
   m_moGuessLayout = new QGridLayout(widget);
   widget->setLayout(m_moGuessLayout);
-  m_tabWidget->addTab(widget, tr("MO Guess"));
+  m_advancedWidget->addTab(widget, tr("MO Guess"));
   createMOGuess();
 
   widget = new QWidget(this);
   m_miscLayout = new QGridLayout(widget);
   widget->setLayout(m_miscLayout);
-  m_tabWidget->addTab(widget, tr("misc"));
+  m_advancedWidget->addTab(widget, tr("misc"));
   createMisc();
 
   widget = new QWidget(this);
   m_scfLayout = new QGridLayout(widget);
   widget->setLayout(m_scfLayout);
-  m_tabWidget->addTab(widget, tr("SCF"));
+  m_advancedWidget->addTab(widget, tr("SCF"));
   createScf();
 
 }
@@ -106,6 +270,27 @@ void GamessInputBuilder::createTabs()
 void GamessInputBuilder::createPreview()
 {
   m_previewText = new QTextEdit(this);
+}
+
+void GamessInputBuilder::createModes()
+{
+  QButtonGroup *group = new QButtonGroup(this);
+  group->setExclusive(true);
+  connect(group, SIGNAL(buttonClicked(int)), this, SLOT(setMode(int)));
+
+  // Modes Button Bar
+  m_modeLayout = new QHBoxLayout();
+  m_modeLayout->setMargin(0);
+  QPushButton *button = new QPushButton(tr("&Basic"));
+  button->setCheckable(true);
+  button->setChecked(true);
+  group->addButton(button, 0);
+  m_modeLayout->addWidget(button);
+  button = new QPushButton(tr("&Advanced"));
+  button->setCheckable(true);
+  group->addButton(button, 1);
+  m_modeLayout->addWidget(button);
+  m_modeLayout->addStretch();
 }
 
 void GamessInputBuilder::createButtons()
@@ -116,6 +301,10 @@ void GamessInputBuilder::createButtons()
   QPushButton *button = new QPushButton(tr("&Export"));
   connect(button, SIGNAL(clicked()), this, SLOT(exportClicked()));
   m_buttonLayout->addWidget(button);
+  button = new QPushButton(tr("Defaults"));
+  connect(button, SIGNAL(clicked()), this, SLOT(setBasicDefaults()));
+  m_buttonLayout->addWidget(button);
+  m_buttonLayout->addStretch();
   button = new QPushButton(tr("&Ok"));
   connect(button, SIGNAL(clicked()), this, SLOT(okClicked()));
   m_buttonLayout->addWidget(button);
@@ -124,13 +313,96 @@ void GamessInputBuilder::createButtons()
   m_buttonLayout->addWidget(button);
 }
 
-void GamessInputBuilder::setDefaults()
+void GamessInputBuilder::basicChanged()
+{
+  m_basicWidget->setEnabled(true);
+  m_advancedChanged = false;
+}
+
+void GamessInputBuilder::advancedChanged()
+{
+  m_basicWidget->setEnabled(false);
+  m_advancedChanged = true;
+}
+
+// void GamessInputBuilder::previewChanged()
+// {
+//   m_previewChanged = true;
+// }
+
+// bool GamessInputBuilder::warnAdvancedChanged()
+// {
+//   QMessageBox msgbox(QMessageBox::Warning, tr("Verify Advanced Changed"),
+//       tr("Advanced settings will be lost.  Are you sure you wish to update basic settings?"), QMessageBox::Yes | QMessageBox::No);
+// 
+//   return true;
+// }
+
+// bool GamessInputBuilder::verifyPreviewChange()
+// {
+//   return false;
+// }
+
+void GamessInputBuilder::setBasicDefaults()
+{
+  qDebug() << "setBasicDefaults";
+  // These rely on the advanced defaults
+  setAdvancedDefaults();
+
+  m_basicCalculateCombo->setCurrentIndex(0);
+  m_basicWithLeftCombo->setCurrentIndex(2);
+  m_basicWithRightCombo->setCurrentIndex(0);
+  m_basicInCombo->setCurrentIndex(0);
+  m_basicOnLeftCombo->setCurrentIndex(0);
+  m_basicOnRightCombo->setCurrentIndex(2);
+  m_basicTimeLimitLine->setText(tr("10"));
+  m_basicMemoryLine->setText(tr("50"));
+
+  m_advancedChanged = false;
+  m_basicWidget->setEnabled(true);
+}
+void GamessInputBuilder::setAdvancedDefaults()
 {
   m_basisSetCombo->setCurrentIndex(3);
+  m_ecpTypeCombo->setCurrentIndex(0);
+  m_dHeavyAtomCombo->setCurrentIndex(0);
+  m_fHeavyAtomCombo->setCurrentIndex(0);
+  m_lightAtomCombo->setCurrentIndex(0);
+  m_polarCombo->setCurrentIndex(0);
+  m_diffuseLShellCheck->setChecked(false);
+  m_diffuseSShellCheck->setChecked(false);
+
+  m_runTypeCombo->setCurrentIndex(0);
+  m_scfTypeCombo->setCurrentIndex(0);
+  m_localizationMethodCombo->setCurrentIndex(0);
+  m_execTypeCombo->setCurrentIndex(0);
+  m_maxSCFLine->setText(tr("30"));
+  m_moleculeChargeLine->setText(tr("0"));
+  m_multiplicityLine->setText(tr("1"));
+  m_useMP2Check->setChecked(false);
+  m_useDFTCheck->setChecked(false);
+  m_ciCombo->setCurrentIndex(0);
+  m_ccCombo->setCurrentIndex(0);
+
+  m_titleLine->setText("Title");
+  m_coordinateTypeCombo->setCurrentIndex(0);
+  m_unitsCombo->setCurrentIndex(0);
+  m_numZMatrixLine->setText(tr("0"));
+  m_pointGroupCombo->setCurrentIndex(0);
+  m_orderPrincipleAxisCombo->setCurrentIndex(0);
+  m_useSymmetryCheck->setChecked(true);
+
   m_timeLimitCombo->setCurrentIndex(2);
   m_timeLimitLine->setText(tr("10"));
   m_memoryCombo->setCurrentIndex(3);
   m_memoryLine->setText(tr("50"));
+  m_memDDICombo->setCurrentIndex(0);
+  m_memDDILine->setText(tr("0"));
+  m_diagonalizationCombo->setCurrentIndex(0);
+  m_produceCoreCheck->setChecked(false);
+  m_forceParallelCheck->setChecked(false);
+  m_loopRadio->setChecked(false);
+  m_useExternalDataCheck->setChecked(false);
 }
 
 void GamessInputBuilder::updatePreviewText()
@@ -138,7 +410,24 @@ void GamessInputBuilder::updatePreviewText()
   stringstream str;
   m_inputData->WriteInputFile(str);
   m_previewText->setText(QString::fromAscii(str.str().c_str()));
+}
 
+void GamessInputBuilder::updateBasicWidgets()
+{
+  // These rely on the advanced defaults
+  setAdvancedDefaults();
+
+  setBasicCalculateIndex(m_basicCalculateCombo->currentIndex());
+  setBasicWithLeftIndex(m_basicWithLeftCombo->currentIndex());
+  setBasicWithRightIndex(m_basicWithRightCombo->currentIndex());
+  setBasicInIndex(m_basicInCombo->currentIndex());
+  setBasicOnLeftIndex(m_basicOnLeftCombo->currentIndex());
+  setBasicOnRightIndex(m_basicOnRightCombo->currentIndex());
+  setBasicTimeLimitText(m_basicTimeLimitLine->text());
+  setBasicMemoryText(m_basicMemoryLine->text());
+
+  m_advancedChanged = false;
+  m_basicWidget->setEnabled(true);
 }
 
 void GamessInputBuilder::updateWidgets()
@@ -426,9 +715,8 @@ void GamessInputBuilder::createBasis()
   // Basis Set
   layout = new QHBoxLayout();
   layout->addStretch(40);
-  m_basisSetLabel = new QLabel();
+  m_basisSetLabel = new QLabel(tr("Basis Set"));
   m_basisSetLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-  m_basisSetLabel->setText(tr("Basis Set"));
   layout->addWidget(m_basisSetLabel);
 
   m_basisSetCombo = new QComboBox();
@@ -459,6 +747,8 @@ void GamessInputBuilder::createBasis()
       this, SLOT(setBasisSetIndex(int)));
   connect(m_basisSetCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_basisSetCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
 
   layout->addWidget(m_basisSetCombo);
   layout->addStretch(40);
@@ -480,6 +770,8 @@ void GamessInputBuilder::createBasis()
       this, SLOT(setECPTypeIndex(int)));
   connect(m_ecpTypeCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_ecpTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
 
   layout->addWidget(m_ecpTypeCombo);
   layout->addStretch(40);
@@ -501,6 +793,8 @@ void GamessInputBuilder::createBasis()
       this, SLOT(setDHeavyAtomIndex(int)));
   connect(m_dHeavyAtomCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_dHeavyAtomCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
 
   m_basisLayout->addWidget(m_dHeavyAtomCombo, row, 1);
 
@@ -519,6 +813,8 @@ void GamessInputBuilder::createBasis()
       this, SLOT(setFHeavyAtomIndex(int)));
   connect(m_fHeavyAtomCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_fHeavyAtomCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
 
   m_basisLayout->addWidget(m_fHeavyAtomCombo, row, 1);
 
@@ -537,6 +833,8 @@ void GamessInputBuilder::createBasis()
       this, SLOT(setLightAtomIndex(int)));
   connect(m_lightAtomCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_lightAtomCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
 
   m_basisLayout->addWidget(m_lightAtomCombo, row, 1);
 
@@ -557,6 +855,8 @@ void GamessInputBuilder::createBasis()
       this, SLOT(setPolarIndex(int)));
   connect(m_polarCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_polarCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   m_basisLayout->addWidget(m_polarCombo, row, 1);
 
 
@@ -567,6 +867,8 @@ void GamessInputBuilder::createBasis()
       this, SLOT(setDiffuseLShellState(bool)));
   connect(m_diffuseLShellCheck, SIGNAL(toggled(bool)),
       this, SLOT(updatePreviewText()));
+  connect(m_diffuseLShellCheck, SIGNAL(toggled(bool)),
+      this, SLOT(advancedChanged()));
   m_basisLayout->addWidget(m_diffuseLShellCheck, row, 0, Qt::AlignCenter);
 
   // Diffuse S-Shell on Heavy Atoms
@@ -575,6 +877,8 @@ void GamessInputBuilder::createBasis()
       this, SLOT(setDiffuseSShellState(bool)));
   connect(m_diffuseSShellCheck, SIGNAL(toggled(bool)),
       this, SLOT(updatePreviewText()));
+  connect(m_diffuseSShellCheck, SIGNAL(toggled(bool)),
+      this, SLOT(advancedChanged()));
   m_basisLayout->addWidget(m_diffuseSShellCheck, row, 1, Qt::AlignLeft);
 
 }
@@ -618,6 +922,8 @@ void GamessInputBuilder::createControl()
       this, SLOT(setRunTypeIndex(int)));
   connect(m_runTypeCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_runTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   layout->addWidget(m_runTypeCombo);
 
   // SCF Type
@@ -637,6 +943,8 @@ void GamessInputBuilder::createControl()
       this, SLOT(setSCFTypeIndex(int)));
   connect(m_scfTypeCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_scfTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   m_controlLayout->addWidget(m_scfTypeCombo, row, 4);
 
   // Localization Method
@@ -653,6 +961,8 @@ void GamessInputBuilder::createControl()
       this, SLOT(setLocalizationMethodIndex(int)));
   connect(m_localizationMethodCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_localizationMethodCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   m_controlLayout->addWidget(m_localizationMethodCombo, row, 2, 1, 2);
 
   // Divider
@@ -679,6 +989,8 @@ void GamessInputBuilder::createControl()
       this, SLOT(setExecTypeIndex(int)));
   connect(m_execTypeCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_execTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   layout->addWidget(m_execTypeCombo);
 
   // Molecule Charge
@@ -694,6 +1006,8 @@ void GamessInputBuilder::createControl()
       this, SLOT(setMoleculeChargeText(QString)));
   connect(m_moleculeChargeLine, SIGNAL(textChanged(QString)),
       this, SLOT(updatePreviewText()));
+  connect(m_moleculeChargeLine, SIGNAL(textChanged(QString)),
+      this, SLOT(advancedChanged()));
   m_controlLayout->addWidget(m_moleculeChargeLine, row, 4);
 
   row++;
@@ -709,6 +1023,8 @@ void GamessInputBuilder::createControl()
       this, SLOT(setMaxSCFText(QString)));
   connect(m_maxSCFLine, SIGNAL(textChanged(QString)),
       this, SLOT(updatePreviewText()));
+  connect(m_maxSCFLine, SIGNAL(textChanged(QString)),
+      this, SLOT(advancedChanged()));
   layout->addWidget(m_maxSCFLine);
 
   // Multiplicity
@@ -724,6 +1040,8 @@ void GamessInputBuilder::createControl()
       this, SLOT(setMultiplicityText(QString)));
   connect(m_multiplicityLine, SIGNAL(textChanged(QString)),
       this, SLOT(updatePreviewText()));
+  connect(m_multiplicityLine, SIGNAL(textChanged(QString)),
+      this, SLOT(advancedChanged()));
   m_controlLayout->addWidget(m_multiplicityLine, row, 4);
 
   // Divider
@@ -743,6 +1061,8 @@ void GamessInputBuilder::createControl()
       this, SLOT(setUseMP2State(bool)));
   connect(m_useMP2Check, SIGNAL(toggled(bool)),
       this, SLOT(updatePreviewText()));
+  connect(m_useMP2Check, SIGNAL(toggled(bool)),
+      this, SLOT(advancedChanged()));
   m_controlLayout->addWidget(m_useMP2Check, row, 1);
 
   // CI
@@ -763,6 +1083,8 @@ void GamessInputBuilder::createControl()
       this, SLOT(setCIIndex(int)));
   connect(m_ciCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_ciCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   glayout->addWidget(m_ciCombo, 0, 1);
   
   // CC
@@ -783,6 +1105,8 @@ void GamessInputBuilder::createControl()
       this, SLOT(setCCIndex(int)));
   connect(m_ccCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_ccCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   glayout->addWidget(m_ccCombo, 1, 1);
   m_controlLayout->addLayout(glayout, row, 2,2,3);
 
@@ -793,6 +1117,8 @@ void GamessInputBuilder::createControl()
       this, SLOT(setUseDFTState(bool)));
   connect(m_useDFTCheck, SIGNAL(toggled(bool)),
       this, SLOT(updatePreviewText()));
+  connect(m_useDFTCheck, SIGNAL(toggled(bool)),
+      this, SLOT(advancedChanged()));
   m_controlLayout->addWidget(m_useDFTCheck, row, 1);
 
 }
@@ -817,6 +1143,8 @@ void GamessInputBuilder::createData()
       this, SLOT(setTitleText(QString)));
   connect(m_titleLine, SIGNAL(textChanged(QString)),
       this, SLOT(updatePreviewText()));
+  connect(m_titleLine, SIGNAL(textChanged(QString)),
+      this, SLOT(advancedChanged()));
   layout = new QHBoxLayout;
   layout->addWidget(m_titleLine);
   layout->addStretch(40);
@@ -837,6 +1165,8 @@ void GamessInputBuilder::createData()
       this, SLOT(setCoordinateTypeIndex(int)));
   connect(m_coordinateTypeCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_coordinateTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   layout = new QHBoxLayout;
   layout->addWidget(m_coordinateTypeCombo);
   layout->addStretch(40);
@@ -854,6 +1184,8 @@ void GamessInputBuilder::createData()
       this, SLOT(setUnitsIndex(int)));
   connect(m_unitsCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_unitsCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   layout = new QHBoxLayout;
   layout->addWidget(m_unitsCombo);
   layout->addStretch(40);
@@ -871,6 +1203,8 @@ void GamessInputBuilder::createData()
       this, SLOT(setNumZMatrixText(QString)));
   connect(m_numZMatrixLine, SIGNAL(textChanged(QString)),
       this, SLOT(updatePreviewText()));
+  connect(m_numZMatrixLine, SIGNAL(textChanged(QString)),
+      this, SLOT(advancedChanged()));
   layout = new QHBoxLayout;
   layout->addWidget(m_numZMatrixLine);
   layout->addStretch(40);
@@ -901,6 +1235,8 @@ void GamessInputBuilder::createData()
       this, SLOT(setPointGroupIndex(int)));
   connect(m_pointGroupCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_pointGroupCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   layout = new QHBoxLayout;
   layout->addWidget(m_pointGroupCombo);
   layout->addStretch(40);
@@ -920,6 +1256,8 @@ void GamessInputBuilder::createData()
       this, SLOT(setOrderPrincipleAxisIndex(int)));
   connect(m_orderPrincipleAxisCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_orderPrincipleAxisCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   layout = new QHBoxLayout;
   layout->addWidget(m_orderPrincipleAxisCombo);
   layout->addStretch(40);
@@ -943,6 +1281,8 @@ void GamessInputBuilder::createData()
       this, SLOT(setUseSymmetryState(bool)));
   connect(m_useSymmetryCheck, SIGNAL(toggled(bool)),
       this, SLOT(updatePreviewText()));
+  connect(m_useSymmetryCheck, SIGNAL(toggled(bool)),
+      this, SLOT(advancedChanged()));
   m_dataLayout->addWidget(m_useSymmetryCheck, row, 0, 1, 2, Qt::AlignCenter);
 
 }
@@ -971,6 +1311,8 @@ void GamessInputBuilder::createSystem()
       this, SLOT(setTimeLimitText(QString)));
   connect(m_timeLimitLine, SIGNAL(textChanged(QString)),
       this, SLOT(updatePreviewText()));
+  connect(m_timeLimitLine, SIGNAL(textChanged(QString)),
+      this, SLOT(advancedChanged()));
   m_systemLayout->addWidget(m_timeLimitLine, row, 1);
   layout = new QHBoxLayout;
   m_timeLimitCombo = new QComboBox;
@@ -985,6 +1327,8 @@ void GamessInputBuilder::createSystem()
       this, SLOT(setTimeLimitIndex(int)));
   connect(m_timeLimitCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_timeLimitCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   layout->addWidget(m_timeLimitCombo);
   layout->addStretch(40);
   m_systemLayout->addLayout(layout, row, 2, 1, 1);
@@ -1001,6 +1345,8 @@ void GamessInputBuilder::createSystem()
       this, SLOT(setMemoryText(QString)));
   connect(m_memoryLine, SIGNAL(textChanged(QString)),
       this, SLOT(updatePreviewText()));
+  connect(m_memoryLine, SIGNAL(textChanged(QString)),
+      this, SLOT(advancedChanged()));
   m_systemLayout->addWidget(m_memoryLine, row, 1);
   layout = new QHBoxLayout;
   m_memoryCombo = new QComboBox;
@@ -1012,6 +1358,8 @@ void GamessInputBuilder::createSystem()
       this, SLOT(setMemoryIndex(int)));
   connect(m_memoryCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_memoryCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   layout->addWidget(m_memoryCombo);
   layout->addStretch(40);
   m_systemLayout->addLayout(layout, row, 2, 1, 1);
@@ -1028,6 +1376,8 @@ void GamessInputBuilder::createSystem()
       this, SLOT(setMemDDIText(QString)));
   connect(m_memDDILine, SIGNAL(textChanged(QString)),
       this, SLOT(updatePreviewText()));
+  connect(m_memDDILine, SIGNAL(textChanged(QString)),
+      this, SLOT(advancedChanged()));
   m_systemLayout->addWidget(m_memDDILine, row, 1);
   layout = new QHBoxLayout;
   m_memDDICombo = new QComboBox;
@@ -1039,6 +1389,8 @@ void GamessInputBuilder::createSystem()
       this, SLOT(setMemDDIIndex(int)));
   connect(m_memDDICombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_memDDICombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   layout->addWidget(m_memDDICombo);
   layout->addStretch(40);
   m_systemLayout->addLayout(layout, row, 2, 1, 1);
@@ -1057,6 +1409,8 @@ void GamessInputBuilder::createSystem()
       this, SLOT(setDiagonalizationIndex(int)));
   connect(m_diagonalizationCombo, SIGNAL(currentIndexChanged(int)),
       this, SLOT(updatePreviewText()));
+  connect(m_diagonalizationCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(advancedChanged()));
   layout = new QHBoxLayout;
   layout->addWidget(m_diagonalizationCombo);
   layout->addStretch(40);
@@ -1069,6 +1423,8 @@ void GamessInputBuilder::createSystem()
       this, SLOT(setUseExternalDataState(bool)));
   connect(m_useExternalDataCheck, SIGNAL(toggled(bool)),
       this, SLOT(updatePreviewText()));
+  connect(m_useExternalDataCheck, SIGNAL(toggled(bool)),
+      this, SLOT(advancedChanged()));
   m_systemLayout->addWidget(m_useExternalDataCheck, row, 1, 1, 3, Qt::AlignCenter);
 
   row = 0;
@@ -1078,6 +1434,8 @@ void GamessInputBuilder::createSystem()
       this, SLOT(setProduceCoreState(bool)));
   connect(m_produceCoreCheck, SIGNAL(toggled(bool)),
       this, SLOT(updatePreviewText()));
+  connect(m_produceCoreCheck, SIGNAL(toggled(bool)),
+      this, SLOT(advancedChanged()));
   m_systemLayout->addWidget(m_produceCoreCheck, row, 3, 1, 1);
 
   row++;
@@ -1087,6 +1445,8 @@ void GamessInputBuilder::createSystem()
       this, SLOT(setForceParallelState(bool)));
   connect(m_forceParallelCheck, SIGNAL(toggled(bool)),
       this, SLOT(updatePreviewText()));
+  connect(m_forceParallelCheck, SIGNAL(toggled(bool)),
+      this, SLOT(advancedChanged()));
   m_systemLayout->addWidget(m_forceParallelCheck, row, 3, 1, 1);
   row++;
   // Parallel Load Balance Type
@@ -1095,9 +1455,11 @@ void GamessInputBuilder::createSystem()
   m_loopRadio = new QRadioButton(tr("Loop"));
   connect(m_loopRadio, SIGNAL(toggled(bool)), this, SLOT(setLoopState(bool)));
   connect(m_loopRadio, SIGNAL(toggled(bool)), this, SLOT(updatePreviewText()));
+  connect(m_loopRadio, SIGNAL(toggled(bool)), this, SLOT(advancedChanged()));
   m_nextRadio = new QRadioButton(tr("Next Value"));
   connect(m_nextRadio, SIGNAL(toggled(bool)), this, SLOT(setNextState(bool)));
   connect(m_nextRadio, SIGNAL(toggled(bool)), this, SLOT(updatePreviewText()));
+  connect(m_nextRadio, SIGNAL(toggled(bool)), this, SLOT(advancedChanged()));
   QHBoxLayout *parallelLoadLayout = new QHBoxLayout;
   parallelLoadLayout->addWidget(m_loopRadio);
   parallelLoadLayout->addWidget(m_nextRadio);
@@ -1119,6 +1481,22 @@ void GamessInputBuilder::createScf()
 {
 }
 
+void GamessInputBuilder::setMode(int mode)
+{
+  qDebug() << "Mode: " << mode << " Changed: " << m_advancedChanged;
+  if(mode == 0 && m_advancedChanged)
+  {
+    QMessageBox msgbox(QMessageBox::Warning, tr("Verify Advanced Changed"),
+        tr("Advanced settings have changed."), QMessageBox::Save | QMessageBox::Discard);
+    int response = msgbox.exec();
+    if(response == QMessageBox::Discard)
+    {
+      updateBasicWidgets();
+    }
+  }
+  m_stackedLayout->setCurrentIndex(mode);
+}
+
 void GamessInputBuilder::okClicked()
 {
 }
@@ -1130,6 +1508,157 @@ void GamessInputBuilder::exportClicked()
 }
 
 void GamessInputBuilder::cancelClicked()
+{
+}
+
+// Basic Slots
+void GamessInputBuilder::setBasicCalculateIndex( int index )
+{
+
+  int rti = 0;
+  switch(index) {
+    case 1:
+      rti = 3;
+      break;
+    case 2:
+      // TODO: Set Hessian to CALC
+      rti = 5;
+      break;
+    case 3:
+      rti = 2;
+      break;
+  }
+  m_runTypeCombo->setCurrentIndex(rti);
+}
+
+void GamessInputBuilder::setBasicWithLeftIndex( int index )
+{
+  int bsi = 3;
+  int cc = 0;
+  bool mp2 = false;
+  bool er = true;
+
+  switch(index) {
+    case 0:
+      bsi = 21;
+      er = false;
+      break;
+    case 1:
+      bsi = 22;
+      er = false;
+      break;
+    case 2:
+      break;
+    case 3:
+      //TODO: $DFT DFTTYP=B3LYP $END
+      break;
+    case 4:
+      mp2 = true;
+      break;
+    case 5:
+      cc = 4;
+      m_basisSetCombo->setCurrentIndex(3);
+      break;
+  }
+  m_basisSetCombo->setCurrentIndex(bsi);
+  m_ccCombo->setCurrentIndex(cc);
+  m_useMP2Check->setChecked(mp2);
+  m_basicWithRightCombo->setEnabled(er);
+}
+
+void GamessInputBuilder::setBasicWithRightIndex( int index )
+{
+  int bsi = 3;
+  int nd = 0;
+  int np = 0;
+  int ecp = 0;
+  bool dsp = false;
+  bool ds = false;
+
+  switch(index) {
+    case 0: 
+      // $BASIS GBASIS=STO NGAUSS=3 $END
+      break;
+    case 1: 
+      // $BASIS GBASIS=MINI $END
+      bsi = 0;
+      break;
+    case 2: 
+      // $BASIS GBASIS=N21 NGAUSS=3 $END
+      bsi = 7;
+      break;
+    case 3: 
+      // $BASIS GBASIS=N31 NGAUSS=6 NDFUNC=1 $END
+      bsi = 11;
+      nd = 1;
+      break;
+    case 4:
+      // $BASIS GBASIS=N31 NGAUSS=6 NDFUNC=1 NPFUNC=1 $END
+      bsi = 11;
+      nd = 1;
+      np = 1;
+      break;
+    case 5:
+      // $BASIS GBASIS=N31 NGAUSS=6 NDFUNC=1 NPFUNC=1 DIFFSP=.T. $END
+      bsi = 11;
+      nd = 1;
+      np = 1;
+      dsp = true;
+      break;
+    case 6:
+      // $BASIS GBASIS=N31 NGAUSS=6 NDFUNC=2 NPFUNC=1 DIFFSP=.T. $END
+      bsi = 11;
+      nd = 2;
+      np = 1;
+      dsp = true;
+      break;
+    case 7:
+      // $BASIS GBASIS=N311 NGAUSS=6 NDFUNC=1 NPFUNC=1 DIFFSP=.T. DIFFS=.T. $END
+      bsi = 11;
+      nd = 1;
+      np = 1;
+      dsp = true;
+      ds = true;
+      break;
+    case 8:
+      // $BASIS GBASIS=SBKJC NDFUNC=1 $END\n $CONTRL ECP=SBKJC $END
+      bsi = 18;
+      nd = 1;
+      ecp = 2;
+      break;
+  }
+  m_basisSetCombo->setCurrentIndex(bsi);
+  m_dHeavyAtomCombo->setCurrentIndex(nd);
+  m_lightAtomCombo->setCurrentIndex(nd);
+  m_diffuseLShellCheck->setChecked(dsp);
+  m_diffuseSShellCheck->setChecked(ds);
+  m_ecpTypeCombo->setCurrentIndex(ecp);
+}
+
+void GamessInputBuilder::setBasicInIndex( int index )
+{
+}
+
+void GamessInputBuilder::setBasicOnLeftIndex( int index )
+{
+  switch(index) {
+    case 0:
+      break;
+    case 1:
+      //TODO: $PCM SOLVNT=WATER $END
+      break;
+  }
+}
+
+void GamessInputBuilder::setBasicOnRightIndex( int index )
+{
+}
+
+void GamessInputBuilder::setBasicTimeLimitText( const QString &text )
+{
+}
+
+void GamessInputBuilder::setBasicMemoryText( const QString &text )
 {
 }
 
