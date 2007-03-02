@@ -59,6 +59,7 @@ namespace Avogadro {
 
     private:
       GamessInputBuilder *m_inputBuilder;
+      GamessInputData *m_inputData;
   };
 
 

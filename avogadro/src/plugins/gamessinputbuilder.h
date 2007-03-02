@@ -31,6 +31,9 @@
 #include <QLineEdit>
 #include <QRadioButton>
 #include <QGridLayout>
+#include <QTextEdit>
+
+#include "gamessinputdata.h"
 
 namespace Avogadro {
   class GamessInputBuilder : public QDialog
@@ -39,7 +42,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      GamessInputBuilder(QWidget *parent = 0, Qt::WindowFlags f = 0);
+      GamessInputBuilder(GamessInputData *inputData, QWidget *parent = 0, Qt::WindowFlags f = 0);
       //! Desconstructor
       ~GamessInputBuilder();
 
@@ -58,7 +61,10 @@ namespace Avogadro {
       void createScf();
 
     private:
+      GamessInputData *m_inputData;
+
       QVBoxLayout *m_mainLayout;
+      QHBoxLayout *m_subLayout;
       QTabWidget *m_tabWidget;
 
       QGridLayout *m_basisLayout;
@@ -68,6 +74,10 @@ namespace Avogadro {
       QGridLayout *m_moGuessLayout;
       QGridLayout *m_miscLayout;
       QGridLayout *m_scfLayout;
+
+      QTextEdit   *m_previewText;
+
+      QHBoxLayout *m_buttonLayout;
 
       // Basis Widgets
       QLabel    *m_basisSetLabel; 
@@ -141,6 +151,69 @@ namespace Avogadro {
       QRadioButton *m_nextRadio;
       QCheckBox *m_useExternalDataCheck;
       QCheckBox *m_forceParallelCheck;
+
+    public Q_SLOTS:
+      // Button Slots
+      void okClicked();
+      void exportClicked();
+      void cancelClicked();
+
+      void setDefaults();
+
+      void updatePreviewText();
+
+      void updateWidgets();
+      void updateBasisWidgets();
+      void updateControlWidgets();
+      void updateDataWidgets();
+      void updateSystemWidgets();
+      void updatePointGroupOrderWidgets();
+
+      // Basis Slots
+      void setBasisSetIndex( int index );
+      void setECPTypeIndex( int index );
+      void setDHeavyAtomIndex( int index );
+      void setFHeavyAtomIndex( int index );
+      void setLightAtomIndex( int index );
+      void setPolarIndex( int index );
+      void setDiffuseLShellState( bool state );
+      void setDiffuseSShellState( bool state );
+      
+      // Control Slots;
+      void setRunTypeIndex( int index );
+      void setSCFTypeIndex( int index );
+      void setLocalizationMethodIndex( int index );
+      void setExecTypeIndex( int index );
+      void setMaxSCFText( const QString &text );
+      void setMoleculeChargeText( const QString &text );
+      void setMultiplicityText( const QString &text );
+      void setUseMP2State ( bool state );
+      void setUseDFTState ( bool state );
+      void setCIIndex( int index );
+      void setCCIndex( int index );
+      
+      // Data Slots;
+      void setTitleText( const QString &text );
+      void setCoordinateTypeIndex( int index );
+      void setUnitsIndex( int index );
+      void setNumZMatrixText( const QString &text );
+      void setPointGroupIndex( int index );
+      void setOrderPrincipleAxisIndex( int index );
+      void setUseSymmetryState ( bool state );
+      
+      // System Slots;
+      void setTimeLimitText( const QString &text );
+      void setTimeLimitIndex( int index );
+      void setMemoryText( const QString &text );
+      void setMemoryIndex( int index );
+      void setMemDDIText( const QString &text );
+      void setMemDDIIndex( int index );
+      void setProduceCoreState ( bool state );
+      void setForceParallelState ( bool state );
+      void setDiagonalizationIndex( int index );
+      void setUseExternalDataState ( bool state );
+      void setLoopState ( bool state );
+      void setNextState ( bool state );
 
   };
 }

@@ -56,9 +56,17 @@ void Gamess::performAction(QAction *action, Molecule *molecule, QTextEdit *messa
   switch(i)
   {
     case 0:
+      if(!m_inputData)
+      {
+        m_inputData = new GamessInputData(molecule);
+      }
+      else
+      {
+        m_inputData->SetMolecule(molecule);
+      }
       if(!m_inputBuilder)
       {
-        m_inputBuilder = new GamessInputBuilder();
+        m_inputBuilder = new GamessInputBuilder(m_inputData);
       }
       break;
   }

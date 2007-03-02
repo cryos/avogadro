@@ -22,11 +22,15 @@
 
 #include "gamessinputbuilder.h"
 
+#include <QPushButton>
+#include <QDebug>
+
 using namespace Avogadro;
 
-GamessInputBuilder::GamessInputBuilder(QWidget *parent, Qt::WindowFlags f) : QDialog(parent, f)
+GamessInputBuilder::GamessInputBuilder(GamessInputData *inputData, QWidget *parent, Qt::WindowFlags f) : QDialog(parent, f), m_inputData(inputData)
 {
   m_mainLayout = new QVBoxLayout;
+  m_subLayout = new QHBoxLayout;
   setLayout(m_mainLayout);
 
   setWindowTitle(tr("GAMESS Input Deck Builder"));
@@ -34,6 +38,14 @@ GamessInputBuilder::GamessInputBuilder(QWidget *parent, Qt::WindowFlags f) : QDi
   createTabs();
   createPreview();
   createButtons();
+
+  m_mainLayout->addWidget(m_tabWidget);
+  m_mainLayout->addWidget(m_previewText);
+  m_mainLayout->addLayout(m_buttonLayout);
+
+  updateWidgets();
+
+  setDefaults();
 }
 
 GamessInputBuilder::~GamessInputBuilder()
@@ -44,54 +56,368 @@ void GamessInputBuilder::createTabs()
 {
   QWidget *widget;
 
+  // Tabs
   m_tabWidget = new QTabWidget(this);
 
-  // Basis Set
   widget = new QWidget(this);
-  m_basisLayout = new QGridLayout(this);
+  m_basisLayout = new QGridLayout(widget);
   widget->setLayout(m_basisLayout);
   m_tabWidget->addTab(widget, tr("Basis"));
   createBasis();
 
   widget = new QWidget(this);
-  m_controlLayout = new QGridLayout(this);
+  m_controlLayout = new QGridLayout(widget);
   widget->setLayout(m_controlLayout);
   m_tabWidget->addTab(widget, tr("Control"));
   createControl();
 
   widget = new QWidget(this);
-  m_dataLayout = new QGridLayout(this);
+  m_dataLayout = new QGridLayout(widget);
   widget->setLayout(m_dataLayout);
   m_tabWidget->addTab(widget, tr("Data"));
   createData();
 
   widget = new QWidget(this);
-  m_systemLayout = new QGridLayout(this);
+  m_systemLayout = new QGridLayout(widget);
   widget->setLayout(m_systemLayout);
   m_tabWidget->addTab(widget, tr("System"));
   createSystem();
 
   widget = new QWidget(this);
-  m_moGuessLayout = new QGridLayout(this);
+  m_moGuessLayout = new QGridLayout(widget);
   widget->setLayout(m_moGuessLayout);
   m_tabWidget->addTab(widget, tr("MO Guess"));
   createMOGuess();
 
   widget = new QWidget(this);
-  m_miscLayout = new QGridLayout(this);
+  m_miscLayout = new QGridLayout(widget);
   widget->setLayout(m_miscLayout);
   m_tabWidget->addTab(widget, tr("misc"));
   createMisc();
 
   widget = new QWidget(this);
-  m_scfLayout = new QGridLayout(this);
+  m_scfLayout = new QGridLayout(widget);
   widget->setLayout(m_scfLayout);
   m_tabWidget->addTab(widget, tr("SCF"));
   createScf();
 
-  m_mainLayout->addWidget(m_tabWidget);
 }
 
+void GamessInputBuilder::createPreview()
+{
+  m_previewText = new QTextEdit(this);
+}
+
+void GamessInputBuilder::createButtons()
+{
+  // Button Bar
+  m_buttonLayout = new QHBoxLayout();
+  m_buttonLayout->setMargin(0);
+  QPushButton *button = new QPushButton(tr("&Export"));
+  connect(button, SIGNAL(clicked()), this, SLOT(exportClicked()));
+  m_buttonLayout->addWidget(button);
+  button = new QPushButton(tr("&Ok"));
+  connect(button, SIGNAL(clicked()), this, SLOT(okClicked()));
+  m_buttonLayout->addWidget(button);
+  button = new QPushButton(tr("&Cancel"));
+  connect(button, SIGNAL(clicked()), this, SLOT(cancelClicked()));
+  m_buttonLayout->addWidget(button);
+}
+
+void GamessInputBuilder::setDefaults()
+{
+  m_basisSetCombo->setCurrentIndex(3);
+  m_timeLimitCombo->setCurrentIndex(2);
+  m_timeLimitLine->setText(tr("10"));
+  m_memoryCombo->setCurrentIndex(3);
+  m_memoryLine->setText(tr("50"));
+}
+
+void GamessInputBuilder::updatePreviewText()
+{
+  stringstream str;
+  m_inputData->WriteInputFile(str);
+  m_previewText->setText(QString::fromAscii(str.str().c_str()));
+
+}
+
+void GamessInputBuilder::updateWidgets()
+{
+  updateBasisWidgets();
+  updateControlWidgets();
+  updateDataWidgets();
+  updateSystemWidgets();
+}
+
+void GamessInputBuilder::updateBasisWidgets()
+{
+  int basis = m_inputData->Basis->GetBasis();
+  int gauss = m_inputData->Basis->GetNumGauss();
+  int itemValue = 0;
+  int testValue = 0;
+
+  // basisChoice
+  itemValue = basis;
+  if(itemValue == 0) itemValue = 1;
+  else if(itemValue == 3) itemValue = gauss + 1;
+  else if(itemValue == 4) {
+    itemValue += 4;
+    if(gauss == 6) itemValue++;
+  }
+  else if(itemValue == 5) itemValue = gauss + 6;
+  else if(itemValue > 5) itemValue += 7;
+  m_basisSetCombo->setCurrentIndex(itemValue - 1);
+
+  //TODO: Implement this.
+//   CheckBasisMenu();
+
+  // m_ecpTypeCombo
+  if(basis == 12 || basis == 13) {
+    m_ecpTypeCombo->setEnabled(true);
+    m_ecpTypeLabel->setEnabled(true);
+    itemValue = m_inputData->Basis->GetECPPotential();
+    if(itemValue == 0) {
+      if(basis == 12) itemValue = 2;
+      else itemValue = 3;
+    }
+    m_ecpTypeCombo->setCurrentIndex(itemValue);
+  }
+  else {
+    m_ecpTypeCombo->setEnabled(false);
+    m_ecpTypeLabel->setEnabled(false);
+  }
+
+  // polarChoice
+  testValue = m_inputData->Basis->GetNumPFuncs() +
+    m_inputData->Basis->GetNumDFuncs() +
+    m_inputData->Basis->GetNumFFuncs();
+  if(testValue) {
+    m_polarCombo->setEnabled(true);
+    m_polarLabel->setEnabled(true);
+    itemValue = m_inputData->Basis->GetPolar();
+    if(itemValue == 0) {
+      if(basis == 6 || basis == 11) itemValue = 2;
+      else if(basis == 7 || basis == 8) itemValue = 3;
+      else if(basis < 3) itemValue = 4;
+      else if(basis == 10) itemValue = 5;
+      else itemValue = 1;
+    }
+    m_polarCombo->setCurrentIndex(itemValue - 1);
+  }
+  else {
+    m_polarCombo->setEnabled(false);
+    m_polarLabel->setEnabled(false);
+  }
+
+  // diffuseLCheck
+  m_diffuseLShellCheck->setChecked(m_inputData->Basis->GetDiffuseSP());
+
+  // diffuseSCheck
+  m_diffuseSShellCheck->setChecked(m_inputData->Basis->GetDiffuseS());
+
+  // numDChoice
+  m_dHeavyAtomCombo->setCurrentIndex(m_inputData->Basis->GetNumDFuncs());
+
+  // numFChoice
+  m_fHeavyAtomCombo->setCurrentIndex(m_inputData->Basis->GetNumFFuncs());
+
+  // numPChoice
+  m_lightAtomCombo->setCurrentIndex(m_inputData->Basis->GetNumPFuncs());
+}
+
+void GamessInputBuilder::updateControlWidgets()
+{
+    short mp2 = m_inputData->Control->GetMPLevel();
+    bool dft = m_inputData->Control->UseDFT();
+    short ci = m_inputData->Control->GetCIType();
+    CCRunType cc = m_inputData->Control->GetCCType();
+    long scft = m_inputData->Control->GetSCFType();
+    long NumElectrons = m_inputData->GetNumElectrons();
+    
+    int itemValue = 0;
+    
+    itemValue = m_inputData->Control->GetRunType();
+    if(itemValue == 0) itemValue = 1;
+    m_runTypeCombo->setCurrentIndex(itemValue - 1);
+    
+    if(scft == 0) {
+        if(NumElectrons & 1) {
+            scft = 3;
+        }
+        else {
+            scft = 1;
+        }
+    }
+    m_scfTypeCombo->setCurrentIndex(scft - 1);
+
+    // mp2Check
+    if(ci || cc || dft || (mp2 < 0)) {
+        m_useMP2Check->setChecked(false);
+        m_useMP2Check->setEnabled(false);
+    }
+    else {
+        m_useMP2Check->setEnabled(true);
+        if(mp2 < 0) mp2 = 0;
+        if(mp2 == 2) mp2 = 1;
+        m_useMP2Check->setChecked(mp2);
+    }
+    
+    // dftCheck
+    if(ci || cc || (mp2 > 0) || (scft > 3)) {
+        m_useDFTCheck->setChecked(false);
+        m_useDFTCheck->setEnabled(false);
+    }
+    else {
+        m_useDFTCheck->setEnabled(true);
+        m_useDFTCheck->setChecked(dft);
+    // TODO: enable DFT
+//         if(dft) setPaneVisible(DFT_PANE, true);
+//         else setPaneVisible(DFT_PANE, false);
+    }
+    
+    // ciCombo
+    if((mp2 > 0) || dft || cc || scft == 2) {
+        m_ciCombo->setCurrentIndex(0);
+        m_ciCombo->setEnabled(false);
+        m_ciLabel->setEnabled(false);
+    }
+    else {
+        m_ciLabel->setEnabled(true);
+        m_ciCombo->setEnabled(true);
+        m_ciCombo->setCurrentIndex(ci);
+    }
+    
+    // ccCombo
+    if((mp2 > 0) || dft || ci || scft > 1) {
+        m_ccCombo->setCurrentIndex(0);
+        m_ccCombo->setEnabled(false);
+        m_ccLabel->setEnabled(false);
+    }
+    else {
+        m_ccLabel->setEnabled(true);
+        m_ccCombo->setEnabled(true);
+        m_ccCombo->setCurrentIndex(cc);
+    }
+    
+    // scfIterText
+    itemValue = m_inputData->Control->GetMaxIt();
+    if(itemValue <= 0) itemValue = 30;
+    m_maxSCFLine->setText(QString::number(itemValue));
+    
+    // exeCombo
+    m_execTypeCombo->setCurrentIndex(m_inputData->Control->GetExeType());
+    if(m_inputData->Control->GetFriend() != Friend_None) {
+		//The friend keyword choices force a check run type
+        m_execTypeCombo->setEnabled(false);
+		m_execTypeCombo->setCurrentIndex(1);
+    }
+    else {
+        m_execTypeCombo->setEnabled(true);
+    }
+    
+    // mchargeText
+    m_moleculeChargeLine->setText(QString::number(m_inputData->Control->GetCharge()));
+    
+    // multText
+    itemValue = m_inputData->Control->GetMultiplicity();
+    if(itemValue <= 0) {
+        if(NumElectrons & 1) itemValue == 2;
+        else itemValue = 1;
+    }
+    m_multiplicityLine->setText(QString::number(itemValue));
+    
+    // localCombo
+    m_localizationMethodCombo->setCurrentIndex(m_inputData->Control->GetLocal());
+}
+
+void GamessInputBuilder::updateDataWidgets()
+{
+    int itemValue;
+	
+	//Title
+	if (m_inputData->Data->GetTitle())
+		m_titleLine->setText(tr(m_inputData->Data->GetTitle()));
+	else
+		m_titleLine->setText(tr("Title"));
+    
+    // coordTypeCombo
+    itemValue = m_inputData->Data->GetCoordType();
+    if(itemValue == 0) itemValue = 1;
+    m_coordinateTypeCombo->setCurrentIndex(itemValue - 1);
+    
+    // unitCombo
+    m_unitsCombo->setCurrentIndex(m_inputData->Data->GetUnits());
+	
+	//# Z-Matrix vars
+	m_numZMatrixLine->setText(QString::number(m_inputData->Data->GetNumZVar()));
+    
+		//Point Group
+	itemValue = m_inputData->Data->GetPointGroup();
+	if (itemValue == 0) itemValue = 1;
+	m_pointGroupCombo->setCurrentIndex(itemValue-1);
+
+		//Point group order
+	updatePointGroupOrderWidgets();
+    
+    // symmetryCheck
+    m_useSymmetryCheck->setChecked(m_inputData->Data->GetUseSym());
+}
+
+void GamessInputBuilder::updateSystemWidgets()
+{
+    
+    // timeLimitText
+	m_timeLimitLine->setText(QString::number(m_inputData->System->GetConvertedTime()));
+	
+    // timeLimitUnitCombo
+	m_timeLimitCombo->setCurrentIndex(m_inputData->System->GetTimeUnits() - 1);
+	
+    // memoryText
+	m_memoryLine->setText(QString::number(m_inputData->System->GetConvertedMem()));
+	
+    // memoryUnitCombo
+	m_memoryCombo->setCurrentIndex(m_inputData->System->GetMemUnits() - 1);
+	
+    // memDDI edit
+	m_memDDILine->setText(QString::number(m_inputData->System->GetConvertedMemDDI()));
+	
+    // memDDIUnitCombo
+	m_memDDICombo->setCurrentIndex(m_inputData->System->GetMemDDIUnits() - megaWordsUnit);
+
+    // diagCombo
+	m_diagonalizationCombo->setCurrentIndex(m_inputData->System->GetDiag());
+	
+	m_produceCoreCheck->setChecked(m_inputData->System->GetCoreFlag());
+	
+    if(m_inputData->System->GetBalanceType())
+      m_nextRadio->setChecked(true);
+    else
+      m_loopRadio->setChecked(true);
+	
+	m_useExternalDataCheck->setChecked(m_inputData->System->GetXDR());
+
+    // Parall check
+	m_forceParallelCheck->setChecked(m_inputData->System->GetParallel());
+
+}
+
+void GamessInputBuilder::updatePointGroupOrderWidgets()
+{
+  //Point group order - only applicable to certain point groups
+  int itemValue = m_inputData->Data->GetPointGroup();
+  if (itemValue == 0) itemValue = 1;
+  if ((itemValue>3)&&(itemValue<11)) {
+    m_orderPrincipleAxisCombo->setEnabled(true);
+    itemValue = m_inputData->Data->GetPointGroupOrder()-1;
+    if (itemValue <= 0) {
+      itemValue = 1;
+      m_inputData->Data->SetPointGroupOrder(2);
+    }
+    m_orderPrincipleAxisCombo->setCurrentIndex(itemValue-1);
+  } else m_orderPrincipleAxisCombo->setEnabled(false);
+}
+
+// Basis Tab
 void GamessInputBuilder::createBasis()
 {
   QHBoxLayout *layout;
@@ -129,6 +455,10 @@ void GamessInputBuilder::createBasis()
   m_basisSetCombo->addItem(tr("MNDO"));
   m_basisSetCombo->addItem(tr("AM1"));
   m_basisSetCombo->addItem(tr("PM3"));
+  connect(m_basisSetCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setBasisSetIndex(int)));
+  connect(m_basisSetCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
 
   layout->addWidget(m_basisSetCombo);
   layout->addStretch(40);
@@ -146,6 +476,10 @@ void GamessInputBuilder::createBasis()
   m_ecpTypeCombo->addItem(tr("Read"));
   m_ecpTypeCombo->addItem(tr("SBKJC"));
   m_ecpTypeCombo->addItem(tr("Hay-Wadt"));
+  connect(m_ecpTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setECPTypeIndex(int)));
+  connect(m_ecpTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
 
   layout->addWidget(m_ecpTypeCombo);
   layout->addStretch(40);
@@ -163,6 +497,10 @@ void GamessInputBuilder::createBasis()
   m_dHeavyAtomCombo->addItem(tr("1"));
   m_dHeavyAtomCombo->addItem(tr("2"));
   m_dHeavyAtomCombo->addItem(tr("3"));
+  connect(m_dHeavyAtomCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setDHeavyAtomIndex(int)));
+  connect(m_dHeavyAtomCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
 
   m_basisLayout->addWidget(m_dHeavyAtomCombo, row, 1);
 
@@ -177,6 +515,10 @@ void GamessInputBuilder::createBasis()
   m_fHeavyAtomCombo->addItem(tr("1"));
   m_fHeavyAtomCombo->addItem(tr("2"));
   m_fHeavyAtomCombo->addItem(tr("3"));
+  connect(m_fHeavyAtomCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setFHeavyAtomIndex(int)));
+  connect(m_fHeavyAtomCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
 
   m_basisLayout->addWidget(m_fHeavyAtomCombo, row, 1);
 
@@ -191,6 +533,10 @@ void GamessInputBuilder::createBasis()
   m_lightAtomCombo->addItem(tr("1"));
   m_lightAtomCombo->addItem(tr("2"));
   m_lightAtomCombo->addItem(tr("3"));
+  connect(m_lightAtomCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setLightAtomIndex(int)));
+  connect(m_lightAtomCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
 
   m_basisLayout->addWidget(m_lightAtomCombo, row, 1);
 
@@ -207,17 +553,30 @@ void GamessInputBuilder::createBasis()
   m_polarCombo->addItem(tr("Dunning"));
   m_polarCombo->addItem(tr("Huzinaga"));
   m_polarCombo->addItem(tr("Hondo7"));
+  connect(m_polarCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setPolarIndex(int)));
+  connect(m_polarCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   m_basisLayout->addWidget(m_polarCombo, row, 1);
 
 
   // Diffuse L-Shell on Heavy Atoms
   row++;
   m_diffuseLShellCheck = new QCheckBox(tr("Diffuse L-Shell on Heavy Atoms"));
+  connect(m_diffuseLShellCheck, SIGNAL(toggled(bool)),
+      this, SLOT(setDiffuseLShellState(bool)));
+  connect(m_diffuseLShellCheck, SIGNAL(toggled(bool)),
+      this, SLOT(updatePreviewText()));
   m_basisLayout->addWidget(m_diffuseLShellCheck, row, 0, Qt::AlignCenter);
 
   // Diffuse S-Shell on Heavy Atoms
   m_diffuseSShellCheck = new QCheckBox(tr("Diffuse S-Shell on Heavy Atoms"));
+  connect(m_diffuseSShellCheck, SIGNAL(toggled(bool)),
+      this, SLOT(setDiffuseSShellState(bool)));
+  connect(m_diffuseSShellCheck, SIGNAL(toggled(bool)),
+      this, SLOT(updatePreviewText()));
   m_basisLayout->addWidget(m_diffuseSShellCheck, row, 1, Qt::AlignLeft);
+
 }
 
 void GamessInputBuilder::createControl()
@@ -255,6 +614,10 @@ void GamessInputBuilder::createControl()
   m_runTypeCombo->addItem(tr("Raman Intensities"));
   m_runTypeCombo->addItem(tr("NMR"));
   m_runTypeCombo->addItem(tr("Make EFP"));
+  connect(m_runTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setRunTypeIndex(int)));
+  connect(m_runTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   layout->addWidget(m_runTypeCombo);
 
   // SCF Type
@@ -270,6 +633,10 @@ void GamessInputBuilder::createControl()
   m_scfTypeCombo->addItem(tr("GVB"));
   m_scfTypeCombo->addItem(tr("MCSCF"));
   m_scfTypeCombo->addItem(tr("None (CI)"));
+  connect(m_scfTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setSCFTypeIndex(int)));
+  connect(m_scfTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   m_controlLayout->addWidget(m_scfTypeCombo, row, 4);
 
   // Localization Method
@@ -282,6 +649,10 @@ void GamessInputBuilder::createControl()
   m_localizationMethodCombo->addItem(tr("Foster-Boys"));
   m_localizationMethodCombo->addItem(tr("Edmiston-Ruedenberg"));
   m_localizationMethodCombo->addItem(tr("Pipek-Mezey"));
+  connect(m_localizationMethodCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setLocalizationMethodIndex(int)));
+  connect(m_localizationMethodCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   m_controlLayout->addWidget(m_localizationMethodCombo, row, 2, 1, 2);
 
   // Divider
@@ -304,6 +675,10 @@ void GamessInputBuilder::createControl()
   m_execTypeCombo->addItem(tr("Check"));
   m_execTypeCombo->addItem(tr("Debug"));
   m_execTypeCombo->addItem(tr("Other..."));
+  connect(m_execTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setExecTypeIndex(int)));
+  connect(m_execTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   layout->addWidget(m_execTypeCombo);
 
   // Molecule Charge
@@ -315,6 +690,10 @@ void GamessInputBuilder::createControl()
   m_moleculeChargeLine = new QLineEdit();
   m_moleculeChargeLine->setText(tr("0"));
   m_moleculeChargeLine->setToolTip(tr("$CONTRL:ICHARG - Enter an integer value for the molecular charge."));
+  connect(m_moleculeChargeLine, SIGNAL(textChanged(QString)),
+      this, SLOT(setMoleculeChargeText(QString)));
+  connect(m_moleculeChargeLine, SIGNAL(textChanged(QString)),
+      this, SLOT(updatePreviewText()));
   m_controlLayout->addWidget(m_moleculeChargeLine, row, 4);
 
   row++;
@@ -326,6 +705,10 @@ void GamessInputBuilder::createControl()
   m_maxSCFLine = new QLineEdit();
   m_maxSCFLine->setText(tr("30"));
   m_maxSCFLine->setToolTip(tr("$CONTRL:MAXIT - Enter the maximum number of SCF iterations. If the wavefunction is not converged at this point the run will be aborted."));
+  connect(m_maxSCFLine, SIGNAL(textChanged(QString)),
+      this, SLOT(setMaxSCFText(QString)));
+  connect(m_maxSCFLine, SIGNAL(textChanged(QString)),
+      this, SLOT(updatePreviewText()));
   layout->addWidget(m_maxSCFLine);
 
   // Multiplicity
@@ -337,6 +720,10 @@ void GamessInputBuilder::createControl()
   m_multiplicityLine = new QLineEdit();
   m_multiplicityLine->setText(tr("1"));
   m_multiplicityLine->setToolTip(tr("$CONTRL:MULT - Enter an integer value for the spin state."));
+  connect(m_multiplicityLine, SIGNAL(textChanged(QString)),
+      this, SLOT(setMultiplicityText(QString)));
+  connect(m_multiplicityLine, SIGNAL(textChanged(QString)),
+      this, SLOT(updatePreviewText()));
   m_controlLayout->addWidget(m_multiplicityLine, row, 4);
 
   // Divider
@@ -352,6 +739,10 @@ void GamessInputBuilder::createControl()
   // Use MP2
   m_useMP2Check = new QCheckBox(tr("Use MP2"));
   m_useMP2Check->setToolTip(tr("$CONTRL:MPLEVL - Click to use 2nd order Moller-Plesset perturbation theory. Implemented for RHF, UHF, ROHF and MCSCF energies and RHF, UHF, and ROHF gradients."));
+  connect(m_useMP2Check, SIGNAL(toggled(bool)),
+      this, SLOT(setUseMP2State(bool)));
+  connect(m_useMP2Check, SIGNAL(toggled(bool)),
+      this, SLOT(updatePreviewText()));
   m_controlLayout->addWidget(m_useMP2Check, row, 1);
 
   // CI
@@ -368,6 +759,10 @@ void GamessInputBuilder::createControl()
   m_ciCombo->addItem(tr("Full Second Order CI"));
   m_ciCombo->addItem(tr("General CI"));
   m_ciCombo->setToolTip(tr("$CONTRL:CITYP Choose the type of CI to perform on top of the base wavefunction or on the supplied $VEC group for SCFTYP=NONE."));
+  connect(m_ciCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setCIIndex(int)));
+  connect(m_ciCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   glayout->addWidget(m_ciCombo, 0, 1);
   
   // CC
@@ -384,12 +779,20 @@ void GamessInputBuilder::createControl()
   m_ccCombo->addItem(tr("CR-CC"));
   m_ccCombo->addItem(tr("EOM-CCSD"));
   m_ccCombo->addItem(tr("CR-EOM"));
+  connect(m_ccCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setCCIndex(int)));
+  connect(m_ccCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   glayout->addWidget(m_ccCombo, 1, 1);
   m_controlLayout->addLayout(glayout, row, 2,2,3);
 
   row++;
   // Use DFT
   m_useDFTCheck = new QCheckBox(tr("Use DFT"));
+  connect(m_useDFTCheck, SIGNAL(toggled(bool)),
+      this, SLOT(setUseDFTState(bool)));
+  connect(m_useDFTCheck, SIGNAL(toggled(bool)),
+      this, SLOT(updatePreviewText()));
   m_controlLayout->addWidget(m_useDFTCheck, row, 1);
 
 }
@@ -410,6 +813,10 @@ void GamessInputBuilder::createData()
   m_titleLine = new QLineEdit;
   m_titleLine->setText(tr("Title"));
   m_titleLine->setToolTip(tr("$DATA - You may enter a one line title which may help you identify this input deck in the future."));
+  connect(m_titleLine, SIGNAL(textChanged(QString)),
+      this, SLOT(setTitleText(QString)));
+  connect(m_titleLine, SIGNAL(textChanged(QString)),
+      this, SLOT(updatePreviewText()));
   layout = new QHBoxLayout;
   layout->addWidget(m_titleLine);
   layout->addStretch(40);
@@ -426,6 +833,10 @@ void GamessInputBuilder::createData()
   m_coordinateTypeCombo->addItem(tr("Cartesian coordinates"));
   m_coordinateTypeCombo->addItem(tr("Z-Matrix"));
   m_coordinateTypeCombo->addItem(tr("MOPAC Z-Matrix"));
+  connect(m_coordinateTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setCoordinateTypeIndex(int)));
+  connect(m_coordinateTypeCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   layout = new QHBoxLayout;
   layout->addWidget(m_coordinateTypeCombo);
   layout->addStretch(40);
@@ -439,6 +850,10 @@ void GamessInputBuilder::createData()
   m_unitsCombo = new QComboBox;
   m_unitsCombo->addItem(tr("Angstroms"));
   m_unitsCombo->addItem(tr("Bohr"));
+  connect(m_unitsCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setUnitsIndex(int)));
+  connect(m_unitsCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   layout = new QHBoxLayout;
   layout->addWidget(m_unitsCombo);
   layout->addStretch(40);
@@ -452,6 +867,10 @@ void GamessInputBuilder::createData()
   m_numZMatrixLine = new QLineEdit;
   m_numZMatrixLine->setText(tr("0"));
   m_numZMatrixLine->setToolTip(tr("$CONTRL:NZVAR - Enter an integer number representing the number of internal coordinates for your molecule. Normally this will be 3N-6 (3N-5 for linear molecules) where N is the number of atoms. A value of 0 selects cartesian coordinates. If set and a set of internal coordinates are defined a $ZMAT group will be punched out."));
+  connect(m_numZMatrixLine, SIGNAL(textChanged(QString)),
+      this, SLOT(setNumZMatrixText(QString)));
+  connect(m_numZMatrixLine, SIGNAL(textChanged(QString)),
+      this, SLOT(updatePreviewText()));
   layout = new QHBoxLayout;
   layout->addWidget(m_numZMatrixLine);
   layout->addStretch(40);
@@ -478,6 +897,10 @@ void GamessInputBuilder::createData()
   m_pointGroupCombo->addItem(tr("T"));
   m_pointGroupCombo->addItem(tr("OH"));
   m_pointGroupCombo->addItem(tr("O"));
+  connect(m_pointGroupCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setPointGroupIndex(int)));
+  connect(m_pointGroupCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   layout = new QHBoxLayout;
   layout->addWidget(m_pointGroupCombo);
   layout->addStretch(40);
@@ -493,6 +916,10 @@ void GamessInputBuilder::createData()
   m_orderPrincipleAxisCombo->addItem(tr("3"));
   m_orderPrincipleAxisCombo->addItem(tr("4"));
   m_orderPrincipleAxisCombo->setToolTip(tr("Replaces the 'n' above."));
+  connect(m_orderPrincipleAxisCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setOrderPrincipleAxisIndex(int)));
+  connect(m_orderPrincipleAxisCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   layout = new QHBoxLayout;
   layout->addWidget(m_orderPrincipleAxisCombo);
   layout->addStretch(40);
@@ -512,7 +939,12 @@ void GamessInputBuilder::createData()
   // Use Symmetry During Calculation
   m_useSymmetryCheck = new QCheckBox(tr("Use Symmetry During Calculation"));
   m_useSymmetryCheck->setToolTip(tr("$CONTRL:NOSYM - When checked symmetry will be used as much as possible in the caluclation of integrals, gradients, etc. (This is the normal setting)"));
+  connect(m_useSymmetryCheck, SIGNAL(toggled(bool)),
+      this, SLOT(setUseSymmetryState(bool)));
+  connect(m_useSymmetryCheck, SIGNAL(toggled(bool)),
+      this, SLOT(updatePreviewText()));
   m_dataLayout->addWidget(m_useSymmetryCheck, row, 0, 1, 2, Qt::AlignCenter);
+
 }
 
 void GamessInputBuilder::createSystem()
@@ -535,6 +967,10 @@ void GamessInputBuilder::createSystem()
   m_timeLimitLine = new QLineEdit();
   m_timeLimitLine->setText(tr("525600"));
   m_timeLimitLine->setToolTip(tr("$SYSTEM:TIMLIM - Enter a value for the time limit. When the time limit is reached GAMESS will stop the run. The number entered here will have the units given at the right."));
+  connect(m_timeLimitLine, SIGNAL(textChanged(QString)),
+      this, SLOT(setTimeLimitText(QString)));
+  connect(m_timeLimitLine, SIGNAL(textChanged(QString)),
+      this, SLOT(updatePreviewText()));
   m_systemLayout->addWidget(m_timeLimitLine, row, 1);
   layout = new QHBoxLayout;
   m_timeLimitCombo = new QComboBox;
@@ -545,7 +981,10 @@ void GamessInputBuilder::createSystem()
   m_timeLimitCombo->addItem(tr("Weeks"));
   m_timeLimitCombo->addItem(tr("Years"));
   m_timeLimitCombo->addItem(tr("Millenia"));
-  m_timeLimitCombo->setCurrentIndex(1);
+  connect(m_timeLimitCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setTimeLimitIndex(int)));
+  connect(m_timeLimitCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   layout->addWidget(m_timeLimitCombo);
   layout->addStretch(40);
   m_systemLayout->addLayout(layout, row, 2, 1, 1);
@@ -558,6 +997,10 @@ void GamessInputBuilder::createSystem()
   m_memoryLine = new QLineEdit();
   m_memoryLine->setText(tr("1000000"));
   m_memoryLine->setToolTip(tr("$SYSTEM:MEMORY - Enter the amount of memory (in the units at the right) that GAMESS will request for its dynamic memory pool. You should not normally request more memory than the RAM size."));
+  connect(m_memoryLine, SIGNAL(textChanged(QString)),
+      this, SLOT(setMemoryText(QString)));
+  connect(m_memoryLine, SIGNAL(textChanged(QString)),
+      this, SLOT(updatePreviewText()));
   m_systemLayout->addWidget(m_memoryLine, row, 1);
   layout = new QHBoxLayout;
   m_memoryCombo = new QComboBox;
@@ -565,6 +1008,10 @@ void GamessInputBuilder::createSystem()
   m_memoryCombo->addItem(tr("Bytes"));
   m_memoryCombo->addItem(tr("MegaWords"));
   m_memoryCombo->addItem(tr("MegaBytes"));
+  connect(m_memoryCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setMemoryIndex(int)));
+  connect(m_memoryCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   layout->addWidget(m_memoryCombo);
   layout->addStretch(40);
   m_systemLayout->addLayout(layout, row, 2, 1, 1);
@@ -577,6 +1024,10 @@ void GamessInputBuilder::createSystem()
   m_memDDILine = new QLineEdit();
   m_memDDILine->setText(tr("0.00"));
   m_memDDILine->setToolTip(tr("$SYSTEM:MEMDDI - The size of the pseudo global shared memory pool. This is most often needed for certain parallel computations, but certain sequential algorithms also use it (such as ROMP2). Default is 0."));
+  connect(m_memDDILine, SIGNAL(textChanged(QString)),
+      this, SLOT(setMemDDIText(QString)));
+  connect(m_memDDILine, SIGNAL(textChanged(QString)),
+      this, SLOT(updatePreviewText()));
   m_systemLayout->addWidget(m_memDDILine, row, 1);
   layout = new QHBoxLayout;
   m_memDDICombo = new QComboBox;
@@ -584,6 +1035,10 @@ void GamessInputBuilder::createSystem()
   m_memDDICombo->addItem(tr("MegaBytes"));
   m_memDDICombo->addItem(tr("GigaWords"));
   m_memDDICombo->addItem(tr("GigaBytes"));
+  connect(m_memDDICombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setMemDDIIndex(int)));
+  connect(m_memDDICombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   layout->addWidget(m_memDDICombo);
   layout->addStretch(40);
   m_systemLayout->addLayout(layout, row, 2, 1, 1);
@@ -598,6 +1053,10 @@ void GamessInputBuilder::createSystem()
   m_diagonalizationCombo->addItem(tr("EVVRSP"));
   m_diagonalizationCombo->addItem(tr("GIVEIS"));
   m_diagonalizationCombo->addItem(tr("JACOBI"));
+  connect(m_diagonalizationCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(setDiagonalizationIndex(int)));
+  connect(m_diagonalizationCombo, SIGNAL(currentIndexChanged(int)),
+      this, SLOT(updatePreviewText()));
   layout = new QHBoxLayout;
   layout->addWidget(m_diagonalizationCombo);
   layout->addStretch(40);
@@ -606,23 +1065,39 @@ void GamessInputBuilder::createSystem()
   row++;
   // Use External Data Representation for Messages
   m_useExternalDataCheck = new QCheckBox(tr("Use External Data Representation for Messages"));
+  connect(m_useExternalDataCheck, SIGNAL(toggled(bool)),
+      this, SLOT(setUseExternalDataState(bool)));
+  connect(m_useExternalDataCheck, SIGNAL(toggled(bool)),
+      this, SLOT(updatePreviewText()));
   m_systemLayout->addWidget(m_useExternalDataCheck, row, 1, 1, 3, Qt::AlignCenter);
 
   row = 0;
   // Produce "core" file upon abort.
   m_produceCoreCheck  = new QCheckBox(tr("Produce \"core\" file upon abort"));
+  connect(m_produceCoreCheck, SIGNAL(toggled(bool)),
+      this, SLOT(setProduceCoreState(bool)));
+  connect(m_produceCoreCheck, SIGNAL(toggled(bool)),
+      this, SLOT(updatePreviewText()));
   m_systemLayout->addWidget(m_produceCoreCheck, row, 3, 1, 1);
 
   row++;
   // Force Parallel Methods
   m_forceParallelCheck = new QCheckBox(tr("Force Parallel Methods"));
+  connect(m_forceParallelCheck, SIGNAL(toggled(bool)),
+      this, SLOT(setForceParallelState(bool)));
+  connect(m_forceParallelCheck, SIGNAL(toggled(bool)),
+      this, SLOT(updatePreviewText()));
   m_systemLayout->addWidget(m_forceParallelCheck, row, 3, 1, 1);
   row++;
   // Parallel Load Balance Type
   m_parallelLoadGroup = new QGroupBox(tr("Parallel Load Balance Type"));
   m_parallelLoadGroup->setFlat(true);
   m_loopRadio = new QRadioButton(tr("Loop"));
+  connect(m_loopRadio, SIGNAL(toggled(bool)), this, SLOT(setLoopState(bool)));
+  connect(m_loopRadio, SIGNAL(toggled(bool)), this, SLOT(updatePreviewText()));
   m_nextRadio = new QRadioButton(tr("Next Value"));
+  connect(m_nextRadio, SIGNAL(toggled(bool)), this, SLOT(setNextState(bool)));
+  connect(m_nextRadio, SIGNAL(toggled(bool)), this, SLOT(updatePreviewText()));
   QHBoxLayout *parallelLoadLayout = new QHBoxLayout;
   parallelLoadLayout->addWidget(m_loopRadio);
   parallelLoadLayout->addWidget(m_nextRadio);
@@ -630,38 +1105,6 @@ void GamessInputBuilder::createSystem()
   m_parallelLoadGroup->setLayout(parallelLoadLayout);
   m_systemLayout->addWidget(m_parallelLoadGroup, row, 3, 2, 1);
   row++;
-
-
-//   // Divider
-//   row++;
-//   divider = new QFrame();
-//   divider->setFrameShape(QFrame::HLine);
-//   divider->setFrameShadow(QFrame::Sunken);
-//   divider->setLineWidth(0);
-//   divider->setMidLineWidth(0);
-//   m_systemLayout->addWidget(divider, row, 0, 1, 4);
-
-//   // Divider
-//   row++;
-//   divider = new QFrame();
-//   divider->setFrameShape(QFrame::HLine);
-//   divider->setFrameShadow(QFrame::Sunken);
-//   divider->setLineWidth(0);
-//   divider->setMidLineWidth(0);
-//   m_systemLayout->addWidget(divider, row, 0, 1, 4);
-
-
-//   // Divider
-//   row++;
-//   divider = new QFrame();
-//   divider->setFrameShape(QFrame::HLine);
-//   divider->setFrameShadow(QFrame::Sunken);
-//   divider->setLineWidth(0);
-//   divider->setMidLineWidth(0);
-//   m_systemLayout->addWidget(divider, row, 0, 0, 4);
-
-
-//
 }
 
 void GamessInputBuilder::createMOGuess()
@@ -676,10 +1119,265 @@ void GamessInputBuilder::createScf()
 {
 }
 
-void GamessInputBuilder::createPreview()
+void GamessInputBuilder::okClicked()
 {
 }
 
-void GamessInputBuilder::createButtons()
+void GamessInputBuilder::exportClicked()
+{
+  ofstream file("/tmp/gamessoutput.test", ios_base::out);
+  m_inputData->WriteInputFile(file);
+}
+
+void GamessInputBuilder::cancelClicked()
 {
 }
+
+// Basis Slots
+void GamessInputBuilder::setBasisSetIndex( int index )
+{
+  int basis = 0;
+  int gauss = 0;
+
+  if(index < 2) {
+    basis = index + 1;
+  }
+  else if(index < 7) {
+    basis = 3;
+    gauss = index;
+  }
+  else if(index < 9) {
+    basis = 4;
+    gauss = ((index==7) ? 3 : 6);
+  }
+  else if(index < 12) {
+    basis = 5;
+    gauss = index - 5;
+  }
+  else if(index < 18) {
+    basis = index - 6;
+    if(index == 12) gauss = 6;
+  }
+  else {
+    basis = index - 6;
+  }
+
+  m_inputData->Basis->SetBasis(basis);
+  m_inputData->Basis->SetNumGauss(gauss);
+
+  updateWidgets();
+}
+
+void GamessInputBuilder::setECPTypeIndex( int index )
+{
+  m_inputData->Basis->SetECPPotential(index);
+}
+
+void GamessInputBuilder::setDHeavyAtomIndex( int index )
+{
+  m_inputData->Basis->SetNumDFuncs(index);
+  updateWidgets();
+}
+
+void GamessInputBuilder::setFHeavyAtomIndex( int index )
+{
+  m_inputData->Basis->SetNumFFuncs(index);
+  updateWidgets();
+}
+
+void GamessInputBuilder::setLightAtomIndex( int index )
+{
+  m_inputData->Basis->SetNumPFuncs(index);
+  updateWidgets();
+}
+
+void GamessInputBuilder::setPolarIndex( int index )
+{
+  m_inputData->Basis->SetPolar((GAMESS_BS_Polarization)(index));
+}
+
+void GamessInputBuilder::setDiffuseLShellState ( bool state )
+{
+  m_inputData->Basis->SetDiffuseSP(state);
+}
+
+void GamessInputBuilder::setDiffuseSShellState ( bool state )
+{
+  m_inputData->Basis->SetDiffuseS(state);
+}
+
+
+// Control Slots
+void GamessInputBuilder::setRunTypeIndex( int index )
+{
+  m_inputData->Control->SetRunType((TypeOfRun)(index+1));
+  updateWidgets();
+}
+
+void GamessInputBuilder::setSCFTypeIndex( int index )
+{
+  m_inputData->Control->SetSCFType((GAMESS_SCFType)(index +1));
+  //TODO: Enable SCF Tab
+  updateWidgets();
+}
+
+void GamessInputBuilder::setLocalizationMethodIndex( int index )
+{
+  m_inputData->Control->SetLocal((GAMESS_Localization)index);
+  updateWidgets();
+}
+
+void GamessInputBuilder::setExecTypeIndex( int index )
+{
+  m_inputData->Control->SetExeType(index);
+}
+
+void GamessInputBuilder::setMaxSCFText( const QString &text )
+{
+  m_inputData->Control->SetMaxIt(text.toInt());
+}
+
+void GamessInputBuilder::setMoleculeChargeText( const QString &text )
+{
+  m_inputData->Control->SetCharge(text.toInt());
+}
+
+void GamessInputBuilder::setMultiplicityText( const QString &text )
+{
+  m_inputData->Control->SetMultiplicity(text.toInt());
+}
+
+void GamessInputBuilder::setUseMP2State ( bool state )
+{
+  if(state)
+    m_inputData->Control->SetMPLevel(2);
+  else
+    m_inputData->Control->SetMPLevel(0);
+
+  updateWidgets();
+}
+
+void GamessInputBuilder::setUseDFTState ( bool state )
+{
+  m_inputData->Control->UseDFT(state);
+  updateWidgets();
+}
+
+void GamessInputBuilder::setCIIndex( int index )
+{
+  m_inputData->Control->SetCIType((CIRunType)index);
+  updateWidgets();
+}
+
+void GamessInputBuilder::setCCIndex( int index )
+{
+  m_inputData->Control->SetCCType((CCRunType)index);
+  updateWidgets();
+}
+
+
+// Data Slots
+void GamessInputBuilder::setTitleText( const QString &text )
+{
+  m_inputData->Data->SetTitle(text.toAscii().constData());
+}
+
+void GamessInputBuilder::setCoordinateTypeIndex( int index )
+{
+  m_inputData->Data->SetCoordType((CoordinateType)(index+1));
+  updateWidgets();
+}
+
+void GamessInputBuilder::setUnitsIndex( int index )
+{
+  m_inputData->Data->SetUnits(index);
+}
+
+void GamessInputBuilder::setNumZMatrixText( const QString &text )
+{
+  m_inputData->Data->SetNumZVar(text.toInt());
+}
+
+void GamessInputBuilder::setPointGroupIndex( int index )
+{
+  m_inputData->Data->SetPointGroup((GAMESSPointGroup)(index+1));
+  updatePointGroupOrderWidgets();
+}
+
+void GamessInputBuilder::setOrderPrincipleAxisIndex( int index )
+{
+  m_inputData->Data->SetPointGroupOrder(index+2);
+}
+
+void GamessInputBuilder::setUseSymmetryState ( bool state )
+{
+  m_inputData->Data->SetUseSym(state);
+}
+
+
+// System Slots
+void GamessInputBuilder::setTimeLimitText( const QString &text )
+{
+  m_inputData->System->SetConvertedTime(text.toDouble());
+}
+
+void GamessInputBuilder::setTimeLimitIndex( int index )
+{
+  m_inputData->System->SetTimeUnits((TimeUnit)(index+1));
+  QString str = QString::number(m_inputData->System->GetConvertedTime());
+  m_timeLimitLine->setText(str);
+
+}
+
+void GamessInputBuilder::setMemoryText( const QString &text )
+{
+  m_inputData->System->SetConvertedMem(text.toFloat());
+}
+
+void GamessInputBuilder::setMemoryIndex( int index )
+{
+  m_inputData->System->SetMemUnits((MemoryUnit)(index+1));
+  QString str = QString::number(m_inputData->System->GetConvertedMem());
+  m_memoryLine->setText(str);
+}
+
+void GamessInputBuilder::setMemDDIText( const QString &text )
+{
+  m_inputData->System->SetConvertedMemDDI(text.toDouble());
+}
+
+void GamessInputBuilder::setMemDDIIndex( int index )
+{
+  m_inputData->System->SetMemDDIUnits((MemoryUnit)(index + megaWordsUnit));
+}
+
+void GamessInputBuilder::setProduceCoreState ( bool state )
+{
+  m_inputData->System->SetCoreFlag(state);
+}
+
+void GamessInputBuilder::setForceParallelState ( bool state )
+{
+  m_inputData->System->SetParallel(state);
+}
+
+void GamessInputBuilder::setDiagonalizationIndex( int index )
+{
+  m_inputData->System->SetDiag(index);
+}
+
+void GamessInputBuilder::setUseExternalDataState ( bool state )
+{
+  m_inputData->System->SetXDR(state);
+}
+
+void GamessInputBuilder::setLoopState ( bool state )
+{
+  m_inputData->System->SetBalanceType(0);
+}
+
+void GamessInputBuilder::setNextState ( bool state )
+{
+  m_inputData->System->SetBalanceType(1);
+}
+

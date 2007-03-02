@@ -23,6 +23,10 @@
 #ifndef __GAMESSINPUTDATA_H
 #define __GAMESSINPUTDATA_H
 
+#include <iostream>
+#include <avogadro/primitives.h>
+
+using namespace std;
 namespace Avogadro {
 
   enum TypeOfRun {
@@ -163,7 +167,7 @@ namespace Avogadro {
       static const char * GetGAMESSRunText(const TypeOfRun & r);
       inline TypeOfRun GetRunType(void) const {return RunType;};
       short GetExeType(void);
-      short GetExeType(Str255 ExeText);
+      short GetExeType(unsigned char ExeText[256]);
       short SetExeType(const char *ExeText);
       short SetExeType(short NewType);
       short SetMaxIt(short NumIt);
@@ -210,7 +214,7 @@ namespace Avogadro {
 //       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       long ReadFromBuffer(BufferFile *Buffer, long length);
-      void WriteToFile(BufferFile *File, GamessInputData *IData, long NumElectrons);
+      void WriteToFile(ostream &File, GamessInputData *IData, long NumElectrons);
       void RevertControlPane(GamessControlGroup *OrgData);
       void RevertProgPane(GamessControlGroup *OrgData);
 //       void WriteXML(XMLElement * parent) const;
@@ -295,7 +299,7 @@ namespace Avogadro {
 //       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       long ReadFromBuffer(BufferFile *Buffer);
-      void WriteToFile(BufferFile *File);
+      void WriteToFile(ostream &File);
 //       void WriteXML(XMLElement * parent) const;
 //       void ReadXML(XMLElement * parent);
 //       void ReadSystemOptions(BufferFile * Buffer);
@@ -393,7 +397,7 @@ namespace Avogadro {
 //       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       long ReadFromBuffer(BufferFile *Buffer);
-      long WriteToFile(BufferFile *File, MoleculeData * lData);
+      long WriteToFile(ostream &File, GamessInputData * iData);
 //       void WriteXML(XMLElement * parent) const;
 //       void ReadXML(XMLElement * parent);
   };
@@ -468,7 +472,7 @@ namespace Avogadro {
 //       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       void ReadFromBuffer(BufferFile *Buffer, long length);
-      void WriteToFile(BufferFile *File, MoleculeData * MainData, WinPrefs * Prefs, long BasisTest);
+      void WriteToFile(ostream &File, Molecule * MainData);
 //       void WriteXML(XMLElement * parent) const;
 //       void ReadXML(XMLElement * parent);
   };
@@ -520,8 +524,8 @@ namespace Avogadro {
 //       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       long ReadFromBuffer(BufferFile *Buffer);
-      void WriteToFile(BufferFile *File, GamessInputData *IData, MoleculeData * orbdata);
-//       void WriteVecGroup(BufferFile *File, MoleculeData * lData);
+      void WriteToFile(ostream &File, GamessInputData *IData);
+//       void WriteVecGroup(BufferFile *File, Molecule * lData);
 //       void WriteXML(XMLElement * parent) const;
 //       void ReadXML(XMLElement * parent);
   };
@@ -564,7 +568,7 @@ namespace Avogadro {
 //       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       long ReadFromBuffer(BufferFile *Buffer);
-      void WriteToFile(BufferFile *File, GamessInputData *IData);
+      void WriteToFile(ostream &File, GamessInputData *IData);
 //       void WriteXML(XMLElement * parent) const;
 //       void ReadXML(XMLElement * parent);
   };
@@ -602,7 +606,7 @@ namespace Avogadro {
 //       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       long ReadFromBuffer(BufferFile *Buffer);
-      void WriteToFile(BufferFile *File, GamessInputData *IData);
+      void WriteToFile(ostream &File, GamessInputData *IData);
 //       void WriteXML(XMLElement * parent) const;
 //       void ReadXML(XMLElement * parent);
   };
@@ -638,7 +642,7 @@ namespace Avogadro {
 //       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       long ReadFromBuffer(BufferFile *Buffer);
-      void WriteToFile(BufferFile *File, GamessInputData *IData);
+      void WriteToFile(ostream &File, GamessInputData *IData);
 //       void WriteXML(XMLElement * parent) const;
 //       void ReadXML(XMLElement * parent);
   };
@@ -708,7 +712,7 @@ namespace Avogadro {
       char	BitFlags;
     public:
       GamessDFTGroup(void) {InitData();};
-      GamessGFTGroup(GamessDFTGroup *Copy) {*this = *Copy;};
+      GamessDFTGroup(GamessDFTGroup *Copy) {*this = *Copy;};
       void InitData(void);
 
       bool MethodGrid(void) const {return ((BitFlags & 1) != 0);};
@@ -726,7 +730,7 @@ namespace Avogadro {
 //       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       long ReadFromBuffer(BufferFile *Buffer);
-      void WriteToFile(BufferFile *File, GamessInputData *IData);
+      void WriteToFile(ostream &File, GamessInputData *IData);
 //       void WriteXML(XMLElement * parent) const;
 //       void ReadXML(XMLElement * parent);
   };
@@ -743,8 +747,8 @@ namespace Avogadro {
       short		MaxSteps;
       short		nRecalcHess;
     public:
-      StatPtGroup(void) {InitData();};
-      StatPtGroup(StatPtGroup *Copy) {*this = *Copy;};
+      GamessStatPtGroup(void) {InitData();};
+      GamessStatPtGroup(GamessStatPtGroup *Copy) {*this = *Copy;};
       void InitData(void);
 
       inline float GetOptConvergance(void) const {return OptConvergance;};
@@ -774,10 +778,10 @@ namespace Avogadro {
       inline bool AlwaysPrintOrbs(void) const {return ((BitOptions & 32) != 0);};
       inline void SetAlwaysPrintOrbs(bool NewVal) {BitOptions = (BitOptions & 0xDF) + (NewVal ? 32 : 0);};
 
-      long GetSize(BufferFile *Buffer);
+//       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       long ReadFromBuffer(BufferFile *Buffer);
-      void WriteToFile(BufferFile *File, GamessInputData *IData);
+      void WriteToFile(ostream &File, GamessInputData *IData);
 //       void WriteXML(XMLElement * parent) const;
 //       void ReadXML(XMLElement * parent);
   };
@@ -785,12 +789,13 @@ namespace Avogadro {
   class GamessInputData {
     public:
       //! Constructors
-      GamessInputData(void);
+      GamessInputData(Molecule *molecule);
       GamessInputData(GamessInputData *Copy);
 
       //! Deconstructors
       ~GamessInputData(void);
 
+      Molecule              *m_molecule;
       GamessControlGroup	*Control;
       GamessSystemGroup		*System;
       GamessBasisGroup		*Basis;
@@ -804,7 +809,11 @@ namespace Avogadro {
 
 //       long GetSize(BufferFile *Buffer);	//returns total size of the Input group and all subgroups
 //       long WriteToBuffer(BufferFile *Buffer);	//Pack Input data into the provided buffer
-//       long WriteInputFile(MoleculeData * lData, MolDisplayWin * owner);	//Write out an input file for another program (GAMESS etc)
+      long WriteInputFile(ostream &buffer);	//Write out an input file for another program (GAMESS etc)
+
+      long GetNumElectrons() const;
+      void SetMolecule(Molecule *molecule) { m_molecule = molecule; }
+
 //       void ReadFromBuffer(BufferFile *Buffer, long length);
 //       void WriteXML(XMLElement * parent) const;
 //       void ReadXML(XMLElement * parent);
