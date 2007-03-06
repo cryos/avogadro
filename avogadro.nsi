@@ -2,7 +2,7 @@
 
 ; The name of the installer
 Name "Avogadro"
-!define VERSION "0.0.1"
+!define VERSION "0.0.2"
 
 ; The file to write
 OutFile "avogadro-${VERSION}.exe"
@@ -33,28 +33,30 @@ Section "Avogadro Core (required)"
   SectionIn RO
   
   SetOutPath $INSTDIR\engines
-  File engines\bsengine.dll
+  File libavogadro\src\engines\release\bsengine.dll
   
   SetOutPath $INSTDIR\plugins
-  File plugins\draw.dll
-  File plugins\selectrotate.dll
+  File avogadro\src\plugins\release\draw.dll
+  File avogadro\src\plugins\release\selectrotate.dll
 
   ; Set output path to the installation directory.
   SetOutPath $INSTDIR
   
   ; Put file there
-  File QtGui4.dll
-  File QtCore4.dll
-  File QtOpenGL4.dll
-  File OpenBabel.dll
-  File iconv.dll
-  File libxml2.dll
-  File libinchi.dll
-  File msvcp80.dll
-  File msvcr80.dll
-  File avogadro.dll
-  File avogadro.exe
-  File zlib1.dll
+  File C:\Qt\4.2.2\lib\QtGui4.dll
+  File C:\Qt\4.2.2\lib\QtCore4.dll
+  File C:\Qt\4.2.2\lib\QtOpenGL4.dll
+  File C:\openbabel\windows-vc2005\OpenBabelDLL\OpenBabel.dll
+  File C:\openbabel\windows-vc2005\iconv.dll
+  File C:\openbabel\windows-vc2005\libxml2.dll
+  File C:\openbabel\windows-vc2005\libinchi.dll
+  File C:\openbabel\windows-vc2005\zlib1.dll
+  File "C:\Program Files\Microsoft Visual Studio 8\VC\redist\x86\Microsoft.VC80.CRT\msvcm80.dll"
+  File "C:\Program Files\Microsoft Visual Studio 8\VC\redist\x86\Microsoft.VC80.CRT\msvcp80.dll"
+  File "C:\Program Files\Microsoft Visual Studio 8\VC\redist\x86\Microsoft.VC80.CRT\msvcr80.dll"
+  File "C:\Program Files\Microsoft Visual Studio 8\VC\redist\x86\Microsoft.VC80.CRT\Microsoft.VC80.CRT.manifest"
+  File libavogadro\src\release\avogadro.dll
+  File avogadro\src\release\avogadro.exe
 
   ; Write the installation path into the registry
   WriteRegStr HKLM SOFTWARE\Avogadro "Install_Dir" "$INSTDIR"
@@ -100,6 +102,10 @@ Section "Uninstall"
   Delete $INSTDIR\libinchi.dll
   Delete $INSTDIR\zlib1.dll
   Delete $INSTDIR\msvcp80.dll
+  Delete $INSTDIR\msvcm80.dll
+  Delete $INSTDIR\msvcp80.dll
+  Delete $INSTDIR\msvcr80.dll
+  Delete $INSTDIR\Microsoft.VC80.CRT.manifest
   Delete $INSTDIR\avogadro.dll
   Delete $INSTDIR\avogadro.exe
   Delete $INSTDIR\uninstall.exe
