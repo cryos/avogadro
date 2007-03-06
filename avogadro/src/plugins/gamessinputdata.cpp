@@ -130,10 +130,10 @@ GamessInputData::GamessInputData(Molecule *molecule) :
   Data(new GamessDataGroup),
   StatPt(new GamessStatPtGroup),
   Guess(new GamessGuessGroup),
-  SCF(NULL),
-  MP2(NULL),
-  Hessian(NULL),
-  DFT(NULL)
+  SCF(new GamessSCFGroup),
+  MP2(new GamessMP2Group),
+  Hessian(new GamessHessianGroup),
+  DFT(new GamessDFTGroup)
 {
   //Always create Control, System, Basis, and Data groups
   //   m_molecule = molecule;
@@ -157,15 +157,15 @@ GamessInputData::GamessInputData(GamessInputData *Copy) {
   Data = new GamessDataGroup(Copy->Data);
   StatPt = new GamessStatPtGroup(Copy->StatPt);
   if (Copy->Guess) Guess = new GamessGuessGroup(Copy->Guess);
-  else Guess = NULL;
+  else Guess = new GamessGuessGroup;
   if (Copy->SCF) SCF = new GamessSCFGroup(Copy->SCF);
-  else SCF = NULL;
+  else SCF = new GamessSCFGroup;
   if (Copy->MP2) MP2 = new GamessMP2Group(Copy->MP2);
-  else MP2 = NULL;
+  else MP2 = new GamessMP2Group;
   if (Copy->Hessian) Hessian = new GamessHessianGroup(Copy->Hessian);
-  else Hessian = NULL;
-  DFT = NULL;
+  else Hessian = new GamessHessianGroup;
   if (Copy->DFT) DFT = new GamessDFTGroup(Copy->DFT);
+  else DFT = new GamessDFTGroup;
 }
 GamessInputData::~GamessInputData(void) {	//destructor
   if (Control) delete Control;	//simply delete all groups present
@@ -636,8 +636,11 @@ void GamessControlGroup::WriteToFile(ostream &File, GamessInputData *IData, long
     else sprintf(Out, "SCFTYP=RHF ");
     File << Out;
   }
-  sprintf(Out,"RUNTYP=%s ", GetGAMESSRunText(GetRunType()));
-  File << Out;
+  if (RunType)
+  {
+    sprintf(Out,"RUNTYP=%s ", GetGAMESSRunText(GetRunType()));
+    File << Out;
+  }
   if ((ExeType)&&(!Friend)) {	//punch out ExeType if it is other than run
     sprintf(Out, "EXETYP=%s ", ExeType);
     File << Out;
@@ -826,8 +829,10 @@ MemoryUnit GamessSystemGroup::SetMemUnits(MemoryUnit NewUnits) {
 double GamessSystemGroup::GetConvertedMem(void) const {
   double result, factor=1.0;
 
-  if (Memory) result = Memory;
-  else result = 1000000;
+  result = Memory;
+  // no defaults!  let GAMESS handle this
+  //if (Memory) result = Memory;
+  // else result = 1000000;
 
   switch (MemUnits) {
     case bytesUnit:
@@ -938,12 +943,14 @@ GamessSystemGroup::GamessSystemGroup(GamessSystemGroup *Copy) {
   if (Copy) *this=*Copy;
 }
 void GamessSystemGroup::InitData(void) {
-  TimeLimit = 0;
+  TimeLimit = 600;
   Memory = 0.0;
   MemDDI = 0.0;
   KDiag = 0;
-  TimeUnits = minuteUnit;
-  MemUnits = wordsUnit;
+  // TimeUnits = minuteUnit;
+  TimeUnits = hourUnit;
+  // MemUnits = wordsUnit;
+  MemUnits = megaBytesUnit;
   MemDDIUnits = megaWordsUnit;
   Flags = 0;
 }
@@ -1002,9 +1009,12 @@ GamessBasisGroup::GamessBasisGroup(GamessBasisGroup *Copy) {
 void GamessBasisGroup::InitData(void) {
   Split2[0]=Split2[1]=0.0;
   Split3[0]=Split3[1]=Split3[2]=0.0;
-  Basis=NumGauss=NumHeavyFuncs=NumPFuncs=ECPPotential=0;
+  Basis=GAMESS_BS_STO;
+  NumGauss=3;
+  NumHeavyFuncs=NumPFuncs=ECPPotential=0;
   Polar = GAMESS_BS_No_Polarization;
   Flags = 0;
+  WaterSolvate = false;
 }
 const char * GamessBasisGroup::GAMESSBasisSetToText(GAMESS_BasisSet bs) {
   switch (bs) {
@@ -1242,7 +1252,12 @@ long GamessBasisGroup::WriteToFile(ostream &File, GamessInputData * iData) {
     sprintf(Out, "DIFFS=.TRUE. ");
     File << Out;
   }
-  File << "$END" << endl;;
+  File << "$END" << endl;
+
+  if(WaterSolvate)
+  {
+    File << " $PCM SOLVNT=WATER $END" << endl;
+  }
   return 0;
 }
 #pragma mark GamessDataGroup
@@ -1440,7 +1455,7 @@ void GamessDataGroup::WriteToFile(ostream &File, Molecule * molecule) {
   //Punch the group label
   File << endl << " $DATA " << endl;
   //title
-  if (Title == NULL) File << "Title goes here" << endl;
+  if (Title == NULL) File << "Title" << endl;
   else File << Title << endl;
   //Point Group
   if ((PointGroup>GAMESS_CI)&&(PointGroup<GAMESS_TD)) {
@@ -1624,7 +1639,7 @@ void GamessSCFGroup::InitData(void) {
   Punch = Options1 = ConverganceFlags = 0;
   //default Direct SCF to true. This is not the GAMESS default
   //but is better in most cases.
-  SetDirectSCF(true);
+  SetDirectSCF(false);
   SetFockDiff(true);
 }
 bool GamessSCFGroup::SetDirectSCF(bool State) {
@@ -1663,7 +1678,7 @@ void GamessSCFGroup::WriteToFile(ostream &File, GamessInputData *IData) {
   if (GetDirectSCF()) {
     sprintf(Out,"DIRSCF=.TRUE. ");
     File << Out;
-    if (!GetFockDiff()) {	//Fock Differencing requires direct SCF
+    if (!GetFockDiff() && IData->Control->GetSCFType()<=3) {	//Fock Differencing requires direct SCF
       sprintf(Out,"FDIFF=.FALSE. ");
       File << Out;
     }
@@ -1695,11 +1710,11 @@ void GamessMP2Group::InitData(void) {
   MP2Prop = false;
 }
 float GamessMP2Group::SetIntCutoff(float NewCutoff) {
-  if (NewCutoff > 0.0) CutOff = NewCutoff;
+  if (NewCutoff >= 0.0) CutOff = NewCutoff;
   return CutOff;
 }
 long GamessMP2Group::SetNumCoreElectrons(long NewNum) {
-  if (NewNum>=0) NumCoreElectrons = NewNum;
+  if (NewNum>=-1) NumCoreElectrons = NewNum;
   return NumCoreElectrons;
 }
 long GamessMP2Group::SetMemory(long NewMem) {
@@ -1739,7 +1754,7 @@ void GamessMP2Group::WriteToFile(ostream &File, GamessInputData *IData) {
 
   //first determine wether or not the MP2 group needs to be punched
   if (IData->Control->GetMPLevel() != 2) return;	//Don't punch if MP2 isn't active
-  if ((NumCoreElectrons>=0)||Memory||Method||AOInts) test = true;
+  if (NumCoreElectrons>=0||Memory||Method>2||AOInts) test = true;
   if (GetLMOMP2()) test = true;
   if (CutOff > 0.0) test = true;
 
@@ -1748,6 +1763,7 @@ void GamessMP2Group::WriteToFile(ostream &File, GamessInputData *IData) {
   //Punch the group label
   File << " $MP2 ";
   //core electrons
+  // was >= -dcurtis
   if (NumCoreElectrons >= 0) {
     sprintf(Out,"NACORE=%ld ", NumCoreElectrons);
     File << Out;
@@ -1774,7 +1790,7 @@ void GamessMP2Group::WriteToFile(ostream &File, GamessInputData *IData) {
     sprintf(Out, "CUTOFF=%.2e ", CutOff);
     File << Out;
   }	//Method
-  if (Method) {
+  if (Method > 2 && !GetLMOMP2()) {
     sprintf(Out, "METHOD=%d ", Method);
     File << Out;
   }	//AO storage

@@ -356,6 +356,7 @@ namespace Avogadro {
       GAMESS_BS_Polarization		Polar;
       short		ECPPotential;	//Potential type for ECP calculations (in $CONTRL)
       char		Flags;		//boolean type options
+      bool      WaterSolvate;
       //bit 1		DiffuseSP;
       //bit 2		DiffuseS;
       //bit 3		disables builtin basis types based on current atom set
@@ -378,6 +379,8 @@ namespace Avogadro {
       short SetNumPFuncs(short NewNum);
       short GetNumPFuncs(void) const;
       short SetDiffuseSP(bool state);
+      void SetWaterSolvate(bool state) { WaterSolvate = state; }
+      bool GetWaterSolvate() { return WaterSolvate; }
       bool GetDiffuseSP(void) const {return ((Flags&1)?true:false);};
       short SetDiffuseS(bool state);
       bool GetDiffuseS(void) const {return ((Flags&2)?true:false);};
@@ -752,15 +755,15 @@ namespace Avogadro {
       void InitData(void);
 
       inline float GetOptConvergance(void) const {return OptConvergance;};
-      inline void SetOptConvergance(float NewVal) {if (NewVal>0.0) OptConvergance = NewVal;};
+      inline void SetOptConvergance(float NewVal) {if (NewVal>=0.0) OptConvergance = NewVal;};
       inline float GetInitRadius(void) const {return InitTrustRadius;};
-      inline void SetInitRadius(float NewVal) {if (NewVal>0.0) InitTrustRadius = NewVal;};
+      inline void SetInitRadius(float NewVal) {if (NewVal>=0.0) InitTrustRadius = NewVal;};
       inline float GetMaxRadius(void) const {return MaxTrustRadius;};
-      inline void SetMaxRadius(float NewVal) {if (NewVal>0.0) MaxTrustRadius = NewVal;};
+      inline void SetMaxRadius(float NewVal) {if (NewVal>=0.0) MaxTrustRadius = NewVal;};
       inline float GetMinRadius(void) const {return MinTrustRadius;};
-      inline void SetMinRadius(float NewVal) {if (NewVal>0.0) MinTrustRadius = NewVal;};
+      inline void SetMinRadius(float NewVal) {if (NewVal>=0.0) MinTrustRadius = NewVal;};
       inline float GetStatJump(void) const {return StatJumpSize;};
-      inline void SetStatJump(float NewVal) {if (NewVal>0.0) StatJumpSize = NewVal;};
+      inline void SetStatJump(float NewVal) {if (NewVal>=0.0) StatJumpSize = NewVal;};
       inline long GetModeFollow(void) const {return ModeFollow;};
       inline void SetModeFollow(long NewVal) {if (NewVal>0) ModeFollow = 1;};
       inline short GetMethod(void) const {return method;};
@@ -774,7 +777,7 @@ namespace Avogadro {
       inline bool GetStatPoint(void) const {return ((BitOptions & 2) != 0);};
       inline void SetStatPoint(bool NewVal) {BitOptions = (BitOptions & 0xFD) + (NewVal ? 2 : 0);};
       inline short GetHessMethod(void) const {return ((BitOptions & 28) >> 2);};
-      inline void SetHessMethod(short NewVal) {if ((NewVal>=1)&&(NewVal<=3)) BitOptions = (BitOptions & 0xE3) + (NewVal << 2);};
+      inline void SetHessMethod(short NewVal) {if ((NewVal>=0)&&(NewVal<=3)) BitOptions = (BitOptions & 0xE3) + (NewVal << 2);};
       inline bool AlwaysPrintOrbs(void) const {return ((BitOptions & 32) != 0);};
       inline void SetAlwaysPrintOrbs(bool NewVal) {BitOptions = (BitOptions & 0xDF) + (NewVal ? 32 : 0);};
 
