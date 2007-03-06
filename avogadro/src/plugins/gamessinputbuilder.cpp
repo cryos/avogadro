@@ -26,13 +26,17 @@
 #include <QButtonGroup>
 #include <QDebug>
 
+#include <QFileDialog>
+#include <QFile>
+
 #include <QMessageBox>
 
 using namespace Avogadro;
 
-GamessInputBuilder::GamessInputBuilder( GamessInputData *inputData, QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f ), m_inputData( inputData ),
-    m_advancedChanged( false )
+GamessInputBuilder::GamessInputBuilder( GamessInputData *inputData, QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f ), m_inputData(NULL), m_advancedChanged( false )
 {
+  setInputData(inputData);
+
   m_mainLayout = new QVBoxLayout;
   m_stackedLayout = new QStackedLayout;
   setLayout( m_mainLayout );
@@ -59,6 +63,24 @@ GamessInputBuilder::GamessInputBuilder( GamessInputData *inputData, QWidget *par
 
 GamessInputBuilder::~GamessInputBuilder()
 {}
+
+void GamessInputBuilder::setInputData(GamessInputData *inputData)
+{
+  if(!inputData) return;
+
+  if(m_inputData)
+    disconnect(m_inputData->m_molecule, 0, this, 0);
+
+  m_inputData = inputData;
+
+  connect(m_inputData->m_molecule, SIGNAL(primitiveAdded( Primitive* )),
+      this, SLOT(updatePreviewText()));
+  connect(m_inputData->m_molecule, SIGNAL(primitiveUpdated( Primitive* )),
+      this, SLOT(updatePreviewText()));
+  connect(m_inputData->m_molecule, SIGNAL(primitiveRemoved( Primitive* )),
+      this, SLOT(updatePreviewText()));
+  connect(m_inputData->m_molecule, SIGNAL(updated()), this, SLOT(updatePreviewText()));
+}
 
 void GamessInputBuilder::createBasic()
 {
@@ -2597,7 +2619,8 @@ void GamessInputBuilder::setMode( int mode )
   if ( mode == 0 && m_advancedChanged )
   {
     QMessageBox msgbox( QMessageBox::Warning, tr( "Advanced Settings Changed" ),
-                        tr( "Advanced settings have changed.\nDiscard?" ), QMessageBox::Abort | QMessageBox::Discard );
+                        tr( "Advanced settings have changed.\nDiscard?" ), 
+                        QMessageBox::Abort | QMessageBox::Discard, this );
     int response = msgbox.exec();
     if ( response == QMessageBox::Discard )
     {
@@ -2619,7 +2642,8 @@ void GamessInputBuilder::resetClicked()
   {
     QMessageBox msgbox( QMessageBox::Warning, tr( "Advanced Settings Reset" ),
                         tr( "Are you sure you wish to reset advanced settings?\n"
-                            "All changes will be lost!" ), QMessageBox::Yes | QMessageBox::No );
+                            "All changes will be lost!" ), 
+                        QMessageBox::Yes | QMessageBox::No, this );
     int response = msgbox.exec();
     if(response = QMessageBox::Yes)
     {
@@ -2632,7 +2656,8 @@ void GamessInputBuilder::resetClicked()
   } else {
     QMessageBox msgbox( QMessageBox::Warning, tr( "Basic Settings Reset" ),
                         tr( "Are you sure you wish to reset basic settings?\n"
-                            "All changes will be lost!" ), QMessageBox::Yes | QMessageBox::No );
+                            "All changes will be lost!" ), 
+                        QMessageBox::Yes | QMessageBox::No, this );
     int response = msgbox.exec();
     if(response = QMessageBox::Yes)
     {
@@ -2696,8 +2721,15 @@ void GamessInputBuilder::defaultsClicked()
 
 void GamessInputBuilder::exportClicked()
 {
-  ofstream file( "/tmp/gamessoutput.test", ios_base::out );
-  m_inputData->WriteInputFile( file );
+  QString fileName = QFileDialog::getSaveFileName(this, tr("Export Input Deck"),
+      "", tr("GAMESS Input Deck (*.inp)"));
+
+  if(fileName == "") return;
+
+  QFile file(fileName);
+  if(!file.open(QIODevice::WriteOnly | QIODevice::Text)) return;
+
+  file.write(m_previewText->toPlainText().toUtf8());
 }
 
 void GamessInputBuilder::closeClicked()

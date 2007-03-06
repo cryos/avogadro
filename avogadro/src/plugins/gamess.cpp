@@ -37,7 +37,7 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-Gamess::Gamess() : Extension(), m_inputBuilder(NULL)
+Gamess::Gamess() : Extension(), m_inputBuilder(NULL), m_inputData(NULL)
 {
   QAction *action = new QAction(this);
   action->setText("GAMESS Input Builder");
@@ -67,6 +67,12 @@ void Gamess::performAction(QAction *action, Molecule *molecule, QTextEdit *messa
       if(!m_inputBuilder)
       {
         m_inputBuilder = new GamessInputBuilder(m_inputData);
+        m_inputBuilder->show();
+      }
+      else
+      {
+        m_inputBuilder->setInputData(m_inputData);
+        m_inputBuilder->show();
       }
       break;
   }

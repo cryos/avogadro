@@ -50,6 +50,8 @@ namespace Avogadro
       //! Desconstructor
       ~GamessInputBuilder();
 
+      void setInputData ( GamessInputData *inputData );
+
     protected:
       //! Create dialog tabs
       void createModes();
@@ -69,6 +71,7 @@ namespace Avogadro
       void createDFT();
       void createHessian();
       void createStatPoint();
+
 
     private:
       GamessInputData *m_inputData;
