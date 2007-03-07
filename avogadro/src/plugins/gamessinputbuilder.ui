@@ -35,7 +35,7 @@
        <item row="0" column="0" >
         <widget class="QTabWidget" name="tabWidget" >
          <property name="currentIndex" >
-          <number>9</number>
+          <number>10</number>
          </property>
          <widget class="QWidget" name="tab" >
           <attribute name="title" >
@@ -1190,6 +1190,225 @@
           <attribute name="title" >
            <string>Stat Point</string>
           </attribute>
+          <layout class="QGridLayout" >
+           <property name="margin" >
+            <number>9</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item row="4" column="2" >
+            <widget class="QCheckBox" name="checkBox_21" >
+             <property name="text" >
+              <string>Stationary Point</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2" >
+            <widget class="QCheckBox" name="checkBox_20" >
+             <property name="text" >
+              <string>Update Step Size</string>
+             </property>
+             <property name="checked" >
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1" >
+            <widget class="QSpinBox" name="spinBox_5" />
+           </item>
+           <item row="4" column="0" >
+            <widget class="QLabel" name="label_35" >
+             <property name="text" >
+              <string>Jump Size:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>spinBox_5</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="3" >
+            <widget class="QGroupBox" name="groupBox_4" >
+             <property name="title" >
+              <string>Initial Hessian</string>
+             </property>
+             <layout class="QGridLayout" >
+              <property name="margin" >
+               <number>9</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item row="1" column="0" colspan="3" >
+               <widget class="QCheckBox" name="checkBox_19" >
+                <property name="text" >
+                 <string>Print Orbs at Each Iteration</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2" >
+               <widget class="QRadioButton" name="radioButton_11" >
+                <property name="text" >
+                 <string>Calcualte</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" >
+               <widget class="QRadioButton" name="radioButton_10" >
+                <property name="text" >
+                 <string>Read (from $HESS)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" >
+               <widget class="QRadioButton" name="radioButton_9" >
+                <property name="text" >
+                 <string>Guess (+ define)</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item rowspan="3" row="0" column="2" >
+            <widget class="QGroupBox" name="groupBox_5" >
+             <property name="title" >
+              <string>Step Size</string>
+             </property>
+             <layout class="QGridLayout" >
+              <property name="margin" >
+               <number>9</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item row="2" column="0" >
+               <widget class="QLabel" name="label_33" >
+                <property name="text" >
+                 <string>Maximum:</string>
+                </property>
+                <property name="buddy" >
+                 <cstring>spinBox_4</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" >
+               <widget class="QLabel" name="label_32" >
+                <property name="text" >
+                 <string>Minimum:</string>
+                </property>
+                <property name="buddy" >
+                 <cstring>doubleSpinBox_3</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" >
+               <widget class="QLabel" name="label_31" >
+                <property name="text" >
+                 <string>Initial:</string>
+                </property>
+                <property name="buddy" >
+                 <cstring>doubleSpinBox_2</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" >
+               <widget class="QSpinBox" name="spinBox_4" />
+              </item>
+              <item row="1" column="1" >
+               <widget class="QDoubleSpinBox" name="doubleSpinBox_3" >
+                <property name="singleStep" >
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" >
+               <widget class="QDoubleSpinBox" name="doubleSpinBox_2" >
+                <property name="singleStep" >
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="1" >
+            <widget class="QSpinBox" name="spinBox_3" />
+           </item>
+           <item row="2" column="0" >
+            <widget class="QLabel" name="label_30" >
+             <property name="text" >
+              <string>Recalculate Hessan Every:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>spinBox_3</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QLabel" name="label_29" >
+             <property name="text" >
+              <string>Gradient Convergence Criteria:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>doubleSpinBox</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" >
+            <widget class="QLabel" name="label_28" >
+             <property name="text" >
+              <string>Maximum Steps:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>spinBox_2</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" >
+            <widget class="QDoubleSpinBox" name="doubleSpinBox" >
+             <property name="decimals" >
+              <number>4</number>
+             </property>
+             <property name="minimum" >
+              <double>0.000000000000000</double>
+             </property>
+             <property name="singleStep" >
+              <double>0.000100000000000</double>
+             </property>
+             <property name="value" >
+              <double>0.000100000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1" >
+            <widget class="QSpinBox" name="spinBox_2" />
+           </item>
+           <item row="3" column="0" >
+            <widget class="QLabel" name="label_34" >
+             <property name="text" >
+              <string>Optimization Method:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>comboBox_20</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1" >
+            <widget class="QComboBox" name="comboBox_20" >
+             <item>
+              <property name="text" >
+               <string>Quadratic Approximation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Schlegel</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </widget>
        </item>
@@ -1349,15 +1568,54 @@
      </widget>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="Line" name="line" >
+   <item row="0" column="1" >
+    <spacer>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
-    </widget>
+     <property name="sizeHint" >
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
-   <item row="3" column="0" colspan="2" >
-    <widget class="QTextEdit" name="textEdit" />
+   <item row="0" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="pushButton_5" >
+       <property name="text" >
+        <string>Basic</string>
+       </property>
+       <property name="checkable" >
+        <bool>true</bool>
+       </property>
+       <property name="checked" >
+        <bool>true</bool>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_6" >
+       <property name="text" >
+        <string>Advanced</string>
+       </property>
+       <property name="checked" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="4" column="0" colspan="2" >
     <layout class="QHBoxLayout" >
@@ -1413,54 +1671,15 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="pushButton_5" >
-       <property name="text" >
-        <string>Basic</string>
-       </property>
-       <property name="checkable" >
-        <bool>true</bool>
-       </property>
-       <property name="checked" >
-        <bool>true</bool>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_6" >
-       <property name="text" >
-        <string>Advanced</string>
-       </property>
-       <property name="checked" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="3" column="0" colspan="2" >
+    <widget class="QTextEdit" name="textEdit" />
    </item>
-   <item row="0" column="1" >
-    <spacer>
+   <item row="2" column="0" colspan="2" >
+    <widget class="Line" name="line" >
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeHint" >
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
+    </widget>
    </item>
   </layout>
  </widget>
