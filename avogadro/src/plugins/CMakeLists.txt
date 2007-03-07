@@ -46,6 +46,7 @@ TARGET_LINK_LIBRARIES(gamess
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
+INSTALL(TARGETS gamess DESTINATION lib/avogadro)
 
 ### ghemical
 qt4_wrap_cpp(ghemical_MOC_SRCS ghemical.h)
