@@ -18,6 +18,7 @@
 
 #include <openbabel/mol.h>
 #include <eigen/matrix.h>
+#include <QGLWidget>
 
 namespace Avogadro {
 
