@@ -3,12 +3,12 @@ set(QT_USE_QTOPENGL TRUE)
 include(${QT_USE_FILE})
 
 include_directories(
-	${OPENBABEL2_INCLUDE_DIR} 
-	${EIGEN_INCLUDE_DIR}
+	${libavogadro_SOURCE_DIR}/include
 	${CMAKE_SOURCE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}/..
-	${libavogadro_SOURCE_DIR}/include
+	${OPENBABEL2_INCLUDE_DIR} 
+	${EIGEN_INCLUDE_DIR}
 )
 
 set(libavogadro_SRCS

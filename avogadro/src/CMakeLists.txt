@@ -7,11 +7,11 @@ endif(WIN32)
 LINK_DIRECTORIES(${LINK_DIRECTORIES} ${libavogadro_BINARY_DIR}/src)
 
 include_directories(
+	${libavogadro_SOURCE_DIR}/include
+	${avogadro_SOURCE_DIR}/include
 	${OPENBABEL2_INCLUDE_DIR} 
 	${EIGEN_INCLUDE_DIR} 
 	${CMAKE_CURRENT_BINARY_DIR}
-	${avogadro_SOURCE_DIR}/include
-	${libavogadro_SOURCE_DIR}/include
 )
 
 add_definitions(-DQT_DEBUG)

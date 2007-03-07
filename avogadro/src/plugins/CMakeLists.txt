@@ -34,11 +34,13 @@ INSTALL(TARGETS draw DESTINATION lib/avogadro)
 
 ### gamess
 qt4_wrap_cpp(gamess_MOC_SRCS gamess.h gamessinputbuilder.h)
+qt4_wrap_ui(gamess_UIS_H gamessinputbuilder.ui)
 ADD_LIBRARY(gamess SHARED 
 	gamess.cpp 
 	gamessinputbuilder.cpp 
     gamessinputdata.cpp
 	${gamess_MOC_SRCS}
+    ${gamess_UIS_H}
 )
 TARGET_LINK_LIBRARIES(gamess 
 	${OPENBABEL2_LIBRARIES} 
