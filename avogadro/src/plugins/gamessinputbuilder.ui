@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog" >
+ <class>GamessInputbuildDialog</class>
+ <widget class="QDialog" name="GamessInputbuildDialog" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -22,32 +22,159 @@
    <item row="1" column="0" colspan="2" >
     <widget class="QStackedWidget" name="stackedWidget" >
      <property name="currentIndex" >
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page" >
-      <widget class="QTabWidget" name="tabWidget" >
-       <property name="geometry" >
-        <rect>
-         <x>9</x>
-         <y>9</y>
-         <width>341</width>
-         <height>111</height>
-        </rect>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>9</number>
        </property>
-       <property name="currentIndex" >
-        <number>0</number>
+       <property name="spacing" >
+        <number>6</number>
        </property>
-       <widget class="QWidget" name="tab" >
-        <attribute name="title" >
-         <string>Tab 1</string>
-        </attribute>
-       </widget>
-       <widget class="QWidget" name="tab_2" >
-        <attribute name="title" >
-         <string>Tab 2</string>
-        </attribute>
-       </widget>
-      </widget>
+       <item row="0" column="0" >
+        <widget class="QTabWidget" name="tabWidget" >
+         <property name="currentIndex" >
+          <number>2</number>
+         </property>
+         <widget class="QWidget" name="tab" >
+          <attribute name="title" >
+           <string>Basis</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="tab_3" >
+          <attribute name="title" >
+           <string>Control</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="tab_5" >
+          <attribute name="title" >
+           <string>Data</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="tab_6" >
+          <attribute name="title" >
+           <string>System</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="tab_7" >
+          <attribute name="title" >
+           <string>MO Guess</string>
+          </attribute>
+          <layout class="QGridLayout" >
+           <property name="margin" >
+            <number>9</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item row="0" column="0" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_4" >
+               <property name="text" >
+                <string>Initial Guess:</string>
+               </property>
+               <property name="buddy" >
+                <cstring>comboBox_5</cstring>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_5" >
+               <item>
+                <property name="text" >
+                 <string>Huckel</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QCheckBox" name="checkBox_4" >
+             <property name="text" >
+              <string>Print the Initial Guess</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" >
+            <widget class="QCheckBox" name="checkBox_5" >
+             <property name="text" >
+              <string>Rotate Alpha and Beta Orbitals</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_8" >
+          <attribute name="title" >
+           <string>Misc</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="tab_9" >
+          <attribute name="title" >
+           <string>SCF</string>
+          </attribute>
+          <layout class="QGridLayout" >
+           <property name="margin" >
+            <number>9</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item row="2" column="0" >
+            <widget class="QCheckBox" name="checkBox_3" >
+             <property name="text" >
+              <string>Generate UHF Natural Orbitals</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QCheckBox" name="checkBox_2" >
+             <property name="text" >
+              <string>Compute Only Changed in Fock Matrix</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" >
+            <widget class="QCheckBox" name="checkBox" >
+             <property name="text" >
+              <string>Direct SCF</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_10" >
+          <attribute name="title" >
+           <string>DFT</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="tab_11" >
+          <attribute name="title" >
+           <string>MP2</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="tab_4" >
+          <attribute name="title" >
+           <string>Hessian</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="tab_2" >
+          <attribute name="title" >
+           <string>Stat Point</string>
+          </attribute>
+         </widget>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="page_2" >
       <layout class="QGridLayout" >
