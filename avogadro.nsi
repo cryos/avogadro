@@ -2,13 +2,16 @@
 
 ; The name of the installer
 Name "Avogadro"
-!define VERSION "0.0.2"
+!define VERSION "0.0.3alpha"
 
 ; The file to write
 OutFile "avogadro-${VERSION}.exe"
 
 ; The default installation directory
 InstallDir $PROGRAMFILES\Avogadro
+
+; Build directory
+!define BUILDDIR "C:\avogadro\build"
 
 ; Registry key to check for directory (so if you install again, it will 
 ; overwrite the old one automatically)
@@ -33,11 +36,14 @@ Section "Avogadro Core (required)"
   SectionIn RO
   
   SetOutPath $INSTDIR\engines
-  File libavogadro\src\engines\release\bsengine.dll
+  File ${BUILDDIR}\libavogadro\src\engines\release\bsengine.dll
   
   SetOutPath $INSTDIR\plugins
-  File avogadro\src\plugins\release\draw.dll
-  File avogadro\src\plugins\release\selectrotate.dll
+  File ${BUILDDIR}\avogadro\src\plugins\release\draw.dll
+  File ${BUILDDIR}\avogadro\src\plugins\release\selectrotate.dll
+  File ${BUILDDIR}\avogadro\src\plugins\release\gamess.dll
+  File ${BUILDDIR}\avogadro\src\plugins\release\ghemical.dll
+  File ${BUILDDIR}\avogadro\src\plugins\release\hydrogens.dll
 
   ; Set output path to the installation directory.
   SetOutPath $INSTDIR
@@ -55,17 +61,17 @@ Section "Avogadro Core (required)"
   File "C:\Program Files\Microsoft Visual Studio 8\VC\redist\x86\Microsoft.VC80.CRT\msvcp80.dll"
   File "C:\Program Files\Microsoft Visual Studio 8\VC\redist\x86\Microsoft.VC80.CRT\msvcr80.dll"
   File "C:\Program Files\Microsoft Visual Studio 8\VC\redist\x86\Microsoft.VC80.CRT\Microsoft.VC80.CRT.manifest"
-  File libavogadro\src\release\avogadro.dll
-  File avogadro\src\release\avogadro.exe
+  File ${BUILDDIR}\libavogadro\src\release\avogadro.dll
+  File ${BUILDDIR}\avogadro\src\release\avogadro.exe
 
   ; Write the installation path into the registry
   WriteRegStr HKLM SOFTWARE\Avogadro "Install_Dir" "$INSTDIR"
   
   ; Write the uninstall keys for Windows
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Example2" "DisplayName" "Avogadro"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Example2" "UninstallString" '"$INSTDIR\uninstall.exe"'
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Example2" "NoModify" 1
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Example2" "NoRepair" 1
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Avogadro" "DisplayName" "Avogadro -- Molecular Editing Software"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Avogadro" "UninstallString" '"$INSTDIR\uninstall.exe"'
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Avogadro" "NoModify" 1
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Avogadro" "NoRepair" 1
   WriteUninstaller "uninstall.exe"
   
 SectionEnd
@@ -92,6 +98,9 @@ Section "Uninstall"
   ; Remove files and uninstaller
   Delete $INSTDIR\plugins\draw.dll
   Delete $INSTDIR\plugins\selectrotate.dll
+  Delete $INSTDIR\plugins\hydrogens.dll
+  Delete $INSTDIR\plugins\ghemical.dll
+  Delete $INSTDIR\plugins\gamess.dll
   Delete $INSTDIR\engines\bsengine.dll
   Delete $INSTDIR\QtGui4.dll
   Delete $INSTDIR\QtCore4.dll
