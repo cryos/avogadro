@@ -74,6 +74,7 @@ namespace Avogadro
 
 
     private:
+      Ui::GamessInputBuilder ui;
       GamessInputData *m_inputData;
 
 //       GamessInputData *m_inputBackup;

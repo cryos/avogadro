@@ -1,30 +1,33 @@
 <ui version="4.0" >
- <class>GamessInputbuildDialog</class>
- <widget class="QDialog" name="GamessInputbuildDialog" >
+ <class>GamessInputDialog</class>
+ <widget class="QDialog" name="GamessInputDialog" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>603</width>
-    <height>807</height>
+    <width>553</width>
+    <height>556</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Dialog</string>
+   <string>GAMESS Input Deck Builder</string>
   </property>
-  <layout class="QGridLayout" >
+  <layout class="QVBoxLayout" >
    <property name="margin" >
     <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="1" column="0" colspan="2" >
-    <widget class="QStackedWidget" name="stackedWidget" >
+   <item>
+    <widget class="QTabWidget" name="modeTab" >
      <property name="currentIndex" >
-      <number>0</number>
+      <number>1</number>
      </property>
-     <widget class="QWidget" name="page" >
+     <widget class="QWidget" name="basicTab" >
+      <attribute name="title" >
+       <string>&amp;Basic Setup</string>
+      </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
         <number>9</number>
@@ -32,15 +35,506 @@
        <property name="spacing" >
         <number>6</number>
        </property>
-       <item row="0" column="0" >
-        <widget class="QTabWidget" name="tabWidget" >
-         <property name="currentIndex" >
-          <number>7</number>
+       <item row="3" column="1" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
          </property>
-         <widget class="QWidget" name="tab" >
-          <attribute name="title" >
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QComboBox" name="basicOnLeftCombo" >
+           <item>
+            <property name="text" >
+             <string>Singlet</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>Doublet</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>Triplet</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="basicOnRightCombo" >
+           <item>
+            <property name="text" >
+             <string>Dication</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>Cation</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>Neutral</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>Anion</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>Dianion</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="0" >
+        <widget class="QLabel" name="label_5" >
+         <property name="text" >
+          <string>On:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>basicOnLeftCombo</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QComboBox" name="basicWithLeftCombo" >
+           <item>
+            <property name="text" >
+             <string>AM1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>PM3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>RHF</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>B3LYP</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>MP2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>CCSD(T)</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="basicWithRightCombo" >
+           <item>
+            <property name="text" >
+             <string>STO-3G</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>MINI</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>3-21G</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>6-31G(d)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>6-31G(d,p)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>6-31+G(d,p)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>6-31+G(2d,p)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>6-311++G(2d,p)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>Core Potential</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>16</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QLabel" name="label_3" >
+         <property name="text" >
+          <string>In:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>basicWithLeftCombo</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QComboBox" name="basicCalculateCombo" >
+           <item>
+            <property name="text" >
+             <string>Single Point Entry</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>Equilibrium Geometry</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>Transition State</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>Frequencies</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="1" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QComboBox" name="basicInCombo" >
+           <item>
+            <property name="text" >
+             <string>Water</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="5" column="0" >
+        <widget class="QLabel" name="label_9" >
+         <property name="text" >
+          <string>Memory:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" >
+        <widget class="QLabel" name="label" >
+         <property name="text" >
+          <string>Calculate</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" >
+        <widget class="QLabel" name="label_6" >
+         <property name="text" >
+          <string>Time Limit:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QSpinBox" name="basicMemorySpin" >
+           <property name="maximum" >
+            <number>99999</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_7" >
+           <property name="text" >
+            <string>megabytes</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="label_2" >
+         <property name="text" >
+          <string>With:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QSpinBox" name="basicTimeSpin" >
+           <property name="maximum" >
+            <number>99999</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_8" >
+           <property name="text" >
+            <string>hour(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="advancedTab" >
+      <attribute name="title" >
+       <string>&amp;Advanced Setup</string>
+      </attribute>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QTreeWidget" name="navigationTree" >
+         <property name="minimumSize" >
+          <size>
+           <width>130</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="frameShape" >
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="alternatingRowColors" >
+          <bool>true</bool>
+         </property>
+         <property name="indentation" >
+          <number>17</number>
+         </property>
+         <property name="animated" >
+          <bool>true</bool>
+         </property>
+         <column>
+          <property name="text" >
+           <string>Advanced</string>
+          </property>
+         </column>
+         <item>
+          <property name="text" >
            <string>Basis</string>
-          </attribute>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Control</string>
+          </property>
+          <item>
+           <property name="text" >
+            <string>SCF</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>DFT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>MP2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Hessian</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Stat Point</string>
+           </property>
+          </item>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Data</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>System</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>MO Guess</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Misc</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QStackedWidget" name="stackedWidget" >
+         <property name="currentIndex" >
+          <number>10</number>
+         </property>
+         <widget class="QWidget" name="Basis" >
           <layout class="QGridLayout" >
            <property name="margin" >
             <number>9</number>
@@ -48,63 +542,305 @@
            <property name="spacing" >
             <number>6</number>
            </property>
-           <item row="2" column="1" >
-            <widget class="QSpinBox" name="spinBox_13" >
-             <property name="maximum" >
-              <number>3</number>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0" >
-            <widget class="QLabel" name="label_21" >
-             <property name="text" >
-              <string>#light Atom Polarization Functions</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0" >
-            <widget class="QLabel" name="label_23" >
-             <property name="text" >
-              <string>Polar</string>
-             </property>
-             <property name="buddy" >
-              <cstring>comboBox_17</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1" >
-            <widget class="QCheckBox" name="checkBox_9" >
-             <property name="text" >
-              <string>Diffuse S-Shell on Heavy Atoms</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0" >
-            <widget class="QLabel" name="label_22" >
-             <property name="text" >
-              <string>ECT Type</string>
-             </property>
-             <property name="buddy" >
-              <cstring>comboBox_15</cstring>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="0" >
             <widget class="QLabel" name="label_24" >
              <property name="text" >
-              <string>#D Heavy Atom Polarization Functions</string>
+              <string>#D Heavy Atom Polarization Functions:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
-           <item row="3" column="1" >
-            <widget class="QSpinBox" name="spinBox_14" >
+           <item row="0" column="3" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="basisECPCombo" >
+               <item>
+                <property name="text" >
+                 <string>None</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Read</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>SBKJC</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Hay-Wadt</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>1</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="5" column="0" colspan="3" >
+            <layout class="QGridLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item row="1" column="1" >
+              <widget class="QCheckBox" name="basisSCheck" >
+               <property name="text" >
+                <string>Diffuse S-Shell on Heavy Atoms</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1" >
+              <widget class="QCheckBox" name="basisLCheck" >
+               <property name="text" >
+                <string>Diffuse L-Shell on Heavy Atoms</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" >
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="1" column="2" >
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="0" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_19" >
+               <property name="text" >
+                <string>Basis Set:</string>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="buddy" >
+                <cstring>basisSetCombo</cstring>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="basisSetCombo" >
+               <item>
+                <property name="text" >
+                 <string>MINI</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>MIDI</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>STO-2G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>STO-3G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>STO-4G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>STO-5G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>STO-6G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>3-21G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>6-21G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>4-31G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>5-31G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>6-31G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>6-311G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Double Zeta Valance</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Dunning/Hay DZ</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Triple Zeta Valence</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>McLean/Chandler</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>SBKJA Valance</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Hay/Wadt Valance</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>MNDO</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>AM1</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>PM3</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="1" colspan="3" >
+            <widget class="QSpinBox" name="basisDSpin" >
              <property name="maximum" >
               <number>3</number>
              </property>
             </widget>
            </item>
-           <item row="5" column="1" >
-            <widget class="QComboBox" name="comboBox_17" >
+           <item row="2" column="1" colspan="3" >
+            <widget class="QSpinBox" name="basisFSpin" >
+             <property name="maximum" >
+              <number>3</number>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2" >
+            <widget class="QLabel" name="label_22" >
+             <property name="text" >
+              <string>ECP Type:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="buddy" >
+              <cstring>basisECPCombo</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1" colspan="3" >
+            <widget class="QComboBox" name="basisPolarCombo" >
              <item>
               <property name="text" >
                <string>Default</string>
@@ -137,176 +873,47 @@
              </item>
             </widget>
            </item>
-           <item row="0" column="0" >
-            <widget class="QLabel" name="label_19" >
+           <item row="2" column="0" >
+            <widget class="QLabel" name="label_20" >
              <property name="text" >
-              <string>Basis Set:</string>
+              <string>#F Heavy Atom Polarization Functions:</string>
              </property>
-             <property name="buddy" >
-              <cstring>comboBox_19</cstring>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
-           <item row="0" column="1" >
-            <widget class="QComboBox" name="comboBox_19" >
-             <item>
-              <property name="text" >
-               <string>MINI</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>MIDI</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>STO-2G</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>STO-3G</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>STO-4G</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>STO-5G</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>STO-6G</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>3-21G</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>6-21G</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>4-31G</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>5-31G</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>6-31G</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>6-311G</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Double Zeta Valance</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Dunning/Hay DZ</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Triple Zeta Valence</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>McLean/Chandler</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>SBKJA Valance</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Hay/Wadt Valance</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>MNDO</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>AM1</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>PM3</string>
-              </property>
-             </item>
+           <item row="3" column="0" >
+            <widget class="QLabel" name="label_21" >
+             <property name="text" >
+              <string>#light Atom Polarization Functions:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
             </widget>
            </item>
-           <item row="1" column="1" >
-            <widget class="QSpinBox" name="spinBox_12" >
+           <item row="3" column="1" colspan="3" >
+            <widget class="QSpinBox" name="basisLightSpin" >
              <property name="maximum" >
               <number>3</number>
              </property>
             </widget>
            </item>
-           <item row="2" column="0" >
-            <widget class="QLabel" name="label_20" >
+           <item row="4" column="0" >
+            <widget class="QLabel" name="label_23" >
              <property name="text" >
-              <string>#F Heavy Atom Polarization Functions</string>
+              <string>Polar:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="buddy" >
+              <cstring>basisPolarCombo</cstring>
              </property>
             </widget>
            </item>
            <item row="6" column="0" >
-            <widget class="QCheckBox" name="checkBox_8" >
-             <property name="text" >
-              <string>Diffuse L-Shell on Heavy Atoms</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1" >
-            <widget class="QComboBox" name="comboBox_15" >
-             <item>
-              <property name="text" >
-               <string>None</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Read</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>SBKJC</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Hay-Wadt</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="7" column="0" >
             <spacer>
              <property name="orientation" >
               <enum>Qt::Vertical</enum>
@@ -321,10 +928,7 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tab_3" >
-          <attribute name="title" >
-           <string>Control</string>
-          </attribute>
+         <widget class="QWidget" name="page_5" >
           <layout class="QGridLayout" >
            <property name="margin" >
             <number>9</number>
@@ -332,52 +936,364 @@
            <property name="spacing" >
             <number>6</number>
            </property>
-           <item row="0" column="0" >
-            <widget class="QLabel" name="label_16" >
+           <item row="8" column="0" >
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>20</width>
+               <height>5</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="4" column="0" >
+            <widget class="QLabel" name="label_30" >
              <property name="text" >
-              <string>Run Type:</string>
+              <string>Max SCF Iterations:</string>
              </property>
              <property name="alignment" >
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
-           <item row="1" column="3" >
-            <widget class="QComboBox" name="comboBox_13" >
+           <item row="0" column="1" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="controlRunCombo" >
+               <item>
+                <property name="text" >
+                 <string>Energy</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Gradient</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Hessian</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Optimization</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Trudge</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Saddle Point</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>IRC</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Gradient Extremal</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>DRC</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Energy Surface</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Properties</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Morokuma</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Radiative Transition mom.</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Spin Orbit</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Finite Electric Field</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>TDHF</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Global Optimization</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>VSCF</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>FMO Optimization</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Raman Intensities</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>NMR</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Make EFP</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="1" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="controlSCFCombo" >
+               <item>
+                <property name="text" >
+                 <string>RHF</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>UHF</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>ROHF</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>GVB</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>MCSCF</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>None (CI)</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="1" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="controlLocalizationCombo" >
+               <item>
+                <property name="text" >
+                 <string>None</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Foster-Boys</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Edmistron-Ruedenberg</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Pipek-Mezey</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QLabel" name="label_17" >
+             <property name="text" >
+              <string>SCF Type:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" >
+            <widget class="QLabel" name="label_28" >
+             <property name="text" >
+              <string>Localization Method:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2" >
+            <widget class="QSpinBox" name="controlMultiplicitySpin" />
+           </item>
+           <item row="3" column="0" >
+            <widget class="QLabel" name="label_26" >
+             <property name="text" >
+              <string>Exec Type:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" >
+            <widget class="QLabel" name="label_29" >
+             <property name="text" >
+              <string>CI:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1" colspan="2" >
+            <widget class="QComboBox" name="controlCICombo" >
              <item>
               <property name="text" >
-               <string>RHF</string>
+               <string>None</string>
               </property>
              </item>
              <item>
               <property name="text" >
-               <string>UHF</string>
+               <string>GUGA</string>
               </property>
              </item>
              <item>
               <property name="text" >
-               <string>ROHF</string>
+               <string>Ames Lab. Determinant</string>
               </property>
              </item>
              <item>
               <property name="text" >
-               <string>GVB</string>
+               <string>Occupation Restricted Multiple Active Space</string>
               </property>
              </item>
              <item>
               <property name="text" >
-               <string>MCSCF</string>
+               <string>CI Singles</string>
               </property>
              </item>
              <item>
               <property name="text" >
-               <string>None (CI)</string>
+               <string>Full Second Order CI</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>General CI</string>
               </property>
              </item>
             </widget>
            </item>
-           <item row="5" column="2" colspan="2" >
-            <widget class="QComboBox" name="comboBox_12" >
+           <item row="6" column="0" >
+            <widget class="QLabel" name="label_16" >
+             <property name="text" >
+              <string>CC:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1" colspan="2" >
+            <widget class="QComboBox" name="controlCCCombo" >
              <item>
               <property name="text" >
                <string>None</string>
@@ -425,116 +1341,7 @@
              </item>
             </widget>
            </item>
-           <item row="1" column="0" >
-            <widget class="QLabel" name="label_16" >
-             <property name="text" >
-              <string>Localization Method:</string>
-             </property>
-             <property name="alignment" >
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item rowspan="2" row="4" column="0" >
-            <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item>
-              <layout class="QVBoxLayout" >
-               <property name="margin" >
-                <number>0</number>
-               </property>
-               <property name="spacing" >
-                <number>6</number>
-               </property>
-               <item>
-                <widget class="QCheckBox" name="checkBox_7" >
-                 <property name="text" >
-                  <string>Use MP2</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QCheckBox" name="checkBox_7" >
-                 <property name="layoutDirection" >
-                  <enum>Qt::LeftToRight</enum>
-                 </property>
-                 <property name="autoFillBackground" >
-                  <bool>false</bool>
-                 </property>
-                 <property name="text" >
-                  <string>Use DFT</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <spacer>
-               <property name="orientation" >
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" >
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </item>
-           <item row="5" column="1" >
-            <widget class="QLabel" name="label_16" >
-             <property name="text" >
-              <string>CC:</string>
-             </property>
-             <property name="alignment" >
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0" >
-            <widget class="QLabel" name="label_16" >
-             <property name="text" >
-              <string>Max SCF Iterations:</string>
-             </property>
-             <property name="alignment" >
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="3" >
-            <widget class="QSpinBox" name="spinBox_9" />
-           </item>
-           <item row="3" column="3" >
-            <widget class="QSpinBox" name="spinBox_10" />
-           </item>
-           <item row="2" column="0" >
-            <widget class="QLabel" name="label_16" >
-             <property name="text" >
-              <string>Exec Type:</string>
-             </property>
-             <property name="alignment" >
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
            <item row="4" column="1" >
-            <widget class="QLabel" name="label_16" >
-             <property name="text" >
-              <string>CI:</string>
-             </property>
-             <property name="alignment" >
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1" colspan="2" >
             <layout class="QHBoxLayout" >
              <property name="margin" >
               <number>0</number>
@@ -543,28 +1350,7 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QComboBox" name="comboBox_12" >
-               <item>
-                <property name="text" >
-                 <string>None</string>
-                </property>
-               </item>
-               <item>
-                <property name="text" >
-                 <string>Foster-Boys</string>
-                </property>
-               </item>
-               <item>
-                <property name="text" >
-                 <string>Edmistron-Ruedenberg</string>
-                </property>
-               </item>
-               <item>
-                <property name="text" >
-                 <string>Pipek-Mezey</string>
-                </property>
-               </item>
-              </widget>
+              <widget class="QSpinBox" name="controlMaxSCFSpin" />
              </item>
              <item>
               <spacer>
@@ -576,16 +1362,16 @@
                </property>
                <property name="sizeHint" >
                 <size>
-                 <width>40</width>
+                 <width>10</width>
                  <height>20</height>
                 </size>
                </property>
               </spacer>
              </item>
              <item>
-              <widget class="QLabel" name="label_17" >
+              <widget class="QLabel" name="label_25" >
                <property name="text" >
-                <string>SCF Type:</string>
+                <string>Multiplicity:</string>
                </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -594,7 +1380,7 @@
              </item>
             </layout>
            </item>
-           <item row="3" column="1" colspan="2" >
+           <item row="3" column="1" >
             <layout class="QHBoxLayout" >
              <property name="margin" >
               <number>0</number>
@@ -603,85 +1389,7 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QSpinBox" name="spinBox_11" />
-             </item>
-             <item>
-              <spacer>
-               <property name="orientation" >
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeType" >
-                <enum>QSizePolicy::Minimum</enum>
-               </property>
-               <property name="sizeHint" >
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_18" >
-               <property name="text" >
-                <string>TextLabel</string>
-               </property>
-               <property name="alignment" >
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="4" column="2" colspan="2" >
-            <widget class="QComboBox" name="comboBox_12" >
-             <item>
-              <property name="text" >
-               <string>None</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>GUGA</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Ames Lab. Determinant</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Occupation Restricted Multiple Active Space</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>CI Singles</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Full Second Order CI</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>General CI</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="2" column="1" colspan="2" >
-            <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item>
-              <widget class="QComboBox" name="comboBox_12" >
+              <widget class="QComboBox" name="controlExecCombo" >
                <item>
                 <property name="text" >
                  <string>Normal Run</string>
@@ -714,14 +1422,14 @@
                </property>
                <property name="sizeHint" >
                 <size>
-                 <width>40</width>
+                 <width>10</width>
                  <height>20</height>
                 </size>
                </property>
               </spacer>
              </item>
              <item>
-              <widget class="QLabel" name="label_16" >
+              <widget class="QLabel" name="label_18" >
                <property name="text" >
                 <string>Molecule Charge:</string>
                </property>
@@ -732,139 +1440,91 @@
              </item>
             </layout>
            </item>
-           <item row="0" column="1" colspan="2" >
-            <widget class="QComboBox" name="comboBox_12" >
-             <item>
-              <property name="text" >
-               <string>Energy</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Gradient</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Hessian</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Optimization</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Trudge</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Saddle Point</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>IRC</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Gradient Extremal</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>DRC</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Energy Surface</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Properties</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Morokuma</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Radiative Transition mom.</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Spin Orbit</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Finite Electric Field</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>TDHF</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Global Optimization</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>VSCF</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>FMO Optimization</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Raman Intensities</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>NMR</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Make EFP</string>
-              </property>
-             </item>
+           <item row="0" column="0" >
+            <widget class="QLabel" name="label_27" >
+             <property name="text" >
+              <string>Run Type:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
             </widget>
            </item>
-           <item row="6" column="0" >
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Vertical</enum>
+           <item row="7" column="0" colspan="3" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
              </property>
-             <property name="sizeHint" >
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
+             <property name="spacing" >
+              <number>6</number>
              </property>
-            </spacer>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="controlMP2Check" >
+               <property name="text" >
+                <string>Use MP2</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="controlDFTCheck" >
+               <property name="layoutDirection" >
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="autoFillBackground" >
+                <bool>false</bool>
+               </property>
+               <property name="text" >
+                <string>Use DFT</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="2" >
+            <widget class="QSpinBox" name="controlChargeSpin" />
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tab_5" >
-          <attribute name="title" >
-           <string>Data</string>
-          </attribute>
+         <widget class="QWidget" name="page_6" >
           <layout class="QGridLayout" >
            <property name="margin" >
             <number>9</number>
@@ -872,133 +1532,49 @@
            <property name="spacing" >
             <number>6</number>
            </property>
-           <item row="4" column="1" >
-            <widget class="QComboBox" name="comboBox_10" >
-             <item>
-              <property name="text" >
-               <string>C1</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>CS</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>CI</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>CnH</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>CnV</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Cn</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>S2n</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>DnD</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>DnH</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Dn</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>TD</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>TH</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>T</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>OH</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>O</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="6" column="0" colspan="2" >
-            <widget class="QCheckBox" name="checkBox_6" >
-             <property name="text" >
-              <string>Use Symmetry During Calculation</string>
-             </property>
-             <property name="checked" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0" >
+           <item row="4" column="0" >
             <widget class="QLabel" name="label_13" >
              <property name="text" >
               <string># of Z-Matrix Variables</string>
              </property>
             </widget>
            </item>
-           <item row="3" column="1" >
-            <widget class="QSpinBox" name="spinBox_8" />
-           </item>
-           <item row="1" column="1" >
-            <widget class="QComboBox" name="comboBox_8" >
+           <item row="2" column="1" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
              <item>
-              <property name="text" >
-               <string>Unique cartesian Coords.</string>
-              </property>
+              <widget class="QComboBox" name="dataUnitsCombo" >
+               <item>
+                <property name="text" >
+                 <string>Ǻngstrom</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Bohr</string>
+                </property>
+               </item>
+              </widget>
              </item>
              <item>
-              <property name="text" >
-               <string>Hilderbrant internals</string>
-              </property>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
              </item>
-             <item>
-              <property name="text" >
-               <string>Cartesian coordinates</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Z-Matrix</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>MOPAC Z-Matrix</string>
-              </property>
-             </item>
-            </widget>
+            </layout>
            </item>
            <item row="5" column="0" >
             <widget class="QLabel" name="label_15" >
@@ -1007,68 +1583,212 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="0" >
-            <widget class="QLabel" name="label_12" >
-             <property name="text" >
-              <string>Units:</string>
-             </property>
-             <property name="buddy" >
-              <cstring>comboBox_9</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0" >
-            <widget class="QLabel" name="label_14" >
-             <property name="text" >
-              <string>Point Group:</string>
-             </property>
-             <property name="buddy" >
-              <cstring>comboBox_10</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1" >
-            <widget class="QLineEdit" name="lineEdit_3" >
-             <property name="text" >
-              <string>Title</string>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="0" >
             <widget class="QLabel" name="label_11" >
              <property name="text" >
               <string>Coordinate Type:</string>
              </property>
-             <property name="buddy" >
-              <cstring>comboBox_8</cstring>
+            </widget>
+           </item>
+           <item row="3" column="1" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="dataPointCombo" >
+               <item>
+                <property name="text" >
+                 <string>C1</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>CS</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>CI</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>CnH</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>CnV</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Cn</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>S2n</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>DnD</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>DnH</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Dn</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>TD</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>TH</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>T</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>OH</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>O</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="1" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="dataTitleLine" >
+               <property name="text" >
+                <string>Title</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>22</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="1" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="dataCoordinateCombo" >
+               <item>
+                <property name="text" >
+                 <string>Unique cartesian Coords.</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Hilderbrant internals</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Cartesian coordinates</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Z-Matrix</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>MOPAC Z-Matrix</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>22</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="6" column="0" colspan="2" >
+            <widget class="QCheckBox" name="dataSymmetryCheck" >
+             <property name="text" >
+              <string>Use Symmetry During Calculation</string>
+             </property>
+             <property name="checked" >
+              <bool>true</bool>
              </property>
             </widget>
            </item>
-           <item row="5" column="1" >
-            <widget class="QSpinBox" name="spinBox_15" >
-             <property name="maximum" >
-              <number>4</number>
+           <item row="2" column="0" >
+            <widget class="QLabel" name="label_12" >
+             <property name="text" >
+              <string>Units:</string>
              </property>
-             <property name="minimum" >
-              <number>2</number>
-             </property>
-             <property name="value" >
-              <number>2</number>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1" >
-            <widget class="QComboBox" name="comboBox_9" >
-             <item>
-              <property name="text" >
-               <string>Ǻngstrom</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Bohr</string>
-              </property>
-             </item>
             </widget>
            </item>
            <item row="0" column="0" >
@@ -1076,8 +1796,74 @@
              <property name="text" >
               <string>Title:</string>
              </property>
-             <property name="buddy" >
-              <cstring>lineEdit_3</cstring>
+            </widget>
+           </item>
+           <item row="4" column="1" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QSpinBox" name="dataZMatrixSpin" />
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="5" column="1" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QSpinBox" name="dataOrderSpin" >
+               <property name="maximum" >
+                <number>4</number>
+               </property>
+               <property name="minimum" >
+                <number>2</number>
+               </property>
+               <property name="value" >
+                <number>2</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="0" >
+            <widget class="QLabel" name="label_14" >
+             <property name="text" >
+              <string>Point Group:</string>
              </property>
             </widget>
            </item>
@@ -1089,17 +1875,14 @@
              <property name="sizeHint" >
               <size>
                <width>20</width>
-               <height>40</height>
+               <height>21</height>
               </size>
              </property>
             </spacer>
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tab_6" >
-          <attribute name="title" >
-           <string>System</string>
-          </attribute>
+         <widget class="QWidget" name="page_7" >
           <layout class="QGridLayout" >
            <property name="margin" >
             <number>9</number>
@@ -1107,146 +1890,216 @@
            <property name="spacing" >
             <number>6</number>
            </property>
-           <item row="8" column="1" >
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" >
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="7" column="0" colspan="3" >
-            <widget class="QGroupBox" name="groupBox_6" >
-             <property name="title" >
-              <string>Parallel Load Balance Type</string>
-             </property>
-             <layout class="QGridLayout" >
-              <property name="margin" >
-               <number>9</number>
-              </property>
-              <property name="spacing" >
-               <number>6</number>
-              </property>
-              <item row="0" column="0" >
-               <widget class="QRadioButton" name="radioButton_12" >
-                <property name="text" >
-                 <string>Loop</string>
-                </property>
-                <property name="checked" >
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1" >
-               <widget class="QRadioButton" name="radioButton_13" >
-                <property name="text" >
-                 <string>Next Value</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="6" column="0" colspan="2" >
-            <widget class="QCheckBox" name="checkBox_22" >
-             <property name="text" >
-              <string>Produce "core" file upon abort</string>
-             </property>
-             <property name="checked" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="2" >
-            <widget class="QComboBox" name="comboBox_21" >
-             <item>
-              <property name="text" >
-               <string>Seconds</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Minutes</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Hours</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Days</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Weeks</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Years</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Millenia</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="1" column="0" >
-            <widget class="QLabel" name="label_37" >
-             <property name="text" >
-              <string>Memory:</string>
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
              </property>
-            </widget>
-           </item>
-           <item row="0" column="0" >
-            <widget class="QLabel" name="label_36" >
-             <property name="text" >
-              <string>Time Limit:</string>
+             <property name="spacing" >
+              <number>6</number>
              </property>
-            </widget>
+             <item>
+              <widget class="QComboBox" name="systemTimeCombo" >
+               <item>
+                <property name="text" >
+                 <string>Seconds</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Minutes</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Hours</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Days</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Weeks</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Years</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Millenia</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType" >
+                <enum>QSizePolicy::MinimumExpanding</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </item>
-           <item row="1" column="1" >
-            <widget class="QSpinBox" name="spinBox_6" />
+           <item row="1" column="2" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="systemMemoryCombo" >
+               <item>
+                <property name="text" >
+                 <string>Words</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Bytes</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>MegaWords</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>MegaBytes</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType" >
+                <enum>QSizePolicy::MinimumExpanding</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </item>
-           <item row="0" column="1" >
-            <widget class="QDoubleSpinBox" name="doubleSpinBox_4" />
+           <item row="2" column="2" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="systemDDICombo" >
+               <item>
+                <property name="text" >
+                 <string>Words</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Bytes</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>MegaWords</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>MegaBytes</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType" >
+                <enum>QSizePolicy::MinimumExpanding</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </item>
            <item row="4" column="0" colspan="3" >
-            <widget class="QCheckBox" name="checkBox_24" >
-             <property name="text" >
-              <string>Use External Data Representation for Messages</string>
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
              </property>
-            </widget>
-           </item>
-           <item row="2" column="0" >
-            <widget class="QLabel" name="label_38" >
-             <property name="text" >
-              <string>MemDDI:</string>
+             <property name="spacing" >
+              <number>6</number>
              </property>
-            </widget>
-           </item>
-           <item row="3" column="0" >
-            <widget class="QLabel" name="label_39" >
-             <property name="text" >
-              <string>Diagonalization Method:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1" >
-            <widget class="QSpinBox" name="spinBox_7" />
+             <item>
+              <widget class="QCheckBox" name="systemForceCheck" >
+               <property name="text" >
+                <string>Force Parallel Methods</string>
+               </property>
+               <property name="checked" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>16</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="systemCoreCheck" >
+               <property name="text" >
+                <string>Produce "core" file upon abort</string>
+               </property>
+               <property name="checked" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item row="3" column="1" >
-            <widget class="QComboBox" name="comboBox_22" >
+            <widget class="QComboBox" name="systemDiagonalizationCombo" >
              <item>
               <property name="text" >
                <string>Default</string>
@@ -1269,78 +2122,41 @@
              </item>
             </widget>
            </item>
-           <item row="1" column="2" >
-            <widget class="QComboBox" name="comboBox_23" >
-             <item>
-              <property name="text" >
-               <string>Words</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Bytes</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>MegaWords</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>MegaBytes</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="2" column="2" >
-            <widget class="QComboBox" name="comboBox_24" >
-             <item>
-              <property name="text" >
-               <string>Words</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Bytes</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>MegaWords</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>MegaBytes</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="5" column="0" colspan="2" >
-            <widget class="QCheckBox" name="checkBox_23" >
+           <item row="0" column="0" >
+            <widget class="QLabel" name="label_36" >
              <property name="text" >
-              <string>Force Parallel Methods</string>
-             </property>
-             <property name="checked" >
-              <bool>true</bool>
+              <string>Time Limit:</string>
              </property>
             </widget>
            </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_7" >
-          <attribute name="title" >
-           <string>MO Guess</string>
-          </attribute>
-          <layout class="QGridLayout" >
-           <property name="margin" >
-            <number>9</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
+           <item row="1" column="1" >
+            <widget class="QSpinBox" name="systemMemorySpin" />
+           </item>
+           <item row="2" column="1" >
+            <widget class="QSpinBox" name="systemDDISpin" />
+           </item>
+           <item row="2" column="0" >
+            <widget class="QLabel" name="label_38" >
+             <property name="text" >
+              <string>MemDDI:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QLabel" name="label_37" >
+             <property name="text" >
+              <string>Memory:</string>
+             </property>
+            </widget>
+           </item>
            <item row="3" column="0" >
+            <widget class="QLabel" name="label_39" >
+             <property name="text" >
+              <string>Diagonalization Method:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0" >
             <spacer>
              <property name="orientation" >
               <enum>Qt::Vertical</enum>
@@ -1348,25 +2164,76 @@
              <property name="sizeHint" >
               <size>
                <width>20</width>
-               <height>40</height>
+               <height>0</height>
               </size>
              </property>
             </spacer>
            </item>
-           <item row="2" column="0" >
-            <widget class="QCheckBox" name="checkBox_5" >
+           <item row="5" column="0" colspan="2" >
+            <widget class="QGroupBox" name="systemParallelGroup" >
+             <property name="title" >
+              <string>Parallel Load Balance Type</string>
+             </property>
+             <layout class="QHBoxLayout" >
+              <property name="margin" >
+               <number>9</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="systemLoopRadio" >
+                <property name="text" >
+                 <string>Loop</string>
+                </property>
+                <property name="checked" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="systemNextRadio" >
+                <property name="text" >
+                 <string>Next Value</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="3" >
+            <widget class="QCheckBox" name="systemExternalCheck" >
              <property name="text" >
-              <string>Rotate Alpha and Beta Orbitals</string>
+              <string>Use External Data Representation for Messages</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="0" >
-            <widget class="QCheckBox" name="checkBox_4" >
-             <property name="text" >
-              <string>Print the Initial Guess</string>
+           <item row="7" column="1" >
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
              </property>
-            </widget>
+             <property name="sizeHint" >
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
            </item>
+           <item row="0" column="1" >
+            <widget class="QSpinBox" name="systemTimeSpin" />
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page_8" >
+          <layout class="QGridLayout" >
+           <property name="margin" >
+            <number>9</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
            <item row="0" column="0" >
             <layout class="QHBoxLayout" >
              <property name="margin" >
@@ -1381,12 +2248,12 @@
                 <string>Initial Guess:</string>
                </property>
                <property name="buddy" >
-                <cstring>comboBox_5</cstring>
+                <cstring>basicInCombo</cstring>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_5" >
+              <widget class="QComboBox" name="moGuessInitialCombo" >
                <item>
                 <property name="text" >
                  <string>Huckel</string>
@@ -1414,175 +2281,32 @@
                </item>
               </widget>
              </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
             </layout>
            </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_8" >
-          <attribute name="title" >
-           <string>Misc</string>
-          </attribute>
-          <layout class="QGridLayout" >
-           <property name="margin" >
-            <number>9</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item row="1" column="0" >
-            <widget class="QGroupBox" name="groupBox_2" >
-             <property name="title" >
-              <string>Force a Check Run Type</string>
-             </property>
-             <layout class="QGridLayout" >
-              <property name="margin" >
-               <number>9</number>
-              </property>
-              <property name="spacing" >
-               <number>6</number>
-              </property>
-              <item row="3" column="0" >
-               <widget class="QCheckBox" name="checkBox_14" >
-                <property name="text" >
-                 <string>Solvate with Water</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1" >
-               <widget class="QRadioButton" name="radioButton_6" >
-                <property name="text" >
-                 <string>All</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" >
-               <widget class="QRadioButton" name="radioButton_5" >
-                <property name="text" >
-                 <string>Gaussian 9x</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1" >
-               <widget class="QRadioButton" name="radioButton_4" >
-                <property name="text" >
-                 <string>GAMESS (UK Version)</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0" >
-               <widget class="QRadioButton" name="radioButton_3" >
-                <property name="text" >
-                 <string>MELDF</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0" >
-               <widget class="QRadioButton" name="radioButton_2" >
-                <property name="text" >
-                 <string>Hondo 8.2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" >
-               <widget class="QRadioButton" name="radioButton" >
-                <property name="text" >
-                 <string>None</string>
-                </property>
-                <property name="checked" >
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="0" column="0" >
-            <widget class="QGroupBox" name="groupBox" >
-             <property name="title" >
-              <string>GAMESS Intercace to Other Codes</string>
-             </property>
-             <layout class="QGridLayout" >
-              <property name="margin" >
-               <number>9</number>
-              </property>
-              <property name="spacing" >
-               <number>6</number>
-              </property>
-              <item row="1" column="1" >
-               <widget class="QCheckBox" name="checkBox_13" >
-                <property name="text" >
-                 <string>RPAC</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1" >
-               <widget class="QCheckBox" name="checkBox_12" >
-                <property name="text" >
-                 <string>AIMPAC</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0" >
-               <widget class="QCheckBox" name="checkBox_11" >
-                <property name="text" >
-                 <string>PltOrb</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" >
-               <widget class="QCheckBox" name="checkBox_10" >
-                <property name="text" >
-                 <string>MolPlt</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
            <item row="2" column="0" >
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Vertical</enum>
+            <widget class="QCheckBox" name="moGuessRotateCheck" >
+             <property name="text" >
+              <string>Rotate Alpha and Beta Orbitals</string>
              </property>
-             <property name="sizeHint" >
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
+            </widget>
            </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_9" >
-          <attribute name="title" >
-           <string>SCF</string>
-          </attribute>
-          <layout class="QGridLayout" >
-           <property name="margin" >
-            <number>9</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
            <item row="1" column="0" >
-            <widget class="QCheckBox" name="checkBox_2" >
+            <widget class="QCheckBox" name="moGuessPrintCheck" >
              <property name="text" >
-              <string>Compute Only Changed in Fock Matrix</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0" >
-            <widget class="QCheckBox" name="checkBox" >
-             <property name="text" >
-              <string>Direct SCF</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0" >
-            <widget class="QCheckBox" name="checkBox_3" >
-             <property name="text" >
-              <string>Generate UHF Natural Orbitals</string>
+              <string>Print the Initial Guess</string>
              </property>
             </widget>
            </item>
@@ -1601,10 +2325,7 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tab_10" >
-          <attribute name="title" >
-           <string>DFT</string>
-          </attribute>
+         <widget class="QWidget" name="page_9" >
           <layout class="QGridLayout" >
            <property name="margin" >
             <number>9</number>
@@ -1612,7 +2333,153 @@
            <property name="spacing" >
             <number>6</number>
            </property>
+           <item row="0" column="0" >
+            <widget class="QGroupBox" name="miscInterfaceGroup" >
+             <property name="title" >
+              <string>GAMESS Interface to Other Codes</string>
+             </property>
+             <layout class="QGridLayout" >
+              <property name="margin" >
+               <number>9</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item row="0" column="0" >
+               <widget class="QCheckBox" name="miscMolPltCheck" >
+                <property name="text" >
+                 <string>MolPlt</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" >
+               <widget class="QCheckBox" name="miscPltOrbCheck" >
+                <property name="text" >
+                 <string>PltOrb</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" >
+               <widget class="QCheckBox" name="miscAIMPACCheck" >
+                <property name="text" >
+                 <string>AIMPAC</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" >
+               <widget class="QCheckBox" name="miscRPACCheck" >
+                <property name="text" >
+                 <string>RPAC</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QGroupBox" name="miscForceGroup" >
+             <property name="title" >
+              <string>Force a Check Run Type</string>
+             </property>
+             <layout class="QGridLayout" >
+              <property name="margin" >
+               <number>9</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item row="0" column="0" >
+               <widget class="QRadioButton" name="miscNoneRadio" >
+                <property name="text" >
+                 <string>None</string>
+                </property>
+                <property name="checked" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" >
+               <widget class="QRadioButton" name="miscHondoRadio" >
+                <property name="text" >
+                 <string>Hondo 8.2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" >
+               <widget class="QRadioButton" name="miscMELDFRadio" >
+                <property name="text" >
+                 <string>MELDF</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" >
+               <widget class="QRadioButton" name="miscGamessRadio" >
+                <property name="text" >
+                 <string>GAMESS (UK Version)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" >
+               <widget class="QRadioButton" name="miscGaussianRadio" >
+                <property name="text" >
+                 <string>Gaussian 9x</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" >
+               <widget class="QRadioButton" name="miscAllRadio" >
+                <property name="text" >
+                 <string>All</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
            <item row="2" column="0" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="miscWaterCheck" >
+               <property name="text" >
+                <string>Solvate with Water</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="0" >
             <spacer>
              <property name="orientation" >
               <enum>Qt::Vertical</enum>
@@ -1625,109 +2492,223 @@
              </property>
             </spacer>
            </item>
-           <item row="1" column="1" >
-            <widget class="QComboBox" name="comboBox_14" >
-             <item>
-              <property name="text" >
-               <string>Slater exchange</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Becke 1988 exchange</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>VWN: Vosko-Wilk-Nusair (VWN5) correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>LYP: Lee-Yang-Parr correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>SVWN: Slater exhange + VWN correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>BVWN: BECKE exchange + VWN5 correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>BLYP: BECKE exchange + LYP correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>B3LYP</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Gill 1996 exchange</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Perdew-Burke-Ernzerhof (PBE) exchange</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>OP: One-parameter Progressive correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>SLYP: SLATER + Lee-Yang-Parr (LYP) correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>SOP: SLATER + OP correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>BOP: BECKE exchange + OP correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>BVWN: GILL exchange + VWN5 correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>GLYP: GILL exchange + LYP correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>PBEVWN: PBE exchange + VWN6 correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>PBELYP: PBE exchange +LYP correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>PBEOP: PBE exchange + OP correlation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>BHHLYP: HF and BECKE exchange + LYP correlation</string>
-              </property>
-             </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page_10" >
+          <layout class="QGridLayout" >
+           <property name="margin" >
+            <number>9</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item row="2" column="0" >
+            <widget class="QCheckBox" name="scfGenerateCheck" >
+             <property name="text" >
+              <string>Generate UHF Natural Orbitals</string>
+             </property>
             </widget>
+           </item>
+           <item row="0" column="0" >
+            <widget class="QCheckBox" name="scfDirectCheck" >
+             <property name="text" >
+              <string>Direct SCF</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QCheckBox" name="scfComputeCheck" >
+             <property name="text" >
+              <string>Compute Only Changed in Fock Matrix</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" >
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page_11" >
+          <layout class="QGridLayout" >
+           <property name="margin" >
+            <number>9</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item row="1" column="1" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="dftFunctionalCombo" >
+               <item>
+                <property name="text" >
+                 <string>Slater exchange</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Becke 1988 exchange</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>VWN: Vosko-Wilk-Nusair (VWN5) correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>LYP: Lee-Yang-Parr correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>SVWN: Slater exhange + VWN correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>BVWN: BECKE exchange + VWN5 correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>BLYP: BECKE exchange + LYP correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>B3LYP</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Gill 1996 exchange</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Perdew-Burke-Ernzerhof (PBE) exchange</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>OP: One-parameter Progressive correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>SLYP: SLATER + Lee-Yang-Parr (LYP) correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>SOP: SLATER + OP correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>BOP: BECKE exchange + OP correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>BVWN: GILL exchange + VWN5 correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>GLYP: GILL exchange + LYP correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>PBEVWN: PBE exchange + VWN6 correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>PBELYP: PBE exchange +LYP correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>PBEOP: PBE exchange + OP correlation</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>BHHLYP: HF and BECKE exchange + LYP correlation</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="1" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="dftMethodCombo" >
+               <item>
+                <property name="text" >
+                 <string>Grid</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Grid-Free</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </item>
            <item row="1" column="0" >
             <widget class="QLabel" name="label_41" >
@@ -1743,26 +2724,22 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="1" >
-            <widget class="QComboBox" name="comboBox_11" >
-             <item>
-              <property name="text" >
-               <string>Grid</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Grid-Free</string>
-              </property>
-             </item>
-            </widget>
+           <item row="2" column="0" >
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tab_11" >
-          <attribute name="title" >
-           <string>MP2</string>
-          </attribute>
+         <widget class="QWidget" name="page_12" >
           <layout class="QGridLayout" >
            <property name="margin" >
             <number>9</number>
@@ -1770,72 +2747,30 @@
            <property name="spacing" >
             <number>6</number>
            </property>
-           <item row="2" column="0" >
-            <widget class="QLabel" name="label_44" >
-             <property name="text" >
-              <string>Integral Retention Cutoff:</string>
-             </property>
-            </widget>
-           </item>
            <item row="5" column="2" colspan="2" >
-            <widget class="QGroupBox" name="groupBox_7" >
-             <property name="title" >
-              <string>Transformation Method</string>
-             </property>
-             <layout class="QGridLayout" >
-              <property name="margin" >
-               <number>9</number>
-              </property>
-              <property name="spacing" >
-               <number>6</number>
-              </property>
-              <item row="0" column="0" >
-               <widget class="QRadioButton" name="radioButton_14" >
-                <property name="text" >
-                 <string>Segmentad Transformation</string>
-                </property>
-                <property name="checked" >
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0" >
-               <widget class="QRadioButton" name="radioButton_15" >
-                <property name="text" >
-                 <string>Two Phase Bin Sort</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="2" column="1" colspan="2" >
-            <widget class="QLineEdit" name="lineEdit_7" />
-           </item>
-           <item row="1" column="1" colspan="2" >
-            <widget class="QLineEdit" name="lineEdit_5" />
-           </item>
-           <item row="0" column="0" >
-            <widget class="QLabel" name="label_42" >
-             <property name="text" >
-              <string># of Core Electrons:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0" colspan="2" >
-            <widget class="QGroupBox" name="groupBox_8" >
+            <widget class="QGroupBox" name="mp2IntegralGroup" >
              <property name="title" >
               <string>AO Integral Storage</string>
              </property>
-             <layout class="QGridLayout" >
+             <property name="flat" >
+              <bool>true</bool>
+             </property>
+             <layout class="QVBoxLayout" >
               <property name="margin" >
                <number>9</number>
               </property>
               <property name="spacing" >
                <number>6</number>
               </property>
-              <item row="1" column="0" >
-               <widget class="QRadioButton" name="radioButton_17" >
+              <item>
+               <widget class="QRadioButton" name="mp2DuplicatedRadio" >
+                <property name="text" >
+                 <string>Duplicated on Each Node</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="mp2DistributedRadio" >
                 <property name="text" >
                  <string>Distributed Across All Nodes</string>
                 </property>
@@ -1844,21 +2779,7 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0" >
-               <widget class="QRadioButton" name="radioButton_16" >
-                <property name="text" >
-                 <string>Duplicated on Each Node</string>
-                </property>
-               </widget>
-              </item>
              </layout>
-            </widget>
-           </item>
-           <item row="4" column="0" colspan="3" >
-            <widget class="QCheckBox" name="checkBox_26" >
-             <property name="text" >
-              <string>Compute MP2 Properties</string>
-             </property>
             </widget>
            </item>
            <item row="1" column="3" >
@@ -1867,23 +2788,6 @@
               <string>words</string>
              </property>
             </widget>
-           </item>
-           <item row="1" column="0" >
-            <widget class="QLabel" name="label_43" >
-             <property name="text" >
-              <string>Memory:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0" colspan="3" >
-            <widget class="QCheckBox" name="checkBox_25" >
-             <property name="text" >
-              <string>Use Localized Orbitals</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1" colspan="2" >
-            <widget class="QSpinBox" name="spinBox_16" />
            </item>
            <item row="6" column="0" >
             <spacer>
@@ -1898,12 +2802,88 @@
              </property>
             </spacer>
            </item>
+           <item row="1" column="0" >
+            <widget class="QLabel" name="label_43" >
+             <property name="text" >
+              <string>Memory:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" >
+            <widget class="QCheckBox" name="mp2ComputeCheck" >
+             <property name="text" >
+              <string>Compute MP2 Properties</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" >
+            <widget class="QLabel" name="label_44" >
+             <property name="text" >
+              <string>Integral Retention Cutoff:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1" colspan="2" >
+            <widget class="QLineEdit" name="mp2RetentionLine" />
+           </item>
+           <item row="0" column="1" colspan="2" >
+            <widget class="QSpinBox" name="mp2ElectronsSpin" />
+           </item>
+           <item row="3" column="0" >
+            <widget class="QCheckBox" name="mp2LocalizedCheck" >
+             <property name="text" >
+              <string>Use Localized Orbitals</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" colspan="2" >
+            <widget class="QLineEdit" name="mp2MemoryLine" />
+           </item>
+           <item row="0" column="0" >
+            <widget class="QLabel" name="label_42" >
+             <property name="text" >
+              <string># of Core Electrons:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2" >
+            <widget class="QGroupBox" name="mp2TransformationGroup" >
+             <property name="title" >
+              <string>Transformation Method</string>
+             </property>
+             <property name="flat" >
+              <bool>true</bool>
+             </property>
+             <layout class="QGridLayout" >
+              <property name="margin" >
+               <number>9</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item row="1" column="0" >
+               <widget class="QRadioButton" name="mp2TwoRadio" >
+                <property name="text" >
+                 <string>Two Phase Bin Sort</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" >
+               <widget class="QRadioButton" name="mp2SegmentedRadio" >
+                <property name="text" >
+                 <string>Segmented Transformation</string>
+                </property>
+                <property name="checked" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tab_4" >
-          <attribute name="title" >
-           <string>Hessian</string>
-          </attribute>
+         <widget class="QWidget" name="page_13" >
           <layout class="QGridLayout" >
            <property name="margin" >
             <number>9</number>
@@ -1911,15 +2891,8 @@
            <property name="spacing" >
             <number>6</number>
            </property>
-           <item row="1" column="1" >
-            <widget class="QLabel" name="label_26" >
-             <property name="text" >
-              <string>Frequency Scale Factor:</string>
-             </property>
-            </widget>
-           </item>
            <item row="3" column="1" colspan="2" >
-            <widget class="QCheckBox" name="checkBox_18" >
+            <widget class="QCheckBox" name="hessianVibrationalCheck" >
              <property name="text" >
               <string>Vibrational Analysis</string>
              </property>
@@ -1928,86 +2901,82 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="1" >
-            <widget class="QLabel" name="label_25" >
-             <property name="text" >
-              <string>Displacement Size:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="3" >
-            <widget class="QLabel" name="label_27" >
-             <property name="text" >
-              <string>bohrs</string>
-             </property>
-            </widget>
-           </item>
            <item rowspan="2" row="0" column="0" >
-            <widget class="QGroupBox" name="groupBox_3" >
+            <widget class="QGroupBox" name="hessianMethodBox" >
              <property name="title" >
               <string>Method</string>
              </property>
-             <widget class="QRadioButton" name="radioButton_8" >
-              <property name="geometry" >
-               <rect>
-                <x>10</x>
-                <y>50</y>
-                <width>82</width>
-                <height>21</height>
-               </rect>
+             <layout class="QHBoxLayout" >
+              <property name="margin" >
+               <number>9</number>
               </property>
-              <property name="text" >
-               <string>Numeric</string>
+              <property name="spacing" >
+               <number>6</number>
               </property>
-             </widget>
-             <widget class="QRadioButton" name="radioButton_7" >
-              <property name="geometry" >
-               <rect>
-                <x>10</x>
-                <y>20</y>
-                <width>82</width>
-                <height>21</height>
-               </rect>
-              </property>
-              <property name="text" >
-               <string>Analytic</string>
-              </property>
-              <property name="checked" >
-               <bool>true</bool>
-              </property>
-             </widget>
-            </widget>
-           </item>
-           <item row="0" column="2" >
-            <widget class="QLineEdit" name="lineEdit_6" >
-             <property name="text" >
-              <string>0.01</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0" >
-            <widget class="QCheckBox" name="checkBox_16" >
-             <property name="text" >
-              <string>Purify Hessian</string>
-             </property>
+              <item>
+               <widget class="QRadioButton" name="hessianAnalyticRadio" >
+                <property name="text" >
+                 <string>Analytic</string>
+                </property>
+                <property name="checked" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="hessianNumericRadio" >
+                <property name="text" >
+                 <string>Numeric</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
            <item row="2" column="0" >
-            <widget class="QCheckBox" name="checkBox_15" >
+            <widget class="QCheckBox" name="hessianDoubleCheck" >
              <property name="text" >
               <string>Double Differenced Hessian</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1" colspan="2" >
-            <widget class="QCheckBox" name="checkBox_17" >
+            <widget class="QCheckBox" name="hessianPrintCheck" >
              <property name="text" >
               <string>Print Internal Force Constants</string>
              </property>
             </widget>
            </item>
+           <item row="0" column="1" >
+            <widget class="QLabel" name="label_33" >
+             <property name="text" >
+              <string>Displacement Size:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" >
+            <widget class="QCheckBox" name="hessiaPurifyCheck" >
+             <property name="text" >
+              <string>Purify Hessian</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" >
+            <widget class="QLabel" name="label_31" >
+             <property name="text" >
+              <string>Frequency Scale Factor:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3" >
+            <widget class="QLabel" name="label_32" >
+             <property name="text" >
+              <string>bohrs</string>
+             </property>
+            </widget>
+           </item>
            <item row="1" column="2" >
-            <widget class="QSpinBox" name="spinBox" />
+            <widget class="QSpinBox" name="hessianFrequencySpin" />
            </item>
            <item row="4" column="0" >
             <spacer>
@@ -2022,12 +2991,16 @@
              </property>
             </spacer>
            </item>
+           <item row="0" column="2" >
+            <widget class="QDoubleSpinBox" name="hesssianDisplacementSpin" >
+             <property name="decimals" >
+              <number>3</number>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tab_2" >
-          <attribute name="title" >
-           <string>Stat Point</string>
-          </attribute>
+         <widget class="QWidget" name="page_14" >
           <layout class="QGridLayout" >
            <property name="margin" >
             <number>9</number>
@@ -2035,57 +3008,77 @@
            <property name="spacing" >
             <number>6</number>
            </property>
-           <item row="2" column="1" >
-            <widget class="QSpinBox" name="spinBox_3" />
+           <item row="4" column="0" >
+            <widget class="QLabel" name="label_51" >
+             <property name="text" >
+              <string>Optimization Method:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>controlSCFCombo</cstring>
+             </property>
+            </widget>
            </item>
-           <item row="5" column="0" colspan="3" >
-            <widget class="QGroupBox" name="groupBox_4" >
+           <item row="6" column="0" colspan="5" >
+            <widget class="QGroupBox" name="statPointHessianGroup" >
              <property name="title" >
               <string>Initial Hessian</string>
              </property>
-             <layout class="QGridLayout" >
+             <layout class="QHBoxLayout" >
               <property name="margin" >
                <number>9</number>
               </property>
               <property name="spacing" >
                <number>6</number>
               </property>
-              <item row="1" column="0" colspan="3" >
-               <widget class="QCheckBox" name="checkBox_19" >
+              <item>
+               <widget class="QRadioButton" name="radioButton_20" >
                 <property name="text" >
-                 <string>Print Orbs at Each Iteration</string>
+                 <string>Guess (+ define)</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="2" >
-               <widget class="QRadioButton" name="radioButton_11" >
-                <property name="text" >
-                 <string>Calcualte</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1" >
-               <widget class="QRadioButton" name="radioButton_10" >
+              <item>
+               <widget class="QRadioButton" name="radioButton_21" >
                 <property name="text" >
                  <string>Read (from $HESS)</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="0" >
-               <widget class="QRadioButton" name="radioButton_9" >
+              <item>
+               <widget class="QRadioButton" name="radioButton_22" >
                 <property name="text" >
-                 <string>Guess (+ define)</string>
+                 <string>Calculate</string>
                 </property>
                </widget>
               </item>
              </layout>
             </widget>
            </item>
-           <item row="4" column="1" >
-            <widget class="QSpinBox" name="spinBox_5" />
+           <item row="1" column="0" colspan="3" >
+            <widget class="QLabel" name="label_35" >
+             <property name="text" >
+              <string>Gradient Convergence Criteria:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>statPointConvergenceSpin</cstring>
+             </property>
+            </widget>
            </item>
-           <item row="1" column="1" >
-            <widget class="QDoubleSpinBox" name="doubleSpinBox" >
+           <item row="0" column="0" >
+            <widget class="QLabel" name="label_34" >
+             <property name="text" >
+              <string>Maximum Steps:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>statPointStepsSpin</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3" >
+            <widget class="QSpinBox" name="statPointStepsSpin" />
+           </item>
+           <item row="1" column="3" >
+            <widget class="QDoubleSpinBox" name="statPointConvergenceSpin" >
              <property name="decimals" >
               <number>4</number>
              </property>
@@ -2100,68 +3093,33 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="2" >
-            <widget class="QCheckBox" name="checkBox_20" >
-             <property name="text" >
-              <string>Update Step Size</string>
-             </property>
-             <property name="checked" >
-              <bool>true</bool>
-             </property>
-            </widget>
+           <item row="2" column="3" >
+            <widget class="QSpinBox" name="statPointRecaclulateSpin" />
            </item>
-           <item row="4" column="0" >
-            <widget class="QLabel" name="label_35" >
+           <item row="2" column="0" colspan="3" >
+            <widget class="QLabel" name="label_46" >
              <property name="text" >
-              <string>Jump Size:</string>
+              <string>Recalculate Hessan Every:</string>
              </property>
              <property name="buddy" >
-              <cstring>spinBox_5</cstring>
+              <cstring>statPointRecaclulateSpin</cstring>
              </property>
             </widget>
            </item>
-           <item row="1" column="0" >
-            <widget class="QLabel" name="label_29" >
-             <property name="text" >
-              <string>Gradient Convergence Criteria:</string>
+           <item row="7" column="0" >
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Vertical</enum>
              </property>
-             <property name="buddy" >
-              <cstring>doubleSpinBox</cstring>
+             <property name="sizeHint" >
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
              </property>
-            </widget>
+            </spacer>
            </item>
-           <item row="0" column="0" >
-            <widget class="QLabel" name="label_28" >
-             <property name="text" >
-              <string>Maximum Steps:</string>
-             </property>
-             <property name="buddy" >
-              <cstring>spinBox_2</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="2" >
-            <widget class="QCheckBox" name="checkBox_21" >
-             <property name="text" >
-              <string>Stationary Point</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1" >
-            <widget class="QComboBox" name="comboBox_20" >
-             <item>
-              <property name="text" >
-               <string>Quadratic Approximation</string>
-              </property>
-             </item>
-             <item>
-              <property name="text" >
-               <string>Schlegel</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item rowspan="3" row="0" column="2" >
+           <item rowspan="4" row="0" column="4" >
             <widget class="QGroupBox" name="groupBox_5" >
              <property name="title" >
               <string>Step Size</string>
@@ -2174,90 +3132,114 @@
                <number>6</number>
               </property>
               <item row="2" column="0" >
-               <widget class="QLabel" name="label_33" >
+               <widget class="QLabel" name="label_47" >
                 <property name="text" >
                  <string>Maximum:</string>
-                </property>
-                <property name="buddy" >
-                 <cstring>spinBox_4</cstring>
                 </property>
                </widget>
               </item>
               <item row="1" column="0" >
-               <widget class="QLabel" name="label_32" >
+               <widget class="QLabel" name="label_48" >
                 <property name="text" >
                  <string>Minimum:</string>
                 </property>
                 <property name="buddy" >
-                 <cstring>doubleSpinBox_3</cstring>
+                 <cstring>statPointMinSpin</cstring>
                 </property>
                </widget>
               </item>
               <item row="0" column="0" >
-               <widget class="QLabel" name="label_31" >
+               <widget class="QLabel" name="label_49" >
                 <property name="text" >
                  <string>Initial:</string>
                 </property>
                 <property name="buddy" >
-                 <cstring>doubleSpinBox_2</cstring>
+                 <cstring>statPointInitialSpin</cstring>
                 </property>
                </widget>
               </item>
-              <item row="2" column="1" >
-               <widget class="QSpinBox" name="spinBox_4" />
-              </item>
               <item row="1" column="1" >
-               <widget class="QDoubleSpinBox" name="doubleSpinBox_3" >
+               <widget class="QDoubleSpinBox" name="statPointMinSpin" >
                 <property name="singleStep" >
                  <double>0.010000000000000</double>
                 </property>
                </widget>
               </item>
               <item row="0" column="1" >
-               <widget class="QDoubleSpinBox" name="doubleSpinBox_2" >
+               <widget class="QDoubleSpinBox" name="statPointInitialSpin" >
                 <property name="singleStep" >
                  <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
+              <item row="2" column="1" >
+               <widget class="QDoubleSpinBox" name="statPointMaxSpin" />
+              </item>
              </layout>
             </widget>
            </item>
-           <item row="0" column="1" >
-            <widget class="QSpinBox" name="spinBox_2" />
-           </item>
-           <item row="3" column="0" >
-            <widget class="QLabel" name="label_34" >
+           <item row="5" column="0" >
+            <widget class="QCheckBox" name="statPointStationaryCheck" >
              <property name="text" >
-              <string>Optimization Method:</string>
-             </property>
-             <property name="buddy" >
-              <cstring>comboBox_20</cstring>
+              <string>Stationary Point</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="0" >
-            <widget class="QLabel" name="label_30" >
+           <item row="5" column="3" >
+            <widget class="QLabel" name="label_50" >
              <property name="text" >
-              <string>Recalculate Hessan Every:</string>
-             </property>
-             <property name="buddy" >
-              <cstring>spinBox_3</cstring>
+              <string>Jump Size:</string>
              </property>
             </widget>
            </item>
-           <item row="6" column="0" >
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Vertical</enum>
+           <item row="5" column="4" >
+            <widget class="QSpinBox" name="statPointJumpSpin" />
+           </item>
+           <item row="3" column="0" colspan="2" >
+            <widget class="QCheckBox" name="statPointPrintCheck" >
+             <property name="text" >
+              <string>Print Orbs at Each Iteration</string>
              </property>
-             <property name="sizeHint" >
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
+            </widget>
+           </item>
+           <item row="3" column="2" colspan="2" >
+            <widget class="QCheckBox" name="statPointUpdateCheck" >
+             <property name="text" >
+              <string>Update Step Size</string>
              </property>
-            </spacer>
+             <property name="checked" >
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1" colspan="4" >
+            <widget class="QComboBox" name="comboBox_27" >
+             <item>
+              <property name="text" >
+               <string>Newton-Raphson</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Rational Function Optimization</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Quadratic Approximation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Schlegel (quasi-NR)</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Constrained Optimization</string>
+              </property>
+             </item>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -2265,251 +3247,12 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="page_2" >
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>9</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item row="0" column="0" >
-        <widget class="QFrame" name="frame" >
-         <property name="frameShape" >
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow" >
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>9</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item row="1" column="2" >
-           <widget class="QComboBox" name="comboBox_2" >
-            <item>
-             <property name="text" >
-              <string>RHF</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="3" column="3" >
-           <widget class="QComboBox" name="comboBox_7" >
-            <item>
-             <property name="text" >
-              <string>Neutral</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="1" column="0" >
-           <widget class="QLabel" name="label_2" >
-            <property name="text" >
-             <string>With:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy" >
-             <cstring>comboBox_2</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0" >
-           <widget class="QLabel" name="label_5" >
-            <property name="text" >
-             <string>On:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy" >
-             <cstring>comboBox_6</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0" >
-           <widget class="QLabel" name="label_6" >
-            <property name="text" >
-             <string>Time Limit:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy" >
-             <cstring>spinBox_17</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="3" >
-           <widget class="QLabel" name="label_7" >
-            <property name="text" >
-             <string>Hour(s)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" >
-           <widget class="QLabel" name="label" >
-            <property name="text" >
-             <string>Calculate</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy" >
-             <cstring>comboBox</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0" >
-           <widget class="QLabel" name="label_9" >
-            <property name="text" >
-             <string>Memory:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy" >
-             <cstring>spinBox_18</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2" >
-           <widget class="QComboBox" name="comboBox" >
-            <item>
-             <property name="text" >
-              <string>Single Point Entry</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="1" column="3" >
-           <widget class="QComboBox" name="comboBox_4" >
-            <item>
-             <property name="text" >
-              <string>STG-3G</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="3" column="2" >
-           <widget class="QComboBox" name="comboBox_6" >
-            <item>
-             <property name="text" >
-              <string>Singlet</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="2" column="0" >
-           <widget class="QLabel" name="label_3" >
-            <property name="text" >
-             <string>In:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy" >
-             <cstring>comboBox_3</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="3" >
-           <widget class="QLabel" name="label_8" >
-            <property name="text" >
-             <string>MegaByte (MB)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2" >
-           <widget class="QComboBox" name="comboBox_3" >
-            <item>
-             <property name="text" >
-              <string>Water</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="4" column="2" >
-           <widget class="QSpinBox" name="spinBox_17" />
-          </item>
-          <item row="5" column="2" >
-           <widget class="QSpinBox" name="spinBox_18" />
-          </item>
-          <item row="6" column="1" >
-           <spacer>
-            <property name="orientation" >
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" >
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
     </widget>
    </item>
-   <item row="0" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
+   <item>
+    <widget class="QTextEdit" name="textEdit" />
    </item>
-   <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="pushButton_5" >
-       <property name="text" >
-        <string>Basic</string>
-       </property>
-       <property name="checkable" >
-        <bool>true</bool>
-       </property>
-       <property name="checked" >
-        <bool>true</bool>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_6" >
-       <property name="text" >
-        <string>Advanced</string>
-       </property>
-       <property name="checked" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="4" column="0" colspan="2" >
+   <item>
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -2537,11 +3280,11 @@
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeType" >
-        <enum>QSizePolicy::Maximum</enum>
+        <enum>QSizePolicy::MinimumExpanding</enum>
        </property>
        <property name="sizeHint" >
         <size>
-         <width>40</width>
+         <width>10</width>
          <height>20</height>
         </size>
        </property>
@@ -2562,16 +3305,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="3" column="0" colspan="2" >
-    <widget class="QTextEdit" name="textEdit" />
-   </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="Line" name="line" >
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
