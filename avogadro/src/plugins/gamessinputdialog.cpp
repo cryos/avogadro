@@ -1,5 +1,5 @@
 /**********************************************************************
-  GamessInputBuilder - GAMESS Input Deck Builder for Avogadro
+  GamessInputDialog - GAMESS Input Deck Dialog for Avogadro
 
   Copyright (C) 2006 by Donald Ephraim Curtis
   Copyright (C) 2006 by Geoffrey R. Hutchison
@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "gamessinputbuilder.h"
+#include "gamessinputdialog.h"
 
 #include <QPushButton>
 #include <QButtonGroup>
@@ -33,7 +33,7 @@
 
 using namespace Avogadro;
 
-GamessInputBuilder::GamessInputBuilder( GamessInputData *inputData, QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f ), m_inputData(NULL), m_advancedChanged( false )
+GamessInputDialog::GamessInputDialog( GamessInputData *inputData, QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f ), m_inputData(NULL), m_advancedChanged( false )
 {
   setInputData(inputData);
 
@@ -41,7 +41,7 @@ GamessInputBuilder::GamessInputBuilder( GamessInputData *inputData, QWidget *par
   m_stackedLayout = new QStackedLayout;
   setLayout( m_mainLayout );
 
-  setWindowTitle( tr( "GAMESS Input Deck Builder" ) );
+  setWindowTitle( tr( "GAMESS Input Deck Dialog" ) );
 
   createModes();
   createBasic();
@@ -61,10 +61,10 @@ GamessInputBuilder::GamessInputBuilder( GamessInputData *inputData, QWidget *par
   updatePreviewText();
 }
 
-GamessInputBuilder::~GamessInputBuilder()
+GamessInputDialog::~GamessInputDialog()
 {}
 
-void GamessInputBuilder::setInputData(GamessInputData *inputData)
+void GamessInputDialog::setInputData(GamessInputData *inputData)
 {
   if(!inputData) return;
 
@@ -82,7 +82,7 @@ void GamessInputBuilder::setInputData(GamessInputData *inputData)
   connect(m_inputData->m_molecule, SIGNAL(updated()), this, SLOT(updatePreviewText()));
 }
 
-void GamessInputBuilder::createBasic()
+void GamessInputDialog::createBasic()
 {
   int row=0;
   QHBoxLayout *layout;
@@ -236,7 +236,7 @@ void GamessInputBuilder::createBasic()
   basicLayout->addWidget( m_basicMemoryUnitsLabel, row, 2 );
 }
 
-void GamessInputBuilder::createAdvanced()
+void GamessInputDialog::createAdvanced()
 {
   QWidget *widget;
 
@@ -302,12 +302,12 @@ void GamessInputBuilder::createAdvanced()
 
 }
 
-void GamessInputBuilder::createPreview()
+void GamessInputDialog::createPreview()
 {
   m_previewText = new QTextEdit( this );
 }
 
-void GamessInputBuilder::createModes()
+void GamessInputDialog::createModes()
 {
   m_modeButtons = new QButtonGroup( this );
   m_modeButtons->setExclusive( true );
@@ -328,7 +328,7 @@ void GamessInputBuilder::createModes()
   m_modeLayout->addStretch();
 }
 
-void GamessInputBuilder::createButtons()
+void GamessInputDialog::createButtons()
 {
   QPushButton *button;
   // Button Bar
@@ -349,19 +349,19 @@ void GamessInputBuilder::createButtons()
   m_buttonLayout->addWidget( button );
 }
 
-void GamessInputBuilder::basicChanged()
+void GamessInputDialog::basicChanged()
 {
   m_basicWidget->setEnabled( true );
   m_advancedChanged = false;
 }
 
-void GamessInputBuilder::advancedChanged()
+void GamessInputDialog::advancedChanged()
 {
   m_basicWidget->setEnabled( false );
   m_advancedChanged = true;
 }
 
-void GamessInputBuilder::setBasicDefaults()
+void GamessInputDialog::setBasicDefaults()
 {
   // These rely on the advanced defaults
   setAdvancedDefaults();
@@ -393,7 +393,7 @@ void GamessInputBuilder::setBasicDefaults()
 //   updateAdvancedWidgets();
 
 }
-void GamessInputBuilder::setAdvancedDefaults()
+void GamessInputDialog::setAdvancedDefaults()
 {
   setBasisDefaults();
   setControlDefaults();
@@ -408,7 +408,7 @@ void GamessInputBuilder::setAdvancedDefaults()
   setStatPointDefaults();
 }
 
-void GamessInputBuilder::setBasisDefaults()
+void GamessInputDialog::setBasisDefaults()
 {
   m_inputData->Basis->InitData();
   updateBasisWidgets();
@@ -422,7 +422,7 @@ void GamessInputBuilder::setBasisDefaults()
 //   m_basisDiffuseSCheck->setChecked( false );
 }
 
-void GamessInputBuilder::setControlDefaults()
+void GamessInputDialog::setControlDefaults()
 {
   m_inputData->Control->InitControlPaneData();
   updateControlWidgets();
@@ -439,7 +439,7 @@ void GamessInputBuilder::setControlDefaults()
 //   m_controlCCCombo->setCurrentIndex( 0 );
 }
 
-void GamessInputBuilder::setDataDefaults()
+void GamessInputDialog::setDataDefaults()
 {
   m_inputData->Data->InitData();
   updateDataWidgets();
@@ -452,7 +452,7 @@ void GamessInputBuilder::setDataDefaults()
 //   m_dataSymmetryCheck->setChecked( true );
 }
 
-void GamessInputBuilder::setSystemDefaults()
+void GamessInputDialog::setSystemDefaults()
 {
   m_inputData->System->InitData();
   updateSystemWidgets();
@@ -469,7 +469,7 @@ void GamessInputBuilder::setSystemDefaults()
 //   m_systemExternalCheck->setChecked( false );
 }
 
-void GamessInputBuilder::setMOGuessDefaults()
+void GamessInputDialog::setMOGuessDefaults()
 {
   m_inputData->Guess->InitData();
   updateMOGuessWidgets();
@@ -478,7 +478,7 @@ void GamessInputBuilder::setMOGuessDefaults()
 //   m_moGuessRotateCheck->setChecked( false );
 }
 
-void GamessInputBuilder::setMiscDefaults()
+void GamessInputDialog::setMiscDefaults()
 {
   m_inputData->Control->InitProgPaneData();
   m_inputData->Basis->SetWaterSolvate(false);
@@ -490,7 +490,7 @@ void GamessInputBuilder::setMiscDefaults()
 //   m_miscForceButtons->button( 0 )->setChecked( true );
 }
 
-void GamessInputBuilder::setSCFDefaults()
+void GamessInputDialog::setSCFDefaults()
 {
   m_inputData->SCF->InitData();
   updateSCFWidgets();
@@ -499,7 +499,7 @@ void GamessInputBuilder::setSCFDefaults()
 //   m_scfGenerateCheck->setChecked( false );
 }
 
-void GamessInputBuilder::setDFTDefaults()
+void GamessInputDialog::setDFTDefaults()
 {
   m_inputData->DFT->InitData();
   updateDFTWidgets();
@@ -507,7 +507,7 @@ void GamessInputBuilder::setDFTDefaults()
 //   m_dftFunctionalCombo->setCurrentIndex(0);
 }
 
-void GamessInputBuilder::setMP2Defaults()
+void GamessInputDialog::setMP2Defaults()
 {
   m_inputData->MP2->InitData();
   updateMP2Widgets();
@@ -522,7 +522,7 @@ void GamessInputBuilder::setMP2Defaults()
 //   m_mp2ComputeCheck->setChecked(false);
 }
 
-void GamessInputBuilder::setHessianDefaults()
+void GamessInputDialog::setHessianDefaults()
 {
   m_inputData->Hessian->InitData();
   updateHessianWidgets();
@@ -536,7 +536,7 @@ void GamessInputBuilder::setHessianDefaults()
 //   m_hessianScaleLine->setText(tr("1"));
 }
 
-void GamessInputBuilder::setStatPointDefaults()
+void GamessInputDialog::setStatPointDefaults()
 {
   m_inputData->StatPt->InitData();
   updateStatPointWidgets();
@@ -558,12 +558,12 @@ void GamessInputBuilder::setStatPointDefaults()
 //   m_statPointJumpLine->setText(tr("1"));
 }
 
-void GamessInputBuilder::blockChildrenSignals( QLayout *layout, bool block )
+void GamessInputDialog::blockChildrenSignals( QLayout *layout, bool block )
 {
   blockChildrenSignals( layout->parentWidget(), block );
 }
 
-void GamessInputBuilder::blockChildrenSignals( QObject *object, bool block )
+void GamessInputDialog::blockChildrenSignals( QObject *object, bool block )
 {
   if ( !object ) return;
 
@@ -577,7 +577,7 @@ void GamessInputBuilder::blockChildrenSignals( QObject *object, bool block )
   }
 }
 
-void GamessInputBuilder::blockAdvancedSignals( bool block )
+void GamessInputDialog::blockAdvancedSignals( bool block )
 {
   int count = m_advancedWidget->count();
   for ( int i = 0; i < count; i++ )
@@ -586,14 +586,14 @@ void GamessInputBuilder::blockAdvancedSignals( bool block )
   }
 }
 
-void GamessInputBuilder::updatePreviewText()
+void GamessInputDialog::updatePreviewText()
 {
   stringstream str;
   m_inputData->WriteInputFile( str );
   m_previewText->setText( QString::fromAscii( str.str().c_str() ) );
 }
 
-void GamessInputBuilder::updateBasicWidgets()
+void GamessInputDialog::updateBasicWidgets()
 {
   // These rely on the advanced defaults
   setAdvancedDefaults();
@@ -611,7 +611,7 @@ void GamessInputBuilder::updateBasicWidgets()
   m_basicWidget->setEnabled( true );
 }
 
-void GamessInputBuilder::updateAdvancedWidgets()
+void GamessInputDialog::updateAdvancedWidgets()
 {
   updateBasisWidgets();
   updateControlWidgets();
@@ -635,7 +635,7 @@ void GamessInputBuilder::updateAdvancedWidgets()
   m_advancedWidget->setTabEnabled( m_scfIndex, m_inputData->Control->GetSCFType() <= 4 );
 }
 
-void GamessInputBuilder::updateBasisWidgets()
+void GamessInputDialog::updateBasisWidgets()
 {
   blockChildrenSignals( m_basisLayout, true );
   int basis = m_inputData->Basis->GetBasis();
@@ -718,7 +718,7 @@ void GamessInputBuilder::updateBasisWidgets()
   blockChildrenSignals( m_basisLayout, false );
 }
 
-void GamessInputBuilder::updateControlWidgets()
+void GamessInputDialog::updateControlWidgets()
 {
   blockChildrenSignals( m_controlLayout, true );
   short mp2 = m_inputData->Control->GetMPLevel();
@@ -836,7 +836,7 @@ void GamessInputBuilder::updateControlWidgets()
   blockChildrenSignals( m_controlLayout, false );
 }
 
-void GamessInputBuilder::updateDataWidgets()
+void GamessInputDialog::updateDataWidgets()
 {
   blockChildrenSignals( m_dataLayout, true );
   int itemValue;
@@ -871,7 +871,7 @@ void GamessInputBuilder::updateDataWidgets()
   blockChildrenSignals( m_dataLayout, false );
 }
 
-void GamessInputBuilder::updateSystemWidgets()
+void GamessInputDialog::updateSystemWidgets()
 {
   blockChildrenSignals( m_systemLayout, true );
 
@@ -911,7 +911,7 @@ void GamessInputBuilder::updateSystemWidgets()
   blockChildrenSignals( m_systemLayout, false );
 }
 
-void GamessInputBuilder::updatePointGroupOrderWidgets()
+void GamessInputDialog::updatePointGroupOrderWidgets()
 {
   m_dataOrderCombo->blockSignals( true );
   //Point group order - only applicable to certain point groups
@@ -932,7 +932,7 @@ void GamessInputBuilder::updatePointGroupOrderWidgets()
   m_dataOrderCombo->blockSignals( false );
 }
 
-void GamessInputBuilder::updateMOGuessWidgets()
+void GamessInputDialog::updateMOGuessWidgets()
 {
   blockChildrenSignals( m_moGuessLayout, true );
   long guess = m_inputData->Guess->GetGuess();
@@ -951,7 +951,7 @@ void GamessInputBuilder::updateMOGuessWidgets()
   blockChildrenSignals( m_moGuessLayout, false );
 }
 
-void GamessInputBuilder::updateMiscWidgets()
+void GamessInputDialog::updateMiscWidgets()
 {
   blockChildrenSignals( m_miscLayout, true );
 
@@ -985,7 +985,7 @@ void GamessInputBuilder::updateMiscWidgets()
   blockChildrenSignals( m_miscLayout, false );
 }
 
-void GamessInputBuilder::updateSCFWidgets()
+void GamessInputDialog::updateSCFWidgets()
 {
   blockChildrenSignals( m_scfLayout, true );
 
@@ -1003,14 +1003,14 @@ void GamessInputBuilder::updateSCFWidgets()
   blockChildrenSignals( m_scfLayout, false );
 }
 
-void GamessInputBuilder::updateDFTWidgets()
+void GamessInputDialog::updateDFTWidgets()
 {
   blockChildrenSignals( m_scfLayout, true );
 
   blockChildrenSignals( m_scfLayout, false );
 }
 
-void GamessInputBuilder::updateMP2Widgets()
+void GamessInputDialog::updateMP2Widgets()
 {
   blockChildrenSignals( m_mp2Layout, true );
 
@@ -1057,7 +1057,7 @@ void GamessInputBuilder::updateMP2Widgets()
   blockChildrenSignals( m_mp2Layout, false );
 }
 
-void GamessInputBuilder::updateHessianWidgets()
+void GamessInputDialog::updateHessianWidgets()
 {
   blockChildrenSignals( m_hessianLayout, true );
 
@@ -1092,7 +1092,7 @@ void GamessInputBuilder::updateHessianWidgets()
   blockChildrenSignals( m_hessianLayout, false );
 }
 
-void GamessInputBuilder::updateStatPointWidgets()
+void GamessInputDialog::updateStatPointWidgets()
 {
   blockChildrenSignals( m_statPointLayout, true );
 
@@ -1147,7 +1147,7 @@ void GamessInputBuilder::updateStatPointWidgets()
 }
 
 // Basis Tab
-void GamessInputBuilder::createBasis()
+void GamessInputDialog::createBasis()
 {
   m_basisLayout = new QGridLayout;
 
@@ -1326,7 +1326,7 @@ void GamessInputBuilder::createBasis()
 
 }
 
-void GamessInputBuilder::createControl()
+void GamessInputDialog::createControl()
 {
   m_controlLayout = new QGridLayout;
 
@@ -1568,7 +1568,7 @@ void GamessInputBuilder::createControl()
 
 }
 
-void GamessInputBuilder::createData()
+void GamessInputDialog::createData()
 {
   m_dataLayout = new QGridLayout;
 
@@ -1734,7 +1734,7 @@ void GamessInputBuilder::createData()
 
 }
 
-void GamessInputBuilder::createSystem()
+void GamessInputDialog::createSystem()
 {
   m_systemLayout = new QGridLayout;
 
@@ -1917,7 +1917,7 @@ void GamessInputBuilder::createSystem()
   row++;
 }
 
-void GamessInputBuilder::createMOGuess()
+void GamessInputDialog::createMOGuess()
 {
   m_moGuessLayout = new QGridLayout;
 
@@ -1974,7 +1974,7 @@ void GamessInputBuilder::createMOGuess()
 
 }
 
-void GamessInputBuilder::createMisc()
+void GamessInputDialog::createMisc()
 {
   m_miscLayout = new QGridLayout;
 
@@ -2070,7 +2070,7 @@ void GamessInputBuilder::createMisc()
   m_miscLayout->addWidget( m_miscWaterCheck, row, 0, Qt::AlignCenter);
 }
 
-void GamessInputBuilder::createSCF()
+void GamessInputDialog::createSCF()
 {
   m_scfLayout = new QGridLayout;
 
@@ -2105,7 +2105,7 @@ void GamessInputBuilder::createSCF()
   m_scfLayout->addLayout( layout, 0, 0, Qt::AlignCenter );
 }
 
-void GamessInputBuilder::createDFT()
+void GamessInputDialog::createDFT()
 {
   m_dftLayout = new QGridLayout;
 
@@ -2173,7 +2173,7 @@ void GamessInputBuilder::createDFT()
 
 }
 
-void GamessInputBuilder::createMP2()
+void GamessInputDialog::createMP2()
 {
   m_mp2Layout = new QGridLayout;
   QHBoxLayout *layout;
@@ -2307,7 +2307,7 @@ void GamessInputBuilder::createMP2()
 
 }
 
-void GamessInputBuilder::createHessian()
+void GamessInputDialog::createHessian()
 {
   m_hessianLayout = new QGridLayout;
   QHBoxLayout *hlayout;
@@ -2418,7 +2418,7 @@ void GamessInputBuilder::createHessian()
   
 }
 
-void GamessInputBuilder::createStatPoint()
+void GamessInputDialog::createStatPoint()
 {
   m_statPointLayout = new QGridLayout;
   QVBoxLayout *vlayout;
@@ -2614,7 +2614,7 @@ void GamessInputBuilder::createStatPoint()
   row++;
 }
 
-void GamessInputBuilder::setMode( int mode )
+void GamessInputDialog::setMode( int mode )
 {
   if ( mode == 0 && m_advancedChanged )
   {
@@ -2635,7 +2635,7 @@ void GamessInputBuilder::setMode( int mode )
   m_stackedLayout->setCurrentIndex( mode );
 }
 
-void GamessInputBuilder::resetClicked()
+void GamessInputDialog::resetClicked()
 {
   int current = m_stackedLayout->currentIndex();
   if( current )
@@ -2667,7 +2667,7 @@ void GamessInputBuilder::resetClicked()
   }
 }
 
-void GamessInputBuilder::defaultsClicked()
+void GamessInputDialog::defaultsClicked()
 {
   int current = m_stackedLayout->currentIndex();
   if( current )
@@ -2719,7 +2719,7 @@ void GamessInputBuilder::defaultsClicked()
   updatePreviewText();
 }
 
-void GamessInputBuilder::exportClicked()
+void GamessInputDialog::exportClicked()
 {
   QString fileName = QFileDialog::getSaveFileName(this, tr("Export Input Deck"),
       "", tr("GAMESS Input Deck (*.inp)"));
@@ -2732,13 +2732,13 @@ void GamessInputBuilder::exportClicked()
   file.write(m_previewText->toPlainText().toUtf8());
 }
 
-void GamessInputBuilder::closeClicked()
+void GamessInputDialog::closeClicked()
 {
   close();
 }
 
 // Basic Slots
-void GamessInputBuilder::setBasicCalculateIndex( int index )
+void GamessInputDialog::setBasicCalculateIndex( int index )
 {
 
   TypeOfRun rti = Energy;
@@ -2760,7 +2760,7 @@ void GamessInputBuilder::setBasicCalculateIndex( int index )
   m_inputData->Control->SetRunType( rti );
 }
 
-void GamessInputBuilder::setBasicWithLeftIndex( int index )
+void GamessInputDialog::setBasicWithLeftIndex( int index )
 {
   int basis = 0;
   CCRunType cc = CC_None;
@@ -2813,7 +2813,7 @@ void GamessInputBuilder::setBasicWithLeftIndex( int index )
   m_basicWithRightCombo->setEnabled( er );
 }
 
-void GamessInputBuilder::setBasicWithRightIndex( int index )
+void GamessInputDialog::setBasicWithRightIndex( int index )
 {
   GAMESS_BasisSet basis = GAMESS_BS_STO;
   int gauss = 3;
@@ -2895,12 +2895,12 @@ void GamessInputBuilder::setBasicWithRightIndex( int index )
   m_inputData->Basis->SetECPPotential( ecp );
 }
 
-void GamessInputBuilder::setBasicInIndex( int index )
+void GamessInputDialog::setBasicInIndex( int index )
 {
   m_inputData->Basis->SetWaterSolvate(index);
 }
 
-void GamessInputBuilder::setBasicOnLeftIndex( int index )
+void GamessInputDialog::setBasicOnLeftIndex( int index )
 {
   GAMESS_SCFType scf = GAMESSDefaultSCFType;
   int mult = 0;
@@ -2924,7 +2924,7 @@ void GamessInputBuilder::setBasicOnLeftIndex( int index )
   m_inputData->Control->SetMultiplicity( mult );
 }
 
-void GamessInputBuilder::setBasicOnRightIndex( int index )
+void GamessInputDialog::setBasicOnRightIndex( int index )
 {
   int charge = 0;
   switch ( index )
@@ -2954,12 +2954,12 @@ void GamessInputBuilder::setBasicOnRightIndex( int index )
   m_inputData->Control->SetCharge( charge );
 }
 
-void GamessInputBuilder::setBasicTimeLimitText( const QString &text )
+void GamessInputDialog::setBasicTimeLimitText( const QString &text )
 {
   m_inputData->System->SetConvertedTime( text.toDouble() );
 }
 
-void GamessInputBuilder::setBasicMemoryText( const QString &text )
+void GamessInputDialog::setBasicMemoryText( const QString &text )
 {
   // this should be the default
   // m_inputData->System->SetMemUnits(megaBytesUnit);
@@ -2967,7 +2967,7 @@ void GamessInputBuilder::setBasicMemoryText( const QString &text )
 }
 
 // Basis Slots
-void GamessInputBuilder::setBasisSetIndex( int index )
+void GamessInputDialog::setBasisSetIndex( int index )
 {
   int basis = 0;
   int gauss = 0;
@@ -3007,86 +3007,86 @@ void GamessInputBuilder::setBasisSetIndex( int index )
   updateAdvancedWidgets();
 }
 
-void GamessInputBuilder::setBasisECP( int index )
+void GamessInputDialog::setBasisECP( int index )
 {
   m_inputData->Basis->SetECPPotential( index );
 }
 
-void GamessInputBuilder::setBasisD( int index )
+void GamessInputDialog::setBasisD( int index )
 {
   m_inputData->Basis->SetNumDFuncs( index );
   updateAdvancedWidgets();
 }
 
-void GamessInputBuilder::setBasisF( int index )
+void GamessInputDialog::setBasisF( int index )
 {
   m_inputData->Basis->SetNumFFuncs( index );
   updateAdvancedWidgets();
 }
 
-void GamessInputBuilder::setBasisLight( int index )
+void GamessInputDialog::setBasisLight( int index )
 {
   m_inputData->Basis->SetNumPFuncs( index );
   updateAdvancedWidgets();
 }
 
-void GamessInputBuilder::setBasisPolar( int index )
+void GamessInputDialog::setBasisPolar( int index )
 {
   m_inputData->Basis->SetPolar(( GAMESS_BS_Polarization )( index ) );
 }
 
-void GamessInputBuilder::setBasisDiffuseL( bool state )
+void GamessInputDialog::setBasisDiffuseL( bool state )
 {
   m_inputData->Basis->SetDiffuseSP( state );
 }
 
-void GamessInputBuilder::setBasisDiffuseS( bool state )
+void GamessInputDialog::setBasisDiffuseS( bool state )
 {
   m_inputData->Basis->SetDiffuseS( state );
 }
 
 
 // Control Slots
-void GamessInputBuilder::setControlRun( int index )
+void GamessInputDialog::setControlRun( int index )
 {
   m_inputData->Control->SetRunType(( TypeOfRun )( index+1 ) );
   updateAdvancedWidgets();
 }
 
-void GamessInputBuilder::setControlSCF( int index )
+void GamessInputDialog::setControlSCF( int index )
 {
   m_inputData->Control->SetSCFType(( GAMESS_SCFType )( index +1 ) );
   updateAdvancedWidgets();
 }
 
-void GamessInputBuilder::setControlLocalization( int index )
+void GamessInputDialog::setControlLocalization( int index )
 {
   m_inputData->Control->SetLocal(( GAMESS_Localization )index );
   updateAdvancedWidgets();
 }
 
-void GamessInputBuilder::setControlExec( int index )
+void GamessInputDialog::setControlExec( int index )
 {
   m_inputData->Control->SetExeType( index );
 }
 
-void GamessInputBuilder::setControlMaxSCF( const QString &text )
+void GamessInputDialog::setControlMaxSCF( const QString &text )
 {
   m_inputData->Control->SetMaxIt( text.toInt() );
 }
 
-void GamessInputBuilder::setControlCharge( const QString &text )
+void GamessInputDialog::setControlCharge( const QString &text )
 {
   m_inputData->Control->SetCharge( text.toInt() );
 }
 
-void GamessInputBuilder::setControlMultiplicity( const QString &text )
+void GamessInputDialog::setControlMultiplicity( const QString &text )
 {
   m_inputData->Control->SetMultiplicity( text.toInt() );
   updateMOGuessWidgets();
 }
 
-void GamessInputBuilder::setControlMP2( bool state )
+void GamessInputDialog::setControlMP2( bool state )
 {
   if ( state )
     m_inputData->Control->SetMPLevel( 2 );
@@ -3096,19 +3096,19 @@ void GamessInputBuilder::setControlMP2( bool state )
   updateAdvancedWidgets();
 }
 
-void GamessInputBuilder::setControlDFT( bool state )
+void GamessInputDialog::setControlDFT( bool state )
 {
   m_inputData->Control->UseDFT( state );
   updateAdvancedWidgets();
 }
 
-void GamessInputBuilder::setControlCI( int index )
+void GamessInputDialog::setControlCI( int index )
 {
   m_inputData->Control->SetCIType(( CIRunType )index );
   updateAdvancedWidgets();
 }
 
-void GamessInputBuilder::setControlCC( int index )
+void GamessInputDialog::setControlCC( int index )
 {
   m_inputData->Control->SetCCType(( CCRunType )index );
   updateAdvancedWidgets();
@@ -3116,51 +3116,51 @@ void GamessInputBuilder::setControlCC( int index )
 
 
 // Data Slots
-void GamessInputBuilder::setDataTitle( const QString &text )
+void GamessInputDialog::setDataTitle( const QString &text )
 {
   m_inputData->Data->SetTitle( text.toAscii().constData() );
 }
 
-void GamessInputBuilder::setDataCoordinate( int index )
+void GamessInputDialog::setDataCoordinate( int index )
 {
   m_inputData->Data->SetCoordType(( CoordinateType )( index+1 ) );
   updateAdvancedWidgets();
 }
 
-void GamessInputBuilder::setDataUnits( int index )
+void GamessInputDialog::setDataUnits( int index )
 {
   m_inputData->Data->SetUnits( index );
 }
 
-void GamessInputBuilder::setDataZMatrix( const QString &text )
+void GamessInputDialog::setDataZMatrix( const QString &text )
 {
   m_inputData->Data->SetNumZVar( text.toInt() );
 }
 
-void GamessInputBuilder::setDataPoint( int index )
+void GamessInputDialog::setDataPoint( int index )
 {
   m_inputData->Data->SetPointGroup(( GAMESSPointGroup )( index+1 ) );
   updatePointGroupOrderWidgets();
 }
 
-void GamessInputBuilder::setDataOrder( int index )
+void GamessInputDialog::setDataOrder( int index )
 {
   m_inputData->Data->SetPointGroupOrder( index+2 );
 }
 
-void GamessInputBuilder::setDataSymmetry( bool state )
+void GamessInputDialog::setDataSymmetry( bool state )
 {
   m_inputData->Data->SetUseSym( state );
 }
 
 
 // System Slots
-void GamessInputBuilder::setSystemTime( const QString &text )
+void GamessInputDialog::setSystemTime( const QString &text )
 {
   m_inputData->System->SetConvertedTime( text.toDouble() );
 }
 
-void GamessInputBuilder::setSystemTimeUnits( int index )
+void GamessInputDialog::setSystemTimeUnits( int index )
 {
   m_inputData->System->SetTimeUnits(( TimeUnit )( index+1 ) );
   QString str = QString::number( m_inputData->System->GetConvertedTime() );
@@ -3168,59 +3168,59 @@ void GamessInputBuilder::setSystemTimeUnits( int index )
 
 }
 
-void GamessInputBuilder::setSystemMemory( const QString &text )
+void GamessInputDialog::setSystemMemory( const QString &text )
 {
   m_inputData->System->SetConvertedMem( text.toDouble() );
 }
 
-void GamessInputBuilder::setSystemMemoryUnits( int index )
+void GamessInputDialog::setSystemMemoryUnits( int index )
 {
   m_inputData->System->SetMemUnits(( MemoryUnit )( index+1 ) );
   QString str = QString::number( m_inputData->System->GetConvertedMem() );
   m_systemMemoryLine->setText( str );
 }
 
-void GamessInputBuilder::setSystemDDI( const QString &text )
+void GamessInputDialog::setSystemDDI( const QString &text )
 {
   m_inputData->System->SetConvertedMemDDI( text.toDouble() );
 }
 
-void GamessInputBuilder::setSystemDDIUnits( int index )
+void GamessInputDialog::setSystemDDIUnits( int index )
 {
   m_inputData->System->SetMemDDIUnits(( MemoryUnit )( index + megaWordsUnit ) );
 }
 
-void GamessInputBuilder::setSystemProduce( bool state )
+void GamessInputDialog::setSystemProduce( bool state )
 {
   m_inputData->System->SetCoreFlag( state );
 }
 
-void GamessInputBuilder::setSystemForce( bool state )
+void GamessInputDialog::setSystemForce( bool state )
 {
   m_inputData->System->SetParallel( state );
 }
 
-void GamessInputBuilder::setSystemDiagonalization( int index )
+void GamessInputDialog::setSystemDiagonalization( int index )
 {
   m_inputData->System->SetDiag( index );
 }
 
-void GamessInputBuilder::setSystemExternal( bool state )
+void GamessInputDialog::setSystemExternal( bool state )
 {
   m_inputData->System->SetXDR( state );
 }
 
-void GamessInputBuilder::setSystemLoop( bool state )
+void GamessInputDialog::setSystemLoop( bool state )
 {
   m_inputData->System->SetBalanceType( 0 );
 }
 
-void GamessInputBuilder::setSystemNext( bool state )
+void GamessInputDialog::setSystemNext( bool state )
 {
   m_inputData->System->SetBalanceType( 1 );
 }
 
-void GamessInputBuilder::setMOGuessInitial( int index )
+void GamessInputDialog::setMOGuessInitial( int index )
 {
   int i = index + 1;
 
@@ -3234,38 +3234,38 @@ void GamessInputBuilder::setMOGuessInitial( int index )
   }
 }
 
-void GamessInputBuilder::setMOGuessPrint( bool state )
+void GamessInputDialog::setMOGuessPrint( bool state )
 {
   m_inputData->Guess->SetPrintMO( state );
 }
 
-void GamessInputBuilder::setMOGuessRotate( bool state )
+void GamessInputDialog::setMOGuessRotate( bool state )
 {
   m_inputData->Guess->SetMix( state );
 }
 
 // Misc Slots
-void GamessInputBuilder::setMiscMolPlt( bool state )
+void GamessInputDialog::setMiscMolPlt( bool state )
 {
   m_inputData->Control->SetMolPlot( state );
 }
 
-void GamessInputBuilder::setMiscPltOrb( bool state )
+void GamessInputDialog::setMiscPltOrb( bool state )
 {
   m_inputData->Control->SetPlotOrb( state );
 }
 
-void GamessInputBuilder::setMiscAIMPAC( bool state )
+void GamessInputDialog::setMiscAIMPAC( bool state )
 {
   m_inputData->Control->SetAIMPAC( state );
 }
 
-void GamessInputBuilder::setMiscRPAC( bool state )
+void GamessInputDialog::setMiscRPAC( bool state )
 {
   m_inputData->Control->SetRPAC( state );
 }
 
-void GamessInputBuilder::setMiscForce( int id )
+void GamessInputDialog::setMiscForce( int id )
 {
   m_inputData->Control->SetFriend(( FriendType ) id );
   updateMiscWidgets();
@@ -3273,42 +3273,42 @@ void GamessInputBuilder::setMiscForce( int id )
 
 }
 
-void GamessInputBuilder::setMiscWater( bool state )
+void GamessInputDialog::setMiscWater( bool state )
 {
   m_inputData->Basis->SetWaterSolvate(state);
 }
 
 // SCF Slots
-void GamessInputBuilder::setSCFDirect( bool state )
+void GamessInputDialog::setSCFDirect( bool state )
 {
   m_inputData->SCF->SetDirectSCF( state );
   updateSCFWidgets();
 }
 
-void GamessInputBuilder::setSCFCompute( bool state )
+void GamessInputDialog::setSCFCompute( bool state )
 {
   m_inputData->SCF->SetFockDiff( state );
 }
 
-void GamessInputBuilder::setSCFGenerate( bool state )
+void GamessInputDialog::setSCFGenerate( bool state )
 {
   m_inputData->SCF->SetUHFNO( state );
 }
 
 // DFT Slots
-void GamessInputBuilder::setDFTMethod( int index )
+void GamessInputDialog::setDFTMethod( int index )
 {
   m_inputData->DFT->SetMethodGrid(!index);
 }
 
-void GamessInputBuilder::setDFTFunctional( int index )
+void GamessInputDialog::setDFTFunctional( int index )
 {
   qDebug() << "Distributed";
   m_inputData->DFT->SetFunctional(index+1);
 }
 
 // MP2 Slots
-void GamessInputBuilder::setMP2Electrons( const QString &text )
+void GamessInputDialog::setMP2Electrons( const QString &text )
 {
   long val = -1;
   if( text != "" )
@@ -3318,110 +3318,110 @@ void GamessInputBuilder::setMP2Electrons( const QString &text )
   m_inputData->MP2->SetNumCoreElectrons(val);
 }
 
-void GamessInputBuilder::setMP2Memory( const QString &text )
+void GamessInputDialog::setMP2Memory( const QString &text )
 {
   m_inputData->MP2->SetMemory(text.toLong());
 }
 
-void GamessInputBuilder::setMP2Integral( const QString &text )
+void GamessInputDialog::setMP2Integral( const QString &text )
 {
   double val = text.toDouble();
   if(fabs(val - 1.0e-9) < 1.0e-20) val = 0.0;
   m_inputData->MP2->SetIntCutoff(val);
 }
 
-void GamessInputBuilder::setMP2Localized( bool state )
+void GamessInputDialog::setMP2Localized( bool state )
 {
   m_inputData->MP2->SetLMOMP2(state);
   updateMP2Widgets();
 }
 
-void GamessInputBuilder::setMP2Compute( bool state )
+void GamessInputDialog::setMP2Compute( bool state )
 {
   m_inputData->MP2->SetMP2Prop(state);
 }
 
-void GamessInputBuilder::setMP2Segmented( bool state )
+void GamessInputDialog::setMP2Segmented( bool state )
 {
   m_inputData->MP2->SetMethod(2);
 }
 
-void GamessInputBuilder::setMP2Two( bool state )
+void GamessInputDialog::setMP2Two( bool state )
 {
   m_inputData->MP2->SetMethod(3);
 }
 
-void GamessInputBuilder::setMP2Duplicated( bool state )
+void GamessInputDialog::setMP2Duplicated( bool state )
 {
   m_inputData->MP2->SetAOIntMethod(1);
 }
 
-void GamessInputBuilder::setMP2Distributed( bool state )
+void GamessInputDialog::setMP2Distributed( bool state )
 {
   m_inputData->MP2->SetAOIntMethod(2);
 }
 
 //! Hessian Slots
-void GamessInputBuilder::setHessianAnalytic( bool state )
+void GamessInputDialog::setHessianAnalytic( bool state )
 {
   m_inputData->Hessian->SetAnalyticMethod(1);
   updateHessianWidgets();
 }
 
-void GamessInputBuilder::setHessianNumeric( bool state )
+void GamessInputDialog::setHessianNumeric( bool state )
 {
   m_inputData->Hessian->SetAnalyticMethod(0);
   updateHessianWidgets();
 }
 
-void GamessInputBuilder::setHessianDisplacement( const QString &text )
+void GamessInputDialog::setHessianDisplacement( const QString &text )
 {
   m_inputData->Hessian->SetDisplacementSize(text.toDouble());
 }
 
-void GamessInputBuilder::setHessianDouble( bool state )
+void GamessInputDialog::setHessianDouble( bool state )
 {
   m_inputData->Hessian->SetPrintFC(state);
 }
 
-void GamessInputBuilder::setHessianPurify( bool state )
+void GamessInputDialog::setHessianPurify( bool state )
 {
   m_inputData->Hessian->SetPurify(state);
 }
 
-void GamessInputBuilder::setHessianPrint( bool state )
+void GamessInputDialog::setHessianPrint( bool state )
 {
   m_inputData->Hessian->SetPrintFC(state);
 }
 
-void GamessInputBuilder::setHessianVibrational( bool state )
+void GamessInputDialog::setHessianVibrational( bool state )
 {
   m_inputData->Hessian->SetVibAnalysis(state);
 }
 
-void GamessInputBuilder::setHessianScale( const QString &text )
+void GamessInputDialog::setHessianScale( const QString &text )
 {
   m_inputData->Hessian->SetFreqScale(text.toDouble());
 }
 
 
 //! Stat Point Slots
-void GamessInputBuilder::setStatPointSteps( const QString &text )
+void GamessInputDialog::setStatPointSteps( const QString &text )
 {
   m_inputData->StatPt->SetMaxSteps(text.toLong());
 }
 
-void GamessInputBuilder::setStatPointRecalculate( const QString &text )
+void GamessInputDialog::setStatPointRecalculate( const QString &text )
 {
   m_inputData->StatPt->SetHessRecalcInterval(text.toLong());
 }
 
-void GamessInputBuilder::setStatPointConvergence( const QString &text )
+void GamessInputDialog::setStatPointConvergence( const QString &text )
 {
   m_inputData->StatPt->SetOptConvergance(text.toDouble());
 }
 
-void GamessInputBuilder::setStatPointInitial( const QString &text )
+void GamessInputDialog::setStatPointInitial( const QString &text )
 {
   double val = text.toDouble();
   double def = 0.3;
@@ -3432,12 +3432,12 @@ void GamessInputBuilder::setStatPointInitial( const QString &text )
   m_inputData->StatPt->SetInitRadius(val);
 }
 
-void GamessInputBuilder::setStatPointMin( const QString &text )
+void GamessInputDialog::setStatPointMin( const QString &text )
 {
   m_inputData->StatPt->SetMinRadius(text.toDouble());
 }
 
-void GamessInputBuilder::setStatPointMax( const QString &text )
+void GamessInputDialog::setStatPointMax( const QString &text )
 {
   double val = text.toDouble();
   double def = 0.5;
@@ -3447,40 +3447,40 @@ void GamessInputBuilder::setStatPointMax( const QString &text )
   m_inputData->StatPt->SetMaxRadius(val);
 }
 
-void GamessInputBuilder::setStatPointOptimization( int index )
+void GamessInputDialog::setStatPointOptimization( int index )
 {
   m_inputData->StatPt->SetMethod(index+1);
   updateStatPointWidgets();
 }
 
-void GamessInputBuilder::setStatPointUpdate( bool state )
+void GamessInputDialog::setStatPointUpdate( bool state )
 {
   m_inputData->StatPt->SetRadiusUpdate(state);
 }
 
-void GamessInputBuilder::setStatPointStationary( bool state )
+void GamessInputDialog::setStatPointStationary( bool state )
 {
   m_inputData->StatPt->SetStatPoint(state);
   updateStatPointWidgets();
 }
 
-void GamessInputBuilder::setStatPointHessian( int value )
+void GamessInputDialog::setStatPointHessian( int value )
 {
   m_inputData->StatPt->SetHessMethod(value+1);
   updateStatPointWidgets();
 }
 
-void GamessInputBuilder::setStatPointPrint( bool state )
+void GamessInputDialog::setStatPointPrint( bool state )
 {
   m_inputData->StatPt->SetAlwaysPrintOrbs(state);
 }
 
-void GamessInputBuilder::setStatPointJump( const QString &text )
+void GamessInputDialog::setStatPointJump( const QString &text )
 {
   m_inputData->StatPt->SetStatJump(text.toDouble());
 }
 
-void GamessInputBuilder::setStatPointFollow( const QString &text )
+void GamessInputDialog::setStatPointFollow( const QString &text )
 {
   m_inputData->StatPt->SetModeFollow(text.toLong());
 }

@@ -23,7 +23,7 @@
 #ifndef __GAMESS_H
 #define __GAMESS_H
 
-#include "gamessinputbuilder.h"
+#include "gamessinputdialog.h"
 
 #include <openbabel/mol.h>
 
@@ -52,13 +52,13 @@ namespace Avogadro {
       //! Plugin Name (ie Draw)
       virtual QString name() const { return QObject::tr("GAMESS"); }
       //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("GAMESS Input Deck Builder"); };
+      virtual QString description() const { return QObject::tr("GAMESS Input Deck Generator"); };
       //! Perform Action
       virtual void performAction(QAction *action, Molecule *molecule, QTextEdit *messages=NULL);
       //@}
 
     private:
-      GamessInputBuilder *m_inputBuilder;
+      GamessInputDialog *m_inputDialog;
       GamessInputData *m_inputData;
   };
 

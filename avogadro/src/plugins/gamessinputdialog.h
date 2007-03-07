@@ -1,5 +1,5 @@
 /**********************************************************************
-  GamessInputBuilder - GAMESS Input Deck Builder for Avogadro
+  GamessInputDialog - GAMESS Input Deck Dialog for Avogadro
 
   Copyright (C) 2006, 2007 by Donald Ephraim Curtis
   Copyright (C) 2006 by Geoffrey R. Hutchison
@@ -36,19 +36,20 @@
 #include <QStackedLayout>
 #include <QTextEdit>
 
+#include "ui_gamessinputdialog.h"
 #include "gamessinputdata.h"
 
 namespace Avogadro
 {
-  class GamessInputBuilder : public QDialog
+  class GamessInputDialog : public QDialog
   {
       Q_OBJECT
 
     public:
       //! Constructor
-      GamessInputBuilder( GamessInputData *inputData, QWidget *parent = 0, Qt::WindowFlags f = 0 );
+      GamessInputDialog( GamessInputData *inputData, QWidget *parent = 0, Qt::WindowFlags f = 0 );
       //! Desconstructor
-      ~GamessInputBuilder();
+      ~GamessInputDialog();
 
       void setInputData ( GamessInputData *inputData );
 
@@ -74,7 +75,7 @@ namespace Avogadro
 
 
     private:
-      Ui::GamessInputBuilder ui;
+      Ui::GamessInputDialog ui;
       GamessInputData *m_inputData;
 
 //       GamessInputData *m_inputBackup;
