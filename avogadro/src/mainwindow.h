@@ -24,13 +24,7 @@
 #define __MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QtGui>
-#include <QObject>
-#include <QDockWidget>
-#include <QSplitter>
-#include <QTextEdit>
 
-#include "avogadro/glwidget.h"
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 #include <avogadro/moleculetreeview.h>
@@ -39,6 +33,10 @@
 #include "plugin.h"
 #include "flowlayout.h"
 #include "flattabwidget.h"
+#include "avogadro/glwidget.h"
+
+class QUndoStack;
+class QStackedLayout;
 
 namespace Avogadro {
 

@@ -25,7 +25,14 @@
 
 #include <fstream>
 
-#include <QKeySequence>
+#include <QHeaderView>
+#include <QFileDialog>
+#include <QToolButton>
+#include <QStackedLayout>
+#include <QUndoStack>
+#include <QSettings>
+#include <QColorDialog>
+#include <QMessageBox>
 #include <QGLFramebufferObject>
 
 using namespace std;
