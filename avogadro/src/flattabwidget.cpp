@@ -59,7 +59,7 @@ FlatTabWidget::FlatTabWidget(QWidget *parent) : QWidget(parent),
 int FlatTabWidget::addTab(QWidget *widget, QString title)
 {
   m_tabBar->addTab(title);
-  m_stack->addWidget(widget);
+  return m_stack->addWidget(widget);
 }
 
 QSize FlatTabWidget::sizeHint () const
