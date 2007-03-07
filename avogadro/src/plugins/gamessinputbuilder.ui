@@ -35,7 +35,7 @@
        <item row="0" column="0" >
         <widget class="QTabWidget" name="tabWidget" >
          <property name="currentIndex" >
-          <number>10</number>
+          <number>7</number>
          </property>
          <widget class="QWidget" name="tab" >
           <attribute name="title" >
@@ -1626,7 +1626,108 @@
             </spacer>
            </item>
            <item row="1" column="1" >
-            <widget class="QComboBox" name="comboBox_14" />
+            <widget class="QComboBox" name="comboBox_14" >
+             <item>
+              <property name="text" >
+               <string>Slater exchange</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Becke 1988 exchange</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>VWN: Vosko-Wilk-Nusair (VWN5) correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>LYP: Lee-Yang-Parr correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>SVWN: Slater exhange + VWN correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>BVWN: BECKE exchange + VWN5 correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>BLYP: BECKE exchange + LYP correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>B3LYP</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Gill 1996 exchange</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Perdew-Burke-Ernzerhof (PBE) exchange</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>OP: One-parameter Progressive correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>SLYP: SLATER + Lee-Yang-Parr (LYP) correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>SOP: SLATER + OP correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>BOP: BECKE exchange + OP correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>BVWN: GILL exchange + VWN5 correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>GLYP: GILL exchange + LYP correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>PBEVWN: PBE exchange + VWN6 correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>PBELYP: PBE exchange +LYP correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>PBEOP: PBE exchange + OP correlation</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>BHHLYP: HF and BECKE exchange + LYP correlation</string>
+              </property>
+             </item>
+            </widget>
            </item>
            <item row="1" column="0" >
             <widget class="QLabel" name="label_41" >
