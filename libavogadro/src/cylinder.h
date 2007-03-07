@@ -16,7 +16,6 @@
 
 #include <avogadro/global.h>
 
-#include <QGLWidget>
 #include <openbabel/mol.h>
 #include <eigen/matrix.h>
 
@@ -62,7 +61,8 @@ namespace Avogadro {
       /**
        * draws the cylinder at specified position, with specified
        * radius. the order and shift arguments allow to render
-       * multiple cylinders at once. If you only want to render one
+       * multiple cylinders at once, which is useful in libavogadro.
+       * for multiple bonds between atoms. If you only want to render one
        * cylinder, leave order and shift at their default values.
        @param end1 the position of the first end of the cylinder.
        that is, the center of the first disc-shaped face.
@@ -73,7 +73,7 @@ namespace Avogadro {
        the default value, which is 1. If order>1, then order
        parallel cylinders are drawn around the axis
        (end1 - end2).
-       @param order this is only meaningful of order>1, otherwise
+       @param shift this is only meaningful of order>1, otherwise
        just let this set to the default value. When order>1,
        this is interpreted as the displacement of the axis
        of the drawn cylinders from the axis (end1 - end2).
