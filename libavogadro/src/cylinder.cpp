@@ -84,7 +84,6 @@ void Cylinder::initialize()
 		m_vertexBuffer[ 2 * i ].z() = 1.0f;
 	}
 
-#ifdef USE_DISPLAY_LISTS
 	// compile display list and free buffers
 	if( ! m_displayList ) m_displayList = glGenLists( 1 );
 	if( ! m_displayList ) return;
@@ -92,7 +91,6 @@ void Cylinder::initialize()
 	do_draw();
 	glEndList();
 	freeBuffers();
-#endif
 }
 
 void Cylinder::do_draw() const
@@ -151,11 +149,7 @@ void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
 	glPushMatrix();
 	glMultMatrixd( matrix.array() );
 	if( order == 1 )
-#		ifdef USE_DISPLAY_LISTS
-			glCallList( m_displayList );
-#		else
-			do_draw();
-#		endif
+		glCallList( m_displayList );
 	else
 	{
 		double angleOffset = 0.0;
@@ -172,11 +166,7 @@ void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
 			glRotated( angleOffset + 360.0 * i / order,
 			           0.0, 0.0, 1.0 );
 			glTranslated( displacementFactor, 0.0, 0.0 );
-#			ifdef USE_DISPLAY_LISTS
-				glCallList( m_displayList );
-#			else
-				do_draw();
-#			endif
+			glCallList( m_displayList );
 			glPopMatrix();
 		}
 	}

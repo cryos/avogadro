@@ -62,11 +62,7 @@ void Sphere::draw( const Eigen::Vector3d &center, double radius ) const
 	glPushMatrix();
 	glTranslated( center.x(), center.y(), center.z() );
 	glScaled( radius, radius, radius );
-#ifdef USE_DISPLAY_LISTS
 	glCallList( m_displayList );
-#else
-	do_draw();
-#endif
 	glPopMatrix();
 }
 
@@ -121,7 +117,6 @@ void Sphere::initialize()
 			2 * m_detail + column + 1);
 	}
 
-#ifdef USE_DISPLAY_LISTS
 	// compile display list and free buffers
 	if( ! m_displayList ) m_displayList = glGenLists( 1 );
 	if( ! m_displayList ) return;
@@ -129,7 +124,6 @@ void Sphere::initialize()
 	do_draw();
 	glEndList();
 	freeBuffers();
-#endif
 }
 
 unsigned short Sphere::indexOfVertex( int strip, int column, int row)
