@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>522</width>
-    <height>619</height>
+    <width>603</width>
+    <height>807</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -35,7 +35,7 @@
        <item row="0" column="0" >
         <widget class="QTabWidget" name="tabWidget" >
          <property name="currentIndex" >
-          <number>2</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tab" >
           <attribute name="title" >
@@ -46,11 +46,629 @@
           <attribute name="title" >
            <string>Control</string>
           </attribute>
+          <layout class="QGridLayout" >
+           <property name="margin" >
+            <number>9</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item row="5" column="1" >
+            <widget class="QLabel" name="label_16" >
+             <property name="text" >
+              <string>CC:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1" >
+            <widget class="QLabel" name="label_16" >
+             <property name="text" >
+              <string>CI:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" >
+            <widget class="QLabel" name="label_16" >
+             <property name="text" >
+              <string>Run Type:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1" colspan="2" >
+            <widget class="QComboBox" name="comboBox_12" >
+             <item>
+              <property name="text" >
+               <string>Energy</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Gradient</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Hessian</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Optimization</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Trudge</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Saddle Point</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>IRC</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Gradient Extremal</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>DRC</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Energy Surface</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Properties</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Morokuma</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Radiative Transition mom.</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Spin Orbit</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Finite Electric Field</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>TDHF</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Global Optimization</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>VSCF</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>FMO Optimization</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Raman Intensities</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>NMR</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Make EFP</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QLabel" name="label_16" >
+             <property name="text" >
+              <string>Localization Method:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" >
+            <widget class="QLabel" name="label_16" >
+             <property name="text" >
+              <string>Exec Type:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" >
+            <widget class="QLabel" name="label_16" >
+             <property name="text" >
+              <string>Max SCF Iterations:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="comboBox_12" >
+               <item>
+                <property name="text" >
+                 <string>None</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Foster-Boys</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Edmistron-Ruedenberg</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Pipek-Mezey</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType" >
+                <enum>QSizePolicy::Minimum</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_17" >
+               <property name="text" >
+                <string>SCF Type:</string>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="3" >
+            <widget class="QComboBox" name="comboBox_13" >
+             <item>
+              <property name="text" >
+               <string>RHF</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>UHF</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>ROHF</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>GVB</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>MCSCF</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>None (CI)</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="2" column="1" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="comboBox_12" >
+               <item>
+                <property name="text" >
+                 <string>Normal Run</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Check</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Debug</string>
+                </property>
+               </item>
+               <item>
+                <property name="text" >
+                 <string>Other...</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType" >
+                <enum>QSizePolicy::Minimum</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_16" >
+               <property name="text" >
+                <string>Molecule Charge:</string>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="1" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_5" />
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType" >
+                <enum>QSizePolicy::Minimum</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_18" >
+               <property name="text" >
+                <string>TextLabel</string>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="3" >
+            <widget class="QLineEdit" name="lineEdit_7" />
+           </item>
+           <item row="3" column="3" >
+            <widget class="QLineEdit" name="lineEdit_8" />
+           </item>
+           <item rowspan="2" row="4" column="0" >
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" >
+               <property name="margin" >
+                <number>0</number>
+               </property>
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QCheckBox" name="checkBox_7" >
+                 <property name="text" >
+                  <string>Use MP2</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="checkBox_7" >
+                 <property name="layoutDirection" >
+                  <enum>Qt::LeftToRight</enum>
+                 </property>
+                 <property name="autoFillBackground" >
+                  <bool>false</bool>
+                 </property>
+                 <property name="text" >
+                  <string>Use DFT</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item row="4" column="2" colspan="2" >
+            <widget class="QComboBox" name="comboBox_12" >
+             <item>
+              <property name="text" >
+               <string>None</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>GUGA</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Ames Lab. Determinant</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Occupation Restricted Multiple Active Space</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>CI Singles</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Full Second Order CI</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>General CI</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="5" column="2" colspan="2" >
+            <widget class="QComboBox" name="comboBox_12" >
+             <item>
+              <property name="text" >
+               <string>None</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>LCCD: Linearized CC</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>CCD: CC with Doubles</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>CCSD: CC with Singles and Doubles</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>CCSD(T)</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>R-CC</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>CR-CC</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>EOM-CCSD</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>CR-EOM</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
          </widget>
          <widget class="QWidget" name="tab_5" >
           <attribute name="title" >
            <string>Data</string>
           </attribute>
+          <layout class="QGridLayout" >
+           <property name="margin" >
+            <number>9</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item row="6" column="0" colspan="2" >
+            <widget class="QCheckBox" name="checkBox_6" >
+             <property name="text" >
+              <string>Use Symmetry During Calculation</string>
+             </property>
+             <property name="checked" >
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1" >
+            <widget class="QComboBox" name="comboBox_11" />
+           </item>
+           <item row="5" column="0" >
+            <widget class="QLabel" name="label_15" >
+             <property name="text" >
+              <string>Order of Principle Axis:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>comboBox_11</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1" >
+            <widget class="QLineEdit" name="lineEdit_4" />
+           </item>
+           <item row="4" column="1" >
+            <widget class="QComboBox" name="comboBox_10" />
+           </item>
+           <item row="4" column="0" >
+            <widget class="QLabel" name="label_14" >
+             <property name="text" >
+              <string>Point Group:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>comboBox_10</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" >
+            <widget class="QLabel" name="label_13" >
+             <property name="text" >
+              <string># of Z-Matrix Variables</string>
+             </property>
+             <property name="buddy" >
+              <cstring>lineEdit_4</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1" >
+            <widget class="QComboBox" name="comboBox_9" />
+           </item>
+           <item row="2" column="0" >
+            <widget class="QLabel" name="label_12" >
+             <property name="text" >
+              <string>Units:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>comboBox_9</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QLabel" name="label_11" >
+             <property name="text" >
+              <string>Coordinate Type:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>comboBox_8</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" >
+            <widget class="QComboBox" name="comboBox_8" />
+           </item>
+           <item row="0" column="1" >
+            <widget class="QLineEdit" name="lineEdit_3" />
+           </item>
+           <item row="0" column="0" >
+            <widget class="QLabel" name="label_10" >
+             <property name="text" >
+              <string>Title:</string>
+             </property>
+             <property name="buddy" >
+              <cstring>lineEdit_3</cstring>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
          <widget class="QWidget" name="tab_6" >
           <attribute name="title" >
@@ -61,57 +679,69 @@
           <attribute name="title" >
            <string>MO Guess</string>
           </attribute>
-          <layout class="QGridLayout" >
-           <property name="margin" >
-            <number>9</number>
+          <widget class="QWidget" name="" >
+           <property name="geometry" >
+            <rect>
+             <x>9</x>
+             <y>40</y>
+             <width>464</width>
+             <height>23</height>
+            </rect>
            </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item row="0" column="0" >
-            <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="label_4" >
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_4" >
+              <property name="text" >
+               <string>Initial Guess:</string>
+              </property>
+              <property name="buddy" >
+               <cstring>comboBox_5</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_5" >
+              <item>
                <property name="text" >
-                <string>Initial Guess:</string>
+                <string>Huckel</string>
                </property>
-               <property name="buddy" >
-                <cstring>comboBox_5</cstring>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_5" >
-               <item>
-                <property name="text" >
-                 <string>Huckel</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="1" column="0" >
-            <widget class="QCheckBox" name="checkBox_4" >
-             <property name="text" >
-              <string>Print the Initial Guess</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0" >
-            <widget class="QCheckBox" name="checkBox_5" >
-             <property name="text" >
-              <string>Rotate Alpha and Beta Orbitals</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QCheckBox" name="checkBox_4" >
+           <property name="geometry" >
+            <rect>
+             <x>9</x>
+             <y>100</y>
+             <width>464</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text" >
+            <string>Print the Initial Guess</string>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="checkBox_5" >
+           <property name="geometry" >
+            <rect>
+             <x>9</x>
+             <y>157</y>
+             <width>464</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text" >
+            <string>Rotate Alpha and Beta Orbitals</string>
+           </property>
+          </widget>
          </widget>
          <widget class="QWidget" name="tab_8" >
           <attribute name="title" >
@@ -330,6 +960,16 @@
      </widget>
     </widget>
    </item>
+   <item row="2" column="0" colspan="2" >
+    <widget class="Line" name="line" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2" >
+    <widget class="QTextEdit" name="textEdit" />
+   </item>
    <item row="4" column="0" colspan="2" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
@@ -432,16 +1072,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="3" column="0" colspan="2" >
-    <widget class="QTextEdit" name="textEdit" />
-   </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="Line" name="line" >
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
