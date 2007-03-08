@@ -92,14 +92,11 @@ namespace Avogadro {
       bool       m_modified;
       QUndoStack *m_undo;
       
-      QActionGroup *m_agTools;
-      FlowLayout *m_flowTools;
-      QStackedLayout *m_stackedToolProperties;
+      QActionGroup *m_toolsActions;
+      FlowLayout *m_toolsFlow;
+      QStackedLayout *m_toolPropertiesStacked;
 
-      GLWidget *m_glView;
-      QVBoxLayout *m_splitCentral;
-      QTextEdit *m_textMessages;
-      FlatTabWidget *m_tabBottom;
+      QTextEdit *m_messagesText;
 
       enum { maxRecentFiles = 10 };
       QAction    *m_actionRecentFile[maxRecentFiles];

@@ -12,7 +12,22 @@
   <property name="windowTitle" >
    <string>Avogadro</string>
   </property>
-  <widget class="QWidget" name="centralWidget" />
+  <widget class="QWidget" name="centralWidget" >
+   <layout class="QVBoxLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="Avogadro::GLWidget" native="1" name="glWidget" />
+    </item>
+    <item>
+     <widget class="Avogadro::FlatTabWidget" native="1" name="bottomFlat" />
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >
     <rect>
@@ -27,24 +42,6 @@
      <string>&amp;Help</string>
     </property>
     <addaction name="actionAbout" />
-   </widget>
-   <widget class="QMenu" name="menuView" >
-    <property name="title" >
-     <string>&amp;View</string>
-    </property>
-    <widget class="QMenu" name="menuDocks" >
-     <property name="title" >
-      <string>&amp;Docks</string>
-     </property>
-    </widget>
-    <widget class="QMenu" name="menuToolbars" >
-     <property name="title" >
-      <string>Toolbars</string>
-     </property>
-    </widget>
-    <addaction name="menuDocks" />
-    <addaction name="menuToolbars" />
-    <addaction name="actionFullScreen" />
    </widget>
    <widget class="QMenu" name="menuEdit" >
     <property name="title" >
@@ -84,8 +81,26 @@
    </widget>
    <widget class="QMenu" name="menuTools" >
     <property name="title" >
-     <string>Tools</string>
+     <string>&amp;Tools</string>
     </property>
+   </widget>
+   <widget class="QMenu" name="menuView" >
+    <property name="title" >
+     <string>&amp;View</string>
+    </property>
+    <widget class="QMenu" name="menuDocks" >
+     <property name="title" >
+      <string>&amp;Docks</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuToolbars" >
+     <property name="title" >
+      <string>Toolbars</string>
+     </property>
+    </widget>
+    <addaction name="menuDocks" />
+    <addaction name="menuToolbars" />
+    <addaction name="actionFullScreen" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menuEdit" />
@@ -95,7 +110,7 @@
    <addaction name="menuHelp" />
   </widget>
   <widget class="QStatusBar" name="statusbar" />
-  <widget class="QToolBar" name="tbFile" >
+  <widget class="QToolBar" name="fileToolBar" >
    <property name="windowTitle" >
     <string>Main Toolbar</string>
    </property>
@@ -113,7 +128,7 @@
    <addaction name="actionSave" />
    <addaction name="actionQuit" />
   </widget>
-  <widget class="QDockWidget" name="dockProject" >
+  <widget class="QDockWidget" name="projectDock" >
    <property name="minimumSize" >
     <size>
      <width>200</width>
@@ -129,7 +144,7 @@
    <attribute name="dockWidgetArea" >
     <number>2</number>
    </attribute>
-   <widget class="QWidget" name="dockProjectContents" >
+   <widget class="QWidget" name="projectWidget" >
     <layout class="QVBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -138,16 +153,28 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="Avogadro::MoleculeTreeView" name="treeView" >
+      <widget class="Avogadro::MoleculeTreeView" name="projectTree" >
        <property name="frameShadow" >
         <enum>QFrame::Plain</enum>
+       </property>
+       <property name="alternatingRowColors" >
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode" >
+        <enum>QAbstractItemView::MultiSelection</enum>
+       </property>
+       <property name="animated" >
+        <bool>true</bool>
+       </property>
+       <property name="allColumnsShowFocus" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
   </widget>
-  <widget class="QDockWidget" name="dockTools" >
+  <widget class="QDockWidget" name="toolsDock" >
    <property name="minimumSize" >
     <size>
      <width>200</width>
@@ -163,9 +190,9 @@
    <attribute name="dockWidgetArea" >
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="dockToolsContents" />
+   <widget class="QWidget" name="toolsWidget" />
   </widget>
-  <widget class="QDockWidget" name="dockToolProperties" >
+  <widget class="QDockWidget" name="toolPropertiesDock" >
    <property name="minimumSize" >
     <size>
      <width>200</width>
@@ -181,7 +208,7 @@
    <attribute name="dockWidgetArea" >
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="dockToolPropertiesContents" />
+   <widget class="QWidget" name="toolPropertiesWidget" />
   </widget>
   <action name="actionOpen" >
    <property name="icon" >
@@ -321,6 +348,16 @@
    <class>Avogadro::MoleculeTreeView</class>
    <extends>QTreeWidget</extends>
    <header>avogadro/moleculetreeview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::FlatTabWidget</class>
+   <extends>QWidget</extends>
+   <header>flattabwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::GLWidget</class>
+   <extends>QWidget</extends>
+   <header>avogadro/glwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

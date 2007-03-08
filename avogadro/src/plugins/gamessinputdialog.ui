@@ -22,7 +22,7 @@
    <item row="0" column="0" >
     <widget class="QTabWidget" name="modeTab" >
      <property name="currentIndex" >
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="basicWidget" >
       <attribute name="title" >
@@ -559,7 +559,7 @@
           </sizepolicy>
          </property>
          <property name="currentIndex" >
-          <number>10</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="basisWidget" >
           <layout class="QGridLayout" >
