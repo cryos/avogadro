@@ -24,17 +24,7 @@
 #define __GAMESINPUTBUILDER_H
 
 #include <QDialog>
-#include <QLabel>
-#include <QComboBox>
-#include <QFrame>
-#include <QCheckBox>
-#include <QGroupBox>
 #include <QButtonGroup>
-#include <QLineEdit>
-#include <QRadioButton>
-#include <QGridLayout>
-#include <QStackedLayout>
-#include <QTextEdit>
 #include <QModelIndex>
 
 #include "ui_gamessinputdialog.h"
