@@ -2209,7 +2209,6 @@ void GamessInputDialog::setDFTMethod( int index )
 
 void GamessInputDialog::setDFTFunctional( int index )
 {
-  qDebug() << "Distributed";
   m_inputData->DFT->SetFunctional(index+1);
 }
 
