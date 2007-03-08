@@ -35,6 +35,7 @@
 #include <QGridLayout>
 #include <QStackedLayout>
 #include <QTextEdit>
+#include <QModelIndex>
 
 #include "ui_gamessinputdialog.h"
 #include "gamessinputdata.h"
@@ -147,6 +148,7 @@ namespace Avogadro
       void resetClicked();
       void generateClicked();
 
+      void navigationItemClicked( const QModelIndex &index );
       //! Block all Advanced Widgets
       void blockAdvancedSignals( bool block );
 
@@ -265,12 +267,12 @@ namespace Avogadro
       //! Hessian Slots
       void setHessianAnalytic( bool state );
       void setHessianNumeric( bool state );
-      void setHessianDisplacement( const QString &text );
+      void setHessianDisplacement( double val );
       void setHessianDouble( bool state );
       void setHessianPurify( bool state );
       void setHessianPrint( bool state );
       void setHessianVibrational( bool state );
-      void setHessianScale( const QString &text );
+      void setHessianScale( double val );
 
       //! Stat Point Slots
       void setStatPointSteps( int val );

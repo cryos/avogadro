@@ -38,7 +38,9 @@ GamessInputDialog::GamessInputDialog( GamessInputData *inputData, QWidget *paren
   setInputData(inputData);
 
   ui.setupUi(this);
-  
+  ui.navigationTree->expandAll();
+  ui.navigationTree->headerItem()->setHidden(true);
+
   connectModes();
   connectBasic();
   connectAdvanced();
@@ -46,6 +48,8 @@ GamessInputDialog::GamessInputDialog( GamessInputData *inputData, QWidget *paren
   connectButtons();
 
   setBasicDefaults();
+  updateBasicWidgets();
+  updateAdvancedWidgets();
   updatePreviewText();
 }
 
@@ -122,7 +126,7 @@ void GamessInputDialog::connectBasic()
 
   // Time
   connect( ui.basicTimeDouble, SIGNAL( valueChanged( double ) ),
-           this, SLOT( setBasicTimeLimit( double ) ) );
+           this, SLOT( setBasicTime( double ) ) );
   connect( ui.basicTimeDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( updatePreviewText() ) );
   connect( ui.basicTimeDouble, SIGNAL( valueChanged( double ) ),
@@ -139,6 +143,7 @@ void GamessInputDialog::connectBasic()
 
 void GamessInputDialog::connectAdvanced()
 {
+
   connectBasis();
   connectControl();
   connectData();
@@ -150,6 +155,22 @@ void GamessInputDialog::connectAdvanced()
   connectMP2();
   connectHessian();
   connectStatPoint();
+
+  connect(ui.navigationTree, SIGNAL(clicked(QModelIndex)), this,
+      SLOT(navigationItemClicked(QModelIndex)));
+}
+
+void GamessInputDialog::navigationItemClicked( const QModelIndex &index )
+{
+  int i = index.row();
+
+  QModelIndex parent = index.parent();
+  if(parent.isValid())
+  {
+    i += ui.navigationTree->topLevelItemCount();
+  }
+
+  ui.advancedStacked->setCurrentIndex(i);
 }
 
 void GamessInputDialog::connectPreview()
@@ -226,6 +247,9 @@ void GamessInputDialog::setAdvancedDefaults()
   setMP2Defaults();
   setHessianDefaults();
   setStatPointDefaults();
+
+  ui.navigationTree->setCurrentItem(ui.navigationTree->topLevelItem(0));
+  ui.advancedStacked->setCurrentIndex(0);
 }
 
 void GamessInputDialog::setBasisDefaults()
@@ -362,13 +386,31 @@ void GamessInputDialog::updateAdvancedWidgets()
   updateHessianWidgets();
   updateStatPointWidgets();
 
+  QTreeWidgetItem *controlItem = ui.navigationTree->topLevelItem(1);
+
   int runType = m_inputData->Control->GetRunType();
-  ui.statPointWidget->setEnabled( runType == 4 ||runType == 6  );
-  ui.mp2Widget->setEnabled( m_inputData->Control->GetMPLevel() == 2 );
-  ui.hessianWidget->setEnabled( ( runType == 3 ) || (( runType == 3 || runType == 6 ) &&
-                                m_inputData->StatPt->GetHessMethod() == 3 ) );
-  ui.dftWidget->setEnabled( m_inputData->Control->UseDFT() );
-  ui.scfWidget->setEnabled( m_inputData->Control->GetSCFType() <= 4 );
+
+  bool scfEnabled = (m_inputData->Control->GetSCFType() <= 4);
+  ui.scfWidget->setEnabled( scfEnabled );
+  controlItem->child(0)->setHidden(!scfEnabled);
+
+  bool dftEnabled = m_inputData->Control->UseDFT();
+  ui.dftWidget->setEnabled( dftEnabled );
+  controlItem->child(1)->setHidden(!dftEnabled);
+
+  bool mp2Enabled = ( m_inputData->Control->GetMPLevel() == 2 );
+  ui.mp2Widget->setEnabled( mp2Enabled );
+  controlItem->child(2)->setHidden(!mp2Enabled);
+
+  bool hessianEnabled = (( runType == 3 ) || (( runType == 3 || runType == 6 ) &&
+        m_inputData->StatPt->GetHessMethod() == 3 ));
+  ui.hessianWidget->setEnabled( hessianEnabled );
+  controlItem->child(3)->setHidden(!hessianEnabled);
+
+  bool statPointEnabled = (runType == 4 || runType == 6);
+  ui.statPointWidget->setEnabled( statPointEnabled );
+  controlItem->child(4)->setHidden(!statPointEnabled);
+
 }
 
 void GamessInputDialog::updateBasisWidgets()
@@ -1035,11 +1077,11 @@ void GamessInputDialog::connectData()
   connect( ui.dataUnitsCombo, SIGNAL( currentIndexChanged( int ) ),
            this, SLOT( advancedChanged() ) );
 
-  connect( ui.dataZMatrixSpin, SIGNAL( textChanged( int ) ),
+  connect( ui.dataZMatrixSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( setDataZMatrix( int ) ) );
-  connect( ui.dataZMatrixSpin, SIGNAL( textChanged( int ) ),
+  connect( ui.dataZMatrixSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.dataZMatrixSpin, SIGNAL( textChanged( int ) ),
+  connect( ui.dataZMatrixSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( advancedChanged() ) );
 
   connect( ui.dataPointCombo, SIGNAL( currentIndexChanged( int ) ),
@@ -1067,11 +1109,11 @@ void GamessInputDialog::connectData()
 
 void GamessInputDialog::connectSystem()
 {
-  connect( ui.systemTimeDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( setSystemTime( double ) ) );
-  connect( ui.systemTimeDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.systemTimeDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( advancedChanged() ) );
 
   connect( ui.systemTimeCombo, SIGNAL( currentIndexChanged( int ) ),
@@ -1081,11 +1123,11 @@ void GamessInputDialog::connectSystem()
   connect( ui.systemTimeCombo, SIGNAL( currentIndexChanged( int ) ),
            this, SLOT( advancedChanged() ) );
 
-  connect( ui.systemMemoryDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( setSystemMemory( double ) ) );
-  connect( ui.systemMemoryDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.systemMemoryDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( advancedChanged() ) );
 
   connect( ui.systemMemoryCombo, SIGNAL( currentIndexChanged( int ) ),
@@ -1095,11 +1137,11 @@ void GamessInputDialog::connectSystem()
   connect( ui.systemMemoryCombo, SIGNAL( currentIndexChanged( int ) ),
            this, SLOT( advancedChanged() ) );
 
-  connect( ui.systemDDIDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.systemDDIDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( setSystemDDI( double ) ) );
-  connect( ui.systemDDIDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.systemDDIDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.systemDDIDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.systemDDIDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( advancedChanged() ) );
 
   connect( ui.systemDDICombo, SIGNAL( currentIndexChanged( int ) ),
@@ -1272,18 +1314,18 @@ void GamessInputDialog::connectMP2()
   connect( ui.mp2ElectronsSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( basicChanged() ) );
 
-  connect( ui.mp2MemorySpin, SIGNAL( textChanged( int ) ),
+  connect( ui.mp2MemorySpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( setMP2Memory( int ) ) );
-  connect( ui.mp2MemorySpin, SIGNAL( textChanged( int ) ),
+  connect( ui.mp2MemorySpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.mp2MemorySpin, SIGNAL( textChanged( int ) ),
+  connect( ui.mp2MemorySpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( basicChanged() ) );
 
-  connect( ui.mp2IntegralLine, SIGNAL( textChanged( int ) ),
-           this, SLOT( setMP2Integral( int ) ) );
-  connect( ui.mp2IntegralLine, SIGNAL( textChanged( int ) ),
+  connect( ui.mp2IntegralLine, SIGNAL( textChanged( QString ) ),
+           this, SLOT( setMP2Integral( QString ) ) );
+  connect( ui.mp2IntegralLine, SIGNAL( textChanged( QString ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.mp2IntegralLine, SIGNAL( textChanged( int ) ),
+  connect( ui.mp2IntegralLine, SIGNAL( textChanged( QString ) ),
            this, SLOT( basicChanged() ) );
 
   connect( ui.mp2LocalizedCheck, SIGNAL( toggled( bool ) ),
@@ -1380,11 +1422,11 @@ void GamessInputDialog::connectHessian()
   connect( ui.hessianDisplacementDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( basicChanged() ) );
 
-  connect( ui.hessianScaleDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.hessianScaleDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( setHessianScale( double ) ) );
-  connect( ui.hessianScaleDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.hessianScaleDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.hessianScaleDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.hessianScaleDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( basicChanged() ) );
 }
 
@@ -1397,18 +1439,18 @@ void GamessInputDialog::connectStatPoint()
   connect( ui.statPointStepsSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( basicChanged() ) );
 
-  connect( ui.statPointConvergenceDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointConvergenceDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( setStatPointConvergence( double ) ) );
-  connect( ui.statPointConvergenceDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointConvergenceDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.statPointConvergenceDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointConvergenceDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( basicChanged() ) );
 
-  connect( ui.statPointRecalculateSpin, SIGNAL( textChanged( int ) ),
+  connect( ui.statPointRecalculateSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( setStatPointRecalculate( int ) ) );
-  connect( ui.statPointRecalculateSpin, SIGNAL( textChanged( int ) ),
+  connect( ui.statPointRecalculateSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.statPointRecalculateSpin, SIGNAL( textChanged( int ) ),
+  connect( ui.statPointRecalculateSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( basicChanged() ) );
 
   connect( ui.statPointOptimizationCombo, SIGNAL( currentIndexChanged( int ) ),
@@ -1443,32 +1485,32 @@ void GamessInputDialog::connectStatPoint()
   connect( ui.statPointPrintCheck, SIGNAL( toggled( bool ) ),
            this, SLOT( advancedChanged() ) );
 
-  connect( ui.statPointFollowSpin, SIGNAL( textChanged( int ) ),
+  connect( ui.statPointFollowSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( setStatPointFollow( int ) ) );
-  connect( ui.statPointFollowSpin, SIGNAL( textChanged( int ) ),
+  connect( ui.statPointFollowSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.statPointFollowSpin, SIGNAL( textChanged( int ) ),
+  connect( ui.statPointFollowSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( basicChanged() ) );
 
-  connect( ui.statPointInitialDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointInitialDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( setStatPointInitial( double ) ) );
-  connect( ui.statPointInitialDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointInitialDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.statPointInitialDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointInitialDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( basicChanged() ) );
 
-  connect( ui.statPointMinDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointMinDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( setStatPointMin( double ) ) );
-  connect( ui.statPointMinDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointMinDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.statPointMinDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointMinDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( basicChanged() ) );
 
-  connect( ui.statPointMaxDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointMaxDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( setStatPointMax( double ) ) );
-  connect( ui.statPointMaxDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointMaxDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( updatePreviewText() ) );
-  connect( ui.statPointMaxDouble, SIGNAL( textChanged( double ) ),
+  connect( ui.statPointMaxDouble, SIGNAL( valueChanged( double ) ),
            this, SLOT( basicChanged() ) );
 
   connect( ui.statPointUpdateCheck, SIGNAL( toggled( bool ) ),
@@ -1519,7 +1561,6 @@ void GamessInputDialog::resetClicked()
     int response = msgbox.exec();
     if(response = QMessageBox::Yes)
     {
-      ui.advancedStacked->setCurrentIndex(0);
       setAdvancedDefaults();
       updateAdvancedWidgets();
       updatePreviewText();
@@ -2234,9 +2275,9 @@ void GamessInputDialog::setHessianNumeric( bool state )
   updateHessianWidgets();
 }
 
-void GamessInputDialog::setHessianDisplacement( const QString &text )
+void GamessInputDialog::setHessianDisplacement( double val )
 {
-  m_inputData->Hessian->SetDisplacementSize(text.toDouble());
+  m_inputData->Hessian->SetDisplacementSize(val);
 }
 
 void GamessInputDialog::setHessianDouble( bool state )
@@ -2259,9 +2300,9 @@ void GamessInputDialog::setHessianVibrational( bool state )
   m_inputData->Hessian->SetVibAnalysis(state);
 }
 
-void GamessInputDialog::setHessianScale( const QString &text )
+void GamessInputDialog::setHessianScale( double val )
 {
-  m_inputData->Hessian->SetFreqScale(text.toDouble());
+  m_inputData->Hessian->SetFreqScale(val);
 }
 
 
