@@ -9,7 +9,7 @@ if (WIN32)
 	add_definitions( -DWIN32 )
 
 	# add definitions for OB in WIN32
-	add_definitions( -DUSING_OBDLL -DUSING_DYANMIC_LIBS )
+	add_definitions( -DUSING_OBDLL -DUSING_DYNAMIC_LIBS )
 endif (WIN32)
 
 configure_file(
