@@ -2,7 +2,7 @@
 
 ; The name of the installer
 Name "Avogadro"
-!define VERSION "0.0.3alpha"
+!define VERSION "0.0.3"
 
 ; The file to write
 OutFile "avogadro-${VERSION}.exe"
@@ -52,6 +52,7 @@ Section "Avogadro Core (required)"
   File C:\Qt\4.2.2\lib\QtGui4.dll
   File C:\Qt\4.2.2\lib\QtCore4.dll
   File C:\Qt\4.2.2\lib\QtOpenGL4.dll
+  File C:\openbabel\data\ghemical.prm
   File C:\openbabel\windows-vc2005\OpenBabelDLL\OpenBabel.dll
   File C:\openbabel\windows-vc2005\iconv.dll
   File C:\openbabel\windows-vc2005\libxml2.dll
@@ -117,6 +118,7 @@ Section "Uninstall"
   Delete $INSTDIR\Microsoft.VC80.CRT.manifest
   Delete $INSTDIR\avogadro.dll
   Delete $INSTDIR\avogadro.exe
+  Delete $INSTDIR\ghemical.prm
   Delete $INSTDIR\uninstall.exe
 
 
