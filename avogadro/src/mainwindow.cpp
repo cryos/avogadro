@@ -21,6 +21,7 @@
  ***********************************************************************/
 
 #include "mainwindow.h"
+#include "aboutdialog.h"
 #include <avogadro/primitives.h>
 
 #include <fstream>
@@ -281,20 +282,20 @@ namespace Avogadro {
 
   void MainWindow::about()
   {
-    QMessageBox::about(this, tr("About Avogadro"),
-        tr("Avogadro is an avanced molecular editor."));
+      AboutDialog * about = new AboutDialog(this);
+      about->show();
   }
 
   void MainWindow::fullScreen()
   {
     if (!this->isFullScreen()) {
-      ui.actionFullScreen->setText("Normal Size");
+      ui.actionFullScreen->setText(tr("Normal Size"));
       ui.fileToolBar->hide();
       statusBar()->hide();
       this->showFullScreen();
     } else {
       this->showNormal();
-      ui.actionFullScreen->setText("Full Screen");
+      ui.actionFullScreen->setText(tr("Full Screen"));
       ui.fileToolBar->show();
       statusBar()->show();
     }

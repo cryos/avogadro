@@ -21,6 +21,7 @@ include(${QT_USE_FILE})
 set(avogadro_SRCS
     flowlayout.cpp
     flattabwidget.cpp
+    aboutdialog.cpp
     mainwindow.cpp
     main.cpp
 )
