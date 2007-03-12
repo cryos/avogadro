@@ -105,6 +105,13 @@ void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
 {
 	// the "axis vector" of the cylinder
 	Vector3d axis = end2 - end1;
+
+	// now we want to construct an orthonormal basis whose first
+	// vector is axis.normalized(). We don't use Eigen's loadOrthoBasis()
+	// for that, because we want one more thing. The second vector in this
+	// basis, which we call ortho1, should be approximately lying in the
+	// z=0 plane if possible. This is to ensure double bonds don't look
+	// like single bonds from the default point of view.
 	double axisNorm = axis.norm();
 	if( axisNorm == 0.0 ) return;
 	Vector3d axisNormalized = axis / axisNorm;
@@ -120,7 +127,7 @@ void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
 	}
 	ortho1 *= radius;
 
-	Vector3d ortho2 = cross( axisNormalized, ortho1 );
+	Vector3d ortho2 = cross( axisNormalized, ortho1 );       
 
 	// construct the 4D transformation matrix
 	Matrix4d matrix;

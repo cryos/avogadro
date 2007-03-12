@@ -143,7 +143,7 @@ void Sphere::computeVertex( int strip, int column, int row)
 	Vector3f & vertex = m_vertexBuffer[ index ];
 
 	// the "golden ratio", useful to construct an icosahedron
-	const float phi = ( 1 + sqrt((float)5) ) / 2;
+	const float phi = ( 1 + sqrtf(5.0f) ) / 2;
 
 	// the 12 vertices of the icosahedron
 	const Vector3f northPole( 0, 1, phi );

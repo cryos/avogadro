@@ -330,6 +330,7 @@ namespace Avogadro {
       QObject::disconnect(d->molecule, 0, this, 0);
   
     d->molecule = molecule;
+    d->molecule->centerAndFitInXYPlane();
   
     // clear our engine queues
     for( int i=0; i < d->queues.size(); i++ ) {
@@ -434,7 +435,6 @@ namespace Avogadro {
       updateGL();
     }
   }
-  
   
   void GLWidget::loadEngines()
   {

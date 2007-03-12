@@ -126,6 +126,9 @@ namespace Avogadro {
       std::vector< Atom * > 	_vatom;
       std::vector< Bond * > 	_vbond;
 
+    public:
+      void centerAndFitInXYPlane();
+      
     public Q_SLOTS:
       void updatePrimitive();
 

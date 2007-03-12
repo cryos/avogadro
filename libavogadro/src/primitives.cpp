@@ -24,8 +24,12 @@
 
 #include <avogadro/primitives.h>
 #include <QDebug>
+#include <eigen/regression.h>
 
 namespace Avogadro {
+
+  using namespace OpenBabel;
+
   class PrimitivePrivate {
     public:
       PrimitivePrivate() : type(Primitive::OtherType), selected(false) {};
@@ -136,6 +140,46 @@ namespace Avogadro {
   {
     Primitive *primitive = qobject_cast<Primitive *>(sender());
     emit primitiveUpdated(primitive);
+    }
+  
+  void Molecule::centerAndFitInXYPlane()
+  {
+  Center();
+  
+    // count the atoms, check that there are any
+    int numAtoms = 0;
+    FOR_ATOMS_OF_MOL( a, this ) numAtoms++;
+    if(!numAtoms) return;
+    
+    // compute the molecule's fitting plane
+    int i = 0;
+    Eigen::Vector3d * atomCenters = new Eigen::Vector3d[numAtoms];
+    FOR_ATOMS_OF_MOL( a, this )
+      atomCenters[i++] = Eigen::Vector3d( a->GetVector().AsArray() );
+    Eigen::Vector4d planeCoeffs;
+    Eigen::computeFittingHyperplane( numAtoms, atomCenters, &planeCoeffs );
+    delete[] atomCenters;
+
+    // compute rotation matrix to orient the molecule in the XY-plane
+    Eigen::Vector3d planeNormalVector( & planeCoeffs(0) ), v, w;
+    planeNormalVector.normalize();
+    v.loadOrtho(planeNormalVector);
+    w = cross( planeNormalVector, v );
+    Eigen::Matrix3d rotation;
+    rotation.setRow( 0, v );
+    rotation.setRow( 1, w );
+    rotation.setRow( 2, planeNormalVector );
+
+    // apply rotation to each atom in the molecule
+    FOR_ATOMS_OF_MOL( a, this )
+    {
+      Eigen::Vector3d atomCenter( a->GetVector().AsArray() );
+      atomCenter = rotation * atomCenter;
+      a->SetVector( atomCenter.x(),
+                    atomCenter.y(),
+                    atomCenter.z() );
+    }
+
   }
 
   class PrimitiveQueuePrivate {
