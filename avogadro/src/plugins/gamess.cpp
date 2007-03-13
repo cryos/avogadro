@@ -78,6 +78,5 @@ void Gamess::performAction(QAction *action, Molecule *molecule, QTextEdit *messa
   }
 }
 
-
-
+#include "gamess.moc"
 Q_EXPORT_PLUGIN2(gamess, Gamess)

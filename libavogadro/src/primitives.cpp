@@ -228,3 +228,5 @@ namespace Avogadro {
     }
   }
 }
+
+#include "primitives.moc"

@@ -81,4 +81,5 @@ void Hydrogens::removeHydrogens(Molecule *molecule)
   molecule->update();
 }
 
+#include "hydrogens.moc"
 Q_EXPORT_PLUGIN2(hydrogens, Hydrogens)

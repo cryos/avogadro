@@ -26,12 +26,6 @@ set(avogadro_SRCS
     main.cpp
 )
 
-set(avogadro_MOC_HDRS
-    flattabwidget.h
-    mainwindow.h
-    aboutdialog.h
-)
-
 set(avogadro_RCS
     avogadro.qrc
 )
@@ -42,24 +36,21 @@ set(avogadro_UIS
 
 
 # designer has some flaws.
-qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
-qt4_wrap_cpp(avogadro_MOC_SRCS ${avogadro_MOC_HDRS})
+qt4_automoc(${avogadro_SRCS})
 qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
-#qt4_automoc(${avogadro_SRCS})
+qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
 if(WIN32) 
 # Windows here
 add_executable(avogadro-app WIN32
 	${avogadro_SRCS} 
 	${avogadro_UIS_H} 
-	${avogadro_MOC_SRCS} 
 	${avogadro_RC_SRCS}
 	)
 else(WIN32) 
 add_executable(avogadro-app
 	${avogadro_SRCS} 
 	${avogadro_UIS_H} 
-	${avogadro_MOC_SRCS} 
 	${avogadro_RC_SRCS}
 	)
 endif(WIN32)

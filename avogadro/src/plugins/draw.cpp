@@ -330,4 +330,5 @@ Bond *Draw::newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom)
   return bond;
 }
 
+#include "draw.moc"
 Q_EXPORT_PLUGIN2(draw, Draw)

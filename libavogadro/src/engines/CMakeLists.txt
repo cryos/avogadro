@@ -14,11 +14,11 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-qt4_wrap_cpp(bsengine_MOC_SRCS bsengine.h)
-ADD_LIBRARY(bsengine SHARED 
-    bsengine.cpp 
-    ${bsengine_MOC_SRCS}
-)
+#qt4_wrap_cpp(bsengine_MOC_SRCS bsengine.h)
+
+set(bsengine_SRCS bsengine.cpp)
+qt4_automoc(${bsengine_SRCS})
+ADD_LIBRARY(bsengine SHARED ${bsengine_SRCS} )
 TARGET_LINK_LIBRARIES(bsengine avogadro-lib
                                 ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                 ${OPENGL_LIBRARIES}

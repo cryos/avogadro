@@ -78,4 +78,5 @@ void Ghemical::optimize(Molecule *molecule, QTextEdit *messages)
 
 }
 
+#include "ghemical.moc"
 Q_EXPORT_PLUGIN2(ghemical, Ghemical)

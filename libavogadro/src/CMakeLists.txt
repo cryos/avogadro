@@ -31,16 +31,16 @@ set(libavogadro_HDRS
 	global.h
 )
 
-set(libavogadro_MOC_HDRS
-	primitives.h
-	glwidget.h
-	moleculetreeview.h
-)
+qt4_automoc(${libavogadro_SRCS})
 
-#qt4_automoc(${libavogadro_SRCS})
-qt4_wrap_cpp(libavogadro_MOC_SRCS ${libavogadro_MOC_HDRS})
+#set(libavogadro_MOC_HDRS
+	#primitives.h
+	#glwidget.h
+	#moleculetreeview.h
+#)
+#qt4_wrap_cpp(libavogadro_MOC_SRCS ${libavogadro_MOC_HDRS})
 
-ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_MOC_SRCS})
+ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS})
 SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 set_target_properties(avogadro-lib PROPERTIES VERSION 0.0.1 SOVERSION 0 )
 

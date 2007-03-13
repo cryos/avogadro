@@ -381,3 +381,5 @@ namespace Avogadro {
   }
 
 }
+
+#include "moleculetreeview.moc"

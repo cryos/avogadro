@@ -18,13 +18,10 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
 
 ### draw
+set(draw_SRCS draw.cpp)
 qt4_add_resources(draw_RC_SRCS draw.qrc)
-qt4_wrap_cpp(draw_MOC_SRCS draw.h)
-ADD_LIBRARY(draw SHARED 
-    draw.cpp 
-    ${draw_RC_SRCS} 
-    ${draw_MOC_SRCS}
-)
+qt4_automoc(${draw_SRCS})
+ADD_LIBRARY(draw SHARED draw.cpp ${draw_RC_SRCS} )
 TARGET_LINK_LIBRARIES(draw 
     ${OPENBABEL2_LIBRARIES} 
     ${QT_LIBRARIES}
@@ -33,15 +30,10 @@ TARGET_LINK_LIBRARIES(draw
 INSTALL(TARGETS draw DESTINATION lib/avogadro)
 
 ### gamess
-qt4_wrap_cpp(gamess_MOC_SRCS gamess.h gamessinputdialog.h)
+set(gamess_SRCS gamess.cpp gamessinputdialog.cpp gamessinputdata.cpp)
 qt4_wrap_ui(gamess_UIS_H gamessinputdialog.ui)
-ADD_LIBRARY(gamess SHARED 
-	gamess.cpp 
-	gamessinputdialog.cpp 
-    gamessinputdata.cpp
-	${gamess_MOC_SRCS}
-    ${gamess_UIS_H}
-)
+qt4_automoc(${gamess_SRCS})
+ADD_LIBRARY(gamess SHARED ${gamess_SRCS} ${gamess_UIS_H})
 TARGET_LINK_LIBRARIES(gamess 
 	${OPENBABEL2_LIBRARIES} 
 	${QT_LIBRARIES} 
@@ -51,11 +43,9 @@ TARGET_LINK_LIBRARIES(gamess
 INSTALL(TARGETS gamess DESTINATION lib/avogadro)
 
 ### ghemical
-qt4_wrap_cpp(ghemical_MOC_SRCS ghemical.h)
-ADD_LIBRARY(ghemical SHARED 
-	ghemical.cpp 
-	${ghemical_MOC_SRCS}
-)
+set(ghemical_SRCS ghemical.cpp)
+qt4_automoc(${ghemical_SRCS})
+ADD_LIBRARY(ghemical SHARED ${ghemical_SRCS})
 TARGET_LINK_LIBRARIES(ghemical 
 	${OPENBABEL2_LIBRARIES} 
 	${QT_LIBRARIES} 
@@ -65,11 +55,9 @@ TARGET_LINK_LIBRARIES(ghemical
 INSTALL(TARGETS ghemical DESTINATION lib/avogadro)
 
 ### hydrogens
-qt4_wrap_cpp(hydrogens_MOC_SRCS hydrogens.h)
-ADD_LIBRARY(hydrogens SHARED 
-	hydrogens.cpp 
-	${hydrogens_MOC_SRCS}
-)
+set(hydrogens_SRCS hydrogens.cpp)
+qt4_automoc(${hydrogens_SRCS})
+ADD_LIBRARY(hydrogens SHARED ${hydrogens_SRCS})
 TARGET_LINK_LIBRARIES(hydrogens 
 	${OPENBABEL2_LIBRARIES} 
 	${QT_LIBRARIES} 
@@ -79,11 +67,9 @@ TARGET_LINK_LIBRARIES(hydrogens
 INSTALL(TARGETS hydrogens DESTINATION lib/avogadro)
 
 ### selectrotate
-qt4_wrap_cpp(selectrotate_MOC_SRCS selectrotate.h)
-ADD_LIBRARY(selectrotate SHARED 
-	selectrotate.cpp 
-	${selectrotate_MOC_SRCS}
-)
+set(selectrotate_SRCS selectrotate.cpp)
+qt4_automoc(${selectrotate_SRCS})
+ADD_LIBRARY(selectrotate SHARED ${selectrotate_SRCS})
 TARGET_LINK_LIBRARIES(selectrotate 
 	${OPENBABEL2_LIBRARIES} 
 	${QT_LIBRARIES} 

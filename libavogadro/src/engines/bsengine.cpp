@@ -126,4 +126,6 @@ bool BSEngine::render(const Molecule *m)
   return false;
 }
 
+#include "bsengine.moc"
+
 Q_EXPORT_PLUGIN2(bsengine, BSEngineFactory)

@@ -69,3 +69,5 @@ AboutDialog::AboutDialog(QWidget *parent)
 AboutDialog::~AboutDialog()
 {
 }
+
+#include "aboutdialog.moc"

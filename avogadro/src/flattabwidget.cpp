@@ -488,3 +488,5 @@ void FlatHandle::paintEvent(QPaintEvent *)
 // //     }
 // }
 // 
+
+#include "flattabwidget.moc"

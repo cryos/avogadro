@@ -664,3 +664,5 @@ namespace Avogadro {
   }
 
 } // end namespace Avogadro
+
+#include "mainwindow.moc"

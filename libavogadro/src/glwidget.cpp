@@ -577,3 +577,5 @@ namespace Avogadro {
 
 
 }
+
+#include "glwidget.moc"
