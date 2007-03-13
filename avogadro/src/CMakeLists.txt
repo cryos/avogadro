@@ -29,6 +29,7 @@ set(avogadro_SRCS
 set(avogadro_MOC_HDRS
     flattabwidget.h
     mainwindow.h
+    aboutdialog.h
 )
 
 set(avogadro_RCS
