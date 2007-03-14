@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __PRIMATIVES_H
-#define __PRIMATIVES_H
+#ifndef __PRIMITIVES_H
+#define __PRIMITIVES_H
 
 #include <avogadro/global.h>
 
@@ -29,6 +29,8 @@
 
 #include <QObject>
 #include <QAbstractItemModel>
+
+#include <eigen/vector.h>
 
 class Engine;
 
@@ -88,7 +90,11 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      Atom(QObject *parent=0) : OpenBabel::OBAtom(), Primitive(AtomType, parent) { }
+        Atom(QObject *parent=0) : OpenBabel::OBAtom(), Primitive(AtomType, parent) { }
+        inline Eigen::Vector3d & position ()
+        {
+          return *reinterpret_cast<Eigen::Vector3d *>( GetCoordinate() );
+        }
   };
 
   class A_EXPORT Bond : public Primitive, public OpenBabel::OBBond
@@ -113,6 +119,7 @@ namespace Avogadro {
 
     public:
       Molecule(QObject *parent=0);
+      void update();
 
       Atom *CreateAtom(void);
       Bond * CreateBond(void);
@@ -121,14 +128,20 @@ namespace Avogadro {
       void DestroyAtom(OpenBabel::OBAtom*);
       void DestroyBond(OpenBabel::OBBond*);
       void DestroyResidue(OpenBabel::OBResidue*);
+      
+      void computeGeometricInfo();
+      const Eigen::Vector3d & center() const { return _center; }
+      const Eigen::Vector3d & normalVector() const { return _normalVector; }
+      const double & radius() const { return _radius; }
 
     protected:
-      std::vector< Atom * > 	_vatom;
-      std::vector< Bond * > 	_vbond;
+      std::vector< Atom * > _vatom;
+      std::vector< Bond * > _vbond;
+      Eigen::Vector3d       _center;
+      Eigen::Vector3d       _normalVector;
+      double                _radius;
+      Atom *                _atomFarthestFromCenter;
 
-    public:
-      void centerAndFitInXYPlane();
-      
     public Q_SLOTS:
       void updatePrimitive();
 
@@ -162,4 +175,4 @@ namespace Avogadro {
 
 Q_DECLARE_METATYPE(Avogadro::Primitive*)
 
-#endif
+#endif // __PRIMITIVES_H

@@ -28,8 +28,6 @@
 
 namespace Avogadro {
 
-  using namespace OpenBabel;
-
   class PrimitivePrivate {
     public:
       PrimitivePrivate() : type(Primitive::OtherType), selected(false) {};
@@ -140,46 +138,66 @@ namespace Avogadro {
   {
     Primitive *primitive = qobject_cast<Primitive *>(sender());
     emit primitiveUpdated(primitive);
-    }
+    qDebug() << "calling computeGeometricInfo() from Molecule::updatePrimitive()";
+    computeGeometricInfo();
+  }
   
-  void Molecule::centerAndFitInXYPlane()
+  void Molecule::update()
   {
-  Center();
+    emit updated();
+    qDebug() << "calling computeGeometricInfo() from Molecule::update()";
+    computeGeometricInfo();
+  }
   
-    // count the atoms, check that there are any
-    int numAtoms = 0;
-    FOR_ATOMS_OF_MOL( a, this ) numAtoms++;
-    if(!numAtoms) return;
+  void Molecule::computeGeometricInfo()
+  {
+    _atomFarthestFromCenter = 0;
+    _center.loadZero();
+    _normalVector.loadZero();
+    _radius = 0.0;
+  
+    std::vector< Atom * >::iterator atom_iterator;
     
-    // compute the molecule's fitting plane
-    int i = 0;
-    Eigen::Vector3d * atomCenters = new Eigen::Vector3d[numAtoms];
-    FOR_ATOMS_OF_MOL( a, this )
-      atomCenters[i++] = Eigen::Vector3d( a->GetVector().AsArray() );
-    Eigen::Vector4d planeCoeffs;
-    Eigen::computeFittingHyperplane( numAtoms, atomCenters, &planeCoeffs );
-    delete[] atomCenters;
-
-    // compute rotation matrix to orient the molecule in the XY-plane
-    Eigen::Vector3d planeNormalVector( & planeCoeffs(0) ), v, w;
-    planeNormalVector.normalize();
-    v.loadOrtho(planeNormalVector);
-    w = cross( planeNormalVector, v );
-    Eigen::Matrix3d rotation;
-    rotation.setRow( 0, v );
-    rotation.setRow( 1, w );
-    rotation.setRow( 2, planeNormalVector );
-
-    // apply rotation to each atom in the molecule
-    FOR_ATOMS_OF_MOL( a, this )
+    // count the atoms, check that there are any atoms, compute _center
+    int numAtoms = 0;
+    for( atom_iterator = _vatom.begin();
+         atom_iterator != _vatom.end();
+         atom_iterator++ )
     {
-      Eigen::Vector3d atomCenter( a->GetVector().AsArray() );
-      atomCenter = rotation * atomCenter;
-      a->SetVector( atomCenter.x(),
-                    atomCenter.y(),
-                    atomCenter.z() );
+        numAtoms++;
+        _center += (*atom_iterator)->position();
     }
-
+    if(!numAtoms) return;
+    _center /= numAtoms;
+    
+    // compute the normal vector to the molecule's best-fitting plane
+    Eigen::Vector3d * atomPositions = new Eigen::Vector3d[numAtoms];
+    int i = 0;
+    for( atom_iterator = _vatom.begin();
+         atom_iterator != _vatom.end();
+         atom_iterator++ )
+    {
+        atomPositions[i++] = (*atom_iterator)->position();
+    }
+    Eigen::Vector4d planeCoeffs;
+    Eigen::computeFittingHyperplane( numAtoms, atomPositions, &planeCoeffs );
+    delete[] atomPositions;
+    _normalVector = Eigen::Vector3d( planeCoeffs.x(), planeCoeffs.y(), planeCoeffs.z() );
+    _normalVector.normalize();
+    
+    // compute radius and the farthest atom
+    _radius = -1.0; // so that ( squaredDistanceToCenter > _radius ) is true for at least one atom.
+    for( atom_iterator = _vatom.begin();
+         atom_iterator != _vatom.end();
+         atom_iterator++ )
+    {
+        double distanceToCenter = ((*atom_iterator)->position() - _center).norm();
+        if( distanceToCenter > _radius )
+        {
+          _radius = distanceToCenter;
+          _atomFarthestFromCenter = *atom_iterator;
+        }
+    }
   }
 
   class PrimitiveQueuePrivate {
