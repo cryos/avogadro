@@ -18,7 +18,7 @@
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
-***********************************************************************/
+ ***********************************************************************/
 
 #include "config.h"
 
@@ -28,41 +28,43 @@
 
 namespace Avogadro {
 
+  using namespace OpenBabel;
+
   class PrimitivePrivate {
     public:
       PrimitivePrivate() : type(Primitive::OtherType), selected(false) {};
-      
+
       enum Primitive::Type type;
       bool selected;
   };
 
   Primitive::Primitive(QObject *parent) : d(new PrimitivePrivate), QObject(parent) {}
-  
+
   Primitive::Primitive(enum Type type, QObject *parent) : d(new PrimitivePrivate), QObject(parent)
   {
     d->type = type;
   }
-  
+
   Primitive::~Primitive()
   {
     delete d;
   }
-  
+
   bool Primitive::isSelected() const
   {
     return d->selected;
   }
-  
+
   void Primitive::setSelected( bool s ) 
   {
     d->selected = s;
   }
-  
+
   void Primitive::toggleSelected()
   {
     d->selected = !d->selected;
   }
-  
+
   enum Primitive::Type Primitive::type() const
   {
     return d->type;
@@ -72,7 +74,7 @@ namespace Avogadro {
   {
     emit updated();
   }
-  
+
   Molecule::Molecule(QObject *parent) : OpenBabel::OBMol(), Primitive(MoleculeType, parent) 
   {
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -86,7 +88,7 @@ namespace Avogadro {
     emit primitiveAdded(atom);
     return(atom);
   }
-  
+
   Bond * Molecule::CreateBond()
   {
     qDebug() << "Molecule::CreateBond()";
@@ -95,7 +97,7 @@ namespace Avogadro {
     emit primitiveAdded(bond);
     return(bond);
   }
-  
+
   Residue * Molecule::CreateResidue()
   {
     Residue *residue = new Residue(this);
@@ -103,7 +105,7 @@ namespace Avogadro {
     emit primitiveAdded(residue);
     return(residue);
   }
-  
+
   void Molecule::DestroyAtom(OpenBabel::OBAtom *obatom)
   {
     qDebug() << "DestroyAtom Called";
@@ -113,7 +115,7 @@ namespace Avogadro {
       atom->deleteLater();
     }
   }
-  
+
   void Molecule::DestroyBond(OpenBabel::OBBond *obbond)
   {
     qDebug() << "DestroyBond Called";
@@ -123,7 +125,7 @@ namespace Avogadro {
       bond->deleteLater();
     }
   }
-  
+
   void Molecule::DestroyResidue(OpenBabel::OBResidue *obresidue)
   {
     qDebug() << "DestroyResidue Called";
@@ -133,7 +135,7 @@ namespace Avogadro {
       residue->deleteLater();
     }
   }
-  
+
   void Molecule::updatePrimitive()
   {
     Primitive *primitive = qobject_cast<Primitive *>(sender());
@@ -141,69 +143,65 @@ namespace Avogadro {
     qDebug() << "calling computeGeometricInfo() from Molecule::updatePrimitive()";
     computeGeometricInfo();
   }
-  
+
   void Molecule::update()
   {
     emit updated();
     qDebug() << "calling computeGeometricInfo() from Molecule::update()";
     computeGeometricInfo();
   }
-  
+
   void Molecule::computeGeometricInfo()
   {
     _atomFarthestFromCenter = 0;
     _center.loadZero();
     _normalVector.loadZero();
     _radius = 0.0;
-  
-    std::vector< Atom * >::iterator atom_iterator;
-    
+
+
     // count the atoms, check that there are any atoms, compute _center
-    int numAtoms = 0;
-    for( atom_iterator = _vatom.begin();
-         atom_iterator != _vatom.end();
-         atom_iterator++ )
+    int numAtoms = NumAtoms();
+
+    std::vector< OBAtom * >::iterator atom_iterator;
+    for( Atom* atom = (Atom*) BeginAtom(atom_iterator); atom; atom = (Atom *) NextAtom(atom_iterator) )
     {
-        numAtoms++;
-        _center += (*atom_iterator)->position();
+      _center += atom->position();
     }
+
     if(!numAtoms) return;
     _center /= numAtoms;
-    
+
     // compute the normal vector to the molecule's best-fitting plane
     Eigen::Vector3d * atomPositions = new Eigen::Vector3d[numAtoms];
     int i = 0;
-    for( atom_iterator = _vatom.begin();
-         atom_iterator != _vatom.end();
-         atom_iterator++ )
+
+    for( Atom* atom = (Atom*) BeginAtom(atom_iterator); atom; atom = (Atom *) NextAtom(atom_iterator) )
     {
-        atomPositions[i++] = (*atom_iterator)->position();
+      atomPositions[i++] = atom->position();
     }
     Eigen::Vector4d planeCoeffs;
     Eigen::computeFittingHyperplane( numAtoms, atomPositions, &planeCoeffs );
     delete[] atomPositions;
     _normalVector = Eigen::Vector3d( planeCoeffs.x(), planeCoeffs.y(), planeCoeffs.z() );
     _normalVector.normalize();
-    
+
     // compute radius and the farthest atom
     _radius = -1.0; // so that ( squaredDistanceToCenter > _radius ) is true for at least one atom.
-    for( atom_iterator = _vatom.begin();
-         atom_iterator != _vatom.end();
-         atom_iterator++ )
+    for( Atom* atom = (Atom*) BeginAtom(atom_iterator); atom; atom = (Atom *) NextAtom(atom_iterator) )
     {
-        double distanceToCenter = ((*atom_iterator)->position() - _center).norm();
-        if( distanceToCenter > _radius )
-        {
-          _radius = distanceToCenter;
-          _atomFarthestFromCenter = *atom_iterator;
-        }
+      double distanceToCenter = (atom->position() - _center).norm();
+      if( distanceToCenter > _radius )
+      {
+        _radius = distanceToCenter;
+        _atomFarthestFromCenter = atom;
+      }
     }
   }
 
   class PrimitiveQueuePrivate {
     public:
       PrimitiveQueuePrivate() {};
-      
+
       QList< QList<Primitive *>* > queue;
   };
 

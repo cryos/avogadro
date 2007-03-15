@@ -303,16 +303,16 @@ namespace Avogadro {
       void DestroyResidue(OpenBabel::OBResidue* residue);
 
     protected:
-      /**
-       * Redefined OpenBabel::OBMol member data to hold a 
-       * vector of Atom pointers.
-       */
-      std::vector< Atom * > _vatom;
-      /**
-       * Redefined OpenBabel::OBMol member data to hold a 
-       * vector of Bond pointers.
-       */
-      std::vector< Bond * > _vbond;
+//       /**
+//        * Redefined OpenBabel::OBMol member data to hold a 
+//        * vector of Atom pointers.
+//        */
+//       std::vector< Atom * > _vatom;
+//       /**
+//        * Redefined OpenBabel::OBMol member data to hold a 
+//        * vector of Bond pointers.
+//        */
+//       std::vector< Bond * > _vbond;
       Eigen::Vector3d       _center;
       Eigen::Vector3d       _normalVector;
       double                _radius;
