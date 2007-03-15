@@ -17,7 +17,7 @@ else (EIGEN_INCLUDE_DIR)
 
 find_path(EIGEN_INCLUDE_DIR NAMES eigen/matrix.h
      PATHS
-     ${CMAKE_INSTALL_PREFIX}/include
+     ${INCLUDE_INSTALL_DIR}
      /usr/include
      /usr/local/include
    )
