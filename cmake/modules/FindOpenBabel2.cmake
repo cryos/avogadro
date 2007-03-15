@@ -26,18 +26,22 @@ if(NOT WIN32)
   if(_return_VALUE STREQUAL "0")
 	set(OPENBABEL_MINI_FOUND TRUE)
   endif(_return_VALUE STREQUAL "0")
-  message(STATUS "OPENBABEL_MINI_FOUND <${OPENBABEL_MINI_FOUND}>")
 
   exec_program(${PKGCONFIG_EXECUTABLE} ARGS --variable=pkgincludedir openbabel-2.0 RETURN_VALUE _return_VALUE OUTPUT_VARIABLE _obPkgIncDir )
   if (_obPkgIncDir)
     set(_obIncDir "${_obPkgIncDir}")
   endif (_obPkgIncDir)
+else(NOT WIN32)
+  set(OPENBABEL_MINI_FOUND TRUE)
 endif(NOT WIN32)
+  if(OPENBABEL_MINI_FOUND)
+
   find_path(OPENBABEL2_INCLUDE_DIR openbabel/obconversion.h
     ${_obIncDir}
     /usr/local/include
     /usr/include
     ${GNUWIN32_DIR}/include
+    $ENV{OPENBABEL2_INCLUDE_DIR}
   )
 
   find_library(OPENBABEL2_LIBRARIES NAMES openbabel
@@ -46,7 +50,10 @@ endif(NOT WIN32)
     /usr/lib
     /usr/local/lib
     ${GNUWIN32_DIR}/lib
+    $ENV{OPENBABEL2_LIBRARIES}
   )
+
+  endif(OPENBABEL_MINI_FOUND)
 
   if(OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL_MINI_FOUND)
     set(OPENBABEL2_FOUND TRUE)
@@ -57,11 +64,35 @@ endif(NOT WIN32)
       message(STATUS "Found OpenBabel2: ${OPENBABEL2_LIBRARIES}")
     endif (NOT OPENBABEL2_FIND_QUIETLY)
   else (OPENBABEL2_FOUND)
-    if (OPENBABEL2_FIND_REQUIRED)
+    if (OpenBabel2_FIND_REQUIRED)
       message(FATAL_ERROR "Could NOT find OpenBabel2")
-    endif (OPENBABEL2_FIND_REQUIRED)
+    endif (OpenBabel2_FIND_REQUIRED)
   endif (OPENBABEL2_FOUND)
 
   mark_as_advanced(OPENBABEL2_INCLUDE_DIR OPENBABEL2_LIBRARIES)
 
 endif (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES)
+
+# Search for Open Babel2 executable
+if(OPENBABEL2_EXECUTABLE)
+
+  # in cache already
+  set(OPENBABEL2_EXECUTABLE_FOUND TRUE)
+
+else(OPENBABEL2_EXECUTABLE)
+  find_program(OPENBABEL2_EXECUTABLE NAMES babel
+    PATHS
+    [HKEY_CURRENT_USER\\SOFTWARE\\OpenBabel\ 2.0.2]
+    $ENV{OPENBABEL2_EXECUTABLE}
+  )
+
+  if(OPENBABEL2_EXECUTABLE)
+    set(OPENBABEL2_EXECUTABLE_FOUND TRUE)
+  endif(OPENBABEL2_EXECUTABLE)
+
+  if(OPENBABEL2_EXECUTABLE_FOUND)
+    message(STATUS "Found OpenBabel2 executable: ${OPENBABEL2_EXECUTABLE}")
+  endif(OPENBABEL2_EXECUTABLE_FOUND)
+
+endif(OPENBABEL2_EXECUTABLE)
+
