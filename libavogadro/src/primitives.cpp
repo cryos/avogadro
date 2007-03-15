@@ -2,7 +2,7 @@
   Primitives - Wrapper class around the OpenBabel classes
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
-  Copyright (C) 2006 by Donald Ephraim Curtis
+  Copyright (C) 2006,2007 by Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>

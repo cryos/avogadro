@@ -2,7 +2,7 @@
   Engine - Qt Plugin Template
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006 by Donald E. Curtis
+  Copyright (C) 2006,2007 by Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -32,45 +32,110 @@
 
 namespace Avogadro {
 
-  //! Base class for our GL engines
+  /** 
+   * @class Engine
+   * @brief Engine plugin interface.
+   * @author Donald Ephraim Curtis
+   *
+   * This class provides a standard QT4 style plugin interface for our engines.  
+   * Subclasses of this class are loaded by the GLWidget and used to render
+   * different parts of our project (Molecule, Atom, Bond, Residue) depending
+   * on what style of engine we're implementing.
+   * \sa render()
+   */
  class A_EXPORT Engine
   {
     public:
-      //! Deconstructor
+      /// Deconstructor for the engine.
       virtual ~Engine() {}
 
-      //! \name Description methods
-      //@{
-      //! Engine Name (ie FoobarEngine)
+      /** 
+       * @return the short name of the engine as a QString
+       * (ie. "FooBar")
+       */
       virtual QString name() = 0;
-      //! Engine Description (ie. Ball and Stick / Wireframe)
+      /**
+       * @return a simple description of the engine
+       * (ie. "Rendering Atoms and Bonds using FooBar style.")
+       */
       virtual QString description() = 0;
-      //@}
 
-      //! \name Render Methods
-      //@{
-      /*! Render a Molecule object
-
-        Render an entire molecule all at once, rather than a specific atom
-        or bond. Note that while this may provide for optimization,
-        additional glue code may be needed to be sure glPushName is used 
-        properly.
-      */
-
-      //! Render a primitive queue.
+      /**
+       * Render a PrimitiveQueue.  This function is allowed to rendering 
+       * whatever primitives it wishes.  There is no requirement that it
+       * render every primitive.
+       *
+       * @param queue This parameter is of type PrimitiveQueue which
+       * provides an organized list of Primitive* objects.  During 
+       * generation of the GL view engines will have their render
+       * function called at most once.  It is the responsibility 
+       * of the engine to render all of the objects in it's queue if
+       * it can.  
+       *
+       * @return @c true if the rendering was completed successfully, @c false otherwise
+       *
+       * Example
+       * @code
+       * Engine::render(const PrimitiveQueue *queue)
+       * {
+       *   const QList<Primitive *> *list;
+       *
+       *   glPushName(Primitive::AtomType);
+       *   list = q->primitiveList(Primitive::AtomType);
+       *   for( int i=0; i<list->size(); i++ ) {
+       *     Bond *atom = (*list)[i];
+       *     glPushName(atom->GetIdx());
+       *     *** render atom ***
+       *     glPopName();
+       *   }
+       *
+       *   glPushName(Primitive::BondType);
+       *   list = q->primitiveList(Primitive::BondType);
+       *   for( int i=0; i<list->size(); i++ ) {
+       *     Bond *bond = (*list)[i];
+       *     glPushName(bond->GetIdx());
+       *     *** render bond ***
+       *     glPopName();
+       *   }
+       *   glPopName();
+       *
+       *   return true;
+       * }
+       * @endcode
+       *
+       * @note To allow picking to happen you need to push the object type and name.
+       * If objects cannot be picked this may be omitted.
+       *
+       * For more information on the various primitive lists available see
+       * PrimitiveQueue.
+       * 
+       */
       virtual bool render(const PrimitiveQueue *) = 0;
-      //@}
 
   };
 
-  //! Generates instances of our Engine class
+  /**
+   * @class EngineFactory
+   * @warning This function needs to be looked at again.  It was originally designed
+   * so that for a single thread we could have multiple rendering engines.  We have 
+   * decided that each molecule will have it's own window which will be it's own thread.
+   * However, this style of plugin creation may still be needed as we might want to have 
+   * multiple views of the same molecule.
+   *
+   * This class is used to generate new instances of the Engine class for which
+   * it is defined.
+   */
   class A_EXPORT EngineFactory
   {
     public:
-      //! Desconstructor
+      /**
+       * Engine factory deconstructor.
+       */
       virtual ~EngineFactory() {}
 
-      //! Create a new instance of our engine and return a pointer to it.
+      /**
+       * @return pointer to a new instance of an Engine subclass object
+       */
       virtual Engine *createInstance() = 0;
   };
 

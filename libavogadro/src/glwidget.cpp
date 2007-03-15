@@ -2,7 +2,7 @@
   GLWidget - general OpenGL display
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006 by Donald E. Curtis
+  Copyright (C) 2006,2007 by Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -49,7 +49,7 @@ namespace Avogadro {
     d->maxZ = e->maxZ;
   }
 
-  GLHit::GLHit(GLuint name, GLuint type, GLuint minZ, GLuint maxZ) : d(new GLHitPrivate) { 
+  GLHit::GLHit(GLuint type, GLuint name, GLuint minZ, GLuint maxZ) : d(new GLHitPrivate) { 
     d->name = name;
     d->type = type;
     d->minZ = minZ;
@@ -72,7 +72,7 @@ namespace Avogadro {
 
   bool GLHit::operator<(const GLHit &other) const { 
     GLHitPrivate *e = other.d;
-    return e->minZ < e->minZ; 
+    return d->minZ < e->minZ; 
   }
 
   bool GLHit::operator==(const GLHit &other) const { 
@@ -554,7 +554,7 @@ namespace Avogadro {
         if (name)
         {
 //dc:           printf ("%d(%d) ", name,type);
-          hits.append(GLHit(name,type,minZ,maxZ));
+          hits.append(GLHit(type,name,minZ,maxZ));
         }
       }
 //dc:       printf ("\n");

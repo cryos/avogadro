@@ -117,5 +117,37 @@ namespace Avogadro {
       
   };
 
+  /**
+   * \mainpage v0.0.3 API Documentation
+   *
+   * \section avogadro Introduction
+   *
+   * Avogadro is a molecular modeling / viewing / editing tool.
+   * The design idea behind Avogadro is to allow every feature to be 
+   * pluggable.  This allows new features and tools to be easily added
+   * and removed and also provides a solid framework for research.
+   *
+   * - \ref main "Main Classes"
+   *
+   * \page main "Main Classes"
+   *
+   * libavogadro interfaces:
+   * - Engine Interface for engine plugins
+   *
+   * libavogadro classes:
+   * - GLWidget Widget for rendering 3d representations of a molecule.
+   * - MoleculeTreeView Widget for rendering a tree view representation of a molecule.
+   * - Primitive Base class for all model components
+   *   - Atom Class for representing atoms
+   *   - Bond Class for representing bonds
+   *   - Residue Class for representing residues
+   *   - Molecule Class for representing molecules
+   *
+   *
+   * avogadro classes:
+   * - n/a
+   *
+   */
+
 } // end namespace Avogadro
 #endif

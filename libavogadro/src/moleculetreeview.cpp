@@ -2,7 +2,7 @@
   MoleculeTreeView - Molecule Widget
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006 by Donald E. Curtis
+  Copyright (C) 2006,2007 by Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.  For more
   information, see <http://avogadro.sourceforge.net/>
@@ -29,8 +29,7 @@
 
 namespace Avogadro {
 
-  MoleculeTreeView::MoleculeTreeView(QWidget *parent)
-    : QTreeWidget(parent), m_molecule(0)
+  MoleculeTreeView::MoleculeTreeView(QWidget *parent) : QTreeWidget(parent), m_molecule(0)
   {
     constructor();
   }
@@ -180,10 +179,6 @@ namespace Avogadro {
     QTreeWidgetItem *group = m_groups[primitive->type()];
     if(group == 0)
       return;
-
-    //   this doesn't work because as bonds / atoms get deleted
-    //   their index doesn't
-    //   int num = primitiveToItemIndex(primitive);
 
     for(int i = 0; i < group->childCount(); i++)
     {
