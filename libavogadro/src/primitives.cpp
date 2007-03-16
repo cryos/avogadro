@@ -24,6 +24,8 @@
 
 #include <avogadro/primitives.h>
 #include <QDebug>
+#include <QMutex>
+#include <QMutexLocker>
 #include <eigen/regression.h>
 
 namespace Avogadro {
@@ -81,6 +83,7 @@ namespace Avogadro {
       double                radius;
       Atom *                farthestAtom;
       bool                  invalidGeomInfo;
+      QMutex                mutex;
 
       MoleculePrivate() : invalidGeomInfo(true) {}
   };
@@ -155,12 +158,14 @@ namespace Avogadro {
   {
     Primitive *primitive = qobject_cast<Primitive *>(sender());
     emit primitiveUpdated(primitive);
+    QMutexLocker locker(&d->mutex);
     d->invalidGeomInfo = true;
   }
 
   void Molecule::update()
   {
     emit updated();
+    QMutexLocker locker(&d->mutex);
     d->invalidGeomInfo = true;
   }
 
@@ -168,7 +173,7 @@ namespace Avogadro {
   {
     if( d->invalidGeomInfo ) computeGeomInfo();
     return d->center;
-    }
+  }
     
   const Eigen::Vector3d & Molecule::normalVector() const
   {
@@ -190,10 +195,12 @@ namespace Avogadro {
 
   void Molecule::computeGeomInfo() const
   {
+    QMutexLocker locker(&d->mutex);
     d->farthestAtom = 0;
     d->center.loadZero();
     d->normalVector.loadZero();
     d->radius = 0.0;
+    d->invalidGeomInfo = true;
     if( NumAtoms() != 0 )
     {
       // compute center
