@@ -28,8 +28,6 @@
 
 namespace Avogadro {
 
-  using namespace OpenBabel;
-
   class PrimitivePrivate {
     public:
       PrimitivePrivate() : type(Primitive::OtherType), selected(false) {};
@@ -159,20 +157,17 @@ namespace Avogadro {
     _radius = 0.0;
 
 
-    // count the atoms, check that there are any atoms, compute _center
-    int numAtoms = NumAtoms();
-
-    std::vector< OBAtom * >::iterator atom_iterator;
+    // check that there are any atoms, compute _center
+    if( NumAtoms() == 0 ) return;
+    std::vector< OpenBabel::OBAtom * >::iterator atom_iterator;
     for( Atom* atom = (Atom*) BeginAtom(atom_iterator); atom; atom = (Atom *) NextAtom(atom_iterator) )
     {
       _center += atom->position();
     }
-
-    if(!numAtoms) return;
-    _center /= numAtoms;
+    _center /= NumAtoms();
 
     // compute the normal vector to the molecule's best-fitting plane
-    Eigen::Vector3d * atomPositions = new Eigen::Vector3d[numAtoms];
+    Eigen::Vector3d * atomPositions = new Eigen::Vector3d[NumAtoms()];
     int i = 0;
 
     for( Atom* atom = (Atom*) BeginAtom(atom_iterator); atom; atom = (Atom *) NextAtom(atom_iterator) )
@@ -180,7 +175,7 @@ namespace Avogadro {
       atomPositions[i++] = atom->position();
     }
     Eigen::Vector4d planeCoeffs;
-    Eigen::computeFittingHyperplane( numAtoms, atomPositions, &planeCoeffs );
+    Eigen::computeFittingHyperplane( NumAtoms(), atomPositions, &planeCoeffs );
     delete[] atomPositions;
     _normalVector = Eigen::Vector3d( planeCoeffs.x(), planeCoeffs.y(), planeCoeffs.z() );
     _normalVector.normalize();
