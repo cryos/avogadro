@@ -147,7 +147,7 @@ namespace Avogadro {
        */
       void updated();
 
-    protected:
+    private:
       PrimitivePrivate * const d;
 
   };
@@ -236,6 +236,7 @@ namespace Avogadro {
    * this is our model class and is used by our various views to hold
    * all required data.
    */
+  class MoleculePrivate;
   class A_EXPORT Molecule : public Primitive, public OpenBabel::OBMol
   {
     Q_OBJECT
@@ -247,6 +248,7 @@ namespace Avogadro {
        * @param parent the object parent.
        */
       Molecule(QObject *parent=0);
+      virtual ~Molecule();
       void update();
 
       /**
@@ -281,10 +283,10 @@ namespace Avogadro {
        */
       void DestroyAtom(OpenBabel::OBAtom* atom);
       
-      void computeGeometricInfo();
-      const Eigen::Vector3d & center() const { return _center; }
-      const Eigen::Vector3d & normalVector() const { return _normalVector; }
-      const double & radius() const { return _radius; }
+      const Eigen::Vector3d & center() const;
+      const Eigen::Vector3d & normalVector() const;
+      const double & radius() const;
+      const Atom *farthestAtom() const;
 
       /**
        * Virtual function inherited from OpenBabel::OBMol.
@@ -301,12 +303,6 @@ namespace Avogadro {
        * @param atom the residue to delete
        */
       void DestroyResidue(OpenBabel::OBResidue* residue);
-
-    protected:
-      Eigen::Vector3d       _center;
-      Eigen::Vector3d       _normalVector;
-      double                _radius;
-      Atom *                _atomFarthestFromCenter;
 
     private Q_SLOTS:
       /**
@@ -339,6 +335,10 @@ namespace Avogadro {
        * @param primitive pointer to the primitive that was updated before it is free'd
        */
       void primitiveRemoved(Primitive *primitive);
+
+    private:
+      MoleculePrivate * const d;
+      void computeGeomInfo() const;
   };
 
   /**

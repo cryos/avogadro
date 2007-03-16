@@ -73,9 +73,26 @@ namespace Avogadro {
     emit updated();
   }
 
-  Molecule::Molecule(QObject *parent) : OpenBabel::OBMol(), Primitive(MoleculeType, parent) 
+  class MoleculePrivate
+  {
+    public:
+      Eigen::Vector3d       center;
+      Eigen::Vector3d       normalVector;
+      double                radius;
+      Atom *                farthestAtom;
+      bool                  invalidGeomInfo;
+
+      MoleculePrivate() : invalidGeomInfo(true) {}
+  };
+
+  Molecule::Molecule(QObject *parent) : d(new MoleculePrivate), OpenBabel::OBMol(), Primitive(MoleculeType, parent) 
   {
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
+  }
+
+  Molecule::~Molecule()
+  {
+    delete d;
   }
 
   Atom * Molecule::CreateAtom()
@@ -138,59 +155,81 @@ namespace Avogadro {
   {
     Primitive *primitive = qobject_cast<Primitive *>(sender());
     emit primitiveUpdated(primitive);
-    qDebug() << "calling computeGeometricInfo() from Molecule::updatePrimitive()";
-    computeGeometricInfo();
+    d->invalidGeomInfo = true;
   }
 
   void Molecule::update()
   {
     emit updated();
-    qDebug() << "calling computeGeometricInfo() from Molecule::update()";
-    computeGeometricInfo();
+    d->invalidGeomInfo = true;
   }
 
-  void Molecule::computeGeometricInfo()
+  const Eigen::Vector3d & Molecule::center() const
   {
-    _atomFarthestFromCenter = 0;
-    _center.loadZero();
-    _normalVector.loadZero();
-    _radius = 0.0;
-
-
-    // check that there are any atoms, compute _center
-    if( NumAtoms() == 0 ) return;
-    std::vector< OpenBabel::OBAtom * >::iterator atom_iterator;
-    for( Atom* atom = (Atom*) BeginAtom(atom_iterator); atom; atom = (Atom *) NextAtom(atom_iterator) )
-    {
-      _center += atom->position();
+    if( d->invalidGeomInfo ) computeGeomInfo();
+    return d->center;
     }
-    _center /= NumAtoms();
+    
+  const Eigen::Vector3d & Molecule::normalVector() const
+  {
+    if( d->invalidGeomInfo ) computeGeomInfo();
+    return d->normalVector;
+  }
+    
+  const double & Molecule::radius() const
+  {
+    if( d->invalidGeomInfo ) computeGeomInfo();
+    return d->radius;
+  }
+    
+  const Atom * Molecule::farthestAtom() const
+  {
+    if( d->invalidGeomInfo ) computeGeomInfo();
+    return d->farthestAtom;
+  }
 
-    // compute the normal vector to the molecule's best-fitting plane
-    Eigen::Vector3d * atomPositions = new Eigen::Vector3d[NumAtoms()];
-    int i = 0;
-
-    for( Atom* atom = (Atom*) BeginAtom(atom_iterator); atom; atom = (Atom *) NextAtom(atom_iterator) )
+  void Molecule::computeGeomInfo() const
+  {
+    d->farthestAtom = 0;
+    d->center.loadZero();
+    d->normalVector.loadZero();
+    d->radius = 0.0;
+    if( NumAtoms() != 0 )
     {
-      atomPositions[i++] = atom->position();
-    }
-    Eigen::Vector4d planeCoeffs;
-    Eigen::computeFittingHyperplane( NumAtoms(), atomPositions, &planeCoeffs );
-    delete[] atomPositions;
-    _normalVector = Eigen::Vector3d( planeCoeffs.x(), planeCoeffs.y(), planeCoeffs.z() );
-    _normalVector.normalize();
-
-    // compute radius and the farthest atom
-    _radius = -1.0; // so that ( squaredDistanceToCenter > _radius ) is true for at least one atom.
-    for( Atom* atom = (Atom*) BeginAtom(atom_iterator); atom; atom = (Atom *) NextAtom(atom_iterator) )
-    {
-      double distanceToCenter = (atom->position() - _center).norm();
-      if( distanceToCenter > _radius )
+      // compute center
+      std::vector< OpenBabel::OBAtom * >::iterator atom_iterator;
+      for( Atom* atom = (Atom*) const_cast<Molecule*>(this)->BeginAtom(atom_iterator); atom; atom = (Atom *) const_cast<Molecule*>(this)->NextAtom(atom_iterator) )
       {
-        _radius = distanceToCenter;
-        _atomFarthestFromCenter = atom;
+        d->center += atom->position();
+      }
+      d->center /= NumAtoms();
+  
+      // compute the normal vector to the molecule's best-fitting plane
+      Eigen::Vector3d * atomPositions = new Eigen::Vector3d[NumAtoms()];
+      int i = 0;
+      for( Atom* atom = (Atom*) const_cast<Molecule*>(this)->BeginAtom(atom_iterator); atom; atom = (Atom *) const_cast<Molecule*>(this)->NextAtom(atom_iterator) )
+      {
+        atomPositions[i++] = atom->position();
+      }
+      Eigen::Vector4d planeCoeffs;
+      Eigen::computeFittingHyperplane( NumAtoms(), atomPositions, &planeCoeffs );
+      delete[] atomPositions;
+      d->normalVector = Eigen::Vector3d( planeCoeffs.x(), planeCoeffs.y(), planeCoeffs.z() );
+      d->normalVector.normalize();
+  
+      // compute radius and the farthest atom
+      d->radius = -1.0; // so that ( squaredDistanceToCenter > d->radius ) is true for at least one atom.
+      for( Atom* atom = (Atom*) const_cast<Molecule*>(this)->BeginAtom(atom_iterator); atom; atom = (Atom *) const_cast<Molecule*>(this)->NextAtom(atom_iterator) )
+      {
+        double distanceToCenter = (atom->position() - d->center).norm();
+        if( distanceToCenter > d->radius )
+        {
+          d->radius = distanceToCenter;
+          d->farthestAtom = atom;
+        }
       }
     }
+    d->invalidGeomInfo = false;
   }
 
   class PrimitiveQueuePrivate {
