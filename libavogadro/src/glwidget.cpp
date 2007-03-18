@@ -23,6 +23,7 @@
 #include "config.h"
 
 #include <avogadro/glwidget.h>
+#include <avogadro/camera.h>
 
 #include <stdio.h>
 #include <vector>
@@ -41,7 +42,7 @@ namespace Avogadro {
 
   GLHit::GLHit() : d(new GLHitPrivate) {}
 
-  GLHit::GLHit(const GLHit &other) : d(new GLHitPrivate) { 
+  GLHit::GLHit(const GLHit &other) : d(new GLHitPrivate) {
     GLHitPrivate *e = other.d;
     d->type = e->type;
     d->name = e->name;
@@ -63,7 +64,7 @@ namespace Avogadro {
     d->name = e->name;
     d->minZ = e->minZ;
     d->maxZ = e->maxZ;
-	return *this;
+    return *this;
   }
 
   GLHit::~GLHit() {
@@ -94,19 +95,17 @@ namespace Avogadro {
     public:
       GLWidgetPrivate() : defaultEngine(0), background(Qt::black), molecule(0) {}
       
-      Engine *defaultEngine;
-      QList<Engine *> engines;
+      Engine                 *defaultEngine;
+      QList<Engine *>        engines;
     
-      PrimitiveQueue defaultQueue;
-      QList<PrimitiveQueue> queues;
+      PrimitiveQueue         defaultQueue;
+      QList<PrimitiveQueue>  queues;
     
-      Molecule *molecule;
-      QList<GLuint> displayLists;
+      Molecule               *molecule;
+      QList<GLuint>          displayLists;
     
-      GLdouble            rotationMatrix[16];
-      GLdouble            translationVector[3];
-      GLdouble            scale;
-      QColor              background;
+      Camera                 camera;
+      QColor                 background;
   };
 
 
@@ -133,6 +132,7 @@ namespace Avogadro {
   {
     setSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
     loadEngines();
+    d->camera.setParent(this);
   }
   
   void GLWidget::initializeGL()
@@ -176,20 +176,6 @@ namespace Avogadro {
     glLightfv( GL_LIGHT0, GL_POSITION, position );
     glEnable( GL_LIGHT0 );
   
-    glMatrixMode(GL_MODELVIEW);
-  
-    // Initialize a clean rotation matrix
-    glPushMatrix();
-    glLoadIdentity();
-    glGetDoublev( GL_MODELVIEW_MATRIX, d->rotationMatrix);
-    glPopMatrix();
-  
-    d->translationVector[0] = 0.0;
-    d->translationVector[1] = 0.0;
-    d->translationVector[2] = 0.0;
-  
-    d->scale = 1.0;
-  
     glEnableClientState( GL_VERTEX_ARRAY );
     glEnableClientState( GL_NORMAL_ARRAY );
   }
@@ -197,39 +183,7 @@ namespace Avogadro {
   void GLWidget::resizeGL(int width, int height)
   {
     qDebug() << "GLWidget::resizeGL";
-    glViewport(0,0,width,height);
-  
-  }
-  
-  void GLWidget::setCamera() const
-  {
-    //qDebug() << "GLWidget::setCamera";
-    // Reset the projection and set our perspective.
-    gluPerspective(35,float(width())/height(),1.0,100);
-  
-    // pull the camera back 20
-    glTranslated ( 0.0, 0.0, -20.0 );
-  }
-  
-  void GLWidget::rotate(float x, float y, float z)
-  {
-    //qDebug() << "GLWidget::rotate";
-    glPushMatrix();
-    glLoadIdentity();
-    glRotated( x, 1.0, 0.0, 0.0 );
-    glRotated( y, 0.0, 1.0, 0.0 );
-    glRotated( z, 0.0, 0.0, 1.0 );
-    glMultMatrixd( d->rotationMatrix );
-    glGetDoublev( GL_MODELVIEW_MATRIX, d->rotationMatrix );
-    glPopMatrix();
-  }
-  
-  void GLWidget::translate(float x, float y, float z)
-  {
-    qDebug() << "GLWidget::translate";
-    d->translationVector[0] = d->translationVector[0] + x;
-    d->translationVector[1] = d->translationVector[1] + y;
-    d->translationVector[2] = d->translationVector[2] + z;
+    glViewport(0, 0, width, height);
   }
   
   void GLWidget::setBackground(const QColor &background) { 
@@ -240,33 +194,10 @@ namespace Avogadro {
     return d->background;
   }
 
-  void GLWidget::setScale(float s)
-  {
-    d->scale = s;
-  }
-  
-  float GLWidget::scale() const
-  {
-    return d->scale;
-  }
-  
-  void GLWidget::render(GLenum mode) const
+  void GLWidget::render() const
   {
     //qDebug() << "GLWidget::render";
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  
-    // TODO: Be careful here.  For the time being we are actually changing the
-    // orientation of our render in 3d space and changing the camera.  And also
-    // we're not changing the coordinates of the atoms.
-  
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-  
-    // Translate our molecule as per user instructions
-    glScaled(d->scale, d->scale, d->scale);
-    glMultMatrixd(d->rotationMatrix);
-    glTranslated(d->translationVector[0], d->translationVector[1], d->translationVector[2]);
-  
+    
     if(d->defaultEngine)
       d->defaultEngine->render(&(d->defaultQueue));
   
@@ -279,16 +210,20 @@ namespace Avogadro {
   }
   
   void GLWidget::paintGL()
-  { 
-    //qDebug() << "GLWidget::paintGL";
-    // Reset the projection
+  {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    // set the projection matrix from the camera
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    setCamera();
-  
-    // Reset the model view
+    d->camera.applyPerspective();
+
+    // set the modelview matrix from the camera
     glMatrixMode(GL_MODELVIEW);
-    render(GL_RENDER);
+    glLoadIdentity();
+    d->camera.applyModelview();
+
+    render();
   }
   
   void GLWidget::mousePressEvent( QMouseEvent * event )
@@ -375,13 +310,20 @@ namespace Avogadro {
     connect(d->molecule, SIGNAL(primitiveRemoved(Primitive*)), 
         this, SLOT(removePrimitive(Primitive*)));
   
+    // setup the camera to have a nice viewpoint on the molecule
+    d->camera.initializeViewPoint();
+
     updateGL();
   }
   
-  inline
   const Molecule* GLWidget::molecule() const
   {
     return d->molecule;
+  }
+
+  Camera & GLWidget::camera()
+  {
+    return d->camera;
   }
   
   Engine * GLWidget::defaultEngine() const
@@ -499,27 +441,24 @@ namespace Avogadro {
   
     glSelectBuffer(GL_SEL_BUF_SIZE,selectBuf);
     glRenderMode(GL_SELECT);
+    glInitNames();
   
-    // Setup our limited viewport for picking.
-    glGetIntegerv(GL_VIEWPORT,viewport);
+    // Setup a projection matrix for picking in the zone delimited by (x,y,w,h).
+    glGetIntegerv(GL_VIEWPORT, viewport);
     glMatrixMode(GL_PROJECTION);
-    glPushMatrix();
     glLoadIdentity();
     gluPickMatrix(cx,viewport[3]-cy, w, h,viewport);
-  
-    setCamera();
-  
-    // Get ready for rendering
+
+    // now multiply that projection matrix with the perspective of the camera
+    d->camera.applyPerspective();
+
+    // now load the modelview matrix from the camera
     glMatrixMode(GL_MODELVIEW);
-    glInitNames();
-    render(GL_SELECT);
+    glLoadIdentity();
+    d->camera.applyModelview();
   
-    // restoring the original projection matrix
-    glPopMatrix();
-    glMatrixMode(GL_PROJECTION);
-    glPopMatrix();
-    glMatrixMode(GL_MODELVIEW);
-    glFlush();
+    // now actually render
+    render();
   
     // returning to normal rendering mode
     hit_count = glRenderMode(GL_RENDER);

@@ -196,11 +196,11 @@ namespace Avogadro {
   void Molecule::computeGeomInfo() const
   {
     QMutexLocker locker(&d->mutex);
+    d->invalidGeomInfo = true;
     d->farthestAtom = 0;
     d->center.loadZero();
     d->normalVector.loadZero();
     d->radius = 0.0;
-    d->invalidGeomInfo = true;
     if( NumAtoms() != 0 )
     {
       // compute center

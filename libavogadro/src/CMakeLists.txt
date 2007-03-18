@@ -17,7 +17,8 @@ set(libavogadro_SRCS
 	cylinder.cpp
 	sphere.cpp
 	glwidget.cpp
-	moleculetreeview.cpp
+        moleculetreeview.cpp
+        camera.cpp
 )
 
 set(libavogadro_HDRS
@@ -29,6 +30,7 @@ set(libavogadro_HDRS
 	glwidget.h
 	moleculetreeview.h
 	global.h
+        camera.h
 )
 
 qt4_automoc(${libavogadro_SRCS})

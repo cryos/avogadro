@@ -14,7 +14,6 @@
 #include "config.h"
 
 #include <avogadro/cylinder.h>
-#include <math.h>
 
 using namespace Avogadro;
 using namespace OpenBabel;

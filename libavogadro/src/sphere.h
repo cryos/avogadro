@@ -42,8 +42,7 @@ namespace Avogadro {
       int m_vertexCount;
       /** The number of indices, i.e. the size of m_indexBuffer */
       int m_indexCount;
-      /** The id of the OpenGL display list (used only if this option
-       * is turned on) */
+      /** The id of the OpenGL display list */
       GLuint m_displayList;
 
       /** computes the index (position inside the index buffer)

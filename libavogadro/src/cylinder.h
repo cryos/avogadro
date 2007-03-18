@@ -37,8 +37,7 @@ namespace Avogadro {
       /** The number of vertices, i.e. the size of m_vertexBuffer
        * or equivalently m_normalBuffer */
       int m_vertexCount;
-      /** The id of the OpenGL display list (used only if this option
-       * is turned on) */
+      /** The id of the OpenGL display list */
       GLuint m_displayList;
       /** Equals true if the vertex array has been correctly initialized */
       bool m_isValid;

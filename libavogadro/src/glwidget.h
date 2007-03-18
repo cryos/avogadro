@@ -27,8 +27,6 @@
 #include <avogadro/engine.h>
 #include <avogadro/color.h>
 
-#include <eigen/projective.h>
-
 #include <QGLWidget>
 #include <QMouseEvent>
 #include <QDir>
@@ -39,6 +37,8 @@
 
 namespace Avogadro {
   
+  class A_EXPORT Camera;
+
   /**
    * @class GLHit
    * @brief Class for wrapping hits from GL picking.
@@ -173,7 +173,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_PROPERTY(QColor background READ background WRITE setBackground)
-    Q_PROPERTY(float scale READ scale WRITE setScale)
+//    Q_PROPERTY(float scale READ scale WRITE setScale)
 
     public:
       /**
@@ -204,6 +204,7 @@ namespace Avogadro {
        * @param dl the unsigned int representing the GL display list
        */
       void addDL(GLuint dl);
+
       /**
        * Remove a display list from the %GLWidget rendering
        * area previously added by addDL.  If the display list does
@@ -234,55 +235,34 @@ namespace Avogadro {
        * @param background the new background color
        */
       void setBackground(const QColor &background);
+
       /**
        * @return the current background color of the rendering area
        */
       QColor background() const;
 
       /**
-       * Rotate the object.
-       *
-       * @param x ammount to rotate around the X axis
-       * @param y ammount to rotate around the Y axis
-       * @param z ammount to rotate around the Z axis
-       */
-      void rotate(float x, float y, float z);
-
-      /**
-       * Translate the object.
-       *
-       * @param x ammount to translate in the X direction
-       * @param y ammount to translate in the Y direction
-       * @param z ammount to translate in the Z direction
-       */
-      void translate(float x, float y, float z);
-
-      /**
-       * Set the scale factor.
-       *
-       * @param s the new scale factor
-       */
-      void setScale(float s);
-      /**
-       * @return the current scale factor
-       */
-      float scale() const;
-
-      /**
        * Set the molecule model for this view.
        * @param molecule the molecule to view
        */
       void setMolecule(Molecule *molecule);
+
       /**
        * @return the current molecule being viewed
        */
       const Molecule* molecule() const;
 
       /**
+       * @return a reference to the camera of this widget
+       */
+      Camera & camera();
+
+      /**
        * Set the default engine.
        * @param engine pointer to the new default engine
        */
       void setDefaultEngine(Engine *engine);
+
       /**
        * @return the default engine which new primitives 
        * will be added to
@@ -370,14 +350,10 @@ namespace Avogadro {
        */
       virtual void mouseMoveEvent( QMouseEvent * event );
 
-      /** 
-       * Helper function to setup the camera.
+      /**
+       * Render the scene. To be used in both modes GL_RENDER and GL_SELECT.
        */
-      virtual void setCamera() const;
-      /** 
-       * Helper function for rendering the scene.
-       */
-      virtual void render(GLenum mode) const;
+      virtual void render() const;
       
       /**
        * Helper function to load all available engines

@@ -24,6 +24,7 @@
 #include <avogadro/primitives.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/camera.h>
 
 #include <openbabel/obiter.h>
 
@@ -32,6 +33,7 @@
 using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
+using namespace Eigen;
 
 SelectRotate::SelectRotate() : Tool()
 {
@@ -139,12 +141,13 @@ void SelectRotate::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseE
   {
     if( event->buttons() & Qt::LeftButton )
     {
-      widget->rotate( deltaDragging.y(), deltaDragging.x(), 0.0 );
+      widget->camera().rotate( deltaDragging.y(), Vector3d(1,0,0) );
+      widget->camera().rotate( deltaDragging.x(), Vector3d(0,1,0) );
     }
     else if ( event->buttons() & Qt::RightButton )
     {
 //dc:       deltaDragging = _initialDraggingPosition - event->pos();
-      widget->translate( deltaDragging.x() / 50.0, -deltaDragging.y() / 50.0, 0.0);
+      widget->camera().translate( Vector3d( deltaDragging.x() / 50.0, -deltaDragging.y() / 50.0, 0.0 ) );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
