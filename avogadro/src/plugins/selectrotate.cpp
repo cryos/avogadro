@@ -141,13 +141,20 @@ void SelectRotate::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseE
   {
     if( event->buttons() & Qt::LeftButton )
     {
-      widget->camera().rotate( deltaDragging.y(), Vector3d(1,0,0) );
-      widget->camera().rotate( deltaDragging.x(), Vector3d(0,1,0) );
+      Matrix3d rotation = widget->camera().matrix().linearComponent();
+      Vector3d XAxis = rotation.row(0);
+      Vector3d YAxis = rotation.row(1);
+      widget->camera().translate( widget->molecule()->center() );
+      widget->camera().rotate( deltaDragging.y() * ROTATION_SPEED, XAxis );
+      widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, YAxis );
+      widget->camera().translate( - widget->molecule()->center() );
     }
     else if ( event->buttons() & Qt::RightButton )
     {
 //dc:       deltaDragging = _initialDraggingPosition - event->pos();
-      widget->camera().translate( Vector3d( deltaDragging.x() / 50.0, -deltaDragging.y() / 50.0, 0.0 ) );
+      widget->camera().pretranslate( Vector3d( deltaDragging.x() * TRANSLATION_SPEED,
+                                               -deltaDragging.y() * TRANSLATION_SPEED,
+                                               0.0 ) );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
