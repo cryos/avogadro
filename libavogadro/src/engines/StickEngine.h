@@ -57,8 +57,8 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       bool render(Atom *a);
-      bool render(Bond *b);
-      bool render(PrimitiveQueue *q);
+      bool render(Bond *b, const MolGeomInfo &molGeomInfo);
+      bool render(PrimitiveQueue *q, const MolGeomInfo &molGeomInfo);
       //@}
 
     private:

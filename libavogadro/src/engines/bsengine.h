@@ -61,11 +61,11 @@ namespace Avogadro {
       //! Render an Atom.
       bool render(const Atom *a);
       //! Render a Bond.
-      bool render(const Bond *b);
+      bool render(const Bond *b, const MolGeomInfo &molGeomInfo);
       //! Render a Molecule.
       bool render(const Molecule *m);
 
-      bool render(const PrimitiveQueue *q);
+      bool render(const PrimitiveQueue *q, const MolGeomInfo &molGeomInfo);
       //@}
 
     private:

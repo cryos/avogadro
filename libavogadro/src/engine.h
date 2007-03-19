@@ -25,6 +25,7 @@
 
 #include <avogadro/global.h>
 #include <avogadro/primitives.h>
+#include <avogadro/molgeominfo.h>
 
 #include <QString>
 #include <QVector>
@@ -110,7 +111,7 @@ namespace Avogadro {
        * PrimitiveQueue.
        * 
        */
-      virtual bool render(const PrimitiveQueue *) = 0;
+      virtual bool render(const PrimitiveQueue *, const MolGeomInfo &molGeomInfo) = 0;
 
   };
 

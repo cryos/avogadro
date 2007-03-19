@@ -32,7 +32,7 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-bool StickEngine::render(PrimitiveQueue *q)
+bool StickEngine::render(PrimitiveQueue *q, const MolGeomInfo &molGeomInfo)
 {
   QList<Primitive *> *queue;
 
@@ -43,7 +43,7 @@ bool StickEngine::render(PrimitiveQueue *q)
 
   queue = q->getTypeQueue(bondType);
   for( int i=0; i<queue->size(); i++ ) {
-    render((Bond *)(*queue)[i]);
+    render((Bond *)(*queue)[i], molGeomInfo);
   }
 
   return true;
@@ -80,7 +80,7 @@ bool StickEngine::render(Atom *a)
   return true;
 }
 
-bool StickEngine::render(Bond *b)
+bool StickEngine::render(Bond *b, const MolGeomInfo &molGeomInfo)
 {
   // cout << "Render Bond..." << endl;
   if (!m_cylinder.isValid())
@@ -104,16 +104,16 @@ bool StickEngine::render(Bond *b)
   glPushName( bondType);
   glPushName( b->GetIdx() );
   Color(atom1).applyAsMaterials();
-  m_cylinder.draw( v1, v3, radius, order, 0.0);
+  m_cylinder.draw( v1, v3, radius, order, 0.0, molGeomInfo.normalVector());
 
   Color(atom2).applyAsMaterials();
-  m_cylinder.draw( v2, v3, radius, order, 0.0);
+  m_cylinder.draw( v2, v3, radius, order, 0.0, molGeomInfo.normalVector());
 
   if (b->isSelected())
     {
       Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
       glEnable( GL_BLEND );
-      m_cylinder.draw( v1, v2, radius + 0.18, order, 0.0);
+      m_cylinder.draw( v1, v2, radius + 0.18, order, 0.0, molGeomInfo.normalVector());
       glDisable( GL_BLEND );
     }
 

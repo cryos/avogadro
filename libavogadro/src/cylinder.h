@@ -79,7 +79,8 @@ namespace Avogadro {
        of the drawn cylinders from the axis (end1 - end2).
        */
       void draw( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
-          double radius, int order = 1, double shift = 0.0 ) const;
+          double radius, int order, double shift,
+          const Eigen::Vector3d &planeNormalVector ) const;
   };
 
 }

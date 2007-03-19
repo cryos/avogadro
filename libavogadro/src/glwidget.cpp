@@ -202,7 +202,7 @@ namespace Avogadro {
     //qDebug() << "GLWidget::render";
     
     if(d->defaultEngine)
-      d->defaultEngine->render(&(d->defaultQueue));
+      d->defaultEngine->render(&(d->defaultQueue), d->molGeomInfo);
   
     for(int i=0; i<d->displayLists.size(); i++) {
       qDebug() << "Calling DL: " << d->displayLists[i] << endl;

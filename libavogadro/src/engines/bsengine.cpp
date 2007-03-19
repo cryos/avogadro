@@ -36,7 +36,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-bool BSEngine::render(const PrimitiveQueue *q)
+bool BSEngine::render(const PrimitiveQueue *q, const MolGeomInfo &molGeomInfo)
 {
   const QList<Primitive *> *queue;
 
@@ -47,7 +47,7 @@ bool BSEngine::render(const PrimitiveQueue *q)
 
   queue = q->primitiveList(Primitive::BondType);
   for( int i=0; i<queue->size(); i++ ) {
-    render((Bond *)(*queue)[i]);
+    render((Bond *)(*queue)[i], molGeomInfo);
   }
 
   return true;
@@ -83,7 +83,7 @@ bool BSEngine::render(const Atom *a)
   return true;
 }
 
-bool BSEngine::render(const Bond *b)
+bool BSEngine::render(const Bond *b, const MolGeomInfo &molGeomInfo)
 {
   // cout << "Render Bond..." << endl;
   m_cylinder.setup(6);
@@ -107,10 +107,10 @@ bool BSEngine::render(const Bond *b)
   //  glPushName(bondType);
   //  glPushName(b->GetIdx());
   Color(atom1).applyAsMaterials();
-  m_cylinder.draw( v1, v3, radius, order, shift);
+  m_cylinder.draw( v1, v3, radius, order, shift, molGeomInfo.normalVector());
 
   Color(atom2).applyAsMaterials();
-  m_cylinder.draw( v2, v3, radius, order, shift);
+  m_cylinder.draw( v2, v3, radius, order, shift, molGeomInfo.normalVector());
   //  glPopName();
   //  glPopName();
 

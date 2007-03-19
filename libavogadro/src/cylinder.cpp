@@ -100,7 +100,8 @@ void Cylinder::do_draw() const
 }
 
 void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
-	double radius, int order, double shift ) const
+	double radius, int order, double shift,
+        const Vector3d &planeNormalVector ) const
 {
 	// the "axis vector" of the cylinder
 	Vector3d axis = end2 - end1;
@@ -115,15 +116,10 @@ void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
 	if( axisNorm == 0.0 ) return;
 	Vector3d axisNormalized = axis / axisNorm;
 	
-	Vector3d ortho1( axisNormalized.y(), -axisNormalized.x(), 0.0 );
+	Vector3d ortho1 = axisNormalized.cross(planeNormalVector);
 	double ortho1Norm = ortho1.norm();
 	if( ortho1Norm > 0.001 ) ortho1 /= ortho1Norm;
-	else {
-		ortho1 = Vector3d( 0.0,
-		                   axisNormalized.z(),
-		                   -axisNormalized.y() );
-		ortho1.normalize();
-	}
+	else ortho1 = axisNormalized.ortho();
 	ortho1 *= radius;
 
 	Vector3d ortho2 = cross( axisNormalized, ortho1 );       
