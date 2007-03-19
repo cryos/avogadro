@@ -25,6 +25,7 @@
 
 #include <avogadro/primitives.h>
 #include <avogadro/color.h>
+#include <avogadro/glwidget.h>
 
 #include <openbabel/obiter.h>
 #include <eigen/regression.h>
@@ -36,7 +37,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-bool BSEngine::render(const PrimitiveQueue *q, const MolGeomInfo &molGeomInfo)
+bool BSEngine::render(const PrimitiveQueue *q)
 {
   const QList<Primitive *> *queue;
 
@@ -47,7 +48,7 @@ bool BSEngine::render(const PrimitiveQueue *q, const MolGeomInfo &molGeomInfo)
 
   queue = q->primitiveList(Primitive::BondType);
   for( int i=0; i<queue->size(); i++ ) {
-    render((Bond *)(*queue)[i], molGeomInfo);
+    render((Bond *)(*queue)[i]);
   }
 
   return true;
@@ -83,8 +84,14 @@ bool BSEngine::render(const Atom *a)
   return true;
 }
 
-bool BSEngine::render(const Bond *b, const MolGeomInfo &molGeomInfo)
+bool BSEngine::render(const Bond *b)
 {
+  Eigen::Vector3d normalVector;
+
+  GLWidget *gl = qobject_cast<GLWidget *>(parent());
+  if(gl) {
+    normalVector = gl->normalVector();
+  }
   // cout << "Render Bond..." << endl;
   m_cylinder.setup(6);
 
@@ -107,10 +114,10 @@ bool BSEngine::render(const Bond *b, const MolGeomInfo &molGeomInfo)
   //  glPushName(bondType);
   //  glPushName(b->GetIdx());
   Color(atom1).applyAsMaterials();
-  m_cylinder.draw( v1, v3, radius, order, shift, molGeomInfo.normalVector());
+  m_cylinder.draw( v1, v3, radius, order, shift, normalVector);
 
   Color(atom2).applyAsMaterials();
-  m_cylinder.draw( v2, v3, radius, order, shift, molGeomInfo.normalVector());
+  m_cylinder.draw( v2, v3, radius, order, shift, normalVector);
   //  glPopName();
   //  glPopName();
 

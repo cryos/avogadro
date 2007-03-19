@@ -123,15 +123,15 @@ namespace Avogadro
     }
     
     Matrix3d rotation;
-    rotation.setRow(2, d->parent->molGeomInfo().normalVector());
+    rotation.setRow(2, d->parent->normalVector());
     rotation.setRow(0, rotation.row(2).ortho());
     rotation.setRow(1, rotation.row(2).cross(rotation.row(0)));
     setMatrix(rotation);
   
     const Vector3d Zaxis(0,0,1);
-    pretranslate( - 3.0 * d->parent->molGeomInfo().radius() * Zaxis );
+    pretranslate( - 3.0 * d->parent->radius() * Zaxis );
     
-    translate( - d->parent->molGeomInfo().center() );
+    translate( - d->parent->center() );
   }
   
   void Camera::applyPerspective() const
@@ -145,8 +145,8 @@ namespace Avogadro
     }
     else
     {
-      double molRadius = d->parent->molGeomInfo().radius();
-      Eigen::Vector3d molCenter = d->parent->molGeomInfo().center();
+      double molRadius = d->parent->radius();
+      Eigen::Vector3d molCenter = d->parent->center();
       double distanceToMol = (translationVector() - molCenter).norm();
       if( distanceToMol < 2.0 * molRadius)
       {

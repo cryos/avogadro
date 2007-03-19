@@ -44,7 +44,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      BSEngine() : Engine() {}
+      BSEngine(QObject *parent=0) : Engine(), QObject(parent) {}
       //! Deconstructor
       ~BSEngine() {}
 
@@ -61,11 +61,11 @@ namespace Avogadro {
       //! Render an Atom.
       bool render(const Atom *a);
       //! Render a Bond.
-      bool render(const Bond *b, const MolGeomInfo &molGeomInfo);
+      bool render(const Bond *b);
       //! Render a Molecule.
       bool render(const Molecule *m);
 
-      bool render(const PrimitiveQueue *q, const MolGeomInfo &molGeomInfo);
+      bool render(const PrimitiveQueue *q);
       //@}
 
     private:
@@ -80,7 +80,7 @@ namespace Avogadro {
     Q_INTERFACES(Avogadro::EngineFactory)
 
     public:
-      Engine *createInstance() { return new BSEngine(); }
+      Engine *createInstance(QObject *parent = 0) { return new BSEngine(parent); }
   };
 
 } // end namespace Avogadro

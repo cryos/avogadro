@@ -111,7 +111,7 @@ namespace Avogadro {
        * PrimitiveQueue.
        * 
        */
-      virtual bool render(const PrimitiveQueue *, const MolGeomInfo &molGeomInfo) = 0;
+      virtual bool render(const PrimitiveQueue *) = 0;
 
   };
 
@@ -137,7 +137,7 @@ namespace Avogadro {
       /**
        * @return pointer to a new instance of an Engine subclass object
        */
-      virtual Engine *createInstance() = 0;
+      virtual Engine *createInstance(QObject *parent=0) = 0;
   };
 
 

@@ -133,8 +133,8 @@ void Draw::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *e
     }
     else
     {
-      _beginAtom = newAtom(molecule, widget->molGeomInfo(), event->pos().x(), event->pos().y());
-      widget->updateMolGeomInfo();
+      _beginAtom = newAtom(molecule, widget->center(), event->pos().x(), event->pos().y());
+      widget->updateGeometry();
       _beginAtom->update();
     }
   }
@@ -186,7 +186,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
       if(_endAtom)
       {
         molecule->DeleteAtom(_endAtom);
-        widget->updateMolGeomInfo();
+        widget->updateGeometry();
         _bond = NULL;
         _endAtom = NULL;
       }
@@ -211,7 +211,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
         }
 
         molecule->DeleteAtom(_endAtom);
-        widget->updateMolGeomInfo();
+        widget->updateGeometry();
         _endAtom = NULL;
 
         if(existingBond) {
@@ -228,8 +228,8 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
     {
       if(!_endAtom)
       {
-        _endAtom = newAtom(molecule, widget->molGeomInfo(), event->pos().x(), event->pos().y());
-        widget->updateMolGeomInfo();
+        _endAtom = newAtom(molecule, widget->center(), event->pos().x(), event->pos().y());
+        widget->updateGeometry();
         if(!_bond)
         {
           _bond = newBond(molecule, _beginAtom, _endAtom);
@@ -246,7 +246,8 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
       }
       else
       {
-        moveAtom(_endAtom, widget->molGeomInfo(), event->pos().x(), event->pos().y());
+        _endAtom->setPosition(unProject(widget->center(), event->pos().x(), event->pos().y()));
+//         moveAtom(_endAtom, widget->molGeomInfo(), event->pos().x(), event->pos().y());
         _endAtom->update();
 //dc:         _endAtom->update();
       }
@@ -277,13 +278,13 @@ void Draw::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent 
       {
         Atom *atom = (Atom *)molecule->GetAtom(hits[0].name());
         molecule->DeleteAtom(atom);
-        widget->updateMolGeomInfo();
+        widget->updateGeometry();
       }
     }
   }
 }
 
-void Draw::moveAtom(Atom *atom, const MolGeomInfo & molGeomInfo, int x, int y)
+Eigen::Vector3d Draw::unProject(Eigen::Vector3d center, int x, int y)
 {
   GLdouble projection[16];
   glGetDoublev(GL_PROJECTION_MATRIX,projection);
@@ -292,18 +293,37 @@ void Draw::moveAtom(Atom *atom, const MolGeomInfo & molGeomInfo, int x, int y)
   GLint viewport[4];
   glGetIntegerv(GL_VIEWPORT,viewport);
 
-  Eigen::Vector3d molCenter = molGeomInfo.center();
-  Eigen::Vector3d molCenterWinCoords;
-  Eigen::Vector3d atomNewPos;
+  Eigen::Vector3d centerWin;
+  Eigen::Vector3d pos;
 
-  gluProject(molCenter.x(), molCenter.y(), molCenter.z(), modelview, projection, viewport, &molCenterWinCoords.x(), &molCenterWinCoords.y(), &molCenterWinCoords.z());
+  gluProject(center.x(), center.y(), center.z(), modelview, projection, viewport, &centerWin.x(), &centerWin.y(), &centerWin.z());
 
-  gluUnProject(x, viewport[3] - y, molCenterWinCoords.z(), modelview, projection, viewport, &atomNewPos.x(), &atomNewPos.y(), &atomNewPos.z());
-  //dc:   qDebug("Matrix %f:(%f, %f, %f)\n", f, relPos[0], relPos[1], relPos[2]);
-  atom->setPosition(atomNewPos);
+  gluUnProject(x, viewport[3] - y, centerWin.z(), modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
+
+  return pos;
 }
 
-Atom *Draw::newAtom(Molecule *molecule, const MolGeomInfo & molGeomInfo, int x, int y)
+// void Draw::moveAtom(Atom *atom, const MolGeomInfo & molGeomInfo, int x, int y)
+// {
+//   GLdouble projection[16];
+//   glGetDoublev(GL_PROJECTION_MATRIX,projection);
+//   GLdouble modelview[16];
+//   glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
+//   GLint viewport[4];
+//   glGetIntegerv(GL_VIEWPORT,viewport);
+// 
+//   Eigen::Vector3d molCenter = molGeomInfo.center();
+//   Eigen::Vector3d molCenterWinCoords;
+//   Eigen::Vector3d atomNewPos;
+// 
+//   gluProject(molCenter.x(), molCenter.y(), molCenter.z(), modelview, projection, viewport, &molCenterWinCoords.x(), &molCenterWinCoords.y(), &molCenterWinCoords.z());
+// 
+//   gluUnProject(x, viewport[3] - y, molCenterWinCoords.z(), modelview, projection, viewport, &atomNewPos.x(), &atomNewPos.y(), &atomNewPos.z());
+//   //dc:   qDebug("Matrix %f:(%f, %f, %f)\n", f, relPos[0], relPos[1], relPos[2]);
+//   atom->setPosition(atomNewPos);
+// }
+
+Atom *Draw::newAtom(Molecule *molecule, Eigen::Vector3d center, int x, int y)
 {
   // GRH (for reasons I don't understand, calling Begin/EndModify here
   // causes crashes with multiple bond orders
@@ -311,7 +331,8 @@ Atom *Draw::newAtom(Molecule *molecule, const MolGeomInfo & molGeomInfo, int x, 
 
   molecule->BeginModify();
   Atom *atom = (Atom *)molecule->NewAtom();
-  moveAtom(atom, molGeomInfo, x, y);
+//   moveAtom(atom, molGeomInfo, x, y);
+  atom->setPosition(unProject(center, x, y));
   atom->SetAtomicNum(element());
   molecule->EndModify();
   

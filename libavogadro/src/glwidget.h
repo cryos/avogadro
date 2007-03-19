@@ -254,11 +254,9 @@ namespace Avogadro {
       const Molecule* molecule() const;
 
       /**
-       * @return the molecule geometric info
+       * update the Molecule Geometry.
        */
-      const MolGeomInfo& molGeomInfo() const;
-
-      void updateMolGeomInfo();
+      void updateGeometry();
 
       /**
        * @return a reference to the camera of this widget
@@ -286,6 +284,11 @@ namespace Avogadro {
        * Get the hits for a region starting at (x,y) of size (w x y)
        */
       QList<GLHit> hits(int x, int y, int w, int h) const;
+
+      const Eigen::Vector3d & center() const;
+      const Eigen::Vector3d & normalVector() const;
+      const double & radius() const;
+      const Atom *farthestAtom() const;
 
     public Q_SLOTS:
       /**

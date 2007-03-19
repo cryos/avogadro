@@ -297,6 +297,15 @@ namespace Avogadro {
        */
       void DestroyResidue(OpenBabel::OBResidue* residue);
 
+      const Eigen::Vector3d & center() const;
+      const Eigen::Vector3d & normalVector() const;
+      const double & radius() const;
+      const Atom *farthestAtom() const;
+
+    private:
+      MoleculePrivate *const d;
+      void computeGeomInfo() const;
+
     private Q_SLOTS:
       /**
        * Function which handles when a child primitive has been

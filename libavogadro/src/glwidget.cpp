@@ -104,8 +104,12 @@ namespace Avogadro {
       QList<PrimitiveQueue>  queues;
     
       Molecule               *molecule;
-      MolGeomInfo            molGeomInfo;
       QList<GLuint>          displayLists;
+
+      Eigen::Vector3d        normalVector; 
+      Eigen::Vector3d        center; 
+      double                 radius;
+      const Atom             *farthestAtom;
     
       Camera                 camera;
       QColor                 background;
@@ -202,7 +206,7 @@ namespace Avogadro {
     //qDebug() << "GLWidget::render";
     
     if(d->defaultEngine)
-      d->defaultEngine->render(&(d->defaultQueue), d->molGeomInfo);
+      d->defaultEngine->render(&(d->defaultQueue));
   
     for(int i=0; i<d->displayLists.size(); i++) {
       qDebug() << "Calling DL: " << d->displayLists[i] << endl;
@@ -255,6 +259,7 @@ namespace Avogadro {
   
   void GLWidget::removeDL(GLuint dl)
   {
+    //qDebug() << "GLWidget::removeDL";
     d->displayLists.removeAll(dl);
   }
   
@@ -274,9 +279,7 @@ namespace Avogadro {
       d->queues[i].clear();
     }
   
-    qDebug() << d->defaultQueue.size();
     d->defaultQueue.clear();
-    qDebug() << d->defaultQueue.size();
   
     // add the atoms to the default queue
     std::vector<OpenBabel::OBNodeBase*>::iterator i;
@@ -314,7 +317,7 @@ namespace Avogadro {
         this, SLOT(removePrimitive(Primitive*)));
 
     // compute the molecule's geometric info
-    d->molGeomInfo.compute(molecule);
+    updateGeometry();
 
     // setup the camera to have a nice viewpoint on the molecule
     d->camera.initializeViewPoint();
@@ -327,14 +330,32 @@ namespace Avogadro {
     return d->molecule;
   }
 
-  const MolGeomInfo& GLWidget::molGeomInfo() const
+  const Eigen::Vector3d & GLWidget::center() const
   {
-    return d->molGeomInfo;
+    return d->center;
   }
 
-  void GLWidget::updateMolGeomInfo()
+  const Eigen::Vector3d & GLWidget::normalVector() const
   {
-    d->molGeomInfo.compute(d->molecule);
+    return d->normalVector;
+  }
+
+  const double & GLWidget::radius() const
+  {
+    return d->radius;
+  }
+
+  const Atom *GLWidget::farthestAtom() const
+  {
+    return d->farthestAtom;
+  }
+
+  void GLWidget::updateGeometry()
+  {
+    d->center = d->molecule->center();
+    d->normalVector = d->molecule->normalVector();
+    d->radius = d->molecule->radius();
+    d->farthestAtom = d->molecule->farthestAtom();
   }
 
   Camera & GLWidget::camera()
@@ -428,7 +449,7 @@ namespace Avogadro {
         //       qDebug() << "File: " << fileName;
         EngineFactory *factory = qobject_cast<EngineFactory *>(loader.instance());
         if (factory) {
-          Engine *engine = factory->createInstance();
+          Engine *engine = factory->createInstance(this);
           qDebug() << "Found Engine: " << engine->name() << " - " << engine->description(); 
           if (!d->defaultEngine)
           {

@@ -100,9 +100,10 @@ namespace Avogadro {
       QComboBox *m_comboBondOrder;
       QVBoxLayout *m_layout;
 
-      Atom *newAtom(Molecule *molecule, const MolGeomInfo &molGeomInfo, int x, int y);
+      Atom *newAtom(Molecule *molecule, Eigen::Vector3d center, int x, int y);
       Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
-      void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
+//       void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
+      Eigen::Vector3d unProject(Eigen::Vector3d center, int x, int y);
   };
 
 } // end namespace Avogadro
