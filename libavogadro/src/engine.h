@@ -25,7 +25,6 @@
 
 #include <avogadro/global.h>
 #include <avogadro/primitives.h>
-#include <avogadro/molgeominfo.h>
 
 #include <QString>
 #include <QVector>

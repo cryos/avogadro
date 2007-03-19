@@ -26,7 +26,6 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 #include <avogadro/color.h>
-#include <avogadro/molgeominfo.h>
 
 #include <QGLWidget>
 #include <QMouseEvent>

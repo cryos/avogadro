@@ -25,7 +25,6 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/plugin.h>
-#include <avogadro/molgeominfo.h>
 
 #include <openbabel/mol.h>
 
