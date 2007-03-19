@@ -116,33 +116,37 @@ namespace Avogadro
   {
     d->matrix.loadIdentity();
     if( d->parent == 0 ) return;
-    if( d->parent->molecule() == 0 ) return;
+    if( d->parent->molecule() == 0 || d->parent->molecule()->NumAtoms() == 0 )
+    {
+      d->matrix.translate( Vector3d( 0, 0, -10 ) );
+      return;
+    }
     
     Matrix3d rotation;
-    rotation.setRow(2, d->parent->molecule()->normalVector());
+    rotation.setRow(2, d->parent->molGeomInfo().normalVector());
     rotation.setRow(0, rotation.row(2).ortho());
     rotation.setRow(1, rotation.row(2).cross(rotation.row(0)));
     setMatrix(rotation);
   
     const Vector3d Zaxis(0,0,1);
-    pretranslate( - 2 * d->parent->molecule()->radius() * Zaxis );
+    pretranslate( - 2 * d->parent->molGeomInfo().radius() * Zaxis );
     
-    translate( - d->parent->molecule()->center() );
+    translate( - d->parent->molGeomInfo().center() );
   }
   
   void Camera::applyPerspective() const
   {
     double aspectRatio, nearEnd, farEnd;
     if( d->parent == 0 ) return;
-    if( d->parent->molecule() == 0 )
+    if( d->parent->molecule() == 0 || d->parent->molecule()->NumAtoms() == 0 )
     {
       nearEnd = 1.0;
-      farEnd = 100.0;
+      farEnd = 20.0;
     }
     else
     {
-      double molRadius = d->parent->molecule()->radius();
-      Eigen::Vector3d molCenter = d->parent->molecule()->center();
+      double molRadius = d->parent->molGeomInfo().radius();
+      Eigen::Vector3d molCenter = d->parent->molGeomInfo().center();
       double distanceToMol = (translationVector() - molCenter).norm();
       if( distanceToMol < 2.0 * molRadius)
       {
@@ -154,8 +158,8 @@ namespace Avogadro
         nearEnd = distanceToMol - molRadius * 1.5;
         farEnd = distanceToMol + molRadius * 1.5;
       }
-      aspectRatio = static_cast<double>(d->parent->width()) / d->parent->height();
     }
+    aspectRatio = static_cast<double>(d->parent->width()) / d->parent->height();
     gluPerspective( d->angleOfViewY, aspectRatio, nearEnd, farEnd );
   }
 

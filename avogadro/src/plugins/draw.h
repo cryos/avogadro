@@ -25,6 +25,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/plugin.h>
+#include <avogadro/molgeominfo.h>
 
 #include <openbabel/mol.h>
 
@@ -99,9 +100,9 @@ namespace Avogadro {
       QComboBox *m_comboBondOrder;
       QVBoxLayout *m_layout;
 
-      Atom *newAtom(Molecule *molecule, int x, int y);
+      Atom *newAtom(Molecule *molecule, const MolGeomInfo &molGeomInfo, int x, int y);
       Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
-      void moveAtom(Atom *atom, int x, int y);
+      void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
   };
 
 } // end namespace Avogadro

@@ -104,6 +104,7 @@ namespace Avogadro {
       QList<PrimitiveQueue>  queues;
     
       Molecule               *molecule;
+      MolGeomInfo            molGeomInfo;
       QList<GLuint>          displayLists;
     
       Camera                 camera;
@@ -311,7 +312,10 @@ namespace Avogadro {
         this, SLOT(updatePrimitive(Primitive*)));
     connect(d->molecule, SIGNAL(primitiveRemoved(Primitive*)), 
         this, SLOT(removePrimitive(Primitive*)));
-  
+
+    // compute the molecule's geometric info
+    d->molGeomInfo.compute(molecule);
+
     // setup the camera to have a nice viewpoint on the molecule
     d->camera.initializeViewPoint();
 
@@ -321,6 +325,11 @@ namespace Avogadro {
   const Molecule* GLWidget::molecule() const
   {
     return d->molecule;
+  }
+
+  const MolGeomInfo& GLWidget::molGeomInfo() const
+  {
+    return d->molGeomInfo;
   }
 
   Camera & GLWidget::camera()

@@ -24,8 +24,6 @@
 
 #include <avogadro/primitives.h>
 #include <QDebug>
-#include <QMutex>
-#include <QMutexLocker>
 #include <eigen/regression.h>
 
 namespace Avogadro {
@@ -75,27 +73,24 @@ namespace Avogadro {
     emit updated();
   }
 
-  class MoleculePrivate
+  Eigen::Vector3d Atom::position () const
   {
-    public:
-      Eigen::Vector3d       center;
-      Eigen::Vector3d       normalVector;
-      double                radius;
-      Atom *                farthestAtom;
-      bool                  invalidGeomInfo;
-      QMutex                mutex;
+    OpenBabel::vector3 v = GetVector();
+    return Eigen::Vector3d( v.x(), v.y(), v.z() );
+  }
 
-      MoleculePrivate() : invalidGeomInfo(true) {}
-  };
+  void Atom::setPosition(const Eigen::Vector3d &vec)
+  {
+    SetVector( vec.x(), vec.y(), vec.z() );
+  }
 
-  Molecule::Molecule(QObject *parent) : d(new MoleculePrivate), OpenBabel::OBMol(), Primitive(MoleculeType, parent) 
+  Molecule::Molecule(QObject *parent) : OpenBabel::OBMol(), Primitive(MoleculeType, parent) 
   {
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
   }
 
   Molecule::~Molecule()
   {
-    delete d;
   }
 
   Atom * Molecule::CreateAtom()
@@ -158,85 +153,11 @@ namespace Avogadro {
   {
     Primitive *primitive = qobject_cast<Primitive *>(sender());
     emit primitiveUpdated(primitive);
-    QMutexLocker locker(&d->mutex);
-    d->invalidGeomInfo = true;
   }
 
   void Molecule::update()
   {
     emit updated();
-    QMutexLocker locker(&d->mutex);
-    d->invalidGeomInfo = true;
-  }
-
-  const Eigen::Vector3d & Molecule::center() const
-  {
-    if( d->invalidGeomInfo ) computeGeomInfo();
-    return d->center;
-  }
-    
-  const Eigen::Vector3d & Molecule::normalVector() const
-  {
-    if( d->invalidGeomInfo ) computeGeomInfo();
-    return d->normalVector;
-  }
-    
-  const double & Molecule::radius() const
-  {
-    if( d->invalidGeomInfo ) computeGeomInfo();
-    return d->radius;
-  }
-    
-  const Atom * Molecule::farthestAtom() const
-  {
-    if( d->invalidGeomInfo ) computeGeomInfo();
-    return d->farthestAtom;
-  }
-
-  void Molecule::computeGeomInfo() const
-  {
-    QMutexLocker locker(&d->mutex);
-    d->invalidGeomInfo = true;
-    d->farthestAtom = 0;
-    d->center.loadZero();
-    d->normalVector.loadZero();
-    d->radius = 0.0;
-    if( NumAtoms() != 0 )
-    {
-      // compute center
-      std::vector< OpenBabel::OBAtom * >::iterator atom_iterator;
-      for( Atom* atom = (Atom*) const_cast<Molecule*>(this)->BeginAtom(atom_iterator); atom; atom = (Atom *) const_cast<Molecule*>(this)->NextAtom(atom_iterator) )
-      {
-        d->center += atom->position();
-      }
-      d->center /= NumAtoms();
-  
-      // compute the normal vector to the molecule's best-fitting plane
-      Eigen::Vector3d * atomPositions = new Eigen::Vector3d[NumAtoms()];
-      int i = 0;
-      for( Atom* atom = (Atom*) const_cast<Molecule*>(this)->BeginAtom(atom_iterator); atom; atom = (Atom *) const_cast<Molecule*>(this)->NextAtom(atom_iterator) )
-      {
-        atomPositions[i++] = atom->position();
-      }
-      Eigen::Vector4d planeCoeffs;
-      Eigen::computeFittingHyperplane( NumAtoms(), atomPositions, &planeCoeffs );
-      delete[] atomPositions;
-      d->normalVector = Eigen::Vector3d( planeCoeffs.x(), planeCoeffs.y(), planeCoeffs.z() );
-      d->normalVector.normalize();
-  
-      // compute radius and the farthest atom
-      d->radius = -1.0; // so that ( squaredDistanceToCenter > d->radius ) is true for at least one atom.
-      for( Atom* atom = (Atom*) const_cast<Molecule*>(this)->BeginAtom(atom_iterator); atom; atom = (Atom *) const_cast<Molecule*>(this)->NextAtom(atom_iterator) )
-      {
-        double distanceToCenter = (atom->position() - d->center).norm();
-        if( distanceToCenter > d->radius )
-        {
-          d->radius = distanceToCenter;
-          d->farthestAtom = atom;
-        }
-      }
-    }
-    d->invalidGeomInfo = false;
   }
 
   class PrimitiveQueuePrivate {

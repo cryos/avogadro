@@ -19,6 +19,7 @@ set(libavogadro_SRCS
 	glwidget.cpp
         moleculetreeview.cpp
         camera.cpp
+        molgeominfo.cpp
 )
 
 set(libavogadro_HDRS
@@ -31,6 +32,7 @@ set(libavogadro_HDRS
 	moleculetreeview.h
 	global.h
         camera.h
+        molgeominfo.h
 )
 
 qt4_automoc(${libavogadro_SRCS})

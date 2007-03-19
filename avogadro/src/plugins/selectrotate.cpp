@@ -144,10 +144,10 @@ void SelectRotate::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseE
       Matrix3d rotation = widget->camera().matrix().linearComponent();
       Vector3d XAxis = rotation.row(0);
       Vector3d YAxis = rotation.row(1);
-      widget->camera().translate( widget->molecule()->center() );
+      widget->camera().translate( widget->molGeomInfo().center() );
       widget->camera().rotate( deltaDragging.y() * ROTATION_SPEED, XAxis );
       widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, YAxis );
-      widget->camera().translate( - widget->molecule()->center() );
+      widget->camera().translate( - widget->molGeomInfo().center() );
     }
     else if ( event->buttons() & Qt::RightButton )
     {

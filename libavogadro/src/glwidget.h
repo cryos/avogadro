@@ -26,6 +26,7 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 #include <avogadro/color.h>
+#include <avogadro/molgeominfo.h>
 
 #include <QGLWidget>
 #include <QMouseEvent>
@@ -251,6 +252,11 @@ namespace Avogadro {
        * @return the current molecule being viewed
        */
       const Molecule* molecule() const;
+
+      /**
+       * @return the molecule geometric info
+       */
+      const MolGeomInfo& molGeomInfo() const;
 
       /**
        * @return a reference to the camera of this widget

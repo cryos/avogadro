@@ -173,10 +173,8 @@ namespace Avogadro {
        * @param parent the object parent.
        */
       Atom(QObject *parent=0) : OpenBabel::OBAtom(), Primitive(AtomType, parent) { }
-      inline Eigen::Vector3d & position ()
-      {
-        return *reinterpret_cast<Eigen::Vector3d *>( GetCoordinate() );
-      }
+      Eigen::Vector3d position () const;
+      void setPosition(const Eigen::Vector3d &vec);
   };
 
   /**
@@ -282,11 +280,6 @@ namespace Avogadro {
        * @param atom the atom to delete
        */
       void DestroyAtom(OpenBabel::OBAtom* atom);
-      
-      const Eigen::Vector3d & center() const;
-      const Eigen::Vector3d & normalVector() const;
-      const double & radius() const;
-      const Atom *farthestAtom() const;
 
       /**
        * Virtual function inherited from OpenBabel::OBMol.
@@ -335,10 +328,6 @@ namespace Avogadro {
        * @param primitive pointer to the primitive that was updated before it is free'd
        */
       void primitiveRemoved(Primitive *primitive);
-
-    private:
-      MoleculePrivate * const d;
-      void computeGeomInfo() const;
   };
 
   /**
