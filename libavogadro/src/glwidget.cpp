@@ -332,6 +332,11 @@ namespace Avogadro {
     return d->molGeomInfo;
   }
 
+  void GLWidget::updateMolGeomInfo()
+  {
+    d->molGeomInfo.compute(d->molecule);
+  }
+
   Camera & GLWidget::camera()
   {
     return d->camera;

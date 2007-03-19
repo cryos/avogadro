@@ -13,6 +13,7 @@
 
 #include "config.h"
 
+#include <avogadro/global.h>
 #include <avogadro/molgeominfo.h>
 
 #include <eigen/regression.h>

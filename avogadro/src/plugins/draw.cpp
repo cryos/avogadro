@@ -136,6 +136,7 @@ void Draw::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *e
     else
     {
       _beginAtom = newAtom(molecule, widget->molGeomInfo(), event->pos().x(), event->pos().y());
+      widget->updateMolGeomInfo();
       _beginAtom->update();
     }
   }
@@ -187,6 +188,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
       if(_endAtom)
       {
         molecule->DeleteAtom(_endAtom);
+        widget->updateMolGeomInfo();
         _bond = NULL;
         _endAtom = NULL;
       }
@@ -211,6 +213,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
         }
 
         molecule->DeleteAtom(_endAtom);
+        widget->updateMolGeomInfo();
         _endAtom = NULL;
 
         if(existingBond) {
@@ -228,6 +231,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
       if(!_endAtom)
       {
         _endAtom = newAtom(molecule, widget->molGeomInfo(), event->pos().x(), event->pos().y());
+        widget->updateMolGeomInfo();
         if(!_bond)
         {
           _bond = newBond(molecule, _beginAtom, _endAtom);
@@ -275,9 +279,9 @@ void Draw::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent 
       {
         Atom *atom = (Atom *)molecule->GetAtom(hits[0].name());
         molecule->DeleteAtom(atom);
+        widget->updateMolGeomInfo();
       }
     }
-
   }
 }
 
@@ -312,7 +316,7 @@ Atom *Draw::newAtom(Molecule *molecule, const MolGeomInfo & molGeomInfo, int x, 
   moveAtom(atom, molGeomInfo, x, y);
   atom->SetAtomicNum(element());
   molecule->EndModify();
-  qDebug() << "now there are " << molecule->NumAtoms() << " atoms";
+  
   
   return atom;
 }

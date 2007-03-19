@@ -258,6 +258,8 @@ namespace Avogadro {
        */
       const MolGeomInfo& molGeomInfo() const;
 
+      void updateMolGeomInfo();
+
       /**
        * @return a reference to the camera of this widget
        */

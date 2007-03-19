@@ -155,8 +155,16 @@ namespace Avogadro
       }
       else
       {
-        nearEnd = distanceToMol - molRadius * 1.5;
-        farEnd = distanceToMol + molRadius * 1.5;
+        if( molRadius == 0.0 )
+        {
+          nearEnd = distanceToMol / 2.0;
+          farEnd = distanceToMol * 2.0;
+        }
+        else
+        {
+          nearEnd = distanceToMol - molRadius * 1.5;
+          farEnd = distanceToMol + molRadius * 1.5;
+        }
       }
     }
     aspectRatio = static_cast<double>(d->parent->width()) / d->parent->height();
