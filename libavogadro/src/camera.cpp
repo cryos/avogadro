@@ -129,7 +129,7 @@ namespace Avogadro
     setMatrix(rotation);
   
     const Vector3d Zaxis(0,0,1);
-    pretranslate( - 2 * d->parent->molGeomInfo().radius() * Zaxis );
+    pretranslate( - 3.0 * d->parent->molGeomInfo().radius() * Zaxis );
     
     translate( - d->parent->molGeomInfo().center() );
   }

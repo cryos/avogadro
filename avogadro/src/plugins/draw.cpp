@@ -33,8 +33,6 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-#define _DRAW_DEFAULT_WIN_Z 0.0
-
 Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL), m_element(6), m_bondOrder(1)
 {
   m_selectAction->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
