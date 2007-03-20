@@ -80,6 +80,7 @@ namespace Avogadro {
       void glMousePress(QMouseEvent *event);
       void glMouseMove(QMouseEvent *event);
       void glMouseRelease(QMouseEvent *event);
+      void glWheel(QWheelEvent *event);
 
     private:
       Ui::MainWindow ui;

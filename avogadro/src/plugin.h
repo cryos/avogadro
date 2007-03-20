@@ -122,6 +122,7 @@ namespace Avogadro {
       virtual void mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
       virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
       virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual void wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event) = 0;
       //@}
       
     protected:

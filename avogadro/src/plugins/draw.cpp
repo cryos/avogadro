@@ -284,6 +284,10 @@ void Draw::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent 
   }
 }
 
+void Draw::wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event)
+{
+}
+
 Eigen::Vector3d Draw::unProject(Eigen::Vector3d center, int x, int y)
 {
   GLdouble projection[16];

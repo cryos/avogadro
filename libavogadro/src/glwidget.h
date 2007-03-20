@@ -329,6 +329,7 @@ namespace Avogadro {
       void mousePress( QMouseEvent * event );
       void mouseRelease( QMouseEvent * event );
       void mouseMove( QMouseEvent * event );
+      void wheel( QWheelEvent * event);
 
     protected:
       GLWidgetPrivate * const d;
@@ -359,6 +360,10 @@ namespace Avogadro {
        * Virtual function reaction to mouse being moved in the GL rendering area.
        */
       virtual void mouseMoveEvent( QMouseEvent * event );
+      /**
+       * Virtual function reaction to mouse while in the GL rendering area.
+       */
+      virtual void wheelEvent( QWheelEvent * event );
 
       /**
        * Render the scene. To be used in both modes GL_RENDER and GL_SELECT.

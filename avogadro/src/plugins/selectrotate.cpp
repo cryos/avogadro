@@ -179,6 +179,10 @@ void SelectRotate::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseE
   widget->updateGL();
 }
 
+void SelectRotate::wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event)
+{
+}
+
 void SelectRotate::selectionBox(float sx, float sy, float ex, float ey)
 {
   if(!_selectionDL)

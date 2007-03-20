@@ -251,6 +251,12 @@ namespace Avogadro {
     emit mouseMove(event);
   }
   
+  void GLWidget::wheelEvent( QWheelEvent * event )
+  {
+    //qDebug() << "GLWidget::wheelEvent";
+    emit wheel(event);
+  }
+  
   void GLWidget::addDL(GLuint dl)
   {
     //qDebug() << "GLWidget::addDL";

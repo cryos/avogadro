@@ -341,6 +341,7 @@ namespace Avogadro {
     connect(ui.glWidget, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(glMousePress(QMouseEvent *)));
     connect(ui.glWidget, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(glMouseMove(QMouseEvent *)));
     connect(ui.glWidget, SIGNAL(mouseRelease(QMouseEvent*)), this, SLOT(glMouseRelease(QMouseEvent *)));
+    connect(ui.glWidget, SIGNAL(wheel(QWheelEvent*)), this, SLOT(glWheel(QWheelEvent *)));
     
     connect(m_toolsActions, SIGNAL(triggered(QAction *)), this, SLOT(setCurrentTool(QAction *)));
   }
@@ -661,6 +662,12 @@ namespace Avogadro {
   {
     if(m_currentTool)
       m_currentTool->mouseRelease(m_molecule, ui.glWidget, event);
+  }
+
+  void MainWindow::glWheel(QWheelEvent *event)
+  {
+    if(m_currentTool)
+      m_currentTool->wheel(m_molecule, ui.glWidget, event);
   }
 
 } // end namespace Avogadro
