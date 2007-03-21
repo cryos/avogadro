@@ -116,21 +116,42 @@ namespace Avogadro
   {
     d->matrix.loadIdentity();
     if( d->parent == 0 ) return;
-    if( d->parent->molecule() == 0 || d->parent->molecule()->NumAtoms() == 0 )
+    if( d->parent->molecule() == 0 ) return;
+
+    // if the molecule is empty, we want to look at its center
+    // (which is probably at the origin, but who knows) from some distance
+    // (here 10.0).
+    if( d->parent->molecule()->NumAtoms() == 0 )
     {
-      d->matrix.translate( Vector3d( 0, 0, -10 ) );
+      d->matrix.translate( d->parent->center() - Vector3d( 0, 0, 10 ) );
       return;
     }
     
+    // if we're here, the molecule is not empty, i.e. has atoms.
+    // we want a top-down view on it, i.e. the molecule should fit as well as
+    // possible in the (X,Y)-plane. Equivalently, we want the Z axis to be parallel
+    // to the normal vector of the molecule's fitting plane.
+    // Thus we construct a suitable base-change rotation.
     Matrix3d rotation;
     rotation.setRow(2, d->parent->normalVector());
     rotation.setRow(0, rotation.row(2).ortho());
     rotation.setRow(1, rotation.row(2).cross(rotation.row(0)));
+
+    // set the camera's matrix to be this rotation.
     setMatrix(rotation);
   
+    // now we want to move backwards, in order
+    // to view the molecule from a distance, not from inside it.
+    // This translation must be applied after the above rotation, so we
+    // want a left-multiplication here. Whence pretranslate().
     const Vector3d Zaxis(0,0,1);
     pretranslate( - 3.0 * d->parent->radius() * Zaxis );
     
+    // the above rotation is meant to be a rotation around the molecule's
+    // center. So before this rotation is applied, the molecule's center
+    // must be brought to the origin of the coordinate systemby a translation.
+    // As this translation must be applied first, we want a right-multiplication here.
+    // Whence translate().
     translate( - d->parent->center() );
   }
   
