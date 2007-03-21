@@ -29,6 +29,17 @@ TARGET_LINK_LIBRARIES(draw
     avogadro-lib)
 INSTALL(TARGETS draw DESTINATION lib/avogadro)
 
+### navigate
+set(navigate_SRCS navigate.cpp)
+qt4_automoc(${navigate_SRCS})
+ADD_LIBRARY(navigate SHARED navigate.cpp ${navigate_RC_SRCS} )
+TARGET_LINK_LIBRARIES(navigate 
+    ${OPENBABEL2_LIBRARIES} 
+    ${QT_LIBRARIES}
+    ${OPENGL_LIBRARIES} 
+    avogadro-lib)
+INSTALL(TARGETS navigate DESTINATION lib/avogadro)
+
 ### gamess
 set(gamess_SRCS gamess.cpp gamessinputdialog.cpp gamessinputdata.cpp)
 qt4_wrap_ui(gamess_UIS_H gamessinputdialog.ui)
@@ -77,4 +88,16 @@ TARGET_LINK_LIBRARIES(selectrotate
 	avogadro-lib
 )
 INSTALL(TARGETS selectrotate DESTINATION lib/avogadro)
+
+### navigate
+set(navigate_SRCS navigate.cpp)
+qt4_automoc(${navigate_SRCS})
+ADD_LIBRARY(navigate SHARED ${navigate_SRCS})
+TARGET_LINK_LIBRARIES(navigate 
+	${OPENBABEL2_LIBRARIES} 
+	${QT_LIBRARIES} 
+    ${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS navigate DESTINATION lib/avogadro)
 
