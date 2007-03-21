@@ -150,7 +150,6 @@ namespace Avogadro
       molCenter = d->parent->center();
     }
     molRadius += 3.0;
-    qDebug() << "molRadius = " << molRadius;
     double distanceToMol = (translationVector() - molCenter).norm();
     if( distanceToMol < 2.0 * molRadius)
     {

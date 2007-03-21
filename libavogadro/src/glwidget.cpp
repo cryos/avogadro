@@ -220,12 +220,12 @@ namespace Avogadro {
   {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // set the projection matrix from the camera
+    // setup the OpenGL projection matrix using the camera
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     d->camera.applyPerspective();
 
-    // set the modelview matrix from the camera
+    // setup the OpenGL modelview matrix using the camera
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     d->camera.applyModelview();
