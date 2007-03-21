@@ -2383,3 +2383,4 @@ void GamessInputDialog::setStatPointFollow( int val )
   m_inputData->StatPt->SetModeFollow(val);
 }
 
+#include "gamessinputdialog.moc"
