@@ -136,21 +136,18 @@ namespace Avogadro
   
   void Camera::applyPerspective() const
   {
-    double molRadius, nearEnd, farEnd;
-    Vector3d molCenter;
     if( d->parent == 0 ) return;
-    if( d->parent->molecule() == 0 || d->parent->molecule()->NumAtoms() == 0 )
-    {
-      molRadius = translationVector().norm();
-      molCenter.loadZero();
-    }
-    else
-    {
-      molRadius = d->parent->radius();
-      molCenter = d->parent->center();
-    }
-    molRadius += 3.0;
-    double distanceToMol = (translationVector() - molCenter).norm();
+    if( d->parent->molecule() == 0 ) return;
+
+    double molRadius = d->parent->radius();
+
+    molRadius += 3.0; // add some safety margin to the radius. For example, while atom is
+                      // being dragged around, the molecule's geometric info isn't getting
+                      // updated, so some margin is needed, or else the atom being moved
+                      // would get clipped off.
+
+    double distanceToMol = (translationVector() - d->parent->center()).norm();
+    double nearEnd, farEnd;
     if( distanceToMol < 2.0 * molRadius)
     {
       nearEnd = molRadius / 20.0;
