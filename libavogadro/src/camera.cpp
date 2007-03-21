@@ -136,38 +136,33 @@ namespace Avogadro
   
   void Camera::applyPerspective() const
   {
-    double aspectRatio, nearEnd, farEnd;
+    double molRadius, nearEnd, farEnd;
+    Vector3d molCenter;
     if( d->parent == 0 ) return;
     if( d->parent->molecule() == 0 || d->parent->molecule()->NumAtoms() == 0 )
     {
-      nearEnd = 1.0;
-      farEnd = 20.0;
+      molRadius = translationVector().norm();
+      molCenter.loadZero();
     }
     else
     {
-      double molRadius = d->parent->radius();
-      Eigen::Vector3d molCenter = d->parent->center();
-      double distanceToMol = (translationVector() - molCenter).norm();
-      if( distanceToMol < 2.0 * molRadius)
-      {
-        nearEnd = molRadius / 12.0;
-        farEnd = molRadius * 4.0;
-      }
-      else
-      {
-        if( molRadius == 0.0 )
-        {
-          nearEnd = distanceToMol / 2.0;
-          farEnd = distanceToMol * 2.0;
-        }
-        else
-        {
-          nearEnd = distanceToMol - molRadius * 1.5;
-          farEnd = distanceToMol + molRadius * 1.5;
-        }
-      }
+      molRadius = d->parent->radius();
+      molCenter = d->parent->center();
     }
-    aspectRatio = static_cast<double>(d->parent->width()) / d->parent->height();
+    molRadius += 3.0;
+    qDebug() << "molRadius = " << molRadius;
+    double distanceToMol = (translationVector() - molCenter).norm();
+    if( distanceToMol < 2.0 * molRadius)
+    {
+      nearEnd = molRadius / 20.0;
+      farEnd = molRadius * 3.0;
+    }
+    else
+    {
+      nearEnd = distanceToMol - molRadius * 1.5;
+      farEnd = distanceToMol + molRadius * 1.5;
+    }
+    double aspectRatio = static_cast<double>(d->parent->width()) / d->parent->height();
     gluPerspective( d->angleOfViewY, aspectRatio, nearEnd, farEnd );
   }
 
