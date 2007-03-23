@@ -46,6 +46,16 @@ Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL), m_element(
   m_comboElements->addItem("Carbon (6)");
   m_comboElements->addItem("Nitrogen (7)");
   m_comboElements->addItem("Oxygen (8)");
+  m_comboElements->addItem("Fluorine (9)");
+  m_comboElements->addItem("Neon (10)");
+  m_comboElements->addItem("Sodium (11)");
+  m_comboElements->addItem("Magnesium (12)");
+  m_comboElements->addItem("Aluminum (13)");
+  m_comboElements->addItem("Silicon (14)");
+  m_comboElements->addItem("Phosphorus (15)");
+  m_comboElements->addItem("Sulfur (16)");
+  m_comboElements->addItem("Chlorine (17)");
+  m_comboElements->addItem("Argon (18)");
   m_comboElements->setCurrentIndex(5);
 
   m_comboBondOrder = new QComboBox(m_propertiesWidget);
