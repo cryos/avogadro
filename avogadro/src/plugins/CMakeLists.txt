@@ -43,7 +43,7 @@ INSTALL(TARGETS navigate DESTINATION lib/avogadro)
 ### gamess
 set(gamess_SRCS gamess.cpp gamessinputdialog.cpp gamessinputdata.cpp)
 qt4_wrap_ui(gamess_UIS_H gamessinputdialog.ui)
-qt4_automoc(${gamess_SRCS})
+qt4_automoc(gamess.cpp gamessinputdialog.cpp gamessinputdata.cpp)
 ADD_LIBRARY(gamess SHARED ${gamess_SRCS} ${gamess_UIS_H})
 TARGET_LINK_LIBRARIES(gamess 
 	${OPENBABEL2_LIBRARIES} 
