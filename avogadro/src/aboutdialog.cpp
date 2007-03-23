@@ -42,7 +42,7 @@ AboutDialog::AboutDialog(QWidget *parent)
     QLabel *lbl = new QLabel(this);
     QPushButton *cmd = new QPushButton("OK", this);
 
-    label->setPixmap(QPixmap(":/trolltech/designer/images/designer.png"));
+    label->setPixmap(QPixmap(":/icons/atom2.png"));
     
     lbl->setWordWrap(true);
     lbl->setOpenExternalLinks(true);
