@@ -199,7 +199,7 @@ namespace Avogadro {
         */
       inline void setVector3d(const Eigen::Vector3d &vec)
       {
-        SetVector( *const_cast<OpenBabel::vector3*>(reinterpret_cast<const OpenBabel::vector3*>(&vec)) );
+        SetVector( *reinterpret_cast<const OpenBabel::vector3*>(&vec) );
       }
   };
 
