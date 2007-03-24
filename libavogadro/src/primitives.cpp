@@ -73,17 +73,6 @@ namespace Avogadro {
     emit updated();
   }
 
-  Eigen::Vector3d Atom::position () const
-  {
-    OpenBabel::vector3 v = GetVector();
-    return Eigen::Vector3d( v.x(), v.y(), v.z() );
-  }
-
-  void Atom::setPosition(const Eigen::Vector3d &vec)
-  {
-    SetVector( vec.x(), vec.y(), vec.z() );
-  }
-
   class MoleculePrivate {
     public:
       Eigen::Vector3d       center;
@@ -209,7 +198,7 @@ namespace Avogadro {
       std::vector< OpenBabel::OBAtom * >::iterator atom_iterator;
       for( Atom* atom = (Atom*) const_cast<Molecule*>(this)->BeginAtom(atom_iterator); atom; atom = (Atom *) const_cast<Molecule*>(this)->NextAtom(atom_iterator) )
       {
-        d->center += atom->position();
+        d->center += atom->GetVector3d();
       }
       d->center /= NumAtoms();
   
@@ -218,7 +207,7 @@ namespace Avogadro {
       int i = 0;
       for( Atom* atom = (Atom*) const_cast<Molecule*>(this)->BeginAtom(atom_iterator); atom; atom = (Atom *) const_cast<Molecule*>(this)->NextAtom(atom_iterator) )
       {
-        atomPositions[i++] = atom->position();
+        atomPositions[i++] = atom->GetVector3d();
       }
       Eigen::Vector4d planeCoeffs;
       Eigen::computeFittingHyperplane( NumAtoms(), atomPositions, &planeCoeffs );
@@ -230,7 +219,7 @@ namespace Avogadro {
       d->radius = -1.0; // so that ( squaredDistanceToCenter > d->radius ) is true for at least one atom.
       for( Atom* atom = (Atom*) const_cast<Molecule*>(this)->BeginAtom(atom_iterator); atom; atom = (Atom *) const_cast<Molecule*>(this)->NextAtom(atom_iterator) )
       {
-        double distanceToCenter = (atom->position() - d->center).norm();
+        double distanceToCenter = (atom->GetVector3d() - d->center).norm();
         if( distanceToCenter > d->radius )
         {
           d->radius = distanceToCenter;

@@ -162,7 +162,7 @@ namespace Avogadro
 
     double molRadius = d->parent->radius();
 
-    molRadius += 3.0; // add some safety margin to the radius. For example, while atom is
+    molRadius += 3.0; // add some safety margin to the radius. For example, while an atom is
                       // being dragged around, the molecule's geometric info isn't getting
                       // updated, so some margin is needed, or else the atom being moved
                       // would get clipped off.

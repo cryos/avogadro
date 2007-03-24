@@ -173,8 +173,34 @@ namespace Avogadro {
        * @param parent the object parent.
        */
       Atom(QObject *parent=0) : OpenBabel::OBAtom(), Primitive(AtomType, parent) { }
-      Eigen::Vector3d position () const;
-      void setPosition(const Eigen::Vector3d &vec);
+
+      /** Returns the position of the atom, as a Eigen::Vector3d. This is similar to
+        * the OBAtom::GetVector() method, which returns the position as a OpenBabel::vector3.
+        *
+        * Rationale for inlining: this method only does a cast on the return value of OBAtom::GetVector().
+        * The memory layouts of the types between which it casts are not likely to change: both
+        * types represent 3D vectors of doubles, and there's only one sane way to represent them:
+        * struct{ double x,y,z; }.
+        *
+        * @return OBAtom::GetVector() but reinterpret_casted as a const Eigen::Vector3d &
+        */
+      inline const Eigen::Vector3d &GetVector3d () const
+      {
+        return *reinterpret_cast<const Eigen::Vector3d*>(&GetVector());
+      }
+
+      /** Sets the position of the atom, from a Eigen::Vector3d. This is similar to
+        * the OBAtom::SetVector() method, which sets the position from a OpenBabel::vector3.
+        *
+        * Rationale for inlining: this method only does a cast on the argument of OBAtom::SetVector().
+        * The memory layouts of the types between which it casts are not likely to change: both
+        * types represent 3D vectors of doubles, and there's only one sane way to represent them:
+        * struct{ double x,y,z; }.
+        */
+      inline void setVector3d(const Eigen::Vector3d &vec)
+      {
+        SetVector( *const_cast<OpenBabel::vector3*>(reinterpret_cast<const OpenBabel::vector3*>(&vec)) );
+      }
   };
 
   /**
