@@ -143,7 +143,7 @@ void Draw::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *e
     }
     else
     {
-      _beginAtom = newAtom(molecule, widget->center(), event->pos().x(), event->pos().y());
+      _beginAtom = newAtom(widget, event->pos().x(), event->pos().y());
       widget->updateGeometry();
       _beginAtom->update();
     }
@@ -238,7 +238,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
     {
       if(!_endAtom)
       {
-        _endAtom = newAtom(molecule, widget->center(), event->pos().x(), event->pos().y());
+        _endAtom = newAtom(widget, event->pos().x(), event->pos().y());
         widget->updateGeometry();
         if(!_bond)
         {
@@ -256,7 +256,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
       }
       else
       {
-        _endAtom->setVector3d(unProject(widget->center(), event->pos().x(), event->pos().y()));
+        _endAtom->setVector3d(unProject(widget, event->pos().x(), event->pos().y()));
 //         moveAtom(_endAtom, widget->molGeomInfo(), event->pos().x(), event->pos().y());
         _endAtom->update();
 //dc:         _endAtom->update();
@@ -298,7 +298,7 @@ void Draw::wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event)
 {
 }
 
-Eigen::Vector3d Draw::unProject(Eigen::Vector3d center, int x, int y)
+Eigen::Vector3d Draw::unProject(GLWidget *widget, int x, int y)
 {
   GLdouble projection[16];
   glGetDoublev(GL_PROJECTION_MATRIX,projection);
@@ -307,12 +307,21 @@ Eigen::Vector3d Draw::unProject(Eigen::Vector3d center, int x, int y)
   GLint viewport[4];
   glGetIntegerv(GL_VIEWPORT,viewport);
 
-  Eigen::Vector3d centerWin;
+  // retrieve the 3D coords of the center of the molecule
+  Eigen::Vector3d center = widget->center();
+
+  // project center
+  Eigen::Vector3d projectedCenter;
+  gluProject(center.x(), center.y(), center.z(), modelview, projection, viewport, &projectedCenter.x(), &projectedCenter.y(), &projectedCenter.z());
+
+  // now projectedCenter.z() gives us the Z-index of the center of the molecule.
+  // this is all what we need to know - we don't care about the x() and y() coords of
+  // projectedCenter.
+
+  // Now unproject the pixel of coordinates (x,height-y) into a 3D point having the same Z-index
+  // as the molecule's center.
   Eigen::Vector3d pos;
-
-  gluProject(center.x(), center.y(), center.z(), modelview, projection, viewport, &centerWin.x(), &centerWin.y(), &centerWin.z());
-
-  gluUnProject(x, viewport[3] - y, centerWin.z(), modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
+  gluUnProject(x, viewport[3] - y, projectedCenter.z(), modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
 
   return pos;
 }
@@ -337,19 +346,18 @@ Eigen::Vector3d Draw::unProject(Eigen::Vector3d center, int x, int y)
 //   atom->setVector3d(atomNewPos);
 // }
 
-Atom *Draw::newAtom(Molecule *molecule, Eigen::Vector3d center, int x, int y)
+Atom *Draw::newAtom(GLWidget *widget, int x, int y)
 {
   // GRH (for reasons I don't understand, calling Begin/EndModify here
   // causes crashes with multiple bond orders
   // (need to investigate, probable OB bug.
 
-  molecule->BeginModify();
-  Atom *atom = (Atom *)molecule->NewAtom();
+  widget->molecule()->BeginModify();
+  Atom *atom = static_cast<Atom*>(widget->molecule()->NewAtom());
 //   moveAtom(atom, molGeomInfo, x, y);
-  atom->setVector3d(unProject(center, x, y));
+  atom->setVector3d(unProject(widget, x, y));
   atom->SetAtomicNum(element());
-  molecule->EndModify();
-  
+  widget->molecule()->EndModify();
   
   return atom;
 }

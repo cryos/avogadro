@@ -253,6 +253,11 @@ namespace Avogadro {
       const Molecule* molecule() const;
 
       /**
+       * @return the current molecule being viewed
+       */
+      Molecule* molecule();
+
+      /**
        * update the Molecule Geometry.
        */
       void updateGeometry();

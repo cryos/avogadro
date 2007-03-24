@@ -336,6 +336,11 @@ namespace Avogadro {
     return d->molecule;
   }
 
+  Molecule* GLWidget::molecule()
+  {
+    return d->molecule;
+  }
+
   const Eigen::Vector3d & GLWidget::center() const
   {
     return d->center;
