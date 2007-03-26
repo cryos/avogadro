@@ -256,7 +256,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
       }
       else
       {
-        _endAtom->setVector3d(unProject(widget, event->pos().x(), event->pos().y()));
+        _endAtom->setPos(unProject(widget, event->pos().x(), event->pos().y()));
 //         moveAtom(_endAtom, widget->molGeomInfo(), event->pos().x(), event->pos().y());
         _endAtom->update();
 //dc:         _endAtom->update();
@@ -343,7 +343,7 @@ Eigen::Vector3d Draw::unProject(GLWidget *widget, int x, int y)
 // 
 //   gluUnProject(x, viewport[3] - y, molCenterWinCoords.z(), modelview, projection, viewport, &atomNewPos.x(), &atomNewPos.y(), &atomNewPos.z());
 //   //dc:   qDebug("Matrix %f:(%f, %f, %f)\n", f, relPos[0], relPos[1], relPos[2]);
-//   atom->setVector3d(atomNewPos);
+//   atom->setPos(atomNewPos);
 // }
 
 Atom *Draw::newAtom(GLWidget *widget, int x, int y)
@@ -355,7 +355,7 @@ Atom *Draw::newAtom(GLWidget *widget, int x, int y)
   widget->molecule()->BeginModify();
   Atom *atom = static_cast<Atom*>(widget->molecule()->NewAtom());
 //   moveAtom(atom, molGeomInfo, x, y);
-  atom->setVector3d(unProject(widget, x, y));
+  atom->setPos(unProject(widget, x, y));
   atom->SetAtomicNum(element());
   widget->molecule()->EndModify();
   

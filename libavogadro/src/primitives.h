@@ -184,7 +184,7 @@ namespace Avogadro {
         *
         * @return OBAtom::GetVector() but reinterpret_casted as a const Eigen::Vector3d &
         */
-      inline const Eigen::Vector3d &GetVector3d () const
+      inline const Eigen::Vector3d &pos () const
       {
         return *reinterpret_cast<const Eigen::Vector3d*>(&GetVector());
       }
@@ -197,7 +197,7 @@ namespace Avogadro {
         * types represent 3D vectors of doubles, and there's only one sane way to represent them:
         * struct{ double x,y,z; }.
         */
-      inline void setVector3d(const Eigen::Vector3d &vec)
+      inline void setPos(const Eigen::Vector3d &vec)
       {
         SetVector( *reinterpret_cast<const OpenBabel::vector3*>(&vec) );
       }
