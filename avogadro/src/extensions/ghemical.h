@@ -28,7 +28,7 @@
 #include <openbabel/forcefield.h>
 
 #include <avogadro/glwidget.h>
-#include <avogadro/plugin.h>
+#include <avogadro/extension.h>
 
 #include <QObject>
 #include <QList>

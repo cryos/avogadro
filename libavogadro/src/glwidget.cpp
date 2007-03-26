@@ -24,6 +24,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
+#include <avogadro/toolgroup.h>
 
 #include <stdio.h>
 #include <vector>
@@ -95,7 +96,8 @@ namespace Avogadro {
   
   class GLWidgetPrivate {
     public:
-      GLWidgetPrivate() : defaultEngine(0), background(Qt::black), molecule(0) {}
+      GLWidgetPrivate() : defaultEngine(0), background(Qt::black), molecule(0),
+                          tool(0), toolGroup(0) {}
       
       Engine                 *defaultEngine;
       QList<Engine *>        engines;
@@ -110,6 +112,9 @@ namespace Avogadro {
       Eigen::Vector3d        center; 
       double                 radius;
       const Atom             *farthestAtom;
+
+      Tool                   *tool;
+      ToolGroup            *toolGroup;
     
       Camera                 camera;
       QColor                 background;
@@ -133,6 +138,11 @@ namespace Avogadro {
   {
     constructor();
     setMolecule(molecule);
+  }
+
+  GLWidget::~GLWidget()
+  {
+    delete(d);
   }
   
   void GLWidget::constructor()
@@ -236,25 +246,37 @@ namespace Avogadro {
   void GLWidget::mousePressEvent( QMouseEvent * event )
   {
     //qDebug() << "GLWidget::mousePressEvent";
-    emit mousePress(event);
+//dc:     emit mousePress(event);
+    if(d->tool) {
+      d->tool->mousePress(d->molecule, this, event);
+    }
   }
   
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   {
     //qDebug() << "GLWidget::mouseReleaseEvent";
-    emit mouseRelease(event);
+//dc:     emit mouseRelease(event);
+
+    if(d->tool) {
+      d->tool->mouseRelease(d->molecule, this, event);
+    }
   }
   
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
   {
     //qDebug() << "GLWidget::mouseMoveEvent";
-    emit mouseMove(event);
+//dc:     emit mouseMove(event);
+    if(d->tool) {
+      d->tool->mouseMove(d->molecule, this, event);
+    }
   }
   
   void GLWidget::wheelEvent( QWheelEvent * event )
   {
     //qDebug() << "GLWidget::wheelEvent";
-    emit wheel(event);
+    if(d->tool) {
+      d->tool->wheel(d->molecule, this, event);
+    }
   }
   
   void GLWidget::addDL(GLuint dl)
@@ -457,8 +479,9 @@ namespace Avogadro {
       qDebug() << "SearchPath:" << dir.absolutePath() << endl;
       foreach (QString fileName, dir.entryList(QDir::Files)) {
         QPluginLoader loader(dir.absoluteFilePath(fileName));
+        QObject *instance = loader.instance();
         //       qDebug() << "File: " << fileName;
-        EngineFactory *factory = qobject_cast<EngineFactory *>(loader.instance());
+        EngineFactory *factory = qobject_cast<EngineFactory *>(instance);
         if (factory) {
           Engine *engine = factory->createInstance(this);
           qDebug() << "Found Engine: " << engine->name() << " - " << engine->description(); 
@@ -472,7 +495,38 @@ namespace Avogadro {
       }
     }
   }
-  
+
+  void GLWidget::setTool(Tool *tool)
+  {
+    if(tool) {
+      d->tool = tool;
+    }
+  }
+
+  void GLWidget::setToolGroup(ToolGroup *toolGroup)
+  {
+    if(d->toolGroup) {
+      disconnect(d->toolGroup, 0, this, 0);
+    }
+
+    if(toolGroup) {
+      d->toolGroup = toolGroup;
+      d->tool = toolGroup->activeTool();
+      connect(toolGroup, SIGNAL(toolActivated(Tool*)),
+          this, SLOT(setTool(Tool*)));
+    }
+  }
+
+  Tool* GLWidget::tool() const
+  {
+    return d->tool;
+  }
+
+  ToolGroup *GLWidget::toolGroup() const
+  {
+    return d->toolGroup;
+  }
+
   QList<GLHit> GLWidget::hits(int x, int y, int w, int h) const
   {
     QList<GLHit> hits;

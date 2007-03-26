@@ -63,5 +63,5 @@ TARGET_LINK_LIBRARIES(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
 
 INSTALL(TARGETS avogadro-app DESTINATION bin)
 
-add_subdirectory(plugins)
+add_subdirectory(extensions)
 

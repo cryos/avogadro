@@ -30,10 +30,11 @@
 #include <avogadro/moleculetreeview.h>
 
 #include "ui_mainwindow.h"
-#include "plugin.h"
 #include "flowlayout.h"
 #include "flattabwidget.h"
-#include "avogadro/glwidget.h"
+#include <avogadro/glwidget.h>
+#include <avogadro/tool.h>
+#include <avogadro/extension.h>
 
 class QUndoStack;
 class QStackedLayout;
@@ -54,7 +55,7 @@ namespace Avogadro {
     protected:
       void closeEvent(QCloseEvent *event);
 
-    public slots:
+    public Q_SLOTS:
       void newFile();
       void openFile();
       void openRecentFile();
@@ -70,34 +71,25 @@ namespace Avogadro {
       void about();
 
       void actionTriggered();
-
       void documentWasModified();
 
-      void setCurrentTool(QAction *action);
-      void setCurrentTool(Tool *tool);
-      void setCurrentTool(int i);
-
-      void glMousePress(QMouseEvent *event);
-      void glMouseMove(QMouseEvent *event);
-      void glMouseRelease(QMouseEvent *event);
-      void glWheel(QWheelEvent *event);
+      void setTool(Tool *tool);
 
     private:
       Ui::MainWindow ui;
 
-      Tool      *m_currentTool;
       Molecule  *m_molecule;
-      QList<Tool *> m_tools;
 
       QString    m_currentFile;
       bool       m_modified;
       QUndoStack *m_undo;
       
-      QActionGroup *m_toolsActions;
       FlowLayout *m_toolsFlow;
-      QStackedLayout *m_toolPropertiesStacked;
+      QStackedLayout *m_toolSettingsStacked;
 
       QTextEdit *m_messagesText;
+
+      ToolGroup *m_toolGroup;
 
       enum { maxRecentFiles = 10 };
       QAction    *m_actionRecentFile[maxRecentFiles];

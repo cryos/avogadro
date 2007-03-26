@@ -21,7 +21,6 @@
  ***********************************************************************/
 
 #include "gamess.h"
-#include "../flattabwidget.h"
 
 #include <avogadro/primitives.h>
 #include <avogadro/color.h>
@@ -46,6 +45,7 @@ Gamess::Gamess() : Extension(), m_inputDialog(NULL), m_inputData(NULL)
 
 Gamess::~Gamess() 
 {
+  qDebug() << "FUCKER";
 }
 
 void Gamess::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)

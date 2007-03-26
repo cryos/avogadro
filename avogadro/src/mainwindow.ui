@@ -15,7 +15,7 @@
   <widget class="QWidget" name="centralWidget" >
    <layout class="QVBoxLayout" >
     <property name="margin" >
-     <number>9</number>
+     <number>0</number>
     </property>
     <property name="spacing" >
      <number>6</number>
@@ -192,7 +192,7 @@
    </attribute>
    <widget class="QWidget" name="toolsWidget" />
   </widget>
-  <widget class="QDockWidget" name="toolPropertiesDock" >
+  <widget class="QDockWidget" name="toolSettingsDock" >
    <property name="minimumSize" >
     <size>
      <width>200</width>
@@ -203,12 +203,12 @@
     <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle" >
-    <string>Tool Properties</string>
+    <string>Tool Settings</string>
    </property>
    <attribute name="dockWidgetArea" >
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="toolPropertiesWidget" />
+   <widget class="QWidget" name="toolSettingsWidget" />
   </widget>
   <action name="actionOpen" >
    <property name="icon" >
@@ -345,11 +345,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>Avogadro::MoleculeTreeView</class>
-   <extends>QTreeWidget</extends>
-   <header>avogadro/moleculetreeview.h</header>
-  </customwidget>
-  <customwidget>
    <class>Avogadro::FlatTabWidget</class>
    <extends>QWidget</extends>
    <header>flattabwidget.h</header>
@@ -358,6 +353,11 @@
    <class>Avogadro::GLWidget</class>
    <extends>QWidget</extends>
    <header>avogadro/glwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::MoleculeTreeView</class>
+   <extends>QTreeWidget</extends>
+   <header>avogadro/moleculetreeview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

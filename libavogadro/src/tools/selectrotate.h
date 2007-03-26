@@ -1,8 +1,8 @@
 /**********************************************************************
-  Navigation - Navigation Tool for Avogadro
+  SelectRotate - Selection and Rotation Tool for Avogadro
 
-  Copyright (C) 2007 by Marcus D. Hanwel
-  Copyright (C) 2006,2007 by Benoit Jacob
+  Copyright (C) 2006 by Geoffrey R. Hutchison
+  Some portions Copyright (C) 2006 by Donald E. Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -20,11 +20,11 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __NAVIGATE_H
-#define __NAVIGATE_H
+#ifndef __SELECTROTATE_H
+#define __SELECTROTATE_H
 
 #include <avogadro/glwidget.h>
-#include <avogadro/plugin.h>
+#include <avogadro/tool.h>
 
 #include <openbabel/mol.h>
 
@@ -33,43 +33,35 @@
 #include <QStringList>
 #include <QImage>
 
-//const double ROTATION_SPEED = 0.005;
-//const double TRANSLATION_SPEED = 0.02;
+const double ROTATION_SPEED = 0.005;
+const double TRANSLATION_SPEED = 0.02;
 
 namespace Avogadro {
 
-  /**
-   * @class Navigate
-   * @brief Port of Navigation from Kalzium
-   * @author Marcus D. Hanwel
-   *
-   * This class is an attempt to port the navigation system in
-   * Kalzium to an Avogadro plugin.
-   */
-  class Navigate : public QObject, public Tool
+ class SelectRotate : public QObject, public Tool
   {
     Q_OBJECT
-      Q_INTERFACES(Avogadro::Tool)
-
+    Q_INTERFACES(Avogadro::Tool)
+        
     public:
       //! Constructor
-      Navigate();
+      SelectRotate();
       //! Deconstructor
-      virtual ~Navigate();
+      virtual ~SelectRotate();
 
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() const { return(tr("Navigate")); }
+      virtual QString name() const { return(tr("Select/Rotate")); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Navigation Tool")); }
+      virtual QString description() const { return(tr("Selection and Rotation Tool")); }
       //@}
 
       //! \name Tool Methods
       //@{
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
-      */
+        */
       virtual void initialize();
       virtual void cleanup();
 
@@ -79,6 +71,7 @@ namespace Avogadro {
       virtual void wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event);
 
     protected:
+      void selectionBox(float sx, float sy, float ex, float ey);
 
       bool                _leftButtonPressed;  // rotation
       bool                _rightButtonPressed; // translation
@@ -93,8 +86,6 @@ namespace Avogadro {
 
       QList<GLHit> _hits;
 
-      const double ROTATION_SPEED;
-      const double TRANSLATION_SPEED;
   };
 
 } // end namespace Avogadro

@@ -25,6 +25,7 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
+#include <avogadro/tool.h>
 #include <avogadro/color.h>
 
 #include <QGLWidget>
@@ -37,7 +38,8 @@
 
 namespace Avogadro {
   
-  class A_EXPORT Camera;
+  class ToolGroup;
+  class Camera;
 
   /**
    * @class GLHit
@@ -177,25 +179,30 @@ namespace Avogadro {
 
     public:
       /**
-       * Constructor.
+       * Constructor
        * @param parent the widget parent
        */
       GLWidget(QWidget *parent = 0);
 
       /**
-       * Constructor.
+       * Constructor
        * @param format the QGLFormat information
        * @param parent the widget parent
        */
       GLWidget(const QGLFormat &format, QWidget *parent = 0);
 
       /**
-       * Constructor.
+       * Constructor
        * @param molecule the molecule to view
        * @param format the QGLFormat information
        * @param parent the widget parent
        */
       GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent = 0);
+
+      /**
+       * Deconstructor
+       */
+      ~GLWidget();
 
       /**
        * Add an arbitrary display list to the %GLWidget rendering 
@@ -235,6 +242,9 @@ namespace Avogadro {
        * @param background the new background color
        */
       void setBackground(const QColor &background);
+
+      Tool* tool() const;
+      ToolGroup toolManger() const;
 
       /**
        * @return the current background color of the rendering area
@@ -294,7 +304,14 @@ namespace Avogadro {
       const double & radius() const;
       const Atom *farthestAtom() const;
 
+      void setToolGroup(ToolGroup *toolGroup);
+      ToolGroup * toolGroup() const;
+
+
     public Q_SLOTS:
+
+      void setTool(Tool *tool);
+
       /**
        * Set the default engine based on index.  If no engine
        * exists for this index, nothing is changed.

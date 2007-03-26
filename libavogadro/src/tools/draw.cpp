@@ -35,9 +35,9 @@ using namespace Avogadro;
 
 Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL), m_element(6), m_bondOrder(1)
 {
-  m_selectAction->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
+  m_activateAction->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
 
-  m_comboElements = new QComboBox(m_propertiesWidget);
+  m_comboElements = new QComboBox(m_settingsWidget);
   m_comboElements->addItem("Hydrogen (1)");
   m_comboElements->addItem("Helium (2)");
   m_comboElements->addItem("Lithium (3)");
@@ -58,7 +58,7 @@ Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL), m_element(
   m_comboElements->addItem("Argon (18)");
   m_comboElements->setCurrentIndex(5);
 
-  m_comboBondOrder = new QComboBox(m_propertiesWidget);
+  m_comboBondOrder = new QComboBox(m_settingsWidget);
   m_comboBondOrder->addItem("Single");
   m_comboBondOrder->addItem("Double");
   m_comboBondOrder->addItem("Triple");
@@ -66,7 +66,7 @@ Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL), m_element(
   m_layout = new QVBoxLayout();
   m_layout->addWidget(m_comboElements);
   m_layout->addWidget(m_comboBondOrder);
-  m_propertiesWidget->setLayout(m_layout);
+  m_settingsWidget->setLayout(m_layout);
 
   connect(m_comboElements, SIGNAL(currentIndexChanged(int)),
       this, SLOT(elementChanged(int)));
@@ -77,7 +77,7 @@ Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL), m_element(
 
 Draw::~Draw()
 {
-  delete m_selectAction;
+  delete m_activateAction;
 }
 
 void Draw::initialize()

@@ -14,11 +14,12 @@ include_directories(
 set(libavogadro_SRCS
 	color.cpp
 	primitives.cpp
+	toolgroup.cpp
 	cylinder.cpp
 	sphere.cpp
 	glwidget.cpp
-        moleculetreeview.cpp
-        camera.cpp
+	moleculetreeview.cpp
+	camera.cpp
 )
 
 set(libavogadro_HDRS
@@ -28,9 +29,10 @@ set(libavogadro_HDRS
 	cylinder.h
 	sphere.h
 	glwidget.h
+	toolgroup.h
 	moleculetreeview.h
 	global.h
-        camera.h
+	camera.h
 )
 
 qt4_automoc(${libavogadro_SRCS})
@@ -53,3 +55,4 @@ INSTALL(TARGETS avogadro-lib DESTINATION lib)
 INSTALL(FILES ${libavogadro_HDRS} DESTINATION include/avogadro)
 
 add_subdirectory(engines)
+add_subdirectory(tools)

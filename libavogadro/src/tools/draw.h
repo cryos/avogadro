@@ -1,5 +1,5 @@
 /**********************************************************************
-  SelectRotate - Selection and Rotation Tool for Avogadro
+  Draw - Drawing Tool for Avogadro
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,41 +20,41 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __SELECTROTATE_H
-#define __SELECTROTATE_H
+#ifndef __DRAW_H
+#define __DRAW_H
 
 #include <avogadro/glwidget.h>
-#include <avogadro/plugin.h>
+#include <avogadro/tool.h>
 
 #include <openbabel/mol.h>
 
 #include <QGLWidget>
 #include <QObject>
 #include <QStringList>
+#include <QComboBox>
+#include <QVBoxLayout>
 #include <QImage>
-
-const double ROTATION_SPEED = 0.005;
-const double TRANSLATION_SPEED = 0.02;
+#include <QAction>
 
 namespace Avogadro {
 
- class SelectRotate : public QObject, public Tool
+ class Draw : public QObject, public Tool
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::Tool)
-        
+
     public:
       //! Constructor
-      SelectRotate();
+      Draw();
       //! Deconstructor
-      virtual ~SelectRotate();
+      virtual ~Draw();
 
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() const { return(tr("Select/Rotate")); }
+      virtual QString name() const { return(tr("Draw")); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Selection and Rotation Tool")); }
+      virtual QString description() const { return(tr("Drawing Tool")); }
       //@}
 
       //! \name Tool Methods
@@ -70,22 +70,45 @@ namespace Avogadro {
       virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
       virtual void wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event);
 
-    protected:
-      void selectionBox(float sx, float sy, float ex, float ey);
+      void setElement(int i);
+      int element() const;
 
-      bool                _leftButtonPressed;  // rotation
-      bool                _rightButtonPressed; // translation
-      bool                _midButtonPressed;   // scale / zoom
+      void setBondOrder(int i);
+      int bondOrder() const;
+
+    public slots:
+      void elementChanged( int index );
+      void bondOrderChanged( int index );
+
+    private:
+      Qt::MouseButtons _buttons;
+
+      int m_element;
+      int m_bondOrder;
+
       bool                _movedSinceButtonPressed;
-
-      //! Temporary var for adding selection box
-      GLuint _selectionDL;
 
       QPoint              _initialDraggingPosition;
       QPoint              _lastDraggingPosition;
 
+      Atom *_beginAtom;
+      Atom *_endAtom;
+      Bond *_bond;
       QList<GLHit> _hits;
 
+      QComboBox *m_comboElements;
+      QComboBox *m_comboBondOrder;
+      QVBoxLayout *m_layout;
+
+      Atom *newAtom(GLWidget *widget, int x, int y);
+      Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
+//       void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
+
+      /** @return the 3D coords of the point P obtained by unprojective the pixel (x,y) with
+        * the Z-index of the center of the molecule being viewed in the given
+        * GLWidget.
+        */
+      Eigen::Vector3d unProject(GLWidget *widget, int x, int y);
   };
 
 } // end namespace Avogadro
