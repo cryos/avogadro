@@ -23,7 +23,7 @@ TARGET_LINK_LIBRARIES(draw
     ${QT_LIBRARIES}
     ${OPENGL_LIBRARIES} 
     avogadro-lib)
-INSTALL(TARGETS draw DESTINATION lib/avogadro)
+INSTALL(TARGETS draw DESTINATION lib/avogadro/tools)
 
 ### selectrotate
 set(selectrotate_SRCS selectrotate.cpp)
@@ -35,7 +35,7 @@ TARGET_LINK_LIBRARIES(selectrotate
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS selectrotate DESTINATION lib/avogadro)
+INSTALL(TARGETS selectrotate DESTINATION lib/avogadro/tools)
 
 ### navigate
 set(navigate_SRCS navigate.cpp)
@@ -47,5 +47,5 @@ TARGET_LINK_LIBRARIES(navigate
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS navigate DESTINATION lib/avogadro)
+INSTALL(TARGETS navigate DESTINATION lib/avogadro/tools)
 
