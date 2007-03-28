@@ -28,7 +28,7 @@
 #include <QtGui/QStyleOption>
 #include "aboutdialog.h"
 
-#define AVOGADRO_VERSION "0.0.1"
+#define AVOGADRO_VERSION "0.0.3"
 
 AboutDialog::AboutDialog(QWidget *parent)
     : QDialog(parent
@@ -41,8 +41,11 @@ AboutDialog::AboutDialog(QWidget *parent)
     QLabel *label = new QLabel(this);
     QLabel *lbl = new QLabel(this);
     QPushButton *cmd = new QPushButton("OK", this);
+    QPixmap logo = QPixmap(":/icons/atom2.png");
 
-    label->setPixmap(QPixmap(":/icons/atom2.png"));
+    label->setPixmap(logo.scaled(256, 256, 
+                                 Qt::KeepAspectRatio, 
+                                 Qt::SmoothTransformation));
     
     lbl->setWordWrap(true);
     lbl->setOpenExternalLinks(true);
