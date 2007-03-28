@@ -22,6 +22,7 @@ set(avogadro_SRCS
     flowlayout.cpp
     flattabwidget.cpp
     aboutdialog.cpp
+    avogadroapp.cpp
     mainwindow.cpp
     main.cpp
 )
@@ -33,7 +34,6 @@ set(avogadro_RCS
 set(avogadro_UIS
     mainwindow.ui
 )
-
 
 # designer has some flaws.
 qt4_automoc(${avogadro_SRCS})
