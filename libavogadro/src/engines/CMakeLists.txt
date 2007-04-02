@@ -34,3 +34,14 @@ TARGET_LINK_LIBRARIES(labelengine avogadro-lib
                                 ${OPENGL_LIBRARIES}
 )
 INSTALL(TARGETS labelengine DESTINATION lib/avogadro)
+
+# wireframe
+set(wireengine_SRCS wireengine.cpp)
+qt4_automoc(${wireengine_SRCS})
+ADD_LIBRARY(wireengine SHARED ${wireengine_SRCS} )
+TARGET_LINK_LIBRARIES(wireengine avogadro-lib
+                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                ${OPENGL_LIBRARIES}
+)
+
+INSTALL(TARGETS wireengine DESTINATION lib/avogadro)
