@@ -14,8 +14,7 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-#qt4_wrap_cpp(bsengine_MOC_SRCS bsengine.h)
-
+# ball and stick engine
 set(bsengine_SRCS bsengine.cpp)
 qt4_automoc(${bsengine_SRCS})
 ADD_LIBRARY(bsengine SHARED ${bsengine_SRCS} )
@@ -23,4 +22,15 @@ TARGET_LINK_LIBRARIES(bsengine avogadro-lib
                                 ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                 ${OPENGL_LIBRARIES}
 )
+
 INSTALL(TARGETS bsengine DESTINATION lib/avogadro)
+
+# label engine
+set(labelengine_SRCS labelengine.cpp)
+qt4_automoc(${labelengine_SRCS})
+ADD_LIBRARY(labelengine SHARED ${labelengine_SRCS} )
+TARGET_LINK_LIBRARIES(labelengine avogadro-lib
+                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                ${OPENGL_LIBRARIES}
+)
+INSTALL(TARGETS labelengine DESTINATION lib/avogadro)
