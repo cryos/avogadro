@@ -96,14 +96,10 @@ namespace Avogadro {
   
   class GLWidgetPrivate {
     public:
-      GLWidgetPrivate() : defaultEngine(0), background(Qt::black), molecule(0),
+      GLWidgetPrivate() : background(Qt::black), molecule(0),
                           tool(0), toolGroup(0) {}
       
-      Engine                 *defaultEngine;
       QList<Engine *>        engines;
-    
-      PrimitiveQueue         defaultQueue;
-      QList<PrimitiveQueue>  queues;
     
       Molecule               *molecule;
       QList<GLuint>          displayLists;
@@ -215,12 +211,22 @@ namespace Avogadro {
   {
     //qDebug() << "GLWidget::render";
     
-    if(d->defaultEngine)
-      d->defaultEngine->render(&(d->defaultQueue));
   
-    for(int i=0; i<d->displayLists.size(); i++) {
-      qDebug() << "Calling DL: " << d->displayLists[i] << endl;
-      glCallList(d->displayLists[i]);
+    int size = 0;
+    
+    size = d->engines.size();
+    for(int i=0; i<size; i++)
+    {
+      Engine *engine = d->engines.at(i);
+      if(engine->isEnabled()) {
+        engine->render();
+      }
+    }
+
+    size = d->displayLists.size();
+    for(int i=0; i<size; i++) {
+      qDebug() << "Calling DL: " << d->displayLists.at(i) << endl;
+      glCallList(d->displayLists.at(i));
     }
   
     glFlush();
@@ -303,18 +309,18 @@ namespace Avogadro {
     d->molecule = molecule;
   
     // clear our engine queues
-    for( int i=0; i < d->queues.size(); i++ ) {
-      d->queues[i].clear();
+    for( int i=0; i < d->engines.size(); i++ ) {
+      d->engines.at(i)->clearQueue();
     }
-  
-    d->defaultQueue.clear();
   
     // add the atoms to the default queue
     std::vector<OpenBabel::OBNodeBase*>::iterator i;
     for(Atom *atom = (Atom*)d->molecule->BeginAtom(i); 
         atom; atom = (Atom*)d->molecule->NextAtom(i))
     {
-      d->defaultQueue.addPrimitive(atom);
+      for( int i=0; i < d->engines.size(); i++ ) {
+        d->engines.at(i)->addPrimitive(atom);
+      }
     }
   
     // add the bonds to the default queue
@@ -322,7 +328,9 @@ namespace Avogadro {
     for(Bond *bond = (Bond*)d->molecule->BeginBond(j); 
         bond; bond = (Bond*)d->molecule->NextBond(j))
     {
-      d->defaultQueue.addPrimitive(bond);
+      for( int i=0; i < d->engines.size(); i++ ) {
+        d->engines.at(i)->addPrimitive(bond);
+      }
     }
   
     // add the residues to the default queue
@@ -330,11 +338,15 @@ namespace Avogadro {
     for(Residue *residue = (Residue*)d->molecule->BeginResidue(k); 
         residue; residue = (Residue *)d->molecule->NextResidue(k))
     {
-      d->defaultQueue.addPrimitive(residue);
+      for( int i=0; i < d->engines.size(); i++ ) {
+        d->engines.at(i)->addPrimitive(residue);
+      }
     }
   
     // add the molecule to the default queue
-    d->defaultQueue.addPrimitive(d->molecule);
+    for( int i=0; i < d->engines.size(); i++ ) {
+      d->engines.at(i)->addPrimitive(d->molecule);
+    }
   
     // connect our signals so if the molecule gets updated
     connect(d->molecule, SIGNAL(primitiveAdded(Primitive*)), 
@@ -396,12 +408,7 @@ namespace Avogadro {
     return d->camera;
   }
   
-  Engine * GLWidget::defaultEngine() const
-  {
-    return d->defaultEngine;
-  }
-  
-  QList<Engine *> GLWidget::engines() const
+  const QList<Engine *>& GLWidget::engines() const
   {
     return d->engines;
   }
@@ -409,8 +416,12 @@ namespace Avogadro {
   void GLWidget::addPrimitive(Primitive *primitive)
   {
     qDebug() << "GLWidget::addPrimitive";
-    if(primitive)
-      d->defaultQueue.addPrimitive(primitive);
+    if(primitive) {
+      // add the molecule to the default queue
+      for( int i=0; i < d->engines.size(); i++ ) {
+        d->engines.at(i)->addPrimitive(primitive);
+      }
+    }
   }
   
   void GLWidget::updatePrimitive(Primitive *primitive)
@@ -421,30 +432,14 @@ namespace Avogadro {
   void GLWidget::removePrimitive(Primitive *primitive)
   {
     qDebug() << "GLWidget::removePrimitive";
-    // clear our engine queues
-    for( int i=0; i < d->queues.size(); i++ ) {
-      d->queues[i].removePrimitive(primitive);
+    if(primitive) {
+      // add the molecule to the default queue
+      for( int i=0; i < d->engines.size(); i++ ) {
+        d->engines.at(i)->removePrimitive(primitive);
+      }
     }
-  
-    d->defaultQueue.removePrimitive(primitive);
   
     updateGL();
-  }
-  
-  void GLWidget::setDefaultEngine(int i) 
-  {
-    //qDebug() << "GLWidget::setDefaultEngine";
-    setDefaultEngine(d->engines.at(i));
-  }
-  
-  void GLWidget::setDefaultEngine(Engine *engine) 
-  {
-    //qDebug() << "GLWidget::setDefaultEngine";
-    if(engine)
-    {
-      d->defaultEngine = engine;
-      updateGL();
-    }
   }
   
   void GLWidget::loadEngines()
@@ -485,11 +480,6 @@ namespace Avogadro {
         if (factory) {
           Engine *engine = factory->createInstance(this);
           qDebug() << "Found Engine: " << engine->name() << " - " << engine->description(); 
-          if (!d->defaultEngine)
-          {
-            qDebug() << "Setting Default Engine: " << engine->name() << " - " << engine->description(); 
-            d->defaultEngine = engine;
-          }
           d->engines.append(engine);
         }
       }

@@ -36,6 +36,7 @@
 #include <QColorDialog>
 #include <QMessageBox>
 #include <QGLFramebufferObject>
+#include <QStandardItem>
 
 using namespace std;
 using namespace OpenBabel;
@@ -129,12 +130,13 @@ namespace Avogadro {
 
     loadPlugins();
 
-    // add all gl engines to the dropdown
-    QList<Engine *> engines = ui.glWidget->engines();
-    for(int i=0; i< engines.size(); ++i) {
-      Engine *engine = engines.at(i);
-//       cbEngine->insertItem(i, engine->description(), QVariant(engine));
-    }
+//     // add all gl engines to the dropdown
+//     QList<Engine *> engines = ui.glWidget->engines();
+//     for(int i=0; i< engines.size(); ++i) {
+//       Engine *engine = engines.at(i);
+// //       cbEngine->insertItem(i, engine->description(), QVariant(engine));
+//     }
+    ui.enginesList->setGLWidget(ui.glWidget);
 
     // set the default to whatever GL has selected as default on startup
 //     cbEngine->setCurrentIndex(engines.indexOf(ui.glWidget->getDefaultEngine()));
@@ -329,6 +331,15 @@ namespace Avogadro {
     m_toolSettingsStacked->setCurrentWidget(tool->settingsWidget());
   }
 
+  void MainWindow::updateEngine( QStandardItem *item )
+  {
+    Engine *engine = item->data().value<Engine *>();
+    if(engine) {
+      engine->setEnabled(item->checkState());
+      ui.glWidget->updateGL();
+    }
+  }
+
   void MainWindow::connectUi()
   {
     connect(ui.actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
@@ -359,6 +370,9 @@ namespace Avogadro {
     connect(ui.actionFullScreen, SIGNAL(triggered()), this, SLOT(fullScreen()));
     connect(ui.actionSetBackgroundColor, SIGNAL(triggered()), this, SLOT(setBackgroundColor()));
     connect(ui.actionAbout, SIGNAL(triggered()), this, SLOT(about()));
+
+    connect(ui.enginesList, SIGNAL(itemChanged(QStandardItem *)), 
+        this, SLOT(updateEngine(QStandardItem *)));
   }
 
   bool MainWindow::loadFile(const QString &fileName)

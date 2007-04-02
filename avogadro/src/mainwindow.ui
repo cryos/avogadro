@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>692</width>
+    <width>621</width>
     <height>566</height>
    </rect>
   </property>
@@ -15,7 +15,7 @@
   <widget class="QWidget" name="centralWidget" >
    <layout class="QVBoxLayout" >
     <property name="margin" >
-     <number>0</number>
+     <number>9</number>
     </property>
     <property name="spacing" >
      <number>6</number>
@@ -33,7 +33,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>692</width>
+     <width>621</width>
      <height>29</height>
     </rect>
    </property>
@@ -210,6 +210,34 @@
    </attribute>
    <widget class="QWidget" name="toolSettingsWidget" />
   </widget>
+  <widget class="QDockWidget" name="enginesDock" >
+   <property name="allowedAreas" >
+    <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle" >
+    <string>Engines</string>
+   </property>
+   <attribute name="dockWidgetArea" >
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="enginesWidget" >
+    <layout class="QVBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="Avogadro::EngineListView" name="enginesList" >
+       <property name="alternatingRowColors" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
   <action name="actionOpen" >
    <property name="icon" >
     <iconset resource="avogadro.qrc" >:/icons/fileopen.png</iconset>
@@ -345,9 +373,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>Avogadro::FlatTabWidget</class>
-   <extends>QWidget</extends>
-   <header>flattabwidget.h</header>
+   <class>Avogadro::MoleculeTreeView</class>
+   <extends>QTreeWidget</extends>
+   <header>avogadro/moleculetreeview.h</header>
   </customwidget>
   <customwidget>
    <class>Avogadro::GLWidget</class>
@@ -355,9 +383,14 @@
    <header>avogadro/glwidget.h</header>
   </customwidget>
   <customwidget>
-   <class>Avogadro::MoleculeTreeView</class>
-   <extends>QTreeWidget</extends>
-   <header>avogadro/moleculetreeview.h</header>
+   <class>Avogadro::FlatTabWidget</class>
+   <extends>QWidget</extends>
+   <header>flattabwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::EngineListView</class>
+   <extends>QListView</extends>
+   <header>enginelistview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

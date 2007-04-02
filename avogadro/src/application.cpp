@@ -1,5 +1,5 @@
 /**********************************************************************
-  AvogadroApp.h - main application events
+  Application - main application events
 
   Copyright (C) 2007 by Geoffrey R. Hutchison
 
@@ -19,26 +19,35 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __AVOGADROAPP_H
-#define __AVOGADROAPP_H
+#include "application.h"
+#include "mainwindow.h"
 
-#include <QApplication>
+using namespace std;
+using namespace OpenBabel;
 
 namespace Avogadro {
 
-  class AvogadroApp : public QApplication
+  Application::Application(int &argc, char **argv): QApplication(argc, argv)
+  {  }
+
+  // Handle open events (e.g., Mac OS X open files)
+  bool Application::event(QEvent *event)
   {
-    Q_OBJECT
+    switch (event->type()) {
+    case QEvent::FileOpen:
+      return loadFile(static_cast<QFileOpenEvent *>(event)->file());        
+    default:
+      return QApplication::event(event);
+    }
+  }
 
-    public:
-    AvogadroApp(int &argc, char **argv);
-
-  protected:
-      bool event(QEvent *event);
-
-  private:
-      bool loadFile(const QString &fileName);
-  };
+  bool Application::loadFile(const QString &fileName)
+  {
+    MainWindow *other = new MainWindow;
+    other->show();
+    other->loadFile(fileName);
+  }
 
 } // end namespace Avogadro
-#endif
+
+#include "application.moc"

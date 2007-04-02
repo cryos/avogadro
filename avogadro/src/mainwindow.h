@@ -38,6 +38,7 @@
 
 class QUndoStack;
 class QStackedLayout;
+class QStandardItem;
 
 namespace Avogadro {
 
@@ -74,6 +75,8 @@ namespace Avogadro {
       void documentWasModified();
 
       void setTool(Tool *tool);
+
+      void updateEngine( QStandardItem *item );
 
     private:
       Ui::MainWindow ui;

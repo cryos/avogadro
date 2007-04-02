@@ -1,5 +1,5 @@
 /**********************************************************************
-  Engine - Qt Plugin Template
+  Engine - Engine interface and plugin factory.
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Copyright (C) 2006,2007 by Donald Ephraim Curtis
@@ -37,17 +37,22 @@ namespace Avogadro {
    * @brief Engine plugin interface.
    * @author Donald Ephraim Curtis
    *
-   * This class provides a standard QT4 style plugin interface for our engines.  
+   * This class provides a an interface for our engines.  
    * Subclasses of this class are loaded by the GLWidget and used to render
    * different parts of our project (Molecule, Atom, Bond, Residue) depending
    * on what style of engine we're implementing.
    * \sa render()
    */
- class A_EXPORT Engine
+  class EnginePrivate;
+  class A_EXPORT Engine : public QObject
   {
+    Q_OBJECT
+
     public:
-      /// Deconstructor for the engine.
-      virtual ~Engine() {}
+      //! constructor
+      Engine(QObject *parent = 0);
+      //! deconstructor
+      virtual ~Engine(); 
 
       /** 
        * @return the short name of the engine as a QString
@@ -110,8 +115,21 @@ namespace Avogadro {
        * PrimitiveQueue.
        * 
        */
-      virtual bool render(const PrimitiveQueue *) = 0;
+      virtual bool render() = 0;
 
+      const PrimitiveQueue& queue() const;
+
+      void clearQueue();
+      bool isEnabled();
+      void setEnabled(bool enabled);
+
+    public Q_SLOTS:
+      void addPrimitive(Primitive *primitive);
+      void removePrimitive(Primitive *primitive);
+
+
+    private:
+      EnginePrivate *const d;
   };
 
   /**
@@ -142,6 +160,7 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
+Q_DECLARE_METATYPE(Avogadro::Engine*)
 Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro.enginefactory/1.0")
 
 #endif

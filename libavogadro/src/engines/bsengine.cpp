@@ -37,18 +37,18 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-bool BSEngine::render(const PrimitiveQueue *q)
+bool BSEngine::render()
 {
-  const QList<Primitive *> *queue;
+  const QList<Primitive *> *list;
 
-  queue = q->primitiveList(Primitive::AtomType);
-  for( int i=0; i<queue->size(); i++ ) {
-    render((Atom *)(*queue)[i]);
+  list = queue().primitiveList(Primitive::AtomType);
+  for( int i=0; i<list->size(); i++ ) {
+    render((Atom *)(*list)[i]);
   }
 
-  queue = q->primitiveList(Primitive::BondType);
-  for( int i=0; i<queue->size(); i++ ) {
-    render((Bond *)(*queue)[i]);
+  list = queue().primitiveList(Primitive::BondType);
+  for( int i=0; i<list->size(); i++ ) {
+    render((Bond *)(*list)[i]);
   }
 
   return true;

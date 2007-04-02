@@ -278,21 +278,9 @@ namespace Avogadro {
       Camera & camera();
 
       /**
-       * Set the default engine.
-       * @param engine pointer to the new default engine
+       * Returns a list of the engines for this GLWidget.
        */
-      void setDefaultEngine(Engine *engine);
-
-      /**
-       * @return the default engine which new primitives 
-       * will be added to
-       */
-      Engine *defaultEngine() const;
-
-      /**
-       * @return a QList of all the engines available to this %GLWidget
-       */
-      QList<Engine *> engines() const;
+      const QList<Engine *>& engines() const;
 
       /**
        * Get the hits for a region starting at (x,y) of size (w x y)
@@ -311,13 +299,6 @@ namespace Avogadro {
     public Q_SLOTS:
 
       void setTool(Tool *tool);
-
-      /**
-       * Set the default engine based on index.  If no engine
-       * exists for this index, nothing is changed.
-       * @param i the index in the engines list
-       */
-      void setDefaultEngine(int i);
 
       /**
        * Add the primitive to the widget.  This slot is called whenever

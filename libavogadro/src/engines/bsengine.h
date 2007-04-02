@@ -38,22 +38,22 @@
 namespace Avogadro {
 
   //! Ball and Stick Engine class.
-  class BSEngine : public QObject, public Engine
+  class BSEngine : public Engine
   {
     Q_OBJECT
 
     public:
       //! Constructor
-      BSEngine(QObject *parent=0) : Engine(), QObject(parent) {}
+      BSEngine(QObject *parent=0) : Engine(parent) {}
       //! Deconstructor
       ~BSEngine() {}
 
       //! \name Description methods
       //@{
-      //! Engine Name; "BSEngine"
-      QString name() { return(QString(tr("BSEngine"))); }
-      //! Return Engine description; "Ball and Stick"
-      QString description() { return(QString(tr("Ball and Stick"))); }
+      //! @return engine name
+      QString name() { return(QString(tr("Ball and Stick"))); }
+      //! @return engine description
+      QString description() { return(QString(tr("Renders primitives using Balls (atoms) and Sticks (bonds)"))); }
       //@}
 
       //! \name Render Methods
@@ -65,7 +65,7 @@ namespace Avogadro {
       //! Render a Molecule.
       bool render(const Molecule *m);
 
-      bool render(const PrimitiveQueue *q);
+      bool render();
       //@}
 
     private:

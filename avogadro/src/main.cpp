@@ -26,7 +26,7 @@
 
 // Avogadro Includes
 #include "mainwindow.h"
-#include "avogadroapp.h"
+#include "application.h"
 
 using namespace Avogadro;
 
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
   QCoreApplication::setOrganizationDomain("sourceforge.net");
   QCoreApplication::setApplicationName("Avogadro");
 
-  AvogadroApp app(argc, argv);
+  Application app(argc, argv);
   if (!QGLFormat::hasOpenGL()) {
     QMessageBox::information(0, "Avogadro",
         "This system does not support OpenGL.");
