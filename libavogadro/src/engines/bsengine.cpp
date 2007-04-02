@@ -39,16 +39,16 @@ using namespace Eigen;
 
 bool BSEngine::render()
 {
-  const QList<Primitive *> *list;
+  QList<Primitive *> list;
 
   list = queue().primitiveList(Primitive::AtomType);
-  for( int i=0; i<list->size(); i++ ) {
-    render((Atom *)(*list)[i]);
+  foreach( Primitive *p, list ) {
+    render((Atom *) p);
   }
 
   list = queue().primitiveList(Primitive::BondType);
-  for( int i=0; i<list->size(); i++ ) {
-    render((Bond *)(*list)[i]);
+  foreach( Primitive *p, list ) {
+    render((Bond *) p);
   }
 
   return true;

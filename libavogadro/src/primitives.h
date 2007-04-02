@@ -55,6 +55,8 @@ namespace Avogadro {
        * of primitives.
        */
       enum Type { 
+        /// Untyped Primitive
+        OtherType=0,
         /// Molecule Primitive
         MoleculeType,
         /// Atom Primitive
@@ -69,12 +71,10 @@ namespace Avogadro {
         PlaneType,
         /// Grid Primitive
         GridType, 
-        /// Other Primitive
-        OtherType, 
         /// End Placeholder
         LastType, 
         /// First Placeholder
-        FirstType=MoleculeType 
+        FirstType=OtherType 
       };
       
       /** 
@@ -394,7 +394,7 @@ namespace Avogadro {
        * @param type the type of primitives to retrieve, one of Primitive::Type
        * @return a QList of pointers to Primitive objects
        */
-      const QList<Primitive *>* primitiveList(enum Primitive::Type type) const;
+      const QList<Primitive *>& primitiveList(enum Primitive::Type type) const;
 
       /**
        * Add a primitive to the queue.

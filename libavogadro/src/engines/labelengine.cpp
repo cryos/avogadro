@@ -44,11 +44,11 @@ bool LabelEngine::render()
     return false;
   }
 
-  const QList<Primitive *> *list;
+  QList<Primitive *> list;
 
   list = queue().primitiveList(Primitive::AtomType);
-  for( int i=0; i<list->size(); i++ ) {
-    Atom *atom = qobject_cast<Atom *>((*list).at(i));
+  foreach( Primitive *p, list ) {
+    Atom *atom = qobject_cast<Atom *>(p);
     const Vector3d pos = atom->pos();
     float radius = 0.18 + etab.GetVdwRad(atom->GetAtomicNum()) * 0.3;
     

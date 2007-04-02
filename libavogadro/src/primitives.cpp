@@ -234,45 +234,46 @@ namespace Avogadro {
     public:
       PrimitiveQueuePrivate() {};
 
-      QList< QList<Primitive *>* > queue;
+      QVector< QList<Primitive *> > queue;
   };
 
   PrimitiveQueue::PrimitiveQueue() : d(new PrimitiveQueuePrivate) { 
-    for( int type=Primitive::FirstType; type<Primitive::LastType; type++ ) { 
-      d->queue.append(new QList<Primitive *>()); 
-    } 
+    d->queue.resize(Primitive::LastType);
+//     for( int type=0; type<Primitive::LastType; type++ ) { 
+//       d->queue.append(QList<Primitive *>); 
+//     } 
   }
 
   PrimitiveQueue::~PrimitiveQueue() { 
-    for( int i = 0; i<d->queue.size(); i++ ) { 
-      delete d->queue[i];
-    } 
+//     for( int i = 0; i<d->queue.size(); i++ ) { 
+//       delete d->queue[i];
+//     } 
     delete d;
   }
 
-  const QList<Primitive *>* PrimitiveQueue::primitiveList(enum Primitive::Type type) const { 
+  const QList<Primitive *>& PrimitiveQueue::primitiveList(enum Primitive::Type type) const { 
     return(d->queue[type]); 
   }
 
   void PrimitiveQueue::addPrimitive(Primitive *p) { 
-    d->queue[p->type()]->append(p); 
+    d->queue[p->type()].append(p); 
   }
 
   void PrimitiveQueue::removePrimitive(Primitive *p) {
-    d->queue[p->type()]->removeAll(p);
+    d->queue[p->type()].removeAll(p);
   }
 
   int PrimitiveQueue::size() const {
     int sum = 0;
     for( int i=0; i<d->queue.size(); i++ ) {
-      sum += d->queue[i]->size();
+      sum += d->queue[i].size();
     }
     return sum;
   }
 
   void PrimitiveQueue::clear() {
     for( int i=0; i<d->queue.size(); i++ ) {
-      d->queue[i]->clear();
+      d->queue[i].clear();
     }
   }
 }
