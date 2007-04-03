@@ -15,6 +15,6 @@
         <file>icons/undo.png</file>
         <file>icons/window_fullscreen.png</file>
         <file>icons/window_nofullscreen.png</file>
-        <file>icons/atom2.png</file>
+        <file>icons/avogdaro.png</file>
     </qresource>
 </RCC>

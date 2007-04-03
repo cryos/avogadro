@@ -41,7 +41,7 @@ AboutDialog::AboutDialog(QWidget *parent)
     QLabel *label = new QLabel(this);
     QLabel *lbl = new QLabel(this);
     QPushButton *cmd = new QPushButton("OK", this);
-    QPixmap logo = QPixmap(":/icons/atom2.png");
+    QPixmap logo = QPixmap(":/icons/avogadro.png");
 
     label->setPixmap(logo.scaled(256, 256, 
                                  Qt::KeepAspectRatio, 
