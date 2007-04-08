@@ -26,16 +26,16 @@ TARGET_LINK_LIBRARIES(draw
 INSTALL(TARGETS draw DESTINATION lib/avogadro/tools)
 
 ### measure
-set(measure_SRCS measure.cpp)
-qt4_add_resources(measure_RC_SRCS measure.qrc)
-qt4_automoc(${measure_SRCS})
-ADD_LIBRARY(measure SHARED measure.cpp ${measure_RC_SRCS} )
-TARGET_LINK_LIBRARIES(measure 
-    ${OPENBABEL2_LIBRARIES} 
-    ${QT_LIBRARIES}
-    ${OPENGL_LIBRARIES} 
-    avogadro-lib)
-INSTALL(TARGETS measure DESTINATION lib/avogadro/tools)
+#set(measure_SRCS measure.cpp)
+#qt4_add_resources(measure_RC_SRCS measure.qrc)
+#qt4_automoc(${measure_SRCS})
+#ADD_LIBRARY(measure SHARED measure.cpp ${measure_RC_SRCS} )
+#TARGET_LINK_LIBRARIES(measure 
+#    ${OPENBABEL2_LIBRARIES} 
+#    ${QT_LIBRARIES}
+#    ${OPENGL_LIBRARIES} 
+#    avogadro-lib)
+#INSTALL(TARGETS measure DESTINATION lib/avogadro/tools)
 
 ### selectrotate
 set(selectrotate_SRCS selectrotate.cpp)
