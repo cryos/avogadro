@@ -44,7 +44,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      BSEngine(QObject *parent=0) : Engine(parent) {}
+      BSEngine(QObject *parent=0) : Engine(parent), m_setup(false) {}
       //! Deconstructor
       ~BSEngine() {}
 
@@ -71,6 +71,8 @@ namespace Avogadro {
     private:
       Sphere m_sphere;
       Cylinder m_cylinder;
+
+      bool m_setup; //!< Whether the sphere and cylinder objects have been setup
   };
 
   //! Generates instances of our BSEngine class

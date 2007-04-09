@@ -41,6 +41,14 @@ bool BSEngine::render()
 {
   QList<Primitive *> list;
 
+  if (!m_setup) {
+    m_sphere.setup(3);
+    m_cylinder.setup(6);
+    m_setup = true;
+  }
+
+  glDisable( GL_NORMALIZE );
+  glEnable( GL_RESCALE_NORMAL );
   list = queue().primitiveList(Primitive::AtomType);
   foreach( Primitive *p, list ) {
     render((Atom *) p);
@@ -50,17 +58,14 @@ bool BSEngine::render()
   foreach( Primitive *p, list ) {
     render((Bond *) p);
   }
+  glDisable( GL_RESCALE_NORMAL);
+  glEnable( GL_NORMALIZE );
 
   return true;
 }
 
 bool BSEngine::render(const Atom *a)
 {
-  m_sphere.setup(3);
-
-  glDisable( GL_NORMALIZE );
-  glEnable( GL_RESCALE_NORMAL );
-
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
   Color(a).applyAsMaterials();
@@ -78,9 +83,6 @@ bool BSEngine::render(const Atom *a)
   glPopName();
   glPopName();
 
-  glEnable( GL_NORMALIZE );
-  glDisable( GL_RESCALE_NORMAL );
-
   return true;
 }
 
@@ -93,10 +95,6 @@ bool BSEngine::render(const Bond *b)
     normalVector = gl->normalVector();
   }
   // cout << "Render Bond..." << endl;
-  m_cylinder.setup(6);
-
-  glDisable( GL_RESCALE_NORMAL);
-  glEnable( GL_NORMALIZE );
 
   const OBAtom *atom1 = static_cast<const OBAtom *>( b->GetBeginAtom() );
   const OBAtom *atom2 = static_cast<const OBAtom *>( b->GetEndAtom() );
@@ -120,9 +118,6 @@ bool BSEngine::render(const Bond *b)
   m_cylinder.draw( v2, v3, radius, order, shift, normalVector);
   //  glPopName();
   //  glPopName();
-
-  glEnable( GL_RESCALE_NORMAL );
-  glDisable( GL_NORMALIZE );
 
   return true;
 }
