@@ -45,13 +45,13 @@ IF( APPLE )
   SET( MACOSX_BUNDLE_INFO_STRING "Avogadro - version 0.0.3" )
   SET( MACOSX_BUNDLE_BUNDLE_VERSION "0.0.3" )
   # Change following line to point to actual icns file in bundle.
-  SET( MACOSX_BUNDLE_ICON_FILE "atom.icns" )
+  SET( MACOSX_BUNDLE_ICON_FILE "avogadro.icns" )
   SET( MACOSX_BUNDLE_GUI_IDENTIFIER "net.sourceforge" ) # <-- ???
   SET( MACOSX_BUNDLE_BUNDLE_NAME "Avogadro" )
 
   # Need to copy the icon file
   EXEC_PROGRAM( "mkdir -p 	${avogadro_BINARY_DIR}/src/Avogadro.app/Contents/Resources")
-  EXEC_PROGRAM( "cp ${avogadro_SOURCE_DIR}/src/mac/atom.icns ${avogadro_BINARY_DIR}/src/Avogadro.app/Contents/Resources")
+  EXEC_PROGRAM( "cp ${avogadro_SOURCE_DIR}/src/mac/avogadro.icns ${avogadro_BINARY_DIR}/src/Avogadro.app/Contents/Resources")
 
   # Overload the Info.plist default
   SET( CMAKE_MODULE_PATH ${avogadro_SOURCE_DIR}/src/mac ${CMAKE_MODULE_PATH} )
