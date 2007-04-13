@@ -83,12 +83,16 @@ void SelectRotate::mouseRelease(Molecule *molecule, GLWidget *widget, const QMou
     for(int i=0; i < _hits.size(); i++) {
       if(_hits[i].type() == Primitive::AtomType)
       {
-        ((Atom *)molecule->GetAtom(_hits[i].name()))->toggleSelected();
+        Atom *atom = (Atom *) (Atom *) (Atom *) (Atom *) (Atom *) (Atom *) (Atom *) (Atom *) (Atom *) molecule->GetAtom(_hits[i].name());
+        atom->toggleSelected();
+        atom->update();
         break;
       }
       else if(_hits[i].type() == Primitive::BondType)
       {
-        ((Bond *)molecule->GetBond(_hits[i].name()))->toggleSelected();
+        Bond *bond = (Bond *) molecule->GetBond(_hits[i].name());
+        bond->toggleSelected();
+        bond->update();
         break;
       }
     }
@@ -99,11 +103,6 @@ void SelectRotate::mouseRelease(Molecule *molecule, GLWidget *widget, const QMou
     int ex = qMax(_initialDraggingPosition.x(), _lastDraggingPosition.x());
     int sy = qMin(_initialDraggingPosition.y(), _lastDraggingPosition.y());
     int ey = qMax(_initialDraggingPosition.y(), _lastDraggingPosition.y());
-
-//dc:     qDebug("(%d, %d)", _initialDraggingPosition.x(),_initialDraggingPosition.y());
-//dc:     qDebug("(%d, %d)", _lastDraggingPosition.x(),_lastDraggingPosition.y());
-//dc:     qDebug("(%d, %d)", sx, sy);
-//dc:     qDebug("(%d, %d)", ex, ey);
 
     int w = ex-sx;
     int h = ey-sy;
@@ -190,7 +189,6 @@ void SelectRotate::selectionBox(float sx, float sy, float ex, float ey)
     _selectionDL = glGenLists(1);
   }
 
-  qDebug() << "Display List: " << _selectionDL;
   glPushMatrix();
   glLoadIdentity();
   GLdouble projection[16];
@@ -205,8 +203,6 @@ void SelectRotate::selectionBox(float sx, float sy, float ex, float ey)
 
   gluUnProject(float(sx), viewport[3] - float(sy), 0.1, modelview, projection, viewport, &startPos[0], &startPos[1], &startPos[2]);
   gluUnProject(float(ex), viewport[3] - float(ey), 0.1, modelview, projection, viewport, &endPos[0], &endPos[1], &endPos[2]);
-
-  qDebug("(%f, %f, %f)", endPos[0],endPos[1],endPos[2]);
 
   glNewList(_selectionDL, GL_COMPILE);
   glMatrixMode(GL_MODELVIEW);

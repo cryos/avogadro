@@ -25,6 +25,17 @@ TARGET_LINK_LIBRARIES(bsengine avogadro-lib
 
 INSTALL(TARGETS bsengine DESTINATION lib/avogadro)
 
+# ball and stick dynamic engine
+set(bsdyengine_SRCS bsdyengine.cpp)
+qt4_automoc(${bsdyengine_SRCS})
+ADD_LIBRARY(bsdyengine SHARED ${bsdyengine_SRCS} )
+TARGET_LINK_LIBRARIES(bsdyengine avogadro-lib
+                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                ${OPENGL_LIBRARIES}
+)
+
+INSTALL(TARGETS bsdyengine DESTINATION lib/avogadro)
+
 # label engine
 set(labelengine_SRCS labelengine.cpp)
 qt4_automoc(${labelengine_SRCS})

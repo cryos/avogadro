@@ -124,8 +124,6 @@ namespace Avogadro {
 
   QTreeWidgetItem* MoleculeTreeView::addGroup(QString name, enum Primitive::Type type)
   {
-    qDebug() << "addGroup";
-
     QTreeWidgetItem *group = new QTreeWidgetItem(this);
     group->setText(0, name);
     group->setFlags(group->flags() & ~Qt::ItemIsSelectable);
@@ -138,7 +136,6 @@ namespace Avogadro {
 
   QTreeWidgetItem* MoleculeTreeView::addPrimitive(Primitive *primitive)
   {
-    qDebug() << "MoleculeTreeView::addPrimitive";
     QTreeWidgetItem *group = m_groups[primitive->type()];
     if(group == 0)
       return 0;
@@ -174,8 +171,6 @@ namespace Avogadro {
 
   void MoleculeTreeView::removePrimitive(Primitive *primitive)
   {
-    qDebug() << "MoleculeTreeView::removePrimitive";
-
     QTreeWidgetItem *group = m_groups[primitive->type()];
     if(group == 0)
       return;

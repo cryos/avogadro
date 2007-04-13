@@ -69,7 +69,7 @@ namespace Avogadro {
       void do_draw() const;
 
     public:
-      Sphere();
+      Sphere( int detail = 0 );
       ~Sphere();
 
       /** initializes the sphere with given level of detail. If the

@@ -19,12 +19,9 @@ using namespace Avogadro;
 using namespace OpenBabel;
 using namespace Eigen;
 
-Sphere::Sphere()
+Sphere::Sphere(int detail): m_vertexBuffer(0), m_indexBuffer(0), m_displayList(0)
 {
-	m_vertexBuffer = 0;
-	m_indexBuffer = 0;
-	m_displayList = 0;
-	m_detail = 0;
+  setup(detail);
 }
 
 Sphere::~Sphere()
@@ -83,14 +80,19 @@ void Sphere::initialize()
 	if( ! m_indexBuffer ) return;
 
 	// build vertex buffer
-	for( int strip = 0; strip < 5; strip++ )
-	for( int column = 1; column < m_detail; column++ )
-	for( int row = column; row <= 2 * m_detail + column; row++ )
-		computeVertex( strip, column, row );
+    for( int strip = 0; strip < 5; strip++ ) {
+      for( int column = 1; column < m_detail; column++ ) {
+        for( int row = column; row <= 2 * m_detail + column; row++ ) {
+          computeVertex( strip, column, row );
+        }
+      }
+    }
 
-	for( int strip = 1; strip < 5; strip++ )
-	for( int row = 0; row <= 3 * m_detail; row++ )
-		computeVertex( strip, 0, row );
+    for( int strip = 1; strip < 5; strip++ ) {
+      for( int row = 0; row <= 3 * m_detail; row++ ) {
+        computeVertex( strip, 0, row );
+      }
+    }
 
 	for( int row = 0; row <= 2 * m_detail; row++ )
 		computeVertex( 0, 0, row );
@@ -117,8 +119,8 @@ void Sphere::initialize()
 	}
 
 	// compile display list and free buffers
-	if( ! m_displayList ) m_displayList = glGenLists( 1 );
-	if( ! m_displayList ) return;
+	if( ! m_displayList ) { m_displayList = glGenLists( 1 ); }
+	if( ! m_displayList ) { return; }
 	glNewList( m_displayList, GL_COMPILE );
 	do_draw();
 	glEndList();

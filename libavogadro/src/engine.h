@@ -124,8 +124,9 @@ namespace Avogadro {
       void setEnabled(bool enabled);
 
     public Q_SLOTS:
-      void addPrimitive(Primitive *primitive);
-      void removePrimitive(Primitive *primitive);
+      virtual void addPrimitive(Primitive *primitive);
+      virtual void updatePrimitive(Primitive *primitive);
+      virtual void removePrimitive(Primitive *primitive);
 
 
     private:

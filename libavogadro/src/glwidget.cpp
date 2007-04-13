@@ -112,6 +112,7 @@ namespace Avogadro {
       Tool                   *tool;
       ToolGroup            *toolGroup;
     
+      //TODO: convert to pointer
       Camera                 camera;
       QColor                 background;
   };
@@ -150,8 +151,6 @@ namespace Avogadro {
   
   void GLWidget::initializeGL()
   {
-    qDebug() << "GLWidget::initializeGL";
-  
     qglClearColor ( d->background );
   
     glShadeModel( GL_SMOOTH );
@@ -195,7 +194,6 @@ namespace Avogadro {
   
   void GLWidget::resizeGL(int width, int height)
   {
-    qDebug() << "GLWidget::resizeGL";
     glViewport(0, 0, width, height);
   }
   
@@ -209,9 +207,6 @@ namespace Avogadro {
 
   void GLWidget::render() const
   {
-    //qDebug() << "GLWidget::render";
-    
-  
     int size = 0;
     
     size = d->engines.size();
@@ -225,7 +220,6 @@ namespace Avogadro {
 
     size = d->displayLists.size();
     for(int i=0; i<size; i++) {
-      qDebug() << "Calling DL: " << d->displayLists.at(i) << endl;
       glCallList(d->displayLists.at(i));
     }
   
@@ -251,8 +245,6 @@ namespace Avogadro {
   
   void GLWidget::mousePressEvent( QMouseEvent * event )
   {
-    //qDebug() << "GLWidget::mousePressEvent";
-//dc:     emit mousePress(event);
     if(d->tool) {
       d->tool->mousePress(d->molecule, this, event);
     }
@@ -260,9 +252,6 @@ namespace Avogadro {
   
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   {
-    //qDebug() << "GLWidget::mouseReleaseEvent";
-//dc:     emit mouseRelease(event);
-
     if(d->tool) {
       d->tool->mouseRelease(d->molecule, this, event);
     }
@@ -270,8 +259,6 @@ namespace Avogadro {
   
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
   {
-    //qDebug() << "GLWidget::mouseMoveEvent";
-//dc:     emit mouseMove(event);
     if(d->tool) {
       d->tool->mouseMove(d->molecule, this, event);
     }
@@ -279,7 +266,6 @@ namespace Avogadro {
   
   void GLWidget::wheelEvent( QWheelEvent * event )
   {
-    //qDebug() << "GLWidget::wheelEvent";
     if(d->tool) {
       d->tool->wheel(d->molecule, this, event);
     }
@@ -287,13 +273,11 @@ namespace Avogadro {
   
   void GLWidget::addDL(GLuint dl)
   {
-    //qDebug() << "GLWidget::addDL";
     d->displayLists.append(dl);
   }
   
   void GLWidget::removeDL(GLuint dl)
   {
-    //qDebug() << "GLWidget::removeDL";
     d->displayLists.removeAll(dl);
   }
   
@@ -415,7 +399,6 @@ namespace Avogadro {
 
   void GLWidget::addPrimitive(Primitive *primitive)
   {
-    qDebug() << "GLWidget::addPrimitive";
     if(primitive) {
       // add the molecule to the default queue
       for( int i=0; i < d->engines.size(); i++ ) {
@@ -426,12 +409,15 @@ namespace Avogadro {
   
   void GLWidget::updatePrimitive(Primitive *primitive)
   {
+    for( int i=0; i< d->engines.size(); i++) {
+      d->engines.at(i)->updatePrimitive(primitive);
+    }
+
     updateGL();
   }
   
   void GLWidget::removePrimitive(Primitive *primitive)
   {
-    qDebug() << "GLWidget::removePrimitive";
     if(primitive) {
       // add the molecule to the default queue
       for( int i=0; i < d->engines.size(); i++ ) {
@@ -462,7 +448,6 @@ namespace Avogadro {
     //     Engine *r = qobject_cast<Engine *>(plugin);
     //     if (r)
     //     {
-    //       qDebug() << "Loaded Engine: " << r->name() << endl;
     //       if( defaultEngine == NULL )
     //         defaultEngine = r;
     //     }
@@ -471,11 +456,9 @@ namespace Avogadro {
     foreach (QString path, pluginPaths)
     {
       QDir dir(path); 
-      qDebug() << "SearchPath:" << dir.absolutePath() << endl;
       foreach (QString fileName, dir.entryList(QDir::Files)) {
         QPluginLoader loader(dir.absoluteFilePath(fileName));
         QObject *instance = loader.instance();
-        //       qDebug() << "File: " << fileName;
         EngineFactory *factory = qobject_cast<EngineFactory *>(instance);
         if (factory) {
           Engine *engine = factory->createInstance(this);

@@ -94,7 +94,6 @@ namespace Avogadro {
 
   Atom * Molecule::CreateAtom()
   {
-    qDebug() << "Molecule::CreateAtom()";
     Atom *atom = new Atom(this);
     connect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
     emit primitiveAdded(atom);
@@ -103,7 +102,6 @@ namespace Avogadro {
 
   Bond * Molecule::CreateBond()
   {
-    qDebug() << "Molecule::CreateBond()";
     Bond *bond = new Bond(this);
     connect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
     emit primitiveAdded(bond);
@@ -120,7 +118,6 @@ namespace Avogadro {
 
   void Molecule::DestroyAtom(OpenBabel::OBAtom *obatom)
   {
-    qDebug() << "DestroyAtom Called";
     Atom *atom = static_cast<Atom *>(obatom);
     if(atom) {
       emit primitiveRemoved(atom);
@@ -130,7 +127,6 @@ namespace Avogadro {
 
   void Molecule::DestroyBond(OpenBabel::OBBond *obbond)
   {
-    qDebug() << "DestroyBond Called";
     Bond *bond = static_cast<Bond *>(obbond);
     if(bond) {
       emit primitiveRemoved(bond);
@@ -140,7 +136,6 @@ namespace Avogadro {
 
   void Molecule::DestroyResidue(OpenBabel::OBResidue *obresidue)
   {
-    qDebug() << "DestroyResidue Called";
     Residue *residue = static_cast<Residue *>(obresidue);
     if(residue) {
       emit primitiveRemoved(residue);

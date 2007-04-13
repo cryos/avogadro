@@ -69,7 +69,6 @@ namespace Avogadro {
     foreach (QString path, pluginPaths)
     {
       QDir dir(path); 
-      qDebug() << "SearchPath:" << dir.absolutePath() << endl;
       foreach (QString fileName, dir.entryList(QDir::Files)) {
         QPluginLoader loader(dir.absoluteFilePath(fileName));
         QObject *instance = loader.instance();

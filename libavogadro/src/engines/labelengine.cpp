@@ -26,6 +26,7 @@
 #include <avogadro/primitives.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/camera.h>
 
 #include <openbabel/obiter.h>
 #include <eigen/regression.h>
@@ -47,13 +48,20 @@ bool LabelEngine::render()
   QList<Primitive *> list;
 
   list = queue().primitiveList(Primitive::AtomType);
+  Vector3d translationVector = gl->camera().translationVector();
+  Vector3d zDistance;
   foreach( Primitive *p, list ) {
     Atom *atom = qobject_cast<Atom *>(p);
     const Vector3d pos = atom->pos();
     float radius = 0.18 + etab.GetVdwRad(atom->GetAtomicNum()) * 0.3;
+    zDistance = (atom->pos() - translationVector);
+    Color(atom).applyAsMaterials();
+    float zDistanceNorm = zDistance.norm();
     
-    gl->renderText(pos.x(), pos.y(), pos.z() + (radius), 
-        QString::number(atom->GetIdx()));
+    if(zDistanceNorm < 50.0) {
+      gl->renderText(pos.x(), pos.y(), pos.z() + (radius), 
+          QString::number(atom->GetIdx()));
+    }
   }
 }
 

@@ -52,6 +52,10 @@ namespace Avogadro {
     d->queue.addPrimitive(primitive);
   }
 
+  void Engine::updatePrimitive(Primitive *primitive)
+  {
+  }
+
   void Engine::removePrimitive(Primitive *primitive)
   {
     d->queue.removePrimitive(primitive);

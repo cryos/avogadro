@@ -54,12 +54,13 @@ bool BSEngine::render()
     render((Atom *) p);
   }
 
+  glDisable( GL_RESCALE_NORMAL);
+  glEnable( GL_NORMALIZE );
+
   list = queue().primitiveList(Primitive::BondType);
   foreach( Primitive *p, list ) {
     render((Bond *) p);
   }
-  glDisable( GL_RESCALE_NORMAL);
-  glEnable( GL_NORMALIZE );
 
   return true;
 }
@@ -94,7 +95,6 @@ bool BSEngine::render(const Bond *b)
   if(gl) {
     normalVector = gl->normalVector();
   }
-  // cout << "Render Bond..." << endl;
 
   const OBAtom *atom1 = static_cast<const OBAtom *>( b->GetBeginAtom() );
   const OBAtom *atom2 = static_cast<const OBAtom *>( b->GetEndAtom() );
