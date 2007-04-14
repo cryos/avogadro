@@ -45,6 +45,11 @@ BSDYEngine::~BSDYEngine()
   {
     delete m_spheres.takeLast();
   }
+  size = m_cylinders.size();
+  for(int i=0; i<size; i++)
+  {
+    delete m_cylinders.takeLast();
+  }
 }
 
 bool BSDYEngine::render()
@@ -57,53 +62,27 @@ bool BSDYEngine::render()
   // make a DL for very far objects.  Cube on it's side.
   if(!m_dl) {
     m_dl = glGenLists(1);
+    double x = sqrt(.5);
     glNewList(m_dl, GL_COMPILE);
-    // hollow box
-    glBegin(GL_QUAD_STRIP);
-    glNormal3f(0.33,0.33,-0.33);
-    glVertex3d(1,1,-1);
-    glNormal3f(-0.33,0.33,-0.33);
-    glVertex3d(-1,1,-1);
-    glNormal3f(0.33,0.33,0.33);
-    glVertex3d(1,1,1);
-    glNormal3f(-0.33,0.33,0.33);
-    glVertex3d(-1,1,1);
-    glNormal3f(0.33,-0.33,0.33);
-    glVertex3d(1,-1,1);
-    glNormal3f(-0.33,-0.33,0.33);
-    glVertex3d(-1,-1,1);
-    glNormal3f(0.33,-0.33,-0.33);
-    glVertex3d(1,-1,-1);
-    glNormal3f(-0.33,-0.33,-0.33);
-    glVertex3d(-1,-1,-1);
-    glNormal3f(0.33,0.33,-0.33);
-    glVertex3d(1,1,-1);
-    glNormal3f(-0.33,0.33,-0.33);
-    glVertex3d(-1,1,-1);
+    glPushMatrix();
+    glRotated(45, 1, 0, 0);
+    glBegin(GL_TRIANGLE_FAN);
+    glNormal3d(0,1,0); glVertex3d(0,1,0);
+    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
+    glNormal3d(x,0,x); glVertex3d(x,0,x);
+    glNormal3d(x,0,-x); glVertex3d(x,0,-x);
+    glNormal3d(-x,0,-x); glVertex3d(-x,0,-x);
+    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
     glEnd();
-
-    // sides
-    glBegin(GL_QUADS);
-    glNormal3f(-0.33,-0.33,-0.33);
-    glVertex3d(-1,-1,-1);
-    glNormal3f(-0.33,-0.33,0.33);
-    glVertex3d(-1,-1,1);
-    glNormal3f(-0.33,0.33,0.33);
-    glVertex3d(-1,1,1);
-    glNormal3f(-0.33,0.33,-0.33);
-    glVertex3d(-1,1,-1);
-
-    glNormal3f(0.33,0.33,-0.33);
-    glVertex3d(1,1,-1);
-    glNormal3f(0.33,0.33,0.33);
-    glVertex3d(1,1,1);
-    glNormal3f(0.33,-0.33,0.33);
-    glVertex3d(1,-1,1);
-    glNormal3f(0.33,-0.33,-0.33);
-    glVertex3d(1,-1,-1);
+    glBegin(GL_TRIANGLE_FAN);
+    glNormal3d(0,-1,0); glVertex3d(0,-1,0);
+    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
+    glNormal3d(-x,0,-x); glVertex3d(-x,0,-x);
+    glNormal3d(x,0,-x); glVertex3d(x,0,-x);
+    glNormal3d(x,0,x); glVertex3d(x,0,x);
+    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
     glEnd();
-
-
+    glPopMatrix();
     glEndList();
 
   }
@@ -111,12 +90,14 @@ bool BSDYEngine::render()
   QList<Primitive *> list;
 
   if (!m_setup) {
-    for(int i=10; i > 0; i--)
+    for(int i=0; i < 10; i++)
     {
-      m_spheres.append(new Sphere(i));
+      m_spheres.append(new Sphere(i+1));
     }
-    m_sphere.setup(1);
-    m_cylinder.setup(2);
+    for(int i=0; i < 4; i++)
+    {
+      m_cylinders.append(new Cylinder(i * 3));
+    }
     m_setup = true;
   }
 
@@ -133,20 +114,27 @@ bool BSDYEngine::render()
     Atom * a = qobject_cast<Atom *>(p);
     glPushName(a->GetIdx());
 
-    zDistance = (a->pos() - translationVector);
     Color(a).applyAsMaterials();
+
+    zDistance = (a->pos() - translationVector);
     float zDistanceNorm = zDistance.norm();
-    if(zDistanceNorm >= 0.0  && zDistanceNorm < 20.0)
+//     float zDistanceNorm = 200;
+    int detail = 0;
+    if(zDistanceNorm >= 0.0 && zDistanceNorm < 200.0)
     {
-      m_spheres.at((int) zDistanceNorm / 5)->draw(a->GetVector().AsArray(), etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
-    }
-    else if(zDistanceNorm >= 20.0 && zDistanceNorm < 100.0)
-    {
-      m_spheres.at((int) ((zDistanceNorm - 20) / 20) + 4)->draw(a->GetVector().AsArray(), etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
-    }
-    else if(zDistanceNorm >= 100.0 && zDistanceNorm < 200.0)
-    {
-      m_spheres.at((int) ((zDistanceNorm - 100) / 50) + 8)->draw(a->GetVector().AsArray(), etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
+      if(zDistanceNorm >= 100.0 && zDistanceNorm < 200.0)
+      {
+        detail = (int) 1 - ((zDistanceNorm - 100) / 50);
+      }
+      else if(zDistanceNorm >= 20.0 && zDistanceNorm < 100.0)
+      {
+        detail = (int) 5 - ((zDistanceNorm - 20) / 20);
+      }
+      else
+      {
+        detail = 9 - (int) (zDistanceNorm / 5);
+      }
+      m_spheres.at(detail)->draw(a->GetVector().AsArray(), etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
     }
     else
     {
@@ -163,28 +151,20 @@ bool BSDYEngine::render()
     {
       Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
       glEnable( GL_BLEND );
-    if(zDistanceNorm >= 0.0  && zDistanceNorm < 20.0)
-    {
-      m_spheres.at((int) zDistanceNorm / 5)->draw(a->GetVector().AsArray(), 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
-    }
-    else if(zDistanceNorm >= 20.0 && zDistanceNorm < 100.0)
-    {
-      m_spheres.at((int) ((zDistanceNorm - 20) / 20) + 4)->draw(a->GetVector().AsArray(), 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
-    }
-    else if(zDistanceNorm >= 100.0 && zDistanceNorm < 200.0)
-    {
-      m_spheres.at((int) ((zDistanceNorm - 100) / 50) + 8)->draw(a->GetVector().AsArray(), 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
-    }
-    else
-    {
-      glPushMatrix();
-      const double * loc = a->GetVector().AsArray();
-      glTranslated( loc[0], loc[1], loc[2] );
-      double radius = 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3;
-      glScaled( radius, radius, radius );
-      glCallList(m_dl);
-      glPopMatrix();
-    }
+      if(zDistanceNorm < 200.0)
+      {
+        m_spheres.at(detail)->draw(a->GetVector().AsArray(), 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
+      }
+      else
+      {
+        glPushMatrix();
+        const double * loc = a->GetVector().AsArray();
+        glTranslated( loc[0], loc[1], loc[2] );
+        double radius = 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3;
+        glScaled( radius, radius, radius );
+        glCallList(m_dl);
+        glPopMatrix();
+      }
       glDisable( GL_BLEND );
     }
 
@@ -198,12 +178,54 @@ bool BSDYEngine::render()
   glEnable( GL_NORMALIZE );
 
   list = queue().primitiveList(Primitive::BondType);
+  Eigen::Vector3d normalVector;
+  if(gl) {
+    normalVector = gl->normalVector();
+  }
+  Atom *atom1;
+  Atom *atom2;
   foreach( Primitive *p, list ) {
-    render((Bond *) p);
+    Bond *b = qobject_cast<Bond *>(p);
+
+    atom1 = (Atom *) b->GetBeginAtom();
+    atom2 = (Atom *) b->GetEndAtom();
+    Vector3d v1 (atom1->pos());
+    Vector3d v2 (atom2->pos());
+    Vector3d v3 (( v1 + v2 ) / 2);
+
+    zDistance = v3 - translationVector;
+
+    double radius = 0.1;
+    double shift = 0.15;
+    int order = b->GetBO();
+
+    // for now, just allow selecting atoms
+    //  glPushName(bondType);
+    //  glPushName(b->GetIdx());
+    float zDistanceNorm = zDistance.norm();
+//     float zDistanceNorm = 200;
+    int detail = 0;
+    if(zDistanceNorm >= 100.0 && zDistanceNorm < 200.0)
+    {
+      detail = 1;
+    }
+    else if(zDistanceNorm >= 20.0 && zDistanceNorm < 100.0)
+    {
+      detail = 2;
+    }
+    else if(zDistanceNorm >= 0.0  && zDistanceNorm < 20.0)
+    {
+      detail = 3;
+    }
+    Color(atom1).applyAsMaterials();
+    m_cylinders.at(detail)->draw( v1, v3, radius, order, shift, normalVector);
+
+    Color(atom2).applyAsMaterials();
+    m_cylinders.at(detail)->draw( v3, v2, radius, order, shift, normalVector);
+    //  glPopName();
+    //  glPopName();
   }
 
-  glDisable( GL_NORMALIZE );
-  glEnable( GL_RESCALE_NORMAL );
   glPopAttrib();
 
   return true;
@@ -216,36 +238,34 @@ bool BSDYEngine::render(const Atom *a)
 
 bool BSDYEngine::render(const Bond *b)
 {
-  Eigen::Vector3d normalVector;
-
-  GLWidget *gl = qobject_cast<GLWidget *>(parent());
-  if(gl) {
-    normalVector = gl->normalVector();
-  }
-
-  const OBAtom *atom1 = static_cast<const OBAtom *>( b->GetBeginAtom() );
-  const OBAtom *atom2 = static_cast<const OBAtom *>( b->GetEndAtom() );
-
-  Vector3d v1 (atom1->GetVector().AsArray());
-  Vector3d v2 (atom2->GetVector().AsArray());
-  Vector3d v3 (( v1 + v2 ) / 2);
-  std::vector<double> rgb;
-
-  double radius = 0.1;
-  double shift = 0.15;
-  int order = b->GetBO();
-
-  // for now, just allow selecting atoms
-  //  glPushName(bondType);
-  //  glPushName(b->GetIdx());
-  Color(atom1).applyAsMaterials();
-  m_cylinder.draw( v1, v3, radius, order, shift, normalVector);
-
-  Color(atom2).applyAsMaterials();
-  m_cylinder.draw( v2, v3, radius, order, shift, normalVector);
-  //  glPopName();
-  //  glPopName();
-
+//   GLWidget *gl = qobject_cast<GLWidget *>(parent());
+//   if(gl) {
+//     normalVector = gl->normalVector();
+//   }
+// 
+//   const OBAtom *atom1 = static_cast<const OBAtom *>( b->GetBeginAtom() );
+//   const OBAtom *atom2 = static_cast<const OBAtom *>( b->GetEndAtom() );
+// 
+//   Vector3d v1 (atom1->GetVector().AsArray());
+//   Vector3d v2 (atom2->GetVector().AsArray());
+//   Vector3d v3 (( v1 + v2 ) / 2);
+//   std::vector<double> rgb;
+// 
+//   double radius = 0.1;
+//   double shift = 0.15;
+//   int order = b->GetBO();
+// 
+//   // for now, just allow selecting atoms
+//   //  glPushName(bondType);
+//   //  glPushName(b->GetIdx());
+//   Color(atom1).applyAsMaterials();
+//   m_cylinder.draw( v1, v3, radius, order, shift, normalVector);
+// 
+//   Color(atom2).applyAsMaterials();
+//   m_cylinder.draw( v3, v2, radius, order, shift, normalVector);
+//   //  glPopName();
+//   //  glPopName();
+// 
   return true;
 }
 

@@ -52,7 +52,7 @@ namespace Avogadro {
       void do_draw() const;
 
     public:
-      Cylinder();
+      Cylinder(int faces=0);
       ~Cylinder();
       /** initializes the cylinder with given number of faces. If the
        * cylinder was already initialized, any pre-allocated buffers

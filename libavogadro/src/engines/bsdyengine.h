@@ -74,8 +74,7 @@ namespace Avogadro {
 
     private:
       QList<Sphere *> m_spheres;
-      Sphere m_sphere;
-      Cylinder m_cylinder;
+      QList<Cylinder *> m_cylinders;
 
       bool m_setup; //!< Whether the sphere and cylinder objects have been setup
 
