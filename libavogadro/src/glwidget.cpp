@@ -443,16 +443,8 @@ namespace Avogadro {
     }
 
     // load static plugins first
-    //   foreach (QObject *plugin, QPluginLoader::staticInstances())
-    //   {
-    //     Engine *r = qobject_cast<Engine *>(plugin);
-    //     if (r)
-    //     {
-    //       if( defaultEngine == NULL )
-    //         defaultEngine = r;
-    //     }
-    //   }
-  
+
+    // now load plugins from paths
     foreach (QString path, pluginPaths)
     {
       QDir dir(path); 
@@ -462,7 +454,8 @@ namespace Avogadro {
         EngineFactory *factory = qobject_cast<EngineFactory *>(instance);
         if (factory) {
           Engine *engine = factory->createInstance(this);
-          qDebug() << "Found Engine: " << engine->name() << " - " << engine->description(); 
+          qDebug() << "Found Engine: " << engine->name() << " - " << engine->description();
+          
           d->engines.append(engine);
         }
       }

@@ -54,7 +54,8 @@ BSDYEngine::~BSDYEngine()
 
 bool BSDYEngine::render()
 {
-  GLWidget *gl = qobject_cast<GLWidget *>(parent());
+  // FIXME: should be qobject_cast but bug with Qt/Mac
+  GLWidget *gl = dynamic_cast<GLWidget *>(parent());
   if(!gl) {
     return false;
   }
@@ -111,7 +112,8 @@ bool BSDYEngine::render()
   glPushName(Primitive::AtomType);
   Vector3d zDistance;
   foreach( Primitive *p, list ) {
-    Atom * a = qobject_cast<Atom *>(p);
+    // FIXME: should be qobject_cast but bug with Qt/Mac
+    Atom * a = dynamic_cast<Atom *>(p);
     glPushName(a->GetIdx());
 
     Color(a).applyAsMaterials();
@@ -185,7 +187,8 @@ bool BSDYEngine::render()
   Atom *atom1;
   Atom *atom2;
   foreach( Primitive *p, list ) {
-    Bond *b = qobject_cast<Bond *>(p);
+    // FIXME: should be qobject_cast but bug with Qt/Mac
+    Bond *b = dynamic_cast<Bond *>(p);
 
     atom1 = (Atom *) b->GetBeginAtom();
     atom2 = (Atom *) b->GetEndAtom();

@@ -91,7 +91,8 @@ bool BSEngine::render(const Bond *b)
 {
   Eigen::Vector3d normalVector;
 
-  GLWidget *gl = qobject_cast<GLWidget *>(parent());
+  // FIXME: should be qobject_cast but bug with Qt/Mac
+  GLWidget *gl = dynamic_cast<GLWidget *>(parent());
   if(gl) {
     normalVector = gl->normalVector();
   }

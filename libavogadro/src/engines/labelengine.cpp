@@ -40,7 +40,8 @@ using namespace Eigen;
 
 bool LabelEngine::render()
 {
-  GLWidget *gl = qobject_cast<GLWidget *>(parent());
+  // FIXME: should be qobject_cast but bug with Qt/Mac
+  GLWidget *gl = dynamic_cast<GLWidget *>(parent());
   if(!gl) {
     return false;
   }
@@ -51,7 +52,8 @@ bool LabelEngine::render()
   Vector3d translationVector = gl->camera().translationVector();
   Vector3d zDistance;
   foreach( Primitive *p, list ) {
-    Atom *atom = qobject_cast<Atom *>(p);
+    // FIXME: should be qobject_cast but bug with Qt/Mac
+    Atom *atom = dynamic_cast<Atom *>(p);
     const Vector3d pos = atom->pos();
     float radius = 0.18 + etab.GetVdwRad(atom->GetAtomicNum()) * 0.3;
     zDistance = (atom->pos() - translationVector);

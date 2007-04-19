@@ -41,6 +41,8 @@ bool WireEngine::render()
 {
   QList<Primitive *> list;
 
+  glPushAttrib(GL_ALL_ATTRIB_BITS);
+
   list = queue().primitiveList(Primitive::AtomType);
   foreach( Primitive *p, list ) {
     render((Atom *)(p));
@@ -51,18 +53,18 @@ bool WireEngine::render()
     render((Bond *)(p));
   }
 
+  glPopAttrib();
+
   return true;
 }
 
 bool WireEngine::render(const Atom *a)
 {
-   glPushAttrib(GL_ALL_ATTRIB_BITS);
-
-   glPushName(Primitive::AtomType);
-   glPushName(a->GetIdx());
-
+  glPushName(Primitive::AtomType);
+  glPushName(a->GetIdx());
+  
   Vector3d v (a->GetVector().AsArray());
-
+  
   if (a->isSelected()) {
     Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
     glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 4.0);
@@ -75,12 +77,11 @@ bool WireEngine::render(const Atom *a)
   glBegin(GL_POINTS);
   glVertex3d(v.x(), v.y(), v.z());
   glEnd();
-
-   glPopName();
-   glPopName();
-   glPopAttrib();
-
-   return true;
+  
+  glPopName();
+  glPopName();
+  
+  return true;
 }
 
 bool WireEngine::render(const Bond *b)
@@ -91,26 +92,18 @@ bool WireEngine::render(const Bond *b)
   Vector3d v2 (atom2->GetVector().AsArray());
   std::vector<double> rgb;
 
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
   glLineWidth(1.0);
   glBegin(GL_LINES);
 
   // hard to separate atoms from bonds in this view
   // so we let the user always select atoms
-  glPushName( Primitive::AtomType);
-  glPushName( atom1->GetIdx() );
   Color(atom1).applyAsMaterials();
   glVertex3d(v1.x(), v1.y(), v1.z());
-  glPopName();
 
-  glPushName( atom2->GetIdx() );
   Color(atom2).applyAsMaterials();
   glVertex3d(v2.x(), v2.y(), v2.z());
-  glPopName();
-  glPopName();
 
   glEnd();
-  glPopAttrib();
 
   return true;
 }
