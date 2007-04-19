@@ -15,8 +15,9 @@
 
 #include <avogadro/color.h>
 
-using namespace Avogadro;
 using namespace OpenBabel;
+
+namespace Avogadro {
 
 Color::Color( GLfloat red, GLfloat green, GLfloat blue,
                   GLfloat alpha )
@@ -68,3 +69,4 @@ void Color::applyAsMaterials()
 	glMaterialf( GL_FRONT, GL_SHININESS, 50.0 );
 }
 
+}

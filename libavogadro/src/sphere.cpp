@@ -15,9 +15,9 @@
 
 #include <avogadro/sphere.h>
 
-using namespace Avogadro;
-using namespace OpenBabel;
 using namespace Eigen;
+
+namespace Avogadro {
 
 Sphere::Sphere(int detail): m_vertexBuffer(0), m_indexBuffer(0), m_displayList(0)
 {
@@ -232,3 +232,4 @@ void Sphere::setup( int detail )
 	initialize();
 }
 
+}

@@ -15,9 +15,9 @@
 
 #include <avogadro/cylinder.h>
 
-using namespace Avogadro;
-using namespace OpenBabel;
 using namespace Eigen;
+
+namespace Avogadro {
 
 Cylinder::Cylinder(int faces) : m_vertexBuffer(0), m_normalBuffer(0),
   m_displayList(0)
@@ -184,3 +184,4 @@ void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
   glPopMatrix();
 }
 
+}
