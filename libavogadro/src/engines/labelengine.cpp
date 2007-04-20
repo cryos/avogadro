@@ -51,13 +51,16 @@ bool LabelEngine::render()
   list = queue().primitiveList(Primitive::AtomType);
   Vector3d translationVector = gl->camera().translationVector();
   Vector3d zDistance;
+  glPushAttrib(GL_ALL_ATTRIB_BITS);
+  glDisable(GL_LIGHTING);
   foreach( Primitive *p, list ) {
     // FIXME: should be qobject_cast but bug with Qt/Mac
     Atom *atom = dynamic_cast<Atom *>(p);
     const Vector3d pos = atom->pos();
     float radius = 0.18 + etab.GetVdwRad(atom->GetAtomicNum()) * 0.3;
     zDistance = (atom->pos() - translationVector);
-    Color(atom).applyAsMaterials();
+    //Color(atom).applyAsMaterials();
+    glColor3f(1.0,1.0,1.0);
     float zDistanceNorm = zDistance.norm();
     
     if(zDistanceNorm < 50.0) {
@@ -65,6 +68,7 @@ bool LabelEngine::render()
           QString::number(atom->GetIdx()));
     }
   }
+  glPopAttrib();
 }
 
 bool LabelEngine::render(const Atom *a)
