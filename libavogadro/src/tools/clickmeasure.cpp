@@ -40,6 +40,11 @@ using namespace Avogadro;
 ClickMeasure::ClickMeasure() : Tool(),  m_numSelectedAtoms(0), m_dl(0), m_line(new Cylinder(0))
 {
   m_activateAction->setIcon(QIcon(QString::fromUtf8(":/measure/measure.png")));
+  m_activateAction->setToolTip(tr("Click to Measure (ClickMeasure)\n\n"
+        "Left Mouse: \tSelect up to three Atoms.\n"
+        "\tDistances are measured between 1-2 and 2-3\n"
+        "\tAngle is measured between 1-3 using 2 as the common point\n"
+        "Right Mouse: Reset the measurements."));
 
   // clear the selected atoms
   int size = m_selectedAtoms.size();
@@ -107,7 +112,7 @@ void ClickMeasure::mousePress(Molecule *molecule, GLWidget *widget, const QMouse
       glColor3f(1.0,0.0,0.0);
       Eigen::Vector3d pos = m_selectedAtoms[0]->pos();
       float radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3;
-      widget->renderText(pos.x() + radius, pos.y(), pos.z() + radius, tr("*0"));
+      widget->renderText(pos.x() + radius, pos.y(), pos.z() + radius, tr("*1"));
 
       if(m_numSelectedAtoms >= 2)
       {
@@ -120,7 +125,7 @@ void ClickMeasure::mousePress(Molecule *molecule, GLWidget *widget, const QMouse
         glColor3f(0.0,1.0,0.0);
         pos = m_selectedAtoms[1]->pos();
         radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[1]->GetAtomicNum()) * 0.3;
-        widget->renderText(pos.x() + radius, pos.y(), pos.z() + radius, tr("*1"));
+        widget->renderText(pos.x() + radius, pos.y(), pos.z() + radius, tr("*2"));
 
         if(m_numSelectedAtoms == 3)
         {
@@ -138,7 +143,7 @@ void ClickMeasure::mousePress(Molecule *molecule, GLWidget *widget, const QMouse
           radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[2]->GetAtomicNum()) * 0.3;
   //         Color(0.0,0.0,1.0,1.0).applyAsMaterials();
           glColor3f(0.0,0.0,1.0);
-          widget->renderText(pos.x() + radius, pos.y(), pos.z() + radius, tr("*2"));
+          widget->renderText(pos.x() + radius, pos.y(), pos.z() + radius, tr("*3"));
         }
         glLoadIdentity();
   //       Color(1.0,1.0,1.0,1.0).applyAsMaterials();

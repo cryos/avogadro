@@ -54,7 +54,7 @@ namespace Avogadro {
       //! Tool Name (ie Draw)
       virtual QString name() const { return(tr("Draw")); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Drawing Tool")); }
+      virtual QString description() const { return(tr("Draws ")); }
       //@}
 
       //! \name Tool Methods
@@ -85,6 +85,9 @@ namespace Avogadro {
 
       int m_element;
       int m_bondOrder;
+      int m_prevAtomElement;
+      int m_prevBondOrder;
+      Bond *m_prevBond;
 
       bool                m_movedSinceButtonPressed;
 
