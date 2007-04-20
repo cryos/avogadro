@@ -35,12 +35,16 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-SelectRotate::SelectRotate() : Tool()
+SelectRotate::SelectRotate() : Tool(), _selectionDL(0)
 {
 }
 
 SelectRotate::~SelectRotate()
 {
+  if(_selectionDL)
+  {
+    glDeleteLists(_selectionDL, 1);
+  }
 }
 
 void SelectRotate::initialize()

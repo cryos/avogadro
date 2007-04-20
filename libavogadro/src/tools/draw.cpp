@@ -33,7 +33,7 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-Draw::Draw() : Tool(), _beginAtom(NULL), _endAtom(NULL), _bond(NULL), m_element(6), m_bondOrder(1)
+Draw::Draw() : Tool(), m_beginAtom(NULL), m_endAtom(NULL), m_bond(NULL), m_element(6), m_bondOrder(1)
 {
   m_activateAction->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
 
@@ -125,27 +125,27 @@ void Draw::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *e
 //   Molecule *molecule = widget->getMolecule();
   _buttons = event->buttons();
 
-  _movedSinceButtonPressed = false;
-  _lastDraggingPosition = event->pos();
-  _initialDraggingPosition = event->pos();
+  m_movedSinceButtonPressed = false;
+  m_lastDraggingPosition = event->pos();
+  m_initialDragginggPosition = event->pos();
 
   //! List of hits from a selection/pick
-  _hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+  m_hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
 
   if(_buttons & Qt::LeftButton)
   {
-    if(_hits.size())
+    if(m_hits.size())
     {
-      if(_hits[0].type() == Primitive::AtomType)
+      if(m_hits[0].type() == Primitive::AtomType)
       {
-        _beginAtom = (Atom *)molecule->GetAtom(_hits[0].name());
+        m_beginAtom = (Atom *)molecule->GetAtom(m_hits[0].name());
       }
     }
     else
     {
-      _beginAtom = newAtom(widget, event->pos().x(), event->pos().y());
+      m_beginAtom = newAtom(widget, event->pos().x(), event->pos().y());
       widget->updateGeometry();
-      _beginAtom->update();
+      m_beginAtom->update();
     }
   }
 
@@ -155,7 +155,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
 {
 //   Molecule *molecule = widget->getMolecule();
 
-  if((_buttons & Qt::LeftButton) && _beginAtom)
+  if((_buttons & Qt::LeftButton) && m_beginAtom)
   {
     QList<GLHit> hits;
     hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
@@ -166,24 +166,24 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
     {
       // parser our hits.  we want to know
       // if we hit another existingAtom that is not
-      // the _endAtom which we created
+      // the m_endAtom which we created
       for(int i=0; i < hits.size() && !hitBeginAtom; i++)
       {
         if(hits[i].type() == Primitive::AtomType)
         {
           // hit the same atom either moved here from somewhere else
           // or were already here.
-          if(hits[i].name() == _beginAtom->GetIdx())
+          if(hits[i].name() == m_beginAtom->GetIdx())
           {
             hitBeginAtom = true;
           }
-          else if(!_endAtom)
+          else if(!m_endAtom)
           {
             existingAtom = (Atom *)molecule->GetAtom(hits[i].name());
           }
           else
           {
-            if(hits[i].name() != _endAtom->GetIdx())
+            if(hits[i].name() != m_endAtom->GetIdx())
             {
               existingAtom = (Atom *)molecule->GetAtom(hits[i].name());
             }
@@ -193,71 +193,71 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
     }
     if(hitBeginAtom)
     {
-      if(_endAtom)
+      if(m_endAtom)
       {
-        molecule->DeleteAtom(_endAtom);
+        molecule->DeleteAtom(m_endAtom);
         widget->updateGeometry();
-        _bond = NULL;
-        _endAtom = NULL;
+        m_bond = NULL;
+        m_endAtom = NULL;
       }
-      else if(_bond)
+      else if(m_bond)
       {
-        Atom *oldAtom = (Atom *)_bond->GetEndAtom();
-        oldAtom->DeleteBond(_bond);
-        molecule->DeleteBond(_bond);
-        _bond=NULL;
+        Atom *oldAtom = (Atom *)m_bond->GetEndAtom();
+        oldAtom->DeleteBond(m_bond);
+        molecule->DeleteBond(m_bond);
+        m_bond=NULL;
       }
     }
     else if(existingAtom)
     {
-      Bond *existingBond = (Bond *)molecule->GetBond(_beginAtom, existingAtom);
-      if(_endAtom && _bond)
+      Bond *existingBond = (Bond *)molecule->GetBond(m_beginAtom, existingAtom);
+      if(m_endAtom && m_bond)
       {
         if(!existingBond) {
-          _endAtom->DeleteBond(_bond);
-          _bond->SetEnd(existingAtom);
-          existingAtom->AddBond(_bond);
-          _bond->update();
+          m_endAtom->DeleteBond(m_bond);
+          m_bond->SetEnd(existingAtom);
+          existingAtom->AddBond(m_bond);
+          m_bond->update();
         }
 
-        molecule->DeleteAtom(_endAtom);
+        molecule->DeleteAtom(m_endAtom);
         widget->updateGeometry();
-        _endAtom = NULL;
+        m_endAtom = NULL;
 
         if(existingBond) {
-          _bond = NULL;
+          m_bond = NULL;
         }
       }
-      else if(!_bond && !existingBond)
+      else if(!m_bond && !existingBond)
       {
-        _bond = newBond(molecule, _beginAtom, existingAtom);
-        _bond->update();
+        m_bond = newBond(molecule, m_beginAtom, existingAtom);
+        m_bond->update();
       }
     }
     else // if(!existingAtom && !hitBeginAtom)
     {
-      if(!_endAtom)
+      if(!m_endAtom)
       {
-        _endAtom = newAtom(widget, event->pos().x(), event->pos().y());
+        m_endAtom = newAtom(widget, event->pos().x(), event->pos().y());
         widget->updateGeometry();
-        if(!_bond)
+        if(!m_bond)
         {
-          _bond = newBond(molecule, _beginAtom, _endAtom);
+          m_bond = newBond(molecule, m_beginAtom, m_endAtom);
         }
         else
         {
-          Atom *oldAtom = (Atom *)_bond->GetEndAtom();
-          oldAtom->DeleteBond(_bond);
-          _bond->SetEnd(_endAtom);
-          _endAtom->AddBond(_bond);
+          Atom *oldAtom = (Atom *)m_bond->GetEndAtom();
+          oldAtom->DeleteBond(m_bond);
+          m_bond->SetEnd(m_endAtom);
+          m_endAtom->AddBond(m_bond);
         }
-        _bond->update();
-        _endAtom->update();
+        m_bond->update();
+        m_endAtom->update();
       }
       else
       {
-        _endAtom->setPos(unProject(widget, event->pos().x(), event->pos().y()));
-        _endAtom->update();
+        m_endAtom->setPos(unProject(widget, event->pos().x(), event->pos().y()));
+        m_endAtom->update();
       }
     }
   }
@@ -268,9 +268,9 @@ void Draw::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent 
 {
   if(_buttons & Qt::LeftButton)
   {
-    _beginAtom=NULL;
-    _bond=NULL;
-    _endAtom=NULL;
+    m_beginAtom=NULL;
+    m_bond=NULL;
+    m_endAtom=NULL;
 
     // create the undo action for creating endAtom and bond
     //  pass along atom idx, element, vector, bond idx, order, start/end
@@ -298,19 +298,11 @@ void Draw::wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event)
 
 Eigen::Vector3d Draw::unProject(GLWidget *widget, int x, int y)
 {
-  GLdouble projection[16];
-  glGetDoublev(GL_PROJECTION_MATRIX,projection);
-  GLdouble modelview[16];
-  glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
-  GLint viewport[4];
-  glGetIntegerv(GL_VIEWPORT,viewport);
-
   // retrieve the 3D coords of the center of the molecule
   Eigen::Vector3d center = widget->center();
 
   // project center
-  Eigen::Vector3d projectedCenter;
-  gluProject(center.x(), center.y(), center.z(), modelview, projection, viewport, &projectedCenter.x(), &projectedCenter.y(), &projectedCenter.z());
+  Eigen::Vector3d projectedCenter = widget->project(center.x(), center.y(), center.z());
 
   // now projectedCenter.z() gives us the Z-index of the center of the molecule.
   // this is all what we need to know - we don't care about the x() and y() coords of
@@ -318,8 +310,7 @@ Eigen::Vector3d Draw::unProject(GLWidget *widget, int x, int y)
 
   // Now unproject the pixel of coordinates (x,height-y) into a 3D point having the same Z-index
   // as the molecule's center.
-  Eigen::Vector3d pos;
-  gluUnProject(x, viewport[3] - y, projectedCenter.z(), modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
+  Eigen::Vector3d pos = widget->unProject(x, y, projectedCenter.z());
 
   return pos;
 }

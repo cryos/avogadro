@@ -278,14 +278,32 @@ namespace Avogadro {
       Camera & camera();
 
       /**
-       * Returns a list of the engines for this GLWidget.
+       * @return a list of engines
        */
-      const QList<Engine *>& engines() const;
+      QList<Engine *> engines() const;
 
       /**
        * Get the hits for a region starting at (x,y) of size (w x y)
        */
       QList<GLHit> hits(int x, int y, int w, int h) const;
+
+      /**
+       * Performs an unprojection from screen coordinates to GL coordinates.
+       * @param x x screen coordinate
+       * @param y y screen coordinate
+       * @param z z-depth for the 2d view to represent
+       * @return vector containing the unprojected GL coordinates
+       */
+      Eigen::Vector3d unProject(float x, float y, float z);
+
+      /**
+       * Performs a projection from GL coordinates to screen coordinates.
+       * @param x x coordinate in 3d space
+       * @param y y coordinate in 3d space
+       * @param z z coordinate in 3d space
+       * @return vector containing the projected screen coordinates
+       */
+      Eigen::Vector3d project(float x, float y, float z);
 
       const Eigen::Vector3d & center() const;
       const Eigen::Vector3d & normalVector() const;

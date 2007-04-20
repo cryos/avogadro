@@ -1,5 +1,5 @@
 /**********************************************************************
-  Draw - Drawing Tool for Avogadro
+  ClickMeasure - ClickMeasure Tool for Avogadro
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,11 +20,12 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __DRAW_H
-#define __DRAW_H
+#ifndef __CLICKMEASURE_H
+#define __CLICKMEASURE_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
+#include <avogadro/cylinder.h>
 
 #include <openbabel/mol.h>
 
@@ -33,28 +34,29 @@
 #include <QStringList>
 #include <QComboBox>
 #include <QVBoxLayout>
+#include <QVarLengthArray>
 #include <QImage>
 #include <QAction>
 
 namespace Avogadro {
 
- class Draw : public QObject, public Tool
+ class ClickMeasure : public QObject, public Tool
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::Tool)
 
     public:
       //! Constructor
-      Draw();
+      ClickMeasure();
       //! Deconstructor
-      virtual ~Draw();
+      virtual ~ClickMeasure();
 
       //! \name Description methods
       //@{
-      //! Tool Name (ie Draw)
-      virtual QString name() const { return(tr("Draw")); }
-      //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Drawing Tool")); }
+      //! Tool Name (ie ClickMeasure)
+      virtual QString name() const { return(tr("ClickMeasure")); }
+      //! Tool Description (ie. ClickMeasures atoms and bonds)
+      virtual QString description() const { return(tr("ClickMeasureing Tool")); }
       //@}
 
       //! \name Tool Methods
@@ -70,45 +72,25 @@ namespace Avogadro {
       virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
       virtual void wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event);
 
-      void setElement(int i);
-      int element() const;
-
-      void setBondOrder(int i);
-      int bondOrder() const;
-
-    public slots:
-      void elementChanged( int index );
-      void bondOrderChanged( int index );
-
     private:
+
       Qt::MouseButtons _buttons;
 
-      int m_element;
-      int m_bondOrder;
+      bool                _movedSinceButtonPressed;
 
-      bool                m_movedSinceButtonPressed;
+      QPoint              _initialDraggingPosition;
+      QPoint              _lastDraggingPosition;
 
-      QPoint              m_initialDragginggPosition;
-      QPoint              m_lastDraggingPosition;
-
-      Atom *m_beginAtom;
-      Atom *m_endAtom;
-      Bond *m_bond;
+      QVarLengthArray<Atom *, 4> m_selectedAtoms;
+      int m_numSelectedAtoms;
       QList<GLHit> m_hits;
 
       QComboBox *m_comboElements;
       QComboBox *m_comboBondOrder;
       QVBoxLayout *m_layout;
+      GLuint m_dl;
 
-      Atom *newAtom(GLWidget *widget, int x, int y);
-      Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
-//       void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
-
-      /** @return the 3D coords of the point P obtained by unprojective the pixel (x,y) with
-        * the Z-index of the center of the molecule being viewed in the given
-        * GLWidget.
-        */
-      Eigen::Vector3d unProject(GLWidget *widget, int x, int y);
+      Cylinder *m_line;
   };
 
 } // end namespace Avogadro

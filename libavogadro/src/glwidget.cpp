@@ -392,7 +392,7 @@ namespace Avogadro {
     return d->camera;
   }
   
-  const QList<Engine *>& GLWidget::engines() const
+  QList<Engine *> GLWidget::engines() const
   {
     return d->engines;
   }
@@ -512,6 +512,7 @@ namespace Avogadro {
     // Setup a projection matrix for picking in the zone delimited by (x,y,w,h).
     glGetIntegerv(GL_VIEWPORT, viewport);
     glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
     glLoadIdentity();
     gluPickMatrix(cx,viewport[3]-cy, w, h,viewport);
 
@@ -520,6 +521,7 @@ namespace Avogadro {
 
     // now load the modelview matrix from the camera
     glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
     glLoadIdentity();
     d->camera.applyModelview();
   
@@ -566,6 +568,10 @@ namespace Avogadro {
       qSort(hits);
     }
   
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glPopMatrix();
     return(hits);
   }
 
@@ -579,6 +585,35 @@ namespace Avogadro {
     return QSize(200,200);
   }
 
+  Eigen::Vector3d GLWidget::unProject(float x, float y, float z)
+  {
+    GLdouble projection[16];
+    glGetDoublev(GL_PROJECTION_MATRIX,projection);
+    GLdouble modelview[16];
+    glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
+    GLint viewport[4];
+    glGetIntegerv(GL_VIEWPORT,viewport);
+
+    Eigen::Vector3d pos;
+    gluUnProject(x, viewport[3] - y, z, modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
+
+    return pos;
+  }
+
+  Eigen::Vector3d GLWidget::project(float x, float y, float z)
+  {
+    GLdouble projection[16];
+    glGetDoublev(GL_PROJECTION_MATRIX,projection);
+    GLdouble modelview[16];
+    glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
+    GLint viewport[4];
+    glGetIntegerv(GL_VIEWPORT,viewport);
+
+    Eigen::Vector3d pos;
+    gluProject(x, y, z, modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
+
+    return pos;
+  }
 
 }
 

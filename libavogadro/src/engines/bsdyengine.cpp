@@ -126,11 +126,11 @@ bool BSDYEngine::render()
     {
       if(zDistanceNorm >= 100.0 && zDistanceNorm < 200.0)
       {
-        detail = (int) 1 - ((zDistanceNorm - 100) / 50);
+        detail = 1 - (((int) zDistanceNorm - 100) / 50);
       }
       else if(zDistanceNorm >= 20.0 && zDistanceNorm < 100.0)
       {
-        detail = (int) 5 - ((zDistanceNorm - 20) / 20);
+        detail = 5 - (((int) zDistanceNorm - 20) / 20);
       }
       else
       {

@@ -50,7 +50,7 @@ namespace Avogadro {
       virtual QString name() const { return QObject::tr("Unknown"); }
       virtual QString description() const { return QObject::tr("Unknown Tool"); };
 
-      virtual void init() {}
+      virtual void initialize() {}
       virtual void cleanup() {}
 
       virtual QAction* activateAction() const {
