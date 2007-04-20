@@ -37,6 +37,7 @@ using namespace Eigen;
 
 SelectRotate::SelectRotate() : Tool(), _selectionDL(0)
 {
+  m_activateAction->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
 }
 
 SelectRotate::~SelectRotate()

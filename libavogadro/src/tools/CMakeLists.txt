@@ -29,7 +29,7 @@ INSTALL(TARGETS draw DESTINATION lib/avogadro/tools)
 set(clickmeasure_SRCS clickmeasure.cpp)
 qt4_add_resources(clickmeasure_RC_SRCS measure.qrc)
 qt4_automoc(${clickmeasure_SRCS})
-ADD_LIBRARY(clickmeasure SHARED clickmeasure.cpp ${clickmeasure_RC_SRCS} )
+ADD_LIBRARY(clickmeasure SHARED ${clickmeasure_SRCS} ${clickmeasure_RC_SRCS} )
 TARGET_LINK_LIBRARIES(clickmeasure 
     ${OPENBABEL2_LIBRARIES} 
     ${QT_LIBRARIES}
@@ -39,8 +39,9 @@ INSTALL(TARGETS clickmeasure DESTINATION lib/avogadro/tools)
 
 ### selectrotate
 set(selectrotate_SRCS selectrotate.cpp)
+qt4_add_resources(selectrotate_RC_SRCS select.qrc)
 qt4_automoc(${selectrotate_SRCS})
-ADD_LIBRARY(selectrotate SHARED ${selectrotate_SRCS})
+ADD_LIBRARY(selectrotate SHARED ${selectrotate_SRCS} ${selectrotate_RC_SRCS})
 TARGET_LINK_LIBRARIES(selectrotate 
 	${OPENBABEL2_LIBRARIES} 
 	${QT_LIBRARIES} 
