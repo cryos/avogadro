@@ -14,6 +14,7 @@ include_directories(
 set(libavogadro_SRCS
 	color.cpp
     engine.cpp
+    tool.cpp
 	primitives.cpp
 	toolgroup.cpp
 	cylinder.cpp

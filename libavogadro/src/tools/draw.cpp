@@ -36,12 +36,9 @@ using namespace Avogadro;
 Draw::Draw() : Tool(), m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_bondOrder(1),
   m_prevAtomElement(0), m_prevBond(0), m_prevBondOrder(0)
 {
-  m_activateAction->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
-  m_activateAction->setToolTip(tr("Drawing Tool (Draw)\n\n"
-        "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
-        "Right Mouse: Delete Atom"));
+  QWidget *settings = settingsWidget();
 
-  m_comboElements = new QComboBox(m_settingsWidget);
+  m_comboElements = new QComboBox(settings);
   m_comboElements->addItem("Hydrogen (1)");
   m_comboElements->addItem("Helium (2)");
   m_comboElements->addItem("Lithium (3)");
@@ -62,7 +59,7 @@ Draw::Draw() : Tool(), m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_
   m_comboElements->addItem("Argon (18)");
   m_comboElements->setCurrentIndex(5);
 
-  m_comboBondOrder = new QComboBox(m_settingsWidget);
+  m_comboBondOrder = new QComboBox(settings);
   m_comboBondOrder->addItem("Single");
   m_comboBondOrder->addItem("Double");
   m_comboBondOrder->addItem("Triple");
@@ -70,7 +67,13 @@ Draw::Draw() : Tool(), m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_
   m_layout = new QVBoxLayout();
   m_layout->addWidget(m_comboElements);
   m_layout->addWidget(m_comboBondOrder);
-  m_settingsWidget->setLayout(m_layout);
+  settings->setLayout(m_layout);
+
+  QAction *action = activateAction();
+  action->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
+  action->setToolTip(tr("Drawing Tool (Draw)\n\n"
+        "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+        "Right Mouse: Delete Atom"));
 
   connect(m_comboElements, SIGNAL(currentIndexChanged(int)),
       this, SLOT(elementChanged(int)));
@@ -81,7 +84,6 @@ Draw::Draw() : Tool(), m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_
 
 Draw::~Draw()
 {
-  delete m_activateAction;
 }
 
 void Draw::initialize()
@@ -124,9 +126,13 @@ int Draw::bondOrder() const
   return m_bondOrder;
 }
 
-void Draw::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void Draw::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
-//   Molecule *molecule = widget->getMolecule();
+  Molecule *molecule = widget->molecule();
+  if(!molecule) {
+    return;
+  }
+
   _buttons = event->buttons();
 
   m_movedSinceButtonPressed = false;
@@ -155,9 +161,12 @@ void Draw::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *e
   }
 }
 
-void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void Draw::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
-//   Molecule *molecule = widget->getMolecule();
+  Molecule *molecule = widget->molecule();
+  if(!molecule) { 
+    return;
+  }
 
   if((_buttons & Qt::LeftButton) && m_beginAtom)
   {
@@ -319,7 +328,7 @@ void Draw::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *ev
 
 }
 
-void Draw::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void Draw::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
   if(_buttons & Qt::LeftButton)
   {
@@ -342,6 +351,7 @@ void Draw::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent 
       // get our top hit
       if(hits[0].type() == Primitive::AtomType)
       {
+        Molecule *molecule = widget->molecule();
         Atom *atom = (Atom *)molecule->GetAtom(hits[0].name());
         molecule->DeleteAtom(atom);
         widget->updateGeometry();
@@ -351,7 +361,7 @@ void Draw::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent 
   }
 }
 
-void Draw::wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event)
+void Draw::wheel(GLWidget *widget, const QWheelEvent *event)
 {
 }
 

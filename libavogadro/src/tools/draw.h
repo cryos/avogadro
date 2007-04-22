@@ -38,7 +38,7 @@
 
 namespace Avogadro {
 
- class Draw : public QObject, public Tool
+ class Draw : public Tool
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::Tool)
@@ -65,10 +65,10 @@ namespace Avogadro {
       virtual void initialize();
       virtual void cleanup();
 
-      virtual void mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
-      virtual void wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event);
+      virtual void mousePress(GLWidget *widget, const QMouseEvent *event);
+      virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event);
+      virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);
+      virtual void wheel(GLWidget *widget, const QWheelEvent *event);
 
       void setElement(int i);
       int element() const;

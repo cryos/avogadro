@@ -39,8 +39,9 @@ using namespace Avogadro;
 
 ClickMeasure::ClickMeasure() : Tool(),  m_numSelectedAtoms(0), m_dl(0), m_line(new Cylinder(0))
 {
-  m_activateAction->setIcon(QIcon(QString::fromUtf8(":/measure/measure.png")));
-  m_activateAction->setToolTip(tr("Click to Measure (ClickMeasure)\n\n"
+  QAction *action = activateAction();
+  action->setIcon(QIcon(QString::fromUtf8(":/measure/measure.png")));
+  action->setToolTip(tr("Click to Measure (ClickMeasure)\n\n"
         "Left Mouse: \tSelect up to three Atoms.\n"
         "\tDistances are measured between 1-2 and 2-3\n"
         "\tAngle is measured between 1-3 using 2 as the common point\n"
@@ -62,7 +63,6 @@ ClickMeasure::~ClickMeasure()
   }
 
   delete m_line;
-  delete m_activateAction;
 }
 
 void ClickMeasure::initialize()
@@ -73,8 +73,13 @@ void ClickMeasure::cleanup()
 {
 }
 
-void ClickMeasure::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void ClickMeasure::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
+  Molecule *molecule = widget->molecule();
+  if(!molecule) {
+    return;
+  }
+
   //! List of hits from initial click
   m_hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
 
@@ -190,15 +195,15 @@ void ClickMeasure::mousePress(Molecule *molecule, GLWidget *widget, const QMouse
   }
 }
 
-void ClickMeasure::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void ClickMeasure::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
 }
 
-void ClickMeasure::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void ClickMeasure::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
 }
 
-void ClickMeasure::wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event)
+void ClickMeasure::wheel(GLWidget *widget, const QWheelEvent *event)
 {
 }
 

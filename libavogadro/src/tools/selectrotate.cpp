@@ -37,7 +37,8 @@ using namespace Eigen;
 
 SelectRotate::SelectRotate() : Tool(), _selectionDL(0)
 {
-  m_activateAction->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
+  QAction *action = activateAction();
+  action->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
 }
 
 SelectRotate::~SelectRotate()
@@ -48,17 +49,7 @@ SelectRotate::~SelectRotate()
   }
 }
 
-void SelectRotate::initialize()
-{
-
-}
-
-void SelectRotate::cleanup() 
-{
-
-};
-
-void SelectRotate::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void SelectRotate::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
 
   _movedSinceButtonPressed = false;
@@ -71,13 +62,18 @@ void SelectRotate::mousePress(Molecule *molecule, GLWidget *widget, const QMouse
   if(!_hits.size())
   {
     selectionBox(_initialDraggingPosition.x(), _initialDraggingPosition.y(),
-          _initialDraggingPosition.x(), _initialDraggingPosition.y());
+        _initialDraggingPosition.x(), _initialDraggingPosition.y());
     widget->addDL(_selectionDL);
   }
 }
 
-void SelectRotate::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void SelectRotate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
+  Molecule *molecule = widget->molecule();
+  if(!molecule) {
+    return;
+  }
+
   if(!_hits.size())
   {
     widget->removeDL(_selectionDL);
@@ -88,7 +84,7 @@ void SelectRotate::mouseRelease(Molecule *molecule, GLWidget *widget, const QMou
     for(int i=0; i < _hits.size(); i++) {
       if(_hits[i].type() == Primitive::AtomType)
       {
-        Atom *atom = (Atom *) (Atom *) (Atom *) (Atom *) (Atom *) (Atom *) (Atom *) (Atom *) (Atom *) molecule->GetAtom(_hits[i].name());
+        Atom *atom = (Atom *) molecule->GetAtom(_hits[i].name());
         atom->toggleSelected();
         atom->update();
         break;
@@ -131,7 +127,7 @@ void SelectRotate::mouseRelease(Molecule *molecule, GLWidget *widget, const QMou
   widget->updateGL();
 }
 
-void SelectRotate::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void SelectRotate::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
 
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;
@@ -155,20 +151,20 @@ void SelectRotate::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseE
     }
     else if ( event->buttons() & Qt::RightButton )
     {
-//dc:       deltaDragging = _initialDraggingPosition - event->pos();
+      //dc:       deltaDragging = _initialDraggingPosition - event->pos();
       widget->camera().pretranslate( Vector3d( deltaDragging.x() * TRANSLATION_SPEED,
-                                               -deltaDragging.y() * TRANSLATION_SPEED,
-                                               0.0 ) );
+            -deltaDragging.y() * TRANSLATION_SPEED,
+            0.0 ) );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
-//dc:       deltaDragging = _initialDraggingPosition - event->pos();
-//dc:       int xySum = deltaDragging.x() + deltaDragging.y();
-//dc: 
-//dc:       if (xySum < 0)
-//dc:         widget->setScale(deltaDragging.manhattanLength() / 5.0);
-//dc:       else if (xySum > 0)
-//dc:         widget->setScale(1.0 / deltaDragging.manhattanLength());
+      //dc:       deltaDragging = _initialDraggingPosition - event->pos();
+      //dc:       int xySum = deltaDragging.x() + deltaDragging.y();
+      //dc: 
+      //dc:       if (xySum < 0)
+      //dc:         widget->setScale(deltaDragging.manhattanLength() / 5.0);
+      //dc:       else if (xySum > 0)
+      //dc:         widget->setScale(1.0 / deltaDragging.manhattanLength());
     }
   }
   else
@@ -183,7 +179,7 @@ void SelectRotate::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseE
   widget->updateGL();
 }
 
-void SelectRotate::wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event)
+void SelectRotate::wheel(GLWidget *widget, const QWheelEvent *event)
 {
 }
 

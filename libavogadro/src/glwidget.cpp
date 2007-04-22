@@ -246,28 +246,28 @@ namespace Avogadro {
   void GLWidget::mousePressEvent( QMouseEvent * event )
   {
     if(d->tool) {
-      d->tool->mousePress(d->molecule, this, event);
+      d->tool->mousePress(this, event);
     }
   }
   
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   {
     if(d->tool) {
-      d->tool->mouseRelease(d->molecule, this, event);
+      d->tool->mouseRelease(this, event);
     }
   }
   
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
   {
     if(d->tool) {
-      d->tool->mouseMove(d->molecule, this, event);
+      d->tool->mouseMove(this, event);
     }
   }
   
   void GLWidget::wheelEvent( QWheelEvent * event )
   {
     if(d->tool) {
-      d->tool->wheel(d->molecule, this, event);
+      d->tool->wheel(this, event);
     }
   }
   

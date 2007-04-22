@@ -46,17 +46,7 @@ Navigate::~Navigate()
 
 }
 
-void Navigate::initialize()
-{
-
-}
-
-void Navigate::cleanup()
-{
-
-}
-
-void Navigate::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void Navigate::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
 
   _movedSinceButtonPressed = false;
@@ -68,13 +58,18 @@ void Navigate::mousePress(Molecule *molecule, GLWidget *widget, const QMouseEven
 
 }
 
-void Navigate::mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void Navigate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
 
 }
 
-void Navigate::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event)
+void Navigate::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
+  Molecule *molecule = widget->molecule();
+  if(!molecule) {
+    return;
+  }
+
   // Mouse navigation has two modes - atom centred when an atom is clicked and scence if no
   // atom has been clicked.
 
@@ -164,7 +159,7 @@ void Navigate::mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent
   widget->updateGL();
 }
 
-void Navigate::wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event )
+void Navigate::wheel(GLWidget *widget, const QWheelEvent *event )
 {
 	widget->camera().pretranslate( event->delta() * TRANSLATION_SPEED * Vector3d(0, 0, 1) );
 	widget->updateGL();

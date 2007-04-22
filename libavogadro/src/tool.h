@@ -26,60 +26,44 @@
 #include <avogadro/global.h>
 #include <avogadro/primitives.h>
 #include <QString>
-#include <QAction>
 #include <QObject>
-#include <QGLWidget>
-#include <QVector>
-#include <QTextEdit>
-#include <QList>
+
+#include <QAction>
+#include <QWidget>
+#include <QMouseEvent>
+#include <QWheelEvent>
 
 namespace Avogadro {
 
   class GLWidget;
 
-  class A_EXPORT Tool
+  class ToolPrivate;
+  class A_EXPORT Tool : public QObject
   {
+    Q_OBJECT
+
     public:
-      Tool() : m_activateAction(new QAction(0)), m_settingsWidget(new QWidget(0)) { 
-        m_activateAction->setCheckable(true); 
-        m_activateAction->setData(qVariantFromValue(this));
-        m_activateAction->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
-      }
-      virtual ~Tool() { delete m_activateAction; }
+      Tool(QObject *parent = 0);
+      virtual ~Tool();
 
-      virtual QString name() const { return QObject::tr("Unknown"); }
-      virtual QString description() const { return QObject::tr("Unknown Tool"); };
+      virtual QString name() const;
+      virtual QString description() const;
 
-      virtual void initialize() {}
-      virtual void cleanup() {}
+      virtual QAction* activateAction() const;
 
-      virtual QAction* activateAction() const {
-        if(m_activateAction->toolTip() == "")
-          m_activateAction->setToolTip(description());
-        
-        if(m_activateAction->text() == "")
-          m_activateAction->setText(name());
-        
-        
-        return m_activateAction; 
-      }
-
-      virtual QWidget* settingsWidget() const {
-        return m_settingsWidget;
-      }
-      virtual void mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
-      virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
-      virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event) = 0;
-      virtual void wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event) = 0;
+      virtual QWidget* settingsWidget() const;
+      virtual void mousePress(GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual void mouseMove(GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual void wheel(GLWidget *widget, const QWheelEvent *event) = 0;
 
     protected:
-      QAction *m_activateAction;
-      QWidget *m_settingsWidget;
+      ToolPrivate *const d;
 
   };
 } // end namespace Avogadro
 
 Q_DECLARE_METATYPE(Avogadro::Tool*)
-Q_DECLARE_INTERFACE(Avogadro::Tool, "net.sourceforge.avogadro.tool/1.0")
+  Q_DECLARE_INTERFACE(Avogadro::Tool, "net.sourceforge.avogadro.tool/1.0")
 
 #endif

@@ -23,26 +23,29 @@
 #ifndef __SELECTROTATE_H
 #define __SELECTROTATE_H
 
-#include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
+#include <avogadro/glwidget.h>
 
-#include <openbabel/mol.h>
-
-#include <QGLWidget>
 #include <QObject>
-#include <QStringList>
-#include <QImage>
+#include <QString>
+#include <QPoint>
+
+class QMouseEvent;
+class QWheelEvent;
 
 const double ROTATION_SPEED = 0.005;
 const double TRANSLATION_SPEED = 0.02;
 
 namespace Avogadro {
 
- class SelectRotate : public QObject, public Tool
+  class Molecule;
+
+
+  class SelectRotate : public Tool
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::Tool)
-        
+      Q_INTERFACES(Avogadro::Tool)
+
     public:
       //! Constructor
       SelectRotate();
@@ -61,14 +64,11 @@ namespace Avogadro {
       //@{
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
-        */
-      virtual void initialize();
-      virtual void cleanup();
-
-      virtual void mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
-      virtual void wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event);
+      */
+      virtual void mousePress(GLWidget *widget, const QMouseEvent *event);
+      virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event);
+      virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);
+      virtual void wheel(GLWidget *widget, const QWheelEvent *event);
 
     protected:
       void selectionBox(float sx, float sy, float ex, float ey);
@@ -88,6 +88,6 @@ namespace Avogadro {
 
   };
 
-} // end namespace Avogadro
+  } // end namespace Avogadro
 
 #endif

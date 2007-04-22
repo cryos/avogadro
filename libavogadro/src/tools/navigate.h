@@ -46,7 +46,7 @@ namespace Avogadro {
    * This class is an attempt to port the navigation system in
    * Kalzium to an Avogadro plugin.
    */
-  class Navigate : public QObject, public Tool
+  class Navigate : public Tool
   {
     Q_OBJECT
       Q_INTERFACES(Avogadro::Tool)
@@ -70,13 +70,10 @@ namespace Avogadro {
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
       */
-      virtual void initialize();
-      virtual void cleanup();
-
-      virtual void mousePress(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseRelease(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseMove(Molecule *molecule, GLWidget *widget, const QMouseEvent *event);
-      virtual void wheel(Molecule *molecule, GLWidget *widget, const QWheelEvent *event);
+      virtual void mousePress(GLWidget *widget, const QMouseEvent *event);
+      virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event);
+      virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);
+      virtual void wheel(GLWidget *widget, const QWheelEvent *event);
 
     protected:
 
