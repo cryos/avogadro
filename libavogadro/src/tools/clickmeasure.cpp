@@ -65,14 +65,6 @@ ClickMeasure::~ClickMeasure()
   delete m_line;
 }
 
-void ClickMeasure::initialize()
-{
-}
-
-void ClickMeasure::cleanup()
-{
-}
-
 void ClickMeasure::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->molecule();

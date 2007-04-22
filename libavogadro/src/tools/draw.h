@@ -62,9 +62,6 @@ namespace Avogadro {
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
         */
-      virtual void initialize();
-      virtual void cleanup();
-
       virtual void mousePress(GLWidget *widget, const QMouseEvent *event);
       virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event);
       virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);

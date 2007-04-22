@@ -86,16 +86,6 @@ Draw::~Draw()
 {
 }
 
-void Draw::initialize()
-{
-
-}
-
-void Draw::cleanup() 
-{
-
-};
-
 void Draw::elementChanged( int index )
 {
   setElement(index + 1);
