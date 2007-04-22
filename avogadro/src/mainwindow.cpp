@@ -43,13 +43,35 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  MainWindow::MainWindow() : QMainWindow(0), m_molecule(new Molecule(this))
+  class MainWindowPrivate 
+  {
+    public:
+      MainWindowPrivate() : molecule(0), 
+      undo(0), toolsFlow(0), toolSettingsStacked(0), messagesText(0),
+      toolGroup(0) {}
+
+      Molecule  *molecule;
+
+      QString    currentFile;
+      bool       modified;
+      QUndoStack *undo;
+      
+      FlowLayout *toolsFlow;
+      QStackedLayout *toolSettingsStacked;
+
+      QTextEdit *messagesText;
+
+      ToolGroup *toolGroup;
+      QAction    *actionRecentFile[MainWindow::maxRecentFiles];
+  };
+
+  MainWindow::MainWindow() : QMainWindow(0), d_ptr(new MainWindowPrivate)
   {
     constructor();
     setCurrentFile("");
   }
 
-  MainWindow::MainWindow(const QString &fileName) : QMainWindow(0), m_molecule(new Molecule(this))
+  MainWindow::MainWindow(const QString &fileName) : QMainWindow(0), d_ptr(new MainWindowPrivate)
   {
     constructor();
     loadFile(fileName);
@@ -57,43 +79,46 @@ namespace Avogadro {
 
   void MainWindow::constructor()
   {
+    Q_D(MainWindow);
+    d->molecule = new Molecule(this);
+
     ui.setupUi(this);
     
     readSettings();
     setAttribute(Qt::WA_DeleteOnClose);
 
-    m_undo = new QUndoStack(this);
-    m_toolsFlow = new FlowLayout(ui.toolsWidget);
-    m_toolsFlow->setMargin(9);
-    m_toolSettingsStacked = new QStackedLayout(ui.toolSettingsWidget);
+    d->undo = new QUndoStack(this);
+    d->toolsFlow = new FlowLayout(ui.toolsWidget);
+    d->toolsFlow->setMargin(9);
+    d->toolSettingsStacked = new QStackedLayout(ui.toolSettingsWidget);
 
-    m_toolGroup = new ToolGroup(this);
-    m_toolGroup->load();
-    connect(m_toolGroup, SIGNAL(toolActivated(Tool *)), this, SLOT(setTool(Tool *)));
+    d->toolGroup = new ToolGroup(this);
+    d->toolGroup->load();
+    connect(d->toolGroup, SIGNAL(toolActivated(Tool *)), this, SLOT(setTool(Tool *)));
 
-    const QList<Tool *> tools = m_toolGroup->tools();
+    const QList<Tool *> tools = d->toolGroup->tools();
     int toolCount = tools.size();
     for(int i = 0; i < toolCount; i++)
     {
       QAction *action = tools.at(i)->activateAction();
       QToolButton *button = new QToolButton(ui.toolsWidget);
       button->setDefaultAction(action);
-      m_toolsFlow->addWidget(button);
-      m_toolSettingsStacked->addWidget(tools.at(i)->settingsWidget());
+      d->toolsFlow->addWidget(button);
+      d->toolSettingsStacked->addWidget(tools.at(i)->settingsWidget());
     }
 
 //     QVBoxLayout *vbCentral = new QVBoxLayout(ui.centralWidget);
 //     vbCentral->setMargin(0);
 //     vbCentral->setSpacing(0);
 
-    ui.glWidget->setMolecule(m_molecule);
-    ui.glWidget->setToolGroup(m_toolGroup);
+    ui.glWidget->setMolecule(d->molecule);
+    ui.glWidget->setToolGroup(d->toolGroup);
     // at least for now, try to always do multisample OpenGL (i.e., antialias)
     // graphical improvement is great and many cards do this in hardware
     // At some point, this should be a preference
 //     QGLFormat format;
 //     format.setSampleBuffers(true);
-//     ui.glWidget = new GLWidget(m_molecule, format, ui.centralWidget);
+//     ui.glWidget = new GLWidget(d->molecule, format, ui.centralWidget);
 //     vbCentral->addWidget(ui.glWidget);
 
 //     ui.bottomFlat = new FlatTabWidget(ui.centralWidget);
@@ -101,15 +126,15 @@ namespace Avogadro {
 
     QWidget *messagesWidget = new QWidget();
     QVBoxLayout *messagesVBox = new QVBoxLayout(messagesWidget);
-    m_messagesText = new QTextEdit();
-    m_messagesText->setReadOnly(true);
+    d->messagesText = new QTextEdit();
+    d->messagesText->setReadOnly(true);
     messagesVBox->setMargin(3);
-    messagesVBox->addWidget(m_messagesText);
+    messagesVBox->addWidget(d->messagesText);
     ui.bottomFlat->addTab(messagesWidget, tr("Messages"));
 
-//     QList<int> sizes = m_splitCentral->sizes();
+//     QList<int> sizes = d->splitCentral->sizes();
 //     sizes[0] = ui.glWidget->maximumHeight();
-//     m_splitCentral->setSizes(sizes);
+//     d->splitCentral->setSizes(sizes);
 
 //     ui.projectTree->setAnimated(true);
 //     ui.projectTree->setAllColumnsShowFocus(true);
@@ -117,7 +142,7 @@ namespace Avogadro {
     //ui.projectTree->setSelectionMode(QAbstractItemView::ExtendedSelection);
 //     ui.projectTree->setSelectionMode(QAbstractItemView::MultiSelection);
 //     ui.projectTree->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui.projectTree->setMolecule(m_molecule);
+    ui.projectTree->setMolecule(d->molecule);
     ui.projectTree->header()->hide();
 
 //dc:     toolBox = new QToolBox(this);
@@ -140,7 +165,7 @@ namespace Avogadro {
 
     // set the default to whatever GL has selected as default on startup
 //     cbEngine->setCurrentIndex(engines.indexOf(ui.glWidget->getDefaultEngine()));
-//     cbTool->setCurrentIndex(m_tools.indexOf(m_currentTool));
+//     cbTool->setCurrentIndex(d->tools.indexOf(d->currentTool));
 
 //     connect(cbEngine, SIGNAL(activated(int)), ui.glWidget, SLOT(setDefaultEngine(int)));
 //     connect(cbTool, SIGNAL(activated(int)), this, SLOT(setTool(int)));
@@ -155,13 +180,12 @@ namespace Avogadro {
 
   void MainWindow::newFile()
   {
-    MainWindow *other = new MainWindow;
-    other->move(x() + 40, y() + 40);
-    other->show();
   }
 
   void MainWindow::openFile()
   {
+    Q_D(MainWindow);
+
     QString fileName = QFileDialog::getOpenFileName(this);
     if (!fileName.isEmpty()) {
       // check to see if we already have an open window
@@ -173,7 +197,7 @@ namespace Avogadro {
         return;
       }
 
-      if (m_currentFile.isEmpty())
+      if (d->currentFile.isEmpty())
         loadFile(fileName);
       else {
         MainWindow *other = new MainWindow;
@@ -186,6 +210,8 @@ namespace Avogadro {
 
   void MainWindow::openRecentFile()
   {
+    Q_D(MainWindow);
+
     QAction *action = qobject_cast<QAction *>(sender());
     if (action) {
       MainWindow *existing = findMainWindow(action->data().toString());
@@ -196,7 +222,7 @@ namespace Avogadro {
         return;
       }
 
-      if (m_currentFile.isEmpty())
+      if (d->currentFile.isEmpty())
         loadFile(action->data().toString());
       else {
         MainWindow *other = new MainWindow;
@@ -219,10 +245,12 @@ namespace Avogadro {
 
   bool MainWindow::save()
   {
-    if (m_currentFile.isEmpty())
+    Q_D(MainWindow);
+
+    if (d->currentFile.isEmpty())
       return saveAs();
     else
-      return saveFile(m_currentFile);
+      return saveFile(d->currentFile);
   }
 
   bool MainWindow::saveAs()
@@ -261,21 +289,27 @@ namespace Avogadro {
 
   void MainWindow::revert()
   {
+    Q_D(MainWindow);
+
     // this currently leaks -- need to free the display list and render, etc.
-    if (!m_currentFile.isEmpty()) {
-      loadFile(m_currentFile);
+    if (!d->currentFile.isEmpty()) {
+      loadFile(d->currentFile);
     }
   }
 
   void MainWindow::documentWasModified()
   {
+    Q_D(MainWindow);
+
     setWindowModified(true);
-    m_modified = false;
+    d->modified = false;
   }
 
   bool MainWindow::maybeSave()
   {
-    if (m_modified) {
+    Q_D(MainWindow);
+
+    if (d->modified) {
       QMessageBox::StandardButton ret;
       ret = QMessageBox::warning(this, tr("Avogadro"),
           tr("The document has been modified.\n"
@@ -328,7 +362,9 @@ namespace Avogadro {
 
   void MainWindow::setTool(Tool *tool)
   {
-    m_toolSettingsStacked->setCurrentWidget(tool->settingsWidget());
+    Q_D(MainWindow);
+
+    d->toolSettingsStacked->setCurrentWidget(tool->settingsWidget());
   }
 
   void MainWindow::updateEngine( QStandardItem *item )
@@ -342,6 +378,8 @@ namespace Avogadro {
 
   void MainWindow::connectUi()
   {
+    Q_D(MainWindow);
+
     connect(ui.actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(ui.actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
     connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(openFile()));
@@ -353,10 +391,10 @@ namespace Avogadro {
     ui.actionExportGraphics->setEnabled(QGLFramebufferObject::hasOpenGLFramebufferObjects());
 
     for (int i = 0; i < maxRecentFiles; ++i) {
-      m_actionRecentFile[i] = new QAction(this);
-      m_actionRecentFile[i]->setVisible(false);
-      ui.menuOpenRecent->addAction(m_actionRecentFile[i]);
-      connect(m_actionRecentFile[i], SIGNAL(triggered()),
+      d->actionRecentFile[i] = new QAction(this);
+      d->actionRecentFile[i]->setVisible(false);
+      ui.menuOpenRecent->addAction(d->actionRecentFile[i]);
+      connect(d->actionRecentFile[i], SIGNAL(triggered()),
           this, SLOT(openRecentFile()));
     }
     
@@ -377,6 +415,8 @@ namespace Avogadro {
 
   bool MainWindow::loadFile(const QString &fileName)
   {
+    Q_D(MainWindow);
+
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
       QMessageBox::warning(this, tr("Avogadro"),
@@ -411,15 +451,15 @@ namespace Avogadro {
     {
       ui.projectTree->setMolecule(molecule);
       ui.glWidget->setMolecule(molecule);
-      if(m_molecule)
-        delete(m_molecule);
-      m_molecule = molecule;
+      if(d->molecule)
+        delete(d->molecule);
+      d->molecule = molecule;
 
       QApplication::restoreOverrideCursor();
 
       QString status;
-      QTextStream(&status) << "Atoms: " << m_molecule->NumAtoms() <<
-        " Bonds: " << m_molecule->NumBonds();
+      QTextStream(&status) << "Atoms: " << d->molecule->NumAtoms() <<
+        " Bonds: " << d->molecule->NumBonds();
       statusBar()->showMessage(status, 5000);
 
       
@@ -437,6 +477,8 @@ namespace Avogadro {
 
   bool MainWindow::saveFile(const QString &fileName)
   {
+    Q_D(MainWindow);
+
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
       QMessageBox::warning(this, tr("Avogadro"),
@@ -466,7 +508,7 @@ namespace Avogadro {
       return false;
     }
 
-    OBMol *molecule = dynamic_cast<OBMol*>(m_molecule);
+    OBMol *molecule = dynamic_cast<OBMol*>(d->molecule);
     if (conv.Write(molecule, &ofs))
       statusBar()->showMessage("Save succeeded.", 5000);
     else
@@ -480,13 +522,15 @@ namespace Avogadro {
 
   void MainWindow::setCurrentFile(const QString &fileName)
   {
-    m_currentFile = fileName;
-    if (m_currentFile.isEmpty()) {
+    Q_D(MainWindow);
+
+    d->currentFile = fileName;
+    if (d->currentFile.isEmpty()) {
       setWindowTitle(tr("Avogadro"));
       return;
     }
     else
-      setWindowTitle(tr("%1 - %2").arg(strippedName(m_currentFile))
+      setWindowTitle(tr("%1 - %2").arg(strippedName(d->currentFile))
           .arg(tr("Avogadro")));
 
     QSettings settings; // already set up properly via main.cpp
@@ -507,18 +551,20 @@ namespace Avogadro {
 
   void MainWindow::updateRecentFileActions()
   {
+    Q_D(MainWindow);
+
     QSettings settings; // set up project and program properly in main.cpp
     QStringList files = settings.value("recentFileList").toStringList();
 
     int numRecentFiles = qMin(files.size(), (int)maxRecentFiles);
 
     for (int i = 0; i < numRecentFiles; ++i) {
-      m_actionRecentFile[i]->setText(strippedName(files[i]));
-      m_actionRecentFile[i]->setData(files[i]);
-      m_actionRecentFile[i]->setVisible(true);
+      d->actionRecentFile[i]->setText(strippedName(files[i]));
+      d->actionRecentFile[i]->setData(files[i]);
+      d->actionRecentFile[i]->setVisible(true);
     }
     for (int j = numRecentFiles; j < maxRecentFiles; ++j)
-      m_actionRecentFile[j]->setVisible(false);
+      d->actionRecentFile[j]->setVisible(false);
 
 //     ui.actionSeparator->setVisible(numRecentFiles > 0);
   }
@@ -530,11 +576,13 @@ namespace Avogadro {
 
   MainWindow *MainWindow::findMainWindow(const QString &fileName)
   {
+    Q_D(MainWindow);
+
     QString canonicalFilePath = QFileInfo(fileName).canonicalFilePath();
 
     foreach (QWidget *widget, qApp->topLevelWidgets()) {
       MainWindow *mainWin = qobject_cast<MainWindow *>(widget);
-      if (mainWin && mainWin->m_currentFile == canonicalFilePath)
+      if (mainWin && mainWin->d_func()->currentFile == canonicalFilePath)
         return mainWin;
     }
     return 0;
@@ -594,10 +642,12 @@ namespace Avogadro {
 
   void MainWindow::actionTriggered()
   {
+    Q_D(MainWindow);
+
     QAction *action = qobject_cast<QAction *>(sender());
     if(action) {
       Extension *extension = dynamic_cast<Extension *>(action->parent());
-      extension->performAction(action, m_molecule, m_messagesText);
+      extension->performAction(action, d->molecule, d->messagesText);
     }
   }
 

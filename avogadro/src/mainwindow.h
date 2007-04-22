@@ -42,6 +42,7 @@ class QStandardItem;
 
 namespace Avogadro {
 
+  class MainWindowPrivate;
   class MainWindow : public QMainWindow
   {
     Q_OBJECT
@@ -79,23 +80,12 @@ namespace Avogadro {
       void updateEngine( QStandardItem *item );
 
     private:
+      Q_DECLARE_PRIVATE(MainWindow);
+      MainWindowPrivate * const d_ptr;
+
       Ui::MainWindow ui;
 
-      Molecule  *m_molecule;
-
-      QString    m_currentFile;
-      bool       m_modified;
-      QUndoStack *m_undo;
-      
-      FlowLayout *m_toolsFlow;
-      QStackedLayout *m_toolSettingsStacked;
-
-      QTextEdit *m_messagesText;
-
-      ToolGroup *m_toolGroup;
-
       enum { maxRecentFiles = 10 };
-      QAction    *m_actionRecentFile[maxRecentFiles];
 
       void constructor();
       void readSettings();
