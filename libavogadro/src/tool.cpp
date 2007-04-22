@@ -31,18 +31,18 @@ namespace Avogadro {
   class ToolPrivate 
   {
     public:
-      ToolPrivate() : m_activateAction(0), m_settingsWidget(0) {}
-      ~ToolPrivate() { delete m_settingsWidget; delete m_activateAction; }
-      QAction *m_activateAction;
-      QWidget *m_settingsWidget;
+      ToolPrivate() : activateAction(0), settingsWidget(0) {}
+      ~ToolPrivate() { delete settingsWidget; delete activateAction; }
+      QAction *activateAction;
+      QWidget *settingsWidget;
   };
 
   Tool::Tool(QObject *parent) : QObject(parent), d(new ToolPrivate)
   { 
-    d->m_activateAction = new QAction(this);
-    d->m_activateAction->setCheckable(true); 
-    d->m_activateAction->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
-    d->m_settingsWidget = new QWidget();
+    d->activateAction = new QAction(this);
+    d->activateAction->setCheckable(true); 
+    d->activateAction->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
+    d->settingsWidget = new QWidget();
   }
 
   Tool::~Tool() 
@@ -62,18 +62,18 @@ namespace Avogadro {
 
   QAction* Tool::activateAction() const {
 
-    if(d->m_activateAction->toolTip() == "")
-      d->m_activateAction->setToolTip(description());
+    if(d->activateAction->toolTip() == "")
+      d->activateAction->setToolTip(description());
 
-    if(d->m_activateAction->text() == "")
-      d->m_activateAction->setText(name());
+    if(d->activateAction->text() == "")
+      d->activateAction->setText(name());
 
-    return d->m_activateAction; 
+    return d->activateAction; 
   }
 
   QWidget* Tool::settingsWidget() const
   {
-    return d->m_settingsWidget;
+    return d->settingsWidget;
   }
 
 } // end namespace Avogadro
