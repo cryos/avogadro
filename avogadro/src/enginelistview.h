@@ -47,9 +47,13 @@ namespace Avogadro {
       ~EngineListView();
 
       void setGLWidget(GLWidget *widget);
+      GLWidget *glWidget() const;
 
     private:
       EngineListViewPrivate *const d;
+
+    private Q_SLOTS:
+      void updateEngine( QStandardItem * );
 
     Q_SIGNALS:
       void itemChanged( QStandardItem * );

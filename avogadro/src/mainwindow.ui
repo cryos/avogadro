@@ -15,13 +15,33 @@
   <widget class="QWidget" name="centralWidget" >
    <layout class="QVBoxLayout" >
     <property name="margin" >
-     <number>9</number>
+     <number>0</number>
     </property>
     <property name="spacing" >
      <number>6</number>
     </property>
     <item>
-     <widget class="Avogadro::GLWidget" native="1" name="glWidget" />
+     <widget class="QTabWidget" name="centralTab" >
+      <property name="currentIndex" >
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab" >
+       <attribute name="title" >
+        <string>View 0</string>
+       </attribute>
+       <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="Avogadro::GLWidget" native="1" name="glWidget" />
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </item>
     <item>
      <widget class="Avogadro::FlatTabWidget" native="1" name="bottomFlat" />
@@ -42,13 +62,6 @@
      <string>&amp;Help</string>
     </property>
     <addaction name="actionAbout" />
-   </widget>
-   <widget class="QMenu" name="menuEdit" >
-    <property name="title" >
-     <string>&amp;Edit</string>
-    </property>
-    <addaction name="actionUndo" />
-    <addaction name="actionRedo" />
    </widget>
    <widget class="QMenu" name="menuFile" >
     <property name="title" >
@@ -79,6 +92,13 @@
     </property>
     <addaction name="actionSetBackgroundColor" />
    </widget>
+   <widget class="QMenu" name="menuEdit" >
+    <property name="title" >
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionUndo" />
+    <addaction name="actionRedo" />
+   </widget>
    <widget class="QMenu" name="menuTools" >
     <property name="title" >
      <string>&amp;Tools</string>
@@ -88,19 +108,22 @@
     <property name="title" >
      <string>&amp;View</string>
     </property>
-    <widget class="QMenu" name="menuDocks" >
-     <property name="title" >
-      <string>&amp;Docks</string>
-     </property>
-    </widget>
     <widget class="QMenu" name="menuToolbars" >
      <property name="title" >
       <string>Toolbars</string>
      </property>
     </widget>
+    <widget class="QMenu" name="menuDocks" >
+     <property name="title" >
+      <string>&amp;Docks</string>
+     </property>
+    </widget>
+    <addaction name="actionNewView" />
+    <addaction name="actionCloseView" />
+    <addaction name="actionFullScreen" />
+    <addaction name="separator" />
     <addaction name="menuDocks" />
     <addaction name="menuToolbars" />
-    <addaction name="actionFullScreen" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menuEdit" />
@@ -370,12 +393,31 @@
     <string>&amp;Redo</string>
    </property>
   </action>
+  <action name="actionNewView" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/filenew.png</iconset>
+   </property>
+   <property name="text" >
+    <string>New View</string>
+   </property>
+  </action>
+  <action name="actionCloseView" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/fileclose.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Close View</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>Avogadro::MoleculeTreeView</class>
-   <extends>QTreeWidget</extends>
-   <header>avogadro/moleculetreeview.h</header>
+   <class>Avogadro::FlatTabWidget</class>
+   <extends>QWidget</extends>
+   <header>flattabwidget.h</header>
   </customwidget>
   <customwidget>
    <class>Avogadro::GLWidget</class>
@@ -383,14 +425,14 @@
    <header>avogadro/glwidget.h</header>
   </customwidget>
   <customwidget>
-   <class>Avogadro::FlatTabWidget</class>
-   <extends>QWidget</extends>
-   <header>flattabwidget.h</header>
-  </customwidget>
-  <customwidget>
    <class>Avogadro::EngineListView</class>
    <extends>QListView</extends>
    <header>enginelistview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::MoleculeTreeView</class>
+   <extends>QTreeWidget</extends>
+   <header>avogadro/moleculetreeview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

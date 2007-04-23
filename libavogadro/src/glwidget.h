@@ -361,6 +361,10 @@ namespace Avogadro {
        */
       virtual void initializeGL();
       /**
+       * virtual function we want to bypass if we are not the current context
+       */
+      virtual void glDraw();
+      /**
        * Virtual function called when the GL area needs repainting
        */
       virtual void paintGL();

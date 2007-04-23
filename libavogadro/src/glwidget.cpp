@@ -139,6 +139,9 @@ namespace Avogadro {
 
   GLWidget::~GLWidget()
   {
+    foreach(Engine *engine, d->engines) {
+      delete engine;
+    }
     delete(d);
   }
   
@@ -225,7 +228,17 @@ namespace Avogadro {
   
     glFlush();
   }
-  
+
+  void GLWidget::glDraw()
+  {
+    if(QGLContext::currentContext() != context())
+    {
+      return;
+    }
+
+    QGLWidget::glDraw();
+  }
+
   void GLWidget::paintGL()
   {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

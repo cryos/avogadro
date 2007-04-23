@@ -60,6 +60,8 @@ namespace Avogadro {
 
       QTextEdit *messagesText;
 
+      QList<GLWidget *> glWidgets;
+
       ToolGroup *toolGroup;
       QAction    *actionRecentFile[MainWindow::maxRecentFiles];
   };
@@ -109,6 +111,7 @@ namespace Avogadro {
     //     vbCentral->setMargin(0);
     //     vbCentral->setSpacing(0);
 
+    d->glWidgets.append(ui.glWidget);
     ui.glWidget->setToolGroup(d->toolGroup);
     // at least for now, try to always do multisample OpenGL (i.e., antialias)
     // graphical improvement is great and many cards do this in hardware
@@ -327,6 +330,59 @@ namespace Avogadro {
     about->show();
   }
 
+  void MainWindow::setView( int index )
+  {
+    Q_D(MainWindow);
+    ui.enginesList->setGLWidget(d->glWidgets.at(index));
+    d->glWidgets.at(index)->makeCurrent();
+  }
+
+  void MainWindow::newView()
+  {
+    Q_D(MainWindow);
+    QWidget *widget = new QWidget();
+    QVBoxLayout *layout = new QVBoxLayout(widget);
+    GLWidget *glWidget = new GLWidget();
+    glWidget->setObjectName(tr("GLWidget"));
+    layout->addWidget(glWidget);
+    layout->setMargin(0);
+    layout->setSpacing(6);
+    d->glWidgets.append(glWidget);
+    glWidget->setMolecule(d->molecule);
+    glWidget->setToolGroup(d->toolGroup);
+
+    int index = ui.centralTab->addTab(widget, QString(""));
+    ui.centralTab->setTabText(index, tr("View ") + QString::number(index));
+    d->glWidgets.at(ui.centralTab->currentIndex())->makeCurrent();
+    ui.actionCloseView->setEnabled(true);
+  }
+
+  void MainWindow::closeView()
+  {
+    Q_D(MainWindow);
+
+    QWidget *widget = ui.centralTab->currentWidget();
+    foreach(QObject *object, widget->children())
+    {
+      GLWidget *glWidget = qobject_cast<GLWidget *>(object);
+      if(glWidget)
+      {
+      int index = ui.centralTab->currentIndex();
+      ui.centralTab->removeTab(index);
+      for(int count=ui.centralTab->count(); index < count; index++) {
+        QString text = ui.centralTab->tabText(index);
+        if(!text.compare(tr("View ") + QString::number(index+1)))
+        {
+          ui.centralTab->setTabText(index, tr("View ") + QString::number(index));
+        }
+      }
+      d->glWidgets.removeAll(glWidget);
+      delete glWidget;
+      ui.actionCloseView->setEnabled(ui.centralTab->count() != 1);
+      }
+    }
+  }
+
   void MainWindow::fullScreen()
   {
     if (!this->isFullScreen()) {
@@ -353,15 +409,6 @@ namespace Avogadro {
     Q_D(MainWindow);
 
     d->toolSettingsStacked->setCurrentWidget(tool->settingsWidget());
-  }
-
-  void MainWindow::updateEngine( QStandardItem *item )
-  {
-    Engine *engine = item->data().value<Engine *>();
-    if(engine) {
-      engine->setEnabled(item->checkState());
-      ui.glWidget->updateGL();
-    }
   }
 
   void MainWindow::connectUi()
@@ -393,12 +440,13 @@ namespace Avogadro {
 
 
     connect(ui.actionClearRecent, SIGNAL(triggered()), this, SLOT(clearRecentFiles()));
+    connect(ui.actionNewView, SIGNAL(triggered()), this, SLOT(newView()));
+    connect(ui.actionCloseView, SIGNAL(triggered()), this, SLOT(closeView()));
     connect(ui.actionFullScreen, SIGNAL(triggered()), this, SLOT(fullScreen()));
     connect(ui.actionSetBackgroundColor, SIGNAL(triggered()), this, SLOT(setBackgroundColor()));
     connect(ui.actionAbout, SIGNAL(triggered()), this, SLOT(about()));
 
-    connect(ui.enginesList, SIGNAL(itemChanged(QStandardItem *)), 
-        this, SLOT(updateEngine(QStandardItem *)));
+    connect(ui.centralTab, SIGNAL(currentChanged(int)), this, SLOT(setView(int)));
   }
 
   bool MainWindow::setFile(const QString &fileName)
@@ -472,7 +520,9 @@ namespace Avogadro {
     connect(d->molecule, SIGNAL(primitiveUpdated(Primitive *)), this, SLOT(documentWasModified()));
     connect(d->molecule, SIGNAL(primitiveRemoved(Primitive *)), this, SLOT(documentWasModified()));
 
-    ui.glWidget->setMolecule(d->molecule);
+    foreach(GLWidget *widget, d->glWidgets) {
+      widget->setMolecule(d->molecule);
+    }
     ui.projectTree->setMolecule(d->molecule);
 
     setWindowModified(false);

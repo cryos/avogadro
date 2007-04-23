@@ -66,6 +66,9 @@ namespace Avogadro {
       void revert();
       void exportGraphics();
 
+      void newView();
+      void closeView();
+      void setView(int index);
       void fullScreen();
       void setBackgroundColor();
 
@@ -77,7 +80,7 @@ namespace Avogadro {
 
       void setTool(Tool *tool);
 
-      void updateEngine( QStandardItem *item );
+//       void updateEngine( QStandardItem *item );
 
     private:
       Q_DECLARE_PRIVATE(MainWindow);

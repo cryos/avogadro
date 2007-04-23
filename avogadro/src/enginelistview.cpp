@@ -46,6 +46,11 @@ namespace Avogadro {
     delete d;
   }
 
+  GLWidget *EngineListView::glWidget() const
+  {
+    return d->widget;
+  }
+
   void EngineListView::setGLWidget(GLWidget *widget)
   {
     d->widget = widget;
@@ -74,8 +79,18 @@ namespace Avogadro {
 
     setModel(m);
     connect(m, SIGNAL(itemChanged(QStandardItem *)), 
-        this, SIGNAL(itemChanged(QStandardItem *)));
+        this, SLOT(updateEngine(QStandardItem *)));
   }
+
+  void EngineListView::updateEngine( QStandardItem *item )
+  {
+    Engine *engine = item->data().value<Engine *>();
+    if(engine) {
+      engine->setEnabled(item->checkState());
+      d->widget->updateGL();
+    }
+  }
+
 
 } // end namespace Avogadro
 
