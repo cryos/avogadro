@@ -36,35 +36,48 @@ namespace Avogadro {
       bool selected;
   };
 
-  Primitive::Primitive(QObject *parent) : d(new PrimitivePrivate), QObject(parent) {}
+  Primitive::Primitive(QObject *parent) : d_ptr(new PrimitivePrivate), QObject(parent) {}
 
-  Primitive::Primitive(enum Type type, QObject *parent) : d(new PrimitivePrivate), QObject(parent)
+  Primitive::Primitive(enum Type type, QObject *parent) : d_ptr(new PrimitivePrivate), QObject(parent)
   {
+    Q_D(Primitive);
+    d->type = type;
+  }
+
+  Primitive::Primitive(PrimitivePrivate &dd, QObject *parent) : d_ptr(&dd), QObject(parent) {}
+
+  Primitive::Primitive(PrimitivePrivate &dd, enum Type type, QObject *parent) : d_ptr(&dd), QObject(parent)
+  {
+    Q_D(Primitive);
     d->type = type;
   }
 
   Primitive::~Primitive()
   {
-    delete d;
+    delete d_ptr;
   }
 
   bool Primitive::isSelected() const
   {
+    Q_D(const Primitive);
     return d->selected;
   }
 
   void Primitive::setSelected( bool s ) 
   {
+    Q_D(Primitive);
     d->selected = s;
   }
 
   void Primitive::toggleSelected()
   {
+    Q_D(Primitive);
     d->selected = !d->selected;
   }
 
   enum Primitive::Type Primitive::type() const
   {
+    Q_D(const Primitive);
     return d->type;
   }
 
@@ -73,23 +86,23 @@ namespace Avogadro {
     emit updated();
   }
 
-  class MoleculePrivate {
+  class MoleculePrivate : public PrimitivePrivate {
     public:
-      Eigen::Vector3d       center;
-      Eigen::Vector3d       normalVector;
-      double                radius;
-      Atom *                farthestAtom;
-      bool                  invalidGeomInfo;
+      MoleculePrivate() : PrimitivePrivate(), farthestAtom(0), invalidGeomInfo(true) {}
+      mutable Eigen::Vector3d       center;
+      mutable Eigen::Vector3d       normalVector;
+      mutable double                radius;
+      mutable Atom *                farthestAtom;
+      mutable bool                  invalidGeomInfo;
   };
 
-  Molecule::Molecule(QObject *parent) : OpenBabel::OBMol(), Primitive(MoleculeType, parent), d(new MoleculePrivate) 
+  Molecule::Molecule(QObject *parent) : OpenBabel::OBMol(), Primitive(*new MoleculePrivate, MoleculeType, parent) 
   {
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
   }
 
   Molecule::~Molecule()
   {
-    delete(d);
   }
 
   Atom * Molecule::CreateAtom()
@@ -145,6 +158,7 @@ namespace Avogadro {
 
   void Molecule::updatePrimitive()
   {
+    Q_D(Molecule);
     Primitive *primitive = qobject_cast<Primitive *>(sender());
     emit primitiveUpdated(primitive);
     d->invalidGeomInfo = true;
@@ -152,36 +166,43 @@ namespace Avogadro {
 
   void Molecule::update()
   {
+    Q_D(Molecule);
     emit updated();
     d->invalidGeomInfo = true;
   }
 
   const Eigen::Vector3d & Molecule::center() const
   {
+    Q_D(const Molecule);
     if( d->invalidGeomInfo ) computeGeomInfo();
     return d->center;
   }
     
   const Eigen::Vector3d & Molecule::normalVector() const
   {
+    Q_D(const Molecule);
     if( d->invalidGeomInfo ) computeGeomInfo();
     return d->normalVector;
   }
     
   const double & Molecule::radius() const
   {
+    Q_D(const Molecule);
     if( d->invalidGeomInfo ) computeGeomInfo();
     return d->radius;
   }
     
   const Atom * Molecule::farthestAtom() const
   {
+    Q_D(const Molecule);
     if( d->invalidGeomInfo ) computeGeomInfo();
     return d->farthestAtom;
   }
 
   void Molecule::computeGeomInfo() const
   {
+//     MoleculePrivate *d = reinterpret_cast<MoleculePrivate *>(d_ptr);
+    Q_D(const Molecule);
     d->invalidGeomInfo = true;
     d->farthestAtom = 0;
     d->center.loadZero();

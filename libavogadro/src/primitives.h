@@ -81,7 +81,7 @@ namespace Avogadro {
        * Default constructor.
        * @param parent the object parent
        */
-      Primitive(QObject *parent=0);
+      Primitive(QObject *parent = 0);
       /**
        * Constructor
        * @param type the primitive type
@@ -147,8 +147,13 @@ namespace Avogadro {
        */
       void updated();
 
+    protected:
+      PrimitivePrivate * const d_ptr;
+      Primitive(PrimitivePrivate &dd, QObject *parent = 0);
+      Primitive(PrimitivePrivate &dd, enum Type type, QObject *parent=0);
+
     private:
-      PrimitivePrivate * const d;
+      Q_DECLARE_PRIVATE(Primitive);
 
   };
 
@@ -329,7 +334,9 @@ namespace Avogadro {
       const Atom *farthestAtom() const;
 
     private:
-      MoleculePrivate *const d;
+      /* shared d_ptr with Primitive */
+      Q_DECLARE_PRIVATE(Molecule);
+
       void computeGeomInfo() const;
 
     private Q_SLOTS:
@@ -427,6 +434,6 @@ namespace Avogadro {
 
 } // namespace Avogadro
 
-Q_DECLARE_METATYPE(Avogadro::Primitive*)
+Q_DECLARE_METATYPE(Avogadro::Primitive*);
 
 #endif // __PRIMITIVES_H

@@ -19,169 +19,193 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-Cylinder::Cylinder(int faces) : m_vertexBuffer(0), m_normalBuffer(0),
-  m_displayList(0)
-{
-  setup(faces);
-}
+  class CylinderPrivate {
+    public:
+      CylinderPrivate() : vertexBuffer(0), normalBuffer(0), vertexCount(0), displayList(0), isValid(false) {}
 
-Cylinder::~Cylinder()
-{
-  freeBuffers();
-  if( m_displayList )
-    glDeleteLists( m_displayList, 1 );
-}
+      /** Pointer to the buffer storing the vertex array */
+      Eigen::Vector3f *vertexBuffer;
+      /** Pointer to the buffer storing the normal array */
+      Eigen::Vector3f *normalBuffer;
+      /** The number of vertices, i.e. the size of d->vertexBuffer
+       * or equivalently d->normalBuffer */
+      int vertexCount;
+      /** The id of the OpenGL display list */
+      GLuint displayList;
+      /** Equals true if the vertex array has been correctly initialized */
+      bool isValid;
 
-void Cylinder::freeBuffers()
-{
-  if( m_normalBuffer )
+      /** the number of faces of the cylinder. This only
+       * includes the lateral faces, as the base and top faces (the
+       * two discs) are not rendered. */
+      int faces;
+  };
+
+  Cylinder::Cylinder(int faces) : d(new CylinderPrivate)
   {
-    delete [] m_normalBuffer;
-    m_normalBuffer = 0;
+    setup(faces);
   }
-  if( m_vertexBuffer )
+
+  Cylinder::~Cylinder()
   {
-    delete [] m_vertexBuffer;
-    m_vertexBuffer = 0;
-  }
-}
-
-void Cylinder::setup( int faces )
-{
-  if( faces == m_faces ) return;
-  m_faces = faces;
-  initialize();
-}
-
-void Cylinder::initialize()
-{
-  // compile display list and free buffers
-  if( ! m_displayList ) m_displayList = glGenLists( 1 );
-  if( ! m_displayList ) return;
-  glNewList( m_displayList, GL_COMPILE );
-
-  if( m_faces < 3 ) 
-  {
-    glLineWidth(1.0);
-    glBegin(GL_LINES);
-    glVertex3d(0, 0, 0);
-    glVertex3d(0, 0, 1);
-    glEnd();
-  }
-  else
-  {
-    // compute number of vertices
-    m_vertexCount = 2 * m_faces + 2;
-
-    // deallocate any previously allocated buffer
     freeBuffers();
-
-    // allocate memory for buffers
-    m_vertexBuffer = new Vector3f[m_vertexCount];
-    if( ! m_vertexBuffer ) return;
-    m_normalBuffer = new Vector3f[m_vertexCount];
-    if( ! m_normalBuffer ) return;
-
-    float baseAngle = 2 * M_PI / m_faces;
-    // build vertex and normal buffers
-    for( int i = 0; i <= m_faces; i++ )
-    {
-      float angle = baseAngle * i;
-      Vector3f v( cosf(angle), sinf(angle), 0.0f );
-      m_normalBuffer[ 2 * i ] = v;
-      m_normalBuffer[ 2 * i + 1 ] = v;
-      m_vertexBuffer[ 2 * i ] = v;
-      m_vertexBuffer[ 2 * i + 1 ] = v;
-      m_vertexBuffer[ 2 * i ].z() = 1.0f;
+    if( d->displayList ) {
+      glDeleteLists( d->displayList, 1 );
     }
-    do_draw();
+
+    delete d;
   }
-  glEndList();
-  freeBuffers();
-}
 
-void Cylinder::do_draw() const
-{
-  glVertexPointer( 3, GL_FLOAT, 0, m_vertexBuffer );
-  glNormalPointer( GL_FLOAT, 0, m_normalBuffer );
-  glDrawArrays( GL_QUAD_STRIP, 0, m_vertexCount );
-}
-
-void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
-    double radius, int order, double shift,
-    const Vector3d &planeNormalVector ) const
-{
-
-  // the "axis vector" of the cylinder
-  Vector3d axis = end2 - end1;
-
-  // now we want to construct an orthonormal basis whose first
-  // vector is axis.normalized(). We don't use Eigen's loadOrthoBasis()
-  // for that, because we want one more thing. The second vector in this
-  // basis, which we call ortho1, should be approximately lying in the
-  // z=0 plane if possible. This is to ensure double bonds don't look
-  // like single bonds from the default point of view.
-  double axisNorm = axis.norm();
-  if( axisNorm == 0.0 ) return;
-  Vector3d axisNormalized = axis / axisNorm;
-
-  Vector3d ortho1 = axisNormalized.cross(planeNormalVector);
-  double ortho1Norm = ortho1.norm();
-  if( ortho1Norm > 0.001 ) ortho1 /= ortho1Norm;
-  else ortho1 = axisNormalized.ortho();
-  ortho1 *= radius;
-
-  Vector3d ortho2 = cross( axisNormalized, ortho1 );       
-
-  // construct the 4D transformation matrix
-  Matrix4d matrix;
-
-  matrix(0, 0) = ortho1(0);
-  matrix(1, 0) = ortho1(1);
-  matrix(2, 0) = ortho1(2);
-  matrix(3, 0) = 0.0;
-
-  matrix(0, 1) = ortho2(0);
-  matrix(1, 1) = ortho2(1);
-  matrix(2, 1) = ortho2(2);
-  matrix(3, 1) = 0.0;
-
-  matrix(0, 2) = axis(0);
-  matrix(1, 2) = axis(1);
-  matrix(2, 2) = axis(2);
-  matrix(3, 2) = 0.0;
-
-  matrix(0, 3) = end1(0);
-  matrix(1, 3) = end1(1);
-  matrix(2, 3) = end1(2);
-  matrix(3, 3) = 1.0;
-
-  //now we can do the actual drawing !
-  glPushMatrix();
-  glMultMatrixd( matrix.array() );
-  if( order == 1 )
-    glCallList( m_displayList );
-  else
+  void Cylinder::freeBuffers()
   {
-    double angleOffset = 0.0;
-    if( order >= 3 )
+    if( d->normalBuffer )
     {
-      if( order == 3 ) angleOffset = 90.0;
-      else angleOffset = 22.5;
+      delete [] d->normalBuffer;
+      d->normalBuffer = 0;
     }
-
-    double displacementFactor = shift / radius;
-    for( int i = 0; i < order; i++)
+    if( d->vertexBuffer )
     {
-      glPushMatrix();
-      glRotated( angleOffset + 360.0 * i / order,
-          0.0, 0.0, 1.0 );
-      glTranslated( displacementFactor, 0.0, 0.0 );
-      glCallList( m_displayList );
-      glPopMatrix();
+      delete [] d->vertexBuffer;
+      d->vertexBuffer = 0;
     }
   }
-  glPopMatrix();
-}
+
+  void Cylinder::setup( int faces )
+  {
+    if( faces == d->faces ) return;
+    d->faces = faces;
+    initialize();
+  }
+
+  void Cylinder::initialize()
+  {
+    // compile display list and free buffers
+    if( ! d->displayList ) d->displayList = glGenLists( 1 );
+    if( ! d->displayList ) return;
+    glNewList( d->displayList, GL_COMPILE );
+
+    if( d->faces < 3 ) 
+    {
+      glLineWidth(1.0);
+      glBegin(GL_LINES);
+      glVertex3d(0, 0, 0);
+      glVertex3d(0, 0, 1);
+      glEnd();
+    }
+    else
+    {
+      // compute number of vertices
+      d->vertexCount = 2 * d->faces + 2;
+
+      // deallocate any previously allocated buffer
+      freeBuffers();
+
+      // allocate memory for buffers
+      d->vertexBuffer = new Vector3f[d->vertexCount];
+      if( ! d->vertexBuffer ) return;
+      d->normalBuffer = new Vector3f[d->vertexCount];
+      if( ! d->normalBuffer ) return;
+
+      float baseAngle = 2 * M_PI / d->faces;
+      // build vertex and normal buffers
+      for( int i = 0; i <= d->faces; i++ )
+      {
+        float angle = baseAngle * i;
+        Vector3f v( cosf(angle), sinf(angle), 0.0f );
+        d->normalBuffer[ 2 * i ] = v;
+        d->normalBuffer[ 2 * i + 1 ] = v;
+        d->vertexBuffer[ 2 * i ] = v;
+        d->vertexBuffer[ 2 * i + 1 ] = v;
+        d->vertexBuffer[ 2 * i ].z() = 1.0f;
+      }
+      do_draw();
+    }
+    glEndList();
+    freeBuffers();
+  }
+
+  void Cylinder::do_draw() const
+  {
+    glVertexPointer( 3, GL_FLOAT, 0, d->vertexBuffer );
+    glNormalPointer( GL_FLOAT, 0, d->normalBuffer );
+    glDrawArrays( GL_QUAD_STRIP, 0, d->vertexCount );
+  }
+
+  void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
+      double radius, int order, double shift,
+      const Vector3d &planeNormalVector ) const
+  {
+
+    // the "axis vector" of the cylinder
+    Vector3d axis = end2 - end1;
+
+    // now we want to construct an orthonormal basis whose first
+    // vector is axis.normalized(). We don't use Eigen's loadOrthoBasis()
+    // for that, because we want one more thing. The second vector in this
+    // basis, which we call ortho1, should be approximately lying in the
+    // z=0 plane if possible. This is to ensure double bonds don't look
+    // like single bonds from the default point of view.
+    double axisNorm = axis.norm();
+    if( axisNorm == 0.0 ) return;
+    Vector3d axisNormalized = axis / axisNorm;
+
+    Vector3d ortho1 = axisNormalized.cross(planeNormalVector);
+    double ortho1Norm = ortho1.norm();
+    if( ortho1Norm > 0.001 ) ortho1 /= ortho1Norm;
+    else ortho1 = axisNormalized.ortho();
+    ortho1 *= radius;
+
+    Vector3d ortho2 = cross( axisNormalized, ortho1 );       
+
+    // construct the 4D transformation matrix
+    Matrix4d matrix;
+
+    matrix(0, 0) = ortho1(0);
+    matrix(1, 0) = ortho1(1);
+    matrix(2, 0) = ortho1(2);
+    matrix(3, 0) = 0.0;
+
+    matrix(0, 1) = ortho2(0);
+    matrix(1, 1) = ortho2(1);
+    matrix(2, 1) = ortho2(2);
+    matrix(3, 1) = 0.0;
+
+    matrix(0, 2) = axis(0);
+    matrix(1, 2) = axis(1);
+    matrix(2, 2) = axis(2);
+    matrix(3, 2) = 0.0;
+
+    matrix(0, 3) = end1(0);
+    matrix(1, 3) = end1(1);
+    matrix(2, 3) = end1(2);
+    matrix(3, 3) = 1.0;
+
+    //now we can do the actual drawing !
+    glPushMatrix();
+    glMultMatrixd( matrix.array() );
+    if( order == 1 )
+      glCallList( d->displayList );
+    else
+    {
+      double angleOffset = 0.0;
+      if( order >= 3 )
+      {
+        if( order == 3 ) angleOffset = 90.0;
+        else angleOffset = 22.5;
+      }
+
+      double displacementFactor = shift / radius;
+      for( int i = 0; i < order; i++)
+      {
+        glPushMatrix();
+        glRotated( angleOffset + 360.0 * i / order,
+            0.0, 0.0, 1.0 );
+        glTranslated( displacementFactor, 0.0, 0.0 );
+        glCallList( d->displayList );
+        glPopMatrix();
+      }
+    }
+    glPopMatrix();
+  }
 
 }

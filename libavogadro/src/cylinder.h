@@ -15,38 +15,22 @@
 #define __CYLINDER_H
 
 #include <avogadro/global.h>
+#include <avogadro/glwidget.h>
 
 #include <openbabel/mol.h>
 #include <eigen/matrix.h>
-#include <QGLWidget>
 
 namespace Avogadro {
 
   /**
-   * This class represents and draws a cylinder
-   *
+   * @class Cylinder
+   * @brief This class represents and draws a cylinder
    * @author Benoit Jacob
    */
+  class CylinderPrivate;
   class A_EXPORT Cylinder
   {
     protected:
-      /** Pointer to the buffer storing the vertex array */
-      Eigen::Vector3f *m_vertexBuffer;
-      /** Pointer to the buffer storing the normal array */
-      Eigen::Vector3f *m_normalBuffer;
-      /** The number of vertices, i.e. the size of m_vertexBuffer
-       * or equivalently m_normalBuffer */
-      int m_vertexCount;
-      /** The id of the OpenGL display list */
-      GLuint m_displayList;
-      /** Equals true if the vertex array has been correctly initialized */
-      bool m_isValid;
-
-      /** the number of faces of the cylinder. This only
-       * includes the lateral faces, as the base and top faces (the
-       * two discs) are not rendered. */
-      int m_faces;
-
       void initialize();
       void freeBuffers();
       void do_draw() const;
@@ -81,6 +65,9 @@ namespace Avogadro {
       void draw( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
           double radius, int order, double shift,
           const Eigen::Vector3d &planeNormalVector ) const;
+
+    private:
+      CylinderPrivate * const d;
   };
 
 }

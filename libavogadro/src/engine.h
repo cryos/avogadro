@@ -128,7 +128,6 @@ namespace Avogadro {
       virtual void updatePrimitive(Primitive *primitive);
       virtual void removePrimitive(Primitive *primitive);
 
-
     private:
       EnginePrivate *const d;
   };
@@ -161,7 +160,7 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-Q_DECLARE_METATYPE(Avogadro::Engine*)
-Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro.enginefactory/1.0")
+Q_DECLARE_METATYPE(Avogadro::Engine*);
+Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro.enginefactory/1.0");
 
 #endif
