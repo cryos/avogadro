@@ -104,13 +104,11 @@ bool BSDYEngine::render()
 
 
   m_update = false;
-  Vector3d translationVector = gl->camera().translationVector();
   glPushAttrib(GL_TRANSFORM_BIT);
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
   list = queue().primitiveList(Primitive::AtomType);
   glPushName(Primitive::AtomType);
-  Vector3d zDistance;
   foreach( Primitive *p, list ) {
     // FIXME: should be qobject_cast but bug with Qt/Mac
     Atom * a = dynamic_cast<Atom *>(p);
@@ -118,23 +116,22 @@ bool BSDYEngine::render()
 
     Color(a).applyAsMaterials();
 
-    zDistance = (a->pos() - translationVector);
-    float zDistanceNorm = zDistance.norm();
-//     float zDistanceNorm = 200;
+    double zDistance = gl->camera().distance(a->pos());
+//     float zDistance = 200;
     int detail = 0;
-    if(zDistanceNorm >= 0.0 && zDistanceNorm < 200.0)
+    if(zDistance >= 0.0 && zDistance < 200.0)
     {
-      if(zDistanceNorm >= 100.0 && zDistanceNorm < 200.0)
+      if(zDistance >= 100.0 && zDistance < 200.0)
       {
-        detail = 1 - (((int) zDistanceNorm - 100) / 50);
+        detail = 1 - (( static_cast<int>(zDistance) - 100) / 50);
       }
-      else if(zDistanceNorm >= 20.0 && zDistanceNorm < 100.0)
+      else if(zDistance >= 20.0 && zDistance < 100.0)
       {
-        detail = 5 - (((int) zDistanceNorm - 20) / 20);
+        detail = 5 - (( static_cast<int>(zDistance) - 20) / 20);
       }
       else
       {
-        detail = 9 - (int) (zDistanceNorm / 5);
+        detail = 9 -  static_cast<int>(zDistance / 5);
       }
       m_spheres.at(detail)->draw(a->GetVector().AsArray(), etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
     }
@@ -153,7 +150,7 @@ bool BSDYEngine::render()
     {
       Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
       glEnable( GL_BLEND );
-      if(zDistanceNorm < 200.0)
+      if(zDistance < 200.0)
       {
         m_spheres.at(detail)->draw(a->GetVector().AsArray(), 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
       }
@@ -196,8 +193,6 @@ bool BSDYEngine::render()
     Vector3d v2 (atom2->pos());
     Vector3d v3 (( v1 + v2 ) / 2);
 
-    zDistance = v3 - translationVector;
-
     double radius = 0.1;
     double shift = 0.15;
     int order = b->GetBO();
@@ -205,18 +200,18 @@ bool BSDYEngine::render()
     // for now, just allow selecting atoms
     //  glPushName(bondType);
     //  glPushName(b->GetIdx());
-    float zDistanceNorm = zDistance.norm();
-//     float zDistanceNorm = 200;
+    double zDistance = gl->camera().distance(v3);
+//     float zDistance = 200;
     int detail = 0;
-    if(zDistanceNorm >= 100.0 && zDistanceNorm < 200.0)
+    if(zDistance >= 100.0 && zDistance < 200.0)
     {
       detail = 1;
     }
-    else if(zDistanceNorm >= 20.0 && zDistanceNorm < 100.0)
+    else if(zDistance >= 20.0 && zDistance < 100.0)
     {
       detail = 2;
     }
-    else if(zDistanceNorm >= 0.0  && zDistanceNorm < 20.0)
+    else if(zDistance >= 0.0  && zDistance < 20.0)
     {
       detail = 3;
     }

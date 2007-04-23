@@ -82,9 +82,9 @@ namespace Avogadro
     d->matrix.prerotate3(angle, axis);
   }
   
-  const Eigen::Vector3d Camera::translationVector() const
+  const double Camera::distance(const Eigen::Vector3d & point) const
   {
-    return d->matrix.translationVector();
+    return ( d->matrix * point ).norm();
   }
   
   void Camera::setMatrix(const Eigen::MatrixP3d &matrix)
@@ -137,7 +137,7 @@ namespace Avogadro
     rotation.setRow(0, rotation.row(2).ortho());
     rotation.setRow(1, rotation.row(2).cross(rotation.row(0)));
 
-    // set the camera's matrix to be this rotation.
+    // set the camera's matrix to be (the 4x4 version of) this rotation.
     setMatrix(rotation);
   
     // now we want to move backwards, in order
@@ -162,12 +162,19 @@ namespace Avogadro
 
     double molRadius = d->parent->radius();
 
-    molRadius += 3.0; // add some safety margin to the radius. For example, while an atom is
-                      // being dragged around, the molecule's geometric info isn't getting
-                      // updated, so some margin is needed, or else the atom being moved
-                      // would get clipped off.
+    // we want to add some safety margin to the radius. For example, while an atom is
+    // being dragged around, the molecule's geometric info isn't getting
+    // updated, so some margin is needed, or else the atom being moved
+    // would get clipped off. How big this "safety margin" should be, depends on
+    // the molecule's radius. The are two cases.
 
-    double distanceToMol = (translationVector() - d->parent->center()).norm();
+    // First case: the molecule is very small or empty. Let's then tweak its radius to some
+    // artificial value.
+    if( molRadius < 3.0 ) molRadius = 4.0;
+    // Other case: the molecule is big, we want to add a certain percentage to its size.
+    else molRadius *= (4.0 / 3.0);
+
+    double distanceToMol = distance( d->parent->center() );
     double nearEnd, farEnd;
     if( distanceToMol < 2.0 * molRadius)
     {
@@ -179,6 +186,7 @@ namespace Avogadro
       nearEnd = distanceToMol - molRadius * 1.5;
       farEnd = distanceToMol + molRadius * 1.5;
     }
+
     double aspectRatio = static_cast<double>(d->parent->width()) / d->parent->height();
     gluPerspective( d->angleOfViewY, aspectRatio, nearEnd, farEnd );
   }

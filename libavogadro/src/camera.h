@@ -116,15 +116,13 @@ namespace Avogadro {
         * @sa applyPerspective(), applyModelview()
         */
       void initializeViewPoint();
-      /** Returns the translation vector as read from the last column of the "modelview" matrix.
-        * This vector can be interpreted as the position of the camera in the coordinate system of
-        * the molecule. Thus, the distance between the camera and the molecule's center is:
+      /** Returns the distance between @a point and the camera. For instance, to determine the
+        * distance between a molecule's center and the camera, do:
         * @code
-          (camera.translationVector() - molecule.center()).norm()
+          double d = camera.distance( molecule.center() );
         * @endcode
-        * @sa translate(), pretranslate()
         */
-      const Eigen::Vector3d translationVector() const;
+      const double distance(const Eigen::Vector3d & point) const;
       /** Multiply the camera's "modelview" matrix on the right by the translation of given
         * vector. Because the translation is applied on the right, the vector is understood in
         * the molecule's coordinate system. Use this method if you want to make the impression that the molecule is moving while the camera remains fixed. This is the
