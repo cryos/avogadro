@@ -51,7 +51,7 @@ namespace Avogadro {
       MainWindow();
       MainWindow(const QString &fileName);
 
-      bool loadFile(const QString &fileName);
+      bool setFile(const QString &fileName);
       bool saveFile(const QString &fileName);
 
     protected:
@@ -93,9 +93,12 @@ namespace Avogadro {
       void connectUi();
       
       bool maybeSave();
-      void setCurrentFile(const QString &fileName);
+      void setCurrentFileName(const QString &fileName);
       void updateRecentFileActions();
       QString strippedName(const QString &fullFileName);
+
+      void setMolecule(Molecule *molecule);
+      Molecule *molecule() const;
 
       void loadPlugins();
 

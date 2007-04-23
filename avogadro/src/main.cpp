@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
       p += offset;
       other->move(p);
       other->show();
-      other->loadFile(*i);
+      other->setFile(*i);
     }
   } else {
     MainWindow *window = new MainWindow;

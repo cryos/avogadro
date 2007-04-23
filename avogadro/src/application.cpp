@@ -43,9 +43,10 @@ namespace Avogadro {
 
   bool Application::loadFile(const QString &fileName)
   {
+    // need to make this spawn a new instance
     MainWindow *other = new MainWindow;
     other->show();
-    other->loadFile(fileName);
+    other->setFile(fileName);
   }
 
 } // end namespace Avogadro
