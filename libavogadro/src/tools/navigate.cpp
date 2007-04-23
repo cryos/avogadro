@@ -53,9 +53,24 @@ void Navigate::mousePress(GLWidget *widget, const QMouseEvent *event)
   _lastDraggingPosition = event->pos();
   _initialDraggingPosition = event->pos();
 
-  //! List of hits from a selection/pick
+  // Now we want to determine whether an atom is being clicked, and which one.
+  _clickedAtom = false;
+
+  // Perform a OpenGL selection and retrieve the list of hits.
   _hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
 
+  // Find the first atom (if any) in hits - this will be the closest
+  for( int i = 0; i < _hits.size(); i++ )
+  {
+    if(_hits[0].type() == Primitive::AtomType)
+    {
+      _clickedAtom = true;
+      OBAtom *a = widget->molecule()->GetAtom(_hits[0].name());
+      _clickedAtomPos = static_cast<Atom *>(a)->pos();
+      _clickedAtomRadius = etab.GetVdwRad(a->GetAtomicNum());
+      break;
+    }
+  }
 }
 
 void Navigate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
@@ -65,10 +80,7 @@ void Navigate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 
 void Navigate::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
-  Molecule *molecule = widget->molecule();
-  if(!molecule) {
-    return;
-  }
+  if(!widget->molecule()) return;
 
   // Mouse navigation has two modes - atom centred when an atom is clicked and scence if no
   // atom has been clicked.
@@ -83,45 +95,28 @@ void Navigate::mouseMove(GLWidget *widget, const QMouseEvent *event)
   // Get the camera rotation - used whether an atom is clicked or not
   Matrix3d cameraRotation = widget->camera().matrix().linearComponent();
 
-  if( _hits.size() )
+  if( _clickedAtom )
   {
-    // Something has been clicked on
-    Vector3d clickedAtomCenter;
-    double clickedAtomRadius;
-    if( event->buttons() & ( Qt::LeftButton | Qt::MidButton ) )
-    {
-      // Find the first atom in hits - this will be the closest
-      for( int i = 0; i < _hits.size(); i++ )
-      {
-        if(_hits[0].type() == Primitive::AtomType)
-        {
-          clickedAtomCenter = Vector3d( 
-            ((Atom *)molecule->GetAtom(_hits[0].name()))->GetVector().AsArray() );
-          clickedAtomRadius = etab.GetVdwRad(((Atom *)molecule->GetAtom(_hits[0].name()))->GetAtomicNum());
-          break;
-        }
-      }
-    }
     if ( event->buttons() & Qt::LeftButton )
     {
       // Atom centred rotation 
-      widget->camera().translate( clickedAtomCenter );
+      widget->camera().translate( _clickedAtomPos );
       widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, cameraRotation.row(1) );
       widget->camera().rotate( deltaDragging.y() * ROTATION_SPEED, cameraRotation.row(0) );
-      widget->camera().translate( -clickedAtomCenter );
+      widget->camera().translate( -_clickedAtomPos );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
       // Perform the rotation
-      widget->camera().translate( clickedAtomCenter );
+      widget->camera().translate( _clickedAtomPos );
       widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, cameraRotation.row(2) );
-      widget->camera().translate( -clickedAtomCenter );
+      widget->camera().translate( -_clickedAtomPos );
 
       // Perform the atom centred zoom
-      Vector3d transformedClickedAtomCenter = widget->camera().matrix() * clickedAtomCenter;
-      Vector3d goal = transformedClickedAtomCenter + Vector3d(0,0,1) * 8.0 * clickedAtomRadius;
+      Vector3d transformedClickedAtomCenter = widget->camera().matrix() * _clickedAtomPos;
+      Vector3d goal = transformedClickedAtomCenter + Vector3d(0,0,1) * 8.0 * _clickedAtomRadius;
       double t = TRANSLATION_SPEED * deltaDragging.y();
-      bool isTooClose = transformedClickedAtomCenter.norm() < 10.0 * clickedAtomRadius;
+      bool isTooClose = transformedClickedAtomCenter.norm() < 10.0 * _clickedAtomRadius;
       if( isTooClose && t < 0 ) t = 0;
       if( t > 0.5 ) t = 0.5;
       if( t < -0.5 ) t = -0.5;
@@ -134,13 +129,15 @@ void Navigate::mouseMove(GLWidget *widget, const QMouseEvent *event)
                                                0.0 ) );
     }
   }
-  else
+  else // Nothing clicked on
   {
-    // Nothing clicked on
     if( event->buttons() & Qt::LeftButton )
     {
+      // rotation around the center of the molecule
+      widget->camera().translate( widget->center() );
       widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, cameraRotation.row(1) );
       widget->camera().rotate( deltaDragging.y() * ROTATION_SPEED, cameraRotation.row(0) );
+      widget->camera().translate( - widget->center() );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
