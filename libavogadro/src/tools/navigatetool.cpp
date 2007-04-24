@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "navigate.h"
+#include "navigatetool.h"
 #include <avogadro/primitives.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -162,6 +162,6 @@ void NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
 	widget->updateGL();
 }
 
-#include "navigate.moc"
+#include "navigatetool.moc"
 
-Q_EXPORT_PLUGIN2(navigate, NavigateToolFactory)
+Q_EXPORT_PLUGIN2(navigatetool, NavigateToolFactory)

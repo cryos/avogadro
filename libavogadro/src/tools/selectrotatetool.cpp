@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "selectrotate.h"
+#include "selectrotatetool.h"
 #include <avogadro/primitives.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -236,6 +236,6 @@ void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
 
 }
 
-#include "selectrotate.moc"
+#include "selectrotatetool.moc"
 
-Q_EXPORT_PLUGIN2(selectrotate, SelectRotateToolFactory)
+Q_EXPORT_PLUGIN2(selectrotatetool, SelectRotateToolFactory)

@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "clickmeasure.h"
+#include "clickmeasuretool.h"
 #include <avogadro/primitives.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -199,6 +199,6 @@ void ClickMeasureTool::wheel(GLWidget *widget, const QWheelEvent *event)
 {
 }
 
-#include "clickmeasure.moc"
+#include "clickmeasuretool.moc"
 
-Q_EXPORT_PLUGIN2(clickmeasure, ClickMeasureToolFactory)
+Q_EXPORT_PLUGIN2(clickmeasuretool, ClickMeasureToolFactory)

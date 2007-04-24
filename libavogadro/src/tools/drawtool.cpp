@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "draw.h"
+#include "drawtool.h"
 #include <avogadro/primitives.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -403,6 +403,6 @@ Bond *DrawTool::newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom)
   return bond;
 }
 
-#include "draw.moc"
+#include "drawtool.moc"
 
-Q_EXPORT_PLUGIN2(draw, DrawToolFactory)
+Q_EXPORT_PLUGIN2(drawtool, DrawToolFactory)
