@@ -1,5 +1,5 @@
 /**********************************************************************
-  ClickMeasure - ClickMeasure Tool for Avogadro
+  ClickMeasureTool - ClickMeasureTool Tool for Avogadro
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __CLICKMEASURE_H
-#define __CLICKMEASURE_H
+#ifndef __CLICKMEASURETOOL_H
+#define __CLICKMEASURETOOL_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
@@ -40,22 +40,21 @@
 
 namespace Avogadro {
 
- class ClickMeasure : public Tool
+ class ClickMeasureTool : public Tool
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::Tool)
 
     public:
       //! Constructor
-      ClickMeasure();
+      ClickMeasureTool(QObject *parent = 0);
       //! Deconstructor
-      virtual ~ClickMeasure();
+      virtual ~ClickMeasureTool();
 
       //! \name Description methods
       //@{
-      //! Tool Name (ie ClickMeasure)
+      //! Tool Name (ie ClickMeasureTool)
       virtual QString name() const { return(tr("ClickMeasure")); }
-      //! Tool Description (ie. ClickMeasures atoms and bonds)
+      //! Tool Description (ie. ClickMeasureTools atoms and bonds)
       virtual QString description() const { return(tr("Click to Measure Tool")); }
       //@}
 
@@ -89,6 +88,15 @@ namespace Avogadro {
 
       Cylinder *m_line;
   };
+
+  class ClickMeasureToolFactory : public QObject, public ToolFactory
+    {
+      Q_OBJECT;
+      Q_INTERFACES(Avogadro::ToolFactory);
+
+      public:
+        Tool *createInstance(QObject *parent = 0) { return new ClickMeasureTool(parent); }
+    };
 
 } // end namespace Avogadro
 

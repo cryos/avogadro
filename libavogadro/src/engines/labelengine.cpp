@@ -38,14 +38,8 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-bool LabelEngine::render()
+bool LabelEngine::render(GLWidget *gl)
 {
-  // FIXME: should be qobject_cast but bug with Qt/Mac
-  GLWidget *gl = dynamic_cast<GLWidget *>(parent());
-  if(!gl) {
-    return false;
-  }
-
   QList<Primitive *> list;
 
   list = queue().primitiveList(Primitive::AtomType);

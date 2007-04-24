@@ -65,7 +65,7 @@ namespace Avogadro {
       //! Render a Molecule.
       bool render(const Molecule *m);
 
-      bool render();
+      bool render(GLWidget *gl);
       //@}
 
     private:

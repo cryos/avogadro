@@ -1,5 +1,5 @@
 /**********************************************************************
-  ClickMeasure - ClickMeasure Tool for Avogadro
+  ClickMeasureTool - ClickMeasureTool Tool for Avogadro
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -37,7 +37,7 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-ClickMeasure::ClickMeasure() : Tool(),  m_numSelectedAtoms(0), m_dl(0), m_line(new Cylinder(0))
+ClickMeasureTool::ClickMeasureTool(QObject *parent) : Tool(parent),  m_numSelectedAtoms(0), m_dl(0), m_line(new Cylinder(0))
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/measure/measure.png")));
@@ -55,7 +55,7 @@ ClickMeasure::ClickMeasure() : Tool(),  m_numSelectedAtoms(0), m_dl(0), m_line(n
   }
 }
 
-ClickMeasure::~ClickMeasure()
+ClickMeasureTool::~ClickMeasureTool()
 {
   if(m_dl)
   {
@@ -65,7 +65,7 @@ ClickMeasure::~ClickMeasure()
   delete m_line;
 }
 
-void ClickMeasure::mousePress(GLWidget *widget, const QMouseEvent *event)
+void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->molecule();
   if(!molecule) {
@@ -187,17 +187,18 @@ void ClickMeasure::mousePress(GLWidget *widget, const QMouseEvent *event)
   }
 }
 
-void ClickMeasure::mouseMove(GLWidget *widget, const QMouseEvent *event)
+void ClickMeasureTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
 }
 
-void ClickMeasure::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+void ClickMeasureTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
 }
 
-void ClickMeasure::wheel(GLWidget *widget, const QWheelEvent *event)
+void ClickMeasureTool::wheel(GLWidget *widget, const QWheelEvent *event)
 {
 }
 
 #include "clickmeasure.moc"
-Q_EXPORT_PLUGIN2(clickmeasure, ClickMeasure)
+
+Q_EXPORT_PLUGIN2(clickmeasure, ClickMeasureToolFactory)

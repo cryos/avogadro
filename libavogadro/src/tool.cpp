@@ -32,7 +32,10 @@ namespace Avogadro {
   {
     public:
       ToolPrivate() : activateAction(0), settingsWidget(0) {}
-      ~ToolPrivate() { delete settingsWidget; delete activateAction; }
+      ~ToolPrivate() { 
+//         delete settingsWidget; settingsWidget = 0; 
+        delete activateAction; activateAction = 0;
+      }
       QAction *activateAction;
       QWidget *settingsWidget;
   };

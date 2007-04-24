@@ -1,5 +1,5 @@
 /**********************************************************************
-  Draw - Draw Tool for Avogadro
+  DrawTool - DrawTool Tool for Avogadro
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -33,7 +33,7 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-Draw::Draw() : Tool(), m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_bondOrder(1),
+DrawTool::DrawTool(QObject *parent) : Tool(parent), m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_bondOrder(1),
   m_prevAtomElement(0), m_prevBond(0), m_prevBondOrder(0)
 {
   QWidget *settings = settingsWidget();
@@ -71,7 +71,7 @@ Draw::Draw() : Tool(), m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_
 
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
-  action->setToolTip(tr("Drawing Tool (Draw)\n\n"
+  action->setToolTip(tr("DrawTooling Tool (DrawTool)\n\n"
         "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
         "Right Mouse: Delete Atom"));
 
@@ -82,41 +82,41 @@ Draw::Draw() : Tool(), m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_
       this, SLOT(bondOrderChanged(int)));
 }
 
-Draw::~Draw()
+DrawTool::~DrawTool()
 {
 }
 
-void Draw::elementChanged( int index )
+void DrawTool::elementChanged( int index )
 {
   setElement(index + 1);
 }
 
-void Draw::setElement( int index )
+void DrawTool::setElement( int index )
 {
   m_element = index;
 }
 
-int Draw::element() const
+int DrawTool::element() const
 {
   return m_element;
 }
 
-void Draw::bondOrderChanged( int index )
+void DrawTool::bondOrderChanged( int index )
 {
   setBondOrder(index + 1);
 }
 
-void Draw::setBondOrder( int index )
+void DrawTool::setBondOrder( int index )
 {
   m_bondOrder = index;
 }
 
-int Draw::bondOrder() const
+int DrawTool::bondOrder() const
 {
   return m_bondOrder;
 }
 
-void Draw::mousePress(GLWidget *widget, const QMouseEvent *event)
+void DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->molecule();
   if(!molecule) {
@@ -151,7 +151,7 @@ void Draw::mousePress(GLWidget *widget, const QMouseEvent *event)
   }
 }
 
-void Draw::mouseMove(GLWidget *widget, const QMouseEvent *event)
+void DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->molecule();
   if(!molecule) { 
@@ -318,7 +318,7 @@ void Draw::mouseMove(GLWidget *widget, const QMouseEvent *event)
 
 }
 
-void Draw::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+void DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
   if(_buttons & Qt::LeftButton)
   {
@@ -351,11 +351,11 @@ void Draw::mouseRelease(GLWidget *widget, const QMouseEvent *event)
   }
 }
 
-void Draw::wheel(GLWidget *widget, const QWheelEvent *event)
+void DrawTool::wheel(GLWidget *widget, const QWheelEvent *event)
 {
 }
 
-Eigen::Vector3d Draw::unProject(GLWidget *widget, int x, int y)
+Eigen::Vector3d DrawTool::unProject(GLWidget *widget, int x, int y)
 {
   // retrieve the 3D coords of the center of the molecule
   Eigen::Vector3d center = widget->center();
@@ -374,7 +374,7 @@ Eigen::Vector3d Draw::unProject(GLWidget *widget, int x, int y)
   return pos;
 }
 
-Atom *Draw::newAtom(GLWidget *widget, int x, int y)
+Atom *DrawTool::newAtom(GLWidget *widget, int x, int y)
 {
   // GRH (for reasons I don't understand, calling Begin/EndModify here
   // causes crashes with multiple bond orders
@@ -389,7 +389,7 @@ Atom *Draw::newAtom(GLWidget *widget, int x, int y)
   return atom;
 }
 
-Bond *Draw::newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom)
+Bond *DrawTool::newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom)
 {
   molecule->BeginModify();
   Bond *bond = (Bond *)molecule->NewBond();
@@ -404,4 +404,5 @@ Bond *Draw::newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom)
 }
 
 #include "draw.moc"
-Q_EXPORT_PLUGIN2(draw, Draw)
+
+Q_EXPORT_PLUGIN2(draw, DrawToolFactory)

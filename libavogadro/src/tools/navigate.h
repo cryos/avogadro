@@ -1,5 +1,5 @@
 /**********************************************************************
-  Navigation - Navigation Tool for Avogadro
+  NavigateTool - Navigation Tool for Avogadro
 
   Copyright (C) 2007 by Marcus D. Hanwel
   Copyright (C) 2006,2007 by Benoit Jacob
@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __NAVIGATE_H
-#define __NAVIGATE_H
+#ifndef __NAVIGATETOOL_H
+#define __NAVIGATETOOL_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
@@ -39,23 +39,22 @@
 namespace Avogadro {
 
   /**
-   * @class Navigate
+   * @class NavigateTool
    * @brief Port of Navigation from Kalzium
    * @author Marcus D. Hanwel
    *
    * This class is an attempt to port the navigation system in
    * Kalzium to an Avogadro plugin.
    */
-  class Navigate : public Tool
+  class NavigateTool : public Tool
   {
     Q_OBJECT
-      Q_INTERFACES(Avogadro::Tool)
 
     public:
       //! Constructor
-      Navigate();
+      NavigateTool(QObject *parent = 0);
       //! Deconstructor
-      virtual ~Navigate();
+      virtual ~NavigateTool();
 
       //! \name Description methods
       //@{
@@ -96,6 +95,15 @@ namespace Avogadro {
       const double ROTATION_SPEED;
       const double TRANSLATION_SPEED;
   };
+
+  class NavigateToolFactory : public QObject, public ToolFactory
+    {
+      Q_OBJECT;
+      Q_INTERFACES(Avogadro::ToolFactory);
+
+      public:
+        Tool *createInstance(QObject *parent = 0) { return new NavigateTool(); }
+    };
 
 } // end namespace Avogadro
 

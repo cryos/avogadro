@@ -1,5 +1,5 @@
 /**********************************************************************
-  SelectRotate - Selection and Rotation Tool for Avogadro
+  SelectRotateTool - Selection and Rotation Tool for Avogadro
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __SELECTROTATE_H
-#define __SELECTROTATE_H
+#ifndef __SELECTROTATETOOL_H
+#define __SELECTROTATETOOL_H
 
 #include <avogadro/tool.h>
 #include <avogadro/glwidget.h>
@@ -41,16 +41,15 @@ namespace Avogadro {
   class Molecule;
 
 
-  class SelectRotate : public Tool
+  class SelectRotateTool : public Tool
   {
     Q_OBJECT
-      Q_INTERFACES(Avogadro::Tool)
 
     public:
       //! Constructor
-      SelectRotate();
+      SelectRotateTool(QObject *parent = 0);
       //! Deconstructor
-      virtual ~SelectRotate();
+      virtual ~SelectRotateTool();
 
       //! \name Description methods
       //@{
@@ -87,6 +86,15 @@ namespace Avogadro {
       QList<GLHit> _hits;
 
   };
+
+  class SelectRotateToolFactory : public QObject, public ToolFactory
+    {
+      Q_OBJECT;
+      Q_INTERFACES(Avogadro::ToolFactory);
+
+      public:
+        Tool *createInstance(QObject *parent = 0) { return new SelectRotateTool(parent); }
+    };
 
   } // end namespace Avogadro
 

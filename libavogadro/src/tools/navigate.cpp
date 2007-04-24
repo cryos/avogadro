@@ -1,5 +1,5 @@
 /**********************************************************************
-  Navigate - Navigation Tool for Avogadro
+  NavigateTool - Navigation Tool for Avogadro
 
   Copyright (C) 2007 by Marcus D. Hanwel
   Copyright (C) 2006,2007 by Benoit Jacob
@@ -36,17 +36,17 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-Navigate::Navigate() : Tool(), ROTATION_SPEED(0.005), TRANSLATION_SPEED(0.02)
+NavigateTool::NavigateTool(QObject *parent) : Tool(parent), ROTATION_SPEED(0.005), TRANSLATION_SPEED(0.02)
 {
 
 }
 
-Navigate::~Navigate()
+NavigateTool::~NavigateTool()
 {
 
 }
 
-void Navigate::mousePress(GLWidget *widget, const QMouseEvent *event)
+void NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
 
   _movedSinceButtonPressed = false;
@@ -73,12 +73,12 @@ void Navigate::mousePress(GLWidget *widget, const QMouseEvent *event)
   }
 }
 
-void Navigate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+void NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
 
 }
 
-void Navigate::mouseMove(GLWidget *widget, const QMouseEvent *event)
+void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
   if(!widget->molecule()) return;
 
@@ -156,11 +156,12 @@ void Navigate::mouseMove(GLWidget *widget, const QMouseEvent *event)
   widget->updateGL();
 }
 
-void Navigate::wheel(GLWidget *widget, const QWheelEvent *event )
+void NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
 {
 	widget->camera().pretranslate( event->delta() * TRANSLATION_SPEED * Vector3d(0, 0, 1) );
 	widget->updateGL();
 }
 
 #include "navigate.moc"
-Q_EXPORT_PLUGIN2(navigate, Navigate)
+
+Q_EXPORT_PLUGIN2(navigate, NavigateToolFactory)

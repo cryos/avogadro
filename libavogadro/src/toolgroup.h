@@ -83,11 +83,6 @@ namespace Avogadro {
        */
       const QActionGroup * activateActions() const;
 
-      /**
-       * @return constant list of all action config widgets
-       */
-      const QList<QWidget *>& settingsWidgets() const;
-        
     public Q_SLOTS:
       /**
        * @param i index of the tool to set active

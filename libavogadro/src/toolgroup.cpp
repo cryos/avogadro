@@ -39,7 +39,6 @@ namespace Avogadro {
       Tool *activeTool;
       QList<Tool *> tools; 
       QActionGroup *activateActions;
-      QList<QWidget *> settingsWidgets;
   };
 
   ToolGroup::ToolGroup(QObject *parent) : QObject(parent), d(new ToolGroupPrivate)
@@ -70,14 +69,15 @@ namespace Avogadro {
     {
       QDir dir(path); 
       foreach (QString fileName, dir.entryList(QDir::Files)) {
+        qDebug() << fileName;
         QPluginLoader loader(dir.absoluteFilePath(fileName));
         QObject *instance = loader.instance();
-        Tool *tool = qobject_cast<Tool *>(instance);
-        if (tool) {
+        ToolFactory *factory = qobject_cast<ToolFactory *>(instance);
+        if (factory) {
+          Tool *tool = factory->createInstance(this);
           qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
           d->tools.append(tool);
           d->activateActions->addAction(tool->activateAction());
-          d->settingsWidgets.append(tool->settingsWidget());
           connect(tool->activateAction(), SIGNAL(triggered(bool)),
               this, SLOT(activateTool()));
           if (!d->activeTool)
@@ -134,10 +134,6 @@ namespace Avogadro {
     return d->activateActions;
   }
 
-  const QList<QWidget *>& ToolGroup::settingsWidgets() const
-  {
-    return d->settingsWidgets;
-  }
 } // end namespace Avogadro
 
 #include "toolgroup.moc"

@@ -275,7 +275,7 @@ namespace Avogadro {
       /**
        * @return a reference to the camera of this widget
        */
-      Camera & camera();
+      Camera & camera() const;
 
       /**
        * @return a list of engines
@@ -285,7 +285,7 @@ namespace Avogadro {
       /**
        * Get the hits for a region starting at (x,y) of size (w x y)
        */
-      QList<GLHit> hits(int x, int y, int w, int h) const;
+      QList<GLHit> hits(int x, int y, int w, int h);
 
       /**
        * Performs an unprojection from screen coordinates to GL coordinates.
@@ -393,7 +393,7 @@ namespace Avogadro {
       /**
        * Render the scene. To be used in both modes GL_RENDER and GL_SELECT.
        */
-      virtual void render() const;
+      virtual void render();
       
       /**
        * Helper function to load all available engines

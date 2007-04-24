@@ -31,6 +31,7 @@
 #include <QList>
 
 namespace Avogadro {
+  class GLWidget;
 
   /** 
    * @class Engine
@@ -115,7 +116,7 @@ namespace Avogadro {
        * PrimitiveQueue.
        * 
        */
-      virtual bool render() = 0;
+      virtual bool render(GLWidget *gl) = 0;
 
       const PrimitiveQueue& queue() const;
 

@@ -50,8 +50,8 @@ namespace Avogadro {
       virtual QString description() const;
 
       virtual QAction* activateAction() const;
-
       virtual QWidget* settingsWidget() const;
+
       virtual void mousePress(GLWidget *widget, const QMouseEvent *event) = 0;
       virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event) = 0;
       virtual void mouseMove(GLWidget *widget, const QMouseEvent *event) = 0;
@@ -61,9 +61,23 @@ namespace Avogadro {
       ToolPrivate *const d;
 
   };
+  class A_EXPORT ToolFactory
+  {
+    public:
+      /**
+       * Tool factory deconstructor.
+       */
+      virtual ~ToolFactory() {}
+
+      /**
+       * @return pointer to a new instance of an Engine subclass object
+       */
+      virtual Tool *createInstance(QObject *parent=0) = 0;
+  };
+
 } // end namespace Avogadro
 
 Q_DECLARE_METATYPE(Avogadro::Tool*)
-  Q_DECLARE_INTERFACE(Avogadro::Tool, "net.sourceforge.avogadro.tool/1.0")
+Q_DECLARE_INTERFACE(Avogadro::ToolFactory, "net.sourceforge.avogadro.toolfactory/1.0");
 
 #endif

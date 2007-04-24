@@ -1,5 +1,5 @@
 /**********************************************************************
-  SelectRotate - Selection and Rotation Tool for Avogadro
+  SelectRotateTool - Selection and Rotation Tool for Avogadro
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -35,13 +35,13 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-SelectRotate::SelectRotate() : Tool(), _selectionDL(0)
+SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent), _selectionDL(0)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
 }
 
-SelectRotate::~SelectRotate()
+SelectRotateTool::~SelectRotateTool()
 {
   if(_selectionDL)
   {
@@ -49,7 +49,7 @@ SelectRotate::~SelectRotate()
   }
 }
 
-void SelectRotate::mousePress(GLWidget *widget, const QMouseEvent *event)
+void SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
 
   _movedSinceButtonPressed = false;
@@ -67,7 +67,7 @@ void SelectRotate::mousePress(GLWidget *widget, const QMouseEvent *event)
   }
 }
 
-void SelectRotate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+void SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->molecule();
   if(!molecule) {
@@ -127,7 +127,7 @@ void SelectRotate::mouseRelease(GLWidget *widget, const QMouseEvent *event)
   widget->updateGL();
 }
 
-void SelectRotate::mouseMove(GLWidget *widget, const QMouseEvent *event)
+void SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
 
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;
@@ -179,11 +179,11 @@ void SelectRotate::mouseMove(GLWidget *widget, const QMouseEvent *event)
   widget->updateGL();
 }
 
-void SelectRotate::wheel(GLWidget *widget, const QWheelEvent *event)
+void SelectRotateTool::wheel(GLWidget *widget, const QWheelEvent *event)
 {
 }
 
-void SelectRotate::selectionBox(float sx, float sy, float ex, float ey)
+void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
 {
   if(!_selectionDL)
   {
@@ -237,4 +237,5 @@ void SelectRotate::selectionBox(float sx, float sy, float ex, float ey)
 }
 
 #include "selectrotate.moc"
-Q_EXPORT_PLUGIN2(selectrotate, SelectRotate)
+
+Q_EXPORT_PLUGIN2(selectrotate, SelectRotateToolFactory)

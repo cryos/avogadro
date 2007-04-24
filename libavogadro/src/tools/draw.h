@@ -1,5 +1,5 @@
 /**********************************************************************
-  Draw - Drawing Tool for Avogadro
+  DrawTool - DrawTooling Tool for Avogadro
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __DRAW_H
-#define __DRAW_H
+#ifndef __DRAWTOOL_H
+#define __DRAWTOOL_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
@@ -38,30 +38,29 @@
 
 namespace Avogadro {
 
- class Draw : public Tool
+  class DrawTool : public Tool
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::Tool)
 
     public:
       //! Constructor
-      Draw();
+      DrawTool(QObject *parent = 0);
       //! Deconstructor
-      virtual ~Draw();
+      virtual ~DrawTool();
 
       //! \name Description methods
       //@{
-      //! Tool Name (ie Draw)
+      //! Tool Name (ie DrawTool)
       virtual QString name() const { return(tr("Draw")); }
-      //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Draws ")); }
+      //! Tool Description (ie. DrawTools atoms and bonds)
+      virtual QString description() const { return(tr("Draws Things")); }
       //@}
 
       //! \name Tool Methods
       //@{
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
-        */
+      */
       virtual void mousePress(GLWidget *widget, const QMouseEvent *event);
       virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event);
       virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);
@@ -73,8 +72,8 @@ namespace Avogadro {
       void setBondOrder(int i);
       int bondOrder() const;
 
-    public slots:
-      void elementChanged( int index );
+      public slots:
+        void elementChanged( int index );
       void bondOrderChanged( int index );
 
     private:
@@ -102,14 +101,23 @@ namespace Avogadro {
 
       Atom *newAtom(GLWidget *widget, int x, int y);
       Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
-//       void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
+      //       void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
 
       /** @return the 3D coords of the point P obtained by unprojective the pixel (x,y) with
-        * the Z-index of the center of the molecule being viewed in the given
-        * GLWidget.
-        */
+       * the Z-index of the center of the molecule being viewed in the given
+       * GLWidget.
+       */
       Eigen::Vector3d unProject(GLWidget *widget, int x, int y);
   };
+
+  class DrawToolFactory : public QObject, public ToolFactory
+  {
+      Q_OBJECT;
+      Q_INTERFACES(Avogadro::ToolFactory);
+
+      public:
+      Tool *createInstance(QObject *parent = 0) { return new DrawTool(parent); }
+    };
 
 } // end namespace Avogadro
 

@@ -37,7 +37,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-bool WireEngine::render()
+bool WireEngine::render(GLWidget *gl)
 {
   QList<Primitive *> list;
 

@@ -208,7 +208,7 @@ namespace Avogadro {
     return d->background;
   }
 
-  void GLWidget::render() const
+  void GLWidget::render()
   {
     int size = 0;
     
@@ -217,7 +217,7 @@ namespace Avogadro {
     {
       Engine *engine = d->engines.at(i);
       if(engine->isEnabled()) {
-        engine->render();
+        engine->render(this);
       }
     }
 
@@ -400,7 +400,7 @@ namespace Avogadro {
     d->farthestAtom = d->molecule->farthestAtom();
   }
 
-  Camera & GLWidget::camera()
+  Camera & GLWidget::camera() const
   {
     return d->camera;
   }
@@ -506,7 +506,7 @@ namespace Avogadro {
     return d->toolGroup;
   }
 
-  QList<GLHit> GLWidget::hits(int x, int y, int w, int h) const
+  QList<GLHit> GLWidget::hits(int x, int y, int w, int h)
   {
     QList<GLHit> hits;
     GLuint selectBuf[SELECTION_BUFFER_SIZE];

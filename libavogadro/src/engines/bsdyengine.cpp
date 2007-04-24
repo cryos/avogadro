@@ -52,14 +52,8 @@ BSDYEngine::~BSDYEngine()
   }
 }
 
-bool BSDYEngine::render()
+bool BSDYEngine::render(GLWidget *gl)
 {
-  // FIXME: should be qobject_cast but bug with Qt/Mac
-  GLWidget *gl = dynamic_cast<GLWidget *>(parent());
-  if(!gl) {
-    return false;
-  }
-
   // make a DL for very far objects.  Cube on it's side.
   if(!m_dl) {
     m_dl = glGenLists(1);
