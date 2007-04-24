@@ -79,7 +79,6 @@ namespace Avogadro {
       bool                _leftButtonPressed;  // rotation
       bool                _rightButtonPressed; // translation
       bool                _midButtonPressed;   // scale / zoom
-      bool                _movedSinceButtonPressed;
       bool                _clickedAtom;
       Eigen::Vector3d     _clickedAtomPos;
       double              _clickedAtomRadius;
@@ -87,7 +86,6 @@ namespace Avogadro {
       //! Temporary var for adding selection box
       GLuint _selectionDL;
 
-      QPoint              _initialDraggingPosition;
       QPoint              _lastDraggingPosition;
 
       QList<GLHit> _hits;

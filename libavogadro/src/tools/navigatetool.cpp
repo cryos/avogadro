@@ -48,10 +48,7 @@ NavigateTool::~NavigateTool()
 
 void NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
-
-  _movedSinceButtonPressed = false;
   _lastDraggingPosition = event->pos();
-  _initialDraggingPosition = event->pos();
 
   // Now we want to determine whether an atom is being clicked, and which one.
   _clickedAtom = false;
@@ -88,9 +85,6 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;
 
   _lastDraggingPosition = event->pos();
-
-  if( ( event->pos() - _initialDraggingPosition ).manhattanLength() > 2 ) 
-    _movedSinceButtonPressed = true;
 
   // Get the camera rotation - used whether an atom is clicked or not
   Matrix3d cameraRotation = widget->camera().matrix().linearComponent();
