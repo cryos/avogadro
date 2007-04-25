@@ -47,25 +47,29 @@ NavigateTool::~NavigateTool()
 
 }
 
-void NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+void NavigateTool::computeClickedAtom(GLWidget *widget, const QPoint& p)
 {
-  _lastDraggingPosition = event->pos();
-
-  // Now we want to determine whether an atom is being clicked, and which one.
+  QList<GLHit> hits;
   _clickedAtom = 0;
 
   // Perform a OpenGL selection and retrieve the list of hits.
-  _hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+  hits = widget->hits(p.x()-2, p.y()-2, 5, 5);
 
   // Find the first atom (if any) in hits - this will be the closest
-  for( int i = 0; i < _hits.size(); i++ )
+  foreach( GLHit hit, hits )
   {
-    if(_hits[0].type() == Primitive::AtomType)
+    if(hit.type() == Primitive::AtomType)
     {
-      _clickedAtom = static_cast<Atom *>( widget->molecule()->GetAtom(_hits[0].name()) );
-      break;
+      _clickedAtom = static_cast<Atom *>( widget->molecule()->GetAtom(hit.name()) );
+      return;
     }
   }
+}
+
+void NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+{
+  _lastDraggingPosition = event->pos();
+  computeClickedAtom(widget, event->pos());
 }
 
 void NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
@@ -77,13 +81,13 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
   if(!widget->molecule()) return;
 
-  // Mouse navigation has two modes - atom centred when an atom is clicked and scence if no
-  // atom has been clicked.
-
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;
 
   // Get the camera rotation - used whether an atom is clicked or not
   Matrix3d cameraRotation = widget->camera().matrix().linearComponent();
+
+  // Mouse navigation has two modes - atom centred when an atom is clicked and scence if no
+  // atom has been clicked.
 
   if( _clickedAtom )
   {
@@ -188,23 +192,46 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 
 void NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
 {
-  // Perform the zoom toward molecule center
+  computeClickedAtom(widget, event->pos());
 
-  Vector3d transformedAtomPos = widget->camera().matrix() * widget->center();
-  double distanceToAtomCenter = transformedAtomPos.norm();
+  if( _clickedAtom )
+  {
+     // Perform the zoom toward clicked atom
 
-  // These 0.5 and 10.0 values below may sound like magic values,
-  // but actually they're not evil.
-  // Since OB uses the same unit of length throughout,
-  // this value has a definite physical meaning.
+     Vector3d transformedAtomPos = widget->camera().matrix() * _clickedAtom->pos();
+     double distanceToAtomCenter = transformedAtomPos.norm();
 
-  double t = - TRANSLATION_SPEED * event->delta();
-  if( t > 0.5 ) t = 0.5;
-  if( t < -0.5 ) t = -0.5;
+     // These 0.5 and 5.0 values below may sound like magic values,
+     // but actually they're not evil.
+     // Since OB uses the same unit of length throughout,
+     // this value has a definite physical meaning.
 
-  if( t > 0 || distanceToAtomCenter > 10.0 )
-    widget->camera().matrix().pretranslate( transformedAtomPos * t );
+     double t = - TRANSLATION_SPEED * event->delta();
+     if( t > 0.5 ) t = 0.5;
+     if( t < -0.5 ) t = -0.5;
 
+     if( t > 0 || distanceToAtomCenter > 5.0 )
+     widget->camera().matrix().pretranslate( transformedAtomPos * t );
+  }
+  else
+  {
+    // Perform the zoom toward molecule center
+    
+    Vector3d transformedAtomPos = widget->camera().matrix() * widget->center();
+    double distanceToAtomCenter = transformedAtomPos.norm();
+    
+    // These 0.5 and 10.0 values below may sound like magic values,
+    // but actually they're not evil.
+    // Since OB uses the same unit of length throughout,
+    // this value has a definite physical meaning.
+    
+    double t = - TRANSLATION_SPEED * event->delta();
+    if( t > 0.5 ) t = 0.5;
+    if( t < -0.5 ) t = -0.5;
+    
+    if( t > 0 || distanceToAtomCenter > 10.0 )
+      widget->camera().matrix().pretranslate( transformedAtomPos * t );
+  }
   widget->update();
 }
 

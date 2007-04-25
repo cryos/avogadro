@@ -86,10 +86,10 @@ namespace Avogadro {
 
       QPoint              _lastDraggingPosition;
 
-      QList<GLHit> _hits;
-
       const double ROTATION_SPEED;
       const double TRANSLATION_SPEED;
+
+      void computeClickedAtom(GLWidget *widget, const QPoint& p);
   };
 
   class NavigateToolFactory : public QObject, public ToolFactory
