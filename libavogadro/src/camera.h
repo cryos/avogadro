@@ -162,6 +162,18 @@ namespace Avogadro {
         * @sa prerotate()*/
       void prerotate(const double &angle, const Eigen::Vector3d &axis);
 
+      /** The linear component (ie the 3x3 topleft block) of the camera matrix must
+        * always be a rotation. But after several hundreds of operations on it,
+        * it can drift farther and farther away from being a rotation. This method
+        * normalizes the camera matrix so that the linear component is guaranteed to be
+        * a rotation. Concretely, it performs a Gram-Schmidt orthonormalization to
+        * transform the linear component into a nearby rotation.
+        *
+        * Call this wherever in your code a large number of rotation is susceptible of
+        * being applied to the camera. Typically: in user input handling.
+        */
+      void normalizeRotation();
+
     private:
       CameraPrivate * const d;
 
