@@ -148,9 +148,6 @@ void SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
       widget->camera().rotate( deltaDragging.y() * ROTATION_SPEED, XAxis );
       widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, YAxis );
       widget->camera().translate( - widget->center() );
-
-      // contain numerical instability
-      widget->camera().normalizeRotation();
     }
     else if ( event->buttons() & Qt::RightButton )
     {

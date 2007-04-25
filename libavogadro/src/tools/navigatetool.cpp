@@ -98,9 +98,6 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
       widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, cameraRotation.row(1) );
       widget->camera().rotate( deltaDragging.y() * ROTATION_SPEED, cameraRotation.row(0) );
       widget->camera().translate( -_clickedAtom->pos() );
-
-      // contain numerical instability
-      widget->camera().normalizeRotation();
     }
     else if ( event->buttons() & Qt::MidButton )
     {
@@ -108,9 +105,6 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
       widget->camera().translate( _clickedAtom->pos() );
       widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, cameraRotation.row(2) );
       widget->camera().translate( -_clickedAtom->pos() );
-
-      // contain numerical instability
-      widget->camera().normalizeRotation();
 
       // Perform the zoom toward clicked atom
 
@@ -146,9 +140,6 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
       widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, cameraRotation.row(1) );
       widget->camera().rotate( deltaDragging.y() * ROTATION_SPEED, cameraRotation.row(0) );
       widget->camera().translate( - widget->center() );
-
-      // contain numerical instability
-      widget->camera().normalizeRotation();
     }
     else if ( event->buttons() & Qt::MidButton )
     {
@@ -156,9 +147,6 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
       widget->camera().translate( widget->center() );
       widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, cameraRotation.row(2) );
       widget->camera().translate( -widget->center() );
-
-      // contain numerical instability
-      widget->camera().normalizeRotation();
 
       // Perform the zoom toward molecule center
 

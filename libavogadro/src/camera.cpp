@@ -46,6 +46,31 @@ namespace Avogadro
   {
     d->parent = parent;
   }
+
+  void Camera::normalize()
+  {
+    Matrix3d m;
+    Vector3d c0, c1, c2;
+    d->matrix.getLinearComponent(&m);
+
+    m.getColumn(0, &c0);
+    c0.normalize();
+    m.setColumn(0, c0);
+    m.getColumn(1, &c1);
+    c1.normalize();
+    c1 -= dot(c0, c1) * c1;
+    c1.normalize();
+    m.setColumn(1, c1);
+    m.getColumn(2, &c2);
+    c2.normalize();
+    c2 -= dot(c0, c2) * c2;
+    c2 -= dot(c1, c2) * c2;
+    c2.normalize();
+    m.setColumn(2, c2);
+
+    d->matrix.setLinearComponent(m);
+    d->matrix.matrix().setRow(3, Vector4d(0.0, 0.0, 0.0, 1.0));
+  }
     
   const GLWidget *Camera::parent() const
   {
@@ -75,11 +100,13 @@ namespace Avogadro
   void Camera::rotate(const double &angle, const Eigen::Vector3d &axis)
   {
     d->matrix.rotate3(angle, axis);
+    normalize();
   }
   
   void Camera::prerotate(const double &angle, const Eigen::Vector3d &axis)
   {
     d->matrix.prerotate3(angle, axis);
+    normalize();
   }
   
   const double Camera::distance(const Eigen::Vector3d & point) const
@@ -194,30 +221,6 @@ namespace Avogadro
   void Camera::applyModelview() const
   {
     glMultMatrixd( matrixArray() );
-  }
-
-  void Camera::normalizeRotation()
-  {
-    Matrix3d m;
-    Vector3d c0, c1, c2;
-    d->matrix.getLinearComponent(&m);
-
-    m.getColumn(0, &c0);
-    c0.normalize();
-    m.setColumn(0, c0);
-    m.getColumn(1, &c1);
-    c1.normalize();
-    c1 -= dot(c0, c1) * c1;
-    c1.normalize();
-    m.setColumn(1, c1);
-    m.getColumn(2, &c2);
-    c2.normalize();
-    c2 -= dot(c0, c2) * c2;
-    c2 -= dot(c1, c2) * c2;
-    c2.normalize();
-    m.setColumn(2, c2);
-
-    d->matrix.setLinearComponent(m);
   }
 
 } // end namespace Avogadro
