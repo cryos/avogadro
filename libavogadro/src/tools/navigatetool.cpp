@@ -36,7 +36,8 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-NavigateTool::NavigateTool(QObject *parent) : Tool(parent), ROTATION_SPEED(0.005), TRANSLATION_SPEED(0.02)
+NavigateTool::NavigateTool(QObject *parent) : Tool(parent), _clickedAtom(0),
+ROTATION_SPEED(0.005), TRANSLATION_SPEED(0.02)
 {
 
 }
@@ -51,7 +52,7 @@ void NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
   _lastDraggingPosition = event->pos();
 
   // Now we want to determine whether an atom is being clicked, and which one.
-  _clickedAtom = false;
+  _clickedAtom = 0;
 
   // Perform a OpenGL selection and retrieve the list of hits.
   _hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
@@ -61,10 +62,7 @@ void NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
   {
     if(_hits[0].type() == Primitive::AtomType)
     {
-      _clickedAtom = true;
-      OBAtom *a = widget->molecule()->GetAtom(_hits[0].name());
-      _clickedAtomPos = static_cast<Atom *>(a)->pos();
-      _clickedAtomRadius = etab.GetVdwRad(a->GetAtomicNum());
+      _clickedAtom = static_cast<Atom *>( widget->molecule()->GetAtom(_hits[0].name()) );
       break;
     }
   }
@@ -94,27 +92,34 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
     if ( event->buttons() & Qt::LeftButton )
     {
       // Atom centred rotation 
-      widget->camera().translate( _clickedAtomPos );
+      widget->camera().translate( _clickedAtom->pos() );
       widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, cameraRotation.row(1) );
       widget->camera().rotate( deltaDragging.y() * ROTATION_SPEED, cameraRotation.row(0) );
-      widget->camera().translate( -_clickedAtomPos );
+      widget->camera().translate( -_clickedAtom->pos() );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
       // Perform the rotation
-      widget->camera().translate( _clickedAtomPos );
+      widget->camera().translate( _clickedAtom->pos() );
       widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, cameraRotation.row(2) );
-      widget->camera().translate( -_clickedAtomPos );
+      widget->camera().translate( -_clickedAtom->pos() );
 
-      // Perform the atom centred zoom
-      Vector3d transformedClickedAtomCenter = widget->camera().matrix() * _clickedAtomPos;
-      Vector3d goal = transformedClickedAtomCenter + Vector3d(0,0,1) * 8.0 * _clickedAtomRadius;
+      // Perform the zoom toward clicked atom
+
+      Vector3d transformedAtomPos = widget->camera().matrix() * _clickedAtom->pos();
+      double distanceToAtomCenter = transformedAtomPos.norm();
+
+      // These 0.5 and 5.0 values below may sound like magic values,
+      // but actually they're not evil.
+      // Since OB uses the same unit of length throughout,
+      // this value has a definite physical meaning.
+
       double t = TRANSLATION_SPEED * deltaDragging.y();
-      bool isTooClose = transformedClickedAtomCenter.norm() < 10.0 * _clickedAtomRadius;
-      if( isTooClose && t < 0 ) t = 0;
       if( t > 0.5 ) t = 0.5;
       if( t < -0.5 ) t = -0.5;
-      widget->camera().matrix().pretranslate( goal * t );
+
+      if( t > 0 || distanceToAtomCenter > 5.0 )
+        widget->camera().matrix().pretranslate( transformedAtomPos * t );
     }
     else if ( event->buttons() & Qt::RightButton )
     {
