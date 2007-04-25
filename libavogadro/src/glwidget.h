@@ -292,12 +292,12 @@ namespace Avogadro {
        * @param v The vector to unproject, expressed in window coordinates.
        *          Thus v.x() and v.y() are the x and y coords of the pixel to unproject.
        *          v.z() represents it's "z-distance". If you don't know what value to
-       *          put in v.z(), see the other unProject(double, double) method.
+       *          put in v.z(), see the other unProject(const QPoint&) method.
        * @return vector containing the unprojected space coordinates
        *
-       * @sa unProject(double, double)
+       * @sa unProject(const QPoint&), project()
        */
-      Eigen::Vector3d unProject(const Eigen::Vector3d & v) const;
+      Eigen::Vector3d unProject(const Eigen::Vector3d& v) const;
 
       /**
        * Performs an unprojection from window coordinates to space coordinates,
@@ -307,20 +307,21 @@ namespace Avogadro {
        * infinitely many solutions, and one has to choose one. This is equivalent to
        * choosing a plane parallel to the screen. The one that passes through the molecule's center
        * seems like a plausible choice for many purposes.
-       * @param x x window coordinate
-       * @param y y window coordinate
+       * @param p the point in window coordinates
        * @return vector containing the unprojected space coordinates
        *
-       * @sa unProject(double, double, double)
+       * @sa unProject(const Eigen::Vector3d&), project()
        */
-      Eigen::Vector3d unProject(double x, double y) const;
+      Eigen::Vector3d unProject(const QPoint& p) const;
 
       /**
        * Performs a projection from space coordinates to window coordinates.
        * @param v the vector to project, expressed in space coordinates.
        * @return vector containing the projected screen coordinates
+       *
+       * @sa unProject(const Eigen::Vector3d&), unProject(const QPoint&)
        */
-      Eigen::Vector3d project(const Eigen::Vector3d & v) const;
+      Eigen::Vector3d project(const Eigen::Vector3d& v) const;
 
       const Eigen::Vector3d & center() const;
       const Eigen::Vector3d & normalVector() const;

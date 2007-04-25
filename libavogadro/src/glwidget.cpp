@@ -614,14 +614,14 @@ namespace Avogadro {
     return pos;
   }
 
-  Eigen::Vector3d GLWidget::unProject(double x, double y) const
+  Eigen::Vector3d GLWidget::unProject(const QPoint& p) const
   {
     // project the molecule's center
     Eigen::Vector3d projectedCenter = project(center());
   
     // Now unproject the pixel of coordinates (x,height-y) into a 3D point having the same Z-index
     // as the molecule's center.
-    Eigen::Vector3d pos = unProject( Eigen::Vector3d( x, y, projectedCenter.z() ));
+    Eigen::Vector3d pos = unProject( Eigen::Vector3d( p.x(), p.y(), projectedCenter.z() ));
 
     return pos;
   }

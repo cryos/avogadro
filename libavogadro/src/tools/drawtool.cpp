@@ -143,7 +143,7 @@ void DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
     }
     else
     {
-      m_beginAtom = newAtom(widget, event->pos().x(), event->pos().y());
+      m_beginAtom = newAtom(widget, event->pos());
       widget->updateGeometry();
       // m_beginAtom->update();
     }
@@ -290,7 +290,7 @@ void DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
           m_prevBond = 0;
           m_prevBondOrder = 0;
         }
-        m_endAtom = newAtom(widget, event->pos().x(), event->pos().y());
+        m_endAtom = newAtom(widget, event->pos());
         if(!m_bond)
         {
           m_bond = newBond(molecule, m_beginAtom, m_endAtom);
@@ -308,7 +308,7 @@ void DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
       }
       else
       {
-        m_endAtom->setPos(widget->unProject(event->pos().x(), event->pos().y()));
+        m_endAtom->setPos(widget->unProject(event->pos()));
         widget->updateGeometry();
         // m_endAtom->update();
       }
@@ -355,7 +355,7 @@ void DrawTool::wheel(GLWidget *widget, const QWheelEvent *event)
 {
 }
 
-Atom *DrawTool::newAtom(GLWidget *widget, int x, int y)
+Atom *DrawTool::newAtom(GLWidget *widget, const QPoint& p)
 {
   // GRH (for reasons I don't understand, calling Begin/EndModify here
   // causes crashes with multiple bond orders
@@ -363,7 +363,7 @@ Atom *DrawTool::newAtom(GLWidget *widget, int x, int y)
 
   widget->molecule()->BeginModify();
   Atom *atom = static_cast<Atom*>(widget->molecule()->NewAtom());
-  atom->setPos(widget->unProject(x, y));
+  atom->setPos(widget->unProject(p));
   atom->SetAtomicNum(element());
   widget->molecule()->EndModify();
   

@@ -99,7 +99,7 @@ namespace Avogadro {
       QComboBox *m_comboBondOrder;
       QVBoxLayout *m_layout;
 
-      Atom *newAtom(GLWidget *widget, int x, int y);
+      Atom *newAtom(GLWidget *widget, const QPoint& p);
       Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
       //       void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
 
