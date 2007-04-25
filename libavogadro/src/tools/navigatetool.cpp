@@ -82,8 +82,6 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;
 
-  _lastDraggingPosition = event->pos();
-
   // Get the camera rotation - used whether an atom is clicked or not
   Matrix3d cameraRotation = widget->camera().matrix().linearComponent();
 
@@ -123,9 +121,10 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
     }
     else if ( event->buttons() & Qt::RightButton )
     {
-      widget->camera().pretranslate( Vector3d( deltaDragging.x() * TRANSLATION_SPEED,
-                                               -deltaDragging.y() * TRANSLATION_SPEED,
-                                               0.0 ) );
+      Vector3d oldPos = widget->unProject(_lastDraggingPosition, _clickedAtom->pos());
+      Vector3d newPos = widget->unProject(event->pos(), _clickedAtom->pos());
+      Matrix3d rotation = widget->camera().matrix().linearComponent();
+      widget->camera().pretranslate( rotation *( newPos - oldPos ) );
     }
   }
   else // Nothing clicked on
@@ -146,12 +145,14 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
     }
     else if ( event->buttons() & Qt::RightButton )
     {
-      widget->camera().pretranslate( Vector3d( deltaDragging.x() * TRANSLATION_SPEED,
-                                               -deltaDragging.y() * TRANSLATION_SPEED,
-                                               0.0 ) );
+      Vector3d oldPos = widget->unProject(_lastDraggingPosition);
+      Vector3d newPos = widget->unProject(event->pos());
+      Matrix3d rotation = widget->camera().matrix().linearComponent();
+      widget->camera().pretranslate( rotation *( newPos - oldPos ) );;
     }
   }
 
+  _lastDraggingPosition = event->pos();
   widget->updateGL();
 }
 

@@ -301,16 +301,33 @@ namespace Avogadro {
 
       /**
        * Performs an unprojection from window coordinates to space coordinates,
-       * within the plane containing the molecule's center and parallel to the screen.
+       * into the plane passing through a given reference point and parallel to the screen.
        * Thus the returned vector is a point belonging to that plane. The rationale is that
        * when unprojecting 2D window coords to 3D space coords, there are a priori
        * infinitely many solutions, and one has to choose one. This is equivalent to
-       * choosing a plane parallel to the screen. The one that passes through the molecule's center
-       * seems like a plausible choice for many purposes.
-       * @param p the point in window coordinates
+       * choosing a plane parallel to the screen.
+       * @param p the point to unproject, expressed in window coordinates
+       * @param ref the reference point, determining the plane into which to unproject.
+       *            If you don't know what to put here, see the other
+       *            unProject(const QPoint&) method.
        * @return vector containing the unprojected space coordinates
        *
-       * @sa unProject(const Eigen::Vector3d&), project()
+       * @sa unProject(const Eigen::Vector3d&), unProject(const QPoint&), project()
+       */
+      Eigen::Vector3d unProject(const QPoint& p, const Eigen::Vector3d& ref) const;
+
+      /**
+       * Performs an unprojection from window coordinates to space coordinates,
+       * into the plane passing through the molecule's center and parallel to the screen.
+       * Thus the returned vector is a point belonging to that plane. This is equivalent to
+       * @code
+         unProject( p, center() );
+       * @endcode
+       * @param p the point to unproject, expressed in window coordinates
+       * @return vector containing the unprojected space coordinates
+       *
+       * @sa unProject(const Eigen::Vector3d&),
+       *     unProject(const QPoint&, const Eigen::Vector3d&), project()
        */
       Eigen::Vector3d unProject(const QPoint& p) const;
 
@@ -319,7 +336,8 @@ namespace Avogadro {
        * @param v the vector to project, expressed in space coordinates.
        * @return vector containing the projected screen coordinates
        *
-       * @sa unProject(const Eigen::Vector3d&), unProject(const QPoint&)
+       * @sa unProject(const Eigen::Vector3d&), unProject(const QPoint&),
+       *     unProject(const QPoint&, const Eigen::Vector3d&)
        */
       Eigen::Vector3d project(const Eigen::Vector3d& v) const;
 
