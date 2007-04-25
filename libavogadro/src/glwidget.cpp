@@ -598,7 +598,7 @@ namespace Avogadro {
     return QSize(200,200);
   }
 
-  Eigen::Vector3d GLWidget::unProject(float x, float y, float z)
+  Eigen::Vector3d GLWidget::unProject(const Eigen::Vector3d & v) const
   {
     GLdouble projection[16];
     glGetDoublev(GL_PROJECTION_MATRIX,projection);
@@ -608,12 +608,25 @@ namespace Avogadro {
     glGetIntegerv(GL_VIEWPORT,viewport);
 
     Eigen::Vector3d pos;
-    gluUnProject(x, viewport[3] - y, z, modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
+    gluUnProject(v.x(), viewport[3] - v.y(), v.z(),
+                 modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
 
     return pos;
   }
 
-  Eigen::Vector3d GLWidget::project(float x, float y, float z)
+  Eigen::Vector3d GLWidget::unProject(double x, double y) const
+  {
+    // project the molecule's center
+    Eigen::Vector3d projectedCenter = project(center());
+  
+    // Now unproject the pixel of coordinates (x,height-y) into a 3D point having the same Z-index
+    // as the molecule's center.
+    Eigen::Vector3d pos = unProject( Eigen::Vector3d( x, y, projectedCenter.z() ));
+
+    return pos;
+  }
+
+  Eigen::Vector3d GLWidget::project(const Eigen::Vector3d & v) const
   {
     GLdouble projection[16];
     glGetDoublev(GL_PROJECTION_MATRIX,projection);
@@ -623,7 +636,8 @@ namespace Avogadro {
     glGetIntegerv(GL_VIEWPORT,viewport);
 
     Eigen::Vector3d pos;
-    gluProject(x, y, z, modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
+    gluProject(v.x(), v.y(), v.z(),
+               modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
 
     return pos;
   }

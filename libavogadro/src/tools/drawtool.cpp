@@ -308,7 +308,7 @@ void DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
       }
       else
       {
-        m_endAtom->setPos(unProject(widget, event->pos().x(), event->pos().y()));
+        m_endAtom->setPos(widget->unProject(event->pos().x(), event->pos().y()));
         widget->updateGeometry();
         // m_endAtom->update();
       }
@@ -355,25 +355,6 @@ void DrawTool::wheel(GLWidget *widget, const QWheelEvent *event)
 {
 }
 
-Eigen::Vector3d DrawTool::unProject(GLWidget *widget, int x, int y)
-{
-  // retrieve the 3D coords of the center of the molecule
-  Eigen::Vector3d center = widget->center();
-
-  // project center
-  Eigen::Vector3d projectedCenter = widget->project(center.x(), center.y(), center.z());
-
-  // now projectedCenter.z() gives us the Z-index of the center of the molecule.
-  // this is all what we need to know - we don't care about the x() and y() coords of
-  // projectedCenter.
-
-  // Now unproject the pixel of coordinates (x,height-y) into a 3D point having the same Z-index
-  // as the molecule's center.
-  Eigen::Vector3d pos = widget->unProject(x, y, projectedCenter.z());
-
-  return pos;
-}
-
 Atom *DrawTool::newAtom(GLWidget *widget, int x, int y)
 {
   // GRH (for reasons I don't understand, calling Begin/EndModify here
@@ -382,7 +363,7 @@ Atom *DrawTool::newAtom(GLWidget *widget, int x, int y)
 
   widget->molecule()->BeginModify();
   Atom *atom = static_cast<Atom*>(widget->molecule()->NewAtom());
-  atom->setPos(unProject(widget, x, y));
+  atom->setPos(widget->unProject(x, y));
   atom->SetAtomicNum(element());
   widget->molecule()->EndModify();
   

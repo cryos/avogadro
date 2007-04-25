@@ -288,22 +288,39 @@ namespace Avogadro {
       QList<GLHit> hits(int x, int y, int w, int h);
 
       /**
-       * Performs an unprojection from screen coordinates to GL coordinates.
-       * @param x x screen coordinate
-       * @param y y screen coordinate
-       * @param z z-depth for the 2d view to represent
-       * @return vector containing the unprojected GL coordinates
+       * Performs an unprojection from window coordinates to space coordinates.
+       * @param v The vector to unproject, expressed in window coordinates.
+       *          Thus v.x() and v.y() are the x and y coords of the pixel to unproject.
+       *          v.z() represents it's "z-distance". If you don't know what value to
+       *          put in v.z(), see the other unProject(double, double) method.
+       * @return vector containing the unprojected space coordinates
+       *
+       * @sa unProject(double, double)
        */
-      Eigen::Vector3d unProject(float x, float y, float z);
+      Eigen::Vector3d unProject(const Eigen::Vector3d & v) const;
 
       /**
-       * Performs a projection from GL coordinates to screen coordinates.
-       * @param x x coordinate in 3d space
-       * @param y y coordinate in 3d space
-       * @param z z coordinate in 3d space
+       * Performs an unprojection from window coordinates to space coordinates,
+       * within the plane containing the molecule's center and parallel to the screen.
+       * Thus the returned vector is a point belonging to that plane. The rationale is that
+       * when unprojecting 2D window coords to 3D space coords, there are a priori
+       * infinitely many solutions, and one has to choose one. This is equivalent to
+       * choosing a plane parallel to the screen. The one that passes through the molecule's center
+       * seems like a plausible choice for many purposes.
+       * @param x x window coordinate
+       * @param y y window coordinate
+       * @return vector containing the unprojected space coordinates
+       *
+       * @sa unProject(double, double, double)
+       */
+      Eigen::Vector3d unProject(double x, double y) const;
+
+      /**
+       * Performs a projection from space coordinates to window coordinates.
+       * @param v the vector to project, expressed in space coordinates.
        * @return vector containing the projected screen coordinates
        */
-      Eigen::Vector3d project(float x, float y, float z);
+      Eigen::Vector3d project(const Eigen::Vector3d & v) const;
 
       const Eigen::Vector3d & center() const;
       const Eigen::Vector3d & normalVector() const;

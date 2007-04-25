@@ -36,6 +36,7 @@
 using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
+using namespace Eigen;
 
 ClickMeasureTool::ClickMeasureTool(QObject *parent) : Tool(parent),  m_numSelectedAtoms(0), m_dl(0), m_line(new Cylinder(0))
 {
@@ -89,12 +90,12 @@ void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
       // get GL Coordinates for text
       glPushMatrix();
       glLoadIdentity();
-      Eigen::Vector3d labelPos = widget->unProject(5, widget->height()-5, 0.1);
-      Eigen::Vector3d distancePos[2];
-      distancePos[0] = widget->unProject(90, widget->height()-5, 0.1);
-      distancePos[1] = widget->unProject(150, widget->height()-5, 0.1);
-      Eigen::Vector3d anglePos = widget->unProject(50, widget->height()-25, 0.1);
-      Eigen::Vector3d angleLabelPos = widget->unProject(5, widget->height()-25, 0.1);
+      Vector3d labelPos = widget->unProject( Vector3d( 5, widget->height()-5, 0.1 ));
+      Vector3d distancePos[2];
+      distancePos[0] = widget->unProject( Vector3d( 90, widget->height()-5, 0.1 ));
+      distancePos[1] = widget->unProject( Vector3d( 150, widget->height()-5, 0.1 ));
+      Vector3d anglePos = widget->unProject( Vector3d( 50, widget->height()-25, 0.1 ));
+      Vector3d angleLabelPos = widget->unProject( Vector3d( 5, widget->height()-25, 0.1 ));
       glPopMatrix();
 
       glNewList(m_dl, GL_COMPILE);
@@ -107,13 +108,13 @@ void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 
 //       Color(1.0,0.0,0.0,1.0).applyAsMaterials();
       glColor3f(1.0,0.0,0.0);
-      Eigen::Vector3d pos = m_selectedAtoms[0]->pos();
+      Vector3d pos = m_selectedAtoms[0]->pos();
       float radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3;
       widget->renderText(pos.x() + radius, pos.y(), pos.z() + radius, tr("*1"));
 
       if(m_numSelectedAtoms >= 2)
       {
-        Eigen::Vector3d vector[2];
+        Vector3d vector[2];
         vector[0] = m_selectedAtoms[0]->pos() - m_selectedAtoms[1]->pos();
         double distance = vector[0].norm();
         double angle;
@@ -128,7 +129,7 @@ void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
         {
           vector[1] = m_selectedAtoms[2]->pos() - m_selectedAtoms[1]->pos();
 
-          Eigen::Vector3d normalizedVectors[2];
+          Vector3d normalizedVectors[2];
           normalizedVectors[0] = vector[0];
           normalizedVectors[0].normalize();
           normalizedVectors[1] = vector[1];

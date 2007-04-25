@@ -103,11 +103,6 @@ namespace Avogadro {
       Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
       //       void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
 
-      /** @return the 3D coords of the point P obtained by unprojective the pixel (x,y) with
-       * the Z-index of the center of the molecule being viewed in the given
-       * GLWidget.
-       */
-      Eigen::Vector3d unProject(GLWidget *widget, int x, int y);
   };
 
   class DrawToolFactory : public QObject, public ToolFactory
