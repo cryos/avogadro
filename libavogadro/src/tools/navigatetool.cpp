@@ -71,16 +71,12 @@ void NavigateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
   double distanceToGoal = transformedGoal.norm();
 
   double t = ZOOM_SPEED * delta;
-  qDebug() << t;
   const double minDistanceToGoal = 2.0 * CAMERA_NEAR_DISTANCE;
   double u = minDistanceToGoal / distanceToGoal - 1.0;
 
   if( ( distanceToGoal < 0.99 * minDistanceToGoal ) || ( t < u ) )
-  {
     t = u;
-  }
 
-  qDebug() << t << "  " << u;
   _glwidget->camera().matrix().pretranslate( transformedGoal * t );
 }
 
