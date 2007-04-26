@@ -208,14 +208,12 @@ void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
   gluUnProject(float(ex), viewport[3] - float(ey), 0.1, modelview, projection, viewport, &endPos[0], &endPos[1], &endPos[2]);
 
   glNewList(_selectionDL, GL_COMPILE);
-  glMatrixMode(GL_MODELVIEW);
   glPushAttrib(GL_ALL_ATTRIB_BITS);
   glPushMatrix();
   glLoadIdentity();
-  glDisable(GL_CULL_FACE);
   glEnable(GL_BLEND);
-  glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  Color(1.0, 1.0, 1.0, 0.2).applyAsMaterials();
+  glDisable(GL_LIGHTING);
+  glColor4f(1.0, 1.0, 1.0, 0.2);
   glBegin(GL_POLYGON);
   glVertex3f(startPos[0],startPos[1],startPos[2]);
   glVertex3f(startPos[0],endPos[1],startPos[2]);
@@ -223,7 +221,8 @@ void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
   glVertex3f(endPos[0],startPos[1],startPos[2]);
   glEnd();
   startPos[2] += 0.0001;
-  Color(1.0, 1.0, 1.0, 1.0).applyAsMaterials();
+  glDisable(GL_BLEND);
+  glColor3f(1.0, 1.0, 1.0);
   glBegin(GL_LINE_LOOP);
   glVertex3f(startPos[0],startPos[1],startPos[2]);
   glVertex3f(startPos[0],endPos[1],startPos[2]);
@@ -233,7 +232,6 @@ void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
   glPopMatrix();
   glPopAttrib();
   glEndList();
-
   glPopMatrix();
 
 }
