@@ -124,7 +124,7 @@ void SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
     }
   }
 
-  widget->updateGL();
+  widget->update();
 }
 
 void SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
@@ -176,7 +176,7 @@ void SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
         _lastDraggingPosition.x(), _lastDraggingPosition.y());
   }
 
-  widget->updateGL();
+  widget->update();
 }
 
 void SelectRotateTool::wheel(GLWidget *widget, const QWheelEvent *event)

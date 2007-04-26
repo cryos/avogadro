@@ -168,7 +168,7 @@ void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
       glEndList();
 
       widget->addDL(m_dl);
-      widget->updateGL();
+      widget->update();
     }
     else if(m_numSelectedAtoms < 3) {
       
@@ -183,7 +183,7 @@ void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
     }
     m_numSelectedAtoms = 0;
     widget->removeDL(m_dl);
-    widget->updateGL();
+    widget->update();
     return;
   }
 }
