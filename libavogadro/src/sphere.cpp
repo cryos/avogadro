@@ -77,7 +77,12 @@ void Sphere::initialize()
 	m_vertexBuffer = new Vector3f[m_vertexCount];
 	if( ! m_vertexBuffer ) return;
 	m_indexBuffer = new unsigned short[m_indexCount];
-	if( ! m_indexBuffer ) return;
+        if( ! m_indexBuffer ) 
+        {
+                 delete [] m_vertexBuffer;
+                 m_vertexBuffer = 0;
+                return;
+        }
 
 	// build vertex buffer
     for( int strip = 0; strip < 5; strip++ ) {
