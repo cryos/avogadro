@@ -364,8 +364,9 @@ namespace Avogadro {
     // setup the selection buffer
     if(d->selectBuf) delete[] d->selectBuf;
     d->selectBufSize = ( d->molecule->NumAtoms() + SEL_BUF_MARGIN_NEW_ATOMS ) * 8;
-    if( d->selectBufSize > SEL_BUF_MAX_SIZE )
+    if( d->selectBufSize > SEL_BUF_MAX_SIZE ) {
       d->selectBufSize = SEL_BUF_MAX_SIZE;
+    }
     d->selectBuf = new GLuint[d->selectBufSize];
     update();
   }

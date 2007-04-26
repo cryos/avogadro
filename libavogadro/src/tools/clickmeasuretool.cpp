@@ -79,7 +79,13 @@ void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
   if(m_hits.size() && event->buttons() & Qt::LeftButton)
   {
     Atom *atom = (Atom *)molecule->GetAtom(m_hits[0].name());
+    if(m_hits[0].type() != Primitive::AtomType) {
+      return;
+    }
+
+    // if we don't have three atoms selected
     if(m_numSelectedAtoms < 3) {
+      // select the third one
       m_selectedAtoms[m_numSelectedAtoms++] = atom;
 
       // generate the display list if needed
@@ -102,8 +108,9 @@ void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
       glMatrixMode(GL_MODELVIEW);
       glPushMatrix();
       glPushAttrib(GL_ALL_ATTRIB_BITS);
+      glEnable(GL_NORMALIZE);
       glDisable(GL_LIGHTING);
-      glDisable(GL_LIGHT0);
+//       glDisable(GL_LIGHT0);
       glDisable(GL_COLOR_MATERIAL);
 
 //       Color(1.0,0.0,0.0,1.0).applyAsMaterials();
@@ -130,10 +137,8 @@ void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
           vector[1] = m_selectedAtoms[2]->pos() - m_selectedAtoms[1]->pos();
 
           Vector3d normalizedVectors[2];
-          normalizedVectors[0] = vector[0];
-          normalizedVectors[0].normalize();
-          normalizedVectors[1] = vector[1];
-          normalizedVectors[1].normalize();
+          normalizedVectors[0] = vector[0].normalized();
+          normalizedVectors[1] = vector[1].normalized();
           
           angle = acos(normalizedVectors[0].dot(normalizedVectors[1])) * 180/M_PI;
   //         angleString = tr("Angle: ") + QString::number(angle);
