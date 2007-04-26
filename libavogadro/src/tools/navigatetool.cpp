@@ -177,7 +177,7 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
   }
 
   _lastDraggingPosition = event->pos();
-  _glwidget->updateGL();
+  _glwidget->update();
 }
 
 void NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
@@ -194,7 +194,7 @@ void NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
     // Perform the zoom toward molecule center
     zoom( _glwidget->center(), - MOUSE_WHEEL_SPEED * event->delta() );
   }
-  _glwidget->updateGL();
+  _glwidget->update();
 }
 
 #include "navigatetool.moc"

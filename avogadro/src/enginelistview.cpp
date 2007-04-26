@@ -88,7 +88,7 @@ namespace Avogadro {
     Engine *engine = item->data().value<Engine *>();
     if(engine) {
       engine->setEnabled(item->checkState());
-      d->widget->updateGL();
+      d->widget->update();
     }
   }
 

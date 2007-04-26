@@ -370,7 +370,7 @@ namespace Avogadro {
     if( d->selectBufSize > SEL_BUF_MAX_SIZE )
       d->selectBufSize = SEL_BUF_MAX_SIZE;
     d->selectBuf = new GLuint[d->selectBufSize];
-    updateGL();
+    update();
   }
   
   const Molecule* GLWidget::molecule() const
@@ -437,7 +437,7 @@ namespace Avogadro {
       d->engines.at(i)->updatePrimitive(primitive);
     }
 
-    updateGL();
+    update();
   }
   
   void GLWidget::removePrimitive(Primitive *primitive)
@@ -449,7 +449,7 @@ namespace Avogadro {
       }
     }
   
-    updateGL();
+    update();
   }
   
   void GLWidget::loadEngines()

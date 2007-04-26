@@ -84,7 +84,7 @@
 2006-08-24  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* src/MainWindow.cpp: Make sure to update recent file list when
-	creating a new window, and make sure to call updateGL after
+	creating a new window, and make sure to call update after
 	reading a file. Fixes minor bugs. 
 
 2006-08-22  Donald E. Curtis  <dcurti3@sourceforge.net>
