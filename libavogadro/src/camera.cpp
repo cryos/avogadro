@@ -58,13 +58,13 @@ namespace Avogadro
     m.setColumn(0, c0);
     m.getColumn(1, &c1);
     c1.normalize();
-    c1 *= (1.0 - dot(c0, c1));
+    c1 -= dot(c0, c1) * c0;
     c1.normalize();
     m.setColumn(1, c1);
     m.getColumn(2, &c2);
     c2.normalize();
-    c2 *= (1.0 - dot(c0, c2));
-    c2 *= (1.0 - dot(c1, c2));
+    c2 -= dot(c0, c2) * c0;
+    c2 -= dot(c1, c2) * c1;
     c2.normalize();
     m.setColumn(2, c2);
 
