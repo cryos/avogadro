@@ -29,7 +29,7 @@
 #include <stdio.h>
 #include <vector>
 
-#define SELECTION_BUFFER_SIZE 512
+#define SELECTION_BUFFER_SIZE 4096
 
 namespace Avogadro {
   class GLHitPrivate
@@ -511,13 +511,13 @@ namespace Avogadro {
     QList<GLHit> hits;
     GLuint selectBuf[SELECTION_BUFFER_SIZE];
     GLint viewport[4];
-    unsigned int hit_count;
+    int hit_count;
   
     int cx = w/2 + x;
     int cy = h/2 + y;
   
     //X   hits.clear();
-  
+
     glSelectBuffer(SELECTION_BUFFER_SIZE, selectBuf);
     glRenderMode(GL_SELECT);
     glInitNames();
@@ -543,9 +543,9 @@ namespace Avogadro {
   
     // returning to normal rendering mode
     hit_count = glRenderMode(GL_RENDER);
-  
-    // if there are hits process them
-    if (hit_count != 0)
+
+    // if no error occured and there are hits, process them
+    if (hit_count > 0)
     {
       unsigned int i, j;
       GLuint names, type, *ptr;
