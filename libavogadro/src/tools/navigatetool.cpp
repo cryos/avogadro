@@ -71,14 +71,16 @@ void NavigateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
   double distanceToGoal = transformedGoal.norm();
 
   double t = ZOOM_SPEED * delta;
-
+  qDebug() << t;
   const double minDistanceToGoal = 2.0 * CAMERA_NEAR_DISTANCE;
   double u = minDistanceToGoal / distanceToGoal - 1.0;
 
-  if( ( distanceToGoal < minDistanceToGoal ) || ( t < u ) )
+  if( ( distanceToGoal < 0.99 * minDistanceToGoal ) || ( t < u ) )
   {
     t = u;
   }
+
+  qDebug() << t << "  " << u;
   _glwidget->camera().matrix().pretranslate( transformedGoal * t );
 }
 
@@ -175,7 +177,7 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
   }
 
   _lastDraggingPosition = event->pos();
-  _glwidget->update();
+  _glwidget->updateGL();
 }
 
 void NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
@@ -192,7 +194,7 @@ void NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
     // Perform the zoom toward molecule center
     zoom( _glwidget->center(), - MOUSE_WHEEL_SPEED * event->delta() );
   }
-  _glwidget->update();
+  _glwidget->updateGL();
 }
 
 #include "navigatetool.moc"
