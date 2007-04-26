@@ -29,8 +29,6 @@
 #include <stdio.h>
 #include <vector>
 
-#define SELECTION_BUFFER_SIZE 4096
-
 namespace Avogadro {
   class GLHitPrivate
   {
@@ -97,7 +95,11 @@ namespace Avogadro {
   class GLWidgetPrivate {
     public:
       GLWidgetPrivate() : background(Qt::black), molecule(0),
-                          tool(0), toolGroup(0) {}
+                          tool(0), toolGroup(0), selectBuf(0) {}
+      ~GLWidgetPrivate()
+      {
+        if(selectBuf) delete[] selectBuf;
+      }
       
       QList<Engine *>        engines;
     
@@ -115,6 +117,9 @@ namespace Avogadro {
       //TODO: convert to pointer
       Camera                 camera;
       QColor                 background;
+
+      int                    selectBufSize;
+      GLuint                 *selectBuf;
   };
 
 
@@ -359,6 +364,12 @@ namespace Avogadro {
     // setup the camera to have a nice viewpoint on the molecule
     d->camera.initializeViewPoint();
 
+    // setup the selection buffer
+    if(d->selectBuf) delete[] d->selectBuf;
+    d->selectBufSize = ( d->molecule->NumAtoms() + SEL_BUF_MARGIN_NEW_ATOMS ) * 8;
+    if( d->selectBufSize > SEL_BUF_MAX_SIZE )
+      d->selectBufSize = SEL_BUF_MAX_SIZE;
+    d->selectBuf = new GLuint[d->selectBufSize];
     updateGL();
   }
   
@@ -509,7 +520,6 @@ namespace Avogadro {
   QList<GLHit> GLWidget::hits(int x, int y, int w, int h)
   {
     QList<GLHit> hits;
-    GLuint selectBuf[SELECTION_BUFFER_SIZE];
     GLint viewport[4];
     int hit_count;
   
@@ -518,7 +528,7 @@ namespace Avogadro {
   
     //X   hits.clear();
 
-    glSelectBuffer(SELECTION_BUFFER_SIZE, selectBuf);
+    glSelectBuffer(d->selectBufSize, d->selectBuf);
     glRenderMode(GL_SELECT);
     glInitNames();
   
@@ -552,7 +562,7 @@ namespace Avogadro {
       GLuint minZ, maxZ, name;
   
       //X   printf ("hits = %d\n", hits);
-      ptr = (GLuint *) selectBuf;
+      ptr = (GLuint *) d->selectBuf;
       for (i = 0; i < hit_count; i++) {
         names = *ptr++;
         minZ = *ptr++;
