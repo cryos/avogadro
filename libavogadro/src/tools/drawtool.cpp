@@ -130,7 +130,10 @@ void DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
   m_initialDragginggPosition = event->pos();
 
   //! List of hits from a selection/pick
-  m_hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+  m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
+                        event->pos().y()-SEL_BOX_HALF_SIZE,
+                        SEL_BOX_SIZE,
+                        SEL_BOX_SIZE);
 
   if(_buttons & Qt::LeftButton)
   {
@@ -160,35 +163,37 @@ void DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 
   if((_buttons & Qt::LeftButton) && m_beginAtom)
   {
-    QList<GLHit> hits;
-    hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+    m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
+                        event->pos().y()-SEL_BOX_HALF_SIZE,
+                        SEL_BOX_SIZE,
+                        SEL_BOX_SIZE);
 
     bool hitBeginAtom = false;
     Atom *existingAtom = 0;
-    if(hits.size())
+    if(m_hits.size())
     {
       // parse our hits.  we want to know
       // if we hit another existingAtom that is not
       // the m_endAtom which we created
-      for(int i=0; i < hits.size() && !hitBeginAtom; i++)
+      for(int i=0; i < m_hits.size() && !hitBeginAtom; i++)
       {
-        if(hits[i].type() == Primitive::AtomType)
+        if(m_hits[i].type() == Primitive::AtomType)
         {
           // hit the same atom either moved here from somewhere else
           // or were already here.
-          if(hits[i].name() == m_beginAtom->GetIdx())
+          if(m_hits[i].name() == m_beginAtom->GetIdx())
           {
             hitBeginAtom = true;
           }
           else if(!m_endAtom)
           {
-            existingAtom = (Atom *)molecule->GetAtom(hits[i].name());
+            existingAtom = (Atom *)molecule->GetAtom(m_hits[i].name());
           }
           else
           {
-            if(hits[i].name() != m_endAtom->GetIdx())
+            if(m_hits[i].name() != m_endAtom->GetIdx())
             {
-              existingAtom = (Atom *)molecule->GetAtom(hits[i].name());
+              existingAtom = (Atom *)molecule->GetAtom(m_hits[i].name());
             }
           }
         }
@@ -334,15 +339,17 @@ void DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
   }
   else if(_buttons & Qt::RightButton)
   {
-    QList<GLHit> hits;
-    hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
-    if(hits.size())
+    m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
+                        event->pos().y()-SEL_BOX_HALF_SIZE,
+                        SEL_BOX_SIZE,
+                        SEL_BOX_SIZE);
+    if(m_hits.size())
     {
       // get our top hit
-      if(hits[0].type() == Primitive::AtomType)
+      if(m_hits[0].type() == Primitive::AtomType)
       {
         Molecule *molecule = widget->molecule();
-        Atom *atom = (Atom *)molecule->GetAtom(hits[0].name());
+        Atom *atom = (Atom *)molecule->GetAtom(m_hits[0].name());
         molecule->DeleteAtom(atom);
         widget->updateGeometry();
         molecule->update();

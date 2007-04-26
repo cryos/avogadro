@@ -57,7 +57,9 @@ void SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
   _initialDraggingPosition = event->pos();
 
   //! List of hits from a selection/pick
-  _hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+  _hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
+                       event->pos().y()-SEL_BOX_HALF_SIZE,
+                       SEL_BOX_SIZE, SEL_BOX_SIZE);
 
   if(!_hits.size())
   {

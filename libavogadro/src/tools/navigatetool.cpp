@@ -52,7 +52,9 @@ void NavigateTool::computeClickedAtom(const QPoint& p)
   _clickedAtom = 0;
 
   // Perform a OpenGL selection and retrieve the list of hits.
-  hits = _glwidget->hits(p.x()-2, p.y()-2, 5, 5);
+  hits = _glwidget->hits(p.x()-SEL_BOX_HALF_SIZE,
+                         p.y()-SEL_BOX_HALF_SIZE,
+                         SEL_BOX_SIZE, SEL_BOX_SIZE);
 
   // Find the first atom (if any) in hits - this will be the closest
   foreach( GLHit hit, hits )

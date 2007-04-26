@@ -70,5 +70,7 @@
 #define CAMERA_MOL_RADIUS_MARGIN 10.0
 #define SEL_BUF_MAX_SIZE         262144
 #define SEL_BUF_MARGIN_NEW_ATOMS 256
+#define SEL_BOX_HALF_SIZE  4
+#define SEL_BOX_SIZE       (2 * SEL_BOX_HALF_SIZE + 1)
 
 #endif  // __GLOBAL_H
