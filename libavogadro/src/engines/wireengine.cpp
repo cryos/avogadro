@@ -42,6 +42,7 @@ bool WireEngine::render(GLWidget *gl)
   QList<Primitive *> list;
 
   glPushAttrib(GL_ALL_ATTRIB_BITS);
+  glDisable(GL_LIGHTING);
 
   list = queue().primitiveList(Primitive::AtomType);
   foreach( Primitive *p, list ) {
@@ -66,13 +67,12 @@ bool WireEngine::render(const Atom *a)
   Vector3d v (a->GetVector().AsArray());
   
   if (a->isSelected()) {
-    Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
+    Color( 0.3, 0.6, 1.0, 0.7 ).apply();
     glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 4.0);
   }
-  else {
-    Color(a).applyAsMaterials();
-    glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 3.0);
-  }
+  
+  Color(a).apply();
+  glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 3.0);
   
   glBegin(GL_POINTS);
   glVertex3d(v.x(), v.y(), v.z());
@@ -97,10 +97,10 @@ bool WireEngine::render(const Bond *b)
 
   // hard to separate atoms from bonds in this view
   // so we let the user always select atoms
-  Color(atom1).applyAsMaterials();
+  Color(atom1).apply();
   glVertex3d(v1.x(), v1.y(), v1.z());
 
-  Color(atom2).applyAsMaterials();
+  Color(atom2).apply();
   glVertex3d(v2.x(), v2.y(), v2.z());
 
   glEnd();
