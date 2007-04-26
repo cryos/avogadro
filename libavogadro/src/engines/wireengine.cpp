@@ -43,6 +43,7 @@ bool WireEngine::render(GLWidget *gl)
 
   glPushAttrib(GL_ALL_ATTRIB_BITS);
   glDisable(GL_LIGHTING);
+  glDisable(GL_BLEND);
 
   list = queue().primitiveList(Primitive::AtomType);
   foreach( Primitive *p, list ) {
@@ -61,19 +62,21 @@ bool WireEngine::render(GLWidget *gl)
 
 bool WireEngine::render(const Atom *a)
 {
+  const float selectionColor[3] = {0.3, 0.6, 1.0};
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
   
-  Vector3d v (a->GetVector().AsArray());
+  const Vector3d & v = a->pos();
   
   if (a->isSelected()) {
-    Color( 0.3, 0.6, 1.0, 0.7 ).apply();
+    glColor3fv(selectionColor);
     glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 4.0);
   }
-  
-  Color(a).apply();
-  glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 3.0);
-  
+  else{
+    Color(a).apply();
+    glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 3.0);
+  }
+
   glBegin(GL_POINTS);
   glVertex3d(v.x(), v.y(), v.z());
   glEnd();
@@ -86,10 +89,10 @@ bool WireEngine::render(const Atom *a)
 
 bool WireEngine::render(const Bond *b)
 {
-  const OBAtom *atom1 = static_cast<const OBAtom *>( b->GetBeginAtom() );
-  const OBAtom *atom2 = static_cast<const OBAtom *>( b->GetEndAtom() );
-  Vector3d v1 (atom1->GetVector().AsArray());
-  Vector3d v2 (atom2->GetVector().AsArray());
+  const Atom *atom1 = static_cast<const Atom *>( b->GetBeginAtom() );
+  const Atom *atom2 = static_cast<const Atom *>( b->GetEndAtom() );
+  const Vector3d & v1 = atom1->pos();
+  const Vector3d & v2 = atom2->pos();
   std::vector<double> rgb;
 
   glLineWidth(1.0);
