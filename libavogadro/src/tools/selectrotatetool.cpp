@@ -152,8 +152,8 @@ void SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
     else if ( event->buttons() & Qt::RightButton )
     {
       //dc:       deltaDragging = _initialDraggingPosition - event->pos();
-      widget->camera().pretranslate( Vector3d( deltaDragging.x() * TRANSLATION_SPEED,
-            -deltaDragging.y() * TRANSLATION_SPEED,
+      widget->camera().pretranslate( Vector3d( deltaDragging.x() * ZOOM_SPEED,
+            -deltaDragging.y() * ZOOM_SPEED,
             0.0 ) );
     }
     else if ( event->buttons() & Qt::MidButton )

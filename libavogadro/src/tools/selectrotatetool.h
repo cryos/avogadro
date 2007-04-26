@@ -33,9 +33,6 @@
 class QMouseEvent;
 class QWheelEvent;
 
-const double ROTATION_SPEED = 0.005;
-const double TRANSLATION_SPEED = 0.02;
-
 namespace Avogadro {
 
   class Molecule;

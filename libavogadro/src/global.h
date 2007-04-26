@@ -63,4 +63,10 @@
 # define GL_SEPARATE_SPECULAR_COLOR_EXT 0x81FA
 #endif
 
+#define ROTATION_SPEED     0.005
+#define ZOOM_SPEED         0.02
+#define MOUSE_WHEEL_SPEED  0.1
+#define CAMERA_NEAR_DISTANCE     2.0
+#define CAMERA_MOL_RADIUS_MARGIN 10.0
+
 #endif  // __GLOBAL_H

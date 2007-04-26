@@ -157,6 +157,10 @@ namespace Avogadro {
         * the impression that the molecule is rotating while the camera remains fixed. This is the
         * equivalent of the OpenGL function glRotate(), except that here the angle is expressed
         * in radians, not in degrees.
+        *
+        * After the rotation is multiplied, a normalization is performed to ensure that the
+        * camera matrix remains sane.
+        *
         * @param angle the rotation angle, expressed in radians
         * @param axis a unit vector around which to rotate. This MUST be a unit vector, i.e.
         *             axis.norm() must be close to 1.
@@ -168,6 +172,10 @@ namespace Avogadro {
         * the molecule's coordinate system. Use this method if you want to make
         * the impression that the camera is rotating while the molecule remains fixed. This is
         * NOT the equivalent of the OpenGL function glRotate().
+        *
+        * After the rotation is multiplied, a normalization is performed to ensure that the
+        * camera matrix remains sane.
+        *
         * @param angle the rotation angle, expressed in radians
         * @param axis a unit vector around which to rotate. This MUST be a unit vector, i.e.
         *             axis.norm() must be close to 1.

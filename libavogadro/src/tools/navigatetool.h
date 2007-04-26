@@ -33,9 +33,6 @@
 #include <QStringList>
 #include <QImage>
 
-//const double ROTATION_SPEED = 0.005;
-//const double TRANSLATION_SPEED = 0.02;
-
 namespace Avogadro {
 
   /**
@@ -76,6 +73,7 @@ namespace Avogadro {
 
     protected:
 
+      GLWidget *          _glwidget;
       bool                _leftButtonPressed;  // rotation
       bool                _rightButtonPressed; // translation
       bool                _midButtonPressed;   // scale / zoom
@@ -86,10 +84,11 @@ namespace Avogadro {
 
       QPoint              _lastDraggingPosition;
 
-      const double ROTATION_SPEED;
-      const double TRANSLATION_SPEED;
-
-      void computeClickedAtom(GLWidget *widget, const QPoint& p);
+      void computeClickedAtom(const QPoint& p);
+      void zoom( const Eigen::Vector3d &goal, double delta ) const;
+      void translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const;
+      void rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const;
+      void tilt( const Eigen::Vector3d &center, double delta ) const;
   };
 
   class NavigateToolFactory : public QObject, public ToolFactory
