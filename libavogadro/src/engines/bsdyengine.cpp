@@ -54,7 +54,7 @@ BSDYEngine::~BSDYEngine()
 
 bool BSDYEngine::render(GLWidget *gl)
 {
-  // make a DL for very far objects.  Cube on it's side.
+  // make a DL for very far objects.  Cube on its side.
   if(!m_dl) {
     m_dl = glGenLists(1);
     double x = sqrt(.5);
@@ -127,12 +127,12 @@ bool BSDYEngine::render(GLWidget *gl)
       {
         detail = 9 -  static_cast<int>(zDistance / 5);
       }
-      m_spheres.at(detail)->draw(a->GetVector().AsArray(), etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
+      m_spheres.at(detail)->draw(a->pos(), etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
     }
     else
     {
       glPushMatrix();
-      const double * loc = a->GetVector().AsArray();
+      const Vector3d & loc = a->pos();
       glTranslated( loc[0], loc[1], loc[2] );
       double radius = etab.GetVdwRad(a->GetAtomicNum()) * 0.3;
       glScaled( radius, radius, radius );
@@ -146,12 +146,12 @@ bool BSDYEngine::render(GLWidget *gl)
       glEnable( GL_BLEND );
       if(zDistance < 200.0)
       {
-        m_spheres.at(detail)->draw(a->GetVector().AsArray(), 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
+        m_spheres.at(detail)->draw(a->pos(), 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
       }
       else
       {
         glPushMatrix();
-        const double * loc = a->GetVector().AsArray();
+        const Vector3d & loc = a->pos();
         glTranslated( loc[0], loc[1], loc[2] );
         double radius = 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3;
         glScaled( radius, radius, radius );
@@ -166,7 +166,7 @@ bool BSDYEngine::render(GLWidget *gl)
   }
   glPopName();
 
-  // normalize bonds
+  // normalize normal vectors of bonds
   glDisable( GL_RESCALE_NORMAL);
   glEnable( GL_NORMALIZE );
 

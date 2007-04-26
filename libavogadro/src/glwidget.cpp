@@ -195,9 +195,6 @@ namespace Avogadro {
     glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
     glLightfv( GL_LIGHT0, GL_POSITION, position );
     glEnable( GL_LIGHT0 );
-  
-    glEnableClientState( GL_VERTEX_ARRAY );
-    glEnableClientState( GL_NORMAL_ARRAY );
   }
   
   void GLWidget::resizeGL(int width, int height)

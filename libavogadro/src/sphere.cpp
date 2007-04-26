@@ -126,9 +126,13 @@ void Sphere::initialize()
 	// compile display list and free buffers
 	if( ! m_displayList ) { m_displayList = glGenLists( 1 ); }
 	if( ! m_displayList ) { return; }
+    glEnableClientState( GL_VERTEX_ARRAY );
+    glEnableClientState( GL_NORMAL_ARRAY );
 	glNewList( m_displayList, GL_COMPILE );
 	do_draw();
 	glEndList();
+    glDisableClientState( GL_VERTEX_ARRAY );
+    glDisableClientState( GL_NORMAL_ARRAY );
 	freeBuffers();
 }
 

@@ -82,15 +82,16 @@ namespace Avogadro {
     // compile display list and free buffers
     if( ! d->displayList ) d->displayList = glGenLists( 1 );
     if( ! d->displayList ) return;
-    glNewList( d->displayList, GL_COMPILE );
-
+    
     if( d->faces < 3 ) 
     {
+      glNewList( d->displayList, GL_COMPILE );
       glLineWidth(1.0);
       glBegin(GL_LINES);
       glVertex3d(0, 0, 0);
       glVertex3d(0, 0, 1);
       glEnd();
+      glEndList();
     }
     else
     {
@@ -118,9 +119,14 @@ namespace Avogadro {
         d->vertexBuffer[ 2 * i + 1 ] = v;
         d->vertexBuffer[ 2 * i ].z() = 1.0f;
       }
+      glEnableClientState( GL_VERTEX_ARRAY );
+      glEnableClientState( GL_NORMAL_ARRAY );
+      glNewList( d->displayList, GL_COMPILE );
       do_draw();
+      glEndList();
+      glDisableClientState( GL_VERTEX_ARRAY );
+      glDisableClientState( GL_NORMAL_ARRAY );
     }
-    glEndList();
     freeBuffers();
   }
 
