@@ -65,7 +65,6 @@ namespace Avogadro {
       QStandardItem *item = new QStandardItem(e->name());
       item->setCheckable(true);
       item->setToolTip(e->description());
-      qDebug() <<  "*** name = "  << e->name();
       if( e->name() == "Dynamic Ball and Stick" ) e->setEnabled(true);
       if(e->isEnabled()) {
         item->setCheckState(Qt::Checked);
