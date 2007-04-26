@@ -27,7 +27,7 @@ namespace Avogadro {
   class EnginePrivate
   {
     public:
-      EnginePrivate() : enabled(true) {}
+      EnginePrivate() : enabled(false) {}
 
       PrimitiveQueue queue;
       bool enabled;
