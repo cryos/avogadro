@@ -76,8 +76,9 @@ void NavigateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
   const double minDistanceToGoal = 2.0 * CAMERA_NEAR_DISTANCE;
   double u = minDistanceToGoal / distanceToGoal - 1.0;
 
-  if( ( distanceToGoal < 0.99 * minDistanceToGoal ) || ( t < u ) )
+  if( t < u ) {
     t = u;
+  }
 
   _glwidget->camera().matrix().pretranslate( transformedGoal * t );
 }
@@ -124,7 +125,9 @@ void NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
   _glwidget = widget;
-  if(!_glwidget->molecule()) return;
+  if(!_glwidget->molecule()) {
+    return;
+  }
 
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;
 

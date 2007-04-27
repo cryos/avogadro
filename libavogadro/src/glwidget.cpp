@@ -361,13 +361,6 @@ namespace Avogadro {
     // setup the camera to have a nice viewpoint on the molecule
     d->camera.initializeViewPoint();
 
-    // setup the selection buffer
-    if(d->selectBuf) delete[] d->selectBuf;
-    d->selectBufSize = ( d->molecule->NumAtoms() + SEL_BUF_MARGIN_NEW_ATOMS ) * 8;
-    if( d->selectBufSize > SEL_BUF_MAX_SIZE ) {
-      d->selectBufSize = SEL_BUF_MAX_SIZE;
-    }
-    d->selectBuf = new GLuint[d->selectBufSize];
     update();
   }
   
@@ -523,6 +516,20 @@ namespace Avogadro {
   
     int cx = w/2 + x;
     int cy = h/2 + y;
+
+    // setup the selection buffer
+    int requiredSelectBufSize = d->molecule->NumAtoms() * 8;
+    if( requiredSelectBufSize > d->selectBufSize )
+    {
+      //resize selection buffer
+      if(d->selectBuf) delete[] d->selectBuf;
+      // add some margin so that resizing doesn't occur everytime an atom is added
+      d->selectBufSize = requiredSelectBufSize + SEL_BUF_MARGIN;
+      if( d->selectBufSize > SEL_BUF_MAX_SIZE ) {
+        d->selectBufSize = SEL_BUF_MAX_SIZE;
+      }
+      d->selectBuf = new GLuint[d->selectBufSize];
+    }
   
     //X   hits.clear();
 
