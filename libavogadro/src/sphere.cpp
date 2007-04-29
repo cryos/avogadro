@@ -19,7 +19,7 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-Sphere::Sphere(int detail): m_vertexBuffer(0), m_indexBuffer(0), m_displayList(0)
+Sphere::Sphere(int detail): m_vertexBuffer(0), m_indexBuffer(0), m_displayList(0), m_isValid(false)
 {
   setup(detail);
 }
@@ -134,6 +134,7 @@ void Sphere::initialize()
     glDisableClientState( GL_VERTEX_ARRAY );
     glDisableClientState( GL_NORMAL_ARRAY );
 	freeBuffers();
+  m_isValid = true;
 }
 
 unsigned short Sphere::indexOfVertex( int strip, int column, int row)
@@ -236,7 +237,7 @@ void Sphere::computeVertex( int strip, int column, int row)
 
 void Sphere::setup( int detail )
 {
-	if( detail == m_detail ) return;
+	if( m_isValid && detail == m_detail ) return;
 	m_detail = detail;
 	initialize();
 }

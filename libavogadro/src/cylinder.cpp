@@ -72,7 +72,7 @@ namespace Avogadro {
 
   void Cylinder::setup( int faces )
   {
-    if( faces == d->faces ) return;
+    if( d->isValid && faces == d->faces ) return;
     d->faces = faces;
     initialize();
   }
@@ -128,6 +128,7 @@ namespace Avogadro {
       glDisableClientState( GL_NORMAL_ARRAY );
     }
     freeBuffers();
+    d->isValid = true;
   }
 
   void Cylinder::do_draw() const

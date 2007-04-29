@@ -64,6 +64,8 @@ namespace Avogadro {
        * icosahedron */
       int m_detail;
 
+      bool m_isValid;
+
       void freeBuffers();
       void initialize();
       void do_draw() const;
