@@ -95,7 +95,8 @@ namespace Avogadro {
   class GLWidgetPrivate {
     public:
       GLWidgetPrivate() : background(Qt::black), molecule(0),
-                          tool(0), toolGroup(0), selectBuf(0) {}
+                          tool(0), toolGroup(0), selectBuf(0),
+                          selectBufSize(-1) {}
       ~GLWidgetPrivate()
       {
         if(selectBuf) delete[] selectBuf;
