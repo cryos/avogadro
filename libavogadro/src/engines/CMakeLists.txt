@@ -56,3 +56,14 @@ TARGET_LINK_LIBRARIES(wireengine avogadro-lib
 )
 
 INSTALL(TARGETS wireengine DESTINATION lib/avogadro)
+
+# sphere
+set(sphereengine_SRCS sphereengine.cpp)
+qt4_automoc(${sphereengine_SRCS})
+ADD_LIBRARY(sphereengine SHARED ${sphereengine_SRCS} )
+TARGET_LINK_LIBRARIES(sphereengine avogadro-lib
+                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                ${OPENGL_LIBRARIES}
+)
+
+INSTALL(TARGETS sphereengine DESTINATION lib/avogadro)
