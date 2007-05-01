@@ -1,5 +1,5 @@
 /**********************************************************************
-  BSEngine - Engine for "balls and sticks" display
+  SphereEngine - Engine for "balls and sticks" display
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -21,8 +21,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __BSENGINE_H
-#define __BSENGINE_H
+#ifndef __SPHEREENGINE_H
+#define __SPHEREENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
@@ -39,15 +39,15 @@
 namespace Avogadro {
 
   //! Sphere Engine class.
-  class BSEngine : public Engine
+  class SphereEngine : public Engine
   {
     Q_OBJECT
 
     public:
       //! Constructor
-      BSEngine(QObject *parent=0) : Engine(parent), m_setup(false) {}
+      SphereEngine(QObject *parent=0) : Engine(parent), m_setup(false) {}
       //! Deconstructor
-      ~BSEngine() {}
+      ~SphereEngine() {}
 
       //! \name Description methods
       //@{
@@ -76,14 +76,14 @@ namespace Avogadro {
       bool m_setup; //!< Whether the sphere and cylinder objects have been setup
   };
 
-  //! Generates instances of our BSEngine class
-  class BSEngineFactory : public QObject, public EngineFactory
+  //! Generates instances of our SphereEngine class
+  class SphereEngineFactory : public QObject, public EngineFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
 
     public:
-      Engine *createInstance(QObject *parent = 0) { return new BSEngine(parent); }
+      Engine *createInstance(QObject *parent = 0) { return new SphereEngine(parent); }
   };
 
 } // end namespace Avogadro

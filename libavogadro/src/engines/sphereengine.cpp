@@ -1,5 +1,5 @@
 /**********************************************************************
-  BSEngine - Engine for "balls and sticks" display
+  SphereEngine - Engine for "balls and sticks" display
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
@@ -38,7 +38,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-bool BSEngine::render(GLWidget *gl)
+bool SphereEngine::render(GLWidget *gl)
 {
   QList<Primitive *> list;
 
@@ -60,7 +60,7 @@ bool BSEngine::render(GLWidget *gl)
   return true;
 }
 
-bool BSEngine::render(const Atom *a)
+bool SphereEngine::render(const Atom *a)
 {
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
@@ -82,13 +82,13 @@ bool BSEngine::render(const Atom *a)
   return true;
 }
 
-bool BSEngine::render(const Bond *b)
+bool SphereEngine::render(const Bond *b)
 {
   // Disabled
   return false;
 }
 
-bool BSEngine::render(const Molecule *m)
+bool SphereEngine::render(const Molecule *m)
 {
   // Disabled
   return false;
@@ -96,4 +96,4 @@ bool BSEngine::render(const Molecule *m)
 
 #include "sphereengine.moc"
 
-Q_EXPORT_PLUGIN2(sphereengine, BSEngineFactory)
+Q_EXPORT_PLUGIN2(sphereengine, SphereEngineFactory)
