@@ -20,6 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include "config.h"
+
 #include "mainwindow.h"
 #include "aboutdialog.h"
 #include <avogadro/primitives.h>
@@ -152,7 +154,7 @@ namespace Avogadro {
     //dc:     layout->addWidget(toolBox, 0,1);
 
 
-    loadPlugins();
+    loadExtensions();
 
     //     // add all gl engines to the dropdown
     //     QList<Engine *> engines = ui.glWidget->engines();
@@ -664,18 +666,19 @@ namespace Avogadro {
     settings.setValue("size", size());
   }
 
-  void MainWindow::loadPlugins()
+  void MainWindow::loadExtensions()
   {
+    QString prefixPath = QString(INSTALL_PREFIX) + "/lib/avogadro/extensions";
     QStringList pluginPaths;
-    pluginPaths << "/usr/lib/avogadro" << "/usr/local/lib/avogadro";
+    pluginPaths << prefixPath;
 
 #ifdef WIN32
-    pluginPaths << "./plugins";
+    pluginPaths << "./extensions";
 #endif
 
-    if(getenv("AVOGADRO_PLUGINS") != NULL)
+    if(getenv("AVOGADRO_EXTENSIONS") != NULL)
     {
-      pluginPaths += QString(getenv("AVOGADRO_PLUGINS")).split(':');
+      pluginPaths += QString(getenv("AVOGADRO_EXTENSIONS")).split(':');
     }
 
     foreach (QString path, pluginPaths)

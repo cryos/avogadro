@@ -7,6 +7,8 @@ ADD_DEFINITIONS(-DQT_PLUGIN)
 ADD_DEFINITIONS(-DQT_NO_DEBUG)
 ADD_DEFINITIONS(-DQT_SHARED)
 
+set(DESTINATION_DIR lib/avogadro/tools)
+
 include_directories(
 	${CMAKE_CURRENT_BINARY_DIR}
 )
@@ -23,7 +25,7 @@ TARGET_LINK_LIBRARIES(drawtool
     ${QT_LIBRARIES}
     ${OPENGL_LIBRARIES} 
     avogadro-lib)
-INSTALL(TARGETS drawtool DESTINATION lib/avogadro/tools)
+INSTALL(TARGETS drawtool DESTINATION ${DESTINATION_DIR})
 
 ### clickmeasuretool
 set(clickmeasuretool_SRCS clickmeasuretool.cpp)
@@ -35,7 +37,7 @@ TARGET_LINK_LIBRARIES(clickmeasuretool
     ${QT_LIBRARIES}
     ${OPENGL_LIBRARIES} 
     avogadro-lib)
-INSTALL(TARGETS clickmeasuretool DESTINATION lib/avogadro/tools)
+INSTALL(TARGETS clickmeasuretool DESTINATION ${DESTINATION_DIR})
 
 ### selectrotatetool
 set(selectrotatetool_SRCS selectrotatetool.cpp)
@@ -48,7 +50,7 @@ TARGET_LINK_LIBRARIES(selectrotatetool
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS selectrotatetool DESTINATION lib/avogadro/tools)
+INSTALL(TARGETS selectrotatetool DESTINATION ${DESTINATION_DIR})
 
 ### navigatetool
 set(navigatetool_SRCS navigatetool.cpp)
@@ -60,5 +62,5 @@ TARGET_LINK_LIBRARIES(navigatetool
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS navigatetool DESTINATION lib/avogadro/tools)
+INSTALL(TARGETS navigatetool DESTINATION ${DESTINATION_DIR})
 

@@ -103,7 +103,7 @@ namespace Avogadro {
       void setMolecule(Molecule *molecule);
       Molecule *molecule() const;
 
-      void loadPlugins();
+      void loadExtensions();
 
       MainWindow *findMainWindow(const QString &fileName);
       

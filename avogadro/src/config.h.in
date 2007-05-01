@@ -23,4 +23,6 @@
 #ifndef __CONFIG_H
 #define __CONFIG_H
 
+#define INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}"
+
 #endif  // __CONFIG_H

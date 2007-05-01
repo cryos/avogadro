@@ -20,6 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include "config.h"
+
 #include <avogadro/toolgroup.h>
 #include <avogadro/tool.h>
 
@@ -53,8 +55,9 @@ namespace Avogadro {
 
   void ToolGroup::load()
   {
+    QString prefixPath = QString(INSTALL_PREFIX) + "/lib/avogadro/tools";
     QStringList pluginPaths;
-    pluginPaths << "/usr/lib/avogadro/tools" << "/usr/local/lib/avogadro/tools";
+    pluginPaths << prefixPath;
 
 #ifdef WIN32
 	pluginPaths << "./tools";
@@ -62,7 +65,7 @@ namespace Avogadro {
 
     if(getenv("AVOGADRO_TOOLS") != NULL)
     {
-      pluginPaths += QString(getenv("AVOGADRO_TOOLS")).split(':');
+      pluginPaths = QString(getenv("AVOGADRO_TOOLS")).split(':');
     }
   
     foreach (QString path, pluginPaths)

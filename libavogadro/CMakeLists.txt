@@ -12,10 +12,5 @@ if (WIN32)
 	add_definitions( -DUSING_OBDLL -DUSING_DYNAMIC_LIBS )
 endif (WIN32)
 
-configure_file(
-	${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
-	${CMAKE_CURRENT_BINARY_DIR}/config.h
-)
-
 # tell cmake to process CMakeLists.txt in that subdirectory
 add_subdirectory(src)

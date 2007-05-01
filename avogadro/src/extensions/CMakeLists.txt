@@ -7,6 +7,8 @@ ADD_DEFINITIONS(-DQT_PLUGIN)
 ADD_DEFINITIONS(-DQT_NO_DEBUG)
 ADD_DEFINITIONS(-DQT_SHARED)
 
+set(DESTINATION_DIR lib/avogadro/extensions)
+
 include_directories(
     ../
 	${CMAKE_CURRENT_BINARY_DIR}
@@ -28,7 +30,7 @@ TARGET_LINK_LIBRARIES(gamess
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS gamess DESTINATION lib/avogadro)
+INSTALL(TARGETS gamess DESTINATION ${DESTINATION_DIR})
 
 ### ghemical
 set(ghemical_SRCS ghemical.cpp)
@@ -40,7 +42,7 @@ TARGET_LINK_LIBRARIES(ghemical
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS ghemical DESTINATION lib/avogadro)
+INSTALL(TARGETS ghemical DESTINATION ${DESTINATION_DIR})
 
 ### hydrogens
 set(hydrogens_SRCS hydrogens.cpp)
@@ -52,5 +54,5 @@ TARGET_LINK_LIBRARIES(hydrogens
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS hydrogens DESTINATION lib/avogadro)
+INSTALL(TARGETS hydrogens DESTINATION ${DESTINATION_DIR})
 

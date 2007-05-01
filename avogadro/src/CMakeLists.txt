@@ -4,6 +4,11 @@ if(WIN32)
 	set(QT_USE_QTMAIN TRUE)
 endif(WIN32)
 
+configure_file(
+	${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
+	${CMAKE_CURRENT_BINARY_DIR}/config.h
+)
+
 LINK_DIRECTORIES(${LINK_DIRECTORIES} ${libavogadro_BINARY_DIR}/src)
 
 include_directories(

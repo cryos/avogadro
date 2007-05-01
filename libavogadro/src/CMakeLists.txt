@@ -1,5 +1,10 @@
 set(QT_USE_QTOPENGL TRUE)
 
+configure_file(
+	${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
+	${CMAKE_CURRENT_BINARY_DIR}/config.h
+)
+
 include(${QT_USE_FILE})
 
 include_directories(

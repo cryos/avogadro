@@ -446,8 +446,9 @@ namespace Avogadro {
   
   void GLWidget::loadEngines()
   {
+    QString prefixPath = QString(INSTALL_PREFIX) + "/lib/avogadro/engines";
     QStringList pluginPaths;
-    pluginPaths << "/usr/lib/avogadro" << "/usr/local/lib/avogadro";
+    pluginPaths << prefixPath;
 
 #ifdef WIN32
 	pluginPaths << "./engines";
@@ -455,7 +456,7 @@ namespace Avogadro {
 
     if(getenv("AVOGADRO_ENGINES") != NULL)
     {
-      pluginPaths += QString(getenv("AVOGADRO_ENGINES")).split(':');
+      pluginPaths = QString(getenv("AVOGADRO_ENGINES")).split(':');
     }
 
     // load static plugins first

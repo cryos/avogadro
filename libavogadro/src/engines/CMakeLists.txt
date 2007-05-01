@@ -6,6 +6,7 @@ include_directories(${OPENBABEL_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 )
 
+set(DESTINATION_DIR lib/avogadro/engines)
 
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_PLUGIN)
@@ -23,7 +24,7 @@ TARGET_LINK_LIBRARIES(bsengine avogadro-lib
                                 ${OPENGL_LIBRARIES}
 )
 
-INSTALL(TARGETS bsengine DESTINATION lib/avogadro)
+INSTALL(TARGETS bsengine DESTINATION ${DESTINATION_DIR})
 
 # ball and stick dynamic engine
 set(bsdyengine_SRCS bsdyengine.cpp)
@@ -34,7 +35,7 @@ TARGET_LINK_LIBRARIES(bsdyengine avogadro-lib
                                 ${OPENGL_LIBRARIES}
 )
 
-INSTALL(TARGETS bsdyengine DESTINATION lib/avogadro)
+INSTALL(TARGETS bsdyengine DESTINATION ${DESTINATION_DIR})
 
 # label engine
 set(labelengine_SRCS labelengine.cpp)
@@ -44,7 +45,7 @@ TARGET_LINK_LIBRARIES(labelengine avogadro-lib
                                 ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                 ${OPENGL_LIBRARIES}
 )
-INSTALL(TARGETS labelengine DESTINATION lib/avogadro)
+INSTALL(TARGETS labelengine DESTINATION ${DESTINATION_DIR})
 
 # wireframe
 set(wireengine_SRCS wireengine.cpp)
@@ -55,7 +56,7 @@ TARGET_LINK_LIBRARIES(wireengine avogadro-lib
                                 ${OPENGL_LIBRARIES}
 )
 
-INSTALL(TARGETS wireengine DESTINATION lib/avogadro)
+INSTALL(TARGETS wireengine DESTINATION ${DESTINATION_DIR})
 
 # sphere
 set(sphereengine_SRCS sphereengine.cpp)
@@ -66,4 +67,4 @@ TARGET_LINK_LIBRARIES(sphereengine avogadro-lib
                                 ${OPENGL_LIBRARIES}
 )
 
-INSTALL(TARGETS sphereengine DESTINATION lib/avogadro)
+INSTALL(TARGETS sphereengine DESTINATION ${DESTINATION_DIR})
