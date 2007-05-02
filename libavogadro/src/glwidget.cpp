@@ -287,10 +287,10 @@ namespace Avogadro {
 
   void GLWidget::glDraw()
   {
-    if(QGLContext::currentContext() != context())
-    {
-      return;
-    }
+//     if(QGLContext::currentContext() != context())
+//     {
+//       return;
+//     }
 
     QGLWidget::glDraw();
   }
