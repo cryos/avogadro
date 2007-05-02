@@ -225,6 +225,7 @@ namespace Avogadro {
     int size = d->engines.size();
     OBUnitCell *uc = NULL;
     std::vector<vector3> cellVectors;
+    vector3 offset;
 
     if (d->molecule && d->molecule->HasData(OBGenericDataType::UnitCell))
       uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
@@ -238,15 +239,12 @@ namespace Avogadro {
           }
         }
     } else { // render a crystal (for now, 2 unit cells in each direction
-      d->aCells = d->bCells = d->cCells = 1;
+      d->aCells = d->bCells = d->cCells = 2;
       cellVectors = uc->GetCellVectors();
 
       for (int a = 0; a < d->aCells; a++) {
-        glTranslatef(cellVectors[0].x(), cellVectors[0].y(), cellVectors[0].z());
-        for (int b = 0; b < d->bCells; b++) {
-          glTranslatef(cellVectors[1].x(), cellVectors[1].y(), cellVectors[1].z());
+        for (int b = 0; b < d->bCells; b++)  {
           for (int c = 0; c < d->cCells; c++) {
-            glTranslatef(cellVectors[2].x(), cellVectors[2].y(), cellVectors[2].z());
             for(int i=0; i<size; i++)
               {
                 Engine *engine = d->engines.at(i);
@@ -254,8 +252,17 @@ namespace Avogadro {
                   engine->render(this);
                 }
               } // end rendering loop
+            glTranslatef(cellVectors[2].x(), cellVectors[2].y(), cellVectors[2].z());
           } // end c
+          glTranslatef(cellVectors[2].x() * -d->cCells, 
+                       cellVectors[2].y() * -d->cCells, 
+                       cellVectors[2].z() * -d->cCells);
+          glTranslatef(cellVectors[1].x(), cellVectors[1].y(), cellVectors[1].z());
         } // end b
+        glTranslatef(cellVectors[1].x() * -d->bCells,
+                     cellVectors[1].y() * -d->bCells,
+                     cellVectors[1].z() * -d->bCells);
+        glTranslatef(cellVectors[0].x(), cellVectors[0].y(), cellVectors[0].z());
       } // end a
     } // end rendering crystal
 
