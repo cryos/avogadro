@@ -60,8 +60,8 @@ namespace Avogadro {
 
     protected:
       ToolPrivate *const d;
-
   };
+
   class A_EXPORT ToolFactory
   {
     public:
