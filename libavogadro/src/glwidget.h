@@ -33,8 +33,10 @@
 #include <QDir>
 #include <QDebug>
 #include <QPluginLoader>
+#include <QTime>
 
 #include <vector>
+
 
 namespace Avogadro {
   
@@ -349,6 +351,7 @@ namespace Avogadro {
       void setToolGroup(ToolGroup *toolGroup);
       ToolGroup * toolGroup() const;
 
+      double framesPerSecond();
 
     public Q_SLOTS:
 
