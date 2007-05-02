@@ -26,6 +26,9 @@
 #include <avogadro/camera.h>
 #include <avogadro/toolgroup.h>
 
+#include <openbabel/generic.h>
+using namespace OpenBabel;
+
 #include <stdio.h>
 #include <vector>
 
@@ -95,6 +98,7 @@ namespace Avogadro {
   class GLWidgetPrivate {
     public:
       GLWidgetPrivate() : background(Qt::black), molecule(0),
+                          aCells(0), bCells(0), cCells(0),
                           tool(0), toolGroup(0), selectBuf(0),
                           selectBufSize(-1) {}
       ~GLWidgetPrivate()
@@ -112,8 +116,13 @@ namespace Avogadro {
       double                 radius;
       const Atom             *farthestAtom;
 
+      //! number of unit cells in a, b, and c crystal directions
+      unsigned char          aCells;
+      unsigned char          bCells;
+      unsigned char          cCells;
+
       Tool                   *tool;
-      ToolGroup            *toolGroup;
+      ToolGroup              *toolGroup;
     
       //TODO: convert to pointer
       Camera                 camera;
@@ -213,16 +222,42 @@ namespace Avogadro {
 
   void GLWidget::render()
   {
-    int size = 0;
-    
-    size = d->engines.size();
-    for(int i=0; i<size; i++)
-    {
-      Engine *engine = d->engines.at(i);
-      if(engine->isEnabled()) {
-        engine->render(this);
-      }
-    }
+    int size = d->engines.size();
+    OBUnitCell *uc = NULL;
+    std::vector<vector3> cellVectors;
+
+    if (d->molecule && d->molecule->HasData(OBGenericDataType::UnitCell))
+      uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
+
+    if (!uc) { // a plain molecule, no crystal cell
+      for(int i=0; i<size; i++)
+        {
+          Engine *engine = d->engines.at(i);
+          if(engine->isEnabled()) {
+            engine->render(this);
+          }
+        }
+    } else { // render a crystal (for now, 2 unit cells in each direction
+      d->aCells = d->bCells = d->cCells = 1;
+      cellVectors = uc->GetCellVectors();
+
+      for (int a = 0; a < d->aCells; a++) {
+        glTranslatef(cellVectors[0].x(), cellVectors[0].y(), cellVectors[0].z());
+        for (int b = 0; b < d->bCells; b++) {
+          glTranslatef(cellVectors[1].x(), cellVectors[1].y(), cellVectors[1].z());
+          for (int c = 0; c < d->cCells; c++) {
+            glTranslatef(cellVectors[2].x(), cellVectors[2].y(), cellVectors[2].z());
+            for(int i=0; i<size; i++)
+              {
+                Engine *engine = d->engines.at(i);
+                if(engine->isEnabled()) {
+                  engine->render(this);
+                }
+              } // end rendering loop
+          } // end c
+        } // end b
+      } // end a
+    } // end rendering crystal
 
     size = d->displayLists.size();
     for(int i=0; i<size; i++) {
