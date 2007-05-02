@@ -68,3 +68,14 @@ TARGET_LINK_LIBRARIES(sphereengine avogadro-lib
 )
 
 INSTALL(TARGETS sphereengine DESTINATION ${DESTINATION_DIR})
+
+# stick (cylinder) engine
+set(stickengine_SRCS stickengine.cpp)
+qt4_automoc(${stickengine_SRCS})
+ADD_LIBRARY(stickengine SHARED ${stickengine_SRCS} )
+TARGET_LINK_LIBRARIES(stickengine avogadro-lib
+                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                ${OPENGL_LIBRARIES}
+)
+
+INSTALL(TARGETS stickengine DESTINATION ${DESTINATION_DIR})
