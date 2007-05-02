@@ -22,7 +22,7 @@
 
 #include "config.h"
 
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 #include <QDebug>
 #include <eigen/regression.h>
 
@@ -294,4 +294,4 @@ namespace Avogadro {
   }
 }
 
-#include "primitives.moc"
+#include "primitive.moc"

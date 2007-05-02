@@ -66,10 +66,10 @@ namespace Avogadro {
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
       */
-      virtual void mousePress(GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);
-      virtual void wheel(GLWidget *widget, const QWheelEvent *event);
+      virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event);
+      virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event);
+      virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
+      virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
 
     protected:
 

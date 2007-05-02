@@ -22,7 +22,7 @@
 
 #include "gamess.h"
 
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 

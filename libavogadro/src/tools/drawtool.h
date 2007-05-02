@@ -35,6 +35,7 @@
 #include <QVBoxLayout>
 #include <QImage>
 #include <QAction>
+#include <QUndoCommand>
 
 namespace Avogadro {
 
@@ -61,10 +62,10 @@ namespace Avogadro {
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
       */
-      virtual void mousePress(GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event);
-      virtual void mouseMove(GLWidget *widget, const QMouseEvent *event);
-      virtual void wheel(GLWidget *widget, const QWheelEvent *event);
+      virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event);
+      virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event);
+      virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
+      virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
 
       void setElement(int i);
       int element() const;
@@ -72,8 +73,8 @@ namespace Avogadro {
       void setBondOrder(int i);
       int bondOrder() const;
 
-      public slots:
-        void elementChanged( int index );
+    public Q_SLOTS:
+      void elementChanged( int index );
       void bondOrderChanged( int index );
 
     private:

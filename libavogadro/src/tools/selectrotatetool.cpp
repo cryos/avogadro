@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 #include "selectrotatetool.h"
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
@@ -49,7 +49,7 @@ SelectRotateTool::~SelectRotateTool()
   }
 }
 
-void SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
 
   _movedSinceButtonPressed = false;
@@ -69,11 +69,11 @@ void SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
   }
 }
 
-void SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->molecule();
   if(!molecule) {
-    return;
+    return 0;
   }
 
   if(!_hits.size())
@@ -127,9 +127,11 @@ void SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
   }
 
   widget->update();
+
+  return 0;
 }
 
-void SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
 
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;
@@ -179,10 +181,13 @@ void SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
   }
 
   widget->update();
+
+  return 0;
 }
 
-void SelectRotateTool::wheel(GLWidget *widget, const QWheelEvent *event)
+QUndoCommand* SelectRotateTool::wheel(GLWidget *widget, const QWheelEvent *event)
 {
+  return 0;
 }
 
 void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)

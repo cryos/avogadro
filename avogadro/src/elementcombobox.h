@@ -24,7 +24,7 @@
 #define __ELEMENTCOMBOBOX_H
 
 
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 #include <QComboBox>
 
 namespace Avogadro {

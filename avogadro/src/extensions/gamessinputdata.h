@@ -24,7 +24,7 @@
 #define __GAMESSINPUTDATA_H
 
 #include <iostream>
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 
 using namespace std;
 namespace Avogadro {

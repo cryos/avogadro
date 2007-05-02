@@ -27,11 +27,17 @@
 #include <avogadro/toolgroup.h>
 
 #include <openbabel/generic.h>
-using namespace OpenBabel;
+
+#include <QDir>
+#include <QMouseEvent>
+#include <QPluginLoader>
+#include <QTime>
+#include <QUndoStack>
 
 #include <stdio.h>
 #include <vector>
 
+using namespace OpenBabel;
 namespace Avogadro {
   class GLHitPrivate
   {
@@ -54,7 +60,7 @@ namespace Avogadro {
     d->maxZ = e->maxZ;
   }
 
-  GLHit::GLHit(GLuint type, GLuint name, GLuint minZ, GLuint maxZ) : d(new GLHitPrivate) { 
+  GLHit::GLHit(GLuint type, GLuint name, GLuint minZ, GLuint maxZ) : d(new GLHitPrivate) {
     d->name = name;
     d->type = type;
     d->minZ = minZ;
@@ -75,14 +81,14 @@ namespace Avogadro {
     delete d;
   }
 
-  bool GLHit::operator<(const GLHit &other) const { 
+  bool GLHit::operator<(const GLHit &other) const {
     GLHitPrivate *e = other.d;
-    return d->minZ < e->minZ; 
+    return d->minZ < e->minZ;
   }
 
-  bool GLHit::operator==(const GLHit &other) const { 
+  bool GLHit::operator==(const GLHit &other) const {
     GLHitPrivate *e = other.d;
-    return ((d->type == e->type) && (d->name == e->name)); 
+    return ((d->type == e->type) && (d->name == e->name));
   }
 
   GLuint GLHit::name() const { return d->name; }
@@ -94,7 +100,7 @@ namespace Avogadro {
   void GLHit::setType(GLuint type) { d->type = type; }
   void GLHit::setMinZ(GLuint minZ) { d->minZ = minZ; }
   void GLHit::setMaxZ(GLuint maxZ) { d->maxZ = maxZ; }
-  
+
   class GLWidgetPrivate {
     public:
       GLWidgetPrivate() : background(Qt::black), molecule(0),
@@ -105,14 +111,14 @@ namespace Avogadro {
       {
         if(selectBuf) delete[] selectBuf;
       }
-      
+
       QList<Engine *>        engines;
-    
+
       Molecule               *molecule;
       QList<GLuint>          displayLists;
 
-      Eigen::Vector3d        normalVector; 
-      Eigen::Vector3d        center; 
+      Eigen::Vector3d        normalVector;
+      Eigen::Vector3d        center;
       double                 radius;
       const Atom             *farthestAtom;
 
@@ -123,32 +129,34 @@ namespace Avogadro {
 
       Tool                   *tool;
       ToolGroup              *toolGroup;
-    
+
       //TODO: convert to pointer
       Camera                 camera;
       QColor                 background;
 
       int                    selectBufSize;
       GLuint                 *selectBuf;
-      
+
+      QUndoStack             *undoStack;
+
       //Used by Debug Engine for FPS Meter
       double                 framesPerSecond;
   };
 
 
-  GLWidget::GLWidget(QWidget *parent ) 
+  GLWidget::GLWidget(QWidget *parent )
   : QGLWidget(parent), d(new GLWidgetPrivate)
   {
     constructor();
   }
-  
-  GLWidget::GLWidget(const QGLFormat &format, QWidget *parent) 
+
+  GLWidget::GLWidget(const QGLFormat &format, QWidget *parent)
   : QGLWidget(format, parent), d(new GLWidgetPrivate)
   {
     constructor();
   }
-  
-  GLWidget::GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent) 
+
+  GLWidget::GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent)
   : QGLWidget(format, parent), d(new GLWidgetPrivate)
   {
     constructor();
@@ -162,45 +170,45 @@ namespace Avogadro {
     }
     delete(d);
   }
-  
+
   void GLWidget::constructor()
   {
     setSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
     loadEngines();
     d->camera.setParent(this);
   }
-  
+
   void GLWidget::initializeGL()
   {
     qglClearColor ( d->background );
-  
+
     glShadeModel( GL_SMOOTH );
     glEnable( GL_DEPTH_TEST );
     glDepthFunc( GL_LESS );
     glEnable( GL_CULL_FACE );
     glEnable( GL_COLOR_SUM_EXT );
-  
+
     GLfloat mat_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
     GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_shininess[] = { 30.0 };
-  
+
     glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
     glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
     glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-  
+
     // Used to display semi-transparent relection rectangle
     //  glBlendFunc(GL_ONE, GL_ONE);
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
-  
+
     glEnable( GL_NORMALIZE );
     glEnable( GL_LIGHTING );
-  
+
     GLfloat ambientLight[] = { 0.4, 0.4, 0.4, 1.0 };
     GLfloat diffuseLight[] = { 0.8, 0.8, 0.8, 1.0 };
     GLfloat specularLight[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat position[] = { 0.8, 0.7, 1.0, 0.0 };
-  
+
     glLightModeli( GL_LIGHT_MODEL_COLOR_CONTROL_EXT,
         GL_SEPARATE_SPECULAR_COLOR_EXT );
     glLightfv( GL_LIGHT0, GL_AMBIENT, ambientLight );
@@ -209,16 +217,16 @@ namespace Avogadro {
     glLightfv( GL_LIGHT0, GL_POSITION, position );
     glEnable( GL_LIGHT0 );
   }
-  
+
   void GLWidget::resizeGL(int width, int height)
   {
     glViewport(0, 0, width, height);
   }
-  
-  void GLWidget::setBackground(const QColor &background) { 
+
+  void GLWidget::setBackground(const QColor &background) {
     d->background = background; qglClearColor(background);
   }
-  
+
   QColor GLWidget::background() const {
     return d->background;
   }
@@ -260,8 +268,8 @@ namespace Avogadro {
               } // end rendering loop
             glTranslatef(cellVectors[2].x(), cellVectors[2].y(), cellVectors[2].z());
           } // end c
-          glTranslatef(cellVectors[2].x() * -d->cCells, 
-                       cellVectors[2].y() * -d->cCells, 
+          glTranslatef(cellVectors[2].x() * -d->cCells,
+                       cellVectors[2].y() * -d->cCells,
                        cellVectors[2].z() * -d->cCells);
           glTranslatef(cellVectors[1].x(), cellVectors[1].y(), cellVectors[1].z());
         } // end b
@@ -276,7 +284,7 @@ namespace Avogadro {
     for(int i=0; i<size; i++) {
       glCallList(d->displayLists.at(i));
     }
-  
+
     glFlush();
 
     // Calculate number of seconds to render frame.
@@ -311,102 +319,102 @@ namespace Avogadro {
 
     render();
   }
-  
+
   void GLWidget::mousePressEvent( QMouseEvent * event )
   {
     if(d->tool) {
       d->tool->mousePress(this, event);
     }
   }
-  
+
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   {
     if(d->tool) {
       d->tool->mouseRelease(this, event);
     }
   }
-  
+
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
   {
     if(d->tool) {
       d->tool->mouseMove(this, event);
     }
   }
-  
+
   void GLWidget::wheelEvent( QWheelEvent * event )
   {
     if(d->tool) {
       d->tool->wheel(this, event);
     }
   }
-  
+
   void GLWidget::addDL(GLuint dl)
   {
     d->displayLists.append(dl);
   }
-  
+
   void GLWidget::removeDL(GLuint dl)
   {
     d->displayLists.removeAll(dl);
   }
-  
+
   void GLWidget::setMolecule(Molecule *molecule)
   {
     if(!molecule)
       return;
-  
+
     // disconnect from our old molecule
     if(d->molecule)
       QObject::disconnect(d->molecule, 0, this, 0);
-  
+
     d->molecule = molecule;
-  
+
     // clear our engine queues
     for( int i=0; i < d->engines.size(); i++ ) {
       d->engines.at(i)->clearQueue();
     }
-  
+
     // add the atoms to the default queue
     std::vector<OpenBabel::OBNodeBase*>::iterator i;
-    for(Atom *atom = (Atom*)d->molecule->BeginAtom(i); 
+    for(Atom *atom = (Atom*)d->molecule->BeginAtom(i);
         atom; atom = (Atom*)d->molecule->NextAtom(i))
     {
       for( int i=0; i < d->engines.size(); i++ ) {
         d->engines.at(i)->addPrimitive(atom);
       }
     }
-  
+
     // add the bonds to the default queue
     std::vector<OpenBabel::OBEdgeBase*>::iterator j;
-    for(Bond *bond = (Bond*)d->molecule->BeginBond(j); 
+    for(Bond *bond = (Bond*)d->molecule->BeginBond(j);
         bond; bond = (Bond*)d->molecule->NextBond(j))
     {
       for( int i=0; i < d->engines.size(); i++ ) {
         d->engines.at(i)->addPrimitive(bond);
       }
     }
-  
+
     // add the residues to the default queue
     std::vector<OpenBabel::OBResidue*>::iterator k;
-    for(Residue *residue = (Residue*)d->molecule->BeginResidue(k); 
+    for(Residue *residue = (Residue*)d->molecule->BeginResidue(k);
         residue; residue = (Residue *)d->molecule->NextResidue(k))
     {
       for( int i=0; i < d->engines.size(); i++ ) {
         d->engines.at(i)->addPrimitive(residue);
       }
     }
-  
+
     // add the molecule to the default queue
     for( int i=0; i < d->engines.size(); i++ ) {
       d->engines.at(i)->addPrimitive(d->molecule);
     }
-  
+
     // connect our signals so if the molecule gets updated
-    connect(d->molecule, SIGNAL(primitiveAdded(Primitive*)), 
+    connect(d->molecule, SIGNAL(primitiveAdded(Primitive*)),
         this, SLOT(addPrimitive(Primitive*)));
-    connect(d->molecule, SIGNAL(primitiveUpdated(Primitive*)), 
+    connect(d->molecule, SIGNAL(primitiveUpdated(Primitive*)),
         this, SLOT(updatePrimitive(Primitive*)));
-    connect(d->molecule, SIGNAL(primitiveRemoved(Primitive*)), 
+    connect(d->molecule, SIGNAL(primitiveRemoved(Primitive*)),
         this, SLOT(removePrimitive(Primitive*)));
 
     // compute the molecule's geometric info
@@ -417,7 +425,7 @@ namespace Avogadro {
 
     update();
   }
-  
+
   const Molecule* GLWidget::molecule() const
   {
     return d->molecule;
@@ -460,7 +468,7 @@ namespace Avogadro {
   {
     return d->camera;
   }
-  
+
   QList<Engine *> GLWidget::engines() const
   {
     return d->engines;
@@ -475,7 +483,7 @@ namespace Avogadro {
       }
     }
   }
-  
+
   void GLWidget::updatePrimitive(Primitive *primitive)
   {
     for( int i=0; i< d->engines.size(); i++) {
@@ -484,7 +492,7 @@ namespace Avogadro {
 
     update();
   }
-  
+
   void GLWidget::removePrimitive(Primitive *primitive)
   {
     if(primitive) {
@@ -493,10 +501,10 @@ namespace Avogadro {
         d->engines.at(i)->removePrimitive(primitive);
       }
     }
-  
+
     update();
   }
-  
+
   void GLWidget::loadEngines()
   {
     QString prefixPath = QString(INSTALL_PREFIX) + "/lib/avogadro/engines";
@@ -517,7 +525,7 @@ namespace Avogadro {
     // now load plugins from paths
     foreach (QString path, pluginPaths)
     {
-      QDir dir(path); 
+      QDir dir(path);
       foreach (QString fileName, dir.entryList(QDir::Files)) {
         QPluginLoader loader(dir.absoluteFilePath(fileName));
         QObject *instance = loader.instance();
@@ -525,7 +533,7 @@ namespace Avogadro {
         if (factory) {
           Engine *engine = factory->createInstance(this);
           qDebug() << "Found Engine: " << engine->name() << " - " << engine->description();
-          
+
           d->engines.append(engine);
         }
       }
@@ -553,6 +561,17 @@ namespace Avogadro {
     }
   }
 
+
+  void GLWidget::setUndoStack(QUndoStack *undoStack)
+  {
+    d->undoStack = undoStack;
+  }
+
+  QUndoStack *GLWidget::undoStack() const
+  {
+    return d->undoStack;
+  }
+
   Tool* GLWidget::tool() const
   {
     return d->tool;
@@ -562,7 +581,7 @@ namespace Avogadro {
   {
     return d->toolGroup;
   }
-  
+
   double GLWidget::framesPerSecond()
   {
     return d->framesPerSecond;
@@ -573,7 +592,7 @@ namespace Avogadro {
     QList<GLHit> hits;
     GLint viewport[4];
     int hit_count;
-  
+
     int cx = w/2 + x;
     int cy = h/2 + y;
 
@@ -590,13 +609,13 @@ namespace Avogadro {
       }
       d->selectBuf = new GLuint[d->selectBufSize];
     }
-  
+
     //X   hits.clear();
 
     glSelectBuffer(d->selectBufSize, d->selectBuf);
     glRenderMode(GL_SELECT);
     glInitNames();
-  
+
     // Setup a projection matrix for picking in the zone delimited by (x,y,w,h).
     glGetIntegerv(GL_VIEWPORT, viewport);
     glMatrixMode(GL_PROJECTION);
@@ -612,10 +631,10 @@ namespace Avogadro {
     glPushMatrix();
     glLoadIdentity();
     d->camera.applyModelview();
-  
+
     // now actually render
     render();
-  
+
     // returning to normal rendering mode
     hit_count = glRenderMode(GL_RENDER);
 
@@ -625,7 +644,7 @@ namespace Avogadro {
       unsigned int i, j;
       GLuint names, type, *ptr;
       GLuint minZ, maxZ, name;
-  
+
       //X   printf ("hits = %d\n", hits);
       ptr = (GLuint *) d->selectBuf;
       for (i = 0; i < hit_count; i++) {
@@ -635,7 +654,7 @@ namespace Avogadro {
         //X     printf (" number of names for this hit = %d\n", names); names;
         //X     printf("  z1 is %g;", (float) *ptr/0x7fffffff); minZ;
         //X     printf(" z2 is %g\n", (float) *ptr/0x7fffffff); maxZ;
-        //X     printf ("   names are "); 
+        //X     printf ("   names are ");
         name = 0;
         for (j = 0; j < names/2; j++) { /*  for each name */
           type = *ptr++;
@@ -655,7 +674,7 @@ namespace Avogadro {
 //dc:       printf ("\n");
       qSort(hits);
     }
-  
+
     glMatrixMode(GL_PROJECTION);
     glPopMatrix();
     glMatrixMode(GL_MODELVIEW);
@@ -693,7 +712,7 @@ namespace Avogadro {
   {
     // project the reference point
     Eigen::Vector3d projected = project(ref);
-  
+
     // Now unproject the pixel of coordinates (x,height-y) into a 3D point having the same Z-index
     // as the reference point.
     Eigen::Vector3d pos = unProject( Eigen::Vector3d( p.x(), p.y(), projected.z() ));

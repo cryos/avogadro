@@ -23,7 +23,7 @@
 #ifndef __EXTENSION_H
 #define __EXTENSION_H
 
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 
 #include <QString>
 #include <QAction>

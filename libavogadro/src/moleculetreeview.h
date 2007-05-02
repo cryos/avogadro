@@ -24,7 +24,7 @@
 #define __MOLECULETREEVIEW_H
 
 #include <avogadro/global.h>
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 
 #include <QTreeWidget>
 #include <QItemDelegate>

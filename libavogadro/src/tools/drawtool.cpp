@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 #include "drawtool.h"
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
@@ -116,11 +116,11 @@ int DrawTool::bondOrder() const
   return m_bondOrder;
 }
 
-void DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->molecule();
   if(!molecule) {
-    return;
+    return 0;
   }
 
   _buttons = event->buttons();
@@ -152,13 +152,15 @@ void DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
     }
     molecule->update();
   }
+
+  return 0;
 }
 
-void DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->molecule();
   if(!molecule) { 
-    return;
+    return 0;
   }
 
   if((_buttons & Qt::LeftButton) && m_beginAtom)
@@ -321,9 +323,10 @@ void DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
     molecule->update();
   }
 
+  return 0;
 }
 
-void DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
   if(_buttons & Qt::LeftButton)
   {
@@ -356,10 +359,13 @@ void DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
       }
     }
   }
+
+  return 0;
 }
 
-void DrawTool::wheel(GLWidget *widget, const QWheelEvent *event)
+QUndoCommand* DrawTool::wheel(GLWidget *widget, const QWheelEvent *event)
 {
+  return 0;
 }
 
 Atom *DrawTool::newAtom(GLWidget *widget, const QPoint& p)

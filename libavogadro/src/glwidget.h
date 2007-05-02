@@ -29,14 +29,12 @@
 #include <avogadro/color.h>
 
 #include <QGLWidget>
-#include <QMouseEvent>
-#include <QDir>
 #include <QDebug>
-#include <QPluginLoader>
-#include <QTime>
 
 #include <vector>
 
+class QUndoStack;
+class QMouseEvent;
 
 namespace Avogadro {
   
@@ -258,6 +256,16 @@ namespace Avogadro {
        * @param molecule the molecule to view
        */
       void setMolecule(Molecule *molecule);
+
+      /**
+       * @param undoStack the new undoStack
+       */
+      void setUndoStack(QUndoStack *undoStack);
+
+      /**
+       * @return the current GLWidget undoStack
+       */
+      QUndoStack* undoStack() const;
 
       /**
        * @return the current molecule being viewed

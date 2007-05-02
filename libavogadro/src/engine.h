@@ -24,7 +24,7 @@
 #define __ENGINE_H
 
 #include <avogadro/global.h>
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 
 #include <QString>
 #include <QVector>

@@ -24,14 +24,15 @@
 #define __TOOL_H
 
 #include <avogadro/global.h>
-#include <avogadro/primitives.h>
-#include <QString>
-#include <QObject>
 
-#include <QAction>
-#include <QWidget>
+#include <QObject>
 #include <QMouseEvent>
+#include <QString>
 #include <QWheelEvent>
+
+class QAction;
+class QUndoCommand;
+class QWidget;
 
 namespace Avogadro {
 
@@ -52,10 +53,10 @@ namespace Avogadro {
       virtual QAction* activateAction() const;
       virtual QWidget* settingsWidget() const;
 
-      virtual void mousePress(GLWidget *widget, const QMouseEvent *event) = 0;
-      virtual void mouseRelease(GLWidget *widget, const QMouseEvent *event) = 0;
-      virtual void mouseMove(GLWidget *widget, const QMouseEvent *event) = 0;
-      virtual void wheel(GLWidget *widget, const QWheelEvent *event) = 0;
+      virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event) = 0;
 
     protected:
       ToolPrivate *const d;

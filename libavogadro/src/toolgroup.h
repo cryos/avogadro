@@ -26,6 +26,8 @@
 #include <QObject>
 #include <avogadro/tool.h>
 
+class QActionGroup;
+
 namespace Avogadro {
   /**
    * @class ToolGroup

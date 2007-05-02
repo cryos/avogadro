@@ -23,18 +23,19 @@
 #ifndef __MAINWINDOW_H
 #define __MAINWINDOW_H
 
-#include <QMainWindow>
-
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
+
 #include <avogadro/moleculetreeview.h>
+#include <avogadro/glwidget.h>
+#include <avogadro/tool.h>
+#include <avogadro/extension.h>
 
 #include "ui_mainwindow.h"
 #include "flowlayout.h"
 #include "flattabwidget.h"
-#include <avogadro/glwidget.h>
-#include <avogadro/tool.h>
-#include <avogadro/extension.h>
+
+#include <QMainWindow>
 
 class QUndoStack;
 class QStackedLayout;

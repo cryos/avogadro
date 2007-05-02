@@ -25,10 +25,10 @@
 #include <avogadro/toolgroup.h>
 #include <avogadro/tool.h>
 
+#include <QActionGroup>
 #include <QDir>
 #include <QDebug>
 #include <QPluginLoader>
-#include <QActionGroup>
 
 using namespace std;
 namespace Avogadro {

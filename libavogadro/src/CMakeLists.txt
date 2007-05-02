@@ -20,7 +20,7 @@ set(libavogadro_SRCS
 	color.cpp
     engine.cpp
     tool.cpp
-	primitives.cpp
+	primitive.cpp
 	toolgroup.cpp
 	cylinder.cpp
 	sphere.cpp
@@ -31,7 +31,7 @@ set(libavogadro_SRCS
 
 set(libavogadro_HDRS
 	color.h
-	primitives.h
+	primitive.h
 	engine.h
 	cylinder.h
 	sphere.h
@@ -45,7 +45,7 @@ set(libavogadro_HDRS
 qt4_automoc(${libavogadro_SRCS})
 
 #set(libavogadro_MOC_HDRS
-	#primitives.h
+	#primitive.h
 	#glwidget.h
 	#moleculetreeview.h
 #)

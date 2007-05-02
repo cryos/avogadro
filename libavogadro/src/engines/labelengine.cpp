@@ -23,7 +23,7 @@
 #include "config.h"
 #include "labelengine.h"
 
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>

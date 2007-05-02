@@ -1,5 +1,5 @@
 /**********************************************************************
-  Primitives - Wrapper class around the OpenBabel classes
+  Primitive - Wrapper class around the OpenBabel classes
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Copyright (C) 2006,2007 by Donald Ephraim Curtis
@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __PRIMITIVES_H
-#define __PRIMITIVES_H
+#ifndef __PRIMITIVE_H
+#define __PRIMITIVE_H
 
 #include <avogadro/global.h>
 

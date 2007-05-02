@@ -24,21 +24,22 @@
 
 #include "mainwindow.h"
 #include "aboutdialog.h"
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 #include <avogadro/toolgroup.h>
 
 #include <fstream>
 
-#include <QHeaderView>
-#include <QFileDialog>
-#include <QToolButton>
-#include <QStackedLayout>
-#include <QUndoStack>
-#include <QSettings>
 #include <QColorDialog>
-#include <QMessageBox>
+#include <QFileDialog>
 #include <QGLFramebufferObject>
+#include <QHeaderView>
+#include <QMessageBox>
+#include <QPluginLoader>
+#include <QSettings>
 #include <QStandardItem>
+#include <QStackedLayout>
+#include <QToolButton>
+#include <QUndoStack>
 
 using namespace std;
 using namespace OpenBabel;

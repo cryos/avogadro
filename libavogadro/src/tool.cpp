@@ -22,8 +22,10 @@
 
 #include <avogadro/tool.h>
 #include <avogadro/glwidget.h>
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
+
 #include <QAction>
+#include <QUndoCommand>
 #include <QWidget>
 
 namespace Avogadro {

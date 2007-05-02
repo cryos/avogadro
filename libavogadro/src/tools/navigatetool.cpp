@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 #include "navigatetool.h"
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
@@ -110,23 +110,26 @@ void NavigateTool::tilt( const Eigen::Vector3d &center, double delta ) const
   _glwidget->camera().translate( -center );
 }
 
-void NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
   _glwidget = widget;
   _lastDraggingPosition = event->pos();
   computeClickedAtom(event->pos());
+
+  return 0;
 }
 
-void NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
   _glwidget = widget;
+  return 0;
 }
 
-void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
   _glwidget = widget;
   if(!_glwidget->molecule()) {
-    return;
+    return 0;
   }
 
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;
@@ -181,7 +184,7 @@ void NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
   _glwidget->update();
 }
 
-void NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
+QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
 {
   _glwidget = widget;
   computeClickedAtom(event->pos());
@@ -196,6 +199,8 @@ void NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
     zoom( _glwidget->center(), - MOUSE_WHEEL_SPEED * event->delta() );
   }
   _glwidget->update();
+
+  return 0;
 }
 
 #include "navigatetool.moc"

@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 #include "clickmeasuretool.h"
-#include <avogadro/primitives.h>
+#include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
@@ -66,11 +66,11 @@ ClickMeasureTool::~ClickMeasureTool()
   delete m_line;
 }
 
-void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->molecule();
   if(!molecule) {
-    return;
+    return 0;
   }
 
   //! List of hits from initial click
@@ -80,7 +80,7 @@ void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
   {
     Atom *atom = (Atom *)molecule->GetAtom(m_hits[0].name());
     if(m_hits[0].type() != Primitive::AtomType) {
-      return;
+      return 0;
     }
 
     // if we don't have three atoms selected
@@ -189,20 +189,23 @@ void ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
     m_numSelectedAtoms = 0;
     widget->removeDL(m_dl);
     widget->update();
-    return;
   }
+  return 0;
 }
 
-void ClickMeasureTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* ClickMeasureTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
+  return 0;
 }
 
-void ClickMeasureTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* ClickMeasureTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
+  return 0;
 }
 
-void ClickMeasureTool::wheel(GLWidget *widget, const QWheelEvent *event)
+QUndoCommand* ClickMeasureTool::wheel(GLWidget *widget, const QWheelEvent *event)
 {
+  return 0;
 }
 
 #include "clickmeasuretool.moc"
