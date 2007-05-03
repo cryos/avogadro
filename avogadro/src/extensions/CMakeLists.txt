@@ -20,39 +20,39 @@ include_directories(
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
 ### gamess
-set(gamess_SRCS gamess.cpp gamessinputdialog.cpp gamessinputdata.cpp)
-qt4_wrap_ui(gamess_UIS_H gamessinputdialog.ui)
-qt4_automoc(${gamess_SRCS})
-ADD_LIBRARY(gamess SHARED ${gamess_SRCS} ${gamess_UIS_H})
-TARGET_LINK_LIBRARIES(gamess 
+set(gamessextension_SRCS gamessextension.cpp gamessinputdialog.cpp gamessinputdata.cpp)
+qt4_wrap_ui(gamessextension_UIS_H gamessinputdialog.ui)
+qt4_automoc(${gamessextension_SRCS})
+ADD_LIBRARY(gamessextension SHARED ${gamessextension_SRCS} ${gamessextension_UIS_H})
+TARGET_LINK_LIBRARIES(gamessextension 
 	${OPENBABEL2_LIBRARIES} 
 	${QT_LIBRARIES} 
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS gamess DESTINATION ${DESTINATION_DIR})
+INSTALL(TARGETS gamessextension DESTINATION ${DESTINATION_DIR})
 
 ### ghemical
-set(ghemical_SRCS ghemical.cpp)
-qt4_automoc(${ghemical_SRCS})
-ADD_LIBRARY(ghemical SHARED ${ghemical_SRCS})
-TARGET_LINK_LIBRARIES(ghemical 
+set(ghemicalextension_SRCS ghemicalextension.cpp)
+qt4_automoc(${ghemicalextension_SRCS})
+ADD_LIBRARY(ghemicalextension SHARED ${ghemicalextension_SRCS})
+TARGET_LINK_LIBRARIES(ghemicalextension 
 	${OPENBABEL2_LIBRARIES} 
 	${QT_LIBRARIES} 
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS ghemical DESTINATION ${DESTINATION_DIR})
+INSTALL(TARGETS ghemicalextension DESTINATION ${DESTINATION_DIR})
 
 ### hydrogens
-set(hydrogens_SRCS hydrogens.cpp)
-qt4_automoc(${hydrogens_SRCS})
-ADD_LIBRARY(hydrogens SHARED ${hydrogens_SRCS})
-TARGET_LINK_LIBRARIES(hydrogens 
+set(hydrogensextension_SRCS hydrogensextension.cpp)
+qt4_automoc(${hydrogensextension_SRCS})
+ADD_LIBRARY(hydrogensextension SHARED ${hydrogensextension_SRCS})
+TARGET_LINK_LIBRARIES(hydrogensextension 
 	${OPENBABEL2_LIBRARIES} 
 	${QT_LIBRARIES} 
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS hydrogens DESTINATION ${DESTINATION_DIR})
+INSTALL(TARGETS hydrogensextension DESTINATION ${DESTINATION_DIR})
 

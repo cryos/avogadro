@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "ghemical.h"
+#include "ghemicalextension.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -31,7 +31,7 @@ using namespace std;
 using namespace OpenBabel;
 
   namespace Avogadro {
-    Ghemical::Ghemical() : Extension()
+    GhemicalExtension::GhemicalExtension() : Extension()
     {
       m_forceField = OBForceField::FindForceField("Ghemical");
 
@@ -42,11 +42,11 @@ using namespace OpenBabel;
       }
     }
 
-    Ghemical::~Ghemical() 
+    GhemicalExtension::~GhemicalExtension() 
     {
     }
 
-    QUndoCommand* Ghemical::performAction(QAction *action, Molecule *molecule, QTextEdit *textEdit)
+    QUndoCommand* GhemicalExtension::performAction(QAction *action, Molecule *molecule, QTextEdit *textEdit)
     {
       QUndoCommand *undo = new GhemicalCommand(molecule, m_forceField, textEdit);
       undo->setText(QObject::tr("Ghemical Geometric Optimization"));
@@ -104,5 +104,5 @@ using namespace OpenBabel;
 
   } // end namespace Avogadro
 
-#include "ghemical.moc"
-Q_EXPORT_PLUGIN2(ghemical, Avogadro::Ghemical)
+#include "ghemicalextension.moc"
+Q_EXPORT_PLUGIN2(ghemicalextension, Avogadro::GhemicalExtension)

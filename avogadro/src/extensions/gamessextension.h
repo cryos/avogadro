@@ -1,5 +1,5 @@
 /**********************************************************************
-  Hydrogens - Hydrogens Plugin for Avogadro
+  GAMESS - GAMESS Input Deck Plugin for Avogadro
 
   Copyright (C) 2006 by Donald Ephraim Curtis
   Copyright (C) 2006 by Geoffrey R. Hutchison
@@ -20,9 +20,10 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __HYDROGENS_H
-#define __HYDROGENS_H
+#ifndef __GAMESSEXTENSION_H
+#define __GAMESSEXTENSION_H
 
+#include "gamessinputdialog.h"
 
 #include <openbabel/mol.h>
 
@@ -32,53 +33,35 @@
 #include <QObject>
 #include <QList>
 #include <QString>
-#include <QUndoCommand>
 
 namespace Avogadro {
 
- class Hydrogens : public QObject, public Extension
+  class GamessExtension : public QObject, public Extension
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::Extension)
 
     public:
       //! Constructor
-      Hydrogens();
+      GamessExtension();
       //! Deconstructor
-      virtual ~Hydrogens();
+      virtual ~GamessExtension();
 
       //! \name Description methods
       //@{
       //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("Hydrogens"); }
+      virtual QString name() const { return QObject::tr("GAMESS"); }
       //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("Hydrogens Plugin"); };
+      virtual QString description() const { return QObject::tr("GAMESS Input Deck Generator"); };
       //! Perform Action
       virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *messages=NULL);
       //@}
-  };
-
-  class HydrogensCommand : public QUndoCommand
-  {
-    public:
-      enum Action {
-        AddHydrogens = 0,
-        RemoveHydrogens
-      };
-
-    public:
-      HydrogensCommand(Molecule *molecule, enum Action action);
-
-      virtual void undo();
-      virtual void redo();
-      virtual bool mergeWith ( const QUndoCommand * command );
-      virtual int id() const;
 
     private:
-      Molecule *m_molecule;
-      Molecule m_moleculeCopy;
-      enum Action m_action;
+      GamessInputDialog *m_inputDialog;
+      GamessInputData *m_inputData;
   };
+
 
 } // end namespace Avogadro
 

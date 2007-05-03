@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "hydrogens.h"
+#include "hydrogensextension.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -33,7 +33,7 @@ using namespace std;
 using namespace OpenBabel;
 
   namespace Avogadro {
-    Hydrogens::Hydrogens() : Extension()
+    HydrogensExtension::HydrogensExtension() : Extension()
     {
       QAction *action = new QAction(this);
       action->setText("Add Hydrogens");
@@ -44,11 +44,11 @@ using namespace OpenBabel;
       m_actions.append(action);
     }
 
-    Hydrogens::~Hydrogens() 
+    HydrogensExtension::~HydrogensExtension() 
     {
     }
 
-    QUndoCommand* Hydrogens::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
+    QUndoCommand* HydrogensExtension::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
     {
 
       QUndoCommand *undo = 0;
@@ -108,5 +108,5 @@ using namespace OpenBabel;
 
   } // end namespace Avogadro
 
-#include "hydrogens.moc"
-Q_EXPORT_PLUGIN2(hydrogens, Avogadro::Hydrogens)
+#include "hydrogensextension.moc"
+Q_EXPORT_PLUGIN2(hydrogensextension, Avogadro::HydrogensExtension)

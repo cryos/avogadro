@@ -1,5 +1,5 @@
 /**********************************************************************
-  GAMESS - GAMESS Input Deck Plugin for Avogadro
+  Hydrogens - Hydrogens Plugin for Avogadro
 
   Copyright (C) 2006 by Donald Ephraim Curtis
   Copyright (C) 2006 by Geoffrey R. Hutchison
@@ -20,10 +20,9 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __GAMESS_H
-#define __GAMESS_H
+#ifndef __HYDROGENSEXTENSION_H
+#define __HYDROGENSEXTENSION_H
 
-#include "gamessinputdialog.h"
 
 #include <openbabel/mol.h>
 
@@ -33,35 +32,53 @@
 #include <QObject>
 #include <QList>
 #include <QString>
+#include <QUndoCommand>
 
 namespace Avogadro {
 
-  class Gamess : public QObject, public Extension
+ class HydrogensExtension : public QObject, public Extension
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::Extension)
 
     public:
       //! Constructor
-      Gamess();
+      HydrogensExtension();
       //! Deconstructor
-      virtual ~Gamess();
+      virtual ~HydrogensExtension();
 
       //! \name Description methods
       //@{
       //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("GAMESS"); }
+      virtual QString name() const { return QObject::tr("Hydrogens"); }
       //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("GAMESS Input Deck Generator"); };
+      virtual QString description() const { return QObject::tr("Hydrogens Plugin"); };
       //! Perform Action
       virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *messages=NULL);
       //@}
-
-    private:
-      GamessInputDialog *m_inputDialog;
-      GamessInputData *m_inputData;
   };
 
+  class HydrogensCommand : public QUndoCommand
+  {
+    public:
+      enum Action {
+        AddHydrogens = 0,
+        RemoveHydrogens
+      };
+
+    public:
+      HydrogensCommand(Molecule *molecule, enum Action action);
+
+      virtual void undo();
+      virtual void redo();
+      virtual bool mergeWith ( const QUndoCommand * command );
+      virtual int id() const;
+
+    private:
+      Molecule *m_molecule;
+      Molecule m_moleculeCopy;
+      enum Action m_action;
+  };
 
 } // end namespace Avogadro
 

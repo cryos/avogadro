@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __GHEMICAL_H
-#define __GHEMICAL_H
+#ifndef __GHEMICALEXTENSION_H
+#define __GHEMICALEXTENSION_H
 
 
 #include <openbabel/mol.h>
@@ -41,16 +41,16 @@
 
 namespace Avogadro {
 
- class Ghemical : public QObject, public Extension
+ class GhemicalExtension : public QObject, public Extension
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::Extension)
 
     public:
       //! Constructor
-      Ghemical();
+      GhemicalExtension();
       //! Deconstructor
-      virtual ~Ghemical();
+      virtual ~GhemicalExtension();
 
       //! \name Description methods
       //@{

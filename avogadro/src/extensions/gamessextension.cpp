@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "gamess.h"
+#include "gamessextension.h"
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
@@ -36,18 +36,18 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-Gamess::Gamess() : Extension(), m_inputDialog(NULL), m_inputData(NULL)
+GamessExtension::GamessExtension() : Extension(), m_inputDialog(NULL), m_inputData(NULL)
 {
   QAction *action = new QAction(this);
   action->setText("GAMESS Input Generation");
   m_actions.append(action);
 }
 
-Gamess::~Gamess() 
+GamessExtension::~GamessExtension() 
 {
 }
 
-QUndoCommand* Gamess::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
+QUndoCommand* GamessExtension::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
 {
 
   qDebug() << "Perform Action";
@@ -79,5 +79,5 @@ QUndoCommand* Gamess::performAction(QAction *action, Molecule *molecule, QTextEd
   return 0;
 }
 
-#include "gamess.moc"
-Q_EXPORT_PLUGIN2(gamess, Gamess)
+#include "gamessextension.moc"
+Q_EXPORT_PLUGIN2(gamessextension, GamessExtension)
