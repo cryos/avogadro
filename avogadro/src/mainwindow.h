@@ -69,6 +69,7 @@ namespace Avogadro {
 
       void newView();
       void closeView();
+      void centerView();
       void setView(int index);
       void fullScreen();
       void setBackgroundColor();

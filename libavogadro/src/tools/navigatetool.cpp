@@ -38,7 +38,8 @@ using namespace Eigen;
 
 NavigateTool::NavigateTool(QObject *parent) : Tool(parent), _clickedAtom(0)
 {
-
+  QAction *action = activateAction();
+  action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
 }
 
 NavigateTool::~NavigateTool()

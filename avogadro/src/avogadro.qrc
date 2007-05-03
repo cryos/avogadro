@@ -1,5 +1,6 @@
 <RCC>
-    <qresource>
+    <qresource prefix="/" >
+        <file>icons/avogadro.png</file>
         <file>icons/colorize.png</file>
         <file>icons/exit.png</file>
         <file>icons/fileclose.png</file>
@@ -9,12 +10,13 @@
         <file>icons/filesave.png</file>
         <file>icons/filesaveas.png</file>
         <file>icons/help.png</file>
+        <file>icons/navigate.png</file>
+        <file>icons/navigateN.png</file>
         <file>icons/redo.png</file>
         <file>icons/revert.png</file>
         <file>icons/tool.png</file>
         <file>icons/undo.png</file>
         <file>icons/window_fullscreen.png</file>
         <file>icons/window_nofullscreen.png</file>
-        <file>icons/avogadro.png</file>
     </qresource>
 </RCC>

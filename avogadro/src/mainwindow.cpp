@@ -26,6 +26,7 @@
 #include "aboutdialog.h"
 #include <avogadro/primitive.h>
 #include <avogadro/toolgroup.h>
+#include <avogadro/camera.h>
 
 #include <fstream>
 
@@ -64,6 +65,7 @@ namespace Avogadro {
       QTextEdit *messagesText;
 
       QList<GLWidget *> glWidgets;
+      GLWidget *glWidget;
 
       ToolGroup *toolGroup;
       QAction    *actionRecentFile[MainWindow::maxRecentFiles];
@@ -113,6 +115,7 @@ namespace Avogadro {
     //     vbCentral->setSpacing(0);
 
     d->glWidgets.append(ui.glWidget);
+    d->glWidget = ui.glWidget;
     ui.glWidget->setToolGroup(d->toolGroup);
     ui.glWidget->setUndoStack(d->undoStack);
     // at least for now, try to always do multisample OpenGL (i.e., antialias)
@@ -326,8 +329,9 @@ namespace Avogadro {
 
   void MainWindow::setView( int index )
   {
-    ui.enginesList->setGLWidget(d->glWidgets.at(index));
-    d->glWidgets.at(index)->makeCurrent();
+    d->glWidget = d->glWidgets.at(index);
+    ui.enginesList->setGLWidget(d->glWidget);
+    d->glWidget->makeCurrent();
   }
 
   void MainWindow::newView()
@@ -373,6 +377,13 @@ namespace Avogadro {
       }
     }
   }
+
+  void MainWindow::centerView()
+  {
+    d->glWidget->camera().initializeViewPoint();
+    d->glWidget->update();
+  }
+
 
   void MainWindow::fullScreen()
   {
@@ -446,6 +457,7 @@ namespace Avogadro {
     connect(ui.actionClearRecent, SIGNAL(triggered()), this, SLOT(clearRecentFiles()));
     connect(ui.actionNewView, SIGNAL(triggered()), this, SLOT(newView()));
     connect(ui.actionCloseView, SIGNAL(triggered()), this, SLOT(closeView()));
+    connect(ui.actionCenter, SIGNAL(triggered()), this, SLOT(centerView()));
     connect(ui.actionFullScreen, SIGNAL(triggered()), this, SLOT(fullScreen()));
     connect(ui.actionSetBackgroundColor, SIGNAL(triggered()), this, SLOT(setBackgroundColor()));
     connect(ui.actionAbout, SIGNAL(triggered()), this, SLOT(about()));

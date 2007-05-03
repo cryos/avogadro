@@ -12,6 +12,9 @@
   <property name="windowTitle" >
    <string>Avogadro</string>
   </property>
+  <property name="windowIcon" >
+   <iconset resource="avogadro.qrc" >:/icons/avogadro.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget" >
    <layout class="QVBoxLayout" >
     <property name="margin" >
@@ -63,41 +66,9 @@
     </property>
     <addaction name="actionAbout" />
    </widget>
-   <widget class="QMenu" name="menuSettings" >
-    <property name="title" >
-     <string>&amp;Settings</string>
-    </property>
-    <addaction name="actionSetBackgroundColor" />
-   </widget>
    <widget class="QMenu" name="menuTools" >
     <property name="title" >
      <string>&amp;Tools</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuView" >
-    <property name="title" >
-     <string>&amp;View</string>
-    </property>
-    <widget class="QMenu" name="menuToolbars" >
-     <property name="title" >
-      <string>Toolbars</string>
-     </property>
-    </widget>
-    <widget class="QMenu" name="menuDocks" >
-     <property name="title" >
-      <string>&amp;Docks</string>
-     </property>
-    </widget>
-    <addaction name="actionNewView" />
-    <addaction name="actionCloseView" />
-    <addaction name="actionFullScreen" />
-    <addaction name="separator" />
-    <addaction name="menuDocks" />
-    <addaction name="menuToolbars" />
-   </widget>
-   <widget class="QMenu" name="menuEdit" >
-    <property name="title" >
-     <string>&amp;Edit</string>
     </property>
    </widget>
    <widget class="QMenu" name="menuFile" >
@@ -122,6 +93,40 @@
     <addaction name="separator" />
     <addaction name="actionClose" />
     <addaction name="actionQuit" />
+   </widget>
+   <widget class="QMenu" name="menuEdit" >
+    <property name="title" >
+     <string>&amp;Edit</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuSettings" >
+    <property name="title" >
+     <string>&amp;Settings</string>
+    </property>
+    <widget class="QMenu" name="menuToolbars" >
+     <property name="title" >
+      <string>Toolbars</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuDocks" >
+     <property name="title" >
+      <string>&amp;Docks</string>
+     </property>
+    </widget>
+    <addaction name="menuToolbars" />
+    <addaction name="menuDocks" />
+    <addaction name="separator" />
+    <addaction name="actionSetBackgroundColor" />
+   </widget>
+   <widget class="QMenu" name="menuView" >
+    <property name="title" >
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionNewView" />
+    <addaction name="actionCloseView" />
+    <addaction name="actionCenter" />
+    <addaction name="separator" />
+    <addaction name="actionFullScreen" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menuEdit" />
@@ -410,27 +415,35 @@
     <string>Close View</string>
    </property>
   </action>
+  <action name="actionCenter" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/navigate.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Center</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>Avogadro::GLWidget</class>
-   <extends>QWidget</extends>
-   <header>avogadro/glwidget.h</header>
-  </customwidget>
   <customwidget>
    <class>Avogadro::FlatTabWidget</class>
    <extends>QWidget</extends>
    <header>flattabwidget.h</header>
   </customwidget>
   <customwidget>
-   <class>Avogadro::MoleculeTreeView</class>
-   <extends>QTreeWidget</extends>
-   <header>avogadro/moleculetreeview.h</header>
+   <class>Avogadro::GLWidget</class>
+   <extends>QWidget</extends>
+   <header>avogadro/glwidget.h</header>
   </customwidget>
   <customwidget>
    <class>Avogadro::EngineListView</class>
    <extends>QListView</extends>
    <header>enginelistview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::MoleculeTreeView</class>
+   <extends>QTreeWidget</extends>
+   <header>avogadro/moleculetreeview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

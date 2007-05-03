@@ -54,8 +54,9 @@ INSTALL(TARGETS selectrotatetool DESTINATION ${DESTINATION_DIR})
 
 ### navigatetool
 set(navigatetool_SRCS navigatetool.cpp)
+qt4_add_resources(navigatetool_RC_SRCS navigate.qrc)
 qt4_automoc(${navigatetool_SRCS})
-ADD_LIBRARY(navigatetool SHARED ${navigatetool_SRCS})
+ADD_LIBRARY(navigatetool SHARED ${navigatetool_SRCS} ${navigatetool_RC_SRCS})
 TARGET_LINK_LIBRARIES(navigatetool 
 	${OPENBABEL2_LIBRARIES} 
 	${QT_LIBRARIES} 
