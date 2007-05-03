@@ -120,6 +120,12 @@ namespace Avogadro {
 
       const PrimitiveQueue& queue() const;
 
+      /** Get the radius of the primitive referred to.
+       * @param primitive is the Primitive to get the radius of.
+       * @return the radius of the Primitive
+       */
+      virtual double radius(const Primitive *primitive = 0);
+
       void clearQueue();
       bool isEnabled();
       void setEnabled(bool enabled);

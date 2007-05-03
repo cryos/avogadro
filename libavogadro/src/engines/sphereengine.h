@@ -61,19 +61,17 @@ namespace Avogadro {
       //@{
       //! Render an Atom.
       bool render(const Atom *a);
-      //! Render a Bond.
-      bool render(const Bond *b);
-      //! Render a Molecule.
-      bool render(const Molecule *m);
 
       bool render(GLWidget *gl);
       //@}
 
-    private:
-      Sphere m_sphere;
-      Cylinder m_cylinder;
+      double radius(const Primitive *p = 0);
 
-      bool m_setup; //!< Whether the sphere and cylinder objects have been setup
+    private:
+      inline double radius(const Atom *a);
+      Sphere m_sphere;
+
+      bool m_setup; //!< Whether the sphere objects have been setup
   };
 
   //! Generates instances of our SphereEngine class

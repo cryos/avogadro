@@ -51,7 +51,7 @@ bool SphereEngine::render(GLWidget *gl)
   glEnable( GL_RESCALE_NORMAL );
   list = queue().primitiveList(Primitive::AtomType);
   foreach( Primitive *p, list ) {
-    render((Atom *) p);
+    render(static_cast<const Atom *>(p));
   }
 
   glDisable( GL_RESCALE_NORMAL);
@@ -60,19 +60,32 @@ bool SphereEngine::render(GLWidget *gl)
   return true;
 }
 
+inline double SphereEngine::radius(const Atom *a)
+{
+  return etab.GetVdwRad(a->GetAtomicNum());
+}
+
+double SphereEngine::radius(const Primitive *p)
+{
+  if (p->type() == Primitive::AtomType)
+    return radius(static_cast<const Atom *>(p));
+  else
+    return 0.;
+}
+
 bool SphereEngine::render(const Atom *a)
 {
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
   Color(a).applyAsMaterials();
 
-  m_sphere.draw(a->GetVector().AsArray(), etab.GetVdwRad(a->GetAtomicNum()));
+  m_sphere.draw(a->GetVector().AsArray(), radius(a));
 
   if (a->isSelected())
     {
       Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
       glEnable( GL_BLEND );
-      m_sphere.draw(a->GetVector().AsArray(), 0.18 + etab.GetVdwRad(a->GetAtomicNum()));
+      m_sphere.draw(a->GetVector().AsArray(), 0.18 + radius(a));
       glDisable( GL_BLEND );
     }
 
@@ -80,18 +93,6 @@ bool SphereEngine::render(const Atom *a)
   glPopName();
 
   return true;
-}
-
-bool SphereEngine::render(const Bond *b)
-{
-  // Disabled
-  return false;
-}
-
-bool SphereEngine::render(const Molecule *m)
-{
-  // Disabled
-  return false;
 }
 
 #include "sphereengine.moc"

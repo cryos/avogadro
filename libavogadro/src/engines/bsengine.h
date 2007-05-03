@@ -3,6 +3,7 @@
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
+  Some portions Copyright (C) 2007 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -68,7 +69,10 @@ namespace Avogadro {
       bool render(GLWidget *gl);
       //@}
 
+      double radius(const Primitive *p = 0);
+
     private:
+      inline double radius(const Atom *a);
       Sphere m_sphere;
       Cylinder m_cylinder;
 

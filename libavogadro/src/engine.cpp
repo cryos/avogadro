@@ -47,6 +47,11 @@ namespace Avogadro {
     return d->queue;
   }
 
+  double Engine::radius(const Primitive *primitive)
+  {
+    return 0.;
+  }
+
   void Engine::addPrimitive(Primitive *primitive)
   {
     d->queue.addPrimitive(primitive);
