@@ -84,13 +84,13 @@ bool StickEngine::render(GLWidget *gl)
   QList<Primitive *> list;
 
   if (!m_setup) {
-    for(int i=0; i < 10; i++)
+    for(int i=0; i < 5; i++)
     {
       m_spheres.append(new Sphere(i+1));
     }
-    for(int i=0; i < 7; i++)
+    for(int i=0; i < 5; i++)
     {
-      m_cylinders.append(new Cylinder(i * 3));
+      m_cylinders.append(new Cylinder(i * 5));
     }
     m_setup = true;
   }
@@ -110,22 +110,11 @@ bool StickEngine::render(GLWidget *gl)
     Color(a).applyAsMaterials();
 
     double zDistance = gl->camera().distance(a->pos());
-    int detail = 0;
-    if(zDistance >= 0.0 && zDistance < 200.0)
+    int detail;
+    if(zDistance < 100.0)
     {
-      if(zDistance >= 100.0 && zDistance < 200.0)
-      {
-        detail = 1 - (( static_cast<int>(zDistance) - 100) / 50);
-      }
-      else if(zDistance >= 20.0 && zDistance < 100.0)
-      {
-        detail = 5 - (( static_cast<int>(zDistance) - 20) / 20);
-      }
-      else
-      {
-        detail = 9 -  static_cast<int>(zDistance / 5);
-      }
-      detail--;
+      detail = min( 4, (int) exp( -0.0308 * zDistance + 1.54 ) );
+      qDebug() << detail;
       m_spheres.at(detail)->draw(a->pos(), 0.25);
     }
     else
@@ -142,7 +131,7 @@ bool StickEngine::render(GLWidget *gl)
     {
       Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
       glEnable( GL_BLEND );
-      if(zDistance < 200.0)
+      if(zDistance < 100.0)
       {
         m_spheres.at(detail)->draw(a->pos(), 0.5);
       }
@@ -165,6 +154,8 @@ bool StickEngine::render(GLWidget *gl)
   Eigen::Vector3d normalVector;
 
   // render bonds (sticks)
+  glDisable( GL_RESCALE_NORMAL );
+  glEnable( GL_NORMALIZE );
   Atom *atom1;
   Atom *atom2;
   foreach( Primitive *p, list ) {
