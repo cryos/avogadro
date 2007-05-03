@@ -359,8 +359,6 @@ namespace Avogadro {
       void setToolGroup(ToolGroup *toolGroup);
       ToolGroup * toolGroup() const;
 
-      double framesPerSecond();
-
     public Q_SLOTS:
 
       void setTool(Tool *tool);

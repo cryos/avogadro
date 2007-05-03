@@ -31,7 +31,6 @@
 #include <QDir>
 #include <QMouseEvent>
 #include <QPluginLoader>
-#include <QTime>
 #include <QUndoStack>
 
 #include <stdio.h>
@@ -138,9 +137,6 @@ namespace Avogadro {
       GLuint                 *selectBuf;
 
       QUndoStack             *undoStack;
-
-      //Used by Debug Engine for FPS Meter
-      double                 framesPerSecond;
   };
 
 
@@ -233,9 +229,6 @@ namespace Avogadro {
 
   void GLWidget::render()
   {
-    // Get time (in milliseconds) before rendering.
-    QTime startTime = QTime::currentTime();
-
     int size = d->engines.size();
     OBUnitCell *uc = NULL;
     std::vector<vector3> cellVectors;
@@ -287,10 +280,6 @@ namespace Avogadro {
 
     glFlush();
 
-    // Calculate number of seconds to render frame.
-    //double elapsedTime = double(startTime.elapsed());
-    // Calculate frames per second based on this frame.
-    d->framesPerSecond = 1000.0 / double(startTime.elapsed());
   }
 
   void GLWidget::glDraw()
@@ -603,11 +592,6 @@ namespace Avogadro {
   ToolGroup *GLWidget::toolGroup() const
   {
     return d->toolGroup;
-  }
-
-  double GLWidget::framesPerSecond()
-  {
-    return d->framesPerSecond;
   }
 
   QList<GLHit> GLWidget::hits(int x, int y, int w, int h)

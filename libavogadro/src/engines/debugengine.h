@@ -69,6 +69,9 @@ namespace Avogadro {
 
       bool render(GLWidget *gl);
       //@}
+      
+      private:
+      inline double computeFramesPerSecond();
   };
 
   //! Generates instances of our LabelEngine class

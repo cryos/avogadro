@@ -32,6 +32,7 @@
 #include <eigen/regression.h>
 
 #include <QtGui>
+#include <QTime>
 
 using namespace std;
 using namespace OpenBabel;
@@ -46,7 +47,7 @@ bool DebugEngine::render(GLWidget *gl)
   glDisable(GL_LIGHTING);
 
   gl->renderText(5,20,"---- Debug Information ----");
-  gl->renderText(5,35,"FPS: " + QString::number(gl->framesPerSecond()));
+  gl->renderText(5,35,"FPS: " + QString::number(computeFramesPerSecond()));
 
   list = queue().primitiveList(Primitive::AtomType);
   gl->renderText(5,50,"Atoms: " + QString::number(list.size()));
@@ -55,6 +56,8 @@ bool DebugEngine::render(GLWidget *gl)
   gl->renderText(5,65,"Bonds: " + QString::number(list.size()));
 
   glPopAttrib();
+  
+  gl->update();
 }
 
 bool DebugEngine::render(const Atom *a)
@@ -67,6 +70,37 @@ bool DebugEngine::render(const Bond *b)
 
 bool DebugEngine::render(const Molecule *m)
 {
+}
+
+inline double DebugEngine::computeFramesPerSecond()
+{
+  static QTime time;
+  static bool firstTime = true;
+  static int old_time, new_time;
+  static int frames;
+  static double fps;
+  
+  if( firstTime )
+  {
+    time.start();
+    firstTime = false;
+    old_time = time.elapsed();
+    frames = 0;
+    fps = 0;
+  }
+  
+  new_time = time.elapsed();
+  frames++;
+  
+  if( new_time - old_time > 200 )
+  {
+    fps = 1000.0 * frames / double( new_time - old_time );
+    frames = 0;
+    time.restart();
+    old_time = time.elapsed();
+  }
+  
+  return fps;
 }
 
 #include "debugengine.moc"
