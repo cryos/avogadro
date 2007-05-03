@@ -66,6 +66,8 @@ namespace Avogadro {
       virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
       virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
 
+      virtual int usefulness() const;
+
     protected:
       void selectionBox(float sx, float sy, float ex, float ey);
 

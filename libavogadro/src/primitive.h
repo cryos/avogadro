@@ -333,6 +333,8 @@ namespace Avogadro {
       const double & radius() const;
       const Atom *farthestAtom() const;
 
+      Molecule& operator=(const Molecule& other);
+
     private:
       /* shared d_ptr with Primitive */
       Q_DECLARE_PRIVATE(Molecule);

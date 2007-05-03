@@ -50,13 +50,13 @@ namespace Avogadro {
   {
     public:
       MainWindowPrivate() : molecule(0), 
-      undo(0), toolsFlow(0), toolSettingsStacked(0), messagesText(0),
+      undoStack(0), toolsFlow(0), toolSettingsStacked(0), messagesText(0),
       toolGroup(0) {}
 
       Molecule  *molecule;
 
       QString    currentFile;
-      QUndoStack *undo;
+      QUndoStack *undoStack;
 
       FlowLayout *toolsFlow;
       QStackedLayout *toolSettingsStacked;
@@ -69,13 +69,13 @@ namespace Avogadro {
       QAction    *actionRecentFile[MainWindow::maxRecentFiles];
   };
 
-  MainWindow::MainWindow() : QMainWindow(0), d_ptr(new MainWindowPrivate)
+  MainWindow::MainWindow() : QMainWindow(0), d(new MainWindowPrivate)
   {
     constructor();
     setCurrentFileName("");
   }
 
-  MainWindow::MainWindow(const QString &fileName) : QMainWindow(0), d_ptr(new MainWindowPrivate)
+  MainWindow::MainWindow(const QString &fileName) : QMainWindow(0), d(new MainWindowPrivate)
   {
     constructor();
     setFile(fileName);
@@ -83,14 +83,12 @@ namespace Avogadro {
 
   void MainWindow::constructor()
   {
-    Q_D(MainWindow);
-
     ui.setupUi(this);
 
     readSettings();
     setAttribute(Qt::WA_DeleteOnClose);
 
-    d->undo = new QUndoStack(this);
+    d->undoStack = new QUndoStack(this);
     d->toolsFlow = new FlowLayout(ui.toolsWidget);
     d->toolsFlow->setMargin(9);
     d->toolSettingsStacked = new QStackedLayout(ui.toolSettingsWidget);
@@ -116,6 +114,7 @@ namespace Avogadro {
 
     d->glWidgets.append(ui.glWidget);
     ui.glWidget->setToolGroup(d->toolGroup);
+    ui.glWidget->setUndoStack(d->undoStack);
     // at least for now, try to always do multisample OpenGL (i.e., antialias)
     // graphical improvement is great and many cards do this in hardware
     // At some point, this should be a preference
@@ -192,8 +191,6 @@ namespace Avogadro {
 
   void MainWindow::openFile()
   {
-    Q_D(MainWindow);
-
       //       // check to see if we already have an open window
       //       MainWindow *existing = findMainWindow(fileName);
       //       if (existing) {
@@ -213,8 +210,6 @@ namespace Avogadro {
 
   void MainWindow::openRecentFile()
   {
-    Q_D(MainWindow);
-
     QAction *action = qobject_cast<QAction *>(sender());
     if (action) {
       //       MainWindow *existing = findMainWindow(action->data().toString());
@@ -243,12 +238,11 @@ namespace Avogadro {
 
   bool MainWindow::save()
   {
-    Q_D(MainWindow);
-
-    if (d->currentFile.isEmpty())
+    if (d->currentFile.isEmpty()) {
       return saveAs();
-    else
+    } else {
       return saveFile(d->currentFile);
+    }
   }
 
   bool MainWindow::saveAs()
@@ -264,8 +258,9 @@ namespace Avogadro {
             "Do you want to overwrite it?")
           .arg(QDir::convertSeparators(fileName)),
           QMessageBox::Yes | QMessageBox::Cancel);
-      if (ret == QMessageBox::Cancel)
+      if (ret == QMessageBox::Cancel) {
         return false;
+      }
     }
     return saveFile(fileName);
   }
@@ -287,8 +282,6 @@ namespace Avogadro {
 
   void MainWindow::revert()
   {
-    Q_D(MainWindow);
-
     if (!d->currentFile.isEmpty()) {
       setFile(d->currentFile);
     }
@@ -301,8 +294,6 @@ namespace Avogadro {
 
   bool MainWindow::maybeSave()
   {
-    Q_D(MainWindow);
-
     if (isWindowModified()) {
       QMessageBox::StandardButton ret;
       ret = QMessageBox::warning(this, tr("Avogadro"),
@@ -335,14 +326,12 @@ namespace Avogadro {
 
   void MainWindow::setView( int index )
   {
-    Q_D(MainWindow);
     ui.enginesList->setGLWidget(d->glWidgets.at(index));
     d->glWidgets.at(index)->makeCurrent();
   }
 
   void MainWindow::newView()
   {
-    Q_D(MainWindow);
     QWidget *widget = new QWidget();
     QVBoxLayout *layout = new QVBoxLayout(widget);
     GLWidget *glWidget = new GLWidget();
@@ -353,6 +342,7 @@ namespace Avogadro {
     d->glWidgets.append(glWidget);
     glWidget->setMolecule(d->molecule);
     glWidget->setToolGroup(d->toolGroup);
+    glWidget->setUndoStack(d->undoStack);
 
     int index = ui.centralTab->addTab(widget, QString(""));
     ui.centralTab->setTabText(index, tr("View ") + QString::number(index));
@@ -362,8 +352,6 @@ namespace Avogadro {
 
   void MainWindow::closeView()
   {
-    Q_D(MainWindow);
-
     QWidget *widget = ui.centralTab->currentWidget();
     foreach(QObject *object, widget->children())
     {
@@ -409,16 +397,12 @@ namespace Avogadro {
 
   void MainWindow::setTool(Tool *tool)
   {
-    Q_D(MainWindow);
-
     d->toolSettingsStacked->setCurrentWidget(tool->settingsWidget());
   }
 
   void MainWindow::connectUi()
   {
-    Q_D(MainWindow);
-
-    connect(ui.actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect(ui.actionQuit, SIGNAL(triggered()), qApp, SLOT(closeAllWindows()));
     connect(ui.actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
     connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(openFile()));
     connect(ui.actionClose, SIGNAL(triggered()), this, SLOT(close()));
@@ -434,6 +418,23 @@ namespace Avogadro {
       ui.menuOpenRecent->addAction(d->actionRecentFile[i]);
       connect(d->actionRecentFile[i], SIGNAL(triggered()),
           this, SLOT(openRecentFile()));
+    }
+
+
+
+    QAction *undoAction = d->undoStack->createUndoAction(this);
+    undoAction->setIcon(QIcon(QString::fromUtf8(":/icons/undo.png")));
+    undoAction->setShortcuts(QKeySequence::Undo);
+    QAction *redoAction = d->undoStack->createRedoAction(this);
+    redoAction->setIcon(QIcon(QString::fromUtf8(":/icons/redo.png")));
+    redoAction->setShortcuts(QKeySequence::Redo);
+    if(ui.menuEdit->actions().count()) {
+      QAction *firstAction = ui.menuEdit->actions().at(0);
+      ui.menuEdit->insertAction(firstAction, redoAction);
+      ui.menuEdit->insertAction(redoAction, undoAction);
+    } else {
+      ui.menuEdit->addAction(undoAction);
+      ui.menuEdit->addAction(redoAction);
     }
 
     ui.menuDocks->addAction(ui.projectDock->toggleViewAction());
@@ -454,8 +455,6 @@ namespace Avogadro {
 
   bool MainWindow::setFile(const QString &fileName)
   {
-    Q_D(MainWindow);
-
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
       QMessageBox::warning(this, tr("Avogadro"),
@@ -512,7 +511,6 @@ namespace Avogadro {
 
   void MainWindow::setMolecule(Molecule *molecule)
   {
-    Q_D(MainWindow);
     if(d->molecule) {
       disconnect(d->molecule, 0, this, 0);
       d->molecule->deleteLater();
@@ -523,6 +521,7 @@ namespace Avogadro {
     connect(d->molecule, SIGNAL(primitiveUpdated(Primitive *)), this, SLOT(documentWasModified()));
     connect(d->molecule, SIGNAL(primitiveRemoved(Primitive *)), this, SLOT(documentWasModified()));
 
+    d->undoStack->clear();
     foreach(GLWidget *widget, d->glWidgets) {
       widget->setMolecule(d->molecule);
     }
@@ -533,14 +532,11 @@ namespace Avogadro {
 
   Molecule *MainWindow::molecule() const
   {
-    Q_D(const MainWindow);
     return d->molecule;
   }
 
   bool MainWindow::saveFile(const QString &fileName)
   {
-    Q_D(MainWindow);
-
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
       QMessageBox::warning(this, tr("Avogadro"),
@@ -585,8 +581,6 @@ namespace Avogadro {
 
   void MainWindow::setCurrentFileName(const QString &fileName)
   {
-    Q_D(MainWindow);
-
     d->currentFile = fileName;
     if (d->currentFile.isEmpty()) {
       setWindowTitle(tr("[*]Avogadro"));
@@ -614,8 +608,6 @@ namespace Avogadro {
 
   void MainWindow::updateRecentFileActions()
   {
-    Q_D(MainWindow);
-
     QSettings settings; // set up project and program properly in main.cpp
     QStringList files = settings.value("recentFileList").toStringList();
 
@@ -639,13 +631,11 @@ namespace Avogadro {
 
   MainWindow *MainWindow::findMainWindow(const QString &fileName)
   {
-    Q_D(MainWindow);
-
     QString canonicalFilePath = QFileInfo(fileName).canonicalFilePath();
 
     foreach (QWidget *widget, qApp->topLevelWidgets()) {
       MainWindow *mainWin = qobject_cast<MainWindow *>(widget);
-      if (mainWin && mainWin->d_func()->currentFile == canonicalFilePath)
+      if (mainWin && mainWin->d->currentFile == canonicalFilePath)
         return mainWin;
     }
     return 0;
@@ -706,12 +696,16 @@ namespace Avogadro {
 
   void MainWindow::actionTriggered()
   {
-    Q_D(MainWindow);
-
     QAction *action = qobject_cast<QAction *>(sender());
     if(action) {
       Extension *extension = dynamic_cast<Extension *>(action->parent());
-      extension->performAction(action, d->molecule, d->messagesText);
+
+      QUndoCommand *command = 0;
+      command = extension->performAction(action, d->molecule, d->messagesText);
+
+      if(command) {
+        d->undoStack->push(command);
+      }
     }
   }
 

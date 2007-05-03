@@ -33,6 +33,7 @@
 #include <QObject>
 #include <QList>
 #include <QString>
+#include <QUndoCommand>
 
 #ifndef BUFF_SIZE
 #define BUFF_SIZE 256
@@ -58,13 +59,29 @@ namespace Avogadro {
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("Ghemical Plugin"); };
       //! Perform Action
-      virtual void performAction(QAction *action, Molecule *molecule, QTextEdit *messages);
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *textEdit);
       //@}
 
     private:
-      void optimize(Molecule *molecule, QTextEdit *messages);
-      
-      OpenBabel::OBForceField* pGhemicalFF;
+      OpenBabel::OBForceField* m_forceField;
+  };
+
+ class GhemicalCommand : public QUndoCommand
+  {
+    public:
+      GhemicalCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield, QTextEdit *messages);
+
+      virtual void redo();
+      virtual void undo();
+      virtual bool mergeWith ( const QUndoCommand * command );
+      virtual int id() const;
+
+    private:
+      Molecule m_moleculeCopy;
+      Molecule *m_molecule;
+      QTextEdit *m_textEdit;
+      int m_cycles;
+      OpenBabel::OBForceField* m_forceField;
   };
 
 } // end namespace Avogadro

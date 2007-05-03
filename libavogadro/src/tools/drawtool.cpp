@@ -21,9 +21,11 @@
  ***********************************************************************/
 
 #include "drawtool.h"
+#include "drawcommand.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/undosequence.h>
 
 #include <openbabel/obiter.h>
 
@@ -33,7 +35,10 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-DrawTool::DrawTool(QObject *parent) : Tool(parent), m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_bondOrder(1),
+DrawTool::DrawTool(QObject *parent) : Tool(parent), 
+  m_beginAtomAdded(false),
+  //m_beginAtomDrawCommand(0), //m_bondCommand(0), m_endAtomDrawCommand(0),
+  m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_bondOrder(1),
   m_prevAtomElement(0), m_prevBond(0), m_prevBondOrder(0)
 {
   QWidget *settings = settingsWidget();
@@ -86,6 +91,11 @@ DrawTool::~DrawTool()
 {
 }
 
+int DrawTool::usefulness() const
+{
+  return 5000000;
+}
+
 void DrawTool::elementChanged( int index )
 {
   setElement(index + 1);
@@ -123,6 +133,8 @@ QUndoCommand* DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
     return 0;
   }
 
+  QUndoCommand *command = 0;
+
   _buttons = event->buttons();
 
   m_movedSinceButtonPressed = false;
@@ -142,18 +154,19 @@ QUndoCommand* DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
       m_beginAtom = (Atom *)molecule->GetAtom(m_hits[0].name());
       m_prevAtomElement = m_beginAtom->GetAtomicNum();
       m_beginAtom->SetAtomicNum(m_element);
-      // m_beginAtom->update();
     }
     else
     {
       m_beginAtom = newAtom(widget, event->pos());
+      m_beginAtomAdded = true;
       widget->updateGeometry();
-      // m_beginAtom->update();
     }
-    molecule->update();
+    if(m_beginAtom) {
+      m_beginAtom->update();
+    }
   }
 
-  return 0;
+  return command;
 }
 
 QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
@@ -239,7 +252,7 @@ QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
         if(!existingBond) {
           if(m_prevBond)
           {
-            m_prevBond->SetBO(m_prevBondOrder);
+            m_prevBond->SetBondOrder(m_prevBondOrder);
             // m_prevBond->update();
             m_prevBond = 0;
             m_prevBondOrder = 0;
@@ -264,7 +277,7 @@ QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
         // (existingBond)
         else {
           if(m_prevBond && m_prevBond != existingBond) {
-            m_prevBond->SetBO(m_prevBondOrder);
+            m_prevBond->SetBondOrder(m_prevBondOrder);
             // m_prevBond->update();
             m_prevBond = 0;
             m_prevBondOrder = 0;
@@ -272,7 +285,7 @@ QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
           if(!m_prevBond) {
             m_prevBond = existingBond;
             m_prevBondOrder = existingBond->GetBO();
-            existingBond->SetBO(m_bondOrder);
+            existingBond->SetBondOrder(m_bondOrder);
             // existingBond->update();
           }
 
@@ -292,7 +305,7 @@ QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
       else if(!m_endAtom)
       {
         if(m_prevBond) {
-          m_prevBond->SetBO(m_prevBondOrder);
+          m_prevBond->SetBondOrder(m_prevBondOrder);
           // m_prevBond->update();
           m_prevBond = 0;
           m_prevBondOrder = 0;
@@ -316,7 +329,7 @@ QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
       else
       {
         m_endAtom->setPos(widget->unProject(event->pos()));
-        widget->updateGeometry();
+        // widget->updateGeometry();
         // m_endAtom->update();
       }
     }
@@ -328,14 +341,64 @@ QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 
 QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
+  QUndoCommand *undo = 0;
   if(_buttons & Qt::LeftButton)
   {
+    // we can have a beginAtom w/out bond or endAtom
+    // we can hava bond w/out endAtom
+    // we cannot have endAtom w/out bond
+    // i go through a lot of testing to make the text look prettier and save memory.
+    if(m_beginAtomAdded || m_bond)
+    {
+      AddAtomDrawCommand *beginAtomDrawCommand = 0;
+      if(m_beginAtomAdded) {
+        beginAtomDrawCommand = new AddAtomDrawCommand(widget, m_beginAtom);
+        beginAtomDrawCommand->setText(tr("Draw Atom"));
+      }
+
+      AddAtomDrawCommand *endAtomDrawCommand = 0;
+      if(m_endAtom) {
+        endAtomDrawCommand = new AddAtomDrawCommand(widget, m_endAtom);
+        endAtomDrawCommand->setText(tr("Draw Atom"));
+      }
+
+      AddBondDrawCommand *bondCommand = 0;
+      if(m_bond) {
+        bondCommand = new AddBondDrawCommand(widget, m_bond);
+        bondCommand->setText(tr("Draw Bond"));
+      }
+
+      if(endAtomDrawCommand || (bondCommand && beginAtomDrawCommand))
+      {
+        UndoSequence *seq = new UndoSequence();
+        seq->setText(tr("Draw"));
+
+        if(beginAtomDrawCommand) {
+          seq->append(beginAtomDrawCommand);
+        }
+        if(endAtomDrawCommand) {
+          seq->append(endAtomDrawCommand);
+        }
+        seq->append(bondCommand);
+        undo = seq;
+      }
+      else if(bondCommand)
+      {
+        undo = bondCommand;
+      }
+      else
+      {
+        undo = beginAtomDrawCommand;
+      }
+    }
+
     m_beginAtom=0;
     m_bond=0;
     m_endAtom=0;
     m_prevBond=0;
     m_prevBondOrder=0;
     m_prevAtomElement=0;
+    m_beginAtomAdded=false;
 
     // create the undo action for creating endAtom and bond
     //  pass along atom idx, element, vector, bond idx, order, start/end
@@ -351,16 +414,15 @@ QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
       // get our top hit
       if(m_hits[0].type() == Primitive::AtomType)
       {
-        Molecule *molecule = widget->molecule();
-        Atom *atom = (Atom *)molecule->GetAtom(m_hits[0].name());
-        molecule->DeleteAtom(atom);
-        widget->updateGeometry();
-        molecule->update();
+        undo = new DeleteAtomDrawCommand(widget, m_hits[0].name());
+//         molecule->DeleteAtom(atom);
+//         widget->updateGeometry();
+//         molecule->update();
       }
     }
   }
 
-  return 0;
+  return undo;
 }
 
 QUndoCommand* DrawTool::wheel(GLWidget *widget, const QWheelEvent *event)
@@ -387,7 +449,7 @@ Bond *DrawTool::newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom)
 {
   molecule->BeginModify();
   Bond *bond = (Bond *)molecule->NewBond();
-  bond->SetBO(bondOrder());
+  bond->SetBondOrder(bondOrder());
   bond->SetBegin(beginAtom);
   bond->SetEnd(endAtom);
   beginAtom->AddBond(bond);

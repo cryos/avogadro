@@ -31,55 +31,82 @@
 
 using namespace std;
 using namespace OpenBabel;
-using namespace Avogadro;
 
-Hydrogens::Hydrogens() : Extension()
-{
-  QAction *action = new QAction(this);
-  action->setText("Add Hydrogens");
-  m_actions.append(action);
+  namespace Avogadro {
+    Hydrogens::Hydrogens() : Extension()
+    {
+      QAction *action = new QAction(this);
+      action->setText("Add Hydrogens");
+      m_actions.append(action);
 
-  action = new QAction(this);
-  action->setText("Remove Hydrogens");
-  m_actions.append(action);
-}
+      action = new QAction(this);
+      action->setText("Remove Hydrogens");
+      m_actions.append(action);
+    }
 
-Hydrogens::~Hydrogens() 
-{
-}
+    Hydrogens::~Hydrogens() 
+    {
+    }
 
-void Hydrogens::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
-{
+    QUndoCommand* Hydrogens::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
+    {
 
-  qDebug() << "Perform Action";
-  int i = m_actions.indexOf(action);
-  switch(i)
-  {
-    case 0:
-      addHydrogens(molecule);
-      break;
-    case 1:
-      removeHydrogens(molecule);
-      break;
-  }
-}
+      QUndoCommand *undo = 0;
+      qDebug() << "Perform Action";
+      int i = m_actions.indexOf(action);
+      if( 0 <= i <= 1) {
+        undo = new HydrogensCommand(molecule, (enum HydrogensCommand::Action) i);
+      }
 
-void Hydrogens::addHydrogens(Molecule *molecule)
-{
-  qDebug() << "Add Hydrogens on " << molecule;
-  //  molecule->BeginModify();
-  molecule->AddHydrogens(false, true);
-  molecule->update();
-  //  molecule->EndModify();
-}
+      return undo;
+    }
 
-void Hydrogens::removeHydrogens(Molecule *molecule)
-{
-  //  molecule->BeginModify();
-  molecule->DeleteHydrogens();
-  //  molecule->EndModify();
-  molecule->update();
-}
+    HydrogensCommand::HydrogensCommand(Molecule *molecule, enum Action action)
+    {
+      m_moleculeCopy = *molecule;
+      m_molecule = molecule;
+      m_action = action;
+      switch(action) {
+        case AddHydrogens:
+          setText(QObject::tr("Add Hydrogens"));
+          break;
+        case RemoveHydrogens:
+          setText(QObject::tr("Remove Hydrogens"));
+          break;
+      }
+    }
+
+    void HydrogensCommand::redo()
+    {
+      switch(m_action) {
+        case AddHydrogens:
+          m_molecule->AddHydrogens(false,true);
+          break;
+        case RemoveHydrogens:
+          m_molecule->DeleteHydrogens();
+          break;
+      }
+      m_molecule->update();
+    }
+
+    void HydrogensCommand::undo()
+    {
+      *m_molecule = m_moleculeCopy;
+      m_molecule->update();
+    }
+
+    bool HydrogensCommand::mergeWith ( const QUndoCommand * command )
+    {
+      // we recieved another call of the same action
+      return true;
+    }
+
+    int HydrogensCommand::id() const
+    {
+      return 4709537 + (int) m_action;
+    }
+
+  } // end namespace Avogadro
 
 #include "hydrogens.moc"
-Q_EXPORT_PLUGIN2(hydrogens, Hydrogens)
+Q_EXPORT_PLUGIN2(hydrogens, Avogadro::Hydrogens)

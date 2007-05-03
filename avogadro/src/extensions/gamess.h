@@ -54,7 +54,7 @@ namespace Avogadro {
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("GAMESS Input Deck Generator"); };
       //! Perform Action
-      virtual void performAction(QAction *action, Molecule *molecule, QTextEdit *messages=NULL);
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *messages=NULL);
       //@}
 
     private:

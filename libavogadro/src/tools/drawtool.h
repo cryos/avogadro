@@ -39,6 +39,7 @@
 
 namespace Avogadro {
 
+  class AddAtomCommand;
   class DrawTool : public Tool
   {
     Q_OBJECT
@@ -67,6 +68,8 @@ namespace Avogadro {
       virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
       virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
 
+      virtual int usefulness() const;
+
       void setElement(int i);
       int element() const;
 
@@ -91,6 +94,7 @@ namespace Avogadro {
       QPoint              m_initialDragginggPosition;
       QPoint              m_lastDraggingPosition;
 
+      bool m_beginAtomAdded;
       Atom *m_beginAtom;
       Atom *m_endAtom;
       Bond *m_bond;

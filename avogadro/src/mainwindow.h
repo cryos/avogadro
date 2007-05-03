@@ -46,7 +46,7 @@ namespace Avogadro {
   class MainWindowPrivate;
   class MainWindow : public QMainWindow
   {
-    Q_OBJECT
+    Q_OBJECT;
 
     public:
       MainWindow();
@@ -84,8 +84,8 @@ namespace Avogadro {
 //       void updateEngine( QStandardItem *item );
 
     private:
-      Q_DECLARE_PRIVATE(MainWindow);
-      MainWindowPrivate * const d_ptr;
+      friend class MainWindowPrivate;
+      MainWindowPrivate * const d;
 
       Ui::MainWindow ui;
 

@@ -81,6 +81,15 @@ namespace Avogadro {
     return d->settingsWidget;
   }
 
+  int Tool::usefulness() const
+  {
+    return 0;
+  }
+
+  bool Tool::operator<(const Tool &other) const {
+    return usefulness() < other.usefulness();
+  }
+
 } // end namespace Avogadro
 
 #include "tool.moc"

@@ -32,6 +32,12 @@
 
 using namespace std;
 namespace Avogadro {
+
+  bool toolGreaterThan(const Tool *first, const Tool *second)
+  {
+    return first->usefulness() > second->usefulness();
+  }
+
   class ToolGroupPrivate
   {
     public:
@@ -83,13 +89,14 @@ namespace Avogadro {
           d->activateActions->addAction(tool->activateAction());
           connect(tool->activateAction(), SIGNAL(triggered(bool)),
               this, SLOT(activateTool()));
-          if (!d->activeTool)
-          {
-            setActiveTool(tool);
-            tool->activateAction()->setChecked(true);
-          }
         }
       }
+    }
+
+    qSort(d->tools.begin(), d->tools.end(), toolGreaterThan);
+    if(d->tools.count()) {
+      setActiveTool(d->tools.at(0));
+      d->activeTool->activateAction()->setChecked(true);
     }
   }
 
@@ -102,7 +109,6 @@ namespace Avogadro {
     if(tool) {
       setActiveTool(tool);
     }
-
   }
 
   Tool* ToolGroup::activeTool() const

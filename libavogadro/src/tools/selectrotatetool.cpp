@@ -49,6 +49,11 @@ SelectRotateTool::~SelectRotateTool()
   }
 }
 
+int SelectRotateTool::usefulness() const
+{
+  return 500000;
+}
+
 QUndoCommand* SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
 
@@ -67,6 +72,8 @@ QUndoCommand* SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *
         _initialDraggingPosition.x(), _initialDraggingPosition.y());
     widget->addDL(_selectionDL);
   }
+
+  return 0;
 }
 
 QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)

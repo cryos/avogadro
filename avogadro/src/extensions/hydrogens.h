@@ -32,6 +32,7 @@
 #include <QObject>
 #include <QList>
 #include <QString>
+#include <QUndoCommand>
 
 namespace Avogadro {
 
@@ -53,13 +54,30 @@ namespace Avogadro {
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("Hydrogens Plugin"); };
       //! Perform Action
-      virtual void performAction(QAction *action, Molecule *molecule, QTextEdit *messages=NULL);
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *messages=NULL);
       //@}
+  };
+
+  class HydrogensCommand : public QUndoCommand
+  {
+    public:
+      enum Action {
+        AddHydrogens = 0,
+        RemoveHydrogens
+      };
+
+    public:
+      HydrogensCommand(Molecule *molecule, enum Action action);
+
+      virtual void undo();
+      virtual void redo();
+      virtual bool mergeWith ( const QUndoCommand * command );
+      virtual int id() const;
 
     private:
-      void addHydrogens(Molecule *molecule);
-      void removeHydrogens(Molecule *molecule);
-      
+      Molecule *m_molecule;
+      Molecule m_moleculeCopy;
+      enum Action m_action;
   };
 
 } // end namespace Avogadro

@@ -63,41 +63,11 @@
     </property>
     <addaction name="actionAbout" />
    </widget>
-   <widget class="QMenu" name="menuFile" >
-    <property name="title" >
-     <string>&amp;File</string>
-    </property>
-    <widget class="QMenu" name="menuOpenRecent" >
-     <property name="title" >
-      <string>Open &amp;Recent</string>
-     </property>
-     <addaction name="separator" />
-     <addaction name="actionClearRecent" />
-    </widget>
-    <addaction name="actionNew" />
-    <addaction name="actionOpen" />
-    <addaction name="menuOpenRecent" />
-    <addaction name="separator" />
-    <addaction name="actionSave" />
-    <addaction name="actionSaveAs" />
-    <addaction name="actionRevert" />
-    <addaction name="actionExportGraphics" />
-    <addaction name="separator" />
-    <addaction name="actionClose" />
-    <addaction name="actionQuit" />
-   </widget>
    <widget class="QMenu" name="menuSettings" >
     <property name="title" >
      <string>&amp;Settings</string>
     </property>
     <addaction name="actionSetBackgroundColor" />
-   </widget>
-   <widget class="QMenu" name="menuEdit" >
-    <property name="title" >
-     <string>&amp;Edit</string>
-    </property>
-    <addaction name="actionUndo" />
-    <addaction name="actionRedo" />
    </widget>
    <widget class="QMenu" name="menuTools" >
     <property name="title" >
@@ -124,6 +94,34 @@
     <addaction name="separator" />
     <addaction name="menuDocks" />
     <addaction name="menuToolbars" />
+   </widget>
+   <widget class="QMenu" name="menuEdit" >
+    <property name="title" >
+     <string>&amp;Edit</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuFile" >
+    <property name="title" >
+     <string>&amp;File</string>
+    </property>
+    <widget class="QMenu" name="menuOpenRecent" >
+     <property name="title" >
+      <string>Open &amp;Recent</string>
+     </property>
+     <addaction name="separator" />
+     <addaction name="actionClearRecent" />
+    </widget>
+    <addaction name="actionNew" />
+    <addaction name="actionOpen" />
+    <addaction name="menuOpenRecent" />
+    <addaction name="separator" />
+    <addaction name="actionSave" />
+    <addaction name="actionSaveAs" />
+    <addaction name="actionRevert" />
+    <addaction name="actionExportGraphics" />
+    <addaction name="separator" />
+    <addaction name="actionClose" />
+    <addaction name="actionQuit" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menuEdit" />
@@ -415,45 +413,28 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>Avogadro::FlatTabWidget</class>
-   <extends>QWidget</extends>
-   <header>flattabwidget.h</header>
-  </customwidget>
-  <customwidget>
    <class>Avogadro::GLWidget</class>
    <extends>QWidget</extends>
    <header>avogadro/glwidget.h</header>
   </customwidget>
   <customwidget>
-   <class>Avogadro::EngineListView</class>
-   <extends>QListView</extends>
-   <header>enginelistview.h</header>
+   <class>Avogadro::FlatTabWidget</class>
+   <extends>QWidget</extends>
+   <header>flattabwidget.h</header>
   </customwidget>
   <customwidget>
    <class>Avogadro::MoleculeTreeView</class>
    <extends>QTreeWidget</extends>
    <header>avogadro/moleculetreeview.h</header>
   </customwidget>
+  <customwidget>
+   <class>Avogadro::EngineListView</class>
+   <extends>QListView</extends>
+   <header>enginelistview.h</header>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="avogadro.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>actionQuit</sender>
-   <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>319</x>
-     <y>239</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

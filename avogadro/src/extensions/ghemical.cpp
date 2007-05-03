@@ -29,54 +29,80 @@
 
 using namespace std;
 using namespace OpenBabel;
-using namespace Avogadro;
 
-Ghemical::Ghemical() : Extension()
-{
-  pGhemicalFF = OBForceField::FindForceField("Ghemical");
-  
-  if (pGhemicalFF) { // make sure we can actually find and run it!
-    QAction *action = new QAction(this);
-    action->setText("Optimize Geometry");
-    m_actions.append(action);
-  }
-}
+  namespace Avogadro {
+    Ghemical::Ghemical() : Extension()
+    {
+      m_forceField = OBForceField::FindForceField("Ghemical");
 
-Ghemical::~Ghemical() 
-{
-}
+      if (m_forceField) { // make sure we can actually find and run it!
+        QAction *action = new QAction(this);
+        action->setText("Optimize Geometry");
+        m_actions.append(action);
+      }
+    }
 
-void Ghemical::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
-{
-  qDebug() << "Perform Action";
+    Ghemical::~Ghemical() 
+    {
+    }
 
-  optimize(molecule, messages);
-}
+    QUndoCommand* Ghemical::performAction(QAction *action, Molecule *molecule, QTextEdit *textEdit)
+    {
+      QUndoCommand *undo = new GhemicalCommand(molecule, m_forceField, textEdit);
+      undo->setText(QObject::tr("Ghemical Geometric Optimization"));
 
-void Ghemical::optimize(Molecule *molecule, QTextEdit *messages)
-{
-  if (!pGhemicalFF)
-    return;
+      return undo;
+    }
 
-  qDebug() << "Optimize Geometry on " << molecule;
+    GhemicalCommand::GhemicalCommand(Molecule *molecule, OpenBabel::OBForceField* forceField, QTextEdit *textEdit)
+    {
+      m_cycles = 0;
+      m_moleculeCopy = *molecule;
+      m_molecule = molecule;
+      m_forceField = forceField;
+      m_textEdit = textEdit;
+    }
 
-  ostringstream buff;
-  pGhemicalFF->SetLogFile(&buff);
-  pGhemicalFF->SetLogLevel(OBFF_LOGLVL_LOW);
- 
-  if (!pGhemicalFF->Setup(*molecule)) {
-    qDebug() << "Could not set up force field on " << molecule;
-    return;
-  }
+    void GhemicalCommand::redo() {
 
-  pGhemicalFF->ConjugateGradientsInitialize(100, 1e-7f); // initialize cg
-  while (pGhemicalFF->ConjugateGradientsTakeNSteps(5)) { // take 5 steps until convergence or 100 steps taken
-    pGhemicalFF->UpdateCoordinates(*molecule);
-    messages->append(tr(buff.str().c_str()));
-    molecule->update();
-  }
+      ostringstream buff;
+      m_forceField->SetLogFile(&buff);
+      m_forceField->SetLogLevel(OBFF_LOGLVL_LOW);
 
-}
+      if (!m_forceField->Setup(*m_molecule)) {
+        qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
+        return;
+      }
+
+      m_forceField->ConjugateGradientsInitialize(100, 1e-7f); // initialize cg
+      while (m_forceField->ConjugateGradientsTakeNSteps(5)) { // take 5 steps until convergence or 100 steps taken
+        m_forceField->UpdateCoordinates(*m_molecule);
+        m_textEdit->append(QObject::tr(buff.str().c_str()));
+        m_molecule->update();
+        m_cycles++;
+      }
+    }
+
+    void GhemicalCommand::undo() {
+      *m_molecule = m_moleculeCopy;
+      for(int i=0; i<m_cycles; i++) {
+        m_textEdit->undo();
+      }
+      m_cycles = 0;
+    }
+
+    bool GhemicalCommand::mergeWith ( const QUndoCommand * command )
+    {
+      // recieved another of the same call
+      return true;
+    }
+
+    int GhemicalCommand::id() const
+    {
+      return 54381241;
+    }
+
+  } // end namespace Avogadro
 
 #include "ghemical.moc"
-Q_EXPORT_PLUGIN2(ghemical, Ghemical)
+Q_EXPORT_PLUGIN2(ghemical, Avogadro::Ghemical)

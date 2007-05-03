@@ -46,6 +46,11 @@ NavigateTool::~NavigateTool()
 
 }
 
+int NavigateTool::usefulness() const
+{
+  return 1000000;
+}
+
 void NavigateTool::computeClickedAtom(const QPoint& p)
 {
   QList<GLHit> hits;
@@ -182,6 +187,8 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
 
   _lastDraggingPosition = event->pos();
   _glwidget->update();
+
+  return 0;
 }
 
 QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )

@@ -34,10 +34,10 @@ namespace Avogadro {
   bool Application::event(QEvent *event)
   {
     switch (event->type()) {
-    case QEvent::FileOpen:
-      return loadFile(static_cast<QFileOpenEvent *>(event)->file());        
-    default:
-      return QApplication::event(event);
+      case QEvent::FileOpen:
+        return loadFile(static_cast<QFileOpenEvent *>(event)->file());        
+      default:
+        return QApplication::event(event);
     }
   }
 

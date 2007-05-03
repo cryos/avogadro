@@ -19,7 +19,7 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 set(drawtool_SRCS drawtool.cpp)
 qt4_add_resources(drawtool_RC_SRCS draw.qrc)
 qt4_automoc(${drawtool_SRCS})
-ADD_LIBRARY(drawtool SHARED drawtool.cpp ${drawtool_RC_SRCS} )
+ADD_LIBRARY(drawtool SHARED drawcommand.cpp drawtool.cpp ${drawtool_RC_SRCS} )
 TARGET_LINK_LIBRARIES(drawtool 
     ${OPENBABEL2_LIBRARIES} 
     ${QT_LIBRARIES}

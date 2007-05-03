@@ -58,6 +58,10 @@ namespace Avogadro {
       virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event) = 0;
       virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event) = 0;
 
+      virtual int usefulness() const;
+
+      bool operator<(const Tool &other) const;
+
     protected:
       ToolPrivate *const d;
   };

@@ -44,7 +44,7 @@ namespace Avogadro {
       virtual QString description() const { return QObject::tr("Unknown Extension"); };
 
       virtual QList<QAction *> actions() { return m_actions; }
-      virtual void performAction(QAction *action, Molecule *molecule, QTextEdit *messages = NULL) {}
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *messages = NULL) {}
       
     protected:
       QList<QAction *> m_actions;

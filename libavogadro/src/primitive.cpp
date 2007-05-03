@@ -199,6 +199,11 @@ namespace Avogadro {
     return d->farthestAtom;
   }
 
+  Molecule &Molecule::operator=(const Molecule& other)
+  {
+    OpenBabel::OBMol::operator=(other);
+  }
+
   void Molecule::computeGeomInfo() const
   {
 //     MoleculePrivate *d = reinterpret_cast<MoleculePrivate *>(d_ptr);

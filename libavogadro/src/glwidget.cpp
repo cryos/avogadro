@@ -323,28 +323,45 @@ namespace Avogadro {
   void GLWidget::mousePressEvent( QMouseEvent * event )
   {
     if(d->tool) {
-      d->tool->mousePress(this, event);
+      QUndoCommand *command = 0;
+      command = d->tool->mousePress(this, event);
+
+      if(command && d->undoStack) {
+        d->undoStack->push(command);
+      } else if (command) {
+        delete command;
+      }
     }
   }
 
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   {
     if(d->tool) {
-      d->tool->mouseRelease(this, event);
+      QUndoCommand *command = d->tool->mouseRelease(this, event);
+
+      if(command && d->undoStack) {
+        d->undoStack->push(command);
+      }
     }
   }
 
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
   {
     if(d->tool) {
-      d->tool->mouseMove(this, event);
+      QUndoCommand *command = d->tool->mouseMove(this, event);
+      if(command && d->undoStack) {
+        d->undoStack->push(command);
+      }
     }
   }
 
   void GLWidget::wheelEvent( QWheelEvent * event )
   {
     if(d->tool) {
-      d->tool->wheel(this, event);
+      QUndoCommand *command = d->tool->wheel(this, event);
+      if(command && d->undoStack) {
+        d->undoStack->push(command);
+      }
     }
   }
 
@@ -534,6 +551,12 @@ namespace Avogadro {
           Engine *engine = factory->createInstance(this);
           qDebug() << "Found Engine: " << engine->name() << " - " << engine->description();
 
+          if(engine->name() == "Dynamic Ball and Stick" ||
+              engine->name() == "Label") {
+            engine->setEnabled(true);
+          } else {
+            engine->setEnabled(false);
+          }
           d->engines.append(engine);
         }
       }

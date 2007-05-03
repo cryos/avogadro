@@ -17,16 +17,17 @@ include_directories(
 )
 
 set(libavogadro_SRCS
+	camera.cpp
 	color.cpp
-    engine.cpp
-    tool.cpp
-	primitive.cpp
-	toolgroup.cpp
 	cylinder.cpp
-	sphere.cpp
+    engine.cpp
 	glwidget.cpp
 	moleculetreeview.cpp
-	camera.cpp
+	primitive.cpp
+	sphere.cpp
+    tool.cpp
+	toolgroup.cpp
+    undosequence.cpp
 )
 
 set(libavogadro_HDRS
@@ -40,6 +41,7 @@ set(libavogadro_HDRS
 	moleculetreeview.h
 	global.h
 	camera.h
+    undosequence.h
 )
 
 qt4_automoc(${libavogadro_SRCS})
