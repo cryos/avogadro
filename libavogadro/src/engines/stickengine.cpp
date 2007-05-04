@@ -97,6 +97,7 @@ bool StickEngine::render(GLWidget *gl)
     m_setup = true;
   }
 
+  double r = radius();
 
   m_update = false;
   glPushAttrib(GL_TRANSFORM_BIT);
@@ -124,7 +125,7 @@ bool StickEngine::render(GLWidget *gl)
       glPushMatrix();
       const Vector3d & loc = a->pos();
       glTranslated( loc[0], loc[1], loc[2] );
-      glScaled( 0.25, 0.25, 0.25 );
+      glScaled( r, r, r );
       glCallList(m_dl);
       glPopMatrix();
     }
@@ -143,7 +144,8 @@ bool StickEngine::render(GLWidget *gl)
         glPushMatrix();
         const Vector3d & loc = a->pos();
         glTranslated( loc[0], loc[1], loc[2] );
-        glScaled( 0.5, 0.5, 0.5 );
+        double cr = r + 0.5;
+        glScaled( r, r, r );
         glCallList(m_dl);
         glPopMatrix();
       }
@@ -171,7 +173,6 @@ bool StickEngine::render(GLWidget *gl)
     Vector3d v2 (atom2->pos());
     Vector3d v3 (( v1 + v2 ) / 2);
 
-    double radius = 0.25;
     int order = b->GetBO();
 
     double zDistance = gl->camera().distance(v3);
@@ -202,6 +203,25 @@ bool StickEngine::render(GLWidget *gl)
   glPopAttrib();
 
   return true;
+}
+
+inline double StickEngine::radius()
+{
+  return 0.25;
+}
+
+double StickEngine::radius(const Primitive *primitive)
+{
+  if (primitive->type() == Primitive::AtomType) {
+    double r = radius(static_cast<const Atom *>(primitive));
+    if(primitive->isSelected())
+    {
+      return r + .25;
+    }
+    return r;
+  } else {
+    return 0.;
+  }
 }
 
 bool StickEngine::render(const Atom *a)
