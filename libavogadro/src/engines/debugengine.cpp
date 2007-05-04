@@ -47,13 +47,18 @@ bool DebugEngine::render(GLWidget *gl)
   glDisable(GL_LIGHTING);
 
   gl->renderText(5,20,"---- Debug Information ----");
-  gl->renderText(5,35,"FPS: " + QString::number(computeFramesPerSecond()));
+  gl->renderText(5,35,"FPS: " + QString::number(computeFramesPerSecond(), 'g', 3));
+
+  gl->renderText(5,50,"GLWidget size: "
+                      + QString::number(gl->width())
+                      + " x "
+                      + QString::number(gl->height()) );
 
   list = queue().primitiveList(Primitive::AtomType);
-  gl->renderText(5,50,"Atoms: " + QString::number(list.size()));
+  gl->renderText(5,65,"Atoms: " + QString::number(list.size()));
 
   list = queue().primitiveList(Primitive::BondType);
-  gl->renderText(5,65,"Bonds: " + QString::number(list.size()));
+  gl->renderText(5,80,"Bonds: " + QString::number(list.size()));
 
   glPopAttrib();
   
