@@ -45,7 +45,6 @@ namespace Avogadro {
    * This class is an attempt to port the navigation system in
    * Kalzium to an Avogadro plugin.
    */
-  class NavigateToolPrivate;
   class NavigateTool : public Tool
   {
     Q_OBJECT
@@ -79,7 +78,18 @@ namespace Avogadro {
       virtual bool paint(GLWidget *widget);
 
     protected:
-      NavigateToolPrivate * const d_ptr;
+      GLWidget *          m_glwidget;
+      bool                m_leftButtonPressed;  // rotation
+      bool                m_rightButtonPressed; // translation
+      bool                m_midButtonPressed;   // scale / zoom
+      Atom *              m_clickedAtom;
+
+      Sphere              m_sphere;
+
+      //! Temporary var for adding selection box
+      GLuint              m_selectionDL;
+
+      QPoint              m_lastDraggingPosition;
 
       void drawSphere(GLWidget *widget,  const Eigen::Vector3d &center, double radius, float alpha);
 
@@ -88,9 +98,6 @@ namespace Avogadro {
       void translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const;
       void rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const;
       void tilt( const Eigen::Vector3d &center, double delta ) const;
-
-    private:
-      Q_DECLARE_PRIVATE(NavigateTool);
   };
 
   class NavigateToolFactory : public QObject, public ToolFactory

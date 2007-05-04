@@ -36,27 +36,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-namespace Avogadro {
-  class NavigateToolPrivate {
-    public:
-      NavigateToolPrivate() : clickedAtom(0), leftButtonPressed(false), midButtonPressed(false), rightButtonPressed(false) {}
-
-      GLWidget *          glwidget;
-      bool                leftButtonPressed;  // rotation
-      bool                rightButtonPressed; // translation
-      bool                midButtonPressed;   // scale / zoom
-      Atom *              clickedAtom;
-
-      Sphere              sphere;
-
-      //! Temporary var for adding selection box
-      GLuint              selectionDL;
-
-      QPoint              lastDraggingPosition;
-  };
-}
-
-NavigateTool::NavigateTool(QObject *parent) : Tool(parent), d_ptr(new NavigateToolPrivate)
+NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
@@ -64,7 +44,6 @@ NavigateTool::NavigateTool(QObject *parent) : Tool(parent), d_ptr(new NavigateTo
 
 NavigateTool::~NavigateTool()
 {
-  delete d_ptr;
 }
 
 int NavigateTool::usefulness() const
@@ -75,10 +54,10 @@ int NavigateTool::usefulness() const
 void NavigateTool::computeClickedAtom(const QPoint& p)
 {
   QList<GLHit> hits;
-  d_ptr->clickedAtom = 0;
+  m_clickedAtom = 0;
 
   // Perform a OpenGL selection and retrieve the list of hits.
-  hits = d_ptr->glwidget->hits(p.x()-SEL_BOX_HALF_SIZE,
+  hits = m_glwidget->hits(p.x()-SEL_BOX_HALF_SIZE,
       p.y()-SEL_BOX_HALF_SIZE,
       SEL_BOX_SIZE, SEL_BOX_SIZE);
 
@@ -87,7 +66,7 @@ void NavigateTool::computeClickedAtom(const QPoint& p)
   {
     if(hit.type() == Primitive::AtomType)
     {
-      d_ptr->clickedAtom = static_cast<Atom *>( d_ptr->glwidget->molecule()->GetAtom(hit.name()) );
+      m_clickedAtom = static_cast<Atom *>( m_glwidget->molecule()->GetAtom(hit.name()) );
       return;
     }
   }
@@ -95,7 +74,7 @@ void NavigateTool::computeClickedAtom(const QPoint& p)
 
 void NavigateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
 {
-  Vector3d transformedGoal = d_ptr->glwidget->camera().matrix() * goal;
+  Vector3d transformedGoal = m_glwidget->camera().matrix() * goal;
   double distanceToGoal = transformedGoal.norm();
 
   double t = ZOOM_SPEED * delta;
@@ -106,43 +85,43 @@ void NavigateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
     t = u;
   }
 
-  d_ptr->glwidget->camera().matrix().pretranslate( transformedGoal * t );
+  m_glwidget->camera().matrix().pretranslate( transformedGoal * t );
 }
 
 void NavigateTool::translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const
 {
-  Vector3d fromPos = d_ptr->glwidget->unProject(from, what);
-  Vector3d toPos = d_ptr->glwidget->unProject(to, what);
-  d_ptr->glwidget->camera().translate( toPos - fromPos );
+  Vector3d fromPos = m_glwidget->unProject(from, what);
+  Vector3d toPos = m_glwidget->unProject(to, what);
+  m_glwidget->camera().translate( toPos - fromPos );
 }
 
 void NavigateTool::rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const
 {
-  const MatrixP3d & m = d_ptr->glwidget->camera().matrix();
+  const MatrixP3d & m = m_glwidget->camera().matrix();
   Vector3d xAxis( m(0, 0), m(0, 1), m(0, 2) );
   Vector3d yAxis( m(1, 0), m(1, 1), m(1, 2) );
-  d_ptr->glwidget->camera().translate( center );
-  d_ptr->glwidget->camera().rotate( deltaX * ROTATION_SPEED, yAxis );
-  d_ptr->glwidget->camera().rotate( deltaY * ROTATION_SPEED, xAxis );
-  d_ptr->glwidget->camera().translate( -center );
+  m_glwidget->camera().translate( center );
+  m_glwidget->camera().rotate( deltaX * ROTATION_SPEED, yAxis );
+  m_glwidget->camera().rotate( deltaY * ROTATION_SPEED, xAxis );
+  m_glwidget->camera().translate( -center );
 }
 
 void NavigateTool::tilt( const Eigen::Vector3d &center, double delta ) const
 {
-  const MatrixP3d & m = d_ptr->glwidget->camera().matrix();
+  const MatrixP3d & m = m_glwidget->camera().matrix();
   Vector3d zAxis( m(2, 0), m(2, 1), m(2, 2) );
-  d_ptr->glwidget->camera().translate( center );
-  d_ptr->glwidget->camera().rotate( delta * ROTATION_SPEED, zAxis );
-  d_ptr->glwidget->camera().translate( -center );
+  m_glwidget->camera().translate( center );
+  m_glwidget->camera().rotate( delta * ROTATION_SPEED, zAxis );
+  m_glwidget->camera().translate( -center );
 }
 
 QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
-  d_ptr->glwidget = widget;
-  d_ptr->lastDraggingPosition = event->pos();
-  d_ptr->leftButtonPressed = ( event->buttons() & Qt::LeftButton );
-  d_ptr->midButtonPressed = ( event->buttons() & Qt::MidButton );
-  d_ptr->rightButtonPressed = ( event->buttons() & Qt::RightButton );
+  m_glwidget = widget;
+  m_lastDraggingPosition = event->pos();
+  m_leftButtonPressed = ( event->buttons() & Qt::LeftButton );
+  m_midButtonPressed = ( event->buttons() & Qt::MidButton );
+  m_rightButtonPressed = ( event->buttons() & Qt::RightButton );
   computeClickedAtom(event->pos());
 
   widget->update();
@@ -151,11 +130,11 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
 
 QUndoCommand* NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
-  d_ptr->glwidget = widget;
-  d_ptr->leftButtonPressed = false;
-  d_ptr->midButtonPressed = false;
-  d_ptr->rightButtonPressed = false;
-  d_ptr->clickedAtom = 0;
+  m_glwidget = widget;
+  m_leftButtonPressed = false;
+  m_midButtonPressed = false;
+  m_rightButtonPressed = false;
+  m_clickedAtom = 0;
 
   widget->update();
   return 0;
@@ -163,35 +142,35 @@ QUndoCommand* NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent *ev
 
 QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
-  d_ptr->glwidget = widget;
-  if(!d_ptr->glwidget->molecule()) {
+  m_glwidget = widget;
+  if(!m_glwidget->molecule()) {
     return 0;
   }
 
-  QPoint deltaDragging = event->pos() - d_ptr->lastDraggingPosition;
+  QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
   // Mouse navigation has two modes - atom centred when an atom is clicked and scence if no
   // atom has been clicked.
 
-  if( d_ptr->clickedAtom )
+  if( m_clickedAtom )
   {
     if ( event->buttons() & Qt::RightButton )
     {
       // Atom centred rotation 
-      rotate( d_ptr->clickedAtom->pos(), deltaDragging.x(), deltaDragging.y() );
+      rotate( m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y() );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
       // Perform the rotation
-      tilt( d_ptr->clickedAtom->pos(), deltaDragging.x() );
+      tilt( m_clickedAtom->pos(), deltaDragging.x() );
 
       // Perform the zoom toward clicked atom
-      zoom( d_ptr->clickedAtom->pos(), deltaDragging.y() );
+      zoom( m_clickedAtom->pos(), deltaDragging.y() );
     }
     else if ( event->buttons() & Qt::LeftButton )
     {
       // translate the molecule following mouse movement
-      translate( d_ptr->clickedAtom->pos(), d_ptr->lastDraggingPosition, event->pos() );
+      translate( m_clickedAtom->pos(), m_lastDraggingPosition, event->pos() );
     }
   }
   else // Nothing clicked on
@@ -199,65 +178,65 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
     if( event->buttons() & Qt::RightButton )
     {
       // rotation around the center of the molecule
-      rotate( d_ptr->glwidget->center(), deltaDragging.x(), deltaDragging.y() );
+      rotate( m_glwidget->center(), deltaDragging.x(), deltaDragging.y() );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
       // Perform the rotation
-      tilt( d_ptr->glwidget->center(), deltaDragging.x() );
+      tilt( m_glwidget->center(), deltaDragging.x() );
 
       // Perform the zoom toward molecule center
-      zoom( d_ptr->glwidget->center(), deltaDragging.y() );
+      zoom( m_glwidget->center(), deltaDragging.y() );
     }
     else if ( event->buttons() & Qt::LeftButton )
     {
       // translate the molecule following mouse movement
-      translate( d_ptr->glwidget->center(), d_ptr->lastDraggingPosition, event->pos() );
+      translate( m_glwidget->center(), m_lastDraggingPosition, event->pos() );
     }
   }
 
-  d_ptr->lastDraggingPosition = event->pos();
-  d_ptr->glwidget->update();
+  m_lastDraggingPosition = event->pos();
+  m_glwidget->update();
 
   return 0;
 }
 
 QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
 {
-  d_ptr->glwidget = widget;
+  m_glwidget = widget;
   computeClickedAtom(event->pos());
-  if( d_ptr->clickedAtom )
+  if( m_clickedAtom )
   {
     // Perform the zoom toward clicked atom
-    zoom( d_ptr->clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta() );
+    zoom( m_clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta() );
   }
   else
   {
     // Perform the zoom toward molecule center
-    zoom( d_ptr->glwidget->center(), - MOUSE_WHEEL_SPEED * event->delta() );
+    zoom( m_glwidget->center(), - MOUSE_WHEEL_SPEED * event->delta() );
   }
-  d_ptr->glwidget->update();
+  m_glwidget->update();
 
   return 0;
 }
 
 bool NavigateTool::paint(GLWidget *widget)
 {
-  if(d_ptr->leftButtonPressed || d_ptr->midButtonPressed || d_ptr->rightButtonPressed) {
-    if(d_ptr->clickedAtom) {
+  if(m_leftButtonPressed || m_midButtonPressed || m_rightButtonPressed) {
+    if(m_clickedAtom) {
       double renderRadius = 0.0;
       foreach(Engine *engine, widget->engines())
       {
         if(engine->isEnabled())
         {
-          double engineRadius = engine->radius(d_ptr->clickedAtom);
+          double engineRadius = engine->radius(m_clickedAtom);
           if(engineRadius > renderRadius) {
             renderRadius = engineRadius;
           }
         }
       }
       renderRadius += 0.10;
-      drawSphere(widget, d_ptr->clickedAtom->GetVector().AsArray(), renderRadius, 0.7);
+      drawSphere(widget, m_clickedAtom->GetVector().AsArray(), renderRadius, 0.7);
     }
     else
     {
@@ -270,11 +249,11 @@ bool NavigateTool::paint(GLWidget *widget)
 void NavigateTool::drawSphere(GLWidget *widget,  const Eigen::Vector3d &position, double radius, float alpha )
 {
 
-  d_ptr->sphere.setup(6);
+  m_sphere.setup(6);
 
   Color( 1.0, 1.0, 0.3, alpha ).applyAsMaterials();
   glEnable( GL_BLEND );
-  d_ptr->sphere.draw(position, radius);
+  m_sphere.draw(position, radius);
   glDisable( GL_BLEND );
 }
 
