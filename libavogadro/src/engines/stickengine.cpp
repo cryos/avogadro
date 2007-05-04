@@ -53,6 +53,8 @@ StickEngine::~StickEngine()
 
 bool StickEngine::render(GLWidget *gl)
 {
+  Color map = colorMap();
+
   // make a DL for very far objects.  Cube on its side.
   if(!m_dl) {
     m_dl = glGenLists(1);
@@ -107,7 +109,8 @@ bool StickEngine::render(GLWidget *gl)
     Atom * a = dynamic_cast<Atom *>(p);
     glPushName(a->GetIdx());
 
-    Color(a).applyAsMaterials();
+    map.set(a);
+    map.applyAsMaterials();
 
     double zDistance = gl->camera().distance(a->pos());
     int detail;
@@ -128,7 +131,8 @@ bool StickEngine::render(GLWidget *gl)
 
     if (a->isSelected())
     {
-      Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
+      map.set( 0.3, 0.6, 1.0, 0.7 );
+      map.applyAsMaterials();
       glEnable( GL_BLEND );
       if(zDistance < 100.0)
       {
@@ -186,10 +190,12 @@ bool StickEngine::render(GLWidget *gl)
     }
     detail++;
 
-    Color(atom1).applyAsMaterials();
+    map.set(atom1);
+    map.applyAsMaterials();
     m_cylinders.at(detail)->draw( v1, v3, radius, 1, 0.0, normalVector);
 
-    Color(atom2).applyAsMaterials();
+    map.set(atom2);
+    map.applyAsMaterials();
     m_cylinders.at(detail)->draw( v3, v2, radius, 1, 0.0, normalVector);
   }
 

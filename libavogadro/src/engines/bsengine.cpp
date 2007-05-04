@@ -95,15 +95,19 @@ double BSEngine::radius(const Primitive *p)
 
 bool BSEngine::render(const Atom *a)
 {
+  Color map = colorMap();
+
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
-  Color(a).applyAsMaterials();
+  map.set(a);
+  map.applyAsMaterials();
 
   m_sphere.draw(a->GetVector().AsArray(), radius(a));
 
   if (a->isSelected())
     {
-      Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
+      map.set( 0.3, 0.6, 1.0, 0.7 );
+      map.applyAsMaterials();
       glEnable( GL_BLEND );
       m_sphere.draw(a->GetVector().AsArray(), 0.18 + radius(a));
       glDisable( GL_BLEND );
@@ -118,6 +122,7 @@ bool BSEngine::render(const Atom *a)
 bool BSEngine::render(const Bond *b)
 {
   Eigen::Vector3d normalVector;
+  Color map = colorMap();
 
   // FIXME: should be qobject_cast but bug with Qt/Mac
   GLWidget *gl = dynamic_cast<GLWidget *>(parent());
@@ -139,10 +144,12 @@ bool BSEngine::render(const Bond *b)
   // for now, just allow selecting atoms
   //  glPushName(bondType);
   //  glPushName(b->GetIdx());
-  Color(atom1).applyAsMaterials();
+  map.set(atom1);
+  map.applyAsMaterials();
   m_cylinder.draw( v1, v3, radius(b), order, shift, normalVector);
 
-  Color(atom2).applyAsMaterials();
+  map.set(atom2);
+  map.applyAsMaterials();
   m_cylinder.draw( v2, v3, radius(b), order, shift, normalVector);
   //  glPopName();
   //  glPopName();

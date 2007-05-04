@@ -26,12 +26,9 @@ namespace Avogadro {
    *
    * @author Benoit Jacob
    */
-  struct A_EXPORT Color
+  class A_EXPORT Color
   {
-    ///{ The four components of the color, ranging between 0 and 1.
-    GLfloat m_red, m_green, m_blue, m_alpha;
-    ///}
-
+  public:
     Color() {}
 
     /**
@@ -44,26 +41,50 @@ namespace Avogadro {
 
     /**
      * This constructor uses OpenBabel to retrieve the color in which
-     * the atom should be rendered. */
+     * the atom should be rendered. Default is to render based on element. */
     Color( const OpenBabel::OBAtom *atom );
-
-    /**
-     * Sets this color to be the one used by OpenGL for rendering
-     * when lighting is disabled. */
-    inline void apply()
-    {
-      glColor4fv( &m_red );
-    }
 
     /**
      * Equal overloading operator */
     Color &operator=( const Color& other );
 
     /**
+     * Set the four components of the color
+     * individually. Each one ranges from 0.0 (lowest intensity) to
+     * 1.0 (highest intensity). For the alpha component, 0.0 means fully
+     * transparent and 1.0 (the default) means fully opaque. */
+    virtual void set(GLfloat red, GLfloat green, GLfloat blue,
+                     GLfloat alpha = 1.0 );
+
+    /**
+     * Set the color in which the atom should be rendered. 
+     * If NULL is passed, do nothing */
+    virtual void set(const OpenBabel::OBAtom *atom );
+
+    /**
+     * Set the color from an floating-point range 
+     * Default will just set white for everything
+     */
+    virtual void set(double value, double low, double high);
+
+    /**
+     * Sets this color to be the one used by OpenGL for rendering
+     * when lighting is disabled. */
+    inline virtual void apply()
+    {
+      glColor4fv( &m_red );
+    }
+
+    /**
      * Applies nice OpenGL materials using this color as the
      * diffuse color while using different shades for the ambient and
      * specular colors. This is only useful if lighting is enabled. */
-    void applyAsMaterials();
+    virtual void applyAsMaterials();
+
+  private:
+    ///{ The four components of the color, ranging between 0 and 1.
+    GLfloat m_red, m_green, m_blue, m_alpha;
+    ///}
   };
 
 }

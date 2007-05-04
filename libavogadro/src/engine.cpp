@@ -26,11 +26,12 @@ namespace Avogadro {
 
   class EnginePrivate
   {
-    public:
-      EnginePrivate() : enabled(false) {}
-
-      PrimitiveQueue queue;
-      bool enabled;
+  public:
+    EnginePrivate() : enabled(false) {}
+    
+    PrimitiveQueue queue;
+    Color colorMap;
+    bool enabled;
   };
 
   Engine::Engine(QObject *parent) : QObject(parent), d(new EnginePrivate)
@@ -49,21 +50,7 @@ namespace Avogadro {
 
   double Engine::radius(const Primitive *primitive)
   {
-    return 0.;
-  }
-
-  void Engine::addPrimitive(Primitive *primitive)
-  {
-    d->queue.addPrimitive(primitive);
-  }
-
-  void Engine::updatePrimitive(Primitive *primitive)
-  {
-  }
-
-  void Engine::removePrimitive(Primitive *primitive)
-  {
-    d->queue.removePrimitive(primitive);
+    return 0.0;
   }
 
   void Engine::clearQueue()
@@ -80,6 +67,31 @@ namespace Avogadro {
   {
     d->enabled = enabled;
   }
+
+  void Engine::addPrimitive(Primitive *primitive)
+  {
+    d->queue.addPrimitive(primitive);
+  }
+
+  void Engine::updatePrimitive(Primitive *primitive)
+  {
+  }
+
+  void Engine::removePrimitive(Primitive *primitive)
+  {
+    d->queue.removePrimitive(primitive);
+  }
+
+  void Engine::setColorMap(Color &map)
+  {
+    d->colorMap = map;
+  }
+
+  Color &Engine::colorMap()
+  {
+    return d->colorMap;
+  }
+
 }
 
 #include "engine.moc"

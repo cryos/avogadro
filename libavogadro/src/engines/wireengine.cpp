@@ -62,6 +62,7 @@ bool WireEngine::render(GLWidget *gl)
 
 bool WireEngine::render(const Atom *a)
 {
+  Color map = colorMap();
   const float selectionColor[3] = {0.3, 0.6, 1.0};
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
@@ -73,7 +74,8 @@ bool WireEngine::render(const Atom *a)
     glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 4.0);
   }
   else{
-    Color(a).apply();
+    map.set(a);
+    map.apply();
     glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 3.0);
   }
 
@@ -93,17 +95,19 @@ bool WireEngine::render(const Bond *b)
   const Atom *atom2 = static_cast<const Atom *>( b->GetEndAtom() );
   const Vector3d & v1 = atom1->pos();
   const Vector3d & v2 = atom2->pos();
-  std::vector<double> rgb;
+  Color map = colorMap();
 
   glLineWidth(1.0);
   glBegin(GL_LINES);
 
   // hard to separate atoms from bonds in this view
   // so we let the user always select atoms
-  Color(atom1).apply();
+  map.set(atom1);
+  map.apply();
   glVertex3d(v1.x(), v1.y(), v1.z());
 
-  Color(atom2).apply();
+  map.set(atom2);
+  map.apply();
   glVertex3d(v2.x(), v2.y(), v2.z());
 
   glEnd();

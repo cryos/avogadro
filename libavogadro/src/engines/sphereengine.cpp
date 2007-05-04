@@ -80,15 +80,18 @@ double SphereEngine::radius(const Primitive *p)
 
 bool SphereEngine::render(const Atom *a)
 {
+  Color map = colorMap();
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
-  Color(a).applyAsMaterials();
+  map.set(a);
+  map.applyAsMaterials();
 
   m_sphere.draw(a->GetVector().AsArray(), radius(a));
 
   if (a->isSelected())
     {
-      Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
+      map.set( 0.3, 0.6, 1.0, 0.7 );
+      map.applyAsMaterials();
       glEnable( GL_BLEND );
       m_sphere.draw(a->GetVector().AsArray(), 0.18 + radius(a));
       glDisable( GL_BLEND );

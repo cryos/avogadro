@@ -25,6 +25,7 @@
 
 #include <avogadro/global.h>
 #include <avogadro/primitive.h>
+#include <avogadro/color.h>
 
 #include <QString>
 #include <QVector>
@@ -134,6 +135,16 @@ namespace Avogadro {
       virtual void addPrimitive(Primitive *primitive);
       virtual void updatePrimitive(Primitive *primitive);
       virtual void removePrimitive(Primitive *primitive);
+
+      /** Set the color map to be used for this engine.
+       * default is to color each atom by element
+       * @param map is the new colors to be used
+       */
+      virtual void setColorMap(Color &map);
+
+      /** @return the current color map used by this engine
+       */
+      virtual Color &colorMap();
 
     private:
       EnginePrivate *const d;

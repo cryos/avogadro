@@ -1,5 +1,6 @@
 /***************************************************************************
     copyright            : (C) 2006 by Benoit Jacob
+    some portions copyright (C) 2007 by Geoff Hutchison
  ***************************************************************************/
 
 /***************************************************************************
@@ -22,19 +23,12 @@ namespace Avogadro {
 Color::Color( GLfloat red, GLfloat green, GLfloat blue,
                   GLfloat alpha )
 {
-	m_red = red;
-	m_green = green;
-	m_blue = blue;
-	m_alpha = alpha;
+  set(red, green, blue, alpha);
 }
 
 Color::Color( const OBAtom* atom )
 {
-	std::vector<double> rgb = etab.GetRGB( atom->GetAtomicNum() );
-	m_red = rgb[0];
-	m_green = rgb[1];
-	m_blue = rgb[2];
-	m_alpha = 1.0;
+  set(atom);
 }
 
 Color& Color::operator=( const Color& other )
@@ -45,6 +39,31 @@ Color& Color::operator=( const Color& other )
 	m_alpha = other.m_alpha;
 
 	return *this;
+}
+  
+void Color::set(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+{
+  m_red = red;
+  m_green = green;
+  m_blue = blue;
+  m_alpha = alpha;
+}
+
+void Color::set(const OpenBabel::OBAtom *atom)
+{
+  if (!atom)
+    return;
+
+	std::vector<double> rgb = etab.GetRGB( atom->GetAtomicNum() );
+	m_red = rgb[0];
+	m_green = rgb[1];
+	m_blue = rgb[2];
+	m_alpha = 1.0;
+}
+
+void Color::set(double value, double low, double high)
+{
+  m_red = m_green = m_blue = m_alpha = 1.0;
 }
 
 void Color::applyAsMaterials()

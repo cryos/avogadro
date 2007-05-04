@@ -54,6 +54,8 @@ BSDYEngine::~BSDYEngine()
 
 bool BSDYEngine::render(GLWidget *gl)
 {
+  Color map = colorMap();
+
   // make a DL for very far objects.  Cube on its side.
   if(!m_dl) {
     m_dl = glGenLists(1);
@@ -108,7 +110,8 @@ bool BSDYEngine::render(GLWidget *gl)
     Atom * a = dynamic_cast<Atom *>(p);
     glPushName(a->GetIdx());
 
-    Color(a).applyAsMaterials();
+    map.set(a);
+    map.applyAsMaterials();
 
     double zDistance = gl->camera().distance(a->pos());
 //     float zDistance = 200;
@@ -142,7 +145,9 @@ bool BSDYEngine::render(GLWidget *gl)
 
     if (a->isSelected())
     {
-      Color( 0.3, 0.6, 1.0, 0.7 ).applyAsMaterials();
+      map.set( 0.3, 0.6, 1.0, 0.7 );
+      map.applyAsMaterials();
+
       glEnable( GL_BLEND );
       if(zDistance < 200.0)
       {
@@ -209,10 +214,12 @@ bool BSDYEngine::render(GLWidget *gl)
     {
       detail = 3;
     }
-    Color(atom1).applyAsMaterials();
+    map.set(atom1);
+    map.applyAsMaterials();
     m_cylinders.at(detail)->draw( v1, v3, bondRadius, order, shift, normalVector);
 
-    Color(atom2).applyAsMaterials();
+    map.set(atom2);
+    map.applyAsMaterials();
     m_cylinders.at(detail)->draw( v3, v2, bondRadius, order, shift, normalVector);
     //  glPopName();
     //  glPopName();
@@ -249,34 +256,6 @@ bool BSDYEngine::render(const Atom *a)
 
 bool BSDYEngine::render(const Bond *b)
 {
-//   GLWidget *gl = qobject_cast<GLWidget *>(parent());
-//   if(gl) {
-//     normalVector = gl->normalVector();
-//   }
-// 
-//   const OBAtom *atom1 = static_cast<const OBAtom *>( b->GetBeginAtom() );
-//   const OBAtom *atom2 = static_cast<const OBAtom *>( b->GetEndAtom() );
-// 
-//   Vector3d v1 (atom1->GetVector().AsArray());
-//   Vector3d v2 (atom2->GetVector().AsArray());
-//   Vector3d v3 (( v1 + v2 ) / 2);
-//   std::vector<double> rgb;
-// 
-//   double radius = 0.1;
-//   double shift = 0.15;
-//   int order = b->GetBO();
-// 
-//   // for now, just allow selecting atoms
-//   //  glPushName(bondType);
-//   //  glPushName(b->GetIdx());
-//   Color(atom1).applyAsMaterials();
-//   m_cylinder.draw( v1, v3, radius, order, shift, normalVector);
-// 
-//   Color(atom2).applyAsMaterials();
-//   m_cylinder.draw( v3, v2, radius, order, shift, normalVector);
-//   //  glPopName();
-//   //  glPopName();
-// 
   return true;
 }
 

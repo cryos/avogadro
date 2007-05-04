@@ -62,7 +62,6 @@ bool LabelEngine::render(GLWidget *gl)
     }
     renderRadius += 0.05;
 
-    //Color(atom).applyAsMaterials();
     glColor3f(1.0,1.0,1.0);
     double zDistance = gl->camera().distance(pos);
 
