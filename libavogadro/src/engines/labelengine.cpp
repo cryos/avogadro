@@ -46,32 +46,32 @@ bool LabelEngine::render(GLWidget *gl)
   glPushAttrib(GL_ALL_ATTRIB_BITS);
   glDisable(GL_LIGHTING);
   foreach( Primitive *p, list ) {
-    // FIXME: should be qobject_cast but bug with Qt/Mac
-    Atom *atom = dynamic_cast<Atom *>(p);
+    Atom *atom = static_cast<const Atom *>(p);
     const Vector3d pos = atom->pos();
-    double radius = 0.18 + etab.GetVdwRad(atom->GetAtomicNum()) * 0.3;
+
+    double renderRadius = 0.;
+    foreach(Engine *engine, gl->engines())
+    {
+      if(engine->isEnabled())
+      {
+        double engineRadius = engine->radius(atom);
+        if(engineRadius > renderRadius) {
+          renderRadius = engineRadius;
+        }
+      }
+    }
+    renderRadius += 0.18;
+
     //Color(atom).applyAsMaterials();
     glColor3f(1.0,1.0,1.0);
     double zDistance = gl->camera().distance(pos);
-    
+
     if(zDistance < 50.0) {
-      gl->renderText(pos.x(), pos.y(), pos.z() + (radius), 
+      gl->renderText(pos.x(), pos.y(), pos.z() + (renderRadius), 
           QString::number(atom->GetIdx()));
     }
   }
   glPopAttrib();
-}
-
-bool LabelEngine::render(const Atom *a)
-{
-}
-
-bool LabelEngine::render(const Bond *b)
-{
-}
-
-bool LabelEngine::render(const Molecule *m)
-{
 }
 
 #include "labelengine.moc"
