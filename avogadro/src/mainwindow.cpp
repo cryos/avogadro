@@ -469,6 +469,7 @@ namespace Avogadro {
   {
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
+      QApplication::restoreOverrideCursor();
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot read file %1:\n%2.")
           .arg(fileName)
@@ -482,6 +483,7 @@ namespace Avogadro {
     OBConversion conv;
     OBFormat     *inFormat = conv.FormatFromExt((fileName.toAscii()).data());
     if (!inFormat || !conv.SetInFormat(inFormat)) {
+      QApplication::restoreOverrideCursor();
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot read file format of file %1.")
           .arg(fileName));
@@ -490,6 +492,7 @@ namespace Avogadro {
     ifstream     ifs;
     ifs.open((fileName.toAscii()).data());
     if (!ifs) { // shouldn't happen, already checked file above
+      QApplication::restoreOverrideCursor();
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot read file %1.")
           .arg(fileName));
@@ -511,8 +514,8 @@ namespace Avogadro {
 
     }
     else {
-      statusBar()->showMessage("Reading molecular file failed.", 5000);
       QApplication::restoreOverrideCursor();
+      statusBar()->showMessage("Reading molecular file failed.", 5000);
       return false;
     }
 
