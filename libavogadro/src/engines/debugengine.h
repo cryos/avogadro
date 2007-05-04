@@ -1,5 +1,5 @@
 /**********************************************************************
-  LabelEngine - Engine for displaying labels.
+  Debug Engine - Engine for displaying debug information.
 
   Copyright (C) 2007 Ross Braith
   Copyright (C) 2007 Shahzad Ali
@@ -26,15 +26,10 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
-#include <avogadro/sphere.h>
-#include <avogadro/cylinder.h>
 
 #include <openbabel/mol.h>
 
 #include <QGLWidget>
-#include <QObject>
-#include <QStringList>
-#include <QImage>
 
 namespace Avogadro {
 

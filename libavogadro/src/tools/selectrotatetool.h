@@ -29,6 +29,7 @@
 #include <QObject>
 #include <QString>
 #include <QPoint>
+#include <QAction>
 
 class QMouseEvent;
 class QWheelEvent;

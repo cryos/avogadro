@@ -30,8 +30,7 @@
 
 #include <math.h>
 
-#include <QtGui>
-#include <QDebug>
+#include <QtPlugin>
 
 using namespace std;
 using namespace OpenBabel;

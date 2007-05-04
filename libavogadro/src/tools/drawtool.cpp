@@ -29,7 +29,7 @@
 
 #include <openbabel/obiter.h>
 
-#include <QtGui>
+#include <QtPlugin>
 
 using namespace std;
 using namespace OpenBabel;

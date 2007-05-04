@@ -1,5 +1,5 @@
 /**********************************************************************
-  LabelEngine - Engine for displaying labels.
+  Debug Engine - Engine for displaying debug information.
 
   Copyright (C) 2007 Ross Braith
   Copyright (C) 2007 Shahzad Ali
@@ -28,13 +28,9 @@
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
-#include <avogadro/camera.h>
 
-#include <openbabel/obiter.h>
-#include <eigen/regression.h>
-
-#include <QtGui>
 #include <QTime>
+#include <QtPlugin>
 
 using namespace std;
 using namespace OpenBabel;
@@ -47,6 +43,7 @@ bool DebugEngine::render(GLWidget *gl)
 
   glPushAttrib(GL_ALL_ATTRIB_BITS);
   glDisable(GL_LIGHTING);
+  glColor3f( 1.0, 1.0, 1.0 );
 
   gl->renderText(5,20,"---- Debug Information ----");
   gl->renderText(5,35,"FPS: " + QString::number(computeFramesPerSecond(), 'g', 3));
