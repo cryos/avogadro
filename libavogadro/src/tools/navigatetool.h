@@ -84,7 +84,6 @@ namespace Avogadro {
       bool                _midButtonPressed;   // scale / zoom
       Atom *              _clickedAtom;
 
-      bool _setup;
       Sphere _sphere;
 
       //! Temporary var for adding selection box

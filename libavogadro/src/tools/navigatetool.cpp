@@ -36,7 +36,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-NavigateTool::NavigateTool(QObject *parent) : Tool(parent), _clickedAtom(0), _setup(false), _leftButtonPressed(false), _rightButtonPressed(false)
+NavigateTool::NavigateTool(QObject *parent) : Tool(parent), _clickedAtom(0), _leftButtonPressed(false), _rightButtonPressed(false)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
@@ -246,20 +246,13 @@ bool NavigateTool::paint(GLWidget *widget)
 
 void NavigateTool::drawSphere(GLWidget *widget,  const Eigen::Vector3d &position, double radius, float alpha )
 {
-  if(!_setup)
-  {
-    _sphere.setup(6);
-    _setup = true;
-  }
 
-  glDisable( GL_NORMALIZE );
-  glEnable( GL_RESCALE_NORMAL );
+  _sphere.setup(6);
+
   Color( 1.0, 1.0, 0.3, alpha ).applyAsMaterials();
   glEnable( GL_BLEND );
   _sphere.draw(position, radius);
   glDisable( GL_BLEND );
-  glDisable( GL_RESCALE_NORMAL);
-  glEnable( GL_NORMALIZE );
 }
 
 #include "navigatetool.moc"
