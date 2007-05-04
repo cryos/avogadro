@@ -1,7 +1,7 @@
 /**********************************************************************
   NavigateTool - Navigation Tool for Avogadro
 
-  Copyright (C) 2007 by Marcus D. Hanwel
+  Copyright (C) 2007 by Marcus D. Hanwell
   Copyright (C) 2006,2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
@@ -40,11 +40,12 @@ namespace Avogadro {
   /**
    * @class NavigateTool
    * @brief Port of Navigation from Kalzium
-   * @author Marcus D. Hanwel
+   * @author Marcus D. Hanwell
    *
    * This class is an attempt to port the navigation system in
    * Kalzium to an Avogadro plugin.
    */
+  class NavigateToolPrivate;
   class NavigateTool : public Tool
   {
     Q_OBJECT
@@ -78,19 +79,7 @@ namespace Avogadro {
       virtual bool paint(GLWidget *widget);
 
     protected:
-
-      GLWidget *          _glwidget;
-      bool                _leftButtonPressed;  // rotation
-      bool                _rightButtonPressed; // translation
-      bool                _midButtonPressed;   // scale / zoom
-      Atom *              _clickedAtom;
-
-      Sphere _sphere;
-
-      //! Temporary var for adding selection box
-      GLuint _selectionDL;
-
-      QPoint              _lastDraggingPosition;
+      NavigateToolPrivate * const d_ptr;
 
       void drawSphere(GLWidget *widget,  const Eigen::Vector3d &center, double radius, float alpha);
 
@@ -99,6 +88,9 @@ namespace Avogadro {
       void translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const;
       void rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const;
       void tilt( const Eigen::Vector3d &center, double delta ) const;
+
+    private:
+      Q_DECLARE_PRIVATE(NavigateTool);
   };
 
   class NavigateToolFactory : public QObject, public ToolFactory
