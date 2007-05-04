@@ -25,6 +25,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
+#include <avogadro/sphere.h>
 
 #include <openbabel/mol.h>
 
@@ -73,6 +74,8 @@ namespace Avogadro {
 
       virtual int usefulness() const;
 
+      virtual bool paint(GLWidget *widget);
+
     protected:
 
       GLWidget *          _glwidget;
@@ -81,10 +84,15 @@ namespace Avogadro {
       bool                _midButtonPressed;   // scale / zoom
       Atom *              _clickedAtom;
 
+      bool _setup;
+      Sphere _sphere;
+
       //! Temporary var for adding selection box
       GLuint _selectionDL;
 
       QPoint              _lastDraggingPosition;
+
+      void drawSphere(GLWidget *widget,  const Eigen::Vector3d &center, double radius, float alpha);
 
       void computeClickedAtom(const QPoint& p);
       void zoom( const Eigen::Vector3d &goal, double delta ) const;

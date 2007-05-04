@@ -66,6 +66,8 @@ namespace Avogadro {
       bool render(const Molecule *m);
 
       bool render(GLWidget *gl);
+
+      double radius(const Primitive *primitive);
       //@}
 
       void addPrimitive(Primitive *);
@@ -76,6 +78,7 @@ namespace Avogadro {
       QList<Sphere *> m_spheres;
       QList<Cylinder *> m_cylinders;
 
+      double radius(const Atom *atom);
       bool m_setup; //!< Whether the sphere and cylinder objects have been setup
 
       GLuint m_dl;

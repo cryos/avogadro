@@ -238,9 +238,10 @@ namespace Avogadro {
       uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
 
     if (!uc) { // a plain molecule, no crystal cell
-      for(int i=0; i<size; i++)
+      foreach(Engine *engine, d->engines)
+//       for(int i=0; i<size; i++)
         {
-          Engine *engine = d->engines.at(i);
+//           Engine *engine = d->engines.at(i);
           if(engine->isEnabled()) {
             engine->render(this);
           }
@@ -252,9 +253,11 @@ namespace Avogadro {
       for (int a = 0; a < d->aCells; a++) {
         for (int b = 0; b < d->bCells; b++)  {
           for (int c = 0; c < d->cCells; c++) {
-            for(int i=0; i<size; i++)
-              {
-                Engine *engine = d->engines.at(i);
+            foreach(Engine *engine, d->engines)
+            {
+//             for(int i=0; i<size; i++)
+//               {
+//                 Engine *engine = d->engines.at(i);
                 if(engine->isEnabled()) {
                   engine->render(this);
                 }
@@ -273,12 +276,32 @@ namespace Avogadro {
       } // end a
     } // end rendering crystal
 
-    size = d->displayLists.size();
-    for(int i=0; i<size; i++) {
-      glCallList(d->displayLists.at(i));
+    foreach(GLuint dl, d->displayLists)
+    {
+//     size = d->displayLists.size();
+//     for(int i=0; i<size; i++) {
+      glCallList(dl);
     }
 
-    glFlush();
+    if(d->toolGroup) {
+      QList<Tool *> tools = d->toolGroup->tools();
+      foreach(Tool *tool, tools)
+      {
+//       size = tools.size();
+//       for(int i=0; i<size; i++) {
+//         Tool *tool = tools.at(i);
+        if(tool != d->tool) {
+          tool->paint(this);
+        }
+      }
+    }
+
+    if(d->tool) {
+      d->tool->paint(this);
+    }
+
+    // shouldn't we have this disabled?
+    // glFlush();
 
   }
 
@@ -496,6 +519,7 @@ namespace Avogadro {
       d->engines.at(i)->updatePrimitive(primitive);
     }
 
+    updateGeometry();
     update();
   }
 

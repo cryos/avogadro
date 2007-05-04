@@ -67,10 +67,15 @@ inline double SphereEngine::radius(const Atom *a)
 
 double SphereEngine::radius(const Primitive *p)
 {
-  if (p->type() == Primitive::AtomType)
-    return radius(static_cast<const Atom *>(p));
-  else
+  if (p->type() == Primitive::AtomType) {
+    double r = radius(static_cast<const Atom *>(p));
+    if(p->isSelected()) {
+      return r + .10;
+    }
+    return r;
+  } else {
     return 0.;
+  }
 }
 
 bool SphereEngine::render(const Atom *a)

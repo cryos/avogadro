@@ -73,14 +73,23 @@ inline double BSEngine::radius(const Atom *a)
 
 double BSEngine::radius(const Primitive *p)
 {
+  double r;
   switch(p->type())
   {
     case Primitive::AtomType:
-      return radius(static_cast<const Atom *>(p));
+      r = radius(static_cast<const Atom *>(p));
+      if(p->isSelected())
+      {
+        return r + .18;
+      }
+      return r;
+      break;
     case Primitive::BondType:
       return 0.1;
+      break;
     default:
       return 0.;
+      break;
   }
 }
 

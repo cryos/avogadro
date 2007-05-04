@@ -127,15 +127,15 @@ bool BSDYEngine::render(GLWidget *gl)
       {
         detail = 9 -  static_cast<int>(zDistance / 5);
       }
-      m_spheres.at(detail)->draw(a->pos(), etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
+      m_spheres.at(detail)->draw(a->pos(), radius(a));
     }
     else
     {
       glPushMatrix();
       const Vector3d & loc = a->pos();
       glTranslated( loc[0], loc[1], loc[2] );
-      double radius = etab.GetVdwRad(a->GetAtomicNum()) * 0.3;
-      glScaled( radius, radius, radius );
+      double r = radius(a);
+      glScaled( r, r, r );
       glCallList(m_dl);
       glPopMatrix();
     }
@@ -146,15 +146,15 @@ bool BSDYEngine::render(GLWidget *gl)
       glEnable( GL_BLEND );
       if(zDistance < 200.0)
       {
-        m_spheres.at(detail)->draw(a->pos(), 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3);
+        m_spheres.at(detail)->draw(a->pos(), 0.10 + radius(a));
       }
       else
       {
         glPushMatrix();
         const Vector3d & loc = a->pos();
         glTranslated( loc[0], loc[1], loc[2] );
-        double radius = 0.10 + etab.GetVdwRad(a->GetAtomicNum()) * 0.3;
-        glScaled( radius, radius, radius );
+        double r = 0.10 + radius(a);
+        glScaled( r, r, r );
         glCallList(m_dl);
         glPopMatrix();
       }
@@ -187,7 +187,7 @@ bool BSDYEngine::render(GLWidget *gl)
     Vector3d v2 (atom2->pos());
     Vector3d v3 (( v1 + v2 ) / 2);
 
-    double radius = 0.1;
+    double bondRadius = 0.1;
     double shift = 0.15;
     int order = b->GetBO();
 
@@ -210,10 +210,10 @@ bool BSDYEngine::render(GLWidget *gl)
       detail = 3;
     }
     Color(atom1).applyAsMaterials();
-    m_cylinders.at(detail)->draw( v1, v3, radius, order, shift, normalVector);
+    m_cylinders.at(detail)->draw( v1, v3, bondRadius, order, shift, normalVector);
 
     Color(atom2).applyAsMaterials();
-    m_cylinders.at(detail)->draw( v3, v2, radius, order, shift, normalVector);
+    m_cylinders.at(detail)->draw( v3, v2, bondRadius, order, shift, normalVector);
     //  glPopName();
     //  glPopName();
   }
@@ -221,6 +221,25 @@ bool BSDYEngine::render(GLWidget *gl)
   glPopAttrib();
 
   return true;
+}
+
+inline double BSDYEngine::radius(const Atom *atom)
+{
+  return etab.GetVdwRad(atom->GetAtomicNum()) * 0.3;
+}
+
+double BSDYEngine::radius(const Primitive *primitive)
+{
+  if (primitive->type() == Primitive::AtomType) {
+    double r = radius(static_cast<const Atom *>(primitive));
+    if(primitive->isSelected())
+    {
+      return r + .10;
+    }
+    return r;
+  } else {
+    return 0.;
+  }
 }
 
 bool BSDYEngine::render(const Atom *a)

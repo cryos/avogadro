@@ -68,6 +68,8 @@ namespace Avogadro {
       virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
       virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
 
+      virtual bool paint(GLWidget *widget);
+
     private:
 
       Qt::MouseButtons _buttons;
@@ -84,7 +86,6 @@ namespace Avogadro {
       QComboBox *m_comboElements;
       QComboBox *m_comboBondOrder;
       QVBoxLayout *m_layout;
-      GLuint m_dl;
 
       Cylinder *m_line;
   };

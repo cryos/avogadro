@@ -36,7 +36,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-NavigateTool::NavigateTool(QObject *parent) : Tool(parent), _clickedAtom(0)
+NavigateTool::NavigateTool(QObject *parent) : Tool(parent), _clickedAtom(0), _setup(false), _leftButtonPressed(false), _rightButtonPressed(false)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
@@ -59,8 +59,8 @@ void NavigateTool::computeClickedAtom(const QPoint& p)
 
   // Perform a OpenGL selection and retrieve the list of hits.
   hits = _glwidget->hits(p.x()-SEL_BOX_HALF_SIZE,
-                         p.y()-SEL_BOX_HALF_SIZE,
-                         SEL_BOX_SIZE, SEL_BOX_SIZE);
+      p.y()-SEL_BOX_HALF_SIZE,
+      SEL_BOX_SIZE, SEL_BOX_SIZE);
 
   // Find the first atom (if any) in hits - this will be the closest
   foreach( GLHit hit, hits )
@@ -120,14 +120,21 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
 {
   _glwidget = widget;
   _lastDraggingPosition = event->pos();
+  _leftButtonPressed = ( event->buttons() & Qt::LeftButton );
+  _rightButtonPressed = ( event->buttons() & Qt::RightButton );
   computeClickedAtom(event->pos());
 
+  widget->update();
   return 0;
 }
 
 QUndoCommand* NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
   _glwidget = widget;
+  _leftButtonPressed = false;
+  _rightButtonPressed = false;
+
+  widget->update();
   return 0;
 }
 
@@ -209,6 +216,50 @@ QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
   _glwidget->update();
 
   return 0;
+}
+
+bool NavigateTool::paint(GLWidget *widget)
+{
+  if(_rightButtonPressed) {
+    if(_clickedAtom) {
+      double renderRadius = 0.0;
+      foreach(Engine *engine, widget->engines())
+      {
+        if(engine->isEnabled())
+        {
+          double engineRadius = engine->radius(_clickedAtom);
+          if(engineRadius > renderRadius) {
+            renderRadius = engineRadius;
+          }
+        }
+      }
+      renderRadius += 0.10;
+      drawSphere(widget, _clickedAtom->GetVector().AsArray(), renderRadius, 0.7);
+    }
+    else
+    {
+      drawSphere(widget, widget->center(), 0.10, 1.0);
+    }
+  }
+  return true;
+}
+
+void NavigateTool::drawSphere(GLWidget *widget,  const Eigen::Vector3d &position, double radius, float alpha )
+{
+  if(!_setup)
+  {
+    _sphere.setup(6);
+    _setup = true;
+  }
+
+  glDisable( GL_NORMALIZE );
+  glEnable( GL_RESCALE_NORMAL );
+  Color( 1.0, 1.0, 0.3, alpha ).applyAsMaterials();
+  glEnable( GL_BLEND );
+  _sphere.draw(position, radius);
+  glDisable( GL_BLEND );
+  glDisable( GL_RESCALE_NORMAL);
+  glEnable( GL_NORMALIZE );
 }
 
 #include "navigatetool.moc"

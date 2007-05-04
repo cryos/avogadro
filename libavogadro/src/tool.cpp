@@ -90,6 +90,10 @@ namespace Avogadro {
     return usefulness() < other.usefulness();
   }
 
+  bool Tool::paint(GLWidget *widget)
+  {
+  }
+
 } // end namespace Avogadro
 
 #include "tool.moc"
