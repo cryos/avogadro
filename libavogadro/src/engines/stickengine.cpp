@@ -193,11 +193,11 @@ bool StickEngine::render(GLWidget *gl)
 
     map.set(atom1);
     map.applyAsMaterials();
-    m_cylinders.at(detail)->draw( v1, v3, radius, 1, 0.0, normalVector);
+    m_cylinders.at(detail)->draw( v1, v3, radius(), 1, 0.0, normalVector);
 
     map.set(atom2);
     map.applyAsMaterials();
-    m_cylinders.at(detail)->draw( v3, v2, radius, 1, 0.0, normalVector);
+    m_cylinders.at(detail)->draw( v3, v2, radius(), 1, 0.0, normalVector);
   }
 
   glPopAttrib();
@@ -205,23 +205,19 @@ bool StickEngine::render(GLWidget *gl)
   return true;
 }
 
-inline double StickEngine::radius()
-{
-  return 0.25;
-}
-
 double StickEngine::radius(const Primitive *primitive)
 {
-  if (primitive->type() == Primitive::AtomType) {
-    double r = radius(static_cast<const Atom *>(primitive));
+  if (primitive && primitive->type() == Primitive::AtomType) {
+    double r = 0.25;
+      // radius(static_cast<const Atom *>(primitive));
     if(primitive->isSelected())
     {
       return r + .25;
     }
     return r;
-  } else {
-    return 0.;
   }
+
+  return 0.25;
 }
 
 bool StickEngine::render(const Atom *a)

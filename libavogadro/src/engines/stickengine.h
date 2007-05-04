@@ -72,6 +72,8 @@ namespace Avogadro {
       void updatePrimitive(Primitive *);
       void removePrimitive(Primitive *);
 
+      double radius(const Primitive *p = 0);
+
     private:
       QList<Sphere *> m_spheres;
       QList<Cylinder *> m_cylinders;
