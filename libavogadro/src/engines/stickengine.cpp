@@ -114,7 +114,6 @@ bool StickEngine::render(GLWidget *gl)
     if(zDistance < 100.0)
     {
       detail = min( 4, (int) exp( -0.0308 * zDistance + 1.54 ) );
-      qDebug() << detail;
       m_spheres.at(detail)->draw(a->pos(), 0.25);
     }
     else

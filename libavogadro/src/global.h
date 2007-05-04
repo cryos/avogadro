@@ -63,14 +63,22 @@
 # define GL_SEPARATE_SPECULAR_COLOR_EXT 0x81FA
 #endif
 
-#define ROTATION_SPEED     0.005
-#define ZOOM_SPEED         0.02
-#define MOUSE_WHEEL_SPEED  0.1
-#define CAMERA_NEAR_DISTANCE     2.0
-#define CAMERA_MOL_RADIUS_MARGIN 10.0
-#define SEL_BUF_MAX_SIZE         262144
-#define SEL_BUF_MARGIN     128
-#define SEL_BOX_HALF_SIZE  4
-#define SEL_BOX_SIZE       (2 * SEL_BOX_HALF_SIZE + 1)
+const double   ROTATION_SPEED                        = 0.005;
+const double   ZOOM_SPEED                            = 0.02;
+const double   MOUSE_WHEEL_SPEED                     = 0.1;
+const double   CAMERA_MOL_RADIUS_MARGIN              = 10.0;
+const double   CAMERA_NEAR_DISTANCE                  = 2.0;
+const int      SEL_BUF_MAX_SIZE                      = 262144;
+const int      SEL_BUF_MARGIN                        = 128;
+const int      SEL_BOX_HALF_SIZE                     = 4;
+const int      SEL_BOX_SIZE                          = 2 * SEL_BOX_HALF_SIZE + 1;
+const int      PAINTER_GLOBAL_QUALITY_LEVELS         = 3;
+const int      PAINTER_DETAIL_LEVELS                 = 10;
+const int      PAINTER_SPHERES_LEVELS_ARRAY[][10]
+                 = { {1, 1, 1, 1, 2, 2, 3, 3, 4, 4} ,
+                     {1, 1, 2, 2, 2, 4, 4, 4, 6, 6} ,
+                     {1, 1, 3, 3, 5, 5, 7, 7, 9, 9} };
+
+
 
 #endif  // __GLOBAL_H
