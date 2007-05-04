@@ -1,8 +1,9 @@
 /**********************************************************************
   LabelEngine - Engine for displaying labels.
 
-  Copyright (C) 2006 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006 by Donald E. Curtis
+  Copyright (C) 2007 Ross Braith
+  Copyright (C) 2007 Shahzad Ali
+  Copyright (C) 2007 James Bunt
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
