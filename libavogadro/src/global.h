@@ -74,10 +74,11 @@ const int      SEL_BOX_HALF_SIZE                     = 4;
 const int      SEL_BOX_SIZE                          = 2 * SEL_BOX_HALF_SIZE + 1;
 const int      PAINTER_GLOBAL_QUALITY_LEVELS         = 3;
 const int      PAINTER_DETAIL_LEVELS                 = 10;
-const int      PAINTER_SPHERES_LEVELS_ARRAY[][10]
+const int      PAINTER_SPHERES_LEVELS_ARRAY[3][10]
                  = { {1, 1, 1, 1, 2, 2, 3, 3, 4, 4} ,
                      {1, 1, 2, 2, 2, 4, 4, 4, 6, 6} ,
                      {1, 1, 3, 3, 5, 5, 7, 7, 9, 9} };
+const double   PAINTER_SPHERES_EXP_COEFFS[2]         = { -3.08e-2, 1.54 };
 
 
 

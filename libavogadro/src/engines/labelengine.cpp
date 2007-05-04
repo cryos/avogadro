@@ -60,14 +60,25 @@ bool LabelEngine::render(GLWidget *gl)
         }
       }
     }
-    renderRadius += 0.18;
+    renderRadius += 0.05;
 
     //Color(atom).applyAsMaterials();
     glColor3f(1.0,1.0,1.0);
     double zDistance = gl->camera().distance(pos);
 
     if(zDistance < 50.0) {
-      gl->renderText(pos.x(), pos.y(), pos.z() + (renderRadius), 
+      const MatrixP3d & m = gl->camera().matrix();
+
+      // compute the unit vector toward the camera, in the molecule's coordinate system.
+      // to do this, we apply the inverse of the camera's rotation to the
+      // vector (0,0,1). This amount to taking the 3rd column of the
+      // inverse of the camera's rotation. But the inverse of a rotation is
+      // just its transpose. Thus we want to take the 3rd row of the camera's
+      // rotation matrix.
+      Vector3d zAxis( m(2,0), m(2,1), m(2,2) );
+
+      Vector3d drawPos = pos + zAxis * renderRadius;
+      gl->renderText(drawPos.x(), drawPos.y(), drawPos.z(), 
           QString::number(atom->GetIdx()));
     }
   }
