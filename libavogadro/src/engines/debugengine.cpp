@@ -31,6 +31,7 @@
 
 #include <QTime>
 #include <QtPlugin>
+#include <QMessageBox>
 
 using namespace std;
 using namespace OpenBabel;
@@ -105,6 +106,15 @@ inline double DebugEngine::computeFramesPerSecond()
   }
   
   return fps;
+}
+
+void DebugEngine::options()
+{
+  QMessageBox::StandardButton ret;
+  ret = QMessageBox::information(qobject_cast<QWidget*>(parent()),
+                                 tr("Avogadro"),
+                                 tr("This will be for render options"),
+                                 QMessageBox::Yes | QMessageBox::Cancel);
 }
 
 #include "debugengine.moc"

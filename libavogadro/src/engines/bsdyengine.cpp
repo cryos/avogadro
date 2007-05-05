@@ -32,6 +32,7 @@
 #include <eigen/regression.h>
 
 #include <QtPlugin>
+#include <QMessageBox>
 
 using namespace std;
 using namespace OpenBabel;
@@ -259,6 +260,12 @@ bool BSDYEngine::render(const Bond *b)
   return true;
 }
 
+bool BSDYEngine::render(const Molecule *m)
+{
+  // Disabled
+  return false;
+}
+
 void BSDYEngine::addPrimitive(Primitive *primitive)
 {
   Engine::addPrimitive(primitive);
@@ -277,10 +284,13 @@ void BSDYEngine::removePrimitive(Primitive *primitive)
   m_update = true;
 }
 
-bool BSDYEngine::render(const Molecule *m)
+void BSDYEngine::options()
 {
-  // Disabled
-  return false;
+  QMessageBox::StandardButton ret;
+  ret = QMessageBox::information(qobject_cast<QWidget*>(parent()),
+                                 tr("Avogadro"),
+                                 tr("This will be for render options"),
+                                 QMessageBox::Yes | QMessageBox::Cancel);
 }
 
 #include "bsdyengine.moc"

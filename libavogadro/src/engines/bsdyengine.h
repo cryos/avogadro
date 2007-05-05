@@ -1,7 +1,7 @@
 /**********************************************************************
   BSDYEngine - Engine for "balls and sticks" display
 
-  Copyright (C) 2006 by Geoffrey R. Hutchison
+  Copyright (C) 2006-2007 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
 
   This file is part of the Avogadro molecular editor project.
@@ -73,6 +73,9 @@ namespace Avogadro {
       void addPrimitive(Primitive *);
       void updatePrimitive(Primitive *);
       void removePrimitive(Primitive *);
+
+      //! Display a window for the user to pick rendering options
+      void options();
 
     private:
       QList<Sphere *> m_spheres;

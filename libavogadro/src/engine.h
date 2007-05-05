@@ -146,6 +146,11 @@ namespace Avogadro {
        */
       virtual Color &colorMap();
 
+      /** Display a window to change options for a given
+          rendering engine
+      */
+      virtual void options() = 0;
+
     private:
       EnginePrivate *const d;
   };

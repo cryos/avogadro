@@ -74,6 +74,9 @@ namespace Avogadro {
 
       double radius(const Primitive *p = 0);
 
+      //! Display a window for the user to pick rendering options
+      void options();
+
     private:
       QList<Sphere *> m_spheres;
       QList<Cylinder *> m_cylinders;

@@ -67,6 +67,9 @@ namespace Avogadro {
 
       double radius(const Primitive *p = 0);
 
+      //! Display a window for the user to pick rendering options
+      void options();
+
     private:
       inline double radius(const Atom *a);
       Sphere m_sphere;

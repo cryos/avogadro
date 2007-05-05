@@ -239,15 +239,13 @@ namespace Avogadro {
 
     if (!uc) { // a plain molecule, no crystal cell
       foreach(Engine *engine, d->engines)
-//       for(int i=0; i<size; i++)
         {
-//           Engine *engine = d->engines.at(i);
           if(engine->isEnabled()) {
             engine->render(this);
           }
         }
     } else { // render a crystal (for now, 2 unit cells in each direction
-      d->aCells = d->bCells = d->cCells = 2;
+      //      d->aCells = d->bCells = d->cCells = 2;
       cellVectors = uc->GetCellVectors();
 
       for (int a = 0; a < d->aCells; a++) {
@@ -255,13 +253,10 @@ namespace Avogadro {
           for (int c = 0; c < d->cCells; c++) {
             foreach(Engine *engine, d->engines)
             {
-//             for(int i=0; i<size; i++)
-//               {
-//                 Engine *engine = d->engines.at(i);
-                if(engine->isEnabled()) {
-                  engine->render(this);
-                }
-              } // end rendering loop
+              if(engine->isEnabled()) {
+                engine->render(this);
+              }
+            } // end rendering loop
             glTranslatef(cellVectors[2].x(), cellVectors[2].y(), cellVectors[2].z());
           } // end c
           glTranslatef(cellVectors[2].x() * -d->cCells,
@@ -277,19 +272,12 @@ namespace Avogadro {
     } // end rendering crystal
 
     foreach(GLuint dl, d->displayLists)
-    {
-//     size = d->displayLists.size();
-//     for(int i=0; i<size; i++) {
       glCallList(dl);
-    }
 
     if(d->toolGroup) {
       QList<Tool *> tools = d->toolGroup->tools();
       foreach(Tool *tool, tools)
       {
-//       size = tools.size();
-//       for(int i=0; i<size; i++) {
-//         Tool *tool = tools.at(i);
         if(tool != d->tool) {
           tool->paint(this);
         }
