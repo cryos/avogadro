@@ -180,7 +180,7 @@ namespace Avogadro {
 
     glShadeModel( GL_SMOOTH );
     glEnable( GL_DEPTH_TEST );
-    glDepthFunc( GL_LESS );
+    glDepthFunc( GL_LEQUAL );
     glEnable( GL_CULL_FACE );
     glEnable( GL_COLOR_SUM_EXT );
 

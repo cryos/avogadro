@@ -62,10 +62,10 @@ bool LabelEngine::render(GLWidget *gl)
     }
     renderRadius += 0.05;
 
-    glColor3f(1.0,1.0,1.0);
     double zDistance = gl->camera().distance(pos);
 
     if(zDistance < 50.0) {
+      QString str = QString::number(atom->GetIdx());
       const MatrixP3d & m = gl->camera().matrix();
 
       // compute the unit vector toward the camera, in the molecule's coordinate system.
@@ -77,8 +77,27 @@ bool LabelEngine::render(GLWidget *gl)
       Vector3d zAxis( m(2,0), m(2,1), m(2,2) );
 
       Vector3d drawPos = pos + zAxis * renderRadius;
-      gl->renderText(drawPos.x(), drawPos.y(), drawPos.z(), 
-          QString::number(atom->GetIdx()));
+
+      Vector3d projectedDrawPos = gl->project(drawPos);
+      projectedDrawPos.y() = gl->height() - projectedDrawPos.y();
+      Vector3d projectedDrawPos_up = projectedDrawPos + Vector3d(0, -1, 0);
+      Vector3d projectedDrawPos_down = projectedDrawPos + Vector3d(0, 1, 0);
+      Vector3d projectedDrawPos_left = projectedDrawPos + Vector3d(-1, 0, 0);
+      Vector3d projectedDrawPos_right = projectedDrawPos + Vector3d(1, 0, 0);
+
+      Vector3d drawPos_up    = gl->unProject( projectedDrawPos_up );
+      Vector3d drawPos_down  = gl->unProject( projectedDrawPos_down );
+      Vector3d drawPos_left  = gl->unProject( projectedDrawPos_left );
+      Vector3d drawPos_right = gl->unProject( projectedDrawPos_right );
+
+      glColor3f(0.0, 0.0, 0.0);
+      gl->renderText(drawPos_up.x(), drawPos_up.y(), drawPos_up.z(), str);
+      gl->renderText(drawPos_down.x(), drawPos_down.y(), drawPos_down.z(), str);
+      gl->renderText(drawPos_left.x(), drawPos_left.y(), drawPos_left.z(), str);
+      gl->renderText(drawPos_right.x(), drawPos_right.y(), drawPos_right.z(), str);
+
+      glColor3f(1.0,1.0,1.0);
+      gl->renderText(drawPos.x(), drawPos.y(), drawPos.z(), str);
     }
   }
   glPopAttrib();

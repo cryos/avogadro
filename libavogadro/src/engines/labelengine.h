@@ -60,10 +60,6 @@ namespace Avogadro {
       //@{
       bool render(GLWidget *gl);
       //@}
-
-    private:
-      Sphere m_sphere;
-      Cylinder m_cylinder;
   };
 
   //! Generates instances of our LabelEngine class
