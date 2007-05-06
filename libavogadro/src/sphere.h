@@ -23,27 +23,22 @@
 namespace Avogadro {
 
   /**
-   * This class represents and draws a sphere. The sphere is computed as a
+   * This class represents and draws a sphere. The level of detail can be controlled.
+   * At level 0, the sphere is a octahedron. At levels >=1, the sphere is a
    * "geosphere", that is, one starts with an icosahedron, which is the regular
    * solid with 20 triangular faces, and one then sub-tesselates each face into
-   * smaller triangles. This is a classical algorithm, known to give very good
-   * results.
+   * smaller triangles. This is a classical tesselation, known to give a very good
+   * quality/complexity ratio.
    *
    * @author Benoit Jacob
    */
+  class SpherePrivate;
   class A_EXPORT Sphere
   {
+    private:
+      SpherePrivate * const d;
+
     protected:
-      /** Pointer to the buffer storing the vertex array */
-      Eigen::Vector3f *m_vertexBuffer;
-      /** Pointer to the buffer storing the indices */
-      unsigned short *m_indexBuffer;
-      /** The number of vertices, i.e. the size of m_vertexBuffer */
-      int m_vertexCount;
-      /** The number of indices, i.e. the size of m_indexBuffer */
-      int m_indexCount;
-      /** The id of the OpenGL display list */
-      GLuint m_displayList;
 
       /** computes the index (position inside the index buffer)
        * of a vertex given by its position (strip, column, row)
@@ -56,19 +51,9 @@ namespace Avogadro {
        * inside a certain flat model of the sub-tesselated
        * icosahedron */
       void computeVertex( int strip, int column, int row );
-      /** the detail-level of the sphere. Must be at least 1.
-       * This is interpreted as the number of sub-edges into which
-       * each edge of the icosahedron must be split. So the
-       * number of faces of the sphere is simply:
-       * 20 * detail^2. When detail==1, the sphere is just the
-       * icosahedron */
-      int m_detail;
-
-      bool m_isValid;
 
       void freeBuffers();
       void initialize();
-      void do_draw() const;
 
     public:
       Sphere( int detail = 0 );

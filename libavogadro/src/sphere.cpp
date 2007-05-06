@@ -19,7 +19,30 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-Sphere::Sphere(int detail): m_vertexBuffer(0), m_indexBuffer(0), m_displayList(0), m_isValid(false)
+class SpherePrivate
+{
+  public:
+      SpherePrivate() : vertexBuffer(0), indexBuffer(0), displayList(0), isValid(false) {}
+
+      /** Pointer to the buffer storing the vertex array */
+      Eigen::Vector3f *vertexBuffer;
+      /** Pointer to the buffer storing the indices */
+      unsigned short *indexBuffer;
+      /** The id of the OpenGL display list */
+      GLuint displayList;
+      /** the detail-level of the sphere. Must be at least 0.
+       * If 0, the sphere is an octahedron. If >=1, this number is
+       * interpreted as the number of sub-edges into which
+       * each edge of the icosahedron must be split. So the
+       * number of faces of the sphere is simply:
+       * 20 * detail^2. When detail==1, the sphere is just the
+       * icosahedron */
+      int detail;
+
+      bool isValid;
+};
+
+Sphere::Sphere(int detail) : d(new SpherePrivate)
 {
   setup(detail);
 }
@@ -27,30 +50,23 @@ Sphere::Sphere(int detail): m_vertexBuffer(0), m_indexBuffer(0), m_displayList(0
 Sphere::~Sphere()
 {
 	freeBuffers();
-	if( m_displayList )
-		glDeleteLists( m_displayList, 1 );
+	if( d->displayList )
+		glDeleteLists( d->displayList, 1 );
+        delete d;
 }
 
 void Sphere::freeBuffers()
 {
-	if( m_indexBuffer )
+	if( d->indexBuffer )
 	{
-		delete [] m_indexBuffer;
-		m_indexBuffer = 0;
+		delete [] d->indexBuffer;
+		d->indexBuffer = 0;
 	}
-	if( m_vertexBuffer )
+	if( d->vertexBuffer )
 	{
-		delete [] m_vertexBuffer;
-		m_vertexBuffer = 0;
+		delete [] d->vertexBuffer;
+		d->vertexBuffer = 0;
 	}
-}
-
-void Sphere::do_draw() const
-{
-	glVertexPointer( 3, GL_FLOAT, 0, m_vertexBuffer );
-	glNormalPointer( GL_FLOAT, 0, m_vertexBuffer );
-	glDrawElements( GL_TRIANGLE_STRIP, m_indexCount,
-			GL_UNSIGNED_SHORT, m_indexBuffer );
 }
 
 void Sphere::draw( const Eigen::Vector3d &center, double radius ) const
@@ -58,88 +74,127 @@ void Sphere::draw( const Eigen::Vector3d &center, double radius ) const
 	glPushMatrix();
 	glTranslated( center.x(), center.y(), center.z() );
 	glScaled( radius, radius, radius );
-	glCallList( m_displayList );
+	glCallList( d->displayList );
 	glPopMatrix();
 }
 
 void Sphere::initialize()
 {
-	if( m_detail < 1 ) return;
-
-	// compute number of vertices and indices
-	m_vertexCount = ( 3 * m_detail + 1 ) * ( 5 * m_detail + 1 );
-	m_indexCount = (2 * ( 2 * m_detail + 1 ) + 2 ) * 5 * m_detail;
+	if( d->detail < 0 ) return;
 
 	// deallocate any previously allocated buffer
 	freeBuffers();
+        d->isValid = false;
+        int vertexCount = 0, indexCount = 0;
+
+        if( d->detail == 0 )
+        {
+          if( ! d->displayList ) { d->displayList = glGenLists( 1 ); }
+	  if( ! d->displayList ) { return; }
+          float octahedronVertices[6][3] = { { 1, 0, 0 } ,
+                                             { 0, 1, 0 } ,
+                                             { 0, 0, 1 } ,
+                                             { 0, -1, 0 } ,
+                                             { 0, 0, -1 } ,
+                                             { -1, 0, 0 } };
+#define USE_OCTAHEDRON_VERTEX(i) glNormal3fv(octahedronVertices[i]); \
+                                 glVertex3fv(octahedronVertices[i]);
+          glNewList( d->displayList, GL_COMPILE );
+          glBegin(GL_TRIANGLE_FAN);
+          USE_OCTAHEDRON_VERTEX(0);
+          USE_OCTAHEDRON_VERTEX(1);
+          USE_OCTAHEDRON_VERTEX(2);
+          USE_OCTAHEDRON_VERTEX(3);
+          USE_OCTAHEDRON_VERTEX(4);
+          USE_OCTAHEDRON_VERTEX(1);
+          glEnd();
+          glBegin(GL_TRIANGLE_FAN);
+          USE_OCTAHEDRON_VERTEX(5);
+          USE_OCTAHEDRON_VERTEX(1);
+          USE_OCTAHEDRON_VERTEX(4);
+          USE_OCTAHEDRON_VERTEX(3);
+          USE_OCTAHEDRON_VERTEX(2);
+          USE_OCTAHEDRON_VERTEX(1);
+          glEnd();
+          glEndList();
+          d->isValid = true;
+          return;
+        }
+
+	// compute number of vertices and indices
+	vertexCount = ( 3 * d->detail + 1 ) * ( 5 * d->detail + 1 );
+	indexCount = (2 * ( 2 * d->detail + 1 ) + 2 ) * 5 * d->detail;
 
 	// allocate memory for buffers
-	m_vertexBuffer = new Vector3f[m_vertexCount];
-	if( ! m_vertexBuffer ) return;
-	m_indexBuffer = new unsigned short[m_indexCount];
-        if( ! m_indexBuffer ) 
+	d->vertexBuffer = new Vector3f[vertexCount];
+	if( ! d->vertexBuffer ) return;
+	d->indexBuffer = new unsigned short[indexCount];
+        if( ! d->indexBuffer ) 
         {
-                 delete [] m_vertexBuffer;
-                 m_vertexBuffer = 0;
+                 delete [] d->vertexBuffer;
+                 d->vertexBuffer = 0;
                 return;
         }
 
 	// build vertex buffer
     for( int strip = 0; strip < 5; strip++ ) {
-      for( int column = 1; column < m_detail; column++ ) {
-        for( int row = column; row <= 2 * m_detail + column; row++ ) {
+      for( int column = 1; column < d->detail; column++ ) {
+        for( int row = column; row <= 2 * d->detail + column; row++ ) {
           computeVertex( strip, column, row );
         }
       }
     }
 
     for( int strip = 1; strip < 5; strip++ ) {
-      for( int row = 0; row <= 3 * m_detail; row++ ) {
+      for( int row = 0; row <= 3 * d->detail; row++ ) {
         computeVertex( strip, 0, row );
       }
     }
 
-	for( int row = 0; row <= 2 * m_detail; row++ )
+	for( int row = 0; row <= 2 * d->detail; row++ )
 		computeVertex( 0, 0, row );
 
-	for( int row = m_detail; row <= 3 * m_detail; row++ )
-		computeVertex( 4, m_detail, row );
+	for( int row = d->detail; row <= 3 * d->detail; row++ )
+		computeVertex( 4, d->detail, row );
 
 	// build index buffer
 	unsigned int i = 0;
 	for( int strip = 0; strip < 5; strip++ )
-	for( int column = 0; column < m_detail; column++ )
+	for( int column = 0; column < d->detail; column++ )
 	{
 		int row = column;
-		m_indexBuffer[i++] = indexOfVertex( strip, column, row );
-		for( ; row <= 2 * m_detail + column; row++ )
+		d->indexBuffer[i++] = indexOfVertex( strip, column, row );
+		for( ; row <= 2 * d->detail + column; row++ )
 		{
-			m_indexBuffer[i++] =
+			d->indexBuffer[i++] =
 				indexOfVertex( strip, column, row );
-			m_indexBuffer[i++] =
+			d->indexBuffer[i++] =
 				indexOfVertex( strip, column + 1, row + 1 );
 		}
-		m_indexBuffer[i++] = indexOfVertex( strip, column + 1,
-			2 * m_detail + column + 1);
+		d->indexBuffer[i++] = indexOfVertex( strip, column + 1,
+			2 * d->detail + column + 1);
 	}
 
 	// compile display list and free buffers
-	if( ! m_displayList ) { m_displayList = glGenLists( 1 ); }
-	if( ! m_displayList ) { return; }
+	if( ! d->displayList ) { d->displayList = glGenLists( 1 ); }
+	if( ! d->displayList ) { return; }
     glEnableClientState( GL_VERTEX_ARRAY );
     glEnableClientState( GL_NORMAL_ARRAY );
-	glNewList( m_displayList, GL_COMPILE );
-	do_draw();
+	glNewList( d->displayList, GL_COMPILE );
+	glVertexPointer( 3, GL_FLOAT, 0, d->vertexBuffer );
+	glNormalPointer( GL_FLOAT, 0, d->vertexBuffer );
+	glDrawElements( GL_TRIANGLE_STRIP, indexCount,
+			GL_UNSIGNED_SHORT, d->indexBuffer );
 	glEndList();
     glDisableClientState( GL_VERTEX_ARRAY );
     glDisableClientState( GL_NORMAL_ARRAY );
 	freeBuffers();
-  m_isValid = true;
+  d->isValid = true;
 }
 
 unsigned short Sphere::indexOfVertex( int strip, int column, int row)
 {
-	return ( row + ( 3 * m_detail + 1 ) * ( column + m_detail * strip ) );
+	return ( row + ( 3 * d->detail + 1 ) * ( column + d->detail * strip ) );
 }
 
 void Sphere::computeVertex( int strip, int column, int row)
@@ -151,7 +206,7 @@ void Sphere::computeVertex( int strip, int column, int row)
 	unsigned short index = indexOfVertex( strip, column, row );
 
 	// reference to the vertex we want to store the result in
-	Vector3f & vertex = m_vertexBuffer[ index ];
+	Vector3f & vertex = d->vertexBuffer[ index ];
 
 	// the "golden ratio", useful to construct an icosahedron
 	const float phi = ( 1 + sqrtf(5.0f) ) / 2;
@@ -178,44 +233,44 @@ void Sphere::computeVertex( int strip, int column, int row)
 	const Vector3f *v0, *v1, *v2;
 
 	// coordinates of our position inside this face.
-	// range from 0 to m_detail.
+	// range from 0 to d->detail.
 	int  c1, c2;
 
 	// first, normalize the global coords row, column
-	if( row >= 2 * m_detail && column == 0 )
+	if( row >= 2 * d->detail && column == 0 )
 	{
 		strip--;
 		if( strip < 0 ) strip += 5;
 		next_strip--;
 		if( next_strip < 0 ) next_strip += 5;
-		column = m_detail;
+		column = d->detail;
 	}
 
 	// next, determine in which face we are, and determine the coords
 	// of our position inside this face
-	if( row  <= m_detail )
+	if( row  <= d->detail )
 	{
 		v0 = &northVertices[strip];
 		v1 = &northPole;
 		v2 = &northVertices[next_strip];
-		c1 = m_detail - row;
+		c1 = d->detail - row;
 		c2 = column;
 	}
-	else if( row >= 2 * m_detail )
+	else if( row >= 2 * d->detail )
 	{
 		v0 = &southVertices[next_strip];
 		v1 = &southPole;
 		v2 = &southVertices[strip];
-		c1 = row - 2 * m_detail;
-		c2 = m_detail - column;
+		c1 = row - 2 * d->detail;
+		c2 = d->detail - column;
 	}
-	else if( row <= m_detail + column )
+	else if( row <= d->detail + column )
 	{
 		v0 = &northVertices[next_strip];
 		v1 = &southVertices[next_strip];
 		v2 = &northVertices[strip];
-		c1 = row - m_detail;
-		c2 = m_detail - column;
+		c1 = row - d->detail;
+		c2 = d->detail - column;
 	}
 	else
 	{
@@ -223,12 +278,12 @@ void Sphere::computeVertex( int strip, int column, int row)
 		v1 = &southVertices[next_strip];
 		v2 = &northVertices[strip];
 		c1 = column;
-		c2 = 2 * m_detail - row;
+		c2 = 2 * d->detail - row;
 	}
 
 	// now, compute the actual coords of the vertex
-	float u1 = static_cast<float>(c1) / m_detail;
-	float u2 = static_cast<float>(c2) / m_detail;
+	float u1 = static_cast<float>(c1) / d->detail;
+	float u2 = static_cast<float>(c2) / d->detail;
 	vertex = *v0 + u1 * ( *v1 - *v0 ) + u2 * ( *v2 - *v0 );
 
 	// project the vertex onto the sphere
@@ -237,8 +292,8 @@ void Sphere::computeVertex( int strip, int column, int row)
 
 void Sphere::setup( int detail )
 {
-	if( m_isValid && detail == m_detail ) return;
-	m_detail = detail;
+	if( d->isValid && detail == d->detail ) return;
+	d->detail = detail;
 	initialize();
 }
 
