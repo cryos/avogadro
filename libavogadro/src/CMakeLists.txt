@@ -28,6 +28,7 @@ set(libavogadro_SRCS
     tool.cpp
 	toolgroup.cpp
     undosequence.cpp
+    painter.cpp
 )
 
 set(libavogadro_HDRS
@@ -42,6 +43,7 @@ set(libavogadro_HDRS
 	global.h
 	camera.h
     undosequence.h
+    painter.h
 )
 
 qt4_automoc(${libavogadro_SRCS})

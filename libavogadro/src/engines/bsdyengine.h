@@ -44,7 +44,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      BSDYEngine(QObject *parent=0) : Engine(parent), m_setup(false), m_update(true), m_dl(0) {}
+      BSDYEngine(QObject *parent=0) : Engine(parent), m_setup(false), m_update(true) {}
       //! Deconstructor
       ~BSDYEngine();
 
@@ -78,13 +78,11 @@ namespace Avogadro {
       void options();
 
     private:
-      QList<Sphere *> m_spheres;
       QList<Cylinder *> m_cylinders;
 
       double radius(const Atom *atom);
       bool m_setup; //!< Whether the sphere and cylinder objects have been setup
 
-      GLuint m_dl;
       bool m_update;
   };
 

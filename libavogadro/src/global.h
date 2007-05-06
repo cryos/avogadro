@@ -73,13 +73,13 @@ const int      SEL_BUF_MARGIN                        = 128;
 const int      SEL_BOX_HALF_SIZE                     = 4;
 const int      SEL_BOX_SIZE                          = 2 * SEL_BOX_HALF_SIZE + 1;
 const int      PAINTER_GLOBAL_QUALITY_SETTINGS       = 3;
+const int      DEFAULT_GLOBAL_QUALITY_SETTING        = PAINTER_GLOBAL_QUALITY_SETTINGS - 1;
 const int      PAINTER_DETAIL_LEVELS                 = 10;
 const int      PAINTER_SPHERES_LEVELS_ARRAY[3][10]
-                 = { {1, 1, 1, 1, 2, 2, 3, 3, 4, 4} ,
-                     {1, 1, 2, 2, 2, 4, 4, 4, 6, 6} ,
-                     {1, 1, 3, 3, 5, 5, 7, 7, 9, 9} };
-const double   PAINTER_SPHERES_EXP_COEFFS[2]         = { -3.08e-2, 1.54 };
-
-
+                 = { {0, 0, 1, 1, 2, 2, 3, 3, 4, 4} ,
+                     {0, 1, 2, 3, 4, 4, 5, 5, 6, 6} ,
+                     {0, 2, 3, 4, 5, 6, 7, 8, 9, 9} };
+const double   PAINTER_SPHERES_LIMIT_MIN_LEVEL       = 0.005;
+const double   PAINTER_SPHERES_LIMIT_MAX_LEVEL       = 0.15;
 
 #endif  // __GLOBAL_H

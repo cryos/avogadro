@@ -27,6 +27,7 @@
 #include <avogadro/engine.h>
 #include <avogadro/tool.h>
 #include <avogadro/color.h>
+#include <avogadro/painter.h>
 
 #include <QGLWidget>
 #include <QDebug>
@@ -358,6 +359,8 @@ namespace Avogadro {
 
       void setToolGroup(ToolGroup *toolGroup);
       ToolGroup * toolGroup() const;
+
+      Painter *painter() const;
 
     public Q_SLOTS:
 

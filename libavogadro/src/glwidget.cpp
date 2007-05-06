@@ -105,10 +105,11 @@ namespace Avogadro {
       GLWidgetPrivate() : background(Qt::black), molecule(0),
                           aCells(0), bCells(0), cCells(0),
                           tool(0), toolGroup(0), selectBuf(0),
-                          selectBufSize(-1) {}
+                          selectBufSize(-1), painter(new Painter) {}
       ~GLWidgetPrivate()
       {
         if(selectBuf) delete[] selectBuf;
+        delete painter;
       }
 
       QList<Engine *>        engines;
@@ -137,6 +138,8 @@ namespace Avogadro {
       GLuint                 *selectBuf;
 
       QUndoStack             *undoStack;
+
+      Painter                *painter;
   };
 
 
@@ -176,6 +179,8 @@ namespace Avogadro {
 
   void GLWidget::initializeGL()
   {
+    d->painter->initialize(this, DEFAULT_GLOBAL_QUALITY_SETTING);
+
     qglClearColor ( d->background );
 
     glShadeModel( GL_SMOOTH );
@@ -604,6 +609,11 @@ namespace Avogadro {
   ToolGroup *GLWidget::toolGroup() const
   {
     return d->toolGroup;
+  }
+
+  Painter *GLWidget::painter() const
+  {
+    return d->painter;
   }
 
   QList<GLHit> GLWidget::hits(int x, int y, int w, int h)

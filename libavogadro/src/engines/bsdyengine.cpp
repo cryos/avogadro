@@ -41,12 +41,7 @@ using namespace Avogadro;
 
 BSDYEngine::~BSDYEngine()
 {
-  int size = m_spheres.size();
-  for(int i=0; i<size; i++)
-  {
-    delete m_spheres.takeLast();
-  }
-  size = m_cylinders.size();
+  int size = m_cylinders.size();
   for(int i=0; i<size; i++)
   {
     delete m_cylinders.takeLast();
@@ -57,41 +52,9 @@ bool BSDYEngine::render(GLWidget *gl)
 {
   Color map = colorMap();
 
-  // make a DL for very far objects.  Cube on its side.
-  if(!m_dl) {
-    m_dl = glGenLists(1);
-    double x = sqrt(.5);
-    glNewList(m_dl, GL_COMPILE);
-    glPushMatrix();
-    glRotated(45, 1, 0, 0);
-    glBegin(GL_TRIANGLE_FAN);
-    glNormal3d(0,1,0); glVertex3d(0,1,0);
-    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
-    glNormal3d(x,0,x); glVertex3d(x,0,x);
-    glNormal3d(x,0,-x); glVertex3d(x,0,-x);
-    glNormal3d(-x,0,-x); glVertex3d(-x,0,-x);
-    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
-    glEnd();
-    glBegin(GL_TRIANGLE_FAN);
-    glNormal3d(0,-1,0); glVertex3d(0,-1,0);
-    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
-    glNormal3d(-x,0,-x); glVertex3d(-x,0,-x);
-    glNormal3d(x,0,-x); glVertex3d(x,0,-x);
-    glNormal3d(x,0,x); glVertex3d(x,0,x);
-    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
-    glEnd();
-    glPopMatrix();
-    glEndList();
-
-  }
-
   QList<Primitive *> list;
 
   if (!m_setup) {
-    for(int i=0; i < 10; i++)
-    {
-      m_spheres.append(new Sphere(i+1));
-    }
     for(int i=0; i < 4; i++)
     {
       m_cylinders.append(new Cylinder(i * 3));
@@ -114,56 +77,14 @@ bool BSDYEngine::render(GLWidget *gl)
     map.set(a);
     map.applyAsMaterials();
 
-    double zDistance = gl->camera().distance(a->pos());
-//     float zDistance = 200;
-    int detail = 0;
-    if(zDistance >= 0.0 && zDistance < 200.0)
-    {
-      if(zDistance >= 100.0 && zDistance < 200.0)
-      {
-        detail = 1 - (( static_cast<int>(zDistance) - 100) / 50);
-      }
-      else if(zDistance >= 20.0 && zDistance < 100.0)
-      {
-        detail = 5 - (( static_cast<int>(zDistance) - 20) / 20);
-      }
-      else
-      {
-        detail = 9 -  static_cast<int>(zDistance / 5);
-      }
-      m_spheres.at(detail)->draw(a->pos(), radius(a));
-    }
-    else
-    {
-      glPushMatrix();
-      const Vector3d & loc = a->pos();
-      glTranslated( loc[0], loc[1], loc[2] );
-      double r = radius(a);
-      glScaled( r, r, r );
-      glCallList(m_dl);
-      glPopMatrix();
-    }
+    gl->painter()->drawSphere( a->pos(), radius(a) );
 
     if (a->isSelected())
     {
       map.set( 0.3, 0.6, 1.0, 0.7 );
       map.applyAsMaterials();
-
       glEnable( GL_BLEND );
-      if(zDistance < 200.0)
-      {
-        m_spheres.at(detail)->draw(a->pos(), 0.10 + radius(a));
-      }
-      else
-      {
-        glPushMatrix();
-        const Vector3d & loc = a->pos();
-        glTranslated( loc[0], loc[1], loc[2] );
-        double r = 0.10 + radius(a);
-        glScaled( r, r, r );
-        glCallList(m_dl);
-        glPopMatrix();
-      }
+      gl->painter()->drawSphere( a->pos(), radius(a) );
       glDisable( GL_BLEND );
     }
 
