@@ -40,12 +40,7 @@ using namespace Avogadro;
 
 StickEngine::~StickEngine()
 {
-  int size = m_spheres.size();
-  for(int i=0; i<size; i++)
-  {
-    delete m_spheres.takeLast();
-  }
-  size = m_cylinders.size();
+  int size = m_cylinders.size();
   for(int i=0; i<size; i++)
   {
     delete m_cylinders.takeLast();
@@ -56,49 +51,15 @@ bool StickEngine::render(GLWidget *gl)
 {
   Color map = colorMap();
 
-  // make a DL for very far objects.  Cube on its side.
-  if(!m_dl) {
-    m_dl = glGenLists(1);
-    double x = sqrt(.5);
-    glNewList(m_dl, GL_COMPILE);
-    glPushMatrix();
-    glRotated(45, 1, 0, 0);
-    glBegin(GL_TRIANGLE_FAN);
-    glNormal3d(0,1,0); glVertex3d(0,1,0);
-    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
-    glNormal3d(x,0,x); glVertex3d(x,0,x);
-    glNormal3d(x,0,-x); glVertex3d(x,0,-x);
-    glNormal3d(-x,0,-x); glVertex3d(-x,0,-x);
-    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
-    glEnd();
-    glBegin(GL_TRIANGLE_FAN);
-    glNormal3d(0,-1,0); glVertex3d(0,-1,0);
-    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
-    glNormal3d(-x,0,-x); glVertex3d(-x,0,-x);
-    glNormal3d(x,0,-x); glVertex3d(x,0,-x);
-    glNormal3d(x,0,x); glVertex3d(x,0,x);
-    glNormal3d(-x,0,x); glVertex3d(-x,0,x);
-    glEnd();
-    glPopMatrix();
-    glEndList();
-
-  }
-
   QList<Primitive *> list;
 
   if (!m_setup) {
-    for(int i=0; i < 5; i++)
-    {
-      m_spheres.append(new Sphere(i+1));
-    }
     for(int i=0; i < 5; i++)
     {
       m_cylinders.append(new Cylinder(i * 5));
     }
     m_setup = true;
   }
-
-  double r = radius();
 
   m_update = false;
   glPushAttrib(GL_TRANSFORM_BIT);
@@ -114,42 +75,14 @@ bool StickEngine::render(GLWidget *gl)
     map.set(a);
     map.applyAsMaterials();
 
-    double zDistance = gl->camera().distance(a->pos());
-    int detail;
-    if(zDistance < 100.0)
-    {
-      detail = min( 4, (int) exp( -0.0308 * zDistance + 1.54 ) );
-      m_spheres.at(detail)->draw(a->pos(), 0.25);
-    }
-    else
-    {
-      glPushMatrix();
-      const Vector3d & loc = a->pos();
-      glTranslated( loc[0], loc[1], loc[2] );
-      glScaled( r, r, r );
-      glCallList(m_dl);
-      glPopMatrix();
-    }
+    gl->painter()->drawSphere( a->pos(), radius(a) );
 
     if (a->isSelected())
     {
       map.set( 0.3, 0.6, 1.0, 0.7 );
       map.applyAsMaterials();
       glEnable( GL_BLEND );
-      if(zDistance < 100.0)
-      {
-        m_spheres.at(detail)->draw(a->pos(), 0.5);
-      }
-      else
-      {
-        glPushMatrix();
-        const Vector3d & loc = a->pos();
-        glTranslated( loc[0], loc[1], loc[2] );
-        double cr = r + 0.5;
-        glScaled( r, r, r );
-        glCallList(m_dl);
-        glPopMatrix();
-      }
+      gl->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
       glDisable( GL_BLEND );
     }
     glPopName();
@@ -194,11 +127,11 @@ bool StickEngine::render(GLWidget *gl)
 
     map.set(atom1);
     map.applyAsMaterials();
-    m_cylinders.at(detail)->draw( v1, v3, radius(), 1, 0.0, normalVector);
+    m_cylinders.at(detail)->draw( v1, v3, radius(atom1), 1, 0.0, normalVector);
 
     map.set(atom2);
     map.applyAsMaterials();
-    m_cylinders.at(detail)->draw( v3, v2, radius(), 1, 0.0, normalVector);
+    m_cylinders.at(detail)->draw( v3, v2, radius(atom2), 1, 0.0, normalVector);
   }
 
   glPopAttrib();
@@ -209,15 +142,20 @@ bool StickEngine::render(GLWidget *gl)
 double StickEngine::radius(const Primitive *primitive)
 {
   if (primitive && primitive->type() == Primitive::AtomType) {
-    double r = 0.25;
+    double r = radius(static_cast<const Atom *>(primitive));
       // radius(static_cast<const Atom *>(primitive));
     if(primitive->isSelected())
     {
-      return r + .25;
+      return r + SEL_ATOM_EXTRA_RADIUS;
     }
     return r;
   }
 
+  return 0.;
+}
+
+inline double StickEngine::radius(const Atom *a)
+{
   return 0.25;
 }
 

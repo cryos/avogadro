@@ -84,7 +84,7 @@ bool BSDYEngine::render(GLWidget *gl)
       map.set( 0.3, 0.6, 1.0, 0.7 );
       map.applyAsMaterials();
       glEnable( GL_BLEND );
-      gl->painter()->drawSphere( a->pos(), radius(a) );
+      gl->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
       glDisable( GL_BLEND );
     }
 
@@ -163,7 +163,7 @@ double BSDYEngine::radius(const Primitive *primitive)
     double r = radius(static_cast<const Atom *>(primitive));
     if(primitive->isSelected())
     {
-      return r + .10;
+      return r + SEL_ATOM_EXTRA_RADIUS;
     }
     return r;
   } else {

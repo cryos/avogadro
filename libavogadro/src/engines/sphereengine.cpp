@@ -44,7 +44,6 @@ bool SphereEngine::render(GLWidget *gl)
   QList<Primitive *> list;
 
   if (!m_setup) {
-    m_sphere.setup(6);
     m_setup = true;
   }
 
@@ -71,7 +70,7 @@ double SphereEngine::radius(const Primitive *p)
   if (p->type() == Primitive::AtomType) {
     double r = radius(static_cast<const Atom *>(p));
     if(p->isSelected()) {
-      return r + .10;
+      return r + SEL_ATOM_EXTRA_RADIUS;
     }
     return r;
   } else {
@@ -81,20 +80,23 @@ double SphereEngine::radius(const Primitive *p)
 
 bool SphereEngine::render(const Atom *a)
 {
+  // FIXME: should be qobject_cast but bug with Qt/Mac
+  GLWidget *gl = dynamic_cast<GLWidget *>(parent());
+
   Color map = colorMap();
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
   map.set(a);
   map.applyAsMaterials();
 
-  m_sphere.draw(a->GetVector().AsArray(), radius(a));
+  gl->painter()->drawSphere( a->pos(), radius(a) );
 
   if (a->isSelected())
     {
       map.set( 0.3, 0.6, 1.0, 0.7 );
       map.applyAsMaterials();
       glEnable( GL_BLEND );
-      m_sphere.draw(a->GetVector().AsArray(), 0.18 + radius(a));
+      gl->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
       glDisable( GL_BLEND );
     }
 

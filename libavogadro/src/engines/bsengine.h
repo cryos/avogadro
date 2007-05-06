@@ -26,7 +26,6 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
-#include <avogadro/sphere.h>
 #include <avogadro/cylinder.h>
 
 #include <openbabel/mol.h>
@@ -76,7 +75,6 @@ namespace Avogadro {
 
     private:
       inline double radius(const Atom *a);
-      Sphere m_sphere;
       Cylinder m_cylinder;
 
       bool m_setup; //!< Whether the sphere and cylinder objects have been setup

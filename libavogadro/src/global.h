@@ -72,6 +72,7 @@ const int      SEL_BUF_MAX_SIZE                      = 262144;
 const int      SEL_BUF_MARGIN                        = 128;
 const int      SEL_BOX_HALF_SIZE                     = 4;
 const int      SEL_BOX_SIZE                          = 2 * SEL_BOX_HALF_SIZE + 1;
+const double   SEL_ATOM_EXTRA_RADIUS                 = 0.18;
 const int      PAINTER_GLOBAL_QUALITY_SETTINGS       = 3;
 const int      DEFAULT_GLOBAL_QUALITY_SETTING        = PAINTER_GLOBAL_QUALITY_SETTINGS - 1;
 const int      PAINTER_DETAIL_LEVELS                 = 10;

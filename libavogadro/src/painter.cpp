@@ -165,8 +165,6 @@ namespace Avogadro
       detailLevel = PAINTER_MAX_DETAIL_LEVEL;
     }
     d->spheres[detailLevel]->draw(center, radius);
-    qDebug() << "apparent radius = " << apparentRadius << " detail = " << detailLevel;
-
   }
 
 } // end namespace Avogadro
