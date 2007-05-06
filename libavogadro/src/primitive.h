@@ -277,6 +277,7 @@ namespace Avogadro {
        * @param parent the object parent.
        */
       Molecule(QObject *parent=0);
+      Molecule(const Molecule &other);
       virtual ~Molecule();
       void update();
 
@@ -334,6 +335,8 @@ namespace Avogadro {
       const Atom *farthestAtom() const;
 
       Molecule& operator=(const Molecule& other);
+
+      Molecule& operator+=(const Molecule& other);
 
     private:
       /* shared d_ptr with Primitive */

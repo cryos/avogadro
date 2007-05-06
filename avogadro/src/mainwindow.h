@@ -36,6 +36,7 @@
 #include "flattabwidget.h"
 
 #include <QMainWindow>
+#include <QUndoCommand>
 
 class QUndoStack;
 class QStackedLayout;
@@ -66,6 +67,8 @@ namespace Avogadro {
       bool saveAs();
       void revert();
       void exportGraphics();
+
+      void paste();
 
       void newView();
       void closeView();
@@ -109,6 +112,21 @@ namespace Avogadro {
 
       MainWindow *findMainWindow(const QString &fileName);
       
+  };
+
+  class PasteCommand : public QUndoCommand
+  {
+    public:
+      PasteCommand(Molecule *molecule, Molecule pasteData, QStatusBar *statusBar);
+
+      virtual void undo();
+      virtual void redo();
+
+    private:
+      Molecule *m_molecule;
+      Molecule m_pastedMolecule;
+      Molecule m_originalMolecule;
+      QStatusBar *m_statusBar;
   };
 
   /**

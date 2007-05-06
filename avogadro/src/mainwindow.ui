@@ -94,11 +94,6 @@
     <addaction name="actionClose" />
     <addaction name="actionQuit" />
    </widget>
-   <widget class="QMenu" name="menuEdit" >
-    <property name="title" >
-     <string>&amp;Edit</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuSettings" >
     <property name="title" >
      <string>&amp;Settings</string>
@@ -127,6 +122,13 @@
     <addaction name="actionCenter" />
     <addaction name="separator" />
     <addaction name="actionFullScreen" />
+   </widget>
+   <widget class="QMenu" name="menuEdit" >
+    <property name="title" >
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="separator" />
+    <addaction name="actionPaste" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menuEdit" />
@@ -421,6 +423,11 @@
    </property>
    <property name="text" >
     <string>Center</string>
+   </property>
+  </action>
+  <action name="actionPaste" >
+   <property name="text" >
+    <string>&amp;Paste</string>
    </property>
   </action>
  </widget>

@@ -101,6 +101,11 @@ namespace Avogadro {
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
   }
 
+  Molecule::Molecule(const Molecule &other) : OpenBabel::OBMol(other), Primitive(*new MoleculePrivate, MoleculeType, other.parent())
+  {
+    connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
+  }
+
   Molecule::~Molecule()
   {
   }
@@ -167,8 +172,8 @@ namespace Avogadro {
   void Molecule::update()
   {
     Q_D(Molecule);
-    emit updated();
     d->invalidGeomInfo = true;
+    emit updated();
   }
 
   const Eigen::Vector3d & Molecule::center() const
@@ -202,6 +207,11 @@ namespace Avogadro {
   Molecule &Molecule::operator=(const Molecule& other)
   {
     OpenBabel::OBMol::operator=(other);
+  }
+
+  Molecule &Molecule::operator+=(const Molecule& other)
+  {
+    OpenBabel::OBMol::operator+=(other);
   }
 
   void Molecule::computeGeomInfo() const

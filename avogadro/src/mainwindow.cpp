@@ -30,6 +30,7 @@
 
 #include <fstream>
 
+#include <QClipboard>
 #include <QColorDialog>
 #include <QFileDialog>
 #include <QGLFramebufferObject>
@@ -334,6 +335,45 @@ namespace Avogadro {
     d->glWidget->makeCurrent();
   }
 
+  void MainWindow::paste()
+  {
+    QClipboard *clipboard = QApplication::clipboard();
+    const QMimeData *mimeData = NULL;
+
+    if(clipboard->supportsSelection())
+    {
+      mimeData = clipboard->mimeData(QClipboard::Selection);
+//       text = clipboard->text(QClipboard::Selection);
+    } else {
+      mimeData = clipboard->mimeData();
+//       text = clipboard->text();
+    }
+
+    if(mimeData->hasText())
+    {
+      OBConversion conv;
+      OBFormat *xyzFormat = conv.FindFormat("xyz");
+
+      if(!xyzFormat || !conv.SetInFormat(xyzFormat)) {
+        statusBar()->showMessage(tr("Paste failed (xyz unavailable)."), 5000);
+        return;
+      }
+
+      QString text = mimeData->text();
+      Molecule newMol;
+
+      if(conv.ReadString(&newMol, text.toStdString()) && newMol.NumAtoms() != 0)
+      {
+        PasteCommand *command = new PasteCommand(d->molecule, newMol, statusBar());
+        d->undoStack->push(command);
+      } else {
+        statusBar()->showMessage(tr("Unable to paste cartesian coordinates."));
+      }
+    }
+  }
+
+//     d->messagesText->append(text);
+
   void MainWindow::newView()
   {
     QWidget *widget = new QWidget();
@@ -447,6 +487,9 @@ namespace Avogadro {
       ui.menuEdit->addAction(undoAction);
       ui.menuEdit->addAction(redoAction);
     }
+
+    connect(ui.actionPaste, SIGNAL(triggered()),
+        this, SLOT(paste()));
 
     ui.menuDocks->addAction(ui.projectDock->toggleViewAction());
     ui.menuDocks->addAction(ui.toolsDock->toggleViewAction());
@@ -722,6 +765,33 @@ namespace Avogadro {
         d->undoStack->push(command);
       }
     }
+  }
+
+  PasteCommand::PasteCommand(Molecule *molecule, Molecule pastedMolecule, QStatusBar *statusBar)
+  {
+    m_pastedMolecule = pastedMolecule;
+    m_molecule = molecule;
+    m_originalMolecule = *molecule;
+    setText(QObject::tr("Paste Molecule"));
+  }
+
+  void PasteCommand::redo()
+  {
+    *m_molecule += m_pastedMolecule;
+    m_molecule->update();
+
+//     if(m_statusBar)
+//     {
+//       QString status;
+//       QTextStream(&status) << "Pasted " << m_pastedMolecule.NumAtoms() << " atoms, " << m_pastedMolecule.NumBonds() << " bonds."; 
+//       m_statusBar->showMessage(status, 5000);
+//     }
+  }
+
+  void PasteCommand::undo()
+  {
+    *m_molecule = m_originalMolecule;
+    m_molecule->update();
   }
 
 } // end namespace Avogadro
