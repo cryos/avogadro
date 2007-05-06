@@ -1,7 +1,7 @@
 /**********************************************************************
   Debug Engine - Engine for displaying debug information.
 
-  Copyright (C) 2007 Ross Braith
+  Copyright (C) 2007 Ross Braithwaite
   Copyright (C) 2007 Shahzad Ali
   Copyright (C) 2007 James Bunt
   Copyright (C) 2006-2007 Benoit Jacob
