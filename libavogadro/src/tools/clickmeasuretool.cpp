@@ -37,7 +37,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-ClickMeasureTool::ClickMeasureTool(QObject *parent) : Tool(parent),  m_numSelectedAtoms(0))
+ClickMeasureTool::ClickMeasureTool(QObject *parent) : Tool(parent),  m_numSelectedAtoms(0)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/measure/measure.png")));
