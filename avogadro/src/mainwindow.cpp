@@ -379,7 +379,8 @@ namespace Avogadro {
 
   void MainWindow::cut()
   {
-
+    // no "cutting" yet
+    copy();
   }
 
   void MainWindow::copy()
@@ -669,6 +670,7 @@ namespace Avogadro {
 
     setCurrentFileName(fileName);
     setWindowModified(false);
+    d->undoStack->clear();
     statusBar()->showMessage(tr("File saved"), 2000);
     return true;
   }
