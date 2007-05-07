@@ -271,7 +271,8 @@ namespace Avogadro {
 
   void MainWindow::undoStackClean(bool clean)
   {
-    setWindowModified(clean);
+    qDebug() << "UndoStackClean: " << clean;
+    setWindowModified(!clean);
   }
 
   void MainWindow::exportGraphics()
