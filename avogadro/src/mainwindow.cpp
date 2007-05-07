@@ -106,6 +106,7 @@ namespace Avogadro {
     d->toolGroup->load();
     connect(d->toolGroup, SIGNAL(toolActivated(Tool *)), this, SLOT(setTool(Tool *)));
 
+    d->toolSettingsStacked->addWidget(new QWidget);
     const QList<Tool *> tools = d->toolGroup->tools();
     int toolCount = tools.size();
     for(int i = 0; i < toolCount; i++)
@@ -114,12 +115,15 @@ namespace Avogadro {
       QToolButton *button = new QToolButton(ui.toolsWidget);
       button->setDefaultAction(action);
       d->toolsFlow->addWidget(button);
-      d->toolSettingsStacked->addWidget(tools.at(i)->settingsWidget());
+      QWidget *widget = tools.at(i)->settingsWidget();
+      if(widget) {
+        d->toolSettingsStacked->addWidget(widget);
+        if(i == 0) {
+          d->toolSettingsStacked->setCurrentIndex(1);
+        }
+      } 
     }
 
-    //     QVBoxLayout *vbCentral = new QVBoxLayout(ui.centralWidget);
-    //     vbCentral->setMargin(0);
-    //     vbCentral->setSpacing(0);
 
     d->glWidgets.append(ui.glWidget);
     d->glWidget = ui.glWidget;
@@ -144,42 +148,15 @@ namespace Avogadro {
     messagesVBox->addWidget(d->messagesText);
     ui.bottomFlat->addTab(messagesWidget, tr("Messages"));
 
-    //     QList<int> sizes = d->splitCentral->sizes();
-    //     sizes[0] = ui.glWidget->maximumHeight();
-    //     d->splitCentral->setSizes(sizes);
-
-    //     ui.projectTree->setAnimated(true);
-    //     ui.projectTree->setAllColumnsShowFocus(true);
-    //     ui.projectTree->setAlternatingRowColors(true);
-    //ui.projectTree->setSelectionMode(QAbstractItemView::ExtendedSelection);
-    //     ui.projectTree->setSelectionMode(QAbstractItemView::MultiSelection);
-    //     ui.projectTree->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui.projectTree->header()->hide();
 
-    //dc:     toolBox = new QToolBox(this);
-    //dc:     toolBox->addItem(new QWidget(this), "Tools");
-    //dc:     toolBox->addItem(new QWidget(this), "Tool Settings");
-    //dc: 
-    //dc:     layout->addWidget(gl,0,0);
-    //dc:     layout->addWidget(toolBox, 0,1);
 
 
     loadExtensions();
 
-    //     // add all gl engines to the dropdown
-    //     QList<Engine *> engines = ui.glWidget->engines();
-    //     for(int i=0; i< engines.size(); ++i) {
-    //       Engine *engine = engines.at(i);
-    // //       cbEngine->insertItem(i, engine->description(), QVariant(engine));
-    //     }
     ui.enginesList->setGLWidget(ui.glWidget);
+    ui.enginesList->setSettingsButton(ui.engineSettingsButton);
 
-    // set the default to whatever GL has selected as default on startup
-    //     cbEngine->setCurrentIndex(engines.indexOf(ui.glWidget->getDefaultEngine()));
-    //     cbTool->setCurrentIndex(d->tools.indexOf(d->currentTool));
-
-    //     connect(cbEngine, SIGNAL(activated(int)), ui.glWidget, SLOT(setDefaultEngine(int)));
-    //     connect(cbTool, SIGNAL(activated(int)), this, SLOT(setTool(int)));
 
     connectUi();
 
@@ -486,7 +463,12 @@ namespace Avogadro {
 
   void MainWindow::setTool(Tool *tool)
   {
-    d->toolSettingsStacked->setCurrentWidget(tool->settingsWidget());
+    if(tool->settingsWidget())
+    {
+      d->toolSettingsStacked->setCurrentWidget(tool->settingsWidget());
+    } else {
+      d->toolSettingsStacked->setCurrentIndex(0);
+    }
   }
 
   void MainWindow::connectUi()
@@ -545,6 +527,7 @@ namespace Avogadro {
     connect(ui.actionAbout, SIGNAL(triggered()), this, SLOT(about()));
 
     connect(ui.centralTab, SIGNAL(currentChanged(int)), this, SLOT(setView(int)));
+
   }
 
   bool MainWindow::setFile(const QString &fileName)

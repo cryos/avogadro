@@ -39,56 +39,21 @@ DrawTool::DrawTool(QObject *parent) : Tool(parent),
   m_beginAtomAdded(false),
   //m_beginAtomDrawCommand(0), //m_bondCommand(0), m_endAtomDrawCommand(0),
   m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_bondOrder(1),
-  m_prevAtomElement(0), m_prevBond(0), m_prevBondOrder(0)
+  m_prevAtomElement(0), m_prevBond(0), m_prevBondOrder(0), m_settingsWidget(0)
 {
-  QWidget *settings = settingsWidget();
-
-  m_comboElements = new QComboBox(settings);
-  m_comboElements->addItem("Hydrogen (1)");
-  m_comboElements->addItem("Helium (2)");
-  m_comboElements->addItem("Lithium (3)");
-  m_comboElements->addItem("Beryllium (4)");
-  m_comboElements->addItem("Boron (5)");
-  m_comboElements->addItem("Carbon (6)");
-  m_comboElements->addItem("Nitrogen (7)");
-  m_comboElements->addItem("Oxygen (8)");
-  m_comboElements->addItem("Fluorine (9)");
-  m_comboElements->addItem("Neon (10)");
-  m_comboElements->addItem("Sodium (11)");
-  m_comboElements->addItem("Magnesium (12)");
-  m_comboElements->addItem("Aluminum (13)");
-  m_comboElements->addItem("Silicon (14)");
-  m_comboElements->addItem("Phosphorus (15)");
-  m_comboElements->addItem("Sulfur (16)");
-  m_comboElements->addItem("Chlorine (17)");
-  m_comboElements->addItem("Argon (18)");
-  m_comboElements->setCurrentIndex(5);
-
-  m_comboBondOrder = new QComboBox(settings);
-  m_comboBondOrder->addItem("Single");
-  m_comboBondOrder->addItem("Double");
-  m_comboBondOrder->addItem("Triple");
-
-  m_layout = new QVBoxLayout();
-  m_layout->addWidget(m_comboElements);
-  m_layout->addWidget(m_comboBondOrder);
-  settings->setLayout(m_layout);
-
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
   action->setToolTip(tr("DrawTooling Tool (DrawTool)\n\n"
         "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
         "Right Mouse: Delete Atom"));
 
-  connect(m_comboElements, SIGNAL(currentIndexChanged(int)),
-      this, SLOT(elementChanged(int)));
-
-  connect(m_comboBondOrder, SIGNAL(currentIndexChanged(int)),
-      this, SLOT(bondOrderChanged(int)));
 }
 
 DrawTool::~DrawTool()
 {
+  if(m_settingsWidget) {
+    m_settingsWidget->deleteLater();
+  }
 }
 
 int DrawTool::usefulness() const
@@ -458,6 +423,59 @@ Bond *DrawTool::newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom)
 
   return bond;
 }
+
+QWidget *DrawTool::settingsWidget() {
+  if(!m_settingsWidget) {
+    m_settingsWidget = new QWidget;
+
+    m_comboElements = new QComboBox(m_settingsWidget);
+    m_comboElements->addItem("Hydrogen (1)");
+    m_comboElements->addItem("Helium (2)");
+    m_comboElements->addItem("Lithium (3)");
+    m_comboElements->addItem("Beryllium (4)");
+    m_comboElements->addItem("Boron (5)");
+    m_comboElements->addItem("Carbon (6)");
+    m_comboElements->addItem("Nitrogen (7)");
+    m_comboElements->addItem("Oxygen (8)");
+    m_comboElements->addItem("Fluorine (9)");
+    m_comboElements->addItem("Neon (10)");
+    m_comboElements->addItem("Sodium (11)");
+    m_comboElements->addItem("Magnesium (12)");
+    m_comboElements->addItem("Aluminum (13)");
+    m_comboElements->addItem("Silicon (14)");
+    m_comboElements->addItem("Phosphorus (15)");
+    m_comboElements->addItem("Sulfur (16)");
+    m_comboElements->addItem("Chlorine (17)");
+    m_comboElements->addItem("Argon (18)");
+    m_comboElements->setCurrentIndex(5);
+
+    m_comboBondOrder = new QComboBox(m_settingsWidget);
+    m_comboBondOrder->addItem("Single");
+    m_comboBondOrder->addItem("Double");
+    m_comboBondOrder->addItem("Triple");
+
+    m_layout = new QVBoxLayout();
+    m_layout->addWidget(m_comboElements);
+    m_layout->addWidget(m_comboBondOrder);
+    m_settingsWidget->setLayout(m_layout);
+
+    connect(m_comboElements, SIGNAL(currentIndexChanged(int)),
+        this, SLOT(elementChanged(int)));
+
+    connect(m_comboBondOrder, SIGNAL(currentIndexChanged(int)),
+        this, SLOT(bondOrderChanged(int)));
+
+    connect(m_settingsWidget, SIGNAL(destroyed()),
+        this, SLOT(settingsWidgetDestroyed()));
+  }
+
+  return m_settingsWidget;
+}
+
+void DrawTool::settingsWidgetDestroyed() {
+  m_settingsWidget = 0;
+}
+
 
 #include "drawtool.moc"
 

@@ -164,15 +164,6 @@ bool BSEngine::render(const Molecule *m)
   return false;
 }
 
-void BSEngine::options()
-{
-  QMessageBox::StandardButton ret;
-  ret = QMessageBox::information(qobject_cast<QWidget*>(parent()),
-                                 tr("Avogadro"),
-                                 tr("This will be for render options"),
-                                 QMessageBox::Yes | QMessageBox::Cancel);
-}
-
 #include "bsengine.moc"
 
 Q_EXPORT_PLUGIN2(bsengine, BSEngineFactory)

@@ -61,8 +61,6 @@ namespace Avogadro {
       bool render(GLWidget *gl);
       //@}
 
-      //! Display a window for the user to pick rendering options
-      void options();
   };
 
   //! Generates instances of our LabelEngine class

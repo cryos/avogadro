@@ -106,15 +106,6 @@ bool LabelEngine::render(GLWidget *gl)
   glPopAttrib();
 }
 
-void LabelEngine::options()
-{
-  QMessageBox::StandardButton ret;
-  ret = QMessageBox::information(qobject_cast<QWidget*>(parent()),
-                                 tr("Avogadro"),
-                                 tr("This will be for render options"),
-                                 QMessageBox::Yes | QMessageBox::Cancel);
-}
-
 #include "labelengine.moc"
 
 Q_EXPORT_PLUGIN2(labelengine, LabelEngineFactory)

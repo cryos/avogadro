@@ -33,13 +33,9 @@ namespace Avogadro {
   class ToolPrivate 
   {
     public:
-      ToolPrivate() : activateAction(0), settingsWidget(0) {}
-      ~ToolPrivate() { 
-//         delete settingsWidget; settingsWidget = 0; 
-        delete activateAction; activateAction = 0;
-      }
+      ToolPrivate() : activateAction(0) {}
+
       QAction *activateAction;
-      QWidget *settingsWidget;
   };
 
   Tool::Tool(QObject *parent) : QObject(parent), d(new ToolPrivate)
@@ -47,11 +43,11 @@ namespace Avogadro {
     d->activateAction = new QAction(this);
     d->activateAction->setCheckable(true); 
     d->activateAction->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
-    d->settingsWidget = new QWidget();
   }
 
   Tool::~Tool() 
   { 
+    d->activateAction->deleteLater();
     delete d;
   }
 
@@ -76,9 +72,9 @@ namespace Avogadro {
     return d->activateAction; 
   }
 
-  QWidget* Tool::settingsWidget() const
+  QWidget* Tool::settingsWidget()
   {
-    return d->settingsWidget;
+    return 0;
   }
 
   int Tool::usefulness() const

@@ -25,7 +25,10 @@
 #include <avogadro/glwidget.h>
 
 #include <QStandardItemModel>
+#include <QAbstractButton>
 #include <QStandardItem>
+#include <QVBoxLayout>
+#include <QDialog>
 
 namespace Avogadro {
 
@@ -35,6 +38,7 @@ namespace Avogadro {
       EngineListViewPrivate() : widget(0) {};
 
       GLWidget *widget;
+      QAbstractButton *button;
   };
 
   EngineListView::EngineListView( QWidget *parent ) : d(new EngineListViewPrivate)
@@ -65,7 +69,8 @@ namespace Avogadro {
         if(e->isEnabled()) {
           item->setCheckState(Qt::Checked);
         }
-        item->setData(qVariantFromValue(e));
+        item->setData(qVariantFromValue(e), EngineRole);
+        item->setData(qVariantFromValue(static_cast<QWidget *>(0)), SettingsDialogRole);
         m->appendRow(item);
       }
     
@@ -77,14 +82,62 @@ namespace Avogadro {
     setModel(m);
     connect(m, SIGNAL(itemChanged(QStandardItem *)), 
         this, SLOT(updateEngine(QStandardItem *)));
+    connect(this, SIGNAL(clicked(QModelIndex)), 
+        this, SLOT(selectEngine(QModelIndex)));
+  }
+
+  void EngineListView::setSettingsButton( QAbstractButton *button )
+  {
+    d->button = button;
+    connect(button, SIGNAL(clicked()), this, SLOT(showEngineSettings()));
+  }
+
+  QAbstractButton *EngineListView::settingsButton() const
+  {
+    return d->button;
+  }
+
+  void EngineListView::selectEngine( const QModelIndex &index )
+  {
+    if(d->button) {
+      Engine *engine = index.data(EngineRole).value<Engine *>();
+      if(engine) {
+        d->button->setEnabled(engine->settingsWidget());
+      }
+    }
   }
 
   void EngineListView::updateEngine( QStandardItem *item )
   {
-    Engine *engine = item->data().value<Engine *>();
+    Engine *engine = item->data(EngineRole).value<Engine *>();
     if(engine) {
       engine->setEnabled(item->checkState());
       d->widget->update();
+    }
+  }
+
+  void EngineListView::showEngineSettings()
+  {
+    QModelIndexList selection = selectedIndexes();
+    if(selection.count()) {
+      QModelIndex index = selection.at(0);
+      QDialog *dialog = qobject_cast<QDialog *>(model()->data(index, SettingsDialogRole).value<QWidget *>());
+      if(dialog) {
+        dialog->show();
+      }
+      else
+      {
+        Engine *engine = model()->data(index, EngineRole).value<Engine *>();
+        if(engine && engine->settingsWidget()) {
+          QDialog *newDialog = new QDialog();
+          newDialog->setWindowTitle(engine->name() + tr(" Settings"));
+          QVBoxLayout *vLayout = new QVBoxLayout();
+          vLayout->addWidget(engine->settingsWidget());
+          newDialog->setLayout(vLayout);
+          model()->setData(index, qVariantFromValue(qobject_cast<QWidget *>(newDialog)), SettingsDialogRole);
+          newDialog->show();
+        }
+      }
     }
   }
 

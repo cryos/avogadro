@@ -33,16 +33,19 @@
 #include <QStringList>
 #include <QImage>
 
+#include "ui_bsdysettingswidget.h"
+
 namespace Avogadro {
 
   //! Ball and Stick Engine class.
+  class BSDYSettingsWidget;
   class BSDYEngine : public Engine
   {
     Q_OBJECT
 
     public:
       //! Constructor
-      BSDYEngine(QObject *parent=0) : Engine(parent), m_update(true) {}
+      BSDYEngine(QObject *parent=0);
       //! Deconstructor
       ~BSDYEngine();
 
@@ -73,12 +76,39 @@ namespace Avogadro {
       void removePrimitive(Primitive *);
 
       //! Display a window for the user to pick rendering options
-      void options();
+      QWidget *settingsWidget();
 
     private:
       double radius(const Atom *atom);
 
       bool m_update;
+      BSDYSettingsWidget *m_settingsWidget;
+      Ui::BSDYSettingsWidget *m_ui;
+
+      double m_atomRadiusPercentage;
+      double m_bondRadius;
+
+    private Q_SLOTS:
+      void settingsWidgetDestroyed();
+      
+      /**
+       * @param percent percentage of the VdwRad
+       */
+      void setAtomRadiusPercentage(int percent);
+
+      /**
+       * @param value radius of the bonds * 10
+       */
+      void setBondRadius(int value);
+
+  };
+
+  class BSDYSettingsWidget : public QWidget, public Ui::BSDYSettingsWidget
+  {
+    public:
+      BSDYSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+        setupUi(this);
+      }
   };
 
   //! Generates instances of our BSDYEngine class

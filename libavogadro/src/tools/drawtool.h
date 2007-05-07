@@ -70,6 +70,8 @@ namespace Avogadro {
 
       virtual int usefulness() const;
 
+      virtual QWidget *settingsWidget();
+
       void setElement(int i);
       int element() const;
 
@@ -104,10 +106,14 @@ namespace Avogadro {
       QComboBox *m_comboBondOrder;
       QVBoxLayout *m_layout;
 
+      QWidget *m_settingsWidget;
+
       Atom *newAtom(GLWidget *widget, const QPoint& p);
       Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
       //       void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
 
+    private Q_SLOTS:
+      void settingsWidgetDestroyed();
   };
 
   class DrawToolFactory : public QObject, public ToolFactory

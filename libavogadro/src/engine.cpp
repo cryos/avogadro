@@ -87,6 +87,11 @@ namespace Avogadro {
     d->colorMap = map;
   }
 
+  QWidget *Engine::settingsWidget()
+  {
+    return 0;
+  }
+
   Color &Engine::colorMap()
   {
     return d->colorMap;

@@ -25,6 +25,7 @@
 #include <QObject>
 #include <QListView>
 
+class QAbstractButton;
 class QStandardItem;
 namespace Avogadro {
 
@@ -40,7 +41,12 @@ namespace Avogadro {
   class EngineListViewPrivate;
   class EngineListView : public QListView
   {
-    Q_OBJECT
+    Q_OBJECT;
+
+    enum Role {
+      EngineRole = Qt::UserRole + 1,
+      SettingsDialogRole,
+    };
 
     public:
       EngineListView( QWidget *parent = 0 );
@@ -49,11 +55,16 @@ namespace Avogadro {
       void setGLWidget(GLWidget *widget);
       GLWidget *glWidget() const;
 
+      void setSettingsButton( QAbstractButton *button );
+      QAbstractButton *settingsButton() const;
+
     private:
       EngineListViewPrivate *const d;
 
     private Q_SLOTS:
       void updateEngine( QStandardItem * );
+      void selectEngine( const QModelIndex &index );
+      void showEngineSettings();
 
     Q_SIGNALS:
       void itemChanged( QStandardItem * );

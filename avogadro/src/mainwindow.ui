@@ -57,7 +57,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>22</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -261,6 +261,22 @@
       <widget class="Avogadro::EngineListView" name="enginesList" >
        <property name="alternatingRowColors" >
         <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="engineSettingsButton" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
+       <property name="layoutDirection" >
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text" >
+        <string>Settings</string>
+       </property>
+       <property name="flat" >
+        <bool>false</bool>
        </property>
       </widget>
      </item>

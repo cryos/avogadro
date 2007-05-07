@@ -28,8 +28,9 @@ INSTALL(TARGETS bsengine DESTINATION ${DESTINATION_DIR})
 
 # ball and stick dynamic engine
 set(bsdyengine_SRCS bsdyengine.cpp)
+qt4_wrap_ui(bsdyengine_UIS bsdysettingswidget.ui)
 qt4_automoc(${bsdyengine_SRCS})
-ADD_LIBRARY(bsdyengine SHARED ${bsdyengine_SRCS} )
+ADD_LIBRARY(bsdyengine SHARED ${bsdyengine_SRCS} ${bsdyengine_UIS})
 TARGET_LINK_LIBRARIES(bsdyengine avogadro-lib
                                 ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                 ${OPENGL_LIBRARIES}

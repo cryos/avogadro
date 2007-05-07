@@ -139,6 +139,8 @@ namespace Avogadro {
 
       QUndoStack             *undoStack;
 
+      bool                   stable;
+
       Painter                *painter;
   };
 
@@ -556,7 +558,7 @@ namespace Avogadro {
         if (factory) {
           Engine *engine = factory->createInstance(this);
           qDebug() << "Found Engine: " << engine->name() << " - " << engine->description();
-
+          connect(engine, SIGNAL(changed()), this, SLOT(update()));
           if(engine->name() == "Dynamic Ball and Stick" ||
               engine->name() == "Label") {
             engine->setEnabled(true);
@@ -769,6 +771,17 @@ namespace Avogadro {
 
     return pos;
   }
+
+  bool GLWidget::isStable() const
+  {
+    return d->stable;
+  }
+
+  void GLWidget::setStable(bool stable)
+  {
+    d->stable = stable;
+  }
+
 
 }
 

@@ -131,6 +131,15 @@ namespace Avogadro {
       bool isEnabled();
       void setEnabled(bool enabled);
 
+      /**
+       * @return a QWidget containing the engine settings or 0
+       * if no settings widget is available
+       */
+      virtual QWidget *settingsWidget();
+
+    Q_SIGNALS:
+      void changed();
+
     public Q_SLOTS:
       virtual void addPrimitive(Primitive *primitive);
       virtual void updatePrimitive(Primitive *primitive);
@@ -145,11 +154,6 @@ namespace Avogadro {
       /** @return the current color map used by this engine
        */
       virtual Color &colorMap();
-
-      /** Display a window to change options for a given
-          rendering engine
-      */
-      virtual void options() = 0;
 
     private:
       EnginePrivate *const d;

@@ -31,16 +31,27 @@
 #include <openbabel/obiter.h>
 #include <eigen/regression.h>
 
-#include <QtPlugin>
 #include <QMessageBox>
+#include <QSlider>
+#include <QtPlugin>
+#include <QVBoxLayout>
 
 using namespace std;
 using namespace OpenBabel;
 using namespace Eigen;
 using namespace Avogadro;
 
+BSDYEngine::BSDYEngine(QObject *parent) : Engine(parent), m_update(true),
+  m_settingsWidget(0), m_atomRadiusPercentage(0.3), m_bondRadius(0.1)
+{
+}
+
 BSDYEngine::~BSDYEngine()
 {
+  if(m_settingsWidget) {
+    m_settingsWidget->deleteLater();
+  }
+
 }
 
 bool BSDYEngine::render(GLWidget *gl)
@@ -48,6 +59,7 @@ bool BSDYEngine::render(GLWidget *gl)
   Color map = colorMap();
 
   QList<Primitive *> list;
+
 
   m_update = false;
   glPushAttrib(GL_TRANSFORM_BIT);
@@ -100,17 +112,16 @@ bool BSDYEngine::render(GLWidget *gl)
     Vector3d v2 (atom2->pos());
     Vector3d v3 (( v1 + v2 ) / 2);
 
-    const double bondRadius = 0.1;
-    const double shift = 0.15;
+    double shift = 0.15;
     int order = b->GetBO();
 
     map.set(atom1);
     map.applyAsMaterials();
-    gl->painter()->drawMultiCylinder( v1, v3, bondRadius, order, shift );
+    gl->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
 
     map.set(atom2);
     map.applyAsMaterials();
-    gl->painter()->drawMultiCylinder( v3, v2, bondRadius, order, shift );
+    gl->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
     //  glPopName();
     //  glPopName();
   }
@@ -122,7 +133,19 @@ bool BSDYEngine::render(GLWidget *gl)
 
 inline double BSDYEngine::radius(const Atom *atom)
 {
-  return etab.GetVdwRad(atom->GetAtomicNum()) * 0.3;
+  return etab.GetVdwRad(atom->GetAtomicNum()) * m_atomRadiusPercentage;
+}
+
+void BSDYEngine::setAtomRadiusPercentage(int percent)
+{
+  m_atomRadiusPercentage = 0.1 * percent;
+  emit changed();
+}
+
+void BSDYEngine::setBondRadius(int value)
+{
+  m_bondRadius = value * 0.1;
+  emit changed();
 }
 
 double BSDYEngine::radius(const Primitive *primitive)
@@ -173,13 +196,22 @@ void BSDYEngine::removePrimitive(Primitive *primitive)
   m_update = true;
 }
 
-void BSDYEngine::options()
+QWidget *BSDYEngine::settingsWidget()
 {
-  QMessageBox::StandardButton ret;
-  ret = QMessageBox::information(qobject_cast<QWidget*>(parent()),
-                                 tr("Avogadro"),
-                                 tr("This will be for render options"),
-                                 QMessageBox::Yes | QMessageBox::Cancel);
+  if(!m_settingsWidget)
+  {
+    m_settingsWidget = new BSDYSettingsWidget();
+    connect(m_settingsWidget->atomRadiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setAtomRadiusPercentage(int)));
+    connect(m_settingsWidget->bondRadiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setBondRadius(int)));
+    connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+  }
+  return m_settingsWidget;
+}
+
+void BSDYEngine::settingsWidgetDestroyed()
+{
+  qDebug() << "Destroyed Settings Widget";
+  m_settingsWidget = 0;
 }
 
 #include "bsdyengine.moc"

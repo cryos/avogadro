@@ -51,7 +51,7 @@ namespace Avogadro {
       virtual QString description() const;
 
       virtual QAction* activateAction() const;
-      virtual QWidget* settingsWidget() const;
+      virtual QWidget* settingsWidget();
 
       virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event) = 0;
       virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event) = 0;

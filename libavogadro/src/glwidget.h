@@ -159,17 +159,6 @@ namespace Avogadro {
    * glwidget.  Thus, we can have one queue containing only the bonds, and 
    * one queue containing only the atoms which would allow bonds and atoms
    * to be rendered by two different engines.
-   *
-   * @todo These PrimitiveQueue's could be moved into the engines themselves
-   * meaning the engines would track what they are to render.  This is dependant
-   * on how we want our application to behave.  In the case that we allow multiple
-   * views of the same molecule, we have the option of using the EngineFactory to
-   * generate a while new set of engines for the new %GLWidget.  This means that
-   * each %GLWidget would have it's own set of engines (different instances) and
-   * would allow each %GLWidget control settings for their engines differently. 
-   * For example, one view could set the Ball and Stick radius to 5 and one could
-   * use the same engine but set the radius to 10.  In other words, different
-   * settings for the same engine within a single project.
    */
   class GLWidgetPrivate;
   class A_EXPORT GLWidget : public QGLWidget
@@ -221,6 +210,17 @@ namespace Avogadro {
        * @param dl the display lists to remove
        */
       void removeDL(GLuint dl);
+
+      /**
+       * @return true if the GLWidget is stable as determined 
+       * by the tools and extensions
+       */
+      bool isStable() const;
+
+      /**
+       * @param stable the new stable value
+       */
+      void setStable(bool stable);
 
       /**
        * Virtual function setting the size hint for this widget.

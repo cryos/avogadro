@@ -165,8 +165,8 @@ namespace Avogadro {
   {
     Q_D(Molecule);
     Primitive *primitive = qobject_cast<Primitive *>(sender());
-    emit primitiveUpdated(primitive);
     d->invalidGeomInfo = true;
+    emit primitiveUpdated(primitive);
   }
 
   void Molecule::update()

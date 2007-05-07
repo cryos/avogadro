@@ -106,15 +106,6 @@ bool SphereEngine::render(const Atom *a)
   return true;
 }
 
-void SphereEngine::options()
-{
-  QMessageBox::StandardButton ret;
-  ret = QMessageBox::information(qobject_cast<QWidget*>(parent()),
-                                 tr("Avogadro"),
-                                 tr("This will be for render options"),
-                                 QMessageBox::Yes | QMessageBox::Cancel);
-}
-
 #include "sphereengine.moc"
 
 Q_EXPORT_PLUGIN2(sphereengine, SphereEngineFactory)
