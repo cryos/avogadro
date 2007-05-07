@@ -41,14 +41,13 @@
 
 namespace Avogadro {
 
- class GhemicalExtension : public QObject, public Extension
+ class GhemicalExtension : public Extension
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::Extension)
 
     public:
       //! Constructor
-      GhemicalExtension();
+      GhemicalExtension(QObject *parent=0);
       //! Deconstructor
       virtual ~GhemicalExtension();
 
@@ -59,12 +58,24 @@ namespace Avogadro {
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("Ghemical Plugin"); };
       //! Perform Action
+      virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *textEdit);
       //@}
 
     private:
       OpenBabel::OBForceField* m_forceField;
+      QList<QAction *> m_actions;
   };
+
+  class GhemicalExtensionFactory : public QObject, public ExtensionFactory
+  {
+    Q_OBJECT;
+    Q_INTERFACES(Avogadro::ExtensionFactory);
+
+    public:
+    Extension *createInstance(QObject *parent = 0) { return new GhemicalExtension(parent); }
+  };
+
 
  class GhemicalCommand : public QUndoCommand
   {

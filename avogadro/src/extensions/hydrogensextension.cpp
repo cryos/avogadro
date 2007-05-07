@@ -33,7 +33,7 @@ using namespace std;
 using namespace OpenBabel;
 
   namespace Avogadro {
-    HydrogensExtension::HydrogensExtension() : Extension()
+    HydrogensExtension::HydrogensExtension(QObject *parent) : Extension(parent)
     {
       QAction *action = new QAction(this);
       action->setText("Add Hydrogens");
@@ -46,6 +46,11 @@ using namespace OpenBabel;
 
     HydrogensExtension::~HydrogensExtension() 
     {
+    }
+
+    QList<QAction *> HydrogensExtension::actions() const
+    {
+      return m_actions;
     }
 
     QUndoCommand* HydrogensExtension::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
@@ -109,4 +114,4 @@ using namespace OpenBabel;
   } // end namespace Avogadro
 
 #include "hydrogensextension.moc"
-Q_EXPORT_PLUGIN2(hydrogensextension, Avogadro::HydrogensExtension)
+Q_EXPORT_PLUGIN2(hydrogensextension, Avogadro::HydrogensExtensionFactory)

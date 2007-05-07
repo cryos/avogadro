@@ -63,7 +63,7 @@ namespace Avogadro {
 
       Molecule  *molecule;
 
-      QString    currentFile;
+      QString    fileName;
       QUndoStack *undoStack;
 
       FlowLayout *toolsFlow;
@@ -81,13 +81,13 @@ namespace Avogadro {
   MainWindow::MainWindow() : QMainWindow(0), d(new MainWindowPrivate)
   {
     constructor();
-    setCurrentFileName("");
+    setFileName("");
   }
 
   MainWindow::MainWindow(const QString &fileName) : QMainWindow(0), d(new MainWindowPrivate)
   {
     constructor();
-    setFile(fileName);
+    loadFile(fileName);
   }
 
   void MainWindow::constructor()
@@ -170,28 +170,43 @@ namespace Avogadro {
 
   void MainWindow::newFile()
   {
-    // at the moment, we don't spawn new windows
-    // FIXME
-    if(maybeSave()) {
-      clear();
-    }
+    MainWindow *other = new MainWindow;
+    other->move(x() + 40, y() + 40);
+    other->show();
   }
 
   void MainWindow::openFile()
   {
-      //       // check to see if we already have an open window
-      //       MainWindow *existing = findMainWindow(fileName);
-      //       if (existing) {
-      //         existing->show();
-      //         existing->raise();
-      //         existing->activateWindow();
-      //         return;
-      //       }
+    QString fileName = QFileDialog::getOpenFileName(this);
+    openFile(fileName);
+  }
 
-    if (maybeSave()) {
-      QString fileName = QFileDialog::getOpenFileName(this);
-      if (!fileName.isEmpty()) {
-        setFile(fileName);
+  void MainWindow::openFile(const QString &fileName)
+  {
+    if(!fileName.isEmpty())
+    {
+      // check to see if we already have an open window
+      MainWindow *existing = findMainWindow(fileName);
+      if (existing) {
+        existing->show();
+        existing->raise();
+        existing->activateWindow();
+        return;
+      }
+
+      if(d->fileName.isEmpty() && !isWindowModified())
+      {
+        loadFile(fileName);
+      }
+      else
+      {
+        MainWindow *other = new MainWindow();
+        if(!other->loadFile(fileName)) {
+          delete other;
+          return;
+        }
+        other->move(x() + 40, y() + 40);
+        other->show();
       }
     }
   }
@@ -200,19 +215,19 @@ namespace Avogadro {
   {
     QAction *action = qobject_cast<QAction *>(sender());
     if (action) {
-      //       MainWindow *existing = findMainWindow(action->data().toString());
-      //       if (existing) {
-      //         existing->show();
-      //         existing->raise();
-      //         existing->activateWindow();
-      //         return;
-      //       }
-
-      if (maybeSave()) {
-        setFile(action->data().toString());
-      }
+      openFile(action->data().toString());
     }
   }
+
+  void MainWindow::closeFile()
+  {
+    if (maybeSave()) {
+      d->undoStack->clear();
+      setFileName("");
+      setMolecule(new Molecule(this));
+    }
+  }
+
 
   void MainWindow::closeEvent(QCloseEvent *event)
   {
@@ -226,10 +241,10 @@ namespace Avogadro {
 
   bool MainWindow::save()
   {
-    if (d->currentFile.isEmpty()) {
+    if (d->fileName.isEmpty()) {
       return saveAs();
     } else {
-      return saveFile(d->currentFile);
+      return saveFile(d->fileName);
     }
   }
 
@@ -239,18 +254,24 @@ namespace Avogadro {
     if (fileName.isEmpty())
       return false;
 
-    if (QFile::exists(fileName)) {
-      QMessageBox::StandardButton ret;
-      ret = QMessageBox::warning(this, tr("Avogadro"),
-          tr("File %1 already exists.\n"
-            "Do you want to overwrite it?")
-          .arg(QDir::convertSeparators(fileName)),
-          QMessageBox::Yes | QMessageBox::Cancel);
-      if (ret == QMessageBox::Cancel) {
-        return false;
-      }
-    }
+//     if (QFile::exists(fileName)) {
+//       QMessageBox::StandardButton ret;
+//       ret = QMessageBox::warning(this, tr("Avogadro"),
+//           tr("File %1 already exists.\n"
+//             "Do you want to overwrite it?")
+//           .arg(QDir::convertSeparators(fileName)),
+//           QMessageBox::Yes | QMessageBox::Cancel);
+//       if (ret == QMessageBox::Cancel) {
+//         return false;
+//       }
+//     }
+    setFileName(fileName);
     return saveFile(fileName);
+  }
+
+  void MainWindow::undoStackClean(bool clean)
+  {
+    setWindowModified(clean);
   }
 
   void MainWindow::exportGraphics()
@@ -270,8 +291,8 @@ namespace Avogadro {
 
   void MainWindow::revert()
   {
-    if (!d->currentFile.isEmpty()) {
-      setFile(d->currentFile);
+    if (!d->fileName.isEmpty()) {
+      loadFile(d->fileName);
     }
   }
 
@@ -408,7 +429,7 @@ namespace Avogadro {
   {
     // FIXME needs undo support
       setMolecule(new Molecule(this));
-      setCurrentFileName("");
+      setFileName("");
   }
 
   void MainWindow::newView()
@@ -495,15 +516,15 @@ namespace Avogadro {
 
   void MainWindow::connectUi()
   {
-    connect(ui.actionQuit, SIGNAL(triggered()), qApp, SLOT(closeAllWindows()));
     connect(ui.actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
     connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(openFile()));
-    connect(ui.actionClose, SIGNAL(triggered()), this, SLOT(close()));
+    connect(ui.actionClose, SIGNAL(triggered()), this, SLOT(closeFile()));
     connect(ui.actionSave, SIGNAL(triggered()), this, SLOT(save()));
     connect(ui.actionSaveAs, SIGNAL(triggered()), this, SLOT(saveAs()));
     connect(ui.actionRevert, SIGNAL(triggered()), this, SLOT(revert()));
     connect(ui.actionExportGraphics, SIGNAL(triggered()), this, SLOT(exportGraphics()));
     ui.actionExportGraphics->setEnabled(QGLFramebufferObject::hasOpenGLFramebufferObjects());
+    connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(close()));
 
     for (int i = 0; i < maxRecentFiles; ++i) {
       d->actionRecentFile[i] = new QAction(this);
@@ -530,6 +551,7 @@ namespace Avogadro {
       ui.menuEdit->addAction(undoAction);
       ui.menuEdit->addAction(redoAction);
     }
+    connect(d->undoStack, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackClean(bool)));
 
     connect(ui.actionCut, SIGNAL(triggered()), this, SLOT(cut()));
     connect(ui.actionCopy, SIGNAL(triggered()), this, SLOT(copy()));
@@ -552,7 +574,7 @@ namespace Avogadro {
 
   }
 
-  bool MainWindow::setFile(const QString &fileName)
+  bool MainWindow::loadFile(const QString &fileName)
   {
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
@@ -604,7 +626,7 @@ namespace Avogadro {
       return false;
     }
 
-    setCurrentFileName(fileName);
+    setFileName(fileName);
 
     return true;
   }
@@ -673,20 +695,18 @@ namespace Avogadro {
       statusBar()->showMessage("Saving molecular file failed.", 5000);
     QApplication::restoreOverrideCursor();
 
-    setCurrentFileName(fileName);
     setWindowModified(false);
-    d->undoStack->clear();
     statusBar()->showMessage(tr("File saved"), 2000);
     return true;
   }
 
-  void MainWindow::setCurrentFileName(const QString &fileName)
+  void MainWindow::setFileName(const QString &fileName)
   {
-    d->currentFile = fileName;
-    if (d->currentFile.isEmpty()) {
+    d->fileName = QFileInfo(fileName).canonicalFilePath();
+    if (fileName.isEmpty()) {
       setWindowTitle(tr("[*]Avogadro"));
     } else {
-      setWindowTitle(tr("%1[*] - %2").arg(strippedName(d->currentFile))
+      setWindowTitle(tr("%1[*] - %2").arg(strippedName(d->fileName))
                      .arg(tr("Avogadro")));
       
       QSettings settings; // already set up properly via main.cpp
@@ -732,11 +752,12 @@ namespace Avogadro {
   MainWindow *MainWindow::findMainWindow(const QString &fileName)
   {
     QString canonicalFilePath = QFileInfo(fileName).canonicalFilePath();
+    qDebug() << canonicalFilePath;
 
     foreach (QWidget *widget, qApp->topLevelWidgets()) {
-      MainWindow *mainWin = qobject_cast<MainWindow *>(widget);
-      if (mainWin && mainWin->d->currentFile == canonicalFilePath)
-        return mainWin;
+      MainWindow *window = qobject_cast<MainWindow *>(widget);
+      if (window && window->d->fileName == canonicalFilePath)
+        return window;
     }
     return 0;
   }
@@ -780,8 +801,9 @@ namespace Avogadro {
         QPluginLoader loader(dir.absoluteFilePath(fileName));
         QObject *instance = loader.instance();
         qDebug() << "File: " << fileName;
-        Extension *extension = qobject_cast<Extension *>(instance);
-        if(extension) {
+        ExtensionFactory *factory = qobject_cast<ExtensionFactory *>(instance);
+        if(factory) {
+          Extension *extension = factory->createInstance(this);
           qDebug() << "Found Extension: " << extension->name() << " - " << extension->description();
           QList<QAction *>actions = extension->actions();
           foreach(QAction *action, actions)

@@ -25,35 +25,51 @@
 
 #include <avogadro/primitive.h>
 
-#include <QString>
-#include <QAction>
-#include <QObject>
 #include <QGLWidget>
-#include <QVector>
-#include <QTextEdit>
 #include <QList>
+#include <QObject>
+#include <QString>
+#include <QTextEdit>
+#include <QVector>
 
+class QAction;
+class QUndoCommand;
 namespace Avogadro {
 
-  class Extension
+  class Extension : public QObject
+  {
+    Q_OBJECT;
+
+    public:
+    Extension(QObject *parent=0);
+    virtual ~Extension();
+
+    virtual QString name() const;
+    virtual QString description() const;
+
+    virtual QList<QAction *> actions() const = 0;
+    virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *messages = NULL) = 0;
+
+  };
+
+  class A_EXPORT ExtensionFactory
   {
     public:
-      virtual ~Extension() {}
+      /**
+       * Extension factory deconstructor.
+       */
+      virtual ~ExtensionFactory() {}
 
-      virtual QString name() const { return QObject::tr("Unknown"); }
-      virtual QString description() const { return QObject::tr("Unknown Extension"); };
-
-      virtual QList<QAction *> actions() { return m_actions; }
-      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *messages = NULL) {}
-      
-    protected:
-      QList<QAction *> m_actions;
-
+      /**
+       * @return pointer to a new instance of an Engine subclass object
+       */
+      virtual Extension *createInstance(QObject *parent=0) = 0;
   };
 
 } // end namespace Avogadro
 
-Q_DECLARE_INTERFACE(Avogadro::Extension, "net.sourceforge.avogadro.extension/1.0")
+// Q_DECLARE_INTERFACE(Avogadro::Extension, "net.sourceforge.avogadro.extension/1.0")
+Q_DECLARE_INTERFACE(Avogadro::ExtensionFactory, "net.sourceforge.avogadro.extensionfactory/1.0");
 
 
 #endif

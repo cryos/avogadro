@@ -23,21 +23,22 @@
 #define __APPLICATION_H
 
 #include <QApplication>
+#include <QThread>
 
 namespace Avogadro {
 
   class Application : public QApplication
   {
-    Q_OBJECT
+    Q_OBJECT;
 
     public:
-    Application(int &argc, char **argv);
+      Application(int &argc, char **argv);
+      bool loadFile(const QString &fileName);
 
   protected:
       bool event(QEvent *event);
 
   private:
-      bool loadFile(const QString &fileName);
   };
 
 } // end namespace Avogadro

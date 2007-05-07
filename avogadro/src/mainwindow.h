@@ -44,7 +44,7 @@ namespace Avogadro {
       MainWindow();
       MainWindow(const QString &fileName);
 
-      bool setFile(const QString &fileName);
+      bool loadFile(const QString &fileName);
       bool saveFile(const QString &fileName);
 
     protected:
@@ -53,11 +53,14 @@ namespace Avogadro {
     public Q_SLOTS:
       void newFile();
       void openFile();
+      void openFile(const QString &fileName);
       void openRecentFile();
       bool save();
       bool saveAs();
       void revert();
       void exportGraphics();
+
+      void closeFile();
 
       void cut();
       void copy();
@@ -70,6 +73,8 @@ namespace Avogadro {
       void setView(int index);
       void fullScreen();
       void setBackgroundColor();
+
+      void undoStackClean(bool clean);
 
       void clearRecentFiles();
       void about();
@@ -95,7 +100,7 @@ namespace Avogadro {
       void connectUi();
       
       bool maybeSave();
-      void setCurrentFileName(const QString &fileName);
+      void setFileName(const QString &fileName);
       void updateRecentFileActions();
       QString strippedName(const QString &fullFileName);
 

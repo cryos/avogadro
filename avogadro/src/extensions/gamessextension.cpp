@@ -34,50 +34,57 @@
 
 using namespace std;
 using namespace OpenBabel;
-using namespace Avogadro;
 
-GamessExtension::GamessExtension() : Extension(), m_inputDialog(NULL), m_inputData(NULL)
-{
-  QAction *action = new QAction(this);
-  action->setText("GAMESS Input Generation");
-  m_actions.append(action);
-}
+  namespace Avogadro {
+    GamessExtension::GamessExtension(QObject *parent) : Extension(parent), m_inputDialog(NULL), m_inputData(NULL)
+    {
+      QAction *action = new QAction(this);
+      action->setText("GAMESS Input Generation");
+      m_actions.append(action);
+    }
 
-GamessExtension::~GamessExtension() 
-{
-}
+    GamessExtension::~GamessExtension() 
+    {
+    }
 
-QUndoCommand* GamessExtension::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
-{
+    QList<QAction *> GamessExtension::actions() const
+    {
+      return m_actions;
+    }
 
-  qDebug() << "Perform Action";
-  int i = m_actions.indexOf(action);
-  switch(i)
-  {
-    case 0:
-      if(!m_inputData)
+    QUndoCommand* GamessExtension::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
+    {
+
+      qDebug() << "Perform Action";
+      int i = m_actions.indexOf(action);
+      switch(i)
       {
-        m_inputData = new GamessInputData(molecule);
+        case 0:
+          if(!m_inputData)
+          {
+            m_inputData = new GamessInputData(molecule);
+          }
+          else
+          {
+            m_inputData->SetMolecule(molecule);
+          }
+          if(!m_inputDialog)
+          {
+            m_inputDialog = new GamessInputDialog(m_inputData);
+            m_inputDialog->show();
+          }
+          else
+          {
+            m_inputDialog->setInputData(m_inputData);
+            m_inputDialog->show();
+          }
+          break;
       }
-      else
-      {
-        m_inputData->SetMolecule(molecule);
-      }
-      if(!m_inputDialog)
-      {
-        m_inputDialog = new GamessInputDialog(m_inputData);
-        m_inputDialog->show();
-      }
-      else
-      {
-        m_inputDialog->setInputData(m_inputData);
-        m_inputDialog->show();
-      }
-      break;
+
+      return 0;
+    }
   }
 
-  return 0;
-}
-
 #include "gamessextension.moc"
-Q_EXPORT_PLUGIN2(gamessextension, GamessExtension)
+
+Q_EXPORT_PLUGIN2(gamessextension, Avogadro::GamessExtensionFactory)

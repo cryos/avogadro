@@ -46,7 +46,7 @@ namespace Avogadro {
     // need to make this spawn a new instance
     MainWindow *other = new MainWindow;
     other->show();
-    other->setFile(fileName);
+    other->loadFile(fileName);
   }
 
 } // end namespace Avogadro

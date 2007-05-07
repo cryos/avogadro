@@ -56,14 +56,15 @@ int main(int argc, char *argv[])
 
   if (files.size() > 1) {
     QPoint p(100, 100), offset(40,40);
+//     foreach(QString file, files)
     QList<QString>::const_iterator i = files.constBegin();
     for (++i; i != files.constEnd(); ++i)
     {
       MainWindow *other = new MainWindow;
       p += offset;
       other->move(p);
+      other->loadFile(*i);
       other->show();
-      other->setFile(*i);
     }
   } else {
     MainWindow *window = new MainWindow;

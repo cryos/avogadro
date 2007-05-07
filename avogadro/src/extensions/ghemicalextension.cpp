@@ -31,7 +31,7 @@ using namespace std;
 using namespace OpenBabel;
 
   namespace Avogadro {
-    GhemicalExtension::GhemicalExtension() : Extension()
+    GhemicalExtension::GhemicalExtension(QObject *parent) : Extension(parent)
     {
       m_forceField = OBForceField::FindForceField("Ghemical");
 
@@ -44,6 +44,11 @@ using namespace OpenBabel;
 
     GhemicalExtension::~GhemicalExtension() 
     {
+    }
+
+    QList<QAction *> GhemicalExtension::actions() const
+    {
+      return m_actions;
     }
 
     QUndoCommand* GhemicalExtension::performAction(QAction *action, Molecule *molecule, QTextEdit *textEdit)
@@ -105,4 +110,4 @@ using namespace OpenBabel;
   } // end namespace Avogadro
 
 #include "ghemicalextension.moc"
-Q_EXPORT_PLUGIN2(ghemicalextension, Avogadro::GhemicalExtension)
+Q_EXPORT_PLUGIN2(ghemicalextension, Avogadro::GhemicalExtensionFactory)

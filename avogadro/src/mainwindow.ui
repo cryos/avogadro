@@ -155,7 +155,7 @@
    <addaction name="actionNew" />
    <addaction name="actionOpen" />
    <addaction name="actionSave" />
-   <addaction name="actionQuit" />
+   <addaction name="actionClose" />
   </widget>
   <widget class="QDockWidget" name="projectDock" >
    <property name="minimumSize" >
@@ -477,24 +477,24 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>Avogadro::GLWidget</class>
-   <extends>QWidget</extends>
-   <header>avogadro/glwidget.h</header>
-  </customwidget>
-  <customwidget>
    <class>Avogadro::MoleculeTreeView</class>
    <extends>QTreeWidget</extends>
    <header>avogadro/moleculetreeview.h</header>
   </customwidget>
   <customwidget>
-   <class>Avogadro::FlatTabWidget</class>
-   <extends>QWidget</extends>
-   <header>flattabwidget.h</header>
-  </customwidget>
-  <customwidget>
    <class>Avogadro::EngineListView</class>
    <extends>QListView</extends>
    <header>enginelistview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::GLWidget</class>
+   <extends>QWidget</extends>
+   <header>avogadro/glwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::FlatTabWidget</class>
+   <extends>QWidget</extends>
+   <header>flattabwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

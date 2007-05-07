@@ -27,6 +27,7 @@ set(avogadro_SRCS
     aboutdialog.cpp
     application.cpp
     enginelistview.cpp
+    extension.cpp
     flowlayout.cpp
     flattabwidget.cpp
     mainwindow.cpp
