@@ -172,7 +172,9 @@ namespace Avogadro {
   {
     // at the moment, we don't spawn new windows
     // FIXME
-    clear();
+    if(maybeSave()) {
+      clear();
+    }
   }
 
   void MainWindow::openFile()
@@ -329,26 +331,36 @@ namespace Avogadro {
       mimeData = clipboard->mimeData();
     }
 
-    if(mimeData->hasText())
-    {
-      OBConversion conv;
-      OBFormat *xyzFormat = conv.FindFormat("xyz");
+    OBConversion conv;
+    OBFormat *pasteFormat;
+    QString text;
+    Molecule newMol;
 
-      if(!xyzFormat || !conv.SetInFormat(xyzFormat)) {
-        statusBar()->showMessage(tr("Paste failed (xyz unavailable)."), 5000);
-        return;
-      }
+    if (mimeData->hasFormat("chemical/x-mdl-molfile")) {
+      pasteFormat = conv.FindFormat("mdl");
+      
+      text = mimeData->data("chemical/x-mdl-molfile");
+    }
+    else if(mimeData->hasText()) {
+      pasteFormat = conv.FindFormat("xyz");
+      
+      text = mimeData->text();
+    }
 
-      QString text = mimeData->text();
-      Molecule newMol;
+    if (text.length() == 0)
+      return;
 
-      if(conv.ReadString(&newMol, text.toStdString()) && newMol.NumAtoms() != 0)
+    if(!pasteFormat || !conv.SetInFormat(pasteFormat)) {
+      statusBar()->showMessage(tr("Paste failed (format unavailable)."), 5000);
+      return;
+    }
+
+    if(conv.ReadString(&newMol, text.toStdString()) && newMol.NumAtoms() != 0)
       {
         PasteCommand *command = new PasteCommand(d->molecule, newMol);
         d->undoStack->push(command);
       } else {
-        statusBar()->showMessage(tr("Unable to paste cartesian coordinates."));
-      }
+      statusBar()->showMessage(tr("Unable to paste molecule."));
     }
   }
 
@@ -362,20 +374,31 @@ namespace Avogadro {
 
   void MainWindow::copy()
   {
+    QMimeData *mimeData = new QMimeData;
+    mimeData->setImageData(ui.glWidget->grabFrameBuffer(true));
+
     OBConversion conv;
+    OBFormat *mdlFormat = conv.FindFormat("mdl");
+    if(!mdlFormat || !conv.SetOutFormat(mdlFormat)) {
+      statusBar()->showMessage(tr("Copy failed (mdl unavailable)."), 5000);
+      return;
+    }
+
+    // write an MDL file first (with bond orders, radicals, etc.)
+    // (CML might be better in the future, but this works well now)
+    string output = conv.WriteString(d->molecule);
+    QByteArray copyData(output.c_str(), output.length());
+    mimeData->setData("chemical/x-mdl-molfile", copyData);
+
+    // Also copy an XYZ format for text paste
     OBFormat *xyzFormat = conv.FindFormat("xyz");
     if(!xyzFormat || !conv.SetOutFormat(xyzFormat)) {
       statusBar()->showMessage(tr("Copy failed (xyz unavailable)."), 5000);
       return;
     }
-
-    string output = conv.WriteString(d->molecule);
-
-    QByteArray copyData(output.c_str(), output.length());
-    QMimeData *mimeData = new QMimeData;
+    output = conv.WriteString(d->molecule);
+    copyData = output.c_str();
     mimeData->setText(QString(copyData));
-    mimeData->setData("chemical/x-xyz", copyData);
-    mimeData->setImageData(ui.glWidget->grabFrameBuffer(true));
 
     CopyCommand *command = new CopyCommand(mimeData);
     d->undoStack->push(command);
@@ -383,10 +406,9 @@ namespace Avogadro {
 
   void MainWindow::clear()
   {
-    if(maybeSave()) {
+    // FIXME needs undo support
       setMolecule(new Molecule(this));
       setCurrentFileName("");
-    }
   }
 
   void MainWindow::newView()

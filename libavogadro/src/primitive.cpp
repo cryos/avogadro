@@ -25,6 +25,9 @@
 #include <avogadro/primitive.h>
 #include <QDebug>
 #include <eigen/regression.h>
+#include <openbabel/obiter.h>
+
+using namespace OpenBabel;
 
 namespace Avogadro {
 
@@ -211,7 +214,15 @@ namespace Avogadro {
 
   Molecule &Molecule::operator+=(const Molecule& other)
   {
+    unsigned int initialAtoms = NumAtoms();
     OpenBabel::OBMol::operator+=(other);
+
+    // select atoms we just added
+    FOR_ATOMS_OF_MOL(a, this) {
+      if (a->GetIdx() <= initialAtoms) // potential OB atom index issue FIXME
+        continue;
+      dynamic_cast<Atom *>(&*a)->setSelected(true);
+    }
   }
 
   void Molecule::computeGeomInfo() const
