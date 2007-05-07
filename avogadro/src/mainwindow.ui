@@ -57,7 +57,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>29</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -79,8 +79,6 @@
      <property name="title" >
       <string>Open &amp;Recent</string>
      </property>
-     <addaction name="separator" />
-     <addaction name="actionClearRecent" />
     </widget>
     <addaction name="actionNew" />
     <addaction name="actionOpen" />
@@ -128,7 +126,11 @@
      <string>&amp;Edit</string>
     </property>
     <addaction name="separator" />
+    <addaction name="actionCut" />
+    <addaction name="actionCopy" />
     <addaction name="actionPaste" />
+    <addaction name="actionClear" />
+    <addaction name="actionSelect_All" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menuEdit" />
@@ -397,6 +399,9 @@
    <property name="text" >
     <string>&amp;Redo</string>
    </property>
+   <property name="shortcut" >
+    <string>Ctrl+Shift+Z</string>
+   </property>
   </action>
   <action name="actionNewView" >
    <property name="icon" >
@@ -429,28 +434,60 @@
    <property name="text" >
     <string>&amp;Paste</string>
    </property>
+   <property name="shortcut" >
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionCopy" >
+   <property name="text" >
+    <string>Copy</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionCut" >
+   <property name="text" >
+    <string>Cut</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionSelect_All" >
+   <property name="text" >
+    <string>Select &amp;All</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionClear" >
+   <property name="text" >
+    <string>Clear</string>
+   </property>
   </action>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>Avogadro::FlatTabWidget</class>
-   <extends>QWidget</extends>
-   <header>flattabwidget.h</header>
-  </customwidget>
   <customwidget>
    <class>Avogadro::GLWidget</class>
    <extends>QWidget</extends>
    <header>avogadro/glwidget.h</header>
   </customwidget>
   <customwidget>
-   <class>Avogadro::EngineListView</class>
-   <extends>QListView</extends>
-   <header>enginelistview.h</header>
-  </customwidget>
-  <customwidget>
    <class>Avogadro::MoleculeTreeView</class>
    <extends>QTreeWidget</extends>
    <header>avogadro/moleculetreeview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::FlatTabWidget</class>
+   <extends>QWidget</extends>
+   <header>flattabwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::EngineListView</class>
+   <extends>QListView</extends>
+   <header>enginelistview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

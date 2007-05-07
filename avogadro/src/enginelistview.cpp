@@ -57,21 +57,18 @@ namespace Avogadro {
 
     QStandardItemModel *m = new QStandardItemModel(this);
 
-    QList<Engine *> engines = widget->engines();
-    int size = engines.size();
-    for(int i=0; i<size; i++)
-    {
-      Engine *e = engines.at(i);
-      QStandardItem *item = new QStandardItem(e->name());
-      item->setCheckable(true);
-      item->setToolTip(e->description());
-      if(e->isEnabled()) {
-        item->setCheckState(Qt::Checked);
+    foreach(Engine *e, widget->engines())
+      {
+        QStandardItem *item = new QStandardItem(e->name());
+        item->setCheckable(true);
+        item->setToolTip(e->description());
+        if(e->isEnabled()) {
+          item->setCheckState(Qt::Checked);
+        }
+        item->setData(qVariantFromValue(e));
+        m->appendRow(item);
       }
-      item->setData(qVariantFromValue(e));
-      m->appendRow(item);
-    }
-
+    
     if(model())
     {
       delete model();

@@ -24,9 +24,15 @@
 
 #include "mainwindow.h"
 #include "aboutdialog.h"
+#include "editcommands.h"
+
+#include <avogadro/extension.h>
 #include <avogadro/primitive.h>
 #include <avogadro/toolgroup.h>
 #include <avogadro/camera.h>
+
+#include <openbabel/obconversion.h>
+#include <openbabel/mol.h>
 
 #include <fstream>
 
@@ -187,10 +193,9 @@ namespace Avogadro {
 
   void MainWindow::newFile()
   {
-    if(maybeSave()) {
-      setMolecule(new Molecule(this));
-      setCurrentFileName("");
-    }
+    // at the moment, we don't spawn new windows
+    // FIXME
+    clear();
   }
 
   void MainWindow::openFile()
@@ -343,10 +348,8 @@ namespace Avogadro {
     if(clipboard->supportsSelection())
     {
       mimeData = clipboard->mimeData(QClipboard::Selection);
-//       text = clipboard->text(QClipboard::Selection);
     } else {
       mimeData = clipboard->mimeData();
-//       text = clipboard->text();
     }
 
     if(mimeData->hasText())
@@ -364,7 +367,7 @@ namespace Avogadro {
 
       if(conv.ReadString(&newMol, text.toStdString()) && newMol.NumAtoms() != 0)
       {
-        PasteCommand *command = new PasteCommand(d->molecule, newMol, statusBar());
+        PasteCommand *command = new PasteCommand(d->molecule, newMol);
         d->undoStack->push(command);
       } else {
         statusBar()->showMessage(tr("Unable to paste cartesian coordinates."));
@@ -373,6 +376,40 @@ namespace Avogadro {
   }
 
 //     d->messagesText->append(text);
+
+  void MainWindow::cut()
+  {
+
+  }
+
+  void MainWindow::copy()
+  {
+    OBConversion conv;
+    OBFormat *xyzFormat = conv.FindFormat("xyz");
+    if(!xyzFormat || !conv.SetOutFormat(xyzFormat)) {
+      statusBar()->showMessage(tr("Copy failed (xyz unavailable)."), 5000);
+      return;
+    }
+
+    string output = conv.WriteString(d->molecule);
+
+    QByteArray copyData(output.c_str(), output.length());
+    QMimeData *mimeData = new QMimeData;
+    mimeData->setText(QString(copyData));
+    mimeData->setData("chemical/x-xyz", copyData);
+    mimeData->setImageData(ui.glWidget->grabFrameBuffer(true));
+
+    CopyCommand *command = new CopyCommand(mimeData);
+    d->undoStack->push(command);
+  }
+
+  void MainWindow::clear()
+  {
+    if(maybeSave()) {
+      setMolecule(new Molecule(this));
+      setCurrentFileName("");
+    }
+  }
 
   void MainWindow::newView()
   {
@@ -470,8 +507,9 @@ namespace Avogadro {
       connect(d->actionRecentFile[i], SIGNAL(triggered()),
           this, SLOT(openRecentFile()));
     }
-
-
+    ui.menuOpenRecent->addSeparator();
+    ui.menuOpenRecent->addAction(ui.actionClearRecent);
+    connect(ui.actionClearRecent, SIGNAL(triggered()), this, SLOT(clearRecentFiles()));
 
     QAction *undoAction = d->undoStack->createUndoAction(this);
     undoAction->setIcon(QIcon(QString::fromUtf8(":/icons/undo.png")));
@@ -488,16 +526,16 @@ namespace Avogadro {
       ui.menuEdit->addAction(redoAction);
     }
 
-    connect(ui.actionPaste, SIGNAL(triggered()),
-        this, SLOT(paste()));
+    connect(ui.actionCut, SIGNAL(triggered()), this, SLOT(cut()));
+    connect(ui.actionCopy, SIGNAL(triggered()), this, SLOT(copy()));
+    connect(ui.actionPaste, SIGNAL(triggered()), this, SLOT(paste()));
+    connect(ui.actionClear, SIGNAL(triggered()), this, SLOT(clear()));
 
     ui.menuDocks->addAction(ui.projectDock->toggleViewAction());
     ui.menuDocks->addAction(ui.toolsDock->toggleViewAction());
     ui.menuDocks->addAction(ui.toolSettingsDock->toggleViewAction());
     ui.menuToolbars->addAction(ui.fileToolBar->toggleViewAction());
 
-
-    connect(ui.actionClearRecent, SIGNAL(triggered()), this, SLOT(clearRecentFiles()));
     connect(ui.actionNewView, SIGNAL(triggered()), this, SLOT(newView()));
     connect(ui.actionCloseView, SIGNAL(triggered()), this, SLOT(closeView()));
     connect(ui.actionCenter, SIGNAL(triggered()), this, SLOT(centerView()));
@@ -553,8 +591,6 @@ namespace Avogadro {
       QTextStream(&status) << "Atoms: " << d->molecule->NumAtoms() <<
         " Bonds: " << d->molecule->NumBonds();
       statusBar()->showMessage(status, 5000);
-
-
     }
     else {
       QApplication::restoreOverrideCursor();
@@ -642,20 +678,19 @@ namespace Avogadro {
     d->currentFile = fileName;
     if (d->currentFile.isEmpty()) {
       setWindowTitle(tr("[*]Avogadro"));
-      return;
-    }
-    else
+    } else {
       setWindowTitle(tr("%1[*] - %2").arg(strippedName(d->currentFile))
-          .arg(tr("Avogadro")));
-
-    QSettings settings; // already set up properly via main.cpp
-    QStringList files = settings.value("recentFileList").toStringList();
-    files.removeAll(fileName);
-    files.prepend(fileName);
-    while (files.size() > maxRecentFiles)
-      files.removeLast();
-
-    settings.setValue("recentFileList", files);
+                     .arg(tr("Avogadro")));
+      
+      QSettings settings; // already set up properly via main.cpp
+      QStringList files = settings.value("recentFileList").toStringList();
+      files.removeAll(fileName);
+      files.prepend(fileName);
+      while (files.size() > maxRecentFiles)
+        files.removeLast();
+      
+      settings.setValue("recentFileList", files);
+    }
 
     foreach (QWidget *widget, QApplication::topLevelWidgets()) {
       MainWindow *mainWin = qobject_cast<MainWindow *>(widget);
@@ -765,33 +800,6 @@ namespace Avogadro {
         d->undoStack->push(command);
       }
     }
-  }
-
-  PasteCommand::PasteCommand(Molecule *molecule, Molecule pastedMolecule, QStatusBar *statusBar)
-  {
-    m_pastedMolecule = pastedMolecule;
-    m_molecule = molecule;
-    m_originalMolecule = *molecule;
-    setText(QObject::tr("Paste Molecule"));
-  }
-
-  void PasteCommand::redo()
-  {
-    *m_molecule += m_pastedMolecule;
-    m_molecule->update();
-
-//     if(m_statusBar)
-//     {
-//       QString status;
-//       QTextStream(&status) << "Pasted " << m_pastedMolecule.NumAtoms() << " atoms, " << m_pastedMolecule.NumBonds() << " bonds."; 
-//       m_statusBar->showMessage(status, 5000);
-//     }
-  }
-
-  void PasteCommand::undo()
-  {
-    *m_molecule = m_originalMolecule;
-    m_molecule->update();
   }
 
 } // end namespace Avogadro

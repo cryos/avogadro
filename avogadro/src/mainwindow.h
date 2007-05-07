@@ -23,20 +23,11 @@
 #ifndef __MAINWINDOW_H
 #define __MAINWINDOW_H
 
-#include <openbabel/mol.h>
-#include <openbabel/obconversion.h>
-
-#include <avogadro/moleculetreeview.h>
-#include <avogadro/glwidget.h>
-#include <avogadro/tool.h>
-#include <avogadro/extension.h>
-
 #include "ui_mainwindow.h"
 #include "flowlayout.h"
 #include "flattabwidget.h"
 
 #include <QMainWindow>
-#include <QUndoCommand>
 
 class QUndoStack;
 class QStackedLayout;
@@ -68,7 +59,10 @@ namespace Avogadro {
       void revert();
       void exportGraphics();
 
+      void cut();
+      void copy();
       void paste();
+      void clear();
 
       void newView();
       void closeView();
@@ -112,21 +106,6 @@ namespace Avogadro {
 
       MainWindow *findMainWindow(const QString &fileName);
       
-  };
-
-  class PasteCommand : public QUndoCommand
-  {
-    public:
-      PasteCommand(Molecule *molecule, Molecule pasteData, QStatusBar *statusBar);
-
-      virtual void undo();
-      virtual void redo();
-
-    private:
-      Molecule *m_molecule;
-      Molecule m_pastedMolecule;
-      Molecule m_originalMolecule;
-      QStatusBar *m_statusBar;
   };
 
   /**
