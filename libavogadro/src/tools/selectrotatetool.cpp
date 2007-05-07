@@ -27,8 +27,10 @@
 #include <avogadro/camera.h>
 
 #include <openbabel/obiter.h>
+#include <openbabel/math/matrix3x3.h>
 
 #include <QtPlugin>
+#include <QApplication>
 
 using namespace std;
 using namespace OpenBabel;
@@ -60,6 +62,12 @@ QUndoCommand* SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *
   _movedSinceButtonPressed = false;
   _lastDraggingPosition = event->pos();
   _initialDraggingPosition = event->pos();
+  if (QApplication::keyboardModifiers() & Qt::ShiftModifier) {
+      _manipulateMode = true;
+  } else {
+    _manipulateMode = false;
+  }
+    
 
   //! List of hits from a selection/pick
   _hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
@@ -83,24 +91,20 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
     return 0;
   }
 
-  if(!_hits.size())
-  {
+  if(!_hits.size()) {
     widget->removeDL(_selectionDL);
   }
 
-  if(!_movedSinceButtonPressed && _hits.size())
-  {
-    for(int i=0; i < _hits.size(); i++) {
-      if(_hits[i].type() == Primitive::AtomType)
-      {
-        Atom *atom = (Atom *) molecule->GetAtom(_hits[i].name());
+  if(!_movedSinceButtonPressed && _hits.size()) {
+    foreach (GLHit hit, _hits) {
+      if(hit.type() == Primitive::AtomType) {
+        Atom *atom = (Atom *) molecule->GetAtom(hit.name());
         atom->toggleSelected();
         atom->update();
         break;
       }
-      else if(_hits[i].type() == Primitive::BondType)
-      {
-        Bond *bond = (Bond *) molecule->GetBond(_hits[i].name());
+      else if(hit.type() == Primitive::BondType) {
+        Bond *bond = (Bond *) molecule->GetBond(hit.name());
         bond->toggleSelected();
         bond->update();
         break;
@@ -120,15 +124,12 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
     // (sx, sy) = Upper left most position.
     // (ex, ey) = Bottom right most position.
     QList<GLHit> hits = widget->hits(sx, sy, ex-sx, ey-sy);
-    for(int i=0; i < hits.size(); i++) {
-      int type = hits[i].type();
-      if(type == Primitive::AtomType)
-      {
-        ((Atom *)molecule->GetAtom(hits[i].name()))->toggleSelected();
+    foreach(GLHit hit, hits) {
+      if(hit.type() == Primitive::AtomType) {
+        ((Atom *)molecule->GetAtom(hit.name()))->toggleSelected();
       }
-      else if(type == Primitive::BondType)
-      {
-        ((Bond *)molecule->GetBond(hits[i].name()))->toggleSelected();
+      else if(hit.type() == Primitive::BondType) {
+        ((Bond *)molecule->GetBond(hit.name()))->toggleSelected();
       }
     }
   }
@@ -140,7 +141,7 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
 
 QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
-
+  Molecule *molecule = widget->molecule();
   QPoint deltaDragging = event->pos() - _lastDraggingPosition;
 
   _lastDraggingPosition = event->pos();
@@ -152,30 +153,52 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
   {
     if( event->buttons() & Qt::LeftButton )
     {
+      // rotate
       Matrix3d rotation = widget->camera().matrix().linearComponent();
       Vector3d XAxis = rotation.row(0);
       Vector3d YAxis = rotation.row(1);
-      widget->camera().translate( widget->center() );
-      widget->camera().rotate( deltaDragging.y() * ROTATION_SPEED, XAxis );
-      widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, YAxis );
-      widget->camera().translate( - widget->center() );
+      if (!_manipulateMode) {
+        widget->camera().translate( widget->center() );
+        widget->camera().rotate( deltaDragging.y() * ROTATION_SPEED, XAxis );
+        widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, YAxis );
+        widget->camera().translate( - widget->center() );
+      } 
+      else if (molecule) { 
+        // rotate only selected primitives
+        // FIXME!
+        OpenBabel::matrix3x3 rotation;
+        rotation.SetupRotMat( deltaDragging.y() * 0.5,
+                              deltaDragging.x() * 0.5,
+                              0.0);
+        FOR_ATOMS_OF_MOL(a, molecule)
+          if (dynamic_cast<Atom *>(&*a)->isSelected()) {
+            a->SetVector(rotation * a->GetVector());
+          }
+      }
     }
     else if ( event->buttons() & Qt::RightButton )
     {
-      //dc:       deltaDragging = _initialDraggingPosition - event->pos();
-      widget->camera().pretranslate( Vector3d( deltaDragging.x() * ZOOM_SPEED,
-            -deltaDragging.y() * ZOOM_SPEED,
+      // translate
+      if (!_manipulateMode) {
+      widget->camera().pretranslate( Vector3d( deltaDragging.x() * ROTATION_SPEED,
+            deltaDragging.y() * ROTATION_SPEED,
             0.0 ) );
+      } 
+      else if (molecule) { 
+        // translate only selected primitives
+        // now only works for atoms
+        OpenBabel::vector3 translation( deltaDragging.x() * ZOOM_SPEED,
+                  -deltaDragging.y() * ZOOM_SPEED,
+                  0.0 );
+        FOR_ATOMS_OF_MOL(a, molecule)
+          if (dynamic_cast<Atom *>(&*a)->isSelected()) {
+            a->SetVector(a->GetVector() + translation);
+          }
+      }
     }
     else if ( event->buttons() & Qt::MidButton )
     {
-      //dc:       deltaDragging = _initialDraggingPosition - event->pos();
-      //dc:       int xySum = deltaDragging.x() + deltaDragging.y();
-      //dc: 
-      //dc:       if (xySum < 0)
-      //dc:         widget->setScale(deltaDragging.manhattanLength() / 5.0);
-      //dc:       else if (xySum > 0)
-      //dc:         widget->setScale(1.0 / deltaDragging.manhattanLength());
+      // should be some sort of zoom / scaling
     }
   }
   else
