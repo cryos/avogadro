@@ -39,14 +39,11 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
+const int BSENGINE_DETAIL_LEVEL = 4;
+
 bool BSEngine::render(GLWidget *gl)
 {
   QList<Primitive *> list;
-
-  if (!m_setup) {
-    m_cylinder.setup(6);
-    m_setup = true;
-  }
 
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
@@ -105,14 +102,14 @@ bool BSEngine::render(const Atom *a)
   map.set(a);
   map.applyAsMaterials();
 
-  gl->painter()->drawSphere( a->pos(), radius(a), 4 );
+  gl->painter()->drawSphere( a->pos(), radius(a), BSENGINE_DETAIL_LEVEL );
 
   if (a->isSelected())
     {
       map.set( 0.3, 0.6, 1.0, 0.7 );
       map.applyAsMaterials();
       glEnable( GL_BLEND );
-      gl->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a), 4 );
+      gl->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a), BSENGINE_DETAIL_LEVEL );
       glDisable( GL_BLEND );
     }
 
@@ -141,7 +138,8 @@ bool BSEngine::render(const Bond *b)
   Vector3d v3 (( v1 + v2 ) / 2);
   std::vector<double> rgb;
 
-  double shift = 0.15;
+  const double bondRadius = 0.1;
+  const double shift = 0.15;
   int order = b->GetBO();
 
   // for now, just allow selecting atoms
@@ -149,11 +147,11 @@ bool BSEngine::render(const Bond *b)
   //  glPushName(b->GetIdx());
   map.set(atom1);
   map.applyAsMaterials();
-  m_cylinder.draw( v1, v3, radius(b), order, shift, normalVector);
+  gl->painter()->drawMultiCylinder( v1, v3, bondRadius, order, shift, BSENGINE_DETAIL_LEVEL );
 
   map.set(atom2);
   map.applyAsMaterials();
-  m_cylinder.draw( v2, v3, radius(b), order, shift, normalVector);
+  gl->painter()->drawMultiCylinder( v3, v2, bondRadius, order, shift, BSENGINE_DETAIL_LEVEL );
   //  glPopName();
   //  glPopName();
 

@@ -25,7 +25,6 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
-#include <avogadro/cylinder.h>
 
 #include <openbabel/mol.h>
 
@@ -43,7 +42,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      BSDYEngine(QObject *parent=0) : Engine(parent), m_setup(false), m_update(true) {}
+      BSDYEngine(QObject *parent=0) : Engine(parent), m_update(true) {}
       //! Deconstructor
       ~BSDYEngine();
 
@@ -77,10 +76,7 @@ namespace Avogadro {
       void options();
 
     private:
-      QList<Cylinder *> m_cylinders;
-
       double radius(const Atom *atom);
-      bool m_setup; //!< Whether the sphere and cylinder objects have been setup
 
       bool m_update;
   };

@@ -41,11 +41,6 @@ using namespace Avogadro;
 
 BSDYEngine::~BSDYEngine()
 {
-  int size = m_cylinders.size();
-  for(int i=0; i<size; i++)
-  {
-    delete m_cylinders.takeLast();
-  }
 }
 
 bool BSDYEngine::render(GLWidget *gl)
@@ -53,15 +48,6 @@ bool BSDYEngine::render(GLWidget *gl)
   Color map = colorMap();
 
   QList<Primitive *> list;
-
-  if (!m_setup) {
-    for(int i=0; i < 4; i++)
-    {
-      m_cylinders.append(new Cylinder(i * 3));
-    }
-    m_setup = true;
-  }
-
 
   m_update = false;
   glPushAttrib(GL_TRANSFORM_BIT);
@@ -114,35 +100,17 @@ bool BSDYEngine::render(GLWidget *gl)
     Vector3d v2 (atom2->pos());
     Vector3d v3 (( v1 + v2 ) / 2);
 
-    double bondRadius = 0.1;
-    double shift = 0.15;
+    const double bondRadius = 0.1;
+    const double shift = 0.15;
     int order = b->GetBO();
 
-    // for now, just allow selecting atoms
-    //  glPushName(bondType);
-    //  glPushName(b->GetIdx());
-    double zDistance = gl->camera().distance(v3);
-//     float zDistance = 200;
-    int detail = 0;
-    if(zDistance >= 100.0 && zDistance < 200.0)
-    {
-      detail = 1;
-    }
-    else if(zDistance >= 20.0 && zDistance < 100.0)
-    {
-      detail = 2;
-    }
-    else if(zDistance >= 0.0  && zDistance < 20.0)
-    {
-      detail = 3;
-    }
     map.set(atom1);
     map.applyAsMaterials();
-    m_cylinders.at(detail)->draw( v1, v3, bondRadius, order, shift, normalVector);
+    gl->painter()->drawMultiCylinder( v1, v3, bondRadius, order, shift );
 
     map.set(atom2);
     map.applyAsMaterials();
-    m_cylinders.at(detail)->draw( v3, v2, bondRadius, order, shift, normalVector);
+    gl->painter()->drawMultiCylinder( v3, v2, bondRadius, order, shift );
     //  glPopName();
     //  glPopName();
   }

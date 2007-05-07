@@ -26,7 +26,6 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
-#include <avogadro/cylinder.h>
 
 #include <openbabel/mol.h>
 
@@ -44,7 +43,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      BSEngine(QObject *parent=0) : Engine(parent), m_setup(false) {}
+      BSEngine(QObject *parent=0) : Engine(parent) {}
       //! Deconstructor
       ~BSEngine() {}
 
@@ -75,9 +74,6 @@ namespace Avogadro {
 
     private:
       inline double radius(const Atom *a);
-      Cylinder m_cylinder;
-
-      bool m_setup; //!< Whether the sphere and cylinder objects have been setup
   };
 
   //! Generates instances of our BSEngine class

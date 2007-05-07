@@ -44,15 +44,22 @@ namespace Avogadro
   const double   PAINTER_SPHERES_DETAIL_COEFF
                  = static_cast<double>(PAINTER_MAX_DETAIL_LEVEL - 1)
                  / (PAINTER_SPHERES_SQRT_LIMIT_MAX_LEVEL - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL);
+  const double   PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL
+                 = sqrt(PAINTER_CYLINDERS_LIMIT_MIN_LEVEL);
+  const double   PAINTER_CYLINDERS_SQRT_LIMIT_MAX_LEVEL
+                 = sqrt(PAINTER_CYLINDERS_LIMIT_MAX_LEVEL);
+  const double   PAINTER_CYLINDERS_DETAIL_COEFF
+                 = static_cast<double>(PAINTER_MAX_DETAIL_LEVEL - 1)
+                 / (PAINTER_CYLINDERS_SQRT_LIMIT_MAX_LEVEL - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL);
 
   class PainterPrivate
   {
     public:
-      PainterPrivate() : widget(0), globalQualitySetting(0), spheres(0),
+      PainterPrivate() : widget(0), globalQualitySetting(0), spheres(0), cylinders(0),
                          initialized(false) {};
       ~PainterPrivate()
       {
-        deleteSpheres();
+        deleteObjects();
       }
 
       GLWidget *widget;
@@ -60,50 +67,88 @@ namespace Avogadro
       int globalQualitySetting;
 
       Sphere **spheres;
+      Cylinder **cylinders;
 
       bool initialized;
 
-      void deleteSpheres();
-      void createSpheres();
+      void deleteObjects();
+      void createObjects();
   };
 
-  void PainterPrivate::deleteSpheres()
+  void PainterPrivate::deleteObjects()
   {
-    if(spheres == 0) {
-      return;
+    int level, lastLevel, n;
+    if(spheres) {
+      lastLevel = -1;
+      for(n = 0; n < PAINTER_DETAIL_LEVELS; n++)
+      {
+        level = PAINTER_SPHERES_LEVELS_ARRAY[globalQualitySetting][n];
+        if( level != lastLevel ) {
+          lastLevel = level;
+          if( spheres[n] ) {
+            delete spheres[n];
+            spheres[n] = 0;
+          }
+        }
+      }
+      delete[] spheres;
+      spheres = 0;
     }
-    int sphereLevel, lastSphereLevel = -1;
-    for(int n = 0; n < PAINTER_DETAIL_LEVELS; n++ )
+    if(cylinders) {
+      lastLevel = -1;
+      for(n = 0; n < PAINTER_DETAIL_LEVELS; n++)
+      {
+        level = PAINTER_CYLINDERS_LEVELS_ARRAY[globalQualitySetting][n];
+        if( level != lastLevel ) {
+          lastLevel = level;
+          if( cylinders[n] ) {
+            delete cylinders[n];
+            cylinders[n] = 0;
+          }
+        }
+      }
+      delete[] cylinders;
+      cylinders = 0;
+    }
+  }
+
+  void PainterPrivate::createObjects()
+  {
+    int level, lastLevel, n;
+    if(spheres == 0)
     {
-      sphereLevel = PAINTER_SPHERES_LEVELS_ARRAY[globalQualitySetting][n];
-      if( sphereLevel != lastSphereLevel ) {
-        lastSphereLevel = sphereLevel;
-        if( spheres[n] ) {
-          delete spheres[n];
-          spheres[n] = 0;
+      spheres = new Sphere*[PAINTER_DETAIL_LEVELS];
+      int level, lastLevel;
+      lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[globalQualitySetting][0];
+      spheres[0] = new Sphere( lastLevel );
+      for(int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
+      {
+        level = PAINTER_SPHERES_LEVELS_ARRAY[globalQualitySetting][n];
+        if( level == lastLevel ) {
+          spheres[n] = spheres[n-1];
+        }
+        else {
+          lastLevel = level;
+          spheres[n] = new Sphere( level );
         }
       }
     }
-    delete[] spheres;
-    spheres = 0;
-  }
-
-  void PainterPrivate::createSpheres()
-  {
-    assert(spheres == 0);
-    spheres = new Sphere*[PAINTER_DETAIL_LEVELS];
-    int sphereLevel, lastSphereLevel;
-    lastSphereLevel = PAINTER_SPHERES_LEVELS_ARRAY[globalQualitySetting][0];
-    spheres[0] = new Sphere( lastSphereLevel );
-    for(int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
+    if(cylinders == 0)
     {
-      sphereLevel = PAINTER_SPHERES_LEVELS_ARRAY[globalQualitySetting][n];
-      if( sphereLevel == lastSphereLevel ) {
-        spheres[n] = spheres[n-1];
-      }
-      else {
-        lastSphereLevel = sphereLevel;
-        spheres[n] = new Sphere( sphereLevel );
+      cylinders = new Cylinder*[PAINTER_DETAIL_LEVELS];
+      int level, lastLevel;
+      lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[globalQualitySetting][0];
+      cylinders[0] = new Cylinder( lastLevel );
+      for(int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
+      {
+        level = PAINTER_CYLINDERS_LEVELS_ARRAY[globalQualitySetting][n];
+        if( level == lastLevel ) {
+          cylinders[n] = cylinders[n-1];
+        }
+        else {
+          lastLevel = level;
+          cylinders[n] = new Cylinder( level );
+        }
       }
     }
   }
@@ -126,9 +171,9 @@ namespace Avogadro
   {
     assert( d->initialized );
     assert( globalQualitySetting >= 0 && globalQualitySetting < PAINTER_GLOBAL_QUALITY_SETTINGS );
+    d->deleteObjects();
     d->globalQualitySetting = globalQualitySetting;
-    d->deleteSpheres();
-    d->createSpheres();
+    d->createObjects();
   }
 
   int Painter::globalQualitySetting() const
@@ -144,14 +189,14 @@ namespace Avogadro
     setGlobalQualitySetting(globalQualitySetting);
   }
   
-  void Painter::drawSphere( const Eigen::Vector3d & center, double radius, int detailLevel )
+  void Painter::drawSphere( const Eigen::Vector3d & center, double radius, int detailLevel ) const
   {
     assert( d->initialized );
     assert( detailLevel >= 0 && detailLevel <= PAINTER_MAX_DETAIL_LEVEL );
     d->spheres[detailLevel]->draw(center, radius);
   }
 
-  void Painter::drawSphere( const Eigen::Vector3d & center, double radius )
+  void Painter::drawSphere( const Eigen::Vector3d & center, double radius ) const
   {
     assert( d->initialized );
     double apparentRadius = radius / d->widget->camera().distance(center);
@@ -165,6 +210,60 @@ namespace Avogadro
       detailLevel = PAINTER_MAX_DETAIL_LEVEL;
     }
     d->spheres[detailLevel]->draw(center, radius);
+  }
+
+  void Painter::drawCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+          double radius, int detailLevel ) const
+  {
+    assert( d->initialized );
+    assert( detailLevel >= 0 && detailLevel <= PAINTER_MAX_DETAIL_LEVEL );
+    d->cylinders[detailLevel]->draw(end1, end2, radius);
+  }
+
+  void Painter::drawCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+          double radius) const
+  {
+    assert( d->initialized );
+    double apparentRadius = radius / d->widget->camera().distance(end1);
+    int detailLevel = 1 + static_cast<int>( floor(
+          PAINTER_CYLINDERS_DETAIL_COEFF
+          * (sqrt(apparentRadius) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL)
+                                                 ) );
+    if( detailLevel < 0 ) {
+      detailLevel = 0;
+    }
+    if( detailLevel > PAINTER_MAX_DETAIL_LEVEL ) {
+      detailLevel = PAINTER_MAX_DETAIL_LEVEL;
+    }
+    d->cylinders[detailLevel]->draw(end1, end2, radius);
+  }
+
+  void Painter::drawMultiCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+          double radius, int order, double shift, int detailLevel ) const
+  {
+    assert( d->initialized );
+    assert( detailLevel >= 0 && detailLevel <= PAINTER_MAX_DETAIL_LEVEL );
+    d->cylinders[detailLevel]->drawMulti(end1, end2, radius, order,
+                                    shift, d->widget->normalVector() );
+  }
+
+  void Painter::drawMultiCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+          double radius, int order, double shift ) const
+  {
+    assert( d->initialized );
+    double apparentRadius = radius / d->widget->camera().distance(end1);
+    int detailLevel = 1 + static_cast<int>( floor(
+          PAINTER_CYLINDERS_DETAIL_COEFF
+          * (sqrt(apparentRadius) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL)
+                                                 ) );
+    if( detailLevel < 0 ) {
+      detailLevel = 0;
+    }
+    if( detailLevel > PAINTER_MAX_DETAIL_LEVEL ) {
+      detailLevel = PAINTER_MAX_DETAIL_LEVEL;
+    }
+    d->cylinders[detailLevel]->drawMulti(end1, end2, radius, order,
+                                    shift, d->widget->normalVector());
   }
 
 } // end namespace Avogadro

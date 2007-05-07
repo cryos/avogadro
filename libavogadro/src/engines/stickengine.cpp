@@ -40,11 +40,6 @@ using namespace Avogadro;
 
 StickEngine::~StickEngine()
 {
-  int size = m_cylinders.size();
-  for(int i=0; i<size; i++)
-  {
-    delete m_cylinders.takeLast();
-  }
 }
 
 bool StickEngine::render(GLWidget *gl)
@@ -52,14 +47,6 @@ bool StickEngine::render(GLWidget *gl)
   Color map = colorMap();
 
   QList<Primitive *> list;
-
-  if (!m_setup) {
-    for(int i=0; i < 5; i++)
-    {
-      m_cylinders.append(new Cylinder(i * 5));
-    }
-    m_setup = true;
-  }
 
   m_update = false;
   glPushAttrib(GL_TRANSFORM_BIT);
@@ -109,29 +96,13 @@ bool StickEngine::render(GLWidget *gl)
 
     int order = b->GetBO();
 
-    double zDistance = gl->camera().distance(v3);
-    int detail = 0;
-    if(zDistance >= 100.0 && zDistance < 200.0)
-    {
-      detail = 1;
-    }
-    else if(zDistance >= 20.0 && zDistance < 100.0)
-    {
-      detail = 2;
-    }
-    else if(zDistance >= 0.0  && zDistance < 20.0)
-    {
-      detail = 3;
-    }
-    detail++;
-
     map.set(atom1);
     map.applyAsMaterials();
-    m_cylinders.at(detail)->draw( v1, v3, radius(atom1), 1, 0.0, normalVector);
+    gl->painter()->drawCylinder( v1, v3, radius(atom1) );
 
     map.set(atom2);
     map.applyAsMaterials();
-    m_cylinders.at(detail)->draw( v3, v2, radius(atom2), 1, 0.0, normalVector);
+    gl->painter()->drawCylinder( v3, v2, radius(atom1) );
   }
 
   glPopAttrib();

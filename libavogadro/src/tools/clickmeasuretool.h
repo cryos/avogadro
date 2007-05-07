@@ -25,7 +25,6 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
-#include <avogadro/cylinder.h>
 
 #include <openbabel/mol.h>
 
@@ -86,8 +85,6 @@ namespace Avogadro {
       QComboBox *m_comboElements;
       QComboBox *m_comboBondOrder;
       QVBoxLayout *m_layout;
-
-      Cylinder *m_line;
   };
 
   class ClickMeasureToolFactory : public QObject, public ToolFactory

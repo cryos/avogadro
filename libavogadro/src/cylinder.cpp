@@ -21,15 +21,12 @@ namespace Avogadro {
 
   class CylinderPrivate {
     public:
-      CylinderPrivate() : vertexBuffer(0), normalBuffer(0), vertexCount(0), displayList(0), isValid(false) {}
+      CylinderPrivate() : vertexBuffer(0), normalBuffer(0), displayList(0), isValid(false) {}
 
       /** Pointer to the buffer storing the vertex array */
       Eigen::Vector3f *vertexBuffer;
       /** Pointer to the buffer storing the normal array */
       Eigen::Vector3f *normalBuffer;
-      /** The number of vertices, i.e. the size of d->vertexBuffer
-       * or equivalently d->normalBuffer */
-      int vertexCount;
       /** The id of the OpenGL display list */
       GLuint displayList;
       /** Equals true if the vertex array has been correctly initialized */
@@ -52,7 +49,6 @@ namespace Avogadro {
     if( d->displayList ) {
       glDeleteLists( d->displayList, 1 );
     }
-
     delete d;
   }
 
@@ -79,6 +75,9 @@ namespace Avogadro {
 
   void Cylinder::initialize()
   {
+    d->isValid = false;
+    if( d->faces < 0 ) return;
+
     // compile display list and free buffers
     if( ! d->displayList ) d->displayList = glGenLists( 1 );
     if( ! d->displayList ) return;
@@ -88,23 +87,23 @@ namespace Avogadro {
       glNewList( d->displayList, GL_COMPILE );
       glLineWidth(1.0);
       glBegin(GL_LINES);
-      glVertex3d(0, 0, 0);
-      glVertex3d(0, 0, 1);
+      glVertex3f(0, 0, 0);
+      glVertex3f(0, 0, 1);
       glEnd();
       glEndList();
     }
     else
     {
       // compute number of vertices
-      d->vertexCount = 2 * d->faces + 2;
+      int vertexCount = 2 * d->faces + 2;
 
       // deallocate any previously allocated buffer
       freeBuffers();
 
       // allocate memory for buffers
-      d->vertexBuffer = new Vector3f[d->vertexCount];
+      d->vertexBuffer = new Vector3f[vertexCount];
       if( ! d->vertexBuffer ) return;
-      d->normalBuffer = new Vector3f[d->vertexCount];
+      d->normalBuffer = new Vector3f[vertexCount];
       if( ! d->normalBuffer ) return;
 
       float baseAngle = 2 * M_PI / d->faces;
@@ -122,7 +121,9 @@ namespace Avogadro {
       glEnableClientState( GL_VERTEX_ARRAY );
       glEnableClientState( GL_NORMAL_ARRAY );
       glNewList( d->displayList, GL_COMPILE );
-      do_draw();
+      glVertexPointer( 3, GL_FLOAT, 0, d->vertexBuffer );
+      glNormalPointer( GL_FLOAT, 0, d->normalBuffer );
+      glDrawArrays( GL_QUAD_STRIP, 0, vertexCount );
       glEndList();
       glDisableClientState( GL_VERTEX_ARRAY );
       glDisableClientState( GL_NORMAL_ARRAY );
@@ -131,14 +132,51 @@ namespace Avogadro {
     d->isValid = true;
   }
 
-  void Cylinder::do_draw() const
+  void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
+      double radius ) const
   {
-    glVertexPointer( 3, GL_FLOAT, 0, d->vertexBuffer );
-    glNormalPointer( GL_FLOAT, 0, d->normalBuffer );
-    glDrawArrays( GL_QUAD_STRIP, 0, d->vertexCount );
+    // the "axis vector" of the cylinder
+    Vector3d axis = end2 - end1;
+
+    // construct an orthogonal basis whose first vector is axis, and whose other vectors
+    // have norm equal to 'radius'.
+    Vector3d axisNormalized = axis / axis.norm();
+    Vector3d ortho1, ortho2;
+    ortho1.loadOrtho(axisNormalized);
+    ortho1 *= radius;
+    axisNormalized.cross( ortho1, &ortho2 );
+
+    // construct the 4D transformation matrix
+    Matrix4d matrix;
+
+    matrix(0, 0) = ortho1(0);
+    matrix(1, 0) = ortho1(1);
+    matrix(2, 0) = ortho1(2);
+    matrix(3, 0) = 0.0;
+
+    matrix(0, 1) = ortho2(0);
+    matrix(1, 1) = ortho2(1);
+    matrix(2, 1) = ortho2(2);
+    matrix(3, 1) = 0.0;
+
+    matrix(0, 2) = axis(0);
+    matrix(1, 2) = axis(1);
+    matrix(2, 2) = axis(2);
+    matrix(3, 2) = 0.0;
+
+    matrix(0, 3) = end1(0);
+    matrix(1, 3) = end1(1);
+    matrix(2, 3) = end1(2);
+    matrix(3, 3) = 1.0;
+
+    //now we can do the actual drawing !
+    glPushMatrix();
+    glMultMatrixd( matrix.array() );
+    glCallList( d->displayList );
+    glPopMatrix();
   }
 
-  void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
+  void Cylinder::drawMulti( const Vector3d &end1, const Vector3d &end2,
       double radius, int order, double shift,
       const Vector3d &planeNormalVector ) const
   {

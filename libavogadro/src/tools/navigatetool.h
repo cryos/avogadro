@@ -25,7 +25,6 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
-#include <avogadro/sphere.h>
 
 #include <openbabel/mol.h>
 
@@ -83,8 +82,6 @@ namespace Avogadro {
       bool                m_rightButtonPressed; // translation
       bool                m_midButtonPressed;   // scale / zoom
       Atom *              m_clickedAtom;
-
-      Sphere              m_sphere;
 
       //! Temporary var for adding selection box
       GLuint              m_selectionDL;

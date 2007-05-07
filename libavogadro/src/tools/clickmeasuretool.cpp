@@ -37,7 +37,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-ClickMeasureTool::ClickMeasureTool(QObject *parent) : Tool(parent),  m_numSelectedAtoms(0), m_line(new Cylinder(0))
+ClickMeasureTool::ClickMeasureTool(QObject *parent) : Tool(parent),  m_numSelectedAtoms(0))
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/measure/measure.png")));
@@ -57,7 +57,6 @@ ClickMeasureTool::ClickMeasureTool(QObject *parent) : Tool(parent),  m_numSelect
 
 ClickMeasureTool::~ClickMeasureTool()
 {
-  delete m_line;
 }
 
 QUndoCommand* ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)

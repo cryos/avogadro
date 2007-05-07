@@ -40,8 +40,19 @@ namespace Avogadro {
       void setGlobalQualitySetting( int globalQualitySetting );
       int globalQualitySetting() const;
       void initialize( GLWidget * widget, int globalQualitySetting );
-      void drawSphere( const Eigen::Vector3d & center, double radius, int detailLevel );
-      void drawSphere( const Eigen::Vector3d & center, double radius );
+
+      void drawSphere( const Eigen::Vector3d & center, double radius, int detailLevel ) const;
+      void drawSphere( const Eigen::Vector3d & center, double radius ) const;
+
+      void drawCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+          double radius, int detailLevel ) const;
+      void drawCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+          double radius) const;
+
+      void drawMultiCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+          double radius, int order, double shift, int detailLevel ) const;
+      void drawMultiCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+          double radius, int order, double shift ) const;
 
     private:
       PainterPrivate * const d;

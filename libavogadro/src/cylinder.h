@@ -33,7 +33,6 @@ namespace Avogadro {
     protected:
       void initialize();
       void freeBuffers();
-      void do_draw() const;
 
     public:
       Cylinder(int faces=0);
@@ -42,6 +41,17 @@ namespace Avogadro {
        * cylinder was already initialized, any pre-allocated buffers
        * are freed and then re-allocated */
       void setup( int faces );
+      /**
+       * draws the cylinder at specified position, with specified
+       * radius.
+       @param end1 the position of the first end of the cylinder.
+       that is, the center of the first disc-shaped face.
+       @param end2 the position of the second end of the cylinder.
+       that is, the center of the second disc-shaped face.
+       @param radius the radius of the cylinder
+       */
+      void draw( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+          double radius ) const;
       /**
        * draws the cylinder at specified position, with specified
        * radius. the order and shift arguments allow to render
@@ -61,8 +71,13 @@ namespace Avogadro {
        just let this set to the default value. When order>1,
        this is interpreted as the displacement of the axis
        of the drawn cylinders from the axis (end1 - end2).
+       @param planeNormalVector the unit normal vector of the plane
+       in which we will try to fit the cylinders. This is useful
+       to draw double bonds in a molecule in such a way that they
+       avoid looking like single bonds. To achieve that, just pass
+       the molecule's fitting plane's unit normal vector here.
        */
-      void draw( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+      void drawMulti( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
           double radius, int order, double shift,
           const Eigen::Vector3d &planeNormalVector ) const;
 
