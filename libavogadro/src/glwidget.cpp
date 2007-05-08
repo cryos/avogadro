@@ -105,11 +105,13 @@ namespace Avogadro {
       GLWidgetPrivate() : background(Qt::black), molecule(0),
                           aCells(0), bCells(0), cCells(0),
                           tool(0), toolGroup(0), selectBuf(0),
-                          selectBufSize(-1), painter(new Painter) {}
+                          selectBufSize(-1), painter(new Painter),
+                          camera(new Camera) {}
       ~GLWidgetPrivate()
       {
         if(selectBuf) delete[] selectBuf;
         delete painter;
+        delete camera;
       }
 
       QList<Engine *>        engines;
@@ -131,7 +133,7 @@ namespace Avogadro {
       ToolGroup              *toolGroup;
 
       //TODO: convert to pointer
-      Camera                 camera;
+      Camera                 *camera;
       QColor                 background;
 
       int                    selectBufSize;
@@ -176,7 +178,7 @@ namespace Avogadro {
   {
     setSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
     loadEngines();
-    d->camera.setParent(this);
+    d->camera->setParent(this);
   }
 
   void GLWidget::initializeGL()
@@ -317,12 +319,12 @@ namespace Avogadro {
     // setup the OpenGL projection matrix using the camera
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    d->camera.applyPerspective();
+    d->camera->applyPerspective();
 
     // setup the OpenGL modelview matrix using the camera
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    d->camera.applyModelview();
+    d->camera->applyModelview();
 
     render();
   }
@@ -445,7 +447,7 @@ namespace Avogadro {
     updateGeometry();
 
     // setup the camera to have a nice viewpoint on the molecule
-    d->camera.initializeViewPoint();
+    d->camera->initializeViewPoint();
 
     update();
   }
@@ -488,7 +490,7 @@ namespace Avogadro {
     d->farthestAtom = d->molecule->farthestAtom();
   }
 
-  Camera & GLWidget::camera() const
+  Camera * GLWidget::camera() const
   {
     return d->camera;
   }
@@ -655,13 +657,13 @@ namespace Avogadro {
     gluPickMatrix(cx,viewport[3]-cy, w, h,viewport);
 
     // now multiply that projection matrix with the perspective of the camera
-    d->camera.applyPerspective();
+    d->camera->applyPerspective();
 
     // now load the modelview matrix from the camera
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
     glLoadIdentity();
-    d->camera.applyModelview();
+    d->camera->applyModelview();
 
     // now actually render
     render();

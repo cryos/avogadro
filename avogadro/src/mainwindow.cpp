@@ -479,7 +479,7 @@ namespace Avogadro {
 
   void MainWindow::centerView()
   {
-    d->glWidget->camera().initializeViewPoint();
+    d->glWidget->camera()->initializeViewPoint();
     d->glWidget->update();
   }
 

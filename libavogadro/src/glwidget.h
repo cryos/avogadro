@@ -286,7 +286,7 @@ namespace Avogadro {
       /**
        * @return a reference to the camera of this widget
        */
-      Camera & camera() const;
+      Camera * camera() const;
 
       /**
        * @return a list of engines

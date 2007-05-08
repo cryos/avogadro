@@ -63,11 +63,11 @@ bool LabelEngine::render(GLWidget *gl)
     }
     renderRadius += 0.05;
 
-    double zDistance = gl->camera().distance(pos);
+    double zDistance = gl->camera()->distance(pos);
 
     if(zDistance < 50.0) {
       QString str = QString::number(atom->GetIdx());
-      const MatrixP3d & m = gl->camera().matrix();
+      const MatrixP3d & m = gl->camera()->matrix();
 
       // compute the unit vector toward the camera, in the molecule's coordinate system.
       // to do this, we apply the inverse of the camera's rotation to the

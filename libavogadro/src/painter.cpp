@@ -199,7 +199,7 @@ namespace Avogadro
   void Painter::drawSphere( const Eigen::Vector3d & center, double radius ) const
   {
     assert( d->initialized );
-    double apparentRadius = radius / d->widget->camera().distance(center);
+    double apparentRadius = radius / d->widget->camera()->distance(center);
     int detailLevel = 1 + static_cast<int>( floor(
           PAINTER_SPHERES_DETAIL_COEFF * (sqrt(apparentRadius) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL)
                                                  ) );
@@ -224,7 +224,7 @@ namespace Avogadro
           double radius) const
   {
     assert( d->initialized );
-    double apparentRadius = radius / d->widget->camera().distance(end1);
+    double apparentRadius = radius / d->widget->camera()->distance(end1);
     int detailLevel = 1 + static_cast<int>( floor(
           PAINTER_CYLINDERS_DETAIL_COEFF
           * (sqrt(apparentRadius) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL)
@@ -251,7 +251,7 @@ namespace Avogadro
           double radius, int order, double shift ) const
   {
     assert( d->initialized );
-    double apparentRadius = radius / d->widget->camera().distance(end1);
+    double apparentRadius = radius / d->widget->camera()->distance(end1);
     int detailLevel = 1 + static_cast<int>( floor(
           PAINTER_CYLINDERS_DETAIL_COEFF
           * (sqrt(apparentRadius) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL)

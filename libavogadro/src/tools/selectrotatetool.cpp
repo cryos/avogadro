@@ -168,14 +168,15 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
     if( event->buttons() & Qt::LeftButton )
     {
       // rotate
-      Matrix3d rotation = widget->camera().matrix().linearComponent();
+      Matrix3d rotation = widget->camera()->matrix().linearComponent();
       Vector3d XAxis = rotation.row(0);
       Vector3d YAxis = rotation.row(1);
+
       if (!_manipulateMode) {
-        widget->camera().translate( widget->center() );
-        widget->camera().rotate( deltaDragging.y() * ROTATION_SPEED, XAxis );
-        widget->camera().rotate( deltaDragging.x() * ROTATION_SPEED, YAxis );
-        widget->camera().translate( - widget->center() );
+        widget->camera()->translate( widget->center() );
+        widget->camera()->rotate( deltaDragging.y() * ROTATION_SPEED, XAxis );
+        widget->camera()->rotate( deltaDragging.x() * ROTATION_SPEED, YAxis );
+        widget->camera()->translate( - widget->center() );
       } 
       else if (molecule) { 
         // rotate only selected primitives
@@ -197,7 +198,7 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
     {
       // translate
       if (!_manipulateMode) {
-      widget->camera().pretranslate( Vector3d( deltaDragging.x() * ROTATION_SPEED,
+      widget->camera()->pretranslate( Vector3d( deltaDragging.x() * ROTATION_SPEED,
             deltaDragging.y() * ROTATION_SPEED,
             0.0 ) );
       } 
