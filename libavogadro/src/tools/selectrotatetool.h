@@ -26,6 +26,8 @@
 #include <avogadro/tool.h>
 #include <avogadro/glwidget.h>
 
+#include <eigen/vector.h>
+
 #include <QObject>
 #include <QString>
 #include <QPoint>
@@ -83,6 +85,8 @@ namespace Avogadro {
 
       QPoint              _initialDraggingPosition;
       QPoint              _lastDraggingPosition;
+
+      Eigen::Vector3d     _selectionCenter;    // centroid of selected atoms
 
       QList<GLHit> _hits;
 

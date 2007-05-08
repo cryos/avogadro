@@ -29,6 +29,8 @@
 #include <openbabel/obiter.h>
 #include <openbabel/math/matrix3x3.h>
 
+#include <eigen/projective.h>
+
 #include <QtPlugin>
 #include <QApplication>
 
@@ -110,6 +112,18 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
         break;
       }
     }
+
+    // FIXME: use a real list of the selected atoms (i.e., in GLWidget)
+    _selectionCenter.loadZero();
+    unsigned int numSelected = 0;
+    FOR_ATOMS_OF_MOL(a, molecule) {
+      Atom *atom = static_cast<Atom *>(&*a);
+      if (atom->isSelected()) {
+        numSelected++;
+        _selectionCenter += atom->pos();
+      }
+    }
+    _selectionCenter /= numSelected;
   }
   else if(_movedSinceButtonPressed && !_hits.size())
   {
@@ -165,15 +179,18 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
       } 
       else if (molecule) { 
         // rotate only selected primitives
-        // FIXME!
-        OpenBabel::matrix3x3 rotation;
-        rotation.SetupRotMat( deltaDragging.y() * 0.5,
-                              deltaDragging.x() * 0.5,
-                              0.0);
-        FOR_ATOMS_OF_MOL(a, molecule)
-          if (dynamic_cast<Atom *>(&*a)->isSelected()) {
-            a->SetVector(rotation * a->GetVector());
+        MatrixP3d fragmentRotation;
+        fragmentRotation.loadTranslation(_selectionCenter);
+        fragmentRotation.rotate3(deltaDragging.y() * ROTATION_SPEED, XAxis );
+        fragmentRotation.rotate3(deltaDragging.x() * ROTATION_SPEED, YAxis );
+        fragmentRotation.translate(-_selectionCenter);
+
+        FOR_ATOMS_OF_MOL(a, molecule) {
+          Atom *atom = static_cast<Atom *>(&*a);
+          if (atom->isSelected()) {
+            atom->setPos(fragmentRotation * atom->pos());
           }
+        }
       }
     }
     else if ( event->buttons() & Qt::RightButton )
@@ -191,7 +208,7 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
                   -deltaDragging.y() * ZOOM_SPEED,
                   0.0 );
         FOR_ATOMS_OF_MOL(a, molecule)
-          if (dynamic_cast<Atom *>(&*a)->isSelected()) {
+          if (static_cast<Atom *>(&*a)->isSelected()) {
             a->SetVector(a->GetVector() + translation);
           }
       }
