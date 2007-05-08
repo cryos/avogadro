@@ -74,7 +74,7 @@ void NavigateTool::computeClickedAtom(const QPoint& p)
 
 void NavigateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
 {
-  Vector3d transformedGoal = m_glwidget->camera()->matrix() * goal;
+  Vector3d transformedGoal = m_glwidget->camera()->modelview() * goal;
   double distanceToGoal = transformedGoal.norm();
 
   double t = ZOOM_SPEED * delta;
@@ -85,19 +85,19 @@ void NavigateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
     t = u;
   }
 
-  m_glwidget->camera()->matrix().pretranslate( transformedGoal * t );
+  m_glwidget->camera()->modelview().pretranslate( transformedGoal * t );
 }
 
 void NavigateTool::translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const
 {
-  Vector3d fromPos = m_glwidget->unProject(from, what);
-  Vector3d toPos = m_glwidget->unProject(to, what);
+  Vector3d fromPos = m_glwidget->camera()->unProject(from, what);
+  Vector3d toPos = m_glwidget->camera()->unProject(to, what);
   m_glwidget->camera()->translate( toPos - fromPos );
 }
 
 void NavigateTool::rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const
 {
-  const MatrixP3d & m = m_glwidget->camera()->matrix();
+  const MatrixP3d & m = m_glwidget->camera()->modelview();
   Vector3d xAxis( m(0, 0), m(0, 1), m(0, 2) );
   Vector3d yAxis( m(1, 0), m(1, 1), m(1, 2) );
   m_glwidget->camera()->translate( center );
@@ -108,7 +108,7 @@ void NavigateTool::rotate( const Eigen::Vector3d &center, double deltaX, double 
 
 void NavigateTool::tilt( const Eigen::Vector3d &center, double delta ) const
 {
-  const MatrixP3d & m = m_glwidget->camera()->matrix();
+  const MatrixP3d & m = m_glwidget->camera()->modelview();
   Vector3d zAxis( m(2, 0), m(2, 1), m(2, 2) );
   m_glwidget->camera()->translate( center );
   m_glwidget->camera()->rotate( delta * ROTATION_SPEED, zAxis );

@@ -116,26 +116,39 @@ bool ClickMeasureTool::paint(GLWidget *widget)
   {
     // get GL Coordinates for text
     glPushMatrix();
+
     glPushMatrix();
     glLoadIdentity();
-    Vector3d labelPos = widget->unProject( Vector3d( 5, widget->height()-5, 0.1 ));
+    Vector3d labelPos = widget->camera()->unProject( Vector3d( 5, widget->height()-5, 0.1 ));
     Vector3d distancePos[2];
-    distancePos[0] = widget->unProject( Vector3d( 90, widget->height()-5, 0.1 ));
-    distancePos[1] = widget->unProject( Vector3d( 150, widget->height()-5, 0.1 ));
-    Vector3d anglePos = widget->unProject( Vector3d( 50, widget->height()-25, 0.1 ));
-    Vector3d angleLabelPos = widget->unProject( Vector3d( 5, widget->height()-25, 0.1 ));
+    distancePos[0] = widget->camera()->unProject( Vector3d( 90, widget->height()-5, 0.1 ));
+    distancePos[1] = widget->camera()->unProject( Vector3d( 150, widget->height()-5, 0.1 ));
+    Vector3d anglePos = widget->camera()->unProject( Vector3d( 50, widget->height()-25, 0.1 ));
+    Vector3d angleLabelPos = widget->camera()->unProject( Vector3d( 5, widget->height()-25, 0.1 ));
     glPopMatrix();
 
-    glMatrixMode(GL_MODELVIEW);
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glEnable(GL_NORMALIZE);
-    glDisable(GL_LIGHTING);
-    glDisable(GL_COLOR_MATERIAL);
+    widget->painter()->beginText();
 
     glColor3f(1.0,0.0,0.0);
     Vector3d pos = m_selectedAtoms[0]->pos();
-    float radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3;
-    widget->renderText(pos.x() + radius, pos.y(), pos.z() + radius, tr("*1"));
+    double radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3;
+    const MatrixP3d & m = widget->camera()->modelview();
+
+    // compute the unit vector toward the camera, in the molecule's coordinate system.
+    // to do this, we apply the inverse of the camera's rotation to the
+    // vector (0,0,1). This amount to taking the 3rd column of the
+    // inverse of the camera's rotation. But the inverse of a rotation is
+    // just its transpose. Thus we want to take the 3rd row of the camera's
+    // rotation matrix.
+    Vector3d zAxis( m(2,0), m(2,1), m(2,2) );
+    // similarly, compute the unit xAxis vector
+    Vector3d xAxis( m(0,0), m(0,1), m(0,2) );
+
+    // relative position of the text on the atom
+    Vector3d textRelPos = radius * (zAxis + xAxis);
+
+    Vector3d textPos = pos+textRelPos;
+    widget->painter()->drawText(textPos, tr("*1"));
 
     if(m_numSelectedAtoms >= 2)
     {
@@ -146,8 +159,9 @@ bool ClickMeasureTool::paint(GLWidget *widget)
 
       glColor3f(0.0,1.0,0.0);
       pos = m_selectedAtoms[1]->pos();
+      Vector3d textPos = pos+textRelPos;
       radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[1]->GetAtomicNum()) * 0.3;
-      widget->renderText(pos.x() + radius, pos.y(), pos.z() + radius, tr("*2"));
+      widget->painter()->drawText(textPos, tr("*2"));
 
       if(m_numSelectedAtoms == 3)
       {
@@ -160,25 +174,26 @@ bool ClickMeasureTool::paint(GLWidget *widget)
         angle = acos(normalizedVectors[0].dot(normalizedVectors[1])) * 180/M_PI;
         pos = m_selectedAtoms[2]->pos();
         radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[2]->GetAtomicNum()) * 0.3;
+        textPos = pos+textRelPos;
         glColor3f(0.0,0.0,1.0);
-        widget->renderText(pos.x() + radius, pos.y(), pos.z() + radius, tr("*3"));
+        widget->painter()->drawText(textPos, tr("*3"));
       }
       glLoadIdentity();
       glColor3f(1.0,1.0,1.0);
-      widget->renderText(labelPos.x(), labelPos.y(), labelPos.z(), tr("Distance(s):"));
+      widget->painter()->drawText(labelPos, tr("Distance(s):"));
       if(m_numSelectedAtoms == 3) {
         glColor3f(1.0,1.0,1.0);
-        widget->renderText(angleLabelPos.x(), angleLabelPos.y(), angleLabelPos.z(), QString("Angle:"));
+        widget->painter()->drawText(angleLabelPos, QString("Angle:"));
         glColor3f(0.8, 0.8, 0.8);
-        widget->renderText(anglePos.x(), anglePos.y(), anglePos.z(), QString::number(angle));
+        widget->painter()->drawText(anglePos, QString::number(angle));
         glColor3f(0.0,1.0,1.0);
-        widget->renderText(distancePos[1].x(), distancePos[1].y(), distancePos[1].z(), QString::number(vector[1].norm()));
+        widget->painter()->drawText(distancePos[1], QString::number(vector[1].norm()));
       }
       glColor3f(1.0,1.0,0.0);
-      widget->renderText(distancePos[0].x(), distancePos[0].y(), distancePos[0].z(), QString::number(vector[0].norm()));
+      widget->painter()->drawText(distancePos[0], QString::number(vector[0].norm()));
     }
 
-    glPopAttrib();
+    widget->painter()->endText();
     glPopMatrix();
   }
 }

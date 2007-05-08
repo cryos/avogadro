@@ -25,6 +25,7 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/sphere.h>
 #include <avogadro/cylinder.h>
+#include <avogadro/textrenderer.h>
 #include <avogadro/camera.h>
 
 #include <cassert>
@@ -56,10 +57,11 @@ namespace Avogadro
   {
     public:
       PainterPrivate() : widget(0), globalQualitySetting(0), spheres(0), cylinders(0),
-                         initialized(false) {};
+                         textRenderer(new TextRenderer), initialized(false) {};
       ~PainterPrivate()
       {
         deleteObjects();
+        delete textRenderer;
       }
 
       GLWidget *widget;
@@ -68,6 +70,7 @@ namespace Avogadro
 
       Sphere **spheres;
       Cylinder **cylinders;
+      TextRenderer *textRenderer;
 
       bool initialized;
 
@@ -165,6 +168,7 @@ namespace Avogadro
   void Painter::setGLWidget( GLWidget * widget )
   {
     d->widget = widget;
+    d->textRenderer->setGLWidget(d->widget);
   }
   
   void Painter::setGlobalQualitySetting( int globalQualitySetting )
@@ -264,6 +268,26 @@ namespace Avogadro
     }
     d->cylinders[detailLevel]->drawMulti(end1, end2, radius, order,
                                     shift, d->widget->normalVector());
+  }
+
+  int Painter::drawText( int x, int y, const QString &string ) const
+  {
+    return d->textRenderer->draw(x, y, string);
+  }
+
+  int Painter::drawText( const Eigen::Vector3d &pos, const QString &string ) const
+  {
+    return d->textRenderer->draw(pos, string);
+  }
+
+  void Painter::beginText() const
+  {
+    d->textRenderer->begin();
+  }
+
+  void Painter::endText() const
+  {
+    d->textRenderer->end();
   }
 
 } // end namespace Avogadro

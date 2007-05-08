@@ -24,11 +24,11 @@
 
 #include <avogadro/global.h>
 #include <eigen/vector.h>
+#include <QString>
 
 namespace Avogadro {
 
   class A_EXPORT GLWidget;
-
   class PainterPrivate;
   class A_EXPORT Painter
   {
@@ -53,6 +53,11 @@ namespace Avogadro {
           double radius, int order, double shift, int detailLevel ) const;
       void drawMultiCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
           double radius, int order, double shift ) const;
+
+      int drawText( int x, int y, const QString &string ) const;
+      int drawText( const Eigen::Vector3d & pos, const QString &string ) const;
+      void beginText() const;
+      void endText() const;
 
     private:
       PainterPrivate * const d;

@@ -168,7 +168,7 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
     if( event->buttons() & Qt::LeftButton )
     {
       // rotate
-      Matrix3d rotation = widget->camera()->matrix().linearComponent();
+      Matrix3d rotation = widget->camera()->modelview().linearComponent();
       Vector3d XAxis = rotation.row(0);
       Vector3d YAxis = rotation.row(1);
 

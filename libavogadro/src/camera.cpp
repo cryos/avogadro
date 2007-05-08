@@ -25,14 +25,15 @@ namespace Avogadro
     public:
       CameraPrivate() {};
 
-      MatrixP3d matrix;
+      MatrixP3d modelview, projection;
       const GLWidget *parent;
       double angleOfViewY;
   };
   
   Camera::Camera(const GLWidget *parent, double angleOfViewY) : d(new CameraPrivate)
   {
-    d->matrix.loadIdentity();
+    d->modelview.loadIdentity();
+    d->projection.loadIdentity();
     d->parent = parent;
     d->angleOfViewY = angleOfViewY;
   }
@@ -51,7 +52,7 @@ namespace Avogadro
   {
     Matrix3d m;
     Vector3d c0, c1, c2;
-    d->matrix.getLinearComponent(&m);
+    d->modelview.getLinearComponent(&m);
 
     m.getColumn(0, &c0);
     c0.normalize();
@@ -68,8 +69,8 @@ namespace Avogadro
     c2.normalize();
     m.setColumn(2, c2);
 
-    d->matrix.setLinearComponent(m);
-    d->matrix.matrix().setRow(3, Vector4d(0.0, 0.0, 0.0, 1.0));
+    d->modelview.setLinearComponent(m);
+    d->modelview.matrix().setRow(3, Vector4d(0.0, 0.0, 0.0, 1.0));
   }
     
   const GLWidget *Camera::parent() const
@@ -89,59 +90,49 @@ namespace Avogadro
   
   void Camera::translate(const Eigen::Vector3d &vector)
   {
-    d->matrix.translate(vector);
+    d->modelview.translate(vector);
   }
   
   void Camera::pretranslate(const Eigen::Vector3d &vector)
   {
-    d->matrix.pretranslate(vector);
+    d->modelview.pretranslate(vector);
   }
   
   void Camera::rotate(const double &angle, const Eigen::Vector3d &axis)
   {
-    d->matrix.rotate3(angle, axis);
+    d->modelview.rotate3(angle, axis);
     normalize();
   }
   
   void Camera::prerotate(const double &angle, const Eigen::Vector3d &axis)
   {
-    d->matrix.prerotate3(angle, axis);
+    d->modelview.prerotate3(angle, axis);
     normalize();
   }
   
   const double Camera::distance(const Eigen::Vector3d & point) const
   {
-    return ( d->matrix * point ).norm();
+    return ( d->modelview * point ).norm();
   }
   
-  void Camera::setMatrix(const Eigen::MatrixP3d &matrix)
+  void Camera::setModelview(const Eigen::MatrixP3d &matrix)
   {
-    d->matrix = matrix;
+    d->modelview = matrix;
   }
   
-  const Eigen::MatrixP3d & Camera::matrix() const
+  const Eigen::MatrixP3d & Camera::modelview() const
   {
-    return d->matrix;
+    return d->modelview;
   }
   
-  Eigen::MatrixP3d & Camera::matrix()
+  Eigen::MatrixP3d & Camera::modelview()
   {
-    return d->matrix;
-  }
-  
-  const double *Camera::matrixArray() const
-  {
-    return d->matrix.array();
-  }
-  
-  double *Camera::matrixArray()
-  {
-    return d->matrix.array();
+    return d->modelview;
   }
   
   void Camera::initializeViewPoint()
   {
-    d->matrix.loadIdentity();
+    d->modelview.loadIdentity();
     if( d->parent == 0 ) return;
     if( d->parent->molecule() == 0 ) return;
 
@@ -150,7 +141,7 @@ namespace Avogadro
     // (here 10.0).
     if( d->parent->molecule()->NumAtoms() == 0 )
     {
-      d->matrix.translate( d->parent->center() - Vector3d( 0, 0, 10 ) );
+      d->modelview.translate( d->parent->center() - Vector3d( 0, 0, 10 ) );
       return;
     }
     
@@ -165,7 +156,7 @@ namespace Avogadro
     rotation.setRow(1, rotation.row(2).cross(rotation.row(0)));
 
     // set the camera's matrix to be (the 4x4 version of) this rotation.
-    setMatrix(rotation);
+    setModelview(rotation);
   
     // now we want to move backwards, in order
     // to view the molecule from a distance, not from inside it.
@@ -191,16 +182,52 @@ namespace Avogadro
     // which is about the biggest possible VDW radius of an atom.
     double molRadius = d->parent->radius() + CAMERA_MOL_RADIUS_MARGIN;
     double distanceToMolCenter = distance( d->parent->center() );
-    double nearEnd = std::max( CAMERA_NEAR_DISTANCE, distanceToMolCenter - molRadius );
-    double farEnd = distanceToMolCenter + molRadius;
-
+    double zNear = std::max( CAMERA_NEAR_DISTANCE, distanceToMolCenter - molRadius );
+    double zFar = distanceToMolCenter + molRadius;
     double aspectRatio = static_cast<double>(d->parent->width()) / d->parent->height();
-    gluPerspective( d->angleOfViewY, aspectRatio, nearEnd, farEnd );
+    gluPerspective( d->angleOfViewY, aspectRatio, zNear, zFar );
+    glGetDoublev(GL_PROJECTION_MATRIX, d->projection.array());
   }
 
   void Camera::applyModelview() const
   {
-    glMultMatrixd( matrixArray() );
+    glMultMatrixd( d->modelview.array() );
+  }
+
+  Eigen::Vector3d Camera::unProject(const Eigen::Vector3d & v) const
+  {
+    GLint viewport[4] = {0, 0, parent()->width(), parent()->height() };
+    Eigen::Vector3d pos;
+    gluUnProject(v.x(), parent()->height() - v.y(), v.z(),
+                 d->modelview.array(), d->projection.array(), viewport, &pos.x(), &pos.y(), &pos.z());
+    return pos;
+  }
+
+  Eigen::Vector3d Camera::unProject(const QPoint& p, const Eigen::Vector3d& ref) const
+  {
+    // project the reference point
+    Eigen::Vector3d projected = project(ref);
+
+    // Now unproject the pixel of coordinates (x,height-y) into a 3D point having the same Z-index
+    // as the reference point.
+    Eigen::Vector3d pos = unProject( Eigen::Vector3d( p.x(), p.y(), projected.z() ));
+
+    return pos;
+  }
+
+  Eigen::Vector3d Camera::unProject(const QPoint& p) const
+  {
+    return unProject(p, parent()->center());
+  }
+
+  Eigen::Vector3d Camera::project(const Eigen::Vector3d & v) const
+  {
+    GLint viewport[4] = {0, 0, parent()->width(), parent()->height() };
+    Eigen::Vector3d pos;
+    gluProject(v.x(), v.y(), v.z(),
+               d->modelview.array(), d->projection.array(), viewport, &pos.x(), &pos.y(), &pos.z());
+
+    return pos;
   }
 
 } // end namespace Avogadro

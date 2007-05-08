@@ -725,55 +725,6 @@ namespace Avogadro {
     return QSize(200,200);
   }
 
-  Eigen::Vector3d GLWidget::unProject(const Eigen::Vector3d & v) const
-  {
-    GLdouble projection[16];
-    glGetDoublev(GL_PROJECTION_MATRIX,projection);
-    GLdouble modelview[16];
-    glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
-    GLint viewport[4];
-    glGetIntegerv(GL_VIEWPORT,viewport);
-
-    Eigen::Vector3d pos;
-    gluUnProject(v.x(), viewport[3] - v.y(), v.z(),
-                 modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
-
-    return pos;
-  }
-
-  Eigen::Vector3d GLWidget::unProject(const QPoint& p, const Eigen::Vector3d& ref) const
-  {
-    // project the reference point
-    Eigen::Vector3d projected = project(ref);
-
-    // Now unproject the pixel of coordinates (x,height-y) into a 3D point having the same Z-index
-    // as the reference point.
-    Eigen::Vector3d pos = unProject( Eigen::Vector3d( p.x(), p.y(), projected.z() ));
-
-    return pos;
-  }
-
-  Eigen::Vector3d GLWidget::unProject(const QPoint& p) const
-  {
-    return unProject(p, center());
-  }
-
-  Eigen::Vector3d GLWidget::project(const Eigen::Vector3d & v) const
-  {
-    GLdouble projection[16];
-    glGetDoublev(GL_PROJECTION_MATRIX,projection);
-    GLdouble modelview[16];
-    glGetDoublev(GL_MODELVIEW_MATRIX,modelview);
-    GLint viewport[4];
-    glGetIntegerv(GL_VIEWPORT,viewport);
-
-    Eigen::Vector3d pos;
-    gluProject(v.x(), v.y(), v.z(),
-               modelview, projection, viewport, &pos.x(), &pos.y(), &pos.z());
-
-    return pos;
-  }
-
   bool GLWidget::isStable() const
   {
     return d->stable;

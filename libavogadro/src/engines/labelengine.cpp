@@ -41,11 +41,11 @@ using namespace Eigen;
 
 bool LabelEngine::render(GLWidget *gl)
 {
+  gl->painter()->beginText();
   QList<Primitive *> list;
 
   list = queue().primitiveList(Primitive::AtomType);
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
-  glDisable(GL_LIGHTING);
+  
   foreach( Primitive *p, list ) {
     Atom *atom = static_cast<const Atom *>(p);
     const Vector3d pos = atom->pos();
@@ -67,7 +67,7 @@ bool LabelEngine::render(GLWidget *gl)
 
     if(zDistance < 50.0) {
       QString str = QString::number(atom->GetIdx());
-      const MatrixP3d & m = gl->camera()->matrix();
+      const MatrixP3d & m = gl->camera()->modelview();
 
       // compute the unit vector toward the camera, in the molecule's coordinate system.
       // to do this, we apply the inverse of the camera's rotation to the
@@ -79,31 +79,11 @@ bool LabelEngine::render(GLWidget *gl)
 
       Vector3d drawPos = pos + zAxis * renderRadius;
 
-      Vector3d projectedDrawPos = gl->project(drawPos);
-      projectedDrawPos.y() = gl->height() - projectedDrawPos.y();
-      Vector3d projectedDrawPos_up    = projectedDrawPos + Vector3d(0, -1, 0);
-      Vector3d projectedDrawPos_down  = projectedDrawPos + Vector3d(0, 1, 0);
-      Vector3d projectedDrawPos_left  = projectedDrawPos + Vector3d(-1, 0, 0);
-      Vector3d projectedDrawPos_right = projectedDrawPos + Vector3d(1, 0, 0);
-      Vector3d projectedDrawPos_near  = projectedDrawPos + Vector3d(0, 0, -0.01);
-
-      Vector3d drawPos_up    = gl->unProject( projectedDrawPos_up );
-      Vector3d drawPos_down  = gl->unProject( projectedDrawPos_down );
-      Vector3d drawPos_left  = gl->unProject( projectedDrawPos_left );
-      Vector3d drawPos_right = gl->unProject( projectedDrawPos_right );
-      Vector3d drawPos_near  = gl->unProject( projectedDrawPos_near );
-
-      glColor3f(0.0, 0.0, 0.0);
-      gl->renderText(drawPos_up.x(),    drawPos_up.y(),    drawPos_up.z(),    str);
-      gl->renderText(drawPos_down.x(),  drawPos_down.y(),  drawPos_down.z(),  str);
-      gl->renderText(drawPos_left.x(),  drawPos_left.y(),  drawPos_left.z(),  str);
-      gl->renderText(drawPos_right.x(), drawPos_right.y(), drawPos_right.z(), str);
-
       glColor3f(1.0, 1.0, 1.0);
-      gl->renderText(drawPos_near.x(), drawPos_near.y(), drawPos_near.z(), str);
+      gl->painter()->drawText(drawPos, str);
     }
   }
-  glPopAttrib();
+  gl->painter()->endText();
 }
 
 #include "labelengine.moc"

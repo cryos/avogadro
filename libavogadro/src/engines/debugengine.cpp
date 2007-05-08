@@ -42,25 +42,25 @@ bool DebugEngine::render(GLWidget *gl)
 {
   QList<Primitive *> list;
 
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
-  glDisable(GL_LIGHTING);
   glColor3f( 1.0, 1.0, 1.0 );
 
-  gl->renderText(5,20,"---- Debug Information ----");
-  gl->renderText(5,35,"FPS: " + QString::number(computeFramesPerSecond(), 'g', 3));
+  gl->painter()->beginText();
+  int x = 0, y = 0;
+  y += gl->painter()->drawText(x, y, "---- Debug Information ----");
+  y += gl->painter()->drawText(x, y, "FPS: " + QString::number(computeFramesPerSecond(), 'g', 3));
 
-  gl->renderText(5,50,"GLWidget size: "
-                      + QString::number(gl->width())
-                      + " x "
-                      + QString::number(gl->height()) );
+  y += gl->painter()->drawText(x, y, "GLWidget size: "
+                                       + QString::number(gl->width())
+                                       + " x "
+                                       + QString::number(gl->height()) );
 
   list = queue().primitiveList(Primitive::AtomType);
-  gl->renderText(5,65,"Atoms: " + QString::number(list.size()));
+  y += gl->painter()->drawText(x, y, "Atoms: " + QString::number(list.size()));
 
   list = queue().primitiveList(Primitive::BondType);
-  gl->renderText(5,80,"Bonds: " + QString::number(list.size()));
+  y += gl->painter()->drawText(x, y, "Bonds: " + QString::number(list.size()));
 
-  glPopAttrib();
+  gl->painter()->endText();
   
   gl->update();
 }

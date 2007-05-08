@@ -28,6 +28,7 @@
 #include <avogadro/tool.h>
 #include <avogadro/color.h>
 #include <avogadro/painter.h>
+#include <avogadro/camera.h>
 
 #include <QGLWidget>
 #include <QDebug>
@@ -40,7 +41,6 @@ class QMouseEvent;
 namespace Avogadro {
   
   class ToolGroup;
-  class Camera;
 
   /**
    * @class GLHit
@@ -297,60 +297,6 @@ namespace Avogadro {
        * Get the hits for a region starting at (x,y) of size (w x y)
        */
       QList<GLHit> hits(int x, int y, int w, int h);
-
-      /**
-       * Performs an unprojection from window coordinates to space coordinates.
-       * @param v The vector to unproject, expressed in window coordinates.
-       *          Thus v.x() and v.y() are the x and y coords of the pixel to unproject.
-       *          v.z() represents it's "z-distance". If you don't know what value to
-       *          put in v.z(), see the other unProject(const QPoint&) method.
-       * @return vector containing the unprojected space coordinates
-       *
-       * @sa unProject(const QPoint&), project()
-       */
-      Eigen::Vector3d unProject(const Eigen::Vector3d& v) const;
-
-      /**
-       * Performs an unprojection from window coordinates to space coordinates,
-       * into the plane passing through a given reference point and parallel to the screen.
-       * Thus the returned vector is a point belonging to that plane. The rationale is that
-       * when unprojecting 2D window coords to 3D space coords, there are a priori
-       * infinitely many solutions, and one has to choose one. This is equivalent to
-       * choosing a plane parallel to the screen.
-       * @param p the point to unproject, expressed in window coordinates
-       * @param ref the reference point, determining the plane into which to unproject.
-       *            If you don't know what to put here, see the other
-       *            unProject(const QPoint&) method.
-       * @return vector containing the unprojected space coordinates
-       *
-       * @sa unProject(const Eigen::Vector3d&), unProject(const QPoint&), project()
-       */
-      Eigen::Vector3d unProject(const QPoint& p, const Eigen::Vector3d& ref) const;
-
-      /**
-       * Performs an unprojection from window coordinates to space coordinates,
-       * into the plane passing through the molecule's center and parallel to the screen.
-       * Thus the returned vector is a point belonging to that plane. This is equivalent to
-       * @code
-         unProject( p, center() );
-       * @endcode
-       * @param p the point to unproject, expressed in window coordinates
-       * @return vector containing the unprojected space coordinates
-       *
-       * @sa unProject(const Eigen::Vector3d&),
-       *     unProject(const QPoint&, const Eigen::Vector3d&), project()
-       */
-      Eigen::Vector3d unProject(const QPoint& p) const;
-
-      /**
-       * Performs a projection from space coordinates to window coordinates.
-       * @param v the vector to project, expressed in space coordinates.
-       * @return vector containing the projected screen coordinates
-       *
-       * @sa unProject(const Eigen::Vector3d&), unProject(const QPoint&),
-       *     unProject(const QPoint&, const Eigen::Vector3d&)
-       */
-      Eigen::Vector3d project(const Eigen::Vector3d& v) const;
 
       const Eigen::Vector3d & center() const;
       const Eigen::Vector3d & normalVector() const;
