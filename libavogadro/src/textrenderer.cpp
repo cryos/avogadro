@@ -25,337 +25,434 @@
 #include<avogadro/glwidget.h>
 #include<avogadro/camera.h>
 
+const float TEXT_SHADOW_INTENSITY = 0.3;
+
 namespace Avogadro {
 
-/**
+/** @internal
 * This is a helper class for TextRenderer.
 *
 * The CharRenderer class represents a character stored as OpenGL rendering
 * data : a texture object and a display list mapping it on a quad and then
 * translating to the right of it.
 *
-* See the m_charTable member of TextRenderer for an example of use of
+* See the charTable member of TextRenderer for an example of use of
 * this class.
 */
 class CharRenderer
 {
-	protected:
-		/**
-		 * The OpenGL texture object
-		 */
-		GLuint m_texture;
+  protected:
+    /**
+     * The OpenGL texture object
+     */
+    GLuint m_texture;
 
-		/**
-		 * The OpenGL display list
-		 */
-		GLuint m_displayList;
+    /**
+     * The OpenGL display list
+     */
+    GLuint m_displayList;
 
-		/**
-		 * Width and height in pixels of the rendered character
-		 */
-		int m_width, m_height;
+    /**
+     * Width and height in pixels of the rendered character
+     */
+    int m_width, m_height;
 
-	public:
-		CharRenderer();
-		~CharRenderer();
-		bool initialize( QChar c, const QFont &font );
-		inline void draw() const
-		{
-			glCallList( m_displayList );
-		}
-                inline int height() const { return m_height; }
-                inline int width() const { return m_width; }
+  public:
+    CharRenderer();
+    ~CharRenderer();
+    
+    /** Builds the texture and the display list for a given character and font */
+    bool initialize( QChar c, const QFont &font );
+    
+    /** Calls the display list, drawing the character as a textured quad */
+    inline void draw() const
+    {
+      glCallList( m_displayList );
+    }
+    
+    /** @returns the height of the rendered character in pixels */
+    inline int height() const { return m_height; }
+    
+    /** @returns the width of the rendered character in pixels */
+    inline int width() const { return m_width; }
 };
 
 CharRenderer::CharRenderer()
 {
-	m_texture = 0;
-	m_displayList = 0;
+  m_texture = 0;
+  m_displayList = 0;
 }
 
 CharRenderer::~CharRenderer()
 {
-	if( m_texture ) glDeleteTextures( 1, &m_texture );
-	if( m_displayList ) glDeleteLists( m_displayList, 1 );
+  if( m_texture ) glDeleteTextures( 1, &m_texture );
+  if( m_displayList ) glDeleteLists( m_displayList, 1 );
 }
 
 bool CharRenderer::initialize( QChar c, const QFont &font )
 {
-	if( m_displayList ) return true;
-	
-	QFontMetrics fontMetrics ( font );
-	m_width = fontMetrics.width( c ) + 2;
-	m_height = fontMetrics.height() + 2;
-	if( m_width <= 2 || m_height <= 2 ) return false;
-	QImage image( m_width, m_height, QImage::Format_RGB32 );
-	
-	QPainter painter;
-	painter.begin( &image );
-	painter.setFont( font );
-	painter.setRenderHint( QPainter::TextAntialiasing );
-	painter.setBackground( Qt::black );
-	painter.eraseRect( image.rect() );
-	painter.setPen( Qt::blue );
-	painter.drawText ( 1, m_height - painter.fontMetrics().descent(), c );
-	painter.end();
+  if( m_displayList ) return true;
+  
+  // *** STEP 1 : render the character to a QImage ***
+  
+  // compute the size of the image to create
+  QFontMetrics fontMetrics ( font );
+  m_width = fontMetrics.width( c ) + 2;
+  m_height = fontMetrics.height() + 2;
+  if( m_width <= 2 || m_height <= 2 ) return false;
+  // create a new image
+  QImage image( m_width, m_height, QImage::Format_RGB32 );
+  QPainter painter;
+  // start painting the image
+  painter.begin( &image );
+  painter.setFont( font );
+  painter.setRenderHint( QPainter::TextAntialiasing );
+  painter.setBackground( Qt::black );
+  painter.eraseRect( image.rect() );
+  // use an artificial blue color. This image is only used internally anyway.
+  painter.setPen( Qt::blue );
+  // actually paint the character. The position seems right at least with Helvetica
+  // at various sizes, I didn't try other fonts. If in the future a user complains about
+  // the text being clamped to the top/bottom, change this line.
+  painter.drawText ( 1, m_height - painter.fontMetrics().descent(), c );
+  // end painting the image
+  painter.end();
 
-	GLubyte *rawbitmap = new GLubyte[ m_width * m_height ];
-	if( ! rawbitmap ) return false;
+  // *** STEP 2 : extract the raw bitmap from the image ***
+  
+  // --> explanation: the image we just rendered is RGB, but actually all the
+  //     data is in the B channel because we painted in blue. Now we extract
+  //     this blue channel into a separate bitmap that'll be faster to manipulate
+  //     in what follows.
 
-        int n = 0;
-	for( int j = m_height - 1; j >= 0; j-- )
-	for( int i = 0; i < m_width; i++, n++ )
-	{
-		rawbitmap[n] = qBlue( image.pixel( i, j ) );
-	}
+  GLubyte *rawbitmap = new GLubyte[ m_width * m_height ];
+  if( ! rawbitmap ) return false;
+  int n = 0;
+  // loop over the pixels of the image, in reverse y direction
+  for( int j = m_height - 1; j >= 0; j-- )
+  for( int i = 0; i < m_width; i++, n++ )
+  {
+    rawbitmap[n] = qBlue( image.pixel( i, j ) );
+  }
+  
+  // *** STEP 3 : compute the shadow bitmap from the raw bitmap ***
+  
+  // --> explanation: we apply a convolution filter to the raw bitmap
+  //     to produce a new bitmap where the drawing is thicker. We call
+  //     this new bitmap the "shadow bitmap". Note that each pixel
+  //     in the shadowbitmap is influenced by its 8 neighbours from the
+  //     raw bitmap, but not by the corresponding pixel itself!
+  //     The influence of the pixel itself will be added separately
+  //     in step 4.
 
-	float *shadowbitmap = new float[ m_width * m_height ];
-	if( ! shadowbitmap ) return false;
+  float *shadowbitmap = new float[ m_width * m_height ];
+  if( ! shadowbitmap ) return false;
 
-        const float df = 0.7;
+  // the "diagonal factor", currently set to be the square root of 2.
+  // Explanation: with our convolution filter, each pixel in the shadowbitmap
+  // will be influenced by the 8 surrounding pixels from the rawbitmap.
+  // The 4 diagonal pixels (the corners of the square) are farther away and
+  // thus should have smaller influence. Thus df is smaller than 1. The value
+  // sqrt(2) comes from Pythagora's theorem.
+  const float df = sqrtf(2);
 
-        for( int j = 1; j < m_height - 1; j++ )
-	for( int i = 1; i < m_width - 1; i++ )
-        {
-          n = i + j * m_width;
-          shadowbitmap[n]
-            = rawbitmap[n - m_width - 1]*df + rawbitmap[n - m_width] + rawbitmap[n - m_width + 1]*df
-            + rawbitmap[n - 1] + rawbitmap[n] + rawbitmap[n + 1]
-            + rawbitmap[n + m_width - 1]*df + rawbitmap[n + m_width] + rawbitmap[n + m_width + 1]*df;
-        }
+  // first compute the pixels that are not on an edge of the bitmap
+  for( int j = 1; j < m_height - 1; j++ )
+  for( int i = 1; i < m_width - 1; i++ )
+  {
+    n = i + j * m_width;
+    shadowbitmap[n]
+            = rawbitmap[n - m_width - 1] * df
+            + rawbitmap[n - m_width]
+            + rawbitmap[n - m_width + 1] * df
+            + rawbitmap[n - 1]
+            + rawbitmap[n + 1]
+            + rawbitmap[n + m_width - 1] * df
+            + rawbitmap[n + m_width]
+            + rawbitmap[n + m_width + 1] * df;
+  }
+  
+  // compute the pixels on the top and bottom edges, minus the 4 corners
+  for( int i = 1; i < m_width - 1; i++ )
+  {
+    n = i;
+    shadowbitmap[n] = rawbitmap[n - 1] + rawbitmap[n + 1]
+                    + rawbitmap[n + m_width - 1] * df + rawbitmap[n + m_width]
+                    + rawbitmap[n + m_width + 1] * df;
 
-        for( int i = 1; i < m_width - 1; i++ )
-        {
-          n = i;
-          shadowbitmap[n]
-            = rawbitmap[n - 1] + rawbitmap[n] + rawbitmap[n + 1]
-            + rawbitmap[n + m_width - 1]*df + rawbitmap[n + m_width] + rawbitmap[n + m_width + 1]*df;
+    n = i + (m_height - 1) * m_width;
+    shadowbitmap[n] = rawbitmap[n - m_width - 1] * df + rawbitmap[n - m_width]
+                    + rawbitmap[n - m_width + 1] * df + rawbitmap[n - 1]
+                    + rawbitmap[n + 1];
+  }
 
-          n = i + (m_height - 1) * m_width;
-          shadowbitmap[n]
-            = rawbitmap[n - m_width - 1]*df + rawbitmap[n - m_width] + rawbitmap[n - m_width + 1]*df
-            + rawbitmap[n - 1] + rawbitmap[n] + rawbitmap[n + 1];
-        }
+  // compute the pixels on the left and right edges, minus the 4 corners
+  for( int j = 1; j < m_height - 1; j++ )
+  {
+    n = j * m_width;
+    shadowbitmap[n] = rawbitmap[n - m_width] + rawbitmap[n - m_width + 1] * df
+                    + rawbitmap[n + 1]
+                    + rawbitmap[n + m_width] + rawbitmap[n + m_width + 1] * df;
 
-        for( int j = 1; j < m_height - 1; j++ )
-        {
-          n = j * m_width;
-          shadowbitmap[n]
-            = rawbitmap[n - m_width] + rawbitmap[n - m_width + 1]*df
-            + rawbitmap[n] + rawbitmap[n + 1]
-            + rawbitmap[n + m_width] + rawbitmap[n + m_width + 1]*df;
+    n = m_width - 1 + j * m_width;
+    shadowbitmap[n] = rawbitmap[n - m_width - 1] * df + rawbitmap[n - m_width]
+                    + rawbitmap[n - 1]
+                    + rawbitmap[n + m_width - 1] * df + rawbitmap[n + m_width];
+  }
 
-          n = m_width - 1 + j * m_width;
-          shadowbitmap[n]
-            = rawbitmap[n - m_width - 1]*df + rawbitmap[n - m_width]
-            + rawbitmap[n - 1] + rawbitmap[n]
-            + rawbitmap[n + m_width - 1]*df + rawbitmap[n + m_width];
-        }
+  // compute the 4 corners
+  shadowbitmap[0] = rawbitmap[1]
+                  + rawbitmap[m_width]
+                  + rawbitmap[m_width] * df;
+  shadowbitmap[m_width-1] = rawbitmap[m_width-2]
+                          + rawbitmap[2*m_width-1]
+                          + rawbitmap[2*m_width-2] * df;
+  shadowbitmap[(m_height-1)*m_width] = rawbitmap[(m_height-2)*m_width]
+                                     + rawbitmap[(m_height-1)*m_width+1]
+                                     + rawbitmap[(m_height-2)*m_width+1] * df;
+  shadowbitmap[(m_height-1)*m_width+m_width-1] = rawbitmap[(m_height-1)*m_width+m_width-2]
+                                               + rawbitmap[(m_height-2)*m_width+m_width-1]
+                                               + rawbitmap[(m_height-2)*m_width+m_width-2] * df;
 
-        shadowbitmap[0] = rawbitmap[0] + rawbitmap[1] + rawbitmap[m_width];
-        shadowbitmap[m_width-1] = rawbitmap[m_width-1] + rawbitmap[m_width-2] + rawbitmap[2*m_width-1];
-        shadowbitmap[(m_height-1)*m_width] = rawbitmap[(m_height-1)*m_width] + rawbitmap[(m_height-2)*m_width] + rawbitmap[(m_height-1)*m_width+1];
-        shadowbitmap[(m_height-1)*m_width+m_width-1] = rawbitmap[(m_height-1)*m_width+m_width-1] + rawbitmap[(m_height-1)*m_width+m_width-2] + rawbitmap[(m_height-2)*m_width+m_width-1];
+  // *** STEP 4 : compute the final bitmap ***
+  // --> explanation: we build the bitmap that will be passed to OpenGL for texturing.
+  //     this texture has 2 channels: the luminance and the alpha channels.
+  //     the rawbitmap readily gives the luminance channel, while the shadowbitmap gives
+  //     the alpha channel after some simple operations.
 
-	GLubyte *finalbitmap = new GLubyte[ 2 * m_width * m_height ];
-	if( ! finalbitmap ) return false;
+  GLubyte *finalbitmap = new GLubyte[ 2 * m_width * m_height ];
+  if( ! finalbitmap ) return false;
 
-        for( int j = 0; j < m_height; j++ )
-	for( int i = 0; i < m_width; i++ )
-        {
-          n = i + j * m_width;
-          int luminance, alpha;
-          luminance = rawbitmap[n];
-          alpha = static_cast<int>(0.5 * shadowbitmap[n]);
-          if( alpha > 255 ) alpha = 255;
-          finalbitmap[2 * n] = luminance;
-          finalbitmap[2 * n + 1] = alpha;
-        }
+  for( int j = 0; j < m_height; j++ )
+  for( int i = 0; i < m_width; i++ )
+  {
+    n = i + j * m_width;
+    finalbitmap[2 * n] = rawbitmap[n];
+    int alpha = static_cast<int>(TEXT_SHADOW_INTENSITY * shadowbitmap[n])
+              + static_cast<int>(rawbitmap[n]);
+    if( alpha > 255 ) {
+      alpha = 255;
+    }
+    finalbitmap[2 * n + 1] = static_cast<GLubyte>(alpha);
+  }
+  
+  // *** STEP 5 : pass the final bitmap to OpenGL for texturing ***
 
-	glGenTextures( 1, &m_texture );
-	if( ! m_texture ) return false;
+  glGenTextures( 1, &m_texture );
+  if( ! m_texture ) return false;
 
-	glBindTexture( GL_TEXTURE_2D, m_texture );
-	glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );
-	glTexImage2D(
-		GL_TEXTURE_2D,
-		0,
-		GL_LUMINANCE_ALPHA,
-		m_width,
-		m_height,
-		0,
-		GL_LUMINANCE_ALPHA,
-		GL_UNSIGNED_BYTE,
-		finalbitmap );
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+  glBindTexture( GL_TEXTURE_2D, m_texture );
+  glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );
+  glTexImage2D(
+    GL_TEXTURE_2D,
+    0,
+    GL_LUMINANCE_ALPHA,
+    m_width,
+    m_height,
+    0,
+    GL_LUMINANCE_ALPHA,
+    GL_UNSIGNED_BYTE,
+    finalbitmap );
+  glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+  glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
-	delete [] rawbitmap;
-	delete [] shadowbitmap;
-	delete [] finalbitmap;
+  // the texture data is now kept alive by OpenGL. It's time to free the bitmaps.
+  delete [] rawbitmap;
+  delete [] shadowbitmap;
+  delete [] finalbitmap;
+  
+  // *** STEP 6 : compile the display list ***
 
-	m_displayList = glGenLists(1);
-	if( ! m_displayList ) return false;
+  m_displayList = glGenLists(1);
+  if( ! m_displayList ) return false;
 
-	glNewList( m_displayList, GL_COMPILE );
-	glBindTexture( GL_TEXTURE_2D, m_texture );
-	glBegin( GL_QUADS );
-	glTexCoord2f( 0, 0);
-	glVertex2f( 0 , -m_height );
-	glTexCoord2f( 1, 0);
-	glVertex2f( m_width , -m_height );
-	glTexCoord2f( 1, 1);
-	glVertex2f( m_width, 0 );
-	glTexCoord2f( 0, 1);
-	glVertex2f( 0 , 0 );
-	glEnd();
-	glTranslatef( m_width-2, 0, 0 );
-	glEndList();
-	return true;
+  glNewList( m_displayList, GL_COMPILE );
+  glBindTexture( GL_TEXTURE_2D, m_texture );
+  // paint the character
+  glBegin( GL_QUADS );
+  glTexCoord2f( 0, 0);
+  glVertex2f( 0 , -m_height );
+  glTexCoord2f( 1, 0);
+  glVertex2f( m_width , -m_height );
+  glTexCoord2f( 1, 1);
+  glVertex2f( m_width, 0 );
+  glTexCoord2f( 0, 1);
+  glVertex2f( 0 , 0 );
+  glEnd();
+  // move to the right so that the next character (if any) is paintd to the right.
+  // this makes me think that we might consider allowing right-to-left text.
+  // this would be needed for i18n, for example for the Arab language.
+  glTranslatef( m_width-2, 0, 0 );
+  glEndList();
+  return true;
 }
 
-TextRenderer::TextRenderer()
+class TextRendererPrivate
 {
-	m_glwidget = 0;
-	m_textmode = false;
+  public:
+  
+    TextRendererPrivate() {}
+    ~TextRendererPrivate() {}
+  
+    /**
+    * The font used for rendering the chars.
+    */
+    QFont font;
+    
+    /**
+    * This hash gives the correspondence table between QChars
+    * (the keys) and the corresponding CharRenderers (the values).
+    * Every time a QChar is being met, either it is found in this
+    * table, in which case it can be directly rendered, or it is
+    * not found, in which case a new CharRenderer is created for
+    * it and added to this table.
+    */
+    QHash<QChar, CharRenderer*> charTable;
+
+    /**
+    * The GLWidget in which to render. This is set
+    * once and for all by setup().
+    */
+    GLWidget *glwidget;
+
+    GLboolean textmode;
+
+    ///{ Members used to remember the OpenGL state in order to be able to restore it after rendering. See do_end().
+    GLboolean wasEnabled_LIGHTING;
+    GLboolean wasEnabled_TEXTURE_2D;
+    GLboolean wasEnabled_FOG;
+    GLboolean wasEnabled_BLEND;
+    ///}
+};
+
+TextRenderer::TextRenderer() : d(new TextRendererPrivate)
+{
+  d->glwidget = 0;
+  d->textmode = false;
 }
 
 TextRenderer::~TextRenderer()
 {
-	QHash<QChar, CharRenderer *>::iterator i = m_charTable.begin();
-	while( i != m_charTable.end() )
-	{
-		delete i.value();
-		i = m_charTable.erase(i);
-        }
+  QHash<QChar, CharRenderer *>::iterator i = d->charTable.begin();
+  while( i != d->charTable.end() )
+  {
+    delete i.value();
+    i = d->charTable.erase(i);
+  }
+  delete d;
 }
 
 void TextRenderer::setGLWidget( GLWidget *glwidget )
 {
-  m_glwidget = glwidget;
-  m_font = m_glwidget->font();
-}
-
-void TextRenderer::do_begin()
-{
-	m_wasEnabled_LIGHTING = glIsEnabled( GL_LIGHTING );
-	m_wasEnabled_FOG = glIsEnabled( GL_FOG );
-	m_wasEnabled_GL_TEXTURE_2D
-		= glIsEnabled( GL_TEXTURE_2D );
-	m_wasEnabled_BLEND = glIsEnabled( GL_BLEND );
-	glDisable( GL_LIGHTING );
-	glDisable( GL_FOG );
-	glEnable( GL_TEXTURE_2D );
-	glEnable( GL_BLEND );
-	glMatrixMode( GL_PROJECTION );
-	glPushMatrix();
-	glLoadIdentity();
-	glOrtho( 0, m_glwidget->width(), 0, m_glwidget->height(), 0, 1 );
-	glMatrixMode( GL_MODELVIEW );
+  d->glwidget = glwidget;
+  d->font = d->glwidget->font();
 }
 
 void TextRenderer::begin()
 {
-	if( ! m_glwidget ) return;
-	if( m_textmode ) return;
-	m_textmode = true;
-	do_begin();
-}
-
-void TextRenderer::do_end()
-{
-	if( ! m_wasEnabled_GL_TEXTURE_2D )
-		glDisable( GL_TEXTURE_2D );
-	if( ! m_wasEnabled_BLEND ) glDisable( GL_BLEND );
-	if( m_wasEnabled_LIGHTING ) glEnable( GL_LIGHTING );
-	if( m_wasEnabled_FOG ) glEnable( GL_FOG );
-	glMatrixMode( GL_PROJECTION );
-	glPopMatrix();
-	glMatrixMode( GL_MODELVIEW );
+  assert(d->glwidget);
+  d->textmode = true;
+  d->wasEnabled_LIGHTING = glIsEnabled( GL_LIGHTING );
+  d->wasEnabled_FOG = glIsEnabled( GL_FOG );
+  d->wasEnabled_TEXTURE_2D = glIsEnabled( GL_TEXTURE_2D );
+  d->wasEnabled_BLEND = glIsEnabled( GL_BLEND );
+  glDisable( GL_LIGHTING );
+  glDisable( GL_FOG );
+  glEnable( GL_TEXTURE_2D );
+  glEnable( GL_BLEND );
+  glMatrixMode( GL_PROJECTION );
+  glPushMatrix();
+  glLoadIdentity();
+  glOrtho( 0, d->glwidget->width(), 0, d->glwidget->height(), 0, 1 );
+  glMatrixMode( GL_MODELVIEW );
 }
 
 void TextRenderer::end()
 {
-	if( m_textmode ) do_end();
-	m_textmode = false;
+  assert(d->textmode);
+  if( ! d->wasEnabled_TEXTURE_2D )
+  glDisable( GL_TEXTURE_2D );
+  if( ! d->wasEnabled_BLEND ) glDisable( GL_BLEND );
+  if( d->wasEnabled_LIGHTING ) glEnable( GL_LIGHTING );
+  if( d->wasEnabled_FOG ) glEnable( GL_FOG );
+  glMatrixMode( GL_PROJECTION );
+  glPopMatrix();
+  glMatrixMode( GL_MODELVIEW );
+  d->textmode = false;
 }
 
 int TextRenderer::do_draw( const QString &string )
 {
-        CharRenderer *c;
-        int retval = 0;
-	if( m_charTable.contains( string[0] ) )
-        {
-		c = m_charTable.value( string[0] );
-                c->draw();
-        }
-	else
-	{
-		c = new CharRenderer;
-		if( c->initialize( string[0], m_font ) )
-		{
-			m_charTable.insert( string[0], c);
-			c->draw();
-		}
-		else
-                {
-                  delete c;
-                  c = 0;
-                }
-	}
-        if(c) retval = c->height() -2;
+  CharRenderer *c;
+  int retval = 0;
+  if( d->charTable.contains( string[0] ) )
+  {
+    c = d->charTable.value( string[0] );
+    c->draw();
+  }
+  else
+  {
+    c = new CharRenderer;
+    if( c->initialize( string[0], d->font ) )
+    {
+      d->charTable.insert( string[0], c);
+      c->draw();
+    }
+    else
+    {
+      delete c;
+      c = 0;
+    }
+  }
+  if(c) retval = c->height() -2;
 
-	for( int i = 1; i < string.size(); i++ )
-	{
-		if( m_charTable.contains( string[i] ) )
-			m_charTable.value( string[i] )->draw();
-		else
-		{
-			CharRenderer *c = new CharRenderer;
-			if( c->initialize( string[i], m_font ) )
-			{
-				m_charTable.insert( string[i], c);
-				c->draw();
-			}
-			else delete c;
-		}
-	}
-        return retval;
+  for( int i = 1; i < string.size(); i++ )
+  {
+    if( d->charTable.contains( string[i] ) )
+      d->charTable.value( string[i] )->draw();
+    else
+    {
+      CharRenderer *c = new CharRenderer;
+      if( c->initialize( string[i], d->font ) )
+      {
+        d->charTable.insert( string[i], c);
+        c->draw();
+      }
+      else delete c;
+    }
+  }
+  return retval;
 }
 
 int TextRenderer::draw( int x, int y, const QString &string )
 {
-	if( ! m_glwidget ) return 0;
-	if( string.isEmpty() ) return 0;
+  assert(d->textmode);
+  if( string.isEmpty() ) return 0;
 
-	if( ! m_textmode ) do_begin();
-	glPushMatrix();
-	glLoadIdentity();
-	glTranslatef( x, m_glwidget->height() - y, 0 );
+  glPushMatrix();
+  glLoadIdentity();
+  glTranslatef( x, d->glwidget->height() - y, 0 );
         int retval = do_draw(string);
-	glPopMatrix();
-	if( ! m_textmode ) do_end();
+  glPopMatrix();
 
-        return retval;
+  return retval;
 }
 
 int TextRenderer::draw( const Eigen::Vector3d &pos, const QString &string )
 {
-	if( ! m_glwidget ) return 0;
-	if( string.isEmpty() ) return 0;
+  assert(d->textmode);
+  if( string.isEmpty() ) return 0;
 
-        Eigen::Vector3d wincoords = m_glwidget->camera()->project(pos);
-	if( ! m_textmode ) do_begin();
-	glPushMatrix();
-        glLoadIdentity();
-	glTranslatef( static_cast<int>(wincoords.x()),
-                      static_cast<int>(wincoords.y()),
-                      -wincoords.z() );
-        int retval = do_draw(string);
-	glPopMatrix();
-	if( ! m_textmode ) do_end();
+  Eigen::Vector3d wincoords = d->glwidget->camera()->project(pos);
+  glPushMatrix();
+  glLoadIdentity();
+  glTranslatef( static_cast<int>(wincoords.x()),
+                static_cast<int>(wincoords.y()),
+                -wincoords.z() );
+  int retval = do_draw(string);
+  glPopMatrix();
 
-        return retval;
+  return retval;
 }
 
 } // namespace Avogadro

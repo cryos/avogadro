@@ -31,56 +31,47 @@
 
 /** NOTE: This class is only there as a temporary replacement for
 * QGLWidget::renderText(). As of Qt 4.2.3 and Qt 4.3-beta1, this function is
-* too slow and doesn't allow outlined text. If a future version of Qt brings a
+* too slow and can't do shadowed text. If a future version of Qt brings a
 * sufficiently improved QGLWidget::renderText(), we will of course drop this class.
 *
 * This class renders text inside a QGLWidget. It replaces the functionality
 * of QGLWidget::renderText().
 *
-* Its advantages over the renderText() in Qt 4.2.3 are that it is much faster,
-* consumes far less memory, does outlined text, and provides a mode (the 2D mode) where
-* it is guaranteed that text gets the lowest value in the Z-buffer. Its drawbacks are that
-* it can't handle properly multiple fonts, and that its Unicode-safeness is
-* not perfect. More precisely, it does not support combinations of unicode characters.
-* For example, for accented characters, there are two possible unicode representations:
-* either use a single unicode character representing the accented letter, or use the unicode
-* character of the non-accented letter and combine it with the unicode character of the accent.
-* This TextRenderer class does not support this second approach. So use the unicode character
-* representing the accented letter. I don't think this is a big deal: there exist unicode characters
-* for pretty much any accented letter. And anyway most of the text we're going to render is
-* numbers and other scientific data, not medieval poetry.
+* Its advantages over the renderText() in Qt 4.2.3 are that it is much faster both at
+* render-time and at startup, consumes less memory, and does shadowed text. Its drawbacks are that
+* it can't yet handle rendering more than one font simultaneously, and that its Unicode-safeness is
+* not perfect as superpositions of unicode characters aren't handled.
 *
-* Any QFont can be used, all character encodings supported by Qt can be used. Before painting any
-* text, and after the OpenGL context is created, you should set the GLWidget where to render to by
-* calling setGLWidget().
+* Every QFont can be used, every character encodings supported by Qt can be used.
 *
-* To print text, do:
+* To draw plain 2D text on top of the scene, do:
 * @code
-	textRenderer.print( x, y, string );
+  textRenderer.begin();
+  textRenderer.draw( x1, y1, string1 );
+  textRenderer.draw( x2, y2, string2 );
+  textRenderer.draw( x3, y2, string3 );
+  textRenderer.end();
 * @endcode
-* where x,y are ints and string is any QString. If you want to choose a color,
-* please call glColor3f or glColor4f before calling print(). Of course you can
-* also call qglColor or Color::apply. You can achieve semitransparent text at
+*
+* To draw text as a transparent object inside the scene, do:
+* @code
+  textRenderer.begin();
+  textRenderer.draw( pos1, string1 );
+  textRenderer.draw( pos2, string2 );
+  textRenderer.draw( pos3, string3 );
+  textRenderer.end();
+* @endcode
+*
+* In order to set the text color, please call glColor3f or glColor4f before
+* calling draw(). Of course you can
+* also call qglColor or Color::apply(). You can achieve semitransparent text at
 * no additional cost by choosing a semitransparent color.
-*
-* If you wish to do several calls to print(), it will improve performance
-* to enclose them between a call to begin() and a call to end(), like that:
-* @code
-	textRenderer.begin();
-	textRenderer.print( x1, y1, string1 );
-	textRenderer.print( x2, y2, string2 );
-	textRenderer.print( x3, y2, string3 );
-	textRenderer.end();
-* @endcode
 * 
-* Please make sure, though, that no relevant OpenGL state change occurs between
+* Please make sure that no relevant OpenGL state change occurs between
 * begin() and end(), except the state changes performed by the TextRenderer
 * itself. In other words, please avoid calling glSomething() between begin() and
 * end(), except if you are sure that this call won't result in a conflicting state
-* change.
-*
-* The print() method when called alone, or the begin()-print()-end() group,
-* do restore the OpenGL state as they found it, including the matrices.
+* change. Of course calling glColor*() is allowed.
 *
 * If you experience rendering problems, you can try the following:
 * - disable some OpenGL state bits. For instance, TextRenderer automatically
@@ -88,97 +79,69 @@
 *   correctly with them enabled. There probably are other OpenGL state bits
 *   that have to be disabled, so if your program enables some of them, you
 *   might have to disable them before rendering text.
-* - if you experience poor font quality, please consider using an antialiased
-*   font.
+* - if you experience poor font quality, meake sure that your GLWidget is using
+*   an antialiased font.
 *
 * @class TextRenderer
 * @author Benoit Jacob
 */
 
-namespace Avogadro {
-class CharRenderer;
-class A_EXPORT GLWidget;
-class TextRenderer
+namespace Avogadro
 {
-	protected:
-		/**
-		 * The font used for rendering the chars.
-		 */
-		QFont m_font;
-		
-		/**
-		 * This hash gives the correspondence table between QChars
-		 * (the keys) and the corresponding CharRenderers (the values).
-		 * Every time a QChar is being met, either it is found in this
-		 * table, in which case it can be directly rendered, or it is
-		 * not found, in which case a new CharRenderer is created for
-		 * it and added to this table.
-		 */
-		QHash<QChar, CharRenderer*> m_charTable;
 
-		/**
-		 * The GLWidget in which to render. This is set
-		 * once and for all by setup().
-		 */
-                GLWidget *m_glwidget;
-
-		GLboolean m_textmode;
-
-		///{ Members used to remember the OpenGL state in order to be able to restore it after rendering. See do_end().
-		GLboolean m_wasEnabled_LIGHTING;
-		GLboolean m_wasEnabled_GL_TEXTURE_2D;
-		GLboolean m_wasEnabled_FOG;
-		GLboolean m_wasEnabled_BLEND;
-		///}
-
-		/**
-		 * Stores the relevant part of the OpenGL state, and prepares
-		 * for rendering
-		 */
-		void do_begin();
-
-		/**
-		 * Restores the OpenGL state
-		 */
-		void do_end();
-
-    int do_draw(const QString &string);
-
-	public:
-		TextRenderer();
-		~TextRenderer();
-		
-		/**
-		 * This should be called only once, before any printing occurs.
-		 * @param glwidget The GLWidget in which to render.
-		 * See m_glwidget member.
-		 * @param font The QFont to use. See m_font member.
-		 */
-		void setGLWidget( GLWidget *glwidget );
-
-		/**
-		 * Prints text at the position (x,y) in window coordinates
-		 * (0,0) is the bottom left corner
-		 * @param x the x-coordinate
-		 * @param y the y-coordinate
-		 * @param string the QString to print
-		 */
-		int draw( int x, int y, const QString &string);
-
-		/**
-		 * Call this before doing multiple calls to print(). This is
-		 * not necessary, but will improve performance. Don't forget,
-		 * then, to call end() after.
-		 */
-		void begin();
-
-		/**
-		 * Call this after having called begin() and print().
-		 */
-		void end();
-
-    int draw( const Eigen::Vector3d & pos, const QString &string);
-};
+  class CharRenderer;
+  class A_EXPORT GLWidget;
+  
+  class TextRendererPrivate;
+  class TextRenderer
+  {
+    public:
+      TextRenderer();
+      ~TextRenderer();
+      
+      /**
+      * This should be called only once, before any printing occurs.
+      * @param glwidget The GLWidget in which to render.
+      */
+      void setGLWidget( GLWidget *glwidget );
+  
+      /**
+      * Call this before drawing any text. This method saves the GL state
+      * and changes it to prepare for text rendering.
+      */
+      void begin();
+  
+      /**
+      * Call this after drawing text. This method restores the GL state
+      * to what it was when begin() was called.
+      */
+      void end();
+      
+      /**
+      * Draw text inside the 3D scene. Must be called between begin() and end().
+      * @param pos the position of the text in the scene's coordinate system
+      * @param string the QString to render
+      * @returns the height in pixels of the text just rendered (0 for an empty string).
+      */
+      int draw( const Eigen::Vector3d & pos, const QString &string);
+      
+      /**
+      * Draw 2D text at the position (x,y) in window coordinates. Must be called
+      * between begin() and end().
+      * (0,0) is the top-left corner.
+      * @param x the x-coordinate
+      * @param y the y-coordinate
+      * @param string the QString to render
+      * @returns the height in pixels of the text just rendered (0 for an empty string).
+      */
+      int draw( int x, int y, const QString &string);
+      
+    private:
+  
+      TextRendererPrivate * const d;
+      int do_draw(const QString &string);
+  
+  };
 
 } // namespace Avogadro
 
