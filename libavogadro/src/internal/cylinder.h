@@ -28,7 +28,7 @@ namespace Avogadro {
    * @author Benoit Jacob
    */
   class CylinderPrivate;
-  class A_EXPORT Cylinder
+  class Cylinder
   {
     protected:
       void initialize();

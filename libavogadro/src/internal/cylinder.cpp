@@ -11,9 +11,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "config.h"
-
-#include <avogadro/cylinder.h>
+#include "cylinder.h"
 
 using namespace Eigen;
 

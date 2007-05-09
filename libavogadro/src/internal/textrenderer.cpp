@@ -20,7 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include<avogadro/textrenderer.h>
+#include "textrenderer.h"
+
 #include<QPainter>
 #include<avogadro/glwidget.h>
 #include<avogadro/camera.h>

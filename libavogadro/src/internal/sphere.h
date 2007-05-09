@@ -33,7 +33,7 @@ namespace Avogadro {
    * @author Benoit Jacob
    */
   class SpherePrivate;
-  class A_EXPORT Sphere
+  class Sphere
   {
     private:
       SpherePrivate * const d;

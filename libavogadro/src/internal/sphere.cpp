@@ -11,9 +11,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "config.h"
-
-#include <avogadro/sphere.h>
+#include "sphere.h"
 
 using namespace Eigen;
 

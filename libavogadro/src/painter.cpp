@@ -23,10 +23,10 @@
 
 #include <avogadro/painter.h>
 #include <avogadro/glwidget.h>
-#include <avogadro/sphere.h>
-#include <avogadro/cylinder.h>
-#include <avogadro/textrenderer.h>
 #include <avogadro/camera.h>
+#include "internal/sphere.h"
+#include "internal/cylinder.h"
+#include "internal/textrenderer.h"
 
 #include <cassert>
 
