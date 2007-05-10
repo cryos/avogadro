@@ -242,10 +242,10 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
   glGenTextures( 1, &m_texture );
   if( ! m_texture ) return false;
 
-  glBindTexture( GL_TEXTURE_2D, m_texture );
+  glBindTexture( GL_TEXTURE_RECTANGLE_ARB, m_texture );
   glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );
   glTexImage2D(
-    GL_TEXTURE_2D,
+    GL_TEXTURE_RECTANGLE_ARB,
     0,
     GL_LUMINANCE_ALPHA,
     m_width,
@@ -254,8 +254,8 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
     GL_LUMINANCE_ALPHA,
     GL_UNSIGNED_BYTE,
     finalbitmap );
-  glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
-  glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+  glTexParameteri( GL_TEXTURE_RECTANGLE_ARB, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+  glTexParameteri( GL_TEXTURE_RECTANGLE_ARB, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
   // the texture data is now kept alive by OpenGL. It's time to free the bitmaps.
   delete [] rawbitmap;
@@ -268,16 +268,16 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
   if( ! m_displayList ) return false;
 
   glNewList( m_displayList, GL_COMPILE );
-  glBindTexture( GL_TEXTURE_2D, m_texture );
+  glBindTexture( GL_TEXTURE_RECTANGLE_ARB, m_texture );
   // paint the character
   glBegin( GL_QUADS );
-  glTexCoord2f( 0, 0);
+  glTexCoord2i( 0, 0);
   glVertex2f( 0 , -m_height );
-  glTexCoord2f( 1, 0);
+  glTexCoord2i( m_width, 0);
   glVertex2f( m_width , -m_height );
-  glTexCoord2f( 1, 1);
+  glTexCoord2i( m_width, m_height);
   glVertex2f( m_width, 0 );
-  glTexCoord2f( 0, 1);
+  glTexCoord2i( 0, m_height);
   glVertex2f( 0 , 0 );
   glEnd();
   // move to the right so that the next character (if any) is paintd to the right.
@@ -355,11 +355,11 @@ void TextRenderer::begin()
   d->textmode = true;
   d->wasEnabled_LIGHTING = glIsEnabled( GL_LIGHTING );
   d->wasEnabled_FOG = glIsEnabled( GL_FOG );
-  d->wasEnabled_TEXTURE_2D = glIsEnabled( GL_TEXTURE_2D );
+  d->wasEnabled_TEXTURE_2D = glIsEnabled( GL_TEXTURE_RECTANGLE_ARB );
   d->wasEnabled_BLEND = glIsEnabled( GL_BLEND );
   glDisable( GL_LIGHTING );
   glDisable( GL_FOG );
-  glEnable( GL_TEXTURE_2D );
+  glEnable( GL_TEXTURE_RECTANGLE_ARB );
   glEnable( GL_BLEND );
   glMatrixMode( GL_PROJECTION );
   glPushMatrix();
@@ -372,7 +372,7 @@ void TextRenderer::end()
 {
   assert(d->textmode);
   if( ! d->wasEnabled_TEXTURE_2D )
-  glDisable( GL_TEXTURE_2D );
+  glDisable( GL_TEXTURE_RECTANGLE_ARB );
   if( ! d->wasEnabled_BLEND ) glDisable( GL_BLEND );
   if( d->wasEnabled_LIGHTING ) glEnable( GL_LIGHTING );
   if( d->wasEnabled_FOG ) glEnable( GL_FOG );
