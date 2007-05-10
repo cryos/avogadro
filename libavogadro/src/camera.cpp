@@ -229,5 +229,12 @@ namespace Avogadro
 
     return pos;
   }
+  
+  Eigen::Vector3d Camera::backTransformedZAxis() const
+  {
+    return Eigen::Vector3d( d->modelview(2, 0),
+                            d->modelview(2, 1),
+                            d->modelview(2, 2) );
+  }
 
 } // end namespace Avogadro
