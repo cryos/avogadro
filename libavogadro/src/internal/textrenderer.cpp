@@ -26,7 +26,7 @@
 #include<avogadro/glwidget.h>
 #include<avogadro/camera.h>
 
-const float TEXT_SHADOW_INTENSITY = 0.3;
+const float TEXT_SHADOW_INTENSITY = 0.5;
 
 namespace Avogadro {
 
@@ -154,8 +154,8 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
   // will be influenced by the 8 surrounding pixels from the rawbitmap.
   // The 4 diagonal pixels (the corners of the square) are farther away and
   // thus should have smaller influence. Thus df is smaller than 1. The value
-  // sqrt(2) comes from Pythagora's theorem.
-  const float df = sqrtf(2);
+  // 1/sqrt(2) comes from Pythagora's theorem.
+  const float df = 1.0f / sqrtf(2.0f);
 
   // first compute the pixels that are not on an edge of the bitmap
   for( int j = 1; j < m_height - 1; j++ )
