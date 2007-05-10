@@ -63,6 +63,10 @@
 # define GL_SEPARATE_SPECULAR_COLOR_EXT 0x81FA
 #endif
 
+#ifndef GL_TEXTURE_RECTANGLE_ARB
+# define GL_TEXTURE_RECTANGLE_ARB 0x84F5
+#endif
+
 const double   ROTATION_SPEED                        = 0.005;
 const double   ZOOM_SPEED                            = 0.02;
 const double   MOUSE_WHEEL_SPEED                     = 0.1;

@@ -195,15 +195,6 @@ namespace Avogadro {
     glEnable( GL_CULL_FACE );
     glEnable( GL_COLOR_SUM_EXT );
 
-    GLfloat mat_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
-    GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat mat_shininess[] = { 30.0 };
-
-    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-    glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-
     // Used to display semi-transparent relection rectangle
     //  glBlendFunc(GL_ONE, GL_ONE);
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
