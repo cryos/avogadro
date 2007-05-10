@@ -15,17 +15,6 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-# ball and stick engine
-set(bsengine_SRCS bsengine.cpp)
-qt4_automoc(${bsengine_SRCS})
-ADD_LIBRARY(bsengine SHARED ${bsengine_SRCS} )
-TARGET_LINK_LIBRARIES(bsengine avogadro-lib
-                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
-                                ${OPENGL_LIBRARIES}
-)
-
-INSTALL(TARGETS bsengine DESTINATION ${DESTINATION_DIR})
-
 # ball and stick dynamic engine
 set(bsdyengine_SRCS bsdyengine.cpp)
 qt4_wrap_ui(bsdyengine_UIS bsdysettingswidget.ui)
