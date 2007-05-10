@@ -26,7 +26,7 @@
 #include<avogadro/glwidget.h>
 #include<avogadro/camera.h>
 
-const float TEXT_SHADOW_INTENSITY = 0.5;
+const float TEXT_OUTLINE_INTENSITY = 0.5;
 
 namespace Avogadro {
 
@@ -136,21 +136,17 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
     rawbitmap[n] = qBlue( image.pixel( i, j ) );
   }
   
-  // *** STEP 3 : compute the shadow bitmap from the raw bitmap ***
+  // *** STEP 3 : compute the neighborhood map from the raw bitmap ***
   
   // --> explanation: we apply a convolution filter to the raw bitmap
-  //     to produce a new bitmap where the drawing is thicker. We call
-  //     this new bitmap the "shadow bitmap". Note that each pixel
-  //     in the shadowbitmap is influenced by its 8 neighbours from the
-  //     raw bitmap, but not by the corresponding pixel itself!
-  //     The influence of the pixel itself will be added separately
-  //     in step 4.
+  //     to produce a new map each pixel is associated a float telling how
+  //     much it is surrounded by other pixels.
 
-  float *shadowbitmap = new float[ m_width * m_height ];
-  if( ! shadowbitmap ) return false;
+  float *neighborhood = new float[ m_width * m_height ];
+  if( ! neighborhood ) return false;
 
-  // the "diagonal factor", currently set to be the square root of 2.
-  // Explanation: with our convolution filter, each pixel in the shadowbitmap
+  // the "diagonal factor", currently set to be the inverse of the square root of 2.
+  // Explanation: with our convolution filter, each pixel in the neighborhood
   // will be influenced by the 8 surrounding pixels from the rawbitmap.
   // The 4 diagonal pixels (the corners of the square) are farther away and
   // thus should have smaller influence. Thus df is smaller than 1. The value
@@ -162,7 +158,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
   for( int i = 1; i < m_width - 1; i++ )
   {
     n = i + j * m_width;
-    shadowbitmap[n]
+    neighborhood[n]
             = rawbitmap[n - m_width - 1] * df
             + rawbitmap[n - m_width]
             + rawbitmap[n - m_width + 1] * df
@@ -177,12 +173,12 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
   for( int i = 1; i < m_width - 1; i++ )
   {
     n = i;
-    shadowbitmap[n] = rawbitmap[n - 1] + rawbitmap[n + 1]
+    neighborhood[n] = rawbitmap[n - 1] + rawbitmap[n + 1]
                     + rawbitmap[n + m_width - 1] * df + rawbitmap[n + m_width]
                     + rawbitmap[n + m_width + 1] * df;
 
     n = i + (m_height - 1) * m_width;
-    shadowbitmap[n] = rawbitmap[n - m_width - 1] * df + rawbitmap[n - m_width]
+    neighborhood[n] = rawbitmap[n - m_width - 1] * df + rawbitmap[n - m_width]
                     + rawbitmap[n - m_width + 1] * df + rawbitmap[n - 1]
                     + rawbitmap[n + 1];
   }
@@ -191,35 +187,35 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
   for( int j = 1; j < m_height - 1; j++ )
   {
     n = j * m_width;
-    shadowbitmap[n] = rawbitmap[n - m_width] + rawbitmap[n - m_width + 1] * df
+    neighborhood[n] = rawbitmap[n - m_width] + rawbitmap[n - m_width + 1] * df
                     + rawbitmap[n + 1]
                     + rawbitmap[n + m_width] + rawbitmap[n + m_width + 1] * df;
 
     n = m_width - 1 + j * m_width;
-    shadowbitmap[n] = rawbitmap[n - m_width - 1] * df + rawbitmap[n - m_width]
+    neighborhood[n] = rawbitmap[n - m_width - 1] * df + rawbitmap[n - m_width]
                     + rawbitmap[n - 1]
                     + rawbitmap[n + m_width - 1] * df + rawbitmap[n + m_width];
   }
 
   // compute the 4 corners
-  shadowbitmap[0] = rawbitmap[1]
+  neighborhood[0] = rawbitmap[1]
                   + rawbitmap[m_width]
                   + rawbitmap[m_width] * df;
-  shadowbitmap[m_width-1] = rawbitmap[m_width-2]
+  neighborhood[m_width-1] = rawbitmap[m_width-2]
                           + rawbitmap[2*m_width-1]
                           + rawbitmap[2*m_width-2] * df;
-  shadowbitmap[(m_height-1)*m_width] = rawbitmap[(m_height-2)*m_width]
+  neighborhood[(m_height-1)*m_width] = rawbitmap[(m_height-2)*m_width]
                                      + rawbitmap[(m_height-1)*m_width+1]
                                      + rawbitmap[(m_height-2)*m_width+1] * df;
-  shadowbitmap[(m_height-1)*m_width+m_width-1] = rawbitmap[(m_height-1)*m_width+m_width-2]
+  neighborhood[(m_height-1)*m_width+m_width-1] = rawbitmap[(m_height-1)*m_width+m_width-2]
                                                + rawbitmap[(m_height-2)*m_width+m_width-1]
                                                + rawbitmap[(m_height-2)*m_width+m_width-2] * df;
 
   // *** STEP 4 : compute the final bitmap ***
   // --> explanation: we build the bitmap that will be passed to OpenGL for texturing.
   //     this texture has 2 channels: the luminance and the alpha channels.
-  //     the rawbitmap readily gives the luminance channel, while the shadowbitmap gives
-  //     the alpha channel after some simple operations.
+  //     the rawbitmap readily gives the luminance channel, while the computation of the
+  //     alpha channel is a bit more involved and uses the neighborhood map.
 
   GLubyte *finalbitmap = new GLubyte[ 2 * m_width * m_height ];
   if( ! finalbitmap ) return false;
@@ -229,7 +225,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
   {
     n = i + j * m_width;
     finalbitmap[2 * n] = rawbitmap[n];
-    int alpha = static_cast<int>(TEXT_SHADOW_INTENSITY * shadowbitmap[n])
+    int alpha = static_cast<int>(TEXT_OUTLINE_INTENSITY * neighborhood[n])
               + static_cast<int>(rawbitmap[n]);
     if( alpha > 255 ) {
       alpha = 255;
@@ -259,7 +255,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
 
   // the texture data is now kept alive by OpenGL. It's time to free the bitmaps.
   delete [] rawbitmap;
-  delete [] shadowbitmap;
+  delete [] neighborhood;
   delete [] finalbitmap;
   
   // *** STEP 6 : compile the display list ***
@@ -320,7 +316,7 @@ class TextRendererPrivate
 
     ///{ Members used to remember the OpenGL state in order to be able to restore it after rendering. See do_end().
     GLboolean wasEnabled_LIGHTING;
-    GLboolean wasEnabled_TEXTURE_2D;
+    GLboolean wasEnabled_TEXTURE_RECTANGLE_ARB;
     GLboolean wasEnabled_FOG;
     GLboolean wasEnabled_BLEND;
     ///}
@@ -355,7 +351,7 @@ void TextRenderer::begin()
   d->textmode = true;
   d->wasEnabled_LIGHTING = glIsEnabled( GL_LIGHTING );
   d->wasEnabled_FOG = glIsEnabled( GL_FOG );
-  d->wasEnabled_TEXTURE_2D = glIsEnabled( GL_TEXTURE_RECTANGLE_ARB );
+  d->wasEnabled_TEXTURE_RECTANGLE_ARB = glIsEnabled( GL_TEXTURE_RECTANGLE_ARB );
   d->wasEnabled_BLEND = glIsEnabled( GL_BLEND );
   glDisable( GL_LIGHTING );
   glDisable( GL_FOG );
@@ -371,7 +367,7 @@ void TextRenderer::begin()
 void TextRenderer::end()
 {
   assert(d->textmode);
-  if( ! d->wasEnabled_TEXTURE_2D )
+  if( ! d->wasEnabled_TEXTURE_RECTANGLE_ARB )
   glDisable( GL_TEXTURE_RECTANGLE_ARB );
   if( ! d->wasEnabled_BLEND ) glDisable( GL_BLEND );
   if( d->wasEnabled_LIGHTING ) glEnable( GL_LIGHTING );

@@ -31,14 +31,14 @@
 
 /** NOTE: This class is only there as a temporary replacement for
 * QGLWidget::renderText(). As of Qt 4.2.3 and Qt 4.3-beta1, this function is
-* too slow and can't do shadowed text. If a future version of Qt brings a
+* too slow and can't do outlined text. If a future version of Qt brings a
 * sufficiently improved QGLWidget::renderText(), we will of course drop this class.
 *
 * This class renders text inside a QGLWidget. It replaces the functionality
 * of QGLWidget::renderText().
 *
 * Its advantages over the renderText() in Qt 4.2.3 are that it is much faster both at
-* render-time and at startup, consumes less memory, and does shadowed text. Its drawbacks are that
+* render-time and at startup, consumes less memory, and does outlined text. Its drawbacks are that
 * it can't yet handle rendering more than one font simultaneously, and that its Unicode-safeness is
 * not perfect as superpositions of unicode characters aren't handled.
 *
