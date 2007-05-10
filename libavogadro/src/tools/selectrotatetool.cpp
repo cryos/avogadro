@@ -1,7 +1,7 @@
 /**********************************************************************
   SelectRotateTool - Selection and Rotation Tool for Avogadro
 
-  Copyright (C) 2006 by Geoffrey R. Hutchison
+  Copyright (C) 2006-2007 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
 
   This file is part of the Avogadro molecular editor project.
@@ -39,7 +39,9 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent), _selectionDL(0)
+SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent),
+                                                      _selectionDL(0),
+                                                      _settingsWidget(0)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
@@ -47,9 +49,12 @@ SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent), _selectionDL
 
 SelectRotateTool::~SelectRotateTool()
 {
-  if(_selectionDL)
-  {
+  if(_selectionDL)  {
     glDeleteLists(_selectionDL, 1);
+  }
+
+  if(_settingsWidget) {
+    _settingsWidget->deleteLater();
   }
 }
 
@@ -97,33 +102,76 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
     widget->removeDL(_selectionDL);
   }
 
+  QList<Primitive *> hitList;
+  QList<Residue *>   residueList;
   if(!_movedSinceButtonPressed && _hits.size()) {
+    // user didn't move the mouse -- regular picking, not selection box
+
+    // we'll assemble separate "hit lists" of selected atoms and residues
+    // (e.g., if we're in residue selection mode, picking an atom
+    // will select the whole residue
+
     foreach (GLHit hit, _hits) {
       if(hit.type() == Primitive::AtomType) {
         Atom *atom = (Atom *) molecule->GetAtom(hit.name());
-        atom->toggleSelected();
-        atom->update();
+        hitList.append(atom);
         break;
       }
-      else if(hit.type() == Primitive::BondType) {
-        Bond *bond = (Bond *) molecule->GetBond(hit.name());
-        bond->toggleSelected();
-        bond->update();
+      else if(hit.type() == Primitive::ResidueType) {
+        Residue *res = static_cast<Residue *>(molecule->GetResidue(hit.name()));
+        residueList.append(res);
         break;
-      }
+      }      
+      // Currently only atom or residue selections are supported
+//       else if(hit.type() == Primitive::BondType) {
+//         Bond *bond = (Bond *) molecule->GetBond(hit.name());
+//         hitList.append(bond);
+//         break;
+//       }
     }
 
-    // FIXME: use a real list of the selected atoms (i.e., in GLWidget)
-    _selectionCenter.loadZero();
-    unsigned int numSelected = 0;
-    FOR_ATOMS_OF_MOL(a, molecule) {
-      Atom *atom = static_cast<Atom *>(&*a);
-      if (atom->isSelected()) {
-        numSelected++;
-        _selectionCenter += atom->pos();
+    bool isSelected;
+    switch (_selectionMode) {
+    case 2: // residue
+      foreach(Primitive *hit, hitList) {
+        Atom *atom = static_cast<Atom *>(hit);
+        Residue *residue = static_cast<Residue *>(atom->GetResidue());
+        if (residue && !residueList.contains(residue))
+          residueList.append(residue);
+      } // end for(hits)
+      break;
+    case 3: // molecule
+      foreach(Primitive *hit, hitList) {
+        Atom *atom = static_cast<Atom *>(hit);
+        // if this atom is unselected, select the whole fragment
+        bool select = !atom->isSelected();
+        QList<Primitive *> neighborList;
+        OBMolAtomDFSIter iter(molecule, atom->GetIdx());
+        do {
+          neighborList.append(static_cast<Atom*>(&*iter));
+        } while ((iter++).next());
+        widget->setSelection(neighborList, select);
       }
+      break;
+    case 1: // atom
+    default:
+      widget->toggleSelection(hitList);
+      break;
     }
-    _selectionCenter /= numSelected;
+
+    // if we have any residues to handle
+    // we set all atoms to match the selection of the residue
+    // and update the selection list of atoms (BUT NOT RESIDUES)
+    foreach(Residue *residue, residueList) {
+      hitList.clear();
+      bool select = !residue->isSelected();
+      FOR_ATOMS_OF_RESIDUE(a, residue) {
+        hitList.append(static_cast<Atom*>(&*a));
+      }
+      widget->setSelection(hitList, select);
+      residue->toggleSelected();
+    }
+
   }
   else if(_movedSinceButtonPressed && !_hits.size())
   {
@@ -142,10 +190,22 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
       if(hit.type() == Primitive::AtomType) {
         ((Atom *)molecule->GetAtom(hit.name()))->toggleSelected();
       }
-      else if(hit.type() == Primitive::BondType) {
-        ((Bond *)molecule->GetBond(hit.name()))->toggleSelected();
+      else if(hit.type() == Primitive::ResidueType) {
+        ((Residue *)molecule->GetResidue(hit.name()))->toggleSelected();
       }
+      //              else if(hit.type() == Primitive::BondType) {
+      //        ((Bond *)molecule->GetBond(hit.name()))->toggleSelected();
+      //      }
     }
+  }
+
+  if (_hits.size()) {
+    _selectionCenter.loadZero();
+    foreach(Primitive *hit, widget->selectedItems()) {
+      Atom *atom = static_cast<Atom *>(hit);
+      _selectionCenter += atom->pos();
+    }
+    _selectionCenter /= widget->selectedItems().size();
   }
 
   widget->update();
@@ -288,6 +348,49 @@ void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
   glPopMatrix();
 
 }
+
+void SelectRotateTool::setSelectionMode(int i)
+{
+  _selectionMode = i;
+}
+
+int SelectRotateTool::selectionMode() const
+{
+  return _selectionMode;
+}
+
+void SelectRotateTool::selectionModeChanged( int index )
+{
+  setSelectionMode(index + 1);
+}
+
+QWidget *SelectRotateTool::settingsWidget() {
+  if(!_settingsWidget) {
+    _settingsWidget = new QWidget;
+
+    _comboSelectionMode = new QComboBox(_settingsWidget);
+    _comboSelectionMode->addItem("Atom");
+    _comboSelectionMode->addItem("Residue");
+    _comboSelectionMode->addItem("Molecule");
+
+    _layout = new QVBoxLayout();
+    _layout->addWidget(_comboSelectionMode);
+    _settingsWidget->setLayout(_layout);
+
+    connect(_comboSelectionMode, SIGNAL(currentIndexChanged(int)),
+        this, SLOT(selectionModeChanged(int)));
+
+    connect(_settingsWidget, SIGNAL(destroyed()),
+        this, SLOT(settingsWidgetDestroyed()));
+  }
+
+  return _settingsWidget;
+}
+
+void SelectRotateTool::settingsWidgetDestroyed() {
+  _settingsWidget = 0;
+}
+
 
 #include "selectrotatetool.moc"
 

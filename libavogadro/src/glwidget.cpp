@@ -139,6 +139,8 @@ namespace Avogadro {
       int                    selectBufSize;
       GLuint                 *selectBuf;
 
+      QList<Primitive *>     selectionList;
+
       QUndoStack             *undoStack;
 
       bool                   stable;
@@ -735,6 +737,48 @@ namespace Avogadro {
     d->stable = stable;
   }
 
+  void GLWidget::setSelection(QList<Primitive *> primitiveList, bool select)
+  {
+    foreach (Primitive *item, primitiveList) {
+      item->setSelected(select);
+      if (select) {
+        if (!d->selectionList.contains(item))
+          d->selectionList.append(item);
+      } else
+        d->selectionList.removeAll(item);
+      
+      item->update();
+    }
+  }
+
+  void GLWidget::toggleSelection(QList<Primitive *> primitiveList)
+  {
+    foreach (Primitive *item, primitiveList) {
+      if (!item->isSelected()) {
+        item->setSelected(true);
+        if (!d->selectionList.contains(item))
+          d->selectionList.append(item);
+      } else {
+        item->setSelected(false);
+        d->selectionList.removeAll(item);
+      }
+      item->update();
+    }
+  }
+
+  void GLWidget::clearSelection()
+  {
+    foreach (Primitive *item, d->selectionList) {
+      item->setSelected(false);
+      item->update();
+    }
+    d->selectionList.clear();
+  }
+
+  QList<Primitive *> GLWidget::selectedItems()
+  {
+    return d->selectionList;
+  }
 
 }
 

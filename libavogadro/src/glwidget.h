@@ -339,6 +339,13 @@ namespace Avogadro {
        */
       void removePrimitive(Primitive *primitive);
 
+      void toggleSelection(QList<Primitive *> primitiveList);
+
+      void setSelection(QList<Primitive *> primitiveList, bool select);
+
+      void clearSelection();
+
+      QList<Primitive *> selectedItems();
 
     Q_SIGNALS:
       void mousePress( QMouseEvent * event );

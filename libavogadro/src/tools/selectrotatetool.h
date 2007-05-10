@@ -1,7 +1,7 @@
 /**********************************************************************
   SelectRotateTool - Selection and Rotation Tool for Avogadro
 
-  Copyright (C) 2006 by Geoffrey R. Hutchison
+  Copyright (C) 2006-2007 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2006 by Donald E. Curtis
 
   This file is part of the Avogadro molecular editor project.
@@ -32,6 +32,8 @@
 #include <QString>
 #include <QPoint>
 #include <QAction>
+#include <QComboBox>
+#include <QVBoxLayout>
 
 class QMouseEvent;
 class QWheelEvent;
@@ -71,6 +73,14 @@ namespace Avogadro {
 
       virtual int usefulness() const;
 
+      virtual QWidget *settingsWidget();
+
+      void setSelectionMode(int i);
+      int selectionMode() const;
+
+    public Q_SLOTS:
+      void selectionModeChanged( int index );
+
     protected:
       void selectionBox(float sx, float sy, float ex, float ey);
 
@@ -81,15 +91,24 @@ namespace Avogadro {
       bool                _manipulateMode;     // shift
 
       //! Temporary var for adding selection box
-      GLuint _selectionDL;
+      GLuint              _selectionDL;
 
       QPoint              _initialDraggingPosition;
       QPoint              _lastDraggingPosition;
 
       Eigen::Vector3d     _selectionCenter;    // centroid of selected atoms
 
+      int                 _selectionMode;      // atom, residue, molecule
+
       QList<GLHit> _hits;
 
+      QComboBox          *_comboSelectionMode;
+      QVBoxLayout        *_layout;
+
+      QWidget            *_settingsWidget;
+
+    private Q_SLOTS:
+      void settingsWidgetDestroyed();
   };
 
   class SelectRotateToolFactory : public QObject, public ToolFactory
