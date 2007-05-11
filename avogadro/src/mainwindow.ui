@@ -83,13 +83,13 @@
     <addaction name="actionNew" />
     <addaction name="actionOpen" />
     <addaction name="menuOpenRecent" />
+    <addaction name="actionClose" />
     <addaction name="separator" />
     <addaction name="actionSave" />
     <addaction name="actionSaveAs" />
     <addaction name="actionRevert" />
     <addaction name="actionExportGraphics" />
     <addaction name="separator" />
-    <addaction name="actionClose" />
     <addaction name="actionQuit" />
    </widget>
    <widget class="QMenu" name="menuSettings" >

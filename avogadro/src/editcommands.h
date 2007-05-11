@@ -33,6 +33,21 @@
 
 namespace Avogadro {
 
+  class CutCommand : public QUndoCommand
+  {
+  public:
+    CutCommand(Molecule *molecule, QMimeData *copyData);
+    
+    virtual void undo();
+    virtual void redo();
+    
+  private:
+    Molecule *m_molecule;         //!< parent (active molecule in widget)
+    Molecule  m_originalMolecule; //!< original (unmodified molecule)
+    QMimeData *m_copiedData;      //!< fragment to be copied to the clipboard
+    QMimeData *m_savedData;       //!< original clipboard contents
+  };
+
   class CopyCommand : public QUndoCommand
   {
   public:
@@ -56,8 +71,21 @@ namespace Avogadro {
     
   private:
     Molecule *m_molecule;
-    Molecule m_pastedMolecule; //!< pasted fragment from the clipboard
+    Molecule m_pastedMolecule;   //!< pasted fragment from the clipboard
     Molecule m_originalMolecule;
+  };
+
+ class ClearCommand : public QUndoCommand
+  {
+  public:
+    ClearCommand(Molecule *molecule);
+    
+    virtual void undo();
+    virtual void redo();
+    
+  private:
+    Molecule *m_molecule;         //!< active widget molecule
+    Molecule  m_originalMolecule; //!< save original molecule
   };
 
 }

@@ -95,7 +95,11 @@ namespace Avogadro {
     ui.setupUi(this);
 
     readSettings();
+#ifdef Q_WS_MAC
+    setAttribute(Qt::WA_QuitOnClose);
+#else
     setAttribute(Qt::WA_DeleteOnClose);
+#endif
 
     d->undoStack = new QUndoStack(this);
     d->toolsFlow = new FlowLayout(ui.toolsWidget);
@@ -390,8 +394,34 @@ namespace Avogadro {
 
   void MainWindow::cut()
   {
-    // no "cutting" yet
-    copy();
+    QMimeData *mimeData = new QMimeData;
+    mimeData->setImageData(ui.glWidget->grabFrameBuffer(true));
+
+    OBConversion conv;
+    OBFormat *mdlFormat = conv.FindFormat("mdl");
+    if(!mdlFormat || !conv.SetOutFormat(mdlFormat)) {
+      statusBar()->showMessage(tr("Cut failed (mdl unavailable)."), 5000);
+      return;
+    }
+
+    // write an MDL file first (with bond orders, radicals, etc.)
+    // (CML might be better in the future, but this works well now)
+    string output = conv.WriteString(d->molecule);
+    QByteArray copyData(output.c_str(), output.length());
+    mimeData->setData("chemical/x-mdl-molfile", copyData);
+
+    // Also copy an XYZ format for text paste
+    OBFormat *xyzFormat = conv.FindFormat("xyz");
+    if(!xyzFormat || !conv.SetOutFormat(xyzFormat)) {
+      statusBar()->showMessage(tr("Cut failed (xyz unavailable)."), 5000);
+      return;
+    }
+    output = conv.WriteString(d->molecule);
+    copyData = output.c_str();
+    mimeData->setText(QString(copyData));
+
+    CutCommand *command = new CutCommand(d->molecule, mimeData);
+    d->undoStack->push(command);
   }
 
   void MainWindow::copy()
@@ -429,8 +459,8 @@ namespace Avogadro {
   void MainWindow::clear()
   {
     // FIXME needs undo support
-      setMolecule(new Molecule(this));
-      setFileName("");
+    ClearCommand *command = new ClearCommand(d->molecule);
+    d->undoStack->push(command);
   }
 
   void MainWindow::newView()
@@ -525,7 +555,11 @@ namespace Avogadro {
     connect(ui.actionRevert, SIGNAL(triggered()), this, SLOT(revert()));
     connect(ui.actionExportGraphics, SIGNAL(triggered()), this, SLOT(exportGraphics()));
     ui.actionExportGraphics->setEnabled(QGLFramebufferObject::hasOpenGLFramebufferObjects());
+#ifdef Q_WS_MAC
+    connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(closeAllWindows()));
+#else
     connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(close()));
+#endif
 
     for (int i = 0; i < maxRecentFiles; ++i) {
       d->actionRecentFile[i] = new QAction(this);

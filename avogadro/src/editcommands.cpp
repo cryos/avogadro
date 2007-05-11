@@ -29,21 +29,45 @@
 
 namespace Avogadro {
 
+  CutCommand::CutCommand(Molecule *molecule, QMimeData *copyData) :
+    m_molecule(molecule), m_originalMolecule(*molecule),
+    m_copiedData(copyData)
+  {
+    setText(QObject::tr("Cut"));
+  }
+
+  void CutCommand::redo()
+  {
+    QApplication::clipboard()->setMimeData(m_copiedData, QClipboard::Clipboard);
+    QApplication::clipboard()->setMimeData(m_copiedData, QClipboard::Selection);
+    m_molecule->Clear();
+    m_molecule->update();
+  }
+
+  void CutCommand::undo()
+  {
+    // restore the clipboard and molecule
+    QApplication::clipboard()->setMimeData(m_savedData, QClipboard::Clipboard);
+    *m_molecule = m_originalMolecule;
+    m_molecule->update();
+  }
+
   CopyCommand::CopyCommand(QMimeData *copyData):
     m_copiedMolecule(copyData)
   {
     m_savedData = const_cast<QMimeData *>(QApplication::clipboard()->mimeData());
-    setText(QObject::tr("Copy Molecule"));
+    setText(QObject::tr("Copy"));
   }
 
   void CopyCommand::redo()
   {
-    QApplication::clipboard()->setMimeData(m_copiedMolecule);
+    QApplication::clipboard()->setMimeData(m_copiedMolecule, QClipboard::Clipboard);
+    QApplication::clipboard()->setMimeData(m_copiedMolecule, QClipboard::Selection);
   }
 
   void CopyCommand::undo()
   {
-    QApplication::clipboard()->setMimeData(m_savedData);
+    QApplication::clipboard()->setMimeData(m_savedData, QClipboard::Clipboard);
   }
 
   PasteCommand::PasteCommand(Molecule *molecule, Molecule pastedMolecule) :
@@ -51,17 +75,39 @@ namespace Avogadro {
     m_pastedMolecule(pastedMolecule),
     m_originalMolecule(*molecule)
   {
-    setText(QObject::tr("Paste Molecule"));
+    setText(QObject::tr("Paste"));
   }
 
   void PasteCommand::redo()
   {
+    // we should clear selection before pasting
     *m_molecule += m_pastedMolecule;
     m_molecule->update();
   }
 
   void PasteCommand::undo()
   {
+    // we should restore the selection when we undo
+    *m_molecule = m_originalMolecule;
+    m_molecule->update();
+  }
+
+  ClearCommand::ClearCommand(Molecule *molecule):
+    m_molecule(molecule),
+    m_originalMolecule(*molecule)
+  {
+    setText(QObject::tr("Clear Molecule"));
+  }
+
+  void ClearCommand::redo()
+  {
+    m_molecule->Clear();
+    m_molecule->update();
+  }
+
+  void ClearCommand::undo()
+  {
+    // we should restore the selection when we undo
     *m_molecule = m_originalMolecule;
     m_molecule->update();
   }
