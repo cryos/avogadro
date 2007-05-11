@@ -2,6 +2,7 @@
   ManipulateTool - Manipulation Tool for Avogadro
 
   Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007 by Geoffrey R. Hutchison
   Copyright (C) 2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
@@ -104,13 +105,37 @@ void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from,
   MatrixP3d atomTranslation;
   atomTranslation.loadTranslation(toPos - fromPos);
 
-  if (m_clickedAtom)
+  if (m_glwidget->selectedItems().size())
+  {
+    FOR_ATOMS_OF_MOL(a, m_glwidget->molecule())
+    {
+      Atom *atom = static_cast<Atom *>(&*a);
+      if (atom->isSelected())
+        atom->setPos(atomTranslation * atom->pos());
+    }
+  }
+  if (m_clickedAtom && !m_clickedAtom->isSelected())
     m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
 }
 
 void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const
 {
+  Matrix3d rotation = m_glwidget->camera()->modelview().linearComponent();
+  Vector3d XAxis = rotation.row(0);
+  Vector3d YAxis = rotation.row(1);
+  // rotate only selected primitives
+  MatrixP3d fragmentRotation;
+  fragmentRotation.loadTranslation(center);
+  fragmentRotation.rotate3(deltaY * ROTATION_SPEED, XAxis );
+  fragmentRotation.rotate3(deltaX * ROTATION_SPEED, YAxis );
+  fragmentRotation.translate(-center);
 
+  FOR_ATOMS_OF_MOL(a, m_glwidget->molecule())
+  {
+    Atom *atom = static_cast<Atom *>(&*a);
+    if (atom->isSelected())
+      atom->setPos(fragmentRotation * atom->pos());
+  }
 }
 
 void ManipulateTool::tilt( const Eigen::Vector3d &center, double delta ) const
@@ -150,11 +175,14 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
     return 0;
   }
 
+  // Get the currently selected atoms from the view
+  QList<Primitive *> currentSelection = m_glwidget->selectedItems();
+
   QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
   // Manipulation can be performed in two ways - centred on an individual atom
 
-  if( m_clickedAtom )
+  if (m_clickedAtom)
   {
     if ( event->buttons() & Qt::LeftButton )
     {
@@ -175,25 +203,34 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
       rotate( m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y() );
     }
   }
-  else // Nothing clicked on
+  else if (currentSelection.size())
   {
-    if( event->buttons() & Qt::RightButton )
+    // Some atoms are selected - work out where the centre is
+    m_selectionCenter.loadZero();
+    foreach(Primitive *hit, currentSelection)
     {
-      // rotation around the center of the molecule
-      rotate( m_glwidget->center(), deltaDragging.x(), deltaDragging.y() );
+      Atom *atom = static_cast<Atom *>(hit);
+      m_selectionCenter += atom->pos();
+    }
+    m_selectionCenter /= currentSelection.size();
+
+    if ( event->buttons() & Qt::LeftButton )
+    {
+      // translate the molecule following mouse movement
+      translate( m_selectionCenter, m_lastDraggingPosition, event->pos() );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
       // Perform the rotation
-      tilt( m_glwidget->center(), deltaDragging.x() );
+      tilt( m_selectionCenter, deltaDragging.x() );
 
       // Perform the zoom toward molecule center
-      zoom( m_glwidget->center(), deltaDragging.y() );
+      zoom( m_selectionCenter, deltaDragging.y() );
     }
-    else if ( event->buttons() & Qt::LeftButton )
+    else if( event->buttons() & Qt::RightButton )
     {
-      // translate the molecule following mouse movement
-      translate( m_glwidget->center(), m_lastDraggingPosition, event->pos() );
+      // rotation around the center of the selected atoms
+      rotate( m_selectionCenter, deltaDragging.x(), deltaDragging.y() );
     }
   }
 

@@ -2,6 +2,7 @@
   ManipulateTool - Manipulation Tool for Avogadro
 
   Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007 by Geoffrey R. Hutchison
   Copyright (C) 2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
@@ -82,6 +83,7 @@ namespace Avogadro {
       bool                m_rightButtonPressed; // translation
       bool                m_midButtonPressed;   // scale / zoom
       Atom *              m_clickedAtom;
+      Eigen::Vector3d     m_selectionCenter;    // centroid of selected atoms
 
       //! Temporary var for adding selection box
       GLuint              m_selectionDL;
