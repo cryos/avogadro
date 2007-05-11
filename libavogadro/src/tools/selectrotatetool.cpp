@@ -69,12 +69,11 @@ QUndoCommand* SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *
   _movedSinceButtonPressed = false;
   _lastDraggingPosition = event->pos();
   _initialDraggingPosition = event->pos();
-  if (QApplication::keyboardModifiers() & Qt::ShiftModifier) {
-      _manipulateMode = true;
-  } else {
+//  if (QApplication::keyboardModifiers() & Qt::ShiftModifier) {
+//      _manipulateMode = true;
+//  } else {
     _manipulateMode = false;
-  }
-    
+//  }
 
   //! List of hits from a selection/pick
   _hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
@@ -199,14 +198,14 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
     }
   }
 
-  if (_hits.size()) {
+/*  if (_hits.size()) {
     _selectionCenter.loadZero();
     foreach(Primitive *hit, widget->selectedItems()) {
       Atom *atom = static_cast<Atom *>(hit);
       _selectionCenter += atom->pos();
     }
     _selectionCenter /= widget->selectedItems().size();
-  }
+  } */
 
   widget->update();
 
@@ -238,7 +237,7 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
         widget->camera()->rotate( deltaDragging.x() * ROTATION_SPEED, YAxis );
         widget->camera()->translate( - widget->center() );
       } 
-      else if (molecule) { 
+/*      else if (molecule) { 
         // rotate only selected primitives
         MatrixP3d fragmentRotation;
         fragmentRotation.loadTranslation(_selectionCenter);
@@ -252,7 +251,7 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
             atom->setPos(fragmentRotation * atom->pos());
           }
         }
-      }
+      } */
     }
     else if ( event->buttons() & Qt::RightButton )
     {
@@ -262,7 +261,7 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
             deltaDragging.y() * ROTATION_SPEED,
             0.0 ) );
       } 
-      else if (molecule) { 
+/*      else if (molecule) { 
         // translate only selected primitives
         // now only works for atoms
         OpenBabel::vector3 translation( deltaDragging.x() * ZOOM_SPEED,
@@ -272,7 +271,7 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
           if (static_cast<Atom *>(&*a)->isSelected()) {
             a->SetVector(a->GetVector() + translation);
           }
-      }
+      } */
     }
     else if ( event->buttons() & Qt::MidButton )
     {
