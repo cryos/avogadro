@@ -23,6 +23,8 @@
 namespace Avogadro {
 
   /**
+   * @class Sphere
+   * @internal
    * This class represents and draws a sphere. The level of detail can be controlled.
    * At level 0, the sphere is a octahedron. At levels >=1, the sphere is a
    * "geosphere", that is, one starts with an icosahedron, which is the regular

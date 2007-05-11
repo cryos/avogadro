@@ -41,8 +41,8 @@ set(libavogadro_HDRS
   moleculetreeview.h
   global.h
   camera.h
-    undosequence.h
-    painter.h
+  undosequence.h
+  painter.h
 )
 
 qt4_automoc(${libavogadro_SRCS})
