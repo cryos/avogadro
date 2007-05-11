@@ -41,10 +41,11 @@ ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
-  action->setToolTip(tr("Manipulation Tool\n\n"
+  action->setToolTip(tr("Manipulation Tool (F10)\n\n"
         "Left Mouse:   Click and drag to move atoms and bonds\n"
         "Middle Mouse: Click and drag to move atoms further away or closer\n"
         "Right Mouse:  Click and drag to rotate atoms and bonds"));
+  action->setShortcut(Qt::Key_F10);
 }
 
 ManipulateTool::~ManipulateTool()
@@ -271,6 +272,10 @@ bool ManipulateTool::paint(GLWidget *widget)
       }
       renderRadius += 0.10;
       drawSphere(widget, m_clickedAtom->GetVector().AsArray(), renderRadius, 0.7);
+    }
+    else
+    {
+      drawSphere(widget, m_selectionCenter, 0.10, 1.0);
     }
   }
   return true;

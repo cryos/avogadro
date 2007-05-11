@@ -40,6 +40,11 @@ NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
+  action->setToolTip(tr("Manipulation Tool (F9)\n\n"
+        "Left Mouse:   Click and drag to move the view\n"
+        "Middle Mouse: Click and drag to zoom in or out\n"
+        "Right Mouse:  Click and drag to rotate the view"));
+  action->setShortcut(Qt::Key_F9);
 }
 
 NavigateTool::~NavigateTool()

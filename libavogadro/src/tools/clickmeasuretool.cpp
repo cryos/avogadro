@@ -41,11 +41,12 @@ ClickMeasureTool::ClickMeasureTool(QObject *parent) : Tool(parent),  m_numSelect
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/measure/measure.png")));
-  action->setToolTip(tr("Click to Measure (ClickMeasure)\n\n"
+  action->setToolTip(tr("Click to Measure (F12)\n\n"
         "Left Mouse: \tSelect up to three Atoms.\n"
         "\tDistances are measured between 1-2 and 2-3\n"
         "\tAngle is measured between 1-3 using 2 as the common point\n"
         "Right Mouse: Reset the measurements."));
+  action->setShortcut(Qt::Key_F12);
 
   // clear the selected atoms
   int size = m_selectedAtoms.size();
