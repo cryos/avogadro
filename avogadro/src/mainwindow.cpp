@@ -95,11 +95,7 @@ namespace Avogadro {
     ui.setupUi(this);
 
     readSettings();
-#ifdef Q_WS_MAC
-    setAttribute(Qt::WA_QuitOnClose);
-#else
     setAttribute(Qt::WA_DeleteOnClose);
-#endif
 
     d->undoStack = new QUndoStack(this);
     d->toolsFlow = new FlowLayout(ui.toolsWidget);
@@ -235,6 +231,7 @@ namespace Avogadro {
 
   void MainWindow::closeEvent(QCloseEvent *event)
   {
+    qDebug() << " got close event ";
     if (maybeSave()) {
       writeSettings();
       event->accept();
@@ -549,14 +546,18 @@ namespace Avogadro {
   {
     connect(ui.actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
     connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(openFile()));
+#ifdef Q_WS_MAC
+    connect(ui.actionClose, SIGNAL(triggered()), this, SLOT(close()));
+#else
     connect(ui.actionClose, SIGNAL(triggered()), this, SLOT(closeFile()));
+#endif
     connect(ui.actionSave, SIGNAL(triggered()), this, SLOT(save()));
     connect(ui.actionSaveAs, SIGNAL(triggered()), this, SLOT(saveAs()));
     connect(ui.actionRevert, SIGNAL(triggered()), this, SLOT(revert()));
     connect(ui.actionExportGraphics, SIGNAL(triggered()), this, SLOT(exportGraphics()));
     ui.actionExportGraphics->setEnabled(QGLFramebufferObject::hasOpenGLFramebufferObjects());
 #ifdef Q_WS_MAC
-    connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(closeAllWindows()));
+    connect(ui.actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
 #else
     connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(close()));
 #endif
