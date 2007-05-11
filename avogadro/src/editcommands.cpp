@@ -29,18 +29,29 @@
 
 namespace Avogadro {
 
-  CutCommand::CutCommand(Molecule *molecule, QMimeData *copyData) :
+  CutCommand::CutCommand(Molecule *molecule, QMimeData *copyData,
+                         QList<Primitive*> selectedList) :
     m_molecule(molecule), m_originalMolecule(*molecule),
-    m_copiedData(copyData)
+    m_copiedData(copyData), m_selectedList(selectedList)
   {
-    setText(QObject::tr("Cut"));
+    if (selectedList.size() == 0)
+      setText(QObject::tr("Cut Molecule"));
+    else
+      setText(QObject::tr("Cut Atoms"));      
   }
 
   void CutCommand::redo()
   {
     QApplication::clipboard()->setMimeData(m_copiedData, QClipboard::Clipboard);
     QApplication::clipboard()->setMimeData(m_copiedData, QClipboard::Selection);
-    m_molecule->Clear();
+    if (m_selectedList.size() == 0) {
+      m_molecule->Clear();
+    }
+    else {
+      foreach(Primitive* item, m_selectedList) {
+        m_molecule->DeleteAtom(static_cast<Atom*>(item));
+      }
+    }
     m_molecule->update();
   }
 
@@ -92,16 +103,28 @@ namespace Avogadro {
     m_molecule->update();
   }
 
-  ClearCommand::ClearCommand(Molecule *molecule):
+  ClearCommand::ClearCommand(Molecule *molecule, 
+                             QList<Primitive*> selectedList):
     m_molecule(molecule),
-    m_originalMolecule(*molecule)
+    m_originalMolecule(*molecule),
+    m_selectedList(selectedList)
   {
-    setText(QObject::tr("Clear Molecule"));
+    if (selectedList.size() == 0)
+      setText(QObject::tr("Clear Molecule"));
+    else
+      setText(QObject::tr("Clear Atoms"));      
   }
 
   void ClearCommand::redo()
   {
-    m_molecule->Clear();
+    if (m_selectedList.size() == 0) {
+      m_molecule->Clear();
+    }
+    else {
+      foreach(Primitive* item, m_selectedList) {
+        m_molecule->DeleteAtom(static_cast<Atom*>(item));
+      }
+    }
     m_molecule->update();
   }
 

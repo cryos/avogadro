@@ -372,12 +372,40 @@ namespace Avogadro {
 
   // Helper function -- works for "cut" or "copy"
   // FIXME add parameter to set "Copy" or "Cut" in messages
-  QMimeData* MainWindow::prepareClipboardData()
+  QMimeData* MainWindow::prepareClipboardData(QList<Primitive*> selectedItems)
   {
     QMimeData *mimeData = new QMimeData;
     mimeData->setImageData(ui.glWidget->grabFrameBuffer(true));
 
+    Molecule *moleculeCopy = d->molecule;
+    if (!selectedItems.isEmpty()) { // we only want to copy the selected items
+      moleculeCopy = new Molecule;
+      std::map<OBAtom*, OBAtom*> AtomMap; // key is from old, value from new
+      // copy atoms and create a map of atom indexes
+      foreach(Primitive *item, selectedItems) {
+        OBAtom *selected = static_cast<Atom*>(item);
+        moleculeCopy->AddAtom(*selected);
+        AtomMap[selected] = moleculeCopy->GetAtom(moleculeCopy->NumAtoms());
+      }
+
+      // use the atom map to map bonds
+      map<OBAtom*, OBAtom*>::iterator posBegin, posEnd;
+      FOR_BONDS_OF_MOL(b, d->molecule) {
+        posBegin = AtomMap.find(b->GetBeginAtom());
+        posEnd = AtomMap.find(b->GetEndAtom());
+        // make sure both bonds are in the map (i.e. selected)
+        if (posBegin != AtomMap.end() && posEnd != AtomMap.end()) {
+          moleculeCopy->AddBond((posBegin->second)->GetIdx(),
+                               (posEnd->second)->GetIdx(),
+                               b->GetBO(), b->GetFlags());
+        }
+      } // end looping over bonds
+    } // should now have a copy of our selected fragment
+
     OBConversion conv;
+    // MDL format is used for main copy -- atoms, bonds, chirality
+    // supports either 2D or 3D, generic data
+    // CML is another option, but not as well tested in Open Babel
     OBFormat *mdlFormat = conv.FindFormat("mdl");
     if(!mdlFormat || !conv.SetOutFormat(mdlFormat)) {
       statusBar()->showMessage(tr("Copy failed (mdl unavailable)."), 5000);
@@ -386,36 +414,41 @@ namespace Avogadro {
 
     // write an MDL file first (with bond orders, radicals, etc.)
     // (CML might be better in the future, but this works well now)
-    string output = conv.WriteString(d->molecule);
+    string output = conv.WriteString(moleculeCopy);
     QByteArray copyData(output.c_str(), output.length());
     mimeData->setData("chemical/x-mdl-molfile", copyData);
-
-    // Also copy an XYZ format for text paste
+    
+    // Copy XYZ coordinates to the text selection buffer
     OBFormat *xyzFormat = conv.FindFormat("xyz");
     if(!xyzFormat || !conv.SetOutFormat(xyzFormat)) {
       statusBar()->showMessage(tr("Copy failed (xyz unavailable)."), 5000);
       return NULL;
     }
-    output = conv.WriteString(d->molecule);
+    output = conv.WriteString(moleculeCopy);
     copyData = output.c_str();
     mimeData->setText(QString(copyData));
+
+    // need to free our temporary moleculeCopy
+    if (!selectedItems.isEmpty())
+      delete moleculeCopy;
 
     return mimeData;
   }
 
   void MainWindow::cut()
   {
-    QMimeData *mimeData = prepareClipboardData();
+    QMimeData *mimeData = prepareClipboardData(d->glWidget->selectedItems());
 
     if (mimeData) {
-      CutCommand *command = new CutCommand(d->molecule, mimeData);
+      CutCommand *command = new CutCommand(d->molecule, mimeData,
+                                           d->glWidget->selectedItems());
       d->undoStack->push(command);
     }
   }
 
   void MainWindow::copy()
   {
-    QMimeData *mimeData = prepareClipboardData();
+    QMimeData *mimeData = prepareClipboardData(d->glWidget->selectedItems());
 
     if (mimeData) {
       CopyCommand *command = new CopyCommand(mimeData);
@@ -425,8 +458,10 @@ namespace Avogadro {
 
   void MainWindow::clear()
   {
-    // FIXME needs undo support
-    ClearCommand *command = new ClearCommand(d->molecule);
+    // clear the molecule or a set of atoms
+    // has the inteligence to figure out based on the number of selected items
+    ClearCommand *command = new ClearCommand(d->molecule, 
+                                             d->glWidget->selectedItems());
     d->undoStack->push(command);
   }
 

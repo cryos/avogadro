@@ -113,7 +113,7 @@ namespace Avogadro {
       void loadExtensions();
       
       //! Helper function for cut or copy -- prepare a clipboard
-      QMimeData* prepareClipboardData(); 
+      QMimeData* prepareClipboardData(QList<Primitive*> selectedItems); 
   };
 
   /**
