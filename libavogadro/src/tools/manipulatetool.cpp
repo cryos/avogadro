@@ -93,7 +93,16 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
   MatrixP3d atomTranslation;
   atomTranslation.loadTranslation(m_glwidget->camera()->backTransformedZAxis() * t);
 
-  if (m_clickedAtom)
+  if (m_glwidget->selectedItems().size())
+  {
+    FOR_ATOMS_OF_MOL(a, m_glwidget->molecule())
+    {
+      Atom *atom = static_cast<Atom *>(&*a);
+      if (atom->isSelected())
+        atom->setPos(atomTranslation * atom->pos());
+    }
+  }
+  if (m_clickedAtom && !m_clickedAtom->isSelected())
     m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
 }
 
