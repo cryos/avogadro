@@ -48,6 +48,7 @@ int main(int argc, char *argv[])
     return -1;
   }
 
+  // use multi-sample (anti-aliased) OpenGL if available
   QGLFormat defFormat = QGLFormat::defaultFormat();
   defFormat.setSampleBuffers(true);
   QGLFormat::setDefaultFormat(defFormat);

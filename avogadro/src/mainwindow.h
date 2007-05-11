@@ -103,14 +103,17 @@ namespace Avogadro {
       void setFileName(const QString &fileName);
       void updateRecentFileActions();
       QString strippedName(const QString &fullFileName);
+      //! Find an existing main window by filename
+      //! \return a pointer to the appropriate window, or NULL if none exists
+      MainWindow* findMainWindow(const QString &fileName);
 
       void setMolecule(Molecule *molecule);
-      Molecule *molecule() const;
+      Molecule* molecule() const;
 
       void loadExtensions();
-
-      MainWindow *findMainWindow(const QString &fileName);
       
+      //! Helper function for cut or copy -- prepare a clipboard
+      QMimeData* prepareClipboardData(); 
   };
 
   /**

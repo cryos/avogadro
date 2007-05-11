@@ -129,16 +129,6 @@ namespace Avogadro {
     d->glWidget = ui.glWidget;
     ui.glWidget->setToolGroup(d->toolGroup);
     ui.glWidget->setUndoStack(d->undoStack);
-    // at least for now, try to always do multisample OpenGL (i.e., antialias)
-    // graphical improvement is great and many cards do this in hardware
-    // At some point, this should be a preference
-    //     QGLFormat format;
-    //     format.setSampleBuffers(true);
-    //     ui.glWidget = new GLWidget(d->molecule, format, ui.centralWidget);
-    //     vbCentral->addWidget(ui.glWidget);
-
-    //     ui.bottomFlat = new FlatTabWidget(ui.centralWidget);
-    //     vbCentral->addWidget(ui.bottomFlat);
 
     QWidget *messagesWidget = new QWidget();
     QVBoxLayout *messagesVBox = new QVBoxLayout(messagesWidget);
@@ -150,22 +140,19 @@ namespace Avogadro {
 
     ui.projectTree->header()->hide();
 
-
-
     loadExtensions();
 
     ui.enginesList->setGLWidget(ui.glWidget);
     ui.enginesList->setSettingsButton(ui.engineSettingsButton);
 
-
     connectUi();
 
     setMolecule(new Molecule(this));
 
+    setFileName("");
     statusBar()->showMessage(tr("Ready."), 10000);
 
     qDebug() << "MainWindow Initialized" << endl;
-
   }
 
   void MainWindow::newFile()
@@ -183,8 +170,7 @@ namespace Avogadro {
 
   void MainWindow::openFile(const QString &fileName)
   {
-    if(!fileName.isEmpty())
-    {
+    if(!fileName.isEmpty()) {
       // check to see if we already have an open window
       MainWindow *existing = findMainWindow(fileName);
       if (existing) {
@@ -194,12 +180,10 @@ namespace Avogadro {
         return;
       }
 
-      if(d->fileName.isEmpty() && !isWindowModified())
-      {
+      if(d->fileName.isEmpty() && !isWindowModified()) {
         loadFile(fileName);
       }
-      else
-      {
+      else {
         MainWindow *other = new MainWindow();
         if(!other->loadFile(fileName)) {
           delete other;
@@ -231,7 +215,6 @@ namespace Avogadro {
 
   void MainWindow::closeEvent(QCloseEvent *event)
   {
-    qDebug() << " got close event ";
     if (maybeSave()) {
       writeSettings();
       event->accept();
@@ -387,41 +370,9 @@ namespace Avogadro {
     }
   }
 
-//     d->messagesText->append(text);
-
-  void MainWindow::cut()
-  {
-    QMimeData *mimeData = new QMimeData;
-    mimeData->setImageData(ui.glWidget->grabFrameBuffer(true));
-
-    OBConversion conv;
-    OBFormat *mdlFormat = conv.FindFormat("mdl");
-    if(!mdlFormat || !conv.SetOutFormat(mdlFormat)) {
-      statusBar()->showMessage(tr("Cut failed (mdl unavailable)."), 5000);
-      return;
-    }
-
-    // write an MDL file first (with bond orders, radicals, etc.)
-    // (CML might be better in the future, but this works well now)
-    string output = conv.WriteString(d->molecule);
-    QByteArray copyData(output.c_str(), output.length());
-    mimeData->setData("chemical/x-mdl-molfile", copyData);
-
-    // Also copy an XYZ format for text paste
-    OBFormat *xyzFormat = conv.FindFormat("xyz");
-    if(!xyzFormat || !conv.SetOutFormat(xyzFormat)) {
-      statusBar()->showMessage(tr("Cut failed (xyz unavailable)."), 5000);
-      return;
-    }
-    output = conv.WriteString(d->molecule);
-    copyData = output.c_str();
-    mimeData->setText(QString(copyData));
-
-    CutCommand *command = new CutCommand(d->molecule, mimeData);
-    d->undoStack->push(command);
-  }
-
-  void MainWindow::copy()
+  // Helper function -- works for "cut" or "copy"
+  // FIXME add parameter to set "Copy" or "Cut" in messages
+  QMimeData* MainWindow::prepareClipboardData()
   {
     QMimeData *mimeData = new QMimeData;
     mimeData->setImageData(ui.glWidget->grabFrameBuffer(true));
@@ -430,7 +381,7 @@ namespace Avogadro {
     OBFormat *mdlFormat = conv.FindFormat("mdl");
     if(!mdlFormat || !conv.SetOutFormat(mdlFormat)) {
       statusBar()->showMessage(tr("Copy failed (mdl unavailable)."), 5000);
-      return;
+      return NULL; // nothing in it yet
     }
 
     // write an MDL file first (with bond orders, radicals, etc.)
@@ -443,14 +394,33 @@ namespace Avogadro {
     OBFormat *xyzFormat = conv.FindFormat("xyz");
     if(!xyzFormat || !conv.SetOutFormat(xyzFormat)) {
       statusBar()->showMessage(tr("Copy failed (xyz unavailable)."), 5000);
-      return;
+      return NULL;
     }
     output = conv.WriteString(d->molecule);
     copyData = output.c_str();
     mimeData->setText(QString(copyData));
 
-    CopyCommand *command = new CopyCommand(mimeData);
-    d->undoStack->push(command);
+    return mimeData;
+  }
+
+  void MainWindow::cut()
+  {
+    QMimeData *mimeData = prepareClipboardData();
+
+    if (mimeData) {
+      CutCommand *command = new CutCommand(d->molecule, mimeData);
+      d->undoStack->push(command);
+    }
+  }
+
+  void MainWindow::copy()
+  {
+    QMimeData *mimeData = prepareClipboardData();
+
+    if (mimeData) {
+      CopyCommand *command = new CopyCommand(mimeData);
+      d->undoStack->push(command);
+    }
   }
 
   void MainWindow::clear()
@@ -738,10 +708,11 @@ namespace Avogadro {
 
   void MainWindow::setFileName(const QString &fileName)
   {
-    d->fileName = QFileInfo(fileName).canonicalFilePath();
     if (fileName.isEmpty()) {
+      d->fileName.clear();
       setWindowTitle(tr("[*]Avogadro"));
     } else {
+      d->fileName = QFileInfo(fileName).canonicalFilePath();
       setWindowTitle(tr("%1[*] - %2").arg(strippedName(d->fileName))
                      .arg(tr("Avogadro")));
       
@@ -788,7 +759,6 @@ namespace Avogadro {
   MainWindow *MainWindow::findMainWindow(const QString &fileName)
   {
     QString canonicalFilePath = QFileInfo(fileName).canonicalFilePath();
-    qDebug() << canonicalFilePath;
 
     foreach (QWidget *widget, qApp->topLevelWidgets()) {
       MainWindow *window = qobject_cast<MainWindow *>(widget);
