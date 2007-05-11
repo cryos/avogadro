@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/manipulate">
+        <file>navigate.png</file>
+    </qresource>
+</RCC>

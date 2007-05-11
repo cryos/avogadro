@@ -65,3 +65,15 @@ TARGET_LINK_LIBRARIES(navigatetool
 )
 INSTALL(TARGETS navigatetool DESTINATION ${DESTINATION_DIR})
 
+### manipulatetool
+set(manipulatetool_SRCS manipulatetool.cpp)
+qt4_add_resources(manipulatetool_RC_SRCS manipulate.qrc)
+qt4_automoc(${manipulatetool_SRCS})
+ADD_LIBRARY(manipulatetool SHARED ${manipulatetool_SRCS} ${manipulatetool_RC_SRCS})
+TARGET_LINK_LIBRARIES(manipulatetool 
+	${OPENBABEL2_LIBRARIES} 
+	${QT_LIBRARIES} 
+    ${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS manipulatetool DESTINATION ${DESTINATION_DIR})
