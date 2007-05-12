@@ -96,6 +96,11 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
 
   if (m_glwidget->selectedItems().size())
   {
+    foreach(Primitive *a, m_glwidget->selectedItems())
+    {
+      Atom *atom = static_cast<const Atom *>(a);
+      atom->setPos(atomTranslation * atom->pos());
+    }
     FOR_ATOMS_OF_MOL(a, m_glwidget->molecule())
     {
       Atom *atom = static_cast<Atom *>(&*a);
@@ -117,11 +122,10 @@ void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from,
 
   if (m_glwidget->selectedItems().size())
   {
-    FOR_ATOMS_OF_MOL(a, m_glwidget->molecule())
+    foreach(Primitive *a, m_glwidget->selectedItems())
     {
-      Atom *atom = static_cast<Atom *>(&*a);
-      if (atom->isSelected())
-        atom->setPos(atomTranslation * atom->pos());
+      Atom *atom = static_cast<const Atom *>(a);
+      atom->setPos(atomTranslation * atom->pos());
     }
   }
   if (m_clickedAtom && !m_clickedAtom->isSelected())
@@ -140,11 +144,10 @@ void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, doubl
   fragmentRotation.rotate3(deltaX * ROTATION_SPEED, YAxis );
   fragmentRotation.translate(-center);
 
-  FOR_ATOMS_OF_MOL(a, m_glwidget->molecule())
+  foreach(Primitive *a, m_glwidget->selectedItems())
   {
-    Atom *atom = static_cast<Atom *>(&*a);
-    if (atom->isSelected())
-      atom->setPos(fragmentRotation * atom->pos());
+    Atom *atom = static_cast<const Atom *>(a);
+    atom->setPos(fragmentRotation * atom->pos());
   }
 }
 

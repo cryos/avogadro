@@ -40,8 +40,8 @@ using namespace Avogadro;
 using namespace Eigen;
 
 SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent),
-                                                      _selectionDL(0),
-                                                      _settingsWidget(0)
+                                                      m_selectionDL(0),
+                                                      m_settingsWidget(0)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
@@ -51,12 +51,12 @@ SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent),
 
 SelectRotateTool::~SelectRotateTool()
 {
-  if(_selectionDL)  {
-    glDeleteLists(_selectionDL, 1);
+  if(m_selectionDL)  {
+    glDeleteLists(m_selectionDL, 1);
   }
 
-  if(_settingsWidget) {
-    _settingsWidget->deleteLater();
+  if(m_settingsWidget) {
+    m_settingsWidget->deleteLater();
   }
 }
 
@@ -68,25 +68,25 @@ int SelectRotateTool::usefulness() const
 QUndoCommand* SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
 
-  _movedSinceButtonPressed = false;
-  _lastDraggingPosition = event->pos();
-  _initialDraggingPosition = event->pos();
+  m_movedSinceButtonPressed = false;
+  m_lastDraggingPosition = event->pos();
+  m_initialDraggingPosition = event->pos();
 //  if (QApplication::keyboardModifiers() & Qt::ShiftModifier) {
-//      _manipulateMode = true;
+//      m_manipulateMode = true;
 //  } else {
-    _manipulateMode = false;
+    m_manipulateMode = false;
 //  }
 
   //! List of hits from a selection/pick
-  _hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
+  m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
                        event->pos().y()-SEL_BOX_HALF_SIZE,
                        SEL_BOX_SIZE, SEL_BOX_SIZE);
 
-  if(!_hits.size())
+  if(!m_hits.size())
   {
-    selectionBox(_initialDraggingPosition.x(), _initialDraggingPosition.y(),
-        _initialDraggingPosition.x(), _initialDraggingPosition.y());
-    widget->addDL(_selectionDL);
+    selectionBox(m_initialDraggingPosition.x(), m_initialDraggingPosition.y(),
+        m_initialDraggingPosition.x(), m_initialDraggingPosition.y());
+    widget->addDL(m_selectionDL);
   }
 
   return 0;
@@ -99,22 +99,22 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
     return 0;
   }
 
-  if(!_hits.size()) {
-    widget->removeDL(_selectionDL);
+  if(!m_hits.size()) {
+    widget->removeDL(m_selectionDL);
   }
 
   QList<Primitive *> hitList;
   QList<Residue *>   residueList;
-  if(!_movedSinceButtonPressed && _hits.size()) {
+  if(!m_movedSinceButtonPressed && m_hits.size()) {
     // user didn't move the mouse -- regular picking, not selection box
 
     // we'll assemble separate "hit lists" of selected atoms and residues
     // (e.g., if we're in residue selection mode, picking an atom
     // will select the whole residue
 
-    foreach (GLHit hit, _hits) {
+    foreach (GLHit hit, m_hits) {
       if(hit.type() == Primitive::AtomType) {
-        Atom *atom = (Atom *) molecule->GetAtom(hit.name());
+        Atom *atom = static_cast<Atom *>(molecule->GetAtom(hit.name()));
         hitList.append(atom);
         break;
       }
@@ -122,7 +122,7 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
         Residue *res = static_cast<Residue *>(molecule->GetResidue(hit.name()));
         residueList.append(res);
         break;
-      }      
+      }
       // Currently only atom or residue selections are supported
 //       else if(hit.type() == Primitive::BondType) {
 //         Bond *bond = (Bond *) molecule->GetBond(hit.name());
@@ -132,7 +132,7 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
     }
 
     bool isSelected;
-    switch (_selectionMode) {
+    switch (m_selectionMode) {
     case 2: // residue
       foreach(Primitive *hit, hitList) {
         Atom *atom = static_cast<Atom *>(hit);
@@ -167,19 +167,20 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
       hitList.clear();
       bool select = !residue->isSelected();
       FOR_ATOMS_OF_RESIDUE(a, residue) {
-        hitList.append(static_cast<Atom*>(&*a));
+        hitList.append(static_cast<Atom *>(&*a));
       }
       widget->setSelection(hitList, select);
       residue->toggleSelected();
     }
 
   }
-  else if(_movedSinceButtonPressed && !_hits.size())
+  else if(m_movedSinceButtonPressed && !m_hits.size())
   {
-    int sx = qMin(_initialDraggingPosition.x(), _lastDraggingPosition.x());
-    int ex = qMax(_initialDraggingPosition.x(), _lastDraggingPosition.x());
-    int sy = qMin(_initialDraggingPosition.y(), _lastDraggingPosition.y());
-    int ey = qMax(_initialDraggingPosition.y(), _lastDraggingPosition.y());
+    // Selection box picking - need to figure out which atoms were in the box
+    int sx = qMin(m_initialDraggingPosition.x(), m_lastDraggingPosition.x());
+    int ex = qMax(m_initialDraggingPosition.x(), m_lastDraggingPosition.x());
+    int sy = qMin(m_initialDraggingPosition.y(), m_lastDraggingPosition.y());
+    int ey = qMax(m_initialDraggingPosition.y(), m_lastDraggingPosition.y());
 
     int w = ex-sx;
     int h = ey-sy;
@@ -187,26 +188,33 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
     // (sx, sy) = Upper left most position.
     // (ex, ey) = Bottom right most position.
     QList<GLHit> hits = widget->hits(sx, sy, ex-sx, ey-sy);
-    foreach(GLHit hit, hits) {
-      if(hit.type() == Primitive::AtomType) {
-        ((Atom *)molecule->GetAtom(hit.name()))->toggleSelected();
+    // Iterate over the hits
+    foreach(GLHit hit, hits)
+    {
+      if(hit.type() == Primitive::AtomType)
+      {
+        Atom *atom = static_cast<Atom *>(molecule->GetAtom(hit.name()));
+        hitList.append(atom);
       }
-      else if(hit.type() == Primitive::ResidueType) {
-        ((Residue *)molecule->GetResidue(hit.name()))->toggleSelected();
-      }
+      //else if(hit.type() == Primitive::ResidueType)
+      //{
+      //  ((Residue *)molecule->GetResidue(hit.name()))->toggleSelected();
+      //}
       //              else if(hit.type() == Primitive::BondType) {
       //        ((Bond *)molecule->GetBond(hit.name()))->toggleSelected();
       //      }
     }
+    // Toggle the selection
+    widget->toggleSelection(hitList);
   }
 
 /*  if (_hits.size()) {
-    _selectionCenter.loadZero();
+    m_selectionCenter.loadZero();
     foreach(Primitive *hit, widget->selectedItems()) {
       Atom *atom = static_cast<Atom *>(hit);
-      _selectionCenter += atom->pos();
+      m_selectionCenter += atom->pos();
     }
-    _selectionCenter /= widget->selectedItems().size();
+    m_selectionCenter /= widget->selectedItems().size();
   } */
 
   widget->update();
@@ -217,14 +225,14 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
 QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->molecule();
-  QPoint deltaDragging = event->pos() - _lastDraggingPosition;
+  QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
-  _lastDraggingPosition = event->pos();
+  m_lastDraggingPosition = event->pos();
 
-  if( ( event->pos() - _initialDraggingPosition ).manhattanLength() > 2 ) 
-    _movedSinceButtonPressed = true;
+  if( ( event->pos() - m_initialDraggingPosition ).manhattanLength() > 2 ) 
+    m_movedSinceButtonPressed = true;
 
-  if( _hits.size() )
+  if( m_hits.size() )
   {
     if( event->buttons() & Qt::LeftButton )
     {
@@ -233,7 +241,7 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
       Vector3d XAxis = rotation.row(0);
       Vector3d YAxis = rotation.row(1);
 
-      if (!_manipulateMode) {
+      if (!m_manipulateMode) {
         widget->camera()->translate( widget->center() );
         widget->camera()->rotate( deltaDragging.y() * ROTATION_SPEED, XAxis );
         widget->camera()->rotate( deltaDragging.x() * ROTATION_SPEED, YAxis );
@@ -242,10 +250,10 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
 /*      else if (molecule) { 
         // rotate only selected primitives
         MatrixP3d fragmentRotation;
-        fragmentRotation.loadTranslation(_selectionCenter);
+        fragmentRotation.loadTranslation(m_selectionCenter);
         fragmentRotation.rotate3(deltaDragging.y() * ROTATION_SPEED, XAxis );
         fragmentRotation.rotate3(deltaDragging.x() * ROTATION_SPEED, YAxis );
-        fragmentRotation.translate(-_selectionCenter);
+        fragmentRotation.translate(-m_selectionCenter);
 
         FOR_ATOMS_OF_MOL(a, molecule) {
           Atom *atom = static_cast<Atom *>(&*a);
@@ -258,7 +266,7 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
     else if ( event->buttons() & Qt::RightButton )
     {
       // translate
-      if (!_manipulateMode) {
+      if (!m_manipulateMode) {
       widget->camera()->pretranslate( Vector3d( deltaDragging.x() * ROTATION_SPEED,
             deltaDragging.y() * ROTATION_SPEED,
             0.0 ) );
@@ -285,8 +293,8 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
     // draw the selection box
     GLint viewport[4];
     glGetIntegerv(GL_VIEWPORT,viewport);
-    selectionBox(_initialDraggingPosition.x(), _initialDraggingPosition.y(),
-        _lastDraggingPosition.x(), _lastDraggingPosition.y());
+    selectionBox(m_initialDraggingPosition.x(), m_initialDraggingPosition.y(),
+        m_lastDraggingPosition.x(), m_lastDraggingPosition.y());
   }
 
   widget->update();
@@ -301,9 +309,9 @@ QUndoCommand* SelectRotateTool::wheel(GLWidget *widget, const QWheelEvent *event
 
 void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
 {
-  if(!_selectionDL)
+  if(!m_selectionDL)
   {
-    _selectionDL = glGenLists(1);
+    m_selectionDL = glGenLists(1);
   }
 
   glPushMatrix();
@@ -321,7 +329,7 @@ void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
   gluUnProject(float(sx), viewport[3] - float(sy), 0.1, modelview, projection, viewport, &startPos[0], &startPos[1], &startPos[2]);
   gluUnProject(float(ex), viewport[3] - float(ey), 0.1, modelview, projection, viewport, &endPos[0], &endPos[1], &endPos[2]);
 
-  glNewList(_selectionDL, GL_COMPILE);
+  glNewList(m_selectionDL, GL_COMPILE);
   glPushAttrib(GL_ALL_ATTRIB_BITS);
   glPushMatrix();
   glLoadIdentity();
@@ -352,12 +360,12 @@ void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
 
 void SelectRotateTool::setSelectionMode(int i)
 {
-  _selectionMode = i;
+  m_selectionMode = i;
 }
 
 int SelectRotateTool::selectionMode() const
 {
-  return _selectionMode;
+  return m_selectionMode;
 }
 
 void SelectRotateTool::selectionModeChanged( int index )
@@ -366,30 +374,30 @@ void SelectRotateTool::selectionModeChanged( int index )
 }
 
 QWidget *SelectRotateTool::settingsWidget() {
-  if(!_settingsWidget) {
-    _settingsWidget = new QWidget;
+  if(!m_settingsWidget) {
+    m_settingsWidget = new QWidget;
 
-    _comboSelectionMode = new QComboBox(_settingsWidget);
-    _comboSelectionMode->addItem("Atom");
-    _comboSelectionMode->addItem("Residue");
-    _comboSelectionMode->addItem("Molecule");
+    m_comboSelectionMode = new QComboBox(m_settingsWidget);
+    m_comboSelectionMode->addItem("Atom");
+    m_comboSelectionMode->addItem("Residue");
+    m_comboSelectionMode->addItem("Molecule");
 
-    _layout = new QVBoxLayout();
-    _layout->addWidget(_comboSelectionMode);
-    _settingsWidget->setLayout(_layout);
+    m_layout = new QVBoxLayout();
+    m_layout->addWidget(m_comboSelectionMode);
+    m_settingsWidget->setLayout(m_layout);
 
-    connect(_comboSelectionMode, SIGNAL(currentIndexChanged(int)),
+    connect(m_comboSelectionMode, SIGNAL(currentIndexChanged(int)),
         this, SLOT(selectionModeChanged(int)));
 
-    connect(_settingsWidget, SIGNAL(destroyed()),
+    connect(m_settingsWidget, SIGNAL(destroyed()),
         this, SLOT(settingsWidgetDestroyed()));
   }
 
-  return _settingsWidget;
+  return m_settingsWidget;
 }
 
 void SelectRotateTool::settingsWidgetDestroyed() {
-  _settingsWidget = 0;
+  m_settingsWidget = 0;
 }
 
 

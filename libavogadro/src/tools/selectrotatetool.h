@@ -84,28 +84,28 @@ namespace Avogadro {
     protected:
       void selectionBox(float sx, float sy, float ex, float ey);
 
-      bool                _leftButtonPressed;  // rotation
-      bool                _rightButtonPressed; // translation
-      bool                _midButtonPressed;   // scale / zoom
-      bool                _movedSinceButtonPressed;
-      bool                _manipulateMode;     // shift
+      bool                m_leftButtonPressed;  // rotation
+      bool                m_rightButtonPressed; // translation
+      bool                m_midButtonPressed;   // scale / zoom
+      bool                m_movedSinceButtonPressed;
+      bool                m_manipulateMode;     // shift
 
       //! Temporary var for adding selection box
-      GLuint              _selectionDL;
+      GLuint              m_selectionDL;
 
-      QPoint              _initialDraggingPosition;
-      QPoint              _lastDraggingPosition;
+      QPoint              m_initialDraggingPosition;
+      QPoint              m_lastDraggingPosition;
 
-      Eigen::Vector3d     _selectionCenter;    // centroid of selected atoms
+      Eigen::Vector3d     m_selectionCenter;    // centroid of selected atoms
 
-      int                 _selectionMode;      // atom, residue, molecule
+      int                 m_selectionMode;      // atom, residue, molecule
 
-      QList<GLHit> _hits;
+      QList<GLHit>        m_hits;
 
-      QComboBox          *_comboSelectionMode;
-      QVBoxLayout        *_layout;
+      QComboBox          *m_comboSelectionMode;
+      QVBoxLayout        *m_layout;
 
-      QWidget            *_settingsWidget;
+      QWidget            *m_settingsWidget;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();
