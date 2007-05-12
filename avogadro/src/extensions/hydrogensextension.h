@@ -54,7 +54,8 @@ namespace Avogadro {
       virtual QString description() const { return QObject::tr("Hydrogens Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *messages=NULL);
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, 
+                                          GLWidget *widget, QTextEdit *messages=NULL);
       //@}
 
     private:

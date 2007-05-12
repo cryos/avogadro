@@ -51,7 +51,8 @@ using namespace OpenBabel;
       return m_actions;
     }
 
-    QUndoCommand* GhemicalExtension::performAction(QAction *action, Molecule *molecule, QTextEdit *textEdit)
+    QUndoCommand* GhemicalExtension::performAction(QAction *action, Molecule *molecule, 
+                                                   GLWidget *widget, QTextEdit *textEdit)
     {
       QUndoCommand *undo = new GhemicalCommand(molecule, m_forceField, textEdit);
       undo->setText(QObject::tr("Ghemical Geometric Optimization"));

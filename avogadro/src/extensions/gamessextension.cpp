@@ -52,7 +52,7 @@ using namespace OpenBabel;
       return m_actions;
     }
 
-    QUndoCommand* GamessExtension::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
+    QUndoCommand* GamessExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
     {
 
       qDebug() << "Perform Action";

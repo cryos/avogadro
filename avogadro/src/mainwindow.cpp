@@ -883,7 +883,8 @@ namespace Avogadro {
       Extension *extension = dynamic_cast<Extension *>(action->parent());
 
       QUndoCommand *command = 0;
-      command = extension->performAction(action, d->molecule, d->messagesText);
+      command = extension->performAction(action, d->molecule,d->glWidget,
+                                         d->messagesText);
 
       if(command) {
         d->undoStack->push(command);

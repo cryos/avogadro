@@ -1,8 +1,8 @@
 /**********************************************************************
-  Ghemical - Ghemical Plugin for Avogadro
+  SMARTS - Select SMARTS plugin for Avogadro
 
-  Copyright (C) 2006 by Donald Ephraim Curtis
-  Copyright (C) 2006 by Geoffrey R. Hutchison
+  Copyright (C) 2006-2007 by Donald Ephraim Curtis
+  Copyright (C) 2006-2007 by Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -20,14 +20,13 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __GHEMICALEXTENSION_H
-#define __GHEMICALEXTENSION_H
+#ifndef __SMARTSEXTENSION_H
+#define __SMARTSEXTENSION_H
 
 
 #include <openbabel/mol.h>
-#include <openbabel/forcefield.h>
+#include <openbabel/parsmart.h>
 
-#include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
 
 #include <QObject>
@@ -35,65 +34,58 @@
 #include <QString>
 #include <QUndoCommand>
 
-#ifndef BUFF_SIZE
-#define BUFF_SIZE 256
-#endif
-
 namespace Avogadro {
 
- class GhemicalExtension : public Extension
+ class SmartsExtension : public Extension
   {
     Q_OBJECT
 
     public:
       //! Constructor
-      GhemicalExtension(QObject *parent=0);
+      SmartsExtension(QObject *parent=0);
       //! Deconstructor
-      virtual ~GhemicalExtension();
+      virtual ~SmartsExtension();
 
       //! \name Description methods
       //@{
       //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("Ghemical"); }
+      virtual QString name() const { return QObject::tr("SMARTS"); }
       //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("Ghemical Plugin"); };
+      virtual QString description() const { return QObject::tr("SMARTS Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, 
-                                          GLWidget *widget, QTextEdit *textEdit);
+                                          GLWidget *widget, QTextEdit *messages=NULL);
       //@}
 
     private:
-      OpenBabel::OBForceField* m_forceField;
       QList<QAction *> m_actions;
   };
 
-  class GhemicalExtensionFactory : public QObject, public ExtensionFactory
+  class SmartsExtensionFactory : public QObject, public ExtensionFactory
   {
     Q_OBJECT;
     Q_INTERFACES(Avogadro::ExtensionFactory);
 
     public:
-    Extension *createInstance(QObject *parent = 0) { return new GhemicalExtension(parent); }
+    Extension *createInstance(QObject *parent = 0) { return new SmartsExtension(parent); }
   };
 
-
- class GhemicalCommand : public QUndoCommand
+  class SmartsCommand : public QUndoCommand
   {
     public:
-      GhemicalCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield, QTextEdit *messages);
+    SmartsCommand(Molecule *molecule, GLWidget *widget, std::string pattern);
 
-      virtual void redo();
       virtual void undo();
+      virtual void redo();
       virtual bool mergeWith ( const QUndoCommand * command );
       virtual int id() const;
 
     private:
-      Molecule m_moleculeCopy;
       Molecule *m_molecule;
-      QTextEdit *m_textEdit;
-      int m_cycles;
-      OpenBabel::OBForceField* m_forceField;
+      GLWidget *m_widget;
+      OpenBabel::OBSmartsPattern m_pattern;
+      QList<Primitive *> m_selectedList;
   };
 
 } // end namespace Avogadro

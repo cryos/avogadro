@@ -56,3 +56,14 @@ TARGET_LINK_LIBRARIES(hydrogensextension
 )
 INSTALL(TARGETS hydrogensextension DESTINATION ${DESTINATION_DIR})
 
+### Select SMARTS
+set(smartsextension_SRCS smartsextension.cpp ../extension.cpp)
+qt4_automoc(${smartsextension_SRCS})
+ADD_LIBRARY(smartsextension SHARED ${smartsextension_SRCS})
+TARGET_LINK_LIBRARIES(smartsextension 
+	${OPENBABEL2_LIBRARIES} 
+	${QT_LIBRARIES} 
+    ${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS smartsextension DESTINATION ${DESTINATION_DIR})

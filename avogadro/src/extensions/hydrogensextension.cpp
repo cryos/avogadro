@@ -53,11 +53,10 @@ using namespace OpenBabel;
       return m_actions;
     }
 
-    QUndoCommand* HydrogensExtension::performAction(QAction *action, Molecule *molecule, QTextEdit *messages)
+    QUndoCommand* HydrogensExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
     {
 
       QUndoCommand *undo = 0;
-      qDebug() << "Perform Action";
       int i = m_actions.indexOf(action);
       if( 0 <= i <= 1) {
         undo = new HydrogensCommand(molecule, (enum HydrogensCommand::Action) i);

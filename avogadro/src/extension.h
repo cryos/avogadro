@@ -26,6 +26,7 @@
 #define __EXTENSION_H
 
 #include <avogadro/primitive.h>
+#include <avogadro/glwidget.h>
 
 #include <QGLWidget>
 #include <QList>
@@ -72,15 +73,16 @@ namespace Avogadro {
      * @return a list of actions which this widget can perform
      */
     virtual QList<QAction *> actions() const = 0;
-    
     /**
      * @param action the action that triggered the calls
      * @param molecule the molecule to perform the action on
+     * @param widget the currently active GLWidget
      * @param messages a QTextEdit to push information too (allowing 
      * feedback to the user)
      * @return an undo command for this action
      */
-    virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *messages = NULL) = 0;
+    virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, 
+                                        GLWidget *widget, QTextEdit *messages = NULL) = 0;
 
   };
 
