@@ -1,24 +1,26 @@
 /**********************************************************************
   Tool - Avogadro Tool Interface
 
-  Copyright (C) 2006 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006 by Donald E. Curtis
+  Copyright (C) 2007 Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Some code is based on Open Babel
-  For more information, see <http://openbabel.sourceforge.net/>
+  Avogadro is free software; you can redistribute it and/or modify 
+  it under the terms of the GNU General Public License as published by 
+  the Free Software Foundation; either version 2 of the License, or 
+  (at your option) any later version.
 
-  This program is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation version 2 of the License.
-
-  This program is distributed in the hope that it will be useful,
+  Avogadro is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
- ***********************************************************************/
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+ **********************************************************************/
 
 #ifndef __TOOL_H
 #define __TOOL_H
@@ -38,6 +40,15 @@ namespace Avogadro {
 
   class GLWidget;
 
+  /**
+   * @class Tool
+   * @brief Interface for tool plugins
+   * @author Donald Ephraim Curtis
+   *
+   * This is a template class for tools which manipulate the GLWidget
+   * area.  The functions they implement are in response to actions
+   * performed by the user on the GLWidget.
+   */
   class ToolPrivate;
   class A_EXPORT Tool : public QObject
   {
@@ -53,13 +64,47 @@ namespace Avogadro {
       virtual QAction* activateAction() const;
       virtual QWidget* settingsWidget();
 
+      /**
+       * Response to mouse press
+       * @param widget the %GLWidget where the even occured
+       * @param event the mouse event information
+       */
       virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event) = 0;
+
+      /**
+       * Response to mouse release
+       * @param widget the %GLWidget where the even occured
+       * @param event the mouse event information
+       */
       virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event) = 0;
+
+      /**
+       * Response to mouse movement
+       * @param widget the %GLWidget where the even occured
+       * @param event the mouse event information
+       */
       virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event) = 0;
+
+      /**
+       * Response to mouse wheel movement
+       * @param widget the %GLWidget where the even occured
+       * @param event the mouse wheel event information
+       */
       virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event) = 0;
 
+      /**
+       * Called by the GLWidget allowing overlay painting by the 
+       * tool.  Tools get painted last in the overall scheme.
+       * @param widget the %GLWidget to paint to
+       */
       virtual bool paint(GLWidget *widget);
 
+      /**
+       * Determines the ordering of the tools.  More useful
+       * tools are placed first.  It is up to the tool designer
+       * to be humble about their usefulness value.
+       * @return usefulness value
+       */
       virtual int usefulness() const;
 
       bool operator<(const Tool &other) const;

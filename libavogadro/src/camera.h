@@ -1,15 +1,26 @@
-/***************************************************************************
- *   copyright            : (C) 2007 Benoit Jacob
- ***************************************************************************/
+/**********************************************************************
+  Camera - Class for representing the view.
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
+  Copyright (C) 2007 Benoit Jacob
+
+  This file is part of the Avogadro molecular editor project.
+  For more information, see <http://avogadro.sourceforge.net/>
+
+  Avogadro is free software; you can redistribute it and/or modify 
+  it under the terms of the GNU General Public License as published by 
+  the Free Software Foundation; either version 2 of the License, or 
+  (at your option) any later version.
+
+  Avogadro is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+ **********************************************************************/
 
 #ifndef __CAMERA_H
 #define __CAMERA_H
@@ -25,6 +36,9 @@ namespace Avogadro {
   class A_EXPORT GLWidget;
 
   /**
+   * @class Camera
+   * @author Benoit Jacob
+   *
    * This class represents a camera looking at the molecule loaded
    * in a GLWidget. It stores the parameters describing the camera and
    * a pointer to the parent GLWidget. It uses it to retrieve information
@@ -47,9 +61,6 @@ namespace Avogadro {
    * The reason why class Camera doesn't provide a single method to do all of this
    * is that in some cases, you don't want to. For instance, when doing OpenGL selection,
    * you want to call gluPickMatrix() right before Camera::applyPerspective().
-   *
-   * @class Camera
-   * @author Benoit Jacob
    */
   class CameraPrivate;
   class A_EXPORT Camera

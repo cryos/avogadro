@@ -1,24 +1,26 @@
 /**********************************************************************
-  Extension - Avogadro Extension Interface
+  Extension - Extension Class Interface
 
-  Copyright (C) 2006 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006 by Donald E. Curtis
+  Copyright (C) 2007 Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Some code is based on Open Babel
-  For more information, see <http://openbabel.sourceforge.net/>
+  Avogadro is free software; you can redistribute it and/or modify 
+  it under the terms of the GNU General Public License as published by 
+  the Free Software Foundation; either version 2 of the License, or 
+  (at your option) any later version.
 
-  This program is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation version 2 of the License.
-
-  This program is distributed in the hope that it will be useful,
+  Avogadro is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
- ***********************************************************************/
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+ **********************************************************************/
 
 #ifndef __EXTENSION_H
 #define __EXTENSION_H
@@ -36,6 +38,25 @@ class QAction;
 class QUndoCommand;
 namespace Avogadro {
 
+  /**
+   * @class Extension
+   * @brief Interface for adding extensions
+   * @author Donald Ephraim Curtis
+   *
+   * This is a template class used for adding extensions
+   * to Avogadro.  Implementing the pure virutal functions
+   * provides a mechanism for more functionality.
+   * Extensions work by allowing each extension to have an unlimited
+   * number of possible actions (each represented by a QAction).  To
+   * perform an action the extension should implement performAction
+   * and perform the correct action based on the action it recieves.
+   * The actual action should will be performed by the parent object
+   * (usually MainWindow) as a result of a ::redo call on the returned
+   * QUndoCommand from the performAction function.  Thus, to implement
+   * functionality you should subclass QUndoCommand accordingly
+   * based on the required functionality of the extension and return
+   * the command based on the action being peformed.
+   */
   class Extension : public QObject
   {
     Q_OBJECT;
@@ -47,7 +68,18 @@ namespace Avogadro {
     virtual QString name() const;
     virtual QString description() const;
 
+    /**
+     * @return a list of actions which this widget can perform
+     */
     virtual QList<QAction *> actions() const = 0;
+    
+    /**
+     * @param action the action that triggered the calls
+     * @param molecule the molecule to perform the action on
+     * @param messages a QTextEdit to push information too (allowing 
+     * feedback to the user)
+     * @return an undo command for this action
+     */
     virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, QTextEdit *messages = NULL) = 0;
 
   };

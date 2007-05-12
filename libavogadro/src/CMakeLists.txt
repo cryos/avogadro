@@ -27,9 +27,9 @@ set(libavogadro_SRCS
   toolgroup.cpp
   undosequence.cpp
   painter.cpp
-  internal/textrenderer.cpp
-  internal/sphere.cpp
-  internal/cylinder.cpp
+  textrenderer.cpp
+  sphere.cpp
+  cylinder.cpp
 )
 
 set(libavogadro_HDRS
