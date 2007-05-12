@@ -120,12 +120,12 @@ bool ClickMeasureTool::paint(GLWidget *widget)
 
     glPushMatrix();
     glLoadIdentity();
-    Vector3d labelPos = widget->camera()->unProject( Vector3d( 5, widget->height()-5, 0.1 ));
-    Vector3d distancePos[2];
-    distancePos[0] = widget->camera()->unProject( Vector3d( 90, widget->height()-5, 0.1 ));
-    distancePos[1] = widget->camera()->unProject( Vector3d( 150, widget->height()-5, 0.1 ));
-    Vector3d anglePos = widget->camera()->unProject( Vector3d( 50, widget->height()-25, 0.1 ));
-    Vector3d angleLabelPos = widget->camera()->unProject( Vector3d( 5, widget->height()-25, 0.1 ));
+    QPoint labelPos(5, widget->height()-20);
+    QPoint distancePos[2];
+    distancePos[0] = QPoint(90, widget->height()-20 );
+    distancePos[1] = QPoint(150, widget->height()-20);
+    QPoint anglePos(50, widget->height()-40);
+    QPoint angleLabelPos( 5, widget->height()-40);
     glPopMatrix();
 
     widget->painter()->beginText();
@@ -135,15 +135,8 @@ bool ClickMeasureTool::paint(GLWidget *widget)
     double radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3;
     const MatrixP3d & m = widget->camera()->modelview();
 
-    // compute the unit vector toward the camera, in the molecule's coordinate system.
-    // to do this, we apply the inverse of the camera's rotation to the
-    // vector (0,0,1). This amount to taking the 3rd column of the
-    // inverse of the camera's rotation. But the inverse of a rotation is
-    // just its transpose. Thus we want to take the 3rd row of the camera's
-    // rotation matrix.
-    Vector3d zAxis( m(2,0), m(2,1), m(2,2) );
-    // similarly, compute the unit xAxis vector
-    Vector3d xAxis( m(0,0), m(0,1), m(0,2) );
+    Vector3d xAxis = widget->camera()->backTransformedXAxis();
+    Vector3d zAxis = widget->camera()->backTransformedZAxis();
 
     // relative position of the text on the atom
     Vector3d textRelPos = radius * (zAxis + xAxis);

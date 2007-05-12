@@ -274,6 +274,11 @@ namespace Avogadro
   {
     return d->textRenderer->draw(x, y, string);
   }
+  
+  int Painter::drawText( const QPoint& pos, const QString &string ) const
+  {
+    return d->textRenderer->draw(pos.x(), pos.y(), string);
+  }
 
   int Painter::drawText( const Eigen::Vector3d &pos, const QString &string ) const
   {

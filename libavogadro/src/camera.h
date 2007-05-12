@@ -226,6 +226,8 @@ namespace Avogadro {
        */
       Eigen::Vector3d project(const Eigen::Vector3d& v) const;
 
+      Eigen::Vector3d backTransformedXAxis() const;
+      Eigen::Vector3d backTransformedYAxis() const;
       Eigen::Vector3d backTransformedZAxis() const;
 
     private:

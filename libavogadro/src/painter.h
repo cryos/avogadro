@@ -25,6 +25,7 @@
 #include <avogadro/global.h>
 #include <eigen/vector.h>
 #include <QString>
+#include <QPoint>
 
 namespace Avogadro {
 
@@ -55,6 +56,7 @@ namespace Avogadro {
           double radius, int order, double shift ) const;
 
       int drawText( int x, int y, const QString &string ) const;
+      int drawText( const QPoint& pos, const QString &string ) const;
       int drawText( const Eigen::Vector3d & pos, const QString &string ) const;
       void beginText() const;
       void endText() const;

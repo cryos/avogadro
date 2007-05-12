@@ -237,14 +237,13 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
     if( event->buttons() & Qt::LeftButton )
     {
       // rotate
-      Matrix3d rotation = widget->camera()->modelview().linearComponent();
-      Vector3d XAxis = rotation.row(0);
-      Vector3d YAxis = rotation.row(1);
+      Vector3d xAxis = widget->camera()->backTransformedXAxis();
+      Vector3d yAxis = widget->camera()->backTransformedYAxis();
 
       if (!m_manipulateMode) {
         widget->camera()->translate( widget->center() );
-        widget->camera()->rotate( deltaDragging.y() * ROTATION_SPEED, XAxis );
-        widget->camera()->rotate( deltaDragging.x() * ROTATION_SPEED, YAxis );
+        widget->camera()->rotate( deltaDragging.y() * ROTATION_SPEED, xAxis );
+        widget->camera()->rotate( deltaDragging.x() * ROTATION_SPEED, yAxis );
         widget->camera()->translate( - widget->center() );
       } 
 /*      else if (molecule) { 
