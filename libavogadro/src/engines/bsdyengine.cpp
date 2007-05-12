@@ -56,6 +56,7 @@ BSDYEngine::~BSDYEngine()
 
 bool BSDYEngine::render(GLWidget *gl)
 {
+  m_glwidget = gl;
   Color map = colorMap();
 
   QList<Primitive *> list;
@@ -68,21 +69,20 @@ bool BSDYEngine::render(GLWidget *gl)
   list = queue().primitiveList(Primitive::AtomType);
   glPushName(Primitive::AtomType);
   foreach( Primitive *p, list ) {
-    // FIXME: should be qobject_cast but bug with Qt/Mac
-    Atom * a = dynamic_cast<Atom *>(p);
+    Atom * a = static_cast<Atom *>(p);
     glPushName(a->GetIdx());
 
     map.set(a);
     map.applyAsMaterials();
 
-    gl->painter()->drawSphere( a->pos(), radius(a) );
+    m_glwidget->painter()->drawSphere( a->pos(), radius(a) );
 
-    if (a->isSelected())
+    if (m_glwidget->selectedItems().contains(a))
     {
       map.set( 0.3, 0.6, 1.0, 0.7 );
       map.applyAsMaterials();
       glEnable( GL_BLEND );
-      gl->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
+      m_glwidget->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
       glDisable( GL_BLEND );
     }
 
@@ -97,17 +97,16 @@ bool BSDYEngine::render(GLWidget *gl)
 
   list = queue().primitiveList(Primitive::BondType);
   Eigen::Vector3d normalVector;
-  if(gl) {
-    normalVector = gl->normalVector();
+  if(m_glwidget) {
+    normalVector = m_glwidget->normalVector();
   }
   Atom *atom1;
   Atom *atom2;
   foreach( Primitive *p, list ) {
-    // FIXME: should be qobject_cast but bug with Qt/Mac
-    Bond *b = dynamic_cast<Bond *>(p);
+    Bond *b = static_cast<Bond *>(p);
 
-    atom1 = (Atom *) b->GetBeginAtom();
-    atom2 = (Atom *) b->GetEndAtom();
+    atom1 = static_cast<Atom *>(b->GetBeginAtom());
+    atom2 = static_cast<Atom *>(b->GetEndAtom());
     Vector3d w1 (atom1->pos());
     Vector3d w2 (atom2->pos());
     Vector3d d = w2 - w1;
@@ -123,11 +122,11 @@ bool BSDYEngine::render(GLWidget *gl)
 
     map.set(atom1);
     map.applyAsMaterials();
-    gl->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
+    m_glwidget->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
 
     map.set(atom2);
     map.applyAsMaterials();
-    gl->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
+    m_glwidget->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
     //  glPopName();
     //  glPopName();
   }
@@ -157,8 +156,9 @@ void BSDYEngine::setBondRadius(int value)
 double BSDYEngine::radius(const Primitive *primitive)
 {
   if (primitive->type() == Primitive::AtomType) {
-    double r = radius(static_cast<const Atom *>(primitive));
-    if(primitive->isSelected())
+    Atom *a = static_cast<const Atom *>(primitive);
+    double r = radius(a);
+    if (m_glwidget->selectedItems().contains(a))
     {
       return r + SEL_ATOM_EXTRA_RADIUS;
     }

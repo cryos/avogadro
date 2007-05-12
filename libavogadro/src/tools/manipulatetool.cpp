@@ -109,7 +109,7 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
         atom->setPos(atomTranslation * atom->pos());
     }
   }
-  if (m_clickedAtom && !m_clickedAtom->isSelected())
+  if (m_clickedAtom && !m_glwidget->selectedItems().contains(m_clickedAtom))
     m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
 }
 
@@ -130,7 +130,7 @@ void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from,
       atom->setPos(atomTranslation * atom->pos());
     }
   }
-  if (m_clickedAtom && !m_clickedAtom->isSelected())
+  if (m_clickedAtom && !m_glwidget->selectedItems().contains(m_clickedAtom))
     m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
 }
 
