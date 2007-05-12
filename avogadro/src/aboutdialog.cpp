@@ -28,7 +28,7 @@
 #include <QtGui/QStyleOption>
 #include "aboutdialog.h"
 
-#define AVOGADRO_VERSION "0.0.3"
+#define AVOGADRO_VERSION "0.1.0"
 
 AboutDialog::AboutDialog(QWidget *parent)
     : QDialog(parent
