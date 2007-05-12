@@ -80,6 +80,7 @@ void ManipulateTool::computeClickedAtom(const QPoint& p)
 
 void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
 {
+  // Move the selected atom(s) in to or out of the screen
   Vector3d transformedGoal = m_glwidget->camera()->modelview() * goal;
   double distanceToGoal = transformedGoal.norm();
 
@@ -114,6 +115,7 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
 
 void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const
 {
+  // Translate the selected atoms in the x and y sense of the view
   Vector3d fromPos = m_glwidget->camera()->unProject(from, what);
   Vector3d toPos = m_glwidget->camera()->unProject(to, what);
 
@@ -134,6 +136,7 @@ void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from,
 
 void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const
 {
+  // Rotate the selected atoms about the center
   Matrix3d rotation = m_glwidget->camera()->modelview().linearComponent();
   Vector3d XAxis = rotation.row(0);
   Vector3d YAxis = rotation.row(1);
@@ -153,7 +156,16 @@ void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, doubl
 
 void ManipulateTool::tilt( const Eigen::Vector3d &center, double delta ) const
 {
-
+  // Tilt the selected atoms about the center
+  MatrixP3d fragmentRotation;
+  fragmentRotation.loadTranslation(center);
+  fragmentRotation.rotate3(delta * ROTATION_SPEED, m_glwidget->camera()->backTransformedZAxis());
+  fragmentRotation.translate(-center);
+  foreach(Primitive *a, m_glwidget->selectedItems())
+  {
+    Atom *atom = static_cast<const Atom *>(a);
+    atom->setPos(fragmentRotation * atom->pos());
+  }
 }
 
 QUndoCommand* ManipulateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
@@ -205,7 +217,7 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
     else if ( event->buttons() & Qt::MidButton )
     {
       // Perform the rotation
-//      tilt( m_clickedAtom->pos(), deltaDragging.x() );
+      tilt( m_clickedAtom->pos(), deltaDragging.x() );
 
       // Perform the zoom toward clicked atom
       zoom( m_clickedAtom->pos(), deltaDragging.y() );
