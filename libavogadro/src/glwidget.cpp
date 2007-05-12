@@ -771,6 +771,13 @@ namespace Avogadro {
     return d->selectionList;
   }
 
+  void GLWidget::setUnitCells(int a, int b, int c)
+  {
+    d->aCells = a;
+    d->bCells = b;
+    d->cCells = c;
+  }
+
 }
 
 #include "glwidget.moc"

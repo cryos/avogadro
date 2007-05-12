@@ -339,13 +339,38 @@ namespace Avogadro {
        */
       void removePrimitive(Primitive *primitive);
 
+      /** Toggle the selection for the atoms in the supplied list.
+       * That is, if the primitive is selected, deselect it and vice-versa.
+       * 
+       * @param primitiveList the set of atoms to update
+       */
       void toggleSelection(QList<Primitive *> primitiveList);
 
+      /** Change the selection status for the atoms in the supplied list.
+       * All atoms in the list will have the same selection status.
+       *
+       * @param primitiveList the set of atoms to update
+       * @param select whether to select or deselect the atoms
+       */
       void setSelection(QList<Primitive *> primitiveList, bool select);
 
+      /** Deselect all atoms 
+       */
       void clearSelection();
 
+      /** \return the list of selected atoms
+       */
       QList<Primitive *> selectedItems();
+
+      /** Set the number of unit cells for a periodic molecule like a crystal
+       * a, b, and c, are the three primitive unit cell axes.
+       * Does nothing if the molecule does not have a unit cell defined
+       *
+       * @param a Number of unit cells to display along the a axis
+       * @param b Number of unit cells to display along the b axis
+       * @param c Number of unit cells to display along the c axis
+       */
+      void setUnitCells(int a, int b, int c);
 
     Q_SIGNALS:
       void mousePress( QMouseEvent * event );
