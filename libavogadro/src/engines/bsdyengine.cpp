@@ -44,7 +44,7 @@ using namespace Eigen;
 using namespace Avogadro;
 
 BSDYEngine::BSDYEngine(QObject *parent) : Engine(parent), m_update(true),
-  m_settingsWidget(0), m_atomRadiusPercentage(0.3), m_bondRadius(0.1)
+  m_settingsWidget(0), m_atomRadiusPercentage(0.3), m_bondRadius(0.1), m_glwidget(0)
 {
 }
 
@@ -79,7 +79,7 @@ bool BSDYEngine::render(GLWidget *gl)
 
     m_glwidget->painter()->drawSphere( a->pos(), radius(a) );
 
-    if (m_glwidget->selectedItems().contains(a))
+    if (m_glwidget->selectedItem(a))
     {
       map.set( 0.3, 0.6, 1.0, 0.7 );
       map.applyAsMaterials();
@@ -155,19 +155,21 @@ void BSDYEngine::setBondRadius(int value)
   emit changed();
 }
 
-double BSDYEngine::radius(const Primitive *primitive)
+double BSDYEngine::radius(const Primitive *p)
 {
-  if (primitive->type() == Primitive::AtomType) {
-    Atom *a = static_cast<const Atom *>(primitive);
+  if (p->type() == Primitive::AtomType)
+  {
+    Atom *a = static_cast<const Atom *>(p);
     double r = radius(a);
-    if (m_glwidget->selectedItems().contains(a))
+    if (m_glwidget)
     {
-      return r + SEL_ATOM_EXTRA_RADIUS;
+      if (m_glwidget->selectedItem(p))
+        return r + SEL_ATOM_EXTRA_RADIUS;
     }
     return r;
-  } else {
-    return 0.;
   }
+  else
+    return 0.;
 }
 
 bool BSDYEngine::render(const Atom *a)

@@ -1,5 +1,5 @@
 /**********************************************************************
-  SphereEngine - Engine for "balls and sticks" display
+  SphereEngine - Engine for "spheres" display
 
   Copyright (C) 2006-2007 Geoffrey R. Hutchison
   Copyright (C) 2007      Benoit Jacob
@@ -44,6 +44,7 @@ using namespace Eigen;
 
 bool SphereEngine::render(GLWidget *gl)
 {
+  m_glwidget = gl;
   QList<Primitive *> list;
 
   if (!m_setup) {
@@ -70,36 +71,37 @@ inline double SphereEngine::radius(const Atom *a)
 
 double SphereEngine::radius(const Primitive *p)
 {
-  if (p->type() == Primitive::AtomType) {
-    double r = radius(static_cast<const Atom *>(p));
-    if(p->isSelected()) {
-      return r + SEL_ATOM_EXTRA_RADIUS;
+  if (p->type() == Primitive::AtomType)
+  {
+    Atom *a = static_cast<const Atom *>(p);
+    double r = radius(a);
+    if (m_glwidget)
+    {
+      if (m_glwidget->selectedItem(p))
+        return r + SEL_ATOM_EXTRA_RADIUS;
     }
     return r;
-  } else {
-    return 0.;
   }
+  else
+    return 0.;
 }
 
 bool SphereEngine::render(const Atom *a)
 {
-  // FIXME: should be qobject_cast but bug with Qt/Mac
-  GLWidget *gl = dynamic_cast<GLWidget *>(parent());
-
   Color map = colorMap();
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
   map.set(a);
   map.applyAsMaterials();
 
-  gl->painter()->drawSphere( a->pos(), radius(a) );
+  m_glwidget->painter()->drawSphere( a->pos(), radius(a) );
 
-  if (a->isSelected())
+  if (m_glwidget->selectedItem(a))
     {
       map.set( 0.3, 0.6, 1.0, 0.7 );
       map.applyAsMaterials();
       glEnable( GL_BLEND );
-      gl->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
+      m_glwidget->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
       glDisable( GL_BLEND );
     }
 

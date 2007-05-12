@@ -1,5 +1,5 @@
 /**********************************************************************
-  SphereEngine - Engine for "balls and sticks" display
+  SphereEngine - Engine for "spheres" display
 
   Copyright (C) 2006-2007 Geoffrey R. Hutchison
   Copyright (C) 2007      Benoit Jacob
@@ -46,7 +46,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      SphereEngine(QObject *parent=0) : Engine(parent), m_setup(false) {}
+      SphereEngine(QObject *parent=0) : Engine(parent), m_setup(false), m_glwidget(0) {}
       //! Deconstructor
       ~SphereEngine() {}
 
@@ -71,6 +71,7 @@ namespace Avogadro {
     private:
       inline double radius(const Atom *a);
 
+      GLWidget *m_glwidget;
       bool m_setup; //!< Whether the sphere objects have been setup
   };
 

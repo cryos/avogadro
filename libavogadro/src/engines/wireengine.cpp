@@ -43,6 +43,8 @@ using namespace Eigen;
 
 bool WireEngine::render(GLWidget *gl)
 {
+  m_glwidget = gl;
+
   QList<Primitive *> list;
 
   glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -51,12 +53,12 @@ bool WireEngine::render(GLWidget *gl)
 
   list = queue().primitiveList(Primitive::AtomType);
   foreach( Primitive *p, list ) {
-    render((Atom *)(p));
+    render(static_cast<const Atom *>(p));
   }
 
   list = queue().primitiveList(Primitive::BondType);
   foreach( Primitive *p, list ) {
-    render((Bond *)(p));
+    render(static_cast<const Bond *>(p));
   }
 
   glPopAttrib();
@@ -70,10 +72,10 @@ bool WireEngine::render(const Atom *a)
   const float selectionColor[3] = {0.3, 0.6, 1.0};
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
-  
+
   const Vector3d & v = a->pos();
-  
-  if (a->isSelected()) {
+
+  if (m_glwidget->selectedItem(a)) {
     glColor3fv(selectionColor);
     glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 4.0);
   }
@@ -86,10 +88,10 @@ bool WireEngine::render(const Atom *a)
   glBegin(GL_POINTS);
   glVertex3d(v.x(), v.y(), v.z());
   glEnd();
-  
+
   glPopName();
   glPopName();
-  
+
   return true;
 }
 

@@ -46,6 +46,7 @@ StickEngine::~StickEngine()
 
 bool StickEngine::render(GLWidget *gl)
 {
+  m_glwidget = gl;
   Color map = colorMap();
 
   QList<Primitive *> list;
@@ -57,21 +58,20 @@ bool StickEngine::render(GLWidget *gl)
   list = queue().primitiveList(Primitive::AtomType);
   glPushName(Primitive::AtomType);
   foreach( Primitive *p, list ) {
-    // FIXME: should be qobject_cast but bug with Qt/Mac
-    Atom * a = dynamic_cast<Atom *>(p);
+    Atom * a = static_cast<Atom *>(p);
     glPushName(a->GetIdx());
 
     map.set(a);
     map.applyAsMaterials();
 
-    gl->painter()->drawSphere( a->pos(), radius(a) );
+    m_glwidget->painter()->drawSphere( a->pos(), radius(a) );
 
-    if (a->isSelected())
+    if (m_glwidget->selectedItem(a))
     {
       map.set( 0.3, 0.6, 1.0, 0.7 );
       map.applyAsMaterials();
       glEnable( GL_BLEND );
-      gl->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
+      m_glwidget->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
       glDisable( GL_BLEND );
     }
     glPopName();
@@ -100,11 +100,11 @@ bool StickEngine::render(GLWidget *gl)
 
     map.set(atom1);
     map.applyAsMaterials();
-    gl->painter()->drawCylinder( v1, v3, radius(atom1) );
+    m_glwidget->painter()->drawCylinder( v1, v3, radius(atom1) );
 
     map.set(atom2);
     map.applyAsMaterials();
-    gl->painter()->drawCylinder( v3, v2, radius(atom1) );
+    m_glwidget->painter()->drawCylinder( v3, v2, radius(atom1) );
   }
 
   glPopAttrib();
@@ -112,19 +112,21 @@ bool StickEngine::render(GLWidget *gl)
   return true;
 }
 
-double StickEngine::radius(const Primitive *primitive)
+double StickEngine::radius(const Primitive *p)
 {
-  if (primitive && primitive->type() == Primitive::AtomType) {
-    double r = radius(static_cast<const Atom *>(primitive));
-      // radius(static_cast<const Atom *>(primitive));
-    if(primitive->isSelected())
+  if (p->type() == Primitive::AtomType)
+  {
+    Atom *a = static_cast<const Atom *>(p);
+    double r = radius(a);
+    if (m_glwidget)
     {
-      return r + SEL_ATOM_EXTRA_RADIUS;
+      if (m_glwidget->selectedItem(p))
+        return r + SEL_ATOM_EXTRA_RADIUS;
     }
     return r;
   }
-
-  return 0.;
+  else
+    return 0.;
 }
 
 inline double StickEngine::radius(const Atom *a)

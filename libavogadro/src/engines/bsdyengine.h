@@ -70,7 +70,7 @@ namespace Avogadro {
 
       bool render(GLWidget *gl);
 
-      double radius(const Primitive *primitive);
+      double radius(const Primitive *p = 0);
       //@}
 
       void addPrimitive(Primitive *);

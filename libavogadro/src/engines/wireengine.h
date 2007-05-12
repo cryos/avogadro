@@ -45,7 +45,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      WireEngine(QObject *parent=0) : Engine(parent) {}
+      WireEngine(QObject *parent=0) : Engine(parent), m_glwidget(0) {}
       //! Deconstructor
       ~WireEngine() {}
 
@@ -69,7 +69,12 @@ namespace Avogadro {
       bool render(GLWidget *gl);
       //@}
 
+//      double radius(const Primitive *p = 0);
+
     private:
+//      inline double radius(const Atom *a);
+
+      GLWidget *m_glwidget;
   };
 
   //! Generates instances of our WireEngine class

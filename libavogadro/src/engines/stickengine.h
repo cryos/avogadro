@@ -44,7 +44,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      StickEngine(QObject *parent=0) : Engine(parent), m_update(true) {}
+      StickEngine(QObject *parent=0) : Engine(parent), m_update(true), m_glwidget(0) {}
       //! Deconstructor
       ~StickEngine();
 
@@ -77,6 +77,7 @@ namespace Avogadro {
     private:
       inline double radius(const Atom *a);
 
+      GLWidget *m_glwidget;
       bool m_update;
   };
 

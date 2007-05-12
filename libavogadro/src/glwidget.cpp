@@ -749,15 +749,19 @@ namespace Avogadro {
   void GLWidget::toggleSelection(QList<Primitive *> primitiveList)
   {
     foreach (Primitive *item, primitiveList) {
-      if (!item->isSelected()) {
-        item->setSelected(true);
-        if (!d->selectionList.contains(item))
-          d->selectionList.append(item);
-      } else {
-        item->setSelected(false);
+//      if (!item->isSelected()) {
+//        item->setSelected(true);
+//        if (!d->selectionList.contains(item))
+//          d->selectionList.append(item);
+//      } else {
+//        item->setSelected(false);
+//        d->selectionList.removeAll(item);
+//      }
+//      item->update();
+      if (d->selectionList.contains(item))
         d->selectionList.removeAll(item);
-      }
-      item->update();
+      else
+        d->selectionList.append(item);
     }
   }
 
@@ -773,6 +777,12 @@ namespace Avogadro {
   QList<Primitive *> GLWidget::selectedItems()
   {
     return d->selectionList;
+  }
+
+  bool GLWidget::selectedItem(const Primitive *p)
+  {
+    // Return true if the item is selected
+    return d->selectionList.contains(const_cast<Primitive *>(p));
   }
 
   void GLWidget::setUnitCells(int a, int b, int c)

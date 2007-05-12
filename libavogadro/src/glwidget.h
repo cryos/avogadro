@@ -366,6 +366,10 @@ namespace Avogadro {
        */
       QList<Primitive *> selectedItems();
 
+      /** \return true if the Primitive is selected
+       */
+      bool selectedItem(const Primitive *p);
+
       /** Set the number of unit cells for a periodic molecule like a crystal
        * a, b, and c, are the three primitive unit cell axes.
        * Does nothing if the molecule does not have a unit cell defined
