@@ -40,7 +40,7 @@ using namespace Eigen;
 ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false)
 {
   QAction *action = activateAction();
-  action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
+  action->setIcon(QIcon(QString::fromUtf8(":/manipulate/manipulate.png")));
   action->setToolTip(tr("Manipulation Tool (F10)\n\n"
         "Left Mouse:   Click and drag to move atoms and bonds\n"
         "Middle Mouse: Click and drag to move atoms further away or closer\n"
