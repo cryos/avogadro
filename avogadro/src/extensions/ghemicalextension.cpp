@@ -31,7 +31,7 @@ using namespace std;
 using namespace OpenBabel;
 
   namespace Avogadro {
-    GhemicalExtension::GhemicalExtension(QObject *parent) : Extension(parent)
+    GhemicalExtension::GhemicalExtension(QObject *parent) : QObject(parent)
     {
       m_forceField = OBForceField::FindForceField("Ghemical");
 

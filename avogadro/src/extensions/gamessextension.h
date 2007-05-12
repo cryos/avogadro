@@ -36,7 +36,7 @@
 
 namespace Avogadro {
 
-  class GamessExtension : public Extension
+ class GamessExtension : public QObject, public Extension
   {
     Q_OBJECT;
 

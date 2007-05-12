@@ -33,7 +33,7 @@ using namespace std;
 using namespace OpenBabel;
 
   namespace Avogadro {
-    HydrogensExtension::HydrogensExtension(QObject *parent) : Extension(parent)
+    HydrogensExtension::HydrogensExtension(QObject *parent) : QObject(parent)
     {
       QAction *action = new QAction(this);
       action->setText("Add Hydrogens");

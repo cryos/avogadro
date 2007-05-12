@@ -41,7 +41,7 @@
 
 namespace Avogadro {
 
- class GhemicalExtension : public Extension
+ class GhemicalExtension : public QObject, public Extension
   {
     Q_OBJECT
 

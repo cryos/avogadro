@@ -36,7 +36,7 @@ using namespace std;
 using namespace OpenBabel;
 
   namespace Avogadro {
-    GamessExtension::GamessExtension(QObject *parent) : Extension(parent), m_inputDialog(NULL), m_inputData(NULL)
+    GamessExtension::GamessExtension(QObject *parent) : QObject(parent), m_inputDialog(NULL), m_inputData(NULL)
     {
       QAction *action = new QAction(this);
       action->setText("GAMESS Input Generation");

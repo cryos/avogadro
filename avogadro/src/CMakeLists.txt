@@ -27,7 +27,6 @@ set(avogadro_SRCS
     aboutdialog.cpp
     application.cpp
     enginelistview.cpp
-    extension.cpp
     flowlayout.cpp
     flattabwidget.cpp
     mainwindow.cpp
@@ -59,11 +58,12 @@ TARGET_LINK_LIBRARIES(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
     avogadro-lib)
 
 IF( APPLE )
-  SET( MACOSX_BUNDLE_INFO_STRING "Avogadro - version 0.0.3" )
-  SET( MACOSX_BUNDLE_BUNDLE_VERSION "0.0.3" )
+  SET( MACOSX_BUNDLE_INFO_STRING "Avogadro - version 0.1.0" )
+  SET( MACOSX_BUNDLE_BUNDLE_VERSION "0.1.0" )
   # Change following line to point to actual icns file in bundle.
   SET( MACOSX_BUNDLE_ICON_FILE "avogadro.icns" )
-  SET( MACOSX_BUNDLE_GUI_IDENTIFIER "net.sourceforge" ) # <-- ???
+  # means bundle is set to be net.sourceforge.Avogadro
+  SET( MACOSX_BUNDLE_GUI_IDENTIFIER "net.sourceforge" )
   SET( MACOSX_BUNDLE_BUNDLE_NAME "Avogadro" )
 
   # Need to copy the icon file

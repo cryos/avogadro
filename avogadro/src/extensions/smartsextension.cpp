@@ -32,7 +32,7 @@ using namespace std;
 using namespace OpenBabel;
 
   namespace Avogadro {
-    SmartsExtension::SmartsExtension(QObject *parent) : Extension(parent)
+    SmartsExtension::SmartsExtension(QObject *parent) : QObject(parent)
     {
       QAction *action = new QAction(this);
       action->setText("Select SMARTS");

@@ -36,7 +36,7 @@
 
 namespace Avogadro {
 
- class HydrogensExtension : public Extension
+ class HydrogensExtension : public QObject, public Extension
   {
     Q_OBJECT
 

@@ -36,7 +36,7 @@
 
 namespace Avogadro {
 
- class SmartsExtension : public Extension
+ class SmartsExtension : public QObject, public Extension
   {
     Q_OBJECT
 

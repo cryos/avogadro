@@ -58,16 +58,21 @@ namespace Avogadro {
    * based on the required functionality of the extension and return
    * the command based on the action being peformed.
    */
-  class Extension : public QObject
+  class Extension
   {
-    Q_OBJECT;
-
     public:
-    Extension(QObject *parent=0);
-    virtual ~Extension();
+    Extension() {};
+    virtual ~Extension() {};
 
-    virtual QString name() const;
-    virtual QString description() const;
+    /** @return the name of the extension
+     */
+    virtual QString name() const
+    { return QObject::tr("Unknown"); }
+
+    /** @return a brief description of what the extension does (e.g., tooltip)
+     */
+    virtual QString description() const
+    { return QObject::tr("Unknown Extension"); }
 
     /**
      * @return a list of actions which this widget can perform
