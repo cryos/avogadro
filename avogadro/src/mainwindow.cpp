@@ -465,6 +465,23 @@ namespace Avogadro {
     d->undoStack->push(command);
   }
 
+  void MainWindow::selectAll()
+  {
+    QList<Primitive*> atoms;
+    FOR_ATOMS_OF_MOL(a, d->molecule) {
+      Atom *atom = static_cast<Atom*>(&*a);
+      atoms.append(atom);
+    }
+    d->glWidget->setSelection(atoms, true);
+    d->glWidget->update();
+  }
+
+  void MainWindow::selectNone()
+  {
+    d->glWidget->clearSelection();
+    d->glWidget->update();
+  }
+
   void MainWindow::newView()
   {
     QWidget *widget = new QWidget();
@@ -598,6 +615,8 @@ namespace Avogadro {
     connect(ui.actionCopy, SIGNAL(triggered()), this, SLOT(copy()));
     connect(ui.actionPaste, SIGNAL(triggered()), this, SLOT(paste()));
     connect(ui.actionClear, SIGNAL(triggered()), this, SLOT(clear()));
+    connect(ui.actionSelect_All, SIGNAL(triggered()), this, SLOT(selectAll()));
+    connect(ui.actionSelect_None, SIGNAL(triggered()), this, SLOT(selectNone()));
 
     ui.menuDocks->addAction(ui.projectDock->toggleViewAction());
     ui.menuDocks->addAction(ui.toolsDock->toggleViewAction());

@@ -66,6 +66,8 @@ namespace Avogadro {
       void copy();
       void paste();
       void clear();
+      void selectAll();
+      void selectNone();
 
       void newView();
       void closeView();
