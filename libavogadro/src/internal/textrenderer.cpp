@@ -26,7 +26,7 @@
 #include<avogadro/glwidget.h>
 #include<avogadro/camera.h>
 
-const float TEXT_OUTLINE_INTENSITY = 0.5;
+const int TEXT_OUTLINE_INTENSITY = 128;
 
 namespace Avogadro {
 
@@ -126,7 +126,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
   //     this blue channel into a separate bitmap that'll be faster to manipulate
   //     in what follows.
 
-  GLubyte *rawbitmap = new GLubyte[ m_width * m_height ];
+  int *rawbitmap = new int[ m_width * m_height ];
   if( ! rawbitmap ) return false;
   int n = 0;
   // loop over the pixels of the image, in reverse y direction
@@ -142,16 +142,14 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
   //     to produce a new map each pixel is associated a float telling how
   //     much it is surrounded by other pixels.
 
-  float *neighborhood = new float[ m_width * m_height ];
+  int *neighborhood = new int[ m_width * m_height ];
   if( ! neighborhood ) return false;
 
-  // the "diagonal factor", currently set to be the inverse of the square root of 2.
-  // Explanation: with our convolution filter, each pixel in the neighborhood
-  // will be influenced by the 8 surrounding pixels from the rawbitmap.
-  // The 4 diagonal pixels (the corners of the square) are farther away and
-  // thus should have smaller influence. Thus df is smaller than 1. The value
-  // 1/sqrt(2) comes from Pythagora's theorem.
-  const float df = 1.0f / sqrtf(2.0f);
+  // the weight of diagonal-adjactent pixels. Side-adjacent pixels have
+  // weight 256 (their value is shifted 8 bits on the left, hence multiplied
+  // by 64). The value below is approximately 256/sqrt(2), as suggested by
+  // Pythagora's theorem.
+  const int df = 181;
 
   // first compute the pixels that are not on an edge of the bitmap
   for( int j = 1; j < m_height - 1; j++ )
@@ -159,57 +157,52 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
   {
     n = i + j * m_width;
     neighborhood[n]
-            = rawbitmap[n - m_width - 1] * df
-            + rawbitmap[n - m_width]
-            + rawbitmap[n - m_width + 1] * df
-            + rawbitmap[n - 1]
-            + rawbitmap[n + 1]
-            + rawbitmap[n + m_width - 1] * df
-            + rawbitmap[n + m_width]
-            + rawbitmap[n + m_width + 1] * df;
+            = ( ( rawbitmap[n - m_width - 1]
+                + rawbitmap[n - m_width + 1]
+                + rawbitmap[n + m_width - 1]
+                + rawbitmap[n + m_width + 1] ) * df )
+            + ( ( rawbitmap[n - m_width]
+                + rawbitmap[n - 1]
+                + rawbitmap[n + 1]
+                + rawbitmap[n + m_width] ) << 8 );
   }
   
   // compute the pixels on the top and bottom edges, minus the 4 corners
   for( int i = 1; i < m_width - 1; i++ )
   {
     n = i;
-    neighborhood[n] = rawbitmap[n - 1] + rawbitmap[n + 1]
-                    + rawbitmap[n + m_width - 1] * df + rawbitmap[n + m_width]
-                    + rawbitmap[n + m_width + 1] * df;
+    neighborhood[n] = ( (rawbitmap[n - 1] + rawbitmap[n + 1] + rawbitmap[n + m_width]) << 8 )
+                    + ( (rawbitmap[n + m_width - 1] + rawbitmap[n + m_width + 1]) * df );
 
     n = i + (m_height - 1) * m_width;
-    neighborhood[n] = rawbitmap[n - m_width - 1] * df + rawbitmap[n - m_width]
-                    + rawbitmap[n - m_width + 1] * df + rawbitmap[n - 1]
-                    + rawbitmap[n + 1];
+    neighborhood[n] = ( (rawbitmap[n - m_width] + rawbitmap[n - 1] + rawbitmap[n + 1]) << 8 )
+                    + ( (rawbitmap[n - m_width - 1] + rawbitmap[n - m_width + 1]) * df );
   }
 
   // compute the pixels on the left and right edges, minus the 4 corners
   for( int j = 1; j < m_height - 1; j++ )
   {
     n = j * m_width;
-    neighborhood[n] = rawbitmap[n - m_width] + rawbitmap[n - m_width + 1] * df
-                    + rawbitmap[n + 1]
-                    + rawbitmap[n + m_width] + rawbitmap[n + m_width + 1] * df;
+    neighborhood[n] = ( (rawbitmap[n - m_width] + rawbitmap[n + 1] + rawbitmap[n + m_width]) << 8 )
+                    + ( (rawbitmap[n - m_width + 1] + rawbitmap[n + m_width + 1]) * df );
 
     n = m_width - 1 + j * m_width;
-    neighborhood[n] = rawbitmap[n - m_width - 1] * df + rawbitmap[n - m_width]
-                    + rawbitmap[n - 1]
-                    + rawbitmap[n + m_width - 1] * df + rawbitmap[n + m_width];
+    neighborhood[n] = ( (rawbitmap[n - m_width] + rawbitmap[n - 1] + rawbitmap[n + m_width]) << 8 )
+                    + ( (rawbitmap[n - m_width - 1] + rawbitmap[n + m_width - 1]) * df );
   }
 
   // compute the 4 corners
-  neighborhood[0] = rawbitmap[1]
-                  + rawbitmap[m_width]
+  neighborhood[0] = ( ( rawbitmap[1] + rawbitmap[m_width] ) << 8 )
                   + rawbitmap[m_width] * df;
-  neighborhood[m_width-1] = rawbitmap[m_width-2]
-                          + rawbitmap[2*m_width-1]
+  neighborhood[m_width-1] = ( ( rawbitmap[m_width-2] + rawbitmap[2*m_width-1] ) << 8 )
                           + rawbitmap[2*m_width-2] * df;
-  neighborhood[(m_height-1)*m_width] = rawbitmap[(m_height-2)*m_width]
-                                     + rawbitmap[(m_height-1)*m_width+1]
-                                     + rawbitmap[(m_height-2)*m_width+1] * df;
-  neighborhood[(m_height-1)*m_width+m_width-1] = rawbitmap[(m_height-1)*m_width+m_width-2]
-                                               + rawbitmap[(m_height-2)*m_width+m_width-1]
-                                               + rawbitmap[(m_height-2)*m_width+m_width-2] * df;
+  neighborhood[(m_height-1)*m_width]
+      = ( ( rawbitmap[(m_height-2)*m_width] + rawbitmap[(m_height-1)*m_width+1] ) << 8 )
+      + rawbitmap[(m_height-2)*m_width+1] * df;
+  neighborhood[(m_height-1)*m_width+m_width-1]
+      = ( ( rawbitmap[(m_height-1)*m_width+m_width-2]
+          + rawbitmap[(m_height-2)*m_width+m_width-1] ) << 8 )
+      + rawbitmap[(m_height-2)*m_width+m_width-2] * df;
 
   // *** STEP 4 : compute the final bitmap ***
   // --> explanation: we build the bitmap that will be passed to OpenGL for texturing.
@@ -225,8 +218,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
   {
     n = i + j * m_width;
     finalbitmap[2 * n] = rawbitmap[n];
-    int alpha = static_cast<int>(TEXT_OUTLINE_INTENSITY * neighborhood[n])
-              + static_cast<int>(rawbitmap[n]);
+    int alpha = ((TEXT_OUTLINE_INTENSITY * neighborhood[n]) >> 16) + rawbitmap[n];
     if( alpha > 255 ) {
       alpha = 255;
     }
