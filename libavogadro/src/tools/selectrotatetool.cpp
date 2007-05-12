@@ -336,6 +336,7 @@ void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
   glLoadIdentity();
   glEnable(GL_BLEND);
   glDisable(GL_LIGHTING);
+  glDisable(GL_CULL_FACE);
   glColor4f(1.0, 1.0, 1.0, 0.2);
   glBegin(GL_POLYGON);
   glVertex3f(startPos[0],startPos[1],startPos[2]);
