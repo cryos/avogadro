@@ -147,7 +147,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font )
 
   // the weight of diagonal-adjactent pixels. Side-adjacent pixels have
   // weight 256 (their value is shifted 8 bits on the left, hence multiplied
-  // by 64). The value below is approximately 256/sqrt(2), as suggested by
+  // by 236). The value below is approximately 256/sqrt(2), as suggested by
   // Pythagora's theorem.
   const int df = 181;
 
