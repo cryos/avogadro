@@ -308,13 +308,6 @@ class TextRendererPrivate
     GLWidget *glwidget;
 
     GLboolean textmode;
-
-    ///{ Members used to remember the OpenGL state in order to be able to restore it after rendering. See do_end().
-    GLboolean wasEnabled_LIGHTING;
-    GLboolean wasEnabled_TEXTURE_RECTANGLE_ARB;
-    GLboolean wasEnabled_FOG;
-    GLboolean wasEnabled_BLEND;
-    ///}
 };
 
 TextRenderer::TextRenderer() : d(new TextRendererPrivate)
@@ -344,15 +337,13 @@ void TextRenderer::begin()
 {
   assert(d->glwidget);
   d->textmode = true;
-  d->wasEnabled_LIGHTING = glIsEnabled( GL_LIGHTING );
-  d->wasEnabled_FOG = glIsEnabled( GL_FOG );
-  d->wasEnabled_TEXTURE_RECTANGLE_ARB = glIsEnabled( GL_TEXTURE_RECTANGLE_ARB );
-  d->wasEnabled_BLEND = glIsEnabled( GL_BLEND );
-  glDisable( GL_LIGHTING );
-  glDisable( GL_FOG );
-  glEnable( GL_TEXTURE_RECTANGLE_ARB );
-  glEnable( GL_BLEND );
-  glMatrixMode( GL_PROJECTION );
+  glPushAttrib( GL_ENABLE_BIT | GL_DEPTH_BUFFER_BIT );
+  glDisable(GL_LIGHTING);
+  glDisable(GL_FOG);
+  glEnable(GL_TEXTURE_RECTANGLE_ARB);
+  glEnable(GL_BLEND);
+  glDepthMask(GL_FALSE);
+  glMatrixMode(GL_PROJECTION);
   glPushMatrix();
   glLoadIdentity();
   glOrtho( 0, d->glwidget->width(), 0, d->glwidget->height(), 0, 1 );
@@ -362,11 +353,7 @@ void TextRenderer::begin()
 void TextRenderer::end()
 {
   assert(d->textmode);
-  if( ! d->wasEnabled_TEXTURE_RECTANGLE_ARB )
-  glDisable( GL_TEXTURE_RECTANGLE_ARB );
-  if( ! d->wasEnabled_BLEND ) glDisable( GL_BLEND );
-  if( d->wasEnabled_LIGHTING ) glEnable( GL_LIGHTING );
-  if( d->wasEnabled_FOG ) glEnable( GL_FOG );
+  glPopAttrib();
   glMatrixMode( GL_PROJECTION );
   glPopMatrix();
   glMatrixMode( GL_MODELVIEW );
