@@ -1,0 +1,165 @@
+2006-09-03  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* src/*, src/engines/*: Refactored GLEngine to Engine.
+
+2006-09-01  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/color.h, src/color.cpp: Migrate Color class out of
+	vertexarray files, to allow further colormaps (e.g., color by
+	other atomic or residue properties).
+
+	* src/*: Use Color() class.
+
+2006-08-31  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* src/GLWidget.cpp: Added group selection.  see GLWidget::selectRegion()
+
+2006-08-30  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* src/Primitives.h: moved the glnametypeing enum to here as
+	enum primativeType
+	
+	* src/Primitives.cpp: Overwrote OBMol::CreateResidue (trunk
+	version of OB)
+
+	* src/GLWidget.cpp: _hits now containts both .type and .name 
+	corresponding to the type if hit and the name of the hit.
+
+2006-08-30  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/MainWindow.h, src/MainWindow.cpp, src/GLWidget.h,
+	src/GLWidget.cpp: Move molecule storage (for now) to the GL widget
+	to allow atom selection.
+
+	* src/Primitives.h: Add marker to indicate that a particular
+	object was selected by the user.
+
+	* src/Views.h, src/Views.cpp: Add support for ResidueView, as well
+	as whole-molecule rendering.
+
+	* src/engines/ResidueSphereEngine.*: New render engine drawing
+	spheres for residues in PDB files. Illustrates whole molecule
+	render option.
+
+	* src/GLEngine.h: Add glSelection enum for glPushName() entries to
+	deliniate between molecule, atom, bond, residue,
+	etc. picking. Render engines are responsible for using these as
+	appropriate for a particular user view.
+
+	* src/engines/*: Update for glPushName() for atoms and hilights
+	when an atom is selected.
+
+2006-08-29  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* src/GLWidget.cpp: Initial group selection code.  Needs work
+	still.  When you double-click to open a file it registers the
+	mouse as having moved.  This generates a selection box.
+
+2006-08-28  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* src/GLWidget.cpp: Using perspective on 3d views.  There is also
+	now code for picking included.  When you click but don't drag it
+	returns the selected item.  The naming system needs work.
+
+2006-08-28  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/GLWidget.cpp: Make sure to enable vertex arrays (for
+	Benoit's sphere/cylinder classes.
+
+	* src/engines/vertextarray.cpp, src/engines/vertexarray.h: Moved
+	Benoit's vertex array sphere and cylinder from Kalzium.
+
+	* src/engines/WireframeEngine.*: New class for a wireframe
+	view.
+
+	* src/engines/SphereEngine.*: New class for van der Waals spheres
+	using Benoit's classes. Very fast.
+
+	* src/engines/BSEngine.*, src/engines/StickEngine.*: Switch to
+	Benoit's vertex array classes.
+
+	* src/MainWindow.h, src/MainWindow.cpp: Add full screen rendering
+	and background color. (Needed for upcoming ACS presentations.)
+
+2006-08-24  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/MainWindow.cpp: Make sure to update recent file list when
+	creating a new window, and make sure to call update after
+	reading a file. Fixes minor bugs. 
+
+2006-08-22  Donald E. Curtis  <dcurti3@sourceforge.net>
+
+	* src/*: Refactored Renderer -> GLEngine for easier typing.
+
+	* src/engines/*: Engines must implement the render function but must be
+	implemented for each sub-class of Primitive they wish to be able to
+	render. (ie. void render(Atom *a), render(Bond *b)).
+
+2006-08-20  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/GLWidget.cpp: Handle mouse events based on QMouseEvent,
+	rather than internal members. Fixes occasional "sticking."
+
+	* src/MainWindow.h, src/MainWindow.cpp: Fix saveFile -- make sure to call
+	SetOutFormat() not SetInFormat()! Works great now. Added code to
+	save settings for window position and size.
+
+	* src/main.cpp: Update with fix from Carsten Niehaus to use
+	cleaner "foreach" mechanism.
+
+2006-08-19  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/GLWidget.cpp: Improved scale/zoom feature and added calls
+	for adding screen coordinates (e.g., for seelction rectangle).
+
+	* src/MainWindow.cpp: Check to see if a file is already in a
+	window -- raise it if needed, rather than opening another
+	copy. Implement exportGraphics with
+	QGLWidget::grabFrameBuffer. Doesn't allow oversampling, but
+	works.
+
+2006-08-18  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/*: Namespace and filename reorganization. All code should
+	now be in the Avogadro namespace. All files should have
+	descriptive names and no "A" prefix.
+
+	* src/GLWidget.h, src/GLWidget.cpp: Fix translation (right button)
+	and add simple zoom (middle button). Doesn't always seem to work
+	on my Mac right now. (Buttons sometimes seem to get "stuck.")
+
+	* src/MainWindow.cpp: Fix bug with opening files in new window --
+	now properly renders. Fix bug with shortcut for Save/SaveAs, and
+	add "Redo" to the menubar. undo() and redo() actions still
+	unimplemented.
+
+2006-08-14  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/ASphereRender.h, src/ASphereRender.cpp: Example rendering
+	class, generates VdW spheres for a given molecule.
+
+	* src/AGLWidget.h, src/AGLWidget.cpp: Add initial support for
+	rotation. Eventually should be moved to a separate class for each
+	tool (rotate, orbit, zoom, translate, etc.).
+
+	* src/AMainWindow.cpp: Add minimum size hint (240x320) and # of
+	bonds when reading a molecule.
+
+2006-08-13  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/main.cpp, src/AMainWindow.h, src/AMainWindow.cpp:
+	Switch back to custom main window -- easier to add slots for commands.
+
+	* src/AGLWidget.h, src/AGLWidget.cpp: Add support for rendering GL
+	display lists -- renderer classes should generate a display list
+	and pass it off to the widget.
+
+2006-08-07  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* src/avogadro.ui: Use QtDesigner to layout some menu items and
+	toolbar.
+
+	* src/main.cpp, src/AMainWindow.cpp, src/avogadro.pro: Use it.
+
+
+

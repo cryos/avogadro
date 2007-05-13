@@ -1,0 +1,526 @@
+<ui version="4.0" >
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>621</width>
+    <height>566</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Avogadro</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="avogadro.qrc" >:/icons/avogadro.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget" >
+   <layout class="QVBoxLayout" >
+    <property name="margin" >
+     <number>0</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QTabWidget" name="centralTab" >
+      <property name="currentIndex" >
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab" >
+       <attribute name="title" >
+        <string>View 0</string>
+       </attribute>
+       <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="Avogadro::GLWidget" native="1" name="glWidget" />
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="Avogadro::FlatTabWidget" native="1" name="bottomFlat" />
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>621</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHelp" >
+    <property name="title" >
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout" />
+   </widget>
+   <widget class="QMenu" name="menuTools" >
+    <property name="title" >
+     <string>&amp;Tools</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuFile" >
+    <property name="title" >
+     <string>&amp;File</string>
+    </property>
+    <widget class="QMenu" name="menuOpenRecent" >
+     <property name="title" >
+      <string>Open &amp;Recent</string>
+     </property>
+    </widget>
+    <addaction name="actionNew" />
+    <addaction name="actionOpen" />
+    <addaction name="menuOpenRecent" />
+    <addaction name="actionClose" />
+    <addaction name="separator" />
+    <addaction name="actionSave" />
+    <addaction name="actionSaveAs" />
+    <addaction name="actionRevert" />
+    <addaction name="actionExportGraphics" />
+    <addaction name="separator" />
+    <addaction name="actionQuit" />
+   </widget>
+   <widget class="QMenu" name="menuSettings" >
+    <property name="title" >
+     <string>&amp;Settings</string>
+    </property>
+    <widget class="QMenu" name="menuToolbars" >
+     <property name="title" >
+      <string>Toolbars</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuDocks" >
+     <property name="title" >
+      <string>&amp;Docks</string>
+     </property>
+    </widget>
+    <addaction name="menuToolbars" />
+    <addaction name="menuDocks" />
+    <addaction name="separator" />
+    <addaction name="actionSetBackgroundColor" />
+   </widget>
+   <widget class="QMenu" name="menuView" >
+    <property name="title" >
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionNewView" />
+    <addaction name="actionCloseView" />
+    <addaction name="actionCenter" />
+    <addaction name="separator" />
+    <addaction name="actionFullScreen" />
+   </widget>
+   <widget class="QMenu" name="menuEdit" >
+    <property name="title" >
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="separator" />
+    <addaction name="actionCut" />
+    <addaction name="actionCopy" />
+    <addaction name="actionPaste" />
+    <addaction name="actionClear" />
+    <addaction name="separator" />
+    <addaction name="actionSelect_All" />
+    <addaction name="actionSelect_None" />
+   </widget>
+   <addaction name="menuFile" />
+   <addaction name="menuEdit" />
+   <addaction name="menuView" />
+   <addaction name="menuTools" />
+   <addaction name="menuSettings" />
+   <addaction name="menuHelp" />
+  </widget>
+  <widget class="QStatusBar" name="statusbar" />
+  <widget class="QToolBar" name="fileToolBar" >
+   <property name="windowTitle" >
+    <string>Main Toolbar</string>
+   </property>
+   <property name="orientation" >
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="toolButtonStyle" >
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <attribute name="toolBarArea" >
+    <number>4</number>
+   </attribute>
+   <addaction name="actionNew" />
+   <addaction name="actionOpen" />
+   <addaction name="actionSave" />
+   <addaction name="actionClose" />
+   <addaction name="actionQuit" />
+  </widget>
+  <widget class="QDockWidget" name="projectDock" >
+   <property name="minimumSize" >
+    <size>
+     <width>200</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="allowedAreas" >
+    <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle" >
+    <string>Project</string>
+   </property>
+   <attribute name="dockWidgetArea" >
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="projectWidget" >
+    <layout class="QVBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="Avogadro::MoleculeTreeView" name="projectTree" >
+       <property name="frameShadow" >
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="alternatingRowColors" >
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode" >
+        <enum>QAbstractItemView::MultiSelection</enum>
+       </property>
+       <property name="animated" >
+        <bool>true</bool>
+       </property>
+       <property name="allColumnsShowFocus" >
+        <bool>true</bool>
+       </property>
+       <column>
+        <property name="text" >
+         <string>1</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="toolsDock" >
+   <property name="minimumSize" >
+    <size>
+     <width>200</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="allowedAreas" >
+    <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle" >
+    <string>Tools</string>
+   </property>
+   <attribute name="dockWidgetArea" >
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="toolsWidget" />
+  </widget>
+  <widget class="QDockWidget" name="toolSettingsDock" >
+   <property name="minimumSize" >
+    <size>
+     <width>200</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="allowedAreas" >
+    <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle" >
+    <string>Tool Settings</string>
+   </property>
+   <attribute name="dockWidgetArea" >
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="toolSettingsWidget" />
+  </widget>
+  <widget class="QDockWidget" name="enginesDock" >
+   <property name="allowedAreas" >
+    <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle" >
+    <string>Engines</string>
+   </property>
+   <attribute name="dockWidgetArea" >
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="enginesWidget" >
+    <layout class="QVBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="Avogadro::EngineListView" name="enginesList" >
+       <property name="alternatingRowColors" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="engineSettingsButton" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
+       <property name="layoutDirection" >
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text" >
+        <string>Settings</string>
+       </property>
+       <property name="flat" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionOpen" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/fileopen.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Open</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionQuit" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/exit.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Quit</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionRecent" >
+   <property name="text" >
+    <string>Recent</string>
+   </property>
+  </action>
+  <action name="actionClearRecent" >
+   <property name="text" >
+    <string>&amp;Clear Recent</string>
+   </property>
+  </action>
+  <action name="actionNew" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/filenew.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;New</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionClose" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/fileclose.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Close</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionSave" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/filesave.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Save</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSaveAs" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/filesaveas.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Save &amp;As...</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionRevert" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/revert.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Revert To Saved</string>
+   </property>
+  </action>
+  <action name="actionExportGraphics" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/fileexport.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Export Graphics</string>
+   </property>
+  </action>
+  <action name="actionFullScreen" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/window_fullscreen.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Full Screen Mode</string>
+   </property>
+  </action>
+  <action name="actionSetBackgroundColor" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/colorize.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Set &amp;Background Color...</string>
+   </property>
+  </action>
+  <action name="actionAbout" >
+   <property name="text" >
+    <string>&amp;About</string>
+   </property>
+  </action>
+  <action name="actionUndo" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/undo.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Undo</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionRedo" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/redo.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Redo</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+Shift+Z</string>
+   </property>
+  </action>
+  <action name="actionNewView" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/filenew.png</iconset>
+   </property>
+   <property name="text" >
+    <string>New View</string>
+   </property>
+  </action>
+  <action name="actionCloseView" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/fileclose.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Close View</string>
+   </property>
+  </action>
+  <action name="actionCenter" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/navigate.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Center</string>
+   </property>
+  </action>
+  <action name="actionPaste" >
+   <property name="text" >
+    <string>&amp;Paste</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionCopy" >
+   <property name="text" >
+    <string>Copy</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionCut" >
+   <property name="text" >
+    <string>Cut</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionClear" >
+   <property name="text" >
+    <string>Clear</string>
+   </property>
+  </action>
+  <action name="actionSelect_All" >
+   <property name="text" >
+    <string>Select All</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionSelect_None" >
+   <property name="text" >
+    <string>Select None</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Avogadro::GLWidget</class>
+   <extends>QWidget</extends>
+   <header>avogadro/glwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::MoleculeTreeView</class>
+   <extends>QTreeWidget</extends>
+   <header>avogadro/moleculetreeview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::EngineListView</class>
+   <extends>QListView</extends>
+   <header>enginelistview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::FlatTabWidget</class>
+   <extends>QWidget</extends>
+   <header>flattabwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="avogadro.qrc" />
+ </resources>
+ <connections/>
+</ui>

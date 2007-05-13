@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/measure">
+        <file>measure.png</file>
+    </qresource>
+</RCC>

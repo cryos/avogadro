@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/navigate">
+        <file>navigate.png</file>
+    </qresource>
+</RCC>

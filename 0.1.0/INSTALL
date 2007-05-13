@@ -1,0 +1,27 @@
+To build these software versions (or better) are required:
+
+ -- CMake 2.4.3
+ -- Qt 4.2.0
+ -- OpenBabel 2.1
+
+If you do an install of Avogadro it should automatically have the 
+correct paths for loading all the plugins:
+
+$CMAKE_INSTALL_PREFIX/lib/avogadro/{tools|extensions|engines}
+
+You don't have to install avogadro, though. If you are running 
+Avogadro from the build directory you should still setup your environment 
+accordingly.  The important environment variables
+and suggested values are:
+
+AVOGADRO_TOOLS=$BUILD_DIR/libavogadro/src/tools
+AVOGADRO_ENGINES=$BUILD_DIR/libavogadro/src/engines
+AVOGADRO_EXTENSIONS=$BUILD_DIR/avogadro/src/extensions
+
+To make you life a bit easier add these lines to your ~/.bashrc
+
+export AVOBUILD_DIR=$HOME/build/avo
+export AVOGADRO_TOOLS=$AVOBUILD_DIR/libavogadro/src/tools
+export AVOGADRO_ENGINES=$AVOBUILD_DIR/libavogadro/src/engines
+export AVOGADRO_EXTENSIONS=$AVOBUILD_DIR/avogadro/src/extensions
+alias avo="$AVOBUILD_DIR/avogadro/src/avogadro"
