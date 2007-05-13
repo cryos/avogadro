@@ -34,7 +34,7 @@
        </attribute>
        <layout class="QVBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>0</number>
         </property>
         <property name="spacing" >
          <number>6</number>
@@ -499,14 +499,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>Avogadro::FlatTabWidget</class>
-   <extends>QWidget</extends>
-   <header>flattabwidget.h</header>
-  </customwidget>
-  <customwidget>
    <class>Avogadro::GLWidget</class>
    <extends>QWidget</extends>
    <header>avogadro/glwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::MoleculeTreeView</class>
+   <extends>QTreeWidget</extends>
+   <header>avogadro/moleculetreeview.h</header>
   </customwidget>
   <customwidget>
    <class>Avogadro::EngineListView</class>
@@ -514,9 +514,9 @@
    <header>enginelistview.h</header>
   </customwidget>
   <customwidget>
-   <class>Avogadro::MoleculeTreeView</class>
-   <extends>QTreeWidget</extends>
-   <header>avogadro/moleculetreeview.h</header>
+   <class>Avogadro::FlatTabWidget</class>
+   <extends>QWidget</extends>
+   <header>flattabwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

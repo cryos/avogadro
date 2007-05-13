@@ -255,7 +255,6 @@ namespace Avogadro {
 
   void MainWindow::undoStackClean(bool clean)
   {
-    qDebug() << "UndoStackClean: " << clean;
     setWindowModified(!clean);
   }
 
