@@ -138,16 +138,24 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
     case 2: // residue
       foreach(Primitive *hit, hitList) {
         Atom *atom = static_cast<Atom *>(hit);
+        // If the atom is unselected, select the whole residue
+        bool select = !widget->selectedItem(atom);
         Residue *residue = static_cast<Residue *>(atom->GetResidue());
-        if (residue && !residueList.contains(residue))
-          residueList.append(residue);
+        QList<Primitive *> neighborList;
+        OBMolAtomDFSIter iter(molecule, atom->GetIdx());
+        FOR_ATOMS_OF_RESIDUE(a, residue) {
+          neighborList.append(static_cast<Atom *>(&*a));
+        }
+        widget->setSelection(neighborList, select);
+//        if (residue && !residueList.contains(residue))
+//          residueList.append(residue);
       } // end for(hits)
       break;
     case 3: // molecule
       foreach(Primitive *hit, hitList) {
         Atom *atom = static_cast<Atom *>(hit);
         // if this atom is unselected, select the whole fragment
-        bool select = !atom->isSelected();
+        bool select = !widget->selectedItem(atom);
         QList<Primitive *> neighborList;
         OBMolAtomDFSIter iter(molecule, atom->GetIdx());
         do {
@@ -165,15 +173,15 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
     // if we have any residues to handle
     // we set all atoms to match the selection of the residue
     // and update the selection list of atoms (BUT NOT RESIDUES)
-    foreach(Residue *residue, residueList) {
-      hitList.clear();
-      bool select = !residue->isSelected();
-      FOR_ATOMS_OF_RESIDUE(a, residue) {
-        hitList.append(static_cast<Atom *>(&*a));
-      }
-      widget->setSelection(hitList, select);
-      residue->toggleSelected();
-    }
+//    foreach(Residue *residue, residueList) {
+//      hitList.clear();
+//      bool select = !residue->isSelected();
+//      FOR_ATOMS_OF_RESIDUE(a, residue) {
+//        hitList.append(static_cast<Atom *>(&*a));
+//      }
+//      widget->setSelection(hitList, select);
+//      residue->toggleSelected();
+//    }
 
   }
   else if(m_movedSinceButtonPressed && !m_hits.size())
