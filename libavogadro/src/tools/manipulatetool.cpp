@@ -102,12 +102,6 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
       Atom *atom = static_cast<const Atom *>(a);
       atom->setPos(atomTranslation * atom->pos());
     }
-    FOR_ATOMS_OF_MOL(a, m_glwidget->molecule())
-    {
-      Atom *atom = static_cast<Atom *>(&*a);
-      if (atom->isSelected())
-        atom->setPos(atomTranslation * atom->pos());
-    }
   }
   if (m_clickedAtom && !m_glwidget->selectedItems().contains(m_clickedAtom))
     m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
