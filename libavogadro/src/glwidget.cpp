@@ -558,13 +558,16 @@ namespace Avogadro {
           Engine *engine = factory->createInstance(this);
           qDebug() << "Found Engine: " << engine->name() << " - " << engine->description();
           connect(engine, SIGNAL(changed()), this, SLOT(update()));
+          // FIXME: below is a ugly hack so that the text-painting engines are
+          // at the END of the engines list, so that text is painted last.
           if(engine->name() == "Dynamic Ball and Stick" ||
               engine->name() == "Label") {
             engine->setEnabled(true);
+            d->engines.append(engine);
           } else {
+            d->engines.insert(0, engine);
             engine->setEnabled(false);
           }
-          d->engines.append(engine);
         }
       }
     }
