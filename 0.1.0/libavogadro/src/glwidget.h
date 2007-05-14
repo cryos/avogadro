@@ -3,7 +3,6 @@
 
   Copyright (C) 2006,2007 Geoffrey R. Hutchison
   Copyright (C) 2006,2007 Donald Ephraim Curtis
-  Copyright (C) 2007      Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -288,7 +287,7 @@ namespace Avogadro {
       void updateGeometry();
 
       /**
-       * @return a reference to the camera of this widget
+       * @return a pointer to the camera of this widget
        */
       Camera * camera() const;
 
@@ -310,6 +309,13 @@ namespace Avogadro {
       void setToolGroup(ToolGroup *toolGroup);
       ToolGroup * toolGroup() const;
 
+      /** Returns the Painter of this widget. For instance, to draw a sphere in this
+        * widget, you could do:
+        * @code
+          painter()->drawSphere(center,radius)
+        * @endcode
+        * @sa class Painter
+        */
       Painter *painter() const;
 
     public Q_SLOTS:

@@ -44,7 +44,7 @@ ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0)
   action->setToolTip(tr("Manipulation Tool (F10)\n\n"
         "Left Mouse:   Click and drag to move atoms and bonds\n"
         "Middle Mouse: Click and drag to move atoms further away or closer\n"
-        "Right Mouse:  Click and drag to rotate atoms and bonds"));
+        "Right Mouse:  Click and drag to rotate selected atoms."));
   action->setShortcut(Qt::Key_F10);
 }
 
