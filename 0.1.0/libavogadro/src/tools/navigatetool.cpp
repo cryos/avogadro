@@ -106,8 +106,8 @@ void NavigateTool::translate( const Eigen::Vector3d &what, const QPoint &from, c
 void NavigateTool::rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const
 {
   const MatrixP3d & m = m_glwidget->camera()->modelview();
-  Vector3d xAxis = m_glwidget->camera()->backTransformedXAxis();
-  Vector3d yAxis = m_glwidget->camera()->backTransformedYAxis();
+  Vector3d xAxis = m_glwidget->camera()->backtransformedXAxis();
+  Vector3d yAxis = m_glwidget->camera()->backtransformedYAxis();
   m_glwidget->camera()->translate( center );
   m_glwidget->camera()->rotate( deltaX * ROTATION_SPEED, yAxis );
   m_glwidget->camera()->rotate( deltaY * ROTATION_SPEED, xAxis );
@@ -117,7 +117,7 @@ void NavigateTool::rotate( const Eigen::Vector3d &center, double deltaX, double 
 void NavigateTool::tilt( const Eigen::Vector3d &center, double delta ) const
 {
   const MatrixP3d & m = m_glwidget->camera()->modelview();
-  Vector3d zAxis = m_glwidget->camera()->backTransformedZAxis();
+  Vector3d zAxis = m_glwidget->camera()->backtransformedZAxis();
   m_glwidget->camera()->translate( center );
   m_glwidget->camera()->rotate( delta * ROTATION_SPEED, zAxis );
   m_glwidget->camera()->translate( -center );

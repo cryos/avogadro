@@ -1,5 +1,5 @@
 /**********************************************************************
-  Painter - drawing spheres and cylinders in a GLWidget
+  Painter - drawing spheres, cylinders and text in a GLWidget
 
   Copyright (C) 2007 Benoit Jacob
 
@@ -71,8 +71,19 @@ namespace Avogadro
 
       int globalQualitySetting;
 
+      /** array of pointers to Spheres. You might ask, why not have
+        * a plain array of Spheres. The idea is that more than one global detail level
+        * may use a given sphere detail level. It is therefore interesting to be able
+        * to share that sphere, instead of having redundant spheres in memory.
+        */
       Sphere **spheres;
+      /** array of pointers to Cylinders. You might ask, why not have
+        * a plain array of Cylinders. The idea is that more than one global detail level
+        * may use a given cylinder detail level. It is therefore interesting to be able
+        * to share that cylinder, instead of having redundant cylinder in memory.
+        */
       Cylinder **cylinders;
+      
       TextRenderer *textRenderer;
 
       bool initialized;
@@ -84,6 +95,8 @@ namespace Avogadro
   void PainterPrivate::deleteObjects()
   {
     int level, lastLevel, n;
+    // delete the spheres. One has to be wary that more than one sphere
+    // pointer may have the same value. One wants to avoid deleting twice the same sphere.
     if(spheres) {
       lastLevel = -1;
       for(n = 0; n < PAINTER_DETAIL_LEVELS; n++)
@@ -100,6 +113,9 @@ namespace Avogadro
       delete[] spheres;
       spheres = 0;
     }
+    
+    // delete the cylinders. One has to be wary that more than one cylinder
+    // pointer may have the same value. One wants to avoid deleting twice the same cylinder.
     if(cylinders) {
       lastLevel = -1;
       for(n = 0; n < PAINTER_DETAIL_LEVELS; n++)
@@ -121,6 +137,9 @@ namespace Avogadro
   void PainterPrivate::createObjects()
   {
     int level, lastLevel, n;
+    // create the spheres. More than one sphere detail level may have the same value.
+    // in that case we want to reuse the corresponding sphere by just copying the pointer,
+    // instead of creating redundant spheres.
     if(spheres == 0)
     {
       spheres = new Sphere*[PAINTER_DETAIL_LEVELS];
@@ -139,6 +158,10 @@ namespace Avogadro
         }
       }
     }
+    
+    // create the cylinders. More than one cylinder detail level may have the same value.
+    // in that case we want to reuse the corresponding cylinder by just copying the pointer,
+    // instead of creating redundant cylinders.
     if(cylinders == 0)
     {
       cylinders = new Cylinder*[PAINTER_DETAIL_LEVELS];

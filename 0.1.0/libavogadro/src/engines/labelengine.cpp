@@ -72,13 +72,7 @@ bool LabelEngine::render(GLWidget *gl)
       QString str = QString::number(atom->GetIdx());
       const MatrixP3d & m = gl->camera()->modelview();
 
-      // compute the unit vector toward the camera, in the molecule's coordinate system.
-      // to do this, we apply the inverse of the camera's rotation to the
-      // vector (0,0,1). This amount to taking the 3rd column of the
-      // inverse of the camera's rotation. But the inverse of a rotation is
-      // just its transpose. Thus we want to take the 3rd row of the camera's
-      // rotation matrix.
-      Vector3d zAxis( m(2,0), m(2,1), m(2,2) );
+      Vector3d zAxis = gl->camera()->backtransformedZAxis();
 
       Vector3d drawPos = pos + zAxis * renderRadius;
 

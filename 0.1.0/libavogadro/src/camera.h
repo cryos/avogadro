@@ -237,9 +237,26 @@ namespace Avogadro {
        */
       Eigen::Vector3d project(const Eigen::Vector3d& v) const;
 
-      Eigen::Vector3d backTransformedXAxis() const;
-      Eigen::Vector3d backTransformedYAxis() const;
-      Eigen::Vector3d backTransformedZAxis() const;
+      /**
+       * Returns a unit vector pointing toward the right, expressed in the
+       * scene's coordinate system. This is simply the
+       * unit vector that is mapped to (1,0,0) by the camera rotation.
+       */
+      Eigen::Vector3d backtransformedXAxis() const;
+      
+      /**
+       * Returns a unit vector pointing upward, expressed in the
+       * scene's coordinate system. This is simply the
+       * unit vector that is mapped to (0,1,0) by the camera rotation.
+       */
+      Eigen::Vector3d backtransformedYAxis() const;
+      
+      /**
+       * Returns a unit vector pointing toward the camera, expressed in the
+       * scene's coordinate system. This is simply the
+       * unit vector that is mapped to (0,0,1) by the camera rotation.
+       */
+      Eigen::Vector3d backtransformedZAxis() const;
 
     private:
       CameraPrivate * const d;

@@ -137,8 +137,8 @@ bool ClickMeasureTool::paint(GLWidget *widget)
     double radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3;
     const MatrixP3d & m = widget->camera()->modelview();
 
-    Vector3d xAxis = widget->camera()->backTransformedXAxis();
-    Vector3d zAxis = widget->camera()->backTransformedZAxis();
+    Vector3d xAxis = widget->camera()->backtransformedXAxis();
+    Vector3d zAxis = widget->camera()->backtransformedZAxis();
 
     // relative position of the text on the atom
     Vector3d textRelPos = radius * (zAxis + xAxis);
