@@ -52,7 +52,7 @@ AboutDialog::AboutDialog(QWidget *parent)
     lbl->setText(
             tr("<h3>%1</h3>"
                 "<br/><br/>Version %2"
-                "<br/><br/>For more information check the <a href="">Avogadro homepage</a>."
+               "<br/><br/>For more information check the <a href=\"http://avogadro.sourceforge.net/\">Avogadro homepage</a>."
                 "<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND,"
                 " INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A"
                 " PARTICULAR PURPOSE.<br/>"
