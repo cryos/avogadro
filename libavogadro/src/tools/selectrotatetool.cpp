@@ -47,7 +47,9 @@ SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent),
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
-  action->setToolTip(tr("Selection Tool (F11)"));
+  action->setToolTip(tr("Selection Tool (F11)\n"
+                        "Click to pick individual atoms, residues, or fragments\n"
+                        "Drag to select a range of atoms"));
   action->setShortcut(Qt::Key_F11);
 }
 
