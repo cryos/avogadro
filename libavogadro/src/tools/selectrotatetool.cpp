@@ -249,8 +249,8 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
     if( event->buttons() & Qt::LeftButton )
     {
       // rotate
-      Vector3d xAxis = widget->camera()->backTransformedXAxis();
-      Vector3d yAxis = widget->camera()->backTransformedYAxis();
+      Vector3d xAxis = widget->camera()->backtransformedXAxis();
+      Vector3d yAxis = widget->camera()->backtransformedYAxis();
 
       if (!m_manipulateMode) {
         widget->camera()->translate( widget->center() );

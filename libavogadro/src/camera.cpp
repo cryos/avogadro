@@ -241,21 +241,21 @@ namespace Avogadro
     return pos;
   }
   
-  Eigen::Vector3d Camera::backTransformedXAxis() const
+  Eigen::Vector3d Camera::backtransformedXAxis() const
   {
     return Eigen::Vector3d( d->modelview(0, 0),
                             d->modelview(0, 1),
                             d->modelview(0, 2) );
   }
   
-  Eigen::Vector3d Camera::backTransformedYAxis() const
+  Eigen::Vector3d Camera::backtransformedYAxis() const
   {
     return Eigen::Vector3d( d->modelview(1, 0),
                             d->modelview(1, 1),
                             d->modelview(1, 2) );
   }
   
-  Eigen::Vector3d Camera::backTransformedZAxis() const
+  Eigen::Vector3d Camera::backtransformedZAxis() const
   {
     return Eigen::Vector3d( d->modelview(2, 0),
                             d->modelview(2, 1),

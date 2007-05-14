@@ -42,9 +42,11 @@ ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0)
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/manipulate/manipulate.png")));
   action->setToolTip(tr("Manipulation Tool (F10)\n\n"
-        "Left Mouse:   Click and drag to move atoms and bonds\n"
+        "Left Mouse:   Click and drag to move atoms\n"
         "Middle Mouse: Click and drag to move atoms further away or closer\n"
-        "Right Mouse:  Click and drag to rotate atoms and bonds"));
+        "Right Mouse:  Click and drag to rotate selected atoms.\n\n"
+        "Note that the right mouse action only has an effect when at least\n"
+        "two atoms are selected."));
   action->setShortcut(Qt::Key_F10);
 }
 
@@ -93,7 +95,7 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
   }
 
   MatrixP3d atomTranslation;
-  atomTranslation.loadTranslation(m_glwidget->camera()->backTransformedZAxis() * t);
+  atomTranslation.loadTranslation(m_glwidget->camera()->backtransformedZAxis() * t);
 
   if (m_glwidget->selectedItems().size())
   {
@@ -153,7 +155,7 @@ void ManipulateTool::tilt( const Eigen::Vector3d &center, double delta ) const
   // Tilt the selected atoms about the center
   MatrixP3d fragmentRotation;
   fragmentRotation.loadTranslation(center);
-  fragmentRotation.rotate3(delta * ROTATION_SPEED, m_glwidget->camera()->backTransformedZAxis());
+  fragmentRotation.rotate3(delta * ROTATION_SPEED, m_glwidget->camera()->backtransformedZAxis());
   fragmentRotation.translate(-center);
   foreach(Primitive *a, m_glwidget->selectedItems())
   {
