@@ -38,7 +38,9 @@ namespace Avogadro {
     * A simple Painter class for Avogadro. Currently it can draw spheres, cylinders,
     * multiple cylinders (as in multiple bonds) and text.
     *
-    * The motivation for having a centralized class to do that is that it allows for global
+    * Each GLWidget has a Painter which you can get by calling GLWidget::painter().
+    *
+    * The motivation for having a centralized Painter class is that it allows for global
     * quality control. Just call setGlobalQualitySetting() to adjust the quality setting.
     *
     * Another nice thing is that it handles level-of-detail computation, so that
