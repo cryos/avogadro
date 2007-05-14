@@ -524,6 +524,7 @@ namespace Avogadro {
       for( int i=0; i < d->engines.size(); i++ ) {
         d->engines.at(i)->removePrimitive(primitive);
       }
+      d->selectionList.removeAll(primitive);
     }
 
     update();
