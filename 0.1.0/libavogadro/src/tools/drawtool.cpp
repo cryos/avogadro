@@ -319,19 +319,19 @@ QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
     {
       AddAtomDrawCommand *beginAtomDrawCommand = 0;
       if(m_beginAtomAdded) {
-        beginAtomDrawCommand = new AddAtomDrawCommand(widget, m_beginAtom);
+        beginAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_beginAtom);
         beginAtomDrawCommand->setText(tr("Draw Atom"));
       }
 
       AddAtomDrawCommand *endAtomDrawCommand = 0;
       if(m_endAtom) {
-        endAtomDrawCommand = new AddAtomDrawCommand(widget, m_endAtom);
+        endAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_endAtom);
         endAtomDrawCommand->setText(tr("Draw Atom"));
       }
 
       AddBondDrawCommand *bondCommand = 0;
       if(m_bond) {
-        bondCommand = new AddBondDrawCommand(widget, m_bond);
+        bondCommand = new AddBondDrawCommand(widget->molecule(), m_bond);
         bondCommand->setText(tr("Draw Bond"));
       }
 
@@ -381,7 +381,7 @@ QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
       // get our top hit
       if(m_hits[0].type() == Primitive::AtomType)
       {
-        undo = new DeleteAtomDrawCommand(widget, m_hits[0].name());
+        undo = new DeleteAtomDrawCommand(widget->molecule(), m_hits[0].name());
 //         molecule->DeleteAtom(atom);
 //         widget->updateGeometry();
 //         molecule->update();

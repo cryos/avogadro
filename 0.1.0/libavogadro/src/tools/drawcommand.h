@@ -30,7 +30,7 @@
 
 namespace Avogadro {
 
-  class GLWidget;
+  class Molecule;
   class Atom;
   class Bond;
 
@@ -38,8 +38,8 @@ namespace Avogadro {
   class AddAtomDrawCommand : public QUndoCommand
   {
     public:
-      AddAtomDrawCommand(GLWidget *widget, const Eigen::Vector3d& pos, unsigned int element);
-      AddAtomDrawCommand(GLWidget *widget, Atom *atom);
+      AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos, unsigned int element);
+      AddAtomDrawCommand(Molecule *molecule, Atom *atom);
       ~AddAtomDrawCommand();
 
       virtual void undo();
@@ -53,7 +53,7 @@ namespace Avogadro {
   class DeleteAtomDrawCommand : public QUndoCommand
   {
     public:
-      DeleteAtomDrawCommand(GLWidget *widget, int index);
+      DeleteAtomDrawCommand(Molecule *molecule, int index);
       ~DeleteAtomDrawCommand();
 
       virtual void undo();
@@ -67,8 +67,8 @@ namespace Avogadro {
   class AddBondDrawCommand : public QUndoCommand
   {
     public:
-      AddBondDrawCommand(GLWidget *widget, Atom *beginAtom, Atom *endAtom, unsigned int order);
-      AddBondDrawCommand(GLWidget *widget, Bond *bond);
+      AddBondDrawCommand(Molecule *molecule, Atom *beginAtom, Atom *endAtom, unsigned int order);
+      AddBondDrawCommand(Molecule *molecule, Bond *bond);
       ~AddBondDrawCommand();
 
       virtual void undo();
