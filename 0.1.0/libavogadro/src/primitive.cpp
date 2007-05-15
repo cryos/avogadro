@@ -212,6 +212,7 @@ namespace Avogadro {
   Molecule &Molecule::operator=(const Molecule& other)
   {
     OpenBabel::OBMol::operator=(other);
+	return *this;
   }
 
   Molecule &Molecule::operator+=(const Molecule& other)
@@ -225,6 +226,7 @@ namespace Avogadro {
         continue;
       dynamic_cast<Atom *>(&*a)->setSelected(true);
     }
+	return *this;
   }
 
   void Molecule::computeGeomInfo() const

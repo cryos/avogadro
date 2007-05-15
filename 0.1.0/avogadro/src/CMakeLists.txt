@@ -34,6 +34,10 @@ set(avogadro_SRCS
     main.cpp
 )
 
+if( WIN32 )
+  set(avogadro_SRCS ${avogadro_SRCS} windows/avogadro.rc)
+endif( WIN32)
+
 set(avogadro_RCS
     avogadro.qrc
 )

@@ -99,7 +99,7 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
   {
     foreach(Primitive *a, m_glwidget->selectedItems())
     {
-      Atom *atom = static_cast<const Atom *>(a);
+      Atom *atom = static_cast<Atom *>(a);
       atom->setPos(atomTranslation * atom->pos());
     }
   }
@@ -120,7 +120,7 @@ void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from,
   {
     foreach(Primitive *a, m_glwidget->selectedItems())
     {
-      Atom *atom = static_cast<const Atom *>(a);
+      Atom *atom = static_cast<Atom *>(a);
       atom->setPos(atomTranslation * atom->pos());
     }
   }
@@ -143,7 +143,7 @@ void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, doubl
 
   foreach(Primitive *a, m_glwidget->selectedItems())
   {
-    Atom *atom = static_cast<const Atom *>(a);
+    Atom *atom = static_cast<Atom *>(a);
     atom->setPos(fragmentRotation * atom->pos());
   }
 }
@@ -157,7 +157,7 @@ void ManipulateTool::tilt( const Eigen::Vector3d &center, double delta ) const
   fragmentRotation.translate(-center);
   foreach(Primitive *a, m_glwidget->selectedItems())
   {
-    Atom *atom = static_cast<const Atom *>(a);
+    Atom *atom = static_cast<Atom *>(a);
     atom->setPos(fragmentRotation * atom->pos());
   }
 }

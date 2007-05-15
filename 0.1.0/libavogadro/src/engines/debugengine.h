@@ -60,12 +60,6 @@ namespace Avogadro {
 
       //! \name Render Methods
       //@{
-      //! Render an Atom.
-      bool render(const Atom *a);
-      //! Render a Bond.
-      bool render(const Bond *b);
-      //! Render a Molecule.
-      bool render(const Molecule *m);
 
       bool render(GLWidget *gl);
       //@}

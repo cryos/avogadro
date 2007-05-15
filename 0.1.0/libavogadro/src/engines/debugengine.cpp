@@ -56,7 +56,7 @@ bool DebugEngine::render(GLWidget *gl)
                                        + QString::number(gl->width())
                                        + " x "
                                        + QString::number(gl->height()) );
-
+  
   list = queue().primitiveList(Primitive::AtomType);
   y += gl->painter()->drawText(x, y, "Atoms: " + QString::number(list.size()));
 
@@ -66,18 +66,8 @@ bool DebugEngine::render(GLWidget *gl)
   gl->painter()->endText();
   
   gl->update();
-}
 
-bool DebugEngine::render(const Atom *a)
-{
-}
-
-bool DebugEngine::render(const Bond *b)
-{
-}
-
-bool DebugEngine::render(const Molecule *m)
-{
+  return true;
 }
 
 inline double DebugEngine::computeFramesPerSecond()

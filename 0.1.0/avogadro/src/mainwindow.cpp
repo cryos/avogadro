@@ -383,7 +383,7 @@ namespace Avogadro {
       // copy atoms and create a map of atom indexes
       foreach(Primitive *item, selectedItems) {
         OBAtom *selected = static_cast<Atom*>(item);
-        moleculeCopy->AddAtom(*selected);
+        moleculeCopy->InsertAtom(*selected);
         AtomMap[selected] = moleculeCopy->GetAtom(moleculeCopy->NumAtoms());
       }
 
@@ -509,18 +509,28 @@ namespace Avogadro {
       GLWidget *glWidget = qobject_cast<GLWidget *>(object);
       if(glWidget)
       {
-      int index = ui.centralTab->currentIndex();
-      ui.centralTab->removeTab(index);
-      for(int count=ui.centralTab->count(); index < count; index++) {
-        QString text = ui.centralTab->tabText(index);
-        if(!text.compare(tr("View ") + QString::number(index+1)))
-        {
-          ui.centralTab->setTabText(index, tr("View ") + QString::number(index));
-        }
+        int index = ui.centralTab->currentIndex();
+        ui.centralTab->removeTab(index);
+        for(int count=ui.centralTab->count(); index < count; index++) {
+          QString text = ui.centralTab->tabText(index);
+          if(!text.compare(tr("View ") + QString::number(index+1)))
+          {
+            ui.centralTab->setTabText(index, tr("View ") + QString::number(index));
+          }
       }
       d->glWidgets.removeAll(glWidget);
       delete glWidget;
       ui.actionCloseView->setEnabled(ui.centralTab->count() != 1);
+      }
+    }
+
+    widget = ui.centralTab->currentWidget();
+    foreach(QObject *object, widget->children())
+    {
+      GLWidget *glWidget = qobject_cast<GLWidget *>(object);
+      if(glWidget)
+      {
+        d->glWidget = glWidget;
       }
     }
   }

@@ -90,6 +90,7 @@ namespace Avogadro {
 
   bool Tool::paint(GLWidget *widget)
   {
+	  return true;
   }
 
 } // end namespace Avogadro
