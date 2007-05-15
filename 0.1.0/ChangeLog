@@ -1,0 +1,2216 @@
+2007-05-15 06:35  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* avogadro.nsi, avogadro/src/CMakeLists.txt,
+	  avogadro/src/extension.h, avogadro/src/icons/avogadro.ico,
+	  avogadro/src/mainwindow.cpp, avogadro/src/windows,
+	  avogadro/src/windows/avogadro.rc,
+	  libavogadro/src/engines/bsdyengine.cpp,
+	  libavogadro/src/engines/debugengine.cpp,
+	  libavogadro/src/engines/debugengine.h,
+	  libavogadro/src/engines/labelengine.cpp,
+	  libavogadro/src/engines/sphereengine.cpp,
+	  libavogadro/src/engines/stickengine.cpp,
+	  libavogadro/src/primitive.cpp, libavogadro/src/tool.cpp,
+	  libavogadro/src/tools/clickmeasuretool.cpp,
+	  libavogadro/src/tools/manipulatetool.cpp,
+	  libavogadro/src/undosequence.h: fixed files based on Win32
+	  compiler strictness
+	  added window resource file (windows/avogadro.rc)
+	  updated package building script
+	  further icon updates
+	  fixed an error resolving issue 1719085
+
+2007-05-15 05:19  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* avogadro/src/icons/avogadro.ico: more icon updates
+
+2007-05-15 05:06  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* avogadro/src/icons/avogadro.ico: Updated Windows Icon
+
+2007-05-15 00:49  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* avogadro/src/application.cpp: Fix drag-and-drop bug in Mac.
+
+2007-05-14 20:54  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* libavogadro/src/glwidget.cpp: Bug fix for 1718917
+
+2007-05-14 20:44  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* libavogadro/src/camera.cpp, libavogadro/src/camera.h,
+	  libavogadro/src/engines/labelengine.cpp,
+	  libavogadro/src/painter.cpp, libavogadro/src/painter.h,
+	  libavogadro/src/tools/clickmeasuretool.cpp,
+	  libavogadro/src/tools/manipulatetool.cpp,
+	  libavogadro/src/tools/navigatetool.cpp,
+	  libavogadro/src/tools/selectrotatetool.cpp: Merged all of
+	  Benoit's changes (r395, r396, r397).
+
+2007-05-14 19:15  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* libavogadro/src/glwidget.h, libavogadro/src/painter.h,
+	  libavogadro/src/tools/manipulatetool.cpp: Merged Benoit's bug
+	  fixes to 0.1.0 release.
+
+2007-05-14 02:04  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* avogadro/src/aboutdialog.cpp,
+	  libavogadro/src/tools/selectrotatetool.cpp: Merge of r392 and
+	  r393 from trunk
+
+2007-05-13 18:23  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* .: Tagging 0.1.0 combined release
+
+2007-05-13 18:14  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Few UI bugs and removed debugging line that was unneeded.
+
+2007-05-13 14:01  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Fixed small bug with the zoom manipulation, not sure how that
+	  crept in there ;)
+
+2007-05-13 13:34  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Fix for bug 1717975 - molecules and residues now behave more
+	  intuitively across
+	  views. Still may not be perfect but a definite improvement.
+
+2007-05-13 09:36  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fix the preceding fix :)
+
+2007-05-13 09:33  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Make a ugly hack so that the labelengine works with
+	  Sphereengine and
+	  Sticksengine correctly.
+
+2007-05-13 09:15  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Close bug 1717985; some simplification in TextRenderer.
+
+2007-05-12 23:52  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Added function to easily determine if a Primitive is selected
+	  in the GLWidget.
+	  Modified the toggleSelected function to behave as expected with
+	  multiple views.
+	  Found and fixed a subtle crash in the engines when radius was
+	  called before
+	  render and ported all engines to render correctly with multiple
+	  views.
+
+2007-05-12 19:03  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Extension cleanup. Base Extension class is not QObject, but
+	  extensions are.
+
+2007-05-12 17:44  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fix bug where the selection rectangle was not drawn because of
+	  back-face
+	  culling. I think I introduced this bug a while ago, in an
+	  "optimization".
+
+2007-05-12 17:43  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Pass a GLWidget to extensions (so selection can be modified,
+	  auto-rotate, etc.)
+	  Add example SMARTS selection extension -- select atoms by SMARTS
+	  pattern.
+
+2007-05-12 17:40  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Update version to 0.1.0
+
+2007-05-12 17:34  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated documentation.
+	  
+	  Removed dependancy on 4.3 (make sure you do editing of .ui files
+	  with designer of qt4.2)
+	  
+	  Added documentation.
+	  
+	  Updated copyright information on all files.
+	  
+	  There is now a Doxyfileext which generates external docs.
+
+2007-05-12 17:18  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Fix inconsistencies between what is drawn and what the
+	  manipulate tool does
+	  when using multiple views. The other engines still need their
+	  behaviour to be
+	  fixed.
+
+2007-05-12 15:23  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Minor API improvements; make use of these at various places;
+	  close bug
+	  1717437 in clickmeasuretool.
+
+2007-05-12 13:59  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fix bug in dynamic-bs where the separation between the two
+	  colors of a bond was not made at the middle of the bond. Also
+	  don't
+	  draw the portion of the bond that's inside the sphere.
+
+2007-05-12 13:49  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Added the tilt ability to the middle mouse press - tilt
+	  selected atoms.
+
+2007-05-12 13:29  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : Markus says since the commit r386 we depend on Qt 4.3
+
+2007-05-12 13:27  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Fix a bug with atoms selected using the selection box.
+	  Performed some clean up
+	  in the selectrotatetool code.
+
+2007-05-12 08:52  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : safety/performance fixes in the textrenderer. in particular,
+	  avoid large
+	  arithmetic operations involving GLubytes: too risky wrt overflow!
+
+2007-05-12 02:21  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add support for setting the number of unit cells to display.
+	  Not exposed in the user interface, but
+	  it's now in the library. Just need to build the window for the
+	  extension (after this beta release).
+
+2007-05-12 02:18  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add "hand" icon for manipulate tool.
+
+2007-05-12 02:16  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add "select all" and "select none" edit menu actions.
+
+2007-05-11 22:58  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Added some shortcut keys for the tools. These may not be
+	  optimal and probably
+	  need further discussion. Also added the drawing of the selection
+	  centroid sphere
+	  for the manipulate tool.
+
+2007-05-11 21:34  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Support for cut/copy of just selected atoms.
+
+2007-05-11 20:20  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Added selection manipulation for the zoom function too - move
+	  selections in to
+	  and out of the display.
+
+2007-05-11 20:16  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Comment out the atom manipulation code - moved to
+	  manipulatetool. Should be
+	  removed once the code in manipulatetool is better tested.
+
+2007-05-11 20:04  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Adapted the methods implemented by Geoff in the
+	  selectrotatetool source. Now
+	  translation (LMB) and rotation (RMB) of selected atoms works.
+	  Currently uses
+	  the selection list maintained by GLWidget.
+
+2007-05-11 19:45  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Improve behavior when opening files while launching on Mac.
+
+2007-05-11 17:24  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Initial version of the manipulation tool. Currently only
+	  operates on single
+	  atoms. Currently the left mouse button translates the atom
+	  position in x and y.
+	  The middle mouse button moves the atom into and out of the screen
+	  (zoom). This
+	  tool needs its own icon.
+
+2007-05-11 03:52  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Fix quit action on Mac.
+
+2007-05-11 03:05  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add initial cut support, as well as undo/redo for clear.
+
+2007-05-11 01:17  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated indenting in CMakeLists.txt, corrected some comments in
+	  sphere.h,
+	  updated Doxygen configuration.
+
+2007-05-10 20:53  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : remove some useless OpenGL commands. Make sure
+	  GL_TEXTURE_RECTANGLE_ARB
+	  is defined.
+
+2007-05-10 20:07  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : some cleanup in TextRenderer
+
+2007-05-10 20:00  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Remove old bsengine code
+
+2007-05-10 19:52  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : add method needed by cryos (and needed anyway):
+	  Camera::backTransformedZAxis()
+
+2007-05-10 18:41  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add some initial support for "selection modes" and tracking
+	  selected atoms
+	  (in the GLWidget). Probably needs some work.
+
+2007-05-10 18:16  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Fix small mistake in TextRenderer. As a result:
+	  better visual quality for the outlining effect !
+
+2007-05-10 18:10  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Fix the bug where the text was misrendered as blank rectangles.
+	  You know what? after all it _was_ a bug in my own code! I was
+	  using
+	  GL_TEXTURE_2D with non-rectangular, non-power-of-2 textures.
+	  Using
+	  GL_TEXTURE_RECTANGLE_ARB instead did the trick (btw: we need to
+	  add this define to global.h in case glext.h doesn't provide it).
+	  Apparently some drivers were more liberal than others in that
+	  respect,
+	  which is why the bug only showed with some drivers, giving the
+	  wrong
+	  impression that it was a driver issue. I closed the bug report --
+	  with
+	  apologies -- at bugs.freedesktop.org.
+
+2007-05-09 21:49  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : remove outdated #include that were breaking compilation. Sorry
+	  rbraith
+	  :)
+
+2007-05-09 19:56  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Move the Sphere, Cylinder and TextRenderer to a internal/
+	  subdirectory,
+	  don't expose them publicly. These classes are only used by the
+	  Painter
+	  class.
+	  Also replace tabs with 2 spaces in the CMakeLists.txt files, to
+	  be
+	  consistent with the indenting style of the source code.
+
+2007-05-09 19:24  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Make sure to link against extension.cpp for support on Mac.
+
+2007-05-09 19:00  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : In TextRenderer: quality improvements, API changes, indentation
+	  fixing,
+	  and most importantly, documentation (both API and internal code
+	  comments).
+	  Also fix indentation in Sphere.
+
+2007-05-08 16:40  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : my biggest commit ever :)
+	  - add TextRenderer class to replace QGLWidget::renderText.
+	  Indeed, we
+	  have to admit that even in recent versions of Qt such as 4.2.3
+	  and
+	  4.3-b1, renderText is still very slow; moreover it doesn't do
+	  outlined
+	  text, and emulating outlined text with multiple calls made
+	  rendering
+	  incredibly slow. So let me introduce this new TextRenderer class.
+	  Its
+	  selling points are:
+	  -- shadowed/outlined text with good visual quality
+	  -- very fast: enabling the label-engine no longer has a big
+	  impact on
+	  the frame rate; there should not be a need to disable text while
+	  moving
+	  after all!
+	  -- 2D text that's guaranteed to stay always on top (closes the
+	  bug where
+	  atoms could hide the output of the debug-engine).
+	  - let Painter have a TextRenderer and expose its functionality
+	  - move the projection/unprojection methods from GLWidget to
+	  Camera. let
+	  Camera remember its projection matrix. Result: the project() and
+	  unProject() methods are now much faster and also more solid.
+	  - make use of all that new stuff everywhere (incl. tools and
+	  engines)
+	  - fix position of text in clickmeasuretool
+
+2007-05-08 09:34  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : In GLWidget, make the Camera live as a pointer and let
+	  GLWidget::camera() return this pointer instead of a reference.
+	  Adapt the
+	  rest of the code to that change.
+
+2007-05-08 02:03  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Added improved "manipulate" rotate thanks to Benoit. Shift +
+	  left mouse. Much cleaner rotation.
+
+2007-05-07 22:43  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Small bug fix for opening windows. Have to check the UndoStack.
+	  If it is in a
+	  clean state we know there are no modifications.
+
+2007-05-07 22:32  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Update Extensions to separate instances per MainWindow.
+	  
+	  Added true SDI functionality. For more info see
+	  http://developer.kde.org/documentation/standards/kde/style/basics/windows.html
+	  http://developer.kde.org/documentation/standards/kde/style/basics/quitclose.html
+	  
+	  This should fix our Mac errors.
+
+2007-05-07 19:26  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Copy/paste now prefers MDL molfile mimetype (ensures bond
+	  orders, etc. copied)
+	  Paste will now select atoms pasted for automatic manipulation.
+
+2007-05-07 18:22  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Initial "manipulate mode" for select tool.
+	  Hold down the shift key: left button rotates (needs work) right
+	  translates
+
+2007-05-07 10:14  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added the settings dialogs to Engines.
+	  
+	  Modified the preexisting toolSettings interface to return a 0 if
+	  there is no
+	  settings available for the tool. This is done to mimic the
+	  engines settings
+	  interface and it is done in the engines settings so that we know
+	  if we should
+	  create a new window or not. It is better than testing against
+	  null QWidgets or
+	  whatever the alternative would be.
+	  
+	  Also added GLWidget::setStable(bool) and GLWidget::isStable() to
+	  see if the
+	  GLWidget is in an unstable state. This would occur as the result
+	  of some tool
+	  setting it.
+
+2007-05-07 09:47  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Fix compile error (extra closing parenthesis -- sorry!)
+	  Tweak detail level of spheres.
+
+2007-05-07 08:19  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : rework class Cylinder; make Painter able to draw Cylinders;
+	  make use of
+	  that in all engines; also change Tools so they no longer have
+	  their own
+	  Cylinders/Spheres and use Painter instead.
+
+2007-05-07 03:07  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Minor fixes. Remove "select all" (not ready) and fudge "cut"
+	  with current copy() code.
+
+2007-05-07 02:25  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add initial support for copy commands (includes copy to text,
+	  image, chemical/x-xyz).
+	  Still needs work tomorrow.
+
+2007-05-06 20:35  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : make use of Painter to draw spheres in all engines.
+	  Introduce SEL_ATOM_EXTRA_RADIUS constant to control the radius of
+	  selection highlighting spheres (added to the atom's radius).
+
+2007-05-06 18:43  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Fix Z-fighting (nothing related to dragonball Z) issue. cryos:
+	  i hope
+	  this fixes the visual artifacts you were getting
+
+2007-05-06 16:59  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Introduce Painter class and global quality setting. Currently
+	  it can
+	  only paint spheres. Make bsdyengine use it.
+
+2007-05-06 16:56  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : implement level 0 as a octahedron, d-pointerify, and many
+	  simplifications
+
+2007-05-06 10:09  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Fix typo in Ross's name. Sorry!
+
+2007-05-06 00:27  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added operator+= and copy constructor to the Molecule class.
+	  
+	  Added pasting operation. Currently only works with cartesian
+	  coordinates. It
+	  is setup to work with Mime data but i pick the default text case
+	  (assumed to be
+	  cartesian coordinates).
+
+2007-05-05 19:04  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add hooks for options dialog for engines.
+
+2007-05-05 11:49  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Draw outlined text in labelengine, for readibility on all
+	  backgrounds.
+	  Had to change the depthFunc from GL_LESS to GL_LEQUAL. Hope that
+	  doesn't
+	  break anything.
+	  This is very slow so I propose that text should be hidden while
+	  moving
+	  the camera with the mouse, to get smoother movement. That
+	  suggests the
+	  following: in Engine, we could have renderOpaque,
+	  renderTransparent and
+	  renderText. What do you think? Tools would inform the GLWidget
+	  that they
+	  are moving the view using callbacks GLWidget::beginMoveCamera()
+	  and
+	  GLWidget::endMoveCamera().
+
+2007-05-04 23:14  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Fix compile problems with radius() function
+
+2007-05-04 22:26  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added radius function to stick engine.
+
+2007-05-04 20:31  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add support for classes of color maps (subclasses of Color).
+	  This includes setting a color map for any engine.
+	  (e.g., color by element, color by atom type, color by reside...)
+
+2007-05-04 18:33  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fix position of label in the labelengine (now the label is
+	  always placed on top of the atom, from the camera's point of
+	  view)
+	  however there remains an issue caused by the fact that we still
+	  don't
+	  make sure all opaque objects have been drawn *before* transparent
+	  objects are drawn.
+
+2007-05-04 16:10  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Removed d-pointer stuff as it is not required for tools - see
+	  mailing list.
+
+2007-05-04 11:16  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Improved the label engine to use the radius method an so labels
+	  can be seen
+	  using the sphere engine now. Still needs work on label placement.
+
+2007-05-04 10:04  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Updated visual effects in NaviateTool to cover all atom centred
+	  operations.
+	  After discussion with Benoit added d-pointer to NavigateTool too.
+
+2007-05-04 07:41  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fix #including in tools and engines. In particular, don't
+	  include the
+	  meta-header <QtGui> when the much smaller <QtPlugin> is enough.
+	  Also
+	  fix comment in debugengine.
+
+2007-05-04 07:28  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fix copyright lines in debug engine
+
+2007-05-04 07:00  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : -- I moved the FindFoo instructions in the toplevel
+	  CMakeLists.txt. I see
+	  no reason why we should check for it twice...
+	  
+	  -- We now officially require Qt 4.2.0 (set(QT_MIN_VERSION)).
+	  Benoit told
+	  me that 4.1 is totally broken wrt to something in QtGl and all
+	  developers are using 4.2 anyway. Before we we just looking for
+	  "Qt4"
+	  which would even have worked for 4.0-beta I think!
+
+2007-05-04 06:54  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : Update the installation instructions
+
+2007-05-04 06:52  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : restoreOverrideCursor immediately whenever a failure occurs.
+
+2007-05-04 06:36  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : in debugengine:
+	  in FPS, show only 3 significant digits
+	  show GLWidget height and width
+
+2007-05-04 06:28  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : This file really belong to the top level directory as you
+	  cannot build
+	  avo without compiling libavo
+
+2007-05-04 06:14  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : remove _setup : Sphere::setup is clever enough to notice that
+	  new_detail==old_detail and exit in that case.
+	  
+	  remove some unnecessary state changes. Donald: it is possible to
+	  draw
+	  spheres with GL_NORMALIZE, only it's not optimally fast. But if
+	  we're
+	  only drawing one sphere, it's not worth the four state changes
+	  enabling
+	  GL_RESCALE_NORMAL instead.
+
+2007-05-04 05:54  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : replace #defines with constants in global.h
+	  remove a qDebug and other negligible cleanup
+
+2007-05-04 03:04  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated Tool interface. Now there is a ::paint function which
+	  gets called after
+	  the engines render allowing Tools a better way to render to the
+	  GLWidget (as
+	  opposed to using a displayList). I updated the NavigateTool and
+	  ClickMeasure
+	  tool (it now shows proper colors).
+	  
+	  Also added the ::radius function to the dynamic ball and stick
+	  engine. As a
+	  note if an atom is selected, radius(Primitive *) needs to reflect
+	  that.
+
+2007-05-03 22:57  rbraith
+
+	* : Made the changes that Benoit recommended,
+	  code in the glwidget was removed and new
+	  code was put into the debug engine.
+	  
+	  When the debug engine is turned on now it
+	  repeatedly calles gl->update() thereby
+	  makeing the glwidget constantly re-render.
+	  
+	  This gives FPS a reasonably accurate value.
+
+2007-05-03 12:28  Marcus D. Hanwell <cryos@gentoo.org>
+
+	* : Added radius function to Engine, ported bsengine and
+	  sphereengine to use the new function.
+
+2007-05-03 09:56  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Adding the SVG for the icon.
+
+2007-05-03 08:03  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added template for licensing.
+	  
+	  Added navigate icon taken from the crystal clear office set.
+	  
+	  Added "Center View" action. There are times things are not
+	  updateing the
+	  glwidget's geometry info. we need to fix this so that things are
+	  required to
+	  call it. there is a callback from primitiveAdded /
+	  primitiveUpdate /
+	  primitiveRemoved that should be sufficient to set a flag that the
+	  geometry data
+	  needs to be updated. I'll look at this more tomorrow, tomorrow,
+	  i'll love ya,
+	  tomorrow, you're only a day away.
+
+2007-05-03 06:57  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fix the sticks-engine (lighting bug and level of detail)
+
+2007-05-03 05:39  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Refactored classes so that extensions are named *Extension
+	  (GamessExtension,
+	  etc etc) Renamed source files accordingly.
+
+2007-05-03 05:28  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : ****Big Huge Changes****
+	  
+	  Undo/Redo is implemented and all of the extensions and tools have
+	  been updated.
+	  The interface to tools and extensions now requires that you
+	  return a
+	  QUndoCommand* or 0 (NULL).
+	  
+	  The only important things to remember when creating QUndoCommands
+	  is to make
+	  sure that the state after undo is exactly how it was before you
+	  performed your
+	  action. Worst case you need to duplicate all the Molecule data.
+	  This is
+	  somewhat intense but it runs quite quickly as there are no calls
+	  to NewAtom
+	  meaning no callbacks.
+	  
+	  There is a new class UndoSequence which is essentially a list of
+	  QUndoCommands
+	  which are all compiled into one. This is handy for our drawing
+	  tool.
+	  
+	  I apologize as i haven't had time to document any of this code.
+
+2007-05-02 22:28  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : The last patch introduced a new tool interface to allow for
+	  undo/redo. I am working on the QUndoCommand subclasses to help
+	  our tools do these things.
+
+2007-05-02 22:26  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : primtives.h was defining the Primitive class. Minor refactoring
+	  that was buggin me. *sigh*.
+
+2007-05-02 19:22  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Fix error when minimizing and restoring.
+
+2007-05-02 08:02  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Whoops. Environment should *replace* the default.
+
+2007-05-02 04:13  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added new Debug Engine which lists the number of atoms and
+	  molcules along with
+	  the FPS. Contributed by James, Ross and Shahzad. I modified to
+	  only perform
+	  one division.
+	  
+	  As a result there are some added hooks to GLWidget to keep track
+	  of time to
+	  render a scene. Hopefully we can say this is trivial.
+
+2007-05-02 04:06  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Better unit cell crystal support.
+
+2007-05-02 03:05  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Added stick engine
+
+2007-05-02 02:59  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Added unit cell rendering if an OBUnitCell is present.
+
+2007-05-01 19:08  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : tools, engines, extensions are now installed and loaded by
+	  default to their
+	  correct locations:
+	  ${CMAKE_INSTALL_PREFIX}/lib/avogadro/{tools|engines|extensions}
+	  
+	  added the define INSTALL_PREFIX to the CMAKE_INSTALL_PREFIX path.
+	  this does
+	  not get installed with the other header files.
+	  
+	  modified the environment variables:
+	  
+	  AVOGADRO_{ENGINES|TOOLS|EXTENSIONS}
+	  
+	  AVOAGDOR_EXTENSIONS was previously AVOGADRO_PLUGINS
+
+2007-05-01 17:46  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Remove old engines to allow updated stick engine.
+
+2007-05-01 17:30  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fix bug found by carsten/valgrind:
+	  GLWidgetPrivate::selectBufSize wasn't getting initialized.
+
+2007-05-01 16:27  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Remove old SphereEngine code -- conflicts on
+	  capitalization-sensitive file systems.
+	  Clean up class names, etc. in new sphere engine.
+
+2007-05-01 15:34  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : this is Marcus's new Sphere-engine. Thanks Marcus, the patch
+	  looks
+	  fine, next time don't hesitate to commit yourself (and get
+	  yourself
+	  a svn account if not already done).
+	  
+	  CCMAIL:cryos@gentoo.org
+
+2007-04-29 18:20  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Fix errors (not leaks) found by valgrind:
+	  "Conditional jump or move depends on uninitialised value(s)"
+
+2007-04-27 12:55  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : add another missing {} after a one-line if in my code :)
+	  
+	  simplification in navigatetool
+	  
+	  more clever handling of the selection buffer.
+	  Instead of resizing at molecule loading (as done before), resize
+	  in
+	  GLWidget::hits(). To prevent too frequent resizing, add some
+	  margin to
+	  the buffer size.
+	  The advantages are:
+	  -- new approach never fails, the user may add as many atoms as he
+	  likes
+	  (like when doing "add hydrogens").
+	  -- old approach required a large margin in order to let user add
+	  atoms;
+	  this is no longer needed. Old margin was 256*8=2048 ints. New
+	  margin is
+	  128 ints only.
+
+2007-04-26 19:04  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added check for correct hit type (AtomType)
+
+2007-04-26 17:06  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : minor optimization in painting selection boxes
+
+2007-04-26 15:56  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : -- introduce defines in global.h for the size of the small
+	  selection boxes used in tools.
+	  The former size, 5x5, was too small in wireframe mode
+	  (selection-wise, the atoms were single
+	  pixels regardless of the "point size"). We now use 9x9 boxes.
+	  -- cleanup in drawtool
+
+2007-04-26 15:39  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : cleanup in wireengine. Also revert something stupid I did
+	  earlier today.
+
+2007-04-26 15:13  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : minor cleanup in bsdyengine; only toggle client state inside
+	  Sphere and Cylinder, since
+	  it's not needed elsewhere.
+
+2007-04-26 14:45  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : port memleak fix by Laurent Montel
+	  
+	  CCMAIL:montel@kde.org
+
+2007-04-26 14:39  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fix bug in Camera::normalize. I think i introduced it in the
+	  last "simplification". Oops!
+
+2007-04-26 13:27  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : simplification in Camera::normalize(), remove qDebug()
+
+2007-04-26 13:21  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : complete the updateGL() -> update() move
+
+2007-04-26 13:10  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fix bug where it was impossible to zoom out after one had
+	  zoomed in to the max
+
+2007-04-26 12:55  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : remove a qDebug().
+
+2007-04-26 12:54  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : start with only dynbs engine enabled. That's pretty much a hack
+	  as I don't really understand
+	  how avogadro (the app) works. So I did it in enginelistview.
+	  Sorry if that's not the right place.
+	  
+	  CCMAIL:Donald Ephraim Curtis <donald-curtis@uiowa.edu>
+
+2007-04-26 12:34  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : in wireframe engine, disable lighting and paint atoms even when
+	  they are selected.
+	  (instead of painting only the translucent layer)
+
+2007-04-26 11:54  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : dynamically resize the selection buffer at molecule loading, to
+	  adapt to
+	  any number of atoms. At mol loading, a margin is added in case
+	  the user creates
+	  new atoms (current margin is for 256 new atoms).
+
+2007-04-26 11:02  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : don't crash when GL selection fails (typically when there are
+	  too many selected atoms)
+	  increase value of SELECTION_BUFFER_SIZE to 4096 so that it fails
+	  less often
+
+2007-04-26 10:12  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : updateGL() -> update()
+
+2007-04-26 09:53  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Hey, the Navigate Tool now feels very solid, even when cruising
+	  through
+	  very large proteins!!
+	  
+	  -simplifications and improvements in Camera wrt clipping planes
+	  -reorganization in NavigateTool:
+	  -- move much code to helper functions
+	  -- fix at last the problem with zoom-in passing beyond the goal
+	  -- swap left and right buttons
+	  -- use a member glwidget pointer to reduce argument-passing.
+	  the pointer is obtained from the mouse callbacks.
+	  - move numeric constants to #defines in global.h
+
+2007-04-25 16:49  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : have the camera auto-normalize after each rotation. no need to
+	  explicitly
+	  normalize anymore.
+
+2007-04-25 10:24  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Now mouse wheel is also sensitive to the atom below mouse
+	  pointer.
+
+2007-04-25 09:14  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Solve a numerical instability issue : after a large number of
+	  rotations,
+	  the camera matrix got more and more corrupt, eventually resulting
+	  in a blank
+	  GLwidget.
+	  
+	  Solved by adding method Camera::normalizeRotation(), to be called
+	  after each
+	  frequent rotation (typically in user input handling). Already
+	  used in navigatetool
+	  and selectrotatetool.
+
+2007-04-25 08:08  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : much improved right-button movement in navigatetool.
+	  Now the molecule precisely follows the mouse movement.
+	  This required further tweaking of the unProject API.
+
+2007-04-25 07:38  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : change prototype of unProject(double, double) to
+	  unProject(const QPoint&).
+	  
+	  This simplifies some code since this method is always being
+	  called on QPoint coordinates.
+
+2007-04-25 07:30  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Rework API and documentataion for project/unproject,
+	  const-correctify,
+	  make use of class Vector3d.
+	  Move to GLWidget the special unproject method from DrawTool
+	  taking only
+	  x and y coords and unprojecting to the plane of the mol center
+	  parallel to
+	  the screen. Will be useful in NavigateTool.
+
+2007-04-25 06:57  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fixes and simplifications in mid-button zoom.
+	  No longer center on atom; instead keep atom center at
+	  fixed position on screen. Centering is no longer needed since
+	  right-button
+	  allows to center manually. Keeping atom at fixed position is also
+	  more consistent
+	  with left-button rotation.
+
+2007-04-24 18:51  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : simplifications
+
+2007-04-24 06:44  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Renamed tool filenames to match their class names.
+
+2007-04-24 06:25  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated Engine interface to recieve the GLWidget as a pointer.
+	  This as opposed
+	  to using the ::parent() for two reasons: 1) we can duplicate
+	  GLWidgets (so that
+	  they share engines) 2) we may also want to allow programs using
+	  libavogadro to
+	  load their own engines and pass them to the GLWidget.
+	  
+	  Updated Tools so that they are named correctly. ie. DrawTool
+	  SelectRotateTool
+	  ... This to match the *Engine form with engines. renaming coming
+	  soon.
+
+2007-04-23 18:10  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : MainWindow now has functionality to create multiple views.
+	  View->New View /
+	  View->Close View.
+	  
+	  GLWidget optimized functionality so that unactive GLContexts to
+	  not get
+	  rendered. This will need to be updated if/when we allow two views
+	  to be shown
+	  at once.
+	  
+	  EngineListView now handles enabling and disabling engines for the
+	  current
+	  GLWidget. (opposed to MainWindow binding to the signals).
+
+2007-04-23 10:35  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : cleanup and bugfixing in the navigate tool.
+	  -- fix molecule-centered rotation when center is not at origin
+	  -- don't recompute GL hits at every mouse move
+
+2007-04-23 10:09  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Fix camera bug cause by miscalculation of distance to molecule.
+	  Fix
+	  comment explaining how this is computed. Introduce
+	  Camera::distance(Vector&) method performing this computation in
+	  the
+	  correct way. Make use of this new method in bsdynengine and
+	  labelengine,
+	  and do cleanup there. Remove method Camera::translationVector().
+
+2007-04-23 06:29  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added d-pointer to Cylinder class + formatting updated.
+	  
+	  Primitive and Molecule now share d-pointer.
+
+2007-04-23 00:25  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : new / open now perform correctly; ie, check for modified status
+	  (handled by the
+	  QMainWindow) and ask to save if changes have been made. also,
+	  'new' simply
+	  clears our the editor rather than creating a new window.
+
+2007-04-22 23:13  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updating to qt style d-ptrs.
+
+2007-04-22 22:11  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Renamed the d pointer properties.
+
+2007-04-22 21:47  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : more updates based off the new tool interface.
+
+2007-04-22 21:45  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : libavogadro/src/tool.h,libavogadro/src/tool.cpp; updated
+	  interface. removed
+	  ::initialize() and ::cleanup() functions. Unneeded. If plugins
+	  need to use
+	  these functions they can attach functions to the signals of the
+	  ::activateAction().
+	  
+	  libavogadro/src/toolgroup.cpp; we can now use Tool::parent() to
+	  get the plugin
+	  which it belongs to, rather than relying on the Tool::data() to
+	  do the same.
+	  
+	  libavogadro/src/CMakeLists.txt; added the tool.cpp file so that
+	  the tool object
+	  gets compiled into libavogadro.
+	  
+	  libavogadro/src/glwidget.cpp; tool interface was updated.
+	  
+	  Updated interface to all tools.
+
+2007-04-20 19:06  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add pointer icon for selectrotate tool
+
+2007-04-20 18:59  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : libavogadro/src/tools/draw.h, libavogadro/src/tools/draw.cpp;
+	  updated tooltip
+	  to include how the tool works. added code to replace atoms and
+	  bonds if they
+	  are different. clicking on a lone atom will change it to the new
+	  type..
+	  drawing bonds over preexisting bonds updates them.
+	  
+	  libavogadro/src/tools/clickmeasure.cpp,libavogadro/src/tools/clickmeasure.h;
+	  updated tooltip to include how the tool works. renamed the tag so
+	  that as you
+	  select you get atom 1,2,3 rather than 0,1,2.
+
+2007-04-20 16:21  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : libavogadro/src/engines/labelengine.cpp; push all GL attribute
+	  bits and use
+	  white text.
+	  
+	  libavogadro/src/tools/clickmeasure.cpp; push all GL attributes,
+	  give feedback
+	  on initial click (marked with *0) for now.
+
+2007-04-20 15:36  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Forgot to add my neat measure icon.
+
+2007-04-20 01:59  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : tools/measure.qrc : forgot to add. sorry about this. resource
+	  for the measure icon.
+
+2007-04-20 00:51  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : libavogadro/src/glwidget.h libavogadro/src/glwidget.cpp : added
+	  unProject and
+	  project functions, also fixed the ::hits function so it restore
+	  the previous
+	  projection and modelview matrices
+	  
+	  libavogadro/src/engines/bsdyengine.cpp : fixed compiler warning
+	  
+	  libavogadro/src/tools/selectrotate.cpp : free the display list
+	  
+	  libavogadro/src/tools/clickmeasure.cpp
+	  libavogadro/src/tools/clickmeasure.h :
+	  new click to measure tool. Displays results in the GL Widget.
+	  
+	  libavogadro/src/tools/CMakeLists.txt : added clickmeasure build
+	  instructions
+	  
+	  libavogadro/src/tools/draw.cpp libavogadro/src/tools/draw.h :
+	  make use of the
+	  new GLWidget::project and GLWidget::unProject functions
+	  
+	  libavogadro/src/tool.h : renamed ::init to ::initialize. can't be
+	  sure we
+	  actually need these functions. we have the option to let the tool
+	  decide what
+	  initialization it needs to do by connection to the action
+	  signals.
+
+2007-04-19 18:01  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Switch to use dynamic_cast instead of qobject_cast
+
+2007-04-19 18:00  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Namespace fixes.
+
+2007-04-15 19:27  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Needed to use quotes instead of <>'s on the relative include.
+
+2007-04-14 15:58  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Replaced with truly fake. Probably something happened in the
+	  riggermerow<sp?>...
+
+2007-04-14 03:05  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Fix "fake" includes.
+
+2007-04-14 01:13  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Moving headers from src/ to include/avogadro -- two pass job.
+
+2007-04-14 00:31  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : libavogadro/src/engines/bsdyengine.cpp,
+	  libavogadro/src/engines/bsdyengine.h:
+	  added dynamics for bonds.
+	  
+	  libavogadro/src/cylinder.cpp, libavogadro/src/cylinder.h: when
+	  detail < 0 we
+	  generate a single line rather than a cylinder. Also added
+	  constructor with
+	  default parameter to 0.
+
+2007-04-13 19:40  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : libavogadro/src/moleculetreeview.cpp: removed debug code
+	  
+	  libavogadro/src/sphere.cpp: added constructor and cleaned up code
+	  
+	  libavogadro/src/toolgroup.cpp: removed debug code
+	  
+	  libavogadro/src/primitives.cpp: removed debug code
+	  
+	  libavogadro/src/sphere.h: added constructor which takes as a
+	  parameter the
+	  detail
+	  
+	  libavogadro/src/engine.h, libavogadro/src/engine.cpp : added
+	  interface function
+	  to inform the engine to update the primitive. This is a
+	  cautionary function
+	  for optimization.
+	  
+	  libavogadro/src/glwidget.cpp: cleaned up the code, added use of
+	  new engine
+	  function.
+	  
+	  libavogadro/src/engines/labelengine.cpp: added clause to not
+	  label when far
+	  from camera libavogadro/src/engines/bsdyengine.h,
+	  libavogadro/src/engines/bsdyengine.cpp: proof of concept for
+	  optimization of
+	  the ball & stick engine. Added this as to not disturb the old
+	  code until the
+	  new code can be cleaned up. I will get around to this just
+	  haven't had the
+	  time to think about the best way to do it.
+	  
+	  libavogadro/src/engines/bsengine.cpp: removed debug code.
+	  
+	  libavogadro/src/engines/CMakeLists.txt: added bsdyengine
+	  
+	  libavogadro/src/tools/CMakeLists.txt: commented test tool code.
+	  
+	  libavogadro/src/tools/selectrotate.cpp: added atom::update call
+	  after selection
+	  
+	  libavogadro/src/tools/draw.cpp: removed debug code
+
+2007-04-09 19:16  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Minor reorganization of BS engine to improve performance.
+	  (Need to add "options" ability to set level of detail, etc.)
+
+2007-04-09 15:01  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Renamed Mac icon to avogadro.icns
+
+2007-04-08 22:37  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : There is build info for the measure tool in the CMakeLists.txt
+	  but the code is not yet commitable. Don't know how this got
+	  commited but sorry for the inconvenience.
+
+2007-04-08 20:32  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Misspelling of 'avogadro.png'. Thanks to Steven Di Rocco for
+	  bringing this to
+	  our attention.
+
+2007-04-03 17:58  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Update logo name to avogadro.png. Lets not get too lazy with
+	  naming it's
+	  important! atom2.png does not describe what the png is really of.
+
+2007-04-02 15:50  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated PrimitiveQueue to allocate statically instead of
+	  dynamically.
+	  
+	  Changed PrimitiveQueue::primitiveList to return a const
+	  QList<Primitive *>
+	  
+	  Updated the engines to use "foreach" loops.
+
+2007-04-02 12:21  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add wireframe engine (partly to help debug label issues)
+
+2007-04-02 07:27  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Label rendering engine added. Needs work. Possibly using an
+	  overlay?
+
+2007-04-02 07:01  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Forgotten File
+
+2007-04-02 07:01  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Refactored AvogadroApp -> Application to maintain naming
+	  scheme.
+	  
+	  Added EngineListView to list the engines and allow them to be
+	  enabled/disabled
+	  accordingly. Engines now maintain their own PrimitiveQueue. This
+	  will allow
+	  us (in the future) to allow advanced users to add/remove
+	  atoms/bond/residues
+	  accordingly from an engine. (in the case that i only want a
+	  certain atom or
+	  set of atoms rendered.
+
+2007-03-28 18:26  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Added open events for Mac (i.e., now can drag-and-drop files
+	  from the Finder)
+
+2007-03-28 15:50  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add Mac OS X app bundle target
+
+2007-03-28 15:50  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Scale icon to 256x256
+
+2007-03-28 15:49  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Added Mac OS X resources directory
+
+2007-03-28 15:48  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Make sure to install in "tools" subdirectory
+
+2007-03-26 06:26  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Refactored SetVector3d and GetVector3d to setPos and pos after
+	  discussing with
+	  Benoit. We agreed that this sticks with our Avogadro API
+	  convention.
+
+2007-03-26 06:20  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added some svn:ignore properties.
+
+2007-03-26 06:08  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Deleted trash file.
+
+2007-03-26 06:07  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Moved tools to libavogadro:
+	  - Added ToolGroup which manages a group of tools.
+	  - Moved avogadro "plugins" to "extensions". (removed tools)
+
+2007-03-24 18:10  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : adapt to latest constness change in OpenBabel
+
+2007-03-24 12:35  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : In Draw: standardize on passing GLWidget *widget to the various
+	  methods,
+	  from which both the molecule and the center can be retrieved.
+	  Maybe evaluate
+	  letting the Tool know which GLWidget it's operating in, gettable
+	  with glwidget()?
+	  That would spare much argument-passing.
+	  
+	  Add API documentation and explanatory code comments to
+	  unProject().
+
+2007-03-24 12:00  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : In class Atom: Rename position() to GetVector3d() and
+	  setPosition() to SetVector3d().
+	  This underlines the fact that they're just wrappers for
+	  GetVector() and SetVector() from OBAtom,
+	  doing casts with Eigen::Vector3d.
+	  
+	  Rewrite these functions to make sure they don't cause copies, and
+	  inline them. Add documentation.
+	  A "rationale for inlining" is provided in comment, to justify
+	  that inlining isn't dangerous here.
+
+2007-03-23 17:57  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add contributed icon to about dialog
+
+2007-03-23 17:56  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add full third-row elements (e.g., sulfur, phosphorus...)
+
+2007-03-23 17:54  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Switch GAMESS automoc -- don't know why, but this one actually
+	  works.
+
+2007-03-21 20:45  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Commiting cryo's patch for the navigate plugin. (ie. importing
+	  navigation
+	  functionality from Kalzium.
+
+2007-03-21 10:04  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : add comments to the code of Camera::initializeViewPoint()
+
+2007-03-21 09:38  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Simplification and improvement of Camera::applyPerspective()
+	  Now it should have reached it's "canonical" form.
+
+2007-03-21 08:54  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Document class Camera
+
+2007-03-21 07:16  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Rework Camera::applyPerspective().
+	  That fixes the clipping bug for very small molecules.
+
+2007-03-21 05:29  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Fixes linking error. Was not generating moc file because the
+	  cpp file was
+	  missing #include "gamessinputdialog.moc" at the bottom of the
+	  file. This
+	  caused by change to MOC generation to more KDE-like operation.
+
+2007-03-20 22:35  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added wheel function to plugins to allow handling of wheel
+	  events on the GLWidget.
+
+2007-03-19 18:30  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Fix compilation (after removal of molgeominfo.*).
+
+2007-03-19 17:00  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Removed the MolGeomInfo class. It's really not needed as all
+	  this info can
+	  happily exist in the Molecule class and techincally should. The
+	  GLWidget makes
+	  it's own copies of this info when it wants to by
+	  GLWidget::updateGeometry(). I
+	  believe this class was most likely introduced as a way to get the
+	  info to the
+	  Engines, but really they should know their parent.
+
+2007-03-19 11:48  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : fix the auto-multiple-bonds-oritentation feature from kalzium
+	  That is, now when you load a molecule the double bonds are
+	  automatically
+	  oriented to face the camera in the default viewpoint. So that
+	  they don't
+	  look like single bonds.
+	  
+	  This implied API changes in engines: now render must be passed
+	  the molGeomInfo structure,
+	  as it needs to know the normal vector of the molecule's fitting
+	  plane.
+
+2007-03-19 11:22  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : adjust initial viewpoint on loaded molecule. remove unused
+	  define.
+
+2007-03-19 11:08  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Fix bug where atoms created on an empty molecule were not
+	  shown.
+	  The problem was twofold:
+	  -molGeomInfo wasn't getting updated
+	  -with an empty molecule, applyPerspective set
+	  nearPlane==farPlane, thus
+	  nothing would be drawn until molGeomInfo would be updated.
+
+2007-03-19 10:40  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : - much improved Draw::moveAtom: now moves the atom within the
+	  iso-z-distance of
+	  the molecule's center
+	  - introduce MolGeomInfo class, stores the geometric info of a
+	  molecule
+	  - take geom info out of class Molecule
+	  - remove Molecule's d-pointer (nothing left there)
+	  - remove mutex stuff in Molecule
+	  - add d->molGeomInfo member to GLWidget, MUST BE UPDATED BY HAND
+	  - fix Atom::position() (interfacing coord vectors with Eigen)
+
+2007-03-18 21:22  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Unscrew the selectrotate tool, after migration to the Camera
+	  class caused some damage.
+	  Donald: I hope I reproduced the original behavior, if not, just
+	  tell me.
+
+2007-03-18 21:00  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : rename GL_SEL_BUF_SIZE : the GL_ prefix should be reserved to
+	  the OpenGL API.
+	  Move that define to top of file.
+
+2007-03-18 18:17  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : this isn't fully finished but at least it compiles and runs.
+	  I prefer to commit early to prevent a conflict.
+	  
+	  - add new Camera class
+	  - rework glwidget.* to use it, opengl cleanups, API changes
+	  - fixes here and there
+	  
+	  If you get crashes, please delete the old .so files and retry.
+
+2007-03-16 10:10  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : use a mutex in the Molecule class to make sure that recomputing
+	  geom info
+	  blocks any operation that might access it concurrently.
+
+2007-03-16 09:54  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Make Primitive's d-pointer private
+	  Move Molecule's data to a d-pointer
+	  Cache the molecule geometric info. Still need to evaluate
+	  potential
+	  thread-safeness issues.
+
+2007-03-16 07:38  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : remove unneeded variable numAtoms and remove "using namespace
+	  OpenBabel"
+
+2007-03-15 18:43  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Cleaning commented code.
+
+2007-03-15 17:22  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Removed _vatom / _vbond from Molecule class (not needed) and
+	  fixed up the
+	  iterator stuff in primitives.cpp for Benoit. (specifically the
+	  computGeometricInfo function).
+
+2007-03-15 16:11  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Document Changes.
+	  Merged in Benoit's changes.
+
+2007-03-15 08:02  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : This syncs Avo with KDE again. Beside some cosmetic sugar this
+	  adds much
+	  improved support for Windows (I think...). Anyway, we now have
+	  for
+	  example this line in the file:
+	  
+	  [HKEY_CURRENT_USER\\SOFTWARE\\OpenBabel\ 2.0.2]
+	  
+	  I think that we all agree that both Kalzium and Avo want to
+	  depend on OB
+	  2.1.0, right? The current beta still installs as 2.0.2 which
+	  cannot be
+	  the correct way to do, I think. Geoff told us yesterday that
+	  branching
+	  is about 2 weeks in the future, please lets increase that version
+	  number
+	  then so that those clashes can be fixed!
+
+2007-03-15 07:59  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : sync with KDE. FindEigen moved to kdelibs now! In the future
+	  (from next monday on) it will only be in kdelibs, no longer in
+	  kdeedu or koffice!
+
+2007-03-14 12:02  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Implement computation and storage of geometric information in
+	  the Molecule class,
+	  replacing the former approach consisting in changing molecule
+	  coordinates.
+
+2007-03-13 23:34  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Converted cmake files to use qt4_automoc format. More KDE like.
+
+2007-03-13 21:57  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : about dialog compilation fixed. thanks carsten.
+
+2007-03-12 13:48  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : New about dialog. Here it works but I think the moc-thing is
+	  wrong.
+	  Could somebody with more moc-foo check this, please?
+
+2007-03-12 07:51  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Add Molecule::centerAndFitInXYPlane() method.
+	  Just to demonstrate it, call it from GLWidget::setMolecule().
+	  Some sparse cleanup in Cylinder and Sphere.
+
+2007-03-09 18:46  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : Make CMake 2.4.3 the minimumversion needed. KDE will move to
+	  require 2.4.5 on March, 19th.
+
+2007-03-09 11:14  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Release 0.0.3 updates. Fixed avogadro.nsi to include
+	  ghemical.prm so that the optimization parameters are included in
+	  the install. Booyah.
+
+2007-03-09 09:52  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Misspelled USING_DYNAMIC_LIBS. What a mistake. Fixed the
+	  CMakeLists.txt files.
+
+2007-03-09 01:45  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added USING_OBDLL and USING_DYNAMIC_LIBS to build defines.
+
+2007-03-08 09:42  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated mainwindow.ui.
+	  
+	  TODO: Refactor so that variables are named descriptionType
+	  instead of typeDescription.
+	  
+	  All mainwindow actions need to be renamed.
+
+2007-03-08 09:00  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : Remove a lot unused includes. Includes shouldn't be in
+	  .h-files, use forward declaration here
+
+2007-03-08 08:47  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Minor misspellings and added units to the recalculate hessian
+	  spin box.
+
+2007-03-08 08:34  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Done with ui and working.
+
+2007-03-08 02:46  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Compiles. Some signals are not correctly connected. Will fix
+	  later but wanted
+	  to make the commit before carsten wakes back up.
+
+2007-03-07 23:16  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Refactoring GamessInputBuilder -> GamessInputDialog.
+	  
+	  More appropriately named.
+
+2007-03-07 23:09  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : My version of the dialog. With tree and tabs etc etc. Widgets
+	  named accordingly.
+
+2007-03-07 23:08  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Needed Qt4OpenGL include so that GLuint named a type.
+
+2007-03-07 23:07  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated include precedence. Should fix some compile errors.
+	  Just so that when
+	  you build you are getting the header files from your build
+	  directory and not
+	  the installed ones.
+
+2007-03-07 13:10  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : adding those strange string. No idea what they are for, though
+
+2007-03-07 13:04  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : * Bling, about 3000 lines diff. Oh my god :)
+
+2007-03-07 12:31  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : Muhu, a big step, another 500 lines of diff :-) I added default
+	  values,
+	  added some new widgets, improved layout...
+
+2007-03-07 12:13  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : One more tab done
+
+2007-03-07 12:00  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : 2 more tabs done
+
+2007-03-07 11:34  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : muha, integrating Donalds stuff, some this and that
+
+2007-03-07 11:19  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : Commit my patch: No inludes in the .h-file if possible
+
+2007-03-07 11:18  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : More close to the original
+
+2007-03-07 10:57  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : First version of the dialog, now in Designer
+
+2007-03-07 10:54  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : don't include QGLWidget when not needed; documentation fixes
+
+2007-03-07 10:51  Carsten Niehaus <carsten.niehaus@gmail.com>
+
+	* : test commit (adding copyright-year)
+
+2007-03-07 10:46  Benoit Jacob <jacob@math.jussieu.fr>
+
+	* : Remove all mentions of the USE_DISPLAY_LISTS define, always use
+	  display lists (instead of never)
+	  for the sphere and cylinder.
+	  
+	  This fixes an issue with the way avo reused the sphere/cylinder
+	  code from Kalzium:
+	  avo used a display list for the whole molecule, but not for the
+	  spheres and cylinders,
+	  which caused the geometric data and the opengl traffic of each
+	  sphere/cylinder to be replicated into
+	  the molecule display list. This caused the rendering to be
+	  unnecessarily slow and memory-consuming.
+
+2007-03-07 09:54  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added GAMESS plugin install line.
+
+2007-03-07 09:04  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Update for building 0.0.3alpha Win32 release.
+
+2007-03-07 08:19  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : flattabwidget.cpp: return proper integer
+	  CMakeLists.txt: remove garbage left over from initial testing of
+	  gamess plugin.
+
+2007-03-06 23:42  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : installer file changes
+
+2007-03-06 19:17  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : GAMESS Input Deck Plugin Complete. Non-Modal Dialog.
+
+2007-03-06 11:20  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Gamess Interface Updates. Still not incorporated into the
+	  plugin. This will happen tomorrow.
+
+2007-03-02 08:53  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : More changes to the GAMESS Input Deck Generator. Almost
+	  finished. Need to add
+	  some more specific information. At some point a lot of the
+	  callbacks need to
+	  be refactored to another class. For now they are alright. This is
+	  very big
+	  and complex. Not fun.
+
+2007-03-02 01:28  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Working good so far. Not yet a plugin.
+
+2007-03-01 05:56  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Backing up before deleteing a bunch of unnecisary functions.
+	  Code taken from WxMacMolPlt GNU Licensed.
+
+2007-02-26 07:24  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : More ugly. My Bad.
+
+2007-02-26 07:15  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : cmake files needed updating for finding paths correctly.
+
+2007-02-25 02:58  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Tim Vandermeersch's Patch for ghemical. Cleaned up mainwindow.h
+	  so it'd compile.
+
+2007-02-25 02:37  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added new FlatTabWidget for Messages. Needs working on but will
+	  be really sweet.
+
+2007-02-24 04:50  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Messages are now printed to the messages window. It's very hard
+	  to see but
+	  it's at the bottom of the GL area. You can see a small dotten
+	  line, which you
+	  can drag up and see the messages. I'm working on a better
+	  interface for this,
+	  unfortanly it's not built into the default QT widgets. More to
+	  come.
+
+2007-02-22 22:47  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Some repeated code. Factored out into the newBond function.
+
+2007-02-21 22:58  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Fix problem with zero'ed coordinates. Begin/EndModify strike
+	  again!
+
+2007-02-21 22:48  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Update build environment
+
+2007-02-21 22:47  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Update to fix draw and hydrogen problems from Begin/EndModify
+	  in OBMol.
+
+2007-02-21 22:47  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add support for Ghemical minimization using Open Babel
+	  OBForceField
+
+2007-02-19 01:59  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Fixed bug in glwidget.h with GLHit constructure being
+	  ill-defined.
+	  Updated cmake files to incorporated dependancy (multi-threaded
+	  make now works).
+	  Added plugin to Add/Removed Hydrogens. Having problems which i
+	  believe are in OpenBabel.
+
+2007-02-09 07:27  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : moved nsis file
+
+2007-02-08 23:09  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Removed STL dependancy. (Should reduce windows QT dlls).
+
+2007-02-08 03:17  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : corrected names.
+
+2007-02-08 02:25  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : added mxvc2005 file.
+
+2007-02-04 15:22  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Add bond order to draw tool.
+
+2007-02-03 20:23  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : had extra include in there.
+
+2007-02-03 18:49  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated WIN32 compiling parameters, added icons/avogadro.ico
+	  and nsis installer file.
+
+2007-02-03 01:33  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : more WIN32 changes. Added some GL defines that were missing.
+	  added return value on GLHit = operator.
+
+2007-02-03 00:58  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updates for windows.
+
+2007-02-03 00:36  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Missing files!!! arg... too many commits.
+
+2007-02-03 00:36  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added global header.
+
+2007-02-03 00:34  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Cleaned up config.h
+	  
+	  config.h should contain the install paths and version and package
+	  name. Needs updating.
+
+2007-02-03 00:32  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Rather than using an include file for WIN32 we should just
+	  define it as a compile time definition.
+
+2007-02-03 00:05  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Done with changes. Defines are properly setup.
+
+2007-02-03 00:00  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : about to be renamed again.
+
+2007-02-02 23:44  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Broken for two min.
+
+2007-02-02 21:27  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : MoleculeTreeView no longer has ambiguous constructor.
+	  Sphere no longer has ambiguous call to sqrt.
+
+2007-02-02 21:25  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added #include "config.h"
+
+2007-02-02 21:16  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Update for WIN32 defines for compilation on windows. Exporting
+	  of DLL classes.
+
+2007-02-02 21:15  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Update properties to ignore temporary source files
+
+2007-02-02 21:12  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Updated plugin paths: split by colon...
+	  
+	  PATH=/usr/bin:/bin:/usr/sbin (etc)
+
+2007-01-28 23:14  Geoffrey Hutchison <geoff@geoffhutchison.net>
+
+	* : Updated link commands to work on Mac OS X.
+
+2007-01-27 01:01  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Molecules weren't disconnecting properly. The disconnect()
+	  member function
+	  disconnects "this" from other things, not other things from
+	  'this'.
+	  
+	  Also fixed compile issues from the last commit.
+
+2007-01-26 21:21  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated changes from library.
+
+2007-01-26 21:20  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Changed names / added QT_PROPERTIES. Bulked up the lib.
+
+2007-01-26 21:19  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Merged Tools + Extensions = Plugins.
+
+2007-01-25 15:55  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Fixed plugin.h to compile.
+
+2007-01-24 19:37  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added plugin interface (incomplete).
+	  
+	  Added tabs at bottom for messages and other information we wish
+	  to have.
+
+2007-01-24 07:06  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Moved combobox to avogadro app.
+
+2007-01-24 07:01  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Modifications... will be moved.
+
+2007-01-24 06:52  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Extra Line
+
+2007-01-24 06:51  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Working CMakeLists
+
+2007-01-24 02:59  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Rename
+
+2007-01-24 02:59  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Using generated ui.
+	  
+	  Added tool properties.
+	  
+	  adding ElementComboBox
+
+2007-01-23 19:49  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : NORMALIZE bonds instead of RESCALE_NORMAL
+
+2007-01-23 18:39  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated FindEigen.cmake from pinotree.
+
+2007-01-23 18:23  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated cmake files and added psuedo include dir.
+
+2007-01-23 15:12  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Missing files!
+
+2007-01-23 08:40  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : updated tooltip / text minor change.
+
+2007-01-23 08:30  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated name() and description() to const functions.
+	  
+	  Made it so that if a tool doesn't defined an Icon / Text /
+	  Tooltip
+	  it will be correctly populated using name() and description().
+
+2007-01-23 08:00  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : ui_mainwindow.h defines Ui::MainWindow which is a private
+	  member of
+	  Avogadro::MainWindow. QTDesigner does a crappy job with naming
+	  the layouts and
+	  embedding widgets within widgets that don't need to be that way.
+	  There is a
+	  bit of renaming done so that we can use our FlowLayout (ripped
+	  from the
+	  tutorials).
+	  
+	  Added icons to actions. Images are from CrystalClear collection.
+	  
+	  Made libavogadro const-correct as well as implementing the
+	  d-pointer technique
+	  in glWidget and Primitives classes.
+	  
+	  Figured out a memory leak in OpenBabel.
+	  
+	  Updated the TreeView to match pointers rather than indexes. This
+	  could become
+	  a bottleneck if we have to delete a lot of primitives from a big
+	  molecule.
+	  We'll tackle that when we cross that bridge. Would give us
+	  something like
+	  O(n^2) when we should really have O(n). Although that could be
+	  wrong i was
+	  never good with big O.
+	  
+	  Added resource files. Plugins now define an action which selects
+	  them. They
+	  can connect to the callback but it doesn't them little good. The
+	  MainWindow
+	  decides what tool gets called. This just gives the plugin the
+	  ability to
+	  define it's own tooltips / icon. tool.h defines a default action
+	  but this
+	  action doesn't get any information from the implemented plugin.
+
+2007-01-22 07:54  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added const correctness.
+
+2007-01-07 21:56  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Draw tools done. Fixed some bugs.
+
+2007-01-07 10:16  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Can now draw atoms into the model. No bonds yet but it also
+	  updates the
+	  treewidget through callbacks. However, primitiveAdded(Primitive
+	  *) should
+	  actually be admitted *after* the primitive has been added to the
+	  model.
+	  Otherwise we would need to overload everytime that the indexes
+	  change.
+	  
+	  Need to discuss further with Geoff and crew.
+
+2007-01-07 02:42  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Cleanup. Old Project files we don't need.
+
+2007-01-07 02:39  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Rather than using a view on top of a model i created a custom
+	  view widget for
+	  our Primitive::Molecule. I haven't updated all the signals but
+	  this is now
+	  what we will use. It looks better and is easier to manage. Plus I
+	  got it
+	  looking sweeet.
+
+2007-01-06 19:51  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : New Molecule is Working... signal to GLWidget needs to be
+	  updated.
+
+2007-01-06 19:14  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated to use new Molecule which has QAbstractItemModel.
+
+2007-01-06 19:13  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Cleanup!
+
+2007-01-06 19:13  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Moved MoleculeModel *into* Molecule.
+	  
+	  Thus, a Molecule acts as a QAbstractItemModel.
+
+2007-01-06 18:33  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Moved ProjectModel to library.
+
+2007-01-06 17:59  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Updated the primitives enum. Also reworked ProjectModel so that
+	  it works
+	  directly with the molecule. Should be moved to the library. The
+	  view needs to
+	  be updated so that it subgroups. This should not be part of the
+	  model. (ie.
+	  the model should not contain "dummy" nodes just so that we have
+	  groupings of
+	  Atoms, Bonds, Residues.). Avogadro::GLWidget needs to be updated
+	  to use the
+	  MoleculeModel instead of working on the Molecule itself.
+
+2007-01-06 02:51  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added Docks for Tools and for the Project Layout.
+	  
+	  The project layout is model/view. ProjectModel, given a molecule,
+	  sets up the
+	  model for the molecular view. I'm not sure if this is the correct
+	  place for
+	  this. I believe it could go into the libavogadro. It's a tossup
+	  because we
+	  may want to have our Model be the basis for interaction with the
+	  library but
+	  the way the GL engine is setup, it takes primitives directly to
+	  render them.
+	  This isn't a problem as we can setup our primitives to act as
+	  nodes of the
+	  model. Will think about this more.
+
+2007-01-06 00:21  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Adding project model.
+
+2007-01-05 21:02  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Minor Changes
+
+2007-01-05 20:48  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Draw tool now draws. Need to refine these tools. Also need
+	  configuration
+	  system implemented for the tools. TODO: create a Tool Properties
+	  Dialog.
+
+2007-01-05 09:24  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added the drawing tool but it doesn't work. There is no code.
+	  Had an issue
+	  where the header files were included from the wrong location.
+	  Should be easy
+	  to implement the drawing tool in the next day. Also need to build
+	  an extension
+	  for other plugins (gamess / libghemical). Should be interesting
+	  then.
+
+2007-01-05 01:34  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added tools/CMakeLists.txt
+
+2007-01-04 22:09  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Should compile and run.
+	  
+	  bsengine is Ball and Stick and currently works. Need to bring the
+	  other stuff
+	  up to date.
+	  
+	  the select&rotate tool now works too. haven't finished cleaning
+	  up the
+	  functions and working on creating the drawing tool.
+
+2007-01-04 16:17  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Should compile now. Must checkout the whole trunk to build the
+	  cmake files.
+
+2007-01-03 20:42  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Minor changes.. Still won't build.. Need to finish up the work
+	  tonite.
+
+2007-01-03 20:37  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Leftover file. This commit doesn't build. No time to fix til
+	  later tonite.
+
+2007-01-03 20:36  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Added cmake/modules for CMAKE building.
+
+2007-01-03 19:49  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
+	* : Moving things around. Conforming to a more KDE-like layout in
+	  SVN. I'm going nuts. SOrry
+

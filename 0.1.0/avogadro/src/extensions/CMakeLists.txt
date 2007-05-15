@@ -7,7 +7,7 @@ ADD_DEFINITIONS(-DQT_PLUGIN)
 ADD_DEFINITIONS(-DQT_NO_DEBUG)
 ADD_DEFINITIONS(-DQT_SHARED)
 
-set(DESTINATION_DIR lib/avogadro/extensions)
+set(DESTINATION_DIR ${LIB_INSTALL_DIR}/avogadro/extensions)
 
 include_directories(
     ../

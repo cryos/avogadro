@@ -61,7 +61,7 @@ set_target_properties(avogadro-lib PROPERTIES VERSION 0.0.1 SOVERSION 0 )
 TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                    ${OPENGL_LIBRARIES}                                   )
 
-INSTALL(TARGETS avogadro-lib DESTINATION lib)
+INSTALL(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
 INSTALL(FILES ${libavogadro_HDRS} DESTINATION include/avogadro)
 
 add_subdirectory(engines)

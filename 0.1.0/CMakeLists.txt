@@ -10,6 +10,10 @@ find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Eigen REQUIRED) # find and setup Eigen
 
+if(NOT LIB_INSTALL_DIR)
+  set(LIB_INSTALL_DIR lib)
+endif(NOT LIB_INSTALL_DIR)
+
 # tell cmake to process CMakeLists.txt in that subdirectory
 add_subdirectory(libavogadro)
 add_subdirectory(avogadro)
