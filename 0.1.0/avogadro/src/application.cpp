@@ -43,17 +43,23 @@ namespace Avogadro {
 
   bool Application::loadFile(const QString &fileName)
   {
-    if (!fileName.isEmpty()) {
-      // check to see if we already have an open window
-      // if not, need to make this spawn a new instance
-      MainWindow *window = qobject_cast<MainWindow *>(topLevelWidgets().first());
-      if (window) { // let MainWindow take care of the work
-        window->openFile(fileName);
-        return true;
-      }
-      return false; // no window to do work for us
+    if (fileName.isEmpty()) {
+      return false;
     }
-    return false; // no filename
+    
+    // check to see if we already have an open window
+    // if not, need to make this spawn a new instance
+    MainWindow *window = static_cast<MainWindow *>(topLevelWidgets().first());
+    if (window) { // let MainWindow take care of the work
+      window->openFile(fileName);
+      window->show();
+      return true;
+    }
+
+    window = new MainWindow;
+    window->openFile(fileName);
+    window->show();
+    return true;
   }
 
 } // end namespace Avogadro
