@@ -20,6 +20,10 @@
 	  further icon updates
 	  fixed an error resolving issue 1719085
 
+	* libavogadro/src/tools/drawcommand.*
+	  libavogadro/src/tools/drawtool.cpp:
+	  Fix for issue 1719080: undo causing errors to multiple views.
+
 2007-05-15 05:19  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* avogadro/src/icons/avogadro.ico: more icon updates
