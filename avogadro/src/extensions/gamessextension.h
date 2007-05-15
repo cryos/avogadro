@@ -36,9 +36,9 @@
 
 namespace Avogadro {
 
- class GamessExtension : public QObject, public Extension
+  class GamessExtension : public QObject, public Extension
   {
-    Q_OBJECT;
+    Q_OBJECT
 
     public:
       //! Constructor
@@ -55,7 +55,7 @@ namespace Avogadro {
       //! Perform Action
       virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, 
-                                          GLWidget *widget, QTextEdit *messages=NULL);
+          GLWidget *widget, QTextEdit *messages=NULL);
       //@}
 
     private:
@@ -66,11 +66,11 @@ namespace Avogadro {
 
   class GamessExtensionFactory : public QObject, public ExtensionFactory
   {
-    Q_OBJECT;
-    Q_INTERFACES(Avogadro::ExtensionFactory);
+    Q_OBJECT
+      Q_INTERFACES(Avogadro::ExtensionFactory)
 
     public:
-    Extension *createInstance(QObject *parent = 0) { return new GamessExtension(parent); }
+      Extension *createInstance(QObject *parent = 0) { return new GamessExtension(parent); }
   };
 
 

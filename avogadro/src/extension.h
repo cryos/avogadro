@@ -91,7 +91,7 @@ namespace Avogadro {
 
   };
 
-  class A_EXPORT ExtensionFactory
+  class ExtensionFactory
   {
     public:
       /**

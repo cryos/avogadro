@@ -73,7 +73,7 @@ double SphereEngine::radius(const Primitive *p)
 {
   if (p->type() == Primitive::AtomType)
   {
-    Atom *a = static_cast<const Atom *>(p);
+    const Atom *a = static_cast<const Atom *>(p);
     double r = radius(a);
     if (m_glwidget)
     {

@@ -27,6 +27,8 @@
 
 #include <QUndoCommand>
 
+#include <avogadro/global.h>
+
 namespace Avogadro {
 
   /**
@@ -40,7 +42,7 @@ namespace Avogadro {
    * merged, they are left as they are but under a single command.
    */
   class UndoSequencePrivate;
-  class UndoSequence : public QUndoCommand
+  class A_EXPORT UndoSequence : public QUndoCommand
   {
     public:
       UndoSequence();

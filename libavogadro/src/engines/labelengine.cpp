@@ -50,7 +50,7 @@ bool LabelEngine::render(GLWidget *gl)
   list = queue().primitiveList(Primitive::AtomType);
   
   foreach( Primitive *p, list ) {
-    Atom *atom = static_cast<const Atom *>(p);
+    Atom *atom = static_cast<Atom *>(p);
     const Vector3d pos = atom->pos();
 
     double renderRadius = 0.;
@@ -81,6 +81,8 @@ bool LabelEngine::render(GLWidget *gl)
     }
   }
   gl->painter()->endText();
+  
+  return true;
 }
 
 #include "labelengine.moc"

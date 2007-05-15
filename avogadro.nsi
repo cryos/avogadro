@@ -2,7 +2,7 @@
 
 ; The name of the installer
 Name "Avogadro"
-!define VERSION "0.0.3"
+!define VERSION "0.1.0"
 
 ; The file to write
 OutFile "avogadro-${VERSION}.exe"
@@ -36,22 +36,33 @@ Section "Avogadro Core (required)"
   SectionIn RO
   
   SetOutPath $INSTDIR\engines
-  File ${BUILDDIR}\libavogadro\src\engines\release\bsengine.dll
+  File ${BUILDDIR}\libavogadro\src\engines\release\bsdyengine.dll
+  File ${BUILDDIR}\libavogadro\src\engines\release\debugengine.dll
+  File ${BUILDDIR}\libavogadro\src\engines\release\labelengine.dll
+  File ${BUILDDIR}\libavogadro\src\engines\release\sphereengine.dll
+  File ${BUILDDIR}\libavogadro\src\engines\release\stickengine.dll
+  File ${BUILDDIR}\libavogadro\src\engines\release\wireengine.dll
   
-  SetOutPath $INSTDIR\plugins
-  File ${BUILDDIR}\avogadro\src\plugins\release\draw.dll
-  File ${BUILDDIR}\avogadro\src\plugins\release\selectrotate.dll
-  File ${BUILDDIR}\avogadro\src\plugins\release\gamess.dll
-  File ${BUILDDIR}\avogadro\src\plugins\release\ghemical.dll
-  File ${BUILDDIR}\avogadro\src\plugins\release\hydrogens.dll
+  SetOutPath $INSTDIR\tools
+  File ${BUILDDIR}\libavogadro\src\tools\release\clickmeasuretool.dll
+  File ${BUILDDIR}\libavogadro\src\tools\release\drawtool.dll
+  File ${BUILDDIR}\libavogadro\src\tools\release\manipulatetool.dll
+  File ${BUILDDIR}\libavogadro\src\tools\release\navigatetool.dll
+  File ${BUILDDIR}\libavogadro\src\tools\release\selectrotatetool.dll
+
+  SetOutPath $INSTDIR\extensions
+  File ${BUILDDIR}\avogadro\src\extensions\release\gamessextension.dll
+  File ${BUILDDIR}\avogadro\src\extensions\release\ghemicalextension.dll
+  File ${BUILDDIR}\avogadro\src\extensions\release\hydrogensextension.dll
+  File ${BUILDDIR}\avogadro\src\extensions\release\smartsextension.dll
 
   ; Set output path to the installation directory.
   SetOutPath $INSTDIR
   
   ; Put file there
-  File C:\Qt\4.2.2\lib\QtGui4.dll
-  File C:\Qt\4.2.2\lib\QtCore4.dll
-  File C:\Qt\4.2.2\lib\QtOpenGL4.dll
+  File C:\Qt\4.2.3\lib\QtGui4.dll
+  File C:\Qt\4.2.3\lib\QtCore4.dll
+  File C:\Qt\4.2.3\lib\QtOpenGL4.dll
   File C:\openbabel\data\ghemical.prm
   File C:\openbabel\windows-vc2005\OpenBabelDLL\OpenBabel.dll
   File C:\openbabel\windows-vc2005\iconv.dll
@@ -97,12 +108,24 @@ Section "Uninstall"
   DeleteRegKey HKLM SOFTWARE\Avogadro
 
   ; Remove files and uninstaller
-  Delete $INSTDIR\plugins\draw.dll
-  Delete $INSTDIR\plugins\selectrotate.dll
-  Delete $INSTDIR\plugins\hydrogens.dll
-  Delete $INSTDIR\plugins\ghemical.dll
-  Delete $INSTDIR\plugins\gamess.dll
-  Delete $INSTDIR\engines\bsengine.dll
+  Delete $INSTDIR\tools\clickmeasuretool.dll
+  Delete $INSTDIR\tools\drawtool.dll
+  Delete $INSTDIR\tools\manipulatetool.dll
+  Delete $INSTDIR\tools\navigatetool.dll
+  Delete $INSTDIR\tools\selectrotatetool.dll
+	
+  Delete $INSTDIR\extensions\gamessextension.dll
+  Delete $INSTDIR\extensions\ghemicalextension.dll
+  Delete $INSTDIR\extensions\hydrogensextension.dll
+  Delete $INSTDIR\extensions\smartsextension.dll
+
+  Delete $INSTDIR\engines\bsdyengine.dll
+  Delete $INSTDIR\engines\debugengine.dll
+  Delete $INSTDIR\engines\labelengine.dll
+  Delete $INSTDIR\engines\sphereengine.dll
+  Delete $INSTDIR\engines\stickengine.dll
+  Delete $INSTDIR\engines\wireengine.dll
+
   Delete $INSTDIR\QtGui4.dll
   Delete $INSTDIR\QtCore4.dll
   Delete $INSTDIR\QtOpenGL4.dll
@@ -127,7 +150,8 @@ Section "Uninstall"
 
   ; Remove directories used
   RMDir "$SMPROGRAMS\Avogadro"
-  RMDir "$INSTDIR\plugins"
+  RMDir "$INSTDIR\tools"
+  RMDir "$INSTDIR\extensions"
   RMDir "$INSTDIR\engines"
   RMDir "$INSTDIR"
 

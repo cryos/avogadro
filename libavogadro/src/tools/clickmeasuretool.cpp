@@ -192,6 +192,8 @@ bool ClickMeasureTool::paint(GLWidget *widget)
     widget->painter()->endText();
     glPopMatrix();
   }
+
+  return true;
 }
 
 #include "clickmeasuretool.moc"
