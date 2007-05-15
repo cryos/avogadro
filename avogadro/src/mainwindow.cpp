@@ -524,15 +524,7 @@ namespace Avogadro {
       }
     }
 
-    widget = ui.centralTab->currentWidget();
-    foreach(QObject *object, widget->children())
-    {
-      GLWidget *glWidget = qobject_cast<GLWidget *>(object);
-      if(glWidget)
-      {
-        d->glWidget = glWidget;
-      }
-    }
+    setView(ui.centralTab->currentIndex());
   }
 
   void MainWindow::centerView()
