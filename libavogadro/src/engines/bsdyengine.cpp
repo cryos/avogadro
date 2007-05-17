@@ -109,15 +109,11 @@ bool BSDYEngine::render(GLWidget *gl)
 
     atom1 = static_cast<Atom *>(b->GetBeginAtom());
     atom2 = static_cast<Atom *>(b->GetEndAtom());
-    Vector3d w1 (atom1->pos());
-    Vector3d w2 (atom2->pos());
-    Vector3d d = w2 - w1;
+    Vector3d v1 (atom1->pos());
+    Vector3d v2 (atom2->pos());
+    Vector3d d = v2 - v1;
     d.normalize();
-    Vector3d v1 = w1 + d * radius(atom1);
-    Vector3d v2 = w2 - d * radius(atom2);
-    Vector3d v3 (( v1 + v2 ) / 2);
-    v1 -= 0.1 * radius(atom1) * d;
-    v2 += 0.1 * radius(atom2) * d;
+    Vector3d v3 ( (v1 + v2 + d*(radius(atom1)-radius(atom2))) / 2 );
 
     double shift = 0.15;
     int order = b->GetBO();
