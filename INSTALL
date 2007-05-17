@@ -1,27 +1,52 @@
-To build these software versions (or better) are required:
-
+Requirements
+============
  -- CMake 2.4.3
  -- Qt 4.2.0
  -- OpenBabel 2.1
+ -- Eigen 1.0.5
 
-If you do an install of Avogadro it should automatically have the 
-correct paths for loading all the plugins:
 
-$CMAKE_INSTALL_PREFIX/lib/avogadro/{tools|extensions|engines}
+Basic Installation
+==================
+These instructions give a very basic overview of how to configure,
+compile and install Avogadro on most systems.  If you are using unique
+install locations and/or libraries are not automatically detected please
+consult the 'Advanced' section.
 
-You don't have to install avogadro, though. If you are running 
-Avogadro from the build directory you should still setup your environment 
-accordingly.  The important environment variables
-and suggested values are:
+1. Create a 'build' directory in the package source directory.
+   
+   mkdir build
+   cd build
 
-AVOGADRO_TOOLS=$BUILD_DIR/libavogadro/src/tools
-AVOGADRO_ENGINES=$BUILD_DIR/libavogadro/src/engines
-AVOGADRO_EXTENSIONS=$BUILD_DIR/avogadro/src/extensions
+2. Configure the build system
 
-To make you life a bit easier add these lines to your ~/.bashrc
+   cmake ..
 
-export AVOBUILD_DIR=$HOME/build/avo
-export AVOGADRO_TOOLS=$AVOBUILD_DIR/libavogadro/src/tools
-export AVOGADRO_ENGINES=$AVOBUILD_DIR/libavogadro/src/engines
-export AVOGADRO_EXTENSIONS=$AVOBUILD_DIR/avogadro/src/extensions
-alias avo="$AVOBUILD_DIR/avogadro/src/avogadro"
+3. Compile 
+
+   make
+
+4. Install
+   
+   make install
+
+
+Advanced
+========
+The build system (CMake) provides mechanisms for specifying non-standard
+installation locations.
+
+   -DCMAKE_INSTALL_PREFIX : specify the installation prefix 
+                            (default /usr)
+
+   -DLIB_INSTALL_DIR : specify the install location for libraries
+                       (default ${CMAKE_INSTALL_PREFIX}/lib)
+
+   -DOPENBABEL2_LIBRARIES : specify the OpenBabel2 libraries
+
+   -DOPENBABEL2_INCLUDE_DIR : specify the OpenBabel2 include directory
+
+   -DEIGEN_INCLUDE_DIR : specify the Eigen include directory 
+
+For more information please consult the CMake documentation.
+
