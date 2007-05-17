@@ -1,0 +1,1620 @@
+<ui version="4.0" >
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>582</width>
+    <height>367</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Dialog</string>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox" >
+   <property name="geometry" >
+    <rect>
+     <x>410</x>
+     <y>330</y>
+     <width>162</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation" >
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons" >
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>561</width>
+     <height>321</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Periodic Table</string>
+   </property>
+   <widget class="QToolButton" name="toolButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>H</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_2" >
+    <property name="geometry" >
+     <rect>
+      <x>520</x>
+      <y>40</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>He</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_3" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Li</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_4" >
+    <property name="geometry" >
+     <rect>
+      <x>40</x>
+      <y>70</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Be</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_5" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>70</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>B</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_6" >
+    <property name="geometry" >
+     <rect>
+      <x>400</x>
+      <y>70</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>C</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_7" >
+    <property name="geometry" >
+     <rect>
+      <x>430</x>
+      <y>70</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>N</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_8" >
+    <property name="geometry" >
+     <rect>
+      <x>460</x>
+      <y>70</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>O</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_9" >
+    <property name="geometry" >
+     <rect>
+      <x>490</x>
+      <y>70</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>F</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_10" >
+    <property name="geometry" >
+     <rect>
+      <x>520</x>
+      <y>70</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ne</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_11" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Na</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_12" >
+    <property name="geometry" >
+     <rect>
+      <x>40</x>
+      <y>100</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Mg</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_13" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>100</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Al</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_14" >
+    <property name="geometry" >
+     <rect>
+      <x>400</x>
+      <y>100</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Si</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_15" >
+    <property name="geometry" >
+     <rect>
+      <x>430</x>
+      <y>100</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>P</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_16" >
+    <property name="geometry" >
+     <rect>
+      <x>460</x>
+      <y>100</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>S</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_17" >
+    <property name="geometry" >
+     <rect>
+      <x>490</x>
+      <y>100</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Cl</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_18" >
+    <property name="geometry" >
+     <rect>
+      <x>520</x>
+      <y>100</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ar</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_19" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>K</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_20" >
+    <property name="geometry" >
+     <rect>
+      <x>40</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ca</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_21" >
+    <property name="geometry" >
+     <rect>
+      <x>70</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Sc</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_22" >
+    <property name="geometry" >
+     <rect>
+      <x>100</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ti</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_23" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>V</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_24" >
+    <property name="geometry" >
+     <rect>
+      <x>160</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Cr</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_25" >
+    <property name="geometry" >
+     <rect>
+      <x>190</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Mn</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_26" >
+    <property name="geometry" >
+     <rect>
+      <x>220</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Fe</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_27" >
+    <property name="geometry" >
+     <rect>
+      <x>250</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Co</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_28" >
+    <property name="geometry" >
+     <rect>
+      <x>280</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ni</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_29" >
+    <property name="geometry" >
+     <rect>
+      <x>310</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Cu</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_30" >
+    <property name="geometry" >
+     <rect>
+      <x>340</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Zn</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_31" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ga</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_32" >
+    <property name="geometry" >
+     <rect>
+      <x>400</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ge</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_33" >
+    <property name="geometry" >
+     <rect>
+      <x>430</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>As</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_34" >
+    <property name="geometry" >
+     <rect>
+      <x>460</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Se</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_35" >
+    <property name="geometry" >
+     <rect>
+      <x>490</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Br</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_36" >
+    <property name="geometry" >
+     <rect>
+      <x>520</x>
+      <y>130</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Kr</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_37" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Rb</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_38" >
+    <property name="geometry" >
+     <rect>
+      <x>40</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Sr</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_39" >
+    <property name="geometry" >
+     <rect>
+      <x>70</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Y</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_40" >
+    <property name="geometry" >
+     <rect>
+      <x>100</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Zr</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_41" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Nb</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_42" >
+    <property name="geometry" >
+     <rect>
+      <x>160</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Mo</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_43" >
+    <property name="geometry" >
+     <rect>
+      <x>190</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Tc</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_44" >
+    <property name="geometry" >
+     <rect>
+      <x>220</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ru</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_45" >
+    <property name="geometry" >
+     <rect>
+      <x>250</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Rh</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_46" >
+    <property name="geometry" >
+     <rect>
+      <x>280</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Pd</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_47" >
+    <property name="geometry" >
+     <rect>
+      <x>310</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ag</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_48" >
+    <property name="geometry" >
+     <rect>
+      <x>340</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Cd</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_49" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>In</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_50" >
+    <property name="geometry" >
+     <rect>
+      <x>400</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Sn</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_51" >
+    <property name="geometry" >
+     <rect>
+      <x>430</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Sb</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_52" >
+    <property name="geometry" >
+     <rect>
+      <x>460</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Te</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_53" >
+    <property name="geometry" >
+     <rect>
+      <x>490</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>I</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_54" >
+    <property name="geometry" >
+     <rect>
+      <x>520</x>
+      <y>160</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Xe</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_55" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Cs</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_56" >
+    <property name="geometry" >
+     <rect>
+      <x>40</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ba</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_57" >
+    <property name="geometry" >
+     <rect>
+      <x>70</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>La</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_58" >
+    <property name="geometry" >
+     <rect>
+      <x>100</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ce</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_59" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Pr</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_60" >
+    <property name="geometry" >
+     <rect>
+      <x>160</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Nd</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_61" >
+    <property name="geometry" >
+     <rect>
+      <x>190</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Pm</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_62" >
+    <property name="geometry" >
+     <rect>
+      <x>220</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Sm</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_63" >
+    <property name="geometry" >
+     <rect>
+      <x>250</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Eu</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_64" >
+    <property name="geometry" >
+     <rect>
+      <x>280</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Gd</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_65" >
+    <property name="geometry" >
+     <rect>
+      <x>310</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Tb</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_66" >
+    <property name="geometry" >
+     <rect>
+      <x>340</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Dy</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_67" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ho</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_68" >
+    <property name="geometry" >
+     <rect>
+      <x>400</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Er</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_69" >
+    <property name="geometry" >
+     <rect>
+      <x>430</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Tm</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_70" >
+    <property name="geometry" >
+     <rect>
+      <x>460</x>
+      <y>250</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Yb</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_71" >
+    <property name="geometry" >
+     <rect>
+      <x>70</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Lu</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_72" >
+    <property name="geometry" >
+     <rect>
+      <x>100</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Hf</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_73" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ta</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_74" >
+    <property name="geometry" >
+     <rect>
+      <x>160</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>W</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_75" >
+    <property name="geometry" >
+     <rect>
+      <x>190</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Re</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_76" >
+    <property name="geometry" >
+     <rect>
+      <x>220</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Os</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_77" >
+    <property name="geometry" >
+     <rect>
+      <x>250</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ir</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_78" >
+    <property name="geometry" >
+     <rect>
+      <x>280</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Pt</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_79" >
+    <property name="geometry" >
+     <rect>
+      <x>310</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Au</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_80" >
+    <property name="geometry" >
+     <rect>
+      <x>340</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Hg</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_81" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Tl</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_82" >
+    <property name="geometry" >
+     <rect>
+      <x>400</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Pb</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_83" >
+    <property name="geometry" >
+     <rect>
+      <x>430</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Bi</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_84" >
+    <property name="geometry" >
+     <rect>
+      <x>460</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Po</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_85" >
+    <property name="geometry" >
+     <rect>
+      <x>490</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>At</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_86" >
+    <property name="geometry" >
+     <rect>
+      <x>520</x>
+      <y>190</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Rn</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_87" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Fr</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_88" >
+    <property name="geometry" >
+     <rect>
+      <x>40</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ra</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_89" >
+    <property name="geometry" >
+     <rect>
+      <x>70</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ac</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_90" >
+    <property name="geometry" >
+     <rect>
+      <x>100</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Th</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_91" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Pa</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_92" >
+    <property name="geometry" >
+     <rect>
+      <x>160</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>U</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_93" >
+    <property name="geometry" >
+     <rect>
+      <x>190</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Np</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_94" >
+    <property name="geometry" >
+     <rect>
+      <x>220</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Pu</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_95" >
+    <property name="geometry" >
+     <rect>
+      <x>250</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Am</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_96" >
+    <property name="geometry" >
+     <rect>
+      <x>280</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Cm</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_97" >
+    <property name="geometry" >
+     <rect>
+      <x>310</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Bk</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_98" >
+    <property name="geometry" >
+     <rect>
+      <x>340</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Cf</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_99" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Es</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_100" >
+    <property name="geometry" >
+     <rect>
+      <x>400</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Fm</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_101" >
+    <property name="geometry" >
+     <rect>
+      <x>430</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Md</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_102" >
+    <property name="geometry" >
+     <rect>
+      <x>460</x>
+      <y>280</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>No</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_103" >
+    <property name="geometry" >
+     <rect>
+      <x>70</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Lr</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_104" >
+    <property name="geometry" >
+     <rect>
+      <x>100</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Rf</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_105" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Db</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_106" >
+    <property name="geometry" >
+     <rect>
+      <x>160</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Sg</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_107" >
+    <property name="geometry" >
+     <rect>
+      <x>190</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Bh</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_108" >
+    <property name="geometry" >
+     <rect>
+      <x>220</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Hs</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_109" >
+    <property name="geometry" >
+     <rect>
+      <x>250</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Mt</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_110" >
+    <property name="geometry" >
+     <rect>
+      <x>280</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Ds</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_111" >
+    <property name="geometry" >
+     <rect>
+      <x>310</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Rg</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_112" >
+    <property name="geometry" >
+     <rect>
+      <x>340</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Uub</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_113" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Uut</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_114" >
+    <property name="geometry" >
+     <rect>
+      <x>400</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Uuq</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_115" >
+    <property name="geometry" >
+     <rect>
+      <x>430</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Uup</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_116" >
+    <property name="geometry" >
+     <rect>
+      <x>460</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Uuh</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_117" >
+    <property name="enabled" >
+     <bool>false</bool>
+    </property>
+    <property name="geometry" >
+     <rect>
+      <x>490</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Uus</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_118" >
+    <property name="enabled" >
+     <bool>false</bool>
+    </property>
+    <property name="geometry" >
+     <rect>
+      <x>520</x>
+      <y>220</y>
+      <width>25</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Uuo</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Dialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Dialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
