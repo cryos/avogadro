@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>krazy Analysis</title>
+</head>
+<body>
+<h1>krazy Analysis</h1>
+<p>Checkers Run = 22<br>
+Total Issues = 42 ...as of Mai 18 2007 19:41:27</p>
+<ol>
+<li>Check for TRUE and FALSE macros... 
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	CMakeLists.txt: TRUE: line#1 (1) FALSE:  (0)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	The TRUE and FALSE macros are obsolete and should be replaced with
+	true and false (all lower case) respectively.</p>
+</li>
+
+<li>Check for methods that return 'const' references in public classes... 
+<b>okay!</b>
+<li>Check for contractions in strings... 
+<b>okay!</b>
+<li>Check for an acceptable copyright... 
+<b>OOPS! 33 issues found!</b>
+<ul>
+<li>	camera.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	camera.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	CMakeLists.txt: missing tags: copyright  (1)
+</li>
+<li>	color.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+</li>
+<li>	color.h: missing tags: email address(line 4) email address(line 5)  (2)
+</li>
+<li>	cylinder.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	cylinder.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	engine.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	engine.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	global.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	glwidget.cpp: missing tags: email address(line 4) email address(line 5) email address(line 6)  (3)
+</li>
+<li>	glwidget.h: missing tags: email address(line 4) email address(line 5)  (2)
+</li>
+<li>	moleculetreeview.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	moleculetreeview.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	painter.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	painter.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	primitive.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	primitive.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	sphere.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	sphere.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	textrenderer.cpp: missing tags: email address(line 5)  (1)
+</li>
+<li>	textrenderer.h: missing tags: email address(line 5)  (1)
+</li>
+<li>	tool.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	toolgroup.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	toolgroup.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	tool.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	undosequence.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	undosequence.h: missing tags: email address(line 4)  (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	All source files must contain a copyright header which identifies
+	the copyright holder(s) together with a e-mail address that can be
+	used to reach the copyright holder.  One copyright holder per line,
+	with real email addresses please. For details regarding KDE&#39;s
+	licensing policy please visit
+	<a href="http://techbase.kde.org/Policies/Licensing_Policy">http://techbase.kde.org/Policies/Licensing_Policy</a>.  A typical
+	copyright looks like: &quot;Copyright 2002,2005-2006 Joe Hacker
+	&lt;joe.hacker@kde.org&gt;&quot;</p>
+</li>
+
+<li>Check for adding single char string to a QString... 
+<b>okay!</b>
+<li>Check for unwanted doxygen tags in major versions... 
+<b>okay!</b>
+<li>Check for public classes with private members or d-pointer problems... 
+<b>okay!</b>
+<li>Check for QString compares to ""... 
+<b>okay!</b>
+<li>Check that file ends with a newline... 
+<b>okay!</b>
+<li>Check for C++ ctors that should be declared 'explicit'... 
+<b>okay!</b>
+<li>Check validity of i18n calls... 
+<b>okay!</b>
+<li>Check for proper include directives... 
+<b>OOPS! 7 issues found!</b>
+<ul>
+<li>	camera.cpp: put config.h in angle brackets line#25
+</li>
+<li>	color.cpp: put config.h in angle brackets line#26
+</li>
+<li>	glwidget.cpp: put config.h in angle brackets line#27
+</li>
+<li>	moleculetreeview.cpp: put config.h in angle brackets line#25
+</li>
+<li>	painter.cpp: put config.h in angle brackets line#25
+</li>
+<li>	primitive.cpp: put config.h in angle brackets line#25
+</li>
+<li>	toolgroup.cpp: put config.h in angle brackets line#25
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
+	Qt headers from installed headers; cpp file should include their
+	own headers first; other rules apply, see
+	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right</a></p>
+</li>
+
+<li>Check for inline methods in public classes... 
+<b>okay!</b>
+<li>Check for an acceptable license... 
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	CMakeLists.txt: missing license
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Each source file must contain a license or a reference to a license
+	which states under which terms the software may be used, modified
+	and redistributed.  For details regarding KDE&#39;s licensing policy
+	please visit <a href="http://techbase.kde.org/Policies/Licensing_Policy">http://techbase.kde.org/Policies/Licensing_Policy</a>.</p>
+</li>
+
+<li>Check for assignments to QString::null... 
+<b>okay!</b>
+<li>Check for compares to QString::null... 
+<b>okay!</b>
+<li>Check for inappropriate pass-by-value function args... 
+<b>okay!</b>
+<li>Check for Qt classes that should not be used... 
+<b>okay!</b>
+<li>Check for QMIN and QMAX macros... 
+<b>okay!</b>
+<li>Check for classes that should use the 'Q_OBJECT' macro... 
+<b>okay!</b>
+<li>Check for signals: and slots:... 
+<b>okay!</b>
+<li>Check for spelling errors... 
+<b>okay!</b>
+</ol>
+</body>
+</html>
