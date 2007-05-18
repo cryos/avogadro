@@ -6,12 +6,12 @@
 <body>
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 22<br>
-Total Issues = 53 ...as of Mai 18 2007 19:29:29</p>
+Total Issues = 53 ...as of Mai 18 2007 20:35:37</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>OOPS! 2 issues found!</b>
 <ul>
-<li>	CMakeLists.txt: TRUE: line#1,4 (2) FALSE:  (0)
+<li>	../avogadro/src/CMakeLists.txt: TRUE: line#1,4 (2) FALSE:  (0)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	The TRUE and FALSE macros are obsolete and should be replaced with
@@ -25,41 +25,41 @@ Total Issues = 53 ...as of Mai 18 2007 19:29:29</p>
 <li>Check for an acceptable copyright... 
 <b>OOPS! 25 issues found!</b>
 <ul>
-<li>	application.cpp: missing tags: email address(line 4)  (1)
+<li>	../avogadro/src/application.cpp: missing tags: email address(line 4)  (1)
 </li>
-<li>	application.h: missing tags: email address(line 4)  (1)
+<li>	../avogadro/src/application.h: missing tags: email address(line 4)  (1)
 </li>
-<li>	avogadro.qrc: missing tags: copyright  (1)
+<li>	../avogadro/src/avogadro.qrc: missing tags: copyright  (1)
 </li>
-<li>	CMakeLists.txt: missing tags: copyright  (1)
+<li>	../avogadro/src/CMakeLists.txt: missing tags: copyright  (1)
 </li>
-<li>	editcommands.cpp: missing tags: email address(line 4)  (1)
+<li>	../avogadro/src/editcommands.cpp: missing tags: email address(line 4)  (1)
 </li>
-<li>	editcommands.h: missing tags: email address(line 4)  (1)
+<li>	../avogadro/src/editcommands.h: missing tags: email address(line 4)  (1)
 </li>
-<li>	elementcombobox.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/elementcombobox.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	elementcombobox.h: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/elementcombobox.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	enginelistview.cpp: missing tags: email address(line 4)  (1)
+<li>	../avogadro/src/enginelistview.cpp: missing tags: email address(line 4)  (1)
 </li>
-<li>	enginelistview.h: missing tags: email address(line 4)  (1)
+<li>	../avogadro/src/enginelistview.h: missing tags: email address(line 4)  (1)
 </li>
-<li>	extension.h: missing tags: email address(line 4)  (1)
+<li>	../avogadro/src/extension.h: missing tags: email address(line 4)  (1)
 </li>
-<li>	flattabwidget.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/flattabwidget.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	flattabwidget.h: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/flattabwidget.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	flowlayout.cpp: missing tags: email address(line 4)  (1)
+<li>	../avogadro/src/flowlayout.cpp: missing tags: email address(line 4)  (1)
 </li>
-<li>	main.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/main.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	mainwindow.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/mainwindow.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	mainwindow.h: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/mainwindow.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	mainwindow.ui: missing tags: copyright  (1)
+<li>	../avogadro/src/mainwindow.ui: missing tags: copyright  (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	All source files must contain a copyright header which identifies
@@ -85,7 +85,7 @@ Total Issues = 53 ...as of Mai 18 2007 19:29:29</p>
 <li>Check for C++ ctors that should be declared 'explicit'... 
 <b>OOPS! 1 issue found!</b>
 <ul>
-<li>	flowlayout.h: line#35 (1)
+<li>	../avogadro/src/flowlayout.h: line#35 (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
@@ -99,15 +99,15 @@ Total Issues = 53 ...as of Mai 18 2007 19:29:29</p>
 <li>Check for proper include directives... 
 <b>OOPS! 5 issues found!</b>
 <ul>
-<li>	aboutdialog.cpp: include own header first line#29
+<li>	../avogadro/src/aboutdialog.cpp: include own header first line#29
 </li>
-<li>	flowlayout.cpp: do not include QtModules line#25(QtGui)
+<li>	../avogadro/src/flowlayout.cpp: do not include QtModules line#25(QtGui)
 </li>
-<li>	flowlayout.cpp: include own header first line#27
+<li>	../avogadro/src/flowlayout.cpp: include own header first line#27
 </li>
-<li>	mainwindow.cpp: include own header first line#25
+<li>	../avogadro/src/mainwindow.cpp: include own header first line#25
 </li>
-<li>	mainwindow.cpp: put config.h in angle brackets line#23
+<li>	../avogadro/src/mainwindow.cpp: put config.h in angle brackets line#23
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
@@ -123,11 +123,11 @@ Total Issues = 53 ...as of Mai 18 2007 19:29:29</p>
 <li>Check for an acceptable license... 
 <b>OOPS! 3 issues found!</b>
 <ul>
-<li>	avogadro.qrc: missing license
+<li>	../avogadro/src/avogadro.qrc: missing license
 </li>
-<li>	CMakeLists.txt: missing license
+<li>	../avogadro/src/CMakeLists.txt: missing license
 </li>
-<li>	mainwindow.ui: missing license
+<li>	../avogadro/src/mainwindow.ui: missing license
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Each source file must contain a license or a reference to a license
@@ -143,7 +143,7 @@ Total Issues = 53 ...as of Mai 18 2007 19:29:29</p>
 <li>Check for inappropriate pass-by-value function args... 
 <b>OOPS! 1 issue found!</b>
 <ul>
-<li>	flattabwidget.cpp: line#59[QString]
+<li>	../avogadro/src/flattabwidget.cpp: line#59[QString]
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
@@ -154,11 +154,11 @@ Total Issues = 53 ...as of Mai 18 2007 19:29:29</p>
 <li>Check for Qt classes that should not be used... 
 <b>OOPS! 15 issues found!</b>
 <ul>
-<li>	enginelistview.cpp: QDialog[KDialog] (1)
+<li>	../avogadro/src/enginelistview.cpp: QDialog[KDialog] (1)
 </li>
-<li>	main.cpp: QMessageBox[KMessageBox] (1)
+<li>	../avogadro/src/main.cpp: QMessageBox[KMessageBox] (1)
 </li>
-<li>	mainwindow.cpp: QFileDialog[KFileDialog],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QColorDialog[KColorDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox] (13)
+<li>	../avogadro/src/mainwindow.cpp: QFileDialog[KFileDialog],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QColorDialog[KColorDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox] (13)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use the KDE version of some Qt GUI elements to provide a consistent
@@ -176,7 +176,7 @@ Total Issues = 53 ...as of Mai 18 2007 19:29:29</p>
 <li>Check for spelling errors... 
 <b>OOPS! 1 issue found!</b>
 <ul>
-<li>	extension.h: line#53[recieves] (1)
+<li>	../avogadro/src/extension.h: line#53[recieves] (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may

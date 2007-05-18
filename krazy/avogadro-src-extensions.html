@@ -6,12 +6,12 @@
 <body>
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 22<br>
-Total Issues = 42 ...as of Mai 18 2007 19:32:19</p>
+Total Issues = 42 ...as of Mai 18 2007 20:36:23</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>OOPS! 1 issue found!</b>
 <ul>
-<li>	CMakeLists.txt: TRUE: line#1 (1) FALSE:  (0)
+<li>	../avogadro/src/extensions/CMakeLists.txt: TRUE: line#1 (1) FALSE:  (0)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	The TRUE and FALSE macros are obsolete and should be replaced with
@@ -25,33 +25,33 @@ Total Issues = 42 ...as of Mai 18 2007 19:32:19</p>
 <li>Check for an acceptable copyright... 
 <b>OOPS! 25 issues found!</b>
 <ul>
-<li>	CMakeLists.txt: missing tags: copyright  (1)
+<li>	../avogadro/src/extensions/CMakeLists.txt: missing tags: copyright  (1)
 </li>
-<li>	gamessextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/extensions/gamessextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	gamessextension.h: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/extensions/gamessextension.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	gamessinputdata.cpp: missing tags: copyright  (1)
+<li>	../avogadro/src/extensions/gamessinputdata.cpp: missing tags: copyright  (1)
 </li>
-<li>	gamessinputdata.h: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/extensions/gamessinputdata.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	gamessinputdialog.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/extensions/gamessinputdialog.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	gamessinputdialog.h: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/extensions/gamessinputdialog.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	gamessinputdialog.ui: missing tags: copyright  (1)
+<li>	../avogadro/src/extensions/gamessinputdialog.ui: missing tags: copyright  (1)
 </li>
-<li>	ghemicalextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/extensions/ghemicalextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	ghemicalextension.h: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/extensions/ghemicalextension.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	hydrogensextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/extensions/hydrogensextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	hydrogensextension.h: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/extensions/hydrogensextension.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	smartsextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/extensions/smartsextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	smartsextension.h: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../avogadro/src/extensions/smartsextension.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	All source files must contain a copyright header which identifies
@@ -77,7 +77,7 @@ Total Issues = 42 ...as of Mai 18 2007 19:32:19</p>
 <li>Check for C++ ctors that should be declared 'explicit'... 
 <b>OOPS! 1 issue found!</b>
 <ul>
-<li>	gamessinputdialog.h: line#41 (1)
+<li>	../avogadro/src/extensions/gamessinputdialog.h: line#41 (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
@@ -91,13 +91,13 @@ Total Issues = 42 ...as of Mai 18 2007 19:32:19</p>
 <li>Check for proper include directives... 
 <b>OOPS! 4 issues found!</b>
 <ul>
-<li>	gamessextension.cpp: do not include QtModules line#31(QtGui)
+<li>	../avogadro/src/extensions/gamessextension.cpp: do not include QtModules line#31(QtGui)
 </li>
-<li>	ghemicalextension.cpp: do not include QtModules line#28(QtGui)
+<li>	../avogadro/src/extensions/ghemicalextension.cpp: do not include QtModules line#28(QtGui)
 </li>
-<li>	hydrogensextension.cpp: do not include QtModules line#30(QtGui)
+<li>	../avogadro/src/extensions/hydrogensextension.cpp: do not include QtModules line#30(QtGui)
 </li>
-<li>	smartsextension.cpp: do not include QtModules line#29(QtGui)
+<li>	../avogadro/src/extensions/smartsextension.cpp: do not include QtModules line#29(QtGui)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
@@ -113,11 +113,11 @@ Total Issues = 42 ...as of Mai 18 2007 19:32:19</p>
 <li>Check for an acceptable license... 
 <b>OOPS! 3 issues found!</b>
 <ul>
-<li>	CMakeLists.txt: missing license
+<li>	../avogadro/src/extensions/CMakeLists.txt: missing license
 </li>
-<li>	gamessinputdata.cpp: missing license
+<li>	../avogadro/src/extensions/gamessinputdata.cpp: missing license
 </li>
-<li>	gamessinputdialog.ui: missing license
+<li>	../avogadro/src/extensions/gamessinputdialog.ui: missing license
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Each source file must contain a license or a reference to a license
@@ -135,9 +135,9 @@ Total Issues = 42 ...as of Mai 18 2007 19:32:19</p>
 <li>Check for Qt classes that should not be used... 
 <b>OOPS! 4 issues found!</b>
 <ul>
-<li>	gamessinputdialog.cpp: QMessageBox[KMessageBox],QMessageBox[KMessageBox],QFileDialog[KFileDialog] (3)
+<li>	../avogadro/src/extensions/gamessinputdialog.cpp: QMessageBox[KMessageBox],QMessageBox[KMessageBox],QFileDialog[KFileDialog] (3)
 </li>
-<li>	smartsextension.cpp: QInputDialog[KInputDialog] (1)
+<li>	../avogadro/src/extensions/smartsextension.cpp: QInputDialog[KInputDialog] (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use the KDE version of some Qt GUI elements to provide a consistent
@@ -155,13 +155,13 @@ Total Issues = 42 ...as of Mai 18 2007 19:32:19</p>
 <li>Check for spelling errors... 
 <b>OOPS! 4 issues found!</b>
 <ul>
-<li>	gamessinputdata.cpp: line#1883[funtional] (1)
+<li>	../avogadro/src/extensions/gamessinputdata.cpp: line#1883[funtional] (1)
 </li>
-<li>	ghemicalextension.cpp: line#102[recieved] (1)
+<li>	../avogadro/src/extensions/ghemicalextension.cpp: line#102[recieved] (1)
 </li>
-<li>	hydrogensextension.cpp: line#104[recieved] (1)
+<li>	../avogadro/src/extensions/hydrogensextension.cpp: line#104[recieved] (1)
 </li>
-<li>	smartsextension.cpp: line#112[recieved] (1)
+<li>	../avogadro/src/extensions/smartsextension.cpp: line#112[recieved] (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may
