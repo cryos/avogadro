@@ -251,16 +251,16 @@ namespace Avogadro {
       if(beginAtom)
         str += QString::number(beginAtom->GetIdx());
       else
-        str += "-";
+        str += '-';
 
-      str += ",";
+      str += ',';
 
       if(endAtom)
         str += QString::number(endAtom->GetIdx());
       else
-        str += "-";
+        str += '-';
 
-      str += ")";
+      str += ')';
 
     }
     else if(type == Primitive::ResidueType)

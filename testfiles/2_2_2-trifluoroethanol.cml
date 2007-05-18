@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema/cml2/core" id="CS_2_2_2-trifluoroethanol">
+ <formula concise=" C 2 H 3 O 1 F 3 "/>
+ <identifier version="InChI/1">
+  <basic>1/C2H3F3O/c3-2(4,5)1-6/h6H,1H2</basic>
+ </identifier>
+ <name convention="IUPAC">2,2,2-Trifluoroethanol</name>
+ <atomArray>
+  <atom id="a1" elementType="C" x3="-0.878015" y3="0.256868" z3="0.350970"/>
+  <atom id="a2" elementType="C" x3="0.395732" y3="-0.397122" z3="-0.293557"/>
+  <atom id="a3" elementType="F" x3="-1.973668" y3="-0.530468" z3="0.256637"/>
+  <atom id="a4" elementType="F" x3="-0.754889" y3="0.522325" z3="1.667765"/>
+  <atom id="a5" elementType="F" x3="-1.242532" y3="1.426143" z3="-0.214279"/>
+  <atom id="a6" elementType="H" x3="0.609445" y3="-1.357927" z3="0.210917"/>
+  <atom id="a7" elementType="O" x3="1.431936" y3="0.527464" z3="-0.112676"/>
+  <atom id="a8" elementType="H" x3="0.203485" y3="-0.595370" z3="-1.364542"/>
+  <atom id="a9" elementType="H" x3="2.208505" y3="0.148087" z3="-0.501236"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2="a1 a2" order="1"/>
+  <bond atomRefs2="a1 a3" order="1"/>
+  <bond atomRefs2="a1 a4" order="1"/>
+  <bond atomRefs2="a1 a5" order="1"/>
+  <bond atomRefs2="a2 a6" order="1"/>
+  <bond atomRefs2="a2 a7" order="1"/>
+  <bond atomRefs2="a2 a8" order="1"/>
+  <bond atomRefs2="a7 a9" order="1"/>
+ </bondArray>
+ <list>
+  <propertyList>
+   <property dictRef="cml:molwt" title="molecular weight">
+    <scalar dataType="xsd:decimal" dictRef="cml:molwt" units="unit:g">100.0398</scalar>
+   </property>
+   <property dictRef="chemwt:exact_molwt" title="exact molecular weight">
+    <scalar dataType="xsd:decimal" dictRef="chemwt:exact_molwt" units="unit:g">100.0135994</scalar>
+   </property>
+   <property dictRef="cml:mpt" title="melting point">
+    <scalar dataType="xsd:decimal" errorValue="1.0" dictRef="cml:mpt" units="unit:celsius">-45</scalar>
+   </property>
+   <property dictRef="cml:bpt" title="boiling point">
+    <scalar dataType="xsd:decimal" errorValue="2.0" dictRef="cml:bpt" units="unit:celsius">76</scalar>
+   </property>
+  </propertyList>
+ </list>
+</molecule>
