@@ -41,7 +41,7 @@ namespace Avogadro {
     * Each GLWidget has a Painter which you can get by calling GLWidget::painter().
     *
     * The motivation for having a centralized Painter class is that it allows for global
-    * quality control. Just call setGlobalQualitySetting() to adjust the quality setting.
+    * quality control. Just call setQuality() to adjust the quality setting.
     *
     * Another nice thing is that it handles level-of-detail computation, so that
     * you can just call drawSphere(center,radius) and the Painter automatically
@@ -60,7 +60,7 @@ namespace Avogadro {
   class A_EXPORT Painter
   {
     public:
-      Painter();
+      Painter(int quality=-1);
       ~Painter();
 
       /** sets the GLWidget in which we are painting.
@@ -69,23 +69,23 @@ namespace Avogadro {
         * the default font set by the user's desktop environment). Multiple-font
         * text rendering is currently unsupported.
         */
-      void setGLWidget( GLWidget * widget );
+//       void setGLWidget( GLWidget * widget );
       
       /** sets the global quality setting. This influences the detail level of the
         * geometric objects (spheres and cylinders). Values range from 0 to
         * PAINTER_GLOBAL_QUALITY_SETTINGS-1.
         */
-      void setGlobalQualitySetting( int globalQualitySetting );
+      void setQuality( int quality );
       
       /** @returns the current global quality setting.
         */
-      int globalQualitySetting() const;
+      int quality() const;
       
       /** You have to call this once, typically in the GLWidget::initializeGL() function.
-        * It calls setGLWidget() and setGlobalQualitySetting(), and marks this Painter
+        * It calls setGLWidget() and setQuality(), and marks this Painter
         * as initialized and ready for painting.
         */
-      void initialize( GLWidget * widget, int globalQualitySetting );
+//       void initialize( GLWidget * widget, int quality=-1 );
 
       /** Draws a sphere with prescribed detail level. The effective detail level
         * is still influenced by the global quality setting. The \a detailLevel argument
@@ -174,7 +174,7 @@ namespace Avogadro {
           double radius, int order, double shift ) const;
 
       /** Draws text at a given window position, on top of the scene.
-        * @note Calls to drawText methods must be enclosed between beginText() and endText().
+        * @note Calls to drawText methods must be enclosed between begin() and end().
         * @note Text is rendered as a transparent object, and should therefore be rendered after
         *       the opaque objects.
         * @param x,y the window coordinates of the top-left corner of the text to render.
@@ -183,13 +183,13 @@ namespace Avogadro {
         *               superposed characters are not supported yet. For accented letters,
         *               use a character giving the whole accented letter, not a separate
         *               character for the accent.
-        * @sa beginText(), drawText( const Eigen::Vector3d &, const QString &) const,
+        * @sa begin(), drawText( const Eigen::Vector3d &, const QString &) const,
         *     drawText( const QPoint &, const QString & ) const
         */
       int drawText( int x, int y, const QString &string ) const;
       
       /** Draws text at a given window position, on top of the scene.
-        * @note Calls to drawText methods must be enclosed between beginText() and endText().
+        * @note Calls to drawText methods must be enclosed between begin() and endText().
         * @note Text is rendered as a transparent object, and should therefore be rendered after
         *       the opaque objects.
         * @param pos the window coordinates of the top-left corner of the text to render.
@@ -198,13 +198,13 @@ namespace Avogadro {
         *               superposed characters are not supported yet. For accented letters,
         *               use a character giving the whole accented letter, not a separate
         *               character for the accent.
-        * @sa beginText(), drawText( const Eigen::Vector3d &, const QString &) const,
+        * @sa begin(), drawText( const Eigen::Vector3d &, const QString &) const,
         *     drawText( int, int, const QString & ) const
         */
       int drawText( const QPoint& pos, const QString &string ) const;
       
       /** Draws text at a given scene position, inside the scene.
-        * @note Calls to drawText methods must be enclosed between beginText() and endText().
+        * @note Calls to drawText methods must be enclosed between begin() and endText().
         * @note Text is rendered as a transparent object, and should therefore be rendered after
         *       the opaque objects.
         * @param pos the scene coordinates of the top-left corner of the text to render.
@@ -212,7 +212,7 @@ namespace Avogadro {
         *               superposed characters are not supported yet. For accented letters,
         *               use a character giving the whole accented letter, not a separate
         *               character for the accent.
-        * @sa beginText(), drawText( const QPoint&, const QString &) const,
+        * @sa begin(), drawText( const QPoint&, const QString &) const,
         *     drawText( int, int, const QString & ) const
         */
       int drawText( const Eigen::Vector3d & pos, const QString &string ) const;
@@ -223,11 +223,20 @@ namespace Avogadro {
         * as well as modifying the modelview matrix.
         * @sa endText()
         */
-      void beginText() const;
+      void begin(GLWidget *widget);
       /** Leave text-drawing mode.
-        * @sa beginText()
+        * @sa begin()
         */
-      void endText() const;
+      void end();
+
+
+      static int defaultQuality();
+      static int maxQuality();
+
+      bool isShared();
+
+      void incrementShared();
+      void decrementShared();
 
     private:
       PainterPrivate * const d;

@@ -25,6 +25,7 @@
 #include "mainwindow.h"
 #include "aboutdialog.h"
 #include "editcommands.h"
+#include "settingsdialog.h"
 
 #include <avogadro/extension.h>
 #include <avogadro/primitive.h>
@@ -59,7 +60,9 @@ namespace Avogadro {
     public:
       MainWindowPrivate() : molecule(0), 
       undoStack(0), toolsFlow(0), toolSettingsStacked(0), messagesText(0),
-      toolGroup(0) {}
+      toolGroup(0),
+      settingsDialog(0)
+      {}
 
       Molecule  *molecule;
 
@@ -71,11 +74,14 @@ namespace Avogadro {
 
       QTextEdit *messagesText;
 
+      Painter *glPainter;
       QList<GLWidget *> glWidgets;
       GLWidget *glWidget;
 
       ToolGroup *toolGroup;
       QAction    *actionRecentFile[MainWindow::maxRecentFiles];
+
+      SettingsDialog *settingsDialog;
   };
 
   MainWindow::MainWindow() : QMainWindow(0), d(new MainWindowPrivate)
@@ -127,6 +133,8 @@ namespace Avogadro {
 
     d->glWidgets.append(ui.glWidget);
     d->glWidget = ui.glWidget;
+    d->glPainter = new Painter();
+    ui.glWidget->setPainter(d->glPainter);
     ui.glWidget->setToolGroup(d->toolGroup);
     ui.glWidget->setUndoStack(d->undoStack);
 
@@ -321,7 +329,7 @@ namespace Avogadro {
   {
     d->glWidget = d->glWidgets.at(index);
     ui.enginesList->setGLWidget(d->glWidget);
-    d->glWidget->makeCurrent();
+//     d->glWidget->makeCurrent();
   }
 
   void MainWindow::paste()
@@ -481,12 +489,26 @@ namespace Avogadro {
     d->glWidget->update();
   }
 
+  void MainWindow::setPainterQuality(int quality)
+  {
+    d->glPainter->setQuality(quality);
+    d->glWidget->update();
+  }
+
+  int MainWindow::painterQuality()
+  {
+    return d->glPainter->quality();
+  }
+
   void MainWindow::newView()
   {
     QWidget *widget = new QWidget();
     QVBoxLayout *layout = new QVBoxLayout(widget);
-    GLWidget *glWidget = new GLWidget();
+
+    GLWidget *glWidget = new GLWidget(d->glWidget->format(), this, d->glWidget);
     glWidget->setObjectName(tr("GLWidget"));
+    glWidget->setPainter(d->glPainter);
+
     layout->addWidget(glWidget);
     layout->setMargin(0);
     layout->setSpacing(6);
@@ -547,6 +569,15 @@ namespace Avogadro {
       ui.fileToolBar->show();
       statusBar()->show();
     }
+  }
+
+  void MainWindow::showSettingsDialog()
+  {
+    if(!d->settingsDialog)
+    {
+      d->settingsDialog = new SettingsDialog(this);
+    }
+    d->settingsDialog->show();
   }
 
   void MainWindow::setBackgroundColor()
@@ -632,6 +663,9 @@ namespace Avogadro {
     connect(ui.actionAbout, SIGNAL(triggered()), this, SLOT(about()));
 
     connect(ui.centralTab, SIGNAL(currentChanged(int)), this, SLOT(setView(int)));
+
+    connect(ui.configureAvogadroAction, SIGNAL(triggered()), 
+        this, SLOT(showSettingsDialog()));
 
   }
 

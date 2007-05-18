@@ -44,7 +44,7 @@ using namespace Eigen;
 
 bool LabelEngine::render(GLWidget *gl)
 {
-  gl->painter()->beginText();
+  gl->painter()->begin(gl);
   QList<Primitive *> list;
 
   list = queue().primitiveList(Primitive::AtomType);
@@ -80,7 +80,7 @@ bool LabelEngine::render(GLWidget *gl)
       gl->painter()->drawText(drawPos, str);
     }
   }
-  gl->painter()->endText();
+  gl->painter()->end();
   
   return true;
 }

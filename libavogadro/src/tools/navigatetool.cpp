@@ -256,10 +256,12 @@ bool NavigateTool::paint(GLWidget *widget)
 
 void NavigateTool::drawSphere(GLWidget *widget,  const Eigen::Vector3d &position, double radius, float alpha )
 {
+  widget->painter()->begin(widget);
   Color( 1.0, 1.0, 0.3, alpha ).applyAsMaterials();
   glEnable( GL_BLEND );
   widget->painter()->drawSphere(position, radius);
   glDisable( GL_BLEND );
+  widget->painter()->end();
 }
 
 #include "navigatetool.moc"

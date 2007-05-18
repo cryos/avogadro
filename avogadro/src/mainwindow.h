@@ -46,6 +46,7 @@ namespace Avogadro {
 
       bool loadFile(const QString &fileName);
       bool saveFile(const QString &fileName);
+      int painterQuality();
 
     protected:
       void closeEvent(QCloseEvent *event);
@@ -74,7 +75,9 @@ namespace Avogadro {
       void centerView();
       void setView(int index);
       void fullScreen();
+      void showSettingsDialog();
       void setBackgroundColor();
+      void setPainterQuality(int quality);
 
       void undoStackClean(bool clean);
 

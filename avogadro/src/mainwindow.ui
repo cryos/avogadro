@@ -66,11 +66,6 @@
     </property>
     <addaction name="actionAbout" />
    </widget>
-   <widget class="QMenu" name="menuTools" >
-    <property name="title" >
-     <string>&amp;Tools</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuFile" >
     <property name="title" >
      <string>&amp;File</string>
@@ -92,6 +87,19 @@
     <addaction name="separator" />
     <addaction name="actionQuit" />
    </widget>
+   <widget class="QMenu" name="menuEdit" >
+    <property name="title" >
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="separator" />
+    <addaction name="actionCut" />
+    <addaction name="actionCopy" />
+    <addaction name="actionPaste" />
+    <addaction name="actionClear" />
+    <addaction name="separator" />
+    <addaction name="actionSelect_All" />
+    <addaction name="actionSelect_None" />
+   </widget>
    <widget class="QMenu" name="menuSettings" >
     <property name="title" >
      <string>&amp;Settings</string>
@@ -109,7 +117,12 @@
     <addaction name="menuToolbars" />
     <addaction name="menuDocks" />
     <addaction name="separator" />
-    <addaction name="actionSetBackgroundColor" />
+    <addaction name="configureAvogadroAction" />
+   </widget>
+   <widget class="QMenu" name="menuTools" >
+    <property name="title" >
+     <string>&amp;Tools</string>
+    </property>
    </widget>
    <widget class="QMenu" name="menuView" >
     <property name="title" >
@@ -120,19 +133,7 @@
     <addaction name="actionCenter" />
     <addaction name="separator" />
     <addaction name="actionFullScreen" />
-   </widget>
-   <widget class="QMenu" name="menuEdit" >
-    <property name="title" >
-     <string>&amp;Edit</string>
-    </property>
-    <addaction name="separator" />
-    <addaction name="actionCut" />
-    <addaction name="actionCopy" />
-    <addaction name="actionPaste" />
-    <addaction name="actionClear" />
-    <addaction name="separator" />
-    <addaction name="actionSelect_All" />
-    <addaction name="actionSelect_None" />
+    <addaction name="actionSetBackgroundColor" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menuEdit" />
@@ -496,17 +497,20 @@
     <string>Select None</string>
    </property>
   </action>
+  <action name="configureAvogadroAction" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/tool.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Configure Avogadro...</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
    <class>Avogadro::GLWidget</class>
    <extends>QWidget</extends>
    <header>avogadro/glwidget.h</header>
-  </customwidget>
-  <customwidget>
-   <class>Avogadro::MoleculeTreeView</class>
-   <extends>QTreeWidget</extends>
-   <header>avogadro/moleculetreeview.h</header>
   </customwidget>
   <customwidget>
    <class>Avogadro::EngineListView</class>
@@ -517,6 +521,11 @@
    <class>Avogadro::FlatTabWidget</class>
    <extends>QWidget</extends>
    <header>flattabwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Avogadro::MoleculeTreeView</class>
+   <extends>QTreeWidget</extends>
+   <header>avogadro/moleculetreeview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

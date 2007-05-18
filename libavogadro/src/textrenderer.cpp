@@ -344,11 +344,11 @@ TextRenderer::~TextRenderer()
   delete d;
 }
 
-void TextRenderer::setGLWidget( GLWidget *glwidget )
-{
-  d->glwidget = glwidget;
-  d->font = d->glwidget->font();
-}
+// void TextRenderer::setGLWidget( GLWidget *glwidget )
+// {
+//   d->glwidget = glwidget;
+//   d->font = d->glwidget->font();
+// }
 
 // the code of isGLExtensionSupported() is taken from the webpage:
 // http://www.opengl.org/resources/features/OGLextensions/
@@ -382,7 +382,7 @@ int TextRendererPrivate::isGLExtensionSupported(const char *extension)
 }
 
 
-void TextRenderer::begin()
+void TextRenderer::begin(GLWidget *widget)
 {
   if(!d->initialized) {
     if(TextRendererPrivate::isGLExtensionSupported("GL_ARB_texture_rectangle")) {
@@ -395,7 +395,17 @@ void TextRenderer::begin()
     d->initialized = true;
   }
 
-  assert(d->glwidget);
+  // already called begin
+  if(d->glwidget == widget)
+  {
+    return;
+  }
+
+
+  // make sure we called ::end
+  assert(!d->glwidget);
+
+  d->glwidget = widget;
   d->textmode = true;
   glPushAttrib( GL_ENABLE_BIT | GL_DEPTH_BUFFER_BIT );
   glDisable(GL_LIGHTING);
@@ -412,12 +422,15 @@ void TextRenderer::begin()
 
 void TextRenderer::end()
 {
-  assert(d->textmode);
-  glPopAttrib();
-  glMatrixMode( GL_PROJECTION );
-  glPopMatrix();
-  glMatrixMode( GL_MODELVIEW );
-  d->textmode = false;
+  if(d->glwidget) {
+    assert(d->textmode);
+    glPopAttrib();
+    glMatrixMode( GL_PROJECTION );
+    glPopMatrix();
+    glMatrixMode( GL_MODELVIEW );
+    d->textmode = false;
+    d->glwidget = 0;
+  }
 }
 
 int TextRenderer::do_draw( const QString &string )
@@ -492,6 +505,11 @@ int TextRenderer::draw( const Eigen::Vector3d &pos, const QString &string )
   glPopMatrix();
 
   return retval;
+}
+
+bool TextRenderer::isActive()
+{
+  return d->glwidget;
 }
 
 } // namespace Avogadro

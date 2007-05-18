@@ -182,7 +182,7 @@ namespace Avogadro {
        * @param format the QGLFormat information
        * @param parent the widget parent
        */
-      explicit GLWidget(const QGLFormat &format, QWidget *parent = 0);
+      explicit GLWidget(const QGLFormat &format, QWidget *parent = 0, const QGLWidget * shareWidget = 0);
 
       /**
        * Constructor
@@ -190,7 +190,7 @@ namespace Avogadro {
        * @param format the QGLFormat information
        * @param parent the widget parent
        */
-      GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent = 0);
+      GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent = 0, const QGLWidget * shareWidget = 0);
 
       /**
        * Deconstructor
@@ -321,12 +321,14 @@ namespace Avogadro {
     public Q_SLOTS:
 
       void setTool(Tool *tool);
+
+      void setPainter(Painter *painter);
       
-      /** sets the global quality setting. This influences the detail level of the
-        * geometric objects (spheres and cylinders). Values range from 0 to
-        * PAINTER_GLOBAL_QUALITY_SETTINGS-1.
-        */
-      void setGlobalQualitySetting(int globalQualitySetting);
+//       /** sets the quality setting. This influences the detail level of the
+//         * geometric objects (spheres and cylinders). Values range from 0 to
+//         * PAINTER_GLOBAL_QUALITY_SETTINGS-1.
+//         */
+//       void setQuality(int quality);
 
       /**
        * Add the primitive to the widget.  This slot is called whenever

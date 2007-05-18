@@ -110,11 +110,14 @@ namespace Avogadro {
                           aCells(0), bCells(0), cCells(0),
                           tool(0), toolGroup(0), selectBuf(0),
                           selectBufSize(-1), painter(new Painter),
+                          sharedPainter(false),
                           camera(new Camera) {}
       ~GLWidgetPrivate()
       {
+        if(!sharedPainter) {
+          delete painter;
+        }
         if(selectBuf) delete[] selectBuf;
-        delete painter;
         delete camera;
       }
 
@@ -148,6 +151,7 @@ namespace Avogadro {
 
       bool                   stable;
 
+      bool                   sharedPainter;
       Painter                *painter;
   };
 
@@ -158,14 +162,17 @@ namespace Avogadro {
     constructor();
   }
 
-  GLWidget::GLWidget(const QGLFormat &format, QWidget *parent)
-  : QGLWidget(format, parent), d(new GLWidgetPrivate)
+  GLWidget::GLWidget(const QGLFormat &format, QWidget *parent,
+      const QGLWidget *shareWidget )
+  : QGLWidget(format, parent, shareWidget), d(new GLWidgetPrivate)
   {
     constructor();
   }
 
-  GLWidget::GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent)
-  : QGLWidget(format, parent), d(new GLWidgetPrivate)
+  GLWidget::GLWidget(Molecule *molecule, 
+      const QGLFormat &format, QWidget *parent,
+      const QGLWidget *shareWidget )
+  : QGLWidget(format, parent, shareWidget), d(new GLWidgetPrivate)
   {
     constructor();
     setMolecule(molecule);
@@ -188,8 +195,6 @@ namespace Avogadro {
 
   void GLWidget::initializeGL()
   {
-    d->painter->initialize(this, DEFAULT_GLOBAL_QUALITY_SETTING);
-
     qglClearColor ( d->background );
 
     glShadeModel( GL_SMOOTH );
@@ -300,16 +305,13 @@ namespace Avogadro {
 
   void GLWidget::glDraw()
   {
-//     if(QGLContext::currentContext() != context())
-//     {
-//       return;
-//     }
-
     QGLWidget::glDraw();
   }
 
   void GLWidget::paintGL()
   {
+    assert(QGLContext::currentContext() == context());
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // setup the OpenGL projection matrix using the camera
@@ -561,7 +563,7 @@ namespace Avogadro {
           // FIXME: below is a ugly hack so that the text-painting engines are
           // at the END of the engines list, so that text is painted last.
           if(engine->name() == "Label") {
-            engine->setEnabled(true);
+            engine->setEnabled(false);
             d->engines.append(engine);
           } else if(engine->name() == "Debug Info") {
             engine->setEnabled(false);
@@ -585,10 +587,16 @@ namespace Avogadro {
     }
   }
   
-  void GLWidget::setGlobalQualitySetting(int globalQualitySetting)
+  void GLWidget::setPainter(Painter *painter)
   {
-    painter()->setGlobalQualitySetting(globalQualitySetting);
-    update();
+    Painter *old = d->painter;
+    d->painter = painter;
+
+    if(!d->sharedPainter) {
+      delete old;
+    } 
+
+    d->sharedPainter = true;
   }
 
   void GLWidget::setToolGroup(ToolGroup *toolGroup)

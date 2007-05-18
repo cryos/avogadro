@@ -109,13 +109,13 @@ namespace Avogadro
        * This should be called only once, before any printing occurs.
        * @param glwidget The GLWidget in which to render.
        */
-      void setGLWidget( GLWidget *glwidget );
+//       void setGLWidget( GLWidget *glwidget );
 
       /**
        * Call this before drawing any text. This method saves the GL state
        * and changes it to prepare for text rendering.
        */
-      void begin();
+      void begin(GLWidget *widget);
 
       /**
        * Call this after drawing text. This method restores the GL state
@@ -141,6 +141,8 @@ namespace Avogadro
        * @returns the height in pixels of the text just rendered (0 for an empty string).
        */
       int draw( int x, int y, const QString &string);
+
+      bool isActive();
 
     private:
 

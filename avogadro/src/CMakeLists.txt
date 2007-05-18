@@ -26,12 +26,13 @@ include(${QT_USE_FILE})
 set(avogadro_SRCS
     aboutdialog.cpp
     application.cpp
+    editcommands.cpp
     enginelistview.cpp
     flowlayout.cpp
     flattabwidget.cpp
-    mainwindow.cpp
-    editcommands.cpp
     main.cpp
+    mainwindow.cpp
+    settingsdialog.cpp
 )
 
 if( WIN32 )
@@ -44,6 +45,7 @@ set(avogadro_RCS
 
 set(avogadro_UIS
     mainwindow.ui
+    settingsdialog.ui
 )
 
 # designer has some flaws.

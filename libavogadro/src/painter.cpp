@@ -40,6 +40,22 @@ using namespace Avogadro;
 namespace Avogadro
 {
 
+  const int      PAINTER_GLOBAL_QUALITY_SETTINGS       = 3;
+  const int      DEFAULT_GLOBAL_QUALITY_SETTING        = PAINTER_GLOBAL_QUALITY_SETTINGS - 1;
+  const int      PAINTER_DETAIL_LEVELS                 = 10;
+  const int      PAINTER_SPHERES_LEVELS_ARRAY[3][10]
+    = { {0, 0, 1, 1, 2, 2, 3, 3, 4, 4} ,
+      {0, 1, 2, 3, 4, 4, 5, 5, 6, 6} ,
+      {1, 2, 3, 4, 5, 6, 7, 8, 9, 9} };
+  const double   PAINTER_SPHERES_LIMIT_MIN_LEVEL       = 0.005;
+  const double   PAINTER_SPHERES_LIMIT_MAX_LEVEL       = 0.15;
+
+  const int      PAINTER_CYLINDERS_LEVELS_ARRAY[3][10]
+    = { {0, 3, 5, 5, 8, 8, 12, 12, 16, 16} ,
+      {0, 4, 6, 9, 12, 12, 16, 16, 20, 20},
+      {0, 4, 6, 10, 14, 18, 22, 26, 32, 40} };
+  const double   PAINTER_CYLINDERS_LIMIT_MIN_LEVEL     = 0.001;
+  const double   PAINTER_CYLINDERS_LIMIT_MAX_LEVEL     = 0.03;
   const int      PAINTER_MAX_DETAIL_LEVEL = PAINTER_DETAIL_LEVELS - 1;
   const double   PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL
     = sqrt(PAINTER_SPHERES_LIMIT_MIN_LEVEL);
@@ -59,8 +75,8 @@ namespace Avogadro
   class PainterPrivate
   {
     public:
-      PainterPrivate() : widget(0), globalQualitySetting(0), spheres(0), cylinders(0),
-      textRenderer(new TextRenderer), initialized(false) {};
+      PainterPrivate() : widget(0), quality(0), spheres(0), cylinders(0),
+      textRenderer(new TextRenderer), initialized(false), shared(false)  {};
       ~PainterPrivate()
       {
         deleteObjects();
@@ -69,7 +85,7 @@ namespace Avogadro
 
       GLWidget *widget;
 
-      int globalQualitySetting;
+      int quality;
 
       /** array of pointers to Spheres. You might ask, why not have
         * a plain array of Spheres. The idea is that more than one global detail level
@@ -90,6 +106,12 @@ namespace Avogadro
 
       void deleteObjects();
       void createObjects();
+
+      /**
+       * Painters can be shared, we must keep track of this.
+       */
+      int shared;
+
   };
 
   void PainterPrivate::deleteObjects()
@@ -101,7 +123,7 @@ namespace Avogadro
       lastLevel = -1;
       for(n = 0; n < PAINTER_DETAIL_LEVELS; n++)
       {
-        level = PAINTER_SPHERES_LEVELS_ARRAY[globalQualitySetting][n];
+        level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
         if( level != lastLevel ) {
           lastLevel = level;
           if( spheres[n] ) {
@@ -120,7 +142,7 @@ namespace Avogadro
       lastLevel = -1;
       for(n = 0; n < PAINTER_DETAIL_LEVELS; n++)
       {
-        level = PAINTER_CYLINDERS_LEVELS_ARRAY[globalQualitySetting][n];
+        level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
         if( level != lastLevel ) {
           lastLevel = level;
           if( cylinders[n] ) {
@@ -144,11 +166,11 @@ namespace Avogadro
     {
       spheres = new Sphere*[PAINTER_DETAIL_LEVELS];
       int level, lastLevel;
-      lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[globalQualitySetting][0];
+      lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
       spheres[0] = new Sphere( lastLevel );
       for(int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
       {
-        level = PAINTER_SPHERES_LEVELS_ARRAY[globalQualitySetting][n];
+        level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
         if( level == lastLevel ) {
           spheres[n] = spheres[n-1];
         }
@@ -166,11 +188,11 @@ namespace Avogadro
     {
       cylinders = new Cylinder*[PAINTER_DETAIL_LEVELS];
       int level, lastLevel;
-      lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[globalQualitySetting][0];
+      lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
       cylinders[0] = new Cylinder( lastLevel );
       for(int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
       {
-        level = PAINTER_CYLINDERS_LEVELS_ARRAY[globalQualitySetting][n];
+        level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
         if( level == lastLevel ) {
           cylinders[n] = cylinders[n-1];
         }
@@ -182,8 +204,12 @@ namespace Avogadro
     }
   }
 
-  Painter::Painter() : d(new PainterPrivate)
+  Painter::Painter(int quality) : d(new PainterPrivate)
   {
+    if(quality < 0 || quality >= PAINTER_MAX_DETAIL_LEVEL) {
+      quality = DEFAULT_GLOBAL_QUALITY_SETTING;
+    }
+    d->quality = quality;
   }
 
   Painter::~Painter()
@@ -191,44 +217,56 @@ namespace Avogadro
     delete d;
   }
 
-  void Painter::setGLWidget( GLWidget * widget )
+//   void Painter::setGLWidget( GLWidget * widget )
+//   {
+//     d->widget = widget;
+//     d->textRenderer->setGLWidget(d->widget);
+//   }
+// 
+  void Painter::setQuality( int quality )
   {
-    d->widget = widget;
-    d->textRenderer->setGLWidget(d->widget);
-  }
-
-  void Painter::setGlobalQualitySetting( int globalQualitySetting )
-  {
-    assert( d->initialized );
-    assert( globalQualitySetting >= 0 && globalQualitySetting < PAINTER_GLOBAL_QUALITY_SETTINGS );
+    assert( quality >= 0 && quality < PAINTER_GLOBAL_QUALITY_SETTINGS );
     d->deleteObjects();
-    d->globalQualitySetting = globalQualitySetting;
+    d->quality = quality;
     d->createObjects();
   }
 
-  int Painter::globalQualitySetting() const
+  int Painter::quality() const
   {
-    return d->globalQualitySetting;
+    return d->quality;
   }
 
-  void Painter::initialize( GLWidget * widget, int globalQualitySetting )
-  {
-    assert( globalQualitySetting >= 0 && globalQualitySetting < PAINTER_GLOBAL_QUALITY_SETTINGS );
-    d->initialized = true;
-    setGLWidget(widget);
-    setGlobalQualitySetting(globalQualitySetting);
-  }
+//   void Painter::initialize( GLWidget * widget, int quality )
+//   {
+//     if(quality == -1) { 
+//       quality = DEFAULT_GLOBAL_QUALITY_SETTING; 
+//     }
+//     else {
+//       assert( quality >= 0 && quality < PAINTER_GLOBAL_QUALITY_SETTINGS );
+//     }
+//     d->initialized = true;
+//     setGLWidget(widget);
+//     setQuality(quality);
+//   }
 
   void Painter::drawSphere( const Eigen::Vector3d & center, double radius, int detailLevel ) const
   {
-    assert( d->initialized );
+    if(d->textRenderer->isActive())
+    {
+      d->textRenderer->end();
+    }
+    assert( d->widget );
     assert( detailLevel >= 0 && detailLevel <= PAINTER_MAX_DETAIL_LEVEL );
     d->spheres[detailLevel]->draw(center, radius);
   }
 
   void Painter::drawSphere( const Eigen::Vector3d & center, double radius ) const
   {
-    assert( d->initialized );
+    if(d->textRenderer->isActive())
+    {
+      d->textRenderer->end();
+    }
+    assert( d->widget );
     double apparentRadius = radius / d->widget->camera()->distance(center);
     int detailLevel = 1 + static_cast<int>( floor(
           PAINTER_SPHERES_DETAIL_COEFF * (sqrt(apparentRadius) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL)
@@ -245,7 +283,11 @@ namespace Avogadro
   void Painter::drawCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
       double radius, int detailLevel ) const
   {
-    assert( d->initialized );
+    if(d->textRenderer->isActive())
+    {
+      d->textRenderer->end();
+    }
+    assert( d->widget );
     assert( detailLevel >= 0 && detailLevel <= PAINTER_MAX_DETAIL_LEVEL );
     d->cylinders[detailLevel]->draw(end1, end2, radius);
   }
@@ -253,7 +295,11 @@ namespace Avogadro
   void Painter::drawCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
       double radius) const
   {
-    assert( d->initialized );
+    if(d->textRenderer->isActive())
+    {
+      d->textRenderer->end();
+    }
+    assert( d->widget );
     double apparentRadius = radius / d->widget->camera()->distance(end1);
     int detailLevel = 1 + static_cast<int>( floor(
           PAINTER_CYLINDERS_DETAIL_COEFF
@@ -271,7 +317,11 @@ namespace Avogadro
   void Painter::drawMultiCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
       double radius, int order, double shift, int detailLevel ) const
   {
-    assert( d->initialized );
+    if(d->textRenderer->isActive())
+    {
+      d->textRenderer->end();
+    }
+    assert( d->widget );
     assert( detailLevel >= 0 && detailLevel <= PAINTER_MAX_DETAIL_LEVEL );
     d->cylinders[detailLevel]->drawMulti(end1, end2, radius, order,
         shift, d->widget->normalVector() );
@@ -280,7 +330,11 @@ namespace Avogadro
   void Painter::drawMultiCylinder( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
       double radius, int order, double shift ) const
   {
-    assert( d->initialized );
+    if(d->textRenderer->isActive())
+    {
+      d->textRenderer->end();
+    }
+    assert( d->widget );
     double apparentRadius = radius / d->widget->camera()->distance(end1);
     int detailLevel = 1 + static_cast<int>( floor(
           PAINTER_CYLINDERS_DETAIL_COEFF
@@ -298,27 +352,58 @@ namespace Avogadro
 
   int Painter::drawText( int x, int y, const QString &string ) const
   {
+    if(!d->textRenderer->isActive())
+    {
+      d->textRenderer->begin(d->widget);
+    }
     return d->textRenderer->draw(x, y, string);
   }
 
   int Painter::drawText( const QPoint& pos, const QString &string ) const
   {
+    if(!d->textRenderer->isActive())
+    {
+      d->textRenderer->begin(d->widget);
+    }
     return d->textRenderer->draw(pos.x(), pos.y(), string);
   }
 
   int Painter::drawText( const Eigen::Vector3d &pos, const QString &string ) const
   {
+    if(!d->textRenderer->isActive())
+    {
+      d->textRenderer->begin(d->widget);
+    }
     return d->textRenderer->draw(pos, string);
   }
 
-  void Painter::beginText() const
+  void Painter::begin(GLWidget *widget)
   {
-    d->textRenderer->begin();
+    if(!d->initialized)
+    {
+      setQuality(d->quality);
+      d->initialized = true;
+    }
+    d->widget = widget;
   }
 
-  void Painter::endText() const
+  void Painter::end()
   {
-    d->textRenderer->end();
+    if(d->textRenderer->isActive())
+    {
+      d->textRenderer->end();
+    }
+    d->widget = 0;
+  }
+
+  int Painter::defaultQuality()
+  {
+    return DEFAULT_GLOBAL_QUALITY_SETTING;
+  }
+
+  int Painter::maxQuality()
+  {
+    return PAINTER_GLOBAL_QUALITY_SETTINGS-1;
   }
 
 } // end namespace Avogadro

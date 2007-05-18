@@ -130,7 +130,7 @@ bool ClickMeasureTool::paint(GLWidget *widget)
     QPoint angleLabelPos( 5, widget->height()-40);
     glPopMatrix();
 
-    widget->painter()->beginText();
+    widget->painter()->begin(widget);
 
     glColor3f(1.0,0.0,0.0);
     Vector3d pos = m_selectedAtoms[0]->pos();
@@ -189,7 +189,7 @@ bool ClickMeasureTool::paint(GLWidget *widget)
       widget->painter()->drawText(distancePos[0], QString::number(vector[0].norm()));
     }
 
-    widget->painter()->endText();
+    widget->painter()->end();
     glPopMatrix();
   }
 

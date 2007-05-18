@@ -63,6 +63,7 @@ bool BSDYEngine::render(GLWidget *gl)
 
   QList<Primitive *> list;
 
+  m_glwidget->painter()->begin(m_glwidget);
 
   m_update = false;
   glPushAttrib(GL_TRANSFORM_BIT);
@@ -131,6 +132,7 @@ bool BSDYEngine::render(GLWidget *gl)
 
   glPopAttrib();
 
+  m_glwidget->painter()->end();
   return true;
 }
 

@@ -45,6 +45,8 @@ using namespace Eigen;
 bool SphereEngine::render(GLWidget *gl)
 {
   m_glwidget = gl;
+  m_glwidget->painter()->begin(m_glwidget);
+
   QList<Primitive *> list;
 
   if (!m_setup) {
@@ -61,6 +63,7 @@ bool SphereEngine::render(GLWidget *gl)
   glDisable( GL_RESCALE_NORMAL);
   glEnable( GL_NORMALIZE );
 
+  gl->painter()->end();
   return true;
 }
 

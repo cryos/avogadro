@@ -79,21 +79,5 @@ const int      SEL_BUF_MARGIN                        = 128;
 const int      SEL_BOX_HALF_SIZE                     = 4;
 const int      SEL_BOX_SIZE                          = 2 * SEL_BOX_HALF_SIZE + 1;
 const double   SEL_ATOM_EXTRA_RADIUS                 = 0.18;
-const int      PAINTER_GLOBAL_QUALITY_SETTINGS       = 3;
-const int      DEFAULT_GLOBAL_QUALITY_SETTING        = PAINTER_GLOBAL_QUALITY_SETTINGS - 1;
-const int      PAINTER_DETAIL_LEVELS                 = 10;
-const int      PAINTER_SPHERES_LEVELS_ARRAY[3][10]
-                 = { {0, 0, 1, 1, 2, 2, 3, 3, 4, 4} ,
-                     {0, 1, 2, 3, 4, 4, 5, 5, 6, 6} ,
-                     {1, 2, 3, 4, 5, 6, 7, 8, 9, 9} };
-const double   PAINTER_SPHERES_LIMIT_MIN_LEVEL       = 0.005;
-const double   PAINTER_SPHERES_LIMIT_MAX_LEVEL       = 0.15;
-
-const int      PAINTER_CYLINDERS_LEVELS_ARRAY[3][10]
-                 = { {0, 3, 5, 5, 8, 8, 12, 12, 16, 16} ,
-                     {0, 4, 6, 9, 12, 12, 16, 16, 20, 20},
-                     {0, 4, 6, 10, 14, 18, 22, 26, 32, 40} };
-const double   PAINTER_CYLINDERS_LIMIT_MIN_LEVEL     = 0.001;
-const double   PAINTER_CYLINDERS_LIMIT_MAX_LEVEL     = 0.03;
 
 #endif  // __GLOBAL_H

@@ -49,6 +49,8 @@ bool StickEngine::render(GLWidget *gl)
   m_glwidget = gl;
   Color map = colorMap();
 
+  m_glwidget->painter()->begin(m_glwidget);
+
   QList<Primitive *> list;
 
   m_update = false;
@@ -109,6 +111,7 @@ bool StickEngine::render(GLWidget *gl)
 
   glPopAttrib();
 
+  m_glwidget->painter()->end();
   return true;
 }
 
