@@ -102,8 +102,8 @@ namespace Avogadro {
 
   class NavigateToolFactory : public QObject, public ToolFactory
     {
-      Q_OBJECT;
-      Q_INTERFACES(Avogadro::ToolFactory);
+      Q_OBJECT
+      Q_INTERFACES(Avogadro::ToolFactory)
 
       public:
         Tool *createInstance(QObject *parent = 0) { return new NavigateTool(); }
