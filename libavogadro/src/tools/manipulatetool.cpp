@@ -224,7 +224,7 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
   }
   else if (currentSelection.size())
   {
-    // Some atoms are selected - work out where the centre is
+    // Some atoms are selected - work out where the center is
     m_selectionCenter.loadZero();
     foreach(Primitive *hit, currentSelection)
     {

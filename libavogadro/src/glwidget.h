@@ -199,7 +199,7 @@ namespace Avogadro {
 
       /**
        * Add an arbitrary display list to the %GLWidget rendering 
-       * area.  This allows plugins to add auxilary visuals.
+       * area.  This allows plugins to add auxiliary visuals.
        *
        * @param dl the unsigned int representing the GL display list
        */

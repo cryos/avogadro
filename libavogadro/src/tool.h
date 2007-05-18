@@ -66,28 +66,28 @@ namespace Avogadro {
 
       /**
        * Response to mouse press
-       * @param widget the %GLWidget where the even occured
+       * @param widget the %GLWidget where the even occurred
        * @param event the mouse event information
        */
       virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event) = 0;
 
       /**
        * Response to mouse release
-       * @param widget the %GLWidget where the even occured
+       * @param widget the %GLWidget where the even occurred
        * @param event the mouse event information
        */
       virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event) = 0;
 
       /**
        * Response to mouse movement
-       * @param widget the %GLWidget where the even occured
+       * @param widget the %GLWidget where the even occurred
        * @param event the mouse event information
        */
       virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event) = 0;
 
       /**
        * Response to mouse wheel movement
-       * @param widget the %GLWidget where the even occured
+       * @param widget the %GLWidget where the even occurred
        * @param event the mouse wheel event information
        */
       virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event) = 0;
