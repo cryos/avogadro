@@ -89,7 +89,7 @@ namespace Avogadro {
        * @param type the primitive type
        * @param parent the object parent
        */
-      Primitive(enum Type type, QObject *parent=0);
+      explicit Primitive(enum Type type, QObject *parent=0);
       /**
        * Deconstructor
        */

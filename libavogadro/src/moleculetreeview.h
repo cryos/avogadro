@@ -58,7 +58,7 @@ namespace Avogadro {
        * @param molecule the molecule to view
        * @param parent the widget parent
        */
-      MoleculeTreeView(Molecule *molecule, QWidget *parent=0);
+      explicit MoleculeTreeView(Molecule *molecule, QWidget *parent=0);
 
       /**
        * Set the molecule which is the model for the treeview.

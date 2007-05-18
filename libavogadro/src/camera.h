@@ -86,7 +86,7 @@ namespace Avogadro {
     public:
       /** The constructor.
         * @sa setParent(), setAngleOfViewY() */
-      Camera(const GLWidget *parent = 0, double angleOfViewY = 40.0);
+      explicit Camera(const GLWidget *parent = 0, double angleOfViewY = 40.0);
       /** The destructor. */
       virtual ~Camera();
       /** @return a pointer to the parent GLWidget
