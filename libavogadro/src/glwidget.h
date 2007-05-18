@@ -321,6 +321,12 @@ namespace Avogadro {
     public Q_SLOTS:
 
       void setTool(Tool *tool);
+      
+      /** sets the global quality setting. This influences the detail level of the
+        * geometric objects (spheres and cylinders). Values range from 0 to
+        * PAINTER_GLOBAL_QUALITY_SETTINGS-1.
+        */
+      void setGlobalQualitySetting(int globalQualitySetting);
 
       /**
        * Add the primitive to the widget.  This slot is called whenever

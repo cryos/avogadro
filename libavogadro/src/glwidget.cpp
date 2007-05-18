@@ -136,7 +136,6 @@ namespace Avogadro {
       Tool                   *tool;
       ToolGroup              *toolGroup;
 
-      //TODO: convert to pointer
       Camera                 *camera;
       QColor                 background;
 
@@ -584,6 +583,12 @@ namespace Avogadro {
     if(tool) {
       d->tool = tool;
     }
+  }
+  
+  void GLWidget::setGlobalQualitySetting(int globalQualitySetting)
+  {
+    painter()->setGlobalQualitySetting(globalQualitySetting);
+    update();
   }
 
   void GLWidget::setToolGroup(ToolGroup *toolGroup)
