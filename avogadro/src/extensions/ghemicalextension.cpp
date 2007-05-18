@@ -33,13 +33,27 @@ using namespace OpenBabel;
   namespace Avogadro {
     GhemicalExtension::GhemicalExtension(QObject *parent) : QObject(parent)
     {
+      QAction *action;
       m_forceField = OBForceField::FindForceField("Ghemical");
+      m_Dialog = new ForceFieldDialog;
 
       if (m_forceField) { // make sure we can actually find and run it!
-        QAction *action = new QAction(this);
-        action->setText("Optimize Geometry");
+        action = new QAction(this);
+        action->setText("Setup Force Field");
         m_actions.append(action);
       }
+  
+      action = new QAction(this);
+      action->setText("Calculate Energy");
+      m_actions.append(action);
+      
+      action = new QAction(this);
+      action->setText("Optimize Geometry");
+      m_actions.append(action);
+      
+      action = new QAction(this);
+      action->setText("Rotor Search");
+      m_actions.append(action);
     }
 
     GhemicalExtension::~GhemicalExtension() 
@@ -54,19 +68,61 @@ using namespace OpenBabel;
     QUndoCommand* GhemicalExtension::performAction(QAction *action, Molecule *molecule, 
                                                    GLWidget *widget, QTextEdit *textEdit)
     {
-      QUndoCommand *undo = new GhemicalCommand(molecule, m_forceField, textEdit);
-      undo->setText(QObject::tr("Ghemical Geometric Optimization"));
+      QUndoCommand *undo = NULL;
+      ostringstream buff;
+      int i = m_actions.indexOf(action);
+
+      switch(i)
+      {
+        case 0: // setup force field
+	  m_Dialog->show();
+	  break;
+        case 1: // calculate energy 
+	  if (!m_forceField)
+            break;
+
+          m_forceField->SetLogFile(&buff);
+          m_forceField->SetLogLevel(OBFF_LOGLVL_HIGH);
+ 
+          if (!m_forceField->Setup(*molecule)) {
+            qDebug() << "Could not set up force field on " << molecule;
+            break;
+          }
+
+          m_forceField->Energy();
+          textEdit->append(tr(buff.str().c_str()));
+	  break;
+        case 2: // geometry optimization
+          undo = new GhemicalCommand(molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(), 
+	                             m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 0);
+          undo->setText(QObject::tr("Geometric Optimization"));
+	  break;
+        case 3: // systematic rotor search
+          undo = new GhemicalCommand(molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(), 
+	                             m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 1);
+          undo->setText(QObject::tr("Rotor Search"));
+	  break;
+ 
+      }
 
       return undo;
     }
 
-    GhemicalCommand::GhemicalCommand(Molecule *molecule, OpenBabel::OBForceField* forceField, QTextEdit *textEdit)
+    GhemicalCommand::GhemicalCommand(Molecule *molecule, OpenBabel::OBForceField* forceField, 
+                                     QTextEdit *textEdit, int forceFieldID, int nSteps, int algorithm,
+				     int gradients, int convergence, int task)
     {
       m_cycles = 0;
       m_moleculeCopy = *molecule;
       m_molecule = molecule;
       m_forceField = forceField;
       m_textEdit = textEdit;
+      m_forceFieldID = forceFieldID;
+      m_nSteps = nSteps;
+      m_algorithm = algorithm;
+      m_gradients = gradients;
+      m_convergence = convergence;
+      m_task = task;
     }
 
     void GhemicalCommand::redo() {
@@ -80,13 +136,37 @@ using namespace OpenBabel;
         return;
       }
 
-      m_forceField->ConjugateGradientsInitialize(100, 1e-7f); // initialize cg
-      while (m_forceField->ConjugateGradientsTakeNSteps(5)) { // take 5 steps until convergence or 100 steps taken
+      if (m_task == 0) {
+        if (m_algorithm == 0) {
+          if (m_gradients == 0)
+            m_forceField->SteepestDescentInitialize(m_nSteps, pow(10.0, -m_convergence), OBFF_NUMERICAL_GRADIENT); // initialize sd
+  	  else
+            m_forceField->SteepestDescentInitialize(m_nSteps, pow(10.0, -m_convergence), OBFF_ANALYTICAL_GRADIENT); // initialize sd
+
+          while (m_forceField->SteepestDescentTakeNSteps(5)) { // take 5 steps until convergence or m_nSteps taken
+            m_forceField->UpdateCoordinates(*m_molecule);
+            m_molecule->update();
+            m_cycles++;
+          }
+        } else if (m_algorithm == 1) {
+          if (m_gradients == 0)
+            m_forceField->ConjugateGradientsInitialize(m_nSteps, pow(10.0, -m_convergence), OBFF_NUMERICAL_GRADIENT); // initialize cg
+	  else
+            m_forceField->ConjugateGradientsInitialize(m_nSteps, pow(10.0, -m_convergence), OBFF_ANALYTICAL_GRADIENT); // initialize cg
+
+          while (m_forceField->ConjugateGradientsTakeNSteps(5)) { // take 5 steps until convergence or m_nSteps taken
+            m_forceField->UpdateCoordinates(*m_molecule);
+            m_molecule->update();
+            m_cycles++;
+          }
+        }
+      } else if (m_task == 1) {
+        m_forceField->SystematicRotorSearch();
         m_forceField->UpdateCoordinates(*m_molecule);
-        m_textEdit->append(QObject::tr(buff.str().c_str()));
         m_molecule->update();
-        m_cycles++;
       }
+      
+      m_textEdit->append(QObject::tr(buff.str().c_str()));
     }
 
     void GhemicalCommand::undo() {

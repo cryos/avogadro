@@ -1,3 +1,15 @@
+2007-05-18 01:41  Tim Vandermeersch <tim.vandermeersch@gmail.com>
+
+	* avogadro/src/extentions/ghemicalextention.h,
+	avogadro/src/extentions/ghemicalextention.cpp: Added "Setup
+	Force Field " dialog, "Calculate Energy" and "Rotor Search".
+
+	* avogadro/src/extentions/forcefielddialog.h,
+	avogadro/src/extentions/forcefielddialog.cpp,
+	avogadro/src/extentions/forcefielddialog.ui: force field setup
+	dialog. (I had to call uic-qt4 manually, something wrong with 
+	the makefile?)
+
 2007-05-15 06:35  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* avogadro.nsi, avogadro/src/CMakeLists.txt,

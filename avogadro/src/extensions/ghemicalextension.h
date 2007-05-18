@@ -24,6 +24,8 @@
 #define __GHEMICALEXTENSION_H
 
 
+#include "forcefielddialog.h"
+
 #include <openbabel/mol.h>
 #include <openbabel/forcefield.h>
 
@@ -66,6 +68,7 @@ namespace Avogadro {
     private:
       OpenBabel::OBForceField* m_forceField;
       QList<QAction *> m_actions;
+      ForceFieldDialog *m_Dialog;
   };
 
   class GhemicalExtensionFactory : public QObject, public ExtensionFactory
@@ -81,7 +84,8 @@ namespace Avogadro {
  class GhemicalCommand : public QUndoCommand
   {
     public:
-      GhemicalCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield, QTextEdit *messages);
+      GhemicalCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield, QTextEdit *messages,
+                      int forceFieldID, int nSteps, int algorithm, int gradients, int convergence, int task);
 
       virtual void redo();
       virtual void undo();
@@ -93,7 +97,14 @@ namespace Avogadro {
       Molecule *m_molecule;
       QTextEdit *m_textEdit;
       int m_cycles;
+      int m_forceFieldID;
+      int m_nSteps;
+      int m_algorithm;
+      int m_gradients;
+      int m_convergence;
+      int m_task;
       OpenBabel::OBForceField* m_forceField;
+      ForceFieldDialog *m_Dialog;
   };
 
 } // end namespace Avogadro
