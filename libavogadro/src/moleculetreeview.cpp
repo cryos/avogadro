@@ -124,7 +124,7 @@ namespace Avogadro {
         this, SLOT(removePrimitive(Primitive*)));
   }
 
-  QTreeWidgetItem* MoleculeTreeView::addGroup(QString name, enum Primitive::Type type)
+  QTreeWidgetItem* MoleculeTreeView::addGroup(const QString& name, enum Primitive::Type type)
   {
     QTreeWidgetItem *group = new QTreeWidgetItem(this);
     group->setText(0, name);

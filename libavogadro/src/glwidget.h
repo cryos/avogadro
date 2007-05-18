@@ -182,7 +182,7 @@ namespace Avogadro {
        * @param format the QGLFormat information
        * @param parent the widget parent
        */
-      GLWidget(const QGLFormat &format, QWidget *parent = 0);
+      explicit GLWidget(const QGLFormat &format, QWidget *parent = 0);
 
       /**
        * Constructor
