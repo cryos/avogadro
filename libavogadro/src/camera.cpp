@@ -174,7 +174,7 @@ namespace Avogadro
     // This translation must be applied after the above rotation, so we
     // want a left-multiplication here. Whence pretranslate().
     const Vector3d Zaxis(0,0,1);
-    pretranslate( - 3.0 * d->parent->radius() * Zaxis );
+    pretranslate( - 3.0 * ( d->parent->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
     
     // the above rotation is meant to be a rotation around the molecule's
     // center. So before this rotation is applied, the molecule's center
