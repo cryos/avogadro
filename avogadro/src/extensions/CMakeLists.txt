@@ -36,7 +36,7 @@ INSTALL(TARGETS gamessextension DESTINATION ${DESTINATION_DIR})
 set(ghemicalextension_SRCS ghemicalextension.cpp forcefielddialog.cpp)
 qt4_wrap_ui(ghemicalextension_UIS_H forcefielddialog.ui)
 qt4_automoc(${ghemicalextension_SRCS})
-ADD_LIBRARY(ghemicalextension SHARED ${ghemicalextension_SRCS} ${ghemicalextention_UIS_H})
+ADD_LIBRARY(ghemicalextension SHARED ${ghemicalextension_SRCS} ${ghemicalextension_UIS_H})
 TARGET_LINK_LIBRARIES(ghemicalextension 
 	${OPENBABEL2_LIBRARIES} 
 	${QT_LIBRARIES} 
