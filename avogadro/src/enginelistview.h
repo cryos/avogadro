@@ -30,6 +30,7 @@ class QStandardItem;
 namespace Avogadro {
 
   class GLWidget;
+  class Engine;
   /**
    * @class EngineListView
    * @brief Widget for listing and editing widgets
@@ -43,31 +44,25 @@ namespace Avogadro {
   {
     Q_OBJECT;
 
-    enum Role {
-      EngineRole = Qt::UserRole + 1,
-      SettingsDialogRole,
-    };
-
     public:
-      EngineListView( QWidget *parent = 0 );
+      EngineListView( GLWidget *glWidget, QWidget *parent = 0 );
       ~EngineListView();
 
-      void setGLWidget(GLWidget *widget);
       GLWidget *glWidget() const;
 
-      void setSettingsButton( QAbstractButton *button );
-      QAbstractButton *settingsButton() const;
+//       void setSettingsButton( QAbstractButton *button );
+//       QAbstractButton *settingsButton() const;
 
     private:
       EngineListViewPrivate *const d;
 
     private Q_SLOTS:
-      void updateEngine( QStandardItem * );
       void selectEngine( const QModelIndex &index );
-      void showEngineSettings();
+      // void showEngineSettings();
 
     Q_SIGNALS:
       void itemChanged( QStandardItem * );
+      void clicked( Engine * );
   };
 
 }

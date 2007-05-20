@@ -46,17 +46,9 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      SphereEngine(QObject *parent=0) : Engine(parent), m_setup(false), m_glwidget(0) {}
+      SphereEngine(QObject *parent=0);
       //! Deconstructor
       ~SphereEngine() {}
-
-      //! \name Description methods
-      //@{
-      //! @return engine name
-      QString name() { return(QString(tr("Sphere"))); }
-      //! @return engine description
-      QString description() { return(QString(tr("Renders atoms as spheres"))); }
-      //@}
 
       //! \name Render Methods
       //@{

@@ -1,10 +1,7 @@
 /**********************************************************************
-  Debug Engine - Engine for displaying debug information.
+  EngineTabWidget - View for listing engines
 
-  Copyright (C) 2007 Ross Braithwaite
-  Copyright (C) 2007 Shahzad Ali
-  Copyright (C) 2007 James Bunt
-  Copyright (C) 2007 Benoit Jacob
+  Copyright (C) 2007 Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -25,51 +22,44 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __DEBUGENGINE_H
-#define __DEBUGENGINE_H
+#ifndef __ENGINETABWIDGET_H
+#define __ENGINETABWIDGET_H
 
-#include <avogadro/global.h>
-#include <avogadro/engine.h>
+#include <QObject>
+#include <QTabWidget>
 
-#include <openbabel/mol.h>
-
-#include <QGLWidget>
-
+class QAbstractButton;
+class QStandardItem;
 namespace Avogadro {
 
-  //! Debug Engine class.
-  class DebugEngine : public Engine
+  class GLWidget;
+  class Engine;
+  /**
+   * @class EngineTabWidget
+   * @brief Widget for change engine settings and members of engines.
+   *
+   * This widget allows us to modify engine settings and select which objects 
+   * are to be rendered by this engine when partially rendering.
+   */
+  class EngineTabWidgetPrivate;
+  class EngineTabWidget : public QTabWidget
   {
-    Q_OBJECT
+    Q_OBJECT;
 
     public:
-      //! Constructor
-      DebugEngine(QObject *parent=0);
-      //! Deconstructor
-      ~DebugEngine() {}
+      EngineTabWidget( GLWidget *glWidget, QWidget *parent = 0 );
+      ~EngineTabWidget();
 
-      //! \name Render Methods
-      //@{
+      GLWidget *glWidget() const;
 
-      bool render(GLWidget *gl);
-      //@}
+    public Q_SLOTS:
+      void setCurrentEngine(Engine *engine);
 
-      private:
-      inline double computeFramesPerSecond();
+    private:
+      EngineTabWidgetPrivate *const d;
+
   };
 
-  //! Generates instances of our LabelEngine class
-  class DebugEngineFactory : public QObject, public EngineFactory
-  {
-    Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-
-    public:
-      Engine *createInstance(QObject *parent = 0) { 
-        return new DebugEngine(parent); 
-      }
-  };
-
-} // end namespace Avogadro
+}
 
 #endif

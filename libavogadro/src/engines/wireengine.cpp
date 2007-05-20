@@ -41,6 +41,12 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
+WireEngine::WireEngine(QObject *parent) : Engine(parent), m_glwidget(0)
+{
+  setName(tr("Wireframe"));
+  setDescription(tr("Wireframe rendering"));
+}
+
 bool WireEngine::render(GLWidget *gl)
 {
   m_glwidget = gl;

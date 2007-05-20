@@ -44,17 +44,9 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      StickEngine(QObject *parent=0) : Engine(parent), m_update(true), m_glwidget(0) {}
+      StickEngine(QObject *parent=0);
       //! Deconstructor
       ~StickEngine();
-
-      //! \name Description methods
-      //@{
-      //! @return engine name
-      QString name() { return(QString(tr("Stick"))); }
-      //! @return engine description
-      QString description() { return(QString(tr("Renders as Cylinders"))); }
-      //@}
 
       //! \name Render Methods
       //@{

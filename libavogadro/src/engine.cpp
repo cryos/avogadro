@@ -34,6 +34,9 @@ namespace Avogadro {
     PrimitiveQueue queue;
     Color colorMap;
     bool enabled;
+
+    QString name;
+    QString description;
   };
 
   Engine::Engine(QObject *parent) : QObject(parent), d(new EnginePrivate)
@@ -97,6 +100,26 @@ namespace Avogadro {
   Color &Engine::colorMap()
   {
     return d->colorMap;
+  }
+
+  void Engine::setName(const QString &name)
+  {
+    d->name = name;
+  }
+
+  QString Engine::name() const
+  {
+    return d->name;
+  }
+
+  void Engine::setDescription(const QString &description)
+  {
+    d->description = description;
+  }
+
+  QString Engine::description() const
+  {
+    return d->description;
   }
 
 }

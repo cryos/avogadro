@@ -21,6 +21,8 @@
 
 #include "enginelistview.h"
 
+#include "engineitemmodel.h"
+
 #include <avogadro/engine.h>
 #include <avogadro/glwidget.h>
 
@@ -35,14 +37,28 @@ namespace Avogadro {
   class EngineListViewPrivate
   {
     public:
-      EngineListViewPrivate() : widget(0) {};
+      EngineListViewPrivate() : glWidget(0) {};
 
-      GLWidget *widget;
+      GLWidget *glWidget;
       QAbstractButton *button;
   };
 
-  EngineListView::EngineListView( QWidget *parent ) : d(new EngineListViewPrivate)
+  EngineListView::EngineListView( GLWidget *glWidget, QWidget *parent ) : d(new EngineListViewPrivate)
   {
+    d->glWidget = glWidget;
+
+    EngineItemModel *m = new EngineItemModel(d->glWidget, this);
+
+    if(model())
+    {
+      delete model();
+    }
+
+    setModel(m);
+    connect(this, SIGNAL(clicked(QModelIndex)), 
+        this, SLOT(selectEngine(QModelIndex)));
+    connect(m, SIGNAL(dataChanged(QModelIndex, QModelIndex)),
+        glWidget, SLOT(update()));
   }
 
   EngineListView::~EngineListView()
@@ -52,94 +68,61 @@ namespace Avogadro {
 
   GLWidget *EngineListView::glWidget() const
   {
-    return d->widget;
+    return d->glWidget;
   }
 
-  void EngineListView::setGLWidget(GLWidget *widget)
-  {
-    d->widget = widget;
+//   void EngineListView::setSettingsButton( QAbstractButton *button )
+//   {
+//     d->button = button;
+//     connect(button, SIGNAL(clicked()), this, SLOT(showEngineSettings()));
+//   }
 
-    QStandardItemModel *m = new QStandardItemModel(this);
-
-    foreach(Engine *e, widget->engines())
-      {
-        QStandardItem *item = new QStandardItem(e->name());
-        item->setCheckable(true);
-        item->setToolTip(e->description());
-        if(e->isEnabled()) {
-          item->setCheckState(Qt::Checked);
-        }
-        item->setData(qVariantFromValue(e), EngineRole);
-        item->setData(qVariantFromValue(static_cast<QWidget *>(0)), SettingsDialogRole);
-        m->appendRow(item);
-      }
-    
-    if(model())
-    {
-      delete model();
-    }
-
-    setModel(m);
-    connect(m, SIGNAL(itemChanged(QStandardItem *)), 
-        this, SLOT(updateEngine(QStandardItem *)));
-    connect(this, SIGNAL(clicked(QModelIndex)), 
-        this, SLOT(selectEngine(QModelIndex)));
-  }
-
-  void EngineListView::setSettingsButton( QAbstractButton *button )
-  {
-    d->button = button;
-    connect(button, SIGNAL(clicked()), this, SLOT(showEngineSettings()));
-  }
-
-  QAbstractButton *EngineListView::settingsButton() const
-  {
-    return d->button;
-  }
+//   QAbstractButton *EngineListView::settingsButton() const
+//   {
+//     return d->button;
+//   }
 
   void EngineListView::selectEngine( const QModelIndex &index )
   {
     if(d->button) {
-      Engine *engine = index.data(EngineRole).value<Engine *>();
+      if(!index.internalPointer()) {
+        return;
+      }
+
+      Engine *engine = model()->data(index, EngineItemModel::EngineRole).value<Engine *>();
       if(engine) {
-        d->button->setEnabled(engine->settingsWidget());
+        emit clicked(engine);
       }
     }
   }
 
-  void EngineListView::updateEngine( QStandardItem *item )
-  {
-    Engine *engine = item->data(EngineRole).value<Engine *>();
-    if(engine) {
-      engine->setEnabled(item->checkState());
-      d->widget->update();
-    }
-  }
-
-  void EngineListView::showEngineSettings()
-  {
-    QModelIndexList selection = selectedIndexes();
-    if(selection.count()) {
-      QModelIndex index = selection.at(0);
-      QDialog *dialog = qobject_cast<QDialog *>(model()->data(index, SettingsDialogRole).value<QWidget *>());
-      if(dialog) {
-        dialog->show();
-      }
-      else
-      {
-        Engine *engine = model()->data(index, EngineRole).value<Engine *>();
-        if(engine && engine->settingsWidget()) {
-          QDialog *newDialog = new QDialog();
-          newDialog->setWindowTitle(engine->name() + tr(" Settings"));
-          QVBoxLayout *vLayout = new QVBoxLayout();
-          vLayout->addWidget(engine->settingsWidget());
-          newDialog->setLayout(vLayout);
-          model()->setData(index, qVariantFromValue(qobject_cast<QWidget *>(newDialog)), SettingsDialogRole);
-          newDialog->show();
-        }
-      }
-    }
-  }
+//   void EngineListView::showEngineSettings()
+//   {
+//     QModelIndexList selection = selectedIndexes();
+//     if(selection.count()) {
+//       QModelIndex index = selection.at(0);
+//       QDialog *dialog = qobject_cast<QDialog *>(model()->data(index, SettingsDialogRole).value<QWidget *>());
+//       if(dialog) {
+//         dialog->show();
+//       }
+//       else
+//       {
+//         if(!index.internalPointer()) {
+//           return;
+//         }
+//         Engine *engine = model()->data(index, EngineRole).value<Engine *>();
+//         if(engine && engine->settingsWidget()) {
+//           QDialog *newDialog = new QDialog();
+//           newDialog->setWindowTitle(engine->name() + tr(" Settings"));
+//           QVBoxLayout *vLayout = new QVBoxLayout();
+//           vLayout->addWidget(engine->settingsWidget());
+//           newDialog->setLayout(vLayout);
+//           model()->setData(index, qVariantFromValue(qobject_cast<QWidget *>(newDialog)), SettingsDialogRole);
+//           newDialog->show();
+//         }
+//       }
+//     }
+//   }
 
 
 } // end namespace Avogadro

@@ -59,15 +59,24 @@ namespace Avogadro {
       virtual ~Engine(); 
 
       /** 
-       * @return the short name of the engine as a QString
-       * (ie. "FooBar")
+       * @return the default name for the engine
        */
-      virtual QString name() = 0;
+      QString name() const;
+
       /**
-       * @return a simple description of the engine
-       * (ie. "Rendering Atoms and Bonds using FooBar style.")
+       * @param name the new name for the engine instance
        */
-      virtual QString description() = 0;
+      void setName(const QString &name);
+
+      /**
+       * @return engine description
+       */
+      QString description() const;
+
+      /**
+       * @param description the new description for this engine
+       */
+      void setDescription(const QString &description);
 
       /**
        * Render a PrimitiveQueue.  This function is allowed to rendering 
@@ -184,6 +193,8 @@ namespace Avogadro {
        * @return pointer to a new instance of an Engine subclass object
        */
       virtual Engine *createInstance(QObject *parent=0) = 0;
+
+      
   };
 
 

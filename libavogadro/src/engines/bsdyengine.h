@@ -52,12 +52,6 @@ namespace Avogadro {
       ~BSDYEngine();
 
       //! \name Description methods
-      //@{
-      //! @return engine name
-      QString name() { return(QString(tr("Dynamic Ball and Stick"))); }
-      //! @return engine description
-      QString description() { return(QString(tr("Renders primitives using Balls (atoms) and Sticks (bonds).  Includes demonstration of dynamic rendering based on distance from camera"))); }
-      //@}
 
       //! \name Render Methods
       //@{

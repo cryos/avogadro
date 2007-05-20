@@ -42,6 +42,12 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
+SphereEngine::SphereEngine(QObject *parent) : Engine(parent), m_setup(false), m_glwidget(0) 
+{
+  setName(tr("Sphere"));
+  setDescription(tr("Renders atoms as spheres"));
+}
+
 bool SphereEngine::render(GLWidget *gl)
 {
   m_glwidget = gl;

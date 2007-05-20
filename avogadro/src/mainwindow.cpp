@@ -27,6 +27,9 @@
 #include "editcommands.h"
 #include "settingsdialog.h"
 
+#include "enginelistview.h"
+#include "enginetabwidget.h"
+
 #include <avogadro/extension.h>
 #include <avogadro/primitive.h>
 #include <avogadro/toolgroup.h>
@@ -72,6 +75,9 @@ namespace Avogadro {
       FlowLayout *toolsFlow;
       QStackedLayout *toolSettingsStacked;
 
+      QStackedLayout *enginesStacked;
+      QStackedLayout *engineConfigurationStacked;
+
       QTextEdit *messagesText;
 
       Painter *glPainter;
@@ -103,15 +109,19 @@ namespace Avogadro {
     readSettings();
     setAttribute(Qt::WA_DeleteOnClose);
 
+    d->glWidgets.append(ui.glWidget);
+    d->glWidget = ui.glWidget;
+    d->glPainter = new Painter();
+
     d->undoStack = new QUndoStack(this);
     d->toolsFlow = new FlowLayout(ui.toolsWidget);
     d->toolsFlow->setMargin(9);
-    d->toolSettingsStacked = new QStackedLayout(ui.toolSettingsWidget);
 
     d->toolGroup = new ToolGroup(this);
     d->toolGroup->load();
     connect(d->toolGroup, SIGNAL(toolActivated(Tool *)), this, SLOT(setTool(Tool *)));
 
+    d->toolSettingsStacked = new QStackedLayout(ui.toolSettingsWidget);
     d->toolSettingsStacked->addWidget(new QWidget);
     const QList<Tool *> tools = d->toolGroup->tools();
     int toolCount = tools.size();
@@ -130,10 +140,18 @@ namespace Avogadro {
       } 
     }
 
+    d->enginesStacked = new QStackedLayout(ui.enginesWidget);
+    EngineListView *engineListView = new EngineListView(d->glWidget, ui.enginesWidget);
+    d->enginesStacked->addWidget(engineListView);
 
-    d->glWidgets.append(ui.glWidget);
-    d->glWidget = ui.glWidget;
-    d->glPainter = new Painter();
+
+    d->engineConfigurationStacked = new QStackedLayout(ui.engineConfigurationWidget);
+    EngineTabWidget *engineTabWidget = new EngineTabWidget(d->glWidget, ui.engineConfigurationWidget);
+    d->engineConfigurationStacked->addWidget(engineTabWidget);
+
+    connect(engineListView, SIGNAL(clicked(Engine *)),
+        engineTabWidget, SLOT(setCurrentEngine(Engine *)));
+
     ui.glWidget->setPainter(d->glPainter);
     ui.glWidget->setToolGroup(d->toolGroup);
     ui.glWidget->setUndoStack(d->undoStack);
@@ -150,15 +168,14 @@ namespace Avogadro {
 
     loadExtensions();
 
-    ui.enginesList->setGLWidget(ui.glWidget);
-    ui.enginesList->setSettingsButton(ui.engineSettingsButton);
-
     connectUi();
 
     setMolecule(new Molecule(this));
 
     setFileName("");
     statusBar()->showMessage(tr("Ready."), 10000);
+
+    ui.projectDock->close();
 
     qDebug() << "MainWindow Initialized" << endl;
   }
@@ -328,7 +345,8 @@ namespace Avogadro {
   void MainWindow::setView( int index )
   {
     d->glWidget = d->glWidgets.at(index);
-    ui.enginesList->setGLWidget(d->glWidget);
+    d->enginesStacked->setCurrentIndex(index);
+    d->engineConfigurationStacked->setCurrentIndex(index);
 //     d->glWidget->makeCurrent();
   }
 
@@ -519,8 +537,16 @@ namespace Avogadro {
 
     int index = ui.centralTab->addTab(widget, QString(""));
     ui.centralTab->setTabText(index, tr("View ") + QString::number(index));
-    d->glWidgets.at(ui.centralTab->currentIndex())->makeCurrent();
     ui.actionCloseView->setEnabled(true);
+
+    EngineListView *engineListView = new EngineListView(glWidget, ui.enginesWidget);
+    d->enginesStacked->addWidget(engineListView);
+
+    EngineTabWidget *engineTabWidget = new EngineTabWidget(glWidget, ui.engineConfigurationWidget);
+    d->engineConfigurationStacked->addWidget(engineTabWidget);
+
+    connect(engineListView, SIGNAL(clicked(Engine *)),
+        engineTabWidget, SLOT(setCurrentEngine(Engine *)));
   }
 
   void MainWindow::closeView()
@@ -533,6 +559,17 @@ namespace Avogadro {
       {
         int index = ui.centralTab->currentIndex();
         ui.centralTab->removeTab(index);
+        
+        // delete the engines list for this GLWidget
+        QWidget *widget = d->enginesStacked->widget(index);
+        d->enginesStacked->removeWidget(widget);
+        delete widget;
+
+        // delete the engine configuration for this GLWidget
+        widget = d->engineConfigurationStacked->widget(index);
+        d->engineConfigurationStacked->removeWidget(widget);
+        delete widget;
+
         for(int count=ui.centralTab->count(); index < count; index++) {
           QString text = ui.centralTab->tabText(index);
           if(!text.compare(tr("View ") + QString::number(index+1)))
@@ -653,6 +690,8 @@ namespace Avogadro {
     ui.menuDocks->addAction(ui.projectDock->toggleViewAction());
     ui.menuDocks->addAction(ui.toolsDock->toggleViewAction());
     ui.menuDocks->addAction(ui.toolSettingsDock->toggleViewAction());
+    ui.menuDocks->addAction(ui.enginesDock->toggleViewAction());
+    ui.menuDocks->addAction(ui.engineConfigurationDock->toggleViewAction());
     ui.menuToolbars->addAction(ui.fileToolBar->toggleViewAction());
 
     connect(ui.actionNewView, SIGNAL(triggered()), this, SLOT(newView()));
@@ -895,7 +934,7 @@ namespace Avogadro {
       foreach (QString fileName, dir.entryList(QDir::Files)) {
         QPluginLoader loader(dir.absoluteFilePath(fileName));
         QObject *instance = loader.instance();
-        qDebug() << "File: " << fileName;
+        // qDebug() << "File: " << fileName;
         ExtensionFactory *factory = qobject_cast<ExtensionFactory *>(instance);
         if(factory) {
           Extension *extension = factory->createInstance(this);

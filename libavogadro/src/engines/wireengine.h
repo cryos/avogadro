@@ -45,17 +45,9 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      WireEngine(QObject *parent=0) : Engine(parent), m_glwidget(0) {}
+      WireEngine(QObject *parent=0);
       //! Deconstructor
       ~WireEngine() {}
-
-      //! \name Description methods
-      //@{
-      //! @return engine name
-      QString name() { return(QString(tr("Wireframe"))); }
-      //! @return engine description
-      QString description() { return(QString(tr("Wireframe rendering"))); }
-      //@}
 
       //! \name Render Methods
       //@{

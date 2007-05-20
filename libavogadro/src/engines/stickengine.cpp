@@ -40,6 +40,12 @@ using namespace OpenBabel;
 using namespace Eigen;
 using namespace Avogadro;
 
+StickEngine::StickEngine(QObject *parent) : Engine(parent), m_update(true), m_glwidget(0) 
+{
+  setName(tr("Stick"));
+  setDescription(tr("Renders as Cylinders"));
+}
+
 StickEngine::~StickEngine()
 {
 }

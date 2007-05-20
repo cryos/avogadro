@@ -28,6 +28,8 @@ set(avogadro_SRCS
     application.cpp
     editcommands.cpp
     enginelistview.cpp
+    engineitemmodel.cpp
+    enginetabwidget.cpp
     flowlayout.cpp
     flattabwidget.cpp
     main.cpp

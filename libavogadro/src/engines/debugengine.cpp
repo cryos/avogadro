@@ -41,6 +41,12 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
+DebugEngine::DebugEngine(QObject *parent) : Engine(parent) 
+{
+  setName(tr("Debug Info"));
+  setDescription(tr("Renders debug information"));
+}
+
 bool DebugEngine::render(GLWidget *gl)
 {
   QList<Primitive *> list;

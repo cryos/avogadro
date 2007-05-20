@@ -25,11 +25,11 @@
 
 
 #include <avogadro/primitive.h>
-#include <QComboBox>
+#include <QWidget>
 
 namespace Avogadro {
 
-  class ElementComboBox : public QComboBox
+  class ElementComboBox : public QWidget
   {
     Q_OBJECT
 

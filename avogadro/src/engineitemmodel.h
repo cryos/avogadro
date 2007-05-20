@@ -1,10 +1,7 @@
 /**********************************************************************
-  Debug Engine - Engine for displaying debug information.
+  EngineItemModel - List Model for Engines
 
-  Copyright (C) 2007 Ross Braithwaite
-  Copyright (C) 2007 Shahzad Ali
-  Copyright (C) 2007 James Bunt
-  Copyright (C) 2007 Benoit Jacob
+  Copyright (C) 2007 Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -25,49 +22,42 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __DEBUGENGINE_H
-#define __DEBUGENGINE_H
+#ifndef __ENGINEITEMMODEL_H
+#define __ENGINEITEMMODEL_H
 
-#include <avogadro/global.h>
-#include <avogadro/engine.h>
-
-#include <openbabel/mol.h>
-
-#include <QGLWidget>
+#include <QObject>
+#include <QAbstractItemModel>
+#include <QVariant>
+#include <QModelIndex>
 
 namespace Avogadro {
+  class GLWidget;
 
-  //! Debug Engine class.
-  class DebugEngine : public Engine
+  class EngineItemModelPrivate;
+  class EngineItemModel : public QAbstractItemModel
   {
     Q_OBJECT
 
     public:
-      //! Constructor
-      DebugEngine(QObject *parent=0);
-      //! Deconstructor
-      ~DebugEngine() {}
-
-      //! \name Render Methods
-      //@{
-
-      bool render(GLWidget *gl);
-      //@}
-
-      private:
-      inline double computeFramesPerSecond();
-  };
-
-  //! Generates instances of our LabelEngine class
-  class DebugEngineFactory : public QObject, public EngineFactory
-  {
-    Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
+      enum Role {
+        EngineRole = Qt::UserRole + 1,
+      };
 
     public:
-      Engine *createInstance(QObject *parent = 0) { 
-        return new DebugEngine(parent); 
-      }
+      EngineItemModel( GLWidget *widget, QObject *parent = 0 );
+
+      QModelIndex parent( const QModelIndex & index ) const;
+      int rowCount( const QModelIndex & parent = QModelIndex() ) const;
+      int columnCount( const QModelIndex & parent = QModelIndex() ) const;
+      QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
+      bool setData ( const QModelIndex & index, const QVariant & value, int role = Qt::EditRole );
+      Qt::ItemFlags flags ( const QModelIndex & index ) const;
+
+      QModelIndex index ( int row, int column, const QModelIndex & parent = QModelIndex() ) const;
+
+    private:
+      EngineItemModelPrivate * const d;
+
   };
 
 } // end namespace Avogadro

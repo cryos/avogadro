@@ -42,6 +42,12 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
+LabelEngine::LabelEngine(QObject *parent) : Engine(parent) 
+{
+  setName(tr("Label"));
+  setDescription(tr("Renders primitive labels"));
+}
+
 bool LabelEngine::render(GLWidget *gl)
 {
   gl->painter()->begin(gl);

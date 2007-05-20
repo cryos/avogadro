@@ -45,17 +45,10 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      LabelEngine(QObject *parent=0) : Engine(parent) {}
+      LabelEngine(QObject *parent=0);
       //! Deconstructor
       ~LabelEngine() {}
 
-      //! \name Description methods
-      //@{
-      //! @return engine name
-      QString name() { return(QString(tr("Label"))); }
-      //! @return engine description
-      QString description() { return(QString(tr("Renders primitive labels"))); }
-      //@}
 
       //! \name Render Methods
       //@{
