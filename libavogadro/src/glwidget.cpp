@@ -24,7 +24,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "config.h"
+#include <config.h>
 
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>

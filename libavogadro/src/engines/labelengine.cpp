@@ -23,7 +23,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "config.h"
+#include <config.h>
 #include "labelengine.h"
 
 #include <avogadro/primitive.h>

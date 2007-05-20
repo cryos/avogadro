@@ -25,7 +25,7 @@
  **********************************************************************/
 
 #include "sphereengine.h"
-#include "config.h"
+#include <config.h>
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>

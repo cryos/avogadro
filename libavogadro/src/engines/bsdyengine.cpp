@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "config.h"
+#include <config.h>
 #include "bsdyengine.h"
 
 #include <avogadro/primitive.h>
