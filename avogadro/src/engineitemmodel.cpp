@@ -119,7 +119,10 @@ namespace Avogadro {
 
   QModelIndex EngineItemModel::index ( int row, int column, const QModelIndex & parent ) const
   {
-    if(!parent.isValid())
+    //FIXME: (bjacob) I added the "&& row >=0" condition below because I had to
+    //fix a failed assert. It'd be cleaner to fix the cause of the problem, which is that
+    //this function is being called with row=-1.
+    if(!parent.isValid() && row >=0)
     {
       Engine *engine = d->widget->engines().at(row);
       return createIndex(row,column,engine);
