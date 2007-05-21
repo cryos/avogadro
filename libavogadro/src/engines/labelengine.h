@@ -64,7 +64,6 @@ namespace Avogadro {
     private:
       int m_type;  // Label type
       LabelSettingsWidget* m_settingsWidget;
- //     Ui::LabelSettingsWidget *m_ui;
 
     private Q_SLOTS:
       void setLabelType(int value);

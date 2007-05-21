@@ -174,17 +174,17 @@ double BSDYEngine::radius(const Primitive *p)
     return 0.;
 }
 
-bool BSDYEngine::render(const Atom *a)
+bool BSDYEngine::render(const Atom*)
 {
   return true;
 }
 
-bool BSDYEngine::render(const Bond *b)
+bool BSDYEngine::render(const Bond*)
 {
   return true;
 }
 
-bool BSDYEngine::render(const Molecule *m)
+bool BSDYEngine::render(const Molecule*)
 {
   // Disabled
   return false;

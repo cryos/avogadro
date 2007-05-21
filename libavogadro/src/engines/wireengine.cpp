@@ -127,7 +127,7 @@ bool WireEngine::render(const Bond *b)
   return true;
 }
 
-bool WireEngine::render(const Molecule *m)
+bool WireEngine::render(const Molecule*)
 {
   // Disabled
   return false;

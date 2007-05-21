@@ -92,19 +92,15 @@ bool StickEngine::render(GLWidget *gl)
   // render bonds (sticks)
   glDisable( GL_RESCALE_NORMAL );
   glEnable( GL_NORMALIZE );
-  Atom *atom1;
-  Atom *atom2;
+  
   foreach( Primitive *p, list ) {
-    // FIXME: should be qobject_cast but bug with Qt/Mac
-    Bond *b = dynamic_cast<Bond *>(p);
+    const Bond *b = static_cast<const Bond *>(p);
 
-    atom1 = (Atom *) b->GetBeginAtom();
-    atom2 = (Atom *) b->GetEndAtom();
+    const Atom* atom1 = static_cast<const Atom *>(b->GetBeginAtom());
+    const Atom* atom2 = static_cast<const Atom *>(b->GetEndAtom());
     Vector3d v1 (atom1->pos());
     Vector3d v2 (atom2->pos());
     Vector3d v3 (( v1 + v2 ) / 2);
-
-    int order = b->GetBO();
 
     map.set(atom1);
     map.applyAsMaterials();
@@ -138,17 +134,17 @@ double StickEngine::radius(const Primitive *p)
     return 0.;
 }
 
-inline double StickEngine::radius(const Atom *a)
+inline double StickEngine::radius(const Atom*)
 {
   return 0.25;
 }
 
-bool StickEngine::render(const Atom *a)
+bool StickEngine::render(const Atom*)
 {
   return true;
 }
 
-bool StickEngine::render(const Bond *b)
+bool StickEngine::render(const Bond*)
 {
   return true;
 }
@@ -171,7 +167,7 @@ void StickEngine::removePrimitive(Primitive *primitive)
   m_update = true;
 }
 
-bool StickEngine::render(const Molecule *m)
+bool StickEngine::render(const Molecule*)
 {
   // Disabled
   return false;

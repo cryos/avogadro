@@ -105,7 +105,6 @@ void NavigateTool::translate( const Eigen::Vector3d &what, const QPoint &from, c
 
 void NavigateTool::rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const
 {
-  const MatrixP3d & m = m_glwidget->camera()->modelview();
   Vector3d xAxis = m_glwidget->camera()->backtransformedXAxis();
   Vector3d yAxis = m_glwidget->camera()->backtransformedYAxis();
   m_glwidget->camera()->translate( center );
@@ -116,7 +115,6 @@ void NavigateTool::rotate( const Eigen::Vector3d &center, double deltaX, double 
 
 void NavigateTool::tilt( const Eigen::Vector3d &center, double delta ) const
 {
-  const MatrixP3d & m = m_glwidget->camera()->modelview();
   Vector3d zAxis = m_glwidget->camera()->backtransformedZAxis();
   m_glwidget->camera()->translate( center );
   m_glwidget->camera()->rotate( delta * ROTATION_SPEED, zAxis );
@@ -136,7 +134,7 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
   return 0;
 }
 
-QUndoCommand* NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
 {
   m_glwidget = widget;
   m_leftButtonPressed = false;

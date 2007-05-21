@@ -53,7 +53,7 @@ namespace Avogadro {
     return d->primitiveList;
   }
 
-  double Engine::radius(const Primitive *primitive)
+  double Engine::radius(const Primitive*)
   {
     return 0.0;
   }
@@ -78,7 +78,7 @@ namespace Avogadro {
     d->primitiveList.append(primitive);
   }
 
-  void Engine::updatePrimitive(Primitive *primitive)
+  void Engine::updatePrimitive(Primitive*)
   {
   }
 

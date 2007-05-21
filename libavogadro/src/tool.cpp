@@ -89,7 +89,7 @@ namespace Avogadro {
     return usefulness() < other.usefulness();
   }
 
-  bool Tool::paint(GLWidget *widget)
+  bool Tool::paint(GLWidget*)
   {
 	  return true;
   }

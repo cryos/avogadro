@@ -175,7 +175,7 @@ QUndoCommand* ManipulateTool::mousePress(GLWidget *widget, const QMouseEvent *ev
   return 0;
 }
 
-QUndoCommand* ManipulateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* ManipulateTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
 {
   m_glwidget = widget;
   m_leftButtonPressed = false;
@@ -259,7 +259,7 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
   return 0;
 }
 
-QUndoCommand* ManipulateTool::wheel(GLWidget *widget, const QWheelEvent *event )
+QUndoCommand* ManipulateTool::wheel(GLWidget*, const QWheelEvent*)
 {
   return 0;
 }
