@@ -6,7 +6,7 @@
 <body>
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 22<br>
-Total Issues = 53 ...as of Mai 18 2007 20:35:37</p>
+Total Issues = 64 ...as of Mai 21 2007 10:04:36</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>OOPS! 2 issues found!</b>
@@ -23,7 +23,7 @@ Total Issues = 53 ...as of Mai 18 2007 20:35:37</p>
 <li>Check for contractions in strings... 
 <b>okay!</b>
 <li>Check for an acceptable copyright... 
-<b>OOPS! 25 issues found!</b>
+<b>OOPS! 32 issues found!</b>
 <ul>
 <li>	../avogadro/src/application.cpp: missing tags: email address(line 4)  (1)
 </li>
@@ -41,9 +41,17 @@ Total Issues = 53 ...as of Mai 18 2007 20:35:37</p>
 </li>
 <li>	../avogadro/src/elementcombobox.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
+<li>	../avogadro/src/engineitemmodel.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	../avogadro/src/engineitemmodel.h: missing tags: email address(line 4)  (1)
+</li>
 <li>	../avogadro/src/enginelistview.cpp: missing tags: email address(line 4)  (1)
 </li>
 <li>	../avogadro/src/enginelistview.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	../avogadro/src/enginetabwidget.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	../avogadro/src/enginetabwidget.h: missing tags: email address(line 4)  (1)
 </li>
 <li>	../avogadro/src/extension.h: missing tags: email address(line 4)  (1)
 </li>
@@ -60,6 +68,12 @@ Total Issues = 53 ...as of Mai 18 2007 20:35:37</p>
 <li>	../avogadro/src/mainwindow.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
 <li>	../avogadro/src/mainwindow.ui: missing tags: copyright  (1)
+</li>
+<li>	../avogadro/src/settingsdialog.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	../avogadro/src/settingsdialog.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	../avogadro/src/settingsdialog.ui: missing tags: copyright  (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	All source files must contain a copyright header which identifies
@@ -83,8 +97,14 @@ Total Issues = 53 ...as of Mai 18 2007 20:35:37</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>OOPS! 1 issue found!</b>
+<b>OOPS! 4 issues found!</b>
 <ul>
+<li>	../avogadro/src/engineitemmodel.h: line#47 (1)
+</li>
+<li>	../avogadro/src/enginelistview.h: line#48 (1)
+</li>
+<li>	../avogadro/src/enginetabwidget.h: line#50 (1)
+</li>
 <li>	../avogadro/src/flowlayout.h: line#35 (1)
 </li>
 </ul>
@@ -121,13 +141,15 @@ Total Issues = 53 ...as of Mai 18 2007 20:35:37</p>
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for an acceptable license... 
-<b>OOPS! 3 issues found!</b>
+<b>OOPS! 4 issues found!</b>
 <ul>
 <li>	../avogadro/src/avogadro.qrc: missing license
 </li>
 <li>	../avogadro/src/CMakeLists.txt: missing license
 </li>
 <li>	../avogadro/src/mainwindow.ui: missing license
+</li>
+<li>	../avogadro/src/settingsdialog.ui: missing license
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Each source file must contain a license or a reference to a license
