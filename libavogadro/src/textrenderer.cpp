@@ -100,7 +100,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   // *** STEP 1 : render the character to a QImage ***
   
   // compute the size of the image to create
-  QFontMetrics fontMetrics ( font );
+  const QFontMetrics fontMetrics ( font );
   m_realwidth = fontMetrics.width(c);
   m_realheight = fontMetrics.height();
   if(m_realwidth == 0 || m_realheight == 0) return false;
@@ -324,7 +324,9 @@ class TextRendererPrivate
     bool initialized;
     
     GLenum textureTarget;
+    
     static int isGLExtensionSupported(const char *extension);
+    void do_draw(const QString &string);
 };
 
 TextRenderer::TextRenderer() : d(new TextRendererPrivate)
@@ -433,61 +435,36 @@ void TextRenderer::end()
   }
 }
 
-int TextRenderer::do_draw( const QString &string )
+void TextRendererPrivate::do_draw( const QString &string )
 {
-  CharRenderer *c;
-  int retval = 0;
-  if( d->charTable.contains( string[0] ) )
+  for( int i = 0; i < string.size(); i++ )
   {
-    c = d->charTable.value( string[0] );
-    c->draw();
-  }
-  else
-  {
-    c = new CharRenderer;
-    if( c->initialize( string[0], d->font, d->textureTarget ) )
-    {
-      d->charTable.insert( string[0], c);
-      c->draw();
-    }
-    else
-    {
-      delete c;
-      c = 0;
-    }
-  }
-  if(c) retval = c->height() -2;
-
-  for( int i = 1; i < string.size(); i++ )
-  {
-    if( d->charTable.contains( string[i] ) )
-      d->charTable.value( string[i] )->draw();
+    if( charTable.contains( string[i] ) )
+      charTable.value( string[i] )->draw();
     else
     {
       CharRenderer *c = new CharRenderer;
-      if( c->initialize( string[i], d->font, d->textureTarget ) )
+      if( c->initialize( string[i], font, textureTarget ) )
       {
-        d->charTable.insert( string[i], c);
+        charTable.insert( string[i], c);
         c->draw();
       }
       else delete c;
     }
   }
-  return retval;
 }
 
 int TextRenderer::draw( int x, int y, const QString &string )
 {
   assert(d->textmode);
   if( string.isEmpty() ) return 0;
-
   glPushMatrix();
   glLoadIdentity();
   glTranslatef( x, d->glwidget->height() - y, 0 );
-        int retval = do_draw(string);
+  d->do_draw(string);
   glPopMatrix();
-
-  return retval;
+  const QFontMetrics fontMetrics ( d->font );
+  return fontMetrics.height();
 }
 
 int TextRenderer::draw( const Eigen::Vector3d &pos, const QString &string )
@@ -495,16 +472,22 @@ int TextRenderer::draw( const Eigen::Vector3d &pos, const QString &string )
   assert(d->textmode);
   if( string.isEmpty() ) return 0;
 
+  const QFontMetrics fontMetrics ( d->font );
+  int w = fontMetrics.width(string);
+  int h = fontMetrics.height();
+
   Eigen::Vector3d wincoords = d->glwidget->camera()->project(pos);
+  wincoords.x() -= w/2;
+  wincoords.y() += h/2;
+
   glPushMatrix();
   glLoadIdentity();
   glTranslatef( static_cast<int>(wincoords.x()),
                 static_cast<int>(wincoords.y()),
                 -wincoords.z() );
-  int retval = do_draw(string);
+  d->do_draw(string);
   glPopMatrix();
-
-  return retval;
+  return h;
 }
 
 bool TextRenderer::isActive()

@@ -125,6 +125,7 @@ namespace Avogadro
 
       /**
        * Draw text inside the 3D scene. Must be called between begin() and end().
+       * The text is centered (both horizontally and vertically) around the specified position.
        * @param pos the position of the text in the scene's coordinate system
        * @param string the QString to render
        * @returns the height in pixels of the text just rendered (0 for an empty string).
@@ -147,8 +148,6 @@ namespace Avogadro
     private:
 
       TextRendererPrivate * const d;
-      int do_draw(const QString &string);
-
   };
 
 } // namespace Avogadro
