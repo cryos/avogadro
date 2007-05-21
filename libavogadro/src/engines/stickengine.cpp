@@ -63,7 +63,7 @@ bool StickEngine::render(GLWidget *gl)
   glPushAttrib(GL_TRANSFORM_BIT);
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
-  list = queue().primitiveList(Primitive::AtomType);
+  list = primitiveList().subList(Primitive::AtomType);
   glPushName(Primitive::AtomType);
   foreach( Primitive *p, list ) {
     Atom * a = static_cast<Atom *>(p);
@@ -86,7 +86,7 @@ bool StickEngine::render(GLWidget *gl)
   }
   glPopName();
 
-  list = queue().primitiveList(Primitive::BondType);
+  list = primitiveList().subList(Primitive::BondType);
   Eigen::Vector3d normalVector;
 
   // render bonds (sticks)

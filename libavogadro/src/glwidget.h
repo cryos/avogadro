@@ -157,7 +157,7 @@ namespace Avogadro {
    * The widget relies on a various Engine subclasses to handle
    * rendering of the 3d objects.  
    *
-   * Each engine is allocated a PrimitiveQueue object.  This queue contains
+   * Each engine is allocated a PrimitiveList object.  This queue contains
    * all primitivew which that engine is responsible for rendering for this
    * glwidget.  Thus, we can have one queue containing only the bonds, and 
    * one queue containing only the atoms which would allow bonds and atoms
@@ -324,12 +324,6 @@ namespace Avogadro {
 
       void setPainter(Painter *painter);
       
-//       /** sets the quality setting. This influences the detail level of the
-//         * geometric objects (spheres and cylinders). Values range from 0 to
-//         * PAINTER_GLOBAL_QUALITY_SETTINGS-1.
-//         */
-//       void setQuality(int quality);
-
       /**
        * Add the primitive to the widget.  This slot is called whenever
        * a new primitive is added to our molecule model.  It adds the 
@@ -338,6 +332,7 @@ namespace Avogadro {
        * @param primitive pointer to a primitive to add to the view
        */
       void addPrimitive(Primitive *primitive);
+
       /**
        * Update a primitive.  This slot is called whenever a primitive of our 
        * molecule model has been changed and we need to check our view.
@@ -348,6 +343,7 @@ namespace Avogadro {
        * @param primitive primitive that was changed
        */
       void updatePrimitive(Primitive *primitive);
+
       /** Remove a primitive.  This slot is called whenever a primitive of our
        * molecule model has been removed and we need to take it off our list.  
        * Additionally we need to update other items in our view that are impacted

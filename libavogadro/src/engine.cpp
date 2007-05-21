@@ -31,7 +31,7 @@ namespace Avogadro {
   public:
     EnginePrivate() : enabled(false) {}
     
-    PrimitiveQueue queue;
+    PrimitiveList primitiveList;
     Color colorMap;
     bool enabled;
 
@@ -48,9 +48,9 @@ namespace Avogadro {
     delete d;
   }
 
-  const PrimitiveQueue& Engine::queue() const
+  PrimitiveList Engine::primitiveList() const
   {
-    return d->queue;
+    return d->primitiveList;
   }
 
   double Engine::radius(const Primitive *primitive)
@@ -60,7 +60,7 @@ namespace Avogadro {
 
   void Engine::clearQueue()
   {
-    d->queue.clear();
+    d->primitiveList.clear();
   }
 
   bool Engine::isEnabled()
@@ -75,7 +75,7 @@ namespace Avogadro {
 
   void Engine::addPrimitive(Primitive *primitive)
   {
-    d->queue.addPrimitive(primitive);
+    d->primitiveList.append(primitive);
   }
 
   void Engine::updatePrimitive(Primitive *primitive)
@@ -84,7 +84,7 @@ namespace Avogadro {
 
   void Engine::removePrimitive(Primitive *primitive)
   {
-    d->queue.removePrimitive(primitive);
+    d->primitiveList.removeAll(primitive);
   }
 
   void Engine::setColorMap(Color &map)

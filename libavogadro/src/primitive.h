@@ -48,7 +48,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_PROPERTY(bool selected READ isSelected WRITE setSelected)
-    Q_PROPERTY(enum Type type READ type)
+    Q_PROPERTY(Type type READ type)
     Q_ENUMS(Type)
 
     public:
@@ -78,6 +78,7 @@ namespace Avogadro {
         /// First Placeholder
         FirstType=OtherType 
       };
+
       
       /** 
        * Default constructor.
@@ -89,7 +90,7 @@ namespace Avogadro {
        * @param type the primitive type
        * @param parent the object parent
        */
-      explicit Primitive(enum Type type, QObject *parent=0);
+      explicit Primitive(Type type, QObject *parent=0);
       /**
        * Deconstructor
        */
@@ -135,7 +136,7 @@ namespace Avogadro {
       /**
        * @return the primitive type (one of Primitive::Type)
        */
-      enum Type type() const;
+      Type type() const;
 
     public Q_SLOTS:
       /**
@@ -152,7 +153,7 @@ namespace Avogadro {
     protected:
       PrimitivePrivate * const d_ptr;
       Primitive(PrimitivePrivate &dd, QObject *parent = 0);
-      Primitive(PrimitivePrivate &dd, enum Type type, QObject *parent=0);
+      Primitive(PrimitivePrivate &dd, Type type, QObject *parent=0);
 
     private:
       Q_DECLARE_PRIVATE(Primitive)
@@ -377,66 +378,6 @@ namespace Avogadro {
        * @param primitive pointer to the primitive that was updated before it is free'd
        */
       void primitiveRemoved(Primitive *primitive);
-  };
-
-  /**
-   * @class PrimitiveQueue
-   * @brief Class which set of Primitives
-   * @author Donald Ephraim Curtis
-   *
-   * The PrimitiveQueue class is designed to hold a set of Primitive objects
-   * and keep them organized by type allowing groups of them to be 
-   * retrieved in constant time.
-   */
-  class PrimitiveQueuePrivate;
-  class A_EXPORT PrimitiveQueue
-  {
-    public:
-      /**
-       * Constructor
-       */
-      PrimitiveQueue();
-
-      /**
-       * Deconstructor
-       */
-      ~PrimitiveQueue();
-
-      /**
-       * Returns a list of primitives for a given type.
-       *
-       * @param type the type of primitives to retrieve, one of Primitive::Type
-       * @return a QList of pointers to Primitive objects
-       */
-      const QList<Primitive *>& primitiveList(enum Primitive::Type type) const;
-
-      /**
-       * Add a primitive to the queue.
-       *
-       * @param p primitive to add
-       */
-      void addPrimitive(Primitive *p);
-
-      /**
-       * Remove a primitive from the queue.  If the parameter does not
-       * exist in the queue, nothing is removed.
-       *
-       * @param p primitive to remove
-       */
-      void removePrimitive(Primitive *p);
-
-      /**
-       * @return the total number of primitives in this queue
-       */
-      int size() const;
-      /**
-       * Removes every primitive from the queue.
-       */
-      void clear();
-
-    private:
-      PrimitiveQueuePrivate * const d;
-
   };
 
 } // namespace Avogadro

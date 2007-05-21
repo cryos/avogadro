@@ -23,6 +23,7 @@ set(libavogadro_SRCS
   glwidget.cpp
   moleculetreeview.cpp
   primitive.cpp
+  primitivelist.cpp
   tool.cpp
   toolgroup.cpp
   undosequence.cpp
@@ -33,16 +34,17 @@ set(libavogadro_SRCS
 )
 
 set(libavogadro_HDRS
+  camera.h
   color.h
-  primitive.h
   engine.h
   glwidget.h
-  toolgroup.h
-  moleculetreeview.h
   global.h
-  camera.h
-  undosequence.h
+  moleculetreeview.h
+  primitive.h
+  primitivelist.h
   painter.h
+  toolgroup.h
+  undosequence.h
 )
 
 qt4_automoc(${libavogadro_SRCS})

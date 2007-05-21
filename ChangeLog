@@ -1,4 +1,8 @@
 2007-05-21  Donald E. Curtis <dcurtis3@sourceforge.net>
+	
+	* .: Refactored PrimitiveQueue -> PrimitiveList.  Within the class renamed
+	::primitiveQueue to ::subList which returns a subList based on type.
+	Fixed changes due to refactoring in various files.
 
 	* libavogadro/src/primitive.h: Fixed compiler warnings.
 	* libavogadro/src/glwidget.cpp: Fixed compiler warnings.

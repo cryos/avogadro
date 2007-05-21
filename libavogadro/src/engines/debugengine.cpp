@@ -63,10 +63,10 @@ bool DebugEngine::render(GLWidget *gl)
                                        + " x "
                                        + QString::number(gl->height()) );
   
-  list = queue().primitiveList(Primitive::AtomType);
+  list = primitiveList().subList(Primitive::AtomType);
   y += gl->painter()->drawText(x, y, "Atoms: " + QString::number(list.size()));
 
-  list = queue().primitiveList(Primitive::BondType);
+  list = primitiveList().subList(Primitive::BondType);
   y += gl->painter()->drawText(x, y, "Bonds: " + QString::number(list.size()));
 
   gl->painter()->end();

@@ -57,12 +57,12 @@ bool WireEngine::render(GLWidget *gl)
   glDisable(GL_LIGHTING);
   glDisable(GL_BLEND);
 
-  list = queue().primitiveList(Primitive::AtomType);
+  list = primitiveList().subList(Primitive::AtomType);
   foreach( Primitive *p, list ) {
     render(static_cast<const Atom *>(p));
   }
 
-  list = queue().primitiveList(Primitive::BondType);
+  list = primitiveList().subList(Primitive::BondType);
   foreach( Primitive *p, list ) {
     render(static_cast<const Bond *>(p));
   }

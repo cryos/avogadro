@@ -27,6 +27,7 @@
 
 #include <avogadro/global.h>
 #include <avogadro/primitive.h>
+#include <avogadro/primitivelist.h>
 #include <avogadro/color.h>
 
 #include <QString>
@@ -79,11 +80,11 @@ namespace Avogadro {
       void setDescription(const QString &description);
 
       /**
-       * Render a PrimitiveQueue.  This function is allowed to rendering 
+       * Render a PrimitiveList.  This function is allowed to rendering 
        * whatever primitives it wishes.  There is no requirement that it
        * render every primitive.
        *
-       * @param queue This parameter is of type PrimitiveQueue which
+       * @param queue This parameter is of type PrimitiveList which
        * provides an organized list of Primitive* objects.  During 
        * generation of the GL view engines will have their render
        * function called at most once.  It is the responsibility 
@@ -94,43 +95,19 @@ namespace Avogadro {
        *
        * Example
        * @code
-       * Engine::render(const PrimitiveQueue *queue)
-       * {
-       *   const QList<Primitive *> *list;
-       *
-       *   glPushName(Primitive::AtomType);
-       *   list = q->primitiveList(Primitive::AtomType);
-       *   for( int i=0; i<list->size(); i++ ) {
-       *     Bond *atom = (*list)[i];
-       *     glPushName(atom->GetIdx());
-       *     *** render atom ***
-       *     glPopName();
-       *   }
-       *
-       *   glPushName(Primitive::BondType);
-       *   list = q->primitiveList(Primitive::BondType);
-       *   for( int i=0; i<list->size(); i++ ) {
-       *     Bond *bond = (*list)[i];
-       *     glPushName(bond->GetIdx());
-       *     *** render bond ***
-       *     glPopName();
-       *   }
-       *   glPopName();
-       *
-       *   return true;
-       * }
+       * FIXME!
        * @endcode
        *
        * @note To allow picking to happen you need to push the object type and name.
        * If objects cannot be picked this may be omitted.
        *
        * For more information on the various primitive lists available see
-       * PrimitiveQueue.
+       * PrimitiveList.
        * 
        */
       virtual bool render(GLWidget *gl) = 0;
 
-      const PrimitiveQueue& queue() const;
+      PrimitiveList primitiveList() const;
 
       /** Get the radius of the primitive referred to.
        * @param primitive is the Primitive to get the radius of
