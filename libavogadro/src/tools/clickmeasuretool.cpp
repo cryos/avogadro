@@ -98,17 +98,17 @@ QUndoCommand* ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *
   return 0;
 }
 
-QUndoCommand* ClickMeasureTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* ClickMeasureTool::mouseMove(GLWidget*, const QMouseEvent *)
 {
   return 0;
 }
 
-QUndoCommand* ClickMeasureTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* ClickMeasureTool::mouseRelease(GLWidget*, const QMouseEvent*)
 {
   return 0;
 }
 
-QUndoCommand* ClickMeasureTool::wheel(GLWidget *widget, const QWheelEvent *event)
+QUndoCommand* ClickMeasureTool::wheel(GLWidget*, const QWheelEvent*)
 {
   return 0;
 }
@@ -135,7 +135,6 @@ bool ClickMeasureTool::paint(GLWidget *widget)
     glColor3f(1.0,0.0,0.0);
     Vector3d pos = m_selectedAtoms[0]->pos();
     double radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3;
-    const MatrixP3d & m = widget->camera()->modelview();
 
     Vector3d xAxis = widget->camera()->backtransformedXAxis();
     Vector3d zAxis = widget->camera()->backtransformedZAxis();
@@ -150,7 +149,6 @@ bool ClickMeasureTool::paint(GLWidget *widget)
     {
       Vector3d vector[2];
       vector[0] = m_selectedAtoms[0]->pos() - m_selectedAtoms[1]->pos();
-      double distance = vector[0].norm();
       double angle;
 
       glColor3f(0.0,1.0,0.0);

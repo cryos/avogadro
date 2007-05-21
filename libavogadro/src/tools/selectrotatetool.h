@@ -90,7 +90,6 @@ namespace Avogadro {
       bool                m_rightButtonPressed; // translation
       bool                m_midButtonPressed;   // scale / zoom
       bool                m_movedSinceButtonPressed;
-      bool                m_manipulateMode;     // shift
 
       //! Temporary var for adding selection box
       GLuint              m_selectionDL;

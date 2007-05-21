@@ -75,11 +75,6 @@ QUndoCommand* SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *
   m_movedSinceButtonPressed = false;
   m_lastDraggingPosition = event->pos();
   m_initialDraggingPosition = event->pos();
-//  if (QApplication::keyboardModifiers() & Qt::ShiftModifier) {
-//      m_manipulateMode = true;
-//  } else {
-    m_manipulateMode = false;
-//  }
 
   //! List of hits from a selection/pick
   m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
@@ -96,7 +91,7 @@ QUndoCommand* SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *
   return 0;
 }
 
-QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
 {
   Molecule *molecule = widget->molecule();
   if(!molecule) {
@@ -135,7 +130,6 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
 //       }
     }
 
-    bool isSelected;
     switch (m_selectionMode) {
     case 2: // residue
       foreach(Primitive *hit, hitList) {
@@ -199,7 +193,7 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
 
     // (sx, sy) = Upper left most position.
     // (ex, ey) = Bottom right most position.
-    QList<GLHit> hits = widget->hits(sx, sy, ex-sx, ey-sy);
+    QList<GLHit> hits = widget->hits(sx, sy, w, h);
     // Iterate over the hits
     foreach(GLHit hit, hits)
     {
@@ -236,7 +230,6 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
 
 QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
-  Molecule *molecule = widget->molecule();
   QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
   m_lastDraggingPosition = event->pos();
@@ -252,47 +245,17 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
       Vector3d xAxis = widget->camera()->backtransformedXAxis();
       Vector3d yAxis = widget->camera()->backtransformedYAxis();
 
-      if (!m_manipulateMode) {
-        widget->camera()->translate( widget->center() );
-        widget->camera()->rotate( deltaDragging.y() * ROTATION_SPEED, xAxis );
-        widget->camera()->rotate( deltaDragging.x() * ROTATION_SPEED, yAxis );
-        widget->camera()->translate( - widget->center() );
-      } 
-/*      else if (molecule) { 
-        // rotate only selected primitives
-        MatrixP3d fragmentRotation;
-        fragmentRotation.loadTranslation(m_selectionCenter);
-        fragmentRotation.rotate3(deltaDragging.y() * ROTATION_SPEED, XAxis );
-        fragmentRotation.rotate3(deltaDragging.x() * ROTATION_SPEED, YAxis );
-        fragmentRotation.translate(-m_selectionCenter);
-
-        FOR_ATOMS_OF_MOL(a, molecule) {
-          Atom *atom = static_cast<Atom *>(&*a);
-          if (atom->isSelected()) {
-            atom->setPos(fragmentRotation * atom->pos());
-          }
-        }
-      } */
+      widget->camera()->translate( widget->center() );
+      widget->camera()->rotate( deltaDragging.y() * ROTATION_SPEED, xAxis );
+      widget->camera()->rotate( deltaDragging.x() * ROTATION_SPEED, yAxis );
+      widget->camera()->translate( - widget->center() );
     }
     else if ( event->buttons() & Qt::RightButton )
     {
       // translate
-      if (!m_manipulateMode) {
       widget->camera()->pretranslate( Vector3d( deltaDragging.x() * ROTATION_SPEED,
-            deltaDragging.y() * ROTATION_SPEED,
-            0.0 ) );
-      } 
-/*      else if (molecule) { 
-        // translate only selected primitives
-        // now only works for atoms
-        OpenBabel::vector3 translation( deltaDragging.x() * ZOOM_SPEED,
-                  -deltaDragging.y() * ZOOM_SPEED,
-                  0.0 );
-        FOR_ATOMS_OF_MOL(a, molecule)
-          if (static_cast<Atom *>(&*a)->isSelected()) {
-            a->SetVector(a->GetVector() + translation);
-          }
-      } */
+        deltaDragging.y() * ROTATION_SPEED,
+        0.0 ) );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
@@ -313,7 +276,7 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
   return 0;
 }
 
-QUndoCommand* SelectRotateTool::wheel(GLWidget *widget, const QWheelEvent *event)
+QUndoCommand* SelectRotateTool::wheel(GLWidget*, const QWheelEvent*)
 {
   return 0;
 }
