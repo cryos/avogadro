@@ -36,9 +36,12 @@
 #include <QStringList>
 #include <QImage>
 
+#include "ui_labelsettingswidget.h"
+
 namespace Avogadro {
 
   //! Label Engine class.
+  class LabelSettingsWidget;
   class LabelEngine : public Engine
   {
     Q_OBJECT
@@ -55,6 +58,25 @@ namespace Avogadro {
       bool render(GLWidget *gl);
       //@}
 
+      //! Display a window for the user to pick rendering options
+      QWidget *settingsWidget();
+
+    private:
+      int m_type;  // Label type
+      LabelSettingsWidget* m_settingsWidget;
+ //     Ui::LabelSettingsWidget *m_ui;
+
+    private Q_SLOTS:
+      void setLabelType(int value);
+
+  };
+
+  class LabelSettingsWidget : public QWidget, public Ui::LabelSettingsWidget
+  {
+    public:
+      LabelSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+        setupUi(this);
+      }
   };
 
   //! Generates instances of our LabelEngine class

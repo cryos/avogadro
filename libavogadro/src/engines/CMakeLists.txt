@@ -29,8 +29,9 @@ INSTALL(TARGETS bsdyengine DESTINATION ${DESTINATION_DIR})
 
 # label engine
 set(labelengine_SRCS labelengine.cpp)
+qt4_wrap_ui(labelengine_UIS labelsettingswidget.ui)
 qt4_automoc(${labelengine_SRCS})
-ADD_LIBRARY(labelengine SHARED ${labelengine_SRCS} )
+ADD_LIBRARY(labelengine SHARED ${labelengine_SRCS} ${labelengine_UIS} )
 TARGET_LINK_LIBRARIES(labelengine avogadro-lib
                                 ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                 ${OPENGL_LIBRARIES}

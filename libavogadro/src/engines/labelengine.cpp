@@ -42,7 +42,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-LabelEngine::LabelEngine(QObject *parent) : Engine(parent) 
+LabelEngine::LabelEngine(QObject *parent) : Engine(parent), m_type(0), m_settingsWidget(0)
 {
   setName(tr("Label"));
   setDescription(tr("Renders primitive labels"));
@@ -54,7 +54,7 @@ bool LabelEngine::render(GLWidget *gl)
   QList<Primitive *> list;
 
   list = queue().primitiveList(Primitive::AtomType);
-  
+
   foreach( Primitive *p, list ) {
     Atom *atom = static_cast<Atom *>(p);
     const Vector3d pos = atom->pos();
@@ -74,9 +74,21 @@ bool LabelEngine::render(GLWidget *gl)
 
     double zDistance = gl->camera()->distance(pos);
 
-    if(zDistance < 50.0) {
-      QString str = QString::number(atom->GetIdx());
-      const MatrixP3d & m = gl->camera()->modelview();
+    if(zDistance < 50.0)
+    {
+      QString str;
+      switch(m_type)
+      {
+        case 0:
+          str = QString::number(atom->GetIdx());
+          break;
+        case 1:
+          str = QString(etab.GetSymbol(atom->GetAtomicNum()));
+          break;
+        case 2:
+        default:
+          str = QString((etab.GetName(atom->GetAtomicNum())).c_str());
+      }
 
       Vector3d zAxis = gl->camera()->backtransformedZAxis();
 
@@ -87,8 +99,24 @@ bool LabelEngine::render(GLWidget *gl)
     }
   }
   gl->painter()->end();
-  
+
   return true;
+}
+
+void LabelEngine::setLabelType(int value)
+{
+  m_type = value;
+  emit changed();
+}
+
+QWidget *LabelEngine::settingsWidget()
+{
+  if(!m_settingsWidget)
+  {
+    m_settingsWidget = new LabelSettingsWidget();
+    connect(m_settingsWidget->labelType, SIGNAL(activated(int)), this, SLOT(setLabelType(int)));
+  }
+  return m_settingsWidget;
 }
 
 #include "labelengine.moc"
