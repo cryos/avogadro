@@ -41,7 +41,8 @@ namespace Avogadro {
   class A_EXPORT Color
   {
   public:
-    Color() {}
+    Color();
+    virtual ~Color();
 
     /**
      * This constructor sets the four components of the color

@@ -106,12 +106,18 @@ namespace Avogadro {
 
   class GLWidgetPrivate {
     public:
-      GLWidgetPrivate() : background(Qt::black), molecule(0),
+      GLWidgetPrivate() : background(Qt::black), 
                           aCells(0), bCells(0), cCells(0),
-                          tool(0), toolGroup(0), selectBuf(0),
-                          selectBufSize(-1), painter(new Painter),
+                          molecule(0),
+                          camera(new Camera),
+                          tool(0), 
+                          toolGroup(0), 
+                          selectBuf(0),
+                          selectBufSize(-1), 
                           sharedPainter(false),
-                          camera(new Camera) {}
+                          painter(new Painter)
+                          {}
+
       ~GLWidgetPrivate()
       {
         if(!sharedPainter) {
@@ -123,8 +129,9 @@ namespace Avogadro {
 
       QList<Engine *>        engines;
 
-      Molecule               *molecule;
       QList<GLuint>          displayLists;
+
+      QColor                 background;
 
       Eigen::Vector3d        normalVector;
       Eigen::Vector3d        center;
@@ -136,14 +143,15 @@ namespace Avogadro {
       unsigned char          bCells;
       unsigned char          cCells;
 
+      Molecule               *molecule;
+
+      Camera                 *camera;
+
       Tool                   *tool;
       ToolGroup              *toolGroup;
 
-      Camera                 *camera;
-      QColor                 background;
-
-      int                    selectBufSize;
       GLuint                 *selectBuf;
+      int                    selectBufSize;
 
       QList<Primitive *>     selectionList;
 
@@ -239,7 +247,6 @@ namespace Avogadro {
 
   void GLWidget::render()
   {
-    int size = d->engines.size();
     OBUnitCell *uc = NULL;
     std::vector<vector3> cellVectors;
     vector3 offset;
@@ -643,7 +650,7 @@ namespace Avogadro {
   {
     QList<GLHit> hits;
     GLint viewport[4];
-    int hit_count;
+    unsigned int hit_count;
 
     int cx = w/2 + x;
     int cy = h/2 + y;

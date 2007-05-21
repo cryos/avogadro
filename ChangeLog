@@ -1,3 +1,12 @@
+2007-05-21  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* libavogadro/src/primitive.h: Fixed compiler warnings.
+	* libavogadro/src/glwidget.cpp: Fixed compiler warnings.
+	* libavogadro/src/color.cpp: Added virtual deconstructor and reformatted.
+	* libavogadro/src/engines/bsdyengine.cpp: Fixed compiler warnings.
+	* avogadro/src/enginelistview.cpp: Cleaned commented code and fixed bug
+	caused by previous approach.
+
 2007-05-18 01:41  Tim Vandermeersch <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extentions/ghemicalextention.h,

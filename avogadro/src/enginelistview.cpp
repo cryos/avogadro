@@ -40,10 +40,9 @@ namespace Avogadro {
       EngineListViewPrivate() : glWidget(0) {};
 
       GLWidget *glWidget;
-      QAbstractButton *button;
   };
 
-  EngineListView::EngineListView( GLWidget *glWidget, QWidget *parent ) : d(new EngineListViewPrivate)
+  EngineListView::EngineListView( GLWidget *glWidget, QWidget *parent ) : QListView(parent), d(new EngineListViewPrivate)
   {
     d->glWidget = glWidget;
 
@@ -71,59 +70,13 @@ namespace Avogadro {
     return d->glWidget;
   }
 
-//   void EngineListView::setSettingsButton( QAbstractButton *button )
-//   {
-//     d->button = button;
-//     connect(button, SIGNAL(clicked()), this, SLOT(showEngineSettings()));
-//   }
-
-//   QAbstractButton *EngineListView::settingsButton() const
-//   {
-//     return d->button;
-//   }
-
   void EngineListView::selectEngine( const QModelIndex &index )
   {
-    if(d->button) {
-      if(!index.internalPointer()) {
-        return;
-      }
-
-      Engine *engine = model()->data(index, EngineItemModel::EngineRole).value<Engine *>();
-      if(engine) {
-        emit clicked(engine);
-      }
+    Engine *engine = model()->data(index, EngineItemModel::EngineRole).value<Engine *>();
+    if(engine) {
+      emit clicked(engine);
     }
   }
-
-//   void EngineListView::showEngineSettings()
-//   {
-//     QModelIndexList selection = selectedIndexes();
-//     if(selection.count()) {
-//       QModelIndex index = selection.at(0);
-//       QDialog *dialog = qobject_cast<QDialog *>(model()->data(index, SettingsDialogRole).value<QWidget *>());
-//       if(dialog) {
-//         dialog->show();
-//       }
-//       else
-//       {
-//         if(!index.internalPointer()) {
-//           return;
-//         }
-//         Engine *engine = model()->data(index, EngineRole).value<Engine *>();
-//         if(engine && engine->settingsWidget()) {
-//           QDialog *newDialog = new QDialog();
-//           newDialog->setWindowTitle(engine->name() + tr(" Settings"));
-//           QVBoxLayout *vLayout = new QVBoxLayout();
-//           vLayout->addWidget(engine->settingsWidget());
-//           newDialog->setLayout(vLayout);
-//           model()->setData(index, qVariantFromValue(qobject_cast<QWidget *>(newDialog)), SettingsDialogRole);
-//           newDialog->show();
-//         }
-//       }
-//     }
-//   }
-
 
 } // end namespace Avogadro
 

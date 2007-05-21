@@ -179,7 +179,7 @@ namespace Avogadro {
        *
        * @param parent the object parent.
        */
-      Atom(QObject *parent=0) : OpenBabel::OBAtom(), Primitive(AtomType, parent) { }
+      Atom(QObject *parent=0) : Primitive(AtomType, parent), OpenBabel::OBAtom()  { }
 
       /** Returns the position of the atom, as a Eigen::Vector3d. This is similar to
         * the OBAtom::GetVector() method, which returns the position as a OpenBabel::vector3.
@@ -230,7 +230,7 @@ namespace Avogadro {
        *
        * @param parent the object parent.
        */
-      Bond(QObject *parent=0): OpenBabel::OBBond(), Primitive(BondType, parent) { }
+      Bond(QObject *parent=0): Primitive(BondType, parent), OpenBabel::OBBond() { }
   };
 
   /**
@@ -253,7 +253,7 @@ namespace Avogadro {
        *
        * @param parent the object parent.
        */
-      Residue(QObject *parent=0): OpenBabel::OBResidue(), Primitive(ResidueType, parent) { }
+      Residue(QObject *parent=0): Primitive(ResidueType, parent), OpenBabel::OBResidue() { }
   };
 
   /**

@@ -31,72 +31,78 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-Color::Color( GLfloat red, GLfloat green, GLfloat blue,
-                  GLfloat alpha )
-{
-  set(red, green, blue, alpha);
-}
+  Color::Color() {
+  }
 
-Color::Color( const OBAtom* atom )
-{
-  set(atom);
-}
+  Color::~Color() {
+  }
 
-Color& Color::operator=( const Color& other )
-{
-	m_red = other.m_red;
-	m_green = other.m_green;
-	m_blue = other.m_blue;
-	m_alpha = other.m_alpha;
+  Color::Color( GLfloat red, GLfloat green, GLfloat blue,
+      GLfloat alpha )
+  {
+    set(red, green, blue, alpha);
+  }
 
-	return *this;
-}
-  
-void Color::set(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
-{
-  m_red = red;
-  m_green = green;
-  m_blue = blue;
-  m_alpha = alpha;
-}
+  Color::Color( const OBAtom* atom )
+  {
+    set(atom);
+  }
 
-void Color::set(const OpenBabel::OBAtom *atom)
-{
-  if (!atom)
-    return;
+  Color& Color::operator=( const Color& other )
+  {
+    m_red = other.m_red;
+    m_green = other.m_green;
+    m_blue = other.m_blue;
+    m_alpha = other.m_alpha;
 
-	std::vector<double> rgb = etab.GetRGB( atom->GetAtomicNum() );
-	m_red = rgb[0];
-	m_green = rgb[1];
-	m_blue = rgb[2];
-	m_alpha = 1.0;
-}
+    return *this;
+  }
 
-void Color::set(double value, double low, double high)
-{
-  m_red = m_green = m_blue = m_alpha = 1.0;
-}
+  void Color::set(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+  {
+    m_red = red;
+    m_green = green;
+    m_blue = blue;
+    m_alpha = alpha;
+  }
 
-void Color::applyAsMaterials()
-{
-	GLfloat ambientColor [] = { m_red / 2, m_green / 2, m_blue / 2,
-	                            m_alpha };
-	GLfloat diffuseColor [] = { m_red, m_green, m_blue, m_alpha };
+  void Color::set(const OpenBabel::OBAtom *atom)
+  {
+    if (!atom)
+      return;
 
-	float s = ( 0.5 + fabsf( m_red - m_green )
-		+ fabsf( m_blue - m_green ) + fabsf( m_blue - m_red ) ) / 4.0;
+    std::vector<double> rgb = etab.GetRGB( atom->GetAtomicNum() );
+    m_red = rgb[0];
+    m_green = rgb[1];
+    m_blue = rgb[2];
+    m_alpha = 1.0;
+  }
 
-	float t = 1.0 - s;
+  void Color::set(double value, double low, double high)
+  {
+    m_red = m_green = m_blue = m_alpha = 1.0;
+  }
 
-	GLfloat specularColor [] = { s + t * m_red,
-		s + t * m_green,
-		s + t * m_blue,
-		m_alpha };
+  void Color::applyAsMaterials()
+  {
+    GLfloat ambientColor [] = { m_red / 2, m_green / 2, m_blue / 2,
+      m_alpha };
+    GLfloat diffuseColor [] = { m_red, m_green, m_blue, m_alpha };
 
-	glMaterialfv( GL_FRONT, GL_AMBIENT, ambientColor );
-	glMaterialfv( GL_FRONT, GL_DIFFUSE, diffuseColor );
-	glMaterialfv( GL_FRONT, GL_SPECULAR, specularColor );
-	glMaterialf( GL_FRONT, GL_SHININESS, 50.0 );
-}
+    float s = ( 0.5 + fabsf( m_red - m_green )
+        + fabsf( m_blue - m_green ) + fabsf( m_blue - m_red ) ) / 4.0;
+
+    float t = 1.0 - s;
+
+    GLfloat specularColor [] = { s + t * m_red,
+      s + t * m_green,
+      s + t * m_blue,
+      m_alpha };
+
+    glMaterialfv( GL_FRONT, GL_AMBIENT, ambientColor );
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, diffuseColor );
+    glMaterialfv( GL_FRONT, GL_SPECULAR, specularColor );
+    glMaterialf( GL_FRONT, GL_SHININESS, 50.0 );
+  }
 
 }
