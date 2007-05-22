@@ -79,10 +79,10 @@ namespace Avogadro {
 
     protected:
       GLWidget *          m_glwidget;
-      bool                m_leftButtonPressed;  // rotation
-      bool                m_rightButtonPressed; // translation
-      bool                m_midButtonPressed;   // scale / zoom
       Atom *              m_clickedAtom;
+      bool                m_leftButtonPressed;  // rotation
+      bool                m_midButtonPressed;   // scale / zoom
+      bool                m_rightButtonPressed; // translation
       Eigen::Vector3d     m_selectionCenter;    // centroid of selected atoms
 
       //! Temporary var for adding selection box

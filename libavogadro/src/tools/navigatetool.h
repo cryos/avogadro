@@ -81,10 +81,10 @@ namespace Avogadro {
 
     protected:
       GLWidget *          m_glwidget;
-      bool                m_leftButtonPressed;  // rotation
-      bool                m_rightButtonPressed; // translation
-      bool                m_midButtonPressed;   // scale / zoom
       Atom *              m_clickedAtom;
+      bool                m_leftButtonPressed;  // rotation
+      bool                m_midButtonPressed;   // scale / zoom
+      bool                m_rightButtonPressed; // translation
 
       //! Temporary var for adding selection box
       GLuint              m_selectionDL;
