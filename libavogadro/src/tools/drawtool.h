@@ -111,6 +111,7 @@ namespace Avogadro {
       QWidget *m_settingsWidget;
 
       Atom *newAtom(GLWidget *widget, const QPoint& p);
+      void moveAtom(GLWidget *widget, Atom *atom, const QPoint& p);
       Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
       //       void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
 

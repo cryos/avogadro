@@ -216,14 +216,7 @@ namespace Avogadro
 
   Eigen::Vector3d Camera::unProject(const QPoint& p, const Eigen::Vector3d& ref) const
   {
-    // project the reference point
-    Eigen::Vector3d projected = project(ref);
-
-    // Now unproject the pixel of coordinates (x,height-y) into a 3D point having the same Z-index
-    // as the reference point.
-    Eigen::Vector3d pos = unProject( Eigen::Vector3d( p.x(), p.y(), projected.z() ));
-
-    return pos;
+    return unProject( Eigen::Vector3d( p.x(), p.y(), project(ref).z() ));
   }
 
   Eigen::Vector3d Camera::unProject(const QPoint& p) const

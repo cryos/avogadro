@@ -295,7 +295,7 @@ QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
       }
       else
       {
-        m_endAtom->setPos(widget->camera()->unProject(event->pos()));
+        moveAtom(widget, m_endAtom, event->pos());
         // widget->updateGeometry();
         // m_endAtom->update();
       }
@@ -405,12 +405,26 @@ Atom *DrawTool::newAtom(GLWidget *widget, const QPoint& p)
 
   widget->molecule()->BeginModify();
   Atom *atom = static_cast<Atom*>(widget->molecule()->NewAtom());
-  atom->setPos(widget->camera()->unProject(p));
+  moveAtom(widget, atom, p);
   atom->SetAtomicNum(element());
   widget->molecule()->EndModify();
   
   return atom;
 }
+
+void DrawTool::moveAtom(GLWidget *widget, Atom *atom, const QPoint& p)
+{
+  Eigen::Vector3d refPoint;
+  if(m_beginAtom) {
+    refPoint = m_beginAtom->pos();
+  } else {
+    refPoint = widget->center();
+  }
+  Eigen::Vector3d newAtomPos = widget->camera()->unProject(p, refPoint);
+  
+  atom->setPos(newAtomPos);
+}
+
 
 Bond *DrawTool::newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom)
 {
