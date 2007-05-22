@@ -68,7 +68,8 @@ namespace Avogadro {
       return QVariant();
     }
 
-    Engine *engine = qobject_cast<Engine *>(static_cast<QObject *>(index.internalPointer()));
+    // FIXME: Mac qobject_cast problem strikes again
+    Engine *engine = dynamic_cast<Engine *>(static_cast<QObject *>(index.internalPointer()));
     if(engine)
     {
       if(role == Qt::DisplayRole) {
@@ -94,7 +95,8 @@ namespace Avogadro {
       return false;
     }
 
-    Engine *engine = qobject_cast<Engine *>(static_cast<QObject *>(index.internalPointer()));
+    // FIXME: Geoff's Mac qobject_cast bug strikes again
+    Engine *engine = dynamic_cast<Engine *>(static_cast<QObject *>(index.internalPointer()));
     if(role == Qt::CheckStateRole) {
       if(value == Qt::Checked) {
         engine->setEnabled(true);
