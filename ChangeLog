@@ -1,3 +1,8 @@
+2007-05-22  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/src/mainwindow.cpp: Fix bug 1722691. Show preferences
+	in the correct spot on Mac.
+
 2007-05-21  Donald E. Curtis <dcurtis3@sourceforge.net>
 	
 	* .: Refactored PrimitiveQueue -> PrimitiveList.  Within the class renamed

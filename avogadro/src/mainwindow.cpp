@@ -363,7 +363,7 @@ namespace Avogadro {
     }
 
     OBConversion conv;
-    OBFormat *pasteFormat;
+    OBFormat *pasteFormat = NULL;
     QString text;
     Molecule newMol;
 
@@ -705,7 +705,15 @@ namespace Avogadro {
 
     connect(ui.configureAvogadroAction, SIGNAL(triggered()), 
         this, SLOT(showSettingsDialog()));
-
+#ifdef Q_WS_MAC
+    // Find the Avogadro global preferences action
+    // and move it to the File menu (where it will be found)
+    // for the Mac Application menu
+    ui.menuSettings->removeAction(ui.configureAvogadroAction);
+    ui.menuFile->addAction(ui.configureAvogadroAction);
+    // and remove the trailing separator
+    ui.menuSettings->removeAction(ui.menuSettings->actions().last());
+#endif
   }
 
   bool MainWindow::loadFile(const QString &fileName)
