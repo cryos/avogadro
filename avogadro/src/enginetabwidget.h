@@ -28,6 +28,8 @@
 #include <QObject>
 #include <QTabWidget>
 
+#include "ui_engineconfigurationwidget.h"
+
 class QAbstractButton;
 class QStandardItem;
 namespace Avogadro {
@@ -42,7 +44,7 @@ namespace Avogadro {
    * are to be rendered by this engine when partially rendering.
    */
   class EngineTabWidgetPrivate;
-  class EngineTabWidget : public QTabWidget
+  class EngineTabWidget : public QWidget
   {
     Q_OBJECT;
 
@@ -54,9 +56,13 @@ namespace Avogadro {
 
     public Q_SLOTS:
       void setCurrentEngine(Engine *engine);
+    void addSelection();
+    void removeSelection();
 
     private:
       EngineTabWidgetPrivate *const d;
+
+      Ui::EngineConfigurationWidget ui;
 
   };
 

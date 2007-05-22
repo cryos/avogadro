@@ -49,7 +49,9 @@ namespace Avogadro {
        * Constructor(s)
        */
       PrimitiveList();
-      PrimitiveList(PrimitiveList &other);
+      PrimitiveList(const PrimitiveList &other);
+
+      PrimitiveList &operator=(const PrimitiveList &other);
 
       /**
        * Deconstructor
@@ -63,6 +65,12 @@ namespace Avogadro {
        * @return a QList of pointers to Primitive objects
        */
       QList<Primitive *> subList(Primitive::Type type) const;
+
+      /**
+       * @param p the primitive to check containment
+       * @return true or false depending on whether p is in this list
+       */
+      bool contains(Primitive *p);
 
       /**
        * Add a primitive to the queue.
@@ -83,6 +91,12 @@ namespace Avogadro {
        * @return the total number of primitives in this queue
        */
       int size() const;
+
+      /**
+       * @param type the type of primitives we're interested in
+       * @return the number of primitives for the given type
+       */
+      int size(Primitive::Type type) const;
 
       /**
        * Removes every primitive from the queue.

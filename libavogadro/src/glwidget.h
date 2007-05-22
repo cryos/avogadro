@@ -353,6 +353,11 @@ namespace Avogadro {
        */
       void removePrimitive(Primitive *primitive);
 
+      /**
+       * Get the current selection;
+       */
+      QList<Primitive *> selection() const;
+
       /** Toggle the selection for the atoms in the supplied list.
        * That is, if the primitive is selected, deselect it and vice-versa.
        * 

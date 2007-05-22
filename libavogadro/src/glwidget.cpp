@@ -520,9 +520,7 @@ namespace Avogadro {
     for( int i=0; i< d->engines.size(); i++) {
       d->engines.at(i)->updatePrimitive(primitive);
     }
-
     updateGeometry();
-    update();
   }
 
   void GLWidget::removePrimitive(Primitive *primitive)
@@ -534,8 +532,6 @@ namespace Avogadro {
       }
       d->selectionList.removeAll(primitive);
     }
-
-    update();
   }
 
   void GLWidget::loadEngines()
@@ -773,6 +769,11 @@ namespace Avogadro {
       
       item->update();
     }
+  }
+
+  QList<Primitive *> GLWidget::selection() const
+  {
+    return d->selectionList;
   }
 
   void GLWidget::toggleSelection(QList<Primitive *> primitiveList)

@@ -46,11 +46,20 @@ namespace Avogadro {
     d->vector.resize(Primitive::LastType);
   }
 
-  PrimitiveList::PrimitiveList(PrimitiveList &other) : d(new PrimitiveListPrivate)
+  PrimitiveList::PrimitiveList(const PrimitiveList &other) : d(new PrimitiveListPrivate)
   {
     PrimitiveListPrivate *e = other.d;
     d->size = e->size;
     d->vector = e->vector;
+  }
+
+  PrimitiveList &PrimitiveList::operator=(const PrimitiveList &other)
+  {
+    PrimitiveListPrivate *e = other.d;
+    d->size = e->size;
+    d->vector = e->vector;
+
+    return *this;
   }
 
   PrimitiveList::~PrimitiveList() { 
@@ -67,6 +76,10 @@ namespace Avogadro {
     return(d->vector[type]); 
   }
 
+  bool PrimitiveList::contains(Primitive *p) { 
+    return d->vector[p->type()].contains(p);
+  }
+
   void PrimitiveList::append(Primitive *p) { 
     d->vector[p->type()].append(p); 
     d->size++;
@@ -79,6 +92,16 @@ namespace Avogadro {
 
   int PrimitiveList::size() const {
     return d->size;
+  }
+
+  int PrimitiveList::size(Primitive::Type type) const
+  {
+    if(type > Primitive::LastType)
+    {
+      return 0;
+    }
+
+    return d->vector[type].size();
   }
 
   void PrimitiveList::clear() {

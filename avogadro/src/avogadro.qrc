@@ -2,6 +2,8 @@
     <qresource prefix="/" >
         <file>icons/avogadro.png</file>
         <file>icons/colorize.png</file>
+        <file>icons/edit_add.png</file>
+        <file>icons/edit_remove.png</file>
         <file>icons/exit.png</file>
         <file>icons/fileclose.png</file>
         <file>icons/fileexport.png</file>

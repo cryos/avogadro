@@ -48,10 +48,10 @@ using namespace OpenBabel;
       return m_actions;
     }
 
-    QUndoCommand* SmartsExtension::performAction(QAction *action, 
+    QUndoCommand* SmartsExtension::performAction(QAction *, 
                                                  Molecule *molecule,
                                                  GLWidget *widget,
-                                                 QTextEdit *messages)
+                                                 QTextEdit *)
     {
       bool ok;
       QString pattern = QInputDialog::getText(qobject_cast<QWidget*>(parent()),

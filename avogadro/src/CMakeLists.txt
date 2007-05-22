@@ -34,6 +34,7 @@ set(avogadro_SRCS
     flattabwidget.cpp
     main.cpp
     mainwindow.cpp
+    primitivetreeview.cpp
     settingsdialog.cpp
 )
 
@@ -48,6 +49,7 @@ set(avogadro_RCS
 set(avogadro_UIS
     mainwindow.ui
     settingsdialog.ui
+    engineconfigurationwidget.ui
 )
 
 # designer has some flaws.

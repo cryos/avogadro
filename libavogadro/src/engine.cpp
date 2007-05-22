@@ -76,15 +76,18 @@ namespace Avogadro {
   void Engine::addPrimitive(Primitive *primitive)
   {
     d->primitiveList.append(primitive);
+    emit changed();
   }
 
   void Engine::updatePrimitive(Primitive*)
   {
+    emit changed();
   }
 
   void Engine::removePrimitive(Primitive *primitive)
   {
     d->primitiveList.removeAll(primitive);
+    emit changed();
   }
 
   void Engine::setColorMap(Color &map)

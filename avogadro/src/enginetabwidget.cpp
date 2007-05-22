@@ -24,14 +24,18 @@
 
 #include "enginetabwidget.h"
 
+#include "primitivetreeview.h"
+
 #include <avogadro/engine.h>
 #include <avogadro/glwidget.h>
+
+#include <avogadro/primitiveitemmodel.h>
 
 #include <QAbstractButton>
 #include <QDialog>
 #include <QStackedLayout>
-#include <QStandardItem>
-#include <QStandardItemModel>
+#include <QHeaderView>
+#include <QTreeView>
 #include <QVBoxLayout>
 
 namespace Avogadro {
@@ -39,19 +43,21 @@ namespace Avogadro {
   class EngineTabWidgetPrivate
   {
     public:
-      EngineTabWidgetPrivate() : glWidget(0) {};
+      EngineTabWidgetPrivate() : glWidget(0), engine(0) {};
 
       GLWidget *glWidget;
+      Engine *engine;
       QStackedLayout *settingsStacked;
+      PrimitiveTreeView *primitiveTree;
   };
 
-  EngineTabWidget::EngineTabWidget( GLWidget *glWidget, QWidget *parent ) : d(new EngineTabWidgetPrivate)
+  EngineTabWidget::EngineTabWidget( GLWidget *glWidget, QWidget *parent ) : QWidget(parent), d(new EngineTabWidgetPrivate)
   {
+    ui.setupUi(this);
+
     d->glWidget = glWidget;
 
-    QWidget *widget = new QWidget(this);
-    
-    d->settingsStacked = new QStackedLayout(widget);
+    d->settingsStacked = new QStackedLayout(ui.engineSettingsWidget);
     d->settingsStacked->addWidget(new QWidget);
     foreach(Engine *engine, glWidget->engines())
     {
@@ -62,13 +68,41 @@ namespace Avogadro {
       }
     }
 
-    addTab(widget, tr("&Settings"));
-    setTabPosition( QTabWidget::South );
+    ui.enginePrimitivesTree->header()->hide();
+
+    ui.addSelectionButton->setEnabled(false);
+    ui.removeSelectionButton->setEnabled(false);
+
+    connect(ui.addSelectionButton, SIGNAL(clicked()), 
+        this, SLOT(addSelection()));
+    connect(ui.removeSelectionButton, SIGNAL(clicked()), 
+        this, SLOT(removeSelection()));
   }
 
   EngineTabWidget::~EngineTabWidget()
   {
     delete d;
+  }
+  
+  void EngineTabWidget::addSelection()
+  {
+    QList<Primitive *> selection = d->glWidget->selection();
+    PrimitiveList list = d->engine->primitiveList();
+    foreach(Primitive *p, selection)
+    {
+      if(!list.contains(p)) {
+        d->engine->addPrimitive(p);
+      }
+    }
+  }
+
+  void EngineTabWidget::removeSelection()
+  {
+    QList<Primitive *> selection = d->glWidget->selection();
+    foreach(Primitive *p, selection)
+    {
+      d->engine->removePrimitive(p);
+    }
   }
 
   GLWidget *EngineTabWidget::glWidget() const
@@ -78,6 +112,7 @@ namespace Avogadro {
 
   void EngineTabWidget::setCurrentEngine( Engine *engine )
   {
+    d->engine = engine;
     QWidget *widget = engine->settingsWidget();
     if(widget)
     {
@@ -85,6 +120,20 @@ namespace Avogadro {
     } else {
       d->settingsStacked->setCurrentIndex(0);
     }
+
+    QAbstractItemModel *model = ui.enginePrimitivesTree->model();
+
+    if(model)
+    {
+      delete model;
+    }
+
+    model = new PrimitiveItemModel(engine, this);
+    ui.enginePrimitivesTree->setModel(model);
+    ui.enginePrimitivesTree->expandAll();
+
+    ui.addSelectionButton->setEnabled(true);
+    ui.removeSelectionButton->setEnabled(true);
   }
 
 } // end namespace Avogadro

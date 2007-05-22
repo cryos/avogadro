@@ -1,3 +1,14 @@
+2007-05-22  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* avogadro/src/enginetabwidget.*: Now uses a .ui file to design the
+	widget.  this is much easier.
+	* avogadro/src/primitivetreeview.*: Added the PrimitiveTreeView class as a
+	helper class for displaying PrimitiveItemModels.  Just looks a bit
+	prettier.
+	* libavogadro/src/primitivelist.*: Added the ::contains(Primitive *)
+	operator for checking if a primitive is already in the list.
+	* .: Lots of other stuff for doing selective rendering.
+
 2007-05-22  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* avogadro/src/mainwindow.cpp: Fix bug 1722691. Show preferences

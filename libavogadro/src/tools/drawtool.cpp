@@ -39,9 +39,16 @@ using namespace Avogadro;
 
 DrawTool::DrawTool(QObject *parent) : Tool(parent), 
   m_beginAtomAdded(false),
+  m_beginAtom(0), 
+  m_endAtom(0), 
+  m_element(6), 
+  m_bond(0), 
+  m_bondOrder(1),
+  m_prevAtomElement(0), 
+  m_prevBond(0), 
+  m_prevBondOrder(0), 
   //m_beginAtomDrawCommand(0), //m_bondCommand(0), m_endAtomDrawCommand(0),
-  m_beginAtom(0), m_endAtom(0), m_bond(0), m_element(6), m_bondOrder(1),
-  m_prevAtomElement(0), m_prevBond(0), m_prevBondOrder(0), m_settingsWidget(0)
+  m_settingsWidget(0)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
@@ -127,8 +134,6 @@ QUndoCommand* DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
       m_beginAtom = newAtom(widget, event->pos());
       m_beginAtomAdded = true;
       widget->updateGeometry();
-    }
-    if(m_beginAtom) {
       m_beginAtom->update();
     }
   }
@@ -392,7 +397,7 @@ QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
   return undo;
 }
 
-QUndoCommand* DrawTool::wheel(GLWidget *widget, const QWheelEvent *event)
+QUndoCommand* DrawTool::wheel(GLWidget *, const QWheelEvent *)
 {
   return 0;
 }

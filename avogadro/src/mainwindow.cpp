@@ -30,10 +30,11 @@
 #include "enginelistview.h"
 #include "enginetabwidget.h"
 
+#include <avogadro/camera.h>
 #include <avogadro/extension.h>
 #include <avogadro/primitive.h>
+#include <avogadro/primitiveitemmodel.h>
 #include <avogadro/toolgroup.h>
-#include <avogadro/camera.h>
 
 #include <openbabel/obconversion.h>
 #include <openbabel/mol.h>
@@ -44,7 +45,6 @@
 #include <QColorDialog>
 #include <QFileDialog>
 #include <QGLFramebufferObject>
-#include <QHeaderView>
 #include <QMessageBox>
 #include <QPluginLoader>
 #include <QSettings>
@@ -163,8 +163,6 @@ namespace Avogadro {
     messagesVBox->setMargin(3);
     messagesVBox->addWidget(d->messagesText);
     ui.bottomFlat->addTab(messagesWidget, tr("Messages"));
-
-    ui.projectTree->header()->hide();
 
     loadExtensions();
 
@@ -789,7 +787,7 @@ namespace Avogadro {
     foreach(GLWidget *widget, d->glWidgets) {
       widget->setMolecule(d->molecule);
     }
-    ui.projectTree->setMolecule(d->molecule);
+    ui.projectTree->setModel(new PrimitiveItemModel(d->molecule, this));
 
     setWindowModified(false);
   }

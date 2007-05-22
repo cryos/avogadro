@@ -87,12 +87,6 @@ namespace Avogadro {
     private:
       Qt::MouseButtons _buttons;
 
-      int m_element;
-      int m_bondOrder;
-      int m_prevAtomElement;
-      int m_prevBondOrder;
-      Bond *m_prevBond;
-
       bool                m_movedSinceButtonPressed;
 
       QPoint              m_initialDragginggPosition;
@@ -101,7 +95,16 @@ namespace Avogadro {
       bool m_beginAtomAdded;
       Atom *m_beginAtom;
       Atom *m_endAtom;
+      int m_element;
+
       Bond *m_bond;
+      int m_bondOrder;
+
+      int m_prevAtomElement;
+
+      Bond *m_prevBond;
+      int m_prevBondOrder;
+
       QList<GLHit> m_hits;
 
       QComboBox *m_comboElements;

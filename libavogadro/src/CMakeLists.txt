@@ -23,6 +23,7 @@ set(libavogadro_SRCS
   glwidget.cpp
   moleculetreeview.cpp
   primitive.cpp
+  primitiveitemmodel.cpp
   primitivelist.cpp
   tool.cpp
   toolgroup.cpp
@@ -41,6 +42,7 @@ set(libavogadro_HDRS
   global.h
   moleculetreeview.h
   primitive.h
+  primitiveitemmodel.h
   primitivelist.h
   painter.h
   toolgroup.h
