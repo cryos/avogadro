@@ -74,12 +74,18 @@ bool WireEngine::render(GLWidget *gl)
 
 bool WireEngine::render(const Atom *a)
 {
+  const Vector3d & v = a->pos();
+  
+  Eigen::Vector3d transformedPos = m_glwidget->camera()->modelview() * v;
+    
+  // perform a rough form of frustum culling
+  double dot = transformedPos.z() / transformedPos.norm();
+  if(dot > -0.8) return true;
+  
   Color map = colorMap();
   const float selectionColor[3] = {0.3, 0.6, 1.0};
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
-
-  const Vector3d & v = a->pos();
 
   if (m_glwidget->selectedItem(a)) {
     glColor3fv(selectionColor);
@@ -104,9 +110,17 @@ bool WireEngine::render(const Atom *a)
 bool WireEngine::render(const Bond *b)
 {
   const Atom *atom1 = static_cast<const Atom *>( b->GetBeginAtom() );
-  const Atom *atom2 = static_cast<const Atom *>( b->GetEndAtom() );
   const Vector3d & v1 = atom1->pos();
+  
+  Eigen::Vector3d transformedEnd1 = m_glwidget->camera()->modelview() * v1;
+    
+  // perform a rough form of frustum culling
+  double dot = transformedEnd1.z() / transformedEnd1.norm();
+  if(dot > -0.8) return true;
+    
+  const Atom *atom2 = static_cast<const Atom *>( b->GetEndAtom() );
   const Vector3d & v2 = atom2->pos();
+
   Color map = colorMap();
 
   glLineWidth(1.0);
