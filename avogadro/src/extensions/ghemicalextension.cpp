@@ -179,7 +179,7 @@ using namespace OpenBabel;
 
     bool GhemicalCommand::mergeWith ( const QUndoCommand * command )
     {
-      // recieved another of the same call
+      // received another of the same call
       return true;
     }
 

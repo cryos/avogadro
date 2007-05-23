@@ -1,7 +1,7 @@
-set(QT_USE_QTOPENGL TRUE)
+set(QT_USE_QTOPENGL true)
 
 if(WIN32)
-  set(QT_USE_QTMAIN TRUE)
+  set(QT_USE_QTMAIN true)
 endif(WIN32)
 
 configure_file(

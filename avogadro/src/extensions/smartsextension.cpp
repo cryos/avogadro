@@ -80,7 +80,7 @@ using namespace OpenBabel;
     void SmartsCommand::redo()
     {
       // save the current selection
-      m_selectedList = m_widget->selectedItems();
+      m_selectedList = m_widget->selection();
       // if we have matches, select them
       if(m_pattern.NumMatches() != 0) {
         QList<Primitive *> matchedAtoms;
@@ -109,7 +109,7 @@ using namespace OpenBabel;
 
     bool SmartsCommand::mergeWith ( const QUndoCommand * command )
     {
-      // we recieved another call of the same action
+      // we received another call of the same action
       return true;
     }
 

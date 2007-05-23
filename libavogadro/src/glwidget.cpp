@@ -29,6 +29,7 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
 #include <avogadro/toolgroup.h>
+#include <avogadro/primitivelist.h>
 
 #include <openbabel/generic.h>
 
@@ -153,7 +154,7 @@ namespace Avogadro {
       GLuint                 *selectBuf;
       int                    selectBufSize;
 
-      QList<Primitive *>     selectionList;
+      PrimitiveList          selectionList;
 
       QUndoStack             *undoStack;
 
@@ -773,21 +774,12 @@ namespace Avogadro {
 
   QList<Primitive *> GLWidget::selection() const
   {
-    return d->selectionList;
+    return d->selectionList.list();
   }
 
-  void GLWidget::toggleSelection(QList<Primitive *> primitiveList)
+void GLWidget::toggleSelection(QList<Primitive*> primitiveList)
   {
     foreach (Primitive *item, primitiveList) {
-//      if (!item->isSelected()) {
-//        item->setSelected(true);
-//        if (!d->selectionList.contains(item))
-//          d->selectionList.append(item);
-//      } else {
-//        item->setSelected(false);
-//        d->selectionList.removeAll(item);
-//      }
-//      item->update();
       if (d->selectionList.contains(item))
         d->selectionList.removeAll(item);
       else
@@ -797,19 +789,10 @@ namespace Avogadro {
 
   void GLWidget::clearSelection()
   {
-    foreach (Primitive *item, d->selectionList) {
-      item->setSelected(false);
-      item->update();
-    }
     d->selectionList.clear();
   }
 
-  QList<Primitive *> GLWidget::selectedItems()
-  {
-    return d->selectionList;
-  }
-
-  bool GLWidget::selectedItem(const Primitive *p)
+  bool GLWidget::isSelected(const Primitive *p)
   {
     // Return true if the item is selected
     return d->selectionList.contains(const_cast<Primitive *>(p));

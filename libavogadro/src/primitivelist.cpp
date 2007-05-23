@@ -76,6 +76,16 @@ namespace Avogadro {
     return(d->vector[type]); 
   }
 
+  QList<Primitive *> PrimitiveList::list() const {
+    QList<Primitive*> returnList;
+
+    foreach(QList<Primitive*> typeList, d->vector) {
+      returnList += typeList;
+    }
+
+    return returnList;
+  }
+
   bool PrimitiveList::contains(Primitive *p) { 
     return d->vector[p->type()].contains(p);
   }

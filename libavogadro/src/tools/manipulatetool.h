@@ -108,6 +108,9 @@ namespace Avogadro {
         Tool *createInstance(QObject *parent = 0) { return new ManipulateTool(); }
     };
 
+  // Defined in moveatomcommand.h
+  //  class MoveAtomCommand;
+
 } // end namespace Avogadro
 
 #endif

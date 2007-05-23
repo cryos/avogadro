@@ -46,7 +46,7 @@ namespace Avogadro {
   class ToolGroup;
 
   /**
-   * @class GLHit
+   * @class GLHit glwidget.h <avogadro/glwidget.h>
    * @brief Class for wrapping hits from GL picking.
    * @author Donald Ephraim Curtis
    *
@@ -147,8 +147,8 @@ namespace Avogadro {
   };
 
   /**
-   * @class GLWidget
-   * GL widget class for rendering molecules.
+   * @class GLWidget glwidget.h <avogadro/glwidget.h>
+   * @brief GL widget class for rendering molecules.
    * @author Donald Ephraim Curtis
    *
    * This widget provides a 3d graphical view of a molecule.   In terms 
@@ -340,7 +340,7 @@ namespace Avogadro {
        * @note In some cases we are passed the molecule itself meaning that more
        * than one thing has changed in the molecule.
        *
-       * @param primitive primitive that was changed
+       * @param primitive object which changed
        */
       void updatePrimitive(Primitive *primitive);
 
@@ -349,41 +349,46 @@ namespace Avogadro {
        * Additionally we need to update other items in our view that are impacted
        * by this change.
        *
-       * @param primitive primitive that was removed
+       * @param primitive object to remove
        */
       void removePrimitive(Primitive *primitive);
 
-      /**
-       * Get the current selection;
+      /** @name Selection Methods
+       *  These methods are used to manipulate user-selected primitives.
+       *  Each view tracks a list of selected objects (e.g., atoms)
+       *  which can be passed to engines, tools, or used for tasks like
+       *  copying selected atoms, etc.
+       * @{
        */
-      QList<Primitive *> selection() const;
+      /**
+       * \return the current selection (all primitive types)
+       */
+      QList<Primitive*> selection() const;
 
       /** Toggle the selection for the atoms in the supplied list.
        * That is, if the primitive is selected, deselect it and vice-versa.
        * 
-       * @param primitiveList the set of atoms to update
+       * @param primitiveList the set of objects to update
        */
-      void toggleSelection(QList<Primitive *> primitiveList);
+      void toggleSelection(QList<Primitive*> primitveList);
 
       /** Change the selection status for the atoms in the supplied list.
-       * All atoms in the list will have the same selection status.
+       * All objects in the list will have the same selection status.
        *
-       * @param primitiveList the set of atoms to update
-       * @param select whether to select or deselect the atoms
+       * @param primitiveList the set of objects to update
+       * @param select whether to select or deselect the objects
        */
-      void setSelection(QList<Primitive *> primitiveList, bool select);
+      void setSelection(QList<Primitive*> primitveList, bool select);
 
-      /** Deselect all atoms 
+      /** Deselect all objects
        */
       void clearSelection();
 
-      /** \return the list of selected atoms
-       */
-      QList<Primitive *> selectedItems();
-
       /** \return true if the Primitive is selected
        */
-      bool selectedItem(const Primitive *p);
+      bool isSelected(const Primitive *p);
+      /* end selection method grouping */
+      /** @} */
 
       /** Set the number of unit cells for a periodic molecule like a crystal
        * a, b, and c, are the three primitive unit cell axes.

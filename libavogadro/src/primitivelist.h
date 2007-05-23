@@ -67,7 +67,14 @@ namespace Avogadro {
       QList<Primitive *> subList(Primitive::Type type) const;
 
       /**
-       * @param p the primitive to check containment
+       * Returns a list of all primitives of all types.
+       *
+       * @return a QList of pointers to Primitive objects
+       */
+      QList<Primitive *> list() const;
+
+      /**
+       * @param p the primitive to check if it is in any list
        * @return true or false depending on whether p is in this list
        */
       bool contains(Primitive *p);

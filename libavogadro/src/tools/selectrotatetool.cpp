@@ -103,7 +103,6 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
   }
 
   QList<Primitive *> hitList;
-  QList<Residue *>   residueList;
   if(!m_movedSinceButtonPressed && m_hits.size()) {
     // user didn't move the mouse -- regular picking, not selection box
 
@@ -117,47 +116,49 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
         hitList.append(atom);
         break;
       }
-      else if(hit.type() == Primitive::ResidueType) {
-        Residue *res = static_cast<Residue *>(molecule->GetResidue(hit.name()));
-        residueList.append(res);
-        break;
+      //      else if(hit.type() == Primitive::ResidueType) {
+      //        Residue *res = static_cast<Residue *>(molecule->GetResidue(hit.name()));
+      //        hitList.append(res);
+      //        break;
       }
-      // Currently only atom or residue selections are supported
-//       else if(hit.type() == Primitive::BondType) {
-//         Bond *bond = (Bond *) molecule->GetBond(hit.name());
-//         hitList.append(bond);
-//         break;
-//       }
+      // FIXME
+      // Currently only atom selections (with selection mode) are considered
     }
 
     switch (m_selectionMode) {
     case 2: // residue
       foreach(Primitive *hit, hitList) {
-        Atom *atom = static_cast<Atom *>(hit);
-        // If the atom is unselected, select the whole residue
-        bool select = !widget->selectedItem(atom);
-        Residue *residue = static_cast<Residue *>(atom->GetResidue());
-        QList<Primitive *> neighborList;
-        OBMolAtomDFSIter iter(molecule, atom->GetIdx());
-        FOR_ATOMS_OF_RESIDUE(a, residue) {
-          neighborList.append(static_cast<Atom *>(&*a));
+        if (hit->type() == Primitive::AtomType) {
+          Atom *atom = static_cast<Atom *>(hit);
+          // If the atom is unselected, select the whole residue
+          bool select = !widget->isSelected(atom);
+          Residue *residue = static_cast<Residue *>(atom->GetResidue());
+          QList<Primitive *> neighborList;
+          FOR_ATOMS_OF_RESIDUE(a, residue) {
+            neighborList.append(static_cast<Atom *>(&*a));
+          }
+          widget->setSelection(neighborList, select);
         }
-        widget->setSelection(neighborList, select);
-//        if (residue && !residueList.contains(residue))
-//          residueList.append(residue);
+        // FIXME -- also need to handle other primitive hit types
+        // (e.g., if we hit a residue, bond, etc.)
+
       } // end for(hits)
       break;
     case 3: // molecule
       foreach(Primitive *hit, hitList) {
-        Atom *atom = static_cast<Atom *>(hit);
-        // if this atom is unselected, select the whole fragment
-        bool select = !widget->selectedItem(atom);
-        QList<Primitive *> neighborList;
-        OBMolAtomDFSIter iter(molecule, atom->GetIdx());
-        do {
-          neighborList.append(static_cast<Atom*>(&*iter));
-        } while ((iter++).next());
-        widget->setSelection(neighborList, select);
+        if (hit->type() == Primitive::AtomType) {
+          Atom *atom = static_cast<Atom *>(hit);
+          // if this atom is unselected, select the whole fragment
+          bool select = !widget->isSelected(atom);
+          QList<Primitive *> neighborList;
+          OBMolAtomDFSIter iter(molecule, atom->GetIdx());
+          do {
+            neighborList.append(static_cast<Atom*>(&*iter));
+          } while ((iter++).next());
+          widget->setSelection(neighborList, select);
+        }
+        // FIXME -- also need to handle other primitive hit types
+        // (e.g., if we hit a residue, bond, etc.)
       }
       break;
     case 1: // atom
@@ -165,20 +166,6 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
       widget->toggleSelection(hitList);
       break;
     }
-
-    // if we have any residues to handle
-    // we set all atoms to match the selection of the residue
-    // and update the selection list of atoms (BUT NOT RESIDUES)
-//    foreach(Residue *residue, residueList) {
-//      hitList.clear();
-//      bool select = !residue->isSelected();
-//      FOR_ATOMS_OF_RESIDUE(a, residue) {
-//        hitList.append(static_cast<Atom *>(&*a));
-//      }
-//      widget->setSelection(hitList, select);
-//      residue->toggleSelected();
-//    }
-
   }
   else if(m_movedSinceButtonPressed && !m_hits.size())
   {
@@ -202,26 +189,10 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
         Atom *atom = static_cast<Atom *>(molecule->GetAtom(hit.name()));
         hitList.append(atom);
       }
-      //else if(hit.type() == Primitive::ResidueType)
-      //{
-      //  ((Residue *)molecule->GetResidue(hit.name()))->toggleSelected();
-      //}
-      //              else if(hit.type() == Primitive::BondType) {
-      //        ((Bond *)molecule->GetBond(hit.name()))->toggleSelected();
-      //      }
     }
     // Toggle the selection
     widget->toggleSelection(hitList);
   }
-
-/*  if (_hits.size()) {
-    m_selectionCenter.loadZero();
-    foreach(Primitive *hit, widget->selectedItems()) {
-      Atom *atom = static_cast<Atom *>(hit);
-      m_selectionCenter += atom->pos();
-    }
-    m_selectionCenter /= widget->selectedItems().size();
-  } */
 
   widget->update();
 

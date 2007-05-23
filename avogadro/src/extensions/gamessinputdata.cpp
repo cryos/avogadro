@@ -1880,7 +1880,7 @@ void GamessDFTGroup::WriteToFile(ostream &File, GamessInputData *IData) {
   if (MethodGrid()) return; //Only need this group for gridfree method currently
   //Punch the group label
   File << " $DFT ";
-  //Write out the funtional, and any other optional parameters
+  //Write out the functional, and any other optional parameters
   //Method
   if (!MethodGrid()) {	//punch method if it needs to be grid-free
     sprintf(Out, "METHOD=GRIDFREE ");

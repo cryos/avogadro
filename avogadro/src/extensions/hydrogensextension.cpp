@@ -101,7 +101,7 @@ using namespace OpenBabel;
 
     bool HydrogensCommand::mergeWith ( const QUndoCommand * command )
     {
-      // we recieved another call of the same action
+      // we received another call of the same action
       return true;
     }
 

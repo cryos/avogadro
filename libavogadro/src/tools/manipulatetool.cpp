@@ -22,6 +22,7 @@
  ***********************************************************************/
 
 #include "manipulatetool.h"
+// #include "moveatomcommand.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -95,15 +96,15 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
   MatrixP3d atomTranslation;
   atomTranslation.loadTranslation(m_glwidget->camera()->backtransformedZAxis() * t);
 
-  if (m_glwidget->selectedItems().size())
+  if (m_glwidget->selection().size())
   {
-    foreach(Primitive *a, m_glwidget->selectedItems())
+    foreach(Primitive *a, m_glwidget->selection())
     {
       Atom *atom = static_cast<Atom *>(a);
       atom->setPos(atomTranslation * atom->pos());
     }
   }
-  if (m_clickedAtom && !m_glwidget->selectedItems().contains(m_clickedAtom))
+  if (m_clickedAtom && !m_glwidget->isSelected(m_clickedAtom))
     m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
 }
 
@@ -116,15 +117,15 @@ void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from,
   MatrixP3d atomTranslation;
   atomTranslation.loadTranslation(toPos - fromPos);
 
-  if (m_glwidget->selectedItems().size())
+  if (m_glwidget->selection().size())
   {
-    foreach(Primitive *a, m_glwidget->selectedItems())
+    foreach(Primitive *a, m_glwidget->selection())
     {
       Atom *atom = static_cast<Atom *>(a);
       atom->setPos(atomTranslation * atom->pos());
     }
   }
-  if (m_clickedAtom && !m_glwidget->selectedItems().contains(m_clickedAtom))
+  if (m_clickedAtom && !m_glwidget->isSelected(m_clickedAtom))
     m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
 }
 
@@ -141,7 +142,7 @@ void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, doubl
   fragmentRotation.rotate3(deltaX * ROTATION_SPEED, YAxis );
   fragmentRotation.translate(-center);
 
-  foreach(Primitive *a, m_glwidget->selectedItems())
+  foreach(Primitive *a, m_glwidget->selection())
   {
     Atom *atom = static_cast<Atom *>(a);
     atom->setPos(fragmentRotation * atom->pos());
@@ -155,7 +156,7 @@ void ManipulateTool::tilt( const Eigen::Vector3d &center, double delta ) const
   fragmentRotation.loadTranslation(center);
   fragmentRotation.rotate3(delta * ROTATION_SPEED, m_glwidget->camera()->backtransformedZAxis());
   fragmentRotation.translate(-center);
-  foreach(Primitive *a, m_glwidget->selectedItems())
+  foreach(Primitive *a, m_glwidget->selection())
   {
     Atom *atom = static_cast<Atom *>(a);
     atom->setPos(fragmentRotation * atom->pos());
@@ -195,7 +196,7 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
   }
 
   // Get the currently selected atoms from the view
-  QList<Primitive *> currentSelection = m_glwidget->selectedItems();
+  QList<Primitive *> currentSelection = m_glwidget->selection();
 
   QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 

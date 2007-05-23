@@ -50,7 +50,7 @@ namespace Avogadro {
    * Extensions work by allowing each extension to have an unlimited
    * number of possible actions (each represented by a QAction).  To
    * perform an action the extension should implement performAction
-   * and perform the correct action based on the action it recieves.
+   * and perform the correct action based on the action it receives.
    * The actual action should will be performed by the parent object
    * (usually MainWindow) as a result of a ::redo call on the returned
    * QUndoCommand from the performAction function.  Thus, to implement

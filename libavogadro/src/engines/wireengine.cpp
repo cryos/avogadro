@@ -87,7 +87,7 @@ bool WireEngine::render(const Atom *a)
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
 
-  if (m_glwidget->selectedItem(a)) {
+  if (m_glwidget->isSelected(a)) {
     glColor3fv(selectionColor);
     glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 4.0);
   }

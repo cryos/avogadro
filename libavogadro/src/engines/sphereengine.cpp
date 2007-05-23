@@ -82,7 +82,7 @@ double SphereEngine::radius(const Primitive *p)
     double r = radius(a);
     if (m_glwidget)
     {
-      if (m_glwidget->selectedItem(p))
+      if (m_glwidget->isSelected(p))
         return r + SEL_ATOM_EXTRA_RADIUS;
     }
     return r;
@@ -101,7 +101,7 @@ bool SphereEngine::render(const Atom *a)
 
   m_glwidget->painter()->drawSphere( a->pos(), radius(a) );
 
-  if (m_glwidget->selectedItem(a))
+  if (m_glwidget->isSelected(a))
     {
       map.set( 0.3, 0.6, 1.0, 0.7 );
       map.applyAsMaterials();
