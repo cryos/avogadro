@@ -71,7 +71,7 @@ namespace Avogadro
   const double   PAINTER_CYLINDERS_DETAIL_COEFF
     = static_cast<double>(PAINTER_MAX_DETAIL_LEVEL - 1)
     / (PAINTER_CYLINDERS_SQRT_LIMIT_MAX_LEVEL - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL);
-  const double   PAINTER_FRUSTUM_CULL_TRESHOLD = -0.6;
+  const double   PAINTER_FRUSTUM_CULL_TRESHOLD = -0.8;
 
   class PainterPrivate
   {
