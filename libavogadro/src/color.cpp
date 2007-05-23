@@ -78,7 +78,8 @@ namespace Avogadro {
     m_alpha = 1.0;
   }
 
-  void Color::set(double value, double low, double high)
+  // void Color::set(double value, double low, double high)
+  void Color::set(double, double, double)
   {
     m_red = m_green = m_blue = m_alpha = 1.0;
   }

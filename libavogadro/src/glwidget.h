@@ -7,9 +7,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -42,7 +42,7 @@ class QUndoStack;
 class QMouseEvent;
 
 namespace Avogadro {
-  
+
   class ToolGroup;
 
   /**
@@ -50,16 +50,16 @@ namespace Avogadro {
    * @brief Class for wrapping hits from GL picking.
    * @author Donald Ephraim Curtis
    *
-   * Provides an easy to use class to contain OpenGL hits returned from the 
-   * process of picking.  This class relies on the %Engine subclasses properly 
-   * naming the objects which it is rendering.  For more information see the 
+   * Provides an easy to use class to contain OpenGL hits returned from the
+   * process of picking.  This class relies on the %Engine subclasses properly
+   * naming the objects which it is rendering.  For more information see the
    * Engine documentation.
    */
   class GLHitPrivate;
   class A_EXPORT GLHit
   {
     public:
-      /** 
+      /**
        * Blank constructor.
        */
       GLHit();
@@ -67,7 +67,7 @@ namespace Avogadro {
        * Copy constructor.
        */
       GLHit(const GLHit &glHit);
-      /** 
+      /**
        * Constructor.
        * @param type The type of the OpenGL object that was picked which corresponds
        * to the Primitive::Type for the object
@@ -113,8 +113,8 @@ namespace Avogadro {
        */
       GLuint name() const;
 
-      /** 
-       * @return the minimum Z value of this hit corresponding 
+      /**
+       * @return the minimum Z value of this hit corresponding
        * to the Z value of the drawn object closest to the camera
        */
       GLuint minZ() const;
@@ -151,15 +151,15 @@ namespace Avogadro {
    * @brief GL widget class for rendering molecules.
    * @author Donald Ephraim Curtis
    *
-   * This widget provides a 3d graphical view of a molecule.   In terms 
+   * This widget provides a 3d graphical view of a molecule.   In terms
    * of a Model-View architecture we consider
    * the Molecule the model and GLWidget a view of this model.
    * The widget relies on a various Engine subclasses to handle
-   * rendering of the 3d objects.  
+   * rendering of the 3d objects.
    *
    * Each engine is allocated a PrimitiveList object.  This queue contains
    * all primitivew which that engine is responsible for rendering for this
-   * glwidget.  Thus, we can have one queue containing only the bonds, and 
+   * glwidget.  Thus, we can have one queue containing only the bonds, and
    * one queue containing only the atoms which would allow bonds and atoms
    * to be rendered by two different engines.
    */
@@ -198,7 +198,7 @@ namespace Avogadro {
       ~GLWidget();
 
       /**
-       * Add an arbitrary display list to the %GLWidget rendering 
+       * Add an arbitrary display list to the %GLWidget rendering
        * area.  This allows plugins to add auxiliary visuals.
        *
        * @param dl the unsigned int representing the GL display list
@@ -215,7 +215,7 @@ namespace Avogadro {
       void removeDL(GLuint dl);
 
       /**
-       * @return true if the GLWidget is stable as determined 
+       * @return true if the GLWidget is stable as determined
        * by the tools and extensions
        */
       bool isStable() const;
@@ -235,7 +235,7 @@ namespace Avogadro {
       /**
        * Virtual function setting the minimum size hit for this widget.
        *
-       * @return the minimum size the widget can take without causing 
+       * @return the minimum size the widget can take without causing
        * unspecified behaviour
        */
       QSize minimumSizeHint() const;
@@ -323,10 +323,15 @@ namespace Avogadro {
       void setTool(Tool *tool);
 
       void setPainter(Painter *painter);
-      
+
+      /**
+       * @return list of primitives for this widget
+       */
+      PrimitiveList primitives() const;
+
       /**
        * Add the primitive to the widget.  This slot is called whenever
-       * a new primitive is added to our molecule model.  It adds the 
+       * a new primitive is added to our molecule model.  It adds the
        * primitive to the list in the appropriate group.
        *
        * @param primitive pointer to a primitive to add to the view
@@ -334,7 +339,7 @@ namespace Avogadro {
       void addPrimitive(Primitive *primitive);
 
       /**
-       * Update a primitive.  This slot is called whenever a primitive of our 
+       * Update a primitive.  This slot is called whenever a primitive of our
        * molecule model has been changed and we need to check our view.
        *
        * @note In some cases we are passed the molecule itself meaning that more
@@ -345,7 +350,7 @@ namespace Avogadro {
       void updatePrimitive(Primitive *primitive);
 
       /** Remove a primitive.  This slot is called whenever a primitive of our
-       * molecule model has been removed and we need to take it off our list.  
+       * molecule model has been removed and we need to take it off our list.
        * Additionally we need to update other items in our view that are impacted
        * by this change.
        *
@@ -360,25 +365,26 @@ namespace Avogadro {
        *  copying selected atoms, etc.
        * @{
        */
+
       /**
-       * \return the current selection (all primitive types)
+       * \return the current selectedPrimitives (all primitive types)
        */
-      QList<Primitive*> selection() const;
+      QList<Primitive*> selectedPrimitives() const;
 
       /** Toggle the selection for the atoms in the supplied list.
        * That is, if the primitive is selected, deselect it and vice-versa.
-       * 
-       * @param primitiveList the set of objects to update
+       *
+       * @param primitives the set of objects to update
        */
-      void toggleSelection(QList<Primitive*> primitveList);
+      void toggleSelected(QList<Primitive*> primitveList);
 
       /** Change the selection status for the atoms in the supplied list.
        * All objects in the list will have the same selection status.
        *
-       * @param primitiveList the set of objects to update
+       * @param primitives the set of objects to update
        * @param select whether to select or deselect the objects
        */
-      void setSelection(QList<Primitive*> primitveList, bool select);
+      void setSelected(QList<Primitive*> primitives, bool select);
 
       /** Deselect all objects
        */
@@ -408,7 +414,7 @@ namespace Avogadro {
 
     protected:
       GLWidgetPrivate * const d;
-      
+
       /**
        * Virtual function called by QGLWidget on initialization of
        * the GL area.
@@ -448,12 +454,12 @@ namespace Avogadro {
        * Render the scene. To be used in both modes GL_RENDER and GL_SELECT.
        */
       virtual void render();
-      
+
       /**
        * Helper function to load all available engines
        */
       void loadEngines();
-      
+
     private:
       /**
        * Helper function called by all constructors

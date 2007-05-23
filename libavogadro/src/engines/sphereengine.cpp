@@ -57,7 +57,7 @@ bool SphereEngine::render(GLWidget *gl)
 
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
-  list = primitiveList().subList(Primitive::AtomType);
+  list = primitives().subList(Primitive::AtomType);
   foreach( Primitive *p, list ) {
     render(static_cast<const Atom *>(p));
   }

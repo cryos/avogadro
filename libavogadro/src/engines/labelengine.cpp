@@ -53,7 +53,7 @@ bool LabelEngine::render(GLWidget *gl)
   gl->painter()->begin(gl);
   QList<Primitive *> list;
 
-  list = primitiveList().subList(Primitive::AtomType);
+  list = primitives().subList(Primitive::AtomType);
 
   foreach( Primitive *p, list ) {
     Atom *atom = static_cast<Atom *>(p);

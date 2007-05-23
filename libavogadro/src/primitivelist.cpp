@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -42,7 +42,7 @@ namespace Avogadro {
       QVector< QList<Primitive *> > vector;
   };
 
-  PrimitiveList::PrimitiveList() : d(new PrimitiveListPrivate) { 
+  PrimitiveList::PrimitiveList() : d(new PrimitiveListPrivate) {
     d->vector.resize(Primitive::LastType);
   }
 
@@ -62,18 +62,18 @@ namespace Avogadro {
     return *this;
   }
 
-  PrimitiveList::~PrimitiveList() { 
+  PrimitiveList::~PrimitiveList() {
     delete d;
   }
 
-  QList<Primitive *> PrimitiveList::subList(Primitive::Type type) const { 
+  QList<Primitive *> PrimitiveList::subList(Primitive::Type type) const {
 
     if(type > Primitive::LastType)
     {
       return QList<Primitive *>();
     }
 
-    return(d->vector[type]); 
+    return(d->vector[type]);
   }
 
   QList<Primitive *> PrimitiveList::list() const {
@@ -86,12 +86,12 @@ namespace Avogadro {
     return returnList;
   }
 
-  bool PrimitiveList::contains(Primitive *p) { 
+  bool PrimitiveList::contains(Primitive *p) const {
     return d->vector[p->type()].contains(p);
   }
 
-  void PrimitiveList::append(Primitive *p) { 
-    d->vector[p->type()].append(p); 
+  void PrimitiveList::append(Primitive *p) {
+    d->vector[p->type()].append(p);
     d->size++;
   }
 

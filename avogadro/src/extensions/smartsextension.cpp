@@ -79,8 +79,8 @@ using namespace OpenBabel;
 
     void SmartsCommand::redo()
     {
-      // save the current selection
-      m_selectedList = m_widget->selection();
+      // save the current selectedPrimitives
+      m_selectedList = m_widget->selectedPrimitives();
       // if we have matches, select them
       if(m_pattern.NumMatches() != 0) {
         QList<Primitive *> matchedAtoms;
@@ -94,16 +94,16 @@ using namespace OpenBabel;
           }
         
         m_widget->clearSelection();
-        m_widget->setSelection(matchedAtoms, true);
+        m_widget->setSelected(matchedAtoms, true);
       }
       m_widget->update();
     }
 
     void SmartsCommand::undo()
     {
-      // restore selection from saved list
+      // restore selectedPrimitives from saved list
       m_widget->clearSelection();
-      m_widget->setSelection(m_selectedList, true);
+      m_widget->setSelected(m_selectedList, true);
       m_widget->update();
     }
 

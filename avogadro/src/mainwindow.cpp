@@ -460,18 +460,18 @@ namespace Avogadro {
 
   void MainWindow::cut()
   {
-    QMimeData *mimeData = prepareClipboardData(d->glWidget->selection());
+    QMimeData *mimeData = prepareClipboardData(d->glWidget->selectedPrimitives());
 
     if (mimeData) {
       CutCommand *command = new CutCommand(d->molecule, mimeData,
-                                           d->glWidget->selection());
+                                           d->glWidget->selectedPrimitives());
       d->undoStack->push(command);
     }
   }
 
   void MainWindow::copy()
   {
-    QMimeData *mimeData = prepareClipboardData(d->glWidget->selection());
+    QMimeData *mimeData = prepareClipboardData(d->glWidget->selectedPrimitives());
 
     if (mimeData) {
       CopyCommand *command = new CopyCommand(mimeData);
@@ -484,7 +484,7 @@ namespace Avogadro {
     // clear the molecule or a set of atoms
     // has the inteligence to figure out based on the number of selected items
     ClearCommand *command = new ClearCommand(d->molecule, 
-                                             d->glWidget->selection());
+                                             d->glWidget->selectedPrimitives());
     d->undoStack->push(command);
   }
 
@@ -495,7 +495,7 @@ namespace Avogadro {
       Atom *atom = static_cast<Atom*>(&*a);
       atoms.append(atom);
     }
-    d->glWidget->setSelection(atoms, true);
+    d->glWidget->setSelected(atoms, true);
     d->glWidget->update();
   }
 

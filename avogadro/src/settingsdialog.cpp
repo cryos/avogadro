@@ -45,14 +45,13 @@ namespace Avogadro {
   void SettingsDialog::buttonClicked(QAbstractButton *button)
   {
     QDialogButtonBox::ButtonRole role = ui.dialogButtonBox->buttonRole(button);
-    switch(role) {
-      case QDialogButtonBox::ApplyRole:
-      case QDialogButtonBox::AcceptRole:
-        saveValues();
-        break;
-      case QDialogButtonBox::RejectRole:
+    if(role == QDialogButtonBox::ApplyRole || role == QDialogButtonBox::AcceptRole)
+    {
+      saveValues();
+    } 
+    else if (role == QDialogButtonBox::RejectRole)
+    {
         loadValues();
-        break;
     }
   }
 

@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -137,7 +137,7 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
           FOR_ATOMS_OF_RESIDUE(a, residue) {
             neighborList.append(static_cast<Atom *>(&*a));
           }
-          widget->setSelection(neighborList, select);
+          widget->setSelected(neighborList, select);
         }
         // FIXME -- also need to handle other primitive hit types
         // (e.g., if we hit a residue, bond, etc.)
@@ -155,7 +155,7 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
           do {
             neighborList.append(static_cast<Atom*>(&*iter));
           } while ((iter++).next());
-          widget->setSelection(neighborList, select);
+          widget->setSelected(neighborList, select);
         }
         // FIXME -- also need to handle other primitive hit types
         // (e.g., if we hit a residue, bond, etc.)
@@ -163,7 +163,7 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
       break;
     case 1: // atom
     default:
-      widget->toggleSelection(hitList);
+      widget->toggleSelected(hitList);
       break;
     }
   }
@@ -191,7 +191,7 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
       }
     }
     // Toggle the selection
-    widget->toggleSelection(hitList);
+    widget->toggleSelected(hitList);
   }
 
   widget->update();
@@ -205,7 +205,7 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
 
   m_lastDraggingPosition = event->pos();
 
-  if( ( event->pos() - m_initialDraggingPosition ).manhattanLength() > 2 ) 
+  if( ( event->pos() - m_initialDraggingPosition ).manhattanLength() > 2 )
     m_movedSinceButtonPressed = true;
 
   if( m_hits.size() )

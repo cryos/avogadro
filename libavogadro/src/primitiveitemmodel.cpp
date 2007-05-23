@@ -56,7 +56,7 @@ namespace Avogadro {
     d->size.resize(d->rowTypeMap.size());
 
     connect(engine, SIGNAL(changed()), this, SLOT(engineChanged()));
-    PrimitiveList list = engine->primitiveList();
+    PrimitiveList list = engine->primitives();
     foreach(int row, d->rowTypeMap.keys())
     {
       d->size[row] = list.size(d->rowTypeMap[row]);
@@ -149,7 +149,7 @@ namespace Avogadro {
 
   void PrimitiveItemModel::engineChanged()
   {
-    PrimitiveList list = d->engine->primitiveList();
+    PrimitiveList list = d->engine->primitives();
     foreach(int row, d->rowTypeMap.keys())
     {
       Primitive::Type type = d->rowTypeMap[row];
@@ -286,7 +286,7 @@ namespace Avogadro {
     if(d->engine)
     {
       QList<Primitive *> subList = 
-        d->engine->primitiveList().subList(d->rowTypeMap[parent.row()]);
+        d->engine->primitives().subList(d->rowTypeMap[parent.row()]);
       if(row < subList.size()) {
         return createIndex(row, column, subList.at(row));
       }

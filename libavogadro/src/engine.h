@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -37,12 +37,12 @@
 namespace Avogadro {
   class GLWidget;
 
-  /** 
+  /**
    * @class Engine
    * @brief Engine plugin interface.
    * @author Donald Ephraim Curtis
    *
-   * This class provides a an interface for our engines.  
+   * This class provides a an interface for our engines.
    * Subclasses of this class are loaded by the GLWidget and used to render
    * different parts of our project (Molecule, Atom, Bond, Residue) depending
    * on what style of engine we're implementing.
@@ -57,9 +57,9 @@ namespace Avogadro {
       //! constructor
       Engine(QObject *parent = 0);
       //! deconstructor
-      virtual ~Engine(); 
+      virtual ~Engine();
 
-      /** 
+      /**
        * @return the default name for the engine
        */
       QString name() const;
@@ -80,16 +80,16 @@ namespace Avogadro {
       void setDescription(const QString &description);
 
       /**
-       * Render a PrimitiveList.  This function is allowed to rendering 
+       * Render a PrimitiveList.  This function is allowed to rendering
        * whatever primitives it wishes.  There is no requirement that it
        * render every primitive.
        *
        * @param queue This parameter is of type PrimitiveList which
-       * provides an organized list of Primitive* objects.  During 
+       * provides an organized list of Primitive* objects.  During
        * generation of the GL view engines will have their render
-       * function called at most once.  It is the responsibility 
+       * function called at most once.  It is the responsibility
        * of the engine to render all of the objects in it's queue if
-       * it can.  
+       * it can.
        *
        * @return @c true if the rendering was completed successfully, @c false otherwise
        *
@@ -103,11 +103,13 @@ namespace Avogadro {
        *
        * For more information on the various primitive lists available see
        * PrimitiveList.
-       * 
+       *
        */
       virtual bool render(GLWidget *gl) = 0;
 
-      PrimitiveList primitiveList() const;
+      PrimitiveList primitives() const;
+
+      void setPrimitives(const PrimitiveList &primitives);
 
       /** Get the radius of the primitive referred to.
        * @param primitive is the Primitive to get the radius of
@@ -150,9 +152,9 @@ namespace Avogadro {
   /**
    * @class EngineFactory
    * @warning This function needs to be looked at again.  It was originally designed
-   * so that for a single thread we could have multiple rendering engines.  We have 
+   * so that for a single thread we could have multiple rendering engines.  We have
    * decided that each molecule will have it's own window which will be it's own thread.
-   * However, this style of plugin creation may still be needed as we might want to have 
+   * However, this style of plugin creation may still be needed as we might want to have
    * multiple views of the same molecule.
    *
    * This class is used to generate new instances of the Engine class for which
@@ -171,7 +173,7 @@ namespace Avogadro {
        */
       virtual Engine *createInstance(QObject *parent=0) = 0;
 
-      
+
   };
 
 

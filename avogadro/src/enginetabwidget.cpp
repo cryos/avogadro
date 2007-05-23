@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -73,22 +73,24 @@ namespace Avogadro {
     ui.addSelectionButton->setEnabled(false);
     ui.removeSelectionButton->setEnabled(false);
 
-    connect(ui.addSelectionButton, SIGNAL(clicked()), 
+    connect(ui.addSelectionButton, SIGNAL(clicked()),
         this, SLOT(addSelection()));
-    connect(ui.removeSelectionButton, SIGNAL(clicked()), 
+    connect(ui.removeSelectionButton, SIGNAL(clicked()),
         this, SLOT(removeSelection()));
+    connect(ui.resetButton, SIGNAL(clicked()),
+           this, SLOT(addAll()));
   }
 
   EngineTabWidget::~EngineTabWidget()
   {
     delete d;
   }
-  
+
   void EngineTabWidget::addSelection()
   {
-    QList<Primitive *> selection = d->glWidget->selection();
-    PrimitiveList list = d->engine->primitiveList();
-    foreach(Primitive *p, selection)
+    QList<Primitive *> selectedPrimitives = d->glWidget->selectedPrimitives();
+    PrimitiveList list = d->engine->primitives();
+    foreach(Primitive *p, selectedPrimitives)
     {
       if(!list.contains(p)) {
         d->engine->addPrimitive(p);
@@ -98,11 +100,16 @@ namespace Avogadro {
 
   void EngineTabWidget::removeSelection()
   {
-    QList<Primitive *> selection = d->glWidget->selection();
-    foreach(Primitive *p, selection)
+    QList<Primitive *> selectedPrimitives = d->glWidget->selectedPrimitives();
+    foreach(Primitive *p, selectedPrimitives)
     {
       d->engine->removePrimitive(p);
     }
+  }
+
+  void EngineTabWidget::addAll()
+  {
+    d->engine->setPrimitives(d->glWidget->primitives());
   }
 
   GLWidget *EngineTabWidget::glWidget() const

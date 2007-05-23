@@ -96,9 +96,9 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
   MatrixP3d atomTranslation;
   atomTranslation.loadTranslation(m_glwidget->camera()->backtransformedZAxis() * t);
 
-  if (m_glwidget->selection().size())
+  if (m_glwidget->selectedPrimitives().size())
   {
-    foreach(Primitive *a, m_glwidget->selection())
+    foreach(Primitive *a, m_glwidget->selectedPrimitives())
     {
       Atom *atom = static_cast<Atom *>(a);
       atom->setPos(atomTranslation * atom->pos());
@@ -117,9 +117,9 @@ void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from,
   MatrixP3d atomTranslation;
   atomTranslation.loadTranslation(toPos - fromPos);
 
-  if (m_glwidget->selection().size())
+  if (m_glwidget->selectedPrimitives().size())
   {
-    foreach(Primitive *a, m_glwidget->selection())
+    foreach(Primitive *a, m_glwidget->selectedPrimitives())
     {
       Atom *atom = static_cast<Atom *>(a);
       atom->setPos(atomTranslation * atom->pos());
@@ -142,7 +142,7 @@ void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, doubl
   fragmentRotation.rotate3(deltaX * ROTATION_SPEED, YAxis );
   fragmentRotation.translate(-center);
 
-  foreach(Primitive *a, m_glwidget->selection())
+  foreach(Primitive *a, m_glwidget->selectedPrimitives())
   {
     Atom *atom = static_cast<Atom *>(a);
     atom->setPos(fragmentRotation * atom->pos());
@@ -156,7 +156,7 @@ void ManipulateTool::tilt( const Eigen::Vector3d &center, double delta ) const
   fragmentRotation.loadTranslation(center);
   fragmentRotation.rotate3(delta * ROTATION_SPEED, m_glwidget->camera()->backtransformedZAxis());
   fragmentRotation.translate(-center);
-  foreach(Primitive *a, m_glwidget->selection())
+  foreach(Primitive *a, m_glwidget->selectedPrimitives())
   {
     Atom *atom = static_cast<Atom *>(a);
     atom->setPos(fragmentRotation * atom->pos());
@@ -196,7 +196,7 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
   }
 
   // Get the currently selected atoms from the view
-  QList<Primitive *> currentSelection = m_glwidget->selection();
+  QList<Primitive *> currentSelection = m_glwidget->selectedPrimitives();
 
   QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
@@ -219,38 +219,38 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
     }
     else if ( event->buttons() & Qt::RightButton )
     {
-      // Atom centred rotation 
+      // Atom centred rotation
       rotate( m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y() );
     }
   }
   else if (currentSelection.size())
   {
     // Some atoms are selected - work out where the center is
-    m_selectionCenter.loadZero();
+    m_selectedPrimitivesCenter.loadZero();
     foreach(Primitive *hit, currentSelection)
     {
       Atom *atom = static_cast<Atom *>(hit);
-      m_selectionCenter += atom->pos();
+      m_selectedPrimitivesCenter += atom->pos();
     }
-    m_selectionCenter /= currentSelection.size();
+    m_selectedPrimitivesCenter /= currentSelection.size();
 
     if ( event->buttons() & Qt::LeftButton )
     {
       // translate the molecule following mouse movement
-      translate( m_selectionCenter, m_lastDraggingPosition, event->pos() );
+      translate( m_selectedPrimitivesCenter, m_lastDraggingPosition, event->pos() );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
       // Perform the rotation
-      tilt( m_selectionCenter, deltaDragging.x() );
+      tilt( m_selectedPrimitivesCenter, deltaDragging.x() );
 
       // Perform the zoom toward molecule center
-      zoom( m_selectionCenter, deltaDragging.y() );
+      zoom( m_selectedPrimitivesCenter, deltaDragging.y() );
     }
     else if( event->buttons() & Qt::RightButton )
     {
       // rotation around the center of the selected atoms
-      rotate( m_selectionCenter, deltaDragging.x(), deltaDragging.y() );
+      rotate( m_selectedPrimitivesCenter, deltaDragging.x(), deltaDragging.y() );
     }
   }
 
@@ -285,7 +285,7 @@ bool ManipulateTool::paint(GLWidget *widget)
     }
     else
     {
-      drawSphere(widget, m_selectionCenter, 0.10, 1.0);
+      drawSphere(widget, m_selectedPrimitivesCenter, 0.10, 1.0);
     }
   }
   return true;

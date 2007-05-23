@@ -73,7 +73,7 @@ bool BSDYEngine::render(GLWidget *gl)
   glPushAttrib(GL_TRANSFORM_BIT);
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
-  list = primitiveList().subList(Primitive::AtomType);
+  list = primitives().subList(Primitive::AtomType);
   glPushName(Primitive::AtomType);
   foreach( Primitive *p, list ) {
     Atom * a = static_cast<Atom *>(p);
@@ -102,7 +102,7 @@ bool BSDYEngine::render(GLWidget *gl)
   glDisable( GL_RESCALE_NORMAL);
   glEnable( GL_NORMALIZE );
 
-  list = primitiveList().subList(Primitive::BondType);
+  list = primitives().subList(Primitive::BondType);
   Eigen::Vector3d normalVector;
   if(m_glwidget) {
     normalVector = m_glwidget->normalVector();

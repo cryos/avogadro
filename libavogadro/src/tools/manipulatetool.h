@@ -83,10 +83,10 @@ namespace Avogadro {
       bool                m_leftButtonPressed;  // rotation
       bool                m_midButtonPressed;   // scale / zoom
       bool                m_rightButtonPressed; // translation
-      Eigen::Vector3d     m_selectionCenter;    // centroid of selected atoms
+      Eigen::Vector3d     m_selectedPrimitivesCenter;    // centroid of selected atoms
 
       //! Temporary var for adding selection box
-      GLuint              m_selectionDL;
+      GLuint              m_selectedPrimitivesDL;
 
       QPoint              m_lastDraggingPosition;
 
@@ -105,7 +105,7 @@ namespace Avogadro {
       Q_INTERFACES(Avogadro::ToolFactory)
 
       public:
-        Tool *createInstance(QObject *parent = 0) { return new ManipulateTool(); }
+        Tool *createInstance(QObject *parent = 0) { return new ManipulateTool(parent); }
     };
 
   // Defined in moveatomcommand.h

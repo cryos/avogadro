@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -30,8 +30,8 @@ namespace Avogadro {
   {
   public:
     EnginePrivate() : enabled(false) {}
-    
-    PrimitiveList primitiveList;
+
+    PrimitiveList primitives;
     Color colorMap;
     bool enabled;
 
@@ -48,9 +48,15 @@ namespace Avogadro {
     delete d;
   }
 
-  PrimitiveList Engine::primitiveList() const
+  PrimitiveList Engine::primitives() const
   {
-    return d->primitiveList;
+    return d->primitives;
+  }
+
+  void Engine::setPrimitives(const PrimitiveList &primitives)
+  {
+    d->primitives = primitives;
+    emit changed();
   }
 
   double Engine::radius(const Primitive*)
@@ -60,7 +66,7 @@ namespace Avogadro {
 
   void Engine::clearQueue()
   {
-    d->primitiveList.clear();
+    d->primitives.clear();
   }
 
   bool Engine::isEnabled()
@@ -75,7 +81,7 @@ namespace Avogadro {
 
   void Engine::addPrimitive(Primitive *primitive)
   {
-    d->primitiveList.append(primitive);
+    d->primitives.append(primitive);
     emit changed();
   }
 
@@ -86,7 +92,7 @@ namespace Avogadro {
 
   void Engine::removePrimitive(Primitive *primitive)
   {
-    d->primitiveList.removeAll(primitive);
+    d->primitives.removeAll(primitive);
     emit changed();
   }
 

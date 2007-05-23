@@ -8,9 +8,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -107,14 +107,14 @@ namespace Avogadro {
 
   class GLWidgetPrivate {
     public:
-      GLWidgetPrivate() : background(Qt::black), 
+      GLWidgetPrivate() : background(Qt::black),
                           aCells(0), bCells(0), cCells(0),
                           molecule(0),
                           camera(new Camera),
-                          tool(0), 
-                          toolGroup(0), 
+                          tool(0),
+                          toolGroup(0),
                           selectBuf(0),
-                          selectBufSize(-1), 
+                          selectBufSize(-1),
                           sharedPainter(false),
                           painter(new Painter)
                           {}
@@ -154,7 +154,8 @@ namespace Avogadro {
       GLuint                 *selectBuf;
       int                    selectBufSize;
 
-      PrimitiveList          selectionList;
+      PrimitiveList          selectedPrimitives;
+      PrimitiveList          primitives;
 
       QUndoStack             *undoStack;
 
@@ -178,7 +179,7 @@ namespace Avogadro {
     constructor();
   }
 
-  GLWidget::GLWidget(Molecule *molecule, 
+  GLWidget::GLWidget(Molecule *molecule,
       const QGLFormat &format, QWidget *parent,
       const QGLWidget *shareWidget )
   : QGLWidget(format, parent, shareWidget), d(new GLWidgetPrivate)
@@ -392,12 +393,12 @@ namespace Avogadro {
 
   void GLWidget::setMolecule(Molecule *molecule)
   {
-    if(!molecule)
-      return;
+    if(!molecule) { return; }
 
     // disconnect from our old molecule
-    if(d->molecule)
+    if(d->molecule) {
       QObject::disconnect(d->molecule, 0, this, 0);
+    }
 
     d->molecule = molecule;
 
@@ -405,6 +406,7 @@ namespace Avogadro {
     for( int i=0; i < d->engines.size(); i++ ) {
       d->engines.at(i)->clearQueue();
     }
+    d->primitives.clear();
 
     // add the atoms to the default queue
     std::vector<OpenBabel::OBNodeBase*>::iterator i;
@@ -414,6 +416,7 @@ namespace Avogadro {
       for( int i=0; i < d->engines.size(); i++ ) {
         d->engines.at(i)->addPrimitive(atom);
       }
+      d->primitives.append(atom);
     }
 
     // add the bonds to the default queue
@@ -424,6 +427,7 @@ namespace Avogadro {
       for( int i=0; i < d->engines.size(); i++ ) {
         d->engines.at(i)->addPrimitive(bond);
       }
+      d->primitives.append(bond);
     }
 
     // add the residues to the default queue
@@ -434,12 +438,14 @@ namespace Avogadro {
       for( int i=0; i < d->engines.size(); i++ ) {
         d->engines.at(i)->addPrimitive(residue);
       }
+      d->primitives.append(residue);
     }
 
     // add the molecule to the default queue
     for( int i=0; i < d->engines.size(); i++ ) {
       d->engines.at(i)->addPrimitive(d->molecule);
     }
+    d->primitives.append(d->molecule);
 
     // connect our signals so if the molecule gets updated
     connect(d->molecule, SIGNAL(primitiveAdded(Primitive*)),
@@ -506,6 +512,11 @@ namespace Avogadro {
     return d->engines;
   }
 
+  PrimitiveList GLWidget::primitives() const
+  {
+    return d->primitives;
+  }
+
   void GLWidget::addPrimitive(Primitive *primitive)
   {
     if(primitive) {
@@ -513,6 +524,7 @@ namespace Avogadro {
       for( int i=0; i < d->engines.size(); i++ ) {
         d->engines.at(i)->addPrimitive(primitive);
       }
+      d->primitives.append(primitive);
     }
   }
 
@@ -531,7 +543,8 @@ namespace Avogadro {
       for( int i=0; i < d->engines.size(); i++ ) {
         d->engines.at(i)->removePrimitive(primitive);
       }
-      d->selectionList.removeAll(primitive);
+      d->selectedPrimitives.removeAll(primitive);
+      d->primitives.removeAll(primitive);
     }
   }
 
@@ -590,7 +603,7 @@ namespace Avogadro {
       d->tool = tool;
     }
   }
-  
+
   void GLWidget::setPainter(Painter *painter)
   {
     Painter *old = d->painter;
@@ -598,7 +611,7 @@ namespace Avogadro {
 
     if(!d->sharedPainter) {
       delete old;
-    } 
+    }
 
     d->sharedPainter = true;
   }
@@ -758,44 +771,45 @@ namespace Avogadro {
     d->stable = stable;
   }
 
-  void GLWidget::setSelection(QList<Primitive *> primitiveList, bool select)
+  void GLWidget::setSelected(QList<Primitive *> primitives, bool select)
   {
-    foreach (Primitive *item, primitiveList) {
+    foreach (Primitive *item, primitives) {
       item->setSelected(select);
       if (select) {
-        if (!d->selectionList.contains(item))
-          d->selectionList.append(item);
-      } else
-        d->selectionList.removeAll(item);
-      
+        if (!d->selectedPrimitives.contains(item)) {
+          d->selectedPrimitives.append(item);
+        }
+      } else {
+        d->selectedPrimitives.removeAll(item);
+      }
       item->update();
     }
   }
 
-  QList<Primitive *> GLWidget::selection() const
+  QList<Primitive *> GLWidget::selectedPrimitives() const
   {
-    return d->selectionList.list();
+    return d->selectedPrimitives.list();
   }
 
-void GLWidget::toggleSelection(QList<Primitive*> primitiveList)
+void GLWidget::toggleSelected(QList<Primitive*> primitives)
   {
-    foreach (Primitive *item, primitiveList) {
-      if (d->selectionList.contains(item))
-        d->selectionList.removeAll(item);
+    foreach (Primitive *item, primitives) {
+      if (d->selectedPrimitives.contains(item))
+        d->selectedPrimitives.removeAll(item);
       else
-        d->selectionList.append(item);
+        d->selectedPrimitives.append(item);
     }
   }
 
   void GLWidget::clearSelection()
   {
-    d->selectionList.clear();
+    d->selectedPrimitives.clear();
   }
 
   bool GLWidget::isSelected(const Primitive *p)
   {
     // Return true if the item is selected
-    return d->selectionList.contains(const_cast<Primitive *>(p));
+    return d->selectedPrimitives.contains(const_cast<Primitive *>(p));
   }
 
   void GLWidget::setUnitCells(int a, int b, int c)

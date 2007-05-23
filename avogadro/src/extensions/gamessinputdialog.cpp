@@ -596,7 +596,7 @@ void GamessInputDialog::updateControlWidgets()
   itemValue = m_inputData->Control->GetMultiplicity();
   if ( itemValue <= 0 )
   {
-    if ( NumElectrons & 1 ) itemValue == 2;
+    if ( NumElectrons & 1 ) itemValue = 2;
     else itemValue = 1;
   }
   ui.controlMultiplicitySpin->setValue( itemValue );
@@ -1559,7 +1559,7 @@ void GamessInputDialog::resetClicked()
                             "All changes will be lost!" ), 
                         QMessageBox::Yes | QMessageBox::No, this );
     int response = msgbox.exec();
-    if(response = QMessageBox::Yes)
+    if(response == QMessageBox::Yes)
     {
       setAdvancedDefaults();
       updateAdvancedWidgets();
@@ -1572,7 +1572,7 @@ void GamessInputDialog::resetClicked()
                             "All changes will be lost!" ), 
                         QMessageBox::Yes | QMessageBox::No, this );
     int response = msgbox.exec();
-    if(response = QMessageBox::Yes)
+    if(response == QMessageBox::Yes)
     {
       setBasicDefaults();
       updatePreviewText();
@@ -2116,12 +2116,12 @@ void GamessInputDialog::setSystemExternal( bool state )
   m_inputData->System->SetXDR( state );
 }
 
-void GamessInputDialog::setSystemLoop( bool state )
+void GamessInputDialog::setSystemLoop( bool )
 {
   m_inputData->System->SetBalanceType( 0 );
 }
 
-void GamessInputDialog::setSystemNext( bool state )
+void GamessInputDialog::setSystemNext( bool )
 {
   m_inputData->System->SetBalanceType( 1 );
 }
@@ -2241,34 +2241,34 @@ void GamessInputDialog::setMP2Compute( bool state )
   m_inputData->MP2->SetMP2Prop(state);
 }
 
-void GamessInputDialog::setMP2Segmented( bool state )
+void GamessInputDialog::setMP2Segmented( bool )
 {
   m_inputData->MP2->SetMethod(2);
 }
 
-void GamessInputDialog::setMP2Two( bool state )
+void GamessInputDialog::setMP2Two( bool )
 {
   m_inputData->MP2->SetMethod(3);
 }
 
-void GamessInputDialog::setMP2Duplicated( bool state )
+void GamessInputDialog::setMP2Duplicated( bool )
 {
   m_inputData->MP2->SetAOIntMethod(1);
 }
 
-void GamessInputDialog::setMP2Distributed( bool state )
+void GamessInputDialog::setMP2Distributed( bool )
 {
   m_inputData->MP2->SetAOIntMethod(2);
 }
 
 //! Hessian Slots
-void GamessInputDialog::setHessianAnalytic( bool state )
+void GamessInputDialog::setHessianAnalytic( bool )
 {
   m_inputData->Hessian->SetAnalyticMethod(1);
   updateHessianWidgets();
 }
 
-void GamessInputDialog::setHessianNumeric( bool state )
+void GamessInputDialog::setHessianNumeric( bool )
 {
   m_inputData->Hessian->SetAnalyticMethod(0);
   updateHessianWidgets();

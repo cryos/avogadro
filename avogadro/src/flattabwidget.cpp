@@ -41,9 +41,9 @@
 using namespace Avogadro;
 
 FlatTabWidget::FlatTabWidget(QWidget *parent) : QWidget(parent), 
+  m_stack(new QStackedWidget(this)),
   m_handle(new FlatHandle(this)), 
-  m_tabBar(new FlatTabBar(this)), 
-  m_stack(new QStackedWidget(this))
+  m_tabBar(new FlatTabBar(this)) 
 {
   currentIndex = 0;
 
@@ -194,7 +194,6 @@ FlatTabBar::FlatTabBar(QWidget *parent) : QTabBar(parent)
 
 void FlatTabBar::mousePressEvent(QMouseEvent *event)
 {
-  int prevIndex = currentIndex();
   QTabBar::mousePressEvent(event);
 
   emit tabPressed(currentIndex());
@@ -235,7 +234,7 @@ bool FlatHandle::event(QEvent *event)
   return QWidget::event(event);
 }
 
-void FlatHandle::mouseMoveEvent(QMouseEvent *e)
+void FlatHandle::mouseMoveEvent(QMouseEvent *)
 {
   //     if (!(e->buttons() & Qt::LeftButton))
   //         return;
@@ -244,7 +243,7 @@ void FlatHandle::mouseMoveEvent(QMouseEvent *e)
   //     moveSplitter(pos);
 }
 
-void FlatHandle::mousePressEvent(QMouseEvent *e)
+void FlatHandle::mousePressEvent(QMouseEvent *)
 {
   //     Q_D(QSplitterHandle);
   //     if (e->button() == Qt::LeftButton)
@@ -254,7 +253,7 @@ void FlatHandle::mousePressEvent(QMouseEvent *e)
 /*!
   \reimp
   */
-void FlatHandle::mouseReleaseEvent(QMouseEvent *e)
+void FlatHandle::mouseReleaseEvent(QMouseEvent *)
 {
   //     Q_D(QSplitterHandle);
   //     if (!opaqueResize() && e->button() == Qt::LeftButton) {

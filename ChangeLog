@@ -1,3 +1,12 @@
+2007-05-23  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* libavogadro/src/glwidget.*: Did a bunch of API cleanup.  I know i know.
+	How you guys loath my long function names.  Moved from ::selection to
+	::selectedPrimitives.  Now have ::setSelected and ::isSelect.  Thanks
+	KDevelop for nice refactoring.  This naming method follows more of the Qt
+	style "view" naming conventions (ie ::selectedItems).
+	* .: Fixed a few compiler warnings.
+
 2007-05-22  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* avogadro/src/enginetabwidget.*: Now uses a .ui file to design the

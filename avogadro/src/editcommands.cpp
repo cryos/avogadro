@@ -91,14 +91,14 @@ namespace Avogadro {
 
   void PasteCommand::redo()
   {
-    // we should clear selection before pasting
+    // we should clear selectedPrimitives before pasting
     *m_molecule += m_pastedMolecule;
     m_molecule->update();
   }
 
   void PasteCommand::undo()
   {
-    // we should restore the selection when we undo
+    // we should restore the selectedPrimitives when we undo
     *m_molecule = m_originalMolecule;
     m_molecule->update();
   }
@@ -130,7 +130,7 @@ namespace Avogadro {
 
   void ClearCommand::undo()
   {
-    // we should restore the selection when we undo
+    // we should restore the selectedPrimitives when we undo
     *m_molecule = m_originalMolecule;
     m_molecule->update();
   }
