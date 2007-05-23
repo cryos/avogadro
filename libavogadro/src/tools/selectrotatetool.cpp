@@ -103,7 +103,8 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
   }
 
   QList<Primitive *> hitList;
-  if(!m_movedSinceButtonPressed && m_hits.size()) {
+  if(!m_movedSinceButtonPressed && m_hits.size())
+  {
     // user didn't move the mouse -- regular picking, not selection box
 
     // we'll assemble separate "hit lists" of selected atoms and residues
@@ -120,7 +121,6 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
       //        Residue *res = static_cast<Residue *>(molecule->GetResidue(hit.name()));
       //        hitList.append(res);
       //        break;
-      }
       // FIXME
       // Currently only atom selections (with selection mode) are considered
     }
