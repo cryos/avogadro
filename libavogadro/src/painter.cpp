@@ -71,6 +71,7 @@ namespace Avogadro
   const double   PAINTER_CYLINDERS_DETAIL_COEFF
     = static_cast<double>(PAINTER_MAX_DETAIL_LEVEL - 1)
     / (PAINTER_CYLINDERS_SQRT_LIMIT_MAX_LEVEL - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL);
+  const double   PAINTER_FRUSTUM_CULL_TRESHOLD = -0.6;
 
   class PainterPrivate
   {
@@ -271,7 +272,7 @@ namespace Avogadro
     
     // perform a rough form of frustum culling
     double dot = transformedCenter.z() / distance;
-    if(dot > -0.6) return;
+    if(dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return;
     
     double apparentRadius = radius / distance;
 
@@ -312,7 +313,7 @@ namespace Avogadro
     
     // perform a rough form of frustum culling
     double dot = transformedEnd1.z() / distance;
-    if(dot > -0.6) return;
+    if(dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return;
     
     double apparentRadius = radius / distance;
     int detailLevel = 1 + static_cast<int>( floor(
@@ -349,7 +350,14 @@ namespace Avogadro
       d->textRenderer->end();
     }
     assert( d->widget );
-    double apparentRadius = radius / d->widget->camera()->distance(end1);
+    Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
+    double distance = transformedEnd1.norm();
+    
+    // perform a rough form of frustum culling
+    double dot = transformedEnd1.z() / distance;
+    if(dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return;
+    
+    double apparentRadius = radius / distance;
     int detailLevel = 1 + static_cast<int>( floor(
           PAINTER_CYLINDERS_DETAIL_COEFF
           * (sqrt(apparentRadius) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL)
@@ -388,6 +396,12 @@ namespace Avogadro
     {
       d->textRenderer->begin(d->widget);
     }
+    Eigen::Vector3d transformedPos = d->widget->camera()->modelview() * pos;
+    
+    // perform a rough form of frustum culling
+    double dot = transformedPos.z() / transformedPos.norm();
+    if(dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return 0;
+    
     return d->textRenderer->draw(pos, string);
   }
 
