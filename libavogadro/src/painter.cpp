@@ -266,7 +266,15 @@ namespace Avogadro
       d->textRenderer->end();
     }
     assert( d->widget );
-    double apparentRadius = radius / d->widget->camera()->distance(center);
+    Eigen::Vector3d transformedCenter = d->widget->camera()->modelview() * center;
+    double distance = transformedCenter.norm();
+    
+    // perform a rough form of frustum culling
+    double dot = transformedCenter.z() / distance;
+    if(dot > -0.6) return;
+    
+    double apparentRadius = radius / distance;
+
     int detailLevel = 1 + static_cast<int>( floor(
           PAINTER_SPHERES_DETAIL_COEFF * (sqrt(apparentRadius) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL)
           ) );
@@ -299,7 +307,14 @@ namespace Avogadro
       d->textRenderer->end();
     }
     assert( d->widget );
-    double apparentRadius = radius / d->widget->camera()->distance(end1);
+    Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
+    double distance = transformedEnd1.norm();
+    
+    // perform a rough form of frustum culling
+    double dot = transformedEnd1.z() / distance;
+    if(dot > -0.6) return;
+    
+    double apparentRadius = radius / distance;
     int detailLevel = 1 + static_cast<int>( floor(
           PAINTER_CYLINDERS_DETAIL_COEFF
           * (sqrt(apparentRadius) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL)
