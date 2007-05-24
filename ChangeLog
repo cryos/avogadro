@@ -1,3 +1,11 @@
+2007-05-24  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/src/mainwindow.*: Mac interface fixes. Duplicate menu
+	and toolbar actions for  new, open, save, close, quit. Remove
+	icons from menu items. Fix bug 1720872: don't close the last
+	MainWindow, hide it and disable menu items. Restore upon open or
+	new.
+
 2007-05-23  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* libavogadro/src/glwidget.*: Did a bunch of API cleanup.  I know i know.

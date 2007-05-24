@@ -1,8 +1,8 @@
 /**********************************************************************
   MainWindow - main window, menus, main actions
 
-  Copyright (C) 2006 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006 by Donald E. Curtis
+  Copyright (C) 2006-2007 by Geoffrey R. Hutchison
+  Some portions Copyright (C) 2006-2007 by Donald E. Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -88,7 +88,21 @@ namespace Avogadro {
       QAction    *actionRecentFile[MainWindow::maxRecentFiles];
 
       SettingsDialog *settingsDialog;
+
+    // used for hideMainWindowMac() / showMainWindowMac()
+    // save enable/disable status of every menu item
+      QVector< QVector <bool> > menuItemStatus;
   };
+
+  unsigned int getMainWindowCount() {
+    unsigned int mainWindowCount = 0;
+    foreach (QWidget *widget, qApp->topLevelWidgets()) {
+      if (qobject_cast<MainWindow *>(widget))
+        mainWindowCount++;
+    }
+    return mainWindowCount;
+  }
+
 
   MainWindow::MainWindow() : QMainWindow(0), d(new MainWindowPrivate)
   {
@@ -96,7 +110,8 @@ namespace Avogadro {
     setFileName("");
   }
 
-  MainWindow::MainWindow(const QString &fileName) : QMainWindow(0), d(new MainWindowPrivate)
+  MainWindow::MainWindow(const QString &fileName) : QMainWindow(0),
+                                                    d(new MainWindowPrivate)
   {
     constructor();
     loadFile(fileName);
@@ -174,12 +189,19 @@ namespace Avogadro {
     statusBar()->showMessage(tr("Ready."), 10000);
 
     ui.projectDock->close();
-
-    qDebug() << "MainWindow Initialized" << endl;
   }
 
   void MainWindow::newFile()
   {
+#ifdef Q_WS_MAC
+    unsigned int mainWindowCount = getMainWindowCount();
+
+    if (mainWindowCount == 1) {
+      showMainWindowMac();
+      return;
+    }
+#endif
+
     MainWindow *other = new MainWindow;
     other->move(x() + 40, y() + 40);
     other->show();
@@ -194,6 +216,17 @@ namespace Avogadro {
   void MainWindow::openFile(const QString &fileName)
   {
     if(!fileName.isEmpty()) {
+
+      // First check if we closed all the windows on Mac
+      // if so, show the hidden window
+#ifdef Q_WS_MAC
+    unsigned int mainWindowCount = getMainWindowCount();
+
+    if (mainWindowCount == 1) {
+      showMainWindowMac();
+    }
+#endif
+
       // check to see if we already have an open window
       MainWindow *existing = findMainWindow(fileName);
       if (existing) {
@@ -226,6 +259,8 @@ namespace Avogadro {
     }
   }
 
+  // Close the current file -- leave an empty window
+  // Not used on Mac. Window is closed
   void MainWindow::closeFile()
   {
     if (maybeSave()) {
@@ -235,9 +270,38 @@ namespace Avogadro {
     }
   }
 
+  void MainWindow::quit()
+  {
+    // Before we quit, make sure to check every window
+    // See if it needs to save, then quit if needed
+    bool shouldQuit = true;
+    
+    if (shouldQuit)
+      qApp->quit();
+  }
 
   void MainWindow::closeEvent(QCloseEvent *event)
   {
+#ifdef Q_WS_MAC
+    unsigned int mainWindowCount = getMainWindowCount();
+
+    if (mainWindowCount == 1) {
+      if (maybeSave()) {
+        writeSettings();
+        
+        // Clear the undo stack first (or we'll have an enabled Undo command)
+        d->undoStack->clear();
+
+        hideMainWindowMac();
+      }
+      event->ignore();
+      setFileName("");
+      setMolecule(new Molecule(this));
+
+      return;
+    }
+#endif
+
     if (maybeSave()) {
       writeSettings();
       event->accept();
@@ -633,22 +697,32 @@ namespace Avogadro {
 
   void MainWindow::connectUi()
   {
+    // We have duplicate actions for the menus and the toolbars for Mac
+    // This way we can disable the menus when all windows are closed
+    // and disable menu icons (without disabling the toolbar icons)
     connect(ui.actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
+    connect(ui.actionNewTool, SIGNAL(triggered()), this, SLOT(newFile()));
     connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(openFile()));
+    connect(ui.actionOpenTool, SIGNAL(triggered()), this, SLOT(openFile()));
 #ifdef Q_WS_MAC
     connect(ui.actionClose, SIGNAL(triggered()), this, SLOT(close()));
+    connect(ui.actionCloseTool, SIGNAL(triggered()), this, SLOT(close()));
 #else
     connect(ui.actionClose, SIGNAL(triggered()), this, SLOT(closeFile()));
+    connect(ui.actionCloseTool, SIGNAL(triggered()), this, SLOT(closeFile()));
 #endif
     connect(ui.actionSave, SIGNAL(triggered()), this, SLOT(save()));
+    connect(ui.actionSaveTool, SIGNAL(triggered()), this, SLOT(save()));
     connect(ui.actionSaveAs, SIGNAL(triggered()), this, SLOT(saveAs()));
     connect(ui.actionRevert, SIGNAL(triggered()), this, SLOT(revert()));
     connect(ui.actionExportGraphics, SIGNAL(triggered()), this, SLOT(exportGraphics()));
     ui.actionExportGraphics->setEnabled(QGLFramebufferObject::hasOpenGLFramebufferObjects());
 #ifdef Q_WS_MAC
-    connect(ui.actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
+    connect(ui.actionQuitTool, SIGNAL(triggered()), this, SLOT(quit()));
 #else
     connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(close()));
+    connect(ui.actionQuitTool, SIGNAL(triggered()), this, SLOT(close()));
 #endif
 
     for (int i = 0; i < maxRecentFiles; ++i) {
@@ -711,6 +785,16 @@ namespace Avogadro {
     ui.menuFile->addAction(ui.configureAvogadroAction);
     // and remove the trailing separator
     ui.menuSettings->removeAction(ui.menuSettings->actions().last());
+
+
+    // Remove all menu icons (violates Apple interface guidelines)
+    QIcon nullIcon;
+    foreach(QAction *menu, menuBar()->actions()) {
+      foreach(QAction *menuItem, menu->menu()->actions()) {
+        menuItem->setIcon(nullIcon); // clears the icon for this item
+      }
+    }
+      
 #endif
   }
 
@@ -970,6 +1054,50 @@ namespace Avogadro {
         d->undoStack->push(command);
       }
     }
+  }
+
+  void MainWindow::hideMainWindowMac()
+  {
+    d->menuItemStatus.clear();
+    QVector<bool> status;
+
+    // Save the enabled state of every menu item
+    // Then disable them
+    foreach(QAction *menu, menuBar()->actions()) {
+      status.clear();
+      foreach(QAction *menuItem, menu->menu()->actions()) {
+        status.append(menuItem->isEnabled());
+        menuItem->setEnabled(false);
+      }
+      d->menuItemStatus.append(status);
+    }
+    // Now enable key menu items -- new, open, open recent, quit, etc.
+    ui.actionAbout->setEnabled(true);
+    ui.actionNew->setEnabled(true);
+    ui.actionOpen->setEnabled(true);
+    ui.menuOpenRecent->menuAction()->setEnabled(true);
+    ui.actionQuit->setEnabled(true);
+
+    hide();
+  }
+
+  void MainWindow::showMainWindowMac()
+  {
+    // Set the status of menu items to what we saved with hideMainWindowMac()
+    unsigned int menuIndex = 0;
+    unsigned int itemIndex = 0;
+    foreach(QAction *menu, menuBar()->actions()) {
+      itemIndex = 0;
+      foreach(QAction *menuItem, menu->menu()->actions()) {
+        menuItem->setEnabled(d->menuItemStatus[menuIndex][itemIndex]);
+        itemIndex++;
+      }
+      menuIndex++;
+    }
+
+    // Now show the window and raise it
+    show();
+    raise();
   }
 
 } // end namespace Avogadro

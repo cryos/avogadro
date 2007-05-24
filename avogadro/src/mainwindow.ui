@@ -156,11 +156,11 @@
    <attribute name="toolBarArea" >
     <number>4</number>
    </attribute>
-   <addaction name="actionNew" />
-   <addaction name="actionOpen" />
-   <addaction name="actionSave" />
-   <addaction name="actionClose" />
-   <addaction name="actionQuit" />
+   <addaction name="actionNewTool" />
+   <addaction name="actionOpenTool" />
+   <addaction name="actionSaveTool" />
+   <addaction name="actionCloseTool" />
+   <addaction name="actionQuitTool" />
   </widget>
   <widget class="QDockWidget" name="projectDock" >
    <property name="minimumSize" >
@@ -279,6 +279,14 @@
     <string>Ctrl+O</string>
    </property>
   </action>
+  <action name="actionOpenTool" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/fileopen.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Open</string>
+   </property>
+  </action>
   <action name="actionQuit" >
    <property name="icon" >
     <iconset resource="avogadro.qrc" >:/icons/exit.png</iconset>
@@ -288,6 +296,14 @@
    </property>
    <property name="shortcut" >
     <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionQuitTool" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/exit.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Quit</string>
    </property>
   </action>
   <action name="actionRecent" >
@@ -311,6 +327,14 @@
     <string>Ctrl+N</string>
    </property>
   </action>
+  <action name="actionNewTool" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/filenew.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;New</string>
+   </property>
+  </action>
   <action name="actionClose" >
    <property name="icon" >
     <iconset resource="avogadro.qrc" >:/icons/fileclose.png</iconset>
@@ -322,6 +346,14 @@
     <string>Ctrl+W</string>
    </property>
   </action>
+  <action name="actionCloseTool" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/fileclose.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Close</string>
+   </property>
+  </action>
   <action name="actionSave" >
    <property name="icon" >
     <iconset resource="avogadro.qrc" >:/icons/filesave.png</iconset>
@@ -331,6 +363,14 @@
    </property>
    <property name="shortcut" >
     <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSaveTool" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/filesave.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Save</string>
    </property>
   </action>
   <action name="actionSaveAs" >

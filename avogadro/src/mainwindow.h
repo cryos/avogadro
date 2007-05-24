@@ -1,8 +1,8 @@
 /**********************************************************************
   MainWindow.h - main window, menus, main actions
 
-  Copyright (C) 2006 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006 by Donald E. Curtis
+  Copyright (C) 2006-2007 by Geoffrey R. Hutchison
+  Some portions Copyright (C) 2006-2007 by Donald E. Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -62,6 +62,7 @@ namespace Avogadro {
       void exportGraphics();
 
       void closeFile();
+      void quit();
 
       void cut();
       void copy();
@@ -118,7 +119,12 @@ namespace Avogadro {
       void loadExtensions();
       
       //! Helper function for cut or copy -- prepare a clipboard
-      QMimeData* prepareClipboardData(QList<Primitive*> selectedItems); 
+      QMimeData* prepareClipboardData(QList<Primitive*> selectedItems);
+
+      //! Helper function for Mac -- hide main window and disable menus
+      void hideMainWindowMac();
+      //! Helper function for Mac -- show main window and re-enable menus
+      void showMainWindowMac();
   };
 
   /**
