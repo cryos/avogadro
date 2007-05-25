@@ -13,11 +13,20 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>0</number>
-   </property>
    <property name="spacing" >
     <number>6</number>
+   </property>
+   <property name="leftMargin" >
+    <number>0</number>
+   </property>
+   <property name="topMargin" >
+    <number>0</number>
+   </property>
+   <property name="rightMargin" >
+    <number>0</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>0</number>
    </property>
    <item>
     <widget class="QTabWidget" name="engineTabWidget" >
@@ -25,11 +34,11 @@
       <enum>QTabWidget::South</enum>
      </property>
      <property name="currentIndex" >
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="engineSettingsWidget" >
       <attribute name="title" >
-       <string>&amp;Settings</string>
+       <string>Settings</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="enginePrimitivesWidget" >
@@ -37,10 +46,19 @@
        <string>Primitives</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
+       <property name="spacing" >
         <number>6</number>
        </property>
-       <property name="spacing" >
+       <property name="leftMargin" >
+        <number>6</number>
+       </property>
+       <property name="topMargin" >
+        <number>6</number>
+       </property>
+       <property name="rightMargin" >
+        <number>6</number>
+       </property>
+       <property name="bottomMargin" >
         <number>6</number>
        </property>
        <item>
@@ -68,11 +86,20 @@
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>9</number>
-          </property>
           <property name="spacing" >
            <number>6</number>
+          </property>
+          <property name="leftMargin" >
+           <number>9</number>
+          </property>
+          <property name="topMargin" >
+           <number>9</number>
+          </property>
+          <property name="rightMargin" >
+           <number>9</number>
+          </property>
+          <property name="bottomMargin" >
+           <number>9</number>
           </property>
           <item>
            <widget class="QToolButton" name="addSelectionButton" >
