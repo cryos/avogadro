@@ -1,10 +1,17 @@
 2007-05-24  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
+	* avogadro/src/application.cpp: Fix bug 1717423 -- Mac interface
+	fix for opening files from Finder.
+
 	* avogadro/src/mainwindow.*: Mac interface fixes. Duplicate menu
 	and toolbar actions for  new, open, save, close, quit. Remove
 	icons from menu items. Fix bug 1720872: don't close the last
 	MainWindow, hide it and disable menu items. Restore upon open or
 	new.
+
+	* avogadro/src/extensions/smartsextension.*: Remove undo/redo
+	support. Selections cannot be preserved against views, so there's
+	no good way to undo a selection change.
 
 2007-05-23  Donald E. Curtis <dcurtis3@sourceforge.net>
 

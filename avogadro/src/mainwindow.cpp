@@ -94,7 +94,8 @@ namespace Avogadro {
       QVector< QVector <bool> > menuItemStatus;
   };
 
-  unsigned int getMainWindowCount() {
+  unsigned int getMainWindowCount()
+  {
     unsigned int mainWindowCount = 0;
     foreach (QWidget *widget, qApp->topLevelWidgets()) {
       if (qobject_cast<MainWindow *>(widget))
@@ -222,7 +223,7 @@ namespace Avogadro {
 #ifdef Q_WS_MAC
     unsigned int mainWindowCount = getMainWindowCount();
 
-    if (mainWindowCount == 1) {
+    if (mainWindowCount == 1 && isHidden()) {
       showMainWindowMac();
     }
 #endif

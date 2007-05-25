@@ -48,15 +48,18 @@ namespace Avogadro {
     }
     
     // check to see if we already have an open window
-    // if not, need to make this spawn a new instance
-    MainWindow *window = static_cast<MainWindow *>(topLevelWidgets().first());
-    if (window) { // let MainWindow take care of the work
-      window->openFile(fileName);
-      window->show();
-      return true;
+    // (we'll let MainWindow handle the real work)
+    MainWindow *window = NULL;
+    foreach (QWidget *widget, topLevelWidgets()) {
+      window = qobject_cast<MainWindow *>(widget);
+      if (window)
+        break;
     }
 
-    window = new MainWindow;
+    // if not, need to make this spawn a new instance
+    if (!window)
+      window = new MainWindow;
+
     window->openFile(fileName);
     window->show();
     return true;
