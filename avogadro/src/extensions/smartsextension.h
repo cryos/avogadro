@@ -71,23 +71,6 @@ namespace Avogadro {
     Extension *createInstance(QObject *parent = 0) { return new SmartsExtension(parent); }
   };
 
-  class SmartsCommand : public QUndoCommand
-  {
-    public:
-    SmartsCommand(Molecule *molecule, GLWidget *widget, std::string pattern);
-
-      virtual void undo();
-      virtual void redo();
-      virtual bool mergeWith ( const QUndoCommand * command );
-      virtual int id() const;
-
-    private:
-      Molecule *m_molecule;
-      GLWidget *m_widget;
-      OpenBabel::OBSmartsPattern m_pattern;
-      QList<Primitive *> m_selectedList;
-  };
-
 } // end namespace Avogadro
 
 #endif

@@ -60,62 +60,29 @@ using namespace OpenBabel;
                                               QLineEdit::Normal,
                                               tr(""), &ok);
       if (ok && !pattern.isEmpty()) {
-        QUndoCommand *undo = new SmartsCommand(molecule, widget,
-                                               pattern.toStdString());
-        return undo;
+        OBSmartsPattern smarts;
+        smarts.Init(pattern.toStdString());
+        smarts.Match(*molecule);
+
+        // if we have matches, select them
+        if(smarts.NumMatches() != 0) {
+          QList<Primitive *> matchedAtoms;
+          
+          vector< vector <int> > mapList = smarts.GetUMapList();
+          vector< vector <int> >::iterator i; // a set of matching atoms
+          vector<int>::iterator j; // atom ids in each match
+          for (i = mapList.begin(); i != mapList.end(); ++i)
+            for (j = i->begin(); j != i->end(); ++j) {
+              matchedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
+            }
+          
+          widget->clearSelection();
+          widget->setSelected(matchedAtoms, true);
+          widget->update();
+        } // end matches
       }
-      else
-        return NULL;
-    }
-
-    SmartsCommand::SmartsCommand(Molecule *molecule, GLWidget *widget,
-                                 std::string pattern):
-      m_molecule(molecule), m_widget(widget)
-    {
-      m_pattern.Init(pattern);
-      m_pattern.Match(*molecule);
-      setText(QObject::tr("Select SMARTS"));
-    }
-
-    void SmartsCommand::redo()
-    {
-      // save the current selectedPrimitives
-      m_selectedList = m_widget->selectedPrimitives();
-      // if we have matches, select them
-      if(m_pattern.NumMatches() != 0) {
-        QList<Primitive *> matchedAtoms;
-
-        vector< vector <int> > mapList = m_pattern.GetUMapList();
-        vector< vector <int> >::iterator i; // a set of matching atoms
-        vector<int>::iterator j; // atom ids in each match
-        for (i = mapList.begin(); i != mapList.end(); ++i)
-          for (j = i->begin(); j != i->end(); ++j) {
-            matchedAtoms.append(static_cast<Atom*>(m_molecule->GetAtom(*j)));
-          }
-        
-        m_widget->clearSelection();
-        m_widget->setSelected(matchedAtoms, true);
-      }
-      m_widget->update();
-    }
-
-    void SmartsCommand::undo()
-    {
-      // restore selectedPrimitives from saved list
-      m_widget->clearSelection();
-      m_widget->setSelected(m_selectedList, true);
-      m_widget->update();
-    }
-
-    bool SmartsCommand::mergeWith ( const QUndoCommand * command )
-    {
-      // we received another call of the same action
-      return true;
-    }
-
-    int SmartsCommand::id() const
-    {
-      return 9709537;
+      
+      return NULL;
     }
 
   } // end namespace Avogadro
