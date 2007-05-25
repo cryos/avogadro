@@ -3,9 +3,12 @@
 	overloaded render functions. Added features to push the bond type and
 	name to enable bond selection. Added selected bond highlighting.
 
-	* libavogadro/src/tools/selectrotatetool.*: Added some initial support
-	for selecting bonds, needs to be extended to support selection box
-	picking.
+	* libavogadro/src/tools/selectrotatetool.cpp: Added some initial support
+	for selecting bonds with clicks and selection boxes.
+
+	* libavogadro/src/tools/manipulatetool.cpp: Added checks for primitive
+	type before doing any manipulation - previously assumed all selected 
+	items were atoms.
 
 	* libavogadro/src/global.h: Added SEL_BOND_EXTRA_RADIUS for selected
 	bond rendering in the engines. 

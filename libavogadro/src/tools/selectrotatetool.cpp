@@ -112,12 +112,13 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
     // will select the whole residue
 
     foreach (GLHit hit, m_hits) {
-      if(hit.type() == Primitive::AtomType) {
+      if(hit.type() == Primitive::AtomType) // Atom selection
+      {
         Atom *atom = static_cast<Atom *>(molecule->GetAtom(hit.name()));
         hitList.append(atom);
         break;
       }
-      if(hit.type() == Primitive::BondType)
+      else if(hit.type() == Primitive::BondType) // Bond selection
       {
         Bond *bond = static_cast<Bond *>(molecule->GetBond(hit.name()));
         hitList.append(bond);
@@ -190,10 +191,15 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
     // Iterate over the hits
     foreach(GLHit hit, hits)
     {
-      if(hit.type() == Primitive::AtomType)
+      if(hit.type() == Primitive::AtomType) // Atom selection
       {
         Atom *atom = static_cast<Atom *>(molecule->GetAtom(hit.name()));
         hitList.append(atom);
+      }
+      if(hit.type() == Primitive::BondType) // Bond selection
+      {
+        Bond *bond = static_cast<Bond *>(molecule->GetBond(hit.name()));
+        hitList.append(bond);
       }
     }
     // Toggle the selection
