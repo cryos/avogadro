@@ -59,6 +59,11 @@ namespace Avogadro {
       virtual QString name() const { return QObject::tr("Ghemical"); }
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("Ghemical Plugin"); };
+
+      /** @return a menu path for the extension's actions */
+      virtual QString menuPath() const
+      { return QObject::tr("&Tools>&Molecular Mechanics"); }
+
       //! Perform Action
       virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, 

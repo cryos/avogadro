@@ -1031,9 +1031,49 @@ namespace Avogadro {
           Extension *extension = factory->createInstance(this);
           qDebug() << "Found Extension: " << extension->name() << " - " << extension->description();
           QList<QAction *>actions = extension->actions();
+
+          // Here's the fun part, we go customize our menus
+          // Add these actions to the menu described by the menuPath
+          QStringList menuPath = extension->menuPath().split(">");
+          QMenu *path = NULL;
+
+          // Root menus are a special case, we need to check menuBar()
+          foreach(QAction *menu, menuBar()->actions()) {
+            if (menu->text() == menuPath.at(0)) {
+              path = menu->menu();
+              break;
+            }
+          }
+          if (!path) {
+            // Gotta add a new root menu
+            path = menuBar()->addMenu(menuPath.at(0));
+          }
+          
+          // Now handle submenus
+          if (menuPath.size() > 1) {
+            QMenu *nextPath = NULL;
+
+            // Go through each submenu level, find the match
+            // and update the "path" pointer
+            for (int i = 1; i < menuPath.size(); ++i) {
+
+              foreach(QAction *menu, path->actions()) {
+                if (menu->text() == menuPath.at(i)) {
+                  nextPath = menu->menu();
+                  break;
+                }
+              } // end checking menu items
+              if (!nextPath) {
+                // add a new submenu
+                nextPath = path->addMenu(menuPath.at(i));
+              }
+              path = nextPath;
+            } // end looping through menuPath
+          } // endif
+
           foreach(QAction *action, actions)
           {
-            ui.menuTools->addAction(action);
+            path->addAction(action);
             connect(action, SIGNAL(triggered()), this, SLOT(actionTriggered()));
           }
         }

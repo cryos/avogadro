@@ -74,6 +74,22 @@ namespace Avogadro {
     virtual QString description() const
     { return QObject::tr("Unknown Extension"); }
 
+    /** @return a menu path for the extension's actions
+     *
+     * A "menu path" specifies the menu and any submenus where
+     * actions will be installed. Submenus are separated by ">" marks.
+     * For example:
+     * "Tools"  = all actions will be installed under the "Tools" menu.
+     * "Tools>Molecular Mechanics" = all actions will be installed
+     *   into a submenu "Molecular Mechanics" of the "Tools" menu.
+     *
+     * If the menu or submenu name does not exist, it will be created.
+     * If you wish to use an existing menu, make sure the path matches exactly.
+     * For example: "&Tools" not "Tools"
+     */
+    virtual QString menuPath() const
+    { return QObject::tr("&Tools"); }
+
     /**
      * @return a list of actions which this widget can perform
      */
