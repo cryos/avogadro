@@ -1,3 +1,15 @@
+2007-05-24  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/engines/bsdyengine.*: Refactored to use the
+	overloaded render functions. Added features to push the bond type and
+	name to enable bond selection. Added selected bond highlighting.
+
+	* libavogadro/src/tools/selectrotatetool.*: Added some initial support
+	for selecting bonds, needs to be extended to support selection box
+	picking.
+
+	* libavogadro/src/global.h: Added SEL_BOND_EXTRA_RADIUS for selected
+	bond rendering in the engines. 
+
 2007-05-24  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* avogadro/src/application.cpp: Fix bug 1717423 -- Mac interface

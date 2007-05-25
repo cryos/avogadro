@@ -79,5 +79,6 @@ const int      SEL_BUF_MARGIN                        = 128;
 const int      SEL_BOX_HALF_SIZE                     = 4;
 const int      SEL_BOX_SIZE                          = 2 * SEL_BOX_HALF_SIZE + 1;
 const double   SEL_ATOM_EXTRA_RADIUS                 = 0.18;
+const double   SEL_BOND_EXTRA_RADIUS                 = 0.07;
 
 #endif  // __GLOBAL_H

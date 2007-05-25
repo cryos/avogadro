@@ -67,10 +67,6 @@ namespace Avogadro {
       double radius(const Primitive *p = 0);
       //@}
 
-      void addPrimitive(Primitive *);
-      void updatePrimitive(Primitive *);
-      void removePrimitive(Primitive *);
-
       //! Display a window for the user to pick rendering options
       QWidget *settingsWidget();
 
@@ -78,16 +74,14 @@ namespace Avogadro {
       double radius(const Atom *atom);
 
       GLWidget *m_glwidget;
-      bool m_update;
       BSDYSettingsWidget *m_settingsWidget;
-      Ui::BSDYSettingsWidget *m_ui;
 
       double m_atomRadiusPercentage;
       double m_bondRadius;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();
-      
+
       /**
        * @param percent percentage of the VdwRad
        */

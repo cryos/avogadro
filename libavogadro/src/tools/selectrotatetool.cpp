@@ -117,6 +117,12 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
         hitList.append(atom);
         break;
       }
+      if(hit.type() == Primitive::BondType)
+      {
+        Bond *bond = static_cast<Bond *>(molecule->GetBond(hit.name()));
+        hitList.append(bond);
+        break;
+      }
       //      else if(hit.type() == Primitive::ResidueType) {
       //        Residue *res = static_cast<Residue *>(molecule->GetResidue(hit.name()));
       //        hitList.append(res);

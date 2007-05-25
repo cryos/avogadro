@@ -100,8 +100,11 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
   {
     foreach(Primitive *a, m_glwidget->selectedPrimitives())
     {
-      Atom *atom = static_cast<Atom *>(a);
-      atom->setPos(atomTranslation * atom->pos());
+      if (a->type() == Primitive::AtomType)
+      {
+        Atom *atom = static_cast<Atom *>(a);
+        atom->setPos(atomTranslation * atom->pos());
+      }
     }
   }
   if (m_clickedAtom && !m_glwidget->isSelected(m_clickedAtom))
@@ -121,8 +124,11 @@ void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from,
   {
     foreach(Primitive *a, m_glwidget->selectedPrimitives())
     {
-      Atom *atom = static_cast<Atom *>(a);
-      atom->setPos(atomTranslation * atom->pos());
+      if (a->type() == Primitive::AtomType)
+      {
+        Atom *atom = static_cast<Atom *>(a);
+        atom->setPos(atomTranslation * atom->pos());
+      }
     }
   }
   if (m_clickedAtom && !m_glwidget->isSelected(m_clickedAtom))
@@ -144,8 +150,11 @@ void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, doubl
 
   foreach(Primitive *a, m_glwidget->selectedPrimitives())
   {
-    Atom *atom = static_cast<Atom *>(a);
-    atom->setPos(fragmentRotation * atom->pos());
+    if (a->type() == Primitive::AtomType)
+    {
+      Atom *atom = static_cast<Atom *>(a);
+      atom->setPos(fragmentRotation * atom->pos());
+    }
   }
 }
 
@@ -158,8 +167,11 @@ void ManipulateTool::tilt( const Eigen::Vector3d &center, double delta ) const
   fragmentRotation.translate(-center);
   foreach(Primitive *a, m_glwidget->selectedPrimitives())
   {
-    Atom *atom = static_cast<Atom *>(a);
-    atom->setPos(fragmentRotation * atom->pos());
+    if (a->type() == Primitive::AtomType)
+    {
+      Atom *atom = static_cast<Atom *>(a);
+      atom->setPos(fragmentRotation * atom->pos());
+    }
   }
 }
 
@@ -229,8 +241,11 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
     m_selectedPrimitivesCenter.loadZero();
     foreach(Primitive *hit, currentSelection)
     {
-      Atom *atom = static_cast<Atom *>(hit);
-      m_selectedPrimitivesCenter += atom->pos();
+      if (hit->type() == Primitive::AtomType)
+      {
+        Atom *atom = static_cast<Atom *>(hit);
+        m_selectedPrimitivesCenter += atom->pos();
+      }
     }
     m_selectedPrimitivesCenter /= currentSelection.size();
 
@@ -268,7 +283,9 @@ QUndoCommand* ManipulateTool::wheel(GLWidget*, const QWheelEvent*)
 bool ManipulateTool::paint(GLWidget *widget)
 {
   if(m_leftButtonPressed || m_midButtonPressed || m_rightButtonPressed) {
-    if(m_clickedAtom) {
+    if( m_clickedAtom && (!m_rightButtonPressed || m_glwidget->selectedPrimitives().size()) )
+    {
+      // Don't highlight the atom on right mouse unless there is a selection
       double renderRadius = 0.0;
       foreach(Engine *engine, widget->engines())
       {
@@ -283,8 +300,9 @@ bool ManipulateTool::paint(GLWidget *widget)
       renderRadius += 0.10;
       drawSphere(widget, m_clickedAtom->GetVector().AsArray(), renderRadius, 0.7);
     }
-    else
+    else if (m_glwidget->selectedPrimitives().size())
     {
+      // Only draw the central sphere if something is selected
       drawSphere(widget, m_selectedPrimitivesCenter, 0.10, 1.0);
     }
   }
