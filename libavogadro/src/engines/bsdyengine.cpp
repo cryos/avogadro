@@ -63,7 +63,6 @@ BSDYEngine::~BSDYEngine()
 bool BSDYEngine::render(GLWidget *gl)
 {
   m_glwidget = gl;
-  Color map = colorMap();
 
   QList<Primitive *> list;
 
@@ -77,8 +76,7 @@ bool BSDYEngine::render(GLWidget *gl)
   list = primitives().subList(Primitive::AtomType);
   foreach( Primitive *p, list )
   {
-    Atom * a = static_cast<Atom *>(p);
-    render(a);
+    render(static_cast<Atom *>(p));
   }
 
   // normalize normal vectors of bonds
@@ -87,11 +85,9 @@ bool BSDYEngine::render(GLWidget *gl)
 
   // Get a list of bonds and render them
   list = primitives().subList(Primitive::BondType);
-
   foreach( Primitive *p, list )
   {
-    Bond *b = static_cast<Bond *>(p);
-    render(b);
+    render(static_cast<Bond *>(p));
   }
 
   glPopAttrib();

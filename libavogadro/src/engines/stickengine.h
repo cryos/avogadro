@@ -60,17 +60,12 @@ namespace Avogadro {
       bool render(GLWidget *gl);
       //@}
 
-      void addPrimitive(Primitive *);
-      void updatePrimitive(Primitive *);
-      void removePrimitive(Primitive *);
-
       double radius(const Primitive *p = 0);
 
     private:
       inline double radius(const Atom *a);
 
       GLWidget *m_glwidget;
-      bool m_update;
   };
 
   //! Generates instances of our StickEngine class

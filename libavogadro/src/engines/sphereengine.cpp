@@ -44,8 +44,8 @@ using namespace Eigen;
 
 SphereEngine::SphereEngine(QObject *parent) : Engine(parent), m_glwidget(0) 
 {
-  setName(tr("Sphere"));
-  setDescription(tr("Renders atoms as spheres"));
+  setName(tr("VdW Sphere"));
+  setDescription(tr("Renders atoms as Van der Waals spheres"));
 }
 
 bool SphereEngine::render(GLWidget *gl)
@@ -58,7 +58,8 @@ bool SphereEngine::render(GLWidget *gl)
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
   list = primitives().subList(Primitive::AtomType);
-  foreach( Primitive *p, list ) {
+  foreach( Primitive *p, list )
+  {
     render(static_cast<const Atom *>(p));
   }
 

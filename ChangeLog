@@ -5,7 +5,12 @@
 
 	* libavogadro/src/engines/bsdyengine.cpp,
 	libavogadro/src/tools/selectrotatetool.cpp: Fix a bug where the 0
-	indexed bond is not selectable.
+	indexed bond is not selectable. Some cleanup.
+
+	* libavogadro/src/engines/stickengine.*: Added bond selection support.
+	Refactored and cleaned up in some places.
+
+	* libavogadro/src/engines/sphereengine.cpp: Improved description.
 
 2007-05-25  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
