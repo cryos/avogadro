@@ -218,8 +218,8 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
   {
     if ( event->buttons() & Qt::LeftButton )
     {
-      // translate the molecule following mouse movement
-      translate( m_clickedAtom->pos(), m_lastDraggingPosition, event->pos() );
+      // Atom centred rotation
+      rotate( m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y() );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
@@ -231,8 +231,8 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
     }
     else if ( event->buttons() & Qt::RightButton )
     {
-      // Atom centred rotation
-      rotate( m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y() );
+      // translate the molecule following mouse movement
+      translate( m_clickedAtom->pos(), m_lastDraggingPosition, event->pos() );
     }
   }
   else if (currentSelection.size())
@@ -251,8 +251,8 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
 
     if ( event->buttons() & Qt::LeftButton )
     {
-      // translate the molecule following mouse movement
-      translate( m_selectedPrimitivesCenter, m_lastDraggingPosition, event->pos() );
+      // rotation around the center of the selected atoms
+      rotate( m_selectedPrimitivesCenter, deltaDragging.x(), deltaDragging.y() );
     }
     else if ( event->buttons() & Qt::MidButton )
     {
@@ -264,8 +264,8 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
     }
     else if( event->buttons() & Qt::RightButton )
     {
-      // rotation around the center of the selected atoms
-      rotate( m_selectedPrimitivesCenter, deltaDragging.x(), deltaDragging.y() );
+      // translate the molecule following mouse movement
+      translate( m_selectedPrimitivesCenter, m_lastDraggingPosition, event->pos() );
     }
   }
 
@@ -283,7 +283,7 @@ QUndoCommand* ManipulateTool::wheel(GLWidget*, const QWheelEvent*)
 bool ManipulateTool::paint(GLWidget *widget)
 {
   if(m_leftButtonPressed || m_midButtonPressed || m_rightButtonPressed) {
-    if( m_clickedAtom && (!m_rightButtonPressed || m_glwidget->selectedPrimitives().size()) )
+    if( m_clickedAtom && (!m_leftButtonPressed || m_glwidget->selectedPrimitives().size()) )
     {
       // Don't highlight the atom on right mouse unless there is a selection
       double renderRadius = 0.0;

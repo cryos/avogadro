@@ -1,3 +1,10 @@
+2007-05-26  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/tools/manipulatetool.cpp: Use left mouse button for
+	rotation and right mouse button for translation.
+
+	* libavogadro/src/tools/navigatetool.cpp: Use left mouse button	for
+	rotation and right mouse button for translation.
+
 2007-05-25  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* avogadro/src/extension.h, avogadro/src/mainwindow.cpp: 
@@ -7,7 +14,7 @@
 	* avogadro/src/extensions/ghemicalextension.h: Use above for a
 	"Molecular Mechanics" submenu for all actions.
 
-2007-05-24  Marcus D. Hanwell <marcus@cryos.org>
+2007-05-25  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/engines/bsdyengine.*: Refactored to use the
 	overloaded render functions. Added features to push the bond type and
 	name to enable bond selection. Added selected bond highlighting.

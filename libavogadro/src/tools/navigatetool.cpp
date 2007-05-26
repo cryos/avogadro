@@ -160,7 +160,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
 
   if( m_clickedAtom )
   {
-    if ( event->buttons() & Qt::RightButton )
+    if ( event->buttons() & Qt::LeftButton )
     {
       // Atom centred rotation 
       rotate( m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y() );
@@ -173,7 +173,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
       // Perform the zoom toward clicked atom
       zoom( m_clickedAtom->pos(), deltaDragging.y() );
     }
-    else if ( event->buttons() & Qt::LeftButton )
+    else if ( event->buttons() & Qt::RightButton )
     {
       // translate the molecule following mouse movement
       translate( m_clickedAtom->pos(), m_lastDraggingPosition, event->pos() );
@@ -181,7 +181,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
   }
   else // Nothing clicked on
   {
-    if( event->buttons() & Qt::RightButton )
+    if( event->buttons() & Qt::LeftButton )
     {
       // rotation around the center of the molecule
       rotate( m_glwidget->center(), deltaDragging.x(), deltaDragging.y() );
@@ -194,7 +194,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
       // Perform the zoom toward molecule center
       zoom( m_glwidget->center(), deltaDragging.y() );
     }
-    else if ( event->buttons() & Qt::LeftButton )
+    else if ( event->buttons() & Qt::RightButton )
     {
       // translate the molecule following mouse movement
       translate( m_glwidget->center(), m_lastDraggingPosition, event->pos() );
