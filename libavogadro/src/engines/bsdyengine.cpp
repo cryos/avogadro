@@ -135,7 +135,7 @@ bool BSDYEngine::render(const Bond* b)
 
   // Push the type and name
   glPushName(Primitive::BondType);
-  glPushName(b->GetIdx());
+  glPushName(b->GetIdx()+1);
 
   const Atom* atom1 = static_cast<const Atom *>(b->GetBeginAtom());
   const Atom* atom2 = static_cast<const Atom *>(b->GetEndAtom());

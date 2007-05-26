@@ -1,9 +1,11 @@
 2007-05-26  Marcus D. Hanwell <marcus@cryos.org>
-	* libavogadro/src/tools/manipulatetool.cpp: Use left mouse button for
+	* libavogadro/src/tools/manipulatetool.cpp,
+	libavogadro/src/tools/navigatetool.cpp: Use left mouse button for
 	rotation and right mouse button for translation.
 
-	* libavogadro/src/tools/navigatetool.cpp: Use left mouse button	for
-	rotation and right mouse button for translation.
+	* libavogadro/src/engines/bsdyengine.cpp,
+	libavogadro/src/tools/selectrotatetool.cpp: Fix a bug where the 0
+	indexed bond is not selectable.
 
 2007-05-25  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
