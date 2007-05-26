@@ -659,6 +659,9 @@ namespace Avogadro {
   QList<GLHit> GLWidget::hits(int x, int y, int w, int h)
   {
     QList<GLHit> hits;
+    
+    if(!molecule()) return hits;
+    
     GLint viewport[4];
     unsigned int hit_count;
 
