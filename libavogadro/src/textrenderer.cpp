@@ -29,7 +29,7 @@
 #include<avogadro/glwidget.h>
 #include<avogadro/camera.h>
 
-const int TEXT_OUTLINE_INTENSITY = 128;
+const int TEXT_OUTLINE_INTENSITY = 160;
 
 namespace Avogadro {
 
@@ -161,9 +161,8 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
 
   // the weight of diagonal-adjactent pixels. Side-adjacent pixels have
   // weight 256 (their value is shifted 8 bits on the left, hence multiplied
-  // by 236). The value below is approximately 256/sqrt(2), as suggested by
-  // Pythagora's theorem.
-  const int df = 181;
+  // by 256).
+  const int df = 50;
 
   // first compute the pixels that are not on an edge of the bitmap
   for( int j = 1; j < texheight - 1; j++ )
