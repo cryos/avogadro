@@ -48,6 +48,7 @@ DrawTool::DrawTool(QObject *parent) : Tool(parent),
   m_prevBond(0), 
   m_prevBondOrder(0), 
   //m_beginAtomDrawCommand(0), //m_bondCommand(0), m_endAtomDrawCommand(0),
+  m_periodicTable(0),
   m_settingsWidget(0)
 {
   QAction *action = activateAction();
@@ -72,7 +73,13 @@ int DrawTool::usefulness() const
 
 void DrawTool::elementChanged( int index )
 {
-  setElement(index + 1);
+  if (index < m_elementsIndex.size() - 1)
+    setElement(m_elementsIndex[index]);
+  else {
+    if (m_periodicTable == NULL)
+      m_periodicTable = new PeriodicTableDialog(m_settingsWidget);
+    m_periodicTable->show();
+  }
 }
 
 void DrawTool::setElement( int index )
@@ -449,31 +456,40 @@ QWidget *DrawTool::settingsWidget() {
   if(!m_settingsWidget) {
     m_settingsWidget = new QWidget;
 
+    // Small popup with 10 most common elements for organic chemistry
+    // (and extra for "other" to bring up periodic table window)
     m_comboElements = new QComboBox(m_settingsWidget);
+    m_elementsIndex.reserve(11);
     m_comboElements->addItem("Hydrogen (1)");
-    m_comboElements->addItem("Helium (2)");
-    m_comboElements->addItem("Lithium (3)");
-    m_comboElements->addItem("Beryllium (4)");
+    m_elementsIndex.append(1);
     m_comboElements->addItem("Boron (5)");
+    m_elementsIndex.append(5);
     m_comboElements->addItem("Carbon (6)");
+    m_elementsIndex.append(6);
     m_comboElements->addItem("Nitrogen (7)");
+    m_elementsIndex.append(7);
     m_comboElements->addItem("Oxygen (8)");
+    m_elementsIndex.append(8);
     m_comboElements->addItem("Fluorine (9)");
-    m_comboElements->addItem("Neon (10)");
-    m_comboElements->addItem("Sodium (11)");
-    m_comboElements->addItem("Magnesium (12)");
-    m_comboElements->addItem("Aluminum (13)");
-    m_comboElements->addItem("Silicon (14)");
+    m_elementsIndex.append(9);
     m_comboElements->addItem("Phosphorus (15)");
+    m_elementsIndex.append(15);
     m_comboElements->addItem("Sulfur (16)");
+    m_elementsIndex.append(16);
     m_comboElements->addItem("Chlorine (17)");
-    m_comboElements->addItem("Argon (18)");
-    m_comboElements->setCurrentIndex(5);
+    m_elementsIndex.append(17);
+    m_comboElements->addItem("Bromine (35)");
+    m_elementsIndex.append(35);
+    m_comboElements->addItem("Other...");
+    m_elementsIndex.append(0);
+    m_comboElements->setCurrentIndex(2);
 
     m_comboBondOrder = new QComboBox(m_settingsWidget);
     m_comboBondOrder->addItem("Single");
     m_comboBondOrder->addItem("Double");
     m_comboBondOrder->addItem("Triple");
+
+    m_periodicTable = new PeriodicTableDialog(m_settingsWidget);
 
     m_layout = new QVBoxLayout();
     m_layout->addWidget(m_comboElements);

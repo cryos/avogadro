@@ -28,6 +28,8 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
 
+#include "periodictabledialog.h"
+
 #include <openbabel/mol.h>
 
 #include <QGLWidget>
@@ -108,7 +110,10 @@ namespace Avogadro {
       QList<GLHit> m_hits;
 
       QComboBox *m_comboElements;
+      QVector<int> m_elementsIndex;
       QComboBox *m_comboBondOrder;
+      QPushButton *m_tableButton;
+      PeriodicTableDialog *m_periodicTable;
       QVBoxLayout *m_layout;
 
       QWidget *m_settingsWidget;
@@ -116,7 +121,6 @@ namespace Avogadro {
       Atom *newAtom(GLWidget *widget, const QPoint& p);
       void moveAtom(GLWidget *widget, Atom *atom, const QPoint& p);
       Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
-      //       void moveAtom(Atom *atom, const MolGeomInfo &molGeomInfo, int x, int y);
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();

@@ -1,5 +1,5 @@
 <ui version="4.0" >
- <class>Dialog</class>
+ <class>PeriodicTableDialog</class>
  <widget class="QDialog" name="Dialog" >
   <property name="geometry" >
    <rect>
