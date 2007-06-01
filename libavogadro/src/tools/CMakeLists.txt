@@ -21,7 +21,8 @@ qt4_add_resources(drawtool_RC_SRCS draw.qrc)
 qt4_wrap_ui(drawtool_UIS_H periodictabledialog.ui)
 qt4_automoc(${drawtool_SRCS})
 ADD_LIBRARY(drawtool SHARED drawcommand.cpp drawtool.cpp 
-                     periodictabledialog.cpp ${drawtool_RC_SRCS} )
+                     periodictabledialog.cpp 
+                     ${drawtool_UIS_H} ${drawtool_RC_SRCS} )
 TARGET_LINK_LIBRARIES(drawtool 
     ${OPENBABEL2_LIBRARIES} 
     ${QT_LIBRARIES}
