@@ -120,6 +120,12 @@ namespace Avogadro {
 
   void MainWindow::constructor()
   {
+#ifdef Q_WS_MAC
+    // The unified toolbar look on Mac 10.4 looks really cool
+    // but it has clear bugs with Qt4.3 and OpenGL apps.
+    // Oops, bug filed with Trolltech
+    //    setUnifiedTitleAndToolBarOnMac(true);
+#endif
     ui.setupUi(this);
 
     readSettings();
@@ -210,7 +216,8 @@ namespace Avogadro {
 
   void MainWindow::openFile()
   {
-    QString fileName = QFileDialog::getOpenFileName(this);
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Open File"));
     openFile(fileName);
   }
 
@@ -322,21 +329,11 @@ namespace Avogadro {
 
   bool MainWindow::saveAs()
   {
-    QString fileName = QFileDialog::getSaveFileName(this);
+    QString fileName = QFileDialog::getSaveFileName(this, 
+                                                    tr("Save Molecule As"));
     if (fileName.isEmpty())
       return false;
 
-//     if (QFile::exists(fileName)) {
-//       QMessageBox::StandardButton ret;
-//       ret = QMessageBox::warning(this, tr("Avogadro"),
-//           tr("File %1 already exists.\n"
-//             "Do you want to overwrite it?")
-//           .arg(QDir::convertSeparators(fileName)),
-//           QMessageBox::Yes | QMessageBox::Cancel);
-//       if (ret == QMessageBox::Cancel) {
-//         return false;
-//       }
-//     }
     setFileName(fileName);
     return saveFile(fileName);
   }
@@ -348,7 +345,8 @@ namespace Avogadro {
 
   void MainWindow::exportGraphics()
   {
-    QString fileName = QFileDialog::getSaveFileName(this);
+    QString fileName = QFileDialog::getSaveFileName(this, 
+                                                    tr("Export Bitmap Graphics"));
     if (fileName.isEmpty())
       return;
 
