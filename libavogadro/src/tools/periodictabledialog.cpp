@@ -21,6 +21,7 @@
 
 #include <QAbstractButton>
 #include <QDialogButtonBox>
+#include <QDebug>
 
 namespace Avogadro {
 
@@ -33,20 +34,35 @@ PeriodicTableDialog::PeriodicTableDialog(QWidget *parent)
 {
   ui.setupUi(this);
 
-  connect(ui.buttonBox, SIGNAL(clicked(QAbstractButton *)),
-          this, SLOT(buttonClicked(QAbstractButton *)));
+  elementGroup = new QButtonGroup(this);
+  unsigned int element = 1;
+  foreach(QToolButton *child, findChildren<QToolButton*>()) {
+    elementGroup->addButton(child, element++);
+    child->setCheckable(true);
+  }
+
+  connect(elementGroup, SIGNAL(buttonClicked(int)),
+          this, SLOT(buttonClicked(int)));
 }
 
 PeriodicTableDialog::~PeriodicTableDialog()
 {
 }
 
-void PeriodicTableDialog::buttonClicked(QAbstractButton *button)
+void PeriodicTableDialog::setSelectedElement(int id)
 {
-  QDialogButtonBox::ButtonRole role = ui.buttonBox->buttonRole(button);
-  if(role == QDialogButtonBox::ApplyRole || role == QDialogButtonBox::AcceptRole) {
-    //    emit elementChanged signal for current button
-  }
+  initialElement = id;
+  currentElement = id;
+  
+  elementGroup->button(id)->setChecked(true);
+}
+
+void PeriodicTableDialog::buttonClicked(int id)
+{
+  qDebug() << " clicked button " << id;
+  if (currentElement != id)
+    emit elementChanged(id);
+  currentElement = id;
 }
 
 } // end namespace Avogadro

@@ -78,8 +78,15 @@ void DrawTool::elementChanged( int index )
   else {
     if (m_periodicTable == NULL)
       m_periodicTable = new PeriodicTableDialog(m_settingsWidget);
+    m_periodicTable->setSelectedElement(m_element);
     m_periodicTable->show();
   }
+}
+
+// TODO: Add additional entries to the element index (popup menu)
+void DrawTool::customElementChanged( int index )
+{
+  setElement(index);
 }
 
 void DrawTool::setElement( int index )
@@ -490,6 +497,8 @@ QWidget *DrawTool::settingsWidget() {
     m_comboBondOrder->addItem("Triple");
 
     m_periodicTable = new PeriodicTableDialog(m_settingsWidget);
+    connect(m_periodicTable, SIGNAL(elementChanged(int)),
+            this, SLOT(customElementChanged(int)));
 
     m_layout = new QVBoxLayout();
     m_layout->addWidget(m_comboElements);

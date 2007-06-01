@@ -35,15 +35,19 @@ class PeriodicTableDialog : public QDialog
         PeriodicTableDialog (QWidget *parent);
         ~PeriodicTableDialog();
 
+        void setSelectedElement(int id);
+
     private Q_SLOTS:
-        void buttonClicked(QAbstractButton *button);
-        //        void elementClicked(QToolButton *element);
+        void buttonClicked(int id);
 
     private:
         Ui::PeriodicTableDialog ui;
+        QButtonGroup *elementGroup;
+        int initialElement;
+        int currentElement;
 
     Q_SIGNALS:
-        unsigned int elementChanged();
+        void elementChanged(int newElement);
 };
 
 } // end namespace Avogadro

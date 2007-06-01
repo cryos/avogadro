@@ -84,6 +84,7 @@ namespace Avogadro {
 
     public Q_SLOTS:
       void elementChanged( int index );
+      void customElementChanged( int index );
       void bondOrderChanged( int index );
 
     private:
