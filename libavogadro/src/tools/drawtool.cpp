@@ -73,13 +73,21 @@ int DrawTool::usefulness() const
 
 void DrawTool::elementChanged( int index )
 {
-  if (index < m_elementsIndex.size() - 1)
+  // The popup menu returns this signal
+  // First case: we pick a common element from the popup
+  if (index < m_elementsIndex.size() - 1) {
     setElement(m_elementsIndex[index]);
+    if (m_periodicTable)
+      m_periodicTable->setSelectedElement(m_elementsIndex[index]);      
+  }
+  // Second case: we have a custom element "Other..."
+  // Bring up the periodic table widget
   else {
-    if (m_periodicTable == NULL)
-      m_periodicTable = new PeriodicTableDialog(m_settingsWidget);
-    m_periodicTable->setSelectedElement(m_element);
-    m_periodicTable->show();
+    if (m_periodicTable) {
+      m_periodicTable->setSelectedElement(m_element);
+      m_periodicTable->show();
+      m_periodicTable->raise();
+    }
   }
 }
 

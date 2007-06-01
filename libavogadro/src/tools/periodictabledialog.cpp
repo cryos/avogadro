@@ -27,6 +27,8 @@ PeriodicTableDialog::PeriodicTableDialog(QWidget *parent)
 {
   ui.setupUi(this);
 
+  // Qt Designer only creates visual layout -- here we do logical layout
+  // (fortunately, the elements are arranged in atomic number order)
   elementGroup = new QButtonGroup(this);
   unsigned int element = 1;
   foreach(QToolButton *child, findChildren<QToolButton*>()) {
@@ -45,15 +47,15 @@ PeriodicTableDialog::~PeriodicTableDialog()
 void PeriodicTableDialog::setSelectedElement(int id)
 {
   currentElement = id;
-  
   elementGroup->button(id)->setChecked(true);
 }
 
 void PeriodicTableDialog::buttonClicked(int id)
 {
-  if (currentElement != id)
+  if (currentElement != id) {
     emit elementChanged(id);
-  currentElement = id;
+    currentElement = id;
+  }
 }
 
 } // end namespace Avogadro
