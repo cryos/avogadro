@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "enginetabwidget.h"
+#include "enginesetupwidget.h"
 
 #include "primitivetreeview.h"
 
@@ -145,4 +145,4 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-#include "enginetabwidget.moc"
+#include "enginesetupwidget.moc"

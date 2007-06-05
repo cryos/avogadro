@@ -28,7 +28,7 @@
 #include "settingsdialog.h"
 
 #include "enginelistview.h"
-#include "enginetabwidget.h"
+#include "enginesetupwidget.h"
 
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>

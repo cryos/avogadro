@@ -29,7 +29,7 @@ set(avogadro_SRCS
     editcommands.cpp
     enginelistview.cpp
     engineitemmodel.cpp
-    enginetabwidget.cpp
+    enginesetupwidget.cpp
     flowlayout.cpp
     flattabwidget.cpp
     main.cpp
@@ -49,7 +49,7 @@ set(avogadro_RCS
 set(avogadro_UIS
     mainwindow.ui
     settingsdialog.ui
-    engineconfigurationwidget.ui
+    enginesetupwidget.ui
 )
 
 # designer has some flaws.

@@ -28,7 +28,7 @@
 #include <QObject>
 #include <QTabWidget>
 
-#include "ui_engineconfigurationwidget.h"
+#include "ui_enginesetupwidget.h"
 
 class QAbstractButton;
 class QStandardItem;

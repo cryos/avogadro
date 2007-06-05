@@ -1,3 +1,7 @@
+2007-06-05  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+	* .:  Update EngineConfigurationWidget to EngineSetupWidget and updated
+	file names and all references in the project.  Updated CMakeFiles.
+
 2007-05-26  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/tools/manipulatetool.cpp,
 	libavogadro/src/tools/navigatetool.cpp: Use left mouse button for
