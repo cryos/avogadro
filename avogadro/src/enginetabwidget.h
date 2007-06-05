@@ -1,5 +1,5 @@
 /**********************************************************************
-  EngineTabWidget - View for listing engines
+  EngineSetupWidget - View for listing engines
 
   Copyright (C) 2007 Donald Ephraim Curtis
 
@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ENGINETABWIDGET_H
-#define __ENGINETABWIDGET_H
+#ifndef __ENGINESETUPWIDGET_H
+#define __ENGINESETUPWIDGET_H
 
 #include <QObject>
 #include <QTabWidget>
@@ -32,38 +32,39 @@
 
 class QAbstractButton;
 class QStandardItem;
-namespace Avogadro {
+namespace Avogadro
+{
 
   class GLWidget;
   class Engine;
   /**
-   * @class EngineTabWidget
-   * @brief Widget for change engine settings and members of engines.
-   *
-   * This widget allows us to modify engine settings and select which objects
-   * are to be rendered by this engine when partially rendering.
-   */
-  class EngineTabWidgetPrivate;
-  class EngineTabWidget : public QWidget
+    * @class EngineSetupWidget
+    * @brief Widget for change engine settings and members of engines.
+    *
+    * This widget allows us to modify engine settings and select which objects
+    * are to be rendered by this engine when partially rendering.
+    */
+  class EngineSetupWidgetPrivate;
+  class EngineSetupWidget : public QWidget
   {
-    Q_OBJECT;
+      Q_OBJECT;
 
     public:
-      EngineTabWidget( GLWidget *glWidget, QWidget *parent = 0 );
-      ~EngineTabWidget();
+      EngineSetupWidget ( GLWidget *glWidget, QWidget *parent = 0 );
+      ~EngineSetupWidget();
 
       GLWidget *glWidget() const;
 
     public Q_SLOTS:
-      void setCurrentEngine(Engine *engine);
+      void setCurrentEngine ( Engine *engine );
       void addSelection();
       void removeSelection();
       void addAll();
 
     private:
-      EngineTabWidgetPrivate *const d;
+      EngineSetupWidgetPrivate *const d;
 
-      Ui::EngineConfigurationWidget ui;
+      Ui::EngineSetupWidget ui;
 
   };
 

@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>EngineConfigurationWidget</class>
- <widget class="QWidget" name="EngineConfigurationWidget" >
+ <class>EngineSetupWidget</class>
+ <widget class="QWidget" name="EngineSetupWidget" >
   <property name="geometry" >
    <rect>
     <x>0</x>

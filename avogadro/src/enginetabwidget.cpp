@@ -1,5 +1,5 @@
 /**********************************************************************
-  EngineTabWidget - View for listing engines
+  EngineSetupWidget - View for listing engines
 
   Copyright (C) 2007 Donald Ephraim Curtis
 
@@ -40,10 +40,10 @@
 
 namespace Avogadro {
 
-  class EngineTabWidgetPrivate
+  class EngineSetupWidgetPrivate
   {
     public:
-      EngineTabWidgetPrivate() : glWidget(0), engine(0) {};
+      EngineSetupWidgetPrivate() : glWidget(0), engine(0) {};
 
       GLWidget *glWidget;
       Engine *engine;
@@ -51,7 +51,7 @@ namespace Avogadro {
       PrimitiveTreeView *primitiveTree;
   };
 
-  EngineTabWidget::EngineTabWidget( GLWidget *glWidget, QWidget *parent ) : QWidget(parent), d(new EngineTabWidgetPrivate)
+  EngineSetupWidget::EngineSetupWidget( GLWidget *glWidget, QWidget *parent ) : QWidget(parent), d(new EngineSetupWidgetPrivate)
   {
     ui.setupUi(this);
 
@@ -81,12 +81,12 @@ namespace Avogadro {
            this, SLOT(addAll()));
   }
 
-  EngineTabWidget::~EngineTabWidget()
+  EngineSetupWidget::~EngineSetupWidget()
   {
     delete d;
   }
 
-  void EngineTabWidget::addSelection()
+  void EngineSetupWidget::addSelection()
   {
     QList<Primitive *> selectedPrimitives = d->glWidget->selectedPrimitives();
     PrimitiveList list = d->engine->primitives();
@@ -98,7 +98,7 @@ namespace Avogadro {
     }
   }
 
-  void EngineTabWidget::removeSelection()
+  void EngineSetupWidget::removeSelection()
   {
     QList<Primitive *> selectedPrimitives = d->glWidget->selectedPrimitives();
     foreach(Primitive *p, selectedPrimitives)
@@ -107,17 +107,17 @@ namespace Avogadro {
     }
   }
 
-  void EngineTabWidget::addAll()
+  void EngineSetupWidget::addAll()
   {
     d->engine->setPrimitives(d->glWidget->primitives());
   }
 
-  GLWidget *EngineTabWidget::glWidget() const
+  GLWidget *EngineSetupWidget::glWidget() const
   {
     return d->glWidget;
   }
 
-  void EngineTabWidget::setCurrentEngine( Engine *engine )
+  void EngineSetupWidget::setCurrentEngine( Engine *engine )
   {
     d->engine = engine;
     QWidget *widget = engine->settingsWidget();

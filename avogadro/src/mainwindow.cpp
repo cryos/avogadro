@@ -168,7 +168,7 @@ namespace Avogadro {
 
 
     d->engineConfigurationStacked = new QStackedLayout(ui.engineConfigurationWidget);
-    EngineTabWidget *engineTabWidget = new EngineTabWidget(d->glWidget, ui.engineConfigurationWidget);
+    EngineSetupWidget *engineTabWidget = new EngineSetupWidget(d->glWidget, ui.engineConfigurationWidget);
     d->engineConfigurationStacked->addWidget(engineTabWidget);
 
     connect(engineListView, SIGNAL(clicked(Engine *)),
@@ -603,7 +603,7 @@ namespace Avogadro {
     EngineListView *engineListView = new EngineListView(glWidget, ui.enginesWidget);
     d->enginesStacked->addWidget(engineListView);
 
-    EngineTabWidget *engineTabWidget = new EngineTabWidget(glWidget, ui.engineConfigurationWidget);
+    EngineSetupWidget *engineTabWidget = new EngineSetupWidget(glWidget, ui.engineConfigurationWidget);
     d->engineConfigurationStacked->addWidget(engineTabWidget);
 
     connect(engineListView, SIGNAL(clicked(Engine *)),
