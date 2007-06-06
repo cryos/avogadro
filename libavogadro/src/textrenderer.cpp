@@ -252,10 +252,10 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   glGenTextures( 1, &m_glyphTexture );
   if( ! m_glyphTexture ) return false;
   glGenTextures( 1, &m_outlineTexture );
-  if( ! m_glyphTexture ) return false;
+  if( ! m_outlineTexture ) return false;
 
   glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );
-
+  
   glBindTexture( textureTarget, m_glyphTexture );
   glTexImage2D(
     textureTarget,
@@ -268,6 +268,9 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
     GL_UNSIGNED_BYTE,
     glyphbitmap );
 
+  glTexParameteri( textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+  glTexParameteri( textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+
   glBindTexture( textureTarget, m_outlineTexture );
   glTexImage2D(
     textureTarget,
@@ -279,6 +282,9 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
     GL_ALPHA,
     GL_UNSIGNED_BYTE,
     outlinebitmap );
+
+  glTexParameteri( textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+  glTexParameteri( textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
   // the texture data is now kept alive by OpenGL. It's time to free the bitmaps.
   delete [] glyphbitmap;
