@@ -29,7 +29,26 @@
 #include<avogadro/glwidget.h>
 #include<avogadro/camera.h>
 
-const int TEXT_OUTLINE_INTENSITY = 160;
+#define OUTLINE_WIDTH     3
+const int OUTLINE_BRUSH[2*OUTLINE_WIDTH+1][2*OUTLINE_WIDTH+1]
+  = { { 10, 20,  35,  50,  35,  20,  10 },
+      { 20, 40,  75,  100,  75, 40,  20 },
+      { 35, 75,  200, 256, 200, 75,  35 },
+      { 50, 100, 256, 256, 256, 100, 50},
+      { 35, 75,  200, 256, 200, 75,  35 },
+      { 20, 40,  75,  100,  75, 40,  20 },
+      { 10, 20,  35,  50,  35,  20,  10 } };
+
+/*
+  = { { 40,  75,  100,  75, 40 },
+      { 75,  200, 256, 200, 75 },
+      { 100, 256, 256, 256, 100 },
+      { 75,  200, 256, 200, 75 },
+      { 40,  75,  100,  75, 40 } };
+*/
+/*  = { { 200, 256, 200 },
+      { 256, 256, 256 },
+      { 200, 256, 200 } }; */
 
 namespace Avogadro {
 
@@ -46,15 +65,12 @@ namespace Avogadro {
 class CharRenderer
 {
   protected:
-    /**
-     * The OpenGL texture object
-     */
-    GLuint m_texture;
+    GLuint m_glyphTexture;
+    GLuint m_outlineTexture;
 
-    /**
-     * The OpenGL display list
-     */
-    GLuint m_displayList;
+    GLuint m_quadDisplayList;
+    
+    GLenum m_textureTarget;
 
     /**
      * Width and height in pixels of the rendered character
@@ -69,10 +85,7 @@ class CharRenderer
     bool initialize( QChar c, const QFont &font, GLenum textureTarget );
     
     /** Calls the display list, drawing the character as a textured quad */
-    inline void draw() const
-    {
-      glCallList( m_displayList );
-    }
+    void draw(const float *color) const;
     
     /** @returns the height of the rendered character in pixels */
     inline int height() const { return m_realheight; }
@@ -81,31 +94,37 @@ class CharRenderer
     inline int width() const { return m_realwidth; }
 };
 
+void CharRenderer::draw(const float *color) const
+{
+  glColor3f(0,0,0);
+  glBindTexture(m_textureTarget, m_outlineTexture);
+  glCallList( m_quadDisplayList );
+  glColor4fv(color);
+  glBindTexture(m_textureTarget, m_glyphTexture);
+  glCallList( m_quadDisplayList );
+  glTranslatef(m_realwidth, 0, 0);
+}
+
 CharRenderer::CharRenderer()
 {
-  m_texture = 0;
-  m_displayList = 0;
+  m_glyphTexture = 0;
+  m_outlineTexture = 0;
+  m_quadDisplayList = 0;
 }
 
 CharRenderer::~CharRenderer()
 {
-  if( m_texture ) glDeleteTextures( 1, &m_texture );
-  if( m_displayList ) glDeleteLists( m_displayList, 1 );
+  if( m_glyphTexture ) glDeleteTextures( 1, &m_glyphTexture );
+  if( m_outlineTexture ) glDeleteTextures( 1, &m_outlineTexture );
+  if( m_quadDisplayList ) glDeleteLists( m_quadDisplayList, 1 );
 }
 
-bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget )
+static void normalizeTexSize( GLenum textureTarget,
+                              int& texwidth, int& texheight )
 {
-  if( m_displayList ) return true;
-  
-  // *** STEP 1 : render the character to a QImage ***
-  
-  // compute the size of the image to create
-  const QFontMetrics fontMetrics ( font );
-  m_realwidth = fontMetrics.width(c);
-  m_realheight = fontMetrics.height();
-  if(m_realwidth == 0 || m_realheight == 0) return false;
-  int texwidth  =  m_realwidth + 2;
-  int texheight = m_realheight + 2;
+  // if the texture target is GL_TEXTURE_2D, that means that
+  // the texture_rectangle OpenGL extension is unsupported and we must
+  // use only square texture with size a power of two.
   if( textureTarget == GL_TEXTURE_2D )
   {
     int x = qMax( texwidth, texheight );
@@ -115,6 +134,23 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
     // the texture must be square, and its size must be a power of two.
     texwidth = texheight = n;
   }
+}
+
+bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget )
+{
+  if( m_quadDisplayList ) return true;
+  m_textureTarget = textureTarget;
+  // *** STEP 1 : render the character to a QImage ***
+  
+  // compute the size of the image to create
+  const QFontMetrics fontMetrics ( font );
+  m_realwidth = fontMetrics.width(c);
+  m_realheight = fontMetrics.height();
+  if(m_realwidth == 0 || m_realheight == 0) return false;
+  int texwidth  =  m_realwidth + 2 * OUTLINE_WIDTH;
+  int texheight = m_realheight + 2 * OUTLINE_WIDTH;
+  normalizeTexSize(textureTarget, texwidth, texheight);
+  
   // create a new image
   QImage image( texwidth, texheight, QImage::Format_RGB32 );
   QPainter painter;
@@ -129,7 +165,10 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   // actually paint the character. The position seems right at least with Helvetica
   // at various sizes, I didn't try other fonts. If in the future a user complains about
   // the text being clamped to the top/bottom, change this line.
-  painter.drawText ( 1, m_realheight + 2 - painter.fontMetrics().descent(), c );
+  painter.drawText ( 1, m_realheight
+                        + 2 * OUTLINE_WIDTH
+                        - painter.fontMetrics().descent(),
+                     c );
   // end painting the image
   painter.end();
 
@@ -158,64 +197,29 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
 
   int *neighborhood = new int[ texwidth * texheight ];
   if( ! neighborhood ) return false;
+  for( int i = 0; i < texheight * texwidth; i++)
+    neighborhood[i] = 0;
 
-  // the weight of diagonal-adjactent pixels. Side-adjacent pixels have
-  // weight 256 (their value is shifted 8 bits on the left, hence multiplied
-  // by 256).
-  const int df = 50;
-
-  // first compute the pixels that are not on an edge of the bitmap
-  for( int j = 1; j < texheight - 1; j++ )
-  for( int i = 1; i < texwidth - 1; i++ )
-  {
-    n = i + j * texwidth;
-    neighborhood[n]
-            = ( ( rawbitmap[n - texwidth - 1]
-                + rawbitmap[n - texwidth + 1]
-                + rawbitmap[n + texwidth - 1]
-                + rawbitmap[n + texwidth + 1] ) * df )
-            + ( ( rawbitmap[n - texwidth]
-                + rawbitmap[n - 1]
-                + rawbitmap[n + 1]
-                + rawbitmap[n + texwidth] ) << 8 );
+  for( int i = 0; i < texheight; i++ ) {
+    for( int j = 0; j < texwidth; j++ ) {
+      n = j + i * texwidth;
+      for( int di = -OUTLINE_WIDTH; di <= OUTLINE_WIDTH; di++ ) {
+        for( int dj = -OUTLINE_WIDTH; dj <= OUTLINE_WIDTH; dj++ ) {
+          int fi = i + di;
+          int fj = j + dj;
+          if( fi >= 0 && fi < texheight && fj >= 0 && fj < texwidth ) {
+            int fn = fj + fi * texwidth;
+            neighborhood[fn]
+              = qMax(
+                  neighborhood[fn],
+                  rawbitmap[n]
+                  * OUTLINE_BRUSH[OUTLINE_WIDTH + di]
+                                [OUTLINE_WIDTH + dj]);
+          }
+        }
+      }
+    }
   }
-  
-  // compute the pixels on the top and bottom edges, minus the 4 corners
-  for( int i = 1; i < texwidth - 1; i++ )
-  {
-    n = i;
-    neighborhood[n] = ( (rawbitmap[n - 1] + rawbitmap[n + 1] + rawbitmap[n + texwidth]) << 8 )
-                    + ( (rawbitmap[n + texwidth - 1] + rawbitmap[n + texwidth + 1]) * df );
-
-    n = i + (texheight - 1) * texwidth;
-    neighborhood[n] = ( (rawbitmap[n - texwidth] + rawbitmap[n - 1] + rawbitmap[n + 1]) << 8 )
-                    + ( (rawbitmap[n - texwidth - 1] + rawbitmap[n - texwidth + 1]) * df );
-  }
-
-  // compute the pixels on the left and right edges, minus the 4 corners
-  for( int j = 1; j < texheight - 1; j++ )
-  {
-    n = j * texwidth;
-    neighborhood[n] = ( (rawbitmap[n - texwidth] + rawbitmap[n + 1] + rawbitmap[n + texwidth]) << 8 )
-                    + ( (rawbitmap[n - texwidth + 1] + rawbitmap[n + texwidth + 1]) * df );
-
-    n = texwidth - 1 + j * texwidth;
-    neighborhood[n] = ( (rawbitmap[n - texwidth] + rawbitmap[n - 1] + rawbitmap[n + texwidth]) << 8 )
-                    + ( (rawbitmap[n - texwidth - 1] + rawbitmap[n + texwidth - 1]) * df );
-  }
-
-  // compute the 4 corners
-  neighborhood[0] = ( ( rawbitmap[1] + rawbitmap[texwidth] ) << 8 )
-                  + rawbitmap[texwidth] * df;
-  neighborhood[texwidth-1] = ( ( rawbitmap[texwidth-2] + rawbitmap[2*texwidth-1] ) << 8 )
-                          + rawbitmap[2*texwidth-2] * df;
-  neighborhood[(texheight-1)*texwidth]
-      = ( ( rawbitmap[(texheight-2)*texwidth] + rawbitmap[(texheight-1)*texwidth+1] ) << 8 )
-      + rawbitmap[(texheight-2)*texwidth+1] * df;
-  neighborhood[(texheight-1)*texwidth+texwidth-1]
-      = ( ( rawbitmap[(texheight-1)*texwidth+texwidth-2]
-          + rawbitmap[(texheight-2)*texwidth+texwidth-1] ) << 8 )
-      + rawbitmap[(texheight-2)*texwidth+texwidth-2] * df;
 
   // *** STEP 4 : compute the final bitmap ***
   // --> explanation: we build the bitmap that will be passed to OpenGL for texturing.
@@ -223,55 +227,72 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   //     the rawbitmap readily gives the luminance channel, while the computation of the
   //     alpha channel is a bit more involved and uses the neighborhood map.
 
-  GLubyte *finalbitmap = new GLubyte[ 2 * texwidth * texheight ];
-  if( ! finalbitmap ) return false;
+  GLubyte *glyphbitmap = new GLubyte[ texwidth * texheight ];
+  if( ! glyphbitmap ) return false;
+  GLubyte *outlinebitmap = new GLubyte[ texwidth * texheight ];
+  if( ! outlinebitmap ) return false;
 
-  for( n = 0; n < texheight * texwidth; n++ )
+  for( int i = 0; i < texheight; i++ )
+  for( int j = 0; j < texwidth; j++ )
   {
-    finalbitmap[2 * n] = rawbitmap[n];
-    int alpha = ((TEXT_OUTLINE_INTENSITY * neighborhood[n]) >> 16) + rawbitmap[n];
+    n = j + i * texwidth;
+    glyphbitmap[n] = static_cast<GLubyte>(rawbitmap[n]);
+    int alpha = (neighborhood[n] >> 8) + rawbitmap[n];
     if( alpha > 255 ) {
       alpha = 255;
     }
-    finalbitmap[2 * n + 1] = static_cast<GLubyte>(alpha);
+    outlinebitmap[n] = static_cast<GLubyte>(alpha);
   }
+  
+  delete [] rawbitmap;
+  delete [] neighborhood;
   
   // *** STEP 5 : pass the final bitmap to OpenGL for texturing ***
 
-  glGenTextures( 1, &m_texture );
-  if( ! m_texture ) return false;
+  glGenTextures( 1, &m_glyphTexture );
+  if( ! m_glyphTexture ) return false;
+  glGenTextures( 1, &m_outlineTexture );
+  if( ! m_glyphTexture ) return false;
 
-  glBindTexture( textureTarget, m_texture );
   glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );
+
+  glBindTexture( textureTarget, m_glyphTexture );
   glTexImage2D(
     textureTarget,
     0,
-    GL_LUMINANCE_ALPHA,
+    GL_ALPHA,
     texwidth,
     texheight,
     0,
-    GL_LUMINANCE_ALPHA,
+    GL_ALPHA,
     GL_UNSIGNED_BYTE,
-    finalbitmap );
-  glTexParameteri( textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
-  glTexParameteri( textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+    glyphbitmap );
+
+  glBindTexture( textureTarget, m_outlineTexture );
+  glTexImage2D(
+    textureTarget,
+    0,
+    GL_ALPHA,
+    texwidth,
+    texheight,
+    0,
+    GL_ALPHA,
+    GL_UNSIGNED_BYTE,
+    outlinebitmap );
 
   // the texture data is now kept alive by OpenGL. It's time to free the bitmaps.
-  delete [] rawbitmap;
-  delete [] neighborhood;
-  delete [] finalbitmap;
+  delete [] glyphbitmap;
+  delete [] outlinebitmap;
   
   // *** STEP 6 : compile the display list ***
 
-  m_displayList = glGenLists(1);
-  if( ! m_displayList ) return false;
+  m_quadDisplayList = glGenLists(1);
+  if( ! m_quadDisplayList ) return false;
 
-  glNewList( m_displayList, GL_COMPILE );
-  glBindTexture( textureTarget, m_texture );
   int texcoord_width = (textureTarget == GL_TEXTURE_2D) ? 1 : texwidth;
   int texcoord_height = (textureTarget == GL_TEXTURE_2D) ? 1 : texheight;
-  
-  // paint the character
+
+  glNewList( m_quadDisplayList, GL_COMPILE );
   glBegin( GL_QUADS );
   glTexCoord2i( 0, 0);
   glVertex2f( 0 , -texheight );
@@ -282,11 +303,8 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   glTexCoord2i( 0, texcoord_height);
   glVertex2f( 0 , 0 );
   glEnd();
-  // move to the right so that the next character (if any) is paintd to the right.
-  // this makes me think that we might consider allowing right-to-left text.
-  // this would be needed for i18n, for example for the Arab language.
-  glTranslatef( m_realwidth, 0, 0 );
   glEndList();
+
   return true;
 }
 
@@ -408,10 +426,12 @@ void TextRenderer::begin(GLWidget *widget)
 
   d->glwidget = widget;
   d->textmode = true;
-  glPushAttrib( GL_ENABLE_BIT | GL_DEPTH_BUFFER_BIT );
+  glPushAttrib( GL_ENABLE_BIT | GL_DEPTH_BUFFER_BIT | GL_TEXTURE_BIT);
   glDisable(GL_LIGHTING);
   glDisable(GL_FOG);
   glEnable(d->textureTarget);
+  glTexParameteri( d->textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+  glTexParameteri( d->textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
   glEnable(GL_BLEND);
   glDepthMask(GL_FALSE);
   glMatrixMode(GL_PROJECTION);
@@ -436,17 +456,19 @@ void TextRenderer::end()
 
 void TextRendererPrivate::do_draw( const QString &string )
 {
+  GLfloat color[4];
+  glGetFloatv(GL_CURRENT_COLOR, color);
   for( int i = 0; i < string.size(); i++ )
   {
     if( charTable.contains( string[i] ) )
-      charTable.value( string[i] )->draw();
+      charTable.value( string[i] )->draw(color);
     else
     {
       CharRenderer *c = new CharRenderer;
       if( c->initialize( string[i], font, textureTarget ) )
       {
         charTable.insert( string[i], c);
-        c->draw();
+        c->draw(color);
       }
       else delete c;
     }
