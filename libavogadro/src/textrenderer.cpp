@@ -92,18 +92,19 @@ class CharRenderer
     
     /** @returns the width of the rendered character in pixels */
     inline int width() const { return m_realwidth; }
-};
 
-void CharRenderer::draw(const float *color) const
-{
-  glColor3f(0,0,0);
-  glBindTexture(m_textureTarget, m_outlineTexture);
-  glCallList( m_quadDisplayList );
-  glColor4fv(color);
-  glBindTexture(m_textureTarget, m_glyphTexture);
-  glCallList( m_quadDisplayList );
-  glTranslatef(m_realwidth, 0, 0);
-}
+    inline void drawOutline() const
+    {
+      glBindTexture(m_textureTarget, m_outlineTexture);
+      glCallList( m_quadDisplayList );
+    }
+    
+    inline void drawGlyph() const
+    {
+      glBindTexture(m_textureTarget, m_glyphTexture);
+      glCallList( m_quadDisplayList );
+    }
+};
 
 CharRenderer::CharRenderer()
 {
@@ -309,6 +310,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   glTexCoord2i( 0, texcoord_height);
   glVertex2f( 0 , 0 );
   glEnd();
+  glTranslatef( m_realwidth, 0, 0 );
   glEndList();
 
   return true;
@@ -432,12 +434,10 @@ void TextRenderer::begin(GLWidget *widget)
 
   d->glwidget = widget;
   d->textmode = true;
-  glPushAttrib( GL_ENABLE_BIT | GL_DEPTH_BUFFER_BIT | GL_TEXTURE_BIT);
+  glPushAttrib(GL_ENABLE_BIT | GL_DEPTH_BUFFER_BIT);
   glDisable(GL_LIGHTING);
   glDisable(GL_FOG);
   glEnable(d->textureTarget);
-  glTexParameteri( d->textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
-  glTexParameteri( d->textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
   glEnable(GL_BLEND);
   glDepthMask(GL_FALSE);
   glMatrixMode(GL_PROJECTION);
@@ -462,22 +462,38 @@ void TextRenderer::end()
 
 void TextRendererPrivate::do_draw( const QString &string )
 {
+  int i;
   GLfloat color[4];
   glGetFloatv(GL_CURRENT_COLOR, color);
-  for( int i = 0; i < string.size(); i++ )
+  
+  // Pass 1: render and cache the glyphs that are not yet cached.
+  for( i = 0; i < string.size(); i++ )
   {
-    if( charTable.contains( string[i] ) )
-      charTable.value( string[i] )->draw(color);
-    else
+    if( ! charTable.contains( string[i] ) )
     {
       CharRenderer *c = new CharRenderer;
-      if( c->initialize( string[i], font, textureTarget ) )
-      {
-        charTable.insert( string[i], c);
-        c->draw(color);
-      }
-      else delete c;
+      // for now, we don't tolerate errors in glyph rendering.
+      // having an assert here means we'll get crash reports from
+      // angry users if such an error ever occurs.
+      assert( c->initialize( string[i], font, textureTarget ) );
+      charTable.insert( string[i], c);
     }
+  }
+  
+  // Pass 2: render the outline
+  glColor4f(0,0,0,1);
+  glPushMatrix();
+  for( i = 0; i < string.size(); i++ )
+  {
+    charTable.value( string[i] )->drawOutline();
+  }
+  glPopMatrix();
+  
+  // Pass 3: render the glyphs themselves
+  glColor4fv(color);
+  for( i = 0; i < string.size(); i++ )
+  {
+    charTable.value( string[i] )->drawGlyph();
   }
 }
 
