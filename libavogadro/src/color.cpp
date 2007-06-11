@@ -84,6 +84,11 @@ namespace Avogadro {
     m_red = m_green = m_blue = m_alpha = 1.0;
   }
 
+  void Color::setAlpha(double alpha)
+  {
+    m_alpha = alpha;
+  }
+
   void Color::applyAsMaterials()
   {
     GLfloat ambientColor [] = { m_red / 3, m_green / 3, m_blue / 3,

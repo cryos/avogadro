@@ -80,6 +80,8 @@ namespace Avogadro {
      */
     virtual void set(double value, double low, double high);
 
+    virtual void setAlpha(double alpha);
+
     /**
      * Sets this color to be the one used by OpenGL for rendering
      * when lighting is disabled. */

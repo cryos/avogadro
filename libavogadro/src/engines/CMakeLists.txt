@@ -60,8 +60,9 @@ INSTALL(TARGETS debugengine DESTINATION ${DESTINATION_DIR})
 
 # sphere
 set(sphereengine_SRCS sphereengine.cpp)
+qt4_wrap_ui(sphereengine_UIS spheresettingswidget.ui)
 qt4_automoc(${sphereengine_SRCS})
-ADD_LIBRARY(sphereengine SHARED ${sphereengine_SRCS} )
+ADD_LIBRARY(sphereengine SHARED ${sphereengine_SRCS} ${sphereengine_UIS} )
 TARGET_LINK_LIBRARIES(sphereengine avogadro-lib
                                 ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                 ${OPENGL_LIBRARIES}

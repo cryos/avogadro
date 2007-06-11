@@ -37,9 +37,12 @@
 #include <QStringList>
 #include <QImage>
 
+#include "ui_spheresettingswidget.h"
+
 namespace Avogadro {
 
   //! Sphere Engine class.
+  class SphereSettingsWidget;
   class SphereEngine : public Engine
   {
     Q_OBJECT
@@ -54,17 +57,54 @@ namespace Avogadro {
       //@{
       //! Render an Atom.
       bool render(const Atom *a);
+      //! Render the skeleton structure
+      bool renderSkeleton(const Atom *a);
+      bool renderSkeleton(const Bond *b);
 
       bool render(GLWidget *gl);
       //@}
 
       double radius(const Primitive *p = 0);
 
+      QWidget* settingsWidget();
+
     private:
       inline double radius(const Atom *a);
 
       GLWidget *m_glwidget;
-      bool m_setup; //!< Whether the sphere objects have been setup
+      SphereSettingsWidget *m_settingsWidget;
+
+      double m_alpha; // transparency of the VdW spheres
+      double m_bondRadius;
+      double m_atomRadiusPercentage;
+
+    private Q_SLOTS:
+      void settingsWidgetDestroyed();
+
+
+      /**
+       * @param value opacity of the VdW spheres / 100
+       */
+      void setOpacity(int percent);
+
+      /**
+       * @param percent percentage of the VdwRad
+       */
+      void setAtomRadiusPercentage(int percent);
+
+      /**
+       * @param value radius of the bonds * 10
+       */
+      void setBondRadius(int value);
+
+  };
+
+  class SphereSettingsWidget : public QWidget, public Ui::SphereSettingsWidget
+  {
+    public:
+      SphereSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+        setupUi(this);
+      }
   };
 
   //! Generates instances of our SphereEngine class
