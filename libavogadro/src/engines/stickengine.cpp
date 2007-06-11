@@ -162,17 +162,28 @@ bool StickEngine::render(const Molecule*)
 
 double StickEngine::radius(const Primitive *p)
 {
+  // Atom radius
   if (p->type() == Primitive::AtomType)
   {
-    const Atom *a = static_cast<const Atom *>(p);
-    double r = radius(a);
     if (m_glwidget)
     {
       if (m_glwidget->isSelected(p))
-        return r + SEL_ATOM_EXTRA_RADIUS;
+        return radius(static_cast<const Atom *>(p)) + SEL_ATOM_EXTRA_RADIUS;
     }
-    return r;
+    return radius(static_cast<const Atom *>(p));
   }
+  // Bond radius
+  else if (p->type() == Primitive::BondType)
+  {
+    const Atom* a = static_cast<const Atom *>((static_cast<const Bond *>(p))->GetBeginAtom());
+    if (m_glwidget)
+    {
+      if (m_glwidget->isSelected(p))
+        return radius(a) + SEL_BOND_EXTRA_RADIUS;
+    }
+    return radius(a);
+  }
+  // Something else
   else
     return 0.;
 }

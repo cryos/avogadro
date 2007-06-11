@@ -3,6 +3,7 @@
 
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007 Benoit Jacob
+  Copyright (C) 2007 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -42,7 +43,8 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-LabelEngine::LabelEngine(QObject *parent) : Engine(parent), m_type(0), m_settingsWidget(0)
+LabelEngine::LabelEngine(QObject *parent) : Engine(parent), m_glwidget(0),
+  m_atomType(1), m_bondType(1), m_settingsWidget(0)
 {
   setName(tr("Label"));
   setDescription(tr("Renders primitive labels"));
@@ -50,62 +52,135 @@ LabelEngine::LabelEngine(QObject *parent) : Engine(parent), m_type(0), m_setting
 
 bool LabelEngine::render(GLWidget *gl)
 {
+  m_glwidget = gl;
   gl->painter()->begin(gl);
+
   QList<Primitive *> list;
 
-  list = primitives().subList(Primitive::AtomType);
-
-  foreach( Primitive *p, list ) {
-    Atom *atom = static_cast<Atom *>(p);
-    const Vector3d pos = atom->pos();
-
-    double renderRadius = 0.;
-    foreach(Engine *engine, gl->engines())
-    {
-      if(engine->isEnabled())
-      {
-        double engineRadius = engine->radius(atom);
-        if(engineRadius > renderRadius) {
-          renderRadius = engineRadius;
-        }
-      }
-    }
-    renderRadius += 0.05;
-
-    double zDistance = gl->camera()->distance(pos);
-
-    if(zDistance < 50.0)
-    {
-      QString str;
-      switch(m_type)
-      {
-        case 0:
-          str = QString::number(atom->GetIdx());
-          break;
-        case 1:
-          str = QString(etab.GetSymbol(atom->GetAtomicNum()));
-          break;
-        case 2:
-        default:
-          str = QString((etab.GetName(atom->GetAtomicNum())).c_str());
-      }
-
-      Vector3d zAxis = gl->camera()->backtransformedZAxis();
-
-      Vector3d drawPos = pos + zAxis * renderRadius;
-
-      glColor3f(1.0, 1.0, 1.0);
-      gl->painter()->drawText(drawPos, str);
-    }
+  if (m_atomType < 3)
+  {
+    // Render atom labels
+    list = primitives().subList(Primitive::AtomType);
+    foreach( Primitive *p, list )
+      render(static_cast<Atom *>(p));
   }
-  gl->painter()->end();
 
+  if (m_bondType < 1)
+  {
+    // Now render the bond labels
+    list = primitives().subList(Primitive::BondType);
+    foreach( Primitive *p, list )
+      render(static_cast<const Bond*>(p));
+  }
+
+  gl->painter()->end();
   return true;
 }
 
-void LabelEngine::setLabelType(int value)
+bool LabelEngine::render(const Atom *a)
 {
-  m_type = value;
+  // Render atom labels
+  const Vector3d pos = a->pos();
+
+  double renderRadius = 0.;
+  foreach(Engine *engine, m_glwidget->engines())
+  {
+    if(engine->isEnabled())
+    {
+      double engineRadius = engine->radius(a);
+      if(engineRadius > renderRadius)
+        renderRadius = engineRadius;
+    }
+  }
+  renderRadius += 0.05;
+
+  double zDistance = m_glwidget->camera()->distance(pos);
+
+  if(zDistance < 50.0)
+  {
+    QString str;
+    switch(m_atomType)
+    {
+      case 0:
+        str = QString::number(a->GetIdx());
+        break;
+      case 1:
+        str = QString(etab.GetSymbol(a->GetAtomicNum()));
+        break;
+      case 2:
+      default:
+        str = QString((etab.GetName(a->GetAtomicNum())).c_str());
+    }
+
+    Vector3d zAxis = m_glwidget->camera()->backtransformedZAxis();
+
+    Vector3d drawPos = pos + zAxis * renderRadius;
+
+    glColor3f(1.0, 1.0, 1.0);
+    m_glwidget->painter()->drawText(drawPos, str);
+  }
+  return true;
+}
+
+bool LabelEngine::render(const Bond *b)
+{
+  // Render bond labels
+  const Atom* atom1 = static_cast<const Atom *>(b->GetBeginAtom());
+  const Atom* atom2 = static_cast<const Atom *>(b->GetEndAtom());
+  Vector3d v1 (atom1->pos());
+  Vector3d v2 (atom2->pos());
+  Vector3d d = v2 - v1;
+  d.normalize();
+
+  // Work out the radii of the atoms and the bond
+  double renderRadius = 0.;
+  double renderRadiusA1 = 0.;
+  double renderRadiusA2 = 0.;
+  foreach(Engine *engine, m_glwidget->engines())
+  {
+    if(engine->isEnabled())
+    {
+      if (engine->radius(atom1) > renderRadiusA1)
+        renderRadiusA1 = engine->radius(atom1);
+      if (engine->radius(atom2) > renderRadiusA2)
+        renderRadiusA2 = engine->radius(atom2);
+      if(engine->radius(b) > renderRadius)
+        renderRadius = engine->radius(b);
+    }
+  }
+  // If the render radius is zero then this view does not draw bonds
+  if (!renderRadius)
+    return false;
+
+  renderRadius += 0.05;
+
+  // Calculate the 
+  Vector3d pos ( (v1 + v2 + d*(renderRadiusA1-renderRadiusA2)) / 2.0 );
+
+  double zDistance = m_glwidget->camera()->distance(pos);
+
+  if(zDistance < 50.0)
+  {
+    QString str = QString::number(b->GetIdx());
+
+    Vector3d zAxis = m_glwidget->camera()->backtransformedZAxis();
+    Vector3d drawPos = pos + zAxis * renderRadius;
+
+    glColor3f(1.0, 1.0, 1.0);
+    m_glwidget->painter()->drawText(drawPos, str);
+  }
+  return true;
+}
+
+void LabelEngine::setAtomType(int value)
+{
+  m_atomType = value;
+  emit changed();
+}
+
+void LabelEngine::setBondType(int value)
+{
+  m_bondType = value;
   emit changed();
 }
 
@@ -114,9 +189,17 @@ QWidget *LabelEngine::settingsWidget()
   if(!m_settingsWidget)
   {
     m_settingsWidget = new LabelSettingsWidget();
-    connect(m_settingsWidget->labelType, SIGNAL(activated(int)), this, SLOT(setLabelType(int)));
+    connect(m_settingsWidget->atomType, SIGNAL(activated(int)), this, SLOT(setAtomType(int)));
+    connect(m_settingsWidget->bondType, SIGNAL(activated(int)), this, SLOT(setBondType(int)));
+    connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
   }
   return m_settingsWidget;
+}
+
+void LabelEngine::settingsWidgetDestroyed()
+{
+  qDebug() << "Destroyed Settings Widget";
+  m_settingsWidget = 0;
 }
 
 #include "labelengine.moc"

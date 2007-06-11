@@ -187,17 +187,27 @@ void BSDYEngine::setBondRadius(int value)
 
 double BSDYEngine::radius(const Primitive *p)
 {
+  // Atom radius
   if (p->type() == Primitive::AtomType)
   {
-    const Atom *a = static_cast<const Atom *>(p);
-    double r = radius(a);
     if (m_glwidget)
     {
       if (m_glwidget->isSelected(p))
-        return r + SEL_ATOM_EXTRA_RADIUS;
+        return radius(static_cast<const Atom *>(p)) + SEL_ATOM_EXTRA_RADIUS;
     }
-    return r;
+    return radius(static_cast<const Atom *>(p));
   }
+  // Bond radius
+  else if (p->type() == Primitive::BondType)
+  {
+    if (m_glwidget)
+    {
+      if (m_glwidget->isSelected(p))
+        return m_bondRadius + SEL_BOND_EXTRA_RADIUS;
+    }
+    return m_bondRadius;
+  }
+  // Something else
   else
     return 0.;
 }

@@ -3,6 +3,7 @@
 
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007 Benoit Jacob
+  Copyright (C) 2007 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -56,17 +57,23 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       bool render(GLWidget *gl);
+      bool render(const Atom *a);
+      bool render(const Bond *b);
       //@}
 
       //! Display a window for the user to pick rendering options
       QWidget *settingsWidget();
 
     private:
-      int m_type;  // Label type
+      GLWidget *m_glwidget;
+      int m_atomType;  // Atom label type
+      int m_bondType;  // Bond label type
       LabelSettingsWidget* m_settingsWidget;
 
     private Q_SLOTS:
-      void setLabelType(int value);
+      void setAtomType(int value);
+      void setBondType(int value);
+      void settingsWidgetDestroyed();
 
   };
 
