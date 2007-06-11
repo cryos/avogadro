@@ -16,7 +16,7 @@
    <item row="0" column="0" >
     <widget class="QLabel" name="bondRadiusLabel_2" >
      <property name="text" >
-      <string>VdW Opacity</string>
+      <string>VdW Opacity:</string>
      </property>
     </widget>
    </item>
@@ -26,22 +26,31 @@
       <number>0</number>
      </property>
      <property name="maximum" >
-      <number>100</number>
+      <number>20</number>
      </property>
      <property name="singleStep" >
-      <number>10</number>
+      <number>1</number>
      </property>
      <property name="pageStep" >
-      <number>10</number>
+      <number>2</number>
      </property>
      <property name="value" >
-      <number>100</number>
+      <number>20</number>
+     </property>
+     <property name="sliderPosition" >
+      <number>20</number>
      </property>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
+     <property name="invertedAppearance" >
+      <bool>false</bool>
+     </property>
      <property name="tickPosition" >
       <enum>QSlider::TicksBothSides</enum>
+     </property>
+     <property name="tickInterval" >
+      <number>4</number>
      </property>
     </widget>
    </item>
@@ -77,7 +86,7 @@
    <item row="2" column="0" >
     <widget class="QLabel" name="bondRadiusLabel" >
      <property name="text" >
-      <string>Bond Radius</string>
+      <string>Bond Radius:</string>
      </property>
     </widget>
    </item>

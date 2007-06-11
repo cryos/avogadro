@@ -116,20 +116,22 @@ bool SphereEngine::render(const Atom *a)
   // Render this transparently
   map.setAlpha(m_alpha);
   map.applyAsMaterials();
-  glEnable( GL_BLEND );
+  if (m_alpha < 1.0)
+    glEnable( GL_BLEND );
   m_glwidget->painter()->drawSphere( a->pos(), radius(a) );
-  glDisable( GL_BLEND );
-  map.setAlpha(0.0);
-  map.applyAsMaterials();
 
   if (m_glwidget->isSelected(a))
-    {
-      map.set( 0.3, 0.6, 1.0, 0.7 );
-      map.applyAsMaterials();
+  {
+    map.set( 0.3, 0.6, 1.0, 0.7 );
+    map.applyAsMaterials();
+    if (m_alpha < 1.0)
       glEnable( GL_BLEND );
-      m_glwidget->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
-      glDisable( GL_BLEND );
-    }
+    m_glwidget->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
+    glDisable( GL_BLEND );
+  }
+
+  if (m_alpha < 1.0)
+    glDisable( GL_BLEND );
 
   glPopName();
   glPopName();
@@ -174,7 +176,7 @@ bool SphereEngine::renderSkeleton(const Bond* b)
 
 void SphereEngine::setOpacity(int percent)
 {
-  m_alpha = 0.01 * percent;
+  m_alpha = 0.05 * percent;
   emit changed();
 }
 
