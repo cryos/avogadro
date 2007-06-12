@@ -68,15 +68,20 @@ bool SphereEngine::render(GLWidget *gl)
     list = primitives().subList(Primitive::AtomType);
     foreach( Primitive *p, list )
       renderSkeleton(static_cast<const Atom *>(p));
+
+    // First pass with totally transparent spheres
+    double alpha = m_alpha;
+    m_alpha = 0.;
+    foreach( Primitive *p, list )
+      render(static_cast<const Atom *>(p));
+    m_alpha = alpha;
   }
-  // Render the 
+  // Render the atoms
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
   list = primitives().subList(Primitive::AtomType);
   foreach( Primitive *p, list )
-  {
     render(static_cast<const Atom *>(p));
-  }
 
   glDisable( GL_RESCALE_NORMAL);
   glEnable( GL_NORMALIZE );
