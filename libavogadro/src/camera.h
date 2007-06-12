@@ -243,20 +243,38 @@ namespace Avogadro {
        * unit vector that is mapped to (1,0,0) by the camera rotation.
        */
       Eigen::Vector3d backtransformedXAxis() const;
-      
+
       /**
        * Returns a unit vector pointing upward, expressed in the
        * scene's coordinate system. This is simply the
        * unit vector that is mapped to (0,1,0) by the camera rotation.
        */
       Eigen::Vector3d backtransformedYAxis() const;
-      
+
       /**
        * Returns a unit vector pointing toward the camera, expressed in the
        * scene's coordinate system. This is simply the
        * unit vector that is mapped to (0,0,1) by the camera rotation.
        */
       Eigen::Vector3d backtransformedZAxis() const;
+
+      /**
+       * Returns a unit vector pointing in the x direction, expressed in the
+       * space coordinate system.
+       */
+      Eigen::Vector3d transformedXAxis() const;
+
+      /**
+       * Returns a unit vector pointing in the y direction, expressed in the
+       * space coordinate system.
+       */
+      Eigen::Vector3d transformedYAxis() const;
+
+      /**
+       * Returns a unit vector pointing in the z direction, expressed in the
+       * space coordinate system.
+       */
+      Eigen::Vector3d transformedZAxis() const;
 
     private:
       CameraPrivate * const d;

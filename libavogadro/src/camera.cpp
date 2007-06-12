@@ -40,7 +40,7 @@ namespace Avogadro
       const GLWidget *parent;
       double angleOfViewY;
   };
-  
+
   Camera::Camera(const GLWidget *parent, double angleOfViewY) : d(new CameraPrivate)
   {
     d->modelview.loadIdentity();
@@ -48,12 +48,12 @@ namespace Avogadro
     d->parent = parent;
     d->angleOfViewY = angleOfViewY;
   }
-  
+
   Camera::~Camera()
   {
     delete d;
   }
-  
+
   void Camera::setParent(const GLWidget *parent)
   {
     d->parent = parent;
@@ -83,64 +83,64 @@ namespace Avogadro
     d->modelview.setLinearComponent(m);
     d->modelview.matrix().setRow(3, Vector4d(0.0, 0.0, 0.0, 1.0));
   }
-    
+
   const GLWidget *Camera::parent() const
   {
     return d->parent;
   }
-    
+
   void Camera::setAngleOfViewY(double angleOfViewY)
   {
     d->angleOfViewY = angleOfViewY;
   }
-  
+
   double Camera::angleOfViewY() const
   {
     return d->angleOfViewY;
   }
-  
+
   void Camera::translate(const Eigen::Vector3d &vector)
   {
     d->modelview.translate(vector);
   }
-  
+
   void Camera::pretranslate(const Eigen::Vector3d &vector)
   {
     d->modelview.pretranslate(vector);
   }
-  
+
   void Camera::rotate(const double &angle, const Eigen::Vector3d &axis)
   {
     d->modelview.rotate3(angle, axis);
     normalize();
   }
-  
+
   void Camera::prerotate(const double &angle, const Eigen::Vector3d &axis)
   {
     d->modelview.prerotate3(angle, axis);
     normalize();
   }
-  
+
   const double Camera::distance(const Eigen::Vector3d & point) const
   {
     return ( d->modelview * point ).norm();
   }
-  
+
   void Camera::setModelview(const Eigen::MatrixP3d &matrix)
   {
     d->modelview = matrix;
   }
-  
+
   const Eigen::MatrixP3d & Camera::modelview() const
   {
     return d->modelview;
   }
-  
+
   Eigen::MatrixP3d & Camera::modelview()
   {
     return d->modelview;
   }
-  
+
   void Camera::initializeViewPoint()
   {
     d->modelview.loadIdentity();
@@ -155,7 +155,7 @@ namespace Avogadro
       d->modelview.translate( d->parent->center() - Vector3d( 0, 0, 10 ) );
       return;
     }
-    
+
     // if we're here, the molecule is not empty, i.e. has atoms.
     // we want a top-down view on it, i.e. the molecule should fit as well as
     // possible in the (X,Y)-plane. Equivalently, we want the Z axis to be parallel
@@ -168,14 +168,14 @@ namespace Avogadro
 
     // set the camera's matrix to be (the 4x4 version of) this rotation.
     setModelview(rotation);
-  
+
     // now we want to move backwards, in order
     // to view the molecule from a distance, not from inside it.
     // This translation must be applied after the above rotation, so we
     // want a left-multiplication here. Whence pretranslate().
     const Vector3d Zaxis(0,0,1);
     pretranslate( - 3.0 * ( d->parent->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
-    
+
     // the above rotation is meant to be a rotation around the molecule's
     // center. So before this rotation is applied, the molecule's center
     // must be brought to the origin of the coordinate systemby a translation.
@@ -183,7 +183,7 @@ namespace Avogadro
     // Whence translate().
     translate( - d->parent->center() );
   }
-  
+
   void Camera::applyPerspective() const
   {
     if( d->parent == 0 ) return;
@@ -233,25 +233,49 @@ namespace Avogadro
 
     return pos;
   }
-  
+
   Eigen::Vector3d Camera::backtransformedXAxis() const
   {
     return Eigen::Vector3d( d->modelview(0, 0),
                             d->modelview(0, 1),
                             d->modelview(0, 2) );
   }
-  
+
   Eigen::Vector3d Camera::backtransformedYAxis() const
   {
     return Eigen::Vector3d( d->modelview(1, 0),
                             d->modelview(1, 1),
                             d->modelview(1, 2) );
   }
-  
+
   Eigen::Vector3d Camera::backtransformedZAxis() const
   {
     return Eigen::Vector3d( d->modelview(2, 0),
                             d->modelview(2, 1),
+                            d->modelview(2, 2) );
+  }
+
+  Eigen::Vector3d Camera::transformedXAxis() const
+  {
+    // The x unit vector in space coordinates
+    return Eigen::Vector3d( d->modelview(0, 0),
+                            d->modelview(1, 0),
+                            d->modelview(2, 0) );
+  }
+
+  Eigen::Vector3d Camera::transformedYAxis() const
+  {
+    // The y unit vector in space coordinates
+    return Eigen::Vector3d( d->modelview(0, 1),
+                            d->modelview(1, 1),
+                            d->modelview(2, 1) );
+  }
+
+  Eigen::Vector3d Camera::transformedZAxis() const
+  {
+    // The z unit vector in space coordinates
+    return Eigen::Vector3d( d->modelview(0, 2),
+                            d->modelview(1, 2),
                             d->modelview(2, 2) );
   }
 
