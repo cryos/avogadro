@@ -354,7 +354,7 @@ namespace Avogadro {
     if (!ui.glWidget->grabFrameBuffer(true).save(fileName))
     {
       QMessageBox::warning(this, tr("Avogadro"),
-          tr("Cannot save file %1.").arg(fileName));
+                           tr("Cannot save file %1.").arg(fileName));
       return;
     }
   }
@@ -379,7 +379,7 @@ namespace Avogadro {
           tr("The document has been modified.\n"
             "Do you want to save your changes?"),
           QMessageBox::Save | QMessageBox::Discard
-          | QMessageBox::Cancel);
+                                 | QMessageBox::Cancel);
       if (ret == QMessageBox::Save)
         return save();
       else if (ret == QMessageBox::Cancel)
@@ -449,6 +449,11 @@ namespace Avogadro {
 
     if(conv.ReadString(&newMol, text.toStdString()) && newMol.NumAtoms() != 0)
       {
+        vector3 offset; // small offset so that pasted mols don't fall on top
+        offset.randomUnitVector();
+        offset *= 0.3;
+
+        newMol.Translate(offset);
         PasteCommand *command = new PasteCommand(d->molecule, newMol);
         d->undoStack->push(command);
       } else {
@@ -805,7 +810,7 @@ namespace Avogadro {
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot read file %1:\n%2.")
           .arg(fileName)
-          .arg(file.errorString()));
+                           .arg(file.errorString()));
       return false;
     }
     file.close();
@@ -818,7 +823,7 @@ namespace Avogadro {
       QApplication::restoreOverrideCursor();
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot read file format of file %1.")
-          .arg(fileName));
+                           .arg(fileName));
       return false;
     }
     ifstream     ifs;
@@ -827,7 +832,7 @@ namespace Avogadro {
       QApplication::restoreOverrideCursor();
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot read file %1.")
-          .arg(fileName));
+                           .arg(fileName));
       return false;
     }
 
@@ -887,7 +892,7 @@ namespace Avogadro {
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot write to the file %1:\n%2.")
           .arg(fileName)
-          .arg(file.errorString()));
+                           .arg(file.errorString()));
       return false;
     }
 
@@ -899,7 +904,7 @@ namespace Avogadro {
     if (!outFormat || !conv.SetOutFormat(outFormat)) {
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot write to file format of file %1.")
-          .arg(fileName));
+                           .arg(fileName));
       return false;
     }
     ofstream     ofs;
@@ -907,7 +912,7 @@ namespace Avogadro {
     if (!ofs) { // shouldn't happen, already checked file above
       QMessageBox::warning(this, tr("Avogadro"),
           tr("Cannot write to the file %1.")
-          .arg(fileName));
+                           .arg(fileName));
       return false;
     }
 

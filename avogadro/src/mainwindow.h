@@ -90,8 +90,6 @@ namespace Avogadro {
 
       void setTool(Tool *tool);
 
-//       void updateEngine( QStandardItem *item );
-
     private:
       friend class MainWindowPrivate;
       MainWindowPrivate * const d;
