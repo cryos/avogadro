@@ -86,7 +86,6 @@ void DrawTool::elementChanged( int index )
     if (m_periodicTable) {
       m_periodicTable->setSelectedElement(m_element);
       m_periodicTable->show();
-      m_periodicTable->raise();
     }
   }
 }
