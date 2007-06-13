@@ -80,3 +80,16 @@ TARGET_LINK_LIBRARIES(manipulatetool
 	avogadro-lib
 )
 INSTALL(TARGETS manipulatetool DESTINATION ${DESTINATION_DIR})
+
+### autorotatetool
+set(autorotatetool_SRCS autorotatetool.cpp)
+#qt4_add_resources(autorotatetool_RC_SRCS autorotate.qrc)
+qt4_automoc(${autorotatetool_SRCS})
+ADD_LIBRARY(autorotatetool SHARED ${autorotatetool_SRCS} ${autorotatetool_RC_SRCS})
+TARGET_LINK_LIBRARIES(autorotatetool
+	${OPENBABEL2_LIBRARIES} 
+	${QT_LIBRARIES} 
+	${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS autorotatetool DESTINATION ${DESTINATION_DIR})
