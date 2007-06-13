@@ -39,7 +39,7 @@ using namespace OpenBabel;
 
       if (m_forceField) { // make sure we can actually find and run it!
         action = new QAction(this);
-        action->setText("Setup Force Field");
+        action->setText("Setup Force Field...");
         m_actions.append(action);
       }
   

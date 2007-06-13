@@ -108,7 +108,7 @@ namespace Avogadro {
   class GLWidgetPrivate {
     public:
       GLWidgetPrivate() : background(Qt::black),
-                          aCells(0), bCells(0), cCells(0),
+                          aCells(1), bCells(1), cCells(1),
                           molecule(0),
                           camera(new Camera),
                           tool(0),
@@ -269,8 +269,7 @@ namespace Avogadro {
             engine->render(this);
           }
         }
-    } else { // render a crystal (for now, 2 unit cells in each direction
-      //      d->aCells = d->bCells = d->cCells = 2;
+    } else { // render a crystal
       cellVectors = uc->GetCellVectors();
 
       for (int a = 0; a < d->aCells; a++) {
@@ -827,6 +826,21 @@ void GLWidget::toggleSelected(QList<Primitive*> primitives)
     d->bCells = b;
     d->cCells = c;
   }
+  
+ int GLWidget::aCells()
+ {
+    return d->aCells;
+ }
+ 
+ int GLWidget::bCells()
+ {
+    return d->bCells;
+ }
+
+ int GLWidget::cCells()
+ {
+    return d->cCells;
+ }
 
 }
 

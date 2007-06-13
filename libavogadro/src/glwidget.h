@@ -405,6 +405,9 @@ namespace Avogadro {
        * @param c Number of unit cells to display along the c axis
        */
       void setUnitCells(int a, int b, int c);
+      int aCells();
+      int bCells();
+      int cCells();
 
     Q_SIGNALS:
       void mousePress( QMouseEvent * event );

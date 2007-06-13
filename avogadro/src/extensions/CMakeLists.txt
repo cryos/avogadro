@@ -68,3 +68,16 @@ TARGET_LINK_LIBRARIES(smartsextension
 	avogadro-lib
 )
 INSTALL(TARGETS smartsextension DESTINATION ${DESTINATION_DIR})
+
+### unit cells
+set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)
+qt4_wrap_ui(unitcellextension_UIS_H unitcellparamdialog.ui)
+qt4_automoc(${unitcellextension_SRCS})
+ADD_LIBRARY(unitcellextension SHARED ${unitcellextension_SRCS} ${unitcellextension_UIS_H})
+TARGET_LINK_LIBRARIES(unitcellextension 
+	${OPENBABEL2_LIBRARIES} 
+	${QT_LIBRARIES} 
+    ${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
