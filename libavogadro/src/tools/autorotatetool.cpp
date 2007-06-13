@@ -117,9 +117,9 @@ QWidget* AutoRotateTool::settingsWidget() {
     sliderXRotation->setOrientation(Qt::Horizontal);
     sliderXRotation->setTickPosition(QSlider::TicksBothSides);
     sliderXRotation->setToolTip("x rotation");
-    sliderXRotation->setTickInterval(5);
+    sliderXRotation->setTickInterval(10);
     sliderXRotation->setPageStep(5);
-    sliderXRotation->setMinimum(0);
+    sliderXRotation->setMinimum(-20);
     sliderXRotation->setMaximum(20);
     sliderXRotation->setValue(0);
 
@@ -130,9 +130,9 @@ QWidget* AutoRotateTool::settingsWidget() {
     sliderYRotation->setOrientation(Qt::Horizontal);
     sliderYRotation->setTickPosition(QSlider::TicksBothSides);
     sliderYRotation->setToolTip("y rotation");
-    sliderYRotation->setTickInterval(5);
+    sliderYRotation->setTickInterval(10);
     sliderYRotation->setPageStep(5);
-    sliderYRotation->setMinimum(0);
+    sliderYRotation->setMinimum(-20);
     sliderYRotation->setMaximum(20);
     sliderYRotation->setValue(0);
 
@@ -143,9 +143,9 @@ QWidget* AutoRotateTool::settingsWidget() {
     sliderZRotation->setOrientation(Qt::Horizontal);
     sliderZRotation->setTickPosition(QSlider::TicksBothSides);
     sliderZRotation->setToolTip("z rotation");
-    sliderZRotation->setTickInterval(5);
+    sliderZRotation->setTickInterval(10);
     sliderZRotation->setPageStep(5);
-    sliderZRotation->setMinimum(0);
+    sliderZRotation->setMinimum(-20);
     sliderZRotation->setMaximum(20);
     sliderZRotation->setValue(0);
 
