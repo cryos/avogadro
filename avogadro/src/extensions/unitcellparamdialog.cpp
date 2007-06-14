@@ -61,6 +61,8 @@ void UnitCellParamDialog::reject()
   ui.aCellSpinBox->setValue(m_aCells);
   ui.bCellSpinBox->setValue(m_bCells);
   ui.cCellSpinBox->setValue(m_cCells);
+
+  hide();
 }
 
 int UnitCellParamDialog::aCells()
@@ -83,7 +85,7 @@ void UnitCellParamDialog::bCells(int b)
 {
   m_bCells = b;
   ui.bCellSpinBox->setValue(m_bCells);
-} 
+}
 
 int UnitCellParamDialog::cCells()
 {
@@ -94,6 +96,6 @@ void UnitCellParamDialog::cCells(int c)
 {
   m_cCells = c;
   ui.cCellSpinBox->setValue(m_cCells);
-} 
+}
 
 #include "unitcellparamdialog.moc"
