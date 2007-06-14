@@ -1,7 +1,7 @@
 Requirements
 ============
  -- CMake 2.4.3
- -- Qt 4.2.0
+ -- Qt 4.3.0
  -- OpenBabel 2.1
  -- Eigen 1.0.5
 

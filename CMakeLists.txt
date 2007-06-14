@@ -14,7 +14,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 	add_definitions (-D_BSD_SOURCE)
 endif (CMAKE_COMPILER_IS_GNUCXX)
 
-#set(QT_MIN_VERSION "4.3.0") # we need at least version 4.3 of Qt
+set(QT_MIN_VERSION "4.3.0") # we need at least version 4.3 of Qt
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel

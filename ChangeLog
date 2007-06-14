@@ -1,3 +1,6 @@
+2007-06-14  Carsten Niehaus <cniehaus@kde.og>
+	* Require Qt 4.3.0 at least
+
 2007-06-05  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 	* .:  Update EngineConfigurationWidget to EngineSetupWidget and updated
 	file names and all references in the project.  Updated CMakeFiles.
