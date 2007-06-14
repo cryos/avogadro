@@ -6,7 +6,7 @@
 <body>
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 22<br>
-Total Issues = 36 ...as of Mai 21 2007 10:00:02</p>
+Total Issues = 44 ...as of Juni 14 2007 15:36:51</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>OOPS! 1 issue found!</b>
@@ -23,8 +23,12 @@ Total Issues = 36 ...as of Mai 21 2007 10:00:02</p>
 <li>Check for contractions in strings... 
 <b>okay!</b>
 <li>Check for an acceptable copyright... 
-<b>OOPS! 28 issues found!</b>
+<b>OOPS! 34 issues found!</b>
 <ul>
+<li>	../libavogadro/src/engines/axesengine.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	../libavogadro/src/engines/axesengine.h: missing tags: email address(line 4)  (1)
+</li>
 <li>	../libavogadro/src/engines/bsdyengine.cpp: missing tags: email address(line 4)  (1)
 </li>
 <li>	../libavogadro/src/engines/bsdyengine.h: missing tags: email address(line 4)  (1)
@@ -37,13 +41,17 @@ Total Issues = 36 ...as of Mai 21 2007 10:00:02</p>
 </li>
 <li>	../libavogadro/src/engines/debugengine.h: missing tags: email address(line 4) email address(line 5) email address(line 6) email address(line 7)  (4)
 </li>
-<li>	../libavogadro/src/engines/labelengine.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../libavogadro/src/engines/labelengine.cpp: missing tags: email address(line 4) email address(line 5) email address(line 6)  (3)
 </li>
-<li>	../libavogadro/src/engines/labelengine.h: missing tags: email address(line 4) email address(line 5)  (2)
+<li>	../libavogadro/src/engines/labelengine.h: missing tags: email address(line 4) email address(line 5) email address(line 6)  (3)
+</li>
+<li>	../libavogadro/src/engines/labelsettingswidget.ui: missing tags: copyright  (1)
 </li>
 <li>	../libavogadro/src/engines/sphereengine.cpp: missing tags: email address(line 4) email address(line 5) email address(line 6)  (3)
 </li>
 <li>	../libavogadro/src/engines/sphereengine.h: missing tags: email address(line 4) email address(line 5) email address(line 6)  (3)
+</li>
+<li>	../libavogadro/src/engines/spheresettingswidget.ui: missing tags: copyright  (1)
 </li>
 <li>	../libavogadro/src/engines/stickengine.cpp: missing tags: email address(line 4)  (1)
 </li>
@@ -85,7 +93,7 @@ Total Issues = 36 ...as of Mai 21 2007 10:00:02</p>
 </li>
 <li>	../libavogadro/src/engines/debugengine.cpp: put config.h in angle brackets line#29
 </li>
-<li>	../libavogadro/src/engines/labelengine.cpp: include own header first line#27
+<li>	../libavogadro/src/engines/labelengine.cpp: include own header first line#28
 </li>
 <li>	../libavogadro/src/engines/stickengine.cpp: include own header first line#26
 </li>
@@ -103,11 +111,15 @@ Total Issues = 36 ...as of Mai 21 2007 10:00:02</p>
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for an acceptable license... 
-<b>OOPS! 2 issues found!</b>
+<b>OOPS! 4 issues found!</b>
 <ul>
 <li>	../libavogadro/src/engines/bsdysettingswidget.ui: missing license
 </li>
 <li>	../libavogadro/src/engines/CMakeLists.txt: missing license
+</li>
+<li>	../libavogadro/src/engines/labelsettingswidget.ui: missing license
+</li>
+<li>	../libavogadro/src/engines/spheresettingswidget.ui: missing license
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Each source file must contain a license or a reference to a license

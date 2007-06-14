@@ -6,7 +6,7 @@
 <body>
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 22<br>
-Total Issues = 40 ...as of Mai 21 2007 09:56:38</p>
+Total Issues = 43 ...as of Juni 14 2007 15:35:21</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>OOPS! 1 issue found!</b>
@@ -23,7 +23,7 @@ Total Issues = 40 ...as of Mai 21 2007 09:56:38</p>
 <li>Check for contractions in strings... 
 <b>okay!</b>
 <li>Check for an acceptable copyright... 
-<b>OOPS! 34 issues found!</b>
+<b>OOPS! 35 issues found!</b>
 <ul>
 <li>	../libavogadro/src/camera.cpp: missing tags: email address(line 4)  (1)
 </li>
@@ -49,8 +49,6 @@ Total Issues = 40 ...as of Mai 21 2007 09:56:38</p>
 </li>
 <li>	../libavogadro/src/glwidget.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	../libavogadro/src/gutepatch.patch: missing tags: copyright  (1)
-</li>
 <li>	../libavogadro/src/moleculetreeview.cpp: missing tags: email address(line 4)  (1)
 </li>
 <li>	../libavogadro/src/moleculetreeview.h: missing tags: email address(line 4)  (1)
@@ -62,6 +60,10 @@ Total Issues = 40 ...as of Mai 21 2007 09:56:38</p>
 <li>	../libavogadro/src/primitive.cpp: missing tags: email address(line 4)  (1)
 </li>
 <li>	../libavogadro/src/primitive.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	../libavogadro/src/primitivelist.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	../libavogadro/src/primitivelist.h: missing tags: email address(line 4)  (1)
 </li>
 <li>	../libavogadro/src/sphere.cpp: missing tags: email address(line 4)  (1)
 </li>
@@ -105,15 +107,27 @@ Total Issues = 40 ...as of Mai 21 2007 09:56:38</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>okay!</b>
+<b>OOPS! 2 issues found!</b>
+<ul>
+<li>	../libavogadro/src/primitiveitemmodel.h: line#50,51 (2)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
+	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
+	this to avoid mistaken implicit constructor ambiguities. Copy
+	constructors should not be explicit.</p>
+</li>
+
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 3 issues found!</b>
+<b>OOPS! 4 issues found!</b>
 <ul>
 <li>	../libavogadro/src/moleculetreeview.cpp: put config.h in angle brackets line#25
 </li>
 <li>	../libavogadro/src/primitive.cpp: put config.h in angle brackets line#25
+</li>
+<li>	../libavogadro/src/primitivelist.cpp: put config.h in angle brackets line#25
 </li>
 <li>	../libavogadro/src/toolgroup.cpp: put config.h in angle brackets line#25
 </li>
@@ -129,11 +143,9 @@ Total Issues = 40 ...as of Mai 21 2007 09:56:38</p>
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for an acceptable license... 
-<b>OOPS! 2 issues found!</b>
+<b>OOPS! 1 issue found!</b>
 <ul>
 <li>	../libavogadro/src/CMakeLists.txt: missing license
-</li>
-<li>	../libavogadro/src/gutepatch.patch: missing license
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Each source file must contain a license or a reference to a license

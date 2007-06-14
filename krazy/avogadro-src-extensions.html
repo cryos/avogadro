@@ -6,7 +6,7 @@
 <body>
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 22<br>
-Total Issues = 47 ...as of Mai 21 2007 10:07:16</p>
+Total Issues = 49 ...as of Juni 14 2007 15:38:43</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>OOPS! 1 issue found!</b>
@@ -23,7 +23,7 @@ Total Issues = 47 ...as of Mai 21 2007 10:07:16</p>
 <li>Check for contractions in strings... 
 <b>okay!</b>
 <li>Check for an acceptable copyright... 
-<b>OOPS! 28 issues found!</b>
+<b>OOPS! 33 issues found!</b>
 <ul>
 <li>	../avogadro/src/extensions/CMakeLists.txt: missing tags: copyright  (1)
 </li>
@@ -59,6 +59,16 @@ Total Issues = 47 ...as of Mai 21 2007 10:07:16</p>
 </li>
 <li>	../avogadro/src/extensions/smartsextension.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
+<li>	../avogadro/src/extensions/unitcellextension.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	../avogadro/src/extensions/unitcellextension.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	../avogadro/src/extensions/unitcellparamdialog.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	../avogadro/src/extensions/unitcellparamdialog.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	../avogadro/src/extensions/unitcellparamdialog.ui: missing tags: copyright  (1)
+</li>
 </ul>
 <p><p><p><b>Why should I care?</b>	All source files must contain a copyright header which identifies
 	the copyright holder(s) together with a e-mail address that can be
@@ -81,11 +91,13 @@ Total Issues = 47 ...as of Mai 21 2007 10:07:16</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>OOPS! 2 issues found!</b>
+<b>OOPS! 3 issues found!</b>
 <ul>
 <li>	../avogadro/src/extensions/forcefielddialog.h: line#39 (1)
 </li>
 <li>	../avogadro/src/extensions/gamessinputdialog.h: line#41 (1)
+</li>
+<li>	../avogadro/src/extensions/unitcellparamdialog.h: line#39 (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
@@ -97,7 +109,7 @@ Total Issues = 47 ...as of Mai 21 2007 10:07:16</p>
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 4 issues found!</b>
+<b>OOPS! 5 issues found!</b>
 <ul>
 <li>	../avogadro/src/extensions/gamessextension.cpp: do not include QtModules line#31(QtGui)
 </li>
@@ -106,6 +118,8 @@ Total Issues = 47 ...as of Mai 21 2007 10:07:16</p>
 <li>	../avogadro/src/extensions/hydrogensextension.cpp: do not include QtModules line#30(QtGui)
 </li>
 <li>	../avogadro/src/extensions/smartsextension.cpp: do not include QtModules line#29(QtGui)
+</li>
+<li>	../avogadro/src/extensions/unitcellextension.cpp: do not include QtModules line#26(QtGui)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
@@ -119,7 +133,7 @@ Total Issues = 47 ...as of Mai 21 2007 10:07:16</p>
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for an acceptable license... 
-<b>OOPS! 4 issues found!</b>
+<b>OOPS! 5 issues found!</b>
 <ul>
 <li>	../avogadro/src/extensions/CMakeLists.txt: missing license
 </li>
@@ -128,6 +142,8 @@ Total Issues = 47 ...as of Mai 21 2007 10:07:16</p>
 <li>	../avogadro/src/extensions/gamessinputdata.cpp: missing license
 </li>
 <li>	../avogadro/src/extensions/gamessinputdialog.ui: missing license
+</li>
+<li>	../avogadro/src/extensions/unitcellparamdialog.ui: missing license
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Each source file must contain a license or a reference to a license
@@ -143,9 +159,9 @@ Total Issues = 47 ...as of Mai 21 2007 10:07:16</p>
 <li>Check for inappropriate pass-by-value function args... 
 <b>okay!</b>
 <li>Check for Qt classes that should not be used... 
-<b>OOPS! 4 issues found!</b>
+<b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../avogadro/src/extensions/gamessinputdialog.cpp: QMessageBox[KMessageBox],QMessageBox[KMessageBox],QFileDialog[KFileDialog] (3)
+<li>	../avogadro/src/extensions/gamessinputdialog.cpp: QFileDialog[KFileDialog] (1)
 </li>
 <li>	../avogadro/src/extensions/smartsextension.cpp: QInputDialog[KInputDialog] (1)
 </li>
@@ -163,22 +179,7 @@ Total Issues = 47 ...as of Mai 21 2007 10:07:16</p>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
-<b>OOPS! 4 issues found!</b>
-<ul>
-<li>	../avogadro/src/extensions/gamessinputdata.cpp: line#1883[funtional] (1)
-</li>
-<li>	../avogadro/src/extensions/ghemicalextension.cpp: line#182[recieved] (1)
-</li>
-<li>	../avogadro/src/extensions/hydrogensextension.cpp: line#104[recieved] (1)
-</li>
-<li>	../avogadro/src/extensions/smartsextension.cpp: line#112[recieved] (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may
-	show up later in API documentation, handbooks, etc.  Misspelled
-	strings make the translator&#39;s job harder. Please use US English.</p>
-</li>
-
+<b>okay!</b>
 </ol>
 </body>
 </html>

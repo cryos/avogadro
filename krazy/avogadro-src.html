@@ -6,24 +6,16 @@
 <body>
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 22<br>
-Total Issues = 64 ...as of Mai 21 2007 10:04:36</p>
+Total Issues = 63 ...as of Juni 14 2007 15:37:57</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
-<b>OOPS! 2 issues found!</b>
-<ul>
-<li>	../avogadro/src/CMakeLists.txt: TRUE: line#1,4 (2) FALSE:  (0)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	The TRUE and FALSE macros are obsolete and should be replaced with
-	true and false (all lower case) respectively.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for methods that return 'const' references in public classes... 
 <b>okay!</b>
 <li>Check for contractions in strings... 
 <b>okay!</b>
 <li>Check for an acceptable copyright... 
-<b>OOPS! 32 issues found!</b>
+<b>OOPS! 33 issues found!</b>
 <ul>
 <li>	../avogadro/src/application.cpp: missing tags: email address(line 4)  (1)
 </li>
@@ -49,9 +41,11 @@ Total Issues = 64 ...as of Mai 21 2007 10:04:36</p>
 </li>
 <li>	../avogadro/src/enginelistview.h: missing tags: email address(line 4)  (1)
 </li>
-<li>	../avogadro/src/enginetabwidget.cpp: missing tags: email address(line 4)  (1)
+<li>	../avogadro/src/enginesetupwidget.cpp: missing tags: email address(line 4)  (1)
 </li>
-<li>	../avogadro/src/enginetabwidget.h: missing tags: email address(line 4)  (1)
+<li>	../avogadro/src/enginesetupwidget.h: missing tags: email address(line 4)  (1)
+</li>
+<li>	../avogadro/src/enginesetupwidget.ui: missing tags: copyright  (1)
 </li>
 <li>	../avogadro/src/extension.h: missing tags: email address(line 4)  (1)
 </li>
@@ -97,15 +91,17 @@ Total Issues = 64 ...as of Mai 21 2007 10:04:36</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>OOPS! 4 issues found!</b>
+<b>OOPS! 6 issues found!</b>
 <ul>
 <li>	../avogadro/src/engineitemmodel.h: line#47 (1)
 </li>
 <li>	../avogadro/src/enginelistview.h: line#48 (1)
 </li>
-<li>	../avogadro/src/enginetabwidget.h: line#50 (1)
+<li>	../avogadro/src/enginesetupwidget.h: line#53 (1)
 </li>
 <li>	../avogadro/src/flowlayout.h: line#35 (1)
+</li>
+<li>	../avogadro/src/primitivetreeview.h: line#55,56 (2)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
@@ -141,11 +137,13 @@ Total Issues = 64 ...as of Mai 21 2007 10:04:36</p>
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for an acceptable license... 
-<b>OOPS! 4 issues found!</b>
+<b>OOPS! 5 issues found!</b>
 <ul>
 <li>	../avogadro/src/avogadro.qrc: missing license
 </li>
 <li>	../avogadro/src/CMakeLists.txt: missing license
+</li>
+<li>	../avogadro/src/enginesetupwidget.ui: missing license
 </li>
 <li>	../avogadro/src/mainwindow.ui: missing license
 </li>
@@ -174,13 +172,11 @@ Total Issues = 64 ...as of Mai 21 2007 10:04:36</p>
 </li>
 
 <li>Check for Qt classes that should not be used... 
-<b>OOPS! 15 issues found!</b>
+<b>OOPS! 13 issues found!</b>
 <ul>
-<li>	../avogadro/src/enginelistview.cpp: QDialog[KDialog] (1)
-</li>
 <li>	../avogadro/src/main.cpp: QMessageBox[KMessageBox] (1)
 </li>
-<li>	../avogadro/src/mainwindow.cpp: QFileDialog[KFileDialog],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QColorDialog[KColorDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox] (13)
+<li>	../avogadro/src/mainwindow.cpp: QFileDialog[KFileDialog],QFileDialog[KFileDialog],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QColorDialog[KColorDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox] (12)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use the KDE version of some Qt GUI elements to provide a consistent
@@ -196,16 +192,7 @@ Total Issues = 64 ...as of Mai 21 2007 10:04:36</p>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../avogadro/src/extension.h: line#53[recieves] (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may
-	show up later in API documentation, handbooks, etc.  Misspelled
-	strings make the translator&#39;s job harder. Please use US English.</p>
-</li>
-
+<b>okay!</b>
 </ol>
 </body>
 </html>
