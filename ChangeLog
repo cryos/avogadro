@@ -1,6 +1,54 @@
 2007-06-14  Carsten Niehaus <cniehaus@kde.og>
 	* Require Qt 4.3.0 at least
 
+2007-06-14  Marcus D. Hanwell <marcus@cryos.org>
+	* avogadro/src/extensions/unitcellparamdialog.cpp:
+	Small fix to close the dialog when cancel is clicked.
+
+	* libavogadro/src/tools/selectrotatetool.cpp:
+	Fixed bond selection bug when using a selection box.
+
+2007-06-13  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/tools/CMakeLists.txt,
+	libavogadro/src/tools/autorotatetool.*:
+	Added new auto rotation tool. The scene can be rotated about the x, y
+	and z axes. Modified to allow both positive and negative rotations.
+
+	* libavogadro/src/tools/navigatetool.cpp:
+	Corrected incorrect tooltip text.
+
+2007-06-12  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/camera.*:
+	Added transformedAxis functions for x, y and z.
+
+	* libavogadro/src/engines/CMakeLists.txt,
+	libavogadro/src/engines/axesengine.*:
+	Added new axes engine. It renders the x, y and z axes in the bottom
+	corner of the display. The orientation of the axes reflects the scenes
+	orientation.
+
+	* libavogadro/src/engines/sphereengine.cpp:
+	Two pass rendering of the transparent VdW spheres to remove internal
+	sphere elements and improve the look of the rendered scene.
+
+2007-06-11  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/engines/labelengine.*:
+	Added support for bond labels.
+
+	* libavogadro/src/engines/bsdyengine.cpp,
+	libavogadro/src/engines/stickengine.cpp:
+	Improved the radius function to return bond radii.
+
+	* libavogadro/src/color.*:
+	Added setAlpha function to set the transparency but not change colour.
+
+	* libavogadro/src/engines/CMakeLists.txt,
+	libavogadro/src/engines/sphereengine.*,
+	libavogadro/src/engines/spheresettingswidget.ui:
+	Added configuration options to the VdW engine. Added transparency
+	effects to the VdW rendering. When enabled a ball and stick rendering
+	is done inside the VdW rendering.
+
 2007-06-05  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 	* .:  Update EngineConfigurationWidget to EngineSetupWidget and updated
 	file names and all references in the project.  Updated CMakeFiles.
