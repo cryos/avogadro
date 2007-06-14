@@ -32,11 +32,6 @@
 
 #include <openbabel/mol.h>
 
-#include <QGLWidget>
-#include <QObject>
-#include <QStringList>
-#include <QImage>
-
 #include "ui_spheresettingswidget.h"
 
 namespace Avogadro {

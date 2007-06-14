@@ -33,8 +33,6 @@
 
 #include <openbabel/mol.h>
 
-#include <QGLWidget>
-
 namespace Avogadro {
 
   //! Debug Engine class.

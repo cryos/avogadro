@@ -28,9 +28,6 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
-#include <QGLWidget>
-#include <QObject>
-
 namespace Avogadro {
 
   //! Axes Engine class.

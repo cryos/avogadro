@@ -31,11 +31,6 @@
 
 #include <openbabel/mol.h>
 
-#include <QGLWidget>
-#include <QObject>
-#include <QStringList>
-#include <QImage>
-
 namespace Avogadro {
 
   //! Wireframe Engine class.
