@@ -165,8 +165,8 @@ QWidget* AutoRotateTool::settingsWidget() {
     sliderZRotation->setValue(0);
 
     // Push buttons to start/stop and to reset
-    QPushButton* buttonStartStop = new QPushButton("&Start/Stop", m_settingsWidget);
-    QPushButton* buttonReset = new QPushButton("&Reset", m_settingsWidget);
+    QPushButton* buttonStartStop = new QPushButton("Start/Stop", m_settingsWidget);
+    QPushButton* buttonReset = new QPushButton("Reset", m_settingsWidget);
     QHBoxLayout* buttonLayout = new QHBoxLayout();
     buttonLayout->addWidget(buttonStartStop);
     buttonLayout->addWidget(buttonReset);
