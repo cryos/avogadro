@@ -61,11 +61,11 @@ endif(NOT WIN32)
 
   if (OPENBABEL2_FOUND)
     if (NOT OpenBabel2_FIND_QUIETLY)
-      message(STATUS "Found OpenBabel2: ${OPENBABEL2_LIBRARIES}")
+      message(STATUS "Found >=OpenBabel-2.1.0: ${OPENBABEL2_LIBRARIES}")
     endif (NOT OpenBabel2_FIND_QUIETLY)
   else (OPENBABEL2_FOUND)
     if (OpenBabel2_FIND_REQUIRED)
-      message(FATAL_ERROR "Could NOT find OpenBabel2")
+      message(FATAL_ERROR "Could NOT find >=OpenBabel-2.1.0")
     endif (OpenBabel2_FIND_REQUIRED)
   endif (OPENBABEL2_FOUND)
 
@@ -91,7 +91,7 @@ else(OPENBABEL2_EXECUTABLE)
   endif(OPENBABEL2_EXECUTABLE)
 
   if(OPENBABEL2_EXECUTABLE_FOUND)
-    message(STATUS "Found OpenBabel2 executable: ${OPENBABEL2_EXECUTABLE}")
+    message(STATUS "Found >=OpenBabel-2.1.0 executable: ${OPENBABEL2_EXECUTABLE}")
   endif(OPENBABEL2_EXECUTABLE_FOUND)
 
 endif(OPENBABEL2_EXECUTABLE)

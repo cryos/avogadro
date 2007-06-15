@@ -2,6 +2,9 @@
 	* libavogadro/src/tools/manipulatetool.*:
 	Added undo/redo support to the manipulation tool.
 
+	* cmake/modules/FindOpenBabel2.cmake:
+	Added more verbosity to the cmake messages about the required version.
+
 2007-06-14  Carsten Niehaus <cniehaus@kde.og>
 	* Require Qt 4.3.0 at least
 
