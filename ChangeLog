@@ -1,3 +1,7 @@
+2007-06-15  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/tools/manipulatetool.*:
+	Added undo/redo support to the manipulation tool.
+
 2007-06-14  Carsten Niehaus <cniehaus@kde.og>
 	* Require Qt 4.3.0 at least
 

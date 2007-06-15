@@ -34,6 +34,7 @@
 #include <QStringList>
 #include <QImage>
 #include <QAction>
+#include <QUndoCommand>
 
 namespace Avogadro {
 
@@ -85,8 +86,7 @@ namespace Avogadro {
       bool                m_rightButtonPressed; // translation
       Eigen::Vector3d     m_selectedPrimitivesCenter;    // centroid of selected atoms
 
-      //! Temporary var for adding selection box
-      GLuint              m_selectedPrimitivesDL;
+      QUndoCommand *      m_undo; // The current undo command
 
       QPoint              m_lastDraggingPosition;
 
@@ -97,6 +97,25 @@ namespace Avogadro {
       void translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const;
       void rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const;
       void tilt( const Eigen::Vector3d &center, double delta ) const;
+  };
+
+ class MoveAtomCommand : public QUndoCommand
+  {
+    public:
+      MoveAtomCommand(Molecule *molecule, QUndoCommand *parent = 0);
+      MoveAtomCommand(Molecule *molecule, Atom *atom, Eigen::Vector3d pos, QUndoCommand *parent = 0);
+
+      void redo();
+      void undo();
+      bool mergeWith ( const QUndoCommand * command );
+      int id() const;
+
+    private:
+      Molecule m_moleculeCopy;
+      Molecule *m_molecule;
+      int m_atomIndex;
+      Eigen::Vector3d m_pos;
+      bool undone;
   };
 
   class ManipulateToolFactory : public QObject, public ToolFactory

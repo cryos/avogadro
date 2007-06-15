@@ -38,7 +38,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false)
+ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false), m_undo(0)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/manipulate/manipulate.png")));
@@ -82,6 +82,7 @@ void ManipulateTool::computeClickedAtom(const QPoint& p)
 void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
 {
   // Move the selected atom(s) in to or out of the screen
+  MoveAtomCommand *cmd  = 0;
   Vector3d transformedGoal = m_glwidget->camera()->modelview() * goal;
   double distanceToGoal = transformedGoal.norm();
 
@@ -103,17 +104,18 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
       if (a->type() == Primitive::AtomType)
       {
         Atom *atom = static_cast<Atom *>(a);
-        atom->setPos(atomTranslation * atom->pos());
+        cmd = new MoveAtomCommand(m_glwidget->molecule(), atom, atomTranslation * atom->pos(), m_undo);
       }
     }
   }
   if (m_clickedAtom && !m_glwidget->isSelected(m_clickedAtom))
-    m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
+    cmd = new MoveAtomCommand(m_glwidget->molecule(), m_clickedAtom, atomTranslation * m_clickedAtom->pos(), m_undo);
 }
 
 void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const
 {
   // Translate the selected atoms in the x and y sense of the view
+  MoveAtomCommand *cmd  = 0;
   Vector3d fromPos = m_glwidget->camera()->unProject(from, what);
   Vector3d toPos = m_glwidget->camera()->unProject(to, what);
 
@@ -127,17 +129,18 @@ void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from,
       if (a->type() == Primitive::AtomType)
       {
         Atom *atom = static_cast<Atom *>(a);
-        atom->setPos(atomTranslation * atom->pos());
+        cmd = new MoveAtomCommand(m_glwidget->molecule(), atom, atomTranslation * atom->pos(), m_undo);
       }
     }
   }
   if (m_clickedAtom && !m_glwidget->isSelected(m_clickedAtom))
-    m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
+    cmd = new MoveAtomCommand(m_glwidget->molecule(), m_clickedAtom, atomTranslation * m_clickedAtom->pos(), m_undo);
 }
 
 void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const
 {
   // Rotate the selected atoms about the center
+  MoveAtomCommand *cmd  = 0;
   Matrix3d rotation = m_glwidget->camera()->modelview().linearComponent();
   Vector3d XAxis = rotation.row(0);
   Vector3d YAxis = rotation.row(1);
@@ -153,7 +156,7 @@ void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, doubl
     if (a->type() == Primitive::AtomType)
     {
       Atom *atom = static_cast<Atom *>(a);
-      atom->setPos(fragmentRotation * atom->pos());
+      cmd = new MoveAtomCommand(m_glwidget->molecule(), atom, fragmentRotation * atom->pos(), m_undo);
     }
   }
 }
@@ -161,6 +164,7 @@ void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, doubl
 void ManipulateTool::tilt( const Eigen::Vector3d &center, double delta ) const
 {
   // Tilt the selected atoms about the center
+  MoveAtomCommand *cmd  = 0;
   MatrixP3d fragmentRotation;
   fragmentRotation.loadTranslation(center);
   fragmentRotation.rotate3(delta * ROTATION_SPEED, m_glwidget->camera()->backtransformedZAxis());
@@ -170,7 +174,7 @@ void ManipulateTool::tilt( const Eigen::Vector3d &center, double delta ) const
     if (a->type() == Primitive::AtomType)
     {
       Atom *atom = static_cast<Atom *>(a);
-      atom->setPos(fragmentRotation * atom->pos());
+      cmd = new MoveAtomCommand(m_glwidget->molecule(), atom, fragmentRotation * atom->pos(), m_undo);
     }
   }
 }
@@ -185,7 +189,8 @@ QUndoCommand* ManipulateTool::mousePress(GLWidget *widget, const QMouseEvent *ev
   computeClickedAtom(event->pos());
 
   widget->update();
-  return 0;
+  m_undo = new MoveAtomCommand(m_glwidget->molecule());
+  return m_undo;
 }
 
 QUndoCommand* ManipulateTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
@@ -206,6 +211,7 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
   if(!m_glwidget->molecule()) {
     return 0;
   }
+  m_undo = new MoveAtomCommand(m_glwidget->molecule());
 
   // Get the currently selected atoms from the view
   QList<Primitive *> currentSelection = m_glwidget->selectedPrimitives();
@@ -272,7 +278,7 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
   m_lastDraggingPosition = event->pos();
   m_glwidget->update();
 
-  return 0;
+  return m_undo;
 }
 
 QUndoCommand* ManipulateTool::wheel(GLWidget*, const QWheelEvent*)
@@ -317,6 +323,67 @@ void ManipulateTool::drawSphere(GLWidget *widget,  const Eigen::Vector3d &positi
   widget->painter()->drawSphere(position, radius);
   glDisable( GL_BLEND );
   widget->painter()->end();
+}
+
+MoveAtomCommand::MoveAtomCommand(Molecule *molecule, QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)
+{
+  // Store the molecule - this call won't actually move an atom
+  setText(QObject::tr("Manipulate Atom"));
+  m_moleculeCopy = *molecule;
+  m_molecule = molecule;
+  m_atomIndex = 0;
+  undone = false;
+}
+
+MoveAtomCommand::MoveAtomCommand(Molecule *molecule, Atom *atom, Eigen::Vector3d pos, QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)
+{
+  // Store the original molecule before any modifications are made
+  setText(QObject::tr("Manipulate Atom"));
+  m_moleculeCopy = *molecule;
+  m_molecule = molecule;
+  m_atomIndex = atom->GetIdx();
+  m_pos = pos;
+  undone = false;
+}
+
+void MoveAtomCommand::redo()
+{
+  // Move the specified atom to the location given
+  if (undone)
+  {
+    Molecule newMolecule = *m_molecule;
+    *m_molecule = m_moleculeCopy;
+    m_moleculeCopy = newMolecule;
+  }
+  else if (m_atomIndex)
+  {
+    m_molecule->BeginModify();
+    Atom *atom = static_cast<Atom *>(m_molecule->GetAtom(m_atomIndex));
+    atom->setPos(m_pos);
+    m_molecule->EndModify();
+    atom->update();
+  }
+  QUndoCommand::redo();
+}
+
+void MoveAtomCommand::undo()
+{
+  // Restore our original molecule
+  Molecule newMolecule = *m_molecule;
+  *m_molecule = m_moleculeCopy;
+  m_moleculeCopy = newMolecule;
+  undone = true;
+}
+
+bool MoveAtomCommand::mergeWith (const QUndoCommand *)
+{
+  // Just return true to repeated calls - we have stored the original molecule
+  return true;
+}
+
+int MoveAtomCommand::id() const
+{
+  return 26011980;
 }
 
 #include "manipulatetool.moc"
