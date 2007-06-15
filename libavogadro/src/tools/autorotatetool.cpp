@@ -29,24 +29,24 @@
 
 #include <QtPlugin>
 #include <QObject>
+
 #include <QSlider>
 #include <QLabel>
+#include <QPushButton>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 
 using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-AutoRotateTool::AutoRotateTool(QObject *parent) : Tool(parent), m_glwidget(0), 
+AutoRotateTool::AutoRotateTool(QObject *parent) : Tool(parent), m_glwidget(0), timerId(0),
   m_xRotation(0), m_yRotation(0), m_zRotation(0), m_settingsWidget(0)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
   action->setToolTip(tr("Auto Rotation Tool"));
-
-  // Start a timer for auto rotation
-  startTimer(25);
 }
 
 AutoRotateTool::~AutoRotateTool()
@@ -105,6 +105,24 @@ void AutoRotateTool::setZRotation(int i)
   m_zRotation = i;
 }
 
+void AutoRotateTool::setTimer()
+{
+  // Toggle the timer on and off
+  if (timerId)
+  {
+    killTimer(timerId);
+    timerId = 0;
+  }
+  else
+    timerId = startTimer(40);
+}
+
+void AutoRotateTool::resetRotations()
+{
+  // Emit the reset signal with a value of 0
+  emit resetRotation(0);
+}
+
 QWidget* AutoRotateTool::settingsWidget() {
   if(!m_settingsWidget) {
     m_settingsWidget = new QWidget;
@@ -119,8 +137,7 @@ QWidget* AutoRotateTool::settingsWidget() {
     sliderXRotation->setToolTip("x rotation");
     sliderXRotation->setTickInterval(10);
     sliderXRotation->setPageStep(5);
-    sliderXRotation->setMinimum(-20);
-    sliderXRotation->setMaximum(20);
+    sliderXRotation->setRange(-20, 20);
     sliderXRotation->setValue(0);
 
     // Label and slider to set y axis rotation
@@ -132,8 +149,7 @@ QWidget* AutoRotateTool::settingsWidget() {
     sliderYRotation->setToolTip("y rotation");
     sliderYRotation->setTickInterval(10);
     sliderYRotation->setPageStep(5);
-    sliderYRotation->setMinimum(-20);
-    sliderYRotation->setMaximum(20);
+    sliderYRotation->setRange(-20, 20);
     sliderYRotation->setValue(0);
 
     // Label and slider to set z axis rotation
@@ -145,9 +161,15 @@ QWidget* AutoRotateTool::settingsWidget() {
     sliderZRotation->setToolTip("z rotation");
     sliderZRotation->setTickInterval(10);
     sliderZRotation->setPageStep(5);
-    sliderZRotation->setMinimum(-20);
-    sliderZRotation->setMaximum(20);
+    sliderZRotation->setRange(-20, 20);
     sliderZRotation->setValue(0);
+
+    // Push buttons to start/stop and to reset
+    QPushButton* buttonStartStop = new QPushButton("&Start/Stop", m_settingsWidget);
+    QPushButton* buttonReset = new QPushButton("&Reset", m_settingsWidget);
+    QHBoxLayout* buttonLayout = new QHBoxLayout();
+    buttonLayout->addWidget(buttonStartStop);
+    buttonLayout->addWidget(buttonReset);
 
     QVBoxLayout* layout = new QVBoxLayout();
     layout->addWidget(labelX);
@@ -156,6 +178,8 @@ QWidget* AutoRotateTool::settingsWidget() {
     layout->addWidget(sliderYRotation);
     layout->addWidget(labelZ);
     layout->addWidget(sliderZRotation);
+    layout->addLayout(buttonLayout);
+    layout->addStretch(1);
     m_settingsWidget->setLayout(layout);
 
     // Connect the sliders with the slots
@@ -167,6 +191,21 @@ QWidget* AutoRotateTool::settingsWidget() {
 
     connect(sliderZRotation, SIGNAL(valueChanged(int)),
         this, SLOT(setZRotation(int)));
+
+    // Connect the start/stop button
+    connect(buttonStartStop, SIGNAL(clicked()),
+        this, SLOT(setTimer()));
+
+    // Connect the reset button to the reset slot
+    connect(buttonReset, SIGNAL(clicked()),
+        this, SLOT(resetRotations()));
+    // Connect the reset signal to the sliders
+    connect(this, SIGNAL(resetRotation(int)),
+        sliderXRotation, SLOT(setValue(int)));
+    connect(this, SIGNAL(resetRotation(int)),
+        sliderYRotation, SLOT(setValue(int)));
+    connect(this, SIGNAL(resetRotation(int)),
+        sliderZRotation, SLOT(setValue(int)));
 
     connect(m_settingsWidget, SIGNAL(destroyed()),
         this, SLOT(settingsWidgetDestroyed()));

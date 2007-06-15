@@ -33,6 +33,7 @@
 #include <QStringList>
 #include <QImage>
 #include <QAction>
+#include <QWidget>
 
 namespace Avogadro {
 
@@ -44,6 +45,7 @@ namespace Avogadro {
    * This class handles the automatic rotation of the view
    * so that the molecule can be shown in more detail.
    */
+
   class AutoRotateTool : public Tool
   {
     Q_OBJECT
@@ -76,16 +78,21 @@ namespace Avogadro {
 
       virtual bool paint(GLWidget *widget);
 
-
       virtual QWidget* settingsWidget();
 
     public Q_SLOTS:
       void setXRotation(int i);
       void setYRotation(int i);
       void setZRotation(int i);
+      void setTimer();
+      void resetRotations();
+
+    Q_SIGNALS:
+      void resetRotation(int i);
 
     protected:
       GLWidget* m_glwidget;
+      int timerId;
       int m_xRotation;
       int m_yRotation;
       int m_zRotation;

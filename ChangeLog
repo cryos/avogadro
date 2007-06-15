@@ -1,4 +1,8 @@
 2007-06-15  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/tools/autorotatetool.*:
+	Added a start/stop button and a reset button to the config widget for
+	the auto rotate tool.
+
 	* libavogadro/src/tools/manipulatetool.*:
 	Added undo/redo support to the manipulation tool.
 
