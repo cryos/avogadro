@@ -1,4 +1,8 @@
 2007-06-16  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/engines/axesengine.cpp:
+	Improvements to the axes engine rendering - all axes should be of
+	equal length now.
+
 	* libavogadro/src/engines/sphereengine.cpp,
 	libavogadro/src/engines/spheresettingswidget.ui:
 	Some improvements to the rendering code and the setup widget, as

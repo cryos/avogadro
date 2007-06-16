@@ -50,7 +50,9 @@ bool AxesEngine::render(GLWidget *gl)
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
   glLoadIdentity();
-  glOrtho(-1,1,-1,1,-1,1);
+  // Ensure the axes are of the same length
+  double aspectRatio = static_cast<double>(gl->width()/gl->height());
+  glOrtho(0, aspectRatio, 0, 1, 0, 1);
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
   glLoadIdentity();
@@ -60,13 +62,13 @@ bool AxesEngine::render(GLWidget *gl)
   glDisable(GL_BLEND);
 
   // Set the origin and calculate the positions of the axes
-  Vector3d origin = Vector3d(-0.85, -0.85, 0.85);
+  Vector3d origin = Vector3d(0.07*aspectRatio, 0.07, -.07);
   MatrixP3d axisTranslation;
-  axisTranslation.loadTranslation(gl->camera()->transformedXAxis() * 0.1);
+  axisTranslation.loadTranslation(gl->camera()->transformedXAxis() * 0.06);
   Vector3d aX = axisTranslation * origin;
-  axisTranslation.loadTranslation(gl->camera()->transformedYAxis() * 0.1);
+  axisTranslation.loadTranslation(gl->camera()->transformedYAxis() * 0.06);
   Vector3d aY = axisTranslation * origin;
-  axisTranslation.loadTranslation(gl->camera()->transformedZAxis() * 0.1);
+  axisTranslation.loadTranslation(gl->camera()->transformedZAxis() * 0.06);
   Vector3d aZ = axisTranslation * origin;
 
   // Draw the axes in red, green and blue so they can be easily identified
