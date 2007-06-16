@@ -43,7 +43,7 @@ using namespace Avogadro;
 using namespace Eigen;
 
 SphereEngine::SphereEngine(QObject *parent) : Engine(parent), m_glwidget(0), m_settingsWidget(0),
-  m_alpha(1.), m_bondRadius(0.1), m_atomRadiusPercentage(0.3)
+  m_alpha(1.), m_bondRadius(0.1), m_atomRadiusPercentage(0.2)
 {
   setName(tr("VdW Sphere"));
   setDescription(tr("Renders atoms as Van der Waals spheres"));
@@ -56,8 +56,9 @@ bool SphereEngine::render(GLWidget *gl)
 
   QList<Primitive *> list;
 
-  // First we render the skeleton if the VdW spheres are not opaque
-  if (m_alpha < 1.0)
+  // First we render the skeleton if the VdW spheres are not totally
+  // opaque or transparent
+  if (m_alpha > 0.001 && m_alpha < 0.999)
   {
     list = primitives().subList(Primitive::BondType);
     foreach( Primitive *p, list )
@@ -69,14 +70,16 @@ bool SphereEngine::render(GLWidget *gl)
     foreach( Primitive *p, list )
       renderSkeleton(static_cast<const Atom *>(p));
 
-    // First pass with totally transparent spheres
-    double alpha = m_alpha;
-    m_alpha = 0.;
+    // First pass using a colour mask - nothing is actually drawn
+    glColorMask(GL_FALSE,GL_FALSE,GL_FALSE,GL_FALSE);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_BLEND);
     foreach( Primitive *p, list )
       render(static_cast<const Atom *>(p));
-    m_alpha = alpha;
+    glColorMask(GL_TRUE,GL_TRUE,GL_TRUE,GL_TRUE);
+    glEnable(GL_LIGHTING);
   }
-  // Render the atoms
+  // Render the atoms as VdW spheres
   glDisable( GL_NORMALIZE );
   glEnable( GL_RESCALE_NORMAL );
   list = primitives().subList(Primitive::AtomType);
@@ -90,52 +93,36 @@ bool SphereEngine::render(GLWidget *gl)
   return true;
 }
 
-inline double SphereEngine::radius(const Atom *a)
-{
-  return etab.GetVdwRad(a->GetAtomicNum());
-}
-
-double SphereEngine::radius(const Primitive *p)
-{
-  if (p->type() == Primitive::AtomType)
-  {
-    const Atom *a = static_cast<const Atom *>(p);
-    double r = radius(a);
-    if (m_glwidget)
-    {
-      if (m_glwidget->isSelected(p))
-        return r + SEL_ATOM_EXTRA_RADIUS;
-    }
-    return r;
-  }
-  else
-    return 0.;
-}
-
 bool SphereEngine::render(const Atom *a)
 {
+  // Render the atoms as Van der Waals spheres
   Color map = colorMap();
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
   map.set(a);
-  // Render this transparently
-  map.setAlpha(m_alpha);
-  map.applyAsMaterials();
-  if (m_alpha < 1.0)
+
+  // Render this transparently if alpha is less than 1
+  if (m_alpha < 0.999)
+  {
+    map.setAlpha(m_alpha);
     glEnable( GL_BLEND );
+  }
+  map.applyAsMaterials();
+
   m_glwidget->painter()->drawSphere( a->pos(), radius(a) );
 
+  // Draw a selection sphere if necessary
   if (m_glwidget->isSelected(a))
   {
     map.set( 0.3, 0.6, 1.0, 0.7 );
     map.applyAsMaterials();
-    if (m_alpha < 1.0)
+    if (m_alpha < 0.999)
       glEnable( GL_BLEND );
     m_glwidget->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
     glDisable( GL_BLEND );
   }
 
-  if (m_alpha < 1.0)
+  if (m_alpha < 0.999)
     glDisable( GL_BLEND );
 
   glPopName();
@@ -146,6 +133,7 @@ bool SphereEngine::render(const Atom *a)
 
 bool SphereEngine::renderSkeleton(const Atom *a)
 {
+  // Draw the skeletal atoms of the molecule
   Color map = colorMap();
   map.set(a);
   map.applyAsMaterials();
@@ -155,6 +143,7 @@ bool SphereEngine::renderSkeleton(const Atom *a)
 
 bool SphereEngine::renderSkeleton(const Bond* b)
 {
+  // Draw the skeletal bonds of the molecule
   Color map = colorMap();
 
   const Atom* atom1 = static_cast<const Atom *>(b->GetBeginAtom());
@@ -177,6 +166,38 @@ bool SphereEngine::renderSkeleton(const Bond* b)
   m_glwidget->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
 
   return true;
+}
+
+inline double SphereEngine::radius(const Atom *a)
+{
+  return etab.GetVdwRad(a->GetAtomicNum());
+}
+
+double SphereEngine::radius(const Primitive *p)
+{
+  // Atom radius
+  if (p->type() == Primitive::AtomType)
+  {
+    if (m_glwidget)
+    {
+      if (m_glwidget->isSelected(p))
+        return radius(static_cast<const Atom *>(p)) + SEL_ATOM_EXTRA_RADIUS;
+    }
+    return radius(static_cast<const Atom *>(p));
+  }
+  // Bond radius
+  else if (p->type() == Primitive::BondType)
+  {
+    if (m_glwidget)
+    {
+      if (m_glwidget->isSelected(p))
+        return m_bondRadius + SEL_BOND_EXTRA_RADIUS;
+    }
+    return m_bondRadius;
+  }
+  // Something else
+  else
+    return 0.;
 }
 
 void SphereEngine::setOpacity(int percent)

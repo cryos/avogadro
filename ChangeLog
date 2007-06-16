@@ -1,4 +1,9 @@
 2007-06-16  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/engines/sphereengine.cpp,
+	libavogadro/src/engines/spheresettingswidget.ui:
+	Some improvements to the rendering code and the setup widget, as
+	suggested by Benoit.
+
 	* libavogadro/src/painter.cpp, avogadro/src/settingsdialog.ui:
 	Added some higher detail levels, probably only useful on accelerated
 	systems. Kept the default level at 2.
