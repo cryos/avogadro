@@ -40,20 +40,32 @@ using namespace Avogadro;
 namespace Avogadro
 {
 
-  const int      PAINTER_GLOBAL_QUALITY_SETTINGS       = 3;
-  const int      DEFAULT_GLOBAL_QUALITY_SETTING        = PAINTER_GLOBAL_QUALITY_SETTINGS - 1;
+  const int      PAINTER_GLOBAL_QUALITY_SETTINGS       = 5;
+  const int      DEFAULT_GLOBAL_QUALITY_SETTING        = PAINTER_GLOBAL_QUALITY_SETTINGS - 3;
   const int      PAINTER_DETAIL_LEVELS                 = 10;
-  const int      PAINTER_SPHERES_LEVELS_ARRAY[3][10]
-    = { {0, 0, 1, 1, 2, 2, 3, 3, 4, 4} ,
-      {0, 1, 2, 3, 4, 4, 5, 5, 6, 6} ,
-      {1, 2, 3, 4, 5, 6, 7, 8, 9, 9} };
+  // Sphere detail level array. Each row is a detail level.
+  // The first column is the sphere detail level at the furthest
+  // point and the last column is the detail level at the closest
+  // point.
+  const int      PAINTER_SPHERES_LEVELS_ARRAY[5][10]
+    = { {0, 0, 1, 1, 2, 2, 3, 3, 4, 4},
+      {0, 1, 2, 3, 4, 4, 5, 5, 6, 6},
+      {1, 2, 3, 4, 5, 6, 7, 8, 9, 9},
+      {1, 2, 3, 4, 6, 7, 8, 9, 11, 12},
+      {2, 3, 4, 5, 7, 9, 12, 15, 18, 22} };
   const double   PAINTER_SPHERES_LIMIT_MIN_LEVEL       = 0.005;
   const double   PAINTER_SPHERES_LIMIT_MAX_LEVEL       = 0.15;
 
-  const int      PAINTER_CYLINDERS_LEVELS_ARRAY[3][10]
-    = { {0, 3, 5, 5, 8, 8, 12, 12, 16, 16} ,
+  // Cylinder detail level array. Each row is a detail level.
+  // The first column is the cylinder detail level at the furthest
+  // point and the last column is the detail level at the closest
+  // point.
+  const int      PAINTER_CYLINDERS_LEVELS_ARRAY[5][10]
+    = { {0, 3, 5, 5, 8, 8, 12, 12, 16, 16},
       {0, 4, 6, 9, 12, 12, 16, 16, 20, 20},
-      {0, 4, 6, 10, 14, 18, 22, 26, 32, 40} };
+      {0, 4, 6, 10, 14, 18, 22, 26, 32, 40},
+      {0, 4, 6, 12, 16, 20, 24, 28, 34, 42},
+      {0, 5, 10, 15, 20, 25, 30, 35, 40, 45} };
   const double   PAINTER_CYLINDERS_LIMIT_MIN_LEVEL     = 0.001;
   const double   PAINTER_CYLINDERS_LIMIT_MAX_LEVEL     = 0.03;
   const int      PAINTER_MAX_DETAIL_LEVEL = PAINTER_DETAIL_LEVELS - 1;
@@ -100,7 +112,7 @@ namespace Avogadro
         * to share that cylinder, instead of having redundant cylinder in memory.
         */
       Cylinder **cylinders;
-      
+
       TextRenderer *textRenderer;
 
       bool initialized;
@@ -136,7 +148,7 @@ namespace Avogadro
       delete[] spheres;
       spheres = 0;
     }
-    
+
     // delete the cylinders. One has to be wary that more than one cylinder
     // pointer may have the same value. One wants to avoid deleting twice the same cylinder.
     if(cylinders) {
@@ -180,7 +192,7 @@ namespace Avogadro
         }
       }
     }
-    
+
     // create the cylinders. More than one cylinder detail level may have the same value.
     // in that case we want to reuse the corresponding cylinder by just copying the pointer,
     // instead of creating redundant cylinders.
@@ -269,11 +281,11 @@ namespace Avogadro
     assert( d->widget );
     Eigen::Vector3d transformedCenter = d->widget->camera()->modelview() * center;
     double distance = transformedCenter.norm();
-    
+
     // perform a rough form of frustum culling
     double dot = transformedCenter.z() / distance;
     if(dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return;
-    
+
     double apparentRadius = radius / distance;
 
     int detailLevel = 1 + static_cast<int>( floor(
@@ -310,11 +322,11 @@ namespace Avogadro
     assert( d->widget );
     Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
     double distance = transformedEnd1.norm();
-    
+
     // perform a rough form of frustum culling
     double dot = transformedEnd1.z() / distance;
     if(dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return;
-    
+
     double apparentRadius = radius / distance;
     int detailLevel = 1 + static_cast<int>( floor(
           PAINTER_CYLINDERS_DETAIL_COEFF
@@ -352,11 +364,11 @@ namespace Avogadro
     assert( d->widget );
     Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
     double distance = transformedEnd1.norm();
-    
+
     // perform a rough form of frustum culling
     double dot = transformedEnd1.z() / distance;
     if(dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return;
-    
+
     double apparentRadius = radius / distance;
     int detailLevel = 1 + static_cast<int>( floor(
           PAINTER_CYLINDERS_DETAIL_COEFF
@@ -397,11 +409,11 @@ namespace Avogadro
       d->textRenderer->begin(d->widget);
     }
     Eigen::Vector3d transformedPos = d->widget->camera()->modelview() * pos;
-    
+
     // perform a rough form of frustum culling
     double dot = transformedPos.z() / transformedPos.norm();
     if(dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return 0;
-    
+
     return d->textRenderer->draw(pos, string);
   }
 

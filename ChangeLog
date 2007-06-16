@@ -1,3 +1,8 @@
+2007-06-16  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/painter.cpp, avogadro/src/settingsdialog.ui:
+	Added some higher detail levels, probably only useful on accelerated
+	systems. Kept the default level at 2.
+
 2007-06-15  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/tools/autorotatetool.*:
 	Added a start/stop button and a reset button to the config widget for

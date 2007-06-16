@@ -19,10 +19,22 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
+   <property name="leftMargin" >
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin" >
+    <number>9</number>
+   </property>
+   <property name="rightMargin" >
+    <number>9</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>9</number>
+   </property>
+   <property name="horizontalSpacing" >
+    <number>6</number>
+   </property>
+   <property name="verticalSpacing" >
     <number>6</number>
    </property>
    <item row="1" column="0" colspan="3" >
@@ -48,7 +60,7 @@
    <item row="0" column="1" >
     <widget class="QSlider" name="qualitySlider" >
      <property name="maximum" >
-      <number>2</number>
+      <number>4</number>
      </property>
      <property name="pageStep" >
       <number>1</number>
