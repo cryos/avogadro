@@ -48,6 +48,19 @@
 	* libavogadro/src/tools/selectrotatetool.cpp:
 	Fixed bond selection bug when using a selection box.
 
+2007-06-13  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/src/extensions/unitcell*: New extension to control
+	display of unit cells along a, b, and c axes.
+
+	* avogadro/src/mainwindow.cpp: Add a small random vector offset to
+	pasted molecules, so they do not fall on top of each other. (Best
+	solution would be to mirror drawing programs, a small increasing
+	offset with every paste.)
+
+	* libavogadro/src/tools/drawtool.cpp: Fix minor bug with periodic
+	table widget loosing focus.
+
 2007-06-13  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/tools/CMakeLists.txt,
@@ -97,6 +110,13 @@
 	* .:  Update EngineConfigurationWidget to EngineSetupWidget and updated
 	file names and all references in the project.  Updated CMakeFiles.
 
+2007-06-13  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/tools/periodictable*: New widget with slim
+	periodic table to pick arbitrary elements.
+
+	* libavogadro/src/tools/drawtool.cpp: Use it.
+	
 2007-05-26  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/tools/manipulatetool.cpp,
