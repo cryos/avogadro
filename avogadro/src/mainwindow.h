@@ -62,7 +62,6 @@ namespace Avogadro {
       void exportGraphics();
 
       void closeFile();
-      void quit();
 
       void cut();
       void copy();

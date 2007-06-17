@@ -203,7 +203,7 @@ namespace Avogadro {
 #ifdef Q_WS_MAC
     unsigned int mainWindowCount = getMainWindowCount();
 
-    if (mainWindowCount == 1) {
+    if (mainWindowCount == 1 && !isVisible()) {
       showMainWindowMac();
       return;
     }
@@ -268,7 +268,7 @@ namespace Avogadro {
   }
 
   // Close the current file -- leave an empty window
-  // Not used on Mac. Window is closed
+  // Not used on Mac. Window is closed via closeEvent()
   void MainWindow::closeFile()
   {
     if (maybeSave()) {
@@ -278,22 +278,15 @@ namespace Avogadro {
     }
   }
 
-  void MainWindow::quit()
-  {
-    // Before we quit, make sure to check every window
-    // See if it needs to save, then quit if needed
-    bool shouldQuit = true;
-    
-    if (shouldQuit)
-      qApp->quit();
-  }
-
   void MainWindow::closeEvent(QCloseEvent *event)
   {
+    qDebug() << " close Event " << endl;
+    raise();
+
 #ifdef Q_WS_MAC
     unsigned int mainWindowCount = getMainWindowCount();
 
-    if (mainWindowCount == 1) {
+    if (mainWindowCount == 1 && isVisible()) {
       if (maybeSave()) {
         writeSettings();
         
@@ -722,8 +715,8 @@ namespace Avogadro {
     connect(ui.actionExportGraphics, SIGNAL(triggered()), this, SLOT(exportGraphics()));
     ui.actionExportGraphics->setEnabled(QGLFramebufferObject::hasOpenGLFramebufferObjects());
 #ifdef Q_WS_MAC
-    connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
-    connect(ui.actionQuitTool, SIGNAL(triggered()), this, SLOT(quit()));
+    connect(ui.actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect(ui.actionQuitTool, SIGNAL(triggered()), qApp, SLOT(quit()));
 #else
     connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui.actionQuitTool, SIGNAL(triggered()), this, SLOT(close()));
