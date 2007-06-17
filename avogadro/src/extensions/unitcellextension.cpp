@@ -36,7 +36,10 @@ namespace Avogadro {
     m_actions.append(action);
     m_Dialog = new UnitCellParamDialog(static_cast<QWidget*>(parent));
       
-    connect(m_Dialog, SIGNAL(unitCellsChanged(int, int, int)), this, SLOT(unitCellsChanged(int, int, int)));
+    connect(m_Dialog, SIGNAL(unitCellDisplayChanged(int, int, int)),
+            this, SLOT(unitCellDisplayChanged(int, int, int)));
+    connect(m_Dialog, SIGNAL(unitCellParametersChanged(double, double, double, double, double, double)),
+            this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
   }
 
   UnitCellExtension::~UnitCellExtension() 
@@ -53,23 +56,79 @@ namespace Avogadro {
                                                  GLWidget *widget,
                                                  QTextEdit *)
   {
+    m_Molecule = molecule;
     m_Widget = widget;
+    
+    OBUnitCell *uc = NULL;
+    if (molecule && molecule->HasData(OBGenericDataType::UnitCell)) {
+      uc = dynamic_cast<OBUnitCell*>(molecule->GetData(OBGenericDataType::UnitCell));
+    } else {
+      // show warning and ask if the user wants to create a unit cell
+      // (otherwise this extension isn't very useful)
+
+      QMessageBox::StandardButton ret;
+      ret = QMessageBox::warning(qobject_cast<QWidget*>(parent()),
+                                 tr("Avogadro"),
+          tr("This document is currently an isolated molecule.\n\n"
+            "Do you want to create a crystal unit cell?"),
+                                 QMessageBox::Yes
+                                 | QMessageBox::No);
+      if (ret == QMessageBox::Yes) {
+        // Set some initial data (e.g., a box about the size of the molecule)
+        // and one unit cell in each direction
+        uc = new OBUnitCell;
+        double estimatedSize = widget->radius() + 2.0;
+        uc->SetData(estimatedSize, estimatedSize, estimatedSize,
+                    90.0, 90.0, 90.0);
+        molecule->SetData(uc);
+        
+        widget->setUnitCells(1, 1, 1);
+      } else { // do nothing -- user picked "Cancel"
+        return NULL;
+      }
+
+    } // end if (existing unit cell or create a new one)
+
     m_Dialog->aCells(widget->aCells());
     m_Dialog->bCells(widget->bCells());
     m_Dialog->cCells(widget->cCells());
-      
+    
+    m_Dialog->aLength(uc->GetA());
+    m_Dialog->bLength(uc->GetB());
+    m_Dialog->cLength(uc->GetC());
+    
+    m_Dialog->alpha(uc->GetAlpha());
+    m_Dialog->beta(uc->GetBeta());
+    m_Dialog->gamma(uc->GetGamma());
+    
     m_Dialog->show();
-      
+
     return NULL;
   }
-    
-  void UnitCellExtension::unitCellsChanged(int a, int b, int c)
+  
+  void UnitCellExtension::unitCellDisplayChanged(int a, int b, int c)
   {
     if (m_Widget) {
       m_Widget->setUnitCells(a, b, c);
       m_Widget->update();
     }
   }
+
+  void UnitCellExtension::unitCellParametersChanged(double a, double b, double c,
+                                     double alpha, double beta, double gamma)
+  {
+    if (m_Molecule) {
+      OBUnitCell *uc = NULL;
+      if (m_Molecule && m_Molecule->HasData(OBGenericDataType::UnitCell)) {
+        uc = dynamic_cast<OBUnitCell*>(m_Molecule->GetData(OBGenericDataType::UnitCell));
+        uc->SetData(a, b, c, alpha, beta, gamma);
+
+        if (m_Widget)
+          m_Widget->update();
+
+      } // end if unit cell
+    } // end if molecule
+  } // end parameters changed
 
 } // end namespace Avogadro
 

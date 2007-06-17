@@ -48,12 +48,30 @@ namespace Avogadro
       void bCells(int b);
       void cCells(int c);
 
+      void aLength(double a);
+      void bLength(double b);
+      void cLength(double c);
+
+      double aLength();
+      double bLength();
+      double cLength();
+
+      void alpha(double a);
+      void beta(double b);
+      void gamma(double g);
+
+      double alpha();
+      double beta();
+      double gamma();
+
     public slots:
       void accept();
       void reject();
       
     signals:
-      void unitCellsChanged(int a, int b, int c);
+      void unitCellDisplayChanged(int a, int b, int c);
+      void unitCellParametersChanged(double a, double b, double c,
+                                     double alpha, double beta, double gamma);
 
     private:
       Ui::UnitCellParamDialog ui;
@@ -61,6 +79,14 @@ namespace Avogadro
       int m_aCells;
       int m_bCells;
       int m_cCells;
+
+      double m_aLength;
+      double m_bLength;
+      double m_cLength;
+
+      double m_alpha;
+      double m_beta;
+      double m_gamma;
   };
 }
 

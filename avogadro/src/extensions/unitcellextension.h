@@ -58,13 +58,16 @@ namespace Avogadro {
                                         GLWidget *widget, QTextEdit *messages=NULL);
     //@}
       
-    public slots:
-    void unitCellsChanged(int a, int b, int c);
+  public slots:
+    void unitCellDisplayChanged(int a, int b, int c);
+    void unitCellParametersChanged(double a, double b, double c,
+                                     double alpha, double beta, double gamma);
 
   private:
     QList<QAction *> m_actions;
     UnitCellParamDialog *m_Dialog;
     GLWidget *m_Widget;
+    Molecule *m_Molecule;
   };
 
   class UnitCellExtensionFactory : public QObject, public ExtensionFactory

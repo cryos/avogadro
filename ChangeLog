@@ -1,4 +1,16 @@
+2007-06-17  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/src/mainwindow.*: Remove quit() event -- Mac clients
+	should receive a closeEvent for every window (advice from
+	Trolltech).
+
+	* avogadro/src/extensions/unitcell*: Add support for controlling
+	unit cell dimensions and angles. Add a warning if the molecule
+	does not yet have a unit cell record -- extension will suggest a
+	possible box dimenison.
+
 2007-06-16  Marcus D. Hanwell <marcus@cryos.org>
+
 	* libavogadro/src/engines/axesengine.cpp:
 	Improvements to the axes engine rendering - all axes should be of
 	equal length now.
@@ -13,6 +25,7 @@
 	systems. Kept the default level at 2.
 
 2007-06-15  Marcus D. Hanwell <marcus@cryos.org>
+
 	* libavogadro/src/tools/autorotatetool.*:
 	Added a start/stop button and a reset button to the config widget for
 	the auto rotate tool.
@@ -24,9 +37,11 @@
 	Added more verbosity to the cmake messages about the required version.
 
 2007-06-14  Carsten Niehaus <cniehaus@kde.og>
+
 	* Require Qt 4.3.0 at least
 
 2007-06-14  Marcus D. Hanwell <marcus@cryos.org>
+
 	* avogadro/src/extensions/unitcellparamdialog.cpp:
 	Small fix to close the dialog when cancel is clicked.
 
@@ -34,6 +49,7 @@
 	Fixed bond selection bug when using a selection box.
 
 2007-06-13  Marcus D. Hanwell <marcus@cryos.org>
+
 	* libavogadro/src/tools/CMakeLists.txt,
 	libavogadro/src/tools/autorotatetool.*:
 	Added new auto rotation tool. The scene can be rotated about the x, y
@@ -43,6 +59,7 @@
 	Corrected incorrect tooltip text.
 
 2007-06-12  Marcus D. Hanwell <marcus@cryos.org>
+
 	* libavogadro/src/camera.*:
 	Added transformedAxis functions for x, y and z.
 
@@ -57,6 +74,7 @@
 	sphere elements and improve the look of the rendered scene.
 
 2007-06-11  Marcus D. Hanwell <marcus@cryos.org>
+
 	* libavogadro/src/engines/labelengine.*:
 	Added support for bond labels.
 
@@ -75,10 +93,12 @@
 	is done inside the VdW rendering.
 
 2007-06-05  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
+
 	* .:  Update EngineConfigurationWidget to EngineSetupWidget and updated
 	file names and all references in the project.  Updated CMakeFiles.
 
 2007-05-26  Marcus D. Hanwell <marcus@cryos.org>
+
 	* libavogadro/src/tools/manipulatetool.cpp,
 	libavogadro/src/tools/navigatetool.cpp: Use left mouse button for
 	rotation and right mouse button for translation.
@@ -102,6 +122,7 @@
 	"Molecular Mechanics" submenu for all actions.
 
 2007-05-25  Marcus D. Hanwell <marcus@cryos.org>
+
 	* libavogadro/src/engines/bsdyengine.*: Refactored to use the
 	overloaded render functions. Added features to push the bond type and
 	name to enable bond selection. Added selected bond highlighting.
@@ -144,11 +165,14 @@
 
 	* avogadro/src/enginetabwidget.*: Now uses a .ui file to design the
 	widget.  this is much easier.
+
 	* avogadro/src/primitivetreeview.*: Added the PrimitiveTreeView class as a
 	helper class for displaying PrimitiveItemModels.  Just looks a bit
 	prettier.
+
 	* libavogadro/src/primitivelist.*: Added the ::contains(Primitive *)
 	operator for checking if a primitive is already in the list.
+
 	* .: Lots of other stuff for doing selective rendering.
 
 2007-05-22  Geoffrey Hutchison  <babel@geoffhutchison.net>
