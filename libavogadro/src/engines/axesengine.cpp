@@ -51,7 +51,7 @@ bool AxesEngine::render(GLWidget *gl)
   glPushMatrix();
   glLoadIdentity();
   // Ensure the axes are of the same length
-  double aspectRatio = static_cast<double>(gl->width()/gl->height());
+  double aspectRatio = static_cast<double>(gl->width())/static_cast<double>(gl->height());
   glOrtho(0, aspectRatio, 0, 1, 0, 1);
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
@@ -62,7 +62,7 @@ bool AxesEngine::render(GLWidget *gl)
   glDisable(GL_BLEND);
 
   // Set the origin and calculate the positions of the axes
-  Vector3d origin = Vector3d(0.07*aspectRatio, 0.07, -.07);
+  Vector3d origin = Vector3d(0.07, 0.07, -.07);
   MatrixP3d axisTranslation;
   axisTranslation.loadTranslation(gl->camera()->transformedXAxis() * 0.06);
   Vector3d aX = axisTranslation * origin;
