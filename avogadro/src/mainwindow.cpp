@@ -58,10 +58,10 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  class MainWindowPrivate 
+  class MainWindowPrivate
   {
     public:
-      MainWindowPrivate() : molecule(0), 
+      MainWindowPrivate() : molecule(0),
       undoStack(0), toolsFlow(0), toolSettingsStacked(0), messagesText(0),
       toolGroup(0),
       settingsDialog(0)
@@ -159,7 +159,7 @@ namespace Avogadro {
         if(i == 0) {
           d->toolSettingsStacked->setCurrentIndex(1);
         }
-      } 
+      }
     }
 
     d->enginesStacked = new QStackedLayout(ui.enginesWidget);
@@ -289,7 +289,7 @@ namespace Avogadro {
     if (mainWindowCount == 1 && isVisible()) {
       if (maybeSave()) {
         writeSettings();
-        
+
         // Clear the undo stack first (or we'll have an enabled Undo command)
         d->undoStack->clear();
 
@@ -322,7 +322,7 @@ namespace Avogadro {
 
   bool MainWindow::saveAs()
   {
-    QString fileName = QFileDialog::getSaveFileName(this, 
+    QString fileName = QFileDialog::getSaveFileName(this,
                                                     tr("Save Molecule As"));
     if (fileName.isEmpty())
       return false;
@@ -338,7 +338,7 @@ namespace Avogadro {
 
   void MainWindow::exportGraphics()
   {
-    QString fileName = QFileDialog::getSaveFileName(this, 
+    QString fileName = QFileDialog::getSaveFileName(this,
                                                     tr("Export Bitmap Graphics"));
     if (fileName.isEmpty())
       return;
@@ -423,12 +423,12 @@ namespace Avogadro {
 
     if (mimeData->hasFormat("chemical/x-mdl-molfile")) {
       pasteFormat = conv.FindFormat("mdl");
-      
+
       text = mimeData->data("chemical/x-mdl-molfile");
     }
     else if(mimeData->hasText()) {
       pasteFormat = conv.FindFormat("xyz");
-      
+
       text = mimeData->text();
     }
 
@@ -501,7 +501,7 @@ namespace Avogadro {
     string output = conv.WriteString(moleculeCopy);
     QByteArray copyData(output.c_str(), output.length());
     mimeData->setData("chemical/x-mdl-molfile", copyData);
-    
+
     // Copy XYZ coordinates to the text selection buffer
     OBFormat *xyzFormat = conv.FindFormat("xyz");
     if(!xyzFormat || !conv.SetOutFormat(xyzFormat)) {
@@ -544,19 +544,24 @@ namespace Avogadro {
   {
     // clear the molecule or a set of atoms
     // has the inteligence to figure out based on the number of selected items
-    ClearCommand *command = new ClearCommand(d->molecule, 
+    ClearCommand *command = new ClearCommand(d->molecule,
                                              d->glWidget->selectedPrimitives());
     d->undoStack->push(command);
   }
 
   void MainWindow::selectAll()
   {
-    QList<Primitive*> atoms;
+    QList<Primitive*> selection;
     FOR_ATOMS_OF_MOL(a, d->molecule) {
       Atom *atom = static_cast<Atom*>(&*a);
-      atoms.append(atom);
+      selection.append(atom);
     }
-    d->glWidget->setSelected(atoms, true);
+    FOR_BONDS_OF_MOL(b, d->molecule) {
+      Bond *bond = static_cast<Bond*>(&*b);
+      selection.append(bond);
+    }
+    d->glWidget->setSelected(selection, true);
+
     d->glWidget->update();
   }
 
@@ -618,7 +623,7 @@ namespace Avogadro {
       {
         int index = ui.centralTab->currentIndex();
         ui.centralTab->removeTab(index);
-        
+
         // delete the engines list for this GLWidget
         QWidget *widget = d->enginesStacked->widget(index);
         d->enginesStacked->removeWidget(widget);
@@ -772,7 +777,7 @@ namespace Avogadro {
 
     connect(ui.centralTab, SIGNAL(currentChanged(int)), this, SLOT(setView(int)));
 
-    connect(ui.configureAvogadroAction, SIGNAL(triggered()), 
+    connect(ui.configureAvogadroAction, SIGNAL(triggered()),
         this, SLOT(showSettingsDialog()));
 #ifdef Q_WS_MAC
     // Find the Avogadro global preferences action
@@ -791,7 +796,7 @@ namespace Avogadro {
         menuItem->setIcon(nullIcon); // clears the icon for this item
       }
     }
-      
+
 #endif
   }
 
@@ -930,14 +935,14 @@ namespace Avogadro {
       d->fileName = QFileInfo(fileName).canonicalFilePath();
       setWindowTitle(tr("%1[*] - %2").arg(strippedName(d->fileName))
                      .arg(tr("Avogadro")));
-      
+
       QSettings settings; // already set up properly via main.cpp
       QStringList files = settings.value("recentFileList").toStringList();
       files.removeAll(fileName);
       files.prepend(fileName);
       while (files.size() > maxRecentFiles)
         files.removeLast();
-      
+
       settings.setValue("recentFileList", files);
     }
 
@@ -1016,7 +1021,7 @@ namespace Avogadro {
 
     foreach (QString path, pluginPaths)
     {
-      QDir dir(path); 
+      QDir dir(path);
       qDebug() << "SearchPath:" << dir.absolutePath() << endl;
       foreach (QString fileName, dir.entryList(QDir::Files)) {
         QPluginLoader loader(dir.absoluteFilePath(fileName));
@@ -1044,7 +1049,7 @@ namespace Avogadro {
             // Gotta add a new root menu
             path = menuBar()->addMenu(menuPath.at(0));
           }
-          
+
           // Now handle submenus
           if (menuPath.size() > 1) {
             QMenu *nextPath = NULL;

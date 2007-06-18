@@ -128,8 +128,6 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
       //        Residue *res = static_cast<Residue *>(molecule->GetResidue(hit.name()));
       //        hitList.append(res);
       //        break;
-      // FIXME
-      // Currently only atom selections (with selection mode) are considered
     }
 
     switch (m_selectionMode) {
@@ -194,12 +192,17 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
       if(hit.type() == Primitive::AtomType) // Atom selection
       {
         Atom *atom = static_cast<Atom *>(molecule->GetAtom(hit.name()));
-        hitList.append(atom);
+        if(!hitList.contains(atom))
+        {
+          hitList.append(atom);
+        }
       }
       if(hit.type() == Primitive::BondType) // Bond selection
       {
         Bond *bond = static_cast<Bond *>(molecule->GetBond(hit.name()-1));
-        hitList.append(bond);
+        if(!hitList.contains(bond)) {
+          hitList.append(bond);
+        }
       }
     }
     // Toggle the selection

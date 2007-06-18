@@ -3,7 +3,7 @@
  *      see the LICENSE file in the top level directory
  */
 
-/*	¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥
+/*	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     GamessInputData.cpp
 
     Class member functions related to GamessInputData
@@ -22,7 +22,7 @@ using namespace OpenBabel;
 
   namespace Avogadro {
     long LocateKeyWord(const char *Buffer, const char * KeyWord, long length, long bytecount)
-    {	
+    {
       long	test=0, pos=-1;
 
       while (!test) {
@@ -123,7 +123,7 @@ using namespace Avogadro;
 //GamessInputData functions
 #pragma segment IData
 GamessInputData::GamessInputData(Molecule *molecule) :
-  m_molecule(molecule), 
+  m_molecule(molecule),
   Control(new GamessControlGroup),
   System(new GamessSystemGroup),
   Basis(new GamessBasisGroup),
@@ -632,7 +632,7 @@ void GamessControlGroup::WriteToFile(ostream &File, GamessInputData *IData, long
     sprintf(Out,"SCFTYP=%s ",GetSCFTypeText());
     File << Out;
   } else {	//Punch out the default RHF/ROHF wavefunction
-    if (NumElectrons & 1) sprintf(Out, "SCFTYP=ROHF ");
+    if (NumElectrons + GetCharge() & 1) sprintf(Out, "SCFTYP=ROHF ");
     else sprintf(Out, "SCFTYP=RHF ");
     File << Out;
   }
@@ -1477,7 +1477,7 @@ void GamessDataGroup::WriteToFile(ostream &File, Molecule * molecule) {
     sprintf(Out, "%s   %5.1f  %10.5f  %10.5f  %10.5f",
         etab.GetSymbol(atomicNumber), (float) atomicNumber,
         atom->GetX(), atom->GetY(), atom->GetZ());
-    File << Out << endl; 
+    File << Out << endl;
     //       if (BasisTest) lBasis->WriteBasis(File, iatom);
   }
   //   }
@@ -1626,7 +1626,7 @@ void GamessGuessGroup::WriteToFile(ostream &File, GamessInputData *IData) {
 GamessSCFGroup::GamessSCFGroup(void) {
   InitData();
 }
-GamessSCFGroup::GamessSCFGroup(GamessSCFGroup *Copy) 
+GamessSCFGroup::GamessSCFGroup(GamessSCFGroup *Copy)
 {
   if (Copy)
     *this = *Copy;
@@ -2101,7 +2101,7 @@ void GamessStatPtGroup::WriteToFile(ostream &File, GamessInputData *IData) {
 }
 // void MOPacInternals::WriteZMATToFile(BufferFile * File) {
 // 	char	Out[GAMESS_BUFF_LEN];
-// 
+//
 // 	File << " $ZMAT IZMAT(1)=" << endl;
 // 	for (long i=3; i<Count; i+=3) {
 // 		if (i>9) File << ", " << endl;
@@ -2125,7 +2125,7 @@ void GamessStatPtGroup::WriteToFile(ostream &File, GamessInputData *IData) {
 // 		char	Out[GAMESS_BUFF_LEN];
 // 		Str255	AtomLabel;
 // 		Frame *	cFrame = MainData->GetCurrentFramePtr();
-// 
+//
 // 	for (int iatom=0; iatom<cFrame->NumAtoms; iatom++) {
 // 		Prefs->GetAtomLabel(cFrame->Atoms[iatom].GetType()-1, AtomLabel);
 // 		AtomLabel[AtomLabel[0]+1] = 0;
@@ -2135,11 +2135,11 @@ void GamessStatPtGroup::WriteToFile(ostream &File, GamessInputData *IData) {
 // 				ConnectionAtoms[3*iatom]+1, Values[3*iatom]);
 // 		else if (iatom == 2)
 // 			sprintf(Out, "%s   %d %10.5f  %d %8.4f",
-// 				(char *) &(AtomLabel[1]), ConnectionAtoms[3*iatom]+1, Values[3*iatom], 
+// 				(char *) &(AtomLabel[1]), ConnectionAtoms[3*iatom]+1, Values[3*iatom],
 // 				ConnectionAtoms[3*iatom+1]+1, Values[3*iatom+1]);
 // 		else
 // 			sprintf(Out, "%s   %d %10.5f  %d %8.4f  %d %8.4f",
-// 				(char *) &(AtomLabel[1]), ConnectionAtoms[3*iatom]+1, Values[3*iatom], 
+// 				(char *) &(AtomLabel[1]), ConnectionAtoms[3*iatom]+1, Values[3*iatom],
 // 				ConnectionAtoms[3*iatom+1]+1, Values[3*iatom+1],
 // 				ConnectionAtoms[3*iatom+2]+1, Values[3*iatom+2]);
 // 		File << Out << endl;
@@ -2152,7 +2152,7 @@ void GamessStatPtGroup::WriteToFile(ostream &File, GamessInputData *IData) {
 // 	char	Out[GAMESS_BUFF_LEN];
 // 	Str255	AtomLabel;
 // 	Frame *	cFrame = MainData->GetCurrentFramePtr();
-// 	
+//
 // 	for (int iatom=0; iatom<cFrame->NumAtoms; iatom++) {
 // 		Prefs->GetAtomLabel(cFrame->Atoms[iatom].GetType()-1, AtomLabel);
 // 		AtomLabel[AtomLabel[0]+1] = 0;
@@ -2162,7 +2162,7 @@ void GamessStatPtGroup::WriteToFile(ostream &File, GamessInputData *IData) {
 // 					Values[3*iatom]);
 // 		else if (iatom == 2)
 // 			sprintf(Out, "%s   %10.5f 0 %8.4f 0 %d %d",
-// 					(char *) &(AtomLabel[1]), Values[3*iatom], 
+// 					(char *) &(AtomLabel[1]), Values[3*iatom],
 // 					Values[3*iatom+1], ConnectionAtoms[3*iatom]+1, ConnectionAtoms[3*iatom+1]+1);
 // 		else
 // 			sprintf(Out, "%s   %10.5f 0 %8.4f 0 %8.4f 0 %d %d %d",

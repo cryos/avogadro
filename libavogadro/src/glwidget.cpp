@@ -232,7 +232,7 @@ namespace Avogadro {
     // it is important to set GL_SEPARATE_SPECULAR_COLOR_EXT
     // _before_ enabling lighting
     glEnable( GL_LIGHTING );
-    
+
     glLightfv( GL_LIGHT0, GL_AMBIENT, ambientLight );
     glLightfv( GL_LIGHT0, GL_DIFFUSE, diffuseLight );
     glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
@@ -664,9 +664,9 @@ namespace Avogadro {
   QList<GLHit> GLWidget::hits(int x, int y, int w, int h)
   {
     QList<GLHit> hits;
-    
+
     if(!molecule()) return hits;
-    
+
     GLint viewport[4];
     unsigned int hit_count;
 
@@ -674,7 +674,7 @@ namespace Avogadro {
     int cy = h/2 + y;
 
     // setup the selection buffer
-    int requiredSelectBufSize = d->molecule->NumAtoms() * 8;
+    int requiredSelectBufSize = (d->molecule->NumAtoms() + d->molecule->NumBonds()) * 8;
     if( requiredSelectBufSize > d->selectBufSize )
     {
       //resize selection buffer
@@ -724,23 +724,20 @@ namespace Avogadro {
 
       //X   printf ("hits = %d\n", hits);
       ptr = (GLuint *) d->selectBuf;
-      for (i = 0; i < hit_count; i++) {
+      // for all hits and not past end of buffer
+      for (i = 0; i < hit_count && !(ptr > d->selectBuf + d->selectBufSize); i++) {
         names = *ptr++;
+        // make sure that we won't be passing the end of bufer
+        if( ptr + names + 2 > d->selectBuf + d->selectBufSize )
+        {
+          break;
+        }
         minZ = *ptr++;
         maxZ = *ptr++;
-        //X     printf (" number of names for this hit = %d\n", names); names;
-        //X     printf("  z1 is %g;", (float) *ptr/0x7fffffff); minZ;
-        //X     printf(" z2 is %g\n", (float) *ptr/0x7fffffff); maxZ;
-        //X     printf ("   names are ");
         name = 0;
         for (j = 0; j < names/2; j++) { /*  for each name */
           type = *ptr++;
           name = *ptr++;
-          //X       if (j == 0)  /*  set row and column  */
-          //X         ii = *ptr;
-          //X       else if (j == 1)
-          //X         jj = *ptr;
-          //X       ptr++;
         }
         if (name)
         {
@@ -782,7 +779,6 @@ namespace Avogadro {
   void GLWidget::setSelected(QList<Primitive *> primitives, bool select)
   {
     foreach (Primitive *item, primitives) {
-      item->setSelected(select);
       if (select) {
         if (!d->selectedPrimitives.contains(item)) {
           d->selectedPrimitives.append(item);
@@ -826,12 +822,12 @@ void GLWidget::toggleSelected(QList<Primitive*> primitives)
     d->bCells = b;
     d->cCells = c;
   }
-  
+
  int GLWidget::aCells()
  {
     return d->aCells;
  }
- 
+
  int GLWidget::bCells()
  {
     return d->bCells;

@@ -1,3 +1,17 @@
+2007-06-17  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* libavogadro/src/glwidget.*: Fixed a bug in mass selection where
+	the pointer was going past the end of the buffer.  Had to make sure
+	our pointer stays sane.
+
+	* libavogadro/src/primitive.*: Removed old selection code.
+
+        * libavogadro/src/selectrotate.cpp: Updated so that if there are
+        multiple engines, the toggling of selection only happens once per
+        primitive.
+
+        * avogadro/src/extensions/gamessinputdialog.cpp: Fixed bug 1720467.
+
 2007-06-17  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* avogadro/src/mainwindow.*: Remove quit() event -- Mac clients
@@ -116,7 +130,7 @@
 	periodic table to pick arbitrary elements.
 
 	* libavogadro/src/tools/drawtool.cpp: Use it.
-	
+
 2007-05-26  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/tools/manipulatetool.cpp,
@@ -134,7 +148,7 @@
 
 2007-05-25  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
-	* avogadro/src/extension.h, avogadro/src/mainwindow.cpp: 
+	* avogadro/src/extension.h, avogadro/src/mainwindow.cpp:
 	Add Extension::menuPath() which defines menus and submenus for
 	extensions. Default is to use "&Tools" -- existing Tools menu.
 
@@ -151,11 +165,11 @@
 	for selecting bonds with clicks and selection boxes.
 
 	* libavogadro/src/tools/manipulatetool.cpp: Added checks for primitive
-	type before doing any manipulation - previously assumed all selected 
+	type before doing any manipulation - previously assumed all selected
 	items were atoms.
 
 	* libavogadro/src/global.h: Added SEL_BOND_EXTRA_RADIUS for selected
-	bond rendering in the engines. 
+	bond rendering in the engines.
 
 2007-05-24  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
@@ -201,7 +215,7 @@
 	in the correct spot on Mac.
 
 2007-05-21  Donald E. Curtis <dcurtis3@sourceforge.net>
-	
+
 	* .: Refactored PrimitiveQueue -> PrimitiveList.  Within the class renamed
 	::primitiveQueue to ::subList which returns a subList based on type.
 	Fixed changes due to refactoring in various files.
@@ -222,7 +236,7 @@
 	* avogadro/src/extentions/forcefielddialog.h,
 	avogadro/src/extentions/forcefielddialog.cpp,
 	avogadro/src/extentions/forcefielddialog.ui: force field setup
-	dialog. (I had to call uic-qt4 manually, something wrong with 
+	dialog. (I had to call uic-qt4 manually, something wrong with
 	the makefile?)
 
 2007-05-15 06:35  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
@@ -360,14 +374,14 @@
 2007-05-12 17:34  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Updated documentation.
-	  
+
 	  Removed dependancy on 4.3 (make sure you do editing of .ui files
 	  with designer of qt4.2)
-	  
+
 	  Added documentation.
-	  
+
 	  Updated copyright information on all files.
-	  
+
 	  There is now a Doxyfileext which generates external docs.
 
 2007-05-12 17:18  Marcus D. Hanwell <cryos@gentoo.org>
@@ -616,11 +630,11 @@
 2007-05-07 22:32  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Update Extensions to separate instances per MainWindow.
-	  
+
 	  Added true SDI functionality. For more info see
 	  http://developer.kde.org/documentation/standards/kde/style/basics/windows.html
 	  http://developer.kde.org/documentation/standards/kde/style/basics/quitclose.html
-	  
+
 	  This should fix our Mac errors.
 
 2007-05-07 19:26  Geoffrey Hutchison <geoff@geoffhutchison.net>
@@ -638,7 +652,7 @@
 2007-05-07 10:14  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Added the settings dialogs to Engines.
-	  
+
 	  Modified the preexisting toolSettings interface to return a 0 if
 	  there is no
 	  settings available for the tool. This is done to mimic the
@@ -648,7 +662,7 @@
 	  create a new window or not. It is better than testing against
 	  null QWidgets or
 	  whatever the alternative would be.
-	  
+
 	  Also added GLWidget::setStable(bool) and GLWidget::isStable() to
 	  see if the
 	  GLWidget is in an unstable state. This would occur as the result
@@ -709,7 +723,7 @@
 2007-05-06 00:27  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Added operator+= and copy constructor to the Molecule class.
-	  
+
 	  Added pasting operation. Currently only works with cartesian
 	  coordinates. It
 	  is setup to work with Mime data but i pick the default text case
@@ -797,7 +811,7 @@
 	* : -- I moved the FindFoo instructions in the toplevel
 	  CMakeLists.txt. I see
 	  no reason why we should check for it twice...
-	  
+
 	  -- We now officially require Qt 4.2.0 (set(QT_MIN_VERSION)).
 	  Benoit told
 	  me that 4.1 is totally broken wrt to something in QtGl and all
@@ -829,7 +843,7 @@
 
 	* : remove _setup : Sphere::setup is clever enough to notice that
 	  new_detail==old_detail and exit in that case.
-	  
+
 	  remove some unnecessary state changes. Donald: it is possible to
 	  draw
 	  spheres with GL_NORMALIZE, only it's not optimally fast. But if
@@ -852,7 +866,7 @@
 	  opposed to using a displayList). I updated the NavigateTool and
 	  ClickMeasure
 	  tool (it now shows proper colors).
-	  
+
 	  Also added the ::radius function to the dynamic ball and stick
 	  engine. As a
 	  note if an atom is selected, radius(Primitive *) needs to reflect
@@ -863,11 +877,11 @@
 	* : Made the changes that Benoit recommended,
 	  code in the glwidget was removed and new
 	  code was put into the debug engine.
-	  
+
 	  When the debug engine is turned on now it
 	  repeatedly calles gl->update() thereby
 	  makeing the glwidget constantly re-render.
-	  
+
 	  This gives FPS a reasonably accurate value.
 
 2007-05-03 12:28  Marcus D. Hanwell <cryos@gentoo.org>
@@ -882,9 +896,9 @@
 2007-05-03 08:03  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Added template for licensing.
-	  
+
 	  Added navigate icon taken from the crystal clear office set.
-	  
+
 	  Added "Center View" action. There are times things are not
 	  updateing the
 	  glwidget's geometry info. we need to fix this so that things are
@@ -910,13 +924,13 @@
 2007-05-03 05:28  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : ****Big Huge Changes****
-	  
+
 	  Undo/Redo is implemented and all of the extensions and tools have
 	  been updated.
 	  The interface to tools and extensions now requires that you
 	  return a
 	  QUndoCommand* or 0 (NULL).
-	  
+
 	  The only important things to remember when creating QUndoCommands
 	  is to make
 	  sure that the state after undo is exactly how it was before you
@@ -926,12 +940,12 @@
 	  somewhat intense but it runs quite quickly as there are no calls
 	  to NewAtom
 	  meaning no callbacks.
-	  
+
 	  There is a new class UndoSequence which is essentially a list of
 	  QUndoCommands
 	  which are all compiled into one. This is handy for our drawing
 	  tool.
-	  
+
 	  I apologize as i haven't had time to document any of this code.
 
 2007-05-02 22:28  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
@@ -960,7 +974,7 @@
 	  the FPS. Contributed by James, Ross and Shahzad. I modified to
 	  only perform
 	  one division.
-	  
+
 	  As a result there are some added hooks to GLWidget to keep track
 	  of time to
 	  render a scene. Hopefully we can say this is trivial.
@@ -983,15 +997,15 @@
 	  default to their
 	  correct locations:
 	  ${CMAKE_INSTALL_PREFIX}/lib/avogadro/{tools|engines|extensions}
-	  
+
 	  added the define INSTALL_PREFIX to the CMAKE_INSTALL_PREFIX path.
 	  this does
 	  not get installed with the other header files.
-	  
+
 	  modified the environment variables:
-	  
+
 	  AVOGADRO_{ENGINES|TOOLS|EXTENSIONS}
-	  
+
 	  AVOAGDOR_EXTENSIONS was previously AVOGADRO_PLUGINS
 
 2007-05-01 17:46  Geoffrey Hutchison <geoff@geoffhutchison.net>
@@ -1016,7 +1030,7 @@
 	  fine, next time don't hesitate to commit yourself (and get
 	  yourself
 	  a svn account if not already done).
-	  
+
 	  CCMAIL:cryos@gentoo.org
 
 2007-04-29 18:20  Benoit Jacob <jacob@math.jussieu.fr>
@@ -1027,9 +1041,9 @@
 2007-04-27 12:55  Benoit Jacob <jacob@math.jussieu.fr>
 
 	* : add another missing {} after a one-line if in my code :)
-	  
+
 	  simplification in navigatetool
-	  
+
 	  more clever handling of the selection buffer.
 	  Instead of resizing at molecule loading (as done before), resize
 	  in
@@ -1077,7 +1091,7 @@
 2007-04-26 14:45  Benoit Jacob <jacob@math.jussieu.fr>
 
 	* : port memleak fix by Laurent Montel
-	  
+
 	  CCMAIL:montel@kde.org
 
 2007-04-26 14:39  Benoit Jacob <jacob@math.jussieu.fr>
@@ -1108,7 +1122,7 @@
 	  as I don't really understand
 	  how avogadro (the app) works. So I did it in enginelistview.
 	  Sorry if that's not the right place.
-	  
+
 	  CCMAIL:Donald Ephraim Curtis <donald-curtis@uiowa.edu>
 
 2007-04-26 12:34  Benoit Jacob <jacob@math.jussieu.fr>
@@ -1141,7 +1155,7 @@
 	* : Hey, the Navigate Tool now feels very solid, even when cruising
 	  through
 	  very large proteins!!
-	  
+
 	  -simplifications and improvements in Camera wrt clipping planes
 	  -reorganization in NavigateTool:
 	  -- move much code to helper functions
@@ -1169,7 +1183,7 @@
 	  the camera matrix got more and more corrupt, eventually resulting
 	  in a blank
 	  GLwidget.
-	  
+
 	  Solved by adding method Camera::normalizeRotation(), to be called
 	  after each
 	  frequent rotation (typically in user input handling). Already
@@ -1186,7 +1200,7 @@
 
 	* : change prototype of unProject(double, double) to
 	  unProject(const QPoint&).
-	  
+
 	  This simplifies some code since this method is always being
 	  called on QPoint coordinates.
 
@@ -1228,7 +1242,7 @@
 	  they share engines) 2) we may also want to allow programs using
 	  libavogadro to
 	  load their own engines and pass them to the GLWidget.
-	  
+
 	  Updated Tools so that they are named correctly. ie. DrawTool
 	  SelectRotateTool
 	  ... This to match the *Engine form with engines. renaming coming
@@ -1239,13 +1253,13 @@
 	* : MainWindow now has functionality to create multiple views.
 	  View->New View /
 	  View->Close View.
-	  
+
 	  GLWidget optimized functionality so that unactive GLContexts to
 	  not get
 	  rendered. This will need to be updated if/when we allow two views
 	  to be shown
 	  at once.
-	  
+
 	  EngineListView now handles enabling and disabling engines for the
 	  current
 	  GLWidget. (opposed to MainWindow binding to the signals).
@@ -1270,7 +1284,7 @@
 2007-04-23 06:29  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Added d-pointer to Cylinder class + formatting updated.
-	  
+
 	  Primitive and Molecule now share d-pointer.
 
 2007-04-23 00:25  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
@@ -1301,18 +1315,18 @@
 	  need to use
 	  these functions they can attach functions to the signals of the
 	  ::activateAction().
-	  
+
 	  libavogadro/src/toolgroup.cpp; we can now use Tool::parent() to
 	  get the plugin
 	  which it belongs to, rather than relying on the Tool::data() to
 	  do the same.
-	  
+
 	  libavogadro/src/CMakeLists.txt; added the tool.cpp file so that
 	  the tool object
 	  gets compiled into libavogadro.
-	  
+
 	  libavogadro/src/glwidget.cpp; tool interface was updated.
-	  
+
 	  Updated interface to all tools.
 
 2007-04-20 19:06  Geoffrey Hutchison <geoff@geoffhutchison.net>
@@ -1328,7 +1342,7 @@
 	  are different. clicking on a lone atom will change it to the new
 	  type..
 	  drawing bonds over preexisting bonds updates them.
-	  
+
 	  libavogadro/src/tools/clickmeasure.cpp,libavogadro/src/tools/clickmeasure.h;
 	  updated tooltip to include how the tool works. renamed the tag so
 	  that as you
@@ -1339,7 +1353,7 @@
 	* : libavogadro/src/engines/labelengine.cpp; push all GL attribute
 	  bits and use
 	  white text.
-	  
+
 	  libavogadro/src/tools/clickmeasure.cpp; push all GL attributes,
 	  give feedback
 	  on initial click (marked with *0) for now.
@@ -1360,22 +1374,22 @@
 	  project functions, also fixed the ::hits function so it restore
 	  the previous
 	  projection and modelview matrices
-	  
+
 	  libavogadro/src/engines/bsdyengine.cpp : fixed compiler warning
-	  
+
 	  libavogadro/src/tools/selectrotate.cpp : free the display list
-	  
+
 	  libavogadro/src/tools/clickmeasure.cpp
 	  libavogadro/src/tools/clickmeasure.h :
 	  new click to measure tool. Displays results in the GL Widget.
-	  
+
 	  libavogadro/src/tools/CMakeLists.txt : added clickmeasure build
 	  instructions
-	  
+
 	  libavogadro/src/tools/draw.cpp libavogadro/src/tools/draw.h :
 	  make use of the
 	  new GLWidget::project and GLWidget::unProject functions
-	  
+
 	  libavogadro/src/tool.h : renamed ::init to ::initialize. can't be
 	  sure we
 	  actually need these functions. we have the option to let the tool
@@ -1413,7 +1427,7 @@
 	* : libavogadro/src/engines/bsdyengine.cpp,
 	  libavogadro/src/engines/bsdyengine.h:
 	  added dynamics for bonds.
-	  
+
 	  libavogadro/src/cylinder.cpp, libavogadro/src/cylinder.h: when
 	  detail < 0 we
 	  generate a single line rather than a cylinder. Also added
@@ -1423,27 +1437,27 @@
 2007-04-13 19:40  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : libavogadro/src/moleculetreeview.cpp: removed debug code
-	  
+
 	  libavogadro/src/sphere.cpp: added constructor and cleaned up code
-	  
+
 	  libavogadro/src/toolgroup.cpp: removed debug code
-	  
+
 	  libavogadro/src/primitives.cpp: removed debug code
-	  
+
 	  libavogadro/src/sphere.h: added constructor which takes as a
 	  parameter the
 	  detail
-	  
+
 	  libavogadro/src/engine.h, libavogadro/src/engine.cpp : added
 	  interface function
 	  to inform the engine to update the primitive. This is a
 	  cautionary function
 	  for optimization.
-	  
+
 	  libavogadro/src/glwidget.cpp: cleaned up the code, added use of
 	  new engine
 	  function.
-	  
+
 	  libavogadro/src/engines/labelengine.cpp: added clause to not
 	  label when far
 	  from camera libavogadro/src/engines/bsdyengine.h,
@@ -1454,16 +1468,16 @@
 	  new code can be cleaned up. I will get around to this just
 	  haven't had the
 	  time to think about the best way to do it.
-	  
+
 	  libavogadro/src/engines/bsengine.cpp: removed debug code.
-	  
+
 	  libavogadro/src/engines/CMakeLists.txt: added bsdyengine
-	  
+
 	  libavogadro/src/tools/CMakeLists.txt: commented test tool code.
-	  
+
 	  libavogadro/src/tools/selectrotate.cpp: added atom::update call
 	  after selection
-	  
+
 	  libavogadro/src/tools/draw.cpp: removed debug code
 
 2007-04-09 19:16  Geoffrey Hutchison <geoff@geoffhutchison.net>
@@ -1497,10 +1511,10 @@
 
 	* : Updated PrimitiveQueue to allocate statically instead of
 	  dynamically.
-	  
+
 	  Changed PrimitiveQueue::primitiveList to return a const
 	  QList<Primitive *>
-	  
+
 	  Updated the engines to use "foreach" loops.
 
 2007-04-02 12:21  Geoffrey Hutchison <geoff@geoffhutchison.net>
@@ -1520,7 +1534,7 @@
 
 	* : Refactored AvogadroApp -> Application to maintain naming
 	  scheme.
-	  
+
 	  Added EngineListView to list the engines and allow them to be
 	  enabled/disabled
 	  accordingly. Engines now maintain their own PrimitiveQueue. This
@@ -1586,7 +1600,7 @@
 	  letting the Tool know which GLWidget it's operating in, gettable
 	  with glwidget()?
 	  That would spare much argument-passing.
-	  
+
 	  Add API documentation and explanatory code comments to
 	  unProject().
 
@@ -1597,7 +1611,7 @@
 	  This underlines the fact that they're just wrappers for
 	  GetVector() and SetVector() from OBAtom,
 	  doing casts with Eigen::Vector3d.
-	  
+
 	  Rewrite these functions to make sure they don't cause copies, and
 	  inline them. Add documentation.
 	  A "rationale for inlining" is provided in comment, to justify
@@ -1677,7 +1691,7 @@
 	  oriented to face the camera in the default viewpoint. So that
 	  they don't
 	  look like single bonds.
-	  
+
 	  This implied API changes in engines: now render must be passed
 	  the molGeomInfo structure,
 	  as it needs to know the normal vector of the molecule's fitting
@@ -1728,11 +1742,11 @@
 
 	* : this isn't fully finished but at least it compiles and runs.
 	  I prefer to commit early to prevent a conflict.
-	  
+
 	  - add new Camera class
 	  - rework glwidget.* to use it, opengl cleanups, API changes
 	  - fixes here and there
-	  
+
 	  If you get crashes, please delete the old .so files and retry.
 
 2007-03-16 10:10  Benoit Jacob <jacob@math.jussieu.fr>
@@ -1777,9 +1791,9 @@
 	  improved support for Windows (I think...). Anyway, we now have
 	  for
 	  example this line in the file:
-	  
+
 	  [HKEY_CURRENT_USER\\SOFTWARE\\OpenBabel\ 2.0.2]
-	  
+
 	  I think that we all agree that both Kalzium and Avo want to
 	  depend on OB
 	  2.1.0, right? The current beta still installs as 2.0.2 which
@@ -1846,10 +1860,10 @@
 2007-03-08 09:42  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Updated mainwindow.ui.
-	  
+
 	  TODO: Refactor so that variables are named descriptionType
 	  instead of typeDescription.
-	  
+
 	  All mainwindow actions need to be renamed.
 
 2007-03-08 09:00  Carsten Niehaus <carsten.niehaus@gmail.com>
@@ -1875,7 +1889,7 @@
 2007-03-07 23:16  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Refactoring GamessInputBuilder -> GamessInputDialog.
-	  
+
 	  More appropriately named.
 
 2007-03-07 23:09  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
@@ -1946,7 +1960,7 @@
 	* : Remove all mentions of the USE_DISPLAY_LISTS define, always use
 	  display lists (instead of never)
 	  for the sphere and cylinder.
-	  
+
 	  This fixes an issue with the way avo reused the sphere/cylinder
 	  code from Kalzium:
 	  avo used a display list for the whole molecule, but not for the
@@ -2112,7 +2126,7 @@
 2007-02-03 00:34  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Cleaned up config.h
-	  
+
 	  config.h should contain the install paths and version and package
 	  name. Needs updating.
 
@@ -2154,7 +2168,7 @@
 2007-02-02 21:12  Geoffrey Hutchison <geoff@geoffhutchison.net>
 
 	* : Updated plugin paths: split by colon...
-	  
+
 	  PATH=/usr/bin:/bin:/usr/sbin (etc)
 
 2007-01-28 23:14  Geoffrey Hutchison <geoff@geoffhutchison.net>
@@ -2167,7 +2181,7 @@
 	  member function
 	  disconnects "this" from other things, not other things from
 	  'this'.
-	  
+
 	  Also fixed compile issues from the last commit.
 
 2007-01-26 21:21  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
@@ -2189,7 +2203,7 @@
 2007-01-24 19:37  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Added plugin interface (incomplete).
-	  
+
 	  Added tabs at bottom for messages and other information we wish
 	  to have.
 
@@ -2216,9 +2230,9 @@
 2007-01-24 02:59  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Using generated ui.
-	  
+
 	  Added tool properties.
-	  
+
 	  adding ElementComboBox
 
 2007-01-23 19:49  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
@@ -2244,7 +2258,7 @@
 2007-01-23 08:30  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Updated name() and description() to const functions.
-	  
+
 	  Made it so that if a tool doesn't defined an Icon / Text /
 	  Tooltip
 	  it will be correctly populated using name() and description().
@@ -2260,15 +2274,15 @@
 	  bit of renaming done so that we can use our FlowLayout (ripped
 	  from the
 	  tutorials).
-	  
+
 	  Added icons to actions. Images are from CrystalClear collection.
-	  
+
 	  Made libavogadro const-correct as well as implementing the
 	  d-pointer technique
 	  in glWidget and Primitives classes.
-	  
+
 	  Figured out a memory leak in OpenBabel.
-	  
+
 	  Updated the TreeView to match pointers rather than indexes. This
 	  could become
 	  a bottleneck if we have to delete a lot of primitives from a big
@@ -2278,7 +2292,7 @@
 	  O(n^2) when we should really have O(n). Although that could be
 	  wrong i was
 	  never good with big O.
-	  
+
 	  Added resource files. Plugins now define an action which selects
 	  them. They
 	  can connect to the callback but it doesn't them little good. The
@@ -2307,7 +2321,7 @@
 	  model.
 	  Otherwise we would need to overload everytime that the indexes
 	  change.
-	  
+
 	  Need to discuss further with Geoff and crew.
 
 2007-01-07 02:42  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
@@ -2340,7 +2354,7 @@
 2007-01-06 19:13  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Moved MoleculeModel *into* Molecule.
-	  
+
 	  Thus, a Molecule acts as a QAbstractItemModel.
 
 2007-01-06 18:33  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
@@ -2364,7 +2378,7 @@
 2007-01-06 02:51  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Added Docks for Tools and for the Project Layout.
-	  
+
 	  The project layout is model/view. ProjectModel, given a molecule,
 	  sets up the
 	  model for the molecular view. I'm not sure if this is the correct
@@ -2412,11 +2426,11 @@
 2007-01-04 22:09  Donald Ephraim Curtis <dcurtis3@sourceforge.net>
 
 	* : Should compile and run.
-	  
+
 	  bsengine is Ball and Stick and currently works. Need to bring the
 	  other stuff
 	  up to date.
-	  
+
 	  the select&rotate tool now works too. haven't finished cleaning
 	  up the
 	  functions and working on creating the drawing tool.

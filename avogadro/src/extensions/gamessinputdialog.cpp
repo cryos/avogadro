@@ -53,6 +53,8 @@ GamessInputDialog::GamessInputDialog( GamessInputData *inputData, QWidget *paren
   updatePreviewText();
 }
 
+// TODO on SHOW we need to update the current view.
+
 GamessInputDialog::~GamessInputDialog()
 {}
 
@@ -225,6 +227,7 @@ void GamessInputDialog::setBasicDefaults()
   setBasicTime(10.0);
   ui.basicMemoryDouble->setValue( 50.0 );
   setBasicMemory(50.0);
+  updateBasicWidgets();
 
   blockChildrenSignals(ui.basicWidget, false);
 
@@ -363,8 +366,22 @@ void GamessInputDialog::updateBasicWidgets()
   setBasicWithLeft( ui.basicWithLeftCombo->currentIndex() );
   setBasicWithRight( ui.basicWithRightCombo->currentIndex() );
   setBasicIn( ui.basicInCombo->currentIndex() );
-  setBasicOnLeft( ui.basicOnLeftCombo->currentIndex() );
+
+  // multText
+  int itemValue = m_inputData->Control->GetMultiplicity();
+  if ( itemValue <= 0 )
+  {
+    long NumElectrons = m_inputData->GetNumElectrons();
+    if ( NumElectrons & 1 ) {
+      ui.basicOnLeftCombo->setCurrentIndex(1);
+    }
+  }
+  else
+  {
+    setBasicOnLeft( ui.basicOnLeftCombo->currentIndex() );
+  }
   setBasicOnRight( ui.basicOnRightCombo->currentIndex() );
+
   setBasicTime( ui.basicTimeDouble->value() );
   setBasicMemory( ui.basicMemoryDouble->value() );
 
@@ -929,7 +946,7 @@ void GamessInputDialog::connectBasis()
            this, SLOT( updatePreviewText() ) );
   connect( ui.basisECPCombo, SIGNAL( currentIndexChanged( int ) ),
            this, SLOT( advancedChanged() ) );
-  
+
   connect( ui.basisDSpin, SIGNAL( valueChanged( int ) ),
            this, SLOT( setBasisD( int ) ) );
   connect( ui.basisDSpin, SIGNAL( valueChanged( int ) ),
@@ -1464,7 +1481,7 @@ void GamessInputDialog::connectStatPoint()
   m_statPointHessianButtons->addButton(ui.statPointGuessButton, 0);
   m_statPointHessianButtons->addButton(ui.statPointReadButton, 1);
   m_statPointHessianButtons->addButton(ui.statPointCalculateButton, 2);
-  connect( m_statPointHessianButtons, SIGNAL( buttonClicked( int ) ), 
+  connect( m_statPointHessianButtons, SIGNAL( buttonClicked( int ) ),
       this, SLOT( setStatPointHessian( int ) ) );
   connect( m_statPointHessianButtons, SIGNAL( buttonClicked( int ) ),
            this, SLOT( updatePreviewText() ) );
@@ -1533,7 +1550,7 @@ void GamessInputDialog::setMode( int mode )
   if ( mode == 0 && m_advancedChanged )
   {
     QMessageBox msgbox( QMessageBox::Warning, tr( "Advanced Settings Changed" ),
-                        tr( "Advanced settings have changed.\nDiscard?" ), 
+                        tr( "Advanced settings have changed.\nDiscard?" ),
                         QMessageBox::Abort | QMessageBox::Discard, this );
     int response = msgbox.exec();
     if ( response == QMessageBox::Discard )
@@ -1556,7 +1573,7 @@ void GamessInputDialog::resetClicked()
   {
     QMessageBox msgbox( QMessageBox::Warning, tr( "Advanced Settings Reset" ),
                         tr( "Are you sure you wish to reset advanced settings?\n"
-                            "All changes will be lost!" ), 
+                            "All changes will be lost!" ),
                         QMessageBox::Yes | QMessageBox::No, this );
     int response = msgbox.exec();
     if(response == QMessageBox::Yes)
@@ -1569,7 +1586,7 @@ void GamessInputDialog::resetClicked()
   } else {
     QMessageBox msgbox( QMessageBox::Warning, tr( "Basic Settings Reset" ),
                         tr( "Are you sure you wish to reset basic settings?\n"
-                            "All changes will be lost!" ), 
+                            "All changes will be lost!" ),
                         QMessageBox::Yes | QMessageBox::No, this );
     int response = msgbox.exec();
     if(response == QMessageBox::Yes)
@@ -1811,11 +1828,18 @@ void GamessInputDialog::setBasicIn( int index )
 void GamessInputDialog::setBasicOnLeft( int index )
 {
   GAMESS_SCFType scf = GAMESSDefaultSCFType;
-  int mult = 0;
+  int mult = 1;
+  long numElectrons = m_inputData->GetNumElectrons();
+  int charge = m_inputData->Control->GetCharge();
   switch ( index )
   {
     case 0:
-      // Nothing
+      // Make sure we can select this.
+      if ( (numElectrons + charge & 1) ) {
+        ui.basicOnLeftCombo->setCurrentIndex(1);
+        scf = GAMESS_ROHF;
+        mult = 2;
+      }
       break;
     case 1:
       // $CONTRL SCFTYP=ROHF MULT=2 $END

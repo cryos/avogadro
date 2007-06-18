@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -35,10 +35,9 @@ namespace Avogadro {
 
   class PrimitivePrivate {
     public:
-      PrimitivePrivate() : type(Primitive::OtherType), selected(false) {};
+      PrimitivePrivate() : type(Primitive::OtherType) {};
 
       enum Primitive::Type type;
-      bool selected;
   };
 
   Primitive::Primitive(QObject *parent) : QObject(parent), d_ptr(new PrimitivePrivate) {}
@@ -60,24 +59,6 @@ namespace Avogadro {
   Primitive::~Primitive()
   {
     delete d_ptr;
-  }
-
-  bool Primitive::isSelected() const
-  {
-    Q_D(const Primitive);
-    return d->selected;
-  }
-
-  void Primitive::setSelected( bool s ) 
-  {
-    Q_D(Primitive);
-    d->selected = s;
-  }
-
-  void Primitive::toggleSelected()
-  {
-    Q_D(Primitive);
-    d->selected = !d->selected;
   }
 
   enum Primitive::Type Primitive::type() const
@@ -187,21 +168,21 @@ namespace Avogadro {
     if( d->invalidGeomInfo ) computeGeomInfo();
     return d->center;
   }
-    
+
   const Eigen::Vector3d & Molecule::normalVector() const
   {
     Q_D(const Molecule);
     if( d->invalidGeomInfo ) computeGeomInfo();
     return d->normalVector;
   }
-    
+
   const double & Molecule::radius() const
   {
     Q_D(const Molecule);
     if( d->invalidGeomInfo ) computeGeomInfo();
     return d->radius;
   }
-    
+
   const Atom * Molecule::farthestAtom() const
   {
     Q_D(const Molecule);
@@ -217,16 +198,9 @@ namespace Avogadro {
 
   Molecule &Molecule::operator+=(const Molecule& other)
   {
-    unsigned int initialAtoms = NumAtoms();
     OpenBabel::OBMol::operator+=(other);
 
-    // select atoms we just added
-    FOR_ATOMS_OF_MOL(a, this) {
-      if (a->GetIdx() <= initialAtoms) // potential OB atom index issue FIXME
-        continue;
-      dynamic_cast<Atom *>(&*a)->setSelected(true);
-    }
-	return *this;
+    return *this;
   }
 
   void Molecule::computeGeomInfo() const
@@ -247,7 +221,7 @@ namespace Avogadro {
         d->center += atom->pos();
       }
       d->center /= NumAtoms();
-  
+
       // compute the normal vector to the molecule's best-fitting plane
       Eigen::Vector3d * atomPositions = new Eigen::Vector3d[NumAtoms()];
       int i = 0;
@@ -260,7 +234,7 @@ namespace Avogadro {
       delete[] atomPositions;
       d->normalVector = Eigen::Vector3d( planeCoeffs.x(), planeCoeffs.y(), planeCoeffs.z() );
       d->normalVector.normalize();
-  
+
       // compute radius and the farthest atom
       d->radius = -1.0; // so that ( squaredDistanceToCenter > d->radius ) is true for at least one atom.
       for( Atom* atom = (Atom*) const_cast<Molecule*>(this)->BeginAtom(atom_iterator); atom; atom = (Atom *) const_cast<Molecule*>(this)->NextAtom(atom_iterator) )

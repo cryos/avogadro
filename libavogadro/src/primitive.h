@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -39,7 +39,7 @@ class Engine;
 namespace Avogadro {
 
   /**
-   * @class Primitive 
+   * @class Primitive
    * Base class for all primitives (Molecule, Atom, Bond, Residue, ...).
    */
 
@@ -47,7 +47,6 @@ namespace Avogadro {
   class A_EXPORT Primitive : public QObject
   {
     Q_OBJECT
-    Q_PROPERTY(bool selected READ isSelected WRITE setSelected)
     Q_PROPERTY(Type type READ type)
     Q_ENUMS(Type)
 
@@ -56,31 +55,31 @@ namespace Avogadro {
        * This enum allows us to iterate through the various types
        * of primitives.
        */
-      enum Type { 
+      enum Type {
         /// Untyped Primitive
         OtherType=0,
         /// Molecule Primitive
         MoleculeType,
         /// Atom Primitive
-        AtomType, 
+        AtomType,
         /// Bond Primitive
-        BondType, 
+        BondType,
         /// Residue Primitive
-        ResidueType, 
+        ResidueType,
         /// Surface Primitive
-        SurfaceType, 
+        SurfaceType,
         /// Plane Primitive
         PlaneType,
         /// Grid Primitive
-        GridType, 
+        GridType,
         /// End Placeholder
-        LastType, 
+        LastType,
         /// First Placeholder
-        FirstType=OtherType 
+        FirstType=OtherType
       };
 
-      
-      /** 
+
+      /**
        * Default constructor.
        * @param parent the object parent
        */
@@ -97,28 +96,7 @@ namespace Avogadro {
       virtual ~Primitive();
 
       /**
-       * @property selected
-       * Holds whether the primitive object has been selected
-       * by the user.
-       *
-       * Defaults to false.
-       *
-       * @sa isSelected()
-       * @sa setSelected()
-       */
-
-      /**
-       * @return @c true if primitive is selected, @c false otherwise
-       */
-      bool isSelected() const;
-
-      /**
-       * @param selected the selected value.
-       */
-      void setSelected(bool selected);
-
-      /**
-       * Function used to push changes to a primitive to 
+       * Function used to push changes to a primitive to
        * the rest of the system.  At this time there is no
        * way (other than this) to generate a signal when
        * properties of a primitive change.
@@ -137,12 +115,6 @@ namespace Avogadro {
        * @return the primitive type (one of Primitive::Type)
        */
       Type type() const;
-
-    public Q_SLOTS:
-      /**
-       * Toggle the @ref type property
-       */
-      void toggleSelected();
 
     Q_SIGNALS:
       /**
@@ -167,7 +139,7 @@ namespace Avogadro {
    *
    * The Atom class is a Primitive subclass that provides a wrapper around
    * OpenBabel::OBAtom.  This class is provided to give more control of
-   * the OpenBabel::OBAtom class through slots/signals provided by the 
+   * the OpenBabel::OBAtom class through slots/signals provided by the
    * Primitive superclass.
    */
   class A_EXPORT Atom : public Primitive, public OpenBabel::OBAtom
@@ -218,7 +190,7 @@ namespace Avogadro {
    *
    * The Bond class is a Primitive subclass that provides a wrapper around
    * OpenBabel::OBBond.  This class is provided to give more control of
-   * the OpenBabel::OBBond class through slots/signals provided by the 
+   * the OpenBabel::OBBond class through slots/signals provided by the
    * Primitive superclass.
    */
   class A_EXPORT Bond : public Primitive, public OpenBabel::OBBond
@@ -241,7 +213,7 @@ namespace Avogadro {
    *
    * The Residue class is a Primitive subclass that provides a wrapper around
    * OpenBabel::OBResidue.  This class is provided to give more control of
-   * the OpenBabel::OBResidue class through slots/signals provided by the 
+   * the OpenBabel::OBResidue class through slots/signals provided by the
    * Primitive superclass.
    */
   class A_EXPORT Residue : public Primitive, public OpenBabel::OBResidue
@@ -264,7 +236,7 @@ namespace Avogadro {
    *
    * The Molecule class implements the OpenBabel::OBMol virtual functions
    * in order to not only use our primitive objects but also to provide signals
-   * based on internal OpenBabel actions.  In terms of a Model-View architecture, 
+   * based on internal OpenBabel actions.  In terms of a Model-View architecture,
    * this is our model class and is used by our various views to hold
    * all required data.
    */
@@ -285,7 +257,7 @@ namespace Avogadro {
       void update();
 
       /**
-       * Virtual function inherited from OpenBabel::OBMol.  
+       * Virtual function inherited from OpenBabel::OBMol.
        * Creates a new Atom object.
        *
        * @return pointer to a newly allocated Atom object
@@ -293,7 +265,7 @@ namespace Avogadro {
       Atom *CreateAtom(void);
 
       /**
-       * Virtual function inherited from OpenBabel::OBMol.  
+       * Virtual function inherited from OpenBabel::OBMol.
        * Creates a new Bond object.
        *
        * @return pointer to a newly allocated Bond object
@@ -301,7 +273,7 @@ namespace Avogadro {
       Bond * CreateBond(void);
 
       /**
-       * Virtual function inherited from OpenBabel::OBMol.  
+       * Virtual function inherited from OpenBabel::OBMol.
        * Creates a new Residue object.
        *
        * @return pointer to a newly allocated Residue object
@@ -352,7 +324,7 @@ namespace Avogadro {
        * Function which handles when a child primitive has been
        * updated.  The response is to find the sender object
        * and then emit a signal passing the sender as a parameter.
-       * 
+       *
        * @sa primitiveAdded
        * @sa primitiveUpdated
        * @sa primitiveRemoved
