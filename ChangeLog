@@ -1,3 +1,17 @@
+2007-06-18  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+        * libavogadro/src/engine.*: added some engine flags for
+        transparency atoms, bonds, molecules so that the glwidget
+        has a better idea of the capabilities of the engines.  also added
+        the transparencyDepth relative to others.  this needs a conceptual
+        update just because i don't think it's intuitive.  if people define
+        theirs higher than other engines they get priority.  i still believe
+        this should be dependent on the ::radius response for the specific
+        primitive type we're trying to compare.
+
+        * libavogadro/src/glwidget.*: engines are now sorted on load
+        based on their flags and their transparencyDepth.
+
 2007-06-17  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* libavogadro/src/glwidget.*: Fixed a bug in mass selection where

@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -50,7 +50,7 @@ StickEngine::~StickEngine()
 {
 }
 
-bool StickEngine::render(GLWidget *gl)
+bool StickEngine::renderOpaque(GLWidget *gl)
 {
   m_glwidget = gl;
 
@@ -66,7 +66,7 @@ bool StickEngine::render(GLWidget *gl)
   list = primitives().subList(Primitive::AtomType);
   foreach( Primitive *p, list )
   {
-    render(static_cast<Atom *>(p));
+    renderOpaque(static_cast<Atom *>(p));
   }
 
   list = primitives().subList(Primitive::BondType);
@@ -79,7 +79,7 @@ bool StickEngine::render(GLWidget *gl)
   list = primitives().subList(Primitive::BondType);
   foreach( Primitive *p, list )
   {
-    render(static_cast<const Bond *>(p));
+    renderOpaque(static_cast<const Bond *>(p));
   }
 
   glPopAttrib();
@@ -88,7 +88,7 @@ bool StickEngine::render(GLWidget *gl)
   return true;
 }
 
-bool StickEngine::render(const Atom* a)
+bool StickEngine::renderOpaque(const Atom* a)
 {
   Color map = colorMap();
 
@@ -116,7 +116,7 @@ bool StickEngine::render(const Atom* a)
   return true;
 }
 
-bool StickEngine::render(const Bond* b)
+bool StickEngine::renderOpaque(const Bond* b)
 {
   Color map = colorMap();
 
@@ -154,13 +154,13 @@ bool StickEngine::render(const Bond* b)
   return true;
 }
 
-bool StickEngine::render(const Molecule*)
+bool StickEngine::renderOpaque(const Molecule*)
 {
   // Disabled
   return false;
 }
 
-double StickEngine::radius(const Primitive *p)
+double StickEngine::radius(const Primitive *p) const
 {
   // Atom radius
   if (p->type() == Primitive::AtomType)
@@ -188,7 +188,17 @@ double StickEngine::radius(const Primitive *p)
     return 0.;
 }
 
-inline double StickEngine::radius(const Atom*)
+double StickEngine::transparencyDepth() const
+{
+  return 0.25;
+}
+
+Engine::EngineFlags StickEngine::flags() const
+{
+  return Engine::Atoms | Engine::Bonds;
+}
+
+inline double StickEngine::radius(const Atom*) const
 {
   return 0.25;
 }

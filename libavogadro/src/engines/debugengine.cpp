@@ -9,9 +9,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -41,13 +41,13 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-DebugEngine::DebugEngine(QObject *parent) : Engine(parent) 
+DebugEngine::DebugEngine(QObject *parent) : Engine(parent)
 {
   setName(tr("Debug Info"));
   setDescription(tr("Renders debug information"));
 }
 
-bool DebugEngine::render(GLWidget *gl)
+bool DebugEngine::renderOpaque(GLWidget *gl)
 {
   QList<Primitive *> list;
 
@@ -62,7 +62,7 @@ bool DebugEngine::render(GLWidget *gl)
                                        + QString::number(gl->width())
                                        + " x "
                                        + QString::number(gl->height()) );
-  
+
   list = primitives().subList(Primitive::AtomType);
   y += gl->painter()->drawText(x, y, "Atoms: " + QString::number(list.size()));
 
@@ -70,7 +70,7 @@ bool DebugEngine::render(GLWidget *gl)
   y += gl->painter()->drawText(x, y, "Bonds: " + QString::number(list.size()));
 
   gl->painter()->end();
-  
+
   gl->update();
 
   return true;
@@ -83,7 +83,7 @@ inline double DebugEngine::computeFramesPerSecond()
   static int old_time, new_time;
   static int frames;
   static double fps;
-  
+
   if( firstTime )
   {
     time.start();
@@ -92,10 +92,10 @@ inline double DebugEngine::computeFramesPerSecond()
     frames = 0;
     fps = 0;
   }
-  
+
   new_time = time.elapsed();
   frames++;
-  
+
   if( new_time - old_time > 200 )
   {
     fps = 1000.0 * frames / double( new_time - old_time );
@@ -103,8 +103,13 @@ inline double DebugEngine::computeFramesPerSecond()
     time.restart();
     old_time = time.elapsed();
   }
-  
+
   return fps;
+}
+
+Engine::EngineFlags DebugEngine::flags() const
+{
+  return Engine::Overlay;
 }
 
 #include "debugengine.moc"

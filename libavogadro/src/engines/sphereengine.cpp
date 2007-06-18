@@ -8,9 +8,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -49,7 +49,7 @@ SphereEngine::SphereEngine(QObject *parent) : Engine(parent), m_glwidget(0), m_s
   setDescription(tr("Renders atoms as Van der Waals spheres"));
 }
 
-bool SphereEngine::render(GLWidget *gl)
+bool SphereEngine::renderOpaque(GLWidget *gl)
 {
   m_glwidget = gl;
   m_glwidget->painter()->begin(m_glwidget);
@@ -75,7 +75,7 @@ bool SphereEngine::render(GLWidget *gl)
     glDisable(GL_LIGHTING);
     glDisable(GL_BLEND);
     foreach( Primitive *p, list )
-      render(static_cast<const Atom *>(p));
+      renderOpaque(static_cast<const Atom *>(p));
     glColorMask(GL_TRUE,GL_TRUE,GL_TRUE,GL_TRUE);
     glEnable(GL_LIGHTING);
   }
@@ -84,7 +84,7 @@ bool SphereEngine::render(GLWidget *gl)
   glEnable( GL_RESCALE_NORMAL );
   list = primitives().subList(Primitive::AtomType);
   foreach( Primitive *p, list )
-    render(static_cast<const Atom *>(p));
+    renderOpaque(static_cast<const Atom *>(p));
 
   glDisable( GL_RESCALE_NORMAL);
   glEnable( GL_NORMALIZE );
@@ -93,7 +93,7 @@ bool SphereEngine::render(GLWidget *gl)
   return true;
 }
 
-bool SphereEngine::render(const Atom *a)
+bool SphereEngine::renderOpaque(const Atom *a)
 {
   // Render the atoms as Van der Waals spheres
   Color map = colorMap();
@@ -168,12 +168,12 @@ bool SphereEngine::renderSkeleton(const Bond* b)
   return true;
 }
 
-inline double SphereEngine::radius(const Atom *a)
+inline double SphereEngine::radius(const Atom *a) const
 {
   return etab.GetVdwRad(a->GetAtomicNum());
 }
 
-double SphereEngine::radius(const Primitive *p)
+double SphereEngine::radius(const Primitive *p) const
 {
   // Atom radius
   if (p->type() == Primitive::AtomType)
@@ -198,6 +198,16 @@ double SphereEngine::radius(const Primitive *p)
   // Something else
   else
     return 0.;
+}
+
+double SphereEngine::transparencyDepth() const
+{
+  return 1.0;
+}
+
+Engine::EngineFlags SphereEngine::flags() const
+{
+  return Engine::Transparent | Engine::Atoms | Engine::Bonds;
 }
 
 void SphereEngine::setOpacity(int percent)

@@ -24,6 +24,7 @@
 
 #include "engine.h"
 
+#include <QDebug>
 namespace Avogadro {
 
   class EnginePrivate
@@ -59,17 +60,17 @@ namespace Avogadro {
     emit changed();
   }
 
-  double Engine::radius(const Primitive*)
+  double Engine::radius(const Primitive*) const
   {
     return 0.0;
   }
 
-  void Engine::clearQueue()
+  void Engine::clearPrimitives()
   {
     d->primitives.clear();
   }
 
-  bool Engine::isEnabled()
+  bool Engine::isEnabled() const
   {
     return d->enabled;
   }
@@ -129,6 +130,16 @@ namespace Avogadro {
   QString Engine::description() const
   {
     return d->description;
+  }
+
+  Engine::EngineFlags Engine::flags() const
+  {
+    return Engine::NoFlags;
+  }
+
+  double Engine::transparencyDepth() const
+  {
+    return 0.0;
   }
 
 }

@@ -47,7 +47,7 @@ WireEngine::WireEngine(QObject *parent) : Engine(parent), m_glwidget(0)
   setDescription(tr("Wireframe rendering"));
 }
 
-bool WireEngine::render(GLWidget *gl)
+bool WireEngine::renderOpaque(GLWidget *gl)
 {
   m_glwidget = gl;
 
@@ -59,12 +59,12 @@ bool WireEngine::render(GLWidget *gl)
 
   list = primitives().subList(Primitive::AtomType);
   foreach( Primitive *p, list ) {
-    render(static_cast<const Atom *>(p));
+    renderOpaque(static_cast<const Atom *>(p));
   }
 
   list = primitives().subList(Primitive::BondType);
   foreach( Primitive *p, list ) {
-    render(static_cast<const Bond *>(p));
+    renderOpaque(static_cast<const Bond *>(p));
   }
 
   glPopAttrib();
@@ -72,7 +72,7 @@ bool WireEngine::render(GLWidget *gl)
   return true;
 }
 
-bool WireEngine::render(const Atom *a)
+bool WireEngine::renderOpaque(const Atom *a)
 {
   const Vector3d & v = a->pos();
   
@@ -107,7 +107,7 @@ bool WireEngine::render(const Atom *a)
   return true;
 }
 
-bool WireEngine::render(const Bond *b)
+bool WireEngine::renderOpaque(const Bond *b)
 {
   const Atom *atom1 = static_cast<const Atom *>( b->GetBeginAtom() );
   const Vector3d & v1 = atom1->pos();
@@ -141,7 +141,7 @@ bool WireEngine::render(const Bond *b)
   return true;
 }
 
-bool WireEngine::render(const Molecule*)
+bool WireEngine::renderOpaque(const Molecule*)
 {
   // Disabled
   return false;

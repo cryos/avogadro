@@ -43,6 +43,80 @@
 
 using namespace OpenBabel;
 namespace Avogadro {
+
+  bool engineLessThan2(const Engine* lhs, const Engine* rhs)
+  {
+    Engine::EngineFlags lhsFlags = lhs->flags();
+    Engine::EngineFlags rhsFlags = rhs->flags();
+
+    if(!(lhsFlags & Engine::Overlay) && rhsFlags & Engine::Overlay)
+    {
+      return true;
+    }
+    else if (lhsFlags & Engine::Overlay && rhsFlags & Engine::Overlay)
+    {
+      return lhs->transparencyDepth() < rhs->transparencyDepth();
+    }
+    else if (lhsFlags & Engine::Overlay && !(rhsFlags & Engine::Overlay))
+    {
+      qDebug() << "overlay false";
+      return false;
+    }
+    else if(!(lhsFlags & Engine::Molecules) && rhsFlags & Engine::Molecules)
+    {
+      return true;
+    }
+    else if (lhsFlags & Engine::Molecules && rhsFlags & Engine::Molecules)
+    {
+      return lhs->transparencyDepth() < rhs->transparencyDepth();
+    }
+    else if (lhsFlags & Engine::Molecules && !(rhsFlags & Engine::Molecules))
+    {
+      qDebug() << "molecules false" << (lhsFlags & Engine::Molecules) << ":" << (rhsFlags & Engine::Molecules);
+      return false;
+    }
+    else if(!(lhsFlags & Engine::Atoms) && rhsFlags & Engine::Atoms)
+    {
+      return true;
+    }
+    else if (lhsFlags & Engine::Atoms && rhsFlags & Engine::Atoms)
+    {
+      qDebug() << "compare atoms: " << lhs->transparencyDepth() << "-" << rhs->transparencyDepth();
+      return lhs->transparencyDepth() < rhs->transparencyDepth();
+    }
+    else if (lhsFlags & Engine::Atoms && !(rhsFlags & Engine::Atoms))
+    {
+      qDebug() << "atoms false";
+      return false;
+    }
+    else if(!(lhsFlags & Engine::Bonds) && rhsFlags & Engine::Bonds)
+    {
+      return true;
+    }
+    else if (lhsFlags & Engine::Bonds && rhsFlags & Engine::Bonds)
+    {
+      return lhs->transparencyDepth() < rhs->transparencyDepth();
+    }
+    else if (lhsFlags & Engine::Bonds && !(rhsFlags & Engine::Bonds))
+    {
+      qDebug() << "bonds false";
+      return false;
+    }
+    qDebug() << "default false";
+    return false;
+  }
+
+  bool engineLessThan(const Engine* lhs, const Engine* rhs)
+  {
+    bool val = engineLessThan2(lhs, rhs);
+    qDebug() << "-------------------";
+    qDebug() << lhs->name() << " : " << lhs->flags();
+    qDebug() << rhs->name() << " : " << rhs->flags();
+    qDebug() << val;
+    qDebug() << "-------------------";
+    return val;
+  }
+
   class GLHitPrivate
   {
     public:
@@ -86,6 +160,7 @@ namespace Avogadro {
   }
 
   bool GLHit::operator<(const GLHit &other) const {
+    qDebug() << "SortHit";
     GLHitPrivate *e = other.d;
     return d->minZ < e->minZ;
   }
@@ -201,6 +276,7 @@ namespace Avogadro {
     setSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
     loadEngines();
     d->camera->setParent(this);
+    qDebug() << "Sorting";
   }
 
   void GLWidget::initializeGL()
@@ -266,7 +342,7 @@ namespace Avogadro {
       foreach(Engine *engine, d->engines)
         {
           if(engine->isEnabled()) {
-            engine->render(this);
+            engine->renderOpaque(this);
           }
         }
     } else { // render a crystal
@@ -278,7 +354,7 @@ namespace Avogadro {
             foreach(Engine *engine, d->engines)
             {
               if(engine->isEnabled()) {
-                engine->render(this);
+                engine->renderOpaque(this);
               }
             } // end rendering loop
             glTranslatef(cellVectors[2].x(), cellVectors[2].y(), cellVectors[2].z());
@@ -409,7 +485,7 @@ namespace Avogadro {
 
     // clear our engine queues
     for( int i=0; i < d->engines.size(); i++ ) {
-      d->engines.at(i)->clearQueue();
+      d->engines.at(i)->clearPrimitives();
     }
     d->primitives.clear();
 
@@ -584,21 +660,17 @@ namespace Avogadro {
           connect(engine, SIGNAL(changed()), this, SLOT(update()));
           // FIXME: below is a ugly hack so that the text-painting engines are
           // at the END of the engines list, so that text is painted last.
-          if(engine->name() == "Label") {
-            engine->setEnabled(false);
-            d->engines.append(engine);
-          } else if(engine->name() == "Debug Info") {
-            engine->setEnabled(false);
-            d->engines.append(engine);
-          } else if(engine->name() == "Dynamic Ball and Stick") {
+          if(engine->name() == "Dynamic Ball and Stick") {
             engine->setEnabled(true);
-            d->engines.insert(0, engine);
-          } else {
-            d->engines.insert(0, engine);
-            engine->setEnabled(false);
           }
+          d->engines.append(engine);
         }
       }
+    }
+    qSort(d->engines.begin(), d->engines.end(), engineLessThan);
+    foreach(Engine* e, d->engines)
+    {
+      qDebug() << e->name();
     }
   }
 

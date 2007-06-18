@@ -54,6 +54,17 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
+      enum EngineFlag {
+        NoFlags = 0x00, /// no flags
+        Transparent = 0x01, /// renders transparency
+        Overlay = 0x02, /// renders overlay
+        Bonds = 0x04, /// renders bonds
+        Atoms = 0x08, /// renders atoms
+        Molecules = 0x10 /// renders molecules
+      };
+      Q_DECLARE_FLAGS(EngineFlags, EngineFlag)
+
+    public:
       //! constructor
       Engine(QObject *parent = 0);
       //! deconstructor
@@ -78,6 +89,11 @@ namespace Avogadro {
        * @param description the new description for this engine
        */
       void setDescription(const QString &description);
+
+      /**
+       * @return the flags for this engine
+       */
+      virtual EngineFlags flags() const;
 
       /**
        * Render a PrimitiveList.  This function is allowed to rendering
@@ -105,20 +121,26 @@ namespace Avogadro {
        * PrimitiveList.
        *
        */
-      virtual bool render(GLWidget *gl) = 0;
+      virtual bool renderOpaque(GLWidget *gl) = 0;
+      virtual bool renderTransparent(GLWidget *gl) { Q_UNUSED(gl); return true; }
 
       PrimitiveList primitives() const;
 
-      void setPrimitives(const PrimitiveList &primitives);
+      virtual void setPrimitives(const PrimitiveList &primitives);
+      virtual void clearPrimitives();
 
       /** Get the radius of the primitive referred to.
        * @param primitive is the Primitive to get the radius of
        * @return the radius of the Primitive
        */
-      virtual double radius(const Primitive *primitive = 0);
+      virtual double radius(const Primitive *primitive = 0) const;
 
-      void clearQueue();
-      bool isEnabled();
+      /**
+       * @return transparency level, rendered low to high
+       */
+      virtual double transparencyDepth() const;
+
+      bool isEnabled() const;
       void setEnabled(bool enabled);
 
       /**
@@ -181,5 +203,6 @@ namespace Avogadro {
 
 Q_DECLARE_METATYPE(Avogadro::Engine*)
 Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro.enginefactory/1.0")
+Q_DECLARE_OPERATORS_FOR_FLAGS(Avogadro::Engine::EngineFlags)
 
 #endif

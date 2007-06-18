@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -60,7 +60,7 @@ BSDYEngine::~BSDYEngine()
 
 }
 
-bool BSDYEngine::render(GLWidget *gl)
+bool BSDYEngine::renderOpaque(GLWidget *gl)
 {
   m_glwidget = gl;
 
@@ -76,7 +76,7 @@ bool BSDYEngine::render(GLWidget *gl)
   list = primitives().subList(Primitive::AtomType);
   foreach( Primitive *p, list )
   {
-    render(static_cast<Atom *>(p));
+    renderOpaque(static_cast<Atom *>(p));
   }
 
   // normalize normal vectors of bonds
@@ -87,7 +87,7 @@ bool BSDYEngine::render(GLWidget *gl)
   list = primitives().subList(Primitive::BondType);
   foreach( Primitive *p, list )
   {
-    render(static_cast<Bond *>(p));
+    renderOpaque(static_cast<Bond *>(p));
   }
 
   glPopAttrib();
@@ -96,7 +96,7 @@ bool BSDYEngine::render(GLWidget *gl)
   return true;
 }
 
-bool BSDYEngine::render(const Atom* a)
+bool BSDYEngine::renderOpaque(const Atom* a)
 {
   Color map = colorMap();
 
@@ -125,7 +125,7 @@ bool BSDYEngine::render(const Atom* a)
   return true;
 }
 
-bool BSDYEngine::render(const Bond* b)
+bool BSDYEngine::renderOpaque(const Bond* b)
 {
   Color map = colorMap();
 
@@ -168,7 +168,7 @@ bool BSDYEngine::render(const Bond* b)
   return true;
 }
 
-inline double BSDYEngine::radius(const Atom *atom)
+inline double BSDYEngine::radius(const Atom *atom) const
 {
   return etab.GetVdwRad(atom->GetAtomicNum()) * m_atomRadiusPercentage;
 }
@@ -185,7 +185,7 @@ void BSDYEngine::setBondRadius(int value)
   emit changed();
 }
 
-double BSDYEngine::radius(const Primitive *p)
+double BSDYEngine::radius(const Primitive *p) const
 {
   // Atom radius
   if (p->type() == Primitive::AtomType)
@@ -212,10 +212,9 @@ double BSDYEngine::radius(const Primitive *p)
     return 0.;
 }
 
-bool BSDYEngine::render(const Molecule*)
+double BSDYEngine::transparencyDepth() const
 {
-  // Disabled
-  return false;
+  return m_atomRadiusPercentage;
 }
 
 QWidget *BSDYEngine::settingsWidget()
@@ -234,6 +233,11 @@ void BSDYEngine::settingsWidgetDestroyed()
 {
   qDebug() << "Destroyed Settings Widget";
   m_settingsWidget = 0;
+}
+
+Engine::EngineFlags BSDYEngine::flags() const
+{
+  return Engine::Transparent | Engine::Atoms | Engine::Bonds;
 }
 
 #include "bsdyengine.moc"

@@ -34,8 +34,6 @@
 
 #include <eigen/vector.h>
 
-class Engine;
-
 namespace Avogadro {
 
   /**

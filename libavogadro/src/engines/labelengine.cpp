@@ -8,9 +8,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -50,7 +50,7 @@ LabelEngine::LabelEngine(QObject *parent) : Engine(parent), m_glwidget(0),
   setDescription(tr("Renders primitive labels"));
 }
 
-bool LabelEngine::render(GLWidget *gl)
+bool LabelEngine::renderOpaque(GLWidget *gl)
 {
   m_glwidget = gl;
   gl->painter()->begin(gl);
@@ -62,7 +62,7 @@ bool LabelEngine::render(GLWidget *gl)
     // Render atom labels
     list = primitives().subList(Primitive::AtomType);
     foreach( Primitive *p, list )
-      render(static_cast<Atom *>(p));
+      renderOpaque(static_cast<Atom *>(p));
   }
 
   if (m_bondType < 1)
@@ -70,14 +70,14 @@ bool LabelEngine::render(GLWidget *gl)
     // Now render the bond labels
     list = primitives().subList(Primitive::BondType);
     foreach( Primitive *p, list )
-      render(static_cast<const Bond*>(p));
+      renderOpaque(static_cast<const Bond*>(p));
   }
 
   gl->painter()->end();
   return true;
 }
 
-bool LabelEngine::render(const Atom *a)
+bool LabelEngine::renderOpaque(const Atom *a)
 {
   // Render atom labels
   const Vector3d pos = a->pos();
@@ -122,7 +122,7 @@ bool LabelEngine::render(const Atom *a)
   return true;
 }
 
-bool LabelEngine::render(const Bond *b)
+bool LabelEngine::renderOpaque(const Bond *b)
 {
   // Render bond labels
   const Atom* atom1 = static_cast<const Atom *>(b->GetBeginAtom());
@@ -154,7 +154,7 @@ bool LabelEngine::render(const Bond *b)
 
   renderRadius += 0.05;
 
-  // Calculate the 
+  // Calculate the
   Vector3d pos ( (v1 + v2 + d*(renderRadiusA1-renderRadiusA2)) / 2.0 );
 
   double zDistance = m_glwidget->camera()->distance(pos);
@@ -200,6 +200,11 @@ void LabelEngine::settingsWidgetDestroyed()
 {
   qDebug() << "Destroyed Settings Widget";
   m_settingsWidget = 0;
+}
+
+Engine::EngineFlags LabelEngine::flags() const
+{
+  return Engine::Overlay;
 }
 
 #include "labelengine.moc"

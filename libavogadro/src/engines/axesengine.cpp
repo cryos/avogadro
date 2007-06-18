@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -42,7 +42,7 @@ AxesEngine::AxesEngine(QObject *parent) : Engine(parent)
   setDescription(tr("Renders x, y and z axes"));
 }
 
-bool AxesEngine::render(GLWidget *gl)
+bool AxesEngine::renderOpaque(GLWidget *gl)
 {
   gl->painter()->begin(gl);
 
@@ -96,6 +96,11 @@ bool AxesEngine::render(GLWidget *gl)
 
   gl->painter()->end();
   return true;
+}
+
+Engine::EngineFlags AxesEngine::flags() const
+{
+  return Engine::Overlay;
 }
 
 #include "axesengine.moc"

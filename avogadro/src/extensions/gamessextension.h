@@ -54,7 +54,7 @@ namespace Avogadro {
       virtual QString description() const { return QObject::tr("GAMESS Input Deck Generator"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, 
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
           GLWidget *widget, QTextEdit *messages=NULL);
       //@}
 
@@ -67,7 +67,7 @@ namespace Avogadro {
   class GamessExtensionFactory : public QObject, public ExtensionFactory
   {
     Q_OBJECT
-      Q_INTERFACES(Avogadro::ExtensionFactory)
+    Q_INTERFACES(Avogadro::ExtensionFactory)
 
     public:
       Extension *createInstance(QObject *parent = 0) { return new GamessExtension(parent); }

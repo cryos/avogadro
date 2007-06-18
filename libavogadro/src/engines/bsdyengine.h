@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -48,25 +48,26 @@ namespace Avogadro {
 
       //! \name Description methods
 
+      double transparencyDepth() const;
+      EngineFlags flags() const;
+
       //! \name Render Methods
       //@{
       //! Render an Atom.
-      bool render(const Atom *a);
+      bool renderOpaque(const Atom *a);
       //! Render a Bond.
-      bool render(const Bond *b);
-      //! Render a Molecule.
-      bool render(const Molecule *m);
+      bool renderOpaque(const Bond *b);
 
-      bool render(GLWidget *gl);
+      bool renderOpaque(GLWidget *gl);
 
-      double radius(const Primitive *p = 0);
+      double radius(const Primitive *p = 0) const;
       //@}
 
       //! Display a window for the user to pick rendering options
       QWidget *settingsWidget();
 
     private:
-      double radius(const Atom *atom);
+      double radius(const Atom *atom) const;
 
       GLWidget *m_glwidget;
       BSDYSettingsWidget *m_settingsWidget;

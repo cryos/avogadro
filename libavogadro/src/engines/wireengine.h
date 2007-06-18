@@ -47,13 +47,13 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       //! Render an Atom.
-      bool render(const Atom *a);
+      bool renderOpaque(const Atom *a);
       //! Render a Bond.
-      bool render(const Bond *b);
+      bool renderOpaque(const Bond *b);
       //! Render a Molecule.
-      bool render(const Molecule *m);
+      bool renderOpaque(const Molecule *m);
 
-      bool render(GLWidget *gl);
+      bool renderOpaque(GLWidget *gl);
       //@}
 
 //      double radius(const Primitive *p = 0);
