@@ -7,6 +7,13 @@
 
 2007-06-19  Marcus D. Hanwell <marcus@cryos.org>
 
+	* libavogadro/src/tools/navigatetool.cpp: Updated tooltip to reflect
+	current behaviour of this tool.
+
+	* libavogadro/src/tools/manipulatetool.cpp: Changed translation to the
+	left mouse button and rotation to the right as suggested by Donald and
+	Geoff. It does seem more intuitive despite not matching navigate tool.
+
 	* libavogadro/src/tools/autorotatetool.*: Added the ability to
 	initiate rotation using mouse movements. Left for x/y, middle for z.
 
