@@ -36,6 +36,8 @@
 #include <QWidget>
 
 class QPushButton;
+class QSlider;
+
 namespace Avogadro {
 
   /**
@@ -70,9 +72,9 @@ namespace Avogadro {
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
       */
-      virtual QUndoCommand* mousePress(GLWidget*, const QMouseEvent*) { return 0; }
-      virtual QUndoCommand* mouseRelease(GLWidget*, const QMouseEvent*) { return 0; }
-      virtual QUndoCommand* mouseMove(GLWidget*, const QMouseEvent*) { return 0; }
+      virtual QUndoCommand* mousePress(GLWidget*, const QMouseEvent*);
+      virtual QUndoCommand* mouseRelease(GLWidget*, const QMouseEvent*);
+      virtual QUndoCommand* mouseMove(GLWidget*, const QMouseEvent*);
       virtual QUndoCommand* wheel(GLWidget*, const QWheelEvent*) { return 0; }
 
       virtual int usefulness() const;
@@ -93,16 +95,24 @@ namespace Avogadro {
 
     protected:
       GLWidget* m_glwidget;
+      bool m_leftButtonPressed;  // Rotation about x and y
+      bool m_midButtonPressed;   // Rotation about z
+      QPoint m_startDraggingPosition;  // Starting position of mouse
+      QPoint m_currentDraggingPosition;  // Current dragging position
       int timerId;
       int m_xRotation;
       int m_yRotation;
       int m_zRotation;
+      int m_maxRotation;
 
       void rotate() const;
       void timerEvent(QTimerEvent* event);
 
-      QPushButton *m_buttonStartStop;
       QWidget* m_settingsWidget;
+      QPushButton* m_buttonStartStop;
+      QSlider* m_sliderX;
+      QSlider* m_sliderY;
+      QSlider* m_sliderZ;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();

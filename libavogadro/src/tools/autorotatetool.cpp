@@ -41,8 +41,10 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-AutoRotateTool::AutoRotateTool(QObject *parent) : Tool(parent), m_glwidget(0), timerId(0),
-  m_xRotation(0), m_yRotation(0), m_zRotation(0), m_settingsWidget(0)
+AutoRotateTool::AutoRotateTool(QObject *parent) : Tool(parent), m_glwidget(0), m_leftButtonPressed(false),
+  m_midButtonPressed(false), timerId(0), m_xRotation(0), m_yRotation(0), m_zRotation(0), m_maxRotation(40),
+  m_settingsWidget(0), m_buttonStartStop(0), m_sliderX(0), m_sliderY(0), m_sliderZ(0)
+
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
@@ -72,10 +74,88 @@ void AutoRotateTool::rotate() const
   m_glwidget->camera()->translate( -m_glwidget->center() );
 }
 
+QUndoCommand* AutoRotateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+{
+  // Record the starting postion and which mouse button was pressed
+  m_glwidget = widget;
+  m_startDraggingPosition = event->pos();
+  m_currentDraggingPosition = m_startDraggingPosition;
+  m_leftButtonPressed = ( event->buttons() & Qt::LeftButton );
+  m_midButtonPressed = ( event->buttons() & Qt::MidButton );
+
+  m_glwidget->update();
+
+  return 0;
+}
+
+QUndoCommand* AutoRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+{
+  m_glwidget = widget;
+  // Calculate some multipliers for the delta
+  double xMultiplier = m_maxRotation / static_cast<double>(m_glwidget->width());
+  double yMultiplier = m_maxRotation / static_cast<double>(m_glwidget->height());
+  QPoint deltaDragging = event->pos() - m_startDraggingPosition;
+
+  if(m_leftButtonPressed)
+  {
+    // Rotation about the x and y axes
+    m_xRotation = static_cast<int>(deltaDragging.x() * xMultiplier);
+    m_sliderX->setValue(m_xRotation);
+    m_yRotation = static_cast<int>(deltaDragging.y() * yMultiplier);
+    m_sliderY->setValue(m_yRotation);
+    m_zRotation = 0;
+    m_sliderZ->setValue(m_zRotation);
+  }
+  else if (m_midButtonPressed)
+  {
+    // Rotation about the z axis
+    m_xRotation = 0;
+    m_sliderX->setValue(m_xRotation);
+    m_yRotation = 0;
+    m_sliderY->setValue(m_yRotation);
+    m_zRotation = static_cast<int>(deltaDragging.x() * xMultiplier);
+    m_sliderZ->setValue(m_zRotation);
+  }
+
+  m_leftButtonPressed = false;
+  m_midButtonPressed = false;
+
+  m_glwidget->update();
+
+  return 0;
+}
+
+QUndoCommand* AutoRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+{
+  m_glwidget = widget;
+
+  // Keep track of the current position to draw the movement line
+  m_currentDraggingPosition = event->pos();
+
+  m_glwidget->update();
+
+  return 0;
+}
+
 bool AutoRotateTool::paint(GLWidget *widget)
 {
-  // Get the widget for our rotation function
   m_glwidget = widget;
+  if(m_leftButtonPressed || m_midButtonPressed)
+  {
+    // Draw a line from the start position to the current mouse position
+    if (m_leftButtonPressed)
+      glColor4f(1., 0., 0., 1.);
+    else if (m_midButtonPressed)
+      glColor4f(0., 1., 0., 1.);
+    Vector3d start = m_glwidget->camera()->unProject(m_startDraggingPosition);
+    Vector3d end = m_glwidget->camera()->unProject(m_currentDraggingPosition);
+    glDisable(GL_LIGHTING);
+    glBegin(GL_LINES);
+    glVertex3d(start.x(), start.y(), start.z());
+    glVertex3d(end.x(), end.y(), end.z());
+    glEnd();
+    glEnable(GL_LIGHTING);
+  }
   return true;
 }
 
@@ -135,38 +215,38 @@ QWidget* AutoRotateTool::settingsWidget() {
     QLabel* labelX = new QLabel("x rotation:");
     labelX->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     labelX->setMaximumHeight(15);
-    QSlider* sliderXRotation = new QSlider(m_settingsWidget);
-    sliderXRotation->setOrientation(Qt::Horizontal);
-    sliderXRotation->setTickPosition(QSlider::TicksBothSides);
-    sliderXRotation->setToolTip("x rotation");
-    sliderXRotation->setTickInterval(10);
-    sliderXRotation->setPageStep(5);
-    sliderXRotation->setRange(-20, 20);
-    sliderXRotation->setValue(0);
+    m_sliderX = new QSlider(m_settingsWidget);
+    m_sliderX->setOrientation(Qt::Horizontal);
+    m_sliderX->setTickPosition(QSlider::TicksBothSides);
+    m_sliderX->setToolTip("x rotation");
+    m_sliderX->setTickInterval(10);
+    m_sliderX->setPageStep(5);
+    m_sliderX->setRange(-m_maxRotation, m_maxRotation);
+    m_sliderX->setValue(0);
 
     // Label and slider to set y axis rotation
     QLabel* labelY = new QLabel("y rotation:");
     labelY->setMaximumHeight(15);
-    QSlider* sliderYRotation = new QSlider(m_settingsWidget);
-    sliderYRotation->setOrientation(Qt::Horizontal);
-    sliderYRotation->setTickPosition(QSlider::TicksBothSides);
-    sliderYRotation->setToolTip("y rotation");
-    sliderYRotation->setTickInterval(10);
-    sliderYRotation->setPageStep(5);
-    sliderYRotation->setRange(-20, 20);
-    sliderYRotation->setValue(0);
+    m_sliderY = new QSlider(m_settingsWidget);
+    m_sliderY->setOrientation(Qt::Horizontal);
+    m_sliderY->setTickPosition(QSlider::TicksBothSides);
+    m_sliderY->setToolTip("y rotation");
+    m_sliderY->setTickInterval(10);
+    m_sliderY->setPageStep(5);
+    m_sliderY->setRange(-m_maxRotation, m_maxRotation);
+    m_sliderY->setValue(0);
 
     // Label and slider to set z axis rotation
     QLabel* labelZ = new QLabel("z rotation:");
     labelZ->setMaximumHeight(15);
-    QSlider* sliderZRotation = new QSlider(m_settingsWidget);
-    sliderZRotation->setOrientation(Qt::Horizontal);
-    sliderZRotation->setTickPosition(QSlider::TicksBothSides);
-    sliderZRotation->setToolTip("z rotation");
-    sliderZRotation->setTickInterval(10);
-    sliderZRotation->setPageStep(5);
-    sliderZRotation->setRange(-20, 20);
-    sliderZRotation->setValue(0);
+    m_sliderZ = new QSlider(m_settingsWidget);
+    m_sliderZ->setOrientation(Qt::Horizontal);
+    m_sliderZ->setTickPosition(QSlider::TicksBothSides);
+    m_sliderZ->setToolTip("z rotation");
+    m_sliderZ->setTickInterval(10);
+    m_sliderZ->setPageStep(5);
+    m_sliderZ->setRange(-m_maxRotation, m_maxRotation);
+    m_sliderZ->setValue(0);
 
     // Push buttons to start/stop and to reset
     m_buttonStartStop = new QPushButton("Start", m_settingsWidget);
@@ -177,23 +257,23 @@ QWidget* AutoRotateTool::settingsWidget() {
 
     QVBoxLayout* layout = new QVBoxLayout();
     layout->addWidget(labelX);
-    layout->addWidget(sliderXRotation);
+    layout->addWidget(m_sliderX);
     layout->addWidget(labelY);
-    layout->addWidget(sliderYRotation);
+    layout->addWidget(m_sliderY);
     layout->addWidget(labelZ);
-    layout->addWidget(sliderZRotation);
+    layout->addWidget(m_sliderZ);
     layout->addLayout(buttonLayout);
     layout->addStretch(1);
     m_settingsWidget->setLayout(layout);
 
     // Connect the sliders with the slots
-    connect(sliderXRotation, SIGNAL(valueChanged(int)),
+    connect(m_sliderX, SIGNAL(valueChanged(int)),
         this, SLOT(setXRotation(int)));
 
-    connect(sliderYRotation, SIGNAL(valueChanged(int)),
+    connect(m_sliderY, SIGNAL(valueChanged(int)),
         this, SLOT(setYRotation(int)));
 
-    connect(sliderZRotation, SIGNAL(valueChanged(int)),
+    connect(m_sliderZ, SIGNAL(valueChanged(int)),
         this, SLOT(setZRotation(int)));
 
     // Connect the start/stop button
@@ -205,11 +285,11 @@ QWidget* AutoRotateTool::settingsWidget() {
         this, SLOT(resetRotations()));
     // Connect the reset signal to the sliders
     connect(this, SIGNAL(resetRotation(int)),
-        sliderXRotation, SLOT(setValue(int)));
+        m_sliderX, SLOT(setValue(int)));
     connect(this, SIGNAL(resetRotation(int)),
-        sliderYRotation, SLOT(setValue(int)));
+        m_sliderY, SLOT(setValue(int)));
     connect(this, SIGNAL(resetRotation(int)),
-        sliderZRotation, SLOT(setValue(int)));
+        m_sliderZ, SLOT(setValue(int)));
 
     connect(m_settingsWidget, SIGNAL(destroyed()),
         this, SLOT(settingsWidgetDestroyed()));

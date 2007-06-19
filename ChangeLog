@@ -5,7 +5,10 @@
 	like the correct approach, but I have not checked with Benoit or
 	fully tested. This tracks PR#1739844.
 
-2007-06-16  Marcus D. Hanwell <marcus@cryos.org>
+2007-06-19  Marcus D. Hanwell <marcus@cryos.org>
+
+	* libavogadro/src/tools/autorotatetool.*: Added the ability to
+	initiate rotation using mouse movements. Left for x/y, middle for z.
 
 	* libavogadro/src/engines/sphereengine.*, 
 	libavogadro/src/engines/spheresettingswidget.ui: Removed the skeleton
