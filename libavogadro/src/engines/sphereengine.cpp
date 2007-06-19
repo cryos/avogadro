@@ -132,10 +132,10 @@ bool SphereEngine::render(const Atom *a)
   {
     map.set( 0.3, 0.6, 1.0, 0.7 );
     map.applyAsMaterials();
-    if (m_alpha < 0.999)
+    if (m_alpha > 0.999)
       glEnable( GL_BLEND );
     m_glwidget->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
-    if (m_alpha < 0.999)
+    if (m_alpha > 0.999)
       glDisable( GL_BLEND );
   }
 
