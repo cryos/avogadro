@@ -46,17 +46,14 @@ namespace Avogadro {
       //! Constructor
       SphereEngine(QObject *parent=0);
       //! Deconstructor
-      ~SphereEngine() {}
+      ~SphereEngine();
 
       //! \name Render Methods
       //@{
-      //! Render an Atom.
-      bool renderOpaque(const Atom *a);
-      //! Render the skeleton structure
-      bool renderSkeleton(const Atom *a);
-      bool renderSkeleton(const Bond *b);
-
       bool renderOpaque(GLWidget *gl);
+      bool renderTransparent(GLWidget *gl);
+      //! Render an Atom.
+      bool render(const Atom *a);
       //@}
 
       double transparencyDepth() const;
@@ -73,27 +70,15 @@ namespace Avogadro {
       SphereSettingsWidget *m_settingsWidget;
 
       double m_alpha; // transparency of the VdW spheres
-      double m_bondRadius;
-      double m_atomRadiusPercentage;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();
 
 
       /**
-       * @param value opacity of the VdW spheres / 100
+       * @param value opacity of the VdW spheres / 20
        */
-      void setOpacity(int percent);
-
-      /**
-       * @param percent percentage of the VdwRad
-       */
-      void setAtomRadiusPercentage(int percent);
-
-      /**
-       * @param value radius of the bonds * 10
-       */
-      void setBondRadius(int value);
+      void setOpacity(int value);
 
   };
 
