@@ -590,10 +590,42 @@ namespace Avogadro {
 
   void GLWidget::updateGeometry()
   {
-    d->center = d->molecule->center();
-    d->normalVector = d->molecule->normalVector();
-    d->radius = d->molecule->radius();
-    d->farthestAtom = d->molecule->farthestAtom();
+    // Needs to handle unit cells PR#1739844
+    
+    OBUnitCell *uc = NULL;
+
+    if (d->molecule && d->molecule->HasData(OBGenericDataType::UnitCell))
+      uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
+
+    if (!uc) { // a plain molecule, no crystal cell
+      d->center = d->molecule->center();
+      d->normalVector = d->molecule->normalVector();
+      d->radius = d->molecule->radius();
+      d->farthestAtom = d->molecule->farthestAtom();
+    } else { 
+      // render a crystal (so most geometry comes from the cell vectors)
+      // Origin at 0.0, 0.0, 0.0
+      // a = <x0, y0, z0>
+      // b = <x1, y1, z1>
+      // c = <x2, y2, z2>
+      std::vector<vector3> cellVectors = uc->GetCellVectors();
+      Eigen::Vector3d a, b, c;
+      a = *reinterpret_cast<Eigen::Vector3d *>(&cellVectors[0]);
+      a *= d->aCells;
+      b = *reinterpret_cast<Eigen::Vector3d *>(&cellVectors[1]);
+      b *= d->bCells;
+      c = *reinterpret_cast<Eigen::Vector3d *>(&cellVectors[2]);
+      c *= d->cCells;
+
+      d->center = (a + b + c) / 2.0;
+      // Radius should be the magnitude of the center vector
+      d->radius = sqrt(d->center.x() * d->center.x() + 
+                       d->center.y() * d->center.y() +
+                       d->center.z() * d->center.z());
+      // GH: Not sure about these
+      d->normalVector = d->molecule->normalVector();
+      d->farthestAtom = d->molecule->farthestAtom();
+    }
   }
 
   Camera * GLWidget::camera() const
