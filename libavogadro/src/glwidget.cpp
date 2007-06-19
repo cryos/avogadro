@@ -328,12 +328,14 @@ namespace Avogadro {
             engine->renderOpaque(this);
           }
         }
+        glDepthMask(GL_FALSE);
         foreach(Engine *engine, d->engines)
         {
           if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
             engine->renderTransparent(this);
           }
         }
+        glDepthMask(GL_TRUE);
     } else { // render a crystal
       cellVectors = uc->GetCellVectors();
 
@@ -591,7 +593,7 @@ namespace Avogadro {
   void GLWidget::updateGeometry()
   {
     // Needs to handle unit cells PR#1739844
-    
+
     OBUnitCell *uc = NULL;
 
     if (d->molecule && d->molecule->HasData(OBGenericDataType::UnitCell))
@@ -602,7 +604,7 @@ namespace Avogadro {
       d->normalVector = d->molecule->normalVector();
       d->radius = d->molecule->radius();
       d->farthestAtom = d->molecule->farthestAtom();
-    } else { 
+    } else {
       // render a crystal (so most geometry comes from the cell vectors)
       // Origin at 0.0, 0.0, 0.0
       // a = <x0, y0, z0>
@@ -619,7 +621,7 @@ namespace Avogadro {
 
       d->center = (a + b + c) / 2.0;
       // Radius should be the magnitude of the center vector
-      d->radius = sqrt(d->center.x() * d->center.x() + 
+      d->radius = sqrt(d->center.x() * d->center.x() +
                        d->center.y() * d->center.y() +
                        d->center.z() * d->center.z());
       // GH: Not sure about these
