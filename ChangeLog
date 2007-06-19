@@ -1,3 +1,16 @@
+2007-06-19  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* libavogadro/src/glwidget.*: Added ::radius function to the GLWidget that
+	way tools and engines only need to ask the GLWidget the radius rather than
+	actually going through all engines on their own.  Also, engines more
+	accurately give radius.
+
+	* libavogadro/src/engine.*: updated ::radius function to take the GLWidget
+	as a parameter.
+
+	* libavogadro/src/engines/*: updated engines to not maintain an internal
+	pointer to the GLWidget that was last called.
+
 2007-06-19  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/glwidget.cpp (updateGeometry): Initial attempt
@@ -25,22 +38,22 @@
 
 2007-06-18  Donald E. Curtis <dcurtis3@sourceforge.net>
 
-        * libavogadro/src/glwidget.cpp: added second pass (trasnparent)
-        render.
+	* libavogadro/src/glwidget.cpp: added second pass (trasnparent)
+	render.
 
-        * libavogadro/src/engine.*: added some engine flags for
-        transparency atoms, bonds, molecules so that the glwidget
-        has a better idea of the capabilities of the engines.  also added
-        the transparencyDepth relative to others.  this needs a conceptual
-        update just because i don't think it's intuitive.  if people define
-        theirs higher than other engines they get priority.  i still believe
-        this should be dependent on the ::radius response for the specific
-        primitive type we're trying to compare.
+	* libavogadro/src/engine.*: added some engine flags for
+	transparency atoms, bonds, molecules so that the glwidget
+	has a better idea of the capabilities of the engines.  also added
+	the transparencyDepth relative to others.  this needs a conceptual
+	update just because i don't think it's intuitive.  if people define
+	theirs higher than other engines they get priority.  i still believe
+	this should be dependent on the ::radius response for the specific
+	primitive type we're trying to compare.
 
-        * libavogadro/src/glwidget.*: engines are now sorted on load
-        based on their flags and their transparencyDepth.
+	* libavogadro/src/glwidget.*: engines are now sorted on load
+	based on their flags and their transparencyDepth.
 
-        * libavogadro/src/engines/*: added flags and depth stuff.
+	* libavogadro/src/engines/*: added flags and depth stuff.
 
 2007-06-17  Donald E. Curtis <dcurtis3@sourceforge.net>
 
@@ -50,11 +63,11 @@
 
 	* libavogadro/src/primitive.*: Removed old selection code.
 
-        * libavogadro/src/selectrotate.cpp: Updated so that if there are
-        multiple engines, the toggling of selection only happens once per
-        primitive.
+	* libavogadro/src/selectrotate.cpp: Updated so that if there are
+	multiple engines, the toggling of selection only happens once per
+	primitive.
 
-        * avogadro/src/extensions/gamessinputdialog.cpp: Fixed bug 1720467.
+	* avogadro/src/extensions/gamessinputdialog.cpp: Fixed bug 1720467.
 
 2007-06-17  Geoffrey Hutchison  <babel@geoffhutchison.net>
 

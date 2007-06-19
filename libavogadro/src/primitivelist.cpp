@@ -86,8 +86,10 @@ namespace Avogadro {
     return returnList;
   }
 
-  bool PrimitiveList::contains(Primitive *p) const {
-    return d->vector[p->type()].contains(p);
+  bool PrimitiveList::contains(const Primitive *p) const {
+    // this is really bad, but it's a compiler workaround
+    Primitive *cp = const_cast<Primitive *>(p);
+    return d->vector[p->type()].contains(cp);
   }
 
   void PrimitiveList::append(Primitive *p) {

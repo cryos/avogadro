@@ -53,20 +53,19 @@ namespace Avogadro {
       bool renderOpaque(GLWidget *gl);
       bool renderTransparent(GLWidget *gl);
       //! Render an Atom.
-      bool render(const Atom *a);
+      bool render(GLWidget *gl, const Atom *a);
       //@}
 
       double transparencyDepth() const;
       EngineFlags flags() const;
 
-      double radius(const Primitive *p = 0) const;
+      double radius(const GLWidget *gl, const Primitive *p = 0) const;
 
       QWidget* settingsWidget();
 
     private:
       inline double radius(const Atom *a) const;
 
-      GLWidget *m_glwidget;
       SphereSettingsWidget *m_settingsWidget;
 
       double m_alpha; // transparency of the VdW spheres

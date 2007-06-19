@@ -7,9 +7,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -162,7 +162,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
   {
     if ( event->buttons() & Qt::LeftButton )
     {
-      // Atom centred rotation 
+      // Atom centred rotation
       rotate( m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y() );
     }
     else if ( event->buttons() & Qt::MidButton )
@@ -230,17 +230,7 @@ bool NavigateTool::paint(GLWidget *widget)
 {
   if(m_leftButtonPressed || m_midButtonPressed || m_rightButtonPressed) {
     if(m_clickedAtom) {
-      double renderRadius = 0.0;
-      foreach(Engine *engine, widget->engines())
-      {
-        if(engine->isEnabled())
-        {
-          double engineRadius = engine->radius(m_clickedAtom);
-          if(engineRadius > renderRadius) {
-            renderRadius = engineRadius;
-          }
-        }
-      }
+      double renderRadius = widget->radius(m_clickedAtom);
       renderRadius += 0.10;
       drawSphere(widget, m_clickedAtom->GetVector().AsArray(), renderRadius, 0.7);
     }

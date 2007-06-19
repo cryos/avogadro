@@ -53,14 +53,11 @@ namespace Avogadro {
 
       //! \name Render Methods
       //@{
-      //! Render an Atom.
-      bool renderOpaque(const Atom *a);
-      //! Render a Bond.
-      bool renderOpaque(const Bond *b);
 
       bool renderOpaque(GLWidget *gl);
+      bool renderTransparent(GLWidget *gl);
 
-      double radius(const Primitive *p = 0) const;
+      double radius(const GLWidget *gl, const Primitive *p = 0) const;
       //@}
 
       //! Display a window for the user to pick rendering options
@@ -69,7 +66,6 @@ namespace Avogadro {
     private:
       double radius(const Atom *atom) const;
 
-      GLWidget *m_glwidget;
       BSDYSettingsWidget *m_settingsWidget;
 
       double m_atomRadiusPercentage;

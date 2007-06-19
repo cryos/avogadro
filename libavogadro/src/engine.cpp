@@ -60,7 +60,7 @@ namespace Avogadro {
     emit changed();
   }
 
-  double Engine::radius(const Primitive*) const
+  double Engine::radius(const GLWidget *, const Primitive*) const
   {
     return 0.0;
   }

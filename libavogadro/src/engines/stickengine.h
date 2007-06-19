@@ -46,23 +46,19 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       //! Render an Atom.
-      bool renderOpaque(const Atom *a);
+      bool renderOpaque(GLWidget *gl, const Atom *a);
       //! Render a Bond.
-      bool renderOpaque(const Bond *b);
-      //! Render a Molecule.
-      bool renderOpaque(const Molecule *m);
+      bool renderOpaque(GLWidget *gl, const Bond *b);
 
       bool renderOpaque(GLWidget *gl);
       //@}
 
       double transparencyDepth() const;
       EngineFlags flags() const;
-      double radius(const Primitive *p = 0) const;
+      double radius(const GLWidget *gl, const Primitive *p = 0) const;
 
     private:
       inline double radius(const Atom *a) const;
-
-      GLWidget *m_glwidget;
   };
 
   //! Generates instances of our StickEngine class

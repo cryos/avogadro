@@ -42,7 +42,8 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-SphereEngine::SphereEngine(QObject *parent) : Engine(parent), m_glwidget(0), m_settingsWidget(0),
+
+SphereEngine::SphereEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
   m_alpha(1.)
 {
   setName(tr("VdW Sphere"));
@@ -59,8 +60,7 @@ SphereEngine::~SphereEngine()
 
 bool SphereEngine::renderOpaque(GLWidget *gl)
 {
-  m_glwidget = gl;
-  m_glwidget->painter()->begin(m_glwidget);
+  gl->painter()->begin(gl);
 
   // Render the opaque spheres if m_alpha is 1
   if (m_alpha > 0.999)
@@ -71,7 +71,7 @@ bool SphereEngine::renderOpaque(GLWidget *gl)
     glDisable( GL_NORMALIZE );
     glEnable( GL_RESCALE_NORMAL );
     foreach( Primitive *p, list )
-      render(static_cast<const Atom *>(p));
+      render(gl, static_cast<const Atom *>(p));
     glDisable( GL_RESCALE_NORMAL);
     glEnable( GL_NORMALIZE );
   }
@@ -82,21 +82,27 @@ bool SphereEngine::renderOpaque(GLWidget *gl)
 
 bool SphereEngine::renderTransparent(GLWidget *gl)
 {
-  m_glwidget = gl;
-  m_glwidget->painter()->begin(m_glwidget);
+  gl->painter()->begin(gl);
+
 
   // If m_alpha is between 0 and 1 then render our transparent spheres
   if (m_alpha > 0.001 && m_alpha < 0.999)
   {
+    // Looks better and more like what we want.
+    glDepthMask(GL_TRUE);
+
     QList<Primitive *> list;
     list = primitives().subList(Primitive::AtomType);
+
 
     // First pass using a colour mask - nothing is actually drawn
     glColorMask(GL_FALSE,GL_FALSE,GL_FALSE,GL_FALSE);
     glDisable(GL_LIGHTING);
     glDisable(GL_BLEND);
     foreach( Primitive *p, list )
-      render(static_cast<const Atom *>(p));
+    {
+      render(gl, static_cast<const Atom *>(p));
+    }
     glColorMask(GL_TRUE,GL_TRUE,GL_TRUE,GL_TRUE);
     glEnable(GL_BLEND);
     glEnable(GL_LIGHTING);
@@ -105,17 +111,22 @@ bool SphereEngine::renderTransparent(GLWidget *gl)
     glDisable( GL_NORMALIZE );
     glEnable( GL_RESCALE_NORMAL );
     foreach( Primitive *p, list )
-      render(static_cast<const Atom *>(p));
+    {
+      render(gl, static_cast<const Atom *>(p));
+    }
 
     glDisable( GL_RESCALE_NORMAL);
     glEnable( GL_NORMALIZE );
+
+    // return to previous state
+    glDepthMask(GL_FALSE);
   }
 
   gl->painter()->end();
   return true;
 }
 
-bool SphereEngine::render(const Atom *a)
+bool SphereEngine::render(GLWidget *gl, const Atom *a)
 {
   // Render the atoms as Van der Waals spheres
   Color map = colorMap();
@@ -125,16 +136,16 @@ bool SphereEngine::render(const Atom *a)
   map.setAlpha(m_alpha);
   map.applyAsMaterials();
 
-  m_glwidget->painter()->drawSphere( a->pos(), radius(a) );
+  gl->painter()->drawSphere( a->pos(), radius(a) );
 
   // Draw a selection sphere if necessary
-  if (m_glwidget->isSelected(a))
+  if (gl->isSelected(a))
   {
     map.set( 0.3, 0.6, 1.0, 0.7 );
     map.applyAsMaterials();
     if (m_alpha > 0.999)
       glEnable( GL_BLEND );
-    m_glwidget->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
+    gl->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
     if (m_alpha > 0.999)
       glDisable( GL_BLEND );
   }
@@ -150,21 +161,22 @@ inline double SphereEngine::radius(const Atom *a) const
   return etab.GetVdwRad(a->GetAtomicNum());
 }
 
-double SphereEngine::radius(const Primitive *p) const
+double SphereEngine::radius(const GLWidget *gl, const Primitive *p) const
 {
   // Atom radius
   if (p->type() == Primitive::AtomType)
   {
-    if (m_glwidget)
+    if(primitives().contains(p))
     {
-      if (m_glwidget->isSelected(p))
+      if (gl && gl->isSelected(p))
+      {
         return radius(static_cast<const Atom *>(p)) + SEL_ATOM_EXTRA_RADIUS;
+      }
+      return radius(static_cast<const Atom *>(p));
     }
-    return radius(static_cast<const Atom *>(p));
   }
   // Something else
-  else
-    return 0.;
+  return 0.;
 }
 
 double SphereEngine::transparencyDepth() const

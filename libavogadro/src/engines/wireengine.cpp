@@ -7,9 +7,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -41,7 +41,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-WireEngine::WireEngine(QObject *parent) : Engine(parent), m_glwidget(0)
+WireEngine::WireEngine(QObject *parent) : Engine(parent)
 {
   setName(tr("Wireframe"));
   setDescription(tr("Wireframe rendering"));
@@ -49,7 +49,7 @@ WireEngine::WireEngine(QObject *parent) : Engine(parent), m_glwidget(0)
 
 bool WireEngine::renderOpaque(GLWidget *gl)
 {
-  m_glwidget = gl;
+  gl = gl;
 
   QList<Primitive *> list;
 
@@ -59,12 +59,12 @@ bool WireEngine::renderOpaque(GLWidget *gl)
 
   list = primitives().subList(Primitive::AtomType);
   foreach( Primitive *p, list ) {
-    renderOpaque(static_cast<const Atom *>(p));
+    renderOpaque(gl, static_cast<const Atom *>(p));
   }
 
   list = primitives().subList(Primitive::BondType);
   foreach( Primitive *p, list ) {
-    renderOpaque(static_cast<const Bond *>(p));
+    renderOpaque(gl, static_cast<const Bond *>(p));
   }
 
   glPopAttrib();
@@ -72,22 +72,22 @@ bool WireEngine::renderOpaque(GLWidget *gl)
   return true;
 }
 
-bool WireEngine::renderOpaque(const Atom *a)
+bool WireEngine::renderOpaque(GLWidget *gl, const Atom *a)
 {
   const Vector3d & v = a->pos();
-  
-  Eigen::Vector3d transformedPos = m_glwidget->camera()->modelview() * v;
-    
+
+  Eigen::Vector3d transformedPos = gl->camera()->modelview() * v;
+
   // perform a rough form of frustum culling
   double dot = transformedPos.z() / transformedPos.norm();
   if(dot > -0.8) return true;
-  
+
   Color map = colorMap();
   const float selectionColor[3] = {0.3, 0.6, 1.0};
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
 
-  if (m_glwidget->isSelected(a)) {
+  if (gl->isSelected(a)) {
     glColor3fv(selectionColor);
     glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 4.0);
   }
@@ -107,17 +107,17 @@ bool WireEngine::renderOpaque(const Atom *a)
   return true;
 }
 
-bool WireEngine::renderOpaque(const Bond *b)
+bool WireEngine::renderOpaque(GLWidget *gl, const Bond *b)
 {
   const Atom *atom1 = static_cast<const Atom *>( b->GetBeginAtom() );
   const Vector3d & v1 = atom1->pos();
-  
-  Eigen::Vector3d transformedEnd1 = m_glwidget->camera()->modelview() * v1;
-    
+
+  Eigen::Vector3d transformedEnd1 = gl->camera()->modelview() * v1;
+
   // perform a rough form of frustum culling
   double dot = transformedEnd1.z() / transformedEnd1.norm();
   if(dot > -0.8) return true;
-    
+
   const Atom *atom2 = static_cast<const Atom *>( b->GetEndAtom() );
   const Vector3d & v2 = atom2->pos();
 
@@ -139,12 +139,6 @@ bool WireEngine::renderOpaque(const Bond *b)
   glEnd();
 
   return true;
-}
-
-bool WireEngine::renderOpaque(const Molecule*)
-{
-  // Disabled
-  return false;
 }
 
 #include "wireengine.moc"

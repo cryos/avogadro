@@ -143,7 +143,6 @@ namespace Avogadro {
   }
 
   bool GLHit::operator<(const GLHit &other) const {
-    qDebug() << "SortHit";
     GLHitPrivate *e = other.d;
     return d->minZ < e->minZ;
   }
@@ -885,6 +884,23 @@ namespace Avogadro {
     return QSize(200,200);
   }
 
+  double GLWidget::radius(const Primitive *p) const
+  {
+    double radius = 0.0;
+    foreach(Engine *engine, d->engines)
+    {
+      if(engine->isEnabled())
+      {
+        double engineRadius = engine->radius(this, p);
+        if(engineRadius > radius) {
+          radius = engineRadius;
+        }
+      }
+    }
+
+    return radius;
+  }
+
   bool GLWidget::isStable() const
   {
     return d->stable;
@@ -929,7 +945,7 @@ void GLWidget::toggleSelected(QList<Primitive*> primitives)
     d->selectedPrimitives.clear();
   }
 
-  bool GLWidget::isSelected(const Primitive *p)
+  bool GLWidget::isSelected(const Primitive *p) const
   {
     // Return true if the item is selected
     return d->selectedPrimitives.contains(const_cast<Primitive *>(p));

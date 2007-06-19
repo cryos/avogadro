@@ -133,7 +133,7 @@ namespace Avogadro {
        * @param primitive is the Primitive to get the radius of
        * @return the radius of the Primitive
        */
-      virtual double radius(const Primitive *primitive = 0) const;
+      virtual double radius(const GLWidget *gl, const Primitive *primitive = 0) const;
 
       /**
        * @return transparency level, rendered low to high

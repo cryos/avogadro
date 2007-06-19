@@ -40,7 +40,7 @@ using namespace OpenBabel;
 using namespace Eigen;
 using namespace Avogadro;
 
-StickEngine::StickEngine(QObject *parent) : Engine(parent), m_glwidget(0)
+StickEngine::StickEngine(QObject *parent) : Engine(parent)
 {
   setName(tr("Stick"));
   setDescription(tr("Renders as Cylinders"));
@@ -52,11 +52,11 @@ StickEngine::~StickEngine()
 
 bool StickEngine::renderOpaque(GLWidget *gl)
 {
-  m_glwidget = gl;
+  gl = gl;
 
   QList<Primitive *> list;
 
-  m_glwidget->painter()->begin(m_glwidget);
+  gl->painter()->begin(gl);
 
   glPushAttrib(GL_TRANSFORM_BIT);
   glDisable( GL_NORMALIZE );
@@ -66,7 +66,7 @@ bool StickEngine::renderOpaque(GLWidget *gl)
   list = primitives().subList(Primitive::AtomType);
   foreach( Primitive *p, list )
   {
-    renderOpaque(static_cast<Atom *>(p));
+    renderOpaque(gl, static_cast<Atom *>(p));
   }
 
   list = primitives().subList(Primitive::BondType);
@@ -79,16 +79,16 @@ bool StickEngine::renderOpaque(GLWidget *gl)
   list = primitives().subList(Primitive::BondType);
   foreach( Primitive *p, list )
   {
-    renderOpaque(static_cast<const Bond *>(p));
+    renderOpaque(gl, static_cast<const Bond *>(p));
   }
 
   glPopAttrib();
 
-  m_glwidget->painter()->end();
+  gl->painter()->end();
   return true;
 }
 
-bool StickEngine::renderOpaque(const Atom* a)
+bool StickEngine::renderOpaque(GLWidget *gl, const Atom* a)
 {
   Color map = colorMap();
 
@@ -99,14 +99,14 @@ bool StickEngine::renderOpaque(const Atom* a)
   map.set(a);
   map.applyAsMaterials();
 
-  m_glwidget->painter()->drawSphere( a->pos(), radius(a) );
+  gl->painter()->drawSphere( a->pos(), radius(a) );
 
-  if (m_glwidget->isSelected(a))
+  if (gl->isSelected(a))
   {
     map.set( 0.3, 0.6, 1.0, 0.7 );
     map.applyAsMaterials();
     glEnable( GL_BLEND );
-    m_glwidget->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
+    gl->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
     glDisable( GL_BLEND );
   }
 
@@ -116,7 +116,7 @@ bool StickEngine::renderOpaque(const Atom* a)
   return true;
 }
 
-bool StickEngine::renderOpaque(const Bond* b)
+bool StickEngine::renderOpaque(GLWidget *gl, const Bond* b)
 {
   Color map = colorMap();
 
@@ -132,19 +132,19 @@ bool StickEngine::renderOpaque(const Bond* b)
 
   map.set(atom1);
   map.applyAsMaterials();
-  m_glwidget->painter()->drawCylinder( v1, v3, radius(atom1) );
+  gl->painter()->drawCylinder( v1, v3, radius(atom1) );
 
   map.set(atom2);
   map.applyAsMaterials();
-  m_glwidget->painter()->drawCylinder( v3, v2, radius(atom1) );
+  gl->painter()->drawCylinder( v3, v2, radius(atom1) );
 
   // Render the selection highlight
-  if (m_glwidget->isSelected(b))
+  if (gl->isSelected(b))
   {
     map.set( 0.3, 0.6, 1.0, 0.7 );
     map.applyAsMaterials();
     glEnable( GL_BLEND );
-    m_glwidget->painter()->drawCylinder( v1, v2, SEL_BOND_EXTRA_RADIUS + radius(atom1) );
+    gl->painter()->drawCylinder( v1, v2, SEL_BOND_EXTRA_RADIUS + radius(atom1) );
     glDisable( GL_BLEND );
   }
 
@@ -154,20 +154,14 @@ bool StickEngine::renderOpaque(const Bond* b)
   return true;
 }
 
-bool StickEngine::renderOpaque(const Molecule*)
-{
-  // Disabled
-  return false;
-}
-
-double StickEngine::radius(const Primitive *p) const
+double StickEngine::radius(const GLWidget *gl, const Primitive *p) const
 {
   // Atom radius
   if (p->type() == Primitive::AtomType)
   {
-    if (m_glwidget)
+    if (gl)
     {
-      if (m_glwidget->isSelected(p))
+      if (gl->isSelected(p))
         return radius(static_cast<const Atom *>(p)) + SEL_ATOM_EXTRA_RADIUS;
     }
     return radius(static_cast<const Atom *>(p));
@@ -176,9 +170,9 @@ double StickEngine::radius(const Primitive *p) const
   else if (p->type() == Primitive::BondType)
   {
     const Atom* a = static_cast<const Atom *>((static_cast<const Bond *>(p))->GetBeginAtom());
-    if (m_glwidget)
+    if (gl)
     {
-      if (m_glwidget->isSelected(p))
+      if (gl->isSelected(p))
         return radius(a) + SEL_BOND_EXTRA_RADIUS;
     }
     return radius(a);

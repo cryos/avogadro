@@ -77,7 +77,7 @@ namespace Avogadro {
        * @param p the primitive to check if it is in any list
        * @return true or false depending on whether p is in this list
        */
-      bool contains(Primitive *p) const;
+      bool contains(const Primitive *p) const;
 
       /**
        * Add a primitive to the queue.

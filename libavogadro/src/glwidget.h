@@ -241,6 +241,11 @@ namespace Avogadro {
       QSize minimumSizeHint() const;
 
       /**
+       * @return the radius of the primitive object for this glwidget.
+       */
+      double radius(const Primitive *p) const;
+
+      /**
        * Set the background color of the rendering area.  (default black)
        *
        * @param background the new background color
@@ -392,7 +397,7 @@ namespace Avogadro {
 
       /** \return true if the Primitive is selected
        */
-      bool isSelected(const Primitive *p);
+      bool isSelected(const Primitive *p) const;
       /* end selection method grouping */
       /** @} */
 

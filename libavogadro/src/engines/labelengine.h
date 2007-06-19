@@ -52,8 +52,8 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       bool renderOpaque(GLWidget *gl);
-      bool renderOpaque(const Atom *a);
-      bool renderOpaque(const Bond *b);
+      bool renderOpaque(GLWidget *gl, const Atom *a);
+      bool renderOpaque(GLWidget *gl, const Bond *b);
       //@}
 
       EngineFlags flags() const;
@@ -62,7 +62,6 @@ namespace Avogadro {
       QWidget *settingsWidget();
 
     private:
-      GLWidget *m_glwidget;
       int m_atomType;  // Atom label type
       int m_bondType;  // Bond label type
       LabelSettingsWidget* m_settingsWidget;

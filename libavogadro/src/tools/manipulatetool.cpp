@@ -292,17 +292,7 @@ bool ManipulateTool::paint(GLWidget *widget)
     if( m_clickedAtom && (!m_rightButtonPressed || m_glwidget->selectedPrimitives().size()) )
     {
       // Don't highlight the atom on right mouse unless there is a selection
-      double renderRadius = 0.0;
-      foreach(Engine *engine, widget->engines())
-      {
-        if(engine->isEnabled())
-        {
-          double engineRadius = engine->radius(m_clickedAtom);
-          if(engineRadius > renderRadius) {
-            renderRadius = engineRadius;
-          }
-        }
-      }
+      double renderRadius = widget->radius(m_clickedAtom);
       renderRadius += 0.10;
       drawSphere(widget, m_clickedAtom->GetVector().AsArray(), renderRadius, 0.7);
     }

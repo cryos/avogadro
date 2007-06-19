@@ -43,7 +43,7 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-LabelEngine::LabelEngine(QObject *parent) : Engine(parent), m_glwidget(0),
+LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
   m_atomType(1), m_bondType(1), m_settingsWidget(0)
 {
   setName(tr("Label"));
@@ -52,7 +52,6 @@ LabelEngine::LabelEngine(QObject *parent) : Engine(parent), m_glwidget(0),
 
 bool LabelEngine::renderOpaque(GLWidget *gl)
 {
-  m_glwidget = gl;
   gl->painter()->begin(gl);
 
   QList<Primitive *> list;
@@ -62,7 +61,7 @@ bool LabelEngine::renderOpaque(GLWidget *gl)
     // Render atom labels
     list = primitives().subList(Primitive::AtomType);
     foreach( Primitive *p, list )
-      renderOpaque(static_cast<Atom *>(p));
+      renderOpaque(gl, static_cast<Atom *>(p));
   }
 
   if (m_bondType < 1)
@@ -70,31 +69,22 @@ bool LabelEngine::renderOpaque(GLWidget *gl)
     // Now render the bond labels
     list = primitives().subList(Primitive::BondType);
     foreach( Primitive *p, list )
-      renderOpaque(static_cast<const Bond*>(p));
+      renderOpaque(gl, static_cast<const Bond*>(p));
   }
 
   gl->painter()->end();
   return true;
 }
 
-bool LabelEngine::renderOpaque(const Atom *a)
+bool LabelEngine::renderOpaque(GLWidget *gl, const Atom *a)
 {
   // Render atom labels
   const Vector3d pos = a->pos();
 
-  double renderRadius = 0.;
-  foreach(Engine *engine, m_glwidget->engines())
-  {
-    if(engine->isEnabled())
-    {
-      double engineRadius = engine->radius(a);
-      if(engineRadius > renderRadius)
-        renderRadius = engineRadius;
-    }
-  }
+  double renderRadius = gl->radius(a);
   renderRadius += 0.05;
 
-  double zDistance = m_glwidget->camera()->distance(pos);
+  double zDistance = gl->camera()->distance(pos);
 
   if(zDistance < 50.0)
   {
@@ -112,17 +102,17 @@ bool LabelEngine::renderOpaque(const Atom *a)
         str = QString((etab.GetName(a->GetAtomicNum())).c_str());
     }
 
-    Vector3d zAxis = m_glwidget->camera()->backtransformedZAxis();
+    Vector3d zAxis = gl->camera()->backtransformedZAxis();
 
     Vector3d drawPos = pos + zAxis * renderRadius;
 
     glColor3f(1.0, 1.0, 1.0);
-    m_glwidget->painter()->drawText(drawPos, str);
+    gl->painter()->drawText(drawPos, str);
   }
   return true;
 }
 
-bool LabelEngine::renderOpaque(const Bond *b)
+bool LabelEngine::renderOpaque(GLWidget *gl, const Bond *b)
 {
   // Render bond labels
   const Atom* atom1 = static_cast<const Atom *>(b->GetBeginAtom());
@@ -133,21 +123,9 @@ bool LabelEngine::renderOpaque(const Bond *b)
   d.normalize();
 
   // Work out the radii of the atoms and the bond
-  double renderRadius = 0.;
-  double renderRadiusA1 = 0.;
-  double renderRadiusA2 = 0.;
-  foreach(Engine *engine, m_glwidget->engines())
-  {
-    if(engine->isEnabled())
-    {
-      if (engine->radius(atom1) > renderRadiusA1)
-        renderRadiusA1 = engine->radius(atom1);
-      if (engine->radius(atom2) > renderRadiusA2)
-        renderRadiusA2 = engine->radius(atom2);
-      if(engine->radius(b) > renderRadius)
-        renderRadius = engine->radius(b);
-    }
-  }
+  double renderRadius = gl->radius(b);
+  double renderRadiusA1 = gl->radius(atom1);
+  double renderRadiusA2 = gl->radius(atom2);
   // If the render radius is zero then this view does not draw bonds
   if (!renderRadius)
     return false;
@@ -157,17 +135,17 @@ bool LabelEngine::renderOpaque(const Bond *b)
   // Calculate the
   Vector3d pos ( (v1 + v2 + d*(renderRadiusA1-renderRadiusA2)) / 2.0 );
 
-  double zDistance = m_glwidget->camera()->distance(pos);
+  double zDistance = gl->camera()->distance(pos);
 
   if(zDistance < 50.0)
   {
     QString str = QString::number(b->GetIdx());
 
-    Vector3d zAxis = m_glwidget->camera()->backtransformedZAxis();
+    Vector3d zAxis = gl->camera()->backtransformedZAxis();
     Vector3d drawPos = pos + zAxis * renderRadius;
 
     glColor3f(1.0, 1.0, 1.0);
-    m_glwidget->painter()->drawText(drawPos, str);
+    gl->painter()->drawText(drawPos, str);
   }
   return true;
 }
