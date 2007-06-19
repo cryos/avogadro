@@ -44,7 +44,7 @@
 using namespace OpenBabel;
 namespace Avogadro {
 
-  bool engineLessThan2(const Engine* lhs, const Engine* rhs)
+  bool engineLessThan(const Engine* lhs, const Engine* rhs)
   {
     Engine::EngineFlags lhsFlags = lhs->flags();
     Engine::EngineFlags rhsFlags = rhs->flags();
@@ -59,7 +59,6 @@ namespace Avogadro {
     }
     else if (lhsFlags & Engine::Overlay && !(rhsFlags & Engine::Overlay))
     {
-      qDebug() << "overlay false";
       return false;
     }
     else if(!(lhsFlags & Engine::Molecules) && rhsFlags & Engine::Molecules)
@@ -72,7 +71,6 @@ namespace Avogadro {
     }
     else if (lhsFlags & Engine::Molecules && !(rhsFlags & Engine::Molecules))
     {
-      qDebug() << "molecules false" << (lhsFlags & Engine::Molecules) << ":" << (rhsFlags & Engine::Molecules);
       return false;
     }
     else if(!(lhsFlags & Engine::Atoms) && rhsFlags & Engine::Atoms)
@@ -81,12 +79,10 @@ namespace Avogadro {
     }
     else if (lhsFlags & Engine::Atoms && rhsFlags & Engine::Atoms)
     {
-      qDebug() << "compare atoms: " << lhs->transparencyDepth() << "-" << rhs->transparencyDepth();
       return lhs->transparencyDepth() < rhs->transparencyDepth();
     }
     else if (lhsFlags & Engine::Atoms && !(rhsFlags & Engine::Atoms))
     {
-      qDebug() << "atoms false";
       return false;
     }
     else if(!(lhsFlags & Engine::Bonds) && rhsFlags & Engine::Bonds)
@@ -99,22 +95,9 @@ namespace Avogadro {
     }
     else if (lhsFlags & Engine::Bonds && !(rhsFlags & Engine::Bonds))
     {
-      qDebug() << "bonds false";
       return false;
     }
-    qDebug() << "default false";
     return false;
-  }
-
-  bool engineLessThan(const Engine* lhs, const Engine* rhs)
-  {
-    bool val = engineLessThan2(lhs, rhs);
-    qDebug() << "-------------------";
-    qDebug() << lhs->name() << " : " << lhs->flags();
-    qDebug() << rhs->name() << " : " << rhs->flags();
-    qDebug() << val;
-    qDebug() << "-------------------";
-    return val;
   }
 
   class GLHitPrivate
@@ -345,9 +328,16 @@ namespace Avogadro {
             engine->renderOpaque(this);
           }
         }
+        foreach(Engine *engine, d->engines)
+        {
+          if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
+            engine->renderTransparent(this);
+          }
+        }
     } else { // render a crystal
       cellVectors = uc->GetCellVectors();
 
+      // render opaque parts of crystal
       for (int a = 0; a < d->aCells; a++) {
         for (int b = 0; b < d->bCells; b++)  {
           for (int c = 0; c < d->cCells; c++) {
@@ -367,6 +357,29 @@ namespace Avogadro {
         glTranslatef(cellVectors[1].x() * -d->bCells,
                      cellVectors[1].y() * -d->bCells,
                      cellVectors[1].z() * -d->bCells);
+        glTranslatef(cellVectors[0].x(), cellVectors[0].y(), cellVectors[0].z());
+      } // end a
+
+      // render transparent parts of crystal
+      for (int a = 0; a < d->aCells; a++) {
+        for (int b = 0; b < d->bCells; b++)  {
+          for (int c = 0; c < d->cCells; c++) {
+            foreach(Engine *engine, d->engines)
+            {
+              if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
+                engine->renderTransparent(this);
+              }
+            }
+            glTranslatef(cellVectors[2].x(), cellVectors[2].y(), cellVectors[2].z());
+          } // end c
+          glTranslatef(cellVectors[2].x() * -d->cCells,
+                      cellVectors[2].y() * -d->cCells,
+                                        cellVectors[2].z() * -d->cCells);
+          glTranslatef(cellVectors[1].x(), cellVectors[1].y(), cellVectors[1].z());
+        } // end b
+        glTranslatef(cellVectors[1].x() * -d->bCells,
+                    cellVectors[1].y() * -d->bCells,
+                                      cellVectors[1].z() * -d->bCells);
         glTranslatef(cellVectors[0].x(), cellVectors[0].y(), cellVectors[0].z());
       } // end a
     } // end rendering crystal

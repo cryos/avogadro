@@ -1,5 +1,8 @@
 2007-06-18  Donald E. Curtis <dcurtis3@sourceforge.net>
 
+        * libavogadro/src/glwidget.cpp: added second pass (trasnparent)
+        render.
+
         * libavogadro/src/engine.*: added some engine flags for
         transparency atoms, bonds, molecules so that the glwidget
         has a better idea of the capabilities of the engines.  also added
@@ -11,6 +14,8 @@
 
         * libavogadro/src/glwidget.*: engines are now sorted on load
         based on their flags and their transparencyDepth.
+
+        * libavogadro/src/engines/*: added flags and depth stuff.
 
 2007-06-17  Donald E. Curtis <dcurtis3@sourceforge.net>
 
