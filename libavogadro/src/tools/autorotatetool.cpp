@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -112,9 +112,13 @@ void AutoRotateTool::setTimer()
   {
     killTimer(timerId);
     timerId = 0;
+    m_buttonStartStop->setText(tr("Start"));
   }
   else
+  {
     timerId = startTimer(40);
+    m_buttonStartStop->setText(tr("Stop"));
+  }
 }
 
 void AutoRotateTool::resetRotations()
@@ -165,10 +169,10 @@ QWidget* AutoRotateTool::settingsWidget() {
     sliderZRotation->setValue(0);
 
     // Push buttons to start/stop and to reset
-    QPushButton* buttonStartStop = new QPushButton("Start/Stop", m_settingsWidget);
+    m_buttonStartStop = new QPushButton("Start", m_settingsWidget);
     QPushButton* buttonReset = new QPushButton("Reset", m_settingsWidget);
     QHBoxLayout* buttonLayout = new QHBoxLayout();
-    buttonLayout->addWidget(buttonStartStop);
+    buttonLayout->addWidget(m_buttonStartStop);
     buttonLayout->addWidget(buttonReset);
 
     QVBoxLayout* layout = new QVBoxLayout();
@@ -193,7 +197,7 @@ QWidget* AutoRotateTool::settingsWidget() {
         this, SLOT(setZRotation(int)));
 
     // Connect the start/stop button
-    connect(buttonStartStop, SIGNAL(clicked()),
+    connect(m_buttonStartStop, SIGNAL(clicked()),
         this, SLOT(setTimer()));
 
     // Connect the reset button to the reset slot
@@ -217,6 +221,7 @@ QWidget* AutoRotateTool::settingsWidget() {
 void AutoRotateTool::settingsWidgetDestroyed()
 {
   m_settingsWidget = 0;
+  m_buttonStartStop = 0;
 }
 
 #include "autorotatetool.moc"

@@ -35,6 +35,7 @@
 #include <QAction>
 #include <QWidget>
 
+class QPushButton;
 namespace Avogadro {
 
   /**
@@ -100,6 +101,7 @@ namespace Avogadro {
       void rotate() const;
       void timerEvent(QTimerEvent* event);
 
+      QPushButton *m_buttonStartStop;
       QWidget* m_settingsWidget;
 
     private Q_SLOTS:
