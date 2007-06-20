@@ -109,14 +109,12 @@ bool SphereEngine::renderTransparent(GLWidget *gl)
     // Render the atoms as VdW spheres
     glDisable( GL_NORMALIZE );
     glEnable( GL_RESCALE_NORMAL );
-    glDepthMask(GL_TRUE);
 
     foreach( Primitive *p, list )
     {
       render(gl, static_cast<const Atom *>(p));
     }
 
-    glDepthMask(GL_FALSE);
     glDisable( GL_RESCALE_NORMAL);
     glEnable( GL_NORMALIZE );
 
