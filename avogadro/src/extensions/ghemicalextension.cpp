@@ -136,6 +136,8 @@ using namespace OpenBabel;
       m_stop = false;
       m_cycles = 0;
 
+      int steps = 0;
+
       ostringstream buff;
       m_forceField->SetLogFile(&buff);
       m_forceField->SetLogLevel(OBFF_LOGLVL_LOW);
@@ -160,7 +162,11 @@ using namespace OpenBabel;
             m_forceField->UpdateCoordinates(*m_molecule);
             m_molecule->update();
             m_cycles++;
-            emit cyclesChanged(m_cycles);
+            steps += 5;
+            emit stepsTaken(steps);
+            if(m_stop) {
+              break;
+            }
           }
         } else if (m_algorithm == 1) {
           if (m_gradients == 0) {
@@ -173,7 +179,8 @@ using namespace OpenBabel;
             m_forceField->UpdateCoordinates(*m_molecule);
             m_molecule->update();
             m_cycles++;
-            emit cyclesChanged(m_cycles);
+            steps += 5;
+            emit stepsTaken(steps);
             if(m_stop) {
               break;
             }
@@ -201,7 +208,8 @@ using namespace OpenBabel;
         m_molecule(molecule), 
         m_textEdit(textEdit),
         m_thread(0),
-        m_dialog(0) 
+        m_dialog(0),
+        m_detached(false)
     {
       m_thread = new GhemicalThread(molecule, forceField, textEdit, 
           forceFieldID, nSteps, algorithm,
@@ -212,19 +220,27 @@ using namespace OpenBabel;
 
     GhemicalCommand::~GhemicalCommand()
     {
-      if(m_thread->isRunning())
+      if(!m_detached)
       {
-        m_thread->stop();
-        m_thread->wait();
+        if(m_thread->isRunning())
+        {
+          m_thread->stop();
+          m_thread->wait();
+        }
+        delete m_thread;
+
+        if(m_dialog)
+        {
+          delete m_dialog;
+        }
       }
-      delete m_thread;
     }
 
     void GhemicalCommand::redo() {
       QProgressDialog *m_dialog = new QProgressDialog(QObject::tr("Forcefield Optimization"), 
           QObject::tr("Cancel"), 0,  m_nSteps);
 
-      QObject::connect(m_thread, SIGNAL(cyclesChanged(int)), m_dialog, SLOT(setValue(int)));
+      QObject::connect(m_thread, SIGNAL(stepsTaken(int)), m_dialog, SLOT(setValue(int)));
       QObject::connect(m_dialog, SIGNAL(canceled()), m_thread, SLOT(stop()));
       QObject::connect(m_thread, SIGNAL(finished()), m_dialog, SLOT(close()));
 
@@ -241,10 +257,52 @@ using namespace OpenBabel;
       // }
     }
 
-    bool GhemicalCommand::mergeWith ( const QUndoCommand * )
+    bool GhemicalCommand::mergeWith ( const QUndoCommand *command )
     {
+      const GhemicalCommand *gc = dynamic_cast<const GhemicalCommand *>(command);
+      if(gc)
+      {
+        // delete our current info
+        cleanup();
+        gc->detach();
+        m_thread = gc->thread();
+        m_dialog = gc->progressDialog();
+      }
       // received another of the same call
       return true;
+    }
+
+    GhemicalThread *GhemicalCommand::thread() const
+    {
+      return m_thread;
+    }
+
+    QProgressDialog *GhemicalCommand::progressDialog() const
+    {
+      return m_dialog;
+    }
+
+    void GhemicalCommand::detach() const
+    {
+      m_detached = true;
+    }
+
+    void GhemicalCommand::cleanup()
+    {
+      if(!m_detached)
+      {
+        if(m_thread->isRunning())
+        {
+          m_thread->stop();
+          m_thread->wait();
+        }
+        delete m_thread;
+
+        if(m_dialog)
+        {
+          delete m_dialog;
+        }
+      }
     }
 
     int GhemicalCommand::id() const

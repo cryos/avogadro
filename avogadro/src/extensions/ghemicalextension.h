@@ -100,7 +100,7 @@ namespace Avogadro {
       int cycles() const;
 
     Q_SIGNALS:
-      void cyclesChanged(int cycles);
+      void stepsTaken(int steps);
 
     public Q_SLOTS:
       void stop();
@@ -136,6 +136,12 @@ namespace Avogadro {
       virtual bool mergeWith ( const QUndoCommand * command );
       virtual int id() const;
 
+      void detach() const;
+      void cleanup();
+
+      GhemicalThread *thread() const;
+      QProgressDialog *progressDialog() const;
+
     private:
       Molecule m_moleculeCopy;
 
@@ -146,6 +152,7 @@ namespace Avogadro {
       GhemicalThread *m_thread;
       QProgressDialog *m_dialog;
       
+      mutable bool m_detached;
   };
 
 } // end namespace Avogadro

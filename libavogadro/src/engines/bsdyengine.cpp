@@ -257,7 +257,6 @@ bool BSDYEngine::renderTransparent(GLWidget *gl)
     // Render the selection highlight
     if (gl->isSelected(a))
     {
-      qDebug() << a->GetIdx();
     // Push the atom type and name
       glPushName(a->GetIdx());
       map.set( 0.3, 0.6, 1.0, 0.7 );

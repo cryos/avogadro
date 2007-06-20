@@ -714,10 +714,6 @@ namespace Avogadro {
       }
     }
     qSort(d->engines.begin(), d->engines.end(), engineLessThan);
-    foreach(Engine* e, d->engines)
-    {
-      qDebug() << e->name();
-    }
   }
 
   void GLWidget::setTool(Tool *tool)

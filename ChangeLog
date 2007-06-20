@@ -1,5 +1,8 @@
 2007-06-19  Donald E. Curtis <dcurtis3@sourceforge.net>
 
+	* avogadro/src/extensions/ghemicalextension.cpp: Added threading so that a
+	progress dialog is displayed.
+
 	* libavogadro/src/glwidget.*: Added ::radius function to the GLWidget that
 	way tools and engines only need to ask the GLWidget the radius rather than
 	actually going through all engines on their own.  Also, engines more
