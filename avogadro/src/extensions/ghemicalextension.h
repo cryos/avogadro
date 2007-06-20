@@ -36,11 +36,13 @@
 #include <QList>
 #include <QString>
 #include <QUndoCommand>
+#include <QThread>
 
 #ifndef BUFF_SIZE
 #define BUFF_SIZE 256
 #endif
 
+class QProgressDialog;
 namespace Avogadro {
 
  class GhemicalExtension : public QObject, public Extension
@@ -85,12 +87,49 @@ namespace Avogadro {
     Extension *createInstance(QObject *parent = 0) { return new GhemicalExtension(parent); }
   };
 
+  class GhemicalThread : public QThread
+  {
+    Q_OBJECT;
+
+    public:
+    GhemicalThread(Molecule *molecule, OpenBabel::OBForceField* forceField, 
+        QTextEdit *textEdit, int forceFieldID, int nSteps, int algorithm,
+        int gradients, int convergence, int task, QObject *parent=0);
+
+      void run();
+      int cycles() const;
+
+    Q_SIGNALS:
+      void cyclesChanged(int cycles);
+
+    public Q_SLOTS:
+      void stop();
+
+    private:
+      Molecule *m_molecule;
+      QTextEdit *m_textEdit;
+
+      int m_cycles;
+      int m_forceFieldID;
+      int m_nSteps;
+      int m_algorithm;
+      int m_gradients;
+      int m_convergence;
+      int m_task;
+
+      OpenBabel::OBForceField* m_forceField;
+      ForceFieldDialog *m_Dialog;
+
+      bool m_stop;
+  };
 
  class GhemicalCommand : public QUndoCommand
   {
     public:
       GhemicalCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield, QTextEdit *messages,
                       int forceFieldID, int nSteps, int algorithm, int gradients, int convergence, int task);
+
+      ~GhemicalCommand();
 
       virtual void redo();
       virtual void undo();
@@ -99,17 +138,14 @@ namespace Avogadro {
 
     private:
       Molecule m_moleculeCopy;
+
+      int m_nSteps;
       Molecule *m_molecule;
       QTextEdit *m_textEdit;
-      int m_cycles;
-      int m_forceFieldID;
-      int m_nSteps;
-      int m_algorithm;
-      int m_gradients;
-      int m_convergence;
-      int m_task;
-      OpenBabel::OBForceField* m_forceField;
-      ForceFieldDialog *m_Dialog;
+
+      GhemicalThread *m_thread;
+      QProgressDialog *m_dialog;
+      
   };
 
 } // end namespace Avogadro
