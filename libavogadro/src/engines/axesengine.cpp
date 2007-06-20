@@ -44,8 +44,6 @@ AxesEngine::AxesEngine(QObject *parent) : Engine(parent)
 
 bool AxesEngine::renderOpaque(GLWidget *gl)
 {
-  gl->painter()->begin(gl);
-
   // save the opengl projection matrix and set up an orthogonal projection
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
@@ -94,7 +92,6 @@ bool AxesEngine::renderOpaque(GLWidget *gl)
   glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
 
-  gl->painter()->end();
   return true;
 }
 

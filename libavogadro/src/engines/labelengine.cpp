@@ -52,8 +52,6 @@ LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
 
 bool LabelEngine::renderOpaque(GLWidget *gl)
 {
-  gl->painter()->begin(gl);
-
   QList<Primitive *> list;
 
   if (m_atomType < 3)
@@ -72,7 +70,6 @@ bool LabelEngine::renderOpaque(GLWidget *gl)
       renderOpaque(gl, static_cast<const Bond*>(p));
   }
 
-  gl->painter()->end();
   return true;
 }
 

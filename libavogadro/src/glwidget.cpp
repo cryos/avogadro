@@ -317,6 +317,9 @@ namespace Avogadro {
     std::vector<vector3> cellVectors;
     vector3 offset;
 
+    // Initialise the painter
+    d->painter->begin(this);
+
     if (d->molecule && d->molecule->HasData(OBGenericDataType::UnitCell))
       uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
 
@@ -401,6 +404,8 @@ namespace Avogadro {
     if(d->tool) {
       d->tool->paint(this);
     }
+
+    d->painter->end();
 
     // shouldn't we have this disabled?
     // glFlush();

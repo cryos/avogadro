@@ -59,8 +59,6 @@ SphereEngine::~SphereEngine()
 
 bool SphereEngine::renderOpaque(GLWidget *gl)
 {
-  gl->painter()->begin(gl);
-
   // Render the opaque spheres if m_alpha is 1
   if (m_alpha > 0.999)
   {
@@ -74,16 +72,11 @@ bool SphereEngine::renderOpaque(GLWidget *gl)
     glDisable( GL_RESCALE_NORMAL);
     glEnable( GL_NORMALIZE );
   }
-
-  gl->painter()->end();
   return true;
 }
 
 bool SphereEngine::renderTransparent(GLWidget *gl)
 {
-  gl->painter()->begin(gl);
-
-
   // If m_alpha is between 0 and 1 then render our transparent spheres
   if (m_alpha > 0.001 && m_alpha < 0.999)
   {
@@ -122,7 +115,6 @@ bool SphereEngine::renderTransparent(GLWidget *gl)
     glDepthMask(GL_FALSE);
   }
 
-  gl->painter()->end();
   return true;
 }
 

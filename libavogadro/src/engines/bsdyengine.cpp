@@ -113,8 +113,6 @@ bool BSDYEngine::renderOpaque(GLWidget *gl)
 {
   QList<Primitive *> list;
 
-  gl->painter()->begin(gl);
-
   glPushAttrib(GL_TRANSFORM_BIT);
 
   Color map = colorMap();
@@ -183,15 +181,12 @@ bool BSDYEngine::renderOpaque(GLWidget *gl)
 
   glPopAttrib();
 
-  gl->painter()->end();
   return true;
 }
 
 bool BSDYEngine::renderTransparent(GLWidget *gl)
 {
   QList<Primitive *> list;
-
-  gl->painter()->begin(gl);
 
   camera = gl->camera();
 
@@ -276,7 +271,6 @@ bool BSDYEngine::renderTransparent(GLWidget *gl)
 
   glPopAttrib();
 
-  gl->painter()->end();
   return true;
 }
 

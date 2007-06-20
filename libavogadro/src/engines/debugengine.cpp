@@ -53,7 +53,6 @@ bool DebugEngine::renderOpaque(GLWidget *gl)
 
   glColor3f( 1.0, 1.0, 1.0 );
 
-  gl->painter()->begin(gl);
   int x = 0, y = 0;
   y += gl->painter()->drawText(x, y, "---- Debug Information ----");
   y += gl->painter()->drawText(x, y, "FPS: " + QString::number(computeFramesPerSecond(), 'g', 3));
@@ -68,8 +67,6 @@ bool DebugEngine::renderOpaque(GLWidget *gl)
 
   list = primitives().subList(Primitive::BondType);
   y += gl->painter()->drawText(x, y, "Bonds: " + QString::number(list.size()));
-
-  gl->painter()->end();
 
   gl->update();
 

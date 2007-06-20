@@ -52,11 +52,7 @@ StickEngine::~StickEngine()
 
 bool StickEngine::renderOpaque(GLWidget *gl)
 {
-  gl = gl;
-
   QList<Primitive *> list;
-
-  gl->painter()->begin(gl);
 
   glPushAttrib(GL_TRANSFORM_BIT);
   glDisable( GL_NORMALIZE );
@@ -84,7 +80,6 @@ bool StickEngine::renderOpaque(GLWidget *gl)
 
   glPopAttrib();
 
-  gl->painter()->end();
   return true;
 }
 
