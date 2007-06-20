@@ -94,6 +94,7 @@ namespace Avogadro {
      * @return a list of actions which this widget can perform
      */
     virtual QList<QAction *> actions() const = 0;
+
     /**
      * @param action the action that triggered the calls
      * @param molecule the molecule to perform the action on

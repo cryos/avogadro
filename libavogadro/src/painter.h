@@ -233,11 +233,6 @@ namespace Avogadro {
       static int defaultQuality();
       static int maxQuality();
 
-      bool isShared();
-
-      void incrementShared();
-      void decrementShared();
-
     private:
       PainterPrivate * const d;
   };
