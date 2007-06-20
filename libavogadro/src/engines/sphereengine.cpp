@@ -53,9 +53,8 @@ SphereEngine::SphereEngine(QObject *parent) : Engine(parent), m_settingsWidget(0
 SphereEngine::~SphereEngine()
 {
   // Delete the settings widget if it exists
-  if(m_settingsWidget) {
+  if(m_settingsWidget)
     m_settingsWidget->deleteLater();
-  }
 }
 
 bool SphereEngine::renderOpaque(GLWidget *gl)
@@ -110,11 +109,14 @@ bool SphereEngine::renderTransparent(GLWidget *gl)
     // Render the atoms as VdW spheres
     glDisable( GL_NORMALIZE );
     glEnable( GL_RESCALE_NORMAL );
+    glDepthMask(GL_TRUE);
+
     foreach( Primitive *p, list )
     {
       render(gl, static_cast<const Atom *>(p));
     }
 
+    glDepthMask(GL_FALSE);
     glDisable( GL_RESCALE_NORMAL);
     glEnable( GL_NORMALIZE );
 
