@@ -42,6 +42,7 @@
 #include <vector>
 
 using namespace OpenBabel;
+using namespace Eigen;
 namespace Avogadro {
 
   bool engineLessThan(const Engine* lhs, const Engine* rhs)
@@ -191,8 +192,8 @@ namespace Avogadro {
 
       QColor                 background;
 
-      Eigen::Vector3d        normalVector;
-      Eigen::Vector3d        center;
+      Vector3d        normalVector;
+      Vector3d        center;
       double                 radius;
       const Atom             *farthestAtom;
 
@@ -325,69 +326,76 @@ namespace Avogadro {
 
     if (!uc) { // a plain molecule, no crystal cell
       foreach(Engine *engine, d->engines)
-        {
-          if(engine->isEnabled()) {
-            engine->renderOpaque(this);
-          }
+      {
+        if(engine->isEnabled()) {
+          engine->renderOpaque(this);
         }
-        glDepthMask(GL_FALSE);
-        foreach(Engine *engine, d->engines)
-        {
-          if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
-            engine->renderTransparent(this);
-          }
+      }
+      glDepthMask(GL_FALSE);
+      foreach(Engine *engine, d->engines)
+      {
+        if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
+          engine->renderTransparent(this);
         }
-        glDepthMask(GL_TRUE);
+      }
+      glDepthMask(GL_TRUE);
     } else { // render a crystal
       cellVectors = uc->GetCellVectors();
 
       // render opaque parts of crystal
-      for (int a = 0; a < d->aCells; a++) {
-        for (int b = 0; b < d->bCells; b++)  {
-          for (int c = 0; c < d->cCells; c++) {
+      for (int a = 0; a <= d->aCells; a++) {
+        for (int b = 0; b <= d->bCells; b++)  {
+          for (int c = 0; c <= d->cCells; c++)  {
+            glPushMatrix();
+            glTranslated(
+                cellVectors[0].x() * a
+              + cellVectors[1].x() * b
+              + cellVectors[2].x() * c,
+                cellVectors[0].y() * a
+              + cellVectors[1].y() * b
+              + cellVectors[2].y() * c,
+                cellVectors[0].z() * a
+              + cellVectors[1].z() * b
+              + cellVectors[2].z() * c );
             foreach(Engine *engine, d->engines)
             {
               if(engine->isEnabled()) {
                 engine->renderOpaque(this);
               }
-            } // end rendering loop
-            glTranslatef(cellVectors[2].x(), cellVectors[2].y(), cellVectors[2].z());
-          } // end c
-          glTranslatef(cellVectors[2].x() * -d->cCells,
-                       cellVectors[2].y() * -d->cCells,
-                       cellVectors[2].z() * -d->cCells);
-          glTranslatef(cellVectors[1].x(), cellVectors[1].y(), cellVectors[1].z());
-        } // end b
-        glTranslatef(cellVectors[1].x() * -d->bCells,
-                     cellVectors[1].y() * -d->bCells,
-                     cellVectors[1].z() * -d->bCells);
-        glTranslatef(cellVectors[0].x(), cellVectors[0].y(), cellVectors[0].z());
-      } // end a
-
+            }
+            glPopMatrix();
+          }
+        }
+      }
       // render transparent parts of crystal
-      for (int a = 0; a < d->aCells; a++) {
-        for (int b = 0; b < d->bCells; b++)  {
-          for (int c = 0; c < d->cCells; c++) {
+      glDepthMask(GL_FALSE);
+      for (int a = 0; a <= d->aCells; a++) {
+        for (int b = 0; b <= d->bCells; b++)  {
+          for (int c = 0; c <= d->cCells; c++)  {
+            glPushMatrix();
+            glTranslated(
+                cellVectors[0].x() * a
+              + cellVectors[1].x() * b
+              + cellVectors[2].x() * c,
+                cellVectors[0].y() * a
+              + cellVectors[1].y() * b
+              + cellVectors[2].y() * c,
+                cellVectors[0].z() * a
+              + cellVectors[1].z() * b
+              + cellVectors[2].z() * c );
             foreach(Engine *engine, d->engines)
             {
               if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
                 engine->renderTransparent(this);
               }
             }
-            glTranslatef(cellVectors[2].x(), cellVectors[2].y(), cellVectors[2].z());
-          } // end c
-          glTranslatef(cellVectors[2].x() * -d->cCells,
-                      cellVectors[2].y() * -d->cCells,
-                                        cellVectors[2].z() * -d->cCells);
-          glTranslatef(cellVectors[1].x(), cellVectors[1].y(), cellVectors[1].z());
-        } // end b
-        glTranslatef(cellVectors[1].x() * -d->bCells,
-                    cellVectors[1].y() * -d->bCells,
-                                      cellVectors[1].z() * -d->bCells);
-        glTranslatef(cellVectors[0].x(), cellVectors[0].y(), cellVectors[0].z());
-      } // end a
-    } // end rendering crystal
-
+            glPopMatrix();
+          }
+        }
+      }
+      glDepthMask(GL_TRUE);
+    }
+    
     foreach(GLuint dl, d->displayLists)
       glCallList(dl);
 
@@ -574,12 +582,12 @@ namespace Avogadro {
     return d->molecule;
   }
 
-  const Eigen::Vector3d & GLWidget::center() const
+  const Vector3d & GLWidget::center() const
   {
     return d->center;
   }
 
-  const Eigen::Vector3d & GLWidget::normalVector() const
+  const Vector3d & GLWidget::normalVector() const
   {
     return d->normalVector;
   }
@@ -600,7 +608,7 @@ namespace Avogadro {
 
     OBUnitCell *uc = NULL;
 
-    if (d->molecule && d->molecule->HasData(OBGenericDataType::UnitCell))
+    if (d->molecule->HasData(OBGenericDataType::UnitCell))
       uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
 
     if (!uc) { // a plain molecule, no crystal cell
@@ -615,22 +623,45 @@ namespace Avogadro {
       // b = <x1, y1, z1>
       // c = <x2, y2, z2>
       std::vector<vector3> cellVectors = uc->GetCellVectors();
-      Eigen::Vector3d a, b, c;
-      a = *reinterpret_cast<Eigen::Vector3d *>(&cellVectors[0]);
-      a *= d->aCells;
-      b = *reinterpret_cast<Eigen::Vector3d *>(&cellVectors[1]);
-      b *= d->bCells;
-      c = *reinterpret_cast<Eigen::Vector3d *>(&cellVectors[2]);
-      c *= d->cCells;
-
-      d->center = (a + b + c) / 2.0;
-      // Radius should be the magnitude of the center vector
-      d->radius = sqrt(d->center.x() * d->center.x() +
-                       d->center.y() * d->center.y() +
-                       d->center.z() * d->center.z());
-      // GH: Not sure about these
+      Vector3d a(cellVectors[0].AsArray());
+      Vector3d b(cellVectors[1].AsArray());
+      Vector3d c(cellVectors[2].AsArray());
+      Vector3d centerOffset = ( a * d->aCells
+                              + b * d->bCells
+                              + c * d->cCells) / 2.0;
+      // the center is the center of the molecule translated by centerOffset
+      d->center = d->molecule->center() + centerOffset;
+      // the radius is the length of centerOffset plus the molecule radius
+      d->radius = d->molecule->radius() + centerOffset.norm();
+      // for the normal vector, we just ask for the molecule's normal vector,
+      // crossing our fingers hoping that it will give a nice viewpoint not only
+      // with respect to the molecule but also with respect to the cells.
       d->normalVector = d->molecule->normalVector();
-      d->farthestAtom = d->molecule->farthestAtom();
+      // the farthest atom is the one that is located the farthest in the
+      // direction pointed to by centerOffset. Let's determine this atom.
+      // compute center
+      if(d->molecule->NumAtoms() == 0 ) {
+        d->farthestAtom = 0;
+      }
+      else {
+        std::vector<OBAtom*>::iterator atom_iterator;
+        Atom *atom;
+        double x, max_x;
+        for(
+          atom = static_cast<Atom*>(d->molecule->BeginAtom(atom_iterator)),
+          max_x = centerOffset.dot(atom->pos()),
+          d->farthestAtom = atom;
+          atom;
+          atom = static_cast<Atom*>(d->molecule->NextAtom(atom_iterator))
+        ) {
+          x = centerOffset.dot(atom->pos());
+          if(x > max_x)
+          {
+            max_x = x;
+            d->farthestAtom = atom;
+          }
+        }
+      }
     }
   }
 

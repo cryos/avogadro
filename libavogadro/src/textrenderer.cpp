@@ -68,7 +68,8 @@ class CharRenderer
     GLuint m_glyphTexture;
     GLuint m_outlineTexture;
 
-    GLuint m_quadDisplayList;
+    GLuint m_glyphDisplayList;
+    GLuint m_outlineDisplayList;
     
     GLenum m_textureTarget;
 
@@ -95,14 +96,12 @@ class CharRenderer
 
     inline void drawOutline() const
     {
-      glBindTexture(m_textureTarget, m_outlineTexture);
-      glCallList( m_quadDisplayList );
+      glCallList( m_outlineDisplayList );
     }
     
     inline void drawGlyph() const
     {
-      glBindTexture(m_textureTarget, m_glyphTexture);
-      glCallList( m_quadDisplayList );
+      glCallList( m_glyphDisplayList );
     }
 };
 
@@ -110,14 +109,16 @@ CharRenderer::CharRenderer()
 {
   m_glyphTexture = 0;
   m_outlineTexture = 0;
-  m_quadDisplayList = 0;
+  m_glyphDisplayList = 0;
+  m_outlineDisplayList = 0;
 }
 
 CharRenderer::~CharRenderer()
 {
   if( m_glyphTexture ) glDeleteTextures( 1, &m_glyphTexture );
   if( m_outlineTexture ) glDeleteTextures( 1, &m_outlineTexture );
-  if( m_quadDisplayList ) glDeleteLists( m_quadDisplayList, 1 );
+  if( m_glyphDisplayList ) glDeleteLists( m_glyphDisplayList, 1 );
+  if( m_outlineDisplayList ) glDeleteLists( m_outlineDisplayList, 1 );
 }
 
 static void normalizeTexSize( GLenum textureTarget,
@@ -139,7 +140,7 @@ static void normalizeTexSize( GLenum textureTarget,
 
 bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget )
 {
-  if( m_quadDisplayList ) return true;
+  if( m_glyphDisplayList ) return true;
   m_textureTarget = textureTarget;
   // *** STEP 1 : render the character to a QImage ***
   
@@ -150,7 +151,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   if(m_realwidth == 0 || m_realheight == 0) return false;
   int texwidth  =  m_realwidth + 2 * OUTLINE_WIDTH;
   int texheight = m_realheight + 2 * OUTLINE_WIDTH;
-  normalizeTexSize(textureTarget, texwidth, texheight);
+  normalizeTexSize(m_textureTarget, texwidth, texheight);
   
   // create a new image
   QImage image( texwidth, texheight, QImage::Format_RGB32 );
@@ -257,9 +258,9 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
 
   glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );
   
-  glBindTexture( textureTarget, m_glyphTexture );
+  glBindTexture( m_textureTarget, m_glyphTexture );
   glTexImage2D(
-    textureTarget,
+    m_textureTarget,
     0,
     GL_ALPHA,
     texwidth,
@@ -269,12 +270,12 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
     GL_UNSIGNED_BYTE,
     glyphbitmap );
 
-  glTexParameteri( textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
-  glTexParameteri( textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+  glTexParameteri( m_textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+  glTexParameteri( m_textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
-  glBindTexture( textureTarget, m_outlineTexture );
+  glBindTexture( m_textureTarget, m_outlineTexture );
   glTexImage2D(
-    textureTarget,
+    m_textureTarget,
     0,
     GL_ALPHA,
     texwidth,
@@ -284,22 +285,25 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
     GL_UNSIGNED_BYTE,
     outlinebitmap );
 
-  glTexParameteri( textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
-  glTexParameteri( textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+  glTexParameteri( m_textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+  glTexParameteri( m_textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
   // the texture data is now kept alive by OpenGL. It's time to free the bitmaps.
   delete [] glyphbitmap;
   delete [] outlinebitmap;
   
-  // *** STEP 6 : compile the display list ***
+  // *** STEP 6 : compile the display lists ***
 
-  m_quadDisplayList = glGenLists(1);
-  if( ! m_quadDisplayList ) return false;
+  m_outlineDisplayList = glGenLists(1);
+  if( ! m_outlineDisplayList ) return false;
+  m_glyphDisplayList = glGenLists(1);
+  if( ! m_glyphDisplayList ) return false;
+  
+  int texcoord_width = (m_textureTarget == GL_TEXTURE_2D) ? 1 : texwidth;
+  int texcoord_height = (m_textureTarget == GL_TEXTURE_2D) ? 1 : texheight;
 
-  int texcoord_width = (textureTarget == GL_TEXTURE_2D) ? 1 : texwidth;
-  int texcoord_height = (textureTarget == GL_TEXTURE_2D) ? 1 : texheight;
-
-  glNewList( m_quadDisplayList, GL_COMPILE );
+  glNewList( m_outlineDisplayList, GL_COMPILE );
+  glBindTexture(m_textureTarget, m_outlineTexture);
   glBegin( GL_QUADS );
   glTexCoord2i( 0, 0);
   glVertex2f( 0 , -texheight );
@@ -313,6 +317,21 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   glTranslatef( m_realwidth, 0, 0 );
   glEndList();
 
+  glNewList( m_glyphDisplayList, GL_COMPILE );
+  glBindTexture(m_textureTarget, m_glyphTexture);
+  glBegin( GL_QUADS );
+  glTexCoord2i( 0, 0);
+  glVertex2f( 0 , -texheight );
+  glTexCoord2i( texcoord_width, 0);
+  glVertex2f( texwidth , -texheight );
+  glTexCoord2i( texcoord_width, texcoord_height);
+  glVertex2f( texwidth, 0 );
+  glTexCoord2i( 0, texcoord_height);
+  glVertex2f( 0 , 0 );
+  glEnd();
+  glTranslatef( m_realwidth, 0, 0 );
+  glEndList();
+  
   return true;
 }
 

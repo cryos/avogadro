@@ -189,8 +189,6 @@ namespace Avogadro
     if( d->parent == 0 ) return;
     if( d->parent->molecule() == 0 ) return;
 
-    // radius() returns the radius without electrons. We add 0.3 nanometer,
-    // which is about the biggest possible VDW radius of an atom.
     double molRadius = d->parent->radius() + CAMERA_MOL_RADIUS_MARGIN;
     double distanceToMolCenter = distance( d->parent->center() );
     double zNear = std::max( CAMERA_NEAR_DISTANCE, distanceToMolCenter - molRadius );
