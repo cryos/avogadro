@@ -343,9 +343,9 @@ namespace Avogadro {
       cellVectors = uc->GetCellVectors();
 
       // render opaque parts of crystal
-      for (int a = 0; a <= d->aCells; a++) {
-        for (int b = 0; b <= d->bCells; b++)  {
-          for (int c = 0; c <= d->cCells; c++)  {
+      for (int a = 0; a < d->aCells; a++) {
+        for (int b = 0; b < d->bCells; b++)  {
+          for (int c = 0; c < d->cCells; c++)  {
             glPushMatrix();
             glTranslated(
                 cellVectors[0].x() * a
@@ -369,9 +369,9 @@ namespace Avogadro {
       }
       // render transparent parts of crystal
       glDepthMask(GL_FALSE);
-      for (int a = 0; a <= d->aCells; a++) {
-        for (int b = 0; b <= d->bCells; b++)  {
-          for (int c = 0; c <= d->cCells; c++)  {
+      for (int a = 0; a < d->aCells; a++) {
+        for (int b = 0; b < d->bCells; b++)  {
+          for (int c = 0; c < d->cCells; c++)  {
             glPushMatrix();
             glTranslated(
                 cellVectors[0].x() * a
@@ -626,9 +626,9 @@ namespace Avogadro {
       Vector3d a(cellVectors[0].AsArray());
       Vector3d b(cellVectors[1].AsArray());
       Vector3d c(cellVectors[2].AsArray());
-      Vector3d centerOffset = ( a * d->aCells
-                              + b * d->bCells
-                              + c * d->cCells) / 2.0;
+      Vector3d centerOffset = ( a * (d->aCells - 1)
+                              + b * (d->bCells - 1)
+                              + c * (d->cCells - 1) ) / 2.0;
       // the center is the center of the molecule translated by centerOffset
       d->center = d->molecule->center() + centerOffset;
       // the radius is the length of centerOffset plus the molecule radius
@@ -637,12 +637,17 @@ namespace Avogadro {
       // crossing our fingers hoping that it will give a nice viewpoint not only
       // with respect to the molecule but also with respect to the cells.
       d->normalVector = d->molecule->normalVector();
-      // the farthest atom is the one that is located the farthest in the
-      // direction pointed to by centerOffset. Let's determine this atom.
-      // compute center
+      // Computation of the farthest atom.
+      // First case: the molecule is empty
       if(d->molecule->NumAtoms() == 0 ) {
         d->farthestAtom = 0;
       }
+      // Second case: there is no repetition of the molecule
+      else if(d->aCells <= 1 && d->bCells <= 1 && d->cCells <= 1) {
+        d->farthestAtom = d->molecule->farthestAtom();
+      }
+      // General case: the farthest atom is the one that is located the
+      // farthest in the direction pointed to by centerOffset.
       else {
         std::vector<OBAtom*>::iterator atom_iterator;
         Atom *atom;
