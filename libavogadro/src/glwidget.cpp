@@ -988,6 +988,9 @@ void GLWidget::toggleSelected(QList<Primitive*> primitives)
     d->aCells = a;
     d->bCells = b;
     d->cCells = c;
+    updateGeometry();
+    d->camera->initializeViewPoint();
+    update();
   }
 
  int GLWidget::aCells()

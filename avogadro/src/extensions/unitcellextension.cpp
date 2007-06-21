@@ -110,7 +110,6 @@ namespace Avogadro {
   {
     if (m_Widget) {
       m_Widget->setUnitCells(a, b, c);
-      m_Widget->update();
     }
   }
 
