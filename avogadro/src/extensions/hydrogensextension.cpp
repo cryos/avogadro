@@ -59,17 +59,22 @@ using namespace OpenBabel;
       QUndoCommand *undo = 0;
       int i = m_actions.indexOf(action);
       if( 0 <= i <= 1) {
-        undo = new HydrogensCommand(molecule, (enum HydrogensCommand::Action) i);
+        undo = new HydrogensCommand(molecule, (enum HydrogensCommand::Action) i,
+                                    widget);
       }
 
       return undo;
     }
 
-    HydrogensCommand::HydrogensCommand(Molecule *molecule, enum Action action)
+    HydrogensCommand::HydrogensCommand(Molecule *molecule, enum Action action,
+                                       GLWidget *widget):
+      m_molecule(molecule), m_moleculeCopy(*molecule), 
+      m_SelectedList(widget->selectedPrimitives()), m_action(action)
     {
-      m_moleculeCopy = *molecule;
-      m_molecule = molecule;
-      m_action = action;
+      // save the selection from the current view widget 
+      // (i.e., only modify a few hydrogens)
+      //      m_SelectedList = widget->selectedPrimitives;
+
       switch(action) {
         case AddHydrogens:
           setText(QObject::tr("Add Hydrogens"));
@@ -82,14 +87,35 @@ using namespace OpenBabel;
 
     void HydrogensCommand::redo()
     {
-      switch(m_action) {
+      if (m_SelectedList.size() == 0) {
+        switch(m_action) {
         case AddHydrogens:
           m_molecule->AddHydrogens(false,true);
           break;
         case RemoveHydrogens:
           m_molecule->DeleteHydrogens();
           break;
+        }
       }
+      else { // user selected some atoms, only operate on those
+
+        foreach(Primitive *a, m_SelectedList)
+          {
+            if (a->type() == Primitive::AtomType)
+              {
+                Atom *atom = static_cast<Atom *>(a);
+
+                switch(m_action) {
+                case AddHydrogens:
+                  m_molecule->AddHydrogens(atom);
+                  break;
+                case RemoveHydrogens:
+                  m_molecule->DeleteHydrogens(atom);
+                  break;
+                }
+              }
+          }
+      } // end adding to selected atoms
       m_molecule->update();
     }
 

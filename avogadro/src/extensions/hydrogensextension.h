@@ -80,7 +80,7 @@ namespace Avogadro {
       };
 
     public:
-      HydrogensCommand(Molecule *molecule, enum Action action);
+      HydrogensCommand(Molecule *molecule, enum Action action, GLWidget *widget);
 
       virtual void undo();
       virtual void redo();
@@ -90,6 +90,7 @@ namespace Avogadro {
     private:
       Molecule *m_molecule;
       Molecule m_moleculeCopy;
+      QList<Primitive*> m_SelectedList;
       enum Action m_action;
   };
 

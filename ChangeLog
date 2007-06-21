@@ -1,3 +1,8 @@
+2007-06-21  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/src/extensions/hydrogens*: Fix PR#1739841. Only add or
+	remove hydrogens for selected atoms if some atoms are selected.
+
 2007-06-19  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/glwidget.cpp, libavogadro/src/engines/*.cpp:
