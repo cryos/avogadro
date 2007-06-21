@@ -81,3 +81,15 @@ TARGET_LINK_LIBRARIES(unitcellextension
 	avogadro-lib
 )
 INSTALL(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
+
+### h->methyl
+set(h2methylextension_SRCS h2methylextension.cpp)
+qt4_automoc(${h2methylextension_SRCS})
+ADD_LIBRARY(h2methylextension SHARED ${h2methylextension_SRCS})
+TARGET_LINK_LIBRARIES(h2methylextension 
+	${OPENBABEL2_LIBRARIES} 
+	${QT_LIBRARIES} 
+    ${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS h2methylextension DESTINATION ${DESTINATION_DIR})

@@ -1,5 +1,9 @@
 2007-06-21  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
+	* avogadro/src/extensions/h2methylextension.cpp: New extension for
+	"sculpting" hydrogen atoms to methyl groups. Works also on
+	selected hydrogens.
+
 	* avogadro/src/extensions/hydrogens*: Fix PR#1739841. Only add or
 	remove hydrogens for selected atoms if some atoms are selected.
 
