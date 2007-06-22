@@ -1,0 +1,345 @@
+/**********************************************************************
+  GLHit - OpenGL selection handling
+
+  Copyright (C) 2006,2007 Geoffrey R. Hutchison
+  Copyright (C) 2006,2007 Donald Ephraim Curtis
+  Copyright (C) 2007      Benoit Jacob
+
+  This file is part of the Avogadro molecular editor project.
+  For more information, see <http://avogadro.sourceforge.net/>
+
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  Avogadro is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+ **********************************************************************/
+
+#include <avogadro/glpicker.h>
+#include <avogadro/glwidget.h>
+#include <avogadro/primitive.h>
+
+const int      SEL_BUF_MAX_SIZE    = 262144;
+const int      SEL_BUF_MARGIN      = 128;
+const int      SEL_BOX_HALF_SIZE   = 4;
+const int      SEL_BOX_SIZE        = 2 * SEL_BOX_HALF_SIZE + 1;
+
+namespace Avogadro {
+
+  class GLName
+  {
+    private:
+      GLuint data[2];
+      
+    public:
+      GLName() {}
+      
+      GLName(GLuint data0, GLuint data1)
+      {
+        data[0] = data0;
+        data[1] = data1;
+      }
+      
+      GLName(const GLName& other)
+      {
+        data[0] = other.data[0];
+        data[1] = other.data[1];
+      }
+      
+      GLName(const Primitive * prim, const GLWidget *widget)
+      {
+        if(!prim)
+        {
+          data[0] = 0;
+          data[1] = 0;
+          return;
+        }
+        int type = prim.type();
+        int x = widget->aCurrentCell()
+              + widget->aCells() * ( widget->bCurrentCell()
+                                   + widget->bCells() * widget->cCurrentCell() );
+        data[0] = (type << 24) + x;
+        if(prim->type() == Primitive::AtomType) {
+          const Atom * a = static_cast<const Atom *>(prim);
+          data[1] = a->GetIdx();
+        }
+        else if(prim->type() == Primitive::BondType) {
+          const Bond * b = static_cast<const Bond *>(prim);
+          data[1] = b->GetIdx() + 1;
+        }
+        else data[1] = 0;
+      }
+      
+      GLName& operator= (const GLName& other)
+      {
+        data[0] = other.data[0];
+        data[1] = other.data[1];
+        return *this;
+      }
+      
+      bool operator== (const GLName& other)
+      {
+        return(data[0] == other.data[0] && data[1] == other.data[1]);
+      }
+      
+      ~GLName() {}
+      
+      Primitive *primitive(const GLWidget *widget) const
+      {
+        Primitive::Type type = data[0] >> 24;
+        if(type == Primitive::AtomType) {
+          return static_cast<Atom*>(widget->molecule->GetAtom(data[1]));
+        }
+        else if(type == Primitive::BondType) {
+          return static_cast<Bond*>(widget->molecule->GetBond(data[1] - 1));
+        }
+      }
+      
+      Vector3d offset(const GLWidget *widget) const
+      {
+        if (d->molecule->HasData(OBGenericDataType::UnitCell)) {
+          int x = data[0] & 0x00ffffff;
+          int a = x % widget->aCells();
+          x /= widget->aCells();
+          int b = x % widget->bCells();
+          int c = x / widget->bCells();
+          OBUnitCell *uc =
+            dynamic_cast<OBUnitCell*>(
+              d->molecule->GetData(OBGenericDataType::UnitCell) );
+          std::vector<vector3> cellVectors = uc->GetCellVectors();
+          vector3 v = cellVectors[0] * a
+                    + cellVectors[1] * b
+                    + cellVectors[2] * c;
+          return Vector3d(v.AsArray());
+        }
+        else return Vector3d(0,0,0);
+      }
+
+  };
+  
+  /**
+   * @class GLHit glwidget.h <avogadro/glwidget.h>
+   * @brief Class for wrapping hits from GL picking.
+   * @author Donald Ephraim Curtis
+   *
+   * Provides an easy to use class to contain OpenGL hits returned from the
+   * process of picking.
+   */
+  class GLWidget;
+  class GLHit
+  {
+    public:
+      /**
+       * Blank constructor.
+       */
+      GLHit() {};
+      /**
+       * Copy constructor.
+       */
+      GLHit(const GLHit &other) : m_name(other.m_name),
+                                  m_minZ(other.m_minZ),
+                                  m_maxZ(other.m_maxZ) {}
+      /**
+       * Constructor.
+       * @param type The type of the OpenGL object that was picked which corresponds
+       * to the Primitive::Type for the object
+       * (ie. type==Primitive::AtomType means an Atom was picked).
+       * @param name The name of the OpenGL object that was picked corresponding
+       * to the primitive index
+       * (ie. name==1 means Atom 1)
+       */
+      GLHit(GLName name, GLuint minZ, GLuint maxZ)
+        : m_name(name), m_minZ(minZ), m_maxZ(maxZ) {}
+      /**
+       * Deconstructor.
+       */
+      ~GLHit() {};
+
+      /**
+       * Less than operator.
+       * @param other the other GLHit object to compare to
+       * @return (this->minZ < other->minZ) ? @c true : @c false
+       */
+      bool operator<(const GLHit &other) const;
+
+      /**
+       * Equivalence operator.
+       * @param other the other GLHit object to test equivalence with
+       * @return returns true if all elements are equivalent (type, name, minZ, maxZ)
+       */
+      bool operator==(const GLHit &other) const;
+
+      /**
+       * Copy operator.
+       * @param other the GLHit object to set this object equal to
+       * @return  *this
+       */
+      GLHit &operator=(const GLHit &other);
+
+      /**
+       * @return name of the object that was picked
+       */
+      GLName name() const;
+
+      /**
+       * @return the minimum Z value of this hit corresponding
+       * to the Z value of the drawn object closest to the camera
+       */
+      GLuint minZ() const;
+
+      /**
+       * @return the maximum Z value of this hit corresponding
+       * to the Z value of the drawn object farthest from the camera
+       */
+      GLuint maxZ() const;
+
+      /**
+       * @param name new object name
+       */
+      void setName(GLName name);
+      /**
+       * @param minZ minimum Z value to set for this object
+       */
+      void setMinZ(GLuint minZ);
+      /**
+       * @param maxZ maximum Z value to set for this object
+       */
+      void setMaxZ(GLuint maxZ);
+
+    private:
+      GLName name;
+      GLuint minZ;
+      GLuint maxZ;
+  };
+
+  GLHit &GLHit::operator=(const GLHit &other)
+  {
+    m_name = other.m_name;
+    m_minZ = other.m_minZ;
+    m_maxZ = other.m_maxZ;
+    return *this;
+  }
+
+  bool GLHit::operator<(const GLHit &other) const {
+    return m_minZ < other.m_minZ;
+  }
+
+  bool GLHit::operator==(const GLHit &other) const {
+    return (m_name == other.m_name);
+  }
+
+  GLName GLHit::name() const { return m_name; }
+  GLuint GLHit::minZ() const { return m_minZ; }
+  GLuint GLHit::maxZ() const { return m_maxZ; }
+
+  void GLHit::setName(const GLName& name) { m_name = name; }
+  void GLHit::setMinZ(GLuint minZ) { m_minZ = minZ; }
+  void GLHit::setMaxZ(GLuint maxZ) { m_maxZ = maxZ; }
+
+  QList<GLHit> GLPicker::compute(int x, int y, int w, int h)
+  {
+    QList<GLHit> hits;
+    Molecule *mol = glwidget->molecule();
+    if(!mol) return hits;
+
+    GLint viewport[4];
+    unsigned int hit_count;
+
+    int cx = w/2 + x;
+    int cy = h/2 + y;
+
+    // setup the selection buffer
+    int requiredSelectBufSize
+      = (mol->NumAtoms() + mol->NumBonds())
+      * glwidget->aCells * glwidget->bCells * glwidget->cCells
+      * 8;
+    if( requiredSelectBufSize > d->selectBufSize )
+    {
+      //resize selection buffer
+      if(d->selectBuf) delete[] d->selectBuf;
+      // add some margin so that resizing doesn't occur every time an atom is added
+      d->selectBufSize = requiredSelectBufSize + SEL_BUF_MARGIN;
+      if( d->selectBufSize > SEL_BUF_MAX_SIZE ) {
+        d->selectBufSize = SEL_BUF_MAX_SIZE;
+      }
+      d->selectBuf = new GLuint[d->selectBufSize];
+    }
+
+    //X   hits.clear();
+
+    glSelectBuffer(d->selectBufSize, d->selectBuf);
+    glRenderMode(GL_SELECT);
+    glInitNames();
+
+    // Setup a projection matrix for picking in the zone delimited by (x,y,w,h).
+    glGetIntegerv(GL_VIEWPORT, viewport);
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    gluPickMatrix(cx,viewport[3]-cy, w, h,viewport);
+
+    // now multiply that projection matrix with the perspective of the camera
+    glwidget->camera->applyPerspective();
+
+    // now load the modelview matrix from the camera
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    glwidget->camera->applyModelview();
+
+    // now actually render
+    glwidget->render();
+
+    // returning to normal rendering mode
+    hit_count = glRenderMode(GL_RENDER);
+
+    // if no error occurred and there are hits, process them
+    if (hit_count > 0)
+    {
+      unsigned int i, j;
+      GLuint names, *ptr;
+      GLHit hit;
+
+      //X   printf ("hits = %d\n", hits);
+      ptr = (GLuint *) d->selectBuf;
+      // for all hits and not past end of buffer
+      for (i = 0; i < hit_count && !(ptr > d->selectBuf + d->selectBufSize); i++) {
+        names = *ptr++;
+        // make sure that we won't be passing the end of bufer
+        if( ptr + names + 2 > d->selectBuf + d->selectBufSize )
+        {
+          break;
+        }
+        hit.setMinZ(*ptr++);
+        hit.setMaxZ(*ptr++);
+        GLuint data0 = 0, data1 = 0;
+        for (j = 0; j < names/2; j++) { /*  for each name */
+          data0 = *ptr++;
+          data1 = *ptr++;
+        }
+        if (data1)
+        {
+          hit.setName(GLName(data0, data1));
+          hits.append(hit);
+        }
+      }
+      qSort(hits);
+    }
+
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glPopMatrix();
+    return(hits);
+  }
+
+} // end namespace avogadro
