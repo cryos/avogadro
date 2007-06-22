@@ -335,7 +335,12 @@ QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 {
   QUndoCommand *undo = 0;
+
+#ifdef Q_WS_MAC
+  if(_buttons & Qt::LeftButton && event->modifiers() == Qt::NoModifier)
+#else
   if(_buttons & Qt::LeftButton)
+#endif
   {
     // we can have a beginAtom w/out bond or endAtom
     // we can hava bond w/out endAtom
@@ -396,7 +401,15 @@ QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
     // create the undo action for creating endAtom and bond
     //  pass along atom idx, element, vector, bond idx, order, start/end
   }
+#ifdef Q_WS_MAC
+  // On the Mac, either use a three-button mouse
+  // or hold down the Command key (ControlModifier in Qt notation)
+  else if( (_buttons & Qt::RightButton) || 
+           ((_buttons & Qt::LeftButton) && (event->modifiers() == Qt::ControlModifier)) )
+#else
+  // Every other platform, use a three-button mouse
   else if(_buttons & Qt::RightButton)
+#endif
   {
     m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
                         event->pos().y()-SEL_BOX_HALF_SIZE,

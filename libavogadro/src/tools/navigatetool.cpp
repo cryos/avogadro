@@ -125,9 +125,21 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
 {
   m_glwidget = widget;
   m_lastDraggingPosition = event->pos();
-  m_leftButtonPressed = ( event->buttons() & Qt::LeftButton );
+#ifdef Q_WS_MAC
+  m_leftButtonPressed = (event->buttons() & Qt::LeftButton 
+                         && event->modifiers() == Qt::NoModifier);
+  // On the Mac, either use a three-button mouse
+  // or hold down the Option key (AltModifier in Qt notation)
+  m_midButtonPressed = ( (event->buttons() & Qt::MidButton) || 
+                         (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) );
+  // Hold down the Command key (ControlModifier in Qt notation) for right button
+  m_rightButtonPressed = ( (event->buttons() & Qt::RightButton) || 
+                           (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) );
+#else
+  m_leftButtonPressed = (event->buttons() & Qt::LeftButton);
   m_midButtonPressed = ( event->buttons() & Qt::MidButton );
   m_rightButtonPressed = ( event->buttons() & Qt::RightButton );
+#endif
   computeClickedAtom(event->pos());
 
   widget->update();
@@ -155,17 +167,29 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
 
   QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
-  // Mouse navigation has two modes - atom centred when an atom is clicked and scence if no
-  // atom has been clicked.
+  // Mouse navigation has two modes - atom centred when an atom is clicked
+  // and scene if no atom has been clicked.
 
   if( m_clickedAtom )
   {
+#ifdef Q_WS_MAC
+    if (event->buttons() & Qt::LeftButton 
+        && event->modifiers() == Qt::NoModifier)
+#else
     if ( event->buttons() & Qt::LeftButton )
+#endif
     {
       // Atom centred rotation
       rotate( m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y() );
     }
+#ifdef Q_WS_MAC
+  // On the Mac, either use a three-button mouse
+  // or hold down the Option key (AltModifier in Qt notation)
+    else if ( (event->buttons() & Qt::MidButton) || 
+              (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
+#else
     else if ( event->buttons() & Qt::MidButton )
+#endif
     {
       // Perform the rotation
       tilt( m_clickedAtom->pos(), deltaDragging.x() );
@@ -173,7 +197,14 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
       // Perform the zoom toward clicked atom
       zoom( m_clickedAtom->pos(), deltaDragging.y() );
     }
+#ifdef Q_WS_MAC
+    // On the Mac, either use a three-button mouse
+    // or hold down the Command key (ControlModifier in Qt notation)
+    else if ( (event->buttons() & Qt::RightButton) || 
+              (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
+#else
     else if ( event->buttons() & Qt::RightButton )
+#endif
     {
       // translate the molecule following mouse movement
       translate( m_clickedAtom->pos(), m_lastDraggingPosition, event->pos() );
@@ -181,12 +212,24 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
   }
   else // Nothing clicked on
   {
-    if( event->buttons() & Qt::LeftButton )
+#ifdef Q_WS_MAC
+    if (event->buttons() & Qt::LeftButton 
+        && event->modifiers() == Qt::NoModifier)
+#else
+    if ( event->buttons() & Qt::LeftButton )
+#endif
     {
       // rotation around the center of the molecule
       rotate( m_glwidget->center(), deltaDragging.x(), deltaDragging.y() );
     }
+#ifdef Q_WS_MAC
+  // On the Mac, either use a three-button mouse
+  // or hold down the Option key (AltModifier in Qt notation)
+    else if ( (event->buttons() & Qt::MidButton) || 
+              (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
+#else
     else if ( event->buttons() & Qt::MidButton )
+#endif
     {
       // Perform the rotation
       tilt( m_glwidget->center(), deltaDragging.x() );
@@ -194,7 +237,14 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
       // Perform the zoom toward molecule center
       zoom( m_glwidget->center(), deltaDragging.y() );
     }
+#ifdef Q_WS_MAC
+    // On the Mac, either use a three-button mouse
+    // or hold down the Command key (ControlModifier in Qt notation)
+    else if ( (event->buttons() & Qt::RightButton) || 
+              (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
+#else
     else if ( event->buttons() & Qt::RightButton )
+#endif
     {
       // translate the molecule following mouse movement
       translate( m_glwidget->center(), m_lastDraggingPosition, event->pos() );
