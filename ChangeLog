@@ -1,3 +1,12 @@
+2007-06-24  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/src/editcommands.[h,cpp]: Support for selecting new
+	atoms when pasting. Fixes PR#1739837.
+
+	* avogadro/src/mainwidnow.cpp: Pass along the widget when creating
+	a paste command. Fix minor crashes when copy/cut with selected
+	bonds. (Now we can select more than just atoms).
+
 2007-06-21  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* avogadro/src/extensions/h2methylextension.cpp: New extension for

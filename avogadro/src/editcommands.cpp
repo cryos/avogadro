@@ -27,6 +27,8 @@
 #include <QApplication>
 #include <QClipboard>
 
+using namespace OpenBabel;
+
 namespace Avogadro {
 
   CutCommand::CutCommand(Molecule *molecule, QMimeData *copyData,
@@ -48,8 +50,11 @@ namespace Avogadro {
       m_molecule->Clear();
     }
     else {
+      // Make sure any selection is an atom
+      // FIXME: Do we need to do bonds or other primitives?
       foreach(Primitive* item, m_selectedList) {
-        m_molecule->DeleteAtom(static_cast<Atom*>(item));
+        if (item->type() == Primitive::AtomType)
+          m_molecule->DeleteAtom(static_cast<Atom*>(item));
       }
     }
     m_molecule->update();
@@ -81,24 +86,36 @@ namespace Avogadro {
     QApplication::clipboard()->setMimeData(m_savedData, QClipboard::Clipboard);
   }
 
-  PasteCommand::PasteCommand(Molecule *molecule, Molecule pastedMolecule) :
+  PasteCommand::PasteCommand(Molecule *molecule, Molecule pastedMolecule,
+                             GLWidget *widget) :
     m_molecule(molecule),
     m_pastedMolecule(pastedMolecule),
-    m_originalMolecule(*molecule)
+    m_originalMolecule(*molecule),
+    m_widget(widget)
   {
     setText(QObject::tr("Paste"));
   }
 
   void PasteCommand::redo()
   {
-    // we should clear selectedPrimitives before pasting
+    m_widget->clearSelection();
+    // save the current number of atoms -- we'll select all new ones
+    unsigned int currentNumAtoms = m_molecule->NumAtoms();
     *m_molecule += m_pastedMolecule;
+
+    QList<Primitive*> newSelection;
+    FOR_ATOMS_OF_MOL(a, *m_molecule) {
+      if (a->GetIdx() > currentNumAtoms)
+        newSelection.append(static_cast<Atom *>(&*a));
+    }
+    m_widget->setSelected(newSelection, true);
     m_molecule->update();
   }
 
   void PasteCommand::undo()
   {
-    // we should restore the selectedPrimitives when we undo
+    // We can't easily save the previous selection, but it would be nice
+    m_widget->clearSelection();
     *m_molecule = m_originalMolecule;
     m_molecule->update();
   }
@@ -121,8 +138,11 @@ namespace Avogadro {
       m_molecule->Clear();
     }
     else {
+      // Make sure any selection is an atom
+      // FIXME: Do we need to do bonds or other primitives?
       foreach(Primitive* item, m_selectedList) {
-        m_molecule->DeleteAtom(static_cast<Atom*>(item));
+        if (item->type() == Primitive::AtomType) 
+          m_molecule->DeleteAtom(static_cast<Atom*>(item));
       }
     }
     m_molecule->update();

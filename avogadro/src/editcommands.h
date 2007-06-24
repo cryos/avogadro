@@ -30,6 +30,7 @@
 #include <QMimeData>
 
 #include <avogadro/primitive.h>
+#include <avogadro/glwidget.h>
 
 namespace Avogadro {
 
@@ -66,7 +67,7 @@ namespace Avogadro {
   class PasteCommand : public QUndoCommand
   {
   public:
-    PasteCommand(Molecule *molecule, Molecule pasteData);
+    PasteCommand(Molecule *molecule, Molecule pasteData, GLWidget *widget);
     
     virtual void undo();
     virtual void redo();
@@ -75,6 +76,7 @@ namespace Avogadro {
     Molecule *m_molecule;
     Molecule m_pastedMolecule;   //!< pasted fragment from the clipboard
     Molecule m_originalMolecule;
+    GLWidget *m_widget;
   };
 
  class ClearCommand : public QUndoCommand

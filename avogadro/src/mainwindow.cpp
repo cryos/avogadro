@@ -447,7 +447,7 @@ namespace Avogadro {
         offset *= 0.3;
 
         newMol.Translate(offset);
-        PasteCommand *command = new PasteCommand(d->molecule, newMol);
+        PasteCommand *command = new PasteCommand(d->molecule, newMol, d->glWidget);
         d->undoStack->push(command);
       } else {
       statusBar()->showMessage(tr("Unable to paste molecule."));
@@ -467,9 +467,11 @@ namespace Avogadro {
       std::map<OBAtom*, OBAtom*> AtomMap; // key is from old, value from new
       // copy atoms and create a map of atom indexes
       foreach(Primitive *item, selectedItems) {
-        OBAtom *selected = static_cast<Atom*>(item);
-        moleculeCopy->InsertAtom(*selected);
-        AtomMap[selected] = moleculeCopy->GetAtom(moleculeCopy->NumAtoms());
+        if (item->type() == Primitive::AtomType) {
+          OBAtom *selected = static_cast<Atom*>(item);
+          moleculeCopy->InsertAtom(*selected);
+          AtomMap[selected] = moleculeCopy->GetAtom(moleculeCopy->NumAtoms());
+        }
       }
 
       // use the atom map to map bonds
