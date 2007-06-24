@@ -149,6 +149,7 @@ QUndoCommand* DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
       m_beginAtom = (Atom *)molecule->GetAtom(m_hits[0].name());
       m_prevAtomElement = m_beginAtom->GetAtomicNum();
       m_beginAtom->SetAtomicNum(m_element);
+      m_beginAtom->update(); // Make sure to call for a widget repaint
     }
     else
     {
