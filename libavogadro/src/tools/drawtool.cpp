@@ -146,10 +146,15 @@ QUndoCommand* DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
   {
     if(m_hits.size() && (m_hits[0].type() == Primitive::AtomType))
     {
+      // "alchemy" -- change this atom to a new element
+      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+      widget->molecule()->BeginModify();
       m_beginAtom = (Atom *)molecule->GetAtom(m_hits[0].name());
       m_prevAtomElement = m_beginAtom->GetAtomicNum();
       m_beginAtom->SetAtomicNum(m_element);
+      widget->molecule()->EndModify();
       m_beginAtom->update(); // Make sure to call for a widget repaint
+      // FIXME: This should really be something we can undo
     }
     else
     {

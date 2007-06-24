@@ -1,5 +1,9 @@
 2007-06-24  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
+	* libavogadro/src/tools/drawtool.cpp (DrawTool::mousePress): Fix
+	bugs with "alchemy" mode -- clicking on an atom to change the
+	element. PR#1741653 and PR#1720879.
+
 	* avogadro/src/editcommands.[h,cpp]: Support for selecting new
 	atoms when pasting. Fixes PR#1739837.
 
