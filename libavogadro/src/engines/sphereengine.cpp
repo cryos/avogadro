@@ -60,7 +60,7 @@ SphereEngine::~SphereEngine()
 bool SphereEngine::renderOpaque(GLWidget *gl)
 {
   // Render the opaque spheres if m_alpha is 1
-  if (m_alpha > 0.999)
+  if (m_alpha >= 0.999)
   {
     QList<Primitive *> list;
     list = primitives().subList(Primitive::AtomType);
