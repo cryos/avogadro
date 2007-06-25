@@ -31,13 +31,13 @@
 
 #define OUTLINE_WIDTH     3
 const int OUTLINE_BRUSH[2*OUTLINE_WIDTH+1][2*OUTLINE_WIDTH+1]
-  = { { 10, 20,  35,  50,  35,  20,  10 },
-      { 20, 40,  75,  100,  75, 40,  20 },
-      { 35, 75,  200, 256, 200, 75,  35 },
+  = { { 10, 30,  45,  50,  45,  30,  10 },
+      { 30, 50,  90,  100,  90, 50,  30 },
+      { 45, 90,  200, 256, 200, 90,  45 },
       { 50, 100, 256, 256, 256, 100, 50},
-      { 35, 75,  200, 256, 200, 75,  35 },
-      { 20, 40,  75,  100,  75, 40,  20 },
-      { 10, 20,  35,  50,  35,  20,  10 } };
+      { 45, 90,  200, 256, 200, 90,  45 },
+      { 30, 50,  90,  100,  90, 50,  30 },
+      { 10, 30,  45,  50,  45,  30,  10 } };
 
 /*
   = { { 40,  75,  100,  75, 40 },
@@ -68,8 +68,7 @@ class CharRenderer
     GLuint m_glyphTexture;
     GLuint m_outlineTexture;
 
-    GLuint m_glyphDisplayList;
-    GLuint m_outlineDisplayList;
+    GLuint m_quadDisplayList;
     
     GLenum m_textureTarget;
 
@@ -96,12 +95,14 @@ class CharRenderer
 
     inline void drawOutline() const
     {
-      glCallList( m_outlineDisplayList );
+      glBindTexture(m_textureTarget, m_outlineTexture);
+      glCallList( m_quadDisplayList );
     }
     
     inline void drawGlyph() const
     {
-      glCallList( m_glyphDisplayList );
+      glBindTexture(m_textureTarget, m_glyphTexture);
+      glCallList( m_quadDisplayList );
     }
 };
 
@@ -109,16 +110,14 @@ CharRenderer::CharRenderer()
 {
   m_glyphTexture = 0;
   m_outlineTexture = 0;
-  m_glyphDisplayList = 0;
-  m_outlineDisplayList = 0;
+  m_quadDisplayList = 0;
 }
 
 CharRenderer::~CharRenderer()
 {
   if( m_glyphTexture ) glDeleteTextures( 1, &m_glyphTexture );
   if( m_outlineTexture ) glDeleteTextures( 1, &m_outlineTexture );
-  if( m_glyphDisplayList ) glDeleteLists( m_glyphDisplayList, 1 );
-  if( m_outlineDisplayList ) glDeleteLists( m_outlineDisplayList, 1 );
+  if( m_quadDisplayList ) glDeleteLists( m_quadDisplayList, 1 );
 }
 
 static void normalizeTexSize( GLenum textureTarget,
@@ -126,7 +125,7 @@ static void normalizeTexSize( GLenum textureTarget,
 {
   // if the texture target is GL_TEXTURE_2D, that means that
   // the texture_rectangle OpenGL extension is unsupported and we must
-  // use only square texture with size a power of two.
+  // use only square, power-of-two textures.
   if( textureTarget == GL_TEXTURE_2D )
   {
     int x = qMax( texwidth, texheight );
@@ -140,7 +139,7 @@ static void normalizeTexSize( GLenum textureTarget,
 
 bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget )
 {
-  if( m_glyphDisplayList ) return true;
+  if( m_quadDisplayList ) return true;
   m_textureTarget = textureTarget;
   // *** STEP 1 : render the character to a QImage ***
   
@@ -151,7 +150,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   if(m_realwidth == 0 || m_realheight == 0) return false;
   int texwidth  =  m_realwidth + 2 * OUTLINE_WIDTH;
   int texheight = m_realheight + 2 * OUTLINE_WIDTH;
-  normalizeTexSize(m_textureTarget, texwidth, texheight);
+  normalizeTexSize(textureTarget, texwidth, texheight);
   
   // create a new image
   QImage image( texwidth, texheight, QImage::Format_RGB32 );
@@ -234,10 +233,8 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   GLubyte *outlinebitmap = new GLubyte[ texwidth * texheight ];
   if( ! outlinebitmap ) return false;
 
-  for( int i = 0; i < texheight; i++ )
-  for( int j = 0; j < texwidth; j++ )
+  for( int n = 0; n < texwidth * texheight; n++ )
   {
-    n = j + i * texwidth;
     glyphbitmap[n] = static_cast<GLubyte>(rawbitmap[n]);
     int alpha = (neighborhood[n] >> 8) + rawbitmap[n];
     if( alpha > 255 ) {
@@ -258,9 +255,9 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
 
   glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );
   
-  glBindTexture( m_textureTarget, m_glyphTexture );
+  glBindTexture( textureTarget, m_glyphTexture );
   glTexImage2D(
-    m_textureTarget,
+    textureTarget,
     0,
     GL_ALPHA,
     texwidth,
@@ -270,12 +267,12 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
     GL_UNSIGNED_BYTE,
     glyphbitmap );
 
-  glTexParameteri( m_textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
-  glTexParameteri( m_textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+  glTexParameteri( textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+  glTexParameteri( textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
-  glBindTexture( m_textureTarget, m_outlineTexture );
+  glBindTexture( textureTarget, m_outlineTexture );
   glTexImage2D(
-    m_textureTarget,
+    textureTarget,
     0,
     GL_ALPHA,
     texwidth,
@@ -285,25 +282,22 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
     GL_UNSIGNED_BYTE,
     outlinebitmap );
 
-  glTexParameteri( m_textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
-  glTexParameteri( m_textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+  glTexParameteri( textureTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+  glTexParameteri( textureTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
   // the texture data is now kept alive by OpenGL. It's time to free the bitmaps.
   delete [] glyphbitmap;
   delete [] outlinebitmap;
   
-  // *** STEP 6 : compile the display lists ***
+  // *** STEP 6 : compile the display list ***
 
-  m_outlineDisplayList = glGenLists(1);
-  if( ! m_outlineDisplayList ) return false;
-  m_glyphDisplayList = glGenLists(1);
-  if( ! m_glyphDisplayList ) return false;
-  
-  int texcoord_width = (m_textureTarget == GL_TEXTURE_2D) ? 1 : texwidth;
-  int texcoord_height = (m_textureTarget == GL_TEXTURE_2D) ? 1 : texheight;
+  m_quadDisplayList = glGenLists(1);
+  if( ! m_quadDisplayList ) return false;
 
-  glNewList( m_outlineDisplayList, GL_COMPILE );
-  glBindTexture(m_textureTarget, m_outlineTexture);
+  int texcoord_width = (textureTarget == GL_TEXTURE_2D) ? 1 : texwidth;
+  int texcoord_height = (textureTarget == GL_TEXTURE_2D) ? 1 : texheight;
+
+  glNewList( m_quadDisplayList, GL_COMPILE );
   glBegin( GL_QUADS );
   glTexCoord2i( 0, 0);
   glVertex2f( 0 , -texheight );
@@ -317,21 +311,6 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   glTranslatef( m_realwidth, 0, 0 );
   glEndList();
 
-  glNewList( m_glyphDisplayList, GL_COMPILE );
-  glBindTexture(m_textureTarget, m_glyphTexture);
-  glBegin( GL_QUADS );
-  glTexCoord2i( 0, 0);
-  glVertex2f( 0 , -texheight );
-  glTexCoord2i( texcoord_width, 0);
-  glVertex2f( texwidth , -texheight );
-  glTexCoord2i( texcoord_width, texcoord_height);
-  glVertex2f( texwidth, 0 );
-  glTexCoord2i( 0, texcoord_height);
-  glVertex2f( 0 , 0 );
-  glEnd();
-  glTranslatef( m_realwidth, 0, 0 );
-  glEndList();
-  
   return true;
 }
 
@@ -456,6 +435,7 @@ void TextRenderer::begin(GLWidget *widget)
   glPushAttrib(GL_ENABLE_BIT | GL_DEPTH_BUFFER_BIT);
   glDisable(GL_LIGHTING);
   glDisable(GL_FOG);
+  glDisable(GL_CULL_FACE);
   glEnable(d->textureTarget);
   glEnable(GL_BLEND);
   glDepthMask(GL_FALSE);
@@ -491,10 +471,23 @@ void TextRendererPrivate::do_draw( const QString &string )
     if( ! charTable.contains( string[i] ) )
     {
       CharRenderer *c = new CharRenderer;
-      // for now, we don't tolerate errors in glyph rendering.
-      // having an assert here means we'll get crash reports from
-      // angry users if such an error ever occurs.
-      assert( c->initialize( string[i], font, textureTarget ) );
+      if(!c->initialize( string[i], font, textureTarget ) )
+      {
+        delete c;
+        c = new CharRenderer;
+        qDebug() << "Character " << string[i]
+                 << "(unicode" << string[i].unicode()
+                 << ") failed to render using the following font:";
+        qDebug() << font.toString();
+        if(!c->initialize( '*', font, textureTarget ))
+        {
+          qDebug() << "Can't render even a simple character (*).";
+          qDebug() << "Are you using a bad font, or what?";
+          qDebug() << "The font being used is:";
+          qDebug() << font.toString();
+          assert(false);
+        }
+      }
       charTable.insert( string[i], c);
     }
   }
