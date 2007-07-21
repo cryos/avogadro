@@ -20,9 +20,10 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "config.h"
-
 #include "mainwindow.h"
+
+#include <config.h>
+
 #include "aboutdialog.h"
 #include "editcommands.h"
 #include "settingsdialog.h"

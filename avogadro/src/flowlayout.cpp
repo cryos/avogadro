@@ -22,9 +22,10 @@
 **
 ****************************************************************************/
 
+#include "flowlayout.h"
+
 #include <QtGui>
 
-#include "flowlayout.h"
 
 namespace Avogadro {
   
