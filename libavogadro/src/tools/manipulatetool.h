@@ -100,7 +100,7 @@ namespace Avogadro {
  class MoveAtomCommand : public QUndoCommand
   {
     public:
-      MoveAtomCommand(Molecule *molecule, QUndoCommand *parent = 0);
+      explicit MoveAtomCommand(Molecule *molecule, QUndoCommand *parent = 0);
       MoveAtomCommand(Molecule *molecule, Atom *atom, Eigen::Vector3d pos, QUndoCommand *parent = 0);
 
       void redo();
