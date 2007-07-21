@@ -1,4 +1,4 @@
-set(QT_USE_QTOPENGL TRUE)
+set(QT_USE_QTOPENGL true)
 
 include(${QT_USE_FILE})
 
