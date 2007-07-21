@@ -47,8 +47,8 @@ namespace Avogadro {
       };
 
     public:
-      PrimitiveItemModel( Engine *engine, QObject *parent = 0 );
-      PrimitiveItemModel( Molecule *molecule, QObject *parent = 0 );
+      explicit PrimitiveItemModel( Engine *engine, QObject *parent = 0 );
+      explicit PrimitiveItemModel( Molecule *molecule, QObject *parent = 0 );
 
       QModelIndex parent( const QModelIndex & index ) const;
       int rowCount( const QModelIndex & parent = QModelIndex() ) const;

@@ -1,4 +1,4 @@
-set(QT_USE_QTOPENGL TRUE)
+set(QT_USE_QTOPENGL true)
 
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/config.h.in

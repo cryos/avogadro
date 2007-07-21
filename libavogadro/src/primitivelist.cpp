@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "config.h"
+#include <config.h>
 
 #include <avogadro/primitivelist.h>
 #include <QDebug>

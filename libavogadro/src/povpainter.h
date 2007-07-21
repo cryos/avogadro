@@ -75,7 +75,7 @@ namespace Avogadro
   class POVPainterDevice : public PainterDevice
   {
   public:
-    POVPainterDevice(QString filename, const GLWidget* glwidget);
+    POVPainterDevice(const QString& filename, const GLWidget* glwidget);
     ~POVPainterDevice();
 
     void initializePOV();

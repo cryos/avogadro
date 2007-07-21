@@ -138,7 +138,7 @@ namespace Avogadro
     d->output = 0;
   }
 
-  POVPainterDevice::POVPainterDevice(QString filename, const GLWidget* glwidget)
+  POVPainterDevice::POVPainterDevice(const QString& filename, const GLWidget* glwidget)
   {
     m_painter = new POVPainter;
     m_file = new QFile(filename);
