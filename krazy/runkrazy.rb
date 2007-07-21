@@ -21,7 +21,9 @@ for dir in directories
 	dir.chomp!
 	filename = dir2filename( dir )
 
-	command = "krazy --export html --explain --exclude qclasses ../#{dir}/* > #{filename}.html"
+	command = "krazy --export html --explain --exclude qclasses,license,copyright ../#{dir} > #{filename}.html"
+
+	puts command
 
 	puts "Running Krazy on #{dir}".center(70, "-")
 	puts "Results are written in #{filename}.html".center(70, "-")

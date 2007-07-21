@@ -5,8 +5,8 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 22<br>
-Total Issues = 34 ...as of Juli 21 2007 15:16:40</p>
+<p>Checkers Run = 20<br>
+No Issues Found! ...as of Juli 21 2007 16:06:27</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>okay!</b>
@@ -14,58 +14,6 @@ Total Issues = 34 ...as of Juli 21 2007 15:16:40</p>
 <b>okay!</b>
 <li>Check for contractions in strings... 
 <b>okay!</b>
-<li>Check for an acceptable copyright... 
-<b>OOPS! 25 issues found!</b>
-<ul>
-<li>	../libavogadro/src/tools/autorotatetool.cpp: missing tags: email address(line 4)  (1)
-</li>
-<li>	../libavogadro/src/tools/autorotatetool.h: missing tags: email address(line 4)  (1)
-</li>
-<li>	../libavogadro/src/tools/clickmeasuretool.cpp: missing tags: email address(line 4)  (1)
-</li>
-<li>	../libavogadro/src/tools/clickmeasuretool.h: missing tags: email address(line 4)  (1)
-</li>
-<li>	../libavogadro/src/tools/CMakeLists.txt: missing tags: copyright  (1)
-</li>
-<li>	../libavogadro/src/tools/drawcommand.cpp: missing tags: email address(line 4)  (1)
-</li>
-<li>	../libavogadro/src/tools/drawcommand.h: missing tags: email address(line 4)  (1)
-</li>
-<li>	../libavogadro/src/tools/drawtool.cpp: missing tags: email address(line 4)  (1)
-</li>
-<li>	../libavogadro/src/tools/drawtool.h: missing tags: email address(line 4)  (1)
-</li>
-<li>	../libavogadro/src/tools/manipulatetool.cpp: missing tags: email address(line 4) email address(line 5) email address(line 6)  (3)
-</li>
-<li>	../libavogadro/src/tools/manipulatetool.h: missing tags: email address(line 4) email address(line 5) email address(line 6)  (3)
-</li>
-<li>	../libavogadro/src/tools/navigate.png: missing tags: copyright  (1)
-</li>
-<li>	../libavogadro/src/tools/navigatetool.cpp: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../libavogadro/src/tools/navigatetool.h: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../libavogadro/src/tools/periodictabledialog.cpp: missing tags: email address(line 2)  (1)
-</li>
-<li>	../libavogadro/src/tools/periodictabledialog.h: missing tags: email address(line 4)  (1)
-</li>
-<li>	../libavogadro/src/tools/periodictabledialog.ui: missing tags: copyright  (1)
-</li>
-<li>	../libavogadro/src/tools/selectrotatetool.cpp: missing tags: email address(line 4)  (1)
-</li>
-<li>	../libavogadro/src/tools/selectrotatetool.h: missing tags: email address(line 4)  (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	All source files must contain a copyright header which identifies
-	the copyright holder(s) together with a e-mail address that can be
-	used to reach the copyright holder.  One copyright holder per line,
-	with real email addresses please. For details regarding KDE&#39;s
-	licensing policy please visit
-	<a href="http://techbase.kde.org/Policies/Licensing_Policy">http://techbase.kde.org/Policies/Licensing_Policy</a>.  A typical
-	copyright looks like: &quot;Copyright 2002,2005-2006 Joe Hacker
-	&lt;joe.hacker@kde.org&gt;&quot;</p>
-</li>
-
 <li>Check for cpp macros and usage... 
 <b>okay!</b>
 <li>Checks for QString containing a single char is better as a QChar... 
@@ -77,23 +25,7 @@ Total Issues = 34 ...as of Juli 21 2007 15:16:40</p>
 <li>Check for QString compares to ""... 
 <b>okay!</b>
 <li>Check that file ends with a newline... 
-<b>OOPS! 5 issues found!</b>
-<ul>
-<li>	../libavogadro/src/tools/draw.png: line# 5 (1)
-</li>
-<li>	../libavogadro/src/tools/manipulate.png: line# 3 (1)
-</li>
-<li>	../libavogadro/src/tools/measure.png: line# 5 (1)
-</li>
-<li>	../libavogadro/src/tools/navigate.png: line# 7 (1)
-</li>
-<li>	../libavogadro/src/tools/select.png: line# 4 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Files that do not end with a newline character can cause problems.
-	Please add a newline character to the end of the file.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
 <b>okay!</b>
 <li>Check validity of i18n calls... 
@@ -102,24 +34,6 @@ Total Issues = 34 ...as of Juli 21 2007 15:16:40</p>
 <b>okay!</b>
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
-<li>Check for an acceptable license... 
-<b>OOPS! 4 issues found!</b>
-<ul>
-<li>	../libavogadro/src/tools/CMakeLists.txt: missing license
-</li>
-<li>	../libavogadro/src/tools/measure.png: missing license
-</li>
-<li>	../libavogadro/src/tools/navigate.png: missing license
-</li>
-<li>	../libavogadro/src/tools/periodictabledialog.ui: missing license
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Each source file must contain a license or a reference to a license
-	which states under which terms the software may be used, modified
-	and redistributed.  For details regarding KDE&#39;s licensing policy
-	please visit <a href="http://techbase.kde.org/Policies/Licensing_Policy">http://techbase.kde.org/Policies/Licensing_Policy</a>.</p>
-</li>
-
 <li>Check for assignments to QString::null... 
 <b>okay!</b>
 <li>Check for compares to QString::null... 

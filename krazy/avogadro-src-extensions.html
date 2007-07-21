@@ -5,8 +5,8 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 22<br>
-Total Issues = 49 ...as of Juli 21 2007 15:19:18</p>
+<p>Checkers Run = 20<br>
+No Issues Found! ...as of Juli 21 2007 16:06:39</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>okay!</b>
@@ -14,68 +14,6 @@ Total Issues = 49 ...as of Juli 21 2007 15:19:18</p>
 <b>okay!</b>
 <li>Check for contractions in strings... 
 <b>okay!</b>
-<li>Check for an acceptable copyright... 
-<b>OOPS! 37 issues found!</b>
-<ul>
-<li>	../avogadro/src/extensions/CMakeLists.txt: missing tags: copyright  (1)
-</li>
-<li>	../avogadro/src/extensions/forcefielddialog.cpp: missing tags: email address(line 4)  (1)
-</li>
-<li>	../avogadro/src/extensions/forcefielddialog.h: missing tags: email address(line 4)  (1)
-</li>
-<li>	../avogadro/src/extensions/forcefielddialog.ui: missing tags: copyright  (1)
-</li>
-<li>	../avogadro/src/extensions/gamessextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/gamessextension.h: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/gamessinputdata.cpp: missing tags: copyright  (1)
-</li>
-<li>	../avogadro/src/extensions/gamessinputdata.h: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/gamessinputdialog.cpp: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/gamessinputdialog.h: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/gamessinputdialog.ui: missing tags: copyright  (1)
-</li>
-<li>	../avogadro/src/extensions/ghemicalextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/ghemicalextension.h: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/h2methylextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/h2methylextension.h: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/hydrogensextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/hydrogensextension.h: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/smartsextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/smartsextension.h: missing tags: email address(line 4) email address(line 5)  (2)
-</li>
-<li>	../avogadro/src/extensions/unitcellextension.cpp: missing tags: email address(line 4)  (1)
-</li>
-<li>	../avogadro/src/extensions/unitcellextension.h: missing tags: email address(line 4)  (1)
-</li>
-<li>	../avogadro/src/extensions/unitcellparamdialog.cpp: missing tags: email address(line 4)  (1)
-</li>
-<li>	../avogadro/src/extensions/unitcellparamdialog.h: missing tags: email address(line 4)  (1)
-</li>
-<li>	../avogadro/src/extensions/unitcellparamdialog.ui: missing tags: copyright  (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	All source files must contain a copyright header which identifies
-	the copyright holder(s) together with a e-mail address that can be
-	used to reach the copyright holder.  One copyright holder per line,
-	with real email addresses please. For details regarding KDE&#39;s
-	licensing policy please visit
-	<a href="http://techbase.kde.org/Policies/Licensing_Policy">http://techbase.kde.org/Policies/Licensing_Policy</a>.  A typical
-	copyright looks like: &quot;Copyright 2002,2005-2006 Joe Hacker
-	&lt;joe.hacker@kde.org&gt;&quot;</p>
-</li>
-
 <li>Check for cpp macros and usage... 
 <b>okay!</b>
 <li>Checks for QString containing a single char is better as a QChar... 
@@ -93,54 +31,9 @@ Total Issues = 49 ...as of Juli 21 2007 15:19:18</p>
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 7 issues found!</b>
-<ul>
-<li>	../avogadro/src/extensions/gamessextension.cpp: do not include QtModules line#31(QtGui)
-</li>
-<li>	../avogadro/src/extensions/gamessinputdialog.h: missing or improper include guard in header
-</li>
-<li>	../avogadro/src/extensions/ghemicalextension.cpp: do not include QtModules line#28(QtGui)
-</li>
-<li>	../avogadro/src/extensions/h2methylextension.cpp: do not include QtModules line#30(QtGui)
-</li>
-<li>	../avogadro/src/extensions/hydrogensextension.cpp: do not include QtModules line#30(QtGui)
-</li>
-<li>	../avogadro/src/extensions/smartsextension.cpp: do not include QtModules line#29(QtGui)
-</li>
-<li>	../avogadro/src/extensions/unitcellextension.cpp: do not include QtModules line#26(QtGui)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
-	Qt headers from installed headers; cpp file should include their
-	own headers first; other rules apply, see
-	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
-	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
-	cludes_right</a>. Use include guards in headers with appropriatedly
-	encoded macro names.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
-<li>Check for an acceptable license... 
-<b>OOPS! 5 issues found!</b>
-<ul>
-<li>	../avogadro/src/extensions/CMakeLists.txt: missing license
-</li>
-<li>	../avogadro/src/extensions/forcefielddialog.ui: missing license
-</li>
-<li>	../avogadro/src/extensions/gamessinputdata.cpp: missing license
-</li>
-<li>	../avogadro/src/extensions/gamessinputdialog.ui: missing license
-</li>
-<li>	../avogadro/src/extensions/unitcellparamdialog.ui: missing license
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Each source file must contain a license or a reference to a license
-	which states under which terms the software may be used, modified
-	and redistributed.  For details regarding KDE&#39;s licensing policy
-	please visit <a href="http://techbase.kde.org/Policies/Licensing_Policy">http://techbase.kde.org/Policies/Licensing_Policy</a>.</p>
-</li>
-
 <li>Check for assignments to QString::null... 
 <b>okay!</b>
 <li>Check for compares to QString::null... 
