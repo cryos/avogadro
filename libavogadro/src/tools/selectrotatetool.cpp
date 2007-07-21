@@ -42,8 +42,8 @@ using namespace Avogadro;
 using namespace Eigen;
 
 SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent),
-                                                      m_selectionDL(0),
-                                                      m_settingsWidget(0)
+                                   m_selectionBox(false),
+                                   m_settingsWidget(0)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
@@ -55,10 +55,6 @@ SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent),
 
 SelectRotateTool::~SelectRotateTool()
 {
-  if(m_selectionDL)  {
-    glDeleteLists(m_selectionDL, 1);
-  }
-
   if(m_settingsWidget) {
     m_settingsWidget->deleteLater();
   }
@@ -83,9 +79,7 @@ QUndoCommand* SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *
 
   if(!m_hits.size())
   {
-    selectionBox(m_initialDraggingPosition.x(), m_initialDraggingPosition.y(),
-        m_initialDraggingPosition.x(), m_initialDraggingPosition.y());
-    widget->addDL(m_selectionDL);
+    m_selectionBox = true;
   }
 
   return 0;
@@ -99,7 +93,7 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
   }
 
   if(!m_hits.size()) {
-    widget->removeDL(m_selectionDL);
+    m_selectionBox = false;
   }
 
   QList<Primitive *> hitList;
@@ -248,14 +242,6 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
       // should be some sort of zoom / scaling
     }
   }
-  else
-  {
-    // draw the selection box
-    GLint viewport[4];
-    glGetIntegerv(GL_VIEWPORT,viewport);
-    selectionBox(m_initialDraggingPosition.x(), m_initialDraggingPosition.y(),
-        m_lastDraggingPosition.x(), m_lastDraggingPosition.y());
-  }
 
   widget->update();
 
@@ -269,11 +255,6 @@ QUndoCommand* SelectRotateTool::wheel(GLWidget*, const QWheelEvent*)
 
 void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
 {
-  if(!m_selectionDL)
-  {
-    m_selectionDL = glGenLists(1);
-  }
-
   glPushMatrix();
   glLoadIdentity();
   GLdouble projection[16];
@@ -289,7 +270,6 @@ void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
   gluUnProject(float(sx), viewport[3] - float(sy), 0.1, modelview, projection, viewport, &startPos[0], &startPos[1], &startPos[2]);
   gluUnProject(float(ex), viewport[3] - float(ey), 0.1, modelview, projection, viewport, &endPos[0], &endPos[1], &endPos[2]);
 
-  glNewList(m_selectionDL, GL_COMPILE);
   glPushAttrib(GL_ALL_ATTRIB_BITS);
   glPushMatrix();
   glLoadIdentity();
@@ -314,7 +294,6 @@ void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)
   glEnd();
   glPopMatrix();
   glPopAttrib();
-  glEndList();
   glPopMatrix();
 
 }
@@ -361,6 +340,14 @@ void SelectRotateTool::settingsWidgetDestroyed() {
   m_settingsWidget = 0;
 }
 
+bool SelectRotateTool::paint(GLWidget *widget)
+{
+  if(m_selectionBox)
+  {
+    selectionBox(m_initialDraggingPosition.x(), m_initialDraggingPosition.y(),
+                  m_lastDraggingPosition.x(), m_lastDraggingPosition.y());
+  }
+}
 
 #include "selectrotatetool.moc"
 

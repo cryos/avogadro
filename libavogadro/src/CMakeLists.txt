@@ -28,7 +28,10 @@ set(libavogadro_SRCS
   tool.cpp
   toolgroup.cpp
   undosequence.cpp
+  painterengine.cpp
   painter.cpp
+  glpainter.cpp
+  povpainter.cpp
   textrenderer.cpp
   sphere.cpp
   cylinder.cpp
@@ -45,6 +48,7 @@ set(libavogadro_HDRS
   primitiveitemmodel.h
   primitivelist.h
   painter.h
+  povpainter.h
   toolgroup.h
   undosequence.h
 )

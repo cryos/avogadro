@@ -60,6 +60,7 @@ namespace Avogadro {
       bool saveAs();
       void revert();
       void exportGraphics();
+      void exportPOV();
 
       void closeFile();
 

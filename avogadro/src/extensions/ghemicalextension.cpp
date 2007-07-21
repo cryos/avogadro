@@ -27,6 +27,7 @@
 
 #include <QtGui>
 #include <QProgressDialog>
+#include <QWriteLocker>
 
 using namespace std;
 using namespace OpenBabel;
@@ -133,6 +134,7 @@ using namespace OpenBabel;
 
     void GhemicalThread::run()
     {
+      QWriteLocker locker(m_molecule->lock());
       m_stop = false;
       m_cycles = 0;
 

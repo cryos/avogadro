@@ -80,6 +80,8 @@ namespace Avogadro {
      */
     virtual void set(double value, double low, double high);
 
+    /**
+     * Set the alpha component of the color */
     virtual void setAlpha(double alpha);
 
     /**
@@ -95,6 +97,11 @@ namespace Avogadro {
      * diffuse color while using different shades for the ambient and
      * specular colors. This is only useful if lighting is enabled. */
     virtual void applyAsMaterials();
+
+    inline float red() { return m_red; }
+    inline float green() { return m_green; }
+    inline float blue() { return m_blue; }
+    inline float alpha() { return m_alpha; }
 
   private:
     ///{ The four components of the color, ranging between 0 and 1.

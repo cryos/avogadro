@@ -47,10 +47,8 @@ WireEngine::WireEngine(QObject *parent) : Engine(parent)
   setDescription(tr("Wireframe rendering"));
 }
 
-bool WireEngine::renderOpaque(GLWidget *gl)
+bool WireEngine::renderOpaque(PainterDevice *pd)
 {
-  gl = gl;
-
   QList<Primitive *> list;
 
   glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -59,12 +57,12 @@ bool WireEngine::renderOpaque(GLWidget *gl)
 
   list = primitives().subList(Primitive::AtomType);
   foreach( Primitive *p, list ) {
-    renderOpaque(gl, static_cast<const Atom *>(p));
+    renderOpaque(pd, static_cast<const Atom *>(p));
   }
 
   list = primitives().subList(Primitive::BondType);
   foreach( Primitive *p, list ) {
-    renderOpaque(gl, static_cast<const Bond *>(p));
+    renderOpaque(pd, static_cast<const Bond *>(p));
   }
 
   glPopAttrib();
@@ -72,11 +70,11 @@ bool WireEngine::renderOpaque(GLWidget *gl)
   return true;
 }
 
-bool WireEngine::renderOpaque(GLWidget *gl, const Atom *a)
+bool WireEngine::renderOpaque(PainterDevice *pd, const Atom *a)
 {
   const Vector3d & v = a->pos();
 
-  Eigen::Vector3d transformedPos = gl->camera()->modelview() * v;
+  Eigen::Vector3d transformedPos = pd->camera()->modelview() * v;
 
   // perform a rough form of frustum culling
   double dot = transformedPos.z() / transformedPos.norm();
@@ -87,7 +85,7 @@ bool WireEngine::renderOpaque(GLWidget *gl, const Atom *a)
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
 
-  if (gl->isSelected(a)) {
+  if (pd->isSelected(a)) {
     glColor3fv(selectionColor);
     glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 4.0);
   }
@@ -107,12 +105,12 @@ bool WireEngine::renderOpaque(GLWidget *gl, const Atom *a)
   return true;
 }
 
-bool WireEngine::renderOpaque(GLWidget *gl, const Bond *b)
+bool WireEngine::renderOpaque(PainterDevice *pd, const Bond *b)
 {
   const Atom *atom1 = static_cast<const Atom *>( b->GetBeginAtom() );
   const Vector3d & v1 = atom1->pos();
 
-  Eigen::Vector3d transformedEnd1 = gl->camera()->modelview() * v1;
+  Eigen::Vector3d transformedEnd1 = pd->camera()->modelview() * v1;
 
   // perform a rough form of frustum culling
   double dot = transformedEnd1.z() / transformedEnd1.norm();

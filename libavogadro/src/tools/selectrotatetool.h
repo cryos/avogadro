@@ -76,6 +76,7 @@ namespace Avogadro {
       virtual int usefulness() const;
 
       virtual QWidget *settingsWidget();
+      virtual bool paint(GLWidget *widget);
 
       void setSelectionMode(int i);
       int selectionMode() const;
@@ -92,7 +93,7 @@ namespace Avogadro {
       bool                m_movedSinceButtonPressed;
 
       //! Temporary var for adding selection box
-      GLuint              m_selectionDL;
+      bool                m_selectionBox;
 
       QPoint              m_initialDraggingPosition;
       QPoint              m_lastDraggingPosition;

@@ -1,5 +1,5 @@
 /**********************************************************************
-  Painter - drawing spheres, cylinders and text
+  GLPainter - drawing spheres, cylinders and text in a GLWidget
 
   Copyright (C) 2007 Benoit Jacob
   Copyright (C) 2007 Donald Ephraim Curtis
@@ -23,11 +23,11 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __PAINTER_H
-#define __PAINTER_H
+#ifndef __GLPAINTER_H
+#define __GLPAINTER_H
 
 #include <avogadro/global.h>
-#include <avogadro/primitive.h>
+#include <avogadro/painter.h>
 #include <eigen/vector.h>
 #include <QObject>
 #include <QPoint>
@@ -35,28 +35,40 @@
 
 namespace Avogadro
 {
-  class Color;
-  class Painter : public QObject
+  class GLWidget;
+  class GLPainterPrivate;
+  class GLPainter : public Painter
   {
+    friend class GLWidget;
     public:
-      Painter();
-      ~Painter();
+      GLPainter ( int quality=-1 );
+      ~GLPainter();
+
+      /** sets the global quality setting. This influences the detail level of the
+        * geometric objects (spheres and cylinders). Values range from 0 to
+        * PAINTER_GLOBAL_QUALITY_SETTINGS-1.
+        */
+      void setQuality ( int quality );
+
+      /** @returns the current global quality setting.
+        */
+      int quality() const;
 
       /** Uses the primitive to set the type and name if the Paint Device is supports that.
         * @param primitive The primitive about to be drawn
         */
-      virtual void setName ( const Primitive *primitive ) = 0;
+      void setName ( const Primitive *primitive );
 
       /** Uses the primitive to set the type and name if the Paint Device is supports that.
         * @param type The primitive type about to be drawn
         * @param id The primitive id
         */
-      virtual void setName ( Primitive::Type type, int id ) = 0;
+      void setName ( Primitive::Type type, int id );
 
       /** Set the color to paint elements with.
         * @param color The color to be used for painting
       */
-      virtual void setColor ( const Color *color ) = 0;
+      void setColor ( const Color *color );
 
       /** Set the color to paint elements with where 0.0 is minimum and 1.0 is maximum
         * @param red component of the color
@@ -64,14 +76,14 @@ namespace Avogadro
         * @param blue component of the color
         * @param alpha component of the color
       */
-      virtual void setColor ( float red, float green, float blue, float alpha = 1.0 ) = 0;
+      void setColor ( float red, float green, float blue, float alpha = 1.0 );
 
       /** Draws a sphere, leaving the Painter choose the appropriate detail level based on the
         * apparent radius (ratio of radius over distance) and the global quality setting.
         * @param center The position of the center of the sphere
         * @param radius The radius of the sphere
         */
-      virtual void drawSphere ( const Eigen::Vector3d & center, double radius ) = 0;
+      void drawSphere ( const Eigen::Vector3d & center, double radius );
 
       /** Draws a cylinder, leaving the Painter choose the appropriate detail level based on the
         * apparent radius (ratio of radius over distance) and the global quality setting.
@@ -79,8 +91,8 @@ namespace Avogadro
         * @param end2 The position of the second end of the cylinder
         * @param radius The radius, i.e. half-width of the cylinder
         */
-      virtual void drawCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
-                          double radius ) = 0;
+      void drawCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+                          double radius );
 
       /** Draws a multiple cylinder (see below), leaving the Painter choose the appropriate
         * detail level based on the apparent radius (ratio of radius over distance) and the
@@ -103,8 +115,8 @@ namespace Avogadro
         * @param shift How far away from the central axis the cylinders are shifted.
         *              In other words, this influences the total width of multiple bonds.
         */
-      virtual void drawMultiCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
-                               double radius, int order, double shift ) = 0;
+      void drawMultiCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+                               double radius, int order, double shift );
 
       /** Draws text at a given window position, on top of the scene.
         * @note Calls to drawText methods must be enclosed between begin() and end().
@@ -119,7 +131,7 @@ namespace Avogadro
         * @sa begin(), drawText( const Eigen::Vector3d &, const QString &) const,
         *     drawText( const QPoint &, const QString & ) const
         */
-      virtual int drawText ( int x, int y, const QString &string ) const = 0;
+      int drawText ( int x, int y, const QString &string ) const;
 
       /** Draws text at a given window position, on top of the scene.
         * @note Calls to drawText methods must be enclosed between begin() and endText().
@@ -134,7 +146,7 @@ namespace Avogadro
         * @sa begin(), drawText( const Eigen::Vector3d &, const QString &) const,
         *     drawText( int, int, const QString & ) const
         */
-      virtual int drawText ( const QPoint& pos, const QString &string ) const = 0;
+      int drawText ( const QPoint& pos, const QString &string ) const;
 
       /** Draws text at a given scene position, inside the scene.
         * @note Calls to drawText methods must be enclosed between begin() and endText().
@@ -148,10 +160,24 @@ namespace Avogadro
         * @sa begin(), drawText( const QPoint&, const QString &) const,
         *     drawText( int, int, const QString & ) const
         */
-      virtual int drawText ( const Eigen::Vector3d & pos, const QString &string ) const = 0;
+      int drawText ( const Eigen::Vector3d & pos, const QString &string ) const;
 
-//      virtual void begin(PainterDevice *pd) = 0;
-//      virtual void end() = 0;
+      void begin(GLWidget *widget);
+      void end();
+
+      bool isActive();
+      bool isShared();
+      static int defaultQuality();
+      static int maxQuality();
+
+    private:
+      GLPainterPrivate * const d;
+
+      void incrementShare();
+      void decrementShare();
+      // Internal function to push the type and id
+      void pushName();
+      void popName();
   };
 } // end namespace Avogadro
 

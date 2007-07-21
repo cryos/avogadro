@@ -47,28 +47,28 @@ DebugEngine::DebugEngine(QObject *parent) : Engine(parent)
   setDescription(tr("Renders debug information"));
 }
 
-bool DebugEngine::renderOpaque(GLWidget *gl)
+bool DebugEngine::renderOpaque(PainterDevice *pd)
 {
   QList<Primitive *> list;
 
   glColor3f( 1.0, 1.0, 1.0 );
 
   int x = 0, y = 0;
-  y += gl->painter()->drawText(x, y, "---- Debug Information ----");
-  y += gl->painter()->drawText(x, y, "FPS: " + QString::number(computeFramesPerSecond(), 'g', 3));
+  y += pd->painter()->drawText(x, y, "---- Debug Information ----");
+  y += pd->painter()->drawText(x, y, "FPS: " + QString::number(computeFramesPerSecond(), 'g', 3));
 
-  y += gl->painter()->drawText(x, y, "GLWidget size: "
-                                       + QString::number(gl->width())
+  y += pd->painter()->drawText(x, y, "GLWidget size: "
+                                       + QString::number(pd->width())
                                        + " x "
-                                       + QString::number(gl->height()) );
+                                       + QString::number(pd->height()) );
 
   list = primitives().subList(Primitive::AtomType);
-  y += gl->painter()->drawText(x, y, "Atoms: " + QString::number(list.size()));
+  y += pd->painter()->drawText(x, y, "Atoms: " + QString::number(list.size()));
 
   list = primitives().subList(Primitive::BondType);
-  y += gl->painter()->drawText(x, y, "Bonds: " + QString::number(list.size()));
+  y += pd->painter()->drawText(x, y, "Bonds: " + QString::number(list.size()));
 
-  gl->update();
+//  pd->update();
 
   return true;
 }

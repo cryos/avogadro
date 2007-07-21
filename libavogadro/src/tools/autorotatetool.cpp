@@ -42,7 +42,7 @@ using namespace Avogadro;
 using namespace Eigen;
 
 AutoRotateTool::AutoRotateTool(QObject *parent) : Tool(parent), m_glwidget(0), m_leftButtonPressed(false),
-  m_midButtonPressed(false), timerId(0), m_xRotation(0), m_yRotation(0), m_zRotation(0), m_maxRotation(40),
+  m_midButtonPressed(false), m_timerId(0), m_xRotation(0), m_yRotation(0), m_zRotation(0), m_maxRotation(40),
   m_settingsWidget(0), m_buttonStartStop(0), m_sliderX(0), m_sliderY(0), m_sliderZ(0)
 
 {
@@ -105,6 +105,8 @@ QUndoCommand* AutoRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent *
     m_sliderY->setValue(m_yRotation);
     m_zRotation = 0;
     m_sliderZ->setValue(m_zRotation);
+
+    enableTimer();
   }
   else if (m_midButtonPressed)
   {
@@ -115,6 +117,8 @@ QUndoCommand* AutoRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent *
     m_sliderY->setValue(m_yRotation);
     m_zRotation = static_cast<int>(deltaDragging.x() * xMultiplier);
     m_sliderZ->setValue(m_zRotation);
+
+    enableTimer();
   }
 
   m_leftButtonPressed = false;
@@ -137,16 +141,18 @@ QUndoCommand* AutoRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
   return 0;
 }
 
+
 bool AutoRotateTool::paint(GLWidget *widget)
 {
   m_glwidget = widget;
   if(m_leftButtonPressed || m_midButtonPressed)
   {
     // Draw a line from the start position to the current mouse position
-    if (m_leftButtonPressed)
+    if (m_leftButtonPressed) {
       glColor4f(1., 0., 0., 1.);
-    else if (m_midButtonPressed)
+    } else if (m_midButtonPressed) {
       glColor4f(0., 1., 0., 1.);
+    }
     Vector3d start = m_glwidget->camera()->unProject(m_startDraggingPosition);
     Vector3d end = m_glwidget->camera()->unProject(m_currentDraggingPosition);
     glDisable(GL_LIGHTING);
@@ -185,19 +191,32 @@ void AutoRotateTool::setZRotation(int i)
   m_zRotation = i;
 }
 
-void AutoRotateTool::setTimer()
+void AutoRotateTool::toggleTimer()
 {
   // Toggle the timer on and off
-  if (timerId)
-  {
-    killTimer(timerId);
-    timerId = 0;
-    m_buttonStartStop->setText(tr("Start"));
+  if (m_timerId) {
+    disableTimer();
+  } else {
+    enableTimer();
   }
-  else
+}
+
+void AutoRotateTool::enableTimer()
+{
+  if(!m_timerId)
   {
-    timerId = startTimer(40);
+    m_timerId = startTimer(40);
     m_buttonStartStop->setText(tr("Stop"));
+  }
+}
+
+void AutoRotateTool::disableTimer()
+{
+  if(m_timerId)
+  {
+    killTimer(m_timerId);
+    m_timerId = 0;
+    m_buttonStartStop->setText(tr("Start"));
   }
 }
 
@@ -278,7 +297,7 @@ QWidget* AutoRotateTool::settingsWidget() {
 
     // Connect the start/stop button
     connect(m_buttonStartStop, SIGNAL(clicked()),
-        this, SLOT(setTimer()));
+        this, SLOT(toggleTimer()));
 
     // Connect the reset button to the reset slot
     connect(buttonReset, SIGNAL(clicked()),

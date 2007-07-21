@@ -36,10 +36,15 @@
 #include <QGLWidget>
 #include <QDebug>
 
+#include <QMutex>
+#include <QWaitCondition>
+#include <QThread>
+
 #include <vector>
 
 class QUndoStack;
 class QMouseEvent;
+class QGLContext;
 
 namespace Avogadro {
 
@@ -163,9 +168,13 @@ namespace Avogadro {
    * one queue containing only the atoms which would allow bonds and atoms
    * to be rendered by two different engines.
    */
+  class GLThread;
   class GLWidgetPrivate;
+  class GLPainterDevice;
   class A_EXPORT GLWidget : public QGLWidget
   {
+    friend class GLThread;
+
     Q_OBJECT
     Q_PROPERTY(QColor background READ background WRITE setBackground)
 //    Q_PROPERTY(float scale READ scale WRITE setScale)
@@ -182,7 +191,7 @@ namespace Avogadro {
        * @param format the QGLFormat information
        * @param parent the widget parent
        */
-      explicit GLWidget(const QGLFormat &format, QWidget *parent = 0, const QGLWidget * shareWidget = 0);
+      explicit GLWidget(const QGLFormat &format, QWidget *parent = 0, const GLWidget * shareWidget = 0);
 
       /**
        * Constructor
@@ -190,7 +199,7 @@ namespace Avogadro {
        * @param format the QGLFormat information
        * @param parent the widget parent
        */
-      GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent = 0, const QGLWidget * shareWidget = 0);
+      GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent = 0, const GLWidget * shareWidget = 0);
 
       /**
        * Deconstructor
@@ -224,6 +233,9 @@ namespace Avogadro {
        * @param stable the new stable value
        */
       void setStable(bool stable);
+
+      int deviceWidth() { return width(); }
+      int deviceHeight() { return height(); }
 
       /**
        * Virtual function setting the size hint for this widget.
@@ -311,6 +323,9 @@ namespace Avogadro {
       const double & radius() const;
       const Atom *farthestAtom() const;
 
+      void setQuality(int quality);
+      int quality() const;
+
       void setToolGroup(ToolGroup *toolGroup);
       ToolGroup * toolGroup() const;
 
@@ -323,45 +338,10 @@ namespace Avogadro {
         */
       Painter *painter() const;
 
-    public Q_SLOTS:
-
-      void setTool(Tool *tool);
-
-      void setPainter(Painter *painter);
-
       /**
        * @return list of primitives for this widget
        */
       PrimitiveList primitives() const;
-
-      /**
-       * Add the primitive to the widget.  This slot is called whenever
-       * a new primitive is added to our molecule model.  It adds the
-       * primitive to the list in the appropriate group.
-       *
-       * @param primitive pointer to a primitive to add to the view
-       */
-      void addPrimitive(Primitive *primitive);
-
-      /**
-       * Update a primitive.  This slot is called whenever a primitive of our
-       * molecule model has been changed and we need to check our view.
-       *
-       * @note In some cases we are passed the molecule itself meaning that more
-       * than one thing has changed in the molecule.
-       *
-       * @param primitive object which changed
-       */
-      void updatePrimitive(Primitive *primitive);
-
-      /** Remove a primitive.  This slot is called whenever a primitive of our
-       * molecule model has been removed and we need to take it off our list.
-       * Additionally we need to update other items in our view that are impacted
-       * by this change.
-       *
-       * @param primitive object to remove
-       */
-      void removePrimitive(Primitive *primitive);
 
       /** @name Selection Methods
        *  These methods are used to manipulate user-selected primitives.
@@ -414,30 +394,22 @@ namespace Avogadro {
       int bCells();
       int cCells();
 
-    Q_SIGNALS:
-      void mousePress( QMouseEvent * event );
-      void mouseRelease( QMouseEvent * event );
-      void mouseMove( QMouseEvent * event );
-      void wheel( QWheelEvent * event);
-
     protected:
-      GLWidgetPrivate * const d;
-
       /**
-       * Virtual function called by QGLWidget on initialization of
-       * the GL area.
+     * Virtual function called by QGLWidget on initialization of
+     * the GL area.
        */
       virtual void initializeGL();
-      /**
-       * virtual function we want to bypass if we are not the current context
-       */
-      virtual void glDraw();
+
+      virtual void paintGL();
       /**
        * Virtual function called when the GL area needs repainting
        */
-      virtual void paintGL();
+      virtual void paintEvent(QPaintEvent *event);
+
+      virtual void resizeEvent(QResizeEvent *event);
       /**
-       * Virtual functionc called whn the GL area is resized
+       * Virtual function called whn the GL area is resized
        */
       virtual void resizeGL(int, int);
 
@@ -468,11 +440,64 @@ namespace Avogadro {
        */
       void loadEngines();
 
+      /**
+       * This will return a painting condition that must be met each time
+       * before a GLThread can run.
+       *
+       * @return painting condition
+       */
+      QWaitCondition *paintCondition() const;
+
+
     private:
+      GLWidgetPrivate * const d;
+
       /**
        * Helper function called by all constructors
        */
-      void constructor();
+      void constructor(const GLWidget *shareWidget =0);
+
+      GLPainterDevice *pd;
+
+
+    public Q_SLOTS:
+
+      void setTool(Tool *tool);
+
+      /**
+       * Add the primitive to the widget.  This slot is called whenever
+       * a new primitive is added to our molecule model.  It adds the
+       * primitive to the list in the appropriate group.
+       *
+       * @param primitive pointer to a primitive to add to the view
+       */
+      void addPrimitive(Primitive *primitive);
+
+      /**
+       * Update a primitive.  This slot is called whenever a primitive of our
+       * molecule model has been changed and we need to check our view.
+       *
+       * @note In some cases we are passed the molecule itself meaning that more
+       * than one thing has changed in the molecule.
+       *
+       * @param primitive object which changed
+       */
+      void updatePrimitive(Primitive *primitive);
+
+      /** Remove a primitive.  This slot is called whenever a primitive of our
+       * molecule model has been removed and we need to take it off our list.
+       * Additionally we need to update other items in our view that are impacted
+       * by this change.
+       *
+       * @param primitive object to remove
+       */
+      void removePrimitive(Primitive *primitive);
+
+    Q_SIGNALS:
+      void mousePress( QMouseEvent * event );
+      void mouseRelease( QMouseEvent * event );
+      void mouseMove( QMouseEvent * event );
+      void wheel( QWheelEvent * event);
 
   };
 

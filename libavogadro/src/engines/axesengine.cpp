@@ -42,14 +42,14 @@ AxesEngine::AxesEngine(QObject *parent) : Engine(parent)
   setDescription(tr("Renders x, y and z axes"));
 }
 
-bool AxesEngine::renderOpaque(GLWidget *gl)
+bool AxesEngine::renderOpaque(PainterDevice *pd)
 {
   // save the opengl projection matrix and set up an orthogonal projection
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
   glLoadIdentity();
   // Ensure the axes are of the same length
-  double aspectRatio = static_cast<double>(gl->width())/static_cast<double>(gl->height());
+  double aspectRatio = static_cast<double>(pd->width())/static_cast<double>(pd->height());
   glOrtho(0, aspectRatio, 0, 1, 0, 1);
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
@@ -62,11 +62,11 @@ bool AxesEngine::renderOpaque(GLWidget *gl)
   // Set the origin and calculate the positions of the axes
   Vector3d origin = Vector3d(0.07, 0.07, -.07);
   MatrixP3d axisTranslation;
-  axisTranslation.loadTranslation(gl->camera()->transformedXAxis() * 0.06);
+  axisTranslation.loadTranslation(pd->camera()->transformedXAxis() * 0.06);
   Vector3d aX = axisTranslation * origin;
-  axisTranslation.loadTranslation(gl->camera()->transformedYAxis() * 0.06);
+  axisTranslation.loadTranslation(pd->camera()->transformedYAxis() * 0.06);
   Vector3d aY = axisTranslation * origin;
-  axisTranslation.loadTranslation(gl->camera()->transformedZAxis() * 0.06);
+  axisTranslation.loadTranslation(pd->camera()->transformedZAxis() * 0.06);
   Vector3d aZ = axisTranslation * origin;
 
   // Draw the axes in red, green and blue so they can be easily identified

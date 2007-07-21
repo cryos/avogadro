@@ -34,6 +34,8 @@
 
 #include <eigen/vector.h>
 
+class QReadWriteLock;
+
 namespace Avogadro {
 
   /**
@@ -114,6 +116,8 @@ namespace Avogadro {
        */
       Type type() const;
 
+      QReadWriteLock *lock();
+
     Q_SIGNALS:
       /**
        * Emitted when the primitive has been updated.
@@ -126,7 +130,7 @@ namespace Avogadro {
       Primitive(PrimitivePrivate &dd, Type type, QObject *parent=0);
 
     private:
-      Q_DECLARE_PRIVATE(Primitive)
+      Q_DECLARE_PRIVATE(Primitive);
 
   };
 
@@ -313,7 +317,7 @@ namespace Avogadro {
 
     private:
       /* shared d_ptr with Primitive */
-      Q_DECLARE_PRIVATE(Molecule)
+      Q_DECLARE_PRIVATE(Molecule);
 
       void computeGeomInfo() const;
 
@@ -352,6 +356,6 @@ namespace Avogadro {
 
 } // namespace Avogadro
 
-Q_DECLARE_METATYPE(Avogadro::Primitive*)
+Q_DECLARE_METATYPE(Avogadro::Primitive*);
 
 #endif // __PRIMITIVES_H

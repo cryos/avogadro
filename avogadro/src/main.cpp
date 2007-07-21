@@ -28,6 +28,10 @@
 #include "mainwindow.h"
 #include "application.h"
 
+#ifdef Q_WS_X11
+#include <X11/Xlib.h>
+#endif
+
 using namespace Avogadro;
 
 // Import static plugins
@@ -40,6 +44,10 @@ int main(int argc, char *argv[])
   QCoreApplication::setOrganizationName("SourceForge");
   QCoreApplication::setOrganizationDomain("sourceforge.net");
   QCoreApplication::setApplicationName("Avogadro");
+
+#ifdef Q_WS_X11
+  XInitThreads();
+#endif
 
   Application app(argc, argv);
   if (!QGLFormat::hasOpenGL()) {

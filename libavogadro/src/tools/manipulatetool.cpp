@@ -99,12 +99,12 @@ void ManipulateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
 
   if (m_glwidget->selectedPrimitives().size())
   {
-    foreach(Primitive *a, m_glwidget->selectedPrimitives())
+    foreach(Primitive *p, m_glwidget->selectedPrimitives())
     {
-      if (a->type() == Primitive::AtomType)
+      if (p->type() == Primitive::AtomType)
       {
-        Atom *atom = static_cast<Atom *>(a);
-        cmd = new MoveAtomCommand(m_glwidget->molecule(), atom, atomTranslation * atom->pos(), m_undo);
+        Atom *a = static_cast<Atom *>(p);
+        cmd = new MoveAtomCommand(m_glwidget->molecule(), a, atomTranslation * a->pos(), m_undo);
       }
     }
   }
@@ -124,12 +124,12 @@ void ManipulateTool::translate( const Eigen::Vector3d &what, const QPoint &from,
 
   if (m_glwidget->selectedPrimitives().size())
   {
-    foreach(Primitive *a, m_glwidget->selectedPrimitives())
+    foreach(Primitive *p, m_glwidget->selectedPrimitives())
     {
-      if (a->type() == Primitive::AtomType)
+      if (p->type() == Primitive::AtomType)
       {
-        Atom *atom = static_cast<Atom *>(a);
-        cmd = new MoveAtomCommand(m_glwidget->molecule(), atom, atomTranslation * atom->pos(), m_undo);
+        Atom *a = static_cast<Atom *>(p);
+        cmd = new MoveAtomCommand(m_glwidget->molecule(), a, atomTranslation * a->pos(), m_undo);
       }
     }
   }
@@ -141,22 +141,19 @@ void ManipulateTool::rotate( const Eigen::Vector3d &center, double deltaX, doubl
 {
   // Rotate the selected atoms about the center
   MoveAtomCommand *cmd  = 0;
-  Matrix3d rotation = m_glwidget->camera()->modelview().linearComponent();
-  Vector3d XAxis = rotation.row(0);
-  Vector3d YAxis = rotation.row(1);
   // rotate only selected primitives
   MatrixP3d fragmentRotation;
   fragmentRotation.loadTranslation(center);
-  fragmentRotation.rotate3(deltaY * ROTATION_SPEED, XAxis );
-  fragmentRotation.rotate3(deltaX * ROTATION_SPEED, YAxis );
+  fragmentRotation.rotate3(deltaY * ROTATION_SPEED, m_glwidget->camera()->backtransformedXAxis());
+  fragmentRotation.rotate3(deltaX * ROTATION_SPEED, m_glwidget->camera()->backtransformedYAxis());
   fragmentRotation.translate(-center);
 
-  foreach(Primitive *a, m_glwidget->selectedPrimitives())
+  foreach(Primitive *p, m_glwidget->selectedPrimitives())
   {
-    if (a->type() == Primitive::AtomType)
+    if (p->type() == Primitive::AtomType)
     {
-      Atom *atom = static_cast<Atom *>(a);
-      cmd = new MoveAtomCommand(m_glwidget->molecule(), atom, fragmentRotation * atom->pos(), m_undo);
+      Atom *a = static_cast<Atom *>(p);
+      cmd = new MoveAtomCommand(m_glwidget->molecule(), a, fragmentRotation * a->pos(), m_undo);
     }
   }
 }
@@ -169,12 +166,13 @@ void ManipulateTool::tilt( const Eigen::Vector3d &center, double delta ) const
   fragmentRotation.loadTranslation(center);
   fragmentRotation.rotate3(delta * ROTATION_SPEED, m_glwidget->camera()->backtransformedZAxis());
   fragmentRotation.translate(-center);
-  foreach(Primitive *a, m_glwidget->selectedPrimitives())
+
+  foreach(Primitive *p, m_glwidget->selectedPrimitives())
   {
-    if (a->type() == Primitive::AtomType)
+    if (p->type() == Primitive::AtomType)
     {
-      Atom *atom = static_cast<Atom *>(a);
-      cmd = new MoveAtomCommand(m_glwidget->molecule(), atom, fragmentRotation * atom->pos(), m_undo);
+      Atom *a = static_cast<Atom *>(p);
+      cmd = new MoveAtomCommand(m_glwidget->molecule(), a, fragmentRotation * a->pos(), m_undo);
     }
   }
 }
@@ -229,11 +227,12 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
     }
     else if ( event->buttons() & Qt::MidButton )
     {
-      // Perform the rotation
-      tilt( m_clickedAtom->pos(), deltaDragging.x() );
-
-      // Perform the zoom toward clicked atom
-      zoom( m_clickedAtom->pos(), deltaDragging.y() );
+      if (deltaDragging.y() == 0)
+        // Perform the rotation
+        tilt( m_clickedAtom->pos(), deltaDragging.x() );
+      else
+        // Perform the zoom toward clicked atom
+        zoom( m_clickedAtom->pos(), deltaDragging.y() );
     }
     else if ( event->buttons() & Qt::RightButton )
     {
@@ -294,25 +293,19 @@ bool ManipulateTool::paint(GLWidget *widget)
       // Don't highlight the atom on right mouse unless there is a selection
       double renderRadius = widget->radius(m_clickedAtom);
       renderRadius += 0.10;
-      drawSphere(widget, m_clickedAtom->GetVector().AsArray(), renderRadius, 0.7);
+      glEnable( GL_BLEND );
+      widget->painter()->setColor(1.0, 0.3, 0.3, 0.7);
+      widget->painter()->drawSphere(m_clickedAtom->pos(), renderRadius);
+      glDisable( GL_BLEND );
     }
     else if (m_glwidget->selectedPrimitives().size())
     {
       // Only draw the central sphere if something is selected
-      drawSphere(widget, m_selectedPrimitivesCenter, 0.10, 1.0);
+      widget->painter()->setColor(1.0, 0.3, 0.3, 0.7);
+      widget->painter()->drawSphere(m_selectedPrimitivesCenter, 0.10);
     }
   }
   return true;
-}
-
-void ManipulateTool::drawSphere(GLWidget *widget,  const Eigen::Vector3d &position, double radius, float alpha )
-{
-  widget->painter()->begin(widget);
-  Color( 1.0, 0.3, 0.3, alpha ).applyAsMaterials();
-  glEnable( GL_BLEND );
-  widget->painter()->drawSphere(position, radius);
-  glDisable( GL_BLEND );
-  widget->painter()->end();
 }
 
 MoveAtomCommand::MoveAtomCommand(Molecule *molecule, QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)

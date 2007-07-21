@@ -1,7 +1,8 @@
 /**********************************************************************
-  AxesEngine - Engine for "axes" display
+  GLWidget - general OpenGL display
 
-  Copyright (C) 2007      Marcus D. Hanwell
+  Copyright (C) 2006,2007 Geoffrey R. Hutchison
+  Copyright (C) 2006,2007 Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -22,43 +23,31 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __AXESENGINE_H
-#define __AXESENGINE_H
-
-#include <avogadro/global.h>
-#include <avogadro/engine.h>
+#ifndef __PAINTERDEVICE_H
+#define __PAINTERDEVICE_H
 
 namespace Avogadro {
 
-  //! Axes Engine class.
-  class AxesEngine : public Engine
+  class Painter;
+  class Camera;
+  class Primitive;
+
+  class PainterDevice
   {
-    Q_OBJECT
+  public:
+    PainterDevice() {}
+    virtual ~PainterDevice() {}
 
-    public:
-      //! Constructor
-      AxesEngine(QObject *parent=0);
-      //! Destructor
-      ~AxesEngine() {}
+    virtual Painter *painter() const = 0;
+    virtual Camera *camera() const = 0;
+    virtual bool isSelected( const Primitive *p ) const = 0;
+    virtual double radius( const Primitive *p ) const = 0;
 
-      EngineFlags flags() const;
-
-      //! \name Render Method
-      //@{
-      bool renderOpaque(PainterDevice *pd);
-      //@}
+    virtual int width() = 0;
+    virtual int height() = 0;
   };
 
-  //! Generates instances of our AxesEngine class
-  class AxesEngineFactory : public QObject, public EngineFactory
-  {
-    Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
 
-    public:
-      Engine *createInstance(QObject *parent = 0) { return new AxesEngine(parent); }
-  };
-
-} // end namespace Avogadro
+} // End namespace Avogadro
 
 #endif

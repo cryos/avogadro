@@ -46,16 +46,16 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       //! Render an Atom.
-      bool renderOpaque(GLWidget *gl, const Atom *a);
+      bool renderOpaque(PainterDevice *pd, const Atom *a);
       //! Render a Bond.
-      bool renderOpaque(GLWidget *gl, const Bond *b);
+      bool renderOpaque(PainterDevice *pd, const Bond *b);
 
-      bool renderOpaque(GLWidget *gl);
+      bool renderOpaque(PainterDevice *pd);
       //@}
 
       double transparencyDepth() const;
       EngineFlags flags() const;
-      double radius(const GLWidget *gl, const Primitive *p = 0) const;
+      double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 
     private:
       inline double radius(const Atom *a) const;

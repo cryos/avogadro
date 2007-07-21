@@ -87,8 +87,10 @@ namespace Avogadro {
       void setXRotation(int i);
       void setYRotation(int i);
       void setZRotation(int i);
-      void setTimer();
+      void toggleTimer();
       void resetRotations();
+      void enableTimer();
+      void disableTimer();
 
     Q_SIGNALS:
       void resetRotation(int i);
@@ -99,7 +101,7 @@ namespace Avogadro {
       bool m_midButtonPressed;   // Rotation about z
       QPoint m_startDraggingPosition;  // Starting position of mouse
       QPoint m_currentDraggingPosition;  // Current dragging position
-      int timerId;
+      int m_timerId;
       int m_xRotation;
       int m_yRotation;
       int m_zRotation;

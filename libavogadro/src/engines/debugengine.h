@@ -51,7 +51,7 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
 
-      bool renderOpaque(GLWidget *gl);
+      bool renderOpaque(PainterDevice *pd);
       //@}
 
       private:

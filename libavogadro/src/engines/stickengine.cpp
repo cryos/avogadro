@@ -50,7 +50,7 @@ StickEngine::~StickEngine()
 {
 }
 
-bool StickEngine::renderOpaque(GLWidget *gl)
+bool StickEngine::renderOpaque(PainterDevice *pd)
 {
   QList<Primitive *> list;
 
@@ -62,7 +62,7 @@ bool StickEngine::renderOpaque(GLWidget *gl)
   list = primitives().subList(Primitive::AtomType);
   foreach( Primitive *p, list )
   {
-    renderOpaque(gl, static_cast<Atom *>(p));
+    renderOpaque(pd, static_cast<Atom *>(p));
   }
 
   list = primitives().subList(Primitive::BondType);
@@ -75,7 +75,7 @@ bool StickEngine::renderOpaque(GLWidget *gl)
   list = primitives().subList(Primitive::BondType);
   foreach( Primitive *p, list )
   {
-    renderOpaque(gl, static_cast<const Bond *>(p));
+    renderOpaque(pd, static_cast<const Bond *>(p));
   }
 
   glPopAttrib();
@@ -83,41 +83,32 @@ bool StickEngine::renderOpaque(GLWidget *gl)
   return true;
 }
 
-bool StickEngine::renderOpaque(GLWidget *gl, const Atom* a)
+bool StickEngine::renderOpaque(PainterDevice *pd, const Atom* a)
 {
   Color map = colorMap();
 
-  // Push the atom type and name
-  glPushName(Primitive::AtomType);
-  glPushName(a->GetIdx());
-
   map.set(a);
-  map.applyAsMaterials();
+  pd->painter()->setColor(&map);
 
-  gl->painter()->drawSphere( a->pos(), radius(a) );
+  pd->painter()->setName(a);
+  pd->painter()->drawSphere( a->pos(), radius(a) );
 
-  if (gl->isSelected(a))
+  if (pd->isSelected(a))
   {
     map.set( 0.3, 0.6, 1.0, 0.7 );
-    map.applyAsMaterials();
     glEnable( GL_BLEND );
-    gl->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
+    pd->painter()->setColor(&map);
+    pd->painter()->setName(a);
+    pd->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
     glDisable( GL_BLEND );
   }
-
-  glPopName();
-  glPopName();
 
   return true;
 }
 
-bool StickEngine::renderOpaque(GLWidget *gl, const Bond* b)
+bool StickEngine::renderOpaque(PainterDevice *pd, const Bond* b)
 {
   Color map = colorMap();
-
-  // Push the type and name
-  glPushName(Primitive::BondType);
-  glPushName(b->GetIdx()+1);
 
   const Atom* atom1 = static_cast<const Atom *>(b->GetBeginAtom());
   const Atom* atom2 = static_cast<const Atom *>(b->GetEndAtom());
@@ -126,37 +117,37 @@ bool StickEngine::renderOpaque(GLWidget *gl, const Bond* b)
   Vector3d v3 (( v1 + v2 ) / 2);
 
   map.set(atom1);
-  map.applyAsMaterials();
-  gl->painter()->drawCylinder( v1, v3, radius(atom1) );
+  pd->painter()->setColor(&map);
+  pd->painter()->setName(b);
+  pd->painter()->drawCylinder( v1, v3, radius(atom1) );
 
   map.set(atom2);
-  map.applyAsMaterials();
-  gl->painter()->drawCylinder( v3, v2, radius(atom1) );
+  pd->painter()->setColor(&map);
+  pd->painter()->setName(b);
+  pd->painter()->drawCylinder( v3, v2, radius(atom1) );
 
   // Render the selection highlight
-  if (gl->isSelected(b))
+  if (pd->isSelected(b))
   {
     map.set( 0.3, 0.6, 1.0, 0.7 );
-    map.applyAsMaterials();
     glEnable( GL_BLEND );
-    gl->painter()->drawCylinder( v1, v2, SEL_BOND_EXTRA_RADIUS + radius(atom1) );
+    pd->painter()->setColor(&map);
+    pd->painter()->setName(b);
+    pd->painter()->drawCylinder( v1, v2, SEL_BOND_EXTRA_RADIUS + radius(atom1) );
     glDisable( GL_BLEND );
   }
-
-  glPopName();
-  glPopName();
 
   return true;
 }
 
-double StickEngine::radius(const GLWidget *gl, const Primitive *p) const
+double StickEngine::radius(const PainterDevice *pd, const Primitive *p) const
 {
   // Atom radius
   if (p->type() == Primitive::AtomType)
   {
-    if (gl)
+    if (pd)
     {
-      if (gl->isSelected(p))
+      if (pd->isSelected(p))
         return radius(static_cast<const Atom *>(p)) + SEL_ATOM_EXTRA_RADIUS;
     }
     return radius(static_cast<const Atom *>(p));
@@ -165,9 +156,9 @@ double StickEngine::radius(const GLWidget *gl, const Primitive *p) const
   else if (p->type() == Primitive::BondType)
   {
     const Atom* a = static_cast<const Atom *>((static_cast<const Bond *>(p))->GetBeginAtom());
-    if (gl)
+    if (pd)
     {
-      if (gl->isSelected(p))
+      if (pd->isSelected(p))
         return radius(a) + SEL_BOND_EXTRA_RADIUS;
     }
     return radius(a);

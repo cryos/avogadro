@@ -17,11 +17,20 @@
   </property>
   <widget class="QWidget" name="centralWidget" >
    <layout class="QVBoxLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
     <property name="spacing" >
      <number>6</number>
+    </property>
+    <property name="leftMargin" >
+     <number>0</number>
+    </property>
+    <property name="topMargin" >
+     <number>0</number>
+    </property>
+    <property name="rightMargin" >
+     <number>0</number>
+    </property>
+    <property name="bottomMargin" >
+     <number>0</number>
     </property>
     <item>
      <widget class="QTabWidget" name="centralTab" >
@@ -33,11 +42,20 @@
         <string>View 0</string>
        </attribute>
        <layout class="QVBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
         <property name="spacing" >
          <number>6</number>
+        </property>
+        <property name="leftMargin" >
+         <number>0</number>
+        </property>
+        <property name="topMargin" >
+         <number>0</number>
+        </property>
+        <property name="rightMargin" >
+         <number>0</number>
+        </property>
+        <property name="bottomMargin" >
+         <number>0</number>
         </property>
         <item>
          <widget class="Avogadro::GLWidget" native="1" name="glWidget" />
@@ -84,6 +102,7 @@
     <addaction name="actionSaveAs" />
     <addaction name="actionRevert" />
     <addaction name="actionExportGraphics" />
+    <addaction name="actionExportPOV" />
     <addaction name="separator" />
     <addaction name="actionQuit" />
    </widget>
@@ -154,7 +173,10 @@
     <enum>Qt::ToolButtonTextBesideIcon</enum>
    </property>
    <attribute name="toolBarArea" >
-    <number>4</number>
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak" >
+    <bool>false</bool>
    </attribute>
    <addaction name="actionNewTool" />
    <addaction name="actionOpenTool" />
@@ -180,11 +202,20 @@
    </attribute>
    <widget class="QWidget" name="projectWidget" >
     <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="Avogadro::PrimitiveTreeView" name="projectTree" >
@@ -521,6 +552,11 @@
    </property>
    <property name="text" >
     <string>Configure Avogadro...</string>
+   </property>
+  </action>
+  <action name="actionExportPOV" >
+   <property name="text" >
+    <string>Export POVRay</string>
    </property>
   </action>
  </widget>

@@ -45,8 +45,9 @@ namespace Avogadro {
     */
   void ElementComboBox::showPopup()
   {
-    if (count() <= 0)
+    if (count() <= 0) {
       return;
+    }
 
     /*
     // set current item and select it

@@ -26,6 +26,7 @@
 
 #include <avogadro/primitive.h>
 #include <QDebug>
+#include <QReadWriteLock>
 #include <eigen/regression.h>
 #include <openbabel/obiter.h>
 
@@ -38,6 +39,7 @@ namespace Avogadro {
       PrimitivePrivate() : type(Primitive::OtherType) {};
 
       enum Primitive::Type type;
+      QReadWriteLock lock;
   };
 
   Primitive::Primitive(QObject *parent) : QObject(parent), d_ptr(new PrimitivePrivate) {}
@@ -65,6 +67,12 @@ namespace Avogadro {
   {
     Q_D(const Primitive);
     return d->type;
+  }
+
+  QReadWriteLock *Primitive::lock()
+  {
+    Q_D(Primitive);
+    return &d->lock;
   }
 
   void Primitive::update()

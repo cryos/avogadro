@@ -54,10 +54,10 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
 
-      bool renderOpaque(GLWidget *gl);
-      bool renderTransparent(GLWidget *gl);
+      bool renderOpaque(PainterDevice *pd);
+      bool renderTransparent(PainterDevice *pd);
 
-      double radius(const GLWidget *gl, const Primitive *p = 0) const;
+      double radius(const PainterDevice *pd, const Primitive *p = 0) const;
       //@}
 
       //! Display a window for the user to pick rendering options

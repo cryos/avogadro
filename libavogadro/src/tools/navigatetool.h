@@ -91,8 +91,6 @@ namespace Avogadro {
 
       QPoint              m_lastDraggingPosition;
 
-      void drawSphere(GLWidget *widget,  const Eigen::Vector3d &center, double radius, float alpha);
-
       void computeClickedAtom(const QPoint& p);
       void zoom( const Eigen::Vector3d &goal, double delta ) const;
       void translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const;

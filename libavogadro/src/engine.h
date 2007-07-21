@@ -29,13 +29,13 @@
 #include <avogadro/primitive.h>
 #include <avogadro/primitivelist.h>
 #include <avogadro/color.h>
+#include "painterdevice.h"
 
 #include <QString>
 #include <QVector>
 #include <QList>
 
 namespace Avogadro {
-  class GLWidget;
 
   /**
    * @class Engine
@@ -121,8 +121,8 @@ namespace Avogadro {
        * PrimitiveList.
        *
        */
-      virtual bool renderOpaque(GLWidget *gl) = 0;
-      virtual bool renderTransparent(GLWidget *gl) { Q_UNUSED(gl); return true; }
+      virtual bool renderOpaque(PainterDevice *pd) = 0;
+      virtual bool renderTransparent(PainterDevice *) { return true; }
 
       PrimitiveList primitives() const;
 
@@ -133,7 +133,7 @@ namespace Avogadro {
        * @param primitive is the Primitive to get the radius of
        * @return the radius of the Primitive
        */
-      virtual double radius(const GLWidget *gl, const Primitive *primitive = 0) const;
+      virtual double radius(const PainterDevice *pd, const Primitive *primitive = 0) const;
 
       /**
        * @return transparency level, rendered low to high

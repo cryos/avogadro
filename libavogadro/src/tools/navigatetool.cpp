@@ -282,24 +282,18 @@ bool NavigateTool::paint(GLWidget *widget)
     if(m_clickedAtom) {
       double renderRadius = widget->radius(m_clickedAtom);
       renderRadius += 0.10;
-      drawSphere(widget, m_clickedAtom->GetVector().AsArray(), renderRadius, 0.7);
+      glEnable( GL_BLEND );
+      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
+      widget->painter()->drawSphere(m_clickedAtom->pos(), renderRadius);
+      glDisable( GL_BLEND );
     }
     else
     {
-      drawSphere(widget, widget->center(), 0.10, 1.0);
+      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
+      widget->painter()->drawSphere(widget->center(), 0.10);
     }
   }
   return true;
-}
-
-void NavigateTool::drawSphere(GLWidget *widget,  const Eigen::Vector3d &position, double radius, float alpha )
-{
-  widget->painter()->begin(widget);
-  Color( 1.0, 1.0, 0.3, alpha ).applyAsMaterials();
-  glEnable( GL_BLEND );
-  widget->painter()->drawSphere(position, radius);
-  glDisable( GL_BLEND );
-  widget->painter()->end();
 }
 
 #include "navigatetool.moc"

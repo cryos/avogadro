@@ -35,6 +35,7 @@
 #include <avogadro/primitive.h>
 #include <avogadro/primitiveitemmodel.h>
 #include <avogadro/toolgroup.h>
+#include <avogadro/povpainter.h>
 
 #include <openbabel/obconversion.h>
 #include <openbabel/mol.h>
@@ -80,7 +81,6 @@ namespace Avogadro {
 
       QTextEdit *messagesText;
 
-      Painter *glPainter;
       QList<GLWidget *> glWidgets;
       GLWidget *glWidget;
 
@@ -133,7 +133,6 @@ namespace Avogadro {
 
     d->glWidgets.append(ui.glWidget);
     d->glWidget = ui.glWidget;
-    d->glPainter = new Painter();
 
     d->undoStack = new QUndoStack(this);
     d->toolsFlow = new FlowLayout(ui.toolsWidget);
@@ -174,7 +173,6 @@ namespace Avogadro {
     connect(engineListView, SIGNAL(clicked(Engine *)),
         engineTabWidget, SLOT(setCurrentEngine(Engine *)));
 
-    ui.glWidget->setPainter(d->glPainter);
     ui.glWidget->setToolGroup(d->toolGroup);
     ui.glWidget->setUndoStack(d->undoStack);
 
@@ -350,6 +348,18 @@ namespace Avogadro {
                            tr("Cannot save file %1.").arg(fileName));
       return;
     }
+  }
+
+  void MainWindow::exportPOV()
+  {
+    // Export the molecule as a POVRay scene
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Export POV Scene"));
+    if (fileName.isEmpty())
+      return;
+
+    POVPainterDevice pd(fileName, ui.glWidget);
+    
   }
 
   void MainWindow::revert()
@@ -575,13 +585,13 @@ namespace Avogadro {
 
   void MainWindow::setPainterQuality(int quality)
   {
-    d->glPainter->setQuality(quality);
+    d->glWidget->setQuality(quality);
     d->glWidget->update();
   }
 
   int MainWindow::painterQuality()
   {
-    return d->glPainter->quality();
+    return d->glWidget->quality();
   }
 
   void MainWindow::newView()
@@ -591,7 +601,6 @@ namespace Avogadro {
 
     GLWidget *glWidget = new GLWidget(d->glWidget->format(), this, d->glWidget);
     glWidget->setObjectName(tr("GLWidget"));
-    glWidget->setPainter(d->glPainter);
 
     layout->addWidget(glWidget);
     layout->setMargin(0);
@@ -721,6 +730,7 @@ namespace Avogadro {
     connect(ui.actionRevert, SIGNAL(triggered()), this, SLOT(revert()));
     connect(ui.actionExportGraphics, SIGNAL(triggered()), this, SLOT(exportGraphics()));
     ui.actionExportGraphics->setEnabled(QGLFramebufferObject::hasOpenGLFramebufferObjects());
+    connect(ui.actionExportPOV, SIGNAL(triggered()), this, SLOT(exportPOV()));
 #ifdef Q_WS_MAC
     connect(ui.actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(ui.actionQuitTool, SIGNAL(triggered()), qApp, SLOT(quit()));

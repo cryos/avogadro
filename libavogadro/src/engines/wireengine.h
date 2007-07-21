@@ -47,17 +47,13 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       //! Render an Atom.
-      bool renderOpaque(GLWidget *gl, const Atom *a);
+      bool renderOpaque(PainterDevice *pd, const Atom *a);
       //! Render a Bond.
-      bool renderOpaque(GLWidget *gl, const Bond *b);
+      bool renderOpaque(PainterDevice *pd, const Bond *b);
 
-      bool renderOpaque(GLWidget *gl);
+      bool renderOpaque(PainterDevice *pd);
       //@}
 
-
-    private:
-
-      GLWidget *m_glwidget;
   };
 
   //! Generates instances of our WireEngine class

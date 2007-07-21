@@ -51,9 +51,9 @@ namespace Avogadro {
 
       //! \name Render Methods
       //@{
-      bool renderOpaque(GLWidget *gl);
-      bool renderOpaque(GLWidget *gl, const Atom *a);
-      bool renderOpaque(GLWidget *gl, const Bond *b);
+      bool renderOpaque(PainterDevice *pd);
+      bool renderOpaque(PainterDevice *pd, const Atom *a);
+      bool renderOpaque(PainterDevice *pd, const Bond *b);
       //@}
 
       EngineFlags flags() const;

@@ -50,16 +50,16 @@ namespace Avogadro {
 
       //! \name Render Methods
       //@{
-      bool renderOpaque(GLWidget *gl);
-      bool renderTransparent(GLWidget *gl);
+      bool renderOpaque(PainterDevice *pd);
+      bool renderTransparent(PainterDevice *pd);
       //! Render an Atom.
-      bool render(GLWidget *gl, const Atom *a);
+      bool render(PainterDevice *pd, const Atom *a);
       //@}
 
       double transparencyDepth() const;
       EngineFlags flags() const;
 
-      double radius(const GLWidget *gl, const Primitive *p = 0) const;
+      double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 
       QWidget* settingsWidget();
 
