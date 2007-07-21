@@ -5,8 +5,8 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 22<br>
-Total Issues = 35 ...as of Juni 14 2007 15:36:14</p>
+<p>Checkers Run = 23<br>
+Total Issues = 36 ...as of Juli 21 2007 13:47:47</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>OOPS! 1 issue found!</b>
@@ -74,7 +74,9 @@ Total Issues = 35 ...as of Juni 14 2007 15:36:14</p>
 	&lt;joe.hacker@kde.org&gt;&quot;</p>
 </li>
 
-<li>Check for adding single char string to a QString... 
+<li>Check for cpp macros and usage... 
+<b>okay!</b>
+<li>Checks for QString containing a single char is better as a QChar... 
 <b>okay!</b>
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
@@ -101,7 +103,17 @@ Total Issues = 35 ...as of Juni 14 2007 15:36:14</p>
 </li>
 
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>okay!</b>
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	../libavogadro/src/tools/manipulatetool.h: line#103 (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
+	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
+	this to avoid mistaken implicit constructor ambiguities. Copy
+	constructors should not be explicit.</p>
+</li>
+
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for proper include directives... 

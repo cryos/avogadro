@@ -5,8 +5,8 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 22<br>
-Total Issues = 49 ...as of Juni 14 2007 15:38:43</p>
+<p>Checkers Run = 23<br>
+Total Issues = 57 ...as of Juli 21 2007 13:50:40</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>OOPS! 1 issue found!</b>
@@ -23,7 +23,7 @@ Total Issues = 49 ...as of Juni 14 2007 15:38:43</p>
 <li>Check for contractions in strings... 
 <b>okay!</b>
 <li>Check for an acceptable copyright... 
-<b>OOPS! 33 issues found!</b>
+<b>OOPS! 37 issues found!</b>
 <ul>
 <li>	../avogadro/src/extensions/CMakeLists.txt: missing tags: copyright  (1)
 </li>
@@ -50,6 +50,10 @@ Total Issues = 49 ...as of Juni 14 2007 15:38:43</p>
 <li>	../avogadro/src/extensions/ghemicalextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
 <li>	../avogadro/src/extensions/ghemicalextension.h: missing tags: email address(line 4) email address(line 5)  (2)
+</li>
+<li>	../avogadro/src/extensions/h2methylextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+</li>
+<li>	../avogadro/src/extensions/h2methylextension.h: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
 <li>	../avogadro/src/extensions/hydrogensextension.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
@@ -80,7 +84,9 @@ Total Issues = 49 ...as of Juni 14 2007 15:38:43</p>
 	&lt;joe.hacker@kde.org&gt;&quot;</p>
 </li>
 
-<li>Check for adding single char string to a QString... 
+<li>Check for cpp macros and usage... 
+<b>okay!</b>
+<li>Checks for QString containing a single char is better as a QChar... 
 <b>okay!</b>
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
@@ -109,11 +115,15 @@ Total Issues = 49 ...as of Juni 14 2007 15:38:43</p>
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 5 issues found!</b>
+<b>OOPS! 7 issues found!</b>
 <ul>
 <li>	../avogadro/src/extensions/gamessextension.cpp: do not include QtModules line#31(QtGui)
 </li>
+<li>	../avogadro/src/extensions/gamessinputdialog.h: missing or improper include guard in header
+</li>
 <li>	../avogadro/src/extensions/ghemicalextension.cpp: do not include QtModules line#28(QtGui)
+</li>
+<li>	../avogadro/src/extensions/h2methylextension.cpp: do not include QtModules line#30(QtGui)
 </li>
 <li>	../avogadro/src/extensions/hydrogensextension.cpp: do not include QtModules line#30(QtGui)
 </li>
@@ -127,7 +137,8 @@ Total Issues = 49 ...as of Juni 14 2007 15:38:43</p>
 	own headers first; other rules apply, see
 	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
 	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
-	cludes_right</a></p>
+	cludes_right</a>. Use include guards in headers with appropriatedly
+	encoded macro names.</p>
 </li>
 
 <li>Check for inline methods in public classes... 
@@ -159,11 +170,15 @@ Total Issues = 49 ...as of Juni 14 2007 15:38:43</p>
 <li>Check for inappropriate pass-by-value function args... 
 <b>okay!</b>
 <li>Check for Qt classes that should not be used... 
-<b>OOPS! 2 issues found!</b>
+<b>OOPS! 4 issues found!</b>
 <ul>
 <li>	../avogadro/src/extensions/gamessinputdialog.cpp: QFileDialog[KFileDialog] (1)
 </li>
+<li>	../avogadro/src/extensions/ghemicalextension.cpp: QProgressDialog[KProgressDialog] (1)
+</li>
 <li>	../avogadro/src/extensions/smartsextension.cpp: QInputDialog[KInputDialog] (1)
+</li>
+<li>	../avogadro/src/extensions/unitcellextension.cpp: QMessageBox[KMessageBox] (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use the KDE version of some Qt GUI elements to provide a consistent

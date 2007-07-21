@@ -5,8 +5,8 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 22<br>
-Total Issues = 43 ...as of Juni 14 2007 15:35:21</p>
+<p>Checkers Run = 23<br>
+Total Issues = 63 ...as of Juli 21 2007 13:46:46</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>OOPS! 1 issue found!</b>
@@ -23,7 +23,7 @@ Total Issues = 43 ...as of Juni 14 2007 15:35:21</p>
 <li>Check for contractions in strings... 
 <b>okay!</b>
 <li>Check for an acceptable copyright... 
-<b>OOPS! 35 issues found!</b>
+<b>OOPS! 52 issues found!</b>
 <ul>
 <li>	../libavogadro/src/camera.cpp: missing tags: email address(line 4)  (1)
 </li>
@@ -45,6 +45,14 @@ Total Issues = 43 ...as of Juni 14 2007 15:35:21</p>
 </li>
 <li>	../libavogadro/src/global.h: missing tags: email address(line 4)  (1)
 </li>
+<li>	../libavogadro/src/glpainter.cpp: missing tags: email address(line 4) email address(line 5)  (2)
+</li>
+<li>	../libavogadro/src/glpainter.h: missing tags: email address(line 4) email address(line 5)  (2)
+</li>
+<li>	../libavogadro/src/glpicker.cpp: missing tags: email address(line 4) email address(line 5) email address(line 6)  (3)
+</li>
+<li>	../libavogadro/src/glpicker.h: missing tags: email address(line 4) email address(line 5) email address(line 6)  (3)
+</li>
 <li>	../libavogadro/src/glwidget.cpp: missing tags: email address(line 4) email address(line 5) email address(line 6)  (3)
 </li>
 <li>	../libavogadro/src/glwidget.h: missing tags: email address(line 4) email address(line 5)  (2)
@@ -53,9 +61,17 @@ Total Issues = 43 ...as of Juni 14 2007 15:35:21</p>
 </li>
 <li>	../libavogadro/src/moleculetreeview.h: missing tags: email address(line 4)  (1)
 </li>
-<li>	../libavogadro/src/painter.cpp: missing tags: email address(line 4)  (1)
+<li>	../libavogadro/src/painter.cpp: missing tags: email address(line 4) email address(line 5)  (2)
 </li>
-<li>	../libavogadro/src/painter.h: missing tags: email address(line 4)  (1)
+<li>	../libavogadro/src/painterdevice.h: missing tags: email address(line 4) email address(line 5)  (2)
+</li>
+<li>	../libavogadro/src/painterengine.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	../libavogadro/src/painter.h: missing tags: email address(line 4) email address(line 5)  (2)
+</li>
+<li>	../libavogadro/src/povpainter.cpp: missing tags: email address(line 4)  (1)
+</li>
+<li>	../libavogadro/src/povpainter.h: missing tags: email address(line 4)  (1)
 </li>
 <li>	../libavogadro/src/primitive.cpp: missing tags: email address(line 4)  (1)
 </li>
@@ -96,7 +112,9 @@ Total Issues = 43 ...as of Juni 14 2007 15:35:21</p>
 	&lt;joe.hacker@kde.org&gt;&quot;</p>
 </li>
 
-<li>Check for adding single char string to a QString... 
+<li>Check for cpp macros and usage... 
+<b>okay!</b>
+<li>Checks for QString containing a single char is better as a QChar... 
 <b>okay!</b>
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
@@ -137,7 +155,8 @@ Total Issues = 43 ...as of Juni 14 2007 15:35:21</p>
 	own headers first; other rules apply, see
 	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
 	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
-	cludes_right</a></p>
+	cludes_right</a>. Use include guards in headers with appropriatedly
+	encoded macro names.</p>
 </li>
 
 <li>Check for inline methods in public classes... 
@@ -159,13 +178,31 @@ Total Issues = 43 ...as of Juni 14 2007 15:35:21</p>
 <li>Check for compares to QString::null... 
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
-<b>okay!</b>
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	../libavogadro/src/povpainter.cpp: line#141[QString]
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
+	references-to-const instead. For example: &#39;func( QDateTime dt )&#39; is
+	better written as &#39;func( const QDateTime &amp;dt )&#39;</p>
+</li>
+
 <li>Check for Qt classes that should not be used... 
 <b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
 <li>Check for classes that should use the 'Q_OBJECT' macro... 
-<b>okay!</b>
+<b>OOPS! 2 issues found!</b>
+<ul>
+<li>	../libavogadro/src/painterengine.h: line#38 (1)
+</li>
+<li>	../libavogadro/src/painter.h: line#39 (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	QObject derived classes should use the Q_OBJECT macro.</p>
+</li>
+
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 

@@ -5,8 +5,8 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 22<br>
-Total Issues = 63 ...as of Juni 14 2007 15:37:57</p>
+<p>Checkers Run = 23<br>
+Total Issues = 64 ...as of Juli 21 2007 13:49:42</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>okay!</b>
@@ -80,7 +80,9 @@ Total Issues = 63 ...as of Juni 14 2007 15:37:57</p>
 	&lt;joe.hacker@kde.org&gt;&quot;</p>
 </li>
 
-<li>Check for adding single char string to a QString... 
+<li>Check for cpp macros and usage... 
+<b>okay!</b>
+<li>Checks for QString containing a single char is better as a QChar... 
 <b>okay!</b>
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
@@ -131,7 +133,8 @@ Total Issues = 63 ...as of Juni 14 2007 15:37:57</p>
 	own headers first; other rules apply, see
 	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
 	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
-	cludes_right</a></p>
+	cludes_right</a>. Use include guards in headers with appropriatedly
+	encoded macro names.</p>
 </li>
 
 <li>Check for inline methods in public classes... 
@@ -172,11 +175,11 @@ Total Issues = 63 ...as of Juni 14 2007 15:37:57</p>
 </li>
 
 <li>Check for Qt classes that should not be used... 
-<b>OOPS! 13 issues found!</b>
+<b>OOPS! 14 issues found!</b>
 <ul>
 <li>	../avogadro/src/main.cpp: QMessageBox[KMessageBox] (1)
 </li>
-<li>	../avogadro/src/mainwindow.cpp: QFileDialog[KFileDialog],QFileDialog[KFileDialog],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QColorDialog[KColorDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox] (12)
+<li>	../avogadro/src/mainwindow.cpp: QFileDialog[KFileDialog],QFileDialog[KFileDialog],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QColorDialog[KColorDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox] (13)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use the KDE version of some Qt GUI elements to provide a consistent
