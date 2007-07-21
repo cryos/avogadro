@@ -45,7 +45,7 @@ namespace Avogadro {
     Q_OBJECT;
 
     public:
-      EngineListView( GLWidget *glWidget, QWidget *parent = 0 );
+      explicit EngineListView( GLWidget *glWidget, QWidget *parent = 0 );
       ~EngineListView();
 
       GLWidget *glWidget() const;

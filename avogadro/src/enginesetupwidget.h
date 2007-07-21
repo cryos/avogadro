@@ -50,7 +50,7 @@ namespace Avogadro
       Q_OBJECT;
 
     public:
-      EngineSetupWidget ( GLWidget *glWidget, QWidget *parent = 0 );
+      explicit EngineSetupWidget ( GLWidget *glWidget, QWidget *parent = 0 );
       ~EngineSetupWidget();
 
       GLWidget *glWidget() const;

@@ -36,7 +36,7 @@ namespace Avogadro
 
     public:
       //! Constructor
-      UnitCellParamDialog( QWidget *parent = 0, Qt::WindowFlags f = 0 );
+      explicit UnitCellParamDialog( QWidget *parent = 0, Qt::WindowFlags f = 0 );
       //! Desconstructor
       ~UnitCellParamDialog();
 

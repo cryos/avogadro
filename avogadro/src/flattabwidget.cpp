@@ -56,7 +56,7 @@ FlatTabWidget::FlatTabWidget(QWidget *parent) : QWidget(parent),
       m_stack, SLOT(setCurrentIndex(int)));
 }
 
-int FlatTabWidget::addTab(QWidget *widget, QString title)
+int FlatTabWidget::addTab(QWidget *widget, const QString& title)
 {
   m_tabBar->addTab(title);
   return m_stack->addWidget(widget);

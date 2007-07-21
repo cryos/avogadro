@@ -44,7 +44,7 @@ namespace Avogadro {
       };
 
     public:
-      EngineItemModel( GLWidget *widget, QObject *parent = 0 );
+      explicit EngineItemModel( GLWidget *widget, QObject *parent = 0 );
 
       QModelIndex parent( const QModelIndex & index ) const;
       int rowCount( const QModelIndex & parent = QModelIndex() ) const;

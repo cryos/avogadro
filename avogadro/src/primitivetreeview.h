@@ -52,8 +52,8 @@ namespace Avogadro
        * Constructor(s)
        */
       PrimitiveTreeView(QWidget *parent = 0);
-      PrimitiveTreeView(Molecule *molecule, QWidget *parent = 0);
-      PrimitiveTreeView(Engine *engine, QWidget *parent = 0);
+      explicit PrimitiveTreeView(Molecule *molecule, QWidget *parent = 0);
+      explicit PrimitiveTreeView(Engine *engine, QWidget *parent = 0);
 
       /**
        * Deconstructor

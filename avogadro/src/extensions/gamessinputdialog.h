@@ -38,7 +38,7 @@ namespace Avogadro
 
     public:
       //! Constructor
-      GamessInputDialog( GamessInputData *inputData, QWidget *parent = 0, Qt::WindowFlags f = 0 );
+      explicit GamessInputDialog( GamessInputData *inputData, QWidget *parent = 0, Qt::WindowFlags f = 0 );
       //! Desconstructor
       ~GamessInputDialog();
 

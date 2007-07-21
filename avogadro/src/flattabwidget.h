@@ -42,7 +42,7 @@ namespace Avogadro {
     public:
       FlatTabWidget(QWidget *parent = 0);
       
-      int addTab(QWidget *widget, QString title);
+      int addTab(QWidget *widget, const QString& title);
       QSize sizeHint() const;
       QSize minimumSize() const;
       QSize minimumSizeHint() const;

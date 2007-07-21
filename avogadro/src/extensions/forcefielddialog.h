@@ -36,7 +36,7 @@ namespace Avogadro
 
     public:
       //! Constructor
-      ForceFieldDialog( QWidget *parent = 0, Qt::WindowFlags f = 0 );
+      explicit ForceFieldDialog( QWidget *parent = 0, Qt::WindowFlags f = 0 );
       //! Desconstructor
       ~ForceFieldDialog();
 
