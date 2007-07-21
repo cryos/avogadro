@@ -5,8 +5,8 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 23<br>
-Total Issues = 64 ...as of Juli 21 2007 13:49:42</p>
+<p>Checkers Run = 22<br>
+Total Issues = 39 ...as of Juli 21 2007 15:18:29</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>okay!</b>
@@ -93,39 +93,13 @@ Total Issues = 64 ...as of Juli 21 2007 13:49:42</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>OOPS! 6 issues found!</b>
-<ul>
-<li>	../avogadro/src/engineitemmodel.h: line#47 (1)
-</li>
-<li>	../avogadro/src/enginelistview.h: line#48 (1)
-</li>
-<li>	../avogadro/src/enginesetupwidget.h: line#53 (1)
-</li>
-<li>	../avogadro/src/flowlayout.h: line#35 (1)
-</li>
-<li>	../avogadro/src/primitivetreeview.h: line#55,56 (2)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
-	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
-	this to avoid mistaken implicit constructor ambiguities. Copy
-	constructors should not be explicit.</p>
-</li>
-
+<b>okay!</b>
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 5 issues found!</b>
+<b>OOPS! 1 issue found!</b>
 <ul>
-<li>	../avogadro/src/aboutdialog.cpp: include own header first line#29
-</li>
-<li>	../avogadro/src/flowlayout.cpp: do not include QtModules line#25(QtGui)
-</li>
-<li>	../avogadro/src/flowlayout.cpp: include own header first line#27
-</li>
-<li>	../avogadro/src/mainwindow.cpp: include own header first line#25
-</li>
-<li>	../avogadro/src/mainwindow.cpp: put config.h in angle brackets line#23
+<li>	../avogadro/src/flowlayout.cpp: do not include QtModules line#27(QtGui)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
@@ -164,30 +138,7 @@ Total Issues = 64 ...as of Juli 21 2007 13:49:42</p>
 <li>Check for compares to QString::null... 
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../avogadro/src/flattabwidget.cpp: line#59[QString]
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
-	references-to-const instead. For example: &#39;func( QDateTime dt )&#39; is
-	better written as &#39;func( const QDateTime &amp;dt )&#39;</p>
-</li>
-
-<li>Check for Qt classes that should not be used... 
-<b>OOPS! 14 issues found!</b>
-<ul>
-<li>	../avogadro/src/main.cpp: QMessageBox[KMessageBox] (1)
-</li>
-<li>	../avogadro/src/mainwindow.cpp: QFileDialog[KFileDialog],QFileDialog[KFileDialog],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QFileDialog[KFileDialog],QMessageBox[KMessageBox],QColorDialog[KColorDialog],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox],QMessageBox[KMessageBox] (13)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Use the KDE version of some Qt GUI elements to provide a consistent
-	look and feel for the KDE desktop. The KDE classes are not just
-	adding functionalities to the Qt base class and are mostly not even
-	based on the Qt class.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
 <li>Check for classes that should use the 'Q_OBJECT' macro... 

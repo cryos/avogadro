@@ -5,19 +5,11 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 23<br>
-Total Issues = 57 ...as of Juli 21 2007 13:50:40</p>
+<p>Checkers Run = 22<br>
+Total Issues = 49 ...as of Juli 21 2007 15:19:18</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../avogadro/src/extensions/CMakeLists.txt: TRUE: line#1 (1) FALSE:  (0)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	The TRUE and FALSE macros are obsolete and should be replaced with
-	true and false (all lower case) respectively.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for methods that return 'const' references in public classes... 
 <b>okay!</b>
 <li>Check for contractions in strings... 
@@ -97,21 +89,7 @@ Total Issues = 57 ...as of Juli 21 2007 13:50:40</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>OOPS! 3 issues found!</b>
-<ul>
-<li>	../avogadro/src/extensions/forcefielddialog.h: line#39 (1)
-</li>
-<li>	../avogadro/src/extensions/gamessinputdialog.h: line#41 (1)
-</li>
-<li>	../avogadro/src/extensions/unitcellparamdialog.h: line#39 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
-	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
-	this to avoid mistaken implicit constructor ambiguities. Copy
-	constructors should not be explicit.</p>
-</li>
-
+<b>okay!</b>
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for proper include directives... 
@@ -169,24 +147,6 @@ Total Issues = 57 ...as of Juli 21 2007 13:50:40</p>
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
 <b>okay!</b>
-<li>Check for Qt classes that should not be used... 
-<b>OOPS! 4 issues found!</b>
-<ul>
-<li>	../avogadro/src/extensions/gamessinputdialog.cpp: QFileDialog[KFileDialog] (1)
-</li>
-<li>	../avogadro/src/extensions/ghemicalextension.cpp: QProgressDialog[KProgressDialog] (1)
-</li>
-<li>	../avogadro/src/extensions/smartsextension.cpp: QInputDialog[KInputDialog] (1)
-</li>
-<li>	../avogadro/src/extensions/unitcellextension.cpp: QMessageBox[KMessageBox] (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Use the KDE version of some Qt GUI elements to provide a consistent
-	look and feel for the KDE desktop. The KDE classes are not just
-	adding functionalities to the Qt base class and are mostly not even
-	based on the Qt class.</p>
-</li>
-
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
 <li>Check for classes that should use the 'Q_OBJECT' macro... 

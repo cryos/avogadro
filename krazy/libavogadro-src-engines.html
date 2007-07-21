@@ -5,19 +5,11 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 23<br>
-Total Issues = 44 ...as of Juli 21 2007 13:48:27</p>
+<p>Checkers Run = 22<br>
+Total Issues = 43 ...as of Juli 21 2007 15:17:20</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../libavogadro/src/engines/CMakeLists.txt: TRUE: line#1 (1) FALSE:  (0)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	The TRUE and FALSE macros are obsolete and should be replaced with
-	true and false (all lower case) respectively.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for methods that return 'const' references in public classes... 
 <b>okay!</b>
 <li>Check for contractions in strings... 
@@ -136,8 +128,6 @@ Total Issues = 44 ...as of Juli 21 2007 13:48:27</p>
 <li>Check for compares to QString::null... 
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
-<b>okay!</b>
-<li>Check for Qt classes that should not be used... 
 <b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
