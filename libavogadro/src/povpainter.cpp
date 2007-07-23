@@ -166,6 +166,8 @@ namespace Avogadro
   void POVPainterDevice::initializePOV()
   {
     // Initialise our POVRay scene
+    Eigen::Vector3d cameraPos = m_glwidget->camera()->modelview().translationVector();
+    Eigen::Vector3d lookatPos = m_glwidget->camera()->backtransformedZAxis();
     qDebug() << "Entered initializePOV() function.";
     *(m_output) << "global_settings {\n"
       << "\tambient_light rgb <1,1,1>\n"
@@ -173,9 +175,9 @@ namespace Avogadro
       << "background { color rgb <1,1,1> }\n\n"
       << "camera {\n"
       << "\tperspective\n"
-      << "\tlocation <10, -10, 15>\n"
+      << "\tlocation <" << cameraPos.x() << ", " << cameraPos.y() << ", " << cameraPos.z() << ">\n"
       << "\tright 1.33*x\n"
-      << "\tlook_at <0, 0, 0>\n}\n\n"
+      << "\tlook_at <" << lookatPos.x() << ", " << lookatPos.y() << ", " << lookatPos.z() << ">\n}\n\n"
       << "light_source {\n"
       << "\t<10, -10, 10>\n"
       << "\tcolor rgb<1,1,1>\n"
