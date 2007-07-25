@@ -7,9 +7,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -69,7 +69,7 @@ class CharRenderer
     GLuint m_outlineTexture;
 
     GLuint m_quadDisplayList;
-    
+
     GLenum m_textureTarget;
 
     /**
@@ -80,16 +80,16 @@ class CharRenderer
   public:
     CharRenderer();
     ~CharRenderer();
-    
+
     /** Builds the texture and the display list for a given character and font */
     bool initialize( QChar c, const QFont &font, GLenum textureTarget );
-    
+
     /** Calls the display list, drawing the character as a textured quad */
     void draw(const float *color) const;
-    
+
     /** @returns the height of the rendered character in pixels */
     inline int height() const { return m_realheight; }
-    
+
     /** @returns the width of the rendered character in pixels */
     inline int width() const { return m_realwidth; }
 
@@ -98,7 +98,7 @@ class CharRenderer
       glBindTexture(m_textureTarget, m_outlineTexture);
       glCallList( m_quadDisplayList );
     }
-    
+
     inline void drawGlyph() const
     {
       glBindTexture(m_textureTarget, m_glyphTexture);
@@ -142,7 +142,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   if( m_quadDisplayList ) return true;
   m_textureTarget = textureTarget;
   // *** STEP 1 : render the character to a QImage ***
-  
+
   // compute the size of the image to create
   const QFontMetrics fontMetrics ( font );
   m_realwidth = fontMetrics.width(c);
@@ -151,7 +151,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   int texwidth  =  m_realwidth + 2 * OUTLINE_WIDTH;
   int texheight = m_realheight + 2 * OUTLINE_WIDTH;
   normalizeTexSize(textureTarget, texwidth, texheight);
-  
+
   // create a new image
   QImage image( texwidth, texheight, QImage::Format_RGB32 );
   QPainter painter;
@@ -174,7 +174,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   painter.end();
 
   // *** STEP 2 : extract the raw bitmap from the image ***
-  
+
   // --> explanation: the image we just rendered is RGB, but actually all the
   //     data is in the B channel because we painted in blue. Now we extract
   //     this blue channel into a separate bitmap that'll be faster to manipulate
@@ -189,9 +189,9 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   {
     rawbitmap[n] = qBlue( image.pixel( i, j ) );
   }
-  
+
   // *** STEP 3 : compute the neighborhood map from the raw bitmap ***
-  
+
   // --> explanation: we apply a convolution filter to the raw bitmap
   //     to produce a new map each pixel is associated a float telling how
   //     much it is surrounded by other pixels.
@@ -242,10 +242,10 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
     }
     outlinebitmap[n] = static_cast<GLubyte>(alpha);
   }
-  
+
   delete [] rawbitmap;
   delete [] neighborhood;
-  
+
   // *** STEP 5 : pass the final bitmap to OpenGL for texturing ***
 
   glGenTextures( 1, &m_glyphTexture );
@@ -254,7 +254,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   if( ! m_outlineTexture ) return false;
 
   glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );
-  
+
   glBindTexture( textureTarget, m_glyphTexture );
   glTexImage2D(
     textureTarget,
@@ -288,7 +288,7 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
   // the texture data is now kept alive by OpenGL. It's time to free the bitmaps.
   delete [] glyphbitmap;
   delete [] outlinebitmap;
-  
+
   // *** STEP 6 : compile the display list ***
 
   m_quadDisplayList = glGenLists(1);
@@ -317,15 +317,15 @@ bool CharRenderer::initialize( QChar c, const QFont &font, GLenum textureTarget 
 class TextRendererPrivate
 {
   public:
-  
+
     TextRendererPrivate() : initialized(false) {}
     ~TextRendererPrivate() {}
-  
+
     /**
     * The font used for rendering the chars.
     */
     QFont font;
-    
+
     /**
     * This hash gives the correspondence table between QChars
     * (the keys) and the corresponding CharRenderers (the values).
@@ -343,11 +343,11 @@ class TextRendererPrivate
     GLWidget *glwidget;
 
     GLboolean textmode;
-    
+
     bool initialized;
-    
+
     GLenum textureTarget;
-    
+
     static int isGLExtensionSupported(const char *extension);
     void do_draw(const QString &string);
 };
@@ -450,10 +450,10 @@ void TextRenderer::end()
 {
   if(d->glwidget) {
     assert(d->textmode);
-    glPopAttrib();
     glMatrixMode( GL_PROJECTION );
     glPopMatrix();
     glMatrixMode( GL_MODELVIEW );
+    glPopAttrib();
     d->textmode = false;
     d->glwidget = 0;
   }
@@ -464,7 +464,7 @@ void TextRendererPrivate::do_draw( const QString &string )
   int i;
   GLfloat color[4];
   glGetFloatv(GL_CURRENT_COLOR, color);
-  
+
   // Pass 1: render and cache the glyphs that are not yet cached.
   for( i = 0; i < string.size(); i++ )
   {
@@ -491,7 +491,7 @@ void TextRendererPrivate::do_draw( const QString &string )
       charTable.insert( string[i], c);
     }
   }
-  
+
   // Pass 2: render the outline
   glColor4f(0,0,0,1);
   glPushMatrix();
@@ -500,10 +500,10 @@ void TextRendererPrivate::do_draw( const QString &string )
     charTable.value( string[i] )->drawOutline();
   }
   glPopMatrix();
-  
+
   // Pass 3: render the glyphs themselves
   glColor4fv(color);
-  for( i = 0; i < string.size(); i++ )
+for( i = 0; i < string.size(); i++ )
   {
     charTable.value( string[i] )->drawGlyph();
   }
@@ -532,6 +532,10 @@ int TextRenderer::draw( const Eigen::Vector3d &pos, const QString &string )
   int h = fontMetrics.height();
 
   Eigen::Vector3d wincoords = d->glwidget->camera()->project(pos);
+
+  // project is in QT window coordinates
+  wincoords.y() = d->glwidget->height() - wincoords.y();
+
   wincoords.x() -= w/2;
   wincoords.y() += h/2;
 

@@ -126,14 +126,14 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
   m_glwidget = widget;
   m_lastDraggingPosition = event->pos();
 #ifdef Q_WS_MAC
-  m_leftButtonPressed = (event->buttons() & Qt::LeftButton 
+  m_leftButtonPressed = (event->buttons() & Qt::LeftButton
                          && event->modifiers() == Qt::NoModifier);
   // On the Mac, either use a three-button mouse
   // or hold down the Option key (AltModifier in Qt notation)
-  m_midButtonPressed = ( (event->buttons() & Qt::MidButton) || 
+  m_midButtonPressed = ( (event->buttons() & Qt::MidButton) ||
                          (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) );
   // Hold down the Command key (ControlModifier in Qt notation) for right button
-  m_rightButtonPressed = ( (event->buttons() & Qt::RightButton) || 
+  m_rightButtonPressed = ( (event->buttons() & Qt::RightButton) ||
                            (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) );
 #else
   m_leftButtonPressed = (event->buttons() & Qt::LeftButton);
@@ -173,7 +173,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
   if( m_clickedAtom )
   {
 #ifdef Q_WS_MAC
-    if (event->buttons() & Qt::LeftButton 
+    if (event->buttons() & Qt::LeftButton
         && event->modifiers() == Qt::NoModifier)
 #else
     if ( event->buttons() & Qt::LeftButton )
@@ -185,7 +185,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
 #ifdef Q_WS_MAC
   // On the Mac, either use a three-button mouse
   // or hold down the Option key (AltModifier in Qt notation)
-    else if ( (event->buttons() & Qt::MidButton) || 
+    else if ( (event->buttons() & Qt::MidButton) ||
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
 #else
     else if ( event->buttons() & Qt::MidButton )
@@ -200,7 +200,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
 #ifdef Q_WS_MAC
     // On the Mac, either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
-    else if ( (event->buttons() & Qt::RightButton) || 
+    else if ( (event->buttons() & Qt::RightButton) ||
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
 #else
     else if ( event->buttons() & Qt::RightButton )
@@ -213,7 +213,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
   else // Nothing clicked on
   {
 #ifdef Q_WS_MAC
-    if (event->buttons() & Qt::LeftButton 
+    if (event->buttons() & Qt::LeftButton
         && event->modifiers() == Qt::NoModifier)
 #else
     if ( event->buttons() & Qt::LeftButton )
@@ -225,7 +225,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
 #ifdef Q_WS_MAC
   // On the Mac, either use a three-button mouse
   // or hold down the Option key (AltModifier in Qt notation)
-    else if ( (event->buttons() & Qt::MidButton) || 
+    else if ( (event->buttons() & Qt::MidButton) ||
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
 #else
     else if ( event->buttons() & Qt::MidButton )
@@ -240,7 +240,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
 #ifdef Q_WS_MAC
     // On the Mac, either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
-    else if ( (event->buttons() & Qt::RightButton) || 
+    else if ( (event->buttons() & Qt::RightButton) ||
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
 #else
     else if ( event->buttons() & Qt::RightButton )

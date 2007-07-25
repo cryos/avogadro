@@ -118,17 +118,14 @@ bool ClickMeasureTool::paint(GLWidget *widget)
   if(0 < m_numSelectedAtoms)
   {
     // get GL Coordinates for text
-    glPushMatrix();
+//     glPushMatrix();
 
-    glPushMatrix();
-    glLoadIdentity();
     QPoint labelPos(5, widget->height()-20);
     QPoint distancePos[2];
     distancePos[0] = QPoint(90, widget->height()-20 );
     distancePos[1] = QPoint(150, widget->height()-20);
     QPoint anglePos(50, widget->height()-40);
     QPoint angleLabelPos( 5, widget->height()-40);
-    glPopMatrix();
 
     glColor3f(1.0,0.0,0.0);
     Vector3d pos = m_selectedAtoms[0]->pos();
@@ -185,7 +182,7 @@ bool ClickMeasureTool::paint(GLWidget *widget)
       widget->painter()->drawText(distancePos[0], QString::number(vector[0].norm()));
     }
 
-    glPopMatrix();
+//     glPopMatrix();
   }
 
   return true;

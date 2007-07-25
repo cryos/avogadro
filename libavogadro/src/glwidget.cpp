@@ -271,6 +271,7 @@ namespace Avogadro {
       d->renderMutex.unlock();
     }
   }
+
   void GLThread::resize( int width, int height )
   {
     m_resize = true;
@@ -518,7 +519,7 @@ namespace Avogadro {
       }
       glDepthMask(GL_TRUE);
     }
-    
+
     foreach( GLuint dl, d->displayLists )
     glCallList( dl );
 

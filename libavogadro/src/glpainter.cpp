@@ -7,9 +7,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -318,10 +318,10 @@ namespace Avogadro
   void GLPainter::drawSphere ( const Eigen::Vector3d & center, double radius )
   {
     if(!d->isValid()) { return; }
-    if ( d->textRenderer->isActive() )
-    {
-      d->textRenderer->end();
-    }
+//     if ( d->textRenderer->isActive() )
+//     {
+//       d->textRenderer->end();
+//     }
 
     Eigen::Vector3d transformedCenter = d->widget->camera()->modelview() * center;
     double distance = transformedCenter.norm();
@@ -354,10 +354,10 @@ namespace Avogadro
                                double radius )
   {
     if(!d->isValid()) { return; }
-    if ( d->textRenderer->isActive() )
-    {
-      d->textRenderer->end();
-    }
+//     if ( d->textRenderer->isActive() )
+//     {
+//       d->textRenderer->end();
+//     }
 
     Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
     double distance = transformedEnd1.norm();
@@ -390,10 +390,10 @@ namespace Avogadro
                                     double radius, int order, double shift )
   {
     if(!d->isValid()) { return; }
-    if ( d->textRenderer->isActive() )
-    {
-      d->textRenderer->end();
-    }
+//     if ( d->textRenderer->isActive() )
+//     {
+//       d->textRenderer->end();
+//     }
 
     Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
     double distance = transformedEnd1.norm();
@@ -426,37 +426,46 @@ namespace Avogadro
   int GLPainter::drawText ( int x, int y, const QString &string ) const
   {
     if(!d->isValid()) { return 0; }
-    if ( !d->textRenderer->isActive() )
-    {
+//     if ( !d->textRenderer->isActive() )
+//     {
       d->textRenderer->begin ( d->widget );
-    }
-    return d->textRenderer->draw ( x, y, string );
+//     }
+    int val = d->textRenderer->draw ( x, y, string );
+
+    d->textRenderer->end( );
+    return val;
   }
 
   int GLPainter::drawText ( const QPoint& pos, const QString &string ) const
   {
     if(!d->isValid()) { return 0; }
-    if ( !d->textRenderer->isActive() )
-    {
-      d->textRenderer->begin( d->widget );
-    }
-    return d->textRenderer->draw ( pos.x(), pos.y(), string );
+//     if ( !d->textRenderer->isActive() )
+//     {
+    d->textRenderer->begin( d->widget );
+//     }
+    int val = d->textRenderer->draw ( pos.x(), pos.y(), string );
+    d->textRenderer->end( );
+    return val;
   }
 
   int GLPainter::drawText ( const Eigen::Vector3d &pos, const QString &string ) const
   {
     if(!d->isValid()) { return 0; }
-    if ( !d->textRenderer->isActive() )
-    {
+//     if ( !d->textRenderer->isActive() )
+//     {
       d->textRenderer->begin ( d->widget );
-    }
+//     }
     Eigen::Vector3d transformedPos = d->widget->camera()->modelview() * pos;
 
     // perform a rough form of frustum culling
     double dot = transformedPos.z() / transformedPos.norm();
     if ( dot > PAINTER_FRUSTUM_CULL_TRESHOLD ) return 0;
 
-    return d->textRenderer->draw ( pos, string );
+    int val = d->textRenderer->draw ( pos, string );
+
+    d->textRenderer->end( );
+
+    return val;
   }
 
   int GLPainter::defaultQuality()
@@ -497,6 +506,7 @@ namespace Avogadro
 
   void GLPainter::end()
   {
+    d->overflow--;
     if(!d->overflow)
     {
       d->widget = 0;
