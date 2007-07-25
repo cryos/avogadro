@@ -186,7 +186,7 @@ bool BSDYEngine::renderTransparent(PainterDevice *pd)
   list = primitives().subList(Primitive::BondType);
 
   // sort our atom list
-  qSort(list.begin(), list.end(), sortCameraFarthest);
+  // qSort(list.begin(), list.end(), sortCameraFarthest);
 
   // enable depth mast for bonds
   glDepthMask(GL_TRUE);
@@ -224,7 +224,7 @@ bool BSDYEngine::renderTransparent(PainterDevice *pd)
   list = primitives().subList(Primitive::AtomType);
 
   // sort our atom list
-  qSort(list.begin(), list.end(), sortCameraFarthest);
+  // qSort(list.begin(), list.end(), sortCameraFarthest);
 
   foreach( Primitive *p, list )
   {
