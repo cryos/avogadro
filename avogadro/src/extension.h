@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -25,6 +25,8 @@
 #ifndef __EXTENSION_H
 #define __EXTENSION_H
 
+#include "action.h"
+
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
@@ -36,6 +38,7 @@
 #include <QVector>
 
 class QAction;
+class QDockWidget;
 class QUndoCommand;
 namespace Avogadro {
 
@@ -74,36 +77,25 @@ namespace Avogadro {
     virtual QString description() const
     { return QObject::tr("Unknown Extension"); }
 
-    /** @return a menu path for the extension's actions
-     *
-     * A "menu path" specifies the menu and any submenus where
-     * actions will be installed. Submenus are separated by ">" marks.
-     * For example:
-     * "Tools"  = all actions will be installed under the "Tools" menu.
-     * "Tools>Molecular Mechanics" = all actions will be installed
-     *   into a submenu "Molecular Mechanics" of the "Tools" menu.
-     *
-     * If the menu or submenu name does not exist, it will be created.
-     * If you wish to use an existing menu, make sure the path matches exactly.
-     * For example: "&Tools" not "Tools"
-     */
-    virtual QString menuPath() const
-    { return QObject::tr("&Tools"); }
-
     /**
      * @return a list of actions which this widget can perform
      */
-    virtual QList<QAction *> actions() const = 0;
+    virtual QList<Action *> actions() const = 0;
+
+    /**
+     * @return a list of dock widgets associated with this extensions
+     */
+    virtual QDockWidget * dockWidget() { return 0; }
 
     /**
      * @param action the action that triggered the calls
      * @param molecule the molecule to perform the action on
      * @param widget the currently active GLWidget
-     * @param messages a QTextEdit to push information too (allowing 
+     * @param messages a QTextEdit to push information too (allowing
      * feedback to the user)
      * @return an undo command for this action
      */
-    virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, 
+    virtual QUndoCommand* performAction(Action *action, Molecule *molecule,
                                         GLWidget *widget, QTextEdit *messages = NULL) = 0;
 
   };

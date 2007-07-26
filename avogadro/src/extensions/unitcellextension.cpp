@@ -31,34 +31,34 @@ using namespace OpenBabel;
 namespace Avogadro {
   UnitCellExtension::UnitCellExtension(QObject *parent) : QObject(parent), m_Widget(NULL)
   {
-    QAction *action = new QAction(this);
+    Action *action = new Action(this);
     action->setText("Unit Cell Parameters...");
     m_actions.append(action);
     m_Dialog = new UnitCellParamDialog(static_cast<QWidget*>(parent));
-      
+
     connect(m_Dialog, SIGNAL(unitCellDisplayChanged(int, int, int)),
             this, SLOT(unitCellDisplayChanged(int, int, int)));
     connect(m_Dialog, SIGNAL(unitCellParametersChanged(double, double, double, double, double, double)),
             this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
   }
 
-  UnitCellExtension::~UnitCellExtension() 
+  UnitCellExtension::~UnitCellExtension()
   {
   }
 
-  QList<QAction *> UnitCellExtension::actions() const
+  QList<Action *> UnitCellExtension::actions() const
   {
     return m_actions;
   }
 
-  QUndoCommand* UnitCellExtension::performAction(QAction *, 
+  QUndoCommand* UnitCellExtension::performAction(Action *,
                                                  Molecule *molecule,
                                                  GLWidget *widget,
                                                  QTextEdit *)
   {
     m_Molecule = molecule;
     m_Widget = widget;
-    
+
     OBUnitCell *uc = NULL;
     if (molecule && molecule->HasData(OBGenericDataType::UnitCell)) {
       uc = dynamic_cast<OBUnitCell*>(molecule->GetData(OBGenericDataType::UnitCell));
@@ -81,7 +81,7 @@ namespace Avogadro {
         uc->SetData(estimatedSize, estimatedSize, estimatedSize,
                     90.0, 90.0, 90.0);
         molecule->SetData(uc);
-        
+
         widget->setUnitCells(1, 1, 1);
       } else { // do nothing -- user picked "Cancel"
         return NULL;
@@ -92,20 +92,20 @@ namespace Avogadro {
     m_Dialog->aCells(widget->aCells());
     m_Dialog->bCells(widget->bCells());
     m_Dialog->cCells(widget->cCells());
-    
+
     m_Dialog->aLength(uc->GetA());
     m_Dialog->bLength(uc->GetB());
     m_Dialog->cLength(uc->GetC());
-    
+
     m_Dialog->alpha(uc->GetAlpha());
     m_Dialog->beta(uc->GetBeta());
     m_Dialog->gamma(uc->GetGamma());
-    
+
     m_Dialog->show();
 
     return NULL;
   }
-  
+
   void UnitCellExtension::unitCellDisplayChanged(int a, int b, int c)
   {
     if (m_Widget) {

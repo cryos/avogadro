@@ -67,14 +67,14 @@ namespace Avogadro {
       { return QObject::tr("&Tools>&Molecular Mechanics"); }
 
       //! Perform Action
-      virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule, 
+      virtual QList<Action *> actions() const;
+      virtual QUndoCommand* performAction(Action *action, Molecule *molecule,
                                           GLWidget *widget, QTextEdit *textEdit);
       //@}
 
     private:
       OpenBabel::OBForceField* m_forceField;
-      QList<QAction *> m_actions;
+      QList<Action *> m_actions;
       ForceFieldDialog *m_Dialog;
   };
 
@@ -92,7 +92,7 @@ namespace Avogadro {
     Q_OBJECT;
 
     public:
-    GhemicalThread(Molecule *molecule, OpenBabel::OBForceField* forceField, 
+    GhemicalThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
         QTextEdit *textEdit, int forceFieldID, int nSteps, int algorithm,
         int gradients, int convergence, int task, QObject *parent=0);
 
@@ -151,7 +151,7 @@ namespace Avogadro {
 
       GhemicalThread *m_thread;
       QProgressDialog *m_dialog;
-      
+
       mutable bool m_detached;
   };
 

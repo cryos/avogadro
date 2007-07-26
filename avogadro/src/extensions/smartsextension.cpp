@@ -34,21 +34,21 @@ using namespace OpenBabel;
   namespace Avogadro {
     SmartsExtension::SmartsExtension(QObject *parent) : QObject(parent)
     {
-      QAction *action = new QAction(this);
+      Action *action = new Action(this);
       action->setText("Select SMARTS");
       m_actions.append(action);
     }
 
-    SmartsExtension::~SmartsExtension() 
+    SmartsExtension::~SmartsExtension()
     {
     }
 
-    QList<QAction *> SmartsExtension::actions() const
+    QList<Action *> SmartsExtension::actions() const
     {
       return m_actions;
     }
 
-    QUndoCommand* SmartsExtension::performAction(QAction *, 
+    QUndoCommand* SmartsExtension::performAction(Action *,
                                                  Molecule *molecule,
                                                  GLWidget *widget,
                                                  QTextEdit *)
@@ -67,7 +67,7 @@ using namespace OpenBabel;
         // if we have matches, select them
         if(smarts.NumMatches() != 0) {
           QList<Primitive *> matchedAtoms;
-          
+
           vector< vector <int> > mapList = smarts.GetUMapList();
           vector< vector <int> >::iterator i; // a set of matching atoms
           vector<int>::iterator j; // atom ids in each match
@@ -75,13 +75,13 @@ using namespace OpenBabel;
             for (j = i->begin(); j != i->end(); ++j) {
               matchedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
             }
-          
+
           widget->clearSelection();
           widget->setSelected(matchedAtoms, true);
           widget->update();
         } // end matches
       }
-      
+
       return NULL;
     }
 

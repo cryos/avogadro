@@ -52,16 +52,28 @@ namespace Avogadro {
       virtual QString name() const { return QObject::tr("GAMESS"); }
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("GAMESS Input Deck Generator"); };
+
       //! Perform Action
-      virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
+      virtual QList<Action *> actions() const;
+
+      //! GAMESS Dock Widget
+      virtual QDockWidget * dockWidget();
+
+      virtual QUndoCommand* performAction(Action *action, Molecule *molecule,
           GLWidget *widget, QTextEdit *messages=NULL);
       //@}
 
     private:
       GamessInputDialog *m_inputDialog;
       GamessInputData *m_inputData;
-      QList<QAction *> m_actions;
+      QList<Action *> m_actions;
+      QDockWidget * m_dockWidget;
+
+      void findMatches(Molecule *molecule, GLWidget *widget);
+
+    private Q_SLOTS:
+      void dockWidgetDestroyed();
+
   };
 
   class GamessExtensionFactory : public QObject, public ExtensionFactory

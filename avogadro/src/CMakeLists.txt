@@ -15,8 +15,8 @@ include_directories(
   ${libavogadro_SOURCE_DIR}/include
   ${avogadro_SOURCE_DIR}/src
   ${avogadro_SOURCE_DIR}/include
-  ${OPENBABEL2_INCLUDE_DIR} 
-  ${EIGEN_INCLUDE_DIR} 
+  ${OPENBABEL2_INCLUDE_DIR}
+  ${EIGEN_INCLUDE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
 )
 
@@ -25,6 +25,7 @@ include(${QT_USE_FILE})
 
 set(avogadro_SRCS
     aboutdialog.cpp
+    action.cpp
     application.cpp
     editcommands.cpp
     enginelistview.cpp
@@ -58,8 +59,8 @@ qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
 add_executable(avogadro-app WIN32 MACOSX_BUNDLE
-  ${avogadro_SRCS} 
-  ${avogadro_UIS_H} 
+  ${avogadro_SRCS}
+  ${avogadro_UIS_H}
   ${avogadro_RC_SRCS}  )
 
 SET_TARGET_PROPERTIES(avogadro-app PROPERTIES OUTPUT_NAME avogadro)

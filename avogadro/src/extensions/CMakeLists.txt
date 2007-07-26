@@ -12,9 +12,9 @@ set(DESTINATION_DIR ${LIB_INSTALL_DIR}/avogadro/extensions)
 include_directories(
     ../
 	${CMAKE_CURRENT_BINARY_DIR}
-	${OPENBABEL2_INCLUDE_DIR} 
-	${EIGEN_INCLUDE_DIR} 
-	${AVOGADRO_INCLUDE_DIR} 
+	${OPENBABEL2_INCLUDE_DIR}
+	${EIGEN_INCLUDE_DIR}
+	${AVOGADRO_INCLUDE_DIR}
 )
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
@@ -24,9 +24,9 @@ set(gamessextension_SRCS gamessextension.cpp gamessinputdialog.cpp gamessinputda
 qt4_wrap_ui(gamessextension_UIS_H gamessinputdialog.ui)
 qt4_automoc(${gamessextension_SRCS})
 ADD_LIBRARY(gamessextension SHARED ${gamessextension_SRCS} ${gamessextension_UIS_H})
-TARGET_LINK_LIBRARIES(gamessextension 
-	${OPENBABEL2_LIBRARIES} 
-	${QT_LIBRARIES} 
+TARGET_LINK_LIBRARIES(gamessextension
+	${OPENBABEL2_LIBRARIES}
+	${QT_LIBRARIES}
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
@@ -37,9 +37,9 @@ set(ghemicalextension_SRCS ghemicalextension.cpp forcefielddialog.cpp)
 qt4_wrap_ui(ghemicalextension_UIS_H forcefielddialog.ui)
 qt4_automoc(${ghemicalextension_SRCS})
 ADD_LIBRARY(ghemicalextension SHARED ${ghemicalextension_SRCS} ${ghemicalextension_UIS_H})
-TARGET_LINK_LIBRARIES(ghemicalextension 
-	${OPENBABEL2_LIBRARIES} 
-	${QT_LIBRARIES} 
+TARGET_LINK_LIBRARIES(ghemicalextension
+	${OPENBABEL2_LIBRARIES}
+	${QT_LIBRARIES}
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
@@ -49,9 +49,9 @@ INSTALL(TARGETS ghemicalextension DESTINATION ${DESTINATION_DIR})
 set(hydrogensextension_SRCS hydrogensextension.cpp)
 qt4_automoc(${hydrogensextension_SRCS})
 ADD_LIBRARY(hydrogensextension SHARED ${hydrogensextension_SRCS})
-TARGET_LINK_LIBRARIES(hydrogensextension 
-	${OPENBABEL2_LIBRARIES} 
-	${QT_LIBRARIES} 
+TARGET_LINK_LIBRARIES(hydrogensextension
+	${OPENBABEL2_LIBRARIES}
+	${QT_LIBRARIES}
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
@@ -61,9 +61,9 @@ INSTALL(TARGETS hydrogensextension DESTINATION ${DESTINATION_DIR})
 set(smartsextension_SRCS smartsextension.cpp)
 qt4_automoc(${smartsextension_SRCS})
 ADD_LIBRARY(smartsextension SHARED ${smartsextension_SRCS})
-TARGET_LINK_LIBRARIES(smartsextension 
-	${OPENBABEL2_LIBRARIES} 
-	${QT_LIBRARIES} 
+TARGET_LINK_LIBRARIES(smartsextension
+	${OPENBABEL2_LIBRARIES}
+	${QT_LIBRARIES}
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
@@ -74,9 +74,9 @@ set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)
 qt4_wrap_ui(unitcellextension_UIS_H unitcellparamdialog.ui)
 qt4_automoc(${unitcellextension_SRCS})
 ADD_LIBRARY(unitcellextension SHARED ${unitcellextension_SRCS} ${unitcellextension_UIS_H})
-TARGET_LINK_LIBRARIES(unitcellextension 
-	${OPENBABEL2_LIBRARIES} 
-	${QT_LIBRARIES} 
+TARGET_LINK_LIBRARIES(unitcellextension
+	${OPENBABEL2_LIBRARIES}
+	${QT_LIBRARIES}
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
@@ -86,9 +86,9 @@ INSTALL(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
 set(h2methylextension_SRCS h2methylextension.cpp)
 qt4_automoc(${h2methylextension_SRCS})
 ADD_LIBRARY(h2methylextension SHARED ${h2methylextension_SRCS})
-TARGET_LINK_LIBRARIES(h2methylextension 
-	${OPENBABEL2_LIBRARIES} 
-	${QT_LIBRARIES} 
+TARGET_LINK_LIBRARIES(h2methylextension
+	${OPENBABEL2_LIBRARIES}
+	${QT_LIBRARIES}
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )

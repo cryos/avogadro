@@ -113,6 +113,7 @@ namespace Avogadro {
     private:
       PrimitiveListPrivate * const d;
 
+
   };
 
 } // namespace Avogadro

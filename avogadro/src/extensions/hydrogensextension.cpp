@@ -35,25 +35,25 @@ using namespace OpenBabel;
   namespace Avogadro {
     HydrogensExtension::HydrogensExtension(QObject *parent) : QObject(parent)
     {
-      QAction *action = new QAction(this);
+      Action *action = new Action(this);
       action->setText("Add Hydrogens");
       m_actions.append(action);
 
-      action = new QAction(this);
+      action = new Action(this);
       action->setText("Remove Hydrogens");
       m_actions.append(action);
     }
 
-    HydrogensExtension::~HydrogensExtension() 
+    HydrogensExtension::~HydrogensExtension()
     {
     }
 
-    QList<QAction *> HydrogensExtension::actions() const
+    QList<Action *> HydrogensExtension::actions() const
     {
       return m_actions;
     }
 
-    QUndoCommand* HydrogensExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
+    QUndoCommand* HydrogensExtension::performAction(Action *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
     {
 
       QUndoCommand *undo = 0;
@@ -68,10 +68,10 @@ using namespace OpenBabel;
 
     HydrogensCommand::HydrogensCommand(Molecule *molecule, enum Action action,
                                        GLWidget *widget):
-      m_molecule(molecule), m_moleculeCopy(*molecule), 
+      m_molecule(molecule), m_moleculeCopy(*molecule),
       m_SelectedList(widget->selectedPrimitives()), m_action(action)
     {
-      // save the selection from the current view widget 
+      // save the selection from the current view widget
       // (i.e., only modify a few hydrogens)
       //      m_SelectedList = widget->selectedPrimitives;
 

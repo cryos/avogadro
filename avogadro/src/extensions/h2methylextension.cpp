@@ -35,21 +35,21 @@ using namespace OpenBabel;
   namespace Avogadro {
     H2MethylExtension::H2MethylExtension(QObject *parent) : QObject(parent)
     {
-      QAction *action = new QAction(this);
+      Action *action = new Action(this);
       action->setText("Change H to Methyl");
       m_actions.append(action);
     }
 
-    H2MethylExtension::~H2MethylExtension() 
+    H2MethylExtension::~H2MethylExtension()
     {
     }
 
-    QList<QAction *> H2MethylExtension::actions() const
+    QList<Action *> H2MethylExtension::actions() const
     {
       return m_actions;
     }
 
-    QUndoCommand* H2MethylExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
+    QUndoCommand* H2MethylExtension::performAction(Action *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
     {
       QUndoCommand *undo = 0;
       undo = new H2MethylCommand(molecule, widget);
@@ -57,10 +57,10 @@ using namespace OpenBabel;
     }
 
     H2MethylCommand::H2MethylCommand(Molecule *molecule, GLWidget *widget):
-      m_molecule(molecule), m_moleculeCopy(*molecule), 
+      m_molecule(molecule), m_moleculeCopy(*molecule),
       m_SelectedList(widget->selectedPrimitives())
     {
-      // save the selection from the current view widget 
+      // save the selection from the current view widget
       // (i.e., only modify a few hydrogens)
       //      m_SelectedList = widget->selectedPrimitives;
 
@@ -77,7 +77,7 @@ using namespace OpenBabel;
         }
         foreach(Atom *a, hydrogenList) {
           a->HtoMethyl();
-        }        
+        }
       }
       else { // user selected some atoms, only operate on those
 
