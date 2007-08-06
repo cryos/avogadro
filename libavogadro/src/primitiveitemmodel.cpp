@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -25,6 +25,7 @@
 #include <avogadro/primitiveitemmodel.h>
 
 #include <QString>
+#include <QDebug>
 #include <QTreeView>
 
 namespace Avogadro {
@@ -77,24 +78,20 @@ namespace Avogadro {
     d->size[1] = molecule->NumBonds();
     d->size[2] = molecule->NumResidues();
 
-    connect(molecule, SIGNAL(primitiveAdded(Primitive *)), 
+    connect(molecule, SIGNAL(primitiveAdded(Primitive *)),
         this, SLOT(addPrimitive(Primitive *)));
-    connect(molecule, SIGNAL(primitiveUpdated(Primitive *)), 
+    connect(molecule, SIGNAL(primitiveUpdated(Primitive *)),
         this, SLOT(updatePrimitive(Primitive *)));
-    connect(molecule, SIGNAL(primitiveRemoved(Primitive *)), 
+    connect(molecule, SIGNAL(primitiveRemoved(Primitive *)),
         this, SLOT(removePrimitive(Primitive *)));
   }
 
   void PrimitiveItemModel::addPrimitive(Primitive *primitive)
   {
     int parentRow = d->rowTypeMap.key(primitive->type());
+
     if(parentRow < d->size.size())
     {
-      int row = primitiveIndex(primitive);
-      if(primitive->type() == Primitive::AtomType)
-      {
-        row--;
-      }
       int last = d->size[parentRow]++;
       emit beginInsertRows(createIndex(parentRow, 0, 0), last, last);
       endInsertRows();
@@ -104,13 +101,10 @@ namespace Avogadro {
   void PrimitiveItemModel::updatePrimitive(Primitive *primitive)
   {
     int parentRow = d->rowTypeMap.key(primitive->type());
+
     if(parentRow < d->size.size())
     {
       int row = primitiveIndex(primitive);
-      if(primitive->type() == Primitive::AtomType)
-      {
-        row--;
-      }
       emit dataChanged(createIndex(row, 0, primitive), createIndex(row, 0, primitive));
     }
   }
@@ -121,12 +115,8 @@ namespace Avogadro {
     if(parentRow < d->size.size())
     {
       int row = primitiveIndex(primitive);
-      if(primitive->type() == Primitive::AtomType)
-      {
-        row--;
-      }
-      int last = d->size[parentRow]--;
-      emit beginRemoveRows(createIndex(parentRow, 0, 0), last, last);
+      emit beginRemoveRows(createIndex(parentRow, 0, 0), row, row);
+      d->size[parentRow]--;
       endRemoveRows();
     }
   }
@@ -136,7 +126,7 @@ namespace Avogadro {
     Primitive::Type type = primitive->type();
     if(type == Primitive::AtomType) {
       Atom *atom = static_cast<Atom *>(primitive);
-      return atom->GetIdx();
+      return atom->GetIdx()-1;
     } else if (type == Primitive::BondType) {
       Bond *bond = static_cast<Bond *>(primitive);
       return bond->GetIdx();
@@ -158,7 +148,14 @@ namespace Avogadro {
       if(newsize < oldsize)
       {
         d->size[row] = newsize;
+
         beginRemoveRows(createIndex(row,0,0), newsize, oldsize-1);
+        QList<Primitive *> subList = list.subList(type);
+        if(subList.size())
+        {
+          // this is a minor hack to simplify things although it doesn't currently update the view
+          emit layoutChanged();
+        }
         endRemoveRows();
       }
       else if(newsize > oldsize)
@@ -178,11 +175,11 @@ namespace Avogadro {
     }
 
     Primitive *primitive = static_cast<Primitive *>(index.internalPointer());
-    if(primitive) 
+    if(primitive)
     {
       int row = d->rowTypeMap.key(primitive->type());
       return createIndex(row, 0, 0);
-    } 
+    }
     return QModelIndex();
   }
 
@@ -194,7 +191,7 @@ namespace Avogadro {
     }
 
     Primitive *primitive = static_cast<Primitive *>(parent.internalPointer());
-    if(!primitive) 
+    if(!primitive)
     {
       return d->size[parent.row()];
     }
@@ -240,7 +237,7 @@ namespace Avogadro {
       }
     }
 
-    if(role == Qt::DisplayRole)
+    if(role == Qt::DisplayRole && index.row() < d->rowTypeMap.size())
     {
       Primitive::Type type = d->rowTypeMap[index.row()];
       if(type == Primitive::AtomType) {
@@ -285,13 +282,14 @@ namespace Avogadro {
 
     if(d->engine)
     {
-      QList<Primitive *> subList = 
+      QList<Primitive *> subList =
         d->engine->primitives().subList(d->rowTypeMap[parent.row()]);
       if(row < subList.size()) {
         return createIndex(row, column, subList.at(row));
       }
     } else if (d->molecule) {
       Primitive::Type type = d->rowTypeMap[parent.row()];
+
       Primitive *primitive;
       if(type == Primitive::AtomType) {
         primitive = static_cast<Atom *>(d->molecule->GetAtom(row+1));

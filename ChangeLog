@@ -1,3 +1,20 @@
+2007-08-06  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* libavogadro/src/glwidget.cpp: GLWidget is not initialized until it is
+	actually called to render.  This hopefully fixes a race condition that
+	existed somewhere with makeCurrent().  Not sure why this was happening but
+	I believe it had something to do with the fact that we were calling
+	->run() within the constructor and we don't know what magic TT is doing
+	behind the scenes.
+
+	* libavogadro/src/primitiveitemmodel.h,
+	libavogadro/src/primitiveitemmodel.cpp: there was an issue with the engine
+	views when deleting certain atoms which has been fixed.  Basically the
+	model needs to notify the view that it's just taking from the end of the
+	list but has reordered the contents (just the way we happen to change
+	things in the engines).
+
+
 2007-07-03  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* libavogadro/src/tools/autorotatetool.*: Automatically start rotation

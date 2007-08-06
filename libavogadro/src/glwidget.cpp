@@ -239,15 +239,6 @@ namespace Avogadro {
   {
     GLWidgetPrivate *d = m_widget->d;
 
-    if ( !m_initialized ) {
-      d->renderMutex.lock();
-      m_widget->makeCurrent();
-      m_widget->initializeGL();
-      m_widget->doneCurrent();
-      m_initialized = true;
-      d->renderMutex.unlock();
-    }
-
     while ( true ) {
       // lock the mutex
       d->renderMutex.lock();
@@ -259,6 +250,12 @@ namespace Avogadro {
         break;
       }
       m_widget->makeCurrent();
+
+      if ( !m_initialized ) {
+        m_widget->initializeGL();
+        m_initialized = true;
+      }
+
 
       if ( m_resize ) {
         m_widget->resizeGL( m_width, m_height );
@@ -350,7 +347,6 @@ namespace Avogadro {
 
   void GLWidget::constructor(const GLWidget *shareWidget)
   {
-    doneCurrent();
     if(shareWidget && isSharing()) {
       // we are sharing contexts
       d->painter = static_cast<GLPainter *>(shareWidget->painter());
@@ -366,6 +362,7 @@ namespace Avogadro {
     d->camera->setParent( this );
     setAutoBufferSwap( false );
     d->thread = new GLThread( this, this );
+    doneCurrent();
     d->thread->start();
   }
 
@@ -419,7 +416,9 @@ namespace Avogadro {
 
   void GLWidget::setBackground( const QColor &background )
   {
+    d->renderMutex.lock();
     d->background = background; qglClearColor( background );
+    d->renderMutex.unlock();
   }
 
   QColor GLWidget::background() const
