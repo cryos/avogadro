@@ -38,8 +38,6 @@ endif(NOT WIN32)
 
   find_path(OPENBABEL2_INCLUDE_DIR openbabel/obconversion.h
     ${_obIncDir}
-    /usr/local/include
-    /usr/include
     ${GNUWIN32_DIR}/include
     $ENV{OPENBABEL2_INCLUDE_DIR}
   )
@@ -47,8 +45,6 @@ endif(NOT WIN32)
   find_library(OPENBABEL2_LIBRARIES NAMES openbabel
     PATHS
     ${_obLinkDir}
-    /usr/lib
-    /usr/local/lib
     ${GNUWIN32_DIR}/lib
     $ENV{OPENBABEL2_LIBRARIES}
   )

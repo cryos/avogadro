@@ -18,9 +18,6 @@ else (EIGEN_INCLUDE_DIR)
 find_path(EIGEN_INCLUDE_DIR NAMES eigen/matrix.h
      PATHS
      ${INCLUDE_INSTALL_DIR}
-     $ENV{KDEDIR}/include
-     /usr/include
-     /usr/local/include
    )
 
 if(EIGEN_INCLUDE_DIR)
