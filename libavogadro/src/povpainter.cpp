@@ -113,6 +113,27 @@ namespace Avogadro
 
   }
 
+  void POVPainter::drawShadedSector(Eigen::Vector3d origin, Eigen::Vector3d direction1,
+                        Eigen::Vector3d direction2, double radius)
+  {
+  }
+
+  void POVPainter::drawArc(Eigen::Vector3d origin, Eigen::Vector3d direction1, Eigen::Vector3d direction2,
+               double radius, double lineWidth)
+  {
+  }
+
+  void POVPainter::drawShadedQuadrilateral(Eigen::Vector3d point1, Eigen::Vector3d point2,
+                               Eigen::Vector3d point3, Eigen::Vector3d point4)
+  {
+  }
+
+  void POVPainter::drawQuadrilateral(Eigen::Vector3d point1, Eigen::Vector3d point2,
+                         Eigen::Vector3d point3, Eigen::Vector3d point4,
+                         double lineWidth)
+  {
+  }
+
   int POVPainter::drawText ( int x, int y, const QString &string ) const
   {
     return 0;

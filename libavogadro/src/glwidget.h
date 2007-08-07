@@ -498,6 +498,7 @@ namespace Avogadro {
       void mouseRelease( QMouseEvent * event );
       void mouseMove( QMouseEvent * event );
       void wheel( QWheelEvent * event);
+      void moleculeChanged(Molecule *previous, Molecule *next);
 
   };
 

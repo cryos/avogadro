@@ -423,6 +423,240 @@ namespace Avogadro
     popName();
   }
 
+  void GLPainter::drawShadedSector(Eigen::Vector3d origin, Eigen::Vector3d direction1,
+                                 Eigen::Vector3d direction2, double radius)
+  {
+    if(d->textRenderer->isActive())
+    {
+      d->textRenderer->end();
+    }
+    assert( d->widget );
+
+    // Get vectors representing the two lines out from the center of the circle.
+    Eigen::Vector3d u = direction1 - origin;
+    Eigen::Vector3d v = direction2 - origin;
+
+    // Adjust the length of u and v to the radius given.
+    u = (u / u.norm()) * radius;
+    v = (v / v.norm()) * radius;
+
+    // Angle between u and v.
+    double uvAngle = acos(u.dot(v) / v.norm2()) * 180.0 / M_PI;
+
+    // If angle is less than 1 (will be approximated to 0), attempting to draw
+    // will crash, so return.
+    if (abs((int)uvAngle) <= 1)
+      return;
+
+    // Vector perpindicular to both u and v.
+    Eigen::Vector3d n = u.cross(v);
+
+    Eigen::Vector3d x = Eigen::Vector3d(1, 0, 0);
+    Eigen::Vector3d y = Eigen::Vector3d(0, 1, 0);
+
+    if (n.norm() < 1e-16)
+    {
+      Eigen::Vector3d A = u.cross(x);
+      Eigen::Vector3d B = u.cross(y);
+
+      n = A.norm() >= B.norm() ? A : B;
+    }
+
+    n = n / n.norm();
+
+    // Add the vectors to the origin vector to find the positions along the lines
+    // of the two points the curve starts and ends at.
+    direction1 = origin + u;
+    direction2 = origin + v;
+
+    // Calculate the points along the curve at each degree increment until we
+    // reach the next line.
+    Eigen::Vector3d points[360];
+    for (int theta = 1; theta < (uvAngle * 2); theta++)
+    {
+      // Create a Matrix that represents a rotation about a vector perpindicular
+      // to the plane.
+      Eigen::Matrix3d rotMat;
+      rotMat.loadRotation3((theta / 2 * (M_PI / 180.0)), n);
+
+      // Apply the rotation Matrix to the vector to find the new point.
+      rotMat.multiply(u, &points[theta-1]);
+      points[theta-1] += origin;
+      points[theta-1] = d->widget->camera()->modelview() * points[theta-1];
+    }
+
+    // Get vectors representing the points' positions in terms of the model view.
+    origin = d->widget->camera()->modelview() * origin;
+    direction1 = d->widget->camera()->modelview() * direction1;
+    direction2 = d->widget->camera()->modelview() * direction2;
+
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glPushMatrix();
+    glLoadIdentity();
+    glDisable(GL_LIGHTING);
+    glDisable(GL_CULL_FACE);
+
+    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+
+    // Draw the transparent polygon that makes up the sector.
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex3d(origin.x(), origin.y(), origin.z());
+    glVertex3d(direction1.x(), direction1.y(), direction1.z());
+    for (int i = 0; i < uvAngle*2 - 1; i++)
+      glVertex3d(points[i].x(), points[i].y(), points[i].z());
+    glVertex3d(direction2.x(), direction2.y(), direction2.z());
+    glEnd();
+
+    glPopMatrix();
+    glPopAttrib();
+  }
+
+  void GLPainter::drawArc(Eigen::Vector3d origin, Eigen::Vector3d direction1,
+                        Eigen::Vector3d direction2, double radius, double lineWidth)
+  {
+    if(d->textRenderer->isActive())
+    {
+      d->textRenderer->end();
+    }
+    assert( d->widget );
+
+    // Get vectors representing the two lines out from the center of the circle.
+    Eigen::Vector3d u = direction1 - origin;
+    Eigen::Vector3d v = direction2 - origin;
+
+    // Adjust the length of u and v to the radius given.
+    u = (u / u.norm()) * radius;
+    v = (v / v.norm()) * radius;
+
+    // Angle between u and v.
+    double uvAngle = acos(u.dot(v) / v.norm2()) * 180.0 / M_PI;
+
+    // If angle is less than 1 (will be approximated to 0), attempting to draw
+    // will crash, so return.
+    if (abs((int)uvAngle) <= 1)
+      return;
+
+    // Vector perpindicular to both u and v.
+    Eigen::Vector3d n = u.cross(v);
+
+    Eigen::Vector3d x = Eigen::Vector3d(1, 0, 0);
+    Eigen::Vector3d y = Eigen::Vector3d(0, 1, 0);
+
+    if (n.norm() < 1e-16)
+    {
+      Eigen::Vector3d A = u.cross(x);
+      Eigen::Vector3d B = u.cross(y);
+
+      n = A.norm() >= B.norm() ? A : B;
+    }
+
+    n = n / n.norm();
+
+    // Add the vectors to the origin vector to find the positions along the lines
+    // of the two points the curve starts and ends at.
+    direction1 = origin + u;
+    direction2 = origin + v;
+
+    // Calculate the points along the curve at each degree increment until we
+    // reach the next line.
+    Eigen::Vector3d points[360];
+    for (int theta = 1; theta < (uvAngle * 2); theta++)
+    {
+      // Create a Matrix that represents a rotation about a vector perpindicular
+      // to the plane.
+      Eigen::Matrix3d rotMat;
+      rotMat.loadRotation3((theta / 2 * (M_PI / 180.0)), n);
+
+      // Apply the rotation Matrix to the vector to find the new point.
+      rotMat.multiply(u, &points[theta-1]);
+      points[theta-1] += origin;
+      points[theta-1] = d->widget->camera()->modelview() * points[theta-1];
+    }
+
+    // Get vectors representing the points' positions in terms of the model view.
+    origin = d->widget->camera()->modelview() * origin;
+    direction1 = d->widget->camera()->modelview() * direction1;
+    direction2 = d->widget->camera()->modelview() * direction2;
+
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glPushMatrix();
+    glLoadIdentity();
+    glDisable(GL_LIGHTING);
+    glDisable(GL_CULL_FACE);
+
+    glLineWidth(lineWidth);
+    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+
+    // Draw the arc.
+    glBegin(GL_LINE_STRIP);
+    glVertex3d(direction1.x(), direction1.y(), direction1.z());
+    for (int i = 0; i < uvAngle*2 - 1; i++)
+      glVertex3d(points[i].x(), points[i].y(), points[i].z());
+    glVertex3d(direction2.x(), direction2.y(), direction2.z());
+    glEnd();
+
+    glPopMatrix();
+    glPopAttrib();
+  }
+
+  void GLPainter::drawShadedQuadrilateral(Eigen::Vector3d point1, Eigen::Vector3d point2,
+                                        Eigen::Vector3d point3, Eigen::Vector3d point4)
+  {
+    if(d->textRenderer->isActive())
+    {
+      d->textRenderer->end();
+    }
+    assert( d->widget );
+
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glPushMatrix();
+    glLoadIdentity();
+    glDisable(GL_LIGHTING);
+    glDisable(GL_CULL_FACE);
+
+    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex3d(point1.x(), point1.y(), point1.z());
+    glVertex3d(point2.x(), point2.y(), point2.z());
+    glVertex3d(point3.x(), point3.y(), point3.z());
+    glVertex3d(point4.x(), point4.y(), point4.z());
+    glEnd();
+
+    glPopMatrix();
+    glPopAttrib();
+  }
+
+  void GLPainter::drawQuadrilateral(Eigen::Vector3d point1, Eigen::Vector3d point2,
+                                  Eigen::Vector3d point3, Eigen::Vector3d point4,
+                                  double lineWidth)
+  {
+    if(d->textRenderer->isActive())
+    {
+      d->textRenderer->end();
+    }
+    assert( d->widget );
+
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glPushMatrix();
+    glLoadIdentity();
+    glDisable(GL_LIGHTING);
+    glDisable(GL_CULL_FACE);
+
+    glLineWidth(lineWidth);
+    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+
+    glBegin(GL_LINE_LOOP);
+    glVertex3d(point1.x(), point1.y(), point1.z());
+    glVertex3d(point2.x(), point2.y(), point2.z());
+    glVertex3d(point3.x(), point3.y(), point3.z());
+    glVertex3d(point4.x(), point4.y(), point4.z());
+    glEnd();
+
+    glPopMatrix();
+    glPopAttrib();
+  }
+
   int GLPainter::drawText ( int x, int y, const QString &string ) const
   {
     if(!d->isValid()) { return 0; }

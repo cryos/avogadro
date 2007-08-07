@@ -629,6 +629,7 @@ namespace Avogadro {
       QObject::disconnect( d->molecule, 0, this, 0 );
     }
 
+    emit moleculeChanged(d->molecule, molecule);
     d->molecule = molecule;
 
     // clear our engine queues
