@@ -31,12 +31,18 @@
 
 namespace Avogadro {
 
-  /*
+  /**
    * @class Quaternion
-   * @brief <TODO>
+   * @brief A minimal implementation of Quaternions to allow for rotation in 3D space.
    * @author Shahzad Ali, Ross Braithwaite, James Bunt
    *
-   * <TODO>
+   * A minimal implementation of Quaternions to allow for rotation in 3D space.
+   * The implementation only implements multiplication and finding the multiplicative
+   * inverse.  Extra static functions for creating a rotation quaternion and
+   * applying it in the smallest amount of multiplications possible have been added.
+   * The Quaternion is of the form W + Xi + Yj + Zk,
+   * where i*i = j*j = k*k = -1 and i*j = k, j*k = i, i*k = j.
+   * The X, Y and Z components are represented by a Vector V.
    */
   class Quaternion
   {
@@ -46,117 +52,122 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      /*
-       * <TODO>
+      /**
+       * Create a Quaternion with the given components.
        *
-       * @param w <TODO>
-       * @param x <TODO>
-       * @param y <TODO>
-       * @param z <TODO>
+       * @param w W component of Quaternion
+       * @param x X component of Quaternion
+       * @param y Y component of Quaternion
+       * @param z Z component of Quaternion
        */
       Quaternion(double w, double x, double y, double z);
 
       //! Constructor
-      /*
-       * <TODO>
+      /**
+       * Create a Quaternion with the given components.
        *
-       * @param w <TODO>
-       * @param v <TODO>
+       * @param w W component of Quaternion
+       * @param v Vector V, the X, Y and Z components of Quaternion.
        */
       Quaternion(double w, Eigen::Vector3d v);
 
-      /*
-       * <TODO>
+      /**
+       * Function to multiply two Quaternions and return the result.
        *
-       * @param right <TODO>
+       * @param right Quaternion to multiply this by.
        *
-       * @return <TODO>
+       * @return Quaternion result of this * right.
        */
       Quaternion multiply(Quaternion right);
 
-      /*
-       * <TODO>
+      /**
+       * Function to multiply two Quaternions and return the
+       * Vector component only, does not calculate extra W component.
        *
-       * @param right <TODO>
+       * @param right Quaternion to multiply this by.
        *
-       * @return <TODO>
+       * @return Vector result of this * right.
        */
       Eigen::Vector3d multiplyToVector(Quaternion right);
 
-      /*
-       * <TODO>
+      /**
+       * Function to get the multiplicitive inverse of a Quaternion.
        *
-       * @return <TODO>
+       * @return Quaternion result of multiplicitive inverse of this.
        */
       Quaternion multiplicitiveInverse();
 
-      /*
-       * <TODO>
+      /**
+       * Returns W component of Quaternion.
        *
-       * @return <TODO>
+       * @return W component of Quaternion.
        */
       double w();
 
-      /*
-       * <TODO>
+      /**
+       * Returns X component of Quaternion.
        *
-       * @return <TODO>
+       * @return X component of Quaternion.
        */
       double x();
 
-      /*
-       * <TODO>
+      /**
+       * Returns Y component of Quaternion.
        *
-       * @return <TODO>
+       * @return Y component of Quaternion.
        */
       double y();
 
-      /*
-       * <TODO>
+      /**
+       * Returns Z component of Quaternion.
        *
-       * @return <TODO>
+       * @return Z component of Quaternion.
        */
       double z();
 
-      /*
-       * <TODO>
+      /**
+       * Returns Vector V, the X, Y and Z components of Quaternion.
        *
-       * @return <TODO>
+       * @return Vector V, the X, Y and Z components of Quaternion.
        */
       Eigen::Vector3d v();
 
-      /*
-       * <TODO>
+      /**
+       * Returns the length of the Quaternion.
+       * sqrt(w*w + x*x + y*y + z*z)
        *
-       * @return <TODO>
+       * @return Length of the Quaternion.
        */
       double norm();
 
-      /*
-       * <TODO>
+      /**
+       * Returns the length of the Quaternion squared.
+       * w*w + x*x + y*y +z*z
        *
-       * @return <TODO>
+       * @return Length of the Quaternnion squared.
        */
       double norm2();
 
-      /*
-       * <TODO>
+      /**
+       * Function to create the left hand half of a pair of Rotation Quaternions.
        *
-       * @param theta <TODO>
-       * @param rotationVector <TODO>
+       * @param theta Angle of rotation in radians
+       * @param rotationVector Unit vector defining the axis of rotation.
        *
-       * @return <TODO>
+       * @return Quaternion of the left half of a pair of rotation quaternions.
        */
       static Quaternion createRotationLeftHalf(double theta, Eigen::Vector3d rotationVector);
 
-      /*
-       * <TODO>
+      /**
+       * Function to apply a pair of Rotation Quaternions and return the result in 3D space.
+       * rotationLeft must be produced by createRotationLeftHalf, and rotationRight must be
+       * its multiplicitive inverse.
        *
-       * @param rotationLeft <TODO>
-       * @param direction <TODO>
-       * @param rotationRight <TODO>
+       * @param rotationLeft Left half of rotation Quaternion Pair
+       * @param direction Vector representing vector to be rotated.
+       * @param rotationRight Right half of rotation Quaternion Pair.
        *
-       * @return <TODO>
+       * @return Vector representing the location after rotation is applied.
        */
       static Eigen::Vector3d performRotationMultiplication(Quaternion rotationLeft,
           Eigen::Vector3d direction, Quaternion rotationRight);

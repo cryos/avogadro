@@ -210,23 +210,23 @@ namespace Avogadro {
        */
       void recursiveTranslate(Node* n, double x, double y, double z);
 
-      /*
-       * <TODO>
+      /**
+       * Recursivly rotates the Atoms attached to Node n in skeleton,
+       * by the given Rotation Quaternions around the Vector centerVector.
        *
-       * @param n <TODO>
-       * @param left <TODO>
-       * @param right <TODO>
-       * @param centerVector <TODO>
+       * @param n Current node to rotate
+       * @param left Left half of Rotation Quaternion pair.
+       * @param right Right half of Rotation Quaternion pair.
+       * @param centerVector Center location to rotate around.
        */
       void recursiveRotate(Node* n, Quaternion left, Quaternion right, Eigen::Vector3d centerVector);
 
-      /* <TODO>
+      /**
        * Performs a rotation on a vector.
-       * @param angle The angle to rotate by in radians.
-       * @param rotationVector The Vector3d to rotate around, must be a unit
-       *                       vector.
-       * @param centerVector The Vector3d postion around which to rotate
-       * @param postionVector The Vector3d postion of the vector to rotate
+       * @param left Left half of Rotation Quaternion pair.
+       * @param right Right half of Rotation Quaternion pair.
+       * @param centerVector The Vector3d postion around which to rotate.
+       * @param postionVector The Vector3d postion of the vector to rotate.
        * @return A Vector3d with the final postion after the rotation is
        *         performed.
        */

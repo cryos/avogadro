@@ -357,30 +357,30 @@ namespace Avogadro {
                                       Eigen::Vector3d positionVector);
 
     private Q_SLOTS:
-      /*
-       * <TODO>
+      /**
+       * Function to be called when the tool is changed.
        *
-       * @param tool <TODO>
+       * @param tool The currently selected tool.
        */
       void toolChanged(Tool* tool);
 
-      /*
-       * <TODO>
+      /**
+       * Functnion to be called when the molecule is changed.
        *
-       * @param previous <TODO>
-       * @param next <TODO>
+       * @param previous The previous Molecule.
+       * @param next The new Molecule.
        */
       void moleculeChanged(Molecule* previous, Molecule* next);
 
-      /*
-       * <TODO>
+      /**
+       * Function to be called when a primitive is removed.
        *
-       * @param primitive <TODO>
+       * @param primitive The primitive that was removed.
        */
       void primitiveRemoved(Primitive* primitive);
 
-      /*
-       * <TODO>
+      /**
+       * Function to be called when the settings widget is destroyed.
        */
       void settingsWidgetDestroyed();
 
