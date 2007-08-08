@@ -34,6 +34,8 @@
 
 #include <QtPlugin>
 
+#define TESS_LEVEL 20
+
 using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
@@ -125,7 +127,6 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
 {
   m_glwidget = widget;
   m_lastDraggingPosition = event->pos();
-#ifdef Q_WS_MAC
   m_leftButtonPressed = (event->buttons() & Qt::LeftButton
                          && event->modifiers() == Qt::NoModifier);
   // On the Mac, either use a three-button mouse
@@ -135,12 +136,12 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
   // Hold down the Command key (ControlModifier in Qt notation) for right button
   m_rightButtonPressed = ( (event->buttons() & Qt::RightButton) ||
                            (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) );
-#else
-  m_leftButtonPressed = (event->buttons() & Qt::LeftButton);
-  m_midButtonPressed = ( event->buttons() & Qt::MidButton );
-  m_rightButtonPressed = ( event->buttons() & Qt::RightButton );
-#endif
+
   computeClickedAtom(event->pos());
+
+  // Initialise the angle variables on any new mouse press
+  vAngle = 0.;
+  hAngle = 0.;
 
   widget->update();
   return 0;
@@ -172,24 +173,17 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
 
   if( m_clickedAtom )
   {
-#ifdef Q_WS_MAC
-    if (event->buttons() & Qt::LeftButton
-        && event->modifiers() == Qt::NoModifier)
-#else
-    if ( event->buttons() & Qt::LeftButton )
-#endif
+    if (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::NoModifier)
     {
       // Atom centred rotation
+      hAngle += deltaDragging.x();
+      vAngle += deltaDragging.y();
       rotate( m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y() );
     }
-#ifdef Q_WS_MAC
   // On the Mac, either use a three-button mouse
   // or hold down the Option key (AltModifier in Qt notation)
     else if ( (event->buttons() & Qt::MidButton) ||
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
-#else
-    else if ( event->buttons() & Qt::MidButton )
-#endif
     {
       // Perform the rotation
       tilt( m_clickedAtom->pos(), deltaDragging.x() );
@@ -197,14 +191,10 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
       // Perform the zoom toward clicked atom
       zoom( m_clickedAtom->pos(), deltaDragging.y() );
     }
-#ifdef Q_WS_MAC
     // On the Mac, either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
     else if ( (event->buttons() & Qt::RightButton) ||
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
-#else
-    else if ( event->buttons() & Qt::RightButton )
-#endif
     {
       // translate the molecule following mouse movement
       translate( m_clickedAtom->pos(), m_lastDraggingPosition, event->pos() );
@@ -212,24 +202,16 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
   }
   else // Nothing clicked on
   {
-#ifdef Q_WS_MAC
     if (event->buttons() & Qt::LeftButton
         && event->modifiers() == Qt::NoModifier)
-#else
-    if ( event->buttons() & Qt::LeftButton )
-#endif
     {
       // rotation around the center of the molecule
       rotate( m_glwidget->center(), deltaDragging.x(), deltaDragging.y() );
     }
-#ifdef Q_WS_MAC
   // On the Mac, either use a three-button mouse
   // or hold down the Option key (AltModifier in Qt notation)
     else if ( (event->buttons() & Qt::MidButton) ||
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
-#else
-    else if ( event->buttons() & Qt::MidButton )
-#endif
     {
       // Perform the rotation
       tilt( m_glwidget->center(), deltaDragging.x() );
@@ -237,14 +219,10 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
       // Perform the zoom toward molecule center
       zoom( m_glwidget->center(), deltaDragging.y() );
     }
-#ifdef Q_WS_MAC
     // On the Mac, either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
     else if ( (event->buttons() & Qt::RightButton) ||
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
-#else
-    else if ( event->buttons() & Qt::RightButton )
-#endif
     {
       // translate the molecule following mouse movement
       translate( m_glwidget->center(), m_lastDraggingPosition, event->pos() );
@@ -278,7 +256,145 @@ QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
 
 bool NavigateTool::paint(GLWidget *widget)
 {
-  if(m_leftButtonPressed || m_midButtonPressed || m_rightButtonPressed) {
+  if(m_leftButtonPressed) {
+    if(m_clickedAtom) {
+      // Draw ribbons around the atom rotation is centred on and arrows at the end
+      double renderRadius = widget->radius(m_clickedAtom);
+      renderRadius += 0.04;
+      glEnable(GL_BLEND);
+      glDepthMask(GL_FALSE);
+      Color(1.0, 1.0, 0.3, 0.7).applyAsMaterials();
+
+      // Set up the axes and some vectors to work with
+      Vector3d xAxis = widget->camera()->backtransformedXAxis();
+      Vector3d yAxis = widget->camera()->backtransformedYAxis();
+      Vector3d zAxis = widget->camera()->backtransformedZAxis();
+      Vector3d v, v1, v2, v3;
+
+      // Horizontal arrows
+      // The start and stop angles for the ribbons
+      double angle_start = 2.0 * M_PI * 0.30 - hAngle / 180.;
+      double angle_end = 2.0 * M_PI * 1.20 - hAngle / 180.;
+
+      // Horizontal ribbon, back face
+      glBegin(GL_QUAD_STRIP);
+      for(int i = 0; i <= TESS_LEVEL; i++) {
+        double alpha = angle_start + (static_cast<double>(i) / TESS_LEVEL)
+                                   * (angle_end - angle_start);
+        v = cos(alpha) * xAxis + sin(alpha) * zAxis;
+        v1 = v - 0.1  * yAxis;
+        v2 = v + 0.1  * yAxis;
+        glNormal3dv(v.array());
+        glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
+        glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
+      }
+      glEnd();
+
+      // Horizontal ribbon, front face
+      glBegin(GL_QUAD_STRIP);
+      for(int i = 0; i <= TESS_LEVEL; i++) {
+        double alpha = angle_start + (static_cast<double>(i) / TESS_LEVEL)
+                                   * (angle_end - angle_start);
+        v = cos(alpha) * xAxis + sin(alpha) * zAxis;
+        v1 = v - 0.1  * yAxis;
+        v2 = v + 0.1  * yAxis;
+        glNormal3dv(v.array());
+        glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
+        glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
+      }
+      glEnd();
+
+      // Left arrow, pointing rightwards
+      v = cos(angle_start) * xAxis + sin(angle_start) * zAxis;
+      v1 = v - 0.2 * yAxis;
+      v2 = v + 0.2 * yAxis;
+      v3 = v + 0.2 * xAxis;
+      glBegin(GL_TRIANGLES);
+      glNormal3dv(v.array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v3).array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
+      glEnd();
+
+      // Right arrow, pointing leftwards
+      v = cos(angle_end) * xAxis + sin(angle_end) * zAxis;
+      v1 = v + 0.2 * yAxis;
+      v2 = v - 0.2 * yAxis;
+      v3 = v - 0.2 * xAxis;
+      glBegin(GL_TRIANGLES);
+      glNormal3dv(v.array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v3).array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
+      glEnd();
+
+      // Vertical arrows
+      // The start and stop angles for the ribbons.
+      angle_start = 2.0 * M_PI * 0.30 + vAngle / 180.;
+      angle_end = 2.0 * M_PI * 1.20 + vAngle / 180.;
+      // Vertical ribbon, back face
+      glBegin(GL_QUAD_STRIP);
+      for(int i = 0; i <= TESS_LEVEL; i++) {
+        double alpha = angle_start + (static_cast<double>(i) / TESS_LEVEL)
+                                   * (angle_end - angle_start);
+        v = cos(alpha) * yAxis + sin(alpha) * zAxis;
+        v1 = v - 0.1  * xAxis;
+        v2 = v + 0.1  * xAxis;
+        glNormal3dv(v.array());
+        glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
+        glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
+      }
+      glEnd();
+
+      // horizontal ribbon, front face
+      glBegin(GL_QUAD_STRIP);
+      for(int i = 0; i <= TESS_LEVEL; i++) {
+        double alpha = angle_start + (static_cast<double>(i) / TESS_LEVEL)
+                                   * (angle_end - angle_start);
+        v = cos(alpha) * yAxis + sin(alpha) * zAxis;
+        v1 = v - 0.1  * xAxis;
+        v2 = v + 0.1  * xAxis;
+        glNormal3dv(v.array());
+        glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
+        glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
+      }
+      glEnd();
+
+      // left arrow, pointing rightwards
+      v = cos(angle_start) * yAxis + sin(angle_start) * zAxis;
+      v1 = v - 0.2 * xAxis;
+      v2 = v + 0.2 * xAxis;
+      v3 = v + 0.2 * yAxis;
+      glBegin(GL_TRIANGLES);
+      glNormal3dv(v.array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v3).array());
+      glEnd();
+
+      // right arrow, pointing leftwards
+      v = cos(angle_end) * yAxis + sin(angle_end) * zAxis;
+      v1 = v + 0.2 * xAxis;
+      v2 = v - 0.2 * xAxis;
+      v3 = v - 0.2 * yAxis;
+      glBegin(GL_TRIANGLES);
+      glNormal3dv(v.array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
+      glVertex3dv((m_clickedAtom->pos() + renderRadius * v3).array());
+      glEnd();
+
+      glDisable(GL_BLEND);
+      glDepthMask(GL_TRUE);
+    }
+    else
+    {
+      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
+      widget->painter()->drawSphere(widget->center(), 0.10);
+    }
+  }
+
+  if(m_midButtonPressed || m_rightButtonPressed) {
     if(m_clickedAtom) {
       double renderRadius = widget->radius(m_clickedAtom);
       renderRadius += 0.10;
