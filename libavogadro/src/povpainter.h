@@ -38,6 +38,8 @@
 class QFile;
 class QTextStream;
 
+using namespace Eigen;
+
 namespace Avogadro
 {
   class POVPainterPrivate;
@@ -47,18 +49,19 @@ namespace Avogadro
     POVPainter ();
     ~POVPainter();
 
-    void setName ( const Primitive *primitive );
-    void setName ( Primitive::Type type, int id );
-    void setColor ( const Color *color );
-    void setColor ( float red, float green, float blue, float alpha = 1.0 );
+    void setName (const Primitive *primitive);
+    void setName (Primitive::Type type, int id);
+    void setColor (const Color *color);
+    void setColor (float red, float green, float blue, float alpha = 1.0);
+    void setPlaneNormal (Vector3d planeNormalVector);
 
-    void drawSphere ( const Eigen::Vector3d & center, double radius );
+    void drawSphere (const Vector3d & center, double radius);
 
-    void drawCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
-                        double radius );
+    void drawCylinder (const Vector3d &end1, const Vector3d &end2,
+                        double radius);
 
-    void drawMultiCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
-                             double radius, int order, double shift );
+    void drawMultiCylinder (const Vector3d &end1, const Vector3d &end2,
+                            double radius, int order, double shift);
 
     /** Draws a shaded sector of a circle.  The sector is defined by three vectors,
      * the center of the circle, and two vectors that define the lines going out
@@ -110,11 +113,11 @@ namespace Avogadro
                            Eigen::Vector3d point3, Eigen::Vector3d point4,
                            double lineWidth);
 
-    int drawText ( int x, int y, const QString &string ) const;
-    int drawText ( const QPoint& pos, const QString &string ) const;
-    int drawText ( const Eigen::Vector3d & pos, const QString &string ) const;
+    int drawText (int x, int y, const QString &string) const;
+    int drawText (const QPoint& pos, const QString &string) const;
+    int drawText (const Vector3d & pos, const QString &string) const;
 
-    void begin(QTextStream *output);
+    void begin(QTextStream *output, Vector3d planeNormalVector);
     void end();
 
   private:
@@ -133,8 +136,8 @@ namespace Avogadro
 
     Painter *painter() const { return m_painter; }
     Camera *camera() const { return m_glwidget->camera(); }
-    bool isSelected( const Primitive *p ) const { return m_glwidget->isSelected(p); }
-    double radius( const Primitive *p ) const { return m_glwidget->radius(p); }
+    bool isSelected(const Primitive *p) const { return m_glwidget->isSelected(p); }
+    double radius(const Primitive *p) const { return m_glwidget->radius(p); }
 
     int width() { return m_glwidget->width(); }
     int height() { return m_glwidget->height(); }
