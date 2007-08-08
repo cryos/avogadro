@@ -1,3 +1,17 @@
+2007-08-08  Marcus D. Hanwell <marcus@cryos.org>
+
+	* libavogadro/src/tools/navigatotool.*: Add visual representation of
+	atom centred molecule rotation. Benoit and I worked on this feature in 
+	the Versailles gardens in France, all credit to Benoit for figuring
+	out the maths and OpenGL. Open up modifiers to all - we always
+	planned to add this for all architectures. Alt seems to be taken in
+	KDE for Window movement though - possibly need an alternate.
+
+	* libavogadro/src/povpainter.*: Added multiCylinder support thanks to
+	help from Benoit with the maths. Also tweaked the default material
+	parameters in order to improve the look of default renders. Still need
+	to improve the translation from OpenGL to POV-Ray coords.
+
 2007-08-06  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* libavogadro/src/glwidget.cpp: GLWidget is not initialized until it is
