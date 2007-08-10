@@ -47,7 +47,7 @@ AutoRotateTool::AutoRotateTool(QObject *parent) : Tool(parent), m_glwidget(0), m
 
 {
   QAction *action = activateAction();
-  action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
+  action->setIcon(QIcon(QString::fromUtf8(":/autorotate/autorotate.png")));
   action->setToolTip(tr("Auto Rotation Tool"));
 }
 

@@ -340,13 +340,15 @@ void SelectRotateTool::settingsWidgetDestroyed() {
   m_settingsWidget = 0;
 }
 
-bool SelectRotateTool::paint(GLWidget *widget)
+bool SelectRotateTool::paint(GLWidget *)
 {
   if(m_selectionBox)
   {
     selectionBox(m_initialDraggingPosition.x(), m_initialDraggingPosition.y(),
                   m_lastDraggingPosition.x(), m_lastDraggingPosition.y());
   }
+
+  return true;
 }
 
 #include "selectrotatetool.moc"

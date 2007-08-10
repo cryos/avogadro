@@ -30,7 +30,8 @@
 
 #include <QList>
 
-namespace Avogadro {
+namespace Avogadro
+{
 
   /**
    * @class PrimitiveList
@@ -49,9 +50,9 @@ namespace Avogadro {
        * Constructor(s)
        */
       PrimitiveList();
-      PrimitiveList(const PrimitiveList &other);
+      PrimitiveList( const PrimitiveList &other );
 
-      PrimitiveList &operator=(const PrimitiveList &other);
+      PrimitiveList &operator=( const PrimitiveList &other );
 
       /**
        * Deconstructor
@@ -64,7 +65,7 @@ namespace Avogadro {
        * @param type the type of primitives to retrieve, one of Primitive::Type
        * @return a QList of pointers to Primitive objects
        */
-      QList<Primitive *> subList(Primitive::Type type) const;
+      QList<Primitive *> subList( Primitive::Type type ) const;
 
       /**
        * Returns a list of all primitives of all types.
@@ -77,14 +78,14 @@ namespace Avogadro {
        * @param p the primitive to check if it is in any list
        * @return true or false depending on whether p is in this list
        */
-      bool contains(const Primitive *p) const;
+      bool contains( const Primitive *p ) const;
 
       /**
        * Add a primitive to the queue.
        *
        * @param p primitive to add
        */
-      void append(Primitive *p);
+      void append( Primitive *p );
 
       /**
        * Remove a primitive from the queue.  If the parameter does not
@@ -92,7 +93,7 @@ namespace Avogadro {
        *
        * @param p primitive to remove
        */
-      void removeAll(Primitive *p);
+      void removeAll( Primitive *p );
 
       /**
        * @return the total number of primitives in this queue
@@ -103,7 +104,7 @@ namespace Avogadro {
        * @param type the type of primitives we're interested in
        * @return the number of primitives for the given type
        */
-      int size(Primitive::Type type) const;
+      int size( Primitive::Type type ) const;
 
       /**
        * Removes every primitive from the queue.
