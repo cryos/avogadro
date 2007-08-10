@@ -1,3 +1,8 @@
+2007-08-10  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/tools/navigatotool.cpp: Added visual representation
+	of atom centred translation. Needs extra features adding to the
+	painter and porting, as does the previous visual feedback.
+
 2007-08-08  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/tools/navigatotool.*: Add visual representation of

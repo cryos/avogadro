@@ -394,7 +394,102 @@ bool NavigateTool::paint(GLWidget *widget)
     }
   }
 
-  if(m_midButtonPressed || m_rightButtonPressed) {
+  else if(m_rightButtonPressed) {
+    if(m_clickedAtom) {
+      // Draw arrows coming out of the atom
+      double renderRadius = widget->radius(m_clickedAtom);
+      renderRadius += 0.04;
+      glEnable(GL_BLEND);
+      glDisable(GL_LIGHTING);
+      glDepthMask(GL_FALSE);
+      glColor4f(1.0, 1.0, 0.3, 0.7);
+      //Color(1.0, 1.0, 0.3, 0.7).applyAsMaterials();
+
+      // Set up the axes and some vectors to work with
+      Vector3d xAxis = widget->camera()->backtransformedXAxis();
+      Vector3d yAxis = widget->camera()->backtransformedYAxis();
+      Vector3d zAxis = widget->camera()->backtransformedZAxis();
+      Vector3d v;
+
+      // Horizontal arrow, pointing left
+      v = m_clickedAtom->pos() + renderRadius*zAxis;
+      glBegin(GL_QUAD_STRIP);
+      glVertex3dv((v + 0.05*yAxis).array());
+      glVertex3dv((v - 0.05*yAxis).array());
+      v += 0.6*renderRadius * xAxis;
+      glVertex3dv((v + 0.05*yAxis).array());
+      glVertex3dv((v - 0.05*yAxis).array());
+      glEnd();
+      glBegin(GL_TRIANGLES);
+      glVertex3dv((v + 0.1*yAxis).array());
+      glVertex3dv((v - 0.1*yAxis).array());
+      glVertex3dv((v + 0.2*renderRadius*xAxis).array());
+      glEnd();
+      // Horizontal arrow, pointing right
+      v = m_clickedAtom->pos() + renderRadius*zAxis;
+      glBegin(GL_QUAD_STRIP);
+      glVertex3dv((v - 0.05*yAxis).array());
+      glVertex3dv((v + 0.05*yAxis).array());
+      v -= 0.6*renderRadius * xAxis;
+      glVertex3dv((v - 0.05*yAxis).array());
+      glVertex3dv((v + 0.05*yAxis).array());
+      glEnd();
+      glBegin(GL_TRIANGLES);
+      glVertex3dv((v - 0.1*yAxis).array());
+      glVertex3dv((v + 0.1*yAxis).array());
+      glVertex3dv((v - 0.2*renderRadius*xAxis).array());
+      glEnd();
+      // Vertical arrow, pointing up
+      v = m_clickedAtom->pos() + renderRadius*zAxis;
+      glBegin(GL_QUAD_STRIP);
+      glVertex3dv((v - 0.05*xAxis).array());
+      glVertex3dv((v + 0.05*xAxis).array());
+      v += 0.6*renderRadius * yAxis;
+      glVertex3dv((v - 0.05*xAxis).array());
+      glVertex3dv((v + 0.05*xAxis).array());
+      glEnd();
+      glBegin(GL_TRIANGLES);
+      glVertex3dv((v - 0.1*xAxis).array());
+      glVertex3dv((v + 0.1*xAxis).array());
+      glVertex3dv((v + 0.2*renderRadius*yAxis).array());
+      glEnd();
+      // Vertical arrow, pointing down
+      v = m_clickedAtom->pos() + renderRadius*zAxis;
+      glBegin(GL_QUAD_STRIP);
+      glVertex3dv((v + 0.05*xAxis).array());
+      glVertex3dv((v - 0.05*xAxis).array());
+      v -= 0.6*renderRadius * yAxis;
+      glVertex3dv((v + 0.05*xAxis).array());
+      glVertex3dv((v - 0.05*xAxis).array());
+      glEnd();
+      glBegin(GL_TRIANGLES);
+      glVertex3dv((v + 0.1*xAxis).array());
+      glVertex3dv((v - 0.1*xAxis).array());
+      glVertex3dv((v - 0.2*renderRadius*yAxis).array());
+      glEnd();
+/*      for(int i = 0; i <= TESS_LEVEL; i++) {
+        double alpha = angle_start + (static_cast<double>(i) / TESS_LEVEL)
+                                   * (angle_end - angle_start);
+        v = cos(alpha) * xAxis + sin(alpha) * zAxis;
+        v1 = v - 0.1  * yAxis;
+        v2 = v + 0.1  * yAxis;
+        glNormal3dv(v.array());
+        glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
+        glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
+      } */
+
+      glDisable(GL_BLEND);
+      glEnable(GL_LIGHTING);
+      glDepthMask(GL_TRUE);
+    }
+    else
+    {
+      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
+      widget->painter()->drawSphere(widget->center(), 0.10);
+    }
+  }
+
+  else if(m_midButtonPressed) {
     if(m_clickedAtom) {
       double renderRadius = widget->radius(m_clickedAtom);
       renderRadius += 0.10;
