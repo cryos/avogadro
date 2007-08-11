@@ -6,7 +6,7 @@
 <body>
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 20<br>
-No Issues Found! ...as of August 05 2007 13:13:16</p>
+Total Issues = 7 ...as of August 11 2007 12:48:53</p>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>okay!</b>
@@ -29,7 +29,35 @@ No Issues Found! ...as of August 05 2007 13:13:16</p>
 <li>Check for C++ ctors that should be declared 'explicit'... 
 <b>okay!</b>
 <li>Check validity of i18n calls... 
-<b>okay!</b>
+<b>OOPS! 7 issues found!</b>
+<ul>
+<li>	../libavogadro/src: &gt;&gt;&gt;&gt;&gt; ../libavogadro/src/engines/bsdysettingswidget.ui
+</li>
+<li>	../libavogadro/src: reported ambiguous message by translators; use context call to explain what it refers to line#13
+</li>
+<li>	../libavogadro/src: &gt;&gt;&gt;&gt;&gt; ../libavogadro/src/engines/labelsettingswidget.ui
+</li>
+<li>	../libavogadro/src: reported ambiguous message by translators; use context call to explain what it refers to line#19,72,117
+</li>
+<li>	../libavogadro/src: &gt;&gt;&gt;&gt;&gt; ../libavogadro/src/engines/spheresettingswidget.ui
+</li>
+<li>	../libavogadro/src: reported ambiguous message by translators; use context call to explain what it refers to line#13
+</li>
+<li>	../libavogadro/src: &gt;&gt;&gt;&gt;&gt; ../libavogadro/src/tools/periodictabledialog.ui
+</li>
+<li>	../libavogadro/src: reported ambiguous message by translators; use context call to explain what it refers to line#850
+</li>
+<li>	../libavogadro/src: single adjective as message, probably ambiguous; use context call to explain what it refers to line#361
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Make the translators&#39; job easier and detect problems in the usage
+	of the i18n() calls. When the fix is not clear, check the Techbase
+	article at
+	<a href="http://techbase.kde.org/Development/Tutorials/Localization/i18n_Kr
+	azy">http://techbase.kde.org/Development/Tutorials/Localization/i18n_Kr
+	azy</a> for more information.</p>
+</li>
+
 <li>Check for proper include directives... 
 <b>okay!</b>
 <li>Check for inline methods in public classes... 
