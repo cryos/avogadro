@@ -41,7 +41,7 @@ namespace Avogadro {
    * @brief A node of a tree used to represent a molecule in a skeletal-like structure.
    * @author Shahzad Ali, Ross Braithwaite, James Bunt
    *
-   * This class represents the a node in a particular tree structure.  It holds
+   * This class represents a node in a particular tree structure.  It holds
    * an Atom and pointers to any number of child nodes.
    */
   class Node : public QObject
@@ -191,22 +191,24 @@ namespace Avogadro {
       Node *m_endNode;  //A temporary tree.
 
     private:
-      /*
-       * <TODO>
+      /**
+       * Recursively populates the tree, where the Node node is the root
+       * node to start from.
+       * It makes sure not to form loops.
        *
-       * @param mol <TODO>
-       * @param node <TODO>
-       * @param bond <TODO>
+       * @param mol The molecule to form the tree for.
+       * @param node The root node to form the tree from.
+       * @param bond The bond at which the root node atom exists.
        */
       void recursivePopulate(Molecule* mol, Node* node, Bond* bond);
 
-      /*
-       * <TODO>
-       *
-       * @param n <TODO>
-       * @param x <TODO>
-       * @param y <TODO>
-       * @param z <TODO>
+      /**
+       * Recursively translates the Atoms attached to Node n in the skeleton by
+       * the given location.
+       * @param n The node atom and the atoms attached to it to translates.
+       * @param x New x location
+       * @param y New y location
+       * @param z New z location
        */
       void recursiveTranslate(Node* n, double x, double y, double z);
 

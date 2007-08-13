@@ -401,49 +401,49 @@ namespace Avogadro {
   {
     public:
       //!Constructor
-      /*
-       * <TODO>
+      /**
+       * Creates an undo command.
        *
-       * @param molecule <TODO>
-       * @param parent <TODO>
+       * @param molecule The molecule to store for undoing.
+       * @param parent The parent undo command, or nothing.
        */
       BondCentricMoveCommand(Molecule *molecule, QUndoCommand *parent = 0);
 
       //!Constructor
-      /*
-       * <TODO>
+      /**
+       * Creates an undo command.
        *
-       * @param molecule <TODO>
-       * @param atom <TODO>
-       * @param pos <TODO>
-       * @param parent <TODO>
+       * @param molecule The molecule to store for undoing.
+       * @param atom The atom that has been moved.
+       * @param pos The new position of the atom.
+       * @param parent The parent undo command or null.
        */
       BondCentricMoveCommand(Molecule *molecule, Atom *atom,
                              Eigen::Vector3d pos, QUndoCommand *parent = 0);
 
-      /*
-       * <TODO>
+      /**
+       * Redo move.
        */
       void redo();
 
-      /*
-       * <TODO>
+      /**
+       * Undo move
        */
       void undo();
 
-      /*
-       * <TODO>
+      /**
+       * returns if undo commands are merged together to one command.
        *
-       * @param command <TODO>
+       * @param command undo command to merge
        *
-       * @return <TODO>
+       * @return false
        */
       bool mergeWith(const QUndoCommand * command);
 
-      /*
-       * <TODO>
+      /**
+       * returns id of this undo command
        *
-       * @return <TODO>
+       * @return id of this undo command
        */
       int id() const;
 
