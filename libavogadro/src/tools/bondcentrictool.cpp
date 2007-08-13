@@ -721,6 +721,8 @@ bool BondCentricTool::paint(GLWidget *widget)
                       QString::number(m_selectedBond->GetLength(), 10, 1) +
                       QString::fromUtf8(" Å (Angstrom)");
 
+      glColor4f(1.0, 1.0, 1.0, 1.0);
+      widget->painter()->setColor(1.0, 1.0, 1.0, 1.0);
       widget->painter()->drawText(QPoint(5, widget->height() - 25), length);
 
       if (m_rightButtonPressed && (m_clickedAtom == begin || m_clickedAtom == end)) {
@@ -1011,6 +1013,8 @@ void BondCentricTool::drawAngleSector(GLWidget *widget, Eigen::Vector3d origin,
                                     Vector3d(0, 0, 0), u);
 
   QString angle = QString::number(uvAngle, 10, 1) + QString::fromUtf8("°");
+  glColor4f(1.0, 1.0, 1.0, 1.0);
+  widget->painter()->setColor(1.0, 1.0, 1.0, 1.0);
   widget->painter()->drawText(point + origin, angle);
 
   glEnable(GL_BLEND);
