@@ -35,6 +35,7 @@
 #include <QList>
 #include <QString>
 
+class QStandardItemModel;
 namespace Avogadro {
 
   class GamessExtension : public QObject, public Extension
@@ -75,8 +76,12 @@ namespace Avogadro {
 
       GamessEfpMatchDialog *matchesDialog(Molecule *molecule, GLWidget *widget, GamessEfpMatchDialog::Type type);
 
+      QStandardItemModel *m_efpModel;
+
     private Q_SLOTS:
       void dockWidgetDestroyed();
+
+      void efpWidgetAccepted();
 
   };
 

@@ -24,6 +24,9 @@
 
 #include "gamessefpmatchdialog.h"
 
+#include <openbabel/generic.h>
+
+using namespace OpenBabel;
 namespace Avogadro
 {
 
@@ -54,6 +57,7 @@ namespace Avogadro
     {
       setWindowTitle(tr("QM Matches"));
     }
+    m_type = type;
 
     m_widget = widget;
     m_molecule = molecule;
@@ -92,7 +96,39 @@ namespace Avogadro
       m_widget->setSelected(primitives, false);
     }
   }
+
+  void GamessEfpMatchDialog::accept()
+  {
+
+    QDialog::accept();
+  }
+
+  void GamessEfpMatchDialog::reject()
+  {
+    QDialog::reject();
+  }
+
+  QModelIndexList GamessEfpMatchDialog::selectedIndexes() const
+  {
+    return ui.efpList->selectionModel()->selectedIndexes();
+  }
+
+  QString GamessEfpMatchDialog::groupName() const
+  {
+    return ui.groupLine->text();
+  }
+
+  Molecule *GamessEfpMatchDialog::molecule() const
+  {
+    return m_molecule;
+  }
+
+  GamessEfpMatchDialog::Type GamessEfpMatchDialog::type() const
+  {
+    return m_type;
+  }
 }
+
 
 
 #include "gamessefpmatchdialog.moc"

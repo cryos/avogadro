@@ -52,14 +52,24 @@ namespace Avogadro
 
       ~GamessEfpMatchDialog();
 
+      QString groupName() const;
+      QModelIndexList selectedIndexes() const;
+      Molecule *molecule() const;
+      Type type() const;
+
     private:
       Ui::GamessEfpMatchDialog ui;
 
       Molecule *m_molecule;
       GLWidget *m_widget;
 
+      Type m_type;
+
     public Q_SLOTS:
       void efpSelected(const QItemSelection &selected, const QItemSelection &deselected);
+
+      void accept();
+      void reject();
 
   };
 

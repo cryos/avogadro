@@ -31,6 +31,7 @@
 
 #include <QDockWidget>
 #include <QPushButton>
+#include <QStandardItemModel>
 #include <QTreeView>
 #include <QVBoxLayout>
 
@@ -51,7 +52,8 @@ namespace Avogadro
   };
 
   GamessExtension::GamessExtension( QObject *parent ) : QObject( parent ), m_inputDialog( NULL ), m_inputData( NULL ), m_dockWidget( 0 ),
-                                    m_efpDialog(0), m_qmDialog(0)
+                                    m_efpDialog(0), m_qmDialog(0),
+                                        m_efpModel(new QStandardItemModel())
   {
     Action *action = new Action( this );
     action->setText( "Input Deck Generator" );
@@ -70,6 +72,7 @@ namespace Avogadro
     action->setMenuPath( "&Tools>GAMESS" );
     m_actions.append( action );
     action->setData( QMAction );
+
   }
 
   GamessExtension::~GamessExtension()
@@ -100,7 +103,9 @@ namespace Avogadro
       QVBoxLayout *layout = new QVBoxLayout();
 
       QTreeView *view= new QTreeView();
+      view->header()->setVisible( false );
       layout->addWidget( view );
+      view->setModel(m_efpModel);
 
       widget->setLayout( layout );
       m_dockWidget->setWidget( widget );
@@ -157,6 +162,7 @@ namespace Avogadro
         {
           m_qmDialog->show();
           m_qmDialog->raise();
+
         }
         break;
     }
@@ -286,18 +292,102 @@ namespace Avogadro
 
       }
 
-      GamessEfpMatchDialog *efpDialog = new GamessEfpMatchDialog(model, molecule, widget, type);
+      GamessEfpMatchDialog *efpDialog = new GamessEfpMatchDialog(model, molecule, widget, type, widget);
 
+      connect(efpDialog, SIGNAL(accepted()), this, SLOT(efpWidgetAccepted()));
+      efpDialog->setAttribute(Qt::WA_DeleteOnClose);
       efpDialog->show();
 
-      return efpDialog;
+      return 0;
     }
 
     return 0;
   }
 
+  void GamessExtension::efpWidgetAccepted()
+  {
+    GamessEfpMatchDialog *efpDialog = qobject_cast<GamessEfpMatchDialog *>(sender());
+
+    QModelIndexList selectedIndexes = efpDialog->selectedIndexes();
+    if(selectedIndexes.size())
+    {
+      QString groupName = efpDialog->groupName();
+      if(!groupName.size())
+      {
+        groupName = tr("Group Name");
+      }
+
+      Molecule *molecule = efpDialog->molecule();
+      GamessEfpMatchDialog::Type type = efpDialog->type();
+
+      QStandardItem *rootItem = new QStandardItem();
+      rootItem->setText(groupName + " (" + tr(type ? "qm" : "efp") + ")");
+
+      foreach(QModelIndex index, selectedIndexes)
+      {
+        QVector<int> atoms = index.data(Qt::UserRole + 1).value<QVector<int> >();
+        foreach(int idx, atoms)
+        {
+          Atom *atom = static_cast<Atom *>(molecule->GetAtom(idx));
+
+          OBSetData *gamessData;
+          if(!atom->HasData("GAMESS"))
+          {
+            gamessData = new OBSetData();
+            gamessData->SetAttribute("GAMESS");
+            atom->SetData(gamessData);
+          }
+          else
+          {
+            gamessData = static_cast<OBSetData *>(atom->GetData("GAMESS"));
+          }
+
+          OBPairData *efpGroup;
+          if(atom->GetData("EFPGroup"))
+          {
+            // EFP Data Already Set!
+            continue;
+          }
+          else
+          {
+            efpGroup = new OBPairData();
+            efpGroup->SetAttribute("EFPGroup");
+            efpGroup->SetValue(groupName.toStdString());
+          }
+
+          OBPairData *efpType;
+          if(atom->GetData("EFPType"))
+          {
+            delete efpGroup;
+            continue;
+          }
+          else
+          {
+            efpType = new OBPairData();
+            efpType->SetAttribute("EFPType");
+            efpType->SetValue( type ? "qm" : "efp" );
+          }
+
+          gamessData->AddData( efpGroup );
+          gamessData->AddData( efpType );
+
+        }
+
+        QStandardItem *item = new QStandardItem();
+        item->setData(qVariantFromValue(atoms));
+        item->setText(index.data().toString());
+
+        rootItem->appendRow(item);
+      }
+      m_efpModel->appendRow(rootItem);
+      if(m_dockWidget)
+      {
+        m_dockWidget->show();
+      }
+    }
+  }
 }
 
 #include "gamessextension.moc"
 
-Q_EXPORT_PLUGIN2( gamessextension, Avogadro::GamessExtensionFactory )
+Q_EXPORT_PLUGIN2( gamessextension, Avogadro::GamessExtensionFactory );

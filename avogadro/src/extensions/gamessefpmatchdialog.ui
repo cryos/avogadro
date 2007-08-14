@@ -1,6 +1,9 @@
 <ui version="4.0" >
  <class>GamessEfpMatchDialog</class>
  <widget class="QDialog" name="GamessEfpMatchDialog" >
+  <property name="windowModality" >
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -11,6 +14,9 @@
   </property>
   <property name="windowTitle" >
    <string>EFP Matches</string>
+  </property>
+  <property name="modal" >
+   <bool>true</bool>
   </property>
   <layout class="QGridLayout" >
    <item row="0" column="0" >
