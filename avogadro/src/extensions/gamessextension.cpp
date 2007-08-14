@@ -52,8 +52,8 @@ namespace Avogadro
   };
 
   GamessExtension::GamessExtension( QObject *parent ) : QObject( parent ), m_inputDialog( NULL ), m_inputData( NULL ), m_dockWidget( 0 ),
-                                    m_efpDialog(0), m_qmDialog(0),
-                                        m_efpModel(new QStandardItemModel())
+      m_efpModel( new QStandardItemModel() ),
+      m_efpDialog( 0 ), m_qmDialog( 0 )
   {
     Action *action = new Action( this );
     action->setText( "Input Deck Generator" );
@@ -77,16 +77,6 @@ namespace Avogadro
 
   GamessExtension::~GamessExtension()
   {
-    if(m_efpDialog)
-    {
-      m_efpDialog->close();
-    }
-
-    if(m_qmDialog)
-    {
-      m_qmDialog->close();
-    }
-
   }
 
   QList<Action *> GamessExtension::actions() const
@@ -105,7 +95,7 @@ namespace Avogadro
       QTreeView *view= new QTreeView();
       view->header()->setVisible( false );
       layout->addWidget( view );
-      view->setModel(m_efpModel);
+      view->setModel( m_efpModel );
 
       widget->setLayout( layout );
       m_dockWidget->setWidget( widget );
@@ -143,23 +133,23 @@ namespace Avogadro
         }
         break;
       case EFPAction:
-        if(!m_efpDialog)
-        {
+        if ( !m_efpDialog ) {
           m_efpDialog = matchesDialog( molecule, widget, GamessEfpMatchDialog::EFPType );
-        }
-        else
-        {
+          m_widgetSelected.insert( widget, widget->selectedPrimitives() );
+          m_dialogWidgets.insert( m_efpDialog, widget );
+          m_dialogMolecules.insert( m_efpDialog, molecule );
+        } else {
           m_efpDialog->show();
           m_efpDialog->raise();
         }
         break;
       case QMAction:
-        if(!m_qmDialog)
-        {
+        if ( !m_qmDialog ) {
           m_qmDialog = matchesDialog( molecule, widget, GamessEfpMatchDialog::QMType );
-        }
-        else
-        {
+          m_widgetSelected.insert( widget, widget->selectedPrimitives() );
+          m_dialogWidgets.insert( m_qmDialog, widget );
+          m_dialogMolecules.insert( m_qmDialog, molecule );
+        } else {
           m_qmDialog->show();
           m_qmDialog->raise();
 
@@ -217,6 +207,7 @@ namespace Avogadro
       }
     } // end looping over bonds
 
+    // get the SMARTS pattern
     string pattern = conv.WriteString( &selectedMolecule );
     pattern.erase( pattern.find_first_of( " \t\n\r" ) );
 
@@ -227,165 +218,213 @@ namespace Avogadro
 
     if ( sp.Match( *molecule ) ) {
       QStandardItemModel *model = new QStandardItemModel();
+      QModelIndex selectedIndex;
 
       vector< vector<int> > maplist = sp.GetUMapList();
 
-      for ( vector< vector<int> >::iterator it1 = maplist.begin(); it1 != maplist.end(); it1++ )
-      {
+      for ( vector< vector<int> >::iterator it1 = maplist.begin(); it1 != maplist.end(); it1++ ) {
 
-        QVector<int> matches = QVector<int>::fromStdVector(*it1);
+        QVector<int> matches = QVector<int>::fromStdVector( *it1 );
 
         QString text;
         bool valid = true;
         bool first = true;
-        foreach(int i, matches)
-        {
-          OBAtom *atom = molecule->GetAtom(i);
+        bool selected = false;
+        foreach( int i, matches ) {
+          Atom *atom = static_cast<Atom *>(molecule->GetAtom( i ));
 
-          if(!first) {
-            text.append(tr(", "));
+          // if this matches our original atom
+          if(!selected && selectedPrimitives.contains(atom)) {
+            selected = true;
           }
-          else
-          {
+
+          if ( !first ) {
+            text.append( tr( ", " ) );
+          } else {
             first = false;
           }
 
-          text.append(QString::number(i));
+          text.append( QString::number( i ) );
 
-          FOR_NBORS_OF_ATOM( a, atom )
-          {
+          FOR_NBORS_OF_ATOM( a, atom ) {
             // all connected atoms must also be in our match
             // see if each neighbor is a hydrogen or another match
-            if(a->IsHydrogen())
-            {
-              if(!first) {
-                text.append(tr(", "));
+            if ( a->IsHydrogen() ) {
+              if ( !first ) {
+                text.append( tr( ", " ) );
               }
               int idx = a->GetIdx();
-              text.append(QString::number(idx));
-              matches.append(idx);
-            }
-            else if( !matches.contains( a->GetIdx()) )
-            {
+              text.append( QString::number( idx ) );
+              matches.append( idx );
+            } else if ( !matches.contains( a->GetIdx() ) ) {
               valid = false;
               break;
             }
           }
 
-          if(!valid) {
+          if ( !valid ) {
             break;
           }
-
-
         }
 
-        if(valid)
-        {
+        if ( valid ) {
           QStandardItem *item = new QStandardItem();
 
-          item->setText(text);
-          item->setEditable(false);
-          item->setData(qVariantFromValue(matches));
+          item->setText( text );
+          item->setEditable( false );
+          item->setData( qVariantFromValue( matches ) );
 
-          model->appendRow(item);
+          model->appendRow( item );
+
+          if(!selectedIndex.isValid() && selected)
+          {
+            selectedIndex = model->indexFromItem(item);
+          }
         }
 
       }
 
-      GamessEfpMatchDialog *efpDialog = new GamessEfpMatchDialog(model, molecule, widget, type, widget);
+      GamessEfpMatchDialog *efpDialog = new GamessEfpMatchDialog( model, type, widget );
 
-      connect(efpDialog, SIGNAL(accepted()), this, SLOT(efpWidgetAccepted()));
-      efpDialog->setAttribute(Qt::WA_DeleteOnClose);
+      efpDialog->select( selectedIndex );
+      efpDialog->setAttribute( Qt::WA_DeleteOnClose );
+
+      connect( efpDialog, SIGNAL( accepted( GamessEfpMatchDialog::Type, QString, QList<QVector<int> > ) ),
+               this, SLOT( efpWidgetAccepted( GamessEfpMatchDialog::Type, QString, QList<QVector<int> > ) ) );
+      connect( efpDialog, SIGNAL( finished(int) ), this, SLOT(efpWidgetDone() ) );
+      connect( efpDialog, SIGNAL( selectionChanged( QList<QVector<int> > ) ),
+               this, SLOT( efpWidgetSelected( QList<QVector<int> > ) ) );
       efpDialog->show();
 
-      return 0;
+      return efpDialog;
     }
 
     return 0;
   }
 
-  void GamessExtension::efpWidgetAccepted()
+  void GamessExtension::efpWidgetSelected( const QList<QVector<int> > &groups )
   {
-    GamessEfpMatchDialog *efpDialog = qobject_cast<GamessEfpMatchDialog *>(sender());
+    GamessEfpMatchDialog *dialog = qobject_cast<GamessEfpMatchDialog *>( sender() );
 
-    QModelIndexList selectedIndexes = efpDialog->selectedIndexes();
-    if(selectedIndexes.size())
-    {
-      QString groupName = efpDialog->groupName();
-      if(!groupName.size())
-      {
-        groupName = tr("Group Name");
-      }
+    GLWidget *widget = m_dialogWidgets.value( dialog );
+    Molecule *molecule = m_dialogMolecules.value( dialog );
 
-      Molecule *molecule = efpDialog->molecule();
-      GamessEfpMatchDialog::Type type = efpDialog->type();
-
-      QStandardItem *rootItem = new QStandardItem();
-      rootItem->setText(groupName + " (" + tr(type ? "qm" : "efp") + ")");
-
-      foreach(QModelIndex index, selectedIndexes)
-      {
-        QVector<int> atoms = index.data(Qt::UserRole + 1).value<QVector<int> >();
-        foreach(int idx, atoms)
-        {
-          Atom *atom = static_cast<Atom *>(molecule->GetAtom(idx));
-
-          OBSetData *gamessData;
-          if(!atom->HasData("GAMESS"))
-          {
-            gamessData = new OBSetData();
-            gamessData->SetAttribute("GAMESS");
-            atom->SetData(gamessData);
-          }
-          else
-          {
-            gamessData = static_cast<OBSetData *>(atom->GetData("GAMESS"));
-          }
-
-          OBPairData *efpGroup;
-          if(atom->GetData("EFPGroup"))
-          {
-            // EFP Data Already Set!
-            continue;
-          }
-          else
-          {
-            efpGroup = new OBPairData();
-            efpGroup->SetAttribute("EFPGroup");
-            efpGroup->SetValue(groupName.toStdString());
-          }
-
-          OBPairData *efpType;
-          if(atom->GetData("EFPType"))
-          {
-            delete efpGroup;
-            continue;
-          }
-          else
-          {
-            efpType = new OBPairData();
-            efpType->SetAttribute("EFPType");
-            efpType->SetValue( type ? "qm" : "efp" );
-          }
-
-          gamessData->AddData( efpGroup );
-          gamessData->AddData( efpType );
-
-        }
-
-        QStandardItem *item = new QStandardItem();
-        item->setData(qVariantFromValue(atoms));
-        item->setText(index.data().toString());
-
-        rootItem->appendRow(item);
-      }
-      m_efpModel->appendRow(rootItem);
-      if(m_dockWidget)
-      {
-        m_dockWidget->show();
+    QList<Primitive *> primitives;
+    foreach( QVector<int> group, groups ) {
+      qDebug() << "efpWidgetSelected : " << group;
+      foreach( int idx, group ) {
+        Atom *atom = static_cast<Atom *>( molecule->GetAtom( idx ) );
+        primitives.append( atom );
       }
     }
+
+    widget->clearSelected();
+    widget->setSelected( primitives, true );
+    widget->update();
+
   }
+
+  void GamessExtension::efpWidgetAccepted( const GamessEfpMatchDialog::Type &type, const QString &name, const QList<QVector<int> > &groups )
+  {
+    GamessEfpMatchDialog *dialog = qobject_cast<GamessEfpMatchDialog *>( sender() );
+
+    Molecule *molecule = m_dialogMolecules.value( dialog );
+
+    QString groupName = name;
+    if ( !groupName.size() ) {
+      groupName = tr( "Group Name" );
+    }
+
+    QStandardItem *rootItem = new QStandardItem();
+    rootItem->setText( groupName + " (" + tr( type ? "qm" : "efp" ) + ")" );
+
+    foreach( QVector<int> group, groups ) {
+      QString groupString;
+      bool first = true;
+
+      foreach( int idx, group ) {
+        Atom *atom = static_cast<Atom *>( molecule->GetAtom( idx ) );
+
+        if ( !first ) {
+          groupString.append( tr( ", " ) );
+        } else {
+          first = false;
+        }
+        groupString.append( QString::number( idx ) );
+
+        OBSetData *gamessData;
+        if ( !atom->HasData( "GAMESS" ) ) {
+          gamessData = new OBSetData();
+          gamessData->SetAttribute( "GAMESS" );
+          atom->SetData( gamessData );
+        } else {
+          gamessData = static_cast<OBSetData *>( atom->GetData( "GAMESS" ) );
+        }
+
+        OBPairData *efpGroup;
+        if ( atom->GetData( "EFPGroup" ) ) {
+          // EFP Data Already Set!
+          continue;
+        } else {
+          efpGroup = new OBPairData();
+          efpGroup->SetAttribute( "EFPGroup" );
+          efpGroup->SetValue( groupName.toStdString() );
+        }
+
+        OBPairData *efpType;
+        if ( atom->GetData( "EFPType" ) ) {
+          delete efpGroup;
+          continue;
+        } else {
+          efpType = new OBPairData();
+          efpType->SetAttribute( "EFPType" );
+          efpType->SetValue( type ? "qm" : "efp" );
+        }
+
+        gamessData->AddData( efpGroup );
+        gamessData->AddData( efpType );
+
+      }
+
+      QStandardItem *item = new QStandardItem();
+      item->setData( qVariantFromValue( group ) );
+      item->setText( groupString );
+
+      rootItem->appendRow( item );
+    }
+
+    m_efpModel->appendRow( rootItem );
+    if ( m_dockWidget ) {
+      m_dockWidget->show();
+    }
+
+  }
+
+  void GamessExtension::efpWidgetDone()
+  {
+    GamessEfpMatchDialog *dialog = qobject_cast<GamessEfpMatchDialog *>( sender() );
+
+    GLWidget *widget = m_dialogWidgets.value(dialog);
+    qDebug() << m_widgetSelected.value(widget);
+    widget->clearSelected();
+    widget->setSelected( m_widgetSelected.value( widget ), true );
+    m_widgetSelected.remove(widget);
+
+    m_dialogWidgets.remove(dialog);
+    m_dialogMolecules.remove(dialog);
+
+    if(dialog == m_efpDialog)
+    {
+      m_efpDialog = 0;
+    }
+
+    if(dialog == m_qmDialog)
+    {
+      m_qmDialog = 0;
+    }
+
+  }
+
 }
 
 #include "gamessextension.moc"

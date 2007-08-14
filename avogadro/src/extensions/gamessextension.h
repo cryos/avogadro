@@ -71,17 +71,23 @@ namespace Avogadro {
       QList<Action *> m_actions;
       QDockWidget * m_dockWidget;
 
+      QStandardItemModel *m_efpModel;
+
       GamessEfpMatchDialog *m_efpDialog;
       GamessEfpMatchDialog *m_qmDialog;
 
-      GamessEfpMatchDialog *matchesDialog(Molecule *molecule, GLWidget *widget, GamessEfpMatchDialog::Type type);
+      QMap<GamessEfpMatchDialog *, GLWidget *> m_dialogWidgets;
+      QMap<GamessEfpMatchDialog *, Molecule *> m_dialogMolecules;
+      QMap<GLWidget *, QList<Primitive *> > m_widgetSelected;
 
-      QStandardItemModel *m_efpModel;
+      GamessEfpMatchDialog *matchesDialog(Molecule *molecule, GLWidget *widget, GamessEfpMatchDialog::Type type);
 
     private Q_SLOTS:
       void dockWidgetDestroyed();
 
-      void efpWidgetAccepted();
+      void efpWidgetAccepted(const GamessEfpMatchDialog::Type &type, const QString &name, const QList<QVector<int> > &groups);
+      void efpWidgetSelected(const QList<QVector<int> > &groups);
+      void efpWidgetDone();
 
   };
 

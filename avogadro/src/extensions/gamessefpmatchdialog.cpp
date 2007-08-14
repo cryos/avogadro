@@ -30,75 +30,61 @@ using namespace OpenBabel;
 namespace Avogadro
 {
 
-  GamessEfpMatchDialog::GamessEfpMatchDialog(QAbstractItemModel *model,
-                                             Molecule *molecule,
-                                             GLWidget *widget,
-                                             GamessEfpMatchDialog::Type type,
-                                             QWidget *parent,
-                                             Qt::WindowFlags f)
-      : QDialog(parent, f)
+  GamessEfpMatchDialog::GamessEfpMatchDialog( QAbstractItemModel *model,
+      GamessEfpMatchDialog::Type type,
+      QWidget *parent,
+      Qt::WindowFlags f )
+      : QDialog( parent, f )
   {
 
-    // delete the dialog if the model is destroyed.
-    connect(molecule, SIGNAL(destroyed()), this, SLOT(close()));
-    connect(molecule, SIGNAL(destroyed()), this, SLOT(deleteLater()));
-    connect(widget, SIGNAL(destroyed()), this, SLOT(close()));
-    connect(widget, SIGNAL(destroyed()), this, SLOT(deleteLater()));
-
-    ui.setupUi(this);
-    ui.efpList->setModel(model);
+    ui.setupUi( this );
+    ui.groupList->setModel( model );
 //
     // delete the model when the dialog is destroyed.
-    connect(this, SIGNAL(destroyed()), model, SLOT(deleteLater()));
-    connect(ui.efpList->selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
-          this, SLOT(efpSelected(QItemSelection, QItemSelection)));
+    connect( this, SIGNAL( destroyed() ), model, SLOT( deleteLater() ) );
+    connect( ui.groupList->selectionModel(), SIGNAL( selectionChanged( QItemSelection, QItemSelection ) ),
+             this, SLOT( efpSelected( QItemSelection, QItemSelection ) ) );
 
-    if(type == GamessEfpMatchDialog::QMType)
-    {
-      setWindowTitle(tr("QM Matches"));
+    if ( type == GamessEfpMatchDialog::QMType ) {
+      setWindowTitle( tr( "QM Matches" ) );
     }
     m_type = type;
 
-    m_widget = widget;
-    m_molecule = molecule;
   }
 
 
   GamessEfpMatchDialog::~GamessEfpMatchDialog()
   {}
 
-  void GamessEfpMatchDialog::efpSelected(const QItemSelection &selected,
-                                        const QItemSelection &deselected)
+  void GamessEfpMatchDialog::efpSelected( const QItemSelection &, const QItemSelection & )
   {
-    foreach(QModelIndex index, selected.indexes())
-    {
-      QList<Primitive *> primitives;
-      QVector<int> atoms = index.data(Qt::UserRole + 1).value<QVector<int> >();
+    QModelIndexList indexes = ui.groupList->selectionModel()->selectedIndexes();
 
-      foreach(int idx, atoms)
-      {
-        Atom *atom  = static_cast<Atom *>(m_molecule->GetAtom(idx));
-        primitives.append(atom);
-      }
-      m_widget->setSelected(primitives, true);
+    QList<QVector<int> > selectedGroups;
+
+    foreach( QModelIndex index, indexes ) {
+      QVector<int> group = index.data( Qt::UserRole + 1 ).value<QVector<int> >();
+      selectedGroups.append( group );
     }
 
-    foreach(QModelIndex index, deselected.indexes())
-    {
-      QList<Primitive *> primitives;
-      QVector<int> atoms = index.data(Qt::UserRole + 1).value<QVector<int> >();
+    emit selectionChanged( selectedGroups );
 
-      foreach(int idx, atoms)
-      {
-        Atom *atom  = static_cast<Atom *>(m_molecule->GetAtom(idx));
-        primitives.append(atom);
-      }
-      m_widget->setSelected(primitives, false);
-    }
   }
 
   void GamessEfpMatchDialog::accept()
   {
+    QModelIndexList indexes = ui.groupList->selectionModel()->selectedIndexes();
+
+    if ( indexes.size() ) {
+      QList<QVector<int> > groups;
+
+      foreach( QModelIndex index, indexes ) {
+        QVector<int> group = index.data( Qt::UserRole + 1 ).value<QVector<int> >();
+        groups.append( group );
+      }
+
+      emit accepted( m_type, ui.groupLine->text(), groups );
+    }
 
     QDialog::accept();
   }
@@ -108,25 +94,11 @@ namespace Avogadro
     QDialog::reject();
   }
 
-  QModelIndexList GamessEfpMatchDialog::selectedIndexes() const
+  void GamessEfpMatchDialog::select(const QModelIndex & index, QItemSelectionModel::SelectionFlags command)
   {
-    return ui.efpList->selectionModel()->selectedIndexes();
+    ui.groupList->selectionModel()->select(index, command);
   }
 
-  QString GamessEfpMatchDialog::groupName() const
-  {
-    return ui.groupLine->text();
-  }
-
-  Molecule *GamessEfpMatchDialog::molecule() const
-  {
-    return m_molecule;
-  }
-
-  GamessEfpMatchDialog::Type GamessEfpMatchDialog::type() const
-  {
-    return m_type;
-  }
 }
 
 

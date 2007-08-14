@@ -46,8 +46,7 @@ namespace Avogadro
         QMType,
       };
 
-      GamessEfpMatchDialog(QAbstractItemModel *model, Molecule *molecule, GLWidget *widget,
-                           Type = EFPType,
+      GamessEfpMatchDialog(QAbstractItemModel *model, Type = EFPType,
                            QWidget *parent = 0, Qt::WindowFlags f = 0);
 
       ~GamessEfpMatchDialog();
@@ -66,10 +65,18 @@ namespace Avogadro
       Type m_type;
 
     public Q_SLOTS:
-      void efpSelected(const QItemSelection &selected, const QItemSelection &deselected);
-
       void accept();
       void reject();
+
+      void select(const QModelIndex & index, QItemSelectionModel::SelectionFlags command = QItemSelectionModel::Select);
+
+    private Q_SLOTS:
+      void efpSelected( const QItemSelection &selected, const QItemSelection &deselected );
+
+    Q_SIGNALS:
+      void selectionChanged(const QList<QVector<int> > &groups);
+      void accepted(const GamessEfpMatchDialog::Type &type,
+                    const QString &name, const QList<QVector<int> > &groups);
 
   };
 

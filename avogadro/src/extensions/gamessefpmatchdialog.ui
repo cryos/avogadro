@@ -33,7 +33,7 @@
     <widget class="QLineEdit" name="groupLine" />
    </item>
    <item row="1" column="0" colspan="2" >
-    <widget class="QListView" name="efpList" >
+    <widget class="QListView" name="groupList" >
      <property name="selectionMode" >
       <enum>QAbstractItemView::MultiSelection</enum>
      </property>

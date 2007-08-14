@@ -63,6 +63,7 @@ int main(int argc, char *argv[])
 
   QStringList files = app.arguments();
 
+  qDebug() << files;
   if (files.size() > 1) {
     QPoint p(100, 100), offset(40,40);
 //     foreach(QString file, files)
