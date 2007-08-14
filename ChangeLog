@@ -1,3 +1,9 @@
+2007-08-13  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* libavogadro/src/glwidget.cpp: Refactored clearSelection to clearSelected
+	in order to preserve some clarity.  Needs another refactor at sometime to
+	clearSelectedPrimitives I think.
+
 2007-08-10  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/tools/navigatotool.cpp: Added visual representation
 	of atom centred translation. Needs extra features adding to the

@@ -20,8 +20,12 @@ include_directories(
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
 ### gamess
-set(gamessextension_SRCS gamessextension.cpp gamessinputdialog.cpp gamessinputdata.cpp)
-qt4_wrap_ui(gamessextension_UIS_H gamessinputdialog.ui)
+set(gamessextension_SRCS gamessextension.cpp
+  gamessinputdialog.cpp
+  gamessinputdata.cpp
+  gamessefpmatchdialog.cpp
+)
+qt4_wrap_ui(gamessextension_UIS_H gamessinputdialog.ui gamessefpmatchdialog.ui)
 qt4_automoc(${gamessextension_SRCS})
 ADD_LIBRARY(gamessextension SHARED ${gamessextension_SRCS} ${gamessextension_UIS_H})
 TARGET_LINK_LIBRARIES(gamessextension

@@ -76,7 +76,7 @@ using namespace OpenBabel;
               matchedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
             }
 
-          widget->clearSelection();
+          widget->clearSelected();
           widget->setSelected(matchedAtoms, true);
           widget->update();
         } // end matches

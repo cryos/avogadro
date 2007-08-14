@@ -1083,7 +1083,7 @@ namespace Avogadro {
     }
   }
 
-  void GLWidget::clearSelection()
+  void GLWidget::clearSelected()
   {
     d->selectedPrimitives.clear();
   }

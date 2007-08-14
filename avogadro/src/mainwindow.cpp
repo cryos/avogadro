@@ -575,7 +575,7 @@ namespace Avogadro
 
   void MainWindow::selectNone()
   {
-    d->glWidget->clearSelection();
+    d->glWidget->clearSelected();
     d->glWidget->update();
   }
 

@@ -98,7 +98,7 @@ namespace Avogadro {
 
   void PasteCommand::redo()
   {
-    m_widget->clearSelection();
+    m_widget->clearSelected();
     // save the current number of atoms -- we'll select all new ones
     unsigned int currentNumAtoms = m_molecule->NumAtoms();
     *m_molecule += m_pastedMolecule;
@@ -115,7 +115,7 @@ namespace Avogadro {
   void PasteCommand::undo()
   {
     // We can't easily save the previous selection, but it would be nice
-    m_widget->clearSelection();
+    m_widget->clearSelected();
     *m_molecule = m_originalMolecule;
     m_molecule->update();
   }

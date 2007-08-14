@@ -24,6 +24,7 @@
 #define __GAMESSEXTENSION_H
 
 #include "gamessinputdialog.h"
+#include "gamessefpmatchdialog.h"
 
 #include <openbabel/mol.h>
 
@@ -69,7 +70,10 @@ namespace Avogadro {
       QList<Action *> m_actions;
       QDockWidget * m_dockWidget;
 
-      void findMatches(Molecule *molecule, GLWidget *widget);
+      GamessEfpMatchDialog *m_efpDialog;
+      GamessEfpMatchDialog *m_qmDialog;
+
+      GamessEfpMatchDialog *matchesDialog(Molecule *molecule, GLWidget *widget, GamessEfpMatchDialog::Type type);
 
     private Q_SLOTS:
       void dockWidgetDestroyed();

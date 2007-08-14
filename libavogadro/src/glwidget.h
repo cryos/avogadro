@@ -373,7 +373,7 @@ namespace Avogadro {
 
       /** Deselect all objects
        */
-      void clearSelection();
+      void clearSelected();
 
       /** \return true if the Primitive is selected
        */

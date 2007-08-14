@@ -27,6 +27,7 @@
 #include <avogadro/glwidget.h>
 
 #include <openbabel/obiter.h>
+#include <openbabel/obconversion.h>
 
 #include <QDockWidget>
 #include <QPushButton>
@@ -49,7 +50,8 @@ namespace Avogadro
     QMAction
   };
 
-  GamessExtension::GamessExtension( QObject *parent ) : QObject( parent ), m_inputDialog( NULL ), m_inputData( NULL ), m_dockWidget( 0 )
+  GamessExtension::GamessExtension( QObject *parent ) : QObject( parent ), m_inputDialog( NULL ), m_inputData( NULL ), m_dockWidget( 0 ),
+                                    m_efpDialog(0), m_qmDialog(0)
   {
     Action *action = new Action( this );
     action->setText( "Input Deck Generator" );
@@ -71,7 +73,18 @@ namespace Avogadro
   }
 
   GamessExtension::~GamessExtension()
-  {}
+  {
+    if(m_efpDialog)
+    {
+      m_efpDialog->close();
+    }
+
+    if(m_qmDialog)
+    {
+      m_qmDialog->close();
+    }
+
+  }
 
   QList<Action *> GamessExtension::actions() const
   {
@@ -91,6 +104,7 @@ namespace Avogadro
 
       widget->setLayout( layout );
       m_dockWidget->setWidget( widget );
+      m_dockWidget->setVisible( false );
 
       connect( m_dockWidget, SIGNAL( destroyed() ), this, SLOT( dockWidgetDestroyed ) );
     }
@@ -124,17 +138,162 @@ namespace Avogadro
         }
         break;
       case EFPAction:
+        if(!m_efpDialog)
+        {
+          m_efpDialog = matchesDialog( molecule, widget, GamessEfpMatchDialog::EFPType );
+        }
+        else
+        {
+          m_efpDialog->show();
+          m_efpDialog->raise();
+        }
+        break;
       case QMAction:
-        findMatches(molecule, widget);
+        if(!m_qmDialog)
+        {
+          m_qmDialog = matchesDialog( molecule, widget, GamessEfpMatchDialog::QMType );
+        }
+        else
+        {
+          m_qmDialog->show();
+          m_qmDialog->raise();
+        }
         break;
     }
 
     return 0;
   }
 
-  void GamessExtension::findMatches(Molecule *molecule, GLWidget *widget)
+  GamessEfpMatchDialog *GamessExtension::matchesDialog( Molecule *molecule, GLWidget *widget, GamessEfpMatchDialog::Type type )
   {
     qDebug() << "Find Matches";
+
+    if ( !widget->selectedPrimitives().size() ) {
+      QMessageBox::information( 0, tr( "No Atoms Selected" ),
+                                tr( "You must make a selection!" ) );
+      return 0;
+    }
+
+    OBConversion conv;
+
+    if ( !conv.SetOutFormat( "smi" ) ) {
+      QMessageBox::critical( 0, tr( "SMILES Conversion Unavailable" ),
+                             tr( "SMILES Format Conversion Not Available!" ) );
+      return 0;
+    }
+
+    QList<Primitive *> selectedPrimitives = widget->selectedPrimitives();
+    Molecule selectedMolecule;
+
+    int numAtoms = 0;
+    std::map<OBAtom*, OBAtom*> AtomMap; // key is from old, value from new
+    foreach( Primitive *p, selectedPrimitives ) {
+      if ( p->type() == Primitive::AtomType ) {
+        OBAtom *selected = static_cast<Atom*>( p );
+        selectedMolecule.InsertAtom( *selected );
+        AtomMap[selected] = selectedMolecule.GetAtom( selectedMolecule.NumAtoms() );
+        numAtoms++;
+      }
+    }
+
+    // use the atom map to map bonds
+    int numBonds = 0;
+    map<OBAtom*, OBAtom*>::iterator posBegin, posEnd;
+    FOR_BONDS_OF_MOL( b, molecule ) {
+      posBegin = AtomMap.find( b->GetBeginAtom() );
+      posEnd = AtomMap.find( b->GetEndAtom() );
+      // make sure both bonds are in the map (i.e. selected)
+      if ( posBegin != AtomMap.end() && posEnd != AtomMap.end() ) {
+        selectedMolecule.AddBond(( posBegin->second )->GetIdx(),
+                                 ( posEnd->second )->GetIdx(),
+                                 b->GetBO(), b->GetFlags() );
+        numBonds++;
+      }
+    } // end looping over bonds
+
+    string pattern = conv.WriteString( &selectedMolecule );
+    pattern.erase( pattern.find_first_of( " \t\n\r" ) );
+
+//     QMessageBox::information( 0, tr( "" ), "Got Pattern : " + QString::fromStdString( pattern ) );
+
+    OBSmartsPattern sp;
+    sp.Init( pattern );
+
+    if ( sp.Match( *molecule ) ) {
+      QStandardItemModel *model = new QStandardItemModel();
+
+      vector< vector<int> > maplist = sp.GetUMapList();
+
+      for ( vector< vector<int> >::iterator it1 = maplist.begin(); it1 != maplist.end(); it1++ )
+      {
+
+        QVector<int> matches = QVector<int>::fromStdVector(*it1);
+
+        QString text;
+        bool valid = true;
+        bool first = true;
+        foreach(int i, matches)
+        {
+          OBAtom *atom = molecule->GetAtom(i);
+
+          if(!first) {
+            text.append(tr(", "));
+          }
+          else
+          {
+            first = false;
+          }
+
+          text.append(QString::number(i));
+
+          FOR_NBORS_OF_ATOM( a, atom )
+          {
+            // all connected atoms must also be in our match
+            // see if each neighbor is a hydrogen or another match
+            if(a->IsHydrogen())
+            {
+              if(!first) {
+                text.append(tr(", "));
+              }
+              int idx = a->GetIdx();
+              text.append(QString::number(idx));
+              matches.append(idx);
+            }
+            else if( !matches.contains( a->GetIdx()) )
+            {
+              valid = false;
+              break;
+            }
+          }
+
+          if(!valid) {
+            break;
+          }
+
+
+        }
+
+        if(valid)
+        {
+          QStandardItem *item = new QStandardItem();
+
+          item->setText(text);
+          item->setEditable(false);
+          item->setData(qVariantFromValue(matches));
+
+          model->appendRow(item);
+        }
+
+      }
+
+      GamessEfpMatchDialog *efpDialog = new GamessEfpMatchDialog(model, molecule, widget, type);
+
+      efpDialog->show();
+
+      return efpDialog;
+    }
+
+    return 0;
   }
 
 }
