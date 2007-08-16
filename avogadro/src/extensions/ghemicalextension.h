@@ -63,18 +63,17 @@ namespace Avogadro {
       virtual QString description() const { return QObject::tr("Ghemical Plugin"); };
 
       /** @return a menu path for the extension's actions */
-      virtual QString menuPath() const
-      { return QObject::tr("&Tools>&Molecular Mechanics"); }
+      virtual QString menuPath(QAction *action) const;
 
       //! Perform Action
-      virtual QList<Action *> actions() const;
-      virtual QUndoCommand* performAction(Action *action, Molecule *molecule,
+      virtual QList<QAction *> actions() const;
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
                                           GLWidget *widget, QTextEdit *textEdit);
       //@}
 
     private:
       OpenBabel::OBForceField* m_forceField;
-      QList<Action *> m_actions;
+      QList<QAction *> m_actions;
       ForceFieldDialog *m_Dialog;
   };
 

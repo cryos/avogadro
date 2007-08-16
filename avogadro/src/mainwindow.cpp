@@ -1031,12 +1031,12 @@ namespace Avogadro
           Extension *extension = factory->createInstance( this );
           qDebug() << "Found Extension: " << extension->name() << " - " << extension->description();
 
-          QList<Action *>actions = extension->actions();
+          QList<QAction *>actions = extension->actions();
 
-          foreach( Action *action, actions ) {
+          foreach( QAction *action, actions ) {
             // Here's the fun part, we go customize our menus
             // Add these actions to the menu described by the menuPath
-            QString menuPathString = action->menuPath();
+            QString menuPathString = extension->menuPath(action);
             QMenu *path = NULL;
 
             if ( menuPathString.size() ) {
@@ -1098,7 +1098,7 @@ namespace Avogadro
 
   void MainWindow::actionTriggered()
   {
-    Action *action = qobject_cast<Action *>( sender() );
+    QAction *action = qobject_cast<QAction *>( sender() );
     if ( action ) {
       Extension *extension = dynamic_cast<Extension *>( action->parent() );
 

@@ -44,31 +44,28 @@ namespace Avogadro
 
   GhemicalExtension::GhemicalExtension( QObject *parent ) : QObject( parent )
   {
-    Action *action;
+    QAction *action;
     m_forceField = OBForceField::FindForceField( "Ghemical" );
     m_Dialog = new ForceFieldDialog;
 
-    action = new Action( this );
+    action = new QAction( this );
     action->setText( "Optimize Geometry" );
     action->setData(OptimizeGeometryIndex);
     m_actions.append( action );
 
-    action = new Action( this );
+    action = new QAction( this );
     action->setText( "Calculate Energy" );
-    action->setMenuPath( "&Tools>Molecular Mechanics" );
     action->setData(CalculateEnergyIndex);
     m_actions.append( action );
 
-    action = new Action( this );
+    action = new QAction( this );
     action->setText( "Rotor Search" );
-    action->setMenuPath( "&Tools>Molecular Mechanics" );
     action->setData(RotorSearchIndex);
     m_actions.append( action );
 
     if ( m_forceField ) { // make sure we can actually find and run it!
-      action = new Action( this );
+      action = new QAction( this );
       action->setText( "Setup Force Field..." );
-      action->setMenuPath( "&Tools>Molecular Mechanics" );
       action->setData(SetupForceFieldIndex);
       m_actions.append( action );
     }
@@ -78,12 +75,27 @@ namespace Avogadro
   GhemicalExtension::~GhemicalExtension()
   {}
 
-  QList<Action *> GhemicalExtension::actions() const
+  QList<QAction *> GhemicalExtension::actions() const
   {
     return m_actions;
   }
 
-  QUndoCommand* GhemicalExtension::performAction( Action *action, Molecule *molecule,
+  QString GhemicalExtension::menuPath(QAction *action) const
+  {
+    int i = action->data().toInt();
+    switch(i) {
+      case CalculateEnergyIndex:
+      case RotorSearchIndex:
+      case SetupForceFieldIndex:
+        return tr("&Tools>Molecular Mechanics");
+        break;
+      default:
+        break;
+    };
+    return QString();
+  }
+
+  QUndoCommand* GhemicalExtension::performAction( QAction *action, Molecule *molecule,
       GLWidget *, QTextEdit *textEdit )
   {
     QUndoCommand *undo = NULL;

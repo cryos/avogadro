@@ -55,21 +55,18 @@ namespace Avogadro
       m_efpModel( new QStandardItemModel() ),
       m_efpDialog( 0 ), m_qmDialog( 0 )
   {
-    Action *action = new Action( this );
+    QAction *action = new QAction( this );
     action->setText( "Input Deck Generator" );
-    action->setMenuPath( "&Tools>GAMESS" );
     m_actions.append( action );
     action->setData( InputDeckAction );
 
-    action = new Action( this );
+    action = new QAction( this );
     action->setText( "EFP Selection" );
-    action->setMenuPath( "&Tools>GAMESS" );
     m_actions.append( action );
     action->setData( EFPAction );
 
-    action = new Action( this );
+    action = new QAction( this );
     action->setText( "QM Selection" );
-    action->setMenuPath( "&Tools>GAMESS" );
     m_actions.append( action );
     action->setData( QMAction );
 
@@ -79,9 +76,14 @@ namespace Avogadro
   {
   }
 
-  QList<Action *> GamessExtension::actions() const
+  QList<QAction *> GamessExtension::actions() const
   {
     return m_actions;
+  }
+
+  QString GamessExtension::menuPath(QAction *action) const
+  {
+    return tr("&Tools>GAMESS");
   }
 
   QDockWidget * GamessExtension::dockWidget()
@@ -112,7 +114,7 @@ namespace Avogadro
     m_dockWidget = 0;
   }
 
-  QUndoCommand* GamessExtension::performAction( Action *action, Molecule *molecule, GLWidget *widget, QTextEdit * )
+  QUndoCommand* GamessExtension::performAction( QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit * )
   {
 
     qDebug() << "Perform Action";

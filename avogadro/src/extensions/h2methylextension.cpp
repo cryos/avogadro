@@ -35,7 +35,7 @@ using namespace OpenBabel;
   namespace Avogadro {
     H2MethylExtension::H2MethylExtension(QObject *parent) : QObject(parent)
     {
-      Action *action = new Action(this);
+      QAction *action = new QAction(this);
       action->setText("Change H to Methyl");
       m_actions.append(action);
     }
@@ -44,12 +44,12 @@ using namespace OpenBabel;
     {
     }
 
-    QList<Action *> H2MethylExtension::actions() const
+    QList<QAction *> H2MethylExtension::actions() const
     {
       return m_actions;
     }
 
-    QUndoCommand* H2MethylExtension::performAction(Action *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
+    QUndoCommand* H2MethylExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
     {
       QUndoCommand *undo = 0;
       undo = new H2MethylCommand(molecule, widget);

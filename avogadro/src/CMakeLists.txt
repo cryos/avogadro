@@ -25,7 +25,6 @@ include(${QT_USE_FILE})
 
 set(avogadro_SRCS
     aboutdialog.cpp
-    action.cpp
     application.cpp
     editcommands.cpp
     enginelistview.cpp

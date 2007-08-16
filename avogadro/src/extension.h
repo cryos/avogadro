@@ -25,8 +25,6 @@
 #ifndef __EXTENSION_H
 #define __EXTENSION_H
 
-#include "action.h"
-
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
@@ -37,7 +35,6 @@
 #include <QTextEdit>
 #include <QVector>
 
-class QAction;
 class QDockWidget;
 class QUndoCommand;
 namespace Avogadro {
@@ -80,7 +77,12 @@ namespace Avogadro {
     /**
      * @return a list of actions which this widget can perform
      */
-    virtual QList<Action *> actions() const = 0;
+    virtual QList<QAction *> actions() const = 0;
+
+    /**
+     * @return the menu path for the specified action
+     */
+    virtual QString menuPath(QAction *action) const { Q_UNUSED(action); return QString(); }
 
     /**
      * @return a list of dock widgets associated with this extensions
@@ -95,7 +97,7 @@ namespace Avogadro {
      * feedback to the user)
      * @return an undo command for this action
      */
-    virtual QUndoCommand* performAction(Action *action, Molecule *molecule,
+    virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
                                         GLWidget *widget, QTextEdit *messages = NULL) = 0;
 
   };

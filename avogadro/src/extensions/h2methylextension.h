@@ -53,13 +53,13 @@ namespace Avogadro {
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("H2Methyl Plugin"); };
       //! Perform Action
-      virtual QList<Action *> actions() const;
-      virtual QUndoCommand* performAction(Action *action, Molecule *molecule,
+      virtual QList<QAction *> actions() const;
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
                                           GLWidget *widget, QTextEdit *messages=NULL);
       //@}
 
     private:
-      QList<Action *> m_actions;
+      QList<QAction *> m_actions;
   };
 
   class H2MethylExtensionFactory : public QObject, public ExtensionFactory

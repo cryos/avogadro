@@ -34,7 +34,7 @@ using namespace OpenBabel;
   namespace Avogadro {
     SmartsExtension::SmartsExtension(QObject *parent) : QObject(parent)
     {
-      Action *action = new Action(this);
+      QAction *action = new QAction(this);
       action->setText("Select SMARTS");
       m_actions.append(action);
     }
@@ -43,12 +43,12 @@ using namespace OpenBabel;
     {
     }
 
-    QList<Action *> SmartsExtension::actions() const
+    QList<QAction *> SmartsExtension::actions() const
     {
       return m_actions;
     }
 
-    QUndoCommand* SmartsExtension::performAction(Action *,
+    QUndoCommand* SmartsExtension::performAction(QAction *,
                                                  Molecule *molecule,
                                                  GLWidget *widget,
                                                  QTextEdit *)

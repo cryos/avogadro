@@ -31,7 +31,7 @@ using namespace OpenBabel;
 namespace Avogadro {
   UnitCellExtension::UnitCellExtension(QObject *parent) : QObject(parent), m_Widget(NULL)
   {
-    Action *action = new Action(this);
+    QAction *action = new QAction(this);
     action->setText("Unit Cell Parameters...");
     m_actions.append(action);
     m_Dialog = new UnitCellParamDialog(static_cast<QWidget*>(parent));
@@ -46,12 +46,12 @@ namespace Avogadro {
   {
   }
 
-  QList<Action *> UnitCellExtension::actions() const
+  QList<QAction *> UnitCellExtension::actions() const
   {
     return m_actions;
   }
 
-  QUndoCommand* UnitCellExtension::performAction(Action *,
+  QUndoCommand* UnitCellExtension::performAction(QAction *,
                                                  Molecule *molecule,
                                                  GLWidget *widget,
                                                  QTextEdit *)

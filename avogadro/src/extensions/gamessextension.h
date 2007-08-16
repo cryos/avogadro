@@ -56,19 +56,25 @@ namespace Avogadro {
       virtual QString description() const { return QObject::tr("GAMESS Input Deck Generator"); };
 
       //! Perform Action
-      virtual QList<Action *> actions() const;
+      virtual QList<QAction *> actions() const;
+
+      /**
+       * @return the menu path for the specified action
+       */
+      virtual QString menuPath(QAction *action) const;
+
 
       //! GAMESS Dock Widget
       virtual QDockWidget * dockWidget();
 
-      virtual QUndoCommand* performAction(Action *action, Molecule *molecule,
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
           GLWidget *widget, QTextEdit *messages=NULL);
       //@}
 
     private:
       GamessInputDialog *m_inputDialog;
       GamessInputData *m_inputData;
-      QList<Action *> m_actions;
+      QList<QAction *> m_actions;
       QDockWidget * m_dockWidget;
 
       QStandardItemModel *m_efpModel;
