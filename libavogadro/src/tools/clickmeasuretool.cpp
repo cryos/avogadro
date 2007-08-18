@@ -174,12 +174,12 @@ bool ClickMeasureTool::paint(GLWidget *widget)
         glColor3f(1.0,1.0,1.0);
         widget->painter()->drawText(angleLabelPos, QString("Angle:"));
         glColor3f(0.8, 0.8, 0.8);
-        widget->painter()->drawText(anglePos, QString::number(angle));
+        widget->painter()->drawText(anglePos, QString::number(angle, 10, 1) + QString::fromUtf8("°"));
         glColor3f(0.0,1.0,1.0);
-        widget->painter()->drawText(distancePos[1], QString::number(vector[1].norm()));
+        widget->painter()->drawText(distancePos[1], QString::number(vector[1].norm(), 10, 2) + QString::fromUtf8(" Å"));
       }
       glColor3f(1.0,1.0,0.0);
-      widget->painter()->drawText(distancePos[0], QString::number(vector[0].norm()));
+      widget->painter()->drawText(distancePos[0], QString::number(vector[0].norm(), 10, 2) + QString::fromUtf8(" Å"));
     }
 
 //     glPopMatrix();
