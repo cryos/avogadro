@@ -1,5 +1,7 @@
 2007-08-10  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/tools/clickmeasuretool.cpp: Added units to the output.
+	Also added the display of the angle sector under consideration with the
+	current selection of atoms.
 
 2007-08-13  Donald E. Curtis <dcurtis3@sourceforge.net>
 

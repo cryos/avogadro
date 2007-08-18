@@ -154,6 +154,7 @@ bool ClickMeasureTool::paint(GLWidget *widget)
 
       if(m_numSelectedAtoms == 3)
       {
+        // Then calculate the angle between the three selected atoms and display it
         vector[1] = m_selectedAtoms[2]->pos() - m_selectedAtoms[1]->pos();
 
         Vector3d normalizedVectors[2];
@@ -180,6 +181,43 @@ bool ClickMeasureTool::paint(GLWidget *widget)
       }
       glColor3f(1.0,1.0,0.0);
       widget->painter()->drawText(distancePos[0], QString::number(vector[0].norm(), 10, 2) + QString::fromUtf8(" Å"));
+
+      // If there are three atoms selected, draw the angle in question
+      if(m_numSelectedAtoms == 3)
+      {
+        Vector3d origin = m_selectedAtoms[1]->pos();
+        Vector3d d1 = m_selectedAtoms[0]->pos() - origin;
+        Vector3d d2 = m_selectedAtoms[2]->pos() - origin;
+        // The vector length is half the average vector length
+        double radius = (d1.norm()+d2.norm()) * 0.25;
+        // Adjust the length of u and v to the length calculated above.
+        d1 = (d1 / d1.norm()) * radius;
+        d2 = (d2 / d2.norm()) * radius;
+        if (angle < 1) return true;
+        // Vector perpindicular to both d1 and d2
+        Vector3d n = d1.cross(d2);
+
+        Vector3d xAxis = Vector3d(1, 0, 0);
+        Vector3d yAxis = Vector3d(0, 1, 0);
+
+        if (n.norm() < 1e-16)
+        {
+          Eigen::Vector3d A = d1.cross(xAxis);
+          Eigen::Vector3d B = d1.cross(yAxis);
+
+          n = A.norm() >= B.norm() ? A : B;
+        }
+
+        n = n / n.norm();
+        glEnable(GL_BLEND);
+        glDepthMask(GL_FALSE);
+        widget->painter()->setColor(0, 1.0, 0, 0.3);
+        widget->painter()->drawShadedSector(origin, m_selectedAtoms[0]->pos(), m_selectedAtoms[2]->pos(), radius);
+        glDepthMask(GL_TRUE);
+        glDisable(GL_BLEND);
+        widget->painter()->setColor(1.0, 1.0, 1.0, 1.0);
+        widget->painter()->drawArc(origin, m_selectedAtoms[0]->pos(), m_selectedAtoms[2]->pos(), radius, 1.0);
+      }
     }
 
 //     glPopMatrix();
