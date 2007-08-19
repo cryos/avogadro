@@ -287,43 +287,6 @@ namespace Avogadro {
       Primitive *computeClick(GLWidget *widget, const QPoint& p);
 
       /**
-       * Zooms the camera towards a given point by a given amount.
-       *
-       * @param goal The vector the camera will zoom towards.
-       * @param delta The amount to zoom.
-       */
-      void zoom(const Eigen::Vector3d &goal, double delta) const;
-
-      /**
-       * Translates the camera in relation to a given Vector3d based on movement
-       * in the mouse coordinate space between two given points.
-       *
-       * @param what What the camera is translating in relation to.
-       * @param from The point the mouse moved from.
-       * @param to The point the mouse moved to.
-       */
-      void translate(const Eigen::Vector3d &what, const QPoint &from, const QPoint &to) const;
-
-      /**
-       * Rotates the camera by given amounts around the X and Y axes that run through
-       * a given vector (the center of the rotation).
-       *
-       * @param center The vector the camera will rotate around.
-       * @param deltaX The amount to rotate in the X direction (about the Y axis).
-       * @param deltaY The amount to rotate in the Y direction (about the X axis).
-       */
-      void rotate(const Eigen::Vector3d &center, double deltaX, double deltaY) const;
-
-      /**
-       * Tilts the camera by a given amount around the Z axis running through a
-       * given vector (the center of the tilt).
-       *
-       * @param center The vector the camera will tilt around.
-       * @param delta The amount the camera will tilt about the Z axis.
-       */
-      void tilt(const Eigen::Vector3d &center, double delta) const;
-
-      /**
        * Connects this tool to the widget's ToolGroup so as to detect the signal
        * emitted when the tool changes.
        *

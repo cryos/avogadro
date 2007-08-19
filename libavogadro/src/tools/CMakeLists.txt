@@ -34,7 +34,7 @@ INSTALL(TARGETS drawtool DESTINATION ${DESTINATION_DIR})
 set(bondcentrictool_SRCS bondcentrictool.cpp)
 qt4_add_resources(bondcentrictool_RC_SRCS bondcentrictool.qrc)
 qt4_automoc(${bondcentrictool_SRCS})
-ADD_LIBRARY(bondcentrictool SHARED skeletontree.cpp quaternion.cpp
+ADD_LIBRARY(bondcentrictool SHARED skeletontree.cpp quaternion.cpp navigate.cpp
                             ${bondcentrictool_SRCS} ${bondcentrictool_RC_SRCS})
 TARGET_LINK_LIBRARIES(bondcentrictool
   ${OPENBABEL2_LIBRARIES}
@@ -60,11 +60,12 @@ INSTALL(TARGETS clickmeasuretool DESTINATION ${DESTINATION_DIR})
 set(selectrotatetool_SRCS selectrotatetool.cpp)
 qt4_add_resources(selectrotatetool_RC_SRCS selectrotatetool.qrc)
 qt4_automoc(${selectrotatetool_SRCS})
-ADD_LIBRARY(selectrotatetool SHARED ${selectrotatetool_SRCS} ${selectrotatetool_RC_SRCS})
+ADD_LIBRARY(selectrotatetool SHARED navigate.cpp
+	${selectrotatetool_SRCS} ${selectrotatetool_RC_SRCS})
 TARGET_LINK_LIBRARIES(selectrotatetool
 	${OPENBABEL2_LIBRARIES}
 	${QT_LIBRARIES}
-    ${OPENGL_LIBRARIES}
+	${OPENGL_LIBRARIES}
 	avogadro-lib
 )
 INSTALL(TARGETS selectrotatetool DESTINATION ${DESTINATION_DIR})
@@ -73,11 +74,12 @@ INSTALL(TARGETS selectrotatetool DESTINATION ${DESTINATION_DIR})
 set(navigatetool_SRCS navigatetool.cpp)
 qt4_add_resources(navigatetool_RC_SRCS navigatetool.qrc)
 qt4_automoc(${navigatetool_SRCS})
-ADD_LIBRARY(navigatetool SHARED ${navigatetool_SRCS} ${navigatetool_RC_SRCS})
+ADD_LIBRARY(navigatetool SHARED navigate.cpp
+	${navigatetool_SRCS} ${navigatetool_RC_SRCS})
 TARGET_LINK_LIBRARIES(navigatetool
 	${OPENBABEL2_LIBRARIES}
 	${QT_LIBRARIES}
-    ${OPENGL_LIBRARIES}
+	${OPENGL_LIBRARIES}
 	avogadro-lib
 )
 INSTALL(TARGETS navigatetool DESTINATION ${DESTINATION_DIR})

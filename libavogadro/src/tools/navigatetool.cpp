@@ -24,6 +24,7 @@
  **********************************************************************/
 
 #include "navigatetool.h"
+#include "navigate.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -58,7 +59,7 @@ NavigateTool::~NavigateTool()
 
 int NavigateTool::usefulness() const
 {
-  return 1000000;
+  return 2500000;
 }
 
 void NavigateTool::computeClickedAtom(const QPoint& p)
@@ -80,47 +81,6 @@ void NavigateTool::computeClickedAtom(const QPoint& p)
       return;
     }
   }
-}
-
-void NavigateTool::zoom( const Eigen::Vector3d &goal, double delta ) const
-{
-  Vector3d transformedGoal = m_glwidget->camera()->modelview() * goal;
-  double distanceToGoal = transformedGoal.norm();
-
-  double t = ZOOM_SPEED * delta;
-  const double minDistanceToGoal = 2.0 * CAMERA_NEAR_DISTANCE;
-  double u = minDistanceToGoal / distanceToGoal - 1.0;
-
-  if( t < u ) {
-    t = u;
-  }
-
-  m_glwidget->camera()->modelview().pretranslate( transformedGoal * t );
-}
-
-void NavigateTool::translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const
-{
-  Vector3d fromPos = m_glwidget->camera()->unProject(from, what);
-  Vector3d toPos = m_glwidget->camera()->unProject(to, what);
-  m_glwidget->camera()->translate( toPos - fromPos );
-}
-
-void NavigateTool::rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const
-{
-  Vector3d xAxis = m_glwidget->camera()->backtransformedXAxis();
-  Vector3d yAxis = m_glwidget->camera()->backtransformedYAxis();
-  m_glwidget->camera()->translate( center );
-  m_glwidget->camera()->rotate( deltaX * ROTATION_SPEED, yAxis );
-  m_glwidget->camera()->rotate( deltaY * ROTATION_SPEED, xAxis );
-  m_glwidget->camera()->translate( -center );
-}
-
-void NavigateTool::tilt( const Eigen::Vector3d &center, double delta ) const
-{
-  Vector3d zAxis = m_glwidget->camera()->backtransformedZAxis();
-  m_glwidget->camera()->translate( center );
-  m_glwidget->camera()->rotate( delta * ROTATION_SPEED, zAxis );
-  m_glwidget->camera()->translate( -center );
 }
 
 QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
@@ -178,7 +138,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
       // Atom centred rotation
       hAngle += deltaDragging.x();
       vAngle += deltaDragging.y();
-      rotate( m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y() );
+      Navigate::rotate(m_glwidget, m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y());
     }
   // On the Mac, either use a three-button mouse
   // or hold down the Option key (AltModifier in Qt notation)
@@ -186,10 +146,10 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
     {
       // Perform the rotation
-      tilt( m_clickedAtom->pos(), deltaDragging.x() );
+      Navigate::tilt(m_glwidget, m_clickedAtom->pos(), deltaDragging.x());
 
       // Perform the zoom toward clicked atom
-      zoom( m_clickedAtom->pos(), deltaDragging.y() );
+      Navigate::zoom(m_glwidget, m_clickedAtom->pos(), deltaDragging.y());
     }
     // On the Mac, either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
@@ -197,7 +157,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
     {
       // translate the molecule following mouse movement
-      translate( m_clickedAtom->pos(), m_lastDraggingPosition, event->pos() );
+      Navigate::translate(m_glwidget, m_clickedAtom->pos(), m_lastDraggingPosition, event->pos());
     }
   }
   else // Nothing clicked on
@@ -206,7 +166,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
         && event->modifiers() == Qt::NoModifier)
     {
       // rotation around the center of the molecule
-      rotate( m_glwidget->center(), deltaDragging.x(), deltaDragging.y() );
+      Navigate::rotate(m_glwidget, m_glwidget->center(), deltaDragging.x(), deltaDragging.y());
     }
   // On the Mac, either use a three-button mouse
   // or hold down the Option key (AltModifier in Qt notation)
@@ -214,10 +174,10 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
     {
       // Perform the rotation
-      tilt( m_glwidget->center(), deltaDragging.x() );
+      Navigate::tilt(m_glwidget, m_glwidget->center(), deltaDragging.x());
 
       // Perform the zoom toward molecule center
-      zoom( m_glwidget->center(), deltaDragging.y() );
+      Navigate::zoom(m_glwidget, m_glwidget->center(), deltaDragging.y());
     }
     // On the Mac, either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
@@ -225,7 +185,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
     {
       // translate the molecule following mouse movement
-      translate( m_glwidget->center(), m_lastDraggingPosition, event->pos() );
+      Navigate::translate(m_glwidget, m_glwidget->center(), m_lastDraggingPosition, event->pos());
     }
   }
 
@@ -242,12 +202,12 @@ QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
   if( m_clickedAtom )
   {
     // Perform the zoom toward clicked atom
-    zoom( m_clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta() );
+    Navigate::zoom(m_glwidget, m_clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
   }
   else
   {
     // Perform the zoom toward molecule center
-    zoom( m_glwidget->center(), - MOUSE_WHEEL_SPEED * event->delta() );
+    Navigate::zoom(m_glwidget, m_glwidget->center(), - MOUSE_WHEEL_SPEED * event->delta());
   }
   m_glwidget->update();
 
@@ -394,6 +354,22 @@ bool NavigateTool::paint(GLWidget *widget)
     }
   }
 
+  else if(m_midButtonPressed) {
+    if(m_clickedAtom) {
+      double renderRadius = widget->radius(m_clickedAtom);
+      renderRadius += 0.10;
+      glEnable( GL_BLEND );
+      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
+      widget->painter()->drawSphere(m_clickedAtom->pos(), renderRadius);
+      glDisable( GL_BLEND );
+    }
+    else
+    {
+      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
+      widget->painter()->drawSphere(widget->center(), 0.10);
+    }
+  }
+
   else if(m_rightButtonPressed) {
     if(m_clickedAtom) {
       // Draw arrows coming out of the atom
@@ -489,21 +465,6 @@ bool NavigateTool::paint(GLWidget *widget)
     }
   }
 
-  else if(m_midButtonPressed) {
-    if(m_clickedAtom) {
-      double renderRadius = widget->radius(m_clickedAtom);
-      renderRadius += 0.10;
-      glEnable( GL_BLEND );
-      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
-      widget->painter()->drawSphere(m_clickedAtom->pos(), renderRadius);
-      glDisable( GL_BLEND );
-    }
-    else
-    {
-      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
-      widget->painter()->drawSphere(widget->center(), 0.10);
-    }
-  }
   return true;
 }
 

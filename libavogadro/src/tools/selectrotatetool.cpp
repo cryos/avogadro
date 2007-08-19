@@ -2,6 +2,7 @@
   SelectRotateTool - Selection and Rotation Tool for Avogadro
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2007 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -23,6 +24,7 @@
  **********************************************************************/
 
 #include "selectrotatetool.h"
+#include "navigate.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -212,8 +214,6 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
 {
   QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
-  m_lastDraggingPosition = event->pos();
-
   if( ( event->pos() - m_initialDraggingPosition ).manhattanLength() > 2 )
     m_movedSinceButtonPressed = true;
 
@@ -221,28 +221,25 @@ QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *e
   {
     if( event->buttons() & Qt::LeftButton )
     {
-      // rotate
-      Vector3d xAxis = widget->camera()->backtransformedXAxis();
-      Vector3d yAxis = widget->camera()->backtransformedYAxis();
-
-      widget->camera()->translate( widget->center() );
-      widget->camera()->rotate( deltaDragging.y() * ROTATION_SPEED, xAxis );
-      widget->camera()->rotate( deltaDragging.x() * ROTATION_SPEED, yAxis );
-      widget->camera()->translate( - widget->center() );
+      // Rotation about the centre of the molecule
+      Navigate::rotate(widget, widget->center(), deltaDragging.x(), deltaDragging.y());
     }
     else if ( event->buttons() & Qt::RightButton )
     {
-      // translate
-      widget->camera()->pretranslate( Vector3d( deltaDragging.x() * ROTATION_SPEED,
-        deltaDragging.y() * ROTATION_SPEED,
-        0.0 ) );
+      // Translation about the centre of the molecule in the x and y axes
+      Navigate::translate(widget, widget->center(), m_lastDraggingPosition, event->pos());
     }
     else if ( event->buttons() & Qt::MidButton )
     {
-      // should be some sort of zoom / scaling
+      // Rotation about the centre of the molecule in the z axis
+      Navigate::tilt(widget, widget->center(), deltaDragging.x());
+
+      // Zoom toward the centre of the molecule
+      Navigate::zoom(widget, widget->center(), deltaDragging.y());
     }
   }
 
+  m_lastDraggingPosition = event->pos();
   widget->update();
 
   return 0;

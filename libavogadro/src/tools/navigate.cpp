@@ -1,0 +1,77 @@
+/**********************************************************************
+  Navigate - Navigation Functions for Avogadro
+
+  Copyright (C) 2007 by Marcus D. Hanwell
+
+  This file is part of the Avogadro molecular editor project.
+  For more information, see <http://avogadro.sourceforge.net/>
+
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  Avogadro is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+ **********************************************************************/
+
+#include "navigate.h"
+
+using namespace Avogadro;
+using namespace Eigen;
+
+Navigate::Navigate()
+{
+}
+
+Navigate::~Navigate()
+{
+}
+
+void Navigate::zoom(GLWidget *widget, const Eigen::Vector3d &goal, double delta)
+{
+  Vector3d transformedGoal = widget->camera()->modelview() * goal;
+  double distanceToGoal = transformedGoal.norm();
+
+  double t = ZOOM_SPEED * delta;
+  const double minDistanceToGoal = 2.0 * CAMERA_NEAR_DISTANCE;
+  double u = minDistanceToGoal / distanceToGoal - 1.0;
+
+  if(t < u) {
+    t = u;
+  }
+
+  widget->camera()->modelview().pretranslate(transformedGoal * t);
+}
+
+void Navigate::translate(GLWidget *widget, const Eigen::Vector3d &what, const QPoint &from, const QPoint &to)
+{
+  Vector3d fromPos = widget->camera()->unProject(from, what);
+  Vector3d toPos = widget->camera()->unProject(to, what);
+  widget->camera()->translate(toPos - fromPos);
+}
+
+void Navigate::rotate(GLWidget *widget, const Eigen::Vector3d &center, double deltaX, double deltaY)
+{
+  Vector3d xAxis = widget->camera()->backtransformedXAxis();
+  Vector3d yAxis = widget->camera()->backtransformedYAxis();
+  widget->camera()->translate(center);
+  widget->camera()->rotate(deltaX * ROTATION_SPEED, yAxis);
+  widget->camera()->rotate(deltaY * ROTATION_SPEED, xAxis);
+  widget->camera()->translate(-center);
+}
+
+void Navigate::tilt(GLWidget *widget, const Eigen::Vector3d &center, double delta)
+{
+  Vector3d zAxis = widget->camera()->backtransformedZAxis();
+  widget->camera()->translate(center);
+  widget->camera()->rotate(delta * ROTATION_SPEED, zAxis);
+  widget->camera()->translate(-center );
+}

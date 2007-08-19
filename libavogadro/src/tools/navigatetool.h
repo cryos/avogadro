@@ -41,11 +41,10 @@ namespace Avogadro {
 
   /**
    * @class NavigateTool
-   * @brief Port of Navigation from Kalzium
+   * @brief Navigation tool
    * @author Marcus D. Hanwell
    *
-   * This class is an attempt to port the navigation system in
-   * Kalzium to an Avogadro plugin.
+   * This class implements navigation around the scene.
    */
   class NavigateTool : public Tool
   {
@@ -93,10 +92,6 @@ namespace Avogadro {
       QPoint              m_lastDraggingPosition;
 
       void computeClickedAtom(const QPoint& p);
-      void zoom( const Eigen::Vector3d &goal, double delta ) const;
-      void translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const;
-      void rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const;
-      void tilt( const Eigen::Vector3d &center, double delta ) const;
   };
 
   class NavigateToolFactory : public QObject, public ToolFactory

@@ -28,6 +28,7 @@
 
 #include "bondcentrictool.h"
 #include "quaternion.h"
+#include "navigate.h"
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
@@ -207,55 +208,6 @@ Primitive *BondCentricTool::computeClick(GLWidget *widget, const QPoint& p)
   }
 
   return NULL;
-}
-
-// ##########  zoom  ##########
-
-void BondCentricTool::zoom(const Eigen::Vector3d &goal, double delta) const
-{
-  Vector3d transformedGoal = m_glwidget->camera()->modelview() * goal;
-  double distanceToGoal = transformedGoal.norm();
-
-  double t = ZOOM_SPEED * delta;
-  const double minDistanceToGoal = 2.0 * CAMERA_NEAR_DISTANCE;
-  double u = minDistanceToGoal / distanceToGoal - 1.0;
-
-  if (t < u) {
-    t = u;
-  }
-
-  m_glwidget->camera()->modelview().pretranslate( transformedGoal * t );
-}
-
-// ##########  translate  ##########
-
-void BondCentricTool::translate(const Eigen::Vector3d &what, const QPoint &from, const QPoint &to) const
-{
-  Vector3d fromPos = m_glwidget->camera()->unProject(from, what);
-  Vector3d toPos = m_glwidget->camera()->unProject(to, what);
-  m_glwidget->camera()->translate(toPos - fromPos);
-}
-
-// ##########  rotate  ##########
-
-void BondCentricTool::rotate(const Eigen::Vector3d &center, double deltaX, double deltaY) const
-{
-  Vector3d xAxis = m_glwidget->camera()->backtransformedXAxis();
-  Vector3d yAxis = m_glwidget->camera()->backtransformedYAxis();
-  m_glwidget->camera()->translate(center);
-  m_glwidget->camera()->rotate(deltaX * ROTATION_SPEED, yAxis);
-  m_glwidget->camera()->rotate(deltaY * ROTATION_SPEED, xAxis);
-  m_glwidget->camera()->translate(-center);
-}
-
-// ##########  tilt  ##########
-
-void BondCentricTool::tilt(const Eigen::Vector3d &center, double delta) const
-{
-  Vector3d zAxis = m_glwidget->camera()->backtransformedZAxis();
-  m_glwidget->camera()->translate(center);
-  m_glwidget->camera()->rotate(delta * ROTATION_SPEED, zAxis);
-  m_glwidget->camera()->translate(-center);
 }
 
 // ##########  mousePress  ##########
@@ -555,7 +507,7 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
     }
     else {
       // rotation around the center of the molecule
-      rotate(m_glwidget->center(), deltaDragging.x(), deltaDragging.y());
+      Navigate::rotate(m_glwidget, m_glwidget->center(), deltaDragging.x(), deltaDragging.y());
     }
   }
 #ifdef Q_WS_MAC
@@ -570,10 +522,10 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
     if (m_clickedAtom)
     {
       // Perform the rotation
-      tilt(m_clickedAtom->pos(), deltaDragging.x());
+      Navigate::tilt(m_glwidget, m_clickedAtom->pos(), deltaDragging.x());
 
       // Perform the zoom toward the center of a clicked atom
-      zoom(m_clickedAtom->pos(), deltaDragging.y());
+      Navigate::zoom(m_glwidget, m_clickedAtom->pos(), deltaDragging.y());
     }
     else if (m_clickedBond)
     {
@@ -587,18 +539,18 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
       Vector3d mid = begin->pos() + btoe * newLen;
 
       // Perform the rotation
-      tilt(mid, deltaDragging.x());
+      Navigate::tilt(m_glwidget, mid, deltaDragging.x());
 
       // Perform the zoom toward the centre of a clicked bond
-      zoom(mid, deltaDragging.y());
+      Navigate::zoom(m_glwidget, mid, deltaDragging.y());
     }
     else
     {
       // Perform the rotation
-      tilt(m_glwidget->center(), deltaDragging.x());
+      Navigate::tilt(m_glwidget, m_glwidget->center(), deltaDragging.x());
 
       // Perform the zoom toward molecule center
-      zoom(m_glwidget->center(), deltaDragging.y());
+      Navigate::zoom(m_glwidget, m_glwidget->center(), deltaDragging.y());
     }
   }
 #ifdef Q_WS_MAC
@@ -637,7 +589,7 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
     }
     else {
       // Translate the molecule following mouse movement.
-      translate(m_glwidget->center(), m_lastDraggingPosition, event->pos());
+      Navigate::translate(m_glwidget, m_glwidget->center(), m_lastDraggingPosition, event->pos());
     }
   }
 
@@ -662,7 +614,7 @@ QUndoCommand* BondCentricTool::wheel(GLWidget *widget, const QWheelEvent *event)
   {
     Atom *clickedAtom = (Atom*)clickedPrim;
     // Perform the zoom toward clicked atom
-    zoom(clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
+    Navigate::zoom(m_glwidget, clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
   }
   else if (clickedPrim && clickedPrim->type() == Primitive::BondType)
   {
@@ -678,11 +630,11 @@ QUndoCommand* BondCentricTool::wheel(GLWidget *widget, const QWheelEvent *event)
     Vector3d mid = begin->pos() + btoe * newLen;
 
     // Perform the zoom toward the centre of a clicked bond
-    zoom(mid, - MOUSE_WHEEL_SPEED * event->delta());
+    Navigate::zoom(m_glwidget, mid, - MOUSE_WHEEL_SPEED * event->delta());
   }
   else {
     // Perform the zoom toward molecule center
-    zoom(m_glwidget->center(), - MOUSE_WHEEL_SPEED * event->delta());
+    Navigate::zoom(m_glwidget, m_glwidget->center(), - MOUSE_WHEEL_SPEED * event->delta());
   }
 
   m_glwidget->update();
