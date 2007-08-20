@@ -1034,7 +1034,7 @@ namespace Avogadro {
       if(hit.type() == Primitive::AtomType)
         return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
       else if(hit.type() == Primitive::BondType)
-        return static_cast<Bond *>(molecule()->GetBond(hit.name()));
+        return static_cast<Bond *>(molecule()->GetBond(hit.name()-1));
     }
     return 0;
   }
@@ -1070,7 +1070,7 @@ namespace Avogadro {
     foreach( GLHit hit, chits )
     {
       if(hit.type() == Primitive::BondType)
-        return static_cast<Bond *>(molecule()->GetBond(hit.name()));
+        return static_cast<Bond *>(molecule()->GetBond(hit.name()-1));
     }
     return 0;
   }

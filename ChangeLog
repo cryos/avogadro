@@ -1,7 +1,7 @@
 2007-08-20  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/tools/glwidget.*: Added the computeClickedPrimitive/Atom/
 	Bond functions to the GLWidget class as these functions have been used in
-	several tools and are quite generic.
+	several tools and are quite generic. Fixed regression with bond picking.
 	
 	* libavogadro/src/tools/manipulatetool.*,
 	libavogadro/src/tools/bondcentrictool.*,
