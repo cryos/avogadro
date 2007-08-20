@@ -1,3 +1,13 @@
+2007-08-20  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/tools/glwidget.*: Added the computeClickedPrimitive/Atom/
+	Bond functions to the GLWidget class as these functions have been used in
+	several tools and are quite generic.
+	
+	* libavogadro/src/tools/manipulatetool.*,
+	libavogadro/src/tools/bondcentrictool.*,
+	libavogadro/src/tools/navigatetool.*: Ported to use the new computeClicked*
+	functions in GLWidget and removed the local implementations of them.
+
 2007-08-19  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/tools/navigate.*: Added a new navigation class with
 	static member functions to perform the navigation functions common to
