@@ -423,6 +423,84 @@ namespace Avogadro
     popName();
   }
 
+  void GLPainter::drawLine(const Eigen::Vector3d &start, const Eigen::Vector3d &end,
+                           double lineWidth)
+  {
+    // Draw a line between two points of the specified thickness
+    if(!d->isValid()) { return; }
+
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_CULL_FACE);
+
+    glLineWidth(lineWidth);
+    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+
+    // Draw the line
+    glBegin(GL_LINE_STRIP);
+    glVertex3d(start.x(), start.y(), start.z());
+    glVertex3d(end.x(), end.y(), end.z());
+    glEnd();
+
+    glPopAttrib();
+  }
+
+  void GLPainter::drawSpline(const QList<Eigen::Vector3d>& pts, double lineWidth)
+  {
+    // Draw a spline between two points of the specified thickness
+/*    if(!d->isValid()) { return; }
+
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_CULL_FACE);
+    glLineWidth(lineWidth);
+    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+
+    for (int i = 1; i < pts.size(); i++)
+    {
+
+      // Figure out our control points - right now it is a straight line...
+      Eigen::Vector3d start = pts[i-1];
+      Eigen::Vector3d end = pts[i];
+      Eigen::Vector3d axis = end - start;
+      Eigen::Vector3d startC = start + 0.25 * axis;
+      Eigen::Vector3d endC = end - 0.25 * axis;
+      Eigen::Vector3d p(0., 0., 0.);
+      double a = 0., b = 0.;
+
+      // Draw the spline
+      glBegin(GL_LINE_STRIP);
+      for (int i = 0; i <= 20; i++)
+      {
+        a = static_cast<double>(i) / 20.0;
+        b = 1.0 - a;
+        p = Eigen::Vector3d(start.x()*a*a*a + 3.0*startC.x()*a*a*b + 3.0*endC.x()*a*b*b + end.x()*b*b*b,
+                          start.y()*a*a*a + 3.0*startC.y()*a*a*b + 3.0*endC.y()*a*b*b + end.y()*b*b*b,
+                          start.z()*a*a*a + 3.0*startC.z()*a*a*b + 3.0*endC.z()*a*b*b + end.z()*b*b*b);
+        glVertex3dv(p.array());
+      }
+      glEnd();
+
+      glBegin(GL_POINTS);
+      glVertex3dv(start.array());
+      glVertex3dv(startC.array());
+      glVertex3dv(endC.array());
+      glVertex3dv(end.array());
+      glEnd();
+      glColor4f(0, 1, 0, 1);
+      glBegin(GL_LINES);
+      glVertex3dv(start.array());
+      glVertex3dv(startC.array());
+      glEnd();
+      glColor4f(0, 0, 1, 1);
+      glBegin(GL_LINES);
+      glVertex3dv(end.array());
+      glVertex3dv(endC.array());
+      glEnd();
+    }
+    glPopAttrib(); */
+  }
+
   void GLPainter::drawShadedSector(Eigen::Vector3d origin, Eigen::Vector3d direction1,
                                  Eigen::Vector3d direction2, double radius)
   {

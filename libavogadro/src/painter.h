@@ -45,18 +45,18 @@ namespace Avogadro
       /** Uses the primitive to set the type and name if the Paint Device is supports that.
         * @param primitive The primitive about to be drawn
         */
-      virtual void setName ( const Primitive *primitive ) = 0;
+      virtual void setName (const Primitive *primitive) = 0;
 
       /** Uses the primitive to set the type and name if the Paint Device is supports that.
         * @param type The primitive type about to be drawn
         * @param id The primitive id
         */
-      virtual void setName ( Primitive::Type type, int id ) = 0;
+      virtual void setName (Primitive::Type type, int id) = 0;
 
       /** Set the color to paint elements with.
         * @param color The color to be used for painting
       */
-      virtual void setColor ( const Color *color ) = 0;
+      virtual void setColor (const Color *color) = 0;
 
       /** Set the color to paint elements with where 0.0 is minimum and 1.0 is maximum
         * @param red component of the color
@@ -64,14 +64,14 @@ namespace Avogadro
         * @param blue component of the color
         * @param alpha component of the color
       */
-      virtual void setColor ( float red, float green, float blue, float alpha = 1.0 ) = 0;
+      virtual void setColor (float red, float green, float blue, float alpha = 1.0) = 0;
 
       /** Draws a sphere, leaving the Painter choose the appropriate detail level based on the
         * apparent radius (ratio of radius over distance) and the global quality setting.
         * @param center The position of the center of the sphere
         * @param radius The radius of the sphere
         */
-      virtual void drawSphere ( const Eigen::Vector3d & center, double radius ) = 0;
+      virtual void drawSphere (const Eigen::Vector3d & center, double radius) = 0;
 
       /** Draws a cylinder, leaving the Painter choose the appropriate detail level based on the
         * apparent radius (ratio of radius over distance) and the global quality setting.
@@ -79,8 +79,8 @@ namespace Avogadro
         * @param end2 The position of the second end of the cylinder
         * @param radius The radius, i.e. half-width of the cylinder
         */
-      virtual void drawCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
-                          double radius ) = 0;
+      virtual void drawCylinder (const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+                                 double radius) = 0;
 
       /** Draws a multiple cylinder (see below), leaving the Painter choose the appropriate
         * detail level based on the apparent radius (ratio of radius over distance) and the
@@ -103,8 +103,13 @@ namespace Avogadro
         * @param shift How far away from the central axis the cylinders are shifted.
         *              In other words, this influences the total width of multiple bonds.
         */
-      virtual void drawMultiCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
-                               double radius, int order, double shift ) = 0;
+      virtual void drawMultiCylinder (const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+                               double radius, int order, double shift) = 0;
+
+      virtual void drawLine(const Eigen::Vector3d &start, const Eigen::Vector3d &end,
+                            double lineWidth) = 0;
+
+      virtual void drawSpline(const QList<Eigen::Vector3d>& pts, double lineWidth) = 0;
 
       /** Draws a shaded sector of a circle.  The sector is defined by three vectors,
        * the center of the circle, and two vectors that define the lines going out
@@ -153,8 +158,8 @@ namespace Avogadro
        * @param lineWidth The thickness of the line the quadrilateral will be drawn with.
        */
       virtual void drawQuadrilateral(Eigen::Vector3d point1, Eigen::Vector3d point2,
-                             Eigen::Vector3d point3, Eigen::Vector3d point4,
-                             double lineWidth) = 0;
+                                     Eigen::Vector3d point3, Eigen::Vector3d point4,
+                                     double lineWidth) = 0;
 
       /** Draws text at a given window position, on top of the scene.
         * @note Calls to drawText methods must be enclosed between begin() and end().
@@ -169,7 +174,7 @@ namespace Avogadro
         * @sa begin(), drawText( const Eigen::Vector3d &, const QString &) const,
         *     drawText( const QPoint &, const QString & ) const
         */
-      virtual int drawText ( int x, int y, const QString &string ) const = 0;
+      virtual int drawText (int x, int y, const QString &string) const = 0;
 
       /** Draws text at a given window position, on top of the scene.
         * @note Calls to drawText methods must be enclosed between begin() and endText().
@@ -184,7 +189,7 @@ namespace Avogadro
         * @sa begin(), drawText( const Eigen::Vector3d &, const QString &) const,
         *     drawText( int, int, const QString & ) const
         */
-      virtual int drawText ( const QPoint& pos, const QString &string ) const = 0;
+      virtual int drawText (const QPoint& pos, const QString &string) const = 0;
 
       /** Draws text at a given scene position, inside the scene.
         * @note Calls to drawText methods must be enclosed between begin() and endText().
@@ -198,10 +203,8 @@ namespace Avogadro
         * @sa begin(), drawText( const QPoint&, const QString &) const,
         *     drawText( int, int, const QString & ) const
         */
-      virtual int drawText ( const Eigen::Vector3d & pos, const QString &string ) const = 0;
+      virtual int drawText (const Eigen::Vector3d & pos, const QString &string) const = 0;
 
-//      virtual void begin(PainterDevice *pd) = 0;
-//      virtual void end() = 0;
   };
 } // end namespace Avogadro
 

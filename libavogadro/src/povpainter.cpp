@@ -261,7 +261,7 @@ namespace Avogadro
 //      << "\tup <" << cameraY.x() << ", " << cameraY.y() << ", " << cameraY.z() << ">\n"
 //      << "\tdirection <" << cameraZ.x() << ", " << cameraZ.y() << ", " << cameraZ.z() << ">\n"
       << "\tlook_at <0, 0, 0>\n"
-      << "\tsky y\n}\n\n"
+//      << "\tsky y\n}\n\n"
       << "light_source {\n"
       << "\t<" << light.x() << ", " << light.y() << ", " << light.z() << ">\n"
       << "\tcolor rgb<1,1,1>\n"

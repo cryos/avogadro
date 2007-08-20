@@ -41,14 +41,14 @@ namespace Avogadro
   {
     friend class GLWidget;
     public:
-      GLPainter ( int quality=-1 );
+      GLPainter (int quality=-1);
       ~GLPainter();
 
       /** sets the global quality setting. This influences the detail level of the
         * geometric objects (spheres and cylinders). Values range from 0 to
         * PAINTER_GLOBAL_QUALITY_SETTINGS-1.
         */
-      void setQuality ( int quality );
+      void setQuality (int quality);
 
       /** @returns the current global quality setting.
         */
@@ -57,18 +57,18 @@ namespace Avogadro
       /** Uses the primitive to set the type and name if the Paint Device is supports that.
         * @param primitive The primitive about to be drawn
         */
-      void setName ( const Primitive *primitive );
+      void setName (const Primitive *primitive);
 
       /** Uses the primitive to set the type and name if the Paint Device is supports that.
         * @param type The primitive type about to be drawn
         * @param id The primitive id
         */
-      void setName ( Primitive::Type type, int id );
+      void setName (Primitive::Type type, int id);
 
       /** Set the color to paint elements with.
         * @param color The color to be used for painting
       */
-      void setColor ( const Color *color );
+      void setColor (const Color *color);
 
       /** Set the color to paint elements with where 0.0 is minimum and 1.0 is maximum
         * @param red component of the color
@@ -76,14 +76,14 @@ namespace Avogadro
         * @param blue component of the color
         * @param alpha component of the color
       */
-      void setColor ( float red, float green, float blue, float alpha = 1.0 );
+      void setColor (float red, float green, float blue, float alpha = 1.0);
 
       /** Draws a sphere, leaving the Painter choose the appropriate detail level based on the
         * apparent radius (ratio of radius over distance) and the global quality setting.
         * @param center The position of the center of the sphere
         * @param radius The radius of the sphere
         */
-      void drawSphere ( const Eigen::Vector3d & center, double radius );
+      void drawSphere (const Eigen::Vector3d & center, double radius);
 
       /** Draws a cylinder, leaving the Painter choose the appropriate detail level based on the
         * apparent radius (ratio of radius over distance) and the global quality setting.
@@ -91,8 +91,8 @@ namespace Avogadro
         * @param end2 The position of the second end of the cylinder
         * @param radius The radius, i.e. half-width of the cylinder
         */
-      void drawCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
-                          double radius );
+      void drawCylinder (const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+                         double radius);
 
       /** Draws a multiple cylinder (see below), leaving the Painter choose the appropriate
         * detail level based on the apparent radius (ratio of radius over distance) and the
@@ -115,8 +115,13 @@ namespace Avogadro
         * @param shift How far away from the central axis the cylinders are shifted.
         *              In other words, this influences the total width of multiple bonds.
         */
-      void drawMultiCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
-                               double radius, int order, double shift );
+      void drawMultiCylinder (const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
+                               double radius, int order, double shift);
+
+      void drawLine(const Eigen::Vector3d &start, const Eigen::Vector3d &end,
+                    double lineWidth);
+
+      void drawSpline(const QList<Eigen::Vector3d>& pts, double lineWidth);
 
       /** Draws a shaded sector of a circle.  The sector is defined by three vectors,
        * the center of the circle, and two vectors that define the lines going out
@@ -181,7 +186,7 @@ namespace Avogadro
         * @sa begin(), drawText( const Eigen::Vector3d &, const QString &) const,
         *     drawText( const QPoint &, const QString & ) const
         */
-      int drawText ( int x, int y, const QString &string ) const;
+      int drawText (int x, int y, const QString &string) const;
 
       /** Draws text at a given window position, on top of the scene.
         * @note Calls to drawText methods must be enclosed between begin() and endText().
@@ -196,7 +201,7 @@ namespace Avogadro
         * @sa begin(), drawText( const Eigen::Vector3d &, const QString &) const,
         *     drawText( int, int, const QString & ) const
         */
-      int drawText ( const QPoint& pos, const QString &string ) const;
+      int drawText (const QPoint& pos, const QString &string) const;
 
       /** Draws text at a given scene position, inside the scene.
         * @note Calls to drawText methods must be enclosed between begin() and endText().
@@ -210,7 +215,7 @@ namespace Avogadro
         * @sa begin(), drawText( const QPoint&, const QString &) const,
         *     drawText( int, int, const QString & ) const
         */
-      int drawText ( const Eigen::Vector3d & pos, const QString &string ) const;
+      int drawText (const Eigen::Vector3d & pos, const QString &string) const;
 
       void begin(GLWidget *widget);
       void end();
