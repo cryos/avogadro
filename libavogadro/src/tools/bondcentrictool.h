@@ -273,20 +273,6 @@ namespace Avogadro {
       //@}
 
       /**
-       * Compute whether a given point resides over any Atoms or Bonds and
-       * return the uppermost Primitive.
-       *
-       * @param widget The widget being checked if its Molecule was 'clicked on'
-       *               by the given point.
-       * @param p The point representing the mouse coordinates of the click.
-       *
-       * @return A Primitive (Atom/Bond) representing the Atom/Bond that was
-       *         clicked on based on the given QPoint p.  NULL is returned if
-       *         there are no Atoms/Bonds at the given point.
-       */
-      Primitive *computeClick(GLWidget *widget, const QPoint& p);
-
-      /**
        * Connects this tool to the widget's ToolGroup so as to detect the signal
        * emitted when the tool changes.
        *

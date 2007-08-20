@@ -62,30 +62,8 @@ int NavigateTool::usefulness() const
   return 2500000;
 }
 
-void NavigateTool::computeClickedAtom(const QPoint& p)
-{
-  QList<GLHit> hits;
-  m_clickedAtom = 0;
-
-  // Perform a OpenGL selection and retrieve the list of hits.
-  hits = m_glwidget->hits(p.x()-SEL_BOX_HALF_SIZE,
-      p.y()-SEL_BOX_HALF_SIZE,
-      SEL_BOX_SIZE, SEL_BOX_SIZE);
-
-  // Find the first atom (if any) in hits - this will be the closest
-  foreach( GLHit hit, hits )
-  {
-    if(hit.type() == Primitive::AtomType)
-    {
-      m_clickedAtom = static_cast<Atom *>( m_glwidget->molecule()->GetAtom(hit.name()) );
-      return;
-    }
-  }
-}
-
 QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
-  m_glwidget = widget;
   m_lastDraggingPosition = event->pos();
   m_leftButtonPressed = (event->buttons() & Qt::LeftButton
                          && event->modifiers() == Qt::NoModifier);
@@ -97,7 +75,7 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
   m_rightButtonPressed = ( (event->buttons() & Qt::RightButton) ||
                            (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) );
 
-  computeClickedAtom(event->pos());
+  m_clickedAtom = widget->computeClickedAtom(event->pos());
 
   // Initialise the angle variables on any new mouse press
   vAngle = 0.;
@@ -109,7 +87,6 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
 
 QUndoCommand* NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
 {
-  m_glwidget = widget;
   m_leftButtonPressed = false;
   m_midButtonPressed = false;
   m_rightButtonPressed = false;
@@ -121,8 +98,7 @@ QUndoCommand* NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
 
 QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
-  m_glwidget = widget;
-  if(!m_glwidget->molecule()) {
+  if(!widget->molecule()) {
     return 0;
   }
 
@@ -138,7 +114,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
       // Atom centred rotation
       hAngle += deltaDragging.x();
       vAngle += deltaDragging.y();
-      Navigate::rotate(m_glwidget, m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y());
+      Navigate::rotate(widget, m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y());
     }
   // On the Mac, either use a three-button mouse
   // or hold down the Option key (AltModifier in Qt notation)
@@ -146,10 +122,10 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
     {
       // Perform the rotation
-      Navigate::tilt(m_glwidget, m_clickedAtom->pos(), deltaDragging.x());
+      Navigate::tilt(widget, m_clickedAtom->pos(), deltaDragging.x());
 
       // Perform the zoom toward clicked atom
-      Navigate::zoom(m_glwidget, m_clickedAtom->pos(), deltaDragging.y());
+      Navigate::zoom(widget, m_clickedAtom->pos(), deltaDragging.y());
     }
     // On the Mac, either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
@@ -157,7 +133,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
     {
       // translate the molecule following mouse movement
-      Navigate::translate(m_glwidget, m_clickedAtom->pos(), m_lastDraggingPosition, event->pos());
+      Navigate::translate(widget, m_clickedAtom->pos(), m_lastDraggingPosition, event->pos());
     }
   }
   else // Nothing clicked on
@@ -166,7 +142,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
         && event->modifiers() == Qt::NoModifier)
     {
       // rotation around the center of the molecule
-      Navigate::rotate(m_glwidget, m_glwidget->center(), deltaDragging.x(), deltaDragging.y());
+      Navigate::rotate(widget, widget->center(), deltaDragging.x(), deltaDragging.y());
     }
   // On the Mac, either use a three-button mouse
   // or hold down the Option key (AltModifier in Qt notation)
@@ -174,10 +150,10 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
     {
       // Perform the rotation
-      Navigate::tilt(m_glwidget, m_glwidget->center(), deltaDragging.x());
+      Navigate::tilt(widget, widget->center(), deltaDragging.x());
 
       // Perform the zoom toward molecule center
-      Navigate::zoom(m_glwidget, m_glwidget->center(), deltaDragging.y());
+      Navigate::zoom(widget, widget->center(), deltaDragging.y());
     }
     // On the Mac, either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
@@ -185,31 +161,30 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
               (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
     {
       // translate the molecule following mouse movement
-      Navigate::translate(m_glwidget, m_glwidget->center(), m_lastDraggingPosition, event->pos());
+      Navigate::translate(widget, widget->center(), m_lastDraggingPosition, event->pos());
     }
   }
 
   m_lastDraggingPosition = event->pos();
-  m_glwidget->update();
+  widget->update();
 
   return 0;
 }
 
 QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
 {
-  m_glwidget = widget;
-  computeClickedAtom(event->pos());
+  m_clickedAtom = widget->computeClickedAtom(event->pos());
   if( m_clickedAtom )
   {
     // Perform the zoom toward clicked atom
-    Navigate::zoom(m_glwidget, m_clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
+    Navigate::zoom(widget, m_clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
   }
   else
   {
     // Perform the zoom toward molecule center
-    Navigate::zoom(m_glwidget, m_glwidget->center(), - MOUSE_WHEEL_SPEED * event->delta());
+    Navigate::zoom(widget, widget->center(), - MOUSE_WHEEL_SPEED * event->delta());
   }
-  m_glwidget->update();
+  widget->update();
 
   return 0;
 }

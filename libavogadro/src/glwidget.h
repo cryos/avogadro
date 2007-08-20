@@ -318,12 +318,51 @@ namespace Avogadro {
        */
       QList<GLHit> hits(int x, int y, int w, int h);
 
+      /**
+       * Take a point and figure out which is the closest primitive under that point.
+       * @param p the point on the widget that was clicked.
+       * @return the closest primitive that was clicked or 0 if nothing.
+       */
+      Primitive* computeClickedPrimitive(const QPoint& p);
+
+      /**
+       * Take a point and figure out which is the closest atom under that point.
+       * @param p the point on the widget that was clicked.
+       * @return the closest atom that was clicked or 0 if nothing.
+       */
+      Atom* computeClickedAtom(const QPoint& p);
+
+      /**
+       * Take a point and figure out which is the closest bond under that point.
+       * @param p the point on the widget that was clicked.
+       * @return the closest bond that was clicked or 0 if nothing.
+       */
+      Bond* computeClickedBond(const QPoint& p);
+
+      /**
+       * @return the point at the center of the molecule.
+       */
       const Eigen::Vector3d & center() const;
+      /**
+       * @return the normalVector for the entire molecule.
+       */
       const Eigen::Vector3d & normalVector() const;
+      /**
+       * @return the radius of the molecule.
+       */
       const double & radius() const;
+      /**
+       * @return the atom farthest away from the camera.
+       */
       const Atom *farthestAtom() const;
 
+      /**
+       * @param quality set the global quality of the widgets.
+       */
       void setQuality(int quality);
+      /**
+       * @return the global quality of the widget.
+       */
       int quality() const;
 
       void setToolGroup(ToolGroup *toolGroup);

@@ -179,37 +179,6 @@ int BondCentricTool::usefulness() const
   return 2000000;
 }
 
-// ##########  computeClick  ##########
-
-Primitive *BondCentricTool::computeClick(GLWidget *widget, const QPoint& p)
-{
-  // Get the list of hits
-  QList<GLHit> hits = widget->hits(p.x()-SEL_BOX_HALF_SIZE,
-                                   p.y()-SEL_BOX_HALF_SIZE,
-                                   SEL_BOX_SIZE, SEL_BOX_SIZE);
-
-  Molecule *molecule = widget->molecule();
-
-  // Find the first atom (if any) in hits - this will be the closest
-  foreach(GLHit hit, hits)
-  {
-    if (hit.type() == Primitive::BondType)
-    {
-      // Bond hit first, return the clicked Bond.
-      Bond *clickedBond = static_cast<Bond *>(molecule->GetBond(hit.name()-1));
-      return clickedBond;
-    }
-    else if (hit.type() == Primitive::AtomType)
-    {
-      // Atom hit first, return the clicked Atom.
-      Atom *clickedAtom = static_cast<Atom *>(molecule->GetAtom(hit.name()));
-      return clickedAtom;
-    }
-  }
-
-  return NULL;
-}
-
 // ##########  mousePress  ##########
 
 QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *event)
@@ -253,7 +222,7 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
   int oldName = m_selectedBond ? m_selectedBond->GetIdx() : -1;
 
   // Check if the mouse clicked on any Atoms or Bonds.
-  Primitive *clickedPrim = computeClick(m_glwidget, event->pos());
+  Primitive *clickedPrim = m_glwidget->computeClickedPrimitive(event->pos());
 
   if (clickedPrim && clickedPrim->type() == Primitive::AtomType)
   {
@@ -608,7 +577,7 @@ QUndoCommand* BondCentricTool::wheel(GLWidget *widget, const QWheelEvent *event)
   m_clickedAtom = NULL;
   m_clickedBond = NULL;
 
-  Primitive *clickedPrim = computeClick(m_glwidget, event->pos());
+  Primitive *clickedPrim = m_glwidget->computeClickedPrimitive(event->pos());
 
   if (clickedPrim && clickedPrim->type() == Primitive::AtomType)
   {

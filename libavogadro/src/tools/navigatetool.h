@@ -79,7 +79,6 @@ namespace Avogadro {
       virtual bool paint(GLWidget *widget);
 
     protected:
-      GLWidget *          m_glwidget;
       Atom *              m_clickedAtom;
       bool                m_leftButtonPressed;  // rotation
       bool                m_midButtonPressed;   // scale / zoom
@@ -90,8 +89,6 @@ namespace Avogadro {
       GLuint              m_selectedPrimitivesDL;
 
       QPoint              m_lastDraggingPosition;
-
-      void computeClickedAtom(const QPoint& p);
   };
 
   class NavigateToolFactory : public QObject, public ToolFactory

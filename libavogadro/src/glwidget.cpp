@@ -1019,6 +1019,62 @@ namespace Avogadro {
     return( hits );
   }
 
+  Primitive* GLWidget::computeClickedPrimitive(const QPoint& p)
+  {
+    QList<GLHit> chits;
+
+    // Perform an OpenGL selection and retrieve the list of hits.
+    chits = hits(p.x()-SEL_BOX_HALF_SIZE,
+      p.y()-SEL_BOX_HALF_SIZE,
+      SEL_BOX_SIZE, SEL_BOX_SIZE);
+
+    // Find the first atom or bond (if any) in hits - this will be the closest
+    foreach( GLHit hit, chits )
+    {
+      if(hit.type() == Primitive::AtomType)
+        return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
+      else if(hit.type() == Primitive::BondType)
+        return static_cast<Bond *>(molecule()->GetBond(hit.name()));
+    }
+    return 0;
+  }
+
+  Atom* GLWidget::computeClickedAtom(const QPoint& p)
+  {
+    QList<GLHit> chits;
+
+    // Perform an OpenGL selection and retrieve the list of hits.
+    chits = hits(p.x()-SEL_BOX_HALF_SIZE,
+      p.y()-SEL_BOX_HALF_SIZE,
+      SEL_BOX_SIZE, SEL_BOX_SIZE);
+
+    // Find the first atom (if any) in hits - this will be the closest
+    foreach( GLHit hit, chits )
+    {
+      if(hit.type() == Primitive::AtomType)
+        return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
+    }
+    return 0;
+  }
+
+  Bond* GLWidget::computeClickedBond(const QPoint& p)
+  {
+    QList<GLHit> chits;
+
+    // Perform an OpenGL selection and retrieve the list of hits.
+    chits = hits(p.x()-SEL_BOX_HALF_SIZE,
+      p.y()-SEL_BOX_HALF_SIZE,
+      SEL_BOX_SIZE, SEL_BOX_SIZE);
+
+    // Find the first bond (if any) in hits - this will be the closest
+    foreach( GLHit hit, chits )
+    {
+      if(hit.type() == Primitive::BondType)
+        return static_cast<Bond *>(molecule()->GetBond(hit.name()));
+    }
+    return 0;
+  }
+
   QSize GLWidget::sizeHint() const
   {
     return minimumSizeHint();

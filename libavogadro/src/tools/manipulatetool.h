@@ -79,7 +79,6 @@ namespace Avogadro {
       virtual bool paint(GLWidget *widget);
 
     protected:
-      GLWidget *          m_glwidget;
       Atom *              m_clickedAtom;
       bool                m_leftButtonPressed;  // rotation
       bool                m_midButtonPressed;   // scale / zoom
@@ -90,11 +89,10 @@ namespace Avogadro {
 
       QPoint              m_lastDraggingPosition;
 
-      void computeClickedAtom(const QPoint& p);
-      void zoom( const Eigen::Vector3d &goal, double delta ) const;
-      void translate( const Eigen::Vector3d &what, const QPoint &from, const QPoint &to ) const;
-      void rotate( const Eigen::Vector3d &center, double deltaX, double deltaY ) const;
-      void tilt( const Eigen::Vector3d &center, double delta ) const;
+      void zoom(GLWidget *widget, const Eigen::Vector3d &goal, double delta) const;
+      void translate(GLWidget *widget, const Eigen::Vector3d &what, const QPoint &from, const QPoint &to) const;
+      void rotate(GLWidget *widget, const Eigen::Vector3d &center, double deltaX, double deltaY) const;
+      void tilt(GLWidget *widget, const Eigen::Vector3d &center, double delta) const;
   };
 
  class MoveAtomCommand : public QUndoCommand
