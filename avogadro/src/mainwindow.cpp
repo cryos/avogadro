@@ -408,6 +408,7 @@ namespace Avogadro
   void MainWindow::setView( int index )
   {
     d->glWidget = d->glWidgets.at( index );
+
     d->enginesStacked->setCurrentIndex( index );
     d->engineConfigurationStacked->setCurrentIndex( index );
 //     d->glWidget->makeCurrent();

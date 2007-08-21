@@ -24,6 +24,7 @@
 #define __GAMESSINPUTDATA_H
 
 #include <iostream>
+#include <vector>
 #include <avogadro/primitive.h>
 
 using namespace std;
@@ -210,7 +211,7 @@ namespace Avogadro {
 
       void InitControlPaneData(void);
       void InitProgPaneData(void);
-      
+
 //       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       long ReadFromBuffer(BufferFile *Buffer, long length);
@@ -475,7 +476,8 @@ namespace Avogadro {
 //       long GetSize(BufferFile *Buffer);
 //       long WriteToBuffer(BufferFile *Buffer);
 //       void ReadFromBuffer(BufferFile *Buffer, long length);
-      void WriteToFile(ostream &File, Molecule * MainData);
+      void WriteHeaderToFile(ostream &File);
+      void WriteToFile(ostream &File, GamessInputData* IData, Molecule * MainData);
 //       void WriteXML(XMLElement * parent) const;
 //       void ReadXML(XMLElement * parent);
   };
@@ -789,10 +791,71 @@ namespace Avogadro {
 //       void ReadXML(XMLElement * parent);
   };
 
+  class GamessEFPGroup
+  {
+    public:
+      enum Type {
+        EFPType = 0,
+        QMType,
+      };
+
+      void GetCenterOfMass(Molecule *molecule, double &x, double &y, double &z);
+
+      bool Contains(Atom *atom);
+
+      double distance(const double i[], const double j[])
+      {
+        double xd, yd, zd;
+        xd = i[0] - j[0];
+        yd = i[1] - j[1];
+        zd = i[2] - j[2];
+
+        return sqrt(fabs(xd) + fabs(yd) + fabs(zd));
+      }
+
+
+      std::vector<Atom *> atoms;
+      std::string name;
+      GamessEFPGroup::Type type;
+  };
+
+  typedef std::vector<GamessEFPGroup *>::iterator EFPGroupIter;
+  class GamessEFPData {
+    public:
+      GamessEFPData();
+
+      void AddGroup(GamessEFPGroup *group);
+      void RemoveGroup(GamessEFPGroup *group);
+
+      /**
+       * Remove all groups which contain the atom parameter
+       * @param atom pointer to the atom
+       */
+      void RemoveGroups(Atom *atom);
+
+      /**
+       * @return total group count (QM + EFP)
+       */
+      int GetGroupCount();
+      int GetGroupCount(GamessEFPGroup::Type type);
+
+      EFPGroupIter GetGroupBegin() { return m_groups.begin(); }
+      EFPGroupIter GetGroupEnd() { return m_groups.end(); }
+
+
+
+    private:
+      std::vector<GamessEFPGroup *> m_groups;
+
+      int m_efpCount;
+      int m_qmCount;
+
+  };
+
   class GamessInputData {
     public:
       //! Constructors
-      GamessInputData(Molecule *molecule);
+      GamessInputData(Molecule *molecule = 0);
       GamessInputData(GamessInputData *Copy);
 
       //! Deconstructors
@@ -809,13 +872,14 @@ namespace Avogadro {
       GamessHessianGroup	*Hessian;
       GamessStatPtGroup		*StatPt;
       GamessDFTGroup		*DFT;
+      GamessEFPData             *EFP;
 
 //       long GetSize(BufferFile *Buffer);	//returns total size of the Input group and all subgroups
 //       long WriteToBuffer(BufferFile *Buffer);	//Pack Input data into the provided buffer
       long WriteInputFile(ostream &buffer);	//Write out an input file for another program (GAMESS etc)
 
       long GetNumElectrons() const;
-      void SetMolecule(Molecule *molecule) { m_molecule = molecule; }
+      void SetMolecule(Molecule *molecule);
 
 //       void ReadFromBuffer(BufferFile *Buffer, long length);
 //       void WriteXML(XMLElement * parent) const;

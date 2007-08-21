@@ -366,6 +366,18 @@ namespace Avogadro {
     d->thread->start();
   }
 
+  GLWidget *GLWidget::m_current = 0;
+
+  GLWidget *GLWidget::current()
+  {
+    return m_current;
+  }
+
+  void GLWidget::setCurrent(GLWidget *current)
+  {
+    m_current = current;
+  }
+
   void GLWidget::initializeGL()
   {
     qglClearColor( d->background );
@@ -563,6 +575,16 @@ namespace Avogadro {
   {
     // tell our thread to paint
     d->paintCondition.wakeAll();
+  }
+
+  bool GLWidget::event( QEvent *event )
+  {
+    if(event->type() == QEvent::Show)
+    {
+      GLWidget::setCurrent(this);
+    }
+
+    return QGLWidget::event(event);
   }
 
   void GLWidget::mousePressEvent( QMouseEvent * event )

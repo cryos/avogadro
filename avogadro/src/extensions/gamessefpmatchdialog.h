@@ -74,14 +74,14 @@ namespace Avogadro
       void efpSelected( const QItemSelection &selected, const QItemSelection &deselected );
 
     Q_SIGNALS:
-      void selectionChanged(const QList<QVector<int> > &groups);
+      void selectionChanged(const QList<QVector<Atom *> > &groups);
       void accepted(const GamessEfpMatchDialog::Type &type,
-                    const QString &name, const QList<QVector<int> > &groups);
+                    const QString &name, const QList<QVector<Atom *> > &groups);
 
   };
 
 }
 
-Q_DECLARE_METATYPE( QVector<int> )
+Q_DECLARE_METATYPE( QVector<Avogadro::Atom *> )
 
 #endif

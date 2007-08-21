@@ -76,6 +76,8 @@ namespace Avogadro {
       GamessInputData *m_inputData;
       QList<QAction *> m_actions;
       QDockWidget * m_dockWidget;
+      QTreeView *m_efpView;
+      QPushButton *m_efpButton;
 
       QStandardItemModel *m_efpModel;
 
@@ -86,14 +88,21 @@ namespace Avogadro {
       QMap<GamessEfpMatchDialog *, Molecule *> m_dialogMolecules;
       QMap<GLWidget *, QList<Primitive *> > m_widgetSelected;
 
+      QMap<QString, int> m_groupNameID;
+
       GamessEfpMatchDialog *matchesDialog(Molecule *molecule, GLWidget *widget, GamessEfpMatchDialog::Type type);
 
     private Q_SLOTS:
       void dockWidgetDestroyed();
 
-      void efpWidgetAccepted(const GamessEfpMatchDialog::Type &type, const QString &name, const QList<QVector<int> > &groups);
-      void efpWidgetSelected(const QList<QVector<int> > &groups);
+      void efpButtonPressed();
+      void efpViewSelectionChanged( const QItemSelection & selected, const QItemSelection & deselected );
+
+      void efpWidgetAccepted(const GamessEfpMatchDialog::Type &type, const QString &name, const QList<QVector<Atom *> > &groups);
+      void efpWidgetSelected(const QList<QVector<Atom *> > &groups);
       void efpWidgetDone();
+
+      void removePrimitive(Primitive *primitive);
 
   };
 
@@ -105,7 +114,6 @@ namespace Avogadro {
     public:
       Extension *createInstance(QObject *parent = 0) { return new GamessExtension(parent); }
   };
-
 
 } // end namespace Avogadro
 

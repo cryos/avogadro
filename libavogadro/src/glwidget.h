@@ -433,6 +433,12 @@ namespace Avogadro {
       int bCells();
       int cCells();
 
+      static GLWidget *m_current;
+
+      static GLWidget *current();
+      static void setCurrent(GLWidget *current);
+
+
     protected:
       /**
      * Virtual function called by QGLWidget on initialization of
@@ -451,6 +457,11 @@ namespace Avogadro {
        * Virtual function called whn the GL area is resized
        */
       virtual void resizeGL(int, int);
+
+      /**
+       * Focus Event
+       */
+      virtual bool event( QEvent *event );
 
       /**
        * Virtual function reaction to mouse press in the GL rendering area.

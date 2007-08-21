@@ -60,10 +60,10 @@ namespace Avogadro
   {
     QModelIndexList indexes = ui.groupList->selectionModel()->selectedIndexes();
 
-    QList<QVector<int> > selectedGroups;
+    QList<QVector<Atom *> > selectedGroups;
 
     foreach( QModelIndex index, indexes ) {
-      QVector<int> group = index.data( Qt::UserRole + 1 ).value<QVector<int> >();
+      QVector<Atom *> group = index.data( Qt::UserRole + 1 ).value<QVector<Atom *> >();
       selectedGroups.append( group );
     }
 
@@ -76,10 +76,10 @@ namespace Avogadro
     QModelIndexList indexes = ui.groupList->selectionModel()->selectedIndexes();
 
     if ( indexes.size() ) {
-      QList<QVector<int> > groups;
+      QList<QVector<Atom *> > groups;
 
       foreach( QModelIndex index, indexes ) {
-        QVector<int> group = index.data( Qt::UserRole + 1 ).value<QVector<int> >();
+        QVector<Atom *> group = index.data( Qt::UserRole + 1 ).value<QVector<Atom *> >();
         groups.append( group );
       }
 

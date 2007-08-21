@@ -102,7 +102,7 @@ namespace Avogadro {
       void readSettings();
       void writeSettings();
       void connectUi();
-      
+
       bool maybeSave();
       void setFileName(const QString &fileName);
       void updateRecentFileActions();
@@ -115,7 +115,7 @@ namespace Avogadro {
       Molecule* molecule() const;
 
       void loadExtensions();
-      
+
       //! Helper function for cut or copy -- prepare a clipboard
       QMimeData* prepareClipboardData(QList<Primitive*> selectedItems);
 
@@ -131,7 +131,7 @@ namespace Avogadro {
    * \section avogadro Introduction
    *
    * Avogadro is a molecular modeling / viewing / editing tool.
-   * The design idea behind Avogadro is to allow every feature to be 
+   * The design idea behind Avogadro is to allow every feature to be
    * pluggable.  This allows new features and tools to be easily added
    * and removed and also provides a solid framework for research.
    *

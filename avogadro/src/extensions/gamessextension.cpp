@@ -51,7 +51,7 @@ namespace Avogadro
     QMAction
   };
 
-  GamessExtension::GamessExtension( QObject *parent ) : QObject( parent ), m_inputDialog( NULL ), m_inputData( NULL ), m_dockWidget( 0 ),
+  GamessExtension::GamessExtension( QObject *parent ) : QObject( parent ), m_inputDialog( NULL ), m_inputData( new GamessInputData() ), m_dockWidget( 0 ),
       m_efpModel( new QStandardItemModel() ),
       m_efpDialog( 0 ), m_qmDialog( 0 )
   {
@@ -81,7 +81,7 @@ namespace Avogadro
     return m_actions;
   }
 
-  QString GamessExtension::menuPath(QAction *action) const
+  QString GamessExtension::menuPath(QAction *) const
   {
     return tr("&Tools>GAMESS");
   }
@@ -94,10 +94,20 @@ namespace Avogadro
       QWidget *widget = new QWidget( m_dockWidget );
       QVBoxLayout *layout = new QVBoxLayout();
 
-      QTreeView *view= new QTreeView();
-      view->header()->setVisible( false );
-      layout->addWidget( view );
-      view->setModel( m_efpModel );
+      m_efpView = new QTreeView();
+      m_efpView->header()->setVisible( false );
+      layout->addWidget( m_efpView );
+      m_efpView->setModel( m_efpModel );
+      m_efpView->setSelectionMode(QAbstractItemView::ExtendedSelection);
+      connect(m_efpView->selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
+              this, SLOT(efpViewSelectionChanged(QItemSelection, QItemSelection)));
+
+      m_efpButton = new QPushButton();
+      m_efpButton->setText(tr("Delete"));
+      m_efpButton->setDisabled(true);
+      layout->addWidget(m_efpButton);
+      connect(m_efpButton, SIGNAL(pressed()), this, SLOT(efpButtonPressed()));
+
 
       widget->setLayout( layout );
       m_dockWidget->setWidget( widget );
@@ -112,20 +122,20 @@ namespace Avogadro
   void GamessExtension::dockWidgetDestroyed()
   {
     m_dockWidget = 0;
+    m_efpView = 0;
   }
 
   QUndoCommand* GamessExtension::performAction( QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit * )
   {
 
-    qDebug() << "Perform Action";
     int i = action->data().toInt();
+
+    connect(molecule, SIGNAL(primitiveRemoved(Primitive *)),
+            this, SLOT(removePrimitive(Primitive *)));
+
     switch ( i ) {
       case InputDeckAction:
-        if ( !m_inputData ) {
-          m_inputData = new GamessInputData( molecule );
-        } else {
           m_inputData->SetMolecule( molecule );
-        }
         if ( !m_inputDialog ) {
           m_inputDialog = new GamessInputDialog( m_inputData );
           m_inputDialog->show();
@@ -219,6 +229,23 @@ namespace Avogadro
     sp.Init( pattern );
 
     if ( sp.Match( *molecule ) ) {
+      // before we begin we need to see what has already been selected.
+
+      QVector<Atom *> usedAtoms;
+
+      for(int parentNum = 0; parentNum < m_efpModel->rowCount(); parentNum++ )
+      {
+        QStandardItem *parentItem = m_efpModel->item(parentNum);
+
+        for(int childNum = 0; childNum < parentItem->rowCount(); childNum++ )
+        {
+          QStandardItem *childItem = parentItem->child(childNum);
+          QVector<Atom *> atoms = childItem->data().value<QVector<Atom *> >();
+
+          usedAtoms += atoms;
+        }
+      }
+
       QStandardItemModel *model = new QStandardItemModel();
       QModelIndex selectedIndex;
 
@@ -232,9 +259,17 @@ namespace Avogadro
         bool valid = true;
         bool first = true;
         bool selected = false;
+        QVector<Atom *> atomMatches;
         foreach( int i, matches ) {
           Atom *atom = static_cast<Atom *>(molecule->GetAtom( i ));
 
+          if(usedAtoms.contains(atom))
+          {
+            valid=false;
+            break;
+          }
+
+          atomMatches.append(atom);
           // if this matches our original atom
           if(!selected && selectedPrimitives.contains(atom)) {
             selected = true;
@@ -257,7 +292,7 @@ namespace Avogadro
               }
               int idx = a->GetIdx();
               text.append( QString::number( idx ) );
-              matches.append( idx );
+              atomMatches.append( static_cast<Atom *>(&*a) );
             } else if ( !matches.contains( a->GetIdx() ) ) {
               valid = false;
               break;
@@ -274,7 +309,7 @@ namespace Avogadro
 
           item->setText( text );
           item->setEditable( false );
-          item->setData( qVariantFromValue( matches ) );
+          item->setData( qVariantFromValue( atomMatches ) );
 
           model->appendRow( item );
 
@@ -291,11 +326,11 @@ namespace Avogadro
       efpDialog->select( selectedIndex );
       efpDialog->setAttribute( Qt::WA_DeleteOnClose );
 
-      connect( efpDialog, SIGNAL( accepted( GamessEfpMatchDialog::Type, QString, QList<QVector<int> > ) ),
-               this, SLOT( efpWidgetAccepted( GamessEfpMatchDialog::Type, QString, QList<QVector<int> > ) ) );
+      connect( efpDialog, SIGNAL( accepted( GamessEfpMatchDialog::Type, QString, QList<QVector<Atom *> > ) ),
+               this, SLOT( efpWidgetAccepted( GamessEfpMatchDialog::Type, QString, QList<QVector<Atom *> > ) ) );
       connect( efpDialog, SIGNAL( finished(int) ), this, SLOT(efpWidgetDone() ) );
-      connect( efpDialog, SIGNAL( selectionChanged( QList<QVector<int> > ) ),
-               this, SLOT( efpWidgetSelected( QList<QVector<int> > ) ) );
+      connect( efpDialog, SIGNAL( selectionChanged( QList<QVector<Atom *> > ) ),
+               this, SLOT( efpWidgetSelected( QList<QVector<Atom *> > ) ) );
       efpDialog->show();
 
       return efpDialog;
@@ -304,18 +339,110 @@ namespace Avogadro
     return 0;
   }
 
-  void GamessExtension::efpWidgetSelected( const QList<QVector<int> > &groups )
+  void GamessExtension::efpButtonPressed()
+  {
+    QModelIndexList selectedIndexes = m_efpView->selectionModel()->selectedRows();
+
+    qSort(selectedIndexes.begin(), selectedIndexes.end(), qGreater<QModelIndex>());
+    foreach(QModelIndex index, selectedIndexes)
+    {
+      QModelIndex parent = index.parent();
+      if(!parent.isValid())
+      {
+        qDebug() << "Main Row " << index.row();
+
+        for(int i = 0; i<m_efpModel->rowCount(index); i++)
+        {
+          QModelIndex child = m_efpModel->index(i,0,index);
+
+          QVector<Atom *> atoms = child.data(Qt::UserRole +1).value<QVector<Atom *> >();
+          Atom *atom = atoms.first();
+
+          m_inputData->EFP->RemoveGroups(atom);
+        }
+
+        m_efpModel->removeRow(index.row(), parent);
+      }
+    }
+
+    selectedIndexes = m_efpView->selectionModel()->selectedRows();
+    qSort(selectedIndexes.begin(), selectedIndexes.end(), qGreater<QModelIndex>());
+    foreach(QModelIndex index, selectedIndexes)
+    {
+      QModelIndex parent = index.parent();
+      if(parent.isValid())
+      {
+        QVector<Atom *> atoms = index.data(Qt::UserRole +1).value<QVector<Atom *> >();
+        Atom *atom = atoms.first();
+
+        m_inputData->EFP->RemoveGroups(atom);
+
+        m_efpModel->removeRow(index.row(), parent);
+        if(m_efpModel->rowCount(parent) == 0)
+        {
+          m_efpModel->removeRow(parent.row());
+        }
+      }
+    }
+
+    if(m_inputDialog)
+    {
+      m_inputDialog->updatePreviewText();
+    }
+  }
+
+  void GamessExtension::efpViewSelectionChanged( const QItemSelection &, const QItemSelection & )
+  {
+    QModelIndexList selectedIndexes = m_efpView->selectionModel()->selectedRows();
+
+    QList<Primitive *> primitives;
+    bool enable = false;
+    foreach(QModelIndex index, selectedIndexes)
+    {
+      enable = true;
+      if(index.parent().isValid())
+      {
+        QVector<Atom *> atoms = index.data(Qt::UserRole +1).value<QVector<Atom *> >();
+        foreach(Atom *atom, atoms)
+        {
+          primitives.append(atom);
+        }
+      }
+      else
+      {
+        int childCount = m_efpModel->rowCount(index);
+        for(int i = 0; i<childCount; i++)
+        {
+          QModelIndex child = m_efpModel->index(i,0,index);
+          QVector<Atom *> atoms = child.data(Qt::UserRole +1).value<QVector<Atom *> >();
+          foreach(Atom *atom, atoms)
+          {
+            primitives.append(atom);
+          }
+        }
+      }
+    }
+    GLWidget *widget = GLWidget::current();
+
+    if(widget)
+    {
+      widget->clearSelected();
+      widget->setSelected( primitives, true );
+      widget->update();
+    }
+
+    m_efpButton->setEnabled(enable);
+  }
+
+  void GamessExtension::efpWidgetSelected( const QList<QVector<Atom *> > &groups )
   {
     GamessEfpMatchDialog *dialog = qobject_cast<GamessEfpMatchDialog *>( sender() );
 
     GLWidget *widget = m_dialogWidgets.value( dialog );
-    Molecule *molecule = m_dialogMolecules.value( dialog );
 
     QList<Primitive *> primitives;
-    foreach( QVector<int> group, groups ) {
-      qDebug() << "efpWidgetSelected : " << group;
-      foreach( int idx, group ) {
-        Atom *atom = static_cast<Atom *>( molecule->GetAtom( idx ) );
+    foreach( QVector<Atom *> group, groups ) {
+      foreach( Atom *atom, group ) {
         primitives.append( atom );
       }
     }
@@ -326,65 +453,27 @@ namespace Avogadro
 
   }
 
-  void GamessExtension::efpWidgetAccepted( const GamessEfpMatchDialog::Type &type, const QString &name, const QList<QVector<int> > &groups )
+  void GamessExtension::efpWidgetAccepted( const GamessEfpMatchDialog::Type &type, const QString &name, const QList<QVector<Atom *> > &groups )
   {
-    GamessEfpMatchDialog *dialog = qobject_cast<GamessEfpMatchDialog *>( sender() );
-
-    Molecule *molecule = m_dialogMolecules.value( dialog );
-
     QString groupName = name;
     if ( !groupName.size() ) {
       groupName = tr( "Group Name" );
     }
 
-    QStandardItem *rootItem = new QStandardItem();
-    rootItem->setText( groupName + " (" + tr( type ? "qm" : "efp" ) + ")" );
-
-    foreach( QVector<int> group, groups ) {
+    QList<QStandardItem *> newItems;
+    foreach( QVector<Atom *> group, groups ) {
       QString groupString;
       bool first = true;
 
-      foreach( int idx, group ) {
-        Atom *atom = static_cast<Atom *>( molecule->GetAtom( idx ) );
+
+      foreach( Atom *atom, group ) {
 
         if ( !first ) {
           groupString.append( tr( ", " ) );
         } else {
           first = false;
         }
-        groupString.append( QString::number( idx ) );
-
-        OBSetData *gamessData;
-        if ( !atom->HasData( "GAMESS" ) ) {
-          gamessData = new OBSetData();
-          gamessData->SetAttribute( "GAMESS" );
-          atom->SetData( gamessData );
-        } else {
-          gamessData = static_cast<OBSetData *>( atom->GetData( "GAMESS" ) );
-        }
-
-        OBPairData *efpGroup;
-        if ( atom->GetData( "EFPGroup" ) ) {
-          // EFP Data Already Set!
-          continue;
-        } else {
-          efpGroup = new OBPairData();
-          efpGroup->SetAttribute( "EFPGroup" );
-          efpGroup->SetValue( groupName.toStdString() );
-        }
-
-        OBPairData *efpType;
-        if ( atom->GetData( "EFPType" ) ) {
-          delete efpGroup;
-          continue;
-        } else {
-          efpType = new OBPairData();
-          efpType->SetAttribute( "EFPType" );
-          efpType->SetValue( type ? "qm" : "efp" );
-        }
-
-        gamessData->AddData( efpGroup );
-        gamessData->AddData( efpType );
+        groupString.append( QString::number( atom->GetIdx() ) );
 
       }
 
@@ -392,10 +481,51 @@ namespace Avogadro
       item->setData( qVariantFromValue( group ) );
       item->setText( groupString );
 
-      rootItem->appendRow( item );
+      GamessEFPGroup * efpGroup = new GamessEFPGroup();
+      efpGroup->name = groupName.toStdString();
+      efpGroup->type = type ? GamessEFPGroup::QMType : GamessEFPGroup::EFPType ;
+      efpGroup->atoms = group.toStdVector();
+
+      m_inputData->EFP->AddGroup(efpGroup);
+
+      newItems.append(item);
     }
 
-    m_efpModel->appendRow( rootItem );
+    QStandardItem *rootItem = 0;
+
+    // check for preexisting group
+    int rowCount = m_efpModel->rowCount();
+    for(int i = 0; i < rowCount; i++)
+    {
+      QStandardItem *item = m_efpModel->item(i);
+      if(item->text() == groupName)
+      {
+        rootItem = item;
+        break;
+      }
+    }
+
+    // if we have new items and there is no previous root item
+    // we must create one
+    if(newItems.size() && !rootItem)
+    {
+      rootItem = new QStandardItem(groupName);
+      QStandardItem *typeItem  = new QStandardItem(tr(" (") + tr( type ? "qm" : "efp" ) + tr(")") );
+      QList<QStandardItem *> row;
+      row.append(rootItem);
+      row.append(typeItem);
+
+      m_efpModel->appendRow( row );
+    }
+
+    foreach(QStandardItem *item, newItems)
+    {
+      rootItem->appendRow(item);
+
+      QModelIndex index = item->index();
+      m_efpView->setFirstColumnSpanned(index.row(), index.parent(), true);
+    }
+
     if ( m_dockWidget ) {
       m_dockWidget->show();
     }
@@ -415,6 +545,7 @@ namespace Avogadro
     m_dialogWidgets.remove(dialog);
     m_dialogMolecules.remove(dialog);
 
+    // delete on close is set!
     if(dialog == m_efpDialog)
     {
       m_efpDialog = 0;
@@ -425,6 +556,62 @@ namespace Avogadro
       m_qmDialog = 0;
     }
 
+  }
+
+  void GamessExtension::removePrimitive(Primitive *primitive)
+  {
+    if(primitive->type() == Primitive::AtomType)
+    {
+      m_inputData->EFP->RemoveGroups(static_cast<Atom *>(primitive));
+    }
+
+    for(int parentNum = 0; parentNum < m_efpModel->rowCount(); )
+    {
+      QStandardItem *parentItem = m_efpModel->item(parentNum);
+
+      bool matched = false;
+      for(int childNum = 0; childNum < parentItem->rowCount(); )
+      {
+        QStandardItem *childItem = parentItem->child(childNum);
+        QVector<Atom *> atoms = childItem->data().value<QVector<Atom *> >();
+
+        QString text;
+        bool first = true;
+
+        foreach(Atom *atom, atoms)
+        {
+          if ( !first ) {
+            text.append( tr( ", " ) );
+          } else {
+            first = false;
+          }
+          text.append( QString::number( atom->GetIdx() ) );
+
+          if(atom == primitive)
+          {
+            parentItem->removeRow(childNum);
+            matched = true;
+          }
+        }
+        if(!matched)
+        {
+          childItem->setText(text);
+          childNum++;
+        }
+        else
+        {
+          matched = false;
+        }
+      }
+      if(parentItem->rowCount() == 0)
+      {
+        m_efpModel->removeRow(parentNum);
+      }
+      else
+      {
+        parentNum++;
+      }
+    }
   }
 
 }
