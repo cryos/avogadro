@@ -28,8 +28,6 @@
 #include <avogadro/global.h>
 
 #include <eigen/projective.h>
-#include <eigen/matrix.h>
-#include <eigen/vector.h>
 
 namespace Avogadro {
 

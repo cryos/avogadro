@@ -2,6 +2,7 @@
   Navigate - Navigation Functions for Avogadro
 
   Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
