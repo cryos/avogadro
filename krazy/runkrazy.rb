@@ -15,13 +15,13 @@ def dir2filename( dir )
 end
 
 
-directories = [ "libavogadro" , "libavogadro/src" , "libavogadro/src/tools", "libavogadro/src/engines" , "avogadro/src" , "avogadro/src/extensions" ]
+directories = [ "libavogadro/src" , "libavogadro/src/tools", "libavogadro/src/engines" , "avogadro/src" , "avogadro/src/extensions" ]
 
 for dir in directories
 	dir.chomp!
 	filename = dir2filename( dir )
 
-	command = "krazy --export html --explain --exclude qclasses,license,copyright ../#{dir} > #{filename}.html"
+	command = "krazy2 --export html --explain --exclude qclasses,license,copyright ../#{dir}/*.{cpp,h} > #{filename}.html"
 
 	puts command
 

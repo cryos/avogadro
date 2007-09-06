@@ -6,21 +6,34 @@
 <body>
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 20<br>
-Total Issues = 22 ...as of August 11 2007 12:49:03</p>
+Files Processed = 26<br>
+Total Issues = 4 ...as of September 06 2007 19:30:38</p>
+<ul>
+<li><b><u>For File Type c++
+</u></b>
 <ol>
 <li>Check for TRUE and FALSE macros... 
 <b>okay!</b>
-<li>Check for methods that return 'const' references in public classes... 
+<li>Check for methods that return 'const' refs in public classes... 
 <b>okay!</b>
 <li>Check for contractions in strings... 
 <b>okay!</b>
 <li>Check for cpp macros and usage... 
-<b>okay!</b>
-<li>Checks for QString containing a single char is better as a QChar... 
+<b>OOPS! 2 issues found!</b>
+<ul>
+<li>	../avogadro/src/application.cpp: O/S or Compiler specific macro line#25[Q_OS_UNIX],36[Q_OS_UNIX] (2)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	For source files and non-installed headers, do not have cpp
+	conditionals that check for a certain O/S or compiler; instead use
+	CMake HAVE_foo macros.</p>
+</li>
+
+<li>Check for single char QStrings better written as a QChar... 
 <b>okay!</b>
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
-<li>Check for public classes with private members or d-pointer problems... 
+<li>Check public classes with private members or d-pointer issues... 
 <b>okay!</b>
 <li>Check for QString compares to ""... 
 <b>okay!</b>
@@ -29,35 +42,24 @@ Total Issues = 22 ...as of August 11 2007 12:49:03</p>
 <li>Check for C++ ctors that should be declared 'explicit'... 
 <b>okay!</b>
 <li>Check validity of i18n calls... 
-<b>OOPS! 22 issues found!</b>
+<b>okay!</b>
+<li>Check for proper include directives... 
+<b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../avogadro/src: &gt;&gt;&gt;&gt;&gt; ../avogadro/src/enginesetupwidget.ui
+<li>	../avogadro/src/aboutdialog.cpp: include own header first line#29
 </li>
-<li>	../avogadro/src: reported ambiguous message by translators; use context call to explain what it refers to line#13
-</li>
-<li>	../avogadro/src: &gt;&gt;&gt;&gt;&gt; ../avogadro/src/mainwindow.ui
-</li>
-<li>	../avogadro/src: reported ambiguous message by translators; use context call to explain what it refers to line#501
-</li>
-<li>	../avogadro/src: single adjective as message, probably ambiguous; use context call to explain what it refers to line#342,522,530
-</li>
-<li>	../avogadro/src: &gt;&gt;&gt;&gt;&gt; ../avogadro/src/extensions/gamessinputdialog.ui
-</li>
-<li>	../avogadro/src: reported ambiguous message by translators; use context call to explain what it refers to line#705,1350,1420,1466,1956,2056,2785,2823
-</li>
-<li>	../avogadro/src: single adjective as message, probably ambiguous; use context call to explain what it refers to line#283,316,451,583,1065,1595,3664,3671,3900
+<li>	../avogadro/src/flowlayout.cpp: do not include QtModules line#27(QtGui)
 </li>
 </ul>
-<p><p><p><b>Why should I care?</b>	Make the translators&#39; job easier and detect problems in the usage
-	of the i18n() calls. When the fix is not clear, check the Techbase
-	article at
-	<a href="http://techbase.kde.org/Development/Tutorials/Localization/i18n_Kr
-	azy">http://techbase.kde.org/Development/Tutorials/Localization/i18n_Kr
-	azy</a> for more information.</p>
+<p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
+	Qt headers from installed headers; cpp file should include their
+	own headers first; other rules apply, see
+	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right</a>. Use include guards in headers with appropriatedly
+	encoded macro names.</p>
 </li>
 
-<li>Check for proper include directives... 
-<b>okay!</b>
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for assignments to QString::null... 
@@ -75,5 +77,7 @@ Total Issues = 22 ...as of August 11 2007 12:49:03</p>
 <li>Check for spelling errors... 
 <b>okay!</b>
 </ol>
+<br>
+</ul>
 </body>
 </html>
