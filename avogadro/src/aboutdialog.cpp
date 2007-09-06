@@ -29,6 +29,7 @@
 #include "aboutdialog.h"
 
 #define AVOGADRO_VERSION "0.1.0"
+#define AVOGADRO_SVN_REVISION "$Revision$"
 
 AboutDialog::AboutDialog(QWidget *parent)
     : QDialog(parent
@@ -52,11 +53,12 @@ AboutDialog::AboutDialog(QWidget *parent)
     lbl->setText(
             tr("<h3>%1</h3>"
                 "<br/><br/>Version %2"
+                "<br/>Revision %3"
                "<br/><br/>For more information check the <a href=\"http://avogadro.sourceforge.net/\">Avogadro homepage</a>."
                 "<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND,"
                 " INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A"
                 " PARTICULAR PURPOSE.<br/>"
-                ).arg(tr("Avogadro")).arg(AVOGADRO_VERSION)
+              ).arg(tr("Avogadro")).arg(AVOGADRO_VERSION).arg(AVOGADRO_SVN_REVISION)
             );
    
     cmd->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
