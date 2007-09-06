@@ -22,13 +22,29 @@
 #include "application.h"
 #include "mainwindow.h"
 
+#ifdef Q_OS_UNIX
+#  include "locale.h"
+#endif // Q_OS_UNIX
+
 using namespace std;
 using namespace OpenBabel;
 
 namespace Avogadro {
 
   Application::Application(int &argc, char **argv): QApplication(argc, argv)
-  {  }
+  {
+#ifdef Q_OS_UNIX
+    // work around a bug in OpenBabel: the chemical data files parsing
+    // is dependent on the LC_NUMERIC locale.
+    // Note that similar code currently exists in Qt (as of 4.3.1) in
+    // src/corelib/kernel/qcoreapplication.cpp, so the code here is
+    // not currently needed, but the following link indicates that the
+    // fix might be removed from Qt in a future version:
+    // http://trolltech.com/developer/task-tracker/index_html?method=entry&id=132859
+    // So we prefer to have this fix here preventively.
+    setlocale(LC_NUMERIC, "C");
+#endif // Q_OS_UNIX
+    }
 
   // Handle open events (e.g., Mac OS X open files)
   bool Application::event(QEvent *event)
