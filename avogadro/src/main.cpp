@@ -32,6 +32,9 @@
 #include <X11/Xlib.h>
 #endif
 
+// get the SVN revision string
+#include<svn.h>
+
 using namespace Avogadro;
 
 // Import static plugins
@@ -40,6 +43,8 @@ using namespace Avogadro;
 
 int main(int argc, char *argv[])
 {
+  qDebug() << "This is Avogadro, SVN revision" << SVN_REVISION_STRING;
+
   // set up groups for QSettings
   QCoreApplication::setOrganizationName("SourceForge");
   QCoreApplication::setOrganizationDomain("sourceforge.net");
