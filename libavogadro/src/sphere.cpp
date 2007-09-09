@@ -78,7 +78,7 @@ void Sphere::freeBuffers()
   }
 }
 
-void Sphere::draw( const Eigen::Vector3d &center, double radius ) const
+void Sphere::draw(const Eigen::Vector3d &center, double radius) const
 {
   glPushMatrix();
   glTranslated( center.x(), center.y(), center.z() );
@@ -93,42 +93,42 @@ void Sphere::initialize()
 
   // deallocate any previously allocated buffer
   freeBuffers();
-        d->isValid = false;
-        int vertexCount = 0, indexCount = 0;
+  d->isValid = false;
+  int vertexCount = 0, indexCount = 0;
 
-        if( d->detail == 0 )
-        {
-          if( ! d->displayList ) { d->displayList = glGenLists( 1 ); }
+  if( d->detail == 0 )
+  {
+    if( ! d->displayList ) { d->displayList = glGenLists( 1 ); }
     if( ! d->displayList ) { return; }
-          float octahedronVertices[6][3] = { { 1, 0, 0 } ,
-                                             { 0, 1, 0 } ,
-                                             { 0, 0, 1 } ,
-                                             { 0, -1, 0 } ,
-                                             { 0, 0, -1 } ,
-                                             { -1, 0, 0 } };
+    float octahedronVertices[6][3] = { { 1, 0, 0 } ,
+                                       { 0, 1, 0 } ,
+                                       { 0, 0, 1 } ,
+                                       { 0, -1, 0 } ,
+                                       { 0, 0, -1 } ,
+                                       { -1, 0, 0 } };
 #define USE_OCTAHEDRON_VERTEX(i) glNormal3fv(octahedronVertices[i]); \
                                  glVertex3fv(octahedronVertices[i]);
-          glNewList( d->displayList, GL_COMPILE );
-          glBegin(GL_TRIANGLE_FAN);
-          USE_OCTAHEDRON_VERTEX(0);
-          USE_OCTAHEDRON_VERTEX(1);
-          USE_OCTAHEDRON_VERTEX(2);
-          USE_OCTAHEDRON_VERTEX(3);
-          USE_OCTAHEDRON_VERTEX(4);
-          USE_OCTAHEDRON_VERTEX(1);
-          glEnd();
-          glBegin(GL_TRIANGLE_FAN);
-          USE_OCTAHEDRON_VERTEX(5);
-          USE_OCTAHEDRON_VERTEX(1);
-          USE_OCTAHEDRON_VERTEX(4);
-          USE_OCTAHEDRON_VERTEX(3);
-          USE_OCTAHEDRON_VERTEX(2);
-          USE_OCTAHEDRON_VERTEX(1);
-          glEnd();
-          glEndList();
-          d->isValid = true;
-          return;
-        }
+    glNewList( d->displayList, GL_COMPILE );
+    glBegin(GL_TRIANGLE_FAN);
+    USE_OCTAHEDRON_VERTEX(0);
+    USE_OCTAHEDRON_VERTEX(1);
+    USE_OCTAHEDRON_VERTEX(2);
+    USE_OCTAHEDRON_VERTEX(3);
+    USE_OCTAHEDRON_VERTEX(4);
+    USE_OCTAHEDRON_VERTEX(1);
+    glEnd();
+    glBegin(GL_TRIANGLE_FAN);
+    USE_OCTAHEDRON_VERTEX(5);
+    USE_OCTAHEDRON_VERTEX(1);
+    USE_OCTAHEDRON_VERTEX(4);
+    USE_OCTAHEDRON_VERTEX(3);
+    USE_OCTAHEDRON_VERTEX(2);
+    USE_OCTAHEDRON_VERTEX(1);
+    glEnd();
+    glEndList();
+    d->isValid = true;
+    return;
+  }
 
   // compute number of vertices and indices
   vertexCount = ( 3 * d->detail + 1 ) * ( 5 * d->detail + 1 );
@@ -138,27 +138,27 @@ void Sphere::initialize()
   d->vertexBuffer = new Vector3f[vertexCount];
   if( ! d->vertexBuffer ) return;
   d->indexBuffer = new unsigned short[indexCount];
-        if( ! d->indexBuffer ) 
-        {
-                 delete [] d->vertexBuffer;
-                 d->vertexBuffer = 0;
-                return;
-        }
+  if( ! d->indexBuffer ) 
+  {
+    delete [] d->vertexBuffer;
+    d->vertexBuffer = 0;
+    return;
+  }
 
   // build vertex buffer
-    for( int strip = 0; strip < 5; strip++ ) {
-      for( int column = 1; column < d->detail; column++ ) {
-        for( int row = column; row <= 2 * d->detail + column; row++ ) {
-          computeVertex( strip, column, row );
-        }
+  for( int strip = 0; strip < 5; strip++ ) {
+    for( int column = 1; column < d->detail; column++ ) {
+      for( int row = column; row <= 2 * d->detail + column; row++ ) {
+        computeVertex( strip, column, row );
       }
     }
+  }
 
-    for( int strip = 1; strip < 5; strip++ ) {
-      for( int row = 0; row <= 3 * d->detail; row++ ) {
-        computeVertex( strip, 0, row );
-      }
+  for( int strip = 1; strip < 5; strip++ ) {
+    for( int row = 0; row <= 3 * d->detail; row++ ) {
+      computeVertex( strip, 0, row );
     }
+  }
 
   for( int row = 0; row <= 2 * d->detail; row++ )
     computeVertex( 0, 0, row );
