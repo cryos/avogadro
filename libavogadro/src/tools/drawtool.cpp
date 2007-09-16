@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -37,16 +37,16 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 
-DrawTool::DrawTool(QObject *parent) : Tool(parent), 
+DrawTool::DrawTool(QObject *parent) : Tool(parent),
   m_beginAtomAdded(false),
-  m_beginAtom(0), 
-  m_endAtom(0), 
-  m_element(6), 
-  m_bond(0), 
+  m_beginAtom(0),
+  m_endAtom(0),
+  m_element(6),
+  m_bond(0),
   m_bondOrder(1),
-  m_prevAtomElement(0), 
-  m_prevBond(0), 
-  m_prevBondOrder(0), 
+  m_prevAtomElement(0),
+  m_prevBond(0),
+  m_prevBondOrder(0),
   //m_beginAtomDrawCommand(0), //m_bondCommand(0), m_endAtomDrawCommand(0),
   m_periodicTable(0),
   m_settingsWidget(0)
@@ -78,7 +78,7 @@ void DrawTool::elementChanged( int index )
   if (index < m_elementsIndex.size() - 1) {
     setElement(m_elementsIndex[index]);
     if (m_periodicTable)
-      m_periodicTable->setSelectedElement(m_elementsIndex[index]);      
+      m_periodicTable->setSelectedElement(m_elementsIndex[index]);
   }
   // Second case: we have a custom element "Other..."
   // Bring up the periodic table widget
@@ -171,7 +171,7 @@ QUndoCommand* DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
   Molecule *molecule = widget->molecule();
-  if(!molecule) { 
+  if(!molecule) {
     return 0;
   }
 
@@ -236,7 +236,7 @@ QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
         // m_beginAtom->update();
       }
     }
-    else 
+    else
     {
       if(m_prevAtomElement)
       {
@@ -297,7 +297,7 @@ QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
               molecule->DeleteBond(m_bond);
             }
             m_bond = 0;
-          } 
+          }
         }
       }
       // (!existingAtom && !hitBeginAtom)
@@ -410,7 +410,7 @@ QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
 #ifdef Q_WS_MAC
   // On the Mac, either use a three-button mouse
   // or hold down the Command key (ControlModifier in Qt notation)
-  else if( (_buttons & Qt::RightButton) || 
+  else if( (_buttons & Qt::RightButton) ||
            ((_buttons & Qt::LeftButton) && (event->modifiers() == Qt::ControlModifier)) )
 #else
   // Every other platform, use a three-button mouse
@@ -419,14 +419,25 @@ QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
   {
     m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
                         event->pos().y()-SEL_BOX_HALF_SIZE,
-                        SEL_BOX_SIZE,
+                          SEL_BOX_SIZE,
                         SEL_BOX_SIZE);
     if(m_hits.size())
     {
+      qDebug() << m_hits[0].name() << " -- " << m_hits[0].type();
+
+      qDebug() << "bondtype -- " << Primitive::BondType;
       // get our top hit
       if(m_hits[0].type() == Primitive::AtomType)
       {
         undo = new DeleteAtomDrawCommand(widget->molecule(), m_hits[0].name());
+//         molecule->DeleteAtom(atom);
+//         widget->updateGeometry();
+//         molecule->update();
+      }
+      if(m_hits[0].type() == Primitive::BondType)
+      {
+        qDebug() << m_hits[0].name();
+        undo = new DeleteBondDrawCommand(widget->molecule(), m_hits[0].name());
 //         molecule->DeleteAtom(atom);
 //         widget->updateGeometry();
 //         molecule->update();
@@ -453,7 +464,7 @@ Atom *DrawTool::newAtom(GLWidget *widget, const QPoint& p)
   moveAtom(widget, atom, p);
   atom->SetAtomicNum(element());
   widget->molecule()->EndModify();
-  
+
   return atom;
 }
 
@@ -466,7 +477,7 @@ void DrawTool::moveAtom(GLWidget *widget, Atom *atom, const QPoint& p)
     refPoint = widget->center();
   }
   Eigen::Vector3d newAtomPos = widget->camera()->unProject(p, refPoint);
-  
+
   atom->setPos(newAtomPos);
 }
 

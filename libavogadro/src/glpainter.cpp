@@ -90,7 +90,7 @@ namespace Avogadro
       GLPainterPrivate() : widget ( 0 ), newQuality(-1), quality ( 0 ), overflow(0),
           spheres ( 0 ), cylinders ( 0 ),
           textRenderer ( new TextRenderer ), initialized ( false ), sharing ( 0 ),
-          type(Primitive::OtherType), id ( 0 ), color(0)  {};
+          type(Primitive::OtherType), id ( -1 ), color(0)  {};
       ~GLPainterPrivate()
       {
         deleteObjects();
@@ -294,15 +294,17 @@ namespace Avogadro
     if (d->type == Primitive::AtomType)
       d->id = static_cast<const Atom *>(primitive)->GetIdx();
     else if (d->type == Primitive::BondType)
-      d->id = static_cast<const Bond *>(primitive)->GetIdx() + 1;
+      d->id = static_cast<const Bond *>(primitive)->GetIdx();
   }
 
   void GLPainter::setName ( Primitive::Type type, int id )
   {
     d->type = type;
     d->id = id;
-    if (type == Primitive::BondType)
+/*    if (type == Primitive::BondType)
+    {
       d->id++;
+    }*/
   }
 
   void GLPainter::setColor ( const Color *color )
@@ -828,7 +830,7 @@ namespace Avogadro
   void GLPainter::pushName()
   {
     // Push the type and id if they are set
-    if (d->type && d->id)
+    if (d->id != -1 && d->type != -1 )
     {
       glPushName(d->type);
       glPushName(d->id);
@@ -843,7 +845,7 @@ namespace Avogadro
       glPopName();
       glPopName();
       d->type = Primitive::OtherType;
-      d->id = 0;
+      d->id = -1;
     }
   }
 

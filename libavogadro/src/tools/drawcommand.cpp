@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -105,7 +105,7 @@ namespace Avogadro {
     d->index = index;
   }
 
-  DeleteAtomDrawCommand::~DeleteAtomDrawCommand() 
+  DeleteAtomDrawCommand::~DeleteAtomDrawCommand()
   {
     delete d;
   }
@@ -199,5 +199,44 @@ namespace Avogadro {
     d->molecule->EndModify();
     d->molecule->update();
   }
+
+  class DeleteBondDrawCommandPrivate {
+    public:
+      DeleteBondDrawCommandPrivate() : index(-1) {};
+
+      Molecule *molecule;
+      Molecule moleculeCopy;
+      int index;
+  };
+
+  DeleteBondDrawCommand::DeleteBondDrawCommand(Molecule *molecule, int index) : d(new DeleteBondDrawCommandPrivate)
+  {
+    setText(QObject::tr("Delete Bond"));
+    d->molecule = molecule;
+    d->moleculeCopy = (*(molecule));
+    d->index = index;
+  }
+
+  DeleteBondDrawCommand::~DeleteBondDrawCommand()
+  {
+    delete d;
+  }
+
+  void DeleteBondDrawCommand::undo()
+  {
+    *d->molecule = d->moleculeCopy;
+    d->molecule->update();
+  }
+
+  void DeleteBondDrawCommand::redo()
+  {
+    OpenBabel::OBBond *bond = d->molecule->GetBond(d->index);
+    if(bond)
+    {
+      d->molecule->DeleteBond(bond);
+      d->molecule->update();
+    }
+  }
+
 
 } // end namespace Avogadro

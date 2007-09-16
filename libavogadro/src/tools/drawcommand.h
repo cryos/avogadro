@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -77,6 +77,21 @@ namespace Avogadro {
     private:
       AddBondDrawCommandPrivate * const d;
   };
+
+  class DeleteBondDrawCommandPrivate;
+  class DeleteBondDrawCommand : public QUndoCommand
+  {
+    public:
+      DeleteBondDrawCommand(Molecule *molecule, int index);
+      ~DeleteBondDrawCommand();
+
+      virtual void undo();
+      virtual void redo();
+
+    private:
+      DeleteBondDrawCommandPrivate * const d;
+  };
+
 
 } // end namespace Avogadro
 

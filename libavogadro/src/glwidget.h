@@ -496,7 +496,7 @@ namespace Avogadro {
        *
        * @return painting condition
        */
-      QWaitCondition *paintCondition() const;
+//       QWaitCondition *paintCondition() const;
 
 
     private:

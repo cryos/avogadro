@@ -161,6 +161,11 @@ namespace Avogadro {
           toolGroup( 0 ),
           selectBuf( 0 ),
           selectBufSize( -1 ),
+#ifdef ENABLE_THREADED_GL
+          thread( 0 ),
+#else
+          initialized( false ),
+#endif
           painter( 0 )
       {}
 
@@ -205,11 +210,20 @@ namespace Avogadro {
 
       GLPainter                *painter;
 
-      QWaitCondition         paintCondition;
-      GLThread               *thread;
 
+#ifdef ENABLE_THREADED_GL
+      QWaitCondition         paintCondition;
       QMutex                 renderMutex;
+
+      GLThread               *thread;
+#else
+      bool initialized;
+#endif
+
+
   };
+
+#ifdef ENABLE_THREADED_GL
   class GLThread : public QThread
   {
     public:
@@ -244,7 +258,7 @@ namespace Avogadro {
       d->renderMutex.lock();
 
       // unlock and wait
-      m_widget->paintCondition()->wait( &( d->renderMutex ) );
+      d->paintCondition.wait( &( d->renderMutex ) );
       if ( !m_running ) {
         d->renderMutex.unlock();
         break;
@@ -280,6 +294,7 @@ namespace Avogadro {
   {
     m_running = false;
   }
+#endif
 
   class GLPainterDevice : public PainterDevice
   {
@@ -332,10 +347,12 @@ namespace Avogadro {
       d->painter->decrementShare();
     }
 
+#ifdef ENABLE_THREADED_GL
     // cleanup our thread
     d->thread->stop();
     d->paintCondition.wakeAll();
     d->thread->wait();
+#endif
 
     // delete the engines
     foreach( Engine *engine, d->engines ) {
@@ -361,9 +378,11 @@ namespace Avogadro {
     loadEngines();
     d->camera->setParent( this );
     setAutoBufferSwap( false );
+#ifdef ENABLE_THREADED_GL
     d->thread = new GLThread( this, this );
     doneCurrent();
     d->thread->start();
+#endif
   }
 
   GLWidget *GLWidget::m_current = 0;
@@ -380,6 +399,7 @@ namespace Avogadro {
 
   void GLWidget::initializeGL()
   {
+    qDebug() << "Initialized";
     qglClearColor( d->background );
 
     glShadeModel( GL_SMOOTH );
@@ -418,7 +438,18 @@ namespace Avogadro {
 
   void GLWidget::resizeEvent( QResizeEvent *event )
   {
+#ifdef ENABLE_THREADED_GL
     d->thread->resize( event->size().width(), event->size().height() );
+#else
+    makeCurrent();
+    if(!d->initialized)
+    {
+      d->initialized = true;
+      initializeGL();
+    }
+    resizeGL( event->size().width(), event->size().height() );
+    doneCurrent();
+#endif
   }
 
   void GLWidget::resizeGL( int width, int height )
@@ -428,9 +459,13 @@ namespace Avogadro {
 
   void GLWidget::setBackground( const QColor &background )
   {
+#ifdef ENABLE_THREADED_GL
     d->renderMutex.lock();
+#endif
     d->background = background; qglClearColor( background );
+#ifdef ENABLE_THREADED_GL
     d->renderMutex.unlock();
+#endif
   }
 
   QColor GLWidget::background() const
@@ -573,8 +608,20 @@ namespace Avogadro {
 
   void GLWidget::paintEvent( QPaintEvent * )
   {
+#ifdef ENABLE_THREADED_GL
     // tell our thread to paint
     d->paintCondition.wakeAll();
+#else
+    makeCurrent();
+    if(!d->initialized)
+    {
+      d->initialized = true;
+      initializeGL();
+    }
+    paintGL();
+    swapBuffers();
+    doneCurrent();
+#endif
   }
 
   bool GLWidget::event( QEvent *event )
@@ -968,7 +1015,9 @@ namespace Avogadro {
       d->selectBuf = new GLuint[d->selectBufSize];
     }
 
+#ifdef ENABLE_THREADED_GL
     d->renderMutex.lock();
+#endif
     makeCurrent();
     //X   hits.clear();
 
@@ -1005,7 +1054,9 @@ namespace Avogadro {
 
     doneCurrent();
 
+#ifdef ENABLE_THREADED_GL
     d->renderMutex.unlock();
+#endif
 
     // if no error occurred and there are hits, process them
     if ( hit_count > 0 ) {
@@ -1029,12 +1080,12 @@ namespace Avogadro {
           type = *ptr++;
           name = *ptr++;
         }
-        if ( name ) {
-//dc:           printf ("%d(%d) ", name,type);
+//         if ( name ) {
+/*           printf ("%d(%d) ", name,type);*/
           hits.append( GLHit( type,name,minZ,maxZ ) );
-        }
+//         }
       }
-//dc:       printf ("\n");
+//      printf ("\n");
       qSort( hits );
     }
 
@@ -1056,7 +1107,7 @@ namespace Avogadro {
       if(hit.type() == Primitive::AtomType)
         return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
       else if(hit.type() == Primitive::BondType)
-        return static_cast<Bond *>(molecule()->GetBond(hit.name()-1));
+        return static_cast<Bond *>(molecule()->GetBond(hit.name()));
     }
     return 0;
   }
@@ -1092,7 +1143,7 @@ namespace Avogadro {
     foreach( GLHit hit, chits )
     {
       if(hit.type() == Primitive::BondType)
-        return static_cast<Bond *>(molecule()->GetBond(hit.name()-1));
+        return static_cast<Bond *>(molecule()->GetBond(hit.name()));
     }
     return 0;
   }
@@ -1197,10 +1248,10 @@ namespace Avogadro {
     return d->cCells;
   }
 
-  QWaitCondition *GLWidget::paintCondition() const
-  {
-    return &d->paintCondition;
-  }
+//   QWaitCondition *GLWidget::paintCondition() const
+//   {
+//     return &d->paintCondition;
+//   }
 
 }
 
