@@ -24,4 +24,8 @@
 
 #define INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}"
 
+#define SVN_REVISION "@SVN_REVISION@"
+
+#define VERSION "@VERSION@"
+
 #endif  // __CONFIG_H

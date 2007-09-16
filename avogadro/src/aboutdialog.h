@@ -22,12 +22,14 @@
 
 #include <QtGui/QDialog>
 
-class AboutDialog : public QDialog
-{
-    Q_OBJECT
-    
+namespace Avogadro {
+  class AboutDialog : public QDialog
+  {
+      Q_OBJECT
+
     public:
-        AboutDialog (QWidget *parent);
-        ~AboutDialog();
-};
+      AboutDialog( QWidget *parent );
+      ~AboutDialog();
+  };
+}
 #endif // ABOUTDIALOG_H

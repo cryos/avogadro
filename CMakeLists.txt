@@ -24,13 +24,6 @@ if(NOT LIB_INSTALL_DIR)
   set(LIB_INSTALL_DIR lib)
 endif(NOT LIB_INSTALL_DIR)
 
-# Generate the configured header svn.h
-execute_process(COMMAND svnversion -n ${CMAKE_SOURCE_DIR}
-                OUTPUT_VARIABLE SVN_REVISION)
-configure_file(${CMAKE_SOURCE_DIR}/cmake/svn.h.cmake
-               ${CMAKE_BINARY_DIR}/svn.h)
-include_directories(${CMAKE_BINARY_DIR})
-
 CONFIGURE_FILE(
   "${CMAKE_MODULE_PATH}/cmake_uninstall.cmake.in"
   "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"

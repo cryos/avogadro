@@ -33,7 +33,7 @@
 #endif
 
 // get the SVN revision string
-#include<svn.h>
+#include <config.h>
 
 using namespace Avogadro;
 
@@ -43,7 +43,7 @@ using namespace Avogadro;
 
 int main(int argc, char *argv[])
 {
-  qDebug() << "This is Avogadro, SVN revision" << SVN_REVISION_STRING;
+  qDebug() << "This is Avogadro, SVN revision" << SVN_REVISION;
 
   // set up groups for QSettings
   QCoreApplication::setOrganizationName("SourceForge");

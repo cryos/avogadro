@@ -12,11 +12,12 @@ include_directories(
   ${CMAKE_SOURCE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}/..
-  ${OPENBABEL2_INCLUDE_DIR} 
+  ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN_INCLUDE_DIR}
 )
 
 set(libavogadro_SRCS
+  global.cpp
   camera.cpp
   color.cpp
   engine.cpp
@@ -64,7 +65,7 @@ qt4_automoc(${libavogadro_SRCS})
 
 ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS})
 SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
-set_target_properties(avogadro-lib PROPERTIES VERSION 0.0.1 SOVERSION 0 )
+set_target_properties(avogadro-lib PROPERTIES VERSION ${VERSION} SOVERSION 0 )
 
 TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                    ${OPENGL_LIBRARIES}                                   )

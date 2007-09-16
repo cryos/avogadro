@@ -208,9 +208,6 @@ namespace Avogadro {
 
       bool                   stable;
 
-      GLPainter                *painter;
-
-
 #ifdef ENABLE_THREADED_GL
       QWaitCondition         paintCondition;
       QMutex                 renderMutex;
@@ -220,6 +217,7 @@ namespace Avogadro {
       bool initialized;
 #endif
 
+      GLPainter                *painter;
 
   };
 

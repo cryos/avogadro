@@ -1,4 +1,10 @@
 project(libavogadro)
+set(VERSION 0.2.0)
+
+# Generate SVN_REVISION variable
+execute_process(COMMAND svnversion -n ${CMAKE_SOURCE_DIR}
+                OUTPUT_VARIABLE SVN_REVISION)
+
 
 if (WIN32)
   add_definitions( -DWIN32 )

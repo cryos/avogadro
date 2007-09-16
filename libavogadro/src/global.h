@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -24,6 +24,8 @@
 
 #ifndef __GLOBAL_H
 #define __GLOBAL_H
+
+#include <QString>
 
 #ifdef WIN32
 # ifndef NOMINMAX
@@ -80,5 +82,12 @@ const int      SEL_BOX_HALF_SIZE                     = 4;
 const int      SEL_BOX_SIZE                          = 2 * SEL_BOX_HALF_SIZE + 1;
 const double   SEL_ATOM_EXTRA_RADIUS                 = 0.18;
 const double   SEL_BOND_EXTRA_RADIUS                 = 0.07;
+
+namespace Avogadro
+{
+  QString libVersion();
+  QString libSvnRevision();
+  QString libPrefix();
+}
 
 #endif  // __GLOBAL_H
