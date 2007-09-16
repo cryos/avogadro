@@ -24,6 +24,8 @@
 #include <QApplication>
 #include <QMessageBox>
 
+#include <avogadro/global.h>
+
 // Avogadro Includes
 #include "mainwindow.h"
 #include "application.h"
@@ -37,14 +39,15 @@
 
 using namespace Avogadro;
 
+void printVersion(const QString &appName);
+void printHelp(const QString &appName);
+
 // Import static plugins
 // Q_IMPORT_PLUGIN(BSEngine)
 // Q_IMPORT_PLUGIN(WireframeEngine)
 
 int main(int argc, char *argv[])
 {
-  qDebug() << "This is Avogadro, SVN revision" << SVN_REVISION;
-
   // set up groups for QSettings
   QCoreApplication::setOrganizationName("SourceForge");
   QCoreApplication::setOrganizationDomain("sourceforge.net");
@@ -68,14 +71,25 @@ int main(int argc, char *argv[])
   defFormat.setSampleBuffers(true);
   QGLFormat::setDefaultFormat(defFormat);
 
-  QStringList files = app.arguments();
+  QStringList arguments = app.arguments();
 
-  qDebug() << files;
-  if (files.size() > 1) {
+  if(arguments.contains("-v") || arguments.contains("--version"))
+  {
+    printVersion(arguments[0]);
+    return 0;
+  }
+  else if(arguments.contains("-h") || arguments.contains("--help"))
+  {
+    printHelp(arguments[0]);
+    return 0;
+  }
+
+  qDebug() << arguments;
+  if (arguments.size() > 1) {
     QPoint p(100, 100), offset(40,40);
 //     foreach(QString file, files)
-    QList<QString>::const_iterator i = files.constBegin();
-    for (++i; i != files.constEnd(); ++i)
+    QList<QString>::const_iterator i = arguments.constBegin();
+    for (++i; i != arguments.constEnd(); ++i)
     {
       MainWindow *other = new MainWindow;
       p += offset;
@@ -88,4 +102,21 @@ int main(int argc, char *argv[])
     window->show();
   }
   return app.exec();
+}
+
+void printVersion(const QString &)
+{
+  std::wcout << QObject::tr("Avogadro: \t%1 (rev %2)\n"
+      "LibAvogadro: \t%3 (rev %4)\n"
+      "Qt: \t\t%5\n").arg(VERSION, SVN_REVISION, libVersion(), libSvnRevision(), qVersion()).toStdWString();
+}
+
+void printHelp(const QString &appName)
+{
+  std::wcout << QObject::tr("Usage: %1 [options] [files]\n\n"
+      "Advanced Molecular Editor (version %2)\n\n"
+      "Options:\n"
+      "  -h, --help\t\tShow help options (this)\n"
+      "  -v, --version\t\tShow version information\n"
+                           ).arg(appName, VERSION).toStdWString();
 }
