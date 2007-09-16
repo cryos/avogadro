@@ -50,8 +50,10 @@ int main(int argc, char *argv[])
   QCoreApplication::setOrganizationDomain("sourceforge.net");
   QCoreApplication::setApplicationName("Avogadro");
 
+#ifdef ENABLE_THREADED_GL
 #ifdef Q_WS_X11
   XInitThreads();
+#endif
 #endif
 
   Application app(argc, argv);
