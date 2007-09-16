@@ -73,6 +73,7 @@ namespace Avogadro
       Molecule  *molecule;
 
       QString    fileName;
+      QString    fileDialogPath;
       QUndoStack *undoStack;
 
       FlowLayout *toolsFlow;
@@ -216,13 +217,16 @@ namespace Avogadro
   void MainWindow::openFile()
   {
     QString fileName = QFileDialog::getOpenFileName( this,
-                       tr( "Open File" ) );
+                       tr( "Open File" ), d->fileDialogPath );
+
     openFile( fileName );
   }
 
   void MainWindow::openFile( const QString &fileName )
   {
     if ( !fileName.isEmpty() ) {
+
+      d->fileDialogPath = QFileInfo(fileName).absolutePath();
 
       // First check if we closed all the windows on Mac
       // if so, show the hidden window
@@ -321,13 +325,63 @@ namespace Avogadro
   bool MainWindow::saveAs()
   {
     QString fileName = QFileDialog::getSaveFileName( this,
-                       tr( "Save Molecule As" ) );
+                       tr( "Save Molecule As" ), d->fileDialogPath );
     if ( fileName.isEmpty() )
+    {
       return false;
+    }
+
+    // we must save the file before we can set the fileName
+    bool results = saveFile( fileName );
 
     setFileName( fileName );
-    return saveFile( fileName );
+
+    return results;
   }
+
+  bool MainWindow::saveFile( const QString &fileName )
+  {
+    QFile file( fileName );
+    if ( !file.open( QFile::WriteOnly | QFile::Text ) ) {
+      QMessageBox::warning( this, tr( "Avogadro" ),
+                            tr( "Cannot write to the file %1:\n%2." )
+                                .arg( fileName )
+                                .arg( file.errorString() ) );
+      return false;
+    }
+
+    QApplication::setOverrideCursor( Qt::WaitCursor );
+    statusBar()->showMessage( tr( "Saving file." ), 2000 );
+
+    OBConversion conv;
+    OBFormat     *outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
+    if ( !outFormat || !conv.SetOutFormat( outFormat ) ) {
+      QMessageBox::warning( this, tr( "Avogadro" ),
+                            tr( "Cannot write to file format of file %1." )
+                                .arg( fileName ) );
+      return false;
+    }
+    ofstream     ofs;
+    ofs.open(( fileName.toAscii() ).data() );
+    if ( !ofs ) { // shouldn't happen, already checked file above
+      QMessageBox::warning( this, tr( "Avogadro" ),
+                            tr( "Cannot write to the file %1." )
+                                .arg( fileName ) );
+      return false;
+    }
+
+    OBMol *molecule = dynamic_cast<OBMol*>( d->molecule );
+    if ( conv.Write( molecule, &ofs ) )
+      statusBar()->showMessage( "Save succeeded.", 5000 );
+    else
+      statusBar()->showMessage( "Saving molecular file failed.", 5000 );
+    QApplication::restoreOverrideCursor();
+
+    setWindowModified( false );
+    statusBar()->showMessage( tr( "File saved" ), 2000 );
+    return true;
+  }
+
 
   void MainWindow::undoStackClean( bool clean )
   {
@@ -885,57 +939,16 @@ namespace Avogadro
     return d->molecule;
   }
 
-  bool MainWindow::saveFile( const QString &fileName )
-  {
-    QFile file( fileName );
-    if ( !file.open( QFile::WriteOnly | QFile::Text ) ) {
-      QMessageBox::warning( this, tr( "Avogadro" ),
-                            tr( "Cannot write to the file %1:\n%2." )
-                            .arg( fileName )
-                            .arg( file.errorString() ) );
-      return false;
-    }
-
-    QApplication::setOverrideCursor( Qt::WaitCursor );
-    statusBar()->showMessage( tr( "Saving file." ), 2000 );
-
-    OBConversion conv;
-    OBFormat     *outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
-    if ( !outFormat || !conv.SetOutFormat( outFormat ) ) {
-      QMessageBox::warning( this, tr( "Avogadro" ),
-                            tr( "Cannot write to file format of file %1." )
-                            .arg( fileName ) );
-      return false;
-    }
-    ofstream     ofs;
-    ofs.open(( fileName.toAscii() ).data() );
-    if ( !ofs ) { // shouldn't happen, already checked file above
-      QMessageBox::warning( this, tr( "Avogadro" ),
-                            tr( "Cannot write to the file %1." )
-                            .arg( fileName ) );
-      return false;
-    }
-
-    OBMol *molecule = dynamic_cast<OBMol*>( d->molecule );
-    if ( conv.Write( molecule, &ofs ) )
-      statusBar()->showMessage( "Save succeeded.", 5000 );
-    else
-      statusBar()->showMessage( "Saving molecular file failed.", 5000 );
-    QApplication::restoreOverrideCursor();
-
-    setWindowModified( false );
-    statusBar()->showMessage( tr( "File saved" ), 2000 );
-    return true;
-  }
-
   void MainWindow::setFileName( const QString &fileName )
   {
     if ( fileName.isEmpty() ) {
       d->fileName.clear();
       setWindowTitle( tr( "[*]Avogadro" ) );
     } else {
-      d->fileName = QFileInfo( fileName ).canonicalFilePath();
-      setWindowTitle( tr( "%1[*] - %2" ).arg( strippedName( d->fileName ) )
+      QFileInfo fileInfo(fileName);
+      d->fileName = fileInfo.canonicalFilePath();
+      d->fileDialogPath = fileInfo.absolutePath();
+      setWindowTitle( tr( "%1[*] - %2" ).arg( fileInfo.fileName() )
                       .arg( tr( "Avogadro" ) ) );
 
       QSettings settings; // already set up properly via main.cpp
@@ -963,7 +976,7 @@ namespace Avogadro
     int numRecentFiles = qMin( files.size(), ( int )maxRecentFiles );
 
     for ( int i = 0; i < numRecentFiles; ++i ) {
-      d->actionRecentFile[i]->setText( strippedName( files[i] ) );
+      d->actionRecentFile[i]->setText( QFileInfo(files[i]).fileName() );
       d->actionRecentFile[i]->setData( files[i] );
       d->actionRecentFile[i]->setVisible( true );
     }
@@ -973,19 +986,21 @@ namespace Avogadro
     //     ui.actionSeparator->setVisible(numRecentFiles > 0);
   }
 
-  QString MainWindow::strippedName( const QString &fullFileName )
-  {
-    return QFileInfo( fullFileName ).fileName();
-  }
-
   MainWindow *MainWindow::findMainWindow( const QString &fileName )
   {
     QString canonicalFilePath = QFileInfo( fileName ).canonicalFilePath();
+    qDebug() << "Canonical File Path: " << canonicalFilePath;
 
     foreach( QWidget *widget, qApp->topLevelWidgets() ) {
       MainWindow *window = qobject_cast<MainWindow *>( widget );
+      if (window)
+      {
+        qDebug() << "- " << window->d->fileName;
+      }
       if ( window && window->d->fileName == canonicalFilePath )
+      {
         return window;
+      }
     }
     return 0;
   }

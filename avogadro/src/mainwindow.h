@@ -106,7 +106,7 @@ namespace Avogadro {
       bool maybeSave();
       void setFileName(const QString &fileName);
       void updateRecentFileActions();
-      QString strippedName(const QString &fullFileName);
+
       //! Find an existing main window by filename
       //! \return a pointer to the appropriate window, or NULL if none exists
       MainWindow* findMainWindow(const QString &fileName);
