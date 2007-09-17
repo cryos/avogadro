@@ -46,9 +46,11 @@ namespace Avogadro {
    *
    * This class implements navigation around the scene.
    */
+  class RotationEyecandy;
   class NavigateTool : public Tool
   {
     Q_OBJECT
+    friend class RotationEyecandy;
 
     public:
       //! Constructor
@@ -77,6 +79,8 @@ namespace Avogadro {
       virtual int usefulness() const;
 
       virtual bool paint(GLWidget *widget);
+      
+      Atom *clickedAtom();
 
     protected:
       Atom *              m_clickedAtom;
@@ -89,7 +93,30 @@ namespace Avogadro {
       GLuint              m_selectedPrimitivesDL;
 
       QPoint              m_lastDraggingPosition;
+      
+      RotationEyecandy * m_rotationEyecandy;
   };
+
+  class RotationEyecandy
+  {
+      void drawHorizRibbon();
+      void drawVertRibbon();
+      void drawRightArrow();
+      void drawLeftArrow();
+      void drawUpArrow();
+      void drawDownArrow();
+      
+      NavigateTool *m_navtool;
+      double m_vAngleStart, m_vAngleEnd, m_hAngleStart, m_hAngleEnd;
+      double m_renderRadius;
+      Eigen::Vector3d m_center, m_xAxis, m_yAxis, m_zAxis;
+    
+    public:
+      RotationEyecandy(NavigateTool * navtool) : m_navtool(navtool) {}
+      ~RotationEyecandy() {}
+      void draw(GLWidget *widget);
+  };
+  
 
   class NavigateToolFactory : public QObject, public ToolFactory
     {

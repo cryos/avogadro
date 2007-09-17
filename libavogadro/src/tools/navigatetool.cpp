@@ -35,7 +35,7 @@
 
 #include <QtPlugin>
 
-#define TESS_LEVEL 20
+#define TESS_LEVEL 32
 
 using namespace std;
 using namespace OpenBabel;
@@ -51,10 +51,12 @@ NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_
         "Middle Mouse: Click and drag to zoom in or out\n"
         "Right Mouse:  Click and drag to move the view"));
   action->setShortcut(Qt::Key_F9);
+  m_rotationEyecandy = new RotationEyecandy(this);
 }
 
 NavigateTool::~NavigateTool()
 {
+  delete m_rotationEyecandy;
 }
 
 int NavigateTool::usefulness() const
@@ -142,6 +144,8 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
         && event->modifiers() == Qt::NoModifier)
     {
       // rotation around the center of the molecule
+      hAngle += deltaDragging.x();
+      vAngle += deltaDragging.y();
       Navigate::rotate(widget, widget->center(), deltaDragging.x(), deltaDragging.y());
     }
   // On the Mac, either use a three-button mouse
@@ -192,147 +196,13 @@ QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
 bool NavigateTool::paint(GLWidget *widget)
 {
   if(m_leftButtonPressed) {
-    if(m_clickedAtom) {
-      // Draw ribbons around the atom rotation is centred on and arrows at the end
-      double renderRadius = widget->radius(m_clickedAtom);
-      renderRadius += 0.04;
-      glEnable(GL_BLEND);
-      glDepthMask(GL_FALSE);
-      Color(1.0, 1.0, 0.3, 0.7).applyAsMaterials();
-
-      // Set up the axes and some vectors to work with
-      Vector3d xAxis = widget->camera()->backtransformedXAxis();
-      Vector3d yAxis = widget->camera()->backtransformedYAxis();
-      Vector3d zAxis = widget->camera()->backtransformedZAxis();
-      Vector3d v, v1, v2, v3;
-
-      // Horizontal arrows
-      // The start and stop angles for the ribbons
-      double angle_start = 2.0 * M_PI * 0.30 - hAngle / 180.;
-      double angle_end = 2.0 * M_PI * 1.20 - hAngle / 180.;
-
-      // Horizontal ribbon, back face
-      glBegin(GL_QUAD_STRIP);
-      for(int i = 0; i <= TESS_LEVEL; i++) {
-        double alpha = angle_start + (static_cast<double>(i) / TESS_LEVEL)
-                                   * (angle_end - angle_start);
-        v = cos(alpha) * xAxis + sin(alpha) * zAxis;
-        v1 = v - 0.1  * yAxis;
-        v2 = v + 0.1  * yAxis;
-        glNormal3dv(v.array());
-        glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
-        glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
-      }
-      glEnd();
-
-      // Horizontal ribbon, front face
-      glBegin(GL_QUAD_STRIP);
-      for(int i = 0; i <= TESS_LEVEL; i++) {
-        double alpha = angle_start + (static_cast<double>(i) / TESS_LEVEL)
-                                   * (angle_end - angle_start);
-        v = cos(alpha) * xAxis + sin(alpha) * zAxis;
-        v1 = v - 0.1  * yAxis;
-        v2 = v + 0.1  * yAxis;
-        glNormal3dv(v.array());
-        glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
-        glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
-      }
-      glEnd();
-
-      // Left arrow, pointing rightwards
-      v = cos(angle_start) * xAxis + sin(angle_start) * zAxis;
-      v1 = v - 0.2 * yAxis;
-      v2 = v + 0.2 * yAxis;
-      v3 = v + 0.2 * xAxis;
-      glBegin(GL_TRIANGLES);
-      glNormal3dv(v.array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v3).array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
-      glEnd();
-
-      // Right arrow, pointing leftwards
-      v = cos(angle_end) * xAxis + sin(angle_end) * zAxis;
-      v1 = v + 0.2 * yAxis;
-      v2 = v - 0.2 * yAxis;
-      v3 = v - 0.2 * xAxis;
-      glBegin(GL_TRIANGLES);
-      glNormal3dv(v.array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v3).array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
-      glEnd();
-
-      // Vertical arrows
-      // The start and stop angles for the ribbons.
-      angle_start = 2.0 * M_PI * 0.30 + vAngle / 180.;
-      angle_end = 2.0 * M_PI * 1.20 + vAngle / 180.;
-      // Vertical ribbon, back face
-      glBegin(GL_QUAD_STRIP);
-      for(int i = 0; i <= TESS_LEVEL; i++) {
-        double alpha = angle_start + (static_cast<double>(i) / TESS_LEVEL)
-                                   * (angle_end - angle_start);
-        v = cos(alpha) * yAxis + sin(alpha) * zAxis;
-        v1 = v - 0.1  * xAxis;
-        v2 = v + 0.1  * xAxis;
-        glNormal3dv(v.array());
-        glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
-        glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
-      }
-      glEnd();
-
-      // horizontal ribbon, front face
-      glBegin(GL_QUAD_STRIP);
-      for(int i = 0; i <= TESS_LEVEL; i++) {
-        double alpha = angle_start + (static_cast<double>(i) / TESS_LEVEL)
-                                   * (angle_end - angle_start);
-        v = cos(alpha) * yAxis + sin(alpha) * zAxis;
-        v1 = v - 0.1  * xAxis;
-        v2 = v + 0.1  * xAxis;
-        glNormal3dv(v.array());
-        glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
-        glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
-      }
-      glEnd();
-
-      // left arrow, pointing rightwards
-      v = cos(angle_start) * yAxis + sin(angle_start) * zAxis;
-      v1 = v - 0.2 * xAxis;
-      v2 = v + 0.2 * xAxis;
-      v3 = v + 0.2 * yAxis;
-      glBegin(GL_TRIANGLES);
-      glNormal3dv(v.array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v3).array());
-      glEnd();
-
-      // right arrow, pointing leftwards
-      v = cos(angle_end) * yAxis + sin(angle_end) * zAxis;
-      v1 = v + 0.2 * xAxis;
-      v2 = v - 0.2 * xAxis;
-      v3 = v - 0.2 * yAxis;
-      glBegin(GL_TRIANGLES);
-      glNormal3dv(v.array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
-      glVertex3dv((m_clickedAtom->pos() + renderRadius * v3).array());
-      glEnd();
-
-      glDisable(GL_BLEND);
-      glDepthMask(GL_TRUE);
-    }
-    else
-    {
-      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
-      widget->painter()->drawSphere(widget->center(), 0.10);
-    }
+    m_rotationEyecandy->draw(widget);
   }
 
   else if(m_midButtonPressed) {
     if(m_clickedAtom) {
-      double renderRadius = widget->radius(m_clickedAtom);
-      renderRadius += 0.10;
+      double renderRadius = qMax(widget->radius(m_clickedAtom) * 1.1 + 0.2,
+                                 0.1 * widget->camera()->distance(m_clickedAtom->pos()));
       glEnable( GL_BLEND );
       widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
       widget->painter()->drawSphere(m_clickedAtom->pos(), renderRadius);
@@ -346,101 +216,241 @@ bool NavigateTool::paint(GLWidget *widget)
   }
 
   else if(m_rightButtonPressed) {
-    if(m_clickedAtom) {
-      // Draw arrows coming out of the atom
-      double renderRadius = widget->radius(m_clickedAtom);
-      renderRadius += 0.04;
-      glEnable(GL_BLEND);
-      glDisable(GL_LIGHTING);
-      glDepthMask(GL_FALSE);
-      glColor4f(1.0, 1.0, 0.3, 0.7);
-      //Color(1.0, 1.0, 0.3, 0.7).applyAsMaterials();
-
-      // Set up the axes and some vectors to work with
-      Vector3d xAxis = widget->camera()->backtransformedXAxis();
-      Vector3d yAxis = widget->camera()->backtransformedYAxis();
-      Vector3d zAxis = widget->camera()->backtransformedZAxis();
-      Vector3d v;
-
-      // Horizontal arrow, pointing left
-      v = m_clickedAtom->pos() + renderRadius*zAxis;
-      glBegin(GL_QUAD_STRIP);
-      glVertex3dv((v + 0.05*yAxis).array());
-      glVertex3dv((v - 0.05*yAxis).array());
-      v += 0.6*renderRadius * xAxis;
-      glVertex3dv((v + 0.05*yAxis).array());
-      glVertex3dv((v - 0.05*yAxis).array());
-      glEnd();
-      glBegin(GL_TRIANGLES);
-      glVertex3dv((v + 0.1*yAxis).array());
-      glVertex3dv((v - 0.1*yAxis).array());
-      glVertex3dv((v + 0.2*renderRadius*xAxis).array());
-      glEnd();
-      // Horizontal arrow, pointing right
-      v = m_clickedAtom->pos() + renderRadius*zAxis;
-      glBegin(GL_QUAD_STRIP);
-      glVertex3dv((v - 0.05*yAxis).array());
-      glVertex3dv((v + 0.05*yAxis).array());
-      v -= 0.6*renderRadius * xAxis;
-      glVertex3dv((v - 0.05*yAxis).array());
-      glVertex3dv((v + 0.05*yAxis).array());
-      glEnd();
-      glBegin(GL_TRIANGLES);
-      glVertex3dv((v - 0.1*yAxis).array());
-      glVertex3dv((v + 0.1*yAxis).array());
-      glVertex3dv((v - 0.2*renderRadius*xAxis).array());
-      glEnd();
-      // Vertical arrow, pointing up
-      v = m_clickedAtom->pos() + renderRadius*zAxis;
-      glBegin(GL_QUAD_STRIP);
-      glVertex3dv((v - 0.05*xAxis).array());
-      glVertex3dv((v + 0.05*xAxis).array());
-      v += 0.6*renderRadius * yAxis;
-      glVertex3dv((v - 0.05*xAxis).array());
-      glVertex3dv((v + 0.05*xAxis).array());
-      glEnd();
-      glBegin(GL_TRIANGLES);
-      glVertex3dv((v - 0.1*xAxis).array());
-      glVertex3dv((v + 0.1*xAxis).array());
-      glVertex3dv((v + 0.2*renderRadius*yAxis).array());
-      glEnd();
-      // Vertical arrow, pointing down
-      v = m_clickedAtom->pos() + renderRadius*zAxis;
-      glBegin(GL_QUAD_STRIP);
-      glVertex3dv((v + 0.05*xAxis).array());
-      glVertex3dv((v - 0.05*xAxis).array());
-      v -= 0.6*renderRadius * yAxis;
-      glVertex3dv((v + 0.05*xAxis).array());
-      glVertex3dv((v - 0.05*xAxis).array());
-      glEnd();
-      glBegin(GL_TRIANGLES);
-      glVertex3dv((v + 0.1*xAxis).array());
-      glVertex3dv((v - 0.1*xAxis).array());
-      glVertex3dv((v - 0.2*renderRadius*yAxis).array());
-      glEnd();
-/*      for(int i = 0; i <= TESS_LEVEL; i++) {
-        double alpha = angle_start + (static_cast<double>(i) / TESS_LEVEL)
-                                   * (angle_end - angle_start);
-        v = cos(alpha) * xAxis + sin(alpha) * zAxis;
-        v1 = v - 0.1  * yAxis;
-        v2 = v + 0.1  * yAxis;
-        glNormal3dv(v.array());
-        glVertex3dv((m_clickedAtom->pos() + renderRadius * v2).array());
-        glVertex3dv((m_clickedAtom->pos() + renderRadius * v1).array());
-      } */
-
-      glDisable(GL_BLEND);
-      glEnable(GL_LIGHTING);
-      glDepthMask(GL_TRUE);
+    Vector3d center;
+    double renderRadius;
+    double shift;
+    if(clickedAtom())
+    {
+      center = clickedAtom()->pos();
+      renderRadius = qMax(widget->radius(clickedAtom()) * 1.1 + 0.2,
+                            0.1 * widget->camera()->distance(center));
+      shift = widget->radius(clickedAtom());
     }
     else
     {
-      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
-      widget->painter()->drawSphere(widget->center(), 0.10);
+      center = widget->center();
+      renderRadius = qMax(qMax(widget->radius(), CAMERA_NEAR_DISTANCE),
+                          0.1 * widget->camera()->distance(center));
+      shift = 0.;
     }
+    glEnable(GL_BLEND);
+    glDisable(GL_LIGHTING);
+    glDepthMask(GL_FALSE);
+    glColor4f(1.0, 1.0, 0.3, 0.7);
+    //Color(1.0, 1.0, 0.3, 0.7).applyAsMaterials();
+
+    // Set up the axes and some vectors to work with
+    Vector3d xAxis = widget->camera()->backtransformedXAxis();
+    Vector3d yAxis = widget->camera()->backtransformedYAxis();
+    Vector3d zAxis = widget->camera()->backtransformedZAxis();
+    Vector3d v;
+
+    // Horizontal arrow, pointing left
+    v = center + shift*zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v + 0.05*renderRadius*yAxis).array());
+    glVertex3dv((v - 0.05*renderRadius*yAxis).array());
+    v += 0.6*renderRadius * xAxis;
+    glVertex3dv((v + 0.05*renderRadius*yAxis).array());
+    glVertex3dv((v - 0.05*renderRadius*yAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v + 0.1*renderRadius*yAxis).array());
+    glVertex3dv((v - 0.1*renderRadius*yAxis).array());
+    glVertex3dv((v + 0.2*renderRadius*xAxis).array());
+    glEnd();
+    // Horizontal arrow, pointing right
+    v = center + shift*zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v - 0.05*renderRadius*yAxis).array());
+    glVertex3dv((v + 0.05*renderRadius*yAxis).array());
+    v -= 0.6*renderRadius * xAxis;
+    glVertex3dv((v - 0.05*renderRadius*yAxis).array());
+    glVertex3dv((v + 0.05*renderRadius*yAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v - 0.1*renderRadius*yAxis).array());
+    glVertex3dv((v + 0.1*renderRadius*yAxis).array());
+    glVertex3dv((v - 0.2*renderRadius*xAxis).array());
+    glEnd();
+    // Vertical arrow, pointing up
+    v = center + shift*zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v - 0.05*renderRadius*xAxis).array());
+    glVertex3dv((v + 0.05*renderRadius*xAxis).array());
+    v += 0.6*renderRadius * yAxis;
+    glVertex3dv((v - 0.05*renderRadius*xAxis).array());
+    glVertex3dv((v + 0.05*renderRadius*xAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v - 0.1*renderRadius*xAxis).array());
+    glVertex3dv((v + 0.1*renderRadius*xAxis).array());
+    glVertex3dv((v + 0.2*renderRadius*yAxis).array());
+    glEnd();
+    // Vertical arrow, pointing down
+    v = center + shift*zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v + 0.05*renderRadius*xAxis).array());
+    glVertex3dv((v - 0.05*renderRadius*xAxis).array());
+    v -= 0.6*renderRadius * yAxis;
+    glVertex3dv((v + 0.05*renderRadius*xAxis).array());
+    glVertex3dv((v - 0.05*renderRadius*xAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v + 0.1*renderRadius*xAxis).array());
+    glVertex3dv((v - 0.1*renderRadius*xAxis).array());
+    glVertex3dv((v - 0.2*renderRadius*yAxis).array());
+    glEnd();
+
+    glDisable(GL_BLEND);
+    glEnable(GL_LIGHTING);
+    glDepthMask(GL_TRUE);
   }
 
   return true;
+}
+
+Atom *NavigateTool::clickedAtom()
+{
+  return m_clickedAtom;
+}
+
+void RotationEyecandy::drawHorizRibbon()
+{
+  glBegin(GL_QUAD_STRIP);
+  for(int i = 0; i <= TESS_LEVEL; i++) {
+    double alpha = m_hAngleStart + (static_cast<double>(i) / TESS_LEVEL)
+                                * (m_hAngleEnd - m_hAngleStart);
+    Vector3d v = cos(alpha) * m_xAxis + sin(alpha) * m_zAxis;
+    Vector3d v1 = v - 0.1  * m_yAxis;
+    Vector3d v2 = v + 0.1  * m_yAxis;
+    glNormal3dv(v.array());
+    glVertex3dv((m_center + m_renderRadius * v1).array());
+    glVertex3dv((m_center + m_renderRadius * v2).array());
+  }
+  glEnd();
+}
+
+void RotationEyecandy::drawVertRibbon()
+{
+  glBegin(GL_QUAD_STRIP);
+  for(int i = 0; i <= TESS_LEVEL; i++) {
+    double alpha = m_vAngleStart + (static_cast<double>(i) / TESS_LEVEL)
+                                * (m_vAngleEnd - m_vAngleStart);
+    Vector3d v = cos(alpha) * m_yAxis + sin(alpha) * m_zAxis;
+    Vector3d v1 = v - 0.1  * m_xAxis;
+    Vector3d v2 = v + 0.1  * m_xAxis;
+    glNormal3dv(v.array());
+    glVertex3dv((m_center + m_renderRadius * v2).array());
+    glVertex3dv((m_center + m_renderRadius * v1).array());
+  }
+  glEnd();
+}
+
+void RotationEyecandy::drawLeftArrow()
+{
+  Vector3d v = cos(m_hAngleEnd) * m_xAxis + sin(m_hAngleEnd) * m_zAxis;
+  Vector3d v1 = v + 0.2 * m_yAxis;
+  Vector3d v2 = v - 0.2 * m_yAxis;
+  Vector3d v3 = v + 0.2 * v.cross(m_yAxis);
+  glBegin(GL_TRIANGLES);
+  glNormal3dv(v.array());
+  glVertex3dv((m_center + m_renderRadius * v1).array());
+  glVertex3dv((m_center + m_renderRadius * v3).array());
+  glVertex3dv((m_center + m_renderRadius * v2).array());
+  glEnd();
+}
+
+void RotationEyecandy::drawRightArrow()
+{
+  Vector3d v = cos(m_hAngleStart) * m_xAxis + sin(m_hAngleStart) * m_zAxis;
+  Vector3d v1 = v - 0.2 * m_yAxis;
+  Vector3d v2 = v + 0.2 * m_yAxis;
+  Vector3d v3 = v - 0.2 * v.cross(m_yAxis);
+  glBegin(GL_TRIANGLES);
+  glNormal3dv(v.array());
+  glVertex3dv((m_center + m_renderRadius * v1).array());
+  glVertex3dv((m_center + m_renderRadius * v3).array());
+  glVertex3dv((m_center + m_renderRadius * v2).array());
+  glEnd();
+}
+
+void RotationEyecandy::drawUpArrow()
+{
+  Vector3d v = cos(m_vAngleStart) * m_yAxis + sin(m_vAngleStart) * m_zAxis;
+  Vector3d v1 = v - 0.2 * m_xAxis;
+  Vector3d v2 = v + 0.2 * m_xAxis;
+  Vector3d v3 = v + 0.2 * v.cross(m_xAxis);
+  glBegin(GL_TRIANGLES);
+  glNormal3dv(v.array());
+  glVertex3dv((m_center + m_renderRadius * v1).array());
+  glVertex3dv((m_center + m_renderRadius * v2).array());
+  glVertex3dv((m_center + m_renderRadius * v3).array());
+  glEnd();
+}
+
+void RotationEyecandy::drawDownArrow()
+{
+  Vector3d v = cos(m_vAngleEnd) * m_yAxis + sin(m_vAngleEnd) * m_zAxis;
+  Vector3d v1 = v + 0.2 * m_xAxis;
+  Vector3d v2 = v - 0.2 * m_xAxis;
+  Vector3d v3 = v - 0.2 * v.cross(m_xAxis);
+  glBegin(GL_TRIANGLES);
+  glNormal3dv(v.array());
+  glVertex3dv((m_center + m_renderRadius * v1).array());
+  glVertex3dv((m_center + m_renderRadius * v2).array());
+  glVertex3dv((m_center + m_renderRadius * v3).array());
+  glEnd();
+}
+
+void RotationEyecandy::draw(GLWidget *widget)
+{
+  if(m_navtool->clickedAtom())
+  {
+    m_center = m_navtool->clickedAtom()->pos();
+    m_renderRadius = qMax(widget->radius(m_navtool->clickedAtom()) * 1.1 + 0.2,
+                          0.1 * widget->camera()->distance(m_center));
+  }
+  else
+  {
+    m_center = widget->center();
+    m_renderRadius = qMax(qMax(widget->radius(), CAMERA_NEAR_DISTANCE),
+                          0.1 * widget->camera()->distance(m_center));
+  }
+                          
+  m_hAngleStart = 2.0 * M_PI * 0.30 - m_navtool->hAngle / 180.;
+  m_hAngleEnd = 2.0 * M_PI * 1.20 - m_navtool->hAngle / 180.;
+  m_vAngleStart = 2.0 * M_PI * 0.30 + m_navtool->vAngle / 180.;
+  m_vAngleEnd = 2.0 * M_PI * 1.20 + m_navtool->vAngle / 180.;
+  m_xAxis = widget->camera()->backtransformedXAxis();
+  m_yAxis = widget->camera()->backtransformedYAxis();
+  m_zAxis = widget->camera()->backtransformedZAxis();
+
+  
+  glEnable(GL_BLEND);
+  glDepthMask(GL_FALSE);
+  Color(1.0, 1.0, 0.3, 0.7).applyAsMaterials();
+  
+  //draw back faces
+  glCullFace(GL_FRONT);
+  drawHorizRibbon();
+  drawVertRibbon();
+  drawRightArrow();
+  drawLeftArrow();
+  drawUpArrow();
+  drawDownArrow();
+  
+  //draw front faces
+  glCullFace(GL_BACK); // this restores the default culling behaviour
+  drawHorizRibbon();
+  drawVertRibbon();
+  drawRightArrow();
+  drawLeftArrow();
+  drawUpArrow();
+  drawDownArrow();
+          
+  glDisable(GL_BLEND);
+  glDepthMask(GL_TRUE);
 }
 
 #include "navigatetool.moc"

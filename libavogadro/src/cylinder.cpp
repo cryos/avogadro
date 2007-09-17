@@ -149,7 +149,7 @@ namespace Avogadro {
 
     // construct an orthogonal basis whose first vector is axis, and whose other vectors
     // have norm equal to 'radius'.
-    Vector3d axisNormalized = axis / axis.norm();
+    Vector3d axisNormalized = axis.normalized();
     Vector3d ortho1, ortho2;
     ortho1.loadOrtho(axisNormalized);
     ortho1 *= radius;
