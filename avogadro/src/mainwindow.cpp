@@ -576,8 +576,9 @@ namespace Avogadro
     mimeData->setText( QString( copyData ) );
 
     // need to free our temporary moleculeCopy
-    if ( !selectedItems.isEmpty() )
+    if ( !selectedItems.isEmpty() ) {
       delete moleculeCopy;
+    }
 
     return mimeData;
   }

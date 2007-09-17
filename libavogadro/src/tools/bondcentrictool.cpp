@@ -131,7 +131,7 @@ void BondCentricTool::moleculeChanged(Molecule* previous, Molecule* next)
   }
 
   if (next) {
-    connect((Primitive*)next, SIGNAL(primitiveRemoved(Primitive*)), this, 
+    connect((Primitive*)next, SIGNAL(primitiveRemoved(Primitive*)), this,
             SLOT(primitiveRemoved(Primitive*)));
   }
 
@@ -468,7 +468,7 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
             m_skeleton->skeletonRotate(mouseAngle, currCrossDir, center);
             *m_referencePoint = performRotation(mouseAngle, currCrossDir,
                                 Vector3d(0, 0, 0), *m_referencePoint);
-            *m_currentReference = performRotation(mouseAngle, currCrossDir, 
+            *m_currentReference = performRotation(mouseAngle, currCrossDir,
                                   Vector3d(0, 0, 0), *m_currentReference);
           }
         }
@@ -638,7 +638,7 @@ bool BondCentricTool::paint(GLWidget *widget)
     if (m_currentReference)
     {
       // Draw bond length text.
-      QString length = tr("Bond Length:  ") + 
+      QString length = tr("Bond Length:  ") +
                       QString::number(m_selectedBond->GetLength(), 10, 1) +
                       QString::fromUtf8(" Å (Angstrom)");
 
@@ -676,7 +676,7 @@ bool BondCentricTool::paint(GLWidget *widget)
           }
         }
 
-        if (m_clickedAtom && m_leftButtonPressed && 
+        if (m_clickedAtom && m_leftButtonPressed &&
             isAtomInBond(m_clickedAtom, m_selectedBond)) {
           drawSkeletonAngles(widget, m_skeleton);
         }
@@ -930,7 +930,7 @@ void BondCentricTool::drawAngleSector(GLWidget *widget, Eigen::Vector3d origin,
 
   n = n / n.norm();
 
-  Vector3d point = performRotation((uvAngle / 2 * (M_PI / 180.0)), n, 
+  Vector3d point = performRotation((uvAngle / 2 * (M_PI / 180.0)), n,
                                     Vector3d(0, 0, 0), u);
 
   QString angle = QString::number(uvAngle, 10, 1) + QString::fromUtf8("°");
@@ -1118,8 +1118,8 @@ void BondCentricTool::drawSphere(GLWidget *widget,  const Eigen::Vector3d &posit
 
 // ##########  performRotation  ##########
 
-Eigen::Vector3d BondCentricTool::performRotation(double angle, 
-    Eigen::Vector3d rotationVector, Eigen::Vector3d centerVector, 
+Eigen::Vector3d BondCentricTool::performRotation(double angle,
+    Eigen::Vector3d rotationVector, Eigen::Vector3d centerVector,
     Eigen::Vector3d positionVector)
 {
   Quaternion qLeft = Quaternion::createRotationLeftHalf(angle, rotationVector);
@@ -1147,6 +1147,10 @@ void BondCentricTool::snapToCheckBoxChanged(int state)
   m_snapToEnabled = state == Qt::Checked ? true : false;
   m_snapToAngleBox->setEnabled(m_snapToEnabled);
 
+  if(!m_selectedBond) {
+    return;
+  }
+
   Eigen::Vector3d *reference = calculateSnapTo(m_glwidget, m_selectedBond,
                                                m_referencePoint, m_snapToAngle);
   if (reference && m_snapToEnabled)
@@ -1173,6 +1177,10 @@ void BondCentricTool::snapToCheckBoxChanged(int state)
 void BondCentricTool::snapToAngleChanged(int newAngle)
 {
   m_snapToAngle = newAngle;
+
+  if(!m_selectedBond) {
+    return;
+  }
 
   Eigen::Vector3d *reference = calculateSnapTo(m_glwidget, m_selectedBond,
                                                m_referencePoint, m_snapToAngle);

@@ -1060,7 +1060,8 @@ namespace Avogadro {
     if ( hit_count > 0 ) {
       unsigned int i, j;
       GLuint names, type, *ptr;
-      GLuint minZ, maxZ, name;
+      GLuint minZ, maxZ;
+      long name;
 
       //X   printf ("hits = %d\n", hits);
       ptr = ( GLuint * ) d->selectBuf;
@@ -1073,15 +1074,17 @@ namespace Avogadro {
         }
         minZ = *ptr++;
         maxZ = *ptr++;
-        name = 0;
+
+        // allow names of 0
+        name = -1;
         for ( j = 0; j < names/2; j++ ) { /*  for each name */
           type = *ptr++;
           name = *ptr++;
         }
-//         if ( name ) {
-/*           printf ("%d(%d) ", name,type);*/
+        if ( name > -1 ) {
+//            printf ("%ld(%d) ", name,type);
           hits.append( GLHit( type,name,minZ,maxZ ) );
-//         }
+        }
       }
 //      printf ("\n");
       qSort( hits );
@@ -1102,10 +1105,12 @@ namespace Avogadro {
     // Find the first atom or bond (if any) in hits - this will be the closest
     foreach( GLHit hit, chits )
     {
-      if(hit.type() == Primitive::AtomType)
+      qDebug() << "Hit: " << hit.name();
+      if(hit.type() == Primitive::AtomType) {
         return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
-      else if(hit.type() == Primitive::BondType)
+      } else if(hit.type() == Primitive::BondType) {
         return static_cast<Bond *>(molecule()->GetBond(hit.name()));
+      }
     }
     return 0;
   }
@@ -1123,7 +1128,9 @@ namespace Avogadro {
     foreach( GLHit hit, chits )
     {
       if(hit.type() == Primitive::AtomType)
+      {
         return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
+      }
     }
     return 0;
   }
@@ -1141,7 +1148,9 @@ namespace Avogadro {
     foreach( GLHit hit, chits )
     {
       if(hit.type() == Primitive::BondType)
+      {
         return static_cast<Bond *>(molecule()->GetBond(hit.name()));
+      }
     }
     return 0;
   }

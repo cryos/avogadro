@@ -292,19 +292,19 @@ namespace Avogadro
   {
     d->type = primitive->type();
     if (d->type == Primitive::AtomType)
+    {
       d->id = static_cast<const Atom *>(primitive)->GetIdx();
+    }
     else if (d->type == Primitive::BondType)
+    {
       d->id = static_cast<const Bond *>(primitive)->GetIdx();
+    }
   }
 
   void GLPainter::setName ( Primitive::Type type, int id )
   {
     d->type = type;
     d->id = id;
-/*    if (type == Primitive::BondType)
-    {
-      d->id++;
-    }*/
   }
 
   void GLPainter::setColor ( const Color *color )
@@ -320,10 +320,6 @@ namespace Avogadro
   void GLPainter::drawSphere ( const Eigen::Vector3d & center, double radius )
   {
     if(!d->isValid()) { return; }
-//     if ( d->textRenderer->isActive() )
-//     {
-//       d->textRenderer->end();
-//     }
 
     Eigen::Vector3d transformedCenter = d->widget->camera()->modelview() * center;
     double distance = transformedCenter.norm();
@@ -356,10 +352,6 @@ namespace Avogadro
                                double radius )
   {
     if(!d->isValid()) { return; }
-//     if ( d->textRenderer->isActive() )
-//     {
-//       d->textRenderer->end();
-//     }
 
     Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
     double distance = transformedEnd1.norm();
@@ -392,10 +384,6 @@ namespace Avogadro
                                     double radius, int order, double shift )
   {
     if(!d->isValid()) { return; }
-//     if ( d->textRenderer->isActive() )
-//     {
-//       d->textRenderer->end();
-//     }
 
     Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
     double distance = transformedEnd1.norm();
@@ -506,10 +494,6 @@ namespace Avogadro
   void GLPainter::drawShadedSector(Eigen::Vector3d origin, Eigen::Vector3d direction1,
                                  Eigen::Vector3d direction2, double radius)
   {
-    if(d->textRenderer->isActive())
-    {
-      d->textRenderer->end();
-    }
     assert( d->widget );
 
     // Get vectors representing the two lines out from the center of the circle.
@@ -594,10 +578,6 @@ namespace Avogadro
   void GLPainter::drawArc(Eigen::Vector3d origin, Eigen::Vector3d direction1,
                         Eigen::Vector3d direction2, double radius, double lineWidth)
   {
-    if(d->textRenderer->isActive())
-    {
-      d->textRenderer->end();
-    }
     assert( d->widget );
 
     // Get vectors representing the two lines out from the center of the circle.
@@ -682,10 +662,6 @@ namespace Avogadro
   void GLPainter::drawShadedQuadrilateral(Eigen::Vector3d point1, Eigen::Vector3d point2,
                                         Eigen::Vector3d point3, Eigen::Vector3d point4)
   {
-    if(d->textRenderer->isActive())
-    {
-      d->textRenderer->end();
-    }
     assert( d->widget );
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -711,10 +687,6 @@ namespace Avogadro
                                   Eigen::Vector3d point3, Eigen::Vector3d point4,
                                   double lineWidth)
   {
-    if(d->textRenderer->isActive())
-    {
-      d->textRenderer->end();
-    }
     assert( d->widget );
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -740,10 +712,7 @@ namespace Avogadro
   int GLPainter::drawText ( int x, int y, const QString &string ) const
   {
     if(!d->isValid()) { return 0; }
-//     if ( !d->textRenderer->isActive() )
-//     {
       d->textRenderer->begin ( d->widget );
-//     }
     int val = d->textRenderer->draw ( x, y, string );
 
     d->textRenderer->end( );
@@ -752,23 +721,18 @@ namespace Avogadro
 
   int GLPainter::drawText ( const QPoint& pos, const QString &string ) const
   {
+    assert( d->widget );
     if(!d->isValid()) { return 0; }
-//     if ( !d->textRenderer->isActive() )
-//     {
     d->textRenderer->begin( d->widget );
-//     }
     int val = d->textRenderer->draw ( pos.x(), pos.y(), string );
     d->textRenderer->end( );
-    return val;
+    return 0;
   }
 
   int GLPainter::drawText ( const Eigen::Vector3d &pos, const QString &string ) const
   {
     if(!d->isValid()) { return 0; }
-//     if ( !d->textRenderer->isActive() )
-//     {
       d->textRenderer->begin ( d->widget );
-//     }
     Eigen::Vector3d transformedPos = d->widget->camera()->modelview() * pos;
 
     // perform a rough form of frustum culling
@@ -830,7 +794,7 @@ namespace Avogadro
   void GLPainter::pushName()
   {
     // Push the type and id if they are set
-    if (d->id != -1 && d->type != -1 )
+    if (d->id != -1)
     {
       glPushName(d->type);
       glPushName(d->id);
@@ -840,7 +804,7 @@ namespace Avogadro
   void GLPainter::popName()
   {
     // Pop the type and id if they are set, then reset them
-    if (d->type && d->id)
+    if (d->id != -1)
     {
       glPopName();
       glPopName();

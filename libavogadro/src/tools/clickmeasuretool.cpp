@@ -168,7 +168,7 @@ bool ClickMeasureTool::paint(GLWidget *widget)
         glColor3f(0.0,0.0,1.0);
         widget->painter()->drawText(textPos, tr("*3"));
       }
-      glLoadIdentity();
+//       glLoadIdentity();
       glColor3f(1.0,1.0,1.0);
       widget->painter()->drawText(labelPos, tr("Distance(s):"));
       if(m_numSelectedAtoms == 3) {

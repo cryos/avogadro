@@ -432,7 +432,8 @@ void TextRenderer::begin(GLWidget *widget)
 
   d->glwidget = widget;
   d->textmode = true;
-  glPushAttrib(GL_ENABLE_BIT | GL_DEPTH_BUFFER_BIT);
+//   glPushAttrib(GL_ENABLE_BIT | GL_DEPTH_BUFFER_BIT);
+  glPushAttrib(GL_ALL_ATTRIB_BITS);
   glDisable(GL_LIGHTING);
   glDisable(GL_FOG);
   glDisable(GL_CULL_FACE);
@@ -503,7 +504,7 @@ void TextRendererPrivate::do_draw( const QString &string )
 
   // Pass 3: render the glyphs themselves
   glColor4fv(color);
-for( i = 0; i < string.size(); i++ )
+  for( i = 0; i < string.size(); i++ )
   {
     charTable.value( string[i] )->drawGlyph();
   }
