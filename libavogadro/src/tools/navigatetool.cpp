@@ -25,6 +25,7 @@
 
 #include "navigatetool.h"
 #include "navigate.h"
+#include "eyecandy.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -35,19 +36,13 @@
 
 #include <QtPlugin>
 
-#define TESS_LEVEL 32
-#define RIBBON_WIDTH 0.05
-#define RIBBON_ARROW_WIDTH 0.15
-#define RIBBON_ARROW_LENGTH 0.25
-#define RIBBON_APERTURE 0.07
-
 using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
 NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false),
-m_rotationEyecandy(new RotationEyecandy)
+m_eyecandy(new Eyecandy)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
@@ -60,7 +55,7 @@ m_rotationEyecandy(new RotationEyecandy)
 
 NavigateTool::~NavigateTool()
 {
-  delete m_rotationEyecandy;
+  delete m_eyecandy;
 }
 
 int NavigateTool::usefulness() const
@@ -200,7 +195,7 @@ QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
 bool NavigateTool::paint(GLWidget *widget)
 {
   if(m_leftButtonPressed) {
-    m_rotationEyecandy->draw(widget, m_clickedAtom, xAngleEyecandy, yAngleEyecandy);
+    m_eyecandy->drawRotation(widget, m_clickedAtom, xAngleEyecandy, yAngleEyecandy);
   }
 
   else if(m_midButtonPressed) {
@@ -220,241 +215,10 @@ bool NavigateTool::paint(GLWidget *widget)
   }
 
   else if(m_rightButtonPressed) {
-    Vector3d center;
-    double renderRadius;
-    double shift;
-    if(clickedAtom())
-    {
-      center = clickedAtom()->pos();
-      renderRadius = qMax(widget->radius(clickedAtom()) * 1.1 + 0.2,
-                            0.1 * widget->camera()->distance(center));
-      shift = widget->radius(clickedAtom());
-    }
-    else
-    {
-      center = widget->center();
-      renderRadius = qMax(qMax(widget->radius(), CAMERA_NEAR_DISTANCE),
-                          0.1 * widget->camera()->distance(center));
-      shift = 0.;
-    }
-    glEnable(GL_BLEND);
-    glDisable(GL_LIGHTING);
-    glDepthMask(GL_FALSE);
-    glColor4f(1.0, 1.0, 0.3, 0.7);
-    //Color(1.0, 1.0, 0.3, 0.7).applyAsMaterials();
-
-    // Set up the axes and some vectors to work with
-    Vector3d xAxis = widget->camera()->backtransformedXAxis();
-    Vector3d yAxis = widget->camera()->backtransformedYAxis();
-    Vector3d zAxis = widget->camera()->backtransformedZAxis();
-    Vector3d v;
-
-    // Horizontal arrow, pointing left
-    v = center + shift*zAxis;
-    glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v + 0.05*renderRadius*yAxis).array());
-    glVertex3dv((v - 0.05*renderRadius*yAxis).array());
-    v += 0.6*renderRadius * xAxis;
-    glVertex3dv((v + 0.05*renderRadius*yAxis).array());
-    glVertex3dv((v - 0.05*renderRadius*yAxis).array());
-    glEnd();
-    glBegin(GL_TRIANGLES);
-    glVertex3dv((v + 0.1*renderRadius*yAxis).array());
-    glVertex3dv((v - 0.1*renderRadius*yAxis).array());
-    glVertex3dv((v + 0.2*renderRadius*xAxis).array());
-    glEnd();
-    // Horizontal arrow, pointing right
-    v = center + shift*zAxis;
-    glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v - 0.05*renderRadius*yAxis).array());
-    glVertex3dv((v + 0.05*renderRadius*yAxis).array());
-    v -= 0.6*renderRadius * xAxis;
-    glVertex3dv((v - 0.05*renderRadius*yAxis).array());
-    glVertex3dv((v + 0.05*renderRadius*yAxis).array());
-    glEnd();
-    glBegin(GL_TRIANGLES);
-    glVertex3dv((v - 0.1*renderRadius*yAxis).array());
-    glVertex3dv((v + 0.1*renderRadius*yAxis).array());
-    glVertex3dv((v - 0.2*renderRadius*xAxis).array());
-    glEnd();
-    // Vertical arrow, pointing up
-    v = center + shift*zAxis;
-    glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v - 0.05*renderRadius*xAxis).array());
-    glVertex3dv((v + 0.05*renderRadius*xAxis).array());
-    v += 0.6*renderRadius * yAxis;
-    glVertex3dv((v - 0.05*renderRadius*xAxis).array());
-    glVertex3dv((v + 0.05*renderRadius*xAxis).array());
-    glEnd();
-    glBegin(GL_TRIANGLES);
-    glVertex3dv((v - 0.1*renderRadius*xAxis).array());
-    glVertex3dv((v + 0.1*renderRadius*xAxis).array());
-    glVertex3dv((v + 0.2*renderRadius*yAxis).array());
-    glEnd();
-    // Vertical arrow, pointing down
-    v = center + shift*zAxis;
-    glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v + 0.05*renderRadius*xAxis).array());
-    glVertex3dv((v - 0.05*renderRadius*xAxis).array());
-    v -= 0.6*renderRadius * yAxis;
-    glVertex3dv((v + 0.05*renderRadius*xAxis).array());
-    glVertex3dv((v - 0.05*renderRadius*xAxis).array());
-    glEnd();
-    glBegin(GL_TRIANGLES);
-    glVertex3dv((v + 0.1*renderRadius*xAxis).array());
-    glVertex3dv((v - 0.1*renderRadius*xAxis).array());
-    glVertex3dv((v - 0.2*renderRadius*yAxis).array());
-    glEnd();
-
-    glDisable(GL_BLEND);
-    glEnable(GL_LIGHTING);
-    glDepthMask(GL_TRUE);
+    m_eyecandy->drawTranslation(widget, m_clickedAtom);
   }
 
   return true;
-}
-
-Atom *NavigateTool::clickedAtom()
-{
-  return m_clickedAtom;
-}
-
-void RotationEyecandy::drawHorizRibbon()
-{
-  glBegin(GL_QUAD_STRIP);
-  for(int i = 0; i <= TESS_LEVEL; i++) {
-    double alpha = m_xAngleStart + (static_cast<double>(i) / TESS_LEVEL)
-                                * (m_xAngleEnd - m_xAngleStart);
-    Vector3d v = cos(alpha) * m_xAxis + sin(alpha) * m_zAxis;
-    Vector3d v1 = v - RIBBON_WIDTH * m_yAxis;
-    Vector3d v2 = v + RIBBON_WIDTH * m_yAxis;
-    glNormal3dv(v.array());
-    glVertex3dv((m_center + m_renderRadius * v1).array());
-    glVertex3dv((m_center + m_renderRadius * v2).array());
-  }
-  glEnd();
-}
-
-void RotationEyecandy::drawVertRibbon()
-{
-  glBegin(GL_QUAD_STRIP);
-  for(int i = 0; i <= TESS_LEVEL; i++) {
-    double alpha = m_yAngleStart + (static_cast<double>(i) / TESS_LEVEL)
-                                * (m_yAngleEnd - m_yAngleStart);
-    Vector3d v = cos(alpha) * m_yAxis + sin(alpha) * m_zAxis;
-    Vector3d v1 = v - RIBBON_WIDTH * m_xAxis;
-    Vector3d v2 = v + RIBBON_WIDTH * m_xAxis;
-    glNormal3dv(v.array());
-    glVertex3dv((m_center + m_renderRadius * v2).array());
-    glVertex3dv((m_center + m_renderRadius * v1).array());
-  }
-  glEnd();
-}
-
-void RotationEyecandy::drawLeftArrow()
-{
-  Vector3d v = cos(m_xAngleEnd) * m_xAxis + sin(m_xAngleEnd) * m_zAxis;
-  Vector3d v1 = v + RIBBON_ARROW_WIDTH * m_yAxis;
-  Vector3d v2 = v - RIBBON_ARROW_WIDTH * m_yAxis;
-  Vector3d v3 = v + RIBBON_ARROW_LENGTH * v.cross(m_yAxis);
-  glBegin(GL_TRIANGLES);
-  glNormal3dv(v.array());
-  glVertex3dv((m_center + m_renderRadius * v1).array());
-  glVertex3dv((m_center + m_renderRadius * v3).array());
-  glVertex3dv((m_center + m_renderRadius * v2).array());
-  glEnd();
-}
-
-void RotationEyecandy::drawRightArrow()
-{
-  Vector3d v = cos(m_xAngleStart) * m_xAxis + sin(m_xAngleStart) * m_zAxis;
-  Vector3d v1 = v - RIBBON_ARROW_WIDTH * m_yAxis;
-  Vector3d v2 = v + RIBBON_ARROW_WIDTH * m_yAxis;
-  Vector3d v3 = v - RIBBON_ARROW_LENGTH * v.cross(m_yAxis);
-  glBegin(GL_TRIANGLES);
-  glNormal3dv(v.array());
-  glVertex3dv((m_center + m_renderRadius * v1).array());
-  glVertex3dv((m_center + m_renderRadius * v3).array());
-  glVertex3dv((m_center + m_renderRadius * v2).array());
-  glEnd();
-}
-
-void RotationEyecandy::drawUpArrow()
-{
-  Vector3d v = cos(m_yAngleStart) * m_yAxis + sin(m_yAngleStart) * m_zAxis;
-  Vector3d v1 = v - RIBBON_ARROW_WIDTH * m_xAxis;
-  Vector3d v2 = v + RIBBON_ARROW_WIDTH * m_xAxis;
-  Vector3d v3 = v + RIBBON_ARROW_LENGTH * v.cross(m_xAxis);
-  glBegin(GL_TRIANGLES);
-  glNormal3dv(v.array());
-  glVertex3dv((m_center + m_renderRadius * v1).array());
-  glVertex3dv((m_center + m_renderRadius * v2).array());
-  glVertex3dv((m_center + m_renderRadius * v3).array());
-  glEnd();
-}
-
-void RotationEyecandy::drawDownArrow()
-{
-  Vector3d v = cos(m_yAngleEnd) * m_yAxis + sin(m_yAngleEnd) * m_zAxis;
-  Vector3d v1 = v + RIBBON_ARROW_WIDTH * m_xAxis;
-  Vector3d v2 = v - RIBBON_ARROW_WIDTH * m_xAxis;
-  Vector3d v3 = v - RIBBON_ARROW_LENGTH * v.cross(m_xAxis);
-  glBegin(GL_TRIANGLES);
-  glNormal3dv(v.array());
-  glVertex3dv((m_center + m_renderRadius * v1).array());
-  glVertex3dv((m_center + m_renderRadius * v2).array());
-  glVertex3dv((m_center + m_renderRadius * v3).array());
-  glEnd();
-}
-
-void RotationEyecandy::draw(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle)
-{
-  if(clickedAtom)
-  {
-    m_center = clickedAtom->pos();
-    m_renderRadius = qMax(widget->radius(clickedAtom) * 1.1 + 0.2,
-                          0.1 * widget->camera()->distance(m_center));
-  }
-  else
-  {
-    m_center = widget->center();
-    m_renderRadius = qMax(qMax(widget->radius(), CAMERA_NEAR_DISTANCE),
-                          0.1 * widget->camera()->distance(m_center));
-  }
-                          
-  m_xAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) - xAngle;
-  m_xAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) - xAngle;
-  m_yAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) + yAngle;
-  m_yAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) + yAngle;
-  m_xAxis = widget->camera()->backtransformedXAxis();
-  m_yAxis = widget->camera()->backtransformedYAxis();
-  m_zAxis = widget->camera()->backtransformedZAxis();
-
-  
-  glEnable(GL_BLEND);
-  glDepthMask(GL_FALSE);
-  Color(1.0, 1.0, 0.3, 0.7).applyAsMaterials();
-  
-  //draw back faces
-  glCullFace(GL_FRONT);
-  drawHorizRibbon();
-  drawVertRibbon();
-  drawRightArrow();
-  drawLeftArrow();
-  drawUpArrow();
-  drawDownArrow();
-  
-  //draw front faces
-  glCullFace(GL_BACK); // this restores the default culling behaviour
-  drawHorizRibbon();
-  drawVertRibbon();
-  drawRightArrow();
-  drawLeftArrow();
-  drawUpArrow();
-  drawDownArrow();
-          
-  glDisable(GL_BLEND);
-  glDepthMask(GL_TRUE);
 }
 
 #include "navigatetool.moc"
