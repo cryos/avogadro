@@ -146,8 +146,8 @@ namespace Avogadro {
     container->show();
     container->updateScrollers();
     view()->setFocus();
-  }
   */
+  }
 
   /*!
     Hides the list of items in the combobox if it is currently visible;
@@ -162,4 +162,5 @@ namespace Avogadro {
     if (QApplication::keypadNavigationEnabled() && isEditable() && hasFocus())
       setEditFocus(true);
 #endif
+  }
   }

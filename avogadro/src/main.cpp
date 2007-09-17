@@ -30,8 +30,10 @@
 #include "mainwindow.h"
 #include "application.h"
 
+#ifdef ENABLE_THREADED_GL
 #ifdef Q_WS_X11
 #include <X11/Xlib.h>
+#endif
 #endif
 
 // get the SVN revision string
@@ -65,6 +67,16 @@ int main(int argc, char *argv[])
         "This system does not support OpenGL.");
     return -1;
   }
+
+  QTranslator qtTranslator;
+  qtTranslator.load("qt_" + QLocale::system().name());
+  app.installTranslator(&qtTranslator);
+
+  QTranslator avoTranslator;
+  avoTranslator.load("avo_" + QLocale::system().name());
+  app.installTranslator(&avoTranslator);
+
+
 
   // use multi-sample (anti-aliased) OpenGL if available
   QGLFormat defFormat = QGLFormat::defaultFormat();
