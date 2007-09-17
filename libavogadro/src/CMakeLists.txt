@@ -16,43 +16,8 @@ include_directories(
   ${EIGEN_INCLUDE_DIR}
 )
 
-set(libavogadro_SRCS
-  global.cpp
-  camera.cpp
-  color.cpp
-  engine.cpp
-  glwidget.cpp
-  moleculetreeview.cpp
-  primitive.cpp
-  primitiveitemmodel.cpp
-  primitivelist.cpp
-  tool.cpp
-  toolgroup.cpp
-  undosequence.cpp
-  painterengine.cpp
-  painter.cpp
-  glpainter.cpp
-  povpainter.cpp
-  textrenderer.cpp
-  sphere.cpp
-  cylinder.cpp
-)
-
-set(libavogadro_HDRS
-  camera.h
-  color.h
-  engine.h
-  glwidget.h
-  global.h
-  moleculetreeview.h
-  primitive.h
-  primitiveitemmodel.h
-  primitivelist.h
-  painter.h
-  povpainter.h
-  toolgroup.h
-  undosequence.h
-)
+FILE(GLOB libavogadro_SRCS "*.cpp")
+FILE(GLOB libavogadro_HDRS "*.h")
 
 qt4_automoc(${libavogadro_SRCS})
 

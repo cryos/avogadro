@@ -24,34 +24,15 @@ include_directories(
 add_definitions(-DQT_DEBUG)
 include(${QT_USE_FILE})
 
-set(avogadro_SRCS
-    aboutdialog.cpp
-    application.cpp
-    editcommands.cpp
-    enginelistview.cpp
-    engineitemmodel.cpp
-    enginesetupwidget.cpp
-    flowlayout.cpp
-    flattabwidget.cpp
-    main.cpp
-    mainwindow.cpp
-    primitivetreeview.cpp
-    settingsdialog.cpp
-)
+FILE(GLOB avogadro_SRCS "*.cpp")
 
 if( WIN32 )
   set(avogadro_SRCS ${avogadro_SRCS} windows/avogadro.rc)
 endif( WIN32)
 
-set(avogadro_RCS
-    avogadro.qrc
-)
+FILE(GLOB avogadro_RCS "*.qrc")
 
-set(avogadro_UIS
-    mainwindow.ui
-    settingsdialog.ui
-    enginesetupwidget.ui
-)
+FILE(GLOB avogadro_UIS "*.ui")
 
 # designer has some flaws.
 qt4_automoc(${avogadro_SRCS})
