@@ -36,13 +36,18 @@
 #include <QtPlugin>
 
 #define TESS_LEVEL 32
+#define RIBBON_WIDTH 0.05
+#define RIBBON_ARROW_WIDTH 0.15
+#define RIBBON_ARROW_LENGTH 0.25
+#define RIBBON_APERTURE 0.07
 
 using namespace std;
 using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false)
+NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false),
+m_rotationEyecandy(new RotationEyecandy)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
@@ -51,7 +56,6 @@ NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_
         "Middle Mouse: Click and drag to zoom in or out\n"
         "Right Mouse:  Click and drag to move the view"));
   action->setShortcut(Qt::Key_F9);
-  m_rotationEyecandy = new RotationEyecandy(this);
 }
 
 NavigateTool::~NavigateTool()
@@ -80,8 +84,8 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
   m_clickedAtom = widget->computeClickedAtom(event->pos());
 
   // Initialise the angle variables on any new mouse press
-  vAngle = 0.;
-  hAngle = 0.;
+  yAngleEyecandy = 0.;
+  xAngleEyecandy = 0.;
 
   widget->update();
   return 0;
@@ -114,8 +118,8 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
     if (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::NoModifier)
     {
       // Atom centred rotation
-      hAngle += deltaDragging.x();
-      vAngle += deltaDragging.y();
+      xAngleEyecandy += deltaDragging.x() * ROTATION_SPEED;
+      yAngleEyecandy += deltaDragging.y() * ROTATION_SPEED;
       Navigate::rotate(widget, m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y());
     }
   // On the Mac, either use a three-button mouse
@@ -144,8 +148,8 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
         && event->modifiers() == Qt::NoModifier)
     {
       // rotation around the center of the molecule
-      hAngle += deltaDragging.x();
-      vAngle += deltaDragging.y();
+      xAngleEyecandy += deltaDragging.x() * ROTATION_SPEED;
+      yAngleEyecandy += deltaDragging.y() * ROTATION_SPEED;
       Navigate::rotate(widget, widget->center(), deltaDragging.x(), deltaDragging.y());
     }
   // On the Mac, either use a three-button mouse
@@ -196,7 +200,7 @@ QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
 bool NavigateTool::paint(GLWidget *widget)
 {
   if(m_leftButtonPressed) {
-    m_rotationEyecandy->draw(widget);
+    m_rotationEyecandy->draw(widget, m_clickedAtom, xAngleEyecandy, yAngleEyecandy);
   }
 
   else if(m_midButtonPressed) {
@@ -319,11 +323,11 @@ void RotationEyecandy::drawHorizRibbon()
 {
   glBegin(GL_QUAD_STRIP);
   for(int i = 0; i <= TESS_LEVEL; i++) {
-    double alpha = m_hAngleStart + (static_cast<double>(i) / TESS_LEVEL)
-                                * (m_hAngleEnd - m_hAngleStart);
+    double alpha = m_xAngleStart + (static_cast<double>(i) / TESS_LEVEL)
+                                * (m_xAngleEnd - m_xAngleStart);
     Vector3d v = cos(alpha) * m_xAxis + sin(alpha) * m_zAxis;
-    Vector3d v1 = v - 0.1  * m_yAxis;
-    Vector3d v2 = v + 0.1  * m_yAxis;
+    Vector3d v1 = v - RIBBON_WIDTH * m_yAxis;
+    Vector3d v2 = v + RIBBON_WIDTH * m_yAxis;
     glNormal3dv(v.array());
     glVertex3dv((m_center + m_renderRadius * v1).array());
     glVertex3dv((m_center + m_renderRadius * v2).array());
@@ -335,11 +339,11 @@ void RotationEyecandy::drawVertRibbon()
 {
   glBegin(GL_QUAD_STRIP);
   for(int i = 0; i <= TESS_LEVEL; i++) {
-    double alpha = m_vAngleStart + (static_cast<double>(i) / TESS_LEVEL)
-                                * (m_vAngleEnd - m_vAngleStart);
+    double alpha = m_yAngleStart + (static_cast<double>(i) / TESS_LEVEL)
+                                * (m_yAngleEnd - m_yAngleStart);
     Vector3d v = cos(alpha) * m_yAxis + sin(alpha) * m_zAxis;
-    Vector3d v1 = v - 0.1  * m_xAxis;
-    Vector3d v2 = v + 0.1  * m_xAxis;
+    Vector3d v1 = v - RIBBON_WIDTH * m_xAxis;
+    Vector3d v2 = v + RIBBON_WIDTH * m_xAxis;
     glNormal3dv(v.array());
     glVertex3dv((m_center + m_renderRadius * v2).array());
     glVertex3dv((m_center + m_renderRadius * v1).array());
@@ -349,10 +353,10 @@ void RotationEyecandy::drawVertRibbon()
 
 void RotationEyecandy::drawLeftArrow()
 {
-  Vector3d v = cos(m_hAngleEnd) * m_xAxis + sin(m_hAngleEnd) * m_zAxis;
-  Vector3d v1 = v + 0.2 * m_yAxis;
-  Vector3d v2 = v - 0.2 * m_yAxis;
-  Vector3d v3 = v + 0.2 * v.cross(m_yAxis);
+  Vector3d v = cos(m_xAngleEnd) * m_xAxis + sin(m_xAngleEnd) * m_zAxis;
+  Vector3d v1 = v + RIBBON_ARROW_WIDTH * m_yAxis;
+  Vector3d v2 = v - RIBBON_ARROW_WIDTH * m_yAxis;
+  Vector3d v3 = v + RIBBON_ARROW_LENGTH * v.cross(m_yAxis);
   glBegin(GL_TRIANGLES);
   glNormal3dv(v.array());
   glVertex3dv((m_center + m_renderRadius * v1).array());
@@ -363,10 +367,10 @@ void RotationEyecandy::drawLeftArrow()
 
 void RotationEyecandy::drawRightArrow()
 {
-  Vector3d v = cos(m_hAngleStart) * m_xAxis + sin(m_hAngleStart) * m_zAxis;
-  Vector3d v1 = v - 0.2 * m_yAxis;
-  Vector3d v2 = v + 0.2 * m_yAxis;
-  Vector3d v3 = v - 0.2 * v.cross(m_yAxis);
+  Vector3d v = cos(m_xAngleStart) * m_xAxis + sin(m_xAngleStart) * m_zAxis;
+  Vector3d v1 = v - RIBBON_ARROW_WIDTH * m_yAxis;
+  Vector3d v2 = v + RIBBON_ARROW_WIDTH * m_yAxis;
+  Vector3d v3 = v - RIBBON_ARROW_LENGTH * v.cross(m_yAxis);
   glBegin(GL_TRIANGLES);
   glNormal3dv(v.array());
   glVertex3dv((m_center + m_renderRadius * v1).array());
@@ -377,10 +381,10 @@ void RotationEyecandy::drawRightArrow()
 
 void RotationEyecandy::drawUpArrow()
 {
-  Vector3d v = cos(m_vAngleStart) * m_yAxis + sin(m_vAngleStart) * m_zAxis;
-  Vector3d v1 = v - 0.2 * m_xAxis;
-  Vector3d v2 = v + 0.2 * m_xAxis;
-  Vector3d v3 = v + 0.2 * v.cross(m_xAxis);
+  Vector3d v = cos(m_yAngleStart) * m_yAxis + sin(m_yAngleStart) * m_zAxis;
+  Vector3d v1 = v - RIBBON_ARROW_WIDTH * m_xAxis;
+  Vector3d v2 = v + RIBBON_ARROW_WIDTH * m_xAxis;
+  Vector3d v3 = v + RIBBON_ARROW_LENGTH * v.cross(m_xAxis);
   glBegin(GL_TRIANGLES);
   glNormal3dv(v.array());
   glVertex3dv((m_center + m_renderRadius * v1).array());
@@ -391,10 +395,10 @@ void RotationEyecandy::drawUpArrow()
 
 void RotationEyecandy::drawDownArrow()
 {
-  Vector3d v = cos(m_vAngleEnd) * m_yAxis + sin(m_vAngleEnd) * m_zAxis;
-  Vector3d v1 = v + 0.2 * m_xAxis;
-  Vector3d v2 = v - 0.2 * m_xAxis;
-  Vector3d v3 = v - 0.2 * v.cross(m_xAxis);
+  Vector3d v = cos(m_yAngleEnd) * m_yAxis + sin(m_yAngleEnd) * m_zAxis;
+  Vector3d v1 = v + RIBBON_ARROW_WIDTH * m_xAxis;
+  Vector3d v2 = v - RIBBON_ARROW_WIDTH * m_xAxis;
+  Vector3d v3 = v - RIBBON_ARROW_LENGTH * v.cross(m_xAxis);
   glBegin(GL_TRIANGLES);
   glNormal3dv(v.array());
   glVertex3dv((m_center + m_renderRadius * v1).array());
@@ -403,12 +407,12 @@ void RotationEyecandy::drawDownArrow()
   glEnd();
 }
 
-void RotationEyecandy::draw(GLWidget *widget)
+void RotationEyecandy::draw(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle)
 {
-  if(m_navtool->clickedAtom())
+  if(clickedAtom)
   {
-    m_center = m_navtool->clickedAtom()->pos();
-    m_renderRadius = qMax(widget->radius(m_navtool->clickedAtom()) * 1.1 + 0.2,
+    m_center = clickedAtom->pos();
+    m_renderRadius = qMax(widget->radius(clickedAtom) * 1.1 + 0.2,
                           0.1 * widget->camera()->distance(m_center));
   }
   else
@@ -418,10 +422,10 @@ void RotationEyecandy::draw(GLWidget *widget)
                           0.1 * widget->camera()->distance(m_center));
   }
                           
-  m_hAngleStart = 2.0 * M_PI * 0.30 - m_navtool->hAngle / 180.;
-  m_hAngleEnd = 2.0 * M_PI * 1.20 - m_navtool->hAngle / 180.;
-  m_vAngleStart = 2.0 * M_PI * 0.30 + m_navtool->vAngle / 180.;
-  m_vAngleEnd = 2.0 * M_PI * 1.20 + m_navtool->vAngle / 180.;
+  m_xAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) - xAngle;
+  m_xAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) - xAngle;
+  m_yAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) + yAngle;
+  m_yAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) + yAngle;
   m_xAxis = widget->camera()->backtransformedXAxis();
   m_yAxis = widget->camera()->backtransformedYAxis();
   m_zAxis = widget->camera()->backtransformedZAxis();

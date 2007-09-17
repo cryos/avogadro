@@ -50,7 +50,6 @@ namespace Avogadro {
   class NavigateTool : public Tool
   {
     Q_OBJECT
-    friend class RotationEyecandy;
 
     public:
       //! Constructor
@@ -87,7 +86,7 @@ namespace Avogadro {
       bool                m_leftButtonPressed;  // rotation
       bool                m_midButtonPressed;   // scale / zoom
       bool                m_rightButtonPressed; // translation
-      double vAngle, hAngle;
+      double yAngleEyecandy, xAngleEyecandy;
 
       //! Temporary var for adding selection box
       GLuint              m_selectedPrimitivesDL;
@@ -106,15 +105,14 @@ namespace Avogadro {
       void drawUpArrow();
       void drawDownArrow();
       
-      NavigateTool *m_navtool;
-      double m_vAngleStart, m_vAngleEnd, m_hAngleStart, m_hAngleEnd;
+      double m_yAngleStart, m_yAngleEnd, m_xAngleStart, m_xAngleEnd;
       double m_renderRadius;
       Eigen::Vector3d m_center, m_xAxis, m_yAxis, m_zAxis;
     
     public:
-      RotationEyecandy(NavigateTool * navtool) : m_navtool(navtool) {}
+      RotationEyecandy() {}
       ~RotationEyecandy() {}
-      void draw(GLWidget *widget);
+      void draw(GLWidget *widget, Atom *atom, double xAngle, double yAngle);
   };
   
 
