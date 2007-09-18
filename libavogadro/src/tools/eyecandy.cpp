@@ -31,6 +31,7 @@
 #define RIBBON_ARROW_WIDTH 0.15
 #define RIBBON_ARROW_LENGTH 0.25
 #define RIBBON_APERTURE 0.07
+#define MINIMUM_APPARENT_SIZE 0.07
 
 using namespace Avogadro;
 using namespace Eigen;
@@ -129,15 +130,15 @@ void Eyecandy::drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, 
   {
     m_center = clickedAtom->pos();
     m_renderRadius = qMax(widget->radius(clickedAtom) * 1.1 + 0.2,
-                          0.1 * widget->camera()->distance(m_center));
+                          MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center));
   }
   else
   {
     m_center = widget->center();
     m_renderRadius = qMax(qMax(widget->radius() * 0.7, CAMERA_NEAR_DISTANCE),
-                          0.1 * widget->camera()->distance(m_center));
+                          MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center));
   }
-                          
+  
   m_xAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) - xAngle;
   m_xAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) - xAngle;
   m_yAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) + yAngle;
@@ -145,7 +146,6 @@ void Eyecandy::drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, 
   m_xAxis = widget->camera()->backtransformedXAxis();
   m_yAxis = widget->camera()->backtransformedYAxis();
   m_zAxis = widget->camera()->backtransformedZAxis();
-
   
   glEnable(GL_BLEND);
   glDepthMask(GL_FALSE);
@@ -180,14 +180,14 @@ void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom)
   {
     m_center = clickedAtom->pos();
     size = qMax(widget->radius(clickedAtom) * 1.1 + 0.2,
-                0.1 * widget->camera()->distance(m_center));
+                MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center));
     shift = widget->radius(clickedAtom);
   }
   else
   {
     m_center = widget->center();
     size = qMax(qMax(widget->radius(), CAMERA_NEAR_DISTANCE),
-                0.1 * widget->camera()->distance(m_center));
+                MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center));
     shift = 0.;
   }
   glEnable(GL_BLEND);
@@ -262,5 +262,4 @@ void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom)
   glDisable(GL_BLEND);
   glEnable(GL_LIGHTING);
   glDepthMask(GL_TRUE);
-
 }
