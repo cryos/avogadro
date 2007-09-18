@@ -69,14 +69,26 @@ int main(int argc, char *argv[])
     return -1;
   }
 
+  QString qt_tr = "qt_" + QLocale::system().name();
+  QString avo_tr = "avo_" + QLocale::system().name();
+  QString libavo_tr = "libavo_" + QLocale::system().name();
+
+  //Until translation works I suggest to try this one...
+  qDebug() << "TRANSLATION: loading " << qt_tr;
+  qDebug() << "TRANSLATION: loading " << avo_tr;
+  qDebug() << "TRANSLATION: loading " << libavo_tr;
+
   QTranslator qtTranslator;
-  qtTranslator.load("qt_" + QLocale::system().name());
+  qtTranslator.load(qt_tr);
   app.installTranslator(&qtTranslator);
 
   QTranslator avoTranslator;
-  avoTranslator.load("avo_" + QLocale::system().name());
+  avoTranslator.load(avo_tr);
   app.installTranslator(&avoTranslator);
 
+  QTranslator libavoTranslator;
+  libavoTranslator.load(libavo_tr);
+  app.installTranslator(&libavoTranslator);
 
 
   // use multi-sample (anti-aliased) OpenGL if available
