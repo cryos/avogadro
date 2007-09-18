@@ -25,6 +25,7 @@
 #include <QMessageBox>
 #include <QTranslator>
 
+
 #include <avogadro/global.h>
 
 // Avogadro Includes
@@ -69,27 +70,33 @@ int main(int argc, char *argv[])
     return -1;
   }
 
-  QString qt_tr = "qt_" + QLocale::system().name();
-  QString avo_tr = "avo_" + QLocale::system().name();
-  QString libavo_tr = "libavo_" + QLocale::system().name();
+  QString myTranslationCode = QLocale::system().name();
+  QString i18nPath = "/home/kde4/kde/";
 
-  //Until translation works I suggest to try this one...
-  qDebug() << "TRANSLATION: loading " << qt_tr;
-  qDebug() << "TRANSLATION: loading " << avo_tr;
-  qDebug() << "TRANSLATION: loading " << libavo_tr;
+  QString filename_qt = "/usr/share/qt4/translations/qt_"  + myTranslationCode + ".qm";
+  QString filename_avo = i18nPath + "avogadro_" + myTranslationCode + ".qm";
+  QString filename_libavo = i18nPath + "libavogadro_" + myTranslationCode + ".qm";
 
-  QTranslator qtTranslator;
-  qtTranslator.load(qt_tr);
-  app.installTranslator(&qtTranslator);
+  QTranslator qtTranslator(0);
+  QTranslator avoTranslator(0);
+  QTranslator libavoTranslator(0);
 
-  QTranslator avoTranslator;
-  avoTranslator.load(avo_tr);
-  app.installTranslator(&avoTranslator);
+  if (qtTranslator.load(filename_qt))
+  {
+          app.installTranslator(&qtTranslator);
+          qDebug() << "======================= Setting translation to " << filename_qt;
+  }
 
-  QTranslator libavoTranslator;
-  libavoTranslator.load(libavo_tr);
-  app.installTranslator(&libavoTranslator);
-
+  if (avoTranslator.load(filename_avo)) 
+  {
+          app.installTranslator(&avoTranslator);
+          qDebug() << "======================= Setting translation to " << filename_avo;
+  }
+  if (libavoTranslator.load(filename_libavo)) 
+  {
+          app.installTranslator(&libavoTranslator);
+          qDebug() << "======================= Setting translation to " << filename_libavo;
+  }
 
   // use multi-sample (anti-aliased) OpenGL if available
   QGLFormat defFormat = QGLFormat::defaultFormat();
