@@ -23,6 +23,7 @@
 // QT Includes
 #include <QApplication>
 #include <QMessageBox>
+#include <QTranslator>
 
 #include <avogadro/global.h>
 
