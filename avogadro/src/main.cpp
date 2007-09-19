@@ -71,20 +71,19 @@ int main(int argc, char *argv[])
   }
 
   QString myTranslationCode = QLocale::system().name();
-  QString i18nPath = "/home/kde4/kde/";
+  QString prefixPath = QString( INSTALL_PREFIX ) + "/i18n/";
 
-  QString filename_qt = "/usr/share/qt4/translations/qt_"  + myTranslationCode + ".qm";
-  QString filename_avo = i18nPath + "avogadro_" + myTranslationCode + ".qm";
-  QString filename_libavo = i18nPath + "libavogadro_" + myTranslationCode + ".qm";
+  QString filename_avo = prefixPath + "avogadro_" + myTranslationCode + ".qm";
+  QString filename_libavo = prefixPath + "libavogadro_" + myTranslationCode + ".qm";
 
   QTranslator qtTranslator(0);
   QTranslator avoTranslator(0);
   QTranslator libavoTranslator(0);
 
-  if (qtTranslator.load(filename_qt))
+  if (qtTranslator.load(QString("qt_") + myTranslationCode, prefixPath ))
   {
           app.installTranslator(&qtTranslator);
-          qDebug() << "======================= Setting translation to " << filename_qt;
+          qDebug() << "======================= Setting translation to SOMETHING";
   }
 
   if (avoTranslator.load(filename_avo)) 
