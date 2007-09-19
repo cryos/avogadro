@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="fr">
+<defaultcodec></defaultcodec>
 <context>
     <name>AutoRotateTool</name>
     <message>
         <location filename="../../libavogadro/src/tools/autorotatetool.cpp" line="51"/>
         <source>Auto Rotation Tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Outil de rotation automatique</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/autorotatetool.cpp" line="209"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Arrêter</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/autorotatetool.cpp" line="219"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Commencer</translation>
     </message>
 </context>
 <context>
@@ -36,12 +37,12 @@
     <message>
         <location filename="../../libavogadro/src/tools/autorotatetool.h" line="65"/>
         <source>AutoRotate</source>
-        <translation type="unfinished"></translation>
+        <translation>Autorotation</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/autorotatetool.h" line="67"/>
         <source>Auto Rotation Tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Outil permettant d&apos;effectuer une rotation automatique</translation>
     </message>
 </context>
 <context>
@@ -49,12 +50,12 @@
     <message>
         <location filename="../../libavogadro/src/tools/bondcentrictool.h" line="76"/>
         <source>BondCentric</source>
-        <translation type="unfinished"></translation>
+        <translation>Outil des liaisons</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/bondcentrictool.h" line="78"/>
         <source>Bond Centric Manipulation Tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Outil pour la manipulation des liaisons</translation>
     </message>
 </context>
 <context>
@@ -62,12 +63,12 @@
     <message>
         <location filename="../../libavogadro/src/tools/clickmeasuretool.h" line="57"/>
         <source>ClickMeasure</source>
-        <translation type="unfinished"></translation>
+        <translation>Cliquer et mesurer</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/clickmeasuretool.h" line="59"/>
         <source>Click to Measure Tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Outil permettant d&apos;effectuer des mesures</translation>
     </message>
 </context>
 <context>
@@ -75,12 +76,12 @@
     <message>
         <location filename="../../libavogadro/src/tools/drawtool.h" line="60"/>
         <source>Draw</source>
-        <translation type="unfinished"></translation>
+        <translation>Dessiner</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/drawtool.h" line="62"/>
         <source>Draws Things</source>
-        <translation type="unfinished"></translation>
+        <translation>Outil permettant de dessiner</translation>
     </message>
 </context>
 <context>
@@ -96,7 +97,7 @@
     <message>
         <location filename="../src/extensions/gamessextension.cpp" line="86"/>
         <source>&amp;Tools&gt;GAMESS</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Outils&gt;GAMESS</translation>
     </message>
     <message>
         <location filename="../src/extensions/gamessextension.cpp" line="92"/>
@@ -106,47 +107,47 @@
     <message>
         <location filename="../src/extensions/gamessextension.cpp" line="106"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer</translation>
     </message>
     <message>
         <location filename="../src/extensions/gamessextension.cpp" line="180"/>
         <source>No Atoms Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun atome sélectionné</translation>
     </message>
     <message>
         <location filename="../src/extensions/gamessextension.cpp" line="181"/>
         <source>You must make a selection!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous devez effectuer une sélection!</translation>
     </message>
     <message>
         <location filename="../src/extensions/gamessextension.cpp" line="188"/>
         <source>SMILES Conversion Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Conversion SMILES non disponible</translation>
     </message>
     <message>
         <location filename="../src/extensions/gamessextension.cpp" line="189"/>
         <source>SMILES Format Conversion Not Available!</source>
-        <translation type="unfinished"></translation>
+        <translation>Conversion de format SMILES non disponible!</translation>
     </message>
     <message>
         <location filename="../src/extensions/gamessextension.cpp" line="584"/>
         <source>, </source>
-        <translation type="unfinished"></translation>
+        <translation>, </translation>
     </message>
     <message>
         <location filename="../src/extensions/gamessextension.cpp" line="460"/>
         <source>Group Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de groupe</translation>
     </message>
     <message>
         <location filename="../src/extensions/gamessextension.cpp" line="513"/>
         <source> (</source>
-        <translation type="unfinished"></translation>
+        <translation> (</translation>
     </message>
     <message>
         <location filename="../src/extensions/gamessextension.cpp" line="513"/>
         <source>)</source>
-        <translation type="unfinished"></translation>
+        <translation>)</translation>
     </message>
 </context>
 <context>
@@ -154,7 +155,7 @@
     <message>
         <location filename="../src/extensions/ghemicalextension.cpp" line="90"/>
         <source>&amp;Tools&gt;Molecular Mechanics</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Outils&gt;Mécanique moléculaire</translation>
     </message>
 </context>
 <context>
@@ -162,145 +163,148 @@
     <message>
         <location filename="../src/mainwindow.cpp" line="187"/>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Messages</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="196"/>
         <source>Ready.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prêt.</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="220"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir fichier</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="328"/>
         <source>Save Molecule As</source>
-        <translation type="unfinished"></translation>
+        <translation>Sauver la molécule sous</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="953"/>
         <source>Avogadro</source>
-        <translation type="unfinished">Avogadro</translation>
+        <translation>Avogadro</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="348"/>
         <source>Cannot write to the file %1:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;écrire dans le fichier %1:
+%2.</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="354"/>
         <source>Saving file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrement du fichier.</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="361"/>
         <source>Cannot write to file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;écrire dans le format du fichier %1.</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="369"/>
         <source>Cannot write to the file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;écrire le fichier %1.</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="381"/>
         <source>File saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier enregistré</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="394"/>
         <source>Export Bitmap Graphics</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporter image bitmap</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="401"/>
         <source>Cannot save file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de sauver le fichier %1.</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="410"/>
         <source>Export POV Scene</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporter scène POV</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="436"/>
         <source>The document has been modified.
 Do you want to save your changes?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce document a été modifié.
+Voulez-vous enregistrer vos changements?</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="501"/>
         <source>Paste failed (format unavailable).</source>
-        <translation type="unfinished"></translation>
+        <translation>Le collage a échoué (format non disponible).</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="514"/>
         <source>Unable to paste molecule.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de coller la molécule.</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="558"/>
         <source>Copy failed (mdl unavailable).</source>
-        <translation type="unfinished"></translation>
+        <translation>La copie a échoué (mdl non disponible).</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="571"/>
         <source>Copy failed (xyz unavailable).</source>
-        <translation type="unfinished"></translation>
+        <translation>La copie a échoué (xyz non disponible).</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="655"/>
         <source>GLWidget</source>
-        <translation type="unfinished"></translation>
+        <translation>GLWidget</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="701"/>
         <source>View </source>
-        <translation type="unfinished"></translation>
+        <translation>Vue </translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="723"/>
         <source>Normal Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Taille normale</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="729"/>
         <source>Full Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Plein écran</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="869"/>
         <source>Cannot read file %1:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de lire le fichier %1:
+%2.</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="876"/>
         <source>Reading file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lecture du fichier.</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="883"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de lire le format du fichier %1.</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="892"/>
         <source>Cannot read file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de lire le fichier %1.</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="947"/>
         <source>[*]Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation>[*]Avogadro</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="952"/>
         <source>%1[*] - %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1[*] - %2</translation>
     </message>
 </context>
 <context>
@@ -308,12 +312,12 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../../libavogadro/src/tools/manipulatetool.h" line="62"/>
         <source>Manipulate</source>
-        <translation type="unfinished"></translation>
+        <translation>Manipuler</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/manipulatetool.h" line="64"/>
         <source>Manipulation Tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Outil de manipulation</translation>
     </message>
 </context>
 <context>
@@ -321,27 +325,27 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../../libavogadro/src/moleculetreeview.cpp" line="238"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation>Molécule</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/moleculetreeview.cpp" line="243"/>
         <source>Atom </source>
-        <translation type="unfinished"></translation>
+        <translation>Atome </translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/moleculetreeview.cpp" line="250"/>
         <source>Bond </source>
-        <translation type="unfinished"></translation>
+        <translation>Liaison </translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/moleculetreeview.cpp" line="250"/>
         <source> (</source>
-        <translation type="unfinished"></translation>
+        <translation>  (</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/moleculetreeview.cpp" line="269"/>
         <source>Residue </source>
-        <translation type="unfinished"></translation>
+        <translation>Résidu </translation>
     </message>
 </context>
 <context>
@@ -349,12 +353,12 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../../libavogadro/src/tools/navigatetool.h" line="63"/>
         <source>Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation>Naviguer</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/navigatetool.h" line="65"/>
         <source>Navigation Tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Outil de navigation</translation>
     </message>
 </context>
 <context>
@@ -362,27 +366,27 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../../libavogadro/src/primitiveitemmodel.cpp" line="224"/>
         <source>Atom </source>
-        <translation type="unfinished"></translation>
+        <translation>Atome </translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/primitiveitemmodel.cpp" line="230"/>
         <source>Bond </source>
-        <translation type="unfinished"></translation>
+        <translation>Liaison </translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/primitiveitemmodel.cpp" line="244"/>
         <source>Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation>Atomes</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/primitiveitemmodel.cpp" line="246"/>
         <source>Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation>Liaisons</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/primitiveitemmodel.cpp" line="248"/>
         <source>Residues</source>
-        <translation type="unfinished"></translation>
+        <translation>Résidus</translation>
     </message>
 </context>
 <context>
@@ -390,12 +394,12 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../../libavogadro/src/tools/selectrotatetool.h" line="62"/>
         <source>Select/Rotate</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection/rotation</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/selectrotatetool.h" line="64"/>
         <source>Selection and Rotation Tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Outil permettant d&apos;effectuer des sélections</translation>
     </message>
 </context>
 <context>
@@ -416,14 +420,16 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../src/extensions/unitcellextension.cpp" line="71"/>
         <source>Avogadro</source>
-        <translation type="unfinished">Avogadro</translation>
+        <translation>Avogadro</translation>
     </message>
     <message>
         <location filename="../src/extensions/unitcellextension.cpp" line="73"/>
         <source>This document is currently an isolated molecule.
 
 Do you want to create a crystal unit cell?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce document représente pour le moment une molécule isolée.
+
+Voulez-vous créer une maille élémentaire de cristal?</translation>
     </message>
 </context>
 <context>
@@ -431,12 +437,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../../libavogadro/src/engines/axesengine.cpp" line="41"/>
         <source>Axes</source>
-        <translation type="unfinished"></translation>
+        <translation>Axes</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/axesengine.cpp" line="42"/>
         <source>Renders x, y and z axes</source>
-        <translation type="unfinished"></translation>
+        <translation>Outil dessinant les axes x, y, et z</translation>
     </message>
 </context>
 <context>
@@ -444,12 +450,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../../libavogadro/src/engines/bsdyengine.cpp" line="98"/>
         <source>Dynamic Ball and Stick</source>
-        <translation type="unfinished"></translation>
+        <translation>Sphères et bâtonnets</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/bsdyengine.cpp" line="100"/>
         <source>Renders primitives using Balls (atoms) and Sticks (bonds).  Includes demonstration of dynamic rendering based on distance from camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Rendu des primitives en sphères (pour les atomes) et bâtonnets (pour les liaisons)</translation>
     </message>
 </context>
 <context>
@@ -462,12 +468,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../../libavogadro/src/engines/bsdysettingswidget.ui" line="47"/>
         <source>Atom Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rayons des atomes:</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/bsdysettingswidget.ui" line="54"/>
         <source>Bond Radius</source>
-        <translation type="unfinished"></translation>
+        <translation>Rayon des liaisons</translation>
     </message>
 </context>
 <context>
@@ -488,27 +494,27 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
     <message>
         <location filename="../../libavogadro/src/tools/bondcentrictool.cpp" line="642"/>
         <source>Bond Length:  </source>
-        <translation type="unfinished"></translation>
+        <translation>Longueur de la liaison:  </translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/bondcentrictool.cpp" line="1214"/>
         <source> Show Angles</source>
-        <translation type="unfinished"></translation>
+        <translation> Montrer les angles</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/bondcentrictool.cpp" line="1217"/>
         <source> Enable Snap-to</source>
-        <translation type="unfinished"></translation>
+        <translation> Activer l&apos;ajustement automatique</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/bondcentrictool.cpp" line="1220"/>
         <source>Snap-to Angle: </source>
-        <translation type="unfinished"></translation>
+        <translation>Angle d&apos;ajustement automatique: </translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/bondcentrictool.cpp" line="1232"/>
         <source></source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -526,22 +532,22 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../../libavogadro/src/tools/clickmeasuretool.cpp" line="141"/>
         <source>*1</source>
-        <translation type="unfinished"></translation>
+        <translation>*1</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/clickmeasuretool.cpp" line="153"/>
         <source>*2</source>
-        <translation type="unfinished"></translation>
+        <translation>*2</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/clickmeasuretool.cpp" line="169"/>
         <source>*3</source>
-        <translation type="unfinished"></translation>
+        <translation>*3</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/clickmeasuretool.cpp" line="173"/>
         <source>Distance(s):</source>
-        <translation type="unfinished"></translation>
+        <translation>Distance(s):</translation>
     </message>
 </context>
 <context>
@@ -549,12 +555,12 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../../libavogadro/src/engines/debugengine.cpp" line="46"/>
         <source>Debug Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Informations de débogage</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/debugengine.cpp" line="47"/>
         <source>Renders debug information</source>
-        <translation type="unfinished"></translation>
+        <translation>Affiche les informations de débogage</translation>
     </message>
 </context>
 <context>
@@ -570,17 +576,17 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../../libavogadro/src/tools/drawtool.cpp" line="366"/>
         <source>Draw Atom</source>
-        <translation type="unfinished"></translation>
+        <translation>Dessiner un atome</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/drawtool.cpp" line="372"/>
         <source>Draw Bond</source>
-        <translation type="unfinished"></translation>
+        <translation>Dessiner une liaison</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/drawtool.cpp" line="378"/>
         <source>Draw</source>
-        <translation type="unfinished"></translation>
+        <translation>Dessiner</translation>
     </message>
 </context>
 <context>
@@ -588,32 +594,32 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../src/enginesetupwidget.ui" line="13"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/enginesetupwidget.ui" line="41"/>
         <source>Settings</source>
-        <translation type="unfinished">Paramètres</translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <location filename="../src/enginesetupwidget.ui" line="46"/>
         <source>Primitives</source>
-        <translation type="unfinished"></translation>
+        <translation>Primitives</translation>
     </message>
     <message>
         <location filename="../src/enginesetupwidget.ui" line="107"/>
         <source>Add Selected Primitives</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter les primitives sélectionnées</translation>
     </message>
     <message>
         <location filename="../src/enginesetupwidget.ui" line="117"/>
         <source>Remove Selected Primitives</source>
-        <translation type="unfinished"></translation>
+        <translation>Retirer les primitives sélectionnées</translation>
     </message>
     <message>
         <location filename="../src/enginesetupwidget.ui" line="127"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Réinitialiser</translation>
     </message>
 </context>
 <context>
@@ -621,67 +627,67 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="13"/>
         <source>Setup Force Field</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurer champ de force</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="67"/>
         <source>Force Field</source>
-        <translation type="unfinished"></translation>
+        <translation>Champ de force</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="59"/>
         <source>Ghemical</source>
-        <translation type="unfinished">Ghemical</translation>
+        <translation>Ghemical</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="95"/>
         <source>Geometry Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation>Optimisation de la géométrie</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="107"/>
         <source>Number of steps</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre d&apos;étapes</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="137"/>
         <source>Gradients</source>
-        <translation type="unfinished"></translation>
+        <translation>Gradients</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="144"/>
         <source>Algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>Algorithme</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="152"/>
         <source>Numerical</source>
-        <translation type="unfinished"></translation>
+        <translation>Numérique</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="157"/>
         <source>Analytical</source>
-        <translation type="unfinished"></translation>
+        <translation>Analytique</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="166"/>
         <source>Steepest Descent</source>
-        <translation type="unfinished"></translation>
+        <translation>Plus grande pente</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="171"/>
         <source>Conjugate Gradients</source>
-        <translation type="unfinished"></translation>
+        <translation>Gradients conjugués</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="179"/>
         <source>Convergence</source>
-        <translation type="unfinished"></translation>
+        <translation>Convergence</translation>
     </message>
     <message>
         <location filename="../src/extensions/forcefielddialog.ui" line="189"/>
         <source>10e-</source>
-        <translation type="unfinished"></translation>
+        <translation>10e-</translation>
     </message>
 </context>
 <context>
@@ -694,7 +700,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../src/extensions/gamessefpmatchdialog.ui" line="25"/>
         <source>Group Label:</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiquette du groupe:</translation>
     </message>
 </context>
 <context>
@@ -2188,12 +2194,12 @@ All changes will be lost!</source>
     <message>
         <location filename="../../libavogadro/src/engines/labelengine.cpp" line="49"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiquettes</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/labelengine.cpp" line="50"/>
         <source>Renders primitive labels</source>
-        <translation type="unfinished"></translation>
+        <translation>Affiche les étiquettes des primitives</translation>
     </message>
 </context>
 <context>
@@ -2201,42 +2207,42 @@ All changes will be lost!</source>
     <message>
         <location filename="../../libavogadro/src/engines/labelsettingswidget.ui" line="19"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/labelsettingswidget.ui" line="25"/>
         <source>Atom Labels:</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiquettes des atomes:</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/labelsettingswidget.ui" line="57"/>
         <source>Atom number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numéro d&apos;atome</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/labelsettingswidget.ui" line="62"/>
         <source>Element symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbole de l&apos;élément</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/labelsettingswidget.ui" line="67"/>
         <source>Element name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de l&apos;élément</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/labelsettingswidget.ui" line="117"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Rien</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/labelsettingswidget.ui" line="80"/>
         <source>Bond Labels:</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiquettes des liaisons:</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/labelsettingswidget.ui" line="112"/>
         <source>Bond number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numéro de liaison</translation>
     </message>
 </context>
 <context>
@@ -2551,597 +2557,597 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="19"/>
         <source>Periodic Table</source>
-        <translation type="unfinished"></translation>
+        <translation>Tableau périodique</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="25"/>
         <source>H</source>
-        <translation type="unfinished"></translation>
+        <translation>H</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="32"/>
         <source>He</source>
-        <translation type="unfinished"></translation>
+        <translation>He</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="39"/>
         <source>Li</source>
-        <translation type="unfinished"></translation>
+        <translation>Li</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="46"/>
         <source>Be</source>
-        <translation type="unfinished"></translation>
+        <translation>Be</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="53"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation>B</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="60"/>
         <source>C</source>
-        <translation type="unfinished"></translation>
+        <translation>C</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="67"/>
         <source>N</source>
-        <translation type="unfinished"></translation>
+        <translation>N</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="74"/>
         <source>O</source>
-        <translation type="unfinished"></translation>
+        <translation>O</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="81"/>
         <source>F</source>
-        <translation type="unfinished"></translation>
+        <translation>F</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="88"/>
         <source>Ne</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="95"/>
         <source>Na</source>
-        <translation type="unfinished"></translation>
+        <translation>Na</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="102"/>
         <source>Mg</source>
-        <translation type="unfinished"></translation>
+        <translation>Mg</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="109"/>
         <source>Al</source>
-        <translation type="unfinished"></translation>
+        <translation>Al</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="116"/>
         <source>Si</source>
-        <translation type="unfinished"></translation>
+        <translation>Si</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="123"/>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation>P</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="130"/>
         <source>S</source>
-        <translation type="unfinished"></translation>
+        <translation>S</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="137"/>
         <source>Cl</source>
-        <translation type="unfinished"></translation>
+        <translation>Cl</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="144"/>
         <source>Ar</source>
-        <translation type="unfinished"></translation>
+        <translation>Ar</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="151"/>
         <source>K</source>
-        <translation type="unfinished"></translation>
+        <translation>K</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="158"/>
         <source>Ca</source>
-        <translation type="unfinished"></translation>
+        <translation>Ca</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="165"/>
         <source>Sc</source>
-        <translation type="unfinished"></translation>
+        <translation>Sc</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="172"/>
         <source>Ti</source>
-        <translation type="unfinished"></translation>
+        <translation>Ti</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="179"/>
         <source>V</source>
-        <translation type="unfinished"></translation>
+        <translation>V</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="186"/>
         <source>Cr</source>
-        <translation type="unfinished"></translation>
+        <translation>Cr</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="193"/>
         <source>Mn</source>
-        <translation type="unfinished"></translation>
+        <translation>Mn</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="200"/>
         <source>Fe</source>
-        <translation type="unfinished"></translation>
+        <translation>Fe</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="207"/>
         <source>Co</source>
-        <translation type="unfinished"></translation>
+        <translation>Co</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="214"/>
         <source>Ni</source>
-        <translation type="unfinished"></translation>
+        <translation>Ni</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="221"/>
         <source>Cu</source>
-        <translation type="unfinished"></translation>
+        <translation>Cu</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="228"/>
         <source>Zn</source>
-        <translation type="unfinished"></translation>
+        <translation>Zn</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="235"/>
         <source>Ga</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="242"/>
         <source>Ge</source>
-        <translation type="unfinished"></translation>
+        <translation>Ge</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="249"/>
         <source>As</source>
-        <translation type="unfinished"></translation>
+        <translation>As</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="256"/>
         <source>Se</source>
-        <translation type="unfinished"></translation>
+        <translation>Se</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="263"/>
         <source>Br</source>
-        <translation type="unfinished"></translation>
+        <translation>Br</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="270"/>
         <source>Kr</source>
-        <translation type="unfinished"></translation>
+        <translation>Kr</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="277"/>
         <source>Rb</source>
-        <translation type="unfinished"></translation>
+        <translation>Rb</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="284"/>
         <source>Sr</source>
-        <translation type="unfinished"></translation>
+        <translation>Sr</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="291"/>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="298"/>
         <source>Zr</source>
-        <translation type="unfinished"></translation>
+        <translation>Zr</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="305"/>
         <source>Nb</source>
-        <translation type="unfinished"></translation>
+        <translation>Nb</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="312"/>
         <source>Mo</source>
-        <translation type="unfinished"></translation>
+        <translation>Mo</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="319"/>
         <source>Tc</source>
-        <translation type="unfinished"></translation>
+        <translation>Tc</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="326"/>
         <source>Ru</source>
-        <translation type="unfinished"></translation>
+        <translation>Ru</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="333"/>
         <source>Rh</source>
-        <translation type="unfinished"></translation>
+        <translation>Rh</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="340"/>
         <source>Pd</source>
-        <translation type="unfinished"></translation>
+        <translation>Pd</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="347"/>
         <source>Ag</source>
-        <translation type="unfinished"></translation>
+        <translation>Ag</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="354"/>
         <source>Cd</source>
-        <translation type="unfinished"></translation>
+        <translation>Cd</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="361"/>
         <source>In</source>
-        <translation type="unfinished"></translation>
+        <translation>In</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="368"/>
         <source>Sn</source>
-        <translation type="unfinished"></translation>
+        <translation>Sn</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="375"/>
         <source>Sb</source>
-        <translation type="unfinished"></translation>
+        <translation>Sb</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="382"/>
         <source>Te</source>
-        <translation type="unfinished"></translation>
+        <translation>Te</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="389"/>
         <source>I</source>
-        <translation type="unfinished"></translation>
+        <translation>I</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="396"/>
         <source>Xe</source>
-        <translation type="unfinished"></translation>
+        <translation>Xe</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="403"/>
         <source>Cs</source>
-        <translation type="unfinished"></translation>
+        <translation>Cs</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="410"/>
         <source>Ba</source>
-        <translation type="unfinished"></translation>
+        <translation>Ba</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="417"/>
         <source>Lu</source>
-        <translation type="unfinished"></translation>
+        <translation>Lu</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="424"/>
         <source>Hf</source>
-        <translation type="unfinished"></translation>
+        <translation>Hf</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="431"/>
         <source>Ta</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="438"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>W</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="445"/>
         <source>Re</source>
-        <translation type="unfinished"></translation>
+        <translation>Re</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="452"/>
         <source>Os</source>
-        <translation type="unfinished"></translation>
+        <translation>Os</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="459"/>
         <source>Ir</source>
-        <translation type="unfinished"></translation>
+        <translation>Ir</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="466"/>
         <source>Pt</source>
-        <translation type="unfinished"></translation>
+        <translation>Pt</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="473"/>
         <source>Au</source>
-        <translation type="unfinished"></translation>
+        <translation>Au</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="480"/>
         <source>Hg</source>
-        <translation type="unfinished"></translation>
+        <translation>Hg</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="487"/>
         <source>Tl</source>
-        <translation type="unfinished"></translation>
+        <translation>Tl</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="494"/>
         <source>Pb</source>
-        <translation type="unfinished"></translation>
+        <translation>Pb</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="501"/>
         <source>Bi</source>
-        <translation type="unfinished"></translation>
+        <translation>Bi</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="508"/>
         <source>Po</source>
-        <translation type="unfinished"></translation>
+        <translation>Po</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="515"/>
         <source>At</source>
-        <translation type="unfinished"></translation>
+        <translation>At</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="522"/>
         <source>Rn</source>
-        <translation type="unfinished"></translation>
+        <translation>Rn</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="529"/>
         <source>Fr</source>
-        <translation type="unfinished"></translation>
+        <translation>Fr</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="536"/>
         <source>Ra</source>
-        <translation type="unfinished"></translation>
+        <translation>Ra</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="543"/>
         <source>Lr</source>
-        <translation type="unfinished"></translation>
+        <translation>Lr</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="550"/>
         <source>Rf</source>
-        <translation type="unfinished"></translation>
+        <translation>Rf</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="557"/>
         <source>Db</source>
-        <translation type="unfinished"></translation>
+        <translation>Db</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="564"/>
         <source>Sg</source>
-        <translation type="unfinished"></translation>
+        <translation>Sg</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="571"/>
         <source>Bh</source>
-        <translation type="unfinished"></translation>
+        <translation>Bh</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="578"/>
         <source>Hs</source>
-        <translation type="unfinished"></translation>
+        <translation>Hs</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="585"/>
         <source>Mt</source>
-        <translation type="unfinished"></translation>
+        <translation>Mt</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="592"/>
         <source>Ds</source>
-        <translation type="unfinished"></translation>
+        <translation>Ds</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="599"/>
         <source>Rg</source>
-        <translation type="unfinished"></translation>
+        <translation>Rg</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="606"/>
         <source>Uub</source>
-        <translation type="unfinished"></translation>
+        <translation>Uub</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="613"/>
         <source>Uut</source>
-        <translation type="unfinished"></translation>
+        <translation>Uut</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="620"/>
         <source>Uuq</source>
-        <translation type="unfinished"></translation>
+        <translation>Uuq</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="627"/>
         <source>Uup</source>
-        <translation type="unfinished"></translation>
+        <translation>Uup</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="634"/>
         <source>Uuh</source>
-        <translation type="unfinished"></translation>
+        <translation>Uuh</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="644"/>
         <source>Uus</source>
-        <translation type="unfinished"></translation>
+        <translation>Uus</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="654"/>
         <source>Uuo</source>
-        <translation type="unfinished"></translation>
+        <translation>Uuo</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="661"/>
         <source>La</source>
-        <translation type="unfinished"></translation>
+        <translation>La</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="668"/>
         <source>Ce</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="675"/>
         <source>Pr</source>
-        <translation type="unfinished"></translation>
+        <translation>Pr</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="682"/>
         <source>Nd</source>
-        <translation type="unfinished"></translation>
+        <translation>Nd</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="689"/>
         <source>Pm</source>
-        <translation type="unfinished"></translation>
+        <translation>Pm</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="696"/>
         <source>Sm</source>
-        <translation type="unfinished"></translation>
+        <translation>Sm</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="703"/>
         <source>Eu</source>
-        <translation type="unfinished"></translation>
+        <translation>Eu</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="710"/>
         <source>Gd</source>
-        <translation type="unfinished"></translation>
+        <translation>Gd</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="717"/>
         <source>Tb</source>
-        <translation type="unfinished"></translation>
+        <translation>Tb</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="724"/>
         <source>Dy</source>
-        <translation type="unfinished"></translation>
+        <translation>Dy</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="731"/>
         <source>Ho</source>
-        <translation type="unfinished"></translation>
+        <translation>Ho</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="738"/>
         <source>Er</source>
-        <translation type="unfinished"></translation>
+        <translation>Er</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="745"/>
         <source>Tm</source>
-        <translation type="unfinished"></translation>
+        <translation>Tm</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="752"/>
         <source>Yb</source>
-        <translation type="unfinished"></translation>
+        <translation>Yb</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="759"/>
         <source>Ac</source>
-        <translation type="unfinished"></translation>
+        <translation>Ac</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="766"/>
         <source>Th</source>
-        <translation type="unfinished"></translation>
+        <translation>Th</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="773"/>
         <source>Pa</source>
-        <translation type="unfinished"></translation>
+        <translation>Pa</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="780"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation>U</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="787"/>
         <source>Np</source>
-        <translation type="unfinished"></translation>
+        <translation>Np</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="794"/>
         <source>Pu</source>
-        <translation type="unfinished"></translation>
+        <translation>Pu</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="801"/>
         <source>Am</source>
-        <translation type="unfinished"></translation>
+        <translation>Am</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="808"/>
         <source>Cm</source>
-        <translation type="unfinished"></translation>
+        <translation>Cm</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="815"/>
         <source>Bk</source>
-        <translation type="unfinished"></translation>
+        <translation>Bk</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="822"/>
         <source>Cf</source>
-        <translation type="unfinished"></translation>
+        <translation>Cf</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="829"/>
         <source>Es</source>
-        <translation type="unfinished"></translation>
+        <translation>Es</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="836"/>
         <source>Fm</source>
-        <translation type="unfinished"></translation>
+        <translation>Fm</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="843"/>
         <source>Md</source>
-        <translation type="unfinished"></translation>
+        <translation>Md</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/periodictabledialog.ui" line="850"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>No</translation>
     </message>
 </context>
 <context>
@@ -3252,7 +3258,10 @@ Right Mouse:  Click and drag to move the view</source>
 LibAvogadro: <byte value="x9"/>%3 (rev %4)
 Qt: <byte value="x9"/><byte value="x9"/>%5
 </source>
-        <translation>Avogadro:(sp)(tab)%1 (rev %2)(new line)LibAvogadro:(sp)(tab)%3 (rev %4)(new line)Qt:(sp)(tab)(tab)%5(new line)</translation>
+        <translation>Avogadro:(sp)(tab)%1 (rev %2)
+LibAvogadro:(sp)(tab)%3 (rev %4)
+Qt:(sp)(tab)(tab)%5
+</translation>
     </message>
     <message>
         <location filename="../src/main.cpp" line="134"/>
@@ -3286,7 +3295,7 @@ Options:
     <message>
         <location filename="../src/extensions/ghemicalextension.cpp" line="264"/>
         <source>Forcefield Optimization</source>
-        <translation>Optimization par champ de force</translation>
+        <translation>Optimisation par champ de force</translation>
     </message>
     <message>
         <location filename="../src/extensions/ghemicalextension.cpp" line="265"/>
@@ -3311,37 +3320,37 @@ Options:
     <message>
         <location filename="../../libavogadro/src/tool.cpp" line="63"/>
         <source>No Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas de description</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/bondcentrictool.cpp" line="1293"/>
         <source>Bond Centric Manipulation</source>
-        <translation type="unfinished"></translation>
+        <translation>Manipulation des liaisons</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/drawcommand.cpp" line="50"/>
         <source>Add Atom</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter atome</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/drawcommand.cpp" line="102"/>
         <source>Delete Atom</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer atome</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/drawcommand.cpp" line="152"/>
         <source>Add Bond</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter liaison</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/drawcommand.cpp" line="214"/>
         <source>Delete Bond</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer liaison</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/tools/manipulatetool.cpp" line="300"/>
         <source>Manipulate Atom</source>
-        <translation type="unfinished"></translation>
+        <translation>Manipuler atome</translation>
     </message>
 </context>
 <context>
@@ -3349,12 +3358,12 @@ Options:
     <message>
         <location filename="../../libavogadro/src/engines/ribbonengine.cpp" line="47"/>
         <source>Ribbon</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruban</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/ribbonengine.cpp" line="48"/>
         <source>Renders residues as ribbons</source>
-        <translation type="unfinished"></translation>
+        <translation>Rendu des résidus en rubans</translation>
     </message>
 </context>
 <context>
@@ -3367,7 +3376,7 @@ Options:
     <message>
         <location filename="../../libavogadro/src/engines/ribbonsettingswidget.ui" line="19"/>
         <source>VdW Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opacité VdW:</translation>
     </message>
 </context>
 <context>
@@ -3403,12 +3412,12 @@ Drag to select a range of atoms</source>
     <message>
         <location filename="../../libavogadro/src/engines/sphereengine.cpp" line="49"/>
         <source>VdW Sphere</source>
-        <translation type="unfinished"></translation>
+        <translation>Sphères VdW</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/sphereengine.cpp" line="50"/>
         <source>Renders atoms as Van der Waals spheres</source>
-        <translation type="unfinished"></translation>
+        <translation>Rendu des atomes avec leurs rayons de van der Waals</translation>
     </message>
 </context>
 <context>
@@ -3421,7 +3430,7 @@ Drag to select a range of atoms</source>
     <message>
         <location filename="../../libavogadro/src/engines/spheresettingswidget.ui" line="19"/>
         <source>VdW Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opacité VdW:</translation>
     </message>
 </context>
 <context>
@@ -3429,12 +3438,12 @@ Drag to select a range of atoms</source>
     <message>
         <location filename="../../libavogadro/src/engines/stickengine.cpp" line="45"/>
         <source>Stick</source>
-        <translation type="unfinished"></translation>
+        <translation>Bâtonnets</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/stickengine.cpp" line="46"/>
         <source>Renders as Cylinders</source>
-        <translation type="unfinished"></translation>
+        <translation>Rendu en en bâtonnets</translation>
     </message>
 </context>
 <context>
@@ -3477,32 +3486,32 @@ Drag to select a range of atoms</source>
     <message>
         <location filename="../src/extensions/unitcellparamdialog.ui" line="135"/>
         <source>A:</source>
-        <translation type="unfinished"></translation>
+        <translation>A:</translation>
     </message>
     <message>
         <location filename="../src/extensions/unitcellparamdialog.ui" line="152"/>
         <source>alpha:</source>
-        <translation type="unfinished"></translation>
+        <translation>alpha:</translation>
     </message>
     <message>
         <location filename="../src/extensions/unitcellparamdialog.ui" line="172"/>
         <source>B:</source>
-        <translation type="unfinished"></translation>
+        <translation>B:</translation>
     </message>
     <message>
         <location filename="../src/extensions/unitcellparamdialog.ui" line="189"/>
         <source>beta:</source>
-        <translation type="unfinished"></translation>
+        <translation>beta:</translation>
     </message>
     <message>
         <location filename="../src/extensions/unitcellparamdialog.ui" line="209"/>
         <source>C:</source>
-        <translation type="unfinished"></translation>
+        <translation>C:</translation>
     </message>
     <message>
         <location filename="../src/extensions/unitcellparamdialog.ui" line="226"/>
         <source>gamma:</source>
-        <translation type="unfinished"></translation>
+        <translation>gamma:</translation>
     </message>
 </context>
 <context>
@@ -3510,12 +3519,12 @@ Drag to select a range of atoms</source>
     <message>
         <location filename="../../libavogadro/src/engines/wireengine.cpp" line="46"/>
         <source>Wireframe</source>
-        <translation type="unfinished"></translation>
+        <translation>Fil de fer</translation>
     </message>
     <message>
         <location filename="../../libavogadro/src/engines/wireengine.cpp" line="47"/>
         <source>Wireframe rendering</source>
-        <translation type="unfinished"></translation>
+        <translation>Esquisse la molécule en &quot;fil de fer&quot;</translation>
     </message>
 </context>
 </TS>
