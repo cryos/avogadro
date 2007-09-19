@@ -1,0 +1,7 @@
+FILE(GLOB AVOGADRO_QM "*.qm")
+
+install( FILES
+   ${AVOGADRO_QM}
+   DESTINATION  ${CMAKE_INSTALL_PREFIX}/i18n )
+
+

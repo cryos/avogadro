@@ -15,3 +15,4 @@ endif (WIN32)
 
 # tell cmake to process CMakeLists.txt in that subdirectory
 add_subdirectory(src)
+add_subdirectory(i18n)
