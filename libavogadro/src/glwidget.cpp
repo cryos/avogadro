@@ -590,7 +590,7 @@ namespace Avogadro {
   void GLWidget::paintGL()
   {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
+    resizeGL(width(), height());
     // setup the OpenGL projection matrix using the camera
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
