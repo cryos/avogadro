@@ -589,9 +589,9 @@ namespace Avogadro {
 
   void GLWidget::paintGL()
   {
-    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
     resizeGL(width(), height()); // fix for bug #1797069. don't remove!
+
+    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
     // setup the OpenGL projection matrix using the camera
     glMatrixMode( GL_PROJECTION );
