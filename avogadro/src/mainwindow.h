@@ -90,6 +90,9 @@ namespace Avogadro {
 
       void setTool(Tool *tool);
 
+      // Mac helper
+      void macQuit();
+
     private:
       friend class MainWindowPrivate;
       MainWindowPrivate * const d;

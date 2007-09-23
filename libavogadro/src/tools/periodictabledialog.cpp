@@ -16,6 +16,8 @@
 
 #include "periodictabledialog.h"
 
+#include <QDebug>
+
 namespace Avogadro {
 
 PeriodicTableDialog::PeriodicTableDialog(QWidget *parent)
@@ -31,9 +33,28 @@ PeriodicTableDialog::PeriodicTableDialog(QWidget *parent)
   // (fortunately, the elements are arranged in atomic number order)
   elementGroup = new QButtonGroup(this);
   unsigned int element = 1;
+  int maxWidth = 0;
+
   foreach(QToolButton *child, findChildren<QToolButton*>()) {
     elementGroup->addButton(child, element++);
     child->setCheckable(true);
+    // This doesn't work -- FIXME
+    //    if (child->width() > maxWidth)
+    //      maxWidth = child->width();
+  }
+
+  //  qDebug() << " maximum width " << maxWidth;
+
+  // Also update the sizes so they are square and remain so
+  QSizePolicy sizePolicy;
+  foreach(QToolButton *child, findChildren<QToolButton*>()) {
+    // This is a hack -- somehow maxWidth gets 100, not anything normal
+    child->setMinimumWidth(38);
+    child->setMinimumHeight(38);
+    // Also set the size policy to keep buttons square
+    sizePolicy = child->sizePolicy();
+    sizePolicy.setHeightForWidth(true);
+    child->setSizePolicy(sizePolicy);
   }
 
   connect(elementGroup, SIGNAL(buttonClicked(int)),

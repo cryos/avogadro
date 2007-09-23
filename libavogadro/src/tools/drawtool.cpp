@@ -153,7 +153,7 @@ QUndoCommand* DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
       m_prevAtomElement = m_beginAtom->GetAtomicNum();
       m_beginAtom->SetAtomicNum(m_element);
       widget->molecule()->EndModify();
-      m_beginAtom->update(); // Make sure to call for a widget repaint
+      m_beginAtom->update(); // Make sure to call for a repaint(#1741653).
       // FIXME: This should really be something we can undo
     }
     else

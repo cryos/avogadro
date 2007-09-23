@@ -127,7 +127,7 @@ namespace Avogadro
     // The unified toolbar look on Mac 10.4 looks really cool
     // but it has clear bugs with Qt4.3 and OpenGL apps.
     // Oops, bug filed with Trolltech
-    //    setUnifiedTitleAndToolBarOnMac(true);
+    setUnifiedTitleAndToolBarOnMac(true);
 #endif
     ui.setupUi( this );
 
@@ -270,7 +270,7 @@ namespace Avogadro
   }
 
   // Close the current file -- leave an empty window
-  // Not used on Mac. Window is closed via closeEvent()
+  // Not used on Mac: the window is closed via closeEvent() instead
   void MainWindow::closeFile()
   {
     if ( maybeSave() ) {
@@ -282,7 +282,6 @@ namespace Avogadro
 
   void MainWindow::closeEvent( QCloseEvent *event )
   {
-    qDebug() << " close Event " << endl;
     raise();
 
 #ifdef Q_WS_MAC
@@ -425,6 +424,17 @@ namespace Avogadro
   void MainWindow::documentWasModified()
   {
     setWindowModified( true );
+  }
+
+  // For the Mac, we need to do a little work when quitting
+  // Basically, we try to close every window. If successful,
+  //  then we quit
+  void MainWindow::macQuit()
+  {
+    QCloseEvent ev;
+    QApplication::sendEvent(qApp, &ev);
+    if(ev.isAccepted())
+      qApp->quit();
   }
 
   bool MainWindow::maybeSave()
@@ -779,8 +789,8 @@ namespace Avogadro
     ui.actionExportGraphics->setEnabled( QGLFramebufferObject::hasOpenGLFramebufferObjects() );
     connect( ui.actionExportPOV, SIGNAL( triggered() ), this, SLOT( exportPOV() ) );
 #ifdef Q_WS_MAC
-    connect( ui.actionQuit, SIGNAL( triggered() ), qApp, SLOT( quit() ) );
-    connect( ui.actionQuitTool, SIGNAL( triggered() ), qApp, SLOT( quit() ) );
+    connect( ui.actionQuit, SIGNAL( triggered() ), this, SLOT( macQuit() ) );
+    connect( ui.actionQuitTool, SIGNAL( triggered() ), this, SLOT( macQuit() ) );
 #else
     connect( ui.actionQuit, SIGNAL( triggered() ), this, SLOT( close() ) );
     connect( ui.actionQuitTool, SIGNAL( triggered() ), this, SLOT( close() ) );
@@ -1171,6 +1181,7 @@ namespace Avogadro
     // Now show the window and raise it
     show();
     raise();
+    activateWindow();
   }
 
 } // end namespace Avogadro
