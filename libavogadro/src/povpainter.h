@@ -43,7 +43,7 @@ using namespace Eigen;
 namespace Avogadro
 {
   class POVPainterPrivate;
-  class POVPainter : public Painter
+  class A_EXPORT POVPainter : public Painter
   {
   public:
     POVPainter ();
@@ -130,7 +130,7 @@ namespace Avogadro
 
   };
 
-  class POVPainterDevice : public PainterDevice
+  class A_EXPORT POVPainterDevice : public PainterDevice
   {
   public:
     POVPainterDevice(const QString& filename, const GLWidget* glwidget);

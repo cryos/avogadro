@@ -85,9 +85,9 @@ const double   SEL_BOND_EXTRA_RADIUS                 = 0.07;
 
 namespace Avogadro
 {
-  QString libVersion();
-  QString libSvnRevision();
-  QString libPrefix();
+  QString A_EXPORT libVersion();
+  QString A_EXPORT libSvnRevision();
+  QString A_EXPORT libPrefix();
 }
 
 #endif  // __GLOBAL_H

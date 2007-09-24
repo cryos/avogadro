@@ -30,6 +30,12 @@
 #include "quaternion.h"
 #include "navigate.h"
 
+#ifdef WIN32
+#include <float.h>
+#include <math.h>
+#define isnan(x) _isnan(x)
+#endif
+
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>

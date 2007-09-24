@@ -25,6 +25,7 @@
 #ifndef __PRIMITIVEITEMMODEL_H
 #define __PRIMITIVEITEMMODEL_H
 
+#include <avogadro/global.h>
 #include <avogadro/primitivelist.h>
 #include <avogadro/engine.h>
 
@@ -37,7 +38,7 @@ class QTreeView;
 namespace Avogadro {
 
   class PrimitiveItemModelPrivate;
-  class PrimitiveItemModel : public QAbstractItemModel
+  class A_EXPORT PrimitiveItemModel : public QAbstractItemModel
   {
     Q_OBJECT
 
