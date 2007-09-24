@@ -91,14 +91,14 @@ TARGET_LINK_LIBRARIES(stickengine avogadro-lib
 
 INSTALL(TARGETS stickengine DESTINATION ${DESTINATION_DIR})
 
-# Ribbon engine
-set(ribbonengine_SRCS ribbonengine.cpp)
-qt4_wrap_ui(ribbonengine_UIS ribbonsettingswidget.ui)
-qt4_automoc(${ribbonengine_SRCS})
-ADD_LIBRARY(ribbonengine SHARED ${ribbonengine_SRCS} ${ribbonengine_UIS} )
-TARGET_LINK_LIBRARIES(ribbonengine avogadro-lib
-                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
-                                ${OPENGL_LIBRARIES}
-)
+# Ribbon engine (disabled for 0.2 release -- not fully implemented)
+#set(ribbonengine_SRCS ribbonengine.cpp)
+#qt4_wrap_ui(ribbonengine_UIS ribbonsettingswidget.ui)
+#qt4_automoc(${ribbonengine_SRCS})
+#ADD_LIBRARY(ribbonengine SHARED ${ribbonengine_SRCS} ${ribbonengine_UIS} )
+#TARGET_LINK_LIBRARIES(ribbonengine avogadro-lib
+#                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+#                                ${OPENGL_LIBRARIES}
+#)
 
-INSTALL(TARGETS ribbonengine DESTINATION ${DESTINATION_DIR})
+#INSTALL(TARGETS ribbonengine DESTINATION ${DESTINATION_DIR})
