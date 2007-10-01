@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/autoopttool">
+        <file>autoopttool.png</file>
+    </qresource>
+</RCC>
