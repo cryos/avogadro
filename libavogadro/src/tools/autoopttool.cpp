@@ -41,7 +41,7 @@ using namespace Eigen;
 
 AutoOptTool::AutoOptTool(QObject *parent) : Tool(parent), m_clickedAtom(0),
   m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false),
-  m_running(false), m_toolGroup(0), m_settingsWidget(0), m_thread(0)
+  m_running(false), m_block(false), m_timerId(0) ,m_toolGroup(0), m_settingsWidget(0)
 {
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/autoopttool/autoopttool.png")));
@@ -323,6 +323,10 @@ void AutoOptTool::enable()
 {
   if(!m_running)
   {
+    if(!m_timerId)
+    {
+      m_timerId = startTimer(40);
+    }
     m_running = true;
     ui.m_buttonStartStop->setText(tr("Stop"));
     QUndoStack *stack = m_glwidget->undoStack();
@@ -335,12 +339,6 @@ void AutoOptTool::enable()
     {
     	delete cmd;
     }
-    if(m_thread == 0)
-    {
-      m_thread = new AutoOptThread(m_glwidget->molecule(),m_forceField,&ui);
-      connect(m_thread, SIGNAL(done()), this, SLOT(timer()));
-      m_thread->start();
-    }
   }
 }
 
@@ -348,11 +346,10 @@ void AutoOptTool::disable()
 {
   if(m_running)
   {
-    if(m_thread != 0)
+    if(m_timerId)
     {
-      m_thread->stop();
-      disconnect(m_thread,0,this,0);
-      m_thread = 0;
+      killTimer(m_timerId);
+      m_timerId = 0;
     }
     m_running = false;
     ui.m_buttonStartStop->setText(tr("Start"));
@@ -363,19 +360,43 @@ void AutoOptTool::disable()
   }
 }
 
-void AutoOptTool::timer()
+void AutoOptTool::timerEvent(QTimerEvent*)
 {
-  if (m_running)
-  {
-    m_forceField->UpdateCoordinates( *m_glwidget->molecule() );
-    if(m_clickedAtom && m_leftButtonPressed)
-    {
-      Vector3d begin = m_glwidget->camera()->project(m_clickedAtom->pos());
-      QPoint point = QPoint(begin.x(), begin.y());
-      translate(m_glwidget, m_clickedAtom->pos(), point, m_lastDraggingPosition);
+	if(m_block)
+	{
+		return;
+	}
+	else
+	{
+		m_block = true;
+	}
+
+    if ( !m_forceField->Setup( *m_glwidget->molecule() ) ) {
+      qWarning() << "GhemicalCommand: Could not set up force field on " << m_glwidget->molecule();
+      m_block = false;
+      return;
     }
-    m_glwidget->molecule()->update();
-  }  
+	if(ui.AlgorithmComboBox->currentIndex() == 0)
+	{
+      m_forceField->SteepestDescent(ui.StepsSpinBox->value(),pow(10.0, -ui.ConvergenceSpinBox->value() ), ui.GradientsComboBox == 0 ? OBFF_NUMERICAL_GRADIENT : OBFF_ANALYTICAL_GRADIENT);
+	}
+	else if(ui.AlgorithmComboBox->currentIndex() == 1)
+	{
+      m_forceField->ConjugateGradients(ui.StepsSpinBox->value(),pow(10.0, -ui.ConvergenceSpinBox->value() ), ui.GradientsComboBox == 0 ? OBFF_NUMERICAL_GRADIENT : OBFF_ANALYTICAL_GRADIENT);
+    }
+    if (m_running)
+    {
+      m_forceField->UpdateCoordinates( *m_glwidget->molecule() );
+      if(m_clickedAtom && m_leftButtonPressed)
+      {
+        Vector3d begin = m_glwidget->camera()->project(m_clickedAtom->pos());
+        QPoint point = QPoint(begin.x(), begin.y());
+        translate(m_glwidget, m_clickedAtom->pos(), point, m_lastDraggingPosition);
+      }
+      m_glwidget->molecule()->update();
+    }
+    
+	m_block = false;
 }
 
 void AutoOptTool::connectToolGroup(GLWidget *widget, ToolGroup *toolGroup)
@@ -387,65 +408,6 @@ void AutoOptTool::connectToolGroup(GLWidget *widget, ToolGroup *toolGroup)
           this, SLOT(disable()));
     toolGroup = widget->toolGroup();
   }
-}
-
-AutoOptThread::AutoOptThread(Molecule *molecule, OpenBabel::OBForceField *forceField,
-               Ui::AutoOptForceField *ui, QObject *)
-{
-  m_molecule = molecule;
-  m_forceField = forceField;
-  m_ui = ui;
-  m_timerId = 0;
-  m_block = false;
-  m_stop = false;
-}
-
-void AutoOptThread::run()
-{
-  m_timerId = startTimer(40);
-}
-
-void AutoOptThread::stop()
-{
-  if(m_timerId)
-  {
-    killTimer(m_timerId);
-    m_timerId = 0;
-  }
-  m_stop = true;
-  m_block = true;
-}
-
-void AutoOptThread::timerEvent(QTimerEvent*)
-{
-  if(m_block || m_stop)
-  {
-    return;
-  }
-  else
-  {
-    m_block = true;
-  }
-
-  if ( !m_forceField->Setup( *m_molecule ) ) {
-    qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
-    m_block = false;
-    return;
-  }
-  if(m_stop)
-  {
-    return;
-  }
-  if(m_ui->AlgorithmComboBox->currentIndex() == 0)
-  {
-    m_forceField->SteepestDescent(m_ui->StepsSpinBox->value(),pow(10.0, -m_ui->ConvergenceSpinBox->value() ), m_ui->GradientsComboBox == 0 ? OBFF_NUMERICAL_GRADIENT : OBFF_ANALYTICAL_GRADIENT);
-  }
-  else if(m_ui->AlgorithmComboBox->currentIndex() == 1)
-  {
-    m_forceField->ConjugateGradients(m_ui->StepsSpinBox->value(),pow(10.0, -m_ui->ConvergenceSpinBox->value() ), m_ui->GradientsComboBox == 0 ? OBFF_NUMERICAL_GRADIENT : OBFF_ANALYTICAL_GRADIENT);
-  }
-  emit done();
-  m_block = false;
 }
 
 AutoOptCommand::AutoOptCommand(Molecule *molecule, AutoOptTool *tool, QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)
