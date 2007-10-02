@@ -195,7 +195,7 @@ QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent
       }
       if(hit.type() == Primitive::BondType) // Bond selection
       {
-        Bond *bond = static_cast<Bond *>(molecule->GetBond(hit.name()-1));
+        Bond *bond = static_cast<Bond *>(molecule->GetBond(hit.name()));
         if(!hitList.contains(bond)) {
           hitList.append(bond);
         }

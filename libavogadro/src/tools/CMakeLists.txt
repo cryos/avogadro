@@ -70,6 +70,20 @@ TARGET_LINK_LIBRARIES(clickmeasuretool
     avogadro-lib)
 INSTALL(TARGETS clickmeasuretool DESTINATION ${DESTINATION_DIR})
 
+### selectrotatetool
+set(selectrotatetool_SRCS selectrotatetool.cpp)
+qt4_add_resources(selectrotatetool_RC_SRCS selectrotatetool.qrc)
+qt4_automoc(${selectrotatetool_SRCS})
+ADD_LIBRARY(selectrotatetool SHARED navigate.cpp
+	${selectrotatetool_SRCS} ${selectrotatetool_RC_SRCS})
+TARGET_LINK_LIBRARIES(selectrotatetool
+	${OPENBABEL2_LIBRARIES}
+	${QT_LIBRARIES}
+	${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS selectrotatetool DESTINATION ${DESTINATION_DIR})
+
 ### autoopttool
 set(autoopttool_SRCS autoopttool.cpp)
 qt4_wrap_ui(autoopttool_UIS_H autoopttool.ui)
