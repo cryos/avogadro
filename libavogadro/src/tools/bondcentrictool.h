@@ -175,6 +175,16 @@ namespace Avogadro {
        */
       bool isAtomInBond(Atom *atom, Bond *bond);
 
+      /**
+       * Checks whether the two given atoms share a bond between them.
+       *
+       * @param atom1 The first atom.
+       * @param atom2 The second atom.
+       *
+       * @return True if a bond is found between the two given atoms, false
+       *         otherwise or if either of the atoms are NULL or if they're the
+       *         same atom.
+       */
       bool areAtomsBonded(Atom *atom1, Atom *atom2);
 
       /**

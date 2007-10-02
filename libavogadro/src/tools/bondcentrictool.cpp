@@ -219,13 +219,14 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
 
   if (clickedPrim && clickedPrim->type() == Primitive::AtomType)
   {
-    //Create an undo instance for this manipulation
-    m_undo = new BondCentricMoveCommand(m_glwidget->molecule());
     // Atom clicked on.
     m_clickedAtom = (Atom*)clickedPrim;
 
     if ((m_rightButtonPressed || m_leftButtonPressed) && isAtomInBond(m_clickedAtom, m_selectedBond))
     {
+      //Create an undo instance for this manipulation
+      m_undo = new BondCentricMoveCommand(m_glwidget->molecule());
+
       m_skeleton = new SkeletonTree();
       m_skeleton->populate(m_clickedAtom, m_selectedBond, m_glwidget->molecule());
     }
