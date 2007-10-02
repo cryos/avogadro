@@ -88,6 +88,7 @@ namespace Avogadro {
       virtual QWidget* settingsWidget();
 
     public Q_SLOTS:
+      void toggled(bool checked);
       void toggle();
       void enable();
       void disable();
@@ -111,8 +112,6 @@ namespace Avogadro {
       QPoint                    m_lastDraggingPosition;
 
       void timerEvent(QTimerEvent* event);
-
-      void connectToolGroup(GLWidget *widget, ToolGroup *toolGroup);
 
       void translate(GLWidget *widget, const Eigen::Vector3d &what, const QPoint &from, const QPoint &to) const;
       

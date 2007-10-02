@@ -273,16 +273,6 @@ namespace Avogadro {
       //@}
 
       /**
-       * Connects this tool to the widget's ToolGroup so as to detect the signal
-       * emitted when the tool changes.
-       *
-       * @param widget The GLWidget containing the ToolGroup being connected to.
-       * @param toolGroup A pointer that will be (or is already) set to the
-       *                  ToolGroup being connected to.
-       */
-      void connectToolGroup(GLWidget *widget, ToolGroup *toolGroup);
-
-      /**
        * Clears any data and frees up any memory that is used by the tool.  This
        * procedure should be used when the tool is changed, the molecule cleared,
        * or the program exits etc.
@@ -309,9 +299,9 @@ namespace Avogadro {
       /**
        * Function to be called when the tool is changed.
        *
-       * @param tool The currently selected tool.
+       * @param tool True if our tool is selected.
        */
-      void toolChanged(Tool* tool);
+      void toolChanged(bool checked);
 
       /**
        * Functnion to be called when the molecule is changed.

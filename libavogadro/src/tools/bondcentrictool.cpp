@@ -85,6 +85,7 @@ BondCentricTool::BondCentricTool(QObject *parent) : Tool(parent),
         "- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
         "- Right Click & Drag one of the Atoms in the Bond to change the length"));
   //action->setShortcut(Qt::Key_F9);
+  connect(action,SIGNAL(toggled(bool)),this,SLOT(toolChanged(bool)));
 }
 
 // ##########  Desctructor  ##########
@@ -154,24 +155,11 @@ void BondCentricTool::primitiveRemoved(Primitive *primitive)
   }
 }
 
-// ##########  connectToolGroup  ##########
-
-void BondCentricTool::connectToolGroup(GLWidget *widget, ToolGroup *toolGroup)
-{
-  if(widget->toolGroup() != toolGroup && widget->toolGroup())
-  {
-    disconnect(widget->toolGroup(), 0, this, 0);
-    connect(widget->toolGroup(), SIGNAL(toolActivated(Tool*)),
-          this, SLOT(toolChanged(Tool*)));
-    toolGroup = widget->toolGroup();
-  }
-}
-
 // ##########  toolChanged  ##########
 
-void BondCentricTool::toolChanged(Tool* tool)
+void BondCentricTool::toolChanged(bool checked)
 {
-  if(tool != this && m_glwidget)
+  if(!checked && m_glwidget)
   {
     m_glwidget->update();
     clearData();
@@ -196,7 +184,6 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
             SLOT(moleculeChanged(Molecule*, Molecule*)));
     m_glwidget = widget;
     moleculeChanged(NULL, m_glwidget->molecule());
-    connectToolGroup(widget, m_toolGroup);
   }
 
   m_undo = 0;

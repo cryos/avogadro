@@ -53,6 +53,7 @@ AutoOptTool::AutoOptTool(QObject *parent) : Tool(parent), m_clickedAtom(0),
         "Extra Function when running\n"
         "Left Mouse: Click and drag atoms to move them"));
   m_forceField = OBForceField::FindForceField( "Ghemical" );
+  connect(action,SIGNAL(toggled(bool)),this,SLOT(toggled(bool)));
   //action->setShortcut(Qt::Key_F10);
 }
 
@@ -99,11 +100,7 @@ void AutoOptTool::translate(GLWidget *widget, const Eigen::Vector3d &what, const
 
 QUndoCommand* AutoOptTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
-  if(m_glwidget != widget)
-  {
-    m_glwidget = widget;
-    connectToolGroup(widget, m_toolGroup);
-  }
+  m_glwidget = widget;
   m_lastDraggingPosition = event->pos();
   
 #ifdef Q_WS_MAC
@@ -132,11 +129,7 @@ QUndoCommand* AutoOptTool::mousePress(GLWidget *widget, const QMouseEvent *event
 
 QUndoCommand* AutoOptTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
 {
-  if(m_glwidget != widget)
-  {
-    m_glwidget = widget;
-    connectToolGroup(widget, m_toolGroup);
-  }
+  m_glwidget = widget;
   m_leftButtonPressed = false;
   m_midButtonPressed = false;
   m_rightButtonPressed = false;
@@ -148,11 +141,7 @@ QUndoCommand* AutoOptTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
 
 QUndoCommand* AutoOptTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
-  if(m_glwidget != widget)
-  {
-    m_glwidget = widget;
-    connectToolGroup(widget, m_toolGroup);
-  }
+  m_glwidget = widget;
   if(!widget->molecule()) {
     return 0;
   }
@@ -216,11 +205,7 @@ QUndoCommand* AutoOptTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 
 QUndoCommand* AutoOptTool::wheel(GLWidget* widget, const QWheelEvent* event)
 {
-  if(m_glwidget != widget)
-  {
-    m_glwidget = widget;
-    connectToolGroup(widget, m_toolGroup);
-  }
+  m_glwidget = widget;
   Primitive *clickedPrim = widget->computeClickedPrimitive(event->pos());
 
   if (clickedPrim && clickedPrim->type() == Primitive::AtomType)
@@ -256,11 +241,7 @@ QUndoCommand* AutoOptTool::wheel(GLWidget* widget, const QWheelEvent* event)
 
 bool AutoOptTool::paint(GLWidget *widget)
 {
-  if(m_glwidget != widget)
-  {
-    m_glwidget = widget;
-    connectToolGroup(widget, m_toolGroup);
-  }
+  m_glwidget = widget;
   if(m_leftButtonPressed) {
     if(m_running && m_clickedAtom)
     {
@@ -399,14 +380,11 @@ void AutoOptTool::timerEvent(QTimerEvent*)
 	m_block = false;
 }
 
-void AutoOptTool::connectToolGroup(GLWidget *widget, ToolGroup *toolGroup)
+void AutoOptTool::toggled(bool checked)
 {
-  if(widget->toolGroup() != toolGroup && widget->toolGroup())
+  if(!checked)
   {
-    disconnect(widget->toolGroup(), 0, this, 0);
-    connect(widget->toolGroup(), SIGNAL(toolActivated(Tool*)),
-          this, SLOT(disable()));
-    toolGroup = widget->toolGroup();
+    disable();
   }
 }
 
