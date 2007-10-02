@@ -175,6 +175,8 @@ namespace Avogadro {
        */
       bool isAtomInBond(Atom *atom, Bond *bond);
 
+      bool areAtomsBonded(Atom *atom1, Atom *atom2);
+
       /**
        * Draws a sector that shows the angle between two lines from a given origin.
        *

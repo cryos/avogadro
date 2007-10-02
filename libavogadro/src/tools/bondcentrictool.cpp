@@ -618,8 +618,23 @@ bool BondCentricTool::paint(GLWidget *widget)
     drawSphere(widget, widget->center(), 0.10, 1.0);
   }
 
-  if (m_leftButtonPressed && m_clickedAtom && (!m_selectedBond ||
-      !isAtomInBond(m_clickedAtom, m_selectedBond))) {
+  bool dihedralAtomClicked = false;
+
+  if (m_leftButtonPressed && m_clickedAtom && m_selectedBond &&
+      !isAtomInBond(m_clickedAtom, m_selectedBond)) 
+  {
+    Atom *begin = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
+    Atom *end = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+
+    if (areAtomsBonded(m_clickedAtom, begin) ||
+        areAtomsBonded(m_clickedAtom, end)) {
+      dihedralAtomClicked = true;
+    }
+  }
+
+  if (!dihedralAtomClicked && m_leftButtonPressed && m_clickedAtom &&
+      (!m_selectedBond || !isAtomInBond(m_clickedAtom, m_selectedBond)))
+  {
     drawAtomAngles(widget, m_clickedAtom);
   }
 
@@ -644,7 +659,7 @@ bool BondCentricTool::paint(GLWidget *widget)
       }
       else
       {
-        if (m_showAngles)
+        if (m_showAngles && !dihedralAtomClicked)
         {
           // Draw the angles around the two atoms.
           if (!m_clickedAtom || m_rightButtonPressed || m_midButtonPressed ||
@@ -773,6 +788,27 @@ bool BondCentricTool::isAtomInBond(Atom *atom, Bond *bond)
   }
 
   return atom == static_cast<Atom*>(bond->GetEndAtom());
+}
+
+bool BondCentricTool::areAtomsBonded(Atom *atom1, Atom *atom2)
+{
+  if (!atom1 || !atom2 || atom1 == atom2) {
+    return false;
+  }
+
+  OBBondIterator bondIter = atom1->EndBonds();
+
+  Atom *a = (Atom*)atom1->BeginNbrAtom(bondIter);
+
+  do
+  {
+    if (a == atom2) {
+      return true;
+    }
+  }
+  while ((a = (Atom*)atom1->NextNbrAtom(bondIter)) != NULL);
+
+  return false;
 }
 
 // ##########  drawAtomAngles  ##########
