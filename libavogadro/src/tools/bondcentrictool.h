@@ -187,6 +187,8 @@ namespace Avogadro {
        */
       bool areAtomsBonded(Atom *atom1, Atom *atom2);
 
+      void drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D, Bond *BC);
+
       /**
        * Draws a sector that shows the angle between two lines from a given origin.
        *
@@ -232,6 +234,7 @@ namespace Avogadro {
        */
       void drawSkeletonAngles(GLWidget *widget, SkeletonTree *skeleton);
 
+      void drawDihedralAngles(GLWidget *widget, Atom *A, Bond *BC);
       /**
        * Calculates whether the manipulation plane is close enough to any atoms (that
        * are 1 bond away from either of the atoms attached to the given bond) to
@@ -271,6 +274,10 @@ namespace Avogadro {
        */
       void drawManipulationRectangle(GLWidget *widget, Bond *bond, 
                                      Eigen::Vector3d *referencePoint, double rgb[3]);
+
+      void drawDihedralRectangle(GLWidget *widget, Bond *bond, Atom *atom, double rgb[3]);
+
+      void drawDihedralRectanglesOfAtom(GLWidget *widget, Bond *bond, Atom *atom, double rgb[3]);
 
       /**
        * Draws a sphere of a given radius around a given vector.
