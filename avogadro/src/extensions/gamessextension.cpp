@@ -113,7 +113,7 @@ namespace Avogadro
       m_dockWidget->setWidget( widget );
       m_dockWidget->setVisible( false );
 
-      connect( m_dockWidget, SIGNAL( destroyed() ), this, SLOT( dockWidgetDestroyed ) );
+      connect( m_dockWidget, SIGNAL( destroyed() ), this, SLOT( dockWidgetDestroyed() ) );
     }
 
     return m_dockWidget;
