@@ -159,9 +159,18 @@ void ManipulateTool::tilt(GLWidget *widget, const Eigen::Vector3d &center, doubl
 QUndoCommand* ManipulateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
   m_lastDraggingPosition = event->pos();
-  m_leftButtonPressed = ( event->buttons() & Qt::LeftButton );
-  m_midButtonPressed = ( event->buttons() & Qt::MidButton );
-  m_rightButtonPressed = ( event->buttons() & Qt::RightButton );
+  // Make sure there aren't modifier keys clicked with the left button
+  // If the user has a Mac and only a one-button mouse, everything
+  // looks like a left button
+  m_leftButtonPressed = ( event->buttons() & Qt::LeftButton &&
+                          event->modifiers() == Qt::NoModifier);
+
+  // On a Mac, click and hold the Option key (Alt in Qt-speak)
+  m_midButtonPressed = ( event->buttons() & Qt::MidButton ||
+                         (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::AltModifier));
+  // On a Mac, click and hold either the Command or Control Keys (Control or Meta in Qt-speak)
+  m_rightButtonPressed = ( event->buttons() & Qt::RightButton ||
+                           (event->buttons() & Qt::LeftButton && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)));
   m_clickedAtom = widget->computeClickedAtom(event->pos());
 
   widget->update();
@@ -196,12 +205,12 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
 
   if (m_clickedAtom)
   {
-    if (event->buttons() & Qt::LeftButton)
+    if (m_leftButtonPressed)
     {
       // translate the molecule following mouse movement
       translate(widget, m_clickedAtom->pos(), m_lastDraggingPosition, event->pos());
     }
-    else if (event->buttons() & Qt::MidButton)
+    else if (m_midButtonPressed)
     {
       if (deltaDragging.y() == 0)
         // Perform the rotation
@@ -210,7 +219,7 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
         // Perform the zoom toward clicked atom
         zoom(widget, m_clickedAtom->pos(), deltaDragging.y());
     }
-    else if ( event->buttons() & Qt::RightButton )
+    else if (m_rightButtonPressed)
     {
       // Atom centred rotation
       rotate(widget, m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y());
@@ -230,12 +239,12 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
     }
     m_selectedPrimitivesCenter /= currentSelection.size();
 
-    if (event->buttons() & Qt::LeftButton)
+    if (m_leftButtonPressed)
     {
       // translate the molecule following mouse movement
       translate(widget, m_selectedPrimitivesCenter, m_lastDraggingPosition, event->pos());
     }
-    else if (event->buttons() & Qt::MidButton)
+    else if (m_midButtonPressed)
     {
       // Perform the rotation
       tilt(widget, m_selectedPrimitivesCenter, deltaDragging.x());
@@ -243,7 +252,7 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
       // Perform the zoom toward molecule center
       zoom(widget, m_selectedPrimitivesCenter, deltaDragging.y());
     }
-    else if(event->buttons() & Qt::RightButton)
+    else if(m_rightButtonPressed)
     {
       // rotation around the center of the selected atoms
       rotate(widget, m_selectedPrimitivesCenter, deltaDragging.x(), deltaDragging.y());

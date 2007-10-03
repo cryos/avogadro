@@ -72,7 +72,8 @@ QUndoCommand* ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *
   //! List of hits from initial click
   m_hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
 
-  if(m_hits.size() && event->buttons() & Qt::LeftButton)
+  // If there's a left button (and no modifier keys) continue adding to the list
+  if(m_hits.size() && (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::NoModifier))
   {
     Atom *atom = (Atom *)molecule->GetAtom(m_hits[0].name());
     if(m_hits[0].type() != Primitive::AtomType) {
@@ -85,6 +86,7 @@ QUndoCommand* ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *
       widget->update();
     }
   }
+  // Right button or Left Button + modifier (e.g., Mac)
   else
   {
     int size = m_selectedAtoms.size();

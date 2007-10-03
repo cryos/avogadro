@@ -203,8 +203,8 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
                         & Qt::AltModifier));
   // Hold down the Command key (ControlModifier in Qt notation) for right button
   m_rightButtonPressed = ((event->buttons() & Qt::RightButton) ||
-                          (event->buttons() & Qt::LeftButton && event->modifiers()
-                          & Qt::ControlModifier));
+                          (event->buttons() & Qt::LeftButton && 
+                           (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)));
 #else
   m_leftButtonPressed = (event->buttons() & Qt::LeftButton);
   m_midButtonPressed = (event->buttons() & Qt::MidButton);
@@ -542,8 +542,9 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
 #ifdef Q_WS_MAC
   // On the Mac, either use a three-button mouse
   // or hold down the Command key (ControlModifier in Qt notation)
-  else if ((event->buttons() & Qt::RightButton) || (event->buttons() &
-           Qt::LeftButton && event->modifiers() & Qt::ControlModifier))
+  else if ((event->buttons() & Qt::RightButton) || 
+           (event->buttons() & Qt::LeftButton && 
+            (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)))
 #else
   else if (event->buttons() & Qt::RightButton)
 #endif

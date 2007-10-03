@@ -83,12 +83,12 @@
        <widget class="QComboBox" name="AlgorithmComboBox" >
         <item>
          <property name="text" >
-          <string>Steepest Descent</string>
+          <string>Conjugate Gradients</string>
          </property>
         </item>
         <item>
          <property name="text" >
-          <string>Conjugate Gradients</string>
+          <string>Steepest Descent</string>
          </property>
         </item>
        </widget>
@@ -104,12 +104,12 @@
        <widget class="QComboBox" name="GradientsComboBox" >
         <item>
          <property name="text" >
-          <string>Numerical</string>
+          <string>Analytical</string>
          </property>
         </item>
         <item>
          <property name="text" >
-          <string>Analytical</string>
+          <string>Numerical</string>
          </property>
         </item>
        </widget>

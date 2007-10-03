@@ -113,8 +113,7 @@ QUndoCommand* AutoOptTool::mousePress(GLWidget *widget, const QMouseEvent *event
                         & Qt::AltModifier));
   // Hold down the Command key (ControlModifier in Qt notation) for right button
   m_rightButtonPressed = ((event->buttons() & Qt::RightButton) ||
-                          (event->buttons() & Qt::LeftButton && event->modifiers()
-                          & Qt::ControlModifier));
+                          (event->buttons() & Qt::LeftButton && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)));
 #else
   m_leftButtonPressed = (event->buttons() & Qt::LeftButton);
   m_midButtonPressed = (event->buttons() & Qt::MidButton);

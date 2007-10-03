@@ -71,10 +71,10 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
   // On the Mac, either use a three-button mouse
   // or hold down the Option key (AltModifier in Qt notation)
   m_midButtonPressed = ( (event->buttons() & Qt::MidButton) ||
-                         (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) );
+                         (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::AltModifier) );
   // Hold down the Command key (ControlModifier in Qt notation) for right button
   m_rightButtonPressed = ( (event->buttons() & Qt::RightButton) ||
-                           (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) );
+                           (event->buttons() & Qt::LeftButton && (event->modifiers()== Qt::ControlModifier || event->modifiers() == Qt::MetaModifier )) );
 
   m_clickedAtom = widget->computeClickedAtom(event->pos());
 
@@ -131,7 +131,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
     // On the Mac, either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
     else if ( (event->buttons() & Qt::RightButton) ||
-              (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
+              (event->buttons() & Qt::LeftButton && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier) ) )
     {
       // translate the molecule following mouse movement
       Navigate::translate(widget, m_clickedAtom->pos(), m_lastDraggingPosition, event->pos());
@@ -161,7 +161,7 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
     // On the Mac, either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
     else if ( (event->buttons() & Qt::RightButton) ||
-              (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) )
+              (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::ControlModifier) )
     {
       // translate the molecule following mouse movement
       Navigate::translate(widget, widget->center(), m_lastDraggingPosition, event->pos());
