@@ -88,7 +88,6 @@ namespace Avogadro {
       virtual QWidget* settingsWidget();
 
     public Q_SLOTS:
-      void toggled(bool checked);
       void toggle();
       void enable();
       void disable();

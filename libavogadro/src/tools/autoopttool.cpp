@@ -20,7 +20,7 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
  ***********************************************************************/
-
+//#define OBPatched
 #include "autoopttool.h"
 #include "navigate.h"
 #include <avogadro/primitive.h>
@@ -53,7 +53,7 @@ AutoOptTool::AutoOptTool(QObject *parent) : Tool(parent), m_clickedAtom(0),
         "Extra Function when running\n"
         "Left Mouse: Click and drag atoms to move them"));
   m_forceField = OBForceField::FindForceField( "Ghemical" );
-  connect(action,SIGNAL(toggled(bool)),this,SLOT(toggled(bool)));
+  
   //action->setShortcut(Qt::Key_F10);
 }
 
@@ -121,6 +121,12 @@ QUndoCommand* AutoOptTool::mousePress(GLWidget *widget, const QMouseEvent *event
 #endif
 
   m_clickedAtom = widget->computeClickedAtom(event->pos());
+#ifdef OBPatched
+  if(m_clickedAtom != 0 && m_leftButtonPressed && m_running)
+  {
+    m_clickedAtom->SetFixed();
+  }
+#endif
 
   widget->update();
   return 0;
@@ -132,6 +138,12 @@ QUndoCommand* AutoOptTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
   m_leftButtonPressed = false;
   m_midButtonPressed = false;
   m_rightButtonPressed = false;
+#ifdef OBPatched
+  if (m_clickedAtom != 0)
+  {
+    m_clickedAtom->UnsetFixed();
+  }
+#endif  
   m_clickedAtom = 0;
 
   widget->update();
@@ -333,6 +345,12 @@ void AutoOptTool::disable()
     }
     m_running = false;
     ui.m_buttonStartStop->setText(tr("Start"));
+  #ifdef OBPatched
+    if (m_clickedAtom != 0)
+    {
+      m_clickedAtom->UnsetFixed();
+    }
+  #endif
     m_clickedAtom = 0;
     m_leftButtonPressed = false;
     m_midButtonPressed = false;
@@ -342,7 +360,7 @@ void AutoOptTool::disable()
 
 void AutoOptTool::timerEvent(QTimerEvent*)
 {
-	if(m_block)
+	if(m_block || m_glwidget->primitives().subList(Primitive::AtomType).size() < 2)
 	{
 		return;
 	}
@@ -350,7 +368,6 @@ void AutoOptTool::timerEvent(QTimerEvent*)
 	{
 		m_block = true;
 	}
-
     if ( !m_forceField->Setup( *m_glwidget->molecule() ) ) {
       qWarning() << "GhemicalCommand: Could not set up force field on " << m_glwidget->molecule();
       m_block = false;
@@ -375,16 +392,8 @@ void AutoOptTool::timerEvent(QTimerEvent*)
       }
       m_glwidget->molecule()->update();
     }
-    
-	m_block = false;
-}
 
-void AutoOptTool::toggled(bool checked)
-{
-  if(!checked)
-  {
-    disable();
-  }
+    m_block = false;
 }
 
 AutoOptCommand::AutoOptCommand(Molecule *molecule, AutoOptTool *tool, QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)
