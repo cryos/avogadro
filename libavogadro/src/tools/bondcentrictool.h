@@ -165,6 +165,8 @@ namespace Avogadro {
       //@{
       //! \brief Methods used to construct and draw the angle-sectors, the construction plane, and the rotation-sphere
 
+      double calculateTorsion(Atom *A, Atom *B, Atom *C, Atom *D);
+
       /**
        * Checks whether a given atom is at either end of a given bond.
        *
@@ -177,7 +179,7 @@ namespace Avogadro {
        */
       bool isAtomInBond(Atom *atom, Bond *bond);
 
-      void drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D, Bond *BC);
+      void drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D, Bond *BC, bool alternateAngle = false);
 
       /**
        * Draws a sector that shows the angle between two lines from a given origin.
@@ -190,7 +192,8 @@ namespace Avogadro {
        *                   through this second point.
        */
       void drawAngleSector(GLWidget *widget, Eigen::Vector3d origin,
-                           Eigen::Vector3d direction1, Eigen::Vector3d direction2);
+                           Eigen::Vector3d direction1, Eigen::Vector3d direction2,
+                           bool alternateAngle = false);
 
       /**
        * Draws sectors around a given atom representing the angles between neighbouring

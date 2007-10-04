@@ -948,6 +948,16 @@ bool BondCentricTool::paint(GLWidget *widget)
   return true;
 }
 
+// ##########  calculateTorsion  ##########
+
+double BondCentricTool::calculateTorsion(Atom *A, Atom *B, Atom *C, Atom *D)
+{
+  Vector3d BA = (A->pos() - B->pos()).normalized();
+  Vector3d CD = (D->pos() - C->pos()).normalized();
+
+  return acos(BA.dot(CD) / CD.norm2()) * 180.0 / M_PI;
+}
+
 // ##########  isAtomInBond  ##########
 
 bool BondCentricTool::isAtomInBond(Atom *atom, Bond *bond)
@@ -1034,7 +1044,7 @@ void BondCentricTool::drawSkeletonAngles(GLWidget *widget, SkeletonTree *skeleto
 // ##########  drawDihedralAngle  ##########
 
 // Dihedral angle between atoms A & D for the four atoms A-B-C-D
-void BondCentricTool::drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D, Bond *BC)
+void BondCentricTool::drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D, Bond *BC, bool alternateAngle)
 {
   if (!A || !D || !BC || !widget) {
     return;
@@ -1073,7 +1083,7 @@ void BondCentricTool::drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D, Bond
   // radius = qMin(BAVec.norm(), CDVec.norm()) * 0.5;
   // if (BAVec.norm() == CDVec.norm())
   //    radius = BAVec.norm() / 2;
-  drawAngleSector(widget, mid, a, d);
+  drawAngleSector(widget, mid, a, d, alternateAngle);
 }
 
 // ##########  drawDihedralAngles  ##########
@@ -1099,10 +1109,14 @@ void BondCentricTool::drawDihedralAngles(GLWidget *widget, Atom *A, Bond *BC)
     }
   }
 
-  double torsion1 = 0.0;
-  double torsion2 = 0.0;
-  Atom *atom1 = NULL;
-  Atom *atom2 = NULL;
+  double minTorsion = 0.0;
+  double maxTorsion = 0.0;
+  double minNegTorsion = 0.0;
+  double maxNegTorsion = 0.0;
+  Atom *minTorsAtom = NULL;
+  Atom *maxTorsAtom = NULL;
+  Atom *minNegTorsAtom = NULL;
+  Atom *maxNegTorsAtom = NULL;
 
   OBBondIterator bondIter = C->EndBonds();
   Atom *D = static_cast<Atom*>(C->BeginNbrAtom(bondIter));
@@ -1119,28 +1133,37 @@ void BondCentricTool::drawDihedralAngles(GLWidget *widget, Atom *A, Bond *BC)
 
       if (torsion == 0.0) {
         continue;
-      } else if (torsion < 0.0) {
-        torsion *= -1.0;
       }
 
       //cout << "Torsion: " << torsion << endl;
 
-      if (torsion1 == 0.0)
+      if (torsion < 0.0)
       {
-        torsion1 = torsion;
-        atom1 = D;
+        if (minNegTorsion == 0.0 || torsion > minNegTorsion)
+        {
+          minNegTorsion = torsion;
+          minNegTorsAtom = D;
+        }
+
+        if (torsion < maxNegTorsion)
+        {
+          maxNegTorsion = torsion;
+          maxNegTorsAtom = D;
+        }
       }
-      else if (torsion < torsion1)
+      else
       {
-        torsion2 = torsion1;
-        atom2 = atom1;
-        torsion1 = torsion;
-        atom1 = D;
-      }
-      else if (torsion2 == 0.0 || torsion < torsion2)
-      {
-        torsion2 = torsion;
-        atom2 = D;
+        if (minTorsion == 0.0 || torsion < minTorsion)
+        {
+          minTorsion = torsion;
+          minTorsAtom = D;
+        }
+
+        if (torsion > maxTorsion)
+        {
+          maxTorsion = torsion;
+          maxTorsAtom = D;
+        }
       }
     }
     while ((D = static_cast<Atom*>(C->NextNbrAtom(bondIter))) != NULL);
@@ -1148,11 +1171,28 @@ void BondCentricTool::drawDihedralAngles(GLWidget *widget, Atom *A, Bond *BC)
 
   double rgb[3] = {1.0, 1.0, 0.2};
   drawDihedralRectangle(widget, BC, A, rgb);
-  drawDihedralRectangle(widget, BC, atom1, rgb);
-  drawDihedralRectangle(widget, BC, atom2, rgb);
 
-  drawDihedralAngle(widget, A, atom1, BC);
-  drawDihedralAngle(widget, A, atom2, BC);
+  if (minNegTorsion && minTorsion)
+  {
+    drawDihedralRectangle(widget, BC, minTorsAtom, rgb);
+    drawDihedralRectangle(widget, BC, minNegTorsAtom, rgb);
+    drawDihedralAngle(widget, A, minTorsAtom, BC);
+    drawDihedralAngle(widget, A, minNegTorsAtom, BC);
+  }
+  else if (minTorsion)
+  {
+    drawDihedralRectangle(widget, BC, minTorsAtom, rgb);
+    drawDihedralRectangle(widget, BC, maxTorsAtom, rgb);
+    drawDihedralAngle(widget, A, minTorsAtom, BC);
+    drawDihedralAngle(widget, A, maxTorsAtom, BC, true);
+  }
+  else if (minNegTorsion)
+  {
+    drawDihedralRectangle(widget, BC, minNegTorsAtom, rgb);
+    drawDihedralRectangle(widget, BC, maxNegTorsAtom, rgb);
+    drawDihedralAngle(widget, A, minNegTorsAtom, BC);
+    drawDihedralAngle(widget, A, maxNegTorsAtom, BC, true);
+  }
 }
 
 // ##########  drawSingleDihedralAngles  ##########
@@ -1302,7 +1342,8 @@ void BondCentricTool::drawAngles(GLWidget *widget, Atom *atom, Bond *bond)
 // ##########  drawAngleSector  ##########
 
 void BondCentricTool::drawAngleSector(GLWidget *widget, Eigen::Vector3d origin,
-                                      Eigen::Vector3d direction1, Eigen::Vector3d direction2)
+                                      Eigen::Vector3d direction1, Eigen::Vector3d direction2,
+                                      bool alternateAngle)
 {
   // Get vectors representing the lines from centre to left and centre to right.
   Eigen::Vector3d u = direction1 - origin;
@@ -1325,6 +1366,10 @@ void BondCentricTool::drawAngleSector(GLWidget *widget, Eigen::Vector3d origin,
     return;
   }
 
+  if (alternateAngle) {
+    uvAngle = 360.0 - (uvAngle > 0 ? uvAngle : -uvAngle);
+  }
+
   // Vector perpindicular to both u and v.
   Eigen::Vector3d n = u.cross(v);
 
@@ -1342,7 +1387,7 @@ void BondCentricTool::drawAngleSector(GLWidget *widget, Eigen::Vector3d origin,
   n = n / n.norm();
 
   Vector3d point = performRotation((uvAngle / 2 * (M_PI / 180.0)), n,
-                                    Vector3d(0, 0, 0), u);
+                                    Vector3d(0, 0, 0), alternateAngle ? v : u);
 
   QString angle = QString::number(uvAngle, 10, 1) + QString::fromUtf8("°");
   glColor4f(1.0, 1.0, 1.0, 1.0);
@@ -1352,12 +1397,12 @@ void BondCentricTool::drawAngleSector(GLWidget *widget, Eigen::Vector3d origin,
   glEnable(GL_BLEND);
   widget->painter()->setColor(0, 0.5, 0, 0.4);
   glDepthMask(GL_FALSE);
-  widget->painter()->drawShadedSector(origin, direction1, direction2, radius);
+  widget->painter()->drawShadedSector(origin, direction1, direction2, radius, alternateAngle);
   glDepthMask(GL_TRUE);
   glDisable(GL_BLEND);
 
   widget->painter()->setColor(1.0, 1.0, 1.0, 1.0);
-  widget->painter()->drawArc(origin, direction1, direction2, radius, lineWidth);
+  widget->painter()->drawArc(origin, direction1, direction2, radius, lineWidth, alternateAngle);
 }
 
 // ##########  calcualteSnapTo  ##########

@@ -80,7 +80,8 @@ namespace Avogadro
      * @param radius The radius of the circle this sector is a portion of.
      */
     void drawShadedSector(Eigen::Vector3d origin, Eigen::Vector3d direction1,
-                          Eigen::Vector3d direction2, double radius);
+                          Eigen::Vector3d direction2, double radius,
+                          bool alternateAngle = false);
 
     /** Draws an arc.  The arc is defined by three vectors, the center of the circle,
      * and two vectors that define the lines going out from the center of the
@@ -94,7 +95,7 @@ namespace Avogadro
      * @param lineWidth The thickness of the line the arc will be drawn with.
      */
     void drawArc(Eigen::Vector3d origin, Eigen::Vector3d direction1, Eigen::Vector3d direction2,
-                 double radius, double lineWidth);
+                 double radius, double lineWidth, bool alternateAngle = false);
 
     /** Draws a solid two dimensional quadrilateral in three dimensional space.
      *

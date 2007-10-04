@@ -492,7 +492,7 @@ namespace Avogadro
   }
 
   void GLPainter::drawShadedSector(Eigen::Vector3d origin, Eigen::Vector3d direction1,
-                                 Eigen::Vector3d direction2, double radius)
+                                 Eigen::Vector3d direction2, double radius, bool alternateAngle)
   {
     assert( d->widget );
 
@@ -511,6 +511,10 @@ namespace Avogadro
     // will crash, so return.
     if (abs((int)uvAngle) <= 1)
       return;
+
+    if (alternateAngle) {
+      uvAngle = 360.0 - (uvAngle > 0 ? uvAngle : -uvAngle);
+    }
 
     // Vector perpindicular to both u and v.
     Eigen::Vector3d n = u.cross(v);
@@ -535,7 +539,7 @@ namespace Avogadro
 
     // Calculate the points along the curve at each degree increment until we
     // reach the next line.
-    Eigen::Vector3d points[360];
+    Eigen::Vector3d points[720];
     for (int theta = 1; theta < (uvAngle * 2); theta++)
     {
       // Create a Matrix that represents a rotation about a vector perpindicular
@@ -544,7 +548,11 @@ namespace Avogadro
       rotMat.loadRotation3((theta / 2 * (M_PI / 180.0)), n);
 
       // Apply the rotation Matrix to the vector to find the new point.
-      rotMat.multiply(u, &points[theta-1]);
+      if (alternateAngle) {
+        rotMat.multiply(v, &points[theta-1]);
+      } else {
+        rotMat.multiply(u, &points[theta-1]);
+      }
       points[theta-1] += origin;
       points[theta-1] = d->widget->camera()->modelview() * points[theta-1];
     }
@@ -565,10 +573,20 @@ namespace Avogadro
     // Draw the transparent polygon that makes up the sector.
     glBegin(GL_TRIANGLE_FAN);
     glVertex3d(origin.x(), origin.y(), origin.z());
-    glVertex3d(direction1.x(), direction1.y(), direction1.z());
-    for (int i = 0; i < uvAngle*2 - 1; i++)
-      glVertex3d(points[i].x(), points[i].y(), points[i].z());
-    glVertex3d(direction2.x(), direction2.y(), direction2.z());
+    if (alternateAngle)
+    {
+      glVertex3d(direction2.x(), direction2.y(), direction2.z());
+      for (int i = 0; i < uvAngle*2 - 1; i++)
+        glVertex3d(points[i].x(), points[i].y(), points[i].z());
+      glVertex3d(direction1.x(), direction1.y(), direction1.z());
+    }
+    else
+    {
+      glVertex3d(direction1.x(), direction1.y(), direction1.z());
+      for (int i = 0; i < uvAngle*2 - 1; i++)
+        glVertex3d(points[i].x(), points[i].y(), points[i].z());
+      glVertex3d(direction2.x(), direction2.y(), direction2.z());
+    }
     glEnd();
 
     glPopMatrix();
@@ -576,7 +594,8 @@ namespace Avogadro
   }
 
   void GLPainter::drawArc(Eigen::Vector3d origin, Eigen::Vector3d direction1,
-                        Eigen::Vector3d direction2, double radius, double lineWidth)
+                          Eigen::Vector3d direction2, double radius, double lineWidth,
+                          bool alternateAngle)
   {
     assert( d->widget );
 
@@ -595,6 +614,10 @@ namespace Avogadro
     // will crash, so return.
     if (abs((int)uvAngle) <= 1)
       return;
+
+    if (alternateAngle) {
+      uvAngle = 360.0 - (uvAngle > 0 ? uvAngle : -uvAngle);
+    }
 
     // Vector perpindicular to both u and v.
     Eigen::Vector3d n = u.cross(v);
@@ -619,7 +642,7 @@ namespace Avogadro
 
     // Calculate the points along the curve at each degree increment until we
     // reach the next line.
-    Eigen::Vector3d points[360];
+    Eigen::Vector3d points[720];
     for (int theta = 1; theta < (uvAngle * 2); theta++)
     {
       // Create a Matrix that represents a rotation about a vector perpindicular
@@ -628,7 +651,11 @@ namespace Avogadro
       rotMat.loadRotation3((theta / 2 * (M_PI / 180.0)), n);
 
       // Apply the rotation Matrix to the vector to find the new point.
-      rotMat.multiply(u, &points[theta-1]);
+      if (alternateAngle) {
+        rotMat.multiply(v, &points[theta-1]);
+      } else {
+        rotMat.multiply(u, &points[theta-1]);
+      }
       points[theta-1] += origin;
       points[theta-1] = d->widget->camera()->modelview() * points[theta-1];
     }
@@ -649,10 +676,20 @@ namespace Avogadro
 
     // Draw the arc.
     glBegin(GL_LINE_STRIP);
-    glVertex3d(direction1.x(), direction1.y(), direction1.z());
-    for (int i = 0; i < uvAngle*2 - 1; i++)
-      glVertex3d(points[i].x(), points[i].y(), points[i].z());
-    glVertex3d(direction2.x(), direction2.y(), direction2.z());
+    if (alternateAngle)
+    {
+      glVertex3d(direction2.x(), direction2.y(), direction2.z());
+      for (int i = 0; i < uvAngle*2 - 1; i++)
+        glVertex3d(points[i].x(), points[i].y(), points[i].z());
+      glVertex3d(direction1.x(), direction1.y(), direction1.z());
+    }
+    else
+    {
+      glVertex3d(direction1.x(), direction1.y(), direction1.z());
+      for (int i = 0; i < uvAngle*2 - 1; i++)
+        glVertex3d(points[i].x(), points[i].y(), points[i].z());
+      glVertex3d(direction2.x(), direction2.y(), direction2.z());
+    }
     glEnd();
 
     glPopMatrix();

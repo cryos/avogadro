@@ -167,12 +167,12 @@ namespace Avogadro
   }
 
   void POVPainter::drawShadedSector(Eigen::Vector3d, Eigen::Vector3d,
-                        Eigen::Vector3d, double)
+                        Eigen::Vector3d, double, bool)
   {
   }
 
   void POVPainter::drawArc(Eigen::Vector3d, Eigen::Vector3d, Eigen::Vector3d,
-               double, double)
+               double, double, bool)
   {
   }
 
