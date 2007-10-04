@@ -65,8 +65,7 @@ namespace Avogadro
   {
     public:
       MainWindowPrivate() : molecule( 0 ),
-          undoStack( 0 ), toolsFlow( 0 ), toolSettingsStacked( 0 ), 
-          messagesText( 0 ),
+          undoStack( 0 ), toolsFlow( 0 ), toolSettingsStacked( 0 ), messagesText( 0 ),
           toolGroup( 0 ),
           settingsDialog( 0 )
       {}
@@ -441,24 +440,16 @@ namespace Avogadro
   bool MainWindow::maybeSave()
   {
     if ( isWindowModified() ) {
-      QMessageBox messageBox(tr("Avogadro"),
-                              tr("The document has been modified.\n"
-                                 "Do you want to save your changes?"),
-                              QMessageBox::Warning,
-                              QMessageBox::Save | QMessageBox::Default,
-                              QMessageBox::Discard,
-                              QMessageBox::Cancel | QMessageBox::Escape,
-                              this, Qt::Sheet);
-
-      switch(messageBox.exec()) {
-      case QMessageBox::Save:
+      QMessageBox::StandardButton ret;
+      ret = QMessageBox::warning( this, tr( "Avogadro" ),
+                                  tr( "The document has been modified.\n"
+                                      "Do you want to save your changes?" ),
+                                  QMessageBox::Save | QMessageBox::Discard
+                                  | QMessageBox::Cancel );
+      if ( ret == QMessageBox::Save )
         return save();
-        break;
-      case QMessageBox::Discard:
-      default:
+      else if ( ret == QMessageBox::Cancel )
         return false;
-        break;
-      }
     }
     return true;
   }
