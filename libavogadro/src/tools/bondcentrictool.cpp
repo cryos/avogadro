@@ -539,42 +539,66 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
       Atom *endAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
 
       Vector3d center;
+      Vector3d other;
       if (m_clickedAtom->GetBond(beginAtom))
       {
         center = beginAtom->pos();
+        other = endAtom->pos();
         if (m_clickedAtom->GetBond(endAtom)) {
           //TODO: m_clickedAtom bonded to both begin and end.
         }
       }
       else {
         center = endAtom->pos();
+        other = beginAtom->pos();
       }
 
-      Vector3d axis = endAtom->pos() - beginAtom->pos();
+      Vector3d clicked = m_clickedAtom->pos();
 
-      Vector3d begin = widget->camera()->project(beginAtom->pos());
-      Vector3d end = widget->camera()->project(endAtom->pos());
+      Vector3d axis = Vector3d(0, 0, ((widget->camera()->modelview() * other).z() >=
+                      (widget->camera()->modelview() * center).z() ? -1 : 1));
 
-      Vector3d zAxis = Vector3d(0, 0, 1);
-      Vector3d beginToEnd = end - begin;
-      beginToEnd -= Vector3d(0, 0, beginToEnd.z());
+      Vector3d centerProj = widget->camera()->project(center);
+      Vector3d clickedProj = widget->camera()->project(clicked);
+      Vector3d otherProj = widget->camera()->project(other);
 
-      Vector3d direction = zAxis.cross(beginToEnd);
-      direction = direction / direction.norm();
+      clickedProj -= Vector3d(0,0,clickedProj.z());
+      centerProj -= Vector3d(0,0,centerProj.z());
+      otherProj -= Vector3d(0,0,otherProj.z());
 
-      Vector3d mouseMoved = Vector3d(deltaDragging.x() * m_dihedralXModifier,
-                                     deltaDragging.y() * m_dihedralYModifier, 0);
+      Vector3d directionVector = (clickedProj - centerProj).normalized();
 
-      double delta = mouseMoved.dot(direction) / direction.norm();
-      double angle = delta * (M_PI / 180.0);
+      Vector3d currMouseVector = Vector3d(event->pos().x(), event->pos().y(), 0)
+                                  - centerProj;
 
-      if (abs(delta) < 10)
-        angle /= 11 - abs(delta);
-      else
-        angle /= 2;
+      if(currMouseVector.norm() > 5)
+      {
+        currMouseVector = currMouseVector.normalized();
+        double mouseAngle = acos(directionVector.dot(currMouseVector) /
+              currMouseVector.norm2());
 
-      if (m_skeleton) {
-        m_skeleton->skeletonRotate(angle, axis, center);
+        if(mouseAngle > 0)
+        {
+          Vector3d tester;
+
+          tester = performRotation(mouseAngle, axis, Vector3d(0, 0, 0), directionVector);
+          double testAngle1 = acos(tester.dot(currMouseVector) /
+                currMouseVector.norm2());
+
+          tester = performRotation(-mouseAngle, axis, Vector3d(0, 0, 0), directionVector);
+          double testAngle2 = acos(tester.dot(currMouseVector) /
+                currMouseVector.norm2());
+
+          if(testAngle1 > testAngle2 || isnan(testAngle2)) {
+            mouseAngle = -mouseAngle;
+          }
+
+          if (m_skeleton)
+          {
+            axis = (other - center).normalized();
+            m_skeleton->skeletonRotate(mouseAngle, axis, center);
+          }
+        }
       }
     }
     else {
@@ -668,42 +692,66 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
       Atom *endAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
 
       Vector3d center;
+      Vector3d other;
       if (m_clickedAtom->GetBond(beginAtom))
       {
         center = beginAtom->pos();
+        other = endAtom->pos();
         if (m_clickedAtom->GetBond(endAtom)) {
           //TODO: m_clickedAtom bonded to both begin and end.
         }
       }
       else {
         center = endAtom->pos();
+        other = beginAtom->pos();
       }
 
-      Vector3d axis = endAtom->pos() - beginAtom->pos();
+      Vector3d clicked = m_clickedAtom->pos();
 
-      Vector3d begin = widget->camera()->project(beginAtom->pos());
-      Vector3d end = widget->camera()->project(endAtom->pos());
+      Vector3d axis = Vector3d(0, 0, ((widget->camera()->modelview() * other).z() >=
+          (widget->camera()->modelview() * center).z() ? -1 : 1));
 
-      Vector3d zAxis = Vector3d(0, 0, 1);
-      Vector3d beginToEnd = end - begin;
-      beginToEnd -= Vector3d(0, 0, beginToEnd.z());
+      Vector3d centerProj = widget->camera()->project(center);
+      Vector3d clickedProj = widget->camera()->project(clicked);
+      Vector3d otherProj = widget->camera()->project(other);
 
-      Vector3d direction = zAxis.cross(beginToEnd);
-      direction = direction / direction.norm();
+      clickedProj -= Vector3d(0,0,clickedProj.z());
+      centerProj -= Vector3d(0,0,centerProj.z());
+      otherProj -= Vector3d(0,0,otherProj.z());
 
-      Vector3d mouseMoved = Vector3d(deltaDragging.x() * m_dihedralXModifier,
-                                     deltaDragging.y() * m_dihedralYModifier, 0);
+      Vector3d directionVector = (clickedProj - centerProj).normalized();
 
-      double delta = mouseMoved.dot(direction) / direction.norm();
-      double angle = delta * (M_PI / 180.0);
+      Vector3d currMouseVector = Vector3d(event->pos().x(), event->pos().y(), 0)
+          - centerProj;
 
-      if (abs(delta) < 10)
-        angle /= 11 - abs(delta);
-      else
-        angle /= 2;
+      if(currMouseVector.norm() > 5)
+      {
+        currMouseVector = currMouseVector.normalized();
+        double mouseAngle = acos(directionVector.dot(currMouseVector) /
+              currMouseVector.norm2());
 
-      if (m_skeleton) {
-        m_skeleton->skeletonRotate(angle, axis, center);
+        if(mouseAngle > 0)
+        {
+          Vector3d tester;
+
+          tester = performRotation(mouseAngle, axis, Vector3d(0, 0, 0), directionVector);
+          double testAngle1 = acos(tester.dot(currMouseVector) /
+                currMouseVector.norm2());
+
+          tester = performRotation(-mouseAngle, axis, Vector3d(0, 0, 0), directionVector);
+          double testAngle2 = acos(tester.dot(currMouseVector) /
+                currMouseVector.norm2());
+
+          if(testAngle1 > testAngle2 || isnan(testAngle2)) {
+            mouseAngle = -mouseAngle;
+          }
+
+          if (m_skeleton)
+          {
+            axis = (other - center).normalized();
+            m_skeleton->skeletonRotate(mouseAngle, axis, center);
+          }
+        }
       }
     }
     else {
