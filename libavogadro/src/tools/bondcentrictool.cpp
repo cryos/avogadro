@@ -67,6 +67,7 @@ BondCentricTool::BondCentricTool(QObject *parent) : Tool(parent),
                                                     m_skeleton(NULL),
                                                     m_referencePoint(NULL),
                                                     m_currentReference(NULL),
+                                                    m_directionVector(NULL),
                                                     m_snapped(false),
                                                     m_toolGroup(NULL),
                                                     m_leftButtonPressed(false),
@@ -88,8 +89,6 @@ BondCentricTool::BondCentricTool(QObject *parent) : Tool(parent),
         "- Right Click & Drag one of the Atoms in the Bond to change the length"));
   //action->setShortcut(Qt::Key_F9);
   connect(action,SIGNAL(toggled(bool)),this,SLOT(toolChanged(bool)));
-  m_dihedralXModifier = 1;
-  m_dihedralYModifier = 1;
 }
 
 // ##########  Desctructor  ##########
@@ -100,6 +99,8 @@ BondCentricTool::~BondCentricTool()
   m_referencePoint = NULL;
   delete m_currentReference;
   m_currentReference = NULL;
+  delete m_directionVector;
+  m_directionVector = NULL;
 
   if (m_settingsWidget)
   {
@@ -125,6 +126,8 @@ void BondCentricTool::clearData()
   m_referencePoint = NULL;
   delete m_currentReference;
   m_currentReference = NULL;
+  delete m_directionVector;
+  m_directionVector = NULL;
   m_toolGroup = NULL;
   m_leftButtonPressed = false;
   m_midButtonPressed = false;
@@ -233,6 +236,32 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
 
       m_skeleton = new SkeletonTree();
       m_skeleton->populate(m_clickedAtom, m_selectedBond, m_glwidget->molecule());
+
+      if (m_leftButtonPressed)
+      {
+        Atom *otherAtom;
+
+        if (m_clickedAtom == static_cast<Atom*>(m_selectedBond->GetBeginAtom()))
+          otherAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+        else
+          otherAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
+
+        Vector3d centerProj = widget->camera()->project(otherAtom->pos());
+        centerProj -= Vector3d(0,0,centerProj.z());
+        Vector3d clickedProj = widget->camera()->project(m_clickedAtom->pos());
+        clickedProj -= Vector3d(0,0,clickedProj.z());
+
+        if ((clickedProj - centerProj).norm() == 0)
+        {
+          // Have no way of testing this as the chance of this happening is almost 0
+          m_directionVector = new Vector3d(1, 0, 0);
+        }
+        else
+        {
+          m_directionVector = new Vector3d(clickedProj - centerProj);
+          *m_directionVector = m_directionVector->normalized();
+        }
+      }
     }
     else if (m_selectedBond)
     {
@@ -271,10 +300,21 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
 
       if (skeletonSet)
       {
-        Vector3d tmp = widget->camera()->modelview() * m_clickedAtom->pos() -
-            widget->camera()->modelview() * dihedralRotCen->pos();
+        Vector3d centerProj = widget->camera()->project(dihedralRotCen->pos());
+        centerProj -= Vector3d(0,0,centerProj.z());
+        Vector3d clickedProj = widget->camera()->project(m_clickedAtom->pos());
+        clickedProj -= Vector3d(0,0,clickedProj.z());
 
-        m_dihedralYModifier = tmp.z() < 0 ? -1 : 1;
+        if ((clickedProj - centerProj).norm() == 0)
+        {
+          // Have no way of testing this as the chance of this happening is almost 0
+          m_directionVector = new Vector3d(1, 0, 0);
+        }
+        else
+        {
+          m_directionVector = new Vector3d(clickedProj - centerProj);
+          *m_directionVector = m_directionVector->normalized();
+        }
       }
     }
   }
@@ -330,16 +370,6 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
         }
       }
     }
-    /*else if (m_rightButtonPressed)
-    {
-      m_selectedBond = m_clickedBond;
-
-      delete m_referencePoint;
-      m_referencePoint = NULL;
-
-      delete m_currentReference;
-      m_currentReference = NULL;
-    }*/
   }
 
   m_glwidget->update();
@@ -350,6 +380,9 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
 
 QUndoCommand* BondCentricTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
 {
+  delete m_directionVector;
+  m_directionVector = NULL;
+
   if (!m_clickedAtom && !m_clickedBond && !m_movedSinceButtonPressed)
   {
     delete m_referencePoint;
@@ -477,18 +510,13 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
 
       Vector3d centerProj = widget->camera()->project(center);
       centerProj -= Vector3d(0,0,centerProj.z());
-      Vector3d clickedProj = widget->camera()->project(clicked);
-      clickedProj -= Vector3d(0,0,clickedProj.z());
       Vector3d referenceProj = widget->camera()->project(*m_currentReference + center);
       referenceProj -= Vector3d(0,0,referenceProj.z());
 
       Vector3d referenceVector = referenceProj - centerProj;
       referenceVector = referenceVector.normalized();
 
-      Vector3d directionVector = clickedProj - centerProj;
-      directionVector = directionVector.normalized();
-
-      Vector3d rotationVector = referenceVector.cross(directionVector);
+      Vector3d rotationVector = referenceVector.cross(*m_directionVector);
       rotationVector = rotationVector.normalized();
 
       Vector3d currMouseVector = Vector3d(event->pos().x(), event->pos().y(), 0)
@@ -496,7 +524,7 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
       if(currMouseVector.norm() > 5)
       {
         currMouseVector = currMouseVector.normalized();
-        double mouseAngle = acos(directionVector.dot(currMouseVector) /
+        double mouseAngle = acos(m_directionVector->dot(currMouseVector) /
                             currMouseVector.norm2());
 
         if(mouseAngle > 0)
@@ -504,12 +532,12 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
           Vector3d tester;
 
           tester = performRotation(mouseAngle, rotationVector, Vector3d(0, 0, 0),
-                                   directionVector);
+                                   *m_directionVector);
           double testAngle1 = acos(tester.dot(currMouseVector) /
                                    currMouseVector.norm2());
 
           tester = performRotation(-mouseAngle, rotationVector, Vector3d(0, 0, 0),
-                                   directionVector);
+                                    *m_directionVector);
           double testAngle2 = acos(tester.dot(currMouseVector) /
                                    currMouseVector.norm2());
 
@@ -527,6 +555,8 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
                                 Vector3d(0, 0, 0), *m_referencePoint);
             *m_currentReference = performRotation(mouseAngle, currCrossDir,
                                   Vector3d(0, 0, 0), *m_currentReference);
+            *m_directionVector = performRotation(mouseAngle, rotationVector,
+                                  Vector3d(0, 0, 0), *m_directionVector);
           }
         }
       }
@@ -559,14 +589,7 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
                       (widget->camera()->modelview() * center).z() ? -1 : 1));
 
       Vector3d centerProj = widget->camera()->project(center);
-      Vector3d clickedProj = widget->camera()->project(clicked);
-      Vector3d otherProj = widget->camera()->project(other);
-
-      clickedProj -= Vector3d(0,0,clickedProj.z());
       centerProj -= Vector3d(0,0,centerProj.z());
-      otherProj -= Vector3d(0,0,otherProj.z());
-
-      Vector3d directionVector = (clickedProj - centerProj).normalized();
 
       Vector3d currMouseVector = Vector3d(event->pos().x(), event->pos().y(), 0)
                                   - centerProj;
@@ -574,18 +597,18 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
       if(currMouseVector.norm() > 5)
       {
         currMouseVector = currMouseVector.normalized();
-        double mouseAngle = acos(directionVector.dot(currMouseVector) /
+        double mouseAngle = acos(m_directionVector->dot(currMouseVector) /
               currMouseVector.norm2());
 
         if(mouseAngle > 0)
         {
           Vector3d tester;
 
-          tester = performRotation(mouseAngle, axis, Vector3d(0, 0, 0), directionVector);
+          tester = performRotation(mouseAngle, axis, Vector3d(0, 0, 0), *m_directionVector);
           double testAngle1 = acos(tester.dot(currMouseVector) /
                 currMouseVector.norm2());
 
-          tester = performRotation(-mouseAngle, axis, Vector3d(0, 0, 0), directionVector);
+          tester = performRotation(-mouseAngle, axis, Vector3d(0, 0, 0), *m_directionVector);
           double testAngle2 = acos(tester.dot(currMouseVector) /
                 currMouseVector.norm2());
 
@@ -595,6 +618,9 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
 
           if (m_skeleton)
           {
+            *m_directionVector = performRotation(mouseAngle, axis,
+            Vector3d(0, 0, 0), *m_directionVector);
+
             axis = (other - center).normalized();
             m_skeleton->skeletonRotate(mouseAngle, axis, center);
           }
@@ -712,14 +738,7 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
           (widget->camera()->modelview() * center).z() ? -1 : 1));
 
       Vector3d centerProj = widget->camera()->project(center);
-      Vector3d clickedProj = widget->camera()->project(clicked);
-      Vector3d otherProj = widget->camera()->project(other);
-
-      clickedProj -= Vector3d(0,0,clickedProj.z());
       centerProj -= Vector3d(0,0,centerProj.z());
-      otherProj -= Vector3d(0,0,otherProj.z());
-
-      Vector3d directionVector = (clickedProj - centerProj).normalized();
 
       Vector3d currMouseVector = Vector3d(event->pos().x(), event->pos().y(), 0)
           - centerProj;
@@ -727,18 +746,18 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
       if(currMouseVector.norm() > 5)
       {
         currMouseVector = currMouseVector.normalized();
-        double mouseAngle = acos(directionVector.dot(currMouseVector) /
+        double mouseAngle = acos(m_directionVector->dot(currMouseVector) /
               currMouseVector.norm2());
 
         if(mouseAngle > 0)
         {
           Vector3d tester;
 
-          tester = performRotation(mouseAngle, axis, Vector3d(0, 0, 0), directionVector);
+          tester = performRotation(mouseAngle, axis, Vector3d(0, 0, 0), *m_directionVector);
           double testAngle1 = acos(tester.dot(currMouseVector) /
                 currMouseVector.norm2());
 
-          tester = performRotation(-mouseAngle, axis, Vector3d(0, 0, 0), directionVector);
+          tester = performRotation(-mouseAngle, axis, Vector3d(0, 0, 0), *m_directionVector);
           double testAngle2 = acos(tester.dot(currMouseVector) /
                 currMouseVector.norm2());
 
@@ -748,6 +767,9 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
 
           if (m_skeleton)
           {
+            *m_directionVector = performRotation(mouseAngle, axis,
+                Vector3d(0, 0, 0), *m_directionVector);
+
             axis = (other - center).normalized();
             m_skeleton->skeletonRotate(mouseAngle, axis, center);
           }

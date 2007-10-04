@@ -135,6 +135,8 @@ namespace Avogadro {
 
       Eigen::Vector3d *   m_referencePoint;
       Eigen::Vector3d *   m_currentReference;
+      Eigen::Vector3d *   m_directionVector;
+
       bool                m_snapped;
       ToolGroup *         m_toolGroup;
 
@@ -147,9 +149,6 @@ namespace Avogadro {
 
       bool                m_showAngles;
       bool                m_snapToEnabled;
-
-      int                 m_dihedralXModifier; // Only set to 1 or -1
-      int                 m_dihedralYModifier; // Only set to 1 or -1
 
       int                 m_snapToAngle; // In degrees
 
