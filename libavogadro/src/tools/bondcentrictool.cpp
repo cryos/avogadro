@@ -88,6 +88,8 @@ BondCentricTool::BondCentricTool(QObject *parent) : Tool(parent),
         "- Right Click & Drag one of the Atoms in the Bond to change the length"));
   //action->setShortcut(Qt::Key_F9);
   connect(action,SIGNAL(toggled(bool)),this,SLOT(toolChanged(bool)));
+  m_dihedralXModifier = 1;
+  m_dihedralYModifier = 1;
 }
 
 // ##########  Desctructor  ##########
@@ -232,6 +234,49 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
       m_skeleton = new SkeletonTree();
       m_skeleton->populate(m_clickedAtom, m_selectedBond, m_glwidget->molecule());
     }
+    else if (m_selectedBond)
+    {
+      Atom *dihedralRotCen = NULL;
+      Bond *skeleBond = NULL;
+
+      Atom *beginAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
+      Atom *endAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+
+      if ((skeleBond = static_cast<Bond*>(m_clickedAtom->GetBond(beginAtom)))) {
+        //if (!m_clickedAtom->GetBond(endAtom))
+        dihedralRotCen = beginAtom;
+      }
+      else if ((skeleBond = static_cast<Bond*>(m_clickedAtom->GetBond(endAtom)))) {
+        dihedralRotCen = endAtom;
+      }
+
+      bool skeletonSet = false;
+
+      if (m_rightButtonPressed && skeleBond)
+      {
+        m_undo = new BondCentricMoveCommand(m_glwidget->molecule());
+
+        m_skeleton = new SkeletonTree();
+        m_skeleton->populate(m_clickedAtom, skeleBond, m_glwidget->molecule());
+        skeletonSet = true;
+      }
+      else if (m_leftButtonPressed && dihedralRotCen)
+      {
+        m_undo = new BondCentricMoveCommand(m_glwidget->molecule());
+
+        m_skeleton = new SkeletonTree();
+        m_skeleton->populate(dihedralRotCen, m_selectedBond, m_glwidget->molecule());
+        skeletonSet = true;
+      }
+
+      if (skeletonSet)
+      {
+        Vector3d tmp = widget->camera()->modelview() * m_clickedAtom->pos() -
+            widget->camera()->modelview() * dihedralRotCen->pos();
+
+        m_dihedralYModifier = tmp.z() < 0 ? -1 : 1;
+      }
+    }
   }
   else if (clickedPrim && clickedPrim->type() == Primitive::BondType)
   {
@@ -362,7 +407,7 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
 
   QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
-  if ((event->pos() - m_lastDraggingPosition).manhattanLength() > 2) {
+  if (deltaDragging.manhattanLength() > 2) {
     m_movedSinceButtonPressed = true;
   }
 
@@ -380,7 +425,7 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
       Atom *beginAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
       Atom *endAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
 
-      Vector3d rotationVector = beginAtom->pos() - endAtom->pos();
+      Vector3d rotationVector = endAtom->pos() - beginAtom->pos();
       rotationVector = rotationVector / rotationVector.norm();
 
       Vector3d begin = widget->camera()->project(beginAtom->pos());
@@ -393,7 +438,7 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
       Vector3d direction = zAxis.cross(beginToEnd);
       direction = direction / direction.norm();
 
-      Vector3d mouseMoved = Vector3d( - deltaDragging.x(), - deltaDragging.y(), 0);
+      Vector3d mouseMoved = Vector3d(deltaDragging.x(), deltaDragging.y(), 0);
 
       double magnitude = mouseMoved.dot(direction) / direction.norm();
 
@@ -486,10 +531,51 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
         }
       }
     }
-    else if (m_selectedBond && (areAtomsBonded(m_clickedAtom, static_cast<Atom*>(m_selectedBond->GetBeginAtom())) ||
-             areAtomsBonded(m_clickedAtom, static_cast<Atom*>(m_selectedBond->GetEndAtom()))))
+    else if (m_selectedBond && m_clickedAtom && 
+             (m_clickedAtom->GetBond(m_selectedBond->GetBeginAtom()) ||
+              m_clickedAtom->GetBond(m_selectedBond->GetEndAtom())))
     {
-      
+      Atom *beginAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
+      Atom *endAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+
+      Vector3d center;
+      if (m_clickedAtom->GetBond(beginAtom))
+      {
+        center = beginAtom->pos();
+        if (m_clickedAtom->GetBond(endAtom)) {
+          //TODO: m_clickedAtom bonded to both begin and end.
+        }
+      }
+      else {
+        center = endAtom->pos();
+      }
+
+      Vector3d axis = endAtom->pos() - beginAtom->pos();
+
+      Vector3d begin = widget->camera()->project(beginAtom->pos());
+      Vector3d end = widget->camera()->project(endAtom->pos());
+
+      Vector3d zAxis = Vector3d(0, 0, 1);
+      Vector3d beginToEnd = end - begin;
+      beginToEnd -= Vector3d(0, 0, beginToEnd.z());
+
+      Vector3d direction = zAxis.cross(beginToEnd);
+      direction = direction / direction.norm();
+
+      Vector3d mouseMoved = Vector3d(deltaDragging.x() * m_dihedralXModifier,
+                                     deltaDragging.y() * m_dihedralYModifier, 0);
+
+      double delta = mouseMoved.dot(direction) / direction.norm();
+      double angle = delta * (M_PI / 180.0);
+
+      if (abs(delta) < 10)
+        angle /= 11 - abs(delta);
+      else
+        angle /= 2;
+
+      if (m_skeleton) {
+        m_skeleton->skeletonRotate(angle, axis, center);
+      }
     }
     else {
       // rotation around the center of the molecule
@@ -574,10 +660,51 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
         m_skeleton->skeletonTranslate(component.x(), component.y(), component.z());
       }
     }
-    else if (m_selectedBond && (areAtomsBonded(m_clickedAtom, static_cast<Atom*>(m_selectedBond->GetBeginAtom())) ||
-             areAtomsBonded(m_clickedAtom, static_cast<Atom*>(m_selectedBond->GetEndAtom()))))
+    else if (m_selectedBond && m_clickedAtom &&
+             (m_clickedAtom->GetBond(m_selectedBond->GetBeginAtom()) ||
+             m_clickedAtom->GetBond(m_selectedBond->GetEndAtom())))
     {
-      
+      Atom *beginAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
+      Atom *endAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+
+      Vector3d center;
+      if (m_clickedAtom->GetBond(beginAtom))
+      {
+        center = beginAtom->pos();
+        if (m_clickedAtom->GetBond(endAtom)) {
+          //TODO: m_clickedAtom bonded to both begin and end.
+        }
+      }
+      else {
+        center = endAtom->pos();
+      }
+
+      Vector3d axis = endAtom->pos() - beginAtom->pos();
+
+      Vector3d begin = widget->camera()->project(beginAtom->pos());
+      Vector3d end = widget->camera()->project(endAtom->pos());
+
+      Vector3d zAxis = Vector3d(0, 0, 1);
+      Vector3d beginToEnd = end - begin;
+      beginToEnd -= Vector3d(0, 0, beginToEnd.z());
+
+      Vector3d direction = zAxis.cross(beginToEnd);
+      direction = direction / direction.norm();
+
+      Vector3d mouseMoved = Vector3d(deltaDragging.x() * m_dihedralXModifier,
+                                     deltaDragging.y() * m_dihedralYModifier, 0);
+
+      double delta = mouseMoved.dot(direction) / direction.norm();
+      double angle = delta * (M_PI / 180.0);
+
+      if (abs(delta) < 10)
+        angle /= 11 - abs(delta);
+      else
+        angle /= 2;
+
+      if (m_skeleton) {
+        m_skeleton->skeletonRotate(angle, axis, center);
+      }
     }
     else {
       // Translate the molecule following mouse movement.
@@ -657,10 +784,15 @@ bool BondCentricTool::paint(GLWidget *widget)
     Atom *begin = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
     Atom *end = static_cast<Atom*>(m_selectedBond->GetEndAtom());
 
-    if (areAtomsBonded(m_clickedAtom, begin) || areAtomsBonded(m_clickedAtom, end))
+    if (m_clickedAtom->GetBond(begin) || m_clickedAtom->GetBond(end))
     {
       dihedralAtomClicked = true;
-      drawDihedralAngles(widget, m_clickedAtom, m_selectedBond);
+
+      if (m_rightButtonPressed) {
+        drawSingleDihedralAngles(widget, m_clickedAtom, m_selectedBond);
+      } else {
+        drawDihedralAngles(widget, m_clickedAtom, m_selectedBond);
+      }
     }
   }
 
@@ -761,29 +893,6 @@ bool BondCentricTool::isAtomInBond(Atom *atom, Bond *bond)
   return atom == static_cast<Atom*>(bond->GetEndAtom());
 }
 
-// ##########  areAtomsBonded  ##########
-
-bool BondCentricTool::areAtomsBonded(Atom *atom1, Atom *atom2)
-{
-  if (!atom1 || !atom2 || atom1 == atom2) {
-    return false;
-  }
-
-  OBBondIterator bondIter = atom1->EndBonds();
-
-  Atom *a = (Atom*)atom1->BeginNbrAtom(bondIter);
-
-  do
-  {
-    if (a == atom2) {
-      return true;
-    }
-  }
-  while ((a = (Atom*)atom1->NextNbrAtom(bondIter)) != NULL);
-
-  return false;
-}
-
 // ##########  drawAtomAngles  ##########
 
 void BondCentricTool::drawAtomAngles(GLWidget *widget, Atom *atom)
@@ -794,7 +903,7 @@ void BondCentricTool::drawAtomAngles(GLWidget *widget, Atom *atom)
 
   OBBondIterator bondIter = atom->EndBonds();
 
-  Atom *u = (Atom*)atom->BeginNbrAtom(bondIter);
+  Atom *u = static_cast<Atom*>(atom->BeginNbrAtom(bondIter));
   Atom *v = NULL;
 
   if (u != NULL)
@@ -803,11 +912,11 @@ void BondCentricTool::drawAtomAngles(GLWidget *widget, Atom *atom)
     {
       OBBondIterator tmpIter = bondIter;
 
-      while ((v = (Atom*)atom->NextNbrAtom(tmpIter)) != NULL) {
+      while ((v = static_cast<Atom*>(atom->NextNbrAtom(tmpIter))) != NULL) {
         drawAngleSector(widget, atom->pos(), u->pos(), v->pos());
       }
     }
-    while((u = (Atom*)atom->NextNbrAtom(bondIter)) != NULL);
+    while((u = static_cast<Atom*>(atom->NextNbrAtom(bondIter))) != NULL);
   }
 }
 
@@ -834,7 +943,7 @@ void BondCentricTool::drawSkeletonAngles(GLWidget *widget, SkeletonTree *skeleto
   }
 
   OBBondIterator bondIter = atom->EndBonds();
-  Atom *v = (Atom*)atom->BeginNbrAtom(bondIter);
+  Atom *v = static_cast<Atom*>(atom->BeginNbrAtom(bondIter));
 
   if (v != NULL)
   {
@@ -848,7 +957,7 @@ void BondCentricTool::drawSkeletonAngles(GLWidget *widget, SkeletonTree *skeleto
         drawAngleSector(widget, atom->pos(), ref->pos(), v->pos());
       }
     }
-    while ((v = (Atom*)atom->NextNbrAtom(bondIter)) != NULL);
+    while ((v = static_cast<Atom*>(atom->NextNbrAtom(bondIter))) != NULL);
   }
 }
 
@@ -864,12 +973,12 @@ void BondCentricTool::drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D, Bond
   Atom *B = static_cast<Atom*>(BC->GetBeginAtom());
   Atom *C = static_cast<Atom*>(BC->GetEndAtom());
 
-  if (!areAtomsBonded(A, B) || !areAtomsBonded(D, C))
+  if (!A->GetBond(B) || !D->GetBond(C))
   {
     B = static_cast<Atom*>(BC->GetEndAtom());
     C = static_cast<Atom*>(BC->GetBeginAtom());
 
-    if (!areAtomsBonded(A, B) || !areAtomsBonded(D, C)) {
+    if (!A->GetBond(B) || !D->GetBond(C)) {
       return;
     }
   }
@@ -910,12 +1019,12 @@ void BondCentricTool::drawDihedralAngles(GLWidget *widget, Atom *A, Bond *BC)
   Atom *B = static_cast<Atom*>(BC->GetBeginAtom());
   Atom *C = static_cast<Atom*>(BC->GetEndAtom());
 
-  if (!areAtomsBonded(A, B))
+  if (!A->GetBond(B))
   {
     B = static_cast<Atom*>(BC->GetEndAtom());
     C = static_cast<Atom*>(BC->GetBeginAtom());
 
-    if (!areAtomsBonded(A, B)) {
+    if (!A->GetBond(B)) {
       return;
     }
   }
@@ -926,7 +1035,7 @@ void BondCentricTool::drawDihedralAngles(GLWidget *widget, Atom *A, Bond *BC)
   Atom *atom2 = NULL;
 
   OBBondIterator bondIter = C->EndBonds();
-  Atom *D = (Atom*)C->BeginNbrAtom(bondIter);
+  Atom *D = static_cast<Atom*>(C->BeginNbrAtom(bondIter));
 
   if (D != NULL)
   {
@@ -944,7 +1053,7 @@ void BondCentricTool::drawDihedralAngles(GLWidget *widget, Atom *A, Bond *BC)
         torsion *= -1.0;
       }
 
-      cout << "Torsion: " << torsion << endl;
+      //cout << "Torsion: " << torsion << endl;
 
       if (torsion1 == 0.0)
       {
@@ -964,7 +1073,7 @@ void BondCentricTool::drawDihedralAngles(GLWidget *widget, Atom *A, Bond *BC)
         atom2 = D;
       }
     }
-    while ((D = (Atom*)C->NextNbrAtom(bondIter)) != NULL);
+    while ((D = static_cast<Atom*>(C->NextNbrAtom(bondIter))) != NULL);
   }
 
   double rgb[3] = {1.0, 1.0, 0.2};
@@ -974,6 +1083,112 @@ void BondCentricTool::drawDihedralAngles(GLWidget *widget, Atom *A, Bond *BC)
 
   drawDihedralAngle(widget, A, atom1, BC);
   drawDihedralAngle(widget, A, atom2, BC);
+}
+
+// ##########  drawSingleDihedralAngles  ##########
+
+void BondCentricTool::drawSingleDihedralAngles(GLWidget *widget, Atom *A, Bond *BC)
+{
+  if (!widget || !A || !BC) {
+    return;
+  }
+
+  Molecule *mol = widget->molecule();
+
+  Atom *B = static_cast<Atom*>(BC->GetBeginAtom());
+  Atom *C = static_cast<Atom*>(BC->GetEndAtom());
+
+  if (!A->GetBond(B))
+  {
+    B = static_cast<Atom*>(BC->GetEndAtom());
+    C = static_cast<Atom*>(BC->GetBeginAtom());
+
+    if (!A->GetBond(B)) {
+      return;
+    }
+  }
+
+  double torsion1 = 0.0;
+  double torsion2 = 0.0;
+  Atom *atom1 = NULL;
+  Atom *atom2 = NULL;
+
+  OBBondIterator bondIter = C->EndBonds();
+  Atom *D = static_cast<Atom*>(C->BeginNbrAtom(bondIter));
+
+  if (D != NULL)
+  {
+    do
+    {
+      if (D == B) {
+        continue;
+      }
+
+      double torsion = mol->GetTorsion(A, B, C, D);
+
+      if (torsion == 0.0) {
+        continue;
+      } else if (torsion < 0.0) {
+        torsion *= -1.0;
+      }
+
+      //cout << "Torsion: " << torsion << endl;
+
+      if (torsion1 == 0.0)
+      {
+        torsion1 = torsion;
+        atom1 = D;
+      }
+      else if (torsion < torsion1)
+      {
+        torsion2 = torsion1;
+        atom2 = atom1;
+        torsion1 = torsion;
+        atom1 = D;
+      }
+      else if (torsion2 == 0.0 || torsion < torsion2)
+      {
+        torsion2 = torsion;
+        atom2 = D;
+      }
+    }
+    while ((D = static_cast<Atom*>(C->NextNbrAtom(bondIter))) != NULL);
+  }
+
+  double rgb[3] = {1.0, 1.0, 0.2};
+  drawDihedralRectangle(widget, BC, A, rgb);
+  drawDihedralRectangle(widget, BC, atom1, rgb);
+  drawDihedralRectangle(widget, BC, atom2, rgb);
+
+  drawDihedralAngle(widget, A, atom1, BC);
+  drawDihedralAngle(widget, A, atom2, BC);
+
+  bondIter = B->EndBonds();
+
+  Atom *u = static_cast<Atom*>(B->BeginNbrAtom(bondIter));
+  Atom *v = NULL;
+
+  if (u != NULL)
+  {
+    do
+    {
+      if (u == C) {
+        continue;
+      }
+
+      OBBondIterator tmpIter = bondIter;
+
+      while ((v = static_cast<Atom*>(B->NextNbrAtom(tmpIter))) != NULL)
+      {
+        if (v == C) {
+          continue;
+        }
+
+        drawAngleSector(widget, B->pos(), u->pos(), v->pos());
+      }
+    }
+    while((u = static_cast<Atom*>(B->NextNbrAtom(bondIter))) != NULL);
+  }
 }
 
 // ##########  drawAngles  ##########
@@ -998,7 +1213,7 @@ void BondCentricTool::drawAngles(GLWidget *widget, Atom *atom, Bond *bond)
   }
 
   OBBondIterator bondIter = atom->EndBonds();
-  Atom *v = (Atom*)atom->BeginNbrAtom(bondIter);
+  Atom *v = static_cast<Atom*>(atom->BeginNbrAtom(bondIter));
 
   if (v != NULL)
   {
@@ -1010,7 +1225,7 @@ void BondCentricTool::drawAngles(GLWidget *widget, Atom *atom, Bond *bond)
 
       drawAngleSector(widget, atom->pos(), ref->pos(), v->pos());
     }
-    while ((v = (Atom*)atom->NextNbrAtom(bondIter)) != NULL);
+    while ((v = static_cast<Atom*>(atom->NextNbrAtom(bondIter))) != NULL);
   }
 }
 
@@ -1090,7 +1305,7 @@ Eigen::Vector3d* BondCentricTool::calculateSnapTo(GLWidget *widget, Bond *bond,
   Atom *e = static_cast<Atom*>(bond->GetEndAtom());
 
   OBBondIterator bondIter = b->EndBonds();
-  Atom *t = (Atom*)b->BeginNbrAtom(bondIter);
+  Atom *t = static_cast<Atom*>(b->BeginNbrAtom(bondIter));
 
   Eigen::Vector3d begin = b->pos();
   Eigen::Vector3d end = e->pos();
@@ -1132,11 +1347,11 @@ Eigen::Vector3d* BondCentricTool::calculateSnapTo(GLWidget *widget, Bond *bond,
         smallestRef = new Vector3d(v);
       }
     }
-    while ((t = (Atom*)b->NextNbrAtom(bondIter)) != NULL);
+    while ((t = static_cast<Atom*>(b->NextNbrAtom(bondIter))) != NULL);
   }
 
   bondIter = e->EndBonds();
-  t = (Atom*)e->BeginNbrAtom(bondIter);
+  t = static_cast<Atom*>(e->BeginNbrAtom(bondIter));
 
   if (t != NULL)
   {
@@ -1174,7 +1389,7 @@ Eigen::Vector3d* BondCentricTool::calculateSnapTo(GLWidget *widget, Bond *bond,
         smallestRef = new Vector3d(v);
       }
     }
-    while ((t = (Atom*)e->NextNbrAtom(bondIter)) != NULL);
+    while ((t = static_cast<Atom*>(e->NextNbrAtom(bondIter))) != NULL);
   }
 
   if (angle > maximumAngle)
@@ -1255,6 +1470,14 @@ void BondCentricTool::drawDihedralRectangle(GLWidget *widget, Bond *bond,
   Eigen::Vector3d B = left + leftToAtom.dot(leftToRight) / leftToRight.norm() *
                       leftToRight.normalized();
 
+  if ((B-A).norm() < (right-A).norm()) {
+    //TODO: Adjust C & B in direction of bond.
+  }
+
+  /*if ((C-B).norm() > X) {
+    //TODO: Adjust C
+  }*/
+
   Eigen::Vector3d D = atom->pos() - (B - A);
 
   Eigen::Vector3d topLeft = widget->camera()->modelview() * D;
@@ -1299,7 +1522,7 @@ void BondCentricTool::drawDihedralRectanglesOfAtom(GLWidget *widget, Bond *bond,
 
   OBBondIterator bondIter = atom->EndBonds();
 
-  Atom *a = (Atom*)atom->BeginNbrAtom(bondIter);
+  Atom *a = static_cast<Atom*>(atom->BeginNbrAtom(bondIter));
 
   do
   {
@@ -1309,7 +1532,7 @@ void BondCentricTool::drawDihedralRectanglesOfAtom(GLWidget *widget, Bond *bond,
 
     drawDihedralRectangle(widget, bond, a, rgb);
   }
-  while ((a = (Atom*)atom->NextNbrAtom(bondIter)) != NULL);
+  while ((a = static_cast<Atom*>(atom->NextNbrAtom(bondIter))) != NULL);
 }
 
 // ##########  drawSphere  ##########

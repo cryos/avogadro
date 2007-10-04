@@ -148,6 +148,9 @@ namespace Avogadro {
       bool                m_showAngles;
       bool                m_snapToEnabled;
 
+      int                 m_dihedralXModifier; // Only set to 1 or -1
+      int                 m_dihedralYModifier; // Only set to 1 or -1
+
       int                 m_snapToAngle; // In degrees
 
       QPoint              m_lastDraggingPosition;
@@ -174,18 +177,6 @@ namespace Avogadro {
        *         bond, false otherwise, or if either of the pointers point to NULL.
        */
       bool isAtomInBond(Atom *atom, Bond *bond);
-
-      /**
-       * Checks whether the two given atoms share a bond between them.
-       *
-       * @param atom1 The first atom.
-       * @param atom2 The second atom.
-       *
-       * @return True if a bond is found between the two given atoms, false
-       *         otherwise or if either of the atoms are NULL or if they're the
-       *         same atom.
-       */
-      bool areAtomsBonded(Atom *atom1, Atom *atom2);
 
       void drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D, Bond *BC);
 
@@ -235,6 +226,9 @@ namespace Avogadro {
       void drawSkeletonAngles(GLWidget *widget, SkeletonTree *skeleton);
 
       void drawDihedralAngles(GLWidget *widget, Atom *A, Bond *BC);
+
+      void drawSingleDihedralAngles(GLWidget *widget, Atom *A, Bond *BC);
+
       /**
        * Calculates whether the manipulation plane is close enough to any atoms (that
        * are 1 bond away from either of the atoms attached to the given bond) to
