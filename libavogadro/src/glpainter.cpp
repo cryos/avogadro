@@ -512,6 +512,7 @@ namespace Avogadro
     if (abs((int)uvAngle) <= 1)
       return;
 
+    // If alternateAngle is set, subtract this angle from 360 to get the alternate angle.
     if (alternateAngle) {
       uvAngle = 360.0 - (uvAngle > 0 ? uvAngle : -uvAngle);
     }
@@ -537,7 +538,7 @@ namespace Avogadro
     direction1 = origin + u;
     direction2 = origin + v;
 
-    // Calculate the points along the curve at each degree increment until we
+    // Calculate the points along the curve at each half-degree increment until we
     // reach the next line.
     Eigen::Vector3d points[720];
     for (int theta = 1; theta < (uvAngle * 2); theta++)
@@ -615,6 +616,7 @@ namespace Avogadro
     if (abs((int)uvAngle) <= 1)
       return;
 
+    // If alternateAngle is set, subtract this angle from 360 to get the alternate angle.
     if (alternateAngle) {
       uvAngle = 360.0 - (uvAngle > 0 ? uvAngle : -uvAngle);
     }
@@ -640,7 +642,7 @@ namespace Avogadro
     direction1 = origin + u;
     direction2 = origin + v;
 
-    // Calculate the points along the curve at each degree increment until we
+    // Calculate the points along the curve at each half-degree increment until we
     // reach the next line.
     Eigen::Vector3d points[720];
     for (int theta = 1; theta < (uvAngle * 2); theta++)

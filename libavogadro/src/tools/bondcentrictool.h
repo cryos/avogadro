@@ -165,8 +165,6 @@ namespace Avogadro {
       //@{
       //! \brief Methods used to construct and draw the angle-sectors, the construction plane, and the rotation-sphere
 
-      double calculateTorsion(Atom *A, Atom *B, Atom *C, Atom *D);
-
       /**
        * Checks whether a given atom is at either end of a given bond.
        *
@@ -178,8 +176,6 @@ namespace Avogadro {
        *         bond, false otherwise, or if either of the pointers point to NULL.
        */
       bool isAtomInBond(Atom *atom, Bond *bond);
-
-      void drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D, Bond *BC, bool alternateAngle = false);
 
       /**
        * Draws a sector that shows the angle between two lines from a given origin.
@@ -227,6 +223,9 @@ namespace Avogadro {
        */
       void drawSkeletonAngles(GLWidget *widget, SkeletonTree *skeleton);
 
+      void drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D, Bond *BC,
+                             bool alternateAngle = false);
+
       void drawDihedralAngles(GLWidget *widget, Atom *A, Bond *BC);
 
       void drawSingleDihedralAngles(GLWidget *widget, Atom *A, Bond *BC);
@@ -273,7 +272,8 @@ namespace Avogadro {
 
       void drawDihedralRectangle(GLWidget *widget, Bond *bond, Atom *atom, double rgb[3]);
 
-      void drawDihedralRectanglesOfAtom(GLWidget *widget, Bond *bond, Atom *atom, double rgb[3]);
+      void drawDihedralRectanglesOfAtom(GLWidget *widget, Bond *bond, Atom *atom,
+                                        double rgb[3]);
 
       /**
        * Draws a sphere of a given radius around a given vector.

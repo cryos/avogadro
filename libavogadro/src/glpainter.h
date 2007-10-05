@@ -133,6 +133,8 @@ namespace Avogadro
        * @param direction1 A vector defining the line the first point will lie on.
        * @param direction2 A vector defining the line the second point will lie on.
        * @param radius The radius of the circle this sector is a portion of.
+       * @param alternateAngle Whether to draw the obtuse angle made by the two vectors
+       *                       instead of the acute angle between them.
        */
       void drawShadedSector(Eigen::Vector3d origin, Eigen::Vector3d direction1,
                             Eigen::Vector3d direction2, double radius,
@@ -148,6 +150,8 @@ namespace Avogadro
        * @param direction2 A vector defining the line the end of the arc will lie on.
        * @param radius The radius of the circle whose circumference this arc is a portion of.
        * @param lineWidth The thickness of the line the arc will be drawn with.
+       * @param alternateAngle Whether to draw the obtuse angle made by the two vectors
+       *                       instead of the acute angle between them.
        */
       void drawArc(Eigen::Vector3d origin, Eigen::Vector3d direction1, Eigen::Vector3d direction2,
                    double radius, double lineWidth, bool alternateAngle = false);
