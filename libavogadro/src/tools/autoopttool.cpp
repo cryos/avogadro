@@ -20,7 +20,7 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
  ***********************************************************************/
-//#define OBPatched
+#define OBPatched
 #include "autoopttool.h"
 #include "navigate.h"
 #include <avogadro/primitive.h>
@@ -53,7 +53,7 @@ AutoOptTool::AutoOptTool(QObject *parent) : Tool(parent), m_clickedAtom(0),
         "Extra Function when running\n"
         "Left Mouse: Click and drag atoms to move them"));
   m_forceField = OBForceField::FindForceField( "Ghemical" );
-  
+  m_thread = NULL;
   //action->setShortcut(Qt::Key_F10);
 }
 
@@ -368,32 +368,77 @@ void AutoOptTool::timerEvent(QTimerEvent*)
 	{
 		m_block = true;
 	}
-    if ( !m_forceField->Setup( *m_glwidget->molecule() ) ) {
-      qWarning() << "GhemicalCommand: Could not set up force field on " << m_glwidget->molecule();
-      m_block = false;
-      return;
-    }
-	if(ui.AlgorithmComboBox->currentIndex() == 0)
-	{
-      m_forceField->SteepestDescent(ui.StepsSpinBox->value(),pow(10.0, -ui.ConvergenceSpinBox->value() ), ui.GradientsComboBox == 0 ? OBFF_NUMERICAL_GRADIENT : OBFF_ANALYTICAL_GRADIENT);
-	}
-	else if(ui.AlgorithmComboBox->currentIndex() == 1)
-	{
-      m_forceField->ConjugateGradients(ui.StepsSpinBox->value(),pow(10.0, -ui.ConvergenceSpinBox->value() ), ui.GradientsComboBox == 0 ? OBFF_NUMERICAL_GRADIENT : OBFF_ANALYTICAL_GRADIENT);
-    }
-    if (m_running)
-    {
-      m_forceField->UpdateCoordinates( *m_glwidget->molecule() );
-      if(m_clickedAtom && m_leftButtonPressed)
-      {
-        Vector3d begin = m_glwidget->camera()->project(m_clickedAtom->pos());
-        QPoint point = QPoint(begin.x(), begin.y());
-        translate(m_glwidget, m_clickedAtom->pos(), point, m_lastDraggingPosition);
-      }
-      m_glwidget->molecule()->update();
-    }
+    m_thread = new AutoOptThread(m_glwidget->molecule(), m_forceField, ui.StepsSpinBox->value(),
+               ui.AlgorithmComboBox->currentIndex(), ui.GradientsComboBox->currentIndex(),
+               ui.ConvergenceSpinBox->value());
+    connect(m_thread,SIGNAL(finished(bool)),this,SLOT(finished(bool)));
+    m_thread->start();
+}
 
-    m_block = false;
+void AutoOptTool::finished(bool calculated)
+{
+  if (m_running && calculated)
+  {
+	m_forceField->UpdateCoordinates( *m_glwidget->molecule() );
+	if(m_clickedAtom && m_leftButtonPressed)
+	{
+	  Vector3d begin = m_glwidget->camera()->project(m_clickedAtom->pos());
+	  QPoint point = QPoint(begin.x(), begin.y());
+	  translate(m_glwidget, m_clickedAtom->pos(), point, m_lastDraggingPosition);
+	}
+	m_glwidget->molecule()->update();
+  }
+  
+  m_thread->stop();
+  m_thread->wait();
+  disconnect(m_thread,0,this,0);
+  delete m_thread;
+  m_thread = NULL;
+
+  m_block = false;
+}
+
+AutoOptThread::AutoOptThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
+        int nSteps, int algorithm, int gradients, int convergence, QObject*)
+{
+  m_molecule = molecule;
+  m_forceField = forceField;
+  m_nSteps = nSteps;
+  m_algorithm = algorithm;
+  m_gradients = gradients;
+  m_convergence = convergence;
+  m_stop = false;
+}
+
+void AutoOptThread::run()
+{
+  if ( !m_forceField->Setup( *m_molecule ) ) {
+	qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
+	m_stop = true;
+	emit finished(false);
+	return;
+  }
+  if(m_algorithm == 0)
+  {
+	m_forceField->SteepestDescent(m_nSteps,pow(10.0, -m_convergence ), m_gradients == 0 ? OBFF_NUMERICAL_GRADIENT : OBFF_ANALYTICAL_GRADIENT);
+  }
+  else if(m_algorithm == 1)
+  {
+	m_forceField->ConjugateGradients(m_nSteps,pow(10.0, -m_convergence ), m_gradients == 0 ? OBFF_NUMERICAL_GRADIENT : OBFF_ANALYTICAL_GRADIENT);
+  }
+  if(m_stop)
+  {
+    emit finished(false);
+  }
+  else
+  {
+    emit finished(true);
+  }
+}
+
+void AutoOptThread::stop()
+{
+  m_stop = true;
 }
 
 AutoOptCommand::AutoOptCommand(Molecule *molecule, AutoOptTool *tool, QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)

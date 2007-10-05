@@ -45,6 +45,33 @@
 
 namespace Avogadro {
 
+  class AutoOptThread : public QThread
+  {
+    Q_OBJECT;
+
+    public:
+    AutoOptThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
+        int nSteps, int algorithm, int gradients, int convergence, QObject *parent=0);
+
+      void run();
+
+    Q_SIGNALS:
+      void finished(bool calculated);
+
+    public Q_SLOTS:
+      void stop();
+
+    private:
+      Molecule *m_molecule;
+      OpenBabel::OBForceField * m_forceField;
+      int m_nSteps;
+      int m_algorithm;
+      int m_gradients;
+      int m_convergence;
+
+      bool m_stop;
+  };
+
   /**
    * @class AutoOptTool
    * @brief Automatic Optimisation Tool
@@ -88,6 +115,7 @@ namespace Avogadro {
       virtual QWidget* settingsWidget();
 
     public Q_SLOTS:
+      void finished(bool calculated);
       void toggle();
       void enable();
       void disable();
@@ -105,6 +133,7 @@ namespace Avogadro {
       QWidget*                  m_settingsWidget;
       Eigen::Vector3d           m_selectedPrimitivesCenter;    // centroid of selected atoms
       OpenBabel::OBForceField*  m_forceField;
+      AutoOptThread *           m_thread;
       
       Ui::AutoOptForceField ui;
 

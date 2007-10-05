@@ -60,6 +60,7 @@ using namespace Eigen;
 // ##########  Constructor  ##########
 
 BondCentricTool::BondCentricTool(QObject *parent) : Tool(parent),
+                                                    m_glwidget(NULL),
                                                     m_settingsWidget(NULL),
                                                     m_clickedAtom(NULL),
                                                     m_clickedBond(NULL),
