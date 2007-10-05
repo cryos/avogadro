@@ -20,7 +20,7 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
  ***********************************************************************/
-#define OBPatched
+//#define OBPatched
 #include "autoopttool.h"
 #include "navigate.h"
 #include <avogadro/primitive.h>
