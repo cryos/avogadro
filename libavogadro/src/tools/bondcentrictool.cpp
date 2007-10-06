@@ -1845,10 +1845,10 @@ QWidget *BondCentricTool::settingsWidget()
     m_showAnglesBox = new QCheckBox(tr(" Show Angles"), m_settingsWidget);
     m_showAnglesBox->setCheckState(m_showAngles ? Qt::Checked : Qt::Unchecked);
 
-    m_snapToCheckBox = new QCheckBox(tr(" Enable Snap-to"), m_settingsWidget);
+    m_snapToCheckBox = new QCheckBox(tr(" Snap-to Bonds"), m_settingsWidget);
     m_snapToCheckBox->setCheckState(m_snapToEnabled ? Qt::Checked : Qt::Unchecked);
 
-    m_snapToAngleLabel = new QLabel(tr("Snap-to Angle: "));
+    m_snapToAngleLabel = new QLabel(tr("Snap-to Threshold: "));
     m_snapToAngleLabel->setScaledContents(false);
     m_snapToAngleLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     m_snapToAngleLabel->setMaximumHeight(20);
