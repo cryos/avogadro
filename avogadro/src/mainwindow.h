@@ -32,7 +32,6 @@
 class QUndoStack;
 class QStackedLayout;
 class QStandardItem;
-class QSplashScreen;
 
 namespace Avogadro {
   class Tool;
@@ -44,8 +43,8 @@ namespace Avogadro {
     Q_OBJECT;
 
     public:
-      MainWindow(QSplashScreen *splash=0);
-      MainWindow(const QString &fileName, QSplashScreen *splash=0);
+      MainWindow();
+      MainWindow(const QString &fileName);
 
       bool loadFile(const QString &fileName);
       bool saveFile(const QString &fileName);

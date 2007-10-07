@@ -71,10 +71,6 @@ int main(int argc, char *argv[])
 
   Application app(argc, argv);
   
-  QPixmap logo = QPixmap(":/icons/avogadro.png");
-  QSplashScreen *splash = new QSplashScreen(logo);
-  splash->show();
-  
   if (!QGLFormat::hasOpenGL()) {
     QMessageBox::information(0, "Avogadro",
         "This system does not support OpenGL.");
@@ -129,25 +125,19 @@ int main(int argc, char *argv[])
   qDebug() << arguments;
   if (arguments.size() > 1) {
     QPoint p(100, 100), offset(40,40);
-//     foreach(QString file, files)
     QList<QString>::const_iterator i = arguments.constBegin();
-    QSplashScreen *tmpSplash = splash;
     for (++i; i != arguments.constEnd(); ++i)
     {
-      MainWindow *other = new MainWindow(tmpSplash);
+      MainWindow *other = new MainWindow();
       p += offset;
       other->move(p);
       other->loadFile(*i);
       QTimer::singleShot( 0, other, SLOT(show()) );
-      tmpSplash=0;
-      app.processEvents();
     }
   } else {
-    MainWindow *window = new MainWindow(splash);
+    MainWindow *window = new MainWindow();
     QTimer::singleShot( 0, window, SLOT(show()) );
-//    window->show();
   }
-  QTimer::singleShot( 0, splash, SLOT(close()) );
   return app.exec();
 }
 

@@ -695,7 +695,6 @@ namespace Avogadro {
 
   void GLWidget::setMolecule( Molecule *molecule )
   {
-    qDebug() << "setMolecule " << molecule;
     if ( !molecule ) { return; }
 
     // disconnect from our old molecule

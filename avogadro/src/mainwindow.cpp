@@ -50,7 +50,6 @@
 #include <QMessageBox>
 #include <QPluginLoader>
 #include <QSettings>
-#include <QSplashScreen>
 #include <QStandardItem>
 #include <QStackedLayout>
 #include <QTimer>
@@ -69,7 +68,7 @@ namespace Avogadro
       MainWindowPrivate() : molecule( 0 ),
           undoStack( 0 ), toolsFlow( 0 ), toolSettingsStacked( 0 ), messagesText( 0 ),
           toolGroup( 0 ),
-          settingsDialog( 0 ), splash(0), initialized( false )
+          settingsDialog( 0 ), initialized( false )
       {}
 
       Molecule  *molecule;
@@ -94,8 +93,6 @@ namespace Avogadro
 
       SettingsDialog *settingsDialog;
       
-      QSplashScreen *splash;
-
       // used for hideMainWindowMac() / showMainWindowMac()
       // save enable/disable status of every menu item
       QVector< QVector <bool> > menuItemStatus;
@@ -114,22 +111,14 @@ namespace Avogadro
   }
 
 
-  MainWindow::MainWindow(QSplashScreen *splash) : QMainWindow( 0 ), d( new MainWindowPrivate )
+  MainWindow::MainWindow() : QMainWindow( 0 ), d( new MainWindowPrivate )
   {
-    d->splash = splash;
-    if(splash) {
-      splash->showMessage("Loading MainWindow");
-    }
     constructor();
   }
 
-  MainWindow::MainWindow( const QString &fileName, QSplashScreen *splash) : QMainWindow( 0 ),
+  MainWindow::MainWindow( const QString &fileName) : QMainWindow( 0 ),
       d( new MainWindowPrivate )
   {
-    d->splash = splash;
-    if(splash) {
-      splash->showMessage("Loading MainWindow");
-    }
     constructor();
     d->fileName = fileName;
   }
@@ -182,16 +171,6 @@ namespace Avogadro
   // delayed initialization function
   void MainWindow::initialize()
   {
-    if(d->splash)
-    {
-//    statusBar()->showMessage( tr( "Initializing GLWidget..." ), 10000 );
-      d->splash->showMessage("Initializing GLWidget");
-    }
-    
-//    QVBoxLayout *vboxLayout = new QVBoxLayout(ui.tab);
-//    vboxLayout->setSpacing(6);
-//    vboxLayout->setObjectName(QString::fromUtf8("vboxLayout"));
-//    vboxLayout->setContentsMargins(0, 0, 0, 0);
     
     d->glWidget = new GLWidget(ui.tab);
     ui.tab->layout()->addWidget(d->glWidget);
@@ -209,11 +188,6 @@ namespace Avogadro
     connect( engineListView, SIGNAL( clicked( Engine * ) ),
              engineTabWidget, SLOT( setCurrentEngine( Engine * ) ) );
     
-    if(d->splash)
-    {
-//    statusBar()->showMessage( tr( "Loading Tools..." ), 10000 );
-      d->splash->showMessage("Loading Tools");
-    }
     
     d->toolGroup->load();
     connect( d->toolGroup, SIGNAL( toolActivated( Tool * ) ), this, SLOT( setTool( Tool * ) ) );
@@ -234,23 +208,11 @@ namespace Avogadro
       }
     }
     
-    if(d->splash)
-    {
-//    statusBar()->showMessage( tr( "Loading Extensions..." ), 10000 );
-      d->splash->showMessage("Loading Extensions");
-    }
     loadExtensions();
     
     d->initialized = true;
     
     loadFile(d->fileName);
-
-    if(d->splash)
-    {
-//    statusBar()->showMessage( tr( "Ready." ), 10000 );
-      d->splash->showMessage("Complete");
-    }
-    d->splash = 0;
   }
 
   void MainWindow::newFile()
@@ -947,25 +909,11 @@ namespace Avogadro
     
     if(fileName.isEmpty())
     {
-//      if(d->splash)
-//      {
-//        d->splash->showMessage( "Loading File" );
-//      }
-//      statusBar()->showMessage( "Loading File...", 5000 );
       setFileName( fileName );
       setMolecule( new Molecule(this) );
-//      if(d->splash)
-//      {
-//        d->splash->showMessage( "File Loaded" );
-//      }
-//      statusBar()->showMessage( "File Loaded...", 5000 );
       return true;
     }
     
-    if(d->splash)
-    {
-      d->splash->showMessage( tr("Loading %1").arg(fileName) );
-    }
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
     QFile file( fileName );
     if ( !file.open( QFile::ReadOnly | QFile::Text ) ) {
@@ -979,10 +927,6 @@ namespace Avogadro
     file.close();
 
     QApplication::setOverrideCursor( Qt::WaitCursor );
-    if(d->splash)
-    {
-      d->splash->showMessage( tr("Loading OpenBabel Extensions") );
-    }
     OBConversion conv;
     OBFormat     *inFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
     if ( !inFormat || !conv.SetInFormat( inFormat ) ) {
@@ -1002,10 +946,6 @@ namespace Avogadro
       return false;
     }
 
-    if(d->splash)
-    {
-      d->splash->showMessage( tr("Loading %1").arg(fileName) );
-    }
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
     Molecule *molecule = new Molecule;
     if ( conv.Read( molecule, &ifs ) && molecule->NumAtoms() != 0 ) {
