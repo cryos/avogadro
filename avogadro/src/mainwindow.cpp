@@ -481,14 +481,27 @@ namespace Avogadro
   void MainWindow::paste()
   {
     QClipboard *clipboard = QApplication::clipboard();
+
     const QMimeData *mimeData = NULL;
 
-    if ( clipboard->supportsSelection() ) {
-      mimeData = clipboard->mimeData( QClipboard::Selection );
-    } else {
-      mimeData = clipboard->mimeData();
-    }
+    bool supportsSelection = clipboard->supportsSelection();
 
+    if ( supportsSelection ) {
+      mimeData = clipboard->mimeData( QClipboard::Selection );
+    } 
+
+    if ( !supportsSelection || !pasteMimeData(mimeData) )
+    {
+      mimeData = clipboard->mimeData();
+      if(!pasteMimeData(mimeData))
+      {
+        statusBar()->showMessage( tr( "Unable to paste molecule." ) );
+      }
+    }
+  }
+
+  bool MainWindow::pasteMimeData(const QMimeData *mimeData)
+  {
     OBConversion conv;
     OBFormat *pasteFormat = NULL;
     QString text;
@@ -505,11 +518,11 @@ namespace Avogadro
     }
 
     if ( text.length() == 0 )
-      return;
+      return false;
 
     if ( !pasteFormat || !conv.SetInFormat( pasteFormat ) ) {
       statusBar()->showMessage( tr( "Paste failed (format unavailable)." ), 5000 );
-      return;
+      return false;
     }
 
     if ( conv.ReadString( &newMol, text.toStdString() ) && newMol.NumAtoms() != 0 ) {
@@ -521,8 +534,9 @@ namespace Avogadro
       PasteCommand *command = new PasteCommand( d->molecule, newMol, d->glWidget );
       d->undoStack->push( command );
     } else {
-      statusBar()->showMessage( tr( "Unable to paste molecule." ) );
+      return false;
     }
+    return true;
   }
 
   // Helper function -- works for "cut" or "copy"
@@ -609,8 +623,7 @@ namespace Avogadro
     QMimeData *mimeData = prepareClipboardData( d->glWidget->selectedPrimitives() );
 
     if ( mimeData ) {
-      CopyCommand *command = new CopyCommand( mimeData );
-      d->undoStack->push( command );
+      QApplication::clipboard()->setMimeData(mimeData, QClipboard::Clipboard);
     }
   }
 

@@ -47,21 +47,7 @@ namespace Avogadro {
     Molecule *m_molecule;         //!< parent (active molecule in widget)
     Molecule  m_originalMolecule; //!< original (unmodified molecule)
     QMimeData *m_copiedData;      //!< fragment to be copied to the clipboard
-    QMimeData *m_savedData;       //!< original clipboard contents
     QList<Primitive*> m_selectedList; //!< any selected atoms
-  };
-
-  class CopyCommand : public QUndoCommand
-  {
-  public:
-    CopyCommand(QMimeData *copyData);
-    
-    virtual void undo();
-    virtual void redo();
-    
-  private:
-    QMimeData *m_copiedMolecule;  //!< fragment to be copied to the clipboard
-    QMimeData *m_savedData;       //!< original clipboard contents
   };
 
   class PasteCommand : public QUndoCommand

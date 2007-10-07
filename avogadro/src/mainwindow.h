@@ -122,6 +122,9 @@ namespace Avogadro {
       //! Helper function for cut or copy -- prepare a clipboard
       QMimeData* prepareClipboardData(QList<Primitive*> selectedItems);
 
+      //! Helper function to paste data from mime data
+      bool pasteMimeData(const QMimeData *mimeData);
+
       //! Helper function for Mac -- hide main window and disable menus
       void hideMainWindowMac();
       //! Helper function for Mac -- show main window and re-enable menus

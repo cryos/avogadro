@@ -45,7 +45,6 @@ namespace Avogadro {
   void CutCommand::redo()
   {
     QApplication::clipboard()->setMimeData(m_copiedData, QClipboard::Clipboard);
-    QApplication::clipboard()->setMimeData(m_copiedData, QClipboard::Selection);
     if (m_selectedList.size() == 0) {
       m_molecule->Clear();
     }
@@ -62,28 +61,9 @@ namespace Avogadro {
 
   void CutCommand::undo()
   {
-    // restore the clipboard and molecule
-    QApplication::clipboard()->setMimeData(m_savedData, QClipboard::Clipboard);
+    // restore the molecule
     *m_molecule = m_originalMolecule;
     m_molecule->update();
-  }
-
-  CopyCommand::CopyCommand(QMimeData *copyData):
-    m_copiedMolecule(copyData)
-  {
-    m_savedData = const_cast<QMimeData *>(QApplication::clipboard()->mimeData());
-    setText(QObject::tr("Copy"));
-  }
-
-  void CopyCommand::redo()
-  {
-    QApplication::clipboard()->setMimeData(m_copiedMolecule, QClipboard::Clipboard);
-    QApplication::clipboard()->setMimeData(m_copiedMolecule, QClipboard::Selection);
-  }
-
-  void CopyCommand::undo()
-  {
-    QApplication::clipboard()->setMimeData(m_savedData, QClipboard::Clipboard);
   }
 
   PasteCommand::PasteCommand(Molecule *molecule, Molecule pastedMolecule,
