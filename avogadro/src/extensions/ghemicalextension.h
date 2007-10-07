@@ -107,6 +107,8 @@ namespace Avogadro {
     private:
       Molecule *m_molecule;
       QTextEdit *m_textEdit;
+      
+      QMutex m_mutex;
 
       int m_cycles;
       int m_forceFieldID;
@@ -123,36 +125,37 @@ namespace Avogadro {
   };
 
  class GhemicalCommand : public QUndoCommand
-  {
-    public:
-      GhemicalCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield, QTextEdit *messages,
-                      int forceFieldID, int nSteps, int algorithm, int gradients, int convergence, int task);
-
-      ~GhemicalCommand();
-
-      virtual void redo();
-      virtual void undo();
-      virtual bool mergeWith ( const QUndoCommand * command );
-      virtual int id() const;
-
-      void detach() const;
-      void cleanup();
-
-      GhemicalThread *thread() const;
-      QProgressDialog *progressDialog() const;
-
-    private:
-      Molecule m_moleculeCopy;
-
-      int m_nSteps;
-      Molecule *m_molecule;
-      QTextEdit *m_textEdit;
-
-      GhemicalThread *m_thread;
-      QProgressDialog *m_dialog;
-
-      mutable bool m_detached;
-  };
+ {
+   public:
+     GhemicalCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield, QTextEdit *messages,
+         int forceFieldID, int nSteps, int algorithm, int gradients, int convergence, int task);
+     
+     ~GhemicalCommand();
+     
+     virtual void redo();
+     virtual void undo();
+     virtual bool mergeWith ( const QUndoCommand * command );
+     virtual int id() const;
+     
+     void detach() const;
+     void cleanup();
+     
+     GhemicalThread *thread() const;
+     QProgressDialog *progressDialog() const;
+     
+   private:
+     Molecule m_moleculeCopy;
+     
+     int m_nSteps;
+     Molecule *m_molecule;
+     QTextEdit *m_textEdit;
+     
+     GhemicalThread *m_thread;
+     QProgressDialog *m_dialog;
+     
+     mutable bool m_detached;
+     
+ };
 
 } // end namespace Avogadro
 

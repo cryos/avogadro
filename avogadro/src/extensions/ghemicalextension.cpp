@@ -28,6 +28,8 @@
 #include <QtGui>
 #include <QProgressDialog>
 #include <QWriteLocker>
+#include <QMutex>
+#include <QMutexLocker>
 
 using namespace std;
 using namespace OpenBabel;
@@ -189,10 +191,13 @@ namespace Avogadro
           m_molecule->update();
           m_cycles++;
           steps += 5;
-          emit stepsTaken( steps );
+          m_mutex.lock();
           if ( m_stop ) {
+            m_mutex.unlock();
             break;
           }
+          m_mutex.unlock();
+          emit stepsTaken( steps );
         }
       } else if ( m_algorithm == 1 ) {
         if ( m_gradients == 0 ) {
@@ -206,10 +211,13 @@ namespace Avogadro
           m_molecule->update();
           m_cycles++;
           steps += 5;
-          emit stepsTaken( steps );
+          m_mutex.lock();
           if ( m_stop ) {
+            m_mutex.unlock();
             break;
           }
+          m_mutex.unlock();
+          emit stepsTaken( steps );
         }
       }
     } else if ( m_task == 1 ) {
@@ -224,6 +232,7 @@ namespace Avogadro
 
   void GhemicalThread::stop()
   {
+    QMutexLocker locker(&m_mutex);
     m_stop = true;
   }
 
@@ -261,16 +270,17 @@ namespace Avogadro
 
   void GhemicalCommand::redo()
   {
-    QProgressDialog *m_dialog = new QProgressDialog( QObject::tr( "Forcefield Optimization" ),
-                                QObject::tr( "Cancel" ), 0,  m_nSteps );
-
-    QObject::connect( m_thread, SIGNAL( stepsTaken( int ) ), m_dialog, SLOT( setValue( int ) ) );
-    QObject::connect( m_dialog, SIGNAL( canceled() ), m_thread, SLOT( stop() ) );
-    QObject::connect( m_thread, SIGNAL( finished() ), m_dialog, SLOT( close() ) );
+    if(!m_dialog) {
+      m_dialog = new QProgressDialog( QObject::tr( "Forcefield Optimization" ),
+                                      QObject::tr( "Cancel" ), 0,  m_nSteps );
+      QObject::connect( m_thread, SIGNAL( stepsTaken( int ) ), m_dialog, SLOT( setValue( int ) ) );
+      QObject::connect( m_dialog, SIGNAL( canceled() ), m_thread, SLOT( stop() ) );
+      QObject::connect( m_thread, SIGNAL( finished() ), m_dialog, SLOT( close() ) );
+    }
 
     m_thread->start();
   }
-
+  
   void GhemicalCommand::undo()
   {
     m_thread->stop();
@@ -278,8 +288,6 @@ namespace Avogadro
 
     m_textEdit->undo();
     *m_molecule = m_moleculeCopy;
-    // for(int i=0; i<m_cycles; i++) {
-    // }
   }
 
   bool GhemicalCommand::mergeWith( const QUndoCommand *command )
