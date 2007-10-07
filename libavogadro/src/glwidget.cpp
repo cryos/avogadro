@@ -274,6 +274,7 @@ namespace Avogadro {
         m_resize=false;
       }
 
+      m_widget->qglClearColor(d->background);
       m_widget->paintGL();
       m_widget->swapBuffers();
       m_widget->doneCurrent();
@@ -460,7 +461,7 @@ namespace Avogadro {
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.lock();
 #endif
-    d->background = background; qglClearColor( background );
+    d->background = background; 
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.unlock();
 #endif
@@ -618,6 +619,7 @@ namespace Avogadro {
       d->initialized = true;
       initializeGL();
     }
+    qglClearColor(d->background);
     paintGL();
     swapBuffers();
     doneCurrent();

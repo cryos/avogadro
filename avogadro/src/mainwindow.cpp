@@ -765,8 +765,9 @@ namespace Avogadro
 
   void MainWindow::setBackgroundColor()
   {
-    QColor current = ui.glWidget->background();
-    ui.glWidget->setBackground( QColorDialog::getRgba( current.rgba(), NULL, this ) );
+    QColor current = d->glWidget->background();
+    d->glWidget->setBackground( QColorDialog::getRgba( current.rgba(), NULL, this ) );
+    d->glWidget->update();
   }
 
   void MainWindow::setTool( Tool *tool )
