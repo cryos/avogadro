@@ -398,7 +398,7 @@ namespace Avogadro {
 
   void GLWidget::initializeGL()
   {
-    qDebug() << "Initialized";
+    qDebug() << "GLWidget Initialized";
     qglClearColor( d->background );
 
     glShadeModel( GL_SMOOTH );

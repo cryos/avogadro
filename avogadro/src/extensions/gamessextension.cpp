@@ -174,8 +174,6 @@ namespace Avogadro
 
   GamessEfpMatchDialog *GamessExtension::matchesDialog( Molecule *molecule, GLWidget *widget, GamessEfpMatchDialog::Type type )
   {
-    qDebug() << "Find Matches";
-
     if ( !widget->selectedPrimitives().size() ) {
       QMessageBox::information( 0, tr( "No Atoms Selected" ),
                                 tr( "You must make a selection!" ) );
@@ -349,8 +347,6 @@ namespace Avogadro
       QModelIndex parent = index.parent();
       if(!parent.isValid())
       {
-        qDebug() << "Main Row " << index.row();
-
         for(int i = 0; i<m_efpModel->rowCount(index); i++)
         {
           QModelIndex child = m_efpModel->index(i,0,index);
@@ -537,7 +533,7 @@ namespace Avogadro
     GamessEfpMatchDialog *dialog = qobject_cast<GamessEfpMatchDialog *>( sender() );
 
     GLWidget *widget = m_dialogWidgets.value(dialog);
-    qDebug() << m_widgetSelected.value(widget);
+//    qDebug() << m_widgetSelected.value(widget);
     widget->clearSelected();
     widget->setSelected( m_widgetSelected.value( widget ), true );
     m_widgetSelected.remove(widget);

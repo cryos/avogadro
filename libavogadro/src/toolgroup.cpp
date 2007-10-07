@@ -81,7 +81,7 @@ namespace Avogadro {
     {
       QDir dir(path); 
       foreach (QString fileName, dir.entryList(QDir::Files)) {
-        qDebug() << fileName;
+//        qDebug() << fileName;
         QPluginLoader loader(dir.absoluteFilePath(fileName));
         QObject *instance = loader.instance();
         ToolFactory *factory = qobject_cast<ToolFactory *>(instance);

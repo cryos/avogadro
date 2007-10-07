@@ -21,22 +21,23 @@ FILE(GLOB libavogadro_HDRS "*.h")
 
 qt4_automoc(${libavogadro_SRCS})
 
-#set(libavogadro_MOC_HDRS
-  #primitive.h
-  #glwidget.h
-  #moleculetreeview.h
-#)
-#qt4_wrap_cpp(libavogadro_MOC_SRCS ${libavogadro_MOC_HDRS})
+SET(libavogadro_TS 
+	${CMAKE_SOURCE_DIR}/i18n/avogadro_de.ts
+	${CMAKE_SOURCE_DIR}/i18n/avogadro_fr.ts
+) 
+QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 
-ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS})
+ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})
 SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 set_target_properties(avogadro-lib PROPERTIES VERSION ${VERSION} SOVERSION 0 )
 
 TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
-                                   ${OPENGL_LIBRARIES}                                   )
+                                   ${OPENGL_LIBRARIES}
+    )
 
 INSTALL(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
 INSTALL(FILES ${libavogadro_HDRS} DESTINATION include/avogadro)
+INSTALL(FILES ${libavogadro_QM} DESTINATION share/libavogadro/i18n)
 
 add_subdirectory(engines)
 add_subdirectory(tools)

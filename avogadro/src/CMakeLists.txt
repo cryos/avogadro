@@ -39,10 +39,18 @@ qt4_automoc(${avogadro_SRCS})
 qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
+SET(avogadro_TS 
+	${CMAKE_SOURCE_DIR}/i18n/avogadro_de.ts
+	${CMAKE_SOURCE_DIR}/i18n/avogadro_fr.ts
+) 
+QT4_WRAP_TS(avogadro_QM ${avogadro_TS})
+
 add_executable(avogadro-app WIN32 MACOSX_BUNDLE
   ${avogadro_SRCS}
   ${avogadro_UIS_H}
-  ${avogadro_RC_SRCS}  )
+  ${avogadro_RC_SRCS}  
+  ${avogadro_QM}
+)
 
 SET_TARGET_PROPERTIES(avogadro-app PROPERTIES OUTPUT_NAME avogadro)
 
@@ -67,6 +75,7 @@ IF( APPLE )
 ENDIF( APPLE)
 
 INSTALL(TARGETS avogadro-app DESTINATION bin)
+INSTALL(FILES ${avogadro_QM} DESTINATION share/avogadro/i18n)
 
 add_subdirectory(extensions)
 

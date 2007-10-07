@@ -415,24 +415,14 @@ QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
                         SEL_BOX_SIZE);
     if(m_hits.size())
     {
-      qDebug() << m_hits[0].name() << " -- " << m_hits[0].type();
-
-      qDebug() << "bondtype -- " << Primitive::BondType;
       // get our top hit
       if(m_hits[0].type() == Primitive::AtomType)
       {
         undo = new DeleteAtomDrawCommand(widget->molecule(), m_hits[0].name());
-//         molecule->DeleteAtom(atom);
-//         widget->updateGeometry();
-//         molecule->update();
       }
       if(m_hits[0].type() == Primitive::BondType)
       {
-        qDebug() << m_hits[0].name();
         undo = new DeleteBondDrawCommand(widget->molecule(), m_hits[0].name());
-//         molecule->DeleteAtom(atom);
-//         widget->updateGeometry();
-//         molecule->update();
       }
     }
   }

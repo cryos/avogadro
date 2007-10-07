@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
     return 0;
   }
 
-  qDebug() << arguments;
+//  qDebug() << arguments;
   if (arguments.size() > 1) {
     QPoint p(100, 100), offset(40,40);
     QList<QString>::const_iterator i = arguments.constBegin();

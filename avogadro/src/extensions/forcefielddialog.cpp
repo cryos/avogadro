@@ -34,8 +34,8 @@ using namespace Avogadro;
 
 ForceFieldDialog::ForceFieldDialog( QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f )
 {
-  qDebug() << "ForceFieldDialog::ForceFieldDialog()" << endl;
-
+//  qDebug() << "ForceFieldDialog::ForceFieldDialog()" << endl;
+  
   ui.setupUi(this);
 
   m_forceFieldID = 0; // ghemical
@@ -53,12 +53,12 @@ ForceFieldDialog::ForceFieldDialog( QWidget *parent, Qt::WindowFlags f ) : QDial
 
 ForceFieldDialog::~ForceFieldDialog()
 {
-  qDebug() << "ForceFieldDialog::~ForceFieldDialog()" << endl;
+//  qDebug() << "ForceFieldDialog::~ForceFieldDialog()" << endl;
 }
 
 void ForceFieldDialog::accept()
 {
-  qDebug() << "ForceFieldDialog::accept()";
+//  qDebug() << "ForceFieldDialog::accept()";
   qDebug() << "Force Field: " << ui.ForceFieldComboBox->currentIndex();
   qDebug() << "Nymber of steps: " << ui.StepsSpinBox->value();
   qDebug() << "Algorithm: " << ui.AlgorithmComboBox->currentIndex();
@@ -75,7 +75,7 @@ void ForceFieldDialog::accept()
 
 void ForceFieldDialog::reject()
 {
-  qDebug() << "ForceFieldDialog::reject()" << endl;
+//  qDebug() << "ForceFieldDialog::reject()" << endl;
   
   ui.ForceFieldComboBox->setCurrentIndex(m_forceFieldID);
   ui.StepsSpinBox->setValue(m_nSteps);

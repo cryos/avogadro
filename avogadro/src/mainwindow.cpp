@@ -1044,14 +1044,9 @@ namespace Avogadro
   MainWindow *MainWindow::findMainWindow( const QString &fileName )
   {
     QString canonicalFilePath = QFileInfo( fileName ).canonicalFilePath();
-    qDebug() << "Canonical File Path: " << canonicalFilePath;
 
     foreach( QWidget *widget, qApp->topLevelWidgets() ) {
       MainWindow *window = qobject_cast<MainWindow *>( widget );
-      if (window)
-      {
-        qDebug() << "- " << window->d->fileName;
-      }
       if ( window && window->d->fileName == canonicalFilePath )
       {
         return window;
@@ -1092,7 +1087,7 @@ namespace Avogadro
 
     foreach( QString path, pluginPaths ) {
       QDir dir( path );
-      qDebug() << "SearchPath:" << dir.absolutePath() << endl;
+//      qDebug() << "SearchPath:" << dir.absolutePath() << endl;
       foreach( QString fileName, dir.entryList( QDir::Files ) ) {
         QPluginLoader loader( dir.absoluteFilePath( fileName ) );
         QObject *instance = loader.instance();
