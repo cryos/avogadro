@@ -27,7 +27,6 @@
 #endif // Q_OS_UNIX
 
 using namespace std;
-using namespace OpenBabel;
 
 namespace Avogadro {
 

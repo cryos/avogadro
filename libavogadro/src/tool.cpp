@@ -78,7 +78,10 @@ namespace Avogadro {
   {
     return 0;
   }
-
+  
+  void Tool::setMolecule(Molecule *)
+  {
+  }
 
   int Tool::usefulness() const
   {

@@ -257,13 +257,6 @@ namespace Avogadro {
        */
       double radius(const Primitive *p) const;
 
-      /**
-       * Set the background color of the rendering area.  (default black)
-       *
-       * @param background the new background color
-       */
-      void setBackground(const QColor &background);
-
       Tool* tool() const;
       ToolGroup toolManger() const;
 
@@ -271,12 +264,6 @@ namespace Avogadro {
        * @return the current background color of the rendering area
        */
       QColor background() const;
-
-      /**
-       * Set the molecule model for this view.
-       * @param molecule the molecule to view
-       */
-      void setMolecule(Molecule *molecule);
 
       /**
        * @param undoStack the new undoStack
@@ -542,6 +529,19 @@ namespace Avogadro {
        * @param primitive object to remove
        */
       void removePrimitive(Primitive *primitive);
+
+      /**
+       * Set the background color of the rendering area.  (default black)
+       *
+       * @param background the new background color
+       */
+      void setBackground(const QColor &background);
+
+      /**
+       * Set the molecule model for this view.
+       * @param molecule the molecule to view
+       */
+      void setMolecule(Molecule *molecule);
 
     Q_SIGNALS:
       void mousePress( QMouseEvent * event );

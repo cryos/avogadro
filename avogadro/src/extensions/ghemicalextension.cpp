@@ -161,7 +161,7 @@ namespace Avogadro
 
   void GhemicalThread::run()
   {
-    QWriteLocker locker( m_molecule->lock () );
+    QWriteLocker locker( m_molecule->lock() );
     m_stop = false;
     m_cycles = 0;
 

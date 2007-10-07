@@ -31,6 +31,7 @@
 class QActionGroup;
 
 namespace Avogadro {
+  class Molecule;
   /**
    * @class ToolGroup
    * @brief Manager for GLWidget Tools
@@ -97,6 +98,12 @@ namespace Avogadro {
        * @param tool pointer to the tool to set active
        */
       void setActiveTool(Tool *tool);
+      
+      
+      /**
+       * @param molecule pointer to the molecule tools in this group should use
+       */
+      void setMolecule(Molecule *molecule);
 
     private Q_SLOTS:
       void activateTool();

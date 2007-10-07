@@ -50,8 +50,10 @@
 #include <QMessageBox>
 #include <QPluginLoader>
 #include <QSettings>
+#include <QSplashScreen>
 #include <QStandardItem>
 #include <QStackedLayout>
+#include <QTimer>
 #include <QToolButton>
 #include <QUndoStack>
 
@@ -67,7 +69,7 @@ namespace Avogadro
       MainWindowPrivate() : molecule( 0 ),
           undoStack( 0 ), toolsFlow( 0 ), toolSettingsStacked( 0 ), messagesText( 0 ),
           toolGroup( 0 ),
-          settingsDialog( 0 )
+          settingsDialog( 0 ), splash(0), initialized( false )
       {}
 
       Molecule  *molecule;
@@ -91,10 +93,14 @@ namespace Avogadro
       QAction    *actionRecentFile[MainWindow::maxRecentFiles];
 
       SettingsDialog *settingsDialog;
+      
+      QSplashScreen *splash;
 
       // used for hideMainWindowMac() / showMainWindowMac()
       // save enable/disable status of every menu item
       QVector< QVector <bool> > menuItemStatus;
+      
+      bool initialized;
   };
 
   unsigned int getMainWindowCount()
@@ -108,21 +114,29 @@ namespace Avogadro
   }
 
 
-  MainWindow::MainWindow() : QMainWindow( 0 ), d( new MainWindowPrivate )
+  MainWindow::MainWindow(QSplashScreen *splash) : QMainWindow( 0 ), d( new MainWindowPrivate )
   {
+    d->splash = splash;
+    if(splash) {
+      splash->showMessage("Loading MainWindow");
+    }
     constructor();
-    setFileName( "" );
   }
 
-  MainWindow::MainWindow( const QString &fileName ) : QMainWindow( 0 ),
+  MainWindow::MainWindow( const QString &fileName, QSplashScreen *splash) : QMainWindow( 0 ),
       d( new MainWindowPrivate )
   {
+    d->splash = splash;
+    if(splash) {
+      splash->showMessage("Loading MainWindow");
+    }
     constructor();
-    loadFile( fileName );
+    d->fileName = fileName;
   }
 
   void MainWindow::constructor()
   {
+    setVisible(false);
 #ifdef Q_WS_MAC
     // The unified toolbar look on Mac 10.4 looks really cool
     // but it has clear bugs with Qt4.3 and OpenGL apps.
@@ -134,19 +148,76 @@ namespace Avogadro
     readSettings();
     setAttribute( Qt::WA_DeleteOnClose );
 
-    d->glWidgets.append( ui.glWidget );
-    d->glWidget = ui.glWidget;
 
     d->undoStack = new QUndoStack( this );
     d->toolsFlow = new FlowLayout( ui.toolsWidget );
     d->toolsFlow->setMargin( 9 );
-
+    
     d->toolGroup = new ToolGroup( this );
-    d->toolGroup->load();
-    connect( d->toolGroup, SIGNAL( toolActivated( Tool * ) ), this, SLOT( setTool( Tool * ) ) );
+    connect( this, SIGNAL( moleculeChanged( Molecule * ) ), d->toolGroup, SLOT( setMolecule( Molecule * ) ) );
 
     d->toolSettingsStacked = new QStackedLayout( ui.toolSettingsWidget );
     d->toolSettingsStacked->addWidget( new QWidget );
+
+    d->enginesStacked = new QStackedLayout( ui.enginesWidget );
+
+    d->engineConfigurationStacked = new QStackedLayout( ui.engineConfigurationWidget );
+
+
+    QWidget *messagesWidget = new QWidget();
+    QVBoxLayout *messagesVBox = new QVBoxLayout( messagesWidget );
+    d->messagesText = new QTextEdit();
+    d->messagesText->setReadOnly( true );
+    messagesVBox->setMargin( 3 );
+    messagesVBox->addWidget( d->messagesText );
+    ui.bottomFlat->addTab( messagesWidget, tr( "Messages" ) );
+
+    connectUi();
+
+    ui.projectDock->close();
+    
+    QTimer::singleShot( 0, this, SLOT(initialize()) );
+  }
+  
+  // delayed initialization function
+  void MainWindow::initialize()
+  {
+    if(d->splash)
+    {
+//    statusBar()->showMessage( tr( "Initializing GLWidget..." ), 10000 );
+      d->splash->showMessage("Initializing GLWidget");
+    }
+    
+//    QVBoxLayout *vboxLayout = new QVBoxLayout(ui.tab);
+//    vboxLayout->setSpacing(6);
+//    vboxLayout->setObjectName(QString::fromUtf8("vboxLayout"));
+//    vboxLayout->setContentsMargins(0, 0, 0, 0);
+    
+    d->glWidget = new GLWidget(ui.tab);
+    ui.tab->layout()->addWidget(d->glWidget);
+    d->glWidget->setObjectName(QString::fromUtf8("glWidget"));
+    d->glWidgets.append( d->glWidget );
+    connect( this, SIGNAL( moleculeChanged( Molecule * ) ), d->glWidget, SLOT( setMolecule( Molecule * ) ) );
+    d->glWidget->setUndoStack( d->undoStack );
+    d->glWidget->setToolGroup( d->toolGroup );
+    
+    EngineListView *engineListView = new EngineListView( d->glWidget, ui.enginesWidget );
+    d->enginesStacked->addWidget( engineListView );
+    
+    EngineSetupWidget *engineTabWidget = new EngineSetupWidget( d->glWidget, ui.engineConfigurationWidget );
+    d->engineConfigurationStacked->addWidget( engineTabWidget );
+    connect( engineListView, SIGNAL( clicked( Engine * ) ),
+             engineTabWidget, SLOT( setCurrentEngine( Engine * ) ) );
+    
+    if(d->splash)
+    {
+//    statusBar()->showMessage( tr( "Loading Tools..." ), 10000 );
+      d->splash->showMessage("Loading Tools");
+    }
+    
+    d->toolGroup->load();
+    connect( d->toolGroup, SIGNAL( toolActivated( Tool * ) ), this, SLOT( setTool( Tool * ) ) );
+    
     const QList<Tool *> tools = d->toolGroup->tools();
     int toolCount = tools.size();
     for ( int i = 0; i < toolCount; i++ ) {
@@ -162,40 +233,24 @@ namespace Avogadro
         }
       }
     }
-
-    d->enginesStacked = new QStackedLayout( ui.enginesWidget );
-    EngineListView *engineListView = new EngineListView( d->glWidget, ui.enginesWidget );
-    d->enginesStacked->addWidget( engineListView );
-
-
-    d->engineConfigurationStacked = new QStackedLayout( ui.engineConfigurationWidget );
-    EngineSetupWidget *engineTabWidget = new EngineSetupWidget( d->glWidget, ui.engineConfigurationWidget );
-    d->engineConfigurationStacked->addWidget( engineTabWidget );
-
-    connect( engineListView, SIGNAL( clicked( Engine * ) ),
-             engineTabWidget, SLOT( setCurrentEngine( Engine * ) ) );
-
-    ui.glWidget->setToolGroup( d->toolGroup );
-    ui.glWidget->setUndoStack( d->undoStack );
-
-    QWidget *messagesWidget = new QWidget();
-    QVBoxLayout *messagesVBox = new QVBoxLayout( messagesWidget );
-    d->messagesText = new QTextEdit();
-    d->messagesText->setReadOnly( true );
-    messagesVBox->setMargin( 3 );
-    messagesVBox->addWidget( d->messagesText );
-    ui.bottomFlat->addTab( messagesWidget, tr( "Messages" ) );
-
+    
+    if(d->splash)
+    {
+//    statusBar()->showMessage( tr( "Loading Extensions..." ), 10000 );
+      d->splash->showMessage("Loading Extensions");
+    }
     loadExtensions();
+    
+    d->initialized = true;
+    
+    loadFile(d->fileName);
 
-    connectUi();
-
-    setMolecule( new Molecule( this ) );
-
-    setFileName( "" );
-    statusBar()->showMessage( tr( "Ready." ), 10000 );
-
-    ui.projectDock->close();
+    if(d->splash)
+    {
+//    statusBar()->showMessage( tr( "Ready." ), 10000 );
+      d->splash->showMessage("Complete");
+    }
+    d->splash = 0;
   }
 
   void MainWindow::newFile()
@@ -275,8 +330,7 @@ namespace Avogadro
   {
     if ( maybeSave() ) {
       d->undoStack->clear();
-      setFileName( "" );
-      setMolecule( new Molecule( this ) );
+      loadFile("");
     }
   }
 
@@ -297,8 +351,7 @@ namespace Avogadro
         hideMainWindowMac();
       }
       event->ignore();
-      setFileName( "" );
-      setMolecule( new Molecule( this ) );
+      loadFile( "" );
 
       return;
     }
@@ -395,7 +448,7 @@ namespace Avogadro
       return;
 
     // render it (with alpha channel)
-    if ( !ui.glWidget->grabFrameBuffer( true ).save( fileName ) ) {
+    if ( !d->glWidget->grabFrameBuffer( true ).save( fileName ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
                             tr( "Cannot save file %1." ).arg( fileName ) );
       return;
@@ -410,7 +463,7 @@ namespace Avogadro
     if ( fileName.isEmpty() )
       return;
 
-    POVPainterDevice pd( fileName, ui.glWidget );
+    POVPainterDevice pd( fileName, d->glWidget );
 
   }
 
@@ -544,7 +597,7 @@ namespace Avogadro
   QMimeData* MainWindow::prepareClipboardData( QList<Primitive*> selectedItems )
   {
     QMimeData *mimeData = new QMimeData;
-    mimeData->setImageData( ui.glWidget->grabFrameBuffer( true ) );
+    mimeData->setImageData( d->glWidget->grabFrameBuffer( true ) );
 
     Molecule *moleculeCopy = d->molecule;
     if ( !selectedItems.isEmpty() ) { // we only want to copy the selected items
@@ -684,6 +737,8 @@ namespace Avogadro
     glWidget->setMolecule( d->molecule );
     glWidget->setToolGroup( d->toolGroup );
     glWidget->setUndoStack( d->undoStack );
+    
+    connect(this, SIGNAL(moleculeChanged(Molecule *)), glWidget, SLOT(setMolecule(Molecule *)));
 
     int index = ui.centralTab->addTab( widget, QString( "" ) );
     ui.centralTab->setTabText( index, tr( "View " ) + QString::number( index ) );
@@ -885,6 +940,33 @@ namespace Avogadro
 
   bool MainWindow::loadFile( const QString &fileName )
   {
+    if(!d->initialized)
+    {
+      d->fileName = fileName;
+    }
+    
+    if(fileName.isEmpty())
+    {
+//      if(d->splash)
+//      {
+//        d->splash->showMessage( "Loading File" );
+//      }
+//      statusBar()->showMessage( "Loading File...", 5000 );
+      setFileName( fileName );
+      setMolecule( new Molecule(this) );
+//      if(d->splash)
+//      {
+//        d->splash->showMessage( "File Loaded" );
+//      }
+//      statusBar()->showMessage( "File Loaded...", 5000 );
+      return true;
+    }
+    
+    if(d->splash)
+    {
+      d->splash->showMessage( tr("Loading %1").arg(fileName) );
+    }
+    statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
     QFile file( fileName );
     if ( !file.open( QFile::ReadOnly | QFile::Text ) ) {
       QApplication::restoreOverrideCursor();
@@ -897,7 +979,10 @@ namespace Avogadro
     file.close();
 
     QApplication::setOverrideCursor( Qt::WaitCursor );
-    statusBar()->showMessage( tr( "Reading file." ), 2000 );
+    if(d->splash)
+    {
+      d->splash->showMessage( tr("Loading OpenBabel Extensions") );
+    }
     OBConversion conv;
     OBFormat     *inFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
     if ( !inFormat || !conv.SetInFormat( inFormat ) ) {
@@ -917,6 +1002,11 @@ namespace Avogadro
       return false;
     }
 
+    if(d->splash)
+    {
+      d->splash->showMessage( tr("Loading %1").arg(fileName) );
+    }
+    statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
     Molecule *molecule = new Molecule;
     if ( conv.Read( molecule, &ifs ) && molecule->NumAtoms() != 0 ) {
       setMolecule( molecule );
@@ -934,7 +1024,7 @@ namespace Avogadro
     }
 
     setFileName( fileName );
-
+    statusBar()->showMessage( "File Loaded...", 5000 );
     return true;
   }
 
@@ -944,16 +1034,16 @@ namespace Avogadro
       disconnect( d->molecule, 0, this, 0 );
       d->molecule->deleteLater();
     }
-
+    
+    d->undoStack->clear();
+    
     d->molecule = molecule;
     connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ), this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ), this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveRemoved( Primitive * ) ), this, SLOT( documentWasModified() ) );
 
-    d->undoStack->clear();
-    foreach( GLWidget *widget, d->glWidgets ) {
-      widget->setMolecule( d->molecule );
-    }
+    emit moleculeChanged(molecule);
+
     ui.projectTree->setModel( new PrimitiveItemModel( d->molecule, this ) );
 
     setWindowModified( false );

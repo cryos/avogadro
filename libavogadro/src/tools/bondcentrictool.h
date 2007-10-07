@@ -124,8 +124,9 @@ namespace Avogadro {
       void showAnglesChanged(int state);
 
     protected:
-      GLWidget *          m_glwidget;
+      Molecule *          m_molecule;
       QWidget *           m_settingsWidget;
+      
 
       Atom *              m_clickedAtom;
       Bond *              m_clickedBond;
@@ -239,7 +240,6 @@ namespace Avogadro {
        * the calculations otherwise the plane would always try snap-to them as their
        * angle is 0.
        *
-       * @param widget The widget the molecule and construction plane are on.
        * @param bond The bond through which the manipulation plane lies.
        * @param referencePoint The current reference point that defines the manipulation
        *                       plane.
@@ -252,8 +252,7 @@ namespace Avogadro {
        *         close enough.  If no atom is close enough to 'snap-to', NULL is
        *         returned.
        */
-      Eigen::Vector3d* calculateSnapTo(GLWidget *widget, Bond *bond, 
-                                       Eigen::Vector3d *referencePoint, 
+      Eigen::Vector3d* calculateSnapTo(Bond *bond,  Eigen::Vector3d *referencePoint, 
                                        double maximumAngle);
 
       /**
@@ -324,7 +323,7 @@ namespace Avogadro {
        * @param previous The previous Molecule.
        * @param next The new Molecule.
        */
-      void moleculeChanged(Molecule* previous, Molecule* next);
+      void setMolecule(Molecule* molecule);
 
       /**
        * Function to be called when a primitive is removed.

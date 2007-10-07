@@ -32,8 +32,11 @@
 class QUndoStack;
 class QStackedLayout;
 class QStandardItem;
+class QSplashScreen;
 
 namespace Avogadro {
+  class Tool;
+  class Primitive;
 
   class MainWindowPrivate;
   class MainWindow : public QMainWindow
@@ -41,8 +44,8 @@ namespace Avogadro {
     Q_OBJECT;
 
     public:
-      MainWindow();
-      MainWindow(const QString &fileName);
+      MainWindow(QSplashScreen *splash=0);
+      MainWindow(const QString &fileName, QSplashScreen *splash=0);
 
       bool loadFile(const QString &fileName);
       bool saveFile(const QString &fileName);
@@ -92,6 +95,9 @@ namespace Avogadro {
 
       // Mac helper
       void macQuit();
+      
+    Q_SIGNALS:
+      void moleculeChanged(Molecule *);
 
     private:
       friend class MainWindowPrivate;
@@ -129,6 +135,9 @@ namespace Avogadro {
       void hideMainWindowMac();
       //! Helper function for Mac -- show main window and re-enable menus
       void showMainWindowMac();
+      
+    private Q_SLOTS:
+      void initialize();
   };
 
   /**

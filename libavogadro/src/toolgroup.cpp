@@ -26,6 +26,7 @@
 
 #include <avogadro/toolgroup.h>
 #include <avogadro/tool.h>
+#include <avogadro/primitive.h>
 
 #include <QActionGroup>
 #include <QDir>
@@ -143,6 +144,14 @@ namespace Avogadro {
   const QActionGroup * ToolGroup::activateActions() const
   {
     return d->activateActions;
+  }
+  
+  void ToolGroup::setMolecule(Molecule *molecule)
+  {
+    foreach(Tool *tool, d->tools)
+    {
+      tool->setMolecule(molecule);
+    }
   }
 
 } // end namespace Avogadro

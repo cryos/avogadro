@@ -484,6 +484,8 @@ namespace Avogadro {
 
   void GLWidget::render()
   {
+//    QReadLocker readLocker(d->molecule->lock());
+    
     OBUnitCell *uc = NULL;
     std::vector<vector3> cellVectors;
     vector3 offset;
@@ -693,6 +695,7 @@ namespace Avogadro {
 
   void GLWidget::setMolecule( Molecule *molecule )
   {
+    qDebug() << "setMolecule " << molecule;
     if ( !molecule ) { return; }
 
     // disconnect from our old molecule
@@ -700,7 +703,7 @@ namespace Avogadro {
       QObject::disconnect( d->molecule, 0, this, 0 );
     }
 
-    emit moleculeChanged(d->molecule, molecule);
+//    QReadLocker readLocker(molecule->lock());
     d->molecule = molecule;
 
     // clear our engine queues
@@ -797,6 +800,8 @@ namespace Avogadro {
     // Needs to handle unit cells PR#1739844
 
     OBUnitCell *uc = NULL;
+    
+//    QReadLocker readLocker(d->molecule->lock());
 
     if (d->molecule->HasData(OBGenericDataType::UnitCell))
       uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
@@ -994,6 +999,7 @@ namespace Avogadro {
 
   QList<GLHit> GLWidget::hits( int x, int y, int w, int h )
   {
+//    QReadLocker(d->molecule->lock());
     QList<GLHit> hits;
 
     if ( !molecule() ) return hits;

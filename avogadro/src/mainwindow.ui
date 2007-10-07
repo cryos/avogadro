@@ -57,9 +57,6 @@
         <property name="bottomMargin" >
          <number>0</number>
         </property>
-        <item>
-         <widget class="Avogadro::GLWidget" native="1" name="glWidget" />
-        </item>
        </layout>
       </widget>
      </widget>
@@ -561,11 +558,6 @@
   </action>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>Avogadro::GLWidget</class>
-   <extends>QWidget</extends>
-   <header>avogadro/glwidget.h</header>
-  </customwidget>
   <customwidget>
    <class>Avogadro::PrimitiveTreeView</class>
    <extends>QTreeView</extends>

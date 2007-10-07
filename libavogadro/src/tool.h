@@ -39,6 +39,7 @@ class QWidget;
 namespace Avogadro {
 
   class GLWidget;
+  class Molecule;
 
   /**
    * @class Tool
@@ -98,6 +99,12 @@ namespace Avogadro {
        * @param widget the %GLWidget to paint to
        */
       virtual bool paint(GLWidget *widget);
+      
+      /**
+       * Called by the parent (toolGroup) to tell the tool the underlying
+       * model (molecule) has changed
+       */
+      virtual void setMolecule(Molecule *molecule);
 
       /**
        * Determines the ordering of the tools.  More useful

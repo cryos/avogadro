@@ -60,7 +60,7 @@ using namespace Eigen;
 // ##########  Constructor  ##########
 
 BondCentricTool::BondCentricTool(QObject *parent) : Tool(parent),
-                                                    m_glwidget(NULL),
+                                                    m_molecule(NULL),
                                                     m_settingsWidget(NULL),
                                                     m_clickedAtom(NULL),
                                                     m_clickedBond(NULL),
@@ -139,14 +139,15 @@ void BondCentricTool::clearData()
 
 // ##########  moleculeChanged  ##########
 
-void BondCentricTool::moleculeChanged(Molecule* previous, Molecule* next)
+void BondCentricTool::setMolecule(Molecule* molecule)
 {
-  if (previous) {
-    disconnect(previous, 0 , this, 0);
+  if(m_molecule) {
+    disconnect(m_molecule, 0 , this, 0);
   }
 
-  if (next) {
-    connect((Primitive*)next, SIGNAL(primitiveRemoved(Primitive*)), this,
+  if (molecule) {
+    m_molecule = molecule;
+    connect(molecule, SIGNAL(primitiveRemoved(Primitive*)), this,
             SLOT(primitiveRemoved(Primitive*)));
   }
 
@@ -167,9 +168,9 @@ void BondCentricTool::primitiveRemoved(Primitive *primitive)
 
 void BondCentricTool::toolChanged(bool checked)
 {
-  if(!checked && m_glwidget)
+  if(!checked && m_molecule)
   {
-    m_glwidget->update();
+    m_molecule->update();
     clearData();
   }
 }
@@ -185,15 +186,6 @@ int BondCentricTool::usefulness() const
 
 QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *event)
 {
-  if(m_glwidget != widget)
-  {
-    disconnect(widget, 0 , this, 0);
-    connect(widget, SIGNAL(moleculeChanged(Molecule*, Molecule*)), this,
-            SLOT(moleculeChanged(Molecule*, Molecule*)));
-    m_glwidget = widget;
-    moleculeChanged(NULL, m_glwidget->molecule());
-  }
-
   m_undo = 0;
 
   m_lastDraggingPosition = event->pos();
@@ -224,7 +216,7 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
   int oldName = m_selectedBond ? m_selectedBond->GetIdx() : -1;
 
   // Check if the mouse clicked on any Atoms or Bonds.
-  Primitive *clickedPrim = m_glwidget->computeClickedPrimitive(event->pos());
+  Primitive *clickedPrim = widget->computeClickedPrimitive(event->pos());
 
   if (clickedPrim && clickedPrim->type() == Primitive::AtomType)
   {
@@ -234,11 +226,11 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
     if ((m_rightButtonPressed || m_leftButtonPressed) && isAtomInBond(m_clickedAtom, m_selectedBond))
     {
       //Create an undo instance for this manipulation
-      m_undo = new BondCentricMoveCommand(m_glwidget->molecule());
+      m_undo = new BondCentricMoveCommand(widget->molecule());
 
       // Populate the skeleton in preparation to alter the angle or length of the bond.
       m_skeleton = new SkeletonTree();
-      m_skeleton->populate(m_clickedAtom, m_selectedBond, m_glwidget->molecule());
+      m_skeleton->populate(m_clickedAtom, m_selectedBond, widget->molecule());
 
       if (m_leftButtonPressed)
       {
@@ -293,24 +285,24 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
       if (m_rightButtonPressed && skeleBond)
       {
         //Create an undo instance for this manipulation
-        m_undo = new BondCentricMoveCommand(m_glwidget->molecule());
+        m_undo = new BondCentricMoveCommand(widget->molecule());
 
         // Populate the skeleton in preparation to alter the dihedral angle of the
         // clicked atom.
         m_skeleton = new SkeletonTree();
-        m_skeleton->populate(m_clickedAtom, skeleBond, m_glwidget->molecule());
+        m_skeleton->populate(m_clickedAtom, skeleBond, widget->molecule());
         skeletonSet = true;
       }
       else if (m_leftButtonPressed && dihedralRotCen)
       {
         //Create an undo instance for this manipulation
-        m_undo = new BondCentricMoveCommand(m_glwidget->molecule());
+        m_undo = new BondCentricMoveCommand(widget->molecule());
 
         // Populate the skeleton in preparation to alter the dihedral angle of all
         // the atoms bonded to this end of the bond (essentially twisting this end
         // of the bond).
         m_skeleton = new SkeletonTree();
-        m_skeleton->populate(dihedralRotCen, m_selectedBond, m_glwidget->molecule());
+        m_skeleton->populate(dihedralRotCen, m_selectedBond, widget->molecule());
         skeletonSet = true;
       }
 
@@ -376,7 +368,7 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
         m_referencePoint = A.norm() >= B.norm() ? new Vector3d(A) : new Vector3d(B);
         *m_referencePoint = m_referencePoint->normalized();
 
-        Vector3d *reference = calculateSnapTo(widget, m_selectedBond,
+        Vector3d *reference = calculateSnapTo(m_selectedBond,
                                               m_referencePoint, m_snapToAngle);
 
         if (reference && m_snapToEnabled)
@@ -392,7 +384,7 @@ QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *e
     }
   }
 
-  m_glwidget->update();
+  widget->update();
   return 0;
 }
 
@@ -422,22 +414,13 @@ QUndoCommand* BondCentricTool::mouseRelease(GLWidget *widget, const QMouseEvent*
     m_skeleton = NULL;
   }
 
-  if(m_glwidget != widget)
-  {
-    disconnect(widget, 0 , this, 0);
-    connect(widget, SIGNAL(moleculeChanged(Molecule*, Molecule*)), this,
-            SLOT(moleculeChanged(Molecule*, Molecule*)));
-    m_glwidget = widget;
-    moleculeChanged(NULL, m_glwidget->molecule());
-  }
-
   m_leftButtonPressed = false;
   m_midButtonPressed = false;
   m_rightButtonPressed = false;
   m_clickedAtom = NULL;
   m_clickedBond = NULL;
 
-  m_glwidget->update();
+  widget->update();
   return m_undo;
 }
 
@@ -445,16 +428,7 @@ QUndoCommand* BondCentricTool::mouseRelease(GLWidget *widget, const QMouseEvent*
 
 QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
 {
-  if(m_glwidget != widget)
-  {
-    disconnect(widget, 0 , this, 0);
-    connect(widget, SIGNAL(moleculeChanged(Molecule*, Molecule*)), this,
-            SLOT(moleculeChanged(Molecule*, Molecule*)));
-    m_glwidget = widget;
-    moleculeChanged(NULL, m_glwidget->molecule());
-  }
-
-  if (!m_glwidget->molecule()) {
+  if (!m_molecule) {
     return 0;
   }
 
@@ -499,7 +473,7 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
                                           rotationVector, Vector3d(0, 0, 0),
                                           *m_referencePoint);
 
-      Eigen::Vector3d *reference = calculateSnapTo(widget, m_selectedBond,
+      Eigen::Vector3d *reference = calculateSnapTo(m_selectedBond,
                                           m_referencePoint, m_snapToAngle);
       if (reference && m_snapToEnabled)
       {
@@ -648,7 +622,7 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
     }
     else {
       // rotation around the center of the molecule
-      Navigate::rotate(m_glwidget, m_glwidget->center(), deltaDragging.x(), deltaDragging.y());
+      Navigate::rotate(widget, widget->center(), deltaDragging.x(), deltaDragging.y());
     }
   }
 #ifdef Q_WS_MAC
@@ -663,10 +637,10 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
     if (m_clickedAtom)
     {
       // Perform the rotation
-      Navigate::tilt(m_glwidget, m_clickedAtom->pos(), deltaDragging.x());
+      Navigate::tilt(widget, m_clickedAtom->pos(), deltaDragging.x());
 
       // Perform the zoom toward the center of a clicked atom
-      Navigate::zoom(m_glwidget, m_clickedAtom->pos(), deltaDragging.y());
+      Navigate::zoom(widget, m_clickedAtom->pos(), deltaDragging.y());
     }
     else if (m_clickedBond)
     {
@@ -680,18 +654,18 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
       Vector3d mid = begin->pos() + btoe * newLen;
 
       // Perform the rotation
-      Navigate::tilt(m_glwidget, mid, deltaDragging.x());
+      Navigate::tilt(widget, mid, deltaDragging.x());
 
       // Perform the zoom toward the centre of a clicked bond
-      Navigate::zoom(m_glwidget, mid, deltaDragging.y());
+      Navigate::zoom(widget, mid, deltaDragging.y());
     }
     else
     {
       // Perform the rotation
-      Navigate::tilt(m_glwidget, m_glwidget->center(), deltaDragging.x());
+      Navigate::tilt(widget, widget->center(), deltaDragging.x());
 
       // Perform the zoom toward molecule center
-      Navigate::zoom(m_glwidget, m_glwidget->center(), deltaDragging.y());
+      Navigate::zoom(widget, widget->center(), deltaDragging.y());
     }
   }
 #ifdef Q_WS_MAC
@@ -796,12 +770,12 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
     }
     else {
       // Translate the molecule following mouse movement.
-      Navigate::translate(m_glwidget, m_glwidget->center(), m_lastDraggingPosition, event->pos());
+      Navigate::translate(widget, widget->center(), m_lastDraggingPosition, event->pos());
     }
   }
 
   m_lastDraggingPosition = event->pos();
-  m_glwidget->update();
+  widget->update();
 
   return 0;
 }
@@ -810,25 +784,16 @@ QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *ev
 
 QUndoCommand* BondCentricTool::wheel(GLWidget *widget, const QWheelEvent *event)
 {
-  if(m_glwidget != widget)
-  {
-    disconnect(widget, 0 , this, 0);
-    connect(widget, SIGNAL(moleculeChanged(Molecule*, Molecule*)), this,
-            SLOT(moleculeChanged(Molecule*, Molecule*)));
-    m_glwidget = widget;
-    moleculeChanged(NULL, m_glwidget->molecule());
-  }
-
   m_clickedAtom = NULL;
   m_clickedBond = NULL;
 
-  Primitive *clickedPrim = m_glwidget->computeClickedPrimitive(event->pos());
+  Primitive *clickedPrim = widget->computeClickedPrimitive(event->pos());
 
   if (clickedPrim && clickedPrim->type() == Primitive::AtomType)
   {
     Atom *clickedAtom = (Atom*)clickedPrim;
     // Perform the zoom toward clicked atom
-    Navigate::zoom(m_glwidget, clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
+    Navigate::zoom(widget, clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
   }
   else if (clickedPrim && clickedPrim->type() == Primitive::BondType)
   {
@@ -844,14 +809,14 @@ QUndoCommand* BondCentricTool::wheel(GLWidget *widget, const QWheelEvent *event)
     Vector3d mid = begin->pos() + btoe * newLen;
 
     // Perform the zoom toward the centre of a clicked bond
-    Navigate::zoom(m_glwidget, mid, - MOUSE_WHEEL_SPEED * event->delta());
+    Navigate::zoom(widget, mid, - MOUSE_WHEEL_SPEED * event->delta());
   }
   else {
     // Perform the zoom toward molecule center
-    Navigate::zoom(m_glwidget, m_glwidget->center(), - MOUSE_WHEEL_SPEED * event->delta());
+    Navigate::zoom(widget, widget->center(), - MOUSE_WHEEL_SPEED * event->delta());
   }
 
-  m_glwidget->update();
+  widget->update();
 
   return 0;
 }
@@ -1459,10 +1424,10 @@ void BondCentricTool::drawSingleDihedralAngles(GLWidget *widget, Atom *A, Bond *
 
 // ##########  calcualteSnapTo  ##########
 
-Eigen::Vector3d* BondCentricTool::calculateSnapTo(GLWidget *widget, Bond *bond,
+Eigen::Vector3d* BondCentricTool::calculateSnapTo(Bond *bond,
     Eigen::Vector3d *referencePoint, double maximumAngle)
 {
-  if(!referencePoint || !bond || !widget) {
+  if(!referencePoint || !bond ) {
     return NULL;
   }
 
@@ -1766,8 +1731,8 @@ void BondCentricTool::showAnglesChanged(int state)
 {
   m_showAngles = state == Qt::Checked ? true : false;
 
-  if (m_glwidget) {
-    m_glwidget->update();
+  if (m_molecule) {
+    m_molecule->update();
   }
 }
 
@@ -1782,7 +1747,7 @@ void BondCentricTool::snapToCheckBoxChanged(int state)
     return;
   }
 
-  Eigen::Vector3d *reference = calculateSnapTo(m_glwidget, m_selectedBond,
+  Eigen::Vector3d *reference = calculateSnapTo(m_selectedBond,
                                                m_referencePoint, m_snapToAngle);
   if (reference && m_snapToEnabled)
   {
@@ -1798,8 +1763,8 @@ void BondCentricTool::snapToCheckBoxChanged(int state)
     m_currentReference = new Vector3d(*m_referencePoint);
   }
 
-  if (m_glwidget) {
-    m_glwidget->update();
+  if (m_molecule) {
+    m_molecule->update();
   }
 }
 
@@ -1813,8 +1778,7 @@ void BondCentricTool::snapToAngleChanged(int newAngle)
     return;
   }
 
-  Eigen::Vector3d *reference = calculateSnapTo(m_glwidget, m_selectedBond,
-                                               m_referencePoint, m_snapToAngle);
+  Eigen::Vector3d *reference = calculateSnapTo(m_selectedBond, m_referencePoint, m_snapToAngle);
   if (reference && m_snapToEnabled)
   {
     m_snapped = true;
@@ -1829,8 +1793,8 @@ void BondCentricTool::snapToAngleChanged(int newAngle)
     m_currentReference = new Vector3d(*m_referencePoint);
   }
 
-  if (m_glwidget) {
-    m_glwidget->update();
+  if (m_molecule) {
+    m_molecule->update();
   }
 }
 
