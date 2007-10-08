@@ -36,10 +36,10 @@ mark_as_advanced(QT_LUPDATE_EXECUTABLE QT_LRELEASE_EXECUTABLE)
 # example: QT4_WRAP_TS(foo_QM ${foo_TS})
 MACRO (QT4_WRAP_TS outfiles)
   # a target to manually run lupdate
-  ADD_CUSTOM_TARGET(lupdate
-                    COMMAND ${QT_LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -ts ${ARGN}
-                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  )
+  #ADD_CUSTOM_TARGET(lupdate
+                    #COMMAND ${QT_LUPDATE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR} -ts ${ARGN}
+                    #WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  #)
   FOREACH (it ${ARGN})
     GET_FILENAME_COMPONENT(it ${it} ABSOLUTE)
     GET_FILENAME_COMPONENT(outfile ${it} NAME_WE)

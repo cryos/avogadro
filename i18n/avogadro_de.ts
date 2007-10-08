@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
+<!DOCTYPE TS><TS version="1.1" language="de">
 <context>
     <name>AutoOptForceField</name>
     <message>
@@ -114,6 +114,16 @@ Left Mouse: Click and drag atoms to move them</source>
 </context>
 <context>
     <name>Avogadro::AboutDialog</name>
+    <message>
+        <location filename="../avogadro/src/aboutdialog.cpp" line="62"/>
+        <source>&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;Application Version: %2 (svn revision: %3)&lt;br/&gt;&lt;br/&gt;Library Version: %4 (svn revision: %5)&lt;br/&gt;&lt;br/&gt;For more information check the &lt;a href=&quot;http://avogadro.sourceforge.net/&quot;&gt;Avogadro homepage&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;br/&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/aboutdialog.cpp" line="62"/>
+        <source>Avogadro</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Avogadro::AutoOptTool</name>
@@ -195,15 +205,218 @@ Left Mouse: Click and drag atoms to move them</source>
 </context>
 <context>
     <name>Avogadro::GamessEfpMatchDialog</name>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessefpmatchdialog.cpp" line="49"/>
+        <source>QM Matches</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Avogadro::GamessExtension</name>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.cpp" line="86"/>
+        <source>&amp;Tools&gt;GAMESS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.cpp" line="92"/>
+        <source>GAMESS EFP Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.cpp" line="106"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.cpp" line="178"/>
+        <source>No Atoms Selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.cpp" line="179"/>
+        <source>You must make a selection!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.cpp" line="186"/>
+        <source>SMILES Conversion Unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.cpp" line="187"/>
+        <source>SMILES Format Conversion Not Available!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.cpp" line="580"/>
+        <source>, </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.cpp" line="456"/>
+        <source>Group Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.cpp" line="509"/>
+        <source> (</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.cpp" line="509"/>
+        <source>)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Avogadro::GhemicalExtension</name>
+    <message>
+        <location filename="../avogadro/src/extensions/ghemicalextension.cpp" line="92"/>
+        <source>&amp;Tools&gt;Molecular Mechanics</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Avogadro::MainWindow</name>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="162"/>
+        <source>Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="237"/>
+        <source>Open File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="342"/>
+        <source>Save Molecule As</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1007"/>
+        <source>Avogadro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="362"/>
+        <source>Cannot write to the file %1:
+%2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="368"/>
+        <source>Saving file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="375"/>
+        <source>Cannot write to file format of file %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="383"/>
+        <source>Cannot write to the file %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="395"/>
+        <source>File saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="408"/>
+        <source>Export Bitmap Graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="415"/>
+        <source>Cannot save file %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="424"/>
+        <source>Export POV Scene</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="461"/>
+        <source>The document has been modified.
+Do you want to save your changes?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="513"/>
+        <source>Unable to paste molecule.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="539"/>
+        <source>Paste failed (format unavailable).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="597"/>
+        <source>Copy failed (mdl unavailable).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="610"/>
+        <source>Copy failed (xyz unavailable).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="693"/>
+        <source>GLWidget</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="741"/>
+        <source>View </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="763"/>
+        <source>Normal Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="769"/>
+        <source>Full Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="949"/>
+        <source>Loading %1...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="923"/>
+        <source>Cannot read file %1:
+%2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="936"/>
+        <source>Cannot read file format of file %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="945"/>
+        <source>Cannot read file %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1001"/>
+        <source>[*]Avogadro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1006"/>
+        <source>%1[*] - %2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Avogadro::ManipulateTool</name>
@@ -227,7 +440,7 @@ Left Mouse: Click and drag atoms to move them</source>
     </message>
     <message>
         <location filename="../libavogadro/src/moleculetreeview.cpp" line="243"/>
-        <source>Atom </source>
+        <source>Atom %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -236,12 +449,7 @@ Left Mouse: Click and drag atoms to move them</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/moleculetreeview.cpp" line="250"/>
-        <source> (</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/moleculetreeview.cpp" line="269"/>
+        <location filename="../libavogadro/src/moleculetreeview.cpp" line="271"/>
         <source>Residue </source>
         <translation type="unfinished"></translation>
     </message>
@@ -302,9 +510,31 @@ Left Mouse: Click and drag atoms to move them</source>
 </context>
 <context>
     <name>Avogadro::SmartsExtension</name>
+    <message>
+        <location filename="../avogadro/src/extensions/smartsextension.cpp" line="58"/>
+        <source>SMARTS Selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/smartsextension.cpp" line="59"/>
+        <source>SMARTS pattern to select</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Avogadro::UnitCellExtension</name>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellextension.cpp" line="71"/>
+        <source>Avogadro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellextension.cpp" line="73"/>
+        <source>This document is currently an isolated molecule.
+
+Do you want to create a crystal unit cell?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AxesEngine</name>
@@ -318,9 +548,6 @@ Left Mouse: Click and drag atoms to move them</source>
         <source>Renders x, y and z axes</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>BSDYEngine</name>
 </context>
 <context>
     <name>BSDYSettingsWidget</name>
@@ -373,11 +600,6 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
     <message>
         <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1815"/>
         <source>Snap-to Threshold: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1827"/>
-        <source></source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -455,15 +677,1603 @@ Right Mouse: Delete Atom</source>
 </context>
 <context>
     <name>EngineSetupWidget</name>
+    <message>
+        <location filename="../avogadro/src/enginesetupwidget.ui" line="13"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/enginesetupwidget.ui" line="41"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/enginesetupwidget.ui" line="46"/>
+        <source>Primitives</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/enginesetupwidget.ui" line="107"/>
+        <source>Add Selected Primitives</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/enginesetupwidget.ui" line="117"/>
+        <source>Remove Selected Primitives</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/enginesetupwidget.ui" line="127"/>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ForceFieldDialog</name>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="13"/>
+        <source>Setup Force Field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="67"/>
+        <source>Force Field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="59"/>
+        <source>Ghemical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="95"/>
+        <source>Geometry Optimization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="107"/>
+        <source>Number of steps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="137"/>
+        <source>Gradients</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="144"/>
+        <source>Algorithm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="152"/>
+        <source>Numerical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="157"/>
+        <source>Analytical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="166"/>
+        <source>Steepest Descent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="171"/>
+        <source>Conjugate Gradients</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="179"/>
+        <source>Convergence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="189"/>
+        <source>10e-</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GamessEfpMatchDialog</name>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessefpmatchdialog.ui" line="16"/>
+        <source>EFP Matches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessefpmatchdialog.ui" line="25"/>
+        <source>Group Label:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GamessInputDialog</name>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1956"/>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1552"/>
+        <source>Advanced Settings Changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1553"/>
+        <source>Advanced settings have changed.
+Discard?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1574"/>
+        <source>Advanced Settings Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1576"/>
+        <source>Are you sure you wish to reset advanced settings?
+All changes will be lost!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1587"/>
+        <source>Basic Settings Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1589"/>
+        <source>Are you sure you wish to reset basic settings?
+All changes will be lost!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1654"/>
+        <source>Export Input Deck</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1655"/>
+        <source>GAMESS Input Deck (*.inp)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="13"/>
+        <source>GAMESS Input Deck Generator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="41"/>
+        <source>&amp;Basic Setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="89"/>
+        <source>megabytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="949"/>
+        <source>AM1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="954"/>
+        <source>PM3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1284"/>
+        <source>RHF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3029"/>
+        <source>B3LYP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="607"/>
+        <source>MP2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1486"/>
+        <source>CCSD(T)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="864"/>
+        <source>STO-3G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="849"/>
+        <source>MINI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="884"/>
+        <source>3-21G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="178"/>
+        <source>6-31G(d)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="183"/>
+        <source>6-31G(d,p)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="188"/>
+        <source>6-31+G(d,p)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="193"/>
+        <source>6-31+G(2d,p)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="198"/>
+        <source>6-311++G(2d,p)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="203"/>
+        <source>Core Potential</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3258"/>
+        <source>Memory:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="254"/>
+        <source>Singlet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="259"/>
+        <source>Doublet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="264"/>
+        <source>Triplet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="273"/>
+        <source>Dication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="278"/>
+        <source>Cation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="283"/>
+        <source>Neutral</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="288"/>
+        <source>Anion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="293"/>
+        <source>Dianion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="316"/>
+        <source>On:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="347"/>
+        <source>Single Point Entry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="352"/>
+        <source>Equilibrium Geometry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="357"/>
+        <source>Transition State</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="362"/>
+        <source>Frequencies</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="403"/>
+        <source>Gas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="408"/>
+        <source>Water</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3557"/>
+        <source>Calculate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="441"/>
+        <source>With:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="451"/>
+        <source>In:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2453"/>
+        <source>Time Limit:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="498"/>
+        <source>hour(s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="534"/>
+        <source>&amp;Advanced Setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="583"/>
+        <source>Advanced</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="588"/>
+        <source>Basis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="593"/>
+        <source>Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="597"/>
+        <source>SCF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="602"/>
+        <source>DFT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1148"/>
+        <source>Hessian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="617"/>
+        <source>Stat Point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="623"/>
+        <source>Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="628"/>
+        <source>System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="633"/>
+        <source>MO Guess</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="638"/>
+        <source>Misc</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="677"/>
+        <source>#D Heavy Atom Polarization Functions:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2785"/>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="710"/>
+        <source>Read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="715"/>
+        <source>SBKJC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="720"/>
+        <source>Hay-Wadt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="763"/>
+        <source>Diffuse S-Shell on Heavy Atoms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="770"/>
+        <source>Diffuse L-Shell on Heavy Atoms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="835"/>
+        <source>Basis Set:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="854"/>
+        <source>MIDI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="859"/>
+        <source>STO-2G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="869"/>
+        <source>STO-4G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="874"/>
+        <source>STO-5G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="879"/>
+        <source>STO-6G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="889"/>
+        <source>6-21G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="894"/>
+        <source>4-31G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="899"/>
+        <source>5-31G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="904"/>
+        <source>6-31G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="909"/>
+        <source>6-311G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="914"/>
+        <source>Double Zeta Valance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="919"/>
+        <source>Dunning/Hay DZ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="924"/>
+        <source>Triple Zeta Valence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="929"/>
+        <source>McLean/Chandler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="934"/>
+        <source>SBKJA Valance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="939"/>
+        <source>Hay/Wadt Valance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="944"/>
+        <source>MNDO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="991"/>
+        <source>ECP Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2430"/>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1010"/>
+        <source>Pople</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1015"/>
+        <source>Pople N311</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1020"/>
+        <source>Dunning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1025"/>
+        <source>Huzinaga</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1030"/>
+        <source>Hondo7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1038"/>
+        <source>#F Heavy Atom Polarization Functions:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1048"/>
+        <source>#light Atom Polarization Functions:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1065"/>
+        <source>Polar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1113"/>
+        <source>Max SCF Iterations:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1138"/>
+        <source>Energy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1143"/>
+        <source>Gradient</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1153"/>
+        <source>Optimization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1158"/>
+        <source>Trudge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1163"/>
+        <source>Saddle Point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1168"/>
+        <source>IRC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1173"/>
+        <source>Gradient Extremal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1178"/>
+        <source>DRC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1183"/>
+        <source>Energy Surface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1188"/>
+        <source>Properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1193"/>
+        <source>Morokuma</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1198"/>
+        <source>Radiative Transition mom.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1203"/>
+        <source>Spin Orbit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1208"/>
+        <source>Finite Electric Field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1213"/>
+        <source>TDHF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1218"/>
+        <source>Global Optimization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1223"/>
+        <source>VSCF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1228"/>
+        <source>FMO Optimization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1233"/>
+        <source>Raman Intensities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1238"/>
+        <source>NMR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1243"/>
+        <source>Make EFP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1289"/>
+        <source>UHF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1294"/>
+        <source>ROHF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1299"/>
+        <source>GVB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1304"/>
+        <source>MCSCF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1309"/>
+        <source>None (CI)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1355"/>
+        <source>Foster-Boys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1360"/>
+        <source>Edmistron-Ruedenberg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1365"/>
+        <source>Pipek-Mezey</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1388"/>
+        <source>SCF Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1395"/>
+        <source>Localization Method:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1405"/>
+        <source>Exec Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1412"/>
+        <source>CI:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1425"/>
+        <source>GUGA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1430"/>
+        <source>Ames Lab. Determinant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1435"/>
+        <source>Occupation Restricted Multiple Active Space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1440"/>
+        <source>CI Singles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1445"/>
+        <source>Full Second Order CI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1450"/>
+        <source>General CI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1458"/>
+        <source>CC:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1471"/>
+        <source>LCCD: Linearized CC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1476"/>
+        <source>CCD: CC with Doubles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1481"/>
+        <source>CCSD: CC with Singles and Doubles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1491"/>
+        <source>R-CC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1496"/>
+        <source>CR-CC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1501"/>
+        <source>EOM-CCSD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1506"/>
+        <source>CR-EOM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1550"/>
+        <source>Multiplicity:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1580"/>
+        <source>Normal Run</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1585"/>
+        <source>Check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1590"/>
+        <source>Debug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1595"/>
+        <source>Other...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1619"/>
+        <source>Molecule Charge:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1631"/>
+        <source>Run Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1668"/>
+        <source>Use MP2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1694"/>
+        <source>Use DFT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1761"/>
+        <source># of Z-Matrix Variables</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1786"/>
+        <source>Ǻngstrom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1791"/>
+        <source>Bohr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1814"/>
+        <source>Order of Principle Axis:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1821"/>
+        <source>Coordinate Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1846"/>
+        <source>C1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1851"/>
+        <source>CS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1856"/>
+        <source>CI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1861"/>
+        <source>CnH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1866"/>
+        <source>CnV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1871"/>
+        <source>Cn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1876"/>
+        <source>S2n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1881"/>
+        <source>DnD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1886"/>
+        <source>DnH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1891"/>
+        <source>Dn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1896"/>
+        <source>TD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1901"/>
+        <source>TH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1906"/>
+        <source>T</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1911"/>
+        <source>OH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1916"/>
+        <source>O</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="1996"/>
+        <source>Unique cartesian Coords.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2001"/>
+        <source>Hilderbrant internals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2006"/>
+        <source>Cartesian coordinates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2011"/>
+        <source>Z-Matrix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2016"/>
+        <source>MOPAC Z-Matrix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2039"/>
+        <source>Use Symmetry During Calculation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2049"/>
+        <source>Units:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2056"/>
+        <source>Title:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2143"/>
+        <source>Point Group:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2203"/>
+        <source>Seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2208"/>
+        <source>Minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2213"/>
+        <source>Hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2218"/>
+        <source>Days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2223"/>
+        <source>Weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2228"/>
+        <source>Years</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2233"/>
+        <source>Millenia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2336"/>
+        <source>Words</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2341"/>
+        <source>Bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2346"/>
+        <source>MegaWords</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2351"/>
+        <source>MegaBytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2394"/>
+        <source>Force Parallel Methods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2417"/>
+        <source>Produce &quot;core&quot; file upon abort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2435"/>
+        <source>EVVRSP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2440"/>
+        <source>GIVEIS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2445"/>
+        <source>JACOBI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2460"/>
+        <source>MemDDI:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2474"/>
+        <source>Diagonalization Method:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2481"/>
+        <source>Parallel Load Balance Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2502"/>
+        <source>Loop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2512"/>
+        <source>Next Value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2522"/>
+        <source>Use External Data Representation for Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2603"/>
+        <source>Initial Guess:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2614"/>
+        <source>Huckel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2619"/>
+        <source>HCore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2624"/>
+        <source>MO Read ($VEC)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2629"/>
+        <source>MO Saved (DICTNRY)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2634"/>
+        <source>Skip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2657"/>
+        <source>Rotate Alpha and Beta Orbitals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2664"/>
+        <source>Print the Initial Guess</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2706"/>
+        <source>GAMESS Interface to Other Codes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2730"/>
+        <source>MolPlt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2737"/>
+        <source>PltOrb</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2744"/>
+        <source>AIMPAC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2751"/>
+        <source>RPAC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2761"/>
+        <source>Force a Check Run Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2795"/>
+        <source>Hondo 8.2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2802"/>
+        <source>MELDF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2809"/>
+        <source>GAMESS (UK Version)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2816"/>
+        <source>Gaussian 9x</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2823"/>
+        <source>All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2863"/>
+        <source>Solvate with Water</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2920"/>
+        <source>Generate UHF Natural Orbitals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2927"/>
+        <source>Direct SCF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2934"/>
+        <source>Compute Only Changed in Fock Matrix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2994"/>
+        <source>Slater exchange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2999"/>
+        <source>Becke 1988 exchange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3004"/>
+        <source>VWN: Vosko-Wilk-Nusair (VWN5) correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3009"/>
+        <source>LYP: Lee-Yang-Parr correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3014"/>
+        <source>SVWN: Slater exhange + VWN correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3019"/>
+        <source>BVWN: BECKE exchange + VWN5 correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3024"/>
+        <source>BLYP: BECKE exchange + LYP correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3034"/>
+        <source>Gill 1996 exchange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3039"/>
+        <source>Perdew-Burke-Ernzerhof (PBE) exchange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3044"/>
+        <source>OP: One-parameter Progressive correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3049"/>
+        <source>SLYP: SLATER + Lee-Yang-Parr (LYP) correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3054"/>
+        <source>SOP: SLATER + OP correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3059"/>
+        <source>BOP: BECKE exchange + OP correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3064"/>
+        <source>BVWN: GILL exchange + VWN5 correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3069"/>
+        <source>GLYP: GILL exchange + LYP correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3074"/>
+        <source>PBEVWN: PBE exchange + VWN6 correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3079"/>
+        <source>PBELYP: PBE exchange +LYP correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3084"/>
+        <source>PBEOP: PBE exchange + OP correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3089"/>
+        <source>BHHLYP: HF and BECKE exchange + LYP correlation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3130"/>
+        <source>Grid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3135"/>
+        <source>Grid-Free</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3158"/>
+        <source>DFT Functional:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3165"/>
+        <source>Method:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3207"/>
+        <source>AO Integral Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3231"/>
+        <source>Duplicated on Each Node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3238"/>
+        <source>Distributed Across All Nodes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3251"/>
+        <source>words</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3265"/>
+        <source>Compute MP2 Properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3272"/>
+        <source>Integral Retention Cutoff:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3285"/>
+        <source>Use Localized Orbitals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3292"/>
+        <source># of Core Electrons:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3299"/>
+        <source>Transformation Method</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3326"/>
+        <source>Two Phase Bin Sort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3333"/>
+        <source>Segmented Transformation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3384"/>
+        <source>Vibrational Analysis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3394"/>
+        <source>Method</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3415"/>
+        <source>Analytic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3425"/>
+        <source>Numeric</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3435"/>
+        <source>Double Differenced Hessian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3442"/>
+        <source>Print Internal Force Constants</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3449"/>
+        <source>Displacement Size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3456"/>
+        <source>Purify Hessian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3463"/>
+        <source>Frequency Scale Factor:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3470"/>
+        <source>bohrs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3522"/>
+        <source>Initial Hessian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3543"/>
+        <source>Guess (+ define)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3550"/>
+        <source>Read (from $HESS)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3567"/>
+        <source>Update Step Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3577"/>
+        <source>Print Orbs at Each Iteration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3584"/>
+        <source>Gradient Convergence Criteria:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3613"/>
+        <source>Jump Size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3620"/>
+        <source>Stationary Point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3630"/>
+        <source>Optimization Method:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3640"/>
+        <source>Step Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3664"/>
+        <source>Maximum:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3671"/>
+        <source>Minimum:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3681"/>
+        <source>Initial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3725"/>
+        <source>Newton-Raphson</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3730"/>
+        <source>Rational Function Optimization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3735"/>
+        <source>Quadratic Approximation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3740"/>
+        <source>Schlegel (quasi-NR)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3745"/>
+        <source>Constrained Optimization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3773"/>
+        <source>steps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3795"/>
+        <source>Recalculate Hessian Every:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3805"/>
+        <source>Follow Mode:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3815"/>
+        <source>Maximum Steps:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3863"/>
+        <source>Reset All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3870"/>
+        <source>Defaults</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3893"/>
+        <source>Generate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3900"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LabelEngine</name>
@@ -523,6 +2333,286 @@ Right Mouse: Delete Atom</source>
 </context>
 <context>
     <name>MainWindow</name>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="13"/>
+        <source>Avogadro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="42"/>
+        <source>View 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="80"/>
+        <source>&amp;Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="86"/>
+        <source>&amp;File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="90"/>
+        <source>Open &amp;Recent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="108"/>
+        <source>&amp;Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="112"/>
+        <source>Toolbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="117"/>
+        <source>&amp;Docks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="127"/>
+        <source>&amp;Tools</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="132"/>
+        <source>&amp;View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="143"/>
+        <source>&amp;Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="164"/>
+        <source>Main Toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="195"/>
+        <source>Project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="241"/>
+        <source>Tools</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="259"/>
+        <source>Tool Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="277"/>
+        <source>Engines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="292"/>
+        <source>Engine Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="315"/>
+        <source>&amp;Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="307"/>
+        <source>Ctrl+O</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="334"/>
+        <source>&amp;Quit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="326"/>
+        <source>Ctrl+Q</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="339"/>
+        <source>Recent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="344"/>
+        <source>&amp;Clear Recent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="363"/>
+        <source>&amp;New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="355"/>
+        <source>Ctrl+N</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="382"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="374"/>
+        <source>Ctrl+W</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="401"/>
+        <source>&amp;Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="393"/>
+        <source>Ctrl+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="409"/>
+        <source>Save &amp;As...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="412"/>
+        <source>Ctrl+Shift+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="420"/>
+        <source>Revert To Saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="428"/>
+        <source>&amp;Export Graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="436"/>
+        <source>&amp;Full Screen Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="444"/>
+        <source>Set &amp;Background Color...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="449"/>
+        <source>&amp;About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="457"/>
+        <source>&amp;Undo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="460"/>
+        <source>Ctrl+Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="468"/>
+        <source>&amp;Redo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="471"/>
+        <source>Ctrl+Shift+Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="479"/>
+        <source>New View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="490"/>
+        <source>Close View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="498"/>
+        <source>Center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="503"/>
+        <source>&amp;Paste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="506"/>
+        <source>Ctrl+V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="511"/>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="514"/>
+        <source>Ctrl+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="519"/>
+        <source>Cut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="522"/>
+        <source>Ctrl+X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="527"/>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="532"/>
+        <source>Select All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="535"/>
+        <source>Ctrl+A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="540"/>
+        <source>Select None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="543"/>
+        <source>Ctrl+Shift+A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="551"/>
+        <source>Configure Avogadro...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.ui" line="556"/>
+        <source>Export POVRay</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ManipulateTool</name>
@@ -1154,8 +3244,158 @@ Right Mouse:  Click and drag to move the view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../avogadro/src/editcommands.cpp" line="40"/>
+        <source>Cut Molecule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/editcommands.cpp" line="42"/>
+        <source>Cut Atoms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/editcommands.cpp" line="76"/>
+        <source>Paste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/editcommands.cpp" line="110"/>
+        <source>Clear Molecule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/editcommands.cpp" line="112"/>
+        <source>Clear Atoms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extension.h" line="75"/>
+        <source>Unknown Extension</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.h" line="54"/>
+        <source>GAMESS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/gamessextension.h" line="56"/>
+        <source>GAMESS Input Deck Generator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/ghemicalextension.cpp" line="129"/>
+        <source>Rotor Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/ghemicalextension.cpp" line="135"/>
+        <source>Geometric Optimization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/ghemicalextension.cpp" line="274"/>
+        <source>Forcefield Optimization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/ghemicalextension.cpp" line="275"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/ghemicalextension.h" line="61"/>
+        <source>Ghemical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/ghemicalextension.h" line="63"/>
+        <source>Ghemical Plugin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/h2methylextension.cpp" line="67"/>
+        <source>H to Methyl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/h2methylextension.h" line="52"/>
+        <source>H2Methyl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/h2methylextension.h" line="54"/>
+        <source>H2Methyl Plugin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/hydrogensextension.cpp" line="80"/>
+        <source>Add Hydrogens</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/hydrogensextension.cpp" line="83"/>
+        <source>Remove Hydrogens</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/hydrogensextension.h" line="52"/>
+        <source>Hydrogens</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/hydrogensextension.h" line="54"/>
+        <source>Hydrogens Plugin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/smartsextension.h" line="52"/>
+        <source>SMARTS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/smartsextension.h" line="54"/>
+        <source>SMARTS Plugin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellextension.h" line="52"/>
+        <source>UnitCell</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellextension.h" line="54"/>
+        <source>Unit Cell Parameters Plugin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/main.cpp" line="150"/>
+        <source>Avogadro: <byte value="x9"/>%1 (rev %2)
+LibAvogadro: <byte value="x9"/>%3 (rev %4)
+Qt: <byte value="x9"/><byte value="x9"/>%5
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/main.cpp" line="160"/>
+        <source>Usage: %1 [options] [files]
+
+Advanced Molecular Editor (version %2)
+
+Options:
+  -h, --help<byte value="x9"/><byte value="x9"/>Show help options (this)
+  -v, --version<byte value="x9"/><byte value="x9"/>Show version information
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../libavogadro/src/tool.cpp" line="63"/>
         <source>No Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="447"/>
+        <source>AutoOpt Molecule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1186,11 +3426,6 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/tools/manipulatetool.cpp" line="309"/>
         <source>Manipulate Atom</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="447"/>
-        <source>AutoOpt Molecule</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1232,6 +3467,21 @@ Drag to select a range of atoms</source>
 </context>
 <context>
     <name>SettingsDialog</name>
+    <message>
+        <location filename="../avogadro/src/settingsdialog.ui" line="13"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/settingsdialog.ui" line="56"/>
+        <source>Quality</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/settingsdialog.ui" line="82"/>
+        <source>2</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>SphereEngine</name>
@@ -1274,6 +3524,71 @@ Drag to select a range of atoms</source>
 </context>
 <context>
     <name>UnitCellParamDialog</name>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="70"/>
+        <source>Unit Cell Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="19"/>
+        <source>Unit Cell Display Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="25"/>
+        <source>A repeat:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="39"/>
+        <source>B repeat:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="53"/>
+        <source>C repeat:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="91"/>
+        <source>Axes (Å)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="111"/>
+        <source>Angles (°)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="135"/>
+        <source>A:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="152"/>
+        <source>alpha:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="172"/>
+        <source>B:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="189"/>
+        <source>beta:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="209"/>
+        <source>C:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="226"/>
+        <source>gamma:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WireEngine</name>

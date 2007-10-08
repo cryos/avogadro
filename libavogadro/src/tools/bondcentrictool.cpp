@@ -1824,7 +1824,7 @@ QWidget *BondCentricTool::settingsWidget()
     m_snapToAngleBox->setSuffix(QString::fromUtf8("°"));
     m_snapToAngleBox->setEnabled(m_snapToEnabled);
 
-    m_spacer = new QLabel(tr(""));
+    m_spacer = new QLabel("");
 
     m_layout = new QGridLayout();
     m_layout->setSpacing(2);

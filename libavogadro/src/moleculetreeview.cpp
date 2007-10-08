@@ -240,25 +240,27 @@ namespace Avogadro {
     else if(type == Primitive::AtomType)
     {
       Atom *atom = (Atom*)primitive;
-      str = tr("Atom ") + QString::number(atom->GetIdx());
+      str = tr("Atom %1").arg(QString::number(atom->GetIdx()));
     }
     else if(type == Primitive::BondType)
     {
       Bond *bond = (Bond*)primitive;
       Atom *beginAtom = (Atom *)bond->GetBeginAtom();
       Atom *endAtom = (Atom *)bond->GetEndAtom();
-      str = tr("Bond ") + QString::number(bond->GetIdx()) + tr(" ("); 
-      if(beginAtom)
+      str = tr("Bond ") + QString::number(bond->GetIdx()) + " ("; 
+      if(beginAtom) {
         str += QString::number(beginAtom->GetIdx());
-      else
+      } else {
         str += '-';
+      }
 
       str += ',';
 
-      if(endAtom)
+      if(endAtom) {
         str += QString::number(endAtom->GetIdx());
-      else
+      } else {
         str += '-';
+      }
 
       str += ')';
 
