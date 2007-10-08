@@ -33,7 +33,14 @@ CONFIGURE_FILE(
 ADD_CUSTOM_TARGET(uninstall
   "${CMAKE_COMMAND}" -P
   "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
-  
+
+FILE(GLOB_RECURSE avogadro_TS i18n/*.ts)
+ADD_CUSTOM_TARGET(update-translations
+		COMMAND ${QT_LUPDATE_EXECUTABLE}
+		${CMAKE_CURRENT_SOURCE_DIR} -ts ${avogadro_TS}
+		WORKING_DIRECTORY
+		${CMAKE_CURRENT_SOURCE_DIR}
+												                       ) 
 # tell cmake to process CMakeLists.txt in that subdirectory
 add_subdirectory(libavogadro)
 add_subdirectory(avogadro)
