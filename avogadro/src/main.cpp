@@ -77,31 +77,33 @@ int main(int argc, char *argv[])
     return -1;
   }
 
-  QString myTranslationCode = QLocale::system().name();
+  QString translationCode = QLocale::system().name();
   QString prefixPath = QString( INSTALL_PREFIX ) + "/i18n/";
-
-  QString filename_avo = prefixPath + "avogadro_" + myTranslationCode + ".qm";
-  QString filename_libavo = prefixPath + "libavogadro_" + myTranslationCode + ".qm";
 
   QTranslator qtTranslator(0);
   QTranslator avoTranslator(0);
-  QTranslator libavoTranslator(0);
 
-  if (qtTranslator.load(QString("qt_") + myTranslationCode, prefixPath ))
+  QString avoFilename = "avogadro_" + translationCode + ".qm";
+  QString qtFilename = "qt_" + translationCode;
+
+  qDebug() << "Locale: " << translationCode;
+  QTranslator *libTranslator;
+  if((libTranslator = Library::createTranslator()))
   {
+    qDebug() << "Loading LibAvogadro Translations";
+    app.installTranslator(libTranslator);
+  }
+  
+  if (qtTranslator.load(qtFilename, prefixPath ))
+  {
+          qDebug() << "Loading QT Translations";
           app.installTranslator(&qtTranslator);
-          qDebug() << "======================= Setting translation to SOMETHING";
   }
 
-  if (avoTranslator.load(filename_avo)) 
+  if (avoTranslator.load(avoFilename)) 
   {
+          qDebug() << "Loading Avogadro Translations";
           app.installTranslator(&avoTranslator);
-          qDebug() << "======================= Setting translation to " << filename_avo;
-  }
-  if (libavoTranslator.load(filename_libavo)) 
-  {
-          app.installTranslator(&libavoTranslator);
-          qDebug() << "======================= Setting translation to " << filename_libavo;
   }
 
   // use multi-sample (anti-aliased) OpenGL if available
@@ -145,7 +147,7 @@ void printVersion(const QString &)
 {
   std::wcout << QObject::tr("Avogadro: \t%1 (rev %2)\n"
       "LibAvogadro: \t%3 (rev %4)\n"
-      "Qt: \t\t%5\n").arg(VERSION, SVN_REVISION, libVersion(), libSvnRevision(), qVersion()).toStdWString();
+      "Qt: \t\t%5\n").arg(VERSION, SVN_REVISION, Library::version(), Library::svnRevision(), qVersion()).toStdWString();
 }
 
 void printHelp(const QString &appName)

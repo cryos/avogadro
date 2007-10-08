@@ -25,22 +25,39 @@
 #include <avogadro/global.h>
 #include "config.h"
 
+#include <QLocale>
 #include <QString>
+#include <QTranslator>
 
 namespace Avogadro
 {
+  QTranslator* Library::createTranslator()
+  {
+    QString translationCode = QLocale::system().name();
+    QString prefixPath = QString( INSTALL_PREFIX ) + "/share/libavogadro/i18n/";
+    QString fileName = "avogadro_" + translationCode + ".qm";
+    
+    QTranslator *translator = new QTranslator(0);
+    
+    if (translator->load(fileName, prefixPath ))
+    {
+      return translator;
+    }
+    delete translator;
+    return 0;
+  }
 
-  QString libVersion()
+  QString Library::version()
   {
     return VERSION;
   }
 
-  QString libSvnRevision()
+  QString Library::svnRevision()
   {
     return SVN_REVISION;
   }
 
-  QString libPrefix()
+  QString Library::prefix()
   {
     return INSTALL_PREFIX;
   }

@@ -26,6 +26,7 @@
 #define __GLOBAL_H
 
 #include <QString>
+#include <QTranslator>
 
 #ifdef WIN32
 # ifndef NOMINMAX
@@ -85,9 +86,14 @@ const double   SEL_BOND_EXTRA_RADIUS                 = 0.07;
 
 namespace Avogadro
 {
-  QString A_EXPORT libVersion();
-  QString A_EXPORT libSvnRevision();
-  QString A_EXPORT libPrefix();
+  class A_EXPORT Library
+  {
+    public:
+      static QTranslator *createTranslator();
+      static QString version();
+      static QString svnRevision();
+      static QString prefix();
+  };
 }
 
 #endif  // __GLOBAL_H

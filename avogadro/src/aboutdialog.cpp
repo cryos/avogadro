@@ -59,7 +59,7 @@ AboutDialog::AboutDialog(QWidget *parent)
                 "<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND,"
                 " INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A"
                 " PARTICULAR PURPOSE.<br/>"
-              ).arg(tr("Avogadro")).arg(VERSION).arg(SVN_REVISION).arg(Avogadro::libVersion()).arg(Avogadro::libSvnRevision())
+              ).arg(tr("Avogadro")).arg(VERSION).arg(SVN_REVISION).arg(Avogadro::Library::version()).arg(Avogadro::Library::svnRevision())
             );
 
     cmd->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
