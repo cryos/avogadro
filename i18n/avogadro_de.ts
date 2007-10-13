@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>AutoOptForceField</name>
     <message>
@@ -16,7 +15,7 @@
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.ui" line="44"/>
         <source>Ghemical</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ghemical</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.ui" line="52"/>
@@ -555,17 +554,12 @@ Do you want to create a crystal unit cell?</source>
 <context>
     <name>BSDYSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="13"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="47"/>
+        <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="44"/>
         <source>Atom Radius:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="54"/>
+        <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="51"/>
         <source>Bond Radius</source>
         <translation type="unfinished"></translation>
     </message>
@@ -684,32 +678,27 @@ Right Mouse: Delete Atom</source>
 <context>
     <name>EngineSetupWidget</name>
     <message>
-        <location filename="../avogadro/src/enginesetupwidget.ui" line="13"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../avogadro/src/enginesetupwidget.ui" line="41"/>
+        <location filename="../avogadro/src/enginesetupwidget.ui" line="38"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/enginesetupwidget.ui" line="46"/>
+        <location filename="../avogadro/src/enginesetupwidget.ui" line="43"/>
         <source>Primitives</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/enginesetupwidget.ui" line="107"/>
+        <location filename="../avogadro/src/enginesetupwidget.ui" line="104"/>
         <source>Add Selected Primitives</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/enginesetupwidget.ui" line="117"/>
+        <location filename="../avogadro/src/enginesetupwidget.ui" line="114"/>
         <source>Remove Selected Primitives</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/enginesetupwidget.ui" line="127"/>
+        <location filename="../avogadro/src/enginesetupwidget.ui" line="124"/>
         <source>Reset</source>
         <translation type="unfinished"></translation>
     </message>
@@ -729,7 +718,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="59"/>
         <source>Ghemical</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ghemical</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="95"/>
@@ -2297,42 +2286,37 @@ All changes will be lost!</source>
 <context>
     <name>LabelSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="19"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="25"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="22"/>
         <source>Atom Labels:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="57"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="54"/>
         <source>Atom number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="62"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="59"/>
         <source>Element symbol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="67"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="64"/>
         <source>Element name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="117"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="114"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="80"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="77"/>
         <source>Bond Labels:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="112"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="109"/>
         <source>Bond number</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3451,12 +3435,7 @@ Options:
 <context>
     <name>RibbonSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="13"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="19"/>
+        <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="16"/>
         <source>VdW Opacity:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3505,12 +3484,7 @@ Drag to select a range of atoms</source>
 <context>
     <name>SphereSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/spheresettingswidget.ui" line="13"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/engines/spheresettingswidget.ui" line="19"/>
+        <location filename="../libavogadro/src/engines/spheresettingswidget.ui" line="16"/>
         <source>VdW Opacity:</source>
         <translation type="unfinished"></translation>
     </message>
