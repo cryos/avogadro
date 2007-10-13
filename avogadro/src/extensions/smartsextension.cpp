@@ -58,7 +58,7 @@ using namespace OpenBabel;
                                               tr("SMARTS Selection"),
                                               tr("SMARTS pattern to select"),
                                               QLineEdit::Normal,
-                                              tr(""), &ok);
+                                              "", &ok);
       if (ok && !pattern.isEmpty()) {
         OBSmartsPattern smarts;
         smarts.Init(pattern.toStdString());

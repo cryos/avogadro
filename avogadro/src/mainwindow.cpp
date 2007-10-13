@@ -690,7 +690,7 @@ namespace Avogadro
     QVBoxLayout *layout = new QVBoxLayout( widget );
 
     GLWidget *glWidget = new GLWidget( d->glWidget->format(), this, d->glWidget );
-    glWidget->setObjectName( tr( "GLWidget" ) );
+    glWidget->setObjectName( "GLWidget" );
 
     layout->addWidget( glWidget );
     layout->setMargin( 0 );
@@ -703,7 +703,7 @@ namespace Avogadro
     connect(this, SIGNAL(moleculeChanged(Molecule *)), glWidget, SLOT(setMolecule(Molecule *)));
 
     int index = ui.centralTab->addTab( widget, QString( "" ) );
-    ui.centralTab->setTabText( index, tr( "View " ) + QString::number( index ) );
+    ui.centralTab->setTabText( index, tr( "View %1" ).arg( QString::number( index ) ) );
     ui.actionCloseView->setEnabled( true );
 
     EngineListView *engineListView = new EngineListView( glWidget, ui.enginesWidget );
@@ -737,8 +737,8 @@ namespace Avogadro
 
         for ( int count=ui.centralTab->count(); index < count; index++ ) {
           QString text = ui.centralTab->tabText( index );
-          if ( !text.compare( tr( "View " ) + QString::number( index+1 ) ) ) {
-            ui.centralTab->setTabText( index, tr( "View " ) + QString::number( index ) );
+          if ( !text.compare( tr( "View %1" ).arg( QString::number( index+1 ) ) )) {
+            ui.centralTab->setTabText( index, tr( "View %1" ).arg( QString::number( index ) ) );
           }
         }
         d->glWidgets.removeAll( glWidget );
@@ -914,7 +914,7 @@ namespace Avogadro
       return true;
     }
     
-    statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
+    statusBar()->showMessage( tr("Loading %1...", "%1 is a filename").arg(fileName), 5000 );
     QFile file( fileName );
     if ( !file.open( QFile::ReadOnly | QFile::Text ) ) {
       QApplication::restoreOverrideCursor();
@@ -998,7 +998,7 @@ namespace Avogadro
   {
     if ( fileName.isEmpty() ) {
       d->fileName.clear();
-      setWindowTitle( tr( "[*]Avogadro" ) );
+      setWindowTitle( tr( "[*]Avogadro" , "[*] indicates that this is a modified view...." ) );
     } else {
       QFileInfo fileInfo(fileName);
       d->fileName = fileInfo.canonicalFilePath();
