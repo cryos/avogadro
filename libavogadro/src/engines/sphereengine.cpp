@@ -46,7 +46,7 @@ using namespace Eigen;
 SphereEngine::SphereEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
   m_alpha(1.)
 {
-  setName(tr("VdW Sphere"));
+  setName(tr("Van-der-Waals Sphere"));
   setDescription(tr("Renders atoms as Van der Waals spheres"));
 }
 
