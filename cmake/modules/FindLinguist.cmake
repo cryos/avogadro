@@ -2,7 +2,7 @@
 # do it using qmake as it doesn't have
 # QMAKE_LUPDATE and QMAKE_LRELEASE variables :(
 
-FIND_PROGRAM(QT_LUPDATE_EXECUTABLE NAMES lupdate lupdate-qt4 PATHS
+FIND_PROGRAM(QT_LUPDATE_EXECUTABLE NAMES lupdate-qt4 lupdate PATHS
   "[HKEY_CURRENT_USER\\Software\\Trolltech\\Qt3Versions\\4.0.0;InstallDir]/bin"
   "[HKEY_CURRENT_USER\\Software\\Trolltech\\Versions\\4.0.0;InstallDir]/bin"
   $ENV{QTDIR}/bin
@@ -14,7 +14,7 @@ else(QT_LUPDATE_EXECUTABLE)
   message(FATAL_ERROR "Could NOT find lupdate")
 endif(QT_LUPDATE_EXECUTABLE)
 
-FIND_PROGRAM(QT_LRELEASE_EXECUTABLE NAMES lrelease lrelease-qt4 PATHS
+FIND_PROGRAM(QT_LRELEASE_EXECUTABLE NAMES lrelease-qt4 lrelease PATHS
   "[HKEY_CURRENT_USER\\Software\\Trolltech\\Qt3Versions\\4.0.0;InstallDir]/bin"
   "[HKEY_CURRENT_USER\\Software\\Trolltech\\Versions\\4.0.0;InstallDir]/bin"
   $ENV{QTDIR}/bin
