@@ -34,6 +34,7 @@
 
 #include <QtPlugin>
 #include <QMessageBox>
+#include <QString>
 
 using namespace std;
 using namespace OpenBabel;
@@ -68,10 +69,29 @@ bool RibbonEngine::renderTransparent(PainterDevice *pd)
 
   pd->painter()->setColor(1, 0, 0);
 
+  // List of CA atoms.
   QList<Vector3d> pts;
 
-  foreach(Primitive *p, list)
-    pts.push_back(static_cast<Atom *>(p)->pos());
+  // Get a list of residues for the molecule
+  list = primitives().subList(Primitive::ResidueType);
+
+  foreach(Primitive *p, list) {
+    Residue *r = static_cast<Residue *>(p);
+    FOR_ATOMS_OF_RESIDUE(a, r) {
+      // should be CA
+      cerr << r->GetAtomID(&*a) << endl;
+      QString atomID = QString(r->GetAtomID(&*a).c_str());
+      atomID.trimmed();
+      if (atomID == "CA") {
+        cerr << " CA detected!\n";
+        pts.push_back(static_cast<Atom *>(&*a)->pos());
+      }
+    }
+  }
+
+  // Draw some lines between the CA atoms
+  for(int i = 1; i < pts.size(); i++)
+    pd->painter()->drawLine(pts[i-1], pts[i], 1.0);
 
   return true;
 }
