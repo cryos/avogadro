@@ -58,11 +58,6 @@ RibbonEngine::~RibbonEngine()
 
 bool RibbonEngine::renderOpaque(PainterDevice *pd)
 {
-  return true;
-}
-
-bool RibbonEngine::renderTransparent(PainterDevice *pd)
-{
   QList<Primitive *> list;
   list = primitives().subList(Primitive::AtomType);
   // If m_alpha is between 0 and 1 then render our transparent spheres
@@ -89,10 +84,18 @@ bool RibbonEngine::renderTransparent(PainterDevice *pd)
     }
   }
 
-  // Draw some lines between the CA atoms
+  // Draw some cylinders between the CA atoms
   for(int i = 1; i < pts.size(); i++)
-    pd->painter()->drawLine(pts[i-1], pts[i], 1.0);
+    pd->painter()->drawCylinder(pts[i-1], pts[i], 0.5);
+  // Draw spheres at each CA atom to round the backbone
+  for(int i = 0; i < pts.size(); i++)
+    pd->painter()->drawSphere(pts[i], 0.5);
 
+  return true;
+}
+
+bool RibbonEngine::renderTransparent(PainterDevice *pd)
+{
   return true;
 }
 

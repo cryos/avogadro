@@ -1,12 +1,19 @@
+2007-10-17  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/engines/ribbonengine.cpp: Added routine to pick out
+	the CA atoms of the residue backbone. Draw cylinders between the CA
+	atoms. Next step is to draw a smoothed tube between them.
+
 2007-08-20  Marcus D. Hanwell <marcus@cryos.org>
-	* libavogadro/src/tools/glwidget.*: Added the computeClickedPrimitive/Atom/
-	Bond functions to the GLWidget class as these functions have been used in
-	several tools and are quite generic. Fixed regression with bond picking.
+	* libavogadro/src/tools/glwidget.*: Added the computeClickedPrimitive/
+	Atom/Bond functions to the GLWidget class as these functions have been 
+	used in	several tools and are quite generic. Fixed regression with bond
+	picking.
 	
 	* libavogadro/src/tools/manipulatetool.*,
 	libavogadro/src/tools/bondcentrictool.*,
-	libavogadro/src/tools/navigatetool.*: Ported to use the new computeClicked*
-	functions in GLWidget and removed the local implementations of them.
+	libavogadro/src/tools/navigatetool.*: Ported to use the new 
+	computeClicked*	functions in GLWidget and removed the local
+	implementations of them.
 
 2007-08-19  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/tools/navigate.*: Added a new navigation class with
@@ -16,8 +23,9 @@
 	* libavogadro/src/tools/CMakeLists.txt,
 	libavogadro/src/tools/navigatetool.*,
 	libavogadro/src/tools/bondcentrictool.*
-	libavogadro/src/tools/selectrotatetool.*: Ported the tools to use the new
-	Navigate class and removed all duplicated code this has now been moved.
+	libavogadro/src/tools/selectrotatetool.*: Ported the tools to use the 
+	new Navigate class and removed all duplicated code this has now been 
+	moved.
 
 2007-08-18  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/tools/clickmeasuretool.cpp: Added units to the output.
