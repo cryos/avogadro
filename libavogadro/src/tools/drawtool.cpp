@@ -32,6 +32,7 @@
 #include <openbabel/obiter.h>
 
 #include <QtPlugin>
+#include <QLabel>
 
 using namespace std;
 using namespace OpenBabel;
@@ -482,6 +483,10 @@ QWidget *DrawTool::settingsWidget() {
   if(!m_settingsWidget) {
     m_settingsWidget = new QWidget;
 
+    QLabel *labelElement = new QLabel(tr("Element:"));
+    labelElement->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    labelElement->setMaximumHeight(15);
+
     // Small popup with 10 most common elements for organic chemistry
     // (and extra for "other" to bring up periodic table window)
     m_comboElements = new QComboBox(m_settingsWidget);
@@ -510,6 +515,10 @@ QWidget *DrawTool::settingsWidget() {
     m_elementsIndex.append(0);
     m_comboElements->setCurrentIndex(2);
 
+    QLabel *labelBO = new QLabel(tr("Bond Order:"));
+    labelBO->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    labelBO->setMaximumHeight(15);
+
     m_comboBondOrder = new QComboBox(m_settingsWidget);
     m_comboBondOrder->addItem(tr("Single"));
     m_comboBondOrder->addItem(tr("Double"));
@@ -520,7 +529,9 @@ QWidget *DrawTool::settingsWidget() {
             this, SLOT(customElementChanged(int)));
 
     m_layout = new QVBoxLayout();
+    m_layout->addWidget(labelElement);
     m_layout->addWidget(m_comboElements);
+    m_layout->addWidget(labelBO);
     m_layout->addWidget(m_comboBondOrder);
     m_settingsWidget->setLayout(m_layout);
 

@@ -231,45 +231,45 @@ QWidget* AutoRotateTool::settingsWidget() {
     m_settingsWidget = new QWidget;
 
     // Label and slider to set x axis rotation
-    QLabel* labelX = new QLabel("x rotation:");
+    QLabel* labelX = new QLabel(tr("x rotation:"));
     labelX->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     labelX->setMaximumHeight(15);
     m_sliderX = new QSlider(m_settingsWidget);
     m_sliderX->setOrientation(Qt::Horizontal);
     m_sliderX->setTickPosition(QSlider::TicksBothSides);
-    m_sliderX->setToolTip("x rotation");
+    m_sliderX->setToolTip(tr("x rotation"));
     m_sliderX->setTickInterval(10);
     m_sliderX->setPageStep(5);
     m_sliderX->setRange(-m_maxRotation, m_maxRotation);
     m_sliderX->setValue(0);
 
     // Label and slider to set y axis rotation
-    QLabel* labelY = new QLabel("y rotation:");
+    QLabel* labelY = new QLabel(tr("y rotation:"));
     labelY->setMaximumHeight(15);
     m_sliderY = new QSlider(m_settingsWidget);
     m_sliderY->setOrientation(Qt::Horizontal);
     m_sliderY->setTickPosition(QSlider::TicksBothSides);
-    m_sliderY->setToolTip("y rotation");
+    m_sliderY->setToolTip(tr("y rotation"));
     m_sliderY->setTickInterval(10);
     m_sliderY->setPageStep(5);
     m_sliderY->setRange(-m_maxRotation, m_maxRotation);
     m_sliderY->setValue(0);
 
     // Label and slider to set z axis rotation
-    QLabel* labelZ = new QLabel("z rotation:");
+    QLabel* labelZ = new QLabel(tr("z rotation:"));
     labelZ->setMaximumHeight(15);
     m_sliderZ = new QSlider(m_settingsWidget);
     m_sliderZ->setOrientation(Qt::Horizontal);
     m_sliderZ->setTickPosition(QSlider::TicksBothSides);
-    m_sliderZ->setToolTip("z rotation");
+    m_sliderZ->setToolTip(tr("z rotation"));
     m_sliderZ->setTickInterval(10);
     m_sliderZ->setPageStep(5);
     m_sliderZ->setRange(-m_maxRotation, m_maxRotation);
     m_sliderZ->setValue(0);
 
     // Push buttons to start/stop and to reset
-    m_buttonStartStop = new QPushButton("Start", m_settingsWidget);
-    QPushButton* buttonReset = new QPushButton("Reset", m_settingsWidget);
+    m_buttonStartStop = new QPushButton(tr("Start"), m_settingsWidget);
+    QPushButton* buttonReset = new QPushButton(tr("Reset"), m_settingsWidget);
     QHBoxLayout* buttonLayout = new QHBoxLayout();
     buttonLayout->addWidget(m_buttonStartStop);
     buttonLayout->addWidget(buttonReset);

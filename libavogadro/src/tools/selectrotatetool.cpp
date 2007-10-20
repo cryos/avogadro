@@ -37,6 +37,7 @@
 
 #include <QtPlugin>
 #include <QApplication>
+#include <QLabel>
 
 using namespace std;
 using namespace OpenBabel;
@@ -314,12 +315,17 @@ QWidget *SelectRotateTool::settingsWidget() {
   if(!m_settingsWidget) {
     m_settingsWidget = new QWidget;
 
+    QLabel *labelMode = new QLabel(tr("Selection Mode:"));
+    labelMode->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    labelMode->setMaximumHeight(15);
+
     m_comboSelectionMode = new QComboBox(m_settingsWidget);
     m_comboSelectionMode->addItem("Atom");
     m_comboSelectionMode->addItem("Residue");
     m_comboSelectionMode->addItem("Molecule");
 
     m_layout = new QVBoxLayout();
+    m_layout->addWidget(labelMode);
     m_layout->addWidget(m_comboSelectionMode);
     m_settingsWidget->setLayout(m_layout);
 

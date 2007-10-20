@@ -285,14 +285,14 @@ QWidget* AutoOptTool::settingsWidget() {
   if(!m_settingsWidget) {
     m_settingsWidget = new QWidget;
     
-    QLabel* labelFF = new QLabel(tr("Force Field"));
+    QLabel* labelFF = new QLabel(tr("Force Field:"));
     labelFF->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     labelFF->setMaximumHeight(15);
 
     m_comboFF = new QComboBox(m_settingsWidget);
     m_comboFF->addItem(tr("Ghemical"));
 
-    QLabel* labelAlg = new QLabel(tr("Algorithm"));
+    QLabel* labelAlg = new QLabel(tr("Algorithm:"));
     labelAlg->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     labelAlg->setMaximumHeight(15);
 
@@ -300,7 +300,7 @@ QWidget* AutoOptTool::settingsWidget() {
     m_comboAlgorithm->addItem(tr("Conjugate Gradients"));
     m_comboAlgorithm->addItem(tr("Steepest Descent"));
 
-    QLabel* labelConv = new QLabel(tr("Convergence"));
+    QLabel* labelConv = new QLabel(tr("Convergence:"));
     labelConv->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     labelConv->setMaximumHeight(15);
 
