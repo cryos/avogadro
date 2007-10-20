@@ -533,6 +533,7 @@ QWidget *DrawTool::settingsWidget() {
     m_layout->addWidget(m_comboElements);
     m_layout->addWidget(labelBO);
     m_layout->addWidget(m_comboBondOrder);
+    m_layout->addStretch(1);
     m_settingsWidget->setLayout(m_layout);
 
     connect(m_comboElements, SIGNAL(currentIndexChanged(int)),
