@@ -30,8 +30,6 @@
 #include <openbabel/mol.h>
 #include <openbabel/forcefield.h>
 
-#include "ui_autoopttool.h"
-
 #include <QGLWidget>
 #include <QObject>
 #include <QStringList>
@@ -39,8 +37,8 @@
 #include <QAction>
 #include <QWidget>
 #include <QPushButton>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
+#include <QComboBox>
+#include <QSpinBox>
 #include <QUndoStack>
 
 namespace Avogadro {
@@ -51,7 +49,7 @@ namespace Avogadro {
 
     public:
     AutoOptThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
-        int nSteps, int algorithm, int gradients, int convergence, QObject *parent=0);
+        int algorithm, int convergence, QObject *parent=0);
 
       void run();
 
@@ -64,9 +62,7 @@ namespace Avogadro {
     private:
       Molecule *m_molecule;
       OpenBabel::OBForceField * m_forceField;
-      int m_nSteps;
       int m_algorithm;
-      int m_gradients;
       int m_convergence;
 
       bool m_stop;
@@ -135,7 +131,10 @@ namespace Avogadro {
       OpenBabel::OBForceField*  m_forceField;
       AutoOptThread *           m_thread;
       
-      Ui::AutoOptForceField ui;
+      QComboBox*                m_comboFF;
+      QComboBox*                m_comboAlgorithm;
+      QSpinBox*                 m_convergenceSpinBox;
+      QPushButton*              m_buttonStartStop;
 
       QPoint                    m_lastDraggingPosition;
 

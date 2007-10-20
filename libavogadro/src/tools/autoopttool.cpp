@@ -33,6 +33,8 @@
 #include <openbabel/mol.h>
 
 #include <QtPlugin>
+#include <QLabel>
+#include <QVBoxLayout>
 
 using namespace std;
 using namespace OpenBabel;
@@ -283,10 +285,46 @@ QWidget* AutoOptTool::settingsWidget() {
   if(!m_settingsWidget) {
     m_settingsWidget = new QWidget;
     
-    ui.setupUi(m_settingsWidget);
+    QLabel* labelFF = new QLabel(tr("Force Field"));
+    labelFF->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    labelFF->setMaximumHeight(15);
+
+    m_comboFF = new QComboBox(m_settingsWidget);
+    m_comboFF->addItem(tr("Ghemical"));
+
+    QLabel* labelAlg = new QLabel(tr("Algorithm"));
+    labelAlg->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    labelAlg->setMaximumHeight(15);
+
+    m_comboAlgorithm = new QComboBox(m_settingsWidget);
+    m_comboAlgorithm->addItem(tr("Conjugate Gradients"));
+    m_comboAlgorithm->addItem(tr("Steepest Descent"));
+
+    QLabel* labelConv = new QLabel(tr("Convergence"));
+    labelConv->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    labelConv->setMaximumHeight(15);
+
+    m_convergenceSpinBox = new QSpinBox(m_settingsWidget);
+    m_convergenceSpinBox->setMinimum(2);
+    m_convergenceSpinBox->setMaximum(10);
+    m_convergenceSpinBox->setValue(4);
+    m_convergenceSpinBox->setPrefix(tr("10e-"));
     
+    m_buttonStartStop = new QPushButton(tr("Start"), m_settingsWidget);
+
+    QVBoxLayout* layout = new QVBoxLayout();
+    layout->addWidget(labelFF);
+    layout->addWidget(m_comboFF);
+    layout->addWidget(labelAlg);
+    layout->addWidget(m_comboAlgorithm);
+    layout->addWidget(labelConv);
+    layout->addWidget(m_convergenceSpinBox);
+    layout->addWidget(m_buttonStartStop);
+    layout->addStretch(1);
+    m_settingsWidget->setLayout(layout);
+
     // Connect the start/stop button
-    connect(ui.m_buttonStartStop, SIGNAL(clicked()),
+    connect(m_buttonStartStop, SIGNAL(clicked()),
         this, SLOT(toggle()));
 
     connect(m_settingsWidget, SIGNAL(destroyed()),
@@ -320,7 +358,7 @@ void AutoOptTool::enable()
       m_timerId = startTimer(40);
     }
     m_running = true;
-    ui.m_buttonStartStop->setText(tr("Stop"));
+    m_buttonStartStop->setText(tr("Stop"));
     QUndoStack *stack = m_glwidget->undoStack();
     AutoOptCommand *cmd = new AutoOptCommand(m_glwidget->molecule(),this,0);
     if(stack && cmd)
@@ -344,7 +382,7 @@ void AutoOptTool::disable()
       m_timerId = 0;
     }
     m_running = false;
-    ui.m_buttonStartStop->setText(tr("Start"));
+    m_buttonStartStop->setText(tr("Start"));
   #ifdef OBPatched
     if (m_clickedAtom != 0)
     {
@@ -368,9 +406,9 @@ void AutoOptTool::timerEvent(QTimerEvent*)
 	{
 		m_block = true;
 	}
-    m_thread = new AutoOptThread(m_glwidget->molecule(), m_forceField, ui.StepsSpinBox->value(),
-               ui.AlgorithmComboBox->currentIndex(), ui.GradientsComboBox->currentIndex(),
-               ui.ConvergenceSpinBox->value());
+    m_thread = new AutoOptThread(m_glwidget->molecule(), m_forceField,
+               m_comboAlgorithm->currentIndex(), 
+               m_convergenceSpinBox->value());
     connect(m_thread,SIGNAL(finished(bool)),this,SLOT(finished(bool)));
     m_thread->start();
 }
@@ -398,14 +436,13 @@ void AutoOptTool::finished(bool calculated)
   m_block = false;
 }
 
-AutoOptThread::AutoOptThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
-        int nSteps, int algorithm, int gradients, int convergence, QObject*)
+AutoOptThread::AutoOptThread(Molecule *molecule, 
+                             OpenBabel::OBForceField* forceField,
+                             int algorithm, int convergence, QObject*)
 {
   m_molecule = molecule;
   m_forceField = forceField;
-  m_nSteps = nSteps;
   m_algorithm = algorithm;
-  m_gradients = gradients;
   m_convergence = convergence;
   m_stop = false;
 }
@@ -413,27 +450,29 @@ AutoOptThread::AutoOptThread(Molecule *molecule, OpenBabel::OBForceField* forceF
 void AutoOptThread::run()
 {
   if ( !m_forceField->Setup( *m_molecule ) ) {
-	qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
-	m_stop = true;
-	emit finished(false);
-	return;
+    qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
+    m_stop = true;
+    emit finished(false);
+    return;
   }
   if(m_algorithm == 0)
-  {
-	m_forceField->SteepestDescent(m_nSteps,pow(10.0, -m_convergence ), m_gradients == 0 ? OBFF_NUMERICAL_GRADIENT : OBFF_ANALYTICAL_GRADIENT);
-  }
+    {
+      m_forceField->SteepestDescent(2,pow(10.0, -m_convergence ), 
+                                    OBFF_ANALYTICAL_GRADIENT);
+    }
   else if(m_algorithm == 1)
-  {
-	m_forceField->ConjugateGradients(m_nSteps,pow(10.0, -m_convergence ), m_gradients == 0 ? OBFF_NUMERICAL_GRADIENT : OBFF_ANALYTICAL_GRADIENT);
-  }
+    {
+      m_forceField->ConjugateGradients(2,pow(10.0, -m_convergence ), 
+                                       OBFF_ANALYTICAL_GRADIENT);
+    }
   if(m_stop)
-  {
-    emit finished(false);
-  }
+    {
+      emit finished(false);
+    }
   else
-  {
-    emit finished(true);
-  }
+    {
+      emit finished(true);
+    }
 }
 
 void AutoOptThread::stop()

@@ -486,34 +486,34 @@ QWidget *DrawTool::settingsWidget() {
     // (and extra for "other" to bring up periodic table window)
     m_comboElements = new QComboBox(m_settingsWidget);
     m_elementsIndex.reserve(11);
-    m_comboElements->addItem("Hydrogen (1)");
+    m_comboElements->addItem(tr("Hydrogen (1)"));
     m_elementsIndex.append(1);
-    m_comboElements->addItem("Boron (5)");
+    m_comboElements->addItem(tr("Boron (5)"));
     m_elementsIndex.append(5);
-    m_comboElements->addItem("Carbon (6)");
+    m_comboElements->addItem(tr("Carbon (6)"));
     m_elementsIndex.append(6);
-    m_comboElements->addItem("Nitrogen (7)");
+    m_comboElements->addItem(tr("Nitrogen (7)"));
     m_elementsIndex.append(7);
-    m_comboElements->addItem("Oxygen (8)");
+    m_comboElements->addItem(tr("Oxygen (8)"));
     m_elementsIndex.append(8);
-    m_comboElements->addItem("Fluorine (9)");
+    m_comboElements->addItem(tr("Fluorine (9)"));
     m_elementsIndex.append(9);
-    m_comboElements->addItem("Phosphorus (15)");
+    m_comboElements->addItem(tr("Phosphorus (15)"));
     m_elementsIndex.append(15);
-    m_comboElements->addItem("Sulfur (16)");
+    m_comboElements->addItem(tr("Sulfur (16)"));
     m_elementsIndex.append(16);
-    m_comboElements->addItem("Chlorine (17)");
+    m_comboElements->addItem(tr("Chlorine (17)"));
     m_elementsIndex.append(17);
-    m_comboElements->addItem("Bromine (35)");
+    m_comboElements->addItem(tr("Bromine (35)"));
     m_elementsIndex.append(35);
-    m_comboElements->addItem("Other...");
+    m_comboElements->addItem(tr("Other..."));
     m_elementsIndex.append(0);
     m_comboElements->setCurrentIndex(2);
 
     m_comboBondOrder = new QComboBox(m_settingsWidget);
-    m_comboBondOrder->addItem("Single");
-    m_comboBondOrder->addItem("Double");
-    m_comboBondOrder->addItem("Triple");
+    m_comboBondOrder->addItem(tr("Single"));
+    m_comboBondOrder->addItem(tr("Double"));
+    m_comboBondOrder->addItem(tr("Triple"));
 
     m_periodicTable = new PeriodicTableDialog(m_settingsWidget);
     connect(m_periodicTable, SIGNAL(elementChanged(int)),

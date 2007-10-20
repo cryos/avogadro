@@ -86,11 +86,10 @@ INSTALL(TARGETS selectrotatetool DESTINATION ${DESTINATION_DIR})
 
 ### autoopttool
 set(autoopttool_SRCS autoopttool.cpp)
-qt4_wrap_ui(autoopttool_UIS_H autoopttool.ui)
 qt4_add_resources(autoopttool_RC_SRCS autoopttool.qrc)
 qt4_automoc(${autoopttool_SRCS})
 ADD_LIBRARY(autoopttool SHARED navigate.cpp
-	${autoopttool_SRCS} ${autoopttool_RC_SRCS} ${autoopttool_UIS_H})
+	${autoopttool_SRCS} ${autoopttool_RC_SRCS})
 TARGET_LINK_LIBRARIES(autoopttool
 	${OPENBABEL2_LIBRARIES}
 	${QT_LIBRARIES}
