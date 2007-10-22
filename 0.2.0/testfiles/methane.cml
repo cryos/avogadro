@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema/cml2/core" id="CS_methane">
+ <formula concise=" C 1 H 4 "/>
+ <identifier version="InChI/1">
+  <basic>1/CH4/h1H4</basic>
+ </identifier>
+ <name convention="IUPAC">Methane</name>
+ <atomArray>
+  <atom id="a1" elementType="H" x3="0.528809" y3="0.161048" z3="0.935955"/>
+  <atom id="a2" elementType="C" x3="0.000014" y3="0.000046" z3="0.000035"/>
+  <atom id="a3" elementType="H" x3="0.205136" y3="0.824021" z3="-0.678591"/>
+  <atom id="a4" elementType="H" x3="0.334551" y3="-0.931400" z3="-0.449551"/>
+  <atom id="a5" elementType="H" x3="-1.068510" y3="-0.053715" z3="0.192152"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2="a1 a2" order="1"/>
+  <bond atomRefs2="a2 a3" order="1"/>
+  <bond atomRefs2="a2 a4" order="1"/>
+  <bond atomRefs2="a2 a5" order="1"/>
+ </bondArray>
+ <list>
+  <propertyList>
+   <property dictRef="cml:molwt" title="molecular weight">
+    <scalar dataType="xsd:decimal" dictRef="cml:molwt" units="unit:g">16.0425</scalar>
+   </property>
+   <property dictRef="chemwt:exact_molwt" title="exact molecular weight">
+    <scalar dataType="xsd:decimal" dictRef="chemwt:exact_molwt" units="unit:g">16.0313001</scalar>
+   </property>
+   <property dictRef="cml:mpt" title="melting point">
+    <scalar dataType="xsd:decimal" errorValue="1.0" dictRef="cml:mpt" units="unit:celsius">-183</scalar>
+   </property>
+   <property dictRef="cml:bpt" title="boiling point">
+    <scalar dataType="xsd:decimal" errorValue="1.0" dictRef="cml:bpt" units="unit:celsius">-161</scalar>
+   </property>
+  </propertyList>
+ </list>
+</molecule>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema/cml2/core" id="CS_2-thioethanol">
+ <formula concise=" C 2 H 6 O 1 S 1 "/>
+ <identifier version="InChI/1">
+  <basic>1/C2H6OS/c3-1-2-4/h3-4H,1-2H2</basic>
+ </identifier>
+ <name convention="IUPAC">2-Thioethanol</name>
+ <atomArray>
+  <atom id="a1" elementType="C" x3="0.656668" y3="0.158801" z3="-0.324858"/>
+  <atom id="a2" elementType="S" x3="1.873043" y3="-1.084715" z3="0.186802"/>
+  <atom id="a3" elementType="C" x3="-0.751983" y3="-0.095941" z3="0.212887"/>
+  <atom id="a4" elementType="O" x3="-1.661088" y3="0.894902" z3="-0.180262"/>
+  <atom id="a5" elementType="H" x3="0.661262" y3="0.127753" z3="-1.432358"/>
+  <atom id="a6" elementType="H" x3="0.990148" y3="1.176967" z3="-0.051525"/>
+  <atom id="a7" elementType="H" x3="1.868390" y3="-0.891572" z3="1.480195"/>
+  <atom id="a8" elementType="H" x3="-0.783054" y3="-0.034281" z3="1.315399"/>
+  <atom id="a9" elementType="H" x3="-1.110864" y3="-1.101812" z3="-0.081465"/>
+  <atom id="a10" elementType="H" x3="-1.742522" y3="0.849898" z3="-1.124814"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2="a1 a2" order="1"/>
+  <bond atomRefs2="a1 a3" order="1"/>
+  <bond atomRefs2="a3 a4" order="1"/>
+  <bond atomRefs2="a1 a5" order="1"/>
+  <bond atomRefs2="a1 a6" order="1"/>
+  <bond atomRefs2="a2 a7" order="1"/>
+  <bond atomRefs2="a3 a8" order="1"/>
+  <bond atomRefs2="a3 a9" order="1"/>
+  <bond atomRefs2="a4 a10" order="1"/>
+ </bondArray>
+ <list>
+  <propertyList>
+   <property dictRef="cml:molwt" title="molecular weight">
+    <scalar dataType="xsd:decimal" dictRef="cml:molwt" units="unit:g">78.1334</scalar>
+   </property>
+   <property dictRef="chemwt:exact_molwt" title="exact molecular weight">
+    <scalar dataType="xsd:decimal" dictRef="chemwt:exact_molwt" units="unit:g">78.0139358</scalar>
+   </property>
+   <property dictRef="cml:mpt" title="melting point">
+    <scalar dataType="xsd:decimal" errorValue="1.0" dictRef="cml:mpt" units="unit:celsius">-100</scalar>
+   </property>
+   <property dictRef="cml:bpt" title="boiling point">
+    <scalar dataType="xsd:decimal" errorValue="1.0" dictRef="cml:bpt" units="unit:celsius">157</scalar>
+   </property>
+  </propertyList>
+ </list>
+</molecule>

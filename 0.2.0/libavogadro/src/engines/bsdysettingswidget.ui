@@ -1,0 +1,81 @@
+<ui version="4.0" >
+ <class>BSDYSettingsWidget</class>
+ <widget class="QWidget" name="BSDYSettingsWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>10</number>
+   </property>
+   <item row="0" column="1" >
+    <widget class="QSlider" name="atomRadiusSlider" >
+     <property name="minimum" >
+      <number>1</number>
+     </property>
+     <property name="maximum" >
+      <number>13</number>
+     </property>
+     <property name="pageStep" >
+      <number>2</number>
+     </property>
+     <property name="value" >
+      <number>3</number>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="tickPosition" >
+      <enum>QSlider::TicksBothSides</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="atomRadiusLabel" >
+     <property name="text" >
+      <string>Atom Radius:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="bondRadiusLabel" >
+     <property name="text" >
+      <string>Bond Radius</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QSlider" name="bondRadiusSlider" >
+     <property name="minimum" >
+      <number>1</number>
+     </property>
+     <property name="maximum" >
+      <number>3</number>
+     </property>
+     <property name="pageStep" >
+      <number>1</number>
+     </property>
+     <property name="value" >
+      <number>1</number>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="tickPosition" >
+      <enum>QSlider::TicksBothSides</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

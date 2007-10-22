@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>krazy Analysis</title>
+</head>
+<body>
+<h1>krazy Analysis</h1>
+<p>Checkers Run = 20<br>
+Files Processed = 24<br>
+Total Issues = 3 ...as of September 06 2007 19:28:25</p>
+<ul>
+<li><b><u>For File Type c++
+</u></b>
+<ol>
+<li>Check for TRUE and FALSE macros... 
+<b>okay!</b>
+<li>Check for methods that return 'const' refs in public classes... 
+<b>okay!</b>
+<li>Check for contractions in strings... 
+<b>okay!</b>
+<li>Check for cpp macros and usage... 
+<b>okay!</b>
+<li>Check for single char QStrings better written as a QChar... 
+<b>okay!</b>
+<li>Check for unwanted doxygen tags in major versions... 
+<b>okay!</b>
+<li>Check public classes with private members or d-pointer issues... 
+<b>okay!</b>
+<li>Check for QString compares to ""... 
+<b>okay!</b>
+<li>Check that file ends with a newline... 
+<b>okay!</b>
+<li>Check for C++ ctors that should be declared 'explicit'... 
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	../libavogadro/src/tools/bondcentrictool.h: line#359 (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
+	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
+	this to avoid mistaken implicit constructor ambiguities. Copy
+	constructors should not be explicit.</p>
+</li>
+
+<li>Check validity of i18n calls... 
+<b>okay!</b>
+<li>Check for proper include directives... 
+<b>okay!</b>
+<li>Check for inline methods in public classes... 
+<b>okay!</b>
+<li>Check for assignments to QString::null... 
+<b>okay!</b>
+<li>Check for compares to QString::null... 
+<b>okay!</b>
+<li>Check for inappropriate pass-by-value function args... 
+<b>okay!</b>
+<li>Check for QMIN and QMAX macros... 
+<b>okay!</b>
+<li>Check for classes that should use the 'Q_OBJECT' macro... 
+<b>OOPS! 2 issues found!</b>
+<ul>
+<li>	../libavogadro/src/tools/skeletontree.h: line#47,119 (2)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	QObject derived classes should use the Q_OBJECT macro.</p>
+</li>
+
+<li>Check for signals: and slots:... 
+<b>okay!</b>
+<li>Check for spelling errors... 
+<b>okay!</b>
+</ol>
+<br>
+</ul>
+</body>
+</html>

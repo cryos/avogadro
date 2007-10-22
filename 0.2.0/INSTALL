@@ -1,0 +1,52 @@
+Requirements
+============
+ -- CMake 2.4.3
+ -- Qt 4.3.0
+ -- OpenBabel 2.1
+ -- Eigen 1.0.5
+
+
+Basic Installation
+==================
+These instructions give a very basic overview of how to configure,
+compile and install Avogadro on most systems.  If you are using unique
+install locations and/or libraries are not automatically detected please
+consult the 'Advanced' section.
+
+1. Create a 'build' directory in the package source directory.
+   
+   mkdir build
+   cd build
+
+2. Configure the build system
+
+   cmake ..
+
+3. Compile 
+
+   make
+
+4. Install
+   
+   make install
+
+
+Advanced
+========
+The build system (CMake) provides mechanisms for specifying non-standard
+installation locations.
+
+   -DCMAKE_INSTALL_PREFIX : specify the installation prefix 
+                            (default /usr)
+
+   -DLIB_INSTALL_DIR : specify the install location for libraries
+                       (default ${CMAKE_INSTALL_PREFIX}/lib)
+
+   -DOPENBABEL2_LIBRARIES : specify the OpenBabel2 libraries
+
+   -DOPENBABEL2_INCLUDE_DIR : specify the OpenBabel2 include directory
+
+   -DEIGEN_INCLUDE_DIR : specify the Eigen include directory 
+
+For more information please consult the CMake documentation.
+
