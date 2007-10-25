@@ -66,7 +66,7 @@ namespace Avogadro
     void drawLine(const Eigen::Vector3d &, const Eigen::Vector3d &,
                   double) { }
 
-    void drawSpline(const QList<Eigen::Vector3d>&, double) { }
+    void drawSpline(const QVector<Eigen::Vector3d>&, double) { }
 
     /** Draws a shaded sector of a circle.  The sector is defined by three vectors,
      * the center of the circle, and two vectors that define the lines going out

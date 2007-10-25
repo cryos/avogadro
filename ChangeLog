@@ -1,3 +1,16 @@
+2007-10-24  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/painter.h, libavogadro/src/glpainter.h,
+	libavogadro/src/povpainter.h: Modified the drawSpline signature to use
+	QVector and take a radius.
+
+	* libavogadro/src/glpainter.cpp: Added the necessary code to draw a
+	cubic spline. Uses cylinder right now - this needs improving to fix
+	the discontinuities.
+
+	* libavogadro/src/engines/ribbonengine.cpp: Find the CA atoms that
+	make up the backbone of the biological structures. Then draw this back
+	bone as a cubic spline tube.
+
 2007-10-17  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/engines/ribbonengine.cpp: Added routine to pick out
 	the CA atoms of the residue backbone. Draw cylinders between the CA

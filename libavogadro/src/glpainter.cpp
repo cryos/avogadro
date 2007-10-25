@@ -435,60 +435,56 @@ namespace Avogadro
     glPopAttrib();
   }
 
-  void GLPainter::drawSpline(const QList<Eigen::Vector3d>& pts, double lineWidth)
+  void GLPainter::drawSpline(const QVector<Eigen::Vector3d>& pts, double radius)
   {
     // Draw a spline between two points of the specified thickness
-/*    if(!d->isValid()) { return; }
+    if(!d->isValid()) { return; }
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glDisable(GL_LIGHTING);
-    glDisable(GL_CULL_FACE);
-    glLineWidth(lineWidth);
+    glLineWidth(radius);
+
+    // The first value is repeated three times as is the last in order to complete the curve
+    QVector<Eigen::Vector3d> points = pts;
+    points.push_front(pts.at(0));
+    points.push_front(pts.at(0));
+    points.push_back(pts.at(pts.size()-1));
+    points.push_back(pts.at(pts.size()-1));
+
     glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
 
-    for (int i = 1; i < pts.size(); i++)
-    {
+    QVector<Eigen::Vector3d> p, a;
+    a.resize(4);
+    p.resize(4);
 
-      // Figure out our control points - right now it is a straight line...
-      Eigen::Vector3d start = pts[i-1];
-      Eigen::Vector3d end = pts[i];
-      Eigen::Vector3d axis = end - start;
-      Eigen::Vector3d startC = start + 0.25 * axis;
-      Eigen::Vector3d endC = end - 0.25 * axis;
-      Eigen::Vector3d p(0., 0., 0.);
-      double a = 0., b = 0.;
+    // Define the number of interpolated points between control points
+    int numPts = 40;
+    double step = 1. / double(numPts);
 
-      // Draw the spline
-      glBegin(GL_LINE_STRIP);
-      for (int i = 0; i <= 20; i++)
-      {
-        a = static_cast<double>(i) / 20.0;
-        b = 1.0 - a;
-        p = Eigen::Vector3d(start.x()*a*a*a + 3.0*startC.x()*a*a*b + 3.0*endC.x()*a*b*b + end.x()*b*b*b,
-                          start.y()*a*a*a + 3.0*startC.y()*a*a*b + 3.0*endC.y()*a*b*b + end.y()*b*b*b,
-                          start.z()*a*a*a + 3.0*startC.z()*a*a*b + 3.0*endC.z()*a*b*b + end.z()*b*b*b);
-        glVertex3dv(p.array());
+    Eigen::Vector3d last, cur;
+
+    for (int i = 2; i < pts.size()+1; i++) {
+      p[0] = points.at(i-1);
+      p[1] = points.at(i);
+      p[2] = points.at(i+1);
+      p[3] = points.at(i+2);
+
+      // Now calculate the basis
+      a[0] = (-p[0] + 3.*p[1] - 3.*p[2] + p[3]) / 6.;
+      a[1] = (3.*p[0] - 6.*p[1] + 3.*p[2]) / 6.;
+      a[2] = (-3.*p[0] + 3.*p[2]) / 6.;
+      a[3] = (p[0] + 4.*p[1] + p[2]) / 6.;
+
+      // Now interpolate some points and draw them...
+      last = a[3];
+      for (int j = 0; j < numPts; j++) {
+        double t = step * j;
+        cur = a[3] + t*(a[2] + t*(a[1] + t*a[0]));
+        drawCylinder(last, cur, radius);
+        last = cur;
       }
-      glEnd();
-
-      glBegin(GL_POINTS);
-      glVertex3dv(start.array());
-      glVertex3dv(startC.array());
-      glVertex3dv(endC.array());
-      glVertex3dv(end.array());
-      glEnd();
-      glColor4f(0, 1, 0, 1);
-      glBegin(GL_LINES);
-      glVertex3dv(start.array());
-      glVertex3dv(startC.array());
-      glEnd();
-      glColor4f(0, 0, 1, 1);
-      glBegin(GL_LINES);
-      glVertex3dv(end.array());
-      glVertex3dv(endC.array());
-      glEnd();
     }
-    glPopAttrib(); */
+
+    glPopAttrib();
   }
 
   void GLPainter::drawShadedSector(Eigen::Vector3d origin, Eigen::Vector3d direction1,

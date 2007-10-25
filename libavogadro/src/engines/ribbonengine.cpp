@@ -64,12 +64,13 @@ bool RibbonEngine::renderOpaque(PainterDevice *pd)
 
   pd->painter()->setColor(1, 0, 0);
 
-  // List of CA atoms.
-  QList<Vector3d> pts;
+  // List of CA atoms that make up the backbone
+  QVector<Vector3d> pts;
 
   // Get a list of residues for the molecule
   list = primitives().subList(Primitive::ResidueType);
 
+  /// FIXME Need to deal with separate residues
   foreach(Primitive *p, list) {
     Residue *r = static_cast<Residue *>(p);
     FOR_ATOMS_OF_RESIDUE(a, r) {
@@ -84,17 +85,12 @@ bool RibbonEngine::renderOpaque(PainterDevice *pd)
     }
   }
 
-  // Draw some cylinders between the CA atoms
-  for(int i = 1; i < pts.size(); i++)
-    pd->painter()->drawCylinder(pts[i-1], pts[i], 0.5);
-  // Draw spheres at each CA atom to round the backbone
-  for(int i = 0; i < pts.size(); i++)
-    pd->painter()->drawSphere(pts[i], 0.5);
+  pd->painter()->drawSpline(pts, 0.35);
 
   return true;
 }
 
-bool RibbonEngine::renderTransparent(PainterDevice *pd)
+bool RibbonEngine::renderTransparent(PainterDevice *)
 {
   return true;
 }
