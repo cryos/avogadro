@@ -35,6 +35,7 @@
 #include <QtPlugin>
 #include <QMessageBox>
 #include <QString>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -59,33 +60,50 @@ RibbonEngine::~RibbonEngine()
 bool RibbonEngine::renderOpaque(PainterDevice *pd)
 {
   QList<Primitive *> list;
-  list = primitives().subList(Primitive::AtomType);
-  // If m_alpha is between 0 and 1 then render our transparent spheres
 
-  pd->painter()->setColor(1, 0, 0);
-
-  // List of CA atoms that make up the backbone
-  QVector<Vector3d> pts;
+  // List of chains that make up the backbone
+  QList< QVector<Vector3d> > chains;
 
   // Get a list of residues for the molecule
   list = primitives().subList(Primitive::ResidueType);
+  unsigned int currentChain = 0;
+  QVector<Vector3d> pts;
 
-  /// FIXME Need to deal with separate residues
   foreach(Primitive *p, list) {
     Residue *r = static_cast<Residue *>(p);
+    if(r->GetName().find("HOH") != string::npos)
+      continue;
+
+    if(r->GetChainNum() != currentChain) {
+      // this residue is on a new chain
+      if(pts.size() > 0)
+        chains.push_back(pts);
+      qDebug() << "Chain " << chains.size() << " added.";
+      currentChain = r->GetChainNum();
+      pts.clear();
+    }
+	
     FOR_ATOMS_OF_RESIDUE(a, r) {
       // should be CA
-      cerr << r->GetAtomID(&*a) << endl;
+//      cerr << r->GetAtomID(&*a) << "\n";
       QString atomID = QString(r->GetAtomID(&*a).c_str());
       atomID.trimmed();
       if (atomID == "CA") {
-        cerr << " CA detected!\n";
+        qDebug() << " CA detected!";
         pts.push_back(static_cast<Atom *>(&*a)->pos());
       }
+      else if (atomID == "N") { } // Possibly use nitrogens too
+    } // end atoms in residue
+
+  } // end primitive list (i.e., all residues)
+  chains.push_back(pts); // Add the last chain (possibly the only chain)  
+
+  foreach(QVector<Vector3d> pts, chains) {
+    if (pts.size() > 1) {
+	  qDebug() << "Drawing residue with " << pts.size() << "atoms.";
+      pd->painter()->drawSpline(pts, 0.35);
     }
   }
-
-  pd->painter()->drawSpline(pts, 0.35);
 
   return true;
 }

@@ -1,4 +1,9 @@
 2007-10-24  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/engines/ribbonengine.cpp: Improve the ribbon engine
+	to render multiple chains correctly and not crash when there is no
+	chain.
+
+2007-10-24  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/painter.h, libavogadro/src/glpainter.h,
 	libavogadro/src/povpainter.h: Modified the drawSpline signature to use
 	QVector and take a radius.
