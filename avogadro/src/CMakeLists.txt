@@ -72,9 +72,16 @@ IF( APPLE )
 
   # Overload the Info.plist default
   SET( CMAKE_MODULE_PATH ${avogadro_SOURCE_DIR}/src/mac ${CMAKE_MODULE_PATH} )
+  INSTALL(TARGETS avogadro-app DESTINATION /Applications)
+  INSTALL(
+          CODE "EXEC_PROGRAM(\"install_name_tool -change ${libavogadro_BINARY_DIR}/src/libavogadro.0.dylib ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/libavogadro.0.dylib /Applications/avogadro.app/Contents/MacOS/avogadro\")")
+  INSTALL(CODE "EXEC_PROGRAM(\"mv /Applications/avogadro.app /Applications/Avogadro.app\")")
+
+ELSEIF( !APPLE)
+  INSTALL(TARGETS avogadro-app DESTINATION bin)
+
 ENDIF( APPLE)
 
-INSTALL(TARGETS avogadro-app DESTINATION bin)
 INSTALL(FILES ${avogadro_QM} DESTINATION share/avogadro/i18n)
 
 add_subdirectory(extensions)
