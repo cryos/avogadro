@@ -1,5 +1,5 @@
 project(libavogadro)
-set(VERSION 0.2.0)
+set(VERSION 0.2.1)
 
 # Generate SVN_REVISION variable
 execute_process(COMMAND svnversion -n ${CMAKE_SOURCE_DIR}

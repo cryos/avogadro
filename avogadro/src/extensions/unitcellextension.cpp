@@ -32,7 +32,7 @@ namespace Avogadro {
   UnitCellExtension::UnitCellExtension(QObject *parent) : QObject(parent), m_Widget(NULL)
   {
     QAction *action = new QAction(this);
-    action->setText("Unit Cell Parameters...");
+    action->setText(tr("Unit Cell Parameters..."));
     m_actions.append(action);
     m_Dialog = new UnitCellParamDialog(static_cast<QWidget*>(parent));
 

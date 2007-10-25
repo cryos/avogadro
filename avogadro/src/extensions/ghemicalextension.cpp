@@ -51,23 +51,23 @@ namespace Avogadro
     m_Dialog = new ForceFieldDialog;
 
     action = new QAction( this );
-    action->setText( "Optimize Geometry" );
+    action->setText( tr("Optimize Geometry" ));
     action->setData(OptimizeGeometryIndex);
     m_actions.append( action );
 
     action = new QAction( this );
-    action->setText( "Calculate Energy" );
+    action->setText( tr("Calculate Energy" ));
     action->setData(CalculateEnergyIndex);
     m_actions.append( action );
 
     action = new QAction( this );
-    action->setText( "Rotor Search" );
+    action->setText( tr("Rotor Search" ));
     action->setData(RotorSearchIndex);
     m_actions.append( action );
 
     if ( m_forceField ) { // make sure we can actually find and run it!
       action = new QAction( this );
-      action->setText( "Setup Force Field..." );
+      action->setText( tr("Setup Force Field..." ));
       action->setData(SetupForceFieldIndex);
       m_actions.append( action );
     }

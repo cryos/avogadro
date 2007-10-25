@@ -36,7 +36,7 @@ using namespace OpenBabel;
     H2MethylExtension::H2MethylExtension(QObject *parent) : QObject(parent)
     {
       QAction *action = new QAction(this);
-      action->setText("Change H to Methyl");
+      action->setText(tr("Change H to Methyl"));
       m_actions.append(action);
     }
 

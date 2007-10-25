@@ -88,9 +88,9 @@ namespace Avogadro
   BSDYEngine::BSDYEngine( QObject *parent ) : Engine( parent ),
       m_settingsWidget( 0 ), m_atomRadiusPercentage( 0.3 ), m_bondRadius( 0.1 )
   {
-    setName( tr( "Dynamic Ball and Stick" ) );
+    setName( tr( "Ball and Stick" ) );
 
-    setDescription( tr( "Renders primitives using Balls (atoms) and Sticks (bonds).  Includes demonstration of dynamic rendering based on distance from camera" ) );
+    setDescription( tr( "Renders primitives using Balls (atoms) and Sticks (bonds)." ) );
 
   }
 

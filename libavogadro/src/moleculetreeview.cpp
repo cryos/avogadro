@@ -52,9 +52,9 @@ namespace Avogadro {
       m_groups.append(0);
     }
 
-    addGroup("Atoms", Primitive::AtomType);
-    addGroup("Bonds", Primitive::BondType);
-    addGroup("Residues", Primitive::ResidueType);
+    addGroup(tr("Atoms"), Primitive::AtomType);
+    addGroup(tr("Bonds"), Primitive::BondType);
+    addGroup(tr("Residues"), Primitive::ResidueType);
 
     connect(this, SIGNAL(itemPressed(QTreeWidgetItem*,int)), 
         SLOT(handleMousePress(QTreeWidgetItem*)));

@@ -58,8 +58,8 @@ TARGET_LINK_LIBRARIES(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
     avogadro-lib)
 
 IF( APPLE )
-  SET( MACOSX_BUNDLE_INFO_STRING "Avogadro - version 0.1.0" )
-  SET( MACOSX_BUNDLE_BUNDLE_VERSION "0.1.0" )
+  SET( MACOSX_BUNDLE_INFO_STRING "Avogadro - version ${VERSION}" )
+  SET( MACOSX_BUNDLE_BUNDLE_VERSION ${VERSION} )
   # Change following line to point to actual icns file in bundle.
   SET( MACOSX_BUNDLE_ICON_FILE "avogadro.icns" )
   # means bundle is set to be net.sourceforge.Avogadro

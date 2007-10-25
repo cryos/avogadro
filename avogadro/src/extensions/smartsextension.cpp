@@ -35,7 +35,7 @@ using namespace OpenBabel;
     SmartsExtension::SmartsExtension(QObject *parent) : QObject(parent)
     {
       QAction *action = new QAction(this);
-      action->setText("Select SMARTS");
+      action->setText(tr("Select SMARTS"));
       m_actions.append(action);
     }
 

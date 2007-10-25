@@ -320,9 +320,9 @@ QWidget *SelectRotateTool::settingsWidget() {
     labelMode->setMaximumHeight(15);
 
     m_comboSelectionMode = new QComboBox(m_settingsWidget);
-    m_comboSelectionMode->addItem("Atom");
-    m_comboSelectionMode->addItem("Residue");
-    m_comboSelectionMode->addItem("Molecule");
+    m_comboSelectionMode->addItem(tr("Atom"));
+    m_comboSelectionMode->addItem(tr("Residue"));
+    m_comboSelectionMode->addItem(tr("Molecule"));
 
     m_layout = new QVBoxLayout();
     m_layout->addWidget(labelMode);

@@ -36,11 +36,11 @@ using namespace OpenBabel;
     HydrogensExtension::HydrogensExtension(QObject *parent) : QObject(parent)
     {
       QAction *action = new QAction(this);
-      action->setText("Add Hydrogens");
+      action->setText(tr("Add Hydrogens"));
       m_actions.append(action);
 
       action = new QAction(this);
-      action->setText("Remove Hydrogens");
+      action->setText(tr("Remove Hydrogens"));
       m_actions.append(action);
     }
 

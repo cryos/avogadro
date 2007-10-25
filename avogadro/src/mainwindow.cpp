@@ -386,9 +386,9 @@ namespace Avogadro
 
     OBMol *molecule = dynamic_cast<OBMol*>( d->molecule );
     if ( conv.Write( molecule, &ofs ) )
-      statusBar()->showMessage( "Save succeeded.", 5000 );
+      statusBar()->showMessage( tr("Save succeeded."), 5000 );
     else
-      statusBar()->showMessage( "Saving molecular file failed.", 5000 );
+      statusBar()->showMessage( tr("Saving molecular file failed."), 5000 );
     QApplication::restoreOverrideCursor();
 
     setWindowModified( false );
@@ -954,17 +954,17 @@ namespace Avogadro
       QApplication::restoreOverrideCursor();
 
       QString status;
-      QTextStream( &status ) << "Atoms: " << d->molecule->NumAtoms() <<
-      " Bonds: " << d->molecule->NumBonds();
+      QTextStream( &status ) << tr("Atoms: ") << d->molecule->NumAtoms() <<
+        tr(" Bonds: ") << d->molecule->NumBonds();
       statusBar()->showMessage( status, 5000 );
     } else {
       QApplication::restoreOverrideCursor();
-      statusBar()->showMessage( "Reading molecular file failed.", 5000 );
+      statusBar()->showMessage( tr("Reading molecular file failed."), 5000 );
       return false;
     }
 
     setFileName( fileName );
-    statusBar()->showMessage( "File Loaded...", 5000 );
+    statusBar()->showMessage( tr("File Loaded..."), 5000 );
     return true;
   }
 
