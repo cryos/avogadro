@@ -7,7 +7,7 @@ Name "Avogadro"
 !define QT_VERSION "4.3.1"
 
 ; The file to write
-OutFile "avogadro-${VERSION}.exe"
+OutFile "avogadro-${VERSION}-win32.exe"
 
 ; The default installation directory
 InstallDir $PROGRAMFILES\Avogadro
@@ -47,6 +47,7 @@ Section "Avogadro Core (required)"
   File ${BUILDDIR}\libavogadro\src\engines\release\wireengine.dll
   
   SetOutPath $INSTDIR\tools
+  File ${BUILDDIR}\libavogadro\src\tools\release\autoopttool.dll
   File ${BUILDDIR}\libavogadro\src\tools\release\autorotatetool.dll
   File ${BUILDDIR}\libavogadro\src\tools\release\bondcentrictool.dll
   File ${BUILDDIR}\libavogadro\src\tools\release\clickmeasuretool.dll
@@ -58,14 +59,14 @@ Section "Avogadro Core (required)"
   SetOutPath $INSTDIR\extensions
   File ${BUILDDIR}\avogadro\src\extensions\release\gamessextension.dll
   File ${BUILDDIR}\avogadro\src\extensions\release\ghemicalextension.dll
-  File ${BUILDDIR}\avogadro\src\extensions\release\h2methylextension.dll
+  ;File ${BUILDDIR}\avogadro\src\extensions\release\h2methylextension.dll
   File ${BUILDDIR}\avogadro\src\extensions\release\hydrogensextension.dll
   File ${BUILDDIR}\avogadro\src\extensions\release\smartsextension.dll
   File ${BUILDDIR}\avogadro\src\extensions\release\unitcellextension.dll
 
   ; Set output path to the installation directory.
   SetOutPath $INSTDIR
-  
+
   ; Put file there
   File C:\Qt\${QT_VERSION}\lib\QtGui4.dll
   File C:\Qt\${QT_VERSION}\lib\QtCore4.dll
@@ -101,7 +102,8 @@ Section "Start Menu Shortcuts"
   CreateDirectory "$SMPROGRAMS\Avogadro"
   CreateShortCut "$SMPROGRAMS\Avogadro\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
   CreateShortCut "$SMPROGRAMS\Avogadro\Avogadro.lnk" "$INSTDIR\avogadro.exe" "" "$INSTDIR\avogadro.exe" 0
-  
+  CreateShortCut "$SMPROGRAMS\Avogadro\Release Notes.lnk" "http://avogadro.sourceforge.net/wiki/Avogadro_${VERSION}"
+
 SectionEnd
 
 ;--------------------------------
@@ -123,6 +125,7 @@ Section "Uninstall"
   Delete $INSTDIR\engines\wireengine.dll
   
   ; Remove files and uninstaller
+  Delete $INSTDIR\tools\autoopttool.dll
   Delete $INSTDIR\tools\autorotatetool.dll
   Delete $INSTDIR\tools\bondcentrictool.dll
   Delete $INSTDIR\tools\clickmeasuretool.dll
