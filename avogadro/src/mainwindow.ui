@@ -72,7 +72,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>29</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -525,6 +525,9 @@
   <action name="actionClear" >
    <property name="text" >
     <string>Clear</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+Backspace</string>
    </property>
   </action>
   <action name="actionSelect_All" >
