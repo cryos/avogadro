@@ -123,14 +123,28 @@ namespace Avogadro {
   {
     Tool *tool = d->tools.at(i);
     if(tool) {
-      d->activeTool = tool;
-      emit toolActivated(tool);
+      setActiveTool(tool);
+    }
+  }
+  
+  void ToolGroup::setActiveTool(QString name)
+  {
+    foreach (Tool *tool, d->tools) {
+      if (tool->name() == name) {
+        setActiveTool(tool);
+        return;
+      }
     }
   }
 
   void ToolGroup::setActiveTool(Tool *tool)
   {
     if(tool) {
+      if (d->activeTool && d->activeTool->activateAction())
+        d->activeTool->activateAction()->setChecked(false);
+      if (tool->activateAction()) {
+        tool->activateAction()->setChecked(true);
+      }
       d->activeTool = tool;
       emit toolActivated(tool);
     }

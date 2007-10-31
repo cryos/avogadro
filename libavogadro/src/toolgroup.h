@@ -94,11 +94,15 @@ namespace Avogadro {
        */
       void setActiveTool(int i);
 
+      /**
+      * @param name the name of the tool to set active (if it's found)
+      */
+      void setActiveTool(QString name);
+    
       /** 
        * @param tool pointer to the tool to set active
        */
       void setActiveTool(Tool *tool);
-      
       
       /**
        * @param molecule pointer to the molecule tools in this group should use
