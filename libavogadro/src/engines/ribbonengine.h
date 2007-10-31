@@ -60,13 +60,21 @@ namespace Avogadro {
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 
       QWidget* settingsWidget();
+    
+    public Q_SLOTS:
+      void addPrimitive(Primitive *primitive);
+      void updatePrimitive(Primitive *primitive);
+      void removePrimitive(Primitive *primitive);
 
     private:
       inline double radius(const Atom *a) const;
+      void updateChains();
 
       RibbonSettingsWidget *m_settingsWidget;
 
       double m_alpha; // transparency of the VdW spheres
+      bool m_update;  // Is an update of the chain necessary?
+      QList< QVector<Eigen::Vector3d> > chains;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();

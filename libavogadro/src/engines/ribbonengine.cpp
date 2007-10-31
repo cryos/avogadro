@@ -48,6 +48,7 @@ RibbonEngine::RibbonEngine(QObject *parent) : Engine(parent), m_settingsWidget(0
 {
   setName(tr("Ribbon"));
   setDescription(tr("Renders residues as ribbons"));
+  m_update = true;
 }
 
 RibbonEngine::~RibbonEngine()
@@ -59,45 +60,9 @@ RibbonEngine::~RibbonEngine()
 
 bool RibbonEngine::renderOpaque(PainterDevice *pd)
 {
-  QList<Primitive *> list;
-
-  // List of chains that make up the backbone
-  QList< QVector<Vector3d> > chains;
-
-  // Get a list of residues for the molecule
-  list = primitives().subList(Primitive::ResidueType);
-  unsigned int currentChain = 0;
-  QVector<Vector3d> pts;
-
-  foreach(Primitive *p, list) {
-    Residue *r = static_cast<Residue *>(p);
-    if(r->GetName().find("HOH") != string::npos)
-      continue;
-
-    if(r->GetChainNum() != currentChain) {
-      // this residue is on a new chain
-      if(pts.size() > 0)
-        chains.push_back(pts);
-      qDebug() << "Chain " << chains.size() << " added.";
-      currentChain = r->GetChainNum();
-      pts.clear();
-    }
-	
-    FOR_ATOMS_OF_RESIDUE(a, r) {
-      // should be CA
-//      cerr << r->GetAtomID(&*a) << "\n";
-      QString atomID = QString(r->GetAtomID(&*a).c_str());
-      atomID.trimmed();
-      if (atomID == "CA") {
-        qDebug() << " CA detected!";
-        pts.push_back(static_cast<Atom *>(&*a)->pos());
-      }
-      else if (atomID == "N") { } // Possibly use nitrogens too
-    } // end atoms in residue
-
-  } // end primitive list (i.e., all residues)
-  chains.push_back(pts); // Add the last chain (possibly the only chain)  
-
+  pd->painter()->setColor(1., 0., 0.);
+  // Check if the chains need updating before drawing them
+  if (m_update) updateChains();
   foreach(QVector<Vector3d> pts, chains) {
     if (pts.size() > 1) {
 	  qDebug() << "Drawing residue with " << pts.size() << "atoms.";
@@ -113,40 +78,78 @@ bool RibbonEngine::renderTransparent(PainterDevice *)
   return true;
 }
 
-bool RibbonEngine::render(PainterDevice *pd, const Atom *a)
+bool RibbonEngine::render(PainterDevice *, const Atom *)
 {
-  // Render the atoms as Van der Waals spheres
-  Color map = colorMap();
-  map.set(a);
-  map.setAlpha(m_alpha);
-  pd->painter()->setColor(&map);
-  pd->painter()->setName(a);
-  pd->painter()->drawSphere( a->pos(), radius(a) );
-
   return true;
 }
 
-inline double RibbonEngine::radius(const Atom *a) const
+inline double RibbonEngine::radius(const Atom *) const
 {
-  return etab.GetVdwRad(a->GetAtomicNum());
+  return 0.;
 }
 
-double RibbonEngine::radius(const PainterDevice *pd, const Primitive *p) const
+double RibbonEngine::radius(const PainterDevice *, const Primitive *) const
 {
-  // Atom radius
-  if (p->type() == Primitive::AtomType)
-  {
-    if(primitives().contains(p))
-    {
-      if (pd && pd->isSelected(p))
-      {
-        return radius(static_cast<const Atom *>(p)) + SEL_ATOM_EXTRA_RADIUS;
-      }
-      return radius(static_cast<const Atom *>(p));
-    }
-  }
-  // Something else
   return 0.;
+}
+
+void RibbonEngine::addPrimitive(Primitive *primitive)
+{
+  Engine::addPrimitive(primitive);
+  m_update = true;
+}
+
+void RibbonEngine::updatePrimitive(Primitive *)
+{
+  m_update = true;
+}
+
+void RibbonEngine::removePrimitive(Primitive *primitive)
+{
+  Engine::removePrimitive(primitive);
+  m_update = true;
+}
+
+void RibbonEngine::updateChains()
+{
+  if (!isEnabled()) return;
+  qDebug() << "Update chains called.";
+  // Get a list of residues for the molecule
+  chains.clear();
+  QList<Primitive *> list;
+  list = primitives().subList(Primitive::ResidueType);
+  unsigned int currentChain = 0;
+  QVector<Vector3d> pts;
+  
+  foreach(Primitive *p, list) {
+    Residue *r = static_cast<Residue *>(p);
+    if(r->GetName().find("HOH") != string::npos)
+      continue;
+    
+    if(r->GetChainNum() != currentChain) {
+      // this residue is on a new chain
+      if(pts.size() > 0)
+        chains.push_back(pts);
+      qDebug() << "Chain " << chains.size() << " added.";
+      currentChain = r->GetChainNum();
+      pts.clear();
+    }
+    
+    FOR_ATOMS_OF_RESIDUE(a, r) {
+      // should be CA
+      //      cerr << r->GetAtomID(&*a) << "\n";
+      QString atomID = QString(r->GetAtomID(&*a).c_str());
+      atomID.trimmed();
+      if (atomID == "CA") {
+        //        qDebug() << " CA detected!";
+        pts.push_back(static_cast<Atom *>(&*a)->pos());
+      }
+      else if (atomID == "N") { } // Possibly use nitrogens too
+    } // end atoms in residue
+    
+  } // end primitive list (i.e., all residues)
+  chains.push_back(pts); // Add the last chain (possibly the only chain)
+  m_update = false;
 }
 
 double RibbonEngine::transparencyDepth() const

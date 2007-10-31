@@ -1,3 +1,8 @@
+2007-10-31  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/engines/ribbonengine.*: Improvements to the ribbon
+	code so that it caches the chain and updates it if the molecule is
+	changed.
+
 2007-10-24  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/engines/ribbonengine.cpp: Improve the ribbon engine
 	to render multiple chains correctly and not crash when there is no
