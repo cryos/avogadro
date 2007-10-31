@@ -73,6 +73,7 @@ bool WireEngine::renderOpaque(PainterDevice *pd)
 bool WireEngine::renderOpaque(PainterDevice *pd, const Atom *a)
 {
   const Vector3d & v = a->pos();
+  const Camera *camera = pd->camera();
 
   Eigen::Vector3d transformedPos = pd->camera()->modelview() * v;
 
@@ -85,14 +86,22 @@ bool WireEngine::renderOpaque(PainterDevice *pd, const Atom *a)
   glPushName(Primitive::AtomType);
   glPushName(a->GetIdx());
 
+  double size = 3.0; // default size;
+  if (camera->distance(v) < 10.0)
+    size = 4.0;
+  else if (camera->distance(v) > 40.0 && camera->distance(v) < 85.0)
+    size = 2.0;
+  else if (camera->distance(v) > 85.0)
+    size = 1.5;
+  
   if (pd->isSelected(a)) {
     glColor3fv(selectionColor);
-    glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 4.0);
+    glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * (size + 1.0));
   }
   else{
     map.set(a);
     map.apply();
-    glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * 3.0);
+    glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * size);
   }
 
   glBegin(GL_POINTS);
@@ -109,6 +118,7 @@ bool WireEngine::renderOpaque(PainterDevice *pd, const Bond *b)
 {
   const Atom *atom1 = static_cast<const Atom *>( b->GetBeginAtom() );
   const Vector3d & v1 = atom1->pos();
+  const Camera *camera = pd->camera();
 
   Eigen::Vector3d transformedEnd1 = pd->camera()->modelview() * v1;
 
@@ -121,7 +131,15 @@ bool WireEngine::renderOpaque(PainterDevice *pd, const Bond *b)
 
   Color map = colorMap();
 
-  glLineWidth(1.0);
+  double width = 1.0;
+  double averageDistance = (camera->distance(v1) + camera->distance(v2)) / 2.0;
+  
+  if (averageDistance < 10.0 && averageDistance > 5.0)
+    width = 2.0;
+  else if (averageDistance < 5.0)
+    width = 2.5;
+  
+  glLineWidth(width);
   glBegin(GL_LINES);
 
   // hard to separate atoms from bonds in this view
