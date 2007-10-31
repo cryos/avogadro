@@ -952,6 +952,13 @@ namespace Avogadro
     if ( conv.Read( molecule, &ifs ) && molecule->NumAtoms() != 0 ) {
       setMolecule( molecule );
 
+      Molecule test; // do we have a multi-molecule file?
+      if (conv.Read(&test, &ifs) && test.NumAtoms() != 0) {
+        QMessageBox::warning( this, tr( "Avogadro" ),
+                             tr( "This file contains multiple molecule records. Avogadro will only read the first molecule."
+                                " If you save, all other molecules may be lost." ));        
+      }
+      
       QApplication::restoreOverrideCursor();
 
       QString status;
