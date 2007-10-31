@@ -548,6 +548,7 @@ namespace Avogadro
       newMol.Translate( offset );
       PasteCommand *command = new PasteCommand( d->molecule, newMol, d->glWidget );
       d->undoStack->push( command );
+      d->toolGroup->setActiveTool(tr("Manipulate")); // set the tool to manipulate, so we can immediate move the selection
     } else {
       return false;
     }
@@ -963,6 +964,7 @@ namespace Avogadro
       return false;
     }
 
+    d->toolGroup->setActiveTool(tr("Navigate"));
     setFileName( fileName );
     statusBar()->showMessage( tr("File Loaded..."), 5000 );
     return true;
