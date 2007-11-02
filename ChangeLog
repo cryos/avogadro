@@ -2,7 +2,8 @@
 	* libavogadro/src/engines/labelengine.cpp,
 	libavogadro/src/engines/labelsettingswidget.ui: Updated the label
 	engineto label atoms by residue name and number and bonds by their
-	order. Feature request 1820686 and 1824338.
+	order. Feature request 1820686 and 1824338. Also added partial charge
+	labelling for atoms, feature request 1824337.
 
 2007-10-31  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/engines/ribbonengine.*: Improvements to the ribbon

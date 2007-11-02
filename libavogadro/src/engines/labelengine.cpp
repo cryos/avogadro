@@ -45,7 +45,7 @@ using namespace Avogadro;
 using namespace Eigen;
 
 LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
-  m_atomType(1), m_bondType(1), m_settingsWidget(0)
+  m_atomType(1), m_bondType(2), m_settingsWidget(0)
 {
   setName(tr("Label"));
   setDescription(tr("Renders primitive labels"));
@@ -55,7 +55,7 @@ bool LabelEngine::renderOpaque(PainterDevice *pd)
 {
   QList<Primitive *> list;
 
-  if (m_atomType < 5)
+  if (m_atomType < 6)
   {
     // Render atom labels
     list = primitives().subList(Primitive::AtomType);
@@ -100,6 +100,9 @@ bool LabelEngine::renderOpaque(PainterDevice *pd, const Atom *a)
         break;
       case 4:
         str = QString::number((const_cast<Atom *>(a)->GetResidue())->GetNum());
+        break;
+      case 5:
+        str = QString::number(const_cast<Atom *>(a)->GetPartialCharge(), 10, 2);
         break;
       case 2:
       default:

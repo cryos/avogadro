@@ -76,6 +76,11 @@
      </item>
      <item>
       <property name="text" >
+       <string>Partial Charge</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
        <string>None</string>
       </property>
      </item>
