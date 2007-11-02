@@ -37,6 +37,7 @@
 
 #include <QtPlugin>
 #include <QMessageBox>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -54,7 +55,7 @@ bool LabelEngine::renderOpaque(PainterDevice *pd)
 {
   QList<Primitive *> list;
 
-  if (m_atomType < 3)
+  if (m_atomType < 5)
   {
     // Render atom labels
     list = primitives().subList(Primitive::AtomType);
@@ -62,7 +63,7 @@ bool LabelEngine::renderOpaque(PainterDevice *pd)
       renderOpaque(pd, static_cast<Atom *>(p));
   }
 
-  if (m_bondType < 1)
+  if (m_bondType < 2)
   {
     // Now render the bond labels
     list = primitives().subList(Primitive::BondType);
@@ -93,6 +94,12 @@ bool LabelEngine::renderOpaque(PainterDevice *pd, const Atom *a)
         break;
       case 1:
         str = QString(etab.GetSymbol(a->GetAtomicNum()));
+        break;
+      case 3:
+        str = QString(((const_cast<Atom *>(a)->GetResidue())->GetName()).c_str());
+        break;
+      case 4:
+        str = QString::number((const_cast<Atom *>(a)->GetResidue())->GetNum());
         break;
       case 2:
       default:
@@ -136,7 +143,16 @@ bool LabelEngine::renderOpaque(PainterDevice *pd, const Bond *b)
 
   if(zDistance < 50.0)
   {
-    QString str = QString::number(b->GetIdx());
+    QString str;
+    switch(m_bondType)
+    {
+      case 0:
+        str = QString::number(b->GetIdx());
+        break;
+      case 1:
+      default:
+        str = QString::number(b->GetBondOrder());
+    }
 
     Vector3d zAxis = pd->camera()->backtransformedZAxis();
     Vector3d drawPos = pos + zAxis * renderRadius;
