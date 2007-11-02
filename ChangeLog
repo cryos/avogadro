@@ -1,7 +1,10 @@
 2007-11-02  Marcus D. Hanwell <marcus@cryos.org>
-	* libavogadro/src/glwidget.cpp: Updated the setMolecule function 
-	to call setPrimitives for each engine at the end of molecule loading,
+	* libavogadro/src/glwidget.cpp: Updated the setMolecule function to 
+	call setPrimitives for each engine at the end of molecule loading,
 	should make our molecule loading more efficient.
+  
+  * libavogadro/src/engines/ribbonengine.*: Reimplement the
+  setPrimitives function due to changes in molecule loading.
 
 2007-11-01  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/engines/labelengine.cpp,

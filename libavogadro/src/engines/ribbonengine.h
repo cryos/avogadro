@@ -50,8 +50,6 @@ namespace Avogadro {
       //@{
       bool renderOpaque(PainterDevice *pd);
       bool renderTransparent(PainterDevice *pd);
-      //! Render an Atom.
-      bool render(PainterDevice *pd, const Atom *a);
       //@}
 
       double transparencyDepth() const;
@@ -61,13 +59,14 @@ namespace Avogadro {
 
       QWidget* settingsWidget();
     
+      void setPrimitives(const PrimitiveList &primitives);
+    
     public Q_SLOTS:
       void addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
 
     private:
-      inline double radius(const Atom *a) const;
       void updateChains();
 
       RibbonSettingsWidget *m_settingsWidget;

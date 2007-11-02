@@ -78,19 +78,15 @@ bool RibbonEngine::renderTransparent(PainterDevice *)
   return true;
 }
 
-bool RibbonEngine::render(PainterDevice *, const Atom *)
-{
-  return true;
-}
-
-inline double RibbonEngine::radius(const Atom *) const
-{
-  return 0.;
-}
-
 double RibbonEngine::radius(const PainterDevice *, const Primitive *) const
 {
   return 0.;
+}
+
+void RibbonEngine::setPrimitives(const PrimitiveList &primitives)
+{
+  Engine::setPrimitives(primitives);
+  m_update = true;
 }
 
 void RibbonEngine::addPrimitive(Primitive *primitive)
@@ -137,11 +133,9 @@ void RibbonEngine::updateChains()
     
     FOR_ATOMS_OF_RESIDUE(a, r) {
       // should be CA
-      //      cerr << r->GetAtomID(&*a) << "\n";
       QString atomID = QString(r->GetAtomID(&*a).c_str());
       atomID.trimmed();
       if (atomID == "CA") {
-        //        qDebug() << " CA detected!";
         pts.push_back(static_cast<Atom *>(&*a)->pos());
       }
       else if (atomID == "N") { } // Possibly use nitrogens too
