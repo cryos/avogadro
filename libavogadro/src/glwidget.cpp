@@ -702,7 +702,6 @@ namespace Avogadro {
       QObject::disconnect( d->molecule, 0, this, 0 );
     }
 
-//    QReadLocker readLocker(molecule->lock());
     d->molecule = molecule;
 
     // clear our engine queues
@@ -715,9 +714,6 @@ namespace Avogadro {
     std::vector<OpenBabel::OBNodeBase*>::iterator i;
     for ( Atom *atom = ( Atom* )d->molecule->BeginAtom( i );
           atom; atom = ( Atom* )d->molecule->NextAtom( i ) ) {
-      for ( int i=0; i < d->engines.size(); i++ ) {
-        d->engines.at( i )->addPrimitive( atom );
-      }
       d->primitives.append( atom );
     }
 
@@ -725,9 +721,6 @@ namespace Avogadro {
     std::vector<OpenBabel::OBEdgeBase*>::iterator j;
     for ( Bond *bond = ( Bond* )d->molecule->BeginBond( j );
           bond; bond = ( Bond* )d->molecule->NextBond( j ) ) {
-      for ( int i=0; i < d->engines.size(); i++ ) {
-        d->engines.at( i )->addPrimitive( bond );
-      }
       d->primitives.append( bond );
     }
 
@@ -735,18 +728,15 @@ namespace Avogadro {
     std::vector<OpenBabel::OBResidue*>::iterator k;
     for ( Residue *residue = ( Residue* )d->molecule->BeginResidue( k );
           residue; residue = ( Residue * )d->molecule->NextResidue( k ) ) {
-      for ( int i=0; i < d->engines.size(); i++ ) {
-        d->engines.at( i )->addPrimitive( residue );
-      }
       d->primitives.append( residue );
     }
 
-    // add the molecule to the default queue
-    for ( int i=0; i < d->engines.size(); i++ ) {
-      d->engines.at( i )->addPrimitive( d->molecule );
-    }
     d->primitives.append( d->molecule );
 
+    // Now set the primitives for the engines
+    for (int i = 0; i < d->engines.size(); i++)
+      d->engines.at(i)->setPrimitives(d->primitives);
+    
     // connect our signals so if the molecule gets updated
     connect( d->molecule, SIGNAL( primitiveAdded( Primitive* ) ),
              this, SLOT( addPrimitive( Primitive* ) ) );
