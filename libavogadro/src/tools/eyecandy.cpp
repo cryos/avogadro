@@ -32,6 +32,10 @@
 #define RIBBON_ARROW_LENGTH 0.25
 #define RIBBON_APERTURE 0.07
 #define MINIMUM_APPARENT_SIZE 0.04
+#define MAXIMUM_APPARENT_SIZE 0.25
+#define SIZE_FACTOR_WHEN_NOTHING_CLICKED 0.25
+#define ZOOM_SIZE_FACTOR 0.3
+#define ATOM_SIZE_FACTOR 1.1
 
 using namespace Avogadro;
 using namespace Eigen;
@@ -129,14 +133,18 @@ void Eyecandy::drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, 
   if(clickedAtom)
   {
     m_center = clickedAtom->pos();
-    m_renderRadius = qMax(widget->radius(clickedAtom) * 1.1 + 0.2,
+    m_renderRadius = qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
                           MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center));
   }
   else
   {
     m_center = widget->center();
-    m_renderRadius = qMax(qMax(widget->radius() * 0.7, CAMERA_NEAR_DISTANCE),
-                          MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center));
+    m_renderRadius =
+      qMin(
+        qMax(
+          qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
+          MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center)),
+        MAXIMUM_APPARENT_SIZE * widget->camera()->distance(m_center));
   }
   
   m_xAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) - xAngle;
@@ -179,15 +187,19 @@ void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom)
   if(clickedAtom)
   {
     m_center = clickedAtom->pos();
-    size = qMax(widget->radius(clickedAtom) * 1.1 + 0.2,
+    size = qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
                 MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center));
     shift = widget->radius(clickedAtom);
   }
   else
   {
     m_center = widget->center();
-    size = qMax(qMax(widget->radius(), CAMERA_NEAR_DISTANCE),
-                MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center));
+    size =
+      qMin(
+        qMax(
+          qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
+          MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center)),
+        MAXIMUM_APPARENT_SIZE * widget->camera()->distance(m_center));
     shift = 0.;
   }
   glEnable(GL_BLEND);
@@ -267,8 +279,8 @@ void Eyecandy::drawZoom(GLWidget *widget, Atom *clickedAtom)
 {
   widget->painter()->setColor(&m_color);
   if(clickedAtom) {
-    double renderRadius = qMax(widget->radius(clickedAtom) * 1.1 + 0.2,
-                            MINIMUM_APPARENT_SIZE * 0.3 * widget->camera()->distance(clickedAtom->pos()));
+    double renderRadius = qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
+                            MINIMUM_APPARENT_SIZE * ZOOM_SIZE_FACTOR * widget->camera()->distance(clickedAtom->pos()));
     glEnable( GL_BLEND );
     widget->painter()->drawSphere(clickedAtom->pos(), renderRadius);
     glDisable( GL_BLEND );
