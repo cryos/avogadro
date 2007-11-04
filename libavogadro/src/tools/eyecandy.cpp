@@ -31,7 +31,7 @@
 #define RIBBON_ARROW_WIDTH 0.15
 #define RIBBON_ARROW_LENGTH 0.25
 #define RIBBON_APERTURE 0.07
-#define MINIMUM_APPARENT_SIZE 0.07
+#define MINIMUM_APPARENT_SIZE 0.04
 
 using namespace Avogadro;
 using namespace Eigen;
@@ -149,7 +149,7 @@ void Eyecandy::drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, 
   
   glEnable(GL_BLEND);
   glDepthMask(GL_FALSE);
-  Color(1.0, 1.0, 0.3, 0.7).applyAsMaterials();
+  m_color.applyAsMaterials();
   
   //draw back faces
   glCullFace(GL_FRONT);
@@ -193,8 +193,7 @@ void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom)
   glEnable(GL_BLEND);
   glDisable(GL_LIGHTING);
   glDepthMask(GL_FALSE);
-  glColor4f(1.0, 1.0, 0.3, 0.7);
-  //Color(1.0, 1.0, 0.3, 0.7).applyAsMaterials();
+  m_color.apply();
 
   // Set up the axes and some vectors to work with
   Vector3d xAxis = widget->camera()->backtransformedXAxis();
@@ -262,4 +261,21 @@ void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom)
   glDisable(GL_BLEND);
   glEnable(GL_LIGHTING);
   glDepthMask(GL_TRUE);
+}
+
+void Eyecandy::drawZoom(GLWidget *widget, Atom *clickedAtom)
+{
+  widget->painter()->setColor(&m_color);
+  if(clickedAtom) {
+    double renderRadius = qMax(widget->radius(clickedAtom) * 1.1 + 0.2,
+                            MINIMUM_APPARENT_SIZE * 0.3 * widget->camera()->distance(clickedAtom->pos()));
+    glEnable( GL_BLEND );
+    widget->painter()->drawSphere(clickedAtom->pos(), renderRadius);
+    glDisable( GL_BLEND );
+  }
+  else
+  {
+    // zoom with respect to molecule's center: let's not draw any eyecandy
+    // as I can't think of any that would be useful.
+  }
 }

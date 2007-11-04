@@ -199,19 +199,7 @@ bool NavigateTool::paint(GLWidget *widget)
   }
 
   else if(m_midButtonPressed) {
-    if(m_clickedAtom) {
-      double renderRadius = qMax(widget->radius(m_clickedAtom) * 1.1 + 0.2,
-                                 0.1 * widget->camera()->distance(m_clickedAtom->pos()));
-      glEnable( GL_BLEND );
-      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
-      widget->painter()->drawSphere(m_clickedAtom->pos(), renderRadius);
-      glDisable( GL_BLEND );
-    }
-    else
-    {
-      widget->painter()->setColor(1.0, 1.0, 0.3, 0.7);
-      widget->painter()->drawSphere(widget->center(), 0.10);
-    }
+    m_eyecandy->drawZoom(widget, m_clickedAtom);
   }
 
   else if(m_rightButtonPressed) {

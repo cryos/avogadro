@@ -43,12 +43,14 @@ namespace Avogadro {
       double m_yAngleStart, m_yAngleEnd, m_xAngleStart, m_xAngleEnd;
       double m_renderRadius;
       Eigen::Vector3d m_center, m_xAxis, m_yAxis, m_zAxis;
+      Color m_color;
     
     public:
-      Eyecandy() {}
+      Eyecandy() : m_color(1.0, 1.0, 0.3, 0.7) {}
       ~Eyecandy() {}
       void drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle);
       void drawTranslation(GLWidget *widget, Atom *clickedAtom);
+      void drawZoom(GLWidget *widget, Atom *clickedAtom);
   };
 
 }
