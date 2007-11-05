@@ -40,6 +40,7 @@ namespace Avogadro
       //! Desconstructor
       ~ForceFieldDialog();
 
+      int forceFieldID();
       int nSteps();
       int algorithm();
       int gradients();

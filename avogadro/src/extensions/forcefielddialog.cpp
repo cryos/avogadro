@@ -84,6 +84,11 @@ void ForceFieldDialog::reject()
   ui.ConvergenceSpinBox->setValue(m_convergence);
 }
 
+int ForceFieldDialog::forceFieldID()
+{
+  return m_forceFieldID;
+}
+
 int ForceFieldDialog::nSteps()
 {
   return m_nSteps;

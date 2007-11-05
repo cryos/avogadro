@@ -1,8 +1,8 @@
 /**********************************************************************
-  Ghemical - Ghemical Plugin for Avogadro
+  forcefieldextension.cpp - molecular mechanics force field Plugin for Avogadro
 
   Copyright (C) 2006 by Donald Ephraim Curtis
-  Copyright (C) 2006 by Geoffrey R. Hutchison
+  Copyright (C) 2006-2007 by Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "ghemicalextension.h"
+#include "forcefieldextension.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -36,7 +36,7 @@ using namespace OpenBabel;
 
 namespace Avogadro
 {
-  enum GhemicalExtensionIndex
+  enum ForceFieldExtensionIndex
   {
     OptimizeGeometryIndex = 0,
     CalculateEnergyIndex,
@@ -44,28 +44,29 @@ namespace Avogadro
     SetupForceFieldIndex
   };
 
-  GhemicalExtension::GhemicalExtension( QObject *parent ) : QObject( parent )
+  ForceFieldExtension::ForceFieldExtension( QObject *parent ) : QObject( parent )
   {
     QAction *action;
     m_forceField = OBForceField::FindForceField( "Ghemical" );
     m_Dialog = new ForceFieldDialog;
 
-    action = new QAction( this );
-    action->setText( tr("Optimize Geometry" ));
-    action->setData(OptimizeGeometryIndex);
-    m_actions.append( action );
-
-    action = new QAction( this );
-    action->setText( tr("Calculate Energy" ));
-    action->setData(CalculateEnergyIndex);
-    m_actions.append( action );
-
-    action = new QAction( this );
-    action->setText( tr("Rotor Search" ));
-    action->setData(RotorSearchIndex);
-    m_actions.append( action );
-
     if ( m_forceField ) { // make sure we can actually find and run it!
+
+      action = new QAction( this );
+      action->setText( tr("Optimize Geometry" ));
+      action->setData(OptimizeGeometryIndex);
+      m_actions.append( action );
+      
+      action = new QAction( this );
+      action->setText( tr("Calculate Energy" ));
+      action->setData(CalculateEnergyIndex);
+      m_actions.append( action );
+      
+      action = new QAction( this );
+      action->setText( tr("Rotor Search" ));
+      action->setData(RotorSearchIndex);
+      m_actions.append( action );
+      
       action = new QAction( this );
       action->setText( tr("Setup Force Field..." ));
       action->setData(SetupForceFieldIndex);
@@ -74,15 +75,15 @@ namespace Avogadro
 
   }
 
-  GhemicalExtension::~GhemicalExtension()
+  ForceFieldExtension::~ForceFieldExtension()
   {}
 
-  QList<QAction *> GhemicalExtension::actions() const
+  QList<QAction *> ForceFieldExtension::actions() const
   {
     return m_actions;
   }
 
-  QString GhemicalExtension::menuPath(QAction *action) const
+  QString ForceFieldExtension::menuPath(QAction *action) const
   {
     int i = action->data().toInt();
     switch(i) {
@@ -97,11 +98,24 @@ namespace Avogadro
     return QString();
   }
 
-  QUndoCommand* GhemicalExtension::performAction( QAction *action, Molecule *molecule,
+  QUndoCommand* ForceFieldExtension::performAction( QAction *action, Molecule *molecule,
       GLWidget *, QTextEdit *textEdit )
   {
     QUndoCommand *undo = NULL;
     ostringstream buff;
+
+    switch (m_Dialog->forceFieldID()) {
+    case 1:
+      m_forceField = OBForceField::FindForceField( "MMF94" );
+      break;
+    case 2:
+      m_forceField = OBForceField::FindForceField( "UFF" );
+      break;
+    case 0:
+    default:
+      m_forceField = OBForceField::FindForceField( "Ghemical" );
+      break;
+    }
 
     int i = action->data().toInt();
     switch ( i ) {
@@ -123,14 +137,20 @@ namespace Avogadro
         m_forceField->Energy();
         textEdit->append( tr( buff.str().c_str() ) );
         break;
-      case RotorSearchIndex: // systematic rotor search
-        undo = new GhemicalCommand( molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(),
+      case RotorSearchIndex: // random rotor search
+        if (!m_forceField)
+          break;
+
+        undo = new ForceFieldCommand( molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(),
                                     m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 1 );
         undo->setText( QObject::tr( "Rotor Search" ) );
         break;
 
       case OptimizeGeometryIndex: // geometry optimization
-        undo = new GhemicalCommand( molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(),
+        if (!m_forceField)
+          break;
+
+        undo = new ForceFieldCommand( molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(),
                                     m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 0 );
         undo->setText( QObject::tr( "Geometric Optimization" ) );
         break;
@@ -139,7 +159,7 @@ namespace Avogadro
     return undo;
   }
 
-  GhemicalThread::GhemicalThread( Molecule *molecule, OpenBabel::OBForceField* forceField,
+  ForceFieldThread::ForceFieldThread( Molecule *molecule, OpenBabel::OBForceField* forceField,
                                   QTextEdit *textEdit, int forceFieldID, int nSteps, int algorithm,
                                   int gradients, int convergence, int task, QObject *parent ) : QThread( parent )
   {
@@ -156,12 +176,12 @@ namespace Avogadro
     m_stop = false;
   }
 
-  int GhemicalThread::cycles() const
+  int ForceFieldThread::cycles() const
   {
     return m_cycles;
   }
 
-  void GhemicalThread::run()
+  void ForceFieldThread::run()
   {
     QWriteLocker locker( m_molecule->lock() );
     m_stop = false;
@@ -174,7 +194,7 @@ namespace Avogadro
     m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
 
     if ( !m_forceField->Setup( *m_molecule ) ) {
-      qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
+      qWarning() << "ForceFieldCommand: Could not set up force field on " << m_molecule;
       return;
     }
 
@@ -221,7 +241,7 @@ namespace Avogadro
         }
       }
     } else if ( m_task == 1 ) {
-      m_forceField->SystematicRotorSearch();
+      m_forceField->RandomRotorSearch(10, 50);
       m_forceField->UpdateCoordinates( *m_molecule );
       m_molecule->update();
     }
@@ -230,13 +250,13 @@ namespace Avogadro
     m_stop = false;
   }
 
-  void GhemicalThread::stop()
+  void ForceFieldThread::stop()
   {
     QMutexLocker locker(&m_mutex);
     m_stop = true;
   }
 
-  GhemicalCommand::GhemicalCommand( Molecule *molecule, OpenBabel::OBForceField* forceField,
+  ForceFieldCommand::ForceFieldCommand( Molecule *molecule, OpenBabel::OBForceField* forceField,
                                     QTextEdit *textEdit, int forceFieldID, int nSteps, int algorithm,
                                     int gradients, int convergence, int task ) :
       m_nSteps( nSteps ),
@@ -246,14 +266,14 @@ namespace Avogadro
       m_dialog( 0 ),
       m_detached( false )
   {
-    m_thread = new GhemicalThread( molecule, forceField, textEdit,
+    m_thread = new ForceFieldThread( molecule, forceField, textEdit,
                                    forceFieldID, nSteps, algorithm,
                                    gradients, convergence, task );
 
     m_moleculeCopy = *molecule;
   }
 
-  GhemicalCommand::~GhemicalCommand()
+  ForceFieldCommand::~ForceFieldCommand()
   {
     if ( !m_detached ) {
       if ( m_thread->isRunning() ) {
@@ -268,7 +288,7 @@ namespace Avogadro
     }
   }
 
-  void GhemicalCommand::redo()
+  void ForceFieldCommand::redo()
   {
     if(!m_dialog) {
       m_dialog = new QProgressDialog( QObject::tr( "Forcefield Optimization" ),
@@ -281,7 +301,7 @@ namespace Avogadro
     m_thread->start();
   }
   
-  void GhemicalCommand::undo()
+  void ForceFieldCommand::undo()
   {
     m_thread->stop();
     m_thread->wait();
@@ -290,9 +310,9 @@ namespace Avogadro
     *m_molecule = m_moleculeCopy;
   }
 
-  bool GhemicalCommand::mergeWith( const QUndoCommand *command )
+  bool ForceFieldCommand::mergeWith( const QUndoCommand *command )
   {
-    const GhemicalCommand *gc = dynamic_cast<const GhemicalCommand *>( command );
+    const ForceFieldCommand *gc = dynamic_cast<const ForceFieldCommand *>( command );
     if ( gc ) {
       // delete our current info
       cleanup();
@@ -304,22 +324,22 @@ namespace Avogadro
     return true;
   }
 
-  GhemicalThread *GhemicalCommand::thread() const
+  ForceFieldThread *ForceFieldCommand::thread() const
   {
     return m_thread;
   }
 
-  QProgressDialog *GhemicalCommand::progressDialog() const
+  QProgressDialog *ForceFieldCommand::progressDialog() const
   {
     return m_dialog;
   }
 
-  void GhemicalCommand::detach() const
+  void ForceFieldCommand::detach() const
   {
     m_detached = true;
   }
 
-  void GhemicalCommand::cleanup()
+  void ForceFieldCommand::cleanup()
   {
     if ( !m_detached ) {
       if ( m_thread->isRunning() ) {
@@ -334,12 +354,12 @@ namespace Avogadro
     }
   }
 
-  int GhemicalCommand::id() const
+  int ForceFieldCommand::id() const
   {
     return 54381241;
   }
 
 } // end namespace Avogadro
 
-#include "ghemicalextension.moc"
-Q_EXPORT_PLUGIN2( ghemicalextension, Avogadro::GhemicalExtensionFactory )
+#include "forcefieldextension.moc"
+Q_EXPORT_PLUGIN2( ghemicalextension, Avogadro::ForceFieldExtensionFactory )

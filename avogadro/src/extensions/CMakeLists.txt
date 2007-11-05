@@ -36,18 +36,18 @@ TARGET_LINK_LIBRARIES(gamessextension
 )
 INSTALL(TARGETS gamessextension DESTINATION ${DESTINATION_DIR})
 
-### ghemical
-set(ghemicalextension_SRCS ghemicalextension.cpp forcefielddialog.cpp)
-qt4_wrap_ui(ghemicalextension_UIS_H forcefielddialog.ui)
-qt4_automoc(${ghemicalextension_SRCS})
-ADD_LIBRARY(ghemicalextension SHARED ${ghemicalextension_SRCS} ${ghemicalextension_UIS_H})
-TARGET_LINK_LIBRARIES(ghemicalextension
+### Molecular Mechanics force fields
+set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp)
+qt4_wrap_ui(forcefieldextension_UIS_H forcefielddialog.ui)
+qt4_automoc(${forcefieldextension_SRCS})
+ADD_LIBRARY(forcefieldextension SHARED ${forcefieldextension_SRCS} ${forcefieldextension_UIS_H})
+TARGET_LINK_LIBRARIES(forcefieldextension
 	${OPENBABEL2_LIBRARIES}
 	${QT_LIBRARIES}
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS ghemicalextension DESTINATION ${DESTINATION_DIR})
+INSTALL(TARGETS forcefieldextension DESTINATION ${DESTINATION_DIR})
 
 ### hydrogens
 set(hydrogensextension_SRCS hydrogensextension.cpp)

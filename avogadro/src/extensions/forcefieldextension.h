@@ -1,8 +1,8 @@
 /**********************************************************************
-  Ghemical - Ghemical Plugin for Avogadro
+  forcefieldextension.h - Force field Plugin for Avogadro
 
   Copyright (C) 2006 by Donald Ephraim Curtis
-  Copyright (C) 2006 by Geoffrey R. Hutchison
+  Copyright (C) 2006-2007 by Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __GHEMICALEXTENSION_H
-#define __GHEMICALEXTENSION_H
+#ifndef __FORCEFIELDEXTENSION_H
+#define __FORCEFIELDEXTENSION_H
 
 
 #include "forcefielddialog.h"
@@ -45,22 +45,22 @@
 class QProgressDialog;
 namespace Avogadro {
 
- class GhemicalExtension : public QObject, public Extension
+ class ForceFieldExtension : public QObject, public Extension
   {
     Q_OBJECT
 
     public:
       //! Constructor
-      GhemicalExtension(QObject *parent=0);
+      ForceFieldExtension(QObject *parent=0);
       //! Deconstructor
-      virtual ~GhemicalExtension();
+      virtual ~ForceFieldExtension();
 
       //! \name Description methods
       //@{
       //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("Ghemical"); }
+      virtual QString name() const { return QObject::tr("ForceField"); }
       //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("Ghemical Plugin"); };
+      virtual QString description() const { return QObject::tr("ForceField Plugin"); };
 
       /** @return a menu path for the extension's actions */
       virtual QString menuPath(QAction *action) const;
@@ -77,21 +77,21 @@ namespace Avogadro {
       ForceFieldDialog *m_Dialog;
   };
 
-  class GhemicalExtensionFactory : public QObject, public ExtensionFactory
+  class ForceFieldExtensionFactory : public QObject, public ExtensionFactory
   {
     Q_OBJECT;
     Q_INTERFACES(Avogadro::ExtensionFactory);
 
     public:
-    Extension *createInstance(QObject *parent = 0) { return new GhemicalExtension(parent); }
+    Extension *createInstance(QObject *parent = 0) { return new ForceFieldExtension(parent); }
   };
 
-  class GhemicalThread : public QThread
+  class ForceFieldThread : public QThread
   {
     Q_OBJECT;
 
     public:
-    GhemicalThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
+    ForceFieldThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
         QTextEdit *textEdit, int forceFieldID, int nSteps, int algorithm,
         int gradients, int convergence, int task, QObject *parent=0);
 
@@ -124,13 +124,13 @@ namespace Avogadro {
       bool m_stop;
   };
 
- class GhemicalCommand : public QUndoCommand
+ class ForceFieldCommand : public QUndoCommand
  {
    public:
-     GhemicalCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield, QTextEdit *messages,
+     ForceFieldCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield, QTextEdit *messages,
          int forceFieldID, int nSteps, int algorithm, int gradients, int convergence, int task);
      
-     ~GhemicalCommand();
+     ~ForceFieldCommand();
      
      virtual void redo();
      virtual void undo();
@@ -140,7 +140,7 @@ namespace Avogadro {
      void detach() const;
      void cleanup();
      
-     GhemicalThread *thread() const;
+     ForceFieldThread *thread() const;
      QProgressDialog *progressDialog() const;
      
    private:
@@ -150,7 +150,7 @@ namespace Avogadro {
      Molecule *m_molecule;
      QTextEdit *m_textEdit;
      
-     GhemicalThread *m_thread;
+     ForceFieldThread *m_thread;
      QProgressDialog *m_dialog;
      
      mutable bool m_detached;

@@ -6,25 +6,17 @@
     <x>0</x>
     <y>0</y>
     <width>442</width>
-    <height>334</height>
+    <height>349</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Setup Force Field</string>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
    <item row="0" column="0" >
     <widget class="QGroupBox" name="groupBox" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>5</vsizetype>
+      <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -33,12 +25,6 @@
       <string>Force Field</string>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
       <item row="1" column="1" >
        <spacer>
         <property name="orientation" >
@@ -54,9 +40,22 @@
       </item>
       <item row="0" column="1" >
        <widget class="QComboBox" name="ForceFieldComboBox" >
+        <property name="currentIndex" >
+         <number>1</number>
+        </property>
         <item>
          <property name="text" >
           <string>Ghemical</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>MMFF94</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>UFF</string>
          </property>
         </item>
        </widget>
@@ -84,9 +83,7 @@
    <item row="1" column="0" >
     <widget class="QGroupBox" name="groupBox_2" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>5</vsizetype>
+      <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -95,12 +92,6 @@
       <string>Geometry Optimization</string>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
       <item row="0" column="0" >
        <widget class="QLabel" name="label_2" >
         <property name="text" >
@@ -188,11 +179,11 @@
         <property name="prefix" >
          <string>10e-</string>
         </property>
-        <property name="maximum" >
-         <number>10</number>
-        </property>
         <property name="minimum" >
          <number>2</number>
+        </property>
+        <property name="maximum" >
+         <number>10</number>
         </property>
         <property name="value" >
          <number>7</number>
