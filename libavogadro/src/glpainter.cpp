@@ -441,7 +441,6 @@ namespace Avogadro
     if(!d->isValid()) { return; }
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glLineWidth(radius);
 
     // The first value is repeated three times as is the last in order to complete the curve
     QVector<Eigen::Vector3d> points = pts;
@@ -450,9 +449,9 @@ namespace Avogadro
     points.push_back(pts.at(pts.size()-1));
     points.push_back(pts.at(pts.size()-1));
 
-    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+//    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
 
-    QVector<Eigen::Vector3d> p, a;
+/*    QVector<Eigen::Vector3d> p, a;
     a.resize(4);
     p.resize(4);
 
@@ -479,11 +478,56 @@ namespace Avogadro
       for (int j = 0; j < numPts; j++) {
         double t = step * j;
         cur = a[3] + t*(a[2] + t*(a[1] + t*a[0]));
-        drawCylinder(last, cur, radius);
+     //   drawCylinder(last, cur, radius/4.);
         last = cur;
       }
     }
-
+*/
+    glEnable(GL_AUTO_NORMAL);
+    GLUnurbsObj *nurb = gluNewNurbsRenderer();
+    // I think this needs some tweaking to get the best performance...
+    gluNurbsProperty(nurb, GLU_SAMPLING_TOLERANCE, 45.0f);
+    
+    // This seems reasonable but should be linked to the detail level
+    int TUBE_TESS = 6;
+    
+    GLfloat ctrlpts[points.size()][TUBE_TESS][3];
+    GLfloat uknots[points.size() + 4];
+    
+    for (int i = 0; i < points.size(); i++) {
+      for (int j = 0; j < TUBE_TESS; j++) {
+        ctrlpts[i][j][0] = sinf(j * M_PI / 1.5f) + points[i].x();
+        ctrlpts[i][j][1] = cosf(j * M_PI / 1.5f) + points[i].y();
+        ctrlpts[i][j][2] = points[i].z();
+      }
+      uknots[i+2] = i + 1.0;
+    }
+    uknots[0] = 0.;
+    uknots[1] = 0.;
+    uknots[pts.size()+2] = pts.size() + 1;
+    uknots[pts.size()+3] = pts.size() + 1;
+    
+    // Hard coded right now - will generalise for arbitrary TUBE_TESS values
+    GLfloat vknots[10] = {0., 0., 1., 2., 3., 4., 5., 6., 7., 7.};
+    
+    d->color.applyAsMaterials();
+    
+    // Actually draw the tube as a nurb
+    gluBeginSurface(nurb);
+    
+    gluNurbsSurface(nurb,
+                    pts.size() + 4, uknots,
+                    TUBE_TESS + 4, vknots,
+                    TUBE_TESS*3,
+                    3,
+                    &ctrlpts[0][0][0],
+                    4, 4,
+                    GL_MAP2_VERTEX_3);
+    
+    gluEndSurface(nurb);
+    
+    gluDeleteNurbsRenderer(nurb);
+    
     glPopAttrib();
   }
 

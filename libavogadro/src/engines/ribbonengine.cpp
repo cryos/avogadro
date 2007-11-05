@@ -60,15 +60,13 @@ RibbonEngine::~RibbonEngine()
 
 bool RibbonEngine::renderOpaque(PainterDevice *pd)
 {
-  pd->painter()->setColor(1., 0., 0.);
   // Check if the chains need updating before drawing them
   if (m_update) updateChains();
-  foreach(QVector<Vector3d> pts, chains) {
-    if (pts.size() > 1) {
-	  qDebug() << "Drawing residue with " << pts.size() << "atoms.";
+
+  pd->painter()->setColor(1., 0., 0.);
+  foreach(QVector<Vector3d> pts, chains)
+    if (pts.size() > 1)
       pd->painter()->drawSpline(pts, 0.35);
-    }
-  }
 
   return true;
 }

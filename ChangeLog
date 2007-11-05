@@ -1,9 +1,16 @@
+2007-11-05  Marcus D. Hanwell <marcus@cryos.org>
+  * libavogadro/src/glpainter.cpp: Now filled with NURBS goodness.
+  Still needs quite a bit of tuning and testing but visually improved.
+  
+  * libavogadro/src/engines/ribbonengine.cpp: Modifications to work
+  with the new GLPainter.
+
 2007-11-02  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/glwidget.cpp: Updated the setMolecule function to 
 	call setPrimitives for each engine at the end of molecule loading,
 	should make our molecule loading more efficient.
   
-  * libavogadro/src/engines/ribbonengine.*: Reimplement the
+  * libavogadro/src/engines/ribbonengine.*: Reimplemented the
   setPrimitives function due to changes in molecule loading.
 
 2007-11-01  Marcus D. Hanwell <marcus@cryos.org>
