@@ -4,7 +4,9 @@
 	for me here.
 
 	* libavogadro/src/glpainter.cpp: Added some extra calculations so that
-	the tube shouldn't be flattened and also has a defined radius.
+	the tube shouldn't be flattened and also has a defined radius. More
+	tuning has really improved the render speed - thanks to Thomas Margraf
+	for providing an example which inspired what I did here.
 
 2007-11-05  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/glpainter.cpp: Now filled with NURBS goodness.

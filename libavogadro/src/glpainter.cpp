@@ -485,8 +485,13 @@ namespace Avogadro
 */
     glEnable(GL_AUTO_NORMAL);
     GLUnurbsObj *nurb = gluNewNurbsRenderer();
-    // I think this needs some tweaking to get the best performance...
-    gluNurbsProperty(nurb, GLU_SAMPLING_TOLERANCE, 45.0f);
+    // These settings were inspired by the code supplied by Thomas Margraf
+    // and tweaked a little more by me - performance seems good.
+    // FIXME Should still be linked to our global quality level.
+    gluNurbsProperty(nurb, GLU_V_STEP, 4);
+    gluNurbsProperty(nurb, GLU_U_STEP, 10);
+    gluNurbsProperty(nurb, GLU_CULLING, GL_TRUE);
+    gluNurbsProperty(nurb, GLU_SAMPLING_METHOD, GLU_DOMAIN_DISTANCE);
     
     // This seems reasonable but should be linked to the detail level
     int TUBE_TESS = 6;
