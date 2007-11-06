@@ -494,11 +494,38 @@ namespace Avogadro
     GLfloat ctrlpts[points.size()][TUBE_TESS][3];
     GLfloat uknots[points.size() + 4];
     
-    for (int i = 0; i < points.size(); i++) {
+    // The first one is a special case
+    Eigen::Vector3f axis = Eigen::Vector3f(points[1].x() - points[0].x(),
+                                           points[1].y() - points[0].y(),
+                                           points[1].z() - points[0].z());
+    Eigen::Vector3f axisNormalized = axis.normalized();
+    Eigen::Vector3f ortho1, ortho2;
+    ortho1.loadOrtho(axisNormalized);
+    ortho1 *= radius;
+    axisNormalized.cross(ortho1, &ortho2);
+    for (int j = 0; j < TUBE_TESS; j++) {
+      double alpha = j * M_PI / 1.5f;
+      Eigen::Vector3f v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
+      ctrlpts[0][j][0] = v.x() + points[0].x();
+      ctrlpts[0][j][1] = v.y() + points[0].y();
+      ctrlpts[0][j][2] = v.z() + points[0].z();
+    }
+    uknots[2] = 1.0;
+    
+    for (int i = 1; i < points.size(); i++) {
+      axis = Eigen::Vector3f(points[i-1].x() - points[i].x(),
+                             points[i-1].y() - points[i].y(),
+                             points[i-1].z() - points[i].z());
+      axisNormalized = axis.normalized();
+      ortho1.loadOrtho(axisNormalized);
+      ortho1 *= radius;
+      axisNormalized.cross(ortho1, &ortho2); 
       for (int j = 0; j < TUBE_TESS; j++) {
-        ctrlpts[i][j][0] = sinf(j * M_PI / 1.5f) + points[i].x();
-        ctrlpts[i][j][1] = cosf(j * M_PI / 1.5f) + points[i].y();
-        ctrlpts[i][j][2] = points[i].z();
+        double alpha = j * M_PI / 1.5f;
+        Eigen::Vector3f v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
+        ctrlpts[i][j][0] = v.x() + points[i].x();
+        ctrlpts[i][j][1] = v.y() + points[i].y();
+        ctrlpts[i][j][2] = v.z() + points[i].z();
       }
       uknots[i+2] = i + 1.0;
     }

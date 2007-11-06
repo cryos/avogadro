@@ -11,13 +11,70 @@
   </property>
   <layout class="QGridLayout" >
    <item row="0" column="0" >
-    <widget class="QLabel" name="bondRadiusLabel_2" >
+    <widget class="QLabel" name="label" >
      <property name="text" >
-      <string>VdW Opacity:</string>
+      <string>Rendering:</string>
      </property>
     </widget>
    </item>
    <item row="0" column="1" >
+    <widget class="QComboBox" name="comboBox" >
+     <item>
+      <property name="text" >
+       <string>Backbone</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="bondRadiusLabel_2" >
+     <property name="text" >
+      <string>Radius:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QSlider" name="radiusSlider" >
+     <property name="minimum" >
+      <number>0</number>
+     </property>
+     <property name="maximum" >
+      <number>20</number>
+     </property>
+     <property name="singleStep" >
+      <number>1</number>
+     </property>
+     <property name="pageStep" >
+      <number>2</number>
+     </property>
+     <property name="value" >
+      <number>10</number>
+     </property>
+     <property name="sliderPosition" >
+      <number>10</number>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="invertedAppearance" >
+      <bool>false</bool>
+     </property>
+     <property name="tickPosition" >
+      <enum>QSlider::TicksBothSides</enum>
+     </property>
+     <property name="tickInterval" >
+      <number>4</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="bondRadiusLabel_3" >
+     <property name="text" >
+      <string>Opacity:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" >
     <widget class="QSlider" name="opacitySlider" >
      <property name="minimum" >
       <number>0</number>

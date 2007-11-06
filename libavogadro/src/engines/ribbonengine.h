@@ -72,6 +72,7 @@ namespace Avogadro {
       RibbonSettingsWidget *m_settingsWidget;
 
       double m_alpha; // transparency of the VdW spheres
+      double m_radius;
       bool m_update;  // Is an update of the chain necessary?
       QList< QVector<Eigen::Vector3d> > chains;
 
@@ -83,6 +84,7 @@ namespace Avogadro {
        * @param value opacity of the VdW spheres / 20
        */
       void setOpacity(int value);
+      void setRadius(int value);
 
   };
 

@@ -44,7 +44,7 @@ using namespace Eigen;
 
 
 RibbonEngine::RibbonEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
-  m_alpha(1.)
+  m_alpha(1.), m_radius(1.0)
 {
   setName(tr("Ribbon"));
   setDescription(tr("Renders residues as ribbons"));
@@ -60,25 +60,39 @@ RibbonEngine::~RibbonEngine()
 
 bool RibbonEngine::renderOpaque(PainterDevice *pd)
 {
+  if (m_alpha < 1.0) return true;
+  
   // Check if the chains need updating before drawing them
   if (m_update) updateChains();
 
   pd->painter()->setColor(1., 0., 0.);
+  
   foreach(QVector<Vector3d> pts, chains)
     if (pts.size() > 1)
-      pd->painter()->drawSpline(pts, 0.35);
+      pd->painter()->drawSpline(pts, m_radius);
 
   return true;
 }
 
-bool RibbonEngine::renderTransparent(PainterDevice *)
+bool RibbonEngine::renderTransparent(PainterDevice *pd)
 {
+  if (m_alpha > 0.999) return true;
+  glDepthMask(GL_TRUE);
+  // Check if the chains need updating before drawing them
+  if (m_update) updateChains();
+  
+  pd->painter()->setColor(1., 0., 0., m_alpha);
+  
+  foreach(QVector<Vector3d> pts, chains)
+  if (pts.size() > 1)
+    pd->painter()->drawSpline(pts, m_radius);
+  glDepthMask(GL_FALSE);
   return true;
 }
 
 double RibbonEngine::radius(const PainterDevice *, const Primitive *) const
 {
-  return 0.;
+  return m_radius;
 }
 
 void RibbonEngine::setPrimitives(const PrimitiveList &primitives)
@@ -160,12 +174,19 @@ void RibbonEngine::setOpacity(int value)
   emit changed();
 }
 
+void RibbonEngine::setRadius(int value)
+{
+  m_radius = 0.1 * value;
+  emit changed();
+}
+
 QWidget* RibbonEngine::settingsWidget()
 {
   if(!m_settingsWidget)
   {
     m_settingsWidget = new RibbonSettingsWidget();
     connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
+    connect(m_settingsWidget->radiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setRadius(int)));
     connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
   }
   return m_settingsWidget;
