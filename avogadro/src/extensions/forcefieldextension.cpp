@@ -241,7 +241,8 @@ namespace Avogadro
         }
       }
     } else if ( m_task == 1 ) {
-      m_forceField->RandomRotorSearch(10, 50);
+      m_forceField->WeightedRotorSearch(100, 50);
+      m_forceField->ConjugateGradients(250);
       m_forceField->UpdateCoordinates( *m_molecule );
       m_molecule->update();
     }
