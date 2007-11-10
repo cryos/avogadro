@@ -407,10 +407,35 @@ namespace Avogadro
     QString fileName = QFileDialog::getSaveFileName( this,
                        tr( "Export Bitmap Graphics" ) );
     if ( fileName.isEmpty() )
-      return;
-
+      return;    
+    
     // render it (with alpha channel)
-    if ( !d->glWidget->grabFrameBuffer( true ).save( fileName ) ) {
+    QImage exportImage = d->glWidget->grabFrameBuffer( true );
+
+    // now we embed molecular information into the file, if possible
+    OBConversion conv;
+    // MDL format is used for main copy -- atoms, bonds, chirality
+    // supports either 2D or 3D, generic data
+    OBFormat *mdlFormat = conv.FindFormat( "mdl" );
+    QByteArray copyData;
+    string output;
+    if ( mdlFormat && conv.SetOutFormat( mdlFormat ) ) {
+      output = conv.WriteString( d->molecule );
+      copyData = output.c_str();
+      // we embed the molfile into the image
+      // e.g. http://baoilleach.blogspot.com/2007/08/access-embedded-molecular-information.html
+      exportImage.setText("molfile", copyData);      
+    }
+    
+    // save a canonical SMILES too
+    OBFormat *canFormat = conv.FindFormat( "can" );
+    if ( canFormat && conv.SetOutFormat( canFormat ) ) {
+      output = conv.WriteString( d->molecule );
+      copyData = output.c_str();
+      exportImage.setText("SMILES", copyData);
+    }
+    
+    if ( !exportImage.save( fileName ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
                             tr( "Cannot save file %1." ).arg( fileName ) );
       return;
@@ -560,7 +585,8 @@ namespace Avogadro
   QMimeData* MainWindow::prepareClipboardData( QList<Primitive*> selectedItems )
   {
     QMimeData *mimeData = new QMimeData;
-    mimeData->setImageData( d->glWidget->grabFrameBuffer( true ) );
+    // we also save an image for copy/paste to office programs, presentations, etc.
+    QImage clipboardImage = d->glWidget->grabFrameBuffer( true );
 
     Molecule *moleculeCopy = d->molecule;
     if ( !selectedItems.isEmpty() ) { // we only want to copy the selected items
@@ -605,21 +631,34 @@ namespace Avogadro
     QByteArray copyData( output.c_str(), output.length() );
     mimeData->setData( "chemical/x-mdl-molfile", copyData );
 
+    // we embed the molfile into the image
+    // e.g. http://baoilleach.blogspot.com/2007/08/access-embedded-molecular-information.html
+    clipboardImage.setText("molfile", copyData);
+
+    // save a canonical SMILES too
+    OBFormat *canFormat = conv.FindFormat( "can" );
+    if ( canFormat && conv.SetOutFormat( canFormat ) ) {
+      output = conv.WriteString( moleculeCopy );
+      copyData = output.c_str();
+      clipboardImage.setText("SMILES", copyData);
+    }
+    
     // Copy XYZ coordinates to the text selection buffer
     OBFormat *xyzFormat = conv.FindFormat( "xyz" );
-    if ( !xyzFormat || !conv.SetOutFormat( xyzFormat ) ) {
-      statusBar()->showMessage( tr( "Copy failed (xyz unavailable)." ), 5000 );
-      return NULL;
+    if ( xyzFormat && conv.SetOutFormat( xyzFormat ) ) {
+      output = conv.WriteString( moleculeCopy );
+      copyData = output.c_str();
+      mimeData->setText( QString( copyData ) );
     }
-    output = conv.WriteString( moleculeCopy );
-    copyData = output.c_str();
-    mimeData->setText( QString( copyData ) );
 
     // need to free our temporary moleculeCopy
     if ( !selectedItems.isEmpty() ) {
       delete moleculeCopy;
     }
 
+    // save the image to the clipboard too
+    mimeData->setImageData(clipboardImage);
+    
     return mimeData;
   }
 

@@ -1,3 +1,9 @@
+2007-11-10  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/src/mainwindow.cpp (copy, exportGraphics): Embed MDL
+	molfile and SMILES data in exported graphics. Should allow PNG
+	files to be read back in via Open Babel 2.2.
+
 2007-11-06  Marcus D. Hanwell <marcus@cryos.org>
 	* avogadro/libavogadro/src/engines/ribbonengine.*: Added ability to
 	set the ribbon radius, also tried to add transparency - not working
