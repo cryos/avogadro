@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>AutoOptForceField</name>
     <message>
@@ -104,7 +105,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="51"/>
         <source>Auto Rotation Tool</source>
-        <translation type="unfinished">Rotation</translation>
+        <translation>Rotation</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="209"/>
@@ -188,7 +189,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.h" line="67"/>
         <source>Auto Rotation Tool</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rotations-Werkzeug</translation>
     </message>
 </context>
 <context>
@@ -196,7 +197,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/engines/bsdyengine.cpp" line="91"/>
         <source>Ball and Stick</source>
-        <translation type="unfinished"></translation>
+        <translation>Kugeln und Stäbe</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/bsdyengine.cpp" line="93"/>
@@ -248,12 +249,12 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="56"/>
         <source>Optimize Geometry</source>
-        <translation type="unfinished">Optimiere Geometrie</translation>
+        <translation>Optimiere Geometrie</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="61"/>
         <source>Calculate Energy</source>
-        <translation type="unfinished">Berechne Energie</translation>
+        <translation>Berechne Energie</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="66"/>
@@ -263,12 +264,12 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="71"/>
         <source>Setup Force Field...</source>
-        <translation type="unfinished">Kraftfeld einrichten...</translation>
+        <translation>Kraftfeld einrichten...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="93"/>
         <source>&amp;Tools&gt;Molecular Mechanics</source>
-        <translation type="unfinished">&amp;Tools&gt;Molekular-Mechanik</translation>
+        <translation>&amp;Tools&gt;Molekular-Mechanik</translation>
     </message>
 </context>
 <context>
@@ -299,7 +300,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../avogadro/src/extensions/gamessextension.cpp" line="178"/>
         <source>No Atoms Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Atome ausgewählt</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessextension.cpp" line="179"/>
@@ -490,7 +491,7 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="781"/>
         <source>View %1</source>
-        <translation type="unfinished">Zeige %1</translation>
+        <translation>Zeige %1</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="803"/>
@@ -579,7 +580,7 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="998"/>
         <source>This file contains multiple molecule records. Avogadro will only read the first molecule. If you save, all other molecules may be lost.</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Datei enthält mehrere Moleküle. Avogadro wird nur das erste Molekül anzeigen. Beim Speichern gehen alle anderen Moleküle verloren.</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="1013"/>
@@ -2836,12 +2837,12 @@ All changes will be lost!</source>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="372"/>
         <source>Close View</source>
-        <translation>Shließe Ansicht</translation>
+        <translation>Schließe Ansicht</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="373"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Molekül zentrieren</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="374"/>
@@ -3860,7 +3861,7 @@ Klicken um Atom ...</translation>
     <message>
         <location filename="../libavogadro/src/engines/stickengine.cpp" line="46"/>
         <source>Renders as Cylinders</source>
-        <translation type="unfinished">Als Zylinder darstellen</translation>
+        <translation>Zylinderdarstellung</translation>
     </message>
 </context>
 <context>
