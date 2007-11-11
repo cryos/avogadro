@@ -32,111 +32,112 @@
 using namespace std;
 using namespace OpenBabel;
 
-  namespace Avogadro {
-    HydrogensExtension::HydrogensExtension(QObject *parent) : QObject(parent)
-    {
-      QAction *action = new QAction(this);
-      action->setText(tr("Add Hydrogens"));
-      m_actions.append(action);
+namespace Avogadro {
 
-      action = new QAction(this);
-      action->setText(tr("Remove Hydrogens"));
-      m_actions.append(action);
+  HydrogensExtension::HydrogensExtension(QObject *parent) : QObject(parent)
+  {
+    QAction *action = new QAction(this);
+    action->setText(tr("Add Hydrogens"));
+    m_actions.append(action);
+
+    action = new QAction(this);
+    action->setText(tr("Remove Hydrogens"));
+    m_actions.append(action);
+  }
+
+  HydrogensExtension::~HydrogensExtension()
+  {
+  }
+
+  QList<QAction *> HydrogensExtension::actions() const
+  {
+    return m_actions;
+  }
+
+  QUndoCommand* HydrogensExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
+  {
+
+    QUndoCommand *undo = 0;
+    int i = m_actions.indexOf(action);
+    if( 0 <= i <= 1) {
+      undo = new HydrogensCommand(molecule, (enum HydrogensCommand::Action) i,
+          widget);
     }
 
-    HydrogensExtension::~HydrogensExtension()
-    {
+    return undo;
+  }
+
+  HydrogensCommand::HydrogensCommand(Molecule *molecule, enum Action action,
+      GLWidget *widget):
+    m_molecule(molecule), m_moleculeCopy(*molecule),
+    m_SelectedList(widget->selectedPrimitives()), m_action(action)
+  {
+    // save the selection from the current view widget
+    // (i.e., only modify a few hydrogens)
+    //      m_SelectedList = widget->selectedPrimitives;
+
+    switch(action) {
+      case AddHydrogens:
+        setText(QObject::tr("Add Hydrogens"));
+        break;
+      case RemoveHydrogens:
+        setText(QObject::tr("Remove Hydrogens"));
+        break;
     }
+  }
 
-    QList<QAction *> HydrogensExtension::actions() const
-    {
-      return m_actions;
-    }
-
-    QUndoCommand* HydrogensExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
-    {
-
-      QUndoCommand *undo = 0;
-      int i = m_actions.indexOf(action);
-      if( 0 <= i <= 1) {
-        undo = new HydrogensCommand(molecule, (enum HydrogensCommand::Action) i,
-                                    widget);
-      }
-
-      return undo;
-    }
-
-    HydrogensCommand::HydrogensCommand(Molecule *molecule, enum Action action,
-                                       GLWidget *widget):
-      m_molecule(molecule), m_moleculeCopy(*molecule),
-      m_SelectedList(widget->selectedPrimitives()), m_action(action)
-    {
-      // save the selection from the current view widget
-      // (i.e., only modify a few hydrogens)
-      //      m_SelectedList = widget->selectedPrimitives;
-
-      switch(action) {
-        case AddHydrogens:
-          setText(QObject::tr("Add Hydrogens"));
-          break;
-        case RemoveHydrogens:
-          setText(QObject::tr("Remove Hydrogens"));
-          break;
-      }
-    }
-
-    void HydrogensCommand::redo()
-    {
-      if (m_SelectedList.size() == 0) {
-        switch(m_action) {
+  void HydrogensCommand::redo()
+  {
+    if (m_SelectedList.size() == 0) {
+      switch(m_action) {
         case AddHydrogens:
           m_molecule->AddHydrogens(false,true);
           break;
         case RemoveHydrogens:
           m_molecule->DeleteHydrogens();
           break;
+      }
+    }
+    else { // user selected some atoms, only operate on those
+
+      foreach(Primitive *a, m_SelectedList)
+      {
+        if (a->type() == Primitive::AtomType)
+        {
+          Atom *atom = static_cast<Atom *>(a);
+
+          switch(m_action) {
+            case AddHydrogens:
+              m_molecule->AddHydrogens(atom);
+              break;
+            case RemoveHydrogens:
+              m_molecule->DeleteHydrogens(atom);
+              break;
+          }
         }
       }
-      else { // user selected some atoms, only operate on those
+    } // end adding to selected atoms
+    m_molecule->update();
+  }
 
-        foreach(Primitive *a, m_SelectedList)
-          {
-            if (a->type() == Primitive::AtomType)
-              {
-                Atom *atom = static_cast<Atom *>(a);
+  void HydrogensCommand::undo()
+  {
+    *m_molecule = m_moleculeCopy;
+    m_molecule->update();
+  }
 
-                switch(m_action) {
-                case AddHydrogens:
-                  m_molecule->AddHydrogens(atom);
-                  break;
-                case RemoveHydrogens:
-                  m_molecule->DeleteHydrogens(atom);
-                  break;
-                }
-              }
-          }
-      } // end adding to selected atoms
-      m_molecule->update();
-    }
+  bool HydrogensCommand::mergeWith ( const QUndoCommand * command )
+  {
+    // we received another call of the same action
+    return true;
+  }
 
-    void HydrogensCommand::undo()
-    {
-      *m_molecule = m_moleculeCopy;
-      m_molecule->update();
-    }
+  int HydrogensCommand::id() const
+  {
+    return 4709537 + (int) m_action;
+  }
 
-    bool HydrogensCommand::mergeWith ( const QUndoCommand * command )
-    {
-      // we received another call of the same action
-      return true;
-    }
-
-    int HydrogensCommand::id() const
-    {
-      return 4709537 + (int) m_action;
-    }
-
-  } // end namespace Avogadro
+} // end namespace Avogadro
 
 #include "hydrogensextension.moc"
 Q_EXPORT_PLUGIN2(hydrogensextension, Avogadro::HydrogensExtensionFactory)

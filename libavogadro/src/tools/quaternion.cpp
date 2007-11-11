@@ -28,117 +28,120 @@
 
 #include "quaternion.h"
 
-using namespace Avogadro;
 using namespace Eigen;
 
-// ##########  Constructor  ##########
+namespace Avogadro {
 
-Quaternion::Quaternion(double w, double x, double y, double z)
-{
-  m_W = w;
-  m_V = Vector3d(x,y,z);
-}
+  // ##########  Constructor  ##########
 
-// ##########  Constructor  ##########
+  Quaternion::Quaternion(double w, double x, double y, double z)
+  {
+    m_W = w;
+    m_V = Vector3d(x,y,z);
+  }
 
-Quaternion::Quaternion(double w, Vector3d v)
-{
-  m_W = w;
-  m_V = v;
-}
+  // ##########  Constructor  ##########
 
-// ##########  w  ##########
+  Quaternion::Quaternion(double w, Vector3d v)
+  {
+    m_W = w;
+    m_V = v;
+  }
 
-double Quaternion::w()
-{
-  return m_W;
-}
+  // ##########  w  ##########
 
-// ##########  x  ##########
+  double Quaternion::w()
+  {
+    return m_W;
+  }
 
-double Quaternion::x()
-{
-  return m_V.x();
-}
+  // ##########  x  ##########
 
-// ##########  y  ##########
+  double Quaternion::x()
+  {
+    return m_V.x();
+  }
 
-double Quaternion::y()
-{
-  return m_V.y();
-}
+  // ##########  y  ##########
 
-// ##########  z  ##########
+  double Quaternion::y()
+  {
+    return m_V.y();
+  }
 
-double Quaternion::z()
-{
-  return m_V.z();
-}
+  // ##########  z  ##########
 
-// ##########  v  ##########
+  double Quaternion::z()
+  {
+    return m_V.z();
+  }
 
-Vector3d Quaternion::v()
-{
-  return m_V;
-}
+  // ##########  v  ##########
 
-// ##########  norm  ##########
+  Vector3d Quaternion::v()
+  {
+    return m_V;
+  }
 
-double Quaternion::norm()
-{
-  return sqrt(norm2());
-}
+  // ##########  norm  ##########
 
-// ##########  norm2  ##########
+  double Quaternion::norm()
+  {
+    return sqrt(norm2());
+  }
 
-double Quaternion::norm2()
-{
-  return w() * w() + v().norm2();
-}
+  // ##########  norm2  ##########
 
-// ##########  multiply  ##########
+  double Quaternion::norm2()
+  {
+    return w() * w() + v().norm2();
+  }
 
-Quaternion Quaternion::multiply(Quaternion right)
-{
-  return Quaternion(w() * right.w() - v().dot(right.v()),
-                    w() * right.x() + x() * right.w() + y() * right.z() - z() * right.y(),
-                    w() * right.y() - x() * right.z() + y() * right.w() + z() * right.x(),
-                    w() * right.z() + x() * right.y() - y() * right.x() + z() * right.w());
-}
+  // ##########  multiply  ##########
 
-// ##########  multiplyToVector  ##########
+  Quaternion Quaternion::multiply(Quaternion right)
+  {
+    return Quaternion(w() * right.w() - v().dot(right.v()),
+        w() * right.x() + x() * right.w() + y() * right.z() - z() * right.y(),
+        w() * right.y() - x() * right.z() + y() * right.w() + z() * right.x(),
+        w() * right.z() + x() * right.y() - y() * right.x() + z() * right.w());
+  }
 
-Vector3d Quaternion::multiplyToVector(Quaternion right)
-{
-  return Vector3d(w() * right.x() + x() * right.w() + y() * right.z() - z() * right.y(),
-                  w() * right.y() - x() * right.z() + y() * right.w() + z() * right.x(),
-                  w() * right.z() + x() * right.y() - y() * right.x() + z() * right.w());
-}
+  // ##########  multiplyToVector  ##########
 
-// ##########  multiplicitiveInverse  ##########
+  Vector3d Quaternion::multiplyToVector(Quaternion right)
+  {
+    return Vector3d(w() * right.x() + x() * right.w() + y() * right.z() - z() * right.y(),
+        w() * right.y() - x() * right.z() + y() * right.w() + z() * right.x(),
+        w() * right.z() + x() * right.y() - y() * right.x() + z() * right.w());
+  }
 
-Quaternion Quaternion::multiplicitiveInverse()
-{
-  double divisor = norm2();
-  return Quaternion(w() / divisor, - v() / divisor);
-}
+  // ##########  multiplicitiveInverse  ##########
 
-// ##########  createRotationLeftHalf  ##########
+  Quaternion Quaternion::multiplicitiveInverse()
+  {
+    double divisor = norm2();
+    return Quaternion(w() / divisor, - v() / divisor);
+  }
 
-Quaternion Quaternion::createRotationLeftHalf(double theta, Vector3d rotationVector)
-{
-  double angleHalf = theta/2.0;
-  double sinAngle = sin(angleHalf);
+  // ##########  createRotationLeftHalf  ##########
 
-  return Quaternion(cos(angleHalf), rotationVector.x() * sinAngle, 
-                    rotationVector.y() * sinAngle, rotationVector.z() * sinAngle);
-}
+  Quaternion Quaternion::createRotationLeftHalf(double theta, Vector3d rotationVector)
+  {
+    double angleHalf = theta/2.0;
+    double sinAngle = sin(angleHalf);
 
-// ##########  performRotationMultiplication  ##########
+    return Quaternion(cos(angleHalf), rotationVector.x() * sinAngle, 
+        rotationVector.y() * sinAngle, rotationVector.z() * sinAngle);
+  }
 
-Vector3d Quaternion::performRotationMultiplication(Quaternion left, 
-    Vector3d direction, Quaternion right)
-{
-  return left.multiply(Quaternion(0,direction)).multiplyToVector(right);
+  // ##########  performRotationMultiplication  ##########
+
+  Vector3d Quaternion::performRotationMultiplication(Quaternion left, 
+      Vector3d direction, Quaternion right)
+  {
+    return left.multiply(Quaternion(0,direction)).multiplyToVector(right);
+  }
+
 }
 

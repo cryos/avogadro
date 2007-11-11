@@ -44,6 +44,7 @@ using namespace Eigen;
 
 namespace Avogadro
 {
+
 // our sort function
   Camera *camera = 0;
   bool sortCameraFarthest( const Primitive* lhs, const Primitive* rhs )

@@ -32,48 +32,49 @@
 #include "config.h"
 
 namespace Avogadro {
-AboutDialog::AboutDialog(QWidget *parent)
+
+  AboutDialog::AboutDialog(QWidget *parent)
     : QDialog(parent
 #ifdef Q_WS_MAC
-            , Qt::Tool
+        , Qt::Tool
 #endif
-            )
-{
-    QGridLayout *layout = new QGridLayout(this);
-    QLabel *label = new QLabel(this);
-    QLabel *lbl = new QLabel(this);
-    QPushButton *cmd = new QPushButton("OK", this);
-    QPixmap logo = QPixmap(":/icons/avogadro.png");
+        )
+    {
+      QGridLayout *layout = new QGridLayout(this);
+      QLabel *label = new QLabel(this);
+      QLabel *lbl = new QLabel(this);
+      QPushButton *cmd = new QPushButton("OK", this);
+      QPixmap logo = QPixmap(":/icons/avogadro.png");
 
-    label->setPixmap(logo.scaled(256, 256,
-                                 Qt::KeepAspectRatio,
-                                 Qt::SmoothTransformation));
+      label->setPixmap(logo.scaled(256, 256,
+            Qt::KeepAspectRatio,
+            Qt::SmoothTransformation));
 
-    lbl->setWordWrap(true);
-    lbl->setOpenExternalLinks(true);
-    lbl->setText(
-            tr("<h3>%1</h3>"
-                "<br/><br/>Application Version: %2 (svn revision: %3)"
-        "<br/><br/>Library Version: %4 (svn revision: %5)"
-        "<br/><br/>For more information check the <a href=\"http://avogadro.sourceforge.net/\">Avogadro homepage</a>."
-                "<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND,"
-                " INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A"
-                " PARTICULAR PURPOSE.<br/>"
-              ).arg(tr("Avogadro")).arg(VERSION).arg(SVN_REVISION).arg(Avogadro::Library::version()).arg(Avogadro::Library::svnRevision())
-            );
+      lbl->setWordWrap(true);
+      lbl->setOpenExternalLinks(true);
+      lbl->setText(
+          tr("<h3>%1</h3>"
+            "<br/><br/>Application Version: %2 (svn revision: %3)"
+            "<br/><br/>Library Version: %4 (svn revision: %5)"
+            "<br/><br/>For more information check the <a href=\"http://avogadro.sourceforge.net/\">Avogadro homepage</a>."
+            "<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND,"
+            " INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A"
+            " PARTICULAR PURPOSE.<br/>"
+            ).arg(tr("Avogadro")).arg(VERSION).arg(SVN_REVISION).arg(Avogadro::Library::version()).arg(Avogadro::Library::svnRevision())
+          );
 
-    cmd->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    cmd->setDefault(true);
-    connect(cmd, SIGNAL(clicked()),
-            this, SLOT(reject()));
+      cmd->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+      cmd->setDefault(true);
+      connect(cmd, SIGNAL(clicked()),
+          this, SLOT(reject()));
 
-    layout->addWidget(label, 0, 0, 1, 1);
-    layout->addWidget(lbl, 0, 1, 4, 4);
-    layout->addWidget(cmd, 4, 2, 1, 1);
-}
+      layout->addWidget(label, 0, 0, 1, 1);
+      layout->addWidget(lbl, 0, 1, 4, 4);
+      layout->addWidget(cmd, 4, 2, 1, 1);
+    }
 
-AboutDialog::~AboutDialog()
-{
-}
+  AboutDialog::~AboutDialog()
+  {
+  }
 }
 #include "aboutdialog.moc"

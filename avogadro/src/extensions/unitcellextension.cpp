@@ -29,6 +29,7 @@ using namespace std;
 using namespace OpenBabel;
 
 namespace Avogadro {
+
   UnitCellExtension::UnitCellExtension(QObject *parent) : QObject(parent), m_Widget(NULL)
   {
     QAction *action = new QAction(this);
@@ -37,9 +38,9 @@ namespace Avogadro {
     m_Dialog = new UnitCellParamDialog(static_cast<QWidget*>(parent));
 
     connect(m_Dialog, SIGNAL(unitCellDisplayChanged(int, int, int)),
-            this, SLOT(unitCellDisplayChanged(int, int, int)));
+        this, SLOT(unitCellDisplayChanged(int, int, int)));
     connect(m_Dialog, SIGNAL(unitCellParametersChanged(double, double, double, double, double, double)),
-            this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
+        this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
   }
 
   UnitCellExtension::~UnitCellExtension()
@@ -52,9 +53,9 @@ namespace Avogadro {
   }
 
   QUndoCommand* UnitCellExtension::performAction(QAction *,
-                                                 Molecule *molecule,
-                                                 GLWidget *widget,
-                                                 QTextEdit *)
+      Molecule *molecule,
+      GLWidget *widget,
+      QTextEdit *)
   {
     m_Molecule = molecule;
     m_Widget = widget;
@@ -68,18 +69,18 @@ namespace Avogadro {
 
       QMessageBox::StandardButton ret;
       ret = QMessageBox::warning(qobject_cast<QWidget*>(parent()),
-                                 tr("Avogadro"),
+          tr("Avogadro"),
           tr("This document is currently an isolated molecule.\n\n"
             "Do you want to create a crystal unit cell?"),
-                                 QMessageBox::Yes
-                                 | QMessageBox::No);
+          QMessageBox::Yes
+          | QMessageBox::No);
       if (ret == QMessageBox::Yes) {
         // Set some initial data (e.g., a box about the size of the molecule)
         // and one unit cell in each direction
         uc = new OBUnitCell;
         double estimatedSize = widget->radius() + 2.0;
         uc->SetData(estimatedSize, estimatedSize, estimatedSize,
-                    90.0, 90.0, 90.0);
+            90.0, 90.0, 90.0);
         molecule->SetData(uc);
 
         widget->setUnitCells(1, 1, 1);
@@ -114,7 +115,7 @@ namespace Avogadro {
   }
 
   void UnitCellExtension::unitCellParametersChanged(double a, double b, double c,
-                                     double alpha, double beta, double gamma)
+      double alpha, double beta, double gamma)
   {
     if (m_Molecule) {
       OBUnitCell *uc = NULL;

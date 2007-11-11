@@ -28,6 +28,7 @@
 #include <QString>
 
 namespace Avogadro {
+
   class EngineItemModelPrivate
   {
     public:

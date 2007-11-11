@@ -238,5 +238,4 @@ namespace Avogadro {
     }
   }
 
-
 } // end namespace Avogadro

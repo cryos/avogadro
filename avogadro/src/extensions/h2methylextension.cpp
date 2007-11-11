@@ -32,83 +32,84 @@
 using namespace std;
 using namespace OpenBabel;
 
-  namespace Avogadro {
-    H2MethylExtension::H2MethylExtension(QObject *parent) : QObject(parent)
-    {
-      QAction *action = new QAction(this);
-      action->setText(tr("Change H to Methyl"));
-      m_actions.append(action);
+namespace Avogadro {
+
+  H2MethylExtension::H2MethylExtension(QObject *parent) : QObject(parent)
+  {
+    QAction *action = new QAction(this);
+    action->setText(tr("Change H to Methyl"));
+    m_actions.append(action);
+  }
+
+  H2MethylExtension::~H2MethylExtension()
+  {
+  }
+
+  QList<QAction *> H2MethylExtension::actions() const
+  {
+    return m_actions;
+  }
+
+  QUndoCommand* H2MethylExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
+  {
+    QUndoCommand *undo = 0;
+    undo = new H2MethylCommand(molecule, widget);
+    return undo;
+  }
+
+  H2MethylCommand::H2MethylCommand(Molecule *molecule, GLWidget *widget):
+    m_molecule(molecule), m_moleculeCopy(*molecule),
+    m_SelectedList(widget->selectedPrimitives())
+  {
+    // save the selection from the current view widget
+    // (i.e., only modify a few hydrogens)
+    //      m_SelectedList = widget->selectedPrimitives;
+
+    setText(QObject::tr("H to Methyl"));
+  }
+
+  void H2MethylCommand::redo()
+  {
+    if (m_SelectedList.size() == 0) {
+      QList<Atom*> hydrogenList;
+      FOR_ATOMS_OF_MOL(a, m_molecule) {
+        if (a->IsHydrogen())
+          hydrogenList.append(static_cast<Atom *>(&*a));
+      }
+      foreach(Atom *a, hydrogenList) {
+        a->HtoMethyl();
+      }
     }
+    else { // user selected some atoms, only operate on those
 
-    H2MethylExtension::~H2MethylExtension()
-    {
-    }
-
-    QList<QAction *> H2MethylExtension::actions() const
-    {
-      return m_actions;
-    }
-
-    QUndoCommand* H2MethylExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
-    {
-      QUndoCommand *undo = 0;
-      undo = new H2MethylCommand(molecule, widget);
-      return undo;
-    }
-
-    H2MethylCommand::H2MethylCommand(Molecule *molecule, GLWidget *widget):
-      m_molecule(molecule), m_moleculeCopy(*molecule),
-      m_SelectedList(widget->selectedPrimitives())
-    {
-      // save the selection from the current view widget
-      // (i.e., only modify a few hydrogens)
-      //      m_SelectedList = widget->selectedPrimitives;
-
-      setText(QObject::tr("H to Methyl"));
-    }
-
-    void H2MethylCommand::redo()
-    {
-      if (m_SelectedList.size() == 0) {
-        QList<Atom*> hydrogenList;
-        FOR_ATOMS_OF_MOL(a, m_molecule) {
-          if (a->IsHydrogen())
-            hydrogenList.append(static_cast<Atom *>(&*a));
-        }
-        foreach(Atom *a, hydrogenList) {
-          a->HtoMethyl();
+      foreach(Primitive *a, m_SelectedList) {
+        if (a->type() == Primitive::AtomType) {
+          Atom *atom = static_cast<Atom *>(a);
+          atom->HtoMethyl();
         }
       }
-      else { // user selected some atoms, only operate on those
+    } // end adding to selected atoms
+    m_molecule->update();
+  }
 
-        foreach(Primitive *a, m_SelectedList) {
-          if (a->type() == Primitive::AtomType) {
-            Atom *atom = static_cast<Atom *>(a);
-            atom->HtoMethyl();
-          }
-        }
-      } // end adding to selected atoms
-      m_molecule->update();
-    }
+  void H2MethylCommand::undo()
+  {
+    *m_molecule = m_moleculeCopy;
+    m_molecule->update();
+  }
 
-    void H2MethylCommand::undo()
-    {
-      *m_molecule = m_moleculeCopy;
-      m_molecule->update();
-    }
+  bool H2MethylCommand::mergeWith ( const QUndoCommand * command )
+  {
+    // we received another call of the same action
+    return true;
+  }
 
-    bool H2MethylCommand::mergeWith ( const QUndoCommand * command )
-    {
-      // we received another call of the same action
-      return true;
-    }
+  int H2MethylCommand::id() const
+  {
+    return 4706531;
+  }
 
-    int H2MethylCommand::id() const
-    {
-      return 4706531;
-    }
-
-  } // end namespace Avogadro
+} // end namespace Avogadro
 
 #include "h2methylextension.moc"
 Q_EXPORT_PLUGIN2(hydrogensextension, Avogadro::H2MethylExtensionFactory)

@@ -37,361 +37,362 @@
 #define ZOOM_SIZE_FACTOR 0.3
 #define ATOM_SIZE_FACTOR 1.1
 
-using namespace Avogadro;
 using namespace Eigen;
 
-void Eyecandy::drawRotationHorizRibbon()
-{
-  glBegin(GL_QUAD_STRIP);
-  for(int i = 0; i <= TESS_LEVEL; i++) {
-    double alpha = m_xAngleStart + (static_cast<double>(i) / TESS_LEVEL)
-                                * (m_xAngleEnd - m_xAngleStart);
-    Vector3d v = cos(alpha) * m_xAxis + sin(alpha) * m_zAxis;
-    Vector3d v1 = v - RIBBON_WIDTH * m_yAxis;
-    Vector3d v2 = v + RIBBON_WIDTH * m_yAxis;
+namespace Avogadro {
+
+  void Eyecandy::drawRotationHorizRibbon()
+  {
+    glBegin(GL_QUAD_STRIP);
+    for(int i = 0; i <= TESS_LEVEL; i++) {
+      double alpha = m_xAngleStart + (static_cast<double>(i) / TESS_LEVEL)
+        * (m_xAngleEnd - m_xAngleStart);
+      Vector3d v = cos(alpha) * m_xAxis + sin(alpha) * m_zAxis;
+      Vector3d v1 = v - RIBBON_WIDTH * m_yAxis;
+      Vector3d v2 = v + RIBBON_WIDTH * m_yAxis;
+      glNormal3dv(v.array());
+      glVertex3dv((m_center + m_radius * v1).array());
+      glVertex3dv((m_center + m_radius * v2).array());
+    }
+    glEnd();
+  }
+
+  void Eyecandy::drawRotationVertRibbon()
+  {
+    glBegin(GL_QUAD_STRIP);
+    for(int i = 0; i <= TESS_LEVEL; i++) {
+      double alpha = m_yAngleStart + (static_cast<double>(i) / TESS_LEVEL)
+        * (m_yAngleEnd - m_yAngleStart);
+      Vector3d v = cos(alpha) * m_yAxis + sin(alpha) * m_zAxis;
+      Vector3d v1 = v - RIBBON_WIDTH * m_xAxis;
+      Vector3d v2 = v + RIBBON_WIDTH * m_xAxis;
+      glNormal3dv(v.array());
+      glVertex3dv((m_center + m_radius * v2).array());
+      glVertex3dv((m_center + m_radius * v1).array());
+    }
+    glEnd();
+  }
+
+  void Eyecandy::drawRotationLeftArrow()
+  {
+    Vector3d v = cos(m_xAngleEnd) * m_xAxis + sin(m_xAngleEnd) * m_zAxis;
+    Vector3d v1 = v + RIBBON_ARROW_WIDTH * m_yAxis;
+    Vector3d v2 = v - RIBBON_ARROW_WIDTH * m_yAxis;
+    Vector3d v3 = v + RIBBON_ARROW_LENGTH * v.cross(m_yAxis);
+    glBegin(GL_TRIANGLES);
+    glNormal3dv(v.array());
+    glVertex3dv((m_center + m_radius * v1).array());
+    glVertex3dv((m_center + m_radius * v3).array());
+    glVertex3dv((m_center + m_radius * v2).array());
+    glEnd();
+  }
+
+  void Eyecandy::drawRotationRightArrow()
+  {
+    Vector3d v = cos(m_xAngleStart) * m_xAxis + sin(m_xAngleStart) * m_zAxis;
+    Vector3d v1 = v - RIBBON_ARROW_WIDTH * m_yAxis;
+    Vector3d v2 = v + RIBBON_ARROW_WIDTH * m_yAxis;
+    Vector3d v3 = v - RIBBON_ARROW_LENGTH * v.cross(m_yAxis);
+    glBegin(GL_TRIANGLES);
+    glNormal3dv(v.array());
+    glVertex3dv((m_center + m_radius * v1).array());
+    glVertex3dv((m_center + m_radius * v3).array());
+    glVertex3dv((m_center + m_radius * v2).array());
+    glEnd();
+  }
+
+  void Eyecandy::drawRotationUpArrow()
+  {
+    Vector3d v = cos(m_yAngleStart) * m_yAxis + sin(m_yAngleStart) * m_zAxis;
+    Vector3d v1 = v - RIBBON_ARROW_WIDTH * m_xAxis;
+    Vector3d v2 = v + RIBBON_ARROW_WIDTH * m_xAxis;
+    Vector3d v3 = v + RIBBON_ARROW_LENGTH * v.cross(m_xAxis);
+    glBegin(GL_TRIANGLES);
     glNormal3dv(v.array());
     glVertex3dv((m_center + m_radius * v1).array());
     glVertex3dv((m_center + m_radius * v2).array());
+    glVertex3dv((m_center + m_radius * v3).array());
+    glEnd();
   }
-  glEnd();
-}
 
-void Eyecandy::drawRotationVertRibbon()
-{
-  glBegin(GL_QUAD_STRIP);
-  for(int i = 0; i <= TESS_LEVEL; i++) {
-    double alpha = m_yAngleStart + (static_cast<double>(i) / TESS_LEVEL)
-                                * (m_yAngleEnd - m_yAngleStart);
-    Vector3d v = cos(alpha) * m_yAxis + sin(alpha) * m_zAxis;
-    Vector3d v1 = v - RIBBON_WIDTH * m_xAxis;
-    Vector3d v2 = v + RIBBON_WIDTH * m_xAxis;
+  void Eyecandy::drawRotationDownArrow()
+  {
+    Vector3d v = cos(m_yAngleEnd) * m_yAxis + sin(m_yAngleEnd) * m_zAxis;
+    Vector3d v1 = v + RIBBON_ARROW_WIDTH * m_xAxis;
+    Vector3d v2 = v - RIBBON_ARROW_WIDTH * m_xAxis;
+    Vector3d v3 = v - RIBBON_ARROW_LENGTH * v.cross(m_xAxis);
+    glBegin(GL_TRIANGLES);
     glNormal3dv(v.array());
-    glVertex3dv((m_center + m_radius * v2).array());
     glVertex3dv((m_center + m_radius * v1).array());
+    glVertex3dv((m_center + m_radius * v2).array());
+    glVertex3dv((m_center + m_radius * v3).array());
+    glEnd();
   }
-  glEnd();
-}
 
-void Eyecandy::drawRotationLeftArrow()
-{
-  Vector3d v = cos(m_xAngleEnd) * m_xAxis + sin(m_xAngleEnd) * m_zAxis;
-  Vector3d v1 = v + RIBBON_ARROW_WIDTH * m_yAxis;
-  Vector3d v2 = v - RIBBON_ARROW_WIDTH * m_yAxis;
-  Vector3d v3 = v + RIBBON_ARROW_LENGTH * v.cross(m_yAxis);
-  glBegin(GL_TRIANGLES);
-  glNormal3dv(v.array());
-  glVertex3dv((m_center + m_radius * v1).array());
-  glVertex3dv((m_center + m_radius * v3).array());
-  glVertex3dv((m_center + m_radius * v2).array());
-  glEnd();
-}
-
-void Eyecandy::drawRotationRightArrow()
-{
-  Vector3d v = cos(m_xAngleStart) * m_xAxis + sin(m_xAngleStart) * m_zAxis;
-  Vector3d v1 = v - RIBBON_ARROW_WIDTH * m_yAxis;
-  Vector3d v2 = v + RIBBON_ARROW_WIDTH * m_yAxis;
-  Vector3d v3 = v - RIBBON_ARROW_LENGTH * v.cross(m_yAxis);
-  glBegin(GL_TRIANGLES);
-  glNormal3dv(v.array());
-  glVertex3dv((m_center + m_radius * v1).array());
-  glVertex3dv((m_center + m_radius * v3).array());
-  glVertex3dv((m_center + m_radius * v2).array());
-  glEnd();
-}
-
-void Eyecandy::drawRotationUpArrow()
-{
-  Vector3d v = cos(m_yAngleStart) * m_yAxis + sin(m_yAngleStart) * m_zAxis;
-  Vector3d v1 = v - RIBBON_ARROW_WIDTH * m_xAxis;
-  Vector3d v2 = v + RIBBON_ARROW_WIDTH * m_xAxis;
-  Vector3d v3 = v + RIBBON_ARROW_LENGTH * v.cross(m_xAxis);
-  glBegin(GL_TRIANGLES);
-  glNormal3dv(v.array());
-  glVertex3dv((m_center + m_radius * v1).array());
-  glVertex3dv((m_center + m_radius * v2).array());
-  glVertex3dv((m_center + m_radius * v3).array());
-  glEnd();
-}
-
-void Eyecandy::drawRotationDownArrow()
-{
-  Vector3d v = cos(m_yAngleEnd) * m_yAxis + sin(m_yAngleEnd) * m_zAxis;
-  Vector3d v1 = v + RIBBON_ARROW_WIDTH * m_xAxis;
-  Vector3d v2 = v - RIBBON_ARROW_WIDTH * m_xAxis;
-  Vector3d v3 = v - RIBBON_ARROW_LENGTH * v.cross(m_xAxis);
-  glBegin(GL_TRIANGLES);
-  glNormal3dv(v.array());
-  glVertex3dv((m_center + m_radius * v1).array());
-  glVertex3dv((m_center + m_radius * v2).array());
-  glVertex3dv((m_center + m_radius * v3).array());
-  glEnd();
-}
-
-void Eyecandy::drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle)
-{
-  if(clickedAtom)
+  void Eyecandy::drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle)
   {
-    drawRotation(widget, clickedAtom->pos(),
-      qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
-                          MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center)),
-      xAngle, yAngle);
+    if(clickedAtom)
+    {
+      drawRotation(widget, clickedAtom->pos(),
+          qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
+            MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center)),
+          xAngle, yAngle);
+    }
+    else
+    {
+      drawRotation(widget, widget->center(), 
+          qMin(
+            qMax(
+              qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
+              MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center)),
+            MAXIMUM_APPARENT_SIZE * widget->camera()->distance(m_center)),
+          xAngle, yAngle);
+    }
   }
-  else
+
+  void Eyecandy::drawRotation(GLWidget *widget, const Eigen::Vector3d center, double radius, double xAngle, double yAngle)
   {
-    drawRotation(widget, widget->center(), 
-      qMin(
-        qMax(
-          qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
-          MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center)),
-        MAXIMUM_APPARENT_SIZE * widget->camera()->distance(m_center)),
-      xAngle, yAngle);
+    m_center = center;
+    m_radius = radius;
+    m_xAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) - xAngle;
+    m_xAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) - xAngle;
+    m_yAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) + yAngle;
+    m_yAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) + yAngle;
+    m_xAxis = widget->camera()->backtransformedXAxis();
+    m_yAxis = widget->camera()->backtransformedYAxis();
+    m_zAxis = widget->camera()->backtransformedZAxis();
+
+    glEnable(GL_BLEND);
+    glDepthMask(GL_FALSE);
+    m_color.applyAsMaterials();
+
+    //draw back faces
+    glCullFace(GL_FRONT);
+    drawRotationHorizRibbon();
+    drawRotationVertRibbon();
+    drawRotationRightArrow();
+    drawRotationLeftArrow();
+    drawRotationUpArrow();
+    drawRotationDownArrow();
+
+    //draw front faces
+    glCullFace(GL_BACK); // this restores the default culling behaviour
+    drawRotationHorizRibbon();
+    drawRotationVertRibbon();
+    drawRotationRightArrow();
+    drawRotationLeftArrow();
+    drawRotationUpArrow();
+    drawRotationDownArrow();
+
+    glDisable(GL_BLEND);
+    glDepthMask(GL_TRUE);
   }
-}
 
-void Eyecandy::drawRotation(GLWidget *widget, const Eigen::Vector3d center, double radius, double xAngle, double yAngle)
-{
-  m_center = center;
-  m_radius = radius;
-  m_xAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) - xAngle;
-  m_xAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) - xAngle;
-  m_yAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) + yAngle;
-  m_yAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) + yAngle;
-  m_xAxis = widget->camera()->backtransformedXAxis();
-  m_yAxis = widget->camera()->backtransformedYAxis();
-  m_zAxis = widget->camera()->backtransformedZAxis();
-  
-  glEnable(GL_BLEND);
-  glDepthMask(GL_FALSE);
-  m_color.applyAsMaterials();
-  
-  //draw back faces
-  glCullFace(GL_FRONT);
-  drawRotationHorizRibbon();
-  drawRotationVertRibbon();
-  drawRotationRightArrow();
-  drawRotationLeftArrow();
-  drawRotationUpArrow();
-  drawRotationDownArrow();
-  
-  //draw front faces
-  glCullFace(GL_BACK); // this restores the default culling behaviour
-  drawRotationHorizRibbon();
-  drawRotationVertRibbon();
-  drawRotationRightArrow();
-  drawRotationLeftArrow();
-  drawRotationUpArrow();
-  drawRotationDownArrow();
-          
-  glDisable(GL_BLEND);
-  glDepthMask(GL_TRUE);
-}
-
-void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom)
-{
-  if(clickedAtom)
+  void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom)
   {
-    Eigen::Vector3d center = clickedAtom->pos();
-    drawTranslation(widget, center, qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
-                MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
-        widget->radius(clickedAtom));
+    if(clickedAtom)
+    {
+      Eigen::Vector3d center = clickedAtom->pos();
+      drawTranslation(widget, center, qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
+            MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
+          widget->radius(clickedAtom));
+    }
+    else
+    {
+      Eigen::Vector3d center = widget->center();
+      drawTranslation(widget, center, qMin(
+            qMax(
+              qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
+              MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
+            MAXIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
+          0.);
+    }
   }
-  else
+  void Eyecandy::drawTranslation(GLWidget *widget, const Eigen::Vector3d center, double size, double shift)
   {
-    Eigen::Vector3d center = widget->center();
-    drawTranslation(widget, center, qMin(
-        qMax(
-          qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
-          MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
-        MAXIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
-        0.);
+    glEnable(GL_BLEND);
+    glDisable(GL_LIGHTING);
+    glDepthMask(GL_FALSE);
+    m_color.apply();
+
+    // Set up the axes and some vectors to work with
+    Vector3d xAxis = widget->camera()->backtransformedXAxis();
+    Vector3d yAxis = widget->camera()->backtransformedYAxis();
+    Vector3d zAxis = widget->camera()->backtransformedZAxis();
+    Vector3d v;
+
+    // Horizontal arrow, pointing left
+    v = center + shift * zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    v += RIBBON_LENGTH * size * xAxis;
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*xAxis).array());
+    glEnd();
+    // Horizontal arrow, pointing right
+    v = center + shift*zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    v -= RIBBON_LENGTH*size * xAxis;
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*xAxis).array());
+    glEnd();
+    // Vertical arrow, pointing up
+    v = center + shift*zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    v += RIBBON_LENGTH*size * yAxis;
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*yAxis).array());
+    glEnd();
+    // Vertical arrow, pointing down
+    v = center + shift*zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    v -= RIBBON_LENGTH*size * yAxis;
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*yAxis).array());
+    glEnd();
+
+    glDisable(GL_BLEND);
+    glEnable(GL_LIGHTING);
+    glDepthMask(GL_TRUE);
   }
-}
-void Eyecandy::drawTranslation(GLWidget *widget, const Eigen::Vector3d center, double size, double shift)
-{
-  glEnable(GL_BLEND);
-  glDisable(GL_LIGHTING);
-  glDepthMask(GL_FALSE);
-  m_color.apply();
 
-  // Set up the axes and some vectors to work with
-  Vector3d xAxis = widget->camera()->backtransformedXAxis();
-  Vector3d yAxis = widget->camera()->backtransformedYAxis();
-  Vector3d zAxis = widget->camera()->backtransformedZAxis();
-  Vector3d v;
-   
-  // Horizontal arrow, pointing left
-  v = center + shift * zAxis;
-  glBegin(GL_QUAD_STRIP);
-  glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-  glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-  v += RIBBON_LENGTH * size * xAxis;
-  glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-  glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-  glEnd();
-  glBegin(GL_TRIANGLES);
-  glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
-  glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
-  glVertex3dv((v + RIBBON_ARROW_LENGTH*size*xAxis).array());
-  glEnd();
-  // Horizontal arrow, pointing right
-  v = center + shift*zAxis;
-  glBegin(GL_QUAD_STRIP);
-  glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-  glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-  v -= RIBBON_LENGTH*size * xAxis;
-  glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-  glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-  glEnd();
-  glBegin(GL_TRIANGLES);
-  glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
-  glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
-  glVertex3dv((v - RIBBON_ARROW_LENGTH*size*xAxis).array());
-  glEnd();
-  // Vertical arrow, pointing up
-  v = center + shift*zAxis;
-  glBegin(GL_QUAD_STRIP);
-  glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-  glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-  v += RIBBON_LENGTH*size * yAxis;
-  glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-  glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-  glEnd();
-  glBegin(GL_TRIANGLES);
-  glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
-  glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
-  glVertex3dv((v + RIBBON_ARROW_LENGTH*size*yAxis).array());
-  glEnd();
-  // Vertical arrow, pointing down
-  v = center + shift*zAxis;
-  glBegin(GL_QUAD_STRIP);
-  glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-  glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-  v -= RIBBON_LENGTH*size * yAxis;
-  glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-  glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-  glEnd();
-  glBegin(GL_TRIANGLES);
-  glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
-  glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
-  glVertex3dv((v - RIBBON_ARROW_LENGTH*size*yAxis).array());
-  glEnd();
-
-  glDisable(GL_BLEND);
-  glEnable(GL_LIGHTING);
-  glDepthMask(GL_TRUE);
-}
-
-void Eyecandy::drawZoom(GLWidget *widget, Atom *clickedAtom)
-{
-  if(clickedAtom) {
-    drawZoom(widget, clickedAtom->pos(), 
-        widget->radius(clickedAtom) *  2);
-  }
-  else
+  void Eyecandy::drawZoom(GLWidget *widget, Atom *clickedAtom)
   {
-    // zoom with respect to molecule's center: let's not draw any eyecandy
-    // as I can't think of any that would be useful.
-    Eigen::Vector3d center = widget->center();
-    drawZoom(widget, center, widget->radius());
-//     qMin(
-//         qMax(
-//           qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
-//           MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
-//         MAXIMUM_APPARENT_SIZE * widget->camera()->distance(center)));
+    if(clickedAtom) {
+      drawZoom(widget, clickedAtom->pos(), 
+          widget->radius(clickedAtom) *  2);
+    }
+    else
+    {
+      // zoom with respect to molecule's center: let's not draw any eyecandy
+      // as I can't think of any that would be useful.
+      Eigen::Vector3d center = widget->center();
+      drawZoom(widget, center, widget->radius());
+      //     qMin(
+      //         qMax(
+      //           qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
+      //           MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
+      //         MAXIMUM_APPARENT_SIZE * widget->camera()->distance(center)));
+    }
+  }
+
+  void Eyecandy::drawZoom(GLWidget *widget, const Eigen::Vector3d center, double size)
+  {
+    widget->painter()->setColor(&m_color);
+    //   glEnable( GL_BLEND );
+    //   widget->painter()->drawSphere(center, radius);
+    //   glDisable( GL_BLEND );
+    glEnable(GL_BLEND);
+    glDisable(GL_LIGHTING);
+    glDepthMask(GL_FALSE);
+    //draw back faces
+    glDisable(GL_CULL_FACE);
+    m_color.apply();
+
+    // Set up the axes and some vectors to work with
+    Vector3d xAxis = widget->camera()->backtransformedXAxis();
+    Vector3d yAxis = widget->camera()->backtransformedYAxis();
+    Vector3d zAxis = widget->camera()->backtransformedZAxis();
+    Vector3d v;
+
+    // Horizontal arrow, pointing left
+    v = center; // * zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    v += RIBBON_LENGTH * size * zAxis;
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*zAxis).array());
+    glEnd();
+    // Horizontal arrow, pointing right
+    v = center; // + shift*zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    v -= RIBBON_LENGTH*size * zAxis;
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*zAxis).array());
+    glEnd();
+    // Vertical arrow, pointing up
+    v = center; // + shift*zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    v += RIBBON_LENGTH*size * zAxis;
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*zAxis).array());
+    glEnd();
+    // Vertical arrow, pointing down
+    v = center; // + shift*zAxis;
+    glBegin(GL_QUAD_STRIP);
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    v -= RIBBON_LENGTH*size * zAxis;
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*zAxis).array());
+    glEnd();
+
+    //draw back faces
+    glEnable(GL_CULL_FACE);
+    glDisable(GL_BLEND);
+    glEnable(GL_LIGHTING);
+    glDepthMask(GL_TRUE);
+  }
+
+  void Eyecandy::setColor(const Color &color)
+  {
+    m_color = color;
+  }
+
+  Color Eyecandy::color() const
+  {
+    return m_color;
   }
 }
-
-void Eyecandy::drawZoom(GLWidget *widget, const Eigen::Vector3d center, double size)
-{
-  widget->painter()->setColor(&m_color);
-//   glEnable( GL_BLEND );
-//   widget->painter()->drawSphere(center, radius);
-//   glDisable( GL_BLEND );
-  glEnable(GL_BLEND);
-  glDisable(GL_LIGHTING);
-  glDepthMask(GL_FALSE);
-  //draw back faces
-  glDisable(GL_CULL_FACE);
-  m_color.apply();
-
-  // Set up the axes and some vectors to work with
-  Vector3d xAxis = widget->camera()->backtransformedXAxis();
-  Vector3d yAxis = widget->camera()->backtransformedYAxis();
-  Vector3d zAxis = widget->camera()->backtransformedZAxis();
-  Vector3d v;
-   
-  // Horizontal arrow, pointing left
-  v = center; // * zAxis;
-  glBegin(GL_QUAD_STRIP);
-  glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-  glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-  v += RIBBON_LENGTH * size * zAxis;
-  glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-  glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-  glEnd();
-  glBegin(GL_TRIANGLES);
-  glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
-  glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
-  glVertex3dv((v + RIBBON_ARROW_LENGTH*size*zAxis).array());
-  glEnd();
-  // Horizontal arrow, pointing right
-  v = center; // + shift*zAxis;
-  glBegin(GL_QUAD_STRIP);
-  glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-  glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-  v -= RIBBON_LENGTH*size * zAxis;
-  glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-  glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-  glEnd();
-  glBegin(GL_TRIANGLES);
-  glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
-  glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
-  glVertex3dv((v - RIBBON_ARROW_LENGTH*size*zAxis).array());
-  glEnd();
-  // Vertical arrow, pointing up
-  v = center; // + shift*zAxis;
-  glBegin(GL_QUAD_STRIP);
-  glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-  glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-  v += RIBBON_LENGTH*size * zAxis;
-  glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-  glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-  glEnd();
-  glBegin(GL_TRIANGLES);
-  glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
-  glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
-  glVertex3dv((v + RIBBON_ARROW_LENGTH*size*zAxis).array());
-  glEnd();
-  // Vertical arrow, pointing down
-  v = center; // + shift*zAxis;
-  glBegin(GL_QUAD_STRIP);
-  glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-  glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-  v -= RIBBON_LENGTH*size * zAxis;
-  glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-  glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-  glEnd();
-  glBegin(GL_TRIANGLES);
-  glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
-  glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
-  glVertex3dv((v - RIBBON_ARROW_LENGTH*size*zAxis).array());
-  glEnd();
-
-  //draw back faces
-  glEnable(GL_CULL_FACE);
-  glDisable(GL_BLEND);
-  glEnable(GL_LIGHTING);
-  glDepthMask(GL_TRUE);
-}
-
-void Eyecandy::setColor(const Color &color)
-{
-  m_color = color;
-}
-
-Color Eyecandy::color() const
-{
-  return m_color;
-}
-      

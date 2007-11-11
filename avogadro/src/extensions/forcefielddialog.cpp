@@ -30,83 +30,84 @@
 
 #include <QMessageBox>
 
-using namespace Avogadro;
+namespace Avogadro {
 
-ForceFieldDialog::ForceFieldDialog( QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f )
-{
-//  qDebug() << "ForceFieldDialog::ForceFieldDialog()" << endl;
-  
-  ui.setupUi(this);
+  ForceFieldDialog::ForceFieldDialog( QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f )
+  {
+    //  qDebug() << "ForceFieldDialog::ForceFieldDialog()" << endl;
 
-  m_forceFieldID = 0; // ghemical
-  m_nSteps = 100;
-  m_algorithm = 1; // conjugate gradients
-  m_gradients = 1; // analytical
-  m_convergence = 7;
+    ui.setupUi(this);
 
-  ui.ForceFieldComboBox->setCurrentIndex(m_forceFieldID);
-  ui.StepsSpinBox->setValue(m_nSteps);
-  ui.AlgorithmComboBox->setCurrentIndex(m_algorithm);
-  ui.GradientsComboBox->setCurrentIndex(m_gradients);
-  ui.ConvergenceSpinBox->setValue(m_convergence);
-}
+    m_forceFieldID = 0; // ghemical
+    m_nSteps = 100;
+    m_algorithm = 1; // conjugate gradients
+    m_gradients = 1; // analytical
+    m_convergence = 7;
 
-ForceFieldDialog::~ForceFieldDialog()
-{
-//  qDebug() << "ForceFieldDialog::~ForceFieldDialog()" << endl;
-}
+    ui.ForceFieldComboBox->setCurrentIndex(m_forceFieldID);
+    ui.StepsSpinBox->setValue(m_nSteps);
+    ui.AlgorithmComboBox->setCurrentIndex(m_algorithm);
+    ui.GradientsComboBox->setCurrentIndex(m_gradients);
+    ui.ConvergenceSpinBox->setValue(m_convergence);
+  }
 
-void ForceFieldDialog::accept()
-{
-//  qDebug() << "ForceFieldDialog::accept()";
-  qDebug() << "Force Field: " << ui.ForceFieldComboBox->currentIndex();
-  qDebug() << "Nymber of steps: " << ui.StepsSpinBox->value();
-  qDebug() << "Algorithm: " << ui.AlgorithmComboBox->currentIndex();
-  qDebug() << "Gradients: " << ui.GradientsComboBox->currentIndex();
+  ForceFieldDialog::~ForceFieldDialog()
+  {
+    //  qDebug() << "ForceFieldDialog::~ForceFieldDialog()" << endl;
+  }
 
-  m_forceFieldID = ui.ForceFieldComboBox->currentIndex();
-  m_nSteps = ui.StepsSpinBox->value();
-  m_algorithm = ui.AlgorithmComboBox->currentIndex();
-  m_gradients = ui.GradientsComboBox->currentIndex();
-  m_convergence = ui.ConvergenceSpinBox->value();
+  void ForceFieldDialog::accept()
+  {
+    //  qDebug() << "ForceFieldDialog::accept()";
+    qDebug() << "Force Field: " << ui.ForceFieldComboBox->currentIndex();
+    qDebug() << "Nymber of steps: " << ui.StepsSpinBox->value();
+    qDebug() << "Algorithm: " << ui.AlgorithmComboBox->currentIndex();
+    qDebug() << "Gradients: " << ui.GradientsComboBox->currentIndex();
 
-  hide();
-}
+    m_forceFieldID = ui.ForceFieldComboBox->currentIndex();
+    m_nSteps = ui.StepsSpinBox->value();
+    m_algorithm = ui.AlgorithmComboBox->currentIndex();
+    m_gradients = ui.GradientsComboBox->currentIndex();
+    m_convergence = ui.ConvergenceSpinBox->value();
 
-void ForceFieldDialog::reject()
-{
-//  qDebug() << "ForceFieldDialog::reject()" << endl;
-  
-  ui.ForceFieldComboBox->setCurrentIndex(m_forceFieldID);
-  ui.StepsSpinBox->setValue(m_nSteps);
-  ui.AlgorithmComboBox->setCurrentIndex(m_algorithm);
-  ui.GradientsComboBox->setCurrentIndex(m_gradients);
-  ui.ConvergenceSpinBox->setValue(m_convergence);
-}
+    hide();
+  }
 
-int ForceFieldDialog::forceFieldID()
-{
-  return m_forceFieldID;
-}
+  void ForceFieldDialog::reject()
+  {
+    //  qDebug() << "ForceFieldDialog::reject()" << endl;
 
-int ForceFieldDialog::nSteps()
-{
-  return m_nSteps;
-}
+    ui.ForceFieldComboBox->setCurrentIndex(m_forceFieldID);
+    ui.StepsSpinBox->setValue(m_nSteps);
+    ui.AlgorithmComboBox->setCurrentIndex(m_algorithm);
+    ui.GradientsComboBox->setCurrentIndex(m_gradients);
+    ui.ConvergenceSpinBox->setValue(m_convergence);
+  }
 
-int ForceFieldDialog::algorithm()
-{
-  return m_algorithm;
-}
+  int ForceFieldDialog::forceFieldID()
+  {
+    return m_forceFieldID;
+  }
 
-int ForceFieldDialog::gradients()
-{
-  return m_gradients;
-}
+  int ForceFieldDialog::nSteps()
+  {
+    return m_nSteps;
+  }
 
-int ForceFieldDialog::convergence()
-{
-  return m_convergence;
+  int ForceFieldDialog::algorithm()
+  {
+    return m_algorithm;
+  }
+
+  int ForceFieldDialog::gradients()
+  {
+    return m_gradients;
+  }
+
+  int ForceFieldDialog::convergence()
+  {
+    return m_convergence;
+  }
 }
 
 #include "forcefielddialog.moc"

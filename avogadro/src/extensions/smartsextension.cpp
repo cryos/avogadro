@@ -31,61 +31,62 @@
 using namespace std;
 using namespace OpenBabel;
 
-  namespace Avogadro {
-    SmartsExtension::SmartsExtension(QObject *parent) : QObject(parent)
-    {
-      QAction *action = new QAction(this);
-      action->setText(tr("Select SMARTS"));
-      m_actions.append(action);
+namespace Avogadro {
+
+  SmartsExtension::SmartsExtension(QObject *parent) : QObject(parent)
+  {
+    QAction *action = new QAction(this);
+    action->setText(tr("Select SMARTS"));
+    m_actions.append(action);
+  }
+
+  SmartsExtension::~SmartsExtension()
+  {
+  }
+
+  QList<QAction *> SmartsExtension::actions() const
+  {
+    return m_actions;
+  }
+
+  QUndoCommand* SmartsExtension::performAction(QAction *,
+      Molecule *molecule,
+      GLWidget *widget,
+      QTextEdit *)
+  {
+    bool ok;
+    QString pattern = QInputDialog::getText(qobject_cast<QWidget*>(parent()),
+        tr("SMARTS Selection"),
+        tr("SMARTS pattern to select"),
+        QLineEdit::Normal,
+        "", &ok);
+    if (ok && !pattern.isEmpty()) {
+      OBSmartsPattern smarts;
+      smarts.Init(pattern.toStdString());
+      smarts.Match(*molecule);
+
+      // if we have matches, select them
+      if(smarts.NumMatches() != 0) {
+        QList<Primitive *> matchedAtoms;
+
+        vector< vector <int> > mapList = smarts.GetUMapList();
+        vector< vector <int> >::iterator i; // a set of matching atoms
+        vector<int>::iterator j; // atom ids in each match
+        for (i = mapList.begin(); i != mapList.end(); ++i)
+          for (j = i->begin(); j != i->end(); ++j) {
+            matchedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
+          }
+
+        widget->clearSelected();
+        widget->setSelected(matchedAtoms, true);
+        widget->update();
+      } // end matches
     }
 
-    SmartsExtension::~SmartsExtension()
-    {
-    }
+    return NULL;
+  }
 
-    QList<QAction *> SmartsExtension::actions() const
-    {
-      return m_actions;
-    }
-
-    QUndoCommand* SmartsExtension::performAction(QAction *,
-                                                 Molecule *molecule,
-                                                 GLWidget *widget,
-                                                 QTextEdit *)
-    {
-      bool ok;
-      QString pattern = QInputDialog::getText(qobject_cast<QWidget*>(parent()),
-                                              tr("SMARTS Selection"),
-                                              tr("SMARTS pattern to select"),
-                                              QLineEdit::Normal,
-                                              "", &ok);
-      if (ok && !pattern.isEmpty()) {
-        OBSmartsPattern smarts;
-        smarts.Init(pattern.toStdString());
-        smarts.Match(*molecule);
-
-        // if we have matches, select them
-        if(smarts.NumMatches() != 0) {
-          QList<Primitive *> matchedAtoms;
-
-          vector< vector <int> > mapList = smarts.GetUMapList();
-          vector< vector <int> >::iterator i; // a set of matching atoms
-          vector<int>::iterator j; // atom ids in each match
-          for (i = mapList.begin(); i != mapList.end(); ++i)
-            for (j = i->begin(); j != i->end(); ++j) {
-              matchedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
-            }
-
-          widget->clearSelected();
-          widget->setSelected(matchedAtoms, true);
-          widget->update();
-        } // end matches
-      }
-
-      return NULL;
-    }
-
-  } // end namespace Avogadro
+} // end namespace Avogadro
 
 #include "smartsextension.moc"
 Q_EXPORT_PLUGIN2(smartsextension, Avogadro::SmartsExtensionFactory)

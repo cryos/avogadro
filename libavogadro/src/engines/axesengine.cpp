@@ -33,73 +33,75 @@
 
 using namespace std;
 using namespace OpenBabel;
-using namespace Avogadro;
 using namespace Eigen;
 
-AxesEngine::AxesEngine(QObject *parent) : Engine(parent)
-{
-  setName(tr("Axes"));
-  setDescription(tr("Renders x, y and z axes"));
-}
+namespace Avogadro {
 
-bool AxesEngine::renderOpaque(PainterDevice *pd)
-{
-  // save the opengl projection matrix and set up an orthogonal projection
-  glMatrixMode(GL_PROJECTION);
-  glPushMatrix();
-  glLoadIdentity();
-  // Ensure the axes are of the same length
-  double aspectRatio = static_cast<double>(pd->width())/static_cast<double>(pd->height());
-  glOrtho(0, aspectRatio, 0, 1, 0, 1);
-  glMatrixMode(GL_MODELVIEW);
-  glPushMatrix();
-  glLoadIdentity();
+  AxesEngine::AxesEngine(QObject *parent) : Engine(parent)
+  {
+    setName(tr("Axes"));
+    setDescription(tr("Renders x, y and z axes"));
+  }
 
-  // Don't want any lighting or blending for the axes
-  glDisable(GL_LIGHTING);
-  glDisable(GL_BLEND);
+  bool AxesEngine::renderOpaque(PainterDevice *pd)
+  {
+    // save the opengl projection matrix and set up an orthogonal projection
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    // Ensure the axes are of the same length
+    double aspectRatio = static_cast<double>(pd->width())/static_cast<double>(pd->height());
+    glOrtho(0, aspectRatio, 0, 1, 0, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
 
-  // Set the origin and calculate the positions of the axes
-  Vector3d origin = Vector3d(0.07, 0.07, -.07);
-  MatrixP3d axisTranslation;
-  axisTranslation.loadTranslation(pd->camera()->transformedXAxis() * 0.06);
-  Vector3d aX = axisTranslation * origin;
-  axisTranslation.loadTranslation(pd->camera()->transformedYAxis() * 0.06);
-  Vector3d aY = axisTranslation * origin;
-  axisTranslation.loadTranslation(pd->camera()->transformedZAxis() * 0.06);
-  Vector3d aZ = axisTranslation * origin;
+    // Don't want any lighting or blending for the axes
+    glDisable(GL_LIGHTING);
+    glDisable(GL_BLEND);
 
-  // Draw the axes in red, green and blue so they can be easily identified
-  glBegin(GL_LINES);
-  glColor4f(1.0, 0.0, 0.0, 1.);
-  glVertex3d(origin.x(), origin.y(), origin.z());
-  glVertex3d(aX.x(), aX.y(), aX.z());
-  glColor4f(0.0, 1.0, 0.0, 1.);
-  glVertex3d(origin.x(), origin.y(), origin.z());
-  glVertex3d(aY.x(), aY.y(), aY.z());
-  glColor4f(0.0, 0.0, 1.0, 1.);
-  glVertex3d(origin.x(), origin.y(), origin.z());
-  glVertex3d(aZ.x(), aZ.y(), aZ.z());
-  glEnd();
-  // FIXME Would be good to draw labels on the axes too, can't figure out
-  // how to do that with the current drawText functions in this projection
-//  gl->painter()->drawText(aX, "x");
+    // Set the origin and calculate the positions of the axes
+    Vector3d origin = Vector3d(0.07, 0.07, -.07);
+    MatrixP3d axisTranslation;
+    axisTranslation.loadTranslation(pd->camera()->transformedXAxis() * 0.06);
+    Vector3d aX = axisTranslation * origin;
+    axisTranslation.loadTranslation(pd->camera()->transformedYAxis() * 0.06);
+    Vector3d aY = axisTranslation * origin;
+    axisTranslation.loadTranslation(pd->camera()->transformedZAxis() * 0.06);
+    Vector3d aZ = axisTranslation * origin;
 
-  // restore the original OpenGL projection and lighting
-  glEnable(GL_LIGHTING);
-  glPopMatrix();
-  glMatrixMode(GL_PROJECTION);
-  glPopMatrix();
-  glMatrixMode(GL_MODELVIEW);
+    // Draw the axes in red, green and blue so they can be easily identified
+    glBegin(GL_LINES);
+    glColor4f(1.0, 0.0, 0.0, 1.);
+    glVertex3d(origin.x(), origin.y(), origin.z());
+    glVertex3d(aX.x(), aX.y(), aX.z());
+    glColor4f(0.0, 1.0, 0.0, 1.);
+    glVertex3d(origin.x(), origin.y(), origin.z());
+    glVertex3d(aY.x(), aY.y(), aY.z());
+    glColor4f(0.0, 0.0, 1.0, 1.);
+    glVertex3d(origin.x(), origin.y(), origin.z());
+    glVertex3d(aZ.x(), aZ.y(), aZ.z());
+    glEnd();
+    // FIXME Would be good to draw labels on the axes too, can't figure out
+    // how to do that with the current drawText functions in this projection
+    //  gl->painter()->drawText(aX, "x");
 
-  return true;
-}
+    // restore the original OpenGL projection and lighting
+    glEnable(GL_LIGHTING);
+    glPopMatrix();
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
 
-Engine::EngineFlags AxesEngine::flags() const
-{
-  return Engine::Overlay;
+    return true;
+  }
+
+  Engine::EngineFlags AxesEngine::flags() const
+  {
+    return Engine::Overlay;
+  }
 }
 
 #include "axesengine.moc"
 
-Q_EXPORT_PLUGIN2(axesengine, AxesEngineFactory)
+Q_EXPORT_PLUGIN2(axesengine, Avogadro::AxesEngineFactory)

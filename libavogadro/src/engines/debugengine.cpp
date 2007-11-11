@@ -38,8 +38,10 @@
 
 using namespace std;
 using namespace OpenBabel;
-using namespace Avogadro;
 using namespace Eigen;
+
+namespace Avogadro 
+{
 
 DebugEngine::DebugEngine(QObject *parent) : Engine(parent)
 {
@@ -108,7 +110,8 @@ Engine::EngineFlags DebugEngine::flags() const
 {
   return Engine::Overlay;
 }
+}
 
 #include "debugengine.moc"
 
-Q_EXPORT_PLUGIN2(debugengine, DebugEngineFactory)
+Q_EXPORT_PLUGIN2(debugengine, Avogadro::DebugEngineFactory)
