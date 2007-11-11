@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="fr">
-<defaultcodec></defaultcodec>
 <context>
     <name>AutoRotateTool</name>
     <message>
@@ -444,6 +443,14 @@ Right Mouse: Delete Atom</source>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="93"/>
         <source>&amp;Tools&gt;Molecular Mechanics</source>
         <translation>&amp;Outils&gt;Mécanique moléculaire</translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::GLWidget</name>
+    <message>
+        <location filename="../libavogadro/src/glwidget.cpp" line="932"/>
+        <source>Ball and Stick</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

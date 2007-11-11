@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>AutoOptForceField</name>
     <message>
@@ -554,6 +555,14 @@ Rechte Maustaste: Atom löschen</translation>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="93"/>
         <source>&amp;Tools&gt;Molecular Mechanics</source>
         <translation>&amp;Tools&gt;Molekular-Mechanik</translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::GLWidget</name>
+    <message>
+        <location filename="../libavogadro/src/glwidget.cpp" line="932"/>
+        <source>Ball and Stick</source>
+        <translation>Kugeln und Stäbe</translation>
     </message>
 </context>
 <context>
