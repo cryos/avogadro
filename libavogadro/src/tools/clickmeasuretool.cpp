@@ -28,7 +28,6 @@
 #include <avogadro/glwidget.h>
 
 #include <openbabel/obiter.h>
-#include <eigen/regression.h>
 
 #include <math.h>
 
@@ -83,6 +82,37 @@ QUndoCommand* ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *
     if(m_numSelectedAtoms < 3) {
       // select the third one
       m_selectedAtoms[m_numSelectedAtoms++] = atom;
+
+      if(m_numSelectedAtoms == 2)
+      {
+        m_vector[0] = m_selectedAtoms[0]->pos() - m_selectedAtoms[1]->pos();
+        QString distanceString = tr("Distance: %1 %3").arg(
+            QString::number(m_vector[0].norm()),
+            QString::fromUtf8("Å"));
+        emit message(distanceString);
+      }
+      else if(m_numSelectedAtoms == 3)
+      {
+        m_vector[1] = m_selectedAtoms[1]->pos() - m_selectedAtoms[2]->pos();
+        QString distanceString = tr("Distance: %1 %3  %2 %3").arg(
+            QString::number(m_vector[0].norm()),
+            QString::number(m_vector[1].norm()),
+            QString::fromUtf8("Å"));
+
+        
+        Vector3d normalizedVectors[2];
+        normalizedVectors[0] = m_vector[0].normalized();
+        normalizedVectors[1] = m_vector[1].normalized();
+
+        m_angle = acos(normalizedVectors[0].dot(normalizedVectors[1])) * 180/M_PI;
+        QString angleString = trUtf8("Angle: %1 %2").arg(
+            QString::number(m_angle),
+            QString::fromUtf8("°"));
+
+        emit message(angleString);
+        emit message(distanceString);
+      }
+
       widget->update();
     }
   }
@@ -94,6 +124,9 @@ QUndoCommand* ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *
     {
       m_selectedAtoms[i] = NULL;
     }
+    m_angle = 0;
+    m_vector[0].loadZero();
+    m_vector[1].loadZero();
     m_numSelectedAtoms = 0;
     widget->update();
   }
@@ -144,10 +177,6 @@ bool ClickMeasureTool::paint(GLWidget *widget)
 
     if(m_numSelectedAtoms >= 2)
     {
-      Vector3d vector[2];
-      vector[0] = m_selectedAtoms[0]->pos() - m_selectedAtoms[1]->pos();
-      double angle;
-
       glColor3f(0.0,1.0,0.0);
       pos = m_selectedAtoms[1]->pos();
       Vector3d textPos = pos+textRelPos;
@@ -157,13 +186,6 @@ bool ClickMeasureTool::paint(GLWidget *widget)
       if(m_numSelectedAtoms == 3)
       {
         // Then calculate the angle between the three selected atoms and display it
-        vector[1] = m_selectedAtoms[2]->pos() - m_selectedAtoms[1]->pos();
-
-        Vector3d normalizedVectors[2];
-        normalizedVectors[0] = vector[0].normalized();
-        normalizedVectors[1] = vector[1].normalized();
-
-        angle = acos(normalizedVectors[0].dot(normalizedVectors[1])) * 180/M_PI;
         pos = m_selectedAtoms[2]->pos();
         radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[2]->GetAtomicNum()) * 0.3;
         textPos = pos+textRelPos;
@@ -173,16 +195,21 @@ bool ClickMeasureTool::paint(GLWidget *widget)
 //       glLoadIdentity();
       glColor3f(1.0,1.0,1.0);
       widget->painter()->drawText(labelPos, tr("Distance(s):"));
+
+      glColor3f(1.0,1.0,0.0);
+      widget->painter()->drawText(distancePos[0], QString::number(m_vector[0].norm(), 10, 2) + QString::fromUtf8(" Å"));
+
       if(m_numSelectedAtoms == 3) {
         glColor3f(1.0,1.0,1.0);
         widget->painter()->drawText(angleLabelPos, QString("Angle:"));
+
         glColor3f(0.8, 0.8, 0.8);
-        widget->painter()->drawText(anglePos, QString::number(angle, 10, 1) + QString::fromUtf8("°"));
+        widget->painter()->drawText(anglePos, QString::number(m_angle, 10, 1) + QString::fromUtf8("°"));
+
         glColor3f(0.0,1.0,1.0);
-        widget->painter()->drawText(distancePos[1], QString::number(vector[1].norm(), 10, 2) + QString::fromUtf8(" Å"));
+        widget->painter()->drawText(distancePos[1], QString::number(m_vector[1].norm(), 10, 2) + QString::fromUtf8(" Å"));
       }
-      glColor3f(1.0,1.0,0.0);
-      widget->painter()->drawText(distancePos[0], QString::number(vector[0].norm(), 10, 2) + QString::fromUtf8(" Å"));
+
 
       // If there are three atoms selected, draw the angle in question
       if(m_numSelectedAtoms == 3)
@@ -195,7 +222,7 @@ bool ClickMeasureTool::paint(GLWidget *widget)
         // Adjust the length of u and v to the length calculated above.
         d1 = (d1 / d1.norm()) * radius;
         d2 = (d2 / d2.norm()) * radius;
-        if (angle < 1) return true;
+        if (m_angle < 1) return true;
         // Vector perpindicular to both d1 and d2
         Vector3d n = d1.cross(d2);
 

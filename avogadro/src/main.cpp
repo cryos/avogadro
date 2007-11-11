@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
 #endif
 
   Application app(argc, argv);
-  
+
   if (!QGLFormat::hasOpenGL()) {
     QMessageBox::information(0, "Avogadro",
         "This system does not support OpenGL.");
@@ -78,11 +78,10 @@ int main(int argc, char *argv[])
   }
 
   QString translationCode = QLocale::system().name();
-  QString prefixPath = QString( INSTALL_PREFIX ) + "/i18n/";
+  QString prefixPath = QString( INSTALL_PREFIX ) + "/share/avogadro/i18n/";
 
   QTranslator qtTranslator(0);
   QTranslator avoTranslator(0);
-
   QString avoFilename = "avogadro_" + translationCode + ".qm";
   QString qtFilename = "qt_" + translationCode;
 
@@ -93,17 +92,17 @@ int main(int argc, char *argv[])
     qDebug() << "Loading LibAvogadro Translations";
     app.installTranslator(libTranslator);
   }
-  
-  if (qtTranslator.load(qtFilename, prefixPath ))
+
+  if (qtTranslator.load(qtFilename))
   {
-          qDebug() << "Loading QT Translations";
-          app.installTranslator(&qtTranslator);
+    qDebug() << "Loading QT Translations";
+    app.installTranslator(&qtTranslator);
   }
 
-  if (avoTranslator.load(avoFilename)) 
+  if (avoTranslator.load(avoFilename, prefixPath )) 
   {
-          qDebug() << "Loading Avogadro Translations";
-          app.installTranslator(&avoTranslator);
+    qDebug() << "Loading Avogadro Translations";
+    app.installTranslator(&avoTranslator);
   }
 
   // use multi-sample (anti-aliased) OpenGL if available
@@ -124,7 +123,7 @@ int main(int argc, char *argv[])
     return 0;
   }
 
-//  qDebug() << arguments;
+  //  qDebug() << arguments;
   if (arguments.size() > 1) {
     QPoint p(100, 100), offset(40,40);
     QList<QString>::const_iterator i = arguments.constBegin();
@@ -157,5 +156,5 @@ void printHelp(const QString &appName)
       "Options:\n"
       "  -h, --help\t\tShow help options (this)\n"
       "  -v, --version\t\tShow version information\n"
-                           ).arg(appName, VERSION).toStdWString();
+      ).arg(appName, VERSION).toStdWString();
 }

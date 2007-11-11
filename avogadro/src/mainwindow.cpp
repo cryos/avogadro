@@ -195,7 +195,10 @@ namespace Avogadro
     const QList<Tool *> tools = d->toolGroup->tools();
     int toolCount = tools.size();
     for ( int i = 0; i < toolCount; i++ ) {
-      QAction *action = tools.at( i )->activateAction();
+      Tool *tool = tools.at(i);
+      connect(tool, SIGNAL(message(QString)), d->messagesText,
+          SLOT(append(QString)));
+      QAction *action = tool->activateAction();
       QToolButton *button = new QToolButton( ui.toolsWidget );
       button->setDefaultAction( action );
       d->toolsFlow->addWidget( button );

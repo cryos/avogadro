@@ -28,6 +28,7 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
 
+#include <eigen/regression.h>
 #include <openbabel/mol.h>
 
 #include <QGLWidget>
@@ -87,6 +88,11 @@ namespace Avogadro {
       QComboBox *m_comboElements;
       QComboBox *m_comboBondOrder;
       QVBoxLayout *m_layout;
+
+      Eigen::Vector3d m_vector[2];
+      double m_angle;
+
+      
   };
 
   class ClickMeasureToolFactory : public QObject, public ToolFactory

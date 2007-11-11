@@ -116,6 +116,9 @@ namespace Avogadro {
 
       bool operator<(const Tool &other) const;
 
+    Q_SIGNALS:
+      void message(const QString &m);
+
     protected:
       ToolPrivate *const d;
   };
