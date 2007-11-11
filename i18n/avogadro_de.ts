@@ -585,7 +585,7 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="1013"/>
         <source>Navigate</source>
-        <translation type="unfinished">Navigieren</translation>
+        <translation>Navigieren</translation>
     </message>
 </context>
 <context>
@@ -606,17 +606,17 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../libavogadro/src/moleculetreeview.cpp" line="238"/>
         <source>Molecule</source>
-        <translation type="unfinished">Molekül</translation>
+        <translation>Molekül</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/moleculetreeview.cpp" line="243"/>
         <source>Atom %1</source>
-        <translation type="unfinished">Atom %1</translation>
+        <translation>Atom %1</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/moleculetreeview.cpp" line="250"/>
         <source>Bond </source>
-        <translation type="unfinished">Bindung </translation>
+        <translation>Bindung </translation>
     </message>
     <message>
         <location filename="../libavogadro/src/moleculetreeview.cpp" line="271"/>
@@ -626,12 +626,12 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../libavogadro/src/moleculetreeview.cpp" line="55"/>
         <source>Atoms</source>
-        <translation type="unfinished">Atome</translation>
+        <translation>Atome</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/moleculetreeview.cpp" line="56"/>
         <source>Bonds</source>
-        <translation type="unfinished">Bindungen</translation>
+        <translation>Bindungen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/moleculetreeview.cpp" line="57"/>
@@ -749,12 +749,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="44"/>
         <source>Atom Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation>Atom-Radius:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="51"/>
         <source>Bond Radius</source>
-        <translation type="unfinished"></translation>
+        <translation>Bindungs-Radius</translation>
     </message>
 </context>
 <context>
@@ -803,7 +803,9 @@ Left Mouse: <byte value="x9"/>Select up to three Atoms.
 <byte value="x9"/>Distances are measured between 1-2 and 2-3
 <byte value="x9"/>Angle is measured between 1-3 using 2 as the common point
 Right Mouse: Reset the measurements.</source>
-        <translation type="unfinished"></translation>
+        <translation>Messen (F10)Linke Maustaste:    Bis zu 3 Atome auswählen.
+<byte value="x9"/>Messung der Distanz zwischen 1. und 2., 2. und 3. Atom
+<byte value="x9"/>Messung des Winkels zwischen 1. und 3. Atom, Ausgangspunkt ist das 2. AtomRechte Maustaste:  Messungen zurücksetzen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="143"/>
@@ -826,7 +828,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="175"/>
         <source>Distance(s):</source>
-        <translation type="unfinished"></translation>
+        <translation>Abstände:</translation>
     </message>
 </context>
 <context>
@@ -834,12 +836,12 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/engines/debugengine.cpp" line="46"/>
         <source>Debug Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Debug-Infos</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/debugengine.cpp" line="47"/>
         <source>Renders debug information</source>
-        <translation type="unfinished"></translation>
+        <translation>Debug-Infos anzeigen</translation>
     </message>
 </context>
 <context>
@@ -982,77 +984,77 @@ Rechte Maustaste: Atom löschen</translation>
 <context>
     <name>ForceFieldDialog</name>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="159"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="13"/>
         <source>Setup Force Field</source>
         <translation>Kraftfeld einrichten</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="167"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="66"/>
         <source>Force Field</source>
         <translation>Kraftfeld</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="164"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="48"/>
         <source>Ghemical</source>
         <translation type="unfinished">Ghemical</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="168"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="92"/>
         <source>Geometry Optimization</source>
         <translation>Geometrie-Optimierung</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="169"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="98"/>
         <source>Number of steps</source>
         <translation>Anzahl der Schritte</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="170"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="128"/>
         <source>Gradients</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="171"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="135"/>
         <source>Algorithm</source>
         <translation type="unfinished">Algorithmus</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="175"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="143"/>
         <source>Numerical</source>
         <translation type="unfinished">Numerisch</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="176"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="148"/>
         <source>Analytical</source>
         <translation type="unfinished">Analytisch</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="180"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="157"/>
         <source>Steepest Descent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="181"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="162"/>
         <source>Conjugate Gradients</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="182"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="170"/>
         <source>Convergence</source>
         <translation type="unfinished">Konvergenz</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="184"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="180"/>
         <source>10e-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="165"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="53"/>
         <source>MMFF94</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="166"/>
+        <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="58"/>
         <source>UFF</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2667,7 +2669,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="394"/>
         <source>&amp;Docks</source>
-        <translation type="unfinished">&amp;Docks</translation>
+        <translation>&amp;Seitenleisten</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="395"/>
@@ -2687,7 +2689,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="398"/>
         <source>Main Toolbar</source>
-        <translation type="unfinished">Hauptleiste</translation>
+        <translation>Hauptleiste</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="399"/>
@@ -2722,17 +2724,17 @@ All changes will be lost!</source>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="344"/>
         <source>Ctrl+O</source>
-        <translation type="unfinished">Strg+Ö</translation>
+        <translation>Strg+Ö</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="348"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished">&amp;Beenden</translation>
+        <translation>&amp;Beenden</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="347"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished">Strg+B</translation>
+        <translation>Strg+B</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="349"/>
@@ -2752,12 +2754,12 @@ All changes will be lost!</source>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="352"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished">Strg+N</translation>
+        <translation>Strg+N</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="356"/>
         <source>&amp;Close</source>
-        <translation type="unfinished">&amp;Schliessen</translation>
+        <translation>&amp;Schliessen</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="355"/>
@@ -2782,7 +2784,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="361"/>
         <source>Ctrl+Shift+S</source>
-        <translation type="unfinished">Strg+Umschalt+S</translation>
+        <translation>Strg+Umschalt+S</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="362"/>
@@ -2797,12 +2799,12 @@ All changes will be lost!</source>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="364"/>
         <source>&amp;Full Screen Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vollbild</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="365"/>
         <source>Set &amp;Background Color...</source>
-        <translation type="unfinished">&amp;Hintergrundfarbe auswählen...</translation>
+        <translation>&amp;Hintergrundfarbe auswählen...</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="366"/>
@@ -2924,7 +2926,11 @@ All changes will be lost!</source>
 Left Mouse:   Click and drag to move atoms
 Middle Mouse: Click and drag to move atoms further away or closer
 Right Mouse:  Click and drag to rotate selected atoms.</source>
-        <translation type="unfinished"></translation>
+        <translation>Manipulation (F10)
+
+Linke Maustaste:    Klicken und ziehen um Atome zu bewegen
+Mittlere Maustaste: Klicken und ziehen um Atome näher oder weiter weg zu bewegen
+Rechte Maustaste:  Klicken und ziehen um Atome zu rotieren</translation>
     </message>
 </context>
 <context>
@@ -2936,7 +2942,11 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
 Left Mouse:   Click and drag to rotate the view
 Middle Mouse: Click and drag to zoom in or out
 Right Mouse:  Click and drag to move the view</source>
-        <translation type="unfinished"></translation>
+        <translation>Naviagtion (F9)
+
+Linke Maustaste:    Klicken und ziehen um Anzeige zu rotieren
+Mittlere Maustaste: Klicken und ziehen um Anzeige zu zoomen
+Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     </message>
 </context>
 <context>
@@ -3567,7 +3577,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/tool.cpp" line="58"/>
         <source>Unknown</source>
-        <translation type="unfinished">Unbekannt</translation>
+        <translation>Unbekannt</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extension.h" line="75"/>
@@ -3617,12 +3627,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../avogadro/src/extensions/h2methylextension.cpp" line="67"/>
         <source>H to Methyl</source>
-        <translation type="unfinished">Methyl statt H</translation>
+        <translation>H durch Methyl ersetzen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/h2methylextension.h" line="52"/>
         <source>H2Methyl</source>
-        <translation type="unfinished"></translation>
+        <translation>H2Methyl</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/h2methylextension.h" line="54"/>
@@ -3732,12 +3742,12 @@ Options:
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.h" line="61"/>
         <source>ForceField</source>
-        <translation type="unfinished"></translation>
+        <translation>Kraftfeld</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.h" line="63"/>
         <source>ForceField Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Kraftfeld-Erweiterung</translation>
     </message>
 </context>
 <context>
@@ -3773,12 +3783,12 @@ Options:
     <message>
         <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="32"/>
         <source>Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation>Radius:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="73"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparenz:</translation>
     </message>
 </context>
 <context>
@@ -3788,8 +3798,9 @@ Options:
         <source>Selection Tool (F11)
 Click to pick individual atoms, residues, or fragments
 Drag to select a range of atoms</source>
-        <translation type="unfinished">Auswahl (F11)
-Klicken um Atom ...</translation>
+        <translation>Auswahl (F11)
+Klicken um Atom ...???
+Gedrückt halten um Atome auszuwählen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="318"/>
@@ -3856,7 +3867,7 @@ Klicken um Atom ...</translation>
     <message>
         <location filename="../libavogadro/src/engines/stickengine.cpp" line="45"/>
         <source>Stick</source>
-        <translation type="unfinished"></translation>
+        <translation>Stab</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/stickengine.cpp" line="46"/>
