@@ -46,6 +46,7 @@ namespace Avogadro {
    * This tool enables the manipulation of the position of
    * the selected atoms.
    */
+  class Eyecandy;
   class ManipulateTool : public Tool
   {
     Q_OBJECT
@@ -88,6 +89,8 @@ namespace Avogadro {
       QUndoCommand *      m_undo; // The current undo command
 
       QPoint              m_lastDraggingPosition;
+      Eyecandy            *m_eyecandy;
+      double              m_yAngleEyecandy, m_xAngleEyecandy;
 
       void zoom(GLWidget *widget, const Eigen::Vector3d &goal, double delta) const;
       void translate(GLWidget *widget, const Eigen::Vector3d &what, const QPoint &from, const QPoint &to) const;

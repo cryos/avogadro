@@ -835,7 +835,7 @@ namespace Avogadro
     assert( d->widget );
     if(!d->isValid()) { return 0; }
     d->textRenderer->begin( d->widget );
-    int val = d->textRenderer->draw ( pos.x(), pos.y(), string );
+    d->textRenderer->draw ( pos.x(), pos.y(), string );
     d->textRenderer->end( );
     return 0;
   }

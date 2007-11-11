@@ -79,8 +79,8 @@ QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *even
   m_clickedAtom = widget->computeClickedAtom(event->pos());
 
   // Initialise the angle variables on any new mouse press
-  yAngleEyecandy = 0.;
-  xAngleEyecandy = 0.;
+  m_yAngleEyecandy = 0.;
+  m_xAngleEyecandy = 0.;
 
   widget->update();
   return 0;
@@ -108,13 +108,14 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
   // Mouse navigation has two modes - atom centred when an atom is clicked
   // and scene if no atom has been clicked.
 
+  // update eyecandy angle
+  m_xAngleEyecandy += deltaDragging.x() * ROTATION_SPEED;
+  m_yAngleEyecandy += deltaDragging.y() * ROTATION_SPEED;
+
   if( m_clickedAtom )
   {
     if (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::NoModifier)
     {
-      // Atom centred rotation
-      xAngleEyecandy += deltaDragging.x() * ROTATION_SPEED;
-      yAngleEyecandy += deltaDragging.y() * ROTATION_SPEED;
       Navigate::rotate(widget, m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y());
     }
   // On the Mac, either use a three-button mouse
@@ -142,9 +143,6 @@ QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event
     if (event->buttons() & Qt::LeftButton
         && event->modifiers() == Qt::NoModifier)
     {
-      // rotation around the center of the molecule
-      xAngleEyecandy += deltaDragging.x() * ROTATION_SPEED;
-      yAngleEyecandy += deltaDragging.y() * ROTATION_SPEED;
       Navigate::rotate(widget, widget->center(), deltaDragging.x(), deltaDragging.y());
     }
   // On the Mac, either use a three-button mouse
@@ -195,7 +193,7 @@ QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
 bool NavigateTool::paint(GLWidget *widget)
 {
   if(m_leftButtonPressed) {
-    m_eyecandy->drawRotation(widget, m_clickedAtom, xAngleEyecandy, yAngleEyecandy);
+    m_eyecandy->drawRotation(widget, m_clickedAtom, m_xAngleEyecandy, m_yAngleEyecandy);
   }
 
   else if(m_midButtonPressed) {

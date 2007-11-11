@@ -33,23 +33,33 @@ namespace Avogadro {
 
   class Eyecandy
   {
+    private:
       void drawRotationHorizRibbon();
       void drawRotationVertRibbon();
       void drawRotationRightArrow();
       void drawRotationLeftArrow();
       void drawRotationUpArrow();
       void drawRotationDownArrow();
-      
+
       double m_yAngleStart, m_yAngleEnd, m_xAngleStart, m_xAngleEnd;
-      double m_renderRadius;
+      double m_radius;
       Eigen::Vector3d m_center, m_xAxis, m_yAxis, m_zAxis;
       Color m_color;
     
     public:
       Eyecandy() : m_color(1.0, 1.0, 0.3, 0.7) {}
       ~Eyecandy() {}
+
+      void setColor(const Color &color);
+      Color color() const;
+      
+      void drawRotation(GLWidget *widget, const Eigen::Vector3d center, double radius, double xAngle, double yAngle);
       void drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle);
+
+      void drawTranslation(GLWidget *widget, const Eigen::Vector3d center, double size, double shift);
       void drawTranslation(GLWidget *widget, Atom *clickedAtom);
+
+      void drawZoom(GLWidget *widget, const Eigen::Vector3d center, double radius);
       void drawZoom(GLWidget *widget, Atom *clickedAtom);
   };
 

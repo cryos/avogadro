@@ -22,7 +22,7 @@
  ***********************************************************************/
 
 #include "manipulatetool.h"
-// #include "moveatomcommand.h"
+#include "eyecandy.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -38,8 +38,10 @@ using namespace OpenBabel;
 using namespace Avogadro;
 using namespace Eigen;
 
-ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false), m_undo(0)
+ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false), m_undo(0),
+  m_eyecandy(new Eyecandy)
 {
+  m_eyecandy->setColor(Color(1.0, 0., 0., .7));
   QAction *action = activateAction();
   action->setIcon(QIcon(QString::fromUtf8(":/manipulate/manipulate.png")));
   action->setToolTip(tr("Manipulation Tool (F10)\n\n"
@@ -51,6 +53,7 @@ ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0)
 
 ManipulateTool::~ManipulateTool()
 {
+  delete m_eyecandy;
 }
 
 int ManipulateTool::usefulness() const
@@ -173,7 +176,12 @@ QUndoCommand* ManipulateTool::mousePress(GLWidget *widget, const QMouseEvent *ev
                            (event->buttons() & Qt::LeftButton && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)));
   m_clickedAtom = widget->computeClickedAtom(event->pos());
 
+  // update eyecandy angle
+  m_xAngleEyecandy = 0;
+  m_yAngleEyecandy = 0;
+
   widget->update();
+
   m_undo = new MoveAtomCommand(widget->molecule());
   return m_undo;
 }
@@ -203,6 +211,10 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
 
   // Manipulation can be performed in two ways - centred on an individual atom
 
+  // update eyecandy angle
+  m_xAngleEyecandy += deltaDragging.x() * ROTATION_SPEED;
+  m_yAngleEyecandy += deltaDragging.y() * ROTATION_SPEED;
+
   if (m_clickedAtom)
   {
     if (m_leftButtonPressed)
@@ -229,15 +241,17 @@ QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *eve
   {
     // Some atoms are selected - work out where the center is
     m_selectedPrimitivesCenter.loadZero();
+    int numPrimitives = 0;
     foreach(Primitive *hit, currentSelection)
     {
       if (hit->type() == Primitive::AtomType)
       {
         Atom *atom = static_cast<Atom *>(hit);
         m_selectedPrimitivesCenter += atom->pos();
+        numPrimitives++;
       }
     }
-    m_selectedPrimitivesCenter /= currentSelection.size();
+    m_selectedPrimitivesCenter /= numPrimitives;
 
     if (m_leftButtonPressed)
     {
@@ -272,24 +286,40 @@ QUndoCommand* ManipulateTool::wheel(GLWidget*, const QWheelEvent*)
 
 bool ManipulateTool::paint(GLWidget *widget)
 {
-  if(m_leftButtonPressed || m_midButtonPressed || m_rightButtonPressed) {
-    if(m_clickedAtom && (!m_rightButtonPressed || widget->selectedPrimitives().size()))
+  int selectedSize = widget->selectedPrimitives().size();
+  if(m_clickedAtom)
+  {
+    if(m_leftButtonPressed)
     {
-      // Don't highlight the atom on right mouse unless there is a selection
-      double renderRadius = widget->radius(m_clickedAtom);
-      renderRadius += 0.10;
-      glEnable( GL_BLEND );
-      widget->painter()->setColor(1.0, 0.3, 0.3, 0.7);
-      widget->painter()->drawSphere(m_clickedAtom->pos(), renderRadius);
-      glDisable( GL_BLEND );
+      m_eyecandy->drawTranslation(widget, m_clickedAtom);
     }
-    else if (widget->selectedPrimitives().size())
+    else if(m_midButtonPressed)
     {
-      // Only draw the central sphere if something is selected
-      widget->painter()->setColor(1.0, 0.3, 0.3, 0.7);
-      widget->painter()->drawSphere(m_selectedPrimitivesCenter, 0.10);
+      m_eyecandy->drawZoom(widget, m_clickedAtom);
+    }
+    else if(m_rightButtonPressed && selectedSize)
+    {
+      m_eyecandy->drawRotation(widget, m_clickedAtom, 
+          m_xAngleEyecandy, m_yAngleEyecandy);
     }
   }
+  else if(selectedSize)
+  {
+    if(m_leftButtonPressed)
+    {
+      m_eyecandy->drawTranslation(widget, m_selectedPrimitivesCenter, 1.5, 0.);
+    }
+    else if(m_midButtonPressed)
+    {
+      m_eyecandy->drawZoom(widget, m_selectedPrimitivesCenter, 1.5);
+    }
+    else if(m_rightButtonPressed)
+    {
+      m_eyecandy->drawRotation(widget, m_selectedPrimitivesCenter, 3., 
+          m_xAngleEyecandy, m_yAngleEyecandy);
+    }
+  }
+
   return true;
 }
 

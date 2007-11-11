@@ -84,7 +84,7 @@ namespace Avogadro {
       bool                m_leftButtonPressed;  // rotation
       bool                m_midButtonPressed;   // scale / zoom
       bool                m_rightButtonPressed; // translation
-      double yAngleEyecandy, xAngleEyecandy;
+      double m_yAngleEyecandy, m_xAngleEyecandy;
 
       //! Temporary var for adding selection box
       GLuint              m_selectedPrimitivesDL;

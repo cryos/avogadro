@@ -116,7 +116,8 @@ INSTALL(TARGETS navigatetool DESTINATION ${DESTINATION_DIR})
 set(manipulatetool_SRCS manipulatetool.cpp)
 qt4_add_resources(manipulatetool_RC_SRCS manipulatetool.qrc)
 qt4_automoc(${manipulatetool_SRCS})
-ADD_LIBRARY(manipulatetool SHARED ${manipulatetool_SRCS} ${manipulatetool_RC_SRCS})
+ADD_LIBRARY(manipulatetool SHARED eyecandy.cpp
+    ${manipulatetool_SRCS} ${manipulatetool_RC_SRCS})
 TARGET_LINK_LIBRARIES(manipulatetool
 	${OPENBABEL2_LIBRARIES}
 	${QT_LIBRARIES}
