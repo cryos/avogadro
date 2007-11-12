@@ -421,7 +421,6 @@ namespace Avogadro
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDisable(GL_LIGHTING);
-    glDisable(GL_CULL_FACE);
 
     glLineWidth(lineWidth);
     glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
@@ -432,7 +431,25 @@ namespace Avogadro
     glVertex3d(end.x(), end.y(), end.z());
     glEnd();
 
+    glEnable(GL_LIGHTING);
     glPopAttrib();
+  }
+  
+  void GLPainter::drawTriangle(const Eigen::Vector3d &p1, const Eigen::Vector3d p2,
+                    const Eigen::Vector3d &p3)
+  {
+    if(!d->isValid()) { return; }
+
+	d->color.applyAsMaterials();
+	glEnable(GL_AUTO_NORMAL);
+
+	glBegin(GL_TRIANGLES);
+	glVertex3dv(p1.array());
+	glVertex3dv(p2.array());
+	glVertex3dv(p3.array());
+	glEnd();
+
+	glDisable(GL_AUTO_NORMAL);
   }
 
   void GLPainter::drawSpline(const QVector<Eigen::Vector3d>& pts, double radius)
@@ -559,6 +576,8 @@ namespace Avogadro
     gluEndSurface(nurb);
     
     gluDeleteNurbsRenderer(nurb);
+	
+	glDisable(GL_AUTO_NORMAL);
     
     glPopAttrib();
   }
