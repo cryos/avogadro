@@ -66,6 +66,9 @@ namespace Avogadro
     void drawLine(const Eigen::Vector3d &, const Eigen::Vector3d &,
                   double) { }
 
+    void drawTriangle(const Eigen::Vector3d &p1, const Eigen::Vector3d p2,
+                    const Eigen::Vector3d &p3) { }
+
     void drawSpline(const QVector<Eigen::Vector3d>&, double) { }
 
     /** Draws a shaded sector of a circle.  The sector is defined by three vectors,
@@ -148,6 +151,7 @@ namespace Avogadro
     Camera *camera() const { return m_glwidget->camera(); }
     bool isSelected(const Primitive *p) const { return m_glwidget->isSelected(p); }
     double radius(const Primitive *p) const { return m_glwidget->radius(p); }
+	const Molecule *molecule() const { return m_glwidget->molecule(); }
 
     int width() { return m_glwidget->width(); }
     int height() { return m_glwidget->height(); }
