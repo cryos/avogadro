@@ -305,6 +305,7 @@ namespace Avogadro {
     Camera *camera() const { return widget->camera(); }
     bool isSelected( const Primitive *p ) const { return widget->isSelected(p); }
     double radius( const Primitive *p ) const { return widget->radius(p); }
+	const Molecule *molecule() const { return widget->molecule(); }
 
     int width() { return widget->width(); }
     int height() { return widget->height(); }

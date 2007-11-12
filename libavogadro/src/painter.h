@@ -108,6 +108,9 @@ namespace Avogadro
 
       virtual void drawLine(const Eigen::Vector3d &start, const Eigen::Vector3d &end,
                             double lineWidth) = 0;
+	
+	  virtual void drawTriangle(const Eigen::Vector3d &p1, const Eigen::Vector3d p2,
+								const Eigen::Vector3d &p3) = 0;
 
       virtual void drawSpline(const QVector<Eigen::Vector3d>& pts, double radius) = 0;
 
