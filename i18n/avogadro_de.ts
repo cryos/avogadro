@@ -557,7 +557,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="93"/>
         <source>&amp;Tools&gt;Molecular Mechanics</source>
-        <translation>&amp;Tools&gt;Molekular-Mechanik</translation>
+        <translation>&amp;Werkzeuge&gt;Molekular-Mechanik</translation>
     </message>
 </context>
 <context>
@@ -581,7 +581,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/gamessextension.cpp" line="86"/>
         <source>&amp;Tools&gt;GAMESS</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Werkzeuge&gt;Molekular-Mechanik</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessextension.cpp" line="92"/>
@@ -654,7 +654,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="635"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titel</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1552"/>
