@@ -48,7 +48,16 @@ namespace Avogadro {
   {
     setName(tr("Ribbon"));
     setDescription(tr("Renders residues as ribbons"));
+    
+    // Initialise variables
     m_update = true;
+    // Pretty colours for the chains - we can add more. Need a colour picker...
+    m_chainColors.push_back(Color(1., 0., 0.));
+    m_chainColors.push_back(Color(0., 1., 0.));
+    m_chainColors.push_back(Color(0., 0., 1.));
+    m_chainColors.push_back(Color(1., 0., 1.));
+    m_chainColors.push_back(Color(1., 1., 0.));
+    m_chainColors.push_back(Color(0., 1., 1.));
   }
 
   RibbonEngine::~RibbonEngine()
@@ -65,11 +74,12 @@ namespace Avogadro {
     // Check if the chains need updating before drawing them
     if (m_update) updateChains();
 
-    pd->painter()->setColor(1., 0., 0.);
-
-    foreach(QVector<Vector3d> pts, chains)
-      if (pts.size() > 1)
-        pd->painter()->drawSpline(pts, m_radius);
+    for (int i = 0; i < m_chains.size(); i++) {
+      if (m_chains[i].size() <= 1)
+        continue;
+      pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
+      pd->painter()->drawSpline(m_chains[i], m_radius);
+    }
 
     return true;
   }
@@ -81,11 +91,13 @@ namespace Avogadro {
     // Check if the chains need updating before drawing them
     if (m_update) updateChains();
 
-    pd->painter()->setColor(1., 0., 0., m_alpha);
+    for (int i = 0; i < m_chains.size(); i++) {
+      if (m_chains[i].size() <= 1)
+        continue;
+      pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
+      pd->painter()->drawSpline(m_chains[i], m_radius);
+    }
 
-    foreach(QVector<Vector3d> pts, chains)
-      if (pts.size() > 1)
-        pd->painter()->drawSpline(pts, m_radius);
     glDepthMask(GL_FALSE);
     return true;
   }
@@ -123,7 +135,7 @@ namespace Avogadro {
     if (!isEnabled()) return;
     qDebug() << "Update chains called.";
     // Get a list of residues for the molecule
-    chains.clear();
+    m_chains.clear();
     QList<Primitive *> list;
     list = primitives().subList(Primitive::ResidueType);
     unsigned int currentChain = 0;
@@ -137,8 +149,8 @@ namespace Avogadro {
       if(r->GetChainNum() != currentChain) {
         // this residue is on a new chain
         if(pts.size() > 0)
-          chains.push_back(pts);
-        qDebug() << "Chain " << chains.size() << " added.";
+          m_chains.push_back(pts);
+        qDebug() << "Chain " << m_chains.size() << " added.";
         currentChain = r->GetChainNum();
         pts.clear();
       }
@@ -154,7 +166,7 @@ namespace Avogadro {
       } // end atoms in residue
 
     } // end primitive list (i.e., all residues)
-    chains.push_back(pts); // Add the last chain (possibly the only chain)
+    m_chains.push_back(pts); // Add the last chain (possibly the only chain)
     m_update = false;
   }
 

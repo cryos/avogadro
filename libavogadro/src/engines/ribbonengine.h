@@ -74,7 +74,8 @@ namespace Avogadro {
       double m_alpha; // transparency of the VdW spheres
       double m_radius;
       bool m_update;  // Is an update of the chain necessary?
-      QList< QVector<Eigen::Vector3d> > chains;
+      QList< QVector<Eigen::Vector3d> > m_chains;
+      QVector<Color> m_chainColors;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();
@@ -96,7 +97,7 @@ namespace Avogadro {
       }
   };
 
-  //! Generates instances of our SphereEngine class
+  //! Generates instances of our RibbonEngine class
   class RibbonEngineFactory : public QObject, public EngineFactory
   {
     Q_OBJECT

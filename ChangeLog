@@ -1,3 +1,7 @@
+2007-11-13  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/engines/ribbonengine.*: Updated so that we now have
+	multiple chain colours!
+
 2007-11-11  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/painterdevice.h, libavogadro/src/povpainter.h,
 	libavogadro/src/glwidget.cpp: Exposed the loaded Molecule to the
