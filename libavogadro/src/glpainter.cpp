@@ -435,7 +435,7 @@ namespace Avogadro
     glPopAttrib();
   }
   
-  void GLPainter::drawTriangle(const Eigen::Vector3d &p1, const Eigen::Vector3d p2,
+  void GLPainter::drawTriangle(const Eigen::Vector3d &p1, const Eigen::Vector3d &p2,
                     const Eigen::Vector3d &p3)
   {
     if(!d->isValid()) { return; }

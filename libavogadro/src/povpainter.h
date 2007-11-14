@@ -66,8 +66,8 @@ namespace Avogadro
     void drawLine(const Eigen::Vector3d &, const Eigen::Vector3d &,
                   double) { }
 
-    void drawTriangle(const Eigen::Vector3d &p1, const Eigen::Vector3d p2,
-                    const Eigen::Vector3d &p3) { }
+    void drawTriangle(const Eigen::Vector3d &, const Eigen::Vector3d &,
+                    const Eigen::Vector3d &) { }
 
     void drawSpline(const QVector<Eigen::Vector3d>&, double) { }
 
