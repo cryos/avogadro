@@ -30,9 +30,12 @@
 
 #include <openbabel/mol.h>
 
+#include "ui_ringsettingswidget.h"
+
 namespace Avogadro {
 
   //! Ring Engine class.
+  class RingSettingsWidget;
   class RingEngine : public Engine
   {
     Q_OBJECT
@@ -54,11 +57,33 @@ namespace Avogadro {
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 
+      QWidget* settingsWidget();
+
     private:
+      RingSettingsWidget *m_settingsWidget;
       double m_alpha; // transparency of the VdW spheres
-	  bool renderRing(const std::vector<int> &ring, PainterDevice *pd); // Render the given ring
+      
+      bool renderRing(const std::vector<int> &ring, PainterDevice *pd); // Render the given ring
+
+    private Q_SLOTS:
+      void settingsWidgetDestroyed();
+
+
+      /**
+       * @param value opacity of the rings
+      */
+      void setOpacity(int value);
 
   };
+
+  class RingSettingsWidget : public QWidget, public Ui::RingSettingsWidget
+  {
+    public:
+      RingSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+        setupUi(this);
+      }
+  };
+
 
   //! Generates instances of our RingEngine class
   class RingEngineFactory : public QObject, public EngineFactory

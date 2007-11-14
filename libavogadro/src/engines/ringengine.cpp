@@ -43,7 +43,8 @@ using namespace Eigen;
 
 namespace Avogadro{
 
-  RingEngine::RingEngine(QObject *parent) : Engine(parent), m_alpha(0.5)
+  RingEngine::RingEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
+    m_alpha(0.5)
   {
     setName(tr("Ring"));
     setDescription(tr("Renders rings"));
@@ -61,7 +62,9 @@ namespace Avogadro{
     // Special case for everything up to 7 membered rings.
     vector<OBRing *> rings;
     rings = const_cast<Molecule *>(pd->molecule())->GetSSSR();
-	
+
+    pd->painter()->setColor(0.7, 0.7, 0.7);
+
     // Now actually draw the ring structures
     foreach(OBRing *r, rings)
       renderRing(r->_path, pd);
@@ -77,7 +80,9 @@ namespace Avogadro{
     // Special case for everything up to 7 membered rings.
     vector<OBRing *> rings;
     rings = const_cast<Molecule *>(pd->molecule())->GetSSSR();
-	
+
+    pd->painter()->setColor(0.7, 0.7, 0.7, m_alpha);
+
     glEnable(GL_BLEND);
     // Now actually draw the ring structures
     foreach(OBRing *r, rings)
@@ -170,6 +175,29 @@ namespace Avogadro{
   Engine::EngineFlags RingEngine::flags() const
   {
     return Engine::Transparent;
+  }
+
+  void RingEngine::setOpacity(int value)
+  {
+    m_alpha = 0.05 * value;
+    emit changed();
+  }
+
+  QWidget* RingEngine::settingsWidget()
+  {
+    if(!m_settingsWidget)
+    {
+      m_settingsWidget = new RingSettingsWidget();
+      connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
+      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+    }
+    return m_settingsWidget;
+  }
+
+  void RingEngine::settingsWidgetDestroyed()
+  {
+    qDebug() << "Destroyed Settings Widget";
+    m_settingsWidget = 0;
   }
 
 }

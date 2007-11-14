@@ -105,7 +105,7 @@ INSTALL(TARGETS ribbonengine DESTINATION ${DESTINATION_DIR})
 
 # Ring engine - display cyclic rings
 set(ringengine_SRCS ringengine.cpp)
-#qt4_wrap_ui(ringengine_UIS ringsettingswidget.ui)
+qt4_wrap_ui(ringengine_UIS ringsettingswidget.ui)
 qt4_automoc(${ringengine_SRCS})
 ADD_LIBRARY(ringengine SHARED ${ringengine_SRCS} ${ringengine_UIS} )
 TARGET_LINK_LIBRARIES(ringengine avogadro-lib
