@@ -1,5 +1,5 @@
 /**********************************************************************
-  RibbonEngine - Engine for "ribbon" display
+  RingEngine - Engine for "ring" display
 
   Copyright (C) 2007 by Marcus D. Hanwell
 
