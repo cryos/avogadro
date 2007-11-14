@@ -2,6 +2,10 @@
 	* libavogadro/src/engines/ribbonengine.*: Updated so that we now have
 	multiple chain colours!
 
+	* libavogadro/src/engines/ringengine.*
+	libavogadro/src/engines/CMakeLists.txt: Added new ring engine, renders
+	ring structures. Transparency is not working yet.
+
 2007-11-11  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/painterdevice.h, libavogadro/src/povpainter.h,
 	libavogadro/src/glwidget.cpp: Exposed the loaded Molecule to the
