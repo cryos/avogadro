@@ -161,4 +161,4 @@ namespace Avogadro {
 
 #include "wireengine.moc"
 
-Q_EXPORT_PLUGIN2(bsengine, Avogadro::WireEngineFactory)
+Q_EXPORT_PLUGIN2(wireengine, Avogadro::WireEngineFactory)
