@@ -992,6 +992,11 @@ namespace Avogadro
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
     Molecule *molecule = new Molecule;
     if ( conv.Read( molecule, &ifs ) && molecule->NumAtoms() != 0 ) {
+      if (!molecule->Has3D()) {
+        QMessageBox::warning( this, tr( "Avogadro" ),
+                             tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));        
+      }      
+
       setMolecule( molecule );
 
       Molecule test; // do we have a multi-molecule file?
