@@ -31,7 +31,11 @@
 
 #include <openbabel/mol.h>
 
+#include "ui_wiresettingswidget.h"
+
 namespace Avogadro {
+  
+  class WireSettingsWidget;
 
   //! Wireframe Engine class.
   class WireEngine : public Engine
@@ -53,7 +57,36 @@ namespace Avogadro {
 
       bool renderOpaque(PainterDevice *pd);
       //@}
-
+    
+      //! Configuration options
+      QWidget* settingsWidget();
+    
+  private:
+    WireSettingsWidget *m_settingsWidget;
+    
+    bool m_multipleBonds; //!< unimplemented = render multiple bonds
+    bool m_showDots; //!< show dots for atoms
+    
+  private Q_SLOTS:
+    void settingsWidgetDestroyed();
+    
+    /**
+     * @param setting whether to show multiple bonds
+     */
+    void setShowMultipleBonds(int setting);
+    
+    /**
+     * @param setting whether to show dots for atoms
+     */
+    void setShowDots(int setting);
+  };
+  
+  class WireSettingsWidget : public QWidget, public Ui::WireSettingsWidget
+  {
+  public:
+    WireSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+      setupUi(this);
+    }
   };
 
   //! Generates instances of our WireEngine class

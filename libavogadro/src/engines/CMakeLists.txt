@@ -51,7 +51,8 @@ INSTALL(TARGETS axesengine DESTINATION ${DESTINATION_DIR})
 # wireframe
 set(wireengine_SRCS wireengine.cpp)
 qt4_automoc(${wireengine_SRCS})
-ADD_LIBRARY(wireengine SHARED ${wireengine_SRCS} )
+qt4_wrap_ui(wireengine_UIS wiresettingswidget.ui)
+ADD_LIBRARY(wireengine SHARED ${wireengine_SRCS} ${wireengine_UIS})
 TARGET_LINK_LIBRARIES(wireengine avogadro-lib
                                 ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                 ${OPENGL_LIBRARIES}
@@ -123,5 +124,5 @@ INSTALL(TARGETS ringengine DESTINATION ${DESTINATION_DIR})
 #                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
 #                                ${OPENGL_LIBRARIES}
 #)
-#
+
 #INSTALL(TARGETS surfaceengine DESTINATION ${DESTINATION_DIR})

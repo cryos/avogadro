@@ -42,7 +42,8 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  WireEngine::WireEngine(QObject *parent) : Engine(parent)
+  WireEngine::WireEngine(QObject *parent) : Engine(parent), m_settingsWidget(NULL),
+  m_multipleBonds(false), m_showDots(true)
   {
     setName(tr("Wireframe"));
     setDescription(tr("Wireframe rendering"));
@@ -56,9 +57,12 @@ namespace Avogadro {
     glDisable(GL_LIGHTING);
     glDisable(GL_BLEND);
 
-    list = primitives().subList(Primitive::AtomType);
-    foreach( Primitive *p, list ) {
-      renderOpaque(pd, static_cast<const Atom *>(p));
+    // Skip this entire step if the user turns it off
+    if (m_showDots) {
+      list = primitives().subList(Primitive::AtomType);
+      foreach( Primitive *p, list ) {
+        renderOpaque(pd, static_cast<const Atom *>(p));
+      }      
     }
 
     list = primitives().subList(Primitive::BondType);
@@ -157,6 +161,37 @@ namespace Avogadro {
 
     return true;
   }
+  
+  void WireEngine::setShowMultipleBonds(int setting)
+  {
+    m_multipleBonds = setting;
+    emit changed();
+  }
+  
+  void WireEngine::setShowDots(int setting)
+  {
+    m_showDots = setting;
+    emit changed();
+  }  
+  
+  QWidget* WireEngine::settingsWidget()
+  {
+    if(!m_settingsWidget)
+    {
+      m_settingsWidget = new WireSettingsWidget();
+      connect(m_settingsWidget->showMultipleCheckBox, SIGNAL(stateChanged(int)), this, SLOT(setShowMultipleBonds(int)));
+      connect(m_settingsWidget->showDotsCheckBox, SIGNAL(stateChanged(int)), this, SLOT(setShowDots(int)));
+
+      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+    }
+    return m_settingsWidget;
+  }
+  
+  void WireEngine::settingsWidgetDestroyed()
+  {
+    qDebug() << "Destroyed Settings Widget";
+    m_settingsWidget = 0;
+  }  
 }
 
 #include "wireengine.moc"
