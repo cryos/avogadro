@@ -87,7 +87,8 @@ namespace Avogadro
   }
 
   BSDYEngine::BSDYEngine( QObject *parent ) : Engine( parent ),
-      m_settingsWidget( 0 ), m_atomRadiusPercentage( 0.3 ), m_bondRadius( 0.1 )
+      m_settingsWidget( 0 ), m_atomRadiusPercentage( 0.3 ), m_bondRadius( 0.1 ),
+      m_showMulti(true)
   {
     setName( tr( "Ball and Stick" ) );
 
@@ -126,7 +127,8 @@ namespace Avogadro
       Vector3d v3(( v1 + v2 + d*( radius( atom1 )-radius( atom2 ) ) ) / 2 );
 
       double shift = 0.15;
-      int order = b->GetBO();
+      int order = 1;
+      if (m_showMulti) order = b->GetBO();
 
       map.set( atom1 );
       pd->painter()->setColor( &map );
@@ -256,6 +258,12 @@ namespace Avogadro
     emit changed();
   }
 
+  void BSDYEngine::setShowMulti(int value)
+  {
+    m_showMulti = value;
+    emit changed();
+  }
+
   double BSDYEngine::radius( const PainterDevice *pd, const Primitive *p ) const
   {
     // Atom radius
@@ -286,11 +294,12 @@ namespace Avogadro
 
   QWidget *BSDYEngine::settingsWidget()
   {
-    if ( !m_settingsWidget ) {
+    if (!m_settingsWidget) {
       m_settingsWidget = new BSDYSettingsWidget();
-      connect( m_settingsWidget->atomRadiusSlider, SIGNAL( valueChanged( int ) ), this, SLOT( setAtomRadiusPercentage( int ) ) );
-      connect( m_settingsWidget->bondRadiusSlider, SIGNAL( valueChanged( int ) ), this, SLOT( setBondRadius( int ) ) );
-      connect( m_settingsWidget, SIGNAL( destroyed() ), this, SLOT( settingsWidgetDestroyed() ) );
+      connect(m_settingsWidget->atomRadiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setAtomRadiusPercentage(int)));
+      connect(m_settingsWidget->bondRadiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setBondRadius(int)));
+      connect(m_settingsWidget->showMulti, SIGNAL(stateChanged(int)), this, SLOT(setShowMulti(int)));
+      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
     }
     return m_settingsWidget;
   }

@@ -70,6 +70,7 @@ namespace Avogadro {
 
       double m_atomRadiusPercentage;
       double m_bondRadius;
+      bool m_showMulti;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();
@@ -83,6 +84,11 @@ namespace Avogadro {
        * @param value radius of the bonds * 10
        */
       void setBondRadius(int value);
+    
+      /**
+       * @param value determines where multiple bonds are shown
+       */
+      void setShowMulti(int value);
 
   };
 
