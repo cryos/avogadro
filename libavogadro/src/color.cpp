@@ -111,4 +111,14 @@ namespace Avogadro {
     glMaterialf( GL_FRONT, GL_SHININESS, 50.0 );
   }
 
+  void Color::applyAsFlatMaterials()
+  {
+    GLfloat diffuseColor [] = { m_red, m_green, m_blue, m_alpha };
+    
+    glMaterialfv( GL_FRONT, GL_AMBIENT, diffuseColor );
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, diffuseColor );
+    glMaterialfv( GL_FRONT, GL_SPECULAR, diffuseColor );
+    glMaterialf( GL_FRONT, GL_SHININESS, 1.0 );
+  }
+
 }

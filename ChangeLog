@@ -1,3 +1,7 @@
+2007-11-16  Marcus D. Hanwell <marcus@cryos.org>
+	* libavogadro/src/color.*, libavogadro/src/glpainter.cpp: Added a new
+	OpenGL material that should work better with the ring engine.
+
 2007-11-13  Marcus D. Hanwell <marcus@cryos.org>
 	* libavogadro/src/engines/ribbonengine.*: Updated so that we now have
 	multiple chain colours!

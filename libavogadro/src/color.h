@@ -97,6 +97,10 @@ namespace Avogadro {
      * diffuse color while using different shades for the ambient and
      * specular colors. This is only useful if lighting is enabled. */
     virtual void applyAsMaterials();
+    
+    /**
+     * Applies an OpenGL material more appropriate for flat surfaces. */
+    virtual void applyAsFlatMaterials();
 
     inline float red() { return m_red; }
     inline float green() { return m_green; }

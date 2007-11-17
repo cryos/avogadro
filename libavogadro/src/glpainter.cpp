@@ -440,7 +440,7 @@ namespace Avogadro
   {
     if(!d->isValid()) { return; }
 
-	d->color.applyAsMaterials();
+	d->color.applyAsFlatMaterials();
 	glEnable(GL_AUTO_NORMAL);
 
 	glBegin(GL_TRIANGLES);
