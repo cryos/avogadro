@@ -1200,7 +1200,7 @@ namespace Avogadro
 
             if(!path)
             {
-              path = ui.menuTools;
+              path = ui.menuExtensions;
             }
 
             path->addAction( action );

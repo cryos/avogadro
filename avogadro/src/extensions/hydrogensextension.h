@@ -56,6 +56,7 @@ namespace Avogadro {
       virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
                                           GLWidget *widget, QTextEdit *messages=NULL);
+      virtual QString menuPath(QAction *action) const;
       //@}
 
     private:

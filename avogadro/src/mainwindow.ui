@@ -80,6 +80,8 @@
      <string>&amp;Help</string>
     </property>
     <addaction name="actionAbout" />
+    <addaction name="separator" />
+    <addaction name="actionTutorial" />
    </widget>
    <widget class="QMenu" name="menuFile" >
     <property name="title" >
@@ -105,7 +107,7 @@
    </widget>
    <widget class="QMenu" name="menuSettings" >
     <property name="title" >
-     <string>&amp;Settings</string>
+     <string>Settings</string>
     </property>
     <widget class="QMenu" name="menuToolbars" >
      <property name="title" >
@@ -122,9 +124,9 @@
     <addaction name="separator" />
     <addaction name="configureAvogadroAction" />
    </widget>
-   <widget class="QMenu" name="menuTools" >
+   <widget class="QMenu" name="menuBuild" >
     <property name="title" >
-     <string>&amp;Tools</string>
+     <string>&amp;Build</string>
     </property>
    </widget>
    <widget class="QMenu" name="menuView" >
@@ -151,10 +153,25 @@
     <addaction name="actionSelect_All" />
     <addaction name="actionSelect_None" />
    </widget>
+   <widget class="QMenu" name="menuExtensions" >
+    <property name="title" >
+     <string>&amp;Extensions</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuSelect" >
+    <property name="title" >
+     <string>&amp;Select</string>
+    </property>
+    <addaction name="actionSelect_All" />
+    <addaction name="actionSelect_None" />
+    <addaction name="separator" />
+   </widget>
    <addaction name="menuFile" />
    <addaction name="menuEdit" />
    <addaction name="menuView" />
-   <addaction name="menuTools" />
+   <addaction name="menuBuild" />
+   <addaction name="menuSelect" />
+   <addaction name="menuExtensions" />
    <addaction name="menuSettings" />
    <addaction name="menuHelp" />
   </widget>
@@ -557,6 +574,14 @@
   <action name="actionExportPOV" >
    <property name="text" >
     <string>Export POVRay</string>
+   </property>
+  </action>
+  <action name="actionTutorial" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="text" >
+    <string>Tutorial</string>
    </property>
   </action>
  </widget>

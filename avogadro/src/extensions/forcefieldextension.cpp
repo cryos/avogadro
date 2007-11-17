@@ -90,7 +90,7 @@ namespace Avogadro
       case CalculateEnergyIndex:
       case RotorSearchIndex:
       case SetupForceFieldIndex:
-        return tr("&Tools>Molecular Mechanics");
+        return tr("&Extensions") + ">" + tr("&Molecular Mechanics");
         break;
       default:
         break;

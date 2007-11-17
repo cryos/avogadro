@@ -50,6 +50,11 @@ namespace Avogadro {
     return m_actions;
   }
 
+  QString H2MethylExtension::menuPath(QAction *) const
+  {
+    return tr("&Build");
+  }
+
   QUndoCommand* H2MethylExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
   {
     QUndoCommand *undo = 0;

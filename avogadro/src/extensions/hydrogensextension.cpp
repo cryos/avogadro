@@ -54,6 +54,11 @@ namespace Avogadro {
     return m_actions;
   }
 
+  QString HydrogensExtension::menuPath(QAction *) const
+  {
+    return tr("&Build");
+  }
+
   QUndoCommand* HydrogensExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
   {
 

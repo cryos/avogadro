@@ -52,6 +52,11 @@ namespace Avogadro {
     return m_actions;
   }
 
+  QString UnitCellExtension::menuPath(QAction *) const
+  {
+    return tr("&Build");
+  }
+
   QUndoCommand* UnitCellExtension::performAction(QAction *,
       Molecule *molecule,
       GLWidget *widget,

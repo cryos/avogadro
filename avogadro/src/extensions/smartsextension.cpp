@@ -49,6 +49,11 @@ namespace Avogadro {
     return m_actions;
   }
 
+  QString SmartsExtension::menuPath(QAction *) const
+  {
+    return tr("&Select");
+  }
+
   QUndoCommand* SmartsExtension::performAction(QAction *,
       Molecule *molecule,
       GLWidget *widget,
