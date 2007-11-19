@@ -25,7 +25,7 @@
      <item>
       <widget class="QCheckBox" name="showMultipleCheckBox" >
        <property name="enabled" >
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="text" >
         <string>Show Multiple Bonds</string>

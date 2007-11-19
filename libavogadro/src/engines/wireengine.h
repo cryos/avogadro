@@ -64,8 +64,10 @@ namespace Avogadro {
   private:
     WireSettingsWidget *m_settingsWidget;
     
-    bool m_multipleBonds; //!< unimplemented = render multiple bonds
-    bool m_showDots; //!< show dots for atoms
+    bool m_showMulti; //!< show multiple bonds
+    bool m_showDots;  //!< show dots for atoms
+
+    double radius (const Atom *atom) const;
     
   private Q_SLOTS:
     void settingsWidgetDestroyed();

@@ -1,4 +1,17 @@
+2007-11-18  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/painter.h, libavogadro/src/glpainter.h,
+	libavogadro/src/povpainter.h, libavogadro/src/glpainter.cpp: Add
+	drawMultiLine method for wireframe multiple bonds.
+
+	* libavogadro/src/engines/wireengine.h,
+	libavogadro/src/engines/wireengine.cpp,
+	libavogadro/src/engines/wiresettingswidget.ui:
+	Add multiple bond indications for wireframe render engine.
+	(Still needs some refinement, particularly triple bonds.)
+
 2007-11-17  Marcus D. Hanwell <marcus@cryos.org>
+
 	* libavogadro/src/engines/labelsettingswidget.ui,
 	libavogadro/src/engines/ribbonengine.cpp,
 	libavogadro/src/engines/spheresettingswidget.ui,
@@ -7,6 +20,7 @@
 	engine configuration dialogs.
 
 2007-11-16  Marcus D. Hanwell <marcus@cryos.org>
+
 	* libavogadro/src/color.*, libavogadro/src/glpainter.cpp: Added a new
 	OpenGL material that should work better with the ring engine.
 
@@ -15,6 +29,7 @@
 	higher order bonds or not.
 
 2007-11-13  Marcus D. Hanwell <marcus@cryos.org>
+
 	* libavogadro/src/engines/ribbonengine.*: Updated so that we now have
 	multiple chain colours!
 
@@ -28,6 +43,7 @@
 	transparency now working.
 
 2007-11-11  Marcus D. Hanwell <marcus@cryos.org>
+
 	* libavogadro/src/painterdevice.h, libavogadro/src/povpainter.h,
 	libavogadro/src/glwidget.cpp: Exposed the loaded Molecule to the
 	PainterDevice.
@@ -42,6 +58,7 @@
 	files to be read back in via Open Babel 2.2.
 
 2007-11-06  Marcus D. Hanwell <marcus@cryos.org>
+
 	* avogadro/libavogadro/src/engines/ribbonengine.*: Added ability to
 	set the ribbon radius, also tried to add transparency - not working
 	for me here.
@@ -52,6 +69,7 @@
 	for providing an example which inspired what I did here.
 
 2007-11-05  Marcus D. Hanwell <marcus@cryos.org>
+	
 	* libavogadro/src/glpainter.cpp: Now filled with NURBS goodness.
 	Still needs quite a bit of tuning and testing but visually improved.
   
@@ -67,6 +85,7 @@
 	setPrimitives function due to changes in molecule loading.
 
 2007-11-01  Marcus D. Hanwell <marcus@cryos.org>
+	
 	* libavogadro/src/engines/labelengine.cpp,
 	libavogadro/src/engines/labelsettingswidget.ui: Updated the label
 	engineto label atoms by residue name and number and bonds by their
@@ -74,16 +93,19 @@
 	labelling for atoms, feature request 1824337.
 
 2007-10-31  Marcus D. Hanwell <marcus@cryos.org>
+	
 	* libavogadro/src/engines/ribbonengine.*: Improvements to the ribbon
 	code so that it caches the chain and updates it if the molecule is
 	changed.
 
 2007-10-24  Marcus D. Hanwell <marcus@cryos.org>
+	
 	* libavogadro/src/engines/ribbonengine.cpp: Improve the ribbon engine
 	to render multiple chains correctly and not crash when there is no
 	chain.
 
 2007-10-24  Marcus D. Hanwell <marcus@cryos.org>
+	
 	* libavogadro/src/painter.h, libavogadro/src/glpainter.h,
 	libavogadro/src/povpainter.h: Modified the drawSpline signature to use
 	QVector and take a radius.
@@ -97,11 +119,13 @@
 	bone as a cubic spline tube.
 
 2007-10-17  Marcus D. Hanwell <marcus@cryos.org>
+	
 	* libavogadro/src/engines/ribbonengine.cpp: Added routine to pick out
 	the CA atoms of the residue backbone. Draw cylinders between the CA
 	atoms. Next step is to draw a smoothed tube between them.
 
 2007-08-20  Marcus D. Hanwell <marcus@cryos.org>
+	
 	* libavogadro/src/tools/glwidget.*: Added the computeClickedPrimitive/
 	Atom/Bond functions to the GLWidget class as these functions have been 
 	used in	several tools and are quite generic. Fixed regression with bond
@@ -114,6 +138,7 @@
 	implementations of them.
 
 2007-08-19  Marcus D. Hanwell <marcus@cryos.org>
+	
 	* libavogadro/src/tools/navigate.*: Added a new navigation class with
 	static member functions to perform the navigation functions common to
 	three tools right now and possibly more in future.
@@ -126,6 +151,7 @@
 	moved.
 
 2007-08-18  Marcus D. Hanwell <marcus@cryos.org>
+	
 	* libavogadro/src/tools/clickmeasuretool.cpp: Added units to the output.
 	Also added the display of the angle sector under consideration with the
 	current selection of atoms.
@@ -137,6 +163,7 @@
 	clearSelectedPrimitives I think.
 
 2007-08-10  Marcus D. Hanwell <marcus@cryos.org>
+	
 	* libavogadro/src/tools/navigatotool.cpp: Added visual representation
 	of atom centred translation. Needs extra features adding to the
 	painter and porting, as does the previous visual feedback.

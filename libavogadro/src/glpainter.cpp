@@ -86,81 +86,81 @@ namespace Avogadro
 
   class GLPainterPrivate
   {
-    public:
-      GLPainterPrivate() : widget ( 0 ), newQuality(-1), quality ( 0 ), overflow(0),
-          spheres ( 0 ), cylinders ( 0 ),
-          textRenderer ( new TextRenderer ), initialized ( false ), sharing ( 0 ),
-          type(Primitive::OtherType), id ( -1 ), color(0)  {};
-      ~GLPainterPrivate()
-      {
-        deleteObjects();
-        delete textRenderer;
-      }
+  public:
+    GLPainterPrivate() : widget ( 0 ), newQuality(-1), quality ( 0 ), overflow(0),
+                         spheres ( 0 ), cylinders ( 0 ),
+                         textRenderer ( new TextRenderer ), initialized ( false ), sharing ( 0 ),
+                         type(Primitive::OtherType), id ( -1 ), color(0)  {};
+    ~GLPainterPrivate()
+    {
+      deleteObjects();
+      delete textRenderer;
+    }
 
-      GLWidget *widget;
+    GLWidget *widget;
 
-      int newQuality;
-      int quality;
-      int overflow;
+    int newQuality;
+    int quality;
+    int overflow;
 
-      /** array of pointers to Spheres. You might ask, why not have
-       * a plain array of Spheres. The idea is that more than one global detail level
-       * may use a given sphere detail level. It is therefore interesting to be able
-       * to share that sphere, instead of having redundant spheres in memory.
-       */
-      Sphere **spheres;
-      /** array of pointers to Cylinders. You might ask, why not have
-       * a plain array of Cylinders. The idea is that more than one global detail level
-       * may use a given cylinder detail level. It is therefore interesting to be able
-       * to share that cylinder, instead of having redundant cylinder in memory.
-       */
-      Cylinder **cylinders;
+    /** array of pointers to Spheres. You might ask, why not have
+     * a plain array of Spheres. The idea is that more than one global detail level
+     * may use a given sphere detail level. It is therefore interesting to be able
+     * to share that sphere, instead of having redundant spheres in memory.
+     */
+    Sphere **spheres;
+    /** array of pointers to Cylinders. You might ask, why not have
+     * a plain array of Cylinders. The idea is that more than one global detail level
+     * may use a given cylinder detail level. It is therefore interesting to be able
+     * to share that cylinder, instead of having redundant cylinder in memory.
+     */
+    Cylinder **cylinders;
 
-      TextRenderer *textRenderer;
+    TextRenderer *textRenderer;
 
-      bool initialized;
+    bool initialized;
 
-      void deleteObjects();
-      void createObjects();
+    void deleteObjects();
+    void createObjects();
 
-      inline bool isValid();
+    inline bool isValid();
 
-      /**
-       * Painters can be shared, we must keep track of this.
-       */
-      int sharing;
+    /**
+     * Painters can be shared, we must keep track of this.
+     */
+    int sharing;
 
-      // The primitive type and id of the current object
-      Primitive::Type type;
-      int id;
-      Color color;
+    // The primitive type and id of the current object
+    Primitive::Type type;
+    int id;
+    Color color;
   };
 
   inline bool GLPainterPrivate::isValid()
   {
     if(!widget)
-    {
-      qWarning("GLPainter not active.");
-      return false;
-    }
+      {
+        qWarning("GLPainter not active.");
+        return false;
+      }
 
     if(newQuality != -1)
-    {
-      qDebug() << "updateObjects()";
-      if(newQuality != quality)
       {
-        deleteObjects();
-        quality = newQuality;
-        createObjects();
+        qDebug() << "updateObjects()";
+        if(newQuality != quality)
+          {
+            deleteObjects();
+            quality = newQuality;
+            createObjects();
+          }
+        newQuality = -1;
       }
-      newQuality = -1;
-    }
     else if(!initialized)
-    {
-      qDebug() << "createObjects()";
-      createObjects();
-      initialized = true;
-    }
+      {
+        qDebug() << "createObjects()";
+        createObjects();
+        initialized = true;
+      }
     return true;
   }
 
@@ -170,46 +170,46 @@ namespace Avogadro
     // delete the spheres. One has to be wary that more than one sphere
     // pointer may have the same value. One wants to avoid deleting twice the same sphere.
     if ( spheres )
-    {
-      lastLevel = -1;
-      for ( n = 0; n < PAINTER_DETAIL_LEVELS; n++ )
       {
-        level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
-        if ( level != lastLevel )
-        {
-          lastLevel = level;
-          if ( spheres[n] )
+        lastLevel = -1;
+        for ( n = 0; n < PAINTER_DETAIL_LEVELS; n++ )
           {
-            delete spheres[n];
-            spheres[n] = 0;
+            level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
+            if ( level != lastLevel )
+              {
+                lastLevel = level;
+                if ( spheres[n] )
+                  {
+                    delete spheres[n];
+                    spheres[n] = 0;
+                  }
+              }
           }
-        }
+        delete[] spheres;
+        spheres = 0;
       }
-      delete[] spheres;
-      spheres = 0;
-    }
 
     // delete the cylinders. One has to be wary that more than one cylinder
     // pointer may have the same value. One wants to avoid deleting twice the same cylinder.
     if ( cylinders )
-    {
-      lastLevel = -1;
-      for ( n = 0; n < PAINTER_DETAIL_LEVELS; n++ )
       {
-        level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
-        if ( level != lastLevel )
-        {
-          lastLevel = level;
-          if ( cylinders[n] )
+        lastLevel = -1;
+        for ( n = 0; n < PAINTER_DETAIL_LEVELS; n++ )
           {
-            delete cylinders[n];
-            cylinders[n] = 0;
+            level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
+            if ( level != lastLevel )
+              {
+                lastLevel = level;
+                if ( cylinders[n] )
+                  {
+                    delete cylinders[n];
+                    cylinders[n] = 0;
+                  }
+              }
           }
-        }
+        delete[] cylinders;
+        cylinders = 0;
       }
-      delete[] cylinders;
-      cylinders = 0;
-    }
   }
 
   void GLPainterPrivate::createObjects()
@@ -218,57 +218,57 @@ namespace Avogadro
     // in that case we want to reuse the corresponding sphere by just copying the pointer,
     // instead of creating redundant spheres.
     if ( spheres == 0 )
-    {
-      spheres = new Sphere*[PAINTER_DETAIL_LEVELS];
-      int level, lastLevel;
-      lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
-      spheres[0] = new Sphere ( lastLevel );
-      for ( int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
       {
-        level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
-        if ( level == lastLevel )
-        {
-          spheres[n] = spheres[n-1];
-        }
-        else
-        {
-          lastLevel = level;
-          spheres[n] = new Sphere ( level );
-        }
+        spheres = new Sphere*[PAINTER_DETAIL_LEVELS];
+        int level, lastLevel;
+        lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
+        spheres[0] = new Sphere ( lastLevel );
+        for ( int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
+          {
+            level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
+            if ( level == lastLevel )
+              {
+                spheres[n] = spheres[n-1];
+              }
+            else
+              {
+                lastLevel = level;
+                spheres[n] = new Sphere ( level );
+              }
+          }
       }
-    }
 
     // create the cylinders. More than one cylinder detail level may have the same value.
     // in that case we want to reuse the corresponding cylinder by just copying the pointer,
     // instead of creating redundant cylinders.
     if ( cylinders == 0 )
-    {
-      cylinders = new Cylinder*[PAINTER_DETAIL_LEVELS];
-      int level, lastLevel;
-      lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
-      cylinders[0] = new Cylinder ( lastLevel );
-      for ( int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
       {
-        level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
-        if ( level == lastLevel )
-        {
-          cylinders[n] = cylinders[n-1];
-        }
-        else
-        {
-          lastLevel = level;
-          cylinders[n] = new Cylinder ( level );
-        }
+        cylinders = new Cylinder*[PAINTER_DETAIL_LEVELS];
+        int level, lastLevel;
+        lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
+        cylinders[0] = new Cylinder ( lastLevel );
+        for ( int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
+          {
+            level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
+            if ( level == lastLevel )
+              {
+                cylinders[n] = cylinders[n-1];
+              }
+            else
+              {
+                lastLevel = level;
+                cylinders[n] = new Cylinder ( level );
+              }
+          }
       }
-    }
   }
 
   GLPainter::GLPainter( int quality ) : d ( new GLPainterPrivate )
   {
     if ( quality < 0 || quality >= PAINTER_MAX_DETAIL_LEVEL )
-    {
-      quality = DEFAULT_GLOBAL_QUALITY_SETTING;
-    }
+      {
+        quality = DEFAULT_GLOBAL_QUALITY_SETTING;
+      }
     d->quality = quality;
   }
 
@@ -292,13 +292,13 @@ namespace Avogadro
   {
     d->type = primitive->type();
     if (d->type == Primitive::AtomType)
-    {
-      d->id = static_cast<const Atom *>(primitive)->GetIdx();
-    }
+      {
+        d->id = static_cast<const Atom *>(primitive)->GetIdx();
+      }
     else if (d->type == Primitive::BondType)
-    {
-      d->id = static_cast<const Bond *>(primitive)->GetIdx();
-    }
+      {
+        d->id = static_cast<const Bond *>(primitive)->GetIdx();
+      }
   }
 
   void GLPainter::setName ( Primitive::Type type, int id )
@@ -331,16 +331,16 @@ namespace Avogadro
     double apparentRadius = radius / distance;
 
     int detailLevel = 1 + static_cast<int> ( floor (
-                        PAINTER_SPHERES_DETAIL_COEFF * ( sqrt ( apparentRadius ) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL )
-                      ) );
+                                                    PAINTER_SPHERES_DETAIL_COEFF * ( sqrt ( apparentRadius ) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL )
+                                                    ) );
     if ( detailLevel < 0 )
-    {
-      detailLevel = 0;
-    }
+      {
+        detailLevel = 0;
+      }
     if ( detailLevel > PAINTER_MAX_DETAIL_LEVEL )
-    {
-      detailLevel = PAINTER_MAX_DETAIL_LEVEL;
-    }
+      {
+        detailLevel = PAINTER_MAX_DETAIL_LEVEL;
+      }
 
     d->color.applyAsMaterials();
     pushName();
@@ -349,7 +349,7 @@ namespace Avogadro
   }
 
   void GLPainter::drawCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
-                               double radius )
+                                 double radius )
   {
     if(!d->isValid()) { return; }
 
@@ -362,17 +362,17 @@ namespace Avogadro
 
     double apparentRadius = radius / distance;
     int detailLevel = 1 + static_cast<int> ( floor (
-                        PAINTER_CYLINDERS_DETAIL_COEFF
-                        * ( sqrt ( apparentRadius ) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL )
-                      ) );
+                                                    PAINTER_CYLINDERS_DETAIL_COEFF
+                                                    * ( sqrt ( apparentRadius ) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL )
+                                                    ) );
     if ( detailLevel < 0 )
-    {
-      detailLevel = 0;
-    }
+      {
+        detailLevel = 0;
+      }
     if ( detailLevel > PAINTER_MAX_DETAIL_LEVEL )
-    {
-      detailLevel = PAINTER_MAX_DETAIL_LEVEL;
-    }
+      {
+        detailLevel = PAINTER_MAX_DETAIL_LEVEL;
+      }
 
     d->color.applyAsMaterials();
     pushName();
@@ -381,7 +381,7 @@ namespace Avogadro
   }
 
   void GLPainter::drawMultiCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
-                                    double radius, int order, double shift )
+                                      double radius, int order, double shift )
   {
     if(!d->isValid()) { return; }
 
@@ -394,17 +394,17 @@ namespace Avogadro
 
     double apparentRadius = radius / distance;
     int detailLevel = 1 + static_cast<int> ( floor (
-                        PAINTER_CYLINDERS_DETAIL_COEFF
-                        * ( sqrt ( apparentRadius ) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL )
-                      ) );
+                                                    PAINTER_CYLINDERS_DETAIL_COEFF
+                                                    * ( sqrt ( apparentRadius ) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL )
+                                                    ) );
     if ( detailLevel < 0 )
-    {
-      detailLevel = 0;
-    }
+      {
+        detailLevel = 0;
+      }
     if ( detailLevel > PAINTER_MAX_DETAIL_LEVEL )
-    {
-      detailLevel = PAINTER_MAX_DETAIL_LEVEL;
-    }
+      {
+        detailLevel = PAINTER_MAX_DETAIL_LEVEL;
+      }
 
     d->color.applyAsMaterials();
     pushName();
@@ -435,21 +435,125 @@ namespace Avogadro
     glPopAttrib();
   }
   
+  void GLPainter::drawMultiLine(const Eigen::Vector3d &end1, 
+                                const Eigen::Vector3d &end2,
+                                double lineWidth, int order, short stipple)
+  {
+    // Draw multiple lines between two points of the specified thickness
+    if(!d->isValid()) { return; }
+
+    // the normal to the plane of the viewing widget
+    const Eigen::Vector3d planeNormalVector = d->widget->normalVector();
+    // the "axis vector" of the line
+    Eigen::Vector3d axis = end2 - end1;
+
+    // now we want to construct an orthonormal basis whose first
+    // vector is axis.normalized(). We don't use Eigen's loadOrthoBasis()
+    // for that, because we want one more thing. The second vector in this
+    // basis, which we call ortho1, should be approximately lying in the
+    // z=0 plane if possible. This is to ensure double bonds don't look
+    // like single bonds from the default point of view.
+    double axisNorm = axis.norm();
+    if( axisNorm == 0.0 ) return;
+    Eigen::Vector3d axisNormalized = axis / axisNorm;
+
+    Eigen::Vector3d ortho1 = axisNormalized.cross(planeNormalVector);
+    double ortho1Norm = ortho1.norm();
+    if( ortho1Norm > 0.001 ) ortho1 /= ortho1Norm;
+    else ortho1 = axisNormalized.ortho();
+    ortho1 *= lineWidth;
+
+    Eigen::Vector3d ortho2 = cross( axisNormalized, ortho1 );       
+
+    // construct the 4D transformation matrix
+    Eigen::Matrix4d matrix;
+
+    matrix(0, 0) = ortho1(0);
+    matrix(1, 0) = ortho1(1);
+    matrix(2, 0) = ortho1(2);
+    matrix(3, 0) = 0.0;
+
+    matrix(0, 1) = ortho2(0);
+    matrix(1, 1) = ortho2(1);
+    matrix(2, 1) = ortho2(2);
+    matrix(3, 1) = 0.0;
+
+    matrix(0, 2) = axis(0);
+    matrix(1, 2) = axis(1);
+    matrix(2, 2) = axis(2);
+    matrix(3, 2) = 0.0;
+
+    matrix(0, 3) = end1(0);
+    matrix(1, 3) = end1(1);
+    matrix(2, 3) = end1(2);
+    matrix(3, 3) = 1.0;
+
+    //now we can do the actual drawing !
+    glPushMatrix();
+    glMultMatrixd( matrix.array() );
+
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glDisable(GL_LIGHTING);
+
+    glLineWidth(lineWidth);
+    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+
+    // Draw the line
+    if (order == 1) {
+      glBegin(GL_LINE_STRIP);
+      glVertex3f(0.0, 0.0, 0.0);
+      glVertex3f(0.0, 0.0, 1.0);
+      glEnd();
+    }
+    else {
+      double angleOffset = 0.0;
+      if( order >= 3 ) {
+        if( order == 3 ) angleOffset = 90.0;
+        else angleOffset = 22.5;
+      }
+
+      double displacementFactor = 0.02 / lineWidth;
+      for( int i = 0; i < order; i++) {
+        glPushMatrix();
+        glRotated( angleOffset + 360.0 * i / order,
+                   0.0, 0.0, 1.0 );
+        glTranslated( displacementFactor, 0.0, 0.0 );
+        
+        glBegin(GL_LINE_STRIP);
+        glVertex3f(0.0, 0.0, 0.0);
+        glVertex3f(0.0, 0.0, 1.0);        
+        glEnd();
+
+        glPopMatrix();
+      }
+    }
+    glPopMatrix();
+
+//     if (order == 5) { // aromatic interior bond
+//       glEnable(GL_LINE_STIPPLE);
+//       glLineStipple(1, stipple);
+//       glDisable(GL_LINE_STIPPLE);
+//     }
+
+    glEnable(GL_LIGHTING);
+    glPopAttrib();
+  }
+
   void GLPainter::drawTriangle(const Eigen::Vector3d &p1, const Eigen::Vector3d &p2,
-                    const Eigen::Vector3d &p3)
+                               const Eigen::Vector3d &p3)
   {
     if(!d->isValid()) { return; }
 
-	d->color.applyAsFlatMaterials();
-	glEnable(GL_AUTO_NORMAL);
+    d->color.applyAsFlatMaterials();
+    glEnable(GL_AUTO_NORMAL);
 
-	glBegin(GL_TRIANGLES);
-	glVertex3dv(p1.array());
-	glVertex3dv(p2.array());
-	glVertex3dv(p3.array());
-	glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3dv(p1.array());
+    glVertex3dv(p2.array());
+    glVertex3dv(p3.array());
+    glEnd();
 
-	glDisable(GL_AUTO_NORMAL);
+    glDisable(GL_AUTO_NORMAL);
   }
 
   void GLPainter::drawSpline(const QVector<Eigen::Vector3d>& pts, double radius)
@@ -466,40 +570,40 @@ namespace Avogadro
     points.push_back(pts.at(pts.size()-1));
     points.push_back(pts.at(pts.size()-1));
 
-//    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+    //    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
 
-/*    QVector<Eigen::Vector3d> p, a;
-    a.resize(4);
-    p.resize(4);
+    /*    QVector<Eigen::Vector3d> p, a;
+          a.resize(4);
+          p.resize(4);
 
-    // Define the number of interpolated points between control points
-    int numPts = 40;
-    double step = 1. / double(numPts);
+          // Define the number of interpolated points between control points
+          int numPts = 40;
+          double step = 1. / double(numPts);
 
-    Eigen::Vector3d last, cur;
+          Eigen::Vector3d last, cur;
 
-    for (int i = 2; i < pts.size()+1; i++) {
-      p[0] = points.at(i-1);
-      p[1] = points.at(i);
-      p[2] = points.at(i+1);
-      p[3] = points.at(i+2);
+          for (int i = 2; i < pts.size()+1; i++) {
+          p[0] = points.at(i-1);
+          p[1] = points.at(i);
+          p[2] = points.at(i+1);
+          p[3] = points.at(i+2);
 
-      // Now calculate the basis
-      a[0] = (-p[0] + 3.*p[1] - 3.*p[2] + p[3]) / 6.;
-      a[1] = (3.*p[0] - 6.*p[1] + 3.*p[2]) / 6.;
-      a[2] = (-3.*p[0] + 3.*p[2]) / 6.;
-      a[3] = (p[0] + 4.*p[1] + p[2]) / 6.;
+          // Now calculate the basis
+          a[0] = (-p[0] + 3.*p[1] - 3.*p[2] + p[3]) / 6.;
+          a[1] = (3.*p[0] - 6.*p[1] + 3.*p[2]) / 6.;
+          a[2] = (-3.*p[0] + 3.*p[2]) / 6.;
+          a[3] = (p[0] + 4.*p[1] + p[2]) / 6.;
 
-      // Now interpolate some points and draw them...
-      last = a[3];
-      for (int j = 0; j < numPts; j++) {
-        double t = step * j;
-        cur = a[3] + t*(a[2] + t*(a[1] + t*a[0]));
-     //   drawCylinder(last, cur, radius/4.);
-        last = cur;
-      }
-    }
-*/
+          // Now interpolate some points and draw them...
+          last = a[3];
+          for (int j = 0; j < numPts; j++) {
+          double t = step * j;
+          cur = a[3] + t*(a[2] + t*(a[1] + t*a[0]));
+          //   drawCylinder(last, cur, radius/4.);
+          last = cur;
+          }
+          }
+    */
     glEnable(GL_AUTO_NORMAL);
     GLUnurbsObj *nurb = gluNewNurbsRenderer();
     // These settings were inspired by the code supplied by Thomas Margraf
@@ -577,13 +681,13 @@ namespace Avogadro
     
     gluDeleteNurbsRenderer(nurb);
 	
-	glDisable(GL_AUTO_NORMAL);
+    glDisable(GL_AUTO_NORMAL);
     
     glPopAttrib();
   }
 
   void GLPainter::drawShadedSector(Eigen::Vector3d origin, Eigen::Vector3d direction1,
-                                 Eigen::Vector3d direction2, double radius, bool alternateAngle)
+                                   Eigen::Vector3d direction2, double radius, bool alternateAngle)
   {
     assert( d->widget );
 
@@ -615,12 +719,12 @@ namespace Avogadro
     Eigen::Vector3d y = Eigen::Vector3d(0, 1, 0);
 
     if (n.norm() < 1e-16)
-    {
-      Eigen::Vector3d A = u.cross(x);
-      Eigen::Vector3d B = u.cross(y);
+      {
+        Eigen::Vector3d A = u.cross(x);
+        Eigen::Vector3d B = u.cross(y);
 
-      n = A.norm() >= B.norm() ? A : B;
-    }
+        n = A.norm() >= B.norm() ? A : B;
+      }
 
     n = n / n.norm();
 
@@ -633,21 +737,21 @@ namespace Avogadro
     // reach the next line.
     Eigen::Vector3d points[720];
     for (int theta = 1; theta < (uvAngle * 2); theta++)
-    {
-      // Create a Matrix that represents a rotation about a vector perpindicular
-      // to the plane.
-      Eigen::Matrix3d rotMat;
-      rotMat.loadRotation3((theta / 2 * (M_PI / 180.0)), n);
+      {
+        // Create a Matrix that represents a rotation about a vector perpindicular
+        // to the plane.
+        Eigen::Matrix3d rotMat;
+        rotMat.loadRotation3((theta / 2 * (M_PI / 180.0)), n);
 
-      // Apply the rotation Matrix to the vector to find the new point.
-      if (alternateAngle) {
-        rotMat.multiply(v, &points[theta-1]);
-      } else {
-        rotMat.multiply(u, &points[theta-1]);
+        // Apply the rotation Matrix to the vector to find the new point.
+        if (alternateAngle) {
+          rotMat.multiply(v, &points[theta-1]);
+        } else {
+          rotMat.multiply(u, &points[theta-1]);
+        }
+        points[theta-1] += origin;
+        points[theta-1] = d->widget->camera()->modelview() * points[theta-1];
       }
-      points[theta-1] += origin;
-      points[theta-1] = d->widget->camera()->modelview() * points[theta-1];
-    }
 
     // Get vectors representing the points' positions in terms of the model view.
     origin = d->widget->camera()->modelview() * origin;
@@ -666,19 +770,19 @@ namespace Avogadro
     glBegin(GL_TRIANGLE_FAN);
     glVertex3d(origin.x(), origin.y(), origin.z());
     if (alternateAngle)
-    {
-      glVertex3d(direction2.x(), direction2.y(), direction2.z());
-      for (int i = 0; i < uvAngle*2 - 1; i++)
-        glVertex3d(points[i].x(), points[i].y(), points[i].z());
-      glVertex3d(direction1.x(), direction1.y(), direction1.z());
-    }
+      {
+        glVertex3d(direction2.x(), direction2.y(), direction2.z());
+        for (int i = 0; i < uvAngle*2 - 1; i++)
+          glVertex3d(points[i].x(), points[i].y(), points[i].z());
+        glVertex3d(direction1.x(), direction1.y(), direction1.z());
+      }
     else
-    {
-      glVertex3d(direction1.x(), direction1.y(), direction1.z());
-      for (int i = 0; i < uvAngle*2 - 1; i++)
-        glVertex3d(points[i].x(), points[i].y(), points[i].z());
-      glVertex3d(direction2.x(), direction2.y(), direction2.z());
-    }
+      {
+        glVertex3d(direction1.x(), direction1.y(), direction1.z());
+        for (int i = 0; i < uvAngle*2 - 1; i++)
+          glVertex3d(points[i].x(), points[i].y(), points[i].z());
+        glVertex3d(direction2.x(), direction2.y(), direction2.z());
+      }
     glEnd();
 
     glPopMatrix();
@@ -719,12 +823,12 @@ namespace Avogadro
     Eigen::Vector3d y = Eigen::Vector3d(0, 1, 0);
 
     if (n.norm() < 1e-16)
-    {
-      Eigen::Vector3d A = u.cross(x);
-      Eigen::Vector3d B = u.cross(y);
+      {
+        Eigen::Vector3d A = u.cross(x);
+        Eigen::Vector3d B = u.cross(y);
 
-      n = A.norm() >= B.norm() ? A : B;
-    }
+        n = A.norm() >= B.norm() ? A : B;
+      }
 
     n = n / n.norm();
 
@@ -737,21 +841,21 @@ namespace Avogadro
     // reach the next line.
     Eigen::Vector3d points[720];
     for (int theta = 1; theta < (uvAngle * 2); theta++)
-    {
-      // Create a Matrix that represents a rotation about a vector perpindicular
-      // to the plane.
-      Eigen::Matrix3d rotMat;
-      rotMat.loadRotation3((theta / 2 * (M_PI / 180.0)), n);
+      {
+        // Create a Matrix that represents a rotation about a vector perpindicular
+        // to the plane.
+        Eigen::Matrix3d rotMat;
+        rotMat.loadRotation3((theta / 2 * (M_PI / 180.0)), n);
 
-      // Apply the rotation Matrix to the vector to find the new point.
-      if (alternateAngle) {
-        rotMat.multiply(v, &points[theta-1]);
-      } else {
-        rotMat.multiply(u, &points[theta-1]);
+        // Apply the rotation Matrix to the vector to find the new point.
+        if (alternateAngle) {
+          rotMat.multiply(v, &points[theta-1]);
+        } else {
+          rotMat.multiply(u, &points[theta-1]);
+        }
+        points[theta-1] += origin;
+        points[theta-1] = d->widget->camera()->modelview() * points[theta-1];
       }
-      points[theta-1] += origin;
-      points[theta-1] = d->widget->camera()->modelview() * points[theta-1];
-    }
 
     // Get vectors representing the points' positions in terms of the model view.
     origin = d->widget->camera()->modelview() * origin;
@@ -770,19 +874,19 @@ namespace Avogadro
     // Draw the arc.
     glBegin(GL_LINE_STRIP);
     if (alternateAngle)
-    {
-      glVertex3d(direction2.x(), direction2.y(), direction2.z());
-      for (int i = 0; i < uvAngle*2 - 1; i++)
-        glVertex3d(points[i].x(), points[i].y(), points[i].z());
-      glVertex3d(direction1.x(), direction1.y(), direction1.z());
-    }
+      {
+        glVertex3d(direction2.x(), direction2.y(), direction2.z());
+        for (int i = 0; i < uvAngle*2 - 1; i++)
+          glVertex3d(points[i].x(), points[i].y(), points[i].z());
+        glVertex3d(direction1.x(), direction1.y(), direction1.z());
+      }
     else
-    {
-      glVertex3d(direction1.x(), direction1.y(), direction1.z());
-      for (int i = 0; i < uvAngle*2 - 1; i++)
-        glVertex3d(points[i].x(), points[i].y(), points[i].z());
-      glVertex3d(direction2.x(), direction2.y(), direction2.z());
-    }
+      {
+        glVertex3d(direction1.x(), direction1.y(), direction1.z());
+        for (int i = 0; i < uvAngle*2 - 1; i++)
+          glVertex3d(points[i].x(), points[i].y(), points[i].z());
+        glVertex3d(direction2.x(), direction2.y(), direction2.z());
+      }
     glEnd();
 
     glPopMatrix();
@@ -790,7 +894,7 @@ namespace Avogadro
   }
 
   void GLPainter::drawShadedQuadrilateral(Eigen::Vector3d point1, Eigen::Vector3d point2,
-                                        Eigen::Vector3d point3, Eigen::Vector3d point4)
+                                          Eigen::Vector3d point3, Eigen::Vector3d point4)
   {
     assert( d->widget );
 
@@ -814,8 +918,8 @@ namespace Avogadro
   }
 
   void GLPainter::drawQuadrilateral(Eigen::Vector3d point1, Eigen::Vector3d point2,
-                                  Eigen::Vector3d point3, Eigen::Vector3d point4,
-                                  double lineWidth)
+                                    Eigen::Vector3d point3, Eigen::Vector3d point4,
+                                    double lineWidth)
   {
     assert( d->widget );
 
@@ -842,7 +946,7 @@ namespace Avogadro
   int GLPainter::drawText ( int x, int y, const QString &string ) const
   {
     if(!d->isValid()) { return 0; }
-      d->textRenderer->begin ( d->widget );
+    d->textRenderer->begin ( d->widget );
     int val = d->textRenderer->draw ( x, y, string );
 
     d->textRenderer->end( );
@@ -862,7 +966,7 @@ namespace Avogadro
   int GLPainter::drawText ( const Eigen::Vector3d &pos, const QString &string ) const
   {
     if(!d->isValid()) { return 0; }
-      d->textRenderer->begin ( d->widget );
+    d->textRenderer->begin ( d->widget );
     Eigen::Vector3d transformedPos = d->widget->camera()->modelview() * pos;
 
     // perform a rough form of frustum culling
@@ -916,31 +1020,31 @@ namespace Avogadro
   {
     d->overflow--;
     if(!d->overflow)
-    {
-      d->widget = 0;
-    }
+      {
+        d->widget = 0;
+      }
   }
 
   void GLPainter::pushName()
   {
     // Push the type and id if they are set
     if (d->id != -1)
-    {
-      glPushName(d->type);
-      glPushName(d->id);
-    }
+      {
+        glPushName(d->type);
+        glPushName(d->id);
+      }
   }
 
   void GLPainter::popName()
   {
     // Pop the type and id if they are set, then reset them
     if (d->id != -1)
-    {
-      glPopName();
-      glPopName();
-      d->type = Primitive::OtherType;
-      d->id = -1;
-    }
+      {
+        glPopName();
+        glPopName();
+        d->type = Primitive::OtherType;
+        d->id = -1;
+      }
   }
 
 } // end namespace Avogadro

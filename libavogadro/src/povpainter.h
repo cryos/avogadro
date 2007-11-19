@@ -66,6 +66,9 @@ namespace Avogadro
     void drawLine(const Eigen::Vector3d &, const Eigen::Vector3d &,
                   double) { }
 
+    void drawMultiLine(const Eigen::Vector3d &, const Eigen::Vector3d &,
+                       double, int, short) { }
+
     void drawTriangle(const Eigen::Vector3d &, const Eigen::Vector3d &,
                     const Eigen::Vector3d &) { }
 

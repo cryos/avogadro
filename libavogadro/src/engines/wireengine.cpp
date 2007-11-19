@@ -43,7 +43,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   WireEngine::WireEngine(QObject *parent) : Engine(parent), m_settingsWidget(NULL),
-  m_multipleBonds(false), m_showDots(true)
+  m_showMulti(false), m_showDots(true)
   {
     setName(tr("Wireframe"));
     setDescription(tr("Wireframe rendering"));
@@ -80,9 +80,8 @@ namespace Avogadro {
     const Vector3d & v = a->pos();
     const Camera *camera = pd->camera();
 
-    Eigen::Vector3d transformedPos = pd->camera()->modelview() * v;
-
     // perform a rough form of frustum culling
+    Eigen::Vector3d transformedPos = pd->camera()->modelview() * v;
     double dot = transformedPos.z() / transformedPos.norm();
     if(dot > -0.8) return true;
 
@@ -91,6 +90,8 @@ namespace Avogadro {
     glPushName(Primitive::AtomType);
     glPushName(a->GetIdx());
 
+    // Compute a rough "dynamic" size for the atom dots
+    // We could probably have a better gradient here, but it looks decent
     double size = 3.0; // default size;
     if (camera->distance(v) < 10.0)
       size = 4.0;
@@ -99,11 +100,12 @@ namespace Avogadro {
     else if (camera->distance(v) > 85.0)
       size = 1.5;
 
+    // All dots are scaled by the VDW radius -- subtle, but effective
     if (pd->isSelected(a)) {
       glColor3fv(selectionColor);
       glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * (size + 1.0));
     }
-    else{
+    else {
       map.set(a);
       map.apply();
       glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * size);
@@ -113,10 +115,15 @@ namespace Avogadro {
     glVertex3d(v.x(), v.y(), v.z());
     glEnd();
 
-    glPopName();
-    glPopName();
+    glPopName(); // atom index
+    glPopName(); // Primitive::AtomType
 
     return true;
+  }
+
+  inline double WireEngine::radius (const Atom *atom) const
+  {
+    return etab.GetVdwRad(atom->GetAtomicNum());
   }
 
   bool WireEngine::renderOpaque(PainterDevice *pd, const Bond *b)
@@ -124,47 +131,54 @@ namespace Avogadro {
     const Atom *atom1 = static_cast<const Atom *>( b->GetBeginAtom() );
     const Vector3d & v1 = atom1->pos();
     const Camera *camera = pd->camera();
-
-    Eigen::Vector3d transformedEnd1 = pd->camera()->modelview() * v1;
+    Color map = colorMap();
 
     // perform a rough form of frustum culling
+    Eigen::Vector3d transformedEnd1 = pd->camera()->modelview() * v1;
     double dot = transformedEnd1.z() / transformedEnd1.norm();
-    if(dot > -0.8) return true;
+    if(dot > -0.8) return true; // i.e., don't bother rendering
 
     const Atom *atom2 = static_cast<const Atom *>( b->GetEndAtom() );
     const Vector3d & v2 = atom2->pos();
+    Vector3d d = v2 - v1;
+    d.normalize(); // compute the "transition point" between the two atoms
+    Vector3d v3(( v1 + v2 + d*( radius( atom1 )-radius( atom2 ) ) ) / 2 );
 
-    Color map = colorMap();
-
+    // Compute the width to draw the wireframe bonds
     double width = 1.0;
     double averageDistance = (camera->distance(v1) + camera->distance(v2)) / 2.0;
-
-    if (averageDistance < 10.0 && averageDistance > 5.0)
+    if (averageDistance < 20.0 && averageDistance > 10.0)
+      width = 1.5;
+    else if (averageDistance < 10.0 && averageDistance > 5.0)
       width = 2.0;
     else if (averageDistance < 5.0)
       width = 2.5;
 
-    glLineWidth(width);
-    glBegin(GL_LINES);
+    int order = 1;
+    if (m_showMulti) {
+      order = b->GetBO();
+      // For aromatic (dashed bonds) eventually
+//       if (b->IsAromatic())
+//         order = 5;
+    }
 
-    // hard to separate atoms from bonds in this view
-    // so we let the user always select atoms
+    // optional line stipple to use for aromatic bonds
+    int stipple = 0xF0F0;
+
     map.set(atom1);
-    map.apply();
-    glVertex3d(v1.x(), v1.y(), v1.z());
+    pd->painter()->setColor(&map);
+    pd->painter()->drawMultiLine( v1, v3, width, order, stipple );
 
     map.set(atom2);
-    map.apply();
-    glVertex3d(v2.x(), v2.y(), v2.z());
-
-    glEnd();
-
+    pd->painter()->setColor( &map );
+    pd->painter()->drawMultiLine( v3, v2, width, order, stipple );
+    
     return true;
   }
   
   void WireEngine::setShowMultipleBonds(int setting)
   {
-    m_multipleBonds = setting;
+    m_showMulti = setting;
     emit changed();
   }
   
