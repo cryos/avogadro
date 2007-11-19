@@ -1,3 +1,8 @@
+2007-11-19  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/glpainter.cpp: Refinement of multiple bonds in
+	wireframe view.
+
 2007-11-18  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/painter.h, libavogadro/src/glpainter.h,
