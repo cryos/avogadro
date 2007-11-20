@@ -32,6 +32,7 @@
 
 #include <openbabel/math/vector3.h>
 #include <openbabel/griddata.h>
+#include <openbabel/grid.h>
 
 #include <QtPlugin>
 
@@ -62,7 +63,13 @@ namespace Avogadro {
       float eval (float x, float y, float z)
       {
         vector3 v(x, y, z);
-        return gd->GetValue(v)*gd->GetValue(v) - iso;
+        return fabs(gd->GetValue(v)) - iso;
+      }
+      
+      float GetValue (float x, float y, float z)
+      {
+        vector3 v(x, y, z);
+        return gd->GetValue(v);        
       }
     };
 
@@ -86,17 +93,88 @@ namespace Avogadro {
     delete d;
   }
 
+  void SurfaceEngine::VDWSurface(Molecule *mol)
+  {
+    OBFloatGrid _grid;
+    // initialize a grid with spacing 0.333 angstroms between points, plus a padding of 2.5A.
+    double spacing = 0.33333;
+    double padding = 2.5;
+    _grid.Init(*mol, spacing, padding);
+    double min[3], max[3];
+    int xDim, yDim, zDim;
+    
+    _grid.GetMin(min);
+    _grid.GetMax(max);
+    
+    xDim = _grid.GetXdim();
+    yDim = _grid.GetYdim();
+    zDim = _grid.GetZdim();
+    
+    vector3 coord;
+    double distance, minDistance;
+    double maxVal, minVal;
+    maxVal = 0.0;
+    minVal = 0.0;
+    
+    std::vector<double> _values;
+    _values.resize(xDim * yDim * zDim);
+    for (int k = 0; k < zDim; ++k) {
+      coord.SetZ(min[2] + k * spacing);
+      for (int j = 0; j < yDim; ++j) {
+        coord.SetY(min[1] + j * spacing);
+        for (int i = 0; i < xDim; ++i) {
+          coord.SetX(min[0] + i * spacing);
+          minDistance = 1.0E+10;
+          FOR_ATOMS_OF_MOL(a, mol) {
+            distance = sqrt(coord.distSq(a->GetVector()));
+            distance -= etab.GetVdwRad(a->GetAtomicNum());
+            
+            if (distance < minDistance)
+              minDistance = distance;
+          } // end checking atoms
+          _values.push_back(-1.0 * minDistance); // negative = away from molecule, 0 = vdw surface, positive = inside
+          if (-1.0 * minDistance > maxVal)
+            maxVal = -1.0 * minDistance;
+          if (-1.0 * minDistance < minVal)
+            minVal = -1.0 * minDistance;
+          
+//          qDebug() << " x: " << coord.x() << " y: " << coord.y() << " z: " << coord.z() << " v: " << -1.0*minDistance;
+        } // x-axis
+      } // y-axis
+    } // z-axis
+    
+    qDebug() << " min: " << minVal << " max " << maxVal;
+    
+    OBGridData *_vdwGrid = new OBGridData;
+    double xAxis[3], yAxis[3], zAxis[3];
+    xAxis[0] = spacing; xAxis[1] = 0.0;     xAxis[2] = 0.0;
+    yAxis[0] = 0.0;     yAxis[1] = spacing; yAxis[2] = 0.0;
+    zAxis[0] = 0.0;     zAxis[1] = 0.0;     zAxis[2] = spacing;
+    
+    _vdwGrid->SetNumberOfPoints( xDim, yDim, zDim);
+    _vdwGrid->SetLimits( min, xAxis, yAxis, zAxis );
+    _vdwGrid->SetValues(_values);
+    
+    d->_gridFunction.SetGrid(_vdwGrid);
+  }
+  
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
   {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
     
-    if (!mol->HasData(OBGenericDataType::GridData))
-      return false; // no surface data
+    if (!mol->HasData(OBGenericDataType::GridData)) {
+      VDWSurface(mol);
+    } else{
+      d->_gridFunction.SetGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));                             
+    }
     
-    d->_gridFunction.SetGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
-    d->_gridFunction.SetIsovalue(0.0);
+    qDebug() << " set surface ";
+    
+    d->_gridFunction.SetIsovalue(0.001);
     d->_isoFinder = new Polygonizer(&d->_gridFunction, 0.15, 30);
     d->_isoFinder->march(false, 0.,0.,0.); // marching cubes
+    
+    qDebug() << " rendering surface ";
     
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDisable(GL_LIGHTING);
@@ -129,9 +207,6 @@ namespace Avogadro {
       glEnd();
     }
     
-//    glPopName();
-//    glPopName();
-        
     glPopAttrib();
 
     return true;

@@ -50,6 +50,8 @@ namespace Avogadro {
 
     protected:
     SurfacePrivateData *d;
+    
+    void SurfaceEngine::VDWSurface(Molecule *mol);
   };
 
   //! Generates instances of our SurfaceEngine class
