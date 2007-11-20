@@ -1,5 +1,5 @@
 /**********************************************************************
-  SMARTS - Select SMARTS plugin for Avogadro
+  Selection - Various selection options for Avogadro
 
   Copyright (C) 2006-2007 by Donald Ephraim Curtis
   Copyright (C) 2006-2007 by Geoffrey R. Hutchison
@@ -20,12 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __SMARTSEXTENSION_H
-#define __SMARTSEXTENSION_H
-
-
-#include <openbabel/mol.h>
-#include <openbabel/parsmart.h>
+#ifndef __SELECTEXTENSION_H
+#define __SELECTEXTENSION_H
 
 #include <avogadro/extension.h>
 
@@ -36,22 +32,22 @@
 
 namespace Avogadro {
 
- class SmartsExtension : public QObject, public Extension
+ class SelectExtension : public QObject, public Extension
   {
     Q_OBJECT
 
     public:
       //! Constructor
-      SmartsExtension(QObject *parent=0);
+      SelectExtension(QObject *parent=0);
       //! Deconstructor
-      virtual ~SmartsExtension();
+      virtual ~SelectExtension();
 
       //! \name Description methods
       //@{
       //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("SMARTS"); }
+      virtual QString name() const { return QObject::tr("Selections"); }
       //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("SMARTS Plugin"); };
+      virtual QString description() const { return QObject::tr("Selection Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
@@ -61,15 +57,18 @@ namespace Avogadro {
 
     private:
       QList<QAction *> m_actions;
+      
+      void invertSelection(GLWidget *widget);
+      void selectSMARTS(Molecule *molecule, GLWidget *widget);
   };
 
-  class SmartsExtensionFactory : public QObject, public ExtensionFactory
+  class SelectExtensionFactory : public QObject, public ExtensionFactory
   {
     Q_OBJECT;
     Q_INTERFACES(Avogadro::ExtensionFactory);
 
     public:
-    Extension *createInstance(QObject *parent = 0) { return new SmartsExtension(parent); }
+    Extension *createInstance(QObject *parent = 0) { return new SelectExtension(parent); }
   };
 
 } // end namespace Avogadro

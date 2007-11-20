@@ -61,17 +61,17 @@ TARGET_LINK_LIBRARIES(hydrogensextension
 )
 INSTALL(TARGETS hydrogensextension DESTINATION ${DESTINATION_DIR})
 
-### Select SMARTS
-set(smartsextension_SRCS smartsextension.cpp)
-qt4_automoc(${smartsextension_SRCS})
-ADD_LIBRARY(smartsextension SHARED ${smartsextension_SRCS})
-TARGET_LINK_LIBRARIES(smartsextension
+### Selections
+set(selectextension_SRCS selectextension.cpp)
+qt4_automoc(${selectextension_SRCS})
+ADD_LIBRARY(selectextension SHARED ${selectextension_SRCS})
+TARGET_LINK_LIBRARIES(selectextension
 	${OPENBABEL2_LIBRARIES}
 	${QT_LIBRARIES}
     ${OPENGL_LIBRARIES}
 	avogadro-lib
 )
-INSTALL(TARGETS smartsextension DESTINATION ${DESTINATION_DIR})
+INSTALL(TARGETS selectextension DESTINATION ${DESTINATION_DIR})
 
 ### unit cells
 set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)

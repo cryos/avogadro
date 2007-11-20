@@ -288,6 +288,87 @@ namespace Avogadro
       openFile( action->data().toString() );
     }
   }
+  
+  bool MainWindow::loadFile( const QString &fileName )
+  {
+    if(!d->initialized)
+    {
+      d->fileName = fileName;
+    }
+    
+    if(fileName.isEmpty())
+    {
+      setFileName( fileName );
+      setMolecule( new Molecule(this) );
+      return true;
+    }
+    
+    statusBar()->showMessage( tr("Loading %1...", "%1 is a filename").arg(fileName), 5000 );
+    QFile file( fileName );
+    if ( !file.open( QFile::ReadOnly | QFile::Text ) ) {
+      QApplication::restoreOverrideCursor();
+      QMessageBox::warning( this, tr( "Avogadro" ),
+                           tr( "Cannot read file %1:\n%2." )
+                           .arg( fileName )
+                           .arg( file.errorString() ) );
+      return false;
+    }
+    file.close();
+    
+    QApplication::setOverrideCursor( Qt::WaitCursor );
+    OBConversion conv;
+    OBFormat     *inFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
+    if ( !inFormat || !conv.SetInFormat( inFormat ) ) {
+      QApplication::restoreOverrideCursor();
+      QMessageBox::warning( this, tr( "Avogadro" ),
+                           tr( "Cannot read file format of file %1." )
+                           .arg( fileName ) );
+      return false;
+    }
+    ifstream     ifs;
+    ifs.open(( fileName.toAscii() ).data() );
+    if ( !ifs ) { // shouldn't happen, already checked file above
+      QApplication::restoreOverrideCursor();
+      QMessageBox::warning( this, tr( "Avogadro" ),
+                           tr( "Cannot read file %1." )
+                           .arg( fileName ) );
+      return false;
+    }
+    
+    statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
+    Molecule *molecule = new Molecule;
+    if ( conv.Read( molecule, &ifs ) && molecule->NumAtoms() != 0 ) {
+      if (!molecule->Has3D()) {
+        QMessageBox::warning( this, tr( "Avogadro" ),
+                             tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));        
+      }      
+      
+      setMolecule( molecule );
+      
+      Molecule test; // do we have a multi-molecule file?
+      if (conv.Read(&test, &ifs) && test.NumAtoms() != 0) {
+        QMessageBox::warning( this, tr( "Avogadro" ),
+                             tr( "This file contains multiple molecule records. Avogadro will only read the first molecule."
+                                " If you save, all other molecules may be lost." ));        
+      }
+      
+      QApplication::restoreOverrideCursor();
+      
+      QString status;
+      QTextStream( &status ) << tr("Atoms: ") << d->molecule->NumAtoms() <<
+      tr(" Bonds: ") << d->molecule->NumBonds();
+      statusBar()->showMessage( status, 5000 );
+    } else {
+      QApplication::restoreOverrideCursor();
+      statusBar()->showMessage( tr("Reading molecular file failed."), 5000 );
+      return false;
+    }
+    
+    d->toolGroup->setActiveTool(tr("Navigate"));
+    setFileName( fileName );
+    statusBar()->showMessage( tr("File Loaded..."), 5000 );
+    return true;
+  }  
 
   // Close the current file -- leave an empty window
   // Not used on Mac: the window is closed via closeEvent() instead
@@ -941,87 +1022,6 @@ namespace Avogadro
     }
 
 #endif
-  }
-
-  bool MainWindow::loadFile( const QString &fileName )
-  {
-    if(!d->initialized)
-    {
-      d->fileName = fileName;
-    }
-    
-    if(fileName.isEmpty())
-    {
-      setFileName( fileName );
-      setMolecule( new Molecule(this) );
-      return true;
-    }
-    
-    statusBar()->showMessage( tr("Loading %1...", "%1 is a filename").arg(fileName), 5000 );
-    QFile file( fileName );
-    if ( !file.open( QFile::ReadOnly | QFile::Text ) ) {
-      QApplication::restoreOverrideCursor();
-      QMessageBox::warning( this, tr( "Avogadro" ),
-                            tr( "Cannot read file %1:\n%2." )
-                            .arg( fileName )
-                            .arg( file.errorString() ) );
-      return false;
-    }
-    file.close();
-
-    QApplication::setOverrideCursor( Qt::WaitCursor );
-    OBConversion conv;
-    OBFormat     *inFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
-    if ( !inFormat || !conv.SetInFormat( inFormat ) ) {
-      QApplication::restoreOverrideCursor();
-      QMessageBox::warning( this, tr( "Avogadro" ),
-                            tr( "Cannot read file format of file %1." )
-                            .arg( fileName ) );
-      return false;
-    }
-    ifstream     ifs;
-    ifs.open(( fileName.toAscii() ).data() );
-    if ( !ifs ) { // shouldn't happen, already checked file above
-      QApplication::restoreOverrideCursor();
-      QMessageBox::warning( this, tr( "Avogadro" ),
-                            tr( "Cannot read file %1." )
-                            .arg( fileName ) );
-      return false;
-    }
-
-    statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
-    Molecule *molecule = new Molecule;
-    if ( conv.Read( molecule, &ifs ) && molecule->NumAtoms() != 0 ) {
-      if (!molecule->Has3D()) {
-        QMessageBox::warning( this, tr( "Avogadro" ),
-                             tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));        
-      }      
-
-      setMolecule( molecule );
-
-      Molecule test; // do we have a multi-molecule file?
-      if (conv.Read(&test, &ifs) && test.NumAtoms() != 0) {
-        QMessageBox::warning( this, tr( "Avogadro" ),
-                             tr( "This file contains multiple molecule records. Avogadro will only read the first molecule."
-                                " If you save, all other molecules may be lost." ));        
-      }
-      
-      QApplication::restoreOverrideCursor();
-
-      QString status;
-      QTextStream( &status ) << tr("Atoms: ") << d->molecule->NumAtoms() <<
-        tr(" Bonds: ") << d->molecule->NumBonds();
-      statusBar()->showMessage( status, 5000 );
-    } else {
-      QApplication::restoreOverrideCursor();
-      statusBar()->showMessage( tr("Reading molecular file failed."), 5000 );
-      return false;
-    }
-
-    d->toolGroup->setActiveTool(tr("Navigate"));
-    setFileName( fileName );
-    statusBar()->showMessage( tr("File Loaded..."), 5000 );
-    return true;
   }
 
   void MainWindow::setMolecule( Molecule *molecule )

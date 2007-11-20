@@ -1,5 +1,5 @@
 /**********************************************************************
-  SMARTS - Select SMARTS plugin for Avogadro
+  Selection - Various selection options for Avogadro
 
   Copyright (C) 2006-2007 by Donald Ephraim Curtis
   Copyright (C) 2006-2007 by Geoffrey R. Hutchison
@@ -20,10 +20,11 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "smartsextension.h"
+#include "selectextension.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 
+#include <openbabel/mol.h>
 #include <openbabel/parsmart.h>
 
 #include <QtGui>
@@ -33,31 +34,76 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  SmartsExtension::SmartsExtension(QObject *parent) : QObject(parent)
+  enum SelectionExtensionIndex
+    {
+      InvertIndex = 0,
+      ElementIndex,
+      ResidueTypeIndex,
+      SMARTSIndex
+    };
+
+  SelectExtension::SelectExtension(QObject *parent) : QObject(parent)
   {
-    QAction *action = new QAction(this);
-    action->setText(tr("Select SMARTS"));
+    QAction *action;
+
+    action = new QAction(this);
+    action->setText(tr("&Invert Selection"));
+    action->setData(InvertIndex);
+    m_actions.append(action);
+
+    action = new QAction(this);
+    action->setText(tr("Select SMARTS..."));
+    action->setData(SMARTSIndex);
     m_actions.append(action);
   }
 
-  SmartsExtension::~SmartsExtension()
+  SelectExtension::~SelectExtension()
   {
   }
 
-  QList<QAction *> SmartsExtension::actions() const
+  QList<QAction *> SelectExtension::actions() const
   {
     return m_actions;
   }
 
-  QString SmartsExtension::menuPath(QAction *) const
+  QString SelectExtension::menuPath(QAction *) const
   {
     return tr("&Select");
   }
 
-  QUndoCommand* SmartsExtension::performAction(QAction *,
-      Molecule *molecule,
-      GLWidget *widget,
-      QTextEdit *)
+  QUndoCommand* SelectExtension::performAction(QAction *action,
+      Molecule *molecule, GLWidget *widget, QTextEdit *)
+  {
+    int i = action->data().toInt();
+
+    // dispatch to the appropriate method for that selection command
+    switch (i) {
+    case InvertIndex:
+      invertSelection(widget);
+      break;
+    case SMARTSIndex:
+      selectSMARTS(molecule, widget);
+      break;
+    default:
+      break;
+    }
+
+    // Selections are per-view and as such are not saved or undo-able
+    return NULL;
+  }
+
+  // Helper function -- invert selection
+  // Called by performAction()
+  void SelectExtension::invertSelection(GLWidget *widget)
+  {
+    widget->toggleSelected(widget->primitives().list());
+    widget->update(); // make sure to call for a redraw or you won't see it
+    return;
+  }
+
+  // Helper function -- handle SMARTS selections
+  // Called by performAction()
+  void SelectExtension::selectSMARTS(Molecule *molecule, GLWidget *widget)
   {
     bool ok;
     QString pattern = QInputDialog::getText(qobject_cast<QWidget*>(parent()),
@@ -87,11 +133,10 @@ namespace Avogadro {
         widget->update();
       } // end matches
     }
-
-    return NULL;
+    return;
   }
 
 } // end namespace Avogadro
 
-#include "smartsextension.moc"
-Q_EXPORT_PLUGIN2(smartsextension, Avogadro::SmartsExtensionFactory)
+#include "selectextension.moc"
+Q_EXPORT_PLUGIN2(selectextension, Avogadro::SelectExtensionFactory)
