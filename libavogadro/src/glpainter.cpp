@@ -544,16 +544,41 @@ namespace Avogadro
   {
     if(!d->isValid()) { return; }
 
+    // Sort out the winding order by assigning in the correct order
+    Eigen::Vector3d tp2, tp3;
+    
+    // Don't want planes to be too shiny.
     d->color.applyAsFlatMaterials();
-    glEnable(GL_AUTO_NORMAL);
+    
+    // The plane normal vector of the view
+    const Eigen::Vector3d planeNormalVector = d->widget->normalVector();
+    
+    // Calculate the normal for the triangle as GL_AUTO_NORMAL doesn't seem to work
+    Eigen::Vector3d v1, v2, n;
+    v1 = p2 - p1;
+    v2 = p3 - p2;
+    n = v1.cross(v2);
+    n.normalize();
+    
+    // Dot product is 1 or -1 - want normals facing the same direction
+    if (n.dot(planeNormalVector) < 0) {
+      n *= -1;
+      tp2 = p2;
+      tp3 = p3;
+      qDebug() << "Normal reversed...";
+    }
+    else {
+      qDebug() << "Dot product: " << n.dot(planeNormalVector);
+      tp2 = p3;
+      tp3 = p2;
+    }
 
     glBegin(GL_TRIANGLES);
+    glNormal3dv(n.array());
     glVertex3dv(p1.array());
-    glVertex3dv(p2.array());
-    glVertex3dv(p3.array());
+    glVertex3dv(tp2.array());
+    glVertex3dv(tp3.array());
     glEnd();
-
-    glDisable(GL_AUTO_NORMAL);
   }
 
   void GLPainter::drawSpline(const QVector<Eigen::Vector3d>& pts, double radius)
