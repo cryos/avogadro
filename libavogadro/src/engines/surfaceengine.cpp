@@ -50,6 +50,15 @@ namespace Avogadro {
       double iso;
       OBGridData *gd;
 
+      Grid(): iso(0.0), gd(NULL) {}
+      ~Grid()
+      {
+        if (gd) {
+          delete gd;
+          gd = NULL;
+        }
+      }
+
       void SetIsovalue(double i) { iso = i; }
       double GetIsovalue() {
         return iso;
@@ -63,7 +72,7 @@ namespace Avogadro {
       float eval (float x, float y, float z)
       {
         vector3 v(x, y, z);
-        return fabs(gd->GetValue(v)) - iso;
+        return gd->GetValue(v) - iso;
       }
       
       float GetValue (float x, float y, float z)
@@ -93,8 +102,16 @@ namespace Avogadro {
     delete d;
   }
 
+  // We define a VDW surface here.
+  // The isosurface finder declares values < 0 to be outside the surface
+  // So values of 0.0 here equal the VDW surface of the molecule
+  // + values = the distance inside the surface (i.e., closer to the atomic cente)
+  // - values = the distance outside the surface (i.e., farther away)
   void SurfaceEngine::VDWSurface(Molecule *mol)
   {
+    if (d->_gridFunction.GetGrid() != NULL) // we already calculated this
+      return;
+
     OBFloatGrid _grid;
     // initialize a grid with spacing 0.333 angstroms between points, plus a padding of 2.5A.
     double spacing = 0.33333;
@@ -132,13 +149,13 @@ namespace Avogadro {
             if (distance < minDistance)
               minDistance = distance;
           } // end checking atoms
-          _values.push_back(-1.0 * minDistance); // negative = away from molecule, 0 = vdw surface, positive = inside
+          // negative = away from molecule, 0 = vdw surface, positive = inside
+          _values.push_back(-1.0 * minDistance);
           if (-1.0 * minDistance > maxVal)
             maxVal = -1.0 * minDistance;
           if (-1.0 * minDistance < minVal)
             minVal = -1.0 * minDistance;
           
-//          qDebug() << " x: " << coord.x() << " y: " << coord.y() << " z: " << coord.z() << " v: " << -1.0*minDistance;
         } // x-axis
       } // y-axis
     } // z-axis
@@ -162,11 +179,7 @@ namespace Avogadro {
   {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
     
-    if (!mol->HasData(OBGenericDataType::GridData)) {
-      VDWSurface(mol);
-    } else{
-      d->_gridFunction.SetGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));                             
-    }
+    VDWSurface(mol);
     
     qDebug() << " set surface ";
     
@@ -186,27 +199,28 @@ namespace Avogadro {
     
 //    glColor3f(1.0, 0.0, 0.0);
     
+    glBegin(GL_POINTS);
     for(int i=0; i < d->_isoFinder->no_triangles(); ++i)
     {
       TRIANGLE t = d->_isoFinder->get_triangle(i);
-      glBegin(GL_TRIANGLES);
-      NORMAL n0 = d->_isoFinder->get_normal(t.v0);
-      glNormal3f(n0.x, n0.y, n0.z);
+//       glBegin(GL_TRIANGLES);
+//       NORMAL n0 = d->_isoFinder->get_normal(t.v0);
+//       glNormal3f(n0.x, n0.y, n0.z);
       VERTEX v0 = d->_isoFinder->get_vertex(t.v0);
       glVertex3f(v0.x, v0.y, v0.z);
       
-      NORMAL n1 = d->_isoFinder->get_normal(t.v1);
-      glNormal3f(n1.x, n1.y, n1.z);
+//       NORMAL n1 = d->_isoFinder->get_normal(t.v1);
+//       glNormal3f(n1.x, n1.y, n1.z);
       VERTEX v1 = d->_isoFinder->get_vertex(t.v1);
       glVertex3f(v1.x, v1.y, v1.z);
       
-      NORMAL n2 = d->_isoFinder->get_normal(t.v2);
-      glNormal3f(n2.x, n2.y, n2.z);
+//       NORMAL n2 = d->_isoFinder->get_normal(t.v2);
+//       glNormal3f(n2.x, n2.y, n2.z);
       VERTEX v2 = d->_isoFinder->get_vertex(t.v2);
       glVertex3f(v2.x, v2.y, v2.z);
-      glEnd();
     }
-    
+    glEnd();    
+
     glPopAttrib();
 
     return true;
