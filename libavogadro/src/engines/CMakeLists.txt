@@ -116,6 +116,17 @@ TARGET_LINK_LIBRARIES(ringengine avogadro-lib
 
 INSTALL(TARGETS ringengine DESTINATION ${DESTINATION_DIR})
 
+# Polygon engine
+set(polygonengine_SRCS polygonengine.cpp)
+qt4_automoc(${polygonengine_SRCS})
+ADD_LIBRARY(polygonengine SHARED ${polygonengine_SRCS} )
+TARGET_LINK_LIBRARIES(polygonengine avogadro-lib
+                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                ${OPENGL_LIBRARIES}
+)
+
+INSTALL(TARGETS polygonengine DESTINATION ${DESTINATION_DIR})
+
 # Surface engine - molecular surfaces and 3D functions
 #set(surfaceengine_SRCS surfaceengine.cpp polygonizer.cpp)
 #qt4_automoc(${surfaceengine_SRCS})

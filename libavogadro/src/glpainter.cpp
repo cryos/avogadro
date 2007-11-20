@@ -561,16 +561,16 @@ namespace Avogadro
     n.normalize();
     
     // Dot product is 1 or -1 - want normals facing the same direction
-    if (n.dot(planeNormalVector) < 0) {
+    if (n.dot(p1 - d->widget->molecule()->center()) < 0) {
       n *= -1;
-      tp2 = p2;
-      tp3 = p3;
+      tp2 = p3;
+      tp3 = p2;
       qDebug() << "Normal reversed...";
     }
     else {
-      qDebug() << "Dot product: " << n.dot(planeNormalVector);
-      tp2 = p3;
-      tp3 = p2;
+      qDebug() << "Dot product: " << n.dot(p1 - d->widget->molecule()->center());
+      tp2 = p2;
+      tp3 = p3;
     }
 
     glBegin(GL_TRIANGLES);
