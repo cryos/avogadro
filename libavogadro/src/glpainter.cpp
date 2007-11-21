@@ -565,10 +565,8 @@ namespace Avogadro
       n *= -1;
       tp2 = p3;
       tp3 = p2;
-      qDebug() << "Normal reversed...";
     }
     else {
-      qDebug() << "Dot product: " << n.dot(p1 - d->widget->molecule()->center());
       tp2 = p2;
       tp3 = p3;
     }
