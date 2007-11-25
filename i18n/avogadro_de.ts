@@ -1146,7 +1146,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="50"/>
         <source>&amp;Invert Selection</source>
-        <translation>Auswahl umkehren</translation>
+        <translation type="unfinished">Auswahl &amp;umkehren</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="55"/>
@@ -1156,7 +1156,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="71"/>
         <source>&amp;Select</source>
-        <translation>Aus&amp;wahl</translation>
+        <translation type="unfinished">Au&amp;swahl</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="110"/>
@@ -1274,7 +1274,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../avogadro/src/extensions/unitcellextension.cpp" line="57"/>
         <source>&amp;Build</source>
-        <translation>&amp;Struktur</translation>
+        <translation>S&amp;truktur</translation>
     </message>
 </context>
 <context>
@@ -3406,7 +3406,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="417"/>
         <source>&amp;Select</source>
-        <translation>Aus&amp;wahl</translation>
+        <translation type="unfinished">Au&amp;swahl</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="405"/>
