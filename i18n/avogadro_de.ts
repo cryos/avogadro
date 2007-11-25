@@ -1474,7 +1474,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/enginesetupwidget.ui" line="38"/>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation>&amp;Einstellungen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/enginesetupwidget.ui" line="43"/>
@@ -3392,7 +3392,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="110"/>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation>&amp;Einstellungen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="129"/>
