@@ -146,15 +146,18 @@ namespace Avogadro
 
     if(!initialized)
     {
+      if(newQuality != -1) {
+        quality = newQuality;
+      }
       qDebug() << "createObjects()";
       createObjects();
       initialized = true;
     }
     else if(newQuality != -1)
     {
-      qDebug() << "updateObjects()";
       if(newQuality != quality)
       {
+        qDebug() << "updateObjects()";
         deleteObjects();
         quality = newQuality;
         createObjects();
