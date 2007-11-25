@@ -3407,7 +3407,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="163"/>
         <source>&amp;Select</source>
-        <translation>Au&amp;swählen</translation>
+        <translation type="unfinished">Au&amp;swahl</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="584"/>
