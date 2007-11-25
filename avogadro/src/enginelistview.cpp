@@ -78,6 +78,18 @@ namespace Avogadro {
     }
   }
 
+  Engine *EngineListView::selectedEngine() const
+  {
+    QModelIndex idx = currentIndex();
+    if(idx.isValid())
+    {
+      Engine *engine = model()->data(idx, EngineItemModel::EngineRole).value<Engine *>();
+      return engine;
+    }
+
+    return 0;
+  }
+
 } // end namespace Avogadro
 
 #include "enginelistview.moc"

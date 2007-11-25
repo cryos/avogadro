@@ -63,6 +63,9 @@ namespace Avogadro {
 
       QWidget* settingsWidget();
 
+      void writeSettings(QSettings &settings) const;
+      void readSettings(QSettings &settings);
+
     private:
       inline double radius(const Atom *a) const;
 
@@ -97,6 +100,7 @@ namespace Avogadro {
 
     public:
       Engine *createInstance(QObject *parent = 0) { return new SphereEngine(parent); }
+      QString className() { return SphereEngine::staticMetaObject.className(); }
   };
 
 } // end namespace Avogadro

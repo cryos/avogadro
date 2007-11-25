@@ -89,6 +89,7 @@ namespace Avogadro {
 
     public:
       Engine *createInstance(QObject *parent = 0) { return new LabelEngine(parent); }
+      QString className() { return LabelEngine::staticMetaObject.className(); }
   };
 
 } // end namespace Avogadro

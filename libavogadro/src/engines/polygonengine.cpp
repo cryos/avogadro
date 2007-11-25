@@ -102,6 +102,7 @@ namespace Avogadro{
     }
     // Disable face culling for ring structures.
     glEnable(GL_CULL_FACE);
+    return true;
   }
 
   double PolygonEngine::radius(const PainterDevice *, const Primitive *) const

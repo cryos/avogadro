@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>621</width>
-    <height>566</height>
+    <height>907</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -15,64 +15,14 @@
   <property name="windowIcon" >
    <iconset resource="avogadro.qrc" >:/icons/avogadro.png</iconset>
   </property>
-  <widget class="QWidget" name="centralWidget" >
-   <layout class="QVBoxLayout" >
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <property name="leftMargin" >
-     <number>0</number>
-    </property>
-    <property name="topMargin" >
-     <number>0</number>
-    </property>
-    <property name="rightMargin" >
-     <number>0</number>
-    </property>
-    <property name="bottomMargin" >
-     <number>0</number>
-    </property>
-    <item>
-     <widget class="QTabWidget" name="centralTab" >
-      <property name="currentIndex" >
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="tab" >
-       <attribute name="title" >
-        <string>View 0</string>
-       </attribute>
-       <layout class="QVBoxLayout" >
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <property name="leftMargin" >
-         <number>0</number>
-        </property>
-        <property name="topMargin" >
-         <number>0</number>
-        </property>
-        <property name="rightMargin" >
-         <number>0</number>
-        </property>
-        <property name="bottomMargin" >
-         <number>0</number>
-        </property>
-       </layout>
-      </widget>
-     </widget>
-    </item>
-    <item>
-     <widget class="Avogadro::FlatTabWidget" native="1" name="bottomFlat" />
-    </item>
-   </layout>
-  </widget>
+  <widget class="QWidget" name="centralWidget" />
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >
     <rect>
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>22</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -134,6 +84,7 @@
      <string>&amp;View</string>
     </property>
     <addaction name="actionNewView" />
+    <addaction name="actionDuplicateView" />
     <addaction name="actionCloseView" />
     <addaction name="actionCenter" />
     <addaction name="separator" />
@@ -245,12 +196,6 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="toolsDock" >
-   <property name="minimumSize" >
-    <size>
-     <width>165</width>
-     <height>0</height>
-    </size>
-   </property>
    <property name="allowedAreas" >
     <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
@@ -262,31 +207,7 @@
    </attribute>
    <widget class="QWidget" name="toolsWidget" />
   </widget>
-  <widget class="QDockWidget" name="toolSettingsDock" >
-   <property name="minimumSize" >
-    <size>
-     <width>160</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="allowedAreas" >
-    <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
-   </property>
-   <property name="windowTitle" >
-    <string>Tool Settings</string>
-   </property>
-   <attribute name="dockWidgetArea" >
-    <number>1</number>
-   </attribute>
-   <widget class="QWidget" name="toolSettingsWidget" />
-  </widget>
   <widget class="QDockWidget" name="enginesDock" >
-   <property name="minimumSize" >
-    <size>
-     <width>150</width>
-     <height>0</height>
-    </size>
-   </property>
    <property name="allowedAreas" >
     <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
@@ -294,22 +215,16 @@
     <string>Engines</string>
    </property>
    <attribute name="dockWidgetArea" >
-    <number>2</number>
+    <number>1</number>
    </attribute>
    <widget class="QWidget" name="enginesWidget" />
   </widget>
   <widget class="QDockWidget" name="engineConfigurationDock" >
-   <property name="minimumSize" >
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
    <property name="windowTitle" >
     <string>Engine Configuration</string>
    </property>
    <attribute name="dockWidgetArea" >
-    <number>2</number>
+    <number>1</number>
    </attribute>
    <widget class="QWidget" name="engineConfigurationWidget" />
   </widget>
@@ -584,17 +499,17 @@
     <string>Tutorial</string>
    </property>
   </action>
+  <action name="actionDuplicateView" >
+   <property name="text" >
+    <string>Duplicate View</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
    <class>Avogadro::PrimitiveTreeView</class>
    <extends>QTreeView</extends>
    <header>primitivetreeview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>Avogadro::FlatTabWidget</class>
-   <extends>QWidget</extends>
-   <header>flattabwidget.h</header>
   </customwidget>
  </customwidgets>
  <resources>

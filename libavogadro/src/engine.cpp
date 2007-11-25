@@ -60,6 +60,12 @@ namespace Avogadro {
     emit changed();
   }
 
+  void Engine::setPrimitives(const QList<Primitive *> &primitives)
+  {
+    PrimitiveList pl = primitives;
+    setPrimitives(pl);
+  }
+
   double Engine::radius(const PainterDevice*, const Primitive*) const
   {
     return 0.0;
@@ -142,6 +148,19 @@ namespace Avogadro {
     return 0.0;
   }
 
+  void Engine::writeSettings(QSettings &settings) const
+  {
+    settings.setValue("enabled", isEnabled());
+    settings.setValue("name", name());
+    settings.setValue("description", description());
+  }
+
+  void Engine::readSettings(QSettings &settings)
+  {
+    setEnabled(settings.value("enabled", false).toBool());
+    setName(settings.value("name", name()).toString());
+    setDescription(settings.value("description", description()).toString());
+  }
 }
 
 #include "engine.moc"

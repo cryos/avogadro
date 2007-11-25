@@ -93,6 +93,7 @@ namespace Avogadro {
 
     public:
       Engine *createInstance(QObject *parent = 0) { return new RingEngine(parent); }
+      QString className() { return RingEngine::staticMetaObject.className(); }
   };
 
 } // end namespace Avogadro

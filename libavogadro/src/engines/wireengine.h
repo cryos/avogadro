@@ -99,6 +99,7 @@ namespace Avogadro {
 
     public:
       Engine *createInstance(QObject *parent = 0) { return new WireEngine(parent); }
+      QString className() { return WireEngine::staticMetaObject.className(); }
   };
 
 } // end namespace Avogadro

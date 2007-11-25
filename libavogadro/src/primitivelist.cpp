@@ -53,11 +53,32 @@ namespace Avogadro {
     d->vector = e->vector;
   }
 
+  PrimitiveList::PrimitiveList(const QList<Primitive *> &other) : d(new PrimitiveListPrivate)
+  {
+    d->vector.resize(Primitive::LastType);
+    foreach(Primitive *primitive, other)
+    {
+      append(primitive);
+    }
+  }
+
   PrimitiveList &PrimitiveList::operator=(const PrimitiveList &other)
   {
     PrimitiveListPrivate *e = other.d;
     d->size = e->size;
     d->vector = e->vector;
+
+    return *this;
+  }
+
+  PrimitiveList &PrimitiveList::operator=(const QList<Primitive *> &other)
+  {
+    clear();
+
+    foreach(Primitive *primitive, other)
+    {
+      append(primitive);
+    }
 
     return *this;
   }
@@ -106,7 +127,11 @@ namespace Avogadro {
     return d->size;
   }
 
-  int PrimitiveList::size(Primitive::Type type) const
+  int PrimitiveList::count() const {
+    return size();
+  }
+
+  int PrimitiveList::count(Primitive::Type type) const
   {
     if(type > Primitive::LastType)
     {

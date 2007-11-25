@@ -49,6 +49,7 @@ namespace Avogadro {
       Engine *engine;
       QStackedLayout *settingsStacked;
       PrimitiveTreeView *primitiveTree;
+      QWidget *blankWidget;
   };
 
   EngineSetupWidget::EngineSetupWidget( GLWidget *glWidget, QWidget *parent ) : QWidget(parent), d(new EngineSetupWidgetPrivate)
@@ -58,14 +59,11 @@ namespace Avogadro {
     d->glWidget = glWidget;
 
     d->settingsStacked = new QStackedLayout(ui.engineSettingsWidget);
-    d->settingsStacked->addWidget(new QWidget);
+    d->blankWidget = new QWidget();
+    d->settingsStacked->addWidget(d->blankWidget);
     foreach(Engine *engine, glWidget->engines())
     {
-      QWidget *settingsWidget = engine->settingsWidget();
-      if(settingsWidget)
-      {
-        d->settingsStacked->addWidget(settingsWidget);
-      }
+      addEngine(engine);
     }
 
     ui.enginePrimitivesTree->header()->hide();
@@ -73,6 +71,9 @@ namespace Avogadro {
     ui.addSelectionButton->setEnabled(false);
     ui.removeSelectionButton->setEnabled(false);
     ui.resetButton->setEnabled(false);
+
+    connect(glWidget, SIGNAL(engineAdded(Engine *)), this, SLOT(addEngine(Engine *)) );
+    connect(glWidget, SIGNAL(engineRemoved(Engine *)), this, SLOT(removeEngine(Engine *)) );
 
     connect(ui.addSelectionButton, SIGNAL(clicked()),
         this, SLOT(addSelection()));
@@ -86,6 +87,25 @@ namespace Avogadro {
   {
     delete d;
   }
+
+  void EngineSetupWidget::addEngine(Engine *engine)
+  {
+    QWidget *settingsWidget = engine->settingsWidget();
+    if(settingsWidget)
+    {
+      d->settingsStacked->addWidget(settingsWidget);
+    }
+  }
+
+  void EngineSetupWidget::removeEngine(Engine *engine)
+  {
+    QWidget *settingsWidget = engine->settingsWidget();
+    if(settingsWidget)
+    {
+      d->settingsStacked->removeWidget(settingsWidget);
+    }
+  }
+
 
   void EngineSetupWidget::addSelection()
   {

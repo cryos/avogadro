@@ -38,7 +38,24 @@ namespace Avogadro {
   EngineItemModel::EngineItemModel( GLWidget *widget, QObject *parent ) : QAbstractItemModel(parent), d(new EngineItemModelPrivate)
   {
     d->widget = widget;
+    connect(d->widget, SIGNAL(engineAdded(Engine *)), this, SLOT(addEngine(Engine *)));
+    connect(d->widget, SIGNAL(engineRemoved(Engine *)), this, SLOT(removeEngine(Engine *)));
   }
+
+  void EngineItemModel::addEngine(Engine *engine)
+  {
+    QList<Engine *> list = d->widget->engines();
+    int row = list.indexOf(engine);
+    beginInsertRows(QModelIndex(), row, row);
+    endInsertRows();
+  }
+
+  void EngineItemModel::removeEngine(Engine *engine)
+  {
+    // FIXME: hack to get remove working
+    reset();
+  }
+
 
   QModelIndex EngineItemModel::parent( const QModelIndex & ) const
   {
@@ -73,7 +90,7 @@ namespace Avogadro {
     Engine *engine = dynamic_cast<Engine *>(static_cast<QObject *>(index.internalPointer()));
     if(engine)
     {
-      if(role == Qt::DisplayRole) {
+      if(role == Qt::DisplayRole || role == Qt::EditRole) {
           return engine->name();
       } else if ( role == Qt::CheckStateRole) {
           if(engine->isEnabled()) {
@@ -106,7 +123,7 @@ namespace Avogadro {
       }
       emit dataChanged(index, index);
       return true;
-    } else if ( role == Qt::DisplayRole ) {
+    } else if ( role == Qt::DisplayRole  || role == Qt::EditRole ) {
       engine->setName(value.toString());
       emit dataChanged(index, index);
       return true;
@@ -117,7 +134,7 @@ namespace Avogadro {
 
   Qt::ItemFlags EngineItemModel::flags ( const QModelIndex & ) const
   {
-    return (Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
+    return (Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
   }
 
   QModelIndex EngineItemModel::index ( int row, int column, const QModelIndex & parent ) const
@@ -125,7 +142,7 @@ namespace Avogadro {
     //FIXME: (bjacob) I added the "&& row >=0" condition below because I had to
     //fix a failed assert. It'd be cleaner to fix the cause of the problem, which is that
     //this function is being called with row=-1.
-    if(!parent.isValid() && row >=0)
+    if(!parent.isValid() && row >=0 && row < d->widget->engines().count())
     {
       Engine *engine = d->widget->engines().at(row);
       return createIndex(row,column,engine);

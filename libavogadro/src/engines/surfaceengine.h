@@ -62,6 +62,7 @@ namespace Avogadro {
 
     public:
       Engine *createInstance(QObject *parent = 0) { return new SurfaceEngine(parent); }
+      QString className() { return SurfaceEngine::staticMetaObject.className(); }
   };
 
 } // end namespace Avogadro

@@ -1,5 +1,5 @@
 /**********************************************************************
-  SettingsDialog - Settings Dialog
+  AddEngineDialog - Dialog to add an engine
 
   Copyright (C) 2007 Donald Ephraim Curtis
 
@@ -22,51 +22,62 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "settingsdialog.h"
+#include "addenginedialog.h"
 
-#include "mainwindow.h"
+#include <avogadro/engine.h>
 
 #include <QAbstractButton>
 #include <QDialogButtonBox>
 
 namespace Avogadro {
 
-  SettingsDialog::SettingsDialog(MainWindow *mainWindow) : QDialog(mainWindow)
+  AddEngineDialog::AddEngineDialog(QWidget *parent) : QDialog(parent)
   {
-    m_mainWindow = mainWindow;
     ui.setupUi(this);
-
-    loadValues();
-
-    connect(ui.dialogButtonBox, SIGNAL(clicked(QAbstractButton *)), 
-        this, SLOT(buttonClicked(QAbstractButton *)));
   }
 
-  void SettingsDialog::buttonClicked(QAbstractButton *button)
+  Engine * AddEngineDialog::getEngine(QWidget *parent, const QList<EngineFactory *> &engineFactories)
   {
-    QDialogButtonBox::ButtonRole role = ui.dialogButtonBox->buttonRole(button);
-    if(role == QDialogButtonBox::ApplyRole || role == QDialogButtonBox::AcceptRole)
+    AddEngineDialog dialog(parent);
+
+    foreach(EngineFactory *factory, engineFactories)
     {
-      saveValues();
-    } 
-    else if (role == QDialogButtonBox::RejectRole)
-    {
-        loadValues();
+      dialog.addType(factory->className());
     }
+
+    int accepted = dialog.exec();
+    if(accepted)
+    {
+      Engine *engine = engineFactories.at(dialog.typeIndex())->createInstance();
+      engine->setName(dialog.nameText());
+      engine->setEnabled(true);
+      engine->setDescription(dialog.descriptionText());
+      return engine;
+    }
+
+    return 0;
   }
 
-  void SettingsDialog::saveValues()
+  void AddEngineDialog::addType(const QString &type)
   {
-    m_mainWindow->setPainterQuality(ui.qualitySlider->value());
-    m_mainWindow->setTabbedTools(ui.tabbedToolsCheck->isChecked());
+    ui.typeCombo->addItem(type);
   }
 
-  void SettingsDialog::loadValues()
+  int AddEngineDialog::typeIndex()
   {
-    ui.qualitySlider->setValue(m_mainWindow->painterQuality());
-    ui.tabbedToolsCheck->setChecked(m_mainWindow->tabbedTools());
+    return ui.typeCombo->currentIndex();
+  }
+
+  QString AddEngineDialog::nameText()
+  {
+    return ui.nameEdit->text();
+  }
+
+  QString AddEngineDialog::descriptionText()
+  {
+    return ui.descriptionEdit->text();
   }
 
 } // end namespace Avogadro
 
-#include "settingsdialog.moc"
+#include "addenginedialog.moc"

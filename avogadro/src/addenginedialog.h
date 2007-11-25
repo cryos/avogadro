@@ -1,5 +1,5 @@
 /**********************************************************************
-  EngineItemModel - List Model for Engines
+  AddEngineDialog - Settings Dialog
 
   Copyright (C) 2007 Donald Ephraim Curtis
 
@@ -22,46 +22,35 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ENGINEITEMMODEL_H
-#define __ENGINEITEMMODEL_H
+#ifndef __ADDENGINEDIALOG_H
+#define __ADDENGINEDIALOG_H
 
-#include <QObject>
-#include <QAbstractItemModel>
-#include <QVariant>
-#include <QModelIndex>
+#include "ui_addenginedialog.h"
 
+class QAbstractButton;
 namespace Avogadro {
-  class GLWidget;
 
   class Engine;
-  class EngineItemModelPrivate;
-  class EngineItemModel : public QAbstractItemModel
+  class EngineFactory;
+  class AddEngineDialog : public QDialog
   {
     Q_OBJECT
 
     public:
-      enum Role {
-        EngineRole = Qt::UserRole + 1,
-      };
+      AddEngineDialog(QWidget *parent=0);
 
-    public:
-      explicit EngineItemModel( GLWidget *widget, QObject *parent = 0 );
+      /**
+       * \return a new engine object or 0
+       */
+      static Engine * getEngine(QWidget *parent, const QList<EngineFactory *> &engineFactories);
 
-      QModelIndex parent( const QModelIndex & index ) const;
-      int rowCount( const QModelIndex & parent = QModelIndex() ) const;
-      int columnCount( const QModelIndex & parent = QModelIndex() ) const;
-      QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
-      bool setData ( const QModelIndex & index, const QVariant & value, int role = Qt::EditRole );
-      Qt::ItemFlags flags ( const QModelIndex & index ) const;
-
-      QModelIndex index ( int row, int column, const QModelIndex & parent = QModelIndex() ) const;
+      void addType(const QString &type);
+      int typeIndex();
+      QString nameText();
+      QString descriptionText();
 
     private:
-      EngineItemModelPrivate * const d;
-
-    private Q_SLOTS:
-      void addEngine(Engine *engine);
-      void removeEngine(Engine *engine);
+      Ui::AddEngineDialog ui;
 
   };
 

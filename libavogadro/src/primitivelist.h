@@ -51,8 +51,10 @@ namespace Avogadro
        */
       PrimitiveList();
       PrimitiveList( const PrimitiveList &other );
+      PrimitiveList( const QList<Primitive *> &other );
 
       PrimitiveList &operator=( const PrimitiveList &other );
+      PrimitiveList &operator=(const QList<Primitive *> &other);
 
       /**
        * Deconstructor
@@ -104,7 +106,13 @@ namespace Avogadro
        * @param type the type of primitives we're interested in
        * @return the number of primitives for the given type
        */
-      int size( Primitive::Type type ) const;
+      int count( Primitive::Type type ) const;
+
+      /**
+       * effectively the same as size()
+       * \sa size()
+       */
+      int count() const;
 
       /**
        * Removes every primitive from the queue.

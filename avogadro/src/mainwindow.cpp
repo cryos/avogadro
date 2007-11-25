@@ -25,11 +25,14 @@
 #include <config.h>
 
 #include "aboutdialog.h"
+#include "addenginedialog.h"
 #include "editcommands.h"
 #include "settingsdialog.h"
 
 #include "enginelistview.h"
 #include "enginesetupwidget.h"
+
+#include "icontabwidget.h"
 
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
@@ -44,11 +47,14 @@
 #include <fstream>
 
 #include <QClipboard>
+#include <QCheckBox>
 #include <QColorDialog>
 #include <QFileDialog>
 #include <QGLFramebufferObject>
+#include <QHBoxLayout>
 #include <QMessageBox>
 #include <QPluginLoader>
+#include <QPushButton>
 #include <QSettings>
 #include <QStandardItem>
 #include <QStackedLayout>
@@ -66,10 +72,15 @@ namespace Avogadro
   {
     public:
       MainWindowPrivate() : molecule( 0 ),
-          undoStack( 0 ), toolsFlow( 0 ), toolSettingsStacked( 0 ), messagesText( 0 ),
-          toolGroup( 0 ),
-          settingsDialog( 0 ), initialized( false )
-      {}
+      undoStack( 0 ), toolsFlow( 0 ), toolsLayout( 0 ),
+      toolsTab(0),
+      toolSettingsStacked(0), toolSettingsWidget(0), toolSettingsDock(0),
+      messagesText( 0 ),
+      glWidget(0),
+      centralLayout(0), centralTab(0), bottomFlat(0),
+      toolGroup( 0 ),
+      settingsDialog( 0 ), initialized( false )
+    {}
 
       Molecule  *molecule;
 
@@ -78,7 +89,13 @@ namespace Avogadro
       QUndoStack *undoStack;
 
       FlowLayout *toolsFlow;
+      QVBoxLayout *toolsLayout;
+      IconTabWidget *toolsTab;
+
+      // we must manage this if we want it to be dynamic
       QStackedLayout *toolSettingsStacked;
+      QWidget *toolSettingsWidget;
+      QDockWidget *toolSettingsDock;
 
       QStackedLayout *enginesStacked;
       QStackedLayout *engineConfigurationStacked;
@@ -88,16 +105,22 @@ namespace Avogadro
       QList<GLWidget *> glWidgets;
       GLWidget *glWidget;
 
+      QVBoxLayout *centralLayout;
+      QTabWidget *centralTab;
+      FlatTabWidget *bottomFlat;
+
       ToolGroup *toolGroup;
       QAction    *actionRecentFile[MainWindow::maxRecentFiles];
 
       SettingsDialog *settingsDialog;
-      
+
       // used for hideMainWindowMac() / showMainWindowMac()
       // save enable/disable status of every menu item
       QVector< QVector <bool> > menuItemStatus;
-      
+
       bool initialized;
+
+      bool tabbedTools;
   };
 
   unsigned int getMainWindowCount()
@@ -117,7 +140,7 @@ namespace Avogadro
   }
 
   MainWindow::MainWindow( const QString &fileName) : QMainWindow( 0 ),
-      d( new MainWindowPrivate )
+  d( new MainWindowPrivate )
   {
     constructor();
     d->fileName = fileName;
@@ -134,64 +157,191 @@ namespace Avogadro
 #endif
     ui.setupUi( this );
 
-    readSettings();
+    QSettings settings;
+    d->tabbedTools = settings.value("tabbedTools", true).toBool();
+
+    d->centralLayout = new QVBoxLayout(ui.centralWidget);
+
+    // settings relies on the centralTab widget
+    d->centralTab = new QTabWidget(ui.centralWidget);
+    d->centralTab->setObjectName("centralTab");
+    d->centralLayout->addWidget(d->centralTab);
+
     setAttribute( Qt::WA_DeleteOnClose );
 
+    // add our bottom flat tabs
+    d->bottomFlat = new FlatTabWidget(this);
+    d->centralLayout->addWidget(d->bottomFlat);
 
     d->undoStack = new QUndoStack( this );
-    d->toolsFlow = new FlowLayout( ui.toolsWidget );
-    d->toolsFlow->setMargin( 9 );
-    
+
     d->toolGroup = new ToolGroup( this );
     connect( this, SIGNAL( moleculeChanged( Molecule * ) ), d->toolGroup, SLOT( setMolecule( Molecule * ) ) );
 
-    d->toolSettingsStacked = new QStackedLayout( ui.toolSettingsWidget );
-    d->toolSettingsStacked->addWidget( new QWidget );
+    ui.menuDocks->addAction( ui.toolsDock->toggleViewAction() );
 
     d->enginesStacked = new QStackedLayout( ui.enginesWidget );
-
     d->engineConfigurationStacked = new QStackedLayout( ui.engineConfigurationWidget );
 
-
+    // create messages widget
     QWidget *messagesWidget = new QWidget();
     QVBoxLayout *messagesVBox = new QVBoxLayout( messagesWidget );
     d->messagesText = new QTextEdit();
     d->messagesText->setReadOnly( true );
     messagesVBox->setMargin( 3 );
     messagesVBox->addWidget( d->messagesText );
-    ui.bottomFlat->addTab( messagesWidget, tr( "Messages" ) );
+    d->bottomFlat->addTab( messagesWidget, tr( "Messages" ) );
+
+    // put in the recent files
+    for ( int i = 0; i < maxRecentFiles; ++i ) {
+      d->actionRecentFile[i] = new QAction( this );
+      d->actionRecentFile[i]->setVisible( false );
+      ui.menuOpenRecent->addAction( d->actionRecentFile[i] );
+      connect( d->actionRecentFile[i], SIGNAL( triggered() ),
+          this, SLOT( openRecentFile() ) );
+    }
+    ui.menuOpenRecent->addSeparator();
+    ui.menuOpenRecent->addAction( ui.actionClearRecent );
+
+    QAction *undoAction = d->undoStack->createUndoAction( this );
+    undoAction->setIcon( QIcon( QString::fromUtf8( ":/icons/undo.png" ) ) );
+    undoAction->setShortcuts( QKeySequence::Undo );
+    QAction *redoAction = d->undoStack->createRedoAction( this );
+    redoAction->setIcon( QIcon( QString::fromUtf8( ":/icons/redo.png" ) ) );
+    redoAction->setShortcuts( QKeySequence::Redo );
+    if ( ui.menuEdit->actions().count() ) {
+      QAction *firstAction = ui.menuEdit->actions().at( 0 );
+      ui.menuEdit->insertAction( firstAction, redoAction );
+      ui.menuEdit->insertAction( redoAction, undoAction );
+    } else {
+      ui.menuEdit->addAction( undoAction );
+      ui.menuEdit->addAction( redoAction );
+    }
+
+    ui.menuDocks->addAction( ui.projectDock->toggleViewAction() );
+    ui.menuDocks->addAction( ui.enginesDock->toggleViewAction() );
+    ui.menuDocks->addAction( ui.engineConfigurationDock->toggleViewAction() );
+    ui.menuToolbars->addAction( ui.fileToolBar->toggleViewAction() );
+
+#ifdef Q_WS_MAC
+    // Find the Avogadro global preferences action
+    // and move it to the File menu (where it will be found)
+    // for the Mac Application menu
+    ui.menuSettings->removeAction( ui.configureAvogadroAction );
+    ui.menuFile->addAction( ui.configureAvogadroAction );
+    // and remove the trailing separator
+    ui.menuSettings->removeAction( ui.menuSettings->actions().last() );
+
+
+    // Remove all menu icons (violates Apple interface guidelines)
+    QIcon nullIcon;
+    foreach( QAction *menu, menuBar()->actions() ) {
+      foreach( QAction *menuItem, menu->menu()->actions() ) {
+        menuItem->setIcon( nullIcon ); // clears the icon for this item
+      }
+    }
+#endif
 
     connectUi();
 
     ui.projectDock->close();
-    
+
     QTimer::singleShot( 0, this, SLOT(initialize()) );
   }
-  
+
   // delayed initialization function
   void MainWindow::initialize()
   {
-    
-    d->glWidget = new GLWidget(ui.tab);
-    ui.tab->layout()->addWidget(d->glWidget);
-    d->glWidget->setObjectName(QString::fromUtf8("glWidget"));
-    d->glWidgets.append( d->glWidget );
-    connect( this, SIGNAL( moleculeChanged( Molecule * ) ), d->glWidget, SLOT( setMolecule( Molecule * ) ) );
-    d->glWidget->setUndoStack( d->undoStack );
-    d->glWidget->setToolGroup( d->toolGroup );
-    
-    EngineListView *engineListView = new EngineListView( d->glWidget, ui.enginesWidget );
-    d->enginesStacked->addWidget( engineListView );
-    
-    EngineSetupWidget *engineTabWidget = new EngineSetupWidget( d->glWidget, ui.engineConfigurationWidget );
-    d->engineConfigurationStacked->addWidget( engineTabWidget );
-    connect( engineListView, SIGNAL( clicked( Engine * ) ),
-             engineTabWidget, SLOT( setCurrentEngine( Engine * ) ) );
-    
-    
+    // read settings
+    readSettings();
+
     d->toolGroup->load();
-    connect( d->toolGroup, SIGNAL( toolActivated( Tool * ) ), this, SLOT( setTool( Tool * ) ) );
-    
+
+    reloadTabbedTools();
+
+    tabifyDockWidget(ui.enginesDock, ui.engineConfigurationDock);
+    ui.enginesDock->raise();
+
+    loadExtensions();
+
+    d->initialized = true;
+
+    loadFile(d->fileName);
+  }
+
+  bool MainWindow::tabbedTools() const
+  {
+    return d->tabbedTools;
+  }
+
+  void MainWindow::setTabbedTools(bool tabbedTools)
+  {
+    if(tabbedTools == d->tabbedTools)
+    {
+      return;
+    }
+
+    // set our new settings
+    d->tabbedTools = tabbedTools;
+
+    reloadTabbedTools();
+  }
+
+  void MainWindow::reloadTabbedTools()
+  {
+    if(d->toolSettingsDock)
+    {
+      delete d->toolSettingsDock;
+      d->toolSettingsDock = 0;
+      d->toolSettingsWidget = 0;
+      d->toolSettingsStacked = 0;
+    }
+    delete ui.toolsWidget;
+    ui.toolsWidget = new QWidget();
+    ui.toolsDock->setWidget(ui.toolsWidget);
+
+    d->toolsTab = 0;
+    d->toolsFlow = 0;
+    d->toolsLayout = 0;
+
+    if(d->tabbedTools)
+    {
+      d->toolsLayout = new QVBoxLayout(ui.toolsWidget);
+      d->toolsLayout->setContentsMargins(0, 0, 0, 0);
+      d->toolsLayout->setObjectName("toolsLayout");
+
+      d->toolsTab = new IconTabWidget(ui.toolsWidget);
+      d->toolsTab->setObjectName("toolsTab");
+      d->toolsLayout->addWidget(d->toolsTab);
+
+      // connect changing the tab
+      connect(d->toolsTab, SIGNAL(currentChanged(int)),
+          d->toolGroup, SLOT(setActiveTool(int)));
+    }
+    else
+    {
+      d->toolsFlow = new FlowLayout( ui.toolsWidget );
+      d->toolsFlow->setMargin( 9 );
+
+      d->toolSettingsDock = new QDockWidget(this);
+      d->toolSettingsDock->setObjectName(QString::fromUtf8("toolSettingsDock"));
+      d->toolSettingsDock->setAllowedAreas(Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea);
+      d->toolSettingsDock->setWindowTitle(tr("Tool Settings"));
+      d->toolSettingsWidget = new QWidget(d->toolSettingsDock);
+      d->toolSettingsWidget->setObjectName(QString::fromUtf8("toolSettingsWidget"));
+      d->toolSettingsDock->setWidget(d->toolSettingsWidget);
+      addDockWidget(static_cast<Qt::DockWidgetArea>(1), d->toolSettingsDock);
+
+      d->toolSettingsStacked = new QStackedLayout( d->toolSettingsWidget );
+
+      // add blank widget for those tools with no settings widget
+      d->toolSettingsStacked->addWidget( new QWidget );
+      ui.menuDocks->addAction( d->toolSettingsDock->toggleViewAction() );
+
+      tabifyDockWidget(ui.toolsDock, d->toolSettingsDock);
+      ui.toolsDock->raise();
+    }
+
     const QList<Tool *> tools = d->toolGroup->tools();
     int toolCount = tools.size();
     for ( int i = 0; i < toolCount; i++ ) {
@@ -199,23 +349,54 @@ namespace Avogadro
       connect(tool, SIGNAL(message(QString)), d->messagesText,
           SLOT(append(QString)));
       QAction *action = tool->activateAction();
-      QToolButton *button = new QToolButton( ui.toolsWidget );
-      button->setDefaultAction( action );
-      d->toolsFlow->addWidget( button );
+
       QWidget *widget = tools.at( i )->settingsWidget();
-      if ( widget ) {
-        d->toolSettingsStacked->addWidget( widget );
-        if ( i == 0 ) {
-          d->toolSettingsStacked->setCurrentIndex( 1 );
+
+      if(d->tabbedTools)
+      {
+        if(!widget)
+        {
+          widget = new QWidget();
+        }
+
+        QWidget *tmpWidget = new QWidget(d->toolsTab);
+        QVBoxLayout *tmpLayout = new QVBoxLayout(tmpWidget);
+        tmpLayout->setContentsMargins(0,0,0,0);
+
+        QCheckBox *tmpCheck = new QCheckBox(tmpWidget);
+        tmpLayout->addWidget(tmpCheck);
+
+        QLabel *tmpLabel = new QLabel(tmpWidget);
+        tmpLabel->setText(action->toolTip());
+        tmpLayout->addWidget(tmpLabel);
+        tmpLabel->hide();
+
+        connect(tmpCheck, SIGNAL(clicked(bool)), tmpLabel, SLOT(setVisible(bool)));
+
+        tmpLayout->addWidget(widget);
+
+        // add the tab
+        int tabIndex = d->toolsTab->addTab(tmpWidget, action->icon(), QString());
+        d->toolsTab->setTabToolTip(tabIndex, action->text());
+
+      }
+      else 
+      {
+        // create a tool button
+        QToolButton *button = new QToolButton( ui.toolsWidget );
+        button->setDefaultAction( action );
+        d->toolsFlow->addWidget( button );
+
+        // if there is a settings widget then add it to the stack
+        if(widget)
+        {
+          d->toolSettingsStacked->addWidget( widget );
+          if ( i == 0 ) {
+            d->toolSettingsStacked->setCurrentIndex( 1 );
+          }
         }
       }
     }
-    
-    loadExtensions();
-    
-    d->initialized = true;
-    
-    loadFile(d->fileName);
   }
 
   void MainWindow::newFile()
@@ -229,6 +410,7 @@ namespace Avogadro
     }
 #endif
 
+    writeSettings();
     MainWindow *other = new MainWindow;
     other->move( x() + 40, y() + 40 );
     other->show();
@@ -237,7 +419,7 @@ namespace Avogadro
   void MainWindow::openFile()
   {
     QString fileName = QFileDialog::getOpenFileName( this,
-                       tr( "Open File" ), d->fileDialogPath );
+        tr( "Open File" ), d->fileDialogPath );
 
     openFile( fileName );
   }
@@ -270,6 +452,7 @@ namespace Avogadro
       if ( d->fileName.isEmpty() && !isWindowModified() ) {
         loadFile( fileName );
       } else {
+        writeSettings();
         MainWindow *other = new MainWindow();
         if ( !other->loadFile( fileName ) ) {
           delete other;
@@ -288,41 +471,41 @@ namespace Avogadro
       openFile( action->data().toString() );
     }
   }
-  
+
   bool MainWindow::loadFile( const QString &fileName )
   {
     if(!d->initialized)
     {
       d->fileName = fileName;
     }
-    
+
     if(fileName.isEmpty())
     {
       setFileName( fileName );
       setMolecule( new Molecule(this) );
       return true;
     }
-    
+
     statusBar()->showMessage( tr("Loading %1...", "%1 is a filename").arg(fileName), 5000 );
     QFile file( fileName );
     if ( !file.open( QFile::ReadOnly | QFile::Text ) ) {
       QApplication::restoreOverrideCursor();
       QMessageBox::warning( this, tr( "Avogadro" ),
-                           tr( "Cannot read file %1:\n%2." )
-                           .arg( fileName )
-                           .arg( file.errorString() ) );
+          tr( "Cannot read file %1:\n%2." )
+          .arg( fileName )
+          .arg( file.errorString() ) );
       return false;
     }
     file.close();
-    
+
     QApplication::setOverrideCursor( Qt::WaitCursor );
     OBConversion conv;
     OBFormat     *inFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
     if ( !inFormat || !conv.SetInFormat( inFormat ) ) {
       QApplication::restoreOverrideCursor();
       QMessageBox::warning( this, tr( "Avogadro" ),
-                           tr( "Cannot read file format of file %1." )
-                           .arg( fileName ) );
+          tr( "Cannot read file format of file %1." )
+          .arg( fileName ) );
       return false;
     }
     ifstream     ifs;
@@ -330,40 +513,40 @@ namespace Avogadro
     if ( !ifs ) { // shouldn't happen, already checked file above
       QApplication::restoreOverrideCursor();
       QMessageBox::warning( this, tr( "Avogadro" ),
-                           tr( "Cannot read file %1." )
-                           .arg( fileName ) );
+          tr( "Cannot read file %1." )
+          .arg( fileName ) );
       return false;
     }
-    
+
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
     Molecule *molecule = new Molecule;
     if ( conv.Read( molecule, &ifs ) && molecule->NumAtoms() != 0 ) {
       if (!molecule->Has3D()) {
         QMessageBox::warning( this, tr( "Avogadro" ),
-                             tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));        
+            tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));        
       }      
-      
+
       setMolecule( molecule );
-      
+
       Molecule test; // do we have a multi-molecule file?
       if (conv.Read(&test, &ifs) && test.NumAtoms() != 0) {
         QMessageBox::warning( this, tr( "Avogadro" ),
-                             tr( "This file contains multiple molecule records. Avogadro will only read the first molecule."
-                                " If you save, all other molecules may be lost." ));        
+            tr( "This file contains multiple molecule records. Avogadro will only read the first molecule."
+              " If you save, all other molecules may be lost." ));        
       }
-      
+
       QApplication::restoreOverrideCursor();
-      
+
       QString status;
       QTextStream( &status ) << tr("Atoms: ") << d->molecule->NumAtoms() <<
-      tr(" Bonds: ") << d->molecule->NumBonds();
+        tr(" Bonds: ") << d->molecule->NumBonds();
       statusBar()->showMessage( status, 5000 );
     } else {
       QApplication::restoreOverrideCursor();
       statusBar()->showMessage( tr("Reading molecular file failed."), 5000 );
       return false;
     }
-    
+
     d->toolGroup->setActiveTool(tr("Navigate"));
     setFileName( fileName );
     statusBar()->showMessage( tr("File Loaded..."), 5000 );
@@ -423,7 +606,7 @@ namespace Avogadro
   bool MainWindow::saveAs()
   {
     QString fileName = QFileDialog::getSaveFileName( this,
-                       tr( "Save Molecule As" ), d->fileDialogPath );
+        tr( "Save Molecule As" ), d->fileDialogPath );
     if ( fileName.isEmpty() )
     {
       return false;
@@ -442,9 +625,9 @@ namespace Avogadro
     QFile file( fileName );
     if ( !file.open( QFile::WriteOnly | QFile::Text ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
-                            tr( "Cannot write to the file %1:\n%2." )
-                                .arg( fileName )
-                                .arg( file.errorString() ) );
+          tr( "Cannot write to the file %1:\n%2." )
+          .arg( fileName )
+          .arg( file.errorString() ) );
       return false;
     }
 
@@ -455,16 +638,16 @@ namespace Avogadro
     OBFormat     *outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
     if ( !outFormat || !conv.SetOutFormat( outFormat ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
-                            tr( "Cannot write to file format of file %1." )
-                                .arg( fileName ) );
+          tr( "Cannot write to file format of file %1." )
+          .arg( fileName ) );
       return false;
     }
     ofstream     ofs;
     ofs.open(( fileName.toAscii() ).data() );
     if ( !ofs ) { // shouldn't happen, already checked file above
       QMessageBox::warning( this, tr( "Avogadro" ),
-                            tr( "Cannot write to the file %1." )
-                                .arg( fileName ) );
+          tr( "Cannot write to the file %1." )
+          .arg( fileName ) );
       return false;
     }
 
@@ -489,10 +672,10 @@ namespace Avogadro
   void MainWindow::exportGraphics()
   {
     QString fileName = QFileDialog::getSaveFileName( this,
-                       tr( "Export Bitmap Graphics" ) );
+        tr( "Export Bitmap Graphics" ) );
     if ( fileName.isEmpty() )
       return;    
-    
+
     // render it (with alpha channel)
     QImage exportImage = d->glWidget->grabFrameBuffer( true );
 
@@ -510,7 +693,7 @@ namespace Avogadro
       // e.g. http://baoilleach.blogspot.com/2007/08/access-embedded-molecular-information.html
       exportImage.setText("molfile", copyData);      
     }
-    
+
     // save a canonical SMILES too
     OBFormat *canFormat = conv.FindFormat( "can" );
     if ( canFormat && conv.SetOutFormat( canFormat ) ) {
@@ -518,10 +701,10 @@ namespace Avogadro
       copyData = output.c_str();
       exportImage.setText("SMILES", copyData);
     }
-    
+
     if ( !exportImage.save( fileName ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
-                            tr( "Cannot save file %1." ).arg( fileName ) );
+          tr( "Cannot save file %1." ).arg( fileName ) );
       return;
     }
   }
@@ -530,7 +713,7 @@ namespace Avogadro
   {
     // Export the molecule as a POVRay scene
     QString fileName = QFileDialog::getSaveFileName( this,
-                       tr( "Export POV Scene" ) );
+        tr( "Export POV Scene" ) );
     if ( fileName.isEmpty() )
       return;
 
@@ -566,10 +749,10 @@ namespace Avogadro
     if ( isWindowModified() ) {
       QMessageBox::StandardButton ret;
       ret = QMessageBox::warning( this, tr( "Avogadro" ),
-                                  tr( "The document has been modified.\n"
-                                      "Do you want to save your changes?" ),
-                                  QMessageBox::Save | QMessageBox::Discard
-                                  | QMessageBox::Cancel );
+          tr( "The document has been modified.\n"
+            "Do you want to save your changes?" ),
+          QMessageBox::Save | QMessageBox::Discard
+          | QMessageBox::Cancel );
       if ( ret == QMessageBox::Save )
         return save();
       else if ( ret == QMessageBox::Cancel )
@@ -599,7 +782,6 @@ namespace Avogadro
 
     d->enginesStacked->setCurrentIndex( index );
     d->engineConfigurationStacked->setCurrentIndex( index );
-//     d->glWidget->makeCurrent();
   }
 
   void MainWindow::paste()
@@ -693,8 +875,8 @@ namespace Avogadro
         // make sure both bonds are in the map (i.e. selected)
         if ( posBegin != AtomMap.end() && posEnd != AtomMap.end() ) {
           moleculeCopy->AddBond(( posBegin->second )->GetIdx(),
-                                ( posEnd->second )->GetIdx(),
-                                b->GetBO(), b->GetFlags() );
+              ( posEnd->second )->GetIdx(),
+              b->GetBO(), b->GetFlags() );
         }
       } // end looping over bonds
     } // should now have a copy of our selected fragment
@@ -726,7 +908,7 @@ namespace Avogadro
       copyData = output.c_str();
       clipboardImage.setText("SMILES", copyData);
     }
-    
+
     // Copy XYZ coordinates to the text selection buffer
     OBFormat *xyzFormat = conv.FindFormat( "xyz" );
     if ( xyzFormat && conv.SetOutFormat( xyzFormat ) ) {
@@ -742,7 +924,7 @@ namespace Avogadro
 
     // save the image to the clipboard too
     mimeData->setImageData(clipboardImage);
-    
+
     return mimeData;
   }
 
@@ -752,7 +934,7 @@ namespace Avogadro
 
     if ( mimeData ) {
       CutCommand *command = new CutCommand( d->molecule, mimeData,
-                                            d->glWidget->selectedPrimitives() );
+          d->glWidget->selectedPrimitives() );
       d->undoStack->push( command );
     }
   }
@@ -771,7 +953,7 @@ namespace Avogadro
     // clear the molecule or a set of atoms
     // has the inteligence to figure out based on the number of selected items
     ClearCommand *command = new ClearCommand( d->molecule,
-                            d->glWidget->selectedPrimitives() );
+        d->glWidget->selectedPrimitives() );
     d->undoStack->push( command );
   }
 
@@ -812,42 +994,55 @@ namespace Avogadro
   {
     QWidget *widget = new QWidget();
     QVBoxLayout *layout = new QVBoxLayout( widget );
-
-    GLWidget *glWidget = new GLWidget( d->glWidget->format(), this, d->glWidget );
-    glWidget->setObjectName( "GLWidget" );
-
-    layout->addWidget( glWidget );
     layout->setMargin( 0 );
     layout->setSpacing( 6 );
-    d->glWidgets.append( glWidget );
-    glWidget->setMolecule( d->molecule );
-    glWidget->setToolGroup( d->toolGroup );
-    glWidget->setUndoStack( d->undoStack );
-    
-    connect(this, SIGNAL(moleculeChanged(Molecule *)), glWidget, SLOT(setMolecule(Molecule *)));
+    GLWidget *gl = newGLWidget();
+    gl->loadDefaultEngines();
+    layout->addWidget(gl);
 
-    int index = ui.centralTab->addTab( widget, QString( "" ) );
-    ui.centralTab->setTabText( index, tr( "View %1" ).arg( QString::number( index ) ) );
+    QString tabName = tr("View %1").arg( QString::number( d->centralTab->count()) );
+
+    d->centralTab->addTab( widget, tabName );
+    ui.actionCloseView->setEnabled( true );
+    writeSettings();
+  }
+
+  void MainWindow::duplicateView()
+  {
+    QWidget *widget = new QWidget();
+    QVBoxLayout *layout = new QVBoxLayout( widget );
+    layout->setMargin( 0 );
+    layout->setSpacing( 6 );
+    GLWidget *gl = newGLWidget();
+    layout->addWidget(gl);
+
+    // store current settings
+    writeSettings();
+
+    // load settings from current widget
+    int currentIndex = d->centralTab->currentIndex();
+    QSettings settings;
+    settings.beginReadArray("view");
+    settings.setArrayIndex(currentIndex);
+    gl->readSettings(settings);
+    settings.endArray();
+
+    QString tabName = tr("View %1").arg( QString::number( d->centralTab->count()) );
+
+    d->centralTab->addTab( widget, tabName );
     ui.actionCloseView->setEnabled( true );
 
-    EngineListView *engineListView = new EngineListView( glWidget, ui.enginesWidget );
-    d->enginesStacked->addWidget( engineListView );
-
-    EngineSetupWidget *engineTabWidget = new EngineSetupWidget( glWidget, ui.engineConfigurationWidget );
-    d->engineConfigurationStacked->addWidget( engineTabWidget );
-
-    connect( engineListView, SIGNAL( clicked( Engine * ) ),
-             engineTabWidget, SLOT( setCurrentEngine( Engine * ) ) );
+    writeSettings();
   }
 
   void MainWindow::closeView()
   {
-    QWidget *widget = ui.centralTab->currentWidget();
+    QWidget *widget = d->centralTab->currentWidget();
     foreach( QObject *object, widget->children() ) {
       GLWidget *glWidget = qobject_cast<GLWidget *>( object );
       if ( glWidget ) {
-        int index = ui.centralTab->currentIndex();
-        ui.centralTab->removeTab( index );
+        int index = d->centralTab->currentIndex();
+        d->centralTab->removeTab( index );
 
         // delete the engines list for this GLWidget
         QWidget *widget = d->enginesStacked->widget( index );
@@ -859,19 +1054,21 @@ namespace Avogadro
         d->engineConfigurationStacked->removeWidget( widget );
         delete widget;
 
-        for ( int count=ui.centralTab->count(); index < count; index++ ) {
-          QString text = ui.centralTab->tabText( index );
+        for ( int count=d->centralTab->count(); index < count; index++ ) {
+          QString text = d->centralTab->tabText( index );
           if ( !text.compare( tr( "View %1" ).arg( QString::number( index+1 ) ) )) {
-            ui.centralTab->setTabText( index, tr( "View %1" ).arg( QString::number( index ) ) );
+            d->centralTab->setTabText( index, tr( "View %1" ).arg( QString::number( index ) ) );
           }
         }
         d->glWidgets.removeAll( glWidget );
         delete glWidget;
-        ui.actionCloseView->setEnabled( ui.centralTab->count() != 1 );
+        ui.actionCloseView->setEnabled( d->centralTab->count() != 1 );
       }
     }
 
-    setView( ui.centralTab->currentIndex() );
+    setView( d->centralTab->currentIndex() );
+
+    writeSettings();
   }
 
   void MainWindow::centerView()
@@ -913,10 +1110,18 @@ namespace Avogadro
 
   void MainWindow::setTool( Tool *tool )
   {
-    if ( tool->settingsWidget() ) {
-      d->toolSettingsStacked->setCurrentWidget( tool->settingsWidget() );
-    } else {
-      d->toolSettingsStacked->setCurrentIndex( 0 );
+    if(d->tabbedTools && d->toolsTab)
+    {
+      int index = d->toolGroup->tools().indexOf(tool);
+      d->toolsTab->setCurrentIndex(index);
+    }
+    else if(d->toolSettingsStacked)
+    {
+      if ( tool->settingsWidget() ) {
+        d->toolSettingsStacked->setCurrentWidget( tool->settingsWidget() );
+      } else {
+        d->toolSettingsStacked->setCurrentIndex( 0 );
+      }
     }
   }
 
@@ -951,31 +1156,8 @@ namespace Avogadro
     connect( ui.actionQuitTool, SIGNAL( triggered() ), this, SLOT( close() ) );
 #endif
 
-    for ( int i = 0; i < maxRecentFiles; ++i ) {
-      d->actionRecentFile[i] = new QAction( this );
-      d->actionRecentFile[i]->setVisible( false );
-      ui.menuOpenRecent->addAction( d->actionRecentFile[i] );
-      connect( d->actionRecentFile[i], SIGNAL( triggered() ),
-               this, SLOT( openRecentFile() ) );
-    }
-    ui.menuOpenRecent->addSeparator();
-    ui.menuOpenRecent->addAction( ui.actionClearRecent );
     connect( ui.actionClearRecent, SIGNAL( triggered() ), this, SLOT( clearRecentFiles() ) );
 
-    QAction *undoAction = d->undoStack->createUndoAction( this );
-    undoAction->setIcon( QIcon( QString::fromUtf8( ":/icons/undo.png" ) ) );
-    undoAction->setShortcuts( QKeySequence::Undo );
-    QAction *redoAction = d->undoStack->createRedoAction( this );
-    redoAction->setIcon( QIcon( QString::fromUtf8( ":/icons/redo.png" ) ) );
-    redoAction->setShortcuts( QKeySequence::Redo );
-    if ( ui.menuEdit->actions().count() ) {
-      QAction *firstAction = ui.menuEdit->actions().at( 0 );
-      ui.menuEdit->insertAction( firstAction, redoAction );
-      ui.menuEdit->insertAction( redoAction, undoAction );
-    } else {
-      ui.menuEdit->addAction( undoAction );
-      ui.menuEdit->addAction( redoAction );
-    }
     connect( d->undoStack, SIGNAL( cleanChanged( bool ) ), this, SLOT( undoStackClean( bool ) ) );
 
     connect( ui.actionCut, SIGNAL( triggered() ), this, SLOT( cut() ) );
@@ -985,43 +1167,21 @@ namespace Avogadro
     connect( ui.actionSelect_All, SIGNAL( triggered() ), this, SLOT( selectAll() ) );
     connect( ui.actionSelect_None, SIGNAL( triggered() ), this, SLOT( selectNone() ) );
 
-    ui.menuDocks->addAction( ui.projectDock->toggleViewAction() );
-    ui.menuDocks->addAction( ui.toolsDock->toggleViewAction() );
-    ui.menuDocks->addAction( ui.toolSettingsDock->toggleViewAction() );
-    ui.menuDocks->addAction( ui.enginesDock->toggleViewAction() );
-    ui.menuDocks->addAction( ui.engineConfigurationDock->toggleViewAction() );
-    ui.menuToolbars->addAction( ui.fileToolBar->toggleViewAction() );
-
     connect( ui.actionNewView, SIGNAL( triggered() ), this, SLOT( newView() ) );
+    connect( ui.actionDuplicateView, SIGNAL( triggered() ), this, SLOT( duplicateView() ) );
     connect( ui.actionCloseView, SIGNAL( triggered() ), this, SLOT( closeView() ) );
     connect( ui.actionCenter, SIGNAL( triggered() ), this, SLOT( centerView() ) );
     connect( ui.actionFullScreen, SIGNAL( triggered() ), this, SLOT( fullScreen() ) );
     connect( ui.actionSetBackgroundColor, SIGNAL( triggered() ), this, SLOT( setBackgroundColor() ) );
     connect( ui.actionAbout, SIGNAL( triggered() ), this, SLOT( about() ) );
 
-    connect( ui.centralTab, SIGNAL( currentChanged( int ) ), this, SLOT( setView( int ) ) );
+    connect( d->centralTab, SIGNAL( currentChanged( int ) ), this, SLOT( setView( int ) ) );
 
     connect( ui.configureAvogadroAction, SIGNAL( triggered() ),
-             this, SLOT( showSettingsDialog() ) );
-#ifdef Q_WS_MAC
-    // Find the Avogadro global preferences action
-    // and move it to the File menu (where it will be found)
-    // for the Mac Application menu
-    ui.menuSettings->removeAction( ui.configureAvogadroAction );
-    ui.menuFile->addAction( ui.configureAvogadroAction );
-    // and remove the trailing separator
-    ui.menuSettings->removeAction( ui.menuSettings->actions().last() );
+        this, SLOT( showSettingsDialog() ) );
 
+    connect( d->toolGroup, SIGNAL( toolActivated( Tool * ) ), this, SLOT( setTool( Tool * ) ) );
 
-    // Remove all menu icons (violates Apple interface guidelines)
-    QIcon nullIcon;
-    foreach( QAction *menu, menuBar()->actions() ) {
-      foreach( QAction *menuItem, menu->menu()->actions() ) {
-        menuItem->setIcon( nullIcon ); // clears the icon for this item
-      }
-    }
-
-#endif
   }
 
   void MainWindow::setMolecule( Molecule *molecule )
@@ -1030,9 +1190,9 @@ namespace Avogadro
       disconnect( d->molecule, 0, this, 0 );
       d->molecule->deleteLater();
     }
-    
+
     d->undoStack->clear();
-    
+
     d->molecule = molecule;
     connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ), this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ), this, SLOT( documentWasModified() ) );
@@ -1060,7 +1220,7 @@ namespace Avogadro
       d->fileName = fileInfo.canonicalFilePath();
       d->fileDialogPath = fileInfo.absolutePath();
       setWindowTitle( tr( "%1[*] - %2" ).arg( fileInfo.fileName() )
-                      .arg( tr( "Avogadro" ) ) );
+          .arg( tr( "Avogadro" ) ) );
 
       QSettings settings; // already set up properly via main.cpp
       QStringList files = settings.value( "recentFileList" ).toStringList();
@@ -1114,10 +1274,36 @@ namespace Avogadro
   void MainWindow::readSettings()
   {
     QSettings settings;
-    //QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
+    //     QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
     QSize size = settings.value( "size", QSize( 640, 480 ) ).toSize();
     resize( size );
-    //move(pos);
+    //     move(pos);
+
+    setTabbedTools(settings.value( "tabbedTools", true ).toBool());
+
+    int count = settings.beginReadArray("view");
+    if(count < 1)
+    {
+      count = 1;
+    }
+    for(int i = 0; i<count; i++)
+    {
+      settings.setArrayIndex(i);
+      QWidget *widget = new QWidget();
+      QVBoxLayout *layout = new QVBoxLayout( widget );
+      layout->setMargin( 0 );
+      layout->setSpacing( 6 );
+      GLWidget *gl = newGLWidget();
+      layout->addWidget(gl);
+
+      QString tabName = tr("View %1").arg(QString::number(i));
+      d->centralTab->addTab(widget, tabName);
+
+      gl->readSettings(settings);
+    }
+    settings.endArray();
+
+    ui.actionCloseView->setEnabled(count > 1);
   }
 
   void MainWindow::writeSettings()
@@ -1125,6 +1311,17 @@ namespace Avogadro
     QSettings settings;
     settings.setValue( "pos", pos() );
     settings.setValue( "size", size() );
+
+    settings.setValue( "tabbedTools", d->tabbedTools );
+
+    settings.beginWriteArray("view");
+    int count = d->glWidgets.size();
+    for(int i=0; i<count; i++)
+    {
+      settings.setArrayIndex(i);
+      d->glWidgets.at(i)->writeSettings(settings);
+    }
+    settings.endArray();
   }
 
   void MainWindow::loadExtensions()
@@ -1143,7 +1340,7 @@ namespace Avogadro
 
     foreach( QString path, pluginPaths ) {
       QDir dir( path );
-//      qDebug() << "SearchPath:" << dir.absolutePath() << endl;
+      //      qDebug() << "SearchPath:" << dir.absolutePath() << endl;
       foreach( QString fileName, dir.entryList( QDir::Files ) ) {
         QPluginLoader loader( dir.absoluteFilePath( fileName ) );
         QObject *instance = loader.instance();
@@ -1226,7 +1423,7 @@ namespace Avogadro
 
       QUndoCommand *command = 0;
       command = extension->performAction( action, d->molecule,d->glWidget,
-                                          d->messagesText );
+          d->messagesText );
 
       if ( command ) {
         d->undoStack->push( command );
@@ -1277,6 +1474,91 @@ namespace Avogadro
     show();
     raise();
     activateWindow();
+  }
+
+  GLWidget *MainWindow::newGLWidget()
+  {
+    GLWidget *gl = 0;
+    if(!d->glWidget)
+    {
+      gl = new GLWidget(this);
+      d->glWidget = gl;
+    }
+    else
+    {
+      gl = new GLWidget( d->glWidget->format(), this, d->glWidget );
+    }
+
+    connect( this, SIGNAL( moleculeChanged( Molecule * ) ), gl, SLOT( setMolecule( Molecule * ) ) );
+    gl->setMolecule(d->molecule);
+    gl->setObjectName(QString::fromUtf8("glWidget"));
+    gl->setUndoStack( d->undoStack );
+    gl->setToolGroup( d->toolGroup );
+    d->glWidgets.append(gl);
+
+    QWidget *engineListWidget = new QWidget(ui.enginesWidget);
+    QVBoxLayout *vlayout = new QVBoxLayout(engineListWidget);
+
+    EngineListView *engineListView = new EngineListView( gl, engineListWidget );
+    vlayout->addWidget(engineListView);
+
+    QHBoxLayout *hlayout = new QHBoxLayout();
+    QPushButton *addEngineButton = new QPushButton(tr("Add"), engineListWidget);
+    hlayout->addWidget(addEngineButton);
+    connect(addEngineButton, SIGNAL(clicked()), this, SLOT(addEngineClicked()));
+
+    QPushButton *duplicateEngineButton = new QPushButton(tr("Duplicate"), engineListWidget);
+    hlayout->addWidget(duplicateEngineButton);
+
+    QPushButton *removeEngineButton = new QPushButton(tr("Remove"), engineListWidget);
+    hlayout->addWidget(removeEngineButton);
+    connect(removeEngineButton, SIGNAL(clicked()), this, SLOT(removeEngineClicked()));
+
+    vlayout->addLayout(hlayout);
+
+    d->enginesStacked->addWidget( engineListWidget );
+
+    EngineSetupWidget *engineTabWidget = new EngineSetupWidget( gl, ui.engineConfigurationWidget );
+    d->engineConfigurationStacked->addWidget( engineTabWidget );
+
+    connect( engineListView, SIGNAL( clicked( Engine * ) ),
+        engineTabWidget, SLOT( setCurrentEngine( Engine * ) ) );
+
+    return gl;
+  }
+
+  void MainWindow::addEngineClicked()
+  {
+    Engine *engine =  AddEngineDialog::getEngine(this, d->glWidget->engineFactories());
+    if(engine)
+    {
+      PrimitiveList p = d->glWidget->selectedPrimitives();
+      if(!p.size())
+      {
+        p = d->glWidget->primitives();
+      }
+      engine->setPrimitives(p);
+      d->glWidget->addEngine(engine);
+    }
+  }
+
+  void MainWindow::removeEngineClicked()
+  {
+    QWidget *widget = d->enginesStacked->currentWidget();
+    foreach(QObject *object, widget->children())
+    {
+      EngineListView *engineListView;
+      if( object->isWidgetType() && 
+          (engineListView = qobject_cast<EngineListView *>(object)) )
+      {
+        Engine *engine = engineListView->selectedEngine();
+
+        if(engine)
+        {
+          d->glWidget->removeEngine(engine);
+        }
+      }
+    }
   }
 
 } // end namespace Avogadro

@@ -139,28 +139,28 @@ namespace Avogadro
   inline bool GLPainterPrivate::isValid()
   {
     if(!widget)
-      {
-        qWarning("GLPainter not active.");
-        return false;
-      }
+    {
+      qWarning("GLPainter not active.");
+      return false;
+    }
 
-    if(newQuality != -1)
+    if(!initialized)
+    {
+      qDebug() << "createObjects()";
+      createObjects();
+      initialized = true;
+    }
+    else if(newQuality != -1)
+    {
+      qDebug() << "updateObjects()";
+      if(newQuality != quality)
       {
-        qDebug() << "updateObjects()";
-        if(newQuality != quality)
-          {
-            deleteObjects();
-            quality = newQuality;
-            createObjects();
-          }
-        newQuality = -1;
-      }
-    else if(!initialized)
-      {
-        qDebug() << "createObjects()";
+        deleteObjects();
+        quality = newQuality;
         createObjects();
-        initialized = true;
       }
+      newQuality = -1;
+    }
     return true;
   }
 
@@ -170,46 +170,46 @@ namespace Avogadro
     // delete the spheres. One has to be wary that more than one sphere
     // pointer may have the same value. One wants to avoid deleting twice the same sphere.
     if ( spheres )
+    {
+      lastLevel = -1;
+      for ( n = 0; n < PAINTER_DETAIL_LEVELS; n++ )
       {
-        lastLevel = -1;
-        for ( n = 0; n < PAINTER_DETAIL_LEVELS; n++ )
+        level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
+        if ( level != lastLevel )
+        {
+          lastLevel = level;
+          if ( spheres[n] )
           {
-            level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
-            if ( level != lastLevel )
-              {
-                lastLevel = level;
-                if ( spheres[n] )
-                  {
-                    delete spheres[n];
-                    spheres[n] = 0;
-                  }
-              }
+            delete spheres[n];
+            spheres[n] = 0;
           }
-        delete[] spheres;
-        spheres = 0;
+        }
       }
+      delete[] spheres;
+      spheres = 0;
+    }
 
     // delete the cylinders. One has to be wary that more than one cylinder
     // pointer may have the same value. One wants to avoid deleting twice the same cylinder.
     if ( cylinders )
+    {
+      lastLevel = -1;
+      for ( n = 0; n < PAINTER_DETAIL_LEVELS; n++ )
       {
-        lastLevel = -1;
-        for ( n = 0; n < PAINTER_DETAIL_LEVELS; n++ )
+        level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
+        if ( level != lastLevel )
+        {
+          lastLevel = level;
+          if ( cylinders[n] )
           {
-            level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
-            if ( level != lastLevel )
-              {
-                lastLevel = level;
-                if ( cylinders[n] )
-                  {
-                    delete cylinders[n];
-                    cylinders[n] = 0;
-                  }
-              }
+            delete cylinders[n];
+            cylinders[n] = 0;
           }
-        delete[] cylinders;
-        cylinders = 0;
+        }
       }
+      delete[] cylinders;
+      cylinders = 0;
+    }
   }
 
   void GLPainterPrivate::createObjects()
@@ -218,49 +218,49 @@ namespace Avogadro
     // in that case we want to reuse the corresponding sphere by just copying the pointer,
     // instead of creating redundant spheres.
     if ( spheres == 0 )
+    {
+      spheres = new Sphere*[PAINTER_DETAIL_LEVELS];
+      int level, lastLevel;
+      lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
+      spheres[0] = new Sphere ( lastLevel );
+      for ( int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
       {
-        spheres = new Sphere*[PAINTER_DETAIL_LEVELS];
-        int level, lastLevel;
-        lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
-        spheres[0] = new Sphere ( lastLevel );
-        for ( int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
-          {
-            level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
-            if ( level == lastLevel )
-              {
-                spheres[n] = spheres[n-1];
-              }
-            else
-              {
-                lastLevel = level;
-                spheres[n] = new Sphere ( level );
-              }
-          }
+        level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
+        if ( level == lastLevel )
+        {
+          spheres[n] = spheres[n-1];
+        }
+        else
+        {
+          lastLevel = level;
+          spheres[n] = new Sphere ( level );
+        }
       }
+    }
 
     // create the cylinders. More than one cylinder detail level may have the same value.
     // in that case we want to reuse the corresponding cylinder by just copying the pointer,
     // instead of creating redundant cylinders.
     if ( cylinders == 0 )
+    {
+      cylinders = new Cylinder*[PAINTER_DETAIL_LEVELS];
+      int level, lastLevel;
+      lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
+      cylinders[0] = new Cylinder ( lastLevel );
+      for ( int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
       {
-        cylinders = new Cylinder*[PAINTER_DETAIL_LEVELS];
-        int level, lastLevel;
-        lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
-        cylinders[0] = new Cylinder ( lastLevel );
-        for ( int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
-          {
-            level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
-            if ( level == lastLevel )
-              {
-                cylinders[n] = cylinders[n-1];
-              }
-            else
-              {
-                lastLevel = level;
-                cylinders[n] = new Cylinder ( level );
-              }
-          }
+        level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
+        if ( level == lastLevel )
+        {
+          cylinders[n] = cylinders[n-1];
+        }
+        else
+        {
+          lastLevel = level;
+          cylinders[n] = new Cylinder ( level );
+        }
       }
+    }
   }
 
   GLPainter::GLPainter( int quality ) : d ( new GLPainterPrivate )
@@ -329,18 +329,17 @@ namespace Avogadro
     if ( dot > PAINTER_FRUSTUM_CULL_TRESHOLD ) return;
 
     double apparentRadius = radius / distance;
-
     int detailLevel = 1 + static_cast<int> ( floor (
-                                                    PAINTER_SPHERES_DETAIL_COEFF * ( sqrt ( apparentRadius ) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL )
-                                                    ) );
+          PAINTER_SPHERES_DETAIL_COEFF * ( sqrt ( apparentRadius ) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL )
+          ) );
     if ( detailLevel < 0 )
-      {
-        detailLevel = 0;
-      }
+    {
+      detailLevel = 0;
+    }
     if ( detailLevel > PAINTER_MAX_DETAIL_LEVEL )
-      {
-        detailLevel = PAINTER_MAX_DETAIL_LEVEL;
-      }
+    {
+      detailLevel = PAINTER_MAX_DETAIL_LEVEL;
+    }
 
     d->color.applyAsMaterials();
     pushName();
@@ -437,7 +436,7 @@ namespace Avogadro
   
   void GLPainter::drawMultiLine(const Eigen::Vector3d &end1, 
                                 const Eigen::Vector3d &end2,
-                                double lineWidth, int order, short stipple)
+                                double lineWidth, int order, short )
   {
     // Draw multiple lines between two points of the specified thickness
     if(!d->isValid()) { return; }

@@ -105,6 +105,7 @@ namespace Avogadro {
 
     public:
       Engine *createInstance(QObject *parent = 0) { return new RibbonEngine(parent); }
+      QString className() { return RibbonEngine::staticMetaObject.className(); }
   };
 
 } // end namespace Avogadro

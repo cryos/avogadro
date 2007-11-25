@@ -69,6 +69,7 @@ namespace Avogadro {
 
     public:
       Engine *createInstance(QObject *parent = 0) { return new StickEngine(parent); }
+      QString className() { return StickEngine::staticMetaObject.className(); }
   };
 
 } // end namespace Avogadro

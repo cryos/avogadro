@@ -68,6 +68,7 @@ namespace Avogadro {
       Engine *createInstance(QObject *parent = 0) {
         return new DebugEngine(parent);
       }
+      QString className() { return DebugEngine::staticMetaObject.className(); }
   };
 
 } // end namespace Avogadro

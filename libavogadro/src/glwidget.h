@@ -38,6 +38,7 @@
 
 #include <QMutex>
 #include <QWaitCondition>
+#include <QSettings>
 #include <QThread>
 
 #include <vector>
@@ -301,6 +302,11 @@ namespace Avogadro {
       QList<Engine *> engines() const;
 
       /**
+       * @return a list of the engine factories
+       */
+      QList<EngineFactory *> engineFactories() const;
+
+      /**
        * Get the hits for a region starting at (x,y) of size (w x y)
        */
       QList<GLHit> hits(int x, int y, int w, int h);
@@ -425,6 +431,9 @@ namespace Avogadro {
       static GLWidget *current();
       static void setCurrent(GLWidget *current);
 
+      virtual void writeSettings(QSettings &settings) const;
+      virtual void readSettings(QSettings &settings);
+
 
     protected:
       /**
@@ -473,9 +482,9 @@ namespace Avogadro {
       virtual void render();
 
       /**
-       * Helper function to load all available engines
+       * Helper function to load all engine factories
        */
-      void loadEngines();
+      void loadEngineFactories();
 
       /**
        * This will return a painting condition that must be met each time
@@ -543,12 +552,30 @@ namespace Avogadro {
        */
       void setMolecule(Molecule *molecule);
 
+      /** 
+       * \param engine engine to add to this widget
+       */
+      void addEngine(Engine *engine);
+
+      /** 
+       * \param engine engine to remove from this widget
+       */
+      void removeEngine(Engine *engine);
+
+      /**
+       * reset to default engines (one of each factory)
+       */
+      void loadDefaultEngines();
+
     Q_SIGNALS:
       void mousePress( QMouseEvent * event );
       void mouseRelease( QMouseEvent * event );
       void mouseMove( QMouseEvent * event );
       void wheel( QWheelEvent * event);
       void moleculeChanged(Molecule *previous, Molecule *next);
+
+      void engineAdded(Engine *engine);
+      void engineRemoved(Engine *engine);
 
   };
 

@@ -108,6 +108,8 @@ namespace Avogadro {
 
     public:
       Engine *createInstance(QObject *parent = 0) { return new BSDYEngine(parent); }
+
+      QString className() { return BSDYEngine::staticMetaObject.className(); }
   };
 
 } // end namespace Avogadro

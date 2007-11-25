@@ -61,6 +61,10 @@ namespace Avogadro
       void removeSelection();
       void addAll();
 
+    protected Q_SLOTS:
+      void addEngine(Engine *engine);
+      void removeEngine(Engine *engine);
+
     private:
       EngineSetupWidgetPrivate *const d;
 

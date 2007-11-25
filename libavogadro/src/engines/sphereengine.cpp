@@ -200,6 +200,18 @@ namespace Avogadro {
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
   }
+
+  void SphereEngine::writeSettings(QSettings &settings) const
+  {
+    Engine::writeSettings(settings);
+    settings.setValue("alpha", m_alpha);
+  }
+
+  void SphereEngine::readSettings(QSettings &settings)
+  {
+    Engine::readSettings(settings);
+    m_alpha = settings.value("alpha", 1.).toDouble();
+  }
 }
 
 #include "sphereengine.moc"

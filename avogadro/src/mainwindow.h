@@ -36,6 +36,7 @@ class QStandardItem;
 namespace Avogadro {
   class Tool;
   class Primitive;
+  class GLWidget;
 
   class MainWindowPrivate;
   class MainWindow : public QMainWindow
@@ -74,6 +75,7 @@ namespace Avogadro {
       void selectNone();
 
       void newView();
+      void duplicateView();
       void closeView();
       void centerView();
       void setView(int index);
@@ -81,6 +83,9 @@ namespace Avogadro {
       void showSettingsDialog();
       void setBackgroundColor();
       void setPainterQuality(int quality);
+
+      bool tabbedTools() const;
+      void setTabbedTools(bool tabbedTools);
 
       void undoStackClean(bool clean);
 
@@ -91,6 +96,9 @@ namespace Avogadro {
       void documentWasModified();
 
       void setTool(Tool *tool);
+
+      void addEngineClicked();
+      void removeEngineClicked();
 
       // Mac helper
       void macQuit();
@@ -114,6 +122,18 @@ namespace Avogadro {
       bool maybeSave();
       void setFileName(const QString &fileName);
       void updateRecentFileActions();
+
+      void reloadTabbedTools();
+
+      /***
+       * Function for creating new GLWidgets
+       * \return a pointer to a new GLWidget which has been added to the 
+       * internal list of all glwidgets, had it's UndoStack and ToolGroup
+       * setup correctly, connects the correct signals, sets it to the 
+       * current widget if there is no other currently, and if there is a 
+       * pre-existing GLWidget it shares the GL context.  
+       */
+      GLWidget *newGLWidget();
 
       //! Find an existing main window by filename
       //! \return a pointer to the appropriate window, or NULL if none exists

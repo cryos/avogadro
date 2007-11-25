@@ -66,6 +66,7 @@ namespace Avogadro {
     
   public:
     Engine *createInstance(QObject *parent = 0) { return new PolygonEngine(parent); }
+      QString className() { return PolygonEngine::staticMetaObject.className(); }
   };
   
 } // end namespace Avogadro

@@ -57,6 +57,8 @@ namespace Avogadro {
 
     public:
       Engine *createInstance(QObject *parent = 0) { return new AxesEngine(parent); }
+
+      QString className() { return AxesEngine::staticMetaObject.className(); }
   };
 
 } // end namespace Avogadro

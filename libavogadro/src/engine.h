@@ -34,6 +34,7 @@
 #include <QString>
 #include <QVector>
 #include <QList>
+#include <QSettings>
 
 namespace Avogadro {
 
@@ -127,6 +128,7 @@ namespace Avogadro {
       PrimitiveList primitives() const;
 
       virtual void setPrimitives(const PrimitiveList &primitives);
+      void setPrimitives(const QList<Primitive *> &primitives);
       virtual void clearPrimitives();
 
       /** Get the radius of the primitive referred to.
@@ -148,6 +150,9 @@ namespace Avogadro {
        * if no settings widget is available
        */
       virtual QWidget *settingsWidget();
+
+      virtual void writeSettings(QSettings &settings) const;
+      virtual void readSettings(QSettings &settings);
 
     Q_SIGNALS:
       void changed();
@@ -190,6 +195,7 @@ namespace Avogadro {
        */
       virtual ~EngineFactory() {}
 
+      virtual QString className() = 0;
       /**
        * @return pointer to a new instance of an Engine subclass object
        */

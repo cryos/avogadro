@@ -60,7 +60,7 @@ namespace Avogadro {
     PrimitiveList list = engine->primitives();
     foreach(int row, d->rowTypeMap.keys())
     {
-      d->size[row] = list.size(d->rowTypeMap[row]);
+      d->size[row] = list.count(d->rowTypeMap[row]);
     }
   }
 
@@ -143,7 +143,7 @@ namespace Avogadro {
     foreach(int row, d->rowTypeMap.keys())
     {
       Primitive::Type type = d->rowTypeMap[row];
-      int newsize = list.size(type);
+      int newsize = list.count(type);
       int oldsize = d->size.at(row);
       if(newsize < oldsize)
       {

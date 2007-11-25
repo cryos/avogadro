@@ -50,6 +50,7 @@ namespace Avogadro {
 
       GLWidget *glWidget() const;
 
+      Engine *selectedEngine() const;
 //       void setSettingsButton( QAbstractButton *button );
 //       QAbstractButton *settingsButton() const;
 
