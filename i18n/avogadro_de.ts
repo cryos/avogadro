@@ -3045,12 +3045,12 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="22"/>
         <source>Atom Labels:</source>
-        <translation type="unfinished"></translation>
+        <translation>Atom-Beschriftung:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="54"/>
         <source>Atom number</source>
-        <translation type="unfinished">Atomnummer</translation>
+        <translation>Atomnummer</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="59"/>
@@ -3065,7 +3065,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="134"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="92"/>
@@ -3090,7 +3090,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="79"/>
         <source>Partial Charge</source>
-        <translation type="unfinished">Teilladung</translation>
+        <translation>Teilladung</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="129"/>
@@ -3178,12 +3178,12 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="294"/>
         <source>Engines</source>
-        <translation type="unfinished"></translation>
+        <translation>Engines</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="309"/>
         <source>Engine Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Engine-Konfiguration</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="332"/>
@@ -3233,7 +3233,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="391"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+W</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="418"/>
@@ -3248,7 +3248,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="426"/>
         <source>Save &amp;As...</source>
-        <translation type="unfinished"></translation>
+        <translation>Speichern &amp;als...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="429"/>
@@ -3258,12 +3258,12 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="437"/>
         <source>Revert To Saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Urspungszustand wiederherstellen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="445"/>
         <source>&amp;Export Graphics</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Exportiere Grafik</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="453"/>
@@ -3278,7 +3278,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="466"/>
         <source>&amp;About</source>
-        <translation type="unfinished">Über</translation>
+        <translation>&amp;Über</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="474"/>
@@ -3293,7 +3293,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="485"/>
         <source>&amp;Redo</source>
-        <translation type="unfinished">Wiederherstellen</translation>
+        <translation>Wiede&amp;rherstellen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="488"/>
@@ -3378,12 +3378,12 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="576"/>
         <source>Export POVRay</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportiere POVRay</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="547"/>
         <source>Ctrl+Backspace</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+Leertaste</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="110"/>
@@ -3398,17 +3398,17 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="158"/>
         <source>&amp;Extensions</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Erweiterungen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="163"/>
         <source>&amp;Select</source>
-        <translation type="unfinished"></translation>
+        <translation>Au&amp;swählen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="584"/>
         <source>Tutorial</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutorial</translation>
     </message>
 </context>
 <context>
