@@ -661,7 +661,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/gamessextension.cpp" line="86"/>
         <source>&amp;Extensions</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Erweiterungen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessextension.cpp" line="86"/>
@@ -753,7 +753,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/extensions/h2methylextension.cpp" line="55"/>
         <source>&amp;Build</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Struktur verändern</translation>
     </message>
 </context>
 <context>
@@ -771,7 +771,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/extensions/hydrogensextension.cpp" line="59"/>
         <source>&amp;Build</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Struktur verändern</translation>
     </message>
 </context>
 <context>
@@ -1078,12 +1078,12 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/engines/polygonengine.cpp" line="47"/>
         <source>Polygon</source>
-        <translation type="unfinished"></translation>
+        <translation>Polygon</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/polygonengine.cpp" line="48"/>
         <source>Renders structures as polygons</source>
-        <translation type="unfinished"></translation>
+        <translation>Strukturen als Polygone anzeigen</translation>
     </message>
 </context>
 <context>
@@ -1124,7 +1124,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/engines/ribbonengine.cpp" line="50"/>
         <source>Renders residues as ribbons</source>
-        <translation>Reste als Helix anzeigen</translation>
+        <translation>Reste als Band anzeigen</translation>
     </message>
 </context>
 <context>
@@ -1132,12 +1132,12 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/engines/ringengine.cpp" line="49"/>
         <source>Ring</source>
-        <translation type="unfinished"></translation>
+        <translation>Ring</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/ringengine.cpp" line="50"/>
         <source>Renders rings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ring-Darstellung</translation>
     </message>
 </context>
 <context>
@@ -1155,7 +1155,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="71"/>
         <source>&amp;Select</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Auswahl</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="110"/>
@@ -1173,7 +1173,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/tools/selectrotatetool.h" line="62"/>
         <source>Select/Rotate</source>
-        <translation>Auswahlählen/Rotieren</translation>
+        <translation>Auswählen/Rotieren</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/selectrotatetool.h" line="64"/>
@@ -1186,7 +1186,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
 Click to pick individual atoms, residues, or fragments
 Drag to select a range of atoms</source>
         <translation>Auswahl (F11)
-Klicken um Atom ...???
+Klicken um einzelne Atome, Reste oder Fragmente auszuwählen
 Gedrückt halten um Atome auszuwählen</translation>
     </message>
     <message>
@@ -1233,7 +1233,7 @@ Gedrückt halten um Atome auszuwählen</translation>
     <message>
         <location filename="../libavogadro/src/engines/stickengine.cpp" line="47"/>
         <source>Renders as Cylinders</source>
-        <translation>Zylinderdarstellung</translation>
+        <translation>Zylinder-Darstellung</translation>
     </message>
 </context>
 <context>
@@ -1241,12 +1241,12 @@ Gedrückt halten um Atome auszuwählen</translation>
     <message>
         <location filename="../libavogadro/src/engines/surfaceengine.cpp" line="95"/>
         <source>Surface</source>
-        <translation type="unfinished"></translation>
+        <translation>Oberfläche</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/surfaceengine.cpp" line="96"/>
         <source>Surface rendering</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Oberflächen-Darstellung</translation>
     </message>
 </context>
 <context>
@@ -1261,7 +1261,9 @@ Gedrückt halten um Atome auszuwählen</translation>
         <source>This document is currently an isolated molecule.
 
 Do you want to create a crystal unit cell?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dieses Dokument ist zur Zeit ein isoliertes Molekül.
+
+Kristall erzeugen?</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellextension.cpp" line="36"/>
@@ -1271,7 +1273,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/extensions/unitcellextension.cpp" line="57"/>
         <source>&amp;Build</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Struktur verändern</translation>
     </message>
 </context>
 <context>
@@ -1305,7 +1307,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="18"/>
         <source>Atom Radius:</source>
-        <translation>Atom-Radius:</translation>
+        <translation>Atomradius:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="51"/>
@@ -1315,12 +1317,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="47"/>
         <source>Bond Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bindungsradius:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="78"/>
         <source>Show Multiple Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation>Mehrere Bindungen anzeigen</translation>
     </message>
 </context>
 <context>
@@ -3045,22 +3047,22 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="22"/>
         <source>Atom Labels:</source>
-        <translation>Atom-Beschriftung:</translation>
+        <translation>Atombeschriftung:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="54"/>
         <source>Atom number</source>
-        <translation>Atomnummer</translation>
+        <translation>AtomnummerRest-Nummer</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="59"/>
         <source>Element symbol</source>
-        <translation>Element-Symbol</translation>
+        <translation>Elementsymbol</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="64"/>
         <source>Element name</source>
-        <translation>Element-Bezeichnung</translation>
+        <translation>Elementbezeichnung</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="134"/>
@@ -3070,7 +3072,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="92"/>
         <source>Bond Labels:</source>
-        <translation>Bindungs-Bezeichung:</translation>
+        <translation>Bindungsbeschriftung:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="124"/>
@@ -3080,12 +3082,12 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="69"/>
         <source>Residue name</source>
-        <translation type="unfinished"></translation>
+        <translation>Restname</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="74"/>
         <source>Residue number</source>
-        <translation type="unfinished"></translation>
+        <translation>Restnummer</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="79"/>
@@ -3095,7 +3097,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="129"/>
         <source>Bond order</source>
-        <translation type="unfinished"></translation>
+        <translation>Bindungsanzahl</translation>
     </message>
 </context>
 <context>
@@ -4264,7 +4266,7 @@ Options:
     <message>
         <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="16"/>
         <source>Rendering:</source>
-        <translation type="unfinished"></translation>
+        <translation>Darstellung:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="24"/>
