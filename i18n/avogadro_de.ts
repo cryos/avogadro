@@ -130,7 +130,7 @@
     <message>
         <location filename="../avogadro/src/aboutdialog.cpp" line="63"/>
         <source>&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;Application Version: %2 (svn revision: %3)&lt;br/&gt;&lt;br/&gt;Library Version: %4 (svn revision: %5)&lt;br/&gt;&lt;br/&gt;For more information check the &lt;a href=&quot;http://avogadro.sourceforge.net/&quot;&gt;Avogadro homepage&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;br/&gt;</source>
-        <translation>&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;Programm-Version: %2 (SVN Revision: %3)&lt;br/&gt;&lt;br/&gt;Bibliotheks-Version: %4 (SVN Revision: %5)&lt;br/&gt;&lt;br/&gt;Mehr Informationen auf der&lt;a href=&quot;http://avogadro.sourceforge.net/&quot;&gt;Avogadro Homepage&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;br/&gt;</translation>
+        <translation>&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;Programm-Version: %2 (SVN Revision: %3)&lt;br/&gt;&lt;br/&gt;Bibliotheks-Version: %4 (SVN Revision: %5)&lt;br/&gt;&lt;br/&gt;Mehr Informationen auf der &lt;a href=&quot;http://avogadro.sourceforge.net/&quot;&gt;Avogadro Homepage&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;br/&gt;</translation>
     </message>
     <message>
         <location filename="../avogadro/src/aboutdialog.cpp" line="63"/>
@@ -344,12 +344,12 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.h" line="58"/>
         <source>ClickMeasure</source>
-        <translation type="unfinished"></translation>
+        <translation>Klick-Messung</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.h" line="60"/>
         <source>Click to Measure Tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Messung</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="50"/>
@@ -369,35 +369,35 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="90"/>
         <source>Distance: %1 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Abstände: %1 %3</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="98"/>
         <source>Distance: %1 %3  %2 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Abstände: %1 %3  %2 %3</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="109"/>
         <source>Angle: %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Winkel: %1 %2</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="177"/>
         <source>*1</source>
         <comment>*1 is a number. You most likely don&apos;t need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation>*1</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="185"/>
         <source>*2</source>
         <comment>*2 is a number. You most likely don&apos;t need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation>*2</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="194"/>
         <source>*3</source>
         <comment>*3 is a number. You most likely don&apos;t need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation>*3</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="198"/>
@@ -3262,7 +3262,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="437"/>
         <source>Revert To Saved</source>
-        <translation>Urspungszustand wiederherstellen</translation>
+        <translation>Urzustand wiederherstellen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="445"/>
@@ -3287,7 +3287,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="474"/>
         <source>&amp;Undo</source>
-        <translation type="unfinished">Rückgängig</translation>
+        <translation>Rückgängig</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="477"/>
@@ -3322,7 +3322,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="520"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished">Einfügen</translation>
+        <translation>Einfügen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="523"/>
@@ -3407,7 +3407,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="163"/>
         <source>&amp;Select</source>
-        <translation type="unfinished">Au&amp;swahl</translation>
+        <translation>Au&amp;swahl</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="584"/>
