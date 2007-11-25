@@ -754,7 +754,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/extensions/h2methylextension.cpp" line="55"/>
         <source>&amp;Build</source>
-        <translation>&amp;Struktur</translation>
+        <translation>S&amp;truktur</translation>
     </message>
 </context>
 <context>
@@ -772,7 +772,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/extensions/hydrogensextension.cpp" line="59"/>
         <source>&amp;Build</source>
-        <translation>&amp;Struktur</translation>
+        <translation>S&amp;truktur</translation>
     </message>
 </context>
 <context>
@@ -1146,7 +1146,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="50"/>
         <source>&amp;Invert Selection</source>
-        <translation type="unfinished">Auswahl &amp;umkehren</translation>
+        <translation>Auswahl &amp;umkehren</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="55"/>
@@ -1156,7 +1156,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="71"/>
         <source>&amp;Select</source>
-        <translation type="unfinished">Au&amp;swahl</translation>
+        <translation>Au&amp;swahl</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="110"/>
@@ -3406,7 +3406,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="417"/>
         <source>&amp;Select</source>
-        <translation type="unfinished">Au&amp;swahl</translation>
+        <translation>Au&amp;swahl</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="405"/>
