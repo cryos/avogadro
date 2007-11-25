@@ -148,7 +148,7 @@
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.h" line="94"/>
         <source>Automatic Optimisation Tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-Optimierung</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="57"/>
@@ -181,12 +181,12 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="301"/>
         <source>Conjugate Gradients</source>
-        <translation type="unfinished"></translation>
+        <translation>Verlaufskonjugation</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="302"/>
         <source>Steepest Descent</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiefster Abstieg</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="304"/>
@@ -196,7 +196,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="312"/>
         <source>10e-</source>
-        <translation type="unfinished"></translation>
+        <translation>10e-</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="386"/>
@@ -547,7 +547,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="66"/>
         <source>Rotor Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Drehpunkt-Suche</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="71"/>
@@ -666,7 +666,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/gamessextension.cpp" line="86"/>
         <source>&amp;GAMESS</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;GAMESS</translation>
     </message>
 </context>
 <context>
@@ -674,40 +674,42 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="635"/>
         <source>Title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1552"/>
         <source>Advanced Settings Changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Erweiterte Einstellungen geändert</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1553"/>
         <source>Advanced settings have changed.
 Discard?</source>
-        <translation type="unfinished"></translation>
+        <translation>Erweiterte Einstellungen wurden geändert.
+Verwerfen?</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1574"/>
         <source>Advanced Settings Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Erweiterte Einstellungen zurücksetzen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1576"/>
         <source>Are you sure you wish to reset advanced settings?
 All changes will be lost!</source>
-        <translation type="unfinished"></translation>
+        <translation>Erweiterte Einstellungen zurücksetzen?
+Alle Änderungen gehen dabei verloren!</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1587"/>
         <source>Basic Settings Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Grundeinstellungen zurücksetzen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1589"/>
         <source>Are you sure you wish to reset basic settings?
 All changes will be lost!</source>
-        <translation type="unfinished"></translation>
+        <translation>Grundeinstellungen zurücksetzen?Alle Änderungen gehen dabei verloren!</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.cpp" line="1654"/>
@@ -1145,12 +1147,12 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="50"/>
         <source>&amp;Invert Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl umkehren</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="55"/>
         <source>Select SMARTS...</source>
-        <translation type="unfinished"></translation>
+        <translation>SMARTS auswählen...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="71"/>
@@ -1160,12 +1162,12 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="110"/>
         <source>SMARTS Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>SMARTS-Auswahl</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="111"/>
         <source>SMARTS pattern to select</source>
-        <translation type="unfinished"></translation>
+        <translation>SMARTS-Muster auswählen</translation>
     </message>
 </context>
 <context>
@@ -1246,7 +1248,7 @@ Gedrückt halten um Atome auszuwählen</translation>
     <message>
         <location filename="../libavogadro/src/engines/surfaceengine.cpp" line="96"/>
         <source>Surface rendering</source>
-        <translation type="unfinished">Oberflächen-Darstellung</translation>
+        <translation>Oberflächen-Darstellung</translation>
     </message>
 </context>
 <context>
@@ -1261,14 +1263,14 @@ Gedrückt halten um Atome auszuwählen</translation>
         <source>This document is currently an isolated molecule.
 
 Do you want to create a crystal unit cell?</source>
-        <translation type="unfinished">Dieses Dokument ist zur Zeit ein isoliertes Molekül.
+        <translation>Dieses Dokument ist zur Zeit ein isoliertes Molekül.
 
-Kristall erzeugen?</translation>
+Elementarzelle erzeugen?</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellextension.cpp" line="36"/>
         <source>Unit Cell Parameters...</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementarzellen-Parameter...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellextension.cpp" line="57"/>
@@ -1477,17 +1479,17 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/enginesetupwidget.ui" line="43"/>
         <source>Primitives</source>
-        <translation type="unfinished"></translation>
+        <translation>Primitive</translation>
     </message>
     <message>
         <location filename="../avogadro/src/enginesetupwidget.ui" line="104"/>
         <source>Add Selected Primitives</source>
-        <translation type="unfinished"></translation>
+        <translation>Hinzufügen ausgewählter Primitive</translation>
     </message>
     <message>
         <location filename="../avogadro/src/enginesetupwidget.ui" line="114"/>
         <source>Remove Selected Primitives</source>
-        <translation type="unfinished"></translation>
+        <translation>Entfernen ausgewählter Primitive</translation>
     </message>
     <message>
         <location filename="../avogadro/src/enginesetupwidget.ui" line="124"/>
@@ -1525,7 +1527,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="128"/>
         <source>Gradients</source>
-        <translation type="unfinished"></translation>
+        <translation>Winkel</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="135"/>
@@ -1545,12 +1547,12 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="157"/>
         <source>Steepest Descent</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiefster Abstieg</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="162"/>
         <source>Conjugate Gradients</source>
-        <translation type="unfinished"></translation>
+        <translation>Verlaufskonjugation</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefielddialog.ui" line="170"/>
@@ -1583,7 +1585,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/gamessefpmatchdialog.ui" line="25"/>
         <source>Group Label:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppen-Beschriftung:</translation>
     </message>
 </context>
 <context>
@@ -3350,7 +3352,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="544"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Alles löschen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="552"/>
@@ -4093,7 +4095,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="146"/>
         <source>Rotor Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Drehpunkt-Suche</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="155"/>
@@ -4168,12 +4170,12 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/unitcellextension.h" line="52"/>
         <source>UnitCell</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementarzelle</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellextension.h" line="54"/>
         <source>Unit Cell Parameters Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementarzellen-Parameter-Erweiterung</translation>
     </message>
     <message>
         <location filename="../avogadro/src/main.cpp" line="149"/>
@@ -4248,12 +4250,12 @@ Options:
     <message>
         <location filename="../avogadro/src/extensions/selectextension.h" line="48"/>
         <source>Selections</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.h" line="50"/>
         <source>Selection Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl-Erweiterung</translation>
     </message>
 </context>
 <context>
@@ -4271,7 +4273,7 @@ Options:
     <message>
         <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="24"/>
         <source>Backbone</source>
-        <translation type="unfinished"></translation>
+        <translation>Rückgrat</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="32"/>
@@ -4289,7 +4291,7 @@ Options:
     <message>
         <location filename="../libavogadro/src/engines/ringsettingswidget.ui" line="16"/>
         <source>Opacity:</source>
-        <translation type="unfinished">Transparenz:</translation>
+        <translation>Transparenz:</translation>
     </message>
 </context>
 <context>
@@ -4376,67 +4378,67 @@ Gedrückt halten um Atome auszuwählen</translation>
     <message>
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="70"/>
         <source>Unit Cell Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementarzellen-Parameter</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="19"/>
         <source>Unit Cell Display Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementarzellen-Parameter-Anzeige</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="25"/>
         <source>A repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation>A-Wiederholung:</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="39"/>
         <source>B repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation>B-Wiederholung:</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="53"/>
         <source>C repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation>C-Wiederholung:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="91"/>
         <source>Axes (Å)</source>
-        <translation type="unfinished"></translation>
+        <translation>Achsen (Å)</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="111"/>
         <source>Angles (°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Winkel (°)</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="135"/>
         <source>A:</source>
-        <translation type="unfinished"></translation>
+        <translation>A:</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="152"/>
         <source>alpha:</source>
-        <translation type="unfinished"></translation>
+        <translation>α:</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="172"/>
         <source>B:</source>
-        <translation type="unfinished"></translation>
+        <translation>B:</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="189"/>
         <source>beta:</source>
-        <translation type="unfinished"></translation>
+        <translation>β:</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="209"/>
         <source>C:</source>
-        <translation type="unfinished"></translation>
+        <translation>C:</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/unitcellparamdialog.ui" line="226"/>
         <source>gamma:</source>
-        <translation type="unfinished"></translation>
+        <translation>γ:</translation>
     </message>
 </context>
 <context>
@@ -4457,12 +4459,12 @@ Gedrückt halten um Atome auszuwählen</translation>
     <message>
         <location filename="../libavogadro/src/engines/wiresettingswidget.ui" line="18"/>
         <source>Show Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation>Atome anzeigen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/wiresettingswidget.ui" line="31"/>
         <source>Show Multiple Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation>Mehrere Bindungen anzeigen</translation>
     </message>
 </context>
 </TS>
