@@ -561,7 +561,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="93"/>
         <source>&amp;Extensions</source>
-        <translation>&amp;Erweiterungen</translation>
+        <translation>Er&amp;weiterungen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="93"/>
@@ -600,7 +600,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/gamessextension.cpp" line="106"/>
         <source>Delete</source>
-        <translation type="unfinished">Entfernen</translation>
+        <translation>Entfernen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessextension.cpp" line="178"/>
@@ -660,7 +660,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/gamessextension.cpp" line="86"/>
         <source>&amp;Extensions</source>
-        <translation>&amp;Erweiterungen</translation>
+        <translation>Er&amp;weiterungen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessextension.cpp" line="86"/>
@@ -1156,7 +1156,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="71"/>
         <source>&amp;Select</source>
-        <translation>&amp;Auswahl</translation>
+        <translation>Aus&amp;wahl</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="110"/>
@@ -3401,12 +3401,12 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="416"/>
         <source>&amp;Extensions</source>
-        <translation>&amp;Erweiterungen</translation>
+        <translation>Er&amp;weiterungen</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="417"/>
         <source>&amp;Select</source>
-        <translation>Au&amp;swahl</translation>
+        <translation>Aus&amp;wahl</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="405"/>
@@ -4325,7 +4325,7 @@ Gedrückt halten um Atome auszuwählen</translation>
     <message>
         <location filename="../build/avogadro/src/ui_settingsdialog.h" line="83"/>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation>&amp;Einstellungen</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_settingsdialog.h" line="84"/>
