@@ -127,7 +127,7 @@ namespace Avogadro {
     }
   }
   
-  void ToolGroup::setActiveTool(QString name)
+  void ToolGroup::setActiveTool(const QString& name)
   {
     foreach (Tool *tool, d->tools) {
       if (tool->name() == name) {

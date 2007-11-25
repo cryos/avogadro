@@ -97,7 +97,7 @@ namespace Avogadro {
       /**
       * @param name the name of the tool to set active (if it's found)
       */
-      void setActiveTool(QString name);
+      void setActiveTool(const QString& name);
     
       /** 
        * @param tool pointer to the tool to set active

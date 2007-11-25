@@ -1574,7 +1574,7 @@ short GamessDataGroup::SetPointGroup( char *GroupText )
     int i=0;
     while ( GroupText[i]&&( GroupText[i]!=' ' ) ) {
       if ( isdigit( GroupText[i] )&&( GroupText[i]!='1' ) ) {
-        PGroupOrder = GroupText[i] - 48; //single digit coverted to decimal digit
+        PGroupOrder = GroupText[i] - 48; //single digit converted to decimal digit
         GroupText[i]='N';
       }
       i++;

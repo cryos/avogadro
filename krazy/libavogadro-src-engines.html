@@ -5,9 +5,9 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 20<br>
-Files Processed = 16<br>
-Total Issues = 5 ...as of September 06 2007 19:29:14</p>
+<p>Checkers Run = 21<br>
+Files Processed = 24<br>
+Total Issues = 7 ...as of November 25 2007 11:16:36</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -35,7 +35,7 @@ Total Issues = 5 ...as of September 06 2007 19:29:14</p>
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 5 issues found!</b>
+<b>OOPS! 7 issues found!</b>
 <ul>
 <li>	../libavogadro/src/engines/bsdyengine.cpp: include own header first line#26
 </li>
@@ -43,7 +43,11 @@ Total Issues = 5 ...as of September 06 2007 19:29:14</p>
 </li>
 <li>	../libavogadro/src/engines/labelengine.cpp: include own header first line#28
 </li>
+<li>	../libavogadro/src/engines/polygonizer.cpp: include own header first line#19
+</li>
 <li>	../libavogadro/src/engines/stickengine.cpp: include own header first line#26
+</li>
+<li>	../libavogadro/src/engines/surfaceengine.cpp: include own header first line#26
 </li>
 <li>	../libavogadro/src/engines/wireengine.cpp: include own header first line#27
 </li>
@@ -64,6 +68,8 @@ Total Issues = 5 ...as of September 06 2007 19:29:14</p>
 <li>Check for compares to QString::null... 
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
+<b>okay!</b>
+<li>Check for invalid SIGNALs and SLOTs passed to connect()... 
 <b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>

@@ -5,9 +5,9 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 20<br>
+<p>Checkers Run = 21<br>
 Files Processed = 22<br>
-Total Issues = 10 ...as of September 06 2007 19:31:54</p>
+Total Issues = 12 ...as of November 25 2007 11:18:31</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -21,7 +21,20 @@ Total Issues = 10 ...as of September 06 2007 19:31:54</p>
 <li>Check for cpp macros and usage... 
 <b>okay!</b>
 <li>Check for single char QStrings better written as a QChar... 
-<b>okay!</b>
+<b>OOPS! 2 issues found!</b>
+<ul>
+<li>	../avogadro/src/extensions/forcefieldextension.cpp: line#93 (1)
+</li>
+<li>	../avogadro/src/extensions/gamessextension.cpp: line#86 (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Adding single characters to a QString is faster if the characters
+	are QChars and not QStrings.  For example: QString path = oldpath +
+	&quot;/&quot; + base is better written as QString path = oldpath + &#39;/&#39; +
+	base. Same holds for arguments to QString::startsWith() and
+	QString::endsWith()</p>
+</li>
+
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
 <li>Check public classes with private members or d-pointer issues... 
@@ -47,15 +60,15 @@ Total Issues = 10 ...as of September 06 2007 19:31:54</p>
 <li>Check for proper include directives... 
 <b>OOPS! 7 issues found!</b>
 <ul>
-<li>	../avogadro/src/extensions/gamessextension.cpp: do not include QtModules line#38(QtGui)
+<li>	../avogadro/src/extensions/forcefieldextension.cpp: do not include QtModules line#28(QtGui)
 </li>
-<li>	../avogadro/src/extensions/ghemicalextension.cpp: do not include QtModules line#28(QtGui)
+<li>	../avogadro/src/extensions/gamessextension.cpp: do not include QtModules line#38(QtGui)
 </li>
 <li>	../avogadro/src/extensions/h2methylextension.cpp: do not include QtModules line#30(QtGui)
 </li>
 <li>	../avogadro/src/extensions/hydrogensextension.cpp: do not include QtModules line#30(QtGui)
 </li>
-<li>	../avogadro/src/extensions/smartsextension.cpp: do not include QtModules line#29(QtGui)
+<li>	../avogadro/src/extensions/selectextension.cpp: do not include QtModules line#30(QtGui)
 </li>
 <li>	../avogadro/src/extensions/unitcellextension.cpp: do not include QtModules line#26(QtGui)
 </li>
@@ -78,6 +91,8 @@ Total Issues = 10 ...as of September 06 2007 19:31:54</p>
 <li>Check for compares to QString::null... 
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
+<b>okay!</b>
+<li>Check for invalid SIGNALs and SLOTs passed to connect()... 
 <b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>

@@ -5,9 +5,9 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 20<br>
-Files Processed = 24<br>
-Total Issues = 3 ...as of September 06 2007 19:28:25</p>
+<p>Checkers Run = 21<br>
+Files Processed = 28<br>
+Total Issues = 10 ...as of November 25 2007 11:15:38</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -17,7 +17,16 @@ Total Issues = 3 ...as of September 06 2007 19:28:25</p>
 <li>Check for methods that return 'const' refs in public classes... 
 <b>okay!</b>
 <li>Check for contractions in strings... 
-<b>okay!</b>
+<b>OOPS! 3 issues found!</b>
+<ul>
+<li>	../libavogadro/src/tools/clickmeasuretool.cpp: line#177[don&#39;t],185[don&#39;t],194[don&#39;t] (3)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Contractions in strings are sometimes hard to translate so do not
+	use them.  For example: &quot;don&#39;t&quot; should be changed to &quot;do not&quot;. 
+	Contractions used in comments are ok.</p>
+</li>
+
 <li>Check for cpp macros and usage... 
 <b>okay!</b>
 <li>Check for single char QStrings better written as a QChar... 
@@ -33,7 +42,7 @@ Total Issues = 3 ...as of September 06 2007 19:28:25</p>
 <li>Check for C++ ctors that should be declared 'explicit'... 
 <b>OOPS! 1 issue found!</b>
 <ul>
-<li>	../libavogadro/src/tools/bondcentrictool.h: line#359 (1)
+<li>	../libavogadro/src/tools/bondcentrictool.h: line#363 (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
@@ -54,6 +63,8 @@ Total Issues = 3 ...as of September 06 2007 19:28:25</p>
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
 <b>okay!</b>
+<li>Check for invalid SIGNALs and SLOTs passed to connect()... 
+<b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
 <li>Check for classes that should use the 'Q_OBJECT' macro... 
@@ -68,7 +79,18 @@ Total Issues = 3 ...as of September 06 2007 19:28:25</p>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
-<b>okay!</b>
+<b>OOPS! 4 issues found!</b>
+<ul>
+<li>	../libavogadro/src/tools/autoopttool.cpp: line#2[optimisation] (1)
+</li>
+<li>	../libavogadro/src/tools/autoopttool.h: line#2[optimisation],73[optimisation],94[optimisation] (3)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may
+	show up later in API documentation, handbooks, etc.  Misspelled
+	strings make the translator&#39;s job harder. Please use US English.</p>
+</li>
+
 </ol>
 <br>
 </ul>

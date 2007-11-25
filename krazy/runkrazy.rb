@@ -7,7 +7,7 @@
 # License: GPL V2
 
 #you need to run a command like this:
-# export PATH=$PATH:/usr/local/Krazy/bin
+# export PATH=$PATH:/usr/local/Krazy2/bin
 
 def dir2filename( dir )
 	dir = dir.gsub( "/", "-" )

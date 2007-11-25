@@ -5,9 +5,9 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 20<br>
-Files Processed = 40<br>
-Total Issues = 2 ...as of September 06 2007 19:27:16</p>
+<p>Checkers Run = 21<br>
+Files Processed = 39<br>
+Total Issues = 4 ...as of November 25 2007 11:14:32</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -35,7 +35,20 @@ Total Issues = 2 ...as of September 06 2007 19:27:16</p>
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>okay!</b>
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	../libavogadro/src/global.cpp: put config.h in angle brackets line#26
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
+	Qt headers from installed headers; cpp file should include their
+	own headers first; other rules apply, see
+	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right</a>. Use include guards in headers with appropriatedly
+	encoded macro names.</p>
+</li>
+
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for assignments to QString::null... 
@@ -43,6 +56,17 @@ Total Issues = 2 ...as of September 06 2007 19:27:16</p>
 <li>Check for compares to QString::null... 
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	../libavogadro/src/toolgroup.cpp: line#130[QString]
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
+	references-to-const instead. For example: &#39;func( QDateTime dt )&#39; is
+	better written as &#39;func( const QDateTime &amp;dt )&#39;</p>
+</li>
+
+<li>Check for invalid SIGNALs and SLOTs passed to connect()... 
 <b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
