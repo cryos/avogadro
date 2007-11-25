@@ -1068,7 +1068,7 @@ Rechte Maustaste:  Klicken und ziehen um Atome zu rotieren.</translation>
 Left Mouse:   Click and drag to rotate the view
 Middle Mouse: Click and drag to zoom in or out
 Right Mouse:  Click and drag to move the view</source>
-        <translation>Naviagtion (F9)
+        <translation>Navigation (F9)
 
 Linke Maustaste:    Klicken und ziehen um Anzeige zu rotieren
 Mittlere Maustaste: Klicken und ziehen um Anzeige zu zoomen
