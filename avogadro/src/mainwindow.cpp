@@ -358,8 +358,7 @@ namespace Avogadro
 
       if(d->tabbedTools)
       {
-        if(!widget)
-        {
+        if(!widget){
           widget = new QWidget();
         }
 
@@ -367,15 +366,16 @@ namespace Avogadro
         QVBoxLayout *tmpLayout = new QVBoxLayout(tmpWidget);
         tmpLayout->setContentsMargins(0,0,0,0);
 
-        QCheckBox *tmpCheck = new QCheckBox(tmpWidget);
-        tmpLayout->addWidget(tmpCheck);
+        // We need to add a "help" button here
+        // and/or a way to display the tooltip
+        // But not with an anonymous checkbox.
+        // -GH
 
+        // Add a "title" with the name of the tool
         QLabel *tmpLabel = new QLabel(tmpWidget);
-        tmpLabel->setText(action->toolTip());
+        tmpLabel->setText(tool->name());
+        tmpLabel->setAlignment(Qt::AlignHCenter);
         tmpLayout->addWidget(tmpLabel);
-        tmpLabel->hide();
-
-        connect(tmpCheck, SIGNAL(clicked(bool)), tmpLabel, SLOT(setVisible(bool)));
 
         tmpLayout->addWidget(widget);
 
