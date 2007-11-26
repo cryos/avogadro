@@ -221,7 +221,7 @@
   </widget>
   <widget class="QDockWidget" name="engineConfigurationDock" >
    <property name="windowTitle" >
-    <string>Engine Configuration</string>
+    <string>Configuration</string>
    </property>
    <attribute name="dockWidgetArea" >
     <number>1</number>
@@ -230,7 +230,7 @@
   </widget>
   <widget class="QDockWidget" name="enginePrimitivesDock" >
    <property name="windowTitle" >
-    <string>Engine Primitives</string>
+    <string>Primitives</string>
    </property>
    <attribute name="dockWidgetArea" >
     <number>1</number>

@@ -1491,13 +1491,11 @@ namespace Avogadro
     GLWidget *gl = 0;
     if(!d->glWidget)
     {
-      qDebug() << "Blank Widget";
       gl = new GLWidget(this);
       d->glWidget = gl;
     }
     else
     {
-      qDebug() << "Shared Widget";
       gl = new GLWidget( d->glWidget->format(), this, d->glWidget );
     }
 
@@ -1508,20 +1506,25 @@ namespace Avogadro
     gl->setToolGroup( d->toolGroup );
     d->glWidgets.append(gl);
 
+    // engine list wiget contains all the buttons too
     QWidget *engineListWidget = new QWidget(ui.enginesWidget);
     QVBoxLayout *vlayout = new QVBoxLayout(engineListWidget);
 
     EngineListView *engineListView = new EngineListView( gl, engineListWidget );
     vlayout->addWidget(engineListView);
 
+    // buttons
     QHBoxLayout *hlayout = new QHBoxLayout();
+    // add
     QPushButton *addEngineButton = new QPushButton(tr("Add"), engineListWidget);
     hlayout->addWidget(addEngineButton);
     connect(addEngineButton, SIGNAL(clicked()), this, SLOT(addEngineClicked()));
 
+    // duplicate
     QPushButton *duplicateEngineButton = new QPushButton(tr("Duplicate"), engineListWidget);
     hlayout->addWidget(duplicateEngineButton);
 
+    // remove
     QPushButton *removeEngineButton = new QPushButton(tr("Remove"), engineListWidget);
     hlayout->addWidget(removeEngineButton);
     connect(removeEngineButton, SIGNAL(clicked()), this, SLOT(removeEngineClicked()));
@@ -1530,7 +1533,10 @@ namespace Avogadro
 
     d->enginesStacked->addWidget( engineListWidget );
 
+    // stacked configurations
     QStackedWidget *stacked = new QStackedWidget(ui.engineConfigurationWidget);
+    // 0 position is a blank configuration
+    stacked->addWidget(new QWidget());
     d->engineConfigurationStacked->addWidget(stacked);
 
     EnginePrimitivesWidget *primitivesWidget = 
@@ -1592,14 +1598,14 @@ namespace Avogadro
       {
         stack->setCurrentIndex(0);
       }
-      else if(d->engineConfigurationStacked->children().contains(widget))
+      else if(stack->children().contains(widget))
       {
-        d->engineConfigurationStacked->setCurrentWidget(widget);
+        stack->setCurrentWidget(widget);
       }
       else
       {
-        d->engineConfigurationStacked->addWidget(widget);
-        d->engineConfigurationStacked->setCurrentWidget(widget);
+        stack->addWidget(widget);
+        stack->setCurrentWidget(widget);
       }
     }
   }
