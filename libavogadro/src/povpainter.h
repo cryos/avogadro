@@ -70,7 +70,10 @@ namespace Avogadro
                        double, int, short) { }
 
     void drawTriangle(const Eigen::Vector3d &, const Eigen::Vector3d &,
-                    const Eigen::Vector3d &) { }
+                      const Eigen::Vector3d &) { }
+
+    void drawTriangle(const Eigen::Vector3d &, const Eigen::Vector3d &,
+                      const Eigen::Vector3d &, const Eigen::Vector3d &) { }
 
     void drawSpline(const QVector<Eigen::Vector3d>&, double) { }
 

@@ -98,7 +98,15 @@ namespace Avogadro{
   {
     // We need to get rid of the constness in order to get the atoms
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
-	
+
+    // Calculate an appropriate normal and use it for all the triangles in the
+    // ring - this will give consistent lighting.
+    Eigen::Vector3d v1, v2, norm;
+    v1 = static_cast<Atom *>(mol->GetAtom(ring[1]))->pos() - static_cast<Atom *>(mol->GetAtom(ring[0]))->pos();
+    v2 = static_cast<Atom *>(mol->GetAtom(ring[2]))->pos() - static_cast<Atom *>(mol->GetAtom(ring[1]))->pos();
+    norm = v1.cross(v2);
+    if (norm.dot(pd->camera()->backTransformedZAxis()) > 0) norm *= -1;
+
     // Disable face culling for ring structures.
     glDisable(GL_CULL_FACE);
 
@@ -108,43 +116,53 @@ namespace Avogadro{
         // Single triangle - easy
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[1]))->pos(),
-                                    static_cast<Atom *>(mol->GetAtom(ring[2]))->pos());
+                                    static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
+                                    norm);
         break;
       case 4:
         // Two triangles
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[1]))->pos(),
-                                    static_cast<Atom *>(mol->GetAtom(ring[2]))->pos());
+                                    static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
+                                    norm);
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
-                                    static_cast<Atom *>(mol->GetAtom(ring[3]))->pos());
+                                    static_cast<Atom *>(mol->GetAtom(ring[3]))->pos(),
+                                    norm);
         break;
       case 5:
         // Three triangles
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[1]))->pos(),
-                                    static_cast<Atom *>(mol->GetAtom(ring[2]))->pos());
+                                    static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
+                                    norm);
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
-                                    static_cast<Atom *>(mol->GetAtom(ring[3]))->pos());
+                                    static_cast<Atom *>(mol->GetAtom(ring[3]))->pos(),
+                                    norm);
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[3]))->pos(),
-                                    static_cast<Atom *>(mol->GetAtom(ring[4]))->pos());
+                                    static_cast<Atom *>(mol->GetAtom(ring[4]))->pos(),
+                                    norm);
         break;
       case 6:
         // Four triangles
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[1]))->pos(),
-                                    static_cast<Atom *>(mol->GetAtom(ring[2]))->pos());
+                                    static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
+                                    norm);
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[3]))->pos(),
-                                    static_cast<Atom *>(mol->GetAtom(ring[4]))->pos());
+                                    static_cast<Atom *>(mol->GetAtom(ring[4]))->pos(),
+                                    norm);
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[4]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[5]))->pos(),
-                                    static_cast<Atom *>(mol->GetAtom(ring[0]))->pos());
+                                    static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
+                                    norm);
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
-                                    static_cast<Atom *>(mol->GetAtom(ring[4]))->pos());
+                                    static_cast<Atom *>(mol->GetAtom(ring[4]))->pos(),
+                                    norm);
         break;
       default:
         // The generic case - find the centre of the ring and draw a triangle fan
@@ -155,10 +173,12 @@ namespace Avogadro{
         for (unsigned int i = 0; i < ring.size()-1; i++)
           pd->painter()->drawTriangle(center,
                                       static_cast<Atom *>(mol->GetAtom(ring[i]))->pos(),
-                                      static_cast<Atom *>(mol->GetAtom(ring[i+1]))->pos());
+                                      static_cast<Atom *>(mol->GetAtom(ring[i+1]))->pos(),
+                                      norm);
         pd->painter()->drawTriangle(center,
                                     static_cast<Atom *>(mol->GetAtom(ring[ring.size()-1]))->pos(),
-                                    static_cast<Atom *>(mol->GetAtom(ring[0]))->pos());
+                                    static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
+                                    norm);
 
     }
     return true;

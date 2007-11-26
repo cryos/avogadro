@@ -1,5 +1,13 @@
 2007-11-26  Marcus D. Hanwell <marcus@cryos.org>
 
+	* libavogadro/src/painter.h, libavogadro/src/glpainter.*,
+	libavogadro/src/povpainter.h: Added new drawTriangle function that
+	takes a normal as the fourth argument.
+
+	* libavogadro/src/engines/ringengine.cpp: Calculate a normal and use it
+	for the whole ring - improved lighting with no artifacts in each ring,
+	still issues around turning points.
+
 	* libavogadro/src/camera.*, libavogadro/src/povpainter.cpp,
 	libavogadro/src/glpainter.cpp, libavogadro/src/tools/navigate.cpp,
 	libavogadro/src/tools/manipulatetool.cpp,
