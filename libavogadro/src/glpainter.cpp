@@ -563,7 +563,7 @@ namespace Avogadro
     n.normalize();
     
     // Dot product is 1 or -1 - want normals facing the same direction
-    if (n.dot(p1 - d->widget->molecule()->center()) < 0) {
+    if (n.dot(p1 - d->widget->camera()->backTransformedZAxis()) < 0) {
       n *= -1;
       tp2 = p3;
       tp3 = p2;

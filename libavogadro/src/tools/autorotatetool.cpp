@@ -64,9 +64,9 @@ namespace Avogadro {
   void AutoRotateTool::rotate() const
   {
     // Get back transformed axes that we can rotate around
-    Vector3d xAxis = m_glwidget->camera()->backtransformedXAxis();
-    Vector3d yAxis = m_glwidget->camera()->backtransformedYAxis();
-    Vector3d zAxis = m_glwidget->camera()->backtransformedZAxis();
+    Vector3d xAxis = m_glwidget->camera()->backTransformedXAxis();
+    Vector3d yAxis = m_glwidget->camera()->backTransformedYAxis();
+    Vector3d zAxis = m_glwidget->camera()->backTransformedZAxis();
     // Perform the rotations
     m_glwidget->camera()->translate( m_glwidget->center() );
     m_glwidget->camera()->rotate( m_xRotation * ROTATION_SPEED, yAxis );

@@ -83,11 +83,13 @@ namespace Avogadro{
 
     pd->painter()->setColor(0.7, 0.7, 0.7, m_alpha);
 
+    glDepthMask(GL_TRUE);
     glEnable(GL_BLEND);
     // Now actually draw the ring structures
     foreach(OBRing *r, rings)
       renderRing(r->_path, pd);
     glEnable(GL_BLEND);
+    glDepthMask(GL_FALSE);
 
     return true;
   }
@@ -102,7 +104,7 @@ namespace Avogadro{
 
     // Optimise for smaller ring structures
     switch (ring.size()) {
-      case 3:
+/*      case 3:
         // Single triangle - easy
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[1]))->pos(),
@@ -143,7 +145,7 @@ namespace Avogadro{
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[4]))->pos());
-        break;
+        break; */
       default:
         // The generic case - find the centre of the ring and draw a triangle fan
         Vector3d center;

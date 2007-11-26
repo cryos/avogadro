@@ -167,8 +167,8 @@ namespace Avogadro {
       Vector3d pos = m_selectedAtoms[0]->pos();
       double radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3;
 
-      Vector3d xAxis = widget->camera()->backtransformedXAxis();
-      Vector3d zAxis = widget->camera()->backtransformedZAxis();
+      Vector3d xAxis = widget->camera()->backTransformedXAxis();
+      Vector3d zAxis = widget->camera()->backTransformedZAxis();
 
       // relative position of the text on the atom
       Vector3d textRelPos = radius * (zAxis + xAxis);

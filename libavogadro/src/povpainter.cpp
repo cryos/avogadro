@@ -244,9 +244,9 @@ namespace Avogadro
     // The POV-Ray camera basically has the same matrix elements - we just need to translate
     // FIXME Still working on getting the translation to POV-Ray right...
     Vector3d cameraT = m_glwidget->camera()->modelview().translationVector();
-    Vector3d cameraX = m_glwidget->camera()->backtransformedXAxis();
-    Vector3d cameraY = m_glwidget->camera()->backtransformedYAxis();
-    Vector3d cameraZ = m_glwidget->camera()->backtransformedZAxis();
+    Vector3d cameraX = m_glwidget->camera()->backTransformedXAxis();
+    Vector3d cameraY = m_glwidget->camera()->backTransformedYAxis();
+    Vector3d cameraZ = m_glwidget->camera()->backTransformedZAxis();
     Vector3d light = cameraT + Vector3d(0.8, 0.7, 1.0);
 
     // Output the POV-Ray initialisation code

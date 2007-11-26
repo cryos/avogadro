@@ -110,7 +110,7 @@ namespace Avogadro {
           str = QString((etab.GetName(a->GetAtomicNum())).c_str());
       }
 
-      Vector3d zAxis = pd->camera()->backtransformedZAxis();
+      Vector3d zAxis = pd->camera()->backTransformedZAxis();
 
       Vector3d drawPos = pos + zAxis * renderRadius;
 
@@ -158,7 +158,7 @@ namespace Avogadro {
           str = QString::number(b->GetBondOrder());
       }
 
-      Vector3d zAxis = pd->camera()->backtransformedZAxis();
+      Vector3d zAxis = pd->camera()->backTransformedZAxis();
       Vector3d drawPos = pos + zAxis * renderRadius;
 
       glColor3f(1.0, 1.0, 1.0);

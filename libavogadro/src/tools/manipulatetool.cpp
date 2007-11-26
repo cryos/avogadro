@@ -78,7 +78,7 @@ namespace Avogadro {
     }
 
     MatrixP3d atomTranslation;
-    atomTranslation.loadTranslation(widget->camera()->backtransformedZAxis() * t);
+    atomTranslation.loadTranslation(widget->camera()->backTransformedZAxis() * t);
 
     if (widget->selectedPrimitives().size())
     {
@@ -127,8 +127,8 @@ namespace Avogadro {
     // rotate only selected primitives
     MatrixP3d fragmentRotation;
     fragmentRotation.loadTranslation(center);
-    fragmentRotation.rotate3(deltaY * ROTATION_SPEED, widget->camera()->backtransformedXAxis());
-    fragmentRotation.rotate3(deltaX * ROTATION_SPEED, widget->camera()->backtransformedYAxis());
+    fragmentRotation.rotate3(deltaY * ROTATION_SPEED, widget->camera()->backTransformedXAxis());
+    fragmentRotation.rotate3(deltaX * ROTATION_SPEED, widget->camera()->backTransformedYAxis());
     fragmentRotation.translate(-center);
 
     foreach(Primitive *p, widget->selectedPrimitives())
@@ -147,7 +147,7 @@ namespace Avogadro {
     MoveAtomCommand *cmd  = 0;
     MatrixP3d fragmentRotation;
     fragmentRotation.loadTranslation(center);
-    fragmentRotation.rotate3(delta * ROTATION_SPEED, widget->camera()->backtransformedZAxis());
+    fragmentRotation.rotate3(delta * ROTATION_SPEED, widget->camera()->backTransformedZAxis());
     fragmentRotation.translate(-center);
 
     foreach(Primitive *p, widget->selectedPrimitives())

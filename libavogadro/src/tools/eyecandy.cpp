@@ -158,9 +158,9 @@ namespace Avogadro {
     m_xAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) - xAngle;
     m_yAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) + yAngle;
     m_yAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) + yAngle;
-    m_xAxis = widget->camera()->backtransformedXAxis();
-    m_yAxis = widget->camera()->backtransformedYAxis();
-    m_zAxis = widget->camera()->backtransformedZAxis();
+    m_xAxis = widget->camera()->backTransformedXAxis();
+    m_yAxis = widget->camera()->backTransformedYAxis();
+    m_zAxis = widget->camera()->backTransformedZAxis();
 
     glEnable(GL_BLEND);
     glDepthMask(GL_FALSE);
@@ -216,9 +216,9 @@ namespace Avogadro {
     m_color.apply();
 
     // Set up the axes and some vectors to work with
-    Vector3d xAxis = widget->camera()->backtransformedXAxis();
-    Vector3d yAxis = widget->camera()->backtransformedYAxis();
-    Vector3d zAxis = widget->camera()->backtransformedZAxis();
+    Vector3d xAxis = widget->camera()->backTransformedXAxis();
+    Vector3d yAxis = widget->camera()->backTransformedYAxis();
+    Vector3d zAxis = widget->camera()->backTransformedZAxis();
     Vector3d v;
 
     // Horizontal arrow, pointing left
@@ -317,9 +317,9 @@ namespace Avogadro {
     m_color.apply();
 
     // Set up the axes and some vectors to work with
-    Vector3d xAxis = widget->camera()->backtransformedXAxis();
-    Vector3d yAxis = widget->camera()->backtransformedYAxis();
-    Vector3d zAxis = widget->camera()->backtransformedZAxis();
+    Vector3d xAxis = widget->camera()->backTransformedXAxis();
+    Vector3d yAxis = widget->camera()->backTransformedYAxis();
+    Vector3d zAxis = widget->camera()->backTransformedZAxis();
     Vector3d v;
 
     // Horizontal arrow, pointing left
