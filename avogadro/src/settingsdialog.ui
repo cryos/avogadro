@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>337</width>
-    <height>261</height>
+    <width>340</width>
+    <height>124</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,37 +19,6 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" >
-   <property name="leftMargin" >
-    <number>9</number>
-   </property>
-   <property name="topMargin" >
-    <number>9</number>
-   </property>
-   <property name="rightMargin" >
-    <number>9</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>9</number>
-   </property>
-   <property name="horizontalSpacing" >
-    <number>6</number>
-   </property>
-   <property name="verticalSpacing" >
-    <number>6</number>
-   </property>
-   <item row="2" column="0" colspan="3" >
-    <widget class="QDialogButtonBox" name="dialogButtonBox" >
-     <property name="layoutDirection" >
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons" >
-      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0" >
     <widget class="QLabel" name="qualityLabel" >
      <property name="text" >
@@ -74,6 +43,9 @@
      <property name="tickPosition" >
       <enum>QSlider::TicksBelow</enum>
      </property>
+     <property name="tickInterval" >
+      <number>2</number>
+     </property>
     </widget>
    </item>
    <item row="0" column="2" >
@@ -87,6 +59,19 @@
     <widget class="QCheckBox" name="tabbedToolsCheck" >
      <property name="text" >
       <string>Tabbed Tools</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3" >
+    <widget class="QDialogButtonBox" name="dialogButtonBox" >
+     <property name="layoutDirection" >
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons" >
+      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>

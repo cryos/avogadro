@@ -42,7 +42,12 @@ namespace Avogadro {
 
     foreach(EngineFactory *factory, engineFactories)
     {
-      dialog.addType(factory->className());
+      // This is a HACK. Ugh.
+      // We really should change the factory classes to return the name of their plugins
+      // i.e., static QString Engine::defaultName() { return tr("Unknown Engine"); }
+      // this would really help usability
+      Engine *engine = factory->createInstance();
+      dialog.addType(engine->name());
     }
 
     int accepted = dialog.exec();
