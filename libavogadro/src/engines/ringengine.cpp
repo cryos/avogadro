@@ -104,7 +104,7 @@ namespace Avogadro{
 
     // Optimise for smaller ring structures
     switch (ring.size()) {
-/*      case 3:
+      case 3:
         // Single triangle - easy
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[1]))->pos(),
@@ -145,7 +145,7 @@ namespace Avogadro{
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[4]))->pos());
-        break; */
+        break;
       default:
         // The generic case - find the centre of the ring and draw a triangle fan
         Vector3d center;

@@ -1,3 +1,15 @@
+2007-11-26  Marcus D. Hanwell <marcus@cryos.org>
+
+	* libavogadro/src/camera.*, libavogadro/src/povpainter.cpp,
+	libavogadro/src/glpainter.cpp, libavogadro/src/tools/navigate.cpp,
+	libavogadro/src/tools/manipulatetool.cpp,
+	libavogadro/src/tools/eyecandy.cpp,
+	libavogadro/src/tools/clickmeasuretool.cpp,
+	libavogadro/src/tools/autorotatetool.cpp,
+	libavogadro/src/engines/ringengine.cpp,
+	libavogadro/src/engines/labelengine.cpp: Fixed the case of the back
+	transformed axis functions and ported the existing code.
+
 2007-11-20  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* avogadro/src/extensions/selectextension.cpp: Renamed extension
