@@ -22,7 +22,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>29</height>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -171,16 +171,16 @@
       <number>6</number>
      </property>
      <property name="leftMargin" >
-      <number>0</number>
+      <number>2</number>
      </property>
      <property name="topMargin" >
       <number>0</number>
      </property>
      <property name="rightMargin" >
-      <number>0</number>
+      <number>2</number>
      </property>
      <property name="bottomMargin" >
-      <number>0</number>
+      <number>2</number>
      </property>
      <item>
       <widget class="Avogadro::PrimitiveTreeView" name="projectTree" >
@@ -227,6 +227,15 @@
     <number>1</number>
    </attribute>
    <widget class="QWidget" name="engineConfigurationWidget" />
+  </widget>
+  <widget class="QDockWidget" name="enginePrimitivesDock" >
+   <property name="windowTitle" >
+    <string>Engine Primitives</string>
+   </property>
+   <attribute name="dockWidgetArea" >
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="enginePrimitivesWidget" />
   </widget>
   <action name="actionOpen" >
    <property name="icon" >

@@ -30,7 +30,8 @@
 #include "settingsdialog.h"
 
 #include "enginelistview.h"
-#include "enginesetupwidget.h"
+// #include "enginesetupwidget.h"
+#include "engineprimitiveswidget.h"
 
 #include "icontabwidget.h"
 
@@ -99,6 +100,7 @@ namespace Avogadro
 
       QStackedLayout *enginesStacked;
       QStackedLayout *engineConfigurationStacked;
+      QStackedLayout *enginePrimitivesStacked;
 
       QTextEdit *messagesText;
 
@@ -182,6 +184,7 @@ namespace Avogadro
 
     d->enginesStacked = new QStackedLayout( ui.enginesWidget );
     d->engineConfigurationStacked = new QStackedLayout( ui.engineConfigurationWidget );
+    d->enginePrimitivesStacked = new QStackedLayout( ui.enginePrimitivesWidget );
 
     // create messages widget
     QWidget *messagesWidget = new QWidget();
@@ -260,6 +263,7 @@ namespace Avogadro
     reloadTabbedTools();
 
     tabifyDockWidget(ui.enginesDock, ui.engineConfigurationDock);
+    tabifyDockWidget(ui.enginesDock, ui.enginePrimitivesDock);
     ui.enginesDock->raise();
 
     loadExtensions();
@@ -782,6 +786,7 @@ namespace Avogadro
 
     d->enginesStacked->setCurrentIndex( index );
     d->engineConfigurationStacked->setCurrentIndex( index );
+    d->enginePrimitivesStacked->setCurrentIndex( index );
   }
 
   void MainWindow::paste()
@@ -1052,6 +1057,11 @@ namespace Avogadro
         // delete the engine configuration for this GLWidget
         widget = d->engineConfigurationStacked->widget( index );
         d->engineConfigurationStacked->removeWidget( widget );
+        delete widget;
+
+        // delete the engine primitives for this GLWidget
+        widget = d->enginePrimitivesStacked->widget( index );
+        d->enginePrimitivesStacked->removeWidget( widget );
         delete widget;
 
         for ( int count=d->centralTab->count(); index < count; index++ ) {
@@ -1481,11 +1491,13 @@ namespace Avogadro
     GLWidget *gl = 0;
     if(!d->glWidget)
     {
+      qDebug() << "Blank Widget";
       gl = new GLWidget(this);
       d->glWidget = gl;
     }
     else
     {
+      qDebug() << "Shared Widget";
       gl = new GLWidget( d->glWidget->format(), this, d->glWidget );
     }
 
@@ -1518,11 +1530,18 @@ namespace Avogadro
 
     d->enginesStacked->addWidget( engineListWidget );
 
-    EngineSetupWidget *engineTabWidget = new EngineSetupWidget( gl, ui.engineConfigurationWidget );
-    d->engineConfigurationStacked->addWidget( engineTabWidget );
+    QStackedWidget *stacked = new QStackedWidget(ui.engineConfigurationWidget);
+    d->engineConfigurationStacked->addWidget(stacked);
+
+    EnginePrimitivesWidget *primitivesWidget = 
+      new EnginePrimitivesWidget(gl, ui.enginePrimitivesWidget);
+    d->enginePrimitivesStacked->addWidget(primitivesWidget);
 
     connect( engineListView, SIGNAL( clicked( Engine * ) ),
-        engineTabWidget, SLOT( setCurrentEngine( Engine * ) ) );
+        this, SLOT( engineClicked( Engine * ) ) );
+
+    connect( engineListView, SIGNAL( clicked( Engine * ) ),
+        primitivesWidget, SLOT( setEngine( Engine * ) ) );
 
     return gl;
   }
@@ -1557,6 +1576,30 @@ namespace Avogadro
         {
           d->glWidget->removeEngine(engine);
         }
+      }
+    }
+  }
+
+  void MainWindow::engineClicked(Engine *engine)
+  {
+    QWidget *widget = engine->settingsWidget();
+
+    QStackedWidget *stack = qobject_cast<QStackedWidget *>(d->engineConfigurationStacked->currentWidget());
+
+    if(stack)
+    {
+      if(!widget)
+      {
+        stack->setCurrentIndex(0);
+      }
+      else if(d->engineConfigurationStacked->children().contains(widget))
+      {
+        d->engineConfigurationStacked->setCurrentWidget(widget);
+      }
+      else
+      {
+        d->engineConfigurationStacked->addWidget(widget);
+        d->engineConfigurationStacked->setCurrentWidget(widget);
       }
     }
   }

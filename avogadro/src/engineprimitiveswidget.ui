@@ -1,0 +1,99 @@
+<ui version="4.0" >
+ <class>EnginePrimitivesWidget</class>
+ <widget class="QWidget" name="EnginePrimitivesWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>445</width>
+    <height>335</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" >
+   <item>
+    <widget class="Avogadro::PrimitiveTreeView" name="enginePrimitivesTree" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="selectionMode" >
+      <enum>QAbstractItemView::NoSelection</enum>
+     </property>
+     <property name="animated" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="buttonFrame" >
+     <property name="frameShape" >
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" >
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <property name="leftMargin" >
+       <number>2</number>
+      </property>
+      <property name="topMargin" >
+       <number>2</number>
+      </property>
+      <property name="rightMargin" >
+       <number>2</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>2</number>
+      </property>
+      <item>
+       <widget class="QToolButton" name="addSelectionButton" >
+        <property name="text" >
+         <string>Add Selected Primitives</string>
+        </property>
+        <property name="icon" >
+         <iconset resource="avogadro.qrc" >:/icons/edit_add.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="removeSelectionButton" >
+        <property name="text" >
+         <string>Remove Selected Primitives</string>
+        </property>
+        <property name="icon" >
+         <iconset resource="avogadro.qrc" >:/icons/edit_remove.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="resetButton" >
+        <property name="text" >
+         <string>Reset</string>
+        </property>
+        <property name="icon" >
+         <iconset resource="avogadro.qrc" >:/icons/undo.png</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Avogadro::PrimitiveTreeView</class>
+   <extends>QTreeView</extends>
+   <header>primitivetreeview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="avogadro.qrc" />
+ </resources>
+ <connections/>
+</ui>

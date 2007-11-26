@@ -97,9 +97,6 @@ namespace Avogadro {
 
       void setTool(Tool *tool);
 
-      void addEngineClicked();
-      void removeEngineClicked();
-
       // Mac helper
       void macQuit();
       
@@ -157,6 +154,10 @@ namespace Avogadro {
       
     private Q_SLOTS:
       void initialize();
+
+      void addEngineClicked();
+      void removeEngineClicked();
+      void engineClicked(Engine *engine);
   };
 
   /**
