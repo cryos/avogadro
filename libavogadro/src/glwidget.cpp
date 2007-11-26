@@ -1310,7 +1310,8 @@ namespace Avogadro {
 
   void GLWidget::readSettings(QSettings &settings)
   {
-    d->painter->setQuality(settings.value("quality").toInt());
+    // Make sure to provide some default values for any settings.value("", DEFAULT) call
+    d->painter->setQuality(settings.value("quality", 2).toInt());
     d->background = settings.value("background", QColor(0,0,0)).value<QColor>();
     int count = settings.beginReadArray("engines");
     for(int i=0; i<count; i++)
