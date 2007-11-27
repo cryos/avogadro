@@ -152,9 +152,6 @@ namespace Avogadro
   {
     setVisible(false); // do we actually hide ourselves here?
 
-    // The unified toolbar look on Mac 10.4 looks really cool
-    setUnifiedTitleAndToolBarOnMac(true);
-
     ui.setupUi( this );
 
     QSettings settings;
