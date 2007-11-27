@@ -150,13 +150,11 @@ namespace Avogadro
 
   void MainWindow::constructor()
   {
-    setVisible(false);
-#ifdef Q_WS_MAC
+    setVisible(false); // do we actually hide ourselves here?
+
     // The unified toolbar look on Mac 10.4 looks really cool
-    // but it has clear bugs with Qt4.3 and OpenGL apps.
-    // Oops, bug filed with Trolltech
     setUnifiedTitleAndToolBarOnMac(true);
-#endif
+
     ui.setupUi( this );
 
     QSettings settings;
@@ -235,7 +233,6 @@ namespace Avogadro
     // and remove the trailing separator
     ui.menuSettings->removeAction( ui.menuSettings->actions().last() );
 
-
     // Remove all menu icons (violates Apple interface guidelines)
     QIcon nullIcon;
     foreach( QAction *menu, menuBar()->actions() ) {
@@ -271,6 +268,7 @@ namespace Avogadro
     d->initialized = true;
 
     loadFile(d->fileName);
+    setVisible(true);
   }
 
   bool MainWindow::tabbedTools() const
@@ -381,11 +379,11 @@ namespace Avogadro
 
         // add the tab
         int tabIndex = d->toolsTab->addTab(tmpWidget, action->icon(), QString());
-        d->toolsTab->setTabToolTip(tabIndex, action->text());
+        d->toolsTab->setTabToolTip(tabIndex, action->toolTip());
 
-      }
+      } // tabbed tools
       else 
-      {
+      { // non-tabbed tools
         // create a tool button
         QToolButton *button = new QToolButton( ui.toolsWidget );
         button->setDefaultAction( action );
