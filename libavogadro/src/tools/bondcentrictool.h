@@ -73,7 +73,7 @@ namespace Avogadro {
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() const { return(tr("BondCentric")); }
+      virtual QString name() const { return(tr("Bond Centric Manipulate")); }
       //! Tool Description (ie. Draws atoms and bonds)
       virtual QString description() const { return(tr("Bond Centric Manipulation Tool")); }
       //@}

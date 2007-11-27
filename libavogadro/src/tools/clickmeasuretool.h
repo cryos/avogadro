@@ -55,7 +55,7 @@ namespace Avogadro {
       //! \name Description methods
       //@{
       //! Tool Name (ie ClickMeasureTool)
-      virtual QString name() const { return(tr("ClickMeasure")); }
+      virtual QString name() const { return(tr("Measure")); }
       //! Tool Description (ie. ClickMeasureTools atoms and bonds)
       virtual QString description() const { return(tr("Click to Measure Tool")); }
       //@}

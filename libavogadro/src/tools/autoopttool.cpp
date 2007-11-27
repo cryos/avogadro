@@ -48,7 +48,7 @@ namespace Avogadro {
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/autoopttool/autoopttool.png")));
-    action->setToolTip(tr("AutoOpt Tool\n\n"
+    action->setToolTip(tr("Auto Optimization Tool\n\n"
           "Navigation Functions when Clicking in empty space.\n"
           "Left Mouse: Rotate Space\n"
           "Middle Mouse: Zoom Space\n"

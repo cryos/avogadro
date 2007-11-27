@@ -89,9 +89,9 @@ namespace Avogadro {
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() const { return(tr("AutoOpt")); }
+      virtual QString name() const { return(tr("AutoOptimization")); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Automatic Optimisation Tool")); }
+      virtual QString description() const { return(tr("Automatic Optimization Tool")); }
       //@}
 
       //! \name Tool Methods
