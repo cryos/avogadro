@@ -41,6 +41,7 @@ namespace Avogadro {
   class LabelEngine : public Engine
   {
     Q_OBJECT
+    AVOGADRO_ENGINE(tr("Label"))
 
     public:
       //! Constructor
@@ -86,10 +87,8 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
-
-    public:
-      Engine *createInstance(QObject *parent = 0) { return new LabelEngine(parent); }
-      QString className() { return LabelEngine::staticMetaObject.className(); }
+    
+    AVOGADRO_ENGINE_FACTORY(LabelEngine)
   };
 
 } // end namespace Avogadro

@@ -45,7 +45,6 @@ namespace Avogadro {
   WireEngine::WireEngine(QObject *parent) : Engine(parent), m_settingsWidget(NULL),
   m_showMulti(false), m_showDots(true)
   {
-    setName(tr("Wireframe"));
     setDescription(tr("Wireframe rendering"));
   }
 

@@ -485,6 +485,7 @@ namespace Avogadro {
 
   void GLWidget::resizeEvent( QResizeEvent *event )
   {
+    //qDebug() << "resizeEvent";
 #ifdef ENABLE_THREADED_GL
     d->thread->resize( event->size().width(), event->size().height() );
 #else
@@ -659,6 +660,7 @@ namespace Avogadro {
 
   void GLWidget::paintEvent( QPaintEvent * )
   {
+    //qDebug() << "paintEvent";
 #ifdef ENABLE_THREADED_GL
     // tell our thread to paint
     d->paintCondition.wakeAll();
@@ -1136,7 +1138,7 @@ namespace Avogadro {
     // Find the first atom or bond (if any) in hits - this will be the closest
     foreach( GLHit hit, chits )
     {
-      qDebug() << "Hit: " << hit.name();
+      //qDebug() << "Hit: " << hit.name();
       if(hit.type() == Primitive::AtomType) {
         return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
       } else if(hit.type() == Primitive::BondType) {

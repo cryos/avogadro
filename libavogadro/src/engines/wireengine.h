@@ -41,6 +41,7 @@ namespace Avogadro {
   class WireEngine : public Engine
   {
     Q_OBJECT
+    AVOGADRO_ENGINE(tr("Wireframe"))
 
     public:
       //! Constructor
@@ -96,10 +97,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
-
-    public:
-      Engine *createInstance(QObject *parent = 0) { return new WireEngine(parent); }
-      QString className() { return WireEngine::staticMetaObject.className(); }
+    AVOGADRO_ENGINE_FACTORY(WireEngine)
   };
 
 } // end namespace Avogadro

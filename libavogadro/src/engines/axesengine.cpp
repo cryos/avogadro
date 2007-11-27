@@ -39,7 +39,6 @@ namespace Avogadro {
 
   AxesEngine::AxesEngine(QObject *parent) : Engine(parent)
   {
-    setName(tr("Axes"));
     setDescription(tr("Renders x, y and z axes"));
   }
 

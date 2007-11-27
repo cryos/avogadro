@@ -40,6 +40,8 @@ namespace Avogadro {
   {
     Q_OBJECT
 
+    AVOGADRO_ENGINE(tr("Ball and Stick"))
+
     public:
       //! Constructor
       BSDYEngine(QObject *parent=0);
@@ -100,17 +102,14 @@ namespace Avogadro {
       }
   };
 
-  //! Generates instances of our BSDYEngine class
   class BSDYEngineFactory : public QObject, public EngineFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
 
-    public:
-      Engine *createInstance(QObject *parent = 0) { return new BSDYEngine(parent); }
-
-      QString className() { return BSDYEngine::staticMetaObject.className(); }
+    AVOGADRO_ENGINE_FACTORY(BSDYEngine)
   };
+
 
 } // end namespace Avogadro
 

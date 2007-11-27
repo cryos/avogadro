@@ -46,7 +46,6 @@ namespace Avogadro {
   SphereEngine::SphereEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
   m_alpha(1.)
   {
-    setName(tr("Van der Waals Spheres"));
     setDescription(tr("Renders atoms as Van der Waals spheres"));
   }
 

@@ -41,6 +41,7 @@ namespace Avogadro {
   class SphereEngine : public Engine
   {
     Q_OBJECT
+    AVOGADRO_ENGINE(tr("Van der Waals Spheres"))
 
     public:
       //! Constructor
@@ -97,10 +98,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
-
-    public:
-      Engine *createInstance(QObject *parent = 0) { return new SphereEngine(parent); }
-      QString className() { return SphereEngine::staticMetaObject.className(); }
+    AVOGADRO_ENGINE_FACTORY(SphereEngine)
   };
 
 } // end namespace Avogadro

@@ -44,7 +44,6 @@ namespace Avogadro{
   
   PolygonEngine::PolygonEngine(QObject *parent) : Engine(parent)
   {
-    setName(tr("Polygon"));
     setDescription(tr("Renders structures as polygons"));
   }
   

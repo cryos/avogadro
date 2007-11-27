@@ -90,8 +90,6 @@ namespace Avogadro
       m_settingsWidget( 0 ), m_atomRadiusPercentage( 0.3 ), m_bondRadius( 0.1 ),
       m_showMulti(true)
   {
-    setName( tr( "Ball and Stick" ) );
-
     setDescription( tr( "Renders primitives using Balls (atoms) and Sticks (bonds)." ) );
 
   }
@@ -314,6 +312,8 @@ namespace Avogadro
   {
     return Engine::Transparent | Engine::Atoms | Engine::Bonds;
   }
+//   AVOGADRO_ENGINE_FACTORY(BSDYEngine)
+
 }
 
 #include "bsdyengine.moc"

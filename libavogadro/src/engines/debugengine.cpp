@@ -45,7 +45,6 @@ namespace Avogadro
 
 DebugEngine::DebugEngine(QObject *parent) : Engine(parent)
 {
-  setName(tr("Debug Info"));
   setDescription(tr("Renders debug information"));
 }
 

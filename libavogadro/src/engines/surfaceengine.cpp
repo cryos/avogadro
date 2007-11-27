@@ -92,7 +92,6 @@ namespace Avogadro {
   
   SurfaceEngine::SurfaceEngine(QObject *parent) : Engine(parent), d(new SurfacePrivateData)
   {
-    setName(tr("Surface"));
     setDescription(tr("Surface rendering"));
   }
   

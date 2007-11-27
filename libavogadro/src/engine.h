@@ -36,6 +36,20 @@
 #include <QList>
 #include <QSettings>
 
+#define AVOGADRO_ENGINE(t) \
+  public: \
+    static QString staticType() { return t; } \
+    QString type() const { return staticType(); } \
+  private:
+
+#define AVOGADRO_ENGINE_FACTORY(n) \
+    public: \
+      Engine *createInstance(QObject *parent = 0) { return new n(parent); } \
+ \
+      QString className() { return n::staticMetaObject.className(); } \
+      QString type() { return n::staticType(); } \
+    private:
+
 namespace Avogadro {
 
   /**
@@ -95,6 +109,11 @@ namespace Avogadro {
        * @return the flags for this engine
        */
       virtual EngineFlags flags() const;
+
+      /**
+       * @return a string with the type of engine
+       */
+      virtual QString type() const = 0;
 
       /**
        * Render a PrimitiveList.  This function is allowed to rendering
@@ -195,12 +214,13 @@ namespace Avogadro {
        */
       virtual ~EngineFactory() {}
 
-      virtual QString className() = 0;
       /**
        * @return pointer to a new instance of an Engine subclass object
        */
       virtual Engine *createInstance(QObject *parent=0) = 0;
 
+      virtual QString className() = 0;
+      virtual QString type() = 0;
 
   };
 

@@ -39,6 +39,7 @@ namespace Avogadro {
   class RingEngine : public Engine
   {
     Q_OBJECT
+    AVOGADRO_ENGINE(tr("Ring"))
 
     public:
       //! Constructor
@@ -90,10 +91,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
-
-    public:
-      Engine *createInstance(QObject *parent = 0) { return new RingEngine(parent); }
-      QString className() { return RingEngine::staticMetaObject.className(); }
+    AVOGADRO_ENGINE_FACTORY(RingEngine)
   };
 
 } // end namespace Avogadro

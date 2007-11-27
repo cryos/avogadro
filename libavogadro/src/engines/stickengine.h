@@ -36,6 +36,7 @@ namespace Avogadro {
   class StickEngine : public Engine
   {
     Q_OBJECT
+    AVOGADRO_ENGINE(tr("Stick"))
 
     public:
       //! Constructor
@@ -66,10 +67,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
-
-    public:
-      Engine *createInstance(QObject *parent = 0) { return new StickEngine(parent); }
-      QString className() { return StickEngine::staticMetaObject.className(); }
+    AVOGADRO_ENGINE_FACTORY(StickEngine)
   };
 
 } // end namespace Avogadro

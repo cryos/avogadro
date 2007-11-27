@@ -46,7 +46,6 @@ namespace Avogadro{
   RingEngine::RingEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
     m_alpha(0.5)
   {
-    setName(tr("Ring"));
     setDescription(tr("Renders rings"));
   }
 

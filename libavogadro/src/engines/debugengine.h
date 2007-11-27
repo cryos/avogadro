@@ -40,6 +40,8 @@ namespace Avogadro {
   {
     Q_OBJECT
 
+    AVOGADRO_ENGINE(tr("Debug Info"))
+
     public:
       //! Constructor
       DebugEngine(QObject *parent=0);
@@ -64,11 +66,7 @@ namespace Avogadro {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
 
-    public:
-      Engine *createInstance(QObject *parent = 0) {
-        return new DebugEngine(parent);
-      }
-      QString className() { return DebugEngine::staticMetaObject.className(); }
+    AVOGADRO_ENGINE_FACTORY(DebugEngine)
   };
 
 } // end namespace Avogadro

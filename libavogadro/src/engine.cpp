@@ -125,6 +125,7 @@ namespace Avogadro {
 
   QString Engine::name() const
   {
+    if(d->name.isEmpty()) { return type(); }
     return d->name;
   }
 

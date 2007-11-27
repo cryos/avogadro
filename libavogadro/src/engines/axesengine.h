@@ -35,6 +35,8 @@ namespace Avogadro {
   {
     Q_OBJECT
 
+    AVOGADRO_ENGINE(tr("Axes"))
+
     public:
       //! Constructor
       AxesEngine(QObject *parent=0);
@@ -54,11 +56,8 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
-
-    public:
-      Engine *createInstance(QObject *parent = 0) { return new AxesEngine(parent); }
-
-      QString className() { return AxesEngine::staticMetaObject.className(); }
+    
+    AVOGADRO_ENGINE_FACTORY(AxesEngine)
   };
 
 } // end namespace Avogadro

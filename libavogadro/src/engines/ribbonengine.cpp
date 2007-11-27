@@ -46,7 +46,6 @@ namespace Avogadro {
   RibbonEngine::RibbonEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
   m_alpha(1.), m_radius(1.0)
   {
-    setName(tr("Ribbon"));
     setDescription(tr("Renders residues as ribbons"));
     
     // Initialise variables

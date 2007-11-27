@@ -39,6 +39,7 @@ namespace Avogadro {
   class RibbonEngine : public Engine
   {
     Q_OBJECT
+    AVOGADRO_ENGINE(tr("Ribbon"))
 
     public:
       //! Constructor
@@ -102,10 +103,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
-
-    public:
-      Engine *createInstance(QObject *parent = 0) { return new RibbonEngine(parent); }
-      QString className() { return RibbonEngine::staticMetaObject.className(); }
+    AVOGADRO_ENGINE_FACTORY(RibbonEngine)
   };
 
 } // end namespace Avogadro

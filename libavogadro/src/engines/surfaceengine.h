@@ -36,6 +36,7 @@ namespace Avogadro {
   class SurfaceEngine : public Engine
   {
     Q_OBJECT
+    AVOGADRO_ENGINE(tr("Surface"))
 
     public:
       //! Constructor
@@ -59,10 +60,8 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
+    AVOGADRO_ENGINE_FACTORY(SurfaceEngine);
 
-    public:
-      Engine *createInstance(QObject *parent = 0) { return new SurfaceEngine(parent); }
-      QString className() { return SurfaceEngine::staticMetaObject.className(); }
   };
 
 } // end namespace Avogadro
