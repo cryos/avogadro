@@ -578,12 +578,9 @@ namespace Avogadro
 
         // Clear the undo stack first (or we'll have an enabled Undo command)
         d->undoStack->clear();
-
         hideMainWindowMac();
       }
       event->ignore();
-      loadFile( "" );
-
       return;
     }
 #endif
@@ -755,6 +752,7 @@ namespace Avogadro
             "Do you want to save your changes?" ),
           QMessageBox::Save | QMessageBox::Discard
           | QMessageBox::Cancel );
+      
       if ( ret == QMessageBox::Save )
         return save();
       else if ( ret == QMessageBox::Cancel )
