@@ -59,7 +59,7 @@ namespace Avogadro {
     return tr("&Build");
   }
 
-  QUndoCommand* HydrogensExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
+  QUndoCommand* HydrogensExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *)
   {
 
     QUndoCommand *undo = 0;
@@ -131,7 +131,7 @@ namespace Avogadro {
     m_molecule->update();
   }
 
-  bool HydrogensCommand::mergeWith ( const QUndoCommand * command )
+  bool HydrogensCommand::mergeWith ( const QUndoCommand * )
   {
     // we received another call of the same action
     return true;
