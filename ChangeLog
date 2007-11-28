@@ -1,3 +1,11 @@
+2007-11-27  Marcus D. Hanwell <marcus@cryos.org>
+
+	* libavogadro/src/glpainter.cpp: Optimised some of the drawing
+	functions to help when drawing large molecules.
+
+	* libavogadro/src/engines/wireengine.cpp: Optmised the bond drawing,
+	only use multiLines when the bond order is greater than one.
+
 2007-11-26  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/painter.h, libavogadro/src/glpainter.*,

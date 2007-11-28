@@ -166,11 +166,13 @@ namespace Avogadro {
 
     map.set(atom1);
     pd->painter()->setColor(&map);
-    pd->painter()->drawMultiLine( v1, v3, width, order, stipple );
+    if (order > 1) pd->painter()->drawMultiLine(v1, v3, width, order, stipple);
+    else pd->painter()->drawLine(v1, v3, width);
 
     map.set(atom2);
-    pd->painter()->setColor( &map );
-    pd->painter()->drawMultiLine( v3, v2, width, order, stipple );
+    pd->painter()->setColor(&map);
+    if (order > 1) pd->painter()->drawMultiLine(v2, v3, width, order, stipple);
+    else pd->painter()->drawLine(v2, v3, width);
     
     return true;
   }
