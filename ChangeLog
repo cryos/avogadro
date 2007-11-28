@@ -1,3 +1,10 @@
+2007-11-28  Marcus D. Hanwell <marcus@cryos.org>
+
+	* libavogadro/src/engines/ribbonengine.*,
+	libavogadro/src/engines/ribbonsettingswidget.ui: Removed the opacity
+	slider for now. Also added in a new display type - lines. Renders
+	cylinders between points and spheres at each point.
+
 2007-11-27  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/glpainter.cpp: Optimised some of the drawing

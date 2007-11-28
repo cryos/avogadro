@@ -72,20 +72,19 @@ namespace Avogadro {
 
       RibbonSettingsWidget *m_settingsWidget;
 
-      double m_alpha; // transparency of the VdW spheres
-      double m_radius;
-      bool m_update;  // Is an update of the chain necessary?
+      int m_type;      // Type of ribbon rendering to do
+      double m_radius; // Ribbon radius
+      bool m_update;   // Is an update of the chain necessary?
       QList< QVector<Eigen::Vector3d> > m_chains;
       QVector<Color> m_chainColors;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();
 
-
       /**
        * @param value opacity of the VdW spheres / 20
        */
-      void setOpacity(int value);
+      void setType(int value);
       void setRadius(int value);
 
   };

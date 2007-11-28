@@ -44,7 +44,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   RibbonEngine::RibbonEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
-  m_alpha(1.), m_radius(1.0)
+  m_type(0), m_radius(1.0)
   {
     setDescription(tr("Renders residues as ribbons"));
     
@@ -68,36 +68,36 @@ namespace Avogadro {
 
   bool RibbonEngine::renderOpaque(PainterDevice *pd)
   {
-    if (m_alpha < 1.0) return true;
-
     // Check if the chains need updating before drawing them
     if (m_update) updateChains();
 
-    for (int i = 0; i < m_chains.size(); i++) {
-      if (m_chains[i].size() <= 1)
-        continue;
-      pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
-      pd->painter()->drawSpline(m_chains[i], m_radius);
+    if (m_type == 0) {
+      for (int i = 0; i < m_chains.size(); i++) {
+        if (m_chains[i].size() <= 1)
+          continue;
+        pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
+        pd->painter()->drawSpline(m_chains[i], m_radius);
+      }
+    }
+    else {
+      // Render cylinders between the points and spheres at each point
+      for (int i = 0; i < m_chains.size(); i++) {
+        if (m_chains[i].size() <= 1)
+          continue;
+        pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
+        pd->painter()->drawSphere(m_chains[i][0], m_radius);
+        for (int j = 1; j < m_chains[i].size(); j++) {
+          pd->painter()->drawSphere(m_chains[i][j], m_radius);
+          pd->painter()->drawCylinder(m_chains[i][j-1], m_chains[i][j], m_radius);
+        }
+      }
     }
 
     return true;
   }
 
-  bool RibbonEngine::renderTransparent(PainterDevice *pd)
+  bool RibbonEngine::renderTransparent(PainterDevice *)
   {
-    if (m_alpha > 0.999) return true;
-    glDepthMask(GL_TRUE);
-    // Check if the chains need updating before drawing them
-    if (m_update) updateChains();
-
-    for (int i = 0; i < m_chains.size(); i++) {
-      if (m_chains[i].size() <= 1)
-        continue;
-      pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
-      pd->painter()->drawSpline(m_chains[i], m_radius);
-    }
-
-    glDepthMask(GL_FALSE);
     return true;
   }
 
@@ -179,9 +179,9 @@ namespace Avogadro {
     return Engine::Transparent | Engine::Atoms;
   }
 
-  void RibbonEngine::setOpacity(int value)
+  void RibbonEngine::setType(int value)
   {
-    m_alpha = 0.05 * value;
+    m_type = value;
     emit changed();
   }
 
@@ -196,7 +196,7 @@ namespace Avogadro {
     if(!m_settingsWidget)
     {
       m_settingsWidget = new RibbonSettingsWidget();
-      connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
+      connect(m_settingsWidget->renderType, SIGNAL(activated(int)), this, SLOT(setType(int)));
       connect(m_settingsWidget->radiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setRadius(int)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
     }
