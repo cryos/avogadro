@@ -77,9 +77,8 @@ IF( APPLE )
           CODE "EXEC_PROGRAM(\"install_name_tool -change ${libavogadro_BINARY_DIR}/src/libavogadro.0.dylib ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/libavogadro.0.dylib /Applications/avogadro.app/Contents/MacOS/avogadro\")")
   INSTALL(CODE "EXEC_PROGRAM(\"mv /Applications/avogadro.app /Applications/Avogadro.app\")")
 
-ELSEIF( !APPLE)
+ELSE( APPLE)
   INSTALL(TARGETS avogadro-app DESTINATION bin)
-
 ENDIF( APPLE)
 
 INSTALL(FILES ${avogadro_QM} DESTINATION share/avogadro/i18n)
