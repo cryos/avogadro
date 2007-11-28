@@ -421,7 +421,6 @@ namespace Avogadro
     // Draw a line between two points of the specified thickness
     if(!d->isValid()) { return; }
 
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDisable(GL_LIGHTING);
 
     glLineWidth(lineWidth);
@@ -434,7 +433,6 @@ namespace Avogadro
     glEnd();
 
     glEnable(GL_LIGHTING);
-    glPopAttrib();
   }
   
   void GLPainter::drawMultiLine(const Eigen::Vector3d &end1, 
@@ -494,7 +492,6 @@ namespace Avogadro
     glPushMatrix();
     glMultMatrixd( matrix.array() );
 
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDisable(GL_LIGHTING);
 
     glLineWidth(lineWidth);
@@ -538,7 +535,6 @@ namespace Avogadro
 //     }
 
     glEnable(GL_LIGHTING);
-    glPopAttrib();
   }
 
   void GLPainter::drawTriangle(const Eigen::Vector3d &p1, const Eigen::Vector3d &p2,
@@ -624,8 +620,6 @@ namespace Avogadro
   {
     // Draw a spline between two points of the specified thickness
     if(!d->isValid()) { return; }
-
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
 
     // The first value is repeated three times as is the last in order to complete the curve
     QVector<Eigen::Vector3d> points = pts;
@@ -746,8 +740,6 @@ namespace Avogadro
     gluDeleteNurbsRenderer(nurb);
 	
     glDisable(GL_AUTO_NORMAL);
-    
-    glPopAttrib();
   }
 
   void GLPainter::drawShadedSector(Eigen::Vector3d origin, Eigen::Vector3d direction1,
