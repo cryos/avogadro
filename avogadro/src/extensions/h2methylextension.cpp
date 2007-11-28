@@ -55,7 +55,7 @@ namespace Avogadro {
     return tr("&Build");
   }
 
-  QUndoCommand* H2MethylExtension::performAction(QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit *messages)
+  QUndoCommand* H2MethylExtension::performAction(QAction *, Molecule *molecule, GLWidget *widget, QTextEdit *)
   {
     QUndoCommand *undo = 0;
     undo = new H2MethylCommand(molecule, widget);
@@ -103,7 +103,7 @@ namespace Avogadro {
     m_molecule->update();
   }
 
-  bool H2MethylCommand::mergeWith ( const QUndoCommand * command )
+  bool H2MethylCommand::mergeWith ( const QUndoCommand * )
   {
     // we received another call of the same action
     return true;
