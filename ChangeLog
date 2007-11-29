@@ -1,3 +1,8 @@
+2007-05-28 Tim Vandermeersch <tim.vandermeersch@gmail.com>
+
+	* avogadro/src/extentions/forcefieldextention.cpp: Changed MMF94 to
+	MMFF94 (otherwise MMFF94 is not usable...)
+
 2007-11-28  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/engines/ribbonengine.*,

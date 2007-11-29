@@ -106,7 +106,7 @@ namespace Avogadro
 
     switch (m_Dialog->forceFieldID()) {
     case 1:
-      m_forceField = OBForceField::FindForceField( "MMF94" );
+      m_forceField = OBForceField::FindForceField( "MMFF94" );
       break;
     case 2:
       m_forceField = OBForceField::FindForceField( "UFF" );
