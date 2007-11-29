@@ -30,7 +30,7 @@
 #include <avogadro/undosequence.h>
 
 #include <openbabel/obiter.h>
-#include <openbabel/builder.h>
+#include <openbabel/obconversion.h>
 
 #include <QtPlugin>
 #include <QLabel>
@@ -60,6 +60,8 @@ namespace Avogadro {
           "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
           "Right Mouse: Delete Atom"));
     action->setShortcut(Qt::Key_F8);
+  
+    place_mode = false;
   }
 
   DrawTool::~DrawTool()
@@ -95,12 +97,27 @@ namespace Avogadro {
   
   void DrawTool::gen3D()
   {
-    //Molecule *molecule = widget->molecule();
-    Molecule mol;
-    OBBuilder builder;
+    std::string SmilesString((m_text3DGen->text()).toAscii());
+    stringstream ss(SmilesString);
+    OBConversion conv(&ss);
+    m_generatedMolecule.Clear();
+    if(conv.SetInFormat("smi") && conv.Read(&m_generatedMolecule)) 
+    {
+      m_builder.Build(m_generatedMolecule);
+      m_generatedMolecule.Center();
+      m_generatedMolecule.AddHydrogens();
 
-    
-    cout <<  "3DGen" << endl;
+      if (place_mode) 
+      {
+        m_button3DGen->setText(tr("Place smiles"));
+        place_mode = false;
+      }
+      else
+      {  
+        m_button3DGen->setText(tr("Stop placing smiles"));
+        place_mode = true;
+      }
+    }
   
   
   
@@ -175,10 +192,26 @@ namespace Avogadro {
       }
       else
       {
-        m_beginAtom = newAtom(widget, event->pos());
-        m_beginAtomAdded = true;
-        widget->updateGeometry();
-        m_beginAtom->update();
+        if (place_mode) 
+	{
+          Eigen::Vector3d refPoint;
+          if(m_beginAtom) {
+            refPoint = m_beginAtom->pos();
+          } else {
+            refPoint = widget->center();
+          }
+          Eigen::Vector3d newMolPos = widget->camera()->unProject(event->pos(), refPoint);
+	  m_generatedMolecule.Translate(OpenBabel::vector3(newMolPos.x(), newMolPos.y(), newMolPos.z()));
+          *widget->molecule() += m_generatedMolecule;
+          m_generatedMolecule.Center();
+	} 
+	else 
+	{
+	  m_beginAtom = newAtom(widget, event->pos());
+          m_beginAtomAdded = true;
+          widget->updateGeometry();
+          m_beginAtom->update();
+	}
       }
     }
 
@@ -543,7 +576,7 @@ namespace Avogadro {
       QLabel *label3DGen = new QLabel(tr("Generate from smiles:"));
       m_text3DGen = new QLineEdit(m_settingsWidget);
       m_button3DGen = new QPushButton(m_settingsWidget);
-      m_button3DGen->setText(tr("Generate"));
+      m_button3DGen->setText(tr("Place smiles"));
       connect(m_button3DGen, SIGNAL(clicked()), this, SLOT(gen3D()));
 
       m_periodicTable = new PeriodicTableDialog(m_settingsWidget);

@@ -31,6 +31,7 @@
 #include "periodictabledialog.h"
 
 #include <openbabel/mol.h>
+#include <openbabel/builder.h>
 
 #include <QGLWidget>
 #include <QObject>
@@ -112,6 +113,10 @@ namespace Avogadro {
 
       Bond *m_prevBond;
       int m_prevBondOrder;
+
+      bool place_mode;
+      Molecule m_generatedMolecule;   
+      OpenBabel::OBBuilder m_builder;
 
       QList<GLHit> m_hits;
 
