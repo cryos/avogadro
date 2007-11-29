@@ -292,6 +292,8 @@ namespace Avogadro {
 
       m_comboFF = new QComboBox(m_settingsWidget);
       m_comboFF->addItem(tr("Ghemical"));
+      m_comboFF->addItem(tr("MMFF94"));
+      m_comboFF->addItem(tr("UFF"));
 
       QLabel* labelAlg = new QLabel(tr("Algorithm:"));
       labelAlg->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -407,6 +409,14 @@ namespace Avogadro {
     {
       m_block = true;
     }
+    
+    if (m_comboFF->currentIndex() == 2)
+      m_forceField = OBForceField::FindForceField( "UFF" );
+    else if (m_comboFF->currentIndex() == 1)
+      m_forceField = OBForceField::FindForceField( "MMFF94" );
+    else
+      m_forceField = OBForceField::FindForceField( "Ghemical" );
+
     m_thread = new AutoOptThread(m_glwidget->molecule(), m_forceField,
         m_comboAlgorithm->currentIndex(), 
         m_convergenceSpinBox->value());
