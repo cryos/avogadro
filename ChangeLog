@@ -1,3 +1,10 @@
+2007-05-29 Tim Vandermeersch <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/drawtool.*: Added a QLineEdit and QPushButton
+	to generate 3D structures from the draw tool. Geoff and I talked about
+	this before. But I don't know how to get access to the molecule from
+	DrawTool::gen3D()?
+
 2007-05-28 Tim Vandermeersch <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extentions/forcefieldextention.cpp: Changed MMF94 to

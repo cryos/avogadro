@@ -30,6 +30,7 @@
 #include <avogadro/undosequence.h>
 
 #include <openbabel/obiter.h>
+#include <openbabel/builder.h>
 
 #include <QtPlugin>
 #include <QLabel>
@@ -90,6 +91,20 @@ namespace Avogadro {
         m_periodicTable->show();
       }
     }
+  }
+  
+  void DrawTool::gen3D()
+  {
+    //Molecule *molecule = widget->molecule();
+    Molecule mol;
+    OBBuilder builder;
+
+    
+    cout <<  "3DGen" << endl;
+  
+  
+  
+  
   }
 
   // TODO: Add additional entries to the element index (popup menu)
@@ -525,6 +540,12 @@ namespace Avogadro {
       m_comboBondOrder->addItem(tr("Double"));
       m_comboBondOrder->addItem(tr("Triple"));
 
+      QLabel *label3DGen = new QLabel(tr("Generate from smiles:"));
+      m_text3DGen = new QLineEdit(m_settingsWidget);
+      m_button3DGen = new QPushButton(m_settingsWidget);
+      m_button3DGen->setText(tr("Generate"));
+      connect(m_button3DGen, SIGNAL(clicked()), this, SLOT(gen3D()));
+
       m_periodicTable = new PeriodicTableDialog(m_settingsWidget);
       connect(m_periodicTable, SIGNAL(elementChanged(int)),
           this, SLOT(customElementChanged(int)));
@@ -534,6 +555,9 @@ namespace Avogadro {
       m_layout->addWidget(m_comboElements);
       m_layout->addWidget(labelBO);
       m_layout->addWidget(m_comboBondOrder);
+      m_layout->addWidget(label3DGen);
+      m_layout->addWidget(m_text3DGen);
+      m_layout->addWidget(m_button3DGen);
       m_layout->addStretch(1);
       m_settingsWidget->setLayout(m_layout);
 

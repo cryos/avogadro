@@ -36,6 +36,8 @@
 #include <QObject>
 #include <QStringList>
 #include <QComboBox>
+#include <QLineEdit>
+#include <QPushButton>
 #include <QVBoxLayout>
 #include <QImage>
 #include <QAction>
@@ -82,10 +84,13 @@ namespace Avogadro {
       void setBondOrder(int i);
       int bondOrder() const;
 
+    
+
     public Q_SLOTS:
       void elementChanged( int index );
       void customElementChanged( int index );
       void bondOrderChanged( int index );
+      void gen3D();
 
     private:
       Qt::MouseButtons _buttons;
@@ -113,6 +118,8 @@ namespace Avogadro {
       QComboBox *m_comboElements;
       QVector<int> m_elementsIndex;
       QComboBox *m_comboBondOrder;
+      QLineEdit *m_text3DGen;
+      QPushButton *m_button3DGen;
       QPushButton *m_tableButton;
       PeriodicTableDialog *m_periodicTable;
       QVBoxLayout *m_layout;
