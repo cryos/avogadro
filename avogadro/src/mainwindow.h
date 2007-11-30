@@ -161,7 +161,7 @@ namespace Avogadro {
   };
 
   /**
-   * \mainpage v0.1.0 API Documentation
+   * \mainpage Avogadro API Documentation
    *
    * \section avogadro Introduction
    *

@@ -1,3 +1,11 @@
+2007-11-30  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/ringengine.cpp,
+	libavogadro/src/engines/ringsettingswidget.ui: Make the rings opaque by
+	default.
+
+	* avogadro/src/mainwindow.h: Fix the API documentation title.
+
 2007-11-30  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/primitiveitemmodel.cpp: Add back missing
