@@ -26,29 +26,35 @@
 #include <config.h>
 
 #include <avogadro/color.h>
-
-using namespace OpenBabel;
+#include <math.h> // for fabs()
 
 namespace Avogadro {
+  
+  class ColorPrivate {
+  public:
+    ColorPrivate() 
+    {    }
+    
+    ~ColorPrivate()
+    {    }
+  };
 
-  Color::Color() {
+  Color::Color(): d(0) {
   }
 
   Color::~Color() {
   }
 
-  Color::Color( GLfloat red, GLfloat green, GLfloat blue,
-      GLfloat alpha )
+  Color::Color( GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha ):
+    m_red(red), m_green(green), m_blue(blue), m_alpha(alpha), d(0)
+  {  }
+
+  Color::Color( const Primitive *p ): d(0)
   {
-    set(red, green, blue, alpha);
+    set(p);
   }
 
-  Color::Color( const OBAtom* atom )
-  {
-    set(atom);
-  }
-
-  Color& Color::operator=( const Color& other )
+  /* Color& Color::operator=( const Color& other )
   {
     m_red = other.m_red;
     m_green = other.m_green;
@@ -57,7 +63,8 @@ namespace Avogadro {
 
     return *this;
   }
-
+   */
+  
   void Color::set(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
   {
     m_red = red;
@@ -66,22 +73,9 @@ namespace Avogadro {
     m_alpha = alpha;
   }
 
-  void Color::set(const OpenBabel::OBAtom *atom)
+  void Color::set(const Primitive *)
   {
-    if (!atom)
-      return;
-
-    std::vector<double> rgb = etab.GetRGB( atom->GetAtomicNum() );
-    m_red = rgb[0];
-    m_green = rgb[1];
-    m_blue = rgb[2];
-    m_alpha = 1.0;
-  }
-
-  // void Color::set(double value, double low, double high)
-  void Color::set(double, double, double)
-  {
-    m_red = m_green = m_blue = m_alpha = 1.0;
+    return;
   }
 
   void Color::setAlpha(double alpha)
@@ -121,4 +115,16 @@ namespace Avogadro {
     glMaterialf( GL_FRONT, GL_SHININESS, 1.0 );
   }
 
+  void Color::setName(QString name)
+  {
+    m_name = name;
+  }
+  
+  QString Color::name() const
+  {
+   if (m_name.isEmpty())
+     return type();
+    else
+      return m_name;
+  }
 }

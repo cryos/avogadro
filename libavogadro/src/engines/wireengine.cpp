@@ -84,7 +84,9 @@ namespace Avogadro {
     double dot = transformedPos.z() / transformedPos.norm();
     if(dot > -0.8) return true;
 
-    Color map = colorMap();
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
+
     const float selectionColor[3] = {0.3, 0.6, 1.0};
     glPushName(Primitive::AtomType);
     glPushName(a->GetIdx());
@@ -105,8 +107,8 @@ namespace Avogadro {
       glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * (size + 1.0));
     }
     else {
-      map.set(a);
-      map.apply();
+      map->set(a);
+      map->apply();
       glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * size);
     }
 
@@ -130,7 +132,9 @@ namespace Avogadro {
     const Atom *atom1 = static_cast<const Atom *>( b->GetBeginAtom() );
     const Vector3d & v1 = atom1->pos();
     const Camera *camera = pd->camera();
-    Color map = colorMap();
+
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
 
     // perform a rough form of frustum culling
     Eigen::Vector3d transformedEnd1 = pd->camera()->modelview() * v1;
@@ -164,13 +168,13 @@ namespace Avogadro {
     // optional line stipple to use for aromatic bonds
     int stipple = 0xF0F0;
 
-    map.set(atom1);
-    pd->painter()->setColor(&map);
+    map->set(atom1);
+    pd->painter()->setColor(map);
     if (order > 1) pd->painter()->drawMultiLine(v1, v3, width, order, stipple);
     else pd->painter()->drawLine(v1, v3, width);
 
-    map.set(atom2);
-    pd->painter()->setColor(&map);
+    map->set(atom2);
+    pd->painter()->setColor(map);
     if (order > 1) pd->painter()->drawMultiLine(v2, v3, width, order, stipple);
     else pd->painter()->drawLine(v2, v3, width);
     

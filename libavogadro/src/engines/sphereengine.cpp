@@ -113,15 +113,16 @@ namespace Avogadro {
     }
 
     // Render the selection sphere if required
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
     foreach( Primitive *p, list )
     {
       if (pd->isSelected(p))
       {
         const Atom *a = static_cast<const Atom *>(p);
-        Color map = colorMap();
-        map.set( 0.3, 0.6, 1.0, 0.7 );
+        map->set( 0.3, 0.6, 1.0, 0.7 );
         glEnable( GL_BLEND );
-        pd->painter()->setColor(&map);
+        pd->painter()->setColor(map);
         pd->painter()->setName(a);
         pd->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
         glDisable( GL_BLEND );
@@ -134,10 +135,12 @@ namespace Avogadro {
   bool SphereEngine::render(PainterDevice *pd, const Atom *a)
   {
     // Render the atoms as Van der Waals spheres
-    Color map = colorMap();
-    map.set(a);
-    map.setAlpha(m_alpha);
-    pd->painter()->setColor(&map);
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
+
+    map->set(a);
+    map->setAlpha(m_alpha);
+    pd->painter()->setColor(map);
     pd->painter()->setName(a);
     pd->painter()->drawSphere( a->pos(), radius(a) );
 

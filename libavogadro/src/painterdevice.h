@@ -32,6 +32,7 @@ namespace Avogadro {
   class Camera;
   class Primitive;
   class Molecule;
+  class Color;
 
   class PainterDevice
   {
@@ -43,7 +44,8 @@ namespace Avogadro {
     virtual Camera *camera() const = 0;
     virtual bool isSelected( const Primitive *p ) const = 0;
     virtual double radius( const Primitive *p ) const = 0;
-	virtual const Molecule *molecule() const = 0;
+    virtual const Molecule *molecule() const = 0;
+    virtual Color* colorMap() const = 0;
 
     virtual int width() = 0;
     virtual int height() = 0;

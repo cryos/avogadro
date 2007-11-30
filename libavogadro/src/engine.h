@@ -185,11 +185,11 @@ namespace Avogadro {
        * default is to color each atom by element
        * @param map is the new colors to be used
        */
-      virtual void setColorMap(Color &map);
+      virtual void setColorMap(Color *map);
 
       /** @return the current color map used by this engine
        */
-      virtual Color &colorMap();
+      virtual Color *colorMap();
 
     private:
       EnginePrivate *const d;

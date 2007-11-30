@@ -30,10 +30,10 @@ namespace Avogadro {
   class EnginePrivate
   {
   public:
-    EnginePrivate() : enabled(false) {}
+    EnginePrivate() : colorMap(0), enabled(false) {}
 
     PrimitiveList primitives;
-    Color colorMap;
+    Color *colorMap;
     bool enabled;
 
     QString name;
@@ -103,7 +103,7 @@ namespace Avogadro {
     emit changed();
   }
 
-  void Engine::setColorMap(Color &map)
+  void Engine::setColorMap(Color *map)
   {
     d->colorMap = map;
   }
@@ -113,7 +113,7 @@ namespace Avogadro {
     return 0;
   }
 
-  Color &Engine::colorMap()
+  Color *Engine::colorMap()
   {
     return d->colorMap;
   }

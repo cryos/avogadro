@@ -108,7 +108,8 @@ namespace Avogadro
 
     glPushAttrib( GL_TRANSFORM_BIT );
 
-    Color map = colorMap();
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
 
     // Get a list of bonds and render them
     list = primitives().subList( Primitive::BondType );
@@ -128,13 +129,13 @@ namespace Avogadro
       int order = 1;
       if (m_showMulti) order = b->GetBO();
 
-      map.set( atom1 );
-      pd->painter()->setColor( &map );
+      map->set( atom1 );
+      pd->painter()->setColor( map );
       pd->painter()->setName( b );
       pd->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
 
-      map.set( atom2 );
-      pd->painter()->setColor( &map );
+      map->set( atom2 );
+      pd->painter()->setColor( map );
       pd->painter()->setName( b );
       pd->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
     }
@@ -147,10 +148,8 @@ namespace Avogadro
     foreach( Primitive *p, list ) {
       const Atom *a = static_cast<const Atom *>( p );
 
-      Color map = colorMap();
-
-      map.set( a );
-      pd->painter()->setColor( &map );
+      map->set( a );
+      pd->painter()->setColor( map );
       pd->painter()->setName( a );
       pd->painter()->drawSphere( a->pos(), radius( a ) );
     }
@@ -172,7 +171,8 @@ namespace Avogadro
 
     glPushAttrib( GL_TRANSFORM_BIT );
 
-    Color map = colorMap();
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
 
     // Get a list of bonds and render them
     list = primitives().subList( Primitive::BondType );
@@ -197,9 +197,9 @@ namespace Avogadro
         double shift = 0.15;
         int order = b->GetBO();
 
-        map.set( 0.3, 0.6, 1.0, 0.7 );
+        map->set( 0.3, 0.6, 1.0, 0.7 );
         glEnable( GL_BLEND );
-        pd->painter()->setColor( &map );
+        pd->painter()->setColor( map );
         pd->painter()->setName( b );
         if (order == 1) 
           pd->painter()->drawCylinder(v1, v2, SEL_BOND_EXTRA_RADIUS + m_bondRadius);
@@ -224,9 +224,9 @@ namespace Avogadro
 
       // Render the selection highlight
       if ( pd->isSelected( a ) ) {
-        map.set( 0.3, 0.6, 1.0, 0.7 );
+        map->set( 0.3, 0.6, 1.0, 0.7 );
         glEnable( GL_BLEND );
-        pd->painter()->setColor( &map );
+        pd->painter()->setColor( map );
         pd->painter()->setName( a );
         pd->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius( a ) );
         glDisable( GL_BLEND );

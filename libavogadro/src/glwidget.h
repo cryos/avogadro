@@ -267,6 +267,16 @@ namespace Avogadro {
       QColor background() const;
 
       /**
+       * Set the current global color map for Primitives
+       */
+      void setColorMap(Color *);
+
+      /**
+       * @return the current global color map for Primitives
+       */
+      Color *colorMap() const;
+    
+      /**
        * @param undoStack the new undoStack
        */
       void setUndoStack(QUndoStack *undoStack);

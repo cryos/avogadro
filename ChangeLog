@@ -1,3 +1,27 @@
+2007-11-29  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/color.[h,cpp]: Make into a cleaner base class
+	for custom color maps. Add a name() property to return the
+	user-visible name of the color scheme.
+
+	* libavogadro/src/elementcolor.[h,cpp]: New subclass for the
+	default scheme.
+
+	* libavogadro/src/engine.[h,cpp]: Revise colorMap() routines to
+	pass pointers to preserve subclasses.
+
+	* libavogadro/src/engines/*.cpp: Fix engines to use new colorMap
+	support, including fallback between custom (i.e., per-engine) and
+	global color maps. Lift color maps outside of loops for improved
+	performance.
+
+	* libavogadro/src/glwidget.[h,cpp]: Add support for adding a
+	global, custom color map for primitives. By default, falls back to
+	the ElementColor scheme (i.e., color each atom by the element type).
+
+	* libavogadro/src/painterdevice.h, libavogadro/src/povpainter.h:
+	Add PainterDevice wrapping of the GLWidget colorMap, as above.
+
 2007-05-29 Tim Vandermeersch <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/tools/drawtool.*: DrawTool now allows you to

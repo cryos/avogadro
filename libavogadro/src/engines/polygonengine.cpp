@@ -83,9 +83,11 @@ namespace Avogadro{
           return true;
     }
 
-    Color map = colorMap();
-    map.set(a);
-    pd->painter()->setColor(&map);
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
+
+    map->set(a);
+    pd->painter()->setColor(map);
 
     QVector<Vector3d> atoms;
     FOR_NBORS_OF_ATOM(neighbor, a)

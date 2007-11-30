@@ -28,6 +28,7 @@
 
 #include "glpainter.h"
 #include "painterdevice.h"
+#include "elementcolor.h"
 
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
@@ -168,7 +169,9 @@ namespace Avogadro {
 #else
       initialized( false ),
 #endif
-      painter( 0 )
+      painter( 0 ),
+    map( 0), 
+    defaultMap( new ElementColor )
       {
         loadEngineFactories();
       }
@@ -177,6 +180,7 @@ namespace Avogadro {
       {
         if ( selectBuf ) delete[] selectBuf;
         delete camera;
+        delete defaultMap;
       }
 
       static void loadEngineFactories();
@@ -226,7 +230,8 @@ namespace Avogadro {
 #endif
 
       GLPainter                *painter;
-
+    Color *map; // global color map
+    Color *defaultMap; // default fall-back coloring (i.e., by elements)
   };
 
   QList<EngineFactory *> GLWidgetPrivate::engineFactories;
@@ -354,7 +359,8 @@ namespace Avogadro {
       bool isSelected( const Primitive *p ) const { return widget->isSelected(p); }
       double radius( const Primitive *p ) const { return widget->radius(p); }
       const Molecule *molecule() const { return widget->molecule(); }
-
+      Color *colorMap() const { return widget->colorMap();  }
+    
       int width() { return widget->width(); }
       int height() { return widget->height(); }
 
@@ -519,6 +525,19 @@ namespace Avogadro {
   QColor GLWidget::background() const
   {
     return d->background;
+  }
+  
+  void GLWidget::setColorMap(Color *map)
+  {
+    d->map = map;
+  }
+
+  Color *GLWidget::colorMap() const
+  {
+    if (d->map)
+      return d->map;
+    else
+      return d->defaultMap;
   }
 
   void GLWidget::setQuality(int quality)

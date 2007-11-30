@@ -157,7 +157,8 @@ namespace Avogadro
     Camera *camera() const { return m_glwidget->camera(); }
     bool isSelected(const Primitive *p) const { return m_glwidget->isSelected(p); }
     double radius(const Primitive *p) const { return m_glwidget->radius(p); }
-	const Molecule *molecule() const { return m_glwidget->molecule(); }
+    const Molecule *molecule() const { return m_glwidget->molecule(); }
+    Color *colorMap() const { return m_glwidget->colorMap(); }
 
     int width() { return m_glwidget->width(); }
     int height() { return m_glwidget->height(); }

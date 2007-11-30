@@ -1,5 +1,5 @@
 /**********************************************************************
-  Color - Class for handling color changes in OpenGL
+  Color - Base class for handling color changes in OpenGL
 
   Copyright (C) 2006 Benoit Jacob
   Copyright (C) 2007 Geoffrey R. Hutchison
@@ -28,15 +28,18 @@
 
 #include <avogadro/global.h>
 
-#include <QGLWidget>
-#include <openbabel/mol.h>
+#include <QGLWidget> // for GLfloat
 
 namespace Avogadro {
 
+  class Primitive;
+  class ColorPrivate; // for future expansion
+  
   /**
    * This class represents a color in OpenGL float red-green-blue-alpha format.
    *
    * @author Benoit Jacob
+   * @author Geoff Hutchison
    */
   class A_EXPORT Color
   {
@@ -53,13 +56,9 @@ namespace Avogadro {
         GLfloat alpha = 1.0 );
 
     /**
-     * This constructor uses OpenBabel to retrieve the color in which
-     * the atom should be rendered. Default is to render based on element. */
-    Color( const OpenBabel::OBAtom *atom );
-
-    /**
-     * Equal overloading operator */
-    Color &operator=( const Color& other );
+     * Set the color based on the supplied Primitive
+     * If NULL is passed, do nothing */
+    Color( const Primitive * );
 
     /**
      * Set the four components of the color
@@ -70,15 +69,9 @@ namespace Avogadro {
                      GLfloat alpha = 1.0 );
 
     /**
-     * Set the color in which the atom should be rendered. 
+     * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
-    virtual void set(const OpenBabel::OBAtom *atom );
-
-    /**
-     * Set the color from an floating-point range 
-     * Default will just set white for everything
-     */
-    virtual void set(double value, double low, double high);
+    virtual void set(const Primitive *);
 
     /**
      * Set the alpha component of the color */
@@ -106,11 +99,19 @@ namespace Avogadro {
     inline float green() { return m_green; }
     inline float blue() { return m_blue; }
     inline float alpha() { return m_alpha; }
+    
+    virtual void setName(QString name);
+    virtual QString name() const;
+    virtual QString type() const { return "Virtual Base Class"; }
 
-  private:
+  protected:
     ///{ The four components of the color, ranging between 0 and 1.
     GLfloat m_red, m_green, m_blue, m_alpha;
     ///}
+    
+    QString m_name;
+    
+    ColorPrivate *d;
   };
 
 }

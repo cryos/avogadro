@@ -86,19 +86,20 @@ namespace Avogadro {
 
   bool StickEngine::renderOpaque(PainterDevice *pd, const Atom* a)
   {
-    Color map = colorMap();
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
 
-    map.set(a);
-    pd->painter()->setColor(&map);
+    map->set(a);
+    pd->painter()->setColor(map);
 
     pd->painter()->setName(a);
     pd->painter()->drawSphere( a->pos(), radius(a) );
 
     if (pd->isSelected(a))
     {
-      map.set( 0.3, 0.6, 1.0, 0.7 );
+      map->set( 0.3, 0.6, 1.0, 0.7 );
       glEnable( GL_BLEND );
-      pd->painter()->setColor(&map);
+      pd->painter()->setColor(map);
       pd->painter()->setName(a);
       pd->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
       glDisable( GL_BLEND );
@@ -109,7 +110,8 @@ namespace Avogadro {
 
   bool StickEngine::renderOpaque(PainterDevice *pd, const Bond* b)
   {
-    Color map = colorMap();
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
 
     const Atom* atom1 = static_cast<const Atom *>(b->GetBeginAtom());
     const Atom* atom2 = static_cast<const Atom *>(b->GetEndAtom());
@@ -117,22 +119,22 @@ namespace Avogadro {
     Vector3d v2 (atom2->pos());
     Vector3d v3 (( v1 + v2 ) / 2);
 
-    map.set(atom1);
-    pd->painter()->setColor(&map);
+    map->set(atom1);
+    pd->painter()->setColor(map);
     pd->painter()->setName(b);
     pd->painter()->drawCylinder( v1, v3, radius(atom1) );
 
-    map.set(atom2);
-    pd->painter()->setColor(&map);
+    map->set(atom2);
+    pd->painter()->setColor(map);
     pd->painter()->setName(b);
     pd->painter()->drawCylinder( v3, v2, radius(atom1) );
 
     // Render the selection highlight
     if (pd->isSelected(b))
     {
-      map.set( 0.3, 0.6, 1.0, 0.7 );
+      map->set( 0.3, 0.6, 1.0, 0.7 );
       glEnable( GL_BLEND );
-      pd->painter()->setColor(&map);
+      pd->painter()->setColor(map);
       pd->painter()->setName(b);
       pd->painter()->drawCylinder( v1, v2, SEL_BOND_EXTRA_RADIUS + radius(atom1) );
       glDisable( GL_BLEND );
