@@ -29,9 +29,6 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <openbabel/obiter.h>
-#include <eigen/regression.h>
-
 #include <QtPlugin>
 #include <QMessageBox>
 #include <QString>
@@ -44,7 +41,7 @@ using namespace Eigen;
 namespace Avogadro{
 
   RingEngine::RingEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
-    m_alpha(0.5)
+    m_alpha(1.0)
   {
     setDescription(tr("Renders rings"));
   }
