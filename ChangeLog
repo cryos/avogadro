@@ -1,3 +1,15 @@
+2007-11-30  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/primitiveitemmodel.cpp: Add back missing
+	functionality from MoleculeTreeView. Atoms now have elements,
+	residues have names and numbers, etc. May need further tinkering.
+
+	* libavogadro/src/tools/drawtool.cpp: Minor changes to SMILES
+	text.
+
+	* libavogadro/src/tools/autoopttool.cpp: Remove "OBPatched"
+	ifdefs. These are now all supported in OB-2.2.
+
 2007-11-29  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/color.[h,cpp]: Make into a cleaner base class

@@ -20,7 +20,7 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
  ***********************************************************************/
-//#define OBPatched
+
 #include "autoopttool.h"
 #include "navigate.h"
 #include <avogadro/primitive.h>
@@ -124,12 +124,10 @@ namespace Avogadro {
 #endif
 
     m_clickedAtom = widget->computeClickedAtom(event->pos());
-#ifdef OBPatched
     if(m_clickedAtom != 0 && m_leftButtonPressed && m_running)
     {
       m_clickedAtom->SetFixed();
     }
-#endif
 
     widget->update();
     return 0;
@@ -141,12 +139,11 @@ namespace Avogadro {
     m_leftButtonPressed = false;
     m_midButtonPressed = false;
     m_rightButtonPressed = false;
-#ifdef OBPatched
     if (m_clickedAtom != 0)
     {
       m_clickedAtom->UnsetFixed();
     }
-#endif  
+
     m_clickedAtom = 0;
 
     widget->update();
@@ -386,12 +383,11 @@ namespace Avogadro {
       }
       m_running = false;
       m_buttonStartStop->setText(tr("Start"));
-#ifdef OBPatched
+
       if (m_clickedAtom != 0)
       {
         m_clickedAtom->UnsetFixed();
       }
-#endif
       m_clickedAtom = 0;
       m_leftButtonPressed = false;
       m_midButtonPressed = false;
