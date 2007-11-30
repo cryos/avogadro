@@ -24,6 +24,8 @@
 
 #include <avogadro/primitiveitemmodel.h>
 
+#include <openbabel/data.h> // element symbols
+
 #include <QString>
 #include <QDebug>
 #include <QTreeView>
@@ -216,21 +218,47 @@ namespace Avogadro {
     {
       if(role == Qt::DisplayRole) {
         Primitive::Type type = primitive->type();
-        QString name;
-        if(type == Primitive::AtomType) {
-          Atom *atom = qobject_cast<Atom *>(primitive);
-          if(atom)
-          {
-            name = tr("Atom ") + QString::number(atom->GetIdx());
-          }
-        } else if (type == Primitive::BondType) {
-          Bond *bond = qobject_cast<Bond *>(primitive);
-          if(bond)
-          {
-            name = tr("Bond ") + QString::number(bond->GetIdx());
-          }
+
+        QString str;
+        if(type == Primitive::MoleculeType) {
+          str = tr("Molecule");
         }
-        return name;
+        else if(type == Primitive::AtomType) {
+          Atom *atom = (Atom*)primitive;
+          str = tr("Atom") + ' ' 
+            + QString(OpenBabel::etab.GetSymbol(atom->GetAtomicNum()))
+            + ' ' + QString::number(atom->GetIdx());
+        }
+        else if(type == Primitive::BondType){
+          Bond *bond = (Bond*)primitive;
+          Atom *beginAtom = (Atom *)bond->GetBeginAtom();
+          Atom *endAtom = (Atom *)bond->GetEndAtom();
+          str = tr("Bond") + ' ' + QString::number(bond->GetIdx()) + " ("; 
+          if(beginAtom) {
+            str += QString::number(beginAtom->GetIdx());
+          } else {
+            // this should never happen: Bond always has a beginning -GRH
+            str += '-';
+          }
+          
+          str += ',';
+          
+          if(endAtom) {
+            str += QString::number(endAtom->GetIdx());
+          } else {
+            // this should never happen: Bond always has an end -GRH
+            str += '-';
+          }
+          str += ')';
+        } // end bond
+        else if(type == Primitive::ResidueType) {
+          Residue *residue = (Residue*)primitive;
+          str = tr("Residue") + ' ';
+          str += QString(residue->GetName().c_str()) + ' '
+            + QString(residue->GetNumString().c_str());
+        }
+
+        return str;
 
       } else if ( role == PrimitiveItemModel::PrimitiveRole ) {
         return qVariantFromValue(primitive);
