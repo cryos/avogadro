@@ -10,6 +10,13 @@
 	* libavogadro/src/tools/autoopttool.cpp: Remove "OBPatched"
 	ifdefs. These are now all supported in OB-2.2.
 
+	* libavogadro/src/residuecolor.[h,cpp]: New class to color based
+	on Jmol "amino" residue colors.
+
+	* libavogadro/src/color.h, libavogadro/src/elementcolor.h: Updates
+	missing in yesterday's commit. Include a settings widget for
+	expansion in subclasses.
+
 2007-11-29  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/color.[h,cpp]: Make into a cleaner base class

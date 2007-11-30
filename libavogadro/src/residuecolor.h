@@ -1,7 +1,6 @@
 /**********************************************************************
-  ElementColor - Default class for coloring atoms based on element
+  ResidueColor - Class for coloring based on residues (if available)
 
-  Copyright (C) 2006 Benoit Jacob
   Copyright (C) 2007 Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
@@ -23,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ELEMENTCOLOR_H
-#define __ELEMENTCOLOR_H
+#ifndef __RESIDUECOLOR_H
+#define __RESIDUECOLOR_H
 
 #include <avogadro/global.h>
 #include <avogadro/color.h>
@@ -32,23 +31,23 @@
 namespace Avogadro {
 
   /**
-   * This class provides a default mapping for colors based on elements
+   * This class maps colors based on residues
+   * http://jmol.sourceforge.net/jscolors/
    *
-   * @author Benoit Jacob
    * @author Geoff Hutchison
    */
-  class A_EXPORT ElementColor: public Color
+  class A_EXPORT ResidueColor: public Color
   {
   public:
-    ElementColor();
-    virtual ~ElementColor();
+    ResidueColor();
+    virtual ~ResidueColor();
 
     /**
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
     virtual void set(const Primitive *);
 
-    virtual QString type() const { return "Color by Element"; }
+    virtual QString type() const { return "Color by Residue"; }
   };
 
 }

@@ -104,6 +104,11 @@ namespace Avogadro {
     virtual QString name() const;
     virtual QString type() const { return "Virtual Base Class"; }
 
+    /**
+     * @return the widget for controlling settings for this color map
+     * or NULL if none exists */
+    virtual QWidget *settingsWidget() { return NULL; }
+
   protected:
     ///{ The four components of the color, ranging between 0 and 1.
     GLfloat m_red, m_green, m_blue, m_alpha;
