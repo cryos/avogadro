@@ -109,18 +109,17 @@ namespace Avogadro {
 
       if (place_mode) 
       {
-        m_button3DGen->setText(tr("Place smiles"));
+        m_button3DGen->setText(tr("Insert SMILES"));
         place_mode = false;
       }
       else
       {  
-        m_button3DGen->setText(tr("Stop placing smiles"));
+        m_button3DGen->setText(tr("Stop Insert"));
         place_mode = true;
       }
     }
   
-  
-  
+    // TODO: Need Undo support for insert SMILES
   
   }
 
@@ -192,8 +191,7 @@ namespace Avogadro {
       }
       else
       {
-        if (place_mode) 
-	{
+        if (place_mode) {
           Eigen::Vector3d refPoint;
           if(m_beginAtom) {
             refPoint = m_beginAtom->pos();
@@ -204,16 +202,16 @@ namespace Avogadro {
 	  m_generatedMolecule.Translate(OpenBabel::vector3(newMolPos.x(), newMolPos.y(), newMolPos.z()));
           *widget->molecule() += m_generatedMolecule;
           m_generatedMolecule.Center();
-	} 
+        } // end place mode (insert SMILES)
 	else 
 	{
 	  m_beginAtom = newAtom(widget, event->pos());
           m_beginAtomAdded = true;
           widget->updateGeometry();
           m_beginAtom->update();
-	}
-      }
-    }
+          } // place atoms
+      } // hits
+    } // left button
 
     return command;
   }
@@ -573,10 +571,10 @@ namespace Avogadro {
       m_comboBondOrder->addItem(tr("Double"));
       m_comboBondOrder->addItem(tr("Triple"));
 
-      QLabel *label3DGen = new QLabel(tr("Generate from smiles:"));
+      QLabel *label3DGen = new QLabel(tr("Generate from SMILES:"));
       m_text3DGen = new QLineEdit(m_settingsWidget);
       m_button3DGen = new QPushButton(m_settingsWidget);
-      m_button3DGen->setText(tr("Place smiles"));
+      m_button3DGen->setText(tr("Insert SMILES"));
       connect(m_button3DGen, SIGNAL(clicked()), this, SLOT(gen3D()));
 
       m_periodicTable = new PeriodicTableDialog(m_settingsWidget);
