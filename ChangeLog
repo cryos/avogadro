@@ -1,7 +1,7 @@
 2007-11-30  Marcus D. Hanwell  <marcus@cryos.org>
 
-	* libavogadro/src/camera.h, libavogadro/src/color.h: Fixed up the 
-	documentation a little.
+	* libavogadro/src/camera.h, libavogadro/src/color.h,
+	libavogadro/src/engine.h: Fixed up the documentation a little.
 
 	* libavogadro/src/engines/ringengine.cpp,
 	libavogadro/src/engines/ringsettingswidget.ui: Make the rings opaque by
