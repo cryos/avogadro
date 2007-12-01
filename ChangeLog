@@ -1,5 +1,11 @@
 2007-11-30  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* -libavogadro/src/engines/axesengine.*,
+	libavogadro/src/engines/CMakeLists.txt, libavogadro/src/glwidget.*,
+	avogadro/src/settingsdialog.*, avogadro/src/mainwindow.*: Moved the
+	axes engine to the GLWidget where it belongs. Added a global
+	configuration option for it too.
+
 	* libavogadro/src/camera.h, libavogadro/src/color.h,
 	libavogadro/src/engine.h: Fixed up the documentation a little.
 
