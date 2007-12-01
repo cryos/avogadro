@@ -138,7 +138,17 @@ namespace Avogadro {
        *
        * Example
        * @code
-       * FIXME
+       * Color *map = colorMap(); // possible custom color map
+       * if (!map) map = pd->colorMap(); // fall back to global color map
+       *
+       * // Get a list of bonds and render them
+       * QList<Primitive *> list;
+       * list = primitives().subList(Primitive::BondType);
+       *
+       * foreach(Primitive *p, list)
+       *   render(static_cast<const Bond *>(p))
+       *
+       * return true;
        * @endcode
        *
        * @note To allow picking to happen you need to push the object type and name.
@@ -163,7 +173,26 @@ namespace Avogadro {
        *
        * Example
        * @code
-       * FIXME
+       * Color *map = colorMap(); // possible custom color map
+       * if (!map) map = pd->colorMap(); // fall back to global color map
+       *
+       * // Get a list of atoms and render the selected ones as transparent spheres
+       * QList<Primitive *> list;
+       * list = primitives().subList(Primitive::AtomType);
+       *
+       * foreach(Primitive *p, list) {
+       *   const Atom *a = static_cast<const Atom *>(p);
+       *
+       *   // Render the selection highlight
+       *   if (pd->isSelected(a)) {
+       *     map->set(0.3, 0.6, 1.0, 0.7);
+       *     glEnable(GL_BLEND);
+       *     pd->painter()->setColor(map);
+       *     pd->painter()->setName(a);
+       *     pd->painter()->drawSphere(a->pos(), 0.1 + radius( a ));
+       *     glDisable(GL_BLEND);
+       *   }
+       * }
        * @endcode
        *
        * @note To allow picking to happen you need to push the object type and name.
