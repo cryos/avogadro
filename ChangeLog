@@ -1,5 +1,7 @@
 2007-11-30  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/engines/debugengine.cpp: Small fix to use painter.
+
 	* -libavogadro/src/engines/axesengine.*,
 	libavogadro/src/engines/CMakeLists.txt, libavogadro/src/glwidget.*,
 	avogadro/src/settingsdialog.*, avogadro/src/mainwindow.*: Moved the

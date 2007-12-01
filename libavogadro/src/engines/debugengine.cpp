@@ -52,7 +52,7 @@ bool DebugEngine::renderOpaque(PainterDevice *pd)
 {
   QList<Primitive *> list;
 
-  glColor3f( 1.0, 1.0, 1.0 );
+  pd->painter()->setColor(1.0, 1.0, 1.0);
 
   int x = 0, y = 0;
   y += pd->painter()->drawText(x, y, "---- Debug Information ----");
