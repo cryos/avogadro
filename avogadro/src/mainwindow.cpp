@@ -286,6 +286,16 @@ namespace Avogadro
     reloadTabbedTools();
   }
 
+  bool MainWindow::renderAxes() const
+  {
+    return d->glWidget->renderAxes();
+  }
+
+  void MainWindow::setRenderAxes(bool render)
+  {
+    d->glWidget->setRenderAxes(render);
+  }
+
   void MainWindow::reloadTabbedTools()
   {
     if(d->toolSettingsDock)

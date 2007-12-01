@@ -171,7 +171,8 @@ namespace Avogadro {
 #endif
                         painter( 0 ),
                         map( 0), 
-                        defaultMap( new ElementColor )
+                        defaultMap( new ElementColor ),
+                        renderAxes(false)
     {
       loadEngineFactories();
     }
@@ -232,6 +233,7 @@ namespace Avogadro {
     GLPainter                *painter;
     Color *map; // global color map
     Color *defaultMap; // default fall-back coloring (i.e., by elements)
+    bool                   renderAxes;
   };
 
   QList<EngineFactory *> GLWidgetPrivate::engineFactories;
@@ -550,6 +552,16 @@ namespace Avogadro {
     return d->painter->quality();
   }
 
+  void GLWidget::setRenderAxes(bool renderAxes)
+  {
+    d->renderAxes = renderAxes;
+  }
+
+  bool GLWidget::renderAxes()
+  {
+    return d->renderAxes;
+  }
+
   void GLWidget::render()
   {
     //    QReadLocker readLocker(d->molecule->lock());
@@ -651,11 +663,65 @@ namespace Avogadro {
       d->tool->paint( this );
     }
 
+    // If enabled draw the axes
+    if (d->renderAxes) renderAxesOverlay();
+
     d->painter->end();
 
     // shouldn't we have this disabled?
     // glFlush();
 
+  }
+
+  void GLWidget::renderAxesOverlay()
+  {
+    // Render x, y, z axes as an overlay on the widget
+    // Save the opengl projection matrix and set up an orthogonal projection
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    // Ensure the axes are of the same length
+    double aspectRatio = static_cast<double>(pd->width())/static_cast<double>(pd->height());
+    glOrtho(0, aspectRatio, 0, 1, 0, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    
+    // Don't want any lighting for the axes
+    glDisable(GL_LIGHTING);
+    
+    // Set the origin and calculate the positions of the axes
+    Vector3d origin = Vector3d(0.07, 0.07, -.07);
+    MatrixP3d axisTranslation;
+    axisTranslation.loadTranslation(pd->camera()->transformedXAxis() * 0.06);
+    Vector3d aX = axisTranslation * origin;
+    axisTranslation.loadTranslation(pd->camera()->transformedYAxis() * 0.06);
+    Vector3d aY = axisTranslation * origin;
+    axisTranslation.loadTranslation(pd->camera()->transformedZAxis() * 0.06);
+    Vector3d aZ = axisTranslation * origin;
+    
+    // Draw the axes in red, green and blue so they can be easily identified
+    glBegin(GL_LINES);
+    glColor4f(1.0, 0.0, 0.0, 1.);
+    glVertex3d(origin.x(), origin.y(), origin.z());
+    glVertex3d(aX.x(), aX.y(), aX.z());
+    glColor4f(0.0, 1.0, 0.0, 1.);
+    glVertex3d(origin.x(), origin.y(), origin.z());
+    glVertex3d(aY.x(), aY.y(), aY.z());
+    glColor4f(0.0, 0.0, 1.0, 1.);
+    glVertex3d(origin.x(), origin.y(), origin.z());
+    glVertex3d(aZ.x(), aZ.y(), aZ.z());
+    glEnd();
+    // FIXME Would be good to draw labels on the axes too, can't figure out
+    // how to do that with the current drawText functions in this projection
+    //  gl->painter()->drawText(aX, "x");
+    
+    // restore the original OpenGL projection and lighting
+    glEnable(GL_LIGHTING);
+    glPopMatrix();
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
   }
 
   void GLWidget::paintGL()
@@ -1316,6 +1382,7 @@ namespace Avogadro {
   {
     settings.setValue("background", d->background);
     settings.setValue("quality", d->painter->quality());
+    settings.setValue("renderAxes", d->renderAxes);
 
     int count = d->engines.size();
     settings.beginWriteArray("engines");
@@ -1334,6 +1401,7 @@ namespace Avogadro {
     // Make sure to provide some default values for any settings.value("", DEFAULT) call
     d->painter->setQuality(settings.value("quality", 2).toInt());
     d->background = settings.value("background", QColor(0,0,0)).value<QColor>();
+    d->renderAxes = settings.value("renderAxes", 1).value<bool>();
     int count = settings.beginReadArray("engines");
     for(int i=0; i<count; i++)
       {

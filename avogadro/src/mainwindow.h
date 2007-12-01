@@ -87,6 +87,9 @@ namespace Avogadro {
       bool tabbedTools() const;
       void setTabbedTools(bool tabbedTools);
 
+      bool renderAxes() const;
+      void setRenderAxes(bool render);
+
       void undoStackClean(bool clean);
 
       void clearRecentFiles();

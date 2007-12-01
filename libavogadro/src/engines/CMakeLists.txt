@@ -38,16 +38,6 @@ TARGET_LINK_LIBRARIES(labelengine avogadro-lib
 )
 INSTALL(TARGETS labelengine DESTINATION ${DESTINATION_DIR})
 
-# axes engine
-set(axesengine_SRCS axesengine.cpp)
-qt4_automoc(${axesengine_SRCS})
-ADD_LIBRARY(axesengine SHARED ${axesengine_SRCS} )
-TARGET_LINK_LIBRARIES(axesengine avogadro-lib
-                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
-                                ${OPENGL_LIBRARIES}
-)
-INSTALL(TARGETS axesengine DESTINATION ${DESTINATION_DIR})
-
 # wireframe
 set(wireengine_SRCS wireengine.cpp)
 qt4_automoc(${wireengine_SRCS})

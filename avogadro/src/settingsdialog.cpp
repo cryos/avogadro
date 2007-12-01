@@ -59,12 +59,14 @@ namespace Avogadro {
   {
     m_mainWindow->setPainterQuality(ui.qualitySlider->value());
     m_mainWindow->setTabbedTools(ui.tabbedToolsCheck->isChecked());
+    m_mainWindow->setRenderAxes(ui.renderAxes->isChecked());
   }
 
   void SettingsDialog::loadValues()
   {
     ui.qualitySlider->setValue(m_mainWindow->painterQuality());
     ui.tabbedToolsCheck->setChecked(m_mainWindow->tabbedTools());
+    ui.renderAxes->setChecked(m_mainWindow->renderAxes());
   }
 
 } // end namespace Avogadro

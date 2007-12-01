@@ -367,6 +367,16 @@ namespace Avogadro {
        * @return the global quality of the widget.
        */
       int quality() const;
+    
+      /**
+       * Set to render x, y, z axes as an overlay
+       */
+      void setRenderAxes(bool renderAxes);
+
+      /**
+       * Render x, y, z axes as an overlay on the widget
+       */
+      bool renderAxes();    
 
       void setToolGroup(ToolGroup *toolGroup);
       ToolGroup * toolGroup() const;
@@ -490,6 +500,11 @@ namespace Avogadro {
        * Render the scene. To be used in both modes GL_RENDER and GL_SELECT.
        */
       virtual void render();
+
+      /**
+       * Render x, y, z axes as an overlay on the widget
+       */
+      virtual void renderAxesOverlay();
 
       /**
        * Helper function to load all engine factories
