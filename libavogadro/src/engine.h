@@ -306,7 +306,8 @@ namespace Avogadro {
   };
 
   /**
-   * @class EngineFactory
+   * @class EngineFactory engine.h <avogadro/engine.h>
+   * @brief Generates new instances of the Engine class for which it is defined.
    * @warning This function needs to be looked at again.  It was originally designed
    * so that for a single thread we could have multiple rendering engines.  We have
    * decided that each molecule will have it's own window which will be it's own thread.
@@ -320,12 +321,12 @@ namespace Avogadro {
   {
     public:
       /**
-       * Engine factory deconstructor.
+       * Destructor.
        */
       virtual ~EngineFactory() {}
 
       /**
-       * @return pointer to a new instance of an Engine subclass object
+       * @return pointer to a new instance of an Engine subclass object.
        */
       virtual Engine *createInstance(QObject *parent=0) = 0;
 
