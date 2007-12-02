@@ -1,4 +1,9 @@
-2007-12-02 Tim Vandermeersch <tim.vandermeersch@gmail.com>
+2007-12-01  Marcus D. Hanwell <marcus@cryos.org>
+
+	* libavogadro/src/engine.h, libavogadro/src/tool.h: More enhancements
+	for the documentation of these classes.
+
+2007-12-01  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extentions/forcefieldextension.*: Added a progress bar
 	to Systematic Rotor Search. Random and Weighted Rotor Search still
