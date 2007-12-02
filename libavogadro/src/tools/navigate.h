@@ -33,7 +33,7 @@ namespace Avogadro {
 
   /**
    * @class Navigate
-   * @brief Navigation functions common to several tools
+   * @brief Navigation functions common to several tools.
    * @author Marcus D. Hanwell
    *
    * This class contains navigation functions that are used
@@ -42,9 +42,13 @@ namespace Avogadro {
   class Navigate
   {
     public:
-      //! Constructor
+      /**
+       * Constructor.
+       */
       Navigate();
-      //! Deconstructor
+      /**
+       * Destructor.
+       */
       virtual ~Navigate();
 
       /**
@@ -74,7 +78,7 @@ namespace Avogadro {
       static void rotate(GLWidget *widget, const Eigen::Vector3d &center, double deltaX, double deltaY);
 
       /**
-       * Tilt about center by the amount delta z axis.#
+       * Tilt about center by the amount delta z axis.
        * @param widget the GLWidget being operated on.
        * @param center the point at the center of rotation.
        * @param delta the amount to rotate about the z axis in degrees.
