@@ -19,8 +19,8 @@ if(NOT WIN32)
 
   pkgconfig(openbabel-2.0 _obIncDir _obLinkDir _obLinkFlags _obCflags)
 
-  # query pkg-config asking for a openbabel >= 2.1.0
-  exec_program(${PKGCONFIG_EXECUTABLE} ARGS --atleast-version=2.1.0 openbabel-2.0 RETURN_VALUE _return_VALUE OUTPUT_VARIABLE _pkgconfigDevNull )
+  # query pkg-config asking for a openbabel >= 2.2.0
+  exec_program(${PKGCONFIG_EXECUTABLE} ARGS --atleast-version=2.2.0 openbabel-2.0 RETURN_VALUE _return_VALUE OUTPUT_VARIABLE _pkgconfigDevNull )
   if(_return_VALUE STREQUAL "0")
 	set(OPENBABEL_MINI_FOUND TRUE)
   endif(_return_VALUE STREQUAL "0")
@@ -70,11 +70,11 @@ endif(NOT WIN32)
 
   if (OPENBABEL2_FOUND)
     if (NOT OpenBabel2_FIND_QUIETLY)
-      message(STATUS "Found OpenBabel 2.1 or later: ${OPENBABEL2_LIBRARIES}")
+      message(STATUS "Found OpenBabel 2.2 or later: ${OPENBABEL2_LIBRARIES}")
     endif (NOT OpenBabel2_FIND_QUIETLY)
   else (OPENBABEL2_FOUND)
     if (OpenBabel2_FIND_REQUIRED)
-      message(FATAL_ERROR "Could NOT find OpenBabel 2.1 or later ")
+      message(FATAL_ERROR "Could NOT find OpenBabel 2.2 or later ")
     endif (OpenBabel2_FIND_REQUIRED)
   endif (OPENBABEL2_FOUND)
 
@@ -91,7 +91,7 @@ if(OPENBABEL2_EXECUTABLE)
 else(OPENBABEL2_EXECUTABLE)
   find_program(OPENBABEL2_EXECUTABLE NAMES babel
     PATHS
-    [HKEY_CURRENT_USER\\SOFTWARE\\OpenBabel\ 2.1.0]
+    [HKEY_CURRENT_USER\\SOFTWARE\\OpenBabel\ 2.2.0]
     $ENV{OPENBABEL2_EXECUTABLE}
   )
 
