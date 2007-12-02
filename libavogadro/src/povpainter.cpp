@@ -68,16 +68,6 @@ namespace Avogadro
 
   }
 
-  void POVPainter::setName (const Primitive *)
-  {
-    // This is not currently used for the POVPainter
-  }
-
-  void POVPainter::setName (Primitive::Type,  int)
-  {
-    // This is not currently used for the POVPainter
-  }
-
   void POVPainter::setColor (const Color *color)
   {
     d->color = *color;

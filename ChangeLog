@@ -1,8 +1,12 @@
 2007-12-01  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/engine.h, libavogadro/src/tool.h,
-	libavogadro/src/glwidget.h, libavogadro/src/glpainter.h: More
+	libavogadro/src/glwidget.h, libavogadro/src/painter.h,
+	libavogadro/src/glpainter.h, libavogadro/src/povpainter.h: More
 	enhancements for the documentation of these classes.
+
+	* libavogadro/src/povpainter.*: Moved empty implementations to the
+	header to show more clearly that they do not do anything.
 
 2007-12-01  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 

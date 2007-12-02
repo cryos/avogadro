@@ -45,6 +45,8 @@ namespace Avogadro
    * This class implements the base Painter class using OpenGL. It is intended 
    * to be used with the GLWidget to render molecules and other constructs to
    * an OpenGL context.
+   *
+   * @sa Painter
    */
   class GLWidget;
   class GLPainterPrivate;
@@ -60,7 +62,7 @@ namespace Avogadro
       GLPainter (int quality=-1);
 
       /**
-       * Destructor
+       * Destructor.
        */
       ~GLPainter();
 
@@ -77,13 +79,13 @@ namespace Avogadro
       int quality() const;
 
       /**
-       * Uses the primitive to set the type and name if the Paint Device supports that.
+       * Uses the primitive to set the type and name if the Paint Device supports it.
        * @param primitive the primitive about to be drawn.
        */
       void setName (const Primitive *primitive);
 
       /**
-       * Uses the primitive to set the type and name if the Paint Device supports that.
+       * Sets the primitive type and id.
        * @param type the primitive type about to be drawn.
        * @param id the primitive id.
        */
