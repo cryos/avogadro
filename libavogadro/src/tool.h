@@ -42,7 +42,7 @@ namespace Avogadro {
   class Molecule;
 
   /**
-   * @class Tool
+   * @class Tool tool.h <avogadro/tool.h>
    * @brief Interface for tool plugins
    * @author Donald Ephraim Curtis
    *
@@ -56,13 +56,34 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
+      /**
+       * Constructor
+       */
       Tool(QObject *parent = 0);
+
+      /**
+       * Destructor
+       */
       virtual ~Tool();
 
+      /**
+       * @return the name of the tool.
+       */
       virtual QString name() const;
+
+      /**
+       * @return a description of the tool.
+       */
       virtual QString description() const;
 
+      /**
+       * @return the QAction of the tool
+       */
       virtual QAction* activateAction() const;
+
+      /**
+       * @return the settings widget for the tool.
+       */
       virtual QWidget* settingsWidget();
 
       /**
@@ -117,22 +138,32 @@ namespace Avogadro {
       bool operator<(const Tool &other) const;
 
     Q_SIGNALS:
+      /**
+       * Can be used to add messages to the message pane.
+       * @param m the message to add to the message pane.
+       */
       void message(const QString &m);
 
     protected:
       ToolPrivate *const d;
   };
 
+  /**
+   * @class ToolFactory tool.h <avogadro/tool.h>
+   * @brief Generates new instances of the Tool class for which it is defined.
+   *
+   * Generates new instances of the Tool class for which it is defined.
+   */
   class A_EXPORT ToolFactory
   {
     public:
       /**
-       * Tool factory deconstructor.
+       * Destructor.
        */
       virtual ~ToolFactory() {}
 
       /**
-       * @return pointer to a new instance of an Engine subclass object
+       * @return pointer to a new instance of an Engine subclass object.
        */
       virtual Tool *createInstance(QObject *parent=0) = 0;
   };
