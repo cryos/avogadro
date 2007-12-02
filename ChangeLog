@@ -1,8 +1,8 @@
 2007-12-01  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/engine.h, libavogadro/src/tool.h,
-	libavogadro/src/glwidget.h: More enhancements for the documentation of
-	these classes.
+	libavogadro/src/glwidget.h, libavogadro/src/glpainter.h: More
+	enhancements for the documentation of these classes.
 
 2007-12-01  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
