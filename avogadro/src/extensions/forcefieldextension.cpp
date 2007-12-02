@@ -284,19 +284,29 @@ namespace Avogadro
         m_mutex.unlock();
         emit stepsTaken( (int) ((double) m_cycles / n * 100));
       }
-      
    } else if ( m_task == 2 ) {
-      m_forceField->RandomRotorSearch(100, 50);
-      m_forceField->ConjugateGradients(250);
-      m_forceField->UpdateCoordinates( *m_molecule );
-      m_molecule->update();
+      m_forceField->RandomRotorSearchInitialize(100, m_nSteps);
+      while (m_forceField->RandomRotorSearchNextConformer(m_nSteps)) {
+        m_forceField->UpdateCoordinates( *m_molecule );
+        m_molecule->update();
+	m_cycles++;
+        m_mutex.lock();
+        if ( m_stop ) {
+          m_mutex.unlock();
+          break;
+        }
+        m_mutex.unlock();
+        emit stepsTaken( m_cycles );
+      }
     } else if ( m_task == 3 ) {
       m_forceField->WeightedRotorSearch(100, 50);
       m_forceField->ConjugateGradients(250);
-      m_forceField->UpdateCoordinates( *m_molecule );
-      m_molecule->update();
     }
-
+    
+    // final update
+    m_forceField->UpdateCoordinates( *m_molecule );
+    m_molecule->update();
+ 
     m_textEdit->append( QObject::tr( buff.str().c_str() ) );
     m_stop = false;
   }
