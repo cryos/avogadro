@@ -57,7 +57,8 @@ namespace Avogadro {
        * @param goal the point that is being zoomed toward.
        * @param delta the amount to zoom by.
        */
-      static void zoom(GLWidget *widget, const Eigen::Vector3d &goal, double delta);
+      static void zoom(GLWidget *widget, const Eigen::Vector3d &goal,
+                       double delta);
 
       /**
        * Translate between the from and to positions relative to what.
@@ -66,7 +67,8 @@ namespace Avogadro {
        * @param from the starting position.
        * @param to the ending position.
        */
-      static void translate(GLWidget *widget, const Eigen::Vector3d &what, const QPoint &from, const QPoint &to);
+      static void translate(GLWidget *widget, const Eigen::Vector3d &what,
+                            const QPoint &from, const QPoint &to);
 
       /**
        * Rotate about center by the amounts deltaX and deltaY in tha x and y axes.
@@ -75,7 +77,8 @@ namespace Avogadro {
        * @param deltaX the amount to rotate about the x axis in degrees.
        * @param deltaY the amount to rotate about the y axis in degrees.
        */
-      static void rotate(GLWidget *widget, const Eigen::Vector3d &center, double deltaX, double deltaY);
+      static void rotate(GLWidget *widget, const Eigen::Vector3d &center,
+                         double deltaX, double deltaY);
 
       /**
        * Tilt about center by the amount delta z axis.
@@ -83,7 +86,8 @@ namespace Avogadro {
        * @param center the point at the center of rotation.
        * @param delta the amount to rotate about the z axis in degrees.
        */
-      static void tilt(GLWidget *widget, const Eigen::Vector3d &center, double delta);
+      static void tilt(GLWidget *widget, const Eigen::Vector3d &center, 
+                       double delta);
   };
 
 }
