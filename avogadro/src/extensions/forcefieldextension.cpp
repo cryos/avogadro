@@ -40,7 +40,9 @@ namespace Avogadro
   {
     OptimizeGeometryIndex = 0,
     CalculateEnergyIndex,
-    RotorSearchIndex,
+    SystematicRotorSearchIndex,
+    RandomRotorSearchIndex,
+    WeightedRotorSearchIndex,
     SetupForceFieldIndex
   };
 
@@ -63,10 +65,20 @@ namespace Avogadro
       m_actions.append( action );
       
       action = new QAction( this );
-      action->setText( tr("Rotor Search" ));
-      action->setData(RotorSearchIndex);
+      action->setText( tr("Systematic Rotor Search" ));
+      action->setData(SystematicRotorSearchIndex);
       m_actions.append( action );
       
+      action = new QAction( this );
+      action->setText( tr("Random Rotor Search" ));
+      action->setData(RandomRotorSearchIndex);
+      m_actions.append( action );
+      
+      action = new QAction( this );
+      action->setText( tr("Weighted Rotor Search" ));
+      action->setData(WeightedRotorSearchIndex);
+      m_actions.append( action );
+ 
       action = new QAction( this );
       action->setText( tr("Setup Force Field..." ));
       action->setData(SetupForceFieldIndex);
@@ -88,7 +100,9 @@ namespace Avogadro
     int i = action->data().toInt();
     switch(i) {
       case CalculateEnergyIndex:
-      case RotorSearchIndex:
+      case SystematicRotorSearchIndex:
+      case RandomRotorSearchIndex:
+      case WeightedRotorSearchIndex:
       case SetupForceFieldIndex:
         return tr("&Extensions") + ">" + tr("&Molecular Mechanics");
         break;
@@ -137,13 +151,29 @@ namespace Avogadro
         m_forceField->Energy();
         textEdit->append( tr( buff.str().c_str() ) );
         break;
-      case RotorSearchIndex: // random rotor search
+      case SystematicRotorSearchIndex: // systematic rotor search
         if (!m_forceField)
           break;
 
         undo = new ForceFieldCommand( molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(),
                                     m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 1 );
-        undo->setText( QObject::tr( "Rotor Search" ) );
+        undo->setText( QObject::tr( "Systematic Rotor Search" ) );
+        break;
+      case RandomRotorSearchIndex: // random rotor search
+        if (!m_forceField)
+          break;
+
+        undo = new ForceFieldCommand( molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(),
+                                    m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 2 );
+        undo->setText( QObject::tr( "Random Rotor Search" ) );
+        break;
+      case WeightedRotorSearchIndex: // random rotor search
+        if (!m_forceField)
+          break;
+
+        undo = new ForceFieldCommand( molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(),
+                                    m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 3 );
+        undo->setText( QObject::tr( "Weighted Rotor Search" ) );
         break;
 
       case OptimizeGeometryIndex: // geometry optimization
@@ -241,6 +271,26 @@ namespace Avogadro
         }
       }
     } else if ( m_task == 1 ) {
+      int n = m_forceField->SystematicRotorSearchInitialize(m_nSteps);
+      while (m_forceField->SystematicRotorSearchNextConformer(m_nSteps)) {
+        m_forceField->UpdateCoordinates( *m_molecule );
+        m_molecule->update();
+	m_cycles++;
+        m_mutex.lock();
+        if ( m_stop ) {
+          m_mutex.unlock();
+          break;
+        }
+        m_mutex.unlock();
+        emit stepsTaken( (int) ((double) m_cycles / n * 100));
+      }
+      
+   } else if ( m_task == 2 ) {
+      m_forceField->RandomRotorSearch(100, 50);
+      m_forceField->ConjugateGradients(250);
+      m_forceField->UpdateCoordinates( *m_molecule );
+      m_molecule->update();
+    } else if ( m_task == 3 ) {
       m_forceField->WeightedRotorSearch(100, 50);
       m_forceField->ConjugateGradients(250);
       m_forceField->UpdateCoordinates( *m_molecule );
@@ -261,6 +311,7 @@ namespace Avogadro
                                     QTextEdit *textEdit, int forceFieldID, int nSteps, int algorithm,
                                     int gradients, int convergence, int task ) :
       m_nSteps( nSteps ),
+      m_task( task ),
       m_molecule( molecule ),
       m_textEdit( textEdit ),
       m_thread( 0 ),
@@ -292,8 +343,20 @@ namespace Avogadro
   void ForceFieldCommand::redo()
   {
     if(!m_dialog) {
-      m_dialog = new QProgressDialog( QObject::tr( "Forcefield Optimization" ),
-                                      QObject::tr( "Cancel" ), 0,  m_nSteps );
+      if ( m_task == 0 )
+        m_dialog = new QProgressDialog( QObject::tr( "Forcefield Optimization" ),
+                                        QObject::tr( "Cancel" ), 0,  m_nSteps );
+      else if ( m_task == 1)
+        m_dialog = new QProgressDialog( QObject::tr( "Systematic Rotor Search" ),
+                                        QObject::tr( "Cancel" ), 0,  100 );
+      else if ( m_task == 2)
+        m_dialog = new QProgressDialog( QObject::tr( "Random Rotor Search" ),
+                                        QObject::tr( "Cancel" ), 0,  100 );
+      else if ( m_task == 3)
+        m_dialog = new QProgressDialog( QObject::tr( "Weighted Rotor Search" ),
+                                        QObject::tr( "Cancel" ), 0,  100 );
+
+
       QObject::connect( m_thread, SIGNAL( stepsTaken( int ) ), m_dialog, SLOT( setValue( int ) ) );
       QObject::connect( m_dialog, SIGNAL( canceled() ), m_thread, SLOT( stop() ) );
       QObject::connect( m_thread, SIGNAL( finished() ), m_dialog, SLOT( close() ) );

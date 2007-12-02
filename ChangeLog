@@ -1,3 +1,9 @@
+2007-12-02 Tim Vandermeersch <tim.vandermeersch@gmail.com>
+
+	* avogadro/src/extentions/forcefieldextension.*: Added a progress bar
+	to Systematic Rotor Search. Random and Weighted Rotor Search still
+	need to be split in OB.
+
 2007-11-30  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engines/debugengine.cpp: Small fix to use painter.

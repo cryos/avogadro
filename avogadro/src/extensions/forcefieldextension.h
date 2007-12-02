@@ -147,6 +147,7 @@ namespace Avogadro {
      Molecule m_moleculeCopy;
      
      int m_nSteps;
+     int m_task;
      Molecule *m_molecule;
      QTextEdit *m_textEdit;
      
