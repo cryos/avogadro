@@ -41,67 +41,91 @@ namespace Avogadro {
 
   /**
    * @class NavigateTool
-   * @brief Navigation tool
+   * @brief Navigation tool for moving the camera around the molecule.
    * @author Marcus D. Hanwell
    *
-   * This class implements navigation around the scene.
+   * This class implements navigation of the camera around the molecule being
+   * displayed. It attempts to do this in the most intuitive way possible
+   * offering both atom centric (if an atom has been clicked on) and scene
+   * centric (if no atom has been clicked on) navigation.
    */
   class Eyecandy;
   class NavigateTool : public Tool
   {
     Q_OBJECT
 
-    public:
-      //! Constructor
-      NavigateTool(QObject *parent = 0);
-      //! Deconstructor
-      virtual ~NavigateTool();
+  public:
+    /**
+     * Constructor.
+     */
+    NavigateTool(QObject *parent = 0);
+    /**
+     * Destructor.
+     */
+    virtual ~NavigateTool();
 
-      //! \name Description methods
-      //@{
-      //! Tool Name (ie Draw)
-      virtual QString name() const { return(tr("Navigate")); }
-      //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Navigation Tool")); }
-      //@}
+    /**
+     * @name Description methods
+     * @{
+     * Tool Name (i.e. Navigate)
+     */ 
+     virtual QString name() const { return(tr("Navigate")); }
+     
+    /**
+     *Tool Description (i.e. Navigation Tool)
+     */
+    virtual QString description() const { return(tr("Navigation Tool")); }
+    //@}
 
-      //! \name Tool Methods
-      //@{
-      //! \brief Callback methods for ui.actions on the canvas.
-      /*!
-      */
-      virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
+    /** \name Tool Methods
+     * @{
+     * @brief Callback methods for ui.actions on the canvas.
+     */
+    virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event);
+    virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event);
+    virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
+    virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
+    //@}
 
-      virtual int usefulness() const;
+    /**
+     * @return the relative usefulness of the tool - affects the order in which
+     * the tools are displayed.
+     */
+    virtual int usefulness() const;
 
-      virtual bool paint(GLWidget *widget);
+    /**
+     * The paint method of the tool which is used to paint any tool specific
+     * visuals to the GLWidget.
+     */
+    virtual bool paint(GLWidget *widget);
       
-    protected:
-      Atom *              m_clickedAtom;
-      bool                m_leftButtonPressed;  // rotation
-      bool                m_midButtonPressed;   // scale / zoom
-      bool                m_rightButtonPressed; // translation
-      double m_yAngleEyecandy, m_xAngleEyecandy;
+  protected:
+    Atom *              m_clickedAtom;
+    bool                m_leftButtonPressed;  // rotation
+    bool                m_midButtonPressed;   // scale / zoom
+    bool                m_rightButtonPressed; // translation
+    double m_yAngleEyecandy, m_xAngleEyecandy;
 
-      //! Temporary var for adding selection box
-      GLuint              m_selectedPrimitivesDL;
-
-      QPoint              m_lastDraggingPosition;
+    QPoint              m_lastDraggingPosition;
       
-      Eyecandy * m_eyecandy;
+    Eyecandy * m_eyecandy;
   };
 
+  /**
+   * @class NavigateToolFactory navigatetool.h
+   * @brief Factory class to create instances of the NavigateTool class.
+   */
   class NavigateToolFactory : public QObject, public ToolFactory
-    {
-      Q_OBJECT
-      Q_INTERFACES(Avogadro::ToolFactory)
+  {
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::ToolFactory)
 
-      public:
-        Tool *createInstance(QObject *parent = 0) { return new NavigateTool(parent); }
-    };
+  public:
+    /**
+     * Creates an instance of the NavigateTool class.
+     */
+    Tool *createInstance(QObject *parent = 0) { return new NavigateTool(parent); }
+  };
 
 } // end namespace Avogadro
 
