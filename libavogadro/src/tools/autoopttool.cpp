@@ -456,12 +456,16 @@ namespace Avogadro {
 
   void AutoOptThread::run()
   {
+    m_forceField->SetLogFile(NULL);
+    m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
+ 
     if ( !m_forceField->Setup( *m_molecule ) ) {
       qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
       m_stop = true;
       emit finished(false);
       return;
     }
+    
     if(m_algorithm == 0)
     {
       m_forceField->SteepestDescent(2,pow(10.0, -m_convergence ), 
