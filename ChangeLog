@@ -1,3 +1,8 @@
+2007-12-03  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/autoopttool.cpp: Added IsSetupNeeded check to
+	increase performance.
+
 2007-12-01  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/engine.h, libavogadro/src/tool.h,

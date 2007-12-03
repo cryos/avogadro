@@ -424,7 +424,7 @@ namespace Avogadro {
   {
     if (m_running && calculated)
     {
-      m_forceField->UpdateCoordinates( *m_glwidget->molecule() );
+      m_forceField->GetCoordinates( *m_glwidget->molecule() );
       if(m_clickedAtom && m_leftButtonPressed)
       {
         Vector3d begin = m_glwidget->camera()->project(m_clickedAtom->pos());
@@ -459,12 +459,16 @@ namespace Avogadro {
     m_forceField->SetLogFile(NULL);
     m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
  
-    if ( !m_forceField->Setup( *m_molecule ) ) {
-      qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
-      m_stop = true;
-      emit finished(false);
-      return;
-    }
+    if ( m_forceField->IsSetupNeeded( *m_molecule ) ) {
+      if ( !m_forceField->Setup( *m_molecule ) ) {
+        qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
+        m_stop = true;
+        emit finished(false);
+        return;
+      }
+      cout << "SETUP" << endl;
+    }  
+    m_forceField->SetConformers( *m_molecule );
     
     if(m_algorithm == 0)
     {
