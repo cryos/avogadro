@@ -115,7 +115,7 @@ namespace Avogadro {
     glMaterialf( GL_FRONT, GL_SHININESS, 1.0 );
   }
 
-  void Color::setName(QString name)
+  void Color::setName(const QString& name)
   {
     m_name = name;
   }

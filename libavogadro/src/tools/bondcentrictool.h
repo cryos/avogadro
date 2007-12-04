@@ -360,7 +360,7 @@ namespace Avogadro {
        * @param molecule The molecule to store for undoing.
        * @param parent The parent undo command, or nothing.
        */
-      BondCentricMoveCommand(Molecule *molecule, QUndoCommand *parent = 0);
+      explicit BondCentricMoveCommand(Molecule *molecule, QUndoCommand *parent = 0);
 
       //!Constructor
       /**

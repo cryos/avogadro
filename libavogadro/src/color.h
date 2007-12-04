@@ -126,7 +126,7 @@ namespace Avogadro {
     /**
      * Set the name of this instance of the class.
      */
-    virtual void setName(QString name);
+    virtual void setName(const QString& name);
     /**
      * @return the name of this instance of the class.
      */
