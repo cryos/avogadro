@@ -33,8 +33,8 @@
 #include <openbabel/obiter.h>
 #include <eigen/regression.h>
 
-#include <QtPlugin>
 #include <QMessageBox>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;

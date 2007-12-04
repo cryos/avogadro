@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "sphereengine.h"
 #include <config.h>
+#include "sphereengine.h"
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
@@ -34,8 +34,8 @@
 #include <openbabel/obiter.h>
 #include <eigen/regression.h>
 
-#include <QtPlugin>
 #include <QMessageBox>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;

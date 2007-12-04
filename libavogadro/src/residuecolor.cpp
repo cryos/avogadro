@@ -23,13 +23,9 @@
  **********************************************************************/
 
 #include <config.h>
-#include <avogadro/primitive.h>
 #include "residuecolor.h"
 
-#include <openbabel/atom.h>
-#include <openbabel/data.h>
-
-#include <QDebug>
+#include <avogadro/primitive.h>
 
 using namespace OpenBabel;
 

@@ -25,9 +25,11 @@
 
 #include "textrenderer.h"
 
-#include<QPainter>
-#include<avogadro/glwidget.h>
-#include<avogadro/camera.h>
+#include <avogadro/glwidget.h>
+
+#include <QPainter>
+#include <QHash>
+#include <QDebug>
 
 #define OUTLINE_WIDTH     3
 const int OUTLINE_BRUSH[2*OUTLINE_WIDTH+1][2*OUTLINE_WIDTH+1]

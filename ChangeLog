@@ -1,7 +1,14 @@
+2007-12-04  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/*, avogadro/*: Update headers using script based on
+	fixkdeincludes. Removes a *huge* pile of un-needed #include
+	statments in both *.h and *.cpp files. Should improve compilation
+	time.
+
 2007-12-04  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extrentions/: Added constraints dialog (see mailing
-	list)
+	list).
 
 2007-12-03  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 

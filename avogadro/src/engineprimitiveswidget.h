@@ -25,8 +25,6 @@
 #ifndef __ENGINESETUPWIDGET_H
 #define __ENGINESETUPWIDGET_H
 
-#include <QObject>
-#include <QTabWidget>
 
 #include "ui_engineprimitiveswidget.h"
 

@@ -24,19 +24,12 @@
 
 #include <config.h>
 #include "bsdyengine.h"
-
-#include <avogadro/primitive.h>
-#include <avogadro/color.h>
-#include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
+#include <avogadro/painter.h>
+#include <avogadro/color.h>
 
-#include <openbabel/obiter.h>
-#include <eigen/regression.h>
-
-#include <QMessageBox>
-#include <QSlider>
-#include <QtPlugin>
-#include <QVBoxLayout>
+#include <QGLWidget> // for OpenGL bits
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;

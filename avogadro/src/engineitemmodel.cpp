@@ -50,7 +50,7 @@ namespace Avogadro {
     endInsertRows();
   }
 
-  void EngineItemModel::removeEngine(Engine *engine)
+  void EngineItemModel::removeEngine(Engine *)
   {
     // FIXME: hack to get remove working
     reset();

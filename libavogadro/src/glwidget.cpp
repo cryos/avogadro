@@ -26,24 +26,18 @@
 
 #include <config.h>
 
-#include "glpainter.h"
-#include "painterdevice.h"
+#include <avogadro/glwidget.h>
+#include <avogadro/glpainter.h>
+#include <avogadro/painterdevice.h>
+#include <avogadro/toolgroup.h>
+
 #include "elementcolor.h"
 
-#include <avogadro/glwidget.h>
-#include <avogadro/camera.h>
-#include <avogadro/toolgroup.h>
-#include <avogadro/primitivelist.h>
-
-#include <openbabel/generic.h>
-
-#include <QDir>
-#include <QMouseEvent>
-#include <QPluginLoader>
 #include <QUndoStack>
-#include <QGLContext>
-#include <QReadLocker>
-#include <QSettings>
+#include <QDir>
+#include <QPluginLoader>
+
+#include <QDebug>
 
 #include <stdio.h>
 #include <vector>

@@ -27,7 +27,6 @@
 
 #include <avogadro/global.h>
 
-#include <openbabel/mol.h>
 #include <eigen/matrix.h>
 #include <QGLWidget>
 

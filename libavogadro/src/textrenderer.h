@@ -26,11 +26,9 @@
 #ifndef __TEXTRENDERER_H
 #define __TEXTRENDERER_H
 
-#include<QHash>
-#include<QFont>
-#include<eigen/vector.h>
-#include<avogadro/global.h>
-#include<QGLWidget>
+#include <avogadro/global.h>
+#include <eigen/vector.h>
+
 
 /** 
  * @class TextRenderer

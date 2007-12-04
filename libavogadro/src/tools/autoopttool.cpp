@@ -32,6 +32,7 @@
 #include <openbabel/obiter.h>
 #include <openbabel/mol.h>
 
+#include <QDebug>
 #include <QtPlugin>
 #include <QLabel>
 #include <QVBoxLayout>

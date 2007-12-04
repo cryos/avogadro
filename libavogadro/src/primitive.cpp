@@ -25,10 +25,9 @@
 #include <config.h>
 
 #include <avogadro/primitive.h>
-#include <QDebug>
-#include <QReadWriteLock>
 #include <eigen/regression.h>
-#include <openbabel/obiter.h>
+
+#include <QReadWriteLock>
 
 using namespace OpenBabel;
 

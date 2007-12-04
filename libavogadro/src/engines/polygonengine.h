@@ -28,7 +28,6 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
-#include <openbabel/mol.h>
 
 namespace Avogadro {
   

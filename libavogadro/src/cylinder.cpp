@@ -23,6 +23,7 @@
  **********************************************************************/
 
 #include "cylinder.h"
+#include <QGLWidget>
 
 using namespace Eigen;
 

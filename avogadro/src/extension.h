@@ -25,18 +25,14 @@
 #ifndef __EXTENSION_H
 #define __EXTENSION_H
 
-#include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
-#include <QGLWidget>
-#include <QList>
-#include <QObject>
-#include <QString>
-#include <QTextEdit>
 #include <QVector>
 
 class QDockWidget;
 class QUndoCommand;
+class QTextEdit;
+
 namespace Avogadro {
 
   /**

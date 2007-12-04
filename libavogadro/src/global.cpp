@@ -23,11 +23,9 @@
  **********************************************************************/
 
 #include <avogadro/global.h>
-#include "config.h"
+#include <config.h>
 
 #include <QLocale>
-#include <QString>
-#include <QTranslator>
 
 namespace Avogadro
 {

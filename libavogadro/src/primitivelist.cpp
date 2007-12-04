@@ -23,13 +23,10 @@
  **********************************************************************/
 
 #include <config.h>
-
+#include <avogadro/primitive.h>
 #include <avogadro/primitivelist.h>
-#include <QDebug>
-#include <eigen/regression.h>
-#include <openbabel/obiter.h>
 
-using namespace OpenBabel;
+#include <QVector>
 
 namespace Avogadro {
 

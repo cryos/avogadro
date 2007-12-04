@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "ribbonengine.h"
 #include <config.h>
+#include "ribbonengine.h"
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
@@ -32,7 +32,6 @@
 #include <openbabel/obiter.h>
 #include <eigen/regression.h>
 
-#include <QtPlugin>
 #include <QMessageBox>
 #include <QString>
 #include <QDebug>

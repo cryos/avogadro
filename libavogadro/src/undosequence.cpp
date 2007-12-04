@@ -22,6 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include <config.h>
 #include <avogadro/undosequence.h>
 
 namespace Avogadro {

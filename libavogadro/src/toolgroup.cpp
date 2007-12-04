@@ -25,13 +25,13 @@
 #include <config.h>
 
 #include <avogadro/toolgroup.h>
-#include <avogadro/tool.h>
-#include <avogadro/primitive.h>
 
 #include <QActionGroup>
-#include <QDir>
-#include <QDebug>
+#include <QAction>
 #include <QPluginLoader>
+#include <QDir>
+
+#include <QDebug>
 
 using namespace std;
 namespace Avogadro {

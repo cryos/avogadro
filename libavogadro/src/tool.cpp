@@ -22,13 +22,11 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <avogadro/tool.h>
-#include <avogadro/glwidget.h>
-#include <avogadro/primitive.h>
+#include <config.h>
+#include "tool.h"
 
 #include <QAction>
-#include <QUndoCommand>
-#include <QWidget>
+#include <QIcon>
 
 namespace Avogadro {
 

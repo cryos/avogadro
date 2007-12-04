@@ -23,9 +23,8 @@
  **********************************************************************/
 
 #include <config.h>
-
-#include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
+#include <avogadro/glwidget.h>
 
 using namespace Eigen;
 

@@ -27,11 +27,11 @@
 #include "glpainter.h"
 
 #include <avogadro/glwidget.h>
-#include <avogadro/primitive.h>
-#include "textrenderer.h"
-#include "cylinder.h"
 #include "sphere.h"
-#include "color.h"
+#include "cylinder.h"
+#include "textrenderer.h"
+
+#include <QDebug>
 
 namespace Avogadro
 {

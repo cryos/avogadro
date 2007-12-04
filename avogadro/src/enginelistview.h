@@ -22,7 +22,6 @@
 #ifndef __ENGINELISTVIEW_H
 #define __ENGINELISTVIEW_H
 
-#include <QObject>
 #include <QListView>
 
 class QAbstractButton;

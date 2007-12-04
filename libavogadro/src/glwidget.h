@@ -33,12 +33,6 @@
 #include <avogadro/painter.h>
 #include <avogadro/camera.h>
 
-#include <QGLWidget>
-#include <QDebug>
-
-#include <QMutex>
-#include <QWaitCondition>
-#include <QSettings>
 #include <QThread>
 
 #include <vector>

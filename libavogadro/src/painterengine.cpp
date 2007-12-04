@@ -23,11 +23,12 @@
  **********************************************************************/
 
 #include "painterengine.h"
-
+#include <avogadro/sphere.h>
+#include <avogadro/cylinder.h>
+#include <avogadro/textrenderer.h>
 #include <avogadro/glwidget.h>
-#include "textrenderer.h"
-#include "cylinder.h"
-#include "sphere.h"
+
+#include <QDebug>
 
 namespace Avogadro
 {

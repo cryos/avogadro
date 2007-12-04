@@ -28,7 +28,6 @@
 #include <avogadro/global.h>
 #include <avogadro/primitive.h>
 
-#include <QList>
 
 namespace Avogadro
 {

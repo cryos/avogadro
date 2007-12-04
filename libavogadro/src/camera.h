@@ -26,8 +26,8 @@
 #define __CAMERA_H
 
 #include <avogadro/global.h>
-
 #include <eigen/projective.h>
+#include <QPoint>
 
 namespace Avogadro {
 

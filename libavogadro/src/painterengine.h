@@ -27,9 +27,7 @@
 
 #include <avogadro/global.h>
 #include <eigen/vector.h>
-#include <QObject>
 #include <QPoint>
-#include <QString>
 
 namespace Avogadro
 {

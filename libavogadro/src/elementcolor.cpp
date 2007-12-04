@@ -24,10 +24,8 @@
 
 #include <config.h>
 #include <avogadro/primitive.h>
-#include "elementcolor.h"
 
-#include <openbabel/atom.h>
-#include <openbabel/data.h>
+#include "elementcolor.h"
 
 using namespace OpenBabel;
 

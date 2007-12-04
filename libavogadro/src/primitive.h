@@ -29,7 +29,6 @@
 
 #include <openbabel/mol.h>
 
-#include <QObject>
 #include <QAbstractItemModel>
 
 #include <eigen/vector.h>

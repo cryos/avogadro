@@ -29,7 +29,6 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
-#include <openbabel/mol.h>
 
 #include "ui_wiresettingswidget.h"
 

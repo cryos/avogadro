@@ -28,13 +28,12 @@
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
-#include <avogadro/glwidget.h>
 
 #include <openbabel/math/vector3.h>
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
 
-#include <QtPlugin>
+#include <QGLWidget>
 
 using namespace std;
 using namespace OpenBabel;

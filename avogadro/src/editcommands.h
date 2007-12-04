@@ -26,10 +26,7 @@
 #define __EDITCOMMANDS_H
 
 #include <QUndoCommand>
-#include <QStatusBar>
-#include <QMimeData>
 
-#include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
 namespace Avogadro {

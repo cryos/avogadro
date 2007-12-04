@@ -25,9 +25,6 @@
 #include "povpainter.h"
 
 #include <QFile>
-#include <QString>
-#include <QTextStream>
-
 #include <QDebug>
 
 namespace Avogadro

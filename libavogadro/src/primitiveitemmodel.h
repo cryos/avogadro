@@ -26,13 +26,8 @@
 #define __PRIMITIVEITEMMODEL_H
 
 #include <avogadro/global.h>
-#include <avogadro/primitivelist.h>
 #include <avogadro/engine.h>
 
-#include <QAbstractItemModel>
-#include <QModelIndex>
-#include <QObject>
-#include <QVariant>
 
 class QTreeView;
 namespace Avogadro {

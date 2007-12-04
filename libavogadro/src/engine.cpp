@@ -24,7 +24,6 @@
 
 #include "engine.h"
 
-#include <QDebug>
 namespace Avogadro {
 
   class EnginePrivate

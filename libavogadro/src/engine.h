@@ -26,15 +26,11 @@
 #define __ENGINE_H
 
 #include <avogadro/global.h>
-#include <avogadro/primitive.h>
 #include <avogadro/primitivelist.h>
-#include <avogadro/color.h>
 #include "painterdevice.h"
 
-#include <QString>
-#include <QVector>
-#include <QList>
 #include <QSettings>
+#include <QtPlugin>
 
 #define AVOGADRO_ENGINE(t) \
   public: \
@@ -51,6 +47,8 @@
     private:
 
 namespace Avogadro {
+
+  class PainterDevice;
 
   /**
    * @class Engine engine.h <avogadro/engine.h>

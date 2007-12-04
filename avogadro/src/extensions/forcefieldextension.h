@@ -39,6 +39,7 @@
 #include <QString>
 #include <QUndoCommand>
 #include <QThread>
+#include <QMutex>
 
 #ifndef BUFF_SIZE
 #define BUFF_SIZE 256

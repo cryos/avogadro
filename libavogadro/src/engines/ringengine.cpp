@@ -22,14 +22,13 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "ringengine.h"
 #include <config.h>
+#include "ringengine.h"
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <QtPlugin>
 #include <QMessageBox>
 #include <QString>
 #include <QDebug>

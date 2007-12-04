@@ -59,9 +59,12 @@
 #include <QSettings>
 #include <QStandardItem>
 #include <QStackedLayout>
+#include <QTextEdit>
 #include <QTimer>
 #include <QToolButton>
 #include <QUndoStack>
+
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;

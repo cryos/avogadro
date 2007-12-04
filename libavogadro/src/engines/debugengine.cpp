@@ -25,16 +25,12 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include <config.h>
 #include "debugengine.h"
-#include "config.h"
 
-#include <avogadro/primitive.h>
-#include <avogadro/color.h>
-#include <avogadro/glwidget.h>
+#include <avogadro/painter.h>
 
 #include <QTime>
-#include <QtPlugin>
-#include <QMessageBox>
 
 using namespace std;
 using namespace OpenBabel;

@@ -26,9 +26,7 @@
 #define __CYLINDER_H
 
 #include <avogadro/global.h>
-#include <avogadro/glwidget.h>
 
-#include <openbabel/mol.h>
 #include <eigen/matrix.h>
 
 namespace Avogadro {

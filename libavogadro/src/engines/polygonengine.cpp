@@ -22,19 +22,13 @@
  02110-1301, USA.
  **********************************************************************/
 
-#include "polygonengine.h"
 #include <config.h>
+#include "polygonengine.h"
 
-#include <avogadro/primitive.h>
 #include <avogadro/color.h>
-#include <avogadro/glwidget.h>
+#include <avogadro/painter.h>
 
-#include <openbabel/obiter.h>
-
-#include <QtPlugin>
-#include <QMessageBox>
-#include <QString>
-#include <QDebug>
+#include <QGLWidget>
 
 using namespace std;
 using namespace OpenBabel;

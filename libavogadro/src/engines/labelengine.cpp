@@ -27,16 +27,10 @@
 #include <config.h>
 #include "labelengine.h"
 
-#include <avogadro/primitive.h>
-#include <avogadro/color.h>
-#include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
+#include <avogadro/painter.h>
 
-#include <openbabel/obiter.h>
-#include <eigen/regression.h>
-
-#include <QtPlugin>
-#include <QMessageBox>
+#include <QGLWidget> // for OpenGL bits
 #include <QDebug>
 
 using namespace std;

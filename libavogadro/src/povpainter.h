@@ -26,14 +26,7 @@
 #define __POVPAINTER_H
 
 #include <avogadro/global.h>
-#include <avogadro/painter.h>
-#include <eigen/vector.h>
-#include <QObject>
-#include <QPoint>
-#include <QList>
-
-#include "glwidget.h"
-#include "camera.h"
+#include <avogadro/glwidget.h>
 
 class QFile;
 class QTextStream;
@@ -42,6 +35,9 @@ using namespace Eigen;
 
 namespace Avogadro
 {
+  // Forward declaration
+  class Color;
+
   /**
    * @class POVPainter povpainter.h
    * @brief Implementation of the Painter class using POV-Ray.

@@ -24,8 +24,6 @@
 #define __ELEMENTCOMBOBOX_H
 
 
-#include <avogadro/primitive.h>
-#include <QWidget>
 
 namespace Avogadro {
 

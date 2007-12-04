@@ -25,9 +25,6 @@
 #ifndef __ENGINEITEMMODEL_H
 #define __ENGINEITEMMODEL_H
 
-#include <QObject>
-#include <QAbstractItemModel>
-#include <QVariant>
 #include <QModelIndex>
 
 namespace Avogadro {

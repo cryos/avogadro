@@ -27,9 +27,6 @@
 
 #include <avogadro/global.h>
 
-#include <QObject>
-#include <QMouseEvent>
-#include <QString>
 #include <QWheelEvent>
 
 class QAction;

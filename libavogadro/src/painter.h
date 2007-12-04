@@ -28,10 +28,6 @@
 
 #include <avogadro/global.h>
 #include <avogadro/primitive.h>
-#include <eigen/vector.h>
-#include <QObject>
-#include <QPoint>
-#include <QString>
 
 namespace Avogadro
 {

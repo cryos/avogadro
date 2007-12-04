@@ -25,7 +25,6 @@
 #ifndef __GLOBAL_H
 #define __GLOBAL_H
 
-#include <QString>
 #include <QTranslator>
 
 #ifdef WIN32

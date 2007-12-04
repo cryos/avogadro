@@ -23,7 +23,6 @@
 #define __APPLICATION_H
 
 #include <QApplication>
-#include <QThread>
 
 namespace Avogadro {
 

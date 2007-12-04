@@ -32,7 +32,6 @@
 
 #include <openbabel/obiter.h>
 
-#include <QtPlugin>
 #include <QMessageBox>
 
 using namespace std;

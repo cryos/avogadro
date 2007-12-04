@@ -24,11 +24,7 @@
 
 #include <avogadro/primitiveitemmodel.h>
 
-#include <openbabel/data.h> // element symbols
-
-#include <QString>
-#include <QDebug>
-#include <QTreeView>
+#include <QVector>
 
 namespace Avogadro {
   class PrimitiveItemModelPrivate
