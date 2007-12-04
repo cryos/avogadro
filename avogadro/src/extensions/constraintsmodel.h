@@ -45,8 +45,7 @@ namespace Avogadro {
 
      public:
        //ConstraintsModel(const OpenBabel::OBFFConstraints &constraints, *parent = 0) 
-       ConstraintsModel(const OpenBabel::OBFFConstraints &constraints, QObject *parent = 0) 
-           : QAbstractTableModel(parent), m_constraints(constraints) {}
+       ConstraintsModel(QObject *parent = 0) : QAbstractTableModel(parent) {}
        
        //void *operator new (QObject *parent = 0) 
        
