@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -48,7 +48,7 @@ namespace Avogadro {
       ~ToolGroupPrivate() {}
 
       Tool *activeTool;
-      QList<Tool *> tools; 
+      QList<Tool *> tools;
       QActionGroup *activateActions;
   };
 
@@ -76,10 +76,10 @@ namespace Avogadro {
     {
       pluginPaths = QString(getenv("AVOGADRO_TOOLS")).split(':');
     }
-  
+
     foreach (QString path, pluginPaths)
     {
-      QDir dir(path); 
+      QDir dir(path);
       foreach (QString fileName, dir.entryList(QDir::Files)) {
 //        qDebug() << fileName;
         QPluginLoader loader(dir.absoluteFilePath(fileName));
@@ -87,7 +87,7 @@ namespace Avogadro {
         ToolFactory *factory = qobject_cast<ToolFactory *>(instance);
         if (factory) {
           Tool *tool = factory->createInstance(this);
-          qDebug() << "Found Tool: " << tool->name() << " - " << tool->description(); 
+          qDebug() << "Found Tool: " << tool->name() << " - " << tool->description();
           d->tools.append(tool);
           d->activateActions->addAction(tool->activateAction());
           connect(tool->activateAction(), SIGNAL(triggered(bool)),
@@ -126,7 +126,7 @@ namespace Avogadro {
       setActiveTool(tool);
     }
   }
-  
+
   void ToolGroup::setActiveTool(const QString& name)
   {
     foreach (Tool *tool, d->tools) {
@@ -159,7 +159,7 @@ namespace Avogadro {
   {
     return d->activateActions;
   }
-  
+
   void ToolGroup::setMolecule(Molecule *molecule)
   {
     foreach(Tool *tool, d->tools)

@@ -94,7 +94,7 @@ namespace Avogadro {
   {
     m_aCells = a;
     ui.aCellSpinBox->setValue(m_aCells);
-  } 
+  }
 
   int UnitCellParamDialog::bCells()
   {

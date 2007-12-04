@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -32,7 +32,7 @@
 #include <QPainter>
 #include <QPen>
 
-namespace Avogadro 
+namespace Avogadro
 {
   class PrimitiveTreeViewPrivate
   {
@@ -84,7 +84,7 @@ namespace Avogadro
     }
   }
 
-  class PrimitiveItemDelegatePrivate 
+  class PrimitiveItemDelegatePrivate
   {
     public:
       PrimitiveItemDelegatePrivate() : view(0) {}
@@ -147,7 +147,7 @@ namespace Avogadro
 
       // draw text
       QRect textrect = QRect(r.left() + i*2, r.top(), r.width() - ((5*i)/2), r.height());
-      QString text = elidedText(option.fontMetrics, textrect.width(), Qt::ElideMiddle, 
+      QString text = elidedText(option.fontMetrics, textrect.width(), Qt::ElideMiddle,
           model->data(index, Qt::DisplayRole).toString());
       d->view->style()->drawItemText(painter, textrect, Qt::AlignCenter,
           option.palette, d->view->isEnabled(), text);

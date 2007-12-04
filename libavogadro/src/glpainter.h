@@ -8,9 +8,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -38,7 +38,7 @@ namespace Avogadro
    * @brief Implementation of the Painter class using OpenGL.
    * @author Marcus D. Hanwell
    *
-   * This class implements the base Painter class using OpenGL. It is intended 
+   * This class implements the base Painter class using OpenGL. It is intended
    * to be used with the GLWidget to render molecules and other constructs to
    * an OpenGL context.
    *
@@ -50,7 +50,7 @@ namespace Avogadro
   {
     friend class GLWidget;
     public:
-    
+
       /**
        * Constructor.
        * @param quality defaults to -1, valid range from 0 to 4.
@@ -157,7 +157,7 @@ namespace Avogadro
 
       /**
        * Draws a multiple GL line between the given points. This function is the
-       * GL line equivalent to the drawMultiCylinder function and performs the 
+       * GL line equivalent to the drawMultiCylinder function and performs the
        * same basic operations using simpler and quicker GL lines.
        * @param start the position of the start of the line.
        * @param end the position of the end of the line.

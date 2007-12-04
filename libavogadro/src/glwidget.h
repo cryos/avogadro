@@ -284,7 +284,7 @@ namespace Avogadro {
        * @return the current global color map for Primitives.
        */
       Color *colorMap() const;
-    
+
       /**
        * @param undoStack the new undoStack.
        */
@@ -376,7 +376,7 @@ namespace Avogadro {
        * @return the global quality of the widget.
        */
       int quality() const;
-    
+
       /**
        * Set to render x, y, z axes as an overlay in the bottom left of the widget.
        */
@@ -385,7 +385,7 @@ namespace Avogadro {
       /**
        * @return true if the x, y, z axes are being rendered.
        */
-      bool renderAxes();    
+      bool renderAxes();
 
       /**
        * Set the ToolGroup of the GLWidget.
@@ -424,7 +424,7 @@ namespace Avogadro {
        */
       QList<Primitive*> selectedPrimitives() const;
 
-      /** 
+      /**
        * Toggle the selection for the atoms in the supplied list.
        * That is, if the primitive is selected, deselect it and vice-versa.
        *
@@ -441,7 +441,7 @@ namespace Avogadro {
        */
       void setSelected(QList<Primitive*> primitives, bool select);
 
-      /** 
+      /**
        * Deselect all objects.
        */
       void clearSelected();
@@ -645,12 +645,12 @@ namespace Avogadro {
        */
       void setMolecule(Molecule *molecule);
 
-      /** 
+      /**
        * @param engine Engine to add to this widget.
        */
       void addEngine(Engine *engine);
 
-      /** 
+      /**
        * @param engine Engine to remove from this widget.
        */
       void removeEngine(Engine *engine);

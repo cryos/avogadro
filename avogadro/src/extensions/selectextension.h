@@ -57,7 +57,7 @@ namespace Avogadro {
 
     private:
       QList<QAction *> m_actions;
-      
+
       void invertSelection(GLWidget *widget);
       void selectSMARTS(Molecule *molecule, GLWidget *widget);
   };

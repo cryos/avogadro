@@ -2,7 +2,7 @@
   SurfaceEngine - Engine for display of isosurfaces
 
   Copyright (C) 2006-2007 Geoffrey R. Hutchison
-  
+
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
@@ -31,7 +31,7 @@
 namespace Avogadro {
 
   class SurfacePrivateData;
-  
+
   //! Surface Engine class.
   class SurfaceEngine : public Engine
   {
@@ -51,7 +51,7 @@ namespace Avogadro {
 
     protected:
     SurfacePrivateData *d;
-    
+
     void SurfaceEngine::VDWSurface(Molecule *mol);
   };
 

@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -56,7 +56,7 @@ namespace Avogadro {
     addGroup(tr("Bonds"), Primitive::BondType);
     addGroup(tr("Residues"), Primitive::ResidueType);
 
-    connect(this, SIGNAL(itemPressed(QTreeWidgetItem*,int)), 
+    connect(this, SIGNAL(itemPressed(QTreeWidgetItem*,int)),
         SLOT(handleMousePress(QTreeWidgetItem*)));
 
   }
@@ -116,11 +116,11 @@ namespace Avogadro {
     }
 
     // connect our signals so if the molecule gets updated
-    connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)), 
+    connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)),
         this, SLOT(addPrimitive(Primitive*)));
-    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive*)), 
+    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive*)),
         this, SLOT(updatePrimitive(Primitive*)));
-    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)), 
+    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)),
         this, SLOT(removePrimitive(Primitive*)));
   }
 
@@ -247,7 +247,7 @@ namespace Avogadro {
       Bond *bond = (Bond*)primitive;
       Atom *beginAtom = (Atom *)bond->GetBeginAtom();
       Atom *endAtom = (Atom *)bond->GetEndAtom();
-      str = tr("Bond ") + QString::number(bond->GetIdx()) + " ("; 
+      str = tr("Bond ") + QString::number(bond->GetIdx()) + " (";
       if(beginAtom) {
         str += QString::number(beginAtom->GetIdx());
       } else {
@@ -356,7 +356,7 @@ namespace Avogadro {
 
       // draw text
       QRect textrect = QRect(r.left() + i*2, r.top(), r.width() - ((5*i)/2), r.height());
-      QString text = elidedText(option.fontMetrics, textrect.width(), Qt::ElideMiddle, 
+      QString text = elidedText(option.fontMetrics, textrect.width(), Qt::ElideMiddle,
           model->data(index, Qt::DisplayRole).toString());
       m_view->style()->drawItemText(painter, textrect, Qt::AlignCenter,
           option.palette, m_view->isEnabled(), text);

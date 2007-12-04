@@ -85,7 +85,7 @@ namespace Avogadro {
        * @param value radius of the bonds * 10
        */
       void setBondRadius(int value);
-    
+
       /**
        * @param value determines where multiple bonds are shown
        */

@@ -43,7 +43,7 @@ namespace Avogadro
       int aCells();
       int bCells();
       int cCells();
-      
+
       void aCells(int a);
       void bCells(int b);
       void cCells(int c);
@@ -67,7 +67,7 @@ namespace Avogadro
     public slots:
       void accept();
       void reject();
-      
+
     signals:
       void unitCellDisplayChanged(int a, int b, int c);
       void unitCellParametersChanged(double a, double b, double c,

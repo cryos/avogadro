@@ -140,7 +140,7 @@ namespace Avogadro {
     }
     else
     {
-      drawRotation(widget, widget->center(), 
+      drawRotation(widget, widget->center(),
           qMin(
             qMax(
               qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
@@ -286,7 +286,7 @@ namespace Avogadro {
   void Eyecandy::drawZoom(GLWidget *widget, Atom *clickedAtom)
   {
     if(clickedAtom) {
-      drawZoom(widget, clickedAtom->pos(), 
+      drawZoom(widget, clickedAtom->pos(),
           widget->radius(clickedAtom) *  2);
     }
     else

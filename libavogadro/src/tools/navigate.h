@@ -86,7 +86,7 @@ namespace Avogadro {
        * @param center the point at the center of rotation.
        * @param delta the amount to rotate about the z axis in degrees.
        */
-      static void tilt(GLWidget *widget, const Eigen::Vector3d &center, 
+      static void tilt(GLWidget *widget, const Eigen::Vector3d &center,
                        double delta);
   };
 

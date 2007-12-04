@@ -31,30 +31,30 @@
 #include <avogadro/global.h>
 
 namespace Avogadro {
-  
+
   class GLPicker
   {
     public:
       GLPicker(const GLwidget *widget);
       ~GLPicker();
-      
+
       /** Finds the list of all primitives in a
         * rectangular region of the GLWidget */
       QList<Primitive *> primitives (const QRect &rect);
-      
+
       /** Finds the nearest primitive under the specified pixel of the GLWidget.
         * If no primitive is found under this pixel, the 0 pointer is returned.
         */
       Primitive *primitive (const QPoint &pos);
-      
+
       /** Finds the nearest atom under the specified pixel of the GLWidget.
         * If no atom is found under this pixel, the 0 pointer is returned. */
       Atom *atom (const QPoint &pos);
-      
+
       /** Finds the nearest bond under the specified pixel of the GLWidget.
         * If no bond is found under this pixel, the 0 pointer is returned. */
       Bond *bond (const QPoint &pos);
-      
+
       /** Finds the position in 3-space of the atom under the specified
         * pixel of the GLWidget. This function handles unitcells correctly,
         * allowing to pick a particular atom in a crystal.
@@ -68,7 +68,7 @@ namespace Avogadro {
 
     private:
       GLPickerPrivate * const d;
-  
+
   };
 
 } // end namespace avogadro

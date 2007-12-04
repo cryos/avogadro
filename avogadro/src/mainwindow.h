@@ -102,7 +102,7 @@ namespace Avogadro {
 
       // Mac helper
       void macQuit();
-      
+
     Q_SIGNALS:
       void moleculeChanged(Molecule *);
 
@@ -127,11 +127,11 @@ namespace Avogadro {
 
       /***
        * Function for creating new GLWidgets
-       * \return a pointer to a new GLWidget which has been added to the 
+       * \return a pointer to a new GLWidget which has been added to the
        * internal list of all glwidgets, had it's UndoStack and ToolGroup
-       * setup correctly, connects the correct signals, sets it to the 
-       * current widget if there is no other currently, and if there is a 
-       * pre-existing GLWidget it shares the GL context.  
+       * setup correctly, connects the correct signals, sets it to the
+       * current widget if there is no other currently, and if there is a
+       * pre-existing GLWidget it shares the GL context.
        */
       GLWidget *newGLWidget();
 
@@ -154,7 +154,7 @@ namespace Avogadro {
       void hideMainWindowMac();
       //! Helper function for Mac -- show main window and re-enable menus
       void showMainWindowMac();
-      
+
     private Q_SLOTS:
       void initialize();
 

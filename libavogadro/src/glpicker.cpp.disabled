@@ -39,22 +39,22 @@ namespace Avogadro {
   {
     private:
       GLuint data[2];
-      
+
     public:
       GLName() {}
-      
+
       GLName(GLuint data0, GLuint data1)
       {
         data[0] = data0;
         data[1] = data1;
       }
-      
+
       GLName(const GLName& other)
       {
         data[0] = other.data[0];
         data[1] = other.data[1];
       }
-      
+
       GLName(const Primitive * prim, const GLWidget *widget)
       {
         if(!prim)
@@ -78,21 +78,21 @@ namespace Avogadro {
         }
         else data[1] = 0;
       }
-      
+
       GLName& operator= (const GLName& other)
       {
         data[0] = other.data[0];
         data[1] = other.data[1];
         return *this;
       }
-      
+
       bool operator== (const GLName& other)
       {
         return(data[0] == other.data[0] && data[1] == other.data[1]);
       }
-      
+
       ~GLName() {}
-      
+
       Primitive *primitive(const GLWidget *widget) const
       {
         Primitive::Type type = data[0] >> 24;
@@ -103,7 +103,7 @@ namespace Avogadro {
           return static_cast<Bond*>(widget->molecule->GetBond(data[1] - 1));
         }
       }
-      
+
       Vector3d offset(const GLWidget *widget) const
       {
         if (d->molecule->HasData(OBGenericDataType::UnitCell)) {
@@ -125,7 +125,7 @@ namespace Avogadro {
       }
 
   };
-  
+
   /**
    * @class GLHit glwidget.h <avogadro/glwidget.h>
    * @brief Class for wrapping hits from GL picking.

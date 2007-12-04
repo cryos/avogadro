@@ -435,8 +435,8 @@ namespace Avogadro
 
     glEnable(GL_LIGHTING);
   }
-  
-  void GLPainter::drawMultiLine(const Eigen::Vector3d &end1, 
+
+  void GLPainter::drawMultiLine(const Eigen::Vector3d &end1,
                                 const Eigen::Vector3d &end2,
                                 double lineWidth, int order, short )
   {
@@ -464,7 +464,7 @@ namespace Avogadro
     else ortho1 = axisNormalized.ortho();
     ortho1 *= lineWidth;
 
-    Eigen::Vector3d ortho2 = cross( axisNormalized, ortho1 );       
+    Eigen::Vector3d ortho2 = cross( axisNormalized, ortho1 );
 
     // construct the 4D transformation matrix
     Eigen::Matrix4d matrix;
@@ -518,10 +518,10 @@ namespace Avogadro
         glRotated( angleOffset + 360.0 * i / order,
                    0.0, 0.0, 1.0 );
         glTranslated( displacementFactor, 0.0, 0.0 );
-        
+
         glBegin(GL_LINE_STRIP);
         glVertex3f(0.0, 0.0, 0.0);
-        glVertex3f(0.0, 0.0, 1.0);        
+        glVertex3f(0.0, 0.0, 1.0);
         glEnd();
 
         glPopMatrix();
@@ -545,20 +545,20 @@ namespace Avogadro
 
     // Sort out the winding order by assigning in the correct order
     Eigen::Vector3d tp2, tp3;
-    
+
     // Don't want planes to be too shiny.
     d->color.applyAsFlatMaterials();
-    
+
     // The plane normal vector of the view
     const Eigen::Vector3d planeNormalVector = d->widget->normalVector();
-    
+
     // Calculate the normal for the triangle as GL_AUTO_NORMAL doesn't seem to work
     Eigen::Vector3d v1, v2, n;
     v1 = p2 - p1;
     v2 = p3 - p2;
     n = v1.cross(v2);
     n.normalize();
-    
+
     // Dot product is 1 or -1 - want normals facing the same direction
     if (n.dot(p1 - d->widget->camera()->backTransformedZAxis()) < 0) {
       n *= -1;
@@ -582,23 +582,23 @@ namespace Avogadro
                                const Eigen::Vector3d &p3, const Eigen::Vector3d &n)
   {
     if(!d->isValid()) { return; }
-    
+
     // Sort out the winding order by assigning in the correct order
     Eigen::Vector3d tp2, tp3;
-    
+
     // Don't want planes to be too shiny.
     d->color.applyAsFlatMaterials();
-    
+
     // The plane normal vector of the view
     const Eigen::Vector3d planeNormalVector = d->widget->normalVector();
-    
+
     // Calculate the normal for the triangle as GL_AUTO_NORMAL doesn't seem to work
     Eigen::Vector3d v1, v2, norm;
     v1 = p2 - p1;
     v2 = p3 - p2;
     norm = v1.cross(v2);
     norm.normalize();
-    
+
     // Dot product is 1 or -1 - want normals facing the same direction
     if (norm.dot(p1 - d->widget->camera()->backTransformedZAxis()) < 0) {
       tp2 = p3;
@@ -608,7 +608,7 @@ namespace Avogadro
       tp2 = p2;
       tp3 = p3;
     }
-    
+
     glBegin(GL_TRIANGLES);
     glNormal3dv(n.array());
     glVertex3dv(p1.array());
@@ -672,13 +672,13 @@ namespace Avogadro
     gluNurbsProperty(nurb, GLU_U_STEP, 10);
     gluNurbsProperty(nurb, GLU_CULLING, GL_TRUE);
     gluNurbsProperty(nurb, GLU_SAMPLING_METHOD, GLU_DOMAIN_DISTANCE);
-    
+
     // This seems reasonable but should be linked to the detail level
     int TUBE_TESS = 6;
-    
+
     GLfloat ctrlpts[points.size()][TUBE_TESS][3];
     GLfloat uknots[points.size() + 4];
-    
+
     // The first one is a special case
     Eigen::Vector3f axis = Eigen::Vector3f(points[1].x() - points[0].x(),
                                            points[1].y() - points[0].y(),
@@ -696,7 +696,7 @@ namespace Avogadro
       ctrlpts[0][j][2] = v.z() + points[0].z();
     }
     uknots[2] = 1.0;
-    
+
     for (int i = 1; i < points.size(); i++) {
       axis = Eigen::Vector3f(points[i-1].x() - points[i].x(),
                              points[i-1].y() - points[i].y(),
@@ -704,7 +704,7 @@ namespace Avogadro
       axisNormalized = axis.normalized();
       ortho1.loadOrtho(axisNormalized);
       ortho1 *= radius;
-      axisNormalized.cross(ortho1, &ortho2); 
+      axisNormalized.cross(ortho1, &ortho2);
       for (int j = 0; j < TUBE_TESS; j++) {
         double alpha = j * M_PI / 1.5f;
         Eigen::Vector3f v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
@@ -718,15 +718,15 @@ namespace Avogadro
     uknots[1] = 0.;
     uknots[pts.size()+2] = pts.size() + 1;
     uknots[pts.size()+3] = pts.size() + 1;
-    
+
     // Hard coded right now - will generalise for arbitrary TUBE_TESS values
     GLfloat vknots[10] = {0., 0., 1., 2., 3., 4., 5., 6., 7., 7.};
-    
+
     d->color.applyAsMaterials();
-    
+
     // Actually draw the tube as a nurb
     gluBeginSurface(nurb);
-    
+
     gluNurbsSurface(nurb,
                     pts.size() + 4, uknots,
                     TUBE_TESS + 4, vknots,
@@ -735,11 +735,11 @@ namespace Avogadro
                     &ctrlpts[0][0][0],
                     4, 4,
                     GL_MAP2_VERTEX_3);
-    
+
     gluEndSurface(nurb);
-    
+
     gluDeleteNurbsRenderer(nurb);
-	
+
     glDisable(GL_AUTO_NORMAL);
   }
 

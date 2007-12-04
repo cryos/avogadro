@@ -54,7 +54,7 @@ namespace Avogadro {
     }
 
     setModel(m);
-    connect(this, SIGNAL(clicked(QModelIndex)), 
+    connect(this, SIGNAL(clicked(QModelIndex)),
         this, SLOT(selectEngine(QModelIndex)));
     connect(m, SIGNAL(dataChanged(QModelIndex, QModelIndex)),
         glWidget, SLOT(update()));

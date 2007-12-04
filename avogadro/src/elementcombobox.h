@@ -33,7 +33,7 @@ namespace Avogadro {
 
     public:
       ElementComboBox(QWidget *parent=0);
-      
+
       void showPopup();
       void hidePopup();
   };

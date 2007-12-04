@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -37,7 +37,7 @@ namespace Avogadro {
    * @brief Manager for GLWidget Tools
    * @author Donald Ephraim Curtis
    *
-   * This class is a collection of Tools which allow manipulation of the 
+   * This class is a collection of Tools which allow manipulation of the
    * GLWidget area.
    */
 
@@ -98,12 +98,12 @@ namespace Avogadro {
       * @param name the name of the tool to set active (if it's found)
       */
       void setActiveTool(const QString& name);
-    
-      /** 
+
+      /**
        * @param tool pointer to the tool to set active
        */
       void setActiveTool(Tool *tool);
-      
+
       /**
        * @param molecule pointer to the molecule tools in this group should use
        */

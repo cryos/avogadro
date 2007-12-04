@@ -2,7 +2,7 @@
 
 polygonizer.h
 
-This is Jules Bloomenthal's implicit surface polygonizer from GRAPHICS 
+This is Jules Bloomenthal's implicit surface polygonizer from GRAPHICS
 GEMS IV. Bloomenthal's polygonizer is still used and the present code
 is simply the original code morphed into C++.
 
@@ -43,29 +43,29 @@ namespace
   /* the LBN corner of cube (i, j, k), corresponds with location
    * (start.x+(i-.5)*size, start.y+(j-.5)*size, start.z+(k-.5)*size) */
 
-  inline float RAND() 
+  inline float RAND()
   {
     return (rand()&32767)/32767.0f;
   }
 
   const int HASHBIT = 5;
 
-  const int HASHSIZE = (size_t)(1<<(3*HASHBIT));   
+  const int HASHSIZE = (size_t)(1<<(3*HASHBIT));
 
   const int MASK = ((1<<HASHBIT)-1);
 
-  inline int HASH( int i, int j,int k) 
-  { 
+  inline int HASH( int i, int j,int k)
+  {
     return (((((i&MASK)<<HASHBIT)|j&MASK)<<HASHBIT)|k&MASK);
-  } 
-
-  inline int BIT(int i, int bit) 
-  { 
-    return (i>>bit)&1; 
   }
 
-  // flip the given bit of i 
-  inline int FLIP(int i, int bit) 
+  inline int BIT(int i, int bit)
+  {
+    return (i>>bit)&1;
+  }
+
+  // flip the given bit of i
+  inline int FLIP(int i, int bit)
   {
     return i^1<<bit;
   }
@@ -116,7 +116,7 @@ namespace
 
   /* converge: from two points of differing sign, converge to zero crossing */
 
-  void converge (POINT* p1, POINT* p2, float v, 
+  void converge (POINT* p1, POINT* p2, float v,
 								 ImplicitFunction* function, POINT* p)
   {
     int i = 0;
@@ -160,21 +160,21 @@ namespace
 	class EDGETABLE
 	{
     vector<EDGELIST> table;		   /* edge and vertex id hash table */
-		
+
 	public:
-		
+
 		EDGETABLE(): table(2*HASHSIZE) {}
 
-		void setedge (int i1, int j1, int k1, 
+		void setedge (int i1, int j1, int k1,
 									int i2, int j2, int k2, int vid);
-		int getedge (int i1, int j1, int k1, 
+		int getedge (int i1, int j1, int k1,
 								 int i2, int j2, int k2);
-		
+
 
 	};
 
   /* setedge: set vertex id for edge */
-  void EDGETABLE::setedge (int i1, int j1, int k1, 
+  void EDGETABLE::setedge (int i1, int j1, int k1,
 								int i2, int j2, int k2, int vid)
   {
     unsigned int index;
@@ -185,11 +185,11 @@ namespace
     index = HASH(i1, j1, k1) + HASH(i2, j2, k2);
 
     EDGEELEMENT new_obj;
-    new_obj.i1 = i1; 
-    new_obj.j1 = j1; 
+    new_obj.i1 = i1;
+    new_obj.j1 = j1;
     new_obj.k1 = k1;
-    new_obj.i2 = i2; 
-    new_obj.j2 = j2; 
+    new_obj.i2 = i2;
+    new_obj.j2 = j2;
     new_obj.k2 = k2;
     new_obj.vid = vid;
     table[index].push_front(new_obj);
@@ -218,10 +218,10 @@ namespace
   class PROCESS
   {	   /* parameters, function, storage */
 
-    std::vector<NORMAL>* gnormals;  
-    std::vector<VERTEX>* gvertices;  
+    std::vector<NORMAL>* gnormals;
+    std::vector<VERTEX>* gvertices;
     std::vector<TRIANGLE> *gtriangles;
-  
+
     ImplicitFunction* function;	   /* implicit surface function */
 
     float size, delta;		   /* cube size, normal delta */
@@ -237,15 +237,15 @@ namespace
 
     CORNER *setcorner (int i, int j, int k);
 
-    void testface (int i, int j, int k, CUBE* old, 
-									 int face, int c1, int c2, int c3, int c4); 
+    void testface (int i, int j, int k, CUBE* old,
+									 int face, int c1, int c2, int c3, int c4);
 
     TEST find (int sign, float x, float y, float z);
-    
+
     int vertid (CORNER* c1, CORNER* c2);
-    
+
     int dotet (CUBE* cube, int c1, int c2, int c3, int c4);
-    
+
     int docube (CUBE* cube);
 
     int triangle (int i1, int i2, int i3)
@@ -260,15 +260,15 @@ namespace
 
   public:
     PROCESS(ImplicitFunction* _function,
-						float _size, float _delta, 
+						float _size, float _delta,
 						int _bounds,
 						vector<VERTEX>& _gvertices,
 						vector<NORMAL>& _gnormals,
 						vector<TRIANGLE>& _gtriangles);
-	  
+
 
     ~PROCESS() {}
-		
+
     void march(int mode, float x, float y, float z);
 
   };
@@ -283,7 +283,7 @@ namespace
     CENTERLIST::const_iterator q = table[index].begin();
     for(; q != table[index].end(); ++q)
       if(q->i == i && q->j==j && q->k == k) return 1;
-  
+
     CENTERELEMENT elem(i,j,k);
     table[index].push_front(elem);
     return 0;
@@ -321,8 +321,8 @@ namespace
    * if surface crosses face, compute other four corners of adjacent cube
    * and add new cube to cube stack */
 
-  void PROCESS::testface (int i, int j, int k, CUBE* old, 
-													int face, int c1, int c2, int c3, int c4) 
+  void PROCESS::testface (int i, int j, int k, CUBE* old,
+													int face, int c1, int c2, int c3, int c4)
   {
     CUBE new_obj;
 
@@ -477,7 +477,7 @@ namespace
 	public:
 
 		CUBETABLE();
-		
+
 		const INTLISTS& get_lists(int i) const
 		{
 			return ctable[i];
@@ -525,28 +525,28 @@ namespace
 	CUBETABLE::CUBETABLE(): ctable(256)
   {
     int i, e, c, done[12], pos[8];
-    for (i = 0; i < 256; i++) 
+    for (i = 0; i < 256; i++)
 			{
-				for (e = 0; e < 12; e++) 
+				for (e = 0; e < 12; e++)
 					done[e] = 0;
-				for (c = 0; c < 8; c++) 
+				for (c = 0; c < 8; c++)
 					pos[c] = BIT(i, c);
 				for (e = 0; e < 12; e++)
-					if (!done[e] && (pos[corner1[e]] != pos[corner2[e]])) 
+					if (!done[e] && (pos[corner1[e]] != pos[corner2[e]]))
 						{
 							INTLIST ints;
 							int start = e, edge = e;
-							
+
 							/* get face that is to right of edge from pos to neg corner: */
 							int face = pos[corner1[e]]? rightface[e] : leftface[e];
-							while (1) 
+							while (1)
 								{
 									edge = nextcwedge(edge, face);
 									done[edge] = 1;
-									if (pos[corner1[edge]] != pos[corner2[edge]]) 
+									if (pos[corner1[edge]] != pos[corner2[edge]])
 										{
 											ints.push_front(edge);
-											if (edge == start) 
+											if (edge == start)
 												break;
 											face = otherface(edge, face);
 										}
@@ -556,7 +556,7 @@ namespace
 			}
   }
 
-	const INTLISTS& get_cubetable_entry(int i) 
+	const INTLISTS& get_cubetable_entry(int i)
 	{
 		static CUBETABLE c;
 		return c.get_lists(i);
@@ -568,24 +568,24 @@ namespace
   int PROCESS::docube (CUBE* cube)
   {
     int index = 0;
-    for (int i = 0; i < 8; i++) 
-      if (cube->corners[i]->value > 0.0) 
+    for (int i = 0; i < 8; i++)
+      if (cube->corners[i]->value > 0.0)
 				index += (1<<i);
 
 		INTLISTS intlists = get_cubetable_entry(index);
     INTLISTS::const_iterator polys = intlists.begin();
-    for (; polys != intlists.end(); ++polys) 
+    for (; polys != intlists.end(); ++polys)
       {
 				INTLIST::const_iterator edges = polys->begin();
 				int a = -1, b = -1, count = 0;
-				for (; edges != polys->end(); ++edges) 
+				for (; edges != polys->end(); ++edges)
 					{
 						CORNER *c1 = cube->corners[corner1[(*edges)]];
 						CORNER *c2 = cube->corners[corner2[(*edges)]];
 						int c = vertid(c1, c2);
-						if (++count > 2 && ! triangle(a, b, c)) 
+						if (++count > 2 && ! triangle(a, b, c))
 							return 0;
-						if (count < 3) 
+						if (count < 3)
 							a = b;
 						b = c;
 					}
@@ -609,7 +609,7 @@ namespace
    *	     return negative for inside, positive for outside
    *	 float size
    *	     width of the partitioning cube
-	 *   float delta 
+	 *   float delta
 	 *       a small step - used for gradient computation
    *	 int bounds
    *	     max. range of cubes (+/- on the three axes) from first cube
@@ -618,13 +618,13 @@ namespace
    */
 
   PROCESS::PROCESS(ImplicitFunction* _function,
-									 float _size, float _delta, 
-									 int _bounds, 
+									 float _size, float _delta,
+									 int _bounds,
 									 vector<VERTEX>& _gvertices,
 									 vector<NORMAL>& _gnormals,
 									 vector<TRIANGLE>& _gtriangles):
     function(_function), size(_size), delta(_delta), bounds(_bounds),
-    centers(HASHSIZE), corners(HASHSIZE), 
+    centers(HASHSIZE), corners(HASHSIZE),
     gvertices(&_gvertices),
     gnormals(&_gnormals),
     gtriangles(&_gtriangles)
@@ -634,17 +634,17 @@ namespace
   {
     int noabort;
     TEST in, out;
-  
+
     /* find point on surface, beginning search at (x, y, z): */
     srand(1);
     in = find(1, x, y, z);
     out = find(0, x, y, z);
 //FIXME -- GH - need a solution which doesn't use exceptions
-//   if (!in.ok || !out.ok) 
+//   if (!in.ok || !out.ok)
 // throw(string("can't find starting point"));
-  
+
     converge(&in.p, &out.p, in.value, function, &start);
-  
+
     /* push initial cube on stack: */
     CUBE cube;
     cube.i = cube.j = cube.k = 0;
@@ -653,14 +653,14 @@ namespace
     /* set corners of initial cube: */
     for (int n = 0; n < 8; n++)
       cubes.front().corners[n] = setcorner(BIT(n,2), BIT(n,1), BIT(n,0));
-    
+
     setcenter(centers, 0, 0, 0);
-    
-    while (cubes.size() != 0) 
+
+    while (cubes.size() != 0)
 			{
 				/* process active cubes till none left */
 				CUBE c = cubes.front();
-      
+
 				noabort = mode == TET?
 					/* either decompose into tetrahedra and polygonize: */
 					dotet(&c, LBN, LTN, RBN, LBF) &&
@@ -674,10 +674,10 @@ namespace
 					docube(&c);
 //FIXME -- GH - need a solution which doesn't use exceptions
 //				if (! noabort) throw string("aborted");
-      
+
 				/* pop current cube from stack */
 				cubes.pop_front();
-      
+
 				/* test six face directions, maybe add to stack: */
 				testface(c.i-1, c.j, c.k, &c, L, LBN, LBF, LTN, LTF);
 				testface(c.i+1, c.j, c.k, &c, R, RBN, RBF, RTN, RTF);
@@ -694,7 +694,7 @@ void Polygonizer::march(bool tetra, float x, float y, float z)
 	gvertices.clear();
 	gnormals.clear();
 	gtriangles.clear();
-	PROCESS p(func, size, size/(float)(RES*RES), bounds, 
+	PROCESS p(func, size, size/(float)(RES*RES), bounds,
 						gvertices, gnormals, gtriangles);
   p.march(tetra?TET:NOTET,x,y,z);
 }

@@ -126,7 +126,7 @@ namespace Avogadro {
     protected:
       Molecule *          m_molecule;
       QWidget *           m_settingsWidget;
-      
+
 
       Atom *              m_clickedAtom;
       Bond *              m_clickedBond;
@@ -252,7 +252,7 @@ namespace Avogadro {
        *         close enough.  If no atom is close enough to 'snap-to', NULL is
        *         returned.
        */
-      Eigen::Vector3d* calculateSnapTo(Bond *bond,  Eigen::Vector3d *referencePoint, 
+      Eigen::Vector3d* calculateSnapTo(Bond *bond,  Eigen::Vector3d *referencePoint,
                                        double maximumAngle);
 
       /**
@@ -266,7 +266,7 @@ namespace Avogadro {
        * @param rgb An array of doubles representing the red/green/blue values of the
        *            color for the rectangle.
        */
-      void drawManipulationRectangle(GLWidget *widget, Bond *bond, 
+      void drawManipulationRectangle(GLWidget *widget, Bond *bond,
                                      Eigen::Vector3d *referencePoint, double rgb[3]);
 
       void drawDihedralRectangle(GLWidget *widget, Bond *bond, Atom *atom, double rgb[3]);

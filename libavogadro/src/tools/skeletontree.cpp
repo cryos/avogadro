@@ -115,7 +115,7 @@ namespace Avogadro {
 
   // ##########  Destructor  ##########
 
-  SkeletonTree::~SkeletonTree() 
+  SkeletonTree::~SkeletonTree()
   {
     delete m_rootNode;
   }
@@ -244,7 +244,7 @@ namespace Avogadro {
 
   // ##########  recursiveRotate  ##########
 
-  void SkeletonTree::recursiveRotate(Node* n, Quaternion left, Quaternion right, 
+  void SkeletonTree::recursiveRotate(Node* n, Quaternion left, Quaternion right,
       Eigen::Vector3d centerVector)
   {
     QList<Node*>* listNodes = n->nodes();
@@ -289,7 +289,7 @@ namespace Avogadro {
 
   // ##########  performRotation  ##########
 
-  Eigen::Vector3d SkeletonTree::performRotation(Quaternion left, Quaternion right, 
+  Eigen::Vector3d SkeletonTree::performRotation(Quaternion left, Quaternion right,
       Eigen::Vector3d centerVector,
       Eigen::Vector3d positionVector)
   {

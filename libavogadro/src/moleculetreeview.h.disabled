@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -69,7 +69,7 @@ namespace Avogadro {
     private Q_SLOTS:
       /**
        * Add the primitive to the widget.  This slot is called whenever
-       * a new primitive is added to our molecule model.  It adds the 
+       * a new primitive is added to our molecule model.  It adds the
        * primitive to the list in the appropriate group.
        *
        * @param primitive pointer to a primitive to add to the view
@@ -79,7 +79,7 @@ namespace Avogadro {
       QTreeWidgetItem* addPrimitive(Primitive *primitive);
 
       /**
-       * Update a primitive.  This slot is called whenever a primitive of our 
+       * Update a primitive.  This slot is called whenever a primitive of our
        * molecule model has been changed and we need to check our view.
        *
        * @note In some cases we are passed the molecule itself meaning that more
@@ -90,7 +90,7 @@ namespace Avogadro {
       void updatePrimitive(Primitive *primitive);
 
       /** Remove a primitive.  This slot is called whenever a primitive of our
-       * molecule model has been removed and we need to take it off our list.  
+       * molecule model has been removed and we need to take it off our list.
        * Additionally we need to update other items in our view that are impacted
        * by this change.
        *
@@ -98,8 +98,8 @@ namespace Avogadro {
        */
       void removePrimitive(Primitive *primitive);
 
-      /** 
-       * Update the entire model.  This goes though all items in the list and 
+      /**
+       * Update the entire model.  This goes though all items in the list and
        * updates their view.
        */
       void updateModel();
@@ -122,9 +122,9 @@ namespace Avogadro {
        * all the members of the group.
        */
       QVector<QTreeWidgetItem *> m_groups;
-      
+
       /**
-       * A helper function to generate our item strings based off the 
+       * A helper function to generate our item strings based off the
        * primitive information.
        *
        * @param primitive primitive to generate the string for
@@ -151,7 +151,7 @@ namespace Avogadro {
 
       /**
        * Update a single item.
-       * 
+       *
        * @param item item to update
        */
       void updatePrimitiveItem(QTreeWidgetItem *item);
@@ -172,7 +172,7 @@ namespace Avogadro {
        * @return the item which is the parent item for the group
        */
       QTreeWidgetItem* addGroup(const QString& name, enum Primitive::Type type);
-      
+
     private:
       /**
        * Common constructor function.

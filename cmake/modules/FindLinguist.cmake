@@ -43,7 +43,7 @@ MACRO (QT4_WRAP_TS outfiles)
   FOREACH (it ${ARGN})
     GET_FILENAME_COMPONENT(it ${it} ABSOLUTE)
     GET_FILENAME_COMPONENT(outfile ${it} NAME_WE)
-    
+
     SET(outfile ${CMAKE_CURRENT_BINARY_DIR}/${outfile}.qm)
     ADD_CUSTOM_COMMAND(OUTPUT ${outfile}
                        COMMAND ${QT_LRELEASE_EXECUTABLE}

@@ -52,7 +52,7 @@ namespace Avogadro{
   bool RingEngine::renderOpaque(PainterDevice *pd)
   {
     if (m_alpha < 1.0) return true;
-    
+
     // Use the openbabel GetSSSR() function to find all rings.
     // Special case for everything up to 7 membered rings.
     vector<OBRing *> rings;
@@ -70,7 +70,7 @@ namespace Avogadro{
   bool RingEngine::renderTransparent(PainterDevice *pd)
   {
     if (m_alpha > 0.999) return true;
-    
+
     // Use the openbabel GetSSSR() function to find all rings.
     // Special case for everything up to 7 membered rings.
     vector<OBRing *> rings;
@@ -88,7 +88,7 @@ namespace Avogadro{
 
     return true;
   }
-  
+
   bool RingEngine::renderRing(const vector<int> &ring, PainterDevice *pd)
   {
     // We need to get rid of the constness in order to get the atoms

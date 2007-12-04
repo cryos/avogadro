@@ -21,10 +21,10 @@ FILE(GLOB libavogadro_HDRS "*.h")
 
 qt4_automoc(${libavogadro_SRCS})
 
-SET(libavogadro_TS 
+SET(libavogadro_TS
 	${CMAKE_SOURCE_DIR}/i18n/avogadro_de.ts
 	${CMAKE_SOURCE_DIR}/i18n/avogadro_fr.ts
-) 
+)
 QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 
 ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})

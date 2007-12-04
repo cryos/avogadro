@@ -35,9 +35,9 @@ namespace Avogadro {
   ConstraintsDialog::ConstraintsDialog( QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f )
   {
     ui.setupUi(this);
-    
+
     connect( ui.ConstraintsOK, SIGNAL( clicked() ), this, SLOT( acceptConstraints() ));
- 
+
   }
 
   ConstraintsDialog::~ConstraintsDialog()
@@ -53,11 +53,11 @@ namespace Avogadro {
   {
     hide();
   }
-  
+
   void ConstraintsDialog::deleteConstraint()
   {
   }
-  
+
   void ConstraintsDialog::addConstraint()
   {
   }

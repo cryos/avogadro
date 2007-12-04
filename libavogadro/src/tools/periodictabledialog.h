@@ -38,12 +38,12 @@ namespace Avogadro {
 class PeriodicTableDialog : public QDialog
 {
     Q_OBJECT
-    
+
     public:
         PeriodicTableDialog (QWidget *parent);
         ~PeriodicTableDialog();
 
-        //! Initial setup -- make sure one element is visually selected 
+        //! Initial setup -- make sure one element is visually selected
         void setSelectedElement(int id);
 
     private Q_SLOTS:
@@ -54,7 +54,7 @@ class PeriodicTableDialog : public QDialog
         void elementChanged(int newElement);
 
     private:
-        //! Qt Designer layout in periodictabledialog.ui 
+        //! Qt Designer layout in periodictabledialog.ui
         //! => ui_periodictabledialog.h
         Ui::PeriodicTableDialog ui;
         //! Logical grouping of element tool buttons

@@ -58,9 +58,9 @@ namespace Avogadro {
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 
       QWidget* settingsWidget();
-    
+
       void setPrimitives(const PrimitiveList &primitives);
-    
+
     public Q_SLOTS:
       void addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);

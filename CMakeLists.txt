@@ -40,7 +40,7 @@ ADD_CUSTOM_TARGET(update-translations
 		${CMAKE_CURRENT_SOURCE_DIR} -ts ${avogadro_TS}
 		WORKING_DIRECTORY
 		${CMAKE_CURRENT_SOURCE_DIR}
-												                       ) 
+												                       )
 # tell cmake to process CMakeLists.txt in that subdirectory
 add_subdirectory(libavogadro)
 add_subdirectory(avogadro)

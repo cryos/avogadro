@@ -7,9 +7,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -34,13 +34,13 @@ namespace Avogadro {
 
   class Primitive;
   class ColorPrivate; // for future expansion
-  
+
   /**
    * @class Color color.h <avogadro/color.h>
    * @author Benoit Jacob
    * @author Geoff Hutchison
    * @brief Color in OpenGL float red, green, blue, alpha format.
-   * 
+   *
    * This class represents a color in OpenGL float red, green, blue, alpha format.
    */
   class A_EXPORT Color
@@ -59,7 +59,7 @@ namespace Avogadro {
 
     /**
      * Set the color based on the supplied Primitive.
-     * If NULL is passed do nothing. 
+     * If NULL is passed do nothing.
      * @param Primitive the color is derived from this primitive.
      */
     Color( const Primitive * );
@@ -100,7 +100,7 @@ namespace Avogadro {
      * specular colors. This is only useful if lighting is enabled.
      */
     virtual void applyAsMaterials();
-    
+
     /**
      * Applies an OpenGL material more appropriate for flat surfaces.
      */
@@ -122,7 +122,7 @@ namespace Avogadro {
      * @return the alpha component of the color.
      */
     inline float alpha() { return m_alpha; }
-    
+
     /**
      * Set the name of this instance of the class.
      */
@@ -159,12 +159,12 @@ namespace Avogadro {
      * The alpha component of the color ranging from 0 to 1.
      */
     GLfloat m_red, m_green, m_blue, m_alpha;
-    
+
     /**
      * The name of the class instance.
      */
     QString m_name;
-    
+
     /**
      * The d-pointer used to preserve binary compatibility.
      */

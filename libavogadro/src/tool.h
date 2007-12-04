@@ -117,7 +117,7 @@ namespace Avogadro {
        * @param widget the %GLWidget to paint to
        */
       virtual bool paint(GLWidget *widget);
-      
+
       /**
        * Called by the parent (toolGroup) to tell the tool the underlying
        * model (molecule) has changed

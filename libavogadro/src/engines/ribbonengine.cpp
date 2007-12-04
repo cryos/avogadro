@@ -46,7 +46,7 @@ namespace Avogadro {
   m_type(0), m_radius(1.0)
   {
     setDescription(tr("Renders residues as ribbons"));
-    
+
     // Initialise variables
     m_update = true;
     // Pretty colours for the chains - we can add more. Need a colour picker...

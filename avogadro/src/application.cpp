@@ -50,7 +50,7 @@ namespace Avogadro {
   {
     switch (event->type()) {
       case QEvent::FileOpen:
-        return loadFile(static_cast<QFileOpenEvent *>(event)->file());        
+        return loadFile(static_cast<QFileOpenEvent *>(event)->file());
       default:
         return QApplication::event(event);
     }
@@ -61,7 +61,7 @@ namespace Avogadro {
     if (fileName.isEmpty()) {
       return false;
     }
-    
+
     // check to see if we already have an open window
     // (we'll let MainWindow handle the real work)
     MainWindow *window = NULL;

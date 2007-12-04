@@ -97,7 +97,7 @@
 
 	* libavogadro/src/tools/drawtool.*: DrawTool now allows you to
 	generate molecules from smiles and place them in the GLWidget.
-	
+
 2007-05-29 Tim Vandermeersch <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/tools/drawtool.*: Added a QLineEdit and QPushButton
@@ -237,23 +237,23 @@
 	for providing an example which inspired what I did here.
 
 2007-11-05  Marcus D. Hanwell <marcus@cryos.org>
-	
+
 	* libavogadro/src/glpainter.cpp: Now filled with NURBS goodness.
 	Still needs quite a bit of tuning and testing but visually improved.
-  
+
 	* libavogadro/src/engines/ribbonengine.cpp: Modifications to work
 	with the new GLPainter.
 
 2007-11-02  Marcus D. Hanwell <marcus@cryos.org>
-	* libavogadro/src/glwidget.cpp: Updated the setMolecule function to 
+	* libavogadro/src/glwidget.cpp: Updated the setMolecule function to
 	call setPrimitives for each engine at the end of molecule loading,
 	should make our molecule loading more efficient.
-  
+
 	* libavogadro/src/engines/ribbonengine.*: Reimplemented the
 	setPrimitives function due to changes in molecule loading.
 
 2007-11-01  Marcus D. Hanwell <marcus@cryos.org>
-	
+
 	* libavogadro/src/engines/labelengine.cpp,
 	libavogadro/src/engines/labelsettingswidget.ui: Updated the label
 	engineto label atoms by residue name and number and bonds by their
@@ -261,19 +261,19 @@
 	labelling for atoms, feature request 1824337.
 
 2007-10-31  Marcus D. Hanwell <marcus@cryos.org>
-	
+
 	* libavogadro/src/engines/ribbonengine.*: Improvements to the ribbon
 	code so that it caches the chain and updates it if the molecule is
 	changed.
 
 2007-10-24  Marcus D. Hanwell <marcus@cryos.org>
-	
+
 	* libavogadro/src/engines/ribbonengine.cpp: Improve the ribbon engine
 	to render multiple chains correctly and not crash when there is no
 	chain.
 
 2007-10-24  Marcus D. Hanwell <marcus@cryos.org>
-	
+
 	* libavogadro/src/painter.h, libavogadro/src/glpainter.h,
 	libavogadro/src/povpainter.h: Modified the drawSpline signature to use
 	QVector and take a radius.
@@ -287,26 +287,26 @@
 	bone as a cubic spline tube.
 
 2007-10-17  Marcus D. Hanwell <marcus@cryos.org>
-	
+
 	* libavogadro/src/engines/ribbonengine.cpp: Added routine to pick out
 	the CA atoms of the residue backbone. Draw cylinders between the CA
 	atoms. Next step is to draw a smoothed tube between them.
 
 2007-08-20  Marcus D. Hanwell <marcus@cryos.org>
-	
+
 	* libavogadro/src/tools/glwidget.*: Added the computeClickedPrimitive/
-	Atom/Bond functions to the GLWidget class as these functions have been 
+	Atom/Bond functions to the GLWidget class as these functions have been
 	used in	several tools and are quite generic. Fixed regression with bond
 	picking.
-	
+
 	* libavogadro/src/tools/manipulatetool.*,
 	libavogadro/src/tools/bondcentrictool.*,
-	libavogadro/src/tools/navigatetool.*: Ported to use the new 
+	libavogadro/src/tools/navigatetool.*: Ported to use the new
 	computeClicked*	functions in GLWidget and removed the local
 	implementations of them.
 
 2007-08-19  Marcus D. Hanwell <marcus@cryos.org>
-	
+
 	* libavogadro/src/tools/navigate.*: Added a new navigation class with
 	static member functions to perform the navigation functions common to
 	three tools right now and possibly more in future.
@@ -314,12 +314,12 @@
 	* libavogadro/src/tools/CMakeLists.txt,
 	libavogadro/src/tools/navigatetool.*,
 	libavogadro/src/tools/bondcentrictool.*
-	libavogadro/src/tools/selectrotatetool.*: Ported the tools to use the 
-	new Navigate class and removed all duplicated code this has now been 
+	libavogadro/src/tools/selectrotatetool.*: Ported the tools to use the
+	new Navigate class and removed all duplicated code this has now been
 	moved.
 
 2007-08-18  Marcus D. Hanwell <marcus@cryos.org>
-	
+
 	* libavogadro/src/tools/clickmeasuretool.cpp: Added units to the output.
 	Also added the display of the angle sector under consideration with the
 	current selection of atoms.
@@ -331,7 +331,7 @@
 	clearSelectedPrimitives I think.
 
 2007-08-10  Marcus D. Hanwell <marcus@cryos.org>
-	
+
 	* libavogadro/src/tools/navigatotool.cpp: Added visual representation
 	of atom centred translation. Needs extra features adding to the
 	painter and porting, as does the previous visual feedback.
@@ -339,7 +339,7 @@
 2007-08-08  Marcus D. Hanwell <marcus@cryos.org>
 
 	* libavogadro/src/tools/navigatotool.*: Add visual representation of
-	atom centred molecule rotation. Benoit and I worked on this feature in 
+	atom centred molecule rotation. Benoit and I worked on this feature in
 	the Versailles gardens in France, all credit to Benoit for figuring
 	out the maths and OpenGL. Open up modifiers to all - we always
 	planned to add this for all architectures. Alt seems to be taken in
@@ -436,7 +436,7 @@
 	* libavogadro/src/tools/autorotatetool.*: Added the ability to
 	initiate rotation using mouse movements. Left for x/y, middle for z.
 
-	* libavogadro/src/engines/sphereengine.*, 
+	* libavogadro/src/engines/sphereengine.*,
 	libavogadro/src/engines/spheresettingswidget.ui: Removed the skeleton
 	rendering functions - use the other engines thanks to changes in
 	engine rendering order made by Donald. Much simpler implementation
@@ -488,11 +488,11 @@
 
 2007-06-16  Marcus D. Hanwell <marcus@cryos.org>
 
-	* libavogadro/src/engines/axesengine.cpp: Improvements to the axes 
+	* libavogadro/src/engines/axesengine.cpp: Improvements to the axes
 	engine rendering - all axes should be of equal length now.
 
 	* libavogadro/src/engines/sphereengine.cpp,
-	libavogadro/src/engines/spheresettingswidget.ui: Some improvements to 
+	libavogadro/src/engines/spheresettingswidget.ui: Some improvements to
 	the rendering code and the setup widget, as suggested by Benoit.
 
 	* libavogadro/src/painter.cpp, avogadro/src/settingsdialog.ui:
@@ -503,7 +503,7 @@
 
 	* libavogadro/src/tools/autorotatetool.*: Added a start/stop button and a reset button to the config widget for the auto rotate tool.
 
-	* libavogadro/src/tools/manipulatetool.*: Added undo/redo support to 
+	* libavogadro/src/tools/manipulatetool.*: Added undo/redo support to
 	the manipulation tool.
 
 	* cmake/modules/FindOpenBabel2.cmake: Added more verbosity to the cmake
@@ -515,7 +515,7 @@
 
 2007-06-14  Marcus D. Hanwell <marcus@cryos.org>
 
-	* avogadro/src/extensions/unitcellparamdialog.cpp: Small fix to close 
+	* avogadro/src/extensions/unitcellparamdialog.cpp: Small fix to close
 	the dialog when cancel is clicked.
 
 	* libavogadro/src/tools/selectrotatetool.cpp: Fixed bond selection bug
@@ -536,7 +536,7 @@
 
 2007-06-13  Marcus D. Hanwell <marcus@cryos.org>
 
-	* libavogadro/src/tools/CMakeLists.txt, 
+	* libavogadro/src/tools/CMakeLists.txt,
 	libavogadro/src/tools/autorotatetool.*: Added new auto rotation tool.
 	The scene can be rotated about the x, y	and z axes. Modified to allow
 	both positive and negative rotations.
@@ -545,7 +545,7 @@
 
 2007-06-12  Marcus D. Hanwell <marcus@cryos.org>
 
-	* libavogadro/src/camera.*: Added transformedAxis functions for x, y 
+	* libavogadro/src/camera.*: Added transformedAxis functions for x, y
 	and z.
 
 	* libavogadro/src/engines/CMakeLists.txt,
@@ -572,7 +572,7 @@
 	libavogadro/src/engines/sphereengine.*,
 	libavogadro/src/engines/spheresettingswidget.ui: Added configuration
 	options to the VdW engine. Added transparency effects to the VdW
-	rendering. When enabled a ball and stick rendering is done inside the 
+	rendering. When enabled a ball and stick rendering is done inside the
 	VdW rendering.
 
 2007-06-05  Donald Ephraim Curtis <dcurtis3@sourceforge.net>

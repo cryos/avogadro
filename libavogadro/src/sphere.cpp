@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -138,7 +138,7 @@ namespace Avogadro {
     d->vertexBuffer = new Vector3f[vertexCount];
     if( ! d->vertexBuffer ) return;
     d->indexBuffer = new unsigned short[indexCount];
-    if( ! d->indexBuffer ) 
+    if( ! d->indexBuffer )
     {
       delete [] d->vertexBuffer;
       d->vertexBuffer = 0;

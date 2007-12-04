@@ -107,7 +107,7 @@ namespace Avogadro {
       virtual int usefulness() const;
 
       virtual bool paint(GLWidget *widget);
-      
+
       virtual QWidget* settingsWidget();
 
     public Q_SLOTS:
@@ -130,7 +130,7 @@ namespace Avogadro {
       Eigen::Vector3d           m_selectedPrimitivesCenter;    // centroid of selected atoms
       OpenBabel::OBForceField*  m_forceField;
       AutoOptThread *           m_thread;
-      
+
       QComboBox*                m_comboFF;
       QComboBox*                m_comboAlgorithm;
       QSpinBox*                 m_convergenceSpinBox;
@@ -141,11 +141,11 @@ namespace Avogadro {
       void timerEvent(QTimerEvent* event);
 
       void translate(GLWidget *widget, const Eigen::Vector3d &what, const QPoint &from, const QPoint &to) const;
-      
+
     private Q_SLOTS:
       void settingsWidgetDestroyed();
   };
-  
+
   class AutoOptCommand : public QUndoCommand
   {
     public:
@@ -162,7 +162,7 @@ namespace Avogadro {
       AutoOptTool *m_tool;
       bool undone;
   };
-  
+
   class AutoOptToolFactory : public QObject, public ToolFactory
     {
       Q_OBJECT

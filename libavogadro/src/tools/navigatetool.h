@@ -68,9 +68,9 @@ namespace Avogadro {
      * @name Description methods
      * @{
      * Tool Name (i.e. Navigate)
-     */ 
+     */
      virtual QString name() const { return(tr("Navigate")); }
-     
+
     /**
      *Tool Description (i.e. Navigation Tool)
      */
@@ -98,7 +98,7 @@ namespace Avogadro {
      * visuals to the GLWidget.
      */
     virtual bool paint(GLWidget *widget);
-      
+
   protected:
     Atom *              m_clickedAtom;
     bool                m_leftButtonPressed;  // rotation
@@ -107,7 +107,7 @@ namespace Avogadro {
     double m_yAngleEyecandy, m_xAngleEyecandy;
 
     QPoint              m_lastDraggingPosition;
-      
+
     Eyecandy * m_eyecandy;
   };
 

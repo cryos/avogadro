@@ -45,14 +45,14 @@ namespace Avogadro {
       double m_radius;
       Eigen::Vector3d m_center, m_xAxis, m_yAxis, m_zAxis;
       Color m_color;
-    
+
     public:
       Eyecandy() : m_color(1.0, 1.0, 0.3, 0.7) {}
       ~Eyecandy() {}
 
       void setColor(const Color &color);
       Color color() const;
-      
+
       void drawRotation(GLWidget *widget, const Eigen::Vector3d center, double radius, double xAngle, double yAngle);
       void drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle);
 

@@ -34,7 +34,7 @@ namespace Avogadro {
    * @class EngineListView
    * @brief Widget for listing and editing widgets
    *
-   * This widget is provided to list the available engines of a 
+   * This widget is provided to list the available engines of a
    * GLWidget and allow them to be modified.  Thus allowing
    * us to select what features are rendered.
    */

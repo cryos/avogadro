@@ -300,7 +300,7 @@ namespace Avogadro {
       }
       else if(m_rightButtonPressed && selectedSize)
       {
-        m_eyecandy->drawRotation(widget, m_clickedAtom, 
+        m_eyecandy->drawRotation(widget, m_clickedAtom,
             m_xAngleEyecandy, m_yAngleEyecandy);
       }
     }
@@ -316,7 +316,7 @@ namespace Avogadro {
       }
       else if(m_rightButtonPressed)
       {
-        m_eyecandy->drawRotation(widget, m_selectedPrimitivesCenter, 3., 
+        m_eyecandy->drawRotation(widget, m_selectedPrimitivesCenter, 3.,
             m_xAngleEyecandy, m_yAngleEyecandy);
       }
     }

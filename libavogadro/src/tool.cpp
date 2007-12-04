@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -30,7 +30,7 @@
 
 namespace Avogadro {
 
-  class ToolPrivate 
+  class ToolPrivate
   {
     public:
       ToolPrivate() : activateAction(0) {}
@@ -39,26 +39,26 @@ namespace Avogadro {
   };
 
   Tool::Tool(QObject *parent) : QObject(parent), d(new ToolPrivate)
-  { 
+  {
     d->activateAction = new QAction(this);
-    d->activateAction->setCheckable(true); 
+    d->activateAction->setCheckable(true);
     d->activateAction->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
   }
 
-  Tool::~Tool() 
-  { 
+  Tool::~Tool()
+  {
     d->activateAction->deleteLater();
     delete d;
   }
 
-  QString Tool::name() const 
-  { 
-    return QObject::tr("Unknown"); 
+  QString Tool::name() const
+  {
+    return QObject::tr("Unknown");
   }
 
-  QString Tool::description() const 
-  { 
-    return QObject::tr("No Description"); 
+  QString Tool::description() const
+  {
+    return QObject::tr("No Description");
   }
 
   QAction* Tool::activateAction() const {
@@ -69,14 +69,14 @@ namespace Avogadro {
     if(d->activateAction->text().isEmpty())
       d->activateAction->setText(name());
 
-    return d->activateAction; 
+    return d->activateAction;
   }
 
   QWidget* Tool::settingsWidget()
   {
     return 0;
   }
-  
+
   void Tool::setMolecule(Molecule *)
   {
   }

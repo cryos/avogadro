@@ -33,7 +33,7 @@
 #include "ui_wiresettingswidget.h"
 
 namespace Avogadro {
-  
+
   class WireSettingsWidget;
 
   //! Wireframe Engine class.
@@ -57,32 +57,32 @@ namespace Avogadro {
 
       bool renderOpaque(PainterDevice *pd);
       //@}
-    
+
       //! Configuration options
       QWidget* settingsWidget();
-    
+
   private:
     WireSettingsWidget *m_settingsWidget;
-    
+
     bool m_showMulti; //!< show multiple bonds
     bool m_showDots;  //!< show dots for atoms
 
     double radius (const Atom *atom) const;
-    
+
   private Q_SLOTS:
     void settingsWidgetDestroyed();
-    
+
     /**
      * @param setting whether to show multiple bonds
      */
     void setShowMultipleBonds(int setting);
-    
+
     /**
      * @param setting whether to show dots for atoms
      */
     void setShowDots(int setting);
   };
-  
+
   class WireSettingsWidget : public QWidget, public Ui::WireSettingsWidget
   {
   public:

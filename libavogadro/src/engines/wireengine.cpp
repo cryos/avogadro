@@ -61,7 +61,7 @@ namespace Avogadro {
       list = primitives().subList(Primitive::AtomType);
       foreach( Primitive *p, list ) {
         renderOpaque(pd, static_cast<const Atom *>(p));
-      }      
+      }
     }
 
     list = primitives().subList(Primitive::BondType);
@@ -177,22 +177,22 @@ namespace Avogadro {
     pd->painter()->setColor(map);
     if (order > 1) pd->painter()->drawMultiLine(v2, v3, width, order, stipple);
     else pd->painter()->drawLine(v2, v3, width);
-    
+
     return true;
   }
-  
+
   void WireEngine::setShowMultipleBonds(int setting)
   {
     m_showMulti = setting;
     emit changed();
   }
-  
+
   void WireEngine::setShowDots(int setting)
   {
     m_showDots = setting;
     emit changed();
-  }  
-  
+  }
+
   QWidget* WireEngine::settingsWidget()
   {
     if(!m_settingsWidget)
@@ -205,12 +205,12 @@ namespace Avogadro {
     }
     return m_settingsWidget;
   }
-  
+
   void WireEngine::settingsWidgetDestroyed()
   {
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
-  }  
+  }
 }
 
 #include "wireengine.moc"

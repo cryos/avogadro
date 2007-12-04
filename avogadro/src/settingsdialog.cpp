@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -38,7 +38,7 @@ namespace Avogadro {
 
     loadValues();
 
-    connect(ui.dialogButtonBox, SIGNAL(clicked(QAbstractButton *)), 
+    connect(ui.dialogButtonBox, SIGNAL(clicked(QAbstractButton *)),
         this, SLOT(buttonClicked(QAbstractButton *)));
   }
 
@@ -48,7 +48,7 @@ namespace Avogadro {
     if(role == QDialogButtonBox::ApplyRole || role == QDialogButtonBox::AcceptRole)
     {
       saveValues();
-    } 
+    }
     else if (role == QDialogButtonBox::RejectRole)
     {
         loadValues();

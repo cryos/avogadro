@@ -7,9 +7,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -29,12 +29,12 @@
 #include <math.h> // for fabs()
 
 namespace Avogadro {
-  
+
   class ColorPrivate {
   public:
-    ColorPrivate() 
+    ColorPrivate()
     {    }
-    
+
     ~ColorPrivate()
     {    }
   };
@@ -64,7 +64,7 @@ namespace Avogadro {
     return *this;
   }
    */
-  
+
   void Color::set(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
   {
     m_red = red;
@@ -108,7 +108,7 @@ namespace Avogadro {
   void Color::applyAsFlatMaterials()
   {
     GLfloat diffuseColor [] = { m_red, m_green, m_blue, m_alpha };
-    
+
     glMaterialfv( GL_FRONT, GL_AMBIENT, diffuseColor );
     glMaterialfv( GL_FRONT, GL_DIFFUSE, diffuseColor );
     glMaterialfv( GL_FRONT, GL_SPECULAR, diffuseColor );
@@ -119,7 +119,7 @@ namespace Avogadro {
   {
     m_name = name;
   }
-  
+
   QString Color::name() const
   {
    if (m_name.isEmpty())

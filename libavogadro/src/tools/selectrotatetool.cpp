@@ -128,7 +128,7 @@ namespace Avogadro {
         //        break;
       }
 
-      switch (m_selectionMode) 
+      switch (m_selectionMode)
       {
         case 2: // residue
           foreach(Primitive *hit, hitList) {

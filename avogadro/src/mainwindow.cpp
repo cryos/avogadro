@@ -392,7 +392,7 @@ namespace Avogadro
         d->toolsTab->setTabToolTip(tabIndex, action->toolTip());
 
       } // tabbed tools
-      else 
+      else
       { // non-tabbed tools
         // create a tool button
         QToolButton *button = new QToolButton( ui.toolsWidget );
@@ -535,8 +535,8 @@ namespace Avogadro
     if ( conv.Read( molecule, &ifs ) && molecule->NumAtoms() != 0 ) {
       if (!molecule->Has3D()) {
         QMessageBox::warning( this, tr( "Avogadro" ),
-            tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));        
-      }      
+            tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));
+      }
 
       setMolecule( molecule );
 
@@ -544,7 +544,7 @@ namespace Avogadro
       if (conv.Read(&test, &ifs) && test.NumAtoms() != 0) {
         QMessageBox::warning( this, tr( "Avogadro" ),
             tr( "This file contains multiple molecule records. Avogadro will only read the first molecule."
-              " If you save, all other molecules may be lost." ));        
+              " If you save, all other molecules may be lost." ));
       }
 
       QApplication::restoreOverrideCursor();
@@ -563,7 +563,7 @@ namespace Avogadro
     setFileName( fileName );
     statusBar()->showMessage( tr("File Loaded..."), 5000 );
     return true;
-  }  
+  }
 
   // Close the current file -- leave an empty window
   // Not used on Mac: the window is closed via closeEvent() instead
@@ -683,7 +683,7 @@ namespace Avogadro
     QString fileName = QFileDialog::getSaveFileName( this,
         tr( "Export Bitmap Graphics" ) );
     if ( fileName.isEmpty() )
-      return;    
+      return;
 
     // render it (with alpha channel)
     QImage exportImage = d->glWidget->grabFrameBuffer( true );
@@ -700,7 +700,7 @@ namespace Avogadro
       copyData = output.c_str();
       // we embed the molfile into the image
       // e.g. http://baoilleach.blogspot.com/2007/08/access-embedded-molecular-information.html
-      exportImage.setText("molfile", copyData);      
+      exportImage.setText("molfile", copyData);
     }
 
     // save a canonical SMILES too
@@ -762,7 +762,7 @@ namespace Avogadro
             "Do you want to save your changes?" ),
           QMessageBox::Save | QMessageBox::Discard
           | QMessageBox::Cancel );
-      
+
       if ( ret == QMessageBox::Save )
         return save();
       else if ( ret == QMessageBox::Cancel )
@@ -805,7 +805,7 @@ namespace Avogadro
 
     if ( supportsSelection ) {
       mimeData = clipboard->mimeData( QClipboard::Selection );
-    } 
+    }
 
     if ( !supportsSelection || !pasteMimeData(mimeData) )
     {
@@ -1545,7 +1545,7 @@ namespace Avogadro
     stacked->addWidget(new QWidget());
     d->engineConfigurationStacked->addWidget(stacked);
 
-    EnginePrimitivesWidget *primitivesWidget = 
+    EnginePrimitivesWidget *primitivesWidget =
       new EnginePrimitivesWidget(gl, ui.enginePrimitivesWidget);
     d->enginePrimitivesStacked->addWidget(primitivesWidget);
 
@@ -1579,7 +1579,7 @@ namespace Avogadro
     foreach(QObject *object, widget->children())
     {
       EngineListView *engineListView;
-      if( object->isWidgetType() && 
+      if( object->isWidgetType() &&
           (engineListView = qobject_cast<EngineListView *>(object)) )
       {
         Engine *engine = engineListView->selectedEngine();

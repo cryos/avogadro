@@ -44,26 +44,26 @@ namespace Avogadro {
     Q_OBJECT
 
      public:
-       //ConstraintsModel(const OpenBabel::OBFFConstraints &constraints, *parent = 0) 
+       //ConstraintsModel(const OpenBabel::OBFFConstraints &constraints, *parent = 0)
        ConstraintsModel(QObject *parent = 0) : QAbstractTableModel(parent) {}
-       
-       //void *operator new (QObject *parent = 0) 
-       
 
-       //ConstraintsModel &operator=(const Constraints &model);      
+       //void *operator new (QObject *parent = 0)
+
+
+       //ConstraintsModel &operator=(const Constraints &model);
        //Constreintsodel &operator+=(const Constraints &model);
-       
+
        int rowCount(const QModelIndex &parent = QModelIndex()) const;
        int columnCount(const QModelIndex &parent = QModelIndex()) const;
        QVariant data(const QModelIndex &index, int role) const;
        //QVariant headerData(int section, Qt::Orientation orientation,
        //    int role = Qt::DisplayRole) const;
-     
+
      private:
        OpenBabel::OBFFConstraints m_constraints;
        //QStringList stringList;
-  }; 
- 
+  };
+
 } // end namespace Avogadro
 
 #endif

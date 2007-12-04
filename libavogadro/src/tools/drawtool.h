@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -85,7 +85,7 @@ namespace Avogadro {
       void setBondOrder(int i);
       int bondOrder() const;
 
-    
+
 
     public Q_SLOTS:
       void elementChanged( int index );
@@ -115,7 +115,7 @@ namespace Avogadro {
       int m_prevBondOrder;
 
       bool place_mode;
-      Molecule m_generatedMolecule;   
+      Molecule m_generatedMolecule;
       OpenBabel::OBBuilder m_builder;
 
       QList<GLHit> m_hits;

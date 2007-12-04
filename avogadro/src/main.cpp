@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
     app.installTranslator(&qtTranslator);
   }
 
-  if (avoTranslator.load(avoFilename, prefixPath )) 
+  if (avoTranslator.load(avoFilename, prefixPath ))
   {
     qDebug() << "Loading Avogadro Translations";
     app.installTranslator(&avoTranslator);

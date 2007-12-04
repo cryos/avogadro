@@ -164,7 +164,7 @@ namespace Avogadro {
                         initialized( false ),
 #endif
                         painter( 0 ),
-                        map( 0), 
+                        map( 0),
                         defaultMap( new ElementColor ),
                         renderAxes(false)
     {
@@ -356,7 +356,7 @@ namespace Avogadro {
     double radius( const Primitive *p ) const { return widget->radius(p); }
     const Molecule *molecule() const { return widget->molecule(); }
     Color *colorMap() const { return widget->colorMap();  }
-    
+
     int width() { return widget->width(); }
     int height() { return widget->height(); }
 
@@ -512,7 +512,7 @@ namespace Avogadro {
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.lock();
 #endif
-    d->background = background; 
+    d->background = background;
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.unlock();
 #endif
@@ -522,7 +522,7 @@ namespace Avogadro {
   {
     return d->background;
   }
-  
+
   void GLWidget::setColorMap(Color *map)
   {
     d->map = map;
@@ -680,10 +680,10 @@ namespace Avogadro {
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
     glLoadIdentity();
-    
+
     // Don't want any lighting for the axes
     glDisable(GL_LIGHTING);
-    
+
     // Set the origin and calculate the positions of the axes
     Vector3d origin = Vector3d(0.07, 0.07, -.07);
     MatrixP3d axisTranslation;
@@ -693,7 +693,7 @@ namespace Avogadro {
     Vector3d aY = axisTranslation * origin;
     axisTranslation.loadTranslation(pd->camera()->transformedZAxis() * 0.06);
     Vector3d aZ = axisTranslation * origin;
-    
+
     // Draw the axes in red, green and blue so they can be easily identified
     glBegin(GL_LINES);
     glColor4f(1.0, 0.0, 0.0, 1.);
@@ -709,7 +709,7 @@ namespace Avogadro {
     // FIXME Would be good to draw labels on the axes too, can't figure out
     // how to do that with the current drawText functions in this projection
     //  gl->painter()->drawText(aX, "x");
-    
+
     // restore the original OpenGL projection and lighting
     glEnable(GL_LIGHTING);
     glPopMatrix();
@@ -1409,7 +1409,7 @@ namespace Avogadro {
             engine->readSettings(settings);
 
             // eventually settings will store which has what but
-            // for now we ignore this.  (will need this when we 
+            // for now we ignore this.  (will need this when we
             // copy the selected primitives also).
             if(!engine->primitives().size())
               {

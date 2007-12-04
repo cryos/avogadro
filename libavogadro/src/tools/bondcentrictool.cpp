@@ -556,7 +556,7 @@ namespace Avogadro {
             }
           }
         }
-        else if (m_selectedBond && m_clickedAtom && 
+        else if (m_selectedBond && m_clickedAtom &&
             (m_clickedAtom->GetBond(m_selectedBond->GetBeginAtom()) ||
              m_clickedAtom->GetBond(m_selectedBond->GetEndAtom())))
         {
@@ -672,8 +672,8 @@ namespace Avogadro {
 #ifdef Q_WS_MAC
     // On the Mac, either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
-      else if ((event->buttons() & Qt::RightButton) || 
-          (event->buttons() & Qt::LeftButton && 
+      else if ((event->buttons() & Qt::RightButton) ||
+          (event->buttons() & Qt::LeftButton &&
            (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)))
 #else
       else if (event->buttons() & Qt::RightButton)

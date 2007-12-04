@@ -266,14 +266,14 @@ namespace Avogadro {
         glDisable( GL_BLEND );
       }
       else if (m_leftButtonPressed || m_midButtonPressed || m_rightButtonPressed)
-      {  
+      {
         widget->painter()->setColor(1.0, 0.3, 0.3, 0.7);
         widget->painter()->drawSphere(m_selectedPrimitivesCenter, 0.10);
       }
     }
-    else if (m_leftButtonPressed && !m_clickedAtom 
+    else if (m_leftButtonPressed && !m_clickedAtom
         || m_midButtonPressed || m_rightButtonPressed)
-    {  
+    {
       widget->painter()->setColor(1.0, 0.3, 0.3, 0.7);
       widget->painter()->drawSphere(m_selectedPrimitivesCenter, 0.10);
     }
@@ -406,7 +406,7 @@ namespace Avogadro {
     {
       m_block = true;
     }
-    
+
     if (m_comboFF->currentIndex() == 2)
       m_forceField = OBForceField::FindForceField( "UFF" );
     else if (m_comboFF->currentIndex() == 1)
@@ -415,7 +415,7 @@ namespace Avogadro {
       m_forceField = OBForceField::FindForceField( "Ghemical" );
 
     m_thread = new AutoOptThread(m_glwidget->molecule(), m_forceField,
-        m_comboAlgorithm->currentIndex(), 
+        m_comboAlgorithm->currentIndex(),
         m_convergenceSpinBox->value());
     connect(m_thread,SIGNAL(finished(bool)),this,SLOT(finished(bool)));
     m_thread->start();
@@ -444,7 +444,7 @@ namespace Avogadro {
     m_block = false;
   }
 
-  AutoOptThread::AutoOptThread(Molecule *molecule, 
+  AutoOptThread::AutoOptThread(Molecule *molecule,
       OpenBabel::OBForceField* forceField,
       int algorithm, int convergence, QObject*)
   {
@@ -459,7 +459,7 @@ namespace Avogadro {
   {
     m_forceField->SetLogFile(NULL);
     m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
- 
+
     if ( m_forceField->IsSetupNeeded( *m_molecule ) ) {
       if ( !m_forceField->Setup( *m_molecule ) ) {
         qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
@@ -468,17 +468,17 @@ namespace Avogadro {
         return;
       }
       cout << "SETUP" << endl;
-    }  
+    }
     m_forceField->SetConformers( *m_molecule );
-    
+
     if(m_algorithm == 0)
     {
-      m_forceField->SteepestDescent(2,pow(10.0, -m_convergence ), 
+      m_forceField->SteepestDescent(2,pow(10.0, -m_convergence ),
           OBFF_ANALYTICAL_GRADIENT);
     }
     else if(m_algorithm == 1)
     {
-      m_forceField->ConjugateGradients(2,pow(10.0, -m_convergence ), 
+      m_forceField->ConjugateGradients(2,pow(10.0, -m_convergence ),
           OBFF_ANALYTICAL_GRADIENT);
     }
     if(m_stop)

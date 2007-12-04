@@ -36,7 +36,7 @@ using namespace OpenBabel;
 
 namespace Avogadro
 {
-  
+
   int ConstraintsModel::rowCount(const QModelIndex &parent) const
   {
     return m_constraints.Size();
@@ -46,7 +46,7 @@ namespace Avogadro
   {
     return 1;
   }
-  
+
   QVariant ConstraintsModel::data(const QModelIndex &index, int role) const
   {
     if (!index.isValid())
@@ -54,7 +54,7 @@ namespace Avogadro
 
     if (index.row() >= m_constraints.Size())
       return QVariant();
- 
+
     if (role == Qt::DisplayRole)
       return m_constraints.GetConstraintType(index.row());
     else

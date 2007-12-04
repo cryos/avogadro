@@ -115,11 +115,11 @@ namespace Avogadro
 
       bool initialized;
       bool qualityChanged;
-      
+
       void updateObjects();
       void deleteObjects();
       void createObjects();
-    
+
       /**
        * PainterEngines can be shared, we must keep track of this.
        */
@@ -458,7 +458,7 @@ namespace Avogadro
       d->updateObjects();
       d->qualityChanged = false;
     }
-    
+
     d->widget = widget;
   }
 
@@ -480,7 +480,7 @@ namespace Avogadro
   {
     return PAINTER_GLOBAL_QUALITY_SETTINGS-1;
   }
-  
+
   bool PainterEngine::isShared()
   {
     return d->sharing-1;
@@ -490,7 +490,7 @@ namespace Avogadro
   {
     d->sharing++;
   }
-  
+
   void PainterEngine::decrementShare()
   {
     d->sharing--;

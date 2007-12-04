@@ -40,7 +40,7 @@ using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
-  
+
   // This is a small "shim" between the OpenBabel grid classes and the Bloomenthal Polygonizer code
   // It mainly allows you to attach a grid and set an isovalue
   class Grid: public ImplicitFunction
@@ -62,38 +62,38 @@ namespace Avogadro {
       double GetIsovalue() {
         return iso;
       }
-      
+
       void SetGrid(OBGridData *g) { gd = g;}
       OBGridData* GetGrid() {
         return gd;
       }
-      
+
       float eval (float x, float y, float z)
       {
         vector3 v(x, y, z);
         return gd->GetValue(v) - iso;
       }
-      
+
       float GetValue (float x, float y, float z)
       {
         vector3 v(x, y, z);
-        return gd->GetValue(v);        
+        return gd->GetValue(v);
       }
     };
 
-  
+
   class SurfacePrivateData
     {
     public:
       Grid         _gridFunction; //<! 3D implicit function f(x,y,z) = ...
       Polygonizer* _isoFinder;    //<! Class to find isosurface where f(x,y,z) = isovalue
     };
-  
+
   SurfaceEngine::SurfaceEngine(QObject *parent) : Engine(parent), d(new SurfacePrivateData)
   {
     setDescription(tr("Surface rendering"));
   }
-  
+
   SurfaceEngine::~SurfaceEngine()
   {
     delete d->_isoFinder;
@@ -117,20 +117,20 @@ namespace Avogadro {
     _grid.Init(*mol, spacing, padding);
     double min[3], max[3];
     int xDim, yDim, zDim;
-    
+
     _grid.GetMin(min);
     _grid.GetMax(max);
-    
+
     xDim = _grid.GetXdim();
     yDim = _grid.GetYdim();
     zDim = _grid.GetZdim();
-    
+
     vector3 coord;
     double distance, minDistance;
     double maxVal, minVal;
     maxVal = 0.0;
     minVal = 0.0;
-    
+
     std::vector<double> _values;
     _values.resize(xDim * yDim * zDim);
     for (int k = 0; k < zDim; ++k) {
@@ -143,7 +143,7 @@ namespace Avogadro {
           FOR_ATOMS_OF_MOL(a, mol) {
             distance = sqrt(coord.distSq(a->GetVector()));
             distance -= etab.GetVdwRad(a->GetAtomicNum());
-            
+
             if (distance < minDistance)
               minDistance = distance;
           } // end checking atoms
@@ -153,50 +153,50 @@ namespace Avogadro {
             maxVal = -1.0 * minDistance;
           if (-1.0 * minDistance < minVal)
             minVal = -1.0 * minDistance;
-          
+
         } // x-axis
       } // y-axis
     } // z-axis
-    
+
     qDebug() << " min: " << minVal << " max " << maxVal;
-    
+
     OBGridData *_vdwGrid = new OBGridData;
     double xAxis[3], yAxis[3], zAxis[3];
     xAxis[0] = spacing; xAxis[1] = 0.0;     xAxis[2] = 0.0;
     yAxis[0] = 0.0;     yAxis[1] = spacing; yAxis[2] = 0.0;
     zAxis[0] = 0.0;     zAxis[1] = 0.0;     zAxis[2] = spacing;
-    
+
     _vdwGrid->SetNumberOfPoints( xDim, yDim, zDim);
     _vdwGrid->SetLimits( min, xAxis, yAxis, zAxis );
     _vdwGrid->SetValues(_values);
-    
+
     d->_gridFunction.SetGrid(_vdwGrid);
   }
-  
+
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
   {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
-    
+
     VDWSurface(mol);
-    
+
     qDebug() << " set surface ";
-    
+
     d->_gridFunction.SetIsovalue(0.001);
     d->_isoFinder = new Polygonizer(&d->_gridFunction, 0.15, 30);
     d->_isoFinder->march(false, 0.,0.,0.); // marching cubes
-    
+
     qDebug() << " rendering surface ";
-    
+
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDisable(GL_LIGHTING);
     glDisable(GL_BLEND);
     glShadeModel(GL_SMOOTH);
-    
+
 //    glPushName(Primitive::SurfaceType);
 //    glPushName(1);
-    
+
 //    glColor3f(1.0, 0.0, 0.0);
-    
+
     glBegin(GL_POINTS);
     for(int i=0; i < d->_isoFinder->no_triangles(); ++i)
     {
@@ -206,18 +206,18 @@ namespace Avogadro {
 //       glNormal3f(n0.x, n0.y, n0.z);
       VERTEX v0 = d->_isoFinder->get_vertex(t.v0);
       glVertex3f(v0.x, v0.y, v0.z);
-      
+
 //       NORMAL n1 = d->_isoFinder->get_normal(t.v1);
 //       glNormal3f(n1.x, n1.y, n1.z);
       VERTEX v1 = d->_isoFinder->get_vertex(t.v1);
       glVertex3f(v1.x, v1.y, v1.z);
-      
+
 //       NORMAL n2 = d->_isoFinder->get_normal(t.v2);
 //       glNormal3f(n2.x, n2.y, n2.z);
       VERTEX v2 = d->_isoFinder->get_vertex(t.v2);
       glVertex3f(v2.x, v2.y, v2.z);
     }
-    glEnd();    
+    glEnd();
 
     glPopAttrib();
 

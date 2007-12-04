@@ -131,13 +131,13 @@ namespace Avogadro {
     double angleHalf = theta/2.0;
     double sinAngle = sin(angleHalf);
 
-    return Quaternion(cos(angleHalf), rotationVector.x() * sinAngle, 
+    return Quaternion(cos(angleHalf), rotationVector.x() * sinAngle,
         rotationVector.y() * sinAngle, rotationVector.z() * sinAngle);
   }
 
   // ##########  performRotationMultiplication  ##########
 
-  Vector3d Quaternion::performRotationMultiplication(Quaternion left, 
+  Vector3d Quaternion::performRotationMultiplication(Quaternion left,
       Vector3d direction, Quaternion right)
   {
     return left.multiply(Quaternion(0,direction)).multiplyToVector(right);

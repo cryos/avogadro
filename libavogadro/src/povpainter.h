@@ -6,9 +6,9 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
 
-  Avogadro is free software; you can redistribute it and/or modify 
-  it under the terms of the GNU General Public License as published by 
-  the Free Software Foundation; either version 2 of the License, or 
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
 
   Avogadro is distributed in the hope that it will be useful,
@@ -43,7 +43,7 @@ namespace Avogadro
    * @brief Implementation of the Painter class using POV-Ray.
    * @author Marcus D. Hanwell
    *
-   * This class implements the base Painter class using POV-Ray. It is intended 
+   * This class implements the base Painter class using POV-Ray. It is intended
    * to be used with the POV-Ray to raytrace molecules and other constructs to
    * a POV-Ray scene.
    *
@@ -152,7 +152,7 @@ namespace Avogadro
 
     /**
      * Draws a multiple line between the given points. This function is the
-     * line equivalent to the drawMultiCylinder function and performs the 
+     * line equivalent to the drawMultiCylinder function and performs the
      * same basic operations using simpler and quicker lines.
      * @param start the position of the start of the line.
      * @param end the position of the end of the line.

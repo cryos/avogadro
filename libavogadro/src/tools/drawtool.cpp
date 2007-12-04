@@ -60,7 +60,7 @@ namespace Avogadro {
           "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
           "Right Mouse: Delete Atom"));
     action->setShortcut(Qt::Key_F8);
-  
+
     place_mode = false;
   }
 
@@ -94,33 +94,33 @@ namespace Avogadro {
       }
     }
   }
-  
+
   void DrawTool::gen3D()
   {
     std::string SmilesString((m_text3DGen->text()).toAscii());
     stringstream ss(SmilesString);
     OBConversion conv(&ss);
     m_generatedMolecule.Clear();
-    if(conv.SetInFormat("smi") && conv.Read(&m_generatedMolecule)) 
+    if(conv.SetInFormat("smi") && conv.Read(&m_generatedMolecule))
     {
       m_builder.Build(m_generatedMolecule);
       m_generatedMolecule.Center();
       m_generatedMolecule.AddHydrogens();
 
-      if (place_mode) 
+      if (place_mode)
       {
         m_button3DGen->setText(tr("Insert SMILES"));
         place_mode = false;
       }
       else
-      {  
+      {
         m_button3DGen->setText(tr("Stop Insert"));
         place_mode = true;
       }
     }
-  
+
     // TODO: Need Undo support for insert SMILES
-  
+
   }
 
   // TODO: Add additional entries to the element index (popup menu)
@@ -203,7 +203,7 @@ namespace Avogadro {
           *widget->molecule() += m_generatedMolecule;
           m_generatedMolecule.Center();
         } // end place mode (insert SMILES)
-	else 
+	else
 	{
 	  m_beginAtom = newAtom(widget, event->pos());
           m_beginAtomAdded = true;

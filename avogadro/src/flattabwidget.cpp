@@ -40,19 +40,19 @@
 
 namespace Avogadro {
 
-  FlatTabWidget::FlatTabWidget(QWidget *parent) : QWidget(parent), 
+  FlatTabWidget::FlatTabWidget(QWidget *parent) : QWidget(parent),
   m_stack(new QStackedWidget(this)),
-  m_handle(new FlatHandle(this)), 
-  m_tabBar(new FlatTabBar(this)) 
+  m_handle(new FlatHandle(this)),
+  m_tabBar(new FlatTabBar(this))
   {
     currentIndex = 0;
 
     m_tabBar->setShape(QTabBar::RoundedSouth);
     m_stack->hide();
 
-    connect(m_tabBar, SIGNAL(tabPressed(int)), 
+    connect(m_tabBar, SIGNAL(tabPressed(int)),
         this, SLOT(tabPressEvent(int)));
-    connect(m_tabBar, SIGNAL(currentChanged(int)), 
+    connect(m_tabBar, SIGNAL(currentChanged(int)),
         m_stack, SLOT(setCurrentIndex(int)));
   }
 
@@ -290,29 +290,29 @@ namespace Avogadro {
   // //     opt.rect = d->panelRect;
   // //     p.drawPrimitive(QStyle::PE_FrameTabWidget, opt);
   // }
-  // 
+  //
   // QStyleOptionTabWidgetFrame FlatTabWidget::getStyleOption() const
   // {
   //     QStyleOptionTabWidgetFrame option;
   //     option.init(this);
-  // 
+  //
   //     int exth = style()->pixelMetric(QStyle::PM_TabBarBaseHeight, 0, this);
   //     QSize t(0, stack->frameWidth());
   //     if (tabs->isVisibleTo(const_cast<QTabWidget *>(this)))
   //         t = tabs->sizeHint();
-  // 
+  //
   //     if (rightCornerWidget)
   //         option.rightCornerWidgetSize
   //             = rightCornerWidget->sizeHint().boundedTo(t - QSize(exth, exth));
   //     else
   //         option.rightCornerWidgetSize = QSize(0, 0);
-  // 
+  //
   //     if (leftCornerWidget)
   //         option.leftCornerWidgetSize
   //             = leftCornerWidget->sizeHint().boundedTo(t - QSize(exth, exth));
   //     else
   //         option.leftCornerWidgetSize = QSize(0, 0);
-  // 
+  //
   //     switch (pos) {
   //     case QTabWidget::North:
   //         option.shape = shape == QTabWidget::Rounded ? QTabBar::RoundedNorth : QTabBar::TriangularNorth;
@@ -328,7 +328,7 @@ namespace Avogadro {
   //         break;
   //     }
   //     option.tabBarSize = t;
-  // 
+  //
   //     return option;
   // }
   // QStyleOptionTabV2 FlatTabBar::getStyleOption(int tab) const
@@ -353,22 +353,22 @@ namespace Avogadro {
   // //         opt.state |= QStyle::State_MouseOver;
   //     opt.shape = shape();
   //     opt.text = tabText(tab);
-  // 
+  //
   //     if (tabTextColor(tab).isValid())
   //         opt.palette.setColor(foregroundRole(), tabTextColor(tab));
-  // 
+  //
   // //     opt.icon = tabIcon(tab);
   // //     opt.iconSize = iconSize();  // Will get the default value then.
-  // 
+  //
   //     int totalTabs = count();
-  // 
+  //
   //     if (tab > 0 && tab - 1 == currentIndex())
   //         opt.selectedPosition = QStyleOptionTab::PreviousIsSelected;
   //     else if (tab < totalTabs - 1 && tab + 1 == currentIndex())
   //         opt.selectedPosition = QStyleOptionTab::NextIsSelected;
   //     else
   //         opt.selectedPosition = QStyleOptionTab::NotAdjacent;
-  // 
+  //
   //     if (tab == 0) {
   //         if (totalTabs > 1)
   //             opt.position = QStyleOptionTab::Beginning;
@@ -386,12 +386,12 @@ namespace Avogadro {
   //             opt.cornerWidgets |= QStyleOptionTab::RightCornerWidget;
   //     }
   //     int hframe  = style()->pixelMetric(QStyle::PM_TabBarTabHSpace, &opt, this);
-  // 
+  //
   //     opt.text = fontMetrics().elidedText(opt.text, elideMode(), 1 + (verticalTabs(shape()) ? tabRect(tab).height() : tabRect(tab).width()) - hframe,
   //                                            Qt::TextShowMnemonic);
   //     return opt;
   // }
-  // 
+  //
   // void FlatTabBar::paintEvent(QPaintEvent *event)
   // {
   //     QStyleOptionTab tabOverlap;
@@ -449,7 +449,7 @@ namespace Avogadro {
   //         if ((!verticalTabs && (tab.rect.right() < 0 || tab.rect.left() > width()))
   //             || (verticalTabs && (tab.rect.bottom() < 0 || tab.rect.top() > height())))
   //             continue;
-  // 
+  //
   //         optTabBase.tabBarRect |= tab.rect;
   //         if (i == currentIndex()) {
   //             selected = i;
@@ -464,21 +464,21 @@ namespace Avogadro {
   // //         p.drawControl(QStyle::CE_TabBarTabLabel, tab);
   // //         p.drawItemText(tab.rect, 0, tab.palette, true, tr("Test"));
   //     }
-  // 
+  //
   //     // Draw the selected tab last to get it "on top"
   //     if (selected >= 0) {
   //         QStyleOptionTabV2 tab = getStyleOption(selected);
   // //         p.drawControl(QStyle::CE_TabBarTab, tab);
   //         pt.drawRect(tab.rect);
   //         pt.drawText(tab.rect, Qt::AlignCenter | Qt::AlignVCenter, tab.text);
-  // 
+  //
   // //         p.drawControl(QStyle::CE_ToolBoxTab, tab);
   // //         p.drawControl(QStyle::CE_TabBarTabLabel, tab);
   // //         p.drawItemText(tab.rect, 0, tab.palette, true, tr("Test"));
   //     }
   // //     if (drawBase())
   // //         p.drawPrimitive(QStyle::PE_FrameTabBarBase, optTabBase);
-  // 
+  //
   //     // Only draw the tear indicator if necessary. Most of the time we don't need too.
   // //     if (d->leftB->isVisible() && cut >= 0) {
   // //         cutTab.rect = rect();
@@ -486,7 +486,7 @@ namespace Avogadro {
   // //         p.drawPrimitive(QStyle::PE_IndicatorTabTear, cutTab);
   // //     }
   // }
-  // 
+  //
 
 }
 

@@ -97,8 +97,8 @@ namespace Avogadro {
 
     public:
     ForceFieldThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
-        OpenBabel::OBFFConstraints* constraints, QTextEdit *textEdit, 
-	int forceFieldID, int nSteps, int algorithm, int gradients, 
+        OpenBabel::OBFFConstraints* constraints, QTextEdit *textEdit,
+	int forceFieldID, int nSteps, int algorithm, int gradients,
 	int convergence, int task, QObject *parent=0);
 
       void run();
@@ -114,7 +114,7 @@ namespace Avogadro {
       Molecule *m_molecule;
       OpenBabel::OBFFConstraints* m_constraints;
       QTextEdit *m_textEdit;
-      
+
       QMutex m_mutex;
 
       int m_cycles;
@@ -135,37 +135,37 @@ namespace Avogadro {
  class ForceFieldCommand : public QUndoCommand
  {
    public:
-     ForceFieldCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield, 
-         OpenBabel::OBFFConstraints* constraints, QTextEdit *messages, int forceFieldID, 
+     ForceFieldCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield,
+         OpenBabel::OBFFConstraints* constraints, QTextEdit *messages, int forceFieldID,
 	 int nSteps, int algorithm, int gradients, int convergence, int task);
-     
+
      ~ForceFieldCommand();
-     
+
      virtual void redo();
      virtual void undo();
      virtual bool mergeWith ( const QUndoCommand * command );
      virtual int id() const;
-     
+
      void detach() const;
      void cleanup();
-     
+
      ForceFieldThread *thread() const;
      QProgressDialog *progressDialog() const;
-     
+
    private:
      Molecule m_moleculeCopy;
-     
+
      int m_nSteps;
      int m_task;
      Molecule *m_molecule;
      OpenBabel::OBFFConstraints* m_constraints;
      QTextEdit *m_textEdit;
-     
+
      ForceFieldThread *m_thread;
      QProgressDialog *m_dialog;
-     
+
      mutable bool m_detached;
-     
+
  };
 
 } // end namespace Avogadro

@@ -221,7 +221,7 @@ namespace Avogadro {
         }
         else if(type == Primitive::AtomType) {
           Atom *atom = (Atom*)primitive;
-          str = tr("Atom") + ' ' 
+          str = tr("Atom") + ' '
             + QString(OpenBabel::etab.GetSymbol(atom->GetAtomicNum()))
             + ' ' + QString::number(atom->GetIdx());
         }
@@ -229,16 +229,16 @@ namespace Avogadro {
           Bond *bond = (Bond*)primitive;
           Atom *beginAtom = (Atom *)bond->GetBeginAtom();
           Atom *endAtom = (Atom *)bond->GetEndAtom();
-          str = tr("Bond") + ' ' + QString::number(bond->GetIdx()) + " ("; 
+          str = tr("Bond") + ' ' + QString::number(bond->GetIdx()) + " (";
           if(beginAtom) {
             str += QString::number(beginAtom->GetIdx());
           } else {
             // this should never happen: Bond always has a beginning -GRH
             str += '-';
           }
-          
+
           str += ',';
-          
+
           if(endAtom) {
             str += QString::number(endAtom->GetIdx());
           } else {

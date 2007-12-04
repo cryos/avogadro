@@ -86,7 +86,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
-    
+
     AVOGADRO_ENGINE_FACTORY(LabelEngine)
   };
 

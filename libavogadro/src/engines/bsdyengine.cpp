@@ -194,7 +194,7 @@ namespace Avogadro
         glEnable( GL_BLEND );
         pd->painter()->setColor( map );
         pd->painter()->setName( b );
-        if (order == 1) 
+        if (order == 1)
           pd->painter()->drawCylinder(v1, v2, SEL_BOND_EXTRA_RADIUS + m_bondRadius);
         else
           pd->painter()->drawMultiCylinder( v1, v2, SEL_BOND_EXTRA_RADIUS + m_bondRadius, order, shift );
