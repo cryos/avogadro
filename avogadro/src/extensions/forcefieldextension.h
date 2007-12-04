@@ -30,7 +30,6 @@
 
 #include <openbabel/mol.h>
 #include <openbabel/forcefield.h>
-#include <openbabel/dock.h>
 
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
