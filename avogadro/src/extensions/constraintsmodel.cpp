@@ -62,3 +62,5 @@ namespace Avogadro
   }
 
 } // end namespace Avogadro
+
+#include "constraintsmodel.moc"

@@ -58,7 +58,7 @@ namespace Avogadro
     //
     // why does this not work??
     //
-    //m_constraints = new ConstraintsModel;
+    m_constraints = new ConstraintsModel;
 
     if ( m_forceField ) { // make sure we can actually find and run it!
 
