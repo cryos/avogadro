@@ -72,13 +72,13 @@ namespace Avogadro
      * Uses the primitive to set the type and name. Not used by POV-Ray as it
      * is not an interactive display.
      */
-    void setName (const Primitive *primitive) { }
+    void setName (const Primitive *) { }
 
     /**
      * Sets the primitive type and id. Not used by POV-Ray as it is not an
      * interactive display.
      */
-    void setName (Primitive::Type type, int id) { }
+    void setName (Primitive::Type, int) { }
 
     /**
      * Set the color to paint the primitives with.
