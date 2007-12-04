@@ -1,3 +1,8 @@
+2007-12-04  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* avogadro/src/extrentions/: Added constraints dialog (see mailing
+	list)
+
 2007-12-03  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/tools/autoopttool.cpp: Added IsSetupNeeded check to

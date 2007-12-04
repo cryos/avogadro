@@ -30,6 +30,7 @@
 #include <QWriteLocker>
 #include <QMutex>
 #include <QMutexLocker>
+#include <QAbstractTableModel>
 
 using namespace std;
 using namespace OpenBabel;
@@ -43,7 +44,8 @@ namespace Avogadro
     SystematicRotorSearchIndex,
     RandomRotorSearchIndex,
     WeightedRotorSearchIndex,
-    SetupForceFieldIndex
+    SetupForceFieldIndex,
+    ConstraintsIndex
   };
 
   ForceFieldExtension::ForceFieldExtension( QObject *parent ) : QObject( parent )
@@ -51,6 +53,12 @@ namespace Avogadro
     QAction *action;
     m_forceField = OBForceField::FindForceField( "Ghemical" );
     m_Dialog = new ForceFieldDialog;
+    m_ConstraintsDialog = new ConstraintsDialog;
+
+    //
+    // why does this not work??
+    //
+    //m_constraints = new ConstraintsModel;
 
     if ( m_forceField ) { // make sure we can actually find and run it!
 
@@ -83,8 +91,14 @@ namespace Avogadro
       action->setText( tr("Setup Force Field..." ));
       action->setData(SetupForceFieldIndex);
       m_actions.append( action );
+    
+      action = new QAction( this );
+      action->setText( tr("Constraints" ));
+      action->setData(ConstraintsIndex);
+      m_actions.append( action );
+ 
     }
-
+    
   }
 
   ForceFieldExtension::~ForceFieldExtension()
@@ -104,6 +118,7 @@ namespace Avogadro
       case RandomRotorSearchIndex:
       case WeightedRotorSearchIndex:
       case SetupForceFieldIndex:
+      case ConstraintsIndex:
         return tr("&Extensions") + ">" + tr("&Molecular Mechanics");
         break;
       default:
@@ -155,46 +170,54 @@ namespace Avogadro
         if (!m_forceField)
           break;
 
-        undo = new ForceFieldCommand( molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(),
-                                    m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 1 );
+        undo = new ForceFieldCommand( molecule, m_forceField, reinterpret_cast<OpenBabel::OBFFConstraints*>(m_constraints), 
+	                            textEdit, 0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 1 );
         undo->setText( QObject::tr( "Systematic Rotor Search" ) );
         break;
       case RandomRotorSearchIndex: // random rotor search
         if (!m_forceField)
           break;
-
-        undo = new ForceFieldCommand( molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(),
-                                    m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 2 );
+        
+	undo = new ForceFieldCommand( molecule, m_forceField, reinterpret_cast<OpenBabel::OBFFConstraints*>(m_constraints), 
+	                            textEdit, 0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 2 );
+       
         undo->setText( QObject::tr( "Random Rotor Search" ) );
         break;
       case WeightedRotorSearchIndex: // random rotor search
         if (!m_forceField)
           break;
-
-        undo = new ForceFieldCommand( molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(),
-                                    m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 3 );
+	
+	undo = new ForceFieldCommand( molecule, m_forceField, reinterpret_cast<OpenBabel::OBFFConstraints*>(m_constraints), 
+	                            textEdit, 0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 3 );
+       
         undo->setText( QObject::tr( "Weighted Rotor Search" ) );
         break;
 
       case OptimizeGeometryIndex: // geometry optimization
         if (!m_forceField)
           break;
-
-        undo = new ForceFieldCommand( molecule, m_forceField, textEdit, 0, m_Dialog->nSteps(),
-                                    m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 0 );
+	
+	undo = new ForceFieldCommand( molecule, m_forceField, reinterpret_cast<OpenBabel::OBFFConstraints*>(m_constraints), 
+	                            textEdit, 0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 0 );
+       
         undo->setText( QObject::tr( "Geometric Optimization" ) );
+        break;
+      case ConstraintsIndex: // show constraints dialog
+        m_ConstraintsDialog->show();
         break;
     }
 
     return undo;
   }
 
-  ForceFieldThread::ForceFieldThread( Molecule *molecule, OpenBabel::OBForceField* forceField,
-                                  QTextEdit *textEdit, int forceFieldID, int nSteps, int algorithm,
-                                  int gradients, int convergence, int task, QObject *parent ) : QThread( parent )
+  ForceFieldThread::ForceFieldThread( Molecule *molecule, OpenBabel::OBForceField* forceField, 
+                                  OpenBabel::OBFFConstraints* constraints, QTextEdit *textEdit, int forceFieldID, 
+				  int nSteps, int algorithm, int gradients, int convergence, int task, 
+				  QObject *parent ) : QThread( parent )
   {
     m_cycles = 0;
     m_molecule = molecule;
+    m_constraints = constraints;
     m_forceField = forceField;
     m_textEdit = textEdit;
     m_forceFieldID = forceFieldID;
@@ -273,7 +296,7 @@ namespace Avogadro
     } else if ( m_task == 1 ) {
       int n = m_forceField->SystematicRotorSearchInitialize(m_nSteps);
       while (m_forceField->SystematicRotorSearchNextConformer(m_nSteps)) {
-        m_forceField->UpdateCoordinates( *m_molecule );
+        m_forceField->GetConformers( *m_molecule );
         m_molecule->update();
 	m_cycles++;
         m_mutex.lock();
@@ -303,10 +326,9 @@ namespace Avogadro
       m_forceField->ConjugateGradients(250);
     }
     
-    // final update
-    m_forceField->UpdateCoordinates( *m_molecule );
+    m_forceField->GetConformers( *m_molecule );
     m_molecule->update();
- 
+    
     m_textEdit->append( QObject::tr( buff.str().c_str() ) );
     m_stop = false;
   }
@@ -318,18 +340,20 @@ namespace Avogadro
   }
 
   ForceFieldCommand::ForceFieldCommand( Molecule *molecule, OpenBabel::OBForceField* forceField,
-                                    QTextEdit *textEdit, int forceFieldID, int nSteps, int algorithm,
-                                    int gradients, int convergence, int task ) :
+                                    OpenBabel::OBFFConstraints* constraints, QTextEdit *textEdit, 
+				    int forceFieldID, int nSteps, int algorithm, int gradients, 
+				    int convergence, int task ) :
       m_nSteps( nSteps ),
       m_task( task ),
       m_molecule( molecule ),
+      m_constraints( constraints ),
       m_textEdit( textEdit ),
       m_thread( 0 ),
       m_dialog( 0 ),
       m_detached( false )
   {
-    m_thread = new ForceFieldThread( molecule, forceField, textEdit,
-                                   forceFieldID, nSteps, algorithm,
+    m_thread = new ForceFieldThread( molecule, forceField, constraints, 
+                                   textEdit, forceFieldID, nSteps, algorithm,
                                    gradients, convergence, task );
 
     m_moleculeCopy = *molecule;
@@ -432,7 +456,7 @@ namespace Avogadro
   {
     return 54381241;
   }
-
+  
 } // end namespace Avogadro
 
 #include "forcefieldextension.moc"
