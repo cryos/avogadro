@@ -132,41 +132,56 @@ namespace Avogadro
   void ConstraintsModel::addAtomConstraint(int index)
   {
     m_constraints.AddAtomConstraint(index);
+    emitAllDataChanged();
   }
   
   void ConstraintsModel::addAtomXConstraint(int index)
   {
     m_constraints.AddAtomXConstraint(index);
+    emitAllDataChanged();
   }
   
   void ConstraintsModel::addAtomYConstraint(int index)
   {
     m_constraints.AddAtomYConstraint(index);
+    emitAllDataChanged();
   }
   
   void ConstraintsModel::addAtomZConstraint(int index)
   {
     m_constraints.AddAtomZConstraint(index);
+    emitAllDataChanged();
   }
   
   void ConstraintsModel::addBondConstraint(int a, int b, double length)
   {
     m_constraints.AddBondConstraint(a, b, length);
+    emitAllDataChanged();
   }
   
   void ConstraintsModel::addAngleConstraint(int a, int b, int c, double angle)
   {
     m_constraints.AddAngleConstraint(a, b, c, angle);
+    emitAllDataChanged();
   }
   
   void ConstraintsModel::addTorsionConstraint(int a, int b, int c, int d, double torsion)
   {
     m_constraints.AddTorsionConstraint(a, b, c, d, torsion);
+    emitAllDataChanged();
   }
  
   void ConstraintsModel::clear()
   {
     m_constraints.Clear();
+    emitAllDataChanged();
+  }
+
+  void ConstraintsModel::emitAllDataChanged()
+  {
+    QModelIndex idx = createIndex(0, 0);
+    QModelIndex idx2 = createIndex(100, 6);
+    emit dataChanged(idx, idx2);
   }
 
 
