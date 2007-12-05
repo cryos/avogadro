@@ -44,14 +44,19 @@ namespace Avogadro
       ~ConstraintsDialog();
 
       void setModel(ConstraintsModel *model);
+      void setForceField(OpenBabel::OBForceField *forcefield);
 
     public slots:
       void acceptConstraints();
       void deleteConstraint();
+      void deleteAllConstraints();
       void addConstraint();
+      void comboTypeChanged(int);
 
     private:
       Ui::ConstraintsDialog ui;
+      ConstraintsModel *m_constraints;
+      OpenBabel::OBForceField* m_forceField; // needed to transfer info between AutoOpt and FF Extention
   };
 }
 

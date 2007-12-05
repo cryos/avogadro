@@ -97,7 +97,7 @@ namespace Avogadro {
 
     public:
     ForceFieldThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
-        OpenBabel::OBFFConstraints* constraints, QTextEdit *textEdit,
+        ConstraintsModel* constraints, QTextEdit *textEdit,
 	int forceFieldID, int nSteps, int algorithm, int gradients,
 	int convergence, int task, QObject *parent=0);
 
@@ -112,7 +112,7 @@ namespace Avogadro {
 
     private:
       Molecule *m_molecule;
-      OpenBabel::OBFFConstraints* m_constraints;
+      ConstraintsModel* m_constraints;
       QTextEdit *m_textEdit;
 
       QMutex m_mutex;
@@ -136,7 +136,7 @@ namespace Avogadro {
  {
    public:
      ForceFieldCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield,
-         OpenBabel::OBFFConstraints* constraints, QTextEdit *messages, int forceFieldID,
+         ConstraintsModel* constraints, QTextEdit *messages, int forceFieldID,
 	 int nSteps, int algorithm, int gradients, int convergence, int task);
 
      ~ForceFieldCommand();
@@ -158,7 +158,7 @@ namespace Avogadro {
      int m_nSteps;
      int m_task;
      Molecule *m_molecule;
-     OpenBabel::OBFFConstraints* m_constraints;
+     ConstraintsModel* m_constraints;
      QTextEdit *m_textEdit;
 
      ForceFieldThread *m_thread;

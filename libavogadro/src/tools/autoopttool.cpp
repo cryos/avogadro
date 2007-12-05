@@ -407,6 +407,8 @@ namespace Avogadro {
       m_block = true;
     }
 
+    OpenBabel::OBFFConstraints constraints = m_forceField->GetConstraints(); // load constraints
+    
     if (m_comboFF->currentIndex() == 2)
       m_forceField = OBForceField::FindForceField( "UFF" );
     else if (m_comboFF->currentIndex() == 1)
@@ -414,7 +416,9 @@ namespace Avogadro {
     else
       m_forceField = OBForceField::FindForceField( "Ghemical" );
 
-    m_thread = new AutoOptThread(m_glwidget->molecule(), m_forceField,
+    m_forceField->SetConstraints(constraints); // save constraints
+
+    m_thread = new AutoOptThread(m_glwidget->molecule(), m_forceField, 
         m_comboAlgorithm->currentIndex(),
         m_convergenceSpinBox->value());
     connect(m_thread,SIGNAL(finished(bool)),this,SLOT(finished(bool)));
@@ -444,8 +448,7 @@ namespace Avogadro {
     m_block = false;
   }
 
-  AutoOptThread::AutoOptThread(Molecule *molecule,
-      OpenBabel::OBForceField* forceField,
+  AutoOptThread::AutoOptThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
       int algorithm, int convergence, QObject*)
   {
     m_molecule = molecule;
@@ -460,13 +463,14 @@ namespace Avogadro {
     m_forceField->SetLogFile(NULL);
     m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
 
-    if ( m_forceField->IsSetupNeeded( *m_molecule ) ) {
-      if ( !m_forceField->Setup( *m_molecule ) ) {
-        qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
-        m_stop = true;
-        emit finished(false);
-        return;
-      }
+    //if ( m_forceField->IsSetupNeeded( *m_molecule ) ) {
+    if ( m_forceField->IsSetupNeeded( *m_molecule) ) {
+        if ( !m_forceField->Setup( *m_molecule , m_forceField->GetConstraints() ) ) {
+          qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
+          m_stop = true;
+          emit finished(false);
+          return;
+        }
       cout << "SETUP" << endl;
     }
     m_forceField->SetConformers( *m_molecule );

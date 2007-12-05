@@ -48,7 +48,7 @@ namespace Avogadro {
     Q_OBJECT;
 
     public:
-    AutoOptThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
+    AutoOptThread(Molecule *molecule, OpenBabel::OBForceField* forceField, 
         int algorithm, int convergence, QObject *parent=0);
 
       void run();

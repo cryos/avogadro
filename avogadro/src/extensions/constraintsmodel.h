@@ -44,26 +44,31 @@ namespace Avogadro {
     Q_OBJECT
 
      public:
-       //ConstraintsModel(const OpenBabel::OBFFConstraints &constraints, *parent = 0)
        ConstraintsModel(QObject *parent = 0) : QAbstractTableModel(parent) {}
-
-       //void *operator new (QObject *parent = 0)
-
-
-       //ConstraintsModel &operator=(const Constraints &model);
-       //Constreintsodel &operator+=(const Constraints &model);
 
        int rowCount(const QModelIndex &parent = QModelIndex()) const;
        int columnCount(const QModelIndex &parent = QModelIndex()) const;
        QVariant data(const QModelIndex &index, int role) const;
-       //QVariant headerData(int section, Qt::Orientation orientation,
-       //    int role = Qt::DisplayRole) const;
+       QVariant headerData(int section, Qt::Orientation orientation,
+           int role = Qt::DisplayRole) const;
+       
+       void clear();
+       void addAtomConstraint(int index);
+       void addAtomXConstraint(int index);
+       void addAtomYConstraint(int index);
+       void addAtomZConstraint(int index);
+       void addBondConstraint(int a, int b, double length);
+       void addAngleConstraint(int a, int b, int c, double angle);
+       void addTorsionConstraint(int a, int b, int c, int d, double torsion);
 
+       OpenBabel::OBFFConstraints& constraints() { return m_constraints; }
+       void setConstraints (OpenBabel::OBFFConstraints& constraints) { m_constraints = constraints; }
+     
      private:
        OpenBabel::OBFFConstraints m_constraints;
-       //QStringList stringList;
-  };
 
+ };
+ 
 } // end namespace Avogadro
 
 #endif
