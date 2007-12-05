@@ -127,7 +127,8 @@ namespace Avogadro {
     m_clickedAtom = widget->computeClickedAtom(event->pos());
     if(m_clickedAtom != 0 && m_leftButtonPressed && m_running)
     {
-      m_clickedAtom->SetFixed();
+      //m_forceField->GetConstraints().AddAtomConstraint(m_clickedAtom->GetIdx());
+      //m_clickedAtom->SetFixed();
     }
 
     widget->update();
@@ -142,7 +143,8 @@ namespace Avogadro {
     m_rightButtonPressed = false;
     if (m_clickedAtom != 0)
     {
-      m_clickedAtom->UnsetFixed();
+      //m_clickedAtom->UnsetFixed();
+      //m_forceField->GetConstraints().AddAtomConstraint(m_clickedAtom->GetIdx());
     }
 
     m_clickedAtom = 0;
@@ -387,7 +389,7 @@ namespace Avogadro {
 
       if (m_clickedAtom != 0)
       {
-        m_clickedAtom->UnsetFixed();
+        //m_clickedAtom->UnsetFixed();
       }
       m_clickedAtom = 0;
       m_leftButtonPressed = false;
