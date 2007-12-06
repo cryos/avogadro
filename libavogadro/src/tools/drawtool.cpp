@@ -82,14 +82,14 @@ namespace Avogadro {
     // First case: we pick a common element from the popup
     if (index < m_elementsIndex.size() - 1) {
       setElement(m_elementsIndex[index]);
-      if (m_periodicTable)
-        m_periodicTable->setSelectedElement(m_elementsIndex[index]);
+//      if (m_periodicTable)
+//        m_periodicTable->setSelectedElement(m_elementsIndex[index]);
     }
     // Second case: we have a custom element "Other..."
     // Bring up the periodic table widget
     else {
       if (m_periodicTable) {
-        m_periodicTable->setSelectedElement(m_element);
+//        m_periodicTable->setSelectedElement(m_element);
         m_periodicTable->show();
       }
     }
@@ -577,7 +577,7 @@ namespace Avogadro {
       m_button3DGen->setText(tr("Insert SMILES"));
       connect(m_button3DGen, SIGNAL(clicked()), this, SLOT(gen3D()));
 
-      m_periodicTable = new PeriodicTableDialog(m_settingsWidget);
+      m_periodicTable = new PeriodicTableGV(m_settingsWidget);
       connect(m_periodicTable, SIGNAL(elementChanged(int)),
           this, SLOT(customElementChanged(int)));
 

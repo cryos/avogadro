@@ -29,6 +29,7 @@
 #include <avogadro/tool.h>
 
 #include "periodictabledialog.h"
+#include "periodictablegv.h"
 
 #include <openbabel/mol.h>
 #include <openbabel/builder.h>
@@ -126,7 +127,7 @@ namespace Avogadro {
       QLineEdit *m_text3DGen;
       QPushButton *m_button3DGen;
       QPushButton *m_tableButton;
-      PeriodicTableDialog *m_periodicTable;
+      PeriodicTableGV *m_periodicTable;
       QVBoxLayout *m_layout;
 
       QWidget *m_settingsWidget;
