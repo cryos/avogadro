@@ -298,13 +298,13 @@ namespace Avogadro {
     }
 
     // Now for the weird ones at the bottom...
-    element = 58;
+    element = 57;
     for (int i = 2; i < 16; i++) {
       item = new ElementItem(element++);
       item->setPos(i * width, 7.5 * height);
       addItem(item);
     }
-    element = 90;
+    element = 89;
     for (int i = 2; i < 16; i++) {
       item = new ElementItem(element++);
       item->setPos(i * width, 9 * height);
