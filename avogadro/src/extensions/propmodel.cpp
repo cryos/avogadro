@@ -412,6 +412,61 @@ namespace Avogadro
     m_molecule = molecule;
   }
   
+  //////////////////////////////////////////////////////////////////////////////
+  //
+  // C O N F O R M E R
+  //
+  //////////////////////////////////////////////////////////////////////////////
+ 
+  int ConformerModel::rowCount(const QModelIndex &parent) const
+  {
+    return m_molecule->NumConformers();
+  }
+
+  int ConformerModel::columnCount(const QModelIndex &parent) const
+  {
+    return 1;
+  }
+
+  QVariant ConformerModel::data(const QModelIndex &index, int role) const
+  {
+    if (!index.isValid())
+      return QVariant();
+
+    if (index.row() >= m_molecule->NumConformers())
+      return QVariant();
+
+    OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
+
+    if (role == Qt::DisplayRole)
+      switch (index.column()) {
+        case 0: // energy
+	    return 0.0;
+      }
+    else
+      return QVariant();
+  }
+  
+  QVariant ConformerModel::headerData(int section, Qt::Orientation orientation, int role) const
+  {
+    if (role != Qt::DisplayRole)
+      return QVariant();
+
+    if (orientation == Qt::Horizontal) {
+      switch (section) {
+        case 0:
+	  return QString("Energy");
+      }
+    } else
+      return QString("Conformer %1").arg(section + 1);
+  }
+ 
+  void ConformerModel::setMolecule(Molecule *molecule)
+  {
+    m_molecule = molecule;
+  }
+  
+ 
 
 } // end namespace Avogadro
 

@@ -39,7 +39,8 @@ namespace Avogadro
   {
     AtomPropIndex = 0,
     BondPropIndex,
-    CartesianIndex
+    CartesianIndex,
+    ConformerIndex
   };
 
   PropertiesExtension::PropertiesExtension( QObject *parent ) : QObject( parent )
@@ -48,6 +49,7 @@ namespace Avogadro
     m_atomModel = new AtomPropModel;
     m_bondModel = new BondPropModel;
     m_cartesianModel = new CartesianModel;
+    m_conformerModel = new ConformerModel;
     
     action = new QAction( this );
     action->setText( tr("Atom properties" ));
@@ -62,6 +64,11 @@ namespace Avogadro
     action = new QAction( this );
     action->setText( tr("Cartesian editor" ));
     action->setData(CartesianIndex);
+    m_actions.append( action );
+    
+    action = new QAction( this );
+    action->setText( tr("Conformers" ));
+    action->setData(ConformerIndex);
     m_actions.append( action );
   }
 
@@ -79,6 +86,7 @@ namespace Avogadro
     switch(i) {
       case AtomPropIndex:
       case BondPropIndex:
+      case ConformerIndex:
         return tr("&Extensions") + ">" + tr("&Properties");
       case CartesianIndex:
         return tr("&Build");
@@ -116,7 +124,14 @@ namespace Avogadro
         view = new QTableView;
 	m_cartesianModel->setMolecule( molecule );
 	view->setModel( m_cartesianModel );
-	view->resize(600, 400);
+	view->resize(400, 600);
+	view->show();
+        break;
+      case ConformerIndex: // conformers
+        view = new QTableView;
+	m_conformerModel->setMolecule( molecule );
+	view->setModel( m_conformerModel );
+	view->resize(400, 600);
 	view->show();
         break;
     }

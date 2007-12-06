@@ -75,6 +75,7 @@ namespace Avogadro {
       AtomPropModel* m_atomModel;
       BondPropModel* m_bondModel;
       CartesianModel* m_cartesianModel;
+      ConformerModel* m_conformerModel;
       QList<QAction *> m_actions;
       //ForceFieldDialog *m_Dialog;
   };

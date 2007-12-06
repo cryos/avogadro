@@ -104,7 +104,6 @@ namespace Avogadro {
        Molecule *m_molecule;
  };
  
- /*
  class ConformerModel : public QAbstractTableModel
   {
     Q_OBJECT
@@ -115,17 +114,14 @@ namespace Avogadro {
        int rowCount(const QModelIndex &parent = QModelIndex()) const;
        int columnCount(const QModelIndex &parent = QModelIndex()) const;
        QVariant data(const QModelIndex &index, int role) const;
-       Qt::ItemFlags flags(const QModelIndex &index) const;
-       bool setData(const QModelIndex &index, QVariant &value, int role);
        QVariant headerData(int section, Qt::Orientation orientation,
            int role = Qt::DisplayRole) const;
        
-       void setMolecule (OpenBabel::OBMol *molecule);
+       void setMolecule (Molecule *molecule);
 
      private:
-       OpenBabel::OBMol *m_molecule;
+       Molecule *m_molecule;
  };
- */
  
 } // end namespace Avogadro
 
