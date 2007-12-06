@@ -346,7 +346,7 @@ namespace Avogadro {
             this, SLOT(elementClicked(int)));
   }
   
-  void PeriodicTableGV::setSelectedElement(int element)
+  void PeriodicTableGV::setSelectedElement(int)
   {
     
   }

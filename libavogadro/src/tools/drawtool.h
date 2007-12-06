@@ -28,7 +28,6 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
 
-#include "periodictabledialog.h"
 #include "periodictablegv.h"
 
 #include <openbabel/mol.h>
