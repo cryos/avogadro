@@ -1,8 +1,11 @@
-2007-12-04  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+2007-12-06  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extrentions/: You can now fix an atom, the rest will
 	follow soon...
 
+	* avogadro/src/extrentions/: Added atom and bond properties and a
+	cartesian coordinate editor.
+	
 	* libavogadro/src/tools/: same for AutoOpt
 
 2007-12-04  Geoffrey Hutchison  <babel@geoffhutchison.net>

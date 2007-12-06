@@ -36,6 +36,19 @@ TARGET_LINK_LIBRARIES(gamessextension
 )
 INSTALL(TARGETS gamessextension DESTINATION ${DESTINATION_DIR})
 
+### Properties
+set(propextension_SRCS propmodel.cpp propextension.cpp)
+#qt4_wrap_ui(propextension_UIS_H )
+qt4_automoc(${propextension_SRCS})
+ADD_LIBRARY(propextension SHARED ${propextension_SRCS} ${propextension_UIS_H})
+TARGET_LINK_LIBRARIES(propextension
+	${OPENBABEL2_LIBRARIES}
+	${QT_LIBRARIES}
+    ${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS propextension DESTINATION ${DESTINATION_DIR})
+
 ### Molecular Mechanics force fields
 set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp constraintsdialog.cpp constraintsmodel.cpp)
 qt4_wrap_ui(forcefieldextension_UIS_H forcefielddialog.ui constraintsdialog.ui)

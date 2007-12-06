@@ -1,5 +1,5 @@
 /**********************************************************************
-  ForceFieldDialog - Dialog for force field settings
+  ConstraintsDialog - Dialog for force field constraint settings
 
   Copyright (C) 2007 by Tim Vandermeersch
 
@@ -123,6 +123,7 @@ namespace Avogadro {
   void ConstraintsDialog::deleteConstraint()
   {
     std::cout << "deleteConstraint(" << ui.ConstraintsTableView->currentIndex().row() << std::endl;
+    m_constraints->deleteConstraint(0);
   }
 
   void ConstraintsDialog::deleteAllConstraints()
@@ -134,7 +135,6 @@ namespace Avogadro {
   
   void ConstraintsDialog::addConstraint()
   {
-    
     switch (ui.comboType->currentIndex()) {
       case 0: // Ignore
       case 1: // Atom 
@@ -163,7 +163,6 @@ namespace Avogadro {
 	    ui.editValue->value());
 	break;
     }
-
   }
 
 

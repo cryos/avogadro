@@ -1,8 +1,7 @@
 /**********************************************************************
-  forcefieldextension.h - Force field Plugin for Avogadro
+  constraintsmodel.h - Model to hold constraints
 
-  Copyright (C) 2006 by Donald Ephraim Curtis
-  Copyright (C) 2006-2007 by Geoffrey R. Hutchison
+  Copyright (C) 2007 by Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -54,6 +53,7 @@ namespace Avogadro {
        void emitAllDataChanged();
        
        void clear();
+       void deleteConstraint(int index);
        void addAtomConstraint(int index);
        void addAtomXConstraint(int index);
        void addAtomYConstraint(int index);

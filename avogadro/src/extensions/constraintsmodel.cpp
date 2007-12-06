@@ -1,8 +1,7 @@
 /**********************************************************************
-  forcefieldextension.cpp - molecular mechanics force field Plugin for Avogadro
+  constraintsmodel.cpp - Model to hold constraints
 
-  Copyright (C) 2006 by Donald Ephraim Curtis
-  Copyright (C) 2006-2007 by Geoffrey R. Hutchison
+  Copyright (C) 2007 by Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -176,7 +175,13 @@ namespace Avogadro
     m_constraints.Clear();
     emitAllDataChanged();
   }
-
+  
+  void ConstraintsModel::deleteConstraint(int index)
+  { 
+    m_constraints.DeleteConstraint(index);
+    emitAllDataChanged();
+  }
+  
   void ConstraintsModel::emitAllDataChanged()
   {
     QModelIndex idx = createIndex(0, 0);

@@ -1,5 +1,5 @@
 /**********************************************************************
-  ForceFieldDialog - Dialog for force field settings
+  ConstraintsDialog - Dialog for force field constraint settings
 
   Copyright (C) 2007 by Tim Vandermeersch
 
