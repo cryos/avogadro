@@ -31,6 +31,8 @@
 #include <QObject>
 #include <QList>
 #include <QString>
+#include <QTableView>
+#include <QItemSelectionModel>
 
 #ifndef BUFF_SIZE
 #define BUFF_SIZE 256

@@ -108,7 +108,7 @@ namespace Avogadro
 	  return QString("Type");
 	  break;
         case 1:
-	  return QString("Value").arg(section);
+	  return QString("Value");
 	  break;
         case 2:
 	  return QString("Atom idx 1");

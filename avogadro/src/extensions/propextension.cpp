@@ -98,47 +98,150 @@ namespace Avogadro
   }
 
   QUndoCommand* PropertiesExtension::performAction( QAction *action, Molecule *molecule,
-      GLWidget *, QTextEdit *textEdit )
+      GLWidget *widget, QTextEdit *textEdit )
   {
     QUndoCommand *undo = NULL;
-    QTableView *view = NULL;
+    ConformerView *cview = NULL;
+    AtomTableView *aview = NULL;
+    BondTableView *bview = NULL;
     ostringstream buff;
 
     int i = action->data().toInt();
     switch ( i ) {
       case AtomPropIndex: // atom properties
-        view = new QTableView;
+        aview = new AtomTableView;
 	m_atomModel->setMolecule( molecule );
-	view->setModel( m_atomModel );
-	view->resize(600, 400);
-	view->show();
+	aview->setMolecule( molecule );
+	aview->setWidget( widget );
+	aview->setModel( m_atomModel );
+	aview->resize(860, 400);
+	aview->show();
         break;
       case BondPropIndex: // bond properties
-        view = new QTableView;
+        bview = new BondTableView;
 	m_bondModel->setMolecule( molecule );
-	view->setModel( m_bondModel );
-	view->resize(600, 400);
-	view->show();
+	bview->setMolecule( molecule );
+	bview->setWidget( widget );
+	bview->setModel( m_bondModel );
+	bview->resize(550, 400);
+	bview->show();
         break;
       case CartesianIndex: // cartesian editor
-        view = new QTableView;
+        aview = new AtomTableView;
 	m_cartesianModel->setMolecule( molecule );
-	view->setModel( m_cartesianModel );
-	view->resize(400, 600);
-	view->show();
+	aview->setMolecule( molecule );
+	aview->setWidget( widget );
+	aview->setModel( m_cartesianModel );
+	aview->resize(360, 400);
+	aview->show();
         break;
       case ConformerIndex: // conformers
-        view = new QTableView;
+        cview = new ConformerView;
 	m_conformerModel->setMolecule( molecule );
-	view->setModel( m_conformerModel );
-	view->resize(400, 600);
-	view->show();
+	cview->setMolecule( molecule );
+	cview->setModel( m_conformerModel );
+	cview->resize(180, 500);
+	cview->show();
         break;
     }
 
     return undo;
   }
-
+  
+  void ConformerView::selectionChanged(const QItemSelection &selected, const QItemSelection &previous)
+  {
+    QModelIndex index;
+    QModelIndexList items = selected.indexes();
+   
+    foreach (index, items) {
+      if (!index.isValid())
+        return;
+    
+      if (index.row() >= m_molecule->NumConformers())
+        return;
+    
+      m_molecule->SetConformer(index.row());
+      m_molecule->update();
+    }
+  }
+  
+  void ConformerView::setMolecule(Molecule *molecule)
+  {
+    m_molecule = molecule;
+  }
+ 
+  void AtomTableView::selectionChanged(const QItemSelection &selected, const QItemSelection &previous)
+  {
+    QModelIndex index;
+    QList<Primitive *> matchedAtoms;
+    QModelIndexList items = selected.indexes();
+    
+    foreach (index, items) {
+      if (!index.isValid())
+        return;
+    
+      if (index.row() >= m_molecule->NumAtoms())
+        return;
+    
+      matchedAtoms.append(static_cast<Atom*>(m_molecule->GetAtom(index.row()+1)));
+    }
+    
+    m_widget->clearSelected();
+    m_widget->setSelected(matchedAtoms, true);
+    m_widget->update();
+  }
+  
+  void AtomTableView::setMolecule(Molecule *molecule)
+  {
+    m_molecule = molecule;
+  }
+  
+  void AtomTableView::setWidget(GLWidget *widget)
+  {
+    m_widget = widget;
+  }
+  
+  void AtomTableView::hideEvent(QHideEvent *event)
+  {
+    m_widget->clearSelected();
+  }
+  
+  void BondTableView::selectionChanged(const QItemSelection &selected, const QItemSelection &previous)
+  {
+    QModelIndex index;
+    QList<Primitive *> matchedBonds;
+    QModelIndexList items = selected.indexes();
+    
+    foreach (index, items) {
+      if (!index.isValid())
+        return;
+    
+      if (index.row() >= m_molecule->NumAtoms())
+        return;
+    
+      matchedBonds.append(static_cast<Bond*>(m_molecule->GetBond(index.row())));
+    }
+    
+    m_widget->clearSelected();
+    m_widget->setSelected(matchedBonds, true);
+    m_widget->update();
+  }
+  
+  void BondTableView::setMolecule(Molecule *molecule)
+  {
+    m_molecule = molecule;
+  }
+  
+  void BondTableView::setWidget(GLWidget *widget)
+  {
+    m_widget = widget;
+  }
+  
+  void BondTableView::hideEvent(QHideEvent *event)
+  {
+    m_widget->clearSelected();
+  }
+ 
 } // end namespace Avogadro
 
 #include "propextension.moc"

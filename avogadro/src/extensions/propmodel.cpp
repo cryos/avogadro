@@ -257,7 +257,7 @@ namespace Avogadro
 	  return QString("Rotatable");
       }
     } else
-      return QString("Bond %1").arg(section);
+      return QString("Bond %1").arg(section + 1);
   }
  
   Qt::ItemFlags BondPropModel::flags(const QModelIndex &index) const
@@ -466,8 +466,6 @@ namespace Avogadro
     m_molecule = molecule;
   }
   
- 
-
 } // end namespace Avogadro
 
 #include "propmodel.moc"

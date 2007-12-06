@@ -77,7 +77,6 @@ namespace Avogadro {
       CartesianModel* m_cartesianModel;
       ConformerModel* m_conformerModel;
       QList<QAction *> m_actions;
-      //ForceFieldDialog *m_Dialog;
   };
 
   class PropertiesExtensionFactory : public QObject, public ExtensionFactory
@@ -88,7 +87,55 @@ namespace Avogadro {
     public:
     Extension *createInstance(QObject *parent = 0) { return new PropertiesExtension(parent); }
   };
+ 
+ class ConformerView : public QTableView
+  {
+    Q_OBJECT
 
+     public:
+       ConformerView(QWidget *parent = 0) : QTableView(parent), m_molecule(NULL) {}
+
+       void selectionChanged(const QItemSelection &selected, const QItemSelection &previous);
+       void setMolecule (Molecule *molecule);
+
+     private:
+       Molecule *m_molecule;
+ };
+ 
+ class AtomTableView : public QTableView
+  {
+    Q_OBJECT
+
+     public:
+       AtomTableView(QWidget *parent = 0) : QTableView(parent), m_molecule(NULL) {}
+
+       void selectionChanged(const QItemSelection &selected, const QItemSelection &previous);
+       void setMolecule (Molecule *molecule);
+       void setWidget (GLWidget *widget);
+       void hideEvent(QHideEvent *event);
+
+     private:
+       Molecule *m_molecule;
+       GLWidget *m_widget;
+ };
+ 
+ class BondTableView : public QTableView
+  {
+    Q_OBJECT
+
+     public:
+       BondTableView(QWidget *parent = 0) : QTableView(parent), m_molecule(NULL) {}
+
+       void selectionChanged(const QItemSelection &selected, const QItemSelection &previous);
+       void setMolecule (Molecule *molecule);
+       void setWidget (GLWidget *widget);
+       void hideEvent(QHideEvent *event);
+
+     private:
+       Molecule *m_molecule;
+       GLWidget *m_widget;
+ };
+ 
 } // end namespace Avogadro
 
 #endif
