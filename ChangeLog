@@ -1,3 +1,10 @@
+2007-12-06  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/tools/drawtool.cpp: Enhanced custom element
+	support. Picking elements from the table will add a new entry and
+	select it. Picking elements form the table *already* in the list
+	will simply select that element again.
+
 2007-12-06  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extrentions/: You can now fix an atom, the rest will

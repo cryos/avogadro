@@ -82,14 +82,11 @@ namespace Avogadro {
     // First case: we pick a common element from the popup
     if (index < m_elementsIndex.size() - 1) {
       setElement(m_elementsIndex[index]);
-//      if (m_periodicTable)
-//        m_periodicTable->setSelectedElement(m_elementsIndex[index]);
     }
     // Second case: we have a custom element "Other..."
     // Bring up the periodic table widget
     else {
       if (m_periodicTable) {
-//        m_periodicTable->setSelectedElement(m_element);
         m_periodicTable->show();
       }
     }
@@ -123,10 +120,28 @@ namespace Avogadro {
 
   }
 
-  // TODO: Add additional entries to the element index (popup menu)
   void DrawTool::customElementChanged( int index )
   {
+    // Set the element so we can draw with it
     setElement(index);
+
+    // Check to see if we already have this in the comboBox list
+    // If not, we get back -1 and need to create a new item
+    int comboItem = m_elementsIndex.indexOf(index);
+    if (comboItem != -1) {
+      m_comboElements->setCurrentIndex(comboItem);
+      return; // we found it in the list, so we're done
+    }
+    
+    // And now we set up a new entry into the combo list
+    int position = m_elementsIndex.size() - 1;
+    QString entryName(etab.GetName(index).c_str()); // (e.g., "Hydrogen")
+    QString elementNum;
+    entryName += " (" + elementNum.setNum(index) + ")"; 
+
+    m_elementsIndex.insert(position, index);
+    m_comboElements->insertItem(position, entryName);
+    m_comboElements->setCurrentIndex(position);
   }
 
   void DrawTool::setElement( int index )
@@ -538,25 +553,25 @@ namespace Avogadro {
       // (and extra for "other" to bring up periodic table window)
       m_comboElements = new QComboBox(m_settingsWidget);
       m_elementsIndex.reserve(11);
-      m_comboElements->addItem(tr("Hydrogen (1)"));
+      m_comboElements->addItem(tr("Hydrogen") + " (1)");
       m_elementsIndex.append(1);
-      m_comboElements->addItem(tr("Boron (5)"));
+      m_comboElements->addItem(tr("Boron") + " (5)");
       m_elementsIndex.append(5);
-      m_comboElements->addItem(tr("Carbon (6)"));
+      m_comboElements->addItem(tr("Carbon") + " (6)");
       m_elementsIndex.append(6);
-      m_comboElements->addItem(tr("Nitrogen (7)"));
+      m_comboElements->addItem(tr("Nitrogen") + " (7)");
       m_elementsIndex.append(7);
-      m_comboElements->addItem(tr("Oxygen (8)"));
+      m_comboElements->addItem(tr("Oxygen") + " (8)");
       m_elementsIndex.append(8);
-      m_comboElements->addItem(tr("Fluorine (9)"));
+      m_comboElements->addItem(tr("Fluorine") + " (9)");
       m_elementsIndex.append(9);
-      m_comboElements->addItem(tr("Phosphorus (15)"));
+      m_comboElements->addItem(tr("Phosphorus") + " (15)");
       m_elementsIndex.append(15);
-      m_comboElements->addItem(tr("Sulfur (16)"));
+      m_comboElements->addItem(tr("Sulfur") + " (16)");
       m_elementsIndex.append(16);
-      m_comboElements->addItem(tr("Chlorine (17)"));
+      m_comboElements->addItem(tr("Chlorine") + " (17)");
       m_elementsIndex.append(17);
-      m_comboElements->addItem(tr("Bromine (35)"));
+      m_comboElements->addItem(tr("Bromine") + " (35)");
       m_elementsIndex.append(35);
       m_comboElements->addItem(tr("Other..."));
       m_elementsIndex.append(0);
