@@ -110,7 +110,8 @@ namespace Avogadro {
                           QWidget *)
   {
     // Set up a font object and get its height
-    QFont font("sans-serif", 12);
+    QFont font("sans-serif");
+    font.setPixelSize(12);
     painter->setFont(font);
     QFontMetrics fm(font);
     int pixelHeight = fm.height();
@@ -129,7 +130,7 @@ namespace Avogadro {
     painter->drawRect(rect);
 
     // Draw the element symbol in the centre of the item
-    font.setPointSize(26);
+    font.setPixelSize(24);
     QFontMetrics fm2(font);
     pixelHeight = fm2.height();
     int pixelWidth = fm2.width(symbol);
@@ -137,7 +138,7 @@ namespace Avogadro {
     QRectF symbolRect(-10, -m_height/2 + 10, pixelWidth, pixelHeight);
     painter->drawText(symbolRect, Qt::AlignCenter, symbol);
 
-    font.setPointSize(12);
+    font.setPixelSize(12);
     pixelHeight = fm.height();
     painter->setFont(font);
     QRectF protonNumberRect(-m_width/2 - 10, -m_height/2 + 10, m_width/2, pixelHeight);
