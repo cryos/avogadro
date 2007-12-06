@@ -1,5 +1,8 @@
 project(libavogadro)
-set(VERSION 0.3.b1)
+# Library versioning
+# We probably want to adopt the libtool scheme once we hit 1.0.0
+set(VERSION 0.3.0b2)
+set(SOVERSION 0)
 
 # Generate SVN_REVISION variable
 execute_process(COMMAND svnversion -n ${CMAKE_SOURCE_DIR}

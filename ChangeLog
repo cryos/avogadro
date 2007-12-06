@@ -5,6 +5,12 @@
 	select it. Picking elements form the table *already* in the list
 	will simply select that element again.
 
+	* scripts/distclean.sh: An enhanced "distclean" script for
+	preparing source releases.
+
+	* avogadro/CMakeLists.txt, libavogadro/CMakeLists.txt: Bumped
+	version number to 0.3.0b2.
+
 2007-12-06  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extrentions/: You can now fix an atom, the rest will
