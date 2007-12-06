@@ -5,8 +5,19 @@
 
 	* avogadro/src/extrentions/: Added atom and bond properties and a
 	cartesian coordinate editor.
-	
+
 	* libavogadro/src/tools/: same for AutoOpt
+
+2007-12-05  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* +libavogadro/src/tools/periodictablegv.h,
+	libavogadro/src/tools/periodictablegv.cpp,
+	libavogadro/src/tools/CMakeLists.txt,
+	libavogadro/src/tools/drawtool.h: Added a new periodic table based
+	upon the QGraphicsView. Ported the draw tool to use it.
+
+	* -libavogadro/src/tools/periodictabledialog.*: Removed the old
+	periodic table dialog.
 
 2007-12-04  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
