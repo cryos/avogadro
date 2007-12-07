@@ -105,6 +105,7 @@ namespace Avogadro {
       void run();
       int cycles() const;
       void setTask(int task);
+      void setNumConformers(int numConformers);
 
     Q_SIGNALS:
       void stepsTaken(int steps);
@@ -126,6 +127,7 @@ namespace Avogadro {
       int m_gradients;
       int m_convergence;
       int m_task;
+      int m_numConformers;
 
       OpenBabel::OBForceField* m_forceField;
       //ForceFieldDialog *m_Dialog;
@@ -152,6 +154,7 @@ namespace Avogadro {
      void detach() const;
      void cleanup();
      void setTask(int task);
+     void setNumConformers(int numConformers);
 
      ForceFieldThread *thread() const;
      QProgressDialog *progressDialog() const;
@@ -161,6 +164,7 @@ namespace Avogadro {
 
      int m_nSteps;
      int m_task;
+     int m_numConformers;
      Molecule *m_molecule;
      ConstraintsModel* m_constraints;
      QTextEdit *m_textEdit;

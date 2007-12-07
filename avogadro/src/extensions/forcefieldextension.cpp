@@ -207,6 +207,11 @@ namespace Avogadro
   {
     m_task = task;
   }
+  
+  void ForceFieldThread::setNumConformers(int numConformers)
+  {
+    m_numConformers = numConformers;
+  }
  
   void ForceFieldThread::run()
   {
@@ -282,9 +287,9 @@ namespace Avogadro
         emit stepsTaken( (int) ((double) m_cycles / n * 100));
       }
    } else if ( m_task == 2 ) {
-      m_forceField->RandomRotorSearchInitialize(100, m_nSteps);
+      m_forceField->RandomRotorSearchInitialize(m_numConformers, m_nSteps);
       while (m_forceField->RandomRotorSearchNextConformer(m_nSteps)) {
-        m_forceField->UpdateCoordinates( *m_molecule );
+        m_forceField->GetConformers( *m_molecule );
         m_molecule->update();
 	m_cycles++;
         m_mutex.lock();
@@ -296,7 +301,8 @@ namespace Avogadro
         emit stepsTaken( m_cycles );
       }
     } else if ( m_task == 3 ) {
-      m_forceField->WeightedRotorSearch(100, 50);
+      m_forceField->WeightedRotorSearch(m_numConformers, m_nSteps);
+      m_forceField->GetConformers( *m_molecule );
       m_forceField->ConjugateGradients(250);
     }
 
@@ -353,6 +359,11 @@ namespace Avogadro
     m_task = task;
   }
   
+  void ForceFieldCommand::setNumConformers(int numConformers)
+  {
+    m_numConformers = numConformers;
+  }
+  
   void ForceFieldCommand::redo()
   {
     if(!m_dialog) {
@@ -376,6 +387,7 @@ namespace Avogadro
     }
 
     m_thread->setTask(m_task);
+    m_thread->setNumConformers(m_numConformers);
     m_thread->start();
   }
 

@@ -140,11 +140,12 @@ namespace Avogadro {
   void ConformerSearchDialog::accept()
   {
     //  qDebug() << "ConformerSearchDialog::accept()";
+    m_numConformers = ui.numSpin->value();
 
     ((ForceFieldCommand*)m_forceFieldCommand)->setTask(m_method);
+    ((ForceFieldCommand*)m_forceFieldCommand)->setNumConformers(m_numConformers);
     m_forceFieldCommand->redo();
     
-    m_numConformers = ui.numSpin->value();
 
     hide();
   }
