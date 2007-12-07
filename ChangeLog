@@ -10,6 +10,8 @@
 	* libavogadro/src/tools/periodictablegv.cpp: Use the new
 	translation feature.
 
+	* libavogadro/src/engines/labelengine.cpp: Ditto.
+
 2007-12-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extensions/: Improvements to the properties model, and

@@ -27,6 +27,7 @@
 #include <config.h>
 #include "labelengine.h"
 
+#include <avogadro/elementtranslate.h>
 #include <avogadro/camera.h>
 #include <avogadro/painter.h>
 
@@ -38,6 +39,8 @@ using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
+
+  extern ElementTranslator elementTranslator;
 
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
   m_atomType(1), m_bondType(2), m_settingsWidget(0)
@@ -100,7 +103,7 @@ namespace Avogadro {
           break;
         case 2:
         default:
-          str = QString((etab.GetName(a->GetAtomicNum())).c_str());
+          str = elementTranslator.name(a->GetAtomicNum());
       }
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
