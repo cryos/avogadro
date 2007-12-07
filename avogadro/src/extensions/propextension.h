@@ -72,10 +72,10 @@ namespace Avogadro {
       //@}
 
     private:
-      AtomPropModel* m_atomModel;
-      BondPropModel* m_bondModel;
-      CartesianModel* m_cartesianModel;
-      ConformerModel* m_conformerModel;
+      PropertiesModel* m_atomModel;
+      PropertiesModel* m_bondModel;
+      PropertiesModel* m_cartesianModel;
+      PropertiesModel* m_conformerModel;
       QList<QAction *> m_actions;
   };
 
@@ -88,26 +88,23 @@ namespace Avogadro {
     Extension *createInstance(QObject *parent = 0) { return new PropertiesExtension(parent); }
   };
  
- class ConformerView : public QTableView
+ class PropertiesView : public QTableView
   {
     Q_OBJECT
 
      public:
-       ConformerView(QWidget *parent = 0) : QTableView(parent), m_molecule(NULL) {}
+       enum Type {
+         OtherType=0,
+ 	 AtomType,
+	 BondType,
+	 CartesianType,
+	 ConformerType
+       };
 
-       void selectionChanged(const QItemSelection &selected, const QItemSelection &previous);
-       void setMolecule (Molecule *molecule);
-
-     private:
-       Molecule *m_molecule;
- };
- 
- class AtomTableView : public QTableView
-  {
-    Q_OBJECT
-
-     public:
-       AtomTableView(QWidget *parent = 0) : QTableView(parent), m_molecule(NULL) {}
+       PropertiesView(Type type, QWidget *parent = 0) : QTableView(parent), m_molecule(NULL) 
+       {
+         m_type = type;
+       }
 
        void selectionChanged(const QItemSelection &selected, const QItemSelection &previous);
        void setMolecule (Molecule *molecule);
@@ -115,23 +112,7 @@ namespace Avogadro {
        void hideEvent(QHideEvent *event);
 
      private:
-       Molecule *m_molecule;
-       GLWidget *m_widget;
- };
- 
- class BondTableView : public QTableView
-  {
-    Q_OBJECT
-
-     public:
-       BondTableView(QWidget *parent = 0) : QTableView(parent), m_molecule(NULL) {}
-
-       void selectionChanged(const QItemSelection &selected, const QItemSelection &previous);
-       void setMolecule (Molecule *molecule);
-       void setWidget (GLWidget *widget);
-       void hideEvent(QHideEvent *event);
-
-     private:
+       int m_type;
        Molecule *m_molecule;
        GLWidget *m_widget;
  };

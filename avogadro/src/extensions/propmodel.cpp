@@ -43,27 +43,51 @@ namespace Avogadro
   //
   //////////////////////////////////////////////////////////////////////////////
  
-  int AtomPropModel::rowCount(const QModelIndex &parent) const
+  int PropertiesModel::rowCount(const QModelIndex &parent) const
   {
-    return m_molecule->NumAtoms();
+    switch (m_type) {
+      case AtomType:
+      case CartesianType:
+        return m_molecule->NumAtoms();
+      case BondType:
+        return m_molecule->NumBonds();
+      case ConformerType:
+        return m_molecule->NumConformers();
+    }
+
+    return 0;
   }
 
-  int AtomPropModel::columnCount(const QModelIndex &parent) const
+  int PropertiesModel::columnCount(const QModelIndex &parent) const
   {
-    return 8;
+    switch (m_type) {
+      case AtomType:
+        return 8;
+      case BondType:
+        return 5;
+      case CartesianType:
+        return 3;
+      case ConformerType:
+        return 1;
+    }
+
+    return 0;
   }
 
-  QVariant AtomPropModel::data(const QModelIndex &index, int role) const
+  QVariant PropertiesModel::data(const QModelIndex &index, int role) const
   {
     if (!index.isValid())
       return QVariant();
 
-    if (index.row() >= m_molecule->NumAtoms())
+    if (role != Qt::DisplayRole)
       return QVariant();
+    
+    if (m_type == AtomType) {
+      if (index.row() >= m_molecule->NumAtoms())
+        return QVariant();
 
-    OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
+      OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
 
-    if (role == Qt::DisplayRole)
       switch (index.column()) {
         case 0: // type
           return atom->GetType();
@@ -71,7 +95,7 @@ namespace Avogadro
           return atom->GetAtomicNum();
         case 2: // isotope
           return atom->GetIsotope();
-	case 3: // formal Charge
+        case 3: // formal Charge
           return atom->GetFormalCharge();
         case 4: // partial charge
           return atom->GetPartialCharge();
@@ -80,73 +104,175 @@ namespace Avogadro
         case 6: // BOSum
           return atom->BOSum();
         case 7: // chirality
-	  if (atom->IsClockwise())
+          if (atom->IsClockwise())
 	    return QString("R");
           else if (atom->IsAntiClockwise())
-	    return QString("S");
+  	    return QString("S");
 	  else
 	    return QString("");
       }
-    else
-      return QVariant();
-  }
+    } else if (m_type == BondType) {
+      if (index.row() >= m_molecule->NumBonds())
+        return QVariant();
+
+      OpenBabel::OBBond *bond = m_molecule->GetBond(index.row());
+
+      if (role == Qt::DisplayRole)
+        switch (index.column()) {
+          case 0: // atom 1
+            return bond->GetBeginAtomIdx();
+          case 1: // atom 2
+            return bond->GetEndAtomIdx();
+          case 2: // order
+            return bond->GetBondOrder();
+  	  case 3: // length
+            return bond->GetLength();
+          case 4: // rotatable
+            return bond->IsRotor();
+        }
+    } else if (m_type == CartesianType) {
+      if (index.row() >= m_molecule->NumAtoms())
+        return QVariant();
+
+      OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
+
+      switch (index.column()) {
+        case 0: 
+          return atom->GetX();
+        case 1: 
+          return atom->GetY();
+        case 2: 
+          return atom->GetZ();
+      }
+    } else if (m_type == ConformerType) {
+      if (index.row() >= m_molecule->NumConformers())
+        return QVariant();
+
+      OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
+
+      switch (index.column()) {
+        case 0: // energy
+	    return 0.0;
+      }
+    } 
   
-  QVariant AtomPropModel::headerData(int section, Qt::Orientation orientation, int role) const
+    return QVariant();
+  }
+
+  QVariant PropertiesModel::headerData(int section, Qt::Orientation orientation, int role) const
   {
     if (role != Qt::DisplayRole)
       return QVariant();
 
-    if (orientation == Qt::Horizontal) {
-      switch (section) {
-        case 0:
-	  return QString("Type");
-        case 1:
-	  return QString("Atomic Number");
-        case 2:
-	  return QString("Isotope");
-	case 3:
-	  return QString("Formal Charge");
-        case 4:
-	  return QString("Partial Charge");
-        case 5:
-	  return QString("Valence");
-        case 6:
-	  return QString("BOSum");
-        case 7:
-	  return QString("Chirality");
-      }
-    } else
-      return QString("Atom %1").arg(section + 1);
+    if (m_type == AtomType) {
+      if (orientation == Qt::Horizontal) {
+        switch (section) {
+          case 0:
+ 	    return QString("Type");
+          case 1:
+	    return QString("Atomic Number");
+          case 2:
+	    return QString("Isotope");
+	  case 3:
+	    return QString("Formal Charge");
+          case 4:
+  	    return QString("Partial Charge");
+          case 5:
+	    return QString("Valence");
+          case 6:
+	    return QString("BOSum");
+          case 7:
+  	    return QString("Chirality");
+        }
+      } else
+        return QString("Atom %1").arg(section + 1);
+    } else if (m_type == BondType) {
+      if (orientation == Qt::Horizontal) {
+        switch (section) {
+          case 0:
+	    return QString("Atom dx 1");
+          case 1:
+  	    return QString("Atom idx 2");
+          case 2:
+	    return QString("Bond Order");
+	  case 3:
+	    return QString("Length");
+          case 4:
+	    return QString("Rotatable");
+        }
+      } else
+        return QString("Bond %1").arg(section + 1);
+    } else if (m_type == CartesianType) {
+      if (orientation == Qt::Horizontal) {
+        switch (section) {
+          case 0:
+	    return QString("X");
+          case 1:
+	    return QString("Y");
+          case 2:
+	    return QString("Z");
+        }
+      } else
+        return QString("Atom %1").arg(section + 1);
+    } else if (m_type == ConformerType) {
+      if (orientation == Qt::Horizontal) {
+        switch (section) {
+          case 0:
+	    return QString("Energy");
+        }
+      } else
+        return QString("Conformer %1").arg(section + 1);
+    }
+    
+    return QVariant();
   }
  
-  Qt::ItemFlags AtomPropModel::flags(const QModelIndex &index) const
+  Qt::ItemFlags PropertiesModel::flags(const QModelIndex &index) const
   {
     if (!index.isValid())
       return Qt::ItemIsEnabled;
     
-    switch (index.column()) {
-      case 0: // type
-        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-      case 1: // atomic number
-        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-      case 2: // isotope
-        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-      case 3: // formal Charge
-        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-      case 4: // partial charge
-        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-      case 5: // valence
-      case 6: // BOSum
-      case 7: // chirality
-        return QAbstractItemModel::flags(index);
+    if (m_type == AtomType) {
+      switch (index.column()) {
+        case 0: // type
+        case 1: // atomic number
+        case 2: // isotope
+        case 3: // formal Charge
+        case 4: // partial charge
+          return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
+        case 5: // valence
+        case 6: // BOSum
+        case 7: // chirality
+          return QAbstractItemModel::flags(index);
+      }
+    } else if (m_type == BondType) {
+      switch (index.column()) {
+        case 0: // atom 1
+        case 1: // atom 2
+        case 2: // order
+        case 3: // length
+        case 4: // rotatable
+          return QAbstractItemModel::flags(index);
+      }
+    } else if (m_type == CartesianType) {
+      return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
+    } else if (m_type == ConformerType) {
+      return QAbstractItemModel::flags(index);
     }
- 
+    
+    
     return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
   }
 
-  bool AtomPropModel::setData(const QModelIndex &index, const QVariant &value, int role) 
+  bool PropertiesModel::setData(const QModelIndex &index, const QVariant &value, int role) 
   {
-    if (index.isValid() && role == Qt::EditRole) {
+    if (!index.isValid())
+      return false; 
+      
+    if (role != Qt::EditRole)
+      return false;
+      
+    if (m_type == AtomType) {
       OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
       std::string buff;
       
@@ -184,201 +310,18 @@ namespace Avogadro
         case 7: // chirality
           return false;
       }
-    }
-    
-    return false;
-  }
-
-  void AtomPropModel::setMolecule(Molecule *molecule)
-  {
-    m_molecule = molecule;
-  }
-  
-  //////////////////////////////////////////////////////////////////////////////
-  //
-  // B O N D S 
-  //
-  //////////////////////////////////////////////////////////////////////////////
-  
-  int BondPropModel::rowCount(const QModelIndex &parent) const
-  {
-    return m_molecule->NumBonds();
-  }
-
-  int BondPropModel::columnCount(const QModelIndex &parent) const
-  {
-    return 5;
-  }
-
-  QVariant BondPropModel::data(const QModelIndex &index, int role) const
-  {
-    if (!index.isValid())
-      return QVariant();
-
-    if (index.row() >= m_molecule->NumBonds())
-      return QVariant();
-
-    //OpenBabel::OBBond *bond = m_molecule->GetAtom(index.row() + 1);
-    OpenBabel::OBBond *bond = m_molecule->GetBond(index.row());
-
-    if (role == Qt::DisplayRole)
-      switch (index.column()) {
-        case 0: // atom 1
-          return bond->GetBeginAtomIdx();
-        case 1: // atom 2
-          return bond->GetEndAtomIdx();
-        case 2: // order
-          return bond->GetBondOrder();
-	case 3: // length
-          return bond->GetLength();
-        case 4: // rotatable
-          return bond->IsRotor();
-      }
-    else
-      return QVariant();
-  }
-  
-  QVariant BondPropModel::headerData(int section, Qt::Orientation orientation, int role) const
-  {
-    if (role != Qt::DisplayRole)
-      return QVariant();
-
-    if (orientation == Qt::Horizontal) {
-      switch (section) {
-        case 0:
-	  return QString("Atom dx 1");
-        case 1:
-	  return QString("Atom idx 2");
-        case 2:
-	  return QString("Bond Order");
-	case 3:
-	  return QString("Length");
-        case 4:
-	  return QString("Rotatable");
-      }
-    } else
-      return QString("Bond %1").arg(section + 1);
-  }
- 
-  Qt::ItemFlags BondPropModel::flags(const QModelIndex &index) const
-  {
-    if (!index.isValid())
-      return Qt::ItemIsEnabled;
-    
-    switch (index.column()) {
-      case 0: // atom 1
-        return QAbstractItemModel::flags(index); 
-      case 1: // atom 2
-        return QAbstractItemModel::flags(index);
-      case 2: // order
-        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-      case 3: // length
-        return QAbstractItemModel::flags(index);
-      case 4: // rotatable
-        return QAbstractItemModel::flags(index);
-    }
- 
-    return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-  }
-
-
-  bool BondPropModel::setData(const QModelIndex &index, const QVariant &value, int role) 
-  {
-    if (index.isValid() && role == Qt::EditRole) {
+    } else if (m_type == BondType) {
       OpenBabel::OBBond *bond = m_molecule->GetBond(index.row());
       
       switch (index.column()) {
         case 0: // atom 1
         case 1: // atom 2
-          return false;
         case 2: // order
-	  bond->SetBondOrder(value.toInt());
-	  m_molecule->update();
-	  emit dataChanged(index, index);
-          return false;
 	case 3: // length
-          return false;
         case 4: // rotatable
           return false;
       }
-    }
-    
-    return false;
-  }
-
-  void BondPropModel::setMolecule(Molecule *molecule)
-  {
-    m_molecule = molecule;
-  }
-  
-  //////////////////////////////////////////////////////////////////////////////
-  //
-  // C A R T E S I A N
-  //
-  //////////////////////////////////////////////////////////////////////////////
- 
-  int CartesianModel::rowCount(const QModelIndex &parent) const
-  {
-    return m_molecule->NumAtoms();
-  }
-
-  int CartesianModel::columnCount(const QModelIndex &parent) const
-  {
-    return 3;
-  }
-
-  QVariant CartesianModel::data(const QModelIndex &index, int role) const
-  {
-    if (!index.isValid())
-      return QVariant();
-
-    if (index.row() >= m_molecule->NumAtoms())
-      return QVariant();
-
-    OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
-
-    if (role == Qt::DisplayRole)
-      switch (index.column()) {
-        case 0: 
-          return atom->GetX();
-        case 1: 
-          return atom->GetY();
-        case 2: 
-          return atom->GetZ();
-      }
-    else
-      return QVariant();
-  }
-  
-  QVariant CartesianModel::headerData(int section, Qt::Orientation orientation, int role) const
-  {
-    if (role != Qt::DisplayRole)
-      return QVariant();
-
-    if (orientation == Qt::Horizontal) {
-      switch (section) {
-        case 0:
-	  return QString("X");
-        case 1:
-	  return QString("Y");
-        case 2:
-	  return QString("Z");
-      }
-    } else
-      return QString("Atom %1").arg(section + 1);
-  }
- 
-  Qt::ItemFlags CartesianModel::flags(const QModelIndex &index) const
-  {
-    if (!index.isValid())
-      return Qt::ItemIsEnabled;
-    
-    return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-  }
-
-  bool CartesianModel::setData(const QModelIndex &index, const QVariant &value, int role) 
-  {
-    if (index.isValid() && role == Qt::EditRole) {
+    } else if (m_type == CartesianType) {
       OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
       OpenBabel::vector3 coord = atom->GetVector();
       
@@ -402,70 +345,61 @@ namespace Avogadro
 	  emit dataChanged(index, index);
           return true;
       }
-    }
     
+    }
     return false;
   }
 
-  void CartesianModel::setMolecule(Molecule *molecule)
+  void PropertiesModel::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
   }
   
-  //////////////////////////////////////////////////////////////////////////////
-  //
-  // C O N F O R M E R
-  //
-  //////////////////////////////////////////////////////////////////////////////
+  void PropertiesModel::updateTable()
+  {
+    QModelIndex idx = createIndex(0, 0);
+    QModelIndex idx2;
+    
+    switch (m_type) {
+      case AtomType:
+        idx2 = createIndex(m_molecule->NumAtoms(), 7);
+      case CartesianType:
+        idx2 = createIndex(m_molecule->NumAtoms(), 2);
+      case BondType:
+        idx2 = createIndex(m_molecule->NumBonds(), 4);
+      case ConformerType:
+        idx2 = createIndex(m_molecule->NumConformers(), 0);
+    }
  
-  int ConformerModel::rowCount(const QModelIndex &parent) const
-  {
-    return m_molecule->NumConformers();
-  }
-
-  int ConformerModel::columnCount(const QModelIndex &parent) const
-  {
-    return 1;
-  }
-
-  QVariant ConformerModel::data(const QModelIndex &index, int role) const
-  {
-    if (!index.isValid())
-      return QVariant();
-
-    if (index.row() >= m_molecule->NumConformers())
-      return QVariant();
-
-    OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
-
-    if (role == Qt::DisplayRole)
-      switch (index.column()) {
-        case 0: // energy
-	    return 0.0;
-      }
-    else
-      return QVariant();
+    emit dataChanged(idx, idx2);
   }
   
-  QVariant ConformerModel::headerData(int section, Qt::Orientation orientation, int role) const
+  void PropertiesModel::primitiveAdded(Primitive *primitive)
   {
-    if (role != Qt::DisplayRole)
-      return QVariant();
-
-    if (orientation == Qt::Horizontal) {
-      switch (section) {
-        case 0:
-	  return QString("Energy");
-      }
-    } else
-      return QString("Conformer %1").arg(section + 1);
-  }
- 
-  void ConformerModel::setMolecule(Molecule *molecule)
-  {
-    m_molecule = molecule;
+    if ( (primitive->type() == Primitive::AtomType) && ( (m_type == AtomType) || (m_type == CartesianType) ) ) {
+      beginInsertRows(QModelIndex(), 0, 0);
+      endInsertRows();
+    } else if ( (primitive->type() == Primitive::BondType) && (m_type == BondType) ) {
+      beginInsertRows(QModelIndex(), 0, 0);
+      endInsertRows();
+    }
+    
+    updateTable();
   }
   
+  void PropertiesModel::primitiveRemoved(Primitive *primitive)
+  {
+    if ( (primitive->type() == Primitive::AtomType) && ( (m_type == AtomType) || (m_type == CartesianType) ) ) {
+      beginRemoveRows(QModelIndex(), 0, 0);
+      endRemoveRows();
+    } else if ( (primitive->type() == Primitive::BondType) && (m_type == BondType) ) {
+      beginRemoveRows(QModelIndex(), 0, 0);
+      endRemoveRows();
+    }
+    
+    updateTable();
+  }
+
 } // end namespace Avogadro
 
 #include "propmodel.moc"

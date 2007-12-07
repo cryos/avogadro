@@ -40,12 +40,28 @@
 
 namespace Avogadro {
 
- class AtomPropModel : public QAbstractTableModel
+ class PropertiesModel : public QAbstractTableModel
   {
     Q_OBJECT
+     
+     public slots:
+       void updateTable();
+       void primitiveAdded(Primitive *primitive);
+       void primitiveRemoved(Primitive *primitive);
 
      public:
-       AtomPropModel(QObject *parent = 0) : QAbstractTableModel(parent) {}
+       enum Type {
+         OtherType=0,
+ 	 AtomType,
+	 BondType,
+	 CartesianType,
+	 ConformerType
+       };
+
+       PropertiesModel(Type type, QObject *parent = 0) : QAbstractTableModel(parent) 
+       {
+         m_type = type;
+       }
 
        int rowCount(const QModelIndex &parent = QModelIndex()) const;
        int columnCount(const QModelIndex &parent = QModelIndex()) const;
@@ -59,72 +75,10 @@ namespace Avogadro {
        void setMolecule (Molecule *molecule);
 
      private:
+       int m_type;
        Molecule *m_molecule;
  };
   
- class BondPropModel : public QAbstractTableModel
-  {
-    Q_OBJECT
-
-     public:
-       BondPropModel(QObject *parent = 0) : QAbstractTableModel(parent) {}
-
-       int rowCount(const QModelIndex &parent = QModelIndex()) const;
-       int columnCount(const QModelIndex &parent = QModelIndex()) const;
-       QVariant data(const QModelIndex &index, int role) const;
-       Qt::ItemFlags flags(const QModelIndex &index) const;
-       bool setData(const QModelIndex &index, const QVariant &value, 
-           int role = Qt::EditRole);
-       QVariant headerData(int section, Qt::Orientation orientation,
-           int role = Qt::DisplayRole) const;
-       
-       void setMolecule (Molecule *molecule);
-
-     private:
-       Molecule *m_molecule;
- };
- 
- class CartesianModel : public QAbstractTableModel
-  {
-    Q_OBJECT
-
-     public:
-       CartesianModel(QObject *parent = 0) : QAbstractTableModel(parent) {}
-
-       int rowCount(const QModelIndex &parent = QModelIndex()) const;
-       int columnCount(const QModelIndex &parent = QModelIndex()) const;
-       QVariant data(const QModelIndex &index, int role) const;
-       Qt::ItemFlags flags(const QModelIndex &index) const;
-       bool setData(const QModelIndex &index, const QVariant &value, 
-           int role = Qt::EditRole);
-       QVariant headerData(int section, Qt::Orientation orientation,
-           int role = Qt::DisplayRole) const;
-       
-       void setMolecule (Molecule *molecule);
-
-     private:
-       Molecule *m_molecule;
- };
- 
- class ConformerModel : public QAbstractTableModel
-  {
-    Q_OBJECT
-
-     public:
-       ConformerModel(QObject *parent = 0) : QAbstractTableModel(parent) {}
-
-       int rowCount(const QModelIndex &parent = QModelIndex()) const;
-       int columnCount(const QModelIndex &parent = QModelIndex()) const;
-       QVariant data(const QModelIndex &index, int role) const;
-       QVariant headerData(int section, Qt::Orientation orientation,
-           int role = Qt::DisplayRole) const;
-       
-       void setMolecule (Molecule *molecule);
-
-     private:
-       Molecule *m_molecule;
- };
- 
 } // end namespace Avogadro
 
 #endif

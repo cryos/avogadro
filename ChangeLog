@@ -1,3 +1,11 @@
+2007-12-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* avogadro/src/extensions/: Improvements to the properties model, and
+	table: This is now one class: PropertiesModel and PropertiesView. They
+	both use a enum {} to set the type. There are currently 4 types:
+	AtomType, BondType, ConformerType and CartesianType.
+
+
 2007-12-06  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/tools/drawtool.cpp: Enhanced custom element
@@ -13,10 +21,10 @@
 
 2007-12-06  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
-	* avogadro/src/extrentions/: You can now fix an atom, the rest will
+	* avogadro/src/extensions/: You can now fix an atom, the rest will
 	follow soon...
 
-	* avogadro/src/extrentions/: Added atom and bond properties and a
+	* avogadro/src/extensions/: Added atom and bond properties and a
 	cartesian coordinate editor.
 
 	* libavogadro/src/tools/: same for AutoOpt
