@@ -37,6 +37,11 @@
 #include <QDir>
 #include <QPluginLoader>
 
+#ifdef ENABLE_THREADED_GL
+#include <QWaitCondition>
+#include <QMutex>
+#endif
+
 #include <QDebug>
 
 #include <stdio.h>
