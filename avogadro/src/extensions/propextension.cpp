@@ -147,9 +147,10 @@ namespace Avogadro
 	m_conformerModel->setMolecule( molecule );
 	connect(molecule, SIGNAL( updated() ), m_conformerModel, SLOT( updateTable() ));
 	view->setMolecule( molecule );
-	view->setModel( m_conformerModel );
 	view->setWidget( widget );
+	view->setModel( m_conformerModel );
 	view->resize(180, 500);
+	view->sortByColumn(0, Qt::AscendingOrder);
 	view->show();
         break;
     }
@@ -206,7 +207,8 @@ namespace Avogadro
   
   void PropertiesView::hideEvent(QHideEvent *event)
   {
-    m_widget->clearSelected();
+    if (m_widget)
+      m_widget->clearSelected();
   }
   
 } // end namespace Avogadro
