@@ -179,6 +179,9 @@ namespace Avogadro {
 
   private:
     int m_element;
+
+  protected:
+    void mouseDoubleClickEvent(QMouseEvent *event); 
   };
 
 } // End of Avogadro namespace

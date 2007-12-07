@@ -370,6 +370,10 @@ namespace Avogadro {
     emit(elementChanged(id));
   }
 
+  void PeriodicTableGV::mouseDoubleClickEvent(QMouseEvent *event)
+  {
+    close();
+  }
 } // End namespace Avogadro
 
 #include "periodictablegv.moc"
