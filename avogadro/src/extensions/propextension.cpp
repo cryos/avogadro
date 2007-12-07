@@ -52,22 +52,22 @@ namespace Avogadro
     m_conformerModel = new PropertiesModel(PropertiesModel::ConformerType);
     
     action = new QAction( this );
-    action->setText( tr("Atom properties" ));
+    action->setText( tr("Atom Properties..." ));
     action->setData(AtomPropIndex);
     m_actions.append( action );
 
     action = new QAction( this );
-    action->setText( tr("Bond properties" ));
+    action->setText( tr("Bond Properties..." ));
     action->setData(BondPropIndex);
     m_actions.append( action );
 
     action = new QAction( this );
-    action->setText( tr("Cartesian editor" ));
+    action->setText( tr("Cartesian Editor..." ));
     action->setData(CartesianIndex);
     m_actions.append( action );
     
     action = new QAction( this );
-    action->setText( tr("Conformers" ));
+    action->setText( tr("Conformers..." ));
     action->setData(ConformerIndex);
     m_actions.append( action );
   }
