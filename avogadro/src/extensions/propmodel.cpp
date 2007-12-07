@@ -24,7 +24,7 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <openbabel/forcefield.h>
+#include <openbabel/mol.h>
 
 #include <QtGui>
 #include <QProgressDialog>
@@ -37,12 +37,6 @@ using namespace OpenBabel;
 
 namespace Avogadro
 {
-  //////////////////////////////////////////////////////////////////////////////
-  //
-  // A T O M S 
-  //
-  //////////////////////////////////////////////////////////////////////////////
- 
   int PropertiesModel::rowCount(const QModelIndex &parent) const
   {
     switch (m_type) {
@@ -148,11 +142,9 @@ namespace Avogadro
       if (index.row() >= m_molecule->NumConformers())
         return QVariant();
 
-      OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
-
       switch (index.column()) {
         case 0: // energy
-	    return 0.0;
+	    return m_molecule->GetEnergy(index.row());
       }
     } 
   

@@ -41,9 +41,7 @@ namespace Avogadro
   {
     OptimizeGeometryIndex = 0,
     CalculateEnergyIndex,
-    SystematicRotorSearchIndex,
-    RandomRotorSearchIndex,
-    WeightedRotorSearchIndex,
+    ConformerSearchIndex,
     SetupForceFieldIndex,
     ConstraintsIndex
   };
@@ -53,6 +51,7 @@ namespace Avogadro
     QAction *action;
     m_forceField = OBForceField::FindForceField( "Ghemical" );
     m_Dialog = new ForceFieldDialog;
+    m_conformerDialog = new ConformerSearchDialog;
     m_ConstraintsDialog = new ConstraintsDialog;
     m_constraints = new ConstraintsModel;
     
@@ -72,18 +71,8 @@ namespace Avogadro
       m_actions.append( action );
 
       action = new QAction( this );
-      action->setText( tr("Systematic Rotor Search" ));
-      action->setData(SystematicRotorSearchIndex);
-      m_actions.append( action );
-
-      action = new QAction( this );
-      action->setText( tr("Random Rotor Search" ));
-      action->setData(RandomRotorSearchIndex);
-      m_actions.append( action );
-
-      action = new QAction( this );
-      action->setText( tr("Weighted Rotor Search" ));
-      action->setData(WeightedRotorSearchIndex);
+      action->setText( tr("Conformer Search" ));
+      action->setData(ConformerSearchIndex);
       m_actions.append( action );
 
       action = new QAction( this );
@@ -113,9 +102,7 @@ namespace Avogadro
     int i = action->data().toInt();
     switch(i) {
       case CalculateEnergyIndex:
-      case SystematicRotorSearchIndex:
-      case RandomRotorSearchIndex:
-      case WeightedRotorSearchIndex:
+      case ConformerSearchIndex:
       case SetupForceFieldIndex:
       case ConstraintsIndex:
         return tr("&Extensions") + ">" + tr("&Molecular Mechanics");
@@ -158,8 +145,6 @@ namespace Avogadro
         m_forceField->SetLogFile( &buff );
         m_forceField->SetLogLevel( OBFF_LOGLVL_HIGH );
 
-        //if ( !m_forceField->Setup( *molecule ) ) {
-        //if ( !m_forceField->Setup( *molecule, constraints ) ) {
         if ( !m_forceField->Setup( *molecule, m_constraints->constraints() ) ) {
           qDebug() << "Could not set up force field on " << molecule;
           break;
@@ -168,35 +153,14 @@ namespace Avogadro
         m_forceField->Energy();
         textEdit->append( tr( buff.str().c_str() ) );
         break;
-      case SystematicRotorSearchIndex: // systematic rotor search
+      case ConformerSearchIndex: // conformer search
         if (!m_forceField)
           break;
 
-        undo = new ForceFieldCommand( molecule, m_forceField, m_constraints, textEdit, 
-	    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 1 );
-        undo->setText( QObject::tr( "Systematic Rotor Search" ) );
+        m_conformerDialog->setup(molecule, m_forceField, m_constraints, textEdit, 
+	    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence());
+        m_conformerDialog->show();
         break;
-      case RandomRotorSearchIndex: // random rotor search
-        if (!m_forceField)
-          break;
-
-	//undo = new ForceFieldCommand( molecule, m_forceField, reinterpret_cast<OpenBabel::OBFFConstraints*>(m_constraints),
-	undo = new ForceFieldCommand( molecule, m_forceField, m_constraints, textEdit, 
-	    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence(), 2 );
- 
-        undo->setText( QObject::tr( "Random Rotor Search" ) );
-        break;
-      case WeightedRotorSearchIndex: // random rotor search
-        if (!m_forceField)
-          break;
- 	
-	undo = new ForceFieldCommand( molecule, m_forceField, m_constraints, textEdit, 
-	    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), 
-	    m_Dialog->convergence(), 3 );
- 
-        undo->setText( QObject::tr( "Weighted Rotor Search" ) );
-        break;
-
       case OptimizeGeometryIndex: // geometry optimization
         if (!m_forceField)
           break;
@@ -238,7 +202,12 @@ namespace Avogadro
   {
     return m_cycles;
   }
-
+  
+  void ForceFieldThread::setTask(int task)
+  {
+    m_task = task;
+  }
+ 
   void ForceFieldThread::run()
   {
     QWriteLocker locker( m_molecule->lock() );
@@ -251,7 +220,6 @@ namespace Avogadro
     m_forceField->SetLogFile( &buff );
     m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
 
-    //if ( !m_forceField->Setup( *m_molecule ) ) {
     if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
       qWarning() << "ForceFieldCommand: Could not set up force field on " << m_molecule;
       return;
@@ -380,6 +348,11 @@ namespace Avogadro
     }
   }
 
+  void ForceFieldCommand::setTask(int task)
+  {
+    m_task = task;
+  }
+  
   void ForceFieldCommand::redo()
   {
     if(!m_dialog) {
@@ -402,6 +375,7 @@ namespace Avogadro
       QObject::connect( m_thread, SIGNAL( finished() ), m_dialog, SLOT( close() ) );
     }
 
+    m_thread->setTask(m_task);
     m_thread->start();
   }
 

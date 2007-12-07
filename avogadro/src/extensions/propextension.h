@@ -101,7 +101,7 @@ namespace Avogadro {
 	 ConformerType
        };
 
-       PropertiesView(Type type, QWidget *parent = 0) : QTableView(parent), m_molecule(NULL) 
+       PropertiesView(Type type, QWidget *parent = 0) : QTableView(parent), m_molecule(NULL), m_widget(NULL)
        {
          m_type = type;
        }

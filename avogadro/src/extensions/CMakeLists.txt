@@ -50,8 +50,8 @@ TARGET_LINK_LIBRARIES(propextension
 INSTALL(TARGETS propextension DESTINATION ${DESTINATION_DIR})
 
 ### Molecular Mechanics force fields
-set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp constraintsdialog.cpp constraintsmodel.cpp)
-qt4_wrap_ui(forcefieldextension_UIS_H forcefielddialog.ui constraintsdialog.ui)
+set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp constraintsdialog.cpp constraintsmodel.cpp conformersearchdialog.cpp)
+qt4_wrap_ui(forcefieldextension_UIS_H forcefielddialog.ui constraintsdialog.ui conformersearchdialog.ui)
 qt4_automoc(${forcefieldextension_SRCS})
 ADD_LIBRARY(forcefieldextension SHARED ${forcefieldextension_SRCS} ${forcefieldextension_UIS_H})
 TARGET_LINK_LIBRARIES(forcefieldextension

@@ -25,10 +25,10 @@
 
 
 #include "forcefielddialog.h"
+#include "conformersearchdialog.h"
 #include "constraintsmodel.h"
 #include "constraintsdialog.h"
 
-#include <openbabel/mol.h>
 #include <openbabel/forcefield.h>
 
 #include <avogadro/glwidget.h>
@@ -79,6 +79,7 @@ namespace Avogadro {
       ConstraintsModel* m_constraints;
       QList<QAction *> m_actions;
       ForceFieldDialog *m_Dialog;
+      ConformerSearchDialog *m_conformerDialog;
       ConstraintsDialog *m_ConstraintsDialog;
   };
 
@@ -103,6 +104,7 @@ namespace Avogadro {
 
       void run();
       int cycles() const;
+      void setTask(int task);
 
     Q_SIGNALS:
       void stepsTaken(int steps);
@@ -126,7 +128,8 @@ namespace Avogadro {
       int m_task;
 
       OpenBabel::OBForceField* m_forceField;
-      ForceFieldDialog *m_Dialog;
+      //ForceFieldDialog *m_Dialog;
+      ConformerSearchDialog *m_conformerDialog;
       ConstraintsDialog *m_ConstraintsDialog;
 
       bool m_stop;
@@ -148,6 +151,7 @@ namespace Avogadro {
 
      void detach() const;
      void cleanup();
+     void setTask(int task);
 
      ForceFieldThread *thread() const;
      QProgressDialog *progressDialog() const;
