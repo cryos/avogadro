@@ -25,6 +25,8 @@
 
 #include "periodictablegv.h"
 
+#include <avogadro/elementtranslate.h>
+
 #include <openbabel/data.h>
 
 #include <QGraphicsScene>
@@ -41,6 +43,8 @@ namespace OpenBabel{
 }
 
 namespace Avogadro {
+
+  extern ElementTranslator elementTranslator;
 
   ElementItem::ElementItem(int elementNumber) : m_width(26), m_height(26)
   {
@@ -125,7 +129,7 @@ namespace Avogadro {
     int pixelHeight = fm.height();
 
     QString symbol = OpenBabel::etab.GetSymbol(m_element);
-    QString name = OpenBabel::etab.GetName(m_element).c_str();
+    QString name(elementTranslator.name(m_element));
     QString mass = QString::number(OpenBabel::etab.GetMass(m_element), 'f', 3);
 
     std::vector<double> color = OpenBabel::etab.GetRGB(m_element);

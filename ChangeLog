@@ -1,10 +1,21 @@
+2007-12-07  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/elementtranslate.[h,cpp]: New class to handle
+	translation/i18n of element names.
+
+	* libavogadro/src/tools/drawtool.cpp: Use the new translation
+	feature. Also add in custom elements (from Periodic Table widget)
+	into an ordered list.
+
+	* libavogadro/src/tools/periodictablegv.cpp: Use the new
+	translation feature.
+
 2007-12-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extensions/: Improvements to the properties model, and
 	table: This is now one class: PropertiesModel and PropertiesView. They
 	both use a enum {} to set the type. There are currently 4 types:
 	AtomType, BondType, ConformerType and CartesianType.
-
 
 2007-12-06  Geoffrey Hutchison  <babel@geoffhutchison.net>
 

@@ -98,7 +98,7 @@ namespace Avogadro {
 
       bool                m_movedSinceButtonPressed;
 
-      QPoint              m_initialDragginggPosition;
+      QPoint              m_initialDraggingPosition;
       QPoint              m_lastDraggingPosition;
 
       bool m_beginAtomAdded;
@@ -121,7 +121,7 @@ namespace Avogadro {
       QList<GLHit> m_hits;
 
       QComboBox *m_comboElements;
-      QVector<int> m_elementsIndex;
+      QList<int> m_elementsIndex;
       QComboBox *m_comboBondOrder;
       QLineEdit *m_text3DGen;
       QPushButton *m_button3DGen;

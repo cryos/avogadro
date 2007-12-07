@@ -28,17 +28,19 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/undosequence.h>
+#include <avogadro/elementtranslate.h>
 
 #include <openbabel/obiter.h>
 #include <openbabel/obconversion.h>
 
 #include <QtPlugin>
 #include <QLabel>
-
 using namespace std;
 using namespace OpenBabel;
 
 namespace Avogadro {
+
+  extern ElementTranslator elementTranslator;
 
   DrawTool::DrawTool(QObject *parent) : Tool(parent),
   m_beginAtomAdded(false),
@@ -133,9 +135,20 @@ namespace Avogadro {
       return; // we found it in the list, so we're done
     }
     
+    // Find where we should put the new entry
+    // (i.e., in order by atomic number)
+    int position = 0;
+    foreach(int entry, m_elementsIndex) {
+      // Two cases: entry > index -- insert the new element before this one
+      // Or... we hit the "Other" menu choice -- also insert here
+      if (entry > index || entry == 0)
+        break;
+
+      ++position;
+    }
+
     // And now we set up a new entry into the combo list
-    int position = m_elementsIndex.size() - 1;
-    QString entryName(etab.GetName(index).c_str()); // (e.g., "Hydrogen")
+    QString entryName(elementTranslator.name(index)); // (e.g., "Hydrogen")
     QString elementNum;
     entryName += " (" + elementNum.setNum(index) + ")"; 
 
@@ -182,7 +195,7 @@ namespace Avogadro {
 
     m_movedSinceButtonPressed = false;
     m_lastDraggingPosition = event->pos();
-    m_initialDragginggPosition = event->pos();
+    m_initialDraggingPosition = event->pos();
 
     //! List of hits from a selection/pick
     m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
@@ -552,7 +565,6 @@ namespace Avogadro {
       // Small popup with 10 most common elements for organic chemistry
       // (and extra for "other" to bring up periodic table window)
       m_comboElements = new QComboBox(m_settingsWidget);
-      m_elementsIndex.reserve(11);
       m_comboElements->addItem(tr("Hydrogen") + " (1)");
       m_elementsIndex.append(1);
       m_comboElements->addItem(tr("Boron") + " (5)");
