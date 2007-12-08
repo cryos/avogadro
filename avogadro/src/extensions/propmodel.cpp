@@ -144,7 +144,7 @@ namespace Avogadro
 
       switch (index.column()) {
         case 0: // energy
-	    return m_molecule->GetEnergy(index.row());
+	    return m_molecule->GetEnergy();
       }
     } 
   
