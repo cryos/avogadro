@@ -1,5 +1,5 @@
 /**********************************************************************
- PeriodicTableGV - Periodic Table Graphics View for Avogadro
+ PeriodicTableView - Periodic Table Graphics View for Avogadro
 
  Copyright (C) 2007 by Marcus D. Hanwell
 
@@ -22,8 +22,8 @@
  02110-1301, USA.
  **********************************************************************/
 
-#ifndef __PERIODICTABLEGV_H
-#define __PERIODICTABLEGV_H
+#ifndef __PERIODICTABLEVIEW_H
+#define __PERIODICTABLEVIEW_H
 
 #include <QDialog>
 #include <QGraphicsItem>
@@ -161,13 +161,13 @@ namespace Avogadro {
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
   };
 
-  class PeriodicTableGV : public QGraphicsView
+  class PeriodicTableView : public QGraphicsView
   {
     Q_OBJECT
 
   public:
-    PeriodicTableGV(QWidget *parent = 0);
-    PeriodicTableGV(QGraphicsScene *scene, QWidget *parent = 0);
+    PeriodicTableView(QWidget *parent = 0);
+    PeriodicTableView(QGraphicsScene *scene, QWidget *parent = 0);
 
     void setSelectedElement(int element);
 

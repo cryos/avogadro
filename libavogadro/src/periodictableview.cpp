@@ -1,5 +1,5 @@
 /**********************************************************************
- PeriodicTableGV - Periodic Table Graphics View for Avogadro
+ PeriodicTableView - Periodic Table Graphics View for Avogadro
 
  Copyright (C) 2007 by Marcus D. Hanwell
 
@@ -23,7 +23,7 @@
 
  **********************************************************************/
 
-#include "periodictablegv.h"
+#include "periodictableview.h"
 
 #include <avogadro/elementtranslate.h>
 
@@ -82,9 +82,10 @@ namespace Avogadro {
     painter->setBrush(*m_color);
 
     // Handle the case where the item is selected
+//    if (m_color->value() > 240) {
     if (m_element == 1 || m_element == 2 || m_element == 9 || m_element == 47 || m_element == 78) {
       if (isSelected())
-        painter->setPen(Qt::gray);
+        painter->setPen(Qt::darkGray);
       else
         painter->setPen(Qt::black);
     }
@@ -311,7 +312,7 @@ namespace Avogadro {
     element = 89;
     for (int i = 2; i < 16; i++) {
       item = new ElementItem(element++);
-      item->setPos(i * width, 9 * height);
+      item->setPos(i * width, 8.5 * height);
       addItem(item);
     }
   }
@@ -338,46 +339,46 @@ namespace Avogadro {
     QGraphicsScene::mouseReleaseEvent(event);
   }
 
-  PeriodicTableGV::PeriodicTableGV(QWidget *parent) : QGraphicsView(parent)
+  PeriodicTableView::PeriodicTableView(QWidget *parent) : QGraphicsView(parent)
   {
     // Use a small title bar (Qt::Tool) with no minimise or maximise buttons
     setWindowFlags(Qt::Dialog | Qt::Tool);
 
     PeriodicTableScene *table = new PeriodicTableScene;
-    table->setSceneRect(-20, -20, 480, 270);
+    table->setSceneRect(-20, -20, 480, 260);
     table->setItemIndexMethod(QGraphicsScene::NoIndex);
     table->setBackgroundBrush(Qt::white);
 
     setScene(table);
     setRenderHint(QPainter::Antialiasing);
     setWindowTitle("Periodic Table");
-    resize(490, 280);
-    setFixedSize(490, 280);
+    resize(490, 270);
+    setFixedSize(490, 270);
     connect(table, SIGNAL(elementChanged(int)),
             this, SLOT(elementClicked(int)));
   }
 
-  PeriodicTableGV::PeriodicTableGV(QGraphicsScene *scene, QWidget *parent) :
+  PeriodicTableView::PeriodicTableView(QGraphicsScene *scene, QWidget *parent) :
     QGraphicsView(scene, parent)
   {
     connect(scene, SIGNAL(elementChanged(int)),
             this, SLOT(elementClicked(int)));
   }
 
-  void PeriodicTableGV::setSelectedElement(int)
+  void PeriodicTableView::setSelectedElement(int)
   {
 
   }
 
-  void PeriodicTableGV::elementClicked(int id)
+  void PeriodicTableView::elementClicked(int id)
   {
     emit(elementChanged(id));
   }
 
-  void PeriodicTableGV::mouseDoubleClickEvent(QMouseEvent *event)
+  void PeriodicTableView::mouseDoubleClickEvent(QMouseEvent *)
   {
     close();
   }
 } // End namespace Avogadro
 
-#include "periodictablegv.moc"
+#include "periodictableview.moc"

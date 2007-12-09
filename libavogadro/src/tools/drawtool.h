@@ -27,8 +27,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
-
-#include "periodictablegv.h"
+#include "avogadro/periodictableview.h"
 
 #include <openbabel/mol.h>
 #include <openbabel/builder.h>
@@ -126,7 +125,7 @@ namespace Avogadro {
       QLineEdit *m_text3DGen;
       QPushButton *m_button3DGen;
       QPushButton *m_tableButton;
-      PeriodicTableGV *m_periodicTable;
+      PeriodicTableView *m_periodicTable;
       QVBoxLayout *m_layout;
 
       QWidget *m_settingsWidget;

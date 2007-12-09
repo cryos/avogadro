@@ -603,7 +603,7 @@ namespace Avogadro {
       m_button3DGen->setText(tr("Insert SMILES"));
       connect(m_button3DGen, SIGNAL(clicked()), this, SLOT(gen3D()));
 
-      m_periodicTable = new PeriodicTableGV(m_settingsWidget);
+      m_periodicTable = new PeriodicTableView(m_settingsWidget);
       connect(m_periodicTable, SIGNAL(elementChanged(int)),
           this, SLOT(customElementChanged(int)));
 

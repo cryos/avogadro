@@ -1,0 +1,1 @@
+#include "../../src/periodictableview.h"
