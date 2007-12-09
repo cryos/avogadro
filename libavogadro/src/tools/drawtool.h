@@ -27,7 +27,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
-#include "avogadro/periodictableview.h"
+#include <avogadro/periodictableview.h>
 
 #include <openbabel/mol.h>
 #include <openbabel/builder.h>
