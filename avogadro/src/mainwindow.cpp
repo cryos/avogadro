@@ -30,7 +30,6 @@
 #include "settingsdialog.h"
 
 #include "enginelistview.h"
-// #include "enginesetupwidget.h"
 #include "engineprimitiveswidget.h"
 
 #include "icontabwidget.h"
@@ -252,9 +251,6 @@ namespace Avogadro
   // delayed initialization function
   void MainWindow::initialize()
   {
-    // read settings
-    readSettings();
-
     d->toolGroup->load();
 
     reloadTabbedTools();
@@ -268,7 +264,12 @@ namespace Avogadro
     d->initialized = true;
 
     loadFile(d->fileName);
+
     setVisible(true);
+
+    // read settings
+    readSettings();
+
   }
 
   bool MainWindow::tabbedTools() const
