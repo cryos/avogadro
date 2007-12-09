@@ -39,6 +39,7 @@ namespace Avogadro
 {
   int PropertiesModel::rowCount(const QModelIndex &parent) const
   {
+    Q_UNUSED(parent);
     switch (m_type) {
       case AtomType:
       case CartesianType:
@@ -54,6 +55,7 @@ namespace Avogadro
 
   int PropertiesModel::columnCount(const QModelIndex &parent) const
   {
+    Q_UNUSED(parent);
     switch (m_type) {
       case AtomType:
         return 8;
@@ -77,7 +79,7 @@ namespace Avogadro
       return QVariant();
     
     if (m_type == AtomType) {
-      if (index.row() >= m_molecule->NumAtoms())
+      if (static_cast<unsigned int>(index.row()) >= m_molecule->NumAtoms())
         return QVariant();
 
       OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
@@ -106,7 +108,7 @@ namespace Avogadro
 	    return QString("");
       }
     } else if (m_type == BondType) {
-      if (index.row() >= m_molecule->NumBonds())
+      if (static_cast<unsigned int>(index.row()) >= m_molecule->NumBonds())
         return QVariant();
 
       OpenBabel::OBBond *bond = m_molecule->GetBond(index.row());
@@ -125,7 +127,7 @@ namespace Avogadro
             return bond->IsRotor();
         }
     } else if (m_type == CartesianType) {
-      if (index.row() >= m_molecule->NumAtoms())
+      if (static_cast<unsigned int>(index.row()) >= m_molecule->NumAtoms())
         return QVariant();
 
       OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
@@ -193,7 +195,8 @@ namespace Avogadro
 	    return QString("Rotatable");
         }
       } else
-        return QString("Bond %1").arg(section + 1);
+        // Bond ordering starts at 0
+        return QString("Bond %1").arg(section);
     } else if (m_type == CartesianType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
@@ -303,7 +306,7 @@ namespace Avogadro
           return false;
       }
     } else if (m_type == BondType) {
-      OpenBabel::OBBond *bond = m_molecule->GetBond(index.row());
+      // OpenBabel::OBBond *bond = m_molecule->GetBond(index.row());
       
       switch (index.column()) {
         case 0: // atom 1
