@@ -24,6 +24,7 @@
 #define __SELECTEXTENSION_H
 
 #include <avogadro/extension.h>
+#include <avogadro/periodictableview.h>
 
 #include <QObject>
 #include <QList>
@@ -35,7 +36,10 @@ namespace Avogadro {
  class SelectExtension : public QObject, public Extension
   {
     Q_OBJECT
-
+    
+    public slots:
+      void selectElement(int element);
+    
     public:
       //! Constructor
       SelectExtension(QObject *parent=0);
@@ -57,9 +61,14 @@ namespace Avogadro {
 
     private:
       QList<QAction *> m_actions;
+      Molecule *m_molecule;
+      GLWidget *m_widget;
+      PeriodicTableView *m_periodicTable;
 
       void invertSelection(GLWidget *widget);
       void selectSMARTS(Molecule *molecule, GLWidget *widget);
+      void selectResidue(Molecule *molecule, GLWidget *widget);
+      void selectSolvent(Molecule *molecule, GLWidget *widget);
   };
 
   class SelectExtensionFactory : public QObject, public ExtensionFactory

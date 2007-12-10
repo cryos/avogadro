@@ -38,12 +38,16 @@ namespace Avogadro {
     {
       InvertIndex = 0,
       ElementIndex,
-      ResidueTypeIndex,
+      ResidueIndex,
+      SolventIndex,
       SMARTSIndex
     };
 
   SelectExtension::SelectExtension(QObject *parent) : QObject(parent)
   {
+    m_periodicTable = new PeriodicTableView;
+    connect( m_periodicTable, SIGNAL( elementChanged(int) ),
+        this, SLOT( selectElement(int) ));
     QAction *action;
 
     action = new QAction(this);
@@ -55,6 +59,22 @@ namespace Avogadro {
     action->setText(tr("Select SMARTS..."));
     action->setData(SMARTSIndex);
     m_actions.append(action);
+    
+    action = new QAction(this);
+    action->setText(tr("Select by Element..."));
+    action->setData(ElementIndex);
+    m_actions.append(action);
+    
+    action = new QAction(this);
+    action->setText(tr("Select by residue..."));
+    action->setData(ResidueIndex);
+    m_actions.append(action);
+    
+    action = new QAction(this);
+    action->setText(tr("Select solvent"));
+    action->setData(SolventIndex);
+    m_actions.append(action);
+  
   }
 
   SelectExtension::~SelectExtension()
@@ -83,6 +103,17 @@ namespace Avogadro {
       break;
     case SMARTSIndex:
       selectSMARTS(molecule, widget);
+      break;
+    case ElementIndex:
+      m_molecule = molecule;
+      m_widget = widget;
+      m_periodicTable->show();
+      break;
+    case ResidueIndex:
+      selectResidue(molecule, widget);
+      break;
+    case SolventIndex:
+      selectSolvent(molecule, widget);
       break;
     default:
       break;
@@ -135,6 +166,66 @@ namespace Avogadro {
     }
     return;
   }
+  
+  // Helper function -- handle element selections
+  // Connected to signal from PeriodicTableView
+  void SelectExtension::selectElement(int element)
+  {
+    QList<Primitive *> selectedAtoms;
+    /*
+    bool ok;
+    int element = QInputDialog::getInteger(qobject_cast<QWidget*>(parent()), 
+        tr("Select by element"), tr("Element number"), 6, 1, 103, 1, &ok);
+    
+    if (!ok)
+      return;
+    */
+    FOR_ATOMS_OF_MOL (atom, m_molecule) {
+      if (atom->GetAtomicNum() == element)
+        selectedAtoms.append(static_cast<Atom*>(m_molecule->GetAtom(atom->GetIdx())));
+    }
+
+    m_widget->clearSelected();
+    m_widget->setSelected(selectedAtoms, true);
+    m_widget->update();
+  }
+
+ 
+  // Helper function -- handle residue selections
+  // Called by performAction()
+  void SelectExtension::selectResidue(Molecule *molecule, GLWidget *widget)
+  {
+    QList<Primitive *> selectedAtoms;
+    bool ok;
+    QString resname = QInputDialog::getText(qobject_cast<QWidget*>(parent()),
+        tr("Select by residue"), tr("Residue name"), QLineEdit::Normal, tr(""), &ok);
+    
+    FOR_ATOMS_OF_MOL (atom, molecule) {
+      if (atom->GetResidue()->GetName() == resname.toStdString())
+        selectedAtoms.append(static_cast<Atom*>(molecule->GetAtom(atom->GetIdx())));
+    }
+
+    widget->clearSelected();
+    widget->setSelected(selectedAtoms, true);
+    widget->update();
+  }
+
+  // Helper function -- handle solvent selections
+  // Called by performAction()
+  void SelectExtension::selectSolvent(Molecule *molecule, GLWidget *widget)
+  {
+    QList<Primitive *> selectedAtoms;
+    
+    FOR_ATOMS_OF_MOL (atom, molecule) {
+      if (atom->GetResidue()->GetName() == "HOH")
+        selectedAtoms.append(static_cast<Atom*>(molecule->GetAtom(atom->GetIdx())));
+    }
+
+    widget->clearSelected();
+    widget->setSelected(selectedAtoms, true);
+    widget->update();
+  }
+
 
 } // end namespace Avogadro
 

@@ -1,5 +1,11 @@
 2007-12-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
+	* avogadro/src/extensions/*: Added "Select by Element", reusing cryos'
+	periodic table, "Select by Residue" and "Select Solvent". Select
+	solvent needs expanding...
+
+2007-12-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
 	* avogadro/src/extensions/*: Added conformer search dialog. 
 
 2007-12-07  Geoffrey Hutchison  <babel@geoffhutchison.net>
