@@ -146,6 +146,9 @@ namespace Avogadro
       void drawMultiCylinder (const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
                                double radius, int order, double shift);
 
+      void drawCone(const Eigen::Vector3d &p1, const Eigen::Vector3d &p2,
+                    double radius) { }
+
       /**
        * Draws a GL line between the given points of the given width.
        * @param start the position of the start of the line.

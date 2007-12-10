@@ -141,6 +141,9 @@ namespace Avogadro
     void drawMultiCylinder (const Vector3d &end1, const Vector3d &end2,
                             double radius, int order, double shift);
 
+    void drawCone(const Eigen::Vector3d &, const Eigen::Vector3d &,
+                  double) { }
+
     /**
      * Draws a line between the given points of the given width.
      * @param start the position of the start of the line.
