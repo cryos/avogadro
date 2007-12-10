@@ -4,6 +4,7 @@
   Copyright (C) 2006,2007 Geoffrey R. Hutchison
   Copyright (C) 2006,2007 Donald Ephraim Curtis
   Copyright (C) 2007      Benoit Jacob
+  Copyright (C) 2007 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -686,37 +687,35 @@ namespace Avogadro {
     glPushMatrix();
     glLoadIdentity();
 
-    // Don't want any lighting for the axes
-    glDisable(GL_LIGHTING);
-
     // Set the origin and calculate the positions of the axes
     Vector3d origin = Vector3d(0.07, 0.07, -.07);
     MatrixP3d axisTranslation;
+    axisTranslation.loadTranslation(pd->camera()->transformedXAxis() * 0.04);
+    Vector3d aXa = axisTranslation * origin;
     axisTranslation.loadTranslation(pd->camera()->transformedXAxis() * 0.06);
     Vector3d aX = axisTranslation * origin;
+    axisTranslation.loadTranslation(pd->camera()->transformedYAxis() * 0.04);
+    Vector3d aYa = axisTranslation * origin;
     axisTranslation.loadTranslation(pd->camera()->transformedYAxis() * 0.06);
     Vector3d aY = axisTranslation * origin;
+    axisTranslation.loadTranslation(pd->camera()->transformedZAxis() * 0.04);
+    Vector3d aZa = axisTranslation * origin;
     axisTranslation.loadTranslation(pd->camera()->transformedZAxis() * 0.06);
     Vector3d aZ = axisTranslation * origin;
 
-    // Draw the axes in red, green and blue so they can be easily identified
-    glBegin(GL_LINES);
-    glColor4f(1.0, 0.0, 0.0, 1.);
-    glVertex3d(origin.x(), origin.y(), origin.z());
-    glVertex3d(aX.x(), aX.y(), aX.z());
-    glColor4f(0.0, 1.0, 0.0, 1.);
-    glVertex3d(origin.x(), origin.y(), origin.z());
-    glVertex3d(aY.x(), aY.y(), aY.z());
-    glColor4f(0.0, 0.0, 1.0, 1.);
-    glVertex3d(origin.x(), origin.y(), origin.z());
-    glVertex3d(aZ.x(), aZ.y(), aZ.z());
-    glEnd();
-    // FIXME Would be good to draw labels on the axes too, can't figure out
-    // how to do that with the current drawText functions in this projection
-    //  gl->painter()->drawText(aX, "x");
+    // x axis
+    painter()->setColor(1.0, 0.0, 0.0);
+    painter()->drawCylinder(origin, aXa, 0.005);
+    painter()->drawCone(aXa, aX, 0.01);
+    // y axis
+    painter()->setColor(0.0, 1.0, 0.0);
+    painter()->drawCylinder(origin, aYa, 0.005);
+    painter()->drawCone(aYa, aY, 0.01);
+    // y axis
+    painter()->setColor(0.0, 0.0, 1.0);
+    painter()->drawCylinder(origin, aZa, 0.005);
+    painter()->drawCone(aZa, aZ, 0.01);
 
-    // restore the original OpenGL projection and lighting
-    glEnable(GL_LIGHTING);
     glPopMatrix();
     glMatrixMode(GL_PROJECTION);
     glPopMatrix();

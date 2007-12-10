@@ -3,6 +3,7 @@
 
   Copyright (C) 2006,2007 Geoffrey R. Hutchison
   Copyright (C) 2006,2007 Donald Ephraim Curtis
+  Copyright (C) 2007 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
