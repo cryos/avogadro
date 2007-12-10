@@ -1,3 +1,9 @@
+2007-12-10  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/painter.*, libavogadro/src/povpainter.h,
+	libavogadro/src/glpainter.*: Added a drawCone function to draw 3D
+	cones that can be used for arrows etc.
+
 2007-12-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extensions/*: Added "Select by Element", reusing cryos'
@@ -6,7 +12,7 @@
 
 2007-12-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
-	* avogadro/src/extensions/*: Added conformer search dialog. 
+	* avogadro/src/extensions/*: Added conformer search dialog.
 
 2007-12-07  Geoffrey Hutchison  <babel@geoffhutchison.net>
 

@@ -26,6 +26,7 @@
 #define __POVPAINTER_H
 
 #include <avogadro/global.h>
+#include <avogadro/painter.h>
 #include <avogadro/glwidget.h>
 
 class QFile;
@@ -141,6 +142,12 @@ namespace Avogadro
     void drawMultiCylinder (const Vector3d &end1, const Vector3d &end2,
                             double radius, int order, double shift);
 
+    /**
+     * Draws a cone between the tip and the base with the base radius given.
+     * @param base the position of the base of the cone.
+     * @param tip the position of the tip of the cone.
+     * @param radius the radius of the base of the cone.
+     */
     void drawCone(const Eigen::Vector3d &, const Eigen::Vector3d &,
                   double) { }
 

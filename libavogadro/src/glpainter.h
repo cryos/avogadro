@@ -146,8 +146,14 @@ namespace Avogadro
       void drawMultiCylinder (const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
                                double radius, int order, double shift);
 
-      void drawCone(const Eigen::Vector3d &p1, const Eigen::Vector3d &p2,
-                    double radius) { }
+    /**
+     * Draws a cone between the tip and the base with the base radius given.
+     * @param base the position of the base of the cone.
+     * @param tip the position of the tip of the cone.
+     * @param radius the radius of the base of the cone.
+     */
+      void drawCone(const Eigen::Vector3d &base, const Eigen::Vector3d &tip,
+                    double radius);
 
       /**
        * Draws a GL line between the given points of the given width.

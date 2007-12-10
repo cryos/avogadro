@@ -416,6 +416,43 @@ namespace Avogadro
     popName();
   }
 
+  void GLPainter::drawCone(const Eigen::Vector3d &base, const Eigen::Vector3d &tip,
+                double radius)
+  {
+    const int CONE_TESS_LEVEL = 30;
+    // This draws a cone which will be most useful for drawing arrows etc.
+    Eigen::Vector3d axis = tip - base;
+    Eigen::Vector3d axisNormalized = axis.normalized();
+    Eigen::Vector3d ortho1, ortho2;
+    ortho1.loadOrtho(axisNormalized);
+    ortho1 *= radius;
+    axisNormalized.cross(ortho1, &ortho2);
+
+    d->color.applyAsMaterials();
+
+    // Draw the cone
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex3dv(tip.array());
+    for (int j = 0; j <= CONE_TESS_LEVEL; j++) {
+      double alpha = j * M_PI / (CONE_TESS_LEVEL/2.0);
+      Eigen::Vector3d v = sin(alpha) * ortho1 + cos(alpha) * ortho2 + base;
+      glNormal3dv(v.array());
+      glVertex3dv(v.array());
+    }
+    glEnd();
+
+    // Now to draw the base
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex3dv(base.array());
+    for (int j = 0; j <= CONE_TESS_LEVEL; j++) {
+      double alpha = j * M_PI / (CONE_TESS_LEVEL/2.0);
+      Eigen::Vector3d v = cos(alpha) * ortho1 + sin(alpha) * ortho2 + base;
+      glNormal3dv(v.array());
+      glVertex3dv(v.array());
+    }
+    glEnd();
+  }
+
   void GLPainter::drawLine(const Eigen::Vector3d &start, const Eigen::Vector3d &end,
                            double lineWidth)
   {
@@ -429,8 +466,8 @@ namespace Avogadro
 
     // Draw the line
     glBegin(GL_LINE_STRIP);
-    glVertex3d(start.x(), start.y(), start.z());
-    glVertex3d(end.x(), end.y(), end.z());
+    glVertex3dv(start.array());
+    glVertex3dv(end.array());
     glEnd();
 
     glEnable(GL_LIGHTING);

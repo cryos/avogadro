@@ -3,6 +3,7 @@
 
   Copyright (C) 2007 Benoit Jacob
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2007 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -128,7 +129,13 @@ namespace Avogadro
       virtual void drawMultiCylinder (const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
                                double radius, int order, double shift) = 0;
 
-      virtual void drawCone(const Eigen::Vector3d &p1, const Eigen::Vector3d &p2,
+      /**
+       * Draws a cone between the tip and the base with the base radius given.
+       * @param base the position of the base of the cone.
+       * @param tip the position of the tip of the cone.
+       * @param radius the radius of the base of the cone.
+       */
+      virtual void drawCone(const Eigen::Vector3d &base, const Eigen::Vector3d &tip,
                             double radius) = 0;
 
       /**
