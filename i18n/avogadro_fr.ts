@@ -407,12 +407,12 @@ Bouton droit: réinitialise les mesures.</translation>
 <context>
     <name>Avogadro::DrawTool</name>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.h" line="63"/>
+        <location filename="../libavogadro/src/tools/drawtool.h" line="62"/>
         <source>Draw</source>
         <translation>Dessiner</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.h" line="65"/>
+        <location filename="../libavogadro/src/tools/drawtool.h" line="64"/>
         <source>Draws Things</source>
         <translation>Outil permettant de dessiner</translation>
     </message>
@@ -1387,7 +1387,7 @@ Tous les changements seront oubliés!</translation>
 <context>
     <name>Avogadro::MainWindow</name>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="194"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="193"/>
         <source>Messages</source>
         <translation>Messages</translation>
     </message>
@@ -1397,81 +1397,81 @@ Tous les changements seront oubliés!</translation>
         <translation type="obsolete">Prêt.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="434"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="435"/>
         <source>Open File</source>
         <translation>Ouvrir fichier</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="619"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="620"/>
         <source>Save Molecule As</source>
         <translation>Sauver la molécule sous</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1240"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1241"/>
         <source>Avogadro</source>
         <translation>Avogadro</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="639"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="640"/>
         <source>Cannot write to the file %1:
 %2.</source>
         <translation>Impossible d&apos;écrire dans le fichier %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="645"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="646"/>
         <source>Saving file.</source>
         <translation>Enregistrement du fichier.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="652"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="653"/>
         <source>Cannot write to file format of file %1.</source>
         <translation>Impossible d&apos;écrire dans le format du fichier %1.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="660"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="661"/>
         <source>Cannot write to the file %1.</source>
         <translation>Impossible d&apos;écrire le fichier %1.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="672"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="673"/>
         <source>File saved</source>
         <translation>Fichier enregistré</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="685"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="686"/>
         <source>Export Bitmap Graphics</source>
         <translation>Exporter image bitmap</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="717"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="718"/>
         <source>Cannot save file %1.</source>
         <translation>Impossible de sauver le fichier %1.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="726"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="727"/>
         <source>Export POV Scene</source>
         <translation>Exporter scène POV</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="763"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="764"/>
         <source>The document has been modified.
 Do you want to save your changes?</source>
         <translation>Ce document a été modifié.
 Voulez-vous enregistrer vos changements?</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="842"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="843"/>
         <source>Paste failed (format unavailable).</source>
         <translation>Le collage a échoué (format non disponible).</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="816"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="817"/>
         <source>Unable to paste molecule.</source>
         <translation>Impossible de coller la molécule.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="902"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="903"/>
         <source>Copy failed (mdl unavailable).</source>
         <translation>La copie a échoué (mdl non disponible).</translation>
     </message>
@@ -1491,17 +1491,17 @@ Voulez-vous enregistrer vos changements?</translation>
         <translation type="obsolete">Vue </translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1101"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1102"/>
         <source>Normal Size</source>
         <translation>Taille normale</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1107"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1108"/>
         <source>Full Screen</source>
         <translation>Plein écran</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="507"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="508"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>Impossible de lire le fichier %1:
@@ -1513,12 +1513,12 @@ Voulez-vous enregistrer vos changements?</translation>
         <translation type="obsolete">Lecture du fichier.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="520"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="521"/>
         <source>Cannot read file format of file %1.</source>
         <translation>Impossible de lire le format du fichier %1.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="529"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="530"/>
         <source>Cannot read file %1.</source>
         <translation>Impossible de lire le fichier %1.</translation>
     </message>
@@ -1528,38 +1528,38 @@ Voulez-vous enregistrer vos changements?</translation>
         <translation type="obsolete">[*]Avogadro</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1239"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1240"/>
         <source>%1[*] - %2</source>
         <translation>%1[*] - %2</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="666"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="667"/>
         <source>Save succeeded.</source>
         <translation>Enregistrement effectué.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="668"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="669"/>
         <source>Saving molecular file failed.</source>
         <translation>L&apos;enregistrement du fichier moléculaire a échoué.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="854"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="855"/>
         <source>Manipulate</source>
         <translation>Manipuler</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1316"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1317"/>
         <source>View %1</source>
         <translation>Vue %1</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="501"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="502"/>
         <source>Loading %1...</source>
         <comment>%1 is a filename</comment>
         <translation>Chargement de %1...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="533"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="534"/>
         <source>Loading %1...</source>
         <translation>Chargement de %1...</translation>
     </message>
@@ -1569,63 +1569,63 @@ Voulez-vous enregistrer vos changements?</translation>
         <translation type="obsolete">Ce fichier contient de multiples enregistrements de molécules. Avogadro ne va lire que la première molécule. Si vous sauvegardez, il se peut que toutes les autres molécules soient perdues.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="554"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="555"/>
         <source>Atoms: </source>
         <translation>Atomes: </translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="555"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="556"/>
         <source> Bonds: </source>
         <translation> Liaisons: </translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="559"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="560"/>
         <source>Reading molecular file failed.</source>
         <translation>La lecture du fichier moléculaire a échoué.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="563"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="564"/>
         <source>Navigate</source>
         <translation>Naviguer</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="565"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="566"/>
         <source>File Loaded...</source>
         <translation>Fichier chargé...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1234"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1235"/>
         <source>[*]Avogadro</source>
         <comment>[*] indicates that this is a modified view....</comment>
         <translation>[*]Avogadro</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="341"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="342"/>
         <source>Tool Settings</source>
         <translation>Paramètres des outils</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="538"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="539"/>
         <source>This file does not contain 3D coordinates. You may not be able to edit or view properly.</source>
         <translation>Ce fichier ne contient pas de coordonnées 3D. Il se peut que vous ne puissiez pas le voir ou le modifier normalement.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="548"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="549"/>
         <source>This file appears to contain multiple molecule records. Avogadro will only read the first molecule. If you save, all other molecules may be lost.</source>
         <translation>Ce fichier semble contenir de multiples enregistrements de molécules. Avogadro va seulement lire la première molécule. Si vous enregistrez, toutes les autres molécules risquent d&apos;être perdues.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1526"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1527"/>
         <source>Add</source>
         <translation>Ajouter</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1531"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1532"/>
         <source>Duplicate</source>
         <translation>Dupliquer</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1535"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1536"/>
         <source>Remove</source>
         <translation>Enlever</translation>
     </message>
@@ -1858,29 +1858,59 @@ Bouton droit: Cliquer et glisser-déposer pour déplacer la vue</translation>
 <context>
     <name>Avogadro::SelectExtension</name>
     <message>
-        <location filename="../avogadro/src/extensions/selectextension.cpp" line="50"/>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="54"/>
         <source>&amp;Invert Selection</source>
         <translation>&amp;Inverser la sélection</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/extensions/selectextension.cpp" line="55"/>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="59"/>
         <source>Select SMARTS...</source>
         <translation>Sélectionner SMARTS...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/extensions/selectextension.cpp" line="71"/>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="91"/>
         <source>&amp;Select</source>
         <translation>&amp;Sélectionner</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/extensions/selectextension.cpp" line="110"/>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="141"/>
         <source>SMARTS Selection</source>
         <translation>Sélection SMARTS</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/extensions/selectextension.cpp" line="111"/>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="142"/>
         <source>SMARTS pattern to select</source>
         <translation>Motif SMARTS à sélectionner</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="64"/>
+        <source>Select by Element...</source>
+        <translation>Sélectionner par élément...</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="69"/>
+        <source>Select by residue...</source>
+        <translation>Sélectionner par résidu...</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="74"/>
+        <source>Select solvent</source>
+        <translation>Sélectionner solvant</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="201"/>
+        <source>Select by residue</source>
+        <translation>Sélectionner par résidu</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="201"/>
+        <source>Residue name</source>
+        <translation>Nom du résidu</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="201"/>
+        <source></source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -5119,12 +5149,12 @@ Options:
         <translation>Greffon des propriétés</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/extensions/selectextension.h" line="48"/>
+        <location filename="../avogadro/src/extensions/selectextension.h" line="52"/>
         <source>Selections</source>
         <translation>Sélections</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/extensions/selectextension.h" line="50"/>
+        <location filename="../avogadro/src/extensions/selectextension.h" line="54"/>
         <source>Selection Plugin</source>
         <translation>Greffon des sélections</translation>
     </message>
