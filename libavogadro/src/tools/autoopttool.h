@@ -38,6 +38,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QComboBox>
+#include <QCheckBox>
 #include <QSpinBox>
 #include <QUndoStack>
 
@@ -129,12 +130,15 @@ namespace Avogadro {
       QWidget*                  m_settingsWidget;
       Eigen::Vector3d           m_selectedPrimitivesCenter;    // centroid of selected atoms
       OpenBabel::OBForceField*  m_forceField;
+      int 			m_numConstraints;
       AutoOptThread *           m_thread;
 
       QComboBox*                m_comboFF;
       QComboBox*                m_comboAlgorithm;
       QSpinBox*                 m_convergenceSpinBox;
       QPushButton*              m_buttonStartStop;
+      QCheckBox*                m_fixedMovable;
+      QCheckBox*                m_ignoredMovable;
 
       QPoint                    m_lastDraggingPosition;
 

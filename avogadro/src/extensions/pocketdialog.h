@@ -1,5 +1,5 @@
 /**********************************************************************
-  ConstraintsDialog - Dialog for force field constraint settings
+  PocketDialog - Dialog for Docking
 
   Copyright (C) 2007 by Tim Vandermeersch
 
@@ -19,47 +19,54 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __CONSTRAINTSDIALOG_H
-#define __CONSTRAINTSDIALOG_H
-
-#include "constraintsmodel.h"
+#ifndef __POCKETDIALOG_H
+#define __POCKETDIALOG_H
 
 #include <QDialog>
 #include <QButtonGroup>
 #include <QModelIndex>
-#include <QTableView>
 
-#include "ui_constraintsdialog.h"
+#include <openbabel/dock.h>
+#include <avogadro/primitive.h>
+#include <avogadro/glwidget.h>
+
+#include "ui_pocketdialog.h"
 
 namespace Avogadro
 {
-  class ConstraintsDialog : public QDialog
+  class PocketDialog : public QDialog
   {
       Q_OBJECT
 
     public:
       //! Constructor
-      explicit ConstraintsDialog( QWidget *parent = 0, Qt::WindowFlags f = 0 );
+      explicit PocketDialog( QWidget *parent = 0, Qt::WindowFlags f = 0 );
       //! Desconstructor
-      ~ConstraintsDialog();
+      ~PocketDialog();
 
-      void showEvent(QShowEvent *event);
-      void setModel(ConstraintsModel *model);
-      void setMolecule(Molecule *molecule);
-      void setForceField(OpenBabel::OBForceField *forcefield);
+      void setDock(OpenBabel::OBDock *dock) { m_dock = dock; }
+      void setMolecule(Molecule *molecule) {m_molecule = molecule; }
+      void setWidget(GLWidget *widget) {m_widget = widget; }
+      int method() { return m_method; }
+      double radius() { return m_radius; }
+      QString resname() { return m_resname; }
+      std::vector<int> pocket() { return m_pocket; }
 
     public slots:
-      void acceptConstraints();
-      void deleteConstraint();
-      void deleteAllConstraints();
-      void addConstraint();
-      void comboTypeChanged(int);
+      void accept();
+      void reject();
+      void methodToggled(int index);
 
     private:
-      Ui::ConstraintsDialog ui;
-      Molecule* m_molecule;
-      ConstraintsModel *m_constraints;
-      OpenBabel::OBForceField* m_forceField; // needed to transfer info between AutoOpt and FF Extention
+      Ui::PocketDialog ui;
+      
+      int m_method;
+      double m_radius;
+      QString m_resname;
+      OpenBabel::OBDock *m_dock;
+      Molecule *m_molecule;
+      GLWidget *m_widget;
+      std::vector<int> m_pocket;
   };
 }
 

@@ -1,3 +1,40 @@
+2007-12-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/autoopttool.[h,cpp]: Added "Ignored atoms are
+	movable" and "Fixed atoms are movable". Small changes to ::redo() and
+	::undo(), undo still seems to work. I had to change it to makje sure 
+	the passed molecule pointer would not point to a molecule that would 
+	be deleted. This caused the constraints in the model to be lossed.
+	(note: OB does not support angle and torsion constraints yet, ignoring
+	atoms only works for MMFF94 at the moment.)
+
+	* avogadro/src/extentions/constraintsmodel.[h,cpp]: now connects to
+	primitiveRemoved signal from a Molecule to delete invalid constraints
+	as you remove atoms.
+	
+	* avogadro/src/extentions/constraintsdialog.[h,cpp]: You can now only
+	add valid constraints.
+
+	* avogadro/src/extentions/forcefieldextension.cpp: Added "Ignore
+	selected atoms" and "Fix selected atoms" + changes to make sure
+	constraints are consistent for both the forcefield extension and the
+	AutoOpt tool. Undo doesn't work for conformersearch yet, I'll probably
+	fix this by moving the ConformerSearchDialog to the ForceFieldCommand
+	itself.
+
+	* avogadro/src/extentions/liganddialog.[ui,h,cpp]: Dialog to create a
+	ligand. (dockingextension)
+
+	* avogadro/src/extentions/pocketdialog.[ui,h,cpp]: Dialog to create a
+	pocket. (dockingextension)
+
+	* avogadro/src/extentions/dockingextension.[h,cpp]: Avogadro class to
+	handle docking.
+	
+	* avogadro/src/extensions/propmodel.cpp: Small  change to the way rows
+	are added and deleted.
+
+
 2007-12-10  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/painter.*, libavogadro/src/povpainter.h,

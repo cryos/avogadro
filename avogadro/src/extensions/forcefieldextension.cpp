@@ -24,6 +24,7 @@
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/forcefield.h>
 
 #include <QtGui>
 #include <QProgressDialog>
@@ -43,7 +44,9 @@ namespace Avogadro
     CalculateEnergyIndex,
     ConformerSearchIndex,
     SetupForceFieldIndex,
-    ConstraintsIndex
+    ConstraintsIndex,
+    IgnoreAtomsIndex,
+    FixAtomsIndex
   };
 
   ForceFieldExtension::ForceFieldExtension( QObject *parent ) : QObject( parent )
@@ -56,8 +59,7 @@ namespace Avogadro
     m_constraints = new ConstraintsModel;
     
     m_ConstraintsDialog->setModel(m_constraints);
-    m_ConstraintsDialog->setForceField(m_forceField);
-
+    
     if ( m_forceField ) { // make sure we can actually find and run it!
 
       action = new QAction( this );
@@ -71,7 +73,7 @@ namespace Avogadro
       m_actions.append( action );
 
       action = new QAction( this );
-      action->setText( tr("Conformer Search" ));
+      action->setText( tr("Conformer Search..." ));
       action->setData(ConformerSearchIndex);
       m_actions.append( action );
 
@@ -81,10 +83,19 @@ namespace Avogadro
       m_actions.append( action );
 
       action = new QAction( this );
-      action->setText( tr("Constraints" ));
+      action->setText( tr("Constraints..." ));
       action->setData(ConstraintsIndex);
       m_actions.append( action );
+      
+      action = new QAction( this );
+      action->setText( tr("Ignore Selection" ));
+      action->setData(IgnoreAtomsIndex);
+      m_actions.append( action );
 
+      action = new QAction( this );
+      action->setText( tr("Fix Selected Atoms" ));
+      action->setData(FixAtomsIndex);
+      m_actions.append( action );
     }
 
   }
@@ -105,6 +116,8 @@ namespace Avogadro
       case ConformerSearchIndex:
       case SetupForceFieldIndex:
       case ConstraintsIndex:
+      case IgnoreAtomsIndex: 
+      case FixAtomsIndex: 
         return tr("&Extensions") + ">" + tr("&Molecular Mechanics");
         break;
       default:
@@ -114,11 +127,14 @@ namespace Avogadro
   }
 
   QUndoCommand* ForceFieldExtension::performAction( QAction *action, Molecule *molecule,
-      GLWidget *, QTextEdit *textEdit )
+      GLWidget *widget, QTextEdit *textEdit )
   {
     QUndoCommand *undo = NULL;
+    OpenBabel::OBForceField *copyForceField = NULL;
+    QList<Primitive*> selectedAtoms;
     ostringstream buff;
-
+    
+    OpenBabel::OBFFConstraints constraints = m_forceField->GetConstraints(); // load constraints
     switch (m_Dialog->forceFieldID()) {
     case 1:
       m_forceField = OBForceField::FindForceField( "MMFF94" );
@@ -131,7 +147,9 @@ namespace Avogadro
       m_forceField = OBForceField::FindForceField( "Ghemical" );
       break;
     }
+    m_forceField->SetConstraints(constraints); // save constraints
     m_ConstraintsDialog->setForceField(m_forceField);
+
 
     int i = action->data().toInt();
     switch ( i ) {
@@ -172,8 +190,52 @@ namespace Avogadro
         undo->setText( QObject::tr( "Geometric Optimization" ) );
         break;
       case ConstraintsIndex: // show constraints dialog
+        m_ConstraintsDialog->setMolecule(molecule);
+        m_ConstraintsDialog->setForceField(m_forceField);
         m_ConstraintsDialog->show();
         break;
+      case IgnoreAtomsIndex: // ignore the selected atoms
+        selectedAtoms = widget->selectedPrimitives();
+
+	for (int i = 0; i < selectedAtoms.size(); ++i) {
+          if (selectedAtoms[i]->type() == Primitive::AtomType) {
+            Atom *atom = static_cast<Atom *>(selectedAtoms[i]);
+	    m_constraints->addIgnore(atom->GetIdx());
+          }
+	}
+        
+	// copy constraints to all force fields
+	copyForceField = m_forceField;
+        m_forceField = OBForceField::FindForceField( "Ghemical" );
+        m_forceField->SetConstraints(m_constraints->constraints());
+        m_forceField = OBForceField::FindForceField( "MMFF94" );
+        m_forceField->SetConstraints(m_constraints->constraints());
+        m_forceField = OBForceField::FindForceField( "UFF" );
+        m_forceField->SetConstraints(m_constraints->constraints());
+        m_forceField = copyForceField;
+
+	break;
+      case FixAtomsIndex: // fix the selected atom positions
+        selectedAtoms = widget->selectedPrimitives();
+
+	for (int i = 0; i < selectedAtoms.size(); ++i) {
+          if (selectedAtoms[i]->type() == Primitive::AtomType) {
+            Atom *atom = static_cast<Atom *>(selectedAtoms[i]);
+	    m_constraints->addAtomConstraint(atom->GetIdx());
+          }
+	}
+        
+	// copy constraints to all force fields
+	copyForceField = m_forceField;
+        m_forceField = OBForceField::FindForceField( "Ghemical" );
+        m_forceField->SetConstraints(m_constraints->constraints());
+        m_forceField = OBForceField::FindForceField( "MMFF94" );
+        m_forceField->SetConstraints(m_constraints->constraints());
+        m_forceField = OBForceField::FindForceField( "UFF" );
+        m_forceField->SetConstraints(m_constraints->constraints());
+        m_forceField = copyForceField;
+
+	break;
     }
 
     return undo;

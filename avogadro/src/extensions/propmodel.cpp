@@ -350,49 +350,26 @@ namespace Avogadro
     m_molecule = molecule;
   }
   
-  void PropertiesModel::updateTable()
-  {
-    QModelIndex idx = createIndex(0, 0);
-    QModelIndex idx2;
-    
-    switch (m_type) {
-      case AtomType:
-        idx2 = createIndex(m_molecule->NumAtoms(), 7);
-      case CartesianType:
-        idx2 = createIndex(m_molecule->NumAtoms(), 2);
-      case BondType:
-        idx2 = createIndex(m_molecule->NumBonds(), 4);
-      case ConformerType:
-        idx2 = createIndex(m_molecule->NumConformers(), 0);
-    }
- 
-    emit dataChanged(idx, idx2);
-  }
-  
   void PropertiesModel::primitiveAdded(Primitive *primitive)
   {
     if ( (primitive->type() == Primitive::AtomType) && ( (m_type == AtomType) || (m_type == CartesianType) ) ) {
-      beginInsertRows(QModelIndex(), 0, 0);
+      beginInsertRows(QModelIndex(), m_molecule->NumAtoms(), m_molecule->NumAtoms());
       endInsertRows();
     } else if ( (primitive->type() == Primitive::BondType) && (m_type == BondType) ) {
-      beginInsertRows(QModelIndex(), 0, 0);
+      beginInsertRows(QModelIndex(), m_molecule->NumBonds(), m_molecule->NumBonds());
       endInsertRows();
     }
-    
-    updateTable();
   }
   
   void PropertiesModel::primitiveRemoved(Primitive *primitive)
   {
     if ( (primitive->type() == Primitive::AtomType) && ( (m_type == AtomType) || (m_type == CartesianType) ) ) {
-      beginRemoveRows(QModelIndex(), 0, 0);
+      beginRemoveRows(QModelIndex(), static_cast<Atom*>(primitive)->GetIdx() - 1, static_cast<Atom*>(primitive)->GetIdx() - 1);
       endRemoveRows();
     } else if ( (primitive->type() == Primitive::BondType) && (m_type == BondType) ) {
-      beginRemoveRows(QModelIndex(), 0, 0);
+      beginRemoveRows(QModelIndex(), static_cast<Bond*>(primitive)->GetIdx() - 1, static_cast<Bond*>(primitive)->GetIdx() - 1);
       endRemoveRows();
     }
-    
-    updateTable();
   }
 
 } // end namespace Avogadro

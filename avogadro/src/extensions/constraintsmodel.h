@@ -37,10 +37,13 @@
 #endif
 
 namespace Avogadro {
-
+ 
  class ConstraintsModel : public QAbstractTableModel
   {
     Q_OBJECT
+     
+     public slots:
+       void primitiveRemoved(Primitive *primitive);
 
      public:
        ConstraintsModel(QObject *parent = 0) : QAbstractTableModel(parent) {}
@@ -50,10 +53,10 @@ namespace Avogadro {
        QVariant data(const QModelIndex &index, int role) const;
        QVariant headerData(int section, Qt::Orientation orientation,
            int role = Qt::DisplayRole) const;
-       void emitAllDataChanged();
        
        void clear();
        void deleteConstraint(int index);
+       void addIgnore(int index);
        void addAtomConstraint(int index);
        void addAtomXConstraint(int index);
        void addAtomYConstraint(int index);
@@ -69,7 +72,7 @@ namespace Avogadro {
        OpenBabel::OBFFConstraints m_constraints;
 
  };
- 
+
 } // end namespace Avogadro
 
 #endif
