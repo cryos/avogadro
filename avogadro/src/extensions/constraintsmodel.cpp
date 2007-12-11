@@ -37,11 +37,9 @@ using namespace OpenBabel;
 
 namespace Avogadro
 {
-
   int ConstraintsModel::rowCount(const QModelIndex &parent) const
   {
-    //return m_constraints.Size();
-    return 100;
+    return m_constraints.Size();
   }
 
   int ConstraintsModel::columnCount(const QModelIndex &parent) const
@@ -128,68 +126,102 @@ namespace Avogadro
   
   }
  
+  void ConstraintsModel::addIgnore(int index)
+  {
+    beginInsertRows(QModelIndex(), m_constraints.Size(), m_constraints.Size()); 
+    m_constraints.AddIgnore(index);
+    endInsertRows();
+  }
+  
   void ConstraintsModel::addAtomConstraint(int index)
   {
+    beginInsertRows(QModelIndex(), m_constraints.Size(), m_constraints.Size()); 
     m_constraints.AddAtomConstraint(index);
-    emitAllDataChanged();
+    endInsertRows();
   }
   
   void ConstraintsModel::addAtomXConstraint(int index)
   {
+    beginInsertRows(QModelIndex(), m_constraints.Size(), m_constraints.Size()); 
     m_constraints.AddAtomXConstraint(index);
-    emitAllDataChanged();
+    endInsertRows();
   }
   
   void ConstraintsModel::addAtomYConstraint(int index)
   {
+    beginInsertRows(QModelIndex(), m_constraints.Size(), m_constraints.Size()); 
     m_constraints.AddAtomYConstraint(index);
-    emitAllDataChanged();
+    endInsertRows();
   }
   
   void ConstraintsModel::addAtomZConstraint(int index)
   {
+    beginInsertRows(QModelIndex(), m_constraints.Size(), m_constraints.Size()); 
     m_constraints.AddAtomZConstraint(index);
-    emitAllDataChanged();
+    endInsertRows();
   }
   
   void ConstraintsModel::addBondConstraint(int a, int b, double length)
   {
+    beginInsertRows(QModelIndex(), m_constraints.Size(), m_constraints.Size()); 
     m_constraints.AddBondConstraint(a, b, length);
-    emitAllDataChanged();
+    endInsertRows();
   }
   
   void ConstraintsModel::addAngleConstraint(int a, int b, int c, double angle)
   {
+    beginInsertRows(QModelIndex(), m_constraints.Size(), m_constraints.Size()); 
     m_constraints.AddAngleConstraint(a, b, c, angle);
-    emitAllDataChanged();
+    endInsertRows();
   }
   
   void ConstraintsModel::addTorsionConstraint(int a, int b, int c, int d, double torsion)
   {
+    beginInsertRows(QModelIndex(), m_constraints.Size(), m_constraints.Size()); 
     m_constraints.AddTorsionConstraint(a, b, c, d, torsion);
-    emitAllDataChanged();
+    endInsertRows();
   }
  
   void ConstraintsModel::clear()
   {
-    m_constraints.Clear();
-    emitAllDataChanged();
+    qDebug() << "ConstraintsModel::clear()" << endl;
+    if (m_constraints.Size()) {
+      beginRemoveRows(QModelIndex(), 0, m_constraints.Size() - 1); 
+      m_constraints.Clear();
+      endRemoveRows();
+    }
   }
   
   void ConstraintsModel::deleteConstraint(int index)
   { 
-    m_constraints.DeleteConstraint(index);
-    emitAllDataChanged();
+    qDebug() << "ConstraintsModel::deleteConstraint(" << index << ")" << endl;
+    if (m_constraints.Size() && (index >= 0)) {
+      beginRemoveRows(QModelIndex(), index, index); 
+      m_constraints.DeleteConstraint(index);
+      endRemoveRows();
+    }
   }
   
-  void ConstraintsModel::emitAllDataChanged()
+  // remove all constraints in which the atom occurs
+  void ConstraintsModel::primitiveRemoved(Primitive *primitive)
   {
-    QModelIndex idx = createIndex(0, 0);
-    QModelIndex idx2 = createIndex(100, 6);
-    emit dataChanged(idx, idx2);
+    qDebug() << "ConstraintsModel::primitiveRemoved(...)" << endl;
+    if (primitive->type() == Primitive::AtomType) {
+      int index = static_cast<Atom*>(primitive)->GetIdx();
+      for (int i = 0; i < m_constraints.Size(); ++i) {
+        if ( (m_constraints.GetConstraintAtomA(i) == index) || 
+	     (m_constraints.GetConstraintAtomB(i) == index) || 
+	     (m_constraints.GetConstraintAtomC(i) == index) || 
+	     (m_constraints.GetConstraintAtomD(i) == index) ) {
+
+          beginRemoveRows(QModelIndex(), i, i);
+	  m_constraints.DeleteConstraint(i);
+          endRemoveRows();
+	  i--; // this index will be replaced with a new, we want to check this aswell
+	}
+      }
+    }
   }
-
-
 } // end namespace Avogadro
 
 #include "constraintsmodel.moc"

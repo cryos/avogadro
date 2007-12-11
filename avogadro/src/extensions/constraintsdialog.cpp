@@ -44,8 +44,15 @@ namespace Avogadro {
     
     ui.editValue->setMinimum(0.0);
     ui.editValue->setMaximum(0.0);
-    ui.editA->setMinimum(0);
-    ui.editA->setMaximum(10000);
+  }
+
+  void ConstraintsDialog::showEvent(QShowEvent *event)
+  {
+    if (m_molecule->NumAtoms())
+      ui.editA->setMinimum(1);
+    else  
+      ui.editA->setMinimum(0);
+    ui.editA->setMaximum(m_molecule->NumAtoms());
     ui.editB->setMinimum(0);
     ui.editB->setMaximum(0);
     ui.editC->setMinimum(0);
@@ -64,6 +71,12 @@ namespace Avogadro {
     ui.ConstraintsTableView->setModel(m_constraints);
   }
   
+  void ConstraintsDialog::setMolecule(Molecule *molecule)
+  {
+    m_molecule = molecule;
+    connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_constraints, SLOT( primitiveRemoved(Primitive *) ));
+  }
+  
   void ConstraintsDialog::setForceField(OpenBabel::OBForceField *forcefield)
   {
     m_forceField = forcefield;
@@ -71,44 +84,110 @@ namespace Avogadro {
  
   void ConstraintsDialog::comboTypeChanged(int index)
   {
-    std::cout << "comboTypeChanged()" << std::endl;
-    
     switch (index) {
       case 0:
       case 1:
       case 2:
       case 3:
       case 4:
-        ui.editValue->setMinimum(0.0);
-        ui.editValue->setMaximum(0.0);
-        ui.editA->setMaximum(10000);
-        ui.editB->setMaximum(0);
-        ui.editC->setMaximum(0);
-        ui.editD->setMaximum(0);
+       	if (m_molecule->NumAtoms() >= 1) {
+          ui.editA->setMinimum(1);
+          ui.editB->setMinimum(0);
+          ui.editC->setMinimum(0);
+          ui.editD->setMinimum(0);
+          ui.editA->setMaximum(m_molecule->NumAtoms());
+          ui.editB->setMaximum(0);
+          ui.editC->setMaximum(0);
+          ui.editD->setMaximum(0);
+          ui.editValue->setMinimum(0.0);
+          ui.editValue->setMaximum(0.0);
+	} else {
+          ui.editA->setMinimum(0);
+          ui.editB->setMinimum(0);
+          ui.editC->setMinimum(0);
+          ui.editD->setMinimum(0);
+          ui.editA->setMaximum(0);
+          ui.editB->setMaximum(0);
+          ui.editC->setMaximum(0);
+          ui.editD->setMaximum(0);
+          ui.editValue->setMinimum(0.0);
+          ui.editValue->setMaximum(0.0);
+	}
         break;
       case 5:
-	ui.editValue->setMinimum(0.0);
-        ui.editValue->setMaximum(10.0);
-	ui.editA->setMaximum(10000);
-        ui.editB->setMaximum(10000);
-        ui.editC->setMaximum(0);
-        ui.editD->setMaximum(0);
+	if (m_molecule->NumAtoms() >= 2) {
+          ui.editA->setMinimum(1);
+          ui.editB->setMinimum(2);
+          ui.editC->setMinimum(0);
+          ui.editD->setMinimum(0);
+          ui.editA->setMaximum(m_molecule->NumAtoms() - 1);
+          ui.editB->setMaximum(m_molecule->NumAtoms());
+          ui.editC->setMaximum(0);
+          ui.editD->setMaximum(0);
+          ui.editValue->setMinimum(0.0);
+          ui.editValue->setMaximum(5.0);
+	} else {
+          ui.editA->setMinimum(0);
+          ui.editB->setMinimum(0);
+          ui.editC->setMinimum(0);
+          ui.editD->setMinimum(0);
+          ui.editA->setMaximum(0);
+          ui.editB->setMaximum(0);
+          ui.editC->setMaximum(0);
+          ui.editD->setMaximum(0);
+          ui.editValue->setMinimum(0.0);
+          ui.editValue->setMaximum(0.0);
+	}
         break;
       case 6:
-       	ui.editValue->setMinimum(0.0);
-        ui.editValue->setMaximum(180.0);
-	ui.editA->setMaximum(10000);
-        ui.editB->setMaximum(10000);
-        ui.editC->setMaximum(10000);
-        ui.editD->setMaximum(0);
+       	if (m_molecule->NumAtoms() >= 3) {
+          ui.editA->setMinimum(1);
+          ui.editB->setMinimum(2);
+          ui.editC->setMinimum(3);
+          ui.editD->setMinimum(0);
+          ui.editA->setMaximum(m_molecule->NumAtoms() - 2);
+          ui.editB->setMaximum(m_molecule->NumAtoms() - 1);
+          ui.editC->setMaximum(m_molecule->NumAtoms());
+          ui.editD->setMaximum(0);
+          ui.editValue->setMinimum(0.0);
+          ui.editValue->setMaximum(180.0);
+	} else {
+          ui.editA->setMinimum(0);
+          ui.editB->setMinimum(0);
+          ui.editC->setMinimum(0);
+          ui.editD->setMinimum(0);
+          ui.editA->setMaximum(0);
+          ui.editB->setMaximum(0);
+          ui.editC->setMaximum(0);
+          ui.editD->setMaximum(0);
+          ui.editValue->setMinimum(0.0);
+          ui.editValue->setMaximum(0.0);
+	}
 	break;
       case 7:
-        ui.editValue->setMinimum(-180.0);
-        ui.editValue->setMaximum(180.0);
-	ui.editA->setMaximum(10000);
-        ui.editB->setMaximum(10000);
-        ui.editC->setMaximum(10000);
-        ui.editD->setMaximum(10000);
+        if (m_molecule->NumAtoms() >= 4) {
+          ui.editA->setMinimum(1);
+          ui.editB->setMinimum(2);
+          ui.editC->setMinimum(3);
+          ui.editD->setMinimum(4);
+          ui.editA->setMaximum(m_molecule->NumAtoms() - 3);
+          ui.editB->setMaximum(m_molecule->NumAtoms() - 2);
+          ui.editC->setMaximum(m_molecule->NumAtoms() - 1);
+          ui.editD->setMaximum(m_molecule->NumAtoms());
+          ui.editValue->setMinimum(-180.0);
+          ui.editValue->setMaximum(180.0);
+	} else {
+          ui.editA->setMinimum(0);
+          ui.editB->setMinimum(0);
+          ui.editC->setMinimum(0);
+          ui.editD->setMinimum(0);
+          ui.editA->setMaximum(0);
+          ui.editB->setMaximum(0);
+          ui.editC->setMaximum(0);
+          ui.editD->setMaximum(0);
+          ui.editValue->setMinimum(0.0);
+          ui.editValue->setMaximum(0.0);
+	}
         break;
     }
   
@@ -116,27 +195,52 @@ namespace Avogadro {
 
   void ConstraintsDialog::acceptConstraints()
   {
-    m_forceField->SetConstraints(m_constraints->constraints());
     hide();
   }
 
   void ConstraintsDialog::deleteConstraint()
   {
-    std::cout << "deleteConstraint(" << ui.ConstraintsTableView->currentIndex().row() << std::endl;
-    m_constraints->deleteConstraint(0);
+    m_constraints->deleteConstraint(ui.ConstraintsTableView->currentIndex().row());
+    
+    // copy constraints to all force fields
+    OpenBabel::OBForceField *copyForceField = m_forceField;
+    m_forceField = OpenBabel::OBForceField::FindForceField( "Ghemical" );
+    m_forceField->SetConstraints(m_constraints->constraints());
+    m_forceField = OpenBabel::OBForceField::FindForceField( "MMFF94" );
+    m_forceField->SetConstraints(m_constraints->constraints());
+    m_forceField = OpenBabel::OBForceField::FindForceField( "UFF" );
+    m_forceField->SetConstraints(m_constraints->constraints());
+    m_forceField = copyForceField;
   }
 
   void ConstraintsDialog::deleteAllConstraints()
   {
     m_constraints->clear();
     
+    // copy constraints to all force fields
+    OpenBabel::OBForceField *copyForceField = m_forceField;
+    m_forceField = OpenBabel::OBForceField::FindForceField( "Ghemical" );
+    m_forceField->SetConstraints(m_constraints->constraints());
+    m_forceField = OpenBabel::OBForceField::FindForceField( "MMFF94" );
+    m_forceField->SetConstraints(m_constraints->constraints());
+    m_forceField = OpenBabel::OBForceField::FindForceField( "UFF" );
+    m_forceField->SetConstraints(m_constraints->constraints());
+    m_forceField = copyForceField;
     this->update();
   }
   
   void ConstraintsDialog::addConstraint()
   {
+    if (!m_molecule->NumAtoms()) {
+      QMessageBox::warning(static_cast<QWidget*>(parent()), tr("Add constraint"), 
+          tr("Your molecule must contain at least one atom to add a constraint"));
+      return;
+    }
+    
     switch (ui.comboType->currentIndex()) {
       case 0: // Ignore
+        m_constraints->addIgnore(ui.editA->value());
+	break;
       case 1: // Atom 
         m_constraints->addAtomConstraint(ui.editA->value());
 	break;
@@ -150,19 +254,46 @@ namespace Avogadro {
         m_constraints->addAtomZConstraint(ui.editA->value());
 	break;
       case 5: // Bond
-        m_constraints->addBondConstraint(ui.editA->value(),
+        if (m_molecule->NumAtoms() < 2) {
+          QMessageBox::warning(static_cast<QWidget*>(parent()), tr("Add constraint"), 
+            tr("Your molecule must contain at least two atoms to add a bond constraint"));
+	  break;
+	}
+	m_constraints->addBondConstraint(ui.editA->value(),
 	    ui.editB->value(), ui.editValue->value());
 	break;
       case 6: // Angle
-        m_constraints->addAngleConstraint(ui.editA->value(),
+        if (m_molecule->NumAtoms() < 3) {
+          QMessageBox::warning(static_cast<QWidget*>(parent()), tr("Add constraint"), 
+            tr("Your molecule must contain at least three atoms to add an angle constraint"));
+	  break;
+	}
+	
+	m_constraints->addAngleConstraint(ui.editA->value(),
 	    ui.editB->value(), ui.editC->value(), ui.editValue->value());
 	break;
       case 7: // Torsion
-        m_constraints->addTorsionConstraint(ui.editA->value(),
+        if (m_molecule->NumAtoms() < 4) {
+          QMessageBox::warning(static_cast<QWidget*>(parent()), tr("Add constraint"), 
+            tr("Your molecule must contain at least four atoms to add a torsion constraint"));
+	  break;
+	}
+	
+	m_constraints->addTorsionConstraint(ui.editA->value(),
 	    ui.editB->value(), ui.editC->value(), ui.editD->value(),
 	    ui.editValue->value());
 	break;
     }
+  
+    // copy constraints to all force fields
+    OpenBabel::OBForceField *copyForceField = m_forceField;
+    m_forceField = OpenBabel::OBForceField::FindForceField( "Ghemical" );
+    m_forceField->SetConstraints(m_constraints->constraints());
+    m_forceField = OpenBabel::OBForceField::FindForceField( "MMFF94" );
+    m_forceField->SetConstraints(m_constraints->constraints());
+    m_forceField = OpenBabel::OBForceField::FindForceField( "UFF" );
+    m_forceField->SetConstraints(m_constraints->constraints());
+    m_forceField = copyForceField;
   }
 
 

@@ -36,6 +36,7 @@
 #include <QtPlugin>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QCheckBox>
 
 using namespace std;
 using namespace OpenBabel;
@@ -127,8 +128,23 @@ namespace Avogadro {
     m_clickedAtom = widget->computeClickedAtom(event->pos());
     if(m_clickedAtom != 0 && m_leftButtonPressed && m_running)
     {
-      //m_clickedAtom->SetFixed();
-      //m_forceField->GetConstraints().AddAtomConstraint(m_clickedAtom->GetIdx());
+      for (int i = 0; i < m_forceField->GetConstraints().Size(); ++i) 
+      {
+        if ((m_forceField->GetConstraints()).GetConstraintAtomA(i) == m_clickedAtom->GetIdx())
+        {
+	   int type = m_forceField->GetConstraints().GetConstraintType(i);
+	   if ( (type == 1) && !m_ignoredMovable->isChecked() )
+	     m_clickedAtom = NULL;
+	   else if ( (type == 2) && !m_fixedMovable->isChecked() )
+	     m_clickedAtom = NULL;
+	}
+      }
+	  
+      if(m_clickedAtom)
+      {
+        //m_forceField->GetConstraints().AddAtomConstraint(m_clickedAtom->GetIdx());
+        //m_numConstraints = m_forceField->GetConstraints().Size();
+      }
     }
 
     widget->update();
@@ -143,8 +159,7 @@ namespace Avogadro {
     m_rightButtonPressed = false;
     if (m_clickedAtom != 0)
     {
-      //m_clickedAtom->UnsetFixed();
-      //m_forceField->GetConstraints().DeleteConstraint(m_clickedAtom->GetIdx() - 1);
+      //m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
     }
 
     m_clickedAtom = 0;
@@ -172,10 +187,10 @@ namespace Avogadro {
     {
       if (m_leftButtonPressed)
       {
-        // translate the molecule following mouse movement
-        Vector3d begin = widget->camera()->project(m_clickedAtom->pos());
-        QPoint point = QPoint(begin.x(), begin.y());
-        translate(widget, m_clickedAtom->pos(), point/*m_lastDraggingPosition*/, event->pos());
+          // translate the molecule following mouse movement
+          Vector3d begin = widget->camera()->project(m_clickedAtom->pos());
+          QPoint point = QPoint(begin.x(), begin.y());
+          translate(widget, m_clickedAtom->pos(), point/*m_lastDraggingPosition*/, event->pos());
       }
       else if (m_midButtonPressed)
       {
@@ -315,6 +330,9 @@ namespace Avogadro {
 
       m_buttonStartStop = new QPushButton(tr("Start"), m_settingsWidget);
 
+      m_fixedMovable = new QCheckBox(tr("Fixed atoms are movable"), m_settingsWidget);
+      m_ignoredMovable = new QCheckBox(tr("Ignored atoms are movable"), m_settingsWidget);
+      
       QVBoxLayout* layout = new QVBoxLayout();
       layout->addWidget(labelFF);
       layout->addWidget(m_comboFF);
@@ -323,6 +341,8 @@ namespace Avogadro {
       layout->addWidget(labelConv);
       layout->addWidget(m_convergenceSpinBox);
       layout->addWidget(m_buttonStartStop);
+      layout->addWidget(m_fixedMovable);
+      layout->addWidget(m_ignoredMovable);
       layout->addStretch(1);
       m_settingsWidget->setLayout(layout);
 
@@ -389,8 +409,7 @@ namespace Avogadro {
 
       if (m_clickedAtom != 0)
       {
-        //m_clickedAtom->UnsetFixed();
-        //m_forceField->GetConstraints().DeleteConstraint(m_clickedAtom->GetIdx() - 1);
+        //m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
       }
       m_clickedAtom = 0;
       m_leftButtonPressed = false;
@@ -410,16 +429,12 @@ namespace Avogadro {
       m_block = true;
     }
 
-    OpenBabel::OBFFConstraints constraints = m_forceField->GetConstraints(); // load constraints
-    
     if (m_comboFF->currentIndex() == 2)
       m_forceField = OBForceField::FindForceField( "UFF" );
     else if (m_comboFF->currentIndex() == 1)
       m_forceField = OBForceField::FindForceField( "MMFF94" );
     else
       m_forceField = OBForceField::FindForceField( "Ghemical" );
-
-    m_forceField->SetConstraints(constraints); // save constraints
 
     m_thread = new AutoOptThread(m_glwidget->molecule(), m_forceField, 
         m_comboAlgorithm->currentIndex(),
@@ -466,15 +481,12 @@ namespace Avogadro {
     m_forceField->SetLogFile(NULL);
     m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
 
-    //if ( m_forceField->IsSetupNeeded( *m_molecule ) ) {
-    if ( m_forceField->IsSetupNeeded( *m_molecule) ) {
-        if ( !m_forceField->Setup( *m_molecule , m_forceField->GetConstraints() ) ) {
-          qWarning() << "GhemicalCommand: Could not set up force field on " << m_molecule;
-          m_stop = true;
-          emit finished(false);
-          return;
-        }
-      cout << "SETUP" << endl;
+    if ( !m_forceField->Setup( *m_molecule ) ) 
+    {
+      qWarning() << "AutoOptThread: Could not set up force field on " << m_molecule;
+      m_stop = true;
+      emit finished(false);
+      return;
     }
     m_forceField->SetConformers( *m_molecule );
 
@@ -512,12 +524,22 @@ namespace Avogadro {
     m_tool = tool;
   }
 
+  //
+  // What is all the molecule copying about? The undo commands seems to work
+  // fine with without it. I changed it because otherwise the molecule would 
+  // be destroyed, primitiveRemoved would be called and the constraints model
+  // would delete all constraints :(
+  //
+  
   void AutoOptCommand::redo()
   {
+    m_moleculeCopy = *m_molecule;
+    /*
     Molecule newMolecule = *m_molecule;
     *m_molecule = m_moleculeCopy;
     m_moleculeCopy = newMolecule;
     QUndoCommand::redo();
+    */
   }
 
   void AutoOptCommand::undo()
@@ -526,9 +548,9 @@ namespace Avogadro {
     {
       m_tool->disable();
     }
-    Molecule newMolecule = *m_molecule;
+    //Molecule newMolecule = *m_molecule;
     *m_molecule = m_moleculeCopy;
-    m_moleculeCopy = newMolecule;
+    //m_moleculeCopy = newMolecule;
   }
 
   bool AutoOptCommand::mergeWith (const QUndoCommand *)
