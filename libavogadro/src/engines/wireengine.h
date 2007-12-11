@@ -28,7 +28,7 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
-
+#include <QGLWidget>
 
 #include "ui_wiresettingswidget.h"
 
@@ -61,11 +61,21 @@ namespace Avogadro {
       //! Configuration options
       QWidget* settingsWidget();
 
+      void setPrimitives(const PrimitiveList &primitives);
+
+    public Q_SLOTS:
+      void addPrimitive(Primitive *primitive);
+      void updatePrimitive(Primitive *primitive);
+      void removePrimitive(Primitive *primitive);
+
   private:
     WireSettingsWidget *m_settingsWidget;
 
     bool m_showMulti; //!< show multiple bonds
     bool m_showDots;  //!< show dots for atoms
+
+    GLuint m_dlist;
+    bool m_update;
 
     double radius (const Atom *atom) const;
 
