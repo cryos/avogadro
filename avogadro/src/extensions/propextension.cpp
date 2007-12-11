@@ -36,12 +36,12 @@ using namespace OpenBabel;
 namespace Avogadro
 {
   enum PropExtensionIndex
-  {
-    AtomPropIndex = 0,
-    BondPropIndex,
-    CartesianIndex,
-    ConformerIndex
-  };
+    {
+      AtomPropIndex = 0,
+      BondPropIndex,
+      CartesianIndex,
+      ConformerIndex
+    };
 
   PropertiesExtension::PropertiesExtension( QObject *parent ) : QObject( parent )
   {
@@ -84,21 +84,21 @@ namespace Avogadro
   {
     int i = action->data().toInt();
     switch(i) {
-      case AtomPropIndex:
-      case BondPropIndex:
-      case ConformerIndex:
-        return tr("&Extensions") + ">" + tr("&Properties");
-      case CartesianIndex:
-        return tr("&Build");
-        break;
-      default:
-        break;
+    case AtomPropIndex:
+    case BondPropIndex:
+    case ConformerIndex:
+      return tr("&Extensions") + ">" + tr("&Properties");
+    case CartesianIndex:
+      return tr("&Build");
+      break;
+    default:
+      break;
     };
     return QString();
   }
 
   QUndoCommand* PropertiesExtension::performAction( QAction *action, Molecule *molecule,
-      GLWidget *widget, QTextEdit *textEdit )
+                                                    GLWidget *widget, QTextEdit *textEdit )
   {
     QUndoCommand *undo = NULL;
     PropertiesView *view = NULL;
@@ -106,53 +106,53 @@ namespace Avogadro
 
     int i = action->data().toInt();
     switch ( i ) {
-      case AtomPropIndex: // atom properties
-        view = new PropertiesView(PropertiesView::AtomType);
-	m_atomModel->setMolecule( molecule );
-	connect(molecule, SIGNAL( updated() ), m_atomModel, SLOT( updateTable() ));
-	connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_atomModel, SLOT( primitiveAdded(Primitive *) ));
-	connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_atomModel, SLOT( primitiveRemoved(Primitive *) ));
-	view->setMolecule( molecule );
-	view->setWidget( widget );
-	view->setModel( m_atomModel );
-	view->resize(860, 400);
-	view->show();
-        break;
-      case BondPropIndex: // bond properties
-        view = new PropertiesView(PropertiesView::BondType);
-	m_bondModel->setMolecule( molecule );
-	connect(molecule, SIGNAL( updated() ), m_bondModel, SLOT( updateTable() ));
-	connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_bondModel, SLOT( primitiveAdded(Primitive *) ));
-	connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_bondModel, SLOT( primitiveRemoved(Primitive *) ));
-	view->setMolecule( molecule );
-	view->setWidget( widget );
-	view->setModel( m_bondModel );
-	view->resize(550, 400);
-	view->show();
-        break;
-      case CartesianIndex: // cartesian editor
-        view = new PropertiesView(PropertiesView::CartesianType);
-	m_cartesianModel->setMolecule( molecule );
-	connect(molecule, SIGNAL( updated() ), m_cartesianModel, SLOT( updateTable() ));
-	connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_cartesianModel, SLOT( primitiveAdded(Primitive *) ));
-	connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_cartesianModel, SLOT( primitiveRemoved(Primitive *) ));
-	view->setMolecule( molecule );
-	view->setWidget( widget );
-	view->setModel( m_cartesianModel );
-	view->resize(360, 400);
-	view->show();
-        break;
-      case ConformerIndex: // conformers
-        view = new PropertiesView(PropertiesView::ConformerType);
-	m_conformerModel->setMolecule( molecule );
-	connect(molecule, SIGNAL( updated() ), m_conformerModel, SLOT( updateTable() ));
-	view->setMolecule( molecule );
-	view->setWidget( widget );
-	view->setModel( m_conformerModel );
-	view->resize(180, 500);
-	view->sortByColumn(0, Qt::AscendingOrder);
-	view->show();
-        break;
+    case AtomPropIndex: // atom properties
+      view = new PropertiesView(PropertiesView::AtomType);
+      m_atomModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_atomModel, SLOT( updateTable() ));
+      connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_atomModel, SLOT( primitiveAdded(Primitive *) ));
+      connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_atomModel, SLOT( primitiveRemoved(Primitive *) ));
+      view->setMolecule( molecule );
+      view->setWidget( widget );
+      view->setModel( m_atomModel );
+      view->resize(860, 400);
+      view->show();
+      break;
+    case BondPropIndex: // bond properties
+      view = new PropertiesView(PropertiesView::BondType);
+      m_bondModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_bondModel, SLOT( updateTable() ));
+      connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_bondModel, SLOT( primitiveAdded(Primitive *) ));
+      connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_bondModel, SLOT( primitiveRemoved(Primitive *) ));
+      view->setMolecule( molecule );
+      view->setWidget( widget );
+      view->setModel( m_bondModel );
+      view->resize(550, 400);
+      view->show();
+      break;
+    case CartesianIndex: // cartesian editor
+      view = new PropertiesView(PropertiesView::CartesianType);
+      m_cartesianModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_cartesianModel, SLOT( updateTable() ));
+      connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_cartesianModel, SLOT( primitiveAdded(Primitive *) ));
+      connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_cartesianModel, SLOT( primitiveRemoved(Primitive *) ));
+      view->setMolecule( molecule );
+      view->setWidget( widget );
+      view->setModel( m_cartesianModel );
+      view->resize(360, 400);
+      view->show();
+      break;
+    case ConformerIndex: // conformers
+      view = new PropertiesView(PropertiesView::ConformerType);
+      m_conformerModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_conformerModel, SLOT( updateTable() ));
+      view->setMolecule( molecule );
+      view->setWidget( widget );
+      view->setModel( m_conformerModel );
+      view->resize(180, 500);
+      view->sortByColumn(0, Qt::AscendingOrder);
+      view->show();
+      break;
     }
 
     return undo;
@@ -180,20 +180,20 @@ namespace Avogadro
         if(index.row() >= m_molecule->NumBonds())
           return;
         
-	matchedPrimitives.append(static_cast<Bond*>(m_molecule->GetBond(index.row())));
+        matchedPrimitives.append(static_cast<Bond*>(m_molecule->GetBond(index.row())));
         m_widget->clearSelected();
         m_widget->setSelected(matchedPrimitives, true);
         m_widget->update();
       } else if (m_type == ConformerType) {
-	if (index.row() >= m_molecule->NumConformers())
+        if (index.row() >= m_molecule->NumConformers())
           return;
     
-	m_molecule->SetConformer(index.row());
+        m_molecule->SetConformer(index.row());
         m_molecule->update();
         return; 
       } 
     }
- }
+  }
   
   void PropertiesView::setMolecule(Molecule *molecule)
   {

@@ -1,4 +1,16 @@
-2007-12-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+2007-12-11  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/primitive.h: New primitive types defined for
+	"future expansion."
+
+	* avogadro/src/extensions/gamessinputdialog.ui: Fix typos
+	mentioned by Benoit.
+
+	* avogadro/src/extensions/propmodel.cpp,
+	avogadro/src/extensions/propextension.cpp: Minor fixes to get
+	compilation working again.
+
+2007-12-11  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/tools/autoopttool.[h,cpp]: Added "Ignored atoms are
 	movable" and "Fixed atoms are movable". Small changes to ::redo() and
@@ -34,7 +46,6 @@
 	* avogadro/src/extensions/propmodel.cpp: Small  change to the way rows
 	are added and deleted.
 
-
 2007-12-10  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/painter.*, libavogadro/src/povpainter.h,
@@ -54,13 +65,13 @@
 	the libavogadro directory, changed its name to PeriodicTableView and
 	added a global header so that it can be used more widely.
 
-2007-12-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+2007-12-09  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extensions/*: Added "Select by Element", reusing cryos'
 	periodic table, "Select by Residue" and "Select Solvent". Select
 	solvent needs expanding...
 
-2007-12-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+2007-12-08  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extensions/*: Added conformer search dialog.
 

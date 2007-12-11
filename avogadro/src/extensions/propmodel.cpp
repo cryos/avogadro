@@ -41,13 +41,13 @@ namespace Avogadro
   {
     Q_UNUSED(parent);
     switch (m_type) {
-      case AtomType:
-      case CartesianType:
-        return m_molecule->NumAtoms();
-      case BondType:
-        return m_molecule->NumBonds();
-      case ConformerType:
-        return m_molecule->NumConformers();
+    case AtomType:
+    case CartesianType:
+      return m_molecule->NumAtoms();
+    case BondType:
+      return m_molecule->NumBonds();
+    case ConformerType:
+      return m_molecule->NumConformers();
     }
 
     return 0;
@@ -57,14 +57,14 @@ namespace Avogadro
   {
     Q_UNUSED(parent);
     switch (m_type) {
-      case AtomType:
-        return 8;
-      case BondType:
-        return 5;
-      case CartesianType:
-        return 3;
-      case ConformerType:
-        return 1;
+    case AtomType:
+      return 8;
+    case BondType:
+      return 5;
+    case CartesianType:
+      return 3;
+    case ConformerType:
+      return 1;
     }
 
     return 0;
@@ -85,27 +85,29 @@ namespace Avogadro
       OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
 
       switch (index.column()) {
-        case 0: // type
-          return atom->GetType();
-        case 1: // atomic number
-          return atom->GetAtomicNum();
-        case 2: // isotope
-          return atom->GetIsotope();
-        case 3: // formal Charge
-          return atom->GetFormalCharge();
-        case 4: // partial charge
-          return atom->GetPartialCharge();
-        case 5: // valence
-          return atom->GetValence();
-        case 6: // BOSum
-          return atom->BOSum();
-        case 7: // chirality
-          if (atom->IsClockwise())
-	    return QString("R");
-          else if (atom->IsAntiClockwise())
-  	    return QString("S");
-	  else
-	    return QString("");
+      case 0: // type
+        return atom->GetType();
+      case 1: // atomic number
+        return atom->GetAtomicNum();
+      case 2: // isotope
+        return atom->GetIsotope();
+      case 3: // formal Charge
+        return atom->GetFormalCharge();
+      case 4: // partial charge
+        return atom->GetPartialCharge();
+      case 5: // valence
+        return atom->GetValence();
+      case 6: // BOSum
+        return atom->BOSum();
+      case 7: // chirality
+        // Unfortunately, these don't line up with "R" or "S" notation.
+        // It's the SMILES "@" or "@@" notation here.
+        if (atom->IsClockwise())
+          return QString("R");
+        else if (atom->IsAntiClockwise())
+          return QString("S");
+        else
+          return QString("");
       }
     } else if (m_type == BondType) {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->NumBonds())
@@ -115,16 +117,16 @@ namespace Avogadro
 
       if (role == Qt::DisplayRole)
         switch (index.column()) {
-          case 0: // atom 1
-            return bond->GetBeginAtomIdx();
-          case 1: // atom 2
-            return bond->GetEndAtomIdx();
-          case 2: // order
-            return bond->GetBondOrder();
-  	  case 3: // length
-            return bond->GetLength();
-          case 4: // rotatable
-            return bond->IsRotor();
+        case 0: // atom 1
+          return bond->GetBeginAtomIdx();
+        case 1: // atom 2
+          return bond->GetEndAtomIdx();
+        case 2: // order
+          return bond->GetBondOrder();
+        case 3: // length
+          return bond->GetLength();
+        case 4: // rotatable
+          return bond->IsRotor();
         }
     } else if (m_type == CartesianType) {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->NumAtoms())
@@ -133,20 +135,20 @@ namespace Avogadro
       OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
 
       switch (index.column()) {
-        case 0: 
-          return atom->GetX();
-        case 1: 
-          return atom->GetY();
-        case 2: 
-          return atom->GetZ();
+      case 0: 
+        return QString::number(atom->GetX(), 'f', 5);
+      case 1: 
+        return QString::number(atom->GetY(), 'f', 5);
+      case 2: 
+        return QString::number(atom->GetZ(), 'f', 5);
       }
     } else if (m_type == ConformerType) {
       if (index.row() >= m_molecule->NumConformers())
         return QVariant();
 
       switch (index.column()) {
-        case 0: // energy
-	    return m_molecule->GetEnergy();
+      case 0: // energy
+        return m_molecule->GetEnergy();
       }
     } 
   
@@ -161,38 +163,38 @@ namespace Avogadro
     if (m_type == AtomType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
-          case 0:
- 	    return QString("Type");
-          case 1:
-	    return QString("Atomic Number");
-          case 2:
-	    return QString("Isotope");
-	  case 3:
-	    return QString("Formal Charge");
-          case 4:
-  	    return QString("Partial Charge");
-          case 5:
-	    return QString("Valence");
-          case 6:
-	    return QString("BOSum");
-          case 7:
-  	    return QString("Chirality");
+        case 0:
+          return QString("Type");
+        case 1:
+          return QString("Atomic Number");
+        case 2:
+          return QString("Isotope");
+        case 3:
+          return QString("Formal Charge");
+        case 4:
+          return QString("Partial Charge");
+        case 5:
+          return QString("Valence");
+        case 6:
+          return QString("BOSum");
+        case 7:
+          return QString("Chirality");
         }
       } else
         return QString("Atom %1").arg(section + 1);
     } else if (m_type == BondType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
-          case 0:
-	    return QString("Atom dx 1");
-          case 1:
-  	    return QString("Atom idx 2");
-          case 2:
-	    return QString("Bond Order");
-	  case 3:
-	    return QString("Length");
-          case 4:
-	    return QString("Rotatable");
+        case 0:
+          return QString("Atom dx 1");
+        case 1:
+          return QString("Atom idx 2");
+        case 2:
+          return QString("Bond Order");
+        case 3:
+          return QString("Length");
+        case 4:
+          return QString("Rotatable");
         }
       } else
         // Bond ordering starts at 0
@@ -200,20 +202,20 @@ namespace Avogadro
     } else if (m_type == CartesianType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
-          case 0:
-	    return QString("X");
-          case 1:
-	    return QString("Y");
-          case 2:
-	    return QString("Z");
+        case 0:
+          return QString("X");
+        case 1:
+          return QString("Y");
+        case 2:
+          return QString("Z");
         }
       } else
         return QString("Atom %1").arg(section + 1);
     } else if (m_type == ConformerType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
-          case 0:
-	    return QString("Energy");
+        case 0:
+          return QString("Energy");
         }
       } else
         return QString("Conformer %1").arg(section + 1);
@@ -229,25 +231,25 @@ namespace Avogadro
     
     if (m_type == AtomType) {
       switch (index.column()) {
-        case 0: // type
-        case 1: // atomic number
-        case 2: // isotope
-        case 3: // formal Charge
-        case 4: // partial charge
-          return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-        case 5: // valence
-        case 6: // BOSum
-        case 7: // chirality
-          return QAbstractItemModel::flags(index);
+      case 0: // type
+      case 1: // atomic number
+      case 2: // isotope
+      case 3: // formal Charge
+      case 4: // partial charge
+        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
+      case 5: // valence
+      case 6: // BOSum
+      case 7: // chirality
+        return QAbstractItemModel::flags(index);
       }
     } else if (m_type == BondType) {
       switch (index.column()) {
-        case 0: // atom 1
-        case 1: // atom 2
-        case 2: // order
-        case 3: // length
-        case 4: // rotatable
-          return QAbstractItemModel::flags(index);
+      case 0: // atom 1
+      case 1: // atom 2
+      case 2: // order
+      case 3: // length
+      case 4: // rotatable
+        return QAbstractItemModel::flags(index);
       }
     } else if (m_type == CartesianType) {
       return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
@@ -272,73 +274,73 @@ namespace Avogadro
       std::string buff;
       
       switch (index.column()) {
-        case 0: // type
-          buff = (value.toString()).toStdString();
-	  atom->SetType(buff);
-	  m_molecule->update();
-	  emit dataChanged(index, index);
-          return true;
-        case 1: // atomic number
-	  atom->SetAtomicNum(value.toInt());
-	  m_molecule->update();
-	  emit dataChanged(index, index);
-          return true;
-        case 2: // isotope
-	  atom->SetIsotope(value.toInt());
-	  m_molecule->update();
-	  emit dataChanged(index, index);
-          return true;
-	case 3: // formal Charge
-	  atom->SetFormalCharge(value.toInt());
-	  m_molecule->update();
-	  emit dataChanged(index, index);
-          return true;
-        case 4: // partial charge
-	  atom->SetPartialCharge(value.toDouble());
-	  m_molecule->update();
-	  emit dataChanged(index, index);
-          return true;
-        case 5: // valence
-          return false;
-        case 6: // BOSum
-          return false;
-        case 7: // chirality
-          return false;
+      case 0: // type
+        buff = (value.toString()).toStdString();
+        atom->SetType(buff);
+        m_molecule->update();
+        emit dataChanged(index, index);
+        return true;
+      case 1: // atomic number
+        atom->SetAtomicNum(value.toInt());
+        m_molecule->update();
+        emit dataChanged(index, index);
+        return true;
+      case 2: // isotope
+        atom->SetIsotope(value.toInt());
+        m_molecule->update();
+        emit dataChanged(index, index);
+        return true;
+      case 3: // formal Charge
+        atom->SetFormalCharge(value.toInt());
+        m_molecule->update();
+        emit dataChanged(index, index);
+        return true;
+      case 4: // partial charge
+        atom->SetPartialCharge(value.toDouble());
+        m_molecule->update();
+        emit dataChanged(index, index);
+        return true;
+      case 5: // valence
+        return false;
+      case 6: // BOSum
+        return false;
+      case 7: // chirality
+        return false;
       }
     } else if (m_type == BondType) {
       // OpenBabel::OBBond *bond = m_molecule->GetBond(index.row());
       
       switch (index.column()) {
-        case 0: // atom 1
-        case 1: // atom 2
-        case 2: // order
-	case 3: // length
-        case 4: // rotatable
-          return false;
+      case 0: // atom 1
+      case 1: // atom 2
+      case 2: // order
+      case 3: // length
+      case 4: // rotatable
+        return false;
       }
     } else if (m_type == CartesianType) {
       OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
       OpenBabel::vector3 coord = atom->GetVector();
       
       switch (index.column()) {
-        case 0: 
-	  coord.SetX(value.toDouble());
-	  atom->SetVector(coord);
-	  m_molecule->update();
-	  emit dataChanged(index, index);
-          return true;
-        case 1: 
-	  coord.SetY(value.toDouble());
-	  atom->SetVector(coord);
-	  m_molecule->update();
-	  emit dataChanged(index, index);
-          return true;
-        case 2: 
-	  coord.SetZ(value.toDouble());
-	  atom->SetVector(coord);
-	  m_molecule->update();
-	  emit dataChanged(index, index);
-          return true;
+      case 0: 
+        coord.SetX(value.toDouble());
+        atom->SetVector(coord);
+        m_molecule->update();
+        emit dataChanged(index, index);
+        return true;
+      case 1: 
+        coord.SetY(value.toDouble());
+        atom->SetVector(coord);
+        m_molecule->update();
+        emit dataChanged(index, index);
+        return true;
+      case 2: 
+        coord.SetZ(value.toDouble());
+        atom->SetVector(coord);
+        m_molecule->update();
+        emit dataChanged(index, index);
+        return true;
       }
     
     }
@@ -370,6 +372,10 @@ namespace Avogadro
       beginRemoveRows(QModelIndex(), static_cast<Bond*>(primitive)->GetIdx() - 1, static_cast<Bond*>(primitive)->GetIdx() - 1);
       endRemoveRows();
     }
+  }
+
+  void PropertiesModel::updateTable()
+  {
   }
 
 } // end namespace Avogadro
