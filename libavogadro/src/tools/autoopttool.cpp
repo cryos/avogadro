@@ -138,6 +138,9 @@ namespace Avogadro {
 	   else if ( (type == 2) && !m_fixedMovable->isChecked() )
 	     m_clickedAtom = NULL;
 	}
+        
+	if (!m_clickedAtom)
+	  break;
       }
 	  
       if(m_clickedAtom)
