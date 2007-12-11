@@ -121,8 +121,8 @@ namespace Avogadro {
     else
       systematicToggled(true);
  
-    ui.atomLabel->setText(QString("Number of atoms: %1").arg(m_molecule->NumAtoms()));
-    ui.bondsLabel->setText(QString("Number of rotatable bonds: %1").arg(rl.Size()));
+    ui.atomLabel->setText(QString(tr("Number of atoms: %1")).arg(m_molecule->NumAtoms()));
+    ui.bondsLabel->setText(QString(tr("Number of rotatable bonds: %1")).arg(rl.Size()));
   }
   
    QUndoCommand* ConformerSearchDialog::setup(Molecule *molecule, OpenBabel::OBForceField* forceField, 
