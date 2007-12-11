@@ -65,12 +65,22 @@ namespace Avogadro {
         BondType,
         /// Residue Primitive
         ResidueType,
+        /// Chain Primitive (i.e., a set of residues)
+        ChainType,
         /// Surface Primitive
         SurfaceType,
         /// Plane Primitive
         PlaneType,
         /// Grid Primitive
         GridType,
+        /// Points (i.e., non-atoms)
+        PointType,
+        /// Vectors (i.e., arrows, dipole moments)
+        VectorType,
+        /// Non-bonded interactions (i.e., non-bond connections)
+        NonbondedType,
+        /// Text annoations
+        TextType,
         /// End Placeholder
         LastType,
         /// First Placeholder
