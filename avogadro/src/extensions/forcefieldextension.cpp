@@ -24,7 +24,6 @@
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
-#include <avogadro/forcefield.h>
 
 #include <QtGui>
 #include <QProgressDialog>
