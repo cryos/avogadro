@@ -911,7 +911,7 @@
                </item>
                <item>
                 <property name="text" >
-                 <string>Double Zeta Valance</string>
+                 <string>Double Zeta Valence</string>
                 </property>
                </item>
                <item>
@@ -931,12 +931,12 @@
                </item>
                <item>
                 <property name="text" >
-                 <string>SBKJA Valance</string>
+                 <string>SBKJA Valence</string>
                 </property>
                </item>
                <item>
                 <property name="text" >
-                 <string>Hay/Wadt Valance</string>
+                 <string>Hay/Wadt Valence</string>
                 </property>
                </item>
                <item>
@@ -1811,7 +1811,7 @@
            <item row="5" column="0" >
             <widget class="QLabel" name="label_15" >
              <property name="text" >
-              <string>Order of Principle Axis:</string>
+              <string>Order of Principal Axis:</string>
              </property>
             </widget>
            </item>
