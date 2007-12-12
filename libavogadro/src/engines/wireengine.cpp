@@ -43,10 +43,8 @@ using namespace Eigen;
 namespace Avogadro {
 
   WireEngine::WireEngine(QObject *parent) : Engine(parent), m_settingsWidget(NULL),
-                                            m_showMulti(false), m_showDots(true),
-                                            m_dlist(0), m_update(false)
+                                            m_showMulti(false), m_showDots(true)
   {
-    // we can't initialize m_dlist yet -- we don't have an OpenGL context
     setDescription(tr("Wireframe rendering"));
   }
 
@@ -57,31 +55,18 @@ namespace Avogadro {
     glDisable(GL_LIGHTING);
     glDisable(GL_BLEND);
 
-    if (m_update) {
-      if (!m_dlist)
-        m_dlist = glGenLists(1);
-
-      glNewList(m_dlist,GL_COMPILE_AND_EXECUTE);
-      
-      // Skip this entire step if the user turns it off
-      if (m_showDots) {
-        list = primitives().subList(Primitive::AtomType);
-        foreach( Primitive *p, list ) {
-          renderOpaque(pd, static_cast<const Atom *>(p));
-        }
-      }
-      
-      list = primitives().subList(Primitive::BondType);
+    // Skip this entire step if the user turns it off
+    if (m_showDots) {
+      list = primitives().subList(Primitive::AtomType);
       foreach( Primitive *p, list ) {
-        renderOpaque(pd, static_cast<const Bond *>(p));
+        renderOpaque(pd, static_cast<const Atom *>(p));
       }
-
-      glEndList();
-
-      m_update = false;
     }
-    else
-      glCallList(m_dlist);
+    
+    list = primitives().subList(Primitive::BondType);
+    foreach( Primitive *p, list ) {
+      renderOpaque(pd, static_cast<const Bond *>(p));
+    }
 
     glEnable(GL_LIGHTING);
     glEnable(GL_BLEND);
@@ -194,29 +179,6 @@ namespace Avogadro {
     else pd->painter()->drawLine(v2, v3, width);
 
     return true;
-  }
-
-  void WireEngine::setPrimitives(const PrimitiveList &primitives)
-  {
-    Engine::setPrimitives(primitives);
-    m_update = true;
-  }
-
-  void WireEngine::addPrimitive(Primitive *primitive)
-  {
-    Engine::addPrimitive(primitive);
-    m_update = true;
-  }
-
-  void WireEngine::updatePrimitive(Primitive *)
-  {
-    m_update = true;
-  }
-
-  void WireEngine::removePrimitive(Primitive *primitive)
-  {
-    Engine::removePrimitive(primitive);
-    m_update = true;
   }
 
   void WireEngine::setShowMultipleBonds(int setting)

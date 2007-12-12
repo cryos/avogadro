@@ -1,3 +1,14 @@
+2007-12-12  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/glwidget.cpp: Add in display lists for
+	renderQuick. Wraps all engines into one list for maximum speed.
+
+	* libavogadro/src/engines/wireengine.[h,cpp]: Skip display lists,
+	as glWidget now handles this for us.
+
+	* libavogadro/src/elementtranslate.cpp: Fix US spelling of
+	aluminum. Marcus can adjust accordingly in GB translation.
+
 2007-12-12  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/glwidget.cpp: Don't use dynamic scaling to render
