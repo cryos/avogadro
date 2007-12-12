@@ -1292,10 +1292,10 @@ namespace Avogadro
   void MainWindow::readSettings()
   {
     QSettings settings;
-    //     QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
+    QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
     QSize size = settings.value( "size", QSize( 640, 480 ) ).toSize();
     resize( size );
-    //     move(pos);
+    move(pos);
 
     setTabbedTools(settings.value( "tabbedTools", true ).toBool());
 
