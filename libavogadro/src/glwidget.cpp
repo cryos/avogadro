@@ -174,7 +174,8 @@ namespace Avogadro {
                         defaultMap( new ElementColor ),
                         updateCache(true),
                         quickRender(false),
-                        renderAxes(false)
+                        renderAxes(false),
+                        dlistQuick(0), dlistOpaque(0), dlistTransparent(0)
     {
       loadEngineFactories();
     }
@@ -232,12 +233,17 @@ namespace Avogadro {
     bool initialized;
 #endif
 
-    GLPainter                *painter;
-    Color *map; // global color map
+    GLPainter             *painter;
+    Color                 *map; // global color map
     Color *defaultMap; // default fall-back coloring (i.e., by elements)
     bool                   updateCache; // Update engine caches in quick render?
     bool                   quickRender; // Are we using quick render?
     bool                   renderAxes;  // Should the x, y, z axes be rendered?
+
+    GLuint                 dlistQuick;
+    GLuint                 dlistOpaque;
+    GLuint                 dlistTransparent;
+    
   };
 
   QList<EngineFactory *> GLWidgetPrivate::engineFactories;
@@ -568,11 +574,8 @@ namespace Avogadro {
 
   void GLWidget::render()
   {
-    //    QReadLocker readLocker(d->molecule->lock());
-
     OBUnitCell *uc = NULL;
     std::vector<vector3> cellVectors;
-    vector3 offset;
 
     d->painter->begin(this);
 
@@ -585,14 +588,27 @@ namespace Avogadro {
     if (!uc) { // a plain molecule, no crystal cell
       // Use renderQuick if the view is being moved, otherwise full render
       if (d->quickRender) {
-        // Don't use dynamic scaling when rendering quickly
-        d->painter->setDynamicScaling(false);
-        foreach(Engine *engine, d->engines)
-          if(engine->isEnabled())
-            engine->renderQuick(pd, d->updateCache);
-        // After the first run the caches are hot and will be invalidated when needed
-        d->updateCache = false;
-        d->painter->setDynamicScaling(true);
+
+        // Create a display list cache
+        if (d->updateCache) {
+          if (d->dlistQuick == 0)
+            d->dlistQuick = glGenLists(1);
+
+          // Don't use dynamic scaling when rendering quickly
+          d->painter->setDynamicScaling(false);
+
+          glNewList(d->dlistQuick, GL_COMPILE_AND_EXECUTE);
+          foreach(Engine *engine, d->engines)
+            if(engine->isEnabled())
+              engine->renderQuick(pd, d->updateCache);
+          glEndList();
+
+          d->updateCache = false;
+          d->painter->setDynamicScaling(true);
+        }
+        else { // call our cache
+          glCallList(d->dlistQuick);
+        }
       }
       else {
         foreach(Engine *engine, d->engines)
@@ -1394,11 +1410,6 @@ namespace Avogadro {
   {
     return d->cCells;
   }
-
-  //   QWaitCondition *GLWidget::paintCondition() const
-  //   {
-  //     return &d->paintCondition;
-  //   }
 
   void GLWidget::writeSettings(QSettings &settings) const
   {
