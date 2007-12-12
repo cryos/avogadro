@@ -133,7 +133,7 @@ namespace Avogadro {
       int x = qMax( texwidth, texheight );
       // find next power of two
       int n;
-      for(n = 1; n < x; n = n << 1);
+      for(n = 1; n < x; n = n << 1) {}
       // the texture must be square, and its size must be a power of two.
       texwidth = texheight = n;
     }
