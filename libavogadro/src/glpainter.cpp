@@ -325,8 +325,8 @@ namespace Avogadro
   {
     if(!d->isValid()) { return; }
 
-    // Default to the maximum detail level for this quality
-    int detailLevel = PAINTER_MAX_DETAIL_LEVEL;
+    // Default to the minimum detail level for this quality
+    int detailLevel = PAINTER_MAX_DETAIL_LEVEL / 3;
 
     if (m_dynamicScaling) {
       Eigen::Vector3d transformedCenter = d->widget->camera()->modelview() * center;
@@ -357,8 +357,8 @@ namespace Avogadro
   {
     if(!d->isValid()) { return; }
 
-    // Default to the maximum detail level for this quality
-    int detailLevel = PAINTER_MAX_DETAIL_LEVEL;
+    // Default to the minimum detail level for this quality
+    int detailLevel = PAINTER_MAX_DETAIL_LEVEL / 3;
 
     if (m_dynamicScaling) {
       Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
@@ -390,8 +390,8 @@ namespace Avogadro
   {
     if(!d->isValid()) { return; }
 
-    // Default to the maximum detail level for this quality
-    int detailLevel = PAINTER_MAX_DETAIL_LEVEL;
+    // Default to the minimum detail level for this quality
+    int detailLevel = PAINTER_MAX_DETAIL_LEVEL / 3;
 
     if (m_dynamicScaling) {
       Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;

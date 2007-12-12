@@ -172,6 +172,8 @@ namespace Avogadro {
                         painter( 0 ),
                         map( 0),
                         defaultMap( new ElementColor ),
+                        updateCache(true),
+                        quickRender(false),
                         renderAxes(false)
     {
       loadEngineFactories();
@@ -233,7 +235,9 @@ namespace Avogadro {
     GLPainter                *painter;
     Color *map; // global color map
     Color *defaultMap; // default fall-back coloring (i.e., by elements)
-    bool                   renderAxes;
+    bool                   updateCache; // Update engine caches in quick render?
+    bool                   quickRender; // Are we using quick render?
+    bool                   renderAxes;  // Should the x, y, z axes be rendered?
   };
 
   QList<EngineFactory *> GLWidgetPrivate::engineFactories;
@@ -572,25 +576,36 @@ namespace Avogadro {
 
     d->painter->begin(this);
 
-    if ( d->molecule && d->molecule->HasData( OBGenericDataType::UnitCell ) )
-      uc = dynamic_cast<OBUnitCell*>( d->molecule->GetData( OBGenericDataType::UnitCell ) );
+    // If enabled draw the axes
+    if (d->renderAxes) renderAxesOverlay();
+
+    if (d->molecule && d->molecule->HasData(OBGenericDataType::UnitCell))
+      uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
 
     if (!uc) { // a plain molecule, no crystal cell
-      foreach(Engine *engine, d->engines)
-        {
-          if(engine->isEnabled()) {
+      // Use renderQuick if the view is being moved, otherwise full render
+      if (d->quickRender) {
+        // Don't use dynamic scaling when rendering quickly
+        d->painter->setDynamicScaling(false);
+        foreach(Engine *engine, d->engines)
+          if(engine->isEnabled())
+            engine->renderQuick(pd, d->updateCache);
+        // After the first run the caches are hot and will be invalidated when needed
+        d->updateCache = false;
+        d->painter->setDynamicScaling(true);
+      }
+      else {
+        foreach(Engine *engine, d->engines)
+          if(engine->isEnabled())
             engine->renderOpaque(pd);
-          }
-        }
-      glDepthMask(GL_FALSE);
-      foreach(Engine *engine, d->engines)
-        {
-          if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
+        glDepthMask(GL_FALSE);
+        foreach(Engine *engine, d->engines)
+          if(engine->isEnabled() && engine->flags() & Engine::Transparent)
             engine->renderTransparent(pd);
-          }
-        }
-      glDepthMask(GL_TRUE);
-    } else { // render a crystal
+        glDepthMask(GL_TRUE);
+      }
+    }
+    else { // render a crystal
       cellVectors = uc->GetCellVectors();
 
       // render opaque parts of crystal
@@ -663,14 +678,7 @@ namespace Avogadro {
       d->tool->paint( this );
     }
 
-    // If enabled draw the axes
-    if (d->renderAxes) renderAxesOverlay();
-
     d->painter->end();
-
-    // shouldn't we have this disabled?
-    // glFlush();
-
   }
 
   void GLWidget::renderAxesOverlay()
@@ -780,6 +788,8 @@ namespace Avogadro {
   void GLWidget::mousePressEvent( QMouseEvent * event )
   {
     if ( d->tool ) {
+      // Use quick render while the mouse is down
+      d->quickRender = true;
       QUndoCommand *command = 0;
       command = d->tool->mousePress( this, event );
 
@@ -794,6 +804,8 @@ namespace Avogadro {
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   {
     if ( d->tool ) {
+      // Stop using quickRender
+      d->quickRender = false;
       QUndoCommand *command = d->tool->mouseRelease( this, event );
 
       if ( command && d->undoStack ) {
@@ -1021,6 +1033,8 @@ namespace Avogadro {
         d->engines.at( i )->addPrimitive( primitive );
       }
       d->primitives.append( primitive );
+      // The engine caches must be invalidated
+      d->updateCache = true;
     }
   }
 
@@ -1029,6 +1043,8 @@ namespace Avogadro {
     for ( int i=0; i< d->engines.size(); i++ ) {
       d->engines.at( i )->updatePrimitive( primitive );
     }
+    // The engine caches must be invalidated
+    d->updateCache = true;
     updateGeometry();
   }
 
@@ -1041,6 +1057,8 @@ namespace Avogadro {
       }
       d->selectedPrimitives.removeAll( primitive );
       d->primitives.removeAll( primitive );
+      // The engine caches must be invalidated
+      d->updateCache = true;
     }
   }
 

@@ -3,6 +3,15 @@
 	* libavogadro/src/glwidget.cpp: Don't use dynamic scaling to render
 	the axes - cylinders were reduced to lines before.
 
+	* libavogadro/src/engine.h: Added a renderQuick() function that
+	focuses on rendering the molecule quickly for interactivity.
+
+	* libavogadro/src/glpainter.cpp: Use a reduced quality when dynamic
+	scaling is not used - 1/3rd of max for that quality right now.
+
+	* libavogadro/src/glwidget.cpp: Adding new logic for dealing with
+	display list caches, calling renderQuick correctly etc.
+
 2007-12-11  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/glpainter.*: Added a dynamic scaling variable to the

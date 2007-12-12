@@ -203,6 +203,16 @@ namespace Avogadro {
       virtual bool renderTransparent(PainterDevice *) { return true; }
 
       /**
+       * Render all elements the engine is responsible for quickly with an
+       * emphasis on maintaining interactivity even with very large molecules.
+       * By default this function calls renderOpaque but in most cases should
+       * be implemented and tuned using large molecule test cases. The GLWidget
+       * ensures dynamic scaling of geometric primitives is off before calling
+       * this rendering function.
+       */
+      virtual bool renderQuick(PainterDevice *pd, bool) { renderOpaque(pd); return true; }
+
+      /**
        * @return the engine's PrimitiveList containing all primitives the engine
        * can render.
        */
