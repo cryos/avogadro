@@ -67,7 +67,7 @@ namespace Avogadro {
       result = tr("Magnesium");
       break;
     case 13:
-      result = tr("Aluminium");
+      result = tr("Aluminum");
       break;
     case 14:
       result = tr("Silicon");
