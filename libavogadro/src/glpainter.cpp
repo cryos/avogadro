@@ -267,9 +267,9 @@ namespace Avogadro
     }
   }
 
-  GLPainter::GLPainter( int quality ) : d ( new GLPainterPrivate )
+  GLPainter::GLPainter(int quality) : d(new GLPainterPrivate), m_dynamicScaling(true)
   {
-    if ( quality < 0 || quality >= PAINTER_MAX_DETAIL_LEVEL )
+    if (quality < 0 || quality >= PAINTER_MAX_DETAIL_LEVEL)
       {
         quality = DEFAULT_GLOBAL_QUALITY_SETTING;
       }
@@ -325,24 +325,25 @@ namespace Avogadro
   {
     if(!d->isValid()) { return; }
 
-    Eigen::Vector3d transformedCenter = d->widget->camera()->modelview() * center;
-    double distance = transformedCenter.norm();
+    // Default to the maximum detail level for this quality
+    int detailLevel = PAINTER_MAX_DETAIL_LEVEL;
 
-    // perform a rough form of frustum culling
-    double dot = transformedCenter.z() / distance;
-    if ( dot > PAINTER_FRUSTUM_CULL_TRESHOLD ) return;
+    if (m_dynamicScaling) {
+      Eigen::Vector3d transformedCenter = d->widget->camera()->modelview() * center;
+      double distance = transformedCenter.norm();
 
-    double apparentRadius = radius / distance;
-    int detailLevel = 1 + static_cast<int> ( floor (
-          PAINTER_SPHERES_DETAIL_COEFF * ( sqrt ( apparentRadius ) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL )
-          ) );
-    if ( detailLevel < 0 )
-    {
-      detailLevel = 0;
-    }
-    if ( detailLevel > PAINTER_MAX_DETAIL_LEVEL )
-    {
-      detailLevel = PAINTER_MAX_DETAIL_LEVEL;
+      // perform a rough form of frustum culling
+      double dot = transformedCenter.z() / distance;
+      if ( dot > PAINTER_FRUSTUM_CULL_TRESHOLD ) return;
+
+      double apparentRadius = radius / distance;
+      detailLevel = 1 + static_cast<int> ( floor (PAINTER_SPHERES_DETAIL_COEFF
+                        * ( sqrt ( apparentRadius ) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL )
+                        ) );
+      if (detailLevel < 0)
+        detailLevel = 0;
+      if (detailLevel > PAINTER_MAX_DETAIL_LEVEL)
+        detailLevel = PAINTER_MAX_DETAIL_LEVEL;
     }
 
     d->color.applyAsMaterials();
@@ -356,26 +357,27 @@ namespace Avogadro
   {
     if(!d->isValid()) { return; }
 
-    Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
-    double distance = transformedEnd1.norm();
+    // Default to the maximum detail level for this quality
+    int detailLevel = PAINTER_MAX_DETAIL_LEVEL;
 
-    // perform a rough form of frustum culling
-    double dot = transformedEnd1.z() / distance;
-    if ( dot > PAINTER_FRUSTUM_CULL_TRESHOLD ) return;
+    if (m_dynamicScaling) {
+      Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
+      double distance = transformedEnd1.norm();
 
-    double apparentRadius = radius / distance;
-    int detailLevel = 1 + static_cast<int> ( floor (
+      // perform a rough form of frustum culling
+      double dot = transformedEnd1.z() / distance;
+      if (dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return;
+
+      double apparentRadius = radius / distance;
+      detailLevel = 1 + static_cast<int> ( floor (
                                                     PAINTER_CYLINDERS_DETAIL_COEFF
                                                     * ( sqrt ( apparentRadius ) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL )
                                                     ) );
-    if ( detailLevel < 0 )
-      {
+      if (detailLevel < 0)
         detailLevel = 0;
-      }
-    if ( detailLevel > PAINTER_MAX_DETAIL_LEVEL )
-      {
+      if (detailLevel > PAINTER_MAX_DETAIL_LEVEL)
         detailLevel = PAINTER_MAX_DETAIL_LEVEL;
-      }
+    }
 
     d->color.applyAsMaterials();
     pushName();
@@ -388,26 +390,27 @@ namespace Avogadro
   {
     if(!d->isValid()) { return; }
 
-    Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
-    double distance = transformedEnd1.norm();
+    // Default to the maximum detail level for this quality
+    int detailLevel = PAINTER_MAX_DETAIL_LEVEL;
 
-    // perform a rough form of frustum culling
-    double dot = transformedEnd1.z() / distance;
-    if ( dot > PAINTER_FRUSTUM_CULL_TRESHOLD ) return;
+    if (m_dynamicScaling) {
+      Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
+      double distance = transformedEnd1.norm();
 
-    double apparentRadius = radius / distance;
-    int detailLevel = 1 + static_cast<int> ( floor (
+      // perform a rough form of frustum culling
+      double dot = transformedEnd1.z() / distance;
+      if (dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return;
+
+      double apparentRadius = radius / distance;
+      detailLevel = 1 + static_cast<int> ( floor (
                                                     PAINTER_CYLINDERS_DETAIL_COEFF
                                                     * ( sqrt ( apparentRadius ) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL )
                                                     ) );
-    if ( detailLevel < 0 )
-      {
+      if (detailLevel < 0)
         detailLevel = 0;
-      }
-    if ( detailLevel > PAINTER_MAX_DETAIL_LEVEL )
-      {
+      if (detailLevel > PAINTER_MAX_DETAIL_LEVEL)
         detailLevel = PAINTER_MAX_DETAIL_LEVEL;
-      }
+    }
 
     d->color.applyAsMaterials();
     pushName();
@@ -1139,6 +1142,11 @@ namespace Avogadro
         d->type = Primitive::OtherType;
         d->id = -1;
       }
+  }
+
+  void GLPainter::setDynamicScaling(bool scaling)
+  {
+    m_dynamicScaling = scaling;
   }
 
 } // end namespace Avogadro

@@ -346,8 +346,15 @@ namespace Avogadro
        */
       static int maxQuality();
 
+      /**
+       * Set to true to turn dynamic object scaling on, false for off.
+       */
+      void setDynamicScaling(bool scaling);
+
     private:
       GLPainterPrivate * const d;
+
+      bool m_dynamicScaling;
 
       /**
        * Increment the number of widgets the Painter is being shared by.

@@ -1,3 +1,11 @@
+2007-12-11  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glpainter.*: Added a dynamic scaling variable to the
+	class and a setter. This turns dynamic scaling on (default) and off.
+
+	* avogadro/src/CMakeLists.txt, libavogadro/src/CMakeLists.txt,
+	+i18n/avogadro_en_GB.ts: Added a British English translation.
+
 2007-12-11  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/primitive.h: New primitive types defined for
@@ -14,8 +22,8 @@
 
 	* libavogadro/src/tools/autoopttool.[h,cpp]: Added "Ignored atoms are
 	movable" and "Fixed atoms are movable". Small changes to ::redo() and
-	::undo(), undo still seems to work. I had to change it to makje sure 
-	the passed molecule pointer would not point to a molecule that would 
+	::undo(), undo still seems to work. I had to change it to makje sure
+	the passed molecule pointer would not point to a molecule that would
 	be deleted. This caused the constraints in the model to be lossed.
 	(note: OB does not support angle and torsion constraints yet, ignoring
 	atoms only works for MMFF94 at the moment.)
@@ -23,7 +31,7 @@
 	* avogadro/src/extentions/constraintsmodel.[h,cpp]: now connects to
 	primitiveRemoved signal from a Molecule to delete invalid constraints
 	as you remove atoms.
-	
+
 	* avogadro/src/extentions/constraintsdialog.[h,cpp]: You can now only
 	add valid constraints.
 
@@ -42,7 +50,7 @@
 
 	* avogadro/src/extentions/dockingextension.[h,cpp]: Avogadro class to
 	handle docking.
-	
+
 	* avogadro/src/extensions/propmodel.cpp: Small  change to the way rows
 	are added and deleted.
 
