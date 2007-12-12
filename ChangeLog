@@ -1,3 +1,8 @@
+2007-12-12  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glwidget.cpp: Don't use dynamic scaling to render
+	the axes - cylinders were reduced to lines before.
+
 2007-12-11  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/glpainter.*: Added a dynamic scaling variable to the

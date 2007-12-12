@@ -703,6 +703,9 @@ namespace Avogadro {
     axisTranslation.loadTranslation(pd->camera()->transformedZAxis() * 0.06);
     Vector3d aZ = axisTranslation * origin;
 
+    // Turn off dynamic scaling in the painter (cylinders don't render correctly)
+    d->painter->setDynamicScaling(false);
+
     // x axis
     painter()->setColor(1.0, 0.0, 0.0);
     painter()->drawCylinder(origin, aXa, 0.005);
@@ -715,6 +718,9 @@ namespace Avogadro {
     painter()->setColor(0.0, 0.0, 1.0);
     painter()->drawCylinder(origin, aZa, 0.005);
     painter()->drawCone(aZa, aZ, 0.01);
+
+    // Turn dynamic scaling back on (default state)
+    d->painter->setDynamicScaling(true);
 
     glPopMatrix();
     glMatrixMode(GL_PROJECTION);
