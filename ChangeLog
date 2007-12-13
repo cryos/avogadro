@@ -23,6 +23,13 @@
 	* libavogadro/src/glwidget.cpp: Adding new logic for dealing with
 	display list caches, calling renderQuick correctly etc.
 
+	* libavogadro/src/glwidget.*, avogadro/src/settingsdialog.ui,
+	avogadro/src/settingsdialog.cpp, avogadro/src/mainwindow.*: Moved the
+	debug information overlay to the GLWidget from the Engine.
+
+	* libavogadro/src/engines/CMakeLists.txt,
+	-libavogadro/src/engines/debugengine.*: Removed the debug engine.
+
 2007-12-11  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/glpainter.*: Added a dynamic scaling variable to the

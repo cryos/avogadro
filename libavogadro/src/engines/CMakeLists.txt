@@ -49,16 +49,6 @@ TARGET_LINK_LIBRARIES(wireengine avogadro-lib
 )
 INSTALL(TARGETS wireengine DESTINATION ${DESTINATION_DIR})
 
-# debug engine
-set(debugengine_SRCS debugengine.cpp)
-qt4_automoc(${debugengine_SRCS})
-ADD_LIBRARY(debugengine SHARED ${debugengine_SRCS} )
-TARGET_LINK_LIBRARIES(debugengine avogadro-lib
-                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
-                                ${OPENGL_LIBRARIES}
-)
-INSTALL(TARGETS debugengine DESTINATION ${DESTINATION_DIR})
-
 # sphere
 set(sphereengine_SRCS sphereengine.cpp)
 qt4_wrap_ui(sphereengine_UIS spheresettingswidget.ui)
