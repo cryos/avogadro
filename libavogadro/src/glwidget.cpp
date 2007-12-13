@@ -579,9 +579,6 @@ namespace Avogadro {
 
     d->painter->begin(this);
 
-    // If enabled draw the axes
-    if (d->renderAxes) renderAxesOverlay();
-
     if (d->molecule && d->molecule->HasData(OBGenericDataType::UnitCell))
       uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
 
@@ -591,6 +588,7 @@ namespace Avogadro {
 
         // Create a display list cache
         if (d->updateCache) {
+          qDebug() << "Making new quick display lists...";
           if (d->dlistQuick == 0)
             d->dlistQuick = glGenLists(1);
 
@@ -607,10 +605,12 @@ namespace Avogadro {
           d->painter->setDynamicScaling(true);
         }
         else { // call our cache
+          qDebug() << "Calling quick display lists...";
           glCallList(d->dlistQuick);
         }
       }
       else {
+        qDebug() << "Normal rendering...";
         foreach(Engine *engine, d->engines)
           if(engine->isEnabled())
             engine->renderOpaque(pd);
@@ -693,6 +693,9 @@ namespace Avogadro {
     if ( d->tool ) {
       d->tool->paint( this );
     }
+
+    // If enabled draw the axes
+    if (d->renderAxes) renderAxesOverlay();
 
     d->painter->end();
   }
@@ -804,8 +807,6 @@ namespace Avogadro {
   void GLWidget::mousePressEvent( QMouseEvent * event )
   {
     if ( d->tool ) {
-      // Use quick render while the mouse is down
-      d->quickRender = true;
       QUndoCommand *command = 0;
       command = d->tool->mousePress( this, event );
 
@@ -815,19 +816,23 @@ namespace Avogadro {
         delete command;
       }
     }
+    // Use quick render while the mouse is down
+    d->quickRender = true;
   }
 
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   {
     if ( d->tool ) {
-      // Stop using quickRender
-      d->quickRender = false;
       QUndoCommand *command = d->tool->mouseRelease( this, event );
 
       if ( command && d->undoStack ) {
         d->undoStack->push( command );
       }
     }
+    // Stop using quickRender
+    d->quickRender = false;
+    // Render the scene at full quality now the mouse button has been released
+    update();
   }
 
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
