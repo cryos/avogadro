@@ -37,15 +37,15 @@ using namespace OpenBabel;
 namespace Avogadro
 {
   enum DockingExtensionIndex
-  {
-    CreateLigandIndex = 0,
-    CreatePocketIndex,
-    SelectLigandIndex,
-    SelectPocketIndex,
-    SelectLigPockIndex,
-    DockIndex,
-    PosesIndex,
-  };
+    {
+      CreateLigandIndex = 0,
+      CreatePocketIndex,
+      SelectLigandIndex,
+      SelectPocketIndex,
+      SelectLigPockIndex,
+      DockIndex,
+      PosesIndex,
+    };
 
   DockingExtension::DockingExtension( QObject *parent ) : QObject( parent )
   {
@@ -56,28 +56,36 @@ namespace Avogadro
     
     if ( m_dock ) {
       action = new QAction( this );
-      action->setText( tr("Create ligand..." ));
+      action->setText( tr("Create Ligand..." ));
       action->setData(CreateLigandIndex);
       m_actions.append( action );
       
       action = new QAction( this );
-      action->setText( tr("Create binding pocket..." ));
+      action->setText( tr("Create Binding Pocket..." ));
       action->setData(CreatePocketIndex);
       m_actions.append( action );
 
       action = new QAction( this );
-      action->setText( tr("Select ligand" ));
+      action->setSeparator(true);
+      m_actions.append( action );
+
+      action = new QAction( this );
+      action->setText( tr("Select Ligand" ));
       action->setData(SelectLigandIndex);
       m_actions.append( action );
 
       action = new QAction( this );
-      action->setText( tr("Select binding pocket" ));
+      action->setText( tr("Select Binding Pocket" ));
       action->setData(SelectPocketIndex);
       m_actions.append( action );
 
       action = new QAction( this );
-      action->setText( tr("Select ligand + pocket" ));
+      action->setText( tr("Select Ligand + Pocket" ));
       action->setData(SelectLigPockIndex);
+      m_actions.append( action );
+
+      action = new QAction( this );
+      action->setSeparator(true);
       m_actions.append( action );
       
       action = new QAction( this );
@@ -86,7 +94,7 @@ namespace Avogadro
       m_actions.append( action );
 
       action = new QAction( this );
-      action->setText( tr("View poses..." ));
+      action->setText( tr("View Poses..." ));
       action->setData(PosesIndex);
       m_actions.append( action );
 
@@ -106,23 +114,23 @@ namespace Avogadro
   {
     int i = action->data().toInt();
     switch(i) {
-      case CreateLigandIndex:
-      case CreatePocketIndex:
-      case DockIndex:
-      case PosesIndex:
-      case SelectLigandIndex:
-      case SelectPocketIndex:
-      case SelectLigPockIndex:
-        return tr("&Extensions") + ">" + tr("&Docking");
-        break;
-      default:
-        break;
+    case CreateLigandIndex:
+    case CreatePocketIndex:
+    case DockIndex:
+    case PosesIndex:
+    case SelectLigandIndex:
+    case SelectPocketIndex:
+    case SelectLigPockIndex:
+      return tr("&Extensions") + ">" + tr("&Docking");
+      break;
+    default:
+      break;
     };
     return QString();
   }
 
   QUndoCommand* DockingExtension::performAction( QAction *action, Molecule *molecule,
-      GLWidget *widget, QTextEdit *textEdit )
+                                                 GLWidget *widget, QTextEdit * )
   {
     QUndoCommand *undo = NULL;
     QList<Primitive *> selectedAtoms;
@@ -132,91 +140,91 @@ namespace Avogadro
 
     int i = action->data().toInt();
     switch ( i ) {
-      case CreateLigandIndex: // create ligand
-        m_fileName = QString("");
-	m_ligandDialog->setDock(m_dock);
-        m_ligandDialog->setMolecule(molecule);
-        m_ligandDialog->setWidget(widget);
-        m_ligandDialog->show();
-        break;
-      case CreatePocketIndex: // create binding pocket
-        m_pocketDialog->setDock(m_dock);
-        m_pocketDialog->setMolecule(molecule);
-        m_pocketDialog->setWidget(widget);
-        m_pocketDialog->show();
-        break;
+    case CreateLigandIndex: // create ligand
+      m_fileName = QString("");
+      m_ligandDialog->setDock(m_dock);
+      m_ligandDialog->setMolecule(molecule);
+      m_ligandDialog->setWidget(widget);
+      m_ligandDialog->show();
+      break;
+    case CreatePocketIndex: // create binding pocket
+      m_pocketDialog->setDock(m_dock);
+      m_pocketDialog->setMolecule(molecule);
+      m_pocketDialog->setWidget(widget);
+      m_pocketDialog->show();
+      break;
  
-      case SelectLigandIndex: // select ligand
-        m_ligand = m_ligandDialog->ligand();
-        m_fileName = m_ligandDialog->fileName();
+    case SelectLigandIndex: // select ligand
+      m_ligand = m_ligandDialog->ligand();
+      m_fileName = m_ligandDialog->fileName();
 	
-	if (!m_fileName.isEmpty()) {
-	  QMessageBox::warning(NULL, tr("Select ligand"), 
-	      tr("Your ligands are stored in a different file, open that file to view them"));
-	  break;
-	}
-	if (m_ligand.empty()) {
-	  QMessageBox::warning(NULL, tr("Select ligand"), tr("Create a ligand first..."));
-	  break;
-        }
-
-	for (j = m_ligand.begin(); j != m_ligand.end(); ++j)
-          selectedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
-
-	widget->clearSelected();
-        widget->setSelected(selectedAtoms, true);
-        widget->update();
+      if (!m_fileName.isEmpty()) {
+        QMessageBox::warning(NULL, tr("Select ligand"), 
+                             tr("Your ligands are stored in a different file, open that file to view them"));
         break;
-      case SelectPocketIndex: // select pocket
-        m_pocket = m_pocketDialog->pocket();
-
-	if (m_pocket.empty())
-	  QMessageBox::warning(NULL, tr("Select binding pocket"), tr("Create a binding pocket first..."));
-
-          for (j = m_pocket.begin(); j != m_pocket.end(); ++j)
-            selectedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
-
-          widget->clearSelected();
-          widget->setSelected(selectedAtoms, true);
-          widget->update();
+      }
+      if (m_ligand.empty()) {
+        QMessageBox::warning(NULL, tr("Select ligand"), tr("Create a ligand first..."));
         break;
-      case SelectLigPockIndex: // select ligand + pocket
-        m_ligand = m_ligandDialog->ligand();
-        m_pocket = m_pocketDialog->pocket();
+      }
+
+      for (j = m_ligand.begin(); j != m_ligand.end(); ++j)
+        selectedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
+
+      widget->clearSelected();
+      widget->setSelected(selectedAtoms, true);
+      widget->update();
+      break;
+    case SelectPocketIndex: // select pocket
+      m_pocket = m_pocketDialog->pocket();
+
+      if (m_pocket.empty())
+        QMessageBox::warning(NULL, tr("Select binding pocket"), tr("Create a binding pocket first..."));
+
+      for (j = m_pocket.begin(); j != m_pocket.end(); ++j)
+        selectedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
+
+      widget->clearSelected();
+      widget->setSelected(selectedAtoms, true);
+      widget->update();
+      break;
+    case SelectLigPockIndex: // select ligand + pocket
+      m_ligand = m_ligandDialog->ligand();
+      m_pocket = m_pocketDialog->pocket();
 	
-	if (!m_fileName.isEmpty())
-	  QMessageBox::warning(NULL, tr("Select ligand + pocket"), 
-	      tr("Your ligands are stored in a different file, only the pocket will be selected"));
-	else if (m_ligand.empty()) {
-	  QMessageBox::warning(NULL, tr("Select ligand + pocket"), tr("Create a ligand first..."));
-	  break;
-        }	
-	if (m_pocket.empty()) {
-	  QMessageBox::warning(NULL, tr("Select ligand + pocket"), tr("Create a binding pocket first..."));
-	  break;
-	}
+      if (!m_fileName.isEmpty())
+        QMessageBox::warning(NULL, tr("Select ligand + pocket"), 
+                             tr("Your ligands are stored in a different file, only the pocket will be selected"));
+      else if (m_ligand.empty()) {
+        QMessageBox::warning(NULL, tr("Select ligand + pocket"), tr("Create a ligand first..."));
+        break;
+      }	
+      if (m_pocket.empty()) {
+        QMessageBox::warning(NULL, tr("Select ligand + pocket"), tr("Create a binding pocket first..."));
+        break;
+      }
 	
-	for (j = m_ligand.begin(); j != m_ligand.end(); ++j)
-          selectedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
+      for (j = m_ligand.begin(); j != m_ligand.end(); ++j)
+        selectedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
 
-        for (j = m_pocket.begin(); j != m_pocket.end(); ++j)
-          selectedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
+      for (j = m_pocket.begin(); j != m_pocket.end(); ++j)
+        selectedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
 
-        widget->clearSelected();
-        widget->setSelected(selectedAtoms, true);
-        widget->update();
+      widget->clearSelected();
+      widget->setSelected(selectedAtoms, true);
+      widget->update();
+      break;
+    case DockIndex: // calculate energy
+      if ( !m_dock )
         break;
-      case DockIndex: // calculate energy
-        if ( !m_dock )
-          break;
 
-        //m_dockingDialog->setup(molecule, m_forceField, m_constraints, textEdit, 
-	//    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence());
-        //m_dockingDialog->show();
-        break;
-      case PosesIndex: // show poses dialog
-        //m_posesDialog->show();
-        break;
+      //m_dockingDialog->setup(molecule, m_forceField, m_constraints, textEdit, 
+      //    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence());
+      //m_dockingDialog->show();
+      break;
+    case PosesIndex: // show poses dialog
+      //m_posesDialog->show();
+      break;
     }
 
     return undo;
@@ -231,12 +239,12 @@ namespace Avogadro
       m_pocket.clear();
     }
   }
-/*
-  DockingThread::DockingThread( Molecule *molecule, OpenBabel::OBDock* dock,
-                                  QTextEdit *textEdit, int forceFieldID,
-				  int nSteps, int algorithm, int gradients, int convergence, int task,
-				  QObject *parent ) : QThread( parent )
-  {
+  /*
+    DockingThread::DockingThread( Molecule *molecule, OpenBabel::OBDock* dock,
+    QTextEdit *textEdit, int forceFieldID,
+    int nSteps, int algorithm, int gradients, int convergence, int task,
+    QObject *parent ) : QThread( parent )
+    {
     m_cycles = 0;
     m_molecule = molecule;
     m_dock = dock;
@@ -248,154 +256,154 @@ namespace Avogadro
     m_convergence = convergence;
     m_task = task;
     m_stop = false;
-  }
+    }
 
-  int DockingThread::cycles() const
-  {
+    int DockingThread::cycles() const
+    {
     return m_cycles;
-  }
+    }
   
-  void DockingThread::setTask(int task)
-  {
+    void DockingThread::setTask(int task)
+    {
     m_task = task;
-  }
+    }
   
-  void DockingThread::setNumConformers(int numConformers)
-  {
+    void DockingThread::setNumConformers(int numConformers)
+    {
     m_numConformers = numConformers;
-  }
+    }
  
-  void DockingThread::run()
-  {
+    void DockingThread::run()
+    {
     QWriteLocker locker( m_molecule->lock() );
     m_stop = false;
-  }
+    }
 
-  void DockingThread::stop()
-  {
+    void DockingThread::stop()
+    {
     QMutexLocker locker(&m_mutex);
     m_stop = true;
-  }
+    }
 
-  DockingCommand::DockingCommand( Molecule *molecule, OpenBabel::OBDock* forceField,
-                                    QTextEdit *textEdit,
-				    int forceFieldID, int nSteps, int algorithm, int gradients,
-				    int convergence, int task ) :
-      m_nSteps( nSteps ),
-      m_task( task ),
-      m_molecule( molecule ),
-      m_textEdit( textEdit ),
-      m_thread( 0 ),
-      m_dialog( 0 ),
-      m_detached( false )
-  {
+    DockingCommand::DockingCommand( Molecule *molecule, OpenBabel::OBDock* forceField,
+    QTextEdit *textEdit,
+    int forceFieldID, int nSteps, int algorithm, int gradients,
+    int convergence, int task ) :
+    m_nSteps( nSteps ),
+    m_task( task ),
+    m_molecule( molecule ),
+    m_textEdit( textEdit ),
+    m_thread( 0 ),
+    m_dialog( 0 ),
+    m_detached( false )
+    {
     m_thread = new DockingThread( molecule, forceField, 
-                                   textEdit, forceFieldID, nSteps, algorithm,
-                                   gradients, convergence, task );
+    textEdit, forceFieldID, nSteps, algorithm,
+    gradients, convergence, task );
 
     m_moleculeCopy = *molecule;
-  }
-
-  DockingCommand::~DockingCommand()
-  {
-    if ( !m_detached ) {
-      if ( m_thread->isRunning() ) {
-        m_thread->stop();
-        m_thread->wait();
-      }
-      delete m_thread;
-
-      if ( m_dialog ) {
-        delete m_dialog;
-      }
     }
-  }
 
-  void DockingCommand::setTask(int task)
-  {
+    DockingCommand::~DockingCommand()
+    {
+    if ( !m_detached ) {
+    if ( m_thread->isRunning() ) {
+    m_thread->stop();
+    m_thread->wait();
+    }
+    delete m_thread;
+
+    if ( m_dialog ) {
+    delete m_dialog;
+    }
+    }
+    }
+
+    void DockingCommand::setTask(int task)
+    {
     m_task = task;
-  }
+    }
   
-  void DockingCommand::setNumConformers(int numConformers)
-  {
+    void DockingCommand::setNumConformers(int numConformers)
+    {
     m_numConformers = numConformers;
-  }
+    }
   
-  void DockingCommand::redo()
-  {
+    void DockingCommand::redo()
+    {
     if(!m_dialog) {
-      if ( m_task == 0 )
-        m_dialog = new QProgressDialog( QObject::tr( "Docking" ),
-                                        QObject::tr( "Cancel" ), 0,  m_nSteps );
+    if ( m_task == 0 )
+    m_dialog = new QProgressDialog( QObject::tr( "Docking" ),
+    QObject::tr( "Cancel" ), 0,  m_nSteps );
 
-      QObject::connect( m_thread, SIGNAL( stepsTaken( int ) ), m_dialog, SLOT( setValue( int ) ) );
-      QObject::connect( m_dialog, SIGNAL( canceled() ), m_thread, SLOT( stop() ) );
-      QObject::connect( m_thread, SIGNAL( finished() ), m_dialog, SLOT( close() ) );
+    QObject::connect( m_thread, SIGNAL( stepsTaken( int ) ), m_dialog, SLOT( setValue( int ) ) );
+    QObject::connect( m_dialog, SIGNAL( canceled() ), m_thread, SLOT( stop() ) );
+    QObject::connect( m_thread, SIGNAL( finished() ), m_dialog, SLOT( close() ) );
     }
 
     m_thread->setTask(m_task);
     m_thread->setNumConformers(m_numConformers);
     m_thread->start();
-  }
+    }
 
-  void DockingCommand::undo()
-  {
+    void DockingCommand::undo()
+    {
     m_thread->stop();
     m_thread->wait();
 
     m_textEdit->undo();
     *m_molecule = m_moleculeCopy;
-  }
+    }
 
-  bool DockingCommand::mergeWith( const QUndoCommand *command )
-  {
+    bool DockingCommand::mergeWith( const QUndoCommand *command )
+    {
     const DockingCommand *gc = dynamic_cast<const DockingCommand *>( command );
     if ( gc ) {
-      // delete our current info
-      cleanup();
-      gc->detach();
-      m_thread = gc->thread();
-      m_dialog = gc->progressDialog();
+    // delete our current info
+    cleanup();
+    gc->detach();
+    m_thread = gc->thread();
+    m_dialog = gc->progressDialog();
     }
     // received another of the same call
     return true;
-  }
-
-  DockingThread *DockingCommand::thread() const
-  {
-    return m_thread;
-  }
-
-  QProgressDialog *DockingCommand::progressDialog() const
-  {
-    return m_dialog;
-  }
-
-  void DockingCommand::detach() const
-  {
-    m_detached = true;
-  }
-
-  void DockingCommand::cleanup()
-  {
-    if ( !m_detached ) {
-      if ( m_thread->isRunning() ) {
-        m_thread->stop();
-        m_thread->wait();
-      }
-      delete m_thread;
-
-      if ( m_dialog ) {
-        delete m_dialog;
-      }
     }
-  }
 
-  int DockingCommand::id() const
-  {
+    DockingThread *DockingCommand::thread() const
+    {
+    return m_thread;
+    }
+
+    QProgressDialog *DockingCommand::progressDialog() const
+    {
+    return m_dialog;
+    }
+
+    void DockingCommand::detach() const
+    {
+    m_detached = true;
+    }
+
+    void DockingCommand::cleanup()
+    {
+    if ( !m_detached ) {
+    if ( m_thread->isRunning() ) {
+    m_thread->stop();
+    m_thread->wait();
+    }
+    delete m_thread;
+
+    if ( m_dialog ) {
+    delete m_dialog;
+    }
+    }
+    }
+
+    int DockingCommand::id() const
+    {
     return 54381241;
-  }
-*/
+    }
+  */
 } // end namespace Avogadro
 
 #include "dockingextension.moc"

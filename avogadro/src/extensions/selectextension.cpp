@@ -66,12 +66,12 @@ namespace Avogadro {
     m_actions.append(action);
     
     action = new QAction(this);
-    action->setText(tr("Select by residue..."));
+    action->setText(tr("Select by Residue..."));
     action->setData(ResidueIndex);
     m_actions.append(action);
     
     action = new QAction(this);
-    action->setText(tr("Select solvent"));
+    action->setText(tr("Select Solvent"));
     action->setData(SolventIndex);
     m_actions.append(action);
   
