@@ -54,6 +54,7 @@ namespace Avogadro {
       bool renderOpaque(PainterDevice *pd);
       bool renderOpaque(PainterDevice *pd, const Atom *a);
       bool renderOpaque(PainterDevice *pd, const Bond *b);
+      bool renderQuick(PainterDevice *pd, bool);
       //@}
 
       EngineFlags flags() const;

@@ -1,3 +1,10 @@
+2007-12-13  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glwidget.cpp: Invalidate the cache after mouse up.
+
+	* libavogadro/src/engines/labelengine.*: Don't draw labels when using
+	the renderQuick() method.
+
 2007-12-13  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/glwidget.cpp (renderCrystal): Clean up main

@@ -71,6 +71,12 @@ namespace Avogadro {
     return true;
   }
 
+  bool LabelEngine::renderQuick(PainterDevice *, bool)
+  {
+    // Don't render text when moving...
+    return true;
+  }
+
   bool LabelEngine::renderOpaque(PainterDevice *pd, const Atom *a)
   {
     // Render atom labels
