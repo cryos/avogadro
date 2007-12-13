@@ -434,23 +434,35 @@ namespace Avogadro
     d->color.applyAsMaterials();
 
     // Draw the cone
-    glBegin(GL_TRIANGLE_FAN);
-    glVertex3dv(tip.array());
-    for (int j = 0; j <= CONE_TESS_LEVEL; j++) {
-      double alpha = j * M_PI / (CONE_TESS_LEVEL/2.0);
+    // unfortunately we can't use a GL_TRIANGLE_FAN because this would force
+    // having a common normal vector at the tip.
+    for (int j = 0; j < CONE_TESS_LEVEL; j++) {
+      const double alphaStep = 2.0 * M_PI / CONE_TESS_LEVEL;
+      double alpha = j * alphaStep;
+      double alphaNext = alpha + alphaStep;
+      double alphaPrec = alpha - alphaStep;
       Eigen::Vector3d v = sin(alpha) * ortho1 + cos(alpha) * ortho2 + base;
-      glNormal3dv(v.array());
+      Eigen::Vector3d vNext = sin(alphaNext) * ortho1 + cos(alphaNext) * ortho2 + base;
+      Eigen::Vector3d vPrec = sin(alphaPrec) * ortho1 + cos(alphaPrec) * ortho2 + base;
+      Eigen::Vector3d n = (tip - v).cross(v - vPrec).normalized();
+      Eigen::Vector3d nNext = (tip - vNext).cross(vNext - v).normalized();
+      glBegin(GL_TRIANGLES);
+      glNormal3dv(axisNormalized.array());
+      glVertex3dv(tip.array());
+      glNormal3dv(nNext.array());
+      glVertex3dv(vNext.array());
+      glNormal3dv(n.array());
       glVertex3dv(v.array());
+      glEnd();
     }
-    glEnd();
 
     // Now to draw the base
     glBegin(GL_TRIANGLE_FAN);
+    glNormal3dv((-axisNormalized).array());
     glVertex3dv(base.array());
     for (int j = 0; j <= CONE_TESS_LEVEL; j++) {
-      double alpha = j * M_PI / (CONE_TESS_LEVEL/2.0);
+      double alpha = -j * M_PI / (CONE_TESS_LEVEL/2.0);
       Eigen::Vector3d v = cos(alpha) * ortho1 + sin(alpha) * ortho2 + base;
-      glNormal3dv(v.array());
       glVertex3dv(v.array());
     }
     glEnd();
