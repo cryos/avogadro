@@ -447,7 +447,7 @@ namespace Avogadro
       Eigen::Vector3d n = (tip - v).cross(v - vPrec).normalized();
       Eigen::Vector3d nNext = (tip - vNext).cross(vNext - v).normalized();
       glBegin(GL_TRIANGLES);
-      glNormal3dv(axisNormalized.array());
+      glNormal3dv((n+nNext).normalized().array());
       glVertex3dv(tip.array());
       glNormal3dv(nNext.array());
       glVertex3dv(vNext.array());
