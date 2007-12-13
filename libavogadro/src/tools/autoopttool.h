@@ -50,7 +50,7 @@ namespace Avogadro {
 
     public:
     AutoOptThread(Molecule *molecule, OpenBabel::OBForceField* forceField, 
-        int algorithm, int convergence, QObject *parent=0);
+        int algorithm, int gradients, int convergence, QObject *parent=0);
 
       void run();
 
@@ -64,6 +64,7 @@ namespace Avogadro {
       Molecule *m_molecule;
       OpenBabel::OBForceField * m_forceField;
       int m_algorithm;
+      int m_gradients;
       int m_convergence;
 
       bool m_stop;
@@ -135,6 +136,7 @@ namespace Avogadro {
 
       QComboBox*                m_comboFF;
       QComboBox*                m_comboAlgorithm;
+      QComboBox*                m_comboGradients;
       QSpinBox*                 m_convergenceSpinBox;
       QPushButton*              m_buttonStartStop;
       QCheckBox*                m_fixedMovable;

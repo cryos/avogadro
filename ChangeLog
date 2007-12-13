@@ -1,3 +1,11 @@
+2007-12-13  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/autoopttool.[h,cpp]: Added Numerical or
+	Analytical gradients option. (was this left out for a reason? feel
+	free to remove if this is the case)
+
+	* avogadro/src/extensions/prop*.[h,cpp]: Added angles and torsions.
+
 2007-12-13  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/glwidget.cpp: Invalidate the cache after mouse up.

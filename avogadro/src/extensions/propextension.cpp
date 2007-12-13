@@ -39,6 +39,8 @@ namespace Avogadro
     {
       AtomPropIndex = 0,
       BondPropIndex,
+      AnglePropIndex,
+      TorsionPropIndex,
       CartesianIndex,
       ConformerIndex
     };
@@ -46,10 +48,6 @@ namespace Avogadro
   PropertiesExtension::PropertiesExtension( QObject *parent ) : QObject( parent )
   {
     QAction *action;
-    m_atomModel = new PropertiesModel(PropertiesModel::AtomType);
-    m_bondModel = new PropertiesModel(PropertiesModel::BondType);
-    m_cartesianModel = new PropertiesModel(PropertiesModel::CartesianType);
-    m_conformerModel = new PropertiesModel(PropertiesModel::ConformerType);
     
     action = new QAction( this );
     action->setText( tr("Atom Properties..." ));
@@ -59,6 +57,16 @@ namespace Avogadro
     action = new QAction( this );
     action->setText( tr("Bond Properties..." ));
     action->setData(BondPropIndex);
+    m_actions.append( action );
+    
+    action = new QAction( this );
+    action->setText( tr("Angles Properties..." ));
+    action->setData(AnglePropIndex);
+    m_actions.append( action );
+    
+    action = new QAction( this );
+    action->setText( tr("Torsion Properties..." ));
+    action->setData(TorsionPropIndex);
     m_actions.append( action );
 
     action = new QAction( this );
@@ -108,6 +116,7 @@ namespace Avogadro
     switch ( i ) {
     case AtomPropIndex: // atom properties
       view = new PropertiesView(PropertiesView::AtomType);
+      m_atomModel = new PropertiesModel(PropertiesModel::AtomType);
       m_atomModel->setMolecule( molecule );
       connect(molecule, SIGNAL( updated() ), m_atomModel, SLOT( updateTable() ));
       connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_atomModel, SLOT( primitiveAdded(Primitive *) ));
@@ -120,6 +129,7 @@ namespace Avogadro
       break;
     case BondPropIndex: // bond properties
       view = new PropertiesView(PropertiesView::BondType);
+      m_bondModel = new PropertiesModel(PropertiesModel::BondType);
       m_bondModel->setMolecule( molecule );
       connect(molecule, SIGNAL( updated() ), m_bondModel, SLOT( updateTable() ));
       connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_bondModel, SLOT( primitiveAdded(Primitive *) ));
@@ -130,8 +140,35 @@ namespace Avogadro
       view->resize(550, 400);
       view->show();
       break;
+    case AnglePropIndex: // angle properties
+      view = new PropertiesView(PropertiesView::AngleType);
+      m_angleModel = new PropertiesModel(PropertiesModel::AngleType);
+      m_angleModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_angleModel, SLOT( updateTable() ));
+      //connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_angleModel, SLOT( primitiveAdded(Primitive *) ));
+      //connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_angleModel, SLOT( primitiveRemoved(Primitive *) ));
+      view->setMolecule( molecule );
+      view->setWidget( widget );
+      view->setModel( m_angleModel );
+      view->resize(550, 400);
+      view->show();
+      break;
+    case TorsionPropIndex: // torsion properties
+      view = new PropertiesView(PropertiesView::TorsionType);
+      m_torsionModel = new PropertiesModel(PropertiesModel::TorsionType);
+      m_torsionModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_torsionModel, SLOT( updateTable() ));
+      //connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_torsionModel, SLOT( primitiveAdded(Primitive *) ));
+      //connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_torsionModel, SLOT( primitiveRemoved(Primitive *) ));
+      view->setMolecule( molecule );
+      view->setWidget( widget );
+      view->setModel( m_torsionModel );
+      view->resize(550, 400);
+      view->show();
+      break;
     case CartesianIndex: // cartesian editor
       view = new PropertiesView(PropertiesView::CartesianType);
+      m_cartesianModel = new PropertiesModel(PropertiesModel::CartesianType);
       m_cartesianModel->setMolecule( molecule );
       connect(molecule, SIGNAL( updated() ), m_cartesianModel, SLOT( updateTable() ));
       connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_cartesianModel, SLOT( primitiveAdded(Primitive *) ));
@@ -144,6 +181,7 @@ namespace Avogadro
       break;
     case ConformerIndex: // conformers
       view = new PropertiesView(PropertiesView::ConformerType);
+      m_conformerModel = new PropertiesModel(PropertiesModel::ConformerType);
       m_conformerModel->setMolecule( molecule );
       connect(molecule, SIGNAL( updated() ), m_conformerModel, SLOT( updateTable() ));
       view->setMolecule( molecule );

@@ -58,7 +58,7 @@ namespace Avogadro {
       //! \name Description methods
       //@{
       //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("Propertiesd"); }
+      virtual QString name() const { return QObject::tr("Properties"); }
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("Properties Plugin"); };
 
@@ -74,6 +74,8 @@ namespace Avogadro {
     private:
       PropertiesModel* m_atomModel;
       PropertiesModel* m_bondModel;
+      PropertiesModel* m_angleModel;
+      PropertiesModel* m_torsionModel;
       PropertiesModel* m_cartesianModel;
       PropertiesModel* m_conformerModel;
       QList<QAction *> m_actions;
@@ -97,6 +99,8 @@ namespace Avogadro {
          OtherType=0,
  	 AtomType,
 	 BondType,
+	 AngleType,
+	 TorsionType,
 	 CartesianType,
 	 ConformerType
        };

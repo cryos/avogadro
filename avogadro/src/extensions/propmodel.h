@@ -54,6 +54,8 @@ namespace Avogadro {
          OtherType=0,
  	 AtomType,
 	 BondType,
+	 AngleType,
+	 TorsionType,
 	 CartesianType,
 	 ConformerType
        };
@@ -76,6 +78,7 @@ namespace Avogadro {
 
      private:
        int m_type;
+       int m_rowCount;
        Molecule *m_molecule;
  };
   
