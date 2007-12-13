@@ -76,7 +76,7 @@ namespace Avogadro
       m_actions.append( action );
 
       action = new QAction( this );
-      action->setText( tr("Slect ligand + pocket" ));
+      action->setText( tr("Select ligand + pocket" ));
       action->setData(SelectLigPockIndex);
       m_actions.append( action );
       
@@ -152,7 +152,7 @@ namespace Avogadro
 	
 	if (!m_fileName.isEmpty()) {
 	  QMessageBox::warning(NULL, tr("Select ligand"), 
-	      tr("Your ligand(s) are stored in a different file, open that file to view them"));
+	      tr("Your ligands are stored in a different file, open that file to view them"));
 	  break;
 	}
 	if (m_ligand.empty()) {
@@ -171,7 +171,7 @@ namespace Avogadro
         m_pocket = m_pocketDialog->pocket();
 
 	if (m_pocket.empty())
-	  QMessageBox::warning(NULL, tr("Select binding pocket"), tr("Create a binding pocket first.."));
+	  QMessageBox::warning(NULL, tr("Select binding pocket"), tr("Create a binding pocket first..."));
 
           for (j = m_pocket.begin(); j != m_pocket.end(); ++j)
             selectedAtoms.append(static_cast<Atom*>(molecule->GetAtom(*j)));
@@ -186,13 +186,13 @@ namespace Avogadro
 	
 	if (!m_fileName.isEmpty())
 	  QMessageBox::warning(NULL, tr("Select ligand + pocket"), 
-	      tr("Your ligand(s) are stored in a different file, only the pocket will be selected"));
+	      tr("Your ligands are stored in a different file, only the pocket will be selected"));
 	else if (m_ligand.empty()) {
 	  QMessageBox::warning(NULL, tr("Select ligand + pocket"), tr("Create a ligand first..."));
 	  break;
         }	
 	if (m_pocket.empty()) {
-	  QMessageBox::warning(NULL, tr("Select ligand + pocket"), tr("Create a binding pocket first.."));
+	  QMessageBox::warning(NULL, tr("Select ligand + pocket"), tr("Create a binding pocket first..."));
 	  break;
 	}
 	
