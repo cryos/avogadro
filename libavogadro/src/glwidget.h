@@ -204,23 +204,6 @@ namespace Avogadro {
       ~GLWidget();
 
       /**
-       * Add an arbitrary display list to the %GLWidget rendering
-       * area.  This allows plugins to add auxiliary visuals.
-       *
-       * @param dl the unsigned int representing the GL display list.
-       */
-      void addDL(GLuint dl);
-
-      /**
-       * Remove a display list from the %GLWidget rendering
-       * area previously added by addDL.  If the display list does
-       * not exist nothing is removed.
-       *
-       * @param dl the display lists to remove.
-       */
-      void removeDL(GLuint dl);
-
-      /**
        * @return true if the GLWidget is stable as determined
        * by the tools and extensions.
        */
@@ -576,6 +559,14 @@ namespace Avogadro {
        * is called from.
        */
       virtual void render();
+
+      /**
+       * Render a full crystal cell
+       * Called by render() automatically
+       *
+       * @param displayList the display list of the primitive unit cell
+       */
+      virtual void renderCrystal(GLuint displayList);
 
       /**
        * Render x, y, z axes as an overlay on the bottom left of the widget.

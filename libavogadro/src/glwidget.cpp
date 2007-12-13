@@ -159,6 +159,7 @@ namespace Avogadro {
   public:
     GLWidgetPrivate() : background( Qt::black ),
                         aCells( 1 ), bCells( 1 ), cCells( 1 ),
+                        uc (0),
                         molecule( 0 ),
                         camera( new Camera ),
                         tool( 0 ),
@@ -187,6 +188,14 @@ namespace Avogadro {
       if ( selectBuf ) delete[] selectBuf;
       delete camera;
       delete defaultMap;
+
+      // free the display lists
+      if (dlistQuick)
+        glDeleteLists(dlistQuick, 1);
+      if (dlistOpaque)
+        glDeleteLists(dlistOpaque, 1);
+      if (dlistTransparent)
+        glDeleteLists(dlistTransparent, 1);
     }
 
     static void loadEngineFactories();
@@ -195,34 +204,34 @@ namespace Avogadro {
 
     QList<Engine *>        engines;
 
-    QList<GLuint>          displayLists;
-
     QColor                 background;
 
-    Vector3d        normalVector;
-    Vector3d        center;
+    Vector3d               normalVector;
+    Vector3d               center;
     double                 radius;
-    const Atom             *farthestAtom;
+    const Atom            *farthestAtom;
 
     //! number of unit cells in a, b, and c crystal directions
     unsigned char          aCells;
     unsigned char          bCells;
     unsigned char          cCells;
 
-    Molecule               *molecule;
+    OBUnitCell            *uc;
 
-    Camera                 *camera;
+    Molecule              *molecule;
 
-    Tool                   *tool;
-    ToolGroup              *toolGroup;
+    Camera                *camera;
 
-    GLuint                 *selectBuf;
+    Tool                  *tool;
+    ToolGroup             *toolGroup;
+
+    GLuint                *selectBuf;
     int                    selectBufSize;
 
     PrimitiveList          selectedPrimitives;
     PrimitiveList          primitives;
 
-    QUndoStack             *undoStack;
+    QUndoStack            *undoStack;
 
     bool                   stable;
 
@@ -230,14 +239,14 @@ namespace Avogadro {
     QWaitCondition         paintCondition;
     QMutex                 renderMutex;
 
-    GLThread               *thread;
+    GLThread              *thread;
 #else
-    bool initialized;
+    bool                   initialized;
 #endif
 
     GLPainter             *painter;
     Color                 *map; // global color map
-    Color *defaultMap; // default fall-back coloring (i.e., by elements)
+    Color *defaultMap;  // default fall-back coloring (i.e., by elements)
     bool                   updateCache; // Update engine caches in quick render?
     bool                   quickRender; // Are we using quick render?
     bool                   renderAxes;  // Should the x, y, z axes be rendered?
@@ -587,113 +596,66 @@ namespace Avogadro {
 
   void GLWidget::render()
   {
-    OBUnitCell *uc = NULL;
-    std::vector<vector3> cellVectors;
-
     d->painter->begin(this);
 
-    if (d->molecule && d->molecule->HasData(OBGenericDataType::UnitCell))
-      uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
-
-    if (!uc) { // a plain molecule, no crystal cell
-      // Use renderQuick if the view is being moved, otherwise full render
-      if (d->quickRender) {
-
-        // Create a display list cache
-        if (d->updateCache) {
-          qDebug() << "Making new quick display lists...";
-          if (d->dlistQuick == 0)
-            d->dlistQuick = glGenLists(1);
-
-          // Don't use dynamic scaling when rendering quickly
-          d->painter->setDynamicScaling(false);
-
-          glNewList(d->dlistQuick, GL_COMPILE_AND_EXECUTE);
-          foreach(Engine *engine, d->engines)
-            if(engine->isEnabled())
-              engine->renderQuick(pd, d->updateCache);
-          glEndList();
-
-          d->updateCache = false;
-          d->painter->setDynamicScaling(true);
-        }
-        else { // call our cache
-          qDebug() << "Calling quick display lists...";
-          glCallList(d->dlistQuick);
-        }
-      }
-      else {
-        qDebug() << "Normal rendering...";
+    // Use renderQuick if the view is being moved, otherwise full render
+    if (d->quickRender) {
+      
+      // Create a display list cache
+      if (d->updateCache) {
+        qDebug() << "Making new quick display lists...";
+        if (d->dlistQuick == 0)
+          d->dlistQuick = glGenLists(1);
+        
+        // Don't use dynamic scaling when rendering quickly
+        d->painter->setDynamicScaling(false);
+        
+        glNewList(d->dlistQuick, GL_COMPILE);
         foreach(Engine *engine, d->engines)
           if(engine->isEnabled())
-            engine->renderOpaque(pd);
-        glDepthMask(GL_FALSE);
-        foreach(Engine *engine, d->engines)
-          if(engine->isEnabled() && engine->flags() & Engine::Transparent)
-            engine->renderTransparent(pd);
-        glDepthMask(GL_TRUE);
+            engine->renderQuick(pd, d->updateCache);
+        glEndList();
+        
+        d->updateCache = false;
+        d->painter->setDynamicScaling(true);
       }
-    }
-    else { // render a crystal
-      cellVectors = uc->GetCellVectors();
 
-      // render opaque parts of crystal
-      for (int a = 0; a < d->aCells; a++) {
-        for (int b = 0; b < d->bCells; b++)  {
-          for (int c = 0; c < d->cCells; c++)  {
-            glPushMatrix();
-            glTranslated(
-                         cellVectors[0].x() * a
-                         + cellVectors[1].x() * b
-                         + cellVectors[2].x() * c,
-                         cellVectors[0].y() * a
-                         + cellVectors[1].y() * b
-                         + cellVectors[2].y() * c,
-                         cellVectors[0].z() * a
-                         + cellVectors[1].z() * b
-                         + cellVectors[2].z() * c );
-            foreach(Engine *engine, d->engines)
-              {
-                if(engine->isEnabled()) {
-                  engine->renderOpaque(pd);
-                }
-              }
-            glPopMatrix();
-          }
-        }
+      qDebug() << "Calling quick display lists...";
+      glCallList(d->dlistQuick);
+      if (d->uc) renderCrystal(d->dlistQuick);
+
+    }
+    else {
+      qDebug() << "Normal rendering...";
+
+      // we save a display list if we're doing a crystal
+      if (d->dlistOpaque == 0)
+        d->dlistOpaque = glGenLists(1);
+      if (d->dlistTransparent == 0)
+        d->dlistTransparent = glGenLists(1);
+      
+      if (d->uc) glNewList(d->dlistOpaque, GL_COMPILE);
+      foreach(Engine *engine, d->engines)
+        if(engine->isEnabled())
+          engine->renderOpaque(pd);
+      if (d->uc) { // end the main list and render the opaque crystal
+        glEndList();
+        renderCrystal(d->dlistOpaque);
       }
-      // render transparent parts of crystal
+      
       glDepthMask(GL_FALSE);
-      for (int a = 0; a < d->aCells; a++) {
-        for (int b = 0; b < d->bCells; b++)  {
-          for (int c = 0; c < d->cCells; c++)  {
-            glPushMatrix();
-            glTranslated(
-                         cellVectors[0].x() * a
-                         + cellVectors[1].x() * b
-                         + cellVectors[2].x() * c,
-                         cellVectors[0].y() * a
-                         + cellVectors[1].y() * b
-                         + cellVectors[2].y() * c,
-                         cellVectors[0].z() * a
-                         + cellVectors[1].z() * b
-                         + cellVectors[2].z() * c );
-            foreach(Engine *engine, d->engines)
-              {
-                if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
-                  engine->renderTransparent(pd);
-                }
-              }
-            glPopMatrix();
-          }
-        }
+      if (d->uc) glNewList(d->dlistTransparent, GL_COMPILE);
+      foreach(Engine *engine, d->engines)
+        if(engine->isEnabled() && engine->flags() & Engine::Transparent)
+          engine->renderTransparent(pd);
+      if (d->uc) { // end the main list and render the transparent bits
+        glEndList();
+        renderCrystal(d->dlistTransparent);
       }
       glDepthMask(GL_TRUE);
     }
 
-    foreach( GLuint dl, d->displayLists )
-      glCallList( dl );
-
+    // Render all the inactive tools
     if ( d->toolGroup ) {
       QList<Tool *> tools = d->toolGroup->tools();
       foreach( Tool *tool, tools ) {
@@ -703,10 +665,11 @@ namespace Avogadro {
       }
     }
 
+    // Render the active tool
     if ( d->tool ) {
       d->tool->paint( this );
     }
-
+    
     // If enabled draw the axes
     if (d->renderAxes) renderAxesOverlay();
 
@@ -714,6 +677,32 @@ namespace Avogadro {
     if (d->renderDebug) renderDebugOverlay();
 
     d->painter->end();
+  }
+
+  void GLWidget::renderCrystal(GLuint displayList)
+  {
+    std::vector<vector3> cellVectors = d->uc->GetCellVectors();
+    
+    for (int a = 0; a < d->aCells; a++) {
+      for (int b = 0; b < d->bCells; b++)  {
+        for (int c = 0; c < d->cCells; c++)  {
+          glPushMatrix();
+          glTranslated(
+                       cellVectors[0].x() * a
+                       + cellVectors[1].x() * b
+                       + cellVectors[2].x() * c,
+                       cellVectors[0].y() * a
+                       + cellVectors[1].y() * b
+                       + cellVectors[2].y() * c,
+                       cellVectors[0].z() * a
+                       + cellVectors[1].z() * b
+                       + cellVectors[2].z() * c );
+          
+          glCallList(displayList);
+          glPopMatrix();
+        }
+      }
+    } // end of for loops
   }
 
   void GLWidget::renderAxesOverlay()
@@ -894,16 +883,6 @@ namespace Avogadro {
     }
   }
 
-  void GLWidget::addDL( GLuint dl )
-  {
-    d->displayLists.append( dl );
-  }
-
-  void GLWidget::removeDL( GLuint dl )
-  {
-    d->displayLists.removeAll( dl );
-  }
-
   void GLWidget::setMolecule( Molecule *molecule )
   {
     if ( !molecule ) { return; }
@@ -997,16 +976,10 @@ namespace Avogadro {
 
   void GLWidget::updateGeometry()
   {
-    // Needs to handle unit cells PR#1739844
-
-    OBUnitCell *uc = NULL;
-
-    //    QReadLocker readLocker(d->molecule->lock());
-
     if (d->molecule->HasData(OBGenericDataType::UnitCell))
-      uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
+      d->uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
 
-    if ( !uc ) { // a plain molecule, no crystal cell
+    if ( !d->uc ) { // a plain molecule, no crystal cell
       d->center = d->molecule->center();
       d->normalVector = d->molecule->normalVector();
       d->radius = d->molecule->radius();
@@ -1017,7 +990,7 @@ namespace Avogadro {
       // a = <x0, y0, z0>
       // b = <x1, y1, z1>
       // c = <x2, y2, z2>
-      std::vector<vector3> cellVectors = uc->GetCellVectors();
+      std::vector<vector3> cellVectors = d->uc->GetCellVectors();
       Vector3d a(cellVectors[0].AsArray());
       Vector3d b(cellVectors[1].AsArray());
       Vector3d c(cellVectors[2].AsArray());

@@ -1,3 +1,10 @@
+2007-12-13  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/glwidget.cpp (renderCrystal): Clean up main
+	render() function with additional function to handle translations
+	of crystal cells via display lists. Much cleaner code and should
+	be faster on larger crystals.
+
 2007-12-12  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/glwidget.cpp: Add in display lists for
