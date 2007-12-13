@@ -67,9 +67,10 @@ IF( APPLE )
   SET( MACOSX_BUNDLE_GUI_IDENTIFIER "net.sourceforge" )
   SET( MACOSX_BUNDLE_BUNDLE_NAME "Avogadro" )
 
-  # Need to copy the icon file
+  # Need to copy the icon files
   EXEC_PROGRAM( "mkdir -p   ${CMAKE_CURRENT_BINARY_DIR}/Avogadro.app/Contents/Resources")
   EXEC_PROGRAM( "cp ${avogadro_SOURCE_DIR}/src/mac/avogadro.icns ${CMAKE_CURRENT_BINARY_DIR}/Avogadro.app/Contents/Resources")
+  EXEC_PROGRAM( "cp ${avogadro_SOURCE_DIR}/src/mac/AvogadroDocument.icns ${CMAKE_CURRENT_BINARY_DIR}/Avogadro.app/Contents/Resources")
 
   # Overload the Info.plist default
   SET( CMAKE_MODULE_PATH ${avogadro_SOURCE_DIR}/src/mac ${CMAKE_MODULE_PATH} )
