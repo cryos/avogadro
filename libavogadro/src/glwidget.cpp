@@ -255,7 +255,7 @@ namespace Avogadro {
     GLuint                 dlistQuick;
     GLuint                 dlistOpaque;
     GLuint                 dlistTransparent;
-    
+
   };
 
   QList<EngineFactory *> GLWidgetPrivate::engineFactories;
@@ -588,7 +588,7 @@ namespace Avogadro {
   {
     d->renderDebug = renderDebug;
   }
-  
+
   bool GLWidget::renderDebug()
   {
     return d->renderDebug;
@@ -600,22 +600,22 @@ namespace Avogadro {
 
     // Use renderQuick if the view is being moved, otherwise full render
     if (d->quickRender) {
-      
+
       // Create a display list cache
       if (d->updateCache) {
         qDebug() << "Making new quick display lists...";
         if (d->dlistQuick == 0)
           d->dlistQuick = glGenLists(1);
-        
+
         // Don't use dynamic scaling when rendering quickly
         d->painter->setDynamicScaling(false);
-        
+
         glNewList(d->dlistQuick, GL_COMPILE);
         foreach(Engine *engine, d->engines)
           if(engine->isEnabled())
             engine->renderQuick(pd, d->updateCache);
         glEndList();
-        
+
         d->updateCache = false;
         d->painter->setDynamicScaling(true);
       }
@@ -633,7 +633,7 @@ namespace Avogadro {
         d->dlistOpaque = glGenLists(1);
       if (d->dlistTransparent == 0)
         d->dlistTransparent = glGenLists(1);
-      
+
       if (d->uc) glNewList(d->dlistOpaque, GL_COMPILE);
       foreach(Engine *engine, d->engines)
         if(engine->isEnabled())
@@ -642,7 +642,7 @@ namespace Avogadro {
         glEndList();
         renderCrystal(d->dlistOpaque);
       }
-      
+
       glDepthMask(GL_FALSE);
       if (d->uc) glNewList(d->dlistTransparent, GL_COMPILE);
       foreach(Engine *engine, d->engines)
@@ -669,7 +669,7 @@ namespace Avogadro {
     if ( d->tool ) {
       d->tool->paint( this );
     }
-    
+
     // If enabled draw the axes
     if (d->renderAxes) renderAxesOverlay();
 
@@ -682,7 +682,7 @@ namespace Avogadro {
   void GLWidget::renderCrystal(GLuint displayList)
   {
     std::vector<vector3> cellVectors = d->uc->GetCellVectors();
-    
+
     for (int a = 0; a < d->aCells; a++) {
       for (int b = 0; b < d->bCells; b++)  {
         for (int c = 0; c < d->cCells; c++)  {
@@ -697,7 +697,7 @@ namespace Avogadro {
                        cellVectors[0].z() * a
                        + cellVectors[1].z() * b
                        + cellVectors[2].z() * c );
-          
+
           glCallList(displayList);
           glPopMatrix();
         }
@@ -766,19 +766,19 @@ namespace Avogadro {
 
     // Draw all text in while
     pd->painter()->setColor(1.0, 1.0, 1.0);
-    
+
     int x = 5, y = 5;
     y += pd->painter()->drawText(x, y, "---- " + tr("Debug Information") + " ----");
     y += pd->painter()->drawText(x, y, tr("FPS") + ": " + QString::number(computeFramesPerSecond(), 'g', 3));
-    
+
     y += pd->painter()->drawText(x, y, tr("View Size") + ": "
                                  + QString::number(pd->width())
                                  + " x "
                                  + QString::number(pd->height()) );
-    
+
     list = primitives().subList(Primitive::AtomType);
     y += pd->painter()->drawText(x, y, tr("Atoms") + ": " + QString::number(list.size()));
-    
+
     list = primitives().subList(Primitive::BondType);
     y += pd->painter()->drawText(x, y, tr("Bonds") + ": " + QString::number(list.size()));
   }
@@ -859,6 +859,8 @@ namespace Avogadro {
     }
     // Stop using quickRender
     d->quickRender = false;
+    // Invalidate the cache
+    d->updateCache = true;
     // Render the scene at full quality now the mouse button has been released
     update();
   }
@@ -1435,7 +1437,7 @@ namespace Avogadro {
     static int old_time, new_time;
     static int frames;
     static double fps;
-    
+
     if( firstTime )
     {
       time.start();
@@ -1444,10 +1446,10 @@ namespace Avogadro {
       frames = 0;
       fps = 0;
     }
-    
+
     new_time = time.elapsed();
     frames++;
-    
+
     if( new_time - old_time > 200 )
     {
       fps = 1000.0 * frames / double( new_time - old_time );
@@ -1455,7 +1457,7 @@ namespace Avogadro {
       time.restart();
       old_time = time.elapsed();
     }
-    
+
     return fps;
   }
 
