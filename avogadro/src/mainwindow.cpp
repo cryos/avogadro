@@ -300,6 +300,16 @@ namespace Avogadro
     d->glWidget->setRenderAxes(render);
   }
 
+  bool MainWindow::renderDebug() const
+  {
+    return d->glWidget->renderDebug();
+  }
+  
+  void MainWindow::setRenderDebug(bool render)
+  {
+    d->glWidget->setRenderDebug(render);
+  }
+
   void MainWindow::reloadTabbedTools()
   {
     if(d->toolSettingsDock)

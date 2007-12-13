@@ -90,6 +90,9 @@ namespace Avogadro {
       bool renderAxes() const;
       void setRenderAxes(bool render);
 
+      bool renderDebug() const;
+      void setRenderDebug(bool render);
+
       void undoStackClean(bool clean);
 
       void clearRecentFiles();

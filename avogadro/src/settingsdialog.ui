@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>279</width>
-    <height>138</height>
+    <width>277</width>
+    <height>160</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -70,6 +70,13 @@
     <widget class="QCheckBox" name="renderAxes" >
      <property name="text" >
       <string>Display Axes</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="renderDebug" >
+     <property name="text" >
+      <string>Display Debug Information</string>
      </property>
     </widget>
    </item>

@@ -37,6 +37,7 @@
 #include <QUndoStack>
 #include <QDir>
 #include <QPluginLoader>
+#include <QTime>
 
 #ifdef ENABLE_THREADED_GL
 #include <QWaitCondition>
@@ -175,6 +176,7 @@ namespace Avogadro {
                         updateCache(true),
                         quickRender(false),
                         renderAxes(false),
+                        renderDebug(true),
                         dlistQuick(0), dlistOpaque(0), dlistTransparent(0)
     {
       loadEngineFactories();
@@ -239,6 +241,7 @@ namespace Avogadro {
     bool                   updateCache; // Update engine caches in quick render?
     bool                   quickRender; // Are we using quick render?
     bool                   renderAxes;  // Should the x, y, z axes be rendered?
+    bool                   renderDebug; // Should the debug information be shown?
 
     GLuint                 dlistQuick;
     GLuint                 dlistOpaque;
@@ -572,6 +575,16 @@ namespace Avogadro {
     return d->renderAxes;
   }
 
+  void GLWidget::setRenderDebug(bool renderDebug)
+  {
+    d->renderDebug = renderDebug;
+  }
+  
+  bool GLWidget::renderDebug()
+  {
+    return d->renderDebug;
+  }
+
   void GLWidget::render()
   {
     OBUnitCell *uc = NULL;
@@ -697,6 +710,9 @@ namespace Avogadro {
     // If enabled draw the axes
     if (d->renderAxes) renderAxesOverlay();
 
+    // If enabled show debug information
+    if (d->renderDebug) renderDebugOverlay();
+
     d->painter->end();
   }
 
@@ -753,6 +769,29 @@ namespace Avogadro {
     glMatrixMode(GL_PROJECTION);
     glPopMatrix();
     glMatrixMode(GL_MODELVIEW);
+  }
+
+  void GLWidget::renderDebugOverlay()
+  {
+    QList<Primitive *> list;
+
+    // Draw all text in while
+    pd->painter()->setColor(1.0, 1.0, 1.0);
+    
+    int x = 5, y = 5;
+    y += pd->painter()->drawText(x, y, "---- " + tr("Debug Information") + " ----");
+    y += pd->painter()->drawText(x, y, tr("FPS") + ": " + QString::number(computeFramesPerSecond(), 'g', 3));
+    
+    y += pd->painter()->drawText(x, y, tr("View Size") + ": "
+                                 + QString::number(pd->width())
+                                 + " x "
+                                 + QString::number(pd->height()) );
+    
+    list = primitives().subList(Primitive::AtomType);
+    y += pd->painter()->drawText(x, y, tr("Atoms") + ": " + QString::number(list.size()));
+    
+    list = primitives().subList(Primitive::BondType);
+    y += pd->painter()->drawText(x, y, tr("Bonds") + ": " + QString::number(list.size()));
   }
 
   void GLWidget::paintGL()
@@ -1416,11 +1455,43 @@ namespace Avogadro {
     return d->cCells;
   }
 
+  inline double GLWidget::computeFramesPerSecond()
+  {
+    static QTime time;
+    static bool firstTime = true;
+    static int old_time, new_time;
+    static int frames;
+    static double fps;
+    
+    if( firstTime )
+    {
+      time.start();
+      firstTime = false;
+      old_time = time.elapsed();
+      frames = 0;
+      fps = 0;
+    }
+    
+    new_time = time.elapsed();
+    frames++;
+    
+    if( new_time - old_time > 200 )
+    {
+      fps = 1000.0 * frames / double( new_time - old_time );
+      frames = 0;
+      time.restart();
+      old_time = time.elapsed();
+    }
+    
+    return fps;
+  }
+
   void GLWidget::writeSettings(QSettings &settings) const
   {
     settings.setValue("background", d->background);
     settings.setValue("quality", d->painter->quality());
     settings.setValue("renderAxes", d->renderAxes);
+    settings.setValue("renderDebug", d->renderDebug);
 
     int count = d->engines.size();
     settings.beginWriteArray("engines");
@@ -1440,6 +1511,8 @@ namespace Avogadro {
     d->painter->setQuality(settings.value("quality", 2).toInt());
     d->background = settings.value("background", QColor(0,0,0)).value<QColor>();
     d->renderAxes = settings.value("renderAxes", 1).value<bool>();
+    d->renderDebug = settings.value("renderDebug", 0).value<bool>();
+
     int count = settings.beginReadArray("engines");
     for(int i=0; i<count; i++)
       {

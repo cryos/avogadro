@@ -389,6 +389,16 @@ namespace Avogadro {
       bool renderAxes();
 
       /**
+       * Set to render x, y, z axes as an overlay in the bottom left of the widget.
+       */
+      void setRenderDebug(bool renderDebug);
+    
+      /**
+       * @return true if the x, y, z axes are being rendered.
+       */
+      bool renderDebug();
+
+      /**
        * Set the ToolGroup of the GLWidget.
        */
       void setToolGroup(ToolGroup *toolGroup);
@@ -573,7 +583,12 @@ namespace Avogadro {
       virtual void renderAxesOverlay();
 
       /**
-       * Helper function to load all engine factories
+       * Render a debug overlay with extra debug information on the GLWidget.
+       */
+      virtual void renderDebugOverlay();
+
+      /**
+       * Helper function to load all engine factories.
        */
       void loadEngineFactories();
 
@@ -581,7 +596,7 @@ namespace Avogadro {
        * This will return a painting condition that must be met each time
        * before a GLThread can run.
        *
-       * @return painting condition
+       * @return painting condition.
        */
 //       QWaitCondition *paintCondition() const;
 
@@ -590,10 +605,18 @@ namespace Avogadro {
       GLWidgetPrivate * const d;
 
       /**
-       * Helper function called by all constructors
+       * Helper function called by all constructors.
        */
       void constructor(const GLWidget *shareWidget =0);
 
+      /**
+       * Compute the average frames per second over the last 200+ ms.
+       */
+      inline double computeFramesPerSecond();
+
+      /**
+       * Member GLPainterDevice which is passed to the engines.
+       */
       GLPainterDevice *pd;
 
 
