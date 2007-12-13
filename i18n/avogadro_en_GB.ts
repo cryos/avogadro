@@ -373,12 +373,12 @@ Right Mouse: Reset the measurements.</translation>
     <message>
         <location filename="../libavogadro/src/engines/debugengine.cpp" line="44"/>
         <source>Renders debug information</source>
-        <translation>Renders debug information</translation>
+        <translation type="obsolete">Renders debug information</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/debugengine.h" line="43"/>
         <source>Debug Info</source>
-        <translation>Debug Info</translation>
+        <translation type="obsolete">Debug Info</translation>
     </message>
 </context>
 <context>
@@ -593,11 +593,6 @@ Right Mouse: Delete Atom</translation>
     <message>
         <location filename="../libavogadro/src/elementtranslate.cpp" line="67"/>
         <source>Magnesium</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/elementtranslate.cpp" line="70"/>
-        <source>Aluminium</source>
         <translation></translation>
     </message>
     <message>
@@ -1130,6 +1125,11 @@ Right Mouse: Delete Atom</translation>
         <source>Unknown</source>
         <translation></translation>
     </message>
+    <message>
+        <location filename="../libavogadro/src/elementtranslate.cpp" line="70"/>
+        <source>Aluminum</source>
+        <translation>Aluminium</translation>
+    </message>
 </context>
 <context>
     <name>Avogadro::ForceFieldExtension</name>
@@ -1182,9 +1182,34 @@ Right Mouse: Delete Atom</translation>
 <context>
     <name>Avogadro::GLWidget</name>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="1447"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="1560"/>
         <source>Ball and Stick</source>
         <translation>Ball and Stick</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/glwidget.cpp" line="782"/>
+        <source>Debug Information</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/glwidget.cpp" line="783"/>
+        <source>FPS</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/glwidget.cpp" line="785"/>
+        <source>View Size</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/glwidget.cpp" line="791"/>
+        <source>Atoms</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/glwidget.cpp" line="794"/>
+        <source>Bonds</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1392,205 +1417,205 @@ All changes will be lost!</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="342"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="352"/>
         <source>Tool Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="435"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="445"/>
         <source>Open File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="502"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="512"/>
         <source>Loading %1...</source>
         <comment>%1 is a filename</comment>
         <translation>Loading %1...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1241"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1251"/>
         <source>Avogadro</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="508"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="518"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>Cannot read file %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="521"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="531"/>
         <source>Cannot read file format of file %1.</source>
         <translation>Cannot read file format of file %1.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="530"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="540"/>
         <source>Cannot read file %1.</source>
         <translation>Cannot read file %1.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="534"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="544"/>
         <source>Loading %1...</source>
         <translation>Loading %1...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="539"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="549"/>
         <source>This file does not contain 3D coordinates. You may not be able to edit or view properly.</source>
         <translation>This file does not contain 3D coordinates. You may not be able to edit or view properly.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="549"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="559"/>
         <source>This file appears to contain multiple molecule records. Avogadro will only read the first molecule. If you save, all other molecules may be lost.</source>
         <translation>This file appears to contain multiple molecule records. Avogadro will only read the first molecule. If you save, all other molecules may be lost.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="555"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="565"/>
         <source>Atoms: </source>
         <translation>Atoms: </translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="556"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="566"/>
         <source> Bonds: </source>
         <translation> Bonds: </translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="560"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="570"/>
         <source>Reading molecular file failed.</source>
         <translation>Reading molecular file failed.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="564"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="574"/>
         <source>Navigate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="566"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="576"/>
         <source>File Loaded...</source>
         <translation>File Loaded...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="620"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="630"/>
         <source>Save Molecule As</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="640"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="650"/>
         <source>Cannot write to the file %1:
 %2.</source>
         <translation>Cannot write to the file %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="646"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="656"/>
         <source>Saving file.</source>
         <translation>Saving file.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="653"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="663"/>
         <source>Cannot write to file format of file %1.</source>
         <translation>Cannot write to file format of file %1.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="661"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="671"/>
         <source>Cannot write to the file %1.</source>
         <translation>Cannot write to the file %1.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="667"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="677"/>
         <source>Save succeeded.</source>
         <translation>Save succeeded.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="669"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="679"/>
         <source>Saving molecular file failed.</source>
         <translation>Saving molecular file failed.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="673"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="683"/>
         <source>File saved</source>
         <translation>File saved</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="686"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="696"/>
         <source>Export Bitmap Graphics</source>
         <translation>Export Bitmap Graphics</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="718"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="728"/>
         <source>Cannot save file %1.</source>
         <translation>Cannot save file %1.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="727"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="737"/>
         <source>Export POV Scene</source>
         <translation>Export POV Scene</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="764"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="774"/>
         <source>The document has been modified.
 Do you want to save your changes?</source>
         <translation>The document has been modified.
 Do you want to save your changes?</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="817"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="827"/>
         <source>Unable to paste molecule.</source>
         <translation>Unable to paste molecule.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="843"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="853"/>
         <source>Paste failed (format unavailable).</source>
         <translation>Paste failed (format unavailable).</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="855"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="865"/>
         <source>Manipulate</source>
         <translation>Manipulate</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="903"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="913"/>
         <source>Copy failed (mdl unavailable).</source>
         <translation>Copy failed (mdl unavailable).</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1317"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1327"/>
         <source>View %1</source>
         <translation>View %1</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1102"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1112"/>
         <source>Normal Size</source>
         <translation>Normal Size</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1108"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1118"/>
         <source>Full Screen</source>
         <translation>Full Screen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1235"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1245"/>
         <source>[*]Avogadro</source>
         <comment>[*] indicates that this is a modified view....</comment>
         <translation>[*]Avogadro</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1240"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1250"/>
         <source>%1[*] - %2</source>
         <translation>%1[*] - %2</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1527"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1537"/>
         <source>Add</source>
         <translation>Add</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1532"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1542"/>
         <source>Duplicate</source>
         <translation>Duplicate</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1536"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1546"/>
         <source>Remove</source>
         <translation>Remove</translation>
     </message>
@@ -1814,6 +1839,11 @@ Right Mouse:  Click and drag to move the view</translation>
         <source>Residue name</source>
         <translation>Residue name</translation>
     </message>
+    <message>
+        <location filename="../avogadro/src/extensions/selectextension.cpp" line="201"/>
+        <source></source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>Avogadro::SelectRotateTool</name>
@@ -1926,7 +1956,7 @@ Do you want to create a crystal unit cell?</translation>
 <context>
     <name>Avogadro::WireEngine</name>
     <message>
-        <location filename="../libavogadro/src/engines/wireengine.cpp" line="50"/>
+        <location filename="../libavogadro/src/engines/wireengine.cpp" line="48"/>
         <source>Wireframe rendering</source>
         <translation>Wireframe rendering</translation>
     </message>
@@ -4416,6 +4446,11 @@ Options:
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="72"/>
         <source>Display Axes</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/settingsdialog.ui" line="79"/>
+        <source>Display Debug Information</source>
         <translation></translation>
     </message>
 </context>
