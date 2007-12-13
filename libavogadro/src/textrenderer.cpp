@@ -34,11 +34,11 @@
 #define OUTLINE_WIDTH     3
 const int OUTLINE_BRUSH[2*OUTLINE_WIDTH+1][2*OUTLINE_WIDTH+1]
 = { { 10, 30,  45,  50,  45,  30,  10 },
-  { 30, 50,  90,  100,  90, 50,  30 },
-  { 45, 90,  200, 256, 200, 90,  45 },
+  { 30, 65,  85,  100,  85, 65,  30 },
+  { 45, 85,  200, 256, 200, 85,  45 },
   { 50, 100, 256, 256, 256, 100, 50},
-  { 45, 90,  200, 256, 200, 90,  45 },
-  { 30, 50,  90,  100,  90, 50,  30 },
+  { 45, 85,  200, 256, 200, 85,  45 },
+  { 30, 65,  85,  100,  85, 65,  30 },
   { 10, 30,  45,  50,  45,  30,  10 } };
 
 /*
@@ -189,7 +189,19 @@ namespace Avogadro {
     for( int j = texheight - 1; j >= 0; j-- )
       for( int i = 0; i < texwidth; i++, n++ )
       {
-        rawbitmap[n] = qBlue( image.pixel( i, j ) );
+        double x = qBlue( image.pixel( i, j ) ) / 255.0;
+        double y = sqrt(x); /* this applies a gamma correction with gamma factor 0.5.
+                  the effect of this is to concentrate the intensities in
+                  the large values. This results in a slightly bolder-looking
+                  font, which is more suitable for outlining. More importantly,
+                  this makes more intense the otherwise dim shades. As the
+                  intensity of the outline is proportional to the intensity of
+                  the rawbitmap, dim shades give a dim outline which is
+                  bad for readability, so we don't want a whole part of a glyph
+                  to use a dim shade. Now the problem is that on my setup,
+                  e.g. the small "n" had one of its legs spread across two columns
+                  of pixels, each with a dim shade.*/
+        rawbitmap[n] = static_cast<int>(255.0 * y);
       }
 
     // *** STEP 3 : compute the neighborhood map from the raw bitmap ***

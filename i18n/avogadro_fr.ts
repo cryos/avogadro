@@ -5234,12 +5234,12 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../avogadro/src/extensions/hydrogensextension.h" line="52"/>
         <source>Hydrogens</source>
-        <translation>Hydrogens</translation>
+        <translation>Hydrogènes</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/hydrogensextension.h" line="54"/>
         <source>Hydrogens Plugin</source>
-        <translation>Greffon Hydrogens</translation>
+        <translation>Greffon Hydrogènes</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/smartsextension.h" line="52"/>
