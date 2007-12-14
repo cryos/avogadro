@@ -129,28 +129,28 @@ namespace Avogadro {
     glEnd();
   }
 
-  void Eyecandy::drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle)
+  void Eyecandy::drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle, const Eigen::Vector3d &center)
   {
     if(clickedAtom)
     {
       drawRotation(widget, clickedAtom->pos(),
           qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
-            MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center)),
+            MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
           xAngle, yAngle);
     }
     else
     {
-      drawRotation(widget, widget->center(),
+      drawRotation(widget, center,
           qMin(
             qMax(
               qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
-              MINIMUM_APPARENT_SIZE * widget->camera()->distance(m_center)),
-            MAXIMUM_APPARENT_SIZE * widget->camera()->distance(m_center)),
+              MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
+            MAXIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
           xAngle, yAngle);
     }
   }
 
-  void Eyecandy::drawRotation(GLWidget *widget, const Eigen::Vector3d center, double radius, double xAngle, double yAngle)
+  void Eyecandy::drawRotation(GLWidget *widget, const Eigen::Vector3d& center, double radius, double xAngle, double yAngle)
   {
     m_center = center;
     m_radius = radius;
@@ -188,27 +188,26 @@ namespace Avogadro {
     glDepthMask(GL_TRUE);
   }
 
-  void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom)
+  void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom, const Eigen::Vector3d &center)
   {
     if(clickedAtom)
     {
-      Eigen::Vector3d center = clickedAtom->pos();
-      drawTranslation(widget, center, qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
-            MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
+      drawTranslation(widget, center,
+        qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
+             MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
           widget->radius(clickedAtom));
     }
     else
     {
-      Eigen::Vector3d center = widget->center();
       drawTranslation(widget, center, qMin(
-            qMax(
-              qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
+        qMax(
+          qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
               MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
             MAXIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
           0.);
     }
   }
-  void Eyecandy::drawTranslation(GLWidget *widget, const Eigen::Vector3d center, double size, double shift)
+  void Eyecandy::drawTranslation(GLWidget *widget, const Eigen::Vector3d& center, double size, double shift)
   {
     glEnable(GL_BLEND);
     glDisable(GL_LIGHTING);
@@ -283,17 +282,16 @@ namespace Avogadro {
     glDepthMask(GL_TRUE);
   }
 
-  void Eyecandy::drawZoom(GLWidget *widget, Atom *clickedAtom)
+  void Eyecandy::drawZoom(GLWidget *widget, Atom *clickedAtom, const Eigen::Vector3d &center)
   {
     if(clickedAtom) {
-      drawZoom(widget, clickedAtom->pos(),
+      drawZoom(widget, center,
           widget->radius(clickedAtom) *  2);
     }
     else
     {
       // zoom with respect to molecule's center: let's not draw any eyecandy
       // as I can't think of any that would be useful.
-      Eigen::Vector3d center = widget->center();
       drawZoom(widget, center, widget->radius());
       //     qMin(
       //         qMax(
@@ -303,7 +301,7 @@ namespace Avogadro {
     }
   }
 
-  void Eyecandy::drawZoom(GLWidget *widget, const Eigen::Vector3d center, double size)
+  void Eyecandy::drawZoom(GLWidget *widget, const Eigen::Vector3d& center, double size)
   {
     widget->painter()->setColor(&m_color);
     //   glEnable( GL_BLEND );

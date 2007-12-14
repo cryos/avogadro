@@ -78,6 +78,27 @@ namespace Avogadro {
         (event->buttons() & Qt::LeftButton && (event->modifiers()== Qt::ControlModifier || event->modifiers() == Qt::MetaModifier )) );
 
     m_clickedAtom = widget->computeClickedAtom(event->pos());
+    if(m_clickedAtom) {
+      m_referencePoint = m_clickedAtom->pos();
+    }
+    else {
+      // let's set m_referencePoint to be the center of the visible
+      // part of the molecule.
+      Vector3d atomsBarycenter(0., 0., 0.);
+      double sumOfWeights = 0.;
+      std::vector<OpenBabel::OBNodeBase*>::iterator i;
+      for ( Atom *atom = static_cast<Atom*>(widget->molecule()->BeginAtom(i));
+            atom; atom = static_cast<Atom*>(widget->molecule()->NextAtom(i))) {
+        Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
+        double atomDistance = transformedAtomPos.norm();
+        double dot = transformedAtomPos.z() / atomDistance;
+        double weight = exp(-20. * (1. + dot));
+        sumOfWeights += weight;
+        atomsBarycenter += weight * atom->pos();
+      }
+      atomsBarycenter /= sumOfWeights;
+      m_referencePoint = atomsBarycenter;
+    }
 
     // Initialise the angle variables on any new mouse press
     m_yAngleEyecandy = 0.;
@@ -107,64 +128,36 @@ namespace Avogadro {
     QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
     // Mouse navigation has two modes - atom centred when an atom is clicked
-    // and scene if no atom has been clicked.
+    // and scene if no atom has been clicked. However we don't need two codepaths
+    // here because the m_referencePoint has already been computed in mousePress,
+    // and that is the only difference between the two modes.
 
     // update eyecandy angle
     m_xAngleEyecandy += deltaDragging.x() * ROTATION_SPEED;
     m_yAngleEyecandy += deltaDragging.y() * ROTATION_SPEED;
 
-    if( m_clickedAtom )
+    if (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::NoModifier)
     {
-      if (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::NoModifier)
-      {
-        Navigate::rotate(widget, m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y());
-      }
-      // On the Mac, either use a three-button mouse
-      // or hold down the Option key (AltModifier in Qt notation)
-      else if ( (event->buttons() & Qt::MidButton) ||
-          (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
-      {
-        // Perform the rotation
-        Navigate::tilt(widget, m_clickedAtom->pos(), deltaDragging.x());
-
-        // Perform the zoom toward clicked atom
-        Navigate::zoom(widget, m_clickedAtom->pos(), deltaDragging.y());
-      }
-      // On the Mac, either use a three-button mouse
-      // or hold down the Command key (ControlModifier in Qt notation)
-      else if ( (event->buttons() & Qt::RightButton) ||
-          (event->buttons() & Qt::LeftButton && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier) ) )
-      {
-        // translate the molecule following mouse movement
-        Navigate::translate(widget, m_clickedAtom->pos(), m_lastDraggingPosition, event->pos());
-      }
+      Navigate::rotate(widget, m_referencePoint, deltaDragging.x(), deltaDragging.y());
     }
-    else // Nothing clicked on
+    // On the Mac, either use a three-button mouse
+    // or hold down the Option key (AltModifier in Qt notation)
+    else if ( (event->buttons() & Qt::MidButton) ||
+        (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
     {
-      if (event->buttons() & Qt::LeftButton
-          && event->modifiers() == Qt::NoModifier)
-      {
-        Navigate::rotate(widget, widget->center(), deltaDragging.x(), deltaDragging.y());
-      }
-      // On the Mac, either use a three-button mouse
-      // or hold down the Option key (AltModifier in Qt notation)
-      else if ( (event->buttons() & Qt::MidButton) ||
-          (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
-      {
-        // Perform the rotation
-        Navigate::tilt(widget, widget->center(), deltaDragging.x());
+      // Perform the rotation
+      Navigate::tilt(widget, m_referencePoint, deltaDragging.x());
 
-        // Perform the zoom toward molecule center
-        Navigate::zoom(widget, widget->center(), deltaDragging.y());
-      }
-      // On the Mac, either use a three-button mouse
-      // or hold down the Command key (ControlModifier in Qt notation)
-      else if ( (event->buttons() & Qt::RightButton) ||
-          (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::ControlModifier) )
-      {
-        // translate the molecule following mouse movement
-        Navigate::translate(widget, widget->center(), m_lastDraggingPosition, event->pos());
-      }
+      // Perform the zoom toward clicked atom
+      Navigate::zoom(widget, m_referencePoint, deltaDragging.y());
+    }
+    // On the Mac, either use a three-button mouse
+    // or hold down the Command key (ControlModifier in Qt notation)
+    else if ( (event->buttons() & Qt::RightButton) ||
+        (event->buttons() & Qt::LeftButton && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier) ) )
+    {
+      // translate the molecule following mouse movement
+      Navigate::translate(widget, m_referencePoint, m_lastDraggingPosition, event->pos());
     }
 
     m_lastDraggingPosition = event->pos();
@@ -194,15 +187,15 @@ namespace Avogadro {
   bool NavigateTool::paint(GLWidget *widget)
   {
     if(m_leftButtonPressed) {
-      m_eyecandy->drawRotation(widget, m_clickedAtom, m_xAngleEyecandy, m_yAngleEyecandy);
+      m_eyecandy->drawRotation(widget, m_clickedAtom, m_xAngleEyecandy, m_yAngleEyecandy, m_referencePoint);
     }
 
     else if(m_midButtonPressed) {
-      m_eyecandy->drawZoom(widget, m_clickedAtom);
+      m_eyecandy->drawZoom(widget, m_clickedAtom, m_referencePoint);
     }
 
     else if(m_rightButtonPressed) {
-      m_eyecandy->drawTranslation(widget, m_clickedAtom);
+      m_eyecandy->drawTranslation(widget, m_clickedAtom, m_referencePoint);
     }
 
     return true;

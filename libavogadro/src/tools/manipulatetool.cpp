@@ -292,16 +292,16 @@ namespace Avogadro {
     {
       if(m_leftButtonPressed)
       {
-        m_eyecandy->drawTranslation(widget, m_clickedAtom);
+        m_eyecandy->drawTranslation(widget, m_clickedAtom, m_clickedAtom->pos());
       }
       else if(m_midButtonPressed)
       {
-        m_eyecandy->drawZoom(widget, m_clickedAtom);
+        m_eyecandy->drawZoom(widget, m_clickedAtom, m_clickedAtom->pos());
       }
       else if(m_rightButtonPressed && selectedSize)
       {
         m_eyecandy->drawRotation(widget, m_clickedAtom,
-            m_xAngleEyecandy, m_yAngleEyecandy);
+            m_xAngleEyecandy, m_yAngleEyecandy, m_clickedAtom->pos());
       }
     }
     else if(selectedSize)

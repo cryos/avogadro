@@ -53,14 +53,14 @@ namespace Avogadro {
       void setColor(const Color &color);
       Color color() const;
 
-      void drawRotation(GLWidget *widget, const Eigen::Vector3d center, double radius, double xAngle, double yAngle);
-      void drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle);
+      void drawRotation(GLWidget *widget, const Eigen::Vector3d& center, double radius, double xAngle, double yAngle);
+      void drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle, const Eigen::Vector3d &center);
 
-      void drawTranslation(GLWidget *widget, const Eigen::Vector3d center, double size, double shift);
-      void drawTranslation(GLWidget *widget, Atom *clickedAtom);
+      void drawTranslation(GLWidget *widget, const Eigen::Vector3d& center, double size, double shift);
+      void drawTranslation(GLWidget *widget, Atom *clickedAtom, const Eigen::Vector3d &center);
 
-      void drawZoom(GLWidget *widget, const Eigen::Vector3d center, double radius);
-      void drawZoom(GLWidget *widget, Atom *clickedAtom);
+      void drawZoom(GLWidget *widget, const Eigen::Vector3d& center, double radius);
+      void drawZoom(GLWidget *widget, Atom *clickedAtom, const Eigen::Vector3d &center);
   };
 
 }
