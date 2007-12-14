@@ -1,3 +1,10 @@
+2007-12-15  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/engines/hbondengine.[h,cpp],
+	libavogadro/src/engines/hbondsettingswidget.ui: Added hydrogen bond
+	engine. I was planning on drawing stippled lines, but it seems that
+	this isn't implemented yet.
+
 2007-12-13  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/tools/autoopttool.[h,cpp]: Added Numerical or
