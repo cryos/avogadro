@@ -329,18 +329,7 @@ namespace Avogadro
     int detailLevel = PAINTER_MAX_DETAIL_LEVEL / 3;
 
     if (m_dynamicScaling) {
-      Eigen::Vector3d transformedCenter = d->widget->camera()->modelview() * center;
-      double distance = transformedCenter.norm();
-
-      // perform a rough form of frustum culling
-      double dot = transformedCenter.z() / distance;
-      if ( dot > PAINTER_FRUSTUM_CULL_TRESHOLD )
-      {
-        resetName();
-        return;
-      }
-      
-      double apparentRadius = radius / distance;
+      double apparentRadius = radius / d->widget->camera()->distance(center);
       detailLevel = 1 + static_cast<int> ( floor (PAINTER_SPHERES_DETAIL_COEFF
                         * ( sqrt ( apparentRadius ) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL )
                         ) );
@@ -365,18 +354,7 @@ namespace Avogadro
     int detailLevel = PAINTER_MAX_DETAIL_LEVEL / 3;
 
     if (m_dynamicScaling) {
-      Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
-      double distance = transformedEnd1.norm();
-
-      // perform a rough form of frustum culling
-      double dot = transformedEnd1.z() / distance;
-      if (dot > PAINTER_FRUSTUM_CULL_TRESHOLD)
-      {
-        resetName();
-        return;
-      }
-      
-      double apparentRadius = radius / distance;
+      double apparentRadius = radius / d->widget->camera()->distance(end1);
       detailLevel = 1 + static_cast<int> ( floor (
                                                     PAINTER_CYLINDERS_DETAIL_COEFF
                                                     * ( sqrt ( apparentRadius ) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL )
@@ -402,18 +380,7 @@ namespace Avogadro
     int detailLevel = PAINTER_MAX_DETAIL_LEVEL / 3;
 
     if (m_dynamicScaling) {
-      Eigen::Vector3d transformedEnd1 = d->widget->camera()->modelview() * end1;
-      double distance = transformedEnd1.norm();
-
-      // perform a rough form of frustum culling
-      double dot = transformedEnd1.z() / distance;
-      if (dot > PAINTER_FRUSTUM_CULL_TRESHOLD)
-      {
-        resetName();
-        return;
-      }
-      
-      double apparentRadius = radius / distance;
+      double apparentRadius = radius / d->widget->camera()->distance(end1);
       detailLevel = 1 + static_cast<int> ( floor (
                                                     PAINTER_CYLINDERS_DETAIL_COEFF
                                                     * ( sqrt ( apparentRadius ) - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL )
@@ -1088,16 +1055,8 @@ namespace Avogadro
   {
     if(!d->isValid()) { return 0; }
     d->textRenderer->begin ( d->widget );
-    Eigen::Vector3d transformedPos = d->widget->camera()->modelview() * pos;
-
-    // perform a rough form of frustum culling
-    double dot = transformedPos.z() / transformedPos.norm();
-    if ( dot > PAINTER_FRUSTUM_CULL_TRESHOLD ) return 0;
-
     int val = d->textRenderer->draw ( pos, string );
-
     d->textRenderer->end( );
-
     return val;
   }
 
