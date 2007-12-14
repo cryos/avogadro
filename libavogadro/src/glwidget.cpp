@@ -1214,8 +1214,11 @@ namespace Avogadro {
     glLoadIdentity();
     d->camera->applyModelview();
 
-    // now actually render
+    // now actually render using low quality a.k.a. "quickrender"
+    bool oldQuickRender = d->quickRender;
+    d->quickRender = true;
     render();
+    d->quickRender = oldQuickRender;
 
     // returning to normal rendering mode
     hit_count = glRenderMode( GL_RENDER );
