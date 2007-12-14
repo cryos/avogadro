@@ -101,6 +101,9 @@ namespace Avogadro {
 
   protected:
     Atom *              m_clickedAtom;
+    Eigen::Vector3d     m_referencePoint; // the reference point for movement
+                                          // i.e the center of the clicked atom,
+                                          // or of the visible part of the molecule
     bool                m_leftButtonPressed;  // rotation
     bool                m_midButtonPressed;   // scale / zoom
     bool                m_rightButtonPressed; // translation

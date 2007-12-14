@@ -334,8 +334,12 @@ namespace Avogadro
 
       // perform a rough form of frustum culling
       double dot = transformedCenter.z() / distance;
-      if ( dot > PAINTER_FRUSTUM_CULL_TRESHOLD ) return;
-
+      if ( dot > PAINTER_FRUSTUM_CULL_TRESHOLD )
+      {
+        resetName();
+        return;
+      }
+      
       double apparentRadius = radius / distance;
       detailLevel = 1 + static_cast<int> ( floor (PAINTER_SPHERES_DETAIL_COEFF
                         * ( sqrt ( apparentRadius ) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL )
@@ -366,8 +370,12 @@ namespace Avogadro
 
       // perform a rough form of frustum culling
       double dot = transformedEnd1.z() / distance;
-      if (dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return;
-
+      if (dot > PAINTER_FRUSTUM_CULL_TRESHOLD)
+      {
+        resetName();
+        return;
+      }
+      
       double apparentRadius = radius / distance;
       detailLevel = 1 + static_cast<int> ( floor (
                                                     PAINTER_CYLINDERS_DETAIL_COEFF
@@ -399,8 +407,12 @@ namespace Avogadro
 
       // perform a rough form of frustum culling
       double dot = transformedEnd1.z() / distance;
-      if (dot > PAINTER_FRUSTUM_CULL_TRESHOLD) return;
-
+      if (dot > PAINTER_FRUSTUM_CULL_TRESHOLD)
+      {
+        resetName();
+        return;
+      }
+      
       double apparentRadius = radius / distance;
       detailLevel = 1 + static_cast<int> ( floor (
                                                     PAINTER_CYLINDERS_DETAIL_COEFF
@@ -1143,7 +1155,13 @@ namespace Avogadro
         glPushName(d->id);
       }
   }
-
+  
+  void GLPainter::resetName()
+  {
+    d->type = Primitive::OtherType;
+    d->id = -1;
+  }
+  
   void GLPainter::popName()
   {
     // Pop the type and id if they are set, then reset them
@@ -1151,8 +1169,7 @@ namespace Avogadro
       {
         glPopName();
         glPopName();
-        d->type = Primitive::OtherType;
-        d->id = -1;
+        resetName();
       }
   }
 

@@ -377,6 +377,13 @@ namespace Avogadro
        * painted on the GLWidget.
        */
       void popName();
+      
+      /**
+       * Reset the GL name and type, called internally in popName() and also
+       * whenever frustum culling determines that a GL object must not be
+       * painted.
+       */
+      void resetName();
   };
 } // end namespace Avogadro
 
