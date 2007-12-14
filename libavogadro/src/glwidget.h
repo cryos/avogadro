@@ -605,12 +605,6 @@ namespace Avogadro {
        */
       inline double computeFramesPerSecond();
 
-      /**
-       * Member GLPainterDevice which is passed to the engines.
-       */
-      GLPainterDevice *pd;
-
-
     public Q_SLOTS:
 
       /**

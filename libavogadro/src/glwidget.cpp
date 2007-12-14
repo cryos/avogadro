@@ -154,6 +154,26 @@ namespace Avogadro {
   void GLHit::setMinZ( GLuint minZ ) { d->minZ = minZ; }
   void GLHit::setMaxZ( GLuint maxZ ) { d->maxZ = maxZ; }
 
+  class GLPainterDevice : public PainterDevice
+  {
+  public:
+    GLPainterDevice(GLWidget *gl) { widget = gl; }
+    ~GLPainterDevice() {}
+
+    Painter *painter() const { return widget->painter(); }
+    Camera *camera() const { return widget->camera(); }
+    bool isSelected( const Primitive *p ) const { return widget->isSelected(p); }
+    double radius( const Primitive *p ) const { return widget->radius(p); }
+    const Molecule *molecule() const { return widget->molecule(); }
+    Color *colorMap() const { return widget->colorMap();  }
+
+    int width() { return widget->width(); }
+    int height() { return widget->height(); }
+
+  private:
+    GLWidget *widget;
+  };
+  
   class GLWidgetPrivate
   {
   public:
@@ -178,7 +198,8 @@ namespace Avogadro {
                         quickRender(false),
                         renderAxes(false),
                         renderDebug(true),
-                        dlistQuick(0), dlistOpaque(0), dlistTransparent(0)
+                        dlistQuick(0), dlistOpaque(0), dlistTransparent(0),
+                        pd(0)
     {
       loadEngineFactories();
     }
@@ -198,6 +219,7 @@ namespace Avogadro {
         glDeleteLists(dlistTransparent, 1);
     }
 
+    void updateListQuick();
     static void loadEngineFactories();
     static QList<EngineFactory *> engineFactories;
     static QHash<QString, EngineFactory *> engineClassFactory;
@@ -255,7 +277,11 @@ namespace Avogadro {
     GLuint                 dlistQuick;
     GLuint                 dlistOpaque;
     GLuint                 dlistTransparent;
-
+  
+    /**
+      * Member GLPainterDevice which is passed to the engines.
+      */
+    GLPainterDevice *pd;
   };
 
   QList<EngineFactory *> GLWidgetPrivate::engineFactories;
@@ -297,6 +323,29 @@ namespace Avogadro {
         enginesLoaded = true;
       }
   }
+  
+  void GLWidgetPrivate::updateListQuick()
+  {
+    // Create a display list cache
+    if (updateCache) {
+      qDebug() << "Making new quick display lists...";
+      if (dlistQuick == 0)
+        dlistQuick = glGenLists(1);
+
+      // Don't use dynamic scaling when rendering quickly
+      painter->setDynamicScaling(false);
+
+      glNewList(dlistQuick, GL_COMPILE);
+      foreach(Engine *engine, engines)
+        if(engine->isEnabled())
+          engine->renderQuick(pd, updateCache);
+      glEndList();
+
+      updateCache = false;
+      painter->setDynamicScaling(true);
+    }
+  }
+
 
 #ifdef ENABLE_THREADED_GL
   class GLThread : public QThread
@@ -372,35 +421,15 @@ namespace Avogadro {
   }
 #endif
 
-  class GLPainterDevice : public PainterDevice
-  {
-  public:
-    GLPainterDevice(GLWidget *gl) { widget = gl; }
-    ~GLPainterDevice() {}
-
-    Painter *painter() const { return widget->painter(); }
-    Camera *camera() const { return widget->camera(); }
-    bool isSelected( const Primitive *p ) const { return widget->isSelected(p); }
-    double radius( const Primitive *p ) const { return widget->radius(p); }
-    const Molecule *molecule() const { return widget->molecule(); }
-    Color *colorMap() const { return widget->colorMap();  }
-
-    int width() { return widget->width(); }
-    int height() { return widget->height(); }
-
-  private:
-    GLWidget *widget;
-  };
-
   GLWidget::GLWidget( QWidget *parent )
-    : QGLWidget( parent ), d( new GLWidgetPrivate ), pd ( new GLPainterDevice(this) )
+    : QGLWidget( parent ), d( new GLWidgetPrivate )
   {
     constructor();
   }
 
   GLWidget::GLWidget( const QGLFormat &format, QWidget *parent,
                       const GLWidget *shareWidget )
-    : QGLWidget( format, parent, shareWidget ), d( new GLWidgetPrivate ), pd ( new GLPainterDevice(this) )
+    : QGLWidget( format, parent, shareWidget ), d( new GLWidgetPrivate )
   {
     constructor(shareWidget);
   }
@@ -408,7 +437,7 @@ namespace Avogadro {
   GLWidget::GLWidget( Molecule *molecule,
                       const QGLFormat &format, QWidget *parent,
                       const GLWidget *shareWidget )
-    : QGLWidget( format, parent, shareWidget ), d( new GLWidgetPrivate ), pd ( new GLPainterDevice(this) )
+    : QGLWidget( format, parent, shareWidget ), d( new GLWidgetPrivate )
   {
     constructor(shareWidget);
     setMolecule( molecule );
@@ -442,14 +471,15 @@ namespace Avogadro {
 
   void GLWidget::constructor(const GLWidget *shareWidget)
   {
+    d->pd = new GLPainterDevice(this);
     if(shareWidget && isSharing()) {
       // we are sharing contexts
       d->painter = static_cast<GLPainter *>(shareWidget->painter());
     }
     else
-      {
-        d->painter = new GLPainter();
-      }
+    {
+      d->painter = new GLPainter();
+    }
     d->painter->incrementShare();
 
     setSizePolicy( QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding );
@@ -601,25 +631,7 @@ namespace Avogadro {
     // Use renderQuick if the view is being moved, otherwise full render
     if (d->quickRender) {
 
-      // Create a display list cache
-      if (d->updateCache) {
-        qDebug() << "Making new quick display lists...";
-        if (d->dlistQuick == 0)
-          d->dlistQuick = glGenLists(1);
-
-        // Don't use dynamic scaling when rendering quickly
-        d->painter->setDynamicScaling(false);
-
-        glNewList(d->dlistQuick, GL_COMPILE);
-        foreach(Engine *engine, d->engines)
-          if(engine->isEnabled())
-            engine->renderQuick(pd, d->updateCache);
-        glEndList();
-
-        d->updateCache = false;
-        d->painter->setDynamicScaling(true);
-      }
-
+      d->updateListQuick();
       qDebug() << "Calling quick display lists...";
       glCallList(d->dlistQuick);
       if (d->uc) renderCrystal(d->dlistQuick);
@@ -637,7 +649,7 @@ namespace Avogadro {
       if (d->uc) glNewList(d->dlistOpaque, GL_COMPILE);
       foreach(Engine *engine, d->engines)
         if(engine->isEnabled())
-          engine->renderOpaque(pd);
+          engine->renderOpaque(d->pd);
       if (d->uc) { // end the main list and render the opaque crystal
         glEndList();
         renderCrystal(d->dlistOpaque);
@@ -647,7 +659,7 @@ namespace Avogadro {
       if (d->uc) glNewList(d->dlistTransparent, GL_COMPILE);
       foreach(Engine *engine, d->engines)
         if(engine->isEnabled() && engine->flags() & Engine::Transparent)
-          engine->renderTransparent(pd);
+          engine->renderTransparent(d->pd);
       if (d->uc) { // end the main list and render the transparent bits
         glEndList();
         renderCrystal(d->dlistTransparent);
@@ -713,7 +725,7 @@ namespace Avogadro {
     glPushMatrix();
     glLoadIdentity();
     // Ensure the axes are of the same length
-    double aspectRatio = static_cast<double>(pd->width())/static_cast<double>(pd->height());
+    double aspectRatio = static_cast<double>(d->pd->width())/static_cast<double>(d->pd->height());
     glOrtho(0, aspectRatio, 0, 1, 0, 1);
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
@@ -722,17 +734,17 @@ namespace Avogadro {
     // Set the origin and calculate the positions of the axes
     Vector3d origin = Vector3d(0.07, 0.07, -.07);
     MatrixP3d axisTranslation;
-    axisTranslation.loadTranslation(pd->camera()->transformedXAxis() * 0.04);
+    axisTranslation.loadTranslation(d->pd->camera()->transformedXAxis() * 0.04);
     Vector3d aXa = axisTranslation * origin;
-    axisTranslation.loadTranslation(pd->camera()->transformedXAxis() * 0.06);
+    axisTranslation.loadTranslation(d->pd->camera()->transformedXAxis() * 0.06);
     Vector3d aX = axisTranslation * origin;
-    axisTranslation.loadTranslation(pd->camera()->transformedYAxis() * 0.04);
+    axisTranslation.loadTranslation(d->pd->camera()->transformedYAxis() * 0.04);
     Vector3d aYa = axisTranslation * origin;
-    axisTranslation.loadTranslation(pd->camera()->transformedYAxis() * 0.06);
+    axisTranslation.loadTranslation(d->pd->camera()->transformedYAxis() * 0.06);
     Vector3d aY = axisTranslation * origin;
-    axisTranslation.loadTranslation(pd->camera()->transformedZAxis() * 0.04);
+    axisTranslation.loadTranslation(d->pd->camera()->transformedZAxis() * 0.04);
     Vector3d aZa = axisTranslation * origin;
-    axisTranslation.loadTranslation(pd->camera()->transformedZAxis() * 0.06);
+    axisTranslation.loadTranslation(d->pd->camera()->transformedZAxis() * 0.06);
     Vector3d aZ = axisTranslation * origin;
 
     // Turn off dynamic scaling in the painter (cylinders don't render correctly)
@@ -765,22 +777,22 @@ namespace Avogadro {
     QList<Primitive *> list;
 
     // Draw all text in while
-    pd->painter()->setColor(1.0, 1.0, 1.0);
+    d->pd->painter()->setColor(1.0, 1.0, 1.0);
 
     int x = 5, y = 5;
-    y += pd->painter()->drawText(x, y, "---- " + tr("Debug Information") + " ----");
-    y += pd->painter()->drawText(x, y, tr("FPS") + ": " + QString::number(computeFramesPerSecond(), 'g', 3));
+    y += d->pd->painter()->drawText(x, y, "---- " + tr("Debug Information") + " ----");
+    y += d->pd->painter()->drawText(x, y, tr("FPS") + ": " + QString::number(computeFramesPerSecond(), 'g', 3));
 
-    y += pd->painter()->drawText(x, y, tr("View Size") + ": "
-                                 + QString::number(pd->width())
+    y += d->pd->painter()->drawText(x, y, tr("View Size") + ": "
+                                 + QString::number(d->pd->width())
                                  + " x "
-                                 + QString::number(pd->height()) );
+                                 + QString::number(d->pd->height()) );
 
     list = primitives().subList(Primitive::AtomType);
-    y += pd->painter()->drawText(x, y, tr("Atoms") + ": " + QString::number(list.size()));
+    y += d->pd->painter()->drawText(x, y, tr("Atoms") + ": " + QString::number(list.size()));
 
     list = primitives().subList(Primitive::BondType);
-    y += pd->painter()->drawText(x, y, tr("Bonds") + ": " + QString::number(list.size()));
+    y += d->pd->painter()->drawText(x, y, tr("Bonds") + ": " + QString::number(list.size()));
   }
 
   void GLWidget::paintGL()
@@ -863,6 +875,11 @@ namespace Avogadro {
     d->updateCache = true;
     // Render the scene at full quality now the mouse button has been released
     update();
+    // update the quick display list, so that it will be ready for subsequent use.
+    // indeed, it is NOW that time is cheap. On the next mousePress, time will matter!
+    d->painter->begin(this);
+    d->updateListQuick();
+    d->painter->end();
   }
 
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
@@ -1348,7 +1365,7 @@ namespace Avogadro {
     double radius = 0.0;
     foreach( Engine *engine, d->engines ) {
       if ( engine->isEnabled() ) {
-        double engineRadius = engine->radius( pd, p );
+        double engineRadius = engine->radius( d->pd, p );
         if ( engineRadius > radius ) {
           radius = engineRadius;
         }
