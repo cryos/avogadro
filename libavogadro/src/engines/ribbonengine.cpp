@@ -100,6 +100,22 @@ namespace Avogadro {
     return true;
   }
 
+  bool RibbonEngine::renderQuick(PainterDevice *pd, bool)
+  {
+    // Just render cylinders betweeen the backbone...
+    double tRadius = m_radius / 2.0;
+    for (int i = 0; i < m_chains.size(); i++) {
+      if (m_chains[i].size() <= 1)
+        continue;
+      pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
+      pd->painter()->drawSphere(m_chains[i][0], tRadius);
+      for (int j = 1; j < m_chains[i].size(); j++) {
+        pd->painter()->drawSphere(m_chains[i][j], tRadius);
+	pd->painter()->drawCylinder(m_chains[i][j-1], m_chains[i][j], tRadius);
+      }
+    }
+  }
+
   double RibbonEngine::radius(const PainterDevice *, const Primitive *) const
   {
     return m_radius;
