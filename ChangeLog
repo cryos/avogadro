@@ -1,3 +1,8 @@
+2007-12-15  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/ringengine.*: Added support for colouring
+	the rings based upon the number of ring members.
+
 2007-12-15  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/tools/autoopttool.[h,cpp] Add support for

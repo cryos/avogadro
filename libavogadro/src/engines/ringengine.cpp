@@ -43,6 +43,13 @@ namespace Avogadro{
     m_alpha(1.0)
   {
     setDescription(tr("Renders rings"));
+    // Pretty colours for the chains - we can add more. Need a colour picker...
+    m_ringColors.push_back(Color(1., 0., 0.));
+    m_ringColors.push_back(Color(0., 1., 0.));
+    m_ringColors.push_back(Color(0., 0., 1.));
+    m_ringColors.push_back(Color(1., 0., 1.));
+    m_ringColors.push_back(Color(1., 1., 0.));
+    m_ringColors.push_back(Color(0., 1., 1.));
   }
 
   RingEngine::~RingEngine()
@@ -57,8 +64,6 @@ namespace Avogadro{
     // Special case for everything up to 7 membered rings.
     vector<OBRing *> rings;
     rings = const_cast<Molecule *>(pd->molecule())->GetSSSR();
-
-    pd->painter()->setColor(0.7, 0.7, 0.7);
 
     // Now actually draw the ring structures
     foreach(OBRing *r, rings)
@@ -109,6 +114,7 @@ namespace Avogadro{
     switch (ring.size()) {
       case 3:
         // Single triangle - easy
+	pd->painter()->setColor(&m_ringColors[0]);
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[1]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
@@ -116,6 +122,7 @@ namespace Avogadro{
         break;
       case 4:
         // Two triangles
+	pd->painter()->setColor(&m_ringColors[1]);
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[1]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
@@ -127,6 +134,7 @@ namespace Avogadro{
         break;
       case 5:
         // Three triangles
+	pd->painter()->setColor(&m_ringColors[2]);
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[1]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
@@ -142,6 +150,7 @@ namespace Avogadro{
         break;
       case 6:
         // Four triangles
+	pd->painter()->setColor(&m_ringColors[3]);
         pd->painter()->drawTriangle(static_cast<Atom *>(mol->GetAtom(ring[0]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[1]))->pos(),
                                     static_cast<Atom *>(mol->GetAtom(ring[2]))->pos(),
@@ -161,6 +170,7 @@ namespace Avogadro{
         break;
       default:
         // The generic case - find the centre of the ring and draw a triangle fan
+	pd->painter()->setColor(&m_ringColors[4]);
         Vector3d center;
         for (unsigned int i = 0; i < ring.size(); i++)
           center += static_cast<Atom *>(mol->GetAtom(ring[i]))->pos();
