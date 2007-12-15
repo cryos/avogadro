@@ -49,6 +49,17 @@ TARGET_LINK_LIBRARIES(wireengine avogadro-lib
 )
 INSTALL(TARGETS wireengine DESTINATION ${DESTINATION_DIR})
 
+# hydrogen bond
+set(hbondengine_SRCS hbondengine.cpp)
+qt4_automoc(${hbondengine_SRCS})
+qt4_wrap_ui(hbondengine_UIS hbondsettingswidget.ui)
+ADD_LIBRARY(hbondengine SHARED ${hbondengine_SRCS} ${hbondengine_UIS})
+TARGET_LINK_LIBRARIES(hbondengine avogadro-lib
+                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                ${OPENGL_LIBRARIES}
+)
+INSTALL(TARGETS hbondengine DESTINATION ${DESTINATION_DIR})
+
 # sphere
 set(sphereengine_SRCS sphereengine.cpp)
 qt4_wrap_ui(sphereengine_UIS spheresettingswidget.ui)
