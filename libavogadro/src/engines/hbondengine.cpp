@@ -57,6 +57,7 @@ namespace Avogadro {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
 
     pd->painter()->setColor(1.0, 1.0, 1.0);
+    int stipple = 0xF0F0; // pattern for lines
 
     FOR_PAIRS_OF_MOL (p, mol) {
       OBAtom *a = mol->GetAtom((*p)[0]);
@@ -76,7 +77,7 @@ namespace Avogadro {
         const Atom *atom2 = static_cast<const Atom *>( mol->GetAtom((*p)[1]) );
         const Vector3d & v1 = atom1->pos();
         const Vector3d & v2 = atom2->pos();
-        pd->painter()->drawMultiLine(v1, v2, m_width, 1, 0xFF00);
+        pd->painter()->drawMultiLine(v1, v2, m_width, 1, stipple);
       } else if (b->IsHbondDonorH() && a->IsHbondAcceptor()) {
         double angle = 180.0; // default, if no neighbours on H
       	FOR_NBORS_OF_ATOM (c, b)
@@ -88,7 +89,7 @@ namespace Avogadro {
         const Atom *atom2 = static_cast<const Atom *>( mol->GetAtom((*p)[1]) );
         const Vector3d & v1 = atom1->pos();
         const Vector3d & v2 = atom2->pos();
-        pd->painter()->drawMultiLine(v1, v2, m_width, 1, 0xFF00);
+        pd->painter()->drawMultiLine(v1, v2, m_width, 1, stipple);
       }
     }
     
