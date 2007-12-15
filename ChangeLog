@@ -1,3 +1,13 @@
+2007-12-15  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/tools/autoopttool.[h,cpp] Add support for
+	OBPluginList to dynamically get list of force field types.
+
+	* avogadro/src/extensions/forcefieldextension*: As above.
+
+	* libavogadro/src/engines/hbondengine.cpp: Add support for
+	stippled lines.
+
 2007-12-15  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/engines/hbondengine.[h,cpp],

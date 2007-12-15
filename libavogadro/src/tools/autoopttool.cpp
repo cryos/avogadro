@@ -59,6 +59,8 @@ namespace Avogadro {
           "Left Mouse: Click and drag atoms to move them"));
     m_forceField = OBForceField::FindForceField( "Ghemical" );
     m_thread = NULL;
+
+    OBPlugin::ListAsVector("forcefields", "ids", m_forceFieldList);
     //action->setShortcut(Qt::Key_F10);
   }
 
@@ -309,9 +311,8 @@ namespace Avogadro {
       labelFF->setMaximumHeight(15);
 
       m_comboFF = new QComboBox(m_settingsWidget);
-      m_comboFF->addItem(tr("Ghemical"));
-      m_comboFF->addItem(tr("MMFF94"));
-      m_comboFF->addItem(tr("UFF"));
+      for (int i = 0; i < m_forceFieldList.size(); ++i)
+        m_comboFF->addItem(m_forceFieldList[i].c_str());
 
       QLabel* labelAlg = new QLabel(tr("Algorithm:"));
       labelAlg->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -442,12 +443,7 @@ namespace Avogadro {
       m_block = true;
     }
 
-    if (m_comboFF->currentIndex() == 2)
-      m_forceField = OBForceField::FindForceField( "UFF" );
-    else if (m_comboFF->currentIndex() == 1)
-      m_forceField = OBForceField::FindForceField( "MMFF94" );
-    else
-      m_forceField = OBForceField::FindForceField( "Ghemical" );
+    m_forceField = OBForceField::FindForceField(m_forceFieldList[m_comboFF->currentIndex()]);
 
     m_thread = new AutoOptThread(m_glwidget->molecule(), m_forceField, 
         m_comboAlgorithm->currentIndex(), m_comboGradients->currentIndex(),

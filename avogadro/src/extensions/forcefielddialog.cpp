@@ -45,7 +45,7 @@ namespace Avogadro {
     OBPlugin::ListAsVector("forcefields", "ids", forcefieldList);
     ui.ForceFieldComboBox->clear();
     for (int i = 0; i < forcefieldList.size(); ++i)
-      ui.ForceFieldComboBox->addItem(QString(forcefieldList[i].c_str()));
+      ui.ForceFieldComboBox->addItem(forcefieldList[i].c_str());
 
     m_forceFieldID = 0; // ghemical
     m_nSteps = 100;

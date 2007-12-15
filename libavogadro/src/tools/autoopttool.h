@@ -134,6 +134,8 @@ namespace Avogadro {
       int 			m_numConstraints;
       AutoOptThread *           m_thread;
 
+      std::vector<std::string>  m_forceFieldList;
+
       QComboBox*                m_comboFF;
       QComboBox*                m_comboAlgorithm;
       QComboBox*                m_comboGradients;
