@@ -81,6 +81,8 @@ namespace Avogadro {
       ForceFieldDialog *m_Dialog;
       ConformerSearchDialog *m_conformerDialog;
       ConstraintsDialog *m_ConstraintsDialog;
+
+      std::vector<std::string> m_forcefieldList;
   };
 
   class ForceFieldExtensionFactory : public QObject, public ExtensionFactory

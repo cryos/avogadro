@@ -41,21 +41,11 @@
       <item row="0" column="1" >
        <widget class="QComboBox" name="ForceFieldComboBox" >
         <property name="currentIndex" >
-         <number>1</number>
+         <number>0</number>
         </property>
         <item>
          <property name="text" >
           <string>Ghemical</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>MMFF94</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>UFF</string>
          </property>
         </item>
        </widget>

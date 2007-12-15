@@ -38,15 +38,16 @@ using namespace OpenBabel;
 namespace Avogadro
 {
   enum ForceFieldExtensionIndex
-  {
-    OptimizeGeometryIndex = 0,
-    CalculateEnergyIndex,
-    ConformerSearchIndex,
-    SetupForceFieldIndex,
-    ConstraintsIndex,
-    IgnoreAtomsIndex,
-    FixAtomsIndex
-  };
+    {
+      OptimizeGeometryIndex = 0,
+      CalculateEnergyIndex,
+      ConformerSearchIndex,
+      SetupForceFieldIndex,
+      ConstraintsIndex,
+      IgnoreAtomsIndex,
+      FixAtomsIndex,
+      SeparatorIndex
+    };
 
   ForceFieldExtension::ForceFieldExtension( QObject *parent ) : QObject( parent )
   {
@@ -66,6 +67,17 @@ namespace Avogadro
       action->setData(OptimizeGeometryIndex);
       m_actions.append( action );
 
+
+      action = new QAction( this );
+      action->setText( tr("Setup Force Field..." ));
+      action->setData(SetupForceFieldIndex);
+      m_actions.append( action );
+
+      action = new QAction( this );
+      action->setSeparator(true);
+      action->setData(SeparatorIndex);
+      m_actions.append( action );
+
       action = new QAction( this );
       action->setText( tr("Calculate Energy" ));
       action->setData(CalculateEnergyIndex);
@@ -77,8 +89,8 @@ namespace Avogadro
       m_actions.append( action );
 
       action = new QAction( this );
-      action->setText( tr("Setup Force Field..." ));
-      action->setData(SetupForceFieldIndex);
+      action->setSeparator(true);
+      action->setData(SeparatorIndex);
       m_actions.append( action );
 
       action = new QAction( this );
@@ -97,6 +109,7 @@ namespace Avogadro
       m_actions.append( action );
     }
 
+    OBPlugin::ListAsVector("forcefields", "ids", m_forcefieldList);
   }
 
   ForceFieldExtension::~ForceFieldExtension()
@@ -110,23 +123,15 @@ namespace Avogadro
   QString ForceFieldExtension::menuPath(QAction *action) const
   {
     int i = action->data().toInt();
-    switch(i) {
-      case CalculateEnergyIndex:
-      case ConformerSearchIndex:
-      case SetupForceFieldIndex:
-      case ConstraintsIndex:
-      case IgnoreAtomsIndex: 
-      case FixAtomsIndex: 
-        return tr("&Extensions") + ">" + tr("&Molecular Mechanics");
-        break;
-      default:
-        break;
-    };
-    return QString();
+
+    if (i == OptimizeGeometryIndex)
+      return QString();
+
+    return tr("&Extensions") + ">" + tr("&Molecular Mechanics");
   }
 
   QUndoCommand* ForceFieldExtension::performAction( QAction *action, Molecule *molecule,
-      GLWidget *widget, QTextEdit *textEdit )
+                                                    GLWidget *widget, QTextEdit *textEdit )
   {
     QUndoCommand *undo = NULL;
     OpenBabel::OBForceField *copyForceField = NULL;
@@ -134,116 +139,107 @@ namespace Avogadro
     ostringstream buff;
     
     OpenBabel::OBFFConstraints constraints = m_forceField->GetConstraints(); // load constraints
-    switch (m_Dialog->forceFieldID()) {
-    case 1:
-      m_forceField = OBForceField::FindForceField( "MMFF94" );
-      break;
-    case 2:
-      m_forceField = OBForceField::FindForceField( "UFF" );
-      break;
-    case 0:
-    default:
-      m_forceField = OBForceField::FindForceField( "Ghemical" );
-      break;
-    }
+
+    m_forceField = OBForceField::FindForceField(m_forcefieldList[m_Dialog->forceFieldID()]);
+
     m_forceField->SetConstraints(constraints); // save constraints
     m_ConstraintsDialog->setForceField(m_forceField);
 
-
     int i = action->data().toInt();
     switch ( i ) {
-      case SetupForceFieldIndex: // setup force field
-        m_Dialog->show();
+    case SetupForceFieldIndex: // setup force field
+      m_Dialog->show();
+      break;
+    case CalculateEnergyIndex: // calculate energy
+      if ( !m_forceField )
         break;
-      case CalculateEnergyIndex: // calculate energy
-        if ( !m_forceField )
-          break;
 
-        m_forceField->SetLogFile( &buff );
-        m_forceField->SetLogLevel( OBFF_LOGLVL_HIGH );
+      m_forceField->SetLogFile( &buff );
+      m_forceField->SetLogLevel( OBFF_LOGLVL_HIGH );
 
-        if ( !m_forceField->Setup( *molecule, m_constraints->constraints() ) ) {
-          qDebug() << "Could not set up force field on " << molecule;
-          break;
-        }
-
-        m_forceField->Energy();
-        textEdit->append( tr( buff.str().c_str() ) );
+      if ( !m_forceField->Setup( *molecule, m_constraints->constraints() ) ) {
+        qDebug() << "Could not set up force field on " << molecule;
         break;
-      case ConformerSearchIndex: // conformer search
-        if (!m_forceField)
-          break;
+      }
 
-        m_conformerDialog->setup(molecule, m_forceField, m_constraints, textEdit, 
-	    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence());
-        m_conformerDialog->show();
+      m_forceField->Energy();
+      textEdit->append( tr( buff.str().c_str() ) );
+      break;
+    case ConformerSearchIndex: // conformer search
+      if (!m_forceField)
         break;
-      case OptimizeGeometryIndex: // geometry optimization
-        if (!m_forceField)
-          break;
+
+      m_conformerDialog->setup(molecule, m_forceField, m_constraints, textEdit, 
+                               0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence());
+      m_conformerDialog->show();
+      break;
+    case OptimizeGeometryIndex: // geometry optimization
+      if (!m_forceField)
+        break;
 	
-	undo = new ForceFieldCommand( molecule, m_forceField, m_constraints, textEdit, 
-	    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), 
-	    m_Dialog->convergence(), 0 );
+      undo = new ForceFieldCommand( molecule, m_forceField, m_constraints, textEdit, 
+                                    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), 
+                                    m_Dialog->convergence(), 0 );
  
-        undo->setText( QObject::tr( "Geometric Optimization" ) );
-        break;
-      case ConstraintsIndex: // show constraints dialog
-        m_ConstraintsDialog->setMolecule(molecule);
-        m_ConstraintsDialog->setForceField(m_forceField);
-        m_ConstraintsDialog->show();
-        break;
-      case IgnoreAtomsIndex: // ignore the selected atoms
-        selectedAtoms = widget->selectedPrimitives();
+      undo->setText( QObject::tr( "Geometric Optimization" ) );
+      break;
+    case ConstraintsIndex: // show constraints dialog
+      m_ConstraintsDialog->setMolecule(molecule);
+      m_ConstraintsDialog->setForceField(m_forceField);
+      m_ConstraintsDialog->show();
+      break;
+    case IgnoreAtomsIndex: // ignore the selected atoms
+      selectedAtoms = widget->selectedPrimitives();
 
-	for (int i = 0; i < selectedAtoms.size(); ++i) {
-          if (selectedAtoms[i]->type() == Primitive::AtomType) {
-            Atom *atom = static_cast<Atom *>(selectedAtoms[i]);
-	    m_constraints->addIgnore(atom->GetIdx());
-          }
-	}
+      for (int i = 0; i < selectedAtoms.size(); ++i) {
+        if (selectedAtoms[i]->type() == Primitive::AtomType) {
+          Atom *atom = static_cast<Atom *>(selectedAtoms[i]);
+          m_constraints->addIgnore(atom->GetIdx());
+        }
+      }
         
-	// copy constraints to all force fields
-	copyForceField = m_forceField;
-        m_forceField = OBForceField::FindForceField( "Ghemical" );
-        m_forceField->SetConstraints(m_constraints->constraints());
-        m_forceField = OBForceField::FindForceField( "MMFF94" );
-        m_forceField->SetConstraints(m_constraints->constraints());
-        m_forceField = OBForceField::FindForceField( "UFF" );
-        m_forceField->SetConstraints(m_constraints->constraints());
-        m_forceField = copyForceField;
+      // copy constraints to all force fields
+      copyForceField = m_forceField;
+      m_forceField = OBForceField::FindForceField( "Ghemical" );
+      m_forceField->SetConstraints(m_constraints->constraints());
+      m_forceField = OBForceField::FindForceField( "MMFF94" );
+      m_forceField->SetConstraints(m_constraints->constraints());
+      m_forceField = OBForceField::FindForceField( "UFF" );
+      m_forceField->SetConstraints(m_constraints->constraints());
+      m_forceField = copyForceField;
 
-	break;
-      case FixAtomsIndex: // fix the selected atom positions
-        selectedAtoms = widget->selectedPrimitives();
+      break;
 
-	for (int i = 0; i < selectedAtoms.size(); ++i) {
-          if (selectedAtoms[i]->type() == Primitive::AtomType) {
-            Atom *atom = static_cast<Atom *>(selectedAtoms[i]);
-	    m_constraints->addAtomConstraint(atom->GetIdx());
-          }
-	}
+    case FixAtomsIndex: // fix the selected atom positions
+      selectedAtoms = widget->selectedPrimitives();
+
+      for (int i = 0; i < selectedAtoms.size(); ++i) {
+        if (selectedAtoms[i]->type() == Primitive::AtomType) {
+          Atom *atom = static_cast<Atom *>(selectedAtoms[i]);
+          m_constraints->addAtomConstraint(atom->GetIdx());
+        }
+      }
         
-	// copy constraints to all force fields
-	copyForceField = m_forceField;
-        m_forceField = OBForceField::FindForceField( "Ghemical" );
-        m_forceField->SetConstraints(m_constraints->constraints());
-        m_forceField = OBForceField::FindForceField( "MMFF94" );
-        m_forceField->SetConstraints(m_constraints->constraints());
-        m_forceField = OBForceField::FindForceField( "UFF" );
-        m_forceField->SetConstraints(m_constraints->constraints());
-        m_forceField = copyForceField;
+      // copy constraints to all force fields
+      copyForceField = m_forceField;
+      m_forceField = OBForceField::FindForceField( "Ghemical" );
+      m_forceField->SetConstraints(m_constraints->constraints());
+      m_forceField = OBForceField::FindForceField( "MMFF94" );
+      m_forceField->SetConstraints(m_constraints->constraints());
+      m_forceField = OBForceField::FindForceField( "UFF" );
+      m_forceField->SetConstraints(m_constraints->constraints());
+      m_forceField = copyForceField;
 
-	break;
+      break;
     }
 
     return undo;
   }
 
   ForceFieldThread::ForceFieldThread( Molecule *molecule, OpenBabel::OBForceField* forceField,
-                                  ConstraintsModel* constraints, QTextEdit *textEdit, int forceFieldID,
-				  int nSteps, int algorithm, int gradients, int convergence, int task,
-				  QObject *parent ) : QThread( parent )
+                                      ConstraintsModel* constraints, QTextEdit *textEdit, int forceFieldID,
+                                      int nSteps, int algorithm, int gradients, int convergence, int task,
+                                      QObject *parent ) : QThread( parent )
   {
     m_cycles = 0;
     m_molecule = molecule;
@@ -338,7 +334,7 @@ namespace Avogadro
       while (m_forceField->SystematicRotorSearchNextConformer(m_nSteps)) {
         m_forceField->GetConformers( *m_molecule );
         m_molecule->update();
-	m_cycles++;
+        m_cycles++;
         m_mutex.lock();
         if ( m_stop ) {
           m_mutex.unlock();
@@ -347,12 +343,12 @@ namespace Avogadro
         m_mutex.unlock();
         emit stepsTaken( (int) ((double) m_cycles / n * 100));
       }
-   } else if ( m_task == 2 ) {
+    } else if ( m_task == 2 ) {
       m_forceField->RandomRotorSearchInitialize(m_numConformers, m_nSteps);
       while (m_forceField->RandomRotorSearchNextConformer(m_nSteps)) {
         m_forceField->GetConformers( *m_molecule );
         m_molecule->update();
-	m_cycles++;
+        m_cycles++;
         m_mutex.lock();
         if ( m_stop ) {
           m_mutex.unlock();
@@ -381,21 +377,21 @@ namespace Avogadro
   }
 
   ForceFieldCommand::ForceFieldCommand( Molecule *molecule, OpenBabel::OBForceField* forceField,
-                                    ConstraintsModel* constraints, QTextEdit *textEdit,
-				    int forceFieldID, int nSteps, int algorithm, int gradients,
-				    int convergence, int task ) :
-      m_nSteps( nSteps ),
-      m_task( task ),
-      m_molecule( molecule ),
-      m_constraints( constraints ),
-      m_textEdit( textEdit ),
-      m_thread( 0 ),
-      m_dialog( 0 ),
-      m_detached( false )
+                                        ConstraintsModel* constraints, QTextEdit *textEdit,
+                                        int forceFieldID, int nSteps, int algorithm, int gradients,
+                                        int convergence, int task ) :
+    m_nSteps( nSteps ),
+    m_task( task ),
+    m_molecule( molecule ),
+    m_constraints( constraints ),
+    m_textEdit( textEdit ),
+    m_thread( 0 ),
+    m_dialog( 0 ),
+    m_detached( false )
   {
     m_thread = new ForceFieldThread( molecule, forceField, constraints,
-                                   textEdit, forceFieldID, nSteps, algorithm,
-                                   gradients, convergence, task );
+                                     textEdit, forceFieldID, nSteps, algorithm,
+                                     gradients, convergence, task );
 
     m_moleculeCopy = *molecule;
   }
