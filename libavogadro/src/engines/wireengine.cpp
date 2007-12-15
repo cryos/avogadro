@@ -166,7 +166,8 @@ namespace Avogadro {
     }
 
     // optional line stipple to use for aromatic bonds
-    int stipple = 0xF0F0;
+    //    int stipple = 0xF0F0;
+    int stipple = 0xFFFF;
 
     map->set(atom1);
     pd->painter()->setColor(map);

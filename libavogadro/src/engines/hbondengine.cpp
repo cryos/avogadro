@@ -40,10 +40,10 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Eigen;
 
-namespace Avogadro{
+namespace Avogadro {
 
   HBondEngine::HBondEngine(QObject *parent) : Engine(parent), m_settingsWidget(0), 
-      m_width(2), m_radius(2.0), m_angle(120)
+                                              m_width(2), m_radius(2.0), m_angle(120)
   {
     setDescription(tr("Renders hydrogen bonds"));
   }
@@ -67,28 +67,28 @@ namespace Avogadro{
 
       if (a->IsHbondDonorH() && b->IsHbondAcceptor()) {
         double angle = 180.0; // default, if no neighbours on H
-	FOR_NBORS_OF_ATOM (c, a)
-	  angle = c->GetAngle(a, b);
-	if (angle < m_angle)
-	  continue;
+        FOR_NBORS_OF_ATOM (c, a)
+          angle = c->GetAngle(a, b);
+        if (angle < m_angle)
+          continue;
 
-	const Atom *atom1 = static_cast<const Atom *>( mol->GetAtom((*p)[0]) );
+        const Atom *atom1 = static_cast<const Atom *>( mol->GetAtom((*p)[0]) );
         const Atom *atom2 = static_cast<const Atom *>( mol->GetAtom((*p)[1]) );
         const Vector3d & v1 = atom1->pos();
         const Vector3d & v2 = atom2->pos();
-        pd->painter()->drawMultiLine(v1, v2, m_width, 1, 0xF000);
+        pd->painter()->drawMultiLine(v1, v2, m_width, 1, 0xFF00);
       } else if (b->IsHbondDonorH() && a->IsHbondAcceptor()) {
         double angle = 180.0; // default, if no neighbours on H
       	FOR_NBORS_OF_ATOM (c, b)
-	  angle = c->GetAngle(b, a);
-	if (angle < m_angle)
-	  continue;
+          angle = c->GetAngle(b, a);
+        if (angle < m_angle)
+          continue;
 
-	const Atom *atom1 = static_cast<const Atom *>( mol->GetAtom((*p)[0]) );
+        const Atom *atom1 = static_cast<const Atom *>( mol->GetAtom((*p)[0]) );
         const Atom *atom2 = static_cast<const Atom *>( mol->GetAtom((*p)[1]) );
         const Vector3d & v1 = atom1->pos();
         const Vector3d & v2 = atom2->pos();
-        pd->painter()->drawMultiLine(v1, v2, 2.0, 1, 0XF000);
+        pd->painter()->drawMultiLine(v1, v2, m_width, 1, 0xFF00);
       }
     }
     
@@ -97,19 +97,19 @@ namespace Avogadro{
 
   double HBondEngine::radius(const PainterDevice *, const Primitive *) const
   {
-    return 0.;
+    return 0.0;
   }
 
   QWidget* HBondEngine::settingsWidget()
   {
     if(!m_settingsWidget)
-    {
-      m_settingsWidget = new HBondSettingsWidget();
-      connect(m_settingsWidget->widthSlider, SIGNAL(valueChanged(int)), this, SLOT(setWidth(int)));
-      connect(m_settingsWidget->radiusSpin, SIGNAL(valueChanged(double)), this, SLOT(setRadius(double)));
-      connect(m_settingsWidget->angleSpin, SIGNAL(valueChanged(double)), this, SLOT(setAngle(double)));
-      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
-    }
+      {
+        m_settingsWidget = new HBondSettingsWidget();
+        connect(m_settingsWidget->widthSlider, SIGNAL(valueChanged(int)), this, SLOT(setWidth(int)));
+        connect(m_settingsWidget->radiusSpin, SIGNAL(valueChanged(double)), this, SLOT(setRadius(double)));
+        connect(m_settingsWidget->angleSpin, SIGNAL(valueChanged(double)), this, SLOT(setAngle(double)));
+        connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      }
     return m_settingsWidget;
   }
   

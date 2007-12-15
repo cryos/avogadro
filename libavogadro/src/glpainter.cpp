@@ -469,7 +469,7 @@ namespace Avogadro
 
   void GLPainter::drawMultiLine(const Eigen::Vector3d &end1,
                                 const Eigen::Vector3d &end2,
-                                double lineWidth, int order, short )
+                                double lineWidth, int order, short stipple)
   {
     // Draw multiple lines between two points of the specified thickness
     if(!d->isValid()) { return; }
@@ -529,6 +529,9 @@ namespace Avogadro
     glLineWidth(lineWidth);
     glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
 
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(1, stipple);
+
     // Draw the line
     if (order == 1) {
       glBegin(GL_LINE_STRIP);
@@ -560,11 +563,7 @@ namespace Avogadro
     }
     glPopMatrix();
 
-//     if (order == 5) { // aromatic interior bond
-//       glEnable(GL_LINE_STIPPLE);
-//       glLineStipple(1, stipple);
-//       glDisable(GL_LINE_STIPPLE);
-//     }
+    glDisable(GL_LINE_STIPPLE);
 
     glEnable(GL_LIGHTING);
   }
