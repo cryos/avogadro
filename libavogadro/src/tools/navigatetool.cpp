@@ -64,20 +64,8 @@ namespace Avogadro {
     return 2500000;
   }
 
-  QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+  void NavigateTool::computeReferencePoint(GLWidget *widget)
   {
-    m_lastDraggingPosition = event->pos();
-    m_leftButtonPressed = (event->buttons() & Qt::LeftButton
-        && event->modifiers() == Qt::NoModifier);
-    // On the Mac, either use a three-button mouse
-    // or hold down the Option key (AltModifier in Qt notation)
-    m_midButtonPressed = ( (event->buttons() & Qt::MidButton) ||
-        (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::AltModifier) );
-    // Hold down the Command key (ControlModifier in Qt notation) for right button
-    m_rightButtonPressed = ( (event->buttons() & Qt::RightButton) ||
-        (event->buttons() & Qt::LeftButton && (event->modifiers()== Qt::ControlModifier || event->modifiers() == Qt::MetaModifier )) );
-
-    m_clickedAtom = widget->computeClickedAtom(event->pos());
     if(m_clickedAtom) {
       m_referencePoint = m_clickedAtom->pos();
     }
@@ -92,14 +80,31 @@ namespace Avogadro {
         Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
         double atomDistance = transformedAtomPos.norm();
         double dot = transformedAtomPos.z() / atomDistance;
-        double weight = exp(-20. * (1. + dot));
+        double weight = exp(-30. * (1. + dot));
         sumOfWeights += weight;
         atomsBarycenter += weight * atom->pos();
       }
       atomsBarycenter /= sumOfWeights;
       m_referencePoint = atomsBarycenter;
     }
+  }
 
+  QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+  {
+    m_lastDraggingPosition = event->pos();
+    m_leftButtonPressed = (event->buttons() & Qt::LeftButton
+        && event->modifiers() == Qt::NoModifier);
+    // On the Mac, either use a three-button mouse
+    // or hold down the Option key (AltModifier in Qt notation)
+    m_midButtonPressed = ( (event->buttons() & Qt::MidButton) ||
+        (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::AltModifier) );
+    // Hold down the Command key (ControlModifier in Qt notation) for right button
+    m_rightButtonPressed = ( (event->buttons() & Qt::RightButton) ||
+        (event->buttons() & Qt::LeftButton && (event->modifiers()== Qt::ControlModifier || event->modifiers() == Qt::MetaModifier )) );
+
+    m_clickedAtom = widget->computeClickedAtom(event->pos());
+    computeReferencePoint(widget);
+    
     // Initialise the angle variables on any new mouse press
     m_yAngleEyecandy = 0.;
     m_xAngleEyecandy = 0.;
@@ -168,17 +173,12 @@ namespace Avogadro {
 
   QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
   {
-    m_clickedAtom = widget->computeClickedAtom(event->pos());
-    if( m_clickedAtom )
-    {
-      // Perform the zoom toward clicked atom
-      Navigate::zoom(widget, m_clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
-    }
-    else
-    {
-      // Perform the zoom toward molecule center
-      Navigate::zoom(widget, widget->center(), - MOUSE_WHEEL_SPEED * event->delta());
-    }
+    m_clickedAtom = 0; // no need for mouse wheel to detect exactly the atom,
+                       // the referencePoint will be accurate enough, and
+                       // on large molecules doing a gl selection on every
+                       // mousewheel event is too expensive.
+    computeReferencePoint(widget); // needs m_clickedAtom to be set.
+    Navigate::zoom(widget, m_referencePoint, - MOUSE_WHEEL_SPEED * event->delta());
     widget->update();
 
     return 0;

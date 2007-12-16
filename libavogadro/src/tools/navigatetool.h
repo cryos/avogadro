@@ -112,6 +112,9 @@ namespace Avogadro {
     QPoint              m_lastDraggingPosition;
 
     Eyecandy * m_eyecandy;
+    
+    /** recomputes m_referencePoint. Uses the value of m_clickedAtom. */
+    void computeReferencePoint(GLWidget *widget);
   };
 
   /**
