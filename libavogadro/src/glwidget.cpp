@@ -875,11 +875,6 @@ namespace Avogadro {
     d->updateCache = true;
     // Render the scene at full quality now the mouse button has been released
     update();
-    // update the quick display list, so that it will be ready for subsequent use.
-    // indeed, it is NOW that time is cheap. On the next mousePress, time will matter!
-    d->painter->begin(this);
-    d->updateListQuick();
-    d->painter->end();
   }
 
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
