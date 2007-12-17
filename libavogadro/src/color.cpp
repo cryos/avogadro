@@ -73,6 +73,14 @@ namespace Avogadro {
     m_alpha = alpha;
   }
 
+  void Color::setToSelectionColor()
+  {
+    m_red = 0.3;
+    m_green = 0.6;
+    m_blue = 1.0;
+    m_alpha = 0.7;
+  }
+
   void Color::set(const Primitive *)
   {
     return;

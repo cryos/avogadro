@@ -1,3 +1,11 @@
+2007-12-17  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/color.[h, cpp]: New method setToSelectionColor
+	to allow overloading and customization of the selection color in
+	render engines.
+
+	* libavogadro/src/engines/*.cpp: Use it.
+
 2007-12-15  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engines/ringengine.*: Added support for colouring

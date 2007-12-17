@@ -120,7 +120,7 @@ namespace Avogadro {
       if (pd->isSelected(p))
       {
         const Atom *a = static_cast<const Atom *>(p);
-        map->set( 0.3, 0.6, 1.0, 0.7 );
+        map->setToSelectionColor();
         glEnable( GL_BLEND );
         pd->painter()->setColor(map);
         pd->painter()->setName(a);

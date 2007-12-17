@@ -73,6 +73,12 @@ namespace Avogadro {
                      GLfloat alpha = 1.0 );
 
     /**
+     * Set the color to the selection color
+     * By default, the selection color is (0.3, 0.6, 1.0, 0.7)
+     * which is a light transparent blue */
+    virtual void setToSelectionColor();
+
+    /**
      * Set the color based on the supplied Primitive.
      * If NULL is passed do nothing.
      * @param Primitive the color is derived from this primitive.

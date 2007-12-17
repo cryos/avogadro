@@ -87,7 +87,6 @@ namespace Avogadro {
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
 
-    const float selectionColor[3] = {0.3, 0.6, 1.0};
     glPushName(Primitive::AtomType);
     glPushName(a->GetIdx());
 
@@ -103,7 +102,8 @@ namespace Avogadro {
 
     // All dots are scaled by the VDW radius -- subtle, but effective
     if (pd->isSelected(a)) {
-      glColor3fv(selectionColor);
+      map->setToSelectionColor();
+      map->apply();
       glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * (size + 1.0));
     }
     else {

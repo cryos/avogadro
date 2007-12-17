@@ -190,7 +190,7 @@ namespace Avogadro
         double shift = 0.15;
         int order = b->GetBO();
 
-        map->set( 0.3, 0.6, 1.0, 0.7 );
+        map->setToSelectionColor();
         glEnable( GL_BLEND );
         pd->painter()->setColor( map );
         pd->painter()->setName( b );
@@ -217,7 +217,7 @@ namespace Avogadro
 
       // Render the selection highlight
       if ( pd->isSelected( a ) ) {
-        map->set( 0.3, 0.6, 1.0, 0.7 );
+        map->setToSelectionColor();
         glEnable( GL_BLEND );
         pd->painter()->setColor( map );
         pd->painter()->setName( a );
