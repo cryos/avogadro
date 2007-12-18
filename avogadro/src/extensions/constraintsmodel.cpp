@@ -68,7 +68,7 @@ namespace Avogadro
 	       return QString("Fix Atom Y");
            else if (m_constraints.GetConstraintType(index.row()) == OBFF_CONST_ATOM_Z)
 	       return QString("Fix Atom Z");
-           else if (m_constraints.GetConstraintType(index.row()) == OBFF_CONST_BOND)
+           else if (m_constraints.GetConstraintType(index.row()) == OBFF_CONST_DISTANCE)
 	       return QString("Bond length");
            else if (m_constraints.GetConstraintType(index.row()) == OBFF_CONST_ANGLE)
 	       return QString("Angle");

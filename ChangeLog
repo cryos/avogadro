@@ -1,3 +1,9 @@
+2007-12-18  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/autoopttool.[h,cpp]: Add support for molecular
+	dynamics. This should probably move to it's own tool, where you can
+	record and play trajectories.
+
 2007-12-17  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/color.[h, cpp]: New method setToSelectionColor
@@ -16,7 +22,7 @@
 
 2007-12-15  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
-	* libavogadro/src/tools/autoopttool.[h,cpp] Add support for
+	* libavogadro/src/tools/autoopttool.[h,cpp]: Add support for
 	OBPluginList to dynamically get list of force field types.
 
 	* avogadro/src/extensions/forcefieldextension*: As above.

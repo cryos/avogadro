@@ -147,8 +147,8 @@ namespace Avogadro {
 	  
       if(m_clickedAtom)
       {
-        //m_forceField->GetConstraints().AddAtomConstraint(m_clickedAtom->GetIdx());
-        //m_numConstraints = m_forceField->GetConstraints().Size();
+        m_forceField->GetConstraints().AddAtomConstraint(m_clickedAtom->GetIdx());
+        m_numConstraints = m_forceField->GetConstraints().Size();
       }
     }
 
@@ -164,7 +164,7 @@ namespace Avogadro {
     m_rightButtonPressed = false;
     if (m_clickedAtom != 0)
     {
-      //m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
+      m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
     }
 
     m_clickedAtom = 0;
@@ -319,8 +319,10 @@ namespace Avogadro {
       labelAlg->setMaximumHeight(15);
 
       m_comboAlgorithm = new QComboBox(m_settingsWidget);
-      m_comboAlgorithm->addItem(tr("Conjugate Gradients"));
       m_comboAlgorithm->addItem(tr("Steepest Descent"));
+      m_comboAlgorithm->addItem(tr("Molecular Dynamics (300K)"));
+      m_comboAlgorithm->addItem(tr("Molecular Dynamics (600K)"));
+      m_comboAlgorithm->addItem(tr("Molecular Dynamics (900K)"));
       
       QLabel* labelGra = new QLabel(tr("Gradients:"));
       labelGra->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -423,7 +425,7 @@ namespace Avogadro {
 
       if (m_clickedAtom != 0)
       {
-        //m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
+        m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
       }
       m_clickedAtom = 0;
       m_leftButtonPressed = false;
@@ -484,6 +486,7 @@ namespace Avogadro {
     m_gradients = gradients;
     m_convergence = convergence;
     m_stop = false;
+    m_velocities = false;
   }
 
   void AutoOptThread::run()
@@ -509,10 +512,24 @@ namespace Avogadro {
     }
     else if(m_algorithm == 1)
     {
-      if(m_gradients == 0)
-        m_forceField->ConjugateGradients(2,pow(10.0, -m_convergence ), OBFF_ANALYTICAL_GRADIENT);
-      else if(m_gradients == 1)
-        m_forceField->ConjugateGradients(2,pow(10.0, -m_convergence ), OBFF_NUMERICAL_GRADIENT);
+      if(m_gradients == 0) {
+	m_forceField->MolecularDynamicsTakeNSteps(50, 300, 0.001, OBFF_ANALYTICAL_GRADIENT);
+      } else if(m_gradients == 1)
+	m_forceField->MolecularDynamicsTakeNSteps(50, 300, 0.001, OBFF_NUMERICAL_GRADIENT);
+    }
+    else if(m_algorithm == 2)
+    {
+      if(m_gradients == 0) {
+	m_forceField->MolecularDynamicsTakeNSteps(50, 600, 0.001, OBFF_ANALYTICAL_GRADIENT);
+      } else if(m_gradients == 1)
+	m_forceField->MolecularDynamicsTakeNSteps(50, 600, 0.001, OBFF_NUMERICAL_GRADIENT);
+    }
+    else if(m_algorithm == 3)
+    {
+      if(m_gradients == 0) {
+	m_forceField->MolecularDynamicsTakeNSteps(50, 900, 0.001, OBFF_ANALYTICAL_GRADIENT);
+      } else if(m_gradients == 1)
+	m_forceField->MolecularDynamicsTakeNSteps(50, 900, 0.001, OBFF_NUMERICAL_GRADIENT);
     }
     if(m_stop)
     {

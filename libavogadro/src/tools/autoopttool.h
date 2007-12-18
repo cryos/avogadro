@@ -63,6 +63,7 @@ namespace Avogadro {
     private:
       Molecule *m_molecule;
       OpenBabel::OBForceField * m_forceField;
+      bool m_velocities;
       int m_algorithm;
       int m_gradients;
       int m_convergence;
