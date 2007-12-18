@@ -6,6 +6,9 @@
 
 	* libavogadro/src/engines/*.cpp: Use it.
 
+	* libavogadro/src/tools/*.cpp: Add Navigate::zoom() to wheel
+	operations for all tools.
+
 2007-12-15  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engines/ringengine.*: Added support for colouring

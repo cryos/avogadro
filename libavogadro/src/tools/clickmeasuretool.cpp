@@ -23,6 +23,8 @@
  **********************************************************************/
 
 #include "clickmeasuretool.h"
+#include "navigate.h"
+
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -144,9 +146,28 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* ClickMeasureTool::wheel(GLWidget*, const QWheelEvent*)
+  QUndoCommand* ClickMeasureTool::wheel(GLWidget*widget, const QWheelEvent*event)
   {
-    return 0;
+    // let's set the reference to be the center of the visible
+    // part of the molecule.
+    Eigen::Vector3d atomsBarycenter(0., 0., 0.);
+    double sumOfWeights = 0.;
+    std::vector<OpenBabel::OBNodeBase*>::iterator i;
+    for ( Atom *atom = static_cast<Atom*>(widget->molecule()->BeginAtom(i));
+          atom; atom = static_cast<Atom*>(widget->molecule()->NextAtom(i))) {
+      Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
+      double atomDistance = transformedAtomPos.norm();
+      double dot = transformedAtomPos.z() / atomDistance;
+      double weight = exp(-30. * (1. + dot));
+      sumOfWeights += weight;
+      atomsBarycenter += weight * atom->pos();
+    }
+    atomsBarycenter /= sumOfWeights;
+
+    Navigate::zoom(widget, atomsBarycenter, - MOUSE_WHEEL_SPEED * event->delta());
+    widget->update();
+
+    return NULL;
   }
 
   bool ClickMeasureTool::paint(GLWidget *widget)

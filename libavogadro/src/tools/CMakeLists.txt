@@ -19,7 +19,7 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 set(drawtool_SRCS drawtool.cpp)
 qt4_add_resources(drawtool_RC_SRCS drawtool.qrc)
 qt4_automoc(${drawtool_SRCS})
-ADD_LIBRARY(drawtool SHARED drawcommand.cpp drawtool.cpp
+ADD_LIBRARY(drawtool SHARED drawcommand.cpp drawtool.cpp navigate.cpp
                     ${drawtool_RC_SRCS} )
 TARGET_LINK_LIBRARIES(drawtool
     ${OPENBABEL2_LIBRARIES}
@@ -60,7 +60,8 @@ INSTALL(TARGETS bondcentrictool DESTINATION ${DESTINATION_DIR})
 set(clickmeasuretool_SRCS clickmeasuretool.cpp)
 qt4_add_resources(clickmeasuretool_RC_SRCS clickmeasuretool.qrc)
 qt4_automoc(${clickmeasuretool_SRCS})
-ADD_LIBRARY(clickmeasuretool SHARED ${clickmeasuretool_SRCS} ${clickmeasuretool_RC_SRCS} )
+ADD_LIBRARY(clickmeasuretool SHARED navigate.cpp 
+    ${clickmeasuretool_SRCS} ${clickmeasuretool_RC_SRCS} )
 TARGET_LINK_LIBRARIES(clickmeasuretool
     ${OPENBABEL2_LIBRARIES}
     ${QT_LIBRARIES}
@@ -114,7 +115,7 @@ INSTALL(TARGETS navigatetool DESTINATION ${DESTINATION_DIR})
 set(manipulatetool_SRCS manipulatetool.cpp)
 qt4_add_resources(manipulatetool_RC_SRCS manipulatetool.qrc)
 qt4_automoc(${manipulatetool_SRCS})
-ADD_LIBRARY(manipulatetool SHARED eyecandy.cpp
+ADD_LIBRARY(manipulatetool SHARED eyecandy.cpp navigate.cpp
     ${manipulatetool_SRCS} ${manipulatetool_RC_SRCS})
 TARGET_LINK_LIBRARIES(manipulatetool
 	${OPENBABEL2_LIBRARIES}
