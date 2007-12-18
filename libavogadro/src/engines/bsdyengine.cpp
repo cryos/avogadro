@@ -248,7 +248,7 @@ namespace Avogadro
 
   void BSDYEngine::setBondRadius( int value )
   {
-    m_bondRadius = value * 0.1;
+    m_bondRadius = value * 0.05;
     emit changed();
   }
 
