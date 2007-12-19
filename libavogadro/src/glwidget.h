@@ -569,6 +569,13 @@ namespace Avogadro {
       virtual void renderCrystal(GLuint displayList);
 
       /**
+       * Render crystal unit cell axes
+       * called by renderCrystal() automatically
+       *
+       */
+      virtual void renderCrystalAxes();
+
+      /**
        * Render x, y, z axes as an overlay on the bottom left of the widget.
        */
       virtual void renderAxesOverlay();

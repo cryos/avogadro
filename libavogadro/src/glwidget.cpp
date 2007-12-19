@@ -715,6 +715,114 @@ namespace Avogadro {
         }
       }
     } // end of for loops
+
+    renderCrystalAxes();
+  }
+
+  // Render the unit cell axes, indicating the frame of the cell
+  //       4---5
+  //      /   /|
+  //     /   / |    (0 is the "origin" for this unit cell)
+  //    3---2  6    (7 is in the back corner = cellVector[2])
+  //    |   | /     (3 is cellVector[1])
+  //    |   |/      (1 is cellVector[0])
+  //    0---1
+  void GLWidget::renderCrystalAxes()
+  {
+    std::vector<vector3> cellVectors = d->uc->GetCellVectors();
+    vector3 v0(0.0, 0.0, 0.0);
+    vector3 v1(cellVectors[0]);
+    vector3 v3(cellVectors[1]);
+    vector3 v7(cellVectors[2]);
+    vector3 v2, v4, v5, v6;
+    v2 = v1 + v3;
+    v4 = v3 + v7;
+    v6 = v1 + v7;
+    v5 = v4 + v1;
+
+    glDisable(GL_LIGHTING);
+    glColor4f(1.0, 1.0, 1.0, 0.7);
+    glLineWidth(2.0);
+    for (int a = 0; a < d->aCells; a++) {
+      for (int b = 0; b < d->bCells; b++)  {
+        for (int c = 0; c < d->cCells; c++)  {
+          glPushMatrix();
+          glTranslated(
+                       cellVectors[0].x() * a
+                       + cellVectors[1].x() * b
+                       + cellVectors[2].x() * c,
+                       cellVectors[0].y() * a
+                       + cellVectors[1].y() * b
+                       + cellVectors[2].y() * c,
+                       cellVectors[0].z() * a
+                       + cellVectors[1].z() * b
+                       + cellVectors[2].z() * c );
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v0.AsArray());
+          glVertex3dv(v1.AsArray());
+          glEnd();
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v0.AsArray());
+          glVertex3dv(v3.AsArray());
+          glEnd();
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v0.AsArray());
+          glVertex3dv(v7.AsArray());
+          glEnd();
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v1.AsArray());
+          glVertex3dv(v2.AsArray());
+          glEnd();
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v3.AsArray());
+          glVertex3dv(v2.AsArray());
+          glEnd();
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v3.AsArray());
+          glVertex3dv(v4.AsArray());
+          glEnd();
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v5.AsArray());
+          glVertex3dv(v4.AsArray());
+          glEnd();
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v5.AsArray());
+          glVertex3dv(v2.AsArray());
+          glEnd();
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v5.AsArray());
+          glVertex3dv(v6.AsArray());
+          glEnd();
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v1.AsArray());
+          glVertex3dv(v6.AsArray());
+          glEnd();
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v6.AsArray());
+          glVertex3dv(v7.AsArray());
+          glEnd();
+
+          glBegin(GL_LINE_STRIP);
+          glVertex3dv(v4.AsArray());
+          glVertex3dv(v7.AsArray());
+          glEnd();
+
+          glPopMatrix();
+        }
+      }
+    } // end of for loops
+    glEnable(GL_LIGHTING);
   }
 
   void GLWidget::renderAxesOverlay()
