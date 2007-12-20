@@ -90,6 +90,10 @@ namespace Avogadro {
       explicit Camera(const GLWidget *parent = 0, double angleOfViewY = 40.0);
       /** The destructor. */
       virtual ~Camera();
+      /**
+       * The copy constructor - it is useful to be able to copy the Camera.
+       */
+      Camera(const Camera *camera);
       /** @return a pointer to the parent GLWidget
         * @sa setParent() */
       const GLWidget *parent() const;

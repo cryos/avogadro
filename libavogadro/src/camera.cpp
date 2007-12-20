@@ -53,6 +53,14 @@ namespace Avogadro
     delete d;
   }
 
+  Camera::Camera(const Camera *camera) : d(new CameraPrivate)
+  {
+    d->modelview = camera->d->modelview;
+    d->projection = camera->d->projection;
+    d->parent = camera->d->parent;
+    d->angleOfViewY = camera->d->angleOfViewY;
+  }
+
   void Camera::setParent(const GLWidget *parent)
   {
     d->parent = parent;
