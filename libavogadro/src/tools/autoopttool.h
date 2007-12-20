@@ -139,7 +139,6 @@ namespace Avogadro {
 
       QComboBox*                m_comboFF;
       QComboBox*                m_comboAlgorithm;
-      QComboBox*                m_comboGradients;
       QSpinBox*                 m_convergenceSpinBox;
       QPushButton*              m_buttonStartStop;
       QCheckBox*                m_fixedMovable;

@@ -1,3 +1,8 @@
+2007-12-19  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/tools/autoopt.[h,cpp]: Use new
+	HasAnalyticalGradients() method from Open Babel SVN trunk.
+
 2007-12-19  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/glwidget.cpp: Fix the race condition in the render
