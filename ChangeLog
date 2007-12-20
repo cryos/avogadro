@@ -1,3 +1,8 @@
+2007-12-19  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glwidget.cpp: Fix the race condition in the render
+	quick code.
+
 2007-12-18  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/tools/autoopttool.[h,cpp]: Add support for molecular

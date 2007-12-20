@@ -964,8 +964,14 @@ namespace Avogadro {
         delete command;
       }
     }
+#ifdef ENABLE_THREADED_GL
+    d->renderMutex.lock();
+#endif
     // Use quick render while the mouse is down
     d->quickRender = true;
+#ifdef ENABLE_THREADED_GL
+    d->renderMutex.unlock();
+#endif
   }
 
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
@@ -977,10 +983,16 @@ namespace Avogadro {
         d->undoStack->push( command );
       }
     }
+#ifdef ENABLE_THREADED_GL
+    d->renderMutex.lock();
+#endif
     // Stop using quickRender
     d->quickRender = false;
     // Invalidate the cache
     d->updateCache = true;
+#ifdef ENABLE_THREADED_GL
+    d->renderMutex.unlock();
+#endif
     // Render the scene at full quality now the mouse button has been released
     update();
   }
