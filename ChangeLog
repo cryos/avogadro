@@ -1,3 +1,13 @@
+2008-01-09  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* avogadro/src/extensions/conformersearchdialog.cpp: Make use of new
+	OpenBabel::OBRotorKeys class to determine the number of conformers
+	generated with the Systematic rotor search.
+
+	* avogadro/src/extensions/constraints*: Renamed BondConstraint to
+	DistanceConstraint (latest OpenBabel needed, sorry for the
+	inconvenience)
+
 2007-12-19  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/tools/autoopt.[h,cpp]: Use new

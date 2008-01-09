@@ -69,7 +69,7 @@ namespace Avogadro
            else if (m_constraints.GetConstraintType(index.row()) == OBFF_CONST_ATOM_Z)
 	       return QString("Fix Atom Z");
            else if (m_constraints.GetConstraintType(index.row()) == OBFF_CONST_DISTANCE)
-	       return QString("Bond length");
+	       return QString("Distance");
            else if (m_constraints.GetConstraintType(index.row()) == OBFF_CONST_ANGLE)
 	       return QString("Angle");
            else if (m_constraints.GetConstraintType(index.row()) == OBFF_CONST_TORSION)
@@ -161,10 +161,10 @@ namespace Avogadro
     endInsertRows();
   }
   
-  void ConstraintsModel::addBondConstraint(int a, int b, double length)
+  void ConstraintsModel::addDistanceConstraint(int a, int b, double length)
   {
     beginInsertRows(QModelIndex(), m_constraints.Size(), m_constraints.Size()); 
-    m_constraints.AddBondConstraint(a, b, length);
+    m_constraints.AddDistanceConstraint(a, b, length);
     endInsertRows();
   }
   

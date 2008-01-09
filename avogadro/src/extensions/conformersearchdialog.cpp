@@ -74,6 +74,7 @@ namespace Avogadro {
       ui.weightedRadio->setChecked(false);
       OpenBabel::OBRotorList rl;
       rl.Setup((OpenBabel::OBMol&)*m_molecule);
+      /*
       OpenBabel::OBRotorIterator ri;
       OpenBabel::OBRotor *rotor = rl.BeginRotor(ri);
       int numConformers = 0;
@@ -81,9 +82,15 @@ namespace Avogadro {
         for (unsigned int j = 0; j < rotor->GetResolution().size(); j++) { // foreach torsion
 	  numConformers++;
         }
-     
+      */
+      OpenBabel::OBRotorKeys rotorKeys;
+      OpenBabel::OBRotorIterator ri;
+      OpenBabel::OBRotor *rotor = rl.BeginRotor(ri);
+      for (int i = 1; i < rl.Size() + 1; ++i, rotor = rl.NextRotor(ri)) // foreach rotor
+        rotorKeys.AddRotor(rotor->GetResolution().size());
+    
       ui.numSpin->setEnabled(false);
-      ui.numSpin->setValue(numConformers);
+      ui.numSpin->setValue(rotorKeys.NumKeys());
     }
   }
   

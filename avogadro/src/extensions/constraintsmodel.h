@@ -61,7 +61,7 @@ namespace Avogadro {
        void addAtomXConstraint(int index);
        void addAtomYConstraint(int index);
        void addAtomZConstraint(int index);
-       void addBondConstraint(int a, int b, double length);
+       void addDistanceConstraint(int a, int b, double length);
        void addAngleConstraint(int a, int b, int c, double angle);
        void addTorsionConstraint(int a, int b, int c, int d, double torsion);
 
