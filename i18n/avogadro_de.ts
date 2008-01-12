@@ -383,7 +383,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../avogadro/src/extensions/dockingextension.cpp" line="167"/>
         <source>Select ligand</source>
-        <translation type="unfinished"></translation>
+        <translation>Ligand auswählen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/dockingextension.cpp" line="182"/>
@@ -408,7 +408,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../avogadro/src/extensions/dockingextension.cpp" line="199"/>
         <source>Create a ligand first...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zuerst Ligand erstellen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/dockingextension.cpp" line="203"/>
@@ -418,7 +418,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../avogadro/src/extensions/dockingextension.cpp" line="163"/>
         <source>Your ligands are stored in a different file, open that file to view them</source>
-        <translation type="unfinished"></translation>
+        <translation>Liganden sind in einer anderen Datei gespeichert, die zum Betrachten geöffnet werden kann</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/dockingextension.cpp" line="203"/>
@@ -433,7 +433,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../avogadro/src/extensions/dockingextension.cpp" line="59"/>
         <source>Create Ligand...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ligand erstellen...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/dockingextension.cpp" line="64"/>
@@ -443,7 +443,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../avogadro/src/extensions/dockingextension.cpp" line="73"/>
         <source>Select Ligand</source>
-        <translation type="unfinished"></translation>
+        <translation>Ligand auswählen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/dockingextension.cpp" line="78"/>
@@ -3830,7 +3830,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../avogadro/src/extensions/liganddialog.ui" line="13"/>
         <source>Create ligand</source>
-        <translation type="unfinished"></translation>
+        <translation>Ligand erstellen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/liganddialog.ui" line="34"/>
@@ -3840,17 +3840,17 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../avogadro/src/extensions/liganddialog.ui" line="38"/>
         <source>create ligand from current selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Ligand aus Auswahl erstellen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/liganddialog.ui" line="43"/>
         <source>create ligand from residue name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ligand aus Restname erstellen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/liganddialog.ui" line="48"/>
         <source>create ligand from file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ligand aus Datei erstellen...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/liganddialog.ui" line="60"/>
