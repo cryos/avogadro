@@ -340,12 +340,12 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
 <context>
     <name>Avogadro::ConformerSearchDialog</name>
     <message>
-        <location filename="../avogadro/src/extensions/conformersearchdialog.cpp" line="124"/>
+        <location filename="../avogadro/src/extensions/conformersearchdialog.cpp" line="131"/>
         <source>Number of atoms: %1</source>
         <translation>Anzahl der Atome: %1</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/extensions/conformersearchdialog.cpp" line="125"/>
+        <location filename="../avogadro/src/extensions/conformersearchdialog.cpp" line="132"/>
         <source>Number of rotatable bonds: %1</source>
         <translation>Anzahl der rotierbaren Bindungen: %1</translation>
     </message>
@@ -353,27 +353,27 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
 <context>
     <name>Avogadro::ConstraintsDialog</name>
     <message>
-        <location filename="../avogadro/src/extensions/constraintsdialog.cpp" line="277"/>
+        <location filename="../avogadro/src/extensions/constraintsdialog.cpp" line="373"/>
         <source>Add constraint</source>
         <translation>Einschränkung hinzufügen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/extensions/constraintsdialog.cpp" line="236"/>
+        <location filename="../avogadro/src/extensions/constraintsdialog.cpp" line="332"/>
         <source>Your molecule must contain at least one atom to add a constraint</source>
         <translation>Das Molekül muss aus mindestens einem Atom bestehen um eine Einschränkung hinzuzufügen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/extensions/constraintsdialog.cpp" line="259"/>
+        <location filename="../avogadro/src/extensions/constraintsdialog.cpp" line="355"/>
         <source>Your molecule must contain at least two atoms to add a bond constraint</source>
         <translation>Das Molekül muss aus mindestens zwei Atomen bestehen um eine Bindungs-Einschränkung hinzuzufügen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/extensions/constraintsdialog.cpp" line="268"/>
+        <location filename="../avogadro/src/extensions/constraintsdialog.cpp" line="364"/>
         <source>Your molecule must contain at least three atoms to add an angle constraint</source>
         <translation>Das Molekül muss aus mindestens drei Atomen bestehen um eine Winkel-Einschränkung hinzuzufügen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/extensions/constraintsdialog.cpp" line="278"/>
+        <location filename="../avogadro/src/extensions/constraintsdialog.cpp" line="374"/>
         <source>Your molecule must contain at least four atoms to add a torsion constraint</source>
         <translation>Das Molekül muss aus mindestens vier Atomen bestehen um eine Torsion-Einschränkung hinzuzufügen</translation>
     </message>
@@ -1168,7 +1168,7 @@ Rechte Maustaste: Atom löschen</translation>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="87"/>
         <source>Conformer Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Konformerensuche...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/forcefieldextension.cpp" line="97"/>
@@ -1777,7 +1777,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/propextension.cpp" line="83"/>
         <source>Conformers...</source>
-        <translation type="unfinished"></translation>
+        <translation>Konformeren...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/propextension.cpp" line="68"/>
@@ -1846,27 +1846,27 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="64"/>
         <source>Select by Element...</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl nach Element...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="201"/>
         <source>Select by residue</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl nach Rest</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="201"/>
         <source>Residue name</source>
-        <translation type="unfinished">Restname</translation>
+        <translation>Restname</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="69"/>
         <source>Select by Residue...</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl nach Rest...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="74"/>
         <source>Select Solvent</source>
-        <translation type="unfinished"></translation>
+        <translation>Lösungsmittel auswählen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/selectextension.cpp" line="201"/>
@@ -2018,7 +2018,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../avogadro/src/extensions/conformersearchdialog.ui" line="13"/>
         <source>Conformer Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Konformerensuche</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/conformersearchdialog.ui" line="19"/>
@@ -2038,7 +2038,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../avogadro/src/extensions/conformersearchdialog.ui" line="41"/>
         <source>Number of conformers</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der Konformeren</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/conformersearchdialog.ui" line="60"/>
@@ -2106,7 +2106,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../avogadro/src/extensions/constraintsdialog.ui" line="73"/>
         <source>Bond length</source>
-        <translation>Bindungs-Länge</translation>
+        <translation type="obsolete">Bindungs-Länge</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/constraintsdialog.ui" line="78"/>
@@ -2162,6 +2162,11 @@ Elementarzelle erzeugen?</translation>
         <location filename="../avogadro/src/extensions/constraintsdialog.ui" line="206"/>
         <source>OK</source>
         <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/extensions/constraintsdialog.ui" line="73"/>
+        <source>Distance</source>
+        <translation>Distanz</translation>
     </message>
 </context>
 <context>
@@ -3346,7 +3351,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2863"/>
         <source>Solvate with Water</source>
-        <translation type="unfinished"></translation>
+        <translation>In Wasser lösen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="2920"/>
@@ -3461,12 +3466,12 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3130"/>
         <source>Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Raster</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3135"/>
         <source>Grid-Free</source>
-        <translation type="unfinished"></translation>
+        <translation>Rasterfrei</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/gamessinputdialog.ui" line="3158"/>
@@ -3850,12 +3855,12 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../avogadro/src/extensions/liganddialog.ui" line="60"/>
         <source>Residue name</source>
-        <translation type="unfinished">Restname</translation>
+        <translation>Restname</translation>
     </message>
     <message>
         <location filename="../avogadro/src/extensions/liganddialog.ui" line="79"/>
         <source>The residue name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name des Restes</translation>
     </message>
 </context>
 <context>
