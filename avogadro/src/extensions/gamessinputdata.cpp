@@ -1712,12 +1712,6 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
   //   BasisTest = BasisTest && lBasis; //Make sure there really is a basis set defined
   // if (BasisTest) File << " $CONTRL NORMP=1 $END" << endl;
   //Point Group
-  if (( PointGroup>GAMESS_CI )&&( PointGroup<GAMESS_TD ) ) {
-    sprintf( Out, "%s %d", GetPointGroupText(), PGroupOrder );
-  } else {
-    sprintf( Out, "%s", GetPointGroupText() );
-  }
-  File << Out << endl;
   if (( PointGroup!=0 )&&( PointGroup!=1 ) ) File << "" << endl;
   //coordinates
   //   if (Coord == ZMTCoordType) { //"normal" style z-matrix
@@ -1731,6 +1725,13 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
        IData->EFP->GetGroupCount( GamessEFPGroup::EFPType ) == 0 ) {
     WriteHeaderToFile( File );
   }
+
+  if (( PointGroup>GAMESS_CI )&&( PointGroup<GAMESS_TD ) ) {
+    sprintf( Out, "%s %d", GetPointGroupText(), PGroupOrder );
+  } else {
+    sprintf( Out, "%s", GetPointGroupText() );
+  }
+  File << Out << endl;
 
   // we need the molecule!
   if ( !molecule ) { return; }

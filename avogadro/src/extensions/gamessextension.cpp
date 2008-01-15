@@ -74,6 +74,11 @@ namespace Avogadro
 
   GamessExtension::~GamessExtension()
   {
+    if(m_inputDialog)
+    {
+      m_inputDialog->close();
+      m_inputDialog->deleteLater();
+    }
   }
 
   QList<QAction *> GamessExtension::actions() const
