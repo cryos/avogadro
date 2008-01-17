@@ -63,17 +63,17 @@ TARGET_LINK_LIBRARIES(forcefieldextension
 INSTALL(TARGETS forcefieldextension DESTINATION ${DESTINATION_DIR})
 
 ### Docking
-set(dockingextension_SRCS dockingextension.cpp liganddialog.cpp pocketdialog.cpp)
-qt4_wrap_ui(dockingextension_UIS_H liganddialog.ui pocketdialog.ui)
-qt4_automoc(${dockingextension_SRCS})
-ADD_LIBRARY(dockingextension SHARED ${dockingextension_SRCS} ${dockingextension_UIS_H})
-TARGET_LINK_LIBRARIES(dockingextension
-	${OPENBABEL2_LIBRARIES}
-	${QT_LIBRARIES}
-    ${OPENGL_LIBRARIES}
-	avogadro-lib
-)
-INSTALL(TARGETS dockingextension DESTINATION ${DESTINATION_DIR})
+###set(dockingextension_SRCS dockingextension.cpp liganddialog.cpp pocketdialog.cpp)
+###qt4_wrap_ui(dockingextension_UIS_H liganddialog.ui pocketdialog.ui)
+###qt4_automoc(${dockingextension_SRCS})
+###ADD_LIBRARY(dockingextension SHARED ${dockingextension_SRCS} ${dockingextension_UIS_H})
+###TARGET_LINK_LIBRARIES(dockingextension
+###	${OPENBABEL2_LIBRARIES}
+###	${QT_LIBRARIES}
+###	${OPENGL_LIBRARIES}
+###	avogadro-lib
+###)
+###INSTALL(TARGETS dockingextension DESTINATION ${DESTINATION_DIR})
 
 
 ### hydrogens
