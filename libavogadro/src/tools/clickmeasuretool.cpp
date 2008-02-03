@@ -30,6 +30,7 @@
 #include <avogadro/glwidget.h>
 
 #include <openbabel/obiter.h>
+#include <openbabel/generic.h>
 
 #include <math.h>
 
@@ -77,18 +78,18 @@ namespace Avogadro {
     // If there's a left button (and no modifier keys) continue adding to the list
     if(m_hits.size() && (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::NoModifier))
     {
-      Atom *atom = (Atom *)molecule->GetAtom(m_hits[0].name());
-      if(m_hits[0].type() != Primitive::AtomType) {
+      if(m_hits[0].type() != Primitive::AtomType)
         return 0;
-      }
+
+      Atom *atom = (Atom *)molecule->GetAtom(m_hits[0].name());
 
       if(m_numSelectedAtoms < 3) {
-        // select the third one
+        // Select another atom
         m_selectedAtoms[m_numSelectedAtoms++] = atom;
 
         if(m_numSelectedAtoms == 2)
         {
-          m_vector[0] = m_selectedAtoms[0]->pos() - m_selectedAtoms[1]->pos();
+          m_vector[0] = m_selectedAtoms[1]->pos() - m_selectedAtoms[0]->pos();
           QString distanceString = tr("Distance: %1 %3").arg(
               QString::number(m_vector[0].norm()),
               QString::fromUtf8("Å"));
@@ -102,7 +103,7 @@ namespace Avogadro {
               QString::number(m_vector[1].norm()),
               QString::fromUtf8("Å"));
 
-
+          // Calculate the angle between the atoms
           Vector3d normalizedVectors[2];
           normalizedVectors[0] = m_vector[0].normalized();
           normalizedVectors[1] = m_vector[1].normalized();

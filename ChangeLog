@@ -1,3 +1,9 @@
+2008-02-03  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/tools/clickmeasuretool.cpp: Fix a bug where the
+	angle was not calculated correctly. Thanks to Albert DeFusco for
+	reporting the bug and providing a test case.
+
 2008-01-09  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/extensions/conformersearchdialog.cpp: Make use of new
