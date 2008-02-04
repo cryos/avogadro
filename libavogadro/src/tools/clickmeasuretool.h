@@ -2,6 +2,7 @@
   ClickMeasureTool - ClickMeasureTool Tool for Avogadro
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -49,7 +50,7 @@ namespace Avogadro {
     public:
       //! Constructor
       ClickMeasureTool(QObject *parent = 0);
-      //! Deconstructor
+      //! Destructor
       virtual ~ClickMeasureTool();
 
       //! \name Description methods
@@ -74,12 +75,18 @@ namespace Avogadro {
 
     private:
 
-      Qt::MouseButtons _buttons;
+      /*
+       * Calculates the relevant distances and angles and places them in member
+       * variables.
+       */
+      void calculateParameters();
 
-      bool                _movedSinceButtonPressed;
+      Qt::MouseButtons m_buttons;
 
-      QPoint              _initialDraggingPosition;
-      QPoint              _lastDraggingPosition;
+      bool                m_movedSinceButtonPressed;
+
+      QPoint              m_initialDraggingPosition;
+      QPoint              m_lastDraggingPosition;
 
       QVarLengthArray<Atom *, 4> m_selectedAtoms;
       int m_numSelectedAtoms;
@@ -89,8 +96,9 @@ namespace Avogadro {
       QComboBox *m_comboBondOrder;
       QVBoxLayout *m_layout;
 
-      Eigen::Vector3d m_vector[2];
+      Eigen::Vector3d m_vector[3];
       double m_angle;
+      double m_dihedral;
 
 
   };

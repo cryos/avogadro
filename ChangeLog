@@ -1,3 +1,10 @@
+2008-02-04  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/tools/clickmeasuretool.*: Added support for
+	measuring the dihedral angle. Also made the tool update dynamically as
+	the molecule is changed, optimised the label placement and ported it
+	to use the OpenBabel functions to find the angles concerned.
+
 2008-02-03  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/clickmeasuretool.cpp: Fix a bug where the

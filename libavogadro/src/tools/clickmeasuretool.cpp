@@ -2,6 +2,7 @@
   ClickMeasureTool - ClickMeasureTool Tool for Avogadro
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -83,40 +84,9 @@ namespace Avogadro {
 
       Atom *atom = (Atom *)molecule->GetAtom(m_hits[0].name());
 
-      if(m_numSelectedAtoms < 3) {
+      if(m_numSelectedAtoms < 4) {
         // Select another atom
         m_selectedAtoms[m_numSelectedAtoms++] = atom;
-
-        if(m_numSelectedAtoms == 2)
-        {
-          m_vector[0] = m_selectedAtoms[1]->pos() - m_selectedAtoms[0]->pos();
-          QString distanceString = tr("Distance: %1 %3").arg(
-              QString::number(m_vector[0].norm()),
-              QString::fromUtf8("Å"));
-          emit message(distanceString);
-        }
-        else if(m_numSelectedAtoms == 3)
-        {
-          m_vector[1] = m_selectedAtoms[1]->pos() - m_selectedAtoms[2]->pos();
-          QString distanceString = tr("Distance: %1 %3  %2 %3").arg(
-              QString::number(m_vector[0].norm()),
-              QString::number(m_vector[1].norm()),
-              QString::fromUtf8("Å"));
-
-          // Calculate the angle between the atoms
-          Vector3d normalizedVectors[2];
-          normalizedVectors[0] = m_vector[0].normalized();
-          normalizedVectors[1] = m_vector[1].normalized();
-
-          m_angle = acos(normalizedVectors[0].dot(normalizedVectors[1])) * 180/M_PI;
-          QString angleString = trUtf8("Angle: %1 %2").arg(
-              QString::number(m_angle),
-              QString::fromUtf8("°"));
-
-          emit message(angleString);
-          emit message(distanceString);
-        }
-
         widget->update();
       }
     }
@@ -170,20 +140,84 @@ namespace Avogadro {
 
     return NULL;
   }
+  
+  void ClickMeasureTool::calculateParameters()
+  {
+    // Calculate all parameters and store them in member variables.
+    if(m_numSelectedAtoms >= 2)
+    {
+      // Two atoms selected - distance measurement only
+      m_vector[0] = m_selectedAtoms[1]->pos() - m_selectedAtoms[0]->pos();
+      QString distanceString = tr("Distance (1->2): %1 %2").arg(
+    		  				   QString::number(m_vector[0].norm()),
+                               QString::fromUtf8("Å"));
+      emit message(distanceString);
+    }
+    if(m_numSelectedAtoms >= 3)
+    {
+      // Two distances and the angle between the three selected atoms
+      m_vector[1] = m_selectedAtoms[1]->pos() - m_selectedAtoms[2]->pos();
+      QString distanceString = tr("Distance (2->3): %1 %2").arg(
+                               QString::number(m_vector[1].norm()),
+                               QString::fromUtf8("Å"));
+        
+      // Calculate the angle between the atoms
+      m_angle = vectorAngle(vector3(m_vector[0].x(), m_vector[0].y(), m_vector[0].z()),
+      		  				vector3(m_vector[1].x(), m_vector[1].y(), m_vector[1].z()));
+      QString angleString = trUtf8("Angle: %1 %2").arg(
+                            QString::number(m_angle),
+                            QString::fromUtf8("°"));
+
+      emit message(angleString);
+      emit message(distanceString);
+    }
+    if(m_numSelectedAtoms >= 4)
+    {
+      // Three distances, bond angle and dihedral angle
+      m_vector[2] = m_selectedAtoms[2]->pos() - m_selectedAtoms[3]->pos();
+      QString distanceString = tr("Distance (3->4): %1 %2").arg(
+                               QString::number(m_vector[2].norm()),
+                               QString::fromUtf8("Å"));
+      m_dihedral = CalcTorsionAngle(vector3(m_selectedAtoms[0]->pos().x(),
+      		  								m_selectedAtoms[0]->pos().y(),
+      		  								m_selectedAtoms[0]->pos().z()),
+      		  						vector3(m_selectedAtoms[1]->pos().x(),
+      		  								m_selectedAtoms[1]->pos().y(),
+      		  								m_selectedAtoms[1]->pos().z()),
+              		  				vector3(m_selectedAtoms[2]->pos().x(),
+              		  						m_selectedAtoms[2]->pos().y(),
+              		  						m_selectedAtoms[2]->pos().z()),
+              		  				vector3(m_selectedAtoms[3]->pos().x(),
+              		  						m_selectedAtoms[3]->pos().y(),
+              		  						m_selectedAtoms[3]->pos().z()));
+      QString dihedralString = trUtf8("Dihedral Angle: %1 %2").arg(
+      		                   QString::number(m_dihedral),
+      		                   QString::fromUtf8("°"));
+      emit message(distanceString);
+      emit message(dihedralString);
+    }
+  }
 
   bool ClickMeasureTool::paint(GLWidget *widget)
   {
     if(0 < m_numSelectedAtoms)
     {
+      calculateParameters();
       // get GL Coordinates for text
       //     glPushMatrix();
 
-      QPoint labelPos(5, widget->height()-20);
-      QPoint distancePos[2];
-      distancePos[0] = QPoint(90, widget->height()-20 );
-      distancePos[1] = QPoint(150, widget->height()-20);
-      QPoint anglePos(50, widget->height()-40);
-      QPoint angleLabelPos( 5, widget->height()-40);
+      // Try to put the labels in a reasonable place on the display
+      QPoint labelPos(95, widget->height()-25);
+      QPoint distancePos[3];
+      distancePos[0] = QPoint(180, widget->height()-25);
+      distancePos[1] = QPoint(240, widget->height()-25);
+      distancePos[2] = QPoint(300, widget->height()-25);
+
+      QPoint angleLabelPos(95, widget->height()-45);
+      QPoint anglePos(180, widget->height()-45);
+
+      QPoint dihedralLabelPos(95, widget->height()-65);
+      QPoint dihedralPos(180, widget->height()-65);
 
       glColor3f(1.0,0.0,0.0);
       Vector3d pos = m_selectedAtoms[0]->pos();
@@ -206,14 +240,23 @@ namespace Avogadro {
         radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[1]->GetAtomicNum()) * 0.3;
         widget->painter()->drawText(textPos, tr("*2", "*2 is a number. You most likely don't need to translate this"));
 
-        if(m_numSelectedAtoms == 3)
+        if(m_numSelectedAtoms >= 3)
         {
-          // Then calculate the angle between the three selected atoms and display it
+          // Display a label on the third atom
           pos = m_selectedAtoms[2]->pos();
           radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[2]->GetAtomicNum()) * 0.3;
           textPos = pos+textRelPos;
           glColor3f(0.0,0.0,1.0);
           widget->painter()->drawText(textPos, tr("*3", "*3 is a number. You most likely don't need to translate this"));
+        }
+        if(m_numSelectedAtoms >= 4)
+        {
+          // Display a label on the fourth atom
+          pos = m_selectedAtoms[3]->pos();
+          radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[3]->GetAtomicNum()) * 0.3;
+          textPos = pos + textRelPos;
+          glColor3f(0.0,1.0,1.0);
+          widget->painter()->drawText(textPos, tr("*4", "*4 is a number. You most likely don't need to translate this"));
         }
         //       glLoadIdentity();
         glColor3f(1.0,1.0,1.0);
@@ -222,7 +265,8 @@ namespace Avogadro {
         glColor3f(1.0,1.0,0.0);
         widget->painter()->drawText(distancePos[0], QString::number(m_vector[0].norm(), 10, 2) + QString::fromUtf8(" Å"));
 
-        if(m_numSelectedAtoms == 3) {
+        if(m_numSelectedAtoms >= 3)
+        {
           glColor3f(1.0,1.0,1.0);
           widget->painter()->drawText(angleLabelPos, QString("Angle:"));
 
@@ -232,10 +276,22 @@ namespace Avogadro {
           glColor3f(0.0,1.0,1.0);
           widget->painter()->drawText(distancePos[1], QString::number(m_vector[1].norm(), 10, 2) + QString::fromUtf8(" Å"));
         }
+        
+        if(m_numSelectedAtoms >= 4)
+        {
+          glColor3f(1.0, 1.0, 1.0);
+          widget->painter()->drawText(dihedralLabelPos, QString("Dihedral:"));
+
+          glColor3f(0.6, 0.6, 0.6);
+          widget->painter()->drawText(dihedralPos, QString::number(m_dihedral, 10, 1) + QString::fromUtf8("°"));
+
+          glColor3f(1.0, 1.0, 1.0);
+          widget->painter()->drawText(distancePos[2], QString::number(m_vector[2].norm(), 10, 2) + QString::fromUtf8(" Å"));
+        }
 
 
         // If there are three atoms selected, draw the angle in question
-        if(m_numSelectedAtoms == 3)
+        if(m_numSelectedAtoms >= 3)
         {
           Vector3d origin = m_selectedAtoms[1]->pos();
           Vector3d d1 = m_selectedAtoms[0]->pos() - origin;
