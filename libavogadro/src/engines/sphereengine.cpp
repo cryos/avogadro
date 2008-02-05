@@ -55,7 +55,15 @@ namespace Avogadro {
     if(m_settingsWidget)
       m_settingsWidget->deleteLater();
   }
-
+  
+  SphereEngine* SphereEngine::clone() const
+  {
+    SphereEngine* engine = new SphereEngine(parent());
+    
+    engine->setName(name());
+    engine->setOpacity(20*m_alpha);
+    return engine;
+  }
   bool SphereEngine::renderOpaque(PainterDevice *pd)
   {
     // Render the opaque spheres if m_alpha is 1

@@ -48,6 +48,16 @@ namespace Avogadro {
     setDescription(tr("Wireframe rendering"));
   }
 
+  WireEngine* WireEngine::clone() const
+  {
+    WireEngine* engine = new WireEngine(parent());
+    
+    engine->setName(name());
+    engine->setShowDots(m_showDots);
+    engine->setShowMultipleBonds(m_showMulti);
+    return engine;
+  }
+
   bool WireEngine::renderOpaque(PainterDevice *pd)
   {
     QList<Primitive *> list;

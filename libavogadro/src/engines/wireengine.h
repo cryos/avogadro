@@ -48,6 +48,9 @@ namespace Avogadro {
       //! Deconstructor
       ~WireEngine() {}
 
+      //! Copy 
+      WireEngine *clone() const;
+      
       //! \name Render Methods
       //@{
       //! Render an Atom.

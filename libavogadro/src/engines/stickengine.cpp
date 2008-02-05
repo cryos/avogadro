@@ -49,6 +49,14 @@ namespace Avogadro {
   StickEngine::~StickEngine()
   {
   }
+  
+  StickEngine* StickEngine::clone() const
+  {
+    StickEngine* engine = new StickEngine(parent());
+    
+    engine->setName(name());
+    return engine;
+  }
 
   bool StickEngine::renderOpaque(PainterDevice *pd)
   {

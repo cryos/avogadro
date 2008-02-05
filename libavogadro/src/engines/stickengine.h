@@ -42,7 +42,10 @@ namespace Avogadro {
       StickEngine(QObject *parent=0);
       //! Deconstructor
       ~StickEngine();
-
+      
+      //! Copy 
+      StickEngine *clone() const;
+ 
       //! \name Render Methods
       //@{
       //! Render an Atom.
