@@ -45,6 +45,9 @@ namespace Avogadro {
     public:
       //! Constructor
       LabelEngine(QObject *parent=0);
+
+      Engine *clone() const;
+
       //! Deconstructor
       ~LabelEngine() {}
 

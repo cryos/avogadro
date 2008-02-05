@@ -56,13 +56,37 @@ namespace Avogadro
       GLWidget *glWidget() const;
 
     public Q_SLOTS:
+      /**
+       * Set an engine to be the currently selected engine
+       *
+       * @param engine pointer to the engine to set current
+       */
       void setCurrentEngine ( Engine *engine );
+
+      /**
+       * Add the selected primitives in the GLWidget to the current engine
+       */
       void addSelection();
+
+      /**
+       * Remove the currently selected primitives to the engine
+       */
       void removeSelection();
+
+      /**
+       * Add all primitives to the current engine
+       */
       void addAll();
 
     protected Q_SLOTS:
+      /**
+       * Add an engine to the list
+       */
       void addEngine(Engine *engine);
+
+      /**
+       * Remove and engine from the list
+       */
       void removeEngine(Engine *engine);
 
     private:

@@ -264,6 +264,11 @@ namespace Avogadro {
       virtual QWidget *settingsWidget();
 
       /**
+       * @return a pointer to an identical engine or 0 if this fails
+       */
+      virtual Engine *clone() const = 0;
+
+      /**
        * Write the engine settings so that they can be saved between sessions.
        */
       virtual void writeSettings(QSettings &settings) const;

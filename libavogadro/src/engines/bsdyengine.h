@@ -44,24 +44,23 @@ namespace Avogadro {
     public:
       //! Constructor
       BSDYEngine(QObject *parent=0);
+
+      Engine *clone() const;
+
       //! Deconstructor
       ~BSDYEngine();
 
-      //! \name Description methods
-
       double transparencyDepth() const;
       EngineFlags flags() const;
-
-      //! \name Render Methods
-      //@{
 
       bool renderOpaque(PainterDevice *pd);
       bool renderTransparent(PainterDevice *pd);
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
-      //@}
 
-      //! Display a window for the user to pick rendering options
+      /**
+       * @return a pointer to the BSDYEngine settings widget
+       */
       QWidget *settingsWidget();
 
     private:

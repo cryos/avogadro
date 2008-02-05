@@ -58,6 +58,16 @@ namespace Avogadro {
     m_chainColors.push_back(Color(0., 1., 1.));
   }
 
+  Engine *RibbonEngine::clone() const
+  {
+    RibbonEngine *engine = new RibbonEngine(parent());
+    engine->setName(name());
+    engine->setType(m_type);
+    engine->setRadius(m_radius);
+
+    return engine;
+  }
+
   RibbonEngine::~RibbonEngine()
   {
     // Delete the settings widget if it exists
@@ -111,9 +121,11 @@ namespace Avogadro {
       pd->painter()->drawSphere(m_chains[i][0], tRadius);
       for (int j = 1; j < m_chains[i].size(); j++) {
         pd->painter()->drawSphere(m_chains[i][j], tRadius);
-	pd->painter()->drawCylinder(m_chains[i][j-1], m_chains[i][j], tRadius);
+        pd->painter()->drawCylinder(m_chains[i][j-1], m_chains[i][j], tRadius);
       }
     }
+
+    return true;
   }
 
   double RibbonEngine::radius(const PainterDevice *, const Primitive *) const

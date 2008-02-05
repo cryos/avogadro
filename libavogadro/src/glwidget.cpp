@@ -1604,7 +1604,7 @@ namespace Avogadro {
     settings.setValue("renderDebug", d->renderDebug);
 
     int count = d->engines.size();
-    settings.beginWriteArray("engines");
+    settings.beginWriteArray("engine");
     for(int i = 0; i< count; i++)
       {
         settings.setArrayIndex(i);

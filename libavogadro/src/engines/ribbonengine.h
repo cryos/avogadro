@@ -43,6 +43,9 @@ namespace Avogadro {
     public:
       //! Constructor
       RibbonEngine(QObject *parent=0);
+
+      Engine *clone() const;
+
       //! Deconstructor
       ~RibbonEngine();
 

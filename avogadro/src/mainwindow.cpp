@@ -1541,6 +1541,7 @@ namespace Avogadro
     // duplicate
     QPushButton *duplicateEngineButton = new QPushButton(tr("Duplicate"), engineListWidget);
     hlayout->addWidget(duplicateEngineButton);
+    connect(duplicateEngineButton, SIGNAL(clicked()), this, SLOT(duplicateEngineClicked()));
 
     // remove
     QPushButton *removeEngineButton = new QPushButton(tr("Remove"), engineListWidget);
@@ -1585,6 +1586,31 @@ namespace Avogadro
     }
   }
 
+  void MainWindow::duplicateEngineClicked()
+  {
+    // get the current widget for the engines
+    QWidget *widget = d->enginesStacked->currentWidget();
+
+    for(QObject *object, widget->children())
+    {
+      // Since our EngineListViews are contained in a parent QWidget
+      // we have to search our children for the actual EngineListView.
+      EngineListView *engineListView;
+      if( object->isWidgetType() &&
+          (engineListView = qobject_cast<EngineListView *>(object)) )
+      {
+        Engine *engine = engineListView->selectedEngine();
+
+        if(engine)
+        {
+          Engine *newEngine = engine->clone();
+          newEngine->setPrimitives(d->glWidget->selectedPrimitives());
+          d->glWidget->addEngine(engine);
+        }
+        break;
+    }
+  }
+
   void MainWindow::removeEngineClicked()
   {
     QWidget *widget = d->enginesStacked->currentWidget();
@@ -1596,10 +1622,12 @@ namespace Avogadro
       {
         Engine *engine = engineListView->selectedEngine();
 
+
         if(engine)
         {
           d->glWidget->removeEngine(engine);
         }
+        break;
       }
     }
   }

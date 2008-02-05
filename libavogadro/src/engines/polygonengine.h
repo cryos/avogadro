@@ -40,6 +40,9 @@ namespace Avogadro {
     public:
       //! Constructor
       PolygonEngine(QObject *parent=0);
+
+      Engine *clone() const;
+
       //! Deconstructor
       ~PolygonEngine();
 

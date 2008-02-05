@@ -41,6 +41,14 @@ namespace Avogadro{
     setDescription(tr("Renders structures as polygons"));
   }
 
+  Engine *PolygonEngine::clone() const
+  {
+    PolygonEngine *engine = new PolygonEngine(parent());
+    engine->setName(name());
+
+    return engine;
+  }
+
   PolygonEngine::~PolygonEngine()
   {
   }

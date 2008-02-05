@@ -43,6 +43,9 @@ namespace Avogadro {
     public:
       //! Constructor
       RingEngine(QObject *parent=0);
+
+      Engine *clone() const;
+
       //! Deconstructor
       ~RingEngine();
 

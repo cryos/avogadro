@@ -44,6 +44,9 @@ namespace Avogadro {
     public:
       //! Constructor
       HBondEngine(QObject *parent=0);
+
+      Engine *clone() const;
+
       //! Deconstructor
       ~HBondEngine();
 

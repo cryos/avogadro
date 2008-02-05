@@ -48,6 +48,16 @@ namespace Avogadro {
     setDescription(tr("Renders primitive labels"));
   }
 
+  Engine *LabelEngine::clone() const
+  {
+    LabelEngine *engine = new LabelEngine(parent());
+    engine->setName(name());
+    engine->setAtomType(m_atomType);
+    engine->setBondType(m_bondType);
+
+    return engine;
+  }
+
   bool LabelEngine::renderOpaque(PainterDevice *pd)
   {
     QList<Primitive *> list;

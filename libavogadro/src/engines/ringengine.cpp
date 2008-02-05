@@ -52,6 +52,15 @@ namespace Avogadro{
     m_ringColors.push_back(Color(0., 1., 1.));
   }
 
+  Engine *RingEngine::clone() const
+  {
+    RingEngine *engine = new RingEngine(parent());
+    engine->setName(name());
+    engine->setOpacity(m_alpha);
+
+    return engine;
+  }
+
   RingEngine::~RingEngine()
   {
   }
