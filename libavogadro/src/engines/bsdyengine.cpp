@@ -91,9 +91,10 @@ namespace Avogadro
   {
     BSDYEngine *engine = new BSDYEngine(parent());
     engine->setName(name());
-    engine->setAtomRadiusPercentage(m_atomRadiusPercentage);
-    engine->setBondRadius(m_bondRadius);
-    engine->setShowMulti(m_showMulti);
+    engine->m_atomRadiusPercentage = m_atomRadiusPercentage;
+    engine->m_bondRadius = m_bondRadius;
+    engine->m_showMulti = m_showMulti;
+    engine->setEnabled(isEnabled());
 
     return engine;
   }

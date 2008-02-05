@@ -45,6 +45,7 @@ namespace Avogadro{
   {
     PolygonEngine *engine = new PolygonEngine(parent());
     engine->setName(name());
+    engine->setEnabled(isEnabled());
 
     return engine;
   }

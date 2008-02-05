@@ -61,7 +61,8 @@ namespace Avogadro {
     SphereEngine* engine = new SphereEngine(parent());
     
     engine->setName(name());
-    engine->setOpacity(20*m_alpha);
+    engine->m_alpha = m_alpha;
+    engine->setEnabled(isEnabled());
     return engine;
   }
 

@@ -55,6 +55,8 @@ namespace Avogadro {
     engine->setName(name());
     engine->setShowDots(m_showDots);
     engine->setShowMultipleBonds(m_showMulti);
+    engine->setEnabled(isEnabled());
+
     return engine;
   }
 

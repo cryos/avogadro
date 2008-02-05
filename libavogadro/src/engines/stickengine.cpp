@@ -55,6 +55,7 @@ namespace Avogadro {
     StickEngine* engine = new StickEngine(parent());
     
     engine->setName(name());
+    engine->setEnabled(isEnabled());
     return engine;
   }
 

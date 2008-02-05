@@ -54,6 +54,7 @@ namespace Avogadro {
     engine->setName(name());
     engine->setAtomType(m_atomType);
     engine->setBondType(m_bondType);
+    engine->setEnabled(isEnabled());
 
     return engine;
   }

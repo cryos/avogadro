@@ -56,7 +56,8 @@ namespace Avogadro{
   {
     RingEngine *engine = new RingEngine(parent());
     engine->setName(name());
-    engine->setOpacity(m_alpha);
+    engine->m_alpha = m_alpha;
+    engine->setEnabled(isEnabled());
 
     return engine;
   }

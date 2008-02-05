@@ -2,7 +2,7 @@
   MainWindow - main window, menus, main actions
 
   Copyright (C) 2006-2007 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006-2007 by Donald E. Curtis
+  Copyright (C) 2006-2008 by Donald E. Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -1591,7 +1591,7 @@ namespace Avogadro
     // get the current widget for the engines
     QWidget *widget = d->enginesStacked->currentWidget();
 
-    for(QObject *object, widget->children())
+    foreach(QObject *object, widget->children())
     {
       // Since our EngineListViews are contained in a parent QWidget
       // we have to search our children for the actual EngineListView.
@@ -1604,10 +1604,20 @@ namespace Avogadro
         if(engine)
         {
           Engine *newEngine = engine->clone();
-          newEngine->setPrimitives(d->glWidget->selectedPrimitives());
-          d->glWidget->addEngine(engine);
+          QList<Primitive *> list = d->glWidget->selectedPrimitives();
+          if(list.size())
+          {
+            newEngine->setPrimitives(d->glWidget->selectedPrimitives());
+          }
+          else
+          {
+            newEngine->setPrimitives(d->glWidget->primitives());
+          }
+          newEngine->setName(newEngine->name() + " copy");
+          d->glWidget->addEngine(newEngine);
         }
         break;
+      }
     }
   }
 

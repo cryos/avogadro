@@ -2,7 +2,7 @@
   MainWindow.h - main window, menus, main actions
 
   Copyright (C) 2006-2007 by Geoffrey R. Hutchison
-  Some portions Copyright (C) 2006-2007 by Donald E. Curtis
+  Copyright (C) 2006-2008 by Donald E. Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -162,6 +162,7 @@ namespace Avogadro {
       void initialize();
 
       void addEngineClicked();
+      void duplicateEngineClicked();
       void removeEngineClicked();
       void engineClicked(Engine *engine);
   };

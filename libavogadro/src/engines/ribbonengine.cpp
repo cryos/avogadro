@@ -62,8 +62,9 @@ namespace Avogadro {
   {
     RibbonEngine *engine = new RibbonEngine(parent());
     engine->setName(name());
-    engine->setType(m_type);
-    engine->setRadius(m_radius);
+    engine->m_type = m_type;
+    engine->m_radius = m_radius;
+    engine->setEnabled(isEnabled());
 
     return engine;
   }
