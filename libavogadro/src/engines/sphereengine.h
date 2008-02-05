@@ -49,7 +49,7 @@ namespace Avogadro {
       ~SphereEngine();
       
       //! Copy 
-      SphereEngine *clone() const;
+      Engine *clone() const;
      
       //! \name Render Methods
       //@{

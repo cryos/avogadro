@@ -50,7 +50,7 @@ namespace Avogadro {
   {
   }
   
-  StickEngine* StickEngine::clone() const
+  Engine* StickEngine::clone() const
   {
     StickEngine* engine = new StickEngine(parent());
     

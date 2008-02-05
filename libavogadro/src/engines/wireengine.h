@@ -49,7 +49,7 @@ namespace Avogadro {
       ~WireEngine() {}
 
       //! Copy 
-      WireEngine *clone() const;
+      Engine *clone() const;
       
       //! \name Render Methods
       //@{

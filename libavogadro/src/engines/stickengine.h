@@ -44,7 +44,7 @@ namespace Avogadro {
       ~StickEngine();
       
       //! Copy 
-      StickEngine *clone() const;
+      Engine *clone() const;
  
       //! \name Render Methods
       //@{

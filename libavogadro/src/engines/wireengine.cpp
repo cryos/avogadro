@@ -48,7 +48,7 @@ namespace Avogadro {
     setDescription(tr("Wireframe rendering"));
   }
 
-  WireEngine* WireEngine::clone() const
+  Engine* WireEngine::clone() const
   {
     WireEngine* engine = new WireEngine(parent());
     
