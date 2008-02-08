@@ -44,9 +44,6 @@
 
 #include "iso.h"
 
-#include <openbabel/griddata.h>
-#include <openbabel/grid.h>
-
 #include <QDebug>
 
 using namespace std;
@@ -55,42 +52,6 @@ using namespace OpenBabel;
 
 namespace Avogadro
 {
-  /* Add implicit functions and a Grid class in order to use OpenBabel grids */
-  class ImplicitFunction
-  {
-  public:
-    virtual float eval(float, float, float) = 0;
-    virtual ~ImplicitFunction() { }
-  };
-  
-  // Attach to a grid and set
-  class Grid : public ImplicitFunction
-  {
-  public:
-    double m_iso;
-    OBGridData *m_gd;
-    
-    Grid(): m_iso(0.), m_gd(0) { ; }
-    ~Grid()
-    {
-      if (m_gd)
-      {
-        delete m_gd;
-        m_gd = 0;
-      }
-    }
-    
-    void setIsoValue(float i) { m_iso = i; }
-    float isoValue() { return m_iso; }
-    void setGrid(OBGridData *gd) { m_gd = gd; }
-    OBGridData* grid() { return m_gd; }
-
-    float eval(float x, float y, float z)
-    {
-      vector3 v(x, y, z);
-      return m_gd->GetValue(v);
-    }
-  };
   
   // ****************************************************************************
   // LOCAL CONSTANT/TABLE-STUFF
@@ -522,10 +483,14 @@ namespace Avogadro
     return isoInstance.Eval(vars);
   }
 */
+  void IsoGen::start()
+  {
+    run();
+  }
+        
   // The heavy worker thread
   void IsoGen::run()
   {
-    int x, y, z;
     int nx, ny, nz;
     
     if (m_grid->grid() == 0)
@@ -536,10 +501,12 @@ namespace Avogadro
     
     m_grid->grid()->GetNumberOfPoints(nx, ny, nz);
 
-    for(x = 0; x < nx; x++)
-      for(y = 0; y < ny; y++)
-        for(z = 0; z < nz; z++)
-          (*this.*m_tessellation)(x*m_fStepSize, y*m_fStepSize, z*m_fStepSize);
+    for(int x = 0; x < nx; x++)
+      for(int y = 0; y < ny; y++)
+        for(int z = 0; z < nz; z++)
+          (*this.*m_tessellation)(m_min.x()+x*m_fStepSize, 
+                                  m_min.y()+y*m_fStepSize,
+                                  m_min.z()+z*m_fStepSize);
   }
 
   // ****************************************************************************
@@ -551,6 +518,7 @@ namespace Avogadro
   {
     m_grid = grid;
     m_fStepSize = size;
+    m_min = min;
 
     // Clear vertex/normal-lists
     m_normList.clear();
@@ -598,6 +566,7 @@ namespace Avogadro
   // vMarchCube1 performs the Marching Cubes algorithm on a single cube
   void IsoGen::vMarchCube1(const float fX, const float fY, const float fZ)
   {
+    qDebug() << "vMarchCube1 called...";
     long iTriangle, iEdge, iEdgeFlags, iFlagIndex=0;
     Vector3f asEdgeVertex[12] __attribute__((aligned(16)));
     Vector3f asEdgeNorm[12] __attribute__((aligned(16)));
@@ -606,8 +575,10 @@ namespace Avogadro
     
     // Check we have a valid grid
     if (m_grid->grid() == 0)
-        return;
-    
+    {
+      qDebug() << "No valid grid :-(";
+      return;
+    }
 
     // Make a local copy of the values at the cube's corners
     afCubeValue[0] = m_grid->eval(fX+a2fVertexOffset[0][0]*m_fStepSize, 
@@ -648,7 +619,10 @@ namespace Avogadro
     // Find which edges are intersected by the surface
     // If the cube is entirely inside or outside of the surface, then there will be no intersections
     if(!(iEdgeFlags=aiCubeEdgeFlags[iFlagIndex]))
+    {
+      qDebug() << "No triangles in this cube...";
       return;
+    }
 
     // Find the point of intersection of the surface with each edge
     // Then find the normal to the surface at those points
@@ -676,6 +650,7 @@ namespace Avogadro
 
     // Draw the triangles that were found. There can be up to five per cube
     // "Abuse" free iEdgeFlags
+    qDebug() << "Got to the triangle addition stage...";
     for(iTriangle=0; iTriangle<5; iTriangle++)
     {
       // "Abuse" free iEdge as placeholder for 3*iTriangle
@@ -696,8 +671,24 @@ namespace Avogadro
 
       m_normList.append(normTmp);
       m_vertList.append(vertTmp);
+      qDebug() << "New triangle added...";
     }
   } // vMarchCube1()
+  
+  int IsoGen::numTriangles()
+  {
+    return m_vertList.size();
+  }
+  
+  triangle IsoGen::getTriangle(int i) 
+  {
+    return m_vertList[i];
+  }
+  
+  triangle IsoGen::getNormal(int i) 
+  {
+    return m_normList[i];
+  }
 
   // vMarchCube2 performs the Marching Tetrahedrons algorithm on a single cube by
 /*  // making six calls to vMarchTetrahedron

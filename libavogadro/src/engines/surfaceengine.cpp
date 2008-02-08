@@ -24,7 +24,6 @@
 
 #include <config.h>
 #include "surfaceengine.h"
-#include "polygonizer.h"
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
@@ -34,6 +33,7 @@
 #include <openbabel/grid.h>
 
 #include <QGLWidget>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -41,65 +41,27 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  // This is a small "shim" between the OpenBabel grid classes and the Bloomenthal Polygonizer code
-  // It mainly allows you to attach a grid and set an isovalue
-  class Grid: public ImplicitFunction
-    {
-    public:
-      double iso;
-      OBGridData *gd;
-
-      Grid(): iso(0.0), gd(NULL) {}
-      ~Grid()
-      {
-        if (gd) {
-          delete gd;
-          gd = NULL;
-        }
-      }
-
-      void SetIsovalue(double i) { iso = i; }
-      double GetIsovalue() {
-        return iso;
-      }
-
-      void SetGrid(OBGridData *g) { gd = g;}
-      OBGridData* GetGrid() {
-        return gd;
-      }
-
-      float eval (float x, float y, float z)
-      {
-        vector3 v(x, y, z);
-        return gd->GetValue(v) - iso;
-      }
-
-      float GetValue (float x, float y, float z)
-      {
-        vector3 v(x, y, z);
-        return gd->GetValue(v);
-      }
-    };
-
-
-  class SurfacePrivateData
-    {
-    public:
-      Grid         _gridFunction; //<! 3D implicit function f(x,y,z) = ...
-      Polygonizer* _isoFinder;    //<! Class to find isosurface where f(x,y,z) = isovalue
-    };
-
-  SurfaceEngine::SurfaceEngine(QObject *parent) : Engine(parent), d(new SurfacePrivateData)
+  SurfaceEngine::SurfaceEngine(QObject *parent) : Engine(parent)
   {
     setDescription(tr("Surface rendering"));
+    m_grid = new Grid;
+    m_isoGen = new IsoGen;
   }
 
   SurfaceEngine::~SurfaceEngine()
   {
-    delete d->_isoFinder;
-    delete d;
+    delete m_grid;
+    delete m_isoGen;
   }
 
+  Engine *SurfaceEngine::clone() const
+  {
+    SurfaceEngine *engine = new SurfaceEngine(parent());
+    engine->setName(name());
+    engine->setEnabled(isEnabled());
+
+    return engine;
+  }
   // We define a VDW surface here.
   // The isosurface finder declares values < 0 to be outside the surface
   // So values of 0.0 here equal the VDW surface of the molecule
@@ -107,23 +69,24 @@ namespace Avogadro {
   // - values = the distance outside the surface (i.e., farther away)
   void SurfaceEngine::VDWSurface(Molecule *mol)
   {
-    if (d->_gridFunction.GetGrid() != NULL) // we already calculated this
-      return;
+//    if (m_grid->grid() != NULL) // we already calculated this
+//      return;
 
-    OBFloatGrid _grid;
+    OBFloatGrid grid;
     // initialize a grid with spacing 0.333 angstroms between points, plus a padding of 2.5A.
     double spacing = 0.33333;
     double padding = 2.5;
-    _grid.Init(*mol, spacing, padding);
+    grid.Init(*mol, spacing, padding);
     double min[3], max[3];
     int xDim, yDim, zDim;
 
-    _grid.GetMin(min);
-    _grid.GetMax(max);
+    grid.GetMin(min);
+    m_min = Vector3f(min[0], min[1], min[2]);
+    grid.GetMax(max);
 
-    xDim = _grid.GetXdim();
-    yDim = _grid.GetYdim();
-    zDim = _grid.GetZdim();
+    xDim = grid.GetXdim();
+    yDim = grid.GetYdim();
+    zDim = grid.GetZdim();
 
     vector3 coord;
     double distance, minDistance;
@@ -131,13 +94,14 @@ namespace Avogadro {
     maxVal = 0.0;
     minVal = 0.0;
 
-    std::vector<double> _values;
-    _values.resize(xDim * yDim * zDim);
+    std::vector<double> values;
+    values.resize(xDim * yDim * zDim);
     for (int k = 0; k < zDim; ++k) {
       coord.SetZ(min[2] + k * spacing);
       for (int j = 0; j < yDim; ++j) {
         coord.SetY(min[1] + j * spacing);
-        for (int i = 0; i < xDim; ++i) {
+        for (int i = 0; i < xDim; ++i)
+        {
           coord.SetX(min[0] + i * spacing);
           minDistance = 1.0E+10;
           FOR_ATOMS_OF_MOL(a, mol) {
@@ -148,7 +112,7 @@ namespace Avogadro {
               minDistance = distance;
           } // end checking atoms
           // negative = away from molecule, 0 = vdw surface, positive = inside
-          _values.push_back(-1.0 * minDistance);
+          values.push_back(-1.0 * minDistance);
           if (-1.0 * minDistance > maxVal)
             maxVal = -1.0 * minDistance;
           if (-1.0 * minDistance < minVal)
@@ -160,17 +124,17 @@ namespace Avogadro {
 
     qDebug() << " min: " << minVal << " max " << maxVal;
 
-    OBGridData *_vdwGrid = new OBGridData;
+    OBGridData *vdwGrid = new OBGridData;
     double xAxis[3], yAxis[3], zAxis[3];
     xAxis[0] = spacing; xAxis[1] = 0.0;     xAxis[2] = 0.0;
     yAxis[0] = 0.0;     yAxis[1] = spacing; yAxis[2] = 0.0;
     zAxis[0] = 0.0;     zAxis[1] = 0.0;     zAxis[2] = spacing;
 
-    _vdwGrid->SetNumberOfPoints( xDim, yDim, zDim);
-    _vdwGrid->SetLimits( min, xAxis, yAxis, zAxis );
-    _vdwGrid->SetValues(_values);
+    vdwGrid->SetNumberOfPoints( xDim, yDim, zDim);
+    vdwGrid->SetLimits(min, xAxis, yAxis, zAxis );
+    vdwGrid->SetValues(values);
 
-    d->_gridFunction.SetGrid(_vdwGrid);
+    m_grid->setGrid(vdwGrid);
   }
 
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
@@ -181,9 +145,9 @@ namespace Avogadro {
 
     qDebug() << " set surface ";
 
-    d->_gridFunction.SetIsovalue(0.001);
-    d->_isoFinder = new Polygonizer(&d->_gridFunction, 0.15, 30);
-    d->_isoFinder->march(false, 0.,0.,0.); // marching cubes
+    m_grid->setIsoValue(0.001);
+    m_isoGen->init(m_grid, 0.33333, m_min);
+    m_isoGen->start();
 
     qDebug() << " rendering surface ";
 
@@ -196,26 +160,25 @@ namespace Avogadro {
 //    glPushName(1);
 
 //    glColor3f(1.0, 0.0, 0.0);
+    qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
 
     glBegin(GL_POINTS);
-    for(int i=0; i < d->_isoFinder->no_triangles(); ++i)
+    for(int i=0; i < m_isoGen->numTriangles(); ++i)
     {
-      TRIANGLE t = d->_isoFinder->get_triangle(i);
+      qDebug() << "Drawing points...";
+      triangle t = m_isoGen->getTriangle(i);
 //       glBegin(GL_TRIANGLES);
 //       NORMAL n0 = d->_isoFinder->get_normal(t.v0);
 //       glNormal3f(n0.x, n0.y, n0.z);
-      VERTEX v0 = d->_isoFinder->get_vertex(t.v0);
-      glVertex3f(v0.x, v0.y, v0.z);
+      glVertex3f(t.p0.x(), t.p0.y(), t.p0.z());
 
 //       NORMAL n1 = d->_isoFinder->get_normal(t.v1);
 //       glNormal3f(n1.x, n1.y, n1.z);
-      VERTEX v1 = d->_isoFinder->get_vertex(t.v1);
-      glVertex3f(v1.x, v1.y, v1.z);
+      glVertex3f(t.p1.x(), t.p1.y(), t.p1.z());
 
 //       NORMAL n2 = d->_isoFinder->get_normal(t.v2);
 //       glNormal3f(n2.x, n2.y, n2.z);
-      VERTEX v2 = d->_isoFinder->get_vertex(t.v2);
-      glVertex3f(v2.x, v2.y, v2.z);
+      glVertex3f(t.p2.x(), t.p2.y(), t.p2.z());
     }
     glEnd();
 

@@ -63,11 +63,48 @@
 #include <QList>
 #include <QThread>
 #include <avogadro/glwidget.h>
+#include <openbabel/griddata.h>
+#include <openbabel/grid.h>
 
 namespace Avogadro
 {
+  /* Add implicit functions and a Grid class in order to use OpenBabel grids */
+  class ImplicitFunction
+  {
+  public:
+    virtual float eval(float, float, float) = 0;
+    virtual ~ImplicitFunction() { }
+  };
+  
+  // Attach to a grid and set
+  class Grid : public ImplicitFunction
+  {
+  public:
+    double m_iso;
+    OpenBabel::OBGridData *m_gd;
+    
+    Grid(): m_iso(0.), m_gd(0) { ; }
+    ~Grid()
+    {
+      if (m_gd)
+      {
+        delete m_gd;
+        m_gd = 0;
+      }
+    }
+    
+    void setIsoValue(float i) { m_iso = i; }
+    float isoValue() { return m_iso; }
+    void setGrid(OpenBabel::OBGridData *gd) { m_gd = gd; }
+    OpenBabel::OBGridData* grid() { return m_gd; }
 
-  class Grid;
+    float eval(float x, float y, float z)
+    {
+      OpenBabel::vector3 v(x, y, z);
+      return m_gd->GetValue(v);
+    }
+  };
+
   // Triangle structure
   struct triangle
   {
@@ -93,6 +130,10 @@ namespace Avogadro
 
     // Central functions
     void init(Grid *grid, double size, Eigen::Vector3f min);
+    void start();
+    int numTriangles();
+    triangle getTriangle(int i);
+    triangle getNormal(int i);
 
   protected:
     void run();
@@ -101,6 +142,7 @@ namespace Avogadro
     Grid *m_grid; // OpenBabel Grid
     float m_fStepSize; // Grid density == 2.0f/sta.tgrids;
     long m_totTri; // Triangles calculated in total; currently not used
+    Eigen::Vector3f m_min;
 
     // Constants/tables
     static const float fTargetValue;

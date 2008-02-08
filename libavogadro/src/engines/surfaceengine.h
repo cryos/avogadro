@@ -28,6 +28,8 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
+#include "iso.h"
+
 namespace Avogadro {
 
   class SurfacePrivateData;
@@ -48,11 +50,15 @@ namespace Avogadro {
       //@{
       bool renderOpaque(PainterDevice *pd);
       //@}
+      
+      Engine *clone() const;
 
     protected:
-    SurfacePrivateData *d;
+      Grid *m_grid;
+      IsoGen *m_isoGen;
+      Eigen::Vector3f m_min;
 
-    void SurfaceEngine::VDWSurface(Molecule *mol);
+      void SurfaceEngine::VDWSurface(Molecule *mol);
   };
 
   //! Generates instances of our SurfaceEngine class
