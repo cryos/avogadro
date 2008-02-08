@@ -62,12 +62,12 @@
 
 #include <QList>
 #include <QThread>
-#include <cmath>
 #include <avogadro/glwidget.h>
 
 namespace Avogadro
 {
 
+  class Grid;
   // Triangle structure
   struct triangle
   {
@@ -88,19 +88,19 @@ namespace Avogadro
     ~IsoGen() { ; }
 
     // Vertex/normal-lists
-    QList<triangle> normList;
-    QList<triangle> vertList;
+    QList<triangle> m_normList;
+    QList<triangle> m_vertList;
 
     // Central functions
-    void vMarching(const long pfrom, const long pto, const long n);
+    void init(Grid *grid, double size, Eigen::Vector3f min);
 
   protected:
     void run();
 
   private:
-    float fStepSize; // Grid density == 2.0f/sta.tgrids;
-    long totTri; // Triangles calculated in total; currently not used
-    long from, to; // Grid-distribution for multithreading
+    Grid *m_grid; // OpenBabel Grid
+    float m_fStepSize; // Grid density == 2.0f/sta.tgrids;
+    long m_totTri; // Triangles calculated in total; currently not used
 
     // Constants/tables
     static const float fTargetValue;
@@ -115,21 +115,20 @@ namespace Avogadro
     static const long a2iTriangleConnectionTable[256][16];
 
     // Functions
-    void vNormalizeVector(Eigen::Vector3f &rfVectorResult,
-        const Eigen::Vector3f &rfVectorSource);
+//    void vNormalizeVector(Eigen::Vector3f &rfResult, const Eigen::Vector3f &rfSource);
     void vGetNormal(Eigen::Vector3f &rfNormal, const float fX, const float fY,
         const float fZ);
     void vMarchCube1(const float fX, const float fY, const float fZ);
-    void vMarchCube2(const float fX, const float fY, const float fZ);
-    void vMarchTetrahedron(Eigen::Vector3f *pasTetrahedronPosition,
-        const float *pafTetrahedronValue);
-    void (IsoGen::*tessellation)(const float fX, const float fY, const float fZ);
+//    void vMarchCube2(const float fX, const float fY, const float fZ);
+//    void vMarchTetrahedron(Eigen::Vector3f *pasTetrahedronPosition,
+//        const float *pafTetrahedronValue);
+    void (IsoGen::*m_tessellation)(const float fX, const float fY, const float fZ);
 
   // Multithreading stuff:
       // Using own class-instance of standard iso-parsers and own calc-function
       // Copies of Warp-instances are not reentrant/threadsafe by itself
 //      FunctionParser isoInstance;
-      float isoPar(const float xpar, const float ypar, const float zpar);
+//      float isoPar(const float xpar, const float ypar, const float zpar);
     };
 
   }

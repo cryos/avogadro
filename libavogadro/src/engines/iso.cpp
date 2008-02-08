@@ -44,10 +44,54 @@
 
 #include "iso.h"
 
+#include <openbabel/griddata.h>
+#include <openbabel/grid.h>
+
+#include <QDebug>
+
+using namespace std;
 using namespace Eigen;
+using namespace OpenBabel;
 
 namespace Avogadro
 {
+  /* Add implicit functions and a Grid class in order to use OpenBabel grids */
+  class ImplicitFunction
+  {
+  public:
+    virtual float eval(float, float, float) = 0;
+    virtual ~ImplicitFunction() { }
+  };
+  
+  // Attach to a grid and set
+  class Grid : public ImplicitFunction
+  {
+  public:
+    double m_iso;
+    OBGridData *m_gd;
+    
+    Grid(): m_iso(0.), m_gd(0) { ; }
+    ~Grid()
+    {
+      if (m_gd)
+      {
+        delete m_gd;
+        m_gd = 0;
+      }
+    }
+    
+    void setIsoValue(float i) { m_iso = i; }
+    float isoValue() { return m_iso; }
+    void setGrid(OBGridData *gd) { m_gd = gd; }
+    OBGridData* grid() { return m_gd; }
+
+    float eval(float x, float y, float z)
+    {
+      vector3 v(x, y, z);
+      return m_gd->GetValue(v);
+    }
+  };
+  
   // ****************************************************************************
   // LOCAL CONSTANT/TABLE-STUFF
   // ****************************************************************************
@@ -469,7 +513,7 @@ namespace Avogadro
   // ****************************************************************************
 
   // The class has its own parser instance
-  float IsoGen::isoPar(const float xpar, const float ypar, const float zpar)
+/*  float IsoGen::isoPar(const float xpar, const float ypar, const float zpar)
   {
     FPFLOAT vars[3];
     vars[0] = (xpar-1.0f) * sta.sx;
@@ -477,16 +521,25 @@ namespace Avogadro
     vars[2] = (zpar-1.0f) * sta.sz;
     return isoInstance.Eval(vars);
   }
-
+*/
   // The heavy worker thread
   void IsoGen::run()
   {
-    long x, y, z;
+    int x, y, z;
+    int nx, ny, nz;
+    
+    if (m_grid->grid() == 0)
+    {
+      qDebug() << "m_grid == 0 => returning...";
+      return;
+    }
+    
+    m_grid->grid()->GetNumberOfPoints(nx, ny, nz);
 
-    for(x=from; x<to; x++)
-      for(y=0; y<sta.tgrids; y++)
-        for(z=0; z<sta.tgrids; z++)
-          (*this.*tessellation)(x*fStepSize, y*fStepSize, z*fStepSize);
+    for(x = 0; x < nx; x++)
+      for(y = 0; y < ny; y++)
+        for(z = 0; z < nz; z++)
+          (*this.*m_tessellation)(x*m_fStepSize, y*m_fStepSize, z*m_fStepSize);
   }
 
   // ****************************************************************************
@@ -494,26 +547,17 @@ namespace Avogadro
   // ****************************************************************************
 
   // Called from gldraw to initialize thread stuff
-  void IsoGen::vMarching(const long pfrom, const long pto, const long n)
+  void IsoGen::init(Grid *grid, double size, Eigen::Vector3f min)
   {
-
-    fStepSize = 2.0f/sta.tgrids;
-    from=pfrom;
-    to=pto;
+    m_grid = grid;
+    m_fStepSize = size;
 
     // Clear vertex/normal-lists
-    normList.clear();
-    vertList.clear();
+    m_normList.clear();
+    m_vertList.clear();
 
-    // Initialize parser instance
-    isoInstance = fpGL[6+n];
-    isoInstance.copyOnWrite();
-
-    // Detect tessellation method
-    if(sta.triMod==CUBES)
-      tessellation=&ISOGEN::vMarchCube1;
-    else
-      tessellation=&ISOGEN::vMarchCube2;
+    // Right now we are just using one tessellation method
+    m_tessellation=&IsoGen::vMarchCube1;
   }
 
   // ****************************************************************************
@@ -521,7 +565,7 @@ namespace Avogadro
   // ****************************************************************************
 
   // Normalizing stuff
-  void IsoGen::vNormalizeVector(Vector3d &rfResult, const Vector3d &rfSource)
+/*  void IsoGen::vNormalizeVector(Eigen::Vector3f &rfResult, const Eigen::Vector3f &rfSource)
   {
     const float fOldLength __attribute__((aligned(16))) = sqrtf(rfSource.fX * rfSource.fX +
                                                           rfSource.fY * rfSource.fY +
@@ -539,16 +583,16 @@ namespace Avogadro
     rfResult.fY = rfSource.fY * fScale;
     rfResult.fZ = rfSource.fZ * fScale;
   }
-
+*/
   // vGetNormal() finds the gradient of the scalar field at a point
   // This gradient can be used as a very accurate vertex normal for lighting calculations
-void IsoGen::vGetNormal(GLvector &rfNormal, const float fX, const float fY, const float fZ)
+  void IsoGen::vGetNormal(Eigen::Vector3f &rfNormal, const float fX, const float fY, const float fZ)
   {
-    rfNormal.fX = isoPar(fX-0.01f, fY, fZ) - isoPar(fX+0.01f, fY, fZ);
-    rfNormal.fY = isoPar(fX, fY-0.01f, fZ) - isoPar(fX, fY+0.01f, fZ);
-    rfNormal.fZ = isoPar(fX, fY, fZ-0.01f) - isoPar(fX, fY, fZ+0.01f);
+    rfNormal = Vector3f(m_grid->eval(fX-0.01f, fY, fZ) - m_grid->eval(fX+0.01f, fY, fZ),
+        m_grid->eval(fX, fY-0.01f, fZ) - m_grid->eval(fX, fY+0.01f, fZ),
+        m_grid->eval(fX, fY, fZ-0.01f) - m_grid->eval(fX, fY, fZ+0.01f));
 
-    vNormalizeVector(rfNormal, rfNormal);
+    rfNormal.normalize();
   }
 
   // vMarchCube1 performs the Marching Cubes algorithm on a single cube
@@ -559,16 +603,37 @@ void IsoGen::vGetNormal(GLvector &rfNormal, const float fX, const float fY, cons
     Vector3f asEdgeNorm[12] __attribute__((aligned(16)));
     float fOffset __attribute__((aligned(16)));
     float afCubeValue[8] __attribute__((aligned(16)));
+    
+    // Check we have a valid grid
+    if (m_grid->grid() == 0)
+        return;
+    
 
     // Make a local copy of the values at the cube's corners
-    afCubeValue[0] = isoPar(fX+a2fVertexOffset[0][0]*fStepSize, fY+a2fVertexOffset[0][1]*fStepSize, fZ+a2fVertexOffset[0][2]*fStepSize);
-    afCubeValue[1] = isoPar(fX+a2fVertexOffset[1][0]*fStepSize, fY+a2fVertexOffset[1][1]*fStepSize, fZ+a2fVertexOffset[1][2]*fStepSize);
-    afCubeValue[2] = isoPar(fX+a2fVertexOffset[2][0]*fStepSize, fY+a2fVertexOffset[2][1]*fStepSize, fZ+a2fVertexOffset[2][2]*fStepSize);
-    afCubeValue[3] = isoPar(fX+a2fVertexOffset[3][0]*fStepSize, fY+a2fVertexOffset[3][1]*fStepSize, fZ+a2fVertexOffset[3][2]*fStepSize);
-    afCubeValue[4] = isoPar(fX+a2fVertexOffset[4][0]*fStepSize, fY+a2fVertexOffset[4][1]*fStepSize, fZ+a2fVertexOffset[4][2]*fStepSize);
-    afCubeValue[5] = isoPar(fX+a2fVertexOffset[5][0]*fStepSize, fY+a2fVertexOffset[5][1]*fStepSize, fZ+a2fVertexOffset[5][2]*fStepSize);
-    afCubeValue[6] = isoPar(fX+a2fVertexOffset[6][0]*fStepSize, fY+a2fVertexOffset[6][1]*fStepSize, fZ+a2fVertexOffset[6][2]*fStepSize);
-    afCubeValue[7] = isoPar(fX+a2fVertexOffset[7][0]*fStepSize, fY+a2fVertexOffset[7][1]*fStepSize, fZ+a2fVertexOffset[7][2]*fStepSize);
+    afCubeValue[0] = m_grid->eval(fX+a2fVertexOffset[0][0]*m_fStepSize, 
+                                  fY+a2fVertexOffset[0][1]*m_fStepSize,
+                                  fZ+a2fVertexOffset[0][2]*m_fStepSize);
+    afCubeValue[1] = m_grid->eval(fX+a2fVertexOffset[1][0]*m_fStepSize,
+                                  fY+a2fVertexOffset[1][1]*m_fStepSize,
+                                  fZ+a2fVertexOffset[1][2]*m_fStepSize);
+    afCubeValue[2] = m_grid->eval(fX+a2fVertexOffset[2][0]*m_fStepSize,
+                                  fY+a2fVertexOffset[2][1]*m_fStepSize,
+                                  fZ+a2fVertexOffset[2][2]*m_fStepSize);
+    afCubeValue[3] = m_grid->eval(fX+a2fVertexOffset[3][0]*m_fStepSize,
+                                  fY+a2fVertexOffset[3][1]*m_fStepSize,
+                                  fZ+a2fVertexOffset[3][2]*m_fStepSize);
+    afCubeValue[4] = m_grid->eval(fX+a2fVertexOffset[4][0]*m_fStepSize,
+                                  fY+a2fVertexOffset[4][1]*m_fStepSize,
+                                  fZ+a2fVertexOffset[4][2]*m_fStepSize);
+    afCubeValue[5] = m_grid->eval(fX+a2fVertexOffset[5][0]*m_fStepSize,
+                                  fY+a2fVertexOffset[5][1]*m_fStepSize,
+                                  fZ+a2fVertexOffset[5][2]*m_fStepSize);
+    afCubeValue[6] = m_grid->eval(fX+a2fVertexOffset[6][0]*m_fStepSize,
+                                  fY+a2fVertexOffset[6][1]*m_fStepSize,
+                                  fZ+a2fVertexOffset[6][2]*m_fStepSize);
+    afCubeValue[7] = m_grid->eval(fX+a2fVertexOffset[7][0]*m_fStepSize,
+                                  fY+a2fVertexOffset[7][1]*m_fStepSize,
+                                  fZ+a2fVertexOffset[7][2]*m_fStepSize);
 
     // Find which vertices are inside of the surface and which are outside
     if(afCubeValue[0] <= fTargetValue) iFlagIndex |= 1;
@@ -598,10 +663,10 @@ void IsoGen::vGetNormal(GLvector &rfNormal, const float fX, const float fY, cons
         else
           fOffset = 0.5f;
 
-        asEdgeVertex[iEdge].fX = fX + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][0] + fOffset * a2fEdgeDirection[iEdge][0]) * fStepSize;
-        asEdgeVertex[iEdge].fY = fY + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][1] + fOffset * a2fEdgeDirection[iEdge][1]) * fStepSize;
-        asEdgeVertex[iEdge].fZ = fZ + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][2] + fOffset * a2fEdgeDirection[iEdge][2]) * fStepSize;
-        vGetNormal(asEdgeNorm[iEdge], asEdgeVertex[iEdge].fX, asEdgeVertex[iEdge].fY, asEdgeVertex[iEdge].fZ);
+        asEdgeVertex[iEdge] = Vector3f(fX + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][0] + fOffset * a2fEdgeDirection[iEdge][0]) * m_fStepSize,
+            fY + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][1] + fOffset * a2fEdgeDirection[iEdge][1]) * m_fStepSize,
+            fZ + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][2] + fOffset * a2fEdgeDirection[iEdge][2]) * m_fStepSize);
+        vGetNormal(asEdgeNorm[iEdge], asEdgeVertex[iEdge].x(), asEdgeVertex[iEdge].y(), asEdgeVertex[iEdge].z());
       }
     }
 
@@ -629,13 +694,13 @@ void IsoGen::vGetNormal(GLvector &rfNormal, const float fX, const float fY, cons
       normTmp.p2 = asEdgeNorm[iEdgeFlags];
       vertTmp.p2 = asEdgeVertex[iEdgeFlags];
 
-      normList.append(normTmp);
-      vertList.append(vertTmp);
+      m_normList.append(normTmp);
+      m_vertList.append(vertTmp);
     }
   } // vMarchCube1()
 
   // vMarchCube2 performs the Marching Tetrahedrons algorithm on a single cube by
-  // making six calls to vMarchTetrahedron
+/*  // making six calls to vMarchTetrahedron
 void IsoGen::vMarchCube2(const float fX, const float fY, const float fZ)
   {
     long iVertex, iTetrahedron, iVertexInACube;
@@ -744,5 +809,5 @@ void IsoGen::vMarchCube2(const float fX, const float fY, const float fZ)
       }
     }
   } // vMarchTetrahedron()
-
+*/
 } // End namespace Avogadro
