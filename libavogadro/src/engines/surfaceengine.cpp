@@ -95,7 +95,7 @@ namespace Avogadro {
     minVal = 0.0;
 
     std::vector<double> values;
-    values.resize(xDim * yDim * zDim);
+    //values.resize(xDim * yDim * zDim);
     for (int k = 0; k < zDim; ++k) {
       coord.SetZ(min[2] + k * spacing);
       for (int j = 0; j < yDim; ++j) {
