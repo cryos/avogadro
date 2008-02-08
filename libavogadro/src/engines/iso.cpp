@@ -566,7 +566,6 @@ namespace Avogadro
   // vMarchCube1 performs the Marching Cubes algorithm on a single cube
   void IsoGen::vMarchCube1(const float fX, const float fY, const float fZ)
   {
-    qDebug() << "vMarchCube1 called...";
     long iTriangle, iEdge, iEdgeFlags, iFlagIndex=0;
     Vector3f asEdgeVertex[12] __attribute__((aligned(16)));
     Vector3f asEdgeNorm[12] __attribute__((aligned(16)));
@@ -619,10 +618,7 @@ namespace Avogadro
     // Find which edges are intersected by the surface
     // If the cube is entirely inside or outside of the surface, then there will be no intersections
     if(!(iEdgeFlags=aiCubeEdgeFlags[iFlagIndex]))
-    {
-      qDebug() << "No triangles in this cube...";
       return;
-    }
 
     // Find the point of intersection of the surface with each edge
     // Then find the normal to the surface at those points
@@ -650,7 +646,6 @@ namespace Avogadro
 
     // Draw the triangles that were found. There can be up to five per cube
     // "Abuse" free iEdgeFlags
-    qDebug() << "Got to the triangle addition stage...";
     for(iTriangle=0; iTriangle<5; iTriangle++)
     {
       // "Abuse" free iEdge as placeholder for 3*iTriangle
@@ -671,7 +666,6 @@ namespace Avogadro
 
       m_normList.append(normTmp);
       m_vertList.append(vertTmp);
-      qDebug() << "New triangle added...";
     }
   } // vMarchCube1()
   

@@ -165,8 +165,8 @@ namespace Avogadro {
     glBegin(GL_POINTS);
     for(int i=0; i < m_isoGen->numTriangles(); ++i)
     {
-      qDebug() << "Drawing points...";
       triangle t = m_isoGen->getTriangle(i);
+      triangle n = m_isoGen->getNormal(i);
 //       glBegin(GL_TRIANGLES);
 //       NORMAL n0 = d->_isoFinder->get_normal(t.v0);
 //       glNormal3f(n0.x, n0.y, n0.z);
@@ -179,6 +179,7 @@ namespace Avogadro {
 //       NORMAL n2 = d->_isoFinder->get_normal(t.v2);
 //       glNormal3f(n2.x, n2.y, n2.z);
       glVertex3f(t.p2.x(), t.p2.y(), t.p2.z());
+//      glNormal3f(t.p0.x(), t.p0.y(), t.p0.z());
     }
     glEnd();
 
