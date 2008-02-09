@@ -2,6 +2,8 @@
   SurfaceEngine - Engine for display of isosurfaces
 
   Copyright (C) 2007 Geoffrey R. Hutchison
+  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -41,17 +43,23 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  SurfaceEngine::SurfaceEngine(QObject *parent) : Engine(parent)
+  SurfaceEngine::SurfaceEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
+  m_alpha(0.5), m_stepSize(0.33333), m_padding(2.5), m_renderMode(0), m_colorMode(0)
   {
     setDescription(tr("Surface rendering"));
     m_grid = new Grid;
     m_isoGen = new IsoGen;
+    m_color = Color(1.0, 0.0, 0.0, m_alpha);
   }
 
   SurfaceEngine::~SurfaceEngine()
   {
     delete m_grid;
     delete m_isoGen;
+    
+    // Delete the settings widget if it exists
+    if(m_settingsWidget)
+      m_settingsWidget->deleteLater();
   }
 
   Engine *SurfaceEngine::clone() const
@@ -74,9 +82,7 @@ namespace Avogadro {
 
     OBFloatGrid grid;
     // initialize a grid with spacing 0.333 angstroms between points, plus a padding of 2.5A.
-    double spacing = 0.33333;
-    double padding = 2.5;
-    grid.Init(*mol, spacing, padding);
+    grid.Init(*mol, m_stepSize, m_padding);
     double min[3], max[3];
     int xDim, yDim, zDim;
 
@@ -97,12 +103,12 @@ namespace Avogadro {
     std::vector<double> values;
     //values.resize(xDim * yDim * zDim);
     for (int k = 0; k < zDim; ++k) {
-      coord.SetZ(min[2] + k * spacing);
+      coord.SetZ(min[2] + k * m_stepSize);
       for (int j = 0; j < yDim; ++j) {
-        coord.SetY(min[1] + j * spacing);
+        coord.SetY(min[1] + j * m_stepSize);
         for (int i = 0; i < xDim; ++i)
         {
-          coord.SetX(min[0] + i * spacing);
+          coord.SetX(min[0] + i * m_stepSize);
           minDistance = 1.0E+10;
           FOR_ATOMS_OF_MOL(a, mol) {
             distance = sqrt(coord.distSq(a->GetVector()));
@@ -126,9 +132,9 @@ namespace Avogadro {
 
     OBGridData *vdwGrid = new OBGridData;
     double xAxis[3], yAxis[3], zAxis[3];
-    xAxis[0] = spacing; xAxis[1] = 0.0;     xAxis[2] = 0.0;
-    yAxis[0] = 0.0;     yAxis[1] = spacing; yAxis[2] = 0.0;
-    zAxis[0] = 0.0;     zAxis[1] = 0.0;     zAxis[2] = spacing;
+    xAxis[0] = m_stepSize; xAxis[1] = 0.0;        xAxis[2] = 0.0;
+    yAxis[0] = 0.0;        yAxis[1] = m_stepSize; yAxis[2] = 0.0;
+    zAxis[0] = 0.0;        zAxis[1] = 0.0;        zAxis[2] = m_stepSize;
 
     vdwGrid->SetNumberOfPoints( xDim, yDim, zDim);
     vdwGrid->SetLimits(min, xAxis, yAxis, zAxis );
@@ -168,27 +174,26 @@ namespace Avogadro {
       energy += atom->GetPartialCharge() / (dist.length()*dist.length());
     }
 
-    //cout << "energy=" << energy << endl;
     if (energy < 0.0) {
       blue = -20.0*energy;
       if (blue >= 1.0) {
-        return Color(0.0, 0.0, 1.0, 0.8);
+        return Color(0.0, 0.0, 1.0, m_alpha);
       }
 
       green = 1.0 - blue;
-      return Color(0.0, green, blue, 0.8);
+      return Color(0.0, green, blue, m_alpha);
     }
 
     if (energy > 0.0) {
       red = 20.0*energy;
       if (red >= 1.0) {
-        return Color(1.0, 0.0, 0.0, 0.8);
+        return Color(1.0, 0.0, 0.0, m_alpha);
       }
       green = 1.0 - red;
-      return Color(red, green, 0.0, 0.8);
+      return Color(red, green, 0.0, m_alpha);
     }
 
-    return Color(0.0, 1.0, 0.0, 0.8);
+    return Color(0.0, 1.0, 0.0, m_alpha);
   }
   
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
@@ -200,52 +205,78 @@ namespace Avogadro {
     qDebug() << " set surface ";
 
     m_grid->setIsoValue(0.001);
-    m_isoGen->init(m_grid, 0.33333, m_min);
+    m_isoGen->init(m_grid, m_stepSize, m_min);
     m_isoGen->start();
 
     qDebug() << " rendering surface ";
 
-//    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
 //    glDisable(GL_LIGHTING);
     glEnable(GL_BLEND);
     glShadeModel(GL_SMOOTH);
 
-    pd->painter()->setColor(1.0, 0.0, 0.0, 0.5);
+    pd->painter()->setColor(1.0, 0.0, 0.0, m_alpha);
 //    glPushName(Primitive::SurfaceType);
 //    glPushName(1);
 
-    glColor4f(1.0, 0.0, 0.0, 0.5);
-    
-    Color color(1.0, 0.0, 0.0, 0.5);
-    color.applyAsMaterials();
-    
     qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
 
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    switch (m_renderMode) {
+    case 0:
+      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+      break;
+    case 1:
+      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+      break;
+    case 2:
+      glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+      break;
+    }
+    
     glBegin(GL_TRIANGLES);
-    for(int i=0; i < m_isoGen->numTriangles(); ++i)
-    {
-      triangle t = m_isoGen->getTriangle(i);
-      triangle n = m_isoGen->getNormal(i);
+    if (m_colorMode == 1) { // ESP
+      Color color;
+      for(int i=0; i < m_isoGen->numTriangles(); ++i)
+      {
+        triangle t = m_isoGen->getTriangle(i);
+        triangle n = m_isoGen->getNormal(i);
       
-      color = espColor(mol, t.p0);
-      color.applyAsMaterials();
-      glNormal3fv(n.p0.array());
-      glVertex3fv(t.p0.array());
+        color = espColor(mol, t.p0);
+        color.applyAsMaterials();
+        glNormal3fv(n.p0.array());
+        glVertex3fv(t.p0.array());
 
-      color = espColor(mol, t.p1);
-      color.applyAsMaterials();
-      glNormal3fv(n.p1.array());
-      glVertex3fv(t.p1.array());
+        color = espColor(mol, t.p1);
+        color.applyAsMaterials();
+        glNormal3fv(n.p1.array());
+        glVertex3fv(t.p1.array());
       
-      color = espColor(mol, t.p2);
-      color.applyAsMaterials();
-      glNormal3fv(n.p2.array());
-      glVertex3fv(t.p2.array());
+        color = espColor(mol, t.p2);
+        color.applyAsMaterials();
+        glNormal3fv(n.p2.array());
+        glVertex3fv(t.p2.array());
+      }
+    } else { // RGB
+      //glColor4f(m_color.red(), m_color.green(), m_color.blue(), m_alpha);
+      m_color.applyAsMaterials();
+      for(int i=0; i < m_isoGen->numTriangles(); ++i)
+      {
+        triangle t = m_isoGen->getTriangle(i);
+        triangle n = m_isoGen->getNormal(i);
+      
+        glNormal3fv(n.p0.array());
+        glVertex3fv(t.p0.array());
+
+        glNormal3fv(n.p1.array());
+        glVertex3fv(t.p1.array());
+      
+        glNormal3fv(n.p2.array());
+        glVertex3fv(t.p2.array());
+      }
     }
     glEnd();
 
-//    glPopAttrib();
+    glPopAttrib();
 
     return true;
   }
@@ -260,6 +291,110 @@ namespace Avogadro {
     return Engine::Transparent | Engine::Atoms;
   }
   
+  void SurfaceEngine::setOpacity(int value)
+  {
+    m_alpha = 0.05 * value;
+    emit changed();
+  }
+  
+  void SurfaceEngine::setRenderMode(int value)
+  {
+    m_renderMode = value;
+    emit changed();
+  }
+  
+  void SurfaceEngine::setStepSize(double d)
+  {
+    m_stepSize = d;
+    emit changed();
+  }
+  
+  void SurfaceEngine::setPadding(double d)
+  {
+    m_padding = d;
+    emit changed();
+  }
+  
+  void SurfaceEngine::setColorMode(int value)
+  {
+    if (value == 1) {
+      m_settingsWidget->RSpin->setMaximum(0.0);
+      m_settingsWidget->GSpin->setMaximum(0.0);
+      m_settingsWidget->BSpin->setMaximum(0.0);
+    } else {
+      m_settingsWidget->RSpin->setMaximum(1.0);
+      m_settingsWidget->GSpin->setMaximum(1.0);
+      m_settingsWidget->BSpin->setMaximum(1.0);
+      m_settingsWidget->RSpin->setValue(1.0);
+    }
+
+    m_colorMode = value;
+    emit changed();
+  }
+  
+  void SurfaceEngine::setRed(double r)
+  {
+    m_color.set(r, m_color.green(), m_color.blue(), m_alpha);
+    emit changed();
+  }
+  
+  void SurfaceEngine::setGreen(double g)
+  {
+    m_color.set(m_color.red(), g, m_color.blue(), m_alpha);
+    emit changed();
+  }
+
+  void SurfaceEngine::setBlue(double b)
+  {
+    m_color.set(m_color.red(), m_color.green(), b, m_alpha);
+    emit changed();
+  }
+
+  QWidget* SurfaceEngine::settingsWidget()
+  {
+    if(!m_settingsWidget)
+    {
+      m_settingsWidget = new SurfaceSettingsWidget();
+      connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
+      connect(m_settingsWidget->renderCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setRenderMode(int)));
+      connect(m_settingsWidget->stepSizeSpin, SIGNAL(valueChanged(double)), this, SLOT(setStepSize(double)));
+      connect(m_settingsWidget->paddingSpin, SIGNAL(valueChanged(double)), this, SLOT(setPadding(double)));
+      connect(m_settingsWidget->colorCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setColorMode(int)));
+      connect(m_settingsWidget->RSpin, SIGNAL(valueChanged(double)), this, SLOT(setRed(double)));
+      connect(m_settingsWidget->GSpin, SIGNAL(valueChanged(double)), this, SLOT(setGreen(double)));
+      connect(m_settingsWidget->BSpin, SIGNAL(valueChanged(double)), this, SLOT(setBlue(double)));
+      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+    }
+    return m_settingsWidget;
+  }
+
+  void SurfaceEngine::settingsWidgetDestroyed()
+  {
+    qDebug() << "Destroyed Settings Widget";
+    m_settingsWidget = 0;
+  }
+
+  /*
+  void SurfaceEngine::writeSettings(QSettings &settings) const
+  {
+    Engine::writeSettings(settings);
+    settings.setValue("alpha", m_alpha);
+    settings.setValue("stepSize", m_stepSize);
+    settings.setValue("padding", m_padding);
+    //settings.setValue("renderMode", m_renderMode);
+    //settings.setValue("colorMode", m_colorMode);
+  }
+
+  void SurfaceEngine::readSettings(QSettings &settings)
+  {
+    Engine::readSettings(settings);
+    //m_alpha = settings.value("alpha", 0.5).toDouble();
+    m_stepSize = settings.value("stepSize", 0.33333).toDouble();
+    m_padding = settings.value("padding", 2.5).toDouble();
+    m_renderMode = 0;
+    m_colorMode = 0;
+  }
+  */
 }
 
 #include "surfaceengine.moc"

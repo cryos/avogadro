@@ -1,3 +1,15 @@
+2008-02-09  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/engines/surfaceengine2.*: Removed old files. Added
+	Marcus and me to the copyright header.
+	
+	* libavogadro/src/engines/surfaceengine.*: Added settings widget.
+	
+	* libavogadro/src/engines/CMakeList.txt: Added settings widget.
+
+	* libavogadro/src/engines/surfacesettingswidget.ui: Settings widget.
+	
+
 2008-02-04  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/clickmeasuretool.*: Added support for

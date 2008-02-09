@@ -18,6 +18,7 @@
  Iso - Iso class for displaying surfaces using OpenGL
 
  Copyright (C) 2008      Marcus D. Hanwell
+ Copyright (C) 2008      Tim Vandermeersch
  
  The original copyright headers are shown above. This source was originally
  part of the Zhu3D project. Subsequent changes were made to adapt the source

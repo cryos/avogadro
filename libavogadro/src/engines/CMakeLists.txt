@@ -120,8 +120,9 @@ INSTALL(TARGETS polygonengine DESTINATION ${DESTINATION_DIR})
 
 # Surface engine - molecular surfaces and 3D functions
 set(surfaceengine_SRCS iso.cpp surfaceengine.cpp)
+qt4_wrap_ui(surfaceengine_UIS surfacesettingswidget.ui)
 qt4_automoc(${surfaceengine_SRCS})
-ADD_LIBRARY(surfaceengine SHARED ${surfaceengine_SRCS} )
+ADD_LIBRARY(surfaceengine SHARED ${surfaceengine_SRCS} ${surfaceengine_UIS})
 TARGET_LINK_LIBRARIES(surfaceengine avogadro-lib
                                 ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                 ${OPENGL_LIBRARIES}
