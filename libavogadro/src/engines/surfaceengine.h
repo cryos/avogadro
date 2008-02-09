@@ -61,7 +61,8 @@ namespace Avogadro {
       IsoGen *m_isoGen;
       Eigen::Vector3f m_min;
 
-      void SurfaceEngine::VDWSurface(Molecule *mol);
+      void VDWSurface(Molecule *mol);
+      Color espColor(Molecule *mol, Eigen::Vector3f &pos);
   };
 
   //! Generates instances of our SurfaceEngine class

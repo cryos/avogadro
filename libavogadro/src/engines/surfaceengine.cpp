@@ -137,6 +137,31 @@ namespace Avogadro {
     m_grid->setGrid(vdwGrid);
   }
 
+  Color SurfaceEngine::espColor(Molecule *mol, Vector3f &pos)
+  {
+    double energy = 0.0;
+    vector3 p, dist;
+    
+    p.SetX(pos.x());
+    p.SetY(pos.y());
+    p.SetZ(pos.z());
+    
+    FOR_ATOMS_OF_MOL (atom, mol) {
+      dist = atom->GetVector() - p;
+      energy += atom->GetPartialCharge() / (dist.length()*dist.length());
+    }
+
+    //cout << "energy=" << energy << endl;
+    if (energy < -0.07)
+      return Color(0.0, 0.0, 1.0, 0.5);
+      
+    if (energy > 0.07)
+      return Color(1.0, 0.0, 0.0, 0.5);
+      
+
+    return Color(0.0, 1.0, 0.0, 0.5);
+  }
+  
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
   {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
@@ -167,18 +192,25 @@ namespace Avogadro {
     
     qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
 
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glBegin(GL_TRIANGLES);
     for(int i=0; i < m_isoGen->numTriangles(); ++i)
     {
       triangle t = m_isoGen->getTriangle(i);
       triangle n = m_isoGen->getNormal(i);
-
+      
+      color = espColor(mol, t.p0);
+      color.applyAsMaterials();
       glNormal3fv(n.p0.array());
       glVertex3fv(t.p0.array());
 
+      color = espColor(mol, t.p1);
+      color.applyAsMaterials();
       glNormal3fv(n.p1.array());
       glVertex3fv(t.p1.array());
-
+      
+      color = espColor(mol, t.p2);
+      color.applyAsMaterials();
       glNormal3fv(n.p2.array());
       glVertex3fv(t.p2.array());
     }

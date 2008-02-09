@@ -633,9 +633,10 @@ namespace Avogadro
         else
           fOffset = 0.5f;
 
-        asEdgeVertex[iEdge] = Vector3f(fX + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][0] + fOffset * a2fEdgeDirection[iEdge][0]) * m_fStepSize,
-            fY + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][1] + fOffset * a2fEdgeDirection[iEdge][1]) * m_fStepSize,
-            fZ + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][2] + fOffset * a2fEdgeDirection[iEdge][2]) * m_fStepSize);
+        asEdgeVertex[iEdge] = 
+	Vector3f(fX + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][0] + fOffset * a2fEdgeDirection[iEdge][0]) * m_fStepSize - 0.5*m_fStepSize,
+                 fY + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][1] + fOffset * a2fEdgeDirection[iEdge][1]) * m_fStepSize - 0.5*m_fStepSize,
+                 fZ + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][2] + fOffset * a2fEdgeDirection[iEdge][2]) * m_fStepSize - 0.5*m_fStepSize);
         vGetNormal(asEdgeNorm[iEdge], asEdgeVertex[iEdge].x(), asEdgeVertex[iEdge].y(), asEdgeVertex[iEdge].z());
       }
     }
