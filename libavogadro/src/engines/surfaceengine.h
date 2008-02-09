@@ -51,6 +51,9 @@ namespace Avogadro {
       bool renderOpaque(PainterDevice *pd);
       //@}
       
+      double transparencyDepth() const;
+      EngineFlags flags() const;
+      
       Engine *clone() const;
 
     protected:

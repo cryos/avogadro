@@ -151,42 +151,54 @@ namespace Avogadro {
 
     qDebug() << " rendering surface ";
 
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glDisable(GL_LIGHTING);
-    glDisable(GL_BLEND);
+//    glPushAttrib(GL_ALL_ATTRIB_BITS);
+//    glDisable(GL_LIGHTING);
+    glEnable(GL_BLEND);
     glShadeModel(GL_SMOOTH);
 
+    pd->painter()->setColor(1.0, 0.0, 0.0, 0.5);
 //    glPushName(Primitive::SurfaceType);
 //    glPushName(1);
 
-//    glColor3f(1.0, 0.0, 0.0);
+    glColor4f(1.0, 0.0, 0.0, 0.5);
+    
+    Color color(1.0, 0.0, 0.0, 0.5);
+    color.applyAsMaterials();
+    
     qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
 
-    glBegin(GL_POINTS);
+    glBegin(GL_TRIANGLES);
     for(int i=0; i < m_isoGen->numTriangles(); ++i)
     {
       triangle t = m_isoGen->getTriangle(i);
       triangle n = m_isoGen->getNormal(i);
-//       glBegin(GL_TRIANGLES);
-//       NORMAL n0 = d->_isoFinder->get_normal(t.v0);
-//       glNormal3f(n0.x, n0.y, n0.z);
-      glVertex3f(t.p0.x(), t.p0.y(), t.p0.z());
 
-//       NORMAL n1 = d->_isoFinder->get_normal(t.v1);
-//       glNormal3f(n1.x, n1.y, n1.z);
-      glVertex3f(t.p1.x(), t.p1.y(), t.p1.z());
+      glNormal3fv(n.p0.array());
+      glVertex3fv(t.p0.array());
 
-//       NORMAL n2 = d->_isoFinder->get_normal(t.v2);
-//       glNormal3f(n2.x, n2.y, n2.z);
-      glVertex3f(t.p2.x(), t.p2.y(), t.p2.z());
-//      glNormal3f(t.p0.x(), t.p0.y(), t.p0.z());
+      glNormal3fv(n.p1.array());
+      glVertex3fv(t.p1.array());
+
+      glNormal3fv(n.p2.array());
+      glVertex3fv(t.p2.array());
     }
     glEnd();
 
-    glPopAttrib();
+//    glPopAttrib();
 
     return true;
   }
+  
+  double SurfaceEngine::transparencyDepth() const
+  {
+    return 1.0;
+  }
+
+  Engine::EngineFlags SurfaceEngine::flags() const
+  {
+    return Engine::Transparent | Engine::Atoms;
+  }
+  
 }
 
 #include "surfaceengine.moc"
