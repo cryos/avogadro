@@ -137,8 +137,25 @@ namespace Avogadro {
     m_grid->setGrid(vdwGrid);
   }
 
+  //                                          // 
+  //     |    red    green     blue           //
+  // 1.0 |...--+       +       +--...         //
+  //     |      \     / \     /               //
+  //     |       \   /   \   /                //
+  //     |        \ /     \ /                 //
+  //     |         X       X                  //
+  //     |        / \     / \                 //
+  //     |       /   \   /   \                //
+  //     |      /     \ /     \               //
+  // 0.0 +...--+-------+-------+--...-->      //
+  //           a      0.0      b      energy
+  //
+  //  a = 20 * energy
+  //  b = 20 * energy
+  //
   Color SurfaceEngine::espColor(Molecule *mol, Vector3f &pos)
   {
+    GLfloat red, green, blue;
     double energy = 0.0;
     vector3 p, dist;
     
@@ -152,14 +169,26 @@ namespace Avogadro {
     }
 
     //cout << "energy=" << energy << endl;
-    if (energy < -0.07)
-      return Color(0.0, 0.0, 1.0, 0.5);
-      
-    if (energy > 0.07)
-      return Color(1.0, 0.0, 0.0, 0.5);
-      
+    if (energy < 0.0) {
+      blue = -20.0*energy;
+      if (blue >= 1.0) {
+        return Color(0.0, 0.0, 1.0, 0.8);
+      }
 
-    return Color(0.0, 1.0, 0.0, 0.5);
+      green = 1.0 - blue;
+      return Color(0.0, green, blue, 0.8);
+    }
+
+    if (energy > 0.0) {
+      red = 20.0*energy;
+      if (red >= 1.0) {
+        return Color(1.0, 0.0, 0.0, 0.8);
+      }
+      green = 1.0 - red;
+      return Color(red, green, 0.0, 0.8);
+    }
+
+    return Color(0.0, 1.0, 0.0, 0.8);
   }
   
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
