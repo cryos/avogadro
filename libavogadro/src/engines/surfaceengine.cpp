@@ -318,12 +318,14 @@ namespace Avogadro {
   void SurfaceEngine::setStepSize(double d)
   {
     m_stepSize = d;
+    m_surfaceValid = false;
     emit changed();
   }
   
   void SurfaceEngine::setPadding(double d)
   {
     m_padding = d;
+    m_surfaceValid = false;
     emit changed();
   }
   
@@ -388,7 +390,7 @@ namespace Avogadro {
   void SurfaceEngine::invalidateSurface(Primitive *primitive)
   {
     qDebug() << "invalidateSurface()";
-    if (primitive->type() == Primitive::AtomType) {
+    if ((primitive->type() == Primitive::AtomType) || (primitive->type() == Primitive::MoleculeType)) {
       m_surfaceValid = false;
       // stop running threads
       m_isoGen->quit();
