@@ -31,12 +31,11 @@
 #include <avogadro/engine.h>
 
 #include "iso.h"
-#include "ui_surfacesettingswidget.h"
+#include "ui_orbitalsettingswidget.h"
 
 namespace Avogadro {
 
-  class SurfacePrivateData;
-  class SurfaceSettingsWidget;
+  class OrbitalSettingsWidget;
 
   //! Surface Engine class.
   class OrbitalEngine : public Engine
@@ -67,19 +66,16 @@ namespace Avogadro {
 
 
     protected:
-      SurfaceSettingsWidget *m_settingsWidget;
+      OrbitalSettingsWidget *m_settingsWidget;
       Grid *m_grid;
       IsoGen *m_isoGen;
       Eigen::Vector3f m_min;
       Color  m_color;
       double m_alpha;
       double m_stepSize;
-      double m_padding;
+      double m_iso;
       int    m_renderMode;
       int    m_colorMode;
-      
-      void VDWSurface(Molecule *mol);
-      Color espColor(Molecule *mol, Eigen::Vector3f &pos);
     
     private Q_SLOTS:
       void isoGenFinished();
@@ -99,7 +95,7 @@ namespace Avogadro {
       /**
        * @param d padding for the surface polygonization (how far do we look for parts of the surface)
        */
-      void setPadding(double d);
+      void setIso(double d);
       /**
        * @param value coloring mode (0 = RGB, 1 = ESP)
        */
@@ -118,10 +114,10 @@ namespace Avogadro {
       void setBlue(double b);
   };
   
-  class SurfaceSettingsWidget : public QWidget, public Ui::SurfaceSettingsWidget
+  class OrbitalSettingsWidget : public QWidget, public Ui::OrbitalSettingsWidget
   {
     public:
-      SurfaceSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+      OrbitalSettingsWidget(QWidget *parent=0) : QWidget(parent) {
         setupUi(this);
       }
   };

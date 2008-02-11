@@ -129,3 +129,15 @@ TARGET_LINK_LIBRARIES(surfaceengine avogadro-lib
 )
 
 INSTALL(TARGETS surfaceengine DESTINATION ${DESTINATION_DIR})
+
+# Orbital engine - molecular orbitals
+set(orbitalengine_SRCS iso.cpp orbitalengine.cpp)
+qt4_wrap_ui(orbitalengine_UIS orbitalsettingswidget.ui)
+qt4_automoc(${orbitalengine_SRCS})
+ADD_LIBRARY(orbitalengine SHARED ${orbitalengine_SRCS} ${orbitalengine_UIS})
+TARGET_LINK_LIBRARIES(orbitalengine avogadro-lib
+                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                ${OPENGL_LIBRARIES}
+)
+
+INSTALL(TARGETS orbitalengine DESTINATION ${DESTINATION_DIR})
