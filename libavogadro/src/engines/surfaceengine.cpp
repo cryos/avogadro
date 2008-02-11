@@ -49,6 +49,7 @@ namespace Avogadro {
     setDescription(tr("Surface rendering"));
     m_grid = new Grid;
     m_isoGen = new IsoGen;
+    connect(m_isoGen, SIGNAL(finished()), this, SLOT(isoGenFinished()));
     m_color = Color(1.0, 0.0, 0.0, m_alpha);
   }
 
@@ -366,6 +367,11 @@ namespace Avogadro {
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
     }
     return m_settingsWidget;
+  }
+  
+  void SurfaceEngine::isoGenFinished()
+  {
+    emit changed();
   }
 
   void SurfaceEngine::settingsWidgetDestroyed()

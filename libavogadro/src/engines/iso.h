@@ -33,6 +33,7 @@
  Iso - Iso class for displaying surfaces using OpenGL
 
  Copyright (C) 2008      Marcus D. Hanwell
+ Copyright (C) 2008      Tim Vandermeersch
  
  The original copyright headers are shown above. This source was originally
  part of the Zhu3D project. Subsequent changes were made to adapt the source
@@ -62,6 +63,7 @@
 
 #include <QList>
 #include <QThread>
+#include <QMutex>
 #include <avogadro/glwidget.h>
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
@@ -125,24 +127,27 @@ namespace Avogadro
     ~IsoGen() { ; }
 
     // Vertex/normal-lists
-    QList<triangle> m_normList;
-    QList<triangle> m_vertList;
+    QList<triangle> m_normList, m_normListCopy;
+    QList<triangle> m_vertList, m_vertListCopy;
 
+    void run();
+    
     // Central functions
     void init(Grid *grid, double size, Eigen::Vector3f min);
-    void start();
+    //void start();
     int numTriangles();
     triangle getTriangle(int i);
     triangle getNormal(int i);
 
-  protected:
-    void run();
+  //protected:
 
   private:
     Grid *m_grid; // OpenBabel Grid
     float m_fStepSize; // Grid density == 2.0f/sta.tgrids;
     long m_totTri; // Triangles calculated in total; currently not used
     Eigen::Vector3f m_min;
+
+    QMutex m_mutex;
 
     // Constants/tables
     static const float fTargetValue;

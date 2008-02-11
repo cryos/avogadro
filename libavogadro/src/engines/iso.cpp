@@ -484,14 +484,17 @@ namespace Avogadro
     return isoInstance.Eval(vars);
   }
 */
+  /*
   void IsoGen::start()
   {
     run();
   }
+  */
         
   // The heavy worker thread
   void IsoGen::run()
   {
+    qDebug() << "start run()";
     int nx, ny, nz;
     
     if (m_grid->grid() == 0)
@@ -499,6 +502,17 @@ namespace Avogadro
       qDebug() << "m_grid == 0 => returning...";
       return;
     }
+    
+    if (!m_mutex.tryLock())
+      return;
+    
+    // Save previous vertex/normal-lists for rendering
+    m_normListCopy = m_normList;
+    m_vertListCopy = m_vertList;
+    
+    // Clear vertex/normal-lists
+    m_normList.clear();
+    m_vertList.clear();
     
     m_grid->grid()->GetNumberOfPoints(nx, ny, nz);
 
@@ -508,6 +522,8 @@ namespace Avogadro
           (*this.*m_tessellation)(m_min.x()+x*m_fStepSize, 
                                   m_min.y()+y*m_fStepSize,
                                   m_min.z()+z*m_fStepSize);
+    m_mutex.unlock();
+    qDebug() << "end run()";
   }
 
   // ****************************************************************************
@@ -517,16 +533,23 @@ namespace Avogadro
   // Called from gldraw to initialize thread stuff
   void IsoGen::init(Grid *grid, double size, Eigen::Vector3f min)
   {
+    qDebug() << "start init()";
+    if (!m_mutex.tryLock())
+      return;
+    
     m_grid = grid;
     m_fStepSize = size;
     m_min = min;
 
     // Clear vertex/normal-lists
-    m_normList.clear();
-    m_vertList.clear();
+    //m_normList.clear();
+    //m_vertList.clear();
 
     // Right now we are just using one tessellation method
     m_tessellation=&IsoGen::vMarchCube1;
+    
+    m_mutex.unlock();
+    qDebug() << "end init()";
   }
 
   // ****************************************************************************
@@ -673,17 +696,17 @@ namespace Avogadro
   
   int IsoGen::numTriangles()
   {
-    return m_vertList.size();
+    return m_vertListCopy.size();
   }
   
   triangle IsoGen::getTriangle(int i) 
   {
-    return m_vertList[i];
+    return m_vertListCopy[i];
   }
   
   triangle IsoGen::getNormal(int i) 
   {
-    return m_normList[i];
+    return m_normListCopy[i];
   }
 
   // vMarchCube2 performs the Marching Tetrahedrons algorithm on a single cube by

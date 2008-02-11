@@ -82,6 +82,7 @@ namespace Avogadro {
       Color espColor(Molecule *mol, Eigen::Vector3f &pos);
     
     private Q_SLOTS:
+      void isoGenFinished();
       void settingsWidgetDestroyed();
       /**
        * @param value opacity of the surface / 20
