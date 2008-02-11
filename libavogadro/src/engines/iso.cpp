@@ -506,10 +506,6 @@ namespace Avogadro
     if (!m_mutex.tryLock())
       return;
     
-    // Save previous vertex/normal-lists for rendering
-    m_normListCopy = m_normList;
-    m_vertListCopy = m_vertList;
-    
     // Clear vertex/normal-lists
     m_normList.clear();
     m_vertList.clear();
@@ -522,6 +518,11 @@ namespace Avogadro
           (*this.*m_tessellation)(m_min.x()+x*m_fStepSize, 
                                   m_min.y()+y*m_fStepSize,
                                   m_min.z()+z*m_fStepSize);
+    
+    // Save previous vertex/normal-lists for rendering
+    m_normListCopy = m_normList;
+    m_vertListCopy = m_vertList;
+
     m_mutex.unlock();
     qDebug() << "end run()";
   }

@@ -51,6 +51,7 @@ namespace Avogadro {
     m_isoGen = new IsoGen;
     connect(m_isoGen, SIGNAL(finished()), this, SLOT(isoGenFinished()));
     m_color = Color(1.0, 0.0, 0.0, m_alpha);
+    m_surfaceValid = false;
   }
 
   SurfaceEngine::~SurfaceEngine()
@@ -201,13 +202,23 @@ namespace Avogadro {
   {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
 
-    VDWSurface(mol);
+    if (!m_surfaceValid) {
+      disconnect(mol, SIGNAL(primitiveAdded(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
+      disconnect(mol, SIGNAL(primitiveRemoved(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
+      disconnect(mol, SIGNAL(primitiveUpdated(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
 
-    qDebug() << " set surface ";
+      connect(mol, SIGNAL(primitiveAdded(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
+      connect(mol, SIGNAL(primitiveRemoved(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
+      connect(mol, SIGNAL(primitiveUpdated(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
+      
+      qDebug() << " set surface ";
+      VDWSurface(mol);
 
-    m_grid->setIsoValue(0.001);
-    m_isoGen->init(m_grid, m_stepSize, m_min);
-    m_isoGen->start();
+      m_grid->setIsoValue(0.001);
+      m_isoGen->init(m_grid, m_stepSize, m_min);
+      m_isoGen->start();
+      m_surfaceValid = true;
+    }
 
     qDebug() << " rendering surface ";
 
@@ -372,6 +383,18 @@ namespace Avogadro {
   void SurfaceEngine::isoGenFinished()
   {
     emit changed();
+  }
+
+  void SurfaceEngine::invalidateSurface(Primitive *primitive)
+  {
+    qDebug() << "invalidateSurface()";
+    if (primitive->type() == Primitive::AtomType) {
+      m_surfaceValid = false;
+      // stop running threads
+      m_isoGen->quit();
+    }
+    
+    //emit changed();
   }
 
   void SurfaceEngine::settingsWidgetDestroyed()

@@ -77,12 +77,14 @@ namespace Avogadro {
       double m_padding;
       int    m_renderMode;
       int    m_colorMode;
+      bool   m_surfaceValid;
       
       void VDWSurface(Molecule *mol);
       Color espColor(Molecule *mol, Eigen::Vector3f &pos);
     
     private Q_SLOTS:
       void isoGenFinished();
+      void invalidateSurface(Primitive *primitive);
       void settingsWidgetDestroyed();
       /**
        * @param value opacity of the surface / 20
