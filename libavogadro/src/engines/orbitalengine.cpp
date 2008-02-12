@@ -44,6 +44,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
+  m_grid(0), m_isoGen(0), m_min(0., 0., 0.), 
   m_alpha(0.5), m_stepSize(0.33333), m_iso(0.5), m_renderMode(0), m_colorMode(0)
   {
     setDescription(tr("Orbital rendering"));
@@ -92,6 +93,22 @@ namespace Avogadro {
     
     qDebug() << "Min value = " << m_grid->grid()->GetMinValue()
              << "Max value = " << m_grid->grid()->GetMaxValue();
+    
+    // Debug code - try to figure out if we are reading the cube in correctly...
+    QList<Primitive *> list = primitives().subList(Primitive::AtomType);
+    foreach(Primitive *p, list)
+    {
+      const Atom *a = static_cast<const Atom *>(p);
+      double v = m_grid->grid()->GetValue(vector3(a->pos().x()+0.5, a->pos().y(), a->pos().z()));
+      qDebug() << "Grid value at atom centre: " << v;
+    }
+    
+    // Find the minima for the grid
+    m_min = Vector3f(m_grid->grid()->GetOriginVector().x(),
+        m_grid->grid()->GetOriginVector().y(),
+        m_grid->grid()->GetOriginVector().z());
+    
+    qDebug() << "Origin: " << m_min.x() << m_min.y() << m_min.z();
 
     // For orbitals, we'll need to set this iso value and make sure it's
     // for +/- 0.001 for example
