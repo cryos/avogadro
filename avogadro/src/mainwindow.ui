@@ -16,7 +16,7 @@
    <iconset resource="avogadro.qrc" >:/icons/avogadro.png</iconset>
   </property>
   <property name="unifiedTitleAndToolBarOnMac" >
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralWidget" />
   <widget class="QMenuBar" name="menubar" >
@@ -25,7 +25,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>22</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -104,8 +104,6 @@
     <addaction name="actionPaste" />
     <addaction name="actionClear" />
     <addaction name="separator" />
-    <addaction name="actionSelect_All" />
-    <addaction name="actionSelect_None" />
    </widget>
    <widget class="QMenu" name="menuExtensions" >
     <property name="title" >
@@ -417,7 +415,7 @@
   </action>
   <action name="actionNewView" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/filenew.png</iconset>
+    <iconset resource="avogadro.qrc" >:/icons/tab_new.png</iconset>
    </property>
    <property name="text" >
     <string>New View</string>
@@ -428,7 +426,7 @@
     <bool>false</bool>
    </property>
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/fileclose.png</iconset>
+    <iconset resource="avogadro.qrc" >:/icons/tab_remove.png</iconset>
    </property>
    <property name="text" >
     <string>Close View</string>
@@ -443,6 +441,9 @@
    </property>
   </action>
   <action name="actionPaste" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/paste.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Paste</string>
    </property>
@@ -451,6 +452,9 @@
    </property>
   </action>
   <action name="actionCopy" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/copy.png</iconset>
+   </property>
    <property name="text" >
     <string>Copy</string>
    </property>
@@ -459,6 +463,9 @@
    </property>
   </action>
   <action name="actionCut" >
+   <property name="icon" >
+    <iconset resource="avogadro.qrc" >:/icons/cut.png</iconset>
+   </property>
    <property name="text" >
     <string>Cut</string>
    </property>

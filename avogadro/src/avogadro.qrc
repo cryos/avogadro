@@ -2,6 +2,8 @@
     <qresource prefix="/" >
         <file>icons/avogadro.png</file>
         <file>icons/colorize.png</file>
+        <file>icons/copy.png</file>
+        <file>icons/cut.png</file>
         <file>icons/edit_add.png</file>
         <file>icons/edit_remove.png</file>
         <file>icons/exit.png</file>
@@ -14,8 +16,12 @@
         <file>icons/help.png</file>
         <file>icons/navigate.png</file>
         <file>icons/navigateN.png</file>
+        <file>icons/paste.png</file>
         <file>icons/redo.png</file>
         <file>icons/revert.png</file>
+        <file>icons/selecttable.png</file>
+        <file>icons/tab_new.png</file>
+        <file>icons/tab_remove.png</file>
         <file>icons/tool.png</file>
         <file>icons/undo.png</file>
         <file>icons/window_fullscreen.png</file>
