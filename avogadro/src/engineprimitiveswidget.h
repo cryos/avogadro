@@ -57,6 +57,8 @@ namespace Avogadro
       void setEngine ( Engine *engine );
       void addSelection();
       void removeSelection();
+      void fromSelection();
+      void toSelection();
       void addAll();
 
     private:

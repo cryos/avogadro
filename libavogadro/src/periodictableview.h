@@ -187,3 +187,4 @@ namespace Avogadro {
 } // End of Avogadro namespace
 
 #endif
+

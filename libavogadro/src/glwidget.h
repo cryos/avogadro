@@ -433,7 +433,7 @@ namespace Avogadro {
        * @param primitives the set of objects to update.
        * @param select whether to select or deselect the objects.
        */
-      void setSelected(QList<Primitive*> primitives, bool select);
+      void setSelected(QList<Primitive*> primitives, bool select = true);
 
       /**
        * Deselect all objects.

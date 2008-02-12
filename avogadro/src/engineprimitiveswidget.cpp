@@ -72,6 +72,8 @@ namespace Avogadro {
         this, SLOT(removeSelection()));
     connect(ui.resetButton, SIGNAL(clicked()),
            this, SLOT(addAll()));
+    connect(ui.fromSelectionButton, SIGNAL(clicked()),
+           this, SLOT(fromSelection()));
   }
 
   EnginePrimitivesWidget::~EnginePrimitivesWidget()
@@ -103,6 +105,32 @@ namespace Avogadro {
   void EnginePrimitivesWidget::addAll()
   {
     d->engine->setPrimitives(d->glWidget->primitives());
+  }
+
+  void EnginePrimitivesWidget::toSelection()
+  {
+    PrimitiveList pl = d->glWidget->selectedPrimitives();
+    if(pl.size())
+    {
+      d->engine->setPrimitives(pl);
+    }
+    else
+    {
+      d->engine->setPrimitives(d->glWidget->primitives());
+    }
+  }
+
+  void EnginePrimitivesWidget::fromSelection()
+  {
+    PrimitiveList pl = d->glWidget->selectedPrimitives();
+    if(pl.size())
+    {
+      d->engine->setPrimitives(pl);
+    }
+    else
+    {
+      d->engine->setPrimitives(d->glWidget->primitives());
+    }
   }
 
   GLWidget *EnginePrimitivesWidget::glWidget() const

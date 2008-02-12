@@ -181,7 +181,7 @@ namespace Avogadro {
       return;
     */
     FOR_ATOMS_OF_MOL (atom, m_molecule) {
-      if (atom->GetAtomicNum() == element)
+      if (atom->GetAtomicNum() == static_cast<unsigned int>(element))
         selectedAtoms.append(static_cast<Atom*>(m_molecule->GetAtom(atom->GetIdx())));
     }
 
