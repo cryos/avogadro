@@ -65,6 +65,7 @@ namespace Avogadro {
     ui.addSelectionButton->setEnabled(false);
     ui.removeSelectionButton->setEnabled(false);
     ui.resetButton->setEnabled(false);
+    ui.fromSelectionButton->setEnabled(false);
 
     connect(ui.addSelectionButton, SIGNAL(clicked()),
         this, SLOT(addSelection()));
@@ -156,6 +157,7 @@ namespace Avogadro {
     ui.addSelectionButton->setEnabled(true);
     ui.removeSelectionButton->setEnabled(true);
     ui.resetButton->setEnabled(true);
+    ui.fromSelectionButton->setEnabled(true);
   }
 
 } // end namespace Avogadro
