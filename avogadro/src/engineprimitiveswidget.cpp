@@ -30,6 +30,7 @@
 #include <avogadro/glwidget.h>
 
 #include <avogadro/primitiveitemmodel.h>
+#include <avogadro/primitivelist.h>
 
 #include <QAbstractButton>
 #include <QDialog>
@@ -84,7 +85,7 @@ namespace Avogadro {
 
   void EnginePrimitivesWidget::addSelection()
   {
-    QList<Primitive *> selectedPrimitives = d->glWidget->selectedPrimitives();
+    PrimitiveList selectedPrimitives = d->glWidget->selectedPrimitives();
     PrimitiveList list = d->engine->primitives();
     foreach(Primitive *p, selectedPrimitives)
     {
@@ -96,7 +97,7 @@ namespace Avogadro {
 
   void EnginePrimitivesWidget::removeSelection()
   {
-    QList<Primitive *> selectedPrimitives = d->glWidget->selectedPrimitives();
+    PrimitiveList selectedPrimitives = d->glWidget->selectedPrimitives();
     foreach(Primitive *p, selectedPrimitives)
     {
       d->engine->removePrimitive(p);

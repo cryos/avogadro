@@ -208,7 +208,7 @@ namespace Avogadro {
     m_undo = new MoveAtomCommand(widget->molecule());
 
     // Get the currently selected atoms from the view
-    QList<Primitive *> currentSelection = widget->selectedPrimitives();
+    PrimitiveList currentSelection = widget->selectedPrimitives();
 
     QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 

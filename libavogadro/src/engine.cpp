@@ -55,14 +55,15 @@ namespace Avogadro {
 
   void Engine::setPrimitives(const PrimitiveList &primitives)
   {
+    std::cout << "SetPrimitives" << std::endl;
     d->primitives = primitives;
     emit changed();
   }
 
   void Engine::setPrimitives(const QList<Primitive *> &primitives)
   {
-    PrimitiveList pl = primitives;
-    setPrimitives(pl);
+    std::cout << "SetPrimitives" << std::endl;
+    setPrimitives(primitives);
   }
 
   double Engine::radius(const PainterDevice*, const Primitive*) const
@@ -87,17 +88,20 @@ namespace Avogadro {
 
   void Engine::addPrimitive(Primitive *primitive)
   {
+    std::cout << "addPrimitives" << std::endl;
     d->primitives.append(primitive);
     emit changed();
   }
 
   void Engine::updatePrimitive(Primitive*)
   {
+    std::cout << "updatePrimitives" << std::endl;
     emit changed();
   }
 
   void Engine::removePrimitive(Primitive *primitive)
   {
+    std::cout  << "updatePrimitives" << std::endl;
     d->primitives.removeAll(primitive);
     emit changed();
   }

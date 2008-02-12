@@ -1057,6 +1057,7 @@ namespace Avogadro {
 
     d->primitives.append( d->molecule );
 
+    std::cout << "SetMolecule Called!" << std::endl;
     // Now set the primitives for the engines
     for (int i = 0; i < d->engines.size(); i++)
       d->engines.at(i)->setPrimitives(d->primitives);
@@ -1500,13 +1501,11 @@ namespace Avogadro {
     d->stable = stable;
   }
 
-  void GLWidget::setSelected( QList<Primitive *> primitives, bool select )
+  void GLWidget::setSelected( PrimitiveList primitives, bool select )
   {
     foreach( Primitive *item, primitives ) {
-      if ( select ) {
-        if ( !d->selectedPrimitives.contains( item ) ) {
+      if ( select && !d->selectedPrimitives.contains( item ) ) {
           d->selectedPrimitives.append( item );
-        }
       } else {
         d->selectedPrimitives.removeAll( item );
       }
@@ -1514,18 +1513,22 @@ namespace Avogadro {
     }
   }
 
-  QList<Primitive *> GLWidget::selectedPrimitives() const
+  PrimitiveList GLWidget::selectedPrimitives() const
   {
     return d->selectedPrimitives.list();
   }
 
-  void GLWidget::toggleSelected( QList<Primitive*> primitives )
+  void GLWidget::toggleSelected( PrimitiveList primitives )
   {
     foreach( Primitive *item, primitives ) {
       if ( d->selectedPrimitives.contains( item ) )
+      {
         d->selectedPrimitives.removeAll( item );
+      }
       else
+      {
         d->selectedPrimitives.append( item );
+      }
     }
   }
 

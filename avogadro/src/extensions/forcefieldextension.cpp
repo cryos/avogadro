@@ -189,13 +189,12 @@ namespace Avogadro
       m_ConstraintsDialog->show();
       break;
     case IgnoreAtomsIndex: // ignore the selected atoms
-      selectedAtoms = widget->selectedPrimitives();
+      selectedAtoms = widget->selectedPrimitives().subList(Primitive::AtomType);
 
-      for (int i = 0; i < selectedAtoms.size(); ++i) {
-        if (selectedAtoms[i]->type() == Primitive::AtomType) {
-          Atom *atom = static_cast<Atom *>(selectedAtoms[i]);
-          m_constraints->addIgnore(atom->GetIdx());
-        }
+      foreach(Primitive *p, selectedAtoms)
+      {
+        Atom *atom = static_cast<Atom *>(p);
+        m_constraints->addIgnore(atom->GetIdx());
       }
         
       // copy constraints to all force fields
@@ -211,13 +210,12 @@ namespace Avogadro
       break;
 
     case FixAtomsIndex: // fix the selected atom positions
-      selectedAtoms = widget->selectedPrimitives();
+      selectedAtoms = widget->selectedPrimitives().subList(Primitive::AtomType);
 
-      for (int i = 0; i < selectedAtoms.size(); ++i) {
-        if (selectedAtoms[i]->type() == Primitive::AtomType) {
-          Atom *atom = static_cast<Atom *>(selectedAtoms[i]);
-          m_constraints->addAtomConstraint(atom->GetIdx());
-        }
+      foreach(Primitive *p, selectedAtoms)
+      {
+        Atom *atom = static_cast<Atom *>(p);
+        m_constraints->addAtomConstraint(atom->GetIdx());
       }
         
       // copy constraints to all force fields

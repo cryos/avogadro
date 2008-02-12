@@ -109,7 +109,7 @@ namespace Avogadro {
 
   void EngineSetupWidget::addSelection()
   {
-    QList<Primitive *> selectedPrimitives = d->glWidget->selectedPrimitives();
+    PrimitiveList selectedPrimitives = d->glWidget->selectedPrimitives();
     PrimitiveList list = d->engine->primitives();
     foreach(Primitive *p, selectedPrimitives)
     {
@@ -121,7 +121,7 @@ namespace Avogadro {
 
   void EngineSetupWidget::removeSelection()
   {
-    QList<Primitive *> selectedPrimitives = d->glWidget->selectedPrimitives();
+    PrimitiveList selectedPrimitives = d->glWidget->selectedPrimitives();
     foreach(Primitive *p, selectedPrimitives)
     {
       d->engine->removePrimitive(p);

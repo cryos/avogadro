@@ -85,7 +85,7 @@ namespace Avogadro {
     private:
       Molecule *m_molecule;
       Molecule m_moleculeCopy;
-      QList<Primitive*> m_SelectedList;
+      PrimitiveList m_SelectedList;
   };
 
 } // end namespace Avogadro

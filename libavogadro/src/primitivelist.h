@@ -28,6 +28,8 @@
 #include <avogadro/global.h>
 #include <avogadro/primitive.h>
 
+#include <QVector>
+#include <QList>
 
 namespace Avogadro
 {
@@ -102,6 +104,11 @@ namespace Avogadro
       int size() const;
 
       /**
+       * @return !size()
+       */
+      bool isEmpty() const;
+
+      /**
        * @param type the type of primitives we're interested in
        * @return the number of primitives for the given type
        */
@@ -120,6 +127,75 @@ namespace Avogadro
 
     private:
       PrimitiveListPrivate * const d;
+
+    public:
+
+      class const_iterator
+      {
+        public:
+        QVector< QList<Primitive *> > *vl;
+        QVector< QList<Primitive *> >::const_iterator vit;
+        QList<Primitive *>::const_iterator lit;
+
+        inline const_iterator(QVector< QList<Primitive *> > *p) : vl(p) 
+        {
+          vit = vl->begin();
+          lit = (*vit).begin();
+          while(lit == (*vit).end())
+          {
+            vit++;
+            if(vit != vl->end())
+            {
+              lit = (*vit).begin();
+            }
+            else
+            {
+              break;
+            }
+          }
+        }
+
+        inline Primitive* operator*() const { return *lit; }
+        inline const_iterator operator++(int) { 
+          const_iterator p = *this;
+          ++(*this);
+          return p;
+        }
+
+        inline const_iterator &operator++() 
+        { 
+          if(vit != vl->end())
+          {
+            lit++;
+            while(lit == (*vit).end())
+            {
+              vit++;
+
+              if(vit == vl->end())
+              {
+                break;
+              }
+              lit = (*vit).begin();
+            }
+          }
+          return *this;
+        }
+
+        inline bool operator!=(const const_iterator &o) const 
+        { 
+          return !(vit == vl->end() && o.vit == vl->end()) &&
+              !(vit == o.vit && lit == o.lit);
+        }
+
+        inline bool operator==(const const_iterator &o) const 
+        { // equal if both are at the end
+          return (vit == vl->end() && o.vit == vl->end()) || 
+            (vit == o.vit && lit == o.lit); 
+        }
+      };
+
+      const_iterator begin() const;
+      const_iterator end() const;
 
 
   };

@@ -32,7 +32,7 @@ using namespace OpenBabel;
 namespace Avogadro {
 
   CutCommand::CutCommand(Molecule *molecule, QMimeData *copyData,
-                         QList<Primitive*> selectedList) :
+                         PrimitiveList selectedList) :
     m_molecule(molecule), m_originalMolecule(*molecule),
     m_copiedData(copyData), m_selectedList(selectedList)
   {
@@ -101,7 +101,7 @@ namespace Avogadro {
   }
 
   ClearCommand::ClearCommand(Molecule *molecule,
-                             QList<Primitive*> selectedList):
+                             PrimitiveList selectedList):
     m_molecule(molecule),
     m_originalMolecule(*molecule),
     m_selectedList(selectedList)

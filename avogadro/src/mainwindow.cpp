@@ -871,7 +871,7 @@ namespace Avogadro
 
   // Helper function -- works for "cut" or "copy"
   // FIXME add parameter to set "Copy" or "Cut" in messages
-  QMimeData* MainWindow::prepareClipboardData( QList<Primitive*> selectedItems )
+  QMimeData* MainWindow::prepareClipboardData( PrimitiveList selectedItems )
   {
     QMimeData *mimeData = new QMimeData;
     // we also save an image for copy/paste to office programs, presentations, etc.
@@ -882,12 +882,10 @@ namespace Avogadro
       moleculeCopy = new Molecule;
       std::map<OBAtom*, OBAtom*> AtomMap; // key is from old, value from new
       // copy atoms and create a map of atom indexes
-      foreach( Primitive *item, selectedItems ) {
-        if ( item->type() == Primitive::AtomType ) {
-          OBAtom *selected = static_cast<Atom*>( item );
-          moleculeCopy->InsertAtom( *selected );
-          AtomMap[selected] = moleculeCopy->GetAtom( moleculeCopy->NumAtoms() );
-        }
+      foreach( Primitive *item, selectedItems.subList(Primitive::AtomType) ) {
+        OBAtom *selected = static_cast<Atom*>( item );
+        moleculeCopy->InsertAtom( *selected );
+        AtomMap[selected] = moleculeCopy->GetAtom( moleculeCopy->NumAtoms() );
       }
 
       // use the atom map to map bonds
@@ -1023,7 +1021,7 @@ namespace Avogadro
     gl->loadDefaultEngines();
     layout->addWidget(gl);
 
-    QString tabName = tr("View %1").arg( QString::number( d->centralTab->count()) );
+    QString tabName = tr("View %1").arg( QString::number( d->centralTab->count()+1) );
 
     d->centralTab->addTab( widget, tabName );
     ui.actionCloseView->setEnabled( true );
@@ -1050,7 +1048,7 @@ namespace Avogadro
     gl->readSettings(settings);
     settings.endArray();
 
-    QString tabName = tr("View %1").arg( QString::number( d->centralTab->count()) );
+    QString tabName = tr("View %1").arg( QString::number( d->centralTab->count()+1) );
 
     d->centralTab->addTab( widget, tabName );
     ui.actionCloseView->setEnabled( true );
@@ -1083,10 +1081,7 @@ namespace Avogadro
         delete widget;
 
         for ( int count=d->centralTab->count(); index < count; index++ ) {
-          QString text = d->centralTab->tabText( index );
-          if ( !text.compare( tr( "View %1" ).arg( QString::number( index+1 ) ) )) {
-            d->centralTab->setTabText( index, tr( "View %1" ).arg( QString::number( index ) ) );
-          }
+          d->centralTab->setTabText( index, tr( "View %1" ).arg( QString::number( index + 1 ) ) );
         }
         d->glWidgets.removeAll( glWidget );
         delete glWidget;
@@ -1324,7 +1319,7 @@ namespace Avogadro
       GLWidget *gl = newGLWidget();
       layout->addWidget(gl);
 
-      QString tabName = tr("View %1").arg(QString::number(i));
+      QString tabName = tr("View %1").arg(QString::number(i+1));
       d->centralTab->addTab(widget, tabName);
 
       gl->readSettings(settings);
@@ -1604,7 +1599,7 @@ namespace Avogadro
         if(engine)
         {
           Engine *newEngine = engine->clone();
-          QList<Primitive *> list = d->glWidget->selectedPrimitives();
+          PrimitiveList list = d->glWidget->selectedPrimitives();
           if(list.size())
           {
             newEngine->setPrimitives(d->glWidget->selectedPrimitives());

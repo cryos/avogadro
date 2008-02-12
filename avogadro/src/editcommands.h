@@ -35,7 +35,7 @@ namespace Avogadro {
   {
   public:
     CutCommand(Molecule *molecule, QMimeData *copyData,
-               QList<Primitive*> selectedList);
+               PrimitiveList selectedList);
 
     virtual void undo();
     virtual void redo();
@@ -44,7 +44,7 @@ namespace Avogadro {
     Molecule *m_molecule;         //!< parent (active molecule in widget)
     Molecule  m_originalMolecule; //!< original (unmodified molecule)
     QMimeData *m_copiedData;      //!< fragment to be copied to the clipboard
-    QList<Primitive*> m_selectedList; //!< any selected atoms
+    PrimitiveList m_selectedList; //!< any selected atoms
   };
 
   class PasteCommand : public QUndoCommand
@@ -65,7 +65,7 @@ namespace Avogadro {
  class ClearCommand : public QUndoCommand
   {
   public:
-    ClearCommand(Molecule *molecule, QList<Primitive*> selectedList);
+    ClearCommand(Molecule *molecule, PrimitiveList selectedList);
 
     virtual void undo();
     virtual void redo();
@@ -73,7 +73,7 @@ namespace Avogadro {
   private:
     Molecule *m_molecule;             //!< active widget molecule
     Molecule  m_originalMolecule;     //!< save original molecule
-    QList<Primitive*> m_selectedList; //!< any selected atoms
+    PrimitiveList m_selectedList; //!< any selected atoms
   };
 
 }

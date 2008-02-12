@@ -86,7 +86,7 @@ namespace Avogadro {
 
       QMap<GamessEfpMatchDialog *, GLWidget *> m_dialogWidgets;
       QMap<GamessEfpMatchDialog *, Molecule *> m_dialogMolecules;
-      QMap<GLWidget *, QList<Primitive *> > m_widgetSelected;
+      QMap<GLWidget *, PrimitiveList > m_widgetSelected;
 
       QMap<QString, int> m_groupNameID;
 

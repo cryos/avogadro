@@ -26,8 +26,6 @@
 #include <avogadro/primitive.h>
 #include <avogadro/primitivelist.h>
 
-#include <QVector>
-
 namespace Avogadro {
 
   class PrimitiveListPrivate {
@@ -124,6 +122,11 @@ namespace Avogadro {
     return d->size;
   }
 
+  bool PrimitiveList::isEmpty() const
+  {
+    return !size();
+  }
+
   int PrimitiveList::count() const {
     return size();
   }
@@ -144,4 +147,17 @@ namespace Avogadro {
     }
     d->size = 0;
   }
+
+  PrimitiveList::const_iterator PrimitiveList::begin() const
+  {
+    return &(d->vector);
+  }
+
+  PrimitiveList::const_iterator PrimitiveList::end() const
+  {
+    const_iterator ci(&(d->vector));
+    ci.vit = d->vector.end();
+    return ci;
+  }
+
 }

@@ -416,7 +416,7 @@ namespace Avogadro {
       /**
        * @return the current selected primitives (all Primitive types)
        */
-      QList<Primitive*> selectedPrimitives() const;
+      PrimitiveList selectedPrimitives() const;
 
       /**
        * Toggle the selection for the atoms in the supplied list.
@@ -424,7 +424,7 @@ namespace Avogadro {
        *
        * @param primitives the set of objects to update.
        */
-      void toggleSelected(QList<Primitive*> primitveList);
+      void toggleSelected(PrimitiveList primitiveList);
 
       /**
        * Change the selection status for the atoms in the supplied list.
@@ -433,7 +433,7 @@ namespace Avogadro {
        * @param primitives the set of objects to update.
        * @param select whether to select or deselect the objects.
        */
-      void setSelected(QList<Primitive*> primitives, bool select = true);
+      void setSelected(PrimitiveList primitives, bool select = true);
 
       /**
        * Deselect all objects.

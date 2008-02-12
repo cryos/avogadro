@@ -193,18 +193,16 @@ namespace Avogadro
       return 0;
     }
 
-    QList<Primitive *> selectedPrimitives = widget->selectedPrimitives();
+    PrimitiveList selectedPrimitives = widget->selectedPrimitives();
     Molecule selectedMolecule;
 
     int numAtoms = 0;
     std::map<OBAtom*, OBAtom*> AtomMap; // key is from old, value from new
-    foreach( Primitive *p, selectedPrimitives ) {
-      if ( p->type() == Primitive::AtomType ) {
-        OBAtom *selected = static_cast<Atom*>( p );
-        selectedMolecule.InsertAtom( *selected );
-        AtomMap[selected] = selectedMolecule.GetAtom( selectedMolecule.NumAtoms() );
-        numAtoms++;
-      }
+    foreach( Primitive *p, selectedPrimitives.subList(Primitive::AtomType) ) {
+      OBAtom *selected = static_cast<Atom*>( p );
+      selectedMolecule.InsertAtom( *selected );
+      AtomMap[selected] = selectedMolecule.GetAtom( selectedMolecule.NumAtoms() );
+      numAtoms++;
     }
 
     // use the atom map to map bonds

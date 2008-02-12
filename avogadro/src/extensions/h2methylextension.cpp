@@ -87,11 +87,9 @@ namespace Avogadro {
     }
     else { // user selected some atoms, only operate on those
 
-      foreach(Primitive *a, m_SelectedList) {
-        if (a->type() == Primitive::AtomType) {
-          Atom *atom = static_cast<Atom *>(a);
-          atom->HtoMethyl();
-        }
+      foreach(Primitive *a, m_SelectedList.subList(Primitive::AtomType)) {
+        Atom *atom = static_cast<Atom *>(a);
+        atom->HtoMethyl();
       }
     } // end adding to selected atoms
     m_molecule->update();

@@ -28,6 +28,7 @@
 #include "flattabwidget.h"
 
 #include <QMainWindow>
+#include <avogadro/primitivelist.h>
 
 class QUndoStack;
 class QStackedLayout;
@@ -148,7 +149,7 @@ namespace Avogadro {
       void loadExtensions();
 
       //! Helper function for cut or copy -- prepare a clipboard
-      QMimeData* prepareClipboardData(QList<Primitive*> selectedItems);
+      QMimeData* prepareClipboardData(PrimitiveList selectedItems);
 
       //! Helper function to paste data from mime data
       bool pasteMimeData(const QMimeData *mimeData);
