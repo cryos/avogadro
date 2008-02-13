@@ -1,5 +1,12 @@
 2008-02-13  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
+	* libavogadro/src/tools/skeletontree.cpp: Fix bug with
+	bond-centric manipulate tool. Translations and rotations were not
+	telling atoms that they were updated. Fixes PR#1854343.
+
+	* libavogadro/src/tools/autorotatetool.cpp: Quick fix for
+	PR#1891101. Will not do rotations if no molecule is loaded.
+
 	* libavogadro/src/colorbutton.*: New widget to show the current
 	color and bring up a color picker when clicked.
 

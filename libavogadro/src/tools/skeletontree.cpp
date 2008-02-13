@@ -234,6 +234,7 @@ namespace Avogadro {
     Atom* a = n->atom();
 
     a->SetVector(a->x() + x, a->y() + y, a->z() + z);
+    a->update();
 
     for (int i = 0; i < listNodes->size(); i++)
     {
@@ -252,6 +253,7 @@ namespace Avogadro {
     Vector3d final = performRotation(left, right, centerVector, a->pos());
 
     a->SetVector(final.x(), final.y(), final.z());
+    a->update();
 
     for (int i = 0; i < listNodes->size(); i++)
     {
