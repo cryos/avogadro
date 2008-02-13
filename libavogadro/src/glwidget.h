@@ -372,12 +372,12 @@ namespace Avogadro {
       bool renderAxes();
 
       /**
-       * Set to render x, y, z axes as an overlay in the bottom left of the widget.
+       * Set to render the "debug info" (i.e., FPS, number of atoms, etc.)
        */
       void setRenderDebug(bool renderDebug);
     
       /**
-       * @return true if the x, y, z axes are being rendered.
+       * @return true if the debug panel is being drawn
        */
       bool renderDebug();
 
