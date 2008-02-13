@@ -16,7 +16,7 @@
    <iconset resource="avogadro.qrc" >:/icons/avogadro.png</iconset>
   </property>
   <property name="unifiedTitleAndToolBarOnMac" >
-   <bool>false</bool>
+   <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralWidget" />
   <widget class="QMenuBar" name="menubar" >
@@ -104,6 +104,8 @@
     <addaction name="actionPaste" />
     <addaction name="actionClear" />
     <addaction name="separator" />
+    <addaction name="actionSelect_All" />	 
+    <addaction name="actionSelect_None" />
    </widget>
    <widget class="QMenu" name="menuExtensions" >
     <property name="title" >
