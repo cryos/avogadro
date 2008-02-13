@@ -29,6 +29,7 @@
 #include <avogadro/global.h>
 
 #include <QGLWidget> // for GLfloat
+#include <QColor> // for returning QColor
 
 namespace Avogadro {
 
@@ -63,6 +64,12 @@ namespace Avogadro {
      * @param Primitive the color is derived from this primitive.
      */
     Color( const Primitive * );
+
+    /**
+     * Set the color based on the supplied QColor
+     * @param QColor the color to use
+     */
+    Color& operator= (const QColor &);
 
     /**
      * Set the four components of the color
@@ -111,6 +118,11 @@ namespace Avogadro {
      * Applies an OpenGL material more appropriate for flat surfaces.
      */
     virtual void applyAsFlatMaterials();
+
+    /**
+     * @return the color as a QColor.
+     */
+    inline QColor color() { return QColor(m_red, m_blue, m_green, m_alpha); }
 
     /**
      * @return the red component of the color.

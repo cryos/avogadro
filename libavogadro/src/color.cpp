@@ -54,16 +54,15 @@ namespace Avogadro {
     set(p);
   }
 
-  /* Color& Color::operator=( const Color& other )
+  Color& Color::operator=( const QColor& other )
   {
-    m_red = other.m_red;
-    m_green = other.m_green;
-    m_blue = other.m_blue;
-    m_alpha = other.m_alpha;
+    m_red = other.red();
+    m_green = other.green();
+    m_blue = other.blue();
+    m_alpha = other.alpha();
 
     return *this;
   }
-   */
 
   void Color::set(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
   {

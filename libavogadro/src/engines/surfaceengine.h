@@ -107,17 +107,9 @@ namespace Avogadro {
        */
       void setColorMode(int value);
       /**
-       * @param r red
+       * @param color the new color to use
        */
-      void setRed(double r);
-      /**
-       * @param g green
-       */
-      void setGreen(double g);
-      /**
-       * @param b blue
-       */
-      void setBlue(double b);
+      void setColor(QColor color);
   };
   
   class SurfaceSettingsWidget : public QWidget, public Ui::SurfaceSettingsWidget

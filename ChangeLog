@@ -1,3 +1,12 @@
+2008-02-13  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/colorbutton.*: New widget to show the current
+	color and bring up a color picker when clicked.
+
+	* libavogadro/src/engines/surfacesettingswidget.ui: Use it.
+
+	* libavogadro/src/engines/surfaceengine.*: Ditto.
+
 2008-02-09  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/engines/surfaceengine2.*: Removed old files. Added
@@ -9,7 +18,6 @@
 
 	* libavogadro/src/engines/surfacesettingswidget.ui: Settings widget.
 	
-
 2008-02-04  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/clickmeasuretool.*: Added support for

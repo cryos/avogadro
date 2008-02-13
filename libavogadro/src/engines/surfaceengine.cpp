@@ -331,39 +331,22 @@ namespace Avogadro {
   
   void SurfaceEngine::setColorMode(int value)
   {
-    if (value == 1) {
-      m_settingsWidget->RSpin->setMaximum(0.0);
-      m_settingsWidget->GSpin->setMaximum(0.0);
-      m_settingsWidget->BSpin->setMaximum(0.0);
-    } else {
-      m_settingsWidget->RSpin->setMaximum(1.0);
-      m_settingsWidget->GSpin->setMaximum(1.0);
-      m_settingsWidget->BSpin->setMaximum(1.0);
-      m_settingsWidget->RSpin->setValue(1.0);
+    if (value == 1) { // ESP
+      m_settingsWidget->customColorButton->setEnabled(false);
+    } else { // Custom color
+      m_settingsWidget->customColorButton->setEnabled(true);
     }
 
     m_colorMode = value;
     emit changed();
   }
   
-  void SurfaceEngine::setRed(double r)
+  void SurfaceEngine::setColor(QColor color)
   {
-    m_color.set(r, m_color.green(), m_color.blue(), m_alpha);
+    m_color.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();
   }
   
-  void SurfaceEngine::setGreen(double g)
-  {
-    m_color.set(m_color.red(), g, m_color.blue(), m_alpha);
-    emit changed();
-  }
-
-  void SurfaceEngine::setBlue(double b)
-  {
-    m_color.set(m_color.red(), m_color.green(), b, m_alpha);
-    emit changed();
-  }
-
   QWidget* SurfaceEngine::settingsWidget()
   {
     if(!m_settingsWidget)
@@ -374,10 +357,12 @@ namespace Avogadro {
       connect(m_settingsWidget->stepSizeSpin, SIGNAL(valueChanged(double)), this, SLOT(setStepSize(double)));
       connect(m_settingsWidget->paddingSpin, SIGNAL(valueChanged(double)), this, SLOT(setPadding(double)));
       connect(m_settingsWidget->colorCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setColorMode(int)));
-      connect(m_settingsWidget->RSpin, SIGNAL(valueChanged(double)), this, SLOT(setRed(double)));
-      connect(m_settingsWidget->GSpin, SIGNAL(valueChanged(double)), this, SLOT(setGreen(double)));
-      connect(m_settingsWidget->BSpin, SIGNAL(valueChanged(double)), this, SLOT(setBlue(double)));
+      connect(m_settingsWidget->customColorButton, SIGNAL(colorChanged(QColor)), this, SLOT(setColor(QColor)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+
+      QColor initial;
+      initial.setRgbF(m_color.red(), m_color.green(), m_color.blue());
+      m_settingsWidget->customColorButton->setColor(initial);
     }
     return m_settingsWidget;
   }
