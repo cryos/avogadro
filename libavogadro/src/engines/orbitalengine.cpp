@@ -115,7 +115,7 @@ namespace Avogadro {
     // We may need some logic to check if a cube is an orbital or not...
     // (e.g., someone might bring in spin density = always positive)
     m_grid->setIsoValue(m_iso);
-    m_isoGen->init(m_grid, m_stepSize, m_min);
+    //m_isoGen->init(m_grid, m_stepSize, m_min);
     m_isoGen->start();
 
     qDebug() << " rendering surface ";

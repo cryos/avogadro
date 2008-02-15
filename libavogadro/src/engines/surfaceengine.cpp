@@ -47,7 +47,7 @@ namespace Avogadro {
   m_alpha(0.5), m_stepSize(0.33333), m_padding(2.5), m_renderMode(0), m_colorMode(0)
   {
     setDescription(tr("Surface rendering"));
-    m_grid = new Grid;
+    //m_grid = new Grid;
     m_isoGen = new IsoGen;
     connect(m_isoGen, SIGNAL(finished()), this, SLOT(isoGenFinished()));
     m_color = Color(1.0, 0.0, 0.0, m_alpha);
@@ -56,7 +56,6 @@ namespace Avogadro {
 
   SurfaceEngine::~SurfaceEngine()
   {
-    delete m_grid;
     delete m_isoGen;
     
     // Delete the settings widget if it exists
@@ -72,79 +71,7 @@ namespace Avogadro {
 
     return engine;
   }
-  // We define a VDW surface here.
-  // The isosurface finder declares values < 0 to be outside the surface
-  // So values of 0.0 here equal the VDW surface of the molecule
-  // + values = the distance inside the surface (i.e., closer to the atomic cente)
-  // - values = the distance outside the surface (i.e., farther away)
-  void SurfaceEngine::VDWSurface(Molecule *mol)
-  {
-//    if (m_grid->grid() != NULL) // we already calculated this
-//      return;
-
-    OBFloatGrid grid;
-    // initialize a grid with spacing 0.333 angstroms between points, plus a padding of 2.5A.
-    grid.Init(*mol, m_stepSize, m_padding);
-    double min[3], max[3];
-    int xDim, yDim, zDim;
-
-    grid.GetMin(min);
-    m_min = Vector3f(min[0], min[1], min[2]);
-    grid.GetMax(max);
-
-    xDim = grid.GetXdim();
-    yDim = grid.GetYdim();
-    zDim = grid.GetZdim();
-
-    vector3 coord;
-    double distance, minDistance;
-    double maxVal, minVal;
-    maxVal = 0.0;
-    minVal = 0.0;
-
-    std::vector<double> values;
-    //values.resize(xDim * yDim * zDim);
-    for (int k = 0; k < zDim; ++k) {
-      coord.SetZ(min[2] + k * m_stepSize);
-      for (int j = 0; j < yDim; ++j) {
-        coord.SetY(min[1] + j * m_stepSize);
-        for (int i = 0; i < xDim; ++i)
-        {
-          coord.SetX(min[0] + i * m_stepSize);
-          minDistance = 1.0E+10;
-          FOR_ATOMS_OF_MOL(a, mol) {
-            distance = sqrt(coord.distSq(a->GetVector()));
-            distance -= etab.GetVdwRad(a->GetAtomicNum());
-
-            if (distance < minDistance)
-              minDistance = distance;
-          } // end checking atoms
-          // negative = away from molecule, 0 = vdw surface, positive = inside
-          values.push_back(-1.0 * minDistance);
-          if (-1.0 * minDistance > maxVal)
-            maxVal = -1.0 * minDistance;
-          if (-1.0 * minDistance < minVal)
-            minVal = -1.0 * minDistance;
-
-        } // x-axis
-      } // y-axis
-    } // z-axis
-
-    qDebug() << " min: " << minVal << " max " << maxVal;
-
-    OBGridData *vdwGrid = new OBGridData;
-    double xAxis[3], yAxis[3], zAxis[3];
-    xAxis[0] = m_stepSize; xAxis[1] = 0.0;        xAxis[2] = 0.0;
-    yAxis[0] = 0.0;        yAxis[1] = m_stepSize; yAxis[2] = 0.0;
-    zAxis[0] = 0.0;        zAxis[1] = 0.0;        zAxis[2] = m_stepSize;
-
-    vdwGrid->SetNumberOfPoints( xDim, yDim, zDim);
-    vdwGrid->SetLimits(min, xAxis, yAxis, zAxis );
-    vdwGrid->SetValues(values);
-
-    m_grid->setGrid(vdwGrid);
-  }
-
+  
   //                                          // 
   //     |    red    green     blue           //
   // 1.0 |...--+       +       +--...         //
@@ -203,19 +130,11 @@ namespace Avogadro {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
 
     if (!m_surfaceValid) {
-      disconnect(mol, SIGNAL(primitiveAdded(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-      disconnect(mol, SIGNAL(primitiveRemoved(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-      disconnect(mol, SIGNAL(primitiveUpdated(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-
-      connect(mol, SIGNAL(primitiveAdded(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-      connect(mol, SIGNAL(primitiveRemoved(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-      connect(mol, SIGNAL(primitiveUpdated(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-      
       qDebug() << " set surface ";
-      VDWSurface(mol);
 
-      m_grid->setIsoValue(0.001);
-      m_isoGen->init(m_grid, m_stepSize, m_min);
+      //m_grid->setIsoValue(0.001);
+      PrimitiveList prims = primitives();
+      m_isoGen->init(mol, prims, m_stepSize, m_padding, IsoGen::VDWsurfaceType);
       m_isoGen->start();
       m_surfaceValid = true;
     }
@@ -306,6 +225,7 @@ namespace Avogadro {
   void SurfaceEngine::setOpacity(int value)
   {
     m_alpha = 0.05 * value;
+    m_color.set(m_color.red(), m_color.green(), m_color.blue(), m_alpha);
     emit changed();
   }
   
@@ -372,17 +292,39 @@ namespace Avogadro {
     emit changed();
   }
 
-  void SurfaceEngine::invalidateSurface(Primitive *primitive)
+  void SurfaceEngine::setPrimitives(const PrimitiveList &primitives)
   {
-    qDebug() << "invalidateSurface()";
-    if ((primitive->type() == Primitive::AtomType) || (primitive->type() == Primitive::MoleculeType)) {
+    Engine::setPrimitives(primitives);
+    m_surfaceValid = false;
+    m_isoGen->quit();
+  }
+
+  void SurfaceEngine::addPrimitive(Primitive *primitive)
+  {
+    Engine::addPrimitive(primitive);
+    if (primitive->type() == Primitive::AtomType) {
       m_surfaceValid = false;
-      // stop running threads
       m_isoGen->quit();
     }
-    
-    //emit changed();
   }
+
+  void SurfaceEngine::updatePrimitive(Primitive *primitive)
+  {
+    if ((primitive->type() == Primitive::AtomType) || (primitive->type() == Primitive::MoleculeType)) {
+      m_surfaceValid = false;
+      m_isoGen->quit();
+    }
+  }
+
+  void SurfaceEngine::removePrimitive(Primitive *primitive)
+  {
+    if (primitive->type() == Primitive::AtomType) {
+      Engine::removePrimitive(primitive);
+      m_surfaceValid = false;
+      m_isoGen->quit();
+    }
+  }
+
 
   void SurfaceEngine::settingsWidgetDestroyed()
   {

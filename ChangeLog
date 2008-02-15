@@ -1,3 +1,18 @@
+2008-02-15  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/engines/iso.*: Moved VDWSurface to IsoGen. This
+	makes the surface engine much more interactive. Also added a type
+	parameter to the init function to set the surface type:
+	VDWsurfaceType, OrbitalType, ...
+	Small changes to VDWSurface to ensure only the primitives set for the
+	engine are included in the surface.
+
+	* libavogadro/src/engines/surfaceengine.*: Same as above + fix to set
+	the opacity of RGB colored surfaces.
+	
+	* libavogadro/src/engines/orbitalengine.*: Comment out init() to make
+	sure it still compiles.
+
 2008-02-13  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/tools/skeletontree.cpp: Fix bug with

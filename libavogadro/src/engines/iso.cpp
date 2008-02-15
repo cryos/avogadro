@@ -490,12 +490,27 @@ namespace Avogadro
     run();
   }
   */
-        
+  IsoGen::IsoGen(QObject *parent) : QThread(parent)
+  {
+     m_grid = new Grid;
+  }
+
+  IsoGen::~IsoGen()
+  {
+    delete m_grid;
+  }
+     
   // The heavy worker thread
   void IsoGen::run()
   {
     qDebug() << "start run()";
     int nx, ny, nz;
+    
+    switch (m_type) {
+    case VDWsurfaceType:
+      VDWSurface();
+      break;
+    }
     
     if (m_grid->grid() == 0)
     {
@@ -515,9 +530,9 @@ namespace Avogadro
     for(int x = 0; x < nx; x++)
       for(int y = 0; y < ny; y++)
         for(int z = 0; z < nz; z++)
-          (*this.*m_tessellation)(m_min.x()+x*m_fStepSize, 
-                                  m_min.y()+y*m_fStepSize,
-                                  m_min.z()+z*m_fStepSize);
+          (*this.*m_tessellation)(m_min.x()+x*m_stepSize, 
+                                  m_min.y()+y*m_stepSize,
+                                  m_min.z()+z*m_stepSize);
     
     // Save previous vertex/normal-lists for rendering
     m_normListCopy = m_normList;
@@ -532,15 +547,17 @@ namespace Avogadro
   // ****************************************************************************
 
   // Called from gldraw to initialize thread stuff
-  void IsoGen::init(Grid *grid, double size, Eigen::Vector3f min)
+  void IsoGen::init(Molecule *molecule, PrimitiveList &primitives, double size, double padding, int type)
   {
     qDebug() << "start init()";
     if (!m_mutex.tryLock())
       return;
     
-    m_grid = grid;
-    m_fStepSize = size;
-    m_min = min;
+    m_molecule = molecule;
+    m_primitives = primitives;
+    m_stepSize = size;
+    m_padding = padding;
+    m_type = type;
 
     // Clear vertex/normal-lists
     //m_normList.clear();
@@ -551,6 +568,85 @@ namespace Avogadro
     
     m_mutex.unlock();
     qDebug() << "end init()";
+  }
+  
+  // We define a VDW surface here.
+  // The isosurface finder declares values < 0 to be outside the surface
+  // So values of 0.0 here equal the VDW surface of the molecule
+  // + values = the distance inside the surface (i.e., closer to the atomic cente)
+  // - values = the distance outside the surface (i.e., farther away)
+  void IsoGen::VDWSurface()
+  {
+//    if (m_grid->grid() != NULL) // we already calculated this
+//      return;
+
+    QList<Primitive*> surfaceAtoms = m_primitives.subList(Primitive::AtomType);
+    OBFloatGrid grid;
+    // initialize a grid with spacing 0.333 angstroms between points, plus a padding of 2.5A.
+    grid.Init(*m_molecule, m_stepSize, m_padding);
+    double min[3], max[3];
+    int xDim, yDim, zDim;
+
+    grid.GetMin(min);
+    m_min = Vector3f(min[0], min[1], min[2]);
+    grid.GetMax(max);
+
+    xDim = grid.GetXdim();
+    yDim = grid.GetYdim();
+    zDim = grid.GetZdim();
+
+    vector3 coord;
+    double distance, minDistance;
+    double maxVal, minVal;
+    maxVal = 0.0;
+    minVal = 0.0;
+
+    std::vector<double> values;
+    //values.resize(xDim * yDim * zDim);
+    for (int k = 0; k < zDim; ++k) {
+      coord.SetZ(min[2] + k * m_stepSize);
+      for (int j = 0; j < yDim; ++j) {
+        coord.SetY(min[1] + j * m_stepSize);
+        for (int i = 0; i < xDim; ++i)
+        {
+          coord.SetX(min[0] + i * m_stepSize);
+          minDistance = 1.0E+10;
+          
+	  //FOR_ATOMS_OF_MOL(a, m_molecule) {
+	  for (int ai=0; ai < surfaceAtoms.size(); ai++) {
+            //distance = sqrt(coord.distSq(a->GetVector()));
+            //distance -= etab.GetVdwRad(a->GetAtomicNum());
+            distance = sqrt(coord.distSq(static_cast<Atom*>(surfaceAtoms[ai])->GetVector()));
+            distance -= etab.GetVdwRad(static_cast<Atom*>(surfaceAtoms[ai])->GetAtomicNum());
+
+            if (distance < minDistance)
+              minDistance = distance;
+          } // end checking atoms
+          // negative = away from molecule, 0 = vdw surface, positive = inside
+          values.push_back(-1.0 * minDistance);
+          if (-1.0 * minDistance > maxVal)
+  
+            maxVal = -1.0 * minDistance;
+          if (-1.0 * minDistance < minVal)
+            minVal = -1.0 * minDistance;
+
+        } // x-axis
+      } // y-axis
+    } // z-axis
+
+    qDebug() << " min: " << minVal << " max " << maxVal;
+
+    OBGridData *vdwGrid = new OBGridData;
+    double xAxis[3], yAxis[3], zAxis[3];
+    xAxis[0] = m_stepSize; xAxis[1] = 0.0;        xAxis[2] = 0.0;
+    yAxis[0] = 0.0;        yAxis[1] = m_stepSize; yAxis[2] = 0.0;
+    zAxis[0] = 0.0;        zAxis[1] = 0.0;        zAxis[2] = m_stepSize;
+
+    vdwGrid->SetNumberOfPoints( xDim, yDim, zDim);
+    vdwGrid->SetLimits(min, xAxis, yAxis, zAxis );
+    vdwGrid->SetValues(values);
+
+    m_grid->setGrid(vdwGrid);
   }
 
   // ****************************************************************************
@@ -605,30 +701,30 @@ namespace Avogadro
     }
 
     // Make a local copy of the values at the cube's corners
-    afCubeValue[0] = m_grid->eval(fX+a2fVertexOffset[0][0]*m_fStepSize, 
-                                  fY+a2fVertexOffset[0][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[0][2]*m_fStepSize);
-    afCubeValue[1] = m_grid->eval(fX+a2fVertexOffset[1][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[1][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[1][2]*m_fStepSize);
-    afCubeValue[2] = m_grid->eval(fX+a2fVertexOffset[2][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[2][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[2][2]*m_fStepSize);
-    afCubeValue[3] = m_grid->eval(fX+a2fVertexOffset[3][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[3][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[3][2]*m_fStepSize);
-    afCubeValue[4] = m_grid->eval(fX+a2fVertexOffset[4][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[4][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[4][2]*m_fStepSize);
-    afCubeValue[5] = m_grid->eval(fX+a2fVertexOffset[5][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[5][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[5][2]*m_fStepSize);
-    afCubeValue[6] = m_grid->eval(fX+a2fVertexOffset[6][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[6][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[6][2]*m_fStepSize);
-    afCubeValue[7] = m_grid->eval(fX+a2fVertexOffset[7][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[7][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[7][2]*m_fStepSize);
+    afCubeValue[0] = m_grid->eval(fX+a2fVertexOffset[0][0]*m_stepSize, 
+                                  fY+a2fVertexOffset[0][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[0][2]*m_stepSize);
+    afCubeValue[1] = m_grid->eval(fX+a2fVertexOffset[1][0]*m_stepSize,
+                                  fY+a2fVertexOffset[1][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[1][2]*m_stepSize);
+    afCubeValue[2] = m_grid->eval(fX+a2fVertexOffset[2][0]*m_stepSize,
+                                  fY+a2fVertexOffset[2][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[2][2]*m_stepSize);
+    afCubeValue[3] = m_grid->eval(fX+a2fVertexOffset[3][0]*m_stepSize,
+                                  fY+a2fVertexOffset[3][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[3][2]*m_stepSize);
+    afCubeValue[4] = m_grid->eval(fX+a2fVertexOffset[4][0]*m_stepSize,
+                                  fY+a2fVertexOffset[4][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[4][2]*m_stepSize);
+    afCubeValue[5] = m_grid->eval(fX+a2fVertexOffset[5][0]*m_stepSize,
+                                  fY+a2fVertexOffset[5][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[5][2]*m_stepSize);
+    afCubeValue[6] = m_grid->eval(fX+a2fVertexOffset[6][0]*m_stepSize,
+                                  fY+a2fVertexOffset[6][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[6][2]*m_stepSize);
+    afCubeValue[7] = m_grid->eval(fX+a2fVertexOffset[7][0]*m_stepSize,
+                                  fY+a2fVertexOffset[7][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[7][2]*m_stepSize);
 
     // Find which vertices are inside of the surface and which are outside
     if(afCubeValue[0] <= fTargetValue) iFlagIndex |= 1;
@@ -659,9 +755,9 @@ namespace Avogadro
           fOffset = 0.5f;
 
         asEdgeVertex[iEdge] = 
-	Vector3f(fX + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][0] + fOffset * a2fEdgeDirection[iEdge][0]) * m_fStepSize - 0.5*m_fStepSize,
-                 fY + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][1] + fOffset * a2fEdgeDirection[iEdge][1]) * m_fStepSize - 0.5*m_fStepSize,
-                 fZ + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][2] + fOffset * a2fEdgeDirection[iEdge][2]) * m_fStepSize - 0.5*m_fStepSize);
+	Vector3f(fX + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][0] + fOffset * a2fEdgeDirection[iEdge][0]) * m_stepSize - 0.5*m_stepSize,
+                 fY + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][1] + fOffset * a2fEdgeDirection[iEdge][1]) * m_stepSize - 0.5*m_stepSize,
+                 fZ + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][2] + fOffset * a2fEdgeDirection[iEdge][2]) * m_stepSize - 0.5*m_stepSize);
         vGetNormal(asEdgeNorm[iEdge], asEdgeVertex[iEdge].x(), asEdgeVertex[iEdge].y(), asEdgeVertex[iEdge].z());
       }
     }

@@ -64,13 +64,17 @@ namespace Avogadro {
 
       //void writeSettings(QSettings &settings) const;
       //void readSettings(QSettings &settings);
+      
+      void setPrimitives(const PrimitiveList &primitives);
 
+    public Q_SLOTS:
+      void addPrimitive(Primitive *primitive);
+      void updatePrimitive(Primitive *primitive);
+      void removePrimitive(Primitive *primitive);
 
     protected:
       SurfaceSettingsWidget *m_settingsWidget;
-      Grid *m_grid;
       IsoGen *m_isoGen;
-      Eigen::Vector3f m_min;
       Color  m_color;
       double m_alpha;
       double m_stepSize;
@@ -79,12 +83,10 @@ namespace Avogadro {
       int    m_colorMode;
       bool   m_surfaceValid;
       
-      void VDWSurface(Molecule *mol);
       Color espColor(Molecule *mol, Eigen::Vector3f &pos);
     
     private Q_SLOTS:
       void isoGenFinished();
-      void invalidateSurface(Primitive *primitive);
       void settingsWidgetDestroyed();
       /**
        * @param value opacity of the surface / 20
