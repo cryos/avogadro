@@ -123,22 +123,20 @@ int main(int argc, char *argv[])
     return 0;
   }
 
-  //  qDebug() << arguments;
+  MainWindow *window = new MainWindow();
   if (arguments.size() > 1) {
     QPoint p(100, 100), offset(40,40);
     QList<QString>::const_iterator i = arguments.constBegin();
     for (++i; i != arguments.constEnd(); ++i)
     {
-      MainWindow *other = new MainWindow();
-      p += offset;
-      other->move(p);
-      other->loadFile(*i);
-      QTimer::singleShot( 0, other, SLOT(show()) );
+      window->openFile(*i);
+      // this costs us a few more function calls
+      // but makes our loading look nicer
+      window->show();
+      app.processEvents();
     }
-  } else {
-    MainWindow *window = new MainWindow();
-    QTimer::singleShot( 0, window, SLOT(show()) );
   }
+  window->show();
   return app.exec();
 }
 

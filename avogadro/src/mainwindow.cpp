@@ -246,31 +246,42 @@ namespace Avogadro
 
     ui.projectDock->close();
 
-    QTimer::singleShot( 0, this, SLOT(initialize()) );
   }
 
-  // delayed initialization function
-  void MainWindow::initialize()
+  bool MainWindow::event(QEvent *event)
   {
-    d->toolGroup->load();
+    // delayed initialization
+    if(event->type() == QEvent::Polish)
+    {
+      d->toolGroup->load();
 
-    reloadTabbedTools();
+      reloadTabbedTools();
 
-    tabifyDockWidget(ui.enginesDock, ui.engineConfigurationDock);
-    tabifyDockWidget(ui.enginesDock, ui.enginePrimitivesDock);
-    ui.enginesDock->raise();
+      tabifyDockWidget(ui.enginesDock, ui.engineConfigurationDock);
+      tabifyDockWidget(ui.enginesDock, ui.enginePrimitivesDock);
+      ui.enginesDock->raise();
 
-    loadExtensions();
+      loadExtensions();
 
-    d->initialized = true;
+      if(!molecule())
+      {
+        qDebug() << "No Molecule, loading blank";
+        loadFile();
+      }
 
-    loadFile(d->fileName);
+      // read settings
+      readSettings();
 
-    setVisible(true);
+      // if we don't have a molecule then load a blank file
+      d->initialized = true;
+    }
 
-    // read settings
-    readSettings();
+    return QMainWindow::event(event);
+  }
 
+  void MainWindow::show()
+  {
+    QMainWindow::show();
   }
 
   bool MainWindow::tabbedTools() const
@@ -440,18 +451,17 @@ namespace Avogadro
     other->show();
   }
 
-  void MainWindow::openFile()
+  void MainWindow::openFile( QString fileName )
   {
-    QString fileName = QFileDialog::getOpenFileName( this,
-        tr( "Open File" ), d->fileDialogPath );
+    // no parameter give create dialog
+    if ( fileName.isEmpty() )
+    {
+      fileName = QFileDialog::getOpenFileName( this,
+          tr( "Open File" ), d->fileDialogPath );
 
-    openFile( fileName );
-  }
+    }
 
-  void MainWindow::openFile( const QString &fileName )
-  {
     if ( !fileName.isEmpty() ) {
-
       d->fileDialogPath = QFileInfo(fileName).absolutePath();
 
       // First check if we closed all the windows on Mac
@@ -473,16 +483,19 @@ namespace Avogadro
         return;
       }
 
+      // if we have nothing open or modified
       if ( d->fileName.isEmpty() && !isWindowModified() ) {
         loadFile( fileName );
       } else {
-        writeSettings();
+        // ONLY if we have loaded settings then we can write them
+        if(d->initialized) {
+          writeSettings();
+        }
         MainWindow *other = new MainWindow();
         if ( !other->loadFile( fileName ) ) {
           delete other;
           return;
         }
-        other->move( x() + 40, y() + 40 );
         other->show();
       }
     }
@@ -498,11 +511,6 @@ namespace Avogadro
 
   bool MainWindow::loadFile( const QString &fileName )
   {
-    if(!d->initialized)
-    {
-      d->fileName = fileName;
-    }
-
     if(fileName.isEmpty())
     {
       setFileName( fileName );
@@ -511,6 +519,7 @@ namespace Avogadro
     }
 
     statusBar()->showMessage( tr("Loading %1...", "%1 is a filename").arg(fileName), 5000 );
+
     QFile file( fileName );
     if ( !file.open( QFile::ReadOnly | QFile::Text ) ) {
       QApplication::restoreOverrideCursor();
@@ -532,6 +541,7 @@ namespace Avogadro
           .arg( fileName ) );
       return false;
     }
+
     ifstream     ifs;
     ifs.open(( fileName.toAscii() ).data() );
     if ( !ifs ) { // shouldn't happen, already checked file above
@@ -584,7 +594,7 @@ namespace Avogadro
   {
     if ( maybeSave() ) {
       d->undoStack->clear();
-      loadFile("");
+      loadFile();
     }
   }
 
@@ -1298,10 +1308,11 @@ namespace Avogadro
   void MainWindow::readSettings()
   {
     QSettings settings;
-    QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
+//    QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
     QSize size = settings.value( "size", QSize( 640, 480 ) ).toSize();
+    qDebug() << size;
     resize( size );
-    move(pos);
+//    move(pos);
 
     setTabbedTools(settings.value( "tabbedTools", true ).toBool());
 
@@ -1332,8 +1343,9 @@ namespace Avogadro
 
   void MainWindow::writeSettings()
   {
+    qDebug() << "Writting settings";
     QSettings settings;
-    settings.setValue( "pos", pos() );
+//    settings.setValue( "pos", pos() );
     settings.setValue( "size", size() );
 
     settings.setValue( "tabbedTools", d->tabbedTools );

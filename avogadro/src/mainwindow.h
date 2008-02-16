@@ -48,17 +48,19 @@ namespace Avogadro {
       MainWindow();
       MainWindow(const QString &fileName);
 
-      bool loadFile(const QString &fileName);
-      bool saveFile(const QString &fileName);
       int painterQuality();
 
     protected:
       void closeEvent(QCloseEvent *event);
+      bool event(QEvent *event);
 
     public Q_SLOTS:
       void newFile();
-      void openFile();
-      void openFile(const QString &fileName);
+
+      /**
+       * @param fileName file to load. if no filename is given, present a dialog
+       */
+      void openFile(QString fileName = QString());
       void openRecentFile();
       bool save();
       bool saveAs();
@@ -74,6 +76,8 @@ namespace Avogadro {
       void clear();
       void selectAll();
       void selectNone();
+
+      void show();
 
       void newView();
       void duplicateView();
@@ -123,6 +127,17 @@ namespace Avogadro {
       void writeSettings();
       void connectUi();
 
+      /**
+       * @param fileName fileName to load (defaults to loading a blank file)
+       * @return whether the loading process was successful
+       */
+      bool loadFile(const QString &fileName = QString());
+
+      /**
+       * @param fileName the filename to save the currently loaded file to
+       */
+      bool saveFile(const QString &fileName);
+
       bool maybeSave();
       void setFileName(const QString &fileName);
       void updateRecentFileActions();
@@ -143,9 +158,19 @@ namespace Avogadro {
       //! \return a pointer to the appropriate window, or NULL if none exists
       MainWindow* findMainWindow(const QString &fileName);
 
+      /**
+       * @param molecule set the current molecule and take ownership
+       */
       void setMolecule(Molecule *molecule);
+      
+      /**
+       * @return the current molecule for this window
+       */
       Molecule* molecule() const;
 
+      /**
+       * load all available extensions
+       */
       void loadExtensions();
 
       //! Helper function for cut or copy -- prepare a clipboard
@@ -160,7 +185,7 @@ namespace Avogadro {
       void showMainWindowMac();
 
     private Q_SLOTS:
-      void initialize();
+/*      void initialize();*/
 
       void addEngineClicked();
       void duplicateEngineClicked();
