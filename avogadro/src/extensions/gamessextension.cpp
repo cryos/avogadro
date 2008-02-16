@@ -51,7 +51,7 @@ namespace Avogadro
     QMAction
   };
 
-  GamessExtension::GamessExtension( QObject *parent ) : QObject( parent ), m_inputDialog( NULL ), m_inputData( new GamessInputData() ), m_dockWidget( 0 ),
+  GamessExtension::GamessExtension( QObject *parent ) : QObject( parent ), m_inputDialog( NULL ), m_inputData( new GamessInputData() ), m_gamessEfpDock( 0 ),
       m_efpModel( new QStandardItemModel() ),
       m_efpDialog( 0 ), m_qmDialog( 0 )
   {
@@ -93,10 +93,11 @@ namespace Avogadro
 
   QDockWidget * GamessExtension::dockWidget()
   {
-    if ( !m_dockWidget ) {
-      m_dockWidget = new QDockWidget( tr( "GAMESS EFP Information" ) );
+    if ( !m_gamessEfpDock ) {
+      m_gamessEfpDock = new QDockWidget( tr( "GAMESS EFP Information" ) );
+      m_gamessEfpDock->setObjectName(tr("gamessEfpDock"));
 
-      QWidget *widget = new QWidget( m_dockWidget );
+      QWidget *widget = new QWidget( m_gamessEfpDock );
       QVBoxLayout *layout = new QVBoxLayout();
 
       m_efpView = new QTreeView();
@@ -115,18 +116,18 @@ namespace Avogadro
 
 
       widget->setLayout( layout );
-      m_dockWidget->setWidget( widget );
-      m_dockWidget->setVisible( false );
+      m_gamessEfpDock->setWidget( widget );
+      m_gamessEfpDock->setVisible( false );
 
-      connect( m_dockWidget, SIGNAL( destroyed() ), this, SLOT( dockWidgetDestroyed() ) );
+      connect( m_gamessEfpDock, SIGNAL( destroyed() ), this, SLOT( dockWidgetDestroyed() ) );
     }
 
-    return m_dockWidget;
+    return m_gamessEfpDock;
   }
 
   void GamessExtension::dockWidgetDestroyed()
   {
-    m_dockWidget = 0;
+    m_gamessEfpDock = 0;
     m_efpView = 0;
   }
 
@@ -525,8 +526,8 @@ namespace Avogadro
       m_efpView->setFirstColumnSpanned(index.row(), index.parent(), true);
     }
 
-    if ( m_dockWidget ) {
-      m_dockWidget->show();
+    if ( m_gamessEfpDock ) {
+      m_gamessEfpDock->show();
     }
 
   }

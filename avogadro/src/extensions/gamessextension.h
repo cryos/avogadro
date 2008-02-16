@@ -75,7 +75,7 @@ namespace Avogadro {
       GamessInputDialog *m_inputDialog;
       GamessInputData *m_inputData;
       QList<QAction *> m_actions;
-      QDockWidget * m_dockWidget;
+      QDockWidget * m_gamessEfpDock;
       QTreeView *m_efpView;
       QPushButton *m_efpButton;
 

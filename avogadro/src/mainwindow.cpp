@@ -257,16 +257,13 @@ namespace Avogadro
 
       reloadTabbedTools();
 
-      tabifyDockWidget(ui.enginesDock, ui.engineConfigurationDock);
-      tabifyDockWidget(ui.enginesDock, ui.enginePrimitivesDock);
-      ui.enginesDock->raise();
-
       loadExtensions();
 
       if(!molecule())
       {
-        qDebug() << "No Molecule, loading blank";
         loadFile();
+      } else {
+        d->toolGroup->setActiveTool(tr("Navigate"));
       }
 
       // read settings
@@ -582,7 +579,6 @@ namespace Avogadro
       return false;
     }
 
-    d->toolGroup->setActiveTool(tr("Navigate"));
     setFileName( fileName );
     statusBar()->showMessage( tr("File Loaded..."), 5000 );
     return true;
@@ -1309,10 +1305,19 @@ namespace Avogadro
   {
     QSettings settings;
 //    QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
-    QSize size = settings.value( "size", QSize( 640, 480 ) ).toSize();
-    qDebug() << size;
-    resize( size );
 //    move(pos);
+    QSize size = settings.value( "size", QSize( 640, 480 ) ).toSize();
+    resize( size );
+
+    QByteArray ba = settings.value( "state" ).toByteArray();
+    if(!ba.isEmpty())
+    {
+      restoreState(ba);
+    } else {
+      tabifyDockWidget(ui.enginesDock, ui.engineConfigurationDock);
+      tabifyDockWidget(ui.enginesDock, ui.enginePrimitivesDock);
+      ui.enginesDock->raise();
+    }
 
     setTabbedTools(settings.value( "tabbedTools", true ).toBool());
 
@@ -1347,8 +1352,10 @@ namespace Avogadro
     QSettings settings;
 //    settings.setValue( "pos", pos() );
     settings.setValue( "size", size() );
+    settings.setValue( "state", saveState() );
 
     settings.setValue( "tabbedTools", d->tabbedTools );
+    settings.setValue( "enginesDock", ui.enginesDock->saveGeometry());
 
     settings.beginWriteArray("view");
     int count = d->glWidgets.size();
