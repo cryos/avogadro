@@ -221,6 +221,7 @@ namespace Avogadro
     ui.menuDocks->addAction( ui.projectDock->toggleViewAction() );
     ui.menuDocks->addAction( ui.enginesDock->toggleViewAction() );
     ui.menuDocks->addAction( ui.engineConfigurationDock->toggleViewAction() );
+    ui.menuDocks->addAction( ui.enginePrimitivesDock->toggleViewAction() );
     ui.menuToolbars->addAction( ui.fileToolBar->toggleViewAction() );
 
 #ifdef Q_WS_MAC
