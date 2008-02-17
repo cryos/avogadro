@@ -120,15 +120,11 @@ namespace Avogadro
   {
 
   public:
-    enum Type {
-         OtherType=0,
- 	 VDWsurfaceType,
-	 orbitalType
-    };
 
     // General stuff
-    IsoGen(QObject *parent = 0);
-    ~IsoGen();
+    IsoGen(QObject *parent = 0) : QThread(parent) { ; }
+
+    ~IsoGen() { ; }
 
     // Vertex/normal-lists
     QList<triangle> m_normList, m_normListCopy;
@@ -137,7 +133,7 @@ namespace Avogadro
     void run();
     
     // Central functions
-    void init(Molecule *mol, PrimitiveList &primitives, double size, double padding, int type);
+    void init(Grid *grid, double size, Eigen::Vector3f min);
     //void start();
     int numTriangles();
     triangle getTriangle(int i);
@@ -146,12 +142,8 @@ namespace Avogadro
   //protected:
 
   private:
-    Molecule *m_molecule;
-    PrimitiveList m_primitives;
     Grid *m_grid; // OpenBabel Grid
-    int m_type;
-    float m_stepSize; // Grid density == 2.0f/sta.tgrids;
-    float m_padding;
+    float m_fStepSize; // Grid density == 2.0f/sta.tgrids;
     long m_totTri; // Triangles calculated in total; currently not used
     Eigen::Vector3f m_min;
 
@@ -170,14 +162,13 @@ namespace Avogadro
     static const long a2iTriangleConnectionTable[256][16];
 
     // Functions
-    void VDWSurface();
-    //void vNormalizeVector(Eigen::Vector3f &rfResult, const Eigen::Vector3f &rfSource);
+//    void vNormalizeVector(Eigen::Vector3f &rfResult, const Eigen::Vector3f &rfSource);
     void vGetNormal(Eigen::Vector3f &rfNormal, const float fX, const float fY,
         const float fZ);
     void vMarchCube1(const float fX, const float fY, const float fZ);
-    //void vMarchCube2(const float fX, const float fY, const float fZ);
-    //void vMarchTetrahedron(Eigen::Vector3f *pasTetrahedronPosition,
-    //   const float *pafTetrahedronValue);
+//    void vMarchCube2(const float fX, const float fY, const float fZ);
+//    void vMarchTetrahedron(Eigen::Vector3f *pasTetrahedronPosition,
+//        const float *pafTetrahedronValue);
     void (IsoGen::*m_tessellation)(const float fX, const float fY, const float fZ);
 
   // Multithreading stuff:
