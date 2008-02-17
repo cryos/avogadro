@@ -15,9 +15,6 @@
   <property name="windowIcon" >
    <iconset resource="avogadro.qrc" >:/icons/avogadro.png</iconset>
   </property>
-  <property name="unifiedTitleAndToolBarOnMac" >
-   <bool>true</bool>
-  </property>
   <widget class="QWidget" name="centralWidget" />
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >

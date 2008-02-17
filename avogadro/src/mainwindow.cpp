@@ -152,9 +152,12 @@ namespace Avogadro
 
   void MainWindow::constructor()
   {
-    setVisible(false); // do we actually hide ourselves here?
-
+    hide(); // prevent "flash" of re-arranging windows PR#
+        
     ui.setupUi( this );
+    // We cannot reliably set this via Designer
+    // editing on Windows or Linux loses the flag
+    //    setUnifiedTitleAndToolBarOnMac(true);
 
     QSettings settings;
     d->tabbedTools = settings.value("tabbedTools", true).toBool();
@@ -245,7 +248,7 @@ namespace Avogadro
     connectUi();
 
     ui.projectDock->close();
-
+    show();
   }
 
   bool MainWindow::event(QEvent *event)
