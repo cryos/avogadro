@@ -1355,9 +1355,10 @@ namespace Avogadro
 
   void MainWindow::writeSettings()
   {
-    qDebug() << "Writting settings";
     QSettings settings;
-//    settings.setValue( "pos", pos() );
+#if defined (Q_WS_MAC) || defined (Q_WS_WIN)
+    settings.setValue( "pos", pos() );
+#endif
     settings.setValue( "size", size() );
     settings.setValue( "state", saveState() );
 
