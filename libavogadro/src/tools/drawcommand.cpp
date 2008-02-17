@@ -86,7 +86,13 @@ namespace Avogadro {
 
   void AddAtomDrawCommand::redo()
   {
-    if(d->index >= 0) {
+    if(d->index >= 0) { // initial creation
+      if (d->adjustValence) {
+        Atom *atom = static_cast<Atom*>(d->molecule->GetAtom(d->index));
+      
+        d->molecule->DeleteHydrogens(atom);
+        d->molecule->AddHydrogens(atom);
+      }
       return;
     }
 
@@ -141,6 +147,7 @@ namespace Avogadro {
     OpenBabel::OBAtom *atom = d->molecule->GetAtom(d->index);
     if(atom)
       {
+        // TODO: Also need to adjust valence on any bonded atoms
         if (d->adjustValence)
           d->molecule->DeleteHydrogens(atom);
         d->molecule->DeleteAtom(atom);
@@ -218,13 +225,20 @@ namespace Avogadro {
 
   void AddBondDrawCommand::redo()
   {
-    if(d->index >= 0) {
-      return;
-    }
-
     OpenBabel::OBAtom *beginAtom = d->molecule->GetAtom(d->beginAtomIndex);
     OpenBabel::OBAtom *endAtom = d->molecule->GetAtom(d->endAtomIndex);
     if(!beginAtom || !endAtom) {
+      return;
+    }
+
+    if(d->index >= 0) { // already created the bond
+      if (d->adjustValence) {
+        d->molecule->DeleteHydrogens(beginAtom);
+        d->molecule->AddHydrogens(beginAtom);
+        
+        d->molecule->DeleteHydrogens(endAtom);
+        d->molecule->AddHydrogens(endAtom);
+      }
       return;
     }
 

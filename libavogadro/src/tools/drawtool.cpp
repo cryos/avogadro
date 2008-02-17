@@ -59,7 +59,7 @@ namespace Avogadro {
                                         m_prevAtomElement(0),
                                         m_prevBond(0),
                                         m_prevBondOrder(0),
-                                        m_addHydrogensState(2),
+                                        m_addHydrogensState(0),
                                         m_periodicTable(0),
                                         m_settingsWidget(0)
   {
@@ -155,11 +155,13 @@ namespace Avogadro {
                                                 newMolPos.z()));
           *widget->molecule() += m_generatedMolecule;
           m_generatedMolecule.Center();
+          // TODO: Need Undo support for insert SMILES
+          // i.e., rather than just += the molecule, create an undo action
+
         } // end place mode (insert SMILES)
         else { // create a new atom
           m_beginAtom = newAtom(widget, event->pos());
           m_beginAtomAdded = true;
-          widget->updateGeometry();
           m_beginAtom->update();
         } // place atoms
       } // hits
@@ -199,11 +201,9 @@ namespace Avogadro {
               // hit another atom on screen -- bond to this
               existingAtom = (Atom *)molecule->GetAtom(m_hits[i].name());
             }
-            else {
+            else if(m_hits[i].name() != m_endAtom->GetIdx()) {
               // hit a new atom which isn't our end atom
-              if(m_hits[i].name() != m_endAtom->GetIdx()) {
-                existingAtom = (Atom *)molecule->GetAtom(m_hits[i].name());
-              }
+              existingAtom = (Atom *)molecule->GetAtom(m_hits[i].name());
             }
           } // end hits.type == AtomType
         }
@@ -211,15 +211,15 @@ namespace Avogadro {
 
       if(hitBeginAtom) { // we came back to our original atom -- undo the bond
         if(m_endAtom) {
-          molecule->DeleteAtom(m_endAtom);
+          molecule->DeleteAtom(m_endAtom); // this also deletes bonds
           m_bond = 0;
           m_endAtom = 0;
           m_prevAtomElement = m_beginAtom->GetAtomicNum();
           m_beginAtom->SetAtomicNum(m_element);
         }
         else if(m_bond) {
-          Atom *oldAtom = (Atom *)m_bond->GetEndAtom();
-          oldAtom->DeleteBond(m_bond);
+          //          Atom *oldAtom = (Atom *)m_bond->GetEndAtom();
+          //          oldAtom->DeleteBond(m_bond);
           molecule->DeleteBond(m_bond);
           m_bond=0;
           m_prevAtomElement = m_beginAtom->GetAtomicNum();
@@ -241,6 +241,7 @@ namespace Avogadro {
               m_prevBond = 0;
               m_prevBondOrder = 0;
             }
+
             if(m_bond) {
               if(m_endAtom) {
                 m_endAtom->DeleteBond(m_bond);
@@ -256,7 +257,7 @@ namespace Avogadro {
             else {
               m_bond = newBond(molecule, m_beginAtom, existingAtom);
             }
-          } // no existing bond
+          } // end no existing bond
           else {
             if(m_prevBond && m_prevBond != existingBond) {
               m_prevBond->SetBondOrder(m_prevBondOrder);
@@ -300,11 +301,8 @@ namespace Avogadro {
             m_bond->SetEnd(m_endAtom);
             m_endAtom->AddBond(m_bond);
           }
-          // m_bond->update();
-          // m_endAtom->update();
-          widget->updateGeometry();
         }
-        else {
+        else { // we're moving -- stretch a bond
           moveAtom(widget, m_endAtom, event->pos());
         }
       }
@@ -362,7 +360,7 @@ namespace Avogadro {
         else {
           undo = beginAtomDrawCommand;
         }
-      }
+      } // (did some drawing)
 
       // clean up after drawing
       m_beginAtom=0;
@@ -430,7 +428,6 @@ namespace Avogadro {
     moveAtom(widget, atom, p);
     atom->SetAtomicNum(element());
     widget->molecule()->EndModify();
-
     return atom;
   }
 
@@ -458,7 +455,6 @@ namespace Avogadro {
     beginAtom->AddBond(bond);
     endAtom->AddBond(bond);
     molecule->EndModify();
-
     return bond;
   }
 
@@ -483,7 +479,6 @@ namespace Avogadro {
           place_mode = true;
         }
       }
-    // TODO: Need Undo support for insert SMILES
   }
 
 
@@ -628,7 +623,7 @@ namespace Avogadro {
       m_comboBondOrder->addItem(tr("Triple"));
       
       m_autoAddHydrogens = new QCheckBox(tr("Adjust Hydrogens"), m_settingsWidget);
-      m_autoAddHydrogens->setCheckState(Qt::Checked); // checked by default
+      m_autoAddHydrogens->setCheckState((Qt::CheckState)m_addHydrogensState);
 
       QLabel *label3DGen = new QLabel(tr("Generate from SMILES:"));
       m_text3DGen = new QLineEdit(m_settingsWidget);
