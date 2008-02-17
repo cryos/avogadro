@@ -2,6 +2,7 @@
   DrawCommand - Set of command classes for drawing.
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -26,6 +27,10 @@
 #include <avogadro/primitive.h>
 
 namespace Avogadro {
+
+  /////////////////////////////////////////////////////////////////////////////
+  // Add Atom
+  /////////////////////////////////////////////////////////////////////////////
 
   class AddAtomDrawCommandPrivate {
     public:
@@ -87,6 +92,10 @@ namespace Avogadro {
     d->molecule->EndModify();
     atom->update();
   }
+  
+  /////////////////////////////////////////////////////////////////////////////
+  // Delete Atom
+  /////////////////////////////////////////////////////////////////////////////
 
   class DeleteAtomDrawCommandPrivate {
     public:
@@ -125,6 +134,10 @@ namespace Avogadro {
       d->molecule->update();
     }
   }
+  
+  /////////////////////////////////////////////////////////////////////////////
+  // Add Bond
+  /////////////////////////////////////////////////////////////////////////////
 
   class AddBondDrawCommandPrivate {
     public:
@@ -199,6 +212,10 @@ namespace Avogadro {
     d->molecule->EndModify();
     d->molecule->update();
   }
+  
+  /////////////////////////////////////////////////////////////////////////////
+  // Delete Bond
+  /////////////////////////////////////////////////////////////////////////////
 
   class DeleteBondDrawCommandPrivate {
     public:
@@ -237,5 +254,117 @@ namespace Avogadro {
       d->molecule->update();
     }
   }
+  
+  /////////////////////////////////////////////////////////////////////////////
+  // Change Element
+  /////////////////////////////////////////////////////////////////////////////
+
+  class ChangeElementDrawCommandPrivate {
+    public:
+      ChangeElementDrawCommandPrivate() : molecule(0), index(0) {};
+
+      Molecule *molecule;
+      unsigned int newElement, oldElement;
+      int index;
+  };
+
+  ChangeElementDrawCommand::ChangeElementDrawCommand(Molecule *molecule, Atom *atom, unsigned int element) : d(new ChangeElementDrawCommandPrivate)
+  {
+    setText(QObject::tr("Change Element"));
+    d->molecule = molecule;
+    d->oldElement = atom->GetAtomicNum();
+    d->newElement = element;
+    d->index = atom->GetIdx();
+  }
+
+  ChangeElementDrawCommand::~ChangeElementDrawCommand()
+  {
+    delete d;
+  }
+
+  void ChangeElementDrawCommand::undo()
+  {
+    OpenBabel::OBAtom *atom = d->molecule->GetAtom(d->index);
+    
+    if(atom)
+    {
+      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+      d->molecule->BeginModify();
+      atom->SetAtomicNum(d->oldElement);
+      d->molecule->EndModify();
+      d->molecule->update();
+    }
+  }
+
+  void ChangeElementDrawCommand::redo()
+  {
+    OpenBabel::OBAtom *atom = d->molecule->GetAtom(d->index);
+    
+    if(atom)
+    {
+      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+      d->molecule->BeginModify();
+      atom->SetAtomicNum(d->newElement);
+      d->molecule->EndModify();
+      d->molecule->update();
+    }
+  }
+  
+  /////////////////////////////////////////////////////////////////////////////
+  // Change Bond Order
+  /////////////////////////////////////////////////////////////////////////////
+
+  class ChangeBondOrderDrawCommandPrivate {
+    public:
+      ChangeBondOrderDrawCommandPrivate() : molecule(0), index(0) {};
+
+      Molecule *molecule;
+      unsigned int newBondOrder, oldBondOrder;
+      int index;
+  };
+
+  ChangeBondOrderDrawCommand::ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond, unsigned int bondOrder) : d(new ChangeBondOrderDrawCommandPrivate)
+  {
+    setText(QObject::tr("Change Bond Order"));
+    d->molecule = molecule;
+    d->oldBondOrder = bond->GetBondOrder();
+    d->newBondOrder = bondOrder;
+    d->index = bond->GetIdx();
+  }
+
+  ChangeBondOrderDrawCommand::~ChangeBondOrderDrawCommand()
+  {
+    delete d;
+  }
+
+  void ChangeBondOrderDrawCommand::undo()
+  {
+    OpenBabel::OBBond *bond = d->molecule->GetBond(d->index);
+    
+    if(bond)
+    {
+      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+      d->molecule->BeginModify();
+      bond->SetBondOrder(d->oldBondOrder);
+      d->molecule->EndModify();
+      d->molecule->update();
+    }
+  }
+
+  void ChangeBondOrderDrawCommand::redo()
+  {
+    OpenBabel::OBBond *bond = d->molecule->GetBond(d->index);
+    
+    if(bond)
+    {
+      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+      d->molecule->BeginModify();
+      bond->SetBondOrder(d->newBondOrder);
+      d->molecule->EndModify();
+      d->molecule->update();
+    }
+  }
+ 
+
 
 } // end namespace Avogadro

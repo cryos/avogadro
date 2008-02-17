@@ -1,3 +1,10 @@
+2008-02-17  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/drawtools.*, libavogadro/tools/drawcommand.*:
+	Added small feature: when you left click a bond, the bond order is
+	changed from 1->2, 2->3 and 3->1.
+	This is can be undone, also made change element undo-able.
+
 2008-02-15  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/engines/iso.*: Moved VDWSurface to IsoGen. This

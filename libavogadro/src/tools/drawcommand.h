@@ -2,6 +2,7 @@
   DrawCommand - Set of command classes for drawing.
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -90,6 +91,34 @@ namespace Avogadro {
 
     private:
       DeleteBondDrawCommandPrivate * const d;
+  };
+
+  class ChangeElementDrawCommandPrivate;
+  class ChangeElementDrawCommand : public QUndoCommand
+  {
+    public:
+      ChangeElementDrawCommand(Molecule *molecule, Atom *atom, unsigned int element);
+      ~ChangeElementDrawCommand();
+
+      virtual void undo();
+      virtual void redo();
+
+    private:
+      ChangeElementDrawCommandPrivate * const d;
+  };
+
+  class ChangeBondOrderDrawCommandPrivate;
+  class ChangeBondOrderDrawCommand : public QUndoCommand
+  {
+    public:
+      ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond, unsigned int bondOrder);
+      ~ChangeBondOrderDrawCommand();
+
+      virtual void undo();
+      virtual void redo();
+
+    private:
+      ChangeBondOrderDrawCommandPrivate * const d;
   };
 
 

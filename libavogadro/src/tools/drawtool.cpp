@@ -2,6 +2,7 @@
   DrawTool - Tool for drawing molecules
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -191,7 +192,7 @@ namespace Avogadro {
       return 0;
     }
 
-    QUndoCommand *command = 0;
+    QUndoCommand *undo = 0;
 
     _buttons = event->buttons();
 
@@ -209,21 +210,52 @@ namespace Avogadro {
     {
       if(m_hits.size() && (m_hits[0].type() == Primitive::AtomType))
       {
+        ChangeElementDrawCommand *command = 0;
         // "alchemy" -- change this atom to a new element
-        // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
-        widget->molecule()->BeginModify();
         m_beginAtom = (Atom *)molecule->GetAtom(m_hits[0].name());
-        m_prevAtomElement = m_beginAtom->GetAtomicNum();
-        m_beginAtom->SetAtomicNum(m_element);
-        widget->molecule()->EndModify();
-        m_beginAtom->update(); // Make sure to call for a repaint(#1741653).
-        // FIXME: This should really be something we can undo
+        
+        if(m_beginAtom && ((int)m_beginAtom->GetAtomicNum() != m_element)) {
+	  command = new ChangeElementDrawCommand(widget->molecule(), m_beginAtom, m_element);
+          command->setText(tr("Change Element"));
+        }
+	m_prevAtomElement = m_beginAtom->GetAtomicNum();
+        //m_beginAtom->SetAtomicNum(m_element);
+        //m_beginAtom->update(); // Make sure to call for a repaint(#1741653).
+        // FIXME: This should really be something we can undo (DONE)
+	undo = command; 
+      }
+      else if(m_hits.size() && (m_hits[0].type() == Primitive::BondType))
+      {
+        ChangeBondOrderDrawCommand *command = 0;
+        // "alchemy" -- change the bond order of this bond
+        Bond *bond = (Bond *)molecule->GetBond(m_hits[0].name());
+
+	unsigned int bondOrder;
+        switch (bond->GetBondOrder()) {
+	case 1:
+	  bondOrder = 2;
+	  break;
+	case 2:
+	  bondOrder = 3;
+	  break;
+	case 3:
+	  bondOrder = 1;
+	  break;
+	}
+        
+	if(bond) {
+	  command = new ChangeBondOrderDrawCommand(widget->molecule(), bond, bondOrder);
+          command->setText(tr("Change Bond Order"));
+        }
+        //bond->update(); // Make sure to call for a repaint
+        // FIXME: This should really be something we can undo (DONE)
+	undo = command; 
       }
       else
       {
         if (place_mode) {
           Eigen::Vector3d refPoint;
-          if(m_beginAtom) {
+          if (m_beginAtom) {
             refPoint = m_beginAtom->pos();
           } else {
             refPoint = widget->center();
@@ -243,7 +275,7 @@ namespace Avogadro {
       } // hits
     } // left button
 
-    return command;
+    return undo;
   }
 
   QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
@@ -618,6 +650,12 @@ namespace Avogadro {
       m_comboBondOrder->addItem(tr("Single"));
       m_comboBondOrder->addItem(tr("Double"));
       m_comboBondOrder->addItem(tr("Triple"));
+      
+      QLabel *labelHydrogens = new QLabel(tr("Auto Add Hydrogens:"));
+      labelHydrogens->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      labelHydrogens->setMaximumHeight(15);
+
+      m_autoAddHydrogens = new QCheckBox(tr("Enable"), m_settingsWidget);
 
       QLabel *label3DGen = new QLabel(tr("Generate from SMILES:"));
       m_text3DGen = new QLineEdit(m_settingsWidget);
@@ -634,6 +672,8 @@ namespace Avogadro {
       m_layout->addWidget(m_comboElements);
       m_layout->addWidget(labelBO);
       m_layout->addWidget(m_comboBondOrder);
+      m_layout->addWidget(labelHydrogens);
+      m_layout->addWidget(m_autoAddHydrogens);
       m_layout->addWidget(label3DGen);
       m_layout->addWidget(m_text3DGen);
       m_layout->addWidget(m_button3DGen);

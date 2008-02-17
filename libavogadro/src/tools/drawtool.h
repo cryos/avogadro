@@ -2,6 +2,7 @@
   DrawTool - Tool for drawing molecules
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -42,6 +43,7 @@
 #include <QImage>
 #include <QAction>
 #include <QUndoCommand>
+#include <QCheckBox>
 
 namespace Avogadro {
 
@@ -122,6 +124,7 @@ namespace Avogadro {
       QComboBox *m_comboElements;
       QList<int> m_elementsIndex;
       QComboBox *m_comboBondOrder;
+      QCheckBox *m_autoAddHydrogens;
       QLineEdit *m_text3DGen;
       QPushButton *m_button3DGen;
       QPushButton *m_tableButton;
