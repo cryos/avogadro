@@ -33,30 +33,33 @@ namespace Avogadro {
   /////////////////////////////////////////////////////////////////////////////
 
   class AddAtomDrawCommandPrivate {
-    public:
-      AddAtomDrawCommandPrivate() : molecule(0), index(0) {};
+  public:
+    AddAtomDrawCommandPrivate() : molecule(0), index(0) {};
 
-      Molecule *molecule;
-      Eigen::Vector3d pos;
-      int index;
-      unsigned int element;
+    Molecule *molecule;
+    Eigen::Vector3d pos;
+    int index;
+    unsigned int element;
+    int adjustValence;
   };
 
-  AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos, unsigned int element) : d(new AddAtomDrawCommandPrivate)
+  AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos, unsigned int element, int adjustValence) : d(new AddAtomDrawCommandPrivate)
   {
     setText(QObject::tr("Add Atom"));
     d->molecule = molecule;
     d->pos = pos;
     d->element = element;
+    d->adjustValence = adjustValence;
   }
 
-  AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, Atom *atom) : d(new AddAtomDrawCommandPrivate)
+  AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, Atom *atom, int adjustValence) : d(new AddAtomDrawCommandPrivate)
   {
     setText(QObject::tr("Add Atom"));
     d->molecule = molecule;
     d->pos = atom->pos();
     d->element = atom->GetAtomicNum();
     d->index = atom->GetIdx();
+    d->adjustValence = adjustValence;
   }
 
   AddAtomDrawCommand::~AddAtomDrawCommand()
@@ -69,13 +72,16 @@ namespace Avogadro {
     OpenBabel::OBAtom *atom = d->molecule->GetAtom(d->index);
 
     if(atom)
-    {
-      d->molecule->BeginModify();
-      d->molecule->DeleteAtom(atom);
-      d->molecule->EndModify();
-      d->molecule->update();
-      d->index = -1;
-    }
+      {
+        d->molecule->BeginModify();
+        if (d->adjustValence) {
+          d->molecule->DeleteHydrogens(atom);
+        }
+        d->molecule->DeleteAtom(atom);
+        d->molecule->EndModify();
+        d->molecule->update();
+        d->index = -1;
+      }
   }
 
   void AddAtomDrawCommand::redo()
@@ -90,6 +96,9 @@ namespace Avogadro {
     atom->setPos(d->pos);
     atom->SetAtomicNum(d->element);
     d->molecule->EndModify();
+    if (d->adjustValence) {
+      d->molecule->AddHydrogens(atom);
+    }
     atom->update();
   }
   
@@ -98,20 +107,22 @@ namespace Avogadro {
   /////////////////////////////////////////////////////////////////////////////
 
   class DeleteAtomDrawCommandPrivate {
-    public:
-      DeleteAtomDrawCommandPrivate() : index(-1) {};
+  public:
+    DeleteAtomDrawCommandPrivate() : index(-1) {};
 
-      Molecule *molecule;
-      Molecule moleculeCopy;
-      int index;
+    Molecule *molecule;
+    Molecule moleculeCopy;
+    int index;
+    int adjustValence;
   };
 
-  DeleteAtomDrawCommand::DeleteAtomDrawCommand(Molecule *molecule, int index) : d(new DeleteAtomDrawCommandPrivate)
+  DeleteAtomDrawCommand::DeleteAtomDrawCommand(Molecule *molecule, int index, int adjustValence) : d(new DeleteAtomDrawCommandPrivate)
   {
     setText(QObject::tr("Delete Atom"));
     d->molecule = molecule;
     d->moleculeCopy = (*(molecule));
     d->index = index;
+    d->adjustValence = adjustValence;
   }
 
   DeleteAtomDrawCommand::~DeleteAtomDrawCommand()
@@ -129,10 +140,12 @@ namespace Avogadro {
   {
     OpenBabel::OBAtom *atom = d->molecule->GetAtom(d->index);
     if(atom)
-    {
-      d->molecule->DeleteAtom(atom);
-      d->molecule->update();
-    }
+      {
+        if (d->adjustValence)
+          d->molecule->DeleteHydrogens(atom);
+        d->molecule->DeleteAtom(atom);
+        d->molecule->update();
+      }
   }
   
   /////////////////////////////////////////////////////////////////////////////
@@ -140,27 +153,29 @@ namespace Avogadro {
   /////////////////////////////////////////////////////////////////////////////
 
   class AddBondDrawCommandPrivate {
-    public:
-      AddBondDrawCommandPrivate() : molecule(0), index(-1) {};
+  public:
+    AddBondDrawCommandPrivate() : molecule(0), index(-1) {};
 
-      Molecule *molecule;
-      Eigen::Vector3d pos;
-      int index;
-      int beginAtomIndex;
-      int endAtomIndex;
-      unsigned int order;
+    Molecule *molecule;
+    Eigen::Vector3d pos;
+    int index;
+    int beginAtomIndex;
+    int endAtomIndex;
+    unsigned int order;
+    int adjustValence;
   };
 
-  AddBondDrawCommand::AddBondDrawCommand(Molecule *molecule, Atom *beginAtom, Atom *endAtom, unsigned int order) : d(new AddBondDrawCommandPrivate)
+  AddBondDrawCommand::AddBondDrawCommand(Molecule *molecule, Atom *beginAtom, Atom *endAtom, unsigned int order, int adjustValence) : d(new AddBondDrawCommandPrivate)
   {
     setText(QObject::tr("Add Bond"));
     d->molecule = molecule;
     d->beginAtomIndex = beginAtom->GetIdx();
     d->endAtomIndex = endAtom->GetIdx();
     d->order = order;
+    d->adjustValence = adjustValence;
   }
 
-  AddBondDrawCommand::AddBondDrawCommand(Molecule *molecule, Bond *bond) : d(new AddBondDrawCommandPrivate)
+  AddBondDrawCommand::AddBondDrawCommand(Molecule *molecule, Bond *bond, int adjustValence) : d(new AddBondDrawCommandPrivate)
   {
     setText(QObject::tr("Add Bond"));
     d->molecule = molecule;
@@ -168,6 +183,7 @@ namespace Avogadro {
     d->endAtomIndex = bond->GetEndAtomIdx();
     d->order = bond->GetBondOrder();
     d->index = bond->GetIdx();
+    d->adjustValence = adjustValence;
   }
 
   AddBondDrawCommand::~AddBondDrawCommand()
@@ -180,13 +196,24 @@ namespace Avogadro {
     OpenBabel::OBBond *bond = d->molecule->GetBond(d->index);
 
     if(bond)
-    {
-      d->molecule->BeginModify();
-      d->molecule->DeleteBond(bond);
-      d->molecule->EndModify();
-      d->molecule->update();
-      d->index = -1;
-    }
+      {
+        OpenBabel::OBAtom *beginAtom = bond->GetBeginAtom();
+        OpenBabel::OBAtom *endAtom = bond->GetEndAtom();
+
+        d->molecule->BeginModify();
+        d->molecule->DeleteBond(bond);
+        d->molecule->EndModify();
+        if (d->adjustValence) {
+          d->molecule->DeleteHydrogens(beginAtom);
+          d->molecule->AddHydrogens(beginAtom);
+          
+          d->molecule->DeleteHydrogens(endAtom);
+          d->molecule->AddHydrogens(endAtom);
+        }
+
+        d->molecule->update();
+        d->index = -1;
+      }
   }
 
   void AddBondDrawCommand::redo()
@@ -210,6 +237,13 @@ namespace Avogadro {
     beginAtom->AddBond(bond);
     endAtom->AddBond(bond);
     d->molecule->EndModify();
+    if (d->adjustValence) {
+      d->molecule->DeleteHydrogens(beginAtom);
+      d->molecule->AddHydrogens(beginAtom);
+      
+      d->molecule->DeleteHydrogens(endAtom);
+      d->molecule->AddHydrogens(endAtom);
+    }
     d->molecule->update();
   }
   
@@ -218,20 +252,22 @@ namespace Avogadro {
   /////////////////////////////////////////////////////////////////////////////
 
   class DeleteBondDrawCommandPrivate {
-    public:
-      DeleteBondDrawCommandPrivate() : index(-1) {};
+  public:
+    DeleteBondDrawCommandPrivate() : index(-1) {};
 
-      Molecule *molecule;
-      Molecule moleculeCopy;
-      int index;
+    Molecule *molecule;
+    Molecule moleculeCopy;
+    int index;
+    int adjustValence;
   };
 
-  DeleteBondDrawCommand::DeleteBondDrawCommand(Molecule *molecule, int index) : d(new DeleteBondDrawCommandPrivate)
+  DeleteBondDrawCommand::DeleteBondDrawCommand(Molecule *molecule, int index, int adjustValence) : d(new DeleteBondDrawCommandPrivate)
   {
     setText(QObject::tr("Delete Bond"));
     d->molecule = molecule;
     d->moleculeCopy = (*(molecule));
     d->index = index;
+    d->adjustValence = adjustValence;
   }
 
   DeleteBondDrawCommand::~DeleteBondDrawCommand()
@@ -249,10 +285,20 @@ namespace Avogadro {
   {
     OpenBabel::OBBond *bond = d->molecule->GetBond(d->index);
     if(bond)
-    {
-      d->molecule->DeleteBond(bond);
-      d->molecule->update();
-    }
+      {
+        d->molecule->DeleteBond(bond);
+        if (d->adjustValence) {
+          OpenBabel::OBAtom *a1, *a2;
+          a1 = bond->GetBeginAtom();
+          d->molecule->DeleteHydrogens(a1);
+          d->molecule->AddHydrogens(a1);
+
+          a2 = bond->GetEndAtom();
+          d->molecule->DeleteHydrogens(a2);
+          d->molecule->AddHydrogens(a2);
+        }
+        d->molecule->update();
+      }
   }
   
   /////////////////////////////////////////////////////////////////////////////
@@ -260,21 +306,23 @@ namespace Avogadro {
   /////////////////////////////////////////////////////////////////////////////
 
   class ChangeElementDrawCommandPrivate {
-    public:
-      ChangeElementDrawCommandPrivate() : molecule(0), index(0) {};
+  public:
+    ChangeElementDrawCommandPrivate() : molecule(0), index(0) {};
 
-      Molecule *molecule;
-      unsigned int newElement, oldElement;
-      int index;
+    Molecule *molecule;
+    unsigned int newElement, oldElement;
+    int index;
+    int adjustValence;
   };
 
-  ChangeElementDrawCommand::ChangeElementDrawCommand(Molecule *molecule, Atom *atom, unsigned int element) : d(new ChangeElementDrawCommandPrivate)
+  ChangeElementDrawCommand::ChangeElementDrawCommand(Molecule *molecule, Atom *atom, unsigned int element, int adjustValence) : d(new ChangeElementDrawCommandPrivate)
   {
     setText(QObject::tr("Change Element"));
     d->molecule = molecule;
     d->oldElement = atom->GetAtomicNum();
     d->newElement = element;
     d->index = atom->GetIdx();
+    d->adjustValence = adjustValence;
   }
 
   ChangeElementDrawCommand::~ChangeElementDrawCommand()
@@ -287,13 +335,17 @@ namespace Avogadro {
     OpenBabel::OBAtom *atom = d->molecule->GetAtom(d->index);
     
     if(atom)
-    {
-      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
-      d->molecule->BeginModify();
-      atom->SetAtomicNum(d->oldElement);
-      d->molecule->EndModify();
-      d->molecule->update();
-    }
+      {
+        // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+        d->molecule->BeginModify();
+        atom->SetAtomicNum(d->oldElement);
+        d->molecule->EndModify();
+        d->molecule->update();
+        if (d->adjustValence) {
+          d->molecule->DeleteHydrogens(atom);
+          d->molecule->AddHydrogens(atom);
+        }
+      }
   }
 
   void ChangeElementDrawCommand::redo()
@@ -301,13 +353,17 @@ namespace Avogadro {
     OpenBabel::OBAtom *atom = d->molecule->GetAtom(d->index);
     
     if(atom)
-    {
-      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
-      d->molecule->BeginModify();
-      atom->SetAtomicNum(d->newElement);
-      d->molecule->EndModify();
-      d->molecule->update();
-    }
+      {
+        // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+        d->molecule->BeginModify();
+        atom->SetAtomicNum(d->newElement);
+        d->molecule->EndModify();
+        if (d->adjustValence) {
+          d->molecule->DeleteHydrogens(atom);
+          d->molecule->AddHydrogens(atom);
+        }
+        d->molecule->update();
+      }
   }
   
   /////////////////////////////////////////////////////////////////////////////
@@ -315,21 +371,23 @@ namespace Avogadro {
   /////////////////////////////////////////////////////////////////////////////
 
   class ChangeBondOrderDrawCommandPrivate {
-    public:
-      ChangeBondOrderDrawCommandPrivate() : molecule(0), index(0) {};
+  public:
+    ChangeBondOrderDrawCommandPrivate() : molecule(0), index(0) {};
 
-      Molecule *molecule;
-      unsigned int newBondOrder, oldBondOrder;
-      int index;
+    Molecule *molecule;
+    unsigned int newBondOrder, oldBondOrder;
+    int index;
+    int adjustValence;
   };
 
-  ChangeBondOrderDrawCommand::ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond, unsigned int bondOrder) : d(new ChangeBondOrderDrawCommandPrivate)
+  ChangeBondOrderDrawCommand::ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond, unsigned int bondOrder, int adjustValence) : d(new ChangeBondOrderDrawCommandPrivate)
   {
     setText(QObject::tr("Change Bond Order"));
     d->molecule = molecule;
     d->oldBondOrder = bond->GetBondOrder();
     d->newBondOrder = bondOrder;
     d->index = bond->GetIdx();
+    d->adjustValence = adjustValence;
   }
 
   ChangeBondOrderDrawCommand::~ChangeBondOrderDrawCommand()
@@ -342,13 +400,23 @@ namespace Avogadro {
     OpenBabel::OBBond *bond = d->molecule->GetBond(d->index);
     
     if(bond)
-    {
-      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
-      d->molecule->BeginModify();
-      bond->SetBondOrder(d->oldBondOrder);
-      d->molecule->EndModify();
-      d->molecule->update();
-    }
+      {
+        // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+        d->molecule->BeginModify();
+        bond->SetBondOrder(d->oldBondOrder);
+        d->molecule->EndModify();
+        if (d->adjustValence) {
+          OpenBabel::OBAtom *a1, *a2;
+          a1 = bond->GetBeginAtom();
+          d->molecule->DeleteHydrogens(a1);
+          d->molecule->AddHydrogens(a1);
+
+          a2 = bond->GetEndAtom();
+          d->molecule->DeleteHydrogens(a2);
+          d->molecule->AddHydrogens(a2);
+        }
+        d->molecule->update();
+      }
   }
 
   void ChangeBondOrderDrawCommand::redo()
@@ -356,13 +424,23 @@ namespace Avogadro {
     OpenBabel::OBBond *bond = d->molecule->GetBond(d->index);
     
     if(bond)
-    {
-      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
-      d->molecule->BeginModify();
-      bond->SetBondOrder(d->newBondOrder);
-      d->molecule->EndModify();
-      d->molecule->update();
-    }
+      {
+        // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+        d->molecule->BeginModify();
+        bond->SetBondOrder(d->newBondOrder);
+        d->molecule->EndModify();
+        if (d->adjustValence) {
+          OpenBabel::OBAtom *a1, *a2;
+          a1 = bond->GetBeginAtom();
+          d->molecule->DeleteHydrogens(a1);
+          d->molecule->AddHydrogens(a1);
+
+          a2 = bond->GetEndAtom();
+          d->molecule->DeleteHydrogens(a2);
+          d->molecule->AddHydrogens(a2);
+        }
+        d->molecule->update();
+      }
   }
  
 

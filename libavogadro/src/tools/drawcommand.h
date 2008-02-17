@@ -38,87 +38,90 @@ namespace Avogadro {
   class AddAtomDrawCommandPrivate;
   class AddAtomDrawCommand : public QUndoCommand
   {
-    public:
-      AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos, unsigned int element);
-      AddAtomDrawCommand(Molecule *molecule, Atom *atom);
-      ~AddAtomDrawCommand();
+  public:
+    AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos,
+                       unsigned int element, int adjustValence);
+    AddAtomDrawCommand(Molecule *molecule, Atom *atom, int adjustValence);
+    ~AddAtomDrawCommand();
 
-      virtual void undo();
-      virtual void redo();
+    virtual void undo();
+    virtual void redo();
 
-    private:
-      AddAtomDrawCommandPrivate * const d;
+  private:
+    AddAtomDrawCommandPrivate * const d;
   };
 
   class DeleteAtomDrawCommandPrivate;
   class DeleteAtomDrawCommand : public QUndoCommand
   {
-    public:
-      DeleteAtomDrawCommand(Molecule *molecule, int index);
-      ~DeleteAtomDrawCommand();
+  public:
+    DeleteAtomDrawCommand(Molecule *molecule, int index, int adjustValence);
+    ~DeleteAtomDrawCommand();
 
-      virtual void undo();
-      virtual void redo();
+    virtual void undo();
+    virtual void redo();
 
-    private:
-      DeleteAtomDrawCommandPrivate * const d;
+  private:
+    DeleteAtomDrawCommandPrivate * const d;
   };
 
   class AddBondDrawCommandPrivate;
   class AddBondDrawCommand : public QUndoCommand
   {
-    public:
-      AddBondDrawCommand(Molecule *molecule, Atom *beginAtom, Atom *endAtom, unsigned int order);
-      AddBondDrawCommand(Molecule *molecule, Bond *bond);
-      ~AddBondDrawCommand();
+  public:
+    AddBondDrawCommand(Molecule *molecule, Atom *beginAtom, Atom *endAtom, unsigned int order, int adjustValence);
+    AddBondDrawCommand(Molecule *molecule, Bond *bond, int adjustValence);
+    ~AddBondDrawCommand();
 
-      virtual void undo();
-      virtual void redo();
+    virtual void undo();
+    virtual void redo();
 
-    private:
-      AddBondDrawCommandPrivate * const d;
+  private:
+    AddBondDrawCommandPrivate * const d;
   };
 
   class DeleteBondDrawCommandPrivate;
   class DeleteBondDrawCommand : public QUndoCommand
   {
-    public:
-      DeleteBondDrawCommand(Molecule *molecule, int index);
-      ~DeleteBondDrawCommand();
+  public:
+    DeleteBondDrawCommand(Molecule *molecule, int index, int adjustValence);
+    ~DeleteBondDrawCommand();
 
-      virtual void undo();
-      virtual void redo();
+    virtual void undo();
+    virtual void redo();
 
-    private:
-      DeleteBondDrawCommandPrivate * const d;
+  private:
+    DeleteBondDrawCommandPrivate * const d;
   };
 
   class ChangeElementDrawCommandPrivate;
   class ChangeElementDrawCommand : public QUndoCommand
   {
-    public:
-      ChangeElementDrawCommand(Molecule *molecule, Atom *atom, unsigned int element);
-      ~ChangeElementDrawCommand();
+  public:
+    ChangeElementDrawCommand(Molecule *molecule, Atom *atom, 
+                             unsigned int element, int adjustValence);
+    ~ChangeElementDrawCommand();
 
-      virtual void undo();
-      virtual void redo();
+    virtual void undo();
+    virtual void redo();
 
-    private:
-      ChangeElementDrawCommandPrivate * const d;
+  private:
+    ChangeElementDrawCommandPrivate * const d;
   };
 
   class ChangeBondOrderDrawCommandPrivate;
   class ChangeBondOrderDrawCommand : public QUndoCommand
   {
-    public:
-      ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond, unsigned int bondOrder);
-      ~ChangeBondOrderDrawCommand();
+  public:
+    ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond,
+                               unsigned int bondOrder, int adjustValence);
+    ~ChangeBondOrderDrawCommand();
 
-      virtual void undo();
-      virtual void redo();
+    virtual void undo();
+    virtual void redo();
 
-    private:
-      ChangeBondOrderDrawCommandPrivate * const d;
+  private:
+    ChangeBondOrderDrawCommandPrivate * const d;
   };
 
 

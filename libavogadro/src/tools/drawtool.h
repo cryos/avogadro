@@ -69,13 +69,22 @@ namespace Avogadro {
       //! \name Tool Methods
       //@{
       //! \brief Callback methods for ui.actions on the canvas.
-      /*!
+
+      /*! Handle a mouse press (i.e., beginning of drawing)
       */
       virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event);
+      /*! Handle a mouse release (i.e., the end of drawing)
+      */
       virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event);
+      /*! Handle a mouse move (perhaps drawing a bond)
+      */
       virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
+      /*! Handle a scroll wheel (i.e., zooming in and out of the canvas)
+      */
       virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
+      //@}
 
+      //! The priority of the tool in the toolbar
       virtual int usefulness() const;
 
       virtual QWidget *settingsWidget();
@@ -86,12 +95,14 @@ namespace Avogadro {
       void setBondOrder(int i);
       int bondOrder() const;
 
-
+      void setAutoAddHydrogens(int state);
+      int autoAddHydrogens() const;
 
     public Q_SLOTS:
       void elementChanged( int index );
       void customElementChanged( int index );
       void bondOrderChanged( int index );
+      void autoAddHydrogensChanged( int state );
       void gen3D();
 
     private:
@@ -114,6 +125,8 @@ namespace Avogadro {
 
       Bond *m_prevBond;
       int m_prevBondOrder;
+
+      int m_addHydrogensState;
 
       bool place_mode;
       Molecule m_generatedMolecule;
