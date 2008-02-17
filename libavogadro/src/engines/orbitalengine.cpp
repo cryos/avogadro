@@ -44,8 +44,8 @@ using namespace Eigen;
 namespace Avogadro {
 
   OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
-  m_grid(0), m_isoGen(0), m_min(0., 0., 0.), 
-  m_alpha(0.5), m_stepSize(0.33333), m_iso(0.5), m_renderMode(0), m_colorMode(0)
+  m_grid(0), m_isoGen(0), m_min(0., 0., 0.),
+  m_alpha(0.5), m_stepSize(0.33333), m_iso(0.1), m_renderMode(0), m_colorMode(0)
   {
     setDescription(tr("Orbital rendering"));
     m_grid = new Grid;
@@ -58,7 +58,7 @@ namespace Avogadro {
   {
     delete m_grid;
     delete m_isoGen;
-    
+
     // Delete the settings widget if it exists
     if(m_settingsWidget)
       m_settingsWidget->deleteLater();
@@ -72,7 +72,7 @@ namespace Avogadro {
 
     return engine;
   }
-  
+
   bool OrbitalEngine::renderOpaque(PainterDevice *pd)
   {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
@@ -90,10 +90,10 @@ namespace Avogadro {
     }
 
     qDebug() << " set surface ";
-    
+
     qDebug() << "Min value = " << m_grid->grid()->GetMinValue()
              << "Max value = " << m_grid->grid()->GetMaxValue();
-    
+
     // Debug code - try to figure out if we are reading the cube in correctly...
     QList<Primitive *> list = primitives().subList(Primitive::AtomType);
     foreach(Primitive *p, list)
@@ -102,12 +102,12 @@ namespace Avogadro {
       double v = m_grid->grid()->GetValue(vector3(a->pos().x()+0.5, a->pos().y(), a->pos().z()));
       qDebug() << "Grid value at atom centre: " << v;
     }
-    
+
     // Find the minima for the grid
     m_min = Vector3f(m_grid->grid()->GetOriginVector().x(),
         m_grid->grid()->GetOriginVector().y(),
         m_grid->grid()->GetOriginVector().z());
-    
+
     qDebug() << "Origin: " << m_min.x() << m_min.y() << m_min.z();
 
     // For orbitals, we'll need to set this iso value and make sure it's
@@ -142,7 +142,7 @@ namespace Avogadro {
       glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
       break;
     }
-    
+
     glBegin(GL_TRIANGLES);
       // RGB
       //glColor4f(m_color.red(), m_color.green(), m_color.blue(), m_alpha);
@@ -151,13 +151,13 @@ namespace Avogadro {
       {
         triangle t = m_isoGen->getTriangle(i);
         triangle n = m_isoGen->getNormal(i);
-      
+
         glNormal3fv(n.p0.array());
         glVertex3fv(t.p0.array());
 
         glNormal3fv(n.p1.array());
         glVertex3fv(t.p1.array());
-      
+
         glNormal3fv(n.p2.array());
         glVertex3fv(t.p2.array());
       }
@@ -167,7 +167,7 @@ namespace Avogadro {
 
     return true;
   }
-  
+
   double OrbitalEngine::transparencyDepth() const
   {
     return 1.0;
@@ -177,31 +177,31 @@ namespace Avogadro {
   {
     return Engine::Transparent | Engine::Atoms;
   }
-  
+
   void OrbitalEngine::setOpacity(int value)
   {
     m_alpha = 0.05 * value;
     emit changed();
   }
-  
+
   void OrbitalEngine::setRenderMode(int value)
   {
     m_renderMode = value;
     emit changed();
   }
-  
+
   void OrbitalEngine::setStepSize(double d)
   {
     m_stepSize = d;
     emit changed();
   }
-  
+
   void OrbitalEngine::setIso(double d)
   {
     m_iso = d;
     emit changed();
   }
-  
+
   void OrbitalEngine::setColorMode(int value)
   {
     if (value == 1) {
@@ -218,13 +218,13 @@ namespace Avogadro {
     m_colorMode = value;
     emit changed();
   }
-  
+
   void OrbitalEngine::setRed(double r)
   {
     m_color.set(r, m_color.green(), m_color.blue(), m_alpha);
     emit changed();
   }
-  
+
   void OrbitalEngine::setGreen(double g)
   {
     m_color.set(m_color.red(), g, m_color.blue(), m_alpha);
@@ -254,7 +254,7 @@ namespace Avogadro {
     }
     return m_settingsWidget;
   }
-  
+
   void OrbitalEngine::isoGenFinished()
   {
     emit changed();
