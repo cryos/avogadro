@@ -28,6 +28,8 @@
 
 #include <QDebug>
 
+using namespace OpenBabel;
+
 namespace Avogadro {
 
   /////////////////////////////////////////////////////////////////////////////
@@ -150,9 +152,24 @@ namespace Avogadro {
     if(atom)
       {
         // TODO: Also need to adjust valence on any bonded atoms
-        if (d->adjustValence)
+	std::vector<OpenBabel::OBAtom*> vnbr;
+        if (d->adjustValence) {
           d->molecule->DeleteHydrogens(atom);
-        d->molecule->DeleteAtom(atom);
+        
+	  FOR_NBORS_OF_ATOM (nbr, atom) {
+	    vnbr.push_back(&*nbr);
+	  }
+	}
+
+	d->molecule->DeleteAtom(atom);
+        
+	if (d->adjustValence) {
+	  for (unsigned int i=0; i < vnbr.size(); i++) {
+	    d->molecule->DeleteHydrogens(vnbr[i]);
+            d->molecule->AddHydrogens(vnbr[i]);
+	  }
+	}
+
         d->molecule->update();
       }
   }
