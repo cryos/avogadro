@@ -34,7 +34,7 @@
 
  Copyright (C) 2008      Marcus D. Hanwell
  Copyright (C) 2008      Tim Vandermeersch
- 
+
  The original copyright headers are shown above. This source was originally
  part of the Zhu3D project. Subsequent changes were made to adapt the source
  in order to be used in the Avogadro molecular editor project.
@@ -77,14 +77,14 @@ namespace Avogadro
     virtual float eval(float, float, float) = 0;
     virtual ~ImplicitFunction() { }
   };
-  
+
   // Attach to a grid and set
   class Grid : public ImplicitFunction
   {
   public:
     double m_iso;
     OpenBabel::OBGridData *m_gd;
-    
+
     Grid(): m_iso(0.), m_gd(0) { ; }
     ~Grid()
     {
@@ -94,7 +94,7 @@ namespace Avogadro
         m_gd = 0;
       }
     }
-    
+
     void setIsoValue(float i) { m_iso = i; }
     float isoValue() { return m_iso; }
     void setGrid(OpenBabel::OBGridData *gd) { m_gd = gd; }
@@ -103,7 +103,7 @@ namespace Avogadro
     float eval(float x, float y, float z)
     {
       OpenBabel::vector3 v(x, y, z);
-      return m_gd->GetValue(v);
+      return m_gd->GetValue(v) - m_iso;
     }
   };
 
@@ -131,7 +131,7 @@ namespace Avogadro
     QList<triangle> m_vertList, m_vertListCopy;
 
     void run();
-    
+
     // Central functions
     void init(Grid *grid, double size, Eigen::Vector3f min);
     //void start();
