@@ -26,6 +26,8 @@
 #include "drawcommand.h"
 #include <avogadro/primitive.h>
 
+#include <QDebug>
+
 namespace Avogadro {
 
   /////////////////////////////////////////////////////////////////////////////
@@ -212,9 +214,10 @@ namespace Avogadro {
         d->molecule->EndModify();
         if (d->adjustValence) {
           d->molecule->DeleteHydrogens(beginAtom);
-          d->molecule->AddHydrogens(beginAtom);
-          
           d->molecule->DeleteHydrogens(endAtom);
+          
+          d->molecule->UnsetImplicitValencePerceived();
+          d->molecule->AddHydrogens(beginAtom);
           d->molecule->AddHydrogens(endAtom);
         }
 
@@ -234,9 +237,10 @@ namespace Avogadro {
     if(d->index >= 0) { // already created the bond
       if (d->adjustValence) {
         d->molecule->DeleteHydrogens(beginAtom);
-        d->molecule->AddHydrogens(beginAtom);
-        
         d->molecule->DeleteHydrogens(endAtom);
+        
+        d->molecule->UnsetImplicitValencePerceived();
+        d->molecule->AddHydrogens(beginAtom);
         d->molecule->AddHydrogens(endAtom);
       }
       return;
@@ -253,10 +257,10 @@ namespace Avogadro {
     d->molecule->EndModify();
     if (d->adjustValence) {
       d->molecule->DeleteHydrogens(beginAtom);
-      d->molecule->AddHydrogens(beginAtom);
-      
       d->molecule->DeleteHydrogens(endAtom);
+      d->molecule->UnsetImplicitValencePerceived();
       d->molecule->AddHydrogens(endAtom);
+      d->molecule->AddHydrogens(beginAtom);
     }
     d->molecule->update();
   }
@@ -304,11 +308,12 @@ namespace Avogadro {
         if (d->adjustValence) {
           OpenBabel::OBAtom *a1, *a2;
           a1 = bond->GetBeginAtom();
-          d->molecule->DeleteHydrogens(a1);
-          d->molecule->AddHydrogens(a1);
-
           a2 = bond->GetEndAtom();
+          d->molecule->DeleteHydrogens(a1);
           d->molecule->DeleteHydrogens(a2);
+
+          d->molecule->UnsetImplicitValencePerceived();
+          d->molecule->AddHydrogens(a1);
           d->molecule->AddHydrogens(a2);
         }
         d->molecule->update();
@@ -356,6 +361,7 @@ namespace Avogadro {
         d->molecule->EndModify();
         d->molecule->update();
         if (d->adjustValence) {
+          d->molecule->UnsetImplicitValencePerceived();
           d->molecule->DeleteHydrogens(atom);
           d->molecule->AddHydrogens(atom);
         }
@@ -373,6 +379,7 @@ namespace Avogadro {
         atom->SetAtomicNum(d->newElement);
         d->molecule->EndModify();
         if (d->adjustValence) {
+          d->molecule->UnsetImplicitValencePerceived();
           d->molecule->DeleteHydrogens(atom);
           d->molecule->AddHydrogens(atom);
         }
@@ -422,11 +429,12 @@ namespace Avogadro {
         if (d->adjustValence) {
           OpenBabel::OBAtom *a1, *a2;
           a1 = bond->GetBeginAtom();
-          d->molecule->DeleteHydrogens(a1);
-          d->molecule->AddHydrogens(a1);
-
           a2 = bond->GetEndAtom();
+          d->molecule->DeleteHydrogens(a1);
           d->molecule->DeleteHydrogens(a2);
+
+          d->molecule->UnsetImplicitValencePerceived();
+          d->molecule->AddHydrogens(a1);
           d->molecule->AddHydrogens(a2);
         }
         d->molecule->update();
@@ -444,13 +452,15 @@ namespace Avogadro {
         bond->SetBondOrder(d->newBondOrder);
         d->molecule->EndModify();
         if (d->adjustValence) {
+
           OpenBabel::OBAtom *a1, *a2;
           a1 = bond->GetBeginAtom();
-          d->molecule->DeleteHydrogens(a1);
-          d->molecule->AddHydrogens(a1);
-
           a2 = bond->GetEndAtom();
+          d->molecule->DeleteHydrogens(a1);
           d->molecule->DeleteHydrogens(a2);
+
+          d->molecule->UnsetImplicitValencePerceived();
+          d->molecule->AddHydrogens(a1);
           d->molecule->AddHydrogens(a2);
         }
         d->molecule->update();
