@@ -1304,8 +1304,12 @@ namespace Avogadro
   void MainWindow::readSettings()
   {
     QSettings settings;
-//    QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
-//    move(pos);
+    // On Mac or Windows, the application should remember
+    // window positions. On Linux, it's handled by the window manager
+#if defined (Q_WS_MAC) || defined (Q_WS_WIN)
+    QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
+    move(pos);
+#endif
     QSize size = settings.value( "size", QSize( 640, 480 ) ).toSize();
     resize( size );
 
