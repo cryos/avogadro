@@ -383,7 +383,14 @@ namespace Avogadro {
             undo = new DeleteAtomDrawCommand(widget->molecule(), m_hits[0].name(), m_addHydrogensState);
           }
           if(m_hits[0].type() == Primitive::BondType) {
-            undo = new DeleteBondDrawCommand(widget->molecule(), m_hits[0].name(), m_addHydrogensState);
+            // don't delete ?-H bonds when adjust hydrogens is on
+	    OBBond *bond = widget->molecule()->GetBond(m_hits[0].name());
+	    if (m_addHydrogensState) {
+	      if (bond->GetBeginAtom()->IsHydrogen() || bond->GetEndAtom()->IsHydrogen()) {
+	        return undo;
+	      }
+	    }
+	    undo = new DeleteBondDrawCommand(widget->molecule(), m_hits[0].name(), m_addHydrogensState);
           }
         }
       }
