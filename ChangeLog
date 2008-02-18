@@ -1,5 +1,8 @@
 2008-02-17  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
+	* avogadro/src/addenginedialog.*: Set the default "name" when
+	adding an engine to the engine type. (This saves some typing.)
+
 	* libavogadro/src/tools/drawtool.*, libavogadro/src/tools/drawcommand.*:
 	Indentation and comment cleanup in draw tool. Added initial
 	support for adjusting hydrogens while drawing.

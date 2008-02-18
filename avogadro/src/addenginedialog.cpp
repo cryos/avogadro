@@ -34,6 +34,9 @@ namespace Avogadro {
   AddEngineDialog::AddEngineDialog(QWidget *parent) : QDialog(parent)
   {
     ui.setupUi(this);
+
+    connect( ui.typeCombo, SIGNAL(currentIndexChanged (const QString)),
+             this, SLOT(typeChanged(const QString)) );
   }
 
   Engine * AddEngineDialog::getEngine(QWidget *parent, const QList<EngineFactory *> &engineFactories)
@@ -76,6 +79,11 @@ namespace Avogadro {
   QString AddEngineDialog::descriptionText()
   {
     return ui.descriptionEdit->text();
+  }
+
+  void AddEngineDialog::typeChanged(const QString type)
+  {
+    ui.nameEdit->setText(type);
   }
 
 } // end namespace Avogadro

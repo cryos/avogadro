@@ -42,12 +42,20 @@ namespace Avogadro {
       /**
        * \return a new engine object or 0
        */
-      static Engine * getEngine(QWidget *parent, const QList<EngineFactory *> &engineFactories);
+      static Engine * getEngine(QWidget *parent, 
+                                const QList<EngineFactory *> &engineFactories);
 
+      //! Add a new Engine type to the list
       void addType(const QString &type);
       int typeIndex();
+      //! \return the name of the engine (e.g., picked by the user)
       QString nameText();
+      //! \return the description of the engine (picked by the user)
       QString descriptionText();
+
+    public Q_SLOTS:
+      //! If the user picks a new type, change the default name
+      void typeChanged(const QString);
 
     private:
       Ui::AddEngineDialog ui;
