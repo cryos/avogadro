@@ -58,7 +58,7 @@ namespace Avogadro {
   {
     delete m_grid;
     delete m_isoGen;
-    
+
     // Delete the settings widget if it exists
     if(m_settingsWidget)
       m_settingsWidget->deleteLater();
@@ -145,7 +145,7 @@ namespace Avogadro {
     m_grid->setGrid(vdwGrid);
   }
 
-  //                                          // 
+  //                                          //
   //     |    red    green     blue           //
   // 1.0 |...--+       +       +--...         //
   //     |      \     / \     /               //
@@ -166,11 +166,11 @@ namespace Avogadro {
     GLfloat red, green, blue;
     double energy = 0.0;
     vector3 p, dist;
-    
+
     p.SetX(pos.x());
     p.SetY(pos.y());
     p.SetZ(pos.z());
-    
+
     FOR_ATOMS_OF_MOL (atom, mol) {
       dist = atom->GetVector() - p;
       energy += atom->GetPartialCharge() / (dist.length()*dist.length());
@@ -197,24 +197,16 @@ namespace Avogadro {
 
     return Color(0.0, 1.0, 0.0, m_alpha);
   }
-  
+
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
   {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
 
-    if (!m_surfaceValid) {
-      disconnect(mol, SIGNAL(primitiveAdded(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-      disconnect(mol, SIGNAL(primitiveRemoved(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-      disconnect(mol, SIGNAL(primitiveUpdated(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-
-      connect(mol, SIGNAL(primitiveAdded(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-      connect(mol, SIGNAL(primitiveRemoved(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-      connect(mol, SIGNAL(primitiveUpdated(Primitive*)), this, SLOT(invalidateSurface(Primitive*)));
-      
-      qDebug() << " set surface ";
+    if (!m_surfaceValid)
+    {
       VDWSurface(mol);
 
-      m_grid->setIsoValue(0.001);
+      m_grid->setIsoValue(0.0);
       m_isoGen->init(m_grid, m_stepSize, m_min);
       m_isoGen->start();
       m_surfaceValid = true;
@@ -244,7 +236,7 @@ namespace Avogadro {
       glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
       break;
     }
-    
+
     glBegin(GL_TRIANGLES);
     if (m_colorMode == 1) { // ESP
       Color color;
@@ -252,7 +244,7 @@ namespace Avogadro {
       {
         triangle t = m_isoGen->getTriangle(i);
         triangle n = m_isoGen->getNormal(i);
-      
+
         color = espColor(mol, t.p0);
         color.applyAsMaterials();
         glNormal3fv(n.p0.array());
@@ -262,7 +254,7 @@ namespace Avogadro {
         color.applyAsMaterials();
         glNormal3fv(n.p1.array());
         glVertex3fv(t.p1.array());
-      
+
         color = espColor(mol, t.p2);
         color.applyAsMaterials();
         glNormal3fv(n.p2.array());
@@ -275,13 +267,13 @@ namespace Avogadro {
       {
         triangle t = m_isoGen->getTriangle(i);
         triangle n = m_isoGen->getNormal(i);
-      
+
         glNormal3fv(n.p0.array());
         glVertex3fv(t.p0.array());
 
         glNormal3fv(n.p1.array());
         glVertex3fv(t.p1.array());
-      
+
         glNormal3fv(n.p2.array());
         glVertex3fv(t.p2.array());
       }
@@ -292,7 +284,7 @@ namespace Avogadro {
 
     return true;
   }
-  
+
   double SurfaceEngine::transparencyDepth() const
   {
     return 1.0;
@@ -302,33 +294,33 @@ namespace Avogadro {
   {
     return Engine::Transparent | Engine::Atoms;
   }
-  
+
   void SurfaceEngine::setOpacity(int value)
   {
     m_alpha = 0.05 * value;
     emit changed();
   }
-  
+
   void SurfaceEngine::setRenderMode(int value)
   {
     m_renderMode = value;
     emit changed();
   }
-  
+
   void SurfaceEngine::setStepSize(double d)
   {
     m_stepSize = d;
     m_surfaceValid = false;
     emit changed();
   }
-  
+
   void SurfaceEngine::setPadding(double d)
   {
     m_padding = d;
     m_surfaceValid = false;
     emit changed();
   }
-  
+
   void SurfaceEngine::setColorMode(int value)
   {
     if (value == 1) { // ESP
@@ -340,13 +332,13 @@ namespace Avogadro {
     m_colorMode = value;
     emit changed();
   }
-  
+
   void SurfaceEngine::setColor(QColor color)
   {
     m_color.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();
   }
-  
+
   QWidget* SurfaceEngine::settingsWidget()
   {
     if(!m_settingsWidget)
@@ -366,7 +358,7 @@ namespace Avogadro {
     }
     return m_settingsWidget;
   }
-  
+
   void SurfaceEngine::isoGenFinished()
   {
     emit changed();
@@ -380,7 +372,7 @@ namespace Avogadro {
       // stop running threads
       m_isoGen->quit();
     }
-    
+
     //emit changed();
   }
 
@@ -388,6 +380,29 @@ namespace Avogadro {
   {
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
+  }
+
+  void SurfaceEngine::setPrimitives(const PrimitiveList &primitives)
+  {
+    Engine::setPrimitives(primitives);
+    m_surfaceValid = false;
+  }
+
+  void SurfaceEngine::addPrimitive(Primitive *primitive)
+  {
+    Engine::addPrimitive(primitive);
+    m_surfaceValid = false;
+  }
+
+  void SurfaceEngine::updatePrimitive(Primitive *)
+  {
+    m_surfaceValid = false;
+  }
+
+  void SurfaceEngine::removePrimitive(Primitive *primitive)
+  {
+    Engine::removePrimitive(primitive);
+    m_surfaceValid = false;
   }
 
   /*

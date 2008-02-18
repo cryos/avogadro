@@ -54,17 +54,23 @@ namespace Avogadro {
       //@{
       bool renderOpaque(PainterDevice *pd);
       //@}
-      
+
       double transparencyDepth() const;
       EngineFlags flags() const;
-      
+
       Engine *clone() const;
-      
+
       QWidget* settingsWidget();
 
       //void writeSettings(QSettings &settings) const;
       //void readSettings(QSettings &settings);
 
+      void setPrimitives(const PrimitiveList &primitives);
+
+    public Q_SLOTS:
+      void addPrimitive(Primitive *primitive);
+      void updatePrimitive(Primitive *primitive);
+      void removePrimitive(Primitive *primitive);
 
     protected:
       SurfaceSettingsWidget *m_settingsWidget;
@@ -78,10 +84,10 @@ namespace Avogadro {
       int    m_renderMode;
       int    m_colorMode;
       bool   m_surfaceValid;
-      
+
       void VDWSurface(Molecule *mol);
       Color espColor(Molecule *mol, Eigen::Vector3f &pos);
-    
+
     private Q_SLOTS:
       void isoGenFinished();
       void invalidateSurface(Primitive *primitive);
@@ -111,7 +117,7 @@ namespace Avogadro {
        */
       void setColor(QColor color);
   };
-  
+
   class SurfaceSettingsWidget : public QWidget, public Ui::SurfaceSettingsWidget
   {
     public:
