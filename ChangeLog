@@ -1,3 +1,7 @@
+2008-02-18  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/draw*.*: Insert Smiles is now undo-able.
+
 2008-02-18  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engines/orbitalengine.*,

@@ -486,6 +486,42 @@ namespace Avogadro {
       }
   }
  
+  /////////////////////////////////////////////////////////////////////////////
+  // Insert Smiles
+  /////////////////////////////////////////////////////////////////////////////
+
+  class InsertSmilesDrawCommandPrivate {
+  public:
+    InsertSmilesDrawCommandPrivate() : molecule(0), generatedMolecule(0) {};
+
+    Molecule *molecule;
+    Molecule moleculeCopy, generatedMolecule;
+  };
+
+  InsertSmilesDrawCommand::InsertSmilesDrawCommand(Molecule *molecule, Molecule &generatedMolecule) : d(new InsertSmilesDrawCommandPrivate)
+  {
+    setText(QObject::tr("Insert SMILES"));
+    d->molecule = molecule;
+    d->moleculeCopy = *molecule;
+    d->generatedMolecule = generatedMolecule;
+  }
+
+  InsertSmilesDrawCommand::~InsertSmilesDrawCommand()
+  {
+    delete d;
+  }
+
+  void InsertSmilesDrawCommand::undo()
+  {
+    *(d->molecule) = d->moleculeCopy;
+    d->molecule->update();
+  }
+
+  void InsertSmilesDrawCommand::redo()
+  {
+    *(d->molecule) += d->generatedMolecule;
+    d->molecule->update();
+  }
 
 
 } // end namespace Avogadro

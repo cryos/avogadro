@@ -70,7 +70,7 @@ namespace Avogadro {
                           "Right Mouse: Delete Atom"));
     action->setShortcut(Qt::Key_F8);
 
-    place_mode = false;
+    m_placeMode = false;
   }
 
   DrawTool::~DrawTool()
@@ -118,7 +118,6 @@ namespace Avogadro {
                                               m_beginAtom,
                                               m_element,
                                               m_addHydrogensState);
-          undo->setText(tr("Change Element"));
         }
       }
       else if(m_hits.size() && (m_hits[0].type() == Primitive::BondType)) {
@@ -138,11 +137,10 @@ namespace Avogadro {
         
           undo = new ChangeBondOrderDrawCommand(widget->molecule(), bond,
                                                 bondOrder, m_addHydrogensState);
-          undo->setText(tr("Change Bond Order"));
         }
       }
       else { // a genuine click in new space == create a new atom or fragment
-        if (place_mode) { // create a SMILES fragment
+        if (m_placeMode) { // create a SMILES fragment
           Eigen::Vector3d refPoint;
           if (m_beginAtom) {
             refPoint = m_beginAtom->pos();
@@ -150,14 +148,11 @@ namespace Avogadro {
             refPoint = widget->center();
           }
           Eigen::Vector3d newMolPos = widget->camera()->unProject(event->pos(), refPoint);
+          m_generatedMolecule.Center();
           m_generatedMolecule.Translate(vector3(newMolPos.x(),
                                                 newMolPos.y(), 
                                                 newMolPos.z()));
-          *widget->molecule() += m_generatedMolecule;
-          m_generatedMolecule.Center();
-          // TODO: Need Undo support for insert SMILES
-          // i.e., rather than just += the molecule, create an undo action
-
+          undo = new InsertSmilesDrawCommand(widget->molecule(), m_generatedMolecule);
         } // end place mode (insert SMILES)
         else { // create a new atom
           m_beginAtom = newAtom(widget, event->pos());
@@ -470,13 +465,13 @@ namespace Avogadro {
         m_generatedMolecule.Center();
         m_generatedMolecule.AddHydrogens();
         
-        if (place_mode) {
+        if (m_placeMode) {
           m_button3DGen->setText(tr("Insert SMILES"));
-          place_mode = false;
+          m_placeMode = false;
         }
         else {
           m_button3DGen->setText(tr("Stop Insert"));
-          place_mode = true;
+          m_placeMode = true;
         }
       }
   }

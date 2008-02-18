@@ -128,7 +128,7 @@ namespace Avogadro {
 
       int m_addHydrogensState;
 
-      bool place_mode;
+      bool m_placeMode;
       Molecule m_generatedMolecule;
       OpenBabel::OBBuilder m_builder;
 
