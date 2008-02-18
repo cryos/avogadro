@@ -81,7 +81,8 @@ namespace Avogadro {
       {
         d->molecule->BeginModify();
         if (d->adjustValence) {
-          d->molecule->DeleteHydrogens(atom);
+          if (!atom->IsHydrogen())
+            d->molecule->DeleteHydrogens(atom);
         }
         d->molecule->DeleteAtom(atom);
         d->molecule->EndModify();
@@ -96,8 +97,10 @@ namespace Avogadro {
       if (d->adjustValence) {
         Atom *atom = static_cast<Atom*>(d->molecule->GetAtom(d->index));
       
-        d->molecule->DeleteHydrogens(atom);
-        d->molecule->AddHydrogens(atom);
+        if (!atom->IsHydrogen()) {
+	  d->molecule->DeleteHydrogens(atom);
+          d->molecule->AddHydrogens(atom);
+	}
       }
       return;
     }
@@ -109,7 +112,9 @@ namespace Avogadro {
     atom->SetAtomicNum(d->element);
     d->molecule->EndModify();
     if (d->adjustValence) {
-      d->molecule->AddHydrogens(atom);
+      if (!atom->IsHydrogen()) {
+        d->molecule->AddHydrogens(atom);
+      }
     }
     atom->update();
   }
@@ -232,12 +237,17 @@ namespace Avogadro {
         d->molecule->DeleteBond(bond);
         d->molecule->EndModify();
         if (d->adjustValence) {
-          d->molecule->DeleteHydrogens(beginAtom);
-          d->molecule->DeleteHydrogens(endAtom);
+          if (!beginAtom->IsHydrogen())
+            d->molecule->DeleteHydrogens(beginAtom);
+          if (!endAtom->IsHydrogen())
+            d->molecule->DeleteHydrogens(endAtom);
           
           d->molecule->UnsetImplicitValencePerceived();
-          d->molecule->AddHydrogens(beginAtom);
-          d->molecule->AddHydrogens(endAtom);
+            
+	  if (!beginAtom->IsHydrogen())
+            d->molecule->AddHydrogens(beginAtom);
+          if (!endAtom->IsHydrogen())
+            d->molecule->AddHydrogens(endAtom);
         }
 
         d->molecule->update();
@@ -255,12 +265,17 @@ namespace Avogadro {
 
     if(d->index >= 0) { // already created the bond
       if (d->adjustValence) {
-        d->molecule->DeleteHydrogens(beginAtom);
-        d->molecule->DeleteHydrogens(endAtom);
+        if (!beginAtom->IsHydrogen())
+          d->molecule->DeleteHydrogens(beginAtom);
+        if (!endAtom->IsHydrogen())
+          d->molecule->DeleteHydrogens(endAtom);
         
         d->molecule->UnsetImplicitValencePerceived();
-        d->molecule->AddHydrogens(beginAtom);
-        d->molecule->AddHydrogens(endAtom);
+        
+        if (!beginAtom->IsHydrogen())
+	  d->molecule->AddHydrogens(beginAtom);
+        if (!endAtom->IsHydrogen())
+          d->molecule->AddHydrogens(endAtom);
       }
       return;
     }
@@ -275,11 +290,17 @@ namespace Avogadro {
     endAtom->AddBond(bond);
     d->molecule->EndModify();
     if (d->adjustValence) {
-      d->molecule->DeleteHydrogens(beginAtom);
-      d->molecule->DeleteHydrogens(endAtom);
+      if (!beginAtom->IsHydrogen())
+        d->molecule->DeleteHydrogens(beginAtom);
+      if (!endAtom->IsHydrogen())
+        d->molecule->DeleteHydrogens(endAtom);
+      
       d->molecule->UnsetImplicitValencePerceived();
-      d->molecule->AddHydrogens(endAtom);
-      d->molecule->AddHydrogens(beginAtom);
+      
+      if (!beginAtom->IsHydrogen())
+        d->molecule->AddHydrogens(endAtom);
+      if (!endAtom->IsHydrogen())
+        d->molecule->AddHydrogens(beginAtom);
     }
     d->molecule->update();
   }
