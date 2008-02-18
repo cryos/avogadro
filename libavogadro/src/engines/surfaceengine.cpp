@@ -200,9 +200,9 @@ namespace Avogadro {
 
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
   {
+    Molecule *mol = const_cast<Molecule *>(pd->molecule());
     if (!m_surfaceValid)
     {
-      Molecule *mol = const_cast<Molecule *>(pd->molecule());
       VDWSurface(mol);
 
       m_grid->setIsoValue(0.0);
