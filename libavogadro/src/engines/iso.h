@@ -90,7 +90,7 @@ namespace Avogadro
     {
       if (m_gd)
       {
-        delete m_gd;
+        //        delete m_gd;
         m_gd = 0;
       }
     }
