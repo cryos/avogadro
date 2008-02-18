@@ -3,6 +3,7 @@
 
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2008 Geoffrey Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -25,6 +26,7 @@
 
 #include "drawcommand.h"
 #include <avogadro/primitive.h>
+#include <openbabel/obiter.h>
 
 #include <QDebug>
 
@@ -73,7 +75,7 @@ namespace Avogadro {
 
   void AddAtomDrawCommand::undo()
   {
-    OpenBabel::OBAtom *atom = d->molecule->GetAtom(d->index);
+    OBAtom *atom = d->molecule->GetAtom(d->index);
 
     if(atom)
       {
@@ -148,28 +150,28 @@ namespace Avogadro {
 
   void DeleteAtomDrawCommand::redo()
   {
-    OpenBabel::OBAtom *atom = d->molecule->GetAtom(d->index);
+    OBAtom *atom = d->molecule->GetAtom(d->index);
     if(atom)
       {
-        // TODO: Also need to adjust valence on any bonded atoms
-	std::vector<OpenBabel::OBAtom*> vnbr;
+        QList<OBAtom*> neighbors;
+
         if (d->adjustValence) {
+          // Delete any hydrogens on this atom
           d->molecule->DeleteHydrogens(atom);
+          // Now that we've deleted any attached hydrogens,
+          // Adjust the valence on any bonded atom
+          FOR_NBORS_OF_ATOM(n, atom) {
+            neighbors.append(&*n);
+            d->molecule->DeleteHydrogens(&*n);
+          }
+        }
+        d->molecule->DeleteAtom(atom);
         
-	  FOR_NBORS_OF_ATOM (nbr, atom) {
-	    vnbr.push_back(&*nbr);
-	  }
-	}
-
-	d->molecule->DeleteAtom(atom);
-        
-	if (d->adjustValence) {
-	  for (unsigned int i=0; i < vnbr.size(); i++) {
-	    d->molecule->DeleteHydrogens(vnbr[i]);
-            d->molecule->AddHydrogens(vnbr[i]);
-	  }
-	}
-
+        if (d->adjustValence) {
+          // Finally, add back hydrogens to neighbors
+          foreach (OBAtom *n, neighbors)
+            d->molecule->AddHydrogens(n);
+        }
         d->molecule->update();
       }
   }
@@ -219,12 +221,12 @@ namespace Avogadro {
 
   void AddBondDrawCommand::undo()
   {
-    OpenBabel::OBBond *bond = d->molecule->GetBond(d->index);
+    OBBond *bond = d->molecule->GetBond(d->index);
 
     if(bond)
       {
-        OpenBabel::OBAtom *beginAtom = bond->GetBeginAtom();
-        OpenBabel::OBAtom *endAtom = bond->GetEndAtom();
+        OBAtom *beginAtom = bond->GetBeginAtom();
+        OBAtom *endAtom = bond->GetEndAtom();
 
         d->molecule->BeginModify();
         d->molecule->DeleteBond(bond);
@@ -245,8 +247,8 @@ namespace Avogadro {
 
   void AddBondDrawCommand::redo()
   {
-    OpenBabel::OBAtom *beginAtom = d->molecule->GetAtom(d->beginAtomIndex);
-    OpenBabel::OBAtom *endAtom = d->molecule->GetAtom(d->endAtomIndex);
+    OBAtom *beginAtom = d->molecule->GetAtom(d->beginAtomIndex);
+    OBAtom *endAtom = d->molecule->GetAtom(d->endAtomIndex);
     if(!beginAtom || !endAtom) {
       return;
     }
@@ -318,12 +320,12 @@ namespace Avogadro {
 
   void DeleteBondDrawCommand::redo()
   {
-    OpenBabel::OBBond *bond = d->molecule->GetBond(d->index);
+    OBBond *bond = d->molecule->GetBond(d->index);
     if(bond)
       {
         d->molecule->DeleteBond(bond);
         if (d->adjustValence) {
-          OpenBabel::OBAtom *a1, *a2;
+          OBAtom *a1, *a2;
           a1 = bond->GetBeginAtom();
           a2 = bond->GetEndAtom();
           d->molecule->DeleteHydrogens(a1);
@@ -368,7 +370,7 @@ namespace Avogadro {
 
   void ChangeElementDrawCommand::undo()
   {
-    OpenBabel::OBAtom *atom = d->molecule->GetAtom(d->index);
+    OBAtom *atom = d->molecule->GetAtom(d->index);
     
     if(atom)
       {
@@ -387,7 +389,7 @@ namespace Avogadro {
 
   void ChangeElementDrawCommand::redo()
   {
-    OpenBabel::OBAtom *atom = d->molecule->GetAtom(d->index);
+    OBAtom *atom = d->molecule->GetAtom(d->index);
     
     if(atom)
       {
@@ -435,7 +437,7 @@ namespace Avogadro {
 
   void ChangeBondOrderDrawCommand::undo()
   {
-    OpenBabel::OBBond *bond = d->molecule->GetBond(d->index);
+    OBBond *bond = d->molecule->GetBond(d->index);
     
     if(bond)
       {
@@ -444,7 +446,7 @@ namespace Avogadro {
         bond->SetBondOrder(d->oldBondOrder);
         d->molecule->EndModify();
         if (d->adjustValence) {
-          OpenBabel::OBAtom *a1, *a2;
+          OBAtom *a1, *a2;
           a1 = bond->GetBeginAtom();
           a2 = bond->GetEndAtom();
           d->molecule->DeleteHydrogens(a1);
@@ -460,7 +462,7 @@ namespace Avogadro {
 
   void ChangeBondOrderDrawCommand::redo()
   {
-    OpenBabel::OBBond *bond = d->molecule->GetBond(d->index);
+    OBBond *bond = d->molecule->GetBond(d->index);
     
     if(bond)
       {
@@ -470,7 +472,7 @@ namespace Avogadro {
         d->molecule->EndModify();
         if (d->adjustValence) {
 
-          OpenBabel::OBAtom *a1, *a2;
+          OBAtom *a1, *a2;
           a1 = bond->GetBeginAtom();
           a2 = bond->GetEndAtom();
           d->molecule->DeleteHydrogens(a1);

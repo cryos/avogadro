@@ -59,7 +59,7 @@ namespace Avogadro {
                                         m_prevAtomElement(0),
                                         m_prevBond(0),
                                         m_prevBondOrder(0),
-                                        m_addHydrogensState(0),
+                                        m_addHydrogensState(2),
                                         m_periodicTable(0),
                                         m_settingsWidget(0)
   {
