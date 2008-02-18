@@ -1,3 +1,11 @@
+2008-02-18  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/orbitalengine.*,
+	libavogadro/src/engines/orbitalsettingswidget.ui: Used Geoff's new
+	colour widget in the configuration dialog. Added support for drawing
+	both the positive and negative iso surfaces as well as ensuring the
+	surfaces are only recalculated if the molecule was modified.
+
 2008-02-17  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* avogadro/src/addenginedialog.*: Set the default "name" when
