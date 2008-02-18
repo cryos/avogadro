@@ -1,8 +1,8 @@
 /**********************************************************************
-  OrbitalEngine - Engine for display of isosurfaces
+  OrbitalEngine - Engine for display of molecular orbitals
 
-  Copyright (C) 2008 Geoffrey R. Hutchison
   Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008 Geoffrey R. Hutchison
   Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
@@ -52,6 +52,8 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       bool renderOpaque(PainterDevice *pd);
+      bool renderTransparent(PainterDevice *pd);
+      bool renderQuick(PainterDevice *pd, bool);
       //@}
 
       double transparencyDepth() const;
@@ -85,6 +87,8 @@ namespace Avogadro {
       double m_iso;
       int    m_renderMode;
       bool   m_update;
+
+      void updateSurfaces(PainterDevice *pd);
 
     private Q_SLOTS:
       void isoGenFinished();

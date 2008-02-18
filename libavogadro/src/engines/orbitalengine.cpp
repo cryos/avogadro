@@ -1,8 +1,8 @@
 /**********************************************************************
-  OrbitalEngine - Engine for display of isosurfaces
+  OrbitalEngine - Engine for display of molecular orbitals
 
-  Copyright (C) 2008 Geoffrey R. Hutchison
   Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008 Geoffrey R. Hutchison
   Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
@@ -53,8 +53,9 @@ namespace Avogadro {
     m_isoGen = new IsoGen;
     m_isoGen2 = new IsoGen;
     connect(m_isoGen, SIGNAL(finished()), this, SLOT(isoGenFinished()));
-    m_posColor = Color(1.0, 0.0, 0.0, m_alpha);
-    m_negColor = Color(0.0, 0.0, 1.0, m_alpha);
+    connect(m_isoGen2, SIGNAL(finished()), this, SLOT(isoGenFinished()));
+    m_negColor = Color(1.0, 0.0, 0.0, m_alpha);
+    m_posColor = Color(0.0, 0.0, 1.0, m_alpha);
   }
 
   OrbitalEngine::~OrbitalEngine()
@@ -80,13 +81,199 @@ namespace Avogadro {
 
   bool OrbitalEngine::renderOpaque(PainterDevice *pd)
   {
-    Molecule *mol = const_cast<Molecule *>(pd->molecule());
+    // Render the opaque surface if m_alpha is 1
+    if (m_alpha >= 0.999)
+    {
+      if (m_update)
+        updateSurfaces(pd);
 
+      qDebug() << "Rendering opaque surface...";
+
+      qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
+
+      switch (m_renderMode)
+      {
+      case 0:
+        glPolygonMode(GL_FRONT, GL_FILL);
+        break;
+      case 1:
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        break;
+      case 2:
+        glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+        break;
+      }
+
+      glBegin(GL_TRIANGLES);
+      m_posColor.applyAsMaterials();
+      for(int i=0; i < m_isoGen->numTriangles(); ++i)
+      {
+        triangle t = m_isoGen->getTriangle(i);
+        triangle n = m_isoGen->getNormal(i);
+        glNormal3fv(n.p0.array());
+        glVertex3fv(t.p0.array());
+        glNormal3fv(n.p1.array());
+        glVertex3fv(t.p1.array());
+        glNormal3fv(n.p2.array());
+        glVertex3fv(t.p2.array());
+      }
+      glEnd();
+
+      glBegin(GL_TRIANGLES);
+      m_negColor.applyAsMaterials();
+      for(int i=0; i < m_isoGen2->numTriangles(); ++i)
+      {
+        triangle t = m_isoGen2->getTriangle(i);
+        triangle n = m_isoGen2->getNormal(i);
+        // Fix the lighting by reversing the normals and the triangle winding
+        n.p0 *= -1;
+        n.p1 *= -1;
+        n.p2 *= -1;
+        glNormal3fv(n.p2.array());
+        glVertex3fv(t.p2.array());
+        glNormal3fv(n.p1.array());
+        glVertex3fv(t.p1.array());
+        glNormal3fv(n.p0.array());
+        glVertex3fv(t.p0.array());
+      }
+      glEnd();
+      glPolygonMode(GL_FRONT, GL_FILL);
+    }
+    return true;
+  }
+
+  bool OrbitalEngine::renderTransparent(PainterDevice *pd)
+  {
+    // Render the transparent surface if m_alpha is between 0 and 1.
+    if (m_alpha > 0.001 && m_alpha < 0.999)
+    {
+      if (m_update)
+        updateSurfaces(pd);
+
+      qDebug() << "Rendering transparent surface...";
+
+      qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
+
+      switch (m_renderMode)
+      {
+      case 0:
+        glPolygonMode(GL_FRONT, GL_FILL);
+        glEnable(GL_BLEND);
+        glDepthMask(GL_TRUE);
+        break;
+      case 1:
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        break;
+      case 2:
+        glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+        break;
+      }
+
+      glBegin(GL_TRIANGLES);
+      m_posColor.applyAsMaterials();
+      for(int i=0; i < m_isoGen->numTriangles(); ++i)
+      {
+        triangle t = m_isoGen->getTriangle(i);
+        triangle n = m_isoGen->getNormal(i);
+        glNormal3fv(n.p0.array());
+        glVertex3fv(t.p0.array());
+        glNormal3fv(n.p1.array());
+        glVertex3fv(t.p1.array());
+        glNormal3fv(n.p2.array());
+        glVertex3fv(t.p2.array());
+      }
+      glEnd();
+
+      glBegin(GL_TRIANGLES);
+      m_negColor.applyAsMaterials();
+      for(int i=0; i < m_isoGen2->numTriangles(); ++i)
+      {
+        triangle t = m_isoGen2->getTriangle(i);
+        triangle n = m_isoGen2->getNormal(i);
+        // Fix the lighting by reversing the normals and the triangle winding
+        n.p0 *= -1;
+        n.p1 *= -1;
+        n.p2 *= -1;
+        glNormal3fv(n.p2.array());
+        glVertex3fv(t.p2.array());
+        glNormal3fv(n.p1.array());
+        glVertex3fv(t.p1.array());
+        glNormal3fv(n.p0.array());
+        glVertex3fv(t.p0.array());
+      }
+      glEnd();
+      if (m_renderMode == 0)
+      {
+        glDisable(GL_BLEND);
+        glDepthMask(GL_FALSE);
+      }
+      else
+        glPolygonMode(GL_FRONT, GL_FILL);
+    }
+    return true;
+  }
+
+  bool OrbitalEngine::renderQuick(PainterDevice *pd, bool)
+  {
+    // Render the transparent surface if m_alpha is between 0 and 1.
+    if (m_alpha > 0.001 && m_alpha < 0.999)
+    {
+      if (m_update)
+        updateSurfaces(pd);
+
+      qDebug() << "Rendering quick surface...";
+      qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
+
+      // Use the GL_LINE mode to render
+      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+      glBegin(GL_TRIANGLES);
+      m_posColor.applyAsMaterials();
+      for(int i=0; i < m_isoGen->numTriangles(); ++i)
+      {
+        triangle t = m_isoGen->getTriangle(i);
+        triangle n = m_isoGen->getNormal(i);
+        glNormal3fv(n.p0.array());
+        glVertex3fv(t.p0.array());
+        glNormal3fv(n.p1.array());
+        glVertex3fv(t.p1.array());
+        glNormal3fv(n.p2.array());
+        glVertex3fv(t.p2.array());
+      }
+      glEnd();
+
+      glBegin(GL_TRIANGLES);
+      m_negColor.applyAsMaterials();
+      for(int i=0; i < m_isoGen2->numTriangles(); ++i)
+      {
+        triangle t = m_isoGen2->getTriangle(i);
+        triangle n = m_isoGen2->getNormal(i);
+        // Fix the lighting by reversing the normals and the triangle winding
+        n.p0 *= -1;
+        n.p1 *= -1;
+        n.p2 *= -1;
+        glNormal3fv(n.p2.array());
+        glVertex3fv(t.p2.array());
+        glNormal3fv(n.p1.array());
+        glVertex3fv(t.p1.array());
+        glNormal3fv(n.p0.array());
+        glVertex3fv(t.p0.array());
+      }
+      glEnd();
+      glPolygonMode(GL_FRONT, GL_FILL);
+    }
+    return true;
+  }
+
+  void OrbitalEngine::updateSurfaces(PainterDevice *pd)
+  {
+    // Attempt to find a grid
+    Molecule *mol = const_cast<Molecule *>(pd->molecule());
     if (!mol->HasData(OBGenericDataType::GridData))
     {
       // ultimately allow the user to attach a new data file
       qDebug() << "No grid data found -> no orbitals.";
-      return false;
+      return;
     }
     else
     {
@@ -95,101 +282,25 @@ namespace Avogadro {
       m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
     }
 
-    qDebug() << " set surface ";
-
     qDebug() << "Min value = " << m_grid->grid()->GetMinValue()
              << "Max value = " << m_grid->grid()->GetMaxValue();
 
     // Find the minima for the grid
     m_min = Vector3f(m_grid->grid()->GetOriginVector().x(),
-        m_grid->grid()->GetOriginVector().y(),
-        m_grid->grid()->GetOriginVector().z());
+                     m_grid->grid()->GetOriginVector().y(),
+                     m_grid->grid()->GetOriginVector().z());
 
     qDebug() << "Origin: " << m_min.x() << m_min.y() << m_min.z();
 
-    // For orbitals, we'll need to set this iso value and make sure it's
-    // for +/- 0.001 for example
     // We may need some logic to check if a cube is an orbital or not...
     // (e.g., someone might bring in spin density = always positive)
-    if (m_update)
-    {
-      m_grid->setIsoValue(m_iso);
-      m_isoGen->init(m_grid, m_stepSize, m_min);
-      m_isoGen->start();
-      m_grid2->setIsoValue(-m_iso);
-      m_isoGen2->init(m_grid2, m_stepSize, m_min);
-      m_isoGen2->start();
-      m_update = false;
-    }
-
-    qDebug() << " rendering surface ";
-
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
-//    glDisable(GL_LIGHTING);
-    glEnable(GL_BLEND);
-    glShadeModel(GL_SMOOTH);
-
-//    glPushName(Primitive::SurfaceType);
-//    glPushName(1);
-
-    qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
-
-    switch (m_renderMode) {
-    case 0:
-      glPolygonMode(GL_FRONT, GL_FILL);
-      break;
-    case 1:
-      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-      break;
-    case 2:
-      glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-      break;
-    }
-
-    glBegin(GL_TRIANGLES);
-      m_posColor.applyAsMaterials();
-      for(int i=0; i < m_isoGen->numTriangles(); ++i)
-      {
-        triangle t = m_isoGen->getTriangle(i);
-        triangle n = m_isoGen->getNormal(i);
-
-        glNormal3fv(n.p0.array());
-        glVertex3fv(t.p0.array());
-
-        glNormal3fv(n.p1.array());
-        glVertex3fv(t.p1.array());
-
-        glNormal3fv(n.p2.array());
-        glVertex3fv(t.p2.array());
-      }
-    glEnd();
-
-    glBegin(GL_TRIANGLES);
-      m_negColor.applyAsMaterials();
-      for(int i=0; i < m_isoGen2->numTriangles(); ++i)
-      {
-        triangle t = m_isoGen2->getTriangle(i);
-        triangle n = m_isoGen2->getNormal(i);
-
-        // In order to fix the lighting reverse the normals too
-        n.p0 *= -1;
-        n.p1 *= -1;
-        n.p2 *= -1;
-
-        glNormal3fv(n.p2.array());
-        glVertex3fv(t.p2.array());
-
-        glNormal3fv(n.p1.array());
-        glVertex3fv(t.p1.array());
-
-        glNormal3fv(n.p0.array());
-        glVertex3fv(t.p0.array());
-      }
-    glEnd();
-
-    glPopAttrib();
-
-    return true;
+    m_grid->setIsoValue(m_iso);
+    m_isoGen->init(m_grid, m_stepSize);
+    m_isoGen->start();
+    m_grid2->setIsoValue(-m_iso);
+    m_isoGen2->init(m_grid2, m_stepSize);
+    m_isoGen2->start();
+    m_update = false;
   }
 
   double OrbitalEngine::transparencyDepth() const
@@ -277,24 +388,25 @@ namespace Avogadro {
   void OrbitalEngine::setPrimitives(const PrimitiveList &primitives)
   {
     Engine::setPrimitives(primitives);
+    // This is used to load new molecules and so there could be a new cube file
     m_update = true;
   }
 
   void OrbitalEngine::addPrimitive(Primitive *primitive)
   {
     Engine::addPrimitive(primitive);
-    m_update = true;
+    // Updating primitives does not invalidate these surfaces...
   }
 
   void OrbitalEngine::updatePrimitive(Primitive *)
   {
-    m_update = true;
+    // Updating primitives does not invalidate these surfaces...
   }
 
   void OrbitalEngine::removePrimitive(Primitive *primitive)
   {
     Engine::removePrimitive(primitive);
-    m_update = true;
+    // Updating primitives does not invalidate these surfaces...
   }
 
   /*
