@@ -53,30 +53,39 @@ namespace Avogadro {
       //@{
       bool renderOpaque(PainterDevice *pd);
       //@}
-      
+
       double transparencyDepth() const;
       EngineFlags flags() const;
-      
+
       Engine *clone() const;
-      
+
       QWidget* settingsWidget();
 
       //void writeSettings(QSettings &settings) const;
       //void readSettings(QSettings &settings);
 
+      void setPrimitives(const PrimitiveList &primitives);
+
+    public Q_SLOTS:
+      void addPrimitive(Primitive *primitive);
+      void updatePrimitive(Primitive *primitive);
+      void removePrimitive(Primitive *primitive);
 
     protected:
       OrbitalSettingsWidget *m_settingsWidget;
       Grid *m_grid;
+      Grid *m_grid2;
       IsoGen *m_isoGen;
+      IsoGen *m_isoGen2;
       Eigen::Vector3f m_min;
-      Color  m_color;
+      Color  m_posColor;
+      Color  m_negColor;
       double m_alpha;
       double m_stepSize;
       double m_iso;
       int    m_renderMode;
-      int    m_colorMode;
-    
+      bool   m_update;
+
     private Q_SLOTS:
       void isoGenFinished();
       void settingsWidgetDestroyed();
@@ -93,27 +102,19 @@ namespace Avogadro {
        */
       void setStepSize(double d);
       /**
-       * @param d padding for the surface polygonization (how far do we look for parts of the surface)
+       * @param d the value of the iso surface to be rendered
        */
       void setIso(double d);
       /**
-       * @param value coloring mode (0 = RGB, 1 = ESP)
+       * @param color the color for the positive iso surface
        */
-      void setColorMode(int value);
+      void setPosColor(QColor color);
       /**
-       * @param r red
+       * @param color the color for the negative iso surface
        */
-      void setRed(double r);
-      /**
-       * @param g green
-       */
-      void setGreen(double g);
-      /**
-       * @param b blue
-       */
-      void setBlue(double b);
+      void setNegColor(QColor color);
   };
-  
+
   class OrbitalSettingsWidget : public QWidget, public Ui::OrbitalSettingsWidget
   {
     public:

@@ -45,19 +45,24 @@ namespace Avogadro {
 
   OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
   m_grid(0), m_isoGen(0), m_min(0., 0., 0.),
-  m_alpha(0.5), m_stepSize(0.33333), m_iso(0.1), m_renderMode(0), m_colorMode(0)
+  m_alpha(0.75), m_stepSize(0.33333), m_iso(0.01), m_renderMode(0), m_update(true)
   {
     setDescription(tr("Orbital rendering"));
     m_grid = new Grid;
+    m_grid2 = new Grid;
     m_isoGen = new IsoGen;
+    m_isoGen2 = new IsoGen;
     connect(m_isoGen, SIGNAL(finished()), this, SLOT(isoGenFinished()));
-    m_color = Color(1.0, 0.0, 0.0, m_alpha);
+    m_posColor = Color(1.0, 0.0, 0.0, m_alpha);
+    m_negColor = Color(0.0, 0.0, 1.0, m_alpha);
   }
 
   OrbitalEngine::~OrbitalEngine()
   {
     delete m_grid;
+    delete m_grid2;
     delete m_isoGen;
+    delete m_isoGen2;
 
     // Delete the settings widget if it exists
     if(m_settingsWidget)
@@ -87,21 +92,13 @@ namespace Avogadro {
     {
       qDebug() << "Molecular orbital grid found!";
       m_grid->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
+      m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
     }
 
     qDebug() << " set surface ";
 
     qDebug() << "Min value = " << m_grid->grid()->GetMinValue()
              << "Max value = " << m_grid->grid()->GetMaxValue();
-
-    // Debug code - try to figure out if we are reading the cube in correctly...
-    QList<Primitive *> list = primitives().subList(Primitive::AtomType);
-    foreach(Primitive *p, list)
-    {
-      const Atom *a = static_cast<const Atom *>(p);
-      double v = m_grid->grid()->GetValue(vector3(a->pos().x()+0.5, a->pos().y(), a->pos().z()));
-      qDebug() << "Grid value at atom centre: " << v;
-    }
 
     // Find the minima for the grid
     m_min = Vector3f(m_grid->grid()->GetOriginVector().x(),
@@ -114,9 +111,16 @@ namespace Avogadro {
     // for +/- 0.001 for example
     // We may need some logic to check if a cube is an orbital or not...
     // (e.g., someone might bring in spin density = always positive)
-    m_grid->setIsoValue(m_iso);
-    m_isoGen->init(m_grid, m_stepSize, m_min);
-    m_isoGen->start();
+    if (m_update)
+    {
+      m_grid->setIsoValue(m_iso);
+      m_isoGen->init(m_grid, m_stepSize, m_min);
+      m_isoGen->start();
+      m_grid2->setIsoValue(-m_iso);
+      m_isoGen2->init(m_grid2, m_stepSize, m_min);
+      m_isoGen2->start();
+      m_update = false;
+    }
 
     qDebug() << " rendering surface ";
 
@@ -125,7 +129,6 @@ namespace Avogadro {
     glEnable(GL_BLEND);
     glShadeModel(GL_SMOOTH);
 
-    pd->painter()->setColor(1.0, 0.0, 0.0, m_alpha);
 //    glPushName(Primitive::SurfaceType);
 //    glPushName(1);
 
@@ -133,7 +136,7 @@ namespace Avogadro {
 
     switch (m_renderMode) {
     case 0:
-      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+      glPolygonMode(GL_FRONT, GL_FILL);
       break;
     case 1:
       glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -144,9 +147,7 @@ namespace Avogadro {
     }
 
     glBegin(GL_TRIANGLES);
-      // RGB
-      //glColor4f(m_color.red(), m_color.green(), m_color.blue(), m_alpha);
-      m_color.applyAsMaterials();
+      m_posColor.applyAsMaterials();
       for(int i=0; i < m_isoGen->numTriangles(); ++i)
       {
         triangle t = m_isoGen->getTriangle(i);
@@ -160,6 +161,29 @@ namespace Avogadro {
 
         glNormal3fv(n.p2.array());
         glVertex3fv(t.p2.array());
+      }
+    glEnd();
+
+    glBegin(GL_TRIANGLES);
+      m_negColor.applyAsMaterials();
+      for(int i=0; i < m_isoGen2->numTriangles(); ++i)
+      {
+        triangle t = m_isoGen2->getTriangle(i);
+        triangle n = m_isoGen2->getNormal(i);
+
+        // In order to fix the lighting reverse the normals too
+        n.p0 *= -1;
+        n.p1 *= -1;
+        n.p2 *= -1;
+
+        glNormal3fv(n.p2.array());
+        glVertex3fv(t.p2.array());
+
+        glNormal3fv(n.p1.array());
+        glVertex3fv(t.p1.array());
+
+        glNormal3fv(n.p0.array());
+        glVertex3fv(t.p0.array());
       }
     glEnd();
 
@@ -193,47 +217,26 @@ namespace Avogadro {
   void OrbitalEngine::setStepSize(double d)
   {
     m_stepSize = d;
+    m_update = true;
     emit changed();
   }
 
   void OrbitalEngine::setIso(double d)
   {
     m_iso = d;
+    m_update = true;
     emit changed();
   }
 
-  void OrbitalEngine::setColorMode(int value)
+  void OrbitalEngine::setPosColor(QColor color)
   {
-    if (value == 1) {
-      m_settingsWidget->RSpin->setMaximum(0.0);
-      m_settingsWidget->GSpin->setMaximum(0.0);
-      m_settingsWidget->BSpin->setMaximum(0.0);
-    } else {
-      m_settingsWidget->RSpin->setMaximum(1.0);
-      m_settingsWidget->GSpin->setMaximum(1.0);
-      m_settingsWidget->BSpin->setMaximum(1.0);
-      m_settingsWidget->RSpin->setValue(1.0);
-    }
-
-    m_colorMode = value;
+    m_posColor.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();
   }
 
-  void OrbitalEngine::setRed(double r)
+  void OrbitalEngine::setNegColor(QColor color)
   {
-    m_color.set(r, m_color.green(), m_color.blue(), m_alpha);
-    emit changed();
-  }
-
-  void OrbitalEngine::setGreen(double g)
-  {
-    m_color.set(m_color.red(), g, m_color.blue(), m_alpha);
-    emit changed();
-  }
-
-  void OrbitalEngine::setBlue(double b)
-  {
-    m_color.set(m_color.red(), m_color.green(), b, m_alpha);
+    m_negColor.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();
   }
 
@@ -246,11 +249,16 @@ namespace Avogadro {
       connect(m_settingsWidget->renderCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setRenderMode(int)));
       connect(m_settingsWidget->stepSizeSpin, SIGNAL(valueChanged(double)), this, SLOT(setStepSize(double)));
       connect(m_settingsWidget->isoSpin, SIGNAL(valueChanged(double)), this, SLOT(setIso(double)));
-      connect(m_settingsWidget->colorCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setColorMode(int)));
-      connect(m_settingsWidget->RSpin, SIGNAL(valueChanged(double)), this, SLOT(setRed(double)));
-      connect(m_settingsWidget->GSpin, SIGNAL(valueChanged(double)), this, SLOT(setGreen(double)));
-      connect(m_settingsWidget->BSpin, SIGNAL(valueChanged(double)), this, SLOT(setBlue(double)));
+      connect(m_settingsWidget->posColor, SIGNAL(colorChanged(QColor)), this, SLOT(setPosColor(QColor)));
+      connect(m_settingsWidget->negColor, SIGNAL(colorChanged(QColor)), this, SLOT(setNegColor(QColor)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+
+      // Initialise the colour buttons
+      QColor initial;
+      initial.setRgbF(m_posColor.red(), m_posColor.green(), m_posColor.blue());
+      m_settingsWidget->posColor->setColor(initial);
+      initial.setRgbF(m_negColor.red(), m_negColor.green(), m_negColor.blue());
+      m_settingsWidget->negColor->setColor(initial);
     }
     return m_settingsWidget;
   }
@@ -264,6 +272,29 @@ namespace Avogadro {
   {
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
+  }
+
+  void OrbitalEngine::setPrimitives(const PrimitiveList &primitives)
+  {
+    Engine::setPrimitives(primitives);
+    m_update = true;
+  }
+
+  void OrbitalEngine::addPrimitive(Primitive *primitive)
+  {
+    Engine::addPrimitive(primitive);
+    m_update = true;
+  }
+
+  void OrbitalEngine::updatePrimitive(Primitive *)
+  {
+    m_update = true;
+  }
+
+  void OrbitalEngine::removePrimitive(Primitive *primitive)
+  {
+    Engine::removePrimitive(primitive);
+    m_update = true;
   }
 
   /*
