@@ -380,9 +380,9 @@ namespace Avogadro {
         if(m_hits.size()) {
           // We did a right-click on an atom or bond -- delete it!
           if(m_hits[0].type() == Primitive::AtomType) {
-            // don't delete H when adjust hydrogens is on
+            // don't delete H-? atom when adjust hydrogens is on
 	    OBAtom *atom = widget->molecule()->GetAtom(m_hits[0].name());
-	    if (m_addHydrogensState && atom->IsHydrogen()) {
+	    if (m_addHydrogensState && atom->IsHydrogen() && atom->GetValence()) {
 	      return undo;
 	    }
             undo = new DeleteAtomDrawCommand(widget->molecule(), m_hits[0].name(), m_addHydrogensState);
