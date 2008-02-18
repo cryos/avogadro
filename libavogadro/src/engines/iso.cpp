@@ -19,7 +19,7 @@
 
  Copyright (C) 2008      Marcus D. Hanwell
  Copyright (C) 2008      Tim Vandermeersch
- 
+
  The original copyright headers are shown above. This source was originally
  part of the Zhu3D project. Subsequent changes were made to adapt the source
  in order to be used in the Avogadro molecular editor project.
@@ -53,7 +53,7 @@ using namespace OpenBabel;
 
 namespace Avogadro
 {
-  
+
   // ****************************************************************************
   // LOCAL CONSTANT/TABLE-STUFF
   // ****************************************************************************
@@ -474,51 +474,37 @@ namespace Avogadro
   // THREAD RELATED STUFF
   // ****************************************************************************
 
-  // The class has its own parser instance
-/*  float IsoGen::isoPar(const float xpar, const float ypar, const float zpar)
-  {
-    FPFLOAT vars[3];
-    vars[0] = (xpar-1.0f) * sta.sx;
-    vars[1] = (ypar-1.0f) * sta.sy;
-    vars[2] = (zpar-1.0f) * sta.sz;
-    return isoInstance.Eval(vars);
-  }
-*/
-  /*
-  void IsoGen::start()
-  {
-    run();
-  }
-  */
-        
   // The heavy worker thread
   void IsoGen::run()
   {
     qDebug() << "start run()";
     int nx, ny, nz;
-    
+
     if (m_grid->grid() == 0)
     {
       qDebug() << "m_grid == 0 => returning...";
       return;
     }
-    
+
     if (!m_mutex.tryLock())
       return;
-    
+
     // Clear vertex/normal-lists
     m_normList.clear();
     m_vertList.clear();
-    
-    m_grid->grid()->GetNumberOfPoints(nx, ny, nz);
+
+    // Work out the number of steps needed to cover the cube
+    nx = (m_max.x() - m_min.x()) / m_stepSize;
+    ny = (m_max.y() - m_min.y()) / m_stepSize;
+    nz = (m_max.z() - m_min.z()) / m_stepSize;
 
     for(int x = 0; x < nx; x++)
       for(int y = 0; y < ny; y++)
         for(int z = 0; z < nz; z++)
-          (*this.*m_tessellation)(m_min.x()+x*m_fStepSize, 
-                                  m_min.y()+y*m_fStepSize,
-                                  m_min.z()+z*m_fStepSize);
-    
+          (*this.*m_tessellation)(m_min.x()+x*m_stepSize,
+                                  m_min.y()+y*m_stepSize,
+                                  m_min.z()+z*m_stepSize);
+
     // Save previous vertex/normal-lists for rendering
     m_normListCopy = m_normList;
     m_vertListCopy = m_vertList;
@@ -532,23 +518,29 @@ namespace Avogadro
   // ****************************************************************************
 
   // Called from gldraw to initialize thread stuff
-  void IsoGen::init(Grid *grid, double size, Eigen::Vector3f min)
+  void IsoGen::init(Grid *grid, double stepSize)
   {
     qDebug() << "start init()";
     if (!m_mutex.tryLock())
       return;
-    
-    m_grid = grid;
-    m_fStepSize = size;
-    m_min = min;
 
-    // Clear vertex/normal-lists
-    //m_normList.clear();
-    //m_vertList.clear();
+    m_grid = grid;
+    m_stepSize = stepSize;
+    m_min = Vector3f(m_grid->grid()->GetOriginVector().x(),
+                     m_grid->grid()->GetOriginVector().y(),
+                     m_grid->grid()->GetOriginVector().z());
+    // Work out the max coordinate too
+    int nx, ny, nz;
+    m_grid->grid()->GetNumberOfPoints(nx, ny, nz);
+    double x[3], y[3], z[3];
+    m_grid->grid()->GetAxes(x, y, z);
+    m_max = Vector3f(m_min.x() + nx * x[0],
+                     m_min.y() + ny * y[1],
+                     m_min.z() + nz * z[2]);
 
     // Right now we are just using one tessellation method
     m_tessellation=&IsoGen::vMarchCube1;
-    
+
     m_mutex.unlock();
     qDebug() << "end init()";
   }
@@ -596,7 +588,7 @@ namespace Avogadro
     Vector3f asEdgeNorm[12] __attribute__((aligned(16)));
     float fOffset __attribute__((aligned(16)));
     float afCubeValue[8] __attribute__((aligned(16)));
-    
+
     // Check we have a valid grid
     if (m_grid->grid() == 0)
     {
@@ -605,30 +597,30 @@ namespace Avogadro
     }
 
     // Make a local copy of the values at the cube's corners
-    afCubeValue[0] = m_grid->eval(fX+a2fVertexOffset[0][0]*m_fStepSize, 
-                                  fY+a2fVertexOffset[0][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[0][2]*m_fStepSize);
-    afCubeValue[1] = m_grid->eval(fX+a2fVertexOffset[1][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[1][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[1][2]*m_fStepSize);
-    afCubeValue[2] = m_grid->eval(fX+a2fVertexOffset[2][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[2][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[2][2]*m_fStepSize);
-    afCubeValue[3] = m_grid->eval(fX+a2fVertexOffset[3][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[3][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[3][2]*m_fStepSize);
-    afCubeValue[4] = m_grid->eval(fX+a2fVertexOffset[4][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[4][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[4][2]*m_fStepSize);
-    afCubeValue[5] = m_grid->eval(fX+a2fVertexOffset[5][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[5][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[5][2]*m_fStepSize);
-    afCubeValue[6] = m_grid->eval(fX+a2fVertexOffset[6][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[6][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[6][2]*m_fStepSize);
-    afCubeValue[7] = m_grid->eval(fX+a2fVertexOffset[7][0]*m_fStepSize,
-                                  fY+a2fVertexOffset[7][1]*m_fStepSize,
-                                  fZ+a2fVertexOffset[7][2]*m_fStepSize);
+    afCubeValue[0] = m_grid->eval(fX+a2fVertexOffset[0][0]*m_stepSize,
+                                  fY+a2fVertexOffset[0][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[0][2]*m_stepSize);
+    afCubeValue[1] = m_grid->eval(fX+a2fVertexOffset[1][0]*m_stepSize,
+                                  fY+a2fVertexOffset[1][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[1][2]*m_stepSize);
+    afCubeValue[2] = m_grid->eval(fX+a2fVertexOffset[2][0]*m_stepSize,
+                                  fY+a2fVertexOffset[2][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[2][2]*m_stepSize);
+    afCubeValue[3] = m_grid->eval(fX+a2fVertexOffset[3][0]*m_stepSize,
+                                  fY+a2fVertexOffset[3][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[3][2]*m_stepSize);
+    afCubeValue[4] = m_grid->eval(fX+a2fVertexOffset[4][0]*m_stepSize,
+                                  fY+a2fVertexOffset[4][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[4][2]*m_stepSize);
+    afCubeValue[5] = m_grid->eval(fX+a2fVertexOffset[5][0]*m_stepSize,
+                                  fY+a2fVertexOffset[5][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[5][2]*m_stepSize);
+    afCubeValue[6] = m_grid->eval(fX+a2fVertexOffset[6][0]*m_stepSize,
+                                  fY+a2fVertexOffset[6][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[6][2]*m_stepSize);
+    afCubeValue[7] = m_grid->eval(fX+a2fVertexOffset[7][0]*m_stepSize,
+                                  fY+a2fVertexOffset[7][1]*m_stepSize,
+                                  fZ+a2fVertexOffset[7][2]*m_stepSize);
 
     // Find which vertices are inside of the surface and which are outside
     if(afCubeValue[0] <= fTargetValue) iFlagIndex |= 1;
@@ -658,10 +650,10 @@ namespace Avogadro
         else
           fOffset = 0.5f;
 
-        asEdgeVertex[iEdge] = 
-	Vector3f(fX + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][0] + fOffset * a2fEdgeDirection[iEdge][0]) * m_fStepSize - 0.5*m_fStepSize,
-                 fY + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][1] + fOffset * a2fEdgeDirection[iEdge][1]) * m_fStepSize - 0.5*m_fStepSize,
-                 fZ + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][2] + fOffset * a2fEdgeDirection[iEdge][2]) * m_fStepSize - 0.5*m_fStepSize);
+        asEdgeVertex[iEdge] =
+	Vector3f(fX + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][0] + fOffset * a2fEdgeDirection[iEdge][0]) * m_stepSize - 0.5*m_stepSize,
+                 fY + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][1] + fOffset * a2fEdgeDirection[iEdge][1]) * m_stepSize - 0.5*m_stepSize,
+                 fZ + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][2] + fOffset * a2fEdgeDirection[iEdge][2]) * m_stepSize - 0.5*m_stepSize);
         vGetNormal(asEdgeNorm[iEdge], asEdgeVertex[iEdge].x(), asEdgeVertex[iEdge].y(), asEdgeVertex[iEdge].z());
       }
     }
@@ -694,18 +686,18 @@ namespace Avogadro
       m_vertList.append(vertTmp);
     }
   } // vMarchCube1()
-  
+
   int IsoGen::numTriangles()
   {
     return m_vertListCopy.size();
   }
-  
-  triangle IsoGen::getTriangle(int i) 
+
+  triangle IsoGen::getTriangle(int i)
   {
     return m_vertListCopy[i];
   }
-  
-  triangle IsoGen::getNormal(int i) 
+
+  triangle IsoGen::getNormal(int i)
   {
     return m_normListCopy[i];
   }

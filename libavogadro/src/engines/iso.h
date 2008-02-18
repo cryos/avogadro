@@ -133,7 +133,7 @@ namespace Avogadro
     void run();
 
     // Central functions
-    void init(Grid *grid, double size, Eigen::Vector3f min);
+    void init(Grid *grid, double stepSize);
     //void start();
     int numTriangles();
     triangle getTriangle(int i);
@@ -143,9 +143,10 @@ namespace Avogadro
 
   private:
     Grid *m_grid; // OpenBabel Grid
-    float m_fStepSize; // Grid density == 2.0f/sta.tgrids;
+    float m_stepSize; // Grid density == 2.0f/sta.tgrids;
     long m_totTri; // Triangles calculated in total; currently not used
-    Eigen::Vector3f m_min;
+    Eigen::Vector3f m_min; // Minimum grid coordinate
+    Eigen::Vector3f m_max; // Maximum grid coordinate
 
     QMutex m_mutex;
 
