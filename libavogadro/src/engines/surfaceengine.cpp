@@ -176,23 +176,25 @@ namespace Avogadro {
       energy += atom->GetPartialCharge() / (dist.length()*dist.length());
     }
 
+    // Chemistry convention: red = negative, blue = positive
+
     if (energy < 0.0) {
-      blue = -20.0*energy;
-      if (blue >= 1.0) {
-        return Color(0.0, 0.0, 1.0, m_alpha);
-      }
-
-      green = 1.0 - blue;
-      return Color(0.0, green, blue, m_alpha);
-    }
-
-    if (energy > 0.0) {
-      red = 20.0*energy;
+      red = -20.0*energy;
       if (red >= 1.0) {
         return Color(1.0, 0.0, 0.0, m_alpha);
       }
+
       green = 1.0 - red;
       return Color(red, green, 0.0, m_alpha);
+    }
+
+    if (energy > 0.0) {
+      blue = 20.0*energy;
+      if (blue >= 1.0) {
+        return Color(0.0, 0.0, 1.0, m_alpha);
+      }
+      green = 1.0 - blue;
+      return Color(0.0, green, blue, m_alpha);
     }
 
     return Color(0.0, 1.0, 0.0, m_alpha);
