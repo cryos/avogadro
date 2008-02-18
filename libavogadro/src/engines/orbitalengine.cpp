@@ -117,9 +117,7 @@ namespace Avogadro {
         glNormal3fv(n.p2.array());
         glVertex3fv(t.p2.array());
       }
-      glEnd();
 
-      glBegin(GL_TRIANGLES);
       m_negColor.applyAsMaterials();
       for(int i=0; i < m_isoGen2->numTriangles(); ++i)
       {
@@ -182,9 +180,7 @@ namespace Avogadro {
         glNormal3fv(n.p2.array());
         glVertex3fv(t.p2.array());
       }
-      glEnd();
 
-      glBegin(GL_TRIANGLES);
       m_negColor.applyAsMaterials();
       for(int i=0; i < m_isoGen2->numTriangles(); ++i)
       {
@@ -216,52 +212,48 @@ namespace Avogadro {
   bool OrbitalEngine::renderQuick(PainterDevice *pd, bool)
   {
     // Render the transparent surface if m_alpha is between 0 and 1.
-    if (m_alpha > 0.001 && m_alpha < 0.999)
+    if (m_update)
+      updateSurfaces(pd);
+
+    qDebug() << "Rendering quick surface...";
+    qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
+
+    // Use the GL_LINE mode to render
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+    glBegin(GL_TRIANGLES);
+    m_posColor.applyAsMaterials();
+    for(int i=0; i < m_isoGen->numTriangles(); ++i)
     {
-      if (m_update)
-        updateSurfaces(pd);
-
-      qDebug() << "Rendering quick surface...";
-      qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
-
-      // Use the GL_LINE mode to render
-      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
-      glBegin(GL_TRIANGLES);
-      m_posColor.applyAsMaterials();
-      for(int i=0; i < m_isoGen->numTriangles(); ++i)
-      {
-        triangle t = m_isoGen->getTriangle(i);
-        triangle n = m_isoGen->getNormal(i);
-        glNormal3fv(n.p0.array());
-        glVertex3fv(t.p0.array());
-        glNormal3fv(n.p1.array());
-        glVertex3fv(t.p1.array());
-        glNormal3fv(n.p2.array());
-        glVertex3fv(t.p2.array());
-      }
-      glEnd();
-
-      glBegin(GL_TRIANGLES);
-      m_negColor.applyAsMaterials();
-      for(int i=0; i < m_isoGen2->numTriangles(); ++i)
-      {
-        triangle t = m_isoGen2->getTriangle(i);
-        triangle n = m_isoGen2->getNormal(i);
-        // Fix the lighting by reversing the normals and the triangle winding
-        n.p0 *= -1;
-        n.p1 *= -1;
-        n.p2 *= -1;
-        glNormal3fv(n.p2.array());
-        glVertex3fv(t.p2.array());
-        glNormal3fv(n.p1.array());
-        glVertex3fv(t.p1.array());
-        glNormal3fv(n.p0.array());
-        glVertex3fv(t.p0.array());
-      }
-      glEnd();
-      glPolygonMode(GL_FRONT, GL_FILL);
+      triangle t = m_isoGen->getTriangle(i);
+      triangle n = m_isoGen->getNormal(i);
+      glNormal3fv(n.p0.array());
+      glVertex3fv(t.p0.array());
+      glNormal3fv(n.p1.array());
+      glVertex3fv(t.p1.array());
+      glNormal3fv(n.p2.array());
+      glVertex3fv(t.p2.array());
     }
+
+    m_negColor.applyAsMaterials();
+    for(int i=0; i < m_isoGen2->numTriangles(); ++i)
+    {
+      triangle t = m_isoGen2->getTriangle(i);
+      triangle n = m_isoGen2->getNormal(i);
+      // Fix the lighting by reversing the normals and the triangle winding
+      n.p0 *= -1;
+      n.p1 *= -1;
+      n.p2 *= -1;
+      glNormal3fv(n.p2.array());
+      glVertex3fv(t.p2.array());
+      glNormal3fv(n.p1.array());
+      glVertex3fv(t.p1.array());
+      glNormal3fv(n.p0.array());
+      glVertex3fv(t.p0.array());
+    }
+    glEnd();
+    glPolygonMode(GL_FRONT, GL_FILL);
+
     return true;
   }
 
