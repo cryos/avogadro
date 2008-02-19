@@ -447,7 +447,9 @@ namespace Avogadro
 
     writeSettings();
     MainWindow *other = new MainWindow;
+#ifdef Q_WS_MAC
     other->move( x() + 40, y() + 40 );
+#endif
     other->show();
   }
 
@@ -496,6 +498,9 @@ namespace Avogadro
           delete other;
           return;
         }
+#ifdef Q_WS_MAC
+        other->move( x() + 40, y() + 40 );
+#endif
         other->show();
       }
     }
@@ -584,6 +589,7 @@ namespace Avogadro
 
     setFileName( fileName );
     statusBar()->showMessage( tr("File Loaded..."), 5000 );
+    d->toolGroup->setActiveTool(tr("Navigate"));
     return true;
   }
 
