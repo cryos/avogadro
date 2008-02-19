@@ -453,6 +453,7 @@ namespace Avogadro
 
     m_textEdit->undo();
     *m_molecule = m_moleculeCopy;
+    m_molecule->update();
   }
 
   bool ForceFieldCommand::mergeWith( const QUndoCommand *command )
