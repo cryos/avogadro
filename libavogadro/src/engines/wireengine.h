@@ -63,12 +63,22 @@ namespace Avogadro {
 
       //! Configuration options
       QWidget* settingsWidget();
+      /**
+       * Write the engine settings so that they can be saved between sessions.
+       */
+      void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read in the settings that have been saved for the engine instance.
+       */
+      void readSettings(QSettings &settings);
+
 
   private:
     WireSettingsWidget *m_settingsWidget;
 
-    bool m_showMulti; //!< show multiple bonds
-    bool m_showDots;  //!< show dots for atoms
+    int m_showMulti; //!< show multiple bonds
+    int m_showDots;  //!< show dots for atoms
 
     double radius (const Atom *atom) const;
 

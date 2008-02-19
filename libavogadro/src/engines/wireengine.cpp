@@ -43,7 +43,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   WireEngine::WireEngine(QObject *parent) : Engine(parent), m_settingsWidget(NULL),
-                                            m_showMulti(false), m_showDots(true)
+                                            m_showMulti(0), m_showDots(2)
   {
     setDescription(tr("Wireframe rendering"));
   }
@@ -215,6 +215,9 @@ namespace Avogadro {
       connect(m_settingsWidget->showDotsCheckBox, SIGNAL(stateChanged(int)), this, SLOT(setShowDots(int)));
 
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      
+      m_settingsWidget->showDotsCheckBox->setCheckState((Qt::CheckState)m_showDots);
+      m_settingsWidget->showMultipleCheckBox->setCheckState((Qt::CheckState)m_showMulti);
     }
     return m_settingsWidget;
   }
@@ -223,6 +226,24 @@ namespace Avogadro {
   {
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
+  }
+  
+  void WireEngine::writeSettings(QSettings &settings) const
+  {
+    Engine::writeSettings(settings);
+    settings.setValue("showDots", m_showDots);
+    settings.setValue("showMulti", m_showMulti);
+  }
+
+  void WireEngine::readSettings(QSettings &settings)
+  {
+    Engine::readSettings(settings);
+    setShowDots(settings.value("showDots", 2).toInt());
+    setShowMultipleBonds(settings.value("showMulti", 0).toInt());
+    if (m_settingsWidget) {
+      m_settingsWidget->showDotsCheckBox->setCheckState((Qt::CheckState)m_showDots);
+      m_settingsWidget->showMultipleCheckBox->setCheckState((Qt::CheckState)m_showMulti);
+    }
   }
 }
 
