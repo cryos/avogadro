@@ -152,7 +152,8 @@ namespace Avogadro
 
   void MainWindow::constructor()
   {
-    hide(); // prevent "flash" of re-arranging windows PR#
+    // not sure we need this anymore
+    //hide(); // prevent "flash" of re-arranging windows PR#
         
     ui.setupUi( this );
     // We cannot reliably set this via Designer
@@ -178,7 +179,8 @@ namespace Avogadro
     d->undoStack = new QUndoStack( this );
 
     d->toolGroup = new ToolGroup( this );
-    connect( this, SIGNAL( moleculeChanged( Molecule * ) ), d->toolGroup, SLOT( setMolecule( Molecule * ) ) );
+    d->toolGroup->load();
+
 
     ui.menuDocks->addAction( ui.toolsDock->toggleViewAction() );
 
@@ -248,7 +250,6 @@ namespace Avogadro
     connectUi();
 
     ui.projectDock->close();
-    show();
   }
 
   bool MainWindow::event(QEvent *event)
@@ -256,8 +257,6 @@ namespace Avogadro
     // delayed initialization
     if(event->type() == QEvent::Polish)
     {
-      d->toolGroup->load();
-
       reloadTabbedTools();
 
       loadExtensions();
@@ -265,8 +264,6 @@ namespace Avogadro
       if(!molecule())
       {
         loadFile();
-      } else {
-        d->toolGroup->setActiveTool(tr("Navigate"));
       }
 
       // read settings
@@ -378,7 +375,9 @@ namespace Avogadro
     }
 
     const QList<Tool *> tools = d->toolGroup->tools();
+    Tool *activeTool = d->toolGroup->activeTool();
     int toolCount = tools.size();
+
     for ( int i = 0; i < toolCount; i++ ) {
       Tool *tool = tools.at(i);
       connect(tool, SIGNAL(message(QString)), d->messagesText,
@@ -397,11 +396,6 @@ namespace Avogadro
         QVBoxLayout *tmpLayout = new QVBoxLayout(tmpWidget);
         tmpLayout->setContentsMargins(0,0,0,0);
 
-        // We need to add a "help" button here
-        // and/or a way to display the tooltip
-        // But not with an anonymous checkbox.
-        // -GH
-
         // Add a "title" with the name of the tool
         QLabel *tmpLabel = new QLabel(tmpWidget);
         tmpLabel->setText(tool->name());
@@ -414,6 +408,11 @@ namespace Avogadro
         int tabIndex = d->toolsTab->addTab(tmpWidget, action->icon(), QString());
         d->toolsTab->setTabToolTip(tabIndex, action->toolTip());
 
+        // set the active tool
+        if(tool == activeTool)
+        {
+          d->toolsTab->setCurrentIndex(tabIndex);
+        }
       } // tabbed tools
       else
       { // non-tabbed tools
@@ -432,6 +431,7 @@ namespace Avogadro
         }
       }
     }
+//    d->toolGroup->setActiveTool(d->toolGroup->activeTool());
   }
 
   void MainWindow::newFile()
@@ -487,6 +487,7 @@ namespace Avogadro
 
       // if we have nothing open or modified
       if ( d->fileName.isEmpty() && !isWindowModified() ) {
+        qDebug() << "Loading File";
         loadFile( fileName );
       } else {
         // ONLY if we have loaded settings then we can write them
@@ -558,6 +559,7 @@ namespace Avogadro
     }
 
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
+
     Molecule *molecule = new Molecule;
     if ( conv.Read( molecule, &ifs ) && molecule->NumAtoms() != 0 ) {
       if (!molecule->Has3D()) {
@@ -1220,6 +1222,7 @@ namespace Avogadro
         this, SLOT( showSettingsDialog() ) );
 
     connect( d->toolGroup, SIGNAL( toolActivated( Tool * ) ), this, SLOT( setTool( Tool * ) ) );
+    connect( this, SIGNAL( moleculeChanged( Molecule * ) ), d->toolGroup, SLOT( setMolecule( Molecule * ) ) );
 
   }
 

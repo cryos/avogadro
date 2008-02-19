@@ -225,12 +225,6 @@ namespace Avogadro {
       virtual void setPrimitives(const PrimitiveList &primitives);
 
       /**
-       * Set the primitives that the engine instance can render.
-       * @param primitives the QList of the primitives the engine can render from.
-       */
-      void setPrimitives(const QList<Primitive *> &primitives);
-
-      /**
        * Clear the primitives of the engine instance.
        */
       virtual void clearPrimitives();
