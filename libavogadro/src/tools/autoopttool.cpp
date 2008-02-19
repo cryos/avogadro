@@ -601,6 +601,37 @@ namespace Avogadro {
   {
     return 1311387;
   }
+  
+  void AutoOptTool::writeSettings(QSettings &settings) const
+  {
+    Tool::writeSettings(settings);
+    settings.setValue("forceField", m_comboFF->currentIndex());
+    settings.setValue("algorithm", m_comboAlgorithm->currentIndex());
+    settings.setValue("convergence", m_convergenceSpinBox->value());
+    settings.setValue("fixedMovable", m_fixedMovable->checkState());
+    settings.setValue("ignoredMovable", m_ignoredMovable->checkState());
+  }
+
+  void AutoOptTool::readSettings(QSettings &settings)
+  {
+    Tool::readSettings(settings);
+    if(m_comboFF) {
+      m_comboFF->setCurrentIndex(settings.value("forceField", 0).toInt());
+    }
+    if(m_comboAlgorithm) {
+      m_comboAlgorithm->setCurrentIndex(settings.value("algorithm", 0).toInt());
+    }
+    if(m_convergenceSpinBox) {
+      m_convergenceSpinBox->setValue(settings.value("convergence", 4).toInt());
+    }
+    if(m_fixedMovable) {
+      m_fixedMovable->setCheckState((Qt::CheckState)settings.value("fixedMovable", 2).toInt());
+    }
+    if(m_ignoredMovable) {
+      m_ignoredMovable->setCheckState((Qt::CheckState)settings.value("ignoredMovable", 2).toInt());
+    }
+  }
+
 }
 
 #include "autoopttool.moc"
