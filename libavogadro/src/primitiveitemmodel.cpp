@@ -24,6 +24,7 @@
 
 #include <avogadro/primitiveitemmodel.h>
 
+#include <QTimer>
 #include <QVector>
 
 namespace Avogadro {
@@ -42,6 +43,13 @@ namespace Avogadro {
       // keep track of the model sizes for each parent
       QVector<int> size;
 
+      /*
+       * for Molecules we have to cache additions / subtractions
+       * because when we get the signal we haven't actually added 
+       * the atom to the molecule, rather it's been created but not
+       * yet added.
+       */
+      QVector<QVector<Primitive *> > moleculeCache;
   };
 
   PrimitiveItemModel::PrimitiveItemModel( Engine *engine, QObject *parent) : QAbstractItemModel(parent), d(new PrimitiveItemModelPrivate)
@@ -71,6 +79,7 @@ namespace Avogadro {
     d->rowTypeMap.insert(2, Primitive::ResidueType);
 
     d->size.resize(d->rowTypeMap.size());
+    d->moleculeCache.resize(d->rowTypeMap.size());
 
     d->size[0] = molecule->NumAtoms();
     d->size[1] = molecule->NumBonds();
@@ -91,7 +100,10 @@ namespace Avogadro {
     if(parentRow < d->size.size())
     {
       int last = d->size[parentRow]++;
-      emit beginInsertRows(createIndex(parentRow, 0, 0), last, last);
+      beginInsertRows(createIndex(parentRow, 0, 0), last, last);
+      if(d->molecule) {
+        d->moleculeCache[parentRow].append(primitive);
+      }
       endInsertRows();
     }
   }
@@ -113,7 +125,12 @@ namespace Avogadro {
     if(parentRow < d->size.size())
     {
       int row = primitiveIndex(primitive);
-      emit beginRemoveRows(createIndex(parentRow, 0, 0), row, row);
+      assert(row > -1);
+      beginRemoveRows(createIndex(parentRow, 0, 0), row, row);
+      if(d->molecule)
+      {
+        d->moleculeCache[parentRow].remove(row);
+      }
       d->size[parentRow]--;
       endRemoveRows();
     }
@@ -121,18 +138,19 @@ namespace Avogadro {
 
   int PrimitiveItemModel::primitiveIndex(Primitive *primitive)
   {
-    Primitive::Type type = primitive->type();
-    if(type == Primitive::AtomType) {
-      Atom *atom = static_cast<Atom *>(primitive);
-      return atom->GetIdx()-1;
-    } else if (type == Primitive::BondType) {
-      Bond *bond = static_cast<Bond *>(primitive);
-      return bond->GetIdx();
-    } else if (type == Primitive::ResidueType) {
-      Residue *residue = static_cast<Residue *>(primitive);
-      return residue->GetIdx();
+    if(d->molecule)
+    {
+      int parentRow = d->rowTypeMap.key(primitive->type());
+      return d->moleculeCache[parentRow].indexOf(primitive);
     }
-    return 0;
+    else if (d->engine) 
+    {
+      QList<Primitive *> subList = d->engine->primitives().subList(primitive->type());
+      return subList.indexOf(primitive);
+    }
+
+    return -1;
+
   }
 
   void PrimitiveItemModel::engineChanged()
@@ -312,16 +330,11 @@ namespace Avogadro {
         return createIndex(row, column, subList.at(row));
       }
     } else if (d->molecule) {
-      Primitive::Type type = d->rowTypeMap[parent.row()];
+      // Primitive::Type type = d->rowTypeMap[parent.row()];
+      int parentRow = parent.row();
 
       Primitive *primitive;
-      if(type == Primitive::AtomType) {
-        primitive = static_cast<Atom *>(d->molecule->GetAtom(row+1));
-      } else if (type == Primitive::BondType) {
-        primitive = static_cast<Bond *>(d->molecule->GetBond(row));
-      } else if (type == Primitive::ResidueType) {
-        primitive = static_cast<Residue *>(d->molecule->GetResidue(row));
-      }
+      primitive = d->moleculeCache[parentRow].at(row);
       return createIndex(row, column, primitive);
     }
 
