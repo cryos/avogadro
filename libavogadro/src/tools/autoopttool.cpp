@@ -132,7 +132,7 @@ namespace Avogadro {
     {
       for (int i = 0; i < m_forceField->GetConstraints().Size(); ++i) 
       {
-        if ((m_forceField->GetConstraints()).GetConstraintAtomA(i) == m_clickedAtom->GetIdx())
+        if ((m_forceField->GetConstraints()).GetConstraintAtomA(i) == (int)m_clickedAtom->GetIdx())
         {
 	   int type = m_forceField->GetConstraints().GetConstraintType(i);
 	   if ( (type == 1) && !m_ignoredMovable->isChecked() )
@@ -311,7 +311,7 @@ namespace Avogadro {
       labelFF->setMaximumHeight(15);
 
       m_comboFF = new QComboBox(m_settingsWidget);
-      for (int i = 0; i < m_forceFieldList.size(); ++i)
+      for (unsigned int i = 0; i < m_forceFieldList.size(); ++i)
         m_comboFF->addItem(m_forceFieldList[i].c_str());
 
       QLabel* labelAlg = new QLabel(tr("Algorithm:"));
