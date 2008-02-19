@@ -1,5 +1,34 @@
 2008-02-19  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
+	* libavogadro/src/engines/*, libavogadro/src/tools/*: Added
+	readSettings and writeSettings for:
+	Tools:
+	- draw tool 		(done, dcurtis)
+	- navigate tool 	(no settings)
+	- bondcentric tool 	(done)
+	- manipulate tool	(no settings)
+	- autoopt tool		(done)
+	- click measure tool	(no settings)
+	Engines:
+	- labelengine		(done, dcurtis)
+	- RingEngine 		(done)
+	- WireEngine		(done)
+	- HBondEngine		(done)
+	- PolygenEngine		(no settings)
+	- BSDYEngine		(done)
+	- StickEngine		(no settings)
+	- SphereEngine		(done)
+
+
+	TODO:
+	- select/rotate tool
+	- autorotate tool
+	- OrbitalEngine		
+	- SurfaceEngine
+	- RibbonEngine
+
+2008-02-19  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
 	* libavogadro/src/tools/draw*.*: several bugfixes for drawing while
 	adjust hydrogens is on. Drawing X-C possible again. Move
 	ChangeElementDrawCommand to MouseRelease (from MousePress)
