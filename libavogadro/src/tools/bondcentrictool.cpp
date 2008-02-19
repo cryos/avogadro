@@ -1942,6 +1942,31 @@ namespace Avogadro {
     //changed from 26011980[manipulatetool]
     return 26011981;
   }
+
+  void BondCentricTool::writeSettings(QSettings &settings) const
+  {
+    Tool::writeSettings(settings);
+    settings.setValue("showAngles", m_showAnglesBox->checkState());
+    settings.setValue("snapTo", m_snapToCheckBox->checkState());
+    settings.setValue("snapToAngle", m_snapToAngleBox->value());
+  }
+
+  void BondCentricTool::readSettings(QSettings &settings)
+  {
+    Tool::readSettings(settings);
+    if(m_showAnglesBox) {
+      m_showAnglesBox->setCheckState((Qt::CheckState)settings.value("showAngles", 2).toInt());
+    }
+    if(m_snapToCheckBox) {
+      m_snapToCheckBox->setCheckState((Qt::CheckState)settings.value("snapTo", 2).toInt());
+    }
+    if(m_snapToAngleBox) {
+      m_snapToAngleBox->setValue(settings.value("snapToAngle", 10).toInt());
+    }
+  }
+
+
+
 }
 
 #include "bondcentrictool.moc"

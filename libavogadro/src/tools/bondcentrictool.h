@@ -92,6 +92,16 @@ namespace Avogadro {
       virtual bool paint(GLWidget *widget);
 
       virtual QWidget *settingsWidget();
+      /**
+       * Write the tool settings so that they can be saved between sessions.
+       */
+      virtual void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read in the settings that have been saved for the tool instance.
+       */
+      virtual void readSettings(QSettings &settings);
+
 
     public Q_SLOTS:
       /**
