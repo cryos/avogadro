@@ -40,11 +40,12 @@ namespace Avogadro {
 
   class AddAtomDrawCommandPrivate {
   public:
-    AddAtomDrawCommandPrivate() : molecule(0), index(0) {};
+    AddAtomDrawCommandPrivate() : molecule(0), atom(0) {};
 
     Molecule *molecule;
+    Atom *atom;
     Eigen::Vector3d pos;
-    int index;
+    //int index;
     unsigned int element;
     int adjustValence;
   };
@@ -64,7 +65,8 @@ namespace Avogadro {
     d->molecule = molecule;
     d->pos = atom->pos();
     d->element = atom->GetAtomicNum();
-    d->index = atom->GetIdx();
+    //d->index = atom->GetIdx();
+    d->atom = atom;
     d->adjustValence = adjustValence;
   }
 
@@ -75,48 +77,48 @@ namespace Avogadro {
 
   void AddAtomDrawCommand::undo()
   {
-    OBAtom *atom = d->molecule->GetAtom(d->index);
+    //OBAtom *atom = d->molecule->GetAtom(d->index);
 
-    if(atom)
+    if(d->atom)
       {
         d->molecule->BeginModify();
         if (d->adjustValence) {
-          if (!atom->IsHydrogen())
-            d->molecule->DeleteHydrogens(atom);
+          if (!d->atom->IsHydrogen())
+            d->molecule->DeleteHydrogens(d->atom);
         }
-        d->molecule->DeleteAtom(atom);
+        d->molecule->DeleteAtom(d->atom);
         d->molecule->EndModify();
         d->molecule->update();
-        d->index = -1;
+        //d->index = -1;
+	d->atom = 0;
       }
   }
 
   void AddAtomDrawCommand::redo()
   {
-    if(d->index >= 0) { // initial creation
+    if(d->atom) { // initial creation
       if (d->adjustValence) {
-        Atom *atom = static_cast<Atom*>(d->molecule->GetAtom(d->index));
-      
-        if (!atom->IsHydrogen()) {
-	  d->molecule->DeleteHydrogens(atom);
-          d->molecule->AddHydrogens(atom);
+        if (!d->atom->IsHydrogen()) {
+	  d->molecule->DeleteHydrogens(d->atom);
+          d->molecule->AddHydrogens(d->atom);
+          //d->index = atom->GetIdx();
 	}
       }
       return;
     }
 
     d->molecule->BeginModify();
-    Atom *atom = static_cast<Atom*>(d->molecule->NewAtom());
-    d->index = atom->GetIdx();
-    atom->setPos(d->pos);
-    atom->SetAtomicNum(d->element);
+    d->atom = static_cast<Atom*>(d->molecule->NewAtom());
+    d->atom->setPos(d->pos);
+    d->atom->SetAtomicNum(d->element);
     d->molecule->EndModify();
     if (d->adjustValence) {
-      if (!atom->IsHydrogen()) {
-        d->molecule->AddHydrogens(atom);
+      if (!d->atom->IsHydrogen()) {
+        d->molecule->AddHydrogens(d->atom);
       }
     }
-    atom->update();
+    //d->index = atom->GetIdx();
+    d->atom->update();
   }
   
   /////////////////////////////////////////////////////////////////////////////
@@ -234,7 +236,9 @@ namespace Avogadro {
         OBAtom *endAtom = bond->GetEndAtom();
 
         d->molecule->BeginModify();
+	std::cout << "Num bonds = " << d->molecule->NumBonds() << std::endl;
         d->molecule->DeleteBond(bond);
+	std::cout << "Num bonds = " << d->molecule->NumBonds() << std::endl;
         d->molecule->EndModify();
         if (d->adjustValence) {
           if (!beginAtom->IsHydrogen())
@@ -265,7 +269,9 @@ namespace Avogadro {
 
     if(d->index >= 0) { // already created the bond
       if (d->adjustValence) {
-        if (!beginAtom->IsHydrogen())
+        OBBond *bnd = d->molecule->GetBond(d->index);
+        
+	if (!beginAtom->IsHydrogen())
           d->molecule->DeleteHydrogens(beginAtom);
         if (!endAtom->IsHydrogen())
           d->molecule->DeleteHydrogens(endAtom);
@@ -276,13 +282,16 @@ namespace Avogadro {
 	  d->molecule->AddHydrogens(beginAtom);
         if (!endAtom->IsHydrogen())
           d->molecule->AddHydrogens(endAtom);
+        
+	d->index = bnd->GetIdx(); // Add/Delete Hydrogens could change the bond index
+        d->beginAtomIndex = bnd->GetBeginAtomIdx();
+        d->endAtomIndex = bnd->GetEndAtomIdx();
       }
       return;
     }
 
     d->molecule->BeginModify();
     Bond *bond = static_cast<Bond *>(d->molecule->NewBond());
-    d->index = bond->GetIdx();
     bond->SetBondOrder(d->order);
     bond->SetBegin(beginAtom);
     bond->SetEnd(endAtom);
@@ -302,6 +311,7 @@ namespace Avogadro {
       if (!endAtom->IsHydrogen())
         d->molecule->AddHydrogens(beginAtom);
     }
+    d->index = bond->GetIdx();
     d->molecule->update();
   }
   
@@ -374,12 +384,12 @@ namespace Avogadro {
     int adjustValence;
   };
 
-  ChangeElementDrawCommand::ChangeElementDrawCommand(Molecule *molecule, Atom *atom, unsigned int element, int adjustValence) : d(new ChangeElementDrawCommandPrivate)
+  ChangeElementDrawCommand::ChangeElementDrawCommand(Molecule *molecule, Atom *atom, unsigned int oldElement, int adjustValence) : d(new ChangeElementDrawCommandPrivate)
   {
     setText(QObject::tr("Change Element"));
     d->molecule = molecule;
-    d->oldElement = atom->GetAtomicNum();
-    d->newElement = element;
+    d->newElement = atom->GetAtomicNum();
+    d->oldElement = oldElement;
     d->index = atom->GetIdx();
     d->adjustValence = adjustValence;
   }

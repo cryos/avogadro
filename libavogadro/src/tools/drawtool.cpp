@@ -51,6 +51,7 @@ namespace Avogadro {
 
   DrawTool::DrawTool(QObject *parent) : Tool(parent),
                                         m_beginAtomAdded(false),
+                                        m_endAtomAdded(false),
                                         m_beginAtom(0),
                                         m_endAtom(0),
                                         m_element(6),
@@ -115,10 +116,8 @@ namespace Avogadro {
         m_beginAtom = (Atom *)molecule->GetAtom(m_hits[0].name());
         
         if(m_beginAtom && ((int)m_beginAtom->GetAtomicNum() != m_element)) {
-          undo = new ChangeElementDrawCommand(widget->molecule(),
-                                              m_beginAtom,
-                                              m_element,
-                                              m_addHydrogens);
+          m_prevAtomElement = m_beginAtom->GetAtomicNum();
+          m_beginAtom->SetAtomicNum(m_element);
         }
       }
       else if(m_hits.size() && (m_hits[0].type() == Primitive::BondType)) {
@@ -208,6 +207,7 @@ namespace Avogadro {
       if(hitBeginAtom) { // we came back to our original atom -- undo the bond
         if(m_endAtom) {
           molecule->DeleteAtom(m_endAtom); // this also deletes bonds
+          m_endAtomAdded = false;
           m_bond = 0;
           m_endAtom = 0;
           m_prevAtomElement = m_beginAtom->GetAtomicNum();
@@ -242,6 +242,7 @@ namespace Avogadro {
               if(m_endAtom) {
                 m_endAtom->DeleteBond(m_bond);
                 molecule->DeleteAtom(m_endAtom);
+                m_endAtomAdded = false;
                 m_endAtom = 0;
               } else {
                 Atom *oldAtom = (Atom *)m_bond->GetEndAtom();
@@ -270,6 +271,7 @@ namespace Avogadro {
               if(m_endAtom) {
                 // will delete bonds too (namely m_bond)
                 molecule->DeleteAtom(m_endAtom);
+                m_endAtomAdded = false;
                 m_endAtom = 0;
               } else {
                 molecule->DeleteBond(m_bond);
@@ -288,6 +290,8 @@ namespace Avogadro {
             m_prevBondOrder = 0;
           }
           m_endAtom = newAtom(widget, event->pos());
+          m_endAtomAdded = true;
+
           if(!m_bond) {
             m_bond = newBond(molecule, m_beginAtom, m_endAtom);
           }
@@ -322,7 +326,7 @@ namespace Avogadro {
         }
 
         AddAtomDrawCommand *endAtomDrawCommand = 0;
-        if(m_endAtom) {
+        if(m_endAtomAdded) {
           endAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_endAtom, m_addHydrogens);
           endAtomDrawCommand->setText(tr("Draw Atom"));
         }
@@ -332,6 +336,9 @@ namespace Avogadro {
           bondCommand = new AddBondDrawCommand(widget->molecule(), m_bond, m_addHydrogens);
           bondCommand->setText(tr("Draw Bond"));
         }
+        
+	std::cout << "m_beginAtomAdded = " << m_beginAtomAdded << std::endl;
+	std::cout << "m_endAtomAdded = " << m_endAtomAdded << std::endl;
 
         // Set the actual undo command -- combining sequence if possible
         // we can have a beginAtom w/out bond or endAtom
@@ -348,15 +355,22 @@ namespace Avogadro {
             seq->append(endAtomDrawCommand);
           }
           seq->append(bondCommand);
+          
           undo = seq;
         }
         else if(bondCommand) {
-          undo = bondCommand;
+	  undo = bondCommand;
         }
         else {
           undo = beginAtomDrawCommand;
         }
-      } // (did some drawing)
+        // (did some drawing)
+      } else if (m_beginAtom) {
+          undo = new ChangeElementDrawCommand(widget->molecule(),
+                                              m_beginAtom,
+                                              m_prevAtomElement,
+                                              m_addHydrogens);
+      }
 
       // clean up after drawing
       m_beginAtom=0;
@@ -366,6 +380,9 @@ namespace Avogadro {
       m_prevBondOrder=0;
       m_prevAtomElement=0;
       m_beginAtomAdded=false;
+      m_endAtomAdded=false;
+    
+      return undo;
     }
 
     // Either use a three-button mouse

@@ -1,3 +1,12 @@
+2008-02-19  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/draw*.*: several bugfixes for drawing while
+	adjust hydrogens is on. Drawing X-C possible again. Move
+	ChangeElementDrawCommand to MouseRelease (from MousePress)
+
+	* libavogadro/src/tools/autoopttool.*: While running, display text on
+	the GLWidget, if setup fails, this will also be displayed.
+
 2008-02-18  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/tools/draw*.*: Insert Smiles is now undo-able.

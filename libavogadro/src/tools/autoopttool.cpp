@@ -46,7 +46,8 @@ namespace Avogadro {
 
   AutoOptTool::AutoOptTool(QObject *parent) : Tool(parent), m_clickedAtom(0),
   m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false),
-  m_running(false), m_block(false), m_timerId(0) ,m_toolGroup(0), m_settingsWidget(0)
+  m_running(false), m_block(false), m_setupFailed(false), m_timerId(0) ,m_toolGroup(0), 
+  m_settingsWidget(0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/autoopttool/autoopttool.png")));
@@ -275,6 +276,17 @@ namespace Avogadro {
 
   bool AutoOptTool::paint(GLWidget *widget)
   {
+    QPoint labelPos(10, 10);
+    glColor3f(1.0,1.0,1.0);
+    if (m_running) {
+      if (m_setupFailed) {
+        widget->painter()->drawText(labelPos, tr("AutoOpt: Could not setup force field...."));
+      } else {
+        widget->painter()->drawText(labelPos, tr("AutoOpt: Running..."));
+      }
+    }
+
+
     m_glwidget = widget;
     if(m_leftButtonPressed) {
       if(m_running && m_clickedAtom)
@@ -411,8 +423,11 @@ namespace Avogadro {
         m_timerId = 0;
       }
       m_running = false;
+      m_setupFailed = false;
       m_buttonStartStop->setText(tr("Start"));
 
+      m_glwidget->update(); // redraw AutoOpt label
+      
       if (m_clickedAtom != 0)
       {
         m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
@@ -444,6 +459,8 @@ namespace Avogadro {
                                  m_comboAlgorithm->currentIndex(), gradients,
                                  m_convergenceSpinBox->value());
     connect(m_thread,SIGNAL(finished(bool)),this,SLOT(finished(bool)));
+    connect(m_thread,SIGNAL(setupFailed()),this,SLOT(setupFailed()));
+    connect(m_thread,SIGNAL(setupSucces()),this,SLOT(setupSucces()));
     m_thread->start();
   }
 
@@ -458,7 +475,7 @@ namespace Avogadro {
         QPoint point = QPoint(begin.x(), begin.y());
         translate(m_glwidget, m_clickedAtom->pos(), point, m_lastDraggingPosition);
       }
-      m_glwidget->molecule()->update();
+      //m_glwidget->molecule()->update();
     }
 
     m_thread->stop();
@@ -467,7 +484,18 @@ namespace Avogadro {
     delete m_thread;
     m_thread = NULL;
 
+    m_glwidget->update();
     m_block = false;
+  }
+  
+  void AutoOptTool::setupFailed()
+  {
+    m_setupFailed = true; 
+  }
+  
+  void AutoOptTool::setupSucces()
+  {
+    m_setupFailed = false; 
   }
 
   AutoOptThread::AutoOptThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
@@ -487,12 +515,14 @@ namespace Avogadro {
     m_forceField->SetLogFile(NULL);
     m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
 
-    if ( !m_forceField->Setup( *m_molecule ) ) 
-    {
-      qWarning() << "AutoOptThread: Could not set up force field on " << m_molecule;
+    if ( !m_forceField->Setup( *m_molecule ) ) {
+      //qWarning() << "AutoOptThread: Could not set up force field on " << m_molecule;
       m_stop = true;
+      emit setupFailed();
       emit finished(false);
       return;
+    } else {
+      emit setupSucces();
     }
     m_forceField->SetConformers( *m_molecule );
 

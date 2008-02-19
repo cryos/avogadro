@@ -123,6 +123,7 @@ namespace Avogadro {
       QPoint              m_lastDraggingPosition;
 
       bool m_beginAtomAdded;
+      bool m_endAtomAdded;
       Atom *m_beginAtom;
       Atom *m_endAtom;
       int m_element;

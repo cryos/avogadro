@@ -56,6 +56,8 @@ namespace Avogadro {
 
     Q_SIGNALS:
       void finished(bool calculated);
+      void setupFailed();
+      void setupSucces();
 
     public Q_SLOTS:
       void stop();
@@ -115,6 +117,8 @@ namespace Avogadro {
 
     public Q_SLOTS:
       void finished(bool calculated);
+      void setupFailed();
+      void setupSucces();
       void toggle();
       void enable();
       void disable();
@@ -127,6 +131,7 @@ namespace Avogadro {
       bool                      m_rightButtonPressed; // translation
       bool                      m_running;
       bool                      m_block;
+      bool                      m_setupFailed;
       int                       m_timerId;
       ToolGroup *               m_toolGroup;
       QWidget*                  m_settingsWidget;
