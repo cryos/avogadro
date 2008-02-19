@@ -672,12 +672,14 @@ namespace Avogadro {
 
   void DrawTool::writeSettings(QSettings &settings) const
   {
+    Tool::writeSettings(settings);
     settings.setValue("addHydrogens", m_addHydrogens);
     settings.setValue("smiles", m_text3DGen->text());
   }
 
   void DrawTool::readSettings(QSettings &settings)
   {
+    Tool::readSettings(settings);
     setAddHydrogens(settings.value("addHydrogens", 2).toInt());
     if(m_addHydrogensCheck) {
       m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
