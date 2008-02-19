@@ -1,7 +1,7 @@
 /**********************************************************************
   DrawTool - Tool for drawing molecules
 
-  Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2007,2008 Donald Ephraim Curtis
   Copyright (C) 2008 Tim Vandermeersch
   Some Portions Copyright (C) 2007-2008 Geoffrey Hutchison
 
@@ -59,7 +59,8 @@ namespace Avogadro {
                                         m_prevAtomElement(0),
                                         m_prevBond(0),
                                         m_prevBondOrder(0),
-                                        m_addHydrogensState(2),
+                                        m_addHydrogens(2),
+                                        m_addHydrogensCheck(0),
                                         m_periodicTable(0),
                                         m_settingsWidget(0)
   {
@@ -117,7 +118,7 @@ namespace Avogadro {
           undo = new ChangeElementDrawCommand(widget->molecule(),
                                               m_beginAtom,
                                               m_element,
-                                              m_addHydrogensState);
+                                              m_addHydrogens);
         }
       }
       else if(m_hits.size() && (m_hits[0].type() == Primitive::BondType)) {
@@ -136,7 +137,7 @@ namespace Avogadro {
           }
         
           undo = new ChangeBondOrderDrawCommand(widget->molecule(), bond,
-                                                bondOrder, m_addHydrogensState);
+                                                bondOrder, m_addHydrogens);
         }
       }
       else { // a genuine click in new space == create a new atom or fragment
@@ -316,19 +317,19 @@ namespace Avogadro {
       if(m_beginAtomAdded || m_bond) {
         AddAtomDrawCommand *beginAtomDrawCommand = 0;
         if(m_beginAtomAdded) {
-          beginAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_beginAtom, m_addHydrogensState);
+          beginAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_beginAtom, m_addHydrogens);
           beginAtomDrawCommand->setText(tr("Draw Atom"));
         }
 
         AddAtomDrawCommand *endAtomDrawCommand = 0;
         if(m_endAtom) {
-          endAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_endAtom, m_addHydrogensState);
+          endAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_endAtom, m_addHydrogens);
           endAtomDrawCommand->setText(tr("Draw Atom"));
         }
 
         AddBondDrawCommand *bondCommand = 0;
         if(m_bond) {
-          bondCommand = new AddBondDrawCommand(widget->molecule(), m_bond, m_addHydrogensState);
+          bondCommand = new AddBondDrawCommand(widget->molecule(), m_bond, m_addHydrogens);
           bondCommand->setText(tr("Draw Bond"));
         }
 
@@ -382,20 +383,20 @@ namespace Avogadro {
           if(m_hits[0].type() == Primitive::AtomType) {
             // don't delete H-? atom when adjust hydrogens is on
 	    OBAtom *atom = widget->molecule()->GetAtom(m_hits[0].name());
-	    if (m_addHydrogensState && atom->IsHydrogen() && atom->GetValence()) {
+	    if (m_addHydrogens && atom->IsHydrogen() && atom->GetValence()) {
 	      return undo;
 	    }
-            undo = new DeleteAtomDrawCommand(widget->molecule(), m_hits[0].name(), m_addHydrogensState);
+            undo = new DeleteAtomDrawCommand(widget->molecule(), m_hits[0].name(), m_addHydrogens);
           }
           if(m_hits[0].type() == Primitive::BondType) {
             // don't delete ?-H bonds when adjust hydrogens is on
 	    OBBond *bond = widget->molecule()->GetBond(m_hits[0].name());
-	    if (m_addHydrogensState) {
+	    if (m_addHydrogens) {
 	      if (bond->GetBeginAtom()->IsHydrogen() || bond->GetEndAtom()->IsHydrogen()) {
 	        return undo;
 	      }
 	    }
-	    undo = new DeleteBondDrawCommand(widget->molecule(), m_hits[0].name(), m_addHydrogensState);
+	    undo = new DeleteBondDrawCommand(widget->molecule(), m_hits[0].name(), m_addHydrogens);
           }
         }
       }
@@ -570,19 +571,14 @@ namespace Avogadro {
     return m_bondOrder;
   }
 
-  void DrawTool::autoAddHydrogensChanged( int state)
+  void DrawTool::setAddHydrogens( int state )
   {
-    setAutoAddHydrogens(state);
+    m_addHydrogens = state;
   }
 
-  void DrawTool::setAutoAddHydrogens( int state )
+  int DrawTool::addHydrogens() const
   {
-    m_addHydrogensState = state;
-  }
-
-  int DrawTool::autoAddHydrogens() const
-  {
-    return m_addHydrogensState;
+    return m_addHydrogens;
   }
 
   QWidget *DrawTool::settingsWidget() {
@@ -629,8 +625,8 @@ namespace Avogadro {
       m_comboBondOrder->addItem(tr("Double"));
       m_comboBondOrder->addItem(tr("Triple"));
       
-      m_autoAddHydrogens = new QCheckBox(tr("Adjust Hydrogens"), m_settingsWidget);
-      m_autoAddHydrogens->setCheckState((Qt::CheckState)m_addHydrogensState);
+      m_addHydrogensCheck = new QCheckBox(tr("Adjust Hydrogens"), m_settingsWidget);
+      m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
 
       QLabel *label3DGen = new QLabel(tr("Generate from SMILES:"));
       m_text3DGen = new QLineEdit(m_settingsWidget);
@@ -647,7 +643,7 @@ namespace Avogadro {
       m_layout->addWidget(m_comboElements);
       m_layout->addWidget(labelBO);
       m_layout->addWidget(m_comboBondOrder);
-      m_layout->addWidget(m_autoAddHydrogens);
+      m_layout->addWidget(m_addHydrogensCheck);
       m_layout->addWidget(label3DGen);
       m_layout->addWidget(m_text3DGen);
       m_layout->addWidget(m_button3DGen);
@@ -660,8 +656,8 @@ namespace Avogadro {
       connect(m_comboBondOrder, SIGNAL(currentIndexChanged(int)),
               this, SLOT(bondOrderChanged(int)));
 
-      connect(m_autoAddHydrogens, SIGNAL(stateChanged(int)),
-              this, SLOT(autoAddHydrogensChanged(int)));      
+      connect(m_addHydrogensCheck, SIGNAL(stateChanged(int)),
+              this, SLOT(setAddHydrogens(int)));      
 
       connect(m_settingsWidget, SIGNAL(destroyed()),
               this, SLOT(settingsWidgetDestroyed()));
@@ -672,6 +668,23 @@ namespace Avogadro {
 
   void DrawTool::settingsWidgetDestroyed() {
     m_settingsWidget = 0;
+  }
+
+  void DrawTool::writeSettings(QSettings &settings) const
+  {
+    settings.setValue("addHydrogens", m_addHydrogens);
+    settings.setValue("smiles", m_text3DGen->text());
+  }
+
+  void DrawTool::readSettings(QSettings &settings)
+  {
+    setAddHydrogens(settings.value("addHydrogens", 2).toInt());
+    if(m_addHydrogensCheck) {
+      m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
+    }
+    if(m_text3DGen) {
+      m_text3DGen->setText(settings.value("smiles").toString());
+    }
   }
 }
 

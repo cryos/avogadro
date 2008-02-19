@@ -51,11 +51,6 @@ namespace Avogadro {
     delete d;
   }
 
-  QString Tool::name() const
-  {
-    return QObject::tr("Unknown");
-  }
-
   QString Tool::description() const
   {
     return QObject::tr("No Description");
@@ -93,6 +88,16 @@ namespace Avogadro {
   bool Tool::paint(GLWidget*)
   {
 	  return true;
+  }
+
+  void Tool::writeSettings(QSettings &settings) const
+  {
+    Q_UNUSED(settings);
+  }
+
+  void Tool::readSettings(QSettings &settings)
+  {
+    Q_UNUSED(settings);
   }
 
 } // end namespace Avogadro

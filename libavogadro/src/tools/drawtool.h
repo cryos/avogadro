@@ -84,6 +84,16 @@ namespace Avogadro {
       virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
       //@}
 
+      /**
+       * Write the tool settings so that they can be saved between sessions.
+       */
+      virtual void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read in the settings that have been saved for the tool instance.
+       */
+      virtual void readSettings(QSettings &settings);
+
       //! The priority of the tool in the toolbar
       virtual int usefulness() const;
 
@@ -92,17 +102,16 @@ namespace Avogadro {
       void setElement(int i);
       int element() const;
 
-      void setBondOrder(int i);
       int bondOrder() const;
-
-      void setAutoAddHydrogens(int state);
-      int autoAddHydrogens() const;
+      int addHydrogens() const;
 
     public Q_SLOTS:
+      void setAddHydrogens(int state);
+
       void elementChanged( int index );
       void customElementChanged( int index );
       void bondOrderChanged( int index );
-      void autoAddHydrogensChanged( int state );
+      void setBondOrder(int i);
       void gen3D();
 
     private:
@@ -126,7 +135,7 @@ namespace Avogadro {
       Bond *m_prevBond;
       int m_prevBondOrder;
 
-      int m_addHydrogensState;
+      int m_addHydrogens;
 
       bool m_placeMode;
       Molecule m_generatedMolecule;
@@ -137,7 +146,7 @@ namespace Avogadro {
       QComboBox *m_comboElements;
       QList<int> m_elementsIndex;
       QComboBox *m_comboBondOrder;
-      QCheckBox *m_autoAddHydrogens;
+      QCheckBox *m_addHydrogensCheck;
       QLineEdit *m_text3DGen;
       QPushButton *m_button3DGen;
       QPushButton *m_tableButton;

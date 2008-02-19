@@ -181,7 +181,6 @@ namespace Avogadro
     d->toolGroup = new ToolGroup( this );
     d->toolGroup->load();
 
-
     ui.menuDocks->addAction( ui.toolsDock->toggleViewAction() );
 
     d->enginesStacked = new QStackedLayout( ui.enginesWidget );
@@ -1337,6 +1336,10 @@ namespace Avogadro
 
     setTabbedTools(settings.value( "tabbedTools", true ).toBool());
 
+    settings.beginGroup("tools");
+    d->toolGroup->readSettings(settings);
+    settings.endGroup();
+
     int count = settings.beginReadArray("view");
     if(count < 1)
     {
@@ -1382,6 +1385,10 @@ namespace Avogadro
       d->glWidgets.at(i)->writeSettings(settings);
     }
     settings.endArray();
+
+    settings.beginGroup("tools");
+    d->toolGroup->writeSettings(settings);
+    settings.endGroup();
   }
 
   void MainWindow::loadExtensions()

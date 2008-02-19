@@ -109,6 +109,16 @@ namespace Avogadro {
        */
       void setMolecule(Molecule *molecule);
 
+      /**
+       * Write the settings of the GLWidget in order to save them to disk.
+       */
+      void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read the settings of the GLWidget and restore them.
+       */
+      void readSettings(QSettings &settings);
+
     private Q_SLOTS:
       void activateTool();
 

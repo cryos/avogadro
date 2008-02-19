@@ -168,6 +168,26 @@ namespace Avogadro {
     }
   }
 
+  void ToolGroup::writeSettings(QSettings &settings) const
+  {
+    foreach(Tool *tool, d->tools)
+    {
+      settings.beginGroup(tool->name());
+      tool->writeSettings(settings);
+      settings.endGroup();
+    }
+  }
+
+  void ToolGroup::readSettings(QSettings &settings)
+  {
+    foreach(Tool *tool, d->tools)
+    {
+      settings.beginGroup(tool->name());
+      tool->readSettings(settings);
+      settings.endGroup();
+    }
+  }
+
 } // end namespace Avogadro
 
 #include "toolgroup.moc"

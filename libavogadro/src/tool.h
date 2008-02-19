@@ -27,6 +27,7 @@
 
 #include <avogadro/global.h>
 
+#include <QSettings>
 #include <QWheelEvent>
 
 class QAction;
@@ -66,7 +67,7 @@ namespace Avogadro {
       /**
        * @return the name of the tool.
        */
-      virtual QString name() const;
+      virtual QString name() const = 0;
 
       /**
        * @return a description of the tool.
@@ -133,6 +134,16 @@ namespace Avogadro {
       virtual int usefulness() const;
 
       bool operator<(const Tool &other) const;
+
+      /**
+       * Write the tool settings so that they can be saved between sessions.
+       */
+      virtual void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read in the settings that have been saved for the tool instance.
+       */
+      virtual void readSettings(QSettings &settings);
 
     Q_SIGNALS:
       /**
