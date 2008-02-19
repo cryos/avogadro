@@ -62,6 +62,16 @@ namespace Avogadro {
        * @return a pointer to the BSDYEngine settings widget
        */
       QWidget *settingsWidget();
+      /**
+       * Write the engine settings so that they can be saved between sessions.
+       */
+      void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read in the settings that have been saved for the engine instance.
+       */
+      void readSettings(QSettings &settings);
+
 
     private:
       double radius(const Atom *atom) const;
@@ -70,7 +80,7 @@ namespace Avogadro {
 
       double m_atomRadiusPercentage;
       double m_bondRadius;
-      bool m_showMulti;
+      int m_showMulti;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();

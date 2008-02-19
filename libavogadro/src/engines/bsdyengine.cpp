@@ -306,6 +306,9 @@ namespace Avogadro
       connect(m_settingsWidget->bondRadiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setBondRadius(int)));
       connect(m_settingsWidget->showMulti, SIGNAL(stateChanged(int)), this, SLOT(setShowMulti(int)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      m_settingsWidget->atomRadiusSlider->setValue(10*m_atomRadiusPercentage);
+      m_settingsWidget->bondRadiusSlider->setValue(20*m_bondRadius);
+      m_settingsWidget->showMulti->setCheckState((Qt::CheckState)m_showMulti);
     }
     return m_settingsWidget;
   }
@@ -315,6 +318,29 @@ namespace Avogadro
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
   }
+  
+  void BSDYEngine::writeSettings(QSettings &settings) const
+  {
+    Engine::writeSettings(settings);
+    settings.setValue("atomRadius", 10*m_atomRadiusPercentage);
+    settings.setValue("bondRadius", 20*m_bondRadius);
+    settings.setValue("showMulti", m_showMulti);
+  }
+
+  void BSDYEngine::readSettings(QSettings &settings)
+  {
+    Engine::readSettings(settings);
+    setAtomRadiusPercentage(settings.value("atomRadius", 3).toInt());
+    setBondRadius(settings.value("bondRadius", 2).toInt());
+    setShowMulti(settings.value("showMulti", 2).toInt());
+    
+    if (m_settingsWidget) {
+      m_settingsWidget->atomRadiusSlider->setValue(10*m_atomRadiusPercentage);
+      m_settingsWidget->bondRadiusSlider->setValue(20*m_bondRadius);
+      m_settingsWidget->showMulti->setCheckState((Qt::CheckState)m_showMulti);
+    }
+  }
+
 
   Engine::EngineFlags BSDYEngine::flags() const
   {
