@@ -64,6 +64,17 @@ namespace Avogadro {
 
       //! Display a window for the user to pick rendering options
       QWidget *settingsWidget();
+      
+      /**
+       * Write the engine settings so that they can be saved between sessions.
+       */
+      void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read in the settings that have been saved for the engine instance.
+       */
+      void readSettings(QSettings &settings);
+
 
     private:
       int m_atomType;  // Atom label type

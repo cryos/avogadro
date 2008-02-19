@@ -197,6 +197,8 @@ namespace Avogadro {
     if(!m_settingsWidget)
     {
       m_settingsWidget = new LabelSettingsWidget();
+      m_settingsWidget->atomType->setCurrentIndex(m_atomType);
+      m_settingsWidget->bondType->setCurrentIndex(m_bondType);
       connect(m_settingsWidget->atomType, SIGNAL(activated(int)), this, SLOT(setAtomType(int)));
       connect(m_settingsWidget->bondType, SIGNAL(activated(int)), this, SLOT(setBondType(int)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
@@ -213,6 +215,26 @@ namespace Avogadro {
   Engine::EngineFlags LabelEngine::flags() const
   {
     return Engine::Overlay;
+  }
+
+  void LabelEngine::writeSettings(QSettings &settings) const
+  {
+    Engine::writeSettings(settings);
+    settings.setValue("atomLabel", m_atomType);
+    settings.setValue("bondLabel", m_bondType);
+  }
+
+  void LabelEngine::readSettings(QSettings &settings)
+  {
+    Engine::readSettings(settings);
+    setAtomType(settings.value("atomLabel", 1).toInt());
+    setBondType(settings.value("bondLabel", 2).toInt());
+    if(m_settingsWidget)
+    {
+      m_settingsWidget->atomType->setCurrentIndex(m_atomType);
+      m_settingsWidget->bondType->setCurrentIndex(m_bondType);
+    }
+
   }
 }
 
