@@ -203,6 +203,7 @@ namespace Avogadro {
       m_settingsWidget = new SphereSettingsWidget();
       connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
     }
     return m_settingsWidget;
   }
@@ -216,14 +217,18 @@ namespace Avogadro {
   void SphereEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);
-    settings.setValue("alpha", m_alpha);
+    settings.setValue("opacity", 20*m_alpha);
   }
 
   void SphereEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
-    m_alpha = settings.value("alpha", 1.).toDouble();
+    setOpacity(settings.value("opacity", 20).toInt());
+    if (m_settingsWidget) {
+      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
+    }
   }
+
 }
 
 #include "sphereengine.moc"
