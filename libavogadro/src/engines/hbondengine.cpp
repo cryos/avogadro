@@ -122,6 +122,9 @@ namespace Avogadro {
         connect(m_settingsWidget->radiusSpin, SIGNAL(valueChanged(double)), this, SLOT(setRadius(double)));
         connect(m_settingsWidget->angleSpin, SIGNAL(valueChanged(double)), this, SLOT(setAngle(double)));
         connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+        m_settingsWidget->widthSlider->setValue(m_width);
+        m_settingsWidget->radiusSpin->setValue(m_radius);
+        m_settingsWidget->angleSpin->setValue(m_angle);
       }
     return m_settingsWidget;
   }
@@ -149,6 +152,27 @@ namespace Avogadro {
   {
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
+  }
+  
+  void HBondEngine::writeSettings(QSettings &settings) const
+  {
+    Engine::writeSettings(settings);
+    settings.setValue("width", m_width);
+    settings.setValue("radius", m_radius);
+    settings.setValue("angle", m_angle);
+  }
+
+  void HBondEngine::readSettings(QSettings &settings)
+  {
+    Engine::readSettings(settings);
+    setWidth(settings.value("width", 2.0).toDouble());
+    setRadius(settings.value("radius", 2.0).toDouble());
+    setAngle(settings.value("angle", 120.0).toDouble());
+    if (m_settingsWidget) {
+      m_settingsWidget->widthSlider->setValue(m_width);
+      m_settingsWidget->radiusSpin->setValue(m_radius);
+      m_settingsWidget->angleSpin->setValue(m_angle);
+    }
   }
 
 }
