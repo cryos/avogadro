@@ -227,6 +227,7 @@ namespace Avogadro{
       m_settingsWidget = new RingSettingsWidget();
       connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
     }
     return m_settingsWidget;
   }
@@ -236,6 +237,22 @@ namespace Avogadro{
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
   }
+  
+  void RingEngine::writeSettings(QSettings &settings) const
+  {
+    Engine::writeSettings(settings);
+    settings.setValue("opacity", 20*m_alpha);
+  }
+
+  void RingEngine::readSettings(QSettings &settings)
+  {
+    Engine::readSettings(settings);
+    setOpacity(settings.value("opacity", 20).toInt());
+    if (m_settingsWidget) {
+      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
+    }
+  }
+
 
 }
 
