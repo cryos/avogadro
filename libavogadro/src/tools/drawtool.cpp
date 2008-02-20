@@ -126,8 +126,10 @@ namespace Avogadro {
         Bond *bond = (Bond *)molecule->GetBond(m_hits[0].name());
         if (bond) { // if we can't find the bond, we can't do anything here
 
-          unsigned int bondOrder;
-          switch (bond->GetBondOrder()) {
+          unsigned int bondOrder, oldBondOrder;
+          oldBondOrder = bond->GetBondOrder();
+
+          switch (oldBondOrder) {
           case 1:
             bondOrder = 2;     break;
           case 2:
@@ -135,9 +137,10 @@ namespace Avogadro {
           case 3:
             bondOrder = 1;     break;
           }
+	  bond->SetBondOrder(bondOrder);
         
           undo = new ChangeBondOrderDrawCommand(widget->molecule(), bond,
-                                                bondOrder, m_addHydrogens);
+                                                oldBondOrder, m_addHydrogens);
         }
       }
       else { // a genuine click in new space == create a new atom or fragment
@@ -366,6 +369,16 @@ namespace Avogadro {
           undo = beginAtomDrawCommand;
         }
         // (did some drawing)
+      } else if (m_prevBond) {
+	  // bug #1898118
+	  // both beginAtom, endAtom and bond exist, but the bond order has changed
+	  if (m_prevBond->GetBondOrder() != m_prevBondOrder) {
+	    undo = new ChangeBondOrderDrawCommand(widget->molecule(), m_prevBond,
+                                                m_prevBondOrder, m_addHydrogens);
+            undo->setText(tr("Change Bond Order"));
+	  } else {
+	    return 0;
+	  }
       } else if (m_beginAtom) {
           undo = new ChangeElementDrawCommand(widget->molecule(),
                                               m_beginAtom,
