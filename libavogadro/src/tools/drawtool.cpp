@@ -118,6 +118,7 @@ namespace Avogadro {
         if(m_beginAtom && ((int)m_beginAtom->GetAtomicNum() != m_element)) {
           m_prevAtomElement = m_beginAtom->GetAtomicNum();
           m_beginAtom->SetAtomicNum(m_element);
+          m_beginAtom->update();
         }
       }
       else if(m_hits.size() && (m_hits[0].type() == Primitive::BondType)) {
