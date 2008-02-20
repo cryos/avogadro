@@ -323,7 +323,9 @@ namespace Avogadro {
     if(_buttons & Qt::LeftButton && (event->modifiers() == Qt::NoModifier)) {
 
       if(m_beginAtomAdded || m_bond) {
-        AddAtomDrawCommand *beginAtomDrawCommand = 0;
+        // we added At least the beginAtom or we created a bond to 
+        // an existing atom or to endAtom that we also created
+	AddAtomDrawCommand *beginAtomDrawCommand = 0;
         if(m_beginAtomAdded) {
           beginAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_beginAtom, m_addHydrogens);
           beginAtomDrawCommand->setText(tr("Draw Atom"));
@@ -341,9 +343,6 @@ namespace Avogadro {
           bondCommand->setText(tr("Draw Bond"));
         }
         
-	std::cout << "m_beginAtomAdded = " << m_beginAtomAdded << std::endl;
-	std::cout << "m_endAtomAdded = " << m_endAtomAdded << std::endl;
-
         // Set the actual undo command -- combining sequence if possible
         // we can have a beginAtom w/out bond or endAtom
         // we can have bond w/out endAtom (i.e., to an existing atom)
@@ -368,22 +367,22 @@ namespace Avogadro {
         else {
           undo = beginAtomDrawCommand;
         }
-        // (did some drawing)
       } else if (m_prevBond) {
-	  // bug #1898118
-	  // both beginAtom, endAtom and bond exist, but the bond order has changed
-	  if (m_prevBond->GetBondOrder() != m_prevBondOrder) {
-	    undo = new ChangeBondOrderDrawCommand(widget->molecule(), m_prevBond,
-                                                m_prevBondOrder, m_addHydrogens);
-            undo->setText(tr("Change Bond Order"));
-	  } else {
-	    return 0;
-	  }
+	// bug #1898118
+	// both beginAtom, endAtom and bond exist, but the bond order has changed
+	if (m_prevBond->GetBondOrder() != m_prevBondOrder) {
+	  undo = new ChangeBondOrderDrawCommand(widget->molecule(), m_prevBond,
+                                              m_prevBondOrder, m_addHydrogens);
+          undo->setText(tr("Change Bond Order"));
+	}
       } else if (m_beginAtom) {
+        // beginAtom exists, but we have no bond, we change the element  
+	if (m_beginAtom->GetBondOrder() != m_prevAtomElement) {
           undo = new ChangeElementDrawCommand(widget->molecule(),
                                               m_beginAtom,
                                               m_prevAtomElement,
                                               m_addHydrogens);
+	}
       }
 
       // clean up after drawing
