@@ -370,14 +370,14 @@ namespace Avogadro {
       } else if (m_prevBond) {
 	// bug #1898118
 	// both beginAtom, endAtom and bond exist, but the bond order has changed
-	if (m_prevBond->GetBondOrder() != m_prevBondOrder) {
+	if ((int)m_prevBond->GetBondOrder() != m_prevBondOrder) {
 	  undo = new ChangeBondOrderDrawCommand(widget->molecule(), m_prevBond,
                                               m_prevBondOrder, m_addHydrogens);
           undo->setText(tr("Change Bond Order"));
 	}
       } else if (m_beginAtom) {
         // beginAtom exists, but we have no bond, we change the element  
-	if (m_beginAtom->GetBondOrder() != m_prevAtomElement) {
+	if ((int)m_beginAtom->GetAtomicNum() != m_prevAtomElement) {
           undo = new ChangeElementDrawCommand(widget->molecule(),
                                               m_beginAtom,
                                               m_prevAtomElement,
