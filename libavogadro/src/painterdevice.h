@@ -1,8 +1,7 @@
 /**********************************************************************
-  GLWidget - general OpenGL display
+  PainterDevice - Painter Device base class.
 
-  Copyright (C) 2006,2007 Geoffrey R. Hutchison
-  Copyright (C) 2006,2007 Donald Ephraim Curtis
+  Copyright (C) 2007,2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -26,9 +25,10 @@
 #ifndef __PAINTERDEVICE_H
 #define __PAINTERDEVICE_H
 
+#include <avogadro/painter.h>
+
 namespace Avogadro {
 
-  class Painter;
   class Camera;
   class Primitive;
   class Molecule;
@@ -50,7 +50,6 @@ namespace Avogadro {
     virtual int width() = 0;
     virtual int height() = 0;
   };
-
 
 } // End namespace Avogadro
 

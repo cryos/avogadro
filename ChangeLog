@@ -1,3 +1,11 @@
+2008-02-21  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/iso.h,
+	libavogadro/src/engines/orbitalengine.*,
+	libavogadro/src/engines/surfaceengine.*,
+	libavogadro/src/painterdevice.h: Tweaked include files a little so
+	that IsoGen doesn't include the whole of GLWidget. Fixed others.
+
 2008-02-19  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/engines/*, libavogadro/src/tools/*: Added
@@ -41,6 +49,12 @@
 	* libavogadro/src/tools/draw*.*: Insert Smiles is now undo-able.
 
 2008-02-18  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/orbitalengine.*: Added renderTransparent and
+	renderQuick functions and cleaned up the code where possible.
+
+	* libavogadro/src/engines/surfaceengine.cpp: Modified to use the new
+	IsoGen class, still needs more work to use renderTransparent etc.
 
 	* libavogadro/src/engines/orbitalengine.*,
 	libavogadro/src/engines/orbitalsettingswidget.ui: Used Geoff's new

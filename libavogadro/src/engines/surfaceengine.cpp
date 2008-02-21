@@ -28,7 +28,6 @@
 #include "surfaceengine.h"
 
 #include <avogadro/primitive.h>
-#include <avogadro/color.h>
 
 #include <openbabel/math/vector3.h>
 #include <openbabel/griddata.h>

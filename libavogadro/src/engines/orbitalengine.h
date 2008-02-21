@@ -29,6 +29,7 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
+#include <avogadro/color.h>
 
 #include "iso.h"
 #include "ui_orbitalsettingswidget.h"

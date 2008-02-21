@@ -64,7 +64,9 @@
 #include <QList>
 #include <QThread>
 #include <QMutex>
-#include <avogadro/glwidget.h>
+#include <eigen/vector.h>
+#include <avogadro/painterdevice.h>
+#include <openbabel/mol.h> // Shouldn't need this but get compilation error without
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
 
@@ -134,12 +136,9 @@ namespace Avogadro
 
     // Central functions
     void init(Grid *grid, double stepSize);
-    //void start();
     int numTriangles();
     triangle getTriangle(int i);
     triangle getNormal(int i);
-
-  //protected:
 
   private:
     Grid *m_grid; // OpenBabel Grid
@@ -162,8 +161,6 @@ namespace Avogadro
     static const long aiCubeEdgeFlags[256];
     static const long a2iTriangleConnectionTable[256][16];
 
-    // Functions
-//    void vNormalizeVector(Eigen::Vector3f &rfResult, const Eigen::Vector3f &rfSource);
     void vGetNormal(Eigen::Vector3f &rfNormal, const float fX, const float fY,
         const float fZ);
     void vMarchCube1(const float fX, const float fY, const float fZ);
