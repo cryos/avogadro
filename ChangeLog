@@ -1,5 +1,23 @@
 2008-02-21  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/engines/orbitalsettingswidget.ui,
+	libavogadro/src/engines/orbitalengine.*,
+	libavogadro/src/engines/surfaceengine.*,
+	libavogadro/src/engines/surfacesettingswidget.ui: Removed the paddings
+	and set step size spinners. Also removed the corresponding functions
+	that set these properties.
+
+	* libavogadro/src/engines/orbitalengine.cpp,
+	libavogadro/src/engines/surfaceengine.cpp: Fixed the opacity slider
+	to actually change the surface opacity. Ported to the new init
+	function in IsoGen
+
+	* libavogadro/src/engines/iso.*: Modified the IsoGen init function to
+	take a PainterDevice and set the step size based up on the quality.
+
+	* libavogadro/src/painter.h, libavogadro/src/glpainter.h,
+	libavogadro/src/povpainter.h: Added quality as a new virtual function.
+
 	* libavogadro/src/engines/iso.h,
 	libavogadro/src/engines/orbitalengine.*,
 	libavogadro/src/engines/surfaceengine.*,
