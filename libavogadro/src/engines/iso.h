@@ -135,7 +135,7 @@ namespace Avogadro
     void run();
 
     // Central functions
-    void init(Grid *grid, double stepSize);
+    void init(Grid *grid, const PainterDevice *pd, double stepSize = 0.0);
     int numTriangles();
     triangle getTriangle(int i);
     triangle getNormal(int i);

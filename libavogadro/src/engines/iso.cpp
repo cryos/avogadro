@@ -518,14 +518,39 @@ namespace Avogadro
   // ****************************************************************************
 
   // Called from gldraw to initialize thread stuff
-  void IsoGen::init(Grid *grid, double stepSize)
+  void IsoGen::init(Grid *grid, const PainterDevice *pd, double stepSize)
   {
     qDebug() << "start init()";
     if (!m_mutex.tryLock())
       return;
 
     m_grid = grid;
-    m_stepSize = stepSize;
+    if (stepSize)
+      m_stepSize = stepSize;
+    else
+    {
+      // Work out the step size from the global quality level
+      switch(pd->painter()->quality())
+      {
+      case 0:
+        m_stepSize = 1.0;
+        break;
+      case 1:
+        m_stepSize = 0.5;
+        break;
+      case 2:
+        m_stepSize = 0.3;
+        break;
+      case 3:
+        m_stepSize = 0.22;
+        break;
+      case 4:
+        m_stepSize = 0.15;
+        break;
+      default:
+        m_stepSize = 0.10;
+      }
+    }
     m_min = Vector3f(m_grid->grid()->GetOriginVector().x(),
                      m_grid->grid()->GetOriginVector().y(),
                      m_grid->grid()->GetOriginVector().z());
