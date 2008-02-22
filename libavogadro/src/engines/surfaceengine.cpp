@@ -207,7 +207,7 @@ namespace Avogadro {
       VDWSurface(mol);
 
       m_grid->setIsoValue(0.0);
-      m_isoGen->init(m_grid, m_stepSize);
+      m_isoGen->init(m_grid, pd);
       m_isoGen->start();
       m_surfaceValid = true;
     }
@@ -298,6 +298,7 @@ namespace Avogadro {
   void SurfaceEngine::setOpacity(int value)
   {
     m_alpha = 0.05 * value;
+    m_color.setAlpha(m_alpha);
     emit changed();
   }
 
