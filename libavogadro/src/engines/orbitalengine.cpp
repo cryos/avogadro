@@ -318,13 +318,6 @@ namespace Avogadro {
     emit changed();
   }
 
-  void OrbitalEngine::setStepSize(double d)
-  {
-    m_stepSize = d;
-    m_update = true;
-    emit changed();
-  }
-
   void OrbitalEngine::setIso(double d)
   {
     m_iso = d;
@@ -351,7 +344,6 @@ namespace Avogadro {
       m_settingsWidget = new OrbitalSettingsWidget();
       connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
       connect(m_settingsWidget->renderCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setRenderMode(int)));
-      connect(m_settingsWidget->stepSizeSpin, SIGNAL(valueChanged(double)), this, SLOT(setStepSize(double)));
       connect(m_settingsWidget->isoSpin, SIGNAL(valueChanged(double)), this, SLOT(setIso(double)));
       connect(m_settingsWidget->posColor, SIGNAL(colorChanged(QColor)), this, SLOT(setPosColor(QColor)));
       connect(m_settingsWidget->negColor, SIGNAL(colorChanged(QColor)), this, SLOT(setNegColor(QColor)));

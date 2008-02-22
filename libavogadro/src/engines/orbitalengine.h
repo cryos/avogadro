@@ -103,10 +103,6 @@ namespace Avogadro {
        */
       void setRenderMode(int value);
       /**
-       * @param d step size for the surface polygonization
-       */
-      void setStepSize(double d);
-      /**
        * @param d the value of the iso surface to be rendered
        */
       void setIso(double d);
