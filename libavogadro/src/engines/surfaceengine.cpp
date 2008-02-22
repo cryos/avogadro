@@ -308,20 +308,6 @@ namespace Avogadro {
     emit changed();
   }
 
-  void SurfaceEngine::setStepSize(double d)
-  {
-    m_stepSize = d;
-    m_surfaceValid = false;
-    emit changed();
-  }
-
-  void SurfaceEngine::setPadding(double d)
-  {
-    m_padding = d;
-    m_surfaceValid = false;
-    emit changed();
-  }
-
   void SurfaceEngine::setColorMode(int value)
   {
     if (value == 1) { // ESP
@@ -347,8 +333,6 @@ namespace Avogadro {
       m_settingsWidget = new SurfaceSettingsWidget();
       connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
       connect(m_settingsWidget->renderCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setRenderMode(int)));
-      connect(m_settingsWidget->stepSizeSpin, SIGNAL(valueChanged(double)), this, SLOT(setStepSize(double)));
-      connect(m_settingsWidget->paddingSpin, SIGNAL(valueChanged(double)), this, SLOT(setPadding(double)));
       connect(m_settingsWidget->colorCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setColorMode(int)));
       connect(m_settingsWidget->customColorButton, SIGNAL(colorChanged(QColor)), this, SLOT(setColor(QColor)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));

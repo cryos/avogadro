@@ -102,14 +102,6 @@ namespace Avogadro {
        */
       void setRenderMode(int value);
       /**
-       * @param d step size for the surface polygonization
-       */
-      void setStepSize(double d);
-      /**
-       * @param d padding for the surface polygonization (how far do we look for parts of the surface)
-       */
-      void setPadding(double d);
-      /**
        * @param value coloring mode (0 = RGB, 1 = ESP)
        */
       void setColorMode(int value);
