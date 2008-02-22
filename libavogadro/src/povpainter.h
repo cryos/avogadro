@@ -66,6 +66,11 @@ namespace Avogadro
     ~POVPainter();
 
     /**
+     * @return the current global quality setting.
+     */
+    int quality() const { return 4; };
+
+    /**
      * Uses the primitive to set the type and name. Not used by POV-Ray as it
      * is not an interactive display.
      */
