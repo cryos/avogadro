@@ -286,10 +286,10 @@ namespace Avogadro {
     // We may need some logic to check if a cube is an orbital or not...
     // (e.g., someone might bring in spin density = always positive)
     m_grid->setIsoValue(m_iso);
-    m_isoGen->init(m_grid, m_stepSize);
+    m_isoGen->init(m_grid, pd);
     m_isoGen->start();
     m_grid2->setIsoValue(-m_iso);
-    m_isoGen2->init(m_grid2, m_stepSize);
+    m_isoGen2->init(m_grid2, pd);
     m_isoGen2->start();
     m_update = false;
   }
@@ -307,6 +307,8 @@ namespace Avogadro {
   void OrbitalEngine::setOpacity(int value)
   {
     m_alpha = 0.05 * value;
+    m_posColor.setAlpha(m_alpha);
+    m_negColor.setAlpha(m_alpha);
     emit changed();
   }
 
