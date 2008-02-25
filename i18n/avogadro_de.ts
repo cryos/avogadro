@@ -496,64 +496,69 @@ Linke Maustaste:   Klicken und ziehen um neue Atome und Bindungen zu erstellen
 Rechte Maustaste: Atom löschen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="331"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="337"/>
         <source>Draw Atom</source>
         <translation>Atom zeichnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="337"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="343"/>
         <source>Draw Bond</source>
         <translation>Bindung zeichnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="605"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="618"/>
         <source>Element:</source>
         <translation>Element:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="632"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="645"/>
         <source>Other...</source>
         <translation>Anderes...</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="636"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="649"/>
         <source>Bond Order:</source>
         <translation>Anzahl der Bindungen:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="641"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="654"/>
         <source>Single</source>
         <translation>Einfach</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="642"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="655"/>
         <source>Double</source>
         <translation>Zweifach</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="643"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="656"/>
         <source>Triple</source>
         <translation>Dreifach</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="651"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="664"/>
         <source>Insert SMILES</source>
         <translation>SMILES einfügen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="503"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="516"/>
         <source>Stop Insert</source>
         <translation>Eingabe beenden</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="648"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="661"/>
         <source>Generate from SMILES:</source>
         <translation>Durch SMILES erzeugen:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="645"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="658"/>
         <source>Adjust Hydrogens</source>
         <translation>Wasserstoffatome adjustieren</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="376"/>
+        <source>Change Bond Order</source>
+        <translation type="unfinished">Anzahl der Bindungen ändern</translation>
     </message>
 </context>
 <context>
@@ -1715,12 +1720,12 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
 <context>
     <name>Avogadro::OrbitalEngine</name>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalengine.cpp" line="50"/>
+        <location filename="../libavogadro/src/engines/orbitalengine.cpp" line="49"/>
         <source>Orbital rendering</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalengine.h" line="44"/>
+        <location filename="../libavogadro/src/engines/orbitalengine.h" line="45"/>
         <source>Orbitals</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1902,11 +1907,6 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
         <source>Select Solvent</source>
         <translation>Lösungsmittel auswählen</translation>
     </message>
-    <message>
-        <location filename="../avogadro/src/extensions/selectextension.cpp" line="201"/>
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Avogadro::SelectRotateTool</name>
@@ -1979,12 +1979,12 @@ Gedrückt halten um Atome auszuwählen</translation>
 <context>
     <name>Avogadro::SurfaceEngine</name>
     <message>
-        <location filename="../libavogadro/src/engines/surfaceengine.h" line="45"/>
+        <location filename="../libavogadro/src/engines/surfaceengine.h" line="46"/>
         <source>Surface</source>
         <translation>Oberfläche</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/surfaceengine.cpp" line="49"/>
+        <location filename="../libavogadro/src/engines/surfaceengine.cpp" line="48"/>
         <source>Surface rendering</source>
         <translation>Oberflächen-Darstellung</translation>
     </message>
@@ -4255,25 +4255,25 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="83"/>
         <source>Step Size:</source>
-        <translation>Schrittgröße:</translation>
+        <translation type="obsolete">Schrittgröße:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="109"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="83"/>
         <source>IsoValue:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="135"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="109"/>
         <source>Color:</source>
         <translation>Farbe:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="144"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="118"/>
         <source>Positive</source>
         <translation>Positiv</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="167"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="141"/>
         <source>Negative</source>
         <translation>Negativ</translation>
     </message>
@@ -4473,22 +4473,22 @@ Parameter:
         <translation>Winkelorientiertes Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="64"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="63"/>
         <source>Add Atom</source>
         <translation>Atom hinzufügen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="140"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="133"/>
         <source>Delete Atom</source>
         <translation>Atom entfernen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="215"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="208"/>
         <source>Add Bond</source>
         <translation>Bindung hinzufügen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="334"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="313"/>
         <source>Delete Bond</source>
         <translation>Bindung entfernen</translation>
     </message>
@@ -4553,17 +4553,17 @@ Parameter:
         <translation>Eigenschaften</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="389"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="368"/>
         <source>Change Element</source>
         <translation>Element ändern</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="456"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="435"/>
         <source>Change Bond Order</source>
         <translation>Anzahl der Bindungen ändern</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="534"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="509"/>
         <source>Insert SMILES</source>
         <translation>SMILES einfügen</translation>
     </message>
@@ -4673,7 +4673,7 @@ Parameter:
         <translation type="obsolete">Farbe</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="142"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="96"/>
         <source>Electrostatic Potential (ESP)</source>
         <translation>Elektrostatisches Potential</translation>
     </message>
@@ -4684,28 +4684,18 @@ Parameter:
     </message>
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="83"/>
-        <source>Step Size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="109"/>
-        <source>Padding:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="129"/>
         <source>Color:</source>
-        <translation type="unfinished"></translation>
+        <translation>Farbe:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="137"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="91"/>
         <source>Custom Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefinierte Farbe</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="163"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="104"/>
         <source>Custom Color:</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefinierte Farbe:</translation>
     </message>
 </context>
 <context>
