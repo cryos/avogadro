@@ -77,6 +77,9 @@ namespace Avogadro {
       
       if (a->GetDistance(b) > m_radius)
         continue;
+      
+      if (a->GetDistance(b) < 0.7) // too close
+        continue;
 
       if (a->IsHbondDonorH() && b->IsHbondAcceptor()) {
         double angle = 180.0; // default, if no neighbours on H
