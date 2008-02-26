@@ -46,8 +46,10 @@ namespace Avogadro {
   m_alpha(0.5), m_stepSize(0.33333), m_padding(2.5), m_renderMode(0), m_colorMode(0)
   {
     setDescription(tr("Surface rendering"));
-    m_grid = new Grid;
+    //m_grid = new Grid;
+    m_vdwThread = new VDWGridThread;
     m_isoGen = new IsoGen;
+    connect(m_vdwThread, SIGNAL(finished()), this, SLOT(vdwThreadFinished()));
     connect(m_isoGen, SIGNAL(finished()), this, SLOT(isoGenFinished()));
     m_color = Color(1.0, 0.0, 0.0, m_alpha);
     m_surfaceValid = false;
@@ -55,8 +57,9 @@ namespace Avogadro {
 
   SurfaceEngine::~SurfaceEngine()
   {
-    delete m_grid;
+    //delete m_grid;
     delete m_isoGen;
+    delete m_vdwThread;
 
     // Delete the settings widget if it exists
     if(m_settingsWidget)
@@ -70,78 +73,6 @@ namespace Avogadro {
     engine->setEnabled(isEnabled());
 
     return engine;
-  }
-  // We define a VDW surface here.
-  // The isosurface finder declares values < 0 to be outside the surface
-  // So values of 0.0 here equal the VDW surface of the molecule
-  // + values = the distance inside the surface (i.e., closer to the atomic cente)
-  // - values = the distance outside the surface (i.e., farther away)
-  void SurfaceEngine::VDWSurface(Molecule *mol)
-  {
-//    if (m_grid->grid() != NULL) // we already calculated this
-//      return;
-
-    OBFloatGrid grid;
-    // initialize a grid with spacing 0.333 angstroms between points, plus a padding of 2.5A.
-    grid.Init(*mol, m_stepSize, m_padding);
-    double min[3], max[3];
-    int xDim, yDim, zDim;
-
-    grid.GetMin(min);
-    m_min = Vector3f(min[0], min[1], min[2]);
-    grid.GetMax(max);
-
-    xDim = grid.GetXdim();
-    yDim = grid.GetYdim();
-    zDim = grid.GetZdim();
-
-    vector3 coord;
-    double distance, minDistance;
-    double maxVal, minVal;
-    maxVal = 0.0;
-    minVal = 0.0;
-
-    std::vector<double> values;
-    //values.resize(xDim * yDim * zDim);
-    for (int k = 0; k < zDim; ++k) {
-      coord.SetZ(min[2] + k * m_stepSize);
-      for (int j = 0; j < yDim; ++j) {
-        coord.SetY(min[1] + j * m_stepSize);
-        for (int i = 0; i < xDim; ++i)
-        {
-          coord.SetX(min[0] + i * m_stepSize);
-          minDistance = 1.0E+10;
-          FOR_ATOMS_OF_MOL(a, mol) {
-            distance = sqrt(coord.distSq(a->GetVector()));
-            distance -= etab.GetVdwRad(a->GetAtomicNum());
-
-            if (distance < minDistance)
-              minDistance = distance;
-          } // end checking atoms
-          // negative = away from molecule, 0 = vdw surface, positive = inside
-          values.push_back(-1.0 * minDistance);
-          if (-1.0 * minDistance > maxVal)
-            maxVal = -1.0 * minDistance;
-          if (-1.0 * minDistance < minVal)
-            minVal = -1.0 * minDistance;
-
-        } // x-axis
-      } // y-axis
-    } // z-axis
-
-    qDebug() << " min: " << minVal << " max " << maxVal;
-
-    OBGridData *vdwGrid = new OBGridData;
-    double xAxis[3], yAxis[3], zAxis[3];
-    xAxis[0] = m_stepSize; xAxis[1] = 0.0;        xAxis[2] = 0.0;
-    yAxis[0] = 0.0;        yAxis[1] = m_stepSize; yAxis[2] = 0.0;
-    zAxis[0] = 0.0;        zAxis[1] = 0.0;        zAxis[2] = m_stepSize;
-
-    vdwGrid->SetNumberOfPoints( xDim, yDim, zDim);
-    vdwGrid->SetLimits(min, xAxis, yAxis, zAxis );
-    vdwGrid->SetValues(values);
-
-    m_grid->setGrid(vdwGrid);
   }
 
   //                                          //
@@ -201,15 +132,20 @@ namespace Avogadro {
 
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
   {
+    qDebug() << "                                      renderOpaque";
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
     if (!m_surfaceValid)
     {
-      VDWSurface(mol);
-
-      m_grid->setIsoValue(0.0);
-      m_isoGen->init(m_grid, pd);
-      m_isoGen->start();
+      //VDWSurface(mol);
+      
+      PrimitiveList prims = primitives();
+      m_vdwThread->init(mol, prims, pd);
+      m_vdwThread->start();
+      
+      //m_isoGen->init(m_grid, pd);
+      //m_isoGen->start();
       m_surfaceValid = true;
+      return true;
     }
 
     qDebug() << " rendering surface ";
@@ -285,6 +221,29 @@ namespace Avogadro {
     return true;
   }
 
+  inline double SurfaceEngine::radius(const Atom *a) const
+  {
+    return etab.GetVdwRad(a->GetAtomicNum());
+  }
+  
+  double SurfaceEngine::radius(const PainterDevice *pd, const Primitive *p) const
+  {
+    // Atom radius
+    if (p->type() == Primitive::AtomType)
+    {
+      if(primitives().contains(p))
+      {
+        //if (pd && pd->isSelected(p))
+        //{
+        //  return radius(static_cast<const Atom *>(p)) + SEL_ATOM_EXTRA_RADIUS;
+        //}
+        return radius(static_cast<const Atom *>(p));
+      }
+    }
+    // Something else
+    return 0.;
+  }
+
   double SurfaceEngine::transparencyDepth() const
   {
     return 1.0;
@@ -310,10 +269,12 @@ namespace Avogadro {
 
   void SurfaceEngine::setColorMode(int value)
   {
-    if (value == 1) { // ESP
-      m_settingsWidget->customColorButton->setEnabled(false);
-    } else { // Custom color
-      m_settingsWidget->customColorButton->setEnabled(true);
+    if (m_settingsWidget) {
+      if (value == 1) { // ESP
+        m_settingsWidget->customColorButton->setEnabled(false);
+      } else { // Custom color
+        m_settingsWidget->customColorButton->setEnabled(true);
+      }
     }
 
     m_colorMode = value;
@@ -337,29 +298,34 @@ namespace Avogadro {
       connect(m_settingsWidget->customColorButton, SIGNAL(colorChanged(QColor)), this, SLOT(setColor(QColor)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
 
+      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
+      m_settingsWidget->renderCombo->setCurrentIndex(m_renderMode);
+      m_settingsWidget->colorCombo->setCurrentIndex(m_colorMode);
+      if (m_colorMode == 1) { // ESP
+        m_settingsWidget->customColorButton->setEnabled(false);
+      } else { // Custom color
+        m_settingsWidget->customColorButton->setEnabled(true);
+      }
       QColor initial;
       initial.setRgbF(m_color.red(), m_color.green(), m_color.blue());
       m_settingsWidget->customColorButton->setColor(initial);
     }
     return m_settingsWidget;
   }
+  
+  void SurfaceEngine::vdwThreadFinished()
+  {
+    qDebug() << "                                      vdwThreadFinished()";
+    m_isoGen->init(m_vdwThread->grid(), 0, m_vdwThread->stepSize());
+    m_isoGen->start();
+  }
 
   void SurfaceEngine::isoGenFinished()
   {
+    qDebug() << "                                      isoGenFinished()";
     emit changed();
   }
 
-  void SurfaceEngine::invalidateSurface(Primitive *primitive)
-  {
-    qDebug() << "invalidateSurface()";
-    if ((primitive->type() == Primitive::AtomType) || (primitive->type() == Primitive::MoleculeType)) {
-      m_surfaceValid = false;
-      // stop running threads
-      m_isoGen->quit();
-    }
-
-    //emit changed();
-  }
 
   void SurfaceEngine::settingsWidgetDestroyed()
   {
@@ -375,42 +341,208 @@ namespace Avogadro {
 
   void SurfaceEngine::addPrimitive(Primitive *primitive)
   {
+    qDebug() << "                                      addPrimitive()";
+    if (primitive->type() == Primitive::AtomType) {
+      m_surfaceValid = false;
+    }
     Engine::addPrimitive(primitive);
-    m_surfaceValid = false;
   }
 
-  void SurfaceEngine::updatePrimitive(Primitive *)
+  void SurfaceEngine::updatePrimitive(Primitive *primitive)
   {
-    m_surfaceValid = false;
+    if ((primitive->type() == Primitive::AtomType) || (primitive->type() == Primitive::MoleculeType)) {
+      m_surfaceValid = false;
+    }
+    Engine::updatePrimitive(primitive);
   }
 
   void SurfaceEngine::removePrimitive(Primitive *primitive)
   {
+    if (primitive->type() == Primitive::AtomType) {
+      m_surfaceValid = false;
+    }
     Engine::removePrimitive(primitive);
-    m_surfaceValid = false;
+  }
+  
+  VDWGridThread::VDWGridThread(QObject *parent): m_molecule(0), m_stepSize(0.0), m_padding(0.0)
+  {
+    m_grid = new Grid;
+  }
+  
+  VDWGridThread::~VDWGridThread()
+  {
+    delete m_grid;
   }
 
-  /*
+  void VDWGridThread::init(Molecule *molecule, PrimitiveList &primitives, const PainterDevice* pd, double stepSize)
+  {
+    m_mutex.lock();
+    //if (!m_mutex.tryLock())
+    //  return;
+    
+    if (stepSize)
+      m_stepSize = stepSize;
+    else
+    {
+      // Work out the step size from the global quality level
+      switch(pd->painter()->quality())
+      {
+      case 0:
+        m_stepSize = 1.0;
+        break;
+      case 1:
+        m_stepSize = 0.5;
+        break;
+      case 2:
+        m_stepSize = 0.3;
+        break;
+      case 3:
+        m_stepSize = 0.22;
+        break;
+      case 4:
+        m_stepSize = 0.15;
+        break;
+      default:
+        m_stepSize = 0.10;
+      }
+    }
+ 
+    m_molecule = molecule;
+    m_primitives = primitives;
+    
+    m_mutex.unlock();
+  }
+  
+  Grid* VDWGridThread::grid()
+  {
+    return m_grid;
+  }
+  
+  double VDWGridThread::stepSize()
+  {
+    return m_stepSize;
+  }
+  
+  // We define a VDW surface here.
+  // The isosurface finder declares values < 0 to be outside the surface
+  // So values of 0.0 here equal the VDW surface of the molecule
+  // + values = the distance inside the surface (i.e., closer to the atomic cente)
+  // - values = the distance outside the surface (i.e., farther away)
+  void VDWGridThread::run()
+  {
+    m_mutex.lock();
+    //if (!m_mutex.tryLock())
+    //  return;
+
+    //if (m_grid->grid() != NULL) // we already calculated this
+    //  return;
+
+    QList<Primitive*> surfaceAtoms = m_primitives.subList(Primitive::AtomType);
+    OBFloatGrid grid;
+    grid.Init(*m_molecule, m_stepSize, 2.5);
+    double min[3]/*, max[3]*/;
+    int xDim, yDim, zDim;
+
+    grid.GetMin(min);
+    //m_min = Vector3f(min[0], min[1], min[2]);
+    //grid.GetMax(max);
+
+    xDim = grid.GetXdim();
+    yDim = grid.GetYdim();
+    zDim = grid.GetZdim();
+
+    vector3 coord;
+    double distance, minDistance;
+    //double maxVal, minVal;
+    //maxVal = 0.0;
+    //minVal = 0.0;
+
+    std::vector<double> values;
+    //values.resize(xDim * yDim * zDim);
+    for (int k = 0; k < zDim; ++k) {
+      coord.SetZ(min[2] + k * m_stepSize);
+      for (int j = 0; j < yDim; ++j) {
+        coord.SetY(min[1] + j * m_stepSize);
+        for (int i = 0; i < xDim; ++i)
+        {
+          coord.SetX(min[0] + i * m_stepSize);
+          minDistance = 1.0E+10;
+	  for (int ai=0; ai < surfaceAtoms.size(); ai++) {
+            distance = sqrt(coord.distSq(static_cast<Atom*>(surfaceAtoms[ai])->GetVector()));
+            distance -= etab.GetVdwRad(static_cast<Atom*>(surfaceAtoms[ai])->GetAtomicNum());
+
+            if (distance < minDistance)
+              minDistance = distance;
+          } // end checking atoms
+          // negative = away from molecule, 0 = vdw surface, positive = inside
+          values.push_back(-1.0 * minDistance);
+	  /*
+          if (-1.0 * minDistance > maxVal)
+            maxVal = -1.0 * minDistance;
+          if (-1.0 * minDistance < minVal)
+            minVal = -1.0 * minDistance;
+	  */
+        } // x-axis
+      } // y-axis
+    } // z-axis
+
+    //qDebug() << " min: " << minVal << " max " << maxVal;
+
+    OBGridData *vdwGrid = new OBGridData;
+    double xAxis[3], yAxis[3], zAxis[3];
+    xAxis[0] = m_stepSize; xAxis[1] = 0.0;        xAxis[2] = 0.0;
+    yAxis[0] = 0.0;        yAxis[1] = m_stepSize; yAxis[2] = 0.0;
+    zAxis[0] = 0.0;        zAxis[1] = 0.0;        zAxis[2] = m_stepSize;
+
+    vdwGrid->SetNumberOfPoints( xDim, yDim, zDim);
+    vdwGrid->SetLimits(min, xAxis, yAxis, zAxis );
+    vdwGrid->SetValues(values);
+
+    m_grid->setGrid(vdwGrid);
+    m_grid->setIsoValue(0.0);
+
+    m_mutex.unlock();
+  }
+
   void SurfaceEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);
-    settings.setValue("alpha", m_alpha);
-    settings.setValue("stepSize", m_stepSize);
-    settings.setValue("padding", m_padding);
-    //settings.setValue("renderMode", m_renderMode);
-    //settings.setValue("colorMode", m_colorMode);
+    settings.setValue("opacity", 20*m_alpha);
+    settings.setValue("renderMode", m_renderMode);
+    settings.setValue("colorMode", m_colorMode);
+    /*
+    settings.setValue("colorRed", m_color.red());
+    settings.setValue("colorGreen", m_color.green());
+    settings.setValue("colorBlue", m_color.blue());
+    */
   }
 
   void SurfaceEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
-    //m_alpha = settings.value("alpha", 0.5).toDouble();
-    m_stepSize = settings.value("stepSize", 0.33333).toDouble();
-    m_padding = settings.value("padding", 2.5).toDouble();
-    m_renderMode = 0;
-    m_colorMode = 0;
+    setOpacity(settings.value("opacity", 20).toInt());
+    setRenderMode(settings.value("renderMode", 0).toInt());
+    setColorMode(settings.value("colorMode", 0).toInt());
+    m_color.set(settings.value("colorRed", 1.0).toDouble(), 
+                     settings.value("colorGreen", 0.0).toDouble(),
+		     settings.value("colorBlue", 0.0).toDouble());
+    
+    /*
+    m_color.setRed(settings.value("colorRed", 1.0).toDouble());
+    m_color.setGreen(settings.value("colorGreen", 0.0).toDouble());
+    m_color.setBlue(settings.value("colorBlue", 0.0).toDouble());
+    */
+    if(m_settingsWidget)
+    {
+      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
+      m_settingsWidget->renderCombo->setCurrentIndex(m_renderMode);
+      m_settingsWidget->colorCombo->setCurrentIndex(m_colorMode);
+      QColor initial;
+      initial.setRgbF(m_color.red(), m_color.green(), m_color.blue());
+      m_settingsWidget->customColorButton->setColor(initial);
+    }
   }
-  */
+
 }
 
 #include "surfaceengine.moc"

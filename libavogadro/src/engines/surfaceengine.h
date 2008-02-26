@@ -38,6 +38,30 @@ namespace Avogadro {
 
   class SurfacePrivateData;
   class SurfaceSettingsWidget;
+  
+  //! VDWGridThread
+  class VDWGridThread : public QThread
+  {
+    Q_OBJECT;
+
+    public:
+      VDWGridThread(QObject *parent=0);
+      ~VDWGridThread();
+
+      void init(Molecule *molecule, PrimitiveList &primitives, const PainterDevice* pd, double stepSize = 0.0);
+      void run();
+      Grid* grid();
+      double stepSize();
+
+    private:
+      QMutex m_mutex;
+      Molecule *m_molecule;
+      PrimitiveList m_primitives;
+      Grid *m_grid;
+      double m_stepSize;
+      double m_padding;
+  };
+
 
   //! Surface Engine class.
   class SurfaceEngine : public Engine
@@ -63,10 +87,18 @@ namespace Avogadro {
 
       QWidget* settingsWidget();
 
-      //void writeSettings(QSettings &settings) const;
-      //void readSettings(QSettings &settings);
+      double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 
       void setPrimitives(const PrimitiveList &primitives);
+      /**
+       * Write the engine settings so that they can be saved between sessions.
+       */
+      void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read in the settings that have been saved for the engine instance.
+       */
+      void readSettings(QSettings &settings);
 
     public Q_SLOTS:
       void addPrimitive(Primitive *primitive);
@@ -75,9 +107,11 @@ namespace Avogadro {
 
     protected:
       SurfaceSettingsWidget *m_settingsWidget;
-      Grid *m_grid;
+      //Grid *m_grid;
+      VDWGridThread *m_vdwThread;
       IsoGen *m_isoGen;
-      Eigen::Vector3f m_min;
+      //Eigen::Vector3f m_min;
+      PainterDevice *m_pd;
       Color  m_color;
       double m_alpha;
       double m_stepSize;
@@ -86,12 +120,13 @@ namespace Avogadro {
       int    m_colorMode;
       bool   m_surfaceValid;
 
-      void VDWSurface(Molecule *mol);
+      inline double radius(const Atom *a) const;
+      //void VDWSurface(Molecule *mol);
       Color espColor(Molecule *mol, Eigen::Vector3f &pos);
 
     private Q_SLOTS:
+      void vdwThreadFinished();
       void isoGenFinished();
-      void invalidateSurface(Primitive *primitive);
       void settingsWidgetDestroyed();
       /**
        * @param value opacity of the surface / 20
