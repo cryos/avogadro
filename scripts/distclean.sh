@@ -28,7 +28,6 @@ for i in `find . -type d -name ".git" -print | sort`; do
  	$RM -r $i;
 	echo "$RM -r $i"
 done
-
 for i in `find . -type f -name "*~" -print | sort`; do
  	$RM $i;
 	echo "$RM $i"
@@ -46,6 +45,22 @@ for i in `find . -type f -name "*.obj" -print | sort`; do
 	echo "$RM $i"
 done
 for i in `find . -type f -name "*.o" -print | sort`; do
+ 	$RM $i;
+	echo "$RM $i"
+done
+for i in `find . -type f -name "*.moc" -print | sort`; do
+ 	$RM $i;
+	echo "$RM $i"
+done
+for i in `find . -type f -name "ui*.h" -print | sort`; do
+ 	$RM $i;
+	echo "$RM $i"
+done
+for i in `find . -type f -name "qrc*.cxx" -print | sort`; do
+ 	$RM $i;
+	echo "$RM $i"
+done
+for i in `find . -type f -name "*.qm" -print | sort`; do
  	$RM $i;
 	echo "$RM $i"
 done
