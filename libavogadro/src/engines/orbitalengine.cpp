@@ -46,7 +46,7 @@ namespace Avogadro {
   m_grid(0), m_isoGen(0), m_min(0., 0., 0.),
   m_alpha(0.75), m_stepSize(0.33333), m_iso(0.01), m_renderMode(0), m_update(true)
   {
-    setDescription(tr("Orbital rendering"));
+    setDescription(tr("Orbital Rendering"));
     m_grid = new Grid;
     m_grid2 = new Grid;
     m_isoGen = new IsoGen;
@@ -269,9 +269,19 @@ namespace Avogadro {
     else
     {
       qDebug() << "Molecular orbital grid found!";
+      
+      // Two grids -- one for positive isovalue, one for negative
       m_grid->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
       m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
+      
+      // if we want multiple grids, we can use the new OB-2.2 code
+      // mol->GetAllData(OBGenericDataType::GridData);
+      // returns vector<OBGenericData *>
+      // we'd want a popup menu or something
     }
+
+  // attribute is the text key for the grid (as an std::string)
+    qDebug() << " Orbital title: " << m_grid->grid()->GetAttribute().c_str();
 
     qDebug() << "Min value = " << m_grid->grid()->GetMinValue()
              << "Max value = " << m_grid->grid()->GetMaxValue();
