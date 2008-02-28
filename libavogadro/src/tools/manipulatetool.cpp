@@ -66,6 +66,9 @@ namespace Avogadro {
 
   void ManipulateTool::zoom(GLWidget *widget, const Eigen::Vector3d &goal, double delta) const
   {
+    // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+    widget->setCursor(Qt::SizeVerCursor);
+
     // Move the selected atom(s) in to or out of the screen
     MoveAtomCommand *cmd  = 0;
     Vector3d transformedGoal = widget->camera()->modelview() * goal;
@@ -97,8 +100,12 @@ namespace Avogadro {
       cmd = new MoveAtomCommand(widget->molecule(), m_clickedAtom, atomTranslation * m_clickedAtom->pos(), m_undo);
   }
 
-  void ManipulateTool::translate(GLWidget *widget, const Eigen::Vector3d &what, const QPoint &from, const QPoint &to) const
+  void ManipulateTool::translate(GLWidget *widget, const Eigen::Vector3d &what,
+                                 const QPoint &from, const QPoint &to) const
   {
+    // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+    widget->setCursor(Qt::SizeAllCursor);
+
     // Translate the selected atoms in the x and y sense of the view
     MoveAtomCommand *cmd  = 0;
     Vector3d fromPos = widget->camera()->unProject(from, what);
@@ -122,8 +129,12 @@ namespace Avogadro {
       cmd = new MoveAtomCommand(widget->molecule(), m_clickedAtom, atomTranslation * m_clickedAtom->pos(), m_undo);
   }
 
-  void ManipulateTool::rotate(GLWidget *widget, const Eigen::Vector3d &center, double deltaX, double deltaY) const
+  void ManipulateTool::rotate(GLWidget *widget, const Eigen::Vector3d &center,
+                              double deltaX, double deltaY) const
   {
+    // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+    widget->setCursor(Qt::ClosedHandCursor);
+
     // Rotate the selected atoms about the center
     MoveAtomCommand *cmd  = 0;
     // rotate only selected primitives
@@ -168,15 +179,36 @@ namespace Avogadro {
     // Make sure there aren't modifier keys clicked with the left button
     // If the user has a Mac and only a one-button mouse, everything
     // looks like a left button
-    m_leftButtonPressed = ( event->buttons() & Qt::LeftButton &&
-        event->modifiers() == Qt::NoModifier);
+    if (event->buttons() & Qt::LeftButton &&
+        event->modifiers() == Qt::NoModifier)
+    {
+      m_leftButtonPressed = true;
+      // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+      widget->setCursor(Qt::SizeAllCursor);
+    }
 
     // On a Mac, click and hold the Option key (Alt in Qt-speak)
-    m_midButtonPressed = ( event->buttons() & Qt::MidButton ||
-        (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::AltModifier));
-    // On a Mac, click and hold either the Command or Control Keys (Control or Meta in Qt-speak)
-    m_rightButtonPressed = ( event->buttons() & Qt::RightButton ||
-        (event->buttons() & Qt::LeftButton && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)));
+    if (event->buttons() & Qt::MidButton ||
+        (event->buttons() & Qt::LeftButton &&
+         event->modifiers() == Qt::AltModifier))
+    {
+      m_midButtonPressed = true;
+      // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+      widget->setCursor(Qt::SizeVerCursor);
+    }
+
+    // On a Mac, click and hold either the Command or Control Keys
+    // (Control or Meta in Qt-speak)
+    if (event->buttons() & Qt::RightButton ||
+        (event->buttons() & Qt::LeftButton &&
+        (event->modifiers() == Qt::ControlModifier
+         || event->modifiers() == Qt::MetaModifier)))
+    {
+      m_rightButtonPressed = true;
+      // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+      widget->setCursor(Qt::ClosedHandCursor);
+    }
+
     m_clickedAtom = widget->computeClickedAtom(event->pos());
 
     // update eyecandy angle
@@ -195,6 +227,9 @@ namespace Avogadro {
     m_midButtonPressed = false;
     m_rightButtonPressed = false;
     m_clickedAtom = 0;
+
+    // Set the cursor back to the default cursor
+    widget->setCursor(Qt::ArrowCursor);
 
     widget->update();
     return 0;

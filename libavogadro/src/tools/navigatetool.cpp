@@ -92,19 +92,42 @@ namespace Avogadro {
   QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
   {
     m_lastDraggingPosition = event->pos();
-    m_leftButtonPressed = (event->buttons() & Qt::LeftButton
-        && event->modifiers() == Qt::NoModifier);
-    // On the Mac, either use a three-button mouse
-    // or hold down the Option key (AltModifier in Qt notation)
-    m_midButtonPressed = ( (event->buttons() & Qt::MidButton) ||
-        (event->buttons() & Qt::LeftButton && event->modifiers() == Qt::AltModifier) );
-    // Hold down the Command key (ControlModifier in Qt notation) for right button
-    m_rightButtonPressed = ( (event->buttons() & Qt::RightButton) ||
-        (event->buttons() & Qt::LeftButton && (event->modifiers()== Qt::ControlModifier || event->modifiers() == Qt::MetaModifier )) );
+    // Make sure there aren't modifier keys clicked with the left button
+    // If the user has a Mac and only a one-button mouse, everything
+    // looks like a left button
+    if (event->buttons() & Qt::LeftButton &&
+        event->modifiers() == Qt::NoModifier)
+    {
+      m_leftButtonPressed = true;
+      // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+      widget->setCursor(Qt::ClosedHandCursor);
+    }
+
+    // On a Mac, click and hold the Option key (Alt in Qt-speak)
+    if (event->buttons() & Qt::MidButton ||
+        (event->buttons() & Qt::LeftButton &&
+         event->modifiers() == Qt::AltModifier))
+    {
+      m_midButtonPressed = true;
+      // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+      widget->setCursor(Qt::SizeVerCursor);
+    }
+
+    // On a Mac, click and hold either the Command or Control Keys
+    // (Control or Meta in Qt-speak)
+    if (event->buttons() & Qt::RightButton ||
+        (event->buttons() & Qt::LeftButton &&
+         (event->modifiers() == Qt::ControlModifier
+          || event->modifiers() == Qt::MetaModifier)))
+    {
+      m_rightButtonPressed = true;
+      // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+      widget->setCursor(Qt::SizeAllCursor);
+    }
 
     m_clickedAtom = widget->computeClickedAtom(event->pos());
     computeReferencePoint(widget);
-    
+
     // Initialise the angle variables on any new mouse press
     m_yAngleEyecandy = 0.;
     m_xAngleEyecandy = 0.;
@@ -119,6 +142,9 @@ namespace Avogadro {
     m_midButtonPressed = false;
     m_rightButtonPressed = false;
     m_clickedAtom = 0;
+
+    // Set the cursor back to the default cursor
+    widget->setCursor(Qt::ArrowCursor);
 
     widget->update();
     return 0;

@@ -4,6 +4,10 @@
 	doneCurrent calls - should hopefully increase stability although I
 	think threaded GL still needs some love (as well as my ATI driver!)
 
+	* libavogadro/src/tools/manipulatetool.cpp,
+	libavogadro/src/tools/navigatetool.cpp: Provide more visual cues by
+	changing the mouse cursor.
+
 2008-02-21  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engines/orbitalsettingswidget.ui,
