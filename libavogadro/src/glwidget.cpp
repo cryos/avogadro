@@ -173,7 +173,7 @@ namespace Avogadro {
   private:
     GLWidget *widget;
   };
-  
+
   class GLWidgetPrivate
   {
   public:
@@ -277,7 +277,7 @@ namespace Avogadro {
     GLuint                 dlistQuick;
     GLuint                 dlistOpaque;
     GLuint                 dlistTransparent;
-  
+
     /**
       * Member GLPainterDevice which is passed to the engines.
       */
@@ -323,7 +323,7 @@ namespace Avogadro {
         enginesLoaded = true;
       }
   }
-  
+
   void GLWidgetPrivate::updateListQuick()
   {
     // Create a display list cache
@@ -486,6 +486,7 @@ namespace Avogadro {
     d->camera->setParent( this );
     setAutoBufferSwap( false );
 #ifdef ENABLE_THREADED_GL
+    qDebug() << "Threaded GL enabled.";
     d->thread = new GLThread( this, this );
     doneCurrent();
     d->thread->start();
@@ -506,7 +507,8 @@ namespace Avogadro {
 
   void GLWidget::initializeGL()
   {
-    qDebug() << "GLWidget Initialized";
+    qDebug() << "GLWidget initialisation...";
+    makeCurrent();
     qglClearColor( d->background );
 
     glShadeModel( GL_SMOOTH );
@@ -540,6 +542,7 @@ namespace Avogadro {
     glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
     glLightfv( GL_LIGHT0, GL_POSITION, position );
     glEnable( GL_LIGHT0 );
+    qDebug() << "GLWidget initialised...";
 
   }
 
@@ -549,14 +552,12 @@ namespace Avogadro {
 #ifdef ENABLE_THREADED_GL
     d->thread->resize( event->size().width(), event->size().height() );
 #else
-    makeCurrent();
     if(!d->initialized)
       {
         d->initialized = true;
         initializeGL();
       }
     resizeGL( event->size().width(), event->size().height() );
-    doneCurrent();
 #endif
   }
 
@@ -927,9 +928,10 @@ namespace Avogadro {
     //qDebug() << "paintEvent";
 #ifdef ENABLE_THREADED_GL
     // tell our thread to paint
-    d->paintCondition.wakeAll();
-#else
     makeCurrent();
+    d->paintCondition.wakeAll();
+    doneCurrent();
+#else
     if(!d->initialized)
       {
         d->initialized = true;
@@ -938,7 +940,6 @@ namespace Avogadro {
     qglClearColor(d->background);
     paintGL();
     swapBuffers();
-    doneCurrent();
 #endif
   }
 
@@ -1323,8 +1324,8 @@ namespace Avogadro {
 
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.lock();
-#endif
     makeCurrent();
+#endif
     //X   hits.clear();
 
     glSelectBuffer( d->selectBufSize, d->selectBuf );
@@ -1361,9 +1362,8 @@ namespace Avogadro {
     glMatrixMode( GL_MODELVIEW );
     glPopMatrix();
 
-    doneCurrent();
-
 #ifdef ENABLE_THREADED_GL
+    doneCurrent();
     d->renderMutex.unlock();
 #endif
 
