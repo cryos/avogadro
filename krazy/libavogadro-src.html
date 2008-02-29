@@ -5,9 +5,9 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 21<br>
-Files Processed = 41<br>
-Total Issues = 6 ...as of Dezember 03 2007 20:46:12</p>
+<p>Checkers Run = 23<br>
+Files Processed = 47<br>
+Total Issues = 14 ...as of February 29 2008 09:58:57</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -31,17 +31,31 @@ Total Issues = 6 ...as of Dezember 03 2007 20:46:12</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>okay!</b>
+<b>OOPS! 2 issues found!</b>
+<ul>
+<li>	../libavogadro/src/colorbutton.h: line#50 (1)
+</li>
+<li>	../libavogadro/src/periodictableview.h: line#170 (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
+	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
+	this to avoid mistaken implicit constructor ambiguities. Copy
+	constructors should not be explicit.</p>
+</li>
+
 <li>Check validity of i18n calls... 
+<b>okay!</b>
+<li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
 <b>OOPS! 3 issues found!</b>
 <ul>
-<li>	../libavogadro/src/elementcolor.cpp: include own header first line#27
+<li>	../libavogadro/src/elementcolor.cpp: include own header first line#28
 </li>
-<li>	../libavogadro/src/global.cpp: put config.h in angle brackets line#26
+<li>	../libavogadro/src/residuecolor.cpp: include own header first line#26
 </li>
-<li>	../libavogadro/src/residuecolor.cpp: include own header first line#27
+<li>	../libavogadro/src/tool.cpp: include own header first line#26
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
@@ -60,9 +74,11 @@ Total Issues = 6 ...as of Dezember 03 2007 20:46:12</p>
 <li>Check for compares to QString::null... 
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
-<b>OOPS! 1 issue found!</b>
+<b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../libavogadro/src/color.cpp: line#118[QString]
+<li>	../libavogadro/src/colorbutton.cpp: line#39[QColor]
+</li>
+<li>	../libavogadro/src/colorbutton.cpp: line#55[QColor]
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
@@ -77,9 +93,9 @@ Total Issues = 6 ...as of Dezember 03 2007 20:46:12</p>
 <li>Check for classes that should use the 'Q_OBJECT' macro... 
 <b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../libavogadro/src/painterengine.h: line#38 (1)
+<li>	../libavogadro/src/painter.h: line#47 (1)
 </li>
-<li>	../libavogadro/src/painter.h: line#50 (1)
+<li>	../libavogadro/src/painterengine.h: line#36 (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	QObject derived classes should use the Q_OBJECT macro.</p>
@@ -88,7 +104,28 @@ Total Issues = 6 ...as of Dezember 03 2007 20:46:12</p>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
-<b>okay!</b>
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	../libavogadro/src/periodictableview.cpp: line#344[minimise] (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may
+	show up later in API documentation, handbooks, etc.  Misspelled
+	strings make the translator&#39;s job harder. Please use US English.</p>
+</li>
+
+<li>Check for system calls to replace by KDE or Qt equivalents... 
+<b>OOPS! 4 issues found!</b>
+<ul>
+<li>	../libavogadro/src/glwidget.cpp: line#303 getenv[qgetenv],304 getenv[qgetenv] (2)
+</li>
+<li>	../libavogadro/src/toolgroup.cpp: line#75 getenv[qgetenv],77 getenv[qgetenv] (2)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Some system calls are not portable, please use the suggested
+	portable wrapper instead. See kde_file.h</p>
+</li>
+
 </ol>
 <br>
 </ul>

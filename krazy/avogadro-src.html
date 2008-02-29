@@ -5,9 +5,9 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 21<br>
+<p>Checkers Run = 23<br>
 Files Processed = 31<br>
-Total Issues = 6 ...as of Dezember 03 2007 20:49:15</p>
+Total Issues = 10 ...as of February 29 2008 10:02:44</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -24,9 +24,10 @@ Total Issues = 6 ...as of Dezember 03 2007 20:49:15</p>
 <li>	../avogadro/src/application.cpp: O/S or Compiler specific macro line#25[Q_OS_UNIX],35[Q_OS_UNIX] (2)
 </li>
 </ul>
-<p><p><p><b>Why should I care?</b>	For source files and non-installed headers, do not have cpp
+<p><p><p><b>Why should I care?</b>	C++ source files and non-installed headers should NOT use cpp
 	conditionals that check for a certain O/S or compiler; instead use
-	CMake HAVE_foo macros.</p>
+	CMake HAVE_foo macros. We want to check for features discovered
+	during CMake time rather than for a specific O/S.</p>
 </li>
 
 <li>Check for single char QStrings better written as a QChar... 
@@ -42,6 +43,8 @@ Total Issues = 6 ...as of Dezember 03 2007 20:49:15</p>
 <li>Check for C++ ctors that should be declared 'explicit'... 
 <b>okay!</b>
 <li>Check validity of i18n calls... 
+<b>okay!</b>
+<li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
 <b>OOPS! 4 issues found!</b>
@@ -71,7 +74,18 @@ Total Issues = 6 ...as of Dezember 03 2007 20:49:15</p>
 <li>Check for compares to QString::null... 
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
-<b>okay!</b>
+<b>OOPS! 2 issues found!</b>
+<ul>
+<li>	../avogadro/src/addenginedialog.cpp: line#84[QString]
+</li>
+<li>	../avogadro/src/mainwindow.cpp: line#455[QString]
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
+	references-to-const instead. For example: &#39;func( QDateTime dt )&#39; is
+	better written as &#39;func( const QDateTime &amp;dt )&#39;</p>
+</li>
+
 <li>Check for invalid SIGNALs and SLOTs passed to connect()... 
 <b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
@@ -82,6 +96,16 @@ Total Issues = 6 ...as of Dezember 03 2007 20:49:15</p>
 <b>okay!</b>
 <li>Check for spelling errors... 
 <b>okay!</b>
+<li>Check for system calls to replace by KDE or Qt equivalents... 
+<b>OOPS! 2 issues found!</b>
+<ul>
+<li>	../avogadro/src/mainwindow.cpp: line#1404 getenv[qgetenv],1405 getenv[qgetenv] (2)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Some system calls are not portable, please use the suggested
+	portable wrapper instead. See kde_file.h</p>
+</li>
+
 </ol>
 <br>
 </ul>

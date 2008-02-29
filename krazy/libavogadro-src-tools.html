@@ -5,9 +5,9 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 21<br>
-Files Processed = 28<br>
-Total Issues = 9 ...as of Dezember 03 2007 20:47:16</p>
+<p>Checkers Run = 23<br>
+Files Processed = 26<br>
+Total Issues = 10 ...as of February 29 2008 10:00:21</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -17,9 +17,9 @@ Total Issues = 9 ...as of Dezember 03 2007 20:47:16</p>
 <li>Check for methods that return 'const' refs in public classes... 
 <b>okay!</b>
 <li>Check for contractions in strings... 
-<b>OOPS! 3 issues found!</b>
+<b>OOPS! 4 issues found!</b>
 <ul>
-<li>	../libavogadro/src/tools/clickmeasuretool.cpp: line#177[don&#39;t],185[don&#39;t],194[don&#39;t] (3)
+<li>	../libavogadro/src/tools/clickmeasuretool.cpp: line#233[don&#39;t],241[don&#39;t],250[don&#39;t],259[don&#39;t] (4)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Contractions in strings are sometimes hard to translate so do not
@@ -30,7 +30,18 @@ Total Issues = 9 ...as of Dezember 03 2007 20:47:16</p>
 <li>Check for cpp macros and usage... 
 <b>okay!</b>
 <li>Check for single char QStrings better written as a QChar... 
-<b>okay!</b>
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	../libavogadro/src/tools/drawtool.cpp: line#572 (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Adding single characters to a QString is faster if the characters
+	are QChars and not QStrings.  For example: QString path = oldpath +
+	&quot;/&quot; + base is better written as QString path = oldpath + &#39;/&#39; +
+	base. Same holds for arguments to QString::startsWith() and
+	QString::endsWith()</p>
+</li>
+
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
 <li>Check public classes with private members or d-pointer issues... 
@@ -40,18 +51,10 @@ Total Issues = 9 ...as of Dezember 03 2007 20:47:16</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../libavogadro/src/tools/bondcentrictool.h: line#363 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
-	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
-	this to avoid mistaken implicit constructor ambiguities. Copy
-	constructors should not be explicit.</p>
-</li>
-
+<b>okay!</b>
 <li>Check validity of i18n calls... 
+<b>okay!</b>
+<li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
 <b>okay!</b>
@@ -83,7 +86,7 @@ Total Issues = 9 ...as of Dezember 03 2007 20:47:16</p>
 <ul>
 <li>	../libavogadro/src/tools/autoopttool.cpp: line#2[optimisation] (1)
 </li>
-<li>	../libavogadro/src/tools/autoopttool.h: line#2[optimisation],73[optimisation] (2)
+<li>	../libavogadro/src/tools/autoopttool.h: line#2[optimisation],78[optimisation] (2)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may
@@ -91,6 +94,8 @@ Total Issues = 9 ...as of Dezember 03 2007 20:47:16</p>
 	strings make the translator&#39;s job harder. Please use US English.</p>
 </li>
 
+<li>Check for system calls to replace by KDE or Qt equivalents... 
+<b>okay!</b>
 </ol>
 <br>
 </ul>

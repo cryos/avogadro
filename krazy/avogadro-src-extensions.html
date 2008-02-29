@@ -5,9 +5,9 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 21<br>
-Files Processed = 22<br>
-Total Issues = 11 ...as of Dezember 03 2007 20:50:09</p>
+<p>Checkers Run = 23<br>
+Files Processed = 38<br>
+Total Issues = 21 ...as of February 29 2008 10:04:39</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -21,11 +21,15 @@ Total Issues = 11 ...as of Dezember 03 2007 20:50:09</p>
 <li>Check for cpp macros and usage... 
 <b>okay!</b>
 <li>Check for single char QStrings better written as a QChar... 
-<b>OOPS! 2 issues found!</b>
+<b>OOPS! 4 issues found!</b>
 <ul>
-<li>	../avogadro/src/extensions/forcefieldextension.cpp: line#107 (1)
+<li>	../avogadro/src/extensions/dockingextension.cpp: line#124 (1)
 </li>
-<li>	../avogadro/src/extensions/gamessextension.cpp: line#86 (1)
+<li>	../avogadro/src/extensions/forcefieldextension.cpp: line#130 (1)
+</li>
+<li>	../avogadro/src/extensions/gamessextension.cpp: line#91 (1)
+</li>
+<li>	../avogadro/src/extensions/propextension.cpp: line#105 (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Adding single characters to a QString is faster if the characters
@@ -44,9 +48,13 @@ Total Issues = 11 ...as of Dezember 03 2007 20:50:09</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>OOPS! 1 issue found!</b>
+<b>OOPS! 3 issues found!</b>
 <ul>
 <li>	../avogadro/src/extensions/gamessefpmatchdialog.h: line#49 (1)
+</li>
+<li>	../avogadro/src/extensions/propextension.h: line#108 (1)
+</li>
+<li>	../avogadro/src/extensions/propmodel.h: line#63 (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
@@ -57,9 +65,15 @@ Total Issues = 11 ...as of Dezember 03 2007 20:50:09</p>
 
 <li>Check validity of i18n calls... 
 <b>okay!</b>
+<li>Check for invalid icon names... 
+<b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 7 issues found!</b>
+<b>OOPS! 12 issues found!</b>
 <ul>
+<li>	../avogadro/src/extensions/constraintsmodel.cpp: do not include QtModules line#29(QtGui)
+</li>
+<li>	../avogadro/src/extensions/dockingextension.cpp: do not include QtModules line#27(QtGui)
+</li>
 <li>	../avogadro/src/extensions/forcefieldextension.cpp: do not include QtModules line#28(QtGui)
 </li>
 <li>	../avogadro/src/extensions/gamessextension.cpp: do not include QtModules line#38(QtGui)
@@ -68,9 +82,15 @@ Total Issues = 11 ...as of Dezember 03 2007 20:50:09</p>
 </li>
 <li>	../avogadro/src/extensions/hydrogensextension.cpp: do not include QtModules line#30(QtGui)
 </li>
+<li>	../avogadro/src/extensions/propextension.cpp: do not include QtModules line#27(QtGui)
+</li>
+<li>	../avogadro/src/extensions/propmodel.cpp: do not include QtModules line#29(QtGui)
+</li>
 <li>	../avogadro/src/extensions/selectextension.cpp: do not include QtModules line#30(QtGui)
 </li>
 <li>	../avogadro/src/extensions/unitcellextension.cpp: do not include QtModules line#26(QtGui)
+</li>
+<li>	../avogadro/src/extensions/dockingextension.h: missing or improper include guard in header
 </li>
 <li>	../avogadro/src/extensions/gamessinputdialog.h: missing or improper include guard in header
 </li>
@@ -101,8 +121,10 @@ Total Issues = 11 ...as of Dezember 03 2007 20:50:09</p>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
-<b>OOPS! 1 issue found!</b>
+<b>OOPS! 2 issues found!</b>
 <ul>
+<li>	../avogadro/src/extensions/constraintsdialog.h: line#62[extention] (1)
+</li>
 <li>	../avogadro/src/extensions/gamessinputdialog.h: line#90[propogate] (1)
 </li>
 </ul>
@@ -111,6 +133,8 @@ Total Issues = 11 ...as of Dezember 03 2007 20:50:09</p>
 	strings make the translator&#39;s job harder. Please use US English.</p>
 </li>
 
+<li>Check for system calls to replace by KDE or Qt equivalents... 
+<b>okay!</b>
 </ol>
 <br>
 </ul>
