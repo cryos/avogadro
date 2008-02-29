@@ -479,7 +479,6 @@ namespace Avogadro {
               minDistance = distance;
           } // end checking atoms
           // negative = away from molecule, 0 = vdw surface, positive = inside
-          qDebug() << "SetValue(" << i << ", " << j << ", " << k << ")";
           vdwGrid->SetValue(i, j, k, -minDistance);
         } // z-axis
       } // y-axis
