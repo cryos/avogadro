@@ -1006,6 +1006,7 @@ namespace Avogadro
       Bond *bond = static_cast<Bond*>( &*b );
       selection.append( bond );
     }
+    d->glWidget->clearSelected();
     d->glWidget->setSelected( selection, true );
 
     d->glWidget->update();

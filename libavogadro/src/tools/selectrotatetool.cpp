@@ -152,10 +152,23 @@ namespace Avogadro {
               // if this atom is unselected, select the whole fragment
               bool select = !widget->isSelected(atom);
               QList<Primitive *> neighborList;
+              
+              // We really want the "connected fragment" since a Molecule can contain
+              // multiple user-visible molecule fragments
+              // we can use either BFS or DFS interators -- look for the connected fragment
               OBMolAtomDFSIter iter(molecule, atom->GetIdx());
+              Atom *tmpNeighbor;
               do {
-                neighborList.append(static_cast<Atom*>(&*iter));
-              } while ((iter++).next());
+                tmpNeighbor = static_cast<Atom*>(&*iter);
+                neighborList.append(tmpNeighbor);
+                
+                // we want to find all bonds on this site
+                // (obviously all bonds will be in this fragment)
+                FOR_BONDS_OF_ATOM(b, *tmpNeighbor) {
+                  neighborList.append(static_cast<Bond*>(&*b));
+                }
+              } while ((iter++).next()); // this returns false when we've gone looped through the fragment
+              
               widget->setSelected(neighborList, select);
             }
             // FIXME -- also need to handle other primitive hit types
