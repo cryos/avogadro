@@ -137,11 +137,11 @@ namespace Avogadro {
     if (!m_surfaceValid)
     {
       //VDWSurface(mol);
-      
+
       PrimitiveList prims = primitives();
       m_vdwThread->init(mol, prims, pd);
       m_vdwThread->start();
-      
+
       //m_isoGen->init(m_grid, pd);
       //m_isoGen->start();
       m_surfaceValid = true;
@@ -225,7 +225,7 @@ namespace Avogadro {
   {
     return etab.GetVdwRad(a->GetAtomicNum());
   }
-  
+
   double SurfaceEngine::radius(const PainterDevice *pd, const Primitive *p) const
   {
     // Atom radius
@@ -312,7 +312,7 @@ namespace Avogadro {
     }
     return m_settingsWidget;
   }
-  
+
   void SurfaceEngine::vdwThreadFinished()
   {
     qDebug() << "                                      vdwThreadFinished()";
@@ -363,12 +363,12 @@ namespace Avogadro {
     }
     Engine::removePrimitive(primitive);
   }
-  
+
   VDWGridThread::VDWGridThread(QObject *parent): m_molecule(0), m_stepSize(0.0), m_padding(0.0)
   {
     m_grid = new Grid;
   }
-  
+
   VDWGridThread::~VDWGridThread()
   {
     delete m_grid;
@@ -379,7 +379,7 @@ namespace Avogadro {
     m_mutex.lock();
     //if (!m_mutex.tryLock())
     //  return;
-    
+
     if (stepSize)
       m_stepSize = stepSize;
     else
@@ -406,23 +406,23 @@ namespace Avogadro {
         m_stepSize = 0.10;
       }
     }
- 
+
     m_molecule = molecule;
     m_primitives = primitives;
-    
+
     m_mutex.unlock();
   }
-  
+
   Grid* VDWGridThread::grid()
   {
     return m_grid;
   }
-  
+
   double VDWGridThread::stepSize()
   {
     return m_stepSize;
   }
-  
+
   // We define a VDW surface here.
   // The isosurface finder declares values < 0 to be outside the surface
   // So values of 0.0 here equal the VDW surface of the molecule
@@ -440,12 +440,10 @@ namespace Avogadro {
     QList<Primitive*> surfaceAtoms = m_primitives.subList(Primitive::AtomType);
     OBFloatGrid grid;
     grid.Init(*m_molecule, m_stepSize, 2.5);
-    double min[3]/*, max[3]*/;
+    vector3 min;
     int xDim, yDim, zDim;
 
-    grid.GetMin(min);
-    //m_min = Vector3f(min[0], min[1], min[2]);
-    //grid.GetMax(max);
+    min = grid.GetMin();
 
     xDim = grid.GetXdim();
     yDim = grid.GetYdim();
@@ -453,21 +451,27 @@ namespace Avogadro {
 
     vector3 coord;
     double distance, minDistance;
-    //double maxVal, minVal;
-    //maxVal = 0.0;
-    //minVal = 0.0;
 
-    std::vector<double> values;
-    //values.resize(xDim * yDim * zDim);
-    for (int k = 0; k < zDim; ++k) {
-      coord.SetZ(min[2] + k * m_stepSize);
+    // Now set up our VdW grid
+    OBGridData *vdwGrid = new OBGridData;
+    vector3 xAxis, yAxis, zAxis;
+    xAxis = vector3(m_stepSize, 0.0, 0.0);
+    yAxis = vector3(0.0, m_stepSize, 0.0);
+    zAxis = vector3(0.0, 0.0, m_stepSize);
+
+    vdwGrid->SetNumberOfPoints(xDim, yDim, zDim);
+    vdwGrid->SetLimits(min, xAxis, yAxis, zAxis);
+
+    for (int i = 0; i < xDim; ++i) {
+      coord.SetX(min[0] + i * m_stepSize);
       for (int j = 0; j < yDim; ++j) {
         coord.SetY(min[1] + j * m_stepSize);
-        for (int i = 0; i < xDim; ++i)
+        for (int k = 0; k < zDim; ++k)
         {
-          coord.SetX(min[0] + i * m_stepSize);
+          coord.SetZ(min[2] + k * m_stepSize);
           minDistance = 1.0E+10;
-	  for (int ai=0; ai < surfaceAtoms.size(); ai++) {
+	        for (int ai=0; ai < surfaceAtoms.size(); ai++)
+	        {
             distance = sqrt(coord.distSq(static_cast<Atom*>(surfaceAtoms[ai])->GetVector()));
             distance -= etab.GetVdwRad(static_cast<Atom*>(surfaceAtoms[ai])->GetAtomicNum());
 
@@ -475,28 +479,11 @@ namespace Avogadro {
               minDistance = distance;
           } // end checking atoms
           // negative = away from molecule, 0 = vdw surface, positive = inside
-          values.push_back(-1.0 * minDistance);
-	  /*
-          if (-1.0 * minDistance > maxVal)
-            maxVal = -1.0 * minDistance;
-          if (-1.0 * minDistance < minVal)
-            minVal = -1.0 * minDistance;
-	  */
-        } // x-axis
+          qDebug() << "SetValue(" << i << ", " << j << ", " << k << ")";
+          vdwGrid->SetValue(i, j, k, -minDistance);
+        } // z-axis
       } // y-axis
-    } // z-axis
-
-    //qDebug() << " min: " << minVal << " max " << maxVal;
-
-    OBGridData *vdwGrid = new OBGridData;
-    double xAxis[3], yAxis[3], zAxis[3];
-    xAxis[0] = m_stepSize; xAxis[1] = 0.0;        xAxis[2] = 0.0;
-    yAxis[0] = 0.0;        yAxis[1] = m_stepSize; yAxis[2] = 0.0;
-    zAxis[0] = 0.0;        zAxis[1] = 0.0;        zAxis[2] = m_stepSize;
-
-    vdwGrid->SetNumberOfPoints( xDim, yDim, zDim);
-    vdwGrid->SetLimits(min, xAxis, yAxis, zAxis );
-    vdwGrid->SetValues(values);
+    } // x-axis
 
     m_grid->setGrid(vdwGrid);
     m_grid->setIsoValue(0.0);
@@ -523,10 +510,10 @@ namespace Avogadro {
     setOpacity(settings.value("opacity", 20).toInt());
     setRenderMode(settings.value("renderMode", 0).toInt());
     setColorMode(settings.value("colorMode", 0).toInt());
-    m_color.set(settings.value("colorRed", 1.0).toDouble(), 
+    m_color.set(settings.value("colorRed", 1.0).toDouble(),
                      settings.value("colorGreen", 0.0).toDouble(),
 		     settings.value("colorBlue", 0.0).toDouble());
-    
+
     /*
     m_color.setRed(settings.value("colorRed", 1.0).toDouble());
     m_color.setGreen(settings.value("colorGreen", 0.0).toDouble());
