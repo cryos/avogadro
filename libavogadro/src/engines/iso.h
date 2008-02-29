@@ -84,9 +84,6 @@ namespace Avogadro
   class Grid : public ImplicitFunction
   {
   public:
-    double m_iso;
-    OpenBabel::OBGridData *m_gd;
-
     Grid(): m_iso(0.), m_gd(0) { ; }
     ~Grid()
     {
@@ -107,6 +104,15 @@ namespace Avogadro
       OpenBabel::vector3 v(x, y, z);
       return m_gd->GetValue(v) - m_iso;
     }
+
+    float eval(int i, int j, int k)
+    {
+      return m_gd->GetValue(i, j, k);
+    }
+
+  private:
+    double m_iso;
+    OpenBabel::OBGridData *m_gd;
   };
 
   // Triangle structure
@@ -135,13 +141,15 @@ namespace Avogadro
     void run();
 
     // Central functions
-    void init(Grid *grid, const PainterDevice *pd, double stepSize = 0.0);
+    void init(Grid *grid, const PainterDevice *pd, bool interpolate = false,
+              double stepSize = 0.0);
     int numTriangles();
     triangle getTriangle(int i);
     triangle getNormal(int i);
 
   private:
     Grid *m_grid; // OpenBabel Grid
+    bool m_interpolate; // Should we interpolate or just use grid points?
     float m_stepSize; // Grid density == 2.0f/sta.tgrids;
     long m_totTri; // Triangles calculated in total; currently not used
     Eigen::Vector3f m_min; // Minimum grid coordinate
@@ -152,6 +160,7 @@ namespace Avogadro
     // Constants/tables
     static const float fTargetValue;
     static const float a2fVertexOffset[8][3];
+    static const int a2iVertexOffset[8][3];
     static const long a2iEdgeConnection[12][2];
     static const float a2fEdgeDirection[12][3];
     static const long a2iTetrahedronEdgeConnection[6][2];
@@ -164,6 +173,7 @@ namespace Avogadro
     void vGetNormal(Eigen::Vector3f &rfNormal, const float fX, const float fY,
         const float fZ);
     void vMarchCube1(const float fX, const float fY, const float fZ);
+    void vMarchCube1(int i, int j, int k);
 //    void vMarchCube2(const float fX, const float fY, const float fZ);
 //    void vMarchTetrahedron(Eigen::Vector3f *pasTetrahedronPosition,
 //        const float *pafTetrahedronValue);

@@ -1,5 +1,19 @@
 2008-02-28  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/engines/iso.*: Added a new marching cubes function
+	that does not use interpolation. This should significantly reduce the
+	resources needed to calculated many surfaces.
+
+	* libavogadro/src/engines/surfaceengine.cpp: Ported to use the new
+	IsoGen class without interpolation - we calculate the VdW surface and
+	so should never need to interpolate values.
+
+	* libavogadro/src/engines/orbitalengine.cpp: Ported to continue
+	interpolating for now. This engine should have optional interpolation
+	but I need to hunt down a bug in the code first.
+
+2008-02-28  Marcus D. Hanwell  <marcus@cryos.org>
+
 	* libavogadro/src/engines/surfaceengine.cpp: Update the surface engine
 	to use the new features of the GridData class - requires fresh OB SVN.
 

@@ -269,11 +269,11 @@ namespace Avogadro {
     else
     {
       qDebug() << "Molecular orbital grid found!";
-      
+
       // Two grids -- one for positive isovalue, one for negative
       m_grid->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
       m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
-      
+
       // if we want multiple grids, we can use the new OB-2.2 code
       // mol->GetAllData(OBGenericDataType::GridData);
       // returns vector<OBGenericData *>
@@ -296,10 +296,10 @@ namespace Avogadro {
     // We may need some logic to check if a cube is an orbital or not...
     // (e.g., someone might bring in spin density = always positive)
     m_grid->setIsoValue(m_iso);
-    m_isoGen->init(m_grid, pd);
+    m_isoGen->init(m_grid, pd, true);
     m_isoGen->start();
     m_grid2->setIsoValue(-m_iso);
-    m_isoGen2->init(m_grid2, pd);
+    m_isoGen2->init(m_grid2, pd, true);
     m_isoGen2->start();
     m_update = false;
   }

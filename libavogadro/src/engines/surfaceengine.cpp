@@ -197,7 +197,6 @@ namespace Avogadro {
         glVertex3fv(t.p2.array());
       }
     } else { // RGB
-      //glColor4f(m_color.red(), m_color.green(), m_color.blue(), m_alpha);
       m_color.applyAsMaterials();
       for(int i=0; i < m_isoGen->numTriangles(); ++i)
       {
@@ -316,7 +315,7 @@ namespace Avogadro {
   void SurfaceEngine::vdwThreadFinished()
   {
     qDebug() << "                                      vdwThreadFinished()";
-    m_isoGen->init(m_vdwThread->grid(), 0, m_vdwThread->stepSize());
+    m_isoGen->init(m_vdwThread->grid(), 0, false, m_vdwThread->stepSize());
     m_isoGen->start();
   }
 
