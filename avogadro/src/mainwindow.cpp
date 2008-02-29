@@ -154,7 +154,7 @@ namespace Avogadro
   {
     // not sure we need this anymore
     //hide(); // prevent "flash" of re-arranging windows PR#
-        
+
     ui.setupUi( this );
     // We cannot reliably set this via Designer
     // editing on Windows or Linux loses the flag
@@ -312,7 +312,7 @@ namespace Avogadro
   {
     return d->glWidget->renderDebug();
   }
-  
+
   void MainWindow::setRenderDebug(bool render)
   {
     d->glWidget->setRenderDebug(render);
@@ -1006,7 +1006,6 @@ namespace Avogadro
       Bond *bond = static_cast<Bond*>( &*b );
       selection.append( bond );
     }
-    d->glWidget->clearSelected();
     d->glWidget->setSelected( selection, true );
 
     d->glWidget->update();

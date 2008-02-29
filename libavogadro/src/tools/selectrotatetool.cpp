@@ -2,7 +2,7 @@
   SelectRotateTool - Selection and Rotation Tool for Avogadro
 
   Copyright (C) 2007 Donald Ephraim Curtis
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007,2008 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -38,6 +38,7 @@
 #include <QtPlugin>
 #include <QApplication>
 #include <QLabel>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -152,7 +153,7 @@ namespace Avogadro {
               // if this atom is unselected, select the whole fragment
               bool select = !widget->isSelected(atom);
               QList<Primitive *> neighborList;
-              
+
               // We really want the "connected fragment" since a Molecule can contain
               // multiple user-visible molecule fragments
               // we can use either BFS or DFS interators -- look for the connected fragment
@@ -161,14 +162,14 @@ namespace Avogadro {
               do {
                 tmpNeighbor = static_cast<Atom*>(&*iter);
                 neighborList.append(tmpNeighbor);
-                
+
                 // we want to find all bonds on this site
                 // (obviously all bonds will be in this fragment)
-                FOR_BONDS_OF_ATOM(b, *tmpNeighbor) {
+                FOR_BONDS_OF_ATOM(b, *tmpNeighbor)
                   neighborList.append(static_cast<Bond*>(&*b));
-                }
+
               } while ((iter++).next()); // this returns false when we've gone looped through the fragment
-              
+
               widget->setSelected(neighborList, select);
             }
             // FIXME -- also need to handle other primitive hit types

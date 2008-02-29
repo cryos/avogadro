@@ -1,5 +1,15 @@
 2008-02-28  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/glwidget.cpp: Correct a bug in the setSelected
+	function which was causing it to toggle the selection rather than set
+	it as the calling functions were expecting.
+
+	* avogadro/src/mainwindow.cpp: Revert the earlier fix as setSelected
+	now works as expected.
+
+	* libavogadro/src/tools/selectrotatetool.cpp: Select atom should now
+	also select bonds as well as atoms correctly.
+
 	* avogadro/src/extensions/forcefieldextension.cpp: Disable the
 	constraints menu item for now.
 
