@@ -1,5 +1,8 @@
 2008-02-28  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* avogadro/src/extensions/forcefieldextension.cpp: Disable the
+	constraints menu item for now.
+
 	* libavogadro/src/engines/orbitalengine.*,
 	libavogadro/src/engines/orbitalsettingswidget.ui: Defaulted to not use
 	interpolation, added a check box that will force interpolation.

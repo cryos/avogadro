@@ -57,9 +57,9 @@ namespace Avogadro
     m_conformerDialog = new ConformerSearchDialog;
     m_ConstraintsDialog = new ConstraintsDialog;
     m_constraints = new ConstraintsModel;
-    
+
     m_ConstraintsDialog->setModel(m_constraints);
-    
+
     if ( m_forceField ) { // make sure we can actually find and run it!
 
       action = new QAction( this );
@@ -93,11 +93,12 @@ namespace Avogadro
       action->setData(SeparatorIndex);
       m_actions.append( action );
 
-      action = new QAction( this );
+      // Disable the constraints menu for now...
+      /*      action = new QAction( this );
       action->setText( tr("Constraints..." ));
       action->setData(ConstraintsIndex);
-      m_actions.append( action );
-      
+      m_actions.append( action ); */
+
       action = new QAction( this );
       action->setText( tr("Ignore Selection" ));
       action->setData(IgnoreAtomsIndex);
@@ -137,7 +138,7 @@ namespace Avogadro
     OpenBabel::OBForceField *copyForceField = NULL;
     QList<Primitive*> selectedAtoms;
     ostringstream buff;
-    
+
     OpenBabel::OBFFConstraints constraints = m_forceField->GetConstraints(); // load constraints
 
     m_forceField = OBForceField::FindForceField(m_forcefieldList[m_Dialog->forceFieldID()]);
@@ -169,18 +170,18 @@ namespace Avogadro
       if (!m_forceField)
         break;
 
-      m_conformerDialog->setup(molecule, m_forceField, m_constraints, textEdit, 
+      m_conformerDialog->setup(molecule, m_forceField, m_constraints, textEdit,
                                0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence());
       m_conformerDialog->show();
       break;
     case OptimizeGeometryIndex: // geometry optimization
       if (!m_forceField)
         break;
-	
-      undo = new ForceFieldCommand( molecule, m_forceField, m_constraints, textEdit, 
-                                    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), 
+
+      undo = new ForceFieldCommand( molecule, m_forceField, m_constraints, textEdit,
+                                    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(),
                                     m_Dialog->convergence(), 0 );
- 
+
       undo->setText( QObject::tr( "Geometric Optimization" ) );
       break;
     case ConstraintsIndex: // show constraints dialog
@@ -196,7 +197,7 @@ namespace Avogadro
         Atom *atom = static_cast<Atom *>(p);
         m_constraints->addIgnore(atom->GetIdx());
       }
-        
+
       // copy constraints to all force fields
       copyForceField = m_forceField;
       m_forceField = OBForceField::FindForceField( "Ghemical" );
@@ -217,7 +218,7 @@ namespace Avogadro
         Atom *atom = static_cast<Atom *>(p);
         m_constraints->addAtomConstraint(atom->GetIdx());
       }
-        
+
       // copy constraints to all force fields
       copyForceField = m_forceField;
       m_forceField = OBForceField::FindForceField( "Ghemical" );
@@ -257,17 +258,17 @@ namespace Avogadro
   {
     return m_cycles;
   }
-  
+
   void ForceFieldThread::setTask(int task)
   {
     m_task = task;
   }
-  
+
   void ForceFieldThread::setNumConformers(int numConformers)
   {
     m_numConformers = numConformers;
   }
- 
+
   void ForceFieldThread::run()
   {
     QWriteLocker locker( m_molecule->lock() );
@@ -413,12 +414,12 @@ namespace Avogadro
   {
     m_task = task;
   }
-  
+
   void ForceFieldCommand::setNumConformers(int numConformers)
   {
     m_numConformers = numConformers;
   }
-  
+
   void ForceFieldCommand::redo()
   {
     if(!m_dialog) {
