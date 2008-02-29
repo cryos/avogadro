@@ -59,7 +59,10 @@ namespace Avogadro {
           "Extra Function when running\n"
           "Left Mouse: Click and drag atoms to move them"));
     m_forceField = OBForceField::FindForceField( "Ghemical" );
-    m_thread = NULL;
+    m_thread = new AutoOptThread;
+    connect(m_thread,SIGNAL(finished(bool)),this,SLOT(finished(bool)));
+    connect(m_thread,SIGNAL(setupFailed()),this,SLOT(setupFailed()));
+    connect(m_thread,SIGNAL(setupSucces()),this,SLOT(setupSucces()));
 
     OBPlugin::ListAsVector("forcefields", "ids", m_forceFieldList);
     //action->setShortcut(Qt::Key_F10);
@@ -396,8 +399,15 @@ namespace Avogadro {
     {
       if(!m_timerId)
       {
-        m_timerId = startTimer(40);
+        m_timerId = startTimer(50);
       }
+      int gradients = OBFF_NUMERICAL_GRADIENT;
+      if (m_forceField->HasAnalyticalGradients())
+        gradients = OBFF_ANALYTICAL_GRADIENT;
+      m_thread->setup(m_glwidget->molecule(), m_forceField, 
+                      m_comboAlgorithm->currentIndex(), gradients,
+                      m_convergenceSpinBox->value());
+      m_thread->start();
       m_running = true;
       m_buttonStartStop->setText(tr("Stop"));
       QUndoStack *stack = m_glwidget->undoStack();
@@ -422,6 +432,7 @@ namespace Avogadro {
         killTimer(m_timerId);
         m_timerId = 0;
       }
+      m_thread->quit();
       m_running = false;
       m_setupFailed = false;
       m_buttonStartStop->setText(tr("Start"));
@@ -455,13 +466,10 @@ namespace Avogadro {
     if (m_forceField->HasAnalyticalGradients())
       gradients = OBFF_ANALYTICAL_GRADIENT;
 
-    m_thread = new AutoOptThread(m_glwidget->molecule(), m_forceField, 
-                                 m_comboAlgorithm->currentIndex(), gradients,
-                                 m_convergenceSpinBox->value());
-    connect(m_thread,SIGNAL(finished(bool)),this,SLOT(finished(bool)));
-    connect(m_thread,SIGNAL(setupFailed()),this,SLOT(setupFailed()));
-    connect(m_thread,SIGNAL(setupSucces()),this,SLOT(setupSucces()));
-    m_thread->start();
+    m_thread->setup(m_glwidget->molecule(), m_forceField, 
+                    m_comboAlgorithm->currentIndex(), gradients,
+                    m_convergenceSpinBox->value());
+    m_thread->update();
   }
 
   void AutoOptTool::finished(bool calculated)
@@ -475,15 +483,9 @@ namespace Avogadro {
         QPoint point = QPoint(begin.x(), begin.y());
         translate(m_glwidget, m_clickedAtom->pos(), point, m_lastDraggingPosition);
       }
-      //m_glwidget->molecule()->update();
     }
 
-    m_thread->stop();
-    m_thread->wait();
-    disconnect(m_thread,0,this,0);
-    delete m_thread;
-    m_thread = NULL;
-
+    m_glwidget->molecule()->update();
     m_glwidget->update();
     m_block = false;
   }
@@ -498,8 +500,14 @@ namespace Avogadro {
     m_setupFailed = false; 
   }
 
-  AutoOptThread::AutoOptThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
-      int algorithm, int gradients, int convergence, QObject*)
+  AutoOptThread::AutoOptThread(QObject*)
+  {
+    m_stop = false;
+    m_velocities = false;
+  }
+  
+  void AutoOptThread::setup(Molecule *molecule, OpenBabel::OBForceField* forceField, 
+        int algorithm, int gradients, int convergence)
   {
     m_molecule = molecule;
     m_forceField = forceField;
@@ -510,7 +518,15 @@ namespace Avogadro {
     m_velocities = false;
   }
 
+ 
   void AutoOptThread::run()
+  {
+    update();
+
+    exec();
+  }
+
+  void AutoOptThread::update()
   {
     m_forceField->SetLogFile(NULL);
     m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
@@ -527,17 +543,17 @@ namespace Avogadro {
     m_forceField->SetConformers( *m_molecule );
 
     if(m_algorithm == 0) {
-      m_forceField->SteepestDescent(2,pow(10.0, -m_convergence ), m_gradients);
+      m_forceField->SteepestDescent(25,pow(10.0, -m_convergence ), m_gradients);
     }
     else if(m_algorithm == 1) {
-      m_forceField->MolecularDynamicsTakeNSteps(50, 300, 0.001, m_gradients);
+      m_forceField->MolecularDynamicsTakeNSteps(25, 300, 0.001, m_gradients);
     }
     else if(m_algorithm == 2) {
-      m_forceField->MolecularDynamicsTakeNSteps(50, 600, 0.001, m_gradients);
+      m_forceField->MolecularDynamicsTakeNSteps(25, 600, 0.001, m_gradients);
     }
     else if(m_algorithm == 3)
     {
-      m_forceField->MolecularDynamicsTakeNSteps(50, 900, 0.001, m_gradients);
+      m_forceField->MolecularDynamicsTakeNSteps(25, 900, 0.001, m_gradients);
     }
 
     if(m_stop) {
