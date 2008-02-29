@@ -42,9 +42,10 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
-  m_grid(0), m_isoGen(0), m_min(0., 0., 0.),
-  m_alpha(0.75), m_stepSize(0.33333), m_iso(0.01), m_renderMode(0), m_update(true)
+  OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent),
+  m_settingsWidget(0), m_grid(0), m_isoGen(0), m_min(0., 0., 0.),
+  m_alpha(0.75), m_stepSize(0.33333), m_iso(0.01), m_renderMode(0),
+  m_interpolate(false), m_update(true)
   {
     setDescription(tr("Orbital Rendering"));
     m_grid = new Grid;
@@ -296,10 +297,10 @@ namespace Avogadro {
     // We may need some logic to check if a cube is an orbital or not...
     // (e.g., someone might bring in spin density = always positive)
     m_grid->setIsoValue(m_iso);
-    m_isoGen->init(m_grid, pd, true);
+    m_isoGen->init(m_grid, pd, m_interpolate);
     m_isoGen->start();
     m_grid2->setIsoValue(-m_iso);
-    m_isoGen2->init(m_grid2, pd, true);
+    m_isoGen2->init(m_grid2, pd, m_interpolate);
     m_isoGen2->start();
     m_update = false;
   }
@@ -328,6 +329,15 @@ namespace Avogadro {
     emit changed();
   }
 
+  void OrbitalEngine::setInterpolate(int value)
+  {
+    if (value == 0) m_interpolate = false;
+    else m_interpolate = true;
+    m_update = true;
+    emit changed();
+  }
+
+
   void OrbitalEngine::setIso(double d)
   {
     m_iso = d;
@@ -354,6 +364,7 @@ namespace Avogadro {
       m_settingsWidget = new OrbitalSettingsWidget();
       connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
       connect(m_settingsWidget->renderCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setRenderMode(int)));
+      connect(m_settingsWidget->interpolate, SIGNAL(stateChanged(int)), this, SLOT(setInterpolate(int)));
       connect(m_settingsWidget->isoSpin, SIGNAL(valueChanged(double)), this, SLOT(setIso(double)));
       connect(m_settingsWidget->posColor, SIGNAL(colorChanged(QColor)), this, SLOT(setPosColor(QColor)));
       connect(m_settingsWidget->negColor, SIGNAL(colorChanged(QColor)), this, SLOT(setNegColor(QColor)));

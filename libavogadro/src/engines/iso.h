@@ -107,7 +107,7 @@ namespace Avogadro
 
     float eval(int i, int j, int k)
     {
-      return m_gd->GetValue(i, j, k);
+      return m_gd->GetValue(i, j, k) - m_iso;
     }
 
   private:

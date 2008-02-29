@@ -1,5 +1,12 @@
 2008-02-28  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/engines/orbitalengine.*,
+	libavogadro/src/engines/orbitalsettingswidget.ui: Defaulted to not use
+	interpolation, added a check box that will force interpolation.
+
+	* libavogadro/src/engines/iso.h: Fixed the integer index based eval
+	function to actually use the m_iso value set.
+
 	* libavogadro/src/engines/iso.*: Added a new marching cubes function
 	that does not use interpolation. This should significantly reduce the
 	resources needed to calculated many surfaces.

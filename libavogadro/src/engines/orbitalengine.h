@@ -87,6 +87,7 @@ namespace Avogadro {
       double m_stepSize;
       double m_iso;
       int    m_renderMode;
+      bool   m_interpolate;
       bool   m_update;
 
       void updateSurfaces(PainterDevice *pd);
@@ -102,6 +103,10 @@ namespace Avogadro {
        * @param value render mode (0 = fill, 1 = wireframe, 2 = points)
        */
       void setRenderMode(int value);
+      /**
+       * @param value interpolate (0 = no, 1 = yes)
+       */
+      void setInterpolate(int value);
       /**
        * @param d the value of the iso surface to be rendered
        */
