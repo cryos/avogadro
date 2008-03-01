@@ -1,3 +1,9 @@
+2008-03-01  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/bsdyengine.*: Add a renderQuick function to
+	this engine. Selected atoms/bonds rendered as opaque objects using the
+	selection colour. Multiple bonds are not displayed. No transparency.
+
 2008-02-29  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engine.h: API cleanup - remove the second unused
