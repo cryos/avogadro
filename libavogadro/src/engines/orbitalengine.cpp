@@ -209,7 +209,7 @@ namespace Avogadro {
     return true;
   }
 
-  bool OrbitalEngine::renderQuick(PainterDevice *pd, bool)
+  bool OrbitalEngine::renderQuick(PainterDevice *pd)
   {
     // Render the transparent surface if m_alpha is between 0 and 1.
     if (m_update)

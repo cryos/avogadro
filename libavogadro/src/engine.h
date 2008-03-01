@@ -210,7 +210,11 @@ namespace Avogadro {
        * ensures dynamic scaling of geometric primitives is off before calling
        * this rendering function.
        */
-      virtual bool renderQuick(PainterDevice *pd, bool) { renderOpaque(pd); return true; }
+      virtual bool renderQuick(PainterDevice *pd)
+      {
+        renderOpaque(pd);
+        return true;
+      }
 
       /**
        * @return the engine's PrimitiveList containing all primitives the engine

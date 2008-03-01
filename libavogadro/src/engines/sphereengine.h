@@ -47,10 +47,10 @@ namespace Avogadro {
       SphereEngine(QObject *parent=0);
       //! Deconstructor
       ~SphereEngine();
-      
-      //! Copy 
+
+      //! Copy
       Engine *clone() const;
-     
+
       //! \name Render Methods
       //@{
       bool renderOpaque(PainterDevice *pd);

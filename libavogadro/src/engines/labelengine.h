@@ -57,14 +57,14 @@ namespace Avogadro {
       bool renderOpaque(PainterDevice *pd);
       bool renderOpaque(PainterDevice *pd, const Atom *a);
       bool renderOpaque(PainterDevice *pd, const Bond *b);
-      bool renderQuick(PainterDevice *pd, bool);
+      bool renderQuick(PainterDevice *pd);
       //@}
 
       EngineFlags flags() const;
 
       //! Display a window for the user to pick rendering options
       QWidget *settingsWidget();
-      
+
       /**
        * Write the engine settings so that they can be saved between sessions.
        */

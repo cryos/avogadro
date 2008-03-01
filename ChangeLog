@@ -1,4 +1,13 @@
-2008-02-28  Marcus D. Hanwell  <marcus@cryos.org>
+2008-02-29  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engine.h: API cleanup - remove the second unused
+	argument from the quickRender function.
+
+	* libavogadro/src/glwidget.cpp,
+	libavogadro/src/engines/labelengine.*,
+	libavogadro/src/engines/orbitalengine.*,
+	libavogadro/src/engines/ribbonengine.*: Ported to use the new
+	quickRender function.
 
 	* libavogadro/src/glwidget.cpp: Correct a bug in the setSelected
 	function which was causing it to toggle the selection rather than set

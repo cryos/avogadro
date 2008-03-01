@@ -338,7 +338,7 @@ namespace Avogadro {
       glNewList(dlistQuick, GL_COMPILE);
       foreach(Engine *engine, engines)
         if(engine->isEnabled())
-          engine->renderQuick(pd, updateCache);
+          engine->renderQuick(pd);
       glEndList();
 
       updateCache = false;
@@ -1509,6 +1509,8 @@ namespace Avogadro {
           d->selectedPrimitives.append( item );
       else if (!select)
         d->selectedPrimitives.removeAll( item );
+      // The engine caches must be invalidated
+      d->updateCache = true;
       item->update();
     }
   }
@@ -1520,21 +1522,22 @@ namespace Avogadro {
 
   void GLWidget::toggleSelected( PrimitiveList primitives )
   {
-    foreach( Primitive *item, primitives ) {
-      if ( d->selectedPrimitives.contains( item ) )
-      {
+    foreach(Primitive *item, primitives)
+    {
+      if (d->selectedPrimitives.contains(item))
         d->selectedPrimitives.removeAll( item );
-      }
       else
-      {
-        d->selectedPrimitives.append( item );
-      }
+        d->selectedPrimitives.append(item);
     }
+    // The engine caches must be invalidated
+    d->updateCache = true;
   }
 
   void GLWidget::clearSelected()
   {
     d->selectedPrimitives.clear();
+    // The engine caches must be invalidated
+    d->updateCache = true;
   }
 
   bool GLWidget::isSelected( const Primitive *p ) const
