@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+<!ENTITY % addindex "IGNORE">
+ <!ENTITY % English "INCLUDE"><!-- change language only here -->
+ ]>
+
+ <book lang="&language;">
+
+	 <bookinfo>
+		 <title>The Avogadro Handbook</title>
+
+		 <authorgroup>
+			 <author>
+				 <firstname>Carsten</firstname>
+				 <surname>Niehaus</surname>
+				 <affiliation>
+					 <address>cniehaus@kde.org</address>
+				 </affiliation>
+			 </author>
+
+			 <!-- TRANS:ROLES_OF_TRANSLATORS -->
+
+		 </authorgroup>
+
+		 <copyright>
+			 <year>2008</year>
+			 <holder>Carsten Niehaus</holder>
+		 </copyright>
+
+		 <date>2008-02-27</date>
+		 <releaseinfo>1.0-pre</releaseinfo>
+
+		 <abstract>
+			 <para>Avogadro is an advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas. It offers flexible rendering and a powerful plugin architecture.  The main concept behind Avogadro is to enable a strong framework for molecular visualization and editing. Each community has their own needs and goals for an ideal tool. So Avogadro seeks to allow users to easily provide their own plugins and scripts for rendering, tools, commands... etc.  Avogadro is based on top of existing chemistry software, including Open Babel. In the future, it will offer strong scripting abilities to allow for automated demos, submission of calculations to local computational resources, and user-defined customization.</para>
+		 </abstract>
+
+		 <keywordset>
+			 <keyword>chemistry</keyword>
+			 <keyword>education</keyword>
+		 </keywordset>
+
+	 </bookinfo>
+
+	 <chapter id="introduction">
+		 <title>Introduction</title>
+
+		 <para>It is free and licensed under the &GNU; Public License.
+		 </para>
+	 </chapter>
+
+	 <appendix id="installation">
+		 <title>Installation</title>
+
+		 <sect1 id="getting-avogadro">
+			 <title>How to obtain Avogadro</title>
+		 </sect1>
+
+		 <sect1 id="requirements">
+			 <title>Requirements</title>
+
+			 <para>
+				 Avogadro  itself can be found on <ulink url="http://avogadro.sf.net">the Avogadro home page</ulink>.
+			 </para>
+		 </sect1>
+
+	 </appendix>
+ </book>
+ <!--
+ Local Variables:
+ mode: sgml
+ sgml-minimize-attributes:nil
+ sgml-general-insert-case:lower
+ sgml-indent-step:0
+ sgml-indent-data:nil
+ End:
+
+ // vim:ts=2:sw=2:tw=78:noet:noai
+ -->
