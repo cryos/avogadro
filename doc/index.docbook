@@ -1,10 +1,9 @@
 <?xml version="1.0" ?>
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-<!ENTITY % addindex "IGNORE">
- <!ENTITY % English "INCLUDE"><!-- change language only here -->
- ]>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"[
+ <!ENTITY % addindex "IGNORE">
+]>
 
- <book lang="&language;">
+<book lang="en">
 
 	 <bookinfo>
 		 <title>The Avogadro Handbook</title>
@@ -44,7 +43,7 @@
 	 <chapter id="introduction">
 		 <title>Introduction</title>
 
-		 <para>It is free and licensed under the &GNU; Public License.
+		 <para>It is free and licensed under the GNU Public License.
 		 </para>
 	 </chapter>
 
@@ -53,6 +52,10 @@
 
 		 <sect1 id="getting-avogadro">
 			 <title>How to obtain Avogadro</title>
+                         <para>
+				 Avogadro  itself can be found on <ulink url="http://avogadro.sf.net">the Avogadro home page</ulink>.
+			 </para>
+
 		 </sect1>
 
 		 <sect1 id="requirements">
@@ -65,14 +68,3 @@
 
 	 </appendix>
  </book>
- <!--
- Local Variables:
- mode: sgml
- sgml-minimize-attributes:nil
- sgml-general-insert-case:lower
- sgml-indent-step:0
- sgml-indent-data:nil
- End:
-
- // vim:ts=2:sw=2:tw=78:noet:noai
- -->
