@@ -508,7 +508,6 @@ namespace Avogadro {
   void GLWidget::initializeGL()
   {
     qDebug() << "GLWidget initialisation...";
-    makeCurrent();
     qglClearColor( d->background );
 
     glShadeModel( GL_SMOOTH );
@@ -552,11 +551,16 @@ namespace Avogadro {
 #ifdef ENABLE_THREADED_GL
     d->thread->resize( event->size().width(), event->size().height() );
 #else
+    if (!isValid())
+      return;
+    makeCurrent();
     if(!d->initialized)
-      {
-        d->initialized = true;
-        initializeGL();
-      }
+    {
+      d->initialized = true;
+      initializeGL();
+    }
+    // GLXWaitX() is called by the TT resizeEvent on Linux... We may need
+    // specific functions here - need to look at Mac and Windows code.
     resizeGL( event->size().width(), event->size().height() );
 #endif
   }
@@ -926,9 +930,9 @@ namespace Avogadro {
   void GLWidget::paintEvent( QPaintEvent * )
   {
     //qDebug() << "paintEvent";
+    makeCurrent();
 #ifdef ENABLE_THREADED_GL
     // tell our thread to paint
-    makeCurrent();
     d->paintCondition.wakeAll();
     doneCurrent();
 #else
