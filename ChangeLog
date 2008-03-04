@@ -1,5 +1,9 @@
 2008-03-04  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/glwidget.cpp: Added a second light source to our
+	scene - position and brightness may need tweaking. Surface rendering
+	was improved by this.
+
 	* libavogadro/src/engines/bsdyengine.cpp: Draw multiple bonds in quick
 	draw. Switching between multiple and single bonds can be distracting.
 	Should possibly switch to single bonds only with large molecules.
@@ -123,7 +127,7 @@
 	TODO:
 	- select/rotate tool
 	- autorotate tool
-	- OrbitalEngine		
+	- OrbitalEngine
 	- SurfaceEngine
 	- RibbonEngine
 
@@ -181,7 +185,7 @@
 
 	* libavogadro/src/engines/surfaceengine.*: Same as above + fix to set
 	the opacity of RGB colored surfaces.
-	
+
 	* libavogadro/src/engines/orbitalengine.*: Comment out init() to make
 	sure it still compiles.
 
@@ -205,13 +209,13 @@
 
 	* libavogadro/src/engines/surfaceengine2.*: Removed old files. Added
 	Marcus and me to the copyright header.
-	
+
 	* libavogadro/src/engines/surfaceengine.*: Added settings widget.
-	
+
 	* libavogadro/src/engines/CMakeList.txt: Added settings widget.
 
 	* libavogadro/src/engines/surfacesettingswidget.ui: Settings widget.
-	
+
 2008-02-04  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/clickmeasuretool.*: Added support for

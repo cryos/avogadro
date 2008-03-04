@@ -524,8 +524,11 @@ namespace Avogadro {
 
     GLfloat ambientLight[] = { 0.2, 0.2, 0.2, 1.0 };
     GLfloat diffuseLight[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat diffuseLight2[] = { 0.3, 0.3, 0.3, 1.0 };
     GLfloat specularLight[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat specularLight2[] = { 0.5, 0.5, 0.5, 1.0 };
     GLfloat position[] = { 0.8, 0.7, 1.0, 0.0 };
+    GLfloat position2[] = { -0.8, 0.7, -0.5, 0.0 };
 
     glLightModeli( GL_LIGHT_MODEL_COLOR_CONTROL_EXT,
                    GL_SEPARATE_SPECULAR_COLOR_EXT );
@@ -541,6 +544,12 @@ namespace Avogadro {
     glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
     glLightfv( GL_LIGHT0, GL_POSITION, position );
     glEnable( GL_LIGHT0 );
+    // Create a second light source to illuminate those shadows a little better
+    glLightfv( GL_LIGHT1, GL_AMBIENT, ambientLight );
+    glLightfv( GL_LIGHT1, GL_DIFFUSE, diffuseLight2 );
+    glLightfv( GL_LIGHT1, GL_SPECULAR, specularLight2 );
+    glLightfv( GL_LIGHT1, GL_POSITION, position2 );
+    glEnable( GL_LIGHT1 );
     qDebug() << "GLWidget initialised...";
 
   }
