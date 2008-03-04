@@ -272,24 +272,28 @@ namespace Avogadro
       d.normalize();
       Vector3d v3((v1 + v2 + d*(radius(atom1)-radius(atom2))) / 2);
 
+      double shift = 0.15;
+      int order = 1;
+      if (m_showMulti) order = b->GetBO();
+
       if (pd->isSelected(b))
       {
         pd->painter()->setColor(&cSel);
         pd->painter()->setName(b);
-        pd->painter()->drawCylinder(v1, v2, SEL_BOND_EXTRA_RADIUS +
-                                    m_bondRadius);
+        pd->painter()->drawMultiCylinder(v1, v2, SEL_BOND_EXTRA_RADIUS +
+                                         m_bondRadius, order, shift);
       }
       else
       {
         map->set(atom1);
         pd->painter()->setColor(map);
         pd->painter()->setName(b);
-        pd->painter()->drawCylinder(v1, v3, m_bondRadius);
+        pd->painter()->drawMultiCylinder(v1, v3, m_bondRadius, order, shift);
 
         map->set( atom2 );
         pd->painter()->setColor(map);
         pd->painter()->setName(b);
-        pd->painter()->drawCylinder(v3, v2, m_bondRadius);
+        pd->painter()->drawMultiCylinder(v3, v2, m_bondRadius, order, shift);
       }
     }
 

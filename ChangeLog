@@ -1,5 +1,9 @@
 2008-03-04  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/engines/bsdyengine.cpp: Draw multiple bonds in quick
+	draw. Switching between multiple and single bonds can be distracting.
+	Should possibly switch to single bonds only with large molecules.
+
 	* libavogadro/src/glwidget.cpp: Add back in some makeCurrent calls
 	that really were necessary outside of the threaded GL #ifdefs. This
 	fixes PR#1906403.
