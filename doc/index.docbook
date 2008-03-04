@@ -1,70 +1,132 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"[
- <!ENTITY % addindex "IGNORE">
+<!ENTITY % addindex "IGNORE">
 ]>
-
 <book lang="en">
+	<bookinfo>
+		<title>The Avogadro Handbook</title>
 
-	 <bookinfo>
-		 <title>The Avogadro Handbook</title>
+		<authorgroup>
+			<author>
+				<firstname>Carsten</firstname>
+				<surname>Niehaus</surname>
+				<affiliation>
+					<address>cniehaus@kde.org</address>
+				</affiliation>
+			</author>
+		</authorgroup>
 
-		 <authorgroup>
-			 <author>
-				 <firstname>Carsten</firstname>
-				 <surname>Niehaus</surname>
-				 <affiliation>
-					 <address>cniehaus@kde.org</address>
-				 </affiliation>
-			 </author>
+		<copyright>
+			<year>2008</year>
+			<holder>Carsten Niehaus</holder>
+		</copyright>
 
-			 <!-- TRANS:ROLES_OF_TRANSLATORS -->
+		<date>2008-03-04</date>
+		<releaseinfo>1.0-pre</releaseinfo>
 
-		 </authorgroup>
+		<abstract>
+			<para>Avogadro is an advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas. It offers flexible rendering and a powerful plugin architecture.  
+			</para>
+			<para>The main concept behind Avogadro is to enable a strong framework for molecular visualization and editing. Each community has their own needs and goals for an ideal tool. So Avogadro seeks to allow users to easily provide their own plugins and scripts for rendering, tools, commands... etc.  Avogadro is based on top of existing chemistry software, including Open Babel. In the future, it will offer strong scripting abilities to allow for automated demos, submission of calculations to local computational resources, and user-defined customization.</para>
+		</abstract>
 
-		 <copyright>
-			 <year>2008</year>
-			 <holder>Carsten Niehaus</holder>
-		 </copyright>
+		<keywordset>
+			<keyword>chemistry</keyword>
+			<keyword>education</keyword>
+			<keyword>unit cell</keyword>
+		</keywordset>
 
-		 <date>2008-02-27</date>
-		 <releaseinfo>1.0-pre</releaseinfo>
+	</bookinfo>
 
-		 <abstract>
-			 <para>Avogadro is an advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas. It offers flexible rendering and a powerful plugin architecture.  The main concept behind Avogadro is to enable a strong framework for molecular visualization and editing. Each community has their own needs and goals for an ideal tool. So Avogadro seeks to allow users to easily provide their own plugins and scripts for rendering, tools, commands... etc.  Avogadro is based on top of existing chemistry software, including Open Babel. In the future, it will offer strong scripting abilities to allow for automated demos, submission of calculations to local computational resources, and user-defined customization.</para>
-		 </abstract>
+	<chapter id="introduction">
+		<title>Introduction</title>
 
-		 <keywordset>
-			 <keyword>chemistry</keyword>
-			 <keyword>education</keyword>
-		 </keywordset>
+		<para>It is free and licensed under the GNU Public License. For more information, see 
+			the <ulink url="http://avogadro.sourceforge.net">Homepage</ulink>.
+		</para>
+	</chapter>
 
-	 </bookinfo>
+	<chapter id="quick-start">
+		<title>Avogadro quick start guide</title>
 
-	 <chapter id="introduction">
-		 <title>Introduction</title>
+		<para>Here is Avogadro looks like the first time you run it. 
+		</para>
+		<screenshot>
+			<screeninfo>Avogadro main window</screeninfo>
+			<graphic align="center" format="PNG" fileref="figures/screenshot1.png"></graphic>
+		</screenshot>
+	</chapter>
+	
+	<chapter id="involvement">
+		<title>Getting Involved</title>
 
-		 <para>It is free and licensed under the GNU Public License.
-		 </para>
-	 </chapter>
+		<para>Avogadro has a very open and active development community. Currently
+			there are more than 10 active developers and other various contributers.
+			If you are interesting in working on or with Avogadro please look at the
+			Developer information that is available and subscribe to the <ulink
+				url="http://lists.sourceforge.net/mailman/listinfo/avogadro-devel">mailinglist</ulink>.
+			Also, join the IRC channel (#avogadro on
+			irc.freenode.net) and talk with other developers. For information on the
+			internals of Avogadro and LibAvogadro, review the avogadro <ulink
+				url="http://avogadro.sourceforge.net/dev-api/">developer API</ulink>.
+		</para>
+	</chapter>
 
-	 <appendix id="installation">
-		 <title>Installation</title>
+	<chapter id="credits">
+		<title>Credits and License</title>
+		<para>
+			Program Copyright, 2006-2008 The Avogadro Team
+		</para>
+		<para> Contributors:</para>
 
-		 <sect1 id="getting-avogadro">
-			 <title>How to obtain Avogadro</title>
-                         <para>
-				 Avogadro  itself can be found on <ulink url="http://avogadro.sf.net">the Avogadro home page</ulink>.
-			 </para>
+		<itemizedlist>
+			<listitem><para>
+					Donald <email></email>
+			</para></listitem>
+			<listitem><para>
+					Geoff <email></email>
+			</para></listitem>
+			<listitem><para>
+					Carsten Niehaus <email>cniehaus@kde.org</email>
+			</para></listitem>
+			<listitem><para>
+					Marcus <email></email>
+			</para></listitem>
+			<listitem><para>
+					Beno&icirc;t <email></email>
+			</para></listitem>
+		</itemizedlist>
+	</chapter>
 
-		 </sect1>
+	<appendix id="installation">
+		<title>Installation</title>
 
-		 <sect1 id="requirements">
-			 <title>Requirements</title>
+		<sect1 id="getting-avogadro">
+			<title>How to obtain Avogadro</title>
+			<para>
+				Avogadro  itself can be found on <ulink url="http://avogadro.sf.net">the Avogadro home page</ulink>.
+			</para>
 
-			 <para>
-				 Avogadro  itself can be found on <ulink url="http://avogadro.sf.net">the Avogadro home page</ulink>.
-			 </para>
-		 </sect1>
+		</sect1>
 
-	 </appendix>
- </book>
+		<sect1 id="requirements">
+			<title>Requirements</title>
+
+			<para>
+				Avogadro  itself can be found on <ulink url="http://avogadro.sf.net">the Avogadro home page</ulink>.
+			</para>
+		</sect1>
+
+	</appendix>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+// vim:ts=2:sw=2:tw=78:noet:noai
+-->
