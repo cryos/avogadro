@@ -35,7 +35,7 @@ ColorButton::ColorButton(QWidget *parent)
   connect(this, SIGNAL(clicked()), this, SLOT(changeColor()));
 }
 
-ColorButton::ColorButton(QColor initial, QWidget *parent)
+ColorButton::ColorButton(const QColor& initial, QWidget *parent)
   : QAbstractButton(parent), m_color(initial)
 {
   setMinimumSize(35, 20);
@@ -52,7 +52,7 @@ void ColorButton::changeColor()
   emit colorChanged(m_color);
 }
 
-void ColorButton::setColor(QColor color)
+void ColorButton::setColor(const QColor& color)
 {
   m_color = color;
   update();

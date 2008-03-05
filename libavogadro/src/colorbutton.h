@@ -47,7 +47,7 @@ class ColorButton : public QAbstractButton
 
 public:
     ColorButton(QWidget *parent = 0);
-    ColorButton(QColor initial, QWidget *parent = 0);
+    explicit ColorButton(const QColor& initial, QWidget *parent = 0);
 
     /** 
      *  Redraw the widget (i.e., refresh the colored rectange)
@@ -57,7 +57,7 @@ public:
     /**
      * @param color the new color to be used
      */
-    void setColor(QColor color);
+    void setColor(const QColor& color);
     
     /**
      * @return the current color

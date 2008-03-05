@@ -46,7 +46,7 @@ namespace Avogadro
         QMType,
       };
 
-      GamessEfpMatchDialog(QAbstractItemModel *model, Type = EFPType,
+      explicit GamessEfpMatchDialog(QAbstractItemModel *model, Type = EFPType,
                            QWidget *parent = 0, Qt::WindowFlags f = 0);
 
       ~GamessEfpMatchDialog();

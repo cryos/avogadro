@@ -2,12 +2,15 @@
 
 # Small Ruby-script to run Krazy over all directories
 #
-# (c) 2007 Carsten Niehaus <cniehaus at kde dot org>
+# (c) 2007, 2008 Carsten Niehaus <cniehaus at kde dot org>
 #
 # License: GPL V2
 
-#you need to run a command like this:
+# in OpenSUSE 10.x
 # export PATH=$PATH:/usr/local/Krazy2/bin
+
+# in Mandriva 2008.1
+# export PATH=$PATH:/usr/local/Krazy2/local/bin
 
 def dir2filename( dir )
 	dir = dir.gsub( "/", "-" )
