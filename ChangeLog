@@ -1,3 +1,8 @@
+2008-03-05  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/tools/selectrotatetool.cpp: Change cursor types
+	depending upon the action being performed - better visual cues.
+
 2008-03-04  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/glwidget.cpp: Added a second light source to our

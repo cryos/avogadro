@@ -87,11 +87,35 @@ namespace Avogadro {
       m_selectionBox = true;
     }
 
+    if(!m_selectionBox)
+    {
+      if( event->buttons() & Qt::LeftButton )
+      {
+        // Rotation about the centre of the molecule
+        widget->setCursor(Qt::ClosedHandCursor);
+      }
+      else if ( event->buttons() & Qt::MidButton )
+      {
+        // Rotation about the centre of the molecule in the z axis
+        widget->setCursor(Qt::SizeVerCursor);
+      }
+      else if ( event->buttons() & Qt::RightButton )
+      {
+        // Translation about the centre of the molecule in the x and y axes
+        widget->setCursor(Qt::SizeAllCursor);
+      }
+    }
+    else
+      widget->setCursor(Qt::CrossCursor);
+
     return 0;
   }
 
   QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
   {
+    // Reset the cursor
+    widget->setCursor(Qt::ArrowCursor);
+
     Molecule *molecule = widget->molecule();
     if(!molecule) {
       return 0;
