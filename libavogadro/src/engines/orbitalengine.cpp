@@ -219,9 +219,9 @@ namespace Avogadro {
     qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
 
     // Use the GL_LINE mode to render
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    glBegin(GL_TRIANGLES);
+    glBegin(GL_LINES);
     m_posColor.applyAsMaterials();
     for(int i=0; i < m_isoGen->numTriangles(); ++i)
     {

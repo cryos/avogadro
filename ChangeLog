@@ -1,5 +1,7 @@
 2008-03-05  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/engines/orbitalengine.cpp: Just draw GL_LINES.
+
 	* libavogadro/src/tools/selectrotatetool.cpp: Change cursor types
 	depending upon the action being performed - better visual cues.
 
