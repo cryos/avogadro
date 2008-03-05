@@ -1,5 +1,9 @@
 2008-03-05  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/glwidget.cpp: Stop invalidating the cache on mouse
+	release - I think we have all the events covered that should
+	invalidate the cache now without this catch all.
+
 	* libavogadro/src/engines/orbitalengine.cpp: Just draw GL_LINES.
 
 	* libavogadro/src/tools/selectrotatetool.cpp: Change cursor types

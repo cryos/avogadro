@@ -1002,8 +1002,6 @@ namespace Avogadro {
 #endif
     // Stop using quickRender
     d->quickRender = false;
-    // Invalidate the cache
-    d->updateCache = true;
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.unlock();
 #endif
