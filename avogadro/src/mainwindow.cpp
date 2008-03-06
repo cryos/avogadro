@@ -658,9 +658,27 @@ namespace Avogadro
     return results;
   }
 
-  bool MainWindow::saveFile( const QString &fileName )
+  bool MainWindow::saveFile( const QString &originalName )
   {
+    // check for an extension first!
+    // i.e., look for a string ending with at least a period and one letter
+    // -2 implies searching from the next to last character
+    QString fileName(originalName);
+    if (fileName.lastIndexOf('.', -2) == -1)
+      fileName.append(".cml");
+
+    // Check the format next (before we try creating a file)
+    OBConversion conv;
+    OBFormat     *outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
+    if ( !outFormat || !conv.SetOutFormat( outFormat ) ) {
+      QMessageBox::warning( this, tr( "Avogadro" ),
+          tr( "Cannot write to file format of file %1." )
+          .arg( fileName ) );
+      return false;
+    }
+    
     QFile file( fileName );
+    
     if ( !file.open( QFile::WriteOnly | QFile::Text ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
           tr( "Cannot write to the file %1:\n%2." )
@@ -672,14 +690,6 @@ namespace Avogadro
     QApplication::setOverrideCursor( Qt::WaitCursor );
     statusBar()->showMessage( tr( "Saving file." ), 2000 );
 
-    OBConversion conv;
-    OBFormat     *outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
-    if ( !outFormat || !conv.SetOutFormat( outFormat ) ) {
-      QMessageBox::warning( this, tr( "Avogadro" ),
-          tr( "Cannot write to file format of file %1." )
-          .arg( fileName ) );
-      return false;
-    }
     ofstream     ofs;
     ofs.open(( fileName.toAscii() ).data() );
     if ( !ofs ) { // shouldn't happen, already checked file above
