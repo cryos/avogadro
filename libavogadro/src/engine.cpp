@@ -77,6 +77,7 @@ namespace Avogadro {
   void Engine::setEnabled(bool enabled)
   {
     d->enabled = enabled;
+    emit changed();
   }
 
   void Engine::addPrimitive(Primitive *primitive)

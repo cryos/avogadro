@@ -551,7 +551,6 @@ namespace Avogadro {
     glLightfv( GL_LIGHT1, GL_POSITION, position2 );
     glEnable( GL_LIGHT1 );
     qDebug() << "GLWidget initialised...";
-
   }
 
   void GLWidget::resizeEvent( QResizeEvent *event )
@@ -1213,8 +1212,6 @@ namespace Avogadro {
         d->engines.at( i )->addPrimitive( primitive );
       }
       d->primitives.append( primitive );
-      // The engine caches must be invalidated
-      d->updateCache = true;
     }
   }
 
@@ -1223,8 +1220,6 @@ namespace Avogadro {
     for ( int i=0; i< d->engines.size(); i++ ) {
       d->engines.at( i )->updatePrimitive( primitive );
     }
-    // The engine caches must be invalidated
-    d->updateCache = true;
     updateGeometry();
   }
 
@@ -1237,24 +1232,24 @@ namespace Avogadro {
       }
       d->selectedPrimitives.removeAll( primitive );
       d->primitives.removeAll( primitive );
-      // The engine caches must be invalidated
-      d->updateCache = true;
     }
   }
 
   void GLWidget::addEngine(Engine *engine)
   {
-    connect( engine, SIGNAL( changed() ), this, SLOT( update() ) );
-    d->engines.append( engine );
-    qSort( d->engines.begin(), d->engines.end(), engineLessThan );
+    connect( engine, SIGNAL(changed()), this, SLOT(update()));
+    connect(engine, SIGNAL(changed()), this, SLOT(invalidateDLs()));
+    d->engines.append(engine);
+    qSort(d->engines.begin(), d->engines.end(), engineLessThan);
     emit engineAdded(engine);
     update();
   }
 
   void GLWidget::removeEngine(Engine *engine)
   {
-    connect( engine, SIGNAL( changed() ), this, SLOT( update() ) );
-    d->engines.removeAll( engine );
+    disconnect(engine, SIGNAL(changed()), this, SLOT(update()));
+    disconnect(engine, SIGNAL(changed()), this, SLOT(invalidateDLs()));
+    d->engines.removeAll(engine);
     emit engineRemoved(engine);
     engine->deleteLater();
     update();
@@ -1690,6 +1685,12 @@ namespace Avogadro {
         engine->setPrimitives(primitives());
         addEngine(engine);
       }
+  }
+
+  void GLWidget::invalidateDLs()
+  {
+    // Something changed and we need to invalidate the display lists
+    d->updateCache = true;
   }
 }
 

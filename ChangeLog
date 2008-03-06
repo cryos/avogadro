@@ -1,3 +1,12 @@
+2008-03-06  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engine.cpp: Emit changed when the engine's status is
+	changed, i.e. enabled->disabled or vice versa.
+
+	* libavogadro/src/glwidget.*: Added a new invalidateDLs slot that
+	should be called whenever the display lists need invalidating. Updated
+	our display list invalidation to hopefully be more efficient.
+
 2008-03-06  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/engines/forceengine.*: Render forces on atoms. Uses
