@@ -1,3 +1,8 @@
+2008-03-06  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/engines/forceengine.*: Render forces on atoms. Uses
+	OBConformerData, needs latest OB SVN to work.
+
 2008-03-05  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/glwidget.cpp: Stop invalidating the cache on mouse
