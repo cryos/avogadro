@@ -52,7 +52,8 @@ namespace Avogadro
   ForceFieldExtension::ForceFieldExtension( QObject *parent ) : QObject( parent )
   {
     QAction *action;
-    m_forceField = OBForceField::FindForceField( "Ghemical" );
+    // If you change this, see forcefielddialog.cpp, where we need to set the popup menu
+    m_forceField = OBForceField::FindForceField( "MMFF94" );
     m_Dialog = new ForceFieldDialog;
     m_conformerDialog = new ConformerSearchDialog;
     m_ConstraintsDialog = new ConstraintsDialog;
@@ -509,4 +510,4 @@ namespace Avogadro
 } // end namespace Avogadro
 
 #include "forcefieldextension.moc"
-Q_EXPORT_PLUGIN2( ghemicalextension, Avogadro::ForceFieldExtensionFactory )
+Q_EXPORT_PLUGIN2( forcefieldextension, Avogadro::ForceFieldExtensionFactory )
