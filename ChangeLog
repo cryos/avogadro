@@ -1,3 +1,10 @@
+2008-03-06  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/src/mainwindow.cpp: Check that a window isn't moved
+	off-screen on Mac or Windows (since we remember window positions
+	on those platforms). PR#1903437.
+	(saveFile) Add .cml extension to a filename if none is provided. PR#1817621.
+
 2008-03-06  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/eyecandy.cpp: Make the eye candy solid, this

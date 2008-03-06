@@ -62,6 +62,7 @@
 #include <QTimer>
 #include <QToolButton>
 #include <QUndoStack>
+#include <QDesktopWidget>
 
 #include <QDebug>
 
@@ -678,7 +679,6 @@ namespace Avogadro
     }
     
     QFile file( fileName );
-    
     if ( !file.open( QFile::WriteOnly | QFile::Text ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
           tr( "Cannot write to the file %1:\n%2." )
@@ -686,9 +686,6 @@ namespace Avogadro
           .arg( file.errorString() ) );
       return false;
     }
-
-    QApplication::setOverrideCursor( Qt::WaitCursor );
-    statusBar()->showMessage( tr( "Saving file." ), 2000 );
 
     ofstream     ofs;
     ofs.open(( fileName.toAscii() ).data() );
@@ -698,6 +695,9 @@ namespace Avogadro
           .arg( fileName ) );
       return false;
     }
+
+    QApplication::setOverrideCursor( Qt::WaitCursor );
+    statusBar()->showMessage( tr( "Saving file." ), 2000 );
 
     OBMol *molecule = dynamic_cast<OBMol*>( d->molecule );
     if ( conv.Write( molecule, &ofs ) )
@@ -1328,8 +1328,15 @@ namespace Avogadro
     // On Mac or Windows, the application should remember
     // window positions. On Linux, it's handled by the window manager
 #if defined (Q_WS_MAC) || defined (Q_WS_WIN)
-    QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
-    move(pos);
+    QPoint originalPosition = pos();
+    QPoint newPosition = settings.value("pos", QPoint(200, 200)).toPoint();
+
+    // We'll try moving the window. If it moves off-screen, we'll move it back
+    // This solves PR#1903437
+    move(newPosition);
+    QDesktopWidget desktop;
+    if (desktop.screenNumber(this) == -1) // it's not on a screen
+      move(originalPosition);
 #endif
     QSize size = settings.value( "size", QSize( 640, 480 ) ).toSize();
     resize( size );
