@@ -1,5 +1,9 @@
 2008-03-06  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/eyecandy.cpp: Make the eye candy solid, this
+	gets rid of potentially expensive blending operations in what should
+	be our quick display pipeline. Visually still looks great IMHO.
+	
 	* libavogadro/src/engine.cpp: Emit changed when the engine's status is
 	changed, i.e. enabled->disabled or vice versa.
 
