@@ -60,6 +60,18 @@ TARGET_LINK_LIBRARIES(hbondengine avogadro-lib
 )
 INSTALL(TARGETS hbondengine DESTINATION ${DESTINATION_DIR})
 
+# force engine
+set(forceengine_SRCS forceengine.cpp)
+qt4_automoc(${forceengine_SRCS})
+#qt4_wrap_ui(hbondengine_UIS hbondsettingswidget.ui)
+ADD_LIBRARY(forceengine SHARED ${forceengine_SRCS} ${forceengine_UIS})
+TARGET_LINK_LIBRARIES(forceengine avogadro-lib
+                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                ${OPENGL_LIBRARIES}
+)
+INSTALL(TARGETS forceengine DESTINATION ${DESTINATION_DIR})
+
+
 # sphere
 set(sphereengine_SRCS sphereengine.cpp)
 qt4_wrap_ui(sphereengine_UIS spheresettingswidget.ui)
