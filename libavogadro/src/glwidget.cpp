@@ -570,6 +570,7 @@ namespace Avogadro {
     // GLXWaitX() is called by the TT resizeEvent on Linux... We may need
     // specific functions here - need to look at Mac and Windows code.
     resizeGL( event->size().width(), event->size().height() );
+    doneCurrent();
 #endif
   }
 
@@ -938,12 +939,11 @@ namespace Avogadro {
   void GLWidget::paintEvent( QPaintEvent * )
   {
     //qDebug() << "paintEvent";
-    makeCurrent();
 #ifdef ENABLE_THREADED_GL
     // tell our thread to paint
     d->paintCondition.wakeAll();
-    doneCurrent();
 #else
+    makeCurrent();
     if(!d->initialized)
       {
         d->initialized = true;
@@ -952,6 +952,7 @@ namespace Avogadro {
     qglClearColor(d->background);
     paintGL();
     swapBuffers();
+    doneCurrent();
 #endif
   }
 

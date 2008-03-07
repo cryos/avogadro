@@ -38,10 +38,8 @@
 #include "mainwindow.h"
 #include "application.h"
 
-#ifdef ENABLE_THREADED_GL
 #ifdef Q_WS_X11
 #include <X11/Xlib.h>
-#endif
 #endif
 
 // get the SVN revision string
@@ -63,10 +61,9 @@ int main(int argc, char *argv[])
   QCoreApplication::setOrganizationDomain("sourceforge.net");
   QCoreApplication::setApplicationName("Avogadro");
 
-#ifdef ENABLE_THREADED_GL
 #ifdef Q_WS_X11
+  std::cout << "Enabling Threads\n";
   XInitThreads();
-#endif
 #endif
 
   Application app(argc, argv);
