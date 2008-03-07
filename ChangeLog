@@ -1,3 +1,7 @@
+2008-03-07  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* avogadro/src/main.cpp: Add extra GL initialisation debug output.
+
 2008-03-06  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* avogadro/src/mainwindow.cpp: Check that a window isn't moved
@@ -10,7 +14,7 @@
 	* libavogadro/src/tools/eyecandy.cpp: Make the eye candy solid, this
 	gets rid of potentially expensive blending operations in what should
 	be our quick display pipeline. Visually still looks great IMHO.
-	
+
 	* libavogadro/src/engine.cpp: Emit changed when the engine's status is
 	changed, i.e. enabled->disabled or vice versa.
 
