@@ -1,5 +1,8 @@
 2008-03-08  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/engines/surfaceengine.*: Just return from the render
+	function if the VdW thread is running - should fix crashes.
+
 	* libavogadro/src/glwidget.cpp: Removed the doneCurrent() calls in the
 	non-threaded GL code paths. These calls were breaking hits calls  etc.
 

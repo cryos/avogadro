@@ -48,7 +48,8 @@ namespace Avogadro {
       VDWGridThread(QObject *parent=0);
       ~VDWGridThread();
 
-      void init(Molecule *molecule, PrimitiveList &primitives, const PainterDevice* pd, double stepSize = 0.0);
+      void init(Molecule *molecule, PrimitiveList &primitives, const PainterDevice* pd, 
+                double stepSize = 0.0);
       void run();
       Grid* grid();
       double stepSize();

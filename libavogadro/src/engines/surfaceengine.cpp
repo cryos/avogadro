@@ -133,6 +133,9 @@ namespace Avogadro {
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
   {
     qDebug() << "                                      renderOpaque";
+    // Don't try to render anything while the surface is being calculated.
+    if (m_vdwThread->isRunning())
+      return false;
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
     if (!m_surfaceValid)
     {
