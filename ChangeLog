@@ -1,3 +1,8 @@
+2008-03-08  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glwidget.cpp: Removed the doneCurrent() calls in the
+	non-threaded GL code paths. These calls were breaking hits calls  etc.
+
 2008-03-07  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* avogadro/src/main.cpp: Add extra GL initialisation debug output.
