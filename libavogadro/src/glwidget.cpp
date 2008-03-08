@@ -39,6 +39,8 @@
 #include <QPluginLoader>
 #include <QTime>
 
+#include <QReadLocker>
+#include <QWriteLocker>
 #ifdef ENABLE_THREADED_GL
 #include <QWaitCondition>
 #include <QMutex>
@@ -640,6 +642,8 @@ namespace Avogadro {
   void GLWidget::render()
   {
     d->painter->begin(this);
+    // Lock the molecule for reading inside this function
+    QReadLocker lock(d->molecule->lock());
 
     // Use renderQuick if the view is being moved, otherwise full render
     if (d->quickRender) {
@@ -966,6 +970,8 @@ namespace Avogadro {
 
   void GLWidget::mousePressEvent( QMouseEvent * event )
   {
+    // Lock the molecule for writing inside this function
+    QWriteLocker lock(d->molecule->lock());
     if ( d->tool ) {
       QUndoCommand *command = 0;
       command = d->tool->mousePress( this, event );
@@ -988,6 +994,8 @@ namespace Avogadro {
 
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   {
+    // Lock the molecule for writing inside this function
+    QWriteLocker lock(d->molecule->lock());
     if ( d->tool ) {
       QUndoCommand *command = d->tool->mouseRelease( this, event );
 
@@ -1009,6 +1017,8 @@ namespace Avogadro {
 
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
   {
+    // Lock the molecule for writing inside this function
+    QWriteLocker lock(d->molecule->lock());
     if ( d->tool ) {
       QUndoCommand *command = d->tool->mouseMove( this, event );
       if ( command && d->undoStack ) {
@@ -1019,6 +1029,8 @@ namespace Avogadro {
 
   void GLWidget::wheelEvent( QWheelEvent * event )
   {
+    // Lock the molecule for writing inside this function
+    QWriteLocker lock(d->molecule->lock());
     if ( d->tool ) {
       QUndoCommand *command = d->tool->wheel( this, event );
       if ( command && d->undoStack ) {
@@ -1303,7 +1315,8 @@ namespace Avogadro {
 
   QList<GLHit> GLWidget::hits( int x, int y, int w, int h )
   {
-    //    QReadLocker(d->molecule->lock());
+    // Lock the molecule for reading inside this function
+    QReadLocker lock(d->molecule->lock());
     QList<GLHit> hits;
 
     if ( !molecule() ) return hits;
