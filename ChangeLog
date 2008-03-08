@@ -2,7 +2,7 @@
 
 	* libavogadro/src/glwidget.cpp: Added some read and write locks at
 	appropriate looking places in the GLWidget. Should help but it may
-	need to be finer grained in places.
+	need to be finer grained in places. Reverted - locks up a lot...
 
 	* avogadro/src/main.cpp: Looks like some drivers have broken
 	XInitThreads() functions. Only enable in threaded GL builds.
