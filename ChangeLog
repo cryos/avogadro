@@ -1,3 +1,9 @@
+2008-03-09  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/iso.cpp: Corrected a bug where the surface
+	generation could step off the end of the cube by one unit in x, y and
+	z. Also removed some of the debug output.
+
 2008-03-09  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/engines/orbital*.*: Add support for multiple
