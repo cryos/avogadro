@@ -65,6 +65,16 @@ namespace Avogadro {
 
       void setPrimitives(const PrimitiveList &primitives);
 
+      /**
+       * Write the engine settings so that they can be saved between sessions.
+       */
+      void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read in the settings that have been saved for the engine instance.
+       */
+      void readSettings(QSettings &settings);
+
     public Q_SLOTS:
       void addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
@@ -78,6 +88,7 @@ namespace Avogadro {
       int m_type;      // Type of ribbon rendering to do
       double m_radius; // Ribbon radius
       bool m_update;   // Is an update of the chain necessary?
+      int m_useNitrogens;
       QList< QVector<Eigen::Vector3d> > m_chains;
       QVector<Color> m_chainColors;
 
@@ -89,6 +100,7 @@ namespace Avogadro {
        */
       void setType(int value);
       void setRadius(int value);
+      void setUseNitrogens(int setting);
 
   };
 

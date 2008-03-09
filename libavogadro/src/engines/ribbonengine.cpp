@@ -43,7 +43,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   RibbonEngine::RibbonEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
-  m_type(0), m_radius(1.0)
+  m_type(0), m_radius(1.0), m_useNitrogens(2)
   {
     setDescription(tr("Renders residues as ribbons"));
 
@@ -64,6 +64,7 @@ namespace Avogadro {
     engine->setName(name());
     engine->m_type = m_type;
     engine->m_radius = m_radius;
+    engine->setUseNitrogens(m_useNitrogens);
     engine->setEnabled(isEnabled());
 
     return engine;
@@ -189,7 +190,9 @@ namespace Avogadro {
         if (atomID == "CA") {
           pts.push_back(static_cast<Atom *>(&*a)->pos());
         }
-        else if (atomID == "N") { } // Possibly use nitrogens too
+        else if (atomID == "N" && m_useNitrogens == 2 ) {
+         pts.push_back(static_cast<Atom *>(&*a)->pos());
+        }
       } // end atoms in residue
 
     } // end primitive list (i.e., all residues)
@@ -219,6 +222,13 @@ namespace Avogadro {
     emit changed();
   }
 
+  void RibbonEngine::setUseNitrogens(int setting)
+  {
+    m_useNitrogens = setting;
+    updateChains();
+    emit changed();
+  }
+
   QWidget* RibbonEngine::settingsWidget()
   {
     if(!m_settingsWidget)
@@ -226,7 +236,11 @@ namespace Avogadro {
       m_settingsWidget = new RibbonSettingsWidget();
       connect(m_settingsWidget->renderType, SIGNAL(activated(int)), this, SLOT(setType(int)));
       connect(m_settingsWidget->radiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setRadius(int)));
+      connect(m_settingsWidget->useNitrogens, SIGNAL(stateChanged(int)), this, SLOT(setUseNitrogens(int)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      m_settingsWidget->renderType->setCurrentIndex(m_type);
+      m_settingsWidget->radiusSlider->setValue(int(10 * m_radius));
+      m_settingsWidget->useNitrogens->setCheckState((Qt::CheckState)m_useNitrogens);
     }
     return m_settingsWidget;
   }
@@ -236,6 +250,27 @@ namespace Avogadro {
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
   }
+  void RibbonEngine::writeSettings(QSettings &settings) const
+  {
+    Engine::writeSettings(settings);
+    settings.setValue("radius", 10*m_radius);
+    settings.setValue("type", m_type);
+    settings.setValue("useNitrogens", m_useNitrogens);
+  }
+
+  void RibbonEngine::readSettings(QSettings &settings)
+  {
+    Engine::readSettings(settings);
+    setType(settings.value("type", 0).toInt());
+    setRadius(settings.value("radius", 10).toInt());
+    setUseNitrogens(settings.value("useNitrogens", 2).toInt());
+    if (m_settingsWidget) {
+      m_settingsWidget->renderType->setCurrentIndex(m_type);
+      m_settingsWidget->radiusSlider->setValue(int(10 * m_radius));
+      m_settingsWidget->useNitrogens->setCheckState((Qt::CheckState)m_useNitrogens);
+    }
+  }
+
 }
 
 #include "ribbonengine.moc"
