@@ -506,16 +506,19 @@ namespace Avogadro
     m_normList.clear();
     m_vertList.clear();
 
-    // Work out the number of steps needed to cover the cube
+    // Interpolate if m_interpolate is true, otherwise use the faster access
+    // methods available if we are iterating over the actual grid points.
     if (m_interpolate)
     {
-      qDebug() << "Interpolation mode.";
+      // Work out the number of steps needed to cover the cube
       nx = (m_max.x() - m_min.x()) / m_stepSize;
       ny = (m_max.y() - m_min.y()) / m_stepSize;
       nz = (m_max.z() - m_min.z()) / m_stepSize;
-      for(int x = 0; x < nx; ++x)
-        for(int y = 0; y < ny; ++y)
-          for(int z = 0; z < nz; ++z)
+
+      // Just go to nX-1 as the cube extends one unit from the given point
+      for(int x = 0; x < nx-1; ++x)
+        for(int y = 0; y < ny-1; ++y)
+          for(int z = 0; z < nz-1; ++z)
             vMarchCube1(m_min.x()+x*m_stepSize,
                         m_min.y()+y*m_stepSize,
                         m_min.z()+z*m_stepSize);
@@ -523,14 +526,14 @@ namespace Avogadro
     }
     else
     {
-      qDebug() << "No interpolation.";
       // Don't do any interpolation...
       m_grid->grid()->GetNumberOfPoints(nx, ny, nz);
       m_stepSize = (m_max.x() - m_min.x()) / nx;
-      qDebug() << "Step size: " << m_stepSize;
-      for(int i = 0; i < nx; ++i)
-        for(int j = 0; j < ny; ++j)
-          for(int k = 0; k < nz; ++k)
+
+      // Just go to nX-1 as the cube extends one unit from the given point
+      for(int i = 0; i < nx-1; ++i)
+        for(int j = 0; j < ny-1; ++j)
+          for(int k = 0; k < nz-1; ++k)
             vMarchCube1(i, j, k);
     }
 
