@@ -271,14 +271,38 @@ namespace Avogadro {
     {
       qDebug() << "Molecular orbital grid found!";
 
-      // Two grids -- one for positive isovalue, one for negative
-      m_grid->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
-      m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
-
-      // if we want multiple grids, we can use the new OB-2.2 code
-      // mol->GetAllData(OBGenericDataType::GridData);
-      // returns vector<OBGenericData *>
-      // we'd want a popup menu or something
+      if (!m_settingsWidget)
+      {
+	// Use first grid/orbital
+	m_grid->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
+        m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
+      } else { 
+        if (!m_settingsWidget->orbitalCombo->count())
+        {
+	  // Use first grid/orbital
+	  // Two grids -- one for positive isovalue, one for negative
+          m_grid->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
+          m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
+        
+	  // Add the orbitals
+          vector<OBGenericData*> data = mol->GetAllData(OBGenericDataType::GridData);
+	  for (unsigned int i = 0; i < data.size(); ++i)
+	  {
+	    QString str = QString(data[i]->GetAttribute().c_str());
+	    m_settingsWidget->orbitalCombo->addItem(str);
+	  }
+        } else {
+          vector<OBGenericData*> data = mol->GetAllData(OBGenericDataType::GridData);
+          unsigned int index = m_settingsWidget->orbitalCombo->currentIndex();
+          if (index >= data.size())
+          {
+            qDebug() << "Invalid orbital selected.";
+            return;
+          }
+          m_grid->setGrid(static_cast<OBGridData *>(data[index]));
+          m_grid2->setGrid(static_cast<OBGridData *>(data[index]));
+        }
+      }
     }
 
   // attribute is the text key for the grid (as an std::string)
@@ -313,6 +337,12 @@ namespace Avogadro {
   Engine::EngineFlags OrbitalEngine::flags() const
   {
     return Engine::Transparent | Engine::Atoms;
+  }
+
+  void OrbitalEngine::setOrbital(int value)
+  {
+    m_update = true;
+    emit changed();
   }
 
   void OrbitalEngine::setOpacity(int value)
@@ -362,6 +392,7 @@ namespace Avogadro {
     if(!m_settingsWidget)
     {
       m_settingsWidget = new OrbitalSettingsWidget();
+      connect(m_settingsWidget->orbitalCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setOrbital(int)));
       connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
       connect(m_settingsWidget->renderCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setRenderMode(int)));
       connect(m_settingsWidget->interpolate, SIGNAL(stateChanged(int)), this, SLOT(setInterpolate(int)));
@@ -376,6 +407,7 @@ namespace Avogadro {
       m_settingsWidget->posColor->setColor(initial);
       initial.setRgbF(m_negColor.red(), m_negColor.green(), m_negColor.blue());
       m_settingsWidget->negColor->setColor(initial);
+      m_update = true;
     }
     return m_settingsWidget;
   }

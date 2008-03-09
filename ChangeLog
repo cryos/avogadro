@@ -1,3 +1,10 @@
+2008-03-09  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/engines/orbital*.*: Add support for multiple
+	orbitals/cubes.
+
+	* testfiles/ch3cl.cube.gz: Example file for multiple cubes.
+
 2008-03-08  Jordan Mantha  <jordan.mantha@gmail.com>
 
 	* libavogadro/src/engines/ribbonengine.*: Added support for

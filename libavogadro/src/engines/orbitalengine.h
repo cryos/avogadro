@@ -96,6 +96,10 @@ namespace Avogadro {
       void isoGenFinished();
       void settingsWidgetDestroyed();
       /**
+       * @param value orbital index
+       */
+      void setOrbital(int value);
+      /**
        * @param value opacity of the surface / 20
        */
       void setOpacity(int value);
