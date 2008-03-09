@@ -1,7 +1,7 @@
 /**********************************************************************
   StickEngine - Engine for "stick" display
 
-  Copyright (C) 2006-2007 Geoffrey R. Hutchison
+  Copyright (C) 2006-2008 Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -38,9 +38,15 @@ using namespace std;
 using namespace OpenBabel;
 using namespace Eigen;
 
+// Conversion from integers to double
+// Default has been 20.0
+// i.e., smallest radius = 0.05 (1/20), default is 0.25 (5/20), max is 0.5 (10/20)
+#define SCALING_FACTOR  20.0
+
 namespace Avogadro {
 
-  StickEngine::StickEngine(QObject *parent) : Engine(parent)
+  StickEngine::StickEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
+		m_radius(0.25)
   {
     setName(type());
     setDescription(tr("Renders as Cylinders"));
@@ -48,6 +54,9 @@ namespace Avogadro {
 
   StickEngine::~StickEngine()
   {
+	  // Delete the settings widget if it exists
+    if(m_settingsWidget)
+      m_settingsWidget->deleteLater();
   }
   
   Engine* StickEngine::clone() const
@@ -56,6 +65,7 @@ namespace Avogadro {
     
     engine->setName(name());
     engine->setEnabled(isEnabled());
+		engine->setRadius(m_radius * SCALING_FACTOR);
     return engine;
   }
 
@@ -191,7 +201,48 @@ namespace Avogadro {
 
   inline double StickEngine::radius(const Atom*) const
   {
-    return 0.25;
+    return m_radius;
+  }
+
+	// **** Settings Widget ***
+	
+  void StickEngine::setRadius(int value)
+  {
+    m_radius = value / SCALING_FACTOR;
+    emit changed();
+  }
+
+  QWidget* StickEngine::settingsWidget()
+  {
+    if(!m_settingsWidget)
+    {
+      m_settingsWidget = new StickSettingsWidget();
+      connect(m_settingsWidget->radiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setRadius(int)));
+      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      m_settingsWidget->radiusSlider->setValue(SCALING_FACTOR*m_radius);
+    }
+    return m_settingsWidget;
+  }
+
+  void StickEngine::settingsWidgetDestroyed()
+  {
+    m_settingsWidget = 0;
+  }
+
+  void StickEngine::writeSettings(QSettings &settings) const
+  {
+    Engine::writeSettings(settings);
+    settings.setValue("radius", SCALING_FACTOR*m_radius);
+  }
+
+  void StickEngine::readSettings(QSettings &settings)
+  {
+    Engine::readSettings(settings);
+		// default = 0.25 as far as m_radius
+    setRadius(settings.value("radius", 5).toInt());
+    if (m_settingsWidget) {
+      m_settingsWidget->radiusSlider->setValue(SCALING_FACTOR*m_radius);
+    }
   }
 }
 

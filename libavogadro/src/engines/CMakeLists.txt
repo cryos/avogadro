@@ -86,13 +86,13 @@ INSTALL(TARGETS sphereengine DESTINATION ${DESTINATION_DIR})
 
 # stick (cylinder) engine
 set(stickengine_SRCS stickengine.cpp)
+qt4_wrap_ui(stickengine_UIS sticksettingswidget.ui)
 qt4_automoc(${stickengine_SRCS})
-ADD_LIBRARY(stickengine SHARED ${stickengine_SRCS} )
+ADD_LIBRARY(stickengine SHARED ${stickengine_SRCS} ${stickengine_UIS})
 TARGET_LINK_LIBRARIES(stickengine avogadro-lib
                                 ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                 ${OPENGL_LIBRARIES}
 )
-
 INSTALL(TARGETS stickengine DESTINATION ${DESTINATION_DIR})
 
 # Ribbon engine (biological structure)

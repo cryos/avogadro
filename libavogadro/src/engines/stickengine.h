@@ -28,10 +28,12 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
+#include "ui_sticksettingswidget.h"
 
 namespace Avogadro {
 
-  //! Ball and Stick Engine class.
+  //! Stick / Licorice Engine class.
+  class StickSettingsWidget;
   class StickEngine : public Engine
   {
     Q_OBJECT
@@ -60,8 +62,40 @@ namespace Avogadro {
       EngineFlags flags() const;
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 
+      QWidget* settingsWidget();
+      /**
+       * Write the engine settings so that they can be saved between sessions.
+       */
+      void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read in the settings that have been saved for the engine instance.
+       */
+      void readSettings(QSettings &settings);
+
     private:
       inline double radius(const Atom *a) const;
+
+      StickSettingsWidget *m_settingsWidget;
+
+			double m_radius; //!< The radius of the stick bonds
+			
+		private Q_SLOTS:
+	    void settingsWidgetDestroyed();
+
+
+	    /**
+	     * @param value radius of the sticks / 20
+	     */
+	    void setRadius(int value);
+  };
+
+  class StickSettingsWidget : public QWidget, public Ui::StickSettingsWidget
+  {
+    public:
+      StickSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+        setupUi(this);
+      }
   };
 
   //! Generates instances of our StickEngine class
