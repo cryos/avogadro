@@ -82,7 +82,7 @@ namespace Avogadro {
     return true;
   }
 
-  bool LabelEngine::renderQuick(PainterDevice *, bool)
+  bool LabelEngine::renderQuick(PainterDevice *)
   {
     // Don't render text when moving...
     return true;

@@ -654,10 +654,6 @@ namespace Avogadro
 
     // The first value is repeated three times as is the last in order to complete the curve
     QVector<Eigen::Vector3d> points = pts;
-    points.push_front(pts.at(0));
-    points.push_front(pts.at(0));
-    points.push_back(pts.at(pts.size()-1));
-    points.push_back(pts.at(pts.size()-1));
 
     //    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
 
@@ -725,7 +721,7 @@ namespace Avogadro
       ctrlpts[0][j][1] = v.y() + points[0].y();
       ctrlpts[0][j][2] = v.z() + points[0].z();
     }
-    uknots[2] = 1.0;
+    uknots[2] = 0.0;
 
     for (int i = 1; i < points.size(); i++) {
       axis = Eigen::Vector3f(points[i-1].x() - points[i].x(),
@@ -742,12 +738,14 @@ namespace Avogadro
         ctrlpts[i][j][1] = v.y() + points[i].y();
         ctrlpts[i][j][2] = v.z() + points[i].z();
       }
-      uknots[i+2] = i + 1.0;
+      uknots[i+2] = i - 1.0;
     }
-    uknots[0] = 0.;
-    uknots[1] = 0.;
-    uknots[pts.size()+2] = pts.size() + 1;
-    uknots[pts.size()+3] = pts.size() + 1;
+    uknots[0] = 0.0;
+    uknots[1] = 0.0;
+    uknots[points.size()] = points.size() - 1.0;
+    uknots[points.size()+1] = points.size() - 1.0;
+    uknots[points.size()+2] = points.size() - 1.0;
+    uknots[points.size()+3] = points.size() - 1.0;
 
     // Hard coded right now - will generalise for arbitrary TUBE_TESS values
     GLfloat vknots[10] = {0., 0., 1., 2., 3., 4., 5., 6., 7., 7.};
@@ -758,7 +756,7 @@ namespace Avogadro
     gluBeginSurface(nurb);
 
     gluNurbsSurface(nurb,
-                    pts.size() + 4, uknots,
+                    points.size() + 4, uknots,
                     TUBE_TESS + 4, vknots,
                     TUBE_TESS*3,
                     3,

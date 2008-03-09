@@ -167,7 +167,7 @@ namespace Avogadro {
 
   public:
     PeriodicTableView(QWidget *parent = 0);
-    PeriodicTableView(QGraphicsScene *scene, QWidget *parent = 0);
+    explicit PeriodicTableView(QGraphicsScene *scene, QWidget *parent = 0);
 
     void setSelectedElement(int element);
 

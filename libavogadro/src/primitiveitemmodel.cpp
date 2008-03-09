@@ -125,7 +125,9 @@ namespace Avogadro {
     if(parentRow < d->size.size())
     {
       int row = primitiveIndex(primitive);
-      assert(row > -1);
+      //assert(row > -1);
+      if (row < 0)
+        return;
       beginRemoveRows(createIndex(parentRow, 0, 0), row, row);
       if(d->molecule)
       {

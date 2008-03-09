@@ -247,6 +247,86 @@ namespace Avogadro
     return true;
   }
 
+  bool BSDYEngine::renderQuick(PainterDevice *pd)
+  {
+    // Render atoms and bond with no transparency...
+    QList<Primitive *> list;
+
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
+    Color cSel;
+    cSel.setToSelectionColor();
+
+    // Get a list of bonds and render them
+    list = primitives().subList(Primitive::BondType);
+
+    foreach(Primitive *p, list)
+    {
+      const Bond *b = static_cast<const Bond *>(p);
+
+      const Atom* atom1 = static_cast<const Atom *>(b->GetBeginAtom());
+      const Atom* atom2 = static_cast<const Atom *>(b->GetEndAtom());
+      Vector3d v1(atom1->pos());
+      Vector3d v2(atom2->pos());
+      Vector3d d = v2 - v1;
+      d.normalize();
+      Vector3d v3((v1 + v2 + d*(radius(atom1)-radius(atom2))) / 2);
+
+      double shift = 0.15;
+      int order = 1;
+      if (m_showMulti) order = b->GetBO();
+
+      if (pd->isSelected(b))
+      {
+        pd->painter()->setColor(&cSel);
+        pd->painter()->setName(b);
+        pd->painter()->drawMultiCylinder(v1, v2, SEL_BOND_EXTRA_RADIUS +
+                                         m_bondRadius, order, shift);
+      }
+      else
+      {
+        map->set(atom1);
+        pd->painter()->setColor(map);
+        pd->painter()->setName(b);
+        pd->painter()->drawMultiCylinder(v1, v3, m_bondRadius, order, shift);
+
+        map->set( atom2 );
+        pd->painter()->setColor(map);
+        pd->painter()->setName(b);
+        pd->painter()->drawMultiCylinder(v3, v2, m_bondRadius, order, shift);
+      }
+    }
+
+    glDisable(GL_NORMALIZE);
+    glEnable(GL_RESCALE_NORMAL);
+
+    // Build up a list of the atoms and render them
+    list = primitives().subList(Primitive::AtomType);
+    foreach(Primitive *p, list)
+    {
+      const Atom *a = static_cast<const Atom *>(p);
+
+      if (pd->isSelected(a))
+      {
+        pd->painter()->setColor(&cSel);
+        pd->painter()->setName(a);
+        pd->painter()->drawSphere(a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a));
+      }
+      else
+      {
+        map->set(a);
+        pd->painter()->setColor(map);
+        pd->painter()->setName(a);
+        pd->painter()->drawSphere(a->pos(), radius(a));
+      }
+    }
+
+    // normalize normal vectors of bonds
+    glDisable(GL_RESCALE_NORMAL);
+    glEnable(GL_NORMALIZE);
+    return true;
+  }
+
   inline double BSDYEngine::radius( const Atom *atom ) const
   {
     return etab.GetVdwRad( atom->GetAtomicNum() ) * m_atomRadiusPercentage;
@@ -318,7 +398,7 @@ namespace Avogadro
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
   }
-  
+
   void BSDYEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);
@@ -333,7 +413,7 @@ namespace Avogadro
     setAtomRadiusPercentage(settings.value("atomRadius", 3).toInt());
     setBondRadius(settings.value("bondRadius", 2).toInt());
     setShowMulti(settings.value("showMulti", 2).toInt());
-    
+
     if (m_settingsWidget) {
       m_settingsWidget->atomRadiusSlider->setValue(10*m_atomRadiusPercentage);
       m_settingsWidget->bondRadiusSlider->setValue(20*m_bondRadius);

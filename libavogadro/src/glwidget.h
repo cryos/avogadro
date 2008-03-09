@@ -375,7 +375,7 @@ namespace Avogadro {
        * Set to render the "debug info" (i.e., FPS, number of atoms, etc.)
        */
       void setRenderDebug(bool renderDebug);
-    
+
       /**
        * @return true if the debug panel is being drawn
        */
@@ -675,6 +675,11 @@ namespace Avogadro {
        * Reset to default engines (one of each factory).
        */
       void loadDefaultEngines();
+
+      /**
+       * Signal that something changed and the display lists should be invalidated.
+       */
+      void invalidateDLs();
 
     Q_SIGNALS:
       /**

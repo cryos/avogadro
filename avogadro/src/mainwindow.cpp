@@ -62,6 +62,7 @@
 #include <QTimer>
 #include <QToolButton>
 #include <QUndoStack>
+#include <QDesktopWidget>
 
 #include <QDebug>
 
@@ -561,7 +562,7 @@ namespace Avogadro
 
     Molecule *molecule = new Molecule;
     if ( conv.Read( molecule, &ifs ) && molecule->NumAtoms() != 0 ) {
-      if (!molecule->Has3D()) {
+      if (molecule->GetDimension() != 3) {
         QMessageBox::warning( this, tr( "Avogadro" ),
             tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));
       }
@@ -658,8 +659,25 @@ namespace Avogadro
     return results;
   }
 
-  bool MainWindow::saveFile( const QString &fileName )
+  bool MainWindow::saveFile( const QString &originalName )
   {
+    // check for an extension first!
+    // i.e., look for a string ending with at least a period and one letter
+    // -2 implies searching from the next to last character
+    QString fileName(originalName);
+    if (fileName.lastIndexOf('.', -2) == -1)
+      fileName.append(".cml");
+
+    // Check the format next (before we try creating a file)
+    OBConversion conv;
+    OBFormat     *outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
+    if ( !outFormat || !conv.SetOutFormat( outFormat ) ) {
+      QMessageBox::warning( this, tr( "Avogadro" ),
+          tr( "Cannot write to file format of file %1." )
+          .arg( fileName ) );
+      return false;
+    }
+    
     QFile file( fileName );
     if ( !file.open( QFile::WriteOnly | QFile::Text ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
@@ -669,17 +687,6 @@ namespace Avogadro
       return false;
     }
 
-    QApplication::setOverrideCursor( Qt::WaitCursor );
-    statusBar()->showMessage( tr( "Saving file." ), 2000 );
-
-    OBConversion conv;
-    OBFormat     *outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
-    if ( !outFormat || !conv.SetOutFormat( outFormat ) ) {
-      QMessageBox::warning( this, tr( "Avogadro" ),
-          tr( "Cannot write to file format of file %1." )
-          .arg( fileName ) );
-      return false;
-    }
     ofstream     ofs;
     ofs.open(( fileName.toAscii() ).data() );
     if ( !ofs ) { // shouldn't happen, already checked file above
@@ -688,6 +695,9 @@ namespace Avogadro
           .arg( fileName ) );
       return false;
     }
+
+    QApplication::setOverrideCursor( Qt::WaitCursor );
+    statusBar()->showMessage( tr( "Saving file." ), 2000 );
 
     OBMol *molecule = dynamic_cast<OBMol*>( d->molecule );
     if ( conv.Write( molecule, &ofs ) )
@@ -1318,8 +1328,15 @@ namespace Avogadro
     // On Mac or Windows, the application should remember
     // window positions. On Linux, it's handled by the window manager
 #if defined (Q_WS_MAC) || defined (Q_WS_WIN)
-    QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
-    move(pos);
+    QPoint originalPosition = pos();
+    QPoint newPosition = settings.value("pos", QPoint(200, 200)).toPoint();
+
+    // We'll try moving the window. If it moves off-screen, we'll move it back
+    // This solves PR#1903437
+    move(newPosition);
+    QDesktopWidget desktop;
+    if (desktop.screenNumber(this) == -1) // it's not on a screen
+      move(originalPosition);
 #endif
     QSize size = settings.value( "size", QSize( 640, 480 ) ).toSize();
     resize( size );

@@ -22,10 +22,10 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "elementcolor.h"
+
 #include <config.h>
 #include <avogadro/primitive.h>
-
-#include "elementcolor.h"
 
 using namespace OpenBabel;
 

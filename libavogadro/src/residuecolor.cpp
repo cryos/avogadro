@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
 #include "residuecolor.h"
+#include <config.h>
 
 #include <avogadro/primitive.h>
 

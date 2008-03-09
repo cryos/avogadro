@@ -34,6 +34,23 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
+  /// Utility function -- unset OpenBabel perception
+  void UnsetFlags(Molecule *mol)
+  {
+    mol->UnsetFlag(OB_AROMATIC_MOL);
+    mol->UnsetFlag(OB_SSSR_MOL);
+    mol->UnsetFlag(OB_RINGFLAGS_MOL);
+    mol->UnsetFlag(OB_ATOMTYPES_MOL);
+    mol->UnsetFlag(OB_RINGTYPES_MOL);
+    mol->UnsetFlag(OB_CHIRALITY_MOL);
+    mol->UnsetFlag(OB_HYBRID_MOL);
+    mol->UnsetFlag(OB_IMPVAL_MOL);
+    mol->UnsetFlag(OB_KEKULE_MOL);
+    mol->UnsetFlag(OB_CLOSURE_MOL);
+    mol->UnsetFlag(OB_H_ADDED_MOL);
+    mol->UnsetFlag(OB_AROM_CORRECTED_MOL);
+  }
+
   /////////////////////////////////////////////////////////////////////////////
   // Add Atom
   /////////////////////////////////////////////////////////////////////////////
@@ -85,7 +102,7 @@ namespace Avogadro {
         d->molecule->DeleteAtom(d->atom);
         d->molecule->EndModify();
         d->molecule->update();
-	d->atom = 0;
+	      d->atom = 0;
       }
   }
 
@@ -94,9 +111,9 @@ namespace Avogadro {
     if(d->atom) { // initial creation
       if (d->adjustValence) {
         if (!d->atom->IsHydrogen()) {
-	  d->molecule->DeleteHydrogens(d->atom);
+          d->molecule->DeleteHydrogens(d->atom);
           d->molecule->AddHydrogens(d->atom);
-	}
+	      }
       }
       return;
     }
@@ -232,9 +249,9 @@ namespace Avogadro {
           if (!d->endAtom->IsHydrogen())
             d->molecule->DeleteHydrogens(d->endAtom);
           
-          d->molecule->UnsetImplicitValencePerceived();
+          UnsetFlags(d->molecule);
             
-	  if (!d->beginAtom->IsHydrogen())
+	        if (!d->beginAtom->IsHydrogen())
             d->molecule->AddHydrogens(d->beginAtom);
           if (!d->endAtom->IsHydrogen())
             d->molecule->AddHydrogens(d->endAtom);
@@ -253,15 +270,15 @@ namespace Avogadro {
 
     if(d->bond) { // already created the bond
       if (d->adjustValence) {
-	if (!d->beginAtom->IsHydrogen())
+	      if (!d->beginAtom->IsHydrogen())
           d->molecule->DeleteHydrogens(d->beginAtom);
         if (!d->endAtom->IsHydrogen())
           d->molecule->DeleteHydrogens(d->endAtom);
         
-        d->molecule->UnsetImplicitValencePerceived();
+        UnsetFlags(d->molecule);
         
         if (!d->beginAtom->IsHydrogen())
-	  d->molecule->AddHydrogens(d->beginAtom);
+	        d->molecule->AddHydrogens(d->beginAtom);
         if (!d->endAtom->IsHydrogen())
           d->molecule->AddHydrogens(d->endAtom);
       }
@@ -284,7 +301,7 @@ namespace Avogadro {
       if (!d->endAtom->IsHydrogen())
         d->molecule->DeleteHydrogens(d->endAtom);
       
-      d->molecule->UnsetImplicitValencePerceived();
+      UnsetFlags(d->molecule);
       
       if (!d->beginAtom->IsHydrogen())
         d->molecule->AddHydrogens(d->endAtom);
@@ -341,7 +358,8 @@ namespace Avogadro {
           d->molecule->DeleteHydrogens(a1);
           d->molecule->DeleteHydrogens(a2);
 
-          d->molecule->UnsetImplicitValencePerceived();
+          UnsetFlags(d->molecule);
+
           d->molecule->AddHydrogens(a1);
           d->molecule->AddHydrogens(a2);
         }
@@ -390,7 +408,7 @@ namespace Avogadro {
         d->molecule->EndModify();
         d->molecule->update();
         if (d->adjustValence) {
-          d->molecule->UnsetImplicitValencePerceived();
+          UnsetFlags(d->molecule);
           d->molecule->DeleteHydrogens(atom);
           d->molecule->AddHydrogens(atom);
         }
@@ -408,7 +426,7 @@ namespace Avogadro {
         atom->SetAtomicNum(d->newElement);
         d->molecule->EndModify();
         if (d->adjustValence) {
-          d->molecule->UnsetImplicitValencePerceived();
+          UnsetFlags(d->molecule);
           d->molecule->DeleteHydrogens(atom);
           d->molecule->AddHydrogens(atom);
         }
@@ -460,7 +478,7 @@ namespace Avogadro {
           d->molecule->DeleteHydrogens(a1);
           d->molecule->DeleteHydrogens(a2);
 
-          d->molecule->UnsetImplicitValencePerceived();
+          UnsetFlags(d->molecule);
           d->molecule->AddHydrogens(a1);
           d->molecule->AddHydrogens(a2);
         }
@@ -484,7 +502,7 @@ namespace Avogadro {
           d->molecule->DeleteHydrogens(a1);
           d->molecule->DeleteHydrogens(a2);
 
-          d->molecule->UnsetImplicitValencePerceived();
+          UnsetFlags(d->molecule);
           d->molecule->AddHydrogens(a1);
           d->molecule->AddHydrogens(a2);
         }

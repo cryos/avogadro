@@ -1,7 +1,7 @@
 /**********************************************************************
   Eyecandy - Draw arrows etc. inside the Avogadro scene
 
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007,2008 by Marcus D. Hanwell
   Copyright (C) 2006,2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
@@ -162,8 +162,8 @@ namespace Avogadro {
     m_yAxis = widget->camera()->backTransformedYAxis();
     m_zAxis = widget->camera()->backTransformedZAxis();
 
-    glEnable(GL_BLEND);
-    glDepthMask(GL_FALSE);
+//    glEnable(GL_BLEND);
+//    glDepthMask(GL_FALSE);
     m_color.applyAsMaterials();
 
     //draw back faces
@@ -184,8 +184,8 @@ namespace Avogadro {
     drawRotationUpArrow();
     drawRotationDownArrow();
 
-    glDisable(GL_BLEND);
-    glDepthMask(GL_TRUE);
+//    glDisable(GL_BLEND);
+//    glDepthMask(GL_TRUE);
   }
 
   void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom, const Eigen::Vector3d &center)
@@ -209,9 +209,9 @@ namespace Avogadro {
   }
   void Eyecandy::drawTranslation(GLWidget *widget, const Eigen::Vector3d& center, double size, double shift)
   {
-    glEnable(GL_BLEND);
+//    glEnable(GL_BLEND);
     glDisable(GL_LIGHTING);
-    glDepthMask(GL_FALSE);
+//    glDepthMask(GL_FALSE);
     m_color.apply();
 
     // Set up the axes and some vectors to work with
@@ -277,9 +277,9 @@ namespace Avogadro {
     glVertex3dv((v - RIBBON_ARROW_LENGTH*size*yAxis).array());
     glEnd();
 
-    glDisable(GL_BLEND);
+//    glDisable(GL_BLEND);
     glEnable(GL_LIGHTING);
-    glDepthMask(GL_TRUE);
+//    glDepthMask(GL_TRUE);
   }
 
   void Eyecandy::drawZoom(GLWidget *widget, Atom *clickedAtom, const Eigen::Vector3d &center)
@@ -307,9 +307,9 @@ namespace Avogadro {
     //   glEnable( GL_BLEND );
     //   widget->painter()->drawSphere(center, radius);
     //   glDisable( GL_BLEND );
-    glEnable(GL_BLEND);
+//    glEnable(GL_BLEND);
     glDisable(GL_LIGHTING);
-    glDepthMask(GL_FALSE);
+//    glDepthMask(GL_FALSE);
     //draw back faces
     glDisable(GL_CULL_FACE);
     m_color.apply();
@@ -379,9 +379,9 @@ namespace Avogadro {
 
     //draw back faces
     glEnable(GL_CULL_FACE);
-    glDisable(GL_BLEND);
+//    glDisable(GL_BLEND);
     glEnable(GL_LIGHTING);
-    glDepthMask(GL_TRUE);
+//    glDepthMask(GL_TRUE);
   }
 
   void Eyecandy::setColor(const Color &color)

@@ -65,6 +65,7 @@ int main(int argc, char *argv[])
 
 #ifdef ENABLE_THREADED_GL
 #ifdef Q_WS_X11
+  std::cout << "Enabling Threads\n";
   XInitThreads();
 #endif
 #endif
@@ -76,6 +77,7 @@ int main(int argc, char *argv[])
         "This system does not support OpenGL.");
     return -1;
   }
+  std::cout << "System has OpenGL support." << std::endl;
 
   QString translationCode = QLocale::system().name();
   QString prefixPath = QString( INSTALL_PREFIX ) + "/share/avogadro/i18n/";
@@ -105,10 +107,22 @@ int main(int argc, char *argv[])
     app.installTranslator(&avoTranslator);
   }
 
+  // Extra debug messages to check out where some init segfaults are happening
+  std::cout << "Loaded translations (if needed) about to test OpenGL capabilities."
+            << std::endl;
   // use multi-sample (anti-aliased) OpenGL if available
   QGLFormat defFormat = QGLFormat::defaultFormat();
   defFormat.setSampleBuffers(true);
   QGLFormat::setDefaultFormat(defFormat);
+
+  // Test what capabilities we have
+  std::cout << "OpenGL capabilities found: " << std::endl;
+  if (defFormat.doubleBuffer())
+    std::cout << "\tDouble Buffering." << std::endl;
+  if (defFormat.directRendering())
+    std::cout << "\tDirect Rendering." << std::endl;
+  if (defFormat.sampleBuffers())
+    std::cout << "\tAntialiasing." << std::endl << std::endl;
 
   QStringList arguments = app.arguments();
 

@@ -338,7 +338,7 @@ namespace Avogadro {
       glNewList(dlistQuick, GL_COMPILE);
       foreach(Engine *engine, engines)
         if(engine->isEnabled())
-          engine->renderQuick(pd, updateCache);
+          engine->renderQuick(pd);
       glEndList();
 
       updateCache = false;
@@ -508,7 +508,6 @@ namespace Avogadro {
   void GLWidget::initializeGL()
   {
     qDebug() << "GLWidget initialisation...";
-    makeCurrent();
     qglClearColor( d->background );
 
     glShadeModel( GL_SMOOTH );
@@ -525,8 +524,11 @@ namespace Avogadro {
 
     GLfloat ambientLight[] = { 0.2, 0.2, 0.2, 1.0 };
     GLfloat diffuseLight[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat diffuseLight2[] = { 0.3, 0.3, 0.3, 1.0 };
     GLfloat specularLight[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat specularLight2[] = { 0.5, 0.5, 0.5, 1.0 };
     GLfloat position[] = { 0.8, 0.7, 1.0, 0.0 };
+    GLfloat position2[] = { -0.8, 0.7, -0.5, 0.0 };
 
     glLightModeli( GL_LIGHT_MODEL_COLOR_CONTROL_EXT,
                    GL_SEPARATE_SPECULAR_COLOR_EXT );
@@ -542,8 +544,13 @@ namespace Avogadro {
     glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
     glLightfv( GL_LIGHT0, GL_POSITION, position );
     glEnable( GL_LIGHT0 );
+    // Create a second light source to illuminate those shadows a little better
+    glLightfv( GL_LIGHT1, GL_AMBIENT, ambientLight );
+    glLightfv( GL_LIGHT1, GL_DIFFUSE, diffuseLight2 );
+    glLightfv( GL_LIGHT1, GL_SPECULAR, specularLight2 );
+    glLightfv( GL_LIGHT1, GL_POSITION, position2 );
+    glEnable( GL_LIGHT1 );
     qDebug() << "GLWidget initialised...";
-
   }
 
   void GLWidget::resizeEvent( QResizeEvent *event )
@@ -552,11 +559,16 @@ namespace Avogadro {
 #ifdef ENABLE_THREADED_GL
     d->thread->resize( event->size().width(), event->size().height() );
 #else
+    if (!isValid())
+      return;
+    makeCurrent();
     if(!d->initialized)
-      {
-        d->initialized = true;
-        initializeGL();
-      }
+    {
+      d->initialized = true;
+      initializeGL();
+    }
+    // GLXWaitX() is called by the TT resizeEvent on Linux... We may need
+    // specific functions here - need to look at Mac and Windows code.
     resizeGL( event->size().width(), event->size().height() );
 #endif
   }
@@ -928,10 +940,9 @@ namespace Avogadro {
     //qDebug() << "paintEvent";
 #ifdef ENABLE_THREADED_GL
     // tell our thread to paint
-    makeCurrent();
     d->paintCondition.wakeAll();
-    doneCurrent();
 #else
+    makeCurrent();
     if(!d->initialized)
       {
         d->initialized = true;
@@ -989,8 +1000,6 @@ namespace Avogadro {
 #endif
     // Stop using quickRender
     d->quickRender = false;
-    // Invalidate the cache
-    d->updateCache = true;
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.unlock();
 #endif
@@ -1202,8 +1211,6 @@ namespace Avogadro {
         d->engines.at( i )->addPrimitive( primitive );
       }
       d->primitives.append( primitive );
-      // The engine caches must be invalidated
-      d->updateCache = true;
     }
   }
 
@@ -1212,8 +1219,6 @@ namespace Avogadro {
     for ( int i=0; i< d->engines.size(); i++ ) {
       d->engines.at( i )->updatePrimitive( primitive );
     }
-    // The engine caches must be invalidated
-    d->updateCache = true;
     updateGeometry();
   }
 
@@ -1226,24 +1231,24 @@ namespace Avogadro {
       }
       d->selectedPrimitives.removeAll( primitive );
       d->primitives.removeAll( primitive );
-      // The engine caches must be invalidated
-      d->updateCache = true;
     }
   }
 
   void GLWidget::addEngine(Engine *engine)
   {
-    connect( engine, SIGNAL( changed() ), this, SLOT( update() ) );
-    d->engines.append( engine );
-    qSort( d->engines.begin(), d->engines.end(), engineLessThan );
+    connect( engine, SIGNAL(changed()), this, SLOT(update()));
+    connect(engine, SIGNAL(changed()), this, SLOT(invalidateDLs()));
+    d->engines.append(engine);
+    qSort(d->engines.begin(), d->engines.end(), engineLessThan);
     emit engineAdded(engine);
     update();
   }
 
   void GLWidget::removeEngine(Engine *engine)
   {
-    connect( engine, SIGNAL( changed() ), this, SLOT( update() ) );
-    d->engines.removeAll( engine );
+    disconnect(engine, SIGNAL(changed()), this, SLOT(update()));
+    disconnect(engine, SIGNAL(changed()), this, SLOT(invalidateDLs()));
+    d->engines.removeAll(engine);
     emit engineRemoved(engine);
     engine->deleteLater();
     update();
@@ -1298,7 +1303,6 @@ namespace Avogadro {
 
   QList<GLHit> GLWidget::hits( int x, int y, int w, int h )
   {
-    //    QReadLocker(d->molecule->lock());
     QList<GLHit> hits;
 
     if ( !molecule() ) return hits;
@@ -1509,6 +1513,8 @@ namespace Avogadro {
           d->selectedPrimitives.append( item );
       else if (!select)
         d->selectedPrimitives.removeAll( item );
+      // The engine caches must be invalidated
+      d->updateCache = true;
       item->update();
     }
   }
@@ -1520,21 +1526,22 @@ namespace Avogadro {
 
   void GLWidget::toggleSelected( PrimitiveList primitives )
   {
-    foreach( Primitive *item, primitives ) {
-      if ( d->selectedPrimitives.contains( item ) )
-      {
+    foreach(Primitive *item, primitives)
+    {
+      if (d->selectedPrimitives.contains(item))
         d->selectedPrimitives.removeAll( item );
-      }
       else
-      {
-        d->selectedPrimitives.append( item );
-      }
+        d->selectedPrimitives.append(item);
     }
+    // The engine caches must be invalidated
+    d->updateCache = true;
   }
 
   void GLWidget::clearSelected()
   {
     d->selectedPrimitives.clear();
+    // The engine caches must be invalidated
+    d->updateCache = true;
   }
 
   bool GLWidget::isSelected( const Primitive *p ) const
@@ -1676,6 +1683,12 @@ namespace Avogadro {
         engine->setPrimitives(primitives());
         addEngine(engine);
       }
+  }
+
+  void GLWidget::invalidateDLs()
+  {
+    // Something changed and we need to invalidate the display lists
+    d->updateCache = true;
   }
 }
 

@@ -1,4 +1,92 @@
-2008-02-28  Marcus D. Hanwell  <marcus@cryos.org>
+2008-03-08  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glpainter.cpp: Patch from Jordan Mantha
+	<jordan.mantha@gmail.com> fixes ribbon rendering - go right to the end
+	of the protein backbone. Thanks for the patch Jordan.
+
+	* libavogadro/src/glwidget.cpp: Added some read and write locks at
+	appropriate looking places in the GLWidget. Should help but it may
+	need to be finer grained in places. Reverted - locks up a lot...
+
+	* avogadro/src/main.cpp: Looks like some drivers have broken
+	XInitThreads() functions. Only enable in threaded GL builds.
+
+	* libavogadro/src/engines/surfaceengine.*: Just return from the render
+	function if the VdW thread is running - should fix crashes.
+
+	* libavogadro/src/glwidget.cpp: Removed the doneCurrent() calls in the
+	non-threaded GL code paths. These calls were breaking hits calls  etc.
+
+2008-03-07  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* avogadro/src/main.cpp: Add extra GL initialisation debug output.
+
+2008-03-06  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/src/mainwindow.cpp: Check that a window isn't moved
+	off-screen on Mac or Windows (since we remember window positions
+	on those platforms). PR#1903437.
+	(saveFile) Add .cml extension to a filename if none is provided. PR#1817621.
+
+2008-03-06  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/tools/eyecandy.cpp: Make the eye candy solid, this
+	gets rid of potentially expensive blending operations in what should
+	be our quick display pipeline. Visually still looks great IMHO.
+
+	* libavogadro/src/engine.cpp: Emit changed when the engine's status is
+	changed, i.e. enabled->disabled or vice versa.
+
+	* libavogadro/src/glwidget.*: Added a new invalidateDLs slot that
+	should be called whenever the display lists need invalidating. Updated
+	our display list invalidation to hopefully be more efficient.
+
+2008-03-06  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/engines/forceengine.*: Render forces on atoms. Uses
+	OBConformerData, needs latest OB SVN to work.
+
+2008-03-05  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glwidget.cpp: Stop invalidating the cache on mouse
+	release - I think we have all the events covered that should
+	invalidate the cache now without this catch all.
+
+	* libavogadro/src/engines/orbitalengine.cpp: Just draw GL_LINES.
+
+	* libavogadro/src/tools/selectrotatetool.cpp: Change cursor types
+	depending upon the action being performed - better visual cues.
+
+2008-03-04  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glwidget.cpp: Added a second light source to our
+	scene - position and brightness may need tweaking. Surface rendering
+	was improved by this.
+
+	* libavogadro/src/engines/bsdyengine.cpp: Draw multiple bonds in quick
+	draw. Switching between multiple and single bonds can be distracting.
+	Should possibly switch to single bonds only with large molecules.
+
+	* libavogadro/src/glwidget.cpp: Add back in some makeCurrent calls
+	that really were necessary outside of the threaded GL #ifdefs. This
+	fixes PR#1906403.
+
+2008-03-01  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/bsdyengine.*: Add a renderQuick function to
+	this engine. Selected atoms/bonds rendered as opaque objects using the
+	selection colour. Multiple bonds are not displayed. No transparency.
+
+2008-02-29  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engine.h: API cleanup - remove the second unused
+	argument from the quickRender function.
+
+	* libavogadro/src/glwidget.cpp,
+	libavogadro/src/engines/labelengine.*,
+	libavogadro/src/engines/orbitalengine.*,
+	libavogadro/src/engines/ribbonengine.*: Ported to use the new
+	quickRender function.
 
 	* libavogadro/src/glwidget.cpp: Correct a bug in the setSelected
 	function which was causing it to toggle the selection rather than set
@@ -98,7 +186,7 @@
 	TODO:
 	- select/rotate tool
 	- autorotate tool
-	- OrbitalEngine		
+	- OrbitalEngine
 	- SurfaceEngine
 	- RibbonEngine
 
@@ -156,7 +244,7 @@
 
 	* libavogadro/src/engines/surfaceengine.*: Same as above + fix to set
 	the opacity of RGB colored surfaces.
-	
+
 	* libavogadro/src/engines/orbitalengine.*: Comment out init() to make
 	sure it still compiles.
 
@@ -180,13 +268,13 @@
 
 	* libavogadro/src/engines/surfaceengine2.*: Removed old files. Added
 	Marcus and me to the copyright header.
-	
+
 	* libavogadro/src/engines/surfaceengine.*: Added settings widget.
-	
+
 	* libavogadro/src/engines/CMakeList.txt: Added settings widget.
 
 	* libavogadro/src/engines/surfacesettingswidget.ui: Settings widget.
-	
+
 2008-02-04  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/clickmeasuretool.*: Added support for

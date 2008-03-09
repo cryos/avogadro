@@ -44,19 +44,22 @@ namespace Avogadro {
     std::vector<std::string> forcefieldList;
     OBPlugin::ListAsVector("forcefields", "ids", forcefieldList);
     ui.ForceFieldComboBox->clear();
-    for (int i = 0; i < forcefieldList.size(); ++i)
+    for (unsigned int i = 0; i < forcefieldList.size(); ++i)
       ui.ForceFieldComboBox->addItem(forcefieldList[i].c_str());
 
-    m_forceFieldID = 0; // ghemical
-    m_nSteps = 100;
-    m_algorithm = 1; // conjugate gradients
-    m_gradients = 1; // analytical
-    m_convergence = 7;
-
+    m_forceFieldID = ui.ForceFieldComboBox->findText("MMFF94");
     ui.ForceFieldComboBox->setCurrentIndex(m_forceFieldID);
+
+    m_nSteps = 500; // a reasonable starting point (not too much time)
     ui.StepsSpinBox->setValue(m_nSteps);
+
+    m_algorithm = 0; // steepest descent
     ui.AlgorithmComboBox->setCurrentIndex(m_algorithm);
+
+    m_gradients = 1; // analytical
     ui.GradientsComboBox->setCurrentIndex(m_gradients);
+
+    m_convergence = 7;
     ui.ConvergenceSpinBox->setValue(m_convergence);
   }
 
