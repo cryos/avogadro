@@ -1,5 +1,9 @@
 2008-03-08  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/glpainter.cpp: Patch from Jordan Mantha
+	<jordan.mantha@gmail.com> fixes ribbon rendering - go right to the end
+	of the protein backbone. Thanks for the patch Jordan.
+
 	* libavogadro/src/glwidget.cpp: Added some read and write locks at
 	appropriate looking places in the GLWidget. Should help but it may
 	need to be finer grained in places. Reverted - locks up a lot...
