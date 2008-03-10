@@ -1,3 +1,5 @@
+#ifndef GAMESSINPUTDIALOG_H
+#define GAMESSINPUTDIALOG_H
 /**********************************************************************
   GamessInputDialog - GAMESS Input Deck Dialog for Avogadro
 
@@ -19,9 +21,6 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
  ***********************************************************************/
-
-#ifndef __GAMESINPUTBUILDER_H
-#define __GAMESINPUTBUILDER_H
 
 #include <QDialog>
 #include <QButtonGroup>
@@ -281,4 +280,4 @@ namespace Avogadro
   };
 }
 
-#endif
+#endif // GAMESSINPUTDIALOG_H

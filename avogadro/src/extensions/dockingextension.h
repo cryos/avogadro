@@ -1,3 +1,5 @@
+#ifndef DOCKINGEXTENSION_H
+#define DOCKINGEXTENSION_H
 /**********************************************************************
   dockingextension.h - Docking plugin for Avogadro
 
@@ -18,9 +20,6 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
  ***********************************************************************/
-
-#ifndef __DOCKINGELDEXTENSION_H
-#define __DOCKINGELDEXTENSION_H
 
 
 #include "liganddialog.h"
@@ -176,4 +175,4 @@ namespace Avogadro {
 */
 } // end namespace Avogadro
 
-#endif
+#endif // DOCKINGEXTENSION_H

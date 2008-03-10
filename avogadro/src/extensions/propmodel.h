@@ -60,7 +60,7 @@ namespace Avogadro {
 	 ConformerType
        };
 
-       PropertiesModel(Type type, QObject *parent = 0) : QAbstractTableModel(parent) 
+       explicit PropertiesModel(Type type, QObject *parent = 0) : QAbstractTableModel(parent) 
        {
          m_type = type;
        }

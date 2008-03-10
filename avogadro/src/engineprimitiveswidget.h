@@ -1,3 +1,5 @@
+#ifndef ENGINEPRIMITIVESWIDGET_H
+#define ENGINEPRIMITIVESWIDGET_H
 /**********************************************************************
   EnginePrimitivesWidget - View for listing engines
 
@@ -21,10 +23,6 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
   02110-1301, USA.
  **********************************************************************/
-
-#ifndef __ENGINESETUPWIDGET_H
-#define __ENGINESETUPWIDGET_H
-
 
 #include "ui_engineprimitiveswidget.h"
 
@@ -70,4 +68,4 @@ namespace Avogadro
 
 }
 
-#endif
+#endif // ENGINEPRIMITIVESWIDGET_H

@@ -59,7 +59,7 @@ namespace Avogadro
       Ui::ConstraintsDialog ui;
       Molecule* m_molecule;
       ConstraintsModel *m_constraints;
-      OpenBabel::OBForceField* m_forceField; // needed to transfer info between AutoOpt and FF Extention
+      OpenBabel::OBForceField* m_forceField; // needed to transfer info between AutoOpt and FF Extension
   };
 }
 
