@@ -1,3 +1,7 @@
+2008-03-10  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/povpainter.cpp: Add } to camera {. Fixes #1911507
+	
 2008-03-09  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engines/iso.cpp: Corrected a bug where the surface
