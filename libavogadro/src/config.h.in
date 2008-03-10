@@ -28,4 +28,6 @@
 
 #define VERSION "@VERSION@"
 
+#define THREADED_GL @THREADED_GL@
+
 #endif  // __CONFIG_H

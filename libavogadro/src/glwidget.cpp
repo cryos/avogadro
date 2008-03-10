@@ -34,6 +34,7 @@
 
 #include "elementcolor.h"
 
+#include <QDebug>
 #include <QUndoStack>
 #include <QDir>
 #include <QPluginLoader>
@@ -44,7 +45,6 @@
 #include <QMutex>
 #endif
 
-#include <QDebug>
 
 #include <stdio.h>
 #include <vector>
@@ -488,7 +488,7 @@ namespace Avogadro {
 #ifdef ENABLE_THREADED_GL
     qDebug() << "Threaded GL enabled.";
     d->thread = new GLThread( this, this );
-    doneCurrent();
+    //doneCurrent();
     d->thread->start();
 #endif
   }
@@ -937,21 +937,23 @@ namespace Avogadro {
 
   void GLWidget::paintEvent( QPaintEvent * )
   {
-    //qDebug() << "paintEvent";
+    if(updatesEnabled())
+    {
 #ifdef ENABLE_THREADED_GL
-    // tell our thread to paint
-    d->paintCondition.wakeAll();
+      // tell our thread to paint
+      d->paintCondition.wakeAll();
 #else
-    makeCurrent();
-    if(!d->initialized)
+      makeCurrent();
+      if(!d->initialized)
       {
         d->initialized = true;
         initializeGL();
       }
-    qglClearColor(d->background);
-    paintGL();
-    swapBuffers();
+      qglClearColor(d->background);
+      paintGL();
+      swapBuffers();
 #endif
+    }
   }
 
   bool GLWidget::event( QEvent *event )
@@ -1328,8 +1330,8 @@ namespace Avogadro {
 
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.lock();
-    makeCurrent();
 #endif
+    makeCurrent();
     //X   hits.clear();
 
     glSelectBuffer( d->selectBufSize, d->selectBuf );

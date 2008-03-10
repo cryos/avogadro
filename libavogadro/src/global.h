@@ -92,6 +92,7 @@ namespace Avogadro
       static QString version();
       static QString svnRevision();
       static QString prefix();
+      static bool threadedGL();
   };
 }
 

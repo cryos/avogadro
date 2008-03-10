@@ -60,4 +60,9 @@ namespace Avogadro
     return INSTALL_PREFIX;
   }
 
+  bool Library::threadedGL()
+  {
+    return THREADED_GL;
+  }
+
 }
