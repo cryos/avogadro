@@ -6,8 +6,8 @@
 <body>
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 23<br>
-Files Processed = 24<br>
-Total Issues = 16 ...as of February 29 2008 10:01:27</p>
+Files Processed = 26<br>
+Total Issues = 17 ...as of March 10 2008 15:10:42</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -37,9 +37,11 @@ Total Issues = 16 ...as of February 29 2008 10:01:27</p>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 11 issues found!</b>
+<b>OOPS! 12 issues found!</b>
 <ul>
 <li>	../libavogadro/src/engines/bsdyengine.cpp: include own header first line#26
+</li>
+<li>	../libavogadro/src/engines/forceengine.cpp: include own header first line#26
 </li>
 <li>	../libavogadro/src/engines/hbondengine.cpp: include own header first line#27
 </li>
@@ -80,11 +82,11 @@ Total Issues = 16 ...as of February 29 2008 10:01:27</p>
 <li>Check for inappropriate pass-by-value function args... 
 <b>OOPS! 3 issues found!</b>
 <ul>
-<li>	../libavogadro/src/engines/orbitalengine.cpp: line#338[QColor]
+<li>	../libavogadro/src/engines/orbitalengine.cpp: line#378[QColor]
 </li>
-<li>	../libavogadro/src/engines/orbitalengine.cpp: line#344[QColor]
+<li>	../libavogadro/src/engines/orbitalengine.cpp: line#384[QColor]
 </li>
-<li>	../libavogadro/src/engines/surfaceengine.cpp: line#284[QColor]
+<li>	../libavogadro/src/engines/surfaceengine.cpp: line#286[QColor]
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
@@ -103,9 +105,9 @@ Total Issues = 16 ...as of February 29 2008 10:01:27</p>
 <li>Check for spelling errors... 
 <b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../libavogadro/src/engines/iso.cpp: line#129[verticies] (1)
+<li>	../libavogadro/src/engines/iso.cpp: line#141[verticies] (1)
 </li>
-<li>	../libavogadro/src/engines/ribbonengine.cpp: line#116[betweeen] (1)
+<li>	../libavogadro/src/engines/ribbonengine.cpp: line#117[betweeen] (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may

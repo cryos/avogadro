@@ -7,7 +7,7 @@
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 23<br>
 Files Processed = 31<br>
-Total Issues = 10 ...as of February 29 2008 10:02:44</p>
+Total Issues = 10 ...as of March 10 2008 15:14:59</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -78,7 +78,7 @@ Total Issues = 10 ...as of February 29 2008 10:02:44</p>
 <ul>
 <li>	../avogadro/src/addenginedialog.cpp: line#84[QString]
 </li>
-<li>	../avogadro/src/mainwindow.cpp: line#455[QString]
+<li>	../avogadro/src/mainwindow.cpp: line#456[QString]
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
@@ -99,7 +99,7 @@ Total Issues = 10 ...as of February 29 2008 10:02:44</p>
 <li>Check for system calls to replace by KDE or Qt equivalents... 
 <b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../avogadro/src/mainwindow.cpp: line#1404 getenv[qgetenv],1405 getenv[qgetenv] (2)
+<li>	../avogadro/src/mainwindow.cpp: line#1421 getenv[qgetenv],1422 getenv[qgetenv] (2)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Some system calls are not portable, please use the suggested

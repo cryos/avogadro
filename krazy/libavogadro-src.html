@@ -7,7 +7,7 @@
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 23<br>
 Files Processed = 47<br>
-Total Issues = 14 ...as of February 29 2008 09:58:57</p>
+Total Issues = 7 ...as of March 10 2008 15:01:10</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -31,42 +31,13 @@ Total Issues = 14 ...as of February 29 2008 09:58:57</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>OOPS! 2 issues found!</b>
-<ul>
-<li>	../libavogadro/src/colorbutton.h: line#50 (1)
-</li>
-<li>	../libavogadro/src/periodictableview.h: line#170 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
-	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
-	this to avoid mistaken implicit constructor ambiguities. Copy
-	constructors should not be explicit.</p>
-</li>
-
+<b>okay!</b>
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 3 issues found!</b>
-<ul>
-<li>	../libavogadro/src/elementcolor.cpp: include own header first line#28
-</li>
-<li>	../libavogadro/src/residuecolor.cpp: include own header first line#26
-</li>
-<li>	../libavogadro/src/tool.cpp: include own header first line#26
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
-	Qt headers from installed headers; cpp file should include their
-	own headers first; other rules apply, see
-	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
-	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
-	cludes_right</a>. Use include guards in headers with appropriatedly
-	encoded macro names.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for assignments to QString::null... 
@@ -74,18 +45,7 @@ Total Issues = 14 ...as of February 29 2008 09:58:57</p>
 <li>Check for compares to QString::null... 
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
-<b>OOPS! 2 issues found!</b>
-<ul>
-<li>	../libavogadro/src/colorbutton.cpp: line#39[QColor]
-</li>
-<li>	../libavogadro/src/colorbutton.cpp: line#55[QColor]
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
-	references-to-const instead. For example: &#39;func( QDateTime dt )&#39; is
-	better written as &#39;func( const QDateTime &amp;dt )&#39;</p>
-</li>
-
+<b>okay!</b>
 <li>Check for invalid SIGNALs and SLOTs passed to connect()... 
 <b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
