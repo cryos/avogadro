@@ -140,7 +140,7 @@ namespace Avogadro {
           double d = camera.distance( molecule.center() );
         * @endcode
         */
-      const double distance(const Eigen::Vector3d & point) const;
+      double distance(const Eigen::Vector3d & point) const;
       /** Multiply the camera's "modelview" matrix on the right by the translation of the given
         * vector. As the translation is applied on the right, the vector is understood in
         * the molecule's coordinate system. Use this method if you want to give the impression that the molecule is moving while the camera remains fixed. This is the

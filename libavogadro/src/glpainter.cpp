@@ -771,8 +771,8 @@ namespace Avogadro
     glDisable(GL_AUTO_NORMAL);
   }
 
-  void GLPainter::drawShadedSector(Eigen::Vector3d origin, Eigen::Vector3d direction1,
-                                   Eigen::Vector3d direction2, double radius, bool alternateAngle)
+  void GLPainter::drawShadedSector(const Eigen::Vector3d & origin, const Eigen::Vector3d & direction1,
+                                   const Eigen::Vector3d & direction2, double radius, bool alternateAngle)
   {
     assert( d->widget );
 
@@ -815,8 +815,8 @@ namespace Avogadro
 
     // Add the vectors to the origin vector to find the positions along the lines
     // of the two points the curve starts and ends at.
-    direction1 = origin + u;
-    direction2 = origin + v;
+    Eigen::Vector3d _direction1 = origin + u;
+    Eigen::Vector3d _direction2 = origin + v;
 
     // Calculate the points along the curve at each half-degree increment until we
     // reach the next line.
@@ -839,9 +839,9 @@ namespace Avogadro
       }
 
     // Get vectors representing the points' positions in terms of the model view.
-    origin = d->widget->camera()->modelview() * origin;
-    direction1 = d->widget->camera()->modelview() * direction1;
-    direction2 = d->widget->camera()->modelview() * direction2;
+    Eigen::Vector3d _origin = d->widget->camera()->modelview() * origin;
+    _direction1 = d->widget->camera()->modelview() * _direction1;
+    _direction2 = d->widget->camera()->modelview() * _direction2;
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glPushMatrix();
@@ -853,20 +853,20 @@ namespace Avogadro
 
     // Draw the transparent polygon that makes up the sector.
     glBegin(GL_TRIANGLE_FAN);
-    glVertex3d(origin.x(), origin.y(), origin.z());
+    glVertex3d(_origin.x(), _origin.y(), _origin.z());
     if (alternateAngle)
       {
-        glVertex3d(direction2.x(), direction2.y(), direction2.z());
+        glVertex3d(_direction2.x(), _direction2.y(), _direction2.z());
         for (int i = 0; i < uvAngle*2 - 1; i++)
           glVertex3d(points[i].x(), points[i].y(), points[i].z());
-        glVertex3d(direction1.x(), direction1.y(), direction1.z());
+        glVertex3d(_direction1.x(), _direction1.y(), _direction1.z());
       }
     else
       {
-        glVertex3d(direction1.x(), direction1.y(), direction1.z());
+        glVertex3d(_direction1.x(), _direction1.y(), _direction1.z());
         for (int i = 0; i < uvAngle*2 - 1; i++)
           glVertex3d(points[i].x(), points[i].y(), points[i].z());
-        glVertex3d(direction2.x(), direction2.y(), direction2.z());
+        glVertex3d(_direction2.x(), _direction2.y(), _direction2.z());
       }
     glEnd();
 
@@ -874,8 +874,8 @@ namespace Avogadro
     glPopAttrib();
   }
 
-  void GLPainter::drawArc(Eigen::Vector3d origin, Eigen::Vector3d direction1,
-                          Eigen::Vector3d direction2, double radius, double lineWidth,
+  void GLPainter::drawArc(const Eigen::Vector3d & origin, const Eigen::Vector3d & direction1,
+                          const Eigen::Vector3d & direction2, double radius, double lineWidth,
                           bool alternateAngle)
   {
     assert( d->widget );
@@ -919,8 +919,8 @@ namespace Avogadro
 
     // Add the vectors to the origin vector to find the positions along the lines
     // of the two points the curve starts and ends at.
-    direction1 = origin + u;
-    direction2 = origin + v;
+    Eigen::Vector3d _direction1 = origin + u;
+    Eigen::Vector3d _direction2 = origin + v;
 
     // Calculate the points along the curve at each half-degree increment until we
     // reach the next line.
@@ -943,9 +943,9 @@ namespace Avogadro
       }
 
     // Get vectors representing the points' positions in terms of the model view.
-    origin = d->widget->camera()->modelview() * origin;
-    direction1 = d->widget->camera()->modelview() * direction1;
-    direction2 = d->widget->camera()->modelview() * direction2;
+    Eigen::Vector3d _origin = d->widget->camera()->modelview() * origin;
+    _direction1 = d->widget->camera()->modelview() * _direction1;
+    _direction2 = d->widget->camera()->modelview() * _direction2;
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glPushMatrix();
@@ -960,17 +960,17 @@ namespace Avogadro
     glBegin(GL_LINE_STRIP);
     if (alternateAngle)
       {
-        glVertex3d(direction2.x(), direction2.y(), direction2.z());
+        glVertex3d(_direction2.x(), _direction2.y(), _direction2.z());
         for (int i = 0; i < uvAngle*2 - 1; i++)
           glVertex3d(points[i].x(), points[i].y(), points[i].z());
-        glVertex3d(direction1.x(), direction1.y(), direction1.z());
+        glVertex3d(_direction1.x(), _direction1.y(), _direction1.z());
       }
     else
       {
-        glVertex3d(direction1.x(), direction1.y(), direction1.z());
+        glVertex3d(_direction1.x(), _direction1.y(), _direction1.z());
         for (int i = 0; i < uvAngle*2 - 1; i++)
           glVertex3d(points[i].x(), points[i].y(), points[i].z());
-        glVertex3d(direction2.x(), direction2.y(), direction2.z());
+        glVertex3d(_direction2.x(), _direction2.y(), _direction2.z());
       }
     glEnd();
 
@@ -978,8 +978,8 @@ namespace Avogadro
     glPopAttrib();
   }
 
-  void GLPainter::drawShadedQuadrilateral(Eigen::Vector3d point1, Eigen::Vector3d point2,
-                                          Eigen::Vector3d point3, Eigen::Vector3d point4)
+  void GLPainter::drawShadedQuadrilateral(const Eigen::Vector3d & point1, const Eigen::Vector3d & point2,
+                                          const Eigen::Vector3d & point3, const Eigen::Vector3d & point4)
   {
     assert( d->widget );
 
@@ -1002,8 +1002,8 @@ namespace Avogadro
     glPopAttrib();
   }
 
-  void GLPainter::drawQuadrilateral(Eigen::Vector3d point1, Eigen::Vector3d point2,
-                                    Eigen::Vector3d point3, Eigen::Vector3d point4,
+  void GLPainter::drawQuadrilateral(const Eigen::Vector3d & point1, const Eigen::Vector3d & point2,
+                                    const Eigen::Vector3d & point3, const Eigen::Vector3d & point4,
                                     double lineWidth)
   {
     assert( d->widget );

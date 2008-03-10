@@ -128,7 +128,7 @@ namespace Avogadro
     normalize();
   }
 
-  const double Camera::distance(const Eigen::Vector3d & point) const
+  double Camera::distance(const Eigen::Vector3d & point) const
   {
     return ( d->modelview * point ).norm();
   }

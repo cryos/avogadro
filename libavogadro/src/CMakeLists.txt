@@ -23,8 +23,11 @@ qt4_automoc(${libavogadro_SRCS})
 
 SET(libavogadro_TS
 	${CMAKE_SOURCE_DIR}/i18n/avogadro_de.ts
+	${CMAKE_SOURCE_DIR}/i18n/qt_de.ts
 	${CMAKE_SOURCE_DIR}/i18n/avogadro_fr.ts
+	${CMAKE_SOURCE_DIR}/i18n/qt_fr.ts
 	${CMAKE_SOURCE_DIR}/i18n/avogadro_en_GB.ts
+#	${CMAKE_SOURCE_DIR}/i18n/qt_en_GB.ts
 )
 QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 

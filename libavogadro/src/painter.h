@@ -220,9 +220,9 @@ namespace Avogadro
      * @param alternateAngle whether to draw the obtuse angle made by the
      * two vectors instead of the acute angle between them.
      */
-    virtual void drawShadedSector(Eigen::Vector3d origin,
-                                  Eigen::Vector3d direction1,
-                                  Eigen::Vector3d direction2, double radius,
+    virtual void drawShadedSector(const Eigen::Vector3d & origin,
+                                  const Eigen::Vector3d & direction1,
+                                  const Eigen::Vector3d & direction2, double radius,
                                   bool alternateAngle = false) = 0;
 
     /**
@@ -239,8 +239,8 @@ namespace Avogadro
      * @param alternateAngle whether to draw the obtuse angle made by the two vectors
      *                       instead of the acute angle between them.
      */
-    virtual void drawArc(Eigen::Vector3d origin, Eigen::Vector3d direction1,
-                         Eigen::Vector3d direction2, double radius,
+    virtual void drawArc(const Eigen::Vector3d & origin, const Eigen::Vector3d & direction1,
+                         const Eigen::Vector3d & direction2, double radius,
                          double lineWidth, bool alternateAngle = false) = 0;
 
     /**
@@ -251,10 +251,10 @@ namespace Avogadro
      * @param point3 the third of the four corners of the quadrilateral.
      * @param point4 the last of the four corners of the quadrilateral.
      */
-    virtual void drawShadedQuadrilateral(Eigen::Vector3d point1,
-                                         Eigen::Vector3d point2,
-                                         Eigen::Vector3d point3,
-                                         Eigen::Vector3d point4) = 0;
+    virtual void drawShadedQuadrilateral(const Eigen::Vector3d & point1,
+                                         const Eigen::Vector3d & point2,
+                                         const Eigen::Vector3d & point3,
+                                         const Eigen::Vector3d & point4) = 0;
 
     /**
      * Draws the outline of a two dimensional quadrilateral in three dimensional space.
@@ -265,10 +265,10 @@ namespace Avogadro
      * @param point4 the last of the four corners of the quadrilateral.
      * @param lineWidth the thickness of the line the quadrilateral will be drawn with.
      */
-    virtual void drawQuadrilateral(Eigen::Vector3d point1,
-                                   Eigen::Vector3d point2,
-                                   Eigen::Vector3d point3,
-                                   Eigen::Vector3d point4,
+    virtual void drawQuadrilateral(const Eigen::Vector3d & point1,
+                                   const Eigen::Vector3d & point2,
+                                   const Eigen::Vector3d & point3,
+                                   const Eigen::Vector3d & point4,
                                    double lineWidth) = 0;
 
     /**

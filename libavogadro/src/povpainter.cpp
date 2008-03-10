@@ -153,23 +153,23 @@ namespace Avogadro
     }
   }
 
-  void POVPainter::drawShadedSector(Eigen::Vector3d, Eigen::Vector3d,
-                        Eigen::Vector3d, double, bool)
+  void POVPainter::drawShadedSector(const Eigen::Vector3d &, const Eigen::Vector3d &,
+                        const Eigen::Vector3d &, double, bool)
   {
   }
 
-  void POVPainter::drawArc(Eigen::Vector3d, Eigen::Vector3d, Eigen::Vector3d,
+  void POVPainter::drawArc(const Eigen::Vector3d &, const Eigen::Vector3d &, const Eigen::Vector3d &,
                double, double, bool)
   {
   }
 
-  void POVPainter::drawShadedQuadrilateral(Eigen::Vector3d, Eigen::Vector3d,
-                               Eigen::Vector3d, Eigen::Vector3d)
+  void POVPainter::drawShadedQuadrilateral(const Eigen::Vector3d &, const Eigen::Vector3d &,
+                               const Eigen::Vector3d &, const Eigen::Vector3d &)
   {
   }
 
-  void POVPainter::drawQuadrilateral(Eigen::Vector3d, Eigen::Vector3d,
-                         Eigen::Vector3d, Eigen::Vector3d,
+  void POVPainter::drawQuadrilateral(const Eigen::Vector3d &, const Eigen::Vector3d &,
+                         const Eigen::Vector3d &, const Eigen::Vector3d &,
                          double)
   {
   }

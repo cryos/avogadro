@@ -190,7 +190,7 @@ namespace Avogadro {
       for( int i = 0; i < texwidth; i++, n++ )
       {
         double x = qBlue( image.pixel( i, j ) ) / 255.0;
-        double y = sqrt(x); /* this applies a gamma correction with gamma factor 0.5.
+        double y = pow(x, 0.75); /* this applies a gamma correction.
                   the effect of this is to concentrate the intensities in
                   the large values. This results in a slightly bolder-looking
                   font, which is more suitable for outlining. More importantly,
