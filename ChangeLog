@@ -1,3 +1,8 @@
+2008-03-10  Jordan Mantha  <jordan.mantha@gmail.com>
+
+       * doc/CMakeLists.txt: fix docbook2{pdf,html} detection. Also added some
+         install rules but left it commented out for now as it's still buggy.
+
 2008-03-10  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/povpainter.cpp: Add } to camera {. Fixes #1911507
