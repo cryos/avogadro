@@ -328,7 +328,7 @@ namespace Avogadro {
   {
     // Create a display list cache
     if (updateCache) {
-      qDebug() << "Making new quick display lists...";
+//      qDebug() << "Making new quick display lists...";
       if (dlistQuick == 0)
         dlistQuick = glGenLists(1);
 
@@ -645,13 +645,13 @@ namespace Avogadro {
     if (d->quickRender) {
 
       d->updateListQuick();
-      qDebug() << "Calling quick display lists...";
+//      qDebug() << "Calling quick display lists...";
       glCallList(d->dlistQuick);
       if (d->uc) renderCrystal(d->dlistQuick);
 
     }
     else {
-      qDebug() << "Normal rendering...";
+//      qDebug() << "Normal rendering...";
 
       // we save a display list if we're doing a crystal
       if (d->dlistOpaque == 0)
