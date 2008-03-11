@@ -208,6 +208,7 @@ namespace Avogadro
     if (!m_file->open(QIODevice::WriteOnly | QIODevice::Text))
       return;
     m_output = new QTextStream(m_file);
+    m_output->setRealNumberPrecision(15);
     m_painter->begin(m_output, m_glwidget->normalVector());
 
     m_engines = m_glwidget->engines();
@@ -230,10 +231,11 @@ namespace Avogadro
     // Initialise our POV-Ray scene
     // The POV-Ray camera basically has the same matrix elements - we just need to translate
     // FIXME Still working on getting the translation to POV-Ray right...
-    Vector3d cameraT = m_glwidget->camera()->modelview().translationVector();
-    Vector3d cameraX = m_glwidget->camera()->backTransformedXAxis();
+    double aspectRatio = static_cast<double>(m_glwidget->width()) / m_glwidget->height();
+    Vector3d cameraT = -(m_glwidget->camera()->modelview().translationVector());
+    Vector3d cameraX = m_glwidget->camera()->backTransformedXAxis() * aspectRatio;
     Vector3d cameraY = m_glwidget->camera()->backTransformedYAxis();
-    Vector3d cameraZ = m_glwidget->camera()->backTransformedZAxis();
+    Vector3d cameraZ = -m_glwidget->camera()->backTransformedZAxis();
     Vector3d light = cameraT + Vector3d(0.8, 0.7, 1.0);
 
     // Output the POV-Ray initialisation code
@@ -251,7 +253,10 @@ namespace Avogadro
 //      << "\tright 1.33 * <" << cameraX.x() << ", " << cameraX.y() << ", " << cameraX.z() << ">\n"
 //      << "\tup <" << cameraY.x() << ", " << cameraY.y() << ", " << cameraY.z() << ">\n"
 //      << "\tdirection <" << cameraZ.x() << ", " << cameraZ.y() << ", " << cameraZ.z() << ">\n"
-      << "\tlook_at <0, 0, 0>}\n"
+      << "\tangle " << aspectRatio * m_glwidget->camera()->angleOfViewY() << "\n"
+      << "\tup <" << cameraY.x() << ", " << cameraY.y() << ", " << cameraY.z() << ">\n"
+      << "\tright <" << cameraX.x() << ", " << cameraX.y() << ", " << cameraX.z() << ">\n"
+      << "\tdirection <" << cameraZ.x() << ", " << cameraZ.y() << ", " << cameraZ.z() << "> }\n"
 //      << "\tsky y\n}\n\n"
       << "light_source {\n"
       << "\t<" << light.x() << ", " << light.y() << ", " << light.z() << ">\n"
