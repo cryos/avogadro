@@ -240,7 +240,11 @@ namespace Avogadro
     *(m_output) << "global_settings {\n"
       << "\tambient_light rgb <1,1,1>\n"
       << "\tmax_trace_level 20\n}\n\n"
-      << "background { color rgb <1,1,1> }\n\n"
+      << "background { color rgb <"
+      << m_glwidget->background().redF() << ","
+      << m_glwidget->background().greenF() << ","
+      << m_glwidget->background().blueF()
+      << "> }\n\n"
       << "camera {\n"
       << "\tperspective\n"
       << "\tlocation <" << cameraT.x() << ", " << cameraT.y() << ", " << cameraT.z() << ">\n"
