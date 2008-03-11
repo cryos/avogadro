@@ -26,6 +26,8 @@
 #ifndef __COLORBUTTON_H
 #define __COLORBUTTON_H
 
+#include <avogadro/global.h>
+
 #include <QAbstractButton>
 #include <QColor>
 
@@ -41,7 +43,7 @@
    * The widget has a default minimium size of 35x20 pixels.
    */
 
-class ColorButton : public QAbstractButton
+class A_EXPORT ColorButton : public QAbstractButton
 {
  Q_OBJECT
 

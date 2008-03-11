@@ -25,6 +25,8 @@
 #ifndef __PERIODICTABLEVIEW_H
 #define __PERIODICTABLEVIEW_H
 
+#include <avogadro/global.h>
+
 #include <QDialog>
 #include <QGraphicsItem>
 #include <QGraphicsScene>
@@ -41,7 +43,7 @@ namespace Avogadro {
    * perdiodic table. It currently allows the setting of the proton number and
    * gets all other information from OpenBabel.
    */
-  class ElementItem : public QObject, public QGraphicsItem
+  class A_EXPORT ElementItem : public QObject, public QGraphicsItem
   {
     Q_OBJECT
 
@@ -99,7 +101,7 @@ namespace Avogadro {
    * gives greater detail about the selected element such as its full name,
    * proton number and average atomic mass.
    */
-  class ElementDetail : public QObject, public QGraphicsItem
+  class A_EXPORT ElementDetail : public QObject, public QGraphicsItem
   {
     Q_OBJECT
 
@@ -142,7 +144,7 @@ namespace Avogadro {
     int m_element;            // element number
   };
 
-  class PeriodicTableScene : public QGraphicsScene
+  class A_EXPORT PeriodicTableScene : public QGraphicsScene
   {
     Q_OBJECT
 
@@ -161,7 +163,7 @@ namespace Avogadro {
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
   };
 
-  class PeriodicTableView : public QGraphicsView
+  class A_EXPORT PeriodicTableView : public QGraphicsView
   {
     Q_OBJECT
 

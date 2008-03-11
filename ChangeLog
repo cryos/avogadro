@@ -1,7 +1,13 @@
+2008-03-11  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/colorbutton.h: Added A_EXPORT.
+	
+	* libavogadro/src/periodictableview.h: Added A_EXPORT.
+
 2008-03-10  Jordan Mantha  <jordan.mantha@gmail.com>
 
-       * doc/CMakeLists.txt: fix docbook2{pdf,html} detection. Also added some
-         install rules but left it commented out for now as it's still buggy.
+	* doc/CMakeLists.txt: fix docbook2{pdf,html} detection. Also added some
+	install rules but left it commented out for now as it's still buggy.
 
 2008-03-10  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
