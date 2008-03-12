@@ -64,7 +64,7 @@ namespace Avogadro {
 
     QUndoCommand *undo = 0;
     int i = m_actions.indexOf(action);
-    if( 0 <= i <= 1) {
+    if( 0 <= i && i <= 1) {
       undo = new HydrogensCommand(molecule, (enum HydrogensCommand::Action) i,
           widget);
     }
