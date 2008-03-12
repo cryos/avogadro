@@ -10,7 +10,6 @@ include(${QT_USE_FILE})
 include_directories(
   ${libavogadro_SOURCE_DIR}/include
   ${CMAKE_SOURCE_DIR}
-  ${CMAKE_BINARY_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}/..
   ${OPENBABEL2_INCLUDE_DIR}

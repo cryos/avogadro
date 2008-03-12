@@ -307,6 +307,7 @@ namespace Avogadro
     POVPainter *m_painter;
     QFile *m_file;
     QTextStream *m_output;
+    double m_aspectRatio;
   };
 
 } // End namespace Avogadro

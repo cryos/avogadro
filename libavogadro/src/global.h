@@ -83,6 +83,17 @@ const int      SEL_BOX_SIZE                          = 2 * SEL_BOX_HALF_SIZE + 1
 const double   SEL_ATOM_EXTRA_RADIUS                 = 0.18;
 const double   SEL_BOND_EXTRA_RADIUS                 = 0.07;
 
+const float    LIGHT_AMBIENT[4]                     = { 0.2, 0.2, 0.2, 1.0 };
+
+const float    LIGHT0_DIFFUSE[4]                     = { 1.0, 1.0, 1.0, 1.0 };
+const float    LIGHT0_SPECULAR[4]                    = { 1.0, 1.0, 1.0, 1.0 };
+const float    LIGHT0_POSITION[4]                    = { 0.8, 0.7, 1.0, 0.0 };
+
+const float    LIGHT1_DIFFUSE[4]                     = { 0.3, 0.3, 0.3, 1.0 };
+const float    LIGHT1_SPECULAR[4]                    = { 0.5, 0.5, 0.5, 1.0 };
+const float    LIGHT1_POSITION[4]                    = { -0.8, 0.7, -0.5, 0.0 };
+
+
 namespace Avogadro
 {
   class A_EXPORT Library

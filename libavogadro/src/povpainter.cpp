@@ -26,6 +26,7 @@
 
 #include <QFile>
 #include <QDebug>
+#include <QInputDialog>
 
 namespace Avogadro
 {
@@ -202,6 +203,30 @@ namespace Avogadro
 
   POVPainterDevice::POVPainterDevice(const QString& filename, const GLWidget* glwidget)
   {
+    m_painter = 0;
+    m_output = 0;
+    m_file = 0;
+    bool ok;
+    int w = glwidget->width();
+    int h = glwidget->height();
+    double defaultAspectRatio = static_cast<double>(w)/h;
+    m_aspectRatio = QInputDialog::getDouble(0,
+                      QObject::tr("Set Aspect Ratio"),
+                      QObject::tr("The current Avogadro scene is %1x%2 pixels large, "
+                          "and therefore has aspect ratio %3.\n"
+                          "You may keep this value, for example if you intend to use POV-Ray\n"
+                          "to produce an image of %4x1000 pixels, "
+                          "or you may enter any other positive value,\n"
+                          "for example 1 if you intend to use POV-Ray to produce a square image, "
+                          "like 1000x1000 pixels.")
+                          .arg(w).arg(h).arg(defaultAspectRatio)
+                          .arg(static_cast<int>(1000*defaultAspectRatio)),
+                      defaultAspectRatio,
+                      0.01,
+                      100,
+                      6,
+                      &ok);
+    if(!ok) return;
     m_glwidget = glwidget;
     m_painter = new POVPainter;
     m_file = new QFile(filename);
@@ -219,11 +244,13 @@ namespace Avogadro
 
   POVPainterDevice::~POVPainterDevice()
   {
-    m_painter->end();
-    delete m_output;
+    if(m_painter) m_painter->end();
+    if(m_output) delete m_output;
     m_output = 0;
-    m_file->close();
-    delete m_file;
+    if(m_file) {
+      m_file->close();
+      delete m_file;
+    }
   }
 
   void POVPainterDevice::initializePOV()
@@ -231,40 +258,71 @@ namespace Avogadro
     // Initialise our POV-Ray scene
     // The POV-Ray camera basically has the same matrix elements - we just need to translate
     // FIXME Still working on getting the translation to POV-Ray right...
-    double aspectRatio = static_cast<double>(m_glwidget->width()) / m_glwidget->height();
+    m_aspectRatio = static_cast<double>(m_glwidget->width()) / m_glwidget->height();
     Vector3d cameraT = -( m_glwidget->camera()->modelview().linearComponent().adjoint()
                           * m_glwidget->camera()->modelview().translationVector()
                         );
-    Vector3d cameraX = m_glwidget->camera()->backTransformedXAxis() * aspectRatio;
+    Vector3d cameraX = m_glwidget->camera()->backTransformedXAxis() * m_aspectRatio;
     Vector3d cameraY = m_glwidget->camera()->backTransformedYAxis();
     Vector3d cameraZ = -m_glwidget->camera()->backTransformedZAxis();
-    Vector3d light = cameraT + Vector3d(0.8, 0.7, 1.0);
+
+    double huge = 10 * m_glwidget->farthestAtom()->pos().norm();
+
+    Vector3d light0pos = huge * ( m_glwidget->camera()->modelview().linearComponent().adjoint()
+                                  * Vector3d(LIGHT0_POSITION[0], LIGHT0_POSITION[1], LIGHT0_POSITION[2]) );
+    Vector3d light1pos = huge * ( m_glwidget->camera()->modelview().linearComponent().adjoint()
+                                  * Vector3d(LIGHT1_POSITION[0], LIGHT1_POSITION[1], LIGHT1_POSITION[2]) );
 
     // Output the POV-Ray initialisation code
     *(m_output) << "global_settings {\n"
-      << "\tambient_light rgb <1,1,1>\n"
+      << "\tambient_light rgb <"
+      << LIGHT_AMBIENT[0] << ", " << LIGHT_AMBIENT[1] << ", " << LIGHT_AMBIENT[2] << ">\n"
       << "\tmax_trace_level 20\n}\n\n"
       << "background { color rgb <"
       << m_glwidget->background().redF() << ","
       << m_glwidget->background().greenF() << ","
       << m_glwidget->background().blueF()
       << "> }\n\n"
+
       << "camera {\n"
       << "\tperspective\n"
       << "\tlocation <" << cameraT.x() << ", " << cameraT.y() << ", " << cameraT.z() << ">\n"
-//      << "\tright 1.33 * <" << cameraX.x() << ", " << cameraX.y() << ", " << cameraX.z() << ">\n"
-//      << "\tup <" << cameraY.x() << ", " << cameraY.y() << ", " << cameraY.z() << ">\n"
-//      << "\tdirection <" << cameraZ.x() << ", " << cameraZ.y() << ", " << cameraZ.z() << ">\n"
-      << "\tangle " << aspectRatio * m_glwidget->camera()->angleOfViewY() << "\n"
+      << "\tangle " << m_aspectRatio * m_glwidget->camera()->angleOfViewY() << "\n"
       << "\tup <" << cameraY.x() << ", " << cameraY.y() << ", " << cameraY.z() << ">\n"
       << "\tright <" << cameraX.x() << ", " << cameraX.y() << ", " << cameraX.z() << ">\n"
-      << "\tdirection <" << cameraZ.x() << ", " << cameraZ.y() << ", " << cameraZ.z() << "> }\n"
-//      << "\tsky y\n}\n\n"
+      << "\tdirection <" << cameraZ.x() << ", " << cameraZ.y() << ", " << cameraZ.z() << "> }\n\n"
+
       << "light_source {\n"
-      << "\t<" << light.x() << ", " << light.y() << ", " << light.z() << ">\n"
-      << "\tcolor rgb<1,1,1>\n"
+      << "\t<" << light0pos[0]
+       << ", " << light0pos[1]
+       << ", " << light0pos[2] << ">\n"
+      << "\tcolor rgb <" << LIGHT0_DIFFUSE[0] << ", "
+                         << LIGHT0_DIFFUSE[1] << ", "
+                         << LIGHT0_DIFFUSE[2] << ">\n"
+      << "\tfade_distance " << 2 * huge << "\n"
+      << "\tfade_power 0\n"
+      << "\tparallel\n"
+      << "\tpoint_at <" << -light0pos[0]
+                << ", " << -light0pos[1]
+                << ", " << -light0pos[2] << ">\n"
       << "}\n\n"
-      << "#default {\n\tfinish {ambient .4 diffuse .6 specular 0.9 roughness .005 metallic}\n}";
+
+      << "light_source {\n"
+      << "\t<" << light1pos[0]
+       << ", " << light1pos[1]
+       << ", " << light1pos[2] << ">\n"
+      << "\tcolor rgb <" << LIGHT1_DIFFUSE[0] << ", "
+                         << LIGHT1_DIFFUSE[1] << ", "
+                         << LIGHT1_DIFFUSE[2] << ">\n"
+      << "\tfade_distance " << 2 * huge << "\n"
+      << "\tfade_power 0\n"
+      << "\tparallel\n"
+      << "\tpoint_at <" << -light1pos[0]
+                << ", " << -light1pos[1]
+                << ", " << -light1pos[2] << ">\n"
+      << "}\n\n"
+
+      << "#default {\n\tfinish {ambient .8 diffuse 1 specular 1 roughness .005 metallic 0.5}\n}";
   }
 
   void POVPainterDevice::render()

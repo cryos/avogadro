@@ -27,7 +27,7 @@
 
 // #include<config.h> gave me headaches because another config.h file
 // was getting included!
-#include <libavogadro/src/config.h>
+#include "config.h"
 
 #include <avogadro/glwidget.h>
 #include <avogadro/glpainter.h>
@@ -524,14 +524,6 @@ namespace Avogadro {
 
     glEnable( GL_NORMALIZE );
 
-    GLfloat ambientLight[] = { 0.2, 0.2, 0.2, 1.0 };
-    GLfloat diffuseLight[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat diffuseLight2[] = { 0.3, 0.3, 0.3, 1.0 };
-    GLfloat specularLight[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat specularLight2[] = { 0.5, 0.5, 0.5, 1.0 };
-    GLfloat position[] = { 0.8, 0.7, 1.0, 0.0 };
-    GLfloat position2[] = { -0.8, 0.7, -0.5, 0.0 };
-
     glLightModeli( GL_LIGHT_MODEL_COLOR_CONTROL_EXT,
                    GL_SEPARATE_SPECULAR_COLOR_EXT );
 
@@ -541,17 +533,22 @@ namespace Avogadro {
     // _before_ enabling lighting
     glEnable( GL_LIGHTING );
 
-    glLightfv( GL_LIGHT0, GL_AMBIENT, ambientLight );
-    glLightfv( GL_LIGHT0, GL_DIFFUSE, diffuseLight );
-    glLightfv( GL_LIGHT0, GL_SPECULAR, specularLight );
-    glLightfv( GL_LIGHT0, GL_POSITION, position );
+    glLightfv( GL_LIGHT0, GL_AMBIENT, LIGHT_AMBIENT );
+    glLightfv( GL_LIGHT0, GL_DIFFUSE, LIGHT0_DIFFUSE );
+    glLightfv( GL_LIGHT0, GL_SPECULAR, LIGHT0_SPECULAR );
+    glLightfv( GL_LIGHT0, GL_POSITION, LIGHT0_POSITION );
     glEnable( GL_LIGHT0 );
+
     // Create a second light source to illuminate those shadows a little better
-    glLightfv( GL_LIGHT1, GL_AMBIENT, ambientLight );
-    glLightfv( GL_LIGHT1, GL_DIFFUSE, diffuseLight2 );
-    glLightfv( GL_LIGHT1, GL_SPECULAR, specularLight2 );
-    glLightfv( GL_LIGHT1, GL_POSITION, position2 );
+    // FIXME: this is quite expensive, especially on software-only systems,
+    // so we must add a way to disable the second light! Probably it should only be enabled
+    // at high "quality levels".
+    glLightfv( GL_LIGHT1, GL_AMBIENT, LIGHT_AMBIENT );
+    glLightfv( GL_LIGHT1, GL_DIFFUSE, LIGHT1_DIFFUSE );
+    glLightfv( GL_LIGHT1, GL_SPECULAR, LIGHT1_SPECULAR );
+    glLightfv( GL_LIGHT1, GL_POSITION, LIGHT1_POSITION );
     glEnable( GL_LIGHT1 );
+
     qDebug() << "GLWidget initialised...";
   }
 
