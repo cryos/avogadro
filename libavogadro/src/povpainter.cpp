@@ -232,7 +232,9 @@ namespace Avogadro
     // The POV-Ray camera basically has the same matrix elements - we just need to translate
     // FIXME Still working on getting the translation to POV-Ray right...
     double aspectRatio = static_cast<double>(m_glwidget->width()) / m_glwidget->height();
-    Vector3d cameraT = -(m_glwidget->camera()->modelview().translationVector());
+    Vector3d cameraT = -( m_glwidget->camera()->modelview().linearComponent().adjoint()
+                          * m_glwidget->camera()->modelview().translationVector()
+                        );
     Vector3d cameraX = m_glwidget->camera()->backTransformedXAxis() * aspectRatio;
     Vector3d cameraY = m_glwidget->camera()->backTransformedYAxis();
     Vector3d cameraZ = -m_glwidget->camera()->backTransformedZAxis();
