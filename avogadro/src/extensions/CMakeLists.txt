@@ -124,3 +124,19 @@ TARGET_LINK_LIBRARIES(h2methylextension
 	avogadro-lib
 )
 INSTALL(TARGETS h2methylextension DESTINATION ${DESTINATION_DIR})
+
+### WiiTrack
+#set(wiitrackextension_SRCS wiitrackextension.cpp)
+#set(CWIID_LIBRARIES /usr/lib/libcwiid.so)
+#qt4_automoc(${wiitrackextension_SRCS})
+#ADD_LIBRARY(wiitrackextension SHARED ${wiitrackextension_SRCS})
+#TARGET_LINK_LIBRARIES(wiitrackextension
+#	${OPENBABEL2_LIBRARIES}
+#	${QT_LIBRARIES}
+#   	${OPENGL_LIBRARIES}
+#        ${CWIID_LIBRARIES}
+#	avogadro-lib
+#)
+#INSTALL(TARGETS wiitrackextension DESTINATION ${DESTINATION_DIR})
+
+

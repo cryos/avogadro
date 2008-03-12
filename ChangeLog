@@ -1,3 +1,11 @@
+2008-03-12  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* avogadro/src/extensions/wiitrackextension.*: Wiimote head tracking
+	extension.
+
+	* avogadro/src/extensions/CMakeLists.txt: Do not compile Wiimote 
+	head tracking extension as default
+
 2008-03-11  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/colorbutton.h: Added A_EXPORT.
