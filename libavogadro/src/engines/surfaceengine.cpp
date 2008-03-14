@@ -132,7 +132,6 @@ namespace Avogadro {
 
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
   {
-    qDebug() << "                                      renderOpaque";
     // Don't try to render anything while the surface is being calculated.
     if (m_vdwThread->isRunning())
       return false;
@@ -151,16 +150,11 @@ namespace Avogadro {
       return true;
     }
 
-    qDebug() << " rendering surface ";
-
     glPushAttrib(GL_ALL_ATTRIB_BITS);
-//    glDisable(GL_LIGHTING);
     glEnable(GL_BLEND);
     glShadeModel(GL_SMOOTH);
 
     pd->painter()->setColor(1.0, 0.0, 0.0, m_alpha);
-//    glPushName(Primitive::SurfaceType);
-//    glPushName(1);
 
     qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
 
@@ -317,14 +311,14 @@ namespace Avogadro {
 
   void SurfaceEngine::vdwThreadFinished()
   {
-    qDebug() << "                                      vdwThreadFinished()";
+    qDebug() << "vdwThreadFinished()";
     m_isoGen->init(m_vdwThread->grid(), 0, false, m_vdwThread->stepSize());
     m_isoGen->start();
   }
 
   void SurfaceEngine::isoGenFinished()
   {
-    qDebug() << "                                      isoGenFinished()";
+    qDebug() << "isoGenFinished()";
     emit changed();
   }
 
@@ -343,7 +337,6 @@ namespace Avogadro {
 
   void SurfaceEngine::addPrimitive(Primitive *primitive)
   {
-    qDebug() << "                                      addPrimitive()";
     if (primitive->type() == Primitive::AtomType) {
       m_surfaceValid = false;
     }
