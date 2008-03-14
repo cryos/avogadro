@@ -7,7 +7,7 @@
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 23<br>
 Files Processed = 47<br>
-Total Issues = 7 ...as of March 10 2008 16:38:50</p>
+Total Issues = 8 ...as of March 14 2008 18:31:49</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -37,7 +37,20 @@ Total Issues = 7 ...as of March 10 2008 16:38:50</p>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>okay!</b>
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	../libavogadro/src/glwidget.cpp: put config.h in angle brackets line#30
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
+	Qt headers from installed headers; cpp file should include their
+	own headers first; other rules apply, see
+	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right</a>. Use include guards in headers with appropriatedly
+	encoded macro names.</p>
+</li>
+
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for assignments to QString::null... 
@@ -77,7 +90,7 @@ Total Issues = 7 ...as of March 10 2008 16:38:50</p>
 <li>Check for system calls to replace by KDE or Qt equivalents... 
 <b>OOPS! 4 issues found!</b>
 <ul>
-<li>	../libavogadro/src/glwidget.cpp: line#303 getenv[qgetenv],304 getenv[qgetenv] (2)
+<li>	../libavogadro/src/glwidget.cpp: line#305 getenv[qgetenv],306 getenv[qgetenv] (2)
 </li>
 <li>	../libavogadro/src/toolgroup.cpp: line#75 getenv[qgetenv],77 getenv[qgetenv] (2)
 </li>
