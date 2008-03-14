@@ -7,7 +7,7 @@
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 23<br>
 Files Processed = 31<br>
-Total Issues = 10 ...as of March 10 2008 15:14:59</p>
+Total Issues = 7 ...as of March 10 2008 16:43:03</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -47,15 +47,9 @@ Total Issues = 10 ...as of March 10 2008 15:14:59</p>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 4 issues found!</b>
+<b>OOPS! 1 issue found!</b>
 <ul>
-<li>	../avogadro/src/aboutdialog.cpp: include own header first line#31
-</li>
-<li>	../avogadro/src/aboutdialog.cpp: put config.h in angle brackets line#32
-</li>
 <li>	../avogadro/src/flowlayout.cpp: do not include QtModules line#27(QtGui)
-</li>
-<li>	../avogadro/src/engineprimitiveswidget.h: missing or improper include guard in header
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include

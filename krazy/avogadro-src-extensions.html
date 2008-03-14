@@ -7,7 +7,7 @@
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 23<br>
 Files Processed = 38<br>
-Total Issues = 19 ...as of March 10 2008 15:18:09</p>
+Total Issues = 15 ...as of March 10 2008 16:45:03</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -48,23 +48,13 @@ Total Issues = 19 ...as of March 10 2008 15:18:09</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../avogadro/src/extensions/propmodel.h: line#63 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
-	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
-	this to avoid mistaken implicit constructor ambiguities. Copy
-	constructors should not be explicit.</p>
-</li>
-
+<b>okay!</b>
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 12 issues found!</b>
+<b>OOPS! 10 issues found!</b>
 <ul>
 <li>	../avogadro/src/extensions/constraintsmodel.cpp: do not include QtModules line#29(QtGui)
 </li>
@@ -85,10 +75,6 @@ Total Issues = 19 ...as of March 10 2008 15:18:09</p>
 <li>	../avogadro/src/extensions/selectextension.cpp: do not include QtModules line#30(QtGui)
 </li>
 <li>	../avogadro/src/extensions/unitcellextension.cpp: do not include QtModules line#26(QtGui)
-</li>
-<li>	../avogadro/src/extensions/dockingextension.h: missing or improper include guard in header
-</li>
-<li>	../avogadro/src/extensions/gamessinputdialog.h: missing or improper include guard in header
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
@@ -117,11 +103,9 @@ Total Issues = 19 ...as of March 10 2008 15:18:09</p>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
-<b>OOPS! 2 issues found!</b>
+<b>OOPS! 1 issue found!</b>
 <ul>
-<li>	../avogadro/src/extensions/constraintsdialog.h: line#62[extention] (1)
-</li>
-<li>	../avogadro/src/extensions/gamessinputdialog.h: line#90[propogate] (1)
+<li>	../avogadro/src/extensions/gamessinputdialog.h: line#89[propogate] (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may
