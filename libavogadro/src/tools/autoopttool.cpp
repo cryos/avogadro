@@ -1,5 +1,5 @@
 /**********************************************************************
-  AutoOptTool - Automatic Optimisation Tool for Avogadro
+  AutoOptTool - Automatic Optimization Tool for Avogadro
 
   Copyright (C) 2007 by Marcus D. Hanwell
   Copyright (C) 2007 by Geoffrey R. Hutchison

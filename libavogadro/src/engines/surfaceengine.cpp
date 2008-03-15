@@ -277,7 +277,7 @@ namespace Avogadro {
     emit changed();
   }
 
-  void SurfaceEngine::setColor(QColor color)
+  void SurfaceEngine::setColor(const QColor& color)
   {
     m_color.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();

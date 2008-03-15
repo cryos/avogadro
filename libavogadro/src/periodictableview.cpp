@@ -341,7 +341,7 @@ namespace Avogadro {
 
   PeriodicTableView::PeriodicTableView(QWidget *parent) : QGraphicsView(parent)
   {
-    // Use a small title bar (Qt::Tool) with no minimise or maximise buttons
+    // Use a small title bar (Qt::Tool) with no minimize or maximise buttons
     setWindowFlags(Qt::Dialog | Qt::Tool);
 
     PeriodicTableScene *table = new PeriodicTableScene;

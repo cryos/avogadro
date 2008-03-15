@@ -230,7 +230,7 @@ namespace Avogadro {
       Vector3d textRelPos = radius * (zAxis + xAxis);
 
       Vector3d textPos = pos+textRelPos;
-      widget->painter()->drawText(textPos, tr("*1", "*1 is a number. You most likely don't need to translate this" ));
+      widget->painter()->drawText(textPos, tr("*1", "*1 is a number. You most likely do not need to translate this" ));
 
       if(m_numSelectedAtoms >= 2)
       {
@@ -238,7 +238,7 @@ namespace Avogadro {
         pos = m_selectedAtoms[1]->pos();
         Vector3d textPos = pos+textRelPos;
         radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[1]->GetAtomicNum()) * 0.3;
-        widget->painter()->drawText(textPos, tr("*2", "*2 is a number. You most likely don't need to translate this"));
+        widget->painter()->drawText(textPos, tr("*2", "*2 is a number. You most likely do not need to translate this"));
 
         if(m_numSelectedAtoms >= 3)
         {
@@ -247,7 +247,7 @@ namespace Avogadro {
           radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[2]->GetAtomicNum()) * 0.3;
           textPos = pos+textRelPos;
           glColor3f(0.0,0.0,1.0);
-          widget->painter()->drawText(textPos, tr("*3", "*3 is a number. You most likely don't need to translate this"));
+          widget->painter()->drawText(textPos, tr("*3", "*3 is a number. You most likely do not need to translate this"));
         }
         if(m_numSelectedAtoms >= 4)
         {
@@ -256,7 +256,7 @@ namespace Avogadro {
           radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[3]->GetAtomicNum()) * 0.3;
           textPos = pos + textRelPos;
           glColor3f(0.0,1.0,1.0);
-          widget->painter()->drawText(textPos, tr("*4", "*4 is a number. You most likely don't need to translate this"));
+          widget->painter()->drawText(textPos, tr("*4", "*4 is a number. You most likely do not need to translate this"));
         }
         //       glLoadIdentity();
         glColor3f(1.0,1.0,1.0);

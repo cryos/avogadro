@@ -1,5 +1,5 @@
 /**********************************************************************
-  AutoOptTool - Automatic Optimisation Tool for Avogadro
+  AutoOptTool - Automatic Optimization Tool for Avogadro
 
   Copyright (C) 2007 by Marcus D. Hanwell
   Copyright (C) 2007 by Geoffrey R. Hutchison
@@ -78,7 +78,7 @@ namespace Avogadro {
 
   /**
    * @class AutoOptTool
-   * @brief Automatic Optimisation Tool
+   * @brief Automatic Optimization Tool
    * @author Marcus D. Hanwell
    *
    * This tool enables the manipulation of the position of

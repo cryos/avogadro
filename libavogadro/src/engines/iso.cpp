@@ -138,7 +138,7 @@ namespace Avogadro
     {2,3}
   };
 
-  // a2iTetrahedronEdgeConnection lists the index of verticies from a cube that
+  // a2iTetrahedronEdgeConnection lists the index of vertices from a cube that
   // made up each of the six tetrahedrons within the cube
   const long IsoGen::a2iTetrahedronsInACube[6][4] __attribute__((aligned(16))) =
   {

@@ -144,7 +144,7 @@ namespace Avogadro {
       /**
        * @param color the new color to use
        */
-      void setColor(QColor color);
+      void setColor(const QColor& color);
   };
 
   class SurfaceSettingsWidget : public QWidget, public Ui::SurfaceSettingsWidget

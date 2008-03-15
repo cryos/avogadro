@@ -118,11 +118,11 @@ namespace Avogadro {
       /**
        * @param color the color for the positive iso surface
        */
-      void setPosColor(QColor color);
+      void setPosColor(const QColor& color);
       /**
        * @param color the color for the negative iso surface
        */
-      void setNegColor(QColor color);
+      void setNegColor(const QColor& color);
   };
 
   class OrbitalSettingsWidget : public QWidget, public Ui::OrbitalSettingsWidget

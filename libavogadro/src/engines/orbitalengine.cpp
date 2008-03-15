@@ -375,13 +375,13 @@ namespace Avogadro {
     emit changed();
   }
 
-  void OrbitalEngine::setPosColor(QColor color)
+  void OrbitalEngine::setPosColor(const QColor& color)
   {
     m_posColor.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();
   }
 
-  void OrbitalEngine::setNegColor(QColor color)
+  void OrbitalEngine::setNegColor(const QColor& color)
   {
     m_negColor.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();

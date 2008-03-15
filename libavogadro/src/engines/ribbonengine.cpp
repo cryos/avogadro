@@ -114,7 +114,7 @@ namespace Avogadro {
 
   bool RibbonEngine::renderQuick(PainterDevice *pd)
   {
-    // Just render cylinders betweeen the backbone...
+    // Just render cylinders between the backbone...
     double tRadius = m_radius / 2.0;
     for (int i = 0; i < m_chains.size(); i++) {
       if (m_chains[i].size() <= 1)
