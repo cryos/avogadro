@@ -5,9 +5,9 @@
 </head>
 <body>
 <h1>krazy Analysis</h1>
-<p>Checkers Run = 23<br>
+<p>Checkers Run = 24<br>
 Files Processed = 26<br>
-Total Issues = 10 ...as of March 14 2008 18:33:21</p>
+Total Issues = 3 ...as of March 15 2008 13:54:26</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -17,16 +17,7 @@ Total Issues = 10 ...as of March 14 2008 18:33:21</p>
 <li>Check for methods that return 'const' refs in public classes... 
 <b>okay!</b>
 <li>Check for contractions in strings... 
-<b>OOPS! 4 issues found!</b>
-<ul>
-<li>	../libavogadro/src/tools/clickmeasuretool.cpp: line#233[don&#39;t],241[don&#39;t],250[don&#39;t],259[don&#39;t] (4)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Contractions in strings are sometimes hard to translate so do not
-	use them.  For example: &quot;don&#39;t&quot; should be changed to &quot;do not&quot;. 
-	Contractions used in comments are ok.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for cpp macros and usage... 
 <b>okay!</b>
 <li>Check for single char QStrings better written as a QChar... 
@@ -68,6 +59,8 @@ Total Issues = 10 ...as of March 14 2008 18:33:21</p>
 <b>okay!</b>
 <li>Check for invalid SIGNALs and SLOTs passed to connect()... 
 <b>okay!</b>
+<li>Check for Qt classes that should be avoided... 
+<b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
 <li>Check for classes that should use the 'Q_OBJECT' macro... 
@@ -82,18 +75,7 @@ Total Issues = 10 ...as of March 14 2008 18:33:21</p>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
-<b>OOPS! 3 issues found!</b>
-<ul>
-<li>	../libavogadro/src/tools/autoopttool.cpp: line#2[optimisation] (1)
-</li>
-<li>	../libavogadro/src/tools/autoopttool.h: line#2[optimisation],81[optimisation] (2)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may
-	show up later in API documentation, handbooks, etc.  Misspelled
-	strings make the translator&#39;s job harder. Please use US English.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for system calls to replace by KDE or Qt equivalents... 
 <b>okay!</b>
 </ol>
