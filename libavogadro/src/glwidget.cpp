@@ -199,7 +199,7 @@ namespace Avogadro {
                         updateCache(true),
                         quickRender(false),
                         renderAxes(false),
-                        renderDebug(true),
+                        renderDebug(false),
                         dlistQuick(0), dlistOpaque(0), dlistTransparent(0),
                         pd(0)
     {
