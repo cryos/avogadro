@@ -111,7 +111,8 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
+  QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, 
+		                                       const QMouseEvent *event)
   {
     // Reset the cursor
     widget->setCursor(Qt::ArrowCursor);
@@ -202,7 +203,10 @@ namespace Avogadro {
           break;
         case 1: // atom
         default:
-          widget->toggleSelected(hitList);
+          // If the modifier key is not pressed clear the previous selection
+          if (!(event->modifiers() & Qt::ShiftModifier))
+            widget->clearSelected();
+          widget->setSelected(hitList, true);
           break;
       }
 
@@ -240,8 +244,11 @@ namespace Avogadro {
           }
         }
       }
-      // Toggle the selection
-      widget->toggleSelected(hitList);
+      // If the modifier key is not pressed clear the previous selection
+      if (!(event->modifiers() & Qt::ShiftModifier))
+        widget->clearSelected();
+      // Set the selection
+      widget->setSelected(hitList, true);
     }
 
     widget->update();
