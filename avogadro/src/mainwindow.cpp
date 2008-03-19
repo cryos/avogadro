@@ -63,6 +63,7 @@
 #include <QToolButton>
 #include <QUndoStack>
 #include <QDesktopWidget>
+#include <QInputDialog>
 
 #include <QDebug>
 
@@ -765,8 +766,30 @@ namespace Avogadro
     if ( fileName.isEmpty() )
       return;
 
-    POVPainterDevice pd( fileName, d->glWidget );
+    bool ok;
+    int w = d->glWidget->width();
+    int h = d->glWidget->height();
+    double defaultAspectRatio = static_cast<double>(w)/h;
+    double aspectRatio =
+      QInputDialog::getDouble(0,
+      QObject::tr("Set Aspect Ratio"),
+      QObject::tr("The current Avogadro scene is %1x%2 pixels large, "
+          "and therefore has aspect ratio %3.\n"
+          "You may keep this value, for example if you intend to use POV-Ray\n"
+          "to produce an image of %4x1000 pixels, "
+          "or you may enter any other positive value,\n"
+          "for example 1 if you intend to use POV-Ray to produce a square image, "
+          "like 1000x1000 pixels.")
+          .arg(w).arg(h).arg(defaultAspectRatio)
+          .arg(static_cast<int>(1000*defaultAspectRatio)),
+      defaultAspectRatio,
+      0.1,
+      10,
+      6,
+      &ok);
 
+    if(ok)
+      POVPainterDevice pd( fileName, aspectRatio, d->glWidget );
   }
 
   void MainWindow::revert()

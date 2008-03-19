@@ -285,7 +285,7 @@ namespace Avogadro
   class A_EXPORT POVPainterDevice : public PainterDevice
   {
   public:
-    POVPainterDevice(const QString& filename, const GLWidget* glwidget);
+    POVPainterDevice(const QString& filename, bool aspectRatio, const GLWidget* glwidget);
     ~POVPainterDevice();
 
     void initializePOV();

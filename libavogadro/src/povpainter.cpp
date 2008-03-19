@@ -26,7 +26,6 @@
 
 #include <QFile>
 #include <QDebug>
-#include <QInputDialog>
 
 namespace Avogadro
 {
@@ -201,32 +200,12 @@ namespace Avogadro
     d->output = 0;
   }
 
-  POVPainterDevice::POVPainterDevice(const QString& filename, const GLWidget* glwidget)
+  POVPainterDevice::POVPainterDevice(const QString& filename, bool aspectRatio, const GLWidget* glwidget)
   {
     m_painter = 0;
     m_output = 0;
     m_file = 0;
-    bool ok;
-    int w = glwidget->width();
-    int h = glwidget->height();
-    double defaultAspectRatio = static_cast<double>(w)/h;
-    m_aspectRatio = QInputDialog::getDouble(0,
-                      QObject::tr("Set Aspect Ratio"),
-                      QObject::tr("The current Avogadro scene is %1x%2 pixels large, "
-                          "and therefore has aspect ratio %3.\n"
-                          "You may keep this value, for example if you intend to use POV-Ray\n"
-                          "to produce an image of %4x1000 pixels, "
-                          "or you may enter any other positive value,\n"
-                          "for example 1 if you intend to use POV-Ray to produce a square image, "
-                          "like 1000x1000 pixels.")
-                          .arg(w).arg(h).arg(defaultAspectRatio)
-                          .arg(static_cast<int>(1000*defaultAspectRatio)),
-                      defaultAspectRatio,
-                      0.01,
-                      100,
-                      6,
-                      &ok);
-    if(!ok) return;
+    m_aspectRatio = aspectRatio;
     m_glwidget = glwidget;
     m_painter = new POVPainter;
     m_file = new QFile(filename);
@@ -244,13 +223,11 @@ namespace Avogadro
 
   POVPainterDevice::~POVPainterDevice()
   {
-    if(m_painter) m_painter->end();
-    if(m_output) delete m_output;
+    m_painter->end();
+    delete m_output;
     m_output = 0;
-    if(m_file) {
-      m_file->close();
-      delete m_file;
-    }
+    m_file->close();
+    delete m_file;
   }
 
   void POVPainterDevice::initializePOV()
