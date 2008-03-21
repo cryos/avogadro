@@ -1,4 +1,11 @@
+2008-03-21  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
+	* testfiles/ch3cl.cube.gz: Deleted incorrect test file.
+
+	* testfiles/multicube.cubes.gz: Added new multi-cube test file
+	supplied by Louis Ricard.
+
+??????????
 
 	* libavogadro/src/tools/selectrotatetool.cpp: Modified the selection
 	behaviour to more closely match other applications. Clicking on atoms
