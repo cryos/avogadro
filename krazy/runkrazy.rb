@@ -18,7 +18,7 @@ def dir2filename( dir )
 end
 
 
-directories = [ "libavogadro/src" , "libavogadro/src/tools", "libavogadro/src/engines" , "avogadro/src" , "avogadro/src/extensions" ]
+directories = [ "libavogadro/src" , "libavogadro/src/tools", "libavogadro/src/engines" , "avogadro/src" , "libavogadro/src/extensions" ]
 
 for dir in directories
 	dir.chomp!
