@@ -311,6 +311,12 @@ void GamessEFPData::AddGroup( GamessEFPGroup *group )
 
 void GamessEFPData::RemoveGroups( Atom *atom )
 {
+  // clear if there are none
+  if(!atom)
+  {
+    m_groups.clear();
+  }
+
   std::vector<GamessEFPGroup *>::iterator iter;
   for ( iter = m_groups.begin(); iter != m_groups.end(); ) {
     if ( (*iter)->Contains(atom) ) {

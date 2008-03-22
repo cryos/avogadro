@@ -30,7 +30,7 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  UnitCellExtension::UnitCellExtension(QObject *parent) : QObject(parent), m_Widget(NULL)
+  UnitCellExtension::UnitCellExtension(QObject *parent) : Extension(parent), m_Widget(NULL)
   {
     QAction *action = new QAction(this);
     action->setText(tr("Unit Cell Parameters..."));
@@ -57,17 +57,19 @@ namespace Avogadro {
     return tr("&Build");
   }
 
-  QUndoCommand* UnitCellExtension::performAction(QAction *,
-      Molecule *molecule,
-      GLWidget *widget,
-      QTextEdit *)
+  void UnitCellExtension::setMolecule(Molecule *molecule)
   {
     m_Molecule = molecule;
+  }
+
+  QUndoCommand* UnitCellExtension::performAction(QAction *, GLWidget *widget)
+  {
+    // FIXME: this is bad mmmkay
     m_Widget = widget;
 
     OBUnitCell *uc = NULL;
-    if (molecule && molecule->HasData(OBGenericDataType::UnitCell)) {
-      uc = dynamic_cast<OBUnitCell*>(molecule->GetData(OBGenericDataType::UnitCell));
+    if (m_Molecule && m_Molecule->HasData(OBGenericDataType::UnitCell)) {
+      uc = dynamic_cast<OBUnitCell*>(m_Molecule->GetData(OBGenericDataType::UnitCell));
     } else {
       // show warning and ask if the user wants to create a unit cell
       // (otherwise this extension isn't very useful)
@@ -86,7 +88,7 @@ namespace Avogadro {
         double estimatedSize = widget->radius() + 2.0;
         uc->SetData(estimatedSize, estimatedSize, estimatedSize,
             90.0, 90.0, 90.0);
-        molecule->SetData(uc);
+        m_Molecule->SetData(uc);
 
         widget->setUnitCells(1, 1, 1);
       } else { // do nothing -- user picked "Cancel"

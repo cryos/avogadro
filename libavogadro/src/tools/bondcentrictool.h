@@ -102,6 +102,13 @@ namespace Avogadro {
        */
       virtual void readSettings(QSettings &settings);
 
+      /**
+       * Functnion to be called when the molecule is changed.
+       *
+       * @param previous The previous Molecule.
+       * @param next The new Molecule.
+       */
+      void setMolecule(Molecule* molecule);
 
     public Q_SLOTS:
       /**
@@ -326,14 +333,6 @@ namespace Avogadro {
        * @param tool True if our tool is selected.
        */
       void toolChanged(bool checked);
-
-      /**
-       * Functnion to be called when the molecule is changed.
-       *
-       * @param previous The previous Molecule.
-       * @param next The new Molecule.
-       */
-      void setMolecule(Molecule* molecule);
 
       /**
        * Function to be called when a primitive is removed.

@@ -47,7 +47,7 @@ namespace Avogadro
       PosesIndex,
     };
 
-  DockingExtension::DockingExtension( QObject *parent ) : QObject( parent )
+  DockingExtension::DockingExtension( QObject *parent ) : Extension( parent )
   {
     QAction *action;
     m_dock = new OpenBabel::OBDock;
@@ -129,8 +129,7 @@ namespace Avogadro
     return QString();
   }
 
-  QUndoCommand* DockingExtension::performAction( QAction *action, Molecule *molecule,
-                                                 GLWidget *widget, QTextEdit * )
+  QUndoCommand* DockingExtension::performAction( QAction *action, GLWidget *widget)
   {
     QUndoCommand *undo = NULL;
     QList<Primitive *> selectedAtoms;

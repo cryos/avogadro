@@ -36,7 +36,7 @@
 
 namespace Avogadro {
 
-  class UnitCellExtension : public QObject, public Extension
+  class UnitCellExtension : public Extension
   {
     Q_OBJECT
 
@@ -54,12 +54,12 @@ namespace Avogadro {
     virtual QString description() const { return QObject::tr("Unit Cell Parameters Plugin"); };
     //! Perform Action
     virtual QList<QAction *> actions() const;
-    virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
-                                        GLWidget *widget, QTextEdit *messages=NULL);
+    virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
     virtual QString menuPath(QAction *action) const;
+    virtual void setMolecule(Molecule *molecule);
     //@}
 
-  public slots:
+  public Q_SLOTS:
     void unitCellDisplayChanged(int a, int b, int c);
     void unitCellParametersChanged(double a, double b, double c,
                                      double alpha, double beta, double gamma);

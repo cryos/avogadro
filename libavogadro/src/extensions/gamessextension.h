@@ -38,7 +38,7 @@
 class QStandardItemModel;
 namespace Avogadro {
 
-  class GamessExtension : public QObject, public Extension
+  class GamessExtension : public Extension
   {
     Q_OBJECT
 
@@ -67,9 +67,11 @@ namespace Avogadro {
       //! GAMESS Dock Widget
       virtual QDockWidget * dockWidget();
 
-      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
-          GLWidget *widget, QTextEdit *messages=NULL);
+      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
+
       //@}
+
+      void setMolecule(Molecule *molecule);
 
     private:
       GamessInputDialog *m_inputDialog;
@@ -80,6 +82,8 @@ namespace Avogadro {
       QPushButton *m_efpButton;
 
       QStandardItemModel *m_efpModel;
+
+      Molecule *m_molecule;
 
       GamessEfpMatchDialog *m_efpDialog;
       GamessEfpMatchDialog *m_qmDialog;

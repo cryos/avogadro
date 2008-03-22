@@ -42,3 +42,4 @@ INSTALL(FILES ${libavogadro_QM} DESTINATION share/libavogadro/i18n)
 
 add_subdirectory(engines)
 add_subdirectory(tools)
+add_subdirectory(extensions)

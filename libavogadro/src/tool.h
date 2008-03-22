@@ -120,12 +120,6 @@ namespace Avogadro {
       virtual bool paint(GLWidget *widget);
 
       /**
-       * Called by the parent (toolGroup) to tell the tool the underlying
-       * model (molecule) has changed
-       */
-      virtual void setMolecule(Molecule *molecule);
-
-      /**
        * Determines the ordering of the tools.  More useful
        * tools are placed first.  It is up to the tool designer
        * to be humble about their usefulness value.
@@ -151,6 +145,13 @@ namespace Avogadro {
        * @param m the message to add to the message pane.
        */
       void message(const QString &m);
+
+    public Q_SLOTS:
+      /**
+       * Called by the parent (normally toolGroup) to tell the tool the underlying
+       * model (molecule) has changed
+       */
+      virtual void setMolecule(Molecule *molecule);
 
     protected:
       ToolPrivate *const d;

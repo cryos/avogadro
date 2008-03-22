@@ -1,11 +1,24 @@
+2008-03-22  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* avogadro/src/mainwindow.cpp: fixed bug with dock window loading being
+	in the wrong loop.
+
+	* libavogadro/src/tool.h: make setMolecule a slot
+
+	* libavogadro/src/extension.[cpp|h]: make Extension a QObject and
+	get ready for the library.  added setMolecule function.
+
+	+ libavogadro/src/extensions: move extenstions to the library
+
+	* libavogadro/src/extensions/*: modify extensions to use a signal to emit
+	messages and utilize the setMolecule function.
+
 2008-03-21  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* testfiles/ch3cl.cube.gz: Deleted incorrect test file.
 
 	* testfiles/multicube.cubes.gz: Added new multi-cube test file
 	supplied by Louis Ricard.
-
-??????????
 
 	* libavogadro/src/tools/selectrotatetool.cpp: Modified the selection
 	behaviour to more closely match other applications. Clicking on atoms

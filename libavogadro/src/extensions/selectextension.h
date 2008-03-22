@@ -1,7 +1,8 @@
 /**********************************************************************
-  WiiTrack - Wiimote head tracking extension
+  Selection - Various selection options for Avogadro
 
-  Copyright (C) 2008 by Tim Vandermeersch
+  Copyright (C) 2006-2007 by Donald Ephraim Curtis
+  Copyright (C) 2006-2007 by Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -19,13 +20,11 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __WIITRACKEXTENSION_H
-#define __WIITRACKEXTENSION_H
+#ifndef __SELECTEXTENSION_H
+#define __SELECTEXTENSION_H
 
 #include <avogadro/extension.h>
-
-
-#include <cwiid.h>
+#include <avogadro/periodictableview.h>
 
 #include <QObject>
 #include <QList>
@@ -34,58 +33,51 @@
 
 namespace Avogadro {
 
- class WiiTrackExtension : public QObject, public Extension
+ class SelectExtension : public Extension
   {
     Q_OBJECT
     
-   public slots:
-     void redraw(); 
-   public:
+    public:
       //! Constructor
-      WiiTrackExtension(QObject *parent=0);
+      SelectExtension(QObject *parent=0);
       //! Deconstructor
-      virtual ~WiiTrackExtension();
+      virtual ~SelectExtension();
 
       //! \name Description methods
       //@{
       //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("WiiTrack"); }
+      virtual QString name() const { return QObject::tr("Selections"); }
       //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("WiiTrack Plugin"); };
+      virtual QString description() const { return QObject::tr("Selection Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
-                                          GLWidget *widget, QTextEdit *messages=NULL);
+      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
       virtual QString menuPath(QAction *action) const;
+      virtual void setMolecule(Molecule *molecule);
       //@}
-      
-      
+
+    public Q_SLOTS:
+      void selectElement(int element);
+
     private:
       QList<QAction *> m_actions;
+      Molecule *m_molecule;
       GLWidget *m_widget;
-      QTimer *m_timer;
-      
-      // cwiid stuff
-      cwiid_wiimote_t *m_wiimote;       /* wiimote handle */
-      void cwiidConnect();
-      void cwiidDisconnect();
-      void cwiidSetReportMode(cwiid_wiimote_t *wiimote, unsigned char rpt_mode);
-      static cwiid_mesg_callback_t cwiid_callback; /* callback function */
-       
-      double m_lastDistance; 
-      double m_lastDot1x; 
-      double m_lastDot1y; 
-      double m_lastDot2x; 
-      double m_lastDot2y; 
+      PeriodicTableView *m_periodicTable;
+
+      void invertSelection(GLWidget *widget);
+      void selectSMARTS(GLWidget *widget);
+      void selectResidue(GLWidget *widget);
+      void selectSolvent(GLWidget *widget);
   };
 
-  class WiiTrackExtensionFactory : public QObject, public ExtensionFactory
+  class SelectExtensionFactory : public QObject, public ExtensionFactory
   {
     Q_OBJECT;
     Q_INTERFACES(Avogadro::ExtensionFactory);
 
     public:
-    Extension *createInstance(QObject *parent = 0) { return new WiiTrackExtension(parent); }
+    Extension *createInstance(QObject *parent = 0) { return new SelectExtension(parent); }
   };
 
 } // end namespace Avogadro

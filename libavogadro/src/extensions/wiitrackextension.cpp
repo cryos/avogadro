@@ -51,7 +51,7 @@ namespace Avogadro {
   };
 
 
-  WiiTrackExtension::WiiTrackExtension(QObject *parent) : QObject(parent)
+  WiiTrackExtension::WiiTrackExtension(QObject *parent) : Extension(parent)
   {
     QAction *action;
 

@@ -86,5 +86,3 @@ ENDIF( APPLE)
 
 INSTALL(FILES ${avogadro_QM} DESTINATION share/avogadro/i18n)
 
-add_subdirectory(extensions)
-

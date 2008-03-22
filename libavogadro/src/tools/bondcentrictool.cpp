@@ -50,6 +50,8 @@
 #include <QtPlugin>
 #include <QString>
 
+#include <QDebug>
+
 using namespace std;
 using namespace OpenBabel;
 using namespace Eigen;

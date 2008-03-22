@@ -50,7 +50,7 @@ namespace Avogadro
       int numConformers();
       
       QUndoCommand* setup(Molecule *molecule, OpenBabel::OBForceField* forceField, ConstraintsModel* constraints, 
-      QTextEdit *textEdit, int forceFieldID, int nSteps, int algorithm, int gradients, int convergence);
+      int forceFieldID, int nSteps, int algorithm, int gradients, int convergence);
  
     public slots:
       void accept();

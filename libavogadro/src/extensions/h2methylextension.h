@@ -36,7 +36,7 @@
 
 namespace Avogadro {
 
- class H2MethylExtension : public QObject, public Extension
+ class H2MethylExtension : public Extension
   {
     Q_OBJECT
 
@@ -54,13 +54,16 @@ namespace Avogadro {
       virtual QString description() const { return QObject::tr("H2Methyl Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
-                                          GLWidget *widget, QTextEdit *messages=NULL);
+      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
       virtual QString menuPath(QAction *action) const;
+
+      virtual void setMolecule(Molecule *molecule);
       //@}
 
     private:
       QList<QAction *> m_actions;
+
+      Molecule *m_molecule;
   };
 
   class H2MethylExtensionFactory : public QObject, public ExtensionFactory

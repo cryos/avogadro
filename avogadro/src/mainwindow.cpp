@@ -1509,14 +1509,17 @@ namespace Avogadro
 
             path->addAction( action );
             connect( action, SIGNAL( triggered() ), this, SLOT( actionTriggered() ) );
-
-            QDockWidget *dockWidget = extension->dockWidget();
-            if(dockWidget)
-            {
-              addDockWidget(Qt::RightDockWidgetArea, dockWidget);
-              ui.menuDocks->addAction(dockWidget->toggleViewAction());
-            }
           }
+
+          QDockWidget *dockWidget = extension->dockWidget();
+          if(dockWidget)
+          {
+            addDockWidget(Qt::RightDockWidgetArea, dockWidget);
+            ui.menuDocks->addAction(dockWidget->toggleViewAction());
+          }
+
+          connect(this, SIGNAL( moleculeChanged(Molecule*)), extension, SLOT(setMolecule(Molecule*)));
+          connect(extension, SIGNAL( message(QString)), d->messagesText, SLOT(append(QString)));
         }
       }
     }
@@ -1529,8 +1532,7 @@ namespace Avogadro
       Extension *extension = dynamic_cast<Extension *>( action->parent() );
 
       QUndoCommand *command = 0;
-      command = extension->performAction( action, d->molecule,d->glWidget,
-          d->messagesText );
+      command = extension->performAction( action, d->glWidget);
 
       if ( command ) {
         d->undoStack->push( command );
