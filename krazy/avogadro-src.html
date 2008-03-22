@@ -7,7 +7,7 @@
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 24<br>
 Files Processed = 31<br>
-Total Issues = 9 ...as of March 15 2008 13:57:13</p>
+Total Issues = 9 ...as of March 19 2008 14:27:30</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -72,7 +72,7 @@ Total Issues = 9 ...as of March 15 2008 13:57:13</p>
 <ul>
 <li>	../avogadro/src/addenginedialog.cpp: line#84[QString]
 </li>
-<li>	../avogadro/src/mainwindow.cpp: line#456[QString]
+<li>	../avogadro/src/mainwindow.cpp: line#457[QString]
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
@@ -85,7 +85,7 @@ Total Issues = 9 ...as of March 15 2008 13:57:13</p>
 <li>Check for Qt classes that should be avoided... 
 <b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../avogadro/src/mainwindow.cpp: line#1137 QWidget::showFullScreen,1139 QWidget::showNormal (2)
+<li>	../avogadro/src/mainwindow.cpp: line#1160 QWidget::showFullScreen,1162 QWidget::showNormal (2)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	A few Qt methods should be avoided because they don&#39;t work as
@@ -104,7 +104,7 @@ Total Issues = 9 ...as of March 15 2008 13:57:13</p>
 <li>Check for system calls to replace by KDE or Qt equivalents... 
 <b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../avogadro/src/mainwindow.cpp: line#1421 getenv[qgetenv],1422 getenv[qgetenv] (2)
+<li>	../avogadro/src/mainwindow.cpp: line#1444 getenv[qgetenv],1445 getenv[qgetenv] (2)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Some system calls are not portable, please use the suggested
