@@ -153,4 +153,7 @@ TARGET_LINK_LIBRARIES(pythonextension
 	avogadro-lib
 )
 INSTALL(TARGETS pythonextension DESTINATION ${DESTINATION_DIR})
+
+FILE(GLOB python_SCRIPTS "python/*.py")
+INSTALL(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/scripts)
 endif(Boost_FOUND AND PYTHON_LIBRARIES)

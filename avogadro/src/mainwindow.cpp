@@ -1479,7 +1479,8 @@ namespace Avogadro
               }
               if ( !path ) {
                 // Gotta add a new root menu
-                path = menuBar()->addMenu( menuPath.at( 0 ) );
+                path = new QMenu(menuPath.at( 0 ));
+                menuBar()->insertMenu( ui.menuSettings->menuAction(), path);
               }
 
               // Now handle submenus

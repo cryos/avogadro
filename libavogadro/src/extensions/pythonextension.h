@@ -26,6 +26,7 @@
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
+#include <avogadro/boost.h>
 #include <avogadro/pythoninterpreter.h>
 
 #include "ui_pythonterminalwidget.h"
@@ -33,10 +34,31 @@
 #include <QWidget>
 #include <QLineEdit>
 #include <QList>
+#include <QDir>
 #include <QString>
+#include <QDateTime>
+#include <QFileInfo>
 
 class QDockWidget;
 namespace Avogadro {
+
+  class PythonScript
+  {
+    public:
+      PythonScript(QDir dir, QString fileName);
+
+      QString moduleName() const;
+      object module() const;
+
+    private:
+      QString m_moduleName;
+      QString m_fileName;
+      QDir m_dir;
+      mutable QDateTime m_lastModified;
+      mutable QFileInfo m_fileInfo;
+      mutable object m_module;
+  };
+
 
   class PythonTerminalWidget;
   class PythonExtension : public Extension
@@ -62,11 +84,14 @@ namespace Avogadro {
 
     private:
       QList<QAction *> m_actions;
+      QList<PythonScript> m_scripts;
 
       QDockWidget *m_terminalDock;
       PythonTerminalWidget *m_terminalWidget;
 
       PythonInterpreter m_interpreter;
+
+      void loadScripts(QDir dir);
 
     private Q_SLOTS:
       void runCommand();

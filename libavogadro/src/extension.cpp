@@ -51,6 +51,15 @@ namespace Avogadro {
     Q_UNUSED(molecule);
   }
 
+  void Extension::writeSettings(QSettings &settings) const
+  {
+    Q_UNUSED(settings);
+  }
+
+  void Extension::readSettings(QSettings &settings)
+  {
+    Q_UNUSED(settings);
+  }
 }
 
 #include "extension.moc"

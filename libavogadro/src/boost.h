@@ -1,3 +1,6 @@
+#ifndef __BOOST_H
+#define __BOOST_H
+
 #include <Python.h>
 #include <boost/python.hpp>
 #include <avogadro/primitive.h>
@@ -25,3 +28,5 @@ BOOST_PYTHON_MODULE(Avogadro) {
     .def("GetAtom", &Molecule::GetAtom, return_value_policy<reference_existing_object>()) //, return_internal_reference<1> >())
     .def("farthestAtom",&Molecule::farthestAtom, return_value_policy<reference_existing_object>() );
 }
+
+#endif

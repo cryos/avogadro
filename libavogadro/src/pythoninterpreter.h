@@ -26,6 +26,7 @@
 #ifndef __PYTHON_H
 #define __PYTHON_H
 
+#include <avogadro/boost.h>
 #include <avogadro/primitive.h>
 #include <QString>
 
@@ -62,13 +63,22 @@ namespace Avogadro {
        */
       void setMolecule(Molecule *molecule);
 
+      void addSearchPath(const QString &path);
+
       /**
        * @param command string containing the python command to perform on the interpreter
        */
-      QString run(const QString &command);
+      QString exec(const QString &command);
+
+      QString exec(const QString &command, object local);
+
+      QString eval(const QString &string, object local);
 
     private:
       PythonInterpreterPrivate *const d;
+
+      object execWrapper(const QString &command, object main, object local);
+      object evalWrapper(const QString &string, object main, object local);
   };
 
 }

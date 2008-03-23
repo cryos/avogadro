@@ -28,6 +28,7 @@
 #include <avogadro/glwidget.h>
 
 #include <QVector>
+#include <QSettings>
 
 class QDockWidget;
 class QUndoCommand;
@@ -94,6 +95,18 @@ namespace Avogadro {
      * @return an undo command for this action
      */
     virtual QUndoCommand* performAction(QAction *action, GLWidget *widget) = 0;
+
+    /**
+     * save settings for this extension
+     * @param settings settings variable to write settings to
+     */
+    virtual void writeSettings(QSettings &settings) const;
+
+    /**
+     * read settings for this extension
+     * @param settings settings variable to read settings from
+     */
+    virtual void readSettings(QSettings &settings);
 
   public Q_SLOTS:
     virtual void setMolecule(Molecule *m);

@@ -1,3 +1,17 @@
+2008-03-23  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* avogadro/src/mainwindow.cpp: when extensions reqest a new menu item they
+	are put in before the settings menu.
+
+	* libavogadro/src/extensions/pythonextension.*: the python extension now
+	searches $prefix/share/libavogadro-VERSION/scripts and
+	$HOME/.avogadro/scripts for python scripts to load.  There are some
+	examples in the libavogadro/src/extensions/python/ directory.
+
+	* libavogadro/src/pythoninterpreter.*: made some fixes and updates to the
+	python interpreter to allow evaluation and execution easier with custom
+	local namespaces.
+
 2008-03-22  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* avogadro/src/mainwindow.cpp: fixed bug with dock window loading being
