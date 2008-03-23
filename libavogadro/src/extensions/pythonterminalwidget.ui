@@ -28,15 +28,6 @@
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QLineEdit" name="inputLine" >
-     <property name="font" >
-      <font>
-       <family>DejaVu Sans Mono</family>
-      </font>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <resources/>

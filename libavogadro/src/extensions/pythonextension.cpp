@@ -23,6 +23,7 @@
 
 #include <QDockWidget>
 
+#include <QDebug>
 using namespace std;
 using namespace OpenBabel;
 
@@ -57,7 +58,7 @@ namespace Avogadro
       m_terminalDock->setWidget(m_terminalWidget);
       m_terminalDock->setObjectName( tr("pythonTerminalDock") );
 
-      connect(m_terminalWidget->ui.inputLine, SIGNAL(returnPressed()), this, SLOT(runCommand()));
+      connect(m_terminalWidget->inputLine, SIGNAL(returnPressed()), this, SLOT(runCommand()));
     }
 
     return m_terminalDock;
@@ -70,7 +71,7 @@ namespace Avogadro
 
   void PythonExtension::runCommand()
   {
-    QString text = m_terminalWidget->ui.inputLine->text();
+    QString text = m_terminalWidget->inputLine->text();
     if(!text.isEmpty())
     {
       m_terminalWidget->ui.outputText->append(">>> " + text);
@@ -78,6 +79,7 @@ namespace Avogadro
       if(!result.isEmpty()) {
         m_terminalWidget->ui.outputText->append(result);
       }
+      m_terminalWidget->inputLine->clear();
     }
   }
 
@@ -91,6 +93,79 @@ namespace Avogadro
   PythonTerminalWidget::PythonTerminalWidget( QWidget *parent ) : QWidget(parent)
   {
     ui.setupUi(this);
+    QFont font;
+    font.setFamily(QString::fromUtf8("DejaVu Sans Mono"));
+    inputLine = new PythonTerminalLineEdit(this);
+    inputLine->setObjectName(QString::fromUtf8("inputLine"));
+    inputLine->setFont(font);
+    layout()->addWidget(inputLine);
+
+  }
+
+  PythonTerminalLineEdit::PythonTerminalLineEdit(QWidget *parent ) : QLineEdit(parent), m_current(0)
+  {
+  }
+
+  void PythonTerminalLineEdit::keyPressEvent ( QKeyEvent * event )
+  {
+    if(event->key() == Qt::Key_Up)
+    {
+      if(m_commandStack.size())
+      {
+        m_current--;
+        if(m_current < 0) {
+          m_current = m_commandStack.size();
+        }
+
+        if(m_current == m_commandStack.size())
+        {
+          clear();
+        }
+        else
+        {
+          setText(m_commandStack.at(m_current));
+        }
+
+      }
+      event->accept();
+    }
+    else if(event->key() == Qt::Key_Down)
+    {
+      if(m_commandStack.size())
+      {
+        m_current++;
+        if(m_current > m_commandStack.size()) {
+          m_current = 0;
+        }
+
+        if(m_current == m_commandStack.size())
+        {
+          clear();
+        }
+        else
+        {
+          setText(m_commandStack.at(m_current));
+        }
+
+      }
+      event->accept();
+    }
+    else if(event->key() == Qt::Key_Return)
+    {
+      QString t = text();
+      if(!t.isEmpty())
+      {
+        m_commandStack.append(text());
+        // this limits how many commands we save
+        if(m_commandStack.size() > 100)
+        {
+          m_commandStack.removeFirst();
+        }
+      }
+      m_current = m_commandStack.size();
+      event->accept();
+    }
+    QLineEdit::keyPressEvent(event);
   }
 }
 

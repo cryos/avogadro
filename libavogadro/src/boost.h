@@ -2,13 +2,17 @@
 #include <boost/python.hpp>
 #include <avogadro/primitive.h>
 
+#include <openbabel/mol.h>
+#include <openbabel/atom.h>
+
 using namespace boost::python;
 
 using namespace Avogadro;
 using namespace OpenBabel;
 
 BOOST_PYTHON_MODULE(Avogadro) {
-  class_<Avogadro::Atom, boost::noncopyable>("Atom")
+  class_<OpenBabel::OBAtom>("OBAtom");
+  class_<Avogadro::Atom, bases<OpenBabel::OBAtom>, boost::noncopyable>("Atom")
     .def("GetIdx", &OBAtom::GetIdx)
     .def("GetX", &OBAtom::GetX)
     .def("GetY", &OBAtom::GetY)
@@ -18,6 +22,6 @@ BOOST_PYTHON_MODULE(Avogadro) {
     .def("NumAtoms", &OBMol::NumAtoms)
     .def("NumBonds", &OBMol::NumBonds)
     .def("DeleteAtom", &OBMol::DeleteAtom)
-    .def("GetAtom", &OBMol::GetAtom, return_internal_reference<1>())
-    .def("farthestAtom",&Molecule::farthestAtom, return_internal_reference<1>() );
+    .def("GetAtom", &Molecule::GetAtom, return_value_policy<reference_existing_object>()) //, return_internal_reference<1> >())
+    .def("farthestAtom",&Molecule::farthestAtom, return_value_policy<reference_existing_object>() );
 }

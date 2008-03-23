@@ -31,6 +31,9 @@
 #include "ui_pythonterminalwidget.h"
 
 #include <QWidget>
+#include <QLineEdit>
+#include <QList>
+#include <QString>
 
 class QDockWidget;
 namespace Avogadro {
@@ -79,6 +82,20 @@ namespace Avogadro {
       Extension *createInstance(QObject *parent = 0) { return new PythonExtension(parent); }
   };
 
+  class PythonTerminalLineEdit : public QLineEdit
+  {
+    Q_OBJECT;
+
+    public:
+    PythonTerminalLineEdit(QWidget *parent = 0);
+    virtual void keyPressEvent ( QKeyEvent * event );
+
+    private:
+      QList<QString> m_commandStack;
+      int m_current;
+
+  };
+
   class PythonTerminalWidget : public QWidget
   {
     Q_OBJECT
@@ -86,6 +103,7 @@ namespace Avogadro {
     public:
       PythonTerminalWidget( QWidget *parent = 0 );
       Ui::PythonTerminalWidget ui;
+      PythonTerminalLineEdit * inputLine;
   };
 
 } // end namespace Avogadro
