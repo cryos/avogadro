@@ -46,13 +46,10 @@ namespace Avogadro {
     return 0; 
   }
 
-<<<<<<< HEAD:libavogadro/src/extension.cpp
   void Extension::setMolecule(Molecule *molecule)
   {
     Q_UNUSED(molecule);
   }
-=======
->>>>>>> Move extensions to libavogadro:libavogadro/src/extension.cpp
 
 }
 

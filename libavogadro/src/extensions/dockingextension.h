@@ -1,5 +1,3 @@
-#ifndef DOCKINGEXTENSION_H
-#define DOCKINGEXTENSION_H
 /**********************************************************************
   dockingextension.h - Docking plugin for Avogadro
 
@@ -21,6 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#ifndef DOCKINGEXTENSION_H
+#define DOCKINGEXTENSION_H
 
 #include "liganddialog.h"
 #include "pocketdialog.h"
@@ -68,14 +68,14 @@ namespace Avogadro {
 
       //! Perform Action
       virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
-                                          GLWidget *widget, QTextEdit *textEdit);
+      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
       //@}
 
       //! Select the atoms from m_ligand
       void selectLigand();
       //! Select the atoms from m_pocket
       void selectPocket();
+
     private:
       OpenBabel::OBDock* m_dock;
       QList<QAction *> m_actions;
