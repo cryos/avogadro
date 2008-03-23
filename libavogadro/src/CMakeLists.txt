@@ -21,11 +21,10 @@ include_directories(
 FILE(GLOB libavogadro_SRCS "*.cpp")
 FILE(GLOB libavogadro_HDRS "*.h")
 
-if(NOT Boost_FOUND AND NOT PYTHON_LIBRARIES)
-  LIST(REMOVE_ITEM libavogadro_SRCS pythoninterpreter.cpp)
-  LIST(REMOVE_ITEM libavogadro_HDRS pythoninterpreter.h)
-endif(NOT Boost_FOUND AND NOT PYTHON_LIBRARIES)
-
+if(NOT Boost_FOUND OR NOT PYTHON_LIBRARIES)
+  LIST(REMOVE_ITEM libavogadro_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp)
+  LIST(REMOVE_ITEM libavogadro_HDRS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.h)
+endif(NOT Boost_FOUND OR NOT PYTHON_LIBRARIES)
 
 qt4_automoc(${libavogadro_SRCS})
 
