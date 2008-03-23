@@ -54,15 +54,13 @@ namespace Avogadro {
       virtual QString description() const { return QObject::tr("Hydrogens Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
+                                          GLWidget *widget, QTextEdit *messages=NULL);
       virtual QString menuPath(QAction *action) const;
       //@}
 
-      void setMolecule(Molecule *molecule);
-
     private:
       QList<QAction *> m_actions;
-      Molecule *m_molecule;
   };
 
   class HydrogensExtensionFactory : public QObject, public ExtensionFactory

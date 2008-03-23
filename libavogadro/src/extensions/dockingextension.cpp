@@ -129,7 +129,8 @@ namespace Avogadro
     return QString();
   }
 
-  QUndoCommand* DockingExtension::performAction( QAction *action, GLWidget *widget)
+  QUndoCommand* DockingExtension::performAction( QAction *action, Molecule *molecule,
+                                                 GLWidget *widget, QTextEdit * )
   {
     QUndoCommand *undo = NULL;
     QList<Primitive *> selectedAtoms;

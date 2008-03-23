@@ -93,12 +93,21 @@ namespace Avogadro {
      * feedback to the user)
      * @return an undo command for this action
      */
+<<<<<<< HEAD:libavogadro/src/extension.h
     virtual QUndoCommand* performAction(QAction *action, GLWidget *widget) = 0;
+=======
+    virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
+        GLWidget *widget, QTextEdit *messages = NULL) = 0;
+>>>>>>> Move extensions to libavogadro:libavogadro/src/extension.h
 
+<<<<<<< HEAD:libavogadro/src/extension.h
   public Q_SLOTS:
     virtual void setMolecule(Molecule *m);
 
   Q_SIGNALS:
+=======
+Q_SIGNALS:
+>>>>>>> Move extensions to libavogadro:libavogadro/src/extension.h
     /**
      * Can be used to add messages to the message pane.
      * @param m the message to add to the message pane.

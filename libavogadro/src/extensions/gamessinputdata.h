@@ -831,7 +831,7 @@ namespace Avogadro {
        * Remove all groups which contain the atom parameter
        * @param atom pointer to the atom
        */
-      void RemoveGroups(Atom *atom = 0);
+      void RemoveGroups(Atom *atom);
 
       /**
        * @return total group count (QM + EFP)

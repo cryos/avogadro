@@ -54,12 +54,12 @@ namespace Avogadro {
     virtual QString description() const { return QObject::tr("Unit Cell Parameters Plugin"); };
     //! Perform Action
     virtual QList<QAction *> actions() const;
-    virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
+    virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
+                                        GLWidget *widget, QTextEdit *messages=NULL);
     virtual QString menuPath(QAction *action) const;
-    virtual void setMolecule(Molecule *molecule);
     //@}
 
-  public Q_SLOTS:
+  public slots:
     void unitCellDisplayChanged(int a, int b, int c);
     void unitCellParametersChanged(double a, double b, double c,
                                      double alpha, double beta, double gamma);

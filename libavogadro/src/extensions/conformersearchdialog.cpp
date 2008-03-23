@@ -118,7 +118,7 @@ namespace Avogadro {
     }
   }
  
-  void ConformerSearchDialog::showEvent(QShowEvent *)
+  void ConformerSearchDialog::showEvent(QShowEvent *event)
   {
     OpenBabel::OBRotorList rl;
     rl.Setup((OpenBabel::OBMol&)*m_molecule);
@@ -133,12 +133,12 @@ namespace Avogadro {
   }
   
    QUndoCommand* ConformerSearchDialog::setup(Molecule *molecule, OpenBabel::OBForceField* forceField, 
-      ConstraintsModel* constraints, int forceFieldID, 
+      ConstraintsModel* constraints, QTextEdit *textEdit, int forceFieldID, 
       int nSteps, int algorithm, int gradients, int convergence)
   {
     m_molecule = molecule;
     
-    m_forceFieldCommand = new ForceFieldCommand( m_molecule, forceField, constraints, 
+    m_forceFieldCommand = new ForceFieldCommand( m_molecule, forceField, constraints, textEdit, 
         forceFieldID, nSteps, algorithm, gradients, convergence, 0 );
 
     return NULL;

@@ -67,10 +67,9 @@ namespace Avogadro {
 
       //! Perform Action
       virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
+                                          GLWidget *widget, QTextEdit *textEdit);
       //@}
-
-      void setMolecule(Molecule *molecule);
 
     private:
       PropertiesModel* m_atomModel;
@@ -80,7 +79,6 @@ namespace Avogadro {
       PropertiesModel* m_cartesianModel;
       PropertiesModel* m_conformerModel;
       QList<QAction *> m_actions;
-      Molecule *m_molecule;
   };
 
   class PropertiesExtensionFactory : public QObject, public ExtensionFactory

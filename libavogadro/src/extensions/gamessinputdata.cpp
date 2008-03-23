@@ -311,12 +311,6 @@ void GamessEFPData::AddGroup( GamessEFPGroup *group )
 
 void GamessEFPData::RemoveGroups( Atom *atom )
 {
-  // clear if there are none
-  if(!atom)
-  {
-    m_groups.clear();
-  }
-
   std::vector<GamessEFPGroup *>::iterator iter;
   for ( iter = m_groups.begin(); iter != m_groups.end(); ) {
     if ( (*iter)->Contains(atom) ) {
@@ -1931,7 +1925,7 @@ void GamessGuessGroup::WriteToFile( ostream &File, GamessInputData *IData )
   char Out[GAMESS_BUFF_LEN];
 
   //   Frame * lFrame = MainData->GetCurrentFramePtr();
-  //first determine whether or not the Guess group needs to be punched
+  //first determine wether or not the Guess group needs to be punched
   if ( GetGuess() ) test = true;
   if ( GetPrintMO() ) test = true;
   if ( GetMix()&&IData->Control->GetMultiplicity()&&
@@ -2052,7 +2046,7 @@ void GamessSCFGroup::WriteToFile( ostream &File, GamessInputData *IData )
   long test=false;
   char Out[GAMESS_BUFF_LEN];
 
-  //first determine whether or not the SCF group needs to be punched
+  //first determine wether or not the SCF group needs to be punched
   if ( IData->Control->GetSCFType() > 4 ) return; //not relavent to the selected SCF type
   if ( ConvCriteria > 0 ) test = true;
   if ( GetDirectSCF() ) test = true;
@@ -2152,7 +2146,7 @@ void GamessMP2Group::WriteToFile( ostream &File, GamessInputData *IData )
   long test=false;
   char Out[GAMESS_BUFF_LEN];
 
-  //first determine whether or not the MP2 group needs to be punched
+  //first determine wether or not the MP2 group needs to be punched
   if ( IData->Control->GetMPLevel() != 2 ) return; //Don't punch if MP2 isn't active
   if ( NumCoreElectrons>=0||Memory||Method>2||AOInts ) test = true;
   if ( GetLMOMP2() ) test = true;
@@ -2213,7 +2207,7 @@ void GamessHessianGroup::WriteToFile( ostream &File, GamessInputData *IData )
   bool method=false;
   char Out[GAMESS_BUFF_LEN];
 
-  //first determine whether or not the hessian group needs to be punched
+  //first determine wether or not the hessian group needs to be punched
   //punch for hessians and optimize/sadpoint runs using Hess=Calc
   if ( IData->Control->GetRunType() == 3 ) method = true;
   else if (( IData->Control->GetRunType() == 4 )||( IData->Control->GetRunType() == 6 ) ) {
@@ -2279,7 +2273,7 @@ void GamessDFTGroup::WriteToFile( ostream &File, GamessInputData *IData )
   char Out[GAMESS_BUFF_LEN];
 
   short SCFType = IData->Control->GetSCFType();
-  //first determine whether or not the DFT group needs to be punched
+  //first determine wether or not the DFT group needs to be punched
   if (( SCFType > 3 )|| !IData->Control->UseDFT() ) return;//only punch for HF runtypes (RHF, ROHF, UHF)
   if ( MethodGrid() ) return; //Only need this group for gridfree method currently
   //Punch the group label
@@ -2427,7 +2421,7 @@ void GamessStatPtGroup::WriteToFile( ostream &File, GamessInputData *IData )
   char Out[GAMESS_BUFF_LEN];
 
   short runType = IData->Control->GetRunType();
-  //first determine whether or not the statpt group needs to be punched
+  //first determine wether or not the statpt group needs to be punched
   if (( runType != 4 )&&( runType != 6 ) ) return; //only punch for optimize and sadpoint runs
 
   //Punch the group label

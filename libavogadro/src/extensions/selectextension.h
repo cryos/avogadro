@@ -37,6 +37,9 @@ namespace Avogadro {
   {
     Q_OBJECT
     
+    public slots:
+      void selectElement(int element);
+    
     public:
       //! Constructor
       SelectExtension(QObject *parent=0);
@@ -51,13 +54,10 @@ namespace Avogadro {
       virtual QString description() const { return QObject::tr("Selection Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
+                                          GLWidget *widget, QTextEdit *messages=NULL);
       virtual QString menuPath(QAction *action) const;
-      virtual void setMolecule(Molecule *molecule);
       //@}
-
-    public Q_SLOTS:
-      void selectElement(int element);
 
     private:
       QList<QAction *> m_actions;
@@ -66,9 +66,9 @@ namespace Avogadro {
       PeriodicTableView *m_periodicTable;
 
       void invertSelection(GLWidget *widget);
-      void selectSMARTS(GLWidget *widget);
-      void selectResidue(GLWidget *widget);
-      void selectSolvent(GLWidget *widget);
+      void selectSMARTS(Molecule *molecule, GLWidget *widget);
+      void selectResidue(Molecule *molecule, GLWidget *widget);
+      void selectSolvent(Molecule *molecule, GLWidget *widget);
   };
 
   class SelectExtensionFactory : public QObject, public ExtensionFactory

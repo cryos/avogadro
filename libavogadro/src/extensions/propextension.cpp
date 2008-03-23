@@ -112,12 +112,8 @@ namespace Avogadro
     return QString();
   }
 
-  void PropertiesExtension::setMolecule(Molecule *molecule)
-  {
-    m_molecule = molecule;
-  }
-
-  QUndoCommand* PropertiesExtension::performAction( QAction *action, GLWidget *widget)
+  QUndoCommand* PropertiesExtension::performAction( QAction *action, Molecule *molecule,
+                                                    GLWidget *widget, QTextEdit *textEdit )
   {
     QUndoCommand *undo = NULL;
     PropertiesView *view = NULL;
@@ -127,11 +123,11 @@ namespace Avogadro
     switch ( i ) {
     case AtomPropIndex: // atom properties
       view = new PropertiesView(PropertiesView::AtomType);
-      m_atomModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_atomModel, SLOT( updateTable() ));
-      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), m_atomModel, SLOT( primitiveAdded(Primitive *) ));
-      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_atomModel, SLOT( primitiveRemoved(Primitive *) ));
-      view->setMolecule( m_molecule );
+      m_atomModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_atomModel, SLOT( updateTable() ));
+      connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_atomModel, SLOT( primitiveAdded(Primitive *) ));
+      connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_atomModel, SLOT( primitiveRemoved(Primitive *) ));
+      view->setMolecule( molecule );
       view->setWidget( widget );
       view->setModel( m_atomModel );
       view->resize(860, 400);
@@ -139,11 +135,11 @@ namespace Avogadro
       break;
     case BondPropIndex: // bond properties
       view = new PropertiesView(PropertiesView::BondType);
-      m_bondModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_bondModel, SLOT( updateTable() ));
-      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), m_bondModel, SLOT( primitiveAdded(Primitive *) ));
-      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_bondModel, SLOT( primitiveRemoved(Primitive *) ));
-      view->setMolecule( m_molecule );
+      m_bondModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_bondModel, SLOT( updateTable() ));
+      connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_bondModel, SLOT( primitiveAdded(Primitive *) ));
+      connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_bondModel, SLOT( primitiveRemoved(Primitive *) ));
+      view->setMolecule( molecule );
       view->setWidget( widget );
       view->setModel( m_bondModel );
       view->resize(550, 400);
@@ -151,11 +147,11 @@ namespace Avogadro
       break;
     case AnglePropIndex: // angle properties
       view = new PropertiesView(PropertiesView::AngleType);
-      m_angleModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_angleModel, SLOT( updateTable() ));
-      //connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), m_angleModel, SLOT( primitiveAdded(Primitive *) ));
-      //connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_angleModel, SLOT( primitiveRemoved(Primitive *) ));
-      view->setMolecule( m_molecule );
+      m_angleModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_angleModel, SLOT( updateTable() ));
+      //connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_angleModel, SLOT( primitiveAdded(Primitive *) ));
+      //connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_angleModel, SLOT( primitiveRemoved(Primitive *) ));
+      view->setMolecule( molecule );
       view->setWidget( widget );
       view->setModel( m_angleModel );
       view->resize(550, 400);
@@ -163,11 +159,11 @@ namespace Avogadro
       break;
     case TorsionPropIndex: // torsion properties
       view = new PropertiesView(PropertiesView::TorsionType);
-      m_torsionModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_torsionModel, SLOT( updateTable() ));
-      //connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), m_torsionModel, SLOT( primitiveAdded(Primitive *) ));
-      //connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_torsionModel, SLOT( primitiveRemoved(Primitive *) ));
-      view->setMolecule( m_molecule );
+      m_torsionModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_torsionModel, SLOT( updateTable() ));
+      //connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_torsionModel, SLOT( primitiveAdded(Primitive *) ));
+      //connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_torsionModel, SLOT( primitiveRemoved(Primitive *) ));
+      view->setMolecule( molecule );
       view->setWidget( widget );
       view->setModel( m_torsionModel );
       view->resize(550, 400);
@@ -175,11 +171,11 @@ namespace Avogadro
       break;
     case CartesianIndex: // cartesian editor
       view = new PropertiesView(PropertiesView::CartesianType);
-      m_cartesianModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_cartesianModel, SLOT( updateTable() ));
-      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), m_cartesianModel, SLOT( primitiveAdded(Primitive *) ));
-      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_cartesianModel, SLOT( primitiveRemoved(Primitive *) ));
-      view->setMolecule( m_molecule );
+      m_cartesianModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_cartesianModel, SLOT( updateTable() ));
+      connect(molecule, SIGNAL( primitiveAdded(Primitive *) ), m_cartesianModel, SLOT( primitiveAdded(Primitive *) ));
+      connect(molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_cartesianModel, SLOT( primitiveRemoved(Primitive *) ));
+      view->setMolecule( molecule );
       view->setWidget( widget );
       view->setModel( m_cartesianModel );
       view->resize(360, 400);
@@ -188,9 +184,9 @@ namespace Avogadro
     case ConformerIndex: // conformers
       view = new PropertiesView(PropertiesView::ConformerType);
       m_conformerModel = new PropertiesModel(PropertiesModel::ConformerType);
-      m_conformerModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_conformerModel, SLOT( updateTable() ));
-      view->setMolecule( m_molecule );
+      m_conformerModel->setMolecule( molecule );
+      connect(molecule, SIGNAL( updated() ), m_conformerModel, SLOT( updateTable() ));
+      view->setMolecule( molecule );
       view->setWidget( widget );
       view->setModel( m_conformerModel );
       view->resize(180, 500);

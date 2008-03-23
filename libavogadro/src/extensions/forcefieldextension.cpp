@@ -49,7 +49,7 @@ namespace Avogadro
       SeparatorIndex
     };
 
-  ForceFieldExtension::ForceFieldExtension( QObject *parent ) : Extension( parent ), m_molecule(0)
+  ForceFieldExtension::ForceFieldExtension( QObject *parent ) : Extension( parent )
   {
     QAction *action;
     // If you change this, see forcefielddialog.cpp, where we need to set the popup menu
@@ -132,14 +132,10 @@ namespace Avogadro
     return tr("&Extensions") + ">" + tr("&Molecular Mechanics");
   }
 
-  void ForceFieldExtension::setMolecule(Molecule *molecule)
+  QUndoCommand* ForceFieldExtension::performAction( QAction *action, Molecule *molecule,
+                                                    GLWidget *widget, QTextEdit *textEdit )
   {
-    m_molecule = molecule;
-  }
-
-  QUndoCommand* ForceFieldExtension::performAction( QAction *action, GLWidget *widget)
-  {
-    ForceFieldCommand *undo = NULL;
+    QUndoCommand *undo = NULL;
     OpenBabel::OBForceField *copyForceField = NULL;
     QList<Primitive*> selectedAtoms;
     ostringstream buff;
@@ -163,19 +159,19 @@ namespace Avogadro
       m_forceField->SetLogFile( &buff );
       m_forceField->SetLogLevel( OBFF_LOGLVL_HIGH );
 
-      if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
-        qDebug() << "Could not set up force field on " << m_molecule;
+      if ( !m_forceField->Setup( *molecule, m_constraints->constraints() ) ) {
+        qDebug() << "Could not set up force field on " << molecule;
         break;
       }
 
       m_forceField->Energy();
-      emit message( tr( buff.str().c_str() ) );
+      textEdit->append( tr( buff.str().c_str() ) );
       break;
     case ConformerSearchIndex: // conformer search
       if (!m_forceField)
         break;
 
-      m_conformerDialog->setup(m_molecule, m_forceField, m_constraints, 
+      m_conformerDialog->setup(molecule, m_forceField, m_constraints, textEdit,
                                0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence());
       m_conformerDialog->show();
       break;
@@ -183,16 +179,14 @@ namespace Avogadro
       if (!m_forceField)
         break;
 
-      undo = new ForceFieldCommand( m_molecule, m_forceField, m_constraints, 
+      undo = new ForceFieldCommand( molecule, m_forceField, m_constraints, textEdit,
                                     0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(),
                                     m_Dialog->convergence(), 0 );
-
-      connect(undo, SIGNAL(message(QString)), this, SIGNAL(message(QString)));
 
       undo->setText( QObject::tr( "Geometric Optimization" ) );
       break;
     case ConstraintsIndex: // show constraints dialog
-      m_ConstraintsDialog->setMolecule(m_molecule);
+      m_ConstraintsDialog->setMolecule(molecule);
       m_ConstraintsDialog->setForceField(m_forceField);
       m_ConstraintsDialog->show();
       break;
@@ -243,7 +237,7 @@ namespace Avogadro
   }
 
   ForceFieldThread::ForceFieldThread( Molecule *molecule, OpenBabel::OBForceField* forceField,
-                                      ConstraintsModel* constraints, int forceFieldID,
+                                      ConstraintsModel* constraints, QTextEdit *textEdit, int forceFieldID,
                                       int nSteps, int algorithm, int gradients, int convergence, int task,
                                       QObject *parent ) : QThread( parent )
   {
@@ -251,6 +245,7 @@ namespace Avogadro
     m_molecule = molecule;
     m_constraints = constraints;
     m_forceField = forceField;
+    m_textEdit = textEdit;
     m_forceFieldID = forceFieldID;
     m_nSteps = nSteps;
     m_algorithm = algorithm;
@@ -371,7 +366,7 @@ namespace Avogadro
     m_forceField->GetConformers( *m_molecule );
     m_molecule->update();
 
-    emit message( QObject::tr( buff.str().c_str() ) );
+    m_textEdit->append( QObject::tr( buff.str().c_str() ) );
     m_stop = false;
   }
 
@@ -382,22 +377,21 @@ namespace Avogadro
   }
 
   ForceFieldCommand::ForceFieldCommand( Molecule *molecule, OpenBabel::OBForceField* forceField,
-                                        ConstraintsModel* constraints, 
+                                        ConstraintsModel* constraints, QTextEdit *textEdit,
                                         int forceFieldID, int nSteps, int algorithm, int gradients,
                                         int convergence, int task ) :
     m_nSteps( nSteps ),
     m_task( task ),
     m_molecule( molecule ),
     m_constraints( constraints ),
+    m_textEdit( textEdit ),
     m_thread( 0 ),
     m_dialog( 0 ),
     m_detached( false )
   {
     m_thread = new ForceFieldThread( molecule, forceField, constraints,
-                                     forceFieldID, nSteps, algorithm,
+                                     textEdit, forceFieldID, nSteps, algorithm,
                                      gradients, convergence, task );
-
-    connect(m_thread, SIGNAL(message(QString)), this, SIGNAL(message(QString)));
 
     m_moleculeCopy = *molecule;
   }
@@ -459,6 +453,7 @@ namespace Avogadro
     m_thread->stop();
     m_thread->wait();
 
+    m_textEdit->undo();
     *m_molecule = m_moleculeCopy;
     m_molecule->update();
   }

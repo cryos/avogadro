@@ -67,11 +67,9 @@ namespace Avogadro {
       //! GAMESS Dock Widget
       virtual QDockWidget * dockWidget();
 
-      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
-
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
+          GLWidget *widget, QTextEdit *messages=NULL);
       //@}
-
-      void setMolecule(Molecule *molecule);
 
     private:
       GamessInputDialog *m_inputDialog;
@@ -82,8 +80,6 @@ namespace Avogadro {
       QPushButton *m_efpButton;
 
       QStandardItemModel *m_efpModel;
-
-      Molecule *m_molecule;
 
       GamessEfpMatchDialog *m_efpDialog;
       GamessEfpMatchDialog *m_qmDialog;

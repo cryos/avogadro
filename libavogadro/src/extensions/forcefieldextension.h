@@ -50,7 +50,7 @@ namespace Avogadro {
 
  class ForceFieldExtension : public Extension
   {
-    Q_OBJECT;
+    Q_OBJECT
 
     public:
       //! Constructor
@@ -70,10 +70,9 @@ namespace Avogadro {
 
       //! Perform Action
       virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
+      virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
+                                          GLWidget *widget, QTextEdit *textEdit);
       //@}
-
-      void setMolecule(Molecule *molecule);
 
     private:
       OpenBabel::OBForceField* m_forceField;
@@ -84,7 +83,6 @@ namespace Avogadro {
       ConstraintsDialog *m_ConstraintsDialog;
 
       std::vector<std::string> m_forcefieldList;
-      Molecule *m_molecule;
   };
 
   class ForceFieldExtensionFactory : public QObject, public ExtensionFactory
@@ -102,7 +100,8 @@ namespace Avogadro {
 
     public:
     ForceFieldThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
-        ConstraintsModel* constraints, int forceFieldID, int nSteps, int algorithm, int gradients,
+        ConstraintsModel* constraints, QTextEdit *textEdit,
+	int forceFieldID, int nSteps, int algorithm, int gradients,
 	int convergence, int task, QObject *parent=0);
 
       void run();
@@ -112,7 +111,6 @@ namespace Avogadro {
 
     Q_SIGNALS:
       void stepsTaken(int steps);
-      void message(const QString &m);
 
     public Q_SLOTS:
       void stop();
@@ -120,6 +118,7 @@ namespace Avogadro {
     private:
       Molecule *m_molecule;
       ConstraintsModel* m_constraints;
+      QTextEdit *m_textEdit;
 
       QMutex m_mutex;
 
@@ -140,13 +139,11 @@ namespace Avogadro {
       bool m_stop;
   };
 
- class ForceFieldCommand : public QObject, public QUndoCommand
+ class ForceFieldCommand : public QUndoCommand
  {
-   Q_OBJECT;
-
    public:
      ForceFieldCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield,
-         ConstraintsModel* constraints, int forceFieldID,
+         ConstraintsModel* constraints, QTextEdit *messages, int forceFieldID,
 	 int nSteps, int algorithm, int gradients, int convergence, int task);
 
      ~ForceFieldCommand();
@@ -164,9 +161,6 @@ namespace Avogadro {
      ForceFieldThread *thread() const;
      QProgressDialog *progressDialog() const;
 
-   Q_SIGNALS:
-     void message(const QString &m);
-
    private:
      Molecule m_moleculeCopy;
 
@@ -175,6 +169,7 @@ namespace Avogadro {
      int m_numConformers;
      Molecule *m_molecule;
      ConstraintsModel* m_constraints;
+     QTextEdit *m_textEdit;
 
      ForceFieldThread *m_thread;
      QProgressDialog *m_dialog;

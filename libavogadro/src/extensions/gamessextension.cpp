@@ -52,7 +52,7 @@ namespace Avogadro
   };
 
   GamessExtension::GamessExtension( QObject *parent ) : Extension( parent ), m_inputDialog( NULL ), m_inputData( new GamessInputData() ), m_gamessEfpDock( 0 ),
-      m_efpModel( new QStandardItemModel() ), m_molecule(0),
+      m_efpModel( new QStandardItemModel() ),
       m_efpDialog( 0 ), m_qmDialog( 0 )
   {
     QAction *action = new QAction( this );
@@ -131,26 +131,17 @@ namespace Avogadro
     m_efpView = 0;
   }
 
-  void GamessExtension::setMolecule(Molecule *molecule)
-  {
-    m_molecule = molecule;
-
-    // clear the EFP data
-    m_inputData->EFP->RemoveGroups();
-    m_inputData->SetMolecule( molecule );
-
-    connect(molecule, SIGNAL(primitiveRemoved(Primitive *)),
-            this, SLOT(removePrimitive(Primitive *)));
-  }
-
-
-  QUndoCommand* GamessExtension::performAction( QAction *action, GLWidget *widget)
+  QUndoCommand* GamessExtension::performAction( QAction *action, Molecule *molecule, GLWidget *widget, QTextEdit * )
   {
 
     int i = action->data().toInt();
 
+    connect(molecule, SIGNAL(primitiveRemoved(Primitive *)),
+            this, SLOT(removePrimitive(Primitive *)));
+
     switch ( i ) {
       case InputDeckAction:
+          m_inputData->SetMolecule( molecule );
         if ( !m_inputDialog ) {
           m_inputDialog = new GamessInputDialog( m_inputData );
           m_inputDialog->show();
@@ -161,10 +152,10 @@ namespace Avogadro
         break;
       case EFPAction:
         if ( !m_efpDialog ) {
-          m_efpDialog = matchesDialog( m_molecule, widget, GamessEfpMatchDialog::EFPType );
+          m_efpDialog = matchesDialog( molecule, widget, GamessEfpMatchDialog::EFPType );
           m_widgetSelected.insert( widget, widget->selectedPrimitives() );
           m_dialogWidgets.insert( m_efpDialog, widget );
-          m_dialogMolecules.insert( m_efpDialog, m_molecule );
+          m_dialogMolecules.insert( m_efpDialog, molecule );
         } else {
           m_efpDialog->show();
           m_efpDialog->raise();
@@ -172,10 +163,10 @@ namespace Avogadro
         break;
       case QMAction:
         if ( !m_qmDialog ) {
-          m_qmDialog = matchesDialog( m_molecule, widget, GamessEfpMatchDialog::QMType );
+          m_qmDialog = matchesDialog( molecule, widget, GamessEfpMatchDialog::QMType );
           m_widgetSelected.insert( widget, widget->selectedPrimitives() );
           m_dialogWidgets.insert( m_qmDialog, widget );
-          m_dialogMolecules.insert( m_qmDialog, m_molecule );
+          m_dialogMolecules.insert( m_qmDialog, molecule );
         } else {
           m_qmDialog->show();
           m_qmDialog->raise();
