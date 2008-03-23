@@ -10,7 +10,8 @@ cmake_minimum_required(VERSION 2.4.5)
 ###########################################################
 if (CMAKE_COMPILER_IS_GNUCXX)
 	set ( CMAKE_C_FLAGS     "${CMAKE_C_FLAGS} -Wno-long-long -std=iso9899:1990 -Wundef -Wcast-align -Werror-implicit-function-declaration -Wchar-subscripts -Wall -W -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -fno-common")
-	set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-exceptions -fno-check-new -fno-common")
+#set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-exceptions -fno-check-new -fno-common")
+	set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-check-new -fno-common")
 	add_definitions (-D_BSD_SOURCE)
 endif (CMAKE_COMPILER_IS_GNUCXX)
 
@@ -28,6 +29,9 @@ find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Eigen REQUIRED) # find and setup Eigen
 find_package(Linguist REQUIRED) # find and setup Eigen
+
+find_package(Boost)
+find_package(PythonLibs)
 
 if(NOT LIB_INSTALL_DIR)
   set(LIB_INSTALL_DIR lib)

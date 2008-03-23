@@ -14,10 +14,18 @@ include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}/..
   ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN_INCLUDE_DIR}
+  ${BOOST_INCLUDE_DIRS}
+  ${PYTHON_INCLUDE_PATH}
 )
 
 FILE(GLOB libavogadro_SRCS "*.cpp")
 FILE(GLOB libavogadro_HDRS "*.h")
+
+if(NOT Boost_FOUND AND NOT PYTHON_LIBRARIES)
+  LIST(REMOVE_ITEM libavogadro_SRCS pythoninterpreter.cpp)
+  LIST(REMOVE_ITEM libavogadro_HDRS pythoninterpreter.h)
+endif(NOT Boost_FOUND AND NOT PYTHON_LIBRARIES)
+
 
 qt4_automoc(${libavogadro_SRCS})
 
@@ -32,9 +40,17 @@ ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})
 SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 set_target_properties(avogadro-lib PROPERTIES VERSION ${VERSION} SOVERSION 0 )
 
+if(Boost_FOUND AND PYTHON_LIBRARIES)
 TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
-                                   ${OPENGL_LIBRARIES}
+                                   ${OPENGL_LIBRARIES} 
+                                   ${PYTHON_LIBRARIES}
+								   -lboost_python
     )
+else(Boost_FOUND AND PYTHON_LIBRARIES)
+TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                   ${OPENGL_LIBRARIES} 
+    )
+endif(Boost_FOUND AND PYTHON_LIBRARIES)
 
 INSTALL(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
 INSTALL(FILES ${libavogadro_HDRS} DESTINATION include/avogadro)

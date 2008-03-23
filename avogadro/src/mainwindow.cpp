@@ -248,6 +248,9 @@ namespace Avogadro
     }
 #endif
 
+    setCorner(Qt::BottomLeftCorner, Qt::LeftDockWidgetArea);
+    setCorner(Qt::BottomRightCorner, Qt::RightDockWidgetArea);
+
     connectUi();
 
     ui.projectDock->close();

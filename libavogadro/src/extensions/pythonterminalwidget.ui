@@ -1,0 +1,44 @@
+<ui version="4.0" >
+ <class>PythonTerminalWidget</class>
+ <widget class="QWidget" name="PythonTerminalWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>534</width>
+    <height>444</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Python Terminal</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <item>
+    <widget class="QTextEdit" name="outputText" >
+     <property name="font" >
+      <font>
+       <family>DejaVu Sans Mono</family>
+      </font>
+     </property>
+     <property name="lineWrapMode" >
+      <enum>QTextEdit::NoWrap</enum>
+     </property>
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="inputLine" >
+     <property name="font" >
+      <font>
+       <family>DejaVu Sans Mono</family>
+      </font>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

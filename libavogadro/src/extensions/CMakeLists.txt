@@ -15,8 +15,9 @@ include_directories(
 	${OPENBABEL2_INCLUDE_DIR}
 	${EIGEN_INCLUDE_DIR}
 	${AVOGADRO_INCLUDE_DIR}
+	${BOOST_INCLUDE_DIRS}
+	${PYTHON_INCLUDE_PATH}
 )
-
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
 ### gamess
@@ -139,4 +140,17 @@ INSTALL(TARGETS h2methylextension DESTINATION ${DESTINATION_DIR})
 #)
 #INSTALL(TARGETS wiitrackextension DESTINATION ${DESTINATION_DIR})
 
-
+if(Boost_FOUND AND PYTHON_LIBRARIES)
+### python extensions
+set(pythonextension_SRCS pythonextension.cpp)
+qt4_wrap_ui(pythonextension_UIS_H pythonterminalwidget.ui)
+qt4_automoc(${pythonextension_SRCS})
+ADD_LIBRARY(pythonextension SHARED ${pythonextension_SRCS} ${pythonextension_UIS_H})
+TARGET_LINK_LIBRARIES(pythonextension
+	${OPENBABEL2_LIBRARIES}
+	${QT_LIBRARIES}
+    ${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS pythonextension DESTINATION ${DESTINATION_DIR})
+endif(Boost_FOUND AND PYTHON_LIBRARIES)
