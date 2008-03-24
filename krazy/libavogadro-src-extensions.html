@@ -6,8 +6,8 @@
 <body>
 <h1>krazy Analysis</h1>
 <p>Checkers Run = 24<br>
-Files Processed = 40<br>
-Total Issues = 17 ...as of March 22 2008 12:46:17</p>
+Files Processed = 44<br>
+Total Issues = 26 ...as of March 24 2008 12:38:34</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -21,7 +21,7 @@ Total Issues = 17 ...as of March 22 2008 12:46:17</p>
 <li>Check for cpp macros and usage... 
 <b>okay!</b>
 <li>Check for single char QStrings better written as a QChar... 
-<b>OOPS! 5 issues found!</b>
+<b>OOPS! 7 issues found!</b>
 <ul>
 <li>	../libavogadro/src/extensions/dockingextension.cpp: line#124 (1)
 </li>
@@ -30,6 +30,8 @@ Total Issues = 17 ...as of March 22 2008 12:46:17</p>
 <li>	../libavogadro/src/extensions/gamessextension.cpp: line#91 (1)
 </li>
 <li>	../libavogadro/src/extensions/propextension.cpp: line#105 (1)
+</li>
+<li>	../libavogadro/src/extensions/templateextension.cpp: line#68,71 (2)
 </li>
 <li>	../libavogadro/src/extensions/wiitrackextension.cpp: line#84 (1)
 </li>
@@ -97,7 +99,16 @@ Total Issues = 17 ...as of March 22 2008 12:46:17</p>
 <li>Check for compares to QString::null... 
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
-<b>okay!</b>
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	../libavogadro/src/extensions/pythonextension.cpp: line#33[QString]
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
+	references-to-const instead. For example: &#39;func( QDateTime dt )&#39; is
+	better written as &#39;func( const QDateTime &amp;dt )&#39;</p>
+</li>
+
 <li>Check for invalid SIGNALs and SLOTs passed to connect()... 
 <b>okay!</b>
 <li>Check for Qt classes that should be avoided... 
@@ -109,8 +120,10 @@ Total Issues = 17 ...as of March 22 2008 12:46:17</p>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
-<b>OOPS! 1 issue found!</b>
+<b>OOPS! 7 issues found!</b>
 <ul>
+<li>	../libavogadro/src/extensions/gamessinputdata.cpp: line#1934[wether],2055[wether],2155[wether],2216[wether],2282[wether],2430[wether] (6)
+</li>
 <li>	../libavogadro/src/extensions/gamessinputdialog.h: line#89[propogate] (1)
 </li>
 </ul>
