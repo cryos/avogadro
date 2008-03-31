@@ -14,7 +14,7 @@ include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}/..
   ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN_INCLUDE_DIR}
-  ${BOOST_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS}
   ${PYTHON_INCLUDE_PATH}
 )
 
@@ -35,6 +35,11 @@ SET(libavogadro_TS
 )
 QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 
+# you have to add link_directories before you add the target
+if(Boost_FOUND AND PYTHON_LIBRARIES)
+	LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
+endif(Boost_FOUND AND PYTHON_LIBRARIES)
+
 ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})
 SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 set_target_properties(avogadro-lib PROPERTIES VERSION ${VERSION} SOVERSION 0 )
@@ -43,12 +48,12 @@ if(Boost_FOUND AND PYTHON_LIBRARIES)
 TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                    ${OPENGL_LIBRARIES} 
                                    ${PYTHON_LIBRARIES}
-								   -lboost_python
-    )
+								   boost_python
+)
 else(Boost_FOUND AND PYTHON_LIBRARIES)
 TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
                                    ${OPENGL_LIBRARIES} 
-    )
+)
 endif(Boost_FOUND AND PYTHON_LIBRARIES)
 
 INSTALL(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
