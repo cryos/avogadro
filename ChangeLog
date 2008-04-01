@@ -1,3 +1,8 @@
+2008-04-01  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/gamessinputdialog.cpp: Correct bug where
+	nd was also being used to set np in the basic tab.
+
 2008-03-23  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* avogadro/src/mainwindow.cpp: when extensions reqest a new menu item they

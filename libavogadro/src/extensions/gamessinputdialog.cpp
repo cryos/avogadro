@@ -1812,7 +1812,7 @@ namespace Avogadro {
     m_inputData->Basis->SetBasis( basis );
     m_inputData->Basis->SetNumGauss( gauss );
     m_inputData->Basis->SetNumDFuncs( nd );
-    m_inputData->Basis->SetNumPFuncs( nd );
+    m_inputData->Basis->SetNumPFuncs( np );
 
     m_inputData->Basis->SetDiffuseSP( dsp );
     m_inputData->Basis->SetDiffuseS( ds );
