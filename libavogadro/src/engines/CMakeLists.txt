@@ -153,3 +153,15 @@ TARGET_LINK_LIBRARIES(orbitalengine avogadro-lib
 )
 
 INSTALL(TARGETS orbitalengine DESTINATION ${DESTINATION_DIR})
+
+# Axes engine - display the axes
+set(axesengine_SRCS axesengine.cpp)
+#qt4_wrap_ui(axesengine_UIS axesettingswidget.ui)
+qt4_automoc(${axesengine_SRCS})
+ADD_LIBRARY(axesengine SHARED ${axesengine_SRCS})
+TARGET_LINK_LIBRARIES(axesengine avogadro-lib
+                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+                                ${OPENGL_LIBRARIES}
+)
+
+INSTALL(TARGETS axesengine DESTINATION ${DESTINATION_DIR})

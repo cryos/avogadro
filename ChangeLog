@@ -1,3 +1,9 @@
+2008-04-03  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/axesengine.*,
+	libavogadro/src/engines/CMakeLists.txt: Added new axes engine to
+	display the x, y, z axes in the display. More options soon.
+
 2008-04-01  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/gamessinputdialog.cpp: Correct bug where
