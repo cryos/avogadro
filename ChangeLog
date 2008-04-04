@@ -1,8 +1,17 @@
+2008-04-04  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/tools/aligntool.h,
+	libavogadro/src/tools/aligntool.cpp,
+	libavogadro/src/tools/aligntool.qrc,
+	libavogadro/src/tools/CMakeLists.txt: Added new align tool. Currently
+	it just aligns the selected atom to the origin, if there are two
+	selected atoms they will be aligned along the chosen axis.
+
 2008-04-03  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engines/axesengine.*,
 	libavogadro/src/engines/CMakeLists.txt: Added new axes engine to
-	display the x, y, z axes in the display. More options soon.
+	display the x, y, z axes in the scene. More options soon.
 
 2008-04-01  Marcus D. Hanwell  <marcus@cryos.org>
 

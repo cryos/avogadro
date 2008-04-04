@@ -60,7 +60,7 @@ INSTALL(TARGETS bondcentrictool DESTINATION ${DESTINATION_DIR})
 set(clickmeasuretool_SRCS clickmeasuretool.cpp)
 qt4_add_resources(clickmeasuretool_RC_SRCS clickmeasuretool.qrc)
 qt4_automoc(${clickmeasuretool_SRCS})
-ADD_LIBRARY(clickmeasuretool SHARED navigate.cpp 
+ADD_LIBRARY(clickmeasuretool SHARED navigate.cpp
     ${clickmeasuretool_SRCS} ${clickmeasuretool_RC_SRCS} )
 TARGET_LINK_LIBRARIES(clickmeasuretool
     ${OPENBABEL2_LIBRARIES}
@@ -137,3 +137,16 @@ TARGET_LINK_LIBRARIES(autorotatetool
 	avogadro-lib
 )
 INSTALL(TARGETS autorotatetool DESTINATION ${DESTINATION_DIR})
+
+### aligntool
+set(aligntool_SRCS aligntool.cpp)
+qt4_add_resources(aligntool_RC_SRCS aligntool.qrc)
+qt4_automoc(${aligntool_SRCS})
+ADD_LIBRARY(aligntool SHARED ${aligntool_SRCS} ${aligntool_RC_SRCS})
+TARGET_LINK_LIBRARIES(aligntool
+  ${OPENBABEL2_LIBRARIES}
+  ${QT_LIBRARIES}
+  ${OPENGL_LIBRARIES}
+  avogadro-lib
+)
+INSTALL(TARGETS aligntool DESTINATION ${DESTINATION_DIR})
