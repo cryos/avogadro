@@ -139,7 +139,7 @@ TARGET_LINK_LIBRARIES(autorotatetool
 INSTALL(TARGETS autorotatetool DESTINATION ${DESTINATION_DIR})
 
 ### aligntool
-set(aligntool_SRCS aligntool.cpp)
+set(aligntool_SRCS aligntool.cpp navigate.cpp)
 qt4_add_resources(aligntool_RC_SRCS aligntool.qrc)
 qt4_automoc(${aligntool_SRCS})
 ADD_LIBRARY(aligntool SHARED ${aligntool_SRCS} ${aligntool_RC_SRCS})
