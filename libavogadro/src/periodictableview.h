@@ -43,7 +43,7 @@ namespace Avogadro {
    * perdiodic table. It currently allows the setting of the proton number and
    * gets all other information from OpenBabel.
    */
-  class A_EXPORT ElementItem : public QObject, public QGraphicsItem
+  class ElementItem : public QObject, public QGraphicsItem
   {
     Q_OBJECT
 
@@ -101,7 +101,7 @@ namespace Avogadro {
    * gives greater detail about the selected element such as its full name,
    * proton number and average atomic mass.
    */
-  class A_EXPORT ElementDetail : public QObject, public QGraphicsItem
+  class ElementDetail : public QObject, public QGraphicsItem
   {
     Q_OBJECT
 
@@ -144,7 +144,7 @@ namespace Avogadro {
     int m_element;            // element number
   };
 
-  class A_EXPORT PeriodicTableScene : public QGraphicsScene
+  class PeriodicTableScene : public QGraphicsScene
   {
     Q_OBJECT
 

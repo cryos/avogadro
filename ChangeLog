@@ -1,5 +1,8 @@
 2008-04-06  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/periodictableview.h: Only export the
+	PeriodicTableView class.
+
 	* libavogadro/src/tools/navigatetool.cpp: Remember to account for the
 	situation where no molecule is loaded.
 
