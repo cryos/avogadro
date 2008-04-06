@@ -1,5 +1,8 @@
 2008-04-06  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/navigatetool.cpp: Remember to account for the
+	situation where no molecule is loaded.
+
 	* libavogadro/src/global.h: Added visibility attributes to the
 	A_EXPORT definitions so that our symbols are correctly exported when
 	the default visibility is changed to hidden (as in KDE 4.1 trunk).

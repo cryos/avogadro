@@ -66,7 +66,10 @@ namespace Avogadro {
 
   void NavigateTool::computeReferencePoint(GLWidget *widget)
   {
-    if(m_clickedAtom) {
+    // Remeber to account for the situation where no molecule is loaded
+    if(!widget->molecule())
+      m_referencePoint = Vector3d(0., 0., 0.);
+    else if(m_clickedAtom) {
       m_referencePoint = m_clickedAtom->pos();
     }
     else {
