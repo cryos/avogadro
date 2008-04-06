@@ -1,3 +1,9 @@
+2008-04-06  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/global.h: Added visibility attributes to the
+	A_EXPORT definitions so that our symbols are correctly exported when
+	the default visibility is changed to hidden (as in KDE 4.1 trunk).
+
 2008-04-04  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/aligntool.h,
