@@ -38,7 +38,7 @@ namespace Avogadro {
 
     public:
       enum Role {
-        EngineRole = Qt::UserRole + 1,
+        EngineRole = Qt::UserRole + 1
       };
 
     public:
