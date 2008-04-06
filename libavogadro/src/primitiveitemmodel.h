@@ -40,7 +40,7 @@ namespace Avogadro {
     public:
       enum Role {
         PrimitiveRole = Qt::UserRole + 1,
-        PrimitiveTypeRole,
+        PrimitiveTypeRole
       };
 
     public:
