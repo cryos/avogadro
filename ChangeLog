@@ -1,5 +1,7 @@
 2008-04-07  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* CMakeLists.txt: Only set the linker flags on Linux systems.
+
 	* libavogadro/src/CMakeLists.txt: Disabled the visibility flags for
 	now as they seem to break forcefield support.
 
