@@ -32,6 +32,7 @@
 #include "textrenderer.h"
 
 #include <QDebug>
+#include <QVarLengthArray>
 
 namespace Avogadro
 {
@@ -702,8 +703,8 @@ namespace Avogadro
     // This seems reasonable but should be linked to the detail level
     int TUBE_TESS = 6;
 
-    GLfloat ctrlpts[points.size()][TUBE_TESS][3];
-    GLfloat uknots[points.size() + 4];
+    QVarLengthArray<GLfloat> ctrlpts(points.size()*TUBE_TESS*3);
+    QVarLengthArray<GLfloat> uknots(points.size() + 4);
 
     // The first one is a special case
     Eigen::Vector3f axis = Eigen::Vector3f(points[1].x() - points[0].x(),
@@ -717,9 +718,9 @@ namespace Avogadro
     for (int j = 0; j < TUBE_TESS; j++) {
       double alpha = j * M_PI / 1.5f;
       Eigen::Vector3f v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
-      ctrlpts[0][j][0] = v.x() + points[0].x();
-      ctrlpts[0][j][1] = v.y() + points[0].y();
-      ctrlpts[0][j][2] = v.z() + points[0].z();
+      ctrlpts[3*j+0] = v.x() + points[0].x();
+      ctrlpts[3*j+1] = v.y() + points[0].y();
+      ctrlpts[3*j+2] = v.z() + points[0].z();
     }
     uknots[2] = 0.0;
 
@@ -734,9 +735,9 @@ namespace Avogadro
       for (int j = 0; j < TUBE_TESS; j++) {
         double alpha = j * M_PI / 1.5f;
         Eigen::Vector3f v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
-        ctrlpts[i][j][0] = v.x() + points[i].x();
-        ctrlpts[i][j][1] = v.y() + points[i].y();
-        ctrlpts[i][j][2] = v.z() + points[i].z();
+        ctrlpts[(i*TUBE_TESS + j)*3 + 0] = v.x() + points[i].x();
+        ctrlpts[(i*TUBE_TESS + j)*3 + 1] = v.y() + points[i].y();
+        ctrlpts[(i*TUBE_TESS + j)*3 + 2] = v.z() + points[i].z();
       }
       uknots[i+2] = i - 1.0;
     }
@@ -756,11 +757,11 @@ namespace Avogadro
     gluBeginSurface(nurb);
 
     gluNurbsSurface(nurb,
-                    points.size() + 4, uknots,
+                    points.size() + 4, uknots.data(),
                     TUBE_TESS + 4, vknots,
                     TUBE_TESS*3,
                     3,
-                    &ctrlpts[0][0][0],
+                    ctrlpts.data(),
                     4, 4,
                     GL_MAP2_VERTEX_3);
 
