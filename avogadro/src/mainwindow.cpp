@@ -254,6 +254,7 @@ namespace Avogadro
     connectUi();
 
     ui.projectDock->close();
+
   }
 
   bool MainWindow::event(QEvent *event)
@@ -1652,6 +1653,21 @@ namespace Avogadro
 
     connect( engineListView, SIGNAL( clicked( Engine * ) ),
         primitivesWidget, SLOT( setEngine( Engine * ) ) );
+
+    // Warn the user if no engines or tools are loaded
+    int nEngines = d->glWidget->engineFactories().size();
+    int nTools = d->glWidget->toolGroup()->tools().size();
+    QString error;
+    if(nEngines < 2 && !nTools)
+      error = tr("No tools or engines loaded.");
+    else if(nEngines < 2)
+      error = tr("No engines loaded.");
+    else if(!nTools)
+      error = tr("No tools loaded.");
+    error += tr(" It is unlikely this application will function correctly. Please correct this error.");
+    // Display a warning dialog if we haven't loaded any tools or engines
+    if(!nEngines || !nTools)
+      QMessageBox::warning(this, tr("Avogadro"), error);
 
     return gl;
   }
