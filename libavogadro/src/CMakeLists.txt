@@ -21,6 +21,14 @@ include_directories(
 FILE(GLOB libavogadro_SRCS "*.cpp")
 FILE(GLOB libavogadro_HDRS "*.h")
 
+# Statically link the core engines and tools so that users have a working
+# system even if no plugins can be found.
+set(bsdyengine_SRCS engines/bsdyengine.cpp)
+qt4_wrap_ui(bsdyengine_UIS engines/bsdysettingswidget.ui)
+qt4_automoc(${bsdyengine_SRCS})
+set(libavogadro_SRCS ${libavogadro_SRCS} ${bsdyengine_SRCS} ${bsdyengine_UIS})
+
+# If Boost Python isn't found remove the interpreter files
 if(NOT BOOST_PYTHON_LIBS)
 	LIST(REMOVE_ITEM libavogadro_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp)
 	LIST(REMOVE_ITEM libavogadro_HDRS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.h)
@@ -61,6 +69,7 @@ INSTALL(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
 INSTALL(FILES ${libavogadro_HDRS} DESTINATION include/avogadro)
 INSTALL(FILES ${libavogadro_QM} DESTINATION share/libavogadro/i18n)
 
+# Add the engiens, tools and extensions directories
 add_subdirectory(engines)
 add_subdirectory(tools)
 add_subdirectory(extensions)

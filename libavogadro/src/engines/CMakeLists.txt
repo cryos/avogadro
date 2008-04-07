@@ -16,16 +16,16 @@ ADD_DEFINITIONS(-DQT_SHARED)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
 # ball and stick dynamic engine
-set(bsdyengine_SRCS bsdyengine.cpp)
-qt4_wrap_ui(bsdyengine_UIS bsdysettingswidget.ui)
-qt4_automoc(${bsdyengine_SRCS})
-ADD_LIBRARY(bsdyengine SHARED ${bsdyengine_SRCS} ${bsdyengine_UIS})
-TARGET_LINK_LIBRARIES(bsdyengine avogadro-lib
-                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
-                                ${OPENGL_LIBRARIES}
-)
+#set(bsdyengine_SRCS bsdyengine.cpp)
+#qt4_wrap_ui(bsdyengine_UIS bsdysettingswidget.ui)
+#qt4_automoc(${bsdyengine_SRCS})
+#ADD_LIBRARY(bsdyengine SHARED ${bsdyengine_SRCS} ${bsdyengine_UIS})
+#TARGET_LINK_LIBRARIES(bsdyengine avogadro-lib
+#                                ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+#                                ${OPENGL_LIBRARIES}
+#)
 
-INSTALL(TARGETS bsdyengine DESTINATION ${DESTINATION_DIR})
+#INSTALL(TARGETS bsdyengine DESTINATION ${DESTINATION_DIR})
 
 # label engine
 set(labelengine_SRCS labelengine.cpp)

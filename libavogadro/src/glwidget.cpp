@@ -36,6 +36,9 @@
 
 #include "elementcolor.h"
 
+// Include static engine headers
+#include "engines/bsdyengine.h"
+
 #include <QDebug>
 #include <QUndoStack>
 #include <QDir>
@@ -46,7 +49,6 @@
 #include <QWaitCondition>
 #include <QMutex>
 #endif
-
 
 #include <stdio.h>
 #include <vector>
@@ -307,6 +309,12 @@ namespace Avogadro {
         }
 
         // load static plugins first
+	EngineFactory *bsFactory = qobject_cast<EngineFactory *>(new BSDYEngineFactory);
+	if (bsFactory)
+	{
+          engineFactories.append(bsFactory);
+          engineClassFactory[bsFactory->className()] = bsFactory;
+	}
 
         // now load plugins from paths
         foreach( QString path, pluginPaths ) {

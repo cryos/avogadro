@@ -1,3 +1,10 @@
+2008-04-07  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/CMakeLists.txt,
+	libavogadro/src/engines/CMakeLists.txt, libavogadro/src/glwidget.cpp:
+	Statically linked the ball and stick engine to libavogadro. This
+	guarantees the minimal ability to display a molecule.
+
 2008-04-06  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* CMakeLists.txt: Added the pedantic compiler flag to spot many issues
