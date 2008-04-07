@@ -462,7 +462,7 @@ CIRunType GamessControlGroup::GetCIType( void ) const
   short result = (( MPLevelCIType & 0xF0 )>>4 );
   if ( GetSCFType() == 2 ) result = 0;
   return ( CIRunType ) result;
-};
+}
 TypeOfRun GamessControlGroup::SetRunType( const TypeOfRun & NewRunType )
 {
   if (( NewRunType<=0 )||( NewRunType>NumGAMESSRunTypes ) ) return InvalidRunType;

@@ -50,7 +50,7 @@ namespace Avogadro {
 
  class ForceFieldExtension : public Extension
   {
-    Q_OBJECT;
+    Q_OBJECT
 
     public:
       //! Constructor
@@ -89,8 +89,8 @@ namespace Avogadro {
 
   class ForceFieldExtensionFactory : public QObject, public ExtensionFactory
   {
-    Q_OBJECT;
-    Q_INTERFACES(Avogadro::ExtensionFactory);
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::ExtensionFactory)
 
     public:
     Extension *createInstance(QObject *parent = 0) { return new ForceFieldExtension(parent); }
@@ -98,7 +98,7 @@ namespace Avogadro {
 
   class ForceFieldThread : public QThread
   {
-    Q_OBJECT;
+    Q_OBJECT
 
     public:
     ForceFieldThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
@@ -142,7 +142,7 @@ namespace Avogadro {
 
  class ForceFieldCommand : public QObject, public QUndoCommand
  {
-   Q_OBJECT;
+   Q_OBJECT
 
    public:
      ForceFieldCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield,

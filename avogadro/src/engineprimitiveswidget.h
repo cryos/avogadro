@@ -43,7 +43,7 @@ namespace Avogadro
   class EnginePrimitivesWidgetPrivate;
   class EnginePrimitivesWidget : public QWidget
   {
-      Q_OBJECT;
+      Q_OBJECT
 
     public:
       explicit EnginePrimitivesWidget ( GLWidget *glWidget, QWidget *parent = 0 );

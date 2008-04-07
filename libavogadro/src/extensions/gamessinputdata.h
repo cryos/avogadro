@@ -796,7 +796,7 @@ namespace Avogadro {
     public:
       enum Type {
         EFPType = 0,
-        QMType,
+        QMType
       };
 
       void GetCenterOfMass(Molecule *molecule, double &x, double &y, double &z);

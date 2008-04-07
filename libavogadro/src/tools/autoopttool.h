@@ -46,7 +46,7 @@ namespace Avogadro {
 
   class AutoOptThread : public QThread
   {
-    Q_OBJECT;
+    Q_OBJECT
 
     public:
     AutoOptThread(QObject *parent=0);

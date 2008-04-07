@@ -85,8 +85,8 @@ namespace Avogadro {
 
   class PropertiesExtensionFactory : public QObject, public ExtensionFactory
   {
-    Q_OBJECT;
-    Q_INTERFACES(Avogadro::ExtensionFactory);
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::ExtensionFactory)
 
     public:
     Extension *createInstance(QObject *parent = 0) { return new PropertiesExtension(parent); }

@@ -101,7 +101,7 @@ namespace Avogadro {
   class PythonExtensionFactory : public QObject, public ExtensionFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::ExtensionFactory);
+    Q_INTERFACES(Avogadro::ExtensionFactory)
 
     public:
       Extension *createInstance(QObject *parent = 0) { return new PythonExtension(parent); }
@@ -109,7 +109,7 @@ namespace Avogadro {
 
   class PythonTerminalLineEdit : public QLineEdit
   {
-    Q_OBJECT;
+    Q_OBJECT
 
     public:
     PythonTerminalLineEdit(QWidget *parent = 0);

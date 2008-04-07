@@ -42,7 +42,7 @@ namespace Avogadro {
   //! VDWGridThread
   class VDWGridThread : public QThread
   {
-    Q_OBJECT;
+    Q_OBJECT
 
     public:
       VDWGridThread(QObject *parent=0);
@@ -160,7 +160,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(SurfaceEngine);
+    AVOGADRO_ENGINE_FACTORY(SurfaceEngine)
 
   };
 

@@ -41,7 +41,7 @@ namespace Avogadro {
   class EngineListViewPrivate;
   class EngineListView : public QListView
   {
-    Q_OBJECT;
+    Q_OBJECT
 
     public:
       explicit EngineListView( GLWidget *glWidget, QWidget *parent = 0 );

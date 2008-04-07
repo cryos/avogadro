@@ -113,7 +113,7 @@ namespace Avogadro {
   class GamessExtensionFactory : public QObject, public ExtensionFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::ExtensionFactory);
+    Q_INTERFACES(Avogadro::ExtensionFactory)
 
     public:
       Extension *createInstance(QObject *parent = 0) { return new GamessExtension(parent); }

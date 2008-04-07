@@ -1,5 +1,26 @@
 2008-04-06  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* avogadro/src/application.h, avogadro/src/enginelistview.h,
+	avogadro/src/engineprimitiveswidget.h,
+	avogadro/src/enginesetupwidget.h, avogadro/src/mainwindow.h,
+	libavogadro/src/engines/orbitalengine.h,
+	libavogadro/src/engines/surfaceengine.h, libavogadro/src/extension.h,
+	libavogadro/src/extensions/forcefieldextension.h,
+	libavogadro/src/extensions/gamessefpmatchdialog.h,
+	libavogadro/src/extensions/gamessextension.cpp,
+	libavogadro/src/extensions/gamessextension.h,
+	libavogadro/src/extensions/gamessinputdata.cpp,
+	libavogadro/src/extensions/gamessinputdata.h,
+	libavogadro/src/extensions/h2methylextension.h,
+	libavogadro/src/extensions/hydrogensextension.h,
+	libavogadro/src/extensions/propextension.h,
+	libavogadro/src/extensions/pythonextension.cpp,
+	libavogadro/src/extensions/pythonextension.h,
+	libavogadro/src/extensions/selectextension.h,
+	libavogadro/src/extensions/unitcellextension.h,
+	libavogadro/src/tools/autoopttool.h: Fix errors pointed out by the
+	pedantic compiler flag - mainly extra ;s and ,s.
+
 	* libavogadro/src/pythoninterpreter.h: Ensure the Python interpreter
 	exports its symbols.
 

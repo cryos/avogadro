@@ -73,8 +73,8 @@ namespace Avogadro {
 
   class SelectExtensionFactory : public QObject, public ExtensionFactory
   {
-    Q_OBJECT;
-    Q_INTERFACES(Avogadro::ExtensionFactory);
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::ExtensionFactory)
 
     public:
     Extension *createInstance(QObject *parent = 0) { return new SelectExtension(parent); }

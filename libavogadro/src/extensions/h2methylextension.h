@@ -68,8 +68,8 @@ namespace Avogadro {
 
   class H2MethylExtensionFactory : public QObject, public ExtensionFactory
   {
-    Q_OBJECT;
-    Q_INTERFACES(Avogadro::ExtensionFactory);
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::ExtensionFactory)
 
     public:
     Extension *createInstance(QObject *parent = 0) { return new H2MethylExtension(parent); }

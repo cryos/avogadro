@@ -47,7 +47,7 @@ namespace Avogadro
   class EngineSetupWidgetPrivate;
   class EngineSetupWidget : public QWidget
   {
-      Q_OBJECT;
+      Q_OBJECT
 
     public:
       explicit EngineSetupWidget ( GLWidget *glWidget, QWidget *parent = 0 );

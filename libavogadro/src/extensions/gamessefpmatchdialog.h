@@ -37,13 +37,13 @@ namespace Avogadro
   */
   class GamessEfpMatchDialog : public QDialog
   {
-    Q_OBJECT;
+    Q_OBJECT
 
 
     public:
       enum Type {
         EFPType = 0,
-        QMType,
+        QMType
       };
 
       explicit GamessEfpMatchDialog(QAbstractItemModel *model, Type = EFPType,

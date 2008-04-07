@@ -300,4 +300,4 @@ namespace Avogadro
 
 #include "pythonextension.moc"
 
-Q_EXPORT_PLUGIN2( pythonextension, Avogadro::PythonExtensionFactory );
+Q_EXPORT_PLUGIN2(pythonextension, Avogadro::PythonExtensionFactory)

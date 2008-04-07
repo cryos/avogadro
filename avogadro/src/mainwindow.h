@@ -42,7 +42,7 @@ namespace Avogadro {
   class MainWindowPrivate;
   class MainWindow : public QMainWindow
   {
-    Q_OBJECT;
+    Q_OBJECT
 
     public:
       MainWindow();

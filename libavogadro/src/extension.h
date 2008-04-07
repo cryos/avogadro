@@ -57,7 +57,7 @@ namespace Avogadro {
    */
   class A_EXPORT Extension : public QObject
   {
-    Q_OBJECT;
+    Q_OBJECT
 
     public:
     Extension(QObject *parent) : QObject(parent) {};
@@ -137,7 +137,6 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 // Q_DECLARE_INTERFACE(Avogadro::Extension, "net.sourceforge.avogadro.extension/1.0")
-Q_DECLARE_INTERFACE(Avogadro::ExtensionFactory, "net.sourceforge.avogadro.extensionfactory/1.0");
-
+Q_DECLARE_INTERFACE(Avogadro::ExtensionFactory, "net.sourceforge.avogadro.extensionfactory/1.0")
 
 #endif
