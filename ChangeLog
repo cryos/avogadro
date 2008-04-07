@@ -1,5 +1,10 @@
 2008-04-06  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* CMakeLists.txt: Added the pedantic compiler flag to spot many issues
+	with C++ code such as those picked up by KDE developers. Also
+	introduce symbol hiding if a recent GCC is installed. We now need to
+	explicitly export all symbols on Linux/Apple systems.
+
 	* cmake/modules/FindBoostPython.cmake,
 	cmake/modules/MacroEnsureVersion.cmake: Extra cmake modules from KDE
 	4.1 (trunk) to improve Boost Python detection and check versions.
