@@ -1,5 +1,8 @@
 2008-04-06  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/pythoninterpreter.h: Ensure the Python interpreter
+	exports its symbols.
+
 	* libavogadro/src/glpainter.cpp: Patch from Thiago Macieira in KDE
 	commit 794048. You're not allowed to use C99 variable-length in C++.
 

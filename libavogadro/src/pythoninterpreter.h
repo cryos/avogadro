@@ -23,9 +23,10 @@
  **********************************************************************/
 
 
-#ifndef __PYTHON_H
-#define __PYTHON_H
+#ifndef __AVOPYTHON_H
+#define __AVOPYTHON_H
 
+#include <avogadro/global.h>
 #include <avogadro/boost.h>
 #include <avogadro/primitive.h>
 #include <QString>
@@ -45,7 +46,7 @@ namespace Avogadro {
    */
 
   class PythonInterpreterPrivate;
-  class PythonInterpreter
+  class A_EXPORT PythonInterpreter
   {
     public:
       /**
