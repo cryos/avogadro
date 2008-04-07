@@ -1,5 +1,8 @@
 2008-04-07  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/CMakeLists.txt: Disabled the visibility flags for
+	now as they seem to break forcefield support.
+
 	* avogadro/src/mainwindow.cpp: Added a warning dialog when no engines
 	and/or tools were loaded.
 

@@ -23,7 +23,6 @@
 #ifndef __FORCEFIELDEXTENSION_H
 #define __FORCEFIELDEXTENSION_H
 
-
 #include "forcefielddialog.h"
 #include "conformersearchdialog.h"
 #include "constraintsmodel.h"
@@ -186,3 +185,4 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 #endif
+

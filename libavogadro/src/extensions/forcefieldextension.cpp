@@ -110,6 +110,8 @@ namespace Avogadro
       action->setData(FixAtomsIndex);
       m_actions.append( action );
     }
+    else
+      qDebug() << "Unable to set up and use any force fields.";
 
     OBPlugin::ListAsVector("forcefields", "ids", m_forcefieldList);
   }
@@ -515,4 +517,4 @@ namespace Avogadro
 } // end namespace Avogadro
 
 #include "forcefieldextension.moc"
-Q_EXPORT_PLUGIN2( forcefieldextension, Avogadro::ForceFieldExtensionFactory )
+Q_EXPORT_PLUGIN2(forcefieldextension, Avogadro::ForceFieldExtensionFactory)
