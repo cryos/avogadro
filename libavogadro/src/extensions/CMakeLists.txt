@@ -140,20 +140,20 @@ INSTALL(TARGETS h2methylextension DESTINATION ${DESTINATION_DIR})
 #)
 #INSTALL(TARGETS wiitrackextension DESTINATION ${DESTINATION_DIR})
 
-if(Boost_FOUND AND PYTHON_LIBRARIES)
-### python extensions
-set(pythonextension_SRCS pythonextension.cpp)
-qt4_wrap_ui(pythonextension_UIS_H pythonterminalwidget.ui)
-qt4_automoc(${pythonextension_SRCS})
-ADD_LIBRARY(pythonextension SHARED ${pythonextension_SRCS} ${pythonextension_UIS_H})
-TARGET_LINK_LIBRARIES(pythonextension
-	${OPENBABEL2_LIBRARIES}
-	${QT_LIBRARIES}
-    ${OPENGL_LIBRARIES}
-	avogadro-lib
-)
-INSTALL(TARGETS pythonextension DESTINATION ${DESTINATION_DIR})
+if(BOOST_PYTHON_FOUND)
+	### python extensions
+	set(pythonextension_SRCS pythonextension.cpp)
+	qt4_wrap_ui(pythonextension_UIS_H pythonterminalwidget.ui)
+	qt4_automoc(${pythonextension_SRCS})
+	ADD_LIBRARY(pythonextension SHARED ${pythonextension_SRCS} ${pythonextension_UIS_H})
+	TARGET_LINK_LIBRARIES(pythonextension
+		${OPENBABEL2_LIBRARIES}
+		${QT_LIBRARIES}
+		${OPENGL_LIBRARIES}
+		avogadro-lib
+	)
+	INSTALL(TARGETS pythonextension DESTINATION ${DESTINATION_DIR})
 
-FILE(GLOB python_SCRIPTS "python/*.py")
-INSTALL(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/scripts)
-endif(Boost_FOUND AND PYTHON_LIBRARIES)
+	FILE(GLOB python_SCRIPTS "python/*.py")
+	INSTALL(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/scripts)
+endif(BOOST_PYTHON_FOUND)

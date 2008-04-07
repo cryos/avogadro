@@ -1,5 +1,13 @@
 2008-04-06  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* cmake/modules/FindBoostPython.cmake,
+	cmake/modules/MacroEnsureVersion.cmake: Extra cmake modules from KDE
+	4.1 (trunk) to improve Boost Python detection and check versions.
+
+	* libavogadro/src/CMakeLists.txt,
+	libavogadro/src/extensions/CMakeLists.txt: Improve the Boost Python
+	detection and link to the dynamic Python library.
+
 	* avogadro/src/application.h, avogadro/src/enginelistview.h,
 	avogadro/src/engineprimitiveswidget.h,
 	avogadro/src/enginesetupwidget.h, avogadro/src/mainwindow.h,
@@ -18,7 +26,7 @@
 	libavogadro/src/extensions/pythonextension.h,
 	libavogadro/src/extensions/selectextension.h,
 	libavogadro/src/extensions/unitcellextension.h,
-	libavogadro/src/tools/autoopttool.h: Fix errors pointed out by the
+	libavogadro/src/tools/autoopttool.h: Fixed errors pointed out by the
 	pedantic compiler flag - mainly extra ;s and ,s.
 
 	* libavogadro/src/pythoninterpreter.h: Ensure the Python interpreter

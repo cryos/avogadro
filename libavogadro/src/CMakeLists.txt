@@ -14,17 +14,17 @@ include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}/..
   ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN_INCLUDE_DIR}
-  ${Boost_INCLUDE_DIRS}
+  ${BOOST_PYTHON_INCLUDES}
   ${PYTHON_INCLUDE_PATH}
 )
 
 FILE(GLOB libavogadro_SRCS "*.cpp")
 FILE(GLOB libavogadro_HDRS "*.h")
 
-if(NOT Boost_FOUND OR NOT PYTHON_LIBRARIES)
-  LIST(REMOVE_ITEM libavogadro_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp)
-  LIST(REMOVE_ITEM libavogadro_HDRS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.h)
-endif(NOT Boost_FOUND OR NOT PYTHON_LIBRARIES)
+if(NOT BOOST_PYTHON_LIBS)
+	LIST(REMOVE_ITEM libavogadro_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp)
+	LIST(REMOVE_ITEM libavogadro_HDRS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.h)
+endif(NOT BOOST_PYTHON_LIBS)
 
 qt4_automoc(${libavogadro_SRCS})
 
@@ -36,25 +36,26 @@ SET(libavogadro_TS
 QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 
 # you have to add link_directories before you add the target
-if(Boost_FOUND AND PYTHON_LIBRARIES)
-	LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
-endif(Boost_FOUND AND PYTHON_LIBRARIES)
+#if(BOOST_PYTHON_FOUND)
+#	LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
+#endif(BOOST_PYTHON_FOUND)
 
 ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})
 SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 set_target_properties(avogadro-lib PROPERTIES VERSION ${VERSION} SOVERSION 0 )
 
-if(Boost_FOUND AND PYTHON_LIBRARIES)
-TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
-                                   ${OPENGL_LIBRARIES} 
-                                   ${PYTHON_LIBRARIES}
-								   boost_python
+if(BOOST_PYTHON_FOUND)
+	TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES}
+				${QT_LIBRARIES}
+				${OPENGL_LIBRARIES} 
+				${BOOST_PYTHON_LIBS}
 )
-else(Boost_FOUND AND PYTHON_LIBRARIES)
-TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
-                                   ${OPENGL_LIBRARIES} 
+else(BOOST_PYTHON_FOUND)
+	TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} 
+				${QT_LIBRARIES}
+				${OPENGL_LIBRARIES} 
 )
-endif(Boost_FOUND AND PYTHON_LIBRARIES)
+endif(BOOST_PYTHON_FOUND)
 
 INSTALL(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
 INSTALL(FILES ${libavogadro_HDRS} DESTINATION include/avogadro)
