@@ -1,3 +1,7 @@
+2008-04-08  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/CMakeLists.txt: Remove duplicate call to automoc.
+
 2008-04-07  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* CMakeLists.txt: Only set the linker flags on Linux systems.

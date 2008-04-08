@@ -25,7 +25,6 @@ FILE(GLOB libavogadro_HDRS "*.h")
 # system even if no plugins can be found.
 set(bsdyengine_SRCS engines/bsdyengine.cpp)
 qt4_wrap_ui(bsdyengine_UIS engines/bsdysettingswidget.ui)
-qt4_automoc(${bsdyengine_SRCS})
 set(libavogadro_SRCS ${libavogadro_SRCS} ${bsdyengine_SRCS} ${bsdyengine_UIS})
 
 # If Boost Python isn't found remove the interpreter files
