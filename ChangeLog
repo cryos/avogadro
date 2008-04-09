@@ -1,3 +1,8 @@
+2008-04-09  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/camera.h, libavogadro/src/textrenderer.h,
+	libavogadro/src/tools/drawtool.cpp: Fixed a few compiler warnings.
+
 2008-04-08  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/CMakeLists.txt: Remove duplicate call to automoc.

@@ -114,7 +114,7 @@ namespace Avogadro {
       if(m_hits.size() && (m_hits[0].type() == Primitive::AtomType)) {
         // "alchemy" -- change this atom to a new element
         m_beginAtom = (Atom *)molecule->GetAtom(m_hits[0].name());
-        
+
         if(m_beginAtom && ((int)m_beginAtom->GetAtomicNum() != m_element)) {
           m_prevAtomElement = m_beginAtom->GetAtomicNum();
           m_beginAtom->SetAtomicNum(m_element);
@@ -131,14 +131,19 @@ namespace Avogadro {
 
           switch (oldBondOrder) {
           case 1:
-            bondOrder = 2;     break;
+            bondOrder = 2;
+	    break;
           case 2:
-            bondOrder = 3;     break;
+            bondOrder = 3;
+	    break;
           case 3:
-            bondOrder = 1;     break;
+            bondOrder = 1;
+	    break;
+	  default:
+	    bondOrder = 1;
           }
 	  bond->SetBondOrder(bondOrder);
-        
+
           undo = new ChangeBondOrderDrawCommand(widget->molecule(), bond,
                                                 oldBondOrder, m_addHydrogens);
         }
@@ -154,7 +159,7 @@ namespace Avogadro {
           Eigen::Vector3d newMolPos = widget->camera()->unProject(event->pos(), refPoint);
           m_generatedMolecule.Center();
           m_generatedMolecule.Translate(vector3(newMolPos.x(),
-                                                newMolPos.y(), 
+                                                newMolPos.y(),
                                                 newMolPos.z()));
           undo = new InsertSmilesDrawCommand(widget->molecule(), m_generatedMolecule);
         } // end place mode (insert SMILES)
@@ -181,7 +186,7 @@ namespace Avogadro {
                             event->pos().y()-SEL_BOX_HALF_SIZE,
                             SEL_BOX_SIZE,
                             SEL_BOX_SIZE);
-      
+
       bool hitBeginAtom = false;
       Atom *existingAtom = 0;
       if(m_hits.size()) {
@@ -195,7 +200,7 @@ namespace Avogadro {
             if(m_hits[i].name() == m_beginAtom->GetIdx()) {
               hitBeginAtom = true;
             }
-            else if(!m_endAtom) { 
+            else if(!m_endAtom) {
               // we don't yet have an end atom but
               // hit another atom on screen -- bond to this
               existingAtom = (Atom *)molecule->GetAtom(m_hits[i].name());
@@ -323,7 +328,7 @@ namespace Avogadro {
     if(_buttons & Qt::LeftButton && (event->modifiers() == Qt::NoModifier)) {
 
       if(m_beginAtomAdded || m_bond) {
-        // we added At least the beginAtom or we created a bond to 
+        // we added At least the beginAtom or we created a bond to
         // an existing atom or to endAtom that we also created
 	AddAtomDrawCommand *beginAtomDrawCommand = 0;
         if(m_beginAtomAdded) {
@@ -342,7 +347,7 @@ namespace Avogadro {
           bondCommand = new AddBondDrawCommand(widget->molecule(), m_bond, m_addHydrogens);
           bondCommand->setText(tr("Draw Bond"));
         }
-        
+
         // Set the actual undo command -- combining sequence if possible
         // we can have a beginAtom w/out bond or endAtom
         // we can have bond w/out endAtom (i.e., to an existing atom)
@@ -350,7 +355,7 @@ namespace Avogadro {
         if(endAtomDrawCommand || (bondCommand && beginAtomDrawCommand)) {
           UndoSequence *seq = new UndoSequence();
           seq->setText(tr("Draw"));
-          
+
           if(beginAtomDrawCommand) {
             seq->append(beginAtomDrawCommand);
           }
@@ -358,7 +363,7 @@ namespace Avogadro {
             seq->append(endAtomDrawCommand);
           }
           seq->append(bondCommand);
-          
+
           undo = seq;
         }
         else if(bondCommand) {
@@ -376,7 +381,7 @@ namespace Avogadro {
           undo->setText(tr("Change Bond Order"));
 	}
       } else if (m_beginAtom) {
-        // beginAtom exists, but we have no bond, we change the element  
+        // beginAtom exists, but we have no bond, we change the element
 	if ((int)m_beginAtom->GetAtomicNum() != m_prevAtomElement) {
           undo = new ChangeElementDrawCommand(widget->molecule(),
                                               m_beginAtom,
@@ -394,7 +399,7 @@ namespace Avogadro {
       m_prevAtomElement=0;
       m_beginAtomAdded=false;
       m_endAtomAdded=false;
-    
+
       return undo;
     }
 
@@ -501,13 +506,13 @@ namespace Avogadro {
     OBConversion conv;
     m_generatedMolecule.Clear();
     std::string SmilesString((m_text3DGen->text()).toAscii());
-    if(conv.SetInFormat("smi") 
+    if(conv.SetInFormat("smi")
        && conv.ReadString(&m_generatedMolecule, SmilesString))
       {
         m_builder.Build(m_generatedMolecule);
         m_generatedMolecule.Center();
         m_generatedMolecule.AddHydrogens();
-        
+
         if (m_placeMode) {
           m_button3DGen->setText(tr("Insert SMILES"));
           m_placeMode = false;
@@ -554,7 +559,7 @@ namespace Avogadro {
       m_comboElements->setCurrentIndex(comboItem);
       return; // we found it in the list, so we're done
     }
-    
+
     // Find where we should put the new entry
     // (i.e., in order by atomic number)
     int position = 0;
@@ -569,7 +574,7 @@ namespace Avogadro {
 
     // And now we set up a new entry into the combo list
     QString entryName(elementTranslator.name(index)); // (e.g., "Hydrogen")
-    entryName += " (" + QString::number(index) + ")"; 
+    entryName += " (" + QString::number(index) + ")";
 
     m_elementsIndex.insert(position, index);
     m_comboElements->insertItem(position, entryName);
@@ -654,7 +659,7 @@ namespace Avogadro {
       m_comboBondOrder->addItem(tr("Single"));
       m_comboBondOrder->addItem(tr("Double"));
       m_comboBondOrder->addItem(tr("Triple"));
-      
+
       m_addHydrogensCheck = new QCheckBox(tr("Adjust Hydrogens"), m_settingsWidget);
       m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
 
@@ -687,7 +692,7 @@ namespace Avogadro {
               this, SLOT(bondOrderChanged(int)));
 
       connect(m_addHydrogensCheck, SIGNAL(stateChanged(int)),
-              this, SLOT(setAddHydrogens(int)));      
+              this, SLOT(setAddHydrogens(int)));
 
       connect(m_settingsWidget, SIGNAL(destroyed()),
               this, SLOT(settingsWidgetDestroyed()));

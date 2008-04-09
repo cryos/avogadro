@@ -31,7 +31,7 @@
 
 namespace Avogadro {
 
-  class A_EXPORT GLWidget;
+  class GLWidget;
 
   /**
    * @class Camera camera.h <avogadro/camera.h>
