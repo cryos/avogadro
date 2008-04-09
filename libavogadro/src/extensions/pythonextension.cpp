@@ -22,6 +22,8 @@
 #include "pythonextension.h"
 
 #include <QDockWidget>
+#include <QCompleter>
+
 #include <QDebug>
 
 using namespace std;
@@ -227,8 +229,17 @@ namespace Avogadro
     inputLine = new PythonTerminalLineEdit(this);
     inputLine->setObjectName(QString::fromUtf8("inputLine"));
     inputLine->setFont(font);
-    layout()->addWidget(inputLine);
 
+    // TODO: Make a full completion list, including spaces, separators, etc.
+    QStringList wordList;
+    wordList << "Avogadro" << "molecule" << "atom" << "bond";
+    wordList << "NumAtoms()" << "NumBonds()";
+
+    QCompleter *completer = new QCompleter(wordList, this);
+    completer->setCaseSensitivity(Qt::CaseSensitive);
+    inputLine->setCompleter(completer);
+
+    layout()->addWidget(inputLine);
   }
 
   PythonTerminalLineEdit::PythonTerminalLineEdit(QWidget *parent ) : QLineEdit(parent), m_current(0)
