@@ -166,7 +166,8 @@ namespace Avogadro
       m_forceField->SetLogLevel( OBFF_LOGLVL_HIGH );
 
       if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
-        qDebug() << "Could not set up force field on " << m_molecule;
+        QMessageBox::warning( widget, tr( "Avogadro" ),
+          tr( "Cannot set up the force field for this molecule." ));
         break;
       }
 
@@ -290,6 +291,7 @@ namespace Avogadro
     m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
 
     if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
+      // TODO: This needs to be a user-visible warning diaog
       qWarning() << "ForceFieldCommand: Could not set up force field on " << m_molecule;
       return;
     }
