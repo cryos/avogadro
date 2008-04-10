@@ -1,5 +1,8 @@
 2008-04-09  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/glpainter.cpp, libavogadro/src/glwidget.cpp: Parts
+	of the patch from Benoit Jacob - fix handling of quality change.
+
 	* libavogadro/src/glwidget.cpp: Fixed bug where display lists were
 	not being invalidated when the display quality was adjusted.
 

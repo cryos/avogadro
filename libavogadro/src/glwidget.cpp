@@ -652,16 +652,12 @@ namespace Avogadro {
 
     // Use renderQuick if the view is being moved, otherwise full render
     if (d->quickRender) {
-
       d->updateListQuick();
-//      qDebug() << "Calling quick display lists...";
       glCallList(d->dlistQuick);
-      if (d->uc) renderCrystal(d->dlistQuick);
-
+      if (d->uc)
+        renderCrystal(d->dlistQuick);
     }
     else {
-//      qDebug() << "Normal rendering...";
-
       // we save a display list if we're doing a crystal
       if (d->dlistOpaque == 0)
         d->dlistOpaque = glGenLists(1);
@@ -1639,7 +1635,7 @@ namespace Avogadro {
   void GLWidget::readSettings(QSettings &settings)
   {
     // Make sure to provide some default values for any settings.value("", DEFAULT) call
-    d->painter->setQuality(settings.value("quality", 2).toInt());
+    setQuality(settings.value("quality", 2).toInt());
     d->background = settings.value("background", QColor(0,0,0)).value<QColor>();
     d->renderAxes = settings.value("renderAxes", 1).value<bool>();
     d->renderDebug = settings.value("renderDebug", 0).value<bool>();
