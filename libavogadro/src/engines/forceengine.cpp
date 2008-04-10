@@ -67,7 +67,6 @@ namespace Avogadro {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
 
     pd->painter()->setColor(0.0, 1.0, 0.0);
-    int stipple = 0xF0F0; // pattern for lines
 
     if (!mol->HasData(OBGenericDataType::ConformerData))
       return false;

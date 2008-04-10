@@ -1,5 +1,12 @@
 2008-04-09  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/engines/forceengine.cpp,
+	libavogadro/src/engines/orbitalengine.cpp,
+	libavogadro/src/engines/surfaceengine.cpp: Fixed some compiler
+	warnings.
+
+2008-04-09  Marcus D. Hanwell  <marcus@cryos.org>
+
 	* libavogadro/src/camera.h, libavogadro/src/textrenderer.h,
 	libavogadro/src/tools/drawtool.cpp: Fixed a few compiler warnings.
 

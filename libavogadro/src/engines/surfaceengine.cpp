@@ -222,7 +222,7 @@ namespace Avogadro {
     return etab.GetVdwRad(a->GetAtomicNum());
   }
 
-  double SurfaceEngine::radius(const PainterDevice *pd, const Primitive *p) const
+  double SurfaceEngine::radius(const PainterDevice *, const Primitive *p) const
   {
     // Atom radius
     if (p->type() == Primitive::AtomType)
@@ -359,7 +359,8 @@ namespace Avogadro {
     Engine::removePrimitive(primitive);
   }
 
-  VDWGridThread::VDWGridThread(QObject *parent): m_molecule(0), m_stepSize(0.0), m_padding(0.0)
+  VDWGridThread::VDWGridThread(QObject *parent): QThread(parent), m_molecule(0),
+    m_stepSize(0.0), m_padding(0.0)
   {
     m_grid = new Grid;
   }

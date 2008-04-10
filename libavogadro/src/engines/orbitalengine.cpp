@@ -339,7 +339,7 @@ namespace Avogadro {
     return Engine::Transparent | Engine::Atoms;
   }
 
-  void OrbitalEngine::setOrbital(int value)
+  void OrbitalEngine::setOrbital(int)
   {
     m_update = true;
     emit changed();
