@@ -616,6 +616,8 @@ namespace Avogadro {
 
   void GLWidget::setQuality(int quality)
   {
+    // Invalidate the display lists and change the painter quality level
+    invalidateDLs();
     d->painter->setQuality(quality);
   }
 
