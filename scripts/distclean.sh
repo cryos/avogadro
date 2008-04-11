@@ -48,6 +48,14 @@ for i in `find . -type f -name "*.o" -print | sort`; do
  	$RM $i;
 	echo "$RM $i"
 done
+for i in `find . -type f -name "*.dylib*" -print | sort`; do
+        $RM $i;
+        echo "$RM $i"
+done
+for i in `find . -type f -name "*.so" -print | sort`; do
+        $RM $i;
+        echo "$RM $i"
+done
 for i in `find . -type f -name "*.moc" -print | sort`; do
  	$RM $i;
 	echo "$RM $i"
