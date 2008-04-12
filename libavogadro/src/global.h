@@ -34,11 +34,13 @@
 #endif
 
 #ifdef WIN32
-# define A_DECL_IMPORT __declspec(dllimport)
-# define A_DECL_EXPORT __declspec(dllexport)
+  #define A_DECL_IMPORT __declspec(dllimport)
+  #define A_DECL_EXPORT __declspec(dllexport)
 #else
-# define A_DECL_IMPORT __attribute__ ((visibility("default")))
-# define A_DECL_EXPORT __attribute__ ((visibility("default")))
+  #ifdef HAVE_GCC_VISIBILITY
+    #define A_DECL_IMPORT __attribute__ ((visibility("default")))
+    #define A_DECL_EXPORT __attribute__ ((visibility("default")))
+  #endif
 #endif
 
 #ifndef A_EXPORT
