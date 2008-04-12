@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>krazy Analysis</title>
+<title>krazy2 Analysis</title>
 </head>
 <body>
-<h1>krazy Analysis</h1>
+<h1>krazy2 Analysis</h1>
 <p>Checkers Run = 24<br>
 Files Processed = 44<br>
-Total Issues = 26 ...as of March 24 2008 12:38:34</p>
+Total Issues = 45 ...as of April 12 2008 17:17:50</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -25,7 +25,7 @@ Total Issues = 26 ...as of March 24 2008 12:38:34</p>
 <ul>
 <li>	../libavogadro/src/extensions/dockingextension.cpp: line#124 (1)
 </li>
-<li>	../libavogadro/src/extensions/forcefieldextension.cpp: line#132 (1)
+<li>	../libavogadro/src/extensions/forcefieldextension.cpp: line#134 (1)
 </li>
 <li>	../libavogadro/src/extensions/gamessextension.cpp: line#91 (1)
 </li>
@@ -58,7 +58,7 @@ Total Issues = 26 ...as of March 24 2008 12:38:34</p>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 11 issues found!</b>
+<b>OOPS! 30 issues found!</b>
 <ul>
 <li>	../libavogadro/src/extensions/constraintsmodel.cpp: do not include QtModules line#29(QtGui)
 </li>
@@ -82,6 +82,44 @@ Total Issues = 26 ...as of March 24 2008 12:38:34</p>
 </li>
 <li>	../libavogadro/src/extensions/wiitrackextension.cpp: do not include QtModules line#27(QtGui)
 </li>
+<li>	../libavogadro/src/extensions/conformersearchdialog.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/constraintsdialog.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/constraintsmodel.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/forcefielddialog.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/forcefieldextension.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/gamessextension.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/gamessinputdata.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/h2methylextension.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/hydrogensextension.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/liganddialog.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/pocketdialog.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/propextension.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/propmodel.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/pythonextension.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/selectextension.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/templateextension.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/unitcellextension.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/unitcellparamdialog.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/wiitrackextension.h: using leading or trailing underscores on include guard in header
+</li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
 	Qt headers from installed headers; cpp file should include their
@@ -99,19 +137,10 @@ Total Issues = 26 ...as of March 24 2008 12:38:34</p>
 <li>Check for compares to QString::null... 
 <b>okay!</b>
 <li>Check for inappropriate pass-by-value function args... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../libavogadro/src/extensions/pythonextension.cpp: line#33[QString]
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Passing large objects by value is wasteful and slow. Use
-	references-to-const instead. For example: &#39;func( QDateTime dt )&#39; is
-	better written as &#39;func( const QDateTime &amp;dt )&#39;</p>
-</li>
-
+<b>okay!</b>
 <li>Check for invalid SIGNALs and SLOTs passed to connect()... 
 <b>okay!</b>
-<li>Check for Qt classes that should be avoided... 
+<li>Check for Qt methods that should be avoided... 
 <b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
@@ -120,8 +149,10 @@ Total Issues = 26 ...as of March 24 2008 12:38:34</p>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
-<b>OOPS! 7 issues found!</b>
+<b>OOPS! 8 issues found!</b>
 <ul>
+<li>	../libavogadro/src/extensions/forcefieldextension.cpp: line#294[diaog] (1)
+</li>
 <li>	../libavogadro/src/extensions/gamessinputdata.cpp: line#1934[wether],2055[wether],2155[wether],2216[wether],2282[wether],2430[wether] (6)
 </li>
 <li>	../libavogadro/src/extensions/gamessinputdialog.h: line#89[propogate] (1)

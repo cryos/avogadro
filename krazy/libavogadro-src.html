@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>krazy Analysis</title>
+<title>krazy2 Analysis</title>
 </head>
 <body>
-<h1>krazy Analysis</h1>
+<h1>krazy2 Analysis</h1>
 <p>Checkers Run = 24<br>
 Files Processed = 52<br>
-Total Issues = 7 ...as of March 24 2008 12:30:23</p>
+Total Issues = 35 ...as of April 12 2008 17:08:40</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -37,9 +37,65 @@ Total Issues = 7 ...as of March 24 2008 12:30:23</p>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 1 issue found!</b>
+<b>OOPS! 29 issues found!</b>
 <ul>
 <li>	../libavogadro/src/glwidget.cpp: put config.h in angle brackets line#30
+</li>
+<li>	../libavogadro/src/boost.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/camera.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/color.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/colorbutton.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/cylinder.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/elementcolor.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/elementtranslate.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/engine.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extension.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/global.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/glpainter.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/glwidget.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/painter.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/painterdevice.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/painterengine.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/periodictableview.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/povpainter.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/primitive.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/primitiveitemmodel.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/primitivelist.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/pythoninterpreter.h: missing or improper include guard in header
+</li>
+<li>	../libavogadro/src/pythoninterpreter.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/residuecolor.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/sphere.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/textrenderer.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/tool.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/toolgroup.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/undosequence.h: using leading or trailing underscores on include guard in header
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
@@ -61,7 +117,7 @@ Total Issues = 7 ...as of March 24 2008 12:30:23</p>
 <b>okay!</b>
 <li>Check for invalid SIGNALs and SLOTs passed to connect()... 
 <b>okay!</b>
-<li>Check for Qt classes that should be avoided... 
+<li>Check for Qt methods that should be avoided... 
 <b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
@@ -83,7 +139,7 @@ Total Issues = 7 ...as of March 24 2008 12:30:23</p>
 <li>Check for system calls to replace by KDE or Qt equivalents... 
 <b>OOPS! 4 issues found!</b>
 <ul>
-<li>	../libavogadro/src/glwidget.cpp: line#305 getenv[qgetenv],306 getenv[qgetenv] (2)
+<li>	../libavogadro/src/glwidget.cpp: line#307 getenv[qgetenv],308 getenv[qgetenv] (2)
 </li>
 <li>	../libavogadro/src/toolgroup.cpp: line#75 getenv[qgetenv],77 getenv[qgetenv] (2)
 </li>
