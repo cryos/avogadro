@@ -33,7 +33,7 @@
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
 
-#include <eigen/matrix.h>
+#include <eigen/projective.h>
 
 #include <QGLWidget>
 #include <QDebug>
@@ -209,31 +209,37 @@ namespace Avogadro {
     // stencil test will pass only when stencil buffer value = 0; 
     // (~0 = 0x11...11)
     glPushMatrix();
-    Matrix3f mat;
-    mat.loadIdentity();
-    Vector3f xAxis(1,0,0);
-    Vector3f yAxis(0,1,0);
-    Vector3f zAxis(0,0,1);
-    Vector3f normal(m_clipEqA, m_clipEqB, m_clipEqC);
-    Vector3f point1(-m_clipEqD / normal.norm(),  1000,  1000);
-    Vector3f point2(-m_clipEqD / normal.norm(),  1000, -1000);
-    Vector3f point3(-m_clipEqD / normal.norm(), -1000,  1000);
-    Vector3f point4(-m_clipEqD / normal.norm(), -1000, -1000);
+    Vector3f normalEq(m_clipEqA, m_clipEqB, m_clipEqC);
+    Vector3f point1(-m_clipEqD / normalEq.norm(),  1000.,  1000.);
+    Vector3f point2(-m_clipEqD / normalEq.norm(),  1000., -1000.);
+    Vector3f point3(-m_clipEqD / normalEq.norm(), -1000.,  1000.);
+    Vector3f point4(-m_clipEqD / normalEq.norm(), -1000., -1000.);
 
-    // XY plane
-    Vector3f xyNormal(normal[0], normal[1], 0.0);
-    xyNormal.normalize();
-    double xyang = acos(xyNormal.dot( xAxis ));
-    if ((xyNormal.cross(xAxis))[2] < 0.0) {
-      xyang = - xyang;
-    } 
-    mat.prerotate3( xyang, zAxis );
-    point1 *= mat;    
-    point2 *= mat;    
-    point3 *= mat;    
-    point4 *= mat;    
+    if ( (m_clipEqB == 0.0) && (m_clipEqC == 0.0) ) {
+      if (m_clipEqA < 0.0 ) {
+        MatrixP3f mat;
+        Vector3f zAxis(0., 0., 1.);
+        mat.loadRotation3(M_PI, zAxis);
 
-    // TODO: ROTATE OTHER PLANES TOO...
+        point1 = mat * point1;    
+        point2 = mat * point2;    
+        point3 = mat * point3;    
+        point4 = mat * point4;    
+      }
+    } else {
+      MatrixP3f mat;
+      Vector3f normal(1., 0., 0.);
+      normalEq.normalize();
+      double angle = acos(normal.dot(normalEq));
+      Vector3f axis = normal.cross(normalEq);
+      axis.normalize();
+      mat.loadRotation3(angle, axis);
+
+      point1 = mat * point1;    
+      point2 = mat * point2;    
+      point3 = mat * point3;    
+      point4 = mat * point4;    
+    }
 
     glBegin(GL_QUADS); // rendering the plane quad. Note, it should be big 
                        // enough to cover all clip edge area.

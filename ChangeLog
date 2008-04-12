@@ -1,3 +1,9 @@
+2008-04-13  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/engines/surfaceengine.*,
+	libavogadro/src/engines/surfacesettingswidget.ui: Clipping now works
+	for any specified plane.
+
 2008-04-12  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/engines/surfaceengine.*,

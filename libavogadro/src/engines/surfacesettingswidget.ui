@@ -154,7 +154,7 @@
      <item>
       <widget class="QDoubleSpinBox" name="CSpinBox" >
        <property name="enabled" >
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="minimum" >
         <double>-99.989999999999995</double>
