@@ -33,6 +33,8 @@
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
 
+#include <eigen/matrix.h>
+
 #include <QGLWidget>
 #include <QDebug>
 
@@ -53,6 +55,14 @@ namespace Avogadro {
     connect(m_isoGen, SIGNAL(finished()), this, SLOT(isoGenFinished()));
     m_color = Color(1.0, 0.0, 0.0, m_alpha);
     m_surfaceValid = false;
+      
+    // clipping stuff
+    m_clip = false;
+    m_clipEqA =1.0;
+    m_clipEqB =0.0;
+    m_clipEqC =0.0;
+    m_clipEqD =0.0;
+    // clipping stuff
   }
 
   SurfaceEngine::~SurfaceEngine()
@@ -150,13 +160,14 @@ namespace Avogadro {
       return true;
     }
 
+    qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
+
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glEnable(GL_BLEND);
     glShadeModel(GL_SMOOTH);
 
     pd->painter()->setColor(1.0, 0.0, 0.0, m_alpha);
-
-    qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
+    m_color.applyAsMaterials();
 
     switch (m_renderMode) {
     case 0:
@@ -170,6 +181,86 @@ namespace Avogadro {
       break;
     }
 
+    if (m_clip) 
+    {
+
+    GLdouble eq[4] = {m_clipEqA, m_clipEqB, m_clipEqC, m_clipEqD};
+    glEnable(GL_CLIP_PLANE0);
+    glClipPlane(GL_CLIP_PLANE0, eq);
+    // Rendering the mesh's clip edge 
+    glEnable(GL_STENCIL_TEST);
+    glClear(GL_STENCIL_BUFFER_BIT);
+    glDisable(GL_DEPTH_TEST);
+    glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+    // first pass: increment stencil buffer value on back faces
+    glStencilFunc(GL_ALWAYS, 0, 0);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_INCR);
+    glCullFace(GL_FRONT); // render back faces only
+    doWork(mol);
+    // second pass: decrement stencil buffer value on front faces
+    glStencilOp(GL_KEEP, GL_KEEP, GL_DECR);
+    glCullFace(GL_BACK); // render front faces only
+    doWork(mol);
+    // drawing clip planes masked by stencil buffer content
+    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+    glEnable(GL_DEPTH_TEST);
+    glDisable(GL_CLIP_PLANE0);
+    glStencilFunc(GL_NOTEQUAL, 0, ~0); 
+    // stencil test will pass only when stencil buffer value = 0; 
+    // (~0 = 0x11...11)
+    glPushMatrix();
+    Matrix3f mat;
+    mat.loadIdentity();
+    Vector3f xAxis(1,0,0);
+    Vector3f yAxis(0,1,0);
+    Vector3f zAxis(0,0,1);
+    Vector3f normal(m_clipEqA, m_clipEqB, m_clipEqC);
+    Vector3f point1(-m_clipEqD / normal.norm(),  1000,  1000);
+    Vector3f point2(-m_clipEqD / normal.norm(),  1000, -1000);
+    Vector3f point3(-m_clipEqD / normal.norm(), -1000,  1000);
+    Vector3f point4(-m_clipEqD / normal.norm(), -1000, -1000);
+
+    // XY plane
+    Vector3f xyNormal(normal[0], normal[1], 0.0);
+    xyNormal.normalize();
+    double xyang = acos(xyNormal.dot( xAxis ));
+    if ((xyNormal.cross(xAxis))[2] < 0.0) {
+      xyang = - xyang;
+    } 
+    mat.prerotate3( xyang, zAxis );
+    point1 *= mat;    
+    point2 *= mat;    
+    point3 *= mat;    
+    point4 *= mat;    
+
+    // TODO: ROTATE OTHER PLANES TOO...
+
+    glBegin(GL_QUADS); // rendering the plane quad. Note, it should be big 
+                       // enough to cover all clip edge area.
+    GLfloat points[4][3] = { {0.0,  1000.0,  1000.0},
+                             {0.0,  1000.0, -1000.0},
+                             {0.0, -1000.0,  1000.0},
+                             {0.0, -1000.0, -1000.0}};
+    glVertex3fv(point1.array());
+    glVertex3fv(point2.array());
+    glVertex3fv(point4.array());
+    glVertex3fv(point3.array());
+    glEnd();
+    glPopMatrix();
+    // End rendering mesh's clip edge
+    // Rendering mesh  
+    glDisable(GL_STENCIL_TEST);
+    glEnable(GL_CLIP_PLANE0); // enabling clip plane again
+    }
+
+    doWork(mol);
+
+    glPopAttrib();
+
+    return true;
+  }
+
+  void SurfaceEngine::doWork(Molecule *mol) {
     glBegin(GL_TRIANGLES);
     if (m_colorMode == 1) { // ESP
       Color color;
@@ -194,7 +285,7 @@ namespace Avogadro {
         glVertex3fv(t.p2.array());
       }
     } else { // RGB
-      m_color.applyAsMaterials();
+      //m_color.applyAsMaterials();
       for(int i=0; i < m_isoGen->numTriangles(); ++i)
       {
         triangle t = m_isoGen->getTriangle(i);
@@ -211,10 +302,6 @@ namespace Avogadro {
       }
     }
     glEnd();
-
-    glPopAttrib();
-
-    return true;
   }
 
   inline double SurfaceEngine::radius(const Atom *a) const
@@ -293,6 +380,14 @@ namespace Avogadro {
       connect(m_settingsWidget->colorCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setColorMode(int)));
       connect(m_settingsWidget->customColorButton, SIGNAL(colorChanged(QColor)), this, SLOT(setColor(QColor)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+     
+      // clipping stuff
+      connect(m_settingsWidget->clipCheckBox, SIGNAL(stateChanged(int)), this, SLOT(setClipEnabled(int)));
+      connect(m_settingsWidget->ASpinBox, SIGNAL(valueChanged(double)), this, SLOT(setClipEqA(double)));
+      connect(m_settingsWidget->BSpinBox, SIGNAL(valueChanged(double)), this, SLOT(setClipEqB(double)));
+      connect(m_settingsWidget->CSpinBox, SIGNAL(valueChanged(double)), this, SLOT(setClipEqC(double)));
+      connect(m_settingsWidget->DSpinBox, SIGNAL(valueChanged(double)), this, SLOT(setClipEqD(double)));
+      // clipping stuff
 
       m_settingsWidget->opacitySlider->setValue(20*m_alpha);
       m_settingsWidget->renderCombo->setCurrentIndex(m_renderMode);

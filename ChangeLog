@@ -1,3 +1,11 @@
+2008-04-12  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/engines/surfaceengine.*,
+	libavogadro/src/engines/surfacesettingswidget.ui: Added clipping
+	plane. This feature could later be moved to glwidget to clip any
+	engine... This would probably require engines to have a clipped and
+	solid property (like they currently have radius)
+
 2008-04-09  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/glpainter.cpp, libavogadro/src/glwidget.cpp: Parts

@@ -79,6 +79,7 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       bool renderOpaque(PainterDevice *pd);
+      void doWork(Molecule *mol);
       //@}
 
       double transparencyDepth() const;
@@ -125,6 +126,11 @@ namespace Avogadro {
       //void VDWSurface(Molecule *mol);
       Color espColor(Molecule *mol, Eigen::Vector3f &pos);
 
+      // clipping stuff
+      bool m_clip;
+      double m_clipEqA, m_clipEqB, m_clipEqC, m_clipEqD;
+      // clipping stuff
+
     private Q_SLOTS:
       void vdwThreadFinished();
       void isoGenFinished();
@@ -145,6 +151,35 @@ namespace Avogadro {
        * @param color the new color to use
        */
       void setColor(const QColor& color);
+
+      // clipping stuff
+      void setClipEnabled(int value) 
+      { 
+        m_clip = value; 
+        emit changed();
+      }
+      void setClipEqA(double value) 
+      {
+        m_clipEqA = value; 
+        emit changed();
+      } 
+      void setClipEqB(double value) 
+      {
+        m_clipEqB = value; 
+        emit changed();
+      }
+      void setClipEqC(double value) 
+      {
+        m_clipEqC = value; 
+        emit changed();
+      }
+      void setClipEqD(double value) 
+      {
+        m_clipEqD = value; 
+        emit changed();
+      }
+      // clipping stuff
+
   };
 
   class SurfaceSettingsWidget : public QWidget, public Ui::SurfaceSettingsWidget

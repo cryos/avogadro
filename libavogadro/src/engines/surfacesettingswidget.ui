@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>288</width>
-    <height>167</height>
+    <width>312</width>
+    <height>249</height>
    </rect>
   </property>
   <layout class="QGridLayout" >
@@ -132,7 +132,45 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="1" >
+   <item rowspan="2" row="5" column="0" colspan="2" >
+    <layout class="QHBoxLayout" >
+     <item>
+      <widget class="QDoubleSpinBox" name="ASpinBox" >
+       <property name="minimum" >
+        <double>-99.989999999999995</double>
+       </property>
+       <property name="value" >
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="BSpinBox" >
+       <property name="minimum" >
+        <double>-99.989999999999995</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="CSpinBox" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
+       <property name="minimum" >
+        <double>-99.989999999999995</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="DSpinBox" >
+       <property name="minimum" >
+        <double>-99.989999999999995</double>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="7" column="0" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -144,6 +182,13 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="4" column="0" colspan="2" >
+    <widget class="QCheckBox" name="clipCheckBox" >
+     <property name="text" >
+      <string>Clipping plane: Ax + By + Cz + D = 0</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
