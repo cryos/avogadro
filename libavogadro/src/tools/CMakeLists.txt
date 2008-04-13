@@ -42,20 +42,6 @@ TARGET_LINK_LIBRARIES(bondcentrictool
 )
 INSTALL(TARGETS bondcentrictool DESTINATION ${DESTINATION_DIR})
 
-### bondcentrictool
-set(bondcentrictool_SRCS bondcentrictool.cpp)
-qt4_add_resources(bondcentrictool_RC_SRCS bondcentrictool.qrc)
-qt4_automoc(${bondcentrictool_SRCS})
-ADD_LIBRARY(bondcentrictool SHARED skeletontree.cpp quaternion.cpp navigate.cpp
-                            ${bondcentrictool_SRCS} ${bondcentrictool_RC_SRCS})
-TARGET_LINK_LIBRARIES(bondcentrictool
-  ${OPENBABEL2_LIBRARIES}
-  ${QT_LIBRARIES}
-  ${OPENGL_LIBRARIES}
-  avogadro-lib
-)
-INSTALL(TARGETS bondcentrictool DESTINATION ${DESTINATION_DIR})
-
 ### clickmeasuretool
 set(clickmeasuretool_SRCS clickmeasuretool.cpp)
 qt4_add_resources(clickmeasuretool_RC_SRCS clickmeasuretool.qrc)

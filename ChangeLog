@@ -1,3 +1,8 @@
+2008-04-13  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/tools/CMakeLists.txt: Removed duplicate definition
+	of bondcentrictool.
+
 2008-04-13  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/engines/surfaceengine.*,
