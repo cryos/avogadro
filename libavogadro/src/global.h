@@ -2,6 +2,7 @@
   global.h - Setup some default defines.
 
   Copyright (C) 2007 by Donald Ephraim Curtis
+  Copyright (C) 2008 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -33,24 +34,33 @@
 # endif
 #endif
 
-#ifdef WIN32
+// If we are using a recent GCC version with visibility support use it
+#ifdef HAVE_GCC_VISIBILITY
+  #define A_DECL_IMPORT __attribute__ ((visibility("default")))
+  #define A_DECL_EXPORT __attribute__ ((visibility("default")))
+  #define A_DECL_HIDDEN __attribute__ ((visibility("hidden")))
+#elif defined(WIN32)
   #define A_DECL_IMPORT __declspec(dllimport)
   #define A_DECL_EXPORT __declspec(dllexport)
+  #define A_DECL_HIDDEN
 #else
-  #ifdef HAVE_GCC_VISIBILITY
-    #define A_DECL_IMPORT __attribute__ ((visibility("default")))
-    #define A_DECL_EXPORT __attribute__ ((visibility("default")))
+  #define A_DECL_IMPORT
+  #define A_DECL_EXPORT
+  #define A_DECL_HIDDEN
+#endif
+
+// This macro should be used to export parts of the API
+#ifndef A_EXPORT
+  #ifdef avogadro_lib_EXPORTS
+    #define A_EXPORT A_DECL_EXPORT
+  #else
+    #define A_EXPORT A_DECL_IMPORT
   #endif
 #endif
 
-#ifndef A_EXPORT
-# ifdef avogadro_lib_EXPORTS
-#  define A_EXPORT A_DECL_EXPORT
-# else
-#  define A_EXPORT A_DECL_IMPORT
-# endif
-#else
-# define A_EXPORT
+// This macro allows the selective hiding of parts of our exposed API
+#ifndef A_HIDE
+  #define A_HIDE A_DECL_HIDDEN
 #endif
 
 #ifndef GL_RESCALE_NORMAL
