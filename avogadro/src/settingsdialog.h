@@ -47,6 +47,7 @@ namespace Avogadro {
       void buttonClicked(QAbstractButton *button);
       void saveValues();
       void loadValues();
+      void qualityChanged(int value);
   };
 
 } // end namespace Avogadro

@@ -5,15 +5,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>277</width>
-    <height>160</height>
+    <width>241</width>
+    <height>100</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Settings</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="avogadro.qrc" >:/icons/tool.png</iconset>
+   <iconset resource="avogadro.qrc" >
+    <normaloff>:/icons/tool.png</normaloff>:/icons/tool.png</iconset>
   </property>
   <property name="sizeGripEnabled" >
    <bool>true</bool>
@@ -52,8 +53,23 @@
      </item>
      <item>
       <widget class="QLabel" name="qualityValueLabel" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+         <horstretch>50</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="text" >
-        <string>2</string>
+        <string>Medium</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -67,20 +83,6 @@
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="renderAxes" >
-     <property name="text" >
-      <string>Display Axes</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QCheckBox" name="renderDebug" >
-     <property name="text" >
-      <string>Display Debug Information</string>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QDialogButtonBox" name="dialogButtonBox" >
      <property name="layoutDirection" >
       <enum>Qt::LeftToRight</enum>
@@ -89,7 +91,7 @@
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons" >
-      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>
@@ -128,22 +130,6 @@
     <hint type="destinationlabel" >
      <x>286</x>
      <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>qualitySlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>qualityValueLabel</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>189</x>
-     <y>27</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>328</x>
-     <y>28</y>
     </hint>
    </hints>
   </connection>

@@ -1,5 +1,9 @@
 2008-04-13  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* avogadro/src/settingsdialog.*: Removed the axes and debug display
+	options from the global config - to be relocated to the view menu.
+	Also (hopefully) improved the display quality feedback.
+
 	* libavogadro/src/tools/navigate.* -> libavogadro/src/navigate.*,
 	libavogadro/include/avogadro/navigate.h,
 	libavogadro/src/tools/CMakeLists.txt,
