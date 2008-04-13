@@ -23,8 +23,8 @@
 
 #include "manipulatetool.h"
 #include "eyecandy.h"
-#include "navigate.h"
 
+#include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>

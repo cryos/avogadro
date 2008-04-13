@@ -22,7 +22,7 @@
  ***********************************************************************/
 
 #include "autoopttool.h"
-#include "navigate.h"
+#include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>

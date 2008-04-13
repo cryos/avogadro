@@ -25,6 +25,7 @@
 #ifndef __NAVIGATE_H
 #define __NAVIGATE_H
 
+#include <avogadro/global.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
 #include <QPoint>
@@ -39,7 +40,7 @@ namespace Avogadro {
    * This class contains navigation functions that are used
    * by several tools.
    */
-  class Navigate
+  class A_EXPORT Navigate
   {
     public:
       /**

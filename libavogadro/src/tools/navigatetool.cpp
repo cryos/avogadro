@@ -24,8 +24,8 @@
  **********************************************************************/
 
 #include "navigatetool.h"
-#include "navigate.h"
 #include "eyecandy.h"
+#include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>

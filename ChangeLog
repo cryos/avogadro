@@ -1,5 +1,19 @@
 2008-04-13  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/navigate.* -> libavogadro/src/navigate.*,
+	libavogadro/include/avogadro/navigate.h,
+	libavogadro/src/tools/CMakeLists.txt,
+	libavogadro/src/tools/aligntool.cpp,
+	libavogadro/src/tools/autoopttool.cpp,
+	libavogadro/src/tools/bondcentrictool.cpp,
+	libavogadro/src/tools/clickmeasuretool.cpp,
+	libavogadro/src/tools/drawtool.cpp,
+	libavogadro/src/tools/manipulatetool.cpp,
+	libavogadro/src/tools/navigatetool.cpp,
+	libavogadro/src/tools/selectrotatetool.cpp: Moved the navigate
+	functions from the tools directory into the library. They should be
+	exposed as part of our API and would be useful in scripting.
+
 	* libavogadro/src/tools/CMakeLists.txt: Removed duplicate definition
 	of bondcentrictool.
 
