@@ -296,7 +296,8 @@ namespace Avogadro {
     static bool enginesLoaded = false;
     if(!enginesLoaded)
       {
-        QString prefixPath = QString( INSTALL_PREFIX ) + "/lib/avogadro/engines";
+        QString prefixPath = QString(INSTALL_PREFIX) + "/"
+          + QString(INSTALL_LIBDIR) + "/avogadro/engines";
         QStringList pluginPaths;
         pluginPaths << prefixPath;
 
@@ -309,12 +310,12 @@ namespace Avogadro {
         }
 
         // load static plugins first
-	EngineFactory *bsFactory = qobject_cast<EngineFactory *>(new BSDYEngineFactory);
-	if (bsFactory)
-	{
+	      EngineFactory *bsFactory = qobject_cast<EngineFactory *>(new BSDYEngineFactory);
+	      if (bsFactory)
+	      {
           engineFactories.append(bsFactory);
           engineClassFactory[bsFactory->className()] = bsFactory;
-	}
+	      }
 
         // now load plugins from paths
         foreach( QString path, pluginPaths ) {

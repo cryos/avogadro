@@ -1,3 +1,12 @@
+2008-04-15  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* avogadro/src/config.h.in, libavogadro/src/config.h.in: Added
+	INSTALL_LIBDIR define in order to more reliably load plugins.
+
+	* avogadro/src/mainwindow.cpp, libavogadro/src/glwidget.*,
+	libavogadro/src/toolgroup.cpp: Adapted the loading scheme to use
+	INSTALL_LIBDIR - far more reliable.
+
 2008-04-13  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* avogadro/src/settingsdialog.*: Removed the axes and debug display

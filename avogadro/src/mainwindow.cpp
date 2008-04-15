@@ -3,6 +3,7 @@
 
   Copyright (C) 2006-2007 by Geoffrey R. Hutchison
   Copyright (C) 2006-2008 by Donald E. Curtis
+  Copyright (C) 2007-2008 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -1437,7 +1438,8 @@ namespace Avogadro
 
   void MainWindow::loadExtensions()
   {
-    QString prefixPath = QString( INSTALL_PREFIX ) + "/lib/avogadro/extensions";
+    QString prefixPath = QString(INSTALL_PREFIX) + "/"
+      + QString(INSTALL_LIBDIR) + "/avogadro/extensions";
     QStringList pluginPaths;
     pluginPaths << prefixPath;
 
@@ -1655,12 +1657,12 @@ namespace Avogadro
         primitivesWidget, SLOT( setEngine( Engine * ) ) );
 
     // Warn the user if no engines or tools are loaded
-    int nEngines = d->glWidget->engineFactories().size();
+    int nEngines = d->glWidget->engineFactories().size() - 1;
     int nTools = d->glWidget->toolGroup()->tools().size();
     QString error;
-    if(nEngines < 2 && !nTools)
+    if(!nEngines && !nTools)
       error = tr("No tools or engines loaded.");
-    else if(nEngines < 2)
+    else if(!nEngines)
       error = tr("No engines loaded.");
     else if(!nTools)
       error = tr("No tools loaded.");
