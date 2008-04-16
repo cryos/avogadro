@@ -187,10 +187,10 @@ namespace Avogadro {
       widget->setCursor(Qt::SizeAllCursor);
     }
 
-    // On a Mac, click and hold the Option key (Alt in Qt-speak)
+    // On a Mac, click and hold the Shift key
     if (event->buttons() & Qt::MidButton ||
         (event->buttons() & Qt::LeftButton &&
-         event->modifiers() == Qt::AltModifier))
+         event->modifiers() == Qt::ShiftModifier))
     {
       m_midButtonPressed = true;
       // Set the cursor - this needs to be reset to Qt::ArrowCursor after

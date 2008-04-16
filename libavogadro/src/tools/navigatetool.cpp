@@ -106,10 +106,10 @@ namespace Avogadro {
       widget->setCursor(Qt::ClosedHandCursor);
     }
 
-    // On a Mac, click and hold the Option key (Alt in Qt-speak)
+    // On a Mac, click and hold the Shift key
     if (event->buttons() & Qt::MidButton ||
         (event->buttons() & Qt::LeftButton &&
-         event->modifiers() == Qt::AltModifier))
+         event->modifiers() == Qt::ShiftModifier))
     {
       m_midButtonPressed = true;
       // Set the cursor - this needs to be reset to Qt::ArrowCursor after
@@ -175,9 +175,9 @@ namespace Avogadro {
       Navigate::rotate(widget, m_referencePoint, deltaDragging.x(), deltaDragging.y());
     }
     // On the Mac, either use a three-button mouse
-    // or hold down the Option key (AltModifier in Qt notation)
+    // or hold down the Shift key
     else if ( (event->buttons() & Qt::MidButton) ||
-        (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::AltModifier) )
+        (event->buttons() & Qt::LeftButton && event->modifiers() & Qt::ShiftModifier) )
     {
       // Perform the rotation
       Navigate::tilt(widget, m_referencePoint, deltaDragging.x());

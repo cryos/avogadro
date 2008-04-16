@@ -1,5 +1,11 @@
 2008-04-15  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/autoopttool.cpp,
+	libavogadro/src/tools/bondcentrictool.cpp,
+	libavogadro/src/tools/manipulatetool.cpp,
+	libavogadro/src/tools/navigatetool.cpp: Use the shift key rather than
+	alt key as the second modifier.
+
 	* avogadro/src/config.h.in, libavogadro/src/config.h.in: Added
 	INSTALL_LIBDIR define in order to more reliably load plugins.
 

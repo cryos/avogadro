@@ -118,10 +118,10 @@ namespace Avogadro {
     m_leftButtonPressed = (event->buttons() & Qt::LeftButton
         && event->modifiers() == Qt::NoModifier);
     // On the Mac, either use a three-button mouse
-    // or hold down the Option key (AltModifier in Qt notation)
+    // or hold down the Shift key
     m_midButtonPressed = ((event->buttons() & Qt::MidButton) ||
         (event->buttons() & Qt::LeftButton && event->modifiers()
-         & Qt::AltModifier));
+         & Qt::ShiftModifier));
     // Hold down the Command key (ControlModifier in Qt notation) for right button
     m_rightButtonPressed = ((event->buttons() & Qt::RightButton) ||
         (event->buttons() & Qt::LeftButton && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)));
