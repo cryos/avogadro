@@ -124,18 +124,18 @@ namespace Avogadro {
     ChangeBondOrderDrawCommandPrivate * const d;
   };
 
-  class InsertSmilesDrawCommandPrivate;
-  class InsertSmilesDrawCommand : public QUndoCommand
+  class InsertFragmentCommandPrivate;
+  class InsertFragmentCommand : public QUndoCommand
   {
   public:
-    InsertSmilesDrawCommand(Molecule *molecule, Molecule &generatedMolecule);
-    ~InsertSmilesDrawCommand();
+    InsertFragmentCommand(Molecule *molecule, Molecule &generatedMolecule);
+    ~InsertFragmentCommand();
 
     virtual void undo();
     virtual void redo();
 
   private:
-    InsertSmilesDrawCommandPrivate * const d;
+    InsertFragmentCommandPrivate * const d;
   };
 
 

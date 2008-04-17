@@ -1,3 +1,22 @@
+2008-04-17  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/treeitem.*: New class for handling filenames in
+	model/view context, particularly a tree browser.
+
+	* libavogadro/src/tools/directorytreemodel.*: New class for
+	handling directory trees with multiple paths. (Basic Qt class
+	QDirModel gives too much file info and doesn't handle multiple
+	top-level directories.)
+
+	* libavogadro/src/tools/insertfragmentdialog.*: New class to
+	combine the SMILES generation and reading in fragment files. Still
+	needs a bit of polish.
+
+	* libavogadro/src/tools/drawtool.*: Use above.
+
+	* libavogadro/src/tools/drawcommand.*: Change InsertSMILES class
+	to InsertFragment (now that we have a general fragment browser).
+
 2008-04-16  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/navigate.*: Add general rotate(x, y, z) method

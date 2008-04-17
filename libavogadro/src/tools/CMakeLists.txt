@@ -16,10 +16,15 @@ include_directories(
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
 ### drawtool
-set(drawtool_SRCS drawtool.cpp)
+set(drawtool_SRCS drawtool.cpp  directorytreemodel.cpp
+                                insertfragmentdialog.cpp
+                                )
 qt4_add_resources(drawtool_RC_SRCS drawtool.qrc)
 qt4_automoc(${drawtool_SRCS})
-ADD_LIBRARY(drawtool SHARED drawcommand.cpp drawtool.cpp
+qt4_wrap_ui(drawtool_UIS_H insertfragmentdialog.ui)
+ADD_LIBRARY(drawtool SHARED drawcommand.cpp
+                    ${drawtool_SRCS}
+                    ${drawtool_UIS_H}
                     ${drawtool_RC_SRCS} )
 TARGET_LINK_LIBRARIES(drawtool
     ${OPENBABEL2_LIBRARIES}

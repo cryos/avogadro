@@ -511,37 +511,37 @@ namespace Avogadro {
   }
  
   /////////////////////////////////////////////////////////////////////////////
-  // Insert Smiles
+  // Insert Fragment
   /////////////////////////////////////////////////////////////////////////////
 
-  class InsertSmilesDrawCommandPrivate {
+  class InsertFragmentCommandPrivate {
   public:
-    InsertSmilesDrawCommandPrivate() : molecule(0), generatedMolecule(0) {};
+    InsertFragmentCommandPrivate() : molecule(0), generatedMolecule(0) {};
 
     Molecule *molecule;
     Molecule moleculeCopy, generatedMolecule;
   };
 
-  InsertSmilesDrawCommand::InsertSmilesDrawCommand(Molecule *molecule, Molecule &generatedMolecule) : d(new InsertSmilesDrawCommandPrivate)
+  InsertFragmentCommand::InsertFragmentCommand(Molecule *molecule, Molecule &generatedMolecule) : d(new InsertFragmentCommandPrivate)
   {
-    setText(QObject::tr("Insert SMILES"));
+    setText(QObject::tr("Insert Fragment"));
     d->molecule = molecule;
     d->moleculeCopy = *molecule;
     d->generatedMolecule = generatedMolecule;
   }
 
-  InsertSmilesDrawCommand::~InsertSmilesDrawCommand()
+  InsertFragmentCommand::~InsertFragmentCommand()
   {
     delete d;
   }
 
-  void InsertSmilesDrawCommand::undo()
+  void InsertFragmentCommand::undo()
   {
     *(d->molecule) = d->moleculeCopy;
     d->molecule->update();
   }
 
-  void InsertSmilesDrawCommand::redo()
+  void InsertFragmentCommand::redo()
   {
     *(d->molecule) += d->generatedMolecule;
     d->molecule->update();
