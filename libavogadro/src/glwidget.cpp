@@ -181,7 +181,7 @@ namespace Avogadro {
   class GLWidgetPrivate
   {
   public:
-    GLWidgetPrivate() : background( Qt::black ),
+    GLWidgetPrivate() : background( 0,0,0,0 ),
                         aCells( 1 ), bCells( 1 ), cCells( 1 ),
                         uc (0),
                         molecule( 0 ),
@@ -411,6 +411,7 @@ namespace Avogadro {
         m_resize=false;
       }
 
+			d->background.setAlphaF(0.0);
       m_widget->qglClearColor(d->background);
       m_widget->paintGL();
       m_widget->swapBuffers();
@@ -592,6 +593,7 @@ namespace Avogadro {
     d->renderMutex.lock();
 #endif
     d->background = background;
+		d->background.setAlphaF(0.0);
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.unlock();
 #endif
@@ -1637,7 +1639,7 @@ namespace Avogadro {
   {
     // Make sure to provide some default values for any settings.value("", DEFAULT) call
     setQuality(settings.value("quality", 2).toInt());
-    d->background = settings.value("background", QColor(0,0,0)).value<QColor>();
+    d->background = settings.value("background", QColor(0,0,0,0)).value<QColor>();
     d->renderAxes = settings.value("renderAxes", 1).value<bool>();
     d->renderDebug = settings.value("renderDebug", 0).value<bool>();
 

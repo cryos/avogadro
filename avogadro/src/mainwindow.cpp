@@ -1181,8 +1181,7 @@ namespace Avogadro
 
   void MainWindow::setBackgroundColor()
   {
-    QColor current = d->glWidget->background();
-    d->glWidget->setBackground( QColorDialog::getRgba( current.rgba(), NULL, this ) );
+    d->glWidget->setBackground( QColorDialog::getColor( d->glWidget->background(), this ) );
     d->glWidget->update();
   }
 
