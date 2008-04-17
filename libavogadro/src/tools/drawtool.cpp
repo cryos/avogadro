@@ -647,7 +647,6 @@ namespace Avogadro {
 
       m_fragmentButton = new QPushButton(m_settingsWidget);
       m_fragmentButton->setText(tr("Fragment Library..."));
-      m_fragmentButton->setCheckable(true);
       connect(m_fragmentButton, SIGNAL(clicked(bool)),
               this, SLOT(showFragmentDialog(bool)));
 
@@ -689,15 +688,13 @@ namespace Avogadro {
     m_settingsWidget = 0;
   }
 
-  void DrawTool::showFragmentDialog(bool checked) {
-    if (checked) {
-      m_fragmentButton->setChecked(true);
-      m_fragmentDialog->show();
-    } else {
-      m_fragmentButton->setChecked(false);
+  void DrawTool::showFragmentDialog(bool) {
+		if (m_fragmentDialog->isVisible()) {
       m_fragmentDialog->hide();
       m_insertFragmentMode = false;
-    }
+    } else {
+	    m_fragmentDialog->show();
+		}
   }
 
   void DrawTool::writeSettings(QSettings &settings) const

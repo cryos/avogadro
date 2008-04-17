@@ -31,6 +31,8 @@
 
 #include "ui_insertfragmentdialog.h"
 
+class QCloseEvent;
+
 namespace Avogadro {
 
   class Molecule;
@@ -46,18 +48,19 @@ namespace Avogadro {
       //! Desconstructor
       ~InsertFragmentDialog();
 
-      const Molecule *fragment() const;
+      const Molecule *fragment();
 
-      const QString smilesString() const;
+			const QString smilesString();
       void setSmilesString(const QString);
 
       const QStringList directoryList() const;
       void setDirectoryList(const QStringList);
 
+			void closeEvent( QCloseEvent *event );
+
     public slots:
       void refresh();
       void setupInsertMode(bool);
-      void finished(int);
       void addDirectory(bool);
 
     signals:

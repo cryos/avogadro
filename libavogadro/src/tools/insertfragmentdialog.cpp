@@ -34,6 +34,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDir>
+#include <QCloseEvent>
 #include <QDebug>
 
 using namespace OpenBabel;
@@ -48,6 +49,7 @@ namespace Avogadro {
     DirectoryTreeModel *model;
 
     bool         insertMode;
+		bool         smilesMode;
 
     InsertFragmentPrivate() : insertMode(false)
     { }
@@ -88,13 +90,15 @@ namespace Avogadro {
     delete d;
   }
 
-  const Molecule *InsertFragmentDialog::fragment() const
+  const Molecule *InsertFragmentDialog::fragment()
   {
     d->fragment.Clear();
 
     // SMILES insert
-    if (ui.smilesLineEdit->hasFocus()) { // FIXME -- don't know the best solution
-      std::string SmilesString((ui.smilesLineEdit->text()).toAscii());
+    if (d->smilesMode) { 
+	
+  		// We should use the method because it will grab updates to the line edit
+      std::string SmilesString(smilesString().toAscii());
       if(d->conv.SetInFormat("smi")
          && d->conv.ReadString(&d->fragment, SmilesString))
         {
@@ -133,14 +137,18 @@ namespace Avogadro {
     return &d->fragment;
   }
 
-  const QString InsertFragmentDialog::smilesString() const
+  const QString InsertFragmentDialog::smilesString()
   {
+	  if (!ui.smilesLineEdit->text().isEmpty()) {
+			_smilesString = ui.smilesLineEdit->text();
+		}
     return _smilesString;
   }
 
   void InsertFragmentDialog::setSmilesString(const QString smiles)
   {
     _smilesString = smiles;
+		ui.smilesLineEdit->setText(_smilesString);
   }
 
   const QStringList InsertFragmentDialog::directoryList() const
@@ -157,14 +165,20 @@ namespace Avogadro {
   void InsertFragmentDialog::refresh()
   {
     d->model->setDirectoryList(_directoryList);
+		ui.directoryTreeView->update();
   }
 
   void InsertFragmentDialog::setupInsertMode(bool)
   {
     bool inserting = (ui.insertFragmentButton->text() == tr("Stop Inserting"));
 
-    ui.smilesLineEdit->clearFocus();
-    ui.directoryTreeView->clearFocus();
+		if (ui.smilesLineEdit->hasFocus()) {
+    	ui.smilesLineEdit->clearFocus();
+			d->smilesMode = true;
+		}
+		else {
+			d->smilesMode = false;
+		}
 
     if(!inserting) {
       ui.insertFragmentButton->setText(tr("Stop Inserting"));
@@ -174,11 +188,12 @@ namespace Avogadro {
     emit(setInsertMode(!inserting));
   }
 
-  void InsertFragmentDialog::finished(int)
+  void InsertFragmentDialog::closeEvent(QCloseEvent *event)
   {
     // stop inserting
     if (ui.insertFragmentButton->text() == tr("Stop Inserting"))
       setupInsertMode(false);
+		event->accept();
   }
 
   void InsertFragmentDialog::addDirectory(bool)
