@@ -62,19 +62,25 @@ namespace Avogadro {
 
   void Navigate::rotate(GLWidget *widget, const Eigen::Vector3d &center, double deltaX, double deltaY)
   {
-    Vector3d xAxis = widget->camera()->backTransformedXAxis();
-    Vector3d yAxis = widget->camera()->backTransformedYAxis();
-    widget->camera()->translate(center);
-    widget->camera()->rotate(deltaX * ROTATION_SPEED, yAxis);
-    widget->camera()->rotate(deltaY * ROTATION_SPEED, xAxis);
-    widget->camera()->translate(-center);
+    // For interactive use, we should switch the X and Y axes
+    rotate(widget, center, deltaY, deltaX, 0.0);
   }
 
   void Navigate::tilt(GLWidget *widget, const Eigen::Vector3d &center, double delta)
   {
+    rotate(widget, center, 0.0, 0.0, delta);
+  }
+
+  void Navigate::rotate(GLWidget *widget, const Eigen::Vector3d &center, 
+                        double deltaX, double deltaY, double deltaZ)
+  {
+    Vector3d xAxis = widget->camera()->backTransformedXAxis();
+    Vector3d yAxis = widget->camera()->backTransformedYAxis();
     Vector3d zAxis = widget->camera()->backTransformedZAxis();
     widget->camera()->translate(center);
-    widget->camera()->rotate(delta * ROTATION_SPEED, zAxis);
+    widget->camera()->rotate(deltaX * ROTATION_SPEED, xAxis);
+    widget->camera()->rotate(deltaY * ROTATION_SPEED, yAxis);
+    widget->camera()->rotate(deltaZ * ROTATION_SPEED, zAxis);
     widget->camera()->translate(-center);
   }
 

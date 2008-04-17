@@ -89,6 +89,18 @@ namespace Avogadro {
        */
       static void tilt(GLWidget *widget, const Eigen::Vector3d &center,
                        double delta);
+
+      /**
+       * Rotate about center by deltaX, deltaY, and deltaZ in the x, y and z axes
+       * A generalization of the rotate() and tilt() methods.
+       * @param widget the GLWidget being operated on.
+       * @param center the point at the center of rotation.
+       * @param deltaX the amount to rotate about the x axis in degrees.
+       * @param deltaY the amount to rotate about the y axis in degrees.
+       * @param deltaZ the amount to rotate about the z axis in degrees.
+       */
+      static void rotate(GLWidget *widget, const Eigen::Vector3d &center,
+                         double deltaX, double deltaY, double deltaZ);
   };
 
 }

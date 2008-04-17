@@ -1,3 +1,8 @@
+2008-04-16  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/navigate.*: Add general rotate(x, y, z) method
+	(for scripting).
+
 2008-04-15  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/autoopttool.cpp,
