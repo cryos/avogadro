@@ -187,6 +187,7 @@ namespace Avogadro {
 
   void DirectoryTreeModel::setupModelData(const QStringList &dirList, TreeItem *parent)
   {
+    emit layoutAboutToBeChanged();
     parent->deleteChildren(); // remove any previous data
 
     int position = 0; // current number of subdirectories (i.e., the relative path depth)
@@ -197,7 +198,6 @@ namespace Avogadro {
 
       if (currentDir.exists()) {
         absoluteDepth = directoryDepth(currentDir.absolutePath());
-        qDebug() << dir << absoluteDepth;
 
         QList<TreeItem*> parents;
         QList<int> indentations; // number of subdirectories for each item in the model
@@ -251,6 +251,7 @@ namespace Avogadro {
 
       }
     }
+    emit layoutChanged();
   }
 
 } // end namespace Avogadro

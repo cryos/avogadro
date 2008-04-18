@@ -70,19 +70,26 @@ namespace Avogadro {
 
     d = new InsertFragmentPrivate;
 
-    QString dir = QDir::homePath() + "/Library/Application Support/Avogadro/";
-    _directoryList << dir;
+    QString dir;
+#ifdef Q_WS_MAC
+    dir = QDir::homePath() + "/Library/Application Support/Avogadro/";
+#endif
+    if (!dir.isEmpty())
+      _directoryList << dir;
     d->model = new DirectoryTreeModel(_directoryList, this);
 
     ui.setupUi(this);
     ui.directoryTreeView->setModel(d->model);
     ui.directoryTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
     ui.directoryTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui.directoryTreeView->setUniformRowHeights(true);
 
     connect(ui.insertFragmentButton, SIGNAL(clicked(bool)),
             this, SLOT(setupInsertMode(bool)));
     connect(ui.addDirectoryButton, SIGNAL(clicked(bool)),
             this, SLOT(addDirectory(bool)));
+    connect(ui.clearListButton, SIGNAL(clicked(bool)),
+      this, SLOT(clearDirectoryList(bool)));
   }
 
   InsertFragmentDialog::~InsertFragmentDialog()
@@ -185,7 +192,7 @@ namespace Avogadro {
     } else {
       ui.insertFragmentButton->setText(tr("Insert Fragment"));
     }
-    emit(setInsertMode(!inserting));
+    emit setInsertMode(!inserting);
   }
 
   void InsertFragmentDialog::closeEvent(QCloseEvent *event)
@@ -200,7 +207,17 @@ namespace Avogadro {
   {
     QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
                                                     "/home");
-    _directoryList << dir;
+    
+    // If this is a new directory, add it in
+    if (!_directoryList.contains(dir)) {
+      _directoryList << dir;
+      refresh();
+    }
+  }
+  
+  void InsertFragmentDialog::clearDirectoryList(bool)
+  {
+    _directoryList.clear();
     refresh();
   }
 

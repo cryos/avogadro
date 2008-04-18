@@ -26,6 +26,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="clearListButton" >
+       <property name="text" >
+        <string>Clear List</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer>
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
@@ -83,6 +90,9 @@
       <widget class="QPushButton" name="insertFragmentButton" >
        <property name="text" >
         <string>Insert Fragment</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>

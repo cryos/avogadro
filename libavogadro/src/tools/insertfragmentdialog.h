@@ -61,7 +61,9 @@ namespace Avogadro {
     public slots:
       void refresh();
       void setupInsertMode(bool);
+      
       void addDirectory(bool);
+      void clearDirectoryList(bool);
 
     signals:
       void setInsertMode(bool);
