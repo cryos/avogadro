@@ -34,7 +34,7 @@
 
 namespace Avogadro {
 
-  class TreeItem;
+  class FileTreeItem;
 
   class DirectoryTreeModel : public QAbstractItemModel
   {
@@ -61,10 +61,10 @@ namespace Avogadro {
     void appendDirectory(const QString &path);
   
   private:
-    void setupModelData(const QStringList &directories, TreeItem *parent);
+    void setupModelData(const QStringList &directories, FileTreeItem *parent);
 
     QStringList _directoryList;
-    TreeItem *_rootItem;
+    FileTreeItem *_rootItem;
   };
 
 } // end namespace

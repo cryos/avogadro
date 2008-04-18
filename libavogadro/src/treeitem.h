@@ -1,5 +1,5 @@
 /**********************************************************************
-  TreeItem - general tree model item for files
+  FileTreeItem - general tree model item for files
 
   Copyright (C) 2008 Geoffrey R. Hutchison
 
@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __TREEITEM_H
-#define __TREEITEM_H
+#ifndef __FILETREEITEM_H
+#define __FILETREEITEM_H
 
 #include <QList>
 #include <QVariant>
@@ -33,31 +33,44 @@
 
 namespace Avogadro {
 
-class TreeItem
+  /**
+   * @class FileTreeItem filetreeitem.h
+   * @brief An item for a Tree model/view of a file or directory
+   * @author Geoffrey Hutchison
+   *
+   * This class implements a tree item for a model/view of a directory
+   * structure. It is used in multiple places for list or tree views
+   * for example in the Insert Fragment dialog.
+   *
+   * In particular, the class contains a non-user visible property
+   * which stores the full path to the file it represents on disk.
+   * Use filePath() or setFilePath() to access this.
+   */
+class FileTreeItem
 {
 public:
-  TreeItem(const QList<QVariant> &data, TreeItem *parent = 0, QString path = "");
-    ~TreeItem();
+     FileTreeItem(const QList<QVariant> &data, FileTreeItem *parent = 0, QString path = "");
+    ~FileTreeItem();
 
-    void appendChild(TreeItem *child);
+    void appendChild(FileTreeItem *child);
     void deleteChildren();
 
-    TreeItem *child(int row);
+    FileTreeItem *child(int row);
     int childCount() const;
     int columnCount() const;
     QVariant data(int column) const;
     int row() const;
-    TreeItem *parent();
+    FileTreeItem *parent();
 
     void setFilePath(QString path);
     QString filePath() const;
 
 private:
-    QList<TreeItem*> childItems;
+    QList<FileTreeItem*> childItems;
     QList<QVariant> itemData;
-    TreeItem *parentItem;
+    FileTreeItem *parentItem;
 
-    QString _filePath;
+    QString _filePath;                 //!< 
 };
 
 }

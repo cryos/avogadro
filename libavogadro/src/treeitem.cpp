@@ -1,5 +1,5 @@
 /**********************************************************************
-  TreeItem - general tree model item
+  FileTreeItem - general tree model item
 
   Copyright (C) 2008 Geoffrey R. Hutchison
 
@@ -24,69 +24,69 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <avogadro/treeitem.h>
+#include <avogadro/FileTreeItem.h>
 
 namespace Avogadro {
 
-  TreeItem::TreeItem(const QList<QVariant> &data, TreeItem *parent, QString path): itemData(data), parentItem(parent), _filePath(path)
+  FileTreeItem::FileTreeItem(const QList<QVariant> &data, FileTreeItem *parent, QString path): itemData(data), parentItem(parent), _filePath(path)
 {
 }
 
-TreeItem::~TreeItem()
+FileTreeItem::~FileTreeItem()
 {
   deleteChildren();
 }
 
-void TreeItem::appendChild(TreeItem *item)
+void FileTreeItem::appendChild(FileTreeItem *item)
 {
     childItems.append(item);
 }
 
-void TreeItem::deleteChildren()
+void FileTreeItem::deleteChildren()
 {
   qDeleteAll(childItems);
   childItems.clear();
 }
 
-TreeItem *TreeItem::child(int row)
+FileTreeItem *FileTreeItem::child(int row)
 {
     return childItems.value(row);
 }
 
-int TreeItem::childCount() const
+int FileTreeItem::childCount() const
 {
     return childItems.count();
 }
 
-int TreeItem::columnCount() const
+int FileTreeItem::columnCount() const
 {
     return itemData.count();
 }
 
-QVariant TreeItem::data(int column) const
+QVariant FileTreeItem::data(int column) const
 {
     return itemData.value(column);
 }
 
-TreeItem *TreeItem::parent()
+FileTreeItem *FileTreeItem::parent()
 {
     return parentItem;
 }
 
-int TreeItem::row() const
+int FileTreeItem::row() const
 {
     if (parentItem)
-        return parentItem->childItems.indexOf(const_cast<TreeItem*>(this));
+        return parentItem->childItems.indexOf(const_cast<FileTreeItem*>(this));
 
     return 0;
 }
 
-void TreeItem::setFilePath(QString path)
+void FileTreeItem::setFilePath(QString path)
 {
   _filePath = path;
 }
 
-QString TreeItem::filePath() const
+QString FileTreeItem::filePath() const
 {
   return _filePath;
 }
