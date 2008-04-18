@@ -7,7 +7,7 @@
 <h1>krazy2 Analysis</h1>
 <p>Checkers Run = 24<br>
 Files Processed = 30<br>
-Total Issues = 18 ...as of April 12 2008 17:14:52</p>
+Total Issues = 19 ...as of April 18 2008 09:54:49</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -31,7 +31,18 @@ Total Issues = 18 ...as of April 12 2008 17:14:52</p>
 </li>
 
 <li>Check for single char QStrings better written as a QChar... 
-<b>okay!</b>
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	../avogadro/src/mainwindow.cpp: line#1440 (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Adding single characters to a QString is faster if the characters
+	are QChars and not QStrings.  For example: QString path = oldpath +
+	&quot;/&quot; + base is better written as QString path = oldpath + &#39;/&#39; +
+	base. Same holds for arguments to QString::startsWith() and
+	QString::endsWith()</p>
+</li>
+
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
 <li>Check public classes with private members or d-pointer issues... 
@@ -96,7 +107,7 @@ Total Issues = 18 ...as of April 12 2008 17:14:52</p>
 <li>Check for Qt methods that should be avoided... 
 <b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../avogadro/src/mainwindow.cpp: line#1164 QWidget::showFullScreen,1166 QWidget::showNormal (2)
+<li>	../avogadro/src/mainwindow.cpp: line#1165 QWidget::showFullScreen,1167 QWidget::showNormal (2)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	A few Qt methods should be avoided because they don&#39;t work as
@@ -116,7 +127,7 @@ Total Issues = 18 ...as of April 12 2008 17:14:52</p>
 <li>Check for system calls to replace by KDE or Qt equivalents... 
 <b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../avogadro/src/mainwindow.cpp: line#1448 getenv[qgetenv],1449 getenv[qgetenv] (2)
+<li>	../avogadro/src/mainwindow.cpp: line#1449 getenv[qgetenv],1450 getenv[qgetenv] (2)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Some system calls are not portable, please use the suggested
