@@ -464,9 +464,17 @@ namespace Avogadro
     // no parameter give create dialog
     if ( fileName.isEmpty() )
     {
-      fileName = QFileDialog::getOpenFileName( this,
-          tr( "Open File" ), d->fileDialogPath );
+      QString filters =
+        tr("Common molecule formats")
+        + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
+          " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
+          " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
+          " *.mpd *.mol2)"
+        + ";;"
+        + tr("All files") + " (* *.*)";
 
+      fileName = QFileDialog::getOpenFileName( this,
+          tr( "Open File" ), d->fileDialogPath, filters );
     }
 
     if ( !fileName.isEmpty() ) {
@@ -650,8 +658,20 @@ namespace Avogadro
 
   bool MainWindow::saveAs()
   {
+    QString filters = tr("Common molecule formats")
+                    + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
+                      " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
+                      " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
+                      " *.mpd *.mol2);;"
+                    + tr("All files") + " (* *.*);;"
+                    + tr("Chemical Markup Language") + " (*.cml);;"
+                    + tr("GAMESS input") + " (*.gamin);;"
+                    + tr("Gaussian cartesian input") + " (*.gau);;"
+                    + tr("Gaussian z-matrix input") + " (*.gzmat);;"
+                    + tr("XYZ") + " (*.xyz)";
+
     QString fileName = QFileDialog::getSaveFileName( this,
-        tr( "Save Molecule As" ), d->fileDialogPath );
+        tr( "Save Molecule As" ), d->fileDialogPath, filters );
     if ( fileName.isEmpty() )
     {
       return false;
