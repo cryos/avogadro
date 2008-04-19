@@ -24,7 +24,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <avogadro/FileTreeItem.h>
+#include <avogadro/filetreeitem.h>
 
 namespace Avogadro {
 
