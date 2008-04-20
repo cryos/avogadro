@@ -28,6 +28,7 @@
 #include "flattabwidget.h"
 
 #include <QMainWindow>
+#include <QFileDialog>
 #include <avogadro/primitivelist.h>
 
 class QUndoStack;
@@ -191,6 +192,16 @@ namespace Avogadro {
       void duplicateEngineClicked();
       void removeEngineClicked();
       void engineClicked(Engine *engine);
+  };
+
+  class SaveDialog : public QFileDialog
+  {
+    Q_OBJECT
+    public slots:
+    void updateDefaultSuffix();
+    public:
+    SaveDialog(MainWindow *widget, const QString& defaultPath, const QString& defaultFileName);
+    virtual ~SaveDialog() {}
   };
 
   /**

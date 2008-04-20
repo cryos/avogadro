@@ -656,44 +656,78 @@ namespace Avogadro
     }
   }
 
+  void SaveDialog::updateDefaultSuffix()
+  {
+    const QString filter = selectedFilter();
+    QString suffix;
+    int i = filter.indexOf("*.");
+    if(i != -1)
+    {
+      // FIXME somebody who knows regexps should make this use a QRegExp.
+      int j;
+      const QString separators(" )");
+      for(j = i; j < filter.size() && !separators.contains(filter[j]); j++) {}
+      if(j < filter.size())
+      {
+        suffix = filter.mid(i+2, j-i-2);
+      }
+    }
+    if(suffix.isEmpty()) suffix = QString("cml");
+    setDefaultSuffix(suffix);
+    qDebug() << "new default suffix:" << suffix;
+    emit currentChanged(selectedFiles().first());
+  }
+
+  SaveDialog::SaveDialog(MainWindow *widget, const QString& defaultPath, const QString& defaultFileName)
+    : QFileDialog(widget)
+  {
+    setWindowTitle(tr("Save Molecule As"));
+    setDirectory(defaultPath);
+    QStringList filters;
+    filters << tr("Common molecule formats")
+              + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
+                " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
+                " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
+                " *.mpd *.mol2)"
+            << tr("All files") + " (* *.*)"
+            << tr("Chemical Markup Language") + " (*.cml)"
+            << tr("GAMESS input") + " (*.gamin)"
+            << tr("Gaussian cartesian input") + " (*.gau)"
+            << tr("Gaussian z-matrix input") + " (*.gzmat)"
+            << tr("XYZ") + " (*.xyz)";
+    setFilters(filters);
+    setFileMode(QFileDialog::AnyFile);
+    setAcceptMode(QFileDialog::AcceptSave);
+    setConfirmOverwrite(true);
+    setLabelText(QFileDialog::Accept, tr("Save"));
+    if(!(defaultFileName.isEmpty())) selectFile(defaultFileName);
+    connect(this, SIGNAL(filterSelected(const QString &)), this, SLOT(updateDefaultSuffix()));
+    updateDefaultSuffix();
+  }
+
   bool MainWindow::saveAs()
   {
-    QString filters = tr("Common molecule formats")
-                    + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
-                      " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
-                      " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
-                      " *.mpd *.mol2);;"
-                    + tr("All files") + " (* *.*);;"
-                    + tr("Chemical Markup Language") + " (*.cml);;"
-                    + tr("GAMESS input") + " (*.gamin);;"
-                    + tr("Gaussian cartesian input") + " (*.gau);;"
-                    + tr("Gaussian z-matrix input") + " (*.gzmat);;"
-                    + tr("XYZ") + " (*.xyz)";
-
-    QString fileName = QFileDialog::getSaveFileName( this,
-        tr( "Save Molecule As" ), d->fileDialogPath, filters );
-    if ( fileName.isEmpty() )
+    SaveDialog dialog(this, d->fileDialogPath, d->fileName);
+    if(!dialog.exec())
+    {
+      return false;
+    }
+    QString fileName = dialog.selectedFiles().first();
+    if(fileName.isEmpty())
     {
       return false;
     }
 
     // we must save the file before we can set the fileName
-    bool results = saveFile( fileName );
+    bool result = saveFile( fileName );
 
     setFileName( fileName );
 
-    return results;
+    return result;
   }
 
-  bool MainWindow::saveFile( const QString &originalName )
+  bool MainWindow::saveFile( const QString &fileName )
   {
-    // check for an extension first!
-    // i.e., look for a string ending with at least a period and one letter
-    // -2 implies searching from the next to last character
-    QString fileName(originalName);
-    if (fileName.lastIndexOf('.', -2) == -1)
-      fileName.append(".cml");
-
     // Check the format next (before we try creating a file)
     OBConversion conv;
     OBFormat     *outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
