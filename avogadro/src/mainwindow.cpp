@@ -29,6 +29,7 @@
 #include "addenginedialog.h"
 #include "editcommands.h"
 #include "settingsdialog.h"
+#include "savedialog.h"
 
 #include "enginelistview.h"
 #include "engineprimitiveswidget.h"
@@ -656,33 +657,8 @@ namespace Avogadro
     }
   }
 
-  void SaveDialog::updateDefaultSuffix()
+  bool MainWindow::saveAs()
   {
-    const QString filter = selectedFilter();
-    QString suffix;
-    int i = filter.indexOf("*.");
-    if(i != -1)
-    {
-      // FIXME somebody who knows regexps should make this use a QRegExp.
-      int j;
-      const QString separators(" )");
-      for(j = i; j < filter.size() && !separators.contains(filter[j]); j++) {}
-      if(j < filter.size())
-      {
-        suffix = filter.mid(i+2, j-i-2);
-      }
-    }
-    if(suffix.isEmpty()) suffix = QString("cml");
-    setDefaultSuffix(suffix);
-    qDebug() << "new default suffix:" << suffix;
-    emit currentChanged(selectedFiles().first());
-  }
-
-  SaveDialog::SaveDialog(MainWindow *widget, const QString& defaultPath, const QString& defaultFileName)
-    : QFileDialog(widget)
-  {
-    setWindowTitle(tr("Save Molecule As"));
-    setDirectory(defaultPath);
     QStringList filters;
     filters << tr("Common molecule formats")
               + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
@@ -690,29 +666,17 @@ namespace Avogadro
                 " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
                 " *.mpd *.mol2)"
             << tr("All files") + " (* *.*)"
-            << tr("Chemical Markup Language") + " (*.cml)"
+            << tr("CML") + " (*.cml)"
             << tr("GAMESS input") + " (*.gamin)"
             << tr("Gaussian cartesian input") + " (*.gau)"
             << tr("Gaussian z-matrix input") + " (*.gzmat)"
             << tr("XYZ") + " (*.xyz)";
-    setFilters(filters);
-    setFileMode(QFileDialog::AnyFile);
-    setAcceptMode(QFileDialog::AcceptSave);
-    setConfirmOverwrite(true);
-    setLabelText(QFileDialog::Accept, tr("Save"));
-    if(!(defaultFileName.isEmpty())) selectFile(defaultFileName);
-    connect(this, SIGNAL(filterSelected(const QString &)), this, SLOT(updateDefaultSuffix()));
-    updateDefaultSuffix();
-  }
-
-  bool MainWindow::saveAs()
-  {
-    SaveDialog dialog(this, d->fileDialogPath, d->fileName);
-    if(!dialog.exec())
-    {
-      return false;
-    }
-    QString fileName = dialog.selectedFiles().first();
+    QString fileName = SaveDialog::run(this,
+                                       tr("Save Molecule As"),
+                                       d->fileDialogPath,
+                                       d->fileName,
+                                       filters,
+                                       "cml");
     if(fileName.isEmpty())
     {
       return false;
@@ -779,10 +743,22 @@ namespace Avogadro
 
   void MainWindow::exportGraphics()
   {
-    QString fileName = QFileDialog::getSaveFileName( this,
-        tr( "Export Bitmap Graphics" ) );
-    if ( fileName.isEmpty() )
+    QStringList filters;
+    filters << tr("Common image formats")
+              + " (*.png *.jpg *.jpeg)"
+            << tr("All files") + " (* *.*)"
+            << tr("PNG") + " (*.png)"
+            << tr("JPEG") + " (*.jpg *.jpeg)";
+    QString fileName = SaveDialog::run(this,
+                                       tr("Export Bitmap Graphics"),
+                                       "",
+                                       "",
+                                       filters,
+                                       "png");
+    if(fileName.isEmpty())
+    {
       return;
+    }
 
     // render it (with alpha channel)
     QImage exportImage = d->glWidget->grabFrameBuffer( true );
@@ -819,11 +795,19 @@ namespace Avogadro
 
   void MainWindow::exportPOV()
   {
-    // Export the molecule as a POVRay scene
-    QString fileName = QFileDialog::getSaveFileName( this,
-        tr( "Export POV Scene" ) );
-    if ( fileName.isEmpty() )
+    QStringList filters;
+    filters << tr("POV-Ray format") + " (*.pov)"
+            << tr("All files") + " (* *.*)";
+    QString fileName = SaveDialog::run(this,
+                                       tr("Export POV Scene"),
+                                       "",
+                                       "",
+                                       filters,
+                                       "pov");
+    if(fileName.isEmpty())
+    {
       return;
+    }
 
     bool ok;
     int w = d->glWidget->width();

@@ -194,16 +194,6 @@ namespace Avogadro {
       void engineClicked(Engine *engine);
   };
 
-  class SaveDialog : public QFileDialog
-  {
-    Q_OBJECT
-    public slots:
-    void updateDefaultSuffix();
-    public:
-    SaveDialog(MainWindow *widget, const QString& defaultPath, const QString& defaultFileName);
-    virtual ~SaveDialog() {}
-  };
-
   /**
    * \mainpage Avogadro API Documentation
    *

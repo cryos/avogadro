@@ -243,7 +243,15 @@ namespace Avogadro
     Vector3d cameraY = m_glwidget->camera()->backTransformedYAxis();
     Vector3d cameraZ = -m_glwidget->camera()->backTransformedZAxis();
 
-    double huge = 10 * m_glwidget->farthestAtom()->pos().norm();
+    double huge;
+    if(m_glwidget->farthestAtom())
+    {
+      huge = 10 * m_glwidget->farthestAtom()->pos().norm();
+    }
+    else
+    {
+      huge = 10;
+    }
 
     Vector3d light0pos = huge * ( m_glwidget->camera()->modelview().linearComponent().adjoint()
                                   * Vector3d(LIGHT0_POSITION[0], LIGHT0_POSITION[1], LIGHT0_POSITION[2]) );
