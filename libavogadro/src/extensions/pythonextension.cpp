@@ -36,8 +36,7 @@ namespace Avogadro
   {
     m_fileName = fileName;
     m_dir = dir;
-    m_fileInfo.setFile(dir, fileName);
-    m_lastModified = m_fileInfo.lastModified();
+    m_lastModified = QFileInfo(dir, fileName).lastModified();
 
     QString moduleName = fileName.left(fileName.size()-3);
 
@@ -53,6 +52,7 @@ namespace Avogadro
     catch(error_already_set const &)
     {
     }
+    qDebug() << m_lastModified;
   }
 
   QString PythonScript::moduleName() const
@@ -62,9 +62,10 @@ namespace Avogadro
 
   object PythonScript::module() const
   {
-    // check if the file has changed and reload the module
-    m_fileInfo.refresh();
-    if(m_fileInfo.lastModified() > m_lastModified)
+    QFileInfo fileInfo(m_dir, m_fileName);
+    qDebug() << fileInfo.lastModified();
+    qDebug() << m_lastModified;
+    if(fileInfo.lastModified() > m_lastModified)
     {
       try
       {
@@ -73,7 +74,9 @@ namespace Avogadro
       catch(error_already_set const &)
       {
       }
-      m_lastModified = m_fileInfo.lastModified();
+      m_lastModified = fileInfo.lastModified();
+      qDebug() << fileInfo.lastModified();
+      qDebug() << m_lastModified;
     }
     return m_module;
   }
@@ -211,11 +214,12 @@ namespace Avogadro
     // are we running a script?
     if(i >= ScriptIndex)
     {
-      PythonScript script = m_scripts.at(i - ScriptIndex);
+//      PythonScript script = m_scripts.at(i - ScriptIndex);
 //      qDebug() << "Executing Script" << script.name();
       dict local;
-      local[script.moduleName().toStdString()] = script.module();
-      QString output = m_interpreter.exec(script.moduleName() + ".extension()", local);
+      local[m_scripts.at(i - ScriptIndex).moduleName().toStdString()] = 
+        m_scripts.at(i - ScriptIndex).module();
+      QString output = m_interpreter.exec(m_scripts.at(i-ScriptIndex).moduleName() + ".extension()", local);
       emit message(output);
     }
     return 0;

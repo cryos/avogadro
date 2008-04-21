@@ -55,7 +55,6 @@ namespace Avogadro {
       QString m_fileName;
       QDir m_dir;
       mutable QDateTime m_lastModified;
-      mutable QFileInfo m_fileInfo;
       mutable object m_module;
   };
 
