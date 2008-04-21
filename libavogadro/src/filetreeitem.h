@@ -30,6 +30,7 @@
 #include <QList>
 #include <QVariant>
 #include <QString>
+#include <avogadro/global.h>
 
 namespace Avogadro {
 
@@ -46,32 +47,32 @@ namespace Avogadro {
    * which stores the full path to the file it represents on disk.
    * Use filePath() or setFilePath() to access this.
    */
-class FileTreeItem
-{
-public:
-     FileTreeItem(const QList<QVariant> &data, FileTreeItem *parent = 0, QString path = "");
-    ~FileTreeItem();
+  class A_EXPORT FileTreeItem
+  {
+    public:
+      FileTreeItem(const QList<QVariant> &data, FileTreeItem *parent = 0, QString path = "");
+      ~FileTreeItem();
 
-    void appendChild(FileTreeItem *child);
-    void deleteChildren();
+      void appendChild(FileTreeItem *child);
+      void deleteChildren();
 
-    FileTreeItem *child(int row);
-    int childCount() const;
-    int columnCount() const;
-    QVariant data(int column) const;
-    int row() const;
-    FileTreeItem *parent();
+      FileTreeItem *child(int row);
+      int childCount() const;
+      int columnCount() const;
+      QVariant data(int column) const;
+      int row() const;
+      FileTreeItem *parent();
 
-    void setFilePath(QString path);
-    QString filePath() const;
+      void setFilePath(QString path);
+      QString filePath() const;
 
-private:
-    QList<FileTreeItem*> childItems;
-    QList<QVariant> itemData;
-    FileTreeItem *parentItem;
+    private:
+      QList<FileTreeItem*> childItems;
+      QList<QVariant> itemData;
+      FileTreeItem *parentItem;
 
-    QString _filePath;                 //!< 
-};
+      QString _filePath;                 //!< 
+  };
 
 }
 
