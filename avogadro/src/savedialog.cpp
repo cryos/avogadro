@@ -1,5 +1,5 @@
 /**********************************************************************
-  MainWindow - main window, menus, main actions
+  SaveDialog - an improved file-save dialog
 
   Copyright (C) 2008 by Benoit Jacob
 
