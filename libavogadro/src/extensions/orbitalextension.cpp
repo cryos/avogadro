@@ -29,6 +29,7 @@
 #include <vector>
 #include <openbabel/math/vector3.h>
 #include <openbabel/griddata.h>
+#include <openbabel/grid.h>
 
 #include <QProgressDialog>
 
@@ -96,6 +97,7 @@ namespace Avogadro
     m_basis = new BasisSet;
     GaussianFchk fchk(fileName, m_basis);
     // Add the molecule, perceive bonds etc
+    m_molecule->Clear();
     m_basis->addAtoms(m_molecule);
     m_molecule->ConnectTheDots();
     m_molecule->PerceiveBondOrders();
@@ -115,13 +117,13 @@ namespace Avogadro
     static const double BOHR_TO_ANGSTROM = 0.529177249;
     // Calculate MO n and add the cube to the molecule...
     qDebug() << "Calculating MO" << n;
-    double originx = -6.512752;
-    double originy = -6.512752;
-    double originz = -7.731840;
-    int nx = 82;
-    int ny = 82;
-    int nz = 82;
-    double step = 0.20;
+    OBFloatGrid grid;
+    double step = 0.25;
+    grid.Init(*m_molecule, step, 5.0);
+    vector3 origin = grid.GetMin();
+    int nx = grid.GetXdim();
+    int ny = grid.GetYdim();
+    int nz = grid.GetZdim();
     double x, y, z;
 
     // Set up a progress dialog
@@ -138,13 +140,13 @@ namespace Avogadro
       progress.setValue(i);
       if (progress.wasCanceled())
         break;
-      x = originx + double(i)*step;
+      x = origin.x() + double(i)*step;
       for (int j = 0; j < ny; ++j)
       {
-        y = originy + double(j)*step;
+        y = origin.y() + double(j)*step;
         for (int k = 0; k < nz; ++k)
         {
-          z = originz + double(k)*step;
+          z = origin.z() + double(k)*step;
           values.push_back(m_basis->calculateMO(Vector3d(x, y, z), n));
         }
       }
@@ -152,14 +154,12 @@ namespace Avogadro
     progress.setValue(nx);
 
     // Bohr to Angstrom
-    originx *= BOHR_TO_ANGSTROM;
-    originy *= BOHR_TO_ANGSTROM;
-    originz *= BOHR_TO_ANGSTROM;
+    origin *= BOHR_TO_ANGSTROM;
     step *= BOHR_TO_ANGSTROM;
+    // Make a grid and assign values to it
     OBGridData* obgrid = new OBGridData;
     obgrid->SetAttribute(QString("MO " + QString::number(n+1)).toStdString().c_str());
     obgrid->SetNumberOfPoints(nx, ny, nz);
-    vector3 origin = vector3(originx, originy, originz);
     vector3 xa = vector3(step, 0.0, 0.0);
     vector3 ya = vector3(0.0, step, 0.0);
     vector3 za = vector3(0.0, 0.0, step);

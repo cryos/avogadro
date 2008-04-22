@@ -1,5 +1,8 @@
 2008-04-22  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/orbitalextension.cpp: Work out the
+	dimensions of the cube from the molecule, also clear the molecule.
+
 	* libavogadro/src/extensions/basisset.*,
 	libavogadro/src/extensions/gaussianfchk.*,
 	libavogadro/src/extensions/orbitaldialog.*,
