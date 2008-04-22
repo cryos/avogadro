@@ -2,6 +2,7 @@
 
 	* libavogadro/src/extensions/orbitalextension.cpp: Work out the
 	dimensions of the cube from the molecule, also clear the molecule.
+	Also added a call to processEvents() to maintain interactivity.
 
 	* libavogadro/src/extensions/basisset.*,
 	libavogadro/src/extensions/gaussianfchk.*,

@@ -32,6 +32,7 @@
 #include <openbabel/grid.h>
 
 #include <QProgressDialog>
+#include <QCoreApplication>
 
 using namespace std;
 using namespace OpenBabel;
@@ -67,7 +68,7 @@ namespace Avogadro
     return tr("&Extensions");
   }
 
-  QUndoCommand* OrbitalExtension::performAction(QAction *action, GLWidget *widget)
+  QUndoCommand* OrbitalExtension::performAction(QAction *, GLWidget *)
   {
     if (!m_orbitalDialog)
     {
@@ -140,6 +141,8 @@ namespace Avogadro
       progress.setValue(i);
       if (progress.wasCanceled())
         break;
+      // Give the event loop a chance...
+      QCoreApplication::processEvents();
       x = origin.x() + double(i)*step;
       for (int j = 0; j < ny; ++j)
       {
