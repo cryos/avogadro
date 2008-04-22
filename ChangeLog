@@ -1,3 +1,14 @@
+2008-04-22  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/basisset.*,
+	libavogadro/src/extensions/gaussianfchk.*,
+	libavogadro/src/extensions/orbitaldialog.*,
+	libavogadro/src/extensions/orbitalextension.*,
+	libavogadro/src/extensions/CMakeLists.txt: Added a new orbital
+	extension. This extension uses the new BasisSet class along with
+	GaussianFchk to load a formatted Gaussian checkpoint file and
+	calculate MOs. Support for more programs and more features soon.
+
 2008-04-17  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/treeitem.*: New class for handling filenames in

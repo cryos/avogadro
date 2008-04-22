@@ -140,6 +140,21 @@ INSTALL(TARGETS h2methylextension DESTINATION ${DESTINATION_DIR})
 #)
 #INSTALL(TARGETS wiitrackextension DESTINATION ${DESTINATION_DIR})
 
+### Orbitals
+set(orbitalextension_SRCS orbitalextension.cpp orbitaldialog.cpp
+    basisset.cpp gaussianfchk.cpp
+)
+qt4_wrap_ui(orbitalextension_UIS_H orbitaldialog.ui)
+qt4_automoc(${orbitalextension_SRCS})
+ADD_LIBRARY(orbitalextension SHARED ${orbitalextension_SRCS} ${orbitalextension_UIS_H})
+TARGET_LINK_LIBRARIES(orbitalextension
+  ${OPENBABEL2_LIBRARIES}
+  ${QT_LIBRARIES}
+  ${OPENGL_LIBRARIES}
+  avogadro-lib
+)
+INSTALL(TARGETS orbitalextension DESTINATION ${DESTINATION_DIR})
+
 if(BOOST_PYTHON_FOUND)
 	### python extensions
 	set(pythonextension_SRCS pythonextension.cpp)
