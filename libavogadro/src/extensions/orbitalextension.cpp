@@ -120,8 +120,8 @@ namespace Avogadro
     qDebug() << "Calculating MO" << n;
     OBFloatGrid grid;
     double step = 0.25;
-    grid.Init(*m_molecule, step, 5.0);
-    vector3 origin = grid.GetMin();
+    grid.Init(*m_molecule, step * BOHR_TO_ANGSTROM, 2.5);
+    vector3 origin = grid.GetMin() / BOHR_TO_ANGSTROM;
     int nx = grid.GetXdim();
     int ny = grid.GetYdim();
     int nz = grid.GetZdim();

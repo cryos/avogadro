@@ -1,3 +1,8 @@
+2008-04-23  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/orbitalextension.cpp: Sorted out the units
+	in the cube calculation initialisation...
+
 2008-04-22  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/orbitalextension.cpp: Work out the
