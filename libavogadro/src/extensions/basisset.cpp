@@ -42,6 +42,17 @@ namespace Avogadro
 
   BasisSet::~BasisSet()
   {
+    for (int i = 0; i < m_atoms.size(); ++i)
+      delete m_atoms.at(i);
+    m_atoms.clear();
+
+    for (int i = 0; i < m_basis.size(); ++i)
+    {
+      for (int j = 0; j < m_basis.at(i)->GTOs.size(); ++j)
+        delete m_basis.at(i)->GTOs.at(j);
+      delete m_basis.at(i);
+    }
+    m_basis.clear();
   }
 
   int BasisSet::addAtom(const Vector3d& pos, int num)
@@ -167,8 +178,7 @@ namespace Avogadro
         return doP(basis, delta, dr2);
         break;
       default:
-        // Not handled - issue a warning and return
-        qDebug() << "Unknown orbital type called - skipping...";
+        // Not handled - return a zero contribution
         return 0.0;
     }
   }

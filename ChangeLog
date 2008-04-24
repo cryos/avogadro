@@ -1,3 +1,7 @@
+2008-04-24  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/basisset.cpp: Added destructor bits.
+
 2008-04-23  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/orbitalextension.cpp: Sorted out the units
