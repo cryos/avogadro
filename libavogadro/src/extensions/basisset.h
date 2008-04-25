@@ -28,7 +28,7 @@
 
 #include <avogadro/primitive.h>
 #include <eigen/vector.h>
-#include <QList>
+#include <vector>
 #include <QDebug>
 
 // Basis sets...
@@ -61,7 +61,7 @@ namespace Avogadro
   {
     int atom; // The ID of the atom the basis belongs to
     orbital type; // The orbital type, i.e. S, P, D etc.
-    QList<GTO *> GTOs;
+    std::vector<GTO *> GTOs;
   };
 
   struct QAtom
@@ -77,8 +77,8 @@ namespace Avogadro
     ~BasisSet();
     int addAtom(const Eigen::Vector3d& pos, int num = 0); // Just want a postion - return the index
     int addBasis(int atom, orbital type); // The basis type return the index
-    int addGTO(int basis, double c, double a, bool normalise = false); // Add the GTO
-    void addMOs(const QList<double>& MOs); // Add MO coefficients
+    int addGTO(int basis, double c, double a); // Add the GTO
+    void addMOs(const std::vector<double>& MOs); // Add MO coefficients
     void addMO(double MO); // Add the MO coefficient
     void setElectrons(int n) { m_electrons = n; }
 
@@ -98,23 +98,28 @@ namespace Avogadro
       else return false;
     }
 
-    double calculateMO(const Eigen::Vector3d& pos, int state = 0);
+    double calculateMO(const Eigen::Vector3d& pos, unsigned int state = 1);
     // Evaluate the MO at pos
 
   private:
-    QList<GTO *> m_GTOs;
-    QList<Basis *> m_basis;
-    QList<QAtom *> m_atoms;
-    QList<double> m_MOs;
+    std::vector<GTO *> m_GTOs;
+    std::vector<Basis *> m_basis;
+    std::vector<QAtom *> m_atoms;
+    std::vector<double> m_MOs; // These are the LCAO contributions
+    std::vector<double> m_c;   // These are the normalised contraction coeffs
 
-    int m_MO;
-    int m_numMOs;
-    int m_electrons;
+    int m_MO;  // The current MO
+    int m_cPos; // The current c position
+    int m_numMOs; // The number of GTOs
+    int m_electrons; // Total number of electrons
 
+    void initCalculation();  // Perform initialisation when necessary
     double processShell(const Basis* basis, const Eigen::Vector3d& delta,
       double dr2);
     double doS(const Basis* basis, double dr2);
     double doP(const Basis* basis, const Eigen::Vector3d& delta, double dr2);
+    double doD(const Basis* basis, const Eigen::Vector3d& delta, double dr2);
+    double doD5(const Basis* basis, const Eigen::Vector3d& delta, double dr2);
   };
 
 } // End namespace Avogadro

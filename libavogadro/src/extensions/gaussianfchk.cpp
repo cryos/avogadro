@@ -36,6 +36,8 @@ using namespace std;
 
 namespace Avogadro
 {
+  using std::vector;
+
   GaussianFchk::GaussianFchk(QString filename, BasisSet* basis)
   {
     // Open the file for reading and process it
@@ -109,13 +111,13 @@ namespace Avogadro
     // Now load up our basis set
     basis->setElectrons(m_electrons);
     int nAtom = 0;
-    for (int i = 0; i < m_aPos.size(); i += 3)
+    for (unsigned int i = 0; i < m_aPos.size(); i += 3)
       basis->addAtom(Vector3d(m_aPos.at(i), m_aPos.at(i+1), m_aPos.at(i+2)),
                      m_aNums.at(nAtom++));
 
     // Set up the GTO primitive counter, go through the shells and add them
     int nGTO = 0;
-    for (int i = 0; i < m_shellTypes.size(); ++i)
+    for (unsigned int i = 0; i < m_shellTypes.size(); ++i)
     {
       if (m_shellTypes.at(i) == -1)
       {
@@ -124,8 +126,8 @@ namespace Avogadro
         int p = basis->addBasis(m_shelltoAtom.at(i) - 1, P);
         for (int j = 0; j < m_shellNums.at(i); ++j)
         {
-          basis->addGTO(s, m_c.at(nGTO), m_a.at(nGTO), true);
-          basis->addGTO(p, m_csp.at(nGTO), m_a.at(nGTO), true);
+          basis->addGTO(s, m_c.at(nGTO), m_a.at(nGTO));
+          basis->addGTO(p, m_csp.at(nGTO), m_a.at(nGTO));
           nGTO++;
         }
       }
@@ -158,7 +160,7 @@ namespace Avogadro
         int b = basis->addBasis(m_shelltoAtom.at(i) - 1, type);
         for (int j = 0; j < m_shellNums.at(i); ++j)
         {
-          basis->addGTO(b, m_c.at(nGTO), m_a.at(nGTO), true);
+          basis->addGTO(b, m_c.at(nGTO), m_a.at(nGTO));
           nGTO++;
         }
       }
@@ -167,9 +169,9 @@ namespace Avogadro
     basis->addMOs(m_MOcoeffs);
   }
 
-  QList<int> GaussianFchk::readArrayI(int n)
+  vector<int> GaussianFchk::readArrayI(unsigned int n)
   {
-    QList<int> tmp;
+    vector<int> tmp;
     while (tmp.size() < n)
     {
       QString line = m_in.readLine();
@@ -180,9 +182,9 @@ namespace Avogadro
     return tmp;
   }
 
-  QList<double> GaussianFchk::readArrayD(int n)
+  vector<double> GaussianFchk::readArrayD(unsigned int n)
   {
-    QList<double> tmp;
+    vector<double> tmp;
     while (tmp.size() < n)
     {
       QString line = m_in.readLine();
@@ -196,12 +198,12 @@ namespace Avogadro
   void GaussianFchk::outputAll()
   {
     qDebug() << "Shell mappings.";
-    for (int i = 0; i < m_shellTypes.size(); ++i)
+    for (unsigned int i = 0; i < m_shellTypes.size(); ++i)
         qDebug() << i << ": type =" << m_shellTypes.at(i)
                       << ", number =" << m_shellNums.at(i)
                       << ", atom =" << m_shelltoAtom.at(i);
     qDebug() << "MO coefficients.";
-    for (int i = 0; i < m_MOcoeffs.size(); ++i)
+    for (unsigned int i = 0; i < m_MOcoeffs.size(); ++i)
       qDebug() << m_MOcoeffs.at(i);
   }
 

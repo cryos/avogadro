@@ -117,6 +117,7 @@ namespace Avogadro
   {
     static const double BOHR_TO_ANGSTROM = 0.529177249;
     // Calculate MO n and add the cube to the molecule...
+    n++; // MOs are 1 based, not 0 based...
     qDebug() << "Calculating MO" << n;
     OBFloatGrid grid;
     double step = 0.25;

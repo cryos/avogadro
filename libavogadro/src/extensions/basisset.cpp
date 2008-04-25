@@ -33,22 +33,24 @@ using namespace std;
 namespace Avogadro
 {
 
+  using std::vector;
+
   static const double BOHR_TO_ANGSTROM = 0.529177249;
   static const double ANGSTROM_TO_BOHR = 1.0 / 0.529177249;
 
-  BasisSet::BasisSet() : m_numMOs(0)
+  BasisSet::BasisSet() : m_MO(0), m_cPos(0), m_numMOs(0), m_electrons(0)
   {
   }
 
   BasisSet::~BasisSet()
   {
-    for (int i = 0; i < m_atoms.size(); ++i)
+    for (unsigned int i = 0; i < m_atoms.size(); ++i)
       delete m_atoms.at(i);
     m_atoms.clear();
 
-    for (int i = 0; i < m_basis.size(); ++i)
+    for (unsigned int i = 0; i < m_basis.size(); ++i)
     {
-      for (int j = 0; j < m_basis.at(i)->GTOs.size(); ++j)
+      for (unsigned int j = 0; j < m_basis.at(i)->GTOs.size(); ++j)
         delete m_basis.at(i)->GTOs.at(j);
       delete m_basis.at(i);
     }
@@ -93,10 +95,12 @@ namespace Avogadro
     return m_basis.size() - 1;
   }
 
-  int BasisSet::addGTO(int basis, double c, double a, bool normalise)
+  int BasisSet::addGTO(int basis, double c, double a)
   {
-    // Add a new GTO - if normalise is true then normalise c
-    if (normalise)
+    // Add a new GTO - if normalised is true then un-normalise c
+    // In fact I don't think this should be called and so am going to assume it
+    // isn't for now - do any programs give you normalised contraction coeffs???
+/*    if (normalised)
     {
       double norm;
       switch (m_basis[basis]->type)
@@ -110,8 +114,8 @@ namespace Avogadro
         default:
           norm = 1.0;
       }
-      c *= norm;
-    }
+      c /= norm;
+    } */
     GTO *tmp = new GTO;
     tmp->c = c;
     tmp->a = a;
@@ -119,10 +123,10 @@ namespace Avogadro
     return m_basis[basis]->GTOs.size() - 1;
   }
 
-  void BasisSet::addMOs(const QList<double>& MOs)
+  void BasisSet::addMOs(const vector<double>& MOs)
   {
-    // Append the MOs to our internal QList
-    for (int i = 0; i < MOs.size(); ++i)
+    // Append the MOs to our internal vector
+    for (unsigned int i = 0; i < MOs.size(); ++i)
       m_MOs.push_back(MOs[i]);
   }
 
@@ -131,38 +135,105 @@ namespace Avogadro
     m_MOs.push_back(MO);
   }
 
-  double BasisSet::calculateMO(const Vector3d& pos, int state)
+  double BasisSet::calculateMO(const Vector3d& pos, unsigned int state)
   {
     // First build up a list of deltas between atoms and the given position
-    QList<Vector3d> deltas;
-    QList<double> dr2;
-    for (int i = 0; i < m_atoms.size(); ++i)
+    if (state < 1 || state > m_MOs.size())
+      return 0.0;
+
+    static bool init = false;
+    if (!init)
+      initCalculation();
+
+    vector<Vector3d> deltas;
+    vector<double> dr2;
+    for (unsigned int i = 0; i < m_atoms.size(); ++i)
     {
-      deltas << (pos - m_atoms[i]->pos);
-      dr2 << deltas[i].x()*deltas[i].x() + deltas[i].y()*deltas[i].y()
-             + deltas[i].z()*deltas[i].z();
+      deltas.push_back(pos - m_atoms.at(i)->pos);
+      dr2.push_back(deltas.at(i).x()*deltas.at(i).x()
+                 + deltas.at(i).y()*deltas.at(i).y()
+                 + deltas.at(i).z()*deltas.at(i).z());
     }
 
     // Reset the m_MO counter and start processing shells
-    m_MO = state * m_numMOs;
+    m_MO = (state - 1) * m_numMOs;
+    m_cPos = 0;
+
     double tmp = 0.0;
-    for (int i = 0; i < m_basis.size(); ++i)
-      tmp += processShell(m_basis[i], deltas[m_basis[i]->atom],
-        dr2[m_basis[i]->atom]);
+    for (unsigned int i = 0; i < m_basis.size(); ++i)
+      tmp += processShell(m_basis.at(i), deltas.at(m_basis[i]->atom),
+        dr2.at(m_basis[i]->atom));
 
     return tmp;
   }
 
-  void BasisSet::addAtoms(Molecule* mol)
+  void BasisSet::initCalculation()
   {
-    // Add our atoms to the molecule
-    for (int i = 0; i < m_atoms.size(); ++i)
+    // This currently just involves normalising all contraction coefficients
+    m_c.clear();
+    GTO* gto;
+    Basis* basis;
+    for (unsigned int i = 0; i < m_basis.size(); ++i)
     {
-      mol->BeginModify();
-      Atom* atom = static_cast<Atom*>(mol->NewAtom());
-      atom->setPos(m_atoms.at(i)->pos * BOHR_TO_ANGSTROM);
-      atom->SetAtomicNum(m_atoms.at(i)->num);
-      mol->EndModify();
+      basis = m_basis.at(i);
+      switch (basis->type)
+      {
+        case S:
+          for (unsigned int j = 0; j < basis->GTOs.size(); ++j)
+          {
+            gto = basis->GTOs.at(j);
+            m_c.push_back(gto->c * pow(2.0 * gto->a / M_PI, 0.75));
+          }
+          break;
+        case P:
+          for (unsigned int j = 0; j < basis->GTOs.size(); ++j)
+          {
+            gto = basis->GTOs.at(j);
+            m_c.push_back(gto->c * pow(128.0 * pow(gto->a, 5.0)
+                          / (M_PI*M_PI*M_PI), 0.25));
+            m_c.push_back(m_c.at(m_c.size()-1));
+            m_c.push_back(m_c.at(m_c.size()-1));
+          }
+          break;
+        case D:
+          // Cartesian - 6 d components
+          // Order in xx, yy, zz, xy, xz, yz
+          for (unsigned int j = 0; j < basis->GTOs.size(); ++j)
+          {
+            gto = basis->GTOs.at(j);
+            m_c.push_back(gto->c * pow(2048.0 * pow(gto->a, 7.0)
+                          / (9.0 * M_PI*M_PI*M_PI), 0.25));
+            m_c.push_back(m_c.at(m_c.size()-1));
+            m_c.push_back(m_c.at(m_c.size()-1));
+
+            m_c.push_back(gto->c * pow(2048.0 * pow(gto->a, 7.0)
+                          / (M_PI*M_PI*M_PI), 0.25));
+            m_c.push_back(m_c.at(m_c.size()-1));
+            m_c.push_back(m_c.at(m_c.size()-1));
+          }
+          break;
+        case D5:
+          // Spherical - 5 d components
+          // Order in d0, d+1, d-1, d+2, d-2
+          // Form d(z^2-r^2), dxz, dyz, d(x^2-y^2), dxy
+          for (unsigned int j = 0; j < basis->GTOs.size(); ++j)
+          {
+            gto = basis->GTOs.at(j);
+            m_c.push_back(gto->c * pow(2048.0 * pow(gto->a, 7.0)
+                          / (9.0 * M_PI*M_PI*M_PI), 0.25));
+            m_c.push_back(gto->c * pow(2048.0 * pow(gto->a, 7.0)
+                          / (M_PI*M_PI*M_PI), 0.25));
+            m_c.push_back(m_c.at(m_c.size()-1));
+            // I think this is correct but reaally need to check...
+            m_c.push_back(gto->c * pow(128.0 * pow(gto->a, 7.0)
+                          / (M_PI*M_PI*M_PI), 0.25));
+            m_c.push_back(gto->c * pow(2048.0 * pow(gto->a, 7.0)
+                          / (M_PI*M_PI*M_PI), 0.25));
+          }
+          break;
+        default:
+          ;
+      }
     }
   }
 
@@ -187,10 +258,10 @@ namespace Avogadro
   {
     // S type orbitals - the simplest of the calculations with one component
     double tmp = 0.0;
-    for (int i = 0; i < basis->GTOs.size(); ++i)
-      tmp += basis->GTOs[i]->c * exp(-basis->GTOs[i]->a * dr2);
+    for (unsigned int i = 0; i < basis->GTOs.size(); ++i)
+      tmp += m_c.at(m_cPos++) * exp(-basis->GTOs.at(i)->a * dr2);
     // There is one MO coefficient per S shell basis - advance by 1 and use
-    return m_MOs[m_MO++] * tmp;
+    return m_MOs.at(m_MO++) * tmp;
   }
 
   double BasisSet::doP(const Basis* basis, const Eigen::Vector3d& delta, double dr2)
@@ -199,20 +270,79 @@ namespace Avogadro
     // independent MO weighting. Many things can be cached to save time though
     double tmp = 0.0;
     // Calculate the prefactors for Px, Py and Pz
-    double Px = m_MOs[m_MO++] * delta.x();
-    double Py = m_MOs[m_MO++] * delta.y();
-    double Pz = m_MOs[m_MO++] * delta.z();
+    double Px = m_MOs.at(m_MO++) * delta.x();
+    double Py = m_MOs.at(m_MO++) * delta.y();
+    double Pz = m_MOs.at(m_MO++) * delta.z();
 
     // Now iterate through the P type GTOs and sum their contributions
-    for (int i = 0; i < basis->GTOs.size(); ++i)
+    for (unsigned int i = 0; i < basis->GTOs.size(); ++i)
     {
       // Calculate the common factor
-      double tmpGTO = basis->GTOs.at(i)->c * exp(-basis->GTOs.at(i)->a * dr2);
-      tmp += Px * tmpGTO; // Px
-      tmp += Py * tmpGTO; // Py
-      tmp += Pz * tmpGTO; // Pz
+      double tmpGTO = exp(-basis->GTOs.at(i)->a * dr2);
+      tmp += m_c.at(m_cPos++) * Px * tmpGTO; // Px
+      tmp += m_c.at(m_cPos++) * Py * tmpGTO; // Py
+      tmp += m_c.at(m_cPos++) * Pz * tmpGTO; // Pz
     }
+    return tmp;
+  }
 
+  double BasisSet::doD(const Basis* basis, const Eigen::Vector3d& delta, double dr2)
+  {
+    // D type orbitals have five components and each component has a different
+    // independent MO weighting. Many things can be cached to save time though
+    double tmp = 0.0;
+    // Calculate the prefactors
+    double Dxx = m_MOs.at(m_MO++) * delta.x() * delta.x();
+    double Dyy = m_MOs.at(m_MO++) * delta.y() * delta.y();
+    double Dzz = m_MOs.at(m_MO++) * delta.z() * delta.z();
+    double Dxy = m_MOs.at(m_MO++) * delta.x() * delta.y();
+    double Dxz = m_MOs.at(m_MO++) * delta.x() * delta.z();
+    double Dyz = m_MOs.at(m_MO++) * delta.y() * delta.z();
+
+    // Now iterate through the D type GTOs and sum their contributions
+    for (unsigned int i = 0; i < basis->GTOs.size(); ++i)
+    {
+      // Calculate the common factor
+      double tmpGTO = exp(-basis->GTOs.at(i)->a * dr2);
+      tmp += m_c.at(m_cPos++) * Dxx * tmpGTO; // Dxx
+      tmp += m_c.at(m_cPos++) * Dyy * tmpGTO; // Dyy
+      tmp += m_c.at(m_cPos++) * Dzz * tmpGTO; // Dzz
+      tmp += m_c.at(m_cPos++) * Dxy * tmpGTO; // Dxy
+      tmp += m_c.at(m_cPos++) * Dxz * tmpGTO; // Dxz
+      tmp += m_c.at(m_cPos++) * Dyz * tmpGTO; // Dyz
+    }
+    return tmp;
+  }
+
+  double BasisSet::doD5(const Basis* basis, const Eigen::Vector3d& delta, double dr2)
+  {
+    // D type orbitals have five components and each component has a different
+    // MO weighting. Many things can be cached to save time
+    double tmp = 0.0;
+    // Calculate the prefactors
+    double xx = delta.x() * delta.x();
+    double yy = delta.y() * delta.y();
+    double zz = delta.z() * delta.z();
+    double xy = delta.x() * delta.y();
+    double xz = delta.x() * delta.z();
+    double yz = delta.y() * delta.z();
+
+    double D0 = m_MOs.at(m_MO++) * (zz - dr2);
+    double D1p = m_MOs.at(m_MO++) * xz;
+    double D1n = m_MOs.at(m_MO++) * yz;
+    double D2p = m_MOs.at(m_MO++) * (xx - yy);
+    double D2n = m_MOs.at(m_MO++) * xy;
+
+    // Not iterate through the GTOs
+    for (unsigned int i = 0; i < basis->GTOs.size(); ++i)
+    {
+      double tmpGTO = exp(-basis->GTOs.at(i)->a * dr2);
+      tmp += m_c.at(m_cPos++) * D0 * tmpGTO;  // D0
+      tmp += m_c.at(m_cPos++) * D1p * tmpGTO; // D1p
+      tmp += m_c.at(m_cPos++) * D1n * tmpGTO; // D1n
+      tmp += m_c.at(m_cPos++) * D2p * tmpGTO; // D2p
+      tmp += m_c.at(m_cPos++) * D2n * tmpGTO; // D2n
+    }
     return tmp;
   }
 
@@ -222,15 +352,28 @@ namespace Avogadro
     return m_MOs.size() / m_numMOs;
   }
 
+  void BasisSet::addAtoms(Molecule* mol)
+  {
+    // Add our atoms to the molecule
+    for (unsigned int i = 0; i < m_atoms.size(); ++i)
+    {
+      mol->BeginModify();
+      Atom* atom = static_cast<Atom*>(mol->NewAtom());
+      atom->setPos(m_atoms.at(i)->pos * BOHR_TO_ANGSTROM);
+      atom->SetAtomicNum(m_atoms.at(i)->num);
+      mol->EndModify();
+    }
+  }
+
   void BasisSet::outputAll()
   {
-    for (int i = 0; i < m_atoms.size(); ++i)
+    for (unsigned int i = 0; i < m_atoms.size(); ++i)
       qDebug() << "Atom" << i << m_atoms.at(i)->pos.z()
                << "num=" << m_atoms.at(i)->num;
-    for (int i = 0; i < m_basis.size(); ++i)
+    for (unsigned int i = 0; i < m_basis.size(); ++i)
     {
       qDebug() << "Basis set" << i << "type" << m_basis[i]->type;
-      for (int j = 0; j < m_basis[i]->GTOs.size(); ++j)
+      for (unsigned int j = 0; j < m_basis[i]->GTOs.size(); ++j)
       {
         qDebug() << i << ":" << m_basis[i]->GTOs[j]->c << ","
           << m_basis[i]->GTOs[j]->a;

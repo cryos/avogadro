@@ -1,3 +1,11 @@
+2008-04-25  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/basisset.*,
+	libavogadro/src/extensions/gaussianfchk.*,
+	libavogadro/src/extensions/orbitalextension.cpp: Port to use
+	std::vector to store everything. Changed the way normalisation is
+	handled. Added d-type orbitals - this has not been verified yet.
+
 2008-04-24  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/basisset.cpp: Added destructor bits.

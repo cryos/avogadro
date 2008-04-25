@@ -28,7 +28,7 @@
 #include "basisset.h"
 #include <QString>
 #include <QTextStream>
-#include <QList>
+#include <vector>
 
 namespace Avogadro
 {
@@ -42,20 +42,20 @@ namespace Avogadro
     QTextStream m_in;
     void processLine();
     void load(BasisSet* basis);
-    QList<int> readArrayI(int n);
-    QList<double> readArrayD(int n);
+    std::vector<int> readArrayI(unsigned int n);
+    std::vector<double> readArrayD(unsigned int n);
 
     int m_electrons;
-    QList<int> m_aNums;
-    QList<double> m_aPos;
-    QList<int> m_shellTypes;
-    QList<int> m_shellNums;
-    QList<int> m_shelltoAtom;
-    QList<double> m_a;
-    QList<double> m_c;
-    QList<double> m_csp;
-    QList<double> m_orbitalEnergy;
-    QList<double> m_MOcoeffs;
+    std::vector<int> m_aNums;
+    std::vector<double> m_aPos;
+    std::vector<int> m_shellTypes;
+    std::vector<int> m_shellNums;
+    std::vector<int> m_shelltoAtom;
+    std::vector<double> m_a;
+    std::vector<double> m_c;
+    std::vector<double> m_csp;
+    std::vector<double> m_orbitalEnergy;
+    std::vector<double> m_MOcoeffs;
   };
 
 } // End namespace Avogadro
