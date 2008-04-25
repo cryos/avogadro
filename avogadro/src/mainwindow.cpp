@@ -254,6 +254,8 @@ namespace Avogadro
         menuItem->setIcon( nullIcon ); // clears the icon for this item
       }
     }
+
+    ui.menuSettings->setTitle("Window");
 #endif
 
     setCorner(Qt::BottomLeftCorner, Qt::LeftDockWidgetArea);
@@ -497,7 +499,9 @@ namespace Avogadro
           " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
           " *.mpd *.mol2)"
         + ";;"
-        + tr("All files") + " (* *.*)";
+        + tr("All files") + " (* *.*)"
+        + ";;"
+        + tr("CML") + " (*.cml)";
 
       fileName = QFileDialog::getOpenFileName( this,
           tr( "Open File" ), d->fileDialogPath, filters );
@@ -696,12 +700,25 @@ namespace Avogadro
             << tr("Gaussian cartesian input") + " (*.gau)"
             << tr("Gaussian z-matrix input") + " (*.gzmat)"
             << tr("XYZ") + " (*.xyz)";
+            
+    qDebug() << d->fileDialogPath;
+    QString selectedFilter("All files");
+#ifdef Q_WS_MAC
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Save Molecule As"),
+                                                    d->fileDialogPath,
+                                                    filters.join(";;"), &selectedFilter);
+#else
     QString fileName = SaveDialog::run(this,
                                        tr("Save Molecule As"),
                                        d->fileDialogPath,
                                        d->fileName,
                                        filters,
                                        "cml");
+#endif
+
+    qDebug() << "selected filter: " << selectedFilter;
+
     if(fileName.isEmpty())
     {
       return false;
@@ -774,12 +791,19 @@ namespace Avogadro
             << tr("All files") + " (* *.*)"
             << tr("PNG") + " (*.png)"
             << tr("JPEG") + " (*.jpg *.jpeg)";
+#ifdef Q_WS_MAC
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Export Bitmap Graphics"),
+                                                    d->fileDialogPath + d->fileName,
+                                                    filters.join(";;"));
+#else
     QString fileName = SaveDialog::run(this,
                                        tr("Export Bitmap Graphics"),
                                        "",
                                        "",
                                        filters,
                                        "png");
+#endif
     if(fileName.isEmpty())
     {
       return;
@@ -823,12 +847,19 @@ namespace Avogadro
     QStringList filters;
     filters << tr("POV-Ray format") + " (*.pov)"
             << tr("All files") + " (* *.*)";
+#ifdef Q_WS_MAC
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Export POV Scene"),
+                                                    "",
+                                                    filters.join(";;"));
+#else            
     QString fileName = SaveDialog::run(this,
                                        tr("Export POV Scene"),
                                        "",
                                        "",
                                        filters,
                                        "pov");
+#endif
     if(fileName.isEmpty())
     {
       return;
