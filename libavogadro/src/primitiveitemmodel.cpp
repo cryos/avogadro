@@ -99,12 +99,16 @@ namespace Avogadro {
 
     if(parentRow < d->size.size())
     {
+      emit layoutAboutToBeChanged(); // we need to tell the view that the data is going to change
+      
       int last = d->size[parentRow]++;
       beginInsertRows(createIndex(parentRow, 0, 0), last, last);
       if(d->molecule) {
         d->moleculeCache[parentRow].append(primitive);
       }
       endInsertRows();
+      
+      emit layoutChanged(); // we need to tell the view to refresh
     }
   }
 
@@ -128,6 +132,8 @@ namespace Avogadro {
       //assert(row > -1);
       if (row < 0)
         return;
+      emit layoutAboutToBeChanged(); // we need to tell the view that the data is going to change
+      
       beginRemoveRows(createIndex(parentRow, 0, 0), row, row);
       if(d->molecule)
       {
@@ -135,6 +141,8 @@ namespace Avogadro {
       }
       d->size[parentRow]--;
       endRemoveRows();
+      
+      emit layoutChanged(); // we need to tell the view to refresh
     }
   }
 
@@ -167,20 +175,21 @@ namespace Avogadro {
       {
         d->size[row] = newsize;
 
+        emit layoutAboutToBeChanged(); // we need to tell the view that the data is going to change
+        
         beginRemoveRows(createIndex(row,0,0), newsize, oldsize-1);
-        QList<Primitive *> subList = list.subList(type);
-        if(subList.size())
-        {
-          // this is a minor hack to simplify things although it doesn't currently update the view
-          emit layoutChanged();
-        }
+        // this is a minor hack to simplify things although it doesn't currently update the view
         endRemoveRows();
+        
+        emit layoutChanged();
       }
       else if(newsize > oldsize)
       {
         d->size[row] = newsize;
+        emit layoutAboutToBeChanged(); // we need to tell the view that the data is going to change
         beginInsertRows(createIndex(row,0,0), oldsize, newsize-1);
         endInsertRows();
+        emit layoutChanged(); // we need to tell the view that the data is going to change
       }
     }
   }
