@@ -66,6 +66,7 @@
 #include <QUndoStack>
 #include <QDesktopWidget>
 #include <QInputDialog>
+#include <QUrl>
 
 #include <QDebug>
 
@@ -156,8 +157,6 @@ namespace Avogadro
 
   void MainWindow::constructor()
   {
-    // not sure we need this anymore
-    //hide(); // prevent "flash" of re-arranging windows PR#
 
     ui.setupUi( this );
     // We cannot reliably set this via Designer
@@ -175,6 +174,7 @@ namespace Avogadro
     d->centralLayout->addWidget(d->centralTab);
 
     setAttribute( Qt::WA_DeleteOnClose );
+    setAcceptDrops(true);
 
     // add our bottom flat tabs
     d->bottomFlat = new FlatTabWidget(this);
@@ -238,6 +238,12 @@ namespace Avogadro
     // for the Mac Application menu
     ui.menuSettings->removeAction( ui.configureAvogadroAction );
     ui.menuFile->addAction( ui.configureAvogadroAction );
+
+    // Turn off the file toolbar (not really Mac-native)
+    ui.fileToolBar->toggleViewAction();
+
+    // Change the "Settings" menu to be Window
+    ui.menuSettings->setTitle("Window");
     // and remove the trailing separator
     ui.menuSettings->removeAction( ui.menuSettings->actions().last() );
 
@@ -256,7 +262,6 @@ namespace Avogadro
     connectUi();
 
     ui.projectDock->close();
-
   }
 
   bool MainWindow::event(QEvent *event)
@@ -281,6 +286,26 @@ namespace Avogadro
     }
 
     return QMainWindow::event(event);
+  }
+  
+  void MainWindow::dragEnterEvent(QDragEnterEvent *event)
+  {
+    if (event->mimeData()->hasUrls())
+      event->acceptProposedAction();
+    else
+      event->ignore();
+  }
+  
+  void MainWindow::dropEvent(QDropEvent *event)
+  {
+    if (event->mimeData()->hasUrls()) {
+      foreach(QUrl url, event->mimeData()->urls() ) {
+        loadFile(url.toLocalFile());
+      }
+      event->acceptProposedAction();
+    }
+    else
+      event->ignore();
   }
 
   void MainWindow::show()
@@ -660,12 +685,12 @@ namespace Avogadro
   bool MainWindow::saveAs()
   {
     QStringList filters;
-    filters << tr("Common molecule formats")
-              + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
-                " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
-                " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
-                " *.mpd *.mol2)"
-            << tr("All files") + " (* *.*)"
+    filters << tr("All files") + " (* *.*)"
+            << tr("Common molecule formats")
+                      + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
+                        " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
+                        " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
+                        " *.mpd *.mol2)"
             << tr("CML") + " (*.cml)"
             << tr("GAMESS input") + " (*.gamin)"
             << tr("Gaussian cartesian input") + " (*.gau)"
@@ -1192,7 +1217,6 @@ namespace Avogadro
     d->glWidget->camera()->initializeViewPoint();
     d->glWidget->update();
   }
-
 
   void MainWindow::fullScreen()
   {

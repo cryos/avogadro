@@ -54,6 +54,10 @@ namespace Avogadro {
     protected:
       void closeEvent(QCloseEvent *event);
       bool event(QEvent *event);
+      
+      // Handle drag and drop -- accept files dragged on the window
+      void dragEnterEvent(QDragEnterEvent *event);
+      void dropEvent(QDropEvent *event);
 
     public Q_SLOTS:
       void newFile();
