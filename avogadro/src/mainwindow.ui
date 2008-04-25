@@ -22,7 +22,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>27</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -42,6 +42,13 @@
       <string>Open &amp;Recent</string>
      </property>
     </widget>
+    <widget class="QMenu" name="menuExport" >
+     <property name="title" >
+      <string>Export</string>
+     </property>
+     <addaction name="actionExportGraphics" />
+     <addaction name="actionExportPOV" />
+    </widget>
     <addaction name="actionNew" />
     <addaction name="actionOpen" />
     <addaction name="menuOpenRecent" />
@@ -50,8 +57,7 @@
     <addaction name="actionSave" />
     <addaction name="actionSaveAs" />
     <addaction name="actionRevert" />
-    <addaction name="actionExportGraphics" />
-    <addaction name="actionExportPOV" />
+    <addaction name="menuExport" />
     <addaction name="separator" />
     <addaction name="actionQuit" />
    </widget>
