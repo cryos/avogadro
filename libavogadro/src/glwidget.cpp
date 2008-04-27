@@ -305,30 +305,31 @@ namespace Avogadro {
         pluginPaths << "./engines";
 #endif
 
-        if ( getenv( "AVOGADRO_ENGINES" ) != NULL ) {
-          pluginPaths = QString( getenv( "AVOGADRO_ENGINES" ) ).split( ':' );
-        }
+        if (getenv("AVOGADRO_ENGINES") != NULL)
+          pluginPaths = QString(getenv("AVOGADRO_ENGINES")).split(':');
 
         // load static plugins first
-	      EngineFactory *bsFactory = qobject_cast<EngineFactory *>(new BSDYEngineFactory);
-	      if (bsFactory)
-	      {
+        EngineFactory *bsFactory = qobject_cast<EngineFactory *>(new BSDYEngineFactory);
+        if (bsFactory)
+        {
           engineFactories.append(bsFactory);
           engineClassFactory[bsFactory->className()] = bsFactory;
-	      }
+        }
 
         // now load plugins from paths
-        foreach( QString path, pluginPaths ) {
+        foreach(const QString& path, pluginPaths)
+        {
           QDir dir( path );
-          foreach( QString fileName, dir.entryList( QDir::Files ) ) {
+          foreach(const QString& fileName, dir.entryList(QDir::Files))
+          {
             QPluginLoader loader( dir.absoluteFilePath( fileName ) );
             QObject *instance = loader.instance();
             EngineFactory *factory = qobject_cast<EngineFactory *>( instance );
-            if ( factory )
-              {
-                engineFactories.append(factory);
-                engineClassFactory[factory->className()] = factory;
-              }
+            if (factory)
+            {
+              engineFactories.append(factory);
+              engineClassFactory[factory->className()] = factory;
+            }
           }
         }
         enginesLoaded = true;
@@ -474,9 +475,8 @@ namespace Avogadro {
 #endif
 
     // delete the engines
-    foreach( Engine *engine, d->engines ) {
+    foreach(Engine *engine, d->engines)
       delete engine;
-    }
 
     delete( d );
   }
@@ -1428,15 +1428,14 @@ namespace Avogadro {
                  SEL_BOX_SIZE, SEL_BOX_SIZE);
 
     // Find the first atom or bond (if any) in hits - this will be the closest
-    foreach( GLHit hit, chits )
-      {
-        //qDebug() << "Hit: " << hit.name();
-        if(hit.type() == Primitive::AtomType) {
-          return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
-        } else if(hit.type() == Primitive::BondType) {
-          return static_cast<Bond *>(molecule()->GetBond(hit.name()));
-        }
-      }
+    foreach(const GLHit& hit, chits)
+    {
+      //qDebug() << "Hit: " << hit.name();
+      if(hit.type() == Primitive::AtomType)
+        return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
+      else if(hit.type() == Primitive::BondType)
+        return static_cast<Bond *>(molecule()->GetBond(hit.name()));
+    }
     return 0;
   }
 
@@ -1450,13 +1449,11 @@ namespace Avogadro {
                  SEL_BOX_SIZE, SEL_BOX_SIZE);
 
     // Find the first atom (if any) in hits - this will be the closest
-    foreach( GLHit hit, chits )
-      {
-        if(hit.type() == Primitive::AtomType)
-          {
-            return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
-          }
-      }
+    foreach(const GLHit& hit, chits)
+    {
+      if(hit.type() == Primitive::AtomType)
+        return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
+    }
     return 0;
   }
 
@@ -1470,13 +1467,11 @@ namespace Avogadro {
                  SEL_BOX_SIZE, SEL_BOX_SIZE);
 
     // Find the first bond (if any) in hits - this will be the closest
-    foreach( GLHit hit, chits )
-      {
-        if(hit.type() == Primitive::BondType)
-          {
-            return static_cast<Bond *>(molecule()->GetBond(hit.name()));
-          }
-      }
+    foreach(const GLHit& hit, chits)
+    {
+      if(hit.type() == Primitive::BondType)
+        return static_cast<Bond *>(molecule()->GetBond(hit.name()));
+    }
     return 0;
   }
 
@@ -1493,12 +1488,13 @@ namespace Avogadro {
   double GLWidget::radius( const Primitive *p ) const
   {
     double radius = 0.0;
-    foreach( Engine *engine, d->engines ) {
-      if ( engine->isEnabled() ) {
+    foreach(Engine *engine, d->engines)
+    {
+      if (engine->isEnabled())
+      {
         double engineRadius = engine->radius( d->pd, p );
-        if ( engineRadius > radius ) {
+        if ( engineRadius > radius )
           radius = engineRadius;
-        }
       }
     }
 
@@ -1517,7 +1513,7 @@ namespace Avogadro {
 
   void GLWidget::setSelected(PrimitiveList primitives, bool select)
   {
-    foreach( Primitive *item, primitives )
+    foreach(Primitive *item, primitives)
     {
       if (select && !d->selectedPrimitives.contains(item))
           d->selectedPrimitives.append( item );
@@ -1680,9 +1676,7 @@ namespace Avogadro {
 
     d->engines.clear();
     foreach(Engine *engine, engines)
-      {
-        delete engine;
-      }
+      delete engine;
 
     foreach(EngineFactory *factory, d->engineFactories)
       {

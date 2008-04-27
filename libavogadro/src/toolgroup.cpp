@@ -2,6 +2,7 @@
   ToolGroup - GLWidget manager for Tools.
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -78,15 +79,16 @@ namespace Avogadro {
       pluginPaths = QString(getenv("AVOGADRO_TOOLS")).split(':');
     }
 
-    foreach (QString path, pluginPaths)
+    foreach (const QString& path, pluginPaths)
     {
       QDir dir(path);
-      foreach (QString fileName, dir.entryList(QDir::Files)) {
-//        qDebug() << fileName;
+      foreach (const QString& fileName, dir.entryList(QDir::Files))
+      {
         QPluginLoader loader(dir.absoluteFilePath(fileName));
         QObject *instance = loader.instance();
         ToolFactory *factory = qobject_cast<ToolFactory *>(instance);
-        if (factory) {
+        if (factory)
+        {
           Tool *tool = factory->createInstance(this);
           qDebug() << "Found Tool: " << tool->name() << " - " << tool->description();
           d->tools.append(tool);

@@ -1,3 +1,9 @@
+2008-04-27  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glwidget.cpp, libavogadro/src/toolgroup.cpp: Made
+	changes to foreach loops as suggested by Albert Astals Cid, prevent
+	unnecessary creation of temporary objects.
+
 2008-04-25  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/primitiveitemmodel.cpp: Added in layout change
