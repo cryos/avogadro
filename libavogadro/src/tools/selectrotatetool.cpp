@@ -135,7 +135,8 @@ namespace Avogadro {
       // (e.g., if we're in residue selection mode, picking an atom
       // will select the whole residue
 
-      foreach (GLHit hit, m_hits) {
+      foreach (const GLHit& hit, m_hits)
+      {
         if(hit.type() == Primitive::AtomType) // Atom selection
         {
           Atom *atom = static_cast<Atom *>(molecule->GetAtom(hit.name()));
@@ -226,7 +227,7 @@ namespace Avogadro {
       // (ex, ey) = Bottom right most position.
       QList<GLHit> hits = widget->hits(sx, sy, w, h);
       // Iterate over the hits
-      foreach(GLHit hit, hits)
+      foreach(const GLHit& hit, hits)
       {
         if(hit.type() == Primitive::AtomType) // Atom selection
         {

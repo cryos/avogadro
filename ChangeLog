@@ -1,5 +1,11 @@
 2008-04-27  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* avogadro/src/mainwindow.cpp,
+	libavogadro/src/extensions/pythonextension.cpp,
+	libavogadro/src/tools/directorytreemodel.cpp,
+	libavogadro/src/tools/selectrotatetool.cpp: Found a few more cases
+	where foreach loops needed fixing.
+
 	* libavogadro/src/glwidget.cpp, libavogadro/src/toolgroup.cpp: Made
 	changes to foreach loops as suggested by Albert Astals Cid, prevent
 	unnecessary creation of temporary objects.

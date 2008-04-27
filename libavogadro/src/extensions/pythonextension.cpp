@@ -129,7 +129,7 @@ namespace Avogadro
     dir.setNameFilters(filters);
     dir.setFilter(QDir::Files | QDir::Readable);
 
-    foreach(QString file, dir.entryList())
+    foreach(const QString& file, dir.entryList())
     {
       qDebug() << file;
       PythonScript script(dir.canonicalPath(), file);

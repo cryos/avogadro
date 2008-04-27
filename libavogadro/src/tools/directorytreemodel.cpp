@@ -194,7 +194,7 @@ namespace Avogadro {
     int position = 0; // current number of subdirectories (i.e., the relative path depth)
     int absoluteDepth = 0; // depth of the parent directory
   
-    foreach (QString dir, dirList) {
+    foreach (const QString& dir, dirList) {
       QDir currentDir(dir);
 
       if (currentDir.exists()) {

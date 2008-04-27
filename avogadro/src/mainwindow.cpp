@@ -301,7 +301,7 @@ namespace Avogadro
   void MainWindow::dropEvent(QDropEvent *event)
   {
     if (event->mimeData()->hasUrls()) {
-      foreach(QUrl url, event->mimeData()->urls() ) {
+      foreach(const QUrl& url, event->mimeData()->urls() ) {
         loadFile(url.toLocalFile());
       }
       event->acceptProposedAction();
@@ -1539,25 +1539,30 @@ namespace Avogadro
     pluginPaths << "./extensions";
 #endif
 
-    if ( getenv( "AVOGADRO_EXTENSIONS" ) != NULL ) {
-      pluginPaths = QString( getenv( "AVOGADRO_EXTENSIONS" ) ).split( ':' );
+    if (getenv("AVOGADRO_EXTENSIONS") != NULL) {
+      pluginPaths = QString(getenv("AVOGADRO_EXTENSIONS") ).split(':');
     }
 
-    foreach( QString path, pluginPaths ) {
-      QDir dir( path );
+    foreach(const QString& path, pluginPaths)
+    {
+      QDir dir(path);
       //      qDebug() << "SearchPath:" << dir.absolutePath() << endl;
-      foreach( QString fileName, dir.entryList( QDir::Files ) ) {
-        QPluginLoader loader( dir.absoluteFilePath( fileName ) );
+      foreach(const QString& fileName, dir.entryList(QDir::Files))
+      {
+        QPluginLoader loader(dir.absoluteFilePath(fileName));
         QObject *instance = loader.instance();
         // qDebug() << "File: " << fileName;
-        ExtensionFactory *factory = qobject_cast<ExtensionFactory *>( instance );
-        if ( factory ) {
-          Extension *extension = factory->createInstance( this );
-          qDebug() << "Found Extension: " << extension->name() << " - " << extension->description();
+        ExtensionFactory *factory = qobject_cast<ExtensionFactory *>(instance);
+        if ( factory )
+        {
+          Extension *extension = factory->createInstance(this);
+          qDebug() << "Found Extension: " << extension->name() << " - "
+                   << extension->description();
 
           QList<QAction *>actions = extension->actions();
 
-          foreach( QAction *action, actions ) {
+          foreach(QAction *action, actions)
+          {
             // Here's the fun part, we go customize our menus
             // Add these actions to the menu described by the menuPath
             QString menuPathString = extension->menuPath(action);
@@ -1617,8 +1622,10 @@ namespace Avogadro
             ui.menuDocks->addAction(dockWidget->toggleViewAction());
           }
 
-          connect(this, SIGNAL( moleculeChanged(Molecule*)), extension, SLOT(setMolecule(Molecule*)));
-          connect(extension, SIGNAL( message(QString)), d->messagesText, SLOT(append(QString)));
+          connect(this, SIGNAL( moleculeChanged(Molecule*)),
+                  extension, SLOT(setMolecule(Molecule*)));
+          connect(extension, SIGNAL( message(QString)),
+                  d->messagesText, SLOT(append(QString)));
         }
       }
     }
