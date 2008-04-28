@@ -54,6 +54,8 @@ namespace Avogadro
         this, SLOT(setProcs(int)));
     connect(ui.generateButton, SIGNAL(clicked()),
         this, SLOT(generateClicked()));
+    connect(ui.resetButton, SIGNAL(clicked()),
+        this, SLOT(resetClicked()));
 
     // Generate an initial preview of the input deck
     updatePreviewText();
@@ -76,7 +78,16 @@ namespace Avogadro
     ui.previewText->setText(generateInputDeck());
   }
 
-  void GaussianInputDialog::resetClicked() {}
+  void GaussianInputDialog::resetClicked()
+  {
+    // Reset the form to defaults
+    ui.calculationCombo->setCurrentIndex(1);
+    ui.theoryCombo->setCurrentIndex(3);
+    ui.basisCombo->setCurrentIndex(2);
+    ui.multiplicityCombo->setCurrentIndex(0);
+    ui.chargeCombo->setCurrentIndex(2);
+    ui.procSpin->setValue(1);
+  }
   void GaussianInputDialog::generateClicked()
   {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Gaussian Input Deck"),

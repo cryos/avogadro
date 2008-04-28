@@ -1,5 +1,8 @@
 2008-04-28  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/gaussianinputdialog.cpp: Made the reset
+	button work.
+
 	* libavogadro/src/extensions/gaussianinputdialog.cpp: Update the
 	preview when setMolecule is called. Also added some logic to disable
 	basis sets with certain theories.
