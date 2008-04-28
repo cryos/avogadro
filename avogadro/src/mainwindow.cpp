@@ -492,19 +492,24 @@ namespace Avogadro
     // no parameter give create dialog
     if ( fileName.isEmpty() )
     {
-      QString filters =
-        tr("Common molecule formats")
+      QSettings settings;
+      QString selectedFilter = settings.value("Open Molecule Filter").toString();
+      
+      QStringList filters;
+      filters << tr("Common molecule formats")
         + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
           " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
           " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
           " *.mpd *.mol2)"
-        + ";;"
-        + tr("All files") + " (* *.*)"
-        + ";;"
-        + tr("CML") + " (*.cml)";
+        << tr("All files") + " (* *.*)"
+        << tr("CML") + " (*.cml)"
+        << tr("MDL Mol") + "(*.mdl *.mol *.sd *.sdf)"
+        << tr("PDB") + " (*.pdb)"
+        << tr("XYZ") + " (*.xyz)";
 
       fileName = QFileDialog::getOpenFileName( this,
-          tr( "Open File" ), d->fileDialogPath, filters );
+        tr( "Open File" ), d->fileDialogPath, filters.join(";;"), &selectedFilter);
+      settings.setValue("Open Molecule Filter", selectedFilter);
     }
 
     if ( !fileName.isEmpty() ) {
@@ -688,6 +693,9 @@ namespace Avogadro
 
   bool MainWindow::saveAs()
   {
+    QSettings settings;
+    QString selectedFilter = settings.value("Save Molecule Filter", tr("CML") + " (*.cml)").toString();
+
     QStringList filters;
     filters << tr("All files") + " (* *.*)"
             << tr("Common molecule formats")
@@ -700,24 +708,15 @@ namespace Avogadro
             << tr("Gaussian cartesian input") + " (*.gau)"
             << tr("Gaussian z-matrix input") + " (*.gzmat)"
             << tr("XYZ") + " (*.xyz)";
-            
-    qDebug() << d->fileDialogPath;
-    QString selectedFilter("All files");
-#ifdef Q_WS_MAC
-    QString fileName = QFileDialog::getSaveFileName(this,
-                                                    tr("Save Molecule As"),
-                                                    d->fileDialogPath,
-                                                    filters.join(";;"), &selectedFilter);
-#else
+
     QString fileName = SaveDialog::run(this,
                                        tr("Save Molecule As"),
                                        d->fileDialogPath,
                                        d->fileName,
                                        filters,
-                                       "cml");
-#endif
-
-    qDebug() << "selected filter: " << selectedFilter;
+                                       "cml",
+                                       selectedFilter);
+    settings.setValue("Save Molecule Filter", selectedFilter);
 
     if(fileName.isEmpty())
     {
@@ -785,25 +784,26 @@ namespace Avogadro
 
   void MainWindow::exportGraphics()
   {
+    QSettings settings;
+    QString selectedFilter = settings.value("Export Graphics Filter", tr("PNG") + " (*.png)").toString();
+    
     QStringList filters;
     filters << tr("Common image formats")
               + " (*.png *.jpg *.jpeg)"
             << tr("All files") + " (* *.*)"
             << tr("PNG") + " (*.png)"
             << tr("JPEG") + " (*.jpg *.jpeg)";
-#ifdef Q_WS_MAC
-    QString fileName = QFileDialog::getSaveFileName(this,
-                                                    tr("Export Bitmap Graphics"),
-                                                    d->fileDialogPath + d->fileName,
-                                                    filters.join(";;"));
-#else
+
     QString fileName = SaveDialog::run(this,
                                        tr("Export Bitmap Graphics"),
                                        "",
                                        "",
                                        filters,
-                                       "png");
-#endif
+                                       "png",
+                                       selectedFilter);
+
+    settings.setValue("Export Graphics Filter", selectedFilter);
+
     if(fileName.isEmpty())
     {
       return;
@@ -844,22 +844,23 @@ namespace Avogadro
 
   void MainWindow::exportPOV()
   {
+    QSettings settings;
+    QString selectedFilter = settings.value("Export POV-Ray Filter", tr("POV-Ray format") + " (*.pov)").toString();
+    
     QStringList filters;
     filters << tr("POV-Ray format") + " (*.pov)"
             << tr("All files") + " (* *.*)";
-#ifdef Q_WS_MAC
-    QString fileName = QFileDialog::getSaveFileName(this,
-                                                    tr("Export POV Scene"),
-                                                    "",
-                                                    filters.join(";;"));
-#else            
+
     QString fileName = SaveDialog::run(this,
                                        tr("Export POV Scene"),
                                        "",
                                        "",
                                        filters,
-                                       "pov");
-#endif
+                                       "pov",
+                                       selectedFilter);
+
+    settings.setValue("Export POV-Ray Filter", selectedFilter);
+
     if(fileName.isEmpty())
     {
       return;

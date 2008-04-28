@@ -65,6 +65,7 @@ namespace Avogadro {
   
       /** For documentation on parameters, see the constructor's documentation: SaveDialog().
         *
+        * \param selectedFilter the selected filter chosen by the user (e.g. for saving across sessions)
         * \returns the selected filename, or an empty string if the saving was canceled or
         *          otherwise failed.
         */
@@ -73,7 +74,8 @@ namespace Avogadro {
                                const QString& defaultDirectory,
                                const QString& defaultFileName,
                                const QStringList& filters,
-                               const QString& defaultSuffix);
+                               const QString &defaultSuffix,
+                               QString &selectedFilter);
 
     private:
       const QString m_defaultSuffix;

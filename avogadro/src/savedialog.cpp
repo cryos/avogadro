@@ -75,14 +75,32 @@ namespace Avogadro
                                 const QString& defaultDirectory,
                                 const QString& defaultFileName,
                                 const QStringList& filters,
-                                const QString& defaultSuffix)
+                                const QString& defaultSuffix,
+                                QString &defaultFilter)
   {
-    SaveDialog dialog(widget, windowTitle, defaultDirectory, defaultFileName, filters, defaultSuffix);
     QString result;
+    
+#ifdef Q_WS_MAC
+// The Mac Qt/Native dialog already updates extensions for us. So we'll call the static version.
+// Also, we remove the "Common" entry in the filters, because it's not in keeping with the Mac interface
+// (Typical Mac save dialogs let you either save as a particular format or have an "Any format")
+    QStringList macFilters(filters);
+    int commonItem = macFilters.indexOf(QRegExp(tr("Common.*")));
+    if (commonItem != -1)
+      macFilters.removeAt(commonItem);
+    result = QFileDialog::getSaveFileName(widget,
+                                          windowTitle,
+                                          defaultDirectory + defaultFileName,
+                                          filters.join(";;"), &defaultFilter);
+#else
+    SaveDialog dialog(widget, windowTitle, defaultDirectory, defaultFileName, filters, defaultSuffix);
+    dialog.selectFilter(defaultFilter);
     if(dialog.exec())
     {
       result = dialog.selectedFiles().first();
+      defaultFilter = dialog.selectedFilter();
     }
+#endif
     return result;
   }
 
