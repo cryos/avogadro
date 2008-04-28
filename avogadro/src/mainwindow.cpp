@@ -232,6 +232,10 @@ namespace Avogadro
     ui.menuDocks->addAction( ui.enginePrimitivesDock->toggleViewAction() );
     ui.menuToolbars->addAction( ui.fileToolBar->toggleViewAction() );
 
+    // Disable the "Revert" action -- we haven't modified anything
+    // This will be enabled when the document is modified
+    ui.actionRevert->setEnabled(false);
+
 #ifdef Q_WS_MAC
     // Find the Avogadro global preferences action
     // and move it to the File menu (where it will be found)
@@ -779,6 +783,7 @@ namespace Avogadro
 
   void MainWindow::undoStackClean( bool clean )
   {
+    ui.actionRevert->setEnabled(!clean);
     setWindowModified( !clean );
   }
 
@@ -900,7 +905,8 @@ namespace Avogadro
   }
 
   void MainWindow::documentWasModified()
-  {
+  {    
+    ui.actionRevert->setEnabled(true);
     setWindowModified( true );
   }
 
@@ -1669,6 +1675,8 @@ namespace Avogadro
     ui.menuOpenRecent->menuAction()->setEnabled( true );
     ui.actionQuit->setEnabled( true );
 
+    // Clear the molecule
+    loadFile();
     hide();
   }
 
