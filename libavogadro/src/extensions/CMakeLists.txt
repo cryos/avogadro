@@ -155,6 +155,19 @@ TARGET_LINK_LIBRARIES(orbitalextension
 )
 INSTALL(TARGETS orbitalextension DESTINATION ${DESTINATION_DIR})
 
+### Gaussian input deck generator
+set(gaussianextension_SRCS gaussianextension.cpp gaussianinputdialog.cpp)
+qt4_wrap_ui(gaussianextension_UIS_H gaussianinputdialog.ui)
+qt4_automoc(${gaussianextension_SRCS})
+ADD_LIBRARY(gaussianextension SHARED ${gaussianextension_SRCS} ${gaussianextension_UIS_H})
+TARGET_LINK_LIBRARIES(gaussianextension
+  ${OPENBABEL2_LIBRARIES}
+  ${QT_LIBRARIES}
+  ${OPENGL_LIBRARIES}
+  avogadro-lib
+)
+INSTALL(TARGETS gaussianextension DESTINATION ${DESTINATION_DIR})
+
 if(BOOST_PYTHON_FOUND)
 	### python extensions
 	set(pythonextension_SRCS pythonextension.cpp)
