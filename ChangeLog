@@ -1,5 +1,9 @@
 2008-04-28  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/basisset.cpp: Actually call the doD and
+	doD5 functions - this really helps when trying to use d-type
+	orbitals to generate cubes...
+
 	* libavogadro/src/extensions/CMakeLists.txt,
 	libavogadro/src/extensions/gaussianextension.*,
 	libavogadro/src/extensions/gaussianinputdialog.*: Added a new Gaussian
@@ -21,7 +25,7 @@
 2008-04-25  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/primitiveitemmodel.cpp: Added in layout change
-	signals. Will hopefully prevent crashing. 
+	signals. Will hopefully prevent crashing.
 
 	* avogadro/src/mainwindow.ui: Move export to a new submenu of
 	File.

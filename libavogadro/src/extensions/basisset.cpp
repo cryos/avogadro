@@ -248,6 +248,12 @@ namespace Avogadro
       case P:
         return doP(basis, delta, dr2);
         break;
+      case D:
+        return doD(basis, delta, dr2);
+        break;
+      case D5:
+        return doD5(basis, delta, dr2);
+        break;
       default:
         // Not handled - return a zero contribution
         return 0.0;
