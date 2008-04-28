@@ -34,10 +34,12 @@ namespace Avogadro
 {
 
   GaussianInputDialog::GaussianInputDialog(QWidget *parent, Qt::WindowFlags f)
-    : QDialog(parent, f), m_molecule(0), m_calculationType(OPT), m_theoryType(B3LYP),
-    m_basisType(B631Gd), m_multiplicity(1), m_charge(0), m_procs(1)
+    : QDialog(parent, f), m_molecule(0), m_calculationType(OPT),
+    m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
+    m_procs(1)
   {
     ui.setupUi(this);
+    // Connect the GUI elements to the correct slots
     connect(ui.calculationCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(setCalculation(int)));
     connect(ui.theoryCombo, SIGNAL(currentIndexChanged(int)),
@@ -53,6 +55,7 @@ namespace Avogadro
     connect(ui.generateButton, SIGNAL(clicked()),
         this, SLOT(generateClicked()));
 
+    // Generate an initial preview of the input deck
     updatePreviewText();
   }
 
@@ -63,6 +66,8 @@ namespace Avogadro
   void GaussianInputDialog::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
+    // Add atom coordinates
+    updatePreviewText();
   }
 
   void GaussianInputDialog::updatePreviewText()
@@ -129,6 +134,12 @@ namespace Avogadro
       default:
         m_theoryType = RHF;
     }
+    
+    if (m_theoryType == AM1 || m_theoryType == PM3)
+      ui.basisCombo->setEnabled(false);
+    else
+      ui.basisCombo->setEnabled(true);
+    
     updatePreviewText();
   }
 
@@ -215,9 +226,14 @@ namespace Avogadro
       mol << "%NProcShared=" << m_procs << "\n";
 
     // Now specify the job type etc
-    mol << "#N " << getTheoryType(m_theoryType) << "/"
-        << getBasisType(m_basisType) << " "
-        << getCalculationType(m_calculationType) << "\n\n";
+    mol << "#n " << getTheoryType(m_theoryType);
+
+    // Not all theories have a basis set
+    if (m_theoryType != AM1 && m_theoryType != PM3)
+      mol << "/" << getBasisType(m_basisType);
+
+    // Now for the calculation type
+    mol << " " << getCalculationType(m_calculationType) << "\n\n";
 
     // Title line
     mol << " Title\n\n";
