@@ -67,7 +67,25 @@ namespace Avogadro
 
   void GaussianInputDialog::setMolecule(Molecule *molecule)
   {
+    // Disconnect the old molecule first...
+    if (m_molecule)
+    {
+      disconnect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
+                 this, SLOT(updatePreviewText()));
+      disconnect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
+                 this, SLOT(updatePreviewText()));
+      disconnect(m_molecule, SIGNAL(primitiveUpdated(Primitive *)),
+                 this, SLOT(updatePreviewText()));
+    }
+
     m_molecule = molecule;
+    // Update the preview text whenever primitives are changed
+    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
+            this, SLOT(updatePreviewText()));
+    connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
+            this, SLOT(updatePreviewText()));
+    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive *)),
+            this, SLOT(updatePreviewText()));
     // Add atom coordinates
     updatePreviewText();
   }

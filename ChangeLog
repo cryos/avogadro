@@ -1,7 +1,7 @@
 2008-04-28  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/gaussianinputdialog.cpp: Made the reset
-	button work.
+	button work. Also connect molecule signals to the dialog.
 
 	* libavogadro/src/extensions/gaussianinputdialog.cpp: Update the
 	preview when setMolecule is called. Also added some logic to disable
