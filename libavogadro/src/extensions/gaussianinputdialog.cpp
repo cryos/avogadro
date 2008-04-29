@@ -217,19 +217,19 @@ namespace Avogadro
     switch (n)
     {
       case 0: // dication
-        m_charge = -2;
+        m_charge = 2;
         break;
       case 1: // cation
-        m_charge = -1;
+        m_charge = 1;
         break;
       case 2: // neutral
         m_charge = 0;
         break;
       case 3: // anion
-        m_charge = 1;
+        m_charge = -1;
         break;
       case 4: // dianion
-        m_charge = 2;
+        m_charge = -2;
         break;
       default:
         m_charge = 0;
@@ -298,7 +298,7 @@ namespace Avogadro
       case OPT:
         return "Opt";
       case FREQ:
-        return "Freq";
+        return "Opt Freq";
       default:
         return "SP";
     }
@@ -334,7 +334,7 @@ namespace Avogadro
       case STO3G:
         return "STO-3G";
       case B321G:
-        return "321-G";
+        return "3-21G";
       case B631Gd:
         return "6-31G(d)";
       case B631Gdp:

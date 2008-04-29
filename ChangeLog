@@ -1,3 +1,8 @@
+2008-04-29  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/gaussianinputdialog.cpp: Several fixes
+	suggested by Michael Banck in bugs 1954108, 1954101 and 1954099.
+
 2008-04-28  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engines/orbitalengine.*,
