@@ -120,7 +120,7 @@
       <number>5</number>
      </property>
      <property name="minimum" >
-      <double>-5.000000000000000</double>
+      <double>0.000000000000000</double>
      </property>
      <property name="maximum" >
       <double>5.000000000000000</double>
@@ -129,7 +129,7 @@
       <double>0.010000000000000</double>
      </property>
      <property name="value" >
-      <double>0.010000000000000</double>
+      <double>0.020000000000000</double>
      </property>
     </widget>
    </item>
@@ -193,7 +193,7 @@
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>40</width>
          <height>20</height>
@@ -208,7 +208,7 @@
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>323</width>
        <height>20</height>

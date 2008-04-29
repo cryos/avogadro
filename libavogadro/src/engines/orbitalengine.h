@@ -115,6 +115,8 @@ namespace Avogadro {
        * @param d the value of the iso surface to be rendered
        */
       void setIso(double d);
+
+      void isoDone();
       /**
        * @param color the color for the positive iso surface
        */

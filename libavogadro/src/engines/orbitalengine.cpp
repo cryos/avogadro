@@ -371,6 +371,10 @@ namespace Avogadro {
   void OrbitalEngine::setIso(double d)
   {
     m_iso = d;
+  }
+
+  void OrbitalEngine::isoDone()
+  {
     m_update = true;
     emit changed();
   }
@@ -392,14 +396,24 @@ namespace Avogadro {
     if(!m_settingsWidget)
     {
       m_settingsWidget = new OrbitalSettingsWidget();
-      connect(m_settingsWidget->orbitalCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setOrbital(int)));
-      connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
-      connect(m_settingsWidget->renderCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setRenderMode(int)));
-      connect(m_settingsWidget->interpolate, SIGNAL(stateChanged(int)), this, SLOT(setInterpolate(int)));
-      connect(m_settingsWidget->isoSpin, SIGNAL(valueChanged(double)), this, SLOT(setIso(double)));
-      connect(m_settingsWidget->posColor, SIGNAL(colorChanged(QColor)), this, SLOT(setPosColor(QColor)));
-      connect(m_settingsWidget->negColor, SIGNAL(colorChanged(QColor)), this, SLOT(setNegColor(QColor)));
-      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      connect(m_settingsWidget->orbitalCombo, SIGNAL(currentIndexChanged(int)),
+              this, SLOT(setOrbital(int)));
+      connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)),
+              this, SLOT(setOpacity(int)));
+      connect(m_settingsWidget->renderCombo, SIGNAL(currentIndexChanged(int)),
+              this, SLOT(setRenderMode(int)));
+      connect(m_settingsWidget->interpolate, SIGNAL(stateChanged(int)),
+              this, SLOT(setInterpolate(int)));
+      connect(m_settingsWidget->isoSpin, SIGNAL(valueChanged(double)),
+              this, SLOT(setIso(double)));
+      connect(m_settingsWidget->isoSpin, SIGNAL(editingFinished()),
+              this, SLOT(isoDone()));
+      connect(m_settingsWidget->posColor, SIGNAL(colorChanged(QColor)),
+              this, SLOT(setPosColor(QColor)));
+      connect(m_settingsWidget->negColor, SIGNAL(colorChanged(QColor)),
+              this, SLOT(setNegColor(QColor)));
+      connect(m_settingsWidget, SIGNAL(destroyed()),
+              this, SLOT(settingsWidgetDestroyed()));
 
       // Initialise the colour buttons
       QColor initial;
