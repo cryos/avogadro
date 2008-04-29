@@ -232,9 +232,11 @@ namespace Avogadro
     ui.menuDocks->addAction( ui.enginePrimitivesDock->toggleViewAction() );
     ui.menuToolbars->addAction( ui.fileToolBar->toggleViewAction() );
 
-    // Disable the "Revert" action -- we haven't modified anything
+    // Disable the "Revert" and "Save" actions -- we haven't modified anything
     // This will be enabled when the document is modified
     ui.actionRevert->setEnabled(false);
+    ui.actionSave->setEnabled(false);
+    ui.actionSaveAs->setEnabled(false);
 
 #ifdef Q_WS_MAC
     // Find the Avogadro global preferences action
@@ -256,6 +258,11 @@ namespace Avogadro
     foreach( QAction *menu, menuBar()->actions() ) {
       foreach( QAction *menuItem, menu->menu()->actions() ) {
         menuItem->setIcon( nullIcon ); // clears the icon for this item
+        if (menuItem->menu() != NULL) {
+          foreach( QAction *submenuItem, menuItem->menu()->actions() ) {
+            submenuItem->setIcon( nullIcon ); // clears the icon for this item
+          }
+        }
       }
     }
 
@@ -702,11 +709,14 @@ namespace Avogadro
 
     QStringList filters;
     filters << tr("All files") + " (* *.*)"
+// Omit these on Mac, since it doesn't match "native" save dialogs
+#ifndef Q_WS_MAC
             << tr("Common molecule formats")
                       + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
                         " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
                         " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
                         " *.mpd *.mol2)"
+#endif
             << tr("CML") + " (*.cml)"
             << tr("GAMESS input") + " (*.gamin)"
             << tr("Gaussian cartesian input") + " (*.gau)"
@@ -784,6 +794,9 @@ namespace Avogadro
   void MainWindow::undoStackClean( bool clean )
   {
     ui.actionRevert->setEnabled(!clean);
+    ui.actionSave->setEnabled(!clean);
+    ui.actionSaveAs->setEnabled(!clean);
+    
     setWindowModified( !clean );
   }
 
@@ -793,9 +806,15 @@ namespace Avogadro
     QString selectedFilter = settings.value("Export Graphics Filter", tr("PNG") + " (*.png)").toString();
     
     QStringList filters;
+// Omit "common image formats" on Mac
+#ifdef Q_WS_MAC
+    filters
+#else
     filters << tr("Common image formats")
               + " (*.png *.jpg *.jpeg)"
+#endif
             << tr("All files") + " (* *.*)"
+            << tr("BMP") + " (*.bmp)"
             << tr("PNG") + " (*.png)"
             << tr("JPEG") + " (*.jpg *.jpeg)";
 
@@ -866,8 +885,7 @@ namespace Avogadro
 
     settings.setValue("Export POV-Ray Filter", selectedFilter);
 
-    if(fileName.isEmpty())
-    {
+    if(fileName.isEmpty()) {
       return;
     }
 
@@ -906,7 +924,10 @@ namespace Avogadro
 
   void MainWindow::documentWasModified()
   {    
+    // Now that the document was modified, enable save/revert
     ui.actionRevert->setEnabled(true);
+    ui.actionSave->setEnabled(true);
+    ui.actionSaveAs->setEnabled(true);
     setWindowModified( true );
   }
 
