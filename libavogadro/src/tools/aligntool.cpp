@@ -52,7 +52,7 @@ namespace Avogadro {
   m_axis(2), m_settingsWidget(0)
   {
     QAction *action = activateAction();
-    action->setIcon(QIcon(QString::fromUtf8(":/measure/measure.png")));
+    action->setIcon(QIcon(QString::fromUtf8(":/align/align.png")));
     action->setToolTip(tr("Align Molecules\n\n"
           "Left Mouse: \tSelect up to two atoms.\n"
           "\tThe first atom is centered at the origin.\n"

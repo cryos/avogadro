@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/autorotate">
-        <file>autorotate.png</file>
+    <qresource prefix="/align">
+        <file>align.png</file>
     </qresource>
 </RCC>
