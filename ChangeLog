@@ -1,5 +1,8 @@
 2008-04-28  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/orbitalextension.cpp: Return if the file
+	name is empty.
+
 	* libavogadro/src/extensions/gaussianinputdialog.cpp: Made the reset
 	button work. Also connect molecule signals to the dialog.
 

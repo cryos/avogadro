@@ -92,7 +92,9 @@ namespace Avogadro
   void OrbitalExtension::loadBasis(QString fileName)
   {
     // Reset the basis class, then load up the checkpoint file
-    qDebug() << "Load file name" << fileName;
+    if (fileName.isEmpty())
+      return;
+
     if (m_basis)
       delete m_basis;
     m_basis = new BasisSet;
