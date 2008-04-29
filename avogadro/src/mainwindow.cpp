@@ -1631,6 +1631,11 @@ namespace Avogadro
 
           connect(this, SIGNAL( moleculeChanged(Molecule*)),
                   extension, SLOT(setMolecule(Molecule*)));
+          // When loading a molecule with an already open window with another
+          // molecule this signal is never triggered. If we already have a
+          // molecule at the point of loading then set it for the extension
+          if (d->molecule)
+            extension->setMolecule(d->molecule);
           connect(extension, SIGNAL( message(QString)),
                   d->messagesText, SLOT(append(QString)));
         }

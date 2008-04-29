@@ -1,5 +1,8 @@
 2008-04-28  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* avogadro/src/mainwindow.cpp: Tracked the bug of the disappearing
+	molecule - it was never set for extensions after the first window.
+
 	* libavogadro/src/extensions/orbitalextension.cpp: Return if the file
 	name is empty.
 
