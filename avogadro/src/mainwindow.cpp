@@ -351,6 +351,7 @@ namespace Avogadro
 
   void MainWindow::setRenderAxes(bool render)
   {
+    qDebug() << "setRenderAxes called: " << render;
     d->glWidget->setRenderAxes(render);
   }
 
@@ -982,6 +983,8 @@ namespace Avogadro
     d->enginesStacked->setCurrentIndex( index );
     d->engineConfigurationStacked->setCurrentIndex( index );
     d->enginePrimitivesStacked->setCurrentIndex( index );
+    ui.actionDisplayAxes->setChecked(renderAxes());
+    ui.actionDebugInformation->setChecked(renderDebug());
   }
 
   void MainWindow::paste()
@@ -1200,8 +1203,9 @@ namespace Avogadro
 
     QString tabName = tr("View %1").arg( QString::number( d->centralTab->count()+1) );
 
-    d->centralTab->addTab( widget, tabName );
-    ui.actionCloseView->setEnabled( true );
+    d->centralTab->addTab(widget, tabName);
+    ui.actionDisplayAxes->setChecked(gl->renderAxes());
+    ui.actionDebugInformation->setChecked(gl->renderDebug());
     writeSettings();
   }
 
@@ -1229,6 +1233,8 @@ namespace Avogadro
 
     d->centralTab->addTab( widget, tabName );
     ui.actionCloseView->setEnabled( true );
+    ui.actionDisplayAxes->setChecked(gl->renderAxes());
+    ui.actionDebugInformation->setChecked(gl->renderDebug());
 
     writeSettings();
   }
@@ -1371,6 +1377,10 @@ namespace Avogadro
     connect( ui.actionCenter, SIGNAL( triggered() ), this, SLOT( centerView() ) );
     connect( ui.actionFullScreen, SIGNAL( triggered() ), this, SLOT( fullScreen() ) );
     connect( ui.actionSetBackgroundColor, SIGNAL( triggered() ), this, SLOT( setBackgroundColor() ) );
+    connect(ui.actionDisplayAxes, SIGNAL(triggered(bool)),
+            this, SLOT(setRenderAxes(bool)));
+    connect(ui.actionDebugInformation, SIGNAL(triggered(bool)),
+            this, SLOT(setRenderDebug(bool)));
     connect( ui.actionAbout, SIGNAL( triggered() ), this, SLOT( about() ) );
 
     connect( d->centralTab, SIGNAL( currentChanged( int ) ), this, SLOT( setView( int ) ) );
@@ -1526,6 +1536,10 @@ namespace Avogadro
       gl->readSettings(settings);
     }
     settings.endArray();
+
+    // Set the view conditions for the initial view
+    ui.actionDisplayAxes->setChecked(renderAxes());
+    ui.actionDebugInformation->setChecked(renderDebug());
 
     ui.actionCloseView->setEnabled(count > 1);
   }
