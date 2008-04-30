@@ -632,6 +632,7 @@ namespace Avogadro {
   void GLWidget::setRenderAxes(bool renderAxes)
   {
     d->renderAxes = renderAxes;
+    update();
   }
 
   bool GLWidget::renderAxes()
@@ -642,6 +643,7 @@ namespace Avogadro {
   void GLWidget::setRenderDebug(bool renderDebug)
   {
     d->renderDebug = renderDebug;
+    update();
   }
 
   bool GLWidget::renderDebug()

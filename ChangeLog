@@ -3,6 +3,9 @@
 	* avogadro/src/mainwindow.cpp, avogadro/src/mainwindow.ui: Updated
 	with new view menu actions for axes and debug information.
 
+	* libavogadro/src/glwidget.cpp: Update the display after axes or debug
+	rendering is turned on or off.
+
 2008-04-29  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	*  libavogadro/src/tools/align.png,
