@@ -34,24 +34,30 @@ namespace Avogadro
 {
 
   GaussianInputDialog::GaussianInputDialog(QWidget *parent, Qt::WindowFlags f)
-    : QDialog(parent, f), m_molecule(0), m_calculationType(OPT),
+    : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
     m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
-    m_procs(1)
+    m_procs(1), m_output(""), m_chk(false)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
+    connect(ui.titleLine, SIGNAL(editingFinished()),
+        this, SLOT(setTitle()));
     connect(ui.calculationCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(setCalculation(int)));
     connect(ui.theoryCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(setTheory(int)));
     connect(ui.basisCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(setBasis(int)));
-    connect(ui.multiplicityCombo, SIGNAL(currentIndexChanged(int)),
+    connect(ui.multiplicitySpin, SIGNAL(valueChanged(int)),
         this, SLOT(setMultiplicity(int)));
-    connect(ui.chargeCombo, SIGNAL(currentIndexChanged(int)),
+    connect(ui.chargeSpin, SIGNAL(valueChanged(int)),
         this, SLOT(setCharge(int)));
     connect(ui.procSpin, SIGNAL(valueChanged(int)),
         this, SLOT(setProcs(int)));
+    connect(ui.outputCombo, SIGNAL(currentIndexChanged(int)),
+        this, SLOT(setOutput(int)));
+    connect(ui.checkpointCheck, SIGNAL(stateChanged(int)),
+        this, SLOT(setChk(int)));
     connect(ui.generateButton, SIGNAL(clicked()),
         this, SLOT(generateClicked()));
     connect(ui.resetButton, SIGNAL(clicked()),
@@ -70,12 +76,7 @@ namespace Avogadro
     // Disconnect the old molecule first...
     if (m_molecule)
     {
-      disconnect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
-                 this, SLOT(updatePreviewText()));
-      disconnect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
-                 this, SLOT(updatePreviewText()));
-      disconnect(m_molecule, SIGNAL(primitiveUpdated(Primitive *)),
-                 this, SLOT(updatePreviewText()));
+      disconnect(m_molecule, 0, this, 0);
     }
 
     m_molecule = molecule;
@@ -102,8 +103,8 @@ namespace Avogadro
     ui.calculationCombo->setCurrentIndex(1);
     ui.theoryCombo->setCurrentIndex(3);
     ui.basisCombo->setCurrentIndex(2);
-    ui.multiplicityCombo->setCurrentIndex(0);
-    ui.chargeCombo->setCurrentIndex(2);
+    ui.multiplicitySpin->setValue(0);
+    ui.chargeSpin->setValue(0);
     ui.procSpin->setValue(1);
   }
   void GaussianInputDialog::generateClicked()
@@ -117,6 +118,12 @@ namespace Avogadro
 
     QTextStream out(&file);
     out << generateInputDeck();
+  }
+
+  void GaussianInputDialog::setTitle()
+  {
+    m_title = ui.titleLine->text();
+    updatePreviewText();
   }
 
   void GaussianInputDialog::setCalculation(int n)
@@ -196,44 +203,12 @@ namespace Avogadro
 
   void GaussianInputDialog::setMultiplicity(int n)
   {
-    switch (n)
-    {
-      case 0: // singlet
-        m_multiplicity = 1;
-        break;
-      case 1: // doublet
-        m_multiplicity = 2;
-        break;
-      case 2: // triplet
-        m_multiplicity = 3;
-        break;
-      default:
-        m_multiplicity = 1;
-    }
+    m_multiplicity = n;
     updatePreviewText();
   }
   void GaussianInputDialog::setCharge(int n)
   {
-    switch (n)
-    {
-      case 0: // dication
-        m_charge = 2;
-        break;
-      case 1: // cation
-        m_charge = 1;
-        break;
-      case 2: // neutral
-        m_charge = 0;
-        break;
-      case 3: // anion
-        m_charge = -1;
-        break;
-      case 4: // dianion
-        m_charge = -2;
-        break;
-      default:
-        m_charge = 0;
-    }
+    m_charge = n;
     updatePreviewText();
   }
 
@@ -241,6 +216,29 @@ namespace Avogadro
   {
     if (n > 0)
       m_procs = n;
+    updatePreviewText();
+  }
+
+  void GaussianInputDialog::setOutput(int n)
+  {
+    switch (n)
+    {
+      case 1:
+        m_output = " gfprint pop=full";
+        break;
+      case 2:
+        m_output = " gfoldprint pop=full";
+        break;
+      default:
+        m_output = "";
+    }
+    updatePreviewText();
+  }
+
+  void GaussianInputDialog::setChk(int n)
+  {
+    if (n) m_chk = true;
+    else m_chk = false;
     updatePreviewText();
   }
 
@@ -253,19 +251,24 @@ namespace Avogadro
     // These directives are required before the job specification
     if (m_procs > 1)
       mol << "%NProcShared=" << m_procs << "\n";
+    if (m_chk)
+      mol << "%Chk=checkpoint.chk\n";
 
     // Now specify the job type etc
-    mol << "#n " << getTheoryType(m_theoryType);
+    mol << "#p " << getTheoryType(m_theoryType);
 
     // Not all theories have a basis set
     if (m_theoryType != AM1 && m_theoryType != PM3)
       mol << "/" << getBasisType(m_basisType);
 
     // Now for the calculation type
-    mol << " " << getCalculationType(m_calculationType) << "\n\n";
+    mol << " " << getCalculationType(m_calculationType);
+
+    // Output parameters for some programs
+    mol << m_output;
 
     // Title line
-    mol << " Title\n\n";
+    mol << "\n\n " << m_title << "\n\n";
 
     // Now for the charge and multiplicity
     mol << m_charge << " " << m_multiplicity << "\n";

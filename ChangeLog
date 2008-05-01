@@ -1,5 +1,9 @@
 2008-04-30  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/gaussianinputdialog.*: Added several new
+	options and modifications based upon discussion in bug 1954113.
+	Editing of the text edit box still needs to be added.
+
 	* avogadro/src/mainwindow.cpp, avogadro/src/mainwindow.ui: Updated
 	with new view menu actions for axes and debug information.
 

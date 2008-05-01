@@ -52,12 +52,15 @@ namespace Avogadro
       Molecule* m_molecule;
 
       // Internal data structure for the calculation
+      QString m_title;
       calculationType m_calculationType;
       theoryType m_theoryType;
       basisType m_basisType;
       int m_multiplicity;
       int m_charge;
       int m_procs;
+      QString m_output;
+      bool m_chk;
 
       // Generate an input deck as a string
       QString generateInputDeck();
@@ -74,12 +77,15 @@ namespace Avogadro
       void resetClicked();
       void generateClicked();
 
+      void setTitle();
       void setCalculation(int);
       void setTheory(int);
       void setBasis(int);
       void setMultiplicity(int);
       void setCharge(int);
       void setProcs(int);
+      void setOutput(int);
+      void setChk(int);
 
   };
 }
