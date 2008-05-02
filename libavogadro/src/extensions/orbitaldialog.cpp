@@ -30,6 +30,8 @@
 
 namespace Avogadro
 {
+  using Eigen::Vector3d;
+
   OrbitalDialog::OrbitalDialog(QWidget* parent, Qt::WindowFlags f)
     : QDialog(parent, f)
   {
@@ -59,6 +61,38 @@ namespace Avogadro
   void OrbitalDialog::setLUMO(int n)
   {
     ui.orbitalCombo->setItemText(n, ui.orbitalCombo->itemText(n) + " (LUMO)");
+  }
+
+  void OrbitalDialog::setCube(Eigen::Vector3d origin, int nx, int ny, int nz,
+                              double step)
+  {
+    ui.originX->setText(QString::number(origin.x()));
+    ui.originY->setText(QString::number(origin.y()));
+    ui.originZ->setText(QString::number(origin.z()));
+    ui.stepsX->setText(QString::number(nx));
+    ui.stepsY->setText(QString::number(ny));
+    ui.stepsZ->setText(QString::number(nz));
+    ui.stepSize->setText(QString::number(step));
+  }
+
+  Vector3d OrbitalDialog::origin()
+  {
+    return Vector3d(QString(ui.originX->text()).toDouble(),
+                    QString(ui.originY->text()).toDouble(),
+                    QString(ui.originZ->text()).toDouble());
+  }
+  
+  QList<int> OrbitalDialog::steps()
+  {
+    QList<int> tmp;
+    tmp.push_back(QString(ui.stepsX->text()).toInt());
+    tmp.push_back(QString(ui.stepsY->text()).toInt());
+    tmp.push_back(QString(ui.stepsZ->text()).toInt());
+    return tmp;
+  }
+  double OrbitalDialog::stepSize()
+  {
+    return QString(ui.stepSize->text()).toDouble();
   }
 
   void OrbitalDialog::loadFile()

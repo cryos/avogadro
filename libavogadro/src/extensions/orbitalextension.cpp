@@ -30,16 +30,18 @@
 #include <openbabel/math/vector3.h>
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
+#include <eigen/vector.h>
 
 #include <QProgressDialog>
 #include <QCoreApplication>
 
 using namespace std;
 using namespace OpenBabel;
-using namespace Eigen;
 
 namespace Avogadro
 {
+
+  using Eigen::Vector3d;
 
   OrbitalExtension::OrbitalExtension(QObject* parent) : Extension(parent),
     m_orbitalDialog(0), m_molecule(0), m_basis(0)
@@ -113,33 +115,47 @@ namespace Avogadro
       if (m_basis->HOMO(i)) m_orbitalDialog->setHOMO(i);
       else if (m_basis->LUMO(i)) m_orbitalDialog->setLUMO(i);
     }
+
+    // Now to set the default cube...
+    OBFloatGrid grid;
+    double step = 0.25;
+    grid.Init(*m_molecule, step, 2.5);
+    vector3 tmp = grid.GetMin();// / BOHR_TO_ANGSTROM;
+    Vector3d origin(tmp.x(), tmp.y(), tmp.z());
+    int nx = grid.GetXdim();
+    int ny = grid.GetYdim();
+    int nz = grid.GetZdim();
+    // Set these values on the form - they can then be altered by the user
+    m_orbitalDialog->setCube(origin, nx, ny, nz, step);
+
   }
 
   void OrbitalExtension::calculateMO(int n)
   {
     static const double BOHR_TO_ANGSTROM = 0.529177249;
+    static const double ANGSTROM_TO_BOHR = 1.0/BOHR_TO_ANGSTROM;
     // Calculate MO n and add the cube to the molecule...
     n++; // MOs are 1 based, not 0 based...
     qDebug() << "Calculating MO" << n;
-    OBFloatGrid grid;
-    double step = 0.25;
-    grid.Init(*m_molecule, step * BOHR_TO_ANGSTROM, 2.5);
-    vector3 origin = grid.GetMin() / BOHR_TO_ANGSTROM;
-    int nx = grid.GetXdim();
-    int ny = grid.GetYdim();
-    int nz = grid.GetZdim();
+    double step = m_orbitalDialog->stepSize() * ANGSTROM_TO_BOHR;
+    Vector3d origin = ANGSTROM_TO_BOHR * m_orbitalDialog->origin();
+    QList<int> nSteps = m_orbitalDialog->steps();
     double x, y, z;
 
+    // Debug output
+    qDebug() << "Origin = " << origin.x() << origin.y() << origin.z()
+             << "\nStep = " << step << ", nz = " << nSteps.at(2);
+
     // Set up a progress dialog
-    QProgressDialog progress("Calculating MO...", "Abort Calculation", 0, nx,
-                             m_orbitalDialog);
+    QProgressDialog progress("Calculating MO...", "Abort Calculation", 0,
+                             nSteps.at(0), m_orbitalDialog);
     progress.setWindowModality(Qt::WindowModal);
     progress.setValue(0);
 
     vector<double> values;
-    values.reserve(nx*ny*nz);
+    values.reserve(nSteps.at(0)*nSteps.at(1)*nSteps.at(2));
 
-    for (int i = 0; i < nx; ++i)
+    for (int i = 0; i < nSteps.at(0); ++i)
     {
       progress.setValue(i);
       if (progress.wasCanceled())
@@ -147,17 +163,17 @@ namespace Avogadro
       // Give the event loop a chance...
       QCoreApplication::processEvents();
       x = origin.x() + double(i)*step;
-      for (int j = 0; j < ny; ++j)
+      for (int j = 0; j < nSteps.at(1); ++j)
       {
         y = origin.y() + double(j)*step;
-        for (int k = 0; k < nz; ++k)
+        for (int k = 0; k < nSteps.at(2); ++k)
         {
           z = origin.z() + double(k)*step;
           values.push_back(m_basis->calculateMO(Vector3d(x, y, z), n));
         }
       }
     }
-    progress.setValue(nx);
+    progress.setValue(nSteps.at(0));
 
     // Bohr to Angstrom
     origin *= BOHR_TO_ANGSTROM;
@@ -165,18 +181,23 @@ namespace Avogadro
     // Make a grid and assign values to it
     OBGridData* obgrid = new OBGridData;
     obgrid->SetAttribute(QString("MO " + QString::number(n+1)).toStdString().c_str());
-    obgrid->SetNumberOfPoints(nx, ny, nz);
+    obgrid->SetNumberOfPoints(nSteps.at(0), nSteps.at(1), nSteps.at(2));
     vector3 xa = vector3(step, 0.0, 0.0);
     vector3 ya = vector3(0.0, step, 0.0);
     vector3 za = vector3(0.0, 0.0, step);
-    obgrid->SetLimits(origin, xa, ya, za);
-    obgrid->SetUnit(OBGridData::BOHR);
+    vector3 OBorigin = vector3(origin.x(), origin.y(), origin.z());
+    obgrid->SetLimits(OBorigin, xa, ya, za);
+    obgrid->SetUnit(OBGridData::ANGSTROM);
     obgrid->SetValues(values);
 
     m_molecule->BeginModify();
     m_molecule->SetData(obgrid);
     m_molecule->EndModify();
     m_molecule->update();
+
+    // Output the first line of the cube file too...
+    for (int i = 0; i < nSteps.at(2); ++i)
+      qDebug() << values.at(i);
 
     qDebug() << "Cube generated...";
   }

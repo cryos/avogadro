@@ -1,3 +1,10 @@
+2008-05-02  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/orbitaldialog.*,
+	libavogadro/src/extensions/orbitalextension.*: Adding some extra
+	detail on the cube parameters along with the ability to modify this.
+	Also added a little extra debug output while support if improved.
+
 2008-04-30  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/gaussianinputdialog.*: Added several new

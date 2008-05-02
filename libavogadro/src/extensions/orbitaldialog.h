@@ -26,6 +26,8 @@
 #define ORBITALDIALOG_H
 
 #include <QDialog>
+#include <QList>
+#include <eigen/vector.h>
 
 #include "ui_orbitaldialog.h"
 
@@ -41,6 +43,10 @@ namespace Avogadro
     void setMOs(int num);
     void setHOMO(int num);
     void setLUMO(int num);
+    void setCube(Eigen::Vector3d origin, int nx, int ny, int nz, double step);
+    Eigen::Vector3d origin();
+    QList<int> steps();
+    double stepSize();
 
   private:
     Ui::OrbitalDialog ui;
