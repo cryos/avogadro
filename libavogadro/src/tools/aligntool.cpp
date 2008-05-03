@@ -48,8 +48,8 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  AlignTool::AlignTool(QObject *parent) : Tool(parent),  m_numSelectedAtoms(0),
-  m_axis(2), m_settingsWidget(0)
+  AlignTool::AlignTool(QObject *parent) : Tool(parent),  m_molecule(0),
+  m_numSelectedAtoms(0), m_axis(2), m_settingsWidget(0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/align/align.png")));
@@ -74,8 +74,8 @@ namespace Avogadro {
 
   QUndoCommand* AlignTool::mousePress(GLWidget *widget, const QMouseEvent *event)
   {
-    Molecule *molecule = widget->molecule();
-    if(!molecule)
+    m_molecule = widget->molecule();
+    if(!m_molecule)
       return 0;
 
     //! List of hits from initial click
@@ -87,36 +87,18 @@ namespace Avogadro {
       if(m_hits[0].type() != Primitive::AtomType)
         return 0;
 
-      Atom *atom = (Atom *)molecule->GetAtom(m_hits[0].name());
+      Atom *atom = (Atom *)m_molecule->GetAtom(m_hits[0].name());
 
       if(m_numSelectedAtoms < 2)
       {
         // Select another atom
         m_selectedAtoms[m_numSelectedAtoms++] = atom;
         widget->update();
-        if (m_numSelectedAtoms)
-        {
-          m_neighborList.clear();
-          // We really want the "connected fragment" since a Molecule can contain
-          // multiple user visible molecule fragments
-          OBMolAtomDFSIter iter(molecule, atom->GetIdx());
-          Atom *tmpNeighbor;
-          do
-          {
-            tmpNeighbor = static_cast<Atom*>(&*iter);
-            m_neighborList.append(tmpNeighbor);
-          } while ((iter++).next()); // this returns false when we've gone looped through the fragment
-        }
       }
     }
     // Right button or Left Button + modifier (e.g., Mac)
     else
     {
-      int size = m_selectedAtoms.size();
-      for(int i=0; i<size; i++)
-      {
-        m_selectedAtoms[i] = NULL;
-      }
       m_numSelectedAtoms = 0;
       widget->update();
     }
@@ -159,34 +141,40 @@ namespace Avogadro {
 
   bool AlignTool::paint(GLWidget *widget)
   {
-    if(0 < m_numSelectedAtoms)
+    if(m_numSelectedAtoms > 0)
     {
-      glColor3f(1.0,0.0,0.0);
-      widget->painter()->setColor(1.0, 0.0, 0.0);
-      Vector3d pos = m_selectedAtoms[0]->pos();
-      double radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3;
-
       Vector3d xAxis = widget->camera()->backTransformedXAxis();
       Vector3d zAxis = widget->camera()->backTransformedZAxis();
+      // Check the atom is still around...
+      if (m_selectedAtoms[0])
+      {
+        glColor3f(1.0,0.0,0.0);
+        widget->painter()->setColor(1.0, 0.0, 0.0);
+        Vector3d pos = m_selectedAtoms[0]->pos();
 
-      // relative position of the text on the atom
-      Vector3d textRelPos = radius * (zAxis + xAxis);
+        // relative position of the text on the atom
+        double radius = widget->radius(m_selectedAtoms[0]) + 0.05;
+        Vector3d textRelPos = radius * (zAxis + xAxis);
 
-      Vector3d textPos = pos+textRelPos;
-      widget->painter()->drawText(textPos, "*1");
-      double renderRadius = widget->radius(m_selectedAtoms[0]) + 0.05;
-      widget->painter()->drawSphere(pos, renderRadius);
+        Vector3d textPos = pos+textRelPos;
+        widget->painter()->drawText(textPos, "*1");
+        widget->painter()->drawSphere(pos, radius);
+      }
 
       if(m_numSelectedAtoms >= 2)
       {
-        glColor3f(0.0,1.0,0.0);
-        widget->painter()->setColor(0.0, 1.0, 0.0);
-        pos = m_selectedAtoms[1]->pos();
-        renderRadius = widget->radius(m_selectedAtoms[1]) + 0.05;
-        widget->painter()->drawSphere(pos, renderRadius);
-        Vector3d textPos = pos+textRelPos;
-        radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[1]->GetAtomicNum()) * 0.3;
-        widget->painter()->drawText(textPos, "*2");
+        // Check the atom is still around...
+        if (m_selectedAtoms[1])
+        {
+          glColor3f(0.0,1.0,0.0);
+          widget->painter()->setColor(0.0, 1.0, 0.0);
+          Vector3d pos = m_selectedAtoms[1]->pos();
+          double radius = widget->radius(m_selectedAtoms[1]) + 0.05;
+          widget->painter()->drawSphere(pos, radius);
+          Vector3d textRelPos = radius * (zAxis + xAxis);
+          Vector3d textPos = pos+textRelPos;
+          widget->painter()->drawText(textPos, "*2");
+        }
       }
     }
 
@@ -195,14 +183,36 @@ namespace Avogadro {
 
   void AlignTool::align()
   {
+    // Check we have a molecule, otherwise we can't do anything
+    if (m_molecule.isNull())
+      return;
+
+    QList<Primitive*> neighborList;
+    if (m_numSelectedAtoms)
+    {
+      // Check the first atom still exists, return if not
+      if (m_selectedAtoms[0].isNull())
+        return;
+      
+      // We really want the "connected fragment" since a Molecule can contain
+      // multiple user visible molecule fragments
+      OBMolAtomDFSIter iter(m_molecule, m_selectedAtoms[0]->GetIdx());
+      Atom *tmpNeighbor;
+      do
+      {
+        tmpNeighbor = static_cast<Atom*>(&*iter);
+        neighborList.append(tmpNeighbor);
+      } while ((iter++).next()); // this returns false when we've gone looped through the fragment
+    }
     // Align the molecule along the selected axis
     if (m_numSelectedAtoms >= 1)
     {
       // Translate the first selected atom to the origin
       MatrixP3d atomTranslation;
       atomTranslation.loadTranslation(-m_selectedAtoms[0]->pos());
-      foreach(Primitive *p, m_neighborList)
+      foreach(Primitive *p, neighborList)
       {
+        if (!p) continue;
         Atom *a = static_cast<Atom *>(p);
         a->setPos(atomTranslation * a->pos());
         a->update();
@@ -210,6 +220,9 @@ namespace Avogadro {
     }
     if (m_numSelectedAtoms >= 2)
     {
+      // Check the second atom still exists, return if not
+      if (m_selectedAtoms[1].isNull())
+        return;
       // Now line up the line from atom[0] to atom[1] with the axis selected
       double alpha, beta, gamma;
       alpha = beta = gamma = 0.0;
@@ -237,13 +250,14 @@ namespace Avogadro {
       atomRotation.loadRotation3(-angle, axis);
 
       // Now to rotate the fragment
-      foreach(Primitive *p, m_neighborList)
+      foreach(Primitive *p, neighborList)
       {
         Atom *a = static_cast<Atom *>(p);
         a->setPos(atomRotation * a->pos());
         a->update();
       }
     }
+    m_numSelectedAtoms = 0;
   }
 
   QWidget* AlignTool::settingsWidget()

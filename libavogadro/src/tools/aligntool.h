@@ -34,6 +34,7 @@
 #include <QVarLengthArray>
 #include <QImage>
 #include <QAction>
+#include <QPointer>
 
 namespace Avogadro {
 
@@ -74,10 +75,11 @@ namespace Avogadro {
       void align();
 
     private:
-      QVarLengthArray<Atom *, 2> m_selectedAtoms;
+      // Guarded pointers, for storing pointers to things that might go poof...
+      QPointer<Molecule> m_molecule;
+      QVarLengthArray<QPointer<Atom>, 2> m_selectedAtoms;
       int m_numSelectedAtoms;
       int m_axis;
-      QList<Primitive *> m_neighborList;
 
       QWidget *m_settingsWidget;
 
