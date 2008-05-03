@@ -1,5 +1,8 @@
 2008-05-03  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/clickmeasuretool.*: More guarded pointers to
+	prevent crashing caused by dangling pointers.
+
 	* libavogadro/src/glwidget.cpp: Only switch to quickRender on mouse
 	move, not press.
 

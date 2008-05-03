@@ -53,13 +53,6 @@ namespace Avogadro {
           "\tAngle is measured between 1-3 using 2 as the common point\n"
           "Right Mouse: Reset the measurements."));
     action->setShortcut(Qt::Key_F12);
-
-    // clear the selected atoms
-    int size = m_selectedAtoms.size();
-    for(int i=0; i<size; i++)
-    {
-      m_selectedAtoms[i] = NULL;
-    }
   }
 
   ClickMeasureTool::~ClickMeasureTool()
@@ -93,11 +86,6 @@ namespace Avogadro {
     // Right button or Left Button + modifier (e.g., Mac)
     else
     {
-      int size = m_selectedAtoms.size();
-      for(int i=0; i<size; i++)
-      {
-        m_selectedAtoms[i] = NULL;
-      }
       m_angle = 0;
       m_vector[0].loadZero();
       m_vector[1].loadZero();
@@ -140,12 +128,16 @@ namespace Avogadro {
 
     return NULL;
   }
-  
+
   void ClickMeasureTool::calculateParameters()
   {
     // Calculate all parameters and store them in member variables.
     if(m_numSelectedAtoms >= 2)
     {
+      // Check the selected atoms still exist
+      if (m_selectedAtoms[0].isNull() || m_selectedAtoms[1].isNull())
+        return;
+
       // Two atoms selected - distance measurement only
       m_vector[0] = m_selectedAtoms[1]->pos() - m_selectedAtoms[0]->pos();
       QString distanceString = tr("Distance (1->2): %1 %2").arg(
@@ -155,12 +147,16 @@ namespace Avogadro {
     }
     if(m_numSelectedAtoms >= 3)
     {
+      // Check the selected atoms still exist
+      if (m_selectedAtoms[2].isNull())
+        return;
+
       // Two distances and the angle between the three selected atoms
       m_vector[1] = m_selectedAtoms[1]->pos() - m_selectedAtoms[2]->pos();
       QString distanceString = tr("Distance (2->3): %1 %2").arg(
                                QString::number(m_vector[1].norm()),
                                QString::fromUtf8("Å"));
-        
+
       // Calculate the angle between the atoms
       m_angle = vectorAngle(vector3(m_vector[0].x(), m_vector[0].y(), m_vector[0].z()),
       		  				vector3(m_vector[1].x(), m_vector[1].y(), m_vector[1].z()));
@@ -173,6 +169,10 @@ namespace Avogadro {
     }
     if(m_numSelectedAtoms >= 4)
     {
+      // Check the selected atoms still exist
+      if (m_selectedAtoms[3].isNull())
+        return;
+
       // Three distances, bond angle and dihedral angle
       m_vector[2] = m_selectedAtoms[2]->pos() - m_selectedAtoms[3]->pos();
       QString distanceString = tr("Distance (3->4): %1 %2").arg(
@@ -200,11 +200,9 @@ namespace Avogadro {
 
   bool ClickMeasureTool::paint(GLWidget *widget)
   {
-    if(0 < m_numSelectedAtoms)
+    if(0 < m_numSelectedAtoms && m_selectedAtoms[0])
     {
       calculateParameters();
-      // get GL Coordinates for text
-      //     glPushMatrix();
 
       // Try to put the labels in a reasonable place on the display
       QPoint labelPos(95, widget->height()-25);
@@ -221,7 +219,7 @@ namespace Avogadro {
 
       glColor3f(1.0,0.0,0.0);
       Vector3d pos = m_selectedAtoms[0]->pos();
-      double radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3;
+      double radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3 ;
 
       Vector3d xAxis = widget->camera()->backTransformedXAxis();
       Vector3d zAxis = widget->camera()->backTransformedZAxis();
@@ -232,7 +230,7 @@ namespace Avogadro {
       Vector3d textPos = pos+textRelPos;
       widget->painter()->drawText(textPos, tr("*1", "*1 is a number. You most likely do not need to translate this" ));
 
-      if(m_numSelectedAtoms >= 2)
+      if(m_numSelectedAtoms >= 2 && m_selectedAtoms[1])
       {
         glColor3f(0.0,1.0,0.0);
         pos = m_selectedAtoms[1]->pos();
@@ -240,7 +238,7 @@ namespace Avogadro {
         radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[1]->GetAtomicNum()) * 0.3;
         widget->painter()->drawText(textPos, tr("*2", "*2 is a number. You most likely do not need to translate this"));
 
-        if(m_numSelectedAtoms >= 3)
+        if(m_numSelectedAtoms >= 3 && m_selectedAtoms[2])
         {
           // Display a label on the third atom
           pos = m_selectedAtoms[2]->pos();
@@ -249,7 +247,7 @@ namespace Avogadro {
           glColor3f(0.0,0.0,1.0);
           widget->painter()->drawText(textPos, tr("*3", "*3 is a number. You most likely do not need to translate this"));
         }
-        if(m_numSelectedAtoms >= 4)
+        if(m_numSelectedAtoms >= 4 && m_selectedAtoms[3])
         {
           // Display a label on the fourth atom
           pos = m_selectedAtoms[3]->pos();
@@ -276,7 +274,7 @@ namespace Avogadro {
           glColor3f(0.0,1.0,1.0);
           widget->painter()->drawText(distancePos[1], QString::number(m_vector[1].norm(), 10, 2) + QString::fromUtf8(" Å"));
         }
-        
+
         if(m_numSelectedAtoms >= 4)
         {
           glColor3f(1.0, 1.0, 1.0);
@@ -291,7 +289,8 @@ namespace Avogadro {
 
 
         // If there are three atoms selected, draw the angle in question
-        if(m_numSelectedAtoms >= 3)
+        if(m_numSelectedAtoms >= 3 && m_selectedAtoms[0] && m_selectedAtoms[1]
+          && m_selectedAtoms[2])
         {
           Vector3d origin = m_selectedAtoms[1]->pos();
           Vector3d d1 = m_selectedAtoms[0]->pos() - origin;
@@ -320,15 +319,15 @@ namespace Avogadro {
           glEnable(GL_BLEND);
           glDepthMask(GL_FALSE);
           widget->painter()->setColor(0, 1.0, 0, 0.3);
-          widget->painter()->drawShadedSector(origin, m_selectedAtoms[0]->pos(), m_selectedAtoms[2]->pos(), radius);
+          widget->painter()->drawShadedSector(origin, m_selectedAtoms[0]->pos(),
+                                             m_selectedAtoms[2]->pos(), radius);
           glDepthMask(GL_TRUE);
           glDisable(GL_BLEND);
           widget->painter()->setColor(1.0, 1.0, 1.0, 1.0);
-          widget->painter()->drawArc(origin, m_selectedAtoms[0]->pos(), m_selectedAtoms[2]->pos(), radius, 1.0);
+          widget->painter()->drawArc(origin, m_selectedAtoms[0]->pos(),
+                                     m_selectedAtoms[2]->pos(), radius, 1.0);
         }
       }
-
-      //     glPopMatrix();
     }
 
     return true;

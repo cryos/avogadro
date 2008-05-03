@@ -40,6 +40,7 @@
 #include <QVarLengthArray>
 #include <QImage>
 #include <QAction>
+#include <QPointer>
 
 namespace Avogadro {
 
@@ -88,7 +89,7 @@ namespace Avogadro {
       QPoint              m_initialDraggingPosition;
       QPoint              m_lastDraggingPosition;
 
-      QVarLengthArray<Atom *, 4> m_selectedAtoms;
+      QVarLengthArray<QPointer<Atom>, 4> m_selectedAtoms;
       int m_numSelectedAtoms;
       QList<GLHit> m_hits;
 
