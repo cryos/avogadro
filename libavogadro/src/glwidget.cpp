@@ -988,14 +988,6 @@ namespace Avogadro {
         delete command;
       }
     }
-#ifdef ENABLE_THREADED_GL
-    d->renderMutex.lock();
-#endif
-    // Use quick render while the mouse is down
-    d->quickRender = true;
-#ifdef ENABLE_THREADED_GL
-    d->renderMutex.unlock();
-#endif
   }
 
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
@@ -1021,6 +1013,14 @@ namespace Avogadro {
 
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
   {
+#ifdef ENABLE_THREADED_GL
+    d->renderMutex.lock();
+#endif
+    // Use quick render while the mouse is down
+    d->quickRender = true;
+#ifdef ENABLE_THREADED_GL
+    d->renderMutex.unlock();
+#endif
     if ( d->tool ) {
       QUndoCommand *command = d->tool->mouseMove( this, event );
       if ( command && d->undoStack ) {

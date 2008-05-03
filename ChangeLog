@@ -1,5 +1,8 @@
 2008-05-03  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/glwidget.cpp: Only switch to quickRender on mouse
+	move, not press.
+
 	* libavogadro/src/tools/aligntool.*: Used guarded pointers (QPointer)
 	to make the align tool much harder to crash.
 
