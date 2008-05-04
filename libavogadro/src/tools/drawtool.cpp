@@ -2,6 +2,7 @@
   DrawTool - Tool for drawing molecules
 
   Copyright (C) 2007,2008 Donald Ephraim Curtis
+  Copyright (C) 2007-2008 Marcus D. Hanwell
   Copyright (C) 2008 Tim Vandermeersch
   Some Portions Copyright (C) 2007-2008 Geoffrey Hutchison
 
@@ -700,6 +701,7 @@ namespace Avogadro {
   void DrawTool::writeSettings(QSettings &settings) const
   {
     Tool::writeSettings(settings);
+    settings.setValue("currentElement", element());
     settings.setValue("addHydrogens", m_addHydrogens);
     if (m_fragmentDialog) {
       settings.setValue("smiles", m_fragmentDialog->smilesString());
@@ -711,9 +713,16 @@ namespace Avogadro {
   {
     Tool::readSettings(settings);
     setAddHydrogens(settings.value("addHydrogens", 2).toInt());
-    if(m_addHydrogensCheck) {
-      m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
+    setElement(settings.value("currentElement", 6).toInt());
+    if (m_comboElements)
+    {
+      int index = 0;
+      for (int i = 0; i < m_elementsIndex.size() - 1; ++i)
+        if (m_elementsIndex.at(i) == element()) index = i;
+      m_comboElements->setCurrentIndex(index);
     }
+    if(m_addHydrogensCheck)
+      m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
     if(m_fragmentDialog) {
       m_fragmentDialog->setSmilesString(settings.value("smiles").toString());
       QString dir = QDir::homePath() + "/Library/Application Support/Avogadro/Molecules";
