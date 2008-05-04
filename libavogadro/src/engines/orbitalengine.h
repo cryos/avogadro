@@ -64,8 +64,8 @@ namespace Avogadro {
 
       QWidget* settingsWidget();
 
-      //void writeSettings(QSettings &settings) const;
-      //void readSettings(QSettings &settings);
+      void writeSettings(QSettings &settings) const;
+      void readSettings(QSettings &settings);
 
       void setPrimitives(const PrimitiveList &primitives);
 
@@ -84,7 +84,6 @@ namespace Avogadro {
       Color  m_posColor;
       Color  m_negColor;
       double m_alpha;
-      double m_stepSize;
       double m_iso;
       int    m_renderMode;
       bool   m_interpolate;

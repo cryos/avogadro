@@ -43,9 +43,8 @@ using namespace Eigen;
 namespace Avogadro {
 
   OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent),
-  m_settingsWidget(0), m_grid(0), m_isoGen(0), m_min(0., 0., 0.),
-  m_alpha(0.75), m_stepSize(0.33333), m_iso(0.01), m_renderMode(0),
-  m_interpolate(false), m_update(true)
+    m_settingsWidget(0), m_min(0., 0., 0.), m_alpha(0.75), m_iso(0.01),
+    m_renderMode(0), m_interpolate(false), m_update(true)
   {
     setDescription(tr("Orbital Rendering"));
     m_grid = new Grid;
@@ -148,10 +147,6 @@ namespace Avogadro {
       if (m_update)
         updateSurfaces(pd);
 
-      qDebug() << "Rendering transparent surface...";
-
-      qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
-
       switch (m_renderMode)
       {
       case 0:
@@ -161,14 +156,20 @@ namespace Avogadro {
         break;
       case 1:
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glDisable(GL_LIGHTING);
         break;
       case 2:
         glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+        glDisable(GL_LIGHTING);
         break;
       }
 
       glBegin(GL_TRIANGLES);
-      m_posColor.applyAsMaterials();
+      if (!m_renderMode)
+        m_posColor.applyAsMaterials();
+      else
+        m_posColor.apply();
+
       for(int i=0; i < m_isoGen->numTriangles(); ++i)
       {
         triangle t = m_isoGen->getTriangle(i);
@@ -181,7 +182,11 @@ namespace Avogadro {
         glVertex3fv(t.p2.array());
       }
 
-      m_negColor.applyAsMaterials();
+      if (!m_renderMode)
+        m_negColor.applyAsMaterials();
+      else
+        m_negColor.apply();
+
       for(int i=0; i < m_isoGen2->numTriangles(); ++i)
       {
         triangle t = m_isoGen2->getTriangle(i);
@@ -204,25 +209,36 @@ namespace Avogadro {
         glDepthMask(GL_FALSE);
       }
       else
+      {
         glPolygonMode(GL_FRONT, GL_FILL);
+        glEnable(GL_LIGHTING);
+      }
     }
     return true;
   }
 
   bool OrbitalEngine::renderQuick(PainterDevice *pd)
   {
-    // Render the transparent surface if m_alpha is between 0 and 1.
     if (m_update)
       updateSurfaces(pd);
 
-    qDebug() << "Rendering quick surface...";
-    qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
+    switch (m_renderMode)
+    {
+      case 0:
+        ;
+      case 1:
+        glPolygonMode(GL_FRONT, GL_LINE);
+        glDisable(GL_LIGHTING);
+        break;
+      case 2:
+        glPolygonMode(GL_FRONT, GL_POINT);
+        glDisable(GL_LIGHTING);
+        break;
+    }
 
-    // Use the GL_LINE mode to render
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glBegin(GL_TRIANGLES);
 
-    glBegin(GL_LINES);
-    m_posColor.applyAsMaterials();
+    m_posColor.apply();
     for(int i=0; i < m_isoGen->numTriangles(); ++i)
     {
       triangle t = m_isoGen->getTriangle(i);
@@ -235,7 +251,7 @@ namespace Avogadro {
       glVertex3fv(t.p2.array());
     }
 
-    m_negColor.applyAsMaterials();
+    m_negColor.apply();
     for(int i=0; i < m_isoGen2->numTriangles(); ++i)
     {
       triangle t = m_isoGen2->getTriangle(i);
@@ -252,7 +268,9 @@ namespace Avogadro {
       glVertex3fv(t.p0.array());
     }
     glEnd();
+
     glPolygonMode(GL_FRONT, GL_FILL);
+    glEnable(GL_LIGHTING);
 
     return true;
   }
@@ -273,25 +291,29 @@ namespace Avogadro {
 
       if (!m_settingsWidget)
       {
-	// Use first grid/orbital
-	m_grid->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
+        // Use first grid/orbital
+        m_grid->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
         m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
-      } else { 
+      }
+      else
+      {
         if (!m_settingsWidget->orbitalCombo->count())
         {
-	  // Use first grid/orbital
-	  // Two grids -- one for positive isovalue, one for negative
+          // Use first grid/orbital
+          // Two grids -- one for positive isovalue, one for negative
           m_grid->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
           m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
-        
-	  // Add the orbitals
+
+          // Add the orbitals
           vector<OBGenericData*> data = mol->GetAllData(OBGenericDataType::GridData);
-	  for (unsigned int i = 0; i < data.size(); ++i)
-	  {
-	    QString str = QString(data[i]->GetAttribute().c_str());
-	    m_settingsWidget->orbitalCombo->addItem(str);
-	  }
-        } else {
+          for (unsigned int i = 0; i < data.size(); ++i)
+          {
+            QString str = QString(data[i]->GetAttribute().c_str());
+            m_settingsWidget->orbitalCombo->addItem(str);
+          }
+        }
+        else
+        {
           vector<OBGenericData*> data = mol->GetAllData(OBGenericDataType::GridData);
           unsigned int index = m_settingsWidget->orbitalCombo->currentIndex();
           if (index >= data.size())
@@ -305,7 +327,7 @@ namespace Avogadro {
       }
     }
 
-  // attribute is the text key for the grid (as an std::string)
+    // attribute is the text key for the grid (as an std::string)
     qDebug() << " Orbital title: " << m_grid->grid()->GetAttribute().c_str();
 
     qDebug() << "Min value = " << m_grid->grid()->GetMinValue()
@@ -415,6 +437,12 @@ namespace Avogadro {
       connect(m_settingsWidget, SIGNAL(destroyed()),
               this, SLOT(settingsWidgetDestroyed()));
 
+      // Initialise the widget from saved settings
+      m_settingsWidget->opacitySlider->setValue(static_cast<int>(m_alpha * 20));
+      m_settingsWidget->isoSpin->setValue(m_iso);
+      m_settingsWidget->renderCombo->setCurrentIndex(m_renderMode);
+      m_settingsWidget->interpolate->setChecked(m_interpolate);
+
       // Initialise the colour buttons
       QColor initial;
       initial.setRgbF(m_posColor.red(), m_posColor.green(), m_posColor.blue());
@@ -461,27 +489,26 @@ namespace Avogadro {
     // Updating primitives does not invalidate these surfaces...
   }
 
-  /*
   void OrbitalEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);
     settings.setValue("alpha", m_alpha);
-    settings.setValue("stepSize", m_stepSize);
-    settings.setValue("padding", m_padding);
-    //settings.setValue("renderMode", m_renderMode);
-    //settings.setValue("colorMode", m_colorMode);
+    settings.setValue("iso", m_iso);
+    settings.setValue("renderMode", m_renderMode);
+    settings.setValue("interpolate", m_interpolate);
+//    settings.setValue("posColor", m_posColor);
+//    settings.setValue("posColor", m_negColor);
   }
 
   void OrbitalEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
-    //m_alpha = settings.value("alpha", 0.5).toDouble();
-    m_stepSize = settings.value("stepSize", 0.33333).toDouble();
-    m_padding = settings.value("padding", 2.5).toDouble();
-    m_renderMode = 0;
-    m_colorMode = 0;
+    m_alpha = settings.value("alpha", 0.5).toDouble();
+    m_iso = settings.value("iso", 0.02).toDouble();
+    m_renderMode = settings.value("renderMode", 0).toInt();
+    m_interpolate = settings.value("interpolate", false).toBool();
   }
-  */
+
 }
 
 #include "orbitalengine.moc"
