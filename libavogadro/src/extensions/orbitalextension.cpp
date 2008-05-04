@@ -132,6 +132,9 @@ namespace Avogadro
 
   void OrbitalExtension::calculateMO(int n)
   {
+    if (!m_basis)
+      return;
+
     static const double BOHR_TO_ANGSTROM = 0.529177249;
     static const double ANGSTROM_TO_BOHR = 1.0/BOHR_TO_ANGSTROM;
     // Calculate MO n and add the cube to the molecule...

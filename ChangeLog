@@ -1,3 +1,8 @@
+2008-05-04  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/orbitalextension.cpp: Fixed another
+	crasher - when no basis set has been loaded.
+
 2008-05-03  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/orbitalextension.cpp: Corrected the MO
