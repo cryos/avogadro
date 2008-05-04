@@ -180,7 +180,7 @@ namespace Avogadro
     step *= BOHR_TO_ANGSTROM;
     // Make a grid and assign values to it
     OBGridData* obgrid = new OBGridData;
-    obgrid->SetAttribute(QString("MO " + QString::number(n+1)).toStdString().c_str());
+    obgrid->SetAttribute(QString("MO " + QString::number(n)).toStdString().c_str());
     obgrid->SetNumberOfPoints(nSteps.at(0), nSteps.at(1), nSteps.at(2));
     vector3 xa = vector3(step, 0.0, 0.0);
     vector3 ya = vector3(0.0, step, 0.0);

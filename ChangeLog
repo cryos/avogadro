@@ -1,5 +1,8 @@
 2008-05-03  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/orbitalextension.cpp: Corrected the MO
+	numbering in the cube titles.
+
 	* libavogadro/src/engines/orbitalengine.*: Added some settings
 	persistence, improved the quickRender a little too.
 
