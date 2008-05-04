@@ -96,45 +96,22 @@ namespace Avogadro {
         glPolygonMode(GL_FRONT, GL_FILL);
         break;
       case 1:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glPolygonMode(GL_FRONT, GL_LINE);
+        glDisable(GL_LIGHTING);
         break;
       case 2:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+        glPolygonMode(GL_FRONT, GL_POINT);
+        glDisable(GL_LIGHTING);
         break;
       }
 
-      glBegin(GL_TRIANGLES);
-      m_posColor.applyAsMaterials();
-      for(int i=0; i < m_isoGen->numTriangles(); ++i)
-      {
-        triangle t = m_isoGen->getTriangle(i);
-        triangle n = m_isoGen->getNormal(i);
-        glNormal3fv(n.p0.array());
-        glVertex3fv(t.p0.array());
-        glNormal3fv(n.p1.array());
-        glVertex3fv(t.p1.array());
-        glNormal3fv(n.p2.array());
-        glVertex3fv(t.p2.array());
-      }
+      renderSurfaces(pd);
 
-      m_negColor.applyAsMaterials();
-      for(int i=0; i < m_isoGen2->numTriangles(); ++i)
+      if (m_renderMode)
       {
-        triangle t = m_isoGen2->getTriangle(i);
-        triangle n = m_isoGen2->getNormal(i);
-        // Fix the lighting by reversing the normals and the triangle winding
-        n.p0 *= -1;
-        n.p1 *= -1;
-        n.p2 *= -1;
-        glNormal3fv(n.p2.array());
-        glVertex3fv(t.p2.array());
-        glNormal3fv(n.p1.array());
-        glVertex3fv(t.p1.array());
-        glNormal3fv(n.p0.array());
-        glVertex3fv(t.p0.array());
+        glPolygonMode(GL_FRONT, GL_FILL);
+        glEnable(GL_LIGHTING);
       }
-      glEnd();
-      glPolygonMode(GL_FRONT, GL_FILL);
     }
     return true;
   }
@@ -155,54 +132,17 @@ namespace Avogadro {
         glDepthMask(GL_TRUE);
         break;
       case 1:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glPolygonMode(GL_FRONT, GL_LINE);
         glDisable(GL_LIGHTING);
         break;
       case 2:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+        glPolygonMode(GL_FRONT, GL_POINT);
         glDisable(GL_LIGHTING);
         break;
       }
 
-      glBegin(GL_TRIANGLES);
-      if (!m_renderMode)
-        m_posColor.applyAsMaterials();
-      else
-        m_posColor.apply();
+      renderSurfaces(pd);
 
-      for(int i=0; i < m_isoGen->numTriangles(); ++i)
-      {
-        triangle t = m_isoGen->getTriangle(i);
-        triangle n = m_isoGen->getNormal(i);
-        glNormal3fv(n.p0.array());
-        glVertex3fv(t.p0.array());
-        glNormal3fv(n.p1.array());
-        glVertex3fv(t.p1.array());
-        glNormal3fv(n.p2.array());
-        glVertex3fv(t.p2.array());
-      }
-
-      if (!m_renderMode)
-        m_negColor.applyAsMaterials();
-      else
-        m_negColor.apply();
-
-      for(int i=0; i < m_isoGen2->numTriangles(); ++i)
-      {
-        triangle t = m_isoGen2->getTriangle(i);
-        triangle n = m_isoGen2->getNormal(i);
-        // Fix the lighting by reversing the normals and the triangle winding
-        n.p0 *= -1;
-        n.p1 *= -1;
-        n.p2 *= -1;
-        glNormal3fv(n.p2.array());
-        glVertex3fv(t.p2.array());
-        glNormal3fv(n.p1.array());
-        glVertex3fv(t.p1.array());
-        glNormal3fv(n.p0.array());
-        glVertex3fv(t.p0.array());
-      }
-      glEnd();
       if (m_renderMode == 0)
       {
         glDisable(GL_BLEND);
@@ -236,9 +176,21 @@ namespace Avogadro {
         break;
     }
 
+    renderSurfaces(pd);
+
+    glPolygonMode(GL_FRONT, GL_FILL);
+    glEnable(GL_LIGHTING);
+
+    return true;
+  }
+
+  bool OrbitalEngine::renderSurfaces(PainterDevice *pd)
+  {
     glBegin(GL_TRIANGLES);
 
+    // Render the positive surface
     m_posColor.apply();
+    m_posColor.applyAsMaterials();
     for(int i=0; i < m_isoGen->numTriangles(); ++i)
     {
       triangle t = m_isoGen->getTriangle(i);
@@ -251,7 +203,9 @@ namespace Avogadro {
       glVertex3fv(t.p2.array());
     }
 
+    // Render the negative surface
     m_negColor.apply();
+    m_negColor.applyAsMaterials();
     for(int i=0; i < m_isoGen2->numTriangles(); ++i)
     {
       triangle t = m_isoGen2->getTriangle(i);
@@ -268,10 +222,7 @@ namespace Avogadro {
       glVertex3fv(t.p0.array());
     }
     glEnd();
-
-    glPolygonMode(GL_FRONT, GL_FILL);
-    glEnable(GL_LIGHTING);
-
+    
     return true;
   }
 

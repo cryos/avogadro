@@ -55,6 +55,7 @@ namespace Avogadro {
       bool renderOpaque(PainterDevice *pd);
       bool renderTransparent(PainterDevice *pd);
       bool renderQuick(PainterDevice *pd);
+      bool renderSurfaces(PainterDevice *pd);
       //@}
 
       double transparencyDepth() const;
