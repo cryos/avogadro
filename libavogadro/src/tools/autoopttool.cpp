@@ -1,7 +1,7 @@
 /**********************************************************************
   AutoOptTool - Automatic Optimization Tool for Avogadro
 
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007-2008 by Marcus D. Hanwell
   Copyright (C) 2007 by Geoffrey R. Hutchison
   Copyright (C) 2007 by Benoit Jacob
 
@@ -59,6 +59,13 @@ namespace Avogadro {
           "Extra Function when running\n"
           "Left Mouse: Click and drag atoms to move them"));
     m_forceField = OBForceField::FindForceField( "Ghemical" );
+    // Check that the force field exists and was initialised OK
+    if (!m_forceField)
+    {
+      // We can't do anything is the force field cannot be found - OB issue
+      emit setupFailed();
+      return;
+    }
     m_thread = new AutoOptThread;
     connect(m_thread,SIGNAL(finished(bool)),this,SLOT(finished(bool)));
     connect(m_thread,SIGNAL(setupFailed()),this,SLOT(setupFailed()));
@@ -373,6 +380,10 @@ namespace Avogadro {
 
       connect(m_settingsWidget, SIGNAL(destroyed()),
           this, SLOT(settingsWidgetDestroyed()));
+
+      // Check the force field is there, if not diable the start button
+      if (!m_forceField)
+        m_buttonStartStop->setEnabled(false);
     }
 
     return m_settingsWidget;
@@ -395,6 +406,10 @@ namespace Avogadro {
 
   void AutoOptTool::enable()
   {
+    // If the force field is false we have nothing and so should return
+    if (!m_forceField)
+      return;
+
     if(!m_running)
     {
       if(!m_timerId)
@@ -462,6 +477,12 @@ namespace Avogadro {
     }
 
     m_forceField = OBForceField::FindForceField(m_forceFieldList[m_comboFF->currentIndex()]);
+    // Check that we can find our force field - if not return
+    if (!m_forceField)
+    {
+      emit setupFailed();
+      return;
+    }
     int gradients = OBFF_NUMERICAL_GRADIENT;
     if (m_forceField->HasAnalyticalGradients())
       gradients = OBFF_ANALYTICAL_GRADIENT;
@@ -528,6 +549,10 @@ namespace Avogadro {
 
   void AutoOptThread::update()
   {
+    // If the force field is false we have nothing and so should return
+   if (!m_forceField)
+      return;
+
     m_forceField->SetLogFile(NULL);
     m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
 

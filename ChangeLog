@@ -1,5 +1,8 @@
 2008-05-04  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/autoopttool.cpp: Add checks in for whether the
+	force field was initialised correctly.
+
 	* libavogadro/src/engines/orbitalengine.*: More updates to the orbital
 	engine to improve rendering consistency.
 
