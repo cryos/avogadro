@@ -1,3 +1,8 @@
+2008-05-05  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/orbitalextension.*: Set the navigate tool
+	as the active tool after loading a file.
+
 2008-05-04  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/drawtool.cpp: Added saving of the current

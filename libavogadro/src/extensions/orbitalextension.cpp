@@ -27,6 +27,7 @@
 #include "gaussianfchk.h"
 
 #include <vector>
+#include <avogadro/toolgroup.h>
 #include <openbabel/math/vector3.h>
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
@@ -44,7 +45,7 @@ namespace Avogadro
   using Eigen::Vector3d;
 
   OrbitalExtension::OrbitalExtension(QObject* parent) : Extension(parent),
-    m_orbitalDialog(0), m_molecule(0), m_basis(0)
+    m_glwidget(0), m_orbitalDialog(0), m_molecule(0), m_basis(0)
   {
     QAction* action = new QAction(this);
     action->setText(tr("Molecular Orbitals"));
@@ -70,8 +71,9 @@ namespace Avogadro
     return tr("&Extensions");
   }
 
-  QUndoCommand* OrbitalExtension::performAction(QAction *, GLWidget *)
+  QUndoCommand* OrbitalExtension::performAction(QAction *, GLWidget *widget)
   {
+    m_glwidget = widget;
     if (!m_orbitalDialog)
     {
       m_orbitalDialog = new OrbitalDialog();
@@ -128,6 +130,9 @@ namespace Avogadro
     // Set these values on the form - they can then be altered by the user
     m_orbitalDialog->setCube(origin, nx, ny, nz, step);
 
+    // Set the tool to navigate
+    if (m_glwidget)
+      m_glwidget->toolGroup()->setActiveTool("Navigate");
   }
 
   void OrbitalExtension::calculateMO(int n)

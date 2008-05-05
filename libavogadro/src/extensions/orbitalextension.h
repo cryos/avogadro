@@ -56,6 +56,7 @@ namespace Avogadro
     void setMolecule(Molecule *molecule);
 
   private:
+    GLWidget* m_glwidget;
     OrbitalDialog* m_orbitalDialog;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
