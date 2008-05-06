@@ -178,6 +178,12 @@ namespace Avogadro
       if (!m_forceField)
         break;
 
+      if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
+        QMessageBox::warning( widget, tr( "Avogadro" ),
+          tr( "Cannot set up the force field for this molecule." ));
+        break;
+      }
+
       m_conformerDialog->setup(m_molecule, m_forceField, m_constraints, 
                                0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence());
       m_conformerDialog->show();
@@ -186,6 +192,12 @@ namespace Avogadro
       if (!m_forceField)
         break;
 
+      if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
+        QMessageBox::warning( widget, tr( "Avogadro" ),
+          tr( "Cannot set up the force field for this molecule." ));
+        break;
+      }
+      
       undo = new ForceFieldCommand( m_molecule, m_forceField, m_constraints, 
                                     0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(),
                                     m_Dialog->convergence(), 0 );
