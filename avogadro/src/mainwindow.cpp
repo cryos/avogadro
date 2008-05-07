@@ -236,7 +236,6 @@ namespace Avogadro
     // This will be enabled when the document is modified
     ui.actionRevert->setEnabled(false);
     ui.actionSave->setEnabled(false);
-    ui.actionSaveAs->setEnabled(false);
 
 #ifdef Q_WS_MAC
     // Find the Avogadro global preferences action
@@ -796,7 +795,6 @@ namespace Avogadro
   {
     ui.actionRevert->setEnabled(!clean);
     ui.actionSave->setEnabled(!clean);
-    ui.actionSaveAs->setEnabled(!clean);
     
     setWindowModified( !clean );
   }
@@ -821,8 +819,8 @@ namespace Avogadro
 
     QString fileName = SaveDialog::run(this,
                                        tr("Export Bitmap Graphics"),
-                                       "",
-                                       "",
+                                       d->fileDialogPath,
+                                       d->fileName,
                                        filters,
                                        "png",
                                        selectedFilter);
@@ -878,8 +876,8 @@ namespace Avogadro
 
     QString fileName = SaveDialog::run(this,
                                        tr("Export POV Scene"),
-                                       "",
-                                       "",
+                                       d->fileDialogPath,
+                                       d->fileName,
                                        filters,
                                        "pov",
                                        selectedFilter);
@@ -928,7 +926,6 @@ namespace Avogadro
     // Now that the document was modified, enable save/revert
     ui.actionRevert->setEnabled(true);
     ui.actionSave->setEnabled(true);
-    ui.actionSaveAs->setEnabled(true);
     setWindowModified( true );
   }
 
