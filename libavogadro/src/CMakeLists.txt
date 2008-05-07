@@ -14,6 +14,7 @@ include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}/..
   ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN_INCLUDE_DIR}
+  ${Boost_INCLUDE_DIRS}
   ${BOOST_PYTHON_INCLUDES}
   ${PYTHON_INCLUDE_PATH}
 )
@@ -28,10 +29,10 @@ qt4_wrap_ui(bsdyengine_UIS engines/bsdysettingswidget.ui)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${bsdyengine_SRCS} ${bsdyengine_UIS})
 
 # If Boost Python isn't found remove the interpreter files
-if(NOT BOOST_PYTHON_LIBS)
+if(NOT BOOST_PYTHON_LIBS AND NOT Boost_PYTHON_FOUND)
 	LIST(REMOVE_ITEM libavogadro_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp)
 	LIST(REMOVE_ITEM libavogadro_HDRS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.h)
-endif(NOT BOOST_PYTHON_LIBS)
+endif(NOT BOOST_PYTHON_LIBS AND NOT Boost_PYTHON_FOUND)
 
 qt4_automoc(${libavogadro_SRCS})
 
@@ -43,9 +44,9 @@ SET(libavogadro_TS
 QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 
 # you have to add link_directories before you add the target
-#if(BOOST_PYTHON_FOUND)
-#	LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
-#endif(BOOST_PYTHON_FOUND)
+if(Boost_PYTHON_FOUND)
+	LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
+endif(Boost_PYTHON_FOUND)
 
 ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})
 SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
@@ -55,13 +56,20 @@ if(BOOST_PYTHON_FOUND)
 	TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES}
 				${QT_LIBRARIES}
 				${OPENGL_LIBRARIES} 
-				${BOOST_PYTHON_LIBS}
-)
+				${BOOST_PYTHON_LIBS})
 else(BOOST_PYTHON_FOUND)
-	TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} 
-				${QT_LIBRARIES}
-				${OPENGL_LIBRARIES} 
-)
+	if(Boost_PYTHON_FOUND)
+		message(STATUS "Setting new boost python libraries")
+		TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES}
+			${QT_LIBRARIES}
+			${OPENGL_LIBRARIES}
+			${PYTHON_LIBRARIES}
+			${Boost_LIBRARIES})
+	else(Boost_PYTHON_FOUND)
+		TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES} 
+			${QT_LIBRARIES}
+			${OPENGL_LIBRARIES})
+	endif(Boost_PYTHON_FOUND)
 endif(BOOST_PYTHON_FOUND)
 
 INSTALL(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})

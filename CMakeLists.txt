@@ -66,7 +66,19 @@ find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Eigen REQUIRED) # find and setup Eigen
 find_package(Linguist REQUIRED) # find and setup Eigen
 
-find_package(BoostPython)
+# The CMake 2.6 FindBoost function is far better than the 2.4 version
+# So use it if possible
+if(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
+	message(STATUS "Using CMake 2.6")
+	set(CMAKE_2_6 TRUE)
+	find_package(Boost COMPONENTS python)
+	if(Boost_PYTHON_FOUND)
+		message(STATUS "Boost Python found!")
+	endif(Boost_PYTHON_FOUND)
+else(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
+	find_package(BoostPython)
+endif(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
+
 find_package(PythonLibs)
 
 if(NOT LIB_INSTALL_DIR)

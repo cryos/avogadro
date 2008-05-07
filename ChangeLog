@@ -1,10 +1,17 @@
+2008-05-07  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* * CMakeLists.txt, libavogadro/src/CMakeLists.txt,
+	libavogadro/src/extensions/CMakeLists.txt: Optionally use CMake 2.6
+	and the much improved FindBoost to check for and use Boost Python on
+	more than just Linux - works great on the Mac.
+
 2008-05-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/extensions/forcefielddialog.*: Removed gradients
 	option. Now handled OBForceField::HasAnalyticalGradients()
 
 	* libavogadro/src/extensions/conformersearchdialog.*: Same.
-	
+
 	* libavogadro/src/extensions/forcefieldextension.*: Same.
 
 	* libavogadro/src/extensions/constraintsdialog.*: Update for static

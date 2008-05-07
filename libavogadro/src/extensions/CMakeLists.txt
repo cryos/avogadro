@@ -168,20 +168,23 @@ TARGET_LINK_LIBRARIES(gaussianextension
 )
 INSTALL(TARGETS gaussianextension DESTINATION ${DESTINATION_DIR})
 
-if(BOOST_PYTHON_FOUND)
+if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
 	### python extensions
+	message(STATUS "Enabled python extension")
 	set(pythonextension_SRCS pythonextension.cpp)
 	qt4_wrap_ui(pythonextension_UIS_H pythonterminalwidget.ui)
 	qt4_automoc(${pythonextension_SRCS})
-	ADD_LIBRARY(pythonextension SHARED ${pythonextension_SRCS} ${pythonextension_UIS_H})
+	ADD_LIBRARY(pythonextension SHARED ${pythonextension_SRCS} 
+		${pythonextension_UIS_H})
 	TARGET_LINK_LIBRARIES(pythonextension
 		${OPENBABEL2_LIBRARIES}
 		${QT_LIBRARIES}
 		${OPENGL_LIBRARIES}
+		${Boost_LIBRARIES}
 		avogadro-lib
 	)
 	INSTALL(TARGETS pythonextension DESTINATION ${DESTINATION_DIR})
 
 	FILE(GLOB python_SCRIPTS "python/*.py")
 	INSTALL(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/scripts)
-endif(BOOST_PYTHON_FOUND)
+endif(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
