@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_thiophene">
+  <formula concise=" C 4 H 4 S 1 "/>
+  <identifier convention="iupac:inchi" value="1/C4H4S/c1-2-4-5-3-1/h1-4H"/>
+  <name convention="IUPAC">Thiophene</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="1.126214" y3="0.765886" z3="0.000000"/>
+    <atom id="a2" elementType="C" x3="0.819345" y3="-0.564955" z3="0.000000"/>
+    <atom id="a3" elementType="C" x3="-0.598383" y3="-0.795127" z3="0.000000"/>
+    <atom id="a4" elementType="C" x3="-1.310706" y3="0.370165" z3="0.000000"/>
+    <atom id="a5" elementType="S" x3="-0.285330" y3="1.757144" z3="0.000000"/>
+    <atom id="a6" elementType="H" x3="2.130424" y3="1.185837" z3="0.000000"/>
+    <atom id="a7" elementType="H" x3="1.548377" y3="-1.375303" z3="0.000000"/>
+    <atom id="a8" elementType="H" x3="-1.033768" y3="-1.794407" z3="0.000000"/>
+    <atom id="a9" elementType="H" x3="-2.396173" y3="0.450760" z3="0.000000"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a3 a4" order="2"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a5 a1" order="1"/>
+    <bond atomRefs2="a1 a6" order="1"/>
+    <bond atomRefs2="a2 a7" order="1"/>
+    <bond atomRefs2="a3 a8" order="1"/>
+    <bond atomRefs2="a4 a9" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">84.1396</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">84.0033711</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-38</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">84</scalar>
+    </property>
+  </propertyList>
+</molecule>

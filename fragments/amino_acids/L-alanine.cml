@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_2S-2-aminopropanoic_acid">
+  <formula concise=" C 3 H 7 N 1 O 2 "/>
+  <identifier convention="iupac:inchi" value="1/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1"/>
+  <name convention="IUPAC">(2S)-2-Aminopropanoic acid</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="2.024297" y3="-0.294650" z3="1.111081"/>
+    <atom id="a2" elementType="N" x3="1.637375" y3="-0.344863" z3="0.192489"/>
+    <atom id="a3" elementType="H" x3="1.961228" y3="0.430809" z3="-0.346922"/>
+    <atom id="a4" elementType="C" x3="0.157452" y3="-0.323162" z3="0.291873"/>
+    <atom id="a5" elementType="H" x3="-0.127680" y3="-1.245222" z3="0.859526"/>
+    <atom id="a6" elementType="C" x3="-0.403904" y3="0.902348" z3="1.006526"/>
+    <atom id="a7" elementType="H" x3="-0.026766" y3="0.968940" z3="2.036234"/>
+    <atom id="a8" elementType="H" x3="-0.139652" y3="1.839088" z3="0.496361"/>
+    <atom id="a9" elementType="H" x3="-1.499153" y3="0.858661" z3="1.064285"/>
+    <atom id="a10" elementType="C" x3="-0.421955" y3="-0.388793" z3="-1.115216"/>
+    <atom id="a11" elementType="O" x3="-0.196476" y3="0.328939" z3="-2.072022"/>
+    <atom id="a12" elementType="O" x3="-1.327113" y3="-1.374172" z3="-1.312093"/>
+    <atom id="a13" elementType="H" x3="-1.637652" y3="-1.357923" z3="-2.212124"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a4 a6" order="1"/>
+    <bond atomRefs2="a4 a10" order="1"/>
+    <bond atomRefs2="a6 a7" order="1"/>
+    <bond atomRefs2="a6 a8" order="1"/>
+    <bond atomRefs2="a6 a9" order="1"/>
+    <bond atomRefs2="a10 a11" order="2"/>
+    <bond atomRefs2="a10 a12" order="1"/>
+    <bond atomRefs2="a12 a13" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">89.0932</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">89.0476785</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+    <!-- decomposition -->
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">314</scalar>
+    </property>
+  </propertyList>
+</molecule>

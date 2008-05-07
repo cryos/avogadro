@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_acetylene">
+  <formula concise=" C 2 H 2 "/>
+  <identifier convention="iupac:inchi" value="1/C2H2/c1-2/h1-2H"/>
+  <name convention="IUPAC">Acetylene</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="0.578781" y3="0.012373" z3="0.137009"/>
+    <atom id="a2" elementType="C" x3="-0.578774" y3="-0.012388" z3="-0.137139"/>
+    <atom id="a3" elementType="H" x3="1.614334" y3="0.034553" z3="0.382514"/>
+    <atom id="a4" elementType="H" x3="-1.614341" y3="-0.034538" z3="-0.382385"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="3"/>
+    <bond atomRefs2="a1 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">26.0373</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">26.0156501</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-84</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">-81</scalar>
+    </property>
+  </propertyList>
+</molecule>

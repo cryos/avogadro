@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_acetic_acid">
+  <formula concise=" C 2 H 4 O 2 "/>
+  <identifier convention="iupac:inchi" value="1/C2H4O2/c1-2(3)4/h1H3,(H,3,4)"/>
+  <name convention="IUPAC">Acetic acid</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="1.464920" y3="-0.127722" z3="0.748765"/>
+    <atom id="a2" elementType="C" x3="0.933683" y3="-0.194167" z3="-0.209816"/>
+    <atom id="a3" elementType="H" x3="1.268776" y3="0.642786" z3="-0.836558"/>
+    <atom id="a4" elementType="H" x3="1.232691" y3="-1.128721" z3="-0.701067"/>
+    <atom id="a5" elementType="C" x3="-0.547721" y3="-0.142614" z3="-0.001295"/>
+    <atom id="a6" elementType="O" x3="-1.393966" y3="-0.967368" z3="-0.296097"/>
+    <atom id="a7" elementType="O" x3="-1.006038" y3="0.981650" z3="0.600553"/>
+    <atom id="a8" elementType="H" x3="-1.952344" y3="0.936156" z3="0.695512"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a2 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="2"/>
+    <bond atomRefs2="a5 a7" order="1"/>
+    <bond atomRefs2="a7 a8" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">60.0520</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">60.0211294</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">16</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">117</scalar>
+    </property>
+  </propertyList>
+</molecule>

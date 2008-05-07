@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+	  xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_d-glyceraldehyde">
+  <formula concise=" C 3 H 6 O 3 "/>
+  <identifier convention="iupac:inchi" value="1/C3H6O3/c4-1-3(6)2-5/h1,3,5-6H,2H2/t3-/m0/s1"/>
+  <name convention="IUPAC">(2R)-2,3-Dihydroxypropanal</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="-0.477016" y3="1.557137" z3="0.270210"/>
+    <atom id="a2" elementType="C" x3="0.424194" y3="0.331357" z3="0.144146"/>
+    <atom id="a3" elementType="C" x3="-0.466125" y3="-0.935267" z3="0.172519"/>
+    <atom id="a4" elementType="O" x3="1.271396" y3="0.340017" z3="-0.975830"/>
+    <atom id="a5" elementType="O" x3="0.250080" y3="-2.094122" z3="0.486865"/>
+    <atom id="a6" elementType="O" x3="-0.727108" y3="2.290929" z3="-0.655989"/>
+    <atom id="a7" elementType="H" x3="-0.910451" y3="1.739421" z3="1.266362"/>
+    <atom id="a8" elementType="H" x3="1.156509" y3="0.324640" z3="0.985306"/>
+    <atom id="a9" elementType="H" x3="-1.004487" y3="-1.060041" z3="-0.787987"/>
+    <atom id="a10" elementType="H" x3="-1.215774" y3="-0.874713" z3="0.980545"/>
+    <atom id="a11" elementType="H" x3="0.747459" y3="0.558144" z3="-1.737850"/>
+    <atom id="a12" elementType="H" x3="0.951322" y3="-2.177503" z3="-0.148296"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a3 a5" order="1"/>
+    <bond atomRefs2="a1 a6" order="2"/>
+    <bond atomRefs2="a1 a7" order="1"/>
+    <bond atomRefs2="a2 a8" order="1"/>
+    <bond atomRefs2="a3 a9" order="1"/>
+    <bond atomRefs2="a3 a10" order="1"/>
+    <bond atomRefs2="a4 a11" order="1"/>
+    <bond atomRefs2="a5 a12" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">90.0779</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">90.0316941</scalar>
+    </property>
+  </propertyList>
+</molecule>

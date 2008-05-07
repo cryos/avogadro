@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_anthracene">
+  <formula concise=" C 14 H 10 "/>
+  <identifier convention="iupac:inchi" value="1/C14H10/c1-2-6-12-10-14-8-4-3-7-13(14)9-11(12)5-1/h1-10H"/>
+  <name convention="IUPAC">Anthracene</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="3.660940" y3="0.584780" z3="-0.000000"/>
+    <atom id="a2" elementType="C" x3="3.610987" y3="-0.839654" z3="-0.000000"/>
+    <atom id="a3" elementType="C" x3="2.416498" y3="-1.489466" z3="0.000000"/>
+    <atom id="a4" elementType="C" x3="1.187042" y3="-0.752752" z3="-0.000000"/>
+    <atom id="a5" elementType="C" x3="2.514848" y3="1.316646" z3="-0.000000"/>
+    <atom id="a6" elementType="C" x3="1.236850" y3="0.667870" z3="-0.000000"/>
+    <atom id="a7" elementType="C" x3="-0.049134" y3="-1.403185" z3="-0.000000"/>
+    <atom id="a8" elementType="C" x3="-1.236882" y3="-0.667750" z3="-0.000000"/>
+    <atom id="a9" elementType="C" x3="0.049201" y3="1.403288" z3="-0.000000"/>
+    <atom id="a10" elementType="C" x3="-1.187119" y3="0.752833" z3="-0.000000"/>
+    <atom id="a11" elementType="C" x3="-2.514747" y3="-1.316638" z3="0.000000"/>
+    <atom id="a12" elementType="C" x3="-3.660904" y3="-0.584815" z3="-0.000000"/>
+    <atom id="a13" elementType="C" x3="-3.611015" y3="0.839549" z3="-0.000000"/>
+    <atom id="a14" elementType="C" x3="-2.416500" y3="1.489531" z3="-0.000000"/>
+    <atom id="a15" elementType="H" x3="4.639743" y3="1.075562" z3="0.000000"/>
+    <atom id="a16" elementType="H" x3="4.552890" y3="-1.397948" z3="-0.000000"/>
+    <atom id="a17" elementType="H" x3="2.368043" y3="-2.584328" z3="0.000000"/>
+    <atom id="a18" elementType="H" x3="2.543253" y3="2.412213" z3="-0.000000"/>
+    <atom id="a19" elementType="H" x3="-0.087608" y3="-2.499478" z3="-0.000000"/>
+    <atom id="a20" elementType="H" x3="0.087635" y3="2.499579" z3="0.000000"/>
+    <atom id="a21" elementType="H" x3="-2.543086" y3="-2.412200" z3="-0.000000"/>
+    <atom id="a22" elementType="H" x3="-4.639677" y3="-1.075563" z3="-0.000000"/>
+    <atom id="a23" elementType="H" x3="-4.553113" y3="1.397533" z3="-0.000000"/>
+    <atom id="a24" elementType="H" x3="-2.368146" y3="2.584394" z3="-0.000000"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a3 a4" order="2"/>
+    <bond atomRefs2="a5 a6" order="2"/>
+    <bond atomRefs2="a6 a4" order="1"/>
+    <bond atomRefs2="a4 a7" order="1"/>
+    <bond atomRefs2="a7 a8" order="2"/>
+    <bond atomRefs2="a6 a9" order="1"/>
+    <bond atomRefs2="a9 a10" order="2"/>
+    <bond atomRefs2="a10 a8" order="1"/>
+    <bond atomRefs2="a8 a11" order="1"/>
+    <bond atomRefs2="a11 a12" order="2"/>
+    <bond atomRefs2="a12 a13" order="1"/>
+    <bond atomRefs2="a10 a14" order="1"/>
+    <bond atomRefs2="a14 a13" order="2"/>
+    <bond atomRefs2="a1 a5" order="1"/>
+    <bond atomRefs2="a1 a15" order="1"/>
+    <bond atomRefs2="a2 a16" order="1"/>
+    <bond atomRefs2="a3 a17" order="1"/>
+    <bond atomRefs2="a5 a18" order="1"/>
+    <bond atomRefs2="a7 a19" order="1"/>
+    <bond atomRefs2="a9 a20" order="1"/>
+    <bond atomRefs2="a11 a21" order="1"/>
+    <bond atomRefs2="a12 a22" order="1"/>
+    <bond atomRefs2="a13 a23" order="1"/>
+    <bond atomRefs2="a14 a24" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">178.2292</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">178.0782503</scalar>
+    </property>
+  </propertyList>
+</molecule>

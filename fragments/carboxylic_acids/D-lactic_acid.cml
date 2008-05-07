@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_R-2-hydroxypropanoic_acid">
+  <formula concise=" C 3 H 6 O 3 "/>
+  <identifier convention="iupac:inchi" value="1/C3H6O3/c1-2(4)3(5)6/h2,4H,1H3,(H,5,6)/t2-/m1/s1"/>
+  <name convention="IUPAC">(R)-2-Hydroxypropanoic acid</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="2.082545" y3="-0.198236" z3="0.340473"/>
+    <atom id="a2" elementType="C" x3="1.302680" y3="-0.864759" z3="-0.048872"/>
+    <atom id="a3" elementType="H" x3="1.728892" y3="-1.426525" z3="-0.890345"/>
+    <atom id="a4" elementType="H" x3="1.059608" y3="-1.589009" z3="0.739962"/>
+    <atom id="a5" elementType="C" x3="0.080623" y3="-0.067709" z3="-0.489948"/>
+    <atom id="a6" elementType="H" x3="0.363419" y3="0.645692" z3="-1.304067"/>
+    <atom id="a7" elementType="C" x3="-0.491734" y3="0.766458" z3="0.664097"/>
+    <atom id="a8" elementType="O" x3="-0.041186" y3="0.978896" z3="1.772275"/>
+    <atom id="a9" elementType="O" x3="-1.664928" y3="1.384331" z3="0.382812"/>
+    <atom id="a10" elementType="H" x3="-1.967783" y3="1.872673" z3="1.142189"/>
+    <atom id="a11" elementType="O" x3="-0.867164" y3="-0.997327" z3="-0.966822"/>
+    <atom id="a12" elementType="H" x3="-1.584973" y3="-0.504484" z3="-1.341754"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a2 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a5 a7" order="1"/>
+    <bond atomRefs2="a5 a11" order="1"/>
+    <bond atomRefs2="a7 a8" order="2"/>
+    <bond atomRefs2="a7 a9" order="1"/>
+    <bond atomRefs2="a9 a10" order="1"/>
+    <bond atomRefs2="a11 a12" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">90.0779</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">90.0316941</scalar>
+    </property>
+  </propertyList>
+</molecule>

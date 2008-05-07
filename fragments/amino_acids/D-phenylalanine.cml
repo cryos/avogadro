@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_2R-2-amino-3-phenylpropanoic_acid">
+  <formula concise=" C 9 H 11 N 1 O 2 "/>
+  <identifier convention="iupac:inchi" value="1/C9H11NO2/c10-8(9(11)12)6-7-4-2-1-3-5-7/h1-5,8H,6,10H2,(H,11,12)/t8-/m1/s1"/>
+  <name convention="IUPAC">(2R)-2-Amino-3-phenylpropanoic acid</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="2.675759" y3="-0.846384" z3="-1.481216"/>
+    <atom id="a2" elementType="C" x3="1.204978" y3="-0.625310" z3="-1.112704"/>
+    <atom id="a3" elementType="N" x3="0.443989" y3="-0.406157" z3="-2.372955"/>
+    <atom id="a4" elementType="C" x3="0.978475" y3="0.571626" z3="-0.174390"/>
+    <atom id="a5" elementType="H" x3="1.800065" y3="0.625455" z3="0.574313"/>
+    <atom id="a6" elementType="H" x3="1.026081" y3="1.528092" z3="-0.735810"/>
+    <atom id="a7" elementType="C" x3="-0.329895" y3="0.451127" z3="0.538215"/>
+    <atom id="a8" elementType="C" x3="-1.433770" y3="1.193072" z3="0.116261"/>
+    <atom id="a9" elementType="H" x3="-1.344941" y3="1.867264" z3="-0.744095"/>
+    <atom id="a10" elementType="C" x3="-2.646769" y3="1.079719" z3="0.787233"/>
+    <atom id="a11" elementType="H" x3="-3.510298" y3="1.664685" z3="0.453629"/>
+    <atom id="a12" elementType="C" x3="-2.764424" y3="0.226929" z3="1.879275"/>
+    <atom id="a13" elementType="H" x3="-3.720084" y3="0.139962" z3="2.406611"/>
+    <atom id="a14" elementType="C" x3="-1.665818" y3="-0.514771" z3="2.302220"/>
+    <atom id="a15" elementType="H" x3="-1.756408" y3="-1.186150" z3="3.162529"/>
+    <atom id="a16" elementType="C" x3="-0.451658" y3="-0.404167" z3="1.635238"/>
+    <atom id="a17" elementType="H" x3="0.413453" y3="-0.987473" z3="1.970949"/>
+    <atom id="a18" elementType="O" x3="3.097057" y3="-1.675038" z3="-2.261351"/>
+    <atom id="a19" elementType="O" x3="3.696779" y3="-0.153318" z3="-0.932177"/>
+    <atom id="a20" elementType="H" x3="0.880952" y3="-1.557119" z3="-0.574146"/>
+    <atom id="a21" elementType="H" x3="-0.522012" y3="-0.291228" z3="-2.147547"/>
+    <atom id="a22" elementType="H" x3="0.561603" y3="-1.186502" z3="-2.983009"/>
+    <atom id="a23" elementType="H" x3="3.366885" y3="0.485689" z3="-0.307072"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a4 a6" order="1"/>
+    <bond atomRefs2="a4 a7" order="1"/>
+    <bond atomRefs2="a7 a8" order="1"/>
+    <bond atomRefs2="a7 a16" order="2"/>
+    <bond atomRefs2="a8 a9" order="1"/>
+    <bond atomRefs2="a8 a10" order="2"/>
+    <bond atomRefs2="a10 a11" order="1"/>
+    <bond atomRefs2="a10 a12" order="1"/>
+    <bond atomRefs2="a12 a13" order="1"/>
+    <bond atomRefs2="a12 a14" order="2"/>
+    <bond atomRefs2="a14 a15" order="1"/>
+    <bond atomRefs2="a14 a16" order="1"/>
+    <bond atomRefs2="a16 a17" order="1"/>
+    <bond atomRefs2="a1 a18" order="2"/>
+    <bond atomRefs2="a1 a19" order="1"/>
+    <bond atomRefs2="a2 a20" order="1"/>
+    <bond atomRefs2="a3 a21" order="1"/>
+    <bond atomRefs2="a3 a22" order="1"/>
+    <bond atomRefs2="a19 a23" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">165.1891</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">165.0789786</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+    <!-- decomposition -->
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">266</scalar>
+    </property>
+  </propertyList>
+</molecule>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_furan">
+  <formula concise=" C 4 H 4 O 1 "/>
+  <identifier convention="iupac:inchi" value="1/C4H4O/c1-2-4-5-3-1/h1-4H"/>
+  <name convention="IUPAC">Furan</name>
+  <atomArray>
+    <atom id="a1" elementType="O" x3="1.347098" y3="0.032605" z3="0.371968"/>
+    <atom id="a2" elementType="C" x3="0.846598" y3="0.121661" z3="-0.908869"/>
+    <atom id="a3" elementType="H" x3="1.588416" y3="0.227239" z3="-1.694145"/>
+    <atom id="a4" elementType="C" x3="-0.524238" y3="0.053220" z3="-0.888622"/>
+    <atom id="a5" elementType="H" x3="-1.205734" y3="0.094801" z3="-1.732791"/>
+    <atom id="a6" elementType="C" x3="-0.902812" y3="-0.087711" z3="0.494679"/>
+    <atom id="a7" elementType="H" x3="-1.918152" y3="-0.170360" z3="0.870317"/>
+    <atom id="a8" elementType="C" x3="0.265148" y3="-0.094764" z3="1.215885"/>
+    <atom id="a9" elementType="H" x3="0.503676" y3="-0.176690" z3="2.271579"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a1 a8" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="2"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a4 a6" order="1"/>
+    <bond atomRefs2="a6 a7" order="1"/>
+    <bond atomRefs2="a6 a8" order="2"/>
+    <bond atomRefs2="a8 a9" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">68.0740</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">68.0262147</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">31</scalar>
+    </property>
+  </propertyList>
+</molecule>

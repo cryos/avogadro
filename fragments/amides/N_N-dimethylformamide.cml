@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_N_N-dimethylformamide">
+  <formula concise=" C 3 H 7 N 1 O 1 "/>
+  <identifier convention="iupac:inchi" value="1/C3H7NO/c1-4(2)3-5/h3H,1-2H3"/>
+  <name convention="IUPAC">N,N-Dimethylformamide</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="-0.328843" y3="1.433586" z3="0.534024"/>
+    <atom id="a2" elementType="O" x3="-1.485235" y3="1.801487" z3="0.572670"/>
+    <atom id="a3" elementType="N" x3="-0.015797" y3="0.053569" z3="0.333335"/>
+    <atom id="a4" elementType="C" x3="1.330166" y3="-0.233949" z3="-0.207488"/>
+    <atom id="a5" elementType="C" x3="-1.066060" y3="-0.867326" z3="-0.148172"/>
+    <atom id="a6" elementType="H" x3="0.521314" y3="2.112449" z3="0.717089"/>
+    <atom id="a7" elementType="H" x3="2.073174" y3="0.447788" z3="0.227197"/>
+    <atom id="a8" elementType="H" x3="1.373108" y3="-0.142163" z3="-1.302931"/>
+    <atom id="a9" elementType="H" x3="1.612525" y3="-1.260847" z3="0.060544"/>
+    <atom id="a10" elementType="H" x3="-0.742655" y3="-1.902085" z3="0.025710"/>
+    <atom id="a11" elementType="H" x3="-1.274836" y3="-0.743559" z3="-1.220762"/>
+    <atom id="a12" elementType="H" x3="-1.996862" y3="-0.698949" z3="0.408782"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a1 a3" order="1"/>
+    <bond atomRefs2="a1 a6" order="1"/>
+    <bond atomRefs2="a3 a4" order="1"/>
+    <bond atomRefs2="a3 a5" order="1"/>
+    <bond atomRefs2="a4 a7" order="1"/>
+    <bond atomRefs2="a4 a8" order="1"/>
+    <bond atomRefs2="a4 a9" order="1"/>
+    <bond atomRefs2="a5 a10" order="1"/>
+    <bond atomRefs2="a5 a11" order="1"/>
+    <bond atomRefs2="a5 a12" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">73.0938</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">73.0527638</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-61</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">153</scalar>
+    </property>
+  </propertyList>
+</molecule>

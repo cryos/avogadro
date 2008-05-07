@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_1_2-oxazole">
+  <formula concise=" C 3 H 3 N 1 O 1 "/>
+  <identifier convention="iupac:inchi" value="1/C3H3NO/c1-2-4-5-3-1/h1-3H"/>
+  <name convention="IUPAC">1,2-Oxazole</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="0.782739" y3="0.785771" z3="0.031190"/>
+    <atom id="a2" elementType="C" x3="0.524154" y3="-0.553255" z3="-0.107697"/>
+    <atom id="a3" elementType="C" x3="-0.912299" y3="-0.676264" z3="-0.007827"/>
+    <atom id="a4" elementType="H" x3="1.696814" y3="1.374757" z3="0.028440"/>
+    <atom id="a5" elementType="H" x3="1.228218" y3="-1.365977" z3="-0.260681"/>
+    <atom id="a6" elementType="H" x3="-1.516249" y3="-1.580974" z3="-0.067431"/>
+    <atom id="a7" elementType="O" x3="-0.374652" y3="1.486690" z3="0.207004"/>
+    <atom id="a8" elementType="N" x3="-1.428725" y3="0.529252" z3="0.177002"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a1 a4" order="1"/>
+    <bond atomRefs2="a2 a5" order="1"/>
+    <bond atomRefs2="a3 a6" order="1"/>
+    <bond atomRefs2="a1 a7" order="1"/>
+    <bond atomRefs2="a7 a8" order="1"/>
+    <bond atomRefs2="a8 a3" order="2"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">69.0620</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">69.0214637</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">95</scalar>
+    </property>
+  </propertyList>
+</molecule>

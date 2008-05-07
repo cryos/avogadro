@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_2S-2_6-diaminohexanoic_acid">
+  <formula concise=" C 6 H 14 N 2 O 2 "/>
+  <identifier convention="iupac:inchi" value="1/C6H14N2O2/c7-4-2-1-3-5(8)6(9)10/h5H,1-4,7-8H2,(H,9,10)/t5-/m0/s1"/>
+  <name convention="IUPAC">(2S)-2,6-Diaminohexanoic acid</name>
+  <atomArray>
+    <atom id="a1" elementType="N" x3="1.690133" y3="-2.251777" z3="-0.099209"/>
+    <atom id="a2" elementType="C" x3="1.467250" y3="-1.113139" z3="-1.019540"/>
+    <atom id="a3" elementType="C" x3="2.752673" y3="-0.652785" z3="-1.703443"/>
+    <atom id="a4" elementType="O" x3="2.588918" y3="-0.027506" z3="-2.890236"/>
+    <atom id="a5" elementType="C" x3="0.848565" y3="0.083589" z3="-0.283467"/>
+    <atom id="a6" elementType="C" x3="-0.579288" y3="-0.199006" z3="0.157085"/>
+    <atom id="a7" elementType="C" x3="-1.180016" y3="1.009449" z3="0.858878"/>
+    <atom id="a8" elementType="C" x3="-2.604998" y3="0.714068" z3="1.313815"/>
+    <atom id="a9" elementType="N" x3="-3.168410" y3="1.864544" z3="2.054045"/>
+    <atom id="a10" elementType="O" x3="3.903836" y3="-0.783063" z3="-1.325923"/>
+    <atom id="a11" elementType="H" x3="2.243617" y3="-1.966572" z3="0.681432"/>
+    <atom id="a12" elementType="H" x3="2.150339" y3="-2.992350" z3="-0.583745"/>
+    <atom id="a13" elementType="H" x3="0.754273" y3="-1.477752" z3="-1.802279"/>
+    <atom id="a14" elementType="H" x3="3.434693" y3="0.236267" z3="-3.240055"/>
+    <atom id="a15" elementType="H" x3="0.860438" y3="0.967541" z3="-0.953405"/>
+    <atom id="a16" elementType="H" x3="1.468313" y3="0.365089" z3="0.593056"/>
+    <atom id="a17" elementType="H" x3="-0.605884" y3="-1.079381" z3="0.830274"/>
+    <atom id="a18" elementType="H" x3="-1.198975" y3="-0.475514" z3="-0.720107"/>
+    <atom id="a19" elementType="H" x3="-1.164225" y3="1.885900" z3="0.178850"/>
+    <atom id="a20" elementType="H" x3="-0.550454" y3="1.294397" z3="1.726041"/>
+    <atom id="a21" elementType="H" x3="-2.613760" y3="-0.155813" z3="2.001348"/>
+    <atom id="a22" elementType="H" x3="-3.224738" y3="0.419343" z3="0.438277"/>
+    <atom id="a23" elementType="H" x3="-4.108944" y3="1.658252" z3="2.316431"/>
+    <atom id="a24" elementType="H" x3="-3.163361" y3="2.676219" z3="1.471878"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a6 a7" order="1"/>
+    <bond atomRefs2="a7 a8" order="1"/>
+    <bond atomRefs2="a8 a9" order="1"/>
+    <bond atomRefs2="a3 a4" order="1"/>
+    <bond atomRefs2="a10 a3" order="2"/>
+    <bond atomRefs2="a1 a11" order="1"/>
+    <bond atomRefs2="a1 a12" order="1"/>
+    <bond atomRefs2="a2 a13" order="1"/>
+    <bond atomRefs2="a4 a14" order="1"/>
+    <bond atomRefs2="a5 a15" order="1"/>
+    <bond atomRefs2="a5 a16" order="1"/>
+    <bond atomRefs2="a6 a17" order="1"/>
+    <bond atomRefs2="a6 a18" order="1"/>
+    <bond atomRefs2="a7 a19" order="1"/>
+    <bond atomRefs2="a7 a20" order="1"/>
+    <bond atomRefs2="a8 a21" order="1"/>
+    <bond atomRefs2="a8 a22" order="1"/>
+    <bond atomRefs2="a9 a23" order="1"/>
+    <bond atomRefs2="a9 a24" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">146.1876</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">146.1055277</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+    <!-- decomposition -->
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">215</scalar>
+    </property>
+  </propertyList>
+</molecule>

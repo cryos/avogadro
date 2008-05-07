@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_methane">
+  <formula concise=" C 1 H 4 "/>
+  <identifier convention="iupac:inchi" value="1/CH4/h1H4"/>
+  <name convention="IUPAC">Methane</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="0.528809" y3="0.161048" z3="0.935955"/>
+    <atom id="a2" elementType="C" x3="0.000014" y3="0.000046" z3="0.000035"/>
+    <atom id="a3" elementType="H" x3="0.205136" y3="0.824021" z3="-0.678591"/>
+    <atom id="a4" elementType="H" x3="0.334551" y3="-0.931400" z3="-0.449551"/>
+    <atom id="a5" elementType="H" x3="-1.068510" y3="-0.053715" z3="0.192152"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a2 a5" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">16.0425</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">16.0313001</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-183</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">-161</scalar>
+    </property>
+  </propertyList>
+</molecule>

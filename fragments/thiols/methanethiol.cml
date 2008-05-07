@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_methanethiol">
+  <formula concise=" C 1 H 4 S 1 "/>
+  <identifier convention="iupac:inchi" value="1/CH4S/c1-2/h2H,1H3"/>
+  <name convention="IUPAC">Methanethiol</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="0.288559" y3="0.384538" z3="0.043284"/>
+    <atom id="a2" elementType="S" x3="-1.073577" y3="-0.572750" z3="-0.642930"/>
+    <atom id="a3" elementType="H" x3="0.309018" y3="1.346759" z3="-0.483699"/>
+    <atom id="a4" elementType="H" x3="0.174705" y3="0.594940" z3="1.112074"/>
+    <atom id="a5" elementType="H" x3="-0.964128" y3="-1.663080" z3="0.068251"/>
+    <atom id="a6" elementType="H" x3="1.265424" y3="-0.090407" z3="-0.096980"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a1 a3" order="1"/>
+    <bond atomRefs2="a1 a4" order="1"/>
+    <bond atomRefs2="a2 a5" order="1"/>
+    <bond atomRefs2="a1 a6" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">48.1075</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">48.0033711</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-123</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">6</scalar>
+    </property>
+  </propertyList>
+</molecule>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_formic_acid">
+  <formula concise=" C 1 H 2 O 2 "/>
+  <identifier convention="iupac:inchi" value="1/CH2O2/c2-1-3/h1H,(H,2,3)"/>
+  <name convention="IUPAC">Formic acid</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="0.889962" y3="-0.110713" z3="1.155147"/>
+    <atom id="a2" elementType="C" x3="0.419773" y3="-0.059715" z3="0.167524"/>
+    <atom id="a3" elementType="O" x3="0.903173" y3="-0.154393" z3="-0.939199"/>
+    <atom id="a4" elementType="O" x3="-0.907565" y3="0.141126" z3="0.240962"/>
+    <atom id="a5" elementType="H" x3="-1.305344" y3="0.183696" z3="-0.624433"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="2"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">46.0254</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">46.0054793</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">8</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">100</scalar>
+    </property>
+  </propertyList>
+</molecule>

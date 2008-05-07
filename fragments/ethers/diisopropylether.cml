@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_2-propan-2-yloxypropane">
+  <formula concise=" C 6 H 14 O 1 "/>
+  <identifier convention="iupac:inchi" value="1/C6H14O/c1-5(2)7-6(3)4/h5-6H,1-4H3"/>
+  <name convention="IUPAC">2-Propane-2-yloxypropane</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="2.328383" y3="0.278150" z3="2.052940"/>
+    <atom id="a2" elementType="C" x3="1.933408" y3="0.234124" z3="1.030167"/>
+    <atom id="a3" elementType="H" x3="2.477115" y3="0.977200" z3="0.431990"/>
+    <atom id="a4" elementType="H" x3="2.178593" y3="-0.756032" z3="0.623122"/>
+    <atom id="a5" elementType="C" x3="0.428476" y3="0.493611" z3="1.023563"/>
+    <atom id="a6" elementType="H" x3="-0.090277" y3="-0.296636" z3="1.621398"/>
+    <atom id="a7" elementType="C" x3="0.115953" y3="1.864921" z3="1.615211"/>
+    <atom id="a8" elementType="H" x3="0.483325" y3="1.929925" z3="2.647269"/>
+    <atom id="a9" elementType="H" x3="0.588637" y3="2.674541" z3="1.043176"/>
+    <atom id="a10" elementType="H" x3="-0.963646" y3="2.062014" z3="1.631561"/>
+    <atom id="a11" elementType="O" x3="-0.082367" y3="0.513838" z3="-0.310679"/>
+    <atom id="a12" elementType="C" x3="-0.383334" y3="-0.772455" z3="-0.855004"/>
+    <atom id="a13" elementType="H" x3="0.382533" y3="-1.517880" z3="-0.525089"/>
+    <atom id="a14" elementType="C" x3="-1.771167" y3="-1.239890" z3="-0.421854"/>
+    <atom id="a15" elementType="H" x3="-1.835751" y3="-1.373229" z3="0.666396"/>
+    <atom id="a16" elementType="H" x3="-2.550735" y3="-0.522411" z3="-0.710084"/>
+    <atom id="a17" elementType="H" x3="-2.017403" y3="-2.202231" z3="-0.888011"/>
+    <atom id="a18" elementType="C" x3="-0.317618" y3="-0.614402" z3="-2.371223"/>
+    <atom id="a19" elementType="H" x3="-1.043195" y3="0.124207" z3="-2.737408"/>
+    <atom id="a20" elementType="H" x3="0.677024" y3="-0.288491" z3="-2.701553"/>
+    <atom id="a21" elementType="H" x3="-0.537953" y3="-1.568872" z3="-2.865890"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a2 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a5 a7" order="1"/>
+    <bond atomRefs2="a5 a11" order="1"/>
+    <bond atomRefs2="a7 a8" order="1"/>
+    <bond atomRefs2="a7 a9" order="1"/>
+    <bond atomRefs2="a7 a10" order="1"/>
+    <bond atomRefs2="a11 a12" order="1"/>
+    <bond atomRefs2="a12 a13" order="1"/>
+    <bond atomRefs2="a12 a14" order="1"/>
+    <bond atomRefs2="a12 a18" order="1"/>
+    <bond atomRefs2="a14 a15" order="1"/>
+    <bond atomRefs2="a14 a16" order="1"/>
+    <bond atomRefs2="a14 a17" order="1"/>
+    <bond atomRefs2="a18 a19" order="1"/>
+    <bond atomRefs2="a18 a20" order="1"/>
+    <bond atomRefs2="a18 a21" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">102.1748</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">102.1044651</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-85</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">69</scalar>
+    </property>
+  </propertyList>
+</molecule>

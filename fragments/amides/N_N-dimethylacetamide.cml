@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_N_N-dimethylacetamide">
+  <formula concise=" C 4 H 9 N 1 O 1 "/>
+  <identifier convention="iupac:inchi" value="1/C4H9NO/c1-4(6)5(2)3/h1-3H3"/>
+  <name convention="IUPAC">N,N-Dimethylacetamide</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="0.952660" y3="1.678521" z3="0.184199"/>
+    <atom id="a2" elementType="N" x3="0.350710" y3="0.332022" z3="0.312264"/>
+    <atom id="a3" elementType="C" x3="1.187138" y3="-0.746162" z3="-0.258960"/>
+    <atom id="a4" elementType="C" x3="-1.075534" y3="0.216952" z3="0.146596"/>
+    <atom id="a5" elementType="C" x3="-1.690841" y3="-1.155689" z3="0.056185"/>
+    <atom id="a6" elementType="O" x3="-1.743888" y3="1.239324" z3="0.156518"/>
+    <atom id="a7" elementType="H" x3="0.401789" y3="2.396420" z3="0.806162"/>
+    <atom id="a8" elementType="H" x3="0.952538" y3="2.046176" z3="-0.852138"/>
+    <atom id="a9" elementType="H" x3="1.990532" y3="1.644587" z3="0.541696"/>
+    <atom id="a10" elementType="H" x3="1.138826" y3="-0.788161" z3="-1.357277"/>
+    <atom id="a11" elementType="H" x3="0.868655" y3="-1.718951" z3="0.139527"/>
+    <atom id="a12" elementType="H" x3="2.235007" y3="-0.591910" z3="0.032087"/>
+    <atom id="a13" elementType="H" x3="-1.377030" y3="-1.670785" z3="-0.862220"/>
+    <atom id="a14" elementType="H" x3="-2.787884" y3="-1.100059" z3="0.044114"/>
+    <atom id="a15" elementType="H" x3="-1.402678" y3="-1.782284" z3="0.911246"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a4 a6" order="2"/>
+    <bond atomRefs2="a1 a7" order="1"/>
+    <bond atomRefs2="a1 a8" order="1"/>
+    <bond atomRefs2="a1 a9" order="1"/>
+    <bond atomRefs2="a3 a10" order="1"/>
+    <bond atomRefs2="a3 a11" order="1"/>
+    <bond atomRefs2="a3 a12" order="1"/>
+    <bond atomRefs2="a5 a13" order="1"/>
+    <bond atomRefs2="a5 a14" order="1"/>
+    <bond atomRefs2="a5 a15" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">87.1204</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">87.0684139</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-20</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">165</scalar>
+    </property>
+  </propertyList>
+</molecule>

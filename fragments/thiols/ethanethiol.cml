@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_ethanethiol">
+  <formula concise=" C 2 H 6 S 1 "/>
+  <identifier convention="iupac:inchi" value="1/C2H6S/c1-2-3/h3H,2H2,1H3"/>
+  <name convention="IUPAC">Ethanethiol</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="0.943975" y3="-0.102603" z3="-0.075122"/>
+    <atom id="a2" elementType="C" x3="-0.402355" y3="0.548541" z3="0.115926"/>
+    <atom id="a3" elementType="S" x3="-1.812718" y3="-0.398119" z3="-0.534662"/>
+    <atom id="a4" elementType="H" x3="1.014778" y3="-1.059179" z3="0.460340"/>
+    <atom id="a5" elementType="H" x3="1.747916" y3="0.542792" z3="0.303883"/>
+    <atom id="a6" elementType="H" x3="1.157340" y3="-0.302371" z3="-1.133870"/>
+    <atom id="a7" elementType="H" x3="-0.444212" y3="1.516790" z3="-0.419752"/>
+    <atom id="a8" elementType="H" x3="-0.560877" y3="0.783596" z3="1.184174"/>
+    <atom id="a9" elementType="H" x3="-1.643847" y3="-1.529447" z3="0.099083"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a1 a4" order="1"/>
+    <bond atomRefs2="a1 a5" order="1"/>
+    <bond atomRefs2="a1 a6" order="1"/>
+    <bond atomRefs2="a2 a7" order="1"/>
+    <bond atomRefs2="a2 a8" order="1"/>
+    <bond atomRefs2="a3 a9" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">62.1340</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">62.0190212</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="2.0" dictRef="cml:mp" units="units:celsius">-146</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">35</scalar>
+    </property>
+  </propertyList>
+</molecule>

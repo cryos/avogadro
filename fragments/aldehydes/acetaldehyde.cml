@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_acetaldehyde">
+  <formula concise=" C 2 H 4 O 1 "/>
+  <identifier convention="iupac:inchi" value="1/C2H4O/c1-2-3/h2H,1H3"/>
+  <name convention="IUPAC">Acetaldehyde</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="1.274537" y3="0.011339" z3="0.681716"/>
+    <atom id="a2" elementType="C" x3="0.607834" y3="0.035721" z3="-0.190190"/>
+    <atom id="a3" elementType="H" x3="0.840965" y3="0.942115" z3="-0.763826"/>
+    <atom id="a4" elementType="H" x3="0.853753" y3="-0.829974" z3="-0.819048"/>
+    <atom id="a5" elementType="C" x3="-0.821652" y3="-0.040476" z3="0.253032"/>
+    <atom id="a6" elementType="H" x3="-1.112648" y3="-0.931183" z3="0.833772"/>
+    <atom id="a7" elementType="O" x3="-1.642789" y3="0.812458" z3="0.004544"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a2 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a5 a7" order="2"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">44.0526</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">44.0262147</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-125</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">21</scalar>
+    </property>
+  </propertyList>
+</molecule>

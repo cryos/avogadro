@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_methoxyethane">
+  <formula concise=" C 3 H 8 O 1 "/>
+  <identifier convention="iupac:inchi" value="1/C3H8O/c1-3-4-2/h3H2,1-2H3"/>
+  <name convention="IUPAC">Methoxyethane</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="2.353931" y3="0.107911" z3="1.136286"/>
+    <atom id="a2" elementType="C" x3="1.780182" y3="0.060849" z3="0.202248"/>
+    <atom id="a3" elementType="H" x3="2.056356" y3="0.934958" z3="-0.401919"/>
+    <atom id="a4" elementType="H" x3="2.110595" y3="-0.831018" z3="-0.346137"/>
+    <atom id="a5" elementType="C" x3="0.293709" y3="0.024396" z3="0.499739"/>
+    <atom id="a6" elementType="H" x3="0.027826" y3="-0.857806" z3="1.114525"/>
+    <atom id="a7" elementType="H" x3="-0.026822" y3="0.923934" z3="1.061033"/>
+    <atom id="a8" elementType="O" x3="-0.385789" y3="-0.033894" z3="-0.749285"/>
+    <atom id="a9" elementType="C" x3="-1.782163" y3="-0.073852" z3="-0.628194"/>
+    <atom id="a10" elementType="H" x3="-2.124458" y3="-0.963080" z3="-0.084892"/>
+    <atom id="a11" elementType="H" x3="-2.180258" y3="0.822966" z3="-0.137954"/>
+    <atom id="a12" elementType="H" x3="-2.123108" y3="-0.115365" z3="-1.665449"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a2 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a5 a7" order="1"/>
+    <bond atomRefs2="a5 a8" order="1"/>
+    <bond atomRefs2="a8 a9" order="1"/>
+    <bond atomRefs2="a9 a10" order="1"/>
+    <bond atomRefs2="a9 a11" order="1"/>
+    <bond atomRefs2="a9 a12" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">60.0950</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">60.0575149</scalar>
+    </property>
+  </propertyList>
+</molecule>

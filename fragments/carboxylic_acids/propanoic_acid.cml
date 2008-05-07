@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_propanoic_acid">
+  <formula concise=" C 3 H 6 O 2 "/>
+  <identifier convention="iupac:inchi" value="1/C3H6O2/c1-2-3(4)5/h2H2,1H3,(H,4,5)"/>
+  <name convention="IUPAC">Propanoic acid</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="1.660564" y3="-0.795334" z3="0.520940"/>
+    <atom id="a2" elementType="C" x3="1.117524" y3="-0.703748" z3="-0.428830"/>
+    <atom id="a3" elementType="H" x3="1.523549" y3="0.167479" z3="-0.958985"/>
+    <atom id="a4" elementType="H" x3="1.353856" y3="-1.591822" z3="-1.028965"/>
+    <atom id="a5" elementType="C" x3="-0.376005" y3="-0.586159" z3="-0.214762"/>
+    <atom id="a6" elementType="H" x3="-0.902340" y3="-0.520445" z3="-1.187765"/>
+    <atom id="a7" elementType="H" x3="-0.767718" y3="-1.493618" z3="0.285538"/>
+    <atom id="a8" elementType="C" x3="-0.699020" y3="0.615365" z3="0.637691"/>
+    <atom id="a9" elementType="O" x3="-0.725515" y3="0.707882" z3="1.851675"/>
+    <atom id="a10" elementType="O" x3="-1.001400" y3="1.745949" z3="-0.043112"/>
+    <atom id="a11" elementType="H" x3="-1.183496" y3="2.454453" z3="0.566575"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a2 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a5 a7" order="1"/>
+    <bond atomRefs2="a5 a8" order="1"/>
+    <bond atomRefs2="a8 a9" order="2"/>
+    <bond atomRefs2="a8 a10" order="1"/>
+    <bond atomRefs2="a10 a11" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">74.0785</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">74.0367794</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-23</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">141</scalar>
+    </property>
+  </propertyList>
+</molecule>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_benzene">
+  <formula concise=" C 6 H 6 "/>
+  <identifier convention="iupac:inchi" value="1/C6H6/c1-2-4-6-5-3-1/h1-6H"/>
+  <name convention="IUPAC">Benzene</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="1.219426" y3="-0.165162" z3="2.159956"/>
+    <atom id="a2" elementType="C" x3="0.682484" y3="-0.092393" z3="1.208751"/>
+    <atom id="a3" elementType="C" x3="-0.707439" y3="-0.035189" z3="1.197316"/>
+    <atom id="a4" elementType="H" x3="-1.264364" y3="-0.062972" z3="2.139353"/>
+    <atom id="a5" elementType="C" x3="-1.389823" y3="0.057217" z3="-0.011432"/>
+    <atom id="a6" elementType="H" x3="-2.483564" y3="0.102143" z3="-0.020444"/>
+    <atom id="a7" elementType="C" x3="-0.682419" y3="0.092478" z3="-1.208755"/>
+    <atom id="a8" elementType="H" x3="-1.219402" y3="0.165195" z3="-2.159900"/>
+    <atom id="a9" elementType="C" x3="0.707479" y3="0.035227" z3="-1.197298"/>
+    <atom id="a10" elementType="H" x3="1.264130" y3="0.062848" z3="-2.139458"/>
+    <atom id="a11" elementType="C" x3="1.389894" y3="-0.057174" z3="0.011426"/>
+    <atom id="a12" elementType="H" x3="2.483597" y3="-0.102217" z3="0.020489"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="2"/>
+    <bond atomRefs2="a2 a11" order="1"/>
+    <bond atomRefs2="a3 a4" order="1"/>
+    <bond atomRefs2="a3 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a5 a7" order="2"/>
+    <bond atomRefs2="a7 a8" order="1"/>
+    <bond atomRefs2="a7 a9" order="1"/>
+    <bond atomRefs2="a9 a10" order="1"/>
+    <bond atomRefs2="a9 a11" order="2"/>
+    <bond atomRefs2="a11 a12" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">78.1118</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">78.0469502</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">5</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">80</scalar>
+    </property>
+  </propertyList>
+</molecule>

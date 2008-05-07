@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+	  xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_dihydroxyacetone">
+  <formula concise=" C 3 H 6 O 3 "/>
+  <identifier convention="iupac:inchi" value="1/C3H6O3/c4-1-3(6)2-5/h4-5H,1-2H2"/>
+  <name convention="IUPAC">1,3-Dihydroxypropan-2-one</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="1.236410" y3="-0.520199" z3="-0.003724"/>
+    <atom id="a2" elementType="C" x3="0.039631" y3="0.415678" z3="0.100835"/>
+    <atom id="a3" elementType="C" x3="-1.308312" y3="-0.235000" z3="-0.179611"/>
+    <atom id="a4" elementType="O" x3="2.450127" y3="0.106159" z3="-0.296491"/>
+    <atom id="a5" elementType="O" x3="0.151715" y3="1.592123" z3="0.386346"/>
+    <atom id="a6" elementType="O" x3="-2.402313" y3="0.394488" z3="0.418759"/>
+    <atom id="a7" elementType="H" x3="1.110053" y3="-1.231566" z3="-0.839402"/>
+    <atom id="a8" elementType="H" x3="1.311869" y3="-1.106282" z3="0.934124"/>
+    <atom id="a9" elementType="H" x3="-1.346917" y3="-1.258558" z3="0.234294"/>
+    <atom id="a10" elementType="H" x3="-1.446749" y3="-0.305713" z3="-1.277177"/>
+    <atom id="a11" elementType="H" x3="2.563419" y3="0.828248" z3="0.310393"/>
+    <atom id="a12" elementType="H" x3="-2.358933" y3="1.320621" z3="0.211654"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a1 a4" order="1"/>
+    <bond atomRefs2="a2 a5" order="2"/>
+    <bond atomRefs2="a3 a6" order="1"/>
+    <bond atomRefs2="a1 a7" order="1"/>
+    <bond atomRefs2="a1 a8" order="1"/>
+    <bond atomRefs2="a3 a9" order="1"/>
+    <bond atomRefs2="a3 a10" order="1"/>
+    <bond atomRefs2="a4 a11" order="1"/>
+    <bond atomRefs2="a6 a12" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">90.0779</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">90.0316941</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="2.0" dictRef="cml:mp" units="units:celsius">78</scalar>
+    </property>
+  </propertyList>
+</molecule>

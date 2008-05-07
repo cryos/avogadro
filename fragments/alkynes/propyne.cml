@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_propyne">
+  <formula concise=" C 3 H 4 "/>
+  <identifier convention="iupac:inchi" value="1/C3H4/c1-3-2/h1H,2H3"/>
+  <name convention="IUPAC">Propyne</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="-0.479166" y3="-0.001224" z3="-0.113245"/>
+    <atom id="a2" elementType="C" x3="-1.638781" y3="-0.004287" z3="-0.386990"/>
+    <atom id="a3" elementType="C" x3="0.915058" y3="0.002412" z3="0.216097"/>
+    <atom id="a4" elementType="H" x3="-2.674224" y3="-0.007012" z3="-0.631428"/>
+    <atom id="a5" elementType="H" x3="1.063845" y3="0.271382" z3="1.270112"/>
+    <atom id="a6" elementType="H" x3="1.457897" y3="0.728104" z3="-0.403679"/>
+    <atom id="a7" elementType="H" x3="1.355372" y3="-0.989376" z3="0.049132"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="3"/>
+    <bond atomRefs2="a1 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a3 a5" order="1"/>
+    <bond atomRefs2="a3 a6" order="1"/>
+    <bond atomRefs2="a3 a7" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">40.0639</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">40.0313001</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-102</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">-23</scalar>
+    </property>
+  </propertyList>
+</molecule>

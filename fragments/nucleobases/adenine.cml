@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_7H-purin-6-amine">
+  <formula concise=" C 5 H 5 N 5 "/>
+  <identifier convention="iupac:inchi" value="1/C5H5N5/c6-4-3-5(9-1-7-3)10-2-8-4/h1-2H,(H3,6,7,8,9,10)"/>
+  <name convention="IUPAC">7H-Purin-6-amine</name>
+  <atomArray>
+    <atom id="a1" elementType="N" x3="-2.237793" y3="0.007853" z3="0.018654"/>
+    <atom id="a2" elementType="C" x3="-0.966987" y3="0.600207" z3="0.020784"/>
+    <atom id="a3" elementType="C" x3="-0.031978" y3="-0.462656" z3="0.019023"/>
+    <atom id="a4" elementType="N" x3="-0.738749" y3="-1.680026" z3="0.008976"/>
+    <atom id="a5" elementType="C" x3="-2.046677" y3="-1.392418" z3="0.010363"/>
+    <atom id="a6" elementType="C" x3="1.345959" y3="-0.126889" z3="0.023689"/>
+    <atom id="a7" elementType="N" x3="1.685527" y3="1.193889" z3="0.000197"/>
+    <atom id="a8" elementType="C" x3="0.711882" y3="2.162495" z3="0.006024"/>
+    <atom id="a9" elementType="N" x3="-0.613349" y3="1.930976" z3="0.018228"/>
+    <atom id="a10" elementType="H" x3="1.054014" y3="3.205726" z3="-0.002411"/>
+    <atom id="a11" elementType="N" x3="2.375207" y3="-1.060380" z3="0.150625"/>
+    <atom id="a12" elementType="H" x3="-3.106008" y3="0.478731" z3="0.021940"/>
+    <atom id="a13" elementType="H" x3="-2.848276" y3="-2.136545" z3="0.006312"/>
+    <atom id="a14" elementType="H" x3="2.141337" y3="-1.970211" z3="-0.169820"/>
+    <atom id="a15" elementType="H" x3="3.275891" y3="-0.750752" z3="-0.132584"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a14 a11" order="1"/>
+    <bond atomRefs2="a15 a11" order="1"/>
+    <bond atomRefs2="a10 a8" order="1"/>
+    <bond atomRefs2="a13 a5" order="1"/>
+    <bond atomRefs2="a8 a7" order="1"/>
+    <bond atomRefs2="a8 a9" order="2"/>
+    <bond atomRefs2="a7 a6" order="2"/>
+    <bond atomRefs2="a5 a1" order="1"/>
+    <bond atomRefs2="a5 a4" order="2"/>
+    <bond atomRefs2="a1 a12" order="1"/>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a9 a2" order="1"/>
+    <bond atomRefs2="a4 a3" order="1"/>
+    <bond atomRefs2="a2 a3" order="2"/>
+    <bond atomRefs2="a3 a6" order="1"/>
+    <bond atomRefs2="a6 a11" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">135.1267</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">135.0544952</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">&gt; 300</scalar>
+    </property>
+  </propertyList>
+</molecule>
