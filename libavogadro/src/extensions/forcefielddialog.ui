@@ -6,14 +6,14 @@
     <x>0</x>
     <y>0</y>
     <width>442</width>
-    <height>349</height>
+    <height>361</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Setup Force Field</string>
   </property>
-  <layout class="QGridLayout" >
-   <item row="0" column="0" >
+  <layout class="QVBoxLayout" >
+   <item>
     <widget class="QGroupBox" name="groupBox" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
@@ -25,18 +25,12 @@
       <string>Force Field</string>
      </property>
      <layout class="QGridLayout" >
-      <item row="1" column="1" >
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Vertical</enum>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Force Field</string>
         </property>
-        <property name="sizeHint" >
-         <size>
-          <width>20</width>
-          <height>61</height>
-         </size>
-        </property>
-       </spacer>
+       </widget>
       </item>
       <item row="0" column="1" >
        <widget class="QComboBox" name="ForceFieldComboBox" >
@@ -50,27 +44,10 @@
         </item>
        </widget>
       </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="label" >
-        <property name="text" >
-         <string>Force Field</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" >
-    <widget class="QDialogButtonBox" name="buttonBox" >
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons" >
-      <set>QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" >
+   <item>
     <widget class="QGroupBox" name="groupBox_2" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
@@ -89,33 +66,13 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1" colspan="2" >
+      <item row="0" column="1" >
        <widget class="QSpinBox" name="StepsSpinBox" >
         <property name="maximum" >
          <number>10000</number>
         </property>
         <property name="value" >
          <number>100</number>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2" >
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="label_4" >
-        <property name="text" >
-         <string>Gradients</string>
         </property>
        </widget>
       </item>
@@ -126,21 +83,7 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1" colspan="2" >
-       <widget class="QComboBox" name="GradientsComboBox" >
-        <item>
-         <property name="text" >
-          <string>Numerical</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>Analytical</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="1" column="1" colspan="2" >
+      <item row="1" column="1" >
        <widget class="QComboBox" name="AlgorithmComboBox" >
         <item>
          <property name="text" >
@@ -154,14 +97,14 @@
         </item>
        </widget>
       </item>
-      <item row="3" column="0" >
+      <item row="2" column="0" >
        <widget class="QLabel" name="label_5" >
         <property name="text" >
          <string>Convergence</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1" colspan="2" >
+      <item row="2" column="1" >
        <widget class="QSpinBox" name="ConvergenceSpinBox" >
         <property name="suffix" >
          <string/>
@@ -180,7 +123,30 @@
         </property>
        </widget>
       </item>
+      <item row="3" column="1" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
      </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons" >
+      <set>QDialogButtonBox::Ok</set>
+     </property>
     </widget>
    </item>
   </layout>

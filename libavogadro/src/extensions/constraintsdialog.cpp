@@ -42,6 +42,8 @@ namespace Avogadro {
     connect( ui.ConstraintsDeleteAll, SIGNAL( clicked() ), this, SLOT( deleteAllConstraints() ));
     connect( ui.comboType, SIGNAL( currentIndexChanged(int) ), this, SLOT( comboTypeChanged(int) ));
     
+    m_forceField = OpenBabel::OBForceField::FindForceField( "MMFF94" );
+    
     ui.editValue->setMinimum(0.0);
     ui.editValue->setMaximum(0.0);
   }
@@ -173,11 +175,6 @@ namespace Avogadro {
     connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_constraints, SLOT( primitiveRemoved(Primitive *) ));
   }
   
-  void ConstraintsDialog::setForceField(OpenBabel::OBForceField *forcefield)
-  {
-    m_forceField = forcefield;
-  }
- 
   void ConstraintsDialog::comboTypeChanged(int index)
   {
     switch (index) {
@@ -297,31 +294,13 @@ namespace Avogadro {
   void ConstraintsDialog::deleteConstraint()
   {
     m_constraints->deleteConstraint(ui.ConstraintsTableView->currentIndex().row());
-    
-    // copy constraints to all force fields
-    OpenBabel::OBForceField *copyForceField = m_forceField;
-    m_forceField = OpenBabel::OBForceField::FindForceField( "Ghemical" );
     m_forceField->SetConstraints(m_constraints->constraints());
-    m_forceField = OpenBabel::OBForceField::FindForceField( "MMFF94" );
-    m_forceField->SetConstraints(m_constraints->constraints());
-    m_forceField = OpenBabel::OBForceField::FindForceField( "UFF" );
-    m_forceField->SetConstraints(m_constraints->constraints());
-    m_forceField = copyForceField;
   }
 
   void ConstraintsDialog::deleteAllConstraints()
   {
     m_constraints->clear();
-    
-    // copy constraints to all force fields
-    OpenBabel::OBForceField *copyForceField = m_forceField;
-    m_forceField = OpenBabel::OBForceField::FindForceField( "Ghemical" );
     m_forceField->SetConstraints(m_constraints->constraints());
-    m_forceField = OpenBabel::OBForceField::FindForceField( "MMFF94" );
-    m_forceField->SetConstraints(m_constraints->constraints());
-    m_forceField = OpenBabel::OBForceField::FindForceField( "UFF" );
-    m_forceField->SetConstraints(m_constraints->constraints());
-    m_forceField = copyForceField;
     this->update();
   }
   
@@ -381,15 +360,7 @@ namespace Avogadro {
 	break;
     }
   
-    // copy constraints to all force fields
-    OpenBabel::OBForceField *copyForceField = m_forceField;
-    m_forceField = OpenBabel::OBForceField::FindForceField( "Ghemical" );
     m_forceField->SetConstraints(m_constraints->constraints());
-    m_forceField = OpenBabel::OBForceField::FindForceField( "MMFF94" );
-    m_forceField->SetConstraints(m_constraints->constraints());
-    m_forceField = OpenBabel::OBForceField::FindForceField( "UFF" );
-    m_forceField->SetConstraints(m_constraints->constraints());
-    m_forceField = copyForceField;
   }
 
 

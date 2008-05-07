@@ -46,7 +46,6 @@ namespace Avogadro
       void showEvent(QShowEvent *event);
       void setModel(ConstraintsModel *model);
       void setMolecule(Molecule *molecule);
-      void setForceField(OpenBabel::OBForceField *forcefield);
 
     public slots:
       void acceptConstraints();

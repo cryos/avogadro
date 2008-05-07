@@ -56,9 +56,6 @@ namespace Avogadro {
     m_algorithm = 0; // steepest descent
     ui.AlgorithmComboBox->setCurrentIndex(m_algorithm);
 
-    m_gradients = 1; // analytical
-    ui.GradientsComboBox->setCurrentIndex(m_gradients);
-
     m_convergence = 7;
     ui.ConvergenceSpinBox->setValue(m_convergence);
   }
@@ -74,12 +71,10 @@ namespace Avogadro {
     qDebug() << "Force Field: " << ui.ForceFieldComboBox->currentIndex();
     qDebug() << "Nymber of steps: " << ui.StepsSpinBox->value();
     qDebug() << "Algorithm: " << ui.AlgorithmComboBox->currentIndex();
-    qDebug() << "Gradients: " << ui.GradientsComboBox->currentIndex();
 
     m_forceFieldID = ui.ForceFieldComboBox->currentIndex();
     m_nSteps = ui.StepsSpinBox->value();
     m_algorithm = ui.AlgorithmComboBox->currentIndex();
-    m_gradients = ui.GradientsComboBox->currentIndex();
     m_convergence = ui.ConvergenceSpinBox->value();
 
     hide();
@@ -92,7 +87,6 @@ namespace Avogadro {
     ui.ForceFieldComboBox->setCurrentIndex(m_forceFieldID);
     ui.StepsSpinBox->setValue(m_nSteps);
     ui.AlgorithmComboBox->setCurrentIndex(m_algorithm);
-    ui.GradientsComboBox->setCurrentIndex(m_gradients);
     ui.ConvergenceSpinBox->setValue(m_convergence);
   }
 
@@ -109,11 +103,6 @@ namespace Avogadro {
   int ForceFieldDialog::algorithm()
   {
     return m_algorithm;
-  }
-
-  int ForceFieldDialog::gradients()
-  {
-    return m_gradients;
   }
 
   int ForceFieldDialog::convergence()

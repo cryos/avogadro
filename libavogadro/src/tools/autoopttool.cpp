@@ -141,24 +141,14 @@ namespace Avogadro {
     m_clickedAtom = widget->computeClickedAtom(event->pos());
     if(m_clickedAtom != 0 && m_leftButtonPressed && m_running)
     {
-      for (int i = 0; i < m_forceField->GetConstraints().Size(); ++i) 
+      if (m_forceField->GetConstraints().IsIgnored(m_clickedAtom->GetIdx()) && !m_ignoredMovable->isChecked() )
+        m_clickedAtom = 0;
+      else if (m_forceField->GetConstraints().IsFixed(m_clickedAtom->GetIdx()) && !m_fixedMovable->isChecked() )
+        m_clickedAtom = 0;
+
+      if (m_clickedAtom)
       {
-        if ((m_forceField->GetConstraints()).GetConstraintAtomA(i) == (int)m_clickedAtom->GetIdx())
-        {
-	   int type = m_forceField->GetConstraints().GetConstraintType(i);
-	   if ( (type == 1) && !m_ignoredMovable->isChecked() )
-	     m_clickedAtom = NULL;
-	   else if ( (type == 2) && !m_fixedMovable->isChecked() )
-	     m_clickedAtom = NULL;
-	}
-        
-	if (!m_clickedAtom)
-	  break;
-      }
-	  
-      if(m_clickedAtom)
-      {
-        m_forceField->GetConstraints().AddAtomConstraint(m_clickedAtom->GetIdx());
+        //m_forceField->GetConstraints().AddAtomConstraint(m_clickedAtom->GetIdx());
         m_numConstraints = m_forceField->GetConstraints().Size();
       }
     }
@@ -173,9 +163,9 @@ namespace Avogadro {
     m_leftButtonPressed = false;
     m_midButtonPressed = false;
     m_rightButtonPressed = false;
-    if (m_clickedAtom != 0)
+    if (m_clickedAtom != 0 && m_numConstraints > 0)
     {
-      m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
+      //m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
     }
 
     m_clickedAtom = 0;
@@ -346,15 +336,24 @@ namespace Avogadro {
       m_comboAlgorithm->addItem(tr("Molecular Dynamics (600K)"));
       m_comboAlgorithm->addItem(tr("Molecular Dynamics (900K)"));
       
-      QLabel* labelConv = new QLabel(tr("Convergence:"));
-      labelConv->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-      labelConv->setMaximumHeight(15);
+      //QLabel* labelConv = new QLabel(tr("Convergence:"));
+      //labelConv->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      //labelConv->setMaximumHeight(15);
 
-      m_convergenceSpinBox = new QSpinBox(m_settingsWidget);
-      m_convergenceSpinBox->setMinimum(2);
-      m_convergenceSpinBox->setMaximum(10);
-      m_convergenceSpinBox->setValue(4);
-      m_convergenceSpinBox->setPrefix(tr("10e-"));
+      //m_convergenceSpinBox = new QSpinBox(m_settingsWidget);
+      //m_convergenceSpinBox->setMinimum(2);
+      //m_convergenceSpinBox->setMaximum(10);
+      //m_convergenceSpinBox->setValue(4);
+      //m_convergenceSpinBox->setPrefix(tr("10e-"));
+
+      QLabel* labelSteps = new QLabel(tr("Steps per update:"));
+      labelSteps->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      labelSteps->setMaximumHeight(15);
+
+      m_stepsSpinBox = new QSpinBox(m_settingsWidget);
+      m_stepsSpinBox->setMinimum(1);
+      m_stepsSpinBox->setMaximum(100);
+      m_stepsSpinBox->setValue(4);
 
       m_buttonStartStop = new QPushButton(tr("Start"), m_settingsWidget);
 
@@ -366,8 +365,10 @@ namespace Avogadro {
       layout->addWidget(m_comboFF);
       layout->addWidget(labelAlg);
       layout->addWidget(m_comboAlgorithm);
-      layout->addWidget(labelConv);
-      layout->addWidget(m_convergenceSpinBox);
+      //layout->addWidget(labelConv);
+      //layout->addWidget(m_convergenceSpinBox);
+      layout->addWidget(labelSteps);
+      layout->addWidget(m_stepsSpinBox);
       layout->addWidget(m_buttonStartStop);
       layout->addWidget(m_fixedMovable);
       layout->addWidget(m_ignoredMovable);
@@ -416,12 +417,9 @@ namespace Avogadro {
       {
         m_timerId = startTimer(50);
       }
-      int gradients = OBFF_NUMERICAL_GRADIENT;
-      if (m_forceField->HasAnalyticalGradients())
-        gradients = OBFF_ANALYTICAL_GRADIENT;
       m_thread->setup(m_glwidget->molecule(), m_forceField, 
-                      m_comboAlgorithm->currentIndex(), gradients,
-                      m_convergenceSpinBox->value());
+                      m_comboAlgorithm->currentIndex(),
+                      /* m_convergenceSpinBox->value(),*/ m_stepsSpinBox->value());
       m_thread->start();
       m_running = true;
       m_buttonStartStop->setText(tr("Stop"));
@@ -454,9 +452,9 @@ namespace Avogadro {
 
       m_glwidget->update(); // redraw AutoOpt label
       
-      if (m_clickedAtom != 0)
+      if (m_clickedAtom != 0 && m_numConstraints > 0)
       {
-        m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
+        //m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
       }
       m_clickedAtom = 0;
       m_leftButtonPressed = false;
@@ -477,19 +475,16 @@ namespace Avogadro {
     }
 
     m_forceField = OBForceField::FindForceField(m_forceFieldList[m_comboFF->currentIndex()]);
+
     // Check that we can find our force field - if not return
     if (!m_forceField)
     {
       emit setupFailed();
       return;
     }
-    int gradients = OBFF_NUMERICAL_GRADIENT;
-    if (m_forceField->HasAnalyticalGradients())
-      gradients = OBFF_ANALYTICAL_GRADIENT;
-
     m_thread->setup(m_glwidget->molecule(), m_forceField, 
-                    m_comboAlgorithm->currentIndex(), gradients,
-                    m_convergenceSpinBox->value());
+                    m_comboAlgorithm->currentIndex(),
+                    /* m_convergenceSpinBox->value(), */ m_stepsSpinBox->value());
     m_thread->update();
   }
 
@@ -528,13 +523,13 @@ namespace Avogadro {
   }
   
   void AutoOptThread::setup(Molecule *molecule, OpenBabel::OBForceField* forceField, 
-        int algorithm, int gradients, int convergence)
+        int algorithm, /*int convergence,*/ int steps)
   {
     m_molecule = molecule;
     m_forceField = forceField;
     m_algorithm = algorithm;
-    m_gradients = gradients;
-    m_convergence = convergence;
+    //m_convergence = pow(10.0, -convergence);
+    m_steps = steps;
     m_stop = false;
     m_velocities = false;
   }
@@ -543,7 +538,6 @@ namespace Avogadro {
   void AutoOptThread::run()
   {
     update();
-
     exec();
   }
 
@@ -567,26 +561,22 @@ namespace Avogadro {
     }
     m_forceField->SetConformers( *m_molecule );
 
-    if(m_algorithm == 0) {
-      m_forceField->SteepestDescent(25,pow(10.0, -m_convergence ), m_gradients);
-    }
-    else if(m_algorithm == 1) {
-      m_forceField->MolecularDynamicsTakeNSteps(25, 300, 0.001, m_gradients);
-    }
-    else if(m_algorithm == 2) {
-      m_forceField->MolecularDynamicsTakeNSteps(25, 600, 0.001, m_gradients);
-    }
-    else if(m_algorithm == 3)
-    {
-      m_forceField->MolecularDynamicsTakeNSteps(25, 900, 0.001, m_gradients);
+    switch(m_algorithm) {
+      case 0:
+        m_forceField->SteepestDescent(m_steps/*, m_convergence*/);
+        break;
+      case 1:
+        m_forceField->MolecularDynamicsTakeNSteps(m_steps, 300, 0.001);
+        break;
+      case 2:
+        m_forceField->MolecularDynamicsTakeNSteps(m_steps, 600, 0.001);
+        break;
+      case 3:
+        m_forceField->MolecularDynamicsTakeNSteps(25, 900, 0.001);
+        break;
     }
 
-    if(m_stop) {
-      emit finished(false);
-    }
-    else {
-      emit finished(true);
-    }
+    emit finished(m_stop ? false : true);
   }
 
   void AutoOptThread::stop()
@@ -603,22 +593,9 @@ namespace Avogadro {
     m_tool = tool;
   }
 
-  //
-  // What is all the molecule copying about? The undo commands seems to work
-  // fine with without it. I changed it because otherwise the molecule would 
-  // be destroyed, primitiveRemoved would be called and the constraints model
-  // would delete all constraints :(
-  //
-  
   void AutoOptCommand::redo()
   {
     m_moleculeCopy = *m_molecule;
-    /*
-    Molecule newMolecule = *m_molecule;
-    *m_molecule = m_moleculeCopy;
-    m_moleculeCopy = newMolecule;
-    QUndoCommand::redo();
-    */
   }
 
   void AutoOptCommand::undo()
@@ -627,9 +604,7 @@ namespace Avogadro {
     {
       m_tool->disable();
     }
-    //Molecule newMolecule = *m_molecule;
     *m_molecule = m_moleculeCopy;
-    //m_moleculeCopy = newMolecule;
   }
 
   bool AutoOptCommand::mergeWith (const QUndoCommand *)
@@ -648,7 +623,8 @@ namespace Avogadro {
     Tool::writeSettings(settings);
     settings.setValue("forceField", m_comboFF->currentIndex());
     settings.setValue("algorithm", m_comboAlgorithm->currentIndex());
-    settings.setValue("convergence", m_convergenceSpinBox->value());
+    //settings.setValue("convergence", m_convergenceSpinBox->value());
+    settings.setValue("steps", m_stepsSpinBox->value());
     settings.setValue("fixedMovable", m_fixedMovable->checkState());
     settings.setValue("ignoredMovable", m_ignoredMovable->checkState());
   }
@@ -662,8 +638,11 @@ namespace Avogadro {
     if(m_comboAlgorithm) {
       m_comboAlgorithm->setCurrentIndex(settings.value("algorithm", 0).toInt());
     }
-    if(m_convergenceSpinBox) {
-      m_convergenceSpinBox->setValue(settings.value("convergence", 4).toInt());
+    //if(m_convergenceSpinBox) {
+    //  m_convergenceSpinBox->setValue(settings.value("convergence", 4).toInt());
+    //}
+    if(m_stepsSpinBox) {
+      m_stepsSpinBox->setValue(settings.value("steps", 4).toInt());
     }
     if(m_fixedMovable) {
       m_fixedMovable->setCheckState((Qt::CheckState)settings.value("fixedMovable", 2).toInt());

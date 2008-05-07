@@ -95,10 +95,10 @@ namespace Avogadro
       m_actions.append( action );
 
       // Disable the constraints menu for now...
-      /*      action = new QAction( this );
+      action = new QAction( this );
       action->setText( tr("Constraints..." ));
       action->setData(ConstraintsIndex);
-      m_actions.append( action ); */
+      m_actions.append( action ); 
 
       action = new QAction( this );
       action->setText( tr("Ignore Selection" ));
@@ -146,12 +146,7 @@ namespace Avogadro
     QList<Primitive*> selectedAtoms;
     ostringstream buff;
 
-    OpenBabel::OBFFConstraints constraints = m_forceField->GetConstraints(); // load constraints
-
     m_forceField = OBForceField::FindForceField(m_forcefieldList[m_Dialog->forceFieldID()]);
-
-    m_forceField->SetConstraints(constraints); // save constraints
-    m_ConstraintsDialog->setForceField(m_forceField);
 
     int i = action->data().toInt();
     switch ( i ) {
@@ -185,7 +180,7 @@ namespace Avogadro
       }
 
       m_conformerDialog->setup(m_molecule, m_forceField, m_constraints, 
-                               0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(), m_Dialog->convergence());
+                               0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->convergence());
       m_conformerDialog->show();
       break;
     case OptimizeGeometryIndex: // geometry optimization
@@ -199,7 +194,7 @@ namespace Avogadro
       }
       
       undo = new ForceFieldCommand( m_molecule, m_forceField, m_constraints, 
-                                    0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->gradients(),
+                                    0, m_Dialog->nSteps(), m_Dialog->algorithm(), 
                                     m_Dialog->convergence(), 0 );
 
       connect(undo, SIGNAL(message(QString)), this, SIGNAL(message(QString)));
@@ -208,7 +203,6 @@ namespace Avogadro
       break;
     case ConstraintsIndex: // show constraints dialog
       m_ConstraintsDialog->setMolecule(m_molecule);
-      m_ConstraintsDialog->setForceField(m_forceField);
       m_ConstraintsDialog->show();
       break;
     case IgnoreAtomsIndex: // ignore the selected atoms
@@ -220,15 +214,7 @@ namespace Avogadro
         m_constraints->addIgnore(atom->GetIdx());
       }
 
-      // copy constraints to all force fields
-      copyForceField = m_forceField;
-      m_forceField = OBForceField::FindForceField( "Ghemical" );
       m_forceField->SetConstraints(m_constraints->constraints());
-      m_forceField = OBForceField::FindForceField( "MMFF94" );
-      m_forceField->SetConstraints(m_constraints->constraints());
-      m_forceField = OBForceField::FindForceField( "UFF" );
-      m_forceField->SetConstraints(m_constraints->constraints());
-      m_forceField = copyForceField;
 
       break;
 
@@ -241,15 +227,7 @@ namespace Avogadro
         m_constraints->addAtomConstraint(atom->GetIdx());
       }
 
-      // copy constraints to all force fields
-      copyForceField = m_forceField;
-      m_forceField = OBForceField::FindForceField( "Ghemical" );
       m_forceField->SetConstraints(m_constraints->constraints());
-      m_forceField = OBForceField::FindForceField( "MMFF94" );
-      m_forceField->SetConstraints(m_constraints->constraints());
-      m_forceField = OBForceField::FindForceField( "UFF" );
-      m_forceField->SetConstraints(m_constraints->constraints());
-      m_forceField = copyForceField;
 
       break;
     }
@@ -259,7 +237,7 @@ namespace Avogadro
 
   ForceFieldThread::ForceFieldThread( Molecule *molecule, OpenBabel::OBForceField* forceField,
                                       ConstraintsModel* constraints, int forceFieldID,
-                                      int nSteps, int algorithm, int gradients, int convergence, int task,
+                                      int nSteps, int algorithm, int convergence, int task,
                                       QObject *parent ) : QThread( parent )
   {
     m_cycles = 0;
@@ -269,7 +247,6 @@ namespace Avogadro
     m_forceFieldID = forceFieldID;
     m_nSteps = nSteps;
     m_algorithm = algorithm;
-    m_gradients = gradients;
     m_convergence = convergence;
     m_task = task;
     m_stop = false;
@@ -310,11 +287,7 @@ namespace Avogadro
 
     if ( m_task == 0 ) {
       if ( m_algorithm == 0 ) {
-        if ( m_gradients == 0 ) {
-          m_forceField->SteepestDescentInitialize( m_nSteps, pow( 10.0, -m_convergence ), OBFF_NUMERICAL_GRADIENT ); // initialize sd
-        } else {
-          m_forceField->SteepestDescentInitialize( m_nSteps, pow( 10.0, -m_convergence ), OBFF_ANALYTICAL_GRADIENT ); // initialize sd
-        }
+        m_forceField->SteepestDescentInitialize( m_nSteps, pow( 10.0, -m_convergence )); // initialize sd
 
         while ( m_forceField->SteepestDescentTakeNSteps( 5 ) ) { // take 5 steps until convergence or m_nSteps taken
           m_forceField->UpdateCoordinates( *m_molecule );
@@ -330,11 +303,7 @@ namespace Avogadro
           emit stepsTaken( steps );
         }
       } else if ( m_algorithm == 1 ) {
-        if ( m_gradients == 0 ) {
-          m_forceField->ConjugateGradientsInitialize( m_nSteps, pow( 10.0, -m_convergence ), OBFF_NUMERICAL_GRADIENT ); // initialize cg
-        } else {
-          m_forceField->ConjugateGradientsInitialize( m_nSteps, pow( 10.0, -m_convergence ), OBFF_ANALYTICAL_GRADIENT ); // initialize cg
-        }
+        m_forceField->ConjugateGradientsInitialize( m_nSteps, pow( 10.0, -m_convergence )); // initialize cg
 
         while ( m_forceField->ConjugateGradientsTakeNSteps( 5 ) ) { // take 5 steps until convergence or m_nSteps taken
           m_forceField->UpdateCoordinates( *m_molecule );
@@ -399,7 +368,7 @@ namespace Avogadro
 
   ForceFieldCommand::ForceFieldCommand( Molecule *molecule, OpenBabel::OBForceField* forceField,
                                         ConstraintsModel* constraints, 
-                                        int forceFieldID, int nSteps, int algorithm, int gradients,
+                                        int forceFieldID, int nSteps, int algorithm, 
                                         int convergence, int task ) :
     m_nSteps( nSteps ),
     m_task( task ),
@@ -411,7 +380,7 @@ namespace Avogadro
   {
     m_thread = new ForceFieldThread( molecule, forceField, constraints,
                                      forceFieldID, nSteps, algorithm,
-                                     gradients, convergence, task );
+                                     convergence, task );
 
     connect(m_thread, SIGNAL(message(QString)), this, SIGNAL(message(QString)));
 

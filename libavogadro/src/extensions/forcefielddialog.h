@@ -43,7 +43,6 @@ namespace Avogadro
       int forceFieldID();
       int nSteps();
       int algorithm();
-      int gradients();
       int convergence();
 
     public slots:
@@ -56,7 +55,6 @@ namespace Avogadro
       int m_forceFieldID;
       int m_nSteps;
       int m_algorithm;
-      int m_gradients;
       int m_convergence;
   };
 }

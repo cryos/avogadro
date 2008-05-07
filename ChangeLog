@@ -1,3 +1,18 @@
+2008-05-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/extensions/forcefielddialog.*: Removed gradients
+	option. Now handled OBForceField::HasAnalyticalGradients()
+
+	* libavogadro/src/extensions/conformersearchdialog.*: Same.
+	
+	* libavogadro/src/extensions/forcefieldextension.*: Same.
+
+	* libavogadro/src/extensions/constraintsdialog.*: Update for static
+	constraints. We now only need to set it once.
+
+	* libavogadro/src/tools/autoopttool.*: Replaced convergence spin box
+	by steps per update spin box.
+
 2008-05-05  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/orbitalextension.*: Set the navigate tool

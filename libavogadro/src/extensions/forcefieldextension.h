@@ -101,7 +101,7 @@ namespace Avogadro {
 
     public:
     ForceFieldThread(Molecule *molecule, OpenBabel::OBForceField* forceField,
-        ConstraintsModel* constraints, int forceFieldID, int nSteps, int algorithm, int gradients,
+        ConstraintsModel* constraints, int forceFieldID, int nSteps, int algorithm,
 	int convergence, int task, QObject *parent=0);
 
       void run();
@@ -126,7 +126,6 @@ namespace Avogadro {
       int m_forceFieldID;
       int m_nSteps;
       int m_algorithm;
-      int m_gradients;
       int m_convergence;
       int m_task;
       int m_numConformers;
@@ -146,7 +145,7 @@ namespace Avogadro {
    public:
      ForceFieldCommand(Molecule *molecule, OpenBabel::OBForceField *forcefield,
          ConstraintsModel* constraints, int forceFieldID,
-	 int nSteps, int algorithm, int gradients, int convergence, int task);
+	 int nSteps, int algorithm, int convergence, int task);
 
      ~ForceFieldCommand();
 

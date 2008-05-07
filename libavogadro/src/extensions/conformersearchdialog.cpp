@@ -134,12 +134,12 @@ namespace Avogadro {
   
    QUndoCommand* ConformerSearchDialog::setup(Molecule *molecule, OpenBabel::OBForceField* forceField, 
       ConstraintsModel* constraints, int forceFieldID, 
-      int nSteps, int algorithm, int gradients, int convergence)
+      int nSteps, int algorithm, int convergence)
   {
     m_molecule = molecule;
     
     m_forceFieldCommand = new ForceFieldCommand( m_molecule, forceField, constraints, 
-        forceFieldID, nSteps, algorithm, gradients, convergence, 0 );
+        forceFieldID, nSteps, algorithm, convergence, 0 );
 
     return NULL;
   }
