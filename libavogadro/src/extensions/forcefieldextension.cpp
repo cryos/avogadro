@@ -150,6 +150,8 @@ namespace Avogadro
     m_forceField->SetLogFile( &buff );
 
     int i = action->data().toInt();
+    double energy = 0.0;
+    QString msg;
     switch ( i ) {
     case SetupForceFieldIndex: // setup force field
       m_Dialog->show();
@@ -166,7 +168,11 @@ namespace Avogadro
         break;
       }
 
-      m_forceField->Energy();
+      energy = m_forceField->Energy();
+      msg = QString( tr( "Energy = %1 %2" ))
+                     .arg(energy).arg(m_forceField->GetUnit().c_str());
+      QMessageBox::information( widget, tr( "Avogadro" ), msg);
+
       emit message( tr( buff.str().c_str() ) );
       break;
     case ConformerSearchIndex: // conformer search

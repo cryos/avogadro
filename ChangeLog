@@ -1,4 +1,10 @@
 2008-05-08  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+	
+	* libavogadro/src/extensions/forcefieldextension.cpp: Added a
+	QMessageBox::information() box to display the energy when the user
+	clicks "Calculate Energy". (#1947745)
+
+2008-05-08  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/extensions/forcefieldextension.cpp: Move call to
 	SetLogFile (fixes #1960307)
