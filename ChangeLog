@@ -1,3 +1,8 @@
+2008-05-08  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/extensions/forcefieldextension.cpp: Move call to
+	SetLogFile (fixes #1960307)
+
 2008-05-07  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* * CMakeLists.txt, libavogadro/src/CMakeLists.txt,

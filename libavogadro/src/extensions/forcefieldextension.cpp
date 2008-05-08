@@ -147,6 +147,7 @@ namespace Avogadro
     ostringstream buff;
 
     m_forceField = OBForceField::FindForceField(m_forcefieldList[m_Dialog->forceFieldID()]);
+    m_forceField->SetLogFile( &buff );
 
     int i = action->data().toInt();
     switch ( i ) {
@@ -157,7 +158,6 @@ namespace Avogadro
       if ( !m_forceField )
         break;
 
-      m_forceField->SetLogFile( &buff );
       m_forceField->SetLogLevel( OBFF_LOGLVL_HIGH );
 
       if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
@@ -173,6 +173,8 @@ namespace Avogadro
       if (!m_forceField)
         break;
 
+      m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
+
       if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
         QMessageBox::warning( widget, tr( "Avogadro" ),
           tr( "Cannot set up the force field for this molecule." ));
@@ -186,6 +188,8 @@ namespace Avogadro
     case OptimizeGeometryIndex: // geometry optimization
       if (!m_forceField)
         break;
+
+      m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
 
       if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
         QMessageBox::warning( widget, tr( "Avogadro" ),
