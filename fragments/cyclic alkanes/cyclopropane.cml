@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema" id="cyclopropane.out">
+ <atomArray>
+  <atom id="a1" elementType="C" x3="-1.022900" y3="0.461200" z3="0.064100"/>
+  <atom id="a2" elementType="C" x3="0.028100" y3="1.540900" z3="-0.103300"/>
+  <atom id="a3" elementType="C" x3="0.433500" y3="0.079600" z3="-0.112200"/>
+  <atom id="a4" elementType="H" x3="0.064800" y3="2.114500" z3="-1.026500"/>
+  <atom id="a5" elementType="H" x3="0.293100" y3="2.166900" z3="0.745700"/>
+  <atom id="a6" elementType="H" x3="0.755500" y3="-0.382700" z3="-1.042200"/>
+  <atom id="a7" elementType="H" x3="0.984100" y3="-0.330400" z3="0.730400"/>
+  <atom id="a8" elementType="H" x3="-1.498400" y3="0.321400" z3="1.031900"/>
+  <atom id="a9" elementType="H" x3="-1.727100" y3="0.269100" z3="-0.742500"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2=" a6  a3" order=" 1"/>
+  <bond atomRefs2=" a4  a2" order=" 1"/>
+  <bond atomRefs2=" a9  a1" order=" 1"/>
+  <bond atomRefs2=" a3  a2" order=" 1"/>
+  <bond atomRefs2=" a3  a1" order=" 1"/>
+  <bond atomRefs2=" a3  a7" order=" 1"/>
+  <bond atomRefs2=" a2  a1" order=" 1"/>
+  <bond atomRefs2=" a2  a5" order=" 1"/>
+  <bond atomRefs2=" a1  a8" order=" 1"/>
+ </bondArray>
+</molecule>

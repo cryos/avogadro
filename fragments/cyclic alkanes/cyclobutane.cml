@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema" id="cyclobutane.out">
+ <atomArray>
+  <atom id="a1" elementType="C" x3="-0.935100" y3="-0.035500" z3="0.096700"/>
+  <atom id="a2" elementType="C" x3="-0.868800" y3="1.507200" z3="-0.005400"/>
+  <atom id="a3" elementType="C" x3="0.676600" y3="1.437800" z3="-0.052600"/>
+  <atom id="a4" elementType="H" x3="-1.332900" y3="1.923900" z3="-0.905000"/>
+  <atom id="a5" elementType="H" x3="-1.273300" y3="2.039800" z3="0.861200"/>
+  <atom id="a6" elementType="C" x3="0.610100" y3="-0.105200" z3="0.049000"/>
+  <atom id="a7" elementType="H" x3="1.120100" y3="1.815400" z3="-0.979100"/>
+  <atom id="a8" elementType="H" x3="1.180000" y3="1.927800" z3="0.786800"/>
+  <atom id="a9" elementType="H" x3="1.015500" y3="-0.636200" z3="-0.818500"/>
+  <atom id="a10" elementType="H" x3="1.073900" y3="-0.524100" z3="0.948000"/>
+  <atom id="a11" elementType="H" x3="-1.379400" y3="-0.411800" z3="1.024100"/>
+  <atom id="a12" elementType="H" x3="-1.438000" y3="-0.526500" z3="-0.742900"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2=" a7  a3" order=" 1"/>
+  <bond atomRefs2=" a4  a2" order=" 1"/>
+  <bond atomRefs2=" a9  a6" order=" 1"/>
+  <bond atomRefs2=" a12  a1" order=" 1"/>
+  <bond atomRefs2=" a3  a2" order=" 1"/>
+  <bond atomRefs2=" a3  a6" order=" 1"/>
+  <bond atomRefs2=" a3  a8" order=" 1"/>
+  <bond atomRefs2=" a2  a1" order=" 1"/>
+  <bond atomRefs2=" a2  a5" order=" 1"/>
+  <bond atomRefs2=" a6  a1" order=" 1"/>
+  <bond atomRefs2=" a6  a10" order=" 1"/>
+  <bond atomRefs2=" a1  a11" order=" 1"/>
+ </bondArray>
+</molecule>
