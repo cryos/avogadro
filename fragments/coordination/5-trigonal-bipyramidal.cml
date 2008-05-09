@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema" id="id5-pcl5.out">
+ <name>5-pcl5.out</name>
+ <atomArray>
+  <atom id="a1" elementType="P" x3="-0.432000" y3="-0.040900" z3="0.000000"/>
+  <atom id="a2" elementType="Cl" x3="-0.432000" y3="1.969300" z3="-0.000000"/>
+  <atom id="a3" elementType="Cl" x3="1.319100" y3="-1.032000" z3="0.000000"/>
+  <atom id="a4" elementType="Cl" x3="-2.183100" y3="-1.031900" z3="0.000000"/>
+  <atom id="a5" elementType="Cl" x3="-0.432000" y3="-0.051800" z3="2.119300"/>
+  <atom id="a6" elementType="Cl" x3="-0.432000" y3="-0.051800" z3="-2.119300"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2=" a6  a1" order=" 1"/>
+  <bond atomRefs2=" a1  a2" order=" 1"/>
+  <bond atomRefs2=" a1  a3" order=" 1"/>
+  <bond atomRefs2=" a1  a4" order=" 1"/>
+  <bond atomRefs2=" a1  a5" order=" 1"/>
+ </bondArray>
+</molecule>
