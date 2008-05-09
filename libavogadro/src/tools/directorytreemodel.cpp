@@ -219,6 +219,7 @@ namespace Avogadro {
           
         do {
           dirIterator.next();
+          position = directoryDepth(dirIterator.filePath()) - absoluteDepth;
 
           // First handle the case where we just moved up some directory levels
           if (position < indentations.last()) {
@@ -252,7 +253,6 @@ namespace Avogadro {
           // OK, this is a file, and we've set the correct path structure
           // Add the filename as the first column
           QList<QVariant> columnData;
-          position = directoryDepth(dirIterator.filePath()) - absoluteDepth;
           columnData << dirIterator.fileName();
                         
           // Append a new item to the current parent's list of children.
