@@ -621,7 +621,7 @@ namespace Avogadro
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
 
     Molecule *molecule = new Molecule;
-    if ( conv.Read( molecule, &ifs ) && molecule->NumAtoms() != 0 ) {
+    if ( conv.Read( molecule, &ifs ) ) {
       if (molecule->GetDimension() != 3) {
         QMessageBox::warning( this, tr( "Avogadro" ),
             tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));
@@ -630,7 +630,9 @@ namespace Avogadro
       setMolecule( molecule );
 
       // do we have a multi-molecule file?
-      if (ifs.peek() != EOF && ifs.good()) {
+      // Changed this -- we have problems knowing if we're at the end of a gzipped file
+      if (!fileName.endsWith(".gz", Qt::CaseInsensitive) &&
+        ifs.peek() != EOF && ifs.good()) {
         QMessageBox::warning( this, tr( "Avogadro" ),
             tr( "This file appears to contain multiple molecule records."
               " Avogadro will only read the first molecule."
