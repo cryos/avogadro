@@ -1,3 +1,15 @@
+2008-05-09  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* CMakeLists.txt: Install our fragments. Destination may need
+	tuning on Linux and Windows.
+
+	* libavogadro/src/tools/insertfragmentdialog.cpp: Update to
+	include default fragment paths as much as possible. This will need
+	tuning on Linux and Windows. Does Cmake set a -D define for an
+	installation path, e.g. /usr vs /usr/local?
+
+	* libavogadro/src/tools/directorytreemodel.cpp: Ignore hidden files.
+
 2008-05-08  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 	
 	* libavogadro/src/extensions/forcefieldextension.cpp: Added a

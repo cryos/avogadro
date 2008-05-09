@@ -105,3 +105,18 @@ ADD_CUSTOM_TARGET(update-translations
 add_subdirectory(libavogadro)
 add_subdirectory(avogadro)
 add_subdirectory(doc)
+
+# Linux Default: /usr/local/share/avogadro/fragments
+set(avogadro_FRAGMENTS share/avogadro)
+if(WIN32)
+   set(avogadro_FRAGMENTS "C:\Program Files\Avogadro")
+endif(WIN32)
+if(APPLE)
+   set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")   
+endif(APPLE)
+
+# When installing, make sure to install some fragments
+INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
+               DESTINATION ${avogadro_FRAGMENTS}
+               PATTERN ".svn" EXCLUDE )
+

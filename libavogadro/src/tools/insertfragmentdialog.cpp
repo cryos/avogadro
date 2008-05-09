@@ -62,6 +62,25 @@ namespace Avogadro {
 
   };
 
+  QStringList DefaultDirectoryList()
+  {
+    QStringList _directoryList;
+    // This needs to be set based on the Cmake install prefix. Help here is welcome.
+#ifdef Q_WS_X11
+    _directoryList << "/usr/shared/avogadro/fragments";
+    _directoryList << "/usr/local/shared/avogadro/fragments";
+#endif
+#ifdef Q_WS_WIN
+    _directoryList << "C:\Program Files\Avogadro\fragments";
+#endif
+#ifdef Q_WS_MAC
+    _directoryList << "/Library/Application Support/Avogadro/Fragments";
+    _directoryList << QDir::homePath() + "/Library/Application Support/Avogadro/Fragments";
+#endif
+    
+    return _directoryList;
+  }
+
   InsertFragmentDialog::InsertFragmentDialog(QWidget *parent, Qt::WindowFlags) : QDialog(parent)
   {
     // Use a small title bar (Qt::Tool) with no minimize or maximize buttons
@@ -70,12 +89,8 @@ namespace Avogadro {
 
     d = new InsertFragmentPrivate;
 
-    QString dir;
-#ifdef Q_WS_MAC
-    dir = QDir::homePath() + "/Library/Application Support/Avogadro/";
-#endif
-    if (!dir.isEmpty())
-      _directoryList << dir;
+    // There has to be a better way to set this based on the installation prefix
+    _directoryList = DefaultDirectoryList();
     d->model = new DirectoryTreeModel(_directoryList, this);
 
     ui.setupUi(this);
@@ -165,7 +180,8 @@ namespace Avogadro {
   
   void InsertFragmentDialog::setDirectoryList(const QStringList dirList)
   {
-    _directoryList = dirList;
+    if (dirList.size() != 0)
+      _directoryList = dirList;
     refresh();
   }
 
@@ -218,6 +234,7 @@ namespace Avogadro {
   void InsertFragmentDialog::clearDirectoryList(bool)
   {
     _directoryList.clear();
+    _directoryList = DefaultDirectoryList();
     refresh();
   }
 

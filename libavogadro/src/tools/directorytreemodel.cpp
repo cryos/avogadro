@@ -211,14 +211,15 @@ namespace Avogadro {
         parent->appendChild(new FileTreeItem(topLevel, parent));
         parents << parents.last()->child(parents.last()->childCount()-1);
         indentations << 0;
-          
+        
         QDirIterator dirIterator(currentDir.absolutePath(),
-                             QDir::Dirs | QDir::Files | QDir::Readable | QDir::NoSymLinks | QDir::NoDotAndDotDot,
+                             QDir::Dirs | QDir::Files | QDir::Readable 
+                                 | QDir::NoSymLinks | QDir::NoDotAndDotDot,
                              QDirIterator::Subdirectories);
           
         do {
           dirIterator.next();
-                     
+
           // First handle the case where we just moved up some directory levels
           if (position < indentations.last()) {
             while (position < indentations.last() && parents.count() > 0) {
@@ -226,8 +227,8 @@ namespace Avogadro {
               indentations.pop_back();
             }
           }           
-           
-          // If this is a real directory (and not a Mac OS X "bundle") add it as a new subdirectory
+
+          // If this is a real directory, add it as a new subdirectory
           if (dirIterator.fileInfo().isDir() && !dirIterator.fileInfo().isBundle()) {
             
             // insert a new nested directory
@@ -240,6 +241,13 @@ namespace Avogadro {
 
             continue;
           }
+
+          // check to see if its an excluded file
+          // (hidden or not readable or a Mac OS X bundle
+          if (dirIterator.fileInfo().isHidden() 
+              || !dirIterator.fileInfo().isReadable()
+              || dirIterator.fileInfo().isBundle())
+            continue;
           
           // OK, this is a file, and we've set the correct path structure
           // Add the filename as the first column
