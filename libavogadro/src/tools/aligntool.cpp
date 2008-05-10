@@ -241,20 +241,24 @@ namespace Avogadro {
       // Calculate the angle of the atom from the axis
       double angle = acos(axis.dot(pos));
 
-      // Get the axis for the rotation
-      axis = axis.cross(pos);
-      axis.normalize();
-
-      // Now to load up the rotation matrix and rotate the molecule
-      MatrixP3d atomRotation;
-      atomRotation.loadRotation3(-angle, axis);
-
-      // Now to rotate the fragment
-      foreach(Primitive *p, neighborList)
+      // If the angle is zero then we don't need to do anything here
+      if (angle > 0)
       {
-        Atom *a = static_cast<Atom *>(p);
-        a->setPos(atomRotation * a->pos());
-        a->update();
+        // Get the axis for the rotation
+        axis = axis.cross(pos);
+        axis.normalize();
+
+        // Now to load up the rotation matrix and rotate the molecule
+        MatrixP3d atomRotation;
+        atomRotation.loadRotation3(-angle, axis);
+
+        // Now to rotate the fragment
+        foreach(Primitive *p, neighborList)
+        {
+          Atom *a = static_cast<Atom *>(p);
+          a->setPos(atomRotation * a->pos());
+          a->update();
+        }
       }
     }
     m_numSelectedAtoms = 0;
