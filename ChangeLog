@@ -1,3 +1,7 @@
+2008-05-11  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glwidget.cpp: Fix uninitialised undoStack pointer.
+
 2008-05-10  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/aligntool.cpp: Fixed for case where the

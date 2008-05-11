@@ -190,6 +190,7 @@ namespace Avogadro {
                         toolGroup( 0 ),
                         selectBuf( 0 ),
                         selectBufSize( -1 ),
+                        undoStack(0),
 #ifdef ENABLE_THREADED_GL
                         thread( 0 ),
 #else
