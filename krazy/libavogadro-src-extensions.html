@@ -7,7 +7,7 @@
 <h1>krazy2 Analysis</h1>
 <p>Checkers Run = 24<br>
 Files Processed = 56<br>
-Total Issues = 41 ...as of Mai 12 2008 17:44:59</p>
+No Issues Found! ...as of Mai 12 2008 20:59:26</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -21,28 +21,7 @@ Total Issues = 41 ...as of Mai 12 2008 17:44:59</p>
 <li>Check for cpp macros and usage... 
 <b>okay!</b>
 <li>Check for single char QStrings better written as a QChar... 
-<b>OOPS! 7 issues found!</b>
-<ul>
-<li>	../libavogadro/src/extensions/dockingextension.cpp: line#124 (1)
-</li>
-<li>	../libavogadro/src/extensions/forcefieldextension.cpp: line#134 (1)
-</li>
-<li>	../libavogadro/src/extensions/gamessextension.cpp: line#91 (1)
-</li>
-<li>	../libavogadro/src/extensions/propextension.cpp: line#105 (1)
-</li>
-<li>	../libavogadro/src/extensions/templateextension.cpp: line#68,71 (2)
-</li>
-<li>	../libavogadro/src/extensions/wiitrackextension.cpp: line#84 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Adding single characters to a QString is faster if the characters
-	are QChars and not QStrings.  For example: QString path = oldpath +
-	&quot;/&quot; + base is better written as QString path = oldpath + &#39;/&#39; +
-	base. Same holds for arguments to QString::startsWith() and
-	QString::endsWith()</p>
-</li>
-
+<b>okay!</b>
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
 <li>Check public classes with private members or d-pointer issues... 
@@ -52,100 +31,13 @@ Total Issues = 41 ...as of Mai 12 2008 17:44:59</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../libavogadro/src/extensions/orbitaldialog.h: line#41 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
-	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
-	this to avoid mistaken implicit constructor ambiguities. Copy
-	constructors should not be explicit.</p>
-</li>
-
+<b>okay!</b>
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 33 issues found!</b>
-<ul>
-<li>	../libavogadro/src/extensions/constraintsmodel.cpp: do not include QtModules line#29(QtGui)
-</li>
-<li>	../libavogadro/src/extensions/dockingextension.cpp: do not include QtModules line#27(QtGui)
-</li>
-<li>	../libavogadro/src/extensions/forcefieldextension.cpp: do not include QtModules line#28(QtGui)
-</li>
-<li>	../libavogadro/src/extensions/gamessextension.cpp: do not include QtModules line#38(QtGui)
-</li>
-<li>	../libavogadro/src/extensions/h2methylextension.cpp: do not include QtModules line#30(QtGui)
-</li>
-<li>	../libavogadro/src/extensions/hydrogensextension.cpp: do not include QtModules line#30(QtGui)
-</li>
-<li>	../libavogadro/src/extensions/propextension.cpp: do not include QtModules line#27(QtGui)
-</li>
-<li>	../libavogadro/src/extensions/propmodel.cpp: do not include QtModules line#29(QtGui)
-</li>
-<li>	../libavogadro/src/extensions/selectextension.cpp: do not include QtModules line#30(QtGui)
-</li>
-<li>	../libavogadro/src/extensions/unitcellextension.cpp: do not include QtModules line#26(QtGui)
-</li>
-<li>	../libavogadro/src/extensions/wiitrackextension.cpp: do not include QtModules line#27(QtGui)
-</li>
-<li>	../libavogadro/src/extensions/basisset.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/conformersearchdialog.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/constraintsdialog.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/constraintsmodel.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/forcefielddialog.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/forcefieldextension.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/gamessextension.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/gamessinputdata.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/gaussianfchk.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/h2methylextension.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/hydrogensextension.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/liganddialog.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/orbitalextension.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/pocketdialog.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/propextension.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/propmodel.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/pythonextension.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/selectextension.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/templateextension.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/unitcellextension.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/unitcellparamdialog.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extensions/wiitrackextension.h: using leading or trailing underscores on include guard in header
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
-	Qt headers from installed headers; cpp file should include their
-	own headers first; other rules apply, see
-	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
-	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
-	cludes_right</a>. Use include guards in headers with appropriatedly
-	encoded macro names.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for assignments to QString::null... 

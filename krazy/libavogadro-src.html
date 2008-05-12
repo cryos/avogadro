@@ -7,7 +7,7 @@
 <h1>krazy2 Analysis</h1>
 <p>Checkers Run = 24<br>
 Files Processed = 56<br>
-Total Issues = 35 ...as of Mai 12 2008 17:40:26</p>
+Total Issues = 5 ...as of Mai 12 2008 20:54:49</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -31,83 +31,15 @@ Total Issues = 35 ...as of Mai 12 2008 17:40:26</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../libavogadro/src/filetreeitem.h: line#53 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
-	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
-	this to avoid mistaken implicit constructor ambiguities. Copy
-	constructors should not be explicit.</p>
-</li>
-
+<b>okay!</b>
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 30 issues found!</b>
+<b>OOPS! 1 issue found!</b>
 <ul>
-<li>	../libavogadro/src/boost.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/camera.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/colorbutton.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/color.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/cylinder.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/elementcolor.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/elementtranslate.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/engine.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/extension.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/filetreeitem.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/global.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/glpainter.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/glwidget.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/navigate.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/painterdevice.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/painterengine.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/painter.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/periodictableview.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/povpainter.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/primitive.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/primitiveitemmodel.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/primitivelist.h: using leading or trailing underscores on include guard in header
-</li>
 <li>	../libavogadro/src/pythoninterpreter.h: missing or improper include guard in header
-</li>
-<li>	../libavogadro/src/pythoninterpreter.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/residuecolor.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/sphere.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/textrenderer.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/toolgroup.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tool.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/undosequence.h: using leading or trailing underscores on include guard in header
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include

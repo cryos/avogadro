@@ -7,7 +7,7 @@
 <h1>krazy2 Analysis</h1>
 <p>Checkers Run = 24<br>
 Files Processed = 30<br>
-Total Issues = 18 ...as of Mai 12 2008 17:41:24</p>
+No Issues Found! ...as of Mai 12 2008 20:55:49</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -21,18 +21,7 @@ Total Issues = 18 ...as of Mai 12 2008 17:41:24</p>
 <li>Check for cpp macros and usage... 
 <b>okay!</b>
 <li>Check for single char QStrings better written as a QChar... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../libavogadro/src/tools/drawtool.cpp: line#555 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Adding single characters to a QString is faster if the characters
-	are QChars and not QStrings.  For example: QString path = oldpath +
-	&quot;/&quot; + base is better written as QString path = oldpath + &#39;/&#39; +
-	base. Same holds for arguments to QString::startsWith() and
-	QString::endsWith()</p>
-</li>
-
+<b>okay!</b>
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
 <li>Check public classes with private members or d-pointer issues... 
@@ -48,48 +37,7 @@ Total Issues = 18 ...as of Mai 12 2008 17:41:24</p>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 15 issues found!</b>
-<ul>
-<li>	../libavogadro/src/tools/aligntool.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/autoopttool.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/autorotatetool.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/bondcentrictool.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/clickmeasuretool.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/directorytreemodel.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/drawcommand.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/drawtool.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/eyecandy.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/insertfragmentdialog.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/manipulatetool.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/navigatetool.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/quaternion.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/selectrotatetool.h: using leading or trailing underscores on include guard in header
-</li>
-<li>	../libavogadro/src/tools/skeletontree.h: using leading or trailing underscores on include guard in header
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
-	Qt headers from installed headers; cpp file should include their
-	own headers first; other rules apply, see
-	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
-	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
-	cludes_right</a>. Use include guards in headers with appropriatedly
-	encoded macro names.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for assignments to QString::null... 
@@ -105,27 +53,11 @@ Total Issues = 18 ...as of Mai 12 2008 17:41:24</p>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
 <li>Check for classes that should use the 'Q_OBJECT' macro... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../libavogadro/src/tools/skeletontree.h: line#121 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	QObject derived classes should use the Q_OBJECT macro.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../libavogadro/src/tools/autoopttool.cpp: line#385[diable] (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may
-	show up later in API documentation, handbooks, etc.  Misspelled
-	strings make the translator&#39;s job harder. Please use US English.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for system calls to replace by KDE or Qt equivalents... 
 <b>okay!</b>
 </ol>
