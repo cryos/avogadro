@@ -1,3 +1,7 @@
+2008-05-12  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* Many files: Fix a pile of Krazy warnings.
+
 2008-05-11  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/glwidget.cpp: Fix uninitialised undoStack pointer.

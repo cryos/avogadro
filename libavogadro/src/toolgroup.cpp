@@ -65,7 +65,7 @@ namespace Avogadro {
 
   void ToolGroup::load()
   {
-    QString prefixPath = QString(INSTALL_PREFIX) + "/"
+    QString prefixPath = QString(INSTALL_PREFIX) + '/'
       + QString(INSTALL_LIBDIR) + "/avogadro/tools";
     QStringList pluginPaths;
     pluginPaths << prefixPath;
@@ -74,6 +74,8 @@ namespace Avogadro {
 	pluginPaths << "./tools";
 #endif
 
+    // Krazy: Use QProcess:
+    // http://doc.trolltech.com/4.3/qprocess.html#systemEnvironment
     if(getenv("AVOGADRO_TOOLS") != NULL)
     {
       pluginPaths = QString(getenv("AVOGADRO_TOOLS")).split(':');

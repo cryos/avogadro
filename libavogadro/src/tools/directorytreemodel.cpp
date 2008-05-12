@@ -24,10 +24,11 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <QtGui>
+#include "directorytreemodel.h"
 
 #include <avogadro/filetreeitem.h>
-#include "directorytreemodel.h"
+
+#include <QDirIterator>
 
 namespace Avogadro {
 

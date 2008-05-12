@@ -46,6 +46,8 @@ namespace Avogadro {
    */
   class Node : public QObject
   {
+    Q_OBJECT
+
     protected:
       Atom* m_atom;
       QList<Node*> m_nodes;

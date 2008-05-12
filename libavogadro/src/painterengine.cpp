@@ -495,4 +495,7 @@ namespace Avogadro
   {
     d->sharing--;
   }
+
 } // end namespace Avogadro
+
+#include "painterengine.moc"

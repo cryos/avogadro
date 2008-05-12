@@ -24,7 +24,7 @@
 
 #include "flowlayout.h"
 
-#include <QtGui>
+#include <QLayout>
 
 
 namespace Avogadro {

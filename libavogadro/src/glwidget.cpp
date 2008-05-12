@@ -27,6 +27,7 @@
 
 // #include<config.h> gave me headaches because another config.h file
 // was getting included!
+// krazy:excludeall=includes
 #include "config.h"
 
 #include <avogadro/glwidget.h>
@@ -297,7 +298,7 @@ namespace Avogadro {
     static bool enginesLoaded = false;
     if(!enginesLoaded)
       {
-        QString prefixPath = QString(INSTALL_PREFIX) + "/"
+        QString prefixPath = QString(INSTALL_PREFIX) + '/'
           + QString(INSTALL_LIBDIR) + "/avogadro/engines";
         QStringList pluginPaths;
         pluginPaths << prefixPath;
@@ -306,6 +307,8 @@ namespace Avogadro {
         pluginPaths << "./engines";
 #endif
 
+        // Krazy: Use QProcess:
+        // http://doc.trolltech.com/4.3/qprocess.html#systemEnvironment
         if (getenv("AVOGADRO_ENGINES") != NULL)
           pluginPaths = QString(getenv("AVOGADRO_ENGINES")).split(':');
 

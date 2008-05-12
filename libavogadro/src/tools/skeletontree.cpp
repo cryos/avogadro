@@ -299,3 +299,5 @@ namespace Avogadro {
         centerVector, right) + centerVector;
   }
 }
+
+#include "skeletontree.moc"

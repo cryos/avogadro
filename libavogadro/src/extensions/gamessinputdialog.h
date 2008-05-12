@@ -86,7 +86,7 @@ namespace Avogadro
        * may be a case where an update causes the callbacks to happen which in
        * tern causes another update to happen and we get a circular loop.  It
        * may be that we need to disable signals for these updates.  However, in
-       * some cases that may mean that a change does not propogate back to our
+       * some cases that may mean that a change does not propigate back to our
        * input data.  It is a consistency problem relating to the nature of
        * GAMESS input.
        */

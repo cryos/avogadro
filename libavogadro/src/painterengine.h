@@ -35,6 +35,8 @@ namespace Avogadro
   class PainterEnginePrivate;
   class PainterEngine : public QObject
   {
+    Q_OBJECT
+
     public:
       PainterEngine ( int quality=-1 );
       ~PainterEngine();

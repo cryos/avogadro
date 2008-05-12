@@ -1288,9 +1288,13 @@ namespace Avogadro
       ui.actionFullScreen->setText( tr( "Normal Size" ) );
       ui.fileToolBar->hide();
       statusBar()->hide();
-      this->showFullScreen();
+      // From KDE: avoid Full Screen
+      //      this->showFullScreen();
+      this->setWindowState(this->windowState() | Qt::WindowFullScreen);
     } else {
-      this->showNormal();
+      // From KDE: Krazy -- showNormal() is not the inverse of Full Screen
+      //      this->showNormal();
+      this->setWindowState(this->windowState() & ~Qt::WindowFullScreen);
       ui.actionFullScreen->setText( tr( "Full Screen" ) );
       ui.fileToolBar->show();
       statusBar()->show();
@@ -1571,7 +1575,7 @@ namespace Avogadro
 
   void MainWindow::loadExtensions()
   {
-    QString prefixPath = QString(INSTALL_PREFIX) + "/"
+    QString prefixPath = QString(INSTALL_PREFIX) + '/' 
       + QString(INSTALL_LIBDIR) + "/avogadro/extensions";
     QStringList pluginPaths;
     pluginPaths << prefixPath;
@@ -1580,6 +1584,8 @@ namespace Avogadro
     pluginPaths << "./extensions";
 #endif
 
+    // Krazy: Use QProcess:
+    // http://doc.trolltech.com/4.3/qprocess.html#systemEnvironment
     if (getenv("AVOGADRO_EXTENSIONS") != NULL) {
       pluginPaths = QString(getenv("AVOGADRO_EXTENSIONS") ).split(':');
     }

@@ -46,6 +46,8 @@ namespace Avogadro
   class Color;
   class Painter : public QObject
   {
+    Q_OBJECT
+
   public:
     /**
      * Constructor.

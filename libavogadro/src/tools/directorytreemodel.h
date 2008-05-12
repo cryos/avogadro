@@ -41,8 +41,8 @@ namespace Avogadro {
     Q_OBJECT
 
       public:
-    DirectoryTreeModel(const QString &dirList, QObject *parent = 0);
-    DirectoryTreeModel(const QStringList &dirList, QObject *parent = 0);
+    explicit DirectoryTreeModel(const QString &dirList, QObject *parent = 0);
+    explicit DirectoryTreeModel(const QStringList &dirList, QObject *parent = 0);
     ~DirectoryTreeModel();
 
     QVariant data(const QModelIndex &index, int role) const;

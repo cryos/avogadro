@@ -290,7 +290,6 @@ namespace Avogadro
     m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
 
     if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
-      // TODO: This needs to be a user-visible warning diaog
       qWarning() << "ForceFieldCommand: Could not set up force field on " << m_molecule;
       return;
     }
