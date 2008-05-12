@@ -514,8 +514,14 @@ namespace Avogadro
           " *.mpd *.mol2)"
         << tr("All files") + " (* *.*)"
         << tr("CML") + " (*.cml)"
-        << tr("MDL Mol") + "(*.mdl *.mol *.sd *.sdf)"
-        << tr("PDB") + " (*.pdb)"
+        << tr("Crystallographic Interchange (CIF)") + " (*.cif)"
+        << tr("GAMESS-US Output") + " (*.gamout)"
+        << tr("Gaussian 98/03 Output") + " (*.g98 *.g03)"
+        << tr("Gaussian Formatted Checkpoint") + " (*.fchk)"
+        << tr("HyperChem") + " (*.hin)"
+        << tr("MDL Mol") + " (*.mdl *.mol *.sd *.sdf)"
+        << tr("PDB") + " (*.pdb *.ent)"
+        << tr("Sybyl Mol2") + " (*.mol2)"
         << tr("XYZ") + " (*.xyz)";
 
       fileName = QFileDialog::getOpenFileName( this,
@@ -720,9 +726,12 @@ namespace Avogadro
                         " *.mpd *.mol2)"
 #endif
             << tr("CML") + " (*.cml)"
-            << tr("GAMESS input") + " (*.gamin)"
-            << tr("Gaussian cartesian input") + " (*.gau)"
-            << tr("Gaussian z-matrix input") + " (*.gzmat)"
+            << tr("GAMESS Input") + " (*.gamin)"
+            << tr("Gaussian Cartesian Input") + " (*.gau)"
+            << tr("Gaussian Z-matrix Input") + " (*.gzmat)"
+            << tr("MDL SDfile") + "(*.mol)"
+            << tr("PDB") + " (*.pdb)"
+            << tr("Sybyl Mol2") + " (*.mol2)"
             << tr("XYZ") + " (*.xyz)";
 
     QString fileName = SaveDialog::run(this,
@@ -767,9 +776,25 @@ namespace Avogadro
           .arg( file.errorString() ) );
       return false;
     }
+    file.close();
+    
+    // We'll save to a new file and then rename it to the requested file name
+    // This way, if an error occurs, we won't destroy the old file
+    QString newFileName(fileName);
+    newFileName += ".new";
+    QFile newFile( newFileName );
+    if ( !newFile.open( QFile::WriteOnly | QFile::Text ) ) {
+      QMessageBox::warning( this, tr( "Avogadro" ),
+          tr( "Cannot write to the file %1:\n%2." )
+          .arg( fileName )
+          .arg( newFile.errorString() ) );
+      return false;
+    }
+    newFile.close();
 
+    // Pass of an ofstream to Open Babel
     ofstream     ofs;
-    ofs.open(( fileName.toAscii() ).data() );
+    ofs.open(( newFileName.toAscii() ).data() );
     if ( !ofs ) { // shouldn't happen, already checked file above
       QMessageBox::warning( this, tr( "Avogadro" ),
           tr( "Cannot write to the file %1." )
@@ -781,14 +806,19 @@ namespace Avogadro
     statusBar()->showMessage( tr( "Saving file." ), 2000 );
 
     OBMol *molecule = dynamic_cast<OBMol*>( d->molecule );
-    if ( conv.Write( molecule, &ofs ) )
+    if ( conv.Write( molecule, &ofs ) ) {
+      file.remove(); // remove the old file: WARNING -- would much prefer to just rename, but Qt won't let you
+      newFile.rename(fileName);
       statusBar()->showMessage( tr("Save succeeded."), 5000 );
-    else
+      setWindowModified( false );
+    }
+    else {
       statusBar()->showMessage( tr("Saving molecular file failed."), 5000 );
+      newFile.remove(); // remove the temporary file -- we'll leave the old file in place
+    }
+
     QApplication::restoreOverrideCursor();
 
-    setWindowModified( false );
-    statusBar()->showMessage( tr( "File saved" ), 2000 );
     return true;
   }
 

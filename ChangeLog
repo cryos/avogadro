@@ -13,6 +13,9 @@
 
 	* Many files: Fix a pile of Krazy warnings.
 
+	* avogadro/src/mainwindow.cpp: Implement save to a new file, then
+	a rename. (If others have ways to improve this, please let me know.)
+
 2008-05-11  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/glwidget.cpp: Fix uninitialised undoStack pointer.
