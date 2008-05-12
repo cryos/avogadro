@@ -1704,15 +1704,21 @@ namespace Avogadro
     QVector<bool> status;
 
     // Save the enabled state of every menu item
-    // Then disable them
     foreach( QAction *menu, menuBar()->actions() ) {
       status.clear();
       foreach( QAction *menuItem, menu->menu()->actions() ) {
         status.append( menuItem->isEnabled() );
-        menuItem->setEnabled( false );
       }
       d->menuItemStatus.append( status );
     }
+    // Now disable them -- do this after saving status, since some actions may be
+    // in multiple menus, e.g. "Select All"
+    foreach( QAction *menu, menuBar()->actions() ) {
+      foreach( QAction *menuItem, menu->menu()->actions() ) {
+        menuItem->setEnabled(false);
+      }
+    }    
+    
     // Now enable key menu items -- new, open, open recent, quit, etc.
     ui.actionAbout->setEnabled( true );
     ui.actionNew->setEnabled( true );
