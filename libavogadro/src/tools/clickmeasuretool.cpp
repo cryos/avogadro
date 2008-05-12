@@ -160,9 +160,9 @@ namespace Avogadro {
       // Calculate the angle between the atoms
       m_angle = vectorAngle(vector3(m_vector[0].x(), m_vector[0].y(), m_vector[0].z()),
       		  				vector3(m_vector[1].x(), m_vector[1].y(), m_vector[1].z()));
-      QString angleString = trUtf8("Angle: %1 %2").arg(
+      QString angleString = tr("Angle: %1 %2").arg(
                             QString::number(m_angle),
-                            QString::fromUtf8("°"));
+                            QString("°"));
 
       emit message(angleString);
       emit message(distanceString);
@@ -190,9 +190,9 @@ namespace Avogadro {
               		  				vector3(m_selectedAtoms[3]->pos().x(),
               		  						m_selectedAtoms[3]->pos().y(),
               		  						m_selectedAtoms[3]->pos().z()));
-      QString dihedralString = trUtf8("Dihedral Angle: %1 %2").arg(
+      QString dihedralString = tr("Dihedral Angle: %1 %2").arg(
       		                   QString::number(m_dihedral),
-      		                   QString::fromUtf8("°"));
+      		                   QString("°"));
       emit message(distanceString);
       emit message(dihedralString);
     }
