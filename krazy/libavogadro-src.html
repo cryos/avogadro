@@ -7,7 +7,7 @@
 <h1>krazy2 Analysis</h1>
 <p>Checkers Run = 24<br>
 Files Processed = 56<br>
-Total Issues = 40 ...as of April 18 2008 09:48:59</p>
+Total Issues = 35 ...as of Mai 12 2008 17:40:26</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -21,20 +21,7 @@ Total Issues = 40 ...as of April 18 2008 09:48:59</p>
 <li>Check for cpp macros and usage... 
 <b>okay!</b>
 <li>Check for single char QStrings better written as a QChar... 
-<b>OOPS! 2 issues found!</b>
-<ul>
-<li>	../libavogadro/src/glwidget.cpp: line#299 (1)
-</li>
-<li>	../libavogadro/src/toolgroup.cpp: line#67 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Adding single characters to a QString is faster if the characters
-	are QChars and not QStrings.  For example: QString path = oldpath +
-	&quot;/&quot; + base is better written as QString path = oldpath + &#39;/&#39; +
-	base. Same holds for arguments to QString::startsWith() and
-	QString::endsWith()</p>
-</li>
-
+<b>okay!</b>
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
 <li>Check public classes with private members or d-pointer issues... 
@@ -46,7 +33,7 @@ Total Issues = 40 ...as of April 18 2008 09:48:59</p>
 <li>Check for C++ ctors that should be declared 'explicit'... 
 <b>OOPS! 1 issue found!</b>
 <ul>
-<li>	../libavogadro/src/treeitem.h: line#39 (1)
+<li>	../libavogadro/src/filetreeitem.h: line#53 (1)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
@@ -60,17 +47,15 @@ Total Issues = 40 ...as of April 18 2008 09:48:59</p>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 31 issues found!</b>
+<b>OOPS! 30 issues found!</b>
 <ul>
-<li>	../libavogadro/src/glwidget.cpp: put config.h in angle brackets line#30
-</li>
 <li>	../libavogadro/src/boost.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../libavogadro/src/camera.h: using leading or trailing underscores on include guard in header
 </li>
-<li>	../libavogadro/src/color.h: using leading or trailing underscores on include guard in header
-</li>
 <li>	../libavogadro/src/colorbutton.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/color.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../libavogadro/src/cylinder.h: using leading or trailing underscores on include guard in header
 </li>
@@ -82,6 +67,8 @@ Total Issues = 40 ...as of April 18 2008 09:48:59</p>
 </li>
 <li>	../libavogadro/src/extension.h: using leading or trailing underscores on include guard in header
 </li>
+<li>	../libavogadro/src/filetreeitem.h: using leading or trailing underscores on include guard in header
+</li>
 <li>	../libavogadro/src/global.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../libavogadro/src/glpainter.h: using leading or trailing underscores on include guard in header
@@ -90,11 +77,11 @@ Total Issues = 40 ...as of April 18 2008 09:48:59</p>
 </li>
 <li>	../libavogadro/src/navigate.h: using leading or trailing underscores on include guard in header
 </li>
-<li>	../libavogadro/src/painter.h: using leading or trailing underscores on include guard in header
-</li>
 <li>	../libavogadro/src/painterdevice.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../libavogadro/src/painterengine.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/painter.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../libavogadro/src/periodictableview.h: using leading or trailing underscores on include guard in header
 </li>
@@ -116,11 +103,9 @@ Total Issues = 40 ...as of April 18 2008 09:48:59</p>
 </li>
 <li>	../libavogadro/src/textrenderer.h: using leading or trailing underscores on include guard in header
 </li>
-<li>	../libavogadro/src/tool.h: using leading or trailing underscores on include guard in header
-</li>
 <li>	../libavogadro/src/toolgroup.h: using leading or trailing underscores on include guard in header
 </li>
-<li>	../libavogadro/src/treeitem.h: using leading or trailing underscores on include guard in header
+<li>	../libavogadro/src/tool.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../libavogadro/src/undosequence.h: using leading or trailing underscores on include guard in header
 </li>
@@ -149,16 +134,7 @@ Total Issues = 40 ...as of April 18 2008 09:48:59</p>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
 <li>Check for classes that should use the 'Q_OBJECT' macro... 
-<b>OOPS! 2 issues found!</b>
-<ul>
-<li>	../libavogadro/src/painter.h: line#47 (1)
-</li>
-<li>	../libavogadro/src/painterengine.h: line#36 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	QObject derived classes should use the Q_OBJECT macro.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
@@ -166,9 +142,9 @@ Total Issues = 40 ...as of April 18 2008 09:48:59</p>
 <li>Check for system calls to replace by KDE or Qt equivalents... 
 <b>OOPS! 4 issues found!</b>
 <ul>
-<li>	../libavogadro/src/glwidget.cpp: line#308 getenv[qgetenv],309 getenv[qgetenv] (2)
+<li>	../libavogadro/src/glwidget.cpp: line#312 getenv[qgetenv],313 getenv[qgetenv] (2)
 </li>
-<li>	../libavogadro/src/toolgroup.cpp: line#76 getenv[qgetenv],78 getenv[qgetenv] (2)
+<li>	../libavogadro/src/toolgroup.cpp: line#79 getenv[qgetenv],81 getenv[qgetenv] (2)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Some system calls are not portable, please use the suggested

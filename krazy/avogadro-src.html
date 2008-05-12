@@ -6,8 +6,8 @@
 <body>
 <h1>krazy2 Analysis</h1>
 <p>Checkers Run = 24<br>
-Files Processed = 30<br>
-Total Issues = 19 ...as of April 18 2008 09:54:49</p>
+Files Processed = 32<br>
+Total Issues = 16 ...as of Mai 12 2008 17:43:14</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -31,18 +31,7 @@ Total Issues = 19 ...as of April 18 2008 09:54:49</p>
 </li>
 
 <li>Check for single char QStrings better written as a QChar... 
-<b>OOPS! 1 issue found!</b>
-<ul>
-<li>	../avogadro/src/mainwindow.cpp: line#1440 (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Adding single characters to a QString is faster if the characters
-	are QChars and not QStrings.  For example: QString path = oldpath +
-	&quot;/&quot; + base is better written as QString path = oldpath + &#39;/&#39; +
-	base. Same holds for arguments to QString::startsWith() and
-	QString::endsWith()</p>
-</li>
-
+<b>okay!</b>
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
 <li>Check public classes with private members or d-pointer issues... 
@@ -60,8 +49,6 @@ Total Issues = 19 ...as of April 18 2008 09:54:49</p>
 <li>Check for proper include directives... 
 <b>OOPS! 12 issues found!</b>
 <ul>
-<li>	../avogadro/src/flowlayout.cpp: do not include QtModules line#27(QtGui)
-</li>
 <li>	../avogadro/src/addenginedialog.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../avogadro/src/application.h: using leading or trailing underscores on include guard in header
@@ -81,6 +68,8 @@ Total Issues = 19 ...as of April 18 2008 09:54:49</p>
 <li>	../avogadro/src/mainwindow.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../avogadro/src/primitivetreeview.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../avogadro/src/savedialog.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../avogadro/src/settingsdialog.h: using leading or trailing underscores on include guard in header
 </li>
@@ -105,17 +94,7 @@ Total Issues = 19 ...as of April 18 2008 09:54:49</p>
 <li>Check for invalid SIGNALs and SLOTs passed to connect()... 
 <b>okay!</b>
 <li>Check for Qt methods that should be avoided... 
-<b>OOPS! 2 issues found!</b>
-<ul>
-<li>	../avogadro/src/mainwindow.cpp: line#1165 QWidget::showFullScreen,1167 QWidget::showNormal (2)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	A few Qt methods should be avoided because they don&#39;t work as
-	expected or because you need to really be an expert to use them
-	correctly. <a href="http://techbase.kde.org/Policies/API_to_Avoid">http://techbase.kde.org/Policies/API_to_Avoid</a> for more
-	information.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for QMIN and QMAX macros... 
 <b>okay!</b>
 <li>Check for classes that should use the 'Q_OBJECT' macro... 
@@ -127,7 +106,7 @@ Total Issues = 19 ...as of April 18 2008 09:54:49</p>
 <li>Check for system calls to replace by KDE or Qt equivalents... 
 <b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../avogadro/src/mainwindow.cpp: line#1449 getenv[qgetenv],1450 getenv[qgetenv] (2)
+<li>	../avogadro/src/mainwindow.cpp: line#1589 getenv[qgetenv],1590 getenv[qgetenv] (2)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Some system calls are not portable, please use the suggested

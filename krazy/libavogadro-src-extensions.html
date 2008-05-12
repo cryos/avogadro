@@ -6,8 +6,8 @@
 <body>
 <h1>krazy2 Analysis</h1>
 <p>Checkers Run = 24<br>
-Files Processed = 44<br>
-Total Issues = 45 ...as of April 18 2008 09:57:52</p>
+Files Processed = 56<br>
+Total Issues = 41 ...as of Mai 12 2008 17:44:59</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -52,13 +52,23 @@ Total Issues = 45 ...as of April 18 2008 09:57:52</p>
 <li>Check that file ends with a newline... 
 <b>okay!</b>
 <li>Check for C++ ctors that should be declared 'explicit'... 
-<b>okay!</b>
+<b>OOPS! 1 issue found!</b>
+<ul>
+<li>	../libavogadro/src/extensions/orbitaldialog.h: line#41 (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
+	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
+	this to avoid mistaken implicit constructor ambiguities. Copy
+	constructors should not be explicit.</p>
+</li>
+
 <li>Check validity of i18n calls... 
 <b>okay!</b>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>OOPS! 30 issues found!</b>
+<b>OOPS! 33 issues found!</b>
 <ul>
 <li>	../libavogadro/src/extensions/constraintsmodel.cpp: do not include QtModules line#29(QtGui)
 </li>
@@ -82,6 +92,8 @@ Total Issues = 45 ...as of April 18 2008 09:57:52</p>
 </li>
 <li>	../libavogadro/src/extensions/wiitrackextension.cpp: do not include QtModules line#27(QtGui)
 </li>
+<li>	../libavogadro/src/extensions/basisset.h: using leading or trailing underscores on include guard in header
+</li>
 <li>	../libavogadro/src/extensions/conformersearchdialog.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../libavogadro/src/extensions/constraintsdialog.h: using leading or trailing underscores on include guard in header
@@ -96,11 +108,15 @@ Total Issues = 45 ...as of April 18 2008 09:57:52</p>
 </li>
 <li>	../libavogadro/src/extensions/gamessinputdata.h: using leading or trailing underscores on include guard in header
 </li>
+<li>	../libavogadro/src/extensions/gaussianfchk.h: using leading or trailing underscores on include guard in header
+</li>
 <li>	../libavogadro/src/extensions/h2methylextension.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../libavogadro/src/extensions/hydrogensextension.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../libavogadro/src/extensions/liganddialog.h: using leading or trailing underscores on include guard in header
+</li>
+<li>	../libavogadro/src/extensions/orbitalextension.h: using leading or trailing underscores on include guard in header
 </li>
 <li>	../libavogadro/src/extensions/pocketdialog.h: using leading or trailing underscores on include guard in header
 </li>
@@ -149,20 +165,7 @@ Total Issues = 45 ...as of April 18 2008 09:57:52</p>
 <li>Check for signals: and slots:... 
 <b>okay!</b>
 <li>Check for spelling errors... 
-<b>OOPS! 8 issues found!</b>
-<ul>
-<li>	../libavogadro/src/extensions/forcefieldextension.cpp: line#294[diaog] (1)
-</li>
-<li>	../libavogadro/src/extensions/gamessinputdata.cpp: line#1934[wether],2055[wether],2155[wether],2216[wether],2282[wether],2430[wether] (6)
-</li>
-<li>	../libavogadro/src/extensions/gamessinputdialog.h: line#89[propogate] (1)
-</li>
-</ul>
-<p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may
-	show up later in API documentation, handbooks, etc.  Misspelled
-	strings make the translator&#39;s job harder. Please use US English.</p>
-</li>
-
+<b>okay!</b>
 <li>Check for system calls to replace by KDE or Qt equivalents... 
 <b>okay!</b>
 </ol>
