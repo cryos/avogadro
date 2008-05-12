@@ -61,7 +61,8 @@ namespace Avogadro {
         m_alpha = 1.0;
         return; // default if no residue is specified
       }
-    }
+    } else
+      return; // not something we can color
 
     // Colors from http://jmol.sourceforge.net/jscolors/
     // "Protein amino"
