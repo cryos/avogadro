@@ -299,7 +299,7 @@ namespace Avogadro
 
     return QMainWindow::event(event);
   }
-  
+
   void MainWindow::dragEnterEvent(QDragEnterEvent *event)
   {
     if (event->mimeData()->hasUrls())
@@ -307,7 +307,7 @@ namespace Avogadro
     else
       event->ignore();
   }
-  
+
   void MainWindow::dropEvent(QDropEvent *event)
   {
     if (event->mimeData()->hasUrls()) {
@@ -505,7 +505,7 @@ namespace Avogadro
     {
       QSettings settings;
       QString selectedFilter = settings.value("Open Molecule Filter").toString();
-      
+
       QStringList filters;
       filters << tr("Common molecule formats")
         + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
@@ -758,7 +758,7 @@ namespace Avogadro
           .arg( fileName ) );
       return false;
     }
-    
+
     QFile file( fileName );
     if ( !file.open( QFile::WriteOnly | QFile::Text ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
@@ -797,7 +797,7 @@ namespace Avogadro
   {
     ui.actionRevert->setEnabled(!clean);
     ui.actionSave->setEnabled(!clean);
-    
+
     setWindowModified( !clean );
   }
 
@@ -805,7 +805,7 @@ namespace Avogadro
   {
     QSettings settings;
     QString selectedFilter = settings.value("Export Graphics Filter", tr("PNG") + " (*.png)").toString();
-    
+
     QStringList filters;
 // Omit "common image formats" on Mac
 #ifdef Q_WS_MAC
@@ -871,7 +871,7 @@ namespace Avogadro
   {
     QSettings settings;
     QString selectedFilter = settings.value("Export POV-Ray Filter", tr("POV-Ray format") + " (*.pov)").toString();
-    
+
     QStringList filters;
     filters << tr("POV-Ray format") + " (*.pov)"
             << tr("All files") + " (* *.*)";
@@ -924,7 +924,7 @@ namespace Avogadro
   }
 
   void MainWindow::documentWasModified()
-  {    
+  {
     // Now that the document was modified, enable save/revert
     ui.actionRevert->setEnabled(true);
     ui.actionSave->setEnabled(true);
@@ -1473,12 +1473,14 @@ namespace Avogadro
   {
     QString canonicalFilePath = QFileInfo( fileName ).canonicalFilePath();
 
-    foreach( QWidget *widget, qApp->topLevelWidgets() ) {
+    // If the canonical file path is empty then the file doesn't exist
+    if (canonicalFilePath.isEmpty())
+      return 0;
+
+    foreach(QWidget *widget, qApp->topLevelWidgets()) {
       MainWindow *window = qobject_cast<MainWindow *>( widget );
-      if ( window && window->d->fileName == canonicalFilePath )
-      {
+      if (window && window->d->fileName == canonicalFilePath)
         return window;
-      }
     }
     return 0;
   }
@@ -1575,7 +1577,7 @@ namespace Avogadro
 
   void MainWindow::loadExtensions()
   {
-    QString prefixPath = QString(INSTALL_PREFIX) + '/' 
+    QString prefixPath = QString(INSTALL_PREFIX) + '/'
       + QString(INSTALL_LIBDIR) + "/avogadro/extensions";
     QStringList pluginPaths;
     pluginPaths << prefixPath;
