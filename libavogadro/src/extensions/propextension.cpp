@@ -25,6 +25,7 @@
 #include <avogadro/glwidget.h>
 
 #include <QAbstractTableModel>
+#include <QHeaderView>
 #include <QAction>
 
 using namespace std;
@@ -199,7 +200,44 @@ namespace Avogadro
     return undo;
   }
   
-  void PropertiesView::selectionChanged(const QItemSelection &selected, const QItemSelection &previous)
+  PropertiesView::PropertiesView(Type type, QWidget *parent) : QTableView(parent), m_molecule(NULL), m_widget(NULL)
+  {
+    m_type = type;
+    
+    QString title;
+    switch(type){
+      case AtomType:
+        title = tr("Atom") + ' ';
+        break;
+      case BondType:
+        title = tr("Bond") + ' ';
+        break;
+      case AngleType:
+        title = tr("Angle") + ' ';
+        break;
+      case TorsionType:
+        title = tr("Torsion") + ' ';
+        break;
+      case CartesianType:
+        title = tr("Cartesian") + ' ';
+        break;
+      case ConformerType:
+        title = tr("Conformer") + ' ';
+        break;
+      default:
+        title = QString();
+    }
+    title += tr("Properties");
+    this->setWindowTitle(title);
+    
+    QHeaderView *horizontal = this->horizontalHeader();
+    horizontal->setResizeMode(QHeaderView::Stretch);
+    QHeaderView *vertical = this->verticalHeader();
+    vertical->setResizeMode(QHeaderView::Stretch);
+  }
+  
+  
+  void PropertiesView::selectionChanged(const QItemSelection &selected, const QItemSelection &)
   {
     QModelIndex index;
     QList<Primitive *> matchedPrimitives;
@@ -246,7 +284,7 @@ namespace Avogadro
     m_widget = widget;
   }
   
-  void PropertiesView::hideEvent(QHideEvent *event)
+  void PropertiesView::hideEvent(QHideEvent *)
   {
     if (m_widget)
       m_widget->clearSelected();

@@ -1,5 +1,11 @@
 2008-05-12  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
+	* libavogadro/src/extensions/propmodel.cpp
+	libavogadro/src/extensions/propextension.h
+	libavogadro/src/extensions/propextension.cpp:
+	Updates to fix some translations and to allow resizing the window
+	without showing large amounts of empty space.
+
 	* Many files: Fix a pile of Krazy warnings.
 
 2008-05-11  Marcus D. Hanwell  <marcus@cryos.org>

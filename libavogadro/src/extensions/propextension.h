@@ -99,18 +99,15 @@ namespace Avogadro {
      public:
        enum Type {
          OtherType=0,
- 	 AtomType,
-	 BondType,
-	 AngleType,
-	 TorsionType,
-	 CartesianType,
-	 ConformerType
+ 	         AtomType,
+	         BondType,
+	         AngleType,
+	         TorsionType,
+	         CartesianType,
+	         ConformerType
        };
 
-       explicit PropertiesView(Type type, QWidget *parent = 0) : QTableView(parent), m_molecule(NULL), m_widget(NULL)
-       {
-         m_type = type;
-       }
+       explicit PropertiesView(Type type, QWidget *parent = 0);
 
        void selectionChanged(const QItemSelection &selected, const QItemSelection &previous);
        void setMolecule (Molecule *molecule);

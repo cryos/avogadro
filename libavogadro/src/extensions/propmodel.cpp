@@ -129,7 +129,7 @@ namespace Avogadro
         else if (atom->IsAntiClockwise())
           return QString("S");
         else
-          return QString("");
+          return QString();
       }
     } else if (m_type == BondType) {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->NumBonds())
@@ -237,91 +237,91 @@ namespace Avogadro
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return QString("Type");
+          return tr("Type");
         case 1:
-          return QString("Atomic Number");
+          return tr("Atomic Number");
         case 2:
-          return QString("Isotope");
+          return tr("Isotope");
         case 3:
-          return QString("Formal Charge");
+          return tr("Formal Charge");
         case 4:
-          return QString("Partial Charge");
+          return tr("Partial Charge");
         case 5:
-          return QString("Valence");
+          return tr("Valence");
         case 6:
-          return QString("BOSum");
+          return tr("Bond Order");
         case 7:
-          return QString("Chirality");
+          return tr("Chirality");
         }
       } else
-        return QString("Atom %1").arg(section + 1);
+        return tr("Atom %1").arg(section + 1);
     } else if (m_type == BondType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return QString("Atom dx 1");
+          return tr("Start Atom");
         case 1:
-          return QString("Atom idx 2");
+          return tr("End Atom");
         case 2:
-          return QString("Bond Order");
+          return tr("Bond Order");
         case 3:
-          return QString("Length (A)");
+          return tr("Length (Å)");
         case 4:
-          return QString("Rotatable");
+          return tr("Rotatable");
         }
       } else
         // Bond ordering starts at 0
-        return QString("Bond %1").arg(section + 1);
+        return tr("Bond %1").arg(section + 1);
     } else if (m_type == AngleType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return QString("Atom dx 1");
+          return tr("Start Atom");
         case 1:
-          return QString("Atom idx 2");
+          return tr("Vertex");
         case 2:
-          return QString("Atom idx 3");
+          return tr("End Atom");
         case 3:
-          return QString("Angle (deg)");
+          return tr("Angle (°)");
         }
       } else
-        return QString("Angle %1").arg(section + 1);
+        return tr("Angle %1").arg(section + 1);
      } else if (m_type == TorsionType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return QString("Atom dx 1");
+          return tr("Atom Index") + '1';
         case 1:
-          return QString("Atom idx 2");
+          return tr("Atom Index") + '2';
         case 2:
-          return QString("Atom idx 3");
+          return tr("Atom Index") + '3';
         case 3:
-          return QString("Atom idx 4");
+          return tr("Atom Index") + '4';
         case 4:
-          return QString("Torsion (deg)");
+          return tr("Torsion (°)");
         }
       } else
-        return QString("Torsion %1").arg(section + 1);
+        return tr("Torsion %1").arg(section + 1);
     } else if (m_type == CartesianType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return QString("X");
+          return tr("X (Å)");
         case 1:
-          return QString("Y");
+          return tr("Y (Å)");
         case 2:
-          return QString("Z");
+          return tr("Z (Å)");
         }
       } else
-        return QString("Atom %1").arg(section + 1);
+        return tr("Atom %1").arg(section + 1);
     } else if (m_type == ConformerType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return QString("Energy");
+          return tr("Energy");
         }
       } else
-        return QString("Conformer %1").arg(section + 1);
+        return tr("Conformer %1").arg(section + 1);
     }
     
     return QVariant();
