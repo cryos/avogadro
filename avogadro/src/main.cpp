@@ -29,6 +29,7 @@
 #include <QTimer>
 #include <QSplashScreen>
 #include <QtGui/QPixmap>
+#include <QLibraryInfo>
 
 #include <iostream>
 
@@ -83,7 +84,7 @@ int main(int argc, char *argv[])
   QTranslator qtTranslator(0);
   QTranslator avoTranslator(0);
   QString avoFilename = "avogadro_" + translationCode + ".qm";
-  QString qtFilename = "qt_" + translationCode;
+  QString qtFilename = "qt_" + translationCode + ".qm";
 
   qDebug() << "Locale: " << translationCode;
   QTranslator *libTranslator;
@@ -93,7 +94,7 @@ int main(int argc, char *argv[])
     app.installTranslator(libTranslator);
   }
 
-  if (qtTranslator.load(qtFilename))
+  if (qtTranslator.load(qtFilename, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
   {
     qDebug() << "Loading QT Translations";
     app.installTranslator(&qtTranslator);
