@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __DRAWCOMMAND_H
-#define __DRAWCOMMAND_H
+#ifndef DRAWCOMMAND_H
+#define DRAWCOMMAND_H
 
 #include <QUndoCommand>
 #include <eigen/vector.h>

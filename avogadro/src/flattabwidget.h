@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __FLATTABWIDGET_H
-#define __FLATTABWIDGET_H
+#ifndef FLATTABWIDGET_H
+#define FLATTABWIDGET_H
 
 #include <QObject>
 #include <QWidget>

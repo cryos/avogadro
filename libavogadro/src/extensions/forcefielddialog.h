@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __FORCEFIELDDIALOG_H
-#define __FORCEFIELDDIALOG_H
+#ifndef FORCEFIELDDIALOG_H
+#define FORCEFIELDDIALOG_H
 
 #include <QDialog>
 #include <QButtonGroup>

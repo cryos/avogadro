@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __PYTHONEXTENSION_H
-#define __PYTHONEXTENSION_H
+#ifndef PYTHONEXTENSION_H
+#define PYTHONEXTENSION_H
 
 #include <avogadro/extension.h>
 #include <avogadro/primitive.h>

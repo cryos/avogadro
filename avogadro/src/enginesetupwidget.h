@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ENGINESETUPWIDGET_H
-#define __ENGINESETUPWIDGET_H
+#ifndef ENGINESETUPWIDGET_H
+#define ENGINESETUPWIDGET_H
 
 #include <QObject>
 #include <QTabWidget>

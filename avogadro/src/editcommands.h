@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __EDITCOMMANDS_H
-#define __EDITCOMMANDS_H
+#ifndef EDITCOMMANDS_H
+#define EDITCOMMANDS_H
 
 #include <QUndoCommand>
 

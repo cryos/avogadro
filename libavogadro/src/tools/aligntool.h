@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ALIGNTOOL_H
-#define __ALIGNTOOL_H
+#ifndef ALIGNTOOL_H
+#define ALIGNTOOL_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>

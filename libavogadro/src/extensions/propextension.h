@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __PROPEXTENSION_H
-#define __PROPEXTENSION_H
+#ifndef PROPEXTENSION_H
+#define PROPEXTENSION_H
 
 
 #include "propmodel.h"

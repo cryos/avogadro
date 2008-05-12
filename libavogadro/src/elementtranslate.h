@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ELEMENTTRANSLATE_H
-#define __ELEMENTTRANSLATE_H
+#ifndef ELEMENTTRANSLATE_H
+#define ELEMENTTRANSLATE_H
 
 #include <avogadro/global.h>
 

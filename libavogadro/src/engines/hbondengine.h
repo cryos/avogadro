@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __HBONDENGINE_H
-#define __HBONDENGINE_H
+#ifndef HBONDENGINE_H
+#define HBONDENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

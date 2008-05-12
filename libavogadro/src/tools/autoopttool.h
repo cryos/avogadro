@@ -21,8 +21,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __AUTOOPTTOOL_H
-#define __AUTOOPTTOOL_H
+#ifndef AUTOOPTTOOL_H
+#define AUTOOPTTOOL_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>

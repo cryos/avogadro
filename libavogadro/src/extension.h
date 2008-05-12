@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __EXTENSION_H
-#define __EXTENSION_H
+#ifndef EXTENSION_H
+#define EXTENSION_H
 
 #include <avogadro/glwidget.h>
 

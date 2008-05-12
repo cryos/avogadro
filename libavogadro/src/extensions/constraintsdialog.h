@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __CONSTRAINTSDIALOG_H
-#define __CONSTRAINTSDIALOG_H
+#ifndef CONSTRAINTSDIALOG_H
+#define CONSTRAINTSDIALOG_H
 
 #include "constraintsmodel.h"
 

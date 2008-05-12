@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ADDENGINEDIALOG_H
-#define __ADDENGINEDIALOG_H
+#ifndef ADDENGINEDIALOG_H
+#define ADDENGINEDIALOG_H
 
 #include "ui_addenginedialog.h"
 

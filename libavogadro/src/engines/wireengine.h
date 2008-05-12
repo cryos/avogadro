@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __WIREENGINE_H
-#define __WIREENGINE_H
+#ifndef WIREENGINE_H
+#define WIREENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

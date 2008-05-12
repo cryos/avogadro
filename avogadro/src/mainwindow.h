@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __MAINWINDOW_H
-#define __MAINWINDOW_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include "ui_mainwindow.h"
 #include "flowlayout.h"

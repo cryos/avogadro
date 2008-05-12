@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __RESIDUECOLOR_H
-#define __RESIDUECOLOR_H
+#ifndef RESIDUECOLOR_H
+#define RESIDUECOLOR_H
 
 #include <avogadro/global.h>
 #include <avogadro/color.h>

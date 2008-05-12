@@ -26,11 +26,7 @@
 
 #include <openbabel/mol.h>
 
-#include <QtGui>
-#include <QProgressDialog>
-#include <QWriteLocker>
-#include <QMutex>
-#include <QMutexLocker>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;

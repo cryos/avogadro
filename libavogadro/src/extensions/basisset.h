@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __BASISSET_H
-#define __BASISSET_H
+#ifndef BASISSET_H
+#define BASISSET_H
 
 #include <avogadro/primitive.h>
 #include <eigen/vector.h>

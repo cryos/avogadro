@@ -27,7 +27,7 @@
 
 #include <openbabel/obiter.h>
 
-#include <QtGui>
+#include <QAction>
 
 using namespace std;
 using namespace OpenBabel;

@@ -21,8 +21,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __MANIPULATETOOL_H
-#define __MANIPULATETOOL_H
+#ifndef MANIPULATETOOL_H
+#define MANIPULATETOOL_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>

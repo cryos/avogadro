@@ -22,9 +22,9 @@
  02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
 #include "polygonengine.h"
 
+#include <config.h>
 #include <avogadro/color.h>
 #include <avogadro/painter.h>
 

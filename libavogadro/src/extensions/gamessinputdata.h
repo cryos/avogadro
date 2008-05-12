@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __GAMESSINPUTDATA_H
-#define __GAMESSINPUTDATA_H
+#ifndef GAMESSINPUTDATA_H
+#define GAMESSINPUTDATA_H
 
 #include <iostream>
 #include <vector>

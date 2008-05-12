@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __UNITCELLPARAMDIALOG_H
-#define __UNITCELLPARAMDIALOG_H
+#ifndef UNITCELLPARAMDIALOG_H
+#define UNITCELLPARAMDIALOG_H
 
 #include <QDialog>
 #include <QButtonGroup>

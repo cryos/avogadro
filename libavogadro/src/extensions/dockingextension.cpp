@@ -24,7 +24,6 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <QtGui>
 #include <QProgressDialog>
 #include <QWriteLocker>
 #include <QMutex>
@@ -121,7 +120,7 @@ namespace Avogadro
     case SelectLigandIndex:
     case SelectPocketIndex:
     case SelectLigPockIndex:
-      return tr("&Extensions") + ">" + tr("&Docking");
+      return tr("&Extensions") + '>' + tr("&Docking");
       break;
     default:
       break;

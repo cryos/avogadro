@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __QUATERNION_H
-#define __QUATERNION_H
+#ifndef QUATERNION_H
+#define QUATERNION_H
 
 #include <eigen/vector.h>
 

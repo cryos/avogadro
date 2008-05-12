@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __TEMPLATEEXTENSION_H
-#define __TEMPLATEEXTENSION_H
+#ifndef TEMPLATEEXTENSION_H
+#define TEMPLATEEXTENSION_H
 
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>

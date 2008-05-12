@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __ENGINELISTVIEW_H
-#define __ENGINELISTVIEW_H
+#ifndef ENGINELISTVIEW_H
+#define ENGINELISTVIEW_H
 
 #include <QListView>
 

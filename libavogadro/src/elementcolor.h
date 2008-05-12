@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ELEMENTCOLOR_H
-#define __ELEMENTCOLOR_H
+#ifndef ELEMENTCOLOR_H
+#define ELEMENTCOLOR_H
 
 #include <avogadro/global.h>
 #include <avogadro/color.h>

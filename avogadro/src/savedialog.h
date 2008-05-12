@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __SAVEDIALOG_H
-#define __SAVEDIALOG_H
+#ifndef SAVEDIALOG_H
+#define SAVEDIALOG_H
 
 #include <QFileDialog>
 

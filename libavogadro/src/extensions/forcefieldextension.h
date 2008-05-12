@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __FORCEFIELDEXTENSION_H
-#define __FORCEFIELDEXTENSION_H
+#ifndef FORCEFIELDEXTENSION_H
+#define FORCEFIELDEXTENSION_H
 
 #include "forcefielddialog.h"
 #include "conformersearchdialog.h"

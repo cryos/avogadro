@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __LIGANDDIALOG_H
-#define __LIGANDDIALOG_H
+#ifndef LIGANDDIALOG_H
+#define LIGANDDIALOG_H
 
 #include <QDialog>
 #include <QButtonGroup>

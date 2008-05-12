@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __APPLICATION_H
-#define __APPLICATION_H
+#ifndef APPLICATION_H
+#define APPLICATION_H
 
 #include <QApplication>
 

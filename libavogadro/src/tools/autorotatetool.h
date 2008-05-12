@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __AUTOROTATETOOL_H
-#define __AUTOROTATETOOL_H
+#ifndef AUTOROTATETOOL_H
+#define AUTOROTATETOOL_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>

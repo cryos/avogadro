@@ -22,8 +22,8 @@
  02110-1301, USA.
  **********************************************************************/
 
-#ifndef __INSERTFRAGMENTDIALOG_H
-#define __INSERTFRAGMENTDIALOG_H
+#ifndef INSERTFRAGMENTDIALOG_H
+#define INSERTFRAGMENTDIALOG_H
 
 #include <avogadro/global.h>
 

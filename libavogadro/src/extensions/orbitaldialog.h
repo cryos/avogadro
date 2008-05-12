@@ -38,7 +38,7 @@ namespace Avogadro
   Q_OBJECT
 
   public:
-    OrbitalDialog(QWidget* parent = 0, Qt::WindowFlags f = 0);
+    explicit OrbitalDialog(QWidget* parent = 0, Qt::WindowFlags f = 0);
     ~OrbitalDialog();
     void setMOs(int num);
     void setHOMO(int num);

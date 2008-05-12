@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ORBITALENGINE_H
-#define __ORBITALENGINE_H
+#ifndef ORBITALENGINE_H
+#define ORBITALENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __UNITCELLEXTENSION_H
-#define __UNITCELLEXTENSION_H
+#ifndef UNITCELLEXTENSION_H
+#define UNITCELLEXTENSION_H
 
 #include "unitcellparamdialog.h"
 

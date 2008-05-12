@@ -22,9 +22,9 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
 #include "stickengine.h"
 
+#include <config.h>
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>

@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __PROPMODEL_H
-#define __PROPMODEL_H
+#ifndef PROPMODEL_H
+#define PROPMODEL_H
 
 
 #include <openbabel/mol.h>

@@ -23,7 +23,7 @@
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 
-#include <QtGui>
+#include <QMessageBox>
 
 using namespace std;
 using namespace OpenBabel;

@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __SPHEREENGINE_H
-#define __SPHEREENGINE_H
+#ifndef SPHEREENGINE_H
+#define SPHEREENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

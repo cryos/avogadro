@@ -24,9 +24,9 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
 #include "surfaceengine.h"
 
+#include <config.h>
 #include <avogadro/primitive.h>
 
 #include <openbabel/math/vector3.h>

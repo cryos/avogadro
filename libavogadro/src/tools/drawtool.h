@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __DRAWTOOL_H
-#define __DRAWTOOL_H
+#ifndef DRAWTOOL_H
+#define DRAWTOOL_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>

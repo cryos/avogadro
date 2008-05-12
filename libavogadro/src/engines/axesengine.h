@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __AXESENGINE_H
-#define __AXESENGINE_H
+#ifndef AXESENGINE_H
+#define AXESENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

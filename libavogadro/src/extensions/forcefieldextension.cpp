@@ -25,12 +25,13 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <QtGui>
 #include <QProgressDialog>
 #include <QWriteLocker>
 #include <QMutex>
 #include <QMutexLocker>
 #include <QAbstractTableModel>
+#include <QMessageBox>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -131,7 +132,7 @@ namespace Avogadro
     if (i == OptimizeGeometryIndex)
       return QString();
 
-    return tr("&Extensions") + ">" + tr("&Molecular Mechanics");
+    return tr("&Extensions") + '>' + tr("&Molecular Mechanics");
   }
 
   void ForceFieldExtension::setMolecule(Molecule *molecule)

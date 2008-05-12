@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __CYLINDER_H
-#define __CYLINDER_H
+#ifndef CYLINDER_H
+#define CYLINDER_H
 
 #include <avogadro/global.h>
 

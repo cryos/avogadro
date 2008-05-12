@@ -27,8 +27,8 @@
 #include <QWidget>
 #include <QItemDelegate>
 
-#ifndef __PRIMITIVETREEVIEW_H
-#define __PRIMITIVETREEVIEW_H
+#ifndef PRIMITIVETREEVIEW_H
+#define PRIMITIVETREEVIEW_H
 
 namespace Avogadro
 {

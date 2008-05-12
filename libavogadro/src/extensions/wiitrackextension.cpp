@@ -24,7 +24,6 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <QtGui>
 #include <QMessageBox>
 
 
@@ -81,7 +80,7 @@ namespace Avogadro {
 
   QString WiiTrackExtension::menuPath(QAction *) const
   {
-    return tr("&Extensions") + ">" + tr("&WiiTrack");
+    return tr("&Extensions") + '>' + tr("&WiiTrack");
   }
 
   QUndoCommand* WiiTrackExtension::performAction(QAction *action,

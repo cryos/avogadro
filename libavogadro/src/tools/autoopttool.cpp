@@ -382,7 +382,7 @@ namespace Avogadro {
       connect(m_settingsWidget, SIGNAL(destroyed()),
           this, SLOT(settingsWidgetDestroyed()));
 
-      // Check the force field is there, if not diable the start button
+      // Check the force field is there, if not disable the start button
       if (!m_forceField)
         m_buttonStartStop->setEnabled(false);
     }

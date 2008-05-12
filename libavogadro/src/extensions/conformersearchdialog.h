@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __CONFORMERSEARCHDIALOG_H
-#define __CONFORMERSEARCHDIALOG_H
+#ifndef CONFORMERSEARCHDIALOG_H
+#define CONFORMERSEARCHDIALOG_H
 
 #include <QDialog>
 #include <QButtonGroup>

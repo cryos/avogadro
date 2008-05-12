@@ -552,7 +552,7 @@ namespace Avogadro {
 
     // And now we set up a new entry into the combo list
     QString entryName(elementTranslator.name(index)); // (e.g., "Hydrogen")
-    entryName += " (" + QString::number(index) + ")";
+    entryName += " (" + QString::number(index) + ')';
 
     m_elementsIndex.insert(position, index);
     m_comboElements->insertItem(position, entryName);

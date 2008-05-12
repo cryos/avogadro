@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __UNDOSEQUENCE_H
-#define __UNDOSEQUENCE_H
+#ifndef UNDOSEQUENCE_H
+#define UNDOSEQUENCE_H
 
 #include <QUndoCommand>
 

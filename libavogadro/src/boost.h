@@ -1,5 +1,5 @@
-#ifndef __BOOST_H
-#define __BOOST_H
+#ifndef BOOST_H
+#define BOOST_H
 
 #include <Python.h>
 #include <boost/python.hpp>

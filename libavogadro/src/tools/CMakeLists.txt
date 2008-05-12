@@ -37,7 +37,7 @@ INSTALL(TARGETS drawtool DESTINATION ${DESTINATION_DIR})
 set(bondcentrictool_SRCS bondcentrictool.cpp skeletontree.cpp)
 qt4_add_resources(bondcentrictool_RC_SRCS bondcentrictool.qrc)
 qt4_automoc(${bondcentrictool_SRCS})
-ADD_LIBRARY(bondcentrictool SHARED skeletontree.cpp quaternion.cpp
+ADD_LIBRARY(bondcentrictool SHARED quaternion.cpp
                             ${bondcentrictool_SRCS} ${bondcentrictool_RC_SRCS})
 TARGET_LINK_LIBRARIES(bondcentrictool
   ${OPENBABEL2_LIBRARIES}

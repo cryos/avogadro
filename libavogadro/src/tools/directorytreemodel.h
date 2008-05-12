@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __DIRECTORYTREEMODEL_H
-#define __DIRECTORYTREEMODEL_H
+#ifndef DIRECTORYTREEMODEL_H
+#define DIRECTORYTREEMODEL_H
 
 #include <QAbstractItemModel>
 #include <QModelIndex>

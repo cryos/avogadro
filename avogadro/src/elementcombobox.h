@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __ELEMENTCOMBOBOX_H
-#define __ELEMENTCOMBOBOX_H
+#ifndef ELEMENTCOMBOBOX_H
+#define ELEMENTCOMBOBOX_H
 
 
 

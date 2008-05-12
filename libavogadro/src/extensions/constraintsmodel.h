@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __CONSTRAINTSMODEL_H
-#define __CONSTRAINTSMODEL_H
+#ifndef CONSTRAINTSMODEL_H
+#define CONSTRAINTSMODEL_H
 
 
 #include <openbabel/forcefield.h>

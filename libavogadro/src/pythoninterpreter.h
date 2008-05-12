@@ -23,8 +23,8 @@
  **********************************************************************/
 
 
-#ifndef __AVOPYTHON_H
-#define __AVOPYTHON_H
+#ifndef AVOPYTHON_H
+#define AVOPYTHON_H
 
 #include <avogadro/global.h>
 #include <avogadro/boost.h>

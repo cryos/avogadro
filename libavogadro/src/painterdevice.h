@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __PAINTERDEVICE_H
-#define __PAINTERDEVICE_H
+#ifndef PAINTERDEVICE_H
+#define PAINTERDEVICE_H
 
 #include <avogadro/painter.h>
 

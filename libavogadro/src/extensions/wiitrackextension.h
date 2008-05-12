@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __WIITRACKEXTENSION_H
-#define __WIITRACKEXTENSION_H
+#ifndef WIITRACKEXTENSION_H
+#define WIITRACKEXTENSION_H
 
 #include <avogadro/extension.h>
 

@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __EYECANDY_H
-#define __EYECANDY_H
+#ifndef EYECANDY_H
+#define EYECANDY_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>

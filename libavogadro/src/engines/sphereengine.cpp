@@ -24,9 +24,9 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
 #include "sphereengine.h"
 
+#include <config.h>
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>

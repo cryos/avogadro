@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __GLOBAL_H
-#define __GLOBAL_H
+#ifndef GLOBAL_H
+#define GLOBAL_H
 
 #include <QTranslator>
 

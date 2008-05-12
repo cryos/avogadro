@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __HYDROGENSEXTENSION_H
-#define __HYDROGENSEXTENSION_H
+#ifndef HYDROGENSEXTENSION_H
+#define HYDROGENSEXTENSION_H
 
 
 #include <openbabel/mol.h>

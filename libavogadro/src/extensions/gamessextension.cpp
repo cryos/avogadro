@@ -35,9 +35,10 @@
 #include <QTreeView>
 #include <QVBoxLayout>
 
-#include <QtGui>
 #include <QFrame>
 #include <QSpacerItem>
+#include <QMessageBox>
+#include <QHeaderView>
 
 using namespace std;
 using namespace OpenBabel;
@@ -88,7 +89,7 @@ namespace Avogadro
 
   QString GamessExtension::menuPath(QAction *) const
   {
-    return tr("&Extensions") + ">" + tr("&GAMESS");
+    return tr("&Extensions") + '>' + tr("&GAMESS");
   }
 
   QDockWidget * GamessExtension::dockWidget()

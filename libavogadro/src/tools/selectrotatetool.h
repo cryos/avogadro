@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __SELECTROTATETOOL_H
-#define __SELECTROTATETOOL_H
+#ifndef SELECTROTATETOOL_H
+#define SELECTROTATETOOL_H
 
 #include <avogadro/tool.h>
 #include <avogadro/glwidget.h>

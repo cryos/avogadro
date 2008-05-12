@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __H2METHYLEXTENSION_H
-#define __H2METHYLEXTENSION_H
+#ifndef H2METHYLEXTENSION_H
+#define H2METHYLEXTENSION_H
 
 
 #include <openbabel/mol.h>

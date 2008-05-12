@@ -22,12 +22,11 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __BSDYENGINE_H
-#define __BSDYENGINE_H
+#ifndef BSDYENGINE_H
+#define BSDYENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
-
 
 #include "ui_bsdysettingswidget.h"
 

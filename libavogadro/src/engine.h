@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ENGINE_H
-#define __ENGINE_H
+#ifndef ENGINE_H
+#define ENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/primitivelist.h>

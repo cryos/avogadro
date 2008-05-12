@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
 #include "hbondengine.h"
+#include <config.h>
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>

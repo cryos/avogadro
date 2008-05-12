@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __RIBBONENGINE_H
-#define __RIBBONENGINE_H
+#ifndef RIBBONENGINE_H
+#define RIBBONENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

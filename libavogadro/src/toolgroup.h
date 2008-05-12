@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __TOOLGROUP_H
-#define __TOOLGROUP_H
+#ifndef TOOLGROUP_H
+#define TOOLGROUP_H
 
 #include <QObject>
 #include <avogadro/tool.h>

@@ -22,8 +22,8 @@
  02110-1301, USA.
  **********************************************************************/
 
-#ifndef __PERIODICTABLEVIEW_H
-#define __PERIODICTABLEVIEW_H
+#ifndef PERIODICTABLEVIEW_H
+#define PERIODICTABLEVIEW_H
 
 #include <avogadro/global.h>
 

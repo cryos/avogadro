@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __FILETREEITEM_H
-#define __FILETREEITEM_H
+#ifndef FILETREEITEM_H
+#define FILETREEITEM_H
 
 #include <QList>
 #include <QVariant>
@@ -50,7 +50,7 @@ namespace Avogadro {
   class A_EXPORT FileTreeItem
   {
     public:
-      FileTreeItem(const QList<QVariant> &data, FileTreeItem *parent = 0, QString path = "");
+      explicit FileTreeItem(const QList<QVariant> &data, FileTreeItem *parent = 0, QString path = "");
       ~FileTreeItem();
 
       void appendChild(FileTreeItem *child);

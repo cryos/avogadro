@@ -24,11 +24,8 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <QtGui>
-#include <QWriteLocker>
-#include <QMutex>
-#include <QMutexLocker>
 #include <QAbstractTableModel>
+#include <QAction>
 
 using namespace std;
 using namespace OpenBabel;
@@ -102,7 +99,7 @@ namespace Avogadro
     case AnglePropIndex:
     case TorsionPropIndex:
     case ConformerIndex:
-      return tr("&Extensions") + ">" + tr("&Properties");
+      return tr("&Extensions") + '>' + tr("&Properties");
     case CartesianIndex:
       return tr("&Build");
       break;

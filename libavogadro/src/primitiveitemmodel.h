@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __PRIMITIVEITEMMODEL_H
-#define __PRIMITIVEITEMMODEL_H
+#ifndef PRIMITIVEITEMMODEL_H
+#define PRIMITIVEITEMMODEL_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

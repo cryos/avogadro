@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __SPHERE_H
-#define __SPHERE_H
+#ifndef SPHERE_H
+#define SPHERE_H
 
 #include <avogadro/global.h>
 

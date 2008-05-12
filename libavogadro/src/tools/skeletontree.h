@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __SKELETONTREE_H
-#define __SKELETONTREE_H
+#ifndef SKELETONTREE_H
+#define SKELETONTREE_H
 
 #include "quaternion.h"
 
@@ -120,6 +120,8 @@ namespace Avogadro {
    */
   class SkeletonTree : public QObject
   {
+    Q_OBJECT
+
     public:
       //! Constructor
        SkeletonTree();

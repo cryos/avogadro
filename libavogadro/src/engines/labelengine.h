@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __LABELENGINE_H
-#define __LABELENGINE_H
+#ifndef LABELENGINE_H
+#define LABELENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

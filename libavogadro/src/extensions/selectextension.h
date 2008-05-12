@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __SELECTEXTENSION_H
-#define __SELECTEXTENSION_H
+#ifndef SELECTEXTENSION_H
+#define SELECTEXTENSION_H
 
 #include <avogadro/extension.h>
 #include <avogadro/periodictableview.h>

@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ORBITALEXTENSION_H
-#define __ORBITALEXTENSION_H
+#ifndef ORBITALEXTENSION_H
+#define ORBITALEXTENSION_H
 
 #include "basisset.h"
 #include "orbitaldialog.h"

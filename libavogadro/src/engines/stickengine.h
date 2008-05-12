@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __STICKENGINE_H
-#define __STICKENGINE_H
+#ifndef STICKENGINE_H
+#define STICKENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

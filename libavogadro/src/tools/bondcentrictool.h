@@ -26,8 +26,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __BONDCENTRICTOOL_H
-#define __BONDCENTRICTOOL_H
+#ifndef BONDCENTRICTOOL_H
+#define BONDCENTRICTOOL_H
 
 #include "skeletontree.h"
 

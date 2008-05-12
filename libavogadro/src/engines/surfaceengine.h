@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __SURFACEENGINE_H
-#define __SURFACEENGINE_H
+#ifndef SURFACEENGINE_H
+#define SURFACEENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

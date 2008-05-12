@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __POVPAINTER_H
-#define __POVPAINTER_H
+#ifndef POVPAINTER_H
+#define POVPAINTER_H
 
 #include <avogadro/global.h>
 #include <avogadro/painter.h>

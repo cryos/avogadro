@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __RINGENGINE_H
-#define __RINGENGINE_H
+#ifndef RINGENGINE_H
+#define RINGENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

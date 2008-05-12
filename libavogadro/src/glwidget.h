@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __GLWIDGET_H
-#define __GLWIDGET_H
+#ifndef GLWIDGET_H
+#define GLWIDGET_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

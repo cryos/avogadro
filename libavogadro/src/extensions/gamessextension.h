@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __GAMESSEXTENSION_H
-#define __GAMESSEXTENSION_H
+#ifndef GAMESSEXTENSION_H
+#define GAMESSEXTENSION_H
 
 #include "gamessinputdialog.h"
 #include "gamessefpmatchdialog.h"

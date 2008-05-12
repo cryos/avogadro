@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __POCKETDIALOG_H
-#define __POCKETDIALOG_H
+#ifndef POCKETDIALOG_H
+#define POCKETDIALOG_H
 
 #include <QDialog>
 #include <QButtonGroup>

@@ -22,8 +22,9 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
 #include "bsdyengine.h"
+
+#include <config.h>
 #include <avogadro/camera.h>
 #include <avogadro/painter.h>
 #include <avogadro/color.h>

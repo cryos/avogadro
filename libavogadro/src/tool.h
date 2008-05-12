@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __TOOL_H
-#define __TOOL_H
+#ifndef TOOL_H
+#define TOOL_H
 
 #include <avogadro/global.h>
 

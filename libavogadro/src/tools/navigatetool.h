@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __NAVIGATETOOL_H
-#define __NAVIGATETOOL_H
+#ifndef NAVIGATETOOL_H
+#define NAVIGATETOOL_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>

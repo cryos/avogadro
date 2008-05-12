@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __PRIMITIVELIST_H
-#define __PRIMITIVELIST_H
+#ifndef PRIMITIVELIST_H
+#define PRIMITIVELIST_H
 
 #include <avogadro/global.h>
 #include <avogadro/primitive.h>

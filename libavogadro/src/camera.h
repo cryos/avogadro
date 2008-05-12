@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __CAMERA_H
-#define __CAMERA_H
+#ifndef CAMERA_H
+#define CAMERA_H
 
 #include <avogadro/global.h>
 #include <eigen/projective.h>

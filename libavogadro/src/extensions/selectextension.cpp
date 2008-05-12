@@ -27,7 +27,9 @@
 #include <openbabel/mol.h>
 #include <openbabel/parsmart.h>
 
-#include <QtGui>
+#include <QLineEdit>
+#include <QInputDialog>
+#include <QAction>
 
 using namespace std;
 using namespace OpenBabel;

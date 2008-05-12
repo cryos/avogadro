@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __TEXTRENDERER_H
-#define __TEXTRENDERER_H
+#ifndef TEXTRENDERER_H
+#define TEXTRENDERER_H
 
 #include <avogadro/global.h>
 #include <eigen/vector.h>

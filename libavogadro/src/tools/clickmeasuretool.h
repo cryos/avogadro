@@ -23,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __CLICKMEASURETOOL_H
-#define __CLICKMEASURETOOL_H
+#ifndef CLICKMEASURETOOL_H
+#define CLICKMEASURETOOL_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>

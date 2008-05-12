@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __ENGINEITEMMODEL_H
-#define __ENGINEITEMMODEL_H
+#ifndef ENGINEITEMMODEL_H
+#define ENGINEITEMMODEL_H
 
 #include <QModelIndex>
 

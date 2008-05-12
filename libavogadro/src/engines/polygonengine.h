@@ -22,8 +22,8 @@
  02110-1301, USA.
  **********************************************************************/
 
-#ifndef __POLYGONENGINE_H
-#define __POLYGONENGINE_H
+#ifndef POLYGONENGINE_H
+#define POLYGONENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>

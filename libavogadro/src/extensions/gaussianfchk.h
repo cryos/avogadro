@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef __GAUSSIANFCHK_H
-#define __GAUSSIANFCHK_H
+#ifndef GAUSSIANFCHK_H
+#define GAUSSIANFCHK_H
 
 #include "basisset.h"
 #include <QString>
