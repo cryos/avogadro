@@ -66,20 +66,25 @@ find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Eigen REQUIRED) # find and setup Eigen
 find_package(Linguist REQUIRED) # find and setup Eigen
 
-# The CMake 2.6 FindBoost function is far better than the 2.4 version
-# So use it if possible
-if(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
-	message(STATUS "Using CMake 2.6")
-	set(CMAKE_2_6 TRUE)
-	find_package(Boost COMPONENTS python)
-	if(Boost_PYTHON_FOUND)
-		message(STATUS "Boost Python found!")
-	endif(Boost_PYTHON_FOUND)
-else(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
-	find_package(BoostPython)
-endif(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
+# This may not be the best way to do this - please correct me if I am wrong.
+# Getting rid of automagic is nice and so this seems reasonable.
+if(NOT ENABLE_PYTHON MATCHES FALSE)
+  # The CMake 2.6 FindBoost function is far better than the 2.4 version
+  # So use it if possible
+  if(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
+    message(STATUS "Using CMake 2.6")
+    find_package(Boost COMPONENTS python)
+    if(Boost_PYTHON_FOUND)
+      message(STATUS "Boost Python found!")
+    endif(Boost_PYTHON_FOUND)
+  else(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
+    find_package(BoostPython)
+  endif(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
 
-find_package(PythonLibs)
+  find_package(PythonLibs)
+else(NOT ENABLE_PYTHON MATCHES FALSE)
+  message(STATUS "Python support disabled.")
+endif(NOT ENABLE_PYTHON MATCHES FALSE)
 
 if(NOT LIB_INSTALL_DIR)
   set(LIB_INSTALL_DIR lib)
@@ -112,7 +117,7 @@ if(WIN32)
    set(avogadro_FRAGMENTS "C:\Program Files\Avogadro")
 endif(WIN32)
 if(APPLE)
-   set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")   
+   set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")
 endif(APPLE)
 
 # When installing, make sure to install some fragments
