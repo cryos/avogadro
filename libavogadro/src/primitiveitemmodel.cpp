@@ -64,7 +64,7 @@ namespace Avogadro {
 
     connect(engine, SIGNAL(changed()), this, SLOT(engineChanged()));
     PrimitiveList list = engine->primitives();
-    foreach(int row, d->rowTypeMap.keys())
+    foreach(const int row, d->rowTypeMap.keys())
     {
       d->size[row] = list.count(d->rowTypeMap[row]);
     }
@@ -166,7 +166,7 @@ namespace Avogadro {
   void PrimitiveItemModel::engineChanged()
   {
     PrimitiveList list = d->engine->primitives();
-    foreach(int row, d->rowTypeMap.keys())
+    foreach(const int row, d->rowTypeMap.keys())
     {
       Primitive::Type type = d->rowTypeMap[row];
       int newsize = list.count(type);
