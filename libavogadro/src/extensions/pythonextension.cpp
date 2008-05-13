@@ -72,8 +72,7 @@ namespace Avogadro
         m_module = object(handle<>(PyImport_ReloadModule(m_module.ptr())));
       }
       catch(error_already_set const &)
-      {
-      }
+      { }
       m_lastModified = fileInfo.lastModified();
       qDebug() << fileInfo.lastModified();
       qDebug() << m_lastModified;
@@ -88,35 +87,42 @@ namespace Avogadro
 
   PythonExtension::PythonExtension( QObject *parent ) : Extension( parent ), m_terminalDock(0)
   {
-    // create this directory for the user
+    // create this directory for the user if it does not exist
     QDir pluginDir = QDir::home();
-    if(!pluginDir.cd(".avogadro"))
-    {
-      if(!pluginDir.mkdir(".avogadro"))
-      {
-        return;
+
+#ifdef Q_WS_MAC
+    pluginDir.cd("Library/Application Support";
+    if (!pluginDir.cd("Avogadro")) {
+      if(!pluginDir.mkdir("Avogadro")) {
+        return; // We can't create directories here
       }
-      if(!pluginDir.cd(".avogadro"))
-      {
-        return;
+      if(!pluginDir.cd("Avogadro")) {
+        return; // We created the directory, but can't go into it?
       }
     }
+#else
+    if(!pluginDir.cd(".avogadro")) {
+      if(!pluginDir.mkdir(".avogadro")) {
+        return; // We can't create directories here
+      }
+      if(!pluginDir.cd(".avogadro")) {
+        return; // We created the directory, but can't go into it?
+      }
+    }
+#endif
 
-    if(!pluginDir.cd("scripts"))
-    {
-      if(!pluginDir.mkdir("scripts"))
-      {
+
+    if(!pluginDir.cd("scripts")) {
+      if(!pluginDir.mkdir("scripts")) {
         return;
       }
-      if(!pluginDir.cd("scripts"))
-      {
+      if(!pluginDir.cd("scripts")) {
         return;
       }
     }
 
     loadScripts(pluginDir);
 
-//    loadScripts(Library::prefix() + "/share/libavogadro-" + Library::version() + "/scripts");
   }
 
   void PythonExtension::loadScripts(QDir dir)
@@ -145,14 +151,6 @@ namespace Avogadro
 
         m_scripts.append(script);
 
-        
-//        dict local;
-//        local["test"] = script.module();
-
-  //      qDebug() << m_interpreter.run("import test", local);
-//        qDebug() << m_interpreter.run("print test", local);
-//        qDebug() << m_interpreter.run("print dir(test)", local);
-  //      qDebug() << m_interpreter.run("print sys.path", local);
       }
     }
   }
