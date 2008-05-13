@@ -99,7 +99,7 @@
     </widget>
    </item>
    <item row="3" column="0" >
-    <widget class="QLabel" name="label" >
+    <widget class="QLabel" name="customColorLabel" >
      <property name="text" >
       <string>Custom Color:</string>
      </property>

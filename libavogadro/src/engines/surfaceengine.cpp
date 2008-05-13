@@ -359,9 +359,12 @@ namespace Avogadro {
   void SurfaceEngine::setColorMode(int value)
   {
     if (m_settingsWidget) {
+			// Enable/Disable both the custom color widget and label
       if (value == 1) { // ESP
+				m_settingsWidget->customColorLabel->setEnabled(false);
         m_settingsWidget->customColorButton->setEnabled(false);
       } else { // Custom color
+				m_settingsWidget->customColorLabel->setEnabled(true);
         m_settingsWidget->customColorButton->setEnabled(true);
       }
     }
