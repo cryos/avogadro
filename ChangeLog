@@ -1,3 +1,10 @@
+2008-05-14  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/extensions/animation*.*: Basic animation extension.
+
+	* testfiles/spc216.*: Added pdb topology and xtc trajectory to test
+	animation. 
+
 2008-05-13  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* CMakeLists.txt: Allow ENABLE_PYTHON variable to allow disabling of

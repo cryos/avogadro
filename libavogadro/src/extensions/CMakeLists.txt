@@ -188,3 +188,20 @@ if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
 	FILE(GLOB python_SCRIPTS "python/*.py")
 	INSTALL(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/scripts)
 endif(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
+
+### Animation
+set(animationextension_SRCS animationextension.cpp animationdialog.cpp)
+qt4_add_resources(animationextension_RC_SRCS animation.qrc)
+qt4_wrap_ui(animationextension_UIS_H animationdialog.ui)
+qt4_automoc(${animationextension_SRCS})
+ADD_LIBRARY(animationextension SHARED ${animationextension_SRCS} 
+	${animationextension_UIS_H} ${animationextension_RC_SRCS} )
+TARGET_LINK_LIBRARIES(animationextension
+	${OPENBABEL2_LIBRARIES}
+	${QT_LIBRARIES}
+    ${OPENGL_LIBRARIES}
+	avogadro-lib
+)
+INSTALL(TARGETS animationextension DESTINATION ${DESTINATION_DIR})
+
+
