@@ -1,3 +1,7 @@
+2008-05-13  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/tools/drawtool.cpp: Fixed uninitialised variables.
+
 2008-05-12  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* avogadro/src/mainwindow.cpp: Fixed the code to fail properly when

@@ -63,8 +63,10 @@ namespace Avogadro {
                                         m_prevBond(0),
                                         m_prevBondOrder(0),
                                         m_addHydrogens(2),
+                                        m_comboElements(0),
                                         m_addHydrogensCheck(0),
                                         m_periodicTable(0),
+                                        m_fragmentDialog(0),
                                         m_settingsWidget(0)
   {
     QAction *action = activateAction();
