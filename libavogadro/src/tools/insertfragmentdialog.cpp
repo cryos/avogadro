@@ -65,13 +65,12 @@ namespace Avogadro {
   QStringList DefaultDirectoryList()
   {
     QStringList _directoryList;
-    // This needs to be set based on the Cmake install prefix. Help here is welcome.
 #ifdef Q_WS_X11
-    _directoryList << "/usr/shared/avogadro/fragments";
-    _directoryList << "/usr/local/shared/avogadro/fragments";
+    _directoryList << QString( INSTALL_PREFIX ) + "/shared/avogadro/fragments";
+    _directoryList << QDir::homePath() + "/.avogadro/fragments";
 #endif
 #ifdef Q_WS_WIN
-    _directoryList << "C:\Program Files\Avogadro\fragments";
+    _directoryList << "C:\\Program Files\\Avogadro\\Fragments";
 #endif
 #ifdef Q_WS_MAC
     _directoryList << "/Library/Application Support/Avogadro/Fragments";

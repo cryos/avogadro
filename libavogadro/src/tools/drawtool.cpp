@@ -727,10 +727,10 @@ namespace Avogadro {
       m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
     if(m_fragmentDialog) {
       m_fragmentDialog->setSmilesString(settings.value("smiles").toString());
-      // TODO: Linux, Mac, and Windows variants
-      QString dir = QDir::homePath() + "/Library/Application Support/Avogadro/Molecules";
-      QString directoryList = settings.value("fragmentPath", dir).toString();
-      m_fragmentDialog->setDirectoryList(directoryList.split('\n'));
+      if (settings.contains("fragmentPath")) {
+        QString directoryList = settings.value("fragmentPath").toString();
+        m_fragmentDialog->setDirectoryList(directoryList.split('\n'));
+      }
     }
   }
 }
