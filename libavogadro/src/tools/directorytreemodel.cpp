@@ -59,8 +59,13 @@ namespace Avogadro {
 
   int DirectoryTreeModel::columnCount(const QModelIndex &parent) const
   {
-    if (parent.isValid())
-      return static_cast<FileTreeItem*>(parent.internalPointer())->columnCount();
+    if (parent.isValid()) {
+      FileTreeItem* item = static_cast<FileTreeItem*>(parent.internalPointer());
+      if (!item)
+        return 0;
+      else
+        return item->columnCount();
+    }
     else
       return _rootItem->columnCount();
   }
@@ -74,6 +79,8 @@ namespace Avogadro {
       return QVariant();
 
     FileTreeItem *item = static_cast<FileTreeItem*>(index.internalPointer());
+    if (!item)
+      return QVariant();
 
     return item->data(index.column());
   }
@@ -84,6 +91,8 @@ namespace Avogadro {
       return QString();
 
     FileTreeItem *item = static_cast<FileTreeItem*>(index.internalPointer());
+    if (!item)
+      return QString();
 
     return item->filePath(); // This is a special property of our tree items and isn't user-visible
   }
@@ -111,12 +120,15 @@ namespace Avogadro {
     if (!hasIndex(row, column, parent))
       return QModelIndex();
 
-    FileTreeItem *parentItem;
+    FileTreeItem *parentItem = NULL;
 
     if (!parent.isValid())
       parentItem = _rootItem;
     else
       parentItem = static_cast<FileTreeItem*>(parent.internalPointer());
+
+    if (!parentItem)
+      return QModelIndex();
 
     FileTreeItem *childItem = parentItem->child(row);
     if (childItem)
@@ -131,9 +143,12 @@ namespace Avogadro {
       return QModelIndex();
 
     FileTreeItem *childItem = static_cast<FileTreeItem*>(index.internalPointer());
+    if (!childItem)
+      return QModelIndex();
+
     FileTreeItem *parentItem = childItem->parent();
 
-    if (parentItem == _rootItem)
+    if (!parentItem || parentItem == _rootItem)
       return QModelIndex();
 
     return createIndex(parentItem->row(), 0, parentItem);
@@ -150,6 +165,9 @@ namespace Avogadro {
     else
       parentItem = static_cast<FileTreeItem*>(parent.internalPointer());
 
+    if (!parentItem)
+      return 0;
+      
     return parentItem->childCount();
   }
 

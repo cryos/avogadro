@@ -24,6 +24,8 @@
 
 #include "insertfragmentdialog.h"
 #include "directorytreemodel.h"
+// Defines INSTALL_PREFIX among other things
+#include <config.h>
 
 #include <avogadro/primitive.h>
 
@@ -66,11 +68,7 @@ namespace Avogadro {
   {
     QStringList _directoryList;
 #ifdef Q_WS_X11
-    //_directoryList << QString( INSTALL_PREFIX ) + "/shared/avogadro/fragments";
-    // INSTALL_PREFIX isn't defined, try both /usr and /usr/local, the non-existing 
-    // will be ignored in setupModelData
-    _directoryList << "/usr/share/avogadro/fragments"; 
-    _directoryList << "/usr/local/share/avogadro/fragments";
+    _directoryList << QString( INSTALL_PREFIX ) + "/share/avogadro/fragments";
     _directoryList << QDir::homePath() + "/.avogadro/fragments";
 #endif
 #ifdef Q_WS_WIN
