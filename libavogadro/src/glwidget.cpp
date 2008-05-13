@@ -1050,6 +1050,7 @@ namespace Avogadro {
     // disconnect from our old molecule
     if ( d->molecule ) {
       QObject::disconnect( d->molecule, 0, this, 0 );
+      d->uc = NULL; // The unit cell is associated with our old molecule, we don't have to free it.
     }
 
     d->molecule = molecule;
