@@ -1,9 +1,13 @@
+2008-05-14  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/pythonextension.cpp: Fixed typo.
+
 2008-05-14  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/extensions/animation*.*: Basic animation extension.
 
 	* testfiles/spc216.*: Added pdb topology and xtc trajectory to test
-	animation. 
+	animation.
 
 2008-05-13  Marcus D. Hanwell  <marcus@cryos.org>
 
@@ -52,7 +56,7 @@
 	* libavogadro/src/tools/directorytreemodel.cpp: Ignore hidden files.
 
 2008-05-08  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
-	
+
 	* libavogadro/src/extensions/forcefieldextension.cpp: Added a
 	QMessageBox::information() box to display the energy when the user
 	clicks "Calculate Energy". (#1947745)

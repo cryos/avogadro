@@ -91,7 +91,7 @@ namespace Avogadro
     QDir pluginDir = QDir::home();
 
 #ifdef Q_WS_MAC
-    pluginDir.cd("Library/Application Support";
+    pluginDir.cd("Library/Application Support");
     if (!pluginDir.cd("Avogadro")) {
       if(!pluginDir.mkdir("Avogadro")) {
         return; // We can't create directories here
@@ -215,7 +215,7 @@ namespace Avogadro
 //      PythonScript script = m_scripts.at(i - ScriptIndex);
 //      qDebug() << "Executing Script" << script.name();
       dict local;
-      local[m_scripts.at(i - ScriptIndex).moduleName().toStdString()] = 
+      local[m_scripts.at(i - ScriptIndex).moduleName().toStdString()] =
         m_scripts.at(i - ScriptIndex).module();
       QString output = m_interpreter.exec(m_scripts.at(i-ScriptIndex).moduleName() + ".extension()", local);
       emit message(output);
