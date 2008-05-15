@@ -14,7 +14,6 @@ include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}/..
   ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN_INCLUDE_DIR}
-  ${Boost_INCLUDE_DIRS}
   ${BOOST_PYTHON_INCLUDES}
   ${PYTHON_INCLUDE_PATH}
 )
@@ -45,6 +44,7 @@ QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 
 # you have to add link_directories before you add the target
 if(Boost_PYTHON_FOUND)
+	include_directories(${Boost_INCLUDE_DIRS})
 	LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
 endif(Boost_PYTHON_FOUND)
 

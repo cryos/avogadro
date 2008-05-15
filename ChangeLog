@@ -1,3 +1,8 @@
+2008-05-15  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/CMakeLists.txt: Only add the Boost_INCLUDE_DIR if
+	boost is found - fixes a CMake error with CMake 2.6.
+
 2008-05-14  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/pythonextension.cpp: Fixed typo.
