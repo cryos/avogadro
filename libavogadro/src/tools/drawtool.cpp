@@ -41,6 +41,7 @@
 #include <QtPlugin>
 #include <QLabel>
 #include <QDir>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -333,17 +334,35 @@ namespace Avogadro {
     if(_buttons & Qt::LeftButton && (event->modifiers() == Qt::NoModifier)) {
 
       if(m_beginAtomAdded || m_bond) {
+
+        // only add hydrogens to the atoms if it's the only thing 
+        // we've drawn.  else addbonds will adjust hydrogens.
+        int atomAddHydrogens = 0;
+        if(m_addHydrogens)
+        {
+          // if no bond then add on undo and redo
+          if(!m_bond) {
+            atomAddHydrogens = 1;
+          }
+          // if bond then only remove on undo, rest is handled by bond
+          else
+          {
+            atomAddHydrogens = 2;
+          }
+        }
+
+        // if we add a bond then we don't need 
         // we added At least the beginAtom or we created a bond to
         // an existing atom or to endAtom that we also created
         AddAtomDrawCommand *beginAtomDrawCommand = 0;
         if(m_beginAtomAdded) {
-          beginAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_beginAtom, m_addHydrogens);
+          beginAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_beginAtom, atomAddHydrogens);
           beginAtomDrawCommand->setText(tr("Draw Atom"));
         }
 
         AddAtomDrawCommand *endAtomDrawCommand = 0;
         if(m_endAtomAdded) {
-          endAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_endAtom, m_addHydrogens);
+          endAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_endAtom, atomAddHydrogens);
           endAtomDrawCommand->setText(tr("Draw Atom"));
         }
 

@@ -56,14 +56,18 @@ namespace Avogadro {
   /////////////////////////////////////////////////////////////////////////////
 
   class AddAtomDrawCommandPrivate {
-  public:
-    AddAtomDrawCommandPrivate() : molecule(0), atom(0) {};
+    public:
+      AddAtomDrawCommandPrivate() : molecule(0), atom(0), id(-1), prevId(false) {};
 
-    Molecule *molecule;
-    Atom *atom;
-    Eigen::Vector3d pos;
-    unsigned int element;
-    int adjustValence;
+      Molecule *molecule;
+      Atom *atom;
+      Eigen::Vector3d pos;
+      unsigned int element;
+      // if adjustValence == 1 then add on redo and undo
+      // if adjustValence == 2 then only adjust on undo (remove)
+      int adjustValence;
+      unsigned long id;
+      bool prevId;
   };
 
   AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos, unsigned int element, int adjustValence) : d(new AddAtomDrawCommandPrivate)
@@ -73,6 +77,7 @@ namespace Avogadro {
     d->pos = pos;
     d->element = element;
     d->adjustValence = adjustValence;
+    d->prevId = false;
   }
 
   AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, Atom *atom, int adjustValence) : d(new AddAtomDrawCommandPrivate)
@@ -83,6 +88,8 @@ namespace Avogadro {
     d->element = atom->GetAtomicNum();
     d->atom = atom;
     d->adjustValence = adjustValence;
+    d->id = atom->id();
+    d->prevId = true;
   }
 
   AddAtomDrawCommand::~AddAtomDrawCommand()
@@ -92,57 +99,73 @@ namespace Avogadro {
 
   void AddAtomDrawCommand::undo()
   {
-    if(d->atom)
-      {
-        d->molecule->BeginModify();
-        if (d->adjustValence) {
-          if (!d->atom->IsHydrogen())
-            d->molecule->DeleteHydrogens(d->atom);
+    Atom *atom = d->molecule->getAtomById(d->id);
+    if(atom)
+    {
+      d->molecule->BeginModify();
+      if (d->adjustValence) {
+      qDebug() << "Adjusting Atom valence";
+        if (!atom->IsHydrogen())
+        {
+          d->molecule->DeleteHydrogens(atom);
         }
-        d->molecule->DeleteAtom(d->atom);
-        d->molecule->EndModify();
-        d->molecule->update();
-	      d->atom = 0;
       }
+      d->molecule->DeleteAtom(atom);
+      d->molecule->EndModify();
+      //      d->molecule->update();
+    }
   }
 
   void AddAtomDrawCommand::redo()
   {
     if(d->atom) { // initial creation
-      if (d->adjustValence) {
+      if (d->adjustValence==1) {
+      qDebug() << "Adjusting Atom valence";
         if (!d->atom->IsHydrogen()) {
           d->molecule->DeleteHydrogens(d->atom);
           d->molecule->AddHydrogens(d->atom);
-	      }
+        }
       }
+      d->atom = 0;
       return;
     }
 
+    Atom *atom = 0;
     d->molecule->BeginModify();
-    d->atom = static_cast<Atom*>(d->molecule->NewAtom());
-    d->atom->setPos(d->pos);
-    d->atom->SetAtomicNum(d->element);
+    if(d->prevId)
+    {
+      atom = d->molecule->newAtom(d->id);
+    }
+    else
+    {
+      atom = d->molecule->newAtom();
+      d->id = atom->id();
+      d->prevId = true;
+    }
+    atom->setPos(d->pos);
+    atom->SetAtomicNum(d->element);
     d->molecule->EndModify();
-    if (d->adjustValence) {
-      if (!d->atom->IsHydrogen()) {
-        d->molecule->AddHydrogens(d->atom);
+    if (d->adjustValence==1) {
+      qDebug() << "Adjusting Atom valence";
+      if (!atom->IsHydrogen()) {
+        d->molecule->AddHydrogens(atom);
       }
     }
-    d->atom->update();
+    atom->update();
   }
-  
+
   /////////////////////////////////////////////////////////////////////////////
   // Delete Atom
   /////////////////////////////////////////////////////////////////////////////
 
   class DeleteAtomDrawCommandPrivate {
-  public:
-    DeleteAtomDrawCommandPrivate() : index(-1) {};
+    public:
+      DeleteAtomDrawCommandPrivate() : id(-1) {};
 
-    Molecule *molecule;
-    Molecule moleculeCopy;
-    int index;
-    int adjustValence;
+      Molecule *molecule;
+      Molecule moleculeCopy;
+      unsigned long id;
+      int adjustValence;
   };
 
   DeleteAtomDrawCommand::DeleteAtomDrawCommand(Molecule *molecule, int index, int adjustValence) : d(new DeleteAtomDrawCommandPrivate)
@@ -150,7 +173,7 @@ namespace Avogadro {
     setText(QObject::tr("Delete Atom"));
     d->molecule = molecule;
     d->moleculeCopy = (*(molecule));
-    d->index = index;
+    d->id = static_cast<Atom *>(molecule->GetAtom(index))->id();
     d->adjustValence = adjustValence;
   }
 
@@ -167,55 +190,57 @@ namespace Avogadro {
 
   void DeleteAtomDrawCommand::redo()
   {
-    OBAtom *atom = d->molecule->GetAtom(d->index);
+    Atom *atom = d->molecule->getAtomById(d->id);
     if(atom)
-      {
-        QList<OBAtom*> neighbors;
+    {
+      QList<OBAtom*> neighbors;
 
-        if (d->adjustValence) {
-          // Delete any hydrogens on this atom
-          d->molecule->DeleteHydrogens(atom);
-          // Now that we've deleted any attached hydrogens,
-          // Adjust the valence on any bonded atom
-          FOR_NBORS_OF_ATOM(n, atom) {
-            neighbors.append(&*n);
-            d->molecule->DeleteHydrogens(&*n);
-          }
+      if (d->adjustValence) {
+        // Delete any hydrogens on this atom
+        d->molecule->DeleteHydrogens(atom);
+        // Now that we've deleted any attached hydrogens,
+        // Adjust the valence on any bonded atom
+        FOR_NBORS_OF_ATOM(n, atom) {
+          neighbors.append(&*n);
+          d->molecule->DeleteHydrogens(&*n);
         }
-        d->molecule->DeleteAtom(atom);
-        
-        if (d->adjustValence) {
-          // Finally, add back hydrogens to neighbors
-          foreach (OBAtom *n, neighbors)
-            d->molecule->AddHydrogens(n);
-        }
-        d->molecule->update();
       }
+      d->molecule->DeleteAtom(atom);
+
+      if (d->adjustValence) {
+        // Finally, add back hydrogens to neighbors
+        foreach (OBAtom *n, neighbors)
+          d->molecule->AddHydrogens(n);
+      }
+      d->molecule->update();
+    }
   }
-  
+
   /////////////////////////////////////////////////////////////////////////////
   // Add Bond
   /////////////////////////////////////////////////////////////////////////////
 
   class AddBondDrawCommandPrivate {
-  public:
-    AddBondDrawCommandPrivate() : molecule(0), bond(0), beginAtom(0), endAtom(0) {};
+    public:
+      AddBondDrawCommandPrivate() : molecule(0), bond(0), id(-1), beginAtomId(-1), endAtomId(-1), prevId(false) {};
 
-    Molecule *molecule;
-    Bond *bond;
-    Atom *beginAtom;
-    Atom *endAtom;
-    Eigen::Vector3d pos;
-    unsigned int order;
-    int adjustValence;
+      Molecule *molecule;
+      Bond *bond;
+      unsigned long id;
+      unsigned int beginAtomId;
+      unsigned int endAtomId;
+      bool prevId;
+      Eigen::Vector3d pos;
+      unsigned int order;
+      int adjustValence;
   };
 
   AddBondDrawCommand::AddBondDrawCommand(Molecule *molecule, Atom *beginAtom, Atom *endAtom, unsigned int order, int adjustValence) : d(new AddBondDrawCommandPrivate)
   {
     setText(QObject::tr("Add Bond"));
     d->molecule = molecule;
-    d->beginAtom = beginAtom;
-    d->endAtom = endAtom;
+    d->beginAtomId = beginAtom->id();
+    d->endAtomId = endAtom->id();
     d->order = order;
     d->adjustValence = adjustValence;
   }
@@ -224,10 +249,12 @@ namespace Avogadro {
   {
     setText(QObject::tr("Add Bond"));
     d->molecule = molecule;
-    d->beginAtom = static_cast<Atom*>(bond->GetBeginAtom());
-    d->endAtom = static_cast<Atom*>(bond->GetEndAtom());
+    d->beginAtomId = static_cast<Atom*>(bond->GetBeginAtom())->id();
+    d->endAtomId = static_cast<Atom*>(bond->GetEndAtom())->id();
     d->order = bond->GetBondOrder();
     d->bond = bond;
+    d->prevId = true;
+    d->id = bond->id();
     d->adjustValence = adjustValence;
   }
 
@@ -238,91 +265,126 @@ namespace Avogadro {
 
   void AddBondDrawCommand::undo()
   {
-    if(d->bond)
-      {
-        d->molecule->BeginModify();
-        d->molecule->DeleteBond(d->bond);
-        d->molecule->EndModify();
-        if (d->adjustValence) {
-          if (!d->beginAtom->IsHydrogen())
-            d->molecule->DeleteHydrogens(d->beginAtom);
-          if (!d->endAtom->IsHydrogen())
-            d->molecule->DeleteHydrogens(d->endAtom);
-          
-          UnsetFlags(d->molecule);
-            
-	        if (!d->beginAtom->IsHydrogen())
-            d->molecule->AddHydrogens(d->beginAtom);
-          if (!d->endAtom->IsHydrogen())
-            d->molecule->AddHydrogens(d->endAtom);
+    Bond *bond = d->molecule->getBondById(d->id);
+    if(bond)
+    {
+      Atom *beginAtom = static_cast<Atom*>(bond->GetBeginAtom());
+      Atom *endAtom = static_cast<Atom*>(bond->GetEndAtom());
+
+      d->molecule->BeginModify();
+      d->molecule->DeleteBond(bond);
+      d->molecule->EndModify();
+      if (d->adjustValence) {
+        if (!beginAtom->IsHydrogen()) {
+          d->molecule->DeleteHydrogens(beginAtom);
+        }
+        if (!endAtom->IsHydrogen()) {
+          d->molecule->DeleteHydrogens(endAtom);
         }
 
-        d->molecule->update();
-        d->bond = 0;
+        UnsetFlags(d->molecule);
+
+        if (!beginAtom->IsHydrogen()) {
+          d->molecule->AddHydrogens(beginAtom);
+        }
+        if (!endAtom->IsHydrogen()) {
+          d->molecule->AddHydrogens(endAtom);
+        }
       }
+      d->molecule->update();
+      return;
+    }
   }
 
   void AddBondDrawCommand::redo()
   {
-    if(!d->beginAtom || !d->endAtom) {
+
+    if(d->bond) { // already created the bond
+      Atom *beginAtom = static_cast<Atom*>(d->bond->GetBeginAtom());
+      Atom *endAtom = static_cast<Atom*>(d->bond->GetEndAtom());
+      if (d->adjustValence) {
+        if (!beginAtom->IsHydrogen()) {
+          d->molecule->DeleteHydrogens(beginAtom);
+        }
+        if (!endAtom->IsHydrogen()) {
+          d->molecule->DeleteHydrogens(endAtom);
+        }
+
+        UnsetFlags(d->molecule);
+
+        if (!beginAtom->IsHydrogen()) {
+          d->molecule->AddHydrogens(beginAtom);
+        }
+        if (!endAtom->IsHydrogen()) {
+          d->molecule->AddHydrogens(endAtom);
+        }
+      }
+      d->bond = 0;
       return;
     }
 
-    if(d->bond) { // already created the bond
-      if (d->adjustValence) {
-	      if (!d->beginAtom->IsHydrogen())
-          d->molecule->DeleteHydrogens(d->beginAtom);
-        if (!d->endAtom->IsHydrogen())
-          d->molecule->DeleteHydrogens(d->endAtom);
-        
-        UnsetFlags(d->molecule);
-        
-        if (!d->beginAtom->IsHydrogen())
-	        d->molecule->AddHydrogens(d->beginAtom);
-        if (!d->endAtom->IsHydrogen())
-          d->molecule->AddHydrogens(d->endAtom);
-      }
-      d->bond->SetBondOrder(d->order);
-      
+    Atom *beginAtom = d->molecule->getAtomById(d->beginAtomId);
+    Atom *endAtom = d->molecule->getAtomById(d->endAtomId);
+
+    if(!beginAtom || !endAtom)
+    {
       return;
     }
 
     d->molecule->BeginModify();
-    d->bond = static_cast<Bond *>(d->molecule->NewBond());
-    d->bond->SetBondOrder(d->order);
-    d->bond->SetBegin(d->beginAtom);
-    d->bond->SetEnd(d->endAtom);
-    d->beginAtom->AddBond(d->bond);
-    d->endAtom->AddBond(d->bond);
+    Bond *bond;
+    if(d->prevId)
+    {
+      bond = d->molecule->newBond(d->id);
+    }
+    else
+    {
+      bond = d->molecule->newBond();
+      d->id = bond->id();
+      d->prevId = true;
+    }
+    bond->SetBondOrder(d->order);
+    bond->SetBegin(beginAtom);
+    bond->SetEnd(endAtom);
+    beginAtom->AddBond(bond);
+    endAtom->AddBond(bond);
     d->molecule->EndModify();
     if (d->adjustValence) {
-      if (!d->beginAtom->IsHydrogen())
-        d->molecule->DeleteHydrogens(d->beginAtom);
-      if (!d->endAtom->IsHydrogen())
-        d->molecule->DeleteHydrogens(d->endAtom);
-      
+      if (!beginAtom->IsHydrogen())
+      {
+        d->molecule->DeleteHydrogens(beginAtom);
+      }
+      if (!endAtom->IsHydrogen())
+      {
+        d->molecule->DeleteHydrogens(endAtom);
+      }
+
       UnsetFlags(d->molecule);
-      
-      if (!d->beginAtom->IsHydrogen())
-        d->molecule->AddHydrogens(d->endAtom);
-      if (!d->endAtom->IsHydrogen())
-        d->molecule->AddHydrogens(d->beginAtom);
+
+      if (!beginAtom->IsHydrogen())
+      {
+        d->molecule->AddHydrogens(endAtom);
+      }
+      if (!endAtom->IsHydrogen())
+      {
+        d->molecule->AddHydrogens(beginAtom);
+      }
     }
     d->molecule->update();
   }
-  
+
   /////////////////////////////////////////////////////////////////////////////
   // Delete Bond
   /////////////////////////////////////////////////////////////////////////////
 
   class DeleteBondDrawCommandPrivate {
-  public:
-    DeleteBondDrawCommandPrivate() : index(-1) {};
+    public:
+      DeleteBondDrawCommandPrivate() : id(-1) {};
 
-    Molecule *molecule;
-    Molecule moleculeCopy;
-    int index;
-    int adjustValence;
+      Molecule *molecule;
+      Molecule moleculeCopy;
+      unsigned long id;
+      int adjustValence;
   };
 
   DeleteBondDrawCommand::DeleteBondDrawCommand(Molecule *molecule, int index, int adjustValence) : d(new DeleteBondDrawCommandPrivate)
@@ -330,7 +392,7 @@ namespace Avogadro {
     setText(QObject::tr("Delete Bond"));
     d->molecule = molecule;
     d->moleculeCopy = (*(molecule));
-    d->index = index;
+    d->id = static_cast<Bond *>(molecule->GetBond(index))->id();
     d->adjustValence = adjustValence;
   }
 
@@ -347,38 +409,38 @@ namespace Avogadro {
 
   void DeleteBondDrawCommand::redo()
   {
-    OBBond *bond = d->molecule->GetBond(d->index);
+    Bond *bond = d->molecule->getBondById(d->id);
     if(bond)
-      {
-        d->molecule->DeleteBond(bond);
-        if (d->adjustValence) {
-          OBAtom *a1, *a2;
-          a1 = bond->GetBeginAtom();
-          a2 = bond->GetEndAtom();
-          d->molecule->DeleteHydrogens(a1);
-          d->molecule->DeleteHydrogens(a2);
+    {
+      d->molecule->DeleteBond(bond);
+      if (d->adjustValence) {
+        OBAtom *a1, *a2;
+        a1 = bond->GetBeginAtom();
+        a2 = bond->GetEndAtom();
+        d->molecule->DeleteHydrogens(a1);
+        d->molecule->DeleteHydrogens(a2);
 
-          UnsetFlags(d->molecule);
+        UnsetFlags(d->molecule);
 
-          d->molecule->AddHydrogens(a1);
-          d->molecule->AddHydrogens(a2);
-        }
-        d->molecule->update();
+        d->molecule->AddHydrogens(a1);
+        d->molecule->AddHydrogens(a2);
       }
+      d->molecule->update();
+    }
   }
-  
+
   /////////////////////////////////////////////////////////////////////////////
   // Change Element
   /////////////////////////////////////////////////////////////////////////////
 
   class ChangeElementDrawCommandPrivate {
-  public:
-    ChangeElementDrawCommandPrivate() : molecule(0), index(0) {};
+    public:
+      ChangeElementDrawCommandPrivate() : molecule(0), id(0) {};
 
-    Molecule *molecule;
-    unsigned int newElement, oldElement;
-    int index;
-    int adjustValence;
+      Molecule *molecule;
+      unsigned int newElement, oldElement;
+      unsigned long id;
+      int adjustValence;
   };
 
   ChangeElementDrawCommand::ChangeElementDrawCommand(Molecule *molecule, Atom *atom, unsigned int oldElement, int adjustValence) : d(new ChangeElementDrawCommandPrivate)
@@ -387,7 +449,7 @@ namespace Avogadro {
     d->molecule = molecule;
     d->newElement = atom->GetAtomicNum();
     d->oldElement = oldElement;
-    d->index = atom->GetIdx();
+    d->id = atom->id();
     d->adjustValence = adjustValence;
   }
 
@@ -398,61 +460,61 @@ namespace Avogadro {
 
   void ChangeElementDrawCommand::undo()
   {
-    OBAtom *atom = d->molecule->GetAtom(d->index);
-    
+    OBAtom *atom = d->molecule->getAtomById(d->id);
+
     if(atom)
-      {
-        // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
-        d->molecule->BeginModify();
-        atom->SetAtomicNum(d->oldElement);
-        d->molecule->EndModify();
-        d->molecule->update();
-        if (d->adjustValence) {
-          UnsetFlags(d->molecule);
-          d->molecule->DeleteHydrogens(atom);
-          d->molecule->AddHydrogens(atom);
-        }
+    {
+      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+      d->molecule->BeginModify();
+      atom->SetAtomicNum(d->oldElement);
+      d->molecule->EndModify();
+      d->molecule->update();
+      if (d->adjustValence) {
+        UnsetFlags(d->molecule);
+        d->molecule->DeleteHydrogens(atom);
+        d->molecule->AddHydrogens(atom);
       }
+    }
   }
 
   void ChangeElementDrawCommand::redo()
   {
-    OBAtom *atom = d->molecule->GetAtom(d->index);
-    
+    OBAtom *atom = d->molecule->GetAtom(d->id);
+
     if(atom)
-      {
-        // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
-        d->molecule->BeginModify();
-        atom->SetAtomicNum(d->newElement);
-        d->molecule->EndModify();
-        if (d->adjustValence) {
-          UnsetFlags(d->molecule);
-          d->molecule->DeleteHydrogens(atom);
-          d->molecule->AddHydrogens(atom);
-        }
-        d->molecule->update();
+    {
+      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+      d->molecule->BeginModify();
+      atom->SetAtomicNum(d->newElement);
+      d->molecule->EndModify();
+      if (d->adjustValence) {
+        UnsetFlags(d->molecule);
+        d->molecule->DeleteHydrogens(atom);
+        d->molecule->AddHydrogens(atom);
       }
+      d->molecule->update();
+    }
   }
-  
+
   /////////////////////////////////////////////////////////////////////////////
   // Change Bond Order
   /////////////////////////////////////////////////////////////////////////////
 
   class ChangeBondOrderDrawCommandPrivate {
-  public:
-    ChangeBondOrderDrawCommandPrivate() : molecule(0), bond(0) {};
+    public:
+      ChangeBondOrderDrawCommandPrivate() : molecule(0), id(-1) {};
 
-    Molecule *molecule;
-    Bond *bond;
-    unsigned int newBondOrder, oldBondOrder;
-    int adjustValence;
+      Molecule *molecule;
+      unsigned long id;
+      unsigned int newBondOrder, oldBondOrder;
+      int adjustValence;
   };
 
   ChangeBondOrderDrawCommand::ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond, unsigned int oldBondOrder, int adjustValence) : d(new ChangeBondOrderDrawCommandPrivate)
   {
     setText(QObject::tr("Change Bond Order"));
     d->molecule = molecule;
-    d->bond = bond;
+    d->id = bond->id();
     d->newBondOrder = bond->GetBondOrder();
     d->oldBondOrder = oldBondOrder;
     d->adjustValence = adjustValence;
@@ -465,61 +527,63 @@ namespace Avogadro {
 
   void ChangeBondOrderDrawCommand::undo()
   {
-    if(d->bond)
-      {
-        // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
-        d->molecule->BeginModify();
-        d->bond->SetBondOrder(d->oldBondOrder);
-        d->molecule->EndModify();
-        if (d->adjustValence) {
-          OBAtom *a1, *a2;
-          a1 = d->bond->GetBeginAtom();
-          a2 = d->bond->GetEndAtom();
-          d->molecule->DeleteHydrogens(a1);
-          d->molecule->DeleteHydrogens(a2);
+    Bond *bond = d->molecule->getBondById(d->id);
+    if(bond)
+    {
+      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+      d->molecule->BeginModify();
+      bond->SetBondOrder(d->oldBondOrder);
+      d->molecule->EndModify();
+      if (d->adjustValence) {
+        OBAtom *a1, *a2;
+        a1 = bond->GetBeginAtom();
+        a2 = bond->GetEndAtom();
+        d->molecule->DeleteHydrogens(a1);
+        d->molecule->DeleteHydrogens(a2);
 
-          UnsetFlags(d->molecule);
-          d->molecule->AddHydrogens(a1);
-          d->molecule->AddHydrogens(a2);
-        }
-        d->molecule->update();
+        UnsetFlags(d->molecule);
+        d->molecule->AddHydrogens(a1);
+        d->molecule->AddHydrogens(a2);
       }
+      d->molecule->update();
+    }
   }
 
   void ChangeBondOrderDrawCommand::redo()
   {
-    if(d->bond)
-      {
-        // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
-        d->molecule->BeginModify();
-        d->bond->SetBondOrder(d->newBondOrder);
-        d->molecule->EndModify();
-        if (d->adjustValence) {
+    Bond *bond = d->molecule->getBondById(d->id);
+    if(bond)
+    {
+      // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
+      d->molecule->BeginModify();
+      bond->SetBondOrder(d->newBondOrder);
+      d->molecule->EndModify();
+      if (d->adjustValence) {
 
-          OBAtom *a1, *a2;
-          a1 = d->bond->GetBeginAtom();
-          a2 = d->bond->GetEndAtom();
-          d->molecule->DeleteHydrogens(a1);
-          d->molecule->DeleteHydrogens(a2);
+        OBAtom *a1, *a2;
+        a1 = bond->GetBeginAtom();
+        a2 = bond->GetEndAtom();
+        d->molecule->DeleteHydrogens(a1);
+        d->molecule->DeleteHydrogens(a2);
 
-          UnsetFlags(d->molecule);
-          d->molecule->AddHydrogens(a1);
-          d->molecule->AddHydrogens(a2);
-        }
-        d->molecule->update();
+        UnsetFlags(d->molecule);
+        d->molecule->AddHydrogens(a1);
+        d->molecule->AddHydrogens(a2);
       }
+      d->molecule->update();
+    }
   }
- 
+
   /////////////////////////////////////////////////////////////////////////////
   // Insert Fragment
   /////////////////////////////////////////////////////////////////////////////
 
   class InsertFragmentCommandPrivate {
-  public:
-    InsertFragmentCommandPrivate() : molecule(0), generatedMolecule(0) {};
+    public:
+      InsertFragmentCommandPrivate() : molecule(0), generatedMolecule(0) {};
 
-    Molecule *molecule;
-    Molecule moleculeCopy, generatedMolecule;
+      Molecule *molecule;
+      Molecule moleculeCopy, generatedMolecule;
   };
 
   InsertFragmentCommand::InsertFragmentCommand(Molecule *molecule, Molecule &generatedMolecule) : d(new InsertFragmentCommandPrivate)
