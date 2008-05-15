@@ -36,6 +36,7 @@
 #include <eigen/projective.h>
 
 #include <QGLWidget>
+#include <QReadWriteLock>
 #include <QDebug>
 
 using namespace std;
@@ -243,10 +244,7 @@ namespace Avogadro {
 
     glBegin(GL_QUADS); // rendering the plane quad. Note, it should be big 
                        // enough to cover all clip edge area.
-    GLfloat points[4][3] = { {0.0,  1000.0,  1000.0},
-                             {0.0,  1000.0, -1000.0},
-                             {0.0, -1000.0,  1000.0},
-                             {0.0, -1000.0, -1000.0}};
+
     glVertex3fv(point1.array());
     glVertex3fv(point2.array());
     glVertex3fv(point4.array());
@@ -398,7 +396,7 @@ namespace Avogadro {
       connect(m_settingsWidget->DSpinBox, SIGNAL(valueChanged(double)), this, SLOT(setClipEqD(double)));
       // clipping stuff
 
-      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
+      m_settingsWidget->opacitySlider->setValue(static_cast<int>(20*m_alpha));
       m_settingsWidget->renderCombo->setCurrentIndex(m_renderMode);
       m_settingsWidget->colorCombo->setCurrentIndex(m_colorMode);
       if (m_colorMode == 1) { // ESP
@@ -531,13 +529,21 @@ namespace Avogadro {
   void VDWGridThread::run()
   {
     m_mutex.lock();
-    //if (!m_mutex.tryLock())
-    //  return;
 
-    //if (m_grid->grid() != NULL) // we already calculated this
-    //  return;
+    // In order to minimise the need for locking but also reduce crashes I think
+    // that making a local copy of the atoms concerned is the most efficient
+    // method until we improve this function
+    m_molecule->lock()->lockForRead();
+    QList<Primitive*> pSurfaceAtoms = m_primitives.subList(Primitive::AtomType);
+    QList<vector3> surfaceAtomsPos;
+    QList<int> surfaceAtomsNum;
+    foreach(Primitive* p, pSurfaceAtoms) {
+      Atom* a = static_cast<Atom *>(p);
+      surfaceAtomsPos.push_back(a->GetVector());
+      surfaceAtomsNum.push_back(a->GetAtomicNum());
+    }
+    m_molecule->lock()->unlock();
 
-    QList<Primitive*> surfaceAtoms = m_primitives.subList(Primitive::AtomType);
     OBFloatGrid grid;
     grid.Init(*m_molecule, m_stepSize, 2.5);
     vector3 min;
@@ -570,10 +576,10 @@ namespace Avogadro {
         {
           coord.SetZ(min[2] + k * m_stepSize);
           minDistance = 1.0E+10;
-	        for (int ai=0; ai < surfaceAtoms.size(); ai++)
+	        for (int ai=0; ai < surfaceAtomsPos.size(); ai++)
 	        {
-            distance = sqrt(coord.distSq(static_cast<Atom*>(surfaceAtoms[ai])->GetVector()));
-            distance -= etab.GetVdwRad(static_cast<Atom*>(surfaceAtoms[ai])->GetAtomicNum());
+            distance = sqrt(coord.distSq(surfaceAtomsPos[ai]));
+            distance -= etab.GetVdwRad(surfaceAtomsNum[ai]);
 
             if (distance < minDistance)
               minDistance = distance;
@@ -620,7 +626,7 @@ namespace Avogadro {
     */
     if(m_settingsWidget)
     {
-      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
+      m_settingsWidget->opacitySlider->setValue(static_cast<int>(20*m_alpha));
       m_settingsWidget->renderCombo->setCurrentIndex(m_renderMode);
       m_settingsWidget->colorCombo->setCurrentIndex(m_colorMode);
       QColor initial;

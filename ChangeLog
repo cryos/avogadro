@@ -1,5 +1,10 @@
 2008-05-15  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/primitive.cpp, libavogadro/src/glwidget.cpp,
+	libavogadro/src/engines/surfaceengine.cpp: Made some changes to the
+	surface engine and the GLWidget to improve locking. Seems to have
+	prevented crashes in the surface engine here. More locking is needed.
+
 	* libavogadro/src/tools/selectrotatetool.cpp: Added Control modifier
 	to the tool to fix PR 1962903 - toggle selected primitives.
 

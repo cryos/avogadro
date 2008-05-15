@@ -158,9 +158,11 @@ namespace Avogadro {
   {
     Q_D(Molecule);
 
+    d->lock.lockForWrite();
     Atom *atom = new Atom(this);
     atom->setId(d->atoms.size());
     d->atoms.push_back(atom);
+    d->lock.unlock();
 
     connect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
     emit primitiveAdded(atom);
@@ -171,9 +173,11 @@ namespace Avogadro {
   {
     Q_D(Molecule);
 
+    d->lock.lockForWrite();
     Bond *bond = new Bond(this);
     bond->setId(d->bonds.size());
     d->bonds.push_back(bond);
+    d->lock.unlock();
 
     connect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
     emit primitiveAdded(bond);

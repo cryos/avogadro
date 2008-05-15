@@ -45,6 +45,7 @@
 #include <QDir>
 #include <QPluginLoader>
 #include <QTime>
+#include <QReadWriteLock>
 
 #ifdef ENABLE_THREADED_GL
 #include <QWaitCondition>
@@ -354,7 +355,11 @@ namespace Avogadro {
       glNewList(dlistQuick, GL_COMPILE);
       foreach(Engine *engine, engines)
         if(engine->isEnabled())
+        {
+          molecule->lock()->lockForRead();
           engine->renderQuick(pd);
+          molecule->lock()->unlock();
+        }
       glEndList();
 
       updateCache = false;
