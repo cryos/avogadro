@@ -54,7 +54,8 @@ namespace Avogadro {
     action->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
     action->setToolTip(tr("Selection Tool (F11)\n"
           "Click to pick individual atoms, residues, or fragments\n"
-          "Drag to select a range of atoms"));
+          "Drag to select a range of atoms\n"
+          "Use Ctrl to toggle the selection and shift to add to the selection"));
     action->setShortcut(Qt::Key_F11);
   }
 
@@ -204,10 +205,15 @@ namespace Avogadro {
           break;
         case 1: // atom
         default:
-          // If the modifier key is not pressed clear the previous selection
-          if (!(event->modifiers() & Qt::ShiftModifier))
-            widget->clearSelected();
-          widget->setSelected(hitList, true);
+          // If the Ctrl modifier is pressed toggle selection
+          if(event->modifiers() & Qt::ControlModifier)
+            widget->toggleSelected(hitList);
+          else {
+            // If the shift modifier key is not pressed clear previous selection
+            if (!(event->modifiers() & Qt::ShiftModifier))
+              widget->clearSelected();
+            widget->setSelected(hitList, true);
+          }
           break;
       }
 

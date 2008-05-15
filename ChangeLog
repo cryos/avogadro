@@ -1,5 +1,8 @@
 2008-05-15  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/selectrotatetool.cpp: Added Control modifier
+	to the tool to fix PR 1962903 - toggle selected primitives.
+
 	* libavogadro/src/color.h: Cast GLFloats to ints to suppress warning.
 
 	* libavogadro/src/CMakeLists.txt: Only add the Boost_INCLUDE_DIR if
