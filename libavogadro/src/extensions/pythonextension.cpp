@@ -52,7 +52,6 @@ namespace Avogadro
     catch(error_already_set const &)
     {
     }
-    qDebug() << m_lastModified;
   }
 
   QString PythonScript::moduleName() const
@@ -63,8 +62,6 @@ namespace Avogadro
   object PythonScript::module() const
   {
     QFileInfo fileInfo(m_dir, m_fileName);
-    qDebug() << fileInfo.lastModified();
-    qDebug() << m_lastModified;
     if(fileInfo.lastModified() > m_lastModified)
     {
       try
@@ -74,8 +71,6 @@ namespace Avogadro
       catch(error_already_set const &)
       { }
       m_lastModified = fileInfo.lastModified();
-      qDebug() << fileInfo.lastModified();
-      qDebug() << m_lastModified;
     }
     return m_module;
   }
