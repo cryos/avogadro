@@ -37,10 +37,12 @@ namespace Avogadro {
 
   class PrimitivePrivate {
     public:
-      PrimitivePrivate() : type(Primitive::OtherType) {};
+      PrimitivePrivate() : type(Primitive::OtherType), id(-1) {};
 
       enum Primitive::Type type;
       QReadWriteLock lock;
+
+      unsigned long id;
   };
 
   Primitive::Primitive(QObject *parent) : QObject(parent), d_ptr(new PrimitivePrivate) {}
@@ -81,50 +83,36 @@ namespace Avogadro {
     emit updated();
   }
 
+  void Primitive::setId(unsigned long m_id)
+  {
+    Q_D(Primitive);
+    d->id = m_id;
+  }
+
+  unsigned long Primitive::id() const
+  {
+    Q_D(const Primitive);
+    return d->id;
+  }
+
+
   class AtomPrivate : public PrimitivePrivate {
     public:
-      AtomPrivate() : PrimitivePrivate(), id(0) {}
+      AtomPrivate() : PrimitivePrivate() {}
 
-      unsigned long id;
   };
 
   Atom::Atom(QObject *parent) : Primitive(*new AtomPrivate, AtomType, parent), OpenBabel::OBAtom()
   {
   }
 
-  void Atom::setId(unsigned long m_id)
-  {
-    Q_D(Atom);
-    d->id = m_id;
-  }
-
-  unsigned long Atom::id() const
-  {
-    Q_D(const Atom);
-    return d->id;
-  }
-
   class BondPrivate : public PrimitivePrivate {
     public:
-      BondPrivate() : PrimitivePrivate(), id(0) {}
-
-      unsigned long id;
+      BondPrivate() : PrimitivePrivate() {}
   };
 
   Bond::Bond(QObject *parent) : Primitive(*new BondPrivate, BondType, parent), OpenBabel::OBBond()
   {
-  }
-
-  void Bond::setId(unsigned long m_id)
-  {
-    Q_D(Bond);
-    d->id = m_id;
-  }
-
-  unsigned long Bond::id() const
-  {
-    Q_D(const Bond);
-    return d->id;
   }
 
   class MoleculePrivate : public PrimitivePrivate {
@@ -145,8 +133,9 @@ namespace Avogadro {
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
   }
 
-  Molecule::Molecule(const Molecule &other) : Primitive(*new MoleculePrivate, MoleculeType, other.parent()), OpenBabel::OBMol(other)
+  Molecule::Molecule(const Molecule &other) : Primitive(*new MoleculePrivate, MoleculeType, other.parent()), OpenBabel::OBMol()
   {
+    *this = other;
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
   }
 

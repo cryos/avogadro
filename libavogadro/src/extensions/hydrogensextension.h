@@ -28,6 +28,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
+#include <avogadro/idlist.h>
 
 #include <QObject>
 #include <QList>
@@ -93,7 +94,7 @@ namespace Avogadro {
     private:
       Molecule *m_molecule;
       Molecule m_moleculeCopy;
-      PrimitiveList m_SelectedList;
+      IDList m_SelectedList;
       enum Action m_action;
   };
 

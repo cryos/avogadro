@@ -28,6 +28,7 @@
 #include <QUndoCommand>
 
 #include <avogadro/glwidget.h>
+#include <avogadro/idlist.h>
 
 namespace Avogadro {
 
@@ -44,7 +45,7 @@ namespace Avogadro {
     Molecule *m_molecule;         //!< parent (active molecule in widget)
     Molecule  m_originalMolecule; //!< original (unmodified molecule)
     QMimeData *m_copiedData;      //!< fragment to be copied to the clipboard
-    PrimitiveList m_selectedList; //!< any selected atoms
+    IDList m_selectedList; //!< any selected atoms
   };
 
   class PasteCommand : public QUndoCommand
@@ -72,8 +73,8 @@ namespace Avogadro {
 
   private:
     Molecule *m_molecule;             //!< active widget molecule
+    IDList m_selectedList; //!< any selected atoms
     Molecule  m_originalMolecule;     //!< save original molecule
-    PrimitiveList m_selectedList; //!< any selected atoms
   };
 
 }

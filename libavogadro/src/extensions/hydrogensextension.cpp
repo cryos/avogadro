@@ -109,12 +109,11 @@ namespace Avogadro {
     }
     else { // user selected some atoms, only operate on those
 
-      foreach(Primitive *a, m_SelectedList)
+      foreach(unsigned long id, m_SelectedList.subList(Primitive::AtomType))
       {
-        if (a->type() == Primitive::AtomType)
+        Atom *atom = m_molecule->getAtomById(id);
+        if(atom)
         {
-          Atom *atom = static_cast<Atom *>(a);
-
           switch(m_action) {
             case AddHydrogens:
               m_molecule->AddHydrogens(atom);

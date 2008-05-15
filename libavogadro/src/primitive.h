@@ -127,6 +127,10 @@ namespace Avogadro {
 
       QReadWriteLock *lock();
 
+      void setId(unsigned long m_id);
+      unsigned long id() const;
+
+
     Q_SIGNALS:
       /**
        * Emitted when the primitive has been updated.
@@ -194,9 +198,6 @@ namespace Avogadro {
         SetVector( *reinterpret_cast<const OpenBabel::vector3*>(&vec) );
       }
 
-      void setId(unsigned long m_id);
-      unsigned long id() const;
-
     private:
       /* shared d_ptr with Primitive */
       Q_DECLARE_PRIVATE(Atom)
@@ -225,9 +226,6 @@ namespace Avogadro {
        */
       Bond(QObject *parent=0);
       
-      void setId(unsigned long m_id);
-      unsigned long id() const;
-
     private:
       /* shared d_ptr with Primitive */
       Q_DECLARE_PRIVATE(Bond)

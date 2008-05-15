@@ -33,9 +33,10 @@ namespace Avogadro {
 
   CutCommand::CutCommand(Molecule *molecule, QMimeData *copyData,
                          PrimitiveList selectedList) :
-    m_molecule(molecule), m_originalMolecule(*molecule),
+    m_molecule(molecule), 
     m_copiedData(copyData), m_selectedList(selectedList)
   {
+    m_originalMolecule = *molecule;
     if (selectedList.size() == 0)
       setText(QObject::tr("Cut Molecule"));
     else
@@ -51,9 +52,12 @@ namespace Avogadro {
     else {
       // Make sure any selection is an atom
       // FIXME: Do we need to do bonds or other primitives?
-      foreach(Primitive* item, m_selectedList) {
-        if (item->type() == Primitive::AtomType)
-          m_molecule->DeleteAtom(static_cast<Atom*>(item));
+      foreach(unsigned long atomid, m_selectedList.subList(Primitive::AtomType)) {
+        Atom *atom = m_molecule->getAtomById(atomid);
+        if(atom)
+        {
+          m_molecule->DeleteAtom(atom);
+        }
       }
     }
     m_molecule->update();
@@ -103,8 +107,8 @@ namespace Avogadro {
   ClearCommand::ClearCommand(Molecule *molecule,
                              PrimitiveList selectedList):
     m_molecule(molecule),
-    m_originalMolecule(*molecule),
-    m_selectedList(selectedList)
+    m_selectedList(selectedList),
+    m_originalMolecule(*molecule)
   {
     if (selectedList.size() == 0)
       setText(QObject::tr("Clear Molecule"));
@@ -120,9 +124,12 @@ namespace Avogadro {
     else {
       // Make sure any selection is an atom
       // FIXME: Do we need to do bonds or other primitives?
-      foreach(Primitive* item, m_selectedList) {
-        if (item->type() == Primitive::AtomType)
-          m_molecule->DeleteAtom(static_cast<Atom*>(item));
+      foreach(unsigned long atomid, m_selectedList.subList(Primitive::AtomType)) {
+        Atom *atom = m_molecule->getAtomById(atomid);
+        if(atom)
+        {
+          m_molecule->DeleteAtom(atom);
+        }
       }
     }
     m_molecule->update();
