@@ -117,12 +117,13 @@ namespace Avogadro {
 
   class MoleculePrivate : public PrimitivePrivate {
     public:
-      MoleculePrivate() : PrimitivePrivate(), farthestAtom(0), invalidGeomInfo(true) {}
+      MoleculePrivate() : PrimitivePrivate(), farthestAtom(0), invalidGeomInfo(true), autoId(true) {}
       mutable Eigen::Vector3d       center;
       mutable Eigen::Vector3d       normalVector;
       mutable double                radius;
       mutable Atom *                farthestAtom;
       mutable bool                  invalidGeomInfo;
+      bool                          autoId;
 
       std::vector<Atom *>                 atoms;
       std::vector<Bond *>                 bonds;
@@ -149,11 +150,17 @@ namespace Avogadro {
 
     d->lock.lockForWrite();
     Atom *atom = new Atom(this);
+    connect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
+
+    if(!d->autoId) {
+      d->lock.unlock();
+      return(atom);
+    }
+
     atom->setId(d->atoms.size());
     d->atoms.push_back(atom);
     d->lock.unlock();
 
-    connect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
     emit primitiveAdded(atom);
     return(atom);
   }
@@ -164,11 +171,17 @@ namespace Avogadro {
 
     d->lock.lockForWrite();
     Bond *bond = new Bond(this);
+    connect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
+
+    if(!d->autoId) {
+      d->lock.unlock();
+      return(bond);
+    }
+
     bond->setId(d->bonds.size());
     d->bonds.push_back(bond);
     d->lock.unlock();
 
-    connect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
     emit primitiveAdded(bond);
     return(bond);
   }
@@ -192,9 +205,9 @@ namespace Avogadro {
     Q_D(Molecule);
 
     // we have to bypass the emit given by CreateAtom()
-    blockSignals(true);
+    d->autoId = false;
     Atom *atom = static_cast<Atom *>(OBMol::NewAtom());
-    d->atoms.pop_back();
+    d->autoId = true;
 
     if(id >= d->atoms.size())
     {
@@ -202,8 +215,6 @@ namespace Avogadro {
     }
     atom->setId(id);
     d->atoms[id] = atom;
-
-    blockSignals(false);
 
     // now that the id is correct, emit the signal
     emit primitiveAdded(atom);
@@ -240,9 +251,9 @@ namespace Avogadro {
   {
     Q_D(Molecule);
 
-    blockSignals(true);
+    d->autoId = false;
     Bond *bond = static_cast<Bond *>(OBMol::NewBond());
-    d->bonds.pop_back();
+    d->autoId = true;
 
     if(id >= d->bonds.size())
     {
@@ -250,8 +261,6 @@ namespace Avogadro {
     }
     bond->setId(id);
     d->bonds[id] = bond;
-
-    blockSignals(false);
 
     // now that the id is correct, emit the signal
     emit primitiveAdded(bond);
@@ -336,14 +345,14 @@ namespace Avogadro {
     Q_D(Molecule);
 
     Clear();
-    blockSignals(true);
+    d->autoId = false;
     OpenBabel::OBMol::operator=(other);
     const MoleculePrivate *e = other.d_func();
     d->atoms.resize(e->atoms.size(),0);
     d->bonds.resize(e->bonds.size(),0);
 
 
-    blockSignals(false);
+    d->autoId = true;
     // copy the unique ids of the atoms
     std::vector<OpenBabel::OBAtom*>::iterator i;
     for(Atom *lhsAtom = static_cast< Atom* >(BeginAtom( i ));
