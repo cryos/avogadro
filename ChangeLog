@@ -1,5 +1,7 @@
 2008-05-15  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/color.h: Cast GLFloats to ints to suppress warning.
+
 	* libavogadro/src/CMakeLists.txt: Only add the Boost_INCLUDE_DIR if
 	boost is found - fixes a CMake error with CMake 2.6.
 

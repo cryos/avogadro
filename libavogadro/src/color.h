@@ -122,7 +122,10 @@ namespace Avogadro {
     /**
      * @return the color as a QColor.
      */
-    inline QColor color() { return QColor(m_red, m_blue, m_green, m_alpha); }
+    inline QColor color() { return QColor(static_cast<int>(m_red),
+                                          static_cast<int>(m_blue),
+                                          static_cast<int>(m_green),
+                                          static_cast<int>(m_alpha)); }
 
     /**
      * @return the red component of the color.
