@@ -47,8 +47,8 @@ BOOST_PYTHON_MODULE(Avogadro) {
 	void (OBMol::*Center)() = &OBMol::Center;
 	bool (OBMol::*DeleteHydrogens)() = &OBMol::DeleteHydrogens;
 	bool (OBMol::*AddHydrogens)(bool, bool) = &OBMol::AddHydrogens;
-	OBBond * (OBMol::*GetBondIDX)(int) = &OBMol::GetBond;
-	OBBond * (OBMol::*GetBondAtoms)(int, int) = &OBMol::GetBond;
+	OBBond * (OBMol::*GetBondIDX)(int)const = &OBMol::GetBond;
+	OBBond * (OBMol::*GetBondAtoms)(int, int)const = &OBMol::GetBond;
 
   class_<Avogadro::Molecule, bases<OpenBabel::OBMol> >("Molecule")
     //.add_property("atoms", range(&OBMol::BeginAtoms(), &OBMol::EndAtoms()))
