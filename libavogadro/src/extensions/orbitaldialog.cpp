@@ -36,6 +36,9 @@ namespace Avogadro
     : QDialog(parent, f)
   {
     ui.setupUi(this);
+    // Hide the advanced stuff for now
+    ui.frame->hide();
+    resize(325, 100);
     connect(ui.loadFile, SIGNAL(clicked()), this, SLOT(loadFile()));
     connect(ui.calculate, SIGNAL(clicked()),
             this, SLOT(calculate()));
@@ -47,9 +50,11 @@ namespace Avogadro
 
   void OrbitalDialog::setMOs(int num)
   {
+    ui.orbitalCombo->setEnabled(true);
     ui.orbitalCombo->clear();
     for (int i = 1; i <= num; ++i)
       ui.orbitalCombo->addItem("MO " + QString::number(i));
+    ui.calculate->setEnabled(true);
   }
 
   void OrbitalDialog::setHOMO(int n)
@@ -100,7 +105,7 @@ namespace Avogadro
     // Load a file
     QString file = QFileDialog::getOpenFileName(this,
       tr("Open quantum file"), ui.fileName->text(),
-      tr("Quantum files (*.fchk *.gamout *.g03)"));
+      tr("Quantum files (*.fchk)"));
     ui.fileName->setText(file);
     emit fileName(file);
   }

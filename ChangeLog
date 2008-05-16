@@ -11,6 +11,9 @@
 	
 2008-05-16  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/orbitaldialog.*: Hide more advanced
+	options for now, minor cleanup.
+
 	* libavogadro/src/tools/aligntool.*: Added options to align everything
 	or just the current molecule.
 
