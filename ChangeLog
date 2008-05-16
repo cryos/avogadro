@@ -11,6 +11,9 @@
 	
 2008-05-16  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/aligntool.*: Added options to align everything
+	or just the current molecule.
+
 	* libavogadro/src/tools/aligntool.cpp,
 	libavogadro/src/tools/autorotatetool.cpp,
 	libavogadro/src/tools/bondcentrictool.cpp,
