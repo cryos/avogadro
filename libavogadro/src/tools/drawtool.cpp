@@ -673,9 +673,9 @@ namespace Avogadro {
       tmp2->addWidget(m_comboBondOrder);
       tmp2->addStretch(1);
       QGridLayout* grid = new QGridLayout;
-      grid->addWidget(labelElement, 0, 0, 1, 1, Qt::AlignRight);
+      grid->addWidget(labelElement, 0, 0, Qt::AlignRight);
       grid->addLayout(tmp, 0, 1);
-      grid->addWidget(labelBO, 1, 0, 1, 1, Qt::AlignRight);
+      grid->addWidget(labelBO, 1, 0, Qt::AlignRight);
       grid->addLayout(tmp2, 1, 1);
 
       m_addHydrogensCheck = new QCheckBox(tr("Adjust Hydrogens"), m_settingsWidget);

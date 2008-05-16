@@ -326,6 +326,28 @@ namespace Avogadro {
       for (unsigned int i = 0; i < m_forceFieldList.size(); ++i)
         m_comboFF->addItem(m_forceFieldList[i].c_str());
 
+      QHBoxLayout* hbox = new QHBoxLayout;
+      hbox->addWidget(m_comboFF);
+      hbox->addStretch(1);
+      QGridLayout* grid = new QGridLayout;
+      grid->addWidget(labelFF, 0, 0, Qt::AlignRight);
+      grid->addLayout(hbox, 0, 1);
+      
+      QLabel* labelSteps = new QLabel(tr("Steps per Update:"));
+      labelSteps->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      labelSteps->setMaximumHeight(15);
+
+      m_stepsSpinBox = new QSpinBox(m_settingsWidget);
+      m_stepsSpinBox->setMinimum(1);
+      m_stepsSpinBox->setMaximum(100);
+      m_stepsSpinBox->setValue(4);
+
+      hbox = new QHBoxLayout;
+      hbox->addWidget(m_stepsSpinBox);
+      hbox->addStretch(1);
+      grid->addWidget(labelSteps, 1, 0, Qt::AlignRight);
+      grid->addLayout(hbox, 1, 1);
+
       QLabel* labelAlg = new QLabel(tr("Algorithm:"));
       labelAlg->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
       labelAlg->setMaximumHeight(15);
@@ -335,25 +357,6 @@ namespace Avogadro {
       m_comboAlgorithm->addItem(tr("Molecular Dynamics (300K)"));
       m_comboAlgorithm->addItem(tr("Molecular Dynamics (600K)"));
       m_comboAlgorithm->addItem(tr("Molecular Dynamics (900K)"));
-      
-      //QLabel* labelConv = new QLabel(tr("Convergence:"));
-      //labelConv->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-      //labelConv->setMaximumHeight(15);
-
-      //m_convergenceSpinBox = new QSpinBox(m_settingsWidget);
-      //m_convergenceSpinBox->setMinimum(2);
-      //m_convergenceSpinBox->setMaximum(10);
-      //m_convergenceSpinBox->setValue(4);
-      //m_convergenceSpinBox->setPrefix(tr("10e-"));
-
-      QLabel* labelSteps = new QLabel(tr("Steps per update:"));
-      labelSteps->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-      labelSteps->setMaximumHeight(15);
-
-      m_stepsSpinBox = new QSpinBox(m_settingsWidget);
-      m_stepsSpinBox->setMinimum(1);
-      m_stepsSpinBox->setMaximum(100);
-      m_stepsSpinBox->setValue(4);
 
       m_buttonStartStop = new QPushButton(tr("Start"), m_settingsWidget);
 
@@ -361,17 +364,13 @@ namespace Avogadro {
       m_ignoredMovable = new QCheckBox(tr("Ignored atoms are movable"), m_settingsWidget);
       
       QVBoxLayout* layout = new QVBoxLayout();
-      layout->addWidget(labelFF);
-      layout->addWidget(m_comboFF);
+      layout->addLayout(grid); // force field, steps and labels
+
       layout->addWidget(labelAlg);
       layout->addWidget(m_comboAlgorithm);
-      //layout->addWidget(labelConv);
-      //layout->addWidget(m_convergenceSpinBox);
-      layout->addWidget(labelSteps);
-      layout->addWidget(m_stepsSpinBox);
-      layout->addWidget(m_buttonStartStop);
       layout->addWidget(m_fixedMovable);
       layout->addWidget(m_ignoredMovable);
+      layout->addWidget(m_buttonStartStop);
       layout->addStretch(1);
       m_settingsWidget->setLayout(layout);
 
@@ -572,7 +571,7 @@ namespace Avogadro {
         m_forceField->MolecularDynamicsTakeNSteps(m_steps, 600, 0.001);
         break;
       case 3:
-        m_forceField->MolecularDynamicsTakeNSteps(25, 900, 0.001);
+        m_forceField->MolecularDynamicsTakeNSteps(m_steps, 900, 0.001);
         break;
     }
 
