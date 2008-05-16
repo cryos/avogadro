@@ -58,6 +58,9 @@ namespace Avogadro {
         this, SLOT(selectEngine(QModelIndex)));
     connect(m, SIGNAL(dataChanged(QModelIndex, QModelIndex)),
         glWidget, SLOT(update()));
+        
+    // improves display performance
+    setUniformItemSizes(true);
   }
 
   EngineListView::~EngineListView()

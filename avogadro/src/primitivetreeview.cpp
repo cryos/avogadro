@@ -66,6 +66,9 @@ namespace Avogadro
     setItemDelegate(d->delegate);
     setRootIsDecorated(false);
     header()->hide();
+    setUniformRowHeights(true);
+
+
     connect(this, SIGNAL(pressed(QModelIndex)), this, SLOT(itemPressed(QModelIndex)));
   }
 
