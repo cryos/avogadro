@@ -72,6 +72,7 @@ namespace Avogadro {
 
     public Q_SLOTS:
       void axisChanged(int axis);
+      void alignChanged(int align);
       void align();
 
     private:
@@ -80,6 +81,7 @@ namespace Avogadro {
       QVarLengthArray<QPointer<Atom>, 2> m_selectedAtoms;
       int m_numSelectedAtoms;
       int m_axis;
+      int m_alignType;
 
       QWidget *m_settingsWidget;
 

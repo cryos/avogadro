@@ -49,7 +49,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   AlignTool::AlignTool(QObject *parent) : Tool(parent),  m_molecule(0),
-  m_numSelectedAtoms(0), m_axis(2), m_settingsWidget(0)
+  m_numSelectedAtoms(0), m_axis(2), m_alignType(0), m_settingsWidget(0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/align/align.png")));
@@ -193,16 +193,20 @@ namespace Avogadro {
       // Check the first atom still exists, return if not
       if (m_selectedAtoms[0].isNull())
         return;
-      
-      // We really want the "connected fragment" since a Molecule can contain
-      // multiple user visible molecule fragments
-      OBMolAtomDFSIter iter(m_molecule, m_selectedAtoms[0]->GetIdx());
-      Atom *tmpNeighbor;
-      do
-      {
-        tmpNeighbor = static_cast<Atom*>(&*iter);
-        neighborList.append(tmpNeighbor);
-      } while ((iter++).next()); // this returns false when we've gone looped through the fragment
+
+      // If m_alignType is 0 we want everything, otherwise just the fragment
+      if (m_alignType) {
+        OBMolAtomDFSIter iter(m_molecule, m_selectedAtoms[0]->GetIdx());
+        Atom *tmpNeighbor;
+        do {
+          tmpNeighbor = static_cast<Atom*>(&*iter);
+          neighborList.append(tmpNeighbor);
+        } while ((iter++).next()); // this returns false when we are done
+      }
+      else {
+        FOR_ATOMS_OF_MOL(atom, m_molecule)
+          neighborList.append(static_cast<const Atom *>(&(*atom)));
+      }
     }
     // Align the molecule along the selected axis
     if (m_numSelectedAtoms >= 1)
@@ -273,30 +277,51 @@ namespace Avogadro {
       labelAxis->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
       labelAxis->setMaximumHeight(15);
 
-      // Small popup with 10 most common elements for organic chemistry
-      // (and extra for "other" to bring up periodic table window)
+      // Combo box to select desired aixs to align to
       QComboBox *comboAxis = new QComboBox(m_settingsWidget);
       comboAxis->addItem("x");
       comboAxis->addItem("y");
       comboAxis->addItem("z");
       comboAxis->setCurrentIndex(2);
 
+      QLabel *labelAlign = new QLabel(tr("Align:"));
+      labelAlign->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      labelAlign->setMaximumHeight(15);
+      // Combo to choose what should be aligned
+      QComboBox *comboAlign = new QComboBox(m_settingsWidget);
+      comboAlign->addItem(tr("Everything"));
+      comboAlign->addItem(tr("Molecule"));
+
+      // Button to actually perform actions
       QPushButton *buttonAlign = new QPushButton(m_settingsWidget);
       buttonAlign->setText(tr("Align"));
       connect(buttonAlign, SIGNAL(clicked()), this, SLOT(align()));
 
-      QHBoxLayout *hLayout = new QHBoxLayout();
-      hLayout->addWidget(labelAxis);
+      QGridLayout *gridLayout = new QGridLayout();
+      gridLayout->addWidget(labelAxis,0, 0, 1, 1, Qt::AlignRight);
+      QHBoxLayout *hLayout = new QHBoxLayout;
       hLayout->addWidget(comboAxis);
       hLayout->addStretch(1);
+      gridLayout->addLayout(hLayout, 0, 1);
+      gridLayout->addWidget(labelAlign, 1, 0, 1, 1, Qt::AlignRight);
+      QHBoxLayout *hLayout2 = new QHBoxLayout;
+      hLayout2->addWidget(comboAlign);
+      hLayout2->addStretch(1);
+      gridLayout->addLayout(hLayout2, 1, 1);
+      QHBoxLayout *hLayout3 = new QHBoxLayout();
+      hLayout3->addStretch(1);
+      hLayout3->addWidget(buttonAlign);
+      hLayout3->addStretch(1);
       QVBoxLayout *layout = new QVBoxLayout();
-      layout->addLayout(hLayout);
-      layout->addWidget(buttonAlign);
+      layout->addLayout(gridLayout);
+      layout->addLayout(hLayout3);
       layout->addStretch(1);
       m_settingsWidget->setLayout(layout);
 
       connect(comboAxis, SIGNAL(currentIndexChanged(int)),
               this, SLOT(axisChanged(int)));
+      connect(comboAlign, SIGNAL(currentIndexChanged(int)),
+              this, SLOT(alignChanged(int)));
 
       connect(m_settingsWidget, SIGNAL(destroyed()),
               this, SLOT(settingsWidgetDestroyed()));
@@ -309,6 +334,12 @@ namespace Avogadro {
   {
     // Axis to use - x=0, y=1, z=2
     m_axis = axis;
+  }
+
+  void AlignTool::alignChanged(int align)
+  {
+    // Type of alignment - 0=everything, 1=molecule
+    m_alignType = align;
   }
 
   void AlignTool::settingsWidgetDestroyed()
