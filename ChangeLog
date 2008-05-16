@@ -1,5 +1,8 @@
 2008-05-16  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/gaussianinputdialog.ui: Fixed the tab
+	ordering of the dialog.
+
 	* libavogadro/src/periodictableview.cpp: Some changes to improve
 	layout in Linux and hopefully Windows.
 
@@ -76,7 +79,7 @@
 2008-05-10  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/aligntool.cpp: Fixed for case where the
-	molecule was already alined to the chosen axis.
+	molecule was already aligned to the chosen axis.
 
 2008-05-09  Geoffrey Hutchison  <babel@geoffhutchison.net>
 

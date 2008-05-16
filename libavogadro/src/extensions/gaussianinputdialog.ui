@@ -437,6 +437,7 @@
   <tabstop>chargeSpin</tabstop>
   <tabstop>multiplicitySpin</tabstop>
   <tabstop>outputCombo</tabstop>
+  <tabstop>checkpointCheck</tabstop>
   <tabstop>previewText</tabstop>
   <tabstop>generateButton</tabstop>
   <tabstop>closeButton</tabstop>
