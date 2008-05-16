@@ -26,9 +26,7 @@
 
 #include <openbabel/obconversion.h>
 
-#include <QtGui>
 #include <QMessageBox>
-//#include <QDebug>
 
 using namespace OpenBabel;
 
@@ -76,7 +74,7 @@ namespace Avogadro {
     m_molecule = molecule;
   }
 
-  QUndoCommand* AnimationExtension::performAction( QAction *, GLWidget *widget )
+  QUndoCommand* AnimationExtension::performAction(QAction *, GLWidget*)
   {
     if (!m_animationDialog)
     {
