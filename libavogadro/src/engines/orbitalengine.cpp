@@ -34,6 +34,7 @@
 #include <openbabel/grid.h>
 
 #include <QGLWidget>
+#include <QReadWriteLock>
 #include <QDebug>
 
 using namespace std;
@@ -44,7 +45,7 @@ namespace Avogadro {
 
   OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent),
     m_settingsWidget(0), m_min(0., 0., 0.), m_alpha(0.75), m_iso(0.01),
-    m_renderMode(0), m_interpolate(false), m_update(true)
+    m_renderMode(0), m_drawBox(false), m_update(true), m_molecule(0)
   {
     setDescription(tr("Orbital Rendering"));
     m_grid = new Grid;
@@ -184,7 +185,7 @@ namespace Avogadro {
     return true;
   }
 
-  bool OrbitalEngine::renderSurfaces(PainterDevice *pd)
+  bool OrbitalEngine::renderSurfaces(PainterDevice *)
   {
     glBegin(GL_TRIANGLES);
 
@@ -231,15 +232,9 @@ namespace Avogadro {
     // Attempt to find a grid
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
     if (!mol->HasData(OBGenericDataType::GridData))
-    {
-      // ultimately allow the user to attach a new data file
-      qDebug() << "No grid data found -> no orbitals.";
       return;
-    }
     else
     {
-      qDebug() << "Molecular orbital grid found!";
-
       if (!m_settingsWidget)
       {
         // Use first grid/orbital
@@ -256,12 +251,10 @@ namespace Avogadro {
           m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
 
           // Add the orbitals
-          vector<OBGenericData*> data = mol->GetAllData(OBGenericDataType::GridData);
-          for (unsigned int i = 0; i < data.size(); ++i)
-          {
-            QString str = QString(data[i]->GetAttribute().c_str());
-            m_settingsWidget->orbitalCombo->addItem(str);
-          }
+          m_molecule = mol;
+          connect(m_molecule, SIGNAL(updated()),
+                  this, SLOT(updateOrbitalCombo()));
+          updateOrbitalCombo();
         }
         else
         {
@@ -294,12 +287,29 @@ namespace Avogadro {
     // We may need some logic to check if a cube is an orbital or not...
     // (e.g., someone might bring in spin density = always positive)
     m_grid->setIsoValue(m_iso);
-    m_isoGen->init(m_grid, pd, m_interpolate);
+    m_isoGen->init(m_grid, pd, false);
     m_isoGen->start();
     m_grid2->setIsoValue(-m_iso);
-    m_isoGen2->init(m_grid2, pd, m_interpolate);
+    m_isoGen2->init(m_grid2, pd, false);
     m_isoGen2->start();
     m_update = false;
+  }
+
+  void OrbitalEngine::updateOrbitalCombo()
+  {
+    // Reset the orbital combo
+    int tmp = m_settingsWidget->orbitalCombo->currentIndex();
+    qDebug() << "tmp =" << tmp;
+    if (tmp < 0) tmp = 0;
+    m_settingsWidget->orbitalCombo->clear();
+    m_molecule->lock()->lockForRead();
+    vector<OBGenericData*> data = m_molecule->GetAllData(OBGenericDataType::GridData);
+    for (unsigned int i = 0; i < data.size(); ++i) {
+      QString str = QString(data[i]->GetAttribute().c_str());
+      m_settingsWidget->orbitalCombo->addItem(str);
+    }
+    m_molecule->lock()->unlock();
+    m_settingsWidget->orbitalCombo->setCurrentIndex(tmp);
   }
 
   double OrbitalEngine::transparencyDepth() const
@@ -332,10 +342,10 @@ namespace Avogadro {
     emit changed();
   }
 
-  void OrbitalEngine::setInterpolate(int value)
+  void OrbitalEngine::setDrawBox(int value)
   {
-    if (value == 0) m_interpolate = false;
-    else m_interpolate = true;
+    if (value == 0) m_drawBox = false;
+    else m_drawBox = true;
     m_update = true;
     emit changed();
   }
@@ -375,8 +385,8 @@ namespace Avogadro {
               this, SLOT(setOpacity(int)));
       connect(m_settingsWidget->renderCombo, SIGNAL(currentIndexChanged(int)),
               this, SLOT(setRenderMode(int)));
-      connect(m_settingsWidget->interpolate, SIGNAL(stateChanged(int)),
-              this, SLOT(setInterpolate(int)));
+      connect(m_settingsWidget->drawBoxCheck, SIGNAL(stateChanged(int)),
+              this, SLOT(setDrawBox(int)));
       connect(m_settingsWidget->isoSpin, SIGNAL(valueChanged(double)),
               this, SLOT(setIso(double)));
       connect(m_settingsWidget->isoSpin, SIGNAL(editingFinished()),
@@ -392,7 +402,7 @@ namespace Avogadro {
       m_settingsWidget->opacitySlider->setValue(static_cast<int>(m_alpha * 20));
       m_settingsWidget->isoSpin->setValue(m_iso);
       m_settingsWidget->renderCombo->setCurrentIndex(m_renderMode);
-      m_settingsWidget->interpolate->setChecked(m_interpolate);
+      m_settingsWidget->drawBoxCheck->setChecked(m_drawBox);
 
       // Initialise the colour buttons
       QColor initial;
@@ -446,7 +456,7 @@ namespace Avogadro {
     settings.setValue("alpha", m_alpha);
     settings.setValue("iso", m_iso);
     settings.setValue("renderMode", m_renderMode);
-    settings.setValue("interpolate", m_interpolate);
+    settings.setValue("drawBox", m_drawBox);
 //    settings.setValue("posColor", m_posColor);
 //    settings.setValue("posColor", m_negColor);
   }
@@ -457,7 +467,7 @@ namespace Avogadro {
     m_alpha = settings.value("alpha", 0.5).toDouble();
     m_iso = settings.value("iso", 0.02).toDouble();
     m_renderMode = settings.value("renderMode", 0).toInt();
-    m_interpolate = settings.value("interpolate", false).toBool();
+    m_drawBox = settings.value("drawBox", false).toBool();
   }
 
 }

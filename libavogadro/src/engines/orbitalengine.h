@@ -87,12 +87,20 @@ namespace Avogadro {
       double m_alpha;
       double m_iso;
       int    m_renderMode;
-      bool   m_interpolate;
+      bool   m_drawBox;
       bool   m_update;
+      Molecule *m_molecule;
 
       void updateSurfaces(PainterDevice *pd);
 
     private Q_SLOTS:
+      /**
+       * Update the orbital combo box with new orbitals
+       */
+      void updateOrbitalCombo();
+      /**
+       * Slot for when isoGen has finished
+       */
       void isoGenFinished();
       void settingsWidgetDestroyed();
       /**
@@ -110,7 +118,7 @@ namespace Avogadro {
       /**
        * @param value interpolate (0 = no, 1 = yes)
        */
-      void setInterpolate(int value);
+      void setDrawBox(int value);
       /**
        * @param d the value of the iso surface to be rendered
        */
