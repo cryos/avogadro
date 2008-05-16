@@ -5,42 +5,39 @@
 #  OPENBABEL2_INCLUDE_DIR - the OpenBabel2 include directory
 #  OPENBABEL2_LIBRARIES - Link these to use OpenBabel2
 # Copyright (c) 2006, 2007 Carsten Niehaus, <cniehaus@gmx.de>
+# Copyright (C) 2008 Marcus D. Hanwell <marcus@cryos.org>
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
 if (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
-
   # in cache already
   set(OPENBABEL2_FOUND TRUE)
 
 else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
-if(NOT WIN32)
-  include(UsePkgConfig)
+  if(NOT WIN32)
 
-  pkgconfig(openbabel-2.0 _obIncDir _obLinkDir _obLinkFlags _obCflags)
+    # Use the newer PkgConfig stuff
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(OPENBABEL2 openbabel-2.0>=2.2.0)
 
-  # query pkg-config asking for a openbabel >= 2.2.0
-  exec_program(${PKGCONFIG_EXECUTABLE} ARGS --atleast-version=2.2.0 openbabel-2.0 RETURN_VALUE _return_VALUE OUTPUT_VARIABLE _pkgconfigDevNull )
-  if(_return_VALUE STREQUAL "0")
-	set(OPENBABEL2_VERSION_MET TRUE)
-  endif(_return_VALUE STREQUAL "0")
+    # Maintain backwards compatibility with previous version of module
+    if(OPENBABEL2_FOUND STREQUAL "1")
+      set(OPENBABEL2_VERSION_MET TRUE)
+      set(OPENBABEL2_INCLUDE_DIR ${OPENBABEL2_INCLUDE_DIRS})
+    endif(OPENBABEL2_FOUND STREQUAL "1")
 
-  exec_program(${PKGCONFIG_EXECUTABLE} ARGS --variable=pkgincludedir openbabel-2.0 RETURN_VALUE _return_VALUE OUTPUT_VARIABLE _obPkgIncDir )
-  if (_obPkgIncDir)
-    set(_obIncDir "${_obPkgIncDir}")
-  endif (_obPkgIncDir)
-else(NOT WIN32)
-  set(OPENBABEL2_VERSION_MET TRUE)
-endif(NOT WIN32)
+  else(NOT WIN32)
+    set(OPENBABEL2_VERSION_MET TRUE)
+  endif(NOT WIN32)
 
   if(OPENBABEL2_VERSION_MET)
 
-    find_path(OPENBABEL2_INCLUDE_DIR openbabel/obconversion.h
-      PATHS
-      ${_obIncDir}
-      ${GNUWIN32_DIR}/include
-      $ENV{OPENBABEL2_INCLUDE_DIR}
-    )
+   # find_path(OPENBABEL2_INCLUDE_DIR openbabel/obconversion.h
+   #   PATHS
+   #   ${_obIncDir}
+   #   ${GNUWIN32_DIR}/include
+   #   $ENV{OPENBABEL2_INCLUDE_DIR}
+   # )
 
     if(WIN32)
       if(NOT OPENBABEL2_INCLUDE_DIR)

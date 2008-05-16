@@ -1,5 +1,8 @@
 2008-05-16  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* cmake/modules/FindOpenBabel2.cmake: Hopefully a new and improved
+	FindOpenBabel2 using the new PkgConfig functions.
+
 	* CMakeLists.txt: Set the CMake policy for CMake 2.6.
 
 2008-05-15  Geoffrey Hutchison  <babel@geoffhutchison.net>
