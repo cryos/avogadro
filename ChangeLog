@@ -1,3 +1,9 @@
+2008-05-16  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/orbitalengine.*,
+	libavogadro/src/engines/orbitalsettingswidget.ui: Propagate new grids
+	through to the combo and some UI cleanup.
+
 2008-05-16  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/iso.cpp: Surfaces are now centered around atom
