@@ -6,8 +6,8 @@
 <body>
 <h1>krazy2 Analysis</h1>
 <p>Checkers Run = 24<br>
-Files Processed = 56<br>
-No Issues Found! ...as of May 13 2008 16:51:08</p>
+Files Processed = 60<br>
+Total Issues = 2 ...as of May 16 2008 16:52:02</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -37,7 +37,22 @@ No Issues Found! ...as of May 13 2008 16:51:08</p>
 <li>Check for invalid icon names... 
 <b>okay!</b>
 <li>Check for proper include directives... 
-<b>okay!</b>
+<b>OOPS! 2 issues found!</b>
+<ul>
+<li>	../libavogadro/src/extensions/animationextension.cpp: do not include QtModules line#29(QtGui)
+</li>
+<li>	../libavogadro/src/extensions/animationextension.h: using leading or trailing underscores on include guard in header
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
+	Qt headers from installed headers; cpp file should include their
+	own headers first; other rules apply, see
+	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right</a>. Use include guards in headers with appropriatedly
+	encoded macro names.</p>
+</li>
+
 <li>Check for inline methods in public classes... 
 <b>okay!</b>
 <li>Check for assignments to QString::null... 
