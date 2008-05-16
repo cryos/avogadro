@@ -384,7 +384,10 @@
       <bool>true</bool>
      </property>
      <property name="readOnly" >
-      <bool>true</bool>
+      <bool>false</bool>
+     </property>
+     <property name="acceptRichText" >
+      <bool>false</bool>
      </property>
     </widget>
    </item>
@@ -398,14 +401,24 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="enableFormButton" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
+       <property name="text" >
+        <string>Use Form</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer" >
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0" >
         <size>
-         <width>40</width>
-         <height>20</height>
+         <width>48</width>
+         <height>26</height>
         </size>
        </property>
       </spacer>
@@ -452,8 +465,8 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>473</x>
-     <y>468</y>
+     <x>451</x>
+     <y>411</y>
     </hint>
     <hint type="destinationlabel" >
      <x>258</x>

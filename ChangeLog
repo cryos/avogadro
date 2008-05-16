@@ -1,5 +1,8 @@
 2008-05-16  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/gaussianinputdialog.*: Added the ability
+	to edit the input deck, revert etc.
+
 	* libavogadro/src/tools/drawtool.cpp: Added some extra signals on
 	mouse release to ensure molecule is updated.
 

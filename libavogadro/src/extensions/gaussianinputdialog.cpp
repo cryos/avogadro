@@ -27,6 +27,8 @@
 #include <QString>
 #include <QTextStream>
 #include <QFileDialog>
+#include <QMessageBox>
+#include <QDebug>
 
 using namespace OpenBabel;
 
@@ -36,7 +38,7 @@ namespace Avogadro
   GaussianInputDialog::GaussianInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
     m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
-    m_procs(1), m_output(""), m_chk(false)
+    m_procs(1), m_output(""), m_chk(false), m_dirty(false)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -58,10 +60,14 @@ namespace Avogadro
         this, SLOT(setOutput(int)));
     connect(ui.checkpointCheck, SIGNAL(stateChanged(int)),
         this, SLOT(setChk(int)));
+    connect(ui.previewText, SIGNAL(textChanged()),
+        this, SLOT(previewEdited()));
     connect(ui.generateButton, SIGNAL(clicked()),
         this, SLOT(generateClicked()));
     connect(ui.resetButton, SIGNAL(clicked()),
         this, SLOT(resetClicked()));
+    connect(ui.enableFormButton, SIGNAL(clicked()),
+        this, SLOT(enableFormClicked()));
 
     // Generate an initial preview of the input deck
     updatePreviewText();
@@ -94,12 +100,40 @@ namespace Avogadro
   void GaussianInputDialog::updatePreviewText()
   {
     // Generate the input deck and display it
-    ui.previewText->setText(generateInputDeck());
+    static bool called = false;
+    if (m_dirty && !called) {
+      called = true;
+      QMessageBox msgBox;
+
+      msgBox.setWindowTitle("Gaussian Input Deck Generator Warning");
+      msgBox.setText("Would you like to update the preview text, losing all "
+        "changes made in the Gaussian input deck preview pane?");
+      msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+
+      switch (msgBox.exec()) {
+        case QMessageBox::Yes:
+          // yes was clicked
+          m_dirty = false;
+          break;
+        case QMessageBox::No:
+          // no was clicked
+          break;
+        default:
+          // should never be reached
+          break;
+      }
+    }
+    
+    if (!m_dirty)
+      ui.previewText->setText(generateInputDeck());
+
+    called = false;
   }
 
   void GaussianInputDialog::resetClicked()
   {
     // Reset the form to defaults
+    deckDirty(false);
     ui.calculationCombo->setCurrentIndex(1);
     ui.theoryCombo->setCurrentIndex(3);
     ui.basisCombo->setCurrentIndex(2);
@@ -107,6 +141,7 @@ namespace Avogadro
     ui.chargeSpin->setValue(0);
     ui.procSpin->setValue(1);
   }
+
   void GaussianInputDialog::generateClicked()
   {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Gaussian Input Deck"),
@@ -117,7 +152,21 @@ namespace Avogadro
       return;
 
     QTextStream out(&file);
-    out << generateInputDeck();
+    out << ui.previewText->toPlainText();
+  }
+
+  void GaussianInputDialog::enableFormClicked()
+  {
+    updatePreviewText();
+  }
+
+  void GaussianInputDialog::previewEdited()
+  {
+    // Determine if the preview text has changed from the form generated
+    if(ui.previewText->toPlainText() != generateInputDeck())
+      deckDirty(true);
+    else
+      deckDirty(false);
   }
 
   void GaussianInputDialog::setTitle()
@@ -345,6 +394,21 @@ namespace Avogadro
       default:
         return "6-31G(d)";
     }
+  }
+
+  void GaussianInputDialog::deckDirty(bool dirty)
+  {
+    m_dirty = dirty;
+    ui.titleLine->setEnabled(!dirty);
+    ui.calculationCombo->setEnabled(!dirty);
+    ui.theoryCombo->setEnabled(!dirty);
+    ui.basisCombo->setEnabled(!dirty);
+    ui.multiplicitySpin->setEnabled(!dirty);
+    ui.chargeSpin->setEnabled(!dirty);
+    ui.procSpin->setEnabled(!dirty);
+    ui.outputCombo->setEnabled(!dirty);
+    ui.checkpointCheck->setEnabled(!dirty);
+    ui.enableFormButton->setEnabled(dirty);
   }
 
 }

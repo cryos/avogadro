@@ -61,6 +61,7 @@ namespace Avogadro
       int m_procs;
       QString m_output;
       bool m_chk;
+      bool m_dirty;
 
       // Generate an input deck as a string
       QString generateInputDeck();
@@ -69,6 +70,9 @@ namespace Avogadro
       QString getTheoryType(theoryType t);
       QString getBasisType(basisType t);
 
+      // Enable/disable form elements
+      void deckDirty(bool);
+
     public Q_SLOTS:
       void updatePreviewText();
 
@@ -76,6 +80,8 @@ namespace Avogadro
       //! Button Slots
       void resetClicked();
       void generateClicked();
+      void enableFormClicked();
+      void previewEdited();
 
       void setTitle();
       void setCalculation(int);
