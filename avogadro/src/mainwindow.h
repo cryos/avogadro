@@ -118,6 +118,7 @@ namespace Avogadro {
 
     Q_SIGNALS:
       void moleculeChanged(Molecule *);
+      void enableEngineSettingsButton(bool);
 
     private:
       friend class MainWindowPrivate;
@@ -192,6 +193,7 @@ namespace Avogadro {
     private Q_SLOTS:
 /*      void initialize();*/
 
+      void engineSettingsClicked();
       void addEngineClicked();
       void duplicateEngineClicked();
       void removeEngineClicked();

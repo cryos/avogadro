@@ -1,3 +1,13 @@
+2008-05-15  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/mainwindow.h, avogadro/mainwindow.cpp: Changed engine
+	configuration to a new button which brings up an extra "settings"
+	window with tabs. Add signal/slot for enabling the Engine Settings
+	window -- only enables button for engines with settings.
+
+	* src/enginelistview.cpp, primitivetreeview.cpp: 
+	Add setUniformItemSizes(true) -- supposedly improves performance.
+
 2008-05-15  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/primitive.cpp, libavogadro/src/glwidget.cpp,

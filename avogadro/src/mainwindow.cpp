@@ -60,6 +60,7 @@
 #include <QSettings>
 #include <QStandardItem>
 #include <QStackedLayout>
+#include <QTabWidget>
 #include <QTextEdit>
 #include <QTimer>
 #include <QToolButton>
@@ -83,6 +84,7 @@ namespace Avogadro
       undoStack( 0 ), toolsFlow( 0 ), toolsLayout( 0 ),
       toolsTab(0),
       toolSettingsStacked(0), toolSettingsWidget(0), toolSettingsDock(0),
+      currentSelectedEngine(0),
       messagesText( 0 ),
       glWidget(0),
       centralLayout(0), centralTab(0), bottomFlat(0),
@@ -106,8 +108,9 @@ namespace Avogadro
       QDockWidget *toolSettingsDock;
 
       QStackedLayout *enginesStacked;
-      QStackedLayout *engineConfigurationStacked;
-      QStackedLayout *enginePrimitivesStacked;
+      Engine         *currentSelectedEngine; // for settings widget title, etc.
+//      QStackedLayout *engineConfigurationStacked;
+//      QStackedLayout *enginePrimitivesStacked;
 
       QTextEdit *messagesText;
 
@@ -188,8 +191,8 @@ namespace Avogadro
     ui.menuDocks->addAction( ui.toolsDock->toggleViewAction() );
 
     d->enginesStacked = new QStackedLayout( ui.enginesWidget );
-    d->engineConfigurationStacked = new QStackedLayout( ui.engineConfigurationWidget );
-    d->enginePrimitivesStacked = new QStackedLayout( ui.enginePrimitivesWidget );
+//    d->engineConfigurationStacked = new QStackedLayout( ui.engineConfigurationWidget );
+//    d->enginePrimitivesStacked = new QStackedLayout( ui.enginePrimitivesWidget );
 
     // create messages widget
     QWidget *messagesWidget = new QWidget();
@@ -228,8 +231,8 @@ namespace Avogadro
 
     ui.menuDocks->addAction( ui.projectDock->toggleViewAction() );
     ui.menuDocks->addAction( ui.enginesDock->toggleViewAction() );
-    ui.menuDocks->addAction( ui.engineConfigurationDock->toggleViewAction() );
-    ui.menuDocks->addAction( ui.enginePrimitivesDock->toggleViewAction() );
+//    ui.menuDocks->addAction( ui.engineConfigurationDock->toggleViewAction() );
+//    ui.menuDocks->addAction( ui.enginePrimitivesDock->toggleViewAction() );
     ui.menuToolbars->addAction( ui.fileToolBar->toggleViewAction() );
 
     // Disable the "Revert" and "Save" actions -- we haven't modified anything
@@ -1010,8 +1013,8 @@ namespace Avogadro
     d->glWidget = d->glWidgets.at( index );
 
     d->enginesStacked->setCurrentIndex( index );
-    d->engineConfigurationStacked->setCurrentIndex( index );
-    d->enginePrimitivesStacked->setCurrentIndex( index );
+//    d->engineConfigurationStacked->setCurrentIndex( index );
+//    d->enginePrimitivesStacked->setCurrentIndex( index );
     ui.actionDisplayAxes->setChecked(renderAxes());
     ui.actionDebugInformation->setChecked(renderDebug());
   }
@@ -1283,14 +1286,14 @@ namespace Avogadro
         delete widget;
 
         // delete the engine configuration for this GLWidget
-        widget = d->engineConfigurationStacked->widget( index );
-        d->engineConfigurationStacked->removeWidget( widget );
-        delete widget;
+//        widget = d->engineConfigurationStacked->widget( index );
+//        d->engineConfigurationStacked->removeWidget( widget );
+//        delete widget;
 
         // delete the engine primitives for this GLWidget
-        widget = d->enginePrimitivesStacked->widget( index );
-        d->enginePrimitivesStacked->removeWidget( widget );
-        delete widget;
+//        widget = d->enginePrimitivesStacked->widget( index );
+//        d->enginePrimitivesStacked->removeWidget( widget );
+//        delete widget;
 
         for ( int count=d->centralTab->count(); index < count; index++ ) {
           d->centralTab->setTabText( index, tr( "View %1" ).arg( QString::number( index + 1 ) ) );
@@ -1539,8 +1542,8 @@ namespace Avogadro
     {
       restoreState(ba);
     } else {
-      tabifyDockWidget(ui.enginesDock, ui.engineConfigurationDock);
-      tabifyDockWidget(ui.enginesDock, ui.enginePrimitivesDock);
+//      tabifyDockWidget(ui.enginesDock, ui.engineConfigurationDock);
+//      tabifyDockWidget(ui.enginesDock, ui.enginePrimitivesDock);
       ui.enginesDock->raise();
     }
 
@@ -1810,8 +1813,21 @@ namespace Avogadro
     EngineListView *engineListView = new EngineListView( gl, engineListWidget );
     vlayout->addWidget(engineListView);
 
-    // buttons
+    // buttons for engines
+    // First the settings button
     QHBoxLayout *hlayout = new QHBoxLayout();
+    // uncomment this to center -- right now, it's aligned to the left side
+    //    hlayout->addStretch(1);
+    QPushButton *engineSettingsButton = new QPushButton(tr("Settings..."), engineListWidget);
+    engineSettingsButton->setEnabled(false);
+    hlayout->addWidget(engineSettingsButton);
+    connect(engineSettingsButton, SIGNAL(clicked()), this, SLOT(engineSettingsClicked()));
+    connect(this, SIGNAL(enableEngineSettingsButton(bool)), engineSettingsButton, SLOT(setEnabled(bool)));
+    hlayout->addStretch(1);
+    vlayout->addLayout(hlayout);
+    
+    // Then a row of add, duplicate, remove
+    hlayout = new QHBoxLayout();
     // add
     QPushButton *addEngineButton = new QPushButton(tr("Add"), engineListWidget);
     hlayout->addWidget(addEngineButton);
@@ -1826,26 +1842,25 @@ namespace Avogadro
     QPushButton *removeEngineButton = new QPushButton(tr("Remove"), engineListWidget);
     hlayout->addWidget(removeEngineButton);
     connect(removeEngineButton, SIGNAL(clicked()), this, SLOT(removeEngineClicked()));
-
     vlayout->addLayout(hlayout);
 
     d->enginesStacked->addWidget( engineListWidget );
 
     // stacked configurations
-    QStackedWidget *stacked = new QStackedWidget(ui.engineConfigurationWidget);
+//    QStackedWidget *stacked = new QStackedWidget(ui.engineConfigurationWidget);
     // 0 position is a blank configuration
-    stacked->addWidget(new QWidget());
-    d->engineConfigurationStacked->addWidget(stacked);
+//    stacked->addWidget(new QWidget());
+//    d->engineConfigurationStacked->addWidget(stacked);
 
-    EnginePrimitivesWidget *primitivesWidget =
-      new EnginePrimitivesWidget(gl, ui.enginePrimitivesWidget);
-    d->enginePrimitivesStacked->addWidget(primitivesWidget);
+//    EnginePrimitivesWidget *primitivesWidget =
+//      new EnginePrimitivesWidget(gl, ui.enginePrimitivesWidget);
+//    d->enginePrimitivesStacked->addWidget(primitivesWidget);
 
     connect( engineListView, SIGNAL( clicked( Engine * ) ),
         this, SLOT( engineClicked( Engine * ) ) );
 
-    connect( engineListView, SIGNAL( clicked( Engine * ) ),
-        primitivesWidget, SLOT( setEngine( Engine * ) ) );
+//    connect( engineListView, SIGNAL( clicked( Engine * ) ),
+//        primitivesWidget, SLOT( setEngine( Engine * ) ) );
 
     // Warn the user if no engines or tools are loaded
     int nEngines = d->glWidget->engineFactories().size() - 1;
@@ -1865,14 +1880,35 @@ namespace Avogadro
     return gl;
   }
 
+  void MainWindow::engineSettingsClicked()
+  {
+    if (!d->currentSelectedEngine)
+      return;
+
+		QWidget *settingsWindow = new QWidget();
+    settingsWindow->setWindowTitle(d->currentSelectedEngine->name() + ' ' + tr("Settings"));
+		QVBoxLayout *layout = new QVBoxLayout;
+
+		// now set up the tabs: Currently settings and objects (primitives)
+    QTabWidget *settingsTabs = new QTabWidget(settingsWindow);
+    settingsTabs->addTab(d->currentSelectedEngine->settingsWidget(), tr("Settings"));
+    
+    EnginePrimitivesWidget *primitivesWidget =
+          new EnginePrimitivesWidget(d->glWidget, settingsWindow);
+    primitivesWidget->setEngine(d->currentSelectedEngine);
+    settingsTabs->addTab(primitivesWidget, tr("Objects"));
+
+		layout->addWidget(settingsTabs);
+		settingsWindow->setLayout(layout);
+    settingsWindow->show();
+  }
+
   void MainWindow::addEngineClicked()
   {
     Engine *engine =  AddEngineDialog::getEngine(this, d->glWidget->engineFactories());
-    if(engine)
-    {
+    if(engine) {
       PrimitiveList p = d->glWidget->selectedPrimitives();
-      if(!p.size())
-      {
+      if(!p.size()) {
         p = d->glWidget->primitives();
       }
       engine->setPrimitives(p);
@@ -1895,19 +1931,15 @@ namespace Avogadro
       {
         Engine *engine = engineListView->selectedEngine();
 
-        if(engine)
-        {
+        if(engine) {
           Engine *newEngine = engine->clone();
           PrimitiveList list = d->glWidget->selectedPrimitives();
-          if(list.size())
-          {
+          if(list.size()) {
             newEngine->setPrimitives(d->glWidget->selectedPrimitives());
-          }
-          else
-          {
+          } else {
             newEngine->setPrimitives(d->glWidget->primitives());
           }
-          newEngine->setName(newEngine->name() + " copy");
+          newEngine->setName(newEngine->name() + tr(" copy"));
           d->glWidget->addEngine(newEngine);
         }
         break;
@@ -1918,17 +1950,14 @@ namespace Avogadro
   void MainWindow::removeEngineClicked()
   {
     QWidget *widget = d->enginesStacked->currentWidget();
-    foreach(QObject *object, widget->children())
-    {
+    foreach(QObject *object, widget->children()) {
       EngineListView *engineListView;
       if( object->isWidgetType() &&
           (engineListView = qobject_cast<EngineListView *>(object)) )
       {
         Engine *engine = engineListView->selectedEngine();
 
-
-        if(engine)
-        {
+        if(engine) {
           d->glWidget->removeEngine(engine);
         }
         break;
@@ -1938,26 +1967,12 @@ namespace Avogadro
 
   void MainWindow::engineClicked(Engine *engine)
   {
-    QWidget *widget = engine->settingsWidget();
+    if (!engine)
+      return;
 
-    QStackedWidget *stack = qobject_cast<QStackedWidget *>(d->engineConfigurationStacked->currentWidget());
-
-    if(stack)
-    {
-      if(!widget)
-      {
-        stack->setCurrentIndex(0);
-      }
-      else if(stack->children().contains(widget))
-      {
-        stack->setCurrentWidget(widget);
-      }
-      else
-      {
-        stack->addWidget(widget);
-        stack->setCurrentWidget(widget);
-      }
-    }
+    d->currentSelectedEngine = engine;
+    // If we have a non-null widget, enable the settings button
+    emit enableEngineSettingsButton(engine->settingsWidget() != NULL);
   }
 
 } // end namespace Avogadro
