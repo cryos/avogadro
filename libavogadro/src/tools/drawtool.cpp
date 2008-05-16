@@ -665,11 +665,28 @@ namespace Avogadro {
       m_comboBondOrder->addItem(tr("Double"));
       m_comboBondOrder->addItem(tr("Triple"));
 
+      // Improve the layout of the widgets
+      QHBoxLayout* tmp = new QHBoxLayout;
+      tmp->addWidget(m_comboElements);
+      tmp->addStretch(1);
+      QHBoxLayout* tmp2 = new QHBoxLayout;
+      tmp2->addWidget(m_comboBondOrder);
+      tmp2->addStretch(1);
+      QGridLayout* grid = new QGridLayout;
+      grid->addWidget(labelElement, 0, 0, 1, 1, Qt::AlignRight);
+      grid->addLayout(tmp, 0, 1);
+      grid->addWidget(labelBO, 1, 0, 1, 1, Qt::AlignRight);
+      grid->addLayout(tmp2, 1, 1);
+
       m_addHydrogensCheck = new QCheckBox(tr("Adjust Hydrogens"), m_settingsWidget);
       m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
 
       m_fragmentButton = new QPushButton(m_settingsWidget);
       m_fragmentButton->setText(tr("Fragment Library..."));
+      QHBoxLayout* fragmentLayout = new QHBoxLayout;
+      fragmentLayout->addStretch(1);
+      fragmentLayout->addWidget(m_fragmentButton);
+      fragmentLayout->addStretch(1);
       connect(m_fragmentButton, SIGNAL(clicked(bool)),
               this, SLOT(showFragmentDialog(bool)));
 
@@ -682,12 +699,9 @@ namespace Avogadro {
               this, SLOT(customElementChanged(int)));
 
       m_layout = new QVBoxLayout();
-      m_layout->addWidget(labelElement);
-      m_layout->addWidget(m_comboElements);
-      m_layout->addWidget(labelBO);
-      m_layout->addWidget(m_comboBondOrder);
+      m_layout->addLayout(grid);
       m_layout->addWidget(m_addHydrogensCheck);
-      m_layout->addWidget(m_fragmentButton);
+      m_layout->addLayout(fragmentLayout);
       m_layout->addStretch(1);
       m_settingsWidget->setLayout(m_layout);
 
