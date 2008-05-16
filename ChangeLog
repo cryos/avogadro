@@ -1,3 +1,16 @@
+2008-05-16  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/drawtool.*: Use new
+	OBForceField::SetIgnoreAtom() to make sure the new atom doesn't push
+	away other fragment you want to connect with. Also fix the atom when
+	you hit an atom that already exists. This makes drawing rings with
+	AutoOpt enabled really easy.
+
+	* libavogadro/src/autoopttool.*: Use new OBForceField::SetFixAtom()
+
+	* libavogadro/src/extensions/animationdialog.ui: Make the dialog
+	more compact. Removed the group boxes.
+
 2008-05-16  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/tools/autorotatetool.cpp, 

@@ -41,6 +41,7 @@
 #include <QCheckBox>
 #include <QSpinBox>
 #include <QUndoStack>
+#include <QMutex>
 
 namespace Avogadro {
 
@@ -59,6 +60,7 @@ namespace Avogadro {
 
     Q_SIGNALS:
       void finished(bool calculated);
+      void setupDone();
       void setupFailed();
       void setupSucces();
 
@@ -72,8 +74,8 @@ namespace Avogadro {
       int m_algorithm;
       //double m_convergence;
       int m_steps;
-
       bool m_stop;
+      QMutex m_mutex;
   };
 
   /**
@@ -130,6 +132,7 @@ namespace Avogadro {
 
     public Q_SLOTS:
       void finished(bool calculated);
+      void setupDone();
       void setupFailed();
       void setupSucces();
       void toggle();
@@ -150,7 +153,6 @@ namespace Avogadro {
       QWidget*                  m_settingsWidget;
       Eigen::Vector3d           m_selectedPrimitivesCenter;    // centroid of selected atoms
       OpenBabel::OBForceField*  m_forceField;
-      int 			m_numConstraints;
       AutoOptThread *           m_thread;
 
       std::vector<std::string>  m_forceFieldList;

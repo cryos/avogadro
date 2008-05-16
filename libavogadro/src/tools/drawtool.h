@@ -43,6 +43,8 @@
 #include <QUndoCommand>
 #include <QCheckBox>
 
+#include <openbabel/forcefield.h>
+
 namespace Avogadro {
 
   class AddAtomCommand;
@@ -155,6 +157,8 @@ namespace Avogadro {
       Atom *newAtom(GLWidget *widget, const QPoint& p);
       void moveAtom(GLWidget *widget, Atom *atom, const QPoint& p);
       Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
+
+      OpenBabel::OBForceField *m_forceField;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();

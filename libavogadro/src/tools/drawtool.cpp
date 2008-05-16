@@ -78,6 +78,7 @@ namespace Avogadro {
     action->setShortcut(Qt::Key_F8);
 
     m_insertFragmentMode = false;
+    m_forceField = OBForceField::FindForceField("MMFF94");
   }
 
   DrawTool::~DrawTool()
@@ -172,6 +173,7 @@ namespace Avogadro {
         else { // create a new atom
           m_beginAtom = newAtom(widget, event->pos());
           m_beginAtomAdded = true;
+          m_forceField->SetIgnoreAtom(m_beginAtom->GetIdx());
           m_beginAtom->update();
         } // place atoms
       } // hits
@@ -227,6 +229,7 @@ namespace Avogadro {
           m_endAtom = 0;
           m_prevAtomElement = m_beginAtom->GetAtomicNum();
           m_beginAtom->SetAtomicNum(m_element);
+          m_forceField->UnsetIgnoreAtom();
         }
         else if(m_bond) {
           //          Atom *oldAtom = (Atom *)m_bond->GetEndAtom();
@@ -245,6 +248,8 @@ namespace Avogadro {
 
         // we hit an existing atom != m_endAtom
         if(existingAtom) {
+          m_forceField->UnsetIgnoreAtom();
+          m_forceField->SetFixAtom(existingAtom->GetIdx());
           Bond *existingBond = (Bond *)molecule->GetBond(m_beginAtom, existingAtom);
           if(!existingBond) {
             if(m_prevBond) {
@@ -306,6 +311,7 @@ namespace Avogadro {
           }
           m_endAtom = newAtom(widget, event->pos());
           m_endAtomAdded = true;
+          m_forceField->SetIgnoreAtom(m_endAtom->GetIdx());
 
           if(!m_bond) {
             m_bond = newBond(molecule, m_beginAtom, m_endAtom);
@@ -423,6 +429,9 @@ namespace Avogadro {
       m_prevAtomElement=0;
       m_beginAtomAdded=false;
       m_endAtomAdded=false;
+      
+      m_forceField->UnsetIgnoreAtom();
+      m_forceField->UnsetFixAtom();
 
       widget->molecule()->update();
       return undo;

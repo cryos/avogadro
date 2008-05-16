@@ -68,6 +68,7 @@ namespace Avogadro {
     }
     m_thread = new AutoOptThread;
     connect(m_thread,SIGNAL(finished(bool)),this,SLOT(finished(bool)));
+    connect(m_thread,SIGNAL(setupDone()),this,SLOT(setupDone()));
     connect(m_thread,SIGNAL(setupFailed()),this,SLOT(setupFailed()));
     connect(m_thread,SIGNAL(setupSucces()),this,SLOT(setupSucces()));
 
@@ -148,8 +149,7 @@ namespace Avogadro {
 
       if (m_clickedAtom)
       {
-        //m_forceField->GetConstraints().AddAtomConstraint(m_clickedAtom->GetIdx());
-        m_numConstraints = m_forceField->GetConstraints().Size();
+        m_forceField->SetFixAtom(m_clickedAtom->GetIdx());
       }
     }
 
@@ -163,12 +163,9 @@ namespace Avogadro {
     m_leftButtonPressed = false;
     m_midButtonPressed = false;
     m_rightButtonPressed = false;
-    if (m_clickedAtom != 0 && m_numConstraints > 0)
-    {
-      //m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
-    }
 
     m_clickedAtom = 0;
+    m_forceField->UnsetFixAtom();
 
     widget->update();
     return 0;
@@ -412,10 +409,6 @@ namespace Avogadro {
 
     if(!m_running)
     {
-      if(!m_timerId)
-      {
-        m_timerId = startTimer(50);
-      }
       m_thread->setup(m_glwidget->molecule(), m_forceField, 
                       m_comboAlgorithm->currentIndex(),
                       /* m_convergenceSpinBox->value(),*/ m_stepsSpinBox->value());
@@ -451,11 +444,8 @@ namespace Avogadro {
 
       m_glwidget->update(); // redraw AutoOpt label
       
-      if (m_clickedAtom != 0 && m_numConstraints > 0)
-      {
-        //m_forceField->GetConstraints().DeleteConstraint(m_numConstraints - 1);
-      }
       m_clickedAtom = 0;
+      m_forceField->UnsetFixAtom();
       m_leftButtonPressed = false;
       m_midButtonPressed = false;
       m_rightButtonPressed = false;
@@ -505,6 +495,14 @@ namespace Avogadro {
     m_block = false;
   }
   
+  void AutoOptTool::setupDone()
+  {
+    if(!m_timerId)
+    {
+      m_timerId = startTimer(50);
+    }
+  }
+
   void AutoOptTool::setupFailed()
   {
     m_setupFailed = true; 
@@ -524,6 +522,8 @@ namespace Avogadro {
   void AutoOptThread::setup(Molecule *molecule, OpenBabel::OBForceField* forceField, 
         int algorithm, /*int convergence,*/ int steps)
   {
+    //cout << "start AutoOptThread::setup()" << endl;
+    m_mutex.lock();
     m_molecule = molecule;
     m_forceField = forceField;
     m_algorithm = algorithm;
@@ -531,35 +531,46 @@ namespace Avogadro {
     m_steps = steps;
     m_stop = false;
     m_velocities = false;
+    m_mutex.unlock();
+    emit setupDone();
+    //cout << "stop AutoOptThread::setup()" << endl;
   }
 
  
   void AutoOptThread::run()
   {
-    update();
+    //update();
     exec();
   }
 
   void AutoOptThread::update()
   {
+   //cout << "start AutoOptThread::update()" << endl;
     // If the force field is false we have nothing and so should return
    if (!m_forceField)
       return;
 
+    m_mutex.lock();
+
     m_forceField->SetLogFile(NULL);
     m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
 
+   //cout << "-- 1 --" << endl;
     if ( !m_forceField->Setup( *m_molecule ) ) {
       //qWarning() << "AutoOptThread: Could not set up force field on " << m_molecule;
       m_stop = true;
       emit setupFailed();
       emit finished(false);
+      m_mutex.unlock();
       return;
     } else {
+   //cout << "-- 2 --" << endl;
       emit setupSucces();
     }
+   //cout << "-- 3 --" << endl;
     m_forceField->SetConformers( *m_molecule );
 
+   //cout << "-- 4 --" << endl;
     switch(m_algorithm) {
       case 0:
         m_forceField->SteepestDescent(m_steps/*, m_convergence*/);
@@ -575,7 +586,10 @@ namespace Avogadro {
         break;
     }
 
+   //cout << "-- 5 --" << endl;
+    m_mutex.unlock();
     emit finished(m_stop ? false : true);
+    //cout << "stop AutoOptThread::update()" << endl;
   }
 
   void AutoOptThread::stop()
