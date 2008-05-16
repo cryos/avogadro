@@ -40,7 +40,7 @@ namespace Avogadro
     m_gaussianInputDialog(0), m_molecule(0)
   {
     QAction* action = new QAction(this);
-    action->setText(tr("Gaussian Input Deck Generator"));
+    action->setText(tr("Gaussian Input..."));
     m_actions.append(action);
   }
 

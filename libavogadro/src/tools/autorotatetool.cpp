@@ -271,7 +271,7 @@ namespace Avogadro {
       labelZ->setMaximumHeight(15);
       m_sliderZ = new QSlider(m_settingsWidget);
       m_sliderZ->setOrientation(Qt::Horizontal);
-      m_sliderZ->setTickPosition(QSlider::TicksBothSides);
+      m_sliderZ->setTickPosition(QSlider::TicksAbove);
       m_sliderZ->setToolTip(tr("z rotation"));
       m_sliderZ->setTickInterval(10);
       m_sliderZ->setPageStep(5);

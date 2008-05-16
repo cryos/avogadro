@@ -48,7 +48,7 @@ namespace Avogadro
     m_glwidget(0), m_orbitalDialog(0), m_molecule(0), m_basis(0)
   {
     QAction* action = new QAction(this);
-    action->setText(tr("Molecular Orbitals"));
+    action->setText(tr("Import Molecular Orbitals..."));
     m_actions.append(action);
   }
 

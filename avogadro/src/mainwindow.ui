@@ -357,7 +357,7 @@
     <iconset resource="avogadro.qrc" >:/icons/fileexport.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Export Graphics</string>
+    <string>&amp;Export Graphics...</string>
    </property>
   </action>
   <action name="actionFullScreen" >
@@ -497,7 +497,7 @@
   </action>
   <action name="actionExportPOV" >
    <property name="text" >
-    <string>Export POVRay</string>
+    <string>Export POVRay...</string>
    </property>
   </action>
   <action name="actionTutorial" >

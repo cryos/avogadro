@@ -1816,14 +1816,13 @@ namespace Avogadro
     // buttons for engines
     // First the settings button
     QHBoxLayout *hlayout = new QHBoxLayout();
-    // uncomment this to center -- right now, it's aligned to the left side
-    //    hlayout->addStretch(1);
+//    hlayout->addStretch(1);
     QPushButton *engineSettingsButton = new QPushButton(tr("Settings..."), engineListWidget);
     engineSettingsButton->setEnabled(false);
     hlayout->addWidget(engineSettingsButton);
     connect(engineSettingsButton, SIGNAL(clicked()), this, SLOT(engineSettingsClicked()));
     connect(this, SIGNAL(enableEngineSettingsButton(bool)), engineSettingsButton, SLOT(setEnabled(bool)));
-    hlayout->addStretch(1);
+//    hlayout->addStretch(1);
     vlayout->addLayout(hlayout);
     
     // Then a row of add, duplicate, remove

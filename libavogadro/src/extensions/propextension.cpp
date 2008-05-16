@@ -53,6 +53,11 @@ namespace Avogadro
     m_cartesianModel = new PropertiesModel(PropertiesModel::CartesianType);
     
     action = new QAction( this );
+    action->setSeparator(true);
+    action->setData(-1);
+    m_actions.append(action);
+    
+    action = new QAction( this );
     action->setText( tr("Atom Properties..." ));
     action->setData(AtomPropIndex);
     m_actions.append( action );
@@ -71,6 +76,11 @@ namespace Avogadro
     action->setText( tr("Torsion Properties..." ));
     action->setData(TorsionPropIndex);
     m_actions.append( action );
+    
+    action = new QAction( this );
+    action->setText( tr("Conformers..." ));
+    action->setData(ConformerIndex);
+    m_actions.append( action );
 
     action = new QAction( this );
     action->setText( tr("Cartesian Editor..." ));
@@ -78,9 +88,9 @@ namespace Avogadro
     m_actions.append( action );
     
     action = new QAction( this );
-    action->setText( tr("Conformers..." ));
-    action->setData(ConformerIndex);
-    m_actions.append( action );
+    action->setSeparator(true);
+    action->setData(-1);
+    m_actions.append(action);
   }
 
   PropertiesExtension::~PropertiesExtension()
@@ -100,11 +110,10 @@ namespace Avogadro
     case AnglePropIndex:
     case TorsionPropIndex:
     case ConformerIndex:
-      return tr("&Extensions") + '>' + tr("&Properties");
+      return tr("&Build") + '>' + tr("&Properties");
     case CartesianIndex:
-      return tr("&Build");
-      break;
     default:
+      return tr("&Build");
       break;
     };
     return QString();

@@ -1,3 +1,14 @@
+2008-05-16  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/tools/autorotatetool.cpp, 
+	libavogadro/src/extensions/animationextension.cpp, 
+	libavogadro/src/extensions/orbitalextension.cpp, 
+	libavogadro/src/extensions/gaussianextension.cpp, 
+	libavogadro/src/extensions/propextension.cpp, 
+	avogadro/src/mainwindow.ui, avogadro/src/mainwindow.cpp:
+	More interface cleanup -- any menu item or button which brings up
+	a dialog should have "..." at the end. (KDE, Windows, and Mac UI guidelines.)
+	
 2008-05-16  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/aligntool.cpp,

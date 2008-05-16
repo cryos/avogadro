@@ -38,7 +38,11 @@ namespace Avogadro {
       m_animationDialog(0), m_timeLine(0), m_frameCount(0)
   {
     QAction *action = new QAction(this);
-    action->setText(tr("Animation"));
+    action->setText(tr("Animation..."));
+    m_actions.append(action);
+    
+    action = new QAction( this );
+    action->setSeparator(true);
     m_actions.append(action);
   }
 
