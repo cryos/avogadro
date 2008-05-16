@@ -807,16 +807,17 @@ namespace Avogadro
         else
           fOffset = 0.5f;
 
+        // The  - 0.5 * m_stepSize correction is only needed if for vMarchCube1(float,float,float)
         asEdgeVertex[iEdge] = Vector3f(
           fX + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][0]
              + fOffset * a2fEdgeDirection[iEdge][0]) * m_stepSize
-             - 0.5*m_stepSize,
+             /*- 0.5*m_stepSize*/,
           fY + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][1]
              + fOffset * a2fEdgeDirection[iEdge][1]) * m_stepSize
-             - 0.5*m_stepSize,
+             /*- 0.5*m_stepSize*/,
           fZ + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][2]
              + fOffset * a2fEdgeDirection[iEdge][2]) * m_stepSize
-             - 0.5*m_stepSize);
+             /*- 0.5*m_stepSize*/);
         vGetNormal(asEdgeNorm[iEdge], asEdgeVertex[iEdge].x(), asEdgeVertex[iEdge].y(), asEdgeVertex[iEdge].z());
       }
     }
