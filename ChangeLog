@@ -1,5 +1,8 @@
 2008-05-16  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/periodictableview.cpp: Some changes to improve
+	layout in Linux and hopefully Windows.
+
 	* cmake/modules/FindOpenBabel2.cmake: Hopefully a new and improved
 	FindOpenBabel2 using the new PkgConfig functions.
 

@@ -1,7 +1,7 @@
 /**********************************************************************
  PeriodicTableView - Periodic Table Graphics View for Avogadro
 
- Copyright (C) 2007 by Marcus D. Hanwell
+ Copyright (C) 2007-2008 by Marcus D. Hanwell
 
  This file is part of the Avogadro molecular editor project.
  For more information, see <http://avogadro.sourceforge.net/>
@@ -137,6 +137,7 @@ namespace Avogadro {
     QColor m_color;
     m_color.setRgbF(color[0], color[1], color[2]);
 
+    // Draw the element detail border and fill with the element colour
     painter->setBrush(m_color);
     painter->setPen(Qt::black);
     QRectF rect(-m_width/2, -m_height/2, m_width, m_height);
@@ -156,6 +157,9 @@ namespace Avogadro {
     int pixelHeight2 = fm.height();
     painter->setFont(font);
 
+// I don't seem to be able to get a nice, cross platform layout working here
+// I would really like to figure out how to make this more portable - ideas?
+#ifdef Q_WS_MAC
     // Draw the proton number
     QRectF protonNumberRect(-m_width/2 - 10, -m_height/2 + 8, m_width/2, pixelHeight2);
     painter->drawText(protonNumberRect, Qt::AlignRight, QString::number(m_element));
@@ -167,6 +171,21 @@ namespace Avogadro {
     // Finally the full element name
     QRectF nameRect(-m_width/2, -m_height/2 + 4 + pixelHeight*1.1 + pixelHeight2, m_width, pixelHeight);
     painter->drawText(nameRect, Qt::AlignCenter, name);
+#else
+    // Draw the proton number
+    QRectF protonNumberRect(-m_width/2 - 10, -m_height/2 + 16, m_width/2, pixelHeight2);
+    painter->drawText(protonNumberRect, Qt::AlignRight, QString::number(m_element));
+
+    // Draw the mass
+    QRectF massNumberRect(-m_width/2, -m_height/2 + 4  + pixelHeight, m_width,
+                          pixelHeight2);
+    painter->drawText(massNumberRect, Qt::AlignCenter, mass);
+
+    // Finally the full element name
+    QRectF nameRect(-m_width/2, -m_height/2 + pixelHeight + 0.8 * pixelHeight2,
+                    m_width, pixelHeight);
+    painter->drawText(nameRect, Qt::AlignCenter, name);
+#endif
   }
 
   void ElementDetail::elementChanged(int element)
