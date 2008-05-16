@@ -1827,18 +1827,14 @@ namespace Avogadro {
       m_snapToAngleBox->setSuffix(QString::fromUtf8("°"));
       m_snapToAngleBox->setEnabled(m_snapToEnabled);
 
-      m_spacer = new QLabel("");
-
       m_layout = new QGridLayout();
-      m_layout->setSpacing(2);
-      m_layout->addWidget(m_showAnglesBox, 1, 0);
-      m_layout->setRowMinimumHeight(2, 10);
-      m_layout->addWidget(m_snapToCheckBox, 3, 0);
-      m_layout->setRowMinimumHeight(4, 10);
-      m_layout->addWidget(m_snapToAngleLabel, 5, 0);
-      m_layout->addWidget(m_snapToAngleBox, 6, 0);
-      m_layout->addWidget(m_spacer, 7, 0);
-      m_layout->setRowStretch(7, 1);
+      m_layout->addWidget(m_showAnglesBox, 0, 0);
+      m_layout->addWidget(m_snapToCheckBox, 1, 0);
+      m_layout->addWidget(m_snapToAngleLabel, 2, 0);
+      m_layout->addWidget(m_snapToAngleBox, 2, 1);
+      QVBoxLayout* tmp = new QVBoxLayout;
+      tmp->addLayout(m_layout);
+      tmp->addStretch(1);
 
       connect(m_showAnglesBox, SIGNAL(stateChanged(int)), this,
           SLOT(showAnglesChanged(int)));
@@ -1849,7 +1845,7 @@ namespace Avogadro {
       connect(m_snapToAngleBox, SIGNAL(valueChanged(int)), this,
           SLOT(snapToAngleChanged(int)));
 
-      m_settingsWidget->setLayout(m_layout);
+      m_settingsWidget->setLayout(tmp);
 
       connect(m_settingsWidget, SIGNAL(destroyed()),
           this, SLOT(settingsWidgetDestroyed()));

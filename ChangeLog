@@ -1,5 +1,10 @@
 2008-05-16  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/aligntool.cpp,
+	libavogadro/src/tools/autorotatetool.cpp,
+	libavogadro/src/tools/bondcentrictool.cpp,
+	libavogadro/src/tools/selectrotatetool.cpp: More layout improvements.
+
 	* libavogadro/src/tools/drawtool.cpp: Layout improvements in the tool
 	set up dialog.
 

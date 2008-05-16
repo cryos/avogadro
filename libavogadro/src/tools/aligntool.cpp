@@ -288,6 +288,7 @@ namespace Avogadro {
       QHBoxLayout *hLayout = new QHBoxLayout();
       hLayout->addWidget(labelAxis);
       hLayout->addWidget(comboAxis);
+      hLayout->addStretch(1);
       QVBoxLayout *layout = new QVBoxLayout();
       layout->addLayout(hLayout);
       layout->addWidget(buttonAlign);

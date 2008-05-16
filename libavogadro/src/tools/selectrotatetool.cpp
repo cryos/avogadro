@@ -395,9 +395,12 @@ namespace Avogadro {
       m_comboSelectionMode->addItem(tr("Residue"));
       m_comboSelectionMode->addItem(tr("Molecule"));
 
+      QHBoxLayout* tmp = new QHBoxLayout;
+      tmp->addWidget(labelMode);
+      tmp->addWidget(m_comboSelectionMode);
+      tmp->addStretch(1);
       m_layout = new QVBoxLayout();
-      m_layout->addWidget(labelMode);
-      m_layout->addWidget(m_comboSelectionMode);
+      m_layout->addLayout(tmp);
       m_layout->addStretch(1);
       m_settingsWidget->setLayout(m_layout);
 

@@ -241,24 +241,30 @@ namespace Avogadro {
       labelX->setMaximumHeight(15);
       m_sliderX = new QSlider(m_settingsWidget);
       m_sliderX->setOrientation(Qt::Horizontal);
-      m_sliderX->setTickPosition(QSlider::TicksBothSides);
+      m_sliderX->setTickPosition(QSlider::TicksAbove);
       m_sliderX->setToolTip(tr("x rotation"));
       m_sliderX->setTickInterval(10);
       m_sliderX->setPageStep(5);
       m_sliderX->setRange(-m_maxRotation, m_maxRotation);
       m_sliderX->setValue(0);
+      QHBoxLayout* xLayout = new QHBoxLayout;
+      xLayout->addWidget(labelX);
+      xLayout->addWidget(m_sliderX);
 
       // Label and slider to set y axis rotation
       QLabel* labelY = new QLabel(tr("y rotation:"));
       labelY->setMaximumHeight(15);
       m_sliderY = new QSlider(m_settingsWidget);
       m_sliderY->setOrientation(Qt::Horizontal);
-      m_sliderY->setTickPosition(QSlider::TicksBothSides);
+      m_sliderY->setTickPosition(QSlider::TicksAbove);
       m_sliderY->setToolTip(tr("y rotation"));
       m_sliderY->setTickInterval(10);
       m_sliderY->setPageStep(5);
       m_sliderY->setRange(-m_maxRotation, m_maxRotation);
       m_sliderY->setValue(0);
+      QHBoxLayout* yLayout = new QHBoxLayout;
+      yLayout->addWidget(labelY);
+      yLayout->addWidget(m_sliderY);
 
       // Label and slider to set z axis rotation
       QLabel* labelZ = new QLabel(tr("z rotation:"));
@@ -271,6 +277,9 @@ namespace Avogadro {
       m_sliderZ->setPageStep(5);
       m_sliderZ->setRange(-m_maxRotation, m_maxRotation);
       m_sliderZ->setValue(0);
+      QHBoxLayout* zLayout = new QHBoxLayout;
+      zLayout->addWidget(labelZ);
+      zLayout->addWidget(m_sliderZ);
 
       // Push buttons to start/stop and to reset
       m_buttonStartStop = new QPushButton(tr("Start"), m_settingsWidget);
@@ -280,12 +289,9 @@ namespace Avogadro {
       buttonLayout->addWidget(buttonReset);
 
       QVBoxLayout* layout = new QVBoxLayout();
-      layout->addWidget(labelX);
-      layout->addWidget(m_sliderX);
-      layout->addWidget(labelY);
-      layout->addWidget(m_sliderY);
-      layout->addWidget(labelZ);
-      layout->addWidget(m_sliderZ);
+      layout->addLayout(xLayout);
+      layout->addLayout(yLayout);
+      layout->addLayout(zLayout);
       layout->addLayout(buttonLayout);
       layout->addStretch(1);
       m_settingsWidget->setLayout(layout);
