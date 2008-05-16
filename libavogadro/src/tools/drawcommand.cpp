@@ -460,7 +460,7 @@ namespace Avogadro {
 
   void ChangeElementDrawCommand::undo()
   {
-    OBAtom *atom = d->molecule->getAtomById(d->id);
+    Atom *atom = d->molecule->getAtomById(d->id);
 
     if(atom)
     {
@@ -479,7 +479,7 @@ namespace Avogadro {
 
   void ChangeElementDrawCommand::redo()
   {
-    OBAtom *atom = d->molecule->GetAtom(d->id);
+    Atom *atom = d->molecule->getAtomById(d->id);
 
     if(atom)
     {
