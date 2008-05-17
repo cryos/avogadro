@@ -1,3 +1,7 @@
+2008-05-17  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* avogadro/src/mainwindow.ui: Tweaks to the UI.
+
 2008-05-16  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engines/orbitalengine.*,

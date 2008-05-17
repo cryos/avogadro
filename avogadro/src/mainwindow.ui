@@ -13,16 +13,26 @@
    <string>Avogadro</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="avogadro.qrc" >:/icons/avogadro.png</iconset>
+   <iconset resource="avogadro.qrc" >
+    <normaloff>:/icons/avogadro.png</normaloff>:/icons/avogadro.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget" >
+   <property name="geometry" >
+    <rect>
+     <x>79</x>
+     <y>56</y>
+     <width>276</width>
+     <height>474</height>
+    </rect>
    </property>
-  <widget class="QWidget" name="centralWidget" />
+  </widget>
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >
     <rect>
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -135,8 +145,25 @@
    <addaction name="menuSettings" />
    <addaction name="menuHelp" />
   </widget>
-  <widget class="QStatusBar" name="statusbar" />
+  <widget class="QStatusBar" name="statusbar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>530</y>
+     <width>621</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QToolBar" name="fileToolBar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>26</y>
+     <width>621</width>
+     <height>30</height>
+    </rect>
+   </property>
    <property name="windowTitle" >
     <string>Main Toolbar</string>
    </property>
@@ -159,6 +186,14 @@
    <addaction name="actionQuitTool" />
   </widget>
   <widget class="QDockWidget" name="projectDock" >
+   <property name="geometry" >
+    <rect>
+     <x>361</x>
+     <y>56</y>
+     <width>260</width>
+     <height>474</height>
+    </rect>
+   </property>
    <property name="minimumSize" >
     <size>
      <width>165</width>
@@ -166,7 +201,7 @@
     </size>
    </property>
    <property name="allowedAreas" >
-    <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle" >
     <string>Project</string>
@@ -175,6 +210,14 @@
     <number>2</number>
    </attribute>
    <widget class="QWidget" name="projectWidget" >
+    <property name="geometry" >
+     <rect>
+      <x>4</x>
+      <y>24</y>
+      <width>252</width>
+      <height>446</height>
+     </rect>
+    </property>
     <layout class="QVBoxLayout" >
      <property name="spacing" >
       <number>6</number>
@@ -205,8 +248,16 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="toolsDock" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>56</y>
+     <width>73</width>
+     <height>234</height>
+    </rect>
+   </property>
    <property name="allowedAreas" >
-    <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle" >
     <string>Tools</string>
@@ -214,23 +265,50 @@
    <attribute name="dockWidgetArea" >
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="toolsWidget" />
+   <widget class="QWidget" name="toolsWidget" >
+    <property name="geometry" >
+     <rect>
+      <x>4</x>
+      <y>24</y>
+      <width>65</width>
+      <height>206</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QDockWidget" name="enginesDock" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>296</y>
+     <width>73</width>
+     <height>234</height>
+    </rect>
+   </property>
    <property name="allowedAreas" >
-    <set>Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea</set>
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle" >
-    <string>Engines</string>
+    <string>Display Types</string>
    </property>
    <attribute name="dockWidgetArea" >
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="enginesWidget" />
+   <widget class="QWidget" name="enginesWidget" >
+    <property name="geometry" >
+     <rect>
+      <x>4</x>
+      <y>24</y>
+      <width>65</width>
+      <height>206</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <action name="actionOpen" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/fileopen.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/fileopen.png</normaloff>:/icons/fileopen.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Open</string>
@@ -241,7 +319,8 @@
   </action>
   <action name="actionOpenTool" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/fileopen.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/fileopen.png</normaloff>:/icons/fileopen.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Open</string>
@@ -249,7 +328,8 @@
   </action>
   <action name="actionQuit" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/exit.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/exit.png</normaloff>:/icons/exit.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Quit</string>
@@ -260,7 +340,8 @@
   </action>
   <action name="actionQuitTool" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/exit.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/exit.png</normaloff>:/icons/exit.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Quit</string>
@@ -278,7 +359,8 @@
   </action>
   <action name="actionNew" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/filenew.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/filenew.png</normaloff>:/icons/filenew.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;New</string>
@@ -289,7 +371,8 @@
   </action>
   <action name="actionNewTool" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/filenew.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/filenew.png</normaloff>:/icons/filenew.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;New</string>
@@ -297,7 +380,8 @@
   </action>
   <action name="actionClose" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/fileclose.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/fileclose.png</normaloff>:/icons/fileclose.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Close</string>
@@ -308,7 +392,8 @@
   </action>
   <action name="actionCloseTool" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/fileclose.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/fileclose.png</normaloff>:/icons/fileclose.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Close</string>
@@ -316,7 +401,8 @@
   </action>
   <action name="actionSave" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/filesave.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/filesave.png</normaloff>:/icons/filesave.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Save</string>
@@ -327,7 +413,8 @@
   </action>
   <action name="actionSaveTool" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/filesave.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/filesave.png</normaloff>:/icons/filesave.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Save</string>
@@ -335,7 +422,8 @@
   </action>
   <action name="actionSaveAs" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/filesaveas.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/filesaveas.png</normaloff>:/icons/filesaveas.png</iconset>
    </property>
    <property name="text" >
     <string>Save &amp;As...</string>
@@ -346,7 +434,8 @@
   </action>
   <action name="actionRevert" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/revert.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/revert.png</normaloff>:/icons/revert.png</iconset>
    </property>
    <property name="text" >
     <string>Revert To Saved</string>
@@ -354,7 +443,8 @@
   </action>
   <action name="actionExportGraphics" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/fileexport.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/fileexport.png</normaloff>:/icons/fileexport.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Export Graphics...</string>
@@ -362,7 +452,8 @@
   </action>
   <action name="actionFullScreen" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/window_fullscreen.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/window_fullscreen.png</normaloff>:/icons/window_fullscreen.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Full Screen Mode</string>
@@ -370,7 +461,8 @@
   </action>
   <action name="actionSetBackgroundColor" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/colorize.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/colorize.png</normaloff>:/icons/colorize.png</iconset>
    </property>
    <property name="text" >
     <string>Set &amp;Background Color...</string>
@@ -383,7 +475,8 @@
   </action>
   <action name="actionUndo" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/undo.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/undo.png</normaloff>:/icons/undo.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Undo</string>
@@ -394,7 +487,8 @@
   </action>
   <action name="actionRedo" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/redo.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/redo.png</normaloff>:/icons/redo.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Redo</string>
@@ -405,7 +499,8 @@
   </action>
   <action name="actionNewView" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/tab_new.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/tab_new.png</normaloff>:/icons/tab_new.png</iconset>
    </property>
    <property name="text" >
     <string>New View</string>
@@ -416,7 +511,8 @@
     <bool>false</bool>
    </property>
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/tab_remove.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/tab_remove.png</normaloff>:/icons/tab_remove.png</iconset>
    </property>
    <property name="text" >
     <string>Close View</string>
@@ -424,7 +520,8 @@
   </action>
   <action name="actionCenter" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/navigate.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/navigate.png</normaloff>:/icons/navigate.png</iconset>
    </property>
    <property name="text" >
     <string>Center</string>
@@ -432,7 +529,8 @@
   </action>
   <action name="actionPaste" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/paste.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/paste.png</normaloff>:/icons/paste.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Paste</string>
@@ -443,7 +541,8 @@
   </action>
   <action name="actionCopy" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/copy.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/copy.png</normaloff>:/icons/copy.png</iconset>
    </property>
    <property name="text" >
     <string>Copy</string>
@@ -454,7 +553,8 @@
   </action>
   <action name="actionCut" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/cut.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/cut.png</normaloff>:/icons/cut.png</iconset>
    </property>
    <property name="text" >
     <string>Cut</string>
@@ -489,7 +589,8 @@
   </action>
   <action name="configureAvogadroAction" >
    <property name="icon" >
-    <iconset resource="avogadro.qrc" >:/icons/tool.png</iconset>
+    <iconset resource="avogadro.qrc" >
+     <normaloff>:/icons/tool.png</normaloff>:/icons/tool.png</iconset>
    </property>
    <property name="text" >
     <string>Configure Avogadro...</string>
