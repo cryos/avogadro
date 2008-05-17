@@ -1,5 +1,8 @@
 2008-05-17  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/clickmeasuretool.*: Add some caching in the
+	tool so measurements are only echoed once.
+
 	* avogadro/src/mainwindow.ui: Tweaks to the UI.
 
 2008-05-16  Marcus D. Hanwell  <marcus@cryos.org>

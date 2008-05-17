@@ -53,6 +53,9 @@ namespace Avogadro {
           "\tAngle is measured between 1-3 using 2 as the common point\n"
           "Right Mouse: Reset the measurements."));
     action->setShortcut(Qt::Key_F12);
+    m_lastMeasurement.resize(5);
+    for (int i = 0; i < m_lastMeasurement.size(); ++i)
+      m_lastMeasurement[i] = 0.0;
   }
 
   ClickMeasureTool::~ClickMeasureTool()
@@ -141,9 +144,14 @@ namespace Avogadro {
       // Two atoms selected - distance measurement only
       m_vector[0] = m_selectedAtoms[1]->pos() - m_selectedAtoms[0]->pos();
       QString distanceString = tr("Distance (1->2): %1 %2").arg(
-    		  				   QString::number(m_vector[0].norm()),
-                               QString::fromUtf8("Å"));
-      emit message(distanceString);
+                                QString::number(m_vector[0].norm()),
+                                QString::fromUtf8("Å"));
+
+      // Check whether we have already sent this out...
+      if (m_lastMeasurement.at(0) != m_vector[0].norm()) {
+        emit message(distanceString);
+        m_lastMeasurement[0] = m_vector[0].norm();
+      }
     }
     if(m_numSelectedAtoms >= 3)
     {
@@ -164,8 +172,15 @@ namespace Avogadro {
                             QString::number(m_angle),
                             QString("°"));
 
-      emit message(angleString);
-      emit message(distanceString);
+      // Check whether we have already sent this out
+      if (m_lastMeasurement.at(1) != m_vector[1].norm()) {
+        emit message(distanceString);
+        m_lastMeasurement[1] = m_vector[1].norm();
+      }
+      if (m_lastMeasurement.at(3) != m_angle) {
+        emit message(angleString);
+        m_lastMeasurement[3] = m_angle;
+      }
     }
     if(m_numSelectedAtoms >= 4)
     {
@@ -176,25 +191,33 @@ namespace Avogadro {
       // Three distances, bond angle and dihedral angle
       m_vector[2] = m_selectedAtoms[2]->pos() - m_selectedAtoms[3]->pos();
       QString distanceString = tr("Distance (3->4): %1 %2").arg(
-                               QString::number(m_vector[2].norm()),
-                               QString::fromUtf8("Å"));
+                                QString::number(m_vector[2].norm()),
+                                QString::fromUtf8("Å"));
       m_dihedral = CalcTorsionAngle(vector3(m_selectedAtoms[0]->pos().x(),
-      		  								m_selectedAtoms[0]->pos().y(),
-      		  								m_selectedAtoms[0]->pos().z()),
-      		  						vector3(m_selectedAtoms[1]->pos().x(),
-      		  								m_selectedAtoms[1]->pos().y(),
-      		  								m_selectedAtoms[1]->pos().z()),
-              		  				vector3(m_selectedAtoms[2]->pos().x(),
-              		  						m_selectedAtoms[2]->pos().y(),
-              		  						m_selectedAtoms[2]->pos().z()),
-              		  				vector3(m_selectedAtoms[3]->pos().x(),
-              		  						m_selectedAtoms[3]->pos().y(),
-              		  						m_selectedAtoms[3]->pos().z()));
+                                m_selectedAtoms[0]->pos().y(),
+                                m_selectedAtoms[0]->pos().z()),
+                                vector3(m_selectedAtoms[1]->pos().x(),
+                                m_selectedAtoms[1]->pos().y(),
+                                m_selectedAtoms[1]->pos().z()),
+                                vector3(m_selectedAtoms[2]->pos().x(),
+                                m_selectedAtoms[2]->pos().y(),
+                                m_selectedAtoms[2]->pos().z()),
+                                vector3(m_selectedAtoms[3]->pos().x(),
+                                m_selectedAtoms[3]->pos().y(),
+                                m_selectedAtoms[3]->pos().z()));
       QString dihedralString = tr("Dihedral Angle: %1 %2").arg(
-      		                   QString::number(m_dihedral),
-      		                   QString("°"));
-      emit message(distanceString);
-      emit message(dihedralString);
+                                QString::number(m_dihedral),
+                                QString("°"));
+
+      // Check whether these measurements have been sent already
+      if (m_lastMeasurement.at(2) != m_vector[2].norm()) {
+        emit message(distanceString);
+        m_lastMeasurement[2] = m_vector[2].norm();
+      }
+      if (m_lastMeasurement.at(4) != m_dihedral) {
+        emit message(dihedralString);
+        m_lastMeasurement[4] = m_angle;
+      }
     }
   }
 

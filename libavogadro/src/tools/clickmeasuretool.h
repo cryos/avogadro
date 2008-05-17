@@ -41,6 +41,7 @@
 #include <QImage>
 #include <QAction>
 #include <QPointer>
+#include <QVector>
 
 namespace Avogadro {
 
@@ -100,7 +101,9 @@ namespace Avogadro {
       Eigen::Vector3d m_vector[3];
       double m_angle;
       double m_dihedral;
-
+      // Need to store the previous values of all variables in order to only send
+      // an event to the information pane once
+      QVector<double> m_lastMeasurement;
 
   };
 
