@@ -31,6 +31,7 @@
 #include <QStandardItem>
 #include <QVBoxLayout>
 #include <QDialog>
+#include <QSortFilterProxyModel>
 
 namespace Avogadro {
 
@@ -53,9 +54,20 @@ namespace Avogadro {
       delete model();
     }
 
-    setModel(m);
+		// This should sort the engine names for user views
+		// It should also update dynamically as people edit names
+		// Somehow it doesn't work right from the start!
+		QSortFilterProxyModel *sortModel = new QSortFilterProxyModel(this);
+		sortModel->setSourceModel(m);
+    setModel(sortModel);
+		sortModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+		sortModel->setSortLocaleAware(true);
+		sortModel->setDynamicSortFilter(true);
+		sortModel->sort(0, Qt::AscendingOrder);
+		
     connect(this, SIGNAL(clicked(QModelIndex)),
         this, SLOT(selectEngine(QModelIndex)));
+		// This might work for having the proxy model emit the signal, but let's keep it as-is
     connect(m, SIGNAL(dataChanged(QModelIndex, QModelIndex)),
         glWidget, SLOT(update()));
         
