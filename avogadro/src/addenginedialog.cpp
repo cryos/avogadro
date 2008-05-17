@@ -28,6 +28,7 @@
 
 #include <QAbstractButton>
 #include <QDialogButtonBox>
+#include <QtAlgorithms>
 
 namespace Avogadro {
 
@@ -42,11 +43,15 @@ namespace Avogadro {
   Engine * AddEngineDialog::getEngine(QWidget *parent, const QList<EngineFactory *> &engineFactories)
   {
     AddEngineDialog dialog(parent);
+		QStringList types;
 
+		// We get the list from the EngineFactories in rendering order
+		// So we re-sort alphabetically for users
     foreach(EngineFactory *factory, engineFactories)
-    {
-      dialog.addType(factory->type());
-    }
+			types.append(factory->type());
+		qSort(types);
+		foreach(const QString &type, types)
+			dialog.addType(type);
 
     int accepted = dialog.exec();
     if(accepted)
