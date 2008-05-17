@@ -46,8 +46,16 @@ namespace Avogadro {
   {
     QList<Engine *> list = d->widget->engines();
     int row = list.indexOf(engine);
+
     beginInsertRows(QModelIndex(), row, row);
     endInsertRows();
+
+		// We need to indicate that the data has changed to re-sort the list
+		// (Honestly, the dataChanged signal should come from endInsertRows)
+		// But at least in Qt 4.4, we need to signal manually
+		QModelIndex begin = createIndex(0, 0);
+		QModelIndex end = createIndex(row, 0);
+		emit dataChanged(begin, end);
   }
 
   void EngineItemModel::removeEngine(Engine *)
