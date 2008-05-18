@@ -1,5 +1,5 @@
 project(avogadro) # the name of your project
-
+ 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
 cmake_minimum_required(VERSION 2.4.5)
@@ -10,14 +10,14 @@ endif(COMMAND cmake_policy)
 
 include (CheckCXXCompilerFlag)
 include (MacroEnsureVersion)
+
 ###########################################################
 # Here I am adding GCC magic from KDE. With these settings#
 # compiler issues are fixed and more warnings are issued. #
 ###########################################################
+# We should always respect the users CXXFLAGS if they have set them
 if (CMAKE_COMPILER_IS_GNUCXX)
-	set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-long-long -std=iso9899:1990 -Wundef -Wcast-align -Werror-implicit-function-declaration -Wchar-subscripts -Wall -W -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -fno-common")
-#        set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-exceptions -fno-check-new -fno-common")
-	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
+	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} $ENV{CXXFLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
 	add_definitions (-D_BSD_SOURCE)
 	# Set some linker flags
 	if (CMAKE_SYSTEM_NAME MATCHES Linux)
@@ -44,7 +44,6 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 		string(REGEX MATCH "(--enable-libstdcxx-allocator=mt)" _GCC_COMPILED_WITH_BAD_ALLOCATOR "${_gcc_alloc_info}")
 	endif (GCC_IS_NEWER_THAN_4_1)
 
-# Disabled the visibility flags for now - seem to break forcefields
 	if (HAVE_GCC_VISIBILITY AND GCC_IS_NEWER_THAN_4_1 AND NOT _GCC_COMPILED_WITH_BAD_ALLOCATOR)
 		# We have all the parts necessary - use visibility support
 		add_definitions(-DHAVE_GCC_VISIBILITY)
@@ -54,13 +53,17 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 		endif (GCC_IS_NEWER_THAN_4_2)
 	endif (HAVE_GCC_VISIBILITY AND GCC_IS_NEWER_THAN_4_1 AND NOT _GCC_COMPILED_WITH_BAD_ALLOCATOR)
 
+  # Set up build flags for particular build types
+  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
+  set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline")
+
 endif (CMAKE_COMPILER_IS_GNUCXX)
 
 if(RELEASE_MODE)
  add_definitions(-DNDEBUG)
  if (CMAKE_COMPILER_IS_GNUCXX)
-  set (CMAKE_C_FLAGS     "${CMAKE_C_FLAGS} -O3")
-  set (CMAKE_CXX_FLAGS     "${CMAKE_CXX_FLAGS} -O3")
+  set (CMAKE_C_FLAGS     "${CMAKE_C_FLAGS} -O2")
+  set (CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -O2")
  endif (CMAKE_COMPILER_IS_GNUCXX)
 endif(RELEASE_MODE)
 

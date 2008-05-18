@@ -1,5 +1,7 @@
 2008-05-17  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* CMakeLists.txt: Respect the users CXXFLAGS.
+
 	* libavogadro/src/tools/clickmeasuretool.*: Add some caching in the
 	tool so measurements are only echoed once.
 
