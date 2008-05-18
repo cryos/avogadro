@@ -1,5 +1,8 @@
 2008-05-17  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* avogadro/src/CMakeLists.txt, libavogadro/src/CMakeLists.txt: Add the
+	OpenBabel library directory to the linker path.
+
 	* CMakeLists.txt: Respect the users CXXFLAGS.
 
 	* libavogadro/src/tools/clickmeasuretool.*: Add some caching in the

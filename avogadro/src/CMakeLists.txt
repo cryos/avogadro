@@ -10,7 +10,10 @@ configure_file(
   ${CMAKE_CURRENT_BINARY_DIR}/config.h
 )
 
-LINK_DIRECTORIES(${libavogadro_BINARY_DIR}/src)
+link_directories(
+  ${libavogadro_BINARY_DIR}/src
+  ${OPENBABEL2_LIBRARY_DIRS}
+)
 
 include_directories(
   ${libavogadro_SOURCE_DIR}/include

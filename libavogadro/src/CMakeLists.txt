@@ -18,6 +18,9 @@ include_directories(
   ${PYTHON_INCLUDE_PATH}
 )
 
+# I think this is necessary now in order to tell the linker where openbabel is
+link_directories(${OPENBABEL2_LIBRARY_DIRS})
+
 FILE(GLOB libavogadro_SRCS "*.cpp")
 FILE(GLOB libavogadro_HDRS "*.h")
 
@@ -45,7 +48,7 @@ QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 # you have to add link_directories before you add the target
 if(Boost_PYTHON_FOUND)
 	include_directories(${Boost_INCLUDE_DIRS})
-	LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
+	link_directories(${Boost_LIBRARY_DIRS})
 endif(Boost_PYTHON_FOUND)
 
 ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})
