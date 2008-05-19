@@ -1,5 +1,11 @@
 2008-05-19  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/drawtool.cpp: Fixed the same bug that was
+	fixed in navigate tool where no atoms were in the molecule.
+
+	* libavogadro/src/tools/navigatetool.cpp: Made the valid molecule
+	check safer.
+
 	* libavogadro/src/tools/manipulatetool.*: Made the manipulate tool a
 	lot faster by only saving undo points on mouse up and mouse down.
 
