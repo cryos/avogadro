@@ -19,6 +19,8 @@ include_directories(
 )
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
+set(LINK_LIBS "avogadro-lib")
+
 ### gamess
 set(gamessextension_SRCS gamessextension.cpp
   gamessinputdialog.cpp
@@ -28,12 +30,14 @@ set(gamessextension_SRCS gamessextension.cpp
 qt4_wrap_ui(gamessextension_UIS_H gamessinputdialog.ui gamessefpmatchdialog.ui)
 qt4_automoc(${gamessextension_SRCS})
 add_library(gamessextension MODULE ${gamessextension_SRCS} ${gamessextension_UIS_H})
+target_link_libraries(gamessextension ${LINK_LIBS})
 install(TARGETS gamessextension DESTINATION ${DESTINATION_DIR})
 
 ### Properties
 set(propextension_SRCS propmodel.cpp propextension.cpp)
 qt4_automoc(${propextension_SRCS})
 add_library(propextension MODULE ${propextension_SRCS} ${propextension_UIS_H})
+target_link_libraries(propextension ${LINK_LIBS})
 install(TARGETS propextension DESTINATION ${DESTINATION_DIR})
 
 ### Molecular Mechanics force fields
@@ -44,6 +48,7 @@ qt4_wrap_ui(forcefieldextension_UIS_H forcefielddialog.ui constraintsdialog.ui
 qt4_automoc(${forcefieldextension_SRCS})
 add_library(forcefieldextension MODULE ${forcefieldextension_SRCS}
   ${forcefieldextension_UIS_H})
+target_link_libraries(forcefieldextension ${LINK_LIBS})
 install(TARGETS forcefieldextension DESTINATION ${DESTINATION_DIR})
 
 ### Docking
@@ -64,12 +69,14 @@ install(TARGETS forcefieldextension DESTINATION ${DESTINATION_DIR})
 set(hydrogensextension_SRCS hydrogensextension.cpp)
 qt4_automoc(${hydrogensextension_SRCS})
 add_library(hydrogensextension MODULE ${hydrogensextension_SRCS})
+target_link_libraries(hydrogensextension ${LINK_LIBS})
 install(TARGETS hydrogensextension DESTINATION ${DESTINATION_DIR})
 
 ### Selections
 set(selectextension_SRCS selectextension.cpp)
 qt4_automoc(${selectextension_SRCS})
 add_library(selectextension MODULE ${selectextension_SRCS})
+target_link_libraries(selectextension ${LINK_LIBS})
 install(TARGETS selectextension DESTINATION ${DESTINATION_DIR})
 
 ### unit cells
@@ -77,12 +84,14 @@ set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)
 qt4_wrap_ui(unitcellextension_UIS_H unitcellparamdialog.ui)
 qt4_automoc(${unitcellextension_SRCS})
 add_library(unitcellextension MODULE ${unitcellextension_SRCS} ${unitcellextension_UIS_H})
+target_link_libraries(unitcellextension ${LINK_LIBS})
 install(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
 
 ### h->methyl
 set(h2methylextension_SRCS h2methylextension.cpp)
 qt4_automoc(${h2methylextension_SRCS})
 add_library(h2methylextension MODULE ${h2methylextension_SRCS})
+target_link_libraries(h2methylextension ${LINK_LIBS})
 install(TARGETS h2methylextension DESTINATION ${DESTINATION_DIR})
 
 ### WiiTrack
@@ -105,6 +114,7 @@ set(orbitalextension_SRCS orbitalextension.cpp orbitaldialog.cpp
 qt4_wrap_ui(orbitalextension_UIS_H orbitaldialog.ui)
 qt4_automoc(${orbitalextension_SRCS})
 add_library(orbitalextension MODULE ${orbitalextension_SRCS} ${orbitalextension_UIS_H})
+target_link_libraries(orbitalextension ${LINK_LIBS})
 install(TARGETS orbitalextension DESTINATION ${DESTINATION_DIR})
 
 ### Gaussian input deck generator
@@ -112,6 +122,7 @@ set(gaussianextension_SRCS gaussianextension.cpp gaussianinputdialog.cpp)
 qt4_wrap_ui(gaussianextension_UIS_H gaussianinputdialog.ui)
 qt4_automoc(${gaussianextension_SRCS})
 add_library(gaussianextension MODULE ${gaussianextension_SRCS} ${gaussianextension_UIS_H})
+target_link_libraries(gaussianextension ${LINK_LIBS})
 install(TARGETS gaussianextension DESTINATION ${DESTINATION_DIR})
 
 if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
@@ -122,6 +133,7 @@ if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
 	qt4_automoc(${pythonextension_SRCS})
 	add_library(pythonextension MODULE ${pythonextension_SRCS}
 		${pythonextension_UIS_H})
+	target_link_libraries(pythonextension ${LINK_LIBS})
 	install(TARGETS pythonextension DESTINATION ${DESTINATION_DIR})
 
 	file(GLOB python_SCRIPTS "python/*.py")
@@ -135,6 +147,6 @@ qt4_wrap_ui(animationextension_UIS_H animationdialog.ui)
 qt4_automoc(${animationextension_SRCS})
 add_library(animationextension MODULE ${animationextension_SRCS}
 	${animationextension_UIS_H} ${animationextension_RC_SRCS} )
+target_link_libraries(animationextension ${LINK_LIBS})
 install(TARGETS animationextension DESTINATION ${DESTINATION_DIR})
-
 
