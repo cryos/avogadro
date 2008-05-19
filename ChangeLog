@@ -1,5 +1,8 @@
 2008-05-19  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/tools/manipulatetool.*: Made the manipulate tool a
+	lot faster by only saving undo points on mouse up and mouse down.
+
 	* CMakeLists.txt, avogadro/src/CMakeLists.txt: Added -DQT_NO_DEBUG to
 	release mode and removed a -DQT_DEBUG in the Avogadro app build file.
 
