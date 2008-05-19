@@ -61,6 +61,7 @@ endif (CMAKE_COMPILER_IS_GNUCXX)
 
 if(RELEASE_MODE)
  add_definitions(-DNDEBUG)
+ add_definitions(-DQT_NO_DEBUG)
  if (CMAKE_COMPILER_IS_GNUCXX)
   set (CMAKE_C_FLAGS     "${CMAKE_C_FLAGS} -O2")
   set (CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -O2")

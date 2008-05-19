@@ -24,7 +24,6 @@ include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-add_definitions(-DQT_DEBUG)
 include(${QT_USE_FILE})
 
 FILE(GLOB avogadro_SRCS "*.cpp")

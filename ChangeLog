@@ -1,3 +1,14 @@
+2008-05-19  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* CMakeLists.txt, avogadro/src/CMakeLists.txt: Added -DQT_NO_DEBUG to
+	release mode and removed a -DQT_DEBUG in the Avogadro app build file.
+
+	* libavogadro/src/engines/CMakeLists.txt,
+	libavogadro/src/extensions/CMakeLists.txt,
+	libavogadro/src/tools/CMakeLists.txt: Changed build scripts to build
+	all plugins as modules, this seems more appropriate after reading the
+	CMake man page and should decrease build times due to less linkage.
+
 2008-05-17  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* avogadro/src/CMakeLists.txt, libavogadro/src/CMakeLists.txt: Add the
