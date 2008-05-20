@@ -1,3 +1,8 @@
+2008-05-20  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/hydrogensextension.cpp: Fixed PR 1947734, 
+	now the number of hydrogrens most people would expect are added....
+
 2008-05-20  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	Changes from the win32 build:
@@ -5,8 +10,8 @@
 	* CMakeLists.txt: Change "C:\Program Files\avogadro" into  "C:\\Program
 	Files\\avogadro".
 
-	* avogadro/src/main.cpp: Windows build had problems with printVersion/printHelp. 
-	Quick fix with cout & #ifdef WIN32.
+	* avogadro/src/main.cpp: Windows build had problems with printVersion/
+	printHelp. Quick fix with cout & #ifdef WIN32.
 
 	* libavogadro/src/cylinder.cpp: Make sure M_PI isdefined.
 
