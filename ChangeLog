@@ -1,3 +1,43 @@
+2008-05-20  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	Changes from the win32 build:
+
+	* CMakeLists.txt: Change "C:\Program Files\avogadro" into  "C:\\Program
+	Files\\avogadro".
+
+	* avogadro/src/main.cpp: Windows build had problems with printVersion/printHelp. 
+	Quick fix with cout & #ifdef WIN32.
+
+	* libavogadro/src/cylinder.cpp: Make sure M_PI isdefined.
+
+	* libavogadro/src/elementtranslate.cpp: Global instance should be
+	extern.
+
+	* libavogadro/src/engines/iso.cpp: MSVC doesn't have
+	__attribute__((aligned(16)). Quick fix with #ifdef WIN32 and without
+	the data alignment.
+
+	* libavogadro/src/engines/labelengine.cpp: Local instance should not
+	be extern.
+
+	* libavogadro/src/engines/polygonengine.cpp: Change static_cast<const
+	Atom*> into static_cast<Atom*>.
+
+	* libavogadro/src/periodictableview.cpp: Local instance should not be
+	extern.
+
+	* libavogadro/src/tools/aligntool.cpp: Change static_cast<const Atom*> 
+	into static_cast<Atom*>.
+
+	* libavogadro/src/tools/bondcentrictool.cpp: This file defined its own
+	isnan() function which resulted in a conflict with OpenBabel::IsNan().
+	Now uses OpenBabel::IsNan().
+
+	* libavogadro/src/tools/drawtool.cpp:  Local instance should not be
+	extern.
+
+	* scripts/avogadro.nsi: update installer generating script.
+
 2008-05-19  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/drawtool.cpp: Fixed the same bug that was

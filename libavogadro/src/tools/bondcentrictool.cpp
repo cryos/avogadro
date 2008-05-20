@@ -29,12 +29,6 @@
 #include "bondcentrictool.h"
 #include "quaternion.h"
 
-#ifdef WIN32
-#include <float.h>
-#include <math.h>
-#define isnan(x) _isnan(x)
-#endif
-
 #include <iostream>
 
 #include <avogadro/navigate.h>
@@ -538,7 +532,7 @@ namespace Avogadro {
               double testAngle2 = acos(tester.dot(currMouseVector) /
                   currMouseVector.norm2());
 
-              if(testAngle1 > testAngle2 || isnan(testAngle2)) {
+              if(testAngle1 > testAngle2 || OpenBabel::IsNan((double)testAngle2)) {
                 mouseAngle = -mouseAngle;
               }
 
@@ -608,7 +602,7 @@ namespace Avogadro {
               double testAngle2 = acos(tester.dot(currMouseVector) /
                   currMouseVector.norm2());
 
-              if(testAngle1 > testAngle2 || isnan(testAngle2)) {
+              if(testAngle1 > testAngle2 || OpenBabel::IsNan((double)testAngle2)) {
                 mouseAngle = -mouseAngle;
               }
 
@@ -756,7 +750,7 @@ namespace Avogadro {
               double testAngle2 = acos(tester.dot(currMouseVector) /
                   currMouseVector.norm2());
 
-              if(testAngle1 > testAngle2 || isnan(testAngle2)) {
+              if(testAngle1 > testAngle2 || OpenBabel::IsNan((double)testAngle2)) {
                 mouseAngle = -mouseAngle;
               }
 

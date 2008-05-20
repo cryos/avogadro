@@ -75,9 +75,11 @@ find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Eigen REQUIRED) # find and setup Eigen
 find_package(Linguist REQUIRED) # find and setup Eigen
 
+OPTION(ENABLE_PYTHON "Enable python support" ON)
+
 # This may not be the best way to do this - please correct me if I am wrong.
 # Getting rid of automagic is nice and so this seems reasonable.
-if(NOT ENABLE_PYTHON MATCHES FALSE)
+if(ENABLE_PYTHON MATCHES ON)
   # The CMake 2.6 FindBoost function is far better than the 2.4 version
   # So use it if possible
   if(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
@@ -91,9 +93,9 @@ if(NOT ENABLE_PYTHON MATCHES FALSE)
   endif(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
 
   find_package(PythonLibs)
-else(NOT ENABLE_PYTHON MATCHES FALSE)
+else(ENABLE_PYTHON MATCHES ON)
   message(STATUS "Python support disabled.")
-endif(NOT ENABLE_PYTHON MATCHES FALSE)
+endif(ENABLE_PYTHON MATCHES ON)
 
 if(NOT LIB_INSTALL_DIR)
   set(LIB_INSTALL_DIR lib)
@@ -123,7 +125,7 @@ add_subdirectory(doc)
 # Linux Default: /usr/local/share/avogadro/fragments
 set(avogadro_FRAGMENTS share/avogadro)
 if(WIN32)
-   set(avogadro_FRAGMENTS "C:\Program Files\Avogadro")
+   set(avogadro_FRAGMENTS "C:\\Program Files\\Avogadro")
 endif(WIN32)
 if(APPLE)
    set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")

@@ -25,6 +25,12 @@
 #include "cylinder.h"
 #include <QGLWidget>
 
+// Win32 build (19/05/08)
+#include <math.h> 
+#ifndef M_PI
+  #define M_PI 3.1415926535897932384626433832795 
+#endif
+
 using namespace Eigen;
 
 namespace Avogadro {
