@@ -664,6 +664,15 @@ namespace Avogadro {
   {
     d->painter->begin(this);
 
+    if(d->painter->quality() >= 3)
+    {
+      glEnable(GL_LIGHT1);
+    }
+    else
+    {
+      glDisable(GL_LIGHT1);
+    }
+
     // Use renderQuick if the view is being moved, otherwise full render
     if (d->quickRender) {
       d->updateListQuick();
