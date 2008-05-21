@@ -68,6 +68,7 @@
 #include <QDesktopWidget>
 #include <QInputDialog>
 #include <QUrl>
+#include <QDesktopServices>
 
 #include <QDebug>
 
@@ -1007,7 +1008,35 @@ namespace Avogadro
     AboutDialog * about = new AboutDialog( this );
     about->show();
   }
+  
+  // Unfortunately Qt signals/slots doesn't let us pass an arbitrary URL to a slot
+  // or we'd have one openURL("string")
+  // Instead, we've got a bunch of one-line actions...
+  void MainWindow::openTutorialURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/Tutorials"));    
+  }
 
+  void MainWindow::openFAQURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/Avogadro:FAQ"));    
+  }
+
+  void MainWindow::openWebsiteURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/"));    
+  }
+
+  void MainWindow::openReleaseNotesURL() const
+  {
+    QDesktopServices::openUrl(QUrl( "http://avogadro.openmolecules.net/wiki/Avogadro_" + QString(VERSION) ));    
+  }
+
+  void MainWindow::openBugURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://sourceforge.net/tracker/?group_id=165310&atid=835077"));    
+  }
+  
   void MainWindow::setView( int index )
   {
     d->glWidget = d->glWidgets.at( index );
@@ -1423,6 +1452,13 @@ namespace Avogadro
 
     connect( ui.configureAvogadroAction, SIGNAL( triggered() ),
         this, SLOT( showSettingsDialog() ) );
+
+    connect( ui.actionTutorials, SIGNAL( triggered() ), this, SLOT( openTutorialURL() ));
+    connect( ui.actionFAQ, SIGNAL( triggered() ), this, SLOT( openFAQURL() ) );
+    connect( ui.actionRelease_Notes, SIGNAL( triggered() ), this, SLOT( openReleaseNotesURL() ));
+    connect( ui.actionAvogadro_Website, SIGNAL( triggered() ), this, SLOT( openWebsiteURL() ) );
+    connect( ui.actionReport_a_Bug, SIGNAL( triggered() ), this, SLOT( openBugURL() ) );
+    
 
     connect( d->toolGroup, SIGNAL( toolActivated( Tool * ) ), this, SLOT( setTool( Tool * ) ) );
     connect( this, SIGNAL( moleculeChanged( Molecule * ) ), d->toolGroup, SLOT( setMolecule( Molecule * ) ) );

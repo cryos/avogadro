@@ -107,6 +107,11 @@ namespace Avogadro {
 
       void clearRecentFiles();
       void about();
+      void openTutorialURL() const;
+      void openReleaseNotesURL() const;
+      void openWebsiteURL() const;
+      void openBugURL() const;
+      void openFAQURL() const;
 
       void actionTriggered();
       void documentWasModified();
