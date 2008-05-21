@@ -392,7 +392,7 @@ namespace Avogadro {
     return result;
   }
 
-  extern ElementTranslator elementTranslator; // global instance
+  ElementTranslator elementTranslator; // global instance
 
 }
 

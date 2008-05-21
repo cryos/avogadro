@@ -44,8 +44,6 @@ namespace OpenBabel{
 
 namespace Avogadro {
 
-  ElementTranslator elementTranslator;
-
   ElementItem::ElementItem(int elementNumber) : m_width(26), m_height(26)
   {
     // Set up some reasonable defaults for our item

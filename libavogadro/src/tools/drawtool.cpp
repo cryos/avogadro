@@ -48,10 +48,6 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  // Handles localization/translation of element names
-  // e.g., nitrogen in English is azote in French
-  ElementTranslator elementTranslator;
-
   DrawTool::DrawTool(QObject *parent) : Tool(parent),
                                         m_beginAtomAdded(false),
                                         m_endAtomAdded(false),
