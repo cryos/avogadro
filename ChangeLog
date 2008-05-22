@@ -7,6 +7,9 @@
 
 2008-05-20  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/python/deleteAll.py: Fixed the
+	deleteAll script for the new DeleteAtom function signature.
+
 	* libavogadro/src/extensions/pythonextension.cpp: Search the system
 	wide path for Python scripts too.
 

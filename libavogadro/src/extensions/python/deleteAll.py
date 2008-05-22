@@ -10,7 +10,7 @@ def description():
 def extension():
     sys.stdout.write("Deleting all atoms")
     for x in range(Avogadro.molecule.NumAtoms()):
-        Avogadro.molecule.DeleteAtom(Avogadro.molecule.GetAtom(1))
+        Avogadro.molecule.DeleteAtom(Avogadro.molecule.GetAtom(1), 1)
         sys.stdout.write(".")
     sys.stdout.write("\n")
 
