@@ -105,7 +105,7 @@ namespace Avogadro
     // Load a file
     QString file = QFileDialog::getOpenFileName(this,
       tr("Open quantum file"), ui.fileName->text(),
-      tr("Quantum files (*.fchk)"));
+      tr("Quantum files (*.fchk *.fch)"));
     ui.fileName->setText(file);
     emit fileName(file);
   }
