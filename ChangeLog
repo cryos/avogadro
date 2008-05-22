@@ -7,6 +7,9 @@
 
 2008-05-20  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/pythonextension.cpp: Search the system
+	wide path for Python scripts too.
+
 	* libavogadro/src/extensions/hydrogensextension.cpp: Fixed PR 1947734, 
 	now the number of hydrogrens most people would expect are added....
 
