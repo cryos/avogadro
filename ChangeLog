@@ -1,3 +1,10 @@
+2008-05-22  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/insertfragmentdialog.cpp: Fix insert smiles.
+	Also disable the driectoryTreeView and smilesLineEdit while in insert
+	mode. This makes it impossible to change the smiles and forget to
+	press Stop/Start.
+
 2008-05-20  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/hydrogensextension.cpp: Fixed PR 1947734, 
