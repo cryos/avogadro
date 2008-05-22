@@ -72,6 +72,11 @@
 
 #include <QDebug>
 
+// This is a "hidden" exported Qt function on the Mac for Qt-4.x.
+#ifdef Q_WS_MAC
+ void qt_mac_set_menubar_icons(bool enable);
+#endif
+
 using namespace std;
 using namespace OpenBabel;
 
@@ -165,7 +170,7 @@ namespace Avogadro
     ui.setupUi( this );
     // We cannot reliably set this via Designer
     // editing on Windows or Linux loses the flag
-    //    setUnifiedTitleAndToolBarOnMac(true);
+//    setUnifiedTitleAndToolBarOnMac(true);
 
     QSettings settings;
     d->tabbedTools = settings.value("tabbedTools", true).toBool();
@@ -257,17 +262,9 @@ namespace Avogadro
     ui.menuSettings->removeAction( ui.menuSettings->actions().last() );
 
     // Remove all menu icons (violates Apple interface guidelines)
-    QIcon nullIcon;
-    foreach( QAction *menu, menuBar()->actions() ) {
-      foreach( QAction *menuItem, menu->menu()->actions() ) {
-        menuItem->setIcon( nullIcon ); // clears the icon for this item
-        if (menuItem->menu() != NULL) {
-          foreach( QAction *submenuItem, menuItem->menu()->actions() ) {
-            submenuItem->setIcon( nullIcon ); // clears the icon for this item
-          }
-        }
-      }
-    }
+    // This is a not-quite-hidden Qt call on the Mac
+    //    http://doc.trolltech.com/exportedfunctions.html
+    qt_mac_set_menubar_icons(false);
 
     ui.menuSettings->setTitle("Window");
 #endif
@@ -518,7 +515,7 @@ namespace Avogadro
           " *.mpd *.mol2)"
         << tr("All files") + " (* *.*)"
         << tr("CML") + " (*.cml)"
-        << tr("Crystallographic Interchange (CIF)") + " (*.cif)"
+        << tr("Crystallographic Interchange CIF") + " (*.cif)"
         << tr("GAMESS-US Output") + " (*.gamout)"
         << tr("Gaussian 98/03 Output") + " (*.g98 *.g03)"
         << tr("Gaussian Formatted Checkpoint") + " (*.fchk)"
