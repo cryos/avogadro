@@ -1,3 +1,7 @@
+2008-05-23  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* CMakeLists.txt: Bump our dependencies on CMake and Qt.
+
 2008-05-22  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/tools/insertfragmentdialog.cpp: Fix insert smiles.
@@ -5,7 +9,7 @@
 	mode. This makes it impossible to change the smiles and forget to
 	press Stop/Start.
 
-2008-05-20  Marcus D. Hanwell  <marcus@cryos.org>
+2008-05-22  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/python/deleteAll.py: Fixed the
 	deleteAll script for the new DeleteAtom function signature.

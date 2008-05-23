@@ -2,7 +2,7 @@ project(avogadro) # the name of your project
  
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
-cmake_minimum_required(VERSION 2.4.5)
+cmake_minimum_required(VERSION 2.4.8)
 
 if(COMMAND cmake_policy)
   cmake_policy(SET CMP0003 NEW)
@@ -54,7 +54,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 	endif (HAVE_GCC_VISIBILITY AND GCC_IS_NEWER_THAN_4_1 AND NOT _GCC_COMPILED_WITH_BAD_ALLOCATOR)
 
   # Set up build flags for particular build types
-  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG")
   set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline")
 
 endif (CMAKE_COMPILER_IS_GNUCXX)
@@ -68,7 +68,7 @@ if(RELEASE_MODE)
  endif (CMAKE_COMPILER_IS_GNUCXX)
 endif(RELEASE_MODE)
 
-set(QT_MIN_VERSION "4.3.0") # we need at least version 4.3 of Qt
+set(QT_MIN_VERSION "4.3.4") # we need at least version 4.3 of Qt
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
