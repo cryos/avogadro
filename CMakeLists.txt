@@ -59,6 +59,11 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 
 endif (CMAKE_COMPILER_IS_GNUCXX)
 
+if(FPERMISSIVE_NO)
+else(FPERMISSIVE_NO)
+  set (CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -fpermissive")
+endif(FPERMISSIVE_NO)
+
 if(RELEASE_MODE)
  add_definitions(-DNDEBUG)
  add_definitions(-DQT_NO_DEBUG)
