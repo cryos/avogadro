@@ -7,7 +7,7 @@
 <h1>krazy2 Analysis</h1>
 <p>Checkers Run = 24<br>
 Files Processed = 29<br>
-Total Issues = 4 ...as of May 16 2008 16:47:51</p>
+Total Issues = 4 ...as of Mai 25 2008 14:15:26</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
@@ -30,7 +30,7 @@ Total Issues = 4 ...as of May 16 2008 16:47:51</p>
 	during CMake time rather than for a specific O/S.</p>
 </li>
 
-<li>Check for single char QStrings better written as a QChar... 
+<li>Check single-char QString operations that could be written more efficiently... 
 <b>okay!</b>
 <li>Check for unwanted doxygen tags in major versions... 
 <b>okay!</b>
@@ -71,7 +71,7 @@ Total Issues = 4 ...as of May 16 2008 16:47:51</p>
 <li>Check for system calls to replace by KDE or Qt equivalents... 
 <b>OOPS! 2 issues found!</b>
 <ul>
-<li>	../avogadro/src/mainwindow.cpp: line#1624 getenv[qgetenv],1625 getenv[qgetenv] (2)
+<li>	../avogadro/src/mainwindow.cpp: line#1657 getenv[qgetenv],1658 getenv[qgetenv] (2)
 </li>
 </ul>
 <p><p><p><b>Why should I care?</b>	Some system calls are not portable, please use the suggested
