@@ -564,7 +564,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="201"/>
         <source>Select ligand + pocket</source>
-        <translation type="unfinished"></translation>
+        <translation>Ligand und Tasche auswählen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="161"/>
@@ -604,7 +604,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="82"/>
         <source>Select Ligand + Pocket</source>
-        <translation type="unfinished"></translation>
+        <translation>Ligand und Tasche auswählen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="96"/>
@@ -5114,7 +5114,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="448"/>
         <source>Tutorials</source>
-        <translation>Tutorial</translation>
+        <translation>Anleitungen</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_mainwindow.h" line="452"/>
