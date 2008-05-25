@@ -4,24 +4,52 @@
 <context>
     <name>AddEngineDialog</name>
     <message>
-        <location filename="../avogadro/src/addenginedialog.ui" line="19"/>
+        <location filename="../build/avogadro/src/ui_addenginedialog.h" line="96"/>
         <source>Engine Type:</source>
         <translation>Engine-Typ:</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/addenginedialog.ui" line="32"/>
+        <location filename="../build/avogadro/src/ui_addenginedialog.h" line="97"/>
         <source>Name:</source>
         <translation>Name:</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/addenginedialog.ui" line="45"/>
+        <location filename="../build/avogadro/src/ui_addenginedialog.h" line="98"/>
         <source>Description:</source>
         <translation>Beschreibung:</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/addenginedialog.ui" line="13"/>
+        <location filename="../build/avogadro/src/ui_addenginedialog.h" line="95"/>
         <source>Add Engine</source>
         <translation>Engine hinzufügen</translation>
+    </message>
+</context>
+<context>
+    <name>AnimationDialog</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationdialog.ui" line="13"/>
+        <source>Dialog</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationdialog.ui" line="24"/>
+        <source>Load File...</source>
+        <translation>Datei laden...</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationdialog.ui" line="44"/>
+        <source>0/0</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationdialog.ui" line="158"/>
+        <source>Loop</source>
+        <translation>Schleife</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationdialog.ui" line="178"/>
+        <source>fps</source>
+        <translation>FPS</translation>
     </message>
 </context>
 <context>
@@ -50,7 +78,7 @@ Right Mouse: <byte value="x9"/>Reset alignment.</source>
         <translation>Moleküle ausrichten</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/aligntool.cpp" line="272"/>
+        <location filename="../libavogadro/src/tools/aligntool.cpp" line="276"/>
         <source>Axis:</source>
         <translation>Achse:</translation>
     </message>
@@ -64,21 +92,82 @@ Right Mouse: <byte value="x9"/>Reset alignment.</source>
         <source>Align molecules</source>
         <translation>Moleküle ausrichten</translation>
     </message>
+    <message>
+        <location filename="../libavogadro/src/tools/aligntool.cpp" line="287"/>
+        <source>Align:</source>
+        <translation>Ausrichten:</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/tools/aligntool.cpp" line="292"/>
+        <source>Everything</source>
+        <translation>Alles</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/tools/aligntool.cpp" line="293"/>
+        <source>Molecule</source>
+        <translation>Molekül</translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::AnimationDialog</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="62"/>
+        <source>Open trajectory file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="63"/>
+        <source>Trajectory files (*.xtc)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="71"/>
+        <source>%1/%2</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::AnimationExtension</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationextension.cpp" line="39"/>
+        <source>Animation...</source>
+        <translation>Animation...</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationextension.cpp" line="69"/>
+        <source>&amp;Extensions</source>
+        <translation>Er&amp;weiterungen</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationextension.cpp" line="117"/>
+        <source>Avogadro</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationextension.cpp" line="112"/>
+        <source>Cannot read file format of file %1.</source>
+        <translation type="unfinished">Format der Datei %1 konnte nicht gelesen werden.</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationextension.cpp" line="119"/>
+        <source>Read trajectory file %1 failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Avogadro::AutoOptTool</name>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="321"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="318"/>
         <source>Force Field:</source>
         <translation>Kraftfeld:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="329"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="348"/>
         <source>Algorithm:</source>
         <translation>Algorithmus:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="334"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="353"/>
         <source>Steepest Descent</source>
         <translation>Tiefster Abstieg</translation>
     </message>
@@ -93,12 +182,12 @@ Right Mouse: <byte value="x9"/>Reset alignment.</source>
         <translation type="obsolete">10e-</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="451"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="443"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="425"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="417"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
@@ -124,12 +213,12 @@ Bei aktiviertem Werkzeug:
 Linke Maustaste: Klicken und ziehen um Atome zu bewegen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.h" line="100"/>
+        <location filename="../libavogadro/src/tools/autoopttool.h" line="102"/>
         <source>AutoOptimization</source>
         <translation>Automatisches Optimieren</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.h" line="102"/>
+        <location filename="../libavogadro/src/tools/autoopttool.h" line="104"/>
         <source>Automatic Optimization Tool</source>
         <translation>Automatisches Optimieren</translation>
     </message>
@@ -144,34 +233,39 @@ Linke Maustaste: Klicken und ziehen um Atome zu bewegen</translation>
         <translation>Ignorierte Atome sind beweglich</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="335"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="354"/>
         <source>Molecular Dynamics (300K)</source>
         <translation>Moleküldynamik (300K)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="336"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="355"/>
         <source>Molecular Dynamics (600K)</source>
         <translation>Moleküldynamik (600K)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="337"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="356"/>
         <source>Molecular Dynamics (900K)</source>
         <translation>Moleküldynamik (900K)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="283"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="280"/>
         <source>AutoOpt: Could not setup force field....</source>
         <translation>AutoOpt: Kraftfeld konnte nicht initialisiert werden...</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="285"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="282"/>
         <source>AutoOpt: Running...</source>
         <translation>AutoOpt: Läuft...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="349"/>
         <source>Steps per update:</source>
-        <translation>Schritte pro Aktualisierung:</translation>
+        <translation type="obsolete">Schritte pro Aktualisierung:</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="333"/>
+        <source>Steps per Update:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -192,7 +286,7 @@ Linke Maustaste: Klicken und ziehen um Atome zu bewegen</translation>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="276"/>
+        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="285"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
@@ -207,27 +301,27 @@ Linke Maustaste: Klicken und ziehen um Atome zu bewegen</translation>
         <translation>Rotation um x-Achse</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="252"/>
+        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="255"/>
         <source>y rotation:</source>
         <translation>Rotation um y-Achse:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="257"/>
+        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="260"/>
         <source>y rotation</source>
         <translation>Rotation um y-Achse</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="264"/>
+        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="270"/>
         <source>z rotation:</source>
         <translation>Rotation um z-Achse:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="269"/>
+        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="275"/>
         <source>z rotation</source>
         <translation>Rotation um z-Achse</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="277"/>
+        <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="286"/>
         <source>Reset</source>
         <translation>Zurücksetzen</translation>
     </message>
@@ -266,7 +360,7 @@ Linke Maustaste: Klicken und ziehen um Atome zu bewegen</translation>
         <translation>Bindungsorientiertes Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="93"/>
+        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="87"/>
         <source>Bond Centric Manipulation Tool
 
 Left Mouse:   Click and drag to rotate the view
@@ -287,22 +381,22 @@ Linke Maustaste: <byte value="x9"/>Klick auf Bindung und ziehen um Manipulations
 <byte value="x9"/>- Rechte Maustaste:<byte value="x9"/>Klicken und ziehen eines Atoms der Bindung um Länge zu verändern</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="882"/>
+        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="876"/>
         <source>Bond Length:  </source>
         <translation>Bindungslänge:  </translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1812"/>
+        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1806"/>
         <source> Show Angles</source>
         <translation> Winkel anzeigen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1815"/>
+        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1809"/>
         <source> Snap-to Bonds</source>
         <translation> In Bindungen einrasten</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1818"/>
+        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1812"/>
         <source>Snap-to Threshold: </source>
         <translation>Einrast-Schwelle: </translation>
     </message>
@@ -315,7 +409,7 @@ Linke Maustaste: <byte value="x9"/>Klick auf Bindung und ziehen um Manipulations
 <context>
     <name>Avogadro::ClickMeasureTool</name>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.h" line="62"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.h" line="63"/>
         <source>Click to Measure Tool</source>
         <translation>Messen</translation>
     </message>
@@ -335,60 +429,60 @@ Linke Maustaste:    Bis zu 3 Atome auswählen.
 Rechte Maustaste:  Messungen zurücksetzen.</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="163"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="171"/>
         <source>Angle: %1 %2</source>
         <translation>Winkel: %1 %2</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="261"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="284"/>
         <source>Distance(s):</source>
         <translation>Abstände:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.h" line="60"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.h" line="61"/>
         <source>Measure</source>
         <translation>Messen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="143"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="146"/>
         <source>Distance (1-&gt;2): %1 %2</source>
         <translation>Abstand (1-&gt;2): %1 %2</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="156"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="164"/>
         <source>Distance (2-&gt;3): %1 %2</source>
         <translation>Abstand (2-&gt;3): %1 %2</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="178"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="193"/>
         <source>Distance (3-&gt;4): %1 %2</source>
         <translation>Abstand (3-&gt;4): %1 %2</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="193"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="208"/>
         <source>Dihedral Angle: %1 %2</source>
         <translation>Öffnungswinkel: %1 %2</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="231"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="254"/>
         <source>*1</source>
         <comment>*1 is a number. You most likely do not need to translate this</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="239"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="262"/>
         <source>*2</source>
         <comment>*2 is a number. You most likely do not need to translate this</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="248"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="271"/>
         <source>*3</source>
         <comment>*3 is a number. You most likely do not need to translate this</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="257"/>
+        <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="280"/>
         <source>*4</source>
         <comment>*4 is a number. You most likely do not need to translate this</comment>
         <translation></translation>
@@ -521,17 +615,17 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
 <context>
     <name>Avogadro::DrawTool</name>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.h" line="62"/>
+        <location filename="../libavogadro/src/tools/drawtool.h" line="64"/>
         <source>Draw</source>
         <translation>Zeichnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.h" line="64"/>
+        <location filename="../libavogadro/src/tools/drawtool.h" line="66"/>
         <source>Draws Things</source>
         <translation>Zeichnet Dinge</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="74"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="73"/>
         <source>Draw Tool (F8)
 
 Left Mouse: <byte value="x9"/>Click and Drag to create Atoms and Bonds
@@ -542,42 +636,42 @@ Linke Maustaste:   Klicken und ziehen um neue Atome und Bindungen zu erstellen
 Rechte Maustaste: Atom löschen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="345"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="368"/>
         <source>Draw Atom</source>
         <translation>Atom zeichnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="351"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="374"/>
         <source>Draw Bond</source>
         <translation>Bindung zeichnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="606"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="635"/>
         <source>Element:</source>
         <translation>Element:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="633"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="662"/>
         <source>Other...</source>
         <translation>Anderes...</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="637"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="666"/>
         <source>Bond Order:</source>
         <translation>Anzahl der Bindungen:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="642"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="671"/>
         <source>Single</source>
         <translation>Einfach</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="643"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="672"/>
         <source>Double</source>
         <translation>Zweifach</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="644"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="673"/>
         <source>Triple</source>
         <translation>Dreifach</translation>
     </message>
@@ -597,17 +691,17 @@ Rechte Maustaste: Atom löschen</translation>
         <translation type="obsolete">Durch SMILES erzeugen:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="646"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="688"/>
         <source>Adjust Hydrogens</source>
         <translation>Wasserstoffatome adjustieren</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="384"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="407"/>
         <source>Change Bond Order</source>
         <translation>Anzahl der Bindungen ändern</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="650"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="692"/>
         <source>Fragment Library...</source>
         <translation>Fragment-Bibliothek...</translation>
     </message>
@@ -1289,32 +1383,32 @@ Rechte Maustaste: Atom löschen</translation>
 <context>
     <name>Avogadro::GLWidget</name>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="1690"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="1705"/>
         <source>Ball and Stick</source>
         <translation>Kugeln und Stäbe</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="918"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="932"/>
         <source>Debug Information</source>
         <translation>Debug-Informationen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="919"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="933"/>
         <source>FPS</source>
         <translation>FPS</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="921"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="935"/>
         <source>View Size</source>
         <translation>Anzeigegröße</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="927"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="941"/>
         <source>Atoms</source>
         <translation>AtomeAtome</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="930"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="944"/>
         <source>Bonds</source>
         <translation>BindungenBindungen</translation>
     </message>
@@ -1466,25 +1560,25 @@ All changes will be lost!</source>
 <context>
     <name>Avogadro::GaussianExtension</name>
     <message>
-        <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="43"/>
-        <source>Gaussian Input Deck Generator</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="63"/>
         <source>&amp;Extensions</source>
         <translation>Er&amp;weiterungen</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="43"/>
+        <source>Gaussian Input...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Avogadro::GaussianInputDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/gaussianinputdialog.cpp" line="112"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.cpp" line="147"/>
         <source>Save Gaussian Input Deck</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gaussianinputdialog.cpp" line="113"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.cpp" line="148"/>
         <source>Gaussian Input Deck (*.com)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1512,6 +1606,11 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/engines/hbondengine.h" line="42"/>
         <source>HBond</source>
+        <translation type="obsolete">Wasserstoffbindung</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/engines/hbondengine.h" line="42"/>
+        <source>Hydrogen Bond</source>
         <translation>Wasserstoffbindung</translation>
     </message>
 </context>
@@ -1536,32 +1635,32 @@ All changes will be lost!</source>
 <context>
     <name>Avogadro::InsertFragmentDialog</name>
     <message>
-        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="147"/>
+        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="149"/>
         <source>Avogadro</source>
         <translation>Avogadro</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="141"/>
+        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="143"/>
         <source>Cannot read file format of file %1.</source>
         <translation>Format der Datei %1 konnte nicht gelesen werden.</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="149"/>
+        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="151"/>
         <source>Cannot read file %1.</source>
         <translation>Datei %1 konnte nicht gelesen werden.</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="217"/>
+        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="225"/>
         <source>Stop Inserting</source>
         <translation>EInfügen stoppen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="209"/>
+        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="210"/>
         <source>Insert Fragment</source>
         <translation>Fragment einfügen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="224"/>
+        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="232"/>
         <source>Open Directory</source>
         <translation>Verzeichnis öffnen</translation>
     </message>
@@ -1574,7 +1673,7 @@ All changes will be lost!</source>
         <translation>Beschriftung</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/labelengine.cpp" line="48"/>
+        <location filename="../libavogadro/src/engines/labelengine.cpp" line="46"/>
         <source>Renders primitive labels</source>
         <translation>Einfache Beschriftungen</translation>
     </message>
@@ -1595,44 +1694,44 @@ All changes will be lost!</source>
 <context>
     <name>Avogadro::MainWindow</name>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="201"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="210"/>
         <source>Messages</source>
         <translation>Nachrichten</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="528"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="529"/>
         <source>Open File</source>
         <translation>Öffne Datei</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="738"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="739"/>
         <source>Save Molecule As</source>
         <translation>Speichere Molekül als</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1863"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1910"/>
         <source>Avogadro</source>
         <translation>Avogadro</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="789"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="790"/>
         <source>Cannot write to the file %1:
 %2.</source>
         <translation>Datei %1 konnte nicht geschrieben werden:
 %2.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="806"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="807"/>
         <source>Saving file.</source>
         <translation>Speichere Datei.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="767"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="768"/>
         <source>Cannot write to file format of file %1.</source>
         <translation>Das Format der Datei %1 konnte nicht geschrieben werden.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="801"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="802"/>
         <source>Cannot write to the file %1.</source>
         <translation>Datei %1 konnte nicht geschrieben werden.</translation>
     </message>
@@ -1642,289 +1741,309 @@ All changes will be lost!</source>
         <translation type="obsolete">Datei gespeichert</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="853"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="854"/>
         <source>Export Bitmap Graphics</source>
         <translation>Bilddatei exportieren</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="895"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="896"/>
         <source>Cannot save file %1.</source>
-        <translation>Datei %1 konte nicht gespeichert werden.</translation>
+        <translation>Datei %1 konnte nicht gespeichert werden.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="910"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="911"/>
         <source>Export POV Scene</source>
         <translation>POV-Szene exportieren</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="981"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="982"/>
         <source>The document has been modified.
 Do you want to save your changes?</source>
         <translation>Das Molekül wurde verändert.
 Änderungen speichern?</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1036"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1065"/>
         <source>Unable to paste molecule.</source>
         <translation>Einfügen des Moleküls fehlgeschlagen.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1062"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1091"/>
         <source>Paste failed (format unavailable).</source>
         <translation>Einfügen fehlgeschlagen (Format nicht verfügbar).</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1120"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1149"/>
         <source>Copy failed (mdl unavailable).</source>
         <translation>Kopieren fehlgeschlagen (mdl nicht verfügbar).</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1568"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1604"/>
         <source>View %1</source>
         <translation>Ansicht %1</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1318"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1347"/>
         <source>Normal Size</source>
         <translation>Normale Ansicht</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1328"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1357"/>
         <source>Full Screen</source>
         <translation>Vollbild</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="593"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="594"/>
         <source>Loading %1...</source>
         <comment>%1 is a filename</comment>
         <translation>Lade %1...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="600"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="601"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>Datei %1 konnte nicht gelesen werden.:
 %2.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="613"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="614"/>
         <source>Cannot read file format of file %1.</source>
         <translation>Format der Datei %1 konte nicht gelesen werden.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="623"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="624"/>
         <source>Cannot read file %1.</source>
         <translation>Datei %1 konte nicht gelesen werden.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="627"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="628"/>
         <source>Loading %1...</source>
         <translation>Lade %1...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1459"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1495"/>
         <source>[*]Avogadro</source>
         <comment>[*] indicates that this is a modified view....</comment>
         <translation>[*]Avogadro</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1464"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1500"/>
         <source>%1[*] - %2</source>
         <translation>%1[*] - %2</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="812"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="813"/>
         <source>Save succeeded.</source>
         <translation>Speichern erfolgreich.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="816"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="817"/>
         <source>Saving molecular file failed.</source>
         <translation>Speichern des Moleküls fehlgeschlagen.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="651"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="652"/>
         <source>Atoms: </source>
         <translation>Atome: </translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="652"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="653"/>
         <source> Bonds: </source>
         <translation> Bindungen: </translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="656"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="657"/>
         <source>Reading molecular file failed.</source>
         <translation>Lesen der Molekül-Datei fehlgeschlagen.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="661"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="662"/>
         <source>File Loaded...</source>
         <translation>Datei geladen...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1074"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1103"/>
         <source>Manipulate</source>
         <translation>Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="662"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="663"/>
         <source>Navigate</source>
         <translation>Navigieren</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="633"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="634"/>
         <source>This file does not contain 3D coordinates. You may not be able to edit or view properly.</source>
         <translation>Diese Datei besitzt keine 3D-Koordinaten und kann möglicherweise nicht korrekt angezeigt oder bearbeitet werden.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="406"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="407"/>
         <source>Tool Settings</source>
         <translation>Werkzeugeinstellungen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1816"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1864"/>
         <source>Add</source>
         <translation>Hinzufügen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1821"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1869"/>
         <source>Duplicate</source>
         <translation>Duplizieren</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1826"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1874"/>
         <source>Remove</source>
         <translation>Entfernen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="645"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="646"/>
         <source>This file appears to contain multiple molecule records. Avogadro will only read the first molecule. If you save, all other molecules may be lost.</source>
         <translation>Diese Datei scheint mehrere Moleküle zu enthalten. Avogadro wird nur das erste Molekül anzeigen. Beim Speichern gehen alle anderen Moleküle verloren.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1855"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1902"/>
         <source>No tools or engines loaded.</source>
         <translation>Keine Werkzeuge oder Engine geladen.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1857"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1904"/>
         <source>No engines loaded.</source>
         <translation>Keine Engine geladen.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1859"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1906"/>
         <source>No tools loaded.</source>
         <translation>Keine Werkzeuge geladen.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="1860"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1907"/>
         <source> It is unlikely this application will function correctly. Please correct this error.</source>
         <translation> Es ist unwahrscheinlich, dass Avogadro korrekt funktionieren wird. Bitte beheben Sie den Fehler.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="723"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="724"/>
         <source>Common molecule formats</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="907"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="908"/>
         <source>All files</source>
         <translation>Alle Dateien</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="728"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="729"/>
         <source>CML</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="735"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="736"/>
         <source>XYZ</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="845"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="846"/>
         <source>Common image formats</source>
         <translation>Bilddateien</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="849"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="850"/>
         <source>PNG</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="850"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="851"/>
         <source>JPEG</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="906"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="907"/>
         <source>POV-Ray format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="517"/>
-        <source>Crystallographic Interchange (CIF)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="518"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="519"/>
         <source>GAMESS-US Output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="519"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="520"/>
         <source>Gaussian 98/03 Output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="520"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="521"/>
         <source>Gaussian Formatted Checkpoint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="521"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="522"/>
         <source>HyperChem</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="522"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="523"/>
         <source>MDL Mol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="733"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="734"/>
         <source>PDB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="734"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="735"/>
         <source>Sybyl Mol2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="729"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="730"/>
         <source>GAMESS Input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="730"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="731"/>
         <source>Gaussian Cartesian Input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="731"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="732"/>
         <source>Gaussian Z-matrix Input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="732"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="733"/>
         <source>MDL SDfile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="848"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="849"/>
         <source>BMP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1853"/>
+        <source>Settings...</source>
+        <translation>Einstellungen...</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1926"/>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1931"/>
+        <source>Objects</source>
+        <translation>Objekte</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="1974"/>
+        <source> copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="518"/>
+        <source>Crystallographic Interchange CIF</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1983,14 +2102,19 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
 <context>
     <name>Avogadro::OrbitalDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="102"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="107"/>
         <source>Open quantum file</source>
         <translation>Quanten-Datei öffnen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="103"/>
         <source>Quantum files (*.fchk *.gamout *.g03)</source>
-        <translation>Quanten-Dateien (*.fchk *.gamout *.g03</translation>
+        <translation type="obsolete">Quanten-Dateien (*.fchk *.gamout *.g03</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="108"/>
+        <source>Quantum files (*.fchk *.fch)</source>
+        <translation>Quanten-Dateien (*.fchk *.fch)</translation>
     </message>
 </context>
 <context>
@@ -2001,7 +2125,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
         <translation>Elektronenumlaufbahnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalengine.cpp" line="49"/>
+        <location filename="../libavogadro/src/engines/orbitalengine.cpp" line="50"/>
         <source>Orbital Rendering</source>
         <translation>Elektronenumlaufbahnen-Darstellung</translation>
     </message>
@@ -2011,12 +2135,17 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="51"/>
         <source>Molecular Orbitals</source>
-        <translation>Molekulare Elektronenumlaufbahnen</translation>
+        <translation type="obsolete">Molekulare Elektronenumlaufbahnen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="71"/>
         <source>&amp;Extensions</source>
         <translation>Er&amp;weiterungen</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="51"/>
+        <source>Import Molecular Orbitals...</source>
+        <translation>Molekülorbitale importieren...</translation>
     </message>
 </context>
 <context>
@@ -2075,30 +2204,30 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="103"/>
         <source>&amp;Extensions</source>
-        <translation>Er&amp;weiterungen</translation>
+        <translation type="obsolete">Er&amp;weiterungen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="103"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="113"/>
         <source>&amp;Properties</source>
         <translation>Eigenschaften</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="105"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="116"/>
         <source>&amp;Build</source>
         <translation>S&amp;truktur</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="56"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="61"/>
         <source>Atom Properties...</source>
         <translation>Atom-Eigenschaften...</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="61"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="66"/>
         <source>Bond Properties...</source>
         <translation>Bindungs-Eigenschaften...</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="76"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="86"/>
         <source>Cartesian Editor...</source>
         <translation>Kartesischer Editor...</translation>
     </message>
@@ -2108,12 +2237,12 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
         <translation>Konformeren...</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="66"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="71"/>
         <source>Angles Properties...</source>
         <translation>Winkel-Eigenschaften</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="71"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="76"/>
         <source>Torsion Properties...</source>
         <translation>Torsions-Eigenschaften</translation>
     </message>
@@ -2128,7 +2257,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="242"/>
         <source>Atomic Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordnungszahl</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="244"/>
@@ -2138,7 +2267,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="246"/>
         <source>Formal Charge</source>
-        <translation type="unfinished"></translation>
+        <translation>Formalladung</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="248"/>
@@ -2148,12 +2277,12 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="250"/>
         <source>Valence</source>
-        <translation type="unfinished"></translation>
+        <translation>Valenz</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="266"/>
         <source>Bond Order</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der Bindungen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="254"/>
@@ -2249,37 +2378,37 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
 <context>
     <name>Avogadro::PropertiesView</name>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="210"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="219"/>
         <source>Atom</source>
         <translation>Atom</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="213"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="222"/>
         <source>Bond</source>
         <translation>Bindung </translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="216"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="225"/>
         <source>Angle</source>
         <translation>Winkel</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="219"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="228"/>
         <source>Torsion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="222"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="231"/>
         <source>Cartesian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="225"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="234"/>
         <source>Conformer</source>
         <translation>Konformer</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="230"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="239"/>
         <source>Properties</source>
         <translation>Eigenschaften</translation>
     </message>
@@ -2287,17 +2416,17 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
 <context>
     <name>Avogadro::PythonExtension</name>
     <message>
-        <location filename="../libavogadro/src/extensions/pythonextension.cpp" line="172"/>
+        <location filename="../libavogadro/src/extensions/pythonextension.cpp" line="171"/>
         <source>&amp;Scripts</source>
         <translation>&amp;Skripte</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/pythonextension.cpp" line="179"/>
+        <location filename="../libavogadro/src/extensions/pythonextension.cpp" line="178"/>
         <source>Python Terminal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/pythonextension.cpp" line="182"/>
+        <location filename="../libavogadro/src/extensions/pythonextension.cpp" line="181"/>
         <source>pythonTerminalDock</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2393,6 +2522,11 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
         <source>Select Solvent</source>
         <translation>Lösungsmittel auswählen</translation>
     </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/selectextension.cpp" line="209"/>
+        <source></source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>Avogadro::SelectRotateTool</name>
@@ -2411,29 +2545,39 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
         <source>Selection Tool (F11)
 Click to pick individual atoms, residues, or fragments
 Drag to select a range of atoms</source>
-        <translation>Auswählen/Rotieren (F11)
+        <translation type="obsolete">Auswählen/Rotieren (F11)
 Klicken um einzelne Atome, Reste oder Fragmente auszuwählen
 Gedrückt halten um Atome auszuwählen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="383"/>
+        <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="389"/>
         <source>Selection Mode:</source>
         <translation>Auswahl-Modus:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="388"/>
+        <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="394"/>
         <source>Atom</source>
         <translation>Atom</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="389"/>
+        <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="395"/>
         <source>Residue</source>
         <translation>Rest</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="390"/>
+        <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="396"/>
         <source>Molecule</source>
         <translation>Molekül</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="58"/>
+        <source>Selection Tool (F11)
+Click to pick individual atoms, residues, or fragments
+Drag to select a range of atoms
+Use Ctrl to toggle the selection and shift to add to the selection</source>
+        <translation>Auswahl Werkzeug (F11)
+Klicken um einzelne Atome, Reste oder Fragmente auszuwählen
+Ziehen um mehrere Atome auszuwählen</translation>
     </message>
 </context>
 <context>
@@ -2470,7 +2614,7 @@ Gedrückt halten um Atome auszuwählen</translation>
         <translation>Oberfläche</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/surfaceengine.cpp" line="50"/>
+        <location filename="../libavogadro/src/engines/surfaceengine.cpp" line="51"/>
         <source>Surface rendering</source>
         <translation>Oberflächen-Darstellung</translation>
     </message>
@@ -2738,12 +2882,12 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>EnginePrimitivesWidget</name>
     <message>
-        <location filename="../avogadro/src/engineprimitiveswidget.ui" line="44"/>
+        <location filename="../build/avogadro/src/ui_engineprimitiveswidget.h" line="104"/>
         <source>Add Selected Primitives</source>
         <translation>Hinzufügen ausgewählter Primitive</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/engineprimitiveswidget.ui" line="57"/>
+        <location filename="../build/avogadro/src/ui_engineprimitiveswidget.h" line="110"/>
         <source>Remove Selected Primitives</source>
         <translation>Entfernen ausgewählter Primitive</translation>
     </message>
@@ -2753,17 +2897,17 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/engineprimitiveswidget.ui" line="70"/>
+        <location filename="../build/avogadro/src/ui_engineprimitiveswidget.h" line="116"/>
         <source>Add All Primitives</source>
         <translation>Alle primitive hinzufügen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/engineprimitiveswidget.ui" line="80"/>
+        <location filename="../build/avogadro/src/ui_engineprimitiveswidget.h" line="119"/>
         <source>Assign Engine to Selected Primitives</source>
         <translation>Engine den ausgewählten primitiven zuordnen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/engineprimitiveswidget.ui" line="83"/>
+        <location filename="../build/avogadro/src/ui_engineprimitiveswidget.h" line="122"/>
         <source>Assign to Selection</source>
         <translation>Der Auswahl zuordnen</translation>
     </message>
@@ -2771,27 +2915,27 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>EngineSetupWidget</name>
     <message>
-        <location filename="../avogadro/src/enginesetupwidget.ui" line="38"/>
+        <location filename="../build/avogadro/src/ui_enginesetupwidget.h" line="114"/>
         <source>Settings</source>
         <translation>&amp;Einstellungen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/enginesetupwidget.ui" line="43"/>
+        <location filename="../build/avogadro/src/ui_enginesetupwidget.h" line="118"/>
         <source>Primitives</source>
         <translation>Primitive</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/enginesetupwidget.ui" line="104"/>
+        <location filename="../build/avogadro/src/ui_enginesetupwidget.h" line="115"/>
         <source>Add Selected Primitives</source>
         <translation>Hinzufügen ausgewählter Primitive</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/enginesetupwidget.ui" line="114"/>
+        <location filename="../build/avogadro/src/ui_enginesetupwidget.h" line="116"/>
         <source>Remove Selected Primitives</source>
         <translation>Entfernen ausgewählter Primitive</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/enginesetupwidget.ui" line="124"/>
+        <location filename="../build/avogadro/src/ui_enginesetupwidget.h" line="117"/>
         <source>Reset</source>
         <translation>Zurücksetzen</translation>
     </message>
@@ -2824,9 +2968,9 @@ Elementarzelle erzeugen?</translation>
         <translation>Anzahl der Schritte</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="118"/>
+        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="168"/>
         <source>Gradients</source>
-        <translation type="obsolete">Winkel</translation>
+        <translation>Winkel</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="82"/>
@@ -2834,14 +2978,14 @@ Elementarzelle erzeugen?</translation>
         <translation>Algorithmus</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="133"/>
+        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="173"/>
         <source>Numerical</source>
-        <translation type="obsolete">Numerisch</translation>
+        <translation>Numerisch</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="138"/>
+        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="174"/>
         <source>Analytical</source>
-        <translation type="obsolete">Analytisch</translation>
+        <translation>Analytisch</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="90"/>
@@ -4292,7 +4436,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3893"/>
         <source>Generate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erzeugen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3900"/>
@@ -4340,7 +4484,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="38"/>
         <source>Calculation Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalkulationstyp:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="54"/>
@@ -4458,19 +4602,24 @@ Elementarzelle erzeugen?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="396"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="399"/>
         <source>Reset</source>
         <translation>Zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="416"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="429"/>
         <source>Generate</source>
         <translation>Erzeugen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="423"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="436"/>
         <source>Close</source>
         <translation>Schließen</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="409"/>
+        <source>Use Form</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4478,7 +4627,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/engines/hbondsettingswidget.ui" line="16"/>
         <source>Width:</source>
-        <translation type="unfinished"></translation>
+        <translation>Strichdicke:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/hbondsettingswidget.ui" line="57"/>
@@ -4524,7 +4673,7 @@ Elementarzelle erzeugen?</translation>
         <translation>Fragment einfügen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/insertfragmentdialog.ui" line="31"/>
+        <location filename="../build/libavogadro/src/tools/ui_insertfragmentdialog.h" line="129"/>
         <source>Clear List</source>
         <translation type="obsolete">Liste löschen</translation>
     </message>
@@ -4544,7 +4693,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="54"/>
         <source>Atom number</source>
-        <translation>Atomnummer</translation>
+        <translation>Ordungszahl</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="59"/>
@@ -4633,350 +4782,395 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="13"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="402"/>
         <source>Avogadro</source>
         <translation>Avogadro</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="40"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="457"/>
         <source>&amp;Help</source>
         <translation>&amp;Hilfe</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="48"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="458"/>
         <source>&amp;File</source>
         <translation>&amp;Datei</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="52"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="459"/>
         <source>Open &amp;Recent</source>
         <translation>&amp;Zuletzt geöffnet</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="80"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="462"/>
         <source>Toolbars</source>
         <translation>Werkzeugleiste</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="85"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="463"/>
         <source>&amp;Docks</source>
         <translation>&amp;Seitenleisten</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="100"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="465"/>
         <source>&amp;View</source>
         <translation>&amp;Ansicht</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="115"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="466"/>
         <source>&amp;Edit</source>
         <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="168"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="469"/>
         <source>Main Toolbar</source>
         <translation>Hauptleiste</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="207"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="470"/>
         <source>Project</source>
         <translation>Projekt</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="263"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="471"/>
         <source>Tools</source>
         <translation>Werkzeuge</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="292"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="423"/>
         <source>Engines</source>
-        <translation>Engines</translation>
+        <translation type="obsolete">Engines</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="378"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="405"/>
         <source>&amp;Open</source>
         <translation>&amp;Öffnen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="369"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="404"/>
         <source>Ctrl+O</source>
         <translation>Strg+Ö</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="399"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="408"/>
         <source>&amp;Quit</source>
         <translation>&amp;Beenden</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="390"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="407"/>
         <source>Ctrl+Q</source>
         <translation>Strg+B</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="404"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="409"/>
         <source>Recent</source>
         <translation>Zuletzt</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="409"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="410"/>
         <source>&amp;Clear Recent</source>
         <translation>&amp;Liste löschen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="430"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="413"/>
         <source>&amp;New</source>
         <translation>&amp;Neu</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="421"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="412"/>
         <source>Ctrl+N</source>
         <translation>Strg+N</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="451"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="416"/>
         <source>&amp;Close</source>
         <translation>&amp;Schließen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="442"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="415"/>
         <source>Ctrl+W</source>
         <translation>Strg+W</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="472"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="419"/>
         <source>&amp;Save</source>
         <translation>&amp;Speichern</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="463"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="418"/>
         <source>Ctrl+S</source>
         <translation>Strg+S</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="481"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="420"/>
         <source>Save &amp;As...</source>
         <translation>Speichern &amp;als...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="484"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="421"/>
         <source>Ctrl+Shift+S</source>
         <translation>Strg+Umschalt+S</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="493"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="422"/>
         <source>Revert To Saved</source>
         <translation>Urzustand wiederherstellen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="502"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="379"/>
         <source>&amp;Export Graphics</source>
-        <translation>&amp;Exportiere Grafik</translation>
+        <translation type="obsolete">&amp;Exportiere Grafik</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="511"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="424"/>
         <source>&amp;Full Screen Mode</source>
         <translation>&amp;Vollbild</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="520"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="425"/>
         <source>Set &amp;Background Color...</source>
         <translation>&amp;Hintergrundfarbe auswählen...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="525"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="426"/>
         <source>&amp;About</source>
         <translation>&amp;Über</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="534"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="427"/>
         <source>&amp;Undo</source>
         <translation>Rückgängig</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="537"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="428"/>
         <source>Ctrl+Z</source>
         <translation>Strg+Z</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="546"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="429"/>
         <source>&amp;Redo</source>
         <translation>Wiede&amp;rherstellen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="549"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="430"/>
         <source>Ctrl+Shift+Z</source>
         <translation>Strg+Umschalt+Z</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="558"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="431"/>
         <source>New View</source>
         <translation>Neue Ansicht</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="570"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="432"/>
         <source>Close View</source>
         <translation>Schließe Ansicht</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="579"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="433"/>
         <source>Center</source>
         <translation>Molekül zentrieren</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="588"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="434"/>
         <source>&amp;Paste</source>
         <translation>Einfügen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="591"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="435"/>
         <source>Ctrl+V</source>
         <translation>Strg+V</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="600"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="436"/>
         <source>Copy</source>
         <translation>Kopieren</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="603"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="437"/>
         <source>Ctrl+C</source>
         <translation>Strg+C</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="612"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="438"/>
         <source>Cut</source>
         <translation>Ausschneiden</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="615"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="439"/>
         <source>Ctrl+X</source>
         <translation>Strg+X</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="620"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="440"/>
         <source>Clear</source>
         <translation>Alles löschen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="628"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="442"/>
         <source>Select All</source>
         <translation>Alles Auswählen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="631"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="443"/>
         <source>Ctrl+A</source>
         <translation>Strg+A</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="636"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="444"/>
         <source>Select None</source>
         <translation>Auswahl aufheben</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="639"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="445"/>
         <source>Ctrl+Shift+A</source>
         <translation>Strg+Umschalt+A</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="648"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="446"/>
         <source>Configure Avogadro...</source>
         <translation>Avogadro einrichten...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="653"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="403"/>
         <source>Export POVRay</source>
-        <translation>Exportiere POVRay</translation>
+        <translation type="obsolete">Exportiere POVRay</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="623"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="441"/>
         <source>Ctrl+Backspace</source>
         <translation>Strg+Leertaste</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="76"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="461"/>
         <source>Settings</source>
         <translation>&amp;Einstellungen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="95"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="464"/>
         <source>&amp;Build</source>
         <translation>S&amp;truktur</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="128"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="467"/>
         <source>&amp;Extensions</source>
         <translation>Er&amp;weiterungen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="133"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="468"/>
         <source>&amp;Select</source>
         <translation>Au&amp;swahl</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="661"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="404"/>
         <source>Tutorial</source>
-        <translation>Tutorial</translation>
+        <translation type="obsolete">Tutorial</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="318"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="424"/>
         <source>Configuration</source>
-        <translation>Einstellungen</translation>
+        <translation type="obsolete">Einstellungen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="344"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="425"/>
         <source>Primitives</source>
-        <translation>Primitive</translation>
+        <translation type="obsolete">Primitive</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="666"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="449"/>
         <source>Duplicate View</source>
         <translation>Ansicht duplizieren</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="57"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="460"/>
         <source>Export</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="674"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="450"/>
         <source>Display Axes</source>
         <translation>Achsen anzeigen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="682"/>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="451"/>
         <source>Debug Information</source>
         <translation>Debug-Informationen</translation>
+    </message>
+    <message>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="472"/>
+        <source>Display Types</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="423"/>
+        <source>&amp;Export Graphics...</source>
+        <translation>&amp;Exportiere Grafik...</translation>
+    </message>
+    <message>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="447"/>
+        <source>Export POVRay...</source>
+        <translation>Exportiere POVRay...</translation>
+    </message>
+    <message>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="448"/>
+        <source>Tutorials</source>
+        <translation>Tutorial</translation>
+    </message>
+    <message>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="452"/>
+        <source>Avogadro Help</source>
+        <translation>Avogadro-Hilfe</translation>
+    </message>
+    <message>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="453"/>
+        <source>Release Notes</source>
+        <translation>Veröffentlichungsdetails</translation>
+    </message>
+    <message>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="454"/>
+        <source>Report a Bug</source>
+        <translation>Fehler melden</translation>
+    </message>
+    <message>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="455"/>
+        <source>FAQ</source>
+        <translation>Häufige Fragen</translation>
+    </message>
+    <message>
+        <location filename="../build/avogadro/src/ui_mainwindow.h" line="456"/>
+        <source>Avogadro Website</source>
+        <translation>Avogadro-Webseite</translation>
     </message>
 </context>
 <context>
     <name>OrbitalDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="13"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="19"/>
         <source>Orbitals</source>
         <translation>Elektronenumlaufbahnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="22"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="28"/>
         <source>Load File</source>
         <translation>Datei laden</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="32"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="45"/>
         <source>Calculate</source>
         <translation>Berechnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="74"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="162"/>
         <source>Steps:</source>
         <translation>Schritte:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="110"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="172"/>
         <source>Step SIze:</source>
         <translation>Schrittgröße:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="166"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="182"/>
         <source>Origin:</source>
         <translation>Herkunft:</translation>
     </message>
@@ -4984,22 +5178,22 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>OrbitalSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="26"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="29"/>
         <source>Opacity:</source>
         <translation>Transparenz:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="75"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="84"/>
         <source>Fill</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="80"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="89"/>
         <source>Lines</source>
         <translation>Linien</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="85"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="94"/>
         <source>Points</source>
         <translation>Punkte</translation>
     </message>
@@ -5019,7 +5213,7 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Elektrostatisches Potential</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="67"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="73"/>
         <source>Render:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5029,22 +5223,22 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Schrittgröße:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="113"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="125"/>
         <source>IsoValue:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="139"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="154"/>
         <source>Color:</source>
         <translation>Farbe:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="148"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="166"/>
         <source>Positive</source>
         <translation>Positiv</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="171"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="189"/>
         <source>Negative</source>
         <translation>Negativ</translation>
     </message>
@@ -5054,9 +5248,19 @@ Elementarzelle erzeugen?</translation>
         <translation>Elektronenumlaufbahn:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="93"/>
+        <location filename="../build/libavogadro/src/engines/ui_orbitalsettingswidget.h" line="189"/>
         <source>Interpolate:</source>
-        <translation>Interpolation:</translation>
+        <translation type="obsolete">Interpolation:</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="102"/>
+        <source>Draw Box:</source>
+        <translation>Box zeichnen:</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="242"/>
+        <source>Calculate</source>
+        <translation>Berechnen</translation>
     </message>
 </context>
 <context>
@@ -5113,27 +5317,27 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../avogadro/src/editcommands.cpp" line="40"/>
+        <location filename="../avogadro/src/editcommands.cpp" line="41"/>
         <source>Cut Molecule</source>
         <translation>Molekül ausschneiden</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/editcommands.cpp" line="42"/>
+        <location filename="../avogadro/src/editcommands.cpp" line="43"/>
         <source>Cut Atoms</source>
         <translation>Atom ausschneiden</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/editcommands.cpp" line="76"/>
+        <location filename="../avogadro/src/editcommands.cpp" line="80"/>
         <source>Paste</source>
         <translation>Einfügen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/editcommands.cpp" line="110"/>
+        <location filename="../avogadro/src/editcommands.cpp" line="114"/>
         <source>Clear Molecule</source>
         <translation>Moleküle entfernen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/editcommands.cpp" line="112"/>
+        <location filename="../avogadro/src/editcommands.cpp" line="116"/>
         <source>Clear Atoms</source>
         <translation>Atome entfernen</translation>
     </message>
@@ -5233,12 +5437,12 @@ Elementarzelle erzeugen?</translation>
         <translation>Wasserstoffatome entfernen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/hydrogensextension.h" line="52"/>
+        <location filename="../libavogadro/src/extensions/hydrogensextension.h" line="53"/>
         <source>Hydrogens</source>
         <translation>Wasserstoffatome</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/hydrogensextension.h" line="54"/>
+        <location filename="../libavogadro/src/extensions/hydrogensextension.h" line="55"/>
         <source>Hydrogens Plugin</source>
         <translation>Wasserstoff-Erweiterung</translation>
     </message>
@@ -5283,7 +5487,7 @@ Elementarzelle erzeugen?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/main.cpp" line="160"/>
+        <location filename="../avogadro/src/main.cpp" line="165"/>
         <source>Avogadro: <byte value="x9"/>%1 (rev %2)
 LibAvogadro: <byte value="x9"/>%3 (rev %4)
 Qt: <byte value="x9"/><byte value="x9"/>%5
@@ -5291,7 +5495,7 @@ Qt: <byte value="x9"/><byte value="x9"/>%5
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/main.cpp" line="170"/>
+        <location filename="../avogadro/src/main.cpp" line="183"/>
         <source>Usage: %1 [options] [files]
 
 Advanced Molecular Editor (version %2)
@@ -5303,12 +5507,12 @@ Options:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="929"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="930"/>
         <source>Set Aspect Ratio</source>
         <translation>Seitenverhätnis einstellen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="937"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="938"/>
         <source>The current Avogadro scene is %1x%2 pixels large, and therefore has aspect ratio %3.
 You may keep this value, for example if you intend to use POV-Ray
 to produce an image of %4x1000 pixels, or you may enter any other positive value,
@@ -5321,42 +5525,42 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <translation>Keine Beschreibung</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="590"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="603"/>
         <source>AutoOpt Molecule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1891"/>
+        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1881"/>
         <source>Bond Centric Manipulation</source>
         <translation>Bindungsorientiertes Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="80"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="85"/>
         <source>Add Atom</source>
         <translation>Atom hinzufügen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="150"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="173"/>
         <source>Delete Atom</source>
         <translation>Atom entfernen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="225"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="250"/>
         <source>Add Bond</source>
         <translation>Bindung hinzufügen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="330"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="392"/>
         <source>Delete Bond</source>
         <translation>Bindung entfernen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="386"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="448"/>
         <source>Change Element</source>
         <translation>Element ändern</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="453"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="515"/>
         <source>Change Bond Order</source>
         <translation>Anzahl der Bindungen ändern</translation>
     </message>
@@ -5366,7 +5570,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <translation type="obsolete">SMILES einfügen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/manipulatetool.cpp" line="396"/>
+        <location filename="../libavogadro/src/tools/manipulatetool.cpp" line="378"/>
         <source>Manipulate Atom</source>
         <translation>Atom bearbeiten</translation>
     </message>
@@ -5391,7 +5595,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <translation>Vorlage zur Entwicklung von Erweiterungen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="527"/>
+        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="591"/>
         <source>Insert Fragment</source>
         <translation>Fragment einfügen</translation>
     </message>
@@ -5408,12 +5612,22 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.h" line="44"/>
         <source>Orbitals</source>
-        <translation>Elektronenumlaufbahnen</translation>
+        <translation>Orbitale</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.h" line="47"/>
         <source>Orbital cube generator</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationextension.h" line="54"/>
+        <source>Animation</source>
+        <translation>Animation</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationextension.h" line="56"/>
+        <source>Animation Plugin</source>
+        <translation>Animations-Erweiterung</translation>
     </message>
 </context>
 <context>
@@ -5455,17 +5669,17 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../avogadro/src/settingsdialog.ui" line="13"/>
+        <location filename="../build/avogadro/src/ui_settingsdialog.h" line="105"/>
         <source>Settings</source>
         <translation>&amp;Einstellungen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/settingsdialog.ui" line="28"/>
+        <location filename="../build/avogadro/src/ui_settingsdialog.h" line="106"/>
         <source>Quality:</source>
         <translation>Qualität</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/settingsdialog.ui" line="81"/>
+        <location filename="../build/avogadro/src/ui_settingsdialog.h" line="108"/>
         <source>Tabbed Tools</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5480,7 +5694,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <translation type="obsolete">Debug-Informationen anzeigen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/settingsdialog.ui" line="69"/>
+        <location filename="../build/avogadro/src/ui_settingsdialog.h" line="107"/>
         <source>Medium</source>
         <translation>Mittel</translation>
     </message>
