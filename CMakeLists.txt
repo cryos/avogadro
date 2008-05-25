@@ -10,6 +10,7 @@ endif(COMMAND cmake_policy)
 
 include (CheckCXXCompilerFlag)
 include (MacroEnsureVersion)
+include (TestIfWeNeedFPermissive)
 
 ###########################################################
 # Here I am adding GCC magic from KDE. With these settings#
@@ -57,12 +58,15 @@ if (CMAKE_COMPILER_IS_GNUCXX)
   set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG")
   set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline")
 
-endif (CMAKE_COMPILER_IS_GNUCXX)
+  TEST_IF_WE_NEED_FPERMISSIVE(NEED_FPERMISSIVE)
+  if(NEED_FPERMISSIVE)
+    #OK, adding -fpermissive to the C++ compiler flags
+    #Workaround for a problem with Boost.Python and GCC >= 4.3.1
+    #Further information: cmake/modules/TestIfWeNeedFPermissive.cmake
+    set (CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -fpermissive")
+  endif(NEED_FPERMISSIVE)
 
-if(FPERMISSIVE_NO)
-else(FPERMISSIVE_NO)
-  set (CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -fpermissive")
-endif(FPERMISSIVE_NO)
+endif (CMAKE_COMPILER_IS_GNUCXX)
 
 if(RELEASE_MODE)
  add_definitions(-DNDEBUG)
@@ -140,4 +144,3 @@ endif(APPLE)
 INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
                DESTINATION ${avogadro_FRAGMENTS}
                PATTERN ".svn" EXCLUDE )
-
