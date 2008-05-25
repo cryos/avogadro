@@ -539,7 +539,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="180"/>
         <source>Select binding pocket</source>
-        <translation type="unfinished"></translation>
+        <translation>Bindungstasche auswählen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="91"/>
@@ -574,7 +574,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="201"/>
         <source>Create a binding pocket first...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zuerst Bindungstasche erstellen...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="195"/>
@@ -589,7 +589,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="63"/>
         <source>Create Binding Pocket...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bindungstasche erstellen...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="72"/>
@@ -599,7 +599,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="77"/>
         <source>Select Binding Pocket</source>
-        <translation type="unfinished"></translation>
+        <translation>Bindungstasche auswählen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="82"/>
@@ -4436,7 +4436,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3893"/>
         <source>Generate</source>
-        <translation type="unfinished">Erzeugen</translation>
+        <translation>Erzeugen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3900"/>
@@ -5268,7 +5268,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/pocketdialog.ui" line="13"/>
         <source>Create binding pocket</source>
-        <translation type="unfinished"></translation>
+        <translation>Bindungstasche erstellen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/pocketdialog.ui" line="34"/>
@@ -5278,12 +5278,12 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/pocketdialog.ui" line="38"/>
         <source>create pocket from current selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Bindungstasche aus Auswahl erstellen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/pocketdialog.ui" line="43"/>
         <source>create pocket from residue name</source>
-        <translation type="unfinished"></translation>
+        <translation>Bindungstasche aus Restname erstellen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/pocketdialog.ui" line="55"/>
