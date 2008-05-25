@@ -113,12 +113,12 @@ Right Mouse: <byte value="x9"/>Reset alignment.</source>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="62"/>
         <source>Open trajectory file</source>
-        <translation type="unfinished"></translation>
+        <translation>Trajektorie-Datei öffnen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="63"/>
         <source>Trajectory files (*.xtc)</source>
-        <translation type="unfinished"></translation>
+        <translation>Trajektorie-Dateien (*.xtc)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="71"/>
@@ -265,7 +265,7 @@ Linke Maustaste: Klicken und ziehen um Atome zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="333"/>
         <source>Steps per Update:</source>
-        <translation type="unfinished"></translation>
+        <translation>Schritte pro Aktualisierung:</translation>
     </message>
 </context>
 <context>
@@ -1683,7 +1683,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/liganddialog.cpp" line="63"/>
         <source>Open ligand file</source>
-        <translation>Öffne Ligand Datei</translation>
+        <translation>Ligand-Datei öffnen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/liganddialog.cpp" line="63"/>
@@ -1701,7 +1701,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="529"/>
         <source>Open File</source>
-        <translation>Öffne Datei</translation>
+        <translation>Datei öffnen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="739"/>
@@ -2019,7 +2019,7 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="849"/>
         <source>BMP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="1853"/>
