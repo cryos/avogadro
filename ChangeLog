@@ -1,3 +1,9 @@
+2008-05-26  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/src/CMakeLists.txt,
+	avogaro/src/mac/locversion.plist.in: Add additional Mac i18n
+	support, solving PR#1972467.
+
 2008-05-23  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* CMakeLists.txt: Bump our dependencies on CMake and Qt.
