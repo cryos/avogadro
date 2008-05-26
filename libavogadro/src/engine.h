@@ -234,6 +234,7 @@ namespace Avogadro {
       virtual void clearPrimitives();
 
       /** Get the radius of the primitive referred to.
+       * @param pd is the painter device used for rendering (e.g., if a primitive is selected)
        * @param primitive is the Primitive to get the radius of.
        * @return the radius of the Primitive.
        */

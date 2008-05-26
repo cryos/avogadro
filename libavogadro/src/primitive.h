@@ -38,8 +38,8 @@ class QReadWriteLock;
 namespace Avogadro {
 
   /**
-   * @class Primitive
-   * Base class for all primitives (Molecule, Atom, Bond, Residue, ...).
+   * @class Primitive primitive.h <avogadro/primitive.h>
+   * @brief Base class for all primitives (Molecule, Atom, Bond, Residue, ...).
    */
 
   class PrimitivePrivate;
@@ -148,7 +148,7 @@ namespace Avogadro {
   };
 
   /**
-   * @class Atom
+   * @class Atom primitive.h <avogadro/primitive.h>
    * @brief Atom Class
    * @author Donald Ephraim Curtis
    *
@@ -204,7 +204,7 @@ namespace Avogadro {
   };
 
   /**
-   * @class Bond
+   * @class Bond primitive.h <avogadro/primitive.h>
    * @brief Bond Class
    * @author Donald Ephraim Curtis
    *
@@ -232,7 +232,7 @@ namespace Avogadro {
   };
 
   /**
-   * @class Residue
+   * @class Residue primitive.h <avogadro/primitive.h>
    * @brief Residue Class
    * @author Donald Ephraim Curtis
    *
@@ -255,7 +255,7 @@ namespace Avogadro {
   };
 
   /**
-   * @class Molecule
+   * @class Molecule primitive.h <avogadro/primitive.h>
    * @brief Molecule Class
    * @author Donald Ephraim Curtis
    *
@@ -317,7 +317,7 @@ namespace Avogadro {
        * Virtual function inherited from OpenBabel::OBMol.
        * Deletes an Bond object.
        *
-       * @param atom the bond to delete
+       * @param bond the bond to delete
        */
       void DestroyBond(OpenBabel::OBBond* bond);
 
@@ -325,7 +325,7 @@ namespace Avogadro {
        * Virtual function inherited from OpenBabel::OBMol.
        * Deletes an Residue object.
        *
-       * @param atom the residue to delete
+       * @param residue the residue to delete
        */
       void DestroyResidue(OpenBabel::OBResidue* residue);
 

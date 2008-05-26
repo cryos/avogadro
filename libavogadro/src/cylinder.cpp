@@ -148,7 +148,7 @@ namespace Avogadro {
     d->isValid = true;
   }
 
-  void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
+  void Cylinder::draw( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
       double radius ) const
   {
     // the "axis vector" of the cylinder
@@ -192,9 +192,9 @@ namespace Avogadro {
     glPopMatrix();
   }
 
-  void Cylinder::drawMulti( const Vector3d &end1, const Vector3d &end2,
+  void Cylinder::drawMulti( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
       double radius, int order, double shift,
-      const Vector3d &planeNormalVector ) const
+      const Eigen::Vector3d &planeNormalVector ) const
   {
 
     // the "axis vector" of the cylinder

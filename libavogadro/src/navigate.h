@@ -33,7 +33,7 @@
 namespace Avogadro {
 
   /**
-   * @class Navigate
+   * @class Navigate navigate.h <avogadro/navigate.h>
    * @brief Navigation functions common to several tools.
    * @author Marcus D. Hanwell
    *

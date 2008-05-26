@@ -76,6 +76,8 @@ namespace Avogadro {
        * @param name The name of the OpenGL object that was picked corresponding
        * to the primitive index
        * (ie. name==1 means Atom 1).
+       * @param minZ minimum window Z value of the hit
+       * @param maxZ maximum window Z value of the hit
        */
       GLHit(GLuint type, GLuint name, GLuint minZ, GLuint maxZ);
       /**
@@ -187,6 +189,7 @@ namespace Avogadro {
        * Constructor.
        * @param format the QGLFormat information.
        * @param parent the widget parent.
+       * @param shareWidget a widget to share the same graphics -- i.e., the underlying GLPainterDevice
        */
       explicit GLWidget(const QGLFormat &format, QWidget *parent = 0, const GLWidget * shareWidget = 0);
 
@@ -195,6 +198,7 @@ namespace Avogadro {
        * @param molecule the molecule to view.
        * @param format the QGLFormat information.
        * @param parent the widget parent.
+       * @param shareWidget a widget to share the same graphics -- i.e., the underlying GLPainterDevice
        */
       GLWidget(Molecule *molecule, const QGLFormat &format, QWidget *parent = 0, const GLWidget * shareWidget = 0);
 
@@ -424,7 +428,7 @@ namespace Avogadro {
        *
        * @param primitives the set of objects to update.
        */
-      void toggleSelected(PrimitiveList primitiveList);
+      void toggleSelected(PrimitiveList primitives);
 
       /**
        * Change the selection status for the atoms in the supplied list.

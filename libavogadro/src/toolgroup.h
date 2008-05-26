@@ -124,7 +124,7 @@ namespace Avogadro {
 
     Q_SIGNALS:
       /**
-       * @param the activated tool
+       * @param tool the activated tool
        */
       void toolActivated(Tool *tool);
 

@@ -31,10 +31,12 @@
 namespace Avogadro {
 
   /**
+   * @class ResidueColor residuecolor.h <avogadro/residuecolor.h>
+   * @brief Atom coloring based on residue for biomolecules
+   * @author Geoff Hutchison
+   *
    * This class maps colors based on residues
    * http://jmol.sourceforge.net/jscolors/
-   *
-   * @author Geoff Hutchison
    */
   class A_EXPORT ResidueColor: public Color
   {

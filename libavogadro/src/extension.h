@@ -37,7 +37,7 @@ class QTextEdit;
 namespace Avogadro {
 
   /**
-   * @class Extension
+   * @class Extension extension.h <avogadro/extension.h>
    * @brief Interface for adding extensions
    * @author Donald Ephraim Curtis
    *
@@ -88,9 +88,7 @@ namespace Avogadro {
 
     /**
      * @param action the action that triggered the calls
-     * @param molecule the molecule to perform the action on
      * @param widget the currently active GLWidget
-     * @param messages a QTextEdit to push information too (allowing
      * feedback to the user)
      * @return an undo command for this action
      */

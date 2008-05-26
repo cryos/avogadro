@@ -4,6 +4,9 @@
 	avogaro/src/mac/locversion.plist.in: Add additional Mac i18n
 	support, solving PR#1972467.
 
+	* Doxyfile, avogadro/src/mainwindow.h, 
+	libavogadro/src/*: Update doxygen documentation.
+
 2008-05-23  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* CMakeLists.txt: Bump our dependencies on CMake and Qt.
