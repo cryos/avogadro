@@ -52,8 +52,9 @@
 #include <QMutex>
 #endif
 
-#include <stdio.h>
+#include <cstdio>
 #include <vector>
+#include <cstdlib>
 
 using namespace OpenBabel;
 using namespace Eigen;
@@ -529,6 +530,16 @@ namespace Avogadro {
   void GLWidget::initializeGL()
   {
     qDebug() << "GLWidget initialisation...";
+    if(!context()->isValid())
+    {
+      // this should never happen, as we checked for availability of features that we requested in
+      // the default OpenGL format. However it happened to a user who had a very broken setting with
+      // a proprietary nvidia driver.
+      qDebug() << "Invalid OpenGL context.";
+      qDebug() << "Either something is completely broken in your OpenGL setup (can you run any OpenGL app?), "
+                  "or you found a bug.";
+      abort();
+    }
     qglClearColor( d->background );
 
     glShadeModel( GL_SMOOTH );
