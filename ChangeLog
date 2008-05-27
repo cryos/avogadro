@@ -1,3 +1,9 @@
+2008-05-27  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/drawtool.cpp: Do not try to change the bond
+	order for X-H bonds when adjust hydrogens is on. Not sure if we should
+	ever have double bonds to hydrogens...
+
 2008-05-26  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* avogadro/src/CMakeLists.txt,
