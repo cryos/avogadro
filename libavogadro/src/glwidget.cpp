@@ -46,6 +46,7 @@
 #include <QPluginLoader>
 #include <QTime>
 #include <QReadWriteLock>
+#include <QMessageBox>
 
 #ifdef ENABLE_THREADED_GL
 #include <QWaitCondition>
@@ -535,9 +536,12 @@ namespace Avogadro {
       // this should never happen, as we checked for availability of features that we requested in
       // the default OpenGL format. However it happened to a user who had a very broken setting with
       // a proprietary nvidia driver.
-      qDebug() << "Invalid OpenGL context.";
-      qDebug() << "Either something is completely broken in your OpenGL setup (can you run any OpenGL app?), "
-                  "or you found a bug.";
+      const QString error_msg = tr("Invalid OpenGL context.\n"
+                                   "Either something is completely broken in your OpenGL setup "
+                                   "(can you run any OpenGL application?), "
+                                   "or you found a bug.");
+      qDebug() << error_msg;
+      QMessageBox::critical(0, tr("OpenGL error"), error_msg);
       abort();
     }
     qglClearColor( d->background );
