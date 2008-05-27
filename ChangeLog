@@ -7,6 +7,13 @@
 	* Doxyfile, avogadro/src/mainwindow.h, 
 	libavogadro/src/*: Update doxygen documentation.
 
+	* avogadro/src/macchempasteboard.*: Add mime converter to supply
+	MIME types for Mac chemical clipboard/pasteboard types
+	(i.e. ChemDraw).
+
+	* avogadro/src/mainwindow.cpp: Add support for ChemDraw. Doesn't
+	parse -- need more debugging.
+
 2008-05-23  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* CMakeLists.txt: Bump our dependencies on CMake and Qt.

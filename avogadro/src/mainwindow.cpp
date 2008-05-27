@@ -35,6 +35,7 @@
 #include "engineprimitiveswidget.h"
 
 #include "icontabwidget.h"
+#include "macchempasteboard.h"
 
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
@@ -135,7 +136,6 @@ namespace Avogadro
       // used for hideMainWindowMac() / showMainWindowMac()
       // save enable/disable status of every menu item
       QVector< QVector <bool> > menuItemStatus;
-
       bool initialized;
 
       bool tabbedTools;
@@ -150,7 +150,6 @@ namespace Avogadro
     }
     return mainWindowCount;
   }
-
 
   MainWindow::MainWindow() : QMainWindow( 0 ), d( new MainWindowPrivate )
   {
@@ -1057,6 +1056,8 @@ namespace Avogadro
       mimeData = clipboard->mimeData( QClipboard::Selection );
     }
 
+    // if we don't support selection, or we failed pasting the selection
+    // try from the clipboard
     if ( !supportsSelection || !pasteMimeData(mimeData) )
     {
       mimeData = clipboard->mimeData();
@@ -1071,17 +1072,20 @@ namespace Avogadro
   {
     OBConversion conv;
     OBFormat *pasteFormat = NULL;
-    QString text;
+    QByteArray text;
     Molecule newMol;
 
     if ( mimeData->hasFormat( "chemical/x-mdl-molfile" ) ) {
       pasteFormat = conv.FindFormat( "mdl" );
 
       text = mimeData->data( "chemical/x-mdl-molfile" );
+		} else if ( mimeData->hasFormat( "chemical/x-cdx" ) ) {
+      pasteFormat = conv.FindFormat( "cdx" );
+			text = mimeData->data( "chemical/x-cdx" );
     } else if ( mimeData->hasText() ) {
       pasteFormat = conv.FindFormat( "xyz" );
 
-      text = mimeData->text();
+      text = mimeData->text().toAscii();
     }
 
     if ( text.length() == 0 )
@@ -1092,10 +1096,11 @@ namespace Avogadro
       return false;
     }
 
-    if ( conv.ReadString( &newMol, text.toStdString() ) && newMol.NumAtoms() != 0 ) {
+    if ( conv.ReadString( &newMol, text.data() ) 
+         && newMol.NumAtoms() != 0 ) {
       vector3 offset; // small offset so that pasted mols don't fall on top
       offset.randomUnitVector();
-      offset *= 0.3;
+      offset *= 0.2;
 
       newMol.Translate( offset );
       PasteCommand *command = new PasteCommand( d->molecule, newMol, d->glWidget );
