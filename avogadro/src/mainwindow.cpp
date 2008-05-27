@@ -35,7 +35,10 @@
 #include "engineprimitiveswidget.h"
 
 #include "icontabwidget.h"
+
+#ifdef Q_WS_MAC
 #include "macchempasteboard.h"
+#endif
 
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
@@ -849,10 +852,16 @@ namespace Avogadro
             << tr("PNG") + " (*.png)"
             << tr("JPEG") + " (*.jpg *.jpeg)";
 
+    // Remove the filename ending - hopefully this is fairly robust
+    QString file = d->fileName.mid(d->fileName.lastIndexOf("/")+1,
+                           d->fileName.lastIndexOf("."));
+
+    qDebug() << "Exported filename:" << file;
+
     QString fileName = SaveDialog::run(this,
                                        tr("Export Bitmap Graphics"),
                                        d->fileDialogPath,
-                                       d->fileName,
+                                       file,
                                        filters,
                                        "png",
                                        selectedFilter);
@@ -863,6 +872,8 @@ namespace Avogadro
     {
       return;
     }
+
+    qDebug() << "Exported filename:" << fileName;
 
     // render it (with alpha channel)
     QImage exportImage = d->glWidget->grabFrameBuffer( true );

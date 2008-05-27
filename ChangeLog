@@ -1,3 +1,9 @@
+2008-05-26  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* avogadro/src/mainwindow.cpp: Fixed PR 1973714 - removed the file
+	ending from the file name passed to the save dialog. Also placed the
+	macchempasteboard.h in a Mac ifdef to fix compilation on other OSes.
+
 2008-05-27  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/tools/drawtool.cpp: Do not try to change the bond
