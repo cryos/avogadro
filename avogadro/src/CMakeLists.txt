@@ -1,6 +1,5 @@
 set(QT_USE_QTOPENGL true)
 
-
 if(WIN32)
   set(QT_USE_QTMAIN true)
 endif(WIN32)
@@ -27,6 +26,10 @@ include_directories(
 include(${QT_USE_FILE})
 
 FILE(GLOB avogadro_SRCS "*.cpp")
+
+if(NOT APPLE)
+  LIST(REMOVE_ITEM avogadro_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/macchempasteboard.cpp)
+endif(NOT APPLE)
 
 if( WIN32 )
   set(avogadro_SRCS ${avogadro_SRCS} windows/avogadro.rc)
