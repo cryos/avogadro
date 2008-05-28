@@ -156,7 +156,7 @@ namespace Avogadro
       vector<vector<unsigned int> > angles;
       ad->FillAngleArray(angles);
 
-      if (index.row() >= angles.size())
+      if ((unsigned int) index.row() >= angles.size())
         return QVariant();
 
       switch (index.column()) {
@@ -221,7 +221,16 @@ namespace Avogadro
 
       switch (index.column()) {
       case 0: // energy
-        return m_molecule->GetEnergy();
+        if (!m_molecule->HasData(OBGenericDataType::ConformerData))
+          return m_molecule->GetEnergy();
+
+        OBConformerData *cd = (OBConformerData*) m_molecule->GetData(OBGenericDataType::ConformerData);
+        vector<double> allEnergies = cd->GetEnergies();
+        
+        if ((unsigned int) index.row() >= allEnergies.size())
+          return QVariant();
+
+        return allEnergies[index.row()];
       }
     } 
   

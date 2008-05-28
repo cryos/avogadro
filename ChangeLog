@@ -1,3 +1,9 @@
+2008-05-27  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/extensions/propmodel.cpp: Get energy for all
+	conformers and only use OBMol::GetEnergy() if no ConformerData is
+	available. (fixes #1976199)
+
 2008-05-26  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* avogadro/src/mainwindow.cpp: Fixed PR 1973714 - removed the file
