@@ -41,6 +41,10 @@ namespace Avogadro {
         this, SLOT(unitCellDisplayChanged(int, int, int)));
     connect(m_Dialog, SIGNAL(unitCellParametersChanged(double, double, double, double, double, double)),
         this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
+    connect(m_Dialog, SIGNAL(deleteUnitCell()),
+        this, SLOT(deleteUnitCell()));
+    connect(m_Dialog, SIGNAL(fillUnitCell()),
+        this, SLOT(fillUnitCell()));
   }
 
   UnitCellExtension::~UnitCellExtension()
@@ -136,6 +140,53 @@ namespace Avogadro {
       } // end if unit cell
     } // end if molecule
   } // end parameters changed
+
+  void UnitCellExtension::deleteUnitCell()
+  {
+    m_Molecule->DeleteData(OBGenericDataType::UnitCell);
+    m_Widget->clearUnitCell();
+  }
+  
+  void UnitCellExtension::fillUnitCell()
+  {
+    /* Change coords back to inverse space, apply the space group transforms
+    *  then change coords back to real space
+    */
+    if (!m_Molecule) {
+      return;
+    }
+    
+      OBUnitCell *uc = NULL;
+      if (m_Molecule && m_Molecule->HasData(OBGenericDataType::UnitCell)) {
+        uc = dynamic_cast<OBUnitCell*>(m_Molecule->GetData(OBGenericDataType::UnitCell));
+        
+        const SpaceGroup *sg = uc->GetSpaceGroup(); // the actual space group and transformations for this unit cell
+        
+        // For each atom, we loop through: convert the coords back to inverse space, apply the transformations and create new atoms
+        // TODO: (we should also create a list of bonds to copy)
+        vector3 v;
+        list<vector3> transformedVectors; // list of symmetry-defined copies of the atom
+        list<vector3>::iterator transformIterator;
+        OBAtom *newAtom;
+        FOR_ATOMS_OF_MOL(atom, m_Molecule) {
+          v = atom->GetVector();
+          if (uc != NULL)
+            v *= uc->GetFractionalMatrix();
+            
+          transformedVectors = sg->Transform(v);
+          for (transformIterator = transformedVectors.begin();
+               transformIterator != transformedVectors.end(); ++transformIterator) {
+            newAtom = m_Molecule->NewAtom();
+            // it would help to have a decent "duplicate atom" method here
+            newAtom->SetAtomicNum(atom->GetAtomicNum());
+            newAtom->SetVector(uc->GetOrthoMatrix() * (*transformIterator));
+          } // end loop of transformed atoms
+        } // end loop of atoms
+        
+        // TODO: create some new bonds here
+        
+      } // end (if unit cell)
+  }
 
 } // end namespace Avogadro
 

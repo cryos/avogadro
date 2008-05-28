@@ -39,8 +39,15 @@ namespace Avogadro {
     m_alpha(90.0), m_beta(90.0), m_gamma(90.0)
   {
     ui.setupUi(this);
-
     reject(); // set to current values
+    
+    connect(ui.deleteUnitCell, SIGNAL(clicked()), this, SLOT(deleteCellClicked()));
+    connect(ui.fillUnitCell, SIGNAL(clicked()), this, SLOT(fillCellClicked()));
+    
+    connect(ui.aCellSpinBox, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));    
+    connect(ui.bCellSpinBox, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));    
+    connect(ui.cCellSpinBox, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));    
+
   }
 
   UnitCellParamDialog::~UnitCellParamDialog()
@@ -49,10 +56,15 @@ namespace Avogadro {
 
   void UnitCellParamDialog::accept()
   {
-    m_aCells = ui.aCellSpinBox->value();
-    m_bCells = ui.bCellSpinBox->value();
-    m_cCells = ui.cCellSpinBox->value();
+    // The parameter is ignored, but required to connect to signals/slots
+    valueChanged(0);
+    valueChanged(0.0);
 
+    hide();
+  }
+
+  void UnitCellParamDialog::valueChanged(double)
+  {
     m_aLength = ui.aLengthSpinBox->value();
     m_bLength = ui.bLengthSpinBox->value();
     m_cLength = ui.cLengthSpinBox->value();
@@ -61,15 +73,38 @@ namespace Avogadro {
     m_beta = ui.betaSpinBox->value();
     m_gamma = ui.gammaSpinBox->value();
 
-    emit(unitCellDisplayChanged(m_aCells, m_bCells, m_cCells));
     emit(unitCellParametersChanged(m_aLength, m_bLength, m_cLength,
           m_alpha, m_beta, m_gamma));
-
-    hide();
   }
+
+  void UnitCellParamDialog::valueChanged(int)
+  {
+    m_aCells = ui.aCellSpinBox->value();
+    m_bCells = ui.bCellSpinBox->value();
+    m_cCells = ui.cCellSpinBox->value();
+
+    emit(unitCellDisplayChanged(m_aCells, m_bCells, m_cCells));
+  }
+  
+  void UnitCellParamDialog::buttonClicked(QAbstractButton *button)
+  {
+    if (button == NULL)
+      return;
+      
+    if (button->text() == tr("Apply")) { // this seems shaky, but I don't know a better test
+      valueChanged(0);
+      valueChanged(0.0);
+    } else if (button->text() == tr("OK")) {
+      accept();
+    } else if (button->text() == tr("Apply")) {
+      reject();
+    }
+  }
+  
 
   void UnitCellParamDialog::reject()
   {
+    // TODO: This doesn't necessarily restore the old values before the dialog was shown
     ui.aCellSpinBox->setValue(m_aCells);
     ui.bCellSpinBox->setValue(m_bCells);
     ui.cCellSpinBox->setValue(m_cCells);
@@ -183,6 +218,18 @@ namespace Avogadro {
     m_gamma = g;
     ui.gammaSpinBox->setValue(g);
   }
+  
+  void UnitCellParamDialog::deleteCellClicked()
+  {
+    emit deleteUnitCell();
+    hide();
+  }
+  
+  void UnitCellParamDialog::fillCellClicked()
+  {
+    emit fillUnitCell();
+  }
+  
 }
 
 #include "unitcellparamdialog.moc"

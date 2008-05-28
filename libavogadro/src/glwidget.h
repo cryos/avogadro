@@ -463,6 +463,11 @@ namespace Avogadro {
       void setUnitCells(int a, int b, int c);
 
       /**
+        * Clear the unit cell data
+      */
+      void clearUnitCell();
+
+      /**
        * @return the number of unit cells to display along the a axis.
        */
       int aCells();

@@ -1,3 +1,13 @@
+2008-05-28  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/glwidget.*: Add method to clear unit cell data.
+
+	* libavogadro/src/extensions/unitcell*: Improved unit cell
+	dialog. Added "Apply" button to change parameters. Automatically
+	changes number of cells to display via signals/slots. Button to
+	delete unit cells. New button to "fill" unit cells with
+	symmetry-defined atoms via the space group.
+
 2008-05-27  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/extensions/propmodel.cpp: Get energy for all

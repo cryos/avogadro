@@ -1602,6 +1602,14 @@ namespace Avogadro {
     update();
   }
 
+  void GLWidget::clearUnitCell()
+  {
+    d->uc = NULL; // The unit cell is associated with our old molecule, it should have been freed elsewhere
+    updateGeometry();
+    d->camera->initializeViewPoint();
+    update();    
+  }
+
   int GLWidget::aCells()
   {
     return d->aCells;

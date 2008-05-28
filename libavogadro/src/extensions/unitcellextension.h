@@ -64,6 +64,9 @@ namespace Avogadro {
     void unitCellParametersChanged(double a, double b, double c,
                                      double alpha, double beta, double gamma);
 
+    void deleteUnitCell();
+    void fillUnitCell();                                 
+
   private:
     QList<QAction *> m_actions;
     UnitCellParamDialog *m_Dialog;
