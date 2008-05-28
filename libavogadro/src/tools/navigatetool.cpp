@@ -126,7 +126,12 @@ namespace Avogadro {
     {
       m_rightButtonPressed = true;
       // Set the cursor - this needs to be reset to Qt::ArrowCursor after
-      widget->setCursor(Qt::SizeAllCursor);
+      // Currently, there's a Qt/Mac bug -- SizeAllCursor looks like a spreadsheet cursor
+#ifdef Q_WS_MAC
+          widget->setCursor(Qt::CrossCursor);
+#else 
+          widget->setCursor(Qt::SizeAllCursor);
+#endif
     }
 
     m_clickedAtom = widget->computeClickedAtom(event->pos());

@@ -99,7 +99,12 @@ namespace Avogadro {
                                  const QPoint &from, const QPoint &to) const
   {
     // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+    // Currently, there's a Qt/Mac bug -- SizeAllCursor looks like a spreadsheet cursor
+#ifdef Q_WS_MAC
+    widget->setCursor(Qt::CrossCursor);
+#else 
     widget->setCursor(Qt::SizeAllCursor);
+#endif
 
     // Translate the selected atoms in the x and y sense of the view
     Vector3d fromPos = widget->camera()->unProject(from, what);
