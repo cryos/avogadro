@@ -1,3 +1,10 @@
+2008-05-28  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/directorytreemodel.*: Invalidate persistent
+	indexes. See this blogpost for details: last code block at the bottom
+	http://der-dakon.net/blog/KDE/persistent-crash.html (This fixes the
+	crashes I was having with the "Reset List" button.
+
 2008-05-28  Geoffrey Hutchison  <babel@geoffhutchison.net>
 
 	* libavogadro/src/glwidget.*: Add method to clear unit cell data.
