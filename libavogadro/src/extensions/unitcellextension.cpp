@@ -163,19 +163,31 @@ namespace Avogadro {
         const SpaceGroup *sg = uc->GetSpaceGroup(); // the actual space group and transformations for this unit cell
         
         // For each atom, we loop through: convert the coords back to inverse space, apply the transformations and create new atoms
-        // TODO: (we should also create a list of bonds to copy)
-        vector3 v;
+        vector3 uniqueV, newV;
         list<vector3> transformedVectors; // list of symmetry-defined copies of the atom
         list<vector3>::iterator transformIterator;
         OBAtom *newAtom;
-        FOR_ATOMS_OF_MOL(atom, m_Molecule) {
-          v = atom->GetVector();
+        QList<const OBAtom*> atoms; // keep the current list of unique atoms -- don't double-create
+        FOR_ATOMS_OF_MOL(atom, m_Molecule)
+          atoms.push_back(&(*atom));
+
+        foreach(const OBAtom *atom, atoms) {
+          uniqueV = atom->GetVector();
           if (uc != NULL)
-            v *= uc->GetFractionalMatrix();
+            uniqueV *= uc->GetFractionalMatrix();
             
-          transformedVectors = sg->Transform(v);
+          transformedVectors = sg->Transform(uniqueV);
           for (transformIterator = transformedVectors.begin();
                transformIterator != transformedVectors.end(); ++transformIterator) {
+            // coordinates are in reciprocal space -- check if it's in the unit cell
+            // TODO: transform these into the unit cell and check for duplicates
+            if (transformIterator->x() < 0.0 || transformIterator->x() > 1.0)
+              continue;
+            else if (transformIterator->y() < 0.0 || transformIterator->y() > 1.0)
+              continue;
+            else if (transformIterator->z() < 0.0 || transformIterator->z() > 1.0)
+              continue;
+                 
             newAtom = m_Molecule->NewAtom();
             // it would help to have a decent "duplicate atom" method here
             newAtom->SetAtomicNum(atom->GetAtomicNum());
@@ -183,7 +195,8 @@ namespace Avogadro {
           } // end loop of transformed atoms
         } // end loop of atoms
         
-        // TODO: create some new bonds here
+        // m_Molecule->ConnectTheDots();
+        // m_Molecule->PerceiveBondOrders(); // optional
         
       } // end (if unit cell)
   }
