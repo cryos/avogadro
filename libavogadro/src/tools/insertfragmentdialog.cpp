@@ -136,8 +136,11 @@ namespace Avogadro {
         QString file = d->model->filePath(selected.first());
         if (!file.isEmpty()) {
           std::string fileName(file.toAscii());
-          OBFormat *inFormat = d->conv.FormatFromExt(fileName.c_str());
-          if (!inFormat || !d->conv.SetInFormat(inFormat)) {
+          //OBFormat *inFormat = d->conv.FormatFromExt(fileName.c_str());
+          //if (!inFormat || !d->conv.SetInFormat(inFormat)) {
+          OBConversion conv;
+          OBFormat *inFormat = conv.FormatFromExt(fileName.c_str());
+          if (!inFormat || !conv.SetInFormat(inFormat)) {
             QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
                                   tr( "Cannot read file format of file %1." )
                                   .arg( QString(fileName.c_str()) ) );
@@ -152,8 +155,10 @@ namespace Avogadro {
             return &d->fragment;
           }
 
-          d->conv.Read(&d->fragment, &ifs);
+          //d->conv.Read(&d->fragment, &ifs);
+          conv.Read(&d->fragment, &ifs);
           d->fragment.Center();
+          ifs.close();
         }
       }
     }

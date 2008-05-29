@@ -1,5 +1,11 @@
 2008-05-28  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
+	* libavogadro/src/tools/insertfragmentdialog.cpp: workaround for bug
+	#1977172. Create a new OBConversion object each time you insert a
+	fragment from the library.
+
+2008-05-28  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
 	* libavogadro/src/tools/directorytreemodel.*: Invalidate persistent
 	indexes. See this blogpost for details: last code block at the bottom
 	http://der-dakon.net/blog/KDE/persistent-crash.html (This fixes the
