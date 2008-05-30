@@ -1933,11 +1933,11 @@ namespace Avogadro
     if (!d->currentSelectedEngine)
       return;
 
-		QWidget *settingsWindow = new QWidget();
+    QWidget *settingsWindow = new QWidget();
     settingsWindow->setWindowTitle(d->currentSelectedEngine->name() + ' ' + tr("Settings"));
-		QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout;
 
-		// now set up the tabs: Currently settings and objects (primitives)
+    // now set up the tabs: Currently settings and objects (primitives)
     QTabWidget *settingsTabs = new QTabWidget(settingsWindow);
     settingsTabs->addTab(d->currentSelectedEngine->settingsWidget(), tr("Settings"));
     
@@ -1946,8 +1946,8 @@ namespace Avogadro
     primitivesWidget->setEngine(d->currentSelectedEngine);
     settingsTabs->addTab(primitivesWidget, tr("Objects"));
 
-		layout->addWidget(settingsTabs);
-		settingsWindow->setLayout(layout);
+    layout->addWidget(settingsTabs);
+    settingsWindow->setLayout(layout);
     settingsWindow->show();
   }
 
@@ -2007,6 +2007,7 @@ namespace Avogadro
 
         if(engine) {
           d->glWidget->removeEngine(engine);
+		  emit enableEngineSettingsButton(false);
         }
         break;
       }

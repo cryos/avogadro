@@ -1,5 +1,11 @@
 2008-05-30  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
+	* avogadro/src/mainwindow.cpp: emit enableEngineSettingsButton(false)
+	when you delete an engine. Otherwise when you pressed "Settings...",
+	it would segfault.
+
+2008-05-30  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
 	* libavogadro/src/glwidget.cpp, libavogadro/src/toolgroup.cpp,
 	avogadro/src/mainwindow.cpp: In windows, use
 	QCoreApplication::applicationDirPath() to find the plugins. 
