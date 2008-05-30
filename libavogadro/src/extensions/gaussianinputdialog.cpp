@@ -66,6 +66,8 @@ namespace Avogadro
         this, SLOT(generateClicked()));
     connect(ui.resetButton, SIGNAL(clicked()),
         this, SLOT(resetClicked()));
+    connect(ui.moreButton, SIGNAL(clicked()),
+        this, SLOT(moreClicked()));
     connect(ui.enableFormButton, SIGNAL(clicked()),
         this, SLOT(enableFormClicked()));
 
@@ -153,6 +155,19 @@ namespace Avogadro
 
     QTextStream out(&file);
     out << ui.previewText->toPlainText();
+  }
+
+  void GaussianInputDialog::moreClicked()
+  {
+    // If the more button is clicked hide/show the preview text
+    if (ui.previewText->isVisible()) {
+      ui.previewText->hide();
+      ui.moreButton->setText(tr("Show Preview"));
+    }
+    else {
+      ui.previewText->show();
+      ui.moreButton->setText(tr("Hide Preview"));
+    }
   }
 
   void GaussianInputDialog::enableFormClicked()

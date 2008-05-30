@@ -81,6 +81,7 @@ namespace Avogadro
       void resetClicked();
       void generateClicked();
       void enableFormClicked();
+      void moreClicked();
       void previewEdited();
 
       void setTitle();
