@@ -33,6 +33,8 @@
 #include <QDir>
 
 #include <QDebug>
+#include <QCoreApplication>
+#include <QMessageBox>
 
 using namespace std;
 namespace Avogadro {
@@ -71,7 +73,7 @@ namespace Avogadro {
     pluginPaths << prefixPath;
 
 #ifdef WIN32
-	pluginPaths << "./tools";
+	pluginPaths << QCoreApplication::applicationDirPath() + "/tools";
 #endif
 
     // Krazy: Use QProcess:

@@ -1,5 +1,12 @@
 2008-05-30  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
+	* libavogadro/src/glwidget.cpp, libavogadro/src/toolgroup.cpp,
+	avogadro/src/mainwindow.cpp: In windows, use
+	QCoreApplication::applicationDirPath() to find the plugins. 
+	(fixes #1977338)
+
+2008-05-30  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
 	* libavogadro/src/extensions/constraintsdialog.ui: Disable unimplemented
 	Save/Load buttons.
 

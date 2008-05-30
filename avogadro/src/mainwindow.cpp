@@ -1665,7 +1665,7 @@ namespace Avogadro
     pluginPaths << prefixPath;
 
 #ifdef WIN32
-    pluginPaths << "./extensions";
+	pluginPaths << QCoreApplication::applicationDirPath() + "/extensions";
 #endif
 
     // Krazy: Use QProcess:
