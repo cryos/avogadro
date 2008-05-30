@@ -46,12 +46,7 @@ namespace Avogadro
   PropertiesExtension::PropertiesExtension( QObject *parent ) : Extension( parent )
   {
     QAction *action;
-    m_atomModel = new PropertiesModel(PropertiesModel::AtomType);
-    m_bondModel = new PropertiesModel(PropertiesModel::BondType);
-    m_angleModel = new PropertiesModel(PropertiesModel::AngleType);
-    m_torsionModel = new PropertiesModel(PropertiesModel::TorsionType);
-    m_cartesianModel = new PropertiesModel(PropertiesModel::CartesianType);
-    
+
     action = new QAction( this );
     action->setSeparator(true);
     action->setData(-1);
@@ -126,80 +121,97 @@ namespace Avogadro
 
   QUndoCommand* PropertiesExtension::performAction( QAction *action, GLWidget *widget)
   {
-    QUndoCommand *undo = NULL;
-    PropertiesView *view = NULL;
-    ostringstream buff;
+    QUndoCommand *undo = 0;
+    PropertiesModel *model;
+    PropertiesView  *view;
 
     int i = action->data().toInt();
     switch ( i ) {
-    case AtomPropIndex: // atom properties
+    case AtomPropIndex: // atom properties     
+      // model will be deleted in PropertiesView::hideEvent using deleteLater().
+      model = new PropertiesModel(PropertiesModel::AtomType);
+      model->setMolecule( m_molecule );
+      // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::AtomType);
-      m_atomModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_atomModel, SLOT( updateTable() ));
-      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), m_atomModel, SLOT( primitiveAdded(Primitive *) ));
-      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_atomModel, SLOT( primitiveRemoved(Primitive *) ));
+      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
+      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
+      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
       view->setMolecule( m_molecule );
       view->setWidget( widget );
-      view->setModel( m_atomModel );
+      view->setModel( model );
       view->resize(860, 400);
       view->show();
       break;
     case BondPropIndex: // bond properties
+      // model will be deleted in PropertiesView::hideEvent using deleteLater().
+      model = new PropertiesModel(PropertiesModel::BondType);
+      model->setMolecule( m_molecule );
+      // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::BondType);
-      m_bondModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_bondModel, SLOT( updateTable() ));
-      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), m_bondModel, SLOT( primitiveAdded(Primitive *) ));
-      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_bondModel, SLOT( primitiveRemoved(Primitive *) ));
+      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
+      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
+      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
       view->setMolecule( m_molecule );
       view->setWidget( widget );
-      view->setModel( m_bondModel );
+      view->setModel( model );
       view->resize(550, 400);
       view->show();
       break;
     case AnglePropIndex: // angle properties
+      // model will be deleted in PropertiesView::hideEvent using deleteLater().
+      model = new PropertiesModel(PropertiesModel::AngleType);
+      model->setMolecule( m_molecule );
+      // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::AngleType);
-      m_angleModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_angleModel, SLOT( updateTable() ));
-      //connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), m_angleModel, SLOT( primitiveAdded(Primitive *) ));
-      //connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_angleModel, SLOT( primitiveRemoved(Primitive *) ));
+      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
+      //connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
+      //connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
       view->setMolecule( m_molecule );
       view->setWidget( widget );
-      view->setModel( m_angleModel );
+      view->setModel( model );
       view->resize(550, 400);
       view->show();
       break;
     case TorsionPropIndex: // torsion properties
+      // model will be deleted in PropertiesView::hideEvent using deleteLater().
+      model = new PropertiesModel(PropertiesModel::TorsionType);
+      model->setMolecule( m_molecule );
+      // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::TorsionType);
-      m_torsionModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_torsionModel, SLOT( updateTable() ));
-      //connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), m_torsionModel, SLOT( primitiveAdded(Primitive *) ));
-      //connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_torsionModel, SLOT( primitiveRemoved(Primitive *) ));
+      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
+      //connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
+      //connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
       view->setMolecule( m_molecule );
       view->setWidget( widget );
-      view->setModel( m_torsionModel );
+      view->setModel( model );
       view->resize(550, 400);
       view->show();
       break;
     case CartesianIndex: // cartesian editor
+      // m_angleModel will be deleted in PropertiesView::hideEvent using deleteLater().
+      model = new PropertiesModel(PropertiesModel::CartesianType);
+      model->setMolecule( m_molecule );
+      // m_view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::CartesianType);
-      m_cartesianModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_cartesianModel, SLOT( updateTable() ));
-      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), m_cartesianModel, SLOT( primitiveAdded(Primitive *) ));
-      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), m_cartesianModel, SLOT( primitiveRemoved(Primitive *) ));
+      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
+      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
+      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
       view->setMolecule( m_molecule );
       view->setWidget( widget );
-      view->setModel( m_cartesianModel );
+      view->setModel( model );
       view->resize(360, 400);
       view->show();
       break;
     case ConformerIndex: // conformers
+      // model will be deleted in PropertiesView::hideEvent using deleteLater().
+      model = new PropertiesModel(PropertiesModel::ConformerType);
+      model->setMolecule( m_molecule );
+      // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::ConformerType);
-      m_conformerModel = new PropertiesModel(PropertiesModel::ConformerType);
-      m_conformerModel->setMolecule( m_molecule );
-      connect(m_molecule, SIGNAL( updated() ), m_conformerModel, SLOT( updateTable() ));
+      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
       view->setMolecule( m_molecule );
       view->setWidget( widget );
-      view->setModel( m_conformerModel );
+      view->setModel( model );
       view->resize(180, 500);
       view->sortByColumn(0, Qt::AscendingOrder);
       view->show();
@@ -257,7 +269,7 @@ namespace Avogadro
         return;
     
       if (m_type == AtomType) {
-        if (index.row() >= m_molecule->NumAtoms())
+        if ((unsigned int) index.row() >= m_molecule->NumAtoms())
           return;
     
         matchedPrimitives.append(static_cast<Atom*>(m_molecule->GetAtom(index.row()+1)));
@@ -265,7 +277,7 @@ namespace Avogadro
         m_widget->setSelected(matchedPrimitives, true);
         m_widget->update();
       } else if (m_type == BondType) {
-        if(index.row() >= m_molecule->NumBonds())
+        if((unsigned int) index.row() >= m_molecule->NumBonds())
           return;
         
         matchedPrimitives.append(static_cast<Bond*>(m_molecule->GetBond(index.row())));
@@ -297,6 +309,12 @@ namespace Avogadro
   {
     if (m_widget)
       m_widget->clearSelected();
+    
+    QAbstractItemModel *m_model = model();
+    if (m_model)
+      m_model->deleteLater();
+
+    this->deleteLater();
   }
   
 } // end namespace Avogadro

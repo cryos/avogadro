@@ -78,9 +78,9 @@ namespace Avogadro {
       OpenBabel::OBForceField* m_forceField;
       ConstraintsModel* m_constraints;
       QList<QAction *> m_actions;
-      ForceFieldDialog *m_Dialog;
+      ForceFieldDialog *m_dialog;
       ConformerSearchDialog *m_conformerDialog;
-      ConstraintsDialog *m_ConstraintsDialog;
+      ConstraintsDialog *m_constraintsDialog;
 
       std::vector<std::string> m_forcefieldList;
       Molecule *m_molecule;

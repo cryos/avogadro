@@ -55,12 +55,10 @@ namespace Avogadro
     QAction *action;
     // If you change this, see forcefielddialog.cpp, where we need to set the popup menu
     m_forceField = OBForceField::FindForceField( "MMFF94" );
-    m_Dialog = new ForceFieldDialog;
-    m_conformerDialog = new ConformerSearchDialog;
-    m_ConstraintsDialog = new ConstraintsDialog;
-    m_constraints = new ConstraintsModel;
-
-    m_ConstraintsDialog->setModel(m_constraints);
+    m_dialog = 0;
+    m_conformerDialog = 0;
+    m_constraintsDialog = 0;
+    m_constraints = 0;
 
     if ( m_forceField ) { // make sure we can actually find and run it!
 
@@ -68,7 +66,6 @@ namespace Avogadro
       action->setText( tr("Optimize Geometry" ));
       action->setData(OptimizeGeometryIndex);
       m_actions.append( action );
-
 
       action = new QAction( this );
       action->setText( tr("Setup Force Field..." ));
@@ -118,7 +115,24 @@ namespace Avogadro
   }
 
   ForceFieldExtension::~ForceFieldExtension()
-  {}
+  {
+    if (m_dialog) {
+      delete m_dialog;
+      m_dialog = 0;
+    }
+    if (m_conformerDialog) {
+      delete m_conformerDialog;
+      m_conformerDialog = 0;
+    }
+    if (m_constraintsDialog) {
+      delete m_constraintsDialog;
+      m_constraintsDialog = 0;
+    }
+    if (m_constraints) {
+      delete m_constraints;
+      m_constraints = 0;
+    }
+  }
 
   QList<QAction *> ForceFieldExtension::actions() const
   {
@@ -143,11 +157,15 @@ namespace Avogadro
   QUndoCommand* ForceFieldExtension::performAction( QAction *action, GLWidget *widget)
   {
     ForceFieldCommand *undo = NULL;
-    OpenBabel::OBForceField *copyForceField = NULL;
     QList<Primitive*> selectedAtoms;
     ostringstream buff;
 
-    m_forceField = OBForceField::FindForceField(m_forcefieldList[m_Dialog->forceFieldID()]);
+    if (!m_dialog)
+      m_dialog = new ForceFieldDialog;
+    if (!m_constraints)
+      m_constraints = new ConstraintsModel;
+
+    m_forceField = OBForceField::FindForceField(m_forcefieldList[m_dialog->forceFieldID()]);
     m_forceField->SetLogFile( &buff );
 
     int i = action->data().toInt();
@@ -155,7 +173,7 @@ namespace Avogadro
     QString msg;
     switch ( i ) {
     case SetupForceFieldIndex: // setup force field
-      m_Dialog->show();
+      m_dialog->show();
       break;
     case CalculateEnergyIndex: // calculate energy
       if ( !m_forceField )
@@ -188,8 +206,11 @@ namespace Avogadro
         break;
       }
 
+      if (!m_conformerDialog)
+        m_conformerDialog = new ConformerSearchDialog;
+
       m_conformerDialog->setup(m_molecule, m_forceField, m_constraints, 
-                               0, m_Dialog->nSteps(), m_Dialog->algorithm(), m_Dialog->convergence());
+                               0, m_dialog->nSteps(), m_dialog->algorithm(), m_dialog->convergence());
       m_conformerDialog->show();
       break;
     case OptimizeGeometryIndex: // geometry optimization
@@ -205,16 +226,21 @@ namespace Avogadro
       }
       
       undo = new ForceFieldCommand( m_molecule, m_forceField, m_constraints, 
-                                    0, m_Dialog->nSteps(), m_Dialog->algorithm(), 
-                                    m_Dialog->convergence(), 0 );
+                                    0, m_dialog->nSteps(), m_dialog->algorithm(), 
+                                    m_dialog->convergence(), 0 );
 
       connect(undo, SIGNAL(message(QString)), this, SIGNAL(message(QString)));
 
       undo->setText( QObject::tr( "Geometric Optimization" ) );
       break;
     case ConstraintsIndex: // show constraints dialog
-      m_ConstraintsDialog->setMolecule(m_molecule);
-      m_ConstraintsDialog->show();
+      if (!m_constraintsDialog) {
+        m_constraintsDialog = new ConstraintsDialog;
+        m_constraintsDialog->setModel(m_constraints);
+      }
+
+      m_constraintsDialog->setMolecule(m_molecule);
+      m_constraintsDialog->show();
       break;
     case IgnoreAtomsIndex: // ignore the selected atoms
       selectedAtoms = widget->selectedPrimitives().subList(Primitive::AtomType);

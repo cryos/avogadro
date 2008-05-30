@@ -364,9 +364,9 @@ namespace Avogadro
         return QAbstractItemModel::flags(index);
       }
     } else if (m_type == AngleType) {
-      return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
+      return QAbstractItemModel::flags(index);
     } else if (m_type == TorsionType) {
-      return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
+      return QAbstractItemModel::flags(index);
     } else if (m_type == CartesianType) {
       return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
     } else if (m_type == ConformerType) {

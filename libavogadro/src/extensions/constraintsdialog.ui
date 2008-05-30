@@ -136,6 +136,9 @@
        <layout class="QHBoxLayout" >
         <item>
          <widget class="QPushButton" name="ConstraintsSave" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
           <property name="text" >
            <string>Save</string>
           </property>
@@ -143,6 +146,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="ConstraintsLoad" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
           <property name="text" >
            <string>Load</string>
           </property>

@@ -1,3 +1,25 @@
+2008-05-30  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/extensions/constraintsdialog.ui: Disable unimplemented
+	Save/Load buttons.
+
+	* libavogadro/src/extensions/forcefieldextension.*: Only create new
+	dialogs when needed. (in performAction, not in constructor)
+
+	* libavogadro/src/extensions/constraintsdialog.cpp: Small GUI changes
+	(min/max values, singleStep, ...)
+
+	* libavogadro/src/extensions/propmodel.cpp: Angle and Torsion
+	properties are not editable, don't set writable flag.
+
+	* libavogadro/src/extensions/propextension.*: Only create dialogs
+	(views) and models when needed. Call QObject::deleteLater() on both
+	the model and the view in PropertiesView::hideEvent().
+
+	* libavogadro/src/tools/autoopttool.*: Exit, wait, and delete the
+	thread in the destructor. Display the energy while running. Added
+	conjugate gradients again.
+
 2008-05-28  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/tools/insertfragmentdialog.cpp: workaround for bug

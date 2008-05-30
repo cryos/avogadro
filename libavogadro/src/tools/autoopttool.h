@@ -166,6 +166,7 @@ namespace Avogadro {
       QCheckBox*                m_ignoredMovable;
 
       QPoint                    m_lastDraggingPosition;
+      double                    m_lastEnergy;
 
       void timerEvent(QTimerEvent* event);
 
