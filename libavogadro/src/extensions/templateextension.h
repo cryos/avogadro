@@ -22,9 +22,9 @@
 #ifndef TEMPLATEEXTENSION_H
 #define TEMPLATEEXTENSION_H
 
+#include <avogadro/extension.h>
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
-#include <avogadro/molecule.h>
 
 namespace Avogadro {
 
@@ -47,7 +47,7 @@ namespace Avogadro {
       virtual QDockWidget * dockWidget();
       virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
 
-      virtual setMolecule(Molecule *molecule);
+      virtual void setMolecule(Molecule *molecule);
 
     private:
       QList<QAction *> m_actions;
@@ -60,7 +60,7 @@ namespace Avogadro {
   class TemplateExtensionFactory : public QObject, public ExtensionFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::ExtensionFactory);
+    Q_INTERFACES(Avogadro::ExtensionFactory)
 
     public:
       Extension *createInstance(QObject *parent = 0) { return new TemplateExtension(parent); }

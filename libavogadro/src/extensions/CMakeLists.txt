@@ -21,6 +21,13 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
 set(LINK_LIBS "avogadro-lib")
 
+### Template extension - template for extensions
+#set(templateextension_SRCS templateextension.cpp)
+#qt4_automoc(${templateextension_SRCS})
+#add_library(templateextension MODULE ${templateextension_SRCS})
+#target_link_libraries(h2methylextension ${LINK_LIBS})
+#install(TARGETS templateextension DESTINATION ${DESTINATION_DIR})
+
 ### gamess
 set(gamessextension_SRCS gamessextension.cpp
   gamessinputdialog.cpp

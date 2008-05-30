@@ -1,3 +1,10 @@
+2008-05-30  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/CMakeLists.txt,
+	libavogadro/src/extensions/templateextension.*: Fixed up the template
+	extension so that it would actually compile, added an example minimal
+	entry in the CMake file too (commented out).
+
 2008-05-30  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/mainwindow.cpp: emit enableEngineSettingsButton(false)
