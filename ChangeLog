@@ -1,3 +1,8 @@
+2008-06-02  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/orbitalengine.cpp: Fixed bug 1968565 -
+	orbitals are now cleared correctly along with everything else.
+
 2008-05-30  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/gaussianinputdialog.*: Implemented
