@@ -1,3 +1,9 @@
+2008-06-02  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/engines/dipoleengine.*: New dipole moment engine
+	-- needs more work, but displays dipole moments from Gaussian,
+	GAMESS and Q-Chem output  with recent OB-trunk.
+
 2008-06-02  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engines/orbitalengine.cpp: Fixed bug 1968565 -
