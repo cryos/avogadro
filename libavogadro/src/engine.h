@@ -358,7 +358,7 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 Q_DECLARE_METATYPE(Avogadro::Engine*)
-Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro.enginefactory/1.0")
+Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro.enginefactory/1.1")
 Q_DECLARE_OPERATORS_FOR_FLAGS(Avogadro::Engine::EngineFlags)
 
 #endif

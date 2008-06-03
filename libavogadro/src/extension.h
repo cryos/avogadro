@@ -135,6 +135,6 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 // Q_DECLARE_INTERFACE(Avogadro::Extension, "net.sourceforge.avogadro.extension/1.0")
-Q_DECLARE_INTERFACE(Avogadro::ExtensionFactory, "net.sourceforge.avogadro.extensionfactory/1.0")
+Q_DECLARE_INTERFACE(Avogadro::ExtensionFactory, "net.sourceforge.avogadro.extensionfactory/1.1")
 
 #endif
