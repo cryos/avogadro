@@ -59,7 +59,7 @@ namespace Avogadro{
     QList<Primitive *> list;
     list = primitives().subList(Primitive::AtomType);
     foreach(Primitive *p, list)
-      renderPolygon(pd, static_cast<const Atom *>(p));
+      renderPolygon(pd, static_cast<Atom *>(p));
 
     return true;
   }

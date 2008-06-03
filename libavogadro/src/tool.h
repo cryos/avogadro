@@ -180,6 +180,6 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 Q_DECLARE_METATYPE(Avogadro::Tool*)
-Q_DECLARE_INTERFACE(Avogadro::ToolFactory, "net.sourceforge.avogadro.toolfactory/1.0")
+Q_DECLARE_INTERFACE(Avogadro::ToolFactory, "net.sourceforge.avogadro.toolfactory/1.1")
 
 #endif

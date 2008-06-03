@@ -20,6 +20,7 @@
  ***********************************************************************/
 
 #include "pythonextension.h"
+#include "../config.h"
 
 #include <QDockWidget>
 #include <QCompleter>
@@ -118,6 +119,11 @@ namespace Avogadro
 
     loadScripts(pluginDir);
 
+    // Now for the system wide Python scripts
+    QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
+      + "share/libavogadro/scripts";
+    pluginDir.cd(systemScriptsPath);
+    loadScripts(pluginDir);
   }
 
   void PythonExtension::loadScripts(QDir dir)

@@ -59,13 +59,21 @@ namespace Avogadro
   // ****************************************************************************
 
   // Z-Translation, original value was 48.0
+  #ifdef WIN32
+  const float IsoGen::fTargetValue = 0.0f;
+  #else
   const float IsoGen::fTargetValue __attribute__((aligned(16))) = 0.0f;
-
+  #endif
+ 
   // These tables are used so that everything can be done in little loops that
   // you can look at all at once rather than in pages and pages of unrolled code
   // a2fVertexOffset lists the positions, relative to vertex0, of each of the
   // eight vertices of a cube
+  #ifdef WIN32
+  const float IsoGen::a2fVertexOffset[8][3] =
+  #else
   const float IsoGen::a2fVertexOffset[8][3] __attribute__ ((aligned(16))) =
+  #endif
   {
     {0.0f, 0.0f, 0.0f},
     {1.0f, 0.0f, 0.0f},
@@ -77,7 +85,11 @@ namespace Avogadro
     {0.0f, 1.0f, 1.0f}
   };
 
+  #ifdef WIN32
+  const int IsoGen::a2iVertexOffset[8][3] =
+  #else
   const int IsoGen::a2iVertexOffset[8][3] __attribute__ ((aligned(16))) =
+  #endif
   {
     {0, 0, 0},
     {1, 0, 0},
@@ -91,7 +103,11 @@ namespace Avogadro
 
   // a2iEdgeConnection lists the index of the endpoint vertices for each of the
   // twelve edges of the cube
+  #ifdef WIN32
+  const long IsoGen::a2iEdgeConnection[12][2] =
+  #else
   const long IsoGen::a2iEdgeConnection[12][2] __attribute__((aligned(16))) =
+  #endif
   {
     {0,1},
     {1,2},
@@ -109,7 +125,11 @@ namespace Avogadro
 
   // a2fEdgeDirection lists the direction vector (vertex1-vertex0) for each edge
   // in the cube
+  #ifdef WIN32
+  const float IsoGen::a2fEdgeDirection[12][3] =
+  #else
   const float IsoGen::a2fEdgeDirection[12][3] __attribute__((aligned(16))) =
+  #endif
   {
     { 1.0f, 0.0f, 0.0f},
     { 0.0f, 1.0f, 0.0f},
@@ -127,8 +147,11 @@ namespace Avogadro
 
   // a2iTetrahedronEdgeConnection lists the index of the endpoint vertices for
   // each of the six edges of the tetrahedron
-  const long IsoGen::a2iTetrahedronEdgeConnection[6][2]
-    __attribute__((aligned(16))) =
+  #ifdef WIN32
+  const long IsoGen::a2iTetrahedronEdgeConnection[6][2] =
+  #else
+  const long IsoGen::a2iTetrahedronEdgeConnection[6][2] __attribute__((aligned(16))) =
+  #endif
   {
     {0,1},
     {1,2},
@@ -140,7 +163,11 @@ namespace Avogadro
 
   // a2iTetrahedronEdgeConnection lists the index of vertices from a cube that
   // made up each of the six tetrahedrons within the cube
+  #ifdef WIN32
+  const long IsoGen::a2iTetrahedronsInACube[6][4] =
+  #else
   const long IsoGen::a2iTetrahedronsInACube[6][4] __attribute__((aligned(16))) =
+  #endif
   {
     {0,5,1,6},
     {0,1,2,6},
@@ -158,7 +185,11 @@ namespace Avogadro
   // This table lists the edges intersected by the surface for all 16 possible vertex states
   // There are 6 edges.  For each entry in the table, if edge #n is intersected,
       // then bit #n is set to 1
+  #ifdef WIN32
+  const long IsoGen::aiTetrahedronEdgeFlags[16] =
+  #else
   const long IsoGen::aiTetrahedronEdgeFlags[16] __attribute__((aligned(16))) =
+  #endif
   {
     0x00, 0x0d, 0x13, 0x1e, 0x26, 0x2b, 0x35, 0x38, 0x38, 0x35, 0x2b, 0x26, 0x1e, 0x13, 0x0d, 0x00,
   };
@@ -167,7 +198,11 @@ namespace Avogadro
   // specific triangulation of the edge intersection points.
   // a2iTetrahedronTriangles lists all of them in the form of
   // 0-2 edge triples with the list terminated by the invalid value -1
+  #ifdef WIN32
+  const long IsoGen::a2iTetrahedronTriangles[16][7] =
+  #else
   const long IsoGen::a2iTetrahedronTriangles[16][7] __attribute__((aligned(16))) =
+  #endif
   {
     {-1, -1, -1, -1, -1, -1, -1},
     {0, 3, 2, -1, -1, -1, -1},
@@ -196,7 +231,11 @@ namespace Avogadro
   // For any cube the are 2^8=256 possible sets of vertex states
   // This table lists the edges intersected by the surface for all 256 possible vertex states
   // There are 12 edges.  For each entry in the table, if edge #n is intersected, then bit #n is set to 1
+  #ifdef WIN32
+  const long IsoGen::aiCubeEdgeFlags[256] =
+  #else
   const long IsoGen::aiCubeEdgeFlags[256] __attribute__((aligned(16))) =
+  #endif
   {
     0x000, 0x109, 0x203, 0x30a, 0x406, 0x50f, 0x605, 0x70c, 0x80c, 0x905, 0xa0f, 0xb06, 0xc0a, 0xd03, 0xe09, 0xf00,
     0x190, 0x099, 0x393, 0x29a, 0x596, 0x49f, 0x795, 0x69c, 0x99c, 0x895, 0xb9f, 0xa96, 0xd9a, 0xc93, 0xf99, 0xe90,
@@ -222,8 +261,11 @@ namespace Avogadro
   //
   // For example: a2iTriangleConnectionTable[3] list the 2 triangles formed when corner[0]
   // and corner[1] are inside of the surface, but the rest of the cube is not
-  const long IsoGen::a2iTriangleConnectionTable[256][16]
-    __attribute__((aligned(16))) =
+  #ifdef WIN32
+  const long IsoGen::a2iTriangleConnectionTable[256][16] =
+  #else
+  const long IsoGen::a2iTriangleConnectionTable[256][16] __attribute__((aligned(16))) =
+  #endif
   {
     {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
     {0, 8, 3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
@@ -623,10 +665,18 @@ namespace Avogadro
   void IsoGen::vMarchCube1(const float fX, const float fY, const float fZ)
   {
     long iTriangle, iEdge, iEdgeFlags, iFlagIndex=0;
+    
+    #ifdef WIN32
+    Vector3f asEdgeVertex[12];
+    Vector3f asEdgeNorm[12];
+    float fOffset;
+    float afCubeValue[8];
+    #else
     Vector3f asEdgeVertex[12] __attribute__((aligned(16)));
     Vector3f asEdgeNorm[12] __attribute__((aligned(16)));
     float fOffset __attribute__((aligned(16)));
     float afCubeValue[8] __attribute__((aligned(16)));
+    #endif
 
     // Check we have a valid grid
     if (m_grid->grid() == 0)
@@ -736,10 +786,18 @@ namespace Avogadro
   void IsoGen::vMarchCube1(int i, int j, int k)
   {
     long iTriangle, iEdge, iEdgeFlags, iFlagIndex=0;
+
+    #ifdef WIN32
+    Vector3f asEdgeVertex[12];
+    Vector3f asEdgeNorm[12];
+    float fOffset;
+    float afCubeValue[8];
+    #else
     Vector3f asEdgeVertex[12] __attribute__((aligned(16)));
     Vector3f asEdgeNorm[12] __attribute__((aligned(16)));
     float fOffset __attribute__((aligned(16)));
     float afCubeValue[8] __attribute__((aligned(16)));
+    #endif
 
     // Work out the cube edge location
     float fX = i * m_stepSize + m_min.x();

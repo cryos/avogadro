@@ -205,7 +205,7 @@ namespace Avogadro {
       }
       else {
         FOR_ATOMS_OF_MOL(atom, m_molecule)
-          neighborList.append(static_cast<const Atom *>(&(*atom)));
+          neighborList.append(static_cast<Atom *>(&*atom));
       }
     }
     // Align the molecule along the selected axis

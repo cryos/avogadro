@@ -234,6 +234,7 @@ namespace Avogadro {
       virtual void clearPrimitives();
 
       /** Get the radius of the primitive referred to.
+       * @param pd is the painter device used for rendering (e.g., if a primitive is selected)
        * @param primitive is the Primitive to get the radius of.
        * @return the radius of the Primitive.
        */
@@ -357,7 +358,7 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 Q_DECLARE_METATYPE(Avogadro::Engine*)
-Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro.enginefactory/1.0")
+Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro.enginefactory/1.1")
 Q_DECLARE_OPERATORS_FOR_FLAGS(Avogadro::Engine::EngineFlags)
 
 #endif

@@ -67,11 +67,20 @@ namespace Avogadro
     public slots:
       void accept();
       void reject();
+      void valueChanged(int value);
+      void valueChanged(double value);
+      
+      void buttonClicked(QAbstractButton *button);
+      void deleteCellClicked();
+      void fillCellClicked();
 
     signals:
       void unitCellDisplayChanged(int a, int b, int c);
       void unitCellParametersChanged(double a, double b, double c,
                                      double alpha, double beta, double gamma);
+
+      void deleteUnitCell();
+      void fillUnitCell();
 
     private:
       Ui::UnitCellParamDialog ui;

@@ -39,12 +39,10 @@
 #include <QDebug>
 
 namespace OpenBabel{
-  extern OBElementTable etab;
+  OBElementTable etab;
 }
 
 namespace Avogadro {
-
-  extern ElementTranslator elementTranslator;
 
   ElementItem::ElementItem(int elementNumber) : m_width(26), m_height(26)
   {

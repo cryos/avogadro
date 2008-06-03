@@ -67,11 +67,12 @@ namespace Avogadro {
   void NavigateTool::computeReferencePoint(GLWidget *widget)
   {
     // Remember to account for the situation where no molecule is loaded or it is empty
-    if(!widget->molecule() || !widget->molecule()->NumAtoms())
+    if(!widget->molecule())
       m_referencePoint = Vector3d(0., 0., 0.);
-    else if(m_clickedAtom) {
+    else if(!widget->molecule()->NumAtoms())
+      m_referencePoint = Vector3d(0., 0., 0.);
+    else if(m_clickedAtom)
       m_referencePoint = m_clickedAtom->pos();
-    }
     else {
       // let's set m_referencePoint to be the center of the visible
       // part of the molecule.
@@ -125,7 +126,12 @@ namespace Avogadro {
     {
       m_rightButtonPressed = true;
       // Set the cursor - this needs to be reset to Qt::ArrowCursor after
-      widget->setCursor(Qt::SizeAllCursor);
+      // Currently, there's a Qt/Mac bug -- SizeAllCursor looks like a spreadsheet cursor
+#ifdef Q_WS_MAC
+          widget->setCursor(Qt::CrossCursor);
+#else 
+          widget->setCursor(Qt::SizeAllCursor);
+#endif
     }
 
     m_clickedAtom = widget->computeClickedAtom(event->pos());

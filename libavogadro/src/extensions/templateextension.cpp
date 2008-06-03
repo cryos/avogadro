@@ -21,6 +21,8 @@
 
 #include "templateextension.h"
 
+#include <QAction>
+
 using namespace std;
 using namespace OpenBabel;
 
@@ -30,7 +32,7 @@ namespace Avogadro
   // this is a trick to identify what action we are taking
   enum TemplateExtensionIndex {
     FirstAction = 0,
-    SecondAction,
+    SecondAction
   };
 
   TemplateExtension::TemplateExtension( QObject *parent ) : Extension( parent )  
@@ -59,7 +61,7 @@ namespace Avogadro
   }
 
   // allows us to set the intended menu path for each action
-  QString TemplateExtension::menuPath(QAction *) const
+  QString TemplateExtension::menuPath(QAction *action) const
   {
     int i = action->data().toInt();
 
@@ -71,11 +73,13 @@ namespace Avogadro
         return tr("&Edit") + '>' + tr("&Template");
         break;
     }
+    return "";
   }
 
   QDockWidget * TemplateExtension::dockWidget()
   {
     // if we need a dock widget we can set one here
+    return 0;
   }
 
   void TemplateExtension::setMolecule(Molecule *molecule)
@@ -83,7 +87,7 @@ namespace Avogadro
     m_molecule = molecule;
   }
 
-  QUndoCommand* TemplateExtension::performAction( QAction *action, GLWidget *widget )
+  QUndoCommand* TemplateExtension::performAction(QAction *action, GLWidget *)
   {
 
     int i = action->data().toInt();
@@ -104,4 +108,4 @@ namespace Avogadro
 
 #include "templateextension.moc"
 
-Q_EXPORT_PLUGIN2( templateextension, Avogadro::TemplateExtensionFactory );
+Q_EXPORT_PLUGIN2(templateextension, Avogadro::TemplateExtensionFactory)

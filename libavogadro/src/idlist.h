@@ -37,7 +37,7 @@ namespace Avogadro
 
   /**
    * @class IDList
-   * @brief Class which set of Primitives
+   * @brief List mapping primitives and unique ids
    * @author Donald Ephraim Curtis
    *
    * The IDList class is designed to hold a set of Primitive objects

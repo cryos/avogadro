@@ -19,10 +19,10 @@
   <widget class="QWidget" name="centralWidget" >
    <property name="geometry" >
     <rect>
-     <x>79</x>
-     <y>56</y>
-     <width>276</width>
-     <height>474</height>
+     <x>84</x>
+     <y>66</y>
+     <width>271</width>
+     <height>465</height>
     </rect>
    </property>
   </widget>
@@ -32,7 +32,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -41,7 +41,13 @@
     </property>
     <addaction name="actionAbout" />
     <addaction name="separator" />
-    <addaction name="actionTutorial" />
+    <addaction name="actionAvogadro_Help" />
+    <addaction name="actionTutorials" />
+    <addaction name="actionFAQ" />
+    <addaction name="separator" />
+    <addaction name="actionRelease_Notes" />
+    <addaction name="actionReport_a_Bug" />
+    <addaction name="actionAvogadro_Website" />
    </widget>
    <widget class="QMenu" name="menuFile" >
     <property name="title" >
@@ -149,9 +155,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>530</y>
+     <y>531</y>
      <width>621</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -159,9 +165,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>26</y>
+     <y>22</y>
      <width>621</width>
-     <height>30</height>
+     <height>44</height>
     </rect>
    </property>
    <property name="windowTitle" >
@@ -189,9 +195,9 @@
    <property name="geometry" >
     <rect>
      <x>361</x>
-     <y>56</y>
+     <y>66</y>
      <width>260</width>
-     <height>474</height>
+     <height>465</height>
     </rect>
    </property>
    <property name="minimumSize" >
@@ -212,10 +218,10 @@
    <widget class="QWidget" name="projectWidget" >
     <property name="geometry" >
      <rect>
-      <x>4</x>
-      <y>24</y>
-      <width>252</width>
-      <height>446</height>
+      <x>0</x>
+      <y>26</y>
+      <width>260</width>
+      <height>439</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" >
@@ -251,9 +257,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>56</y>
-     <width>73</width>
-     <height>234</height>
+     <y>66</y>
+     <width>78</width>
+     <height>230</height>
     </rect>
    </property>
    <property name="allowedAreas" >
@@ -268,10 +274,10 @@
    <widget class="QWidget" name="toolsWidget" >
     <property name="geometry" >
      <rect>
-      <x>4</x>
-      <y>24</y>
-      <width>65</width>
-      <height>206</height>
+      <x>0</x>
+      <y>26</y>
+      <width>78</width>
+      <height>204</height>
      </rect>
     </property>
    </widget>
@@ -280,9 +286,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>296</y>
-     <width>73</width>
-     <height>234</height>
+     <y>302</y>
+     <width>78</width>
+     <height>229</height>
     </rect>
    </property>
    <property name="allowedAreas" >
@@ -297,10 +303,10 @@
    <widget class="QWidget" name="enginesWidget" >
     <property name="geometry" >
      <rect>
-      <x>4</x>
-      <y>24</y>
-      <width>65</width>
-      <height>206</height>
+      <x>0</x>
+      <y>26</y>
+      <width>78</width>
+      <height>203</height>
      </rect>
     </property>
    </widget>
@@ -601,12 +607,12 @@
     <string>Export POVRay...</string>
    </property>
   </action>
-  <action name="actionTutorial" >
+  <action name="actionTutorials" >
    <property name="enabled" >
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text" >
-    <string>Tutorial</string>
+    <string>Tutorials</string>
    </property>
   </action>
   <action name="actionDuplicateView" >
@@ -628,6 +634,34 @@
    </property>
    <property name="text" >
     <string>Debug Information</string>
+   </property>
+  </action>
+  <action name="actionAvogadro_Help" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="text" >
+    <string>Avogadro Help</string>
+   </property>
+  </action>
+  <action name="actionRelease_Notes" >
+   <property name="text" >
+    <string>Release Notes</string>
+   </property>
+  </action>
+  <action name="actionReport_a_Bug" >
+   <property name="text" >
+    <string>Report a Bug</string>
+   </property>
+  </action>
+  <action name="actionFAQ" >
+   <property name="text" >
+    <string>FAQ</string>
+   </property>
+  </action>
+  <action name="actionAvogadro_Website" >
+   <property name="text" >
+    <string>Avogadro Website</string>
    </property>
   </action>
  </widget>

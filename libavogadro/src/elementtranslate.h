@@ -30,9 +30,17 @@
 namespace Avogadro {
 
   /**
-   * This class provides for translation of element names: e.g., tr("Carbon")
-   *
+   * @class ElementTranslator elementtranslate.h <avogadro/elementtranslate.h>
+   * @brief Internationalization of element names
    * @author Geoff Hutchison
+   *
+   * This class provides for translation of element names: e.g., tr("Carbon")
+   * To use the global translator:
+   * @code
+   * #include <avogadro/elementtranslate.h>
+   * ...
+   * Avogadro::elementTranslator.name(6); // Return "carbon" in English
+   * @endcode
    */
   class A_EXPORT ElementTranslator: public QObject
   {

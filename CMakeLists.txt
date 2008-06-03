@@ -2,7 +2,7 @@ project(avogadro) # the name of your project
  
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
-cmake_minimum_required(VERSION 2.4.5)
+cmake_minimum_required(VERSION 2.4.8)
 
 if(COMMAND cmake_policy)
   cmake_policy(SET CMP0003 NEW)
@@ -10,6 +10,7 @@ endif(COMMAND cmake_policy)
 
 include (CheckCXXCompilerFlag)
 include (MacroEnsureVersion)
+include (TestIfWeNeedFPermissive)
 
 ###########################################################
 # Here I am adding GCC magic from KDE. With these settings#
@@ -54,29 +55,40 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 	endif (HAVE_GCC_VISIBILITY AND GCC_IS_NEWER_THAN_4_1 AND NOT _GCC_COMPILED_WITH_BAD_ALLOCATOR)
 
   # Set up build flags for particular build types
-  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG")
   set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline")
+
+  TEST_IF_WE_NEED_FPERMISSIVE(NEED_FPERMISSIVE)
+  if(NEED_FPERMISSIVE)
+    #OK, adding -fpermissive to the C++ compiler flags
+    #Workaround for a problem with Boost.Python and GCC >= 4.3.1
+    #Further information: cmake/modules/TestIfWeNeedFPermissive.cmake
+    set (CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -fpermissive")
+  endif(NEED_FPERMISSIVE)
 
 endif (CMAKE_COMPILER_IS_GNUCXX)
 
 if(RELEASE_MODE)
  add_definitions(-DNDEBUG)
+ add_definitions(-DQT_NO_DEBUG)
  if (CMAKE_COMPILER_IS_GNUCXX)
   set (CMAKE_C_FLAGS     "${CMAKE_C_FLAGS} -O2")
   set (CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -O2")
  endif (CMAKE_COMPILER_IS_GNUCXX)
 endif(RELEASE_MODE)
 
-set(QT_MIN_VERSION "4.3.0") # we need at least version 4.3 of Qt
+set(QT_MIN_VERSION "4.3.4") # we need at least version 4.3 of Qt
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Eigen REQUIRED) # find and setup Eigen
 find_package(Linguist REQUIRED) # find and setup Eigen
 
+OPTION(ENABLE_PYTHON "Enable python support" ON)
+
 # This may not be the best way to do this - please correct me if I am wrong.
 # Getting rid of automagic is nice and so this seems reasonable.
-if(NOT ENABLE_PYTHON MATCHES FALSE)
+if(ENABLE_PYTHON MATCHES ON)
   # The CMake 2.6 FindBoost function is far better than the 2.4 version
   # So use it if possible
   if(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
@@ -90,9 +102,9 @@ if(NOT ENABLE_PYTHON MATCHES FALSE)
   endif(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
 
   find_package(PythonLibs)
-else(NOT ENABLE_PYTHON MATCHES FALSE)
+else(ENABLE_PYTHON MATCHES ON)
   message(STATUS "Python support disabled.")
-endif(NOT ENABLE_PYTHON MATCHES FALSE)
+endif(ENABLE_PYTHON MATCHES ON)
 
 if(NOT LIB_INSTALL_DIR)
   set(LIB_INSTALL_DIR lib)
@@ -122,7 +134,7 @@ add_subdirectory(doc)
 # Linux Default: /usr/local/share/avogadro/fragments
 set(avogadro_FRAGMENTS share/avogadro)
 if(WIN32)
-   set(avogadro_FRAGMENTS "C:\Program Files\Avogadro")
+   set(avogadro_FRAGMENTS "C:\\Program Files\\Avogadro")
 endif(WIN32)
 if(APPLE)
    set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")
@@ -132,4 +144,3 @@ endif(APPLE)
 INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
                DESTINATION ${avogadro_FRAGMENTS}
                PATTERN ".svn" EXCLUDE )
-

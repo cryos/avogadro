@@ -281,7 +281,35 @@ namespace Avogadro {
 
       }
     }
+
+    invalidateIndexes();
     emit layoutChanged(); // again, tell the view that we're finished
+  }
+  
+  /* From Qt API doc:
+   * void QAbstractItemModel::layoutAboutToBeChanged ()   [signal]
+   *
+   * ... Subclasses should update any persistent model indexes after emitting 
+   * layoutAboutToBeChanged(). ...
+   * 
+   * and: http://der-dakon.net/blog/KDE/persistent-crash.html
+   */
+  void DirectoryTreeModel::invalidateIndexes()
+  {
+    for (int i = 0; i < persistentIndexList().count(); i++) {
+      QModelIndex idx = persistentIndexList().at(i);
+
+      FileTreeItem *parentItem;
+      if (!idx.isValid())
+        parentItem = _rootItem;
+      else
+        parentItem = static_cast<FileTreeItem*>(idx.internalPointer());
+
+      if (parentItem == _rootItem)
+        continue;
+
+      changePersistentIndex(idx, QModelIndex());
+    }
   }
 
 } // end namespace Avogadro

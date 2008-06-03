@@ -38,11 +38,12 @@ namespace Avogadro {
 
   /**
    * @class Color color.h <avogadro/color.h>
+   * @brief Map a primitive (atom, bond, etc.) to a OpenGL red, green, blue, alpha color
    * @author Benoit Jacob
    * @author Geoff Hutchison
-   * @brief Color in OpenGL float red, green, blue, alpha format.
    *
-   * This class represents a color in OpenGL float red, green, blue, alpha format.
+   * Color plugins are used to provide custom coloring for engines -- mapping atoms
+   * and residues. Provide new plugins based on atomic or residue properties
    */
   class A_EXPORT Color
   {
@@ -54,28 +55,41 @@ namespace Avogadro {
      * This constructor sets the four components of the color
      * individually. Each one ranges from 0.0 (lowest intensity) to
      * 1.0 (highest intensity). For the alpha component, 0.0 means totally
-     * transparent and 1.0 (the default) means totally opaque. */
+     * transparent and 1.0 (the default) means totally opaque.
+     *
+     * @param red The red component of the color
+     * @param green The green component
+     * @param blue The blue component
+     * @param alpha The opacity of the color
+     * \sa set()
+     */
     Color( GLfloat red, GLfloat green, GLfloat blue,
         GLfloat alpha = 1.0 );
 
     /**
      * Set the color based on the supplied Primitive.
      * If NULL is passed do nothing.
-     * @param Primitive the color is derived from this primitive.
+     * @param p the color is derived from this primitive.
      */
-    Color( const Primitive * );
+    Color( const Primitive *p);
 
     /**
      * Set the color based on the supplied QColor
-     * @param QColor the color to use
+     * @param color the color to use
      */
-    Color& operator= (const QColor &);
+    Color& operator= (const QColor &color);
 
     /**
      * Set the four components of the color
      * individually. Each one ranges from 0.0 (lowest intensity) to
      * 1.0 (highest intensity). For the alpha component, 0.0 means totally
-     * transparent and 1.0 (the default) means totally opaque. */
+     * transparent and 1.0 (the default) means totally opaque.
+     *
+     * @param red The red component of the color
+     * @param green The green component
+     * @param blue The blue component
+     * @param alpha The opacity of the color
+     */
     virtual void set(GLfloat red, GLfloat green, GLfloat blue,
                      GLfloat alpha = 1.0 );
 
@@ -88,13 +102,15 @@ namespace Avogadro {
     /**
      * Set the color based on the supplied Primitive.
      * If NULL is passed do nothing.
-     * @param Primitive the color is derived from this primitive.
+     * @param p the color is derived from this primitive.
      */
-    virtual void set(const Primitive *);
+    virtual void set(const Primitive *p);
 
     /**
      * Set the alpha component of the color, 0.0 means totally transparent and
      * 1.0 means totally opaque.
+     *
+     * @param alpha The opacity of the color
      */
     virtual void setAlpha(double alpha);
 

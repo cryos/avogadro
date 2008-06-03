@@ -48,10 +48,6 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  // Handles localization/translation of element names
-  // e.g., nitrogen in English is azote in French
-  extern ElementTranslator elementTranslator;
-
   DrawTool::DrawTool(QObject *parent) : Tool(parent),
                                         m_beginAtomAdded(false),
                                         m_endAtomAdded(false),
@@ -131,6 +127,12 @@ namespace Avogadro {
         // "alchemy" -- change the bond order of this bond
         Bond *bond = (Bond *)molecule->GetBond(m_hits[0].name());
         if (bond) { // if we can't find the bond, we can't do anything here
+
+          // do not try to change X-H bond order when adjust hydrogens is on 
+          if(m_addHydrogens) {
+            if (bond->GetBeginAtom()->IsHydrogen() || bond->GetEndAtom()->IsHydrogen())
+              return 0;
+          }
 
           unsigned int bondOrder, oldBondOrder;
           oldBondOrder = bond->GetBondOrder();
@@ -406,6 +408,14 @@ namespace Avogadro {
         // bug #1898118
         // both beginAtom, endAtom and bond exist, but the bond order has changed
         if ((int)m_prevBond->GetBondOrder() != m_prevBondOrder) {
+          // do not try to change X-H bond order when adjust hydrogens is on 
+          if(m_addHydrogens) {
+            if (m_prevBond->GetBeginAtom()->IsHydrogen() || m_prevBond->GetEndAtom()->IsHydrogen()) {
+              m_prevBond->SetBondOrder(1); // restore 
+              return 0;
+            }
+          }
+
           undo = new ChangeBondOrderDrawCommand(widget->molecule(), m_prevBond,
                                                 m_prevBondOrder, m_addHydrogens);
           undo->setText(tr("Change Bond Order"));
@@ -480,17 +490,19 @@ namespace Avogadro {
     // part of the molecule.
     Eigen::Vector3d atomsBarycenter(0., 0., 0.);
     double sumOfWeights = 0.;
-    std::vector<OpenBabel::OBNodeBase*>::iterator i;
-    for ( Atom *atom = static_cast<Atom*>(widget->molecule()->BeginAtom(i));
-          atom; atom = static_cast<Atom*>(widget->molecule()->NextAtom(i))) {
-      Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
-      double atomDistance = transformedAtomPos.norm();
-      double dot = transformedAtomPos.z() / atomDistance;
-      double weight = exp(-30. * (1. + dot));
-      sumOfWeights += weight;
-      atomsBarycenter += weight * atom->pos();
+    if(widget->molecule()->NumAtoms()) {
+      std::vector<OpenBabel::OBNodeBase*>::iterator i;
+      for ( Atom *atom = static_cast<Atom*>(widget->molecule()->BeginAtom(i));
+            atom; atom = static_cast<Atom*>(widget->molecule()->NextAtom(i))) {
+        Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
+        double atomDistance = transformedAtomPos.norm();
+        double dot = transformedAtomPos.z() / atomDistance;
+        double weight = exp(-30. * (1. + dot));
+        sumOfWeights += weight;
+        atomsBarycenter += weight * atom->pos();
+      }
+      atomsBarycenter /= sumOfWeights;
     }
-    atomsBarycenter /= sumOfWeights;
 
     Navigate::zoom(widget, atomsBarycenter, -MOUSE_WHEEL_SPEED*event->delta());
     widget->update();
@@ -735,12 +747,12 @@ namespace Avogadro {
   }
 
   void DrawTool::showFragmentDialog(bool) {
-		if (m_fragmentDialog->isVisible()) {
+    if (m_fragmentDialog->isVisible()) {
       m_fragmentDialog->hide();
       m_insertFragmentMode = false;
     } else {
-	    m_fragmentDialog->show();
-		}
+      m_fragmentDialog->show();
+    }
   }
 
   void DrawTool::writeSettings(QSettings &settings) const

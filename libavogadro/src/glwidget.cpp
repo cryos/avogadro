@@ -46,14 +46,16 @@
 #include <QPluginLoader>
 #include <QTime>
 #include <QReadWriteLock>
+#include <QMessageBox>
 
 #ifdef ENABLE_THREADED_GL
 #include <QWaitCondition>
 #include <QMutex>
 #endif
 
-#include <stdio.h>
+#include <cstdio>
 #include <vector>
+#include <cstdlib>
 
 using namespace OpenBabel;
 using namespace Eigen;
@@ -305,7 +307,7 @@ namespace Avogadro {
         pluginPaths << prefixPath;
 
 #ifdef WIN32
-        pluginPaths << "./engines";
+		pluginPaths << QCoreApplication::applicationDirPath() + "/engines";
 #endif
 
         // Krazy: Use QProcess:
@@ -529,6 +531,19 @@ namespace Avogadro {
   void GLWidget::initializeGL()
   {
     qDebug() << "GLWidget initialisation...";
+    if(!context()->isValid())
+    {
+      // this should never happen, as we checked for availability of features that we requested in
+      // the default OpenGL format. However it happened to a user who had a very broken setting with
+      // a proprietary nvidia driver.
+      const QString error_msg = tr("Invalid OpenGL context.\n"
+                                   "Either something is completely broken in your OpenGL setup "
+                                   "(can you run any OpenGL application?), "
+                                   "or you found a bug.");
+      qDebug() << error_msg;
+      QMessageBox::critical(0, tr("OpenGL error"), error_msg);
+      abort();
+    }
     qglClearColor( d->background );
 
     glShadeModel( GL_SMOOTH );
@@ -663,6 +678,15 @@ namespace Avogadro {
   void GLWidget::render()
   {
     d->painter->begin(this);
+
+    if(d->painter->quality() >= 3)
+    {
+      glEnable(GL_LIGHT1);
+    }
+    else
+    {
+      glDisable(GL_LIGHT1);
+    }
 
     // Use renderQuick if the view is being moved, otherwise full render
     if (d->quickRender) {
@@ -1576,6 +1600,14 @@ namespace Avogadro {
     updateGeometry();
     d->camera->initializeViewPoint();
     update();
+  }
+
+  void GLWidget::clearUnitCell()
+  {
+    d->uc = NULL; // The unit cell is associated with our old molecule, it should have been freed elsewhere
+    updateGeometry();
+    d->camera->initializeViewPoint();
+    update();    
   }
 
   int GLWidget::aCells()

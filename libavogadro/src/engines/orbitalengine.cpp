@@ -299,7 +299,6 @@ namespace Avogadro {
   {
     // Reset the orbital combo
     int tmp = m_settingsWidget->orbitalCombo->currentIndex();
-    qDebug() << "tmp =" << tmp;
     if (tmp < 0) tmp = 0;
     m_settingsWidget->orbitalCombo->clear();
     m_molecule->lock()->lockForRead();
@@ -307,6 +306,19 @@ namespace Avogadro {
     for (unsigned int i = 0; i < data.size(); ++i) {
       QString str = QString(data[i]->GetAttribute().c_str());
       m_settingsWidget->orbitalCombo->addItem(str);
+    }
+    // If all of the orbitals disappear the molecule has been cleared
+    if (data.size() == 0) {
+      m_grid->setGrid(0);
+      m_grid2->setGrid(0);
+      disconnect(m_isoGen, 0, this, 0);
+      disconnect(m_isoGen2, 0, this, 0);
+      delete m_isoGen;
+      m_isoGen = new IsoGen;
+      delete m_isoGen2;
+      m_isoGen2 = new IsoGen;
+      connect(m_isoGen, SIGNAL(finished()), this, SLOT(isoGenFinished()));
+      connect(m_isoGen2, SIGNAL(finished()), this, SLOT(isoGenFinished()));
     }
     m_molecule->lock()->unlock();
     m_settingsWidget->orbitalCombo->setCurrentIndex(tmp);

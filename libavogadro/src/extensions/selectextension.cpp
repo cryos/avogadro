@@ -206,7 +206,7 @@ namespace Avogadro {
     QList<Primitive *> selectedAtoms;
     bool ok;
     QString resname = QInputDialog::getText(qobject_cast<QWidget*>(parent()),
-        tr("Select by residue"), tr("Residue name"), QLineEdit::Normal, tr(""), &ok);
+        tr("Select by residue"), tr("Residue name"), QLineEdit::Normal, "", &ok);
     
     FOR_ATOMS_OF_MOL (atom, m_molecule) {
       if (atom->GetResidue()->GetName() == resname.toStdString())

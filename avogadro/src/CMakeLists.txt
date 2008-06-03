@@ -1,6 +1,5 @@
 set(QT_USE_QTOPENGL true)
 
-
 if(WIN32)
   set(QT_USE_QTMAIN true)
 endif(WIN32)
@@ -24,10 +23,13 @@ include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-add_definitions(-DQT_DEBUG)
 include(${QT_USE_FILE})
 
 FILE(GLOB avogadro_SRCS "*.cpp")
+
+if(NOT APPLE)
+  LIST(REMOVE_ITEM avogadro_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/macchempasteboard.cpp)
+endif(NOT APPLE)
 
 if( WIN32 )
   set(avogadro_SRCS ${avogadro_SRCS} windows/avogadro.rc)
@@ -46,7 +48,6 @@ SET(avogadro_TS
 	${CMAKE_SOURCE_DIR}/i18n/avogadro_de.ts
 	${CMAKE_SOURCE_DIR}/i18n/avogadro_fr.ts
 	${CMAKE_SOURCE_DIR}/i18n/avogadro_en_GB.ts
-
 )
 QT4_WRAP_TS(avogadro_QM ${avogadro_TS})
 
@@ -71,10 +72,17 @@ IF( APPLE )
   SET( MACOSX_BUNDLE_GUI_IDENTIFIER "net.sourceforge" )
   SET( MACOSX_BUNDLE_BUNDLE_NAME "Avogadro" )
 
-  # Need to copy the icon files
-  EXEC_PROGRAM( "mkdir -p   ${CMAKE_CURRENT_BINARY_DIR}/Avogadro.app/Contents/Resources")
-  EXEC_PROGRAM( "cp ${avogadro_SOURCE_DIR}/src/mac/avogadro.icns ${CMAKE_CURRENT_BINARY_DIR}/Avogadro.app/Contents/Resources")
-  EXEC_PROGRAM( "cp ${avogadro_SOURCE_DIR}/src/mac/AvogadroDocument.icns ${CMAKE_CURRENT_BINARY_DIR}/Avogadro.app/Contents/Resources")
+  # Need to copy the icon files and other resources
+  SET( MACOSX_BUILD_CONTENTS_DIR ${CMAKE_CURRENT_BINARY_DIR}/Avogadro.app/Contents/Resources )
+	SET( MACOSX_SRC_DIR ${avogadro_SOURCE_DIR}/src/mac )
+  EXEC_PROGRAM( "mkdir -p   ${MACOSX_BUILD_CONTENTS_DIR}" )
+  EXEC_PROGRAM( "cp ${MACOSX_SRC_DIR}/avogadro.icns ${MACOSX_BUILD_CONTENTS_DIR}" )
+  EXEC_PROGRAM( "cp ${MACOSX_SRC_DIR}/AvogadroDocument.icns ${MACOSX_BUILD_CONTENTS_DIR}" )
+  SET( TRANSLATIONS en fr de en_GB )
+	FOREACH(lang ${TRANSLATIONS})
+	  EXEC_PROGRAM("mkdir ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj")
+		EXEC_PROGRAM("sed -e s/LANG/${lang}/ <${MACOSX_SRC_DIR}/locversion.plist.in | sed -e s/VERSION/${VERSION}/ >${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj/locversion.plist;")
+	ENDFOREACH(lang ${TRANSLATIONS})
 
   # Overload the Info.plist default
   SET( CMAKE_MODULE_PATH ${avogadro_SOURCE_DIR}/src/mac ${CMAKE_MODULE_PATH} )

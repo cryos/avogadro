@@ -36,6 +36,10 @@
 
 #include "icontabwidget.h"
 
+#ifdef Q_WS_MAC
+#include "macchempasteboard.h"
+#endif
+
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
 #include <avogadro/primitive.h>
@@ -68,8 +72,14 @@
 #include <QDesktopWidget>
 #include <QInputDialog>
 #include <QUrl>
+#include <QDesktopServices>
 
 #include <QDebug>
+
+// This is a "hidden" exported Qt function on the Mac for Qt-4.x.
+#ifdef Q_WS_MAC
+ void qt_mac_set_menubar_icons(bool enable);
+#endif
 
 using namespace std;
 using namespace OpenBabel;
@@ -129,7 +139,6 @@ namespace Avogadro
       // used for hideMainWindowMac() / showMainWindowMac()
       // save enable/disable status of every menu item
       QVector< QVector <bool> > menuItemStatus;
-
       bool initialized;
 
       bool tabbedTools;
@@ -144,7 +153,6 @@ namespace Avogadro
     }
     return mainWindowCount;
   }
-
 
   MainWindow::MainWindow() : QMainWindow( 0 ), d( new MainWindowPrivate )
   {
@@ -164,7 +172,7 @@ namespace Avogadro
     ui.setupUi( this );
     // We cannot reliably set this via Designer
     // editing on Windows or Linux loses the flag
-    //    setUnifiedTitleAndToolBarOnMac(true);
+//    setUnifiedTitleAndToolBarOnMac(true);
 
     QSettings settings;
     d->tabbedTools = settings.value("tabbedTools", true).toBool();
@@ -256,17 +264,9 @@ namespace Avogadro
     ui.menuSettings->removeAction( ui.menuSettings->actions().last() );
 
     // Remove all menu icons (violates Apple interface guidelines)
-    QIcon nullIcon;
-    foreach( QAction *menu, menuBar()->actions() ) {
-      foreach( QAction *menuItem, menu->menu()->actions() ) {
-        menuItem->setIcon( nullIcon ); // clears the icon for this item
-        if (menuItem->menu() != NULL) {
-          foreach( QAction *submenuItem, menuItem->menu()->actions() ) {
-            submenuItem->setIcon( nullIcon ); // clears the icon for this item
-          }
-        }
-      }
-    }
+    // This is a not-quite-hidden Qt call on the Mac
+    //    http://doc.trolltech.com/exportedfunctions.html
+    qt_mac_set_menubar_icons(false);
 
     ui.menuSettings->setTitle("Window");
 #endif
@@ -517,7 +517,7 @@ namespace Avogadro
           " *.mpd *.mol2)"
         << tr("All files") + " (* *.*)"
         << tr("CML") + " (*.cml)"
-        << tr("Crystallographic Interchange (CIF)") + " (*.cif)"
+        << tr("Crystallographic Interchange CIF") + " (*.cif)"
         << tr("GAMESS-US Output") + " (*.gamout)"
         << tr("Gaussian 98/03 Output") + " (*.g98 *.g03)"
         << tr("Gaussian Formatted Checkpoint") + " (*.fchk)"
@@ -852,10 +852,16 @@ namespace Avogadro
             << tr("PNG") + " (*.png)"
             << tr("JPEG") + " (*.jpg *.jpeg)";
 
+    // Remove the filename ending - hopefully this is fairly robust
+    QString file = d->fileName.mid(d->fileName.lastIndexOf("/")+1,
+                           d->fileName.lastIndexOf("."));
+
+    qDebug() << "Exported filename:" << file;
+
     QString fileName = SaveDialog::run(this,
                                        tr("Export Bitmap Graphics"),
                                        d->fileDialogPath,
-                                       d->fileName,
+                                       file,
                                        filters,
                                        "png",
                                        selectedFilter);
@@ -866,6 +872,8 @@ namespace Avogadro
     {
       return;
     }
+
+    qDebug() << "Exported filename:" << fileName;
 
     // render it (with alpha channel)
     QImage exportImage = d->glWidget->grabFrameBuffer( true );
@@ -1007,7 +1015,35 @@ namespace Avogadro
     AboutDialog * about = new AboutDialog( this );
     about->show();
   }
+  
+  // Unfortunately Qt signals/slots doesn't let us pass an arbitrary URL to a slot
+  // or we'd have one openURL("string")
+  // Instead, we've got a bunch of one-line actions...
+  void MainWindow::openTutorialURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/Tutorials"));    
+  }
 
+  void MainWindow::openFAQURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/Avogadro:FAQ"));    
+  }
+
+  void MainWindow::openWebsiteURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/"));    
+  }
+
+  void MainWindow::openReleaseNotesURL() const
+  {
+    QDesktopServices::openUrl(QUrl( "http://avogadro.openmolecules.net/wiki/Avogadro_" + QString(VERSION) ));    
+  }
+
+  void MainWindow::openBugURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://sourceforge.net/tracker/?group_id=165310&atid=835077"));    
+  }
+  
   void MainWindow::setView( int index )
   {
     d->glWidget = d->glWidgets.at( index );
@@ -1031,6 +1067,8 @@ namespace Avogadro
       mimeData = clipboard->mimeData( QClipboard::Selection );
     }
 
+    // if we don't support selection, or we failed pasting the selection
+    // try from the clipboard
     if ( !supportsSelection || !pasteMimeData(mimeData) )
     {
       mimeData = clipboard->mimeData();
@@ -1045,17 +1083,20 @@ namespace Avogadro
   {
     OBConversion conv;
     OBFormat *pasteFormat = NULL;
-    QString text;
+    QByteArray text;
     Molecule newMol;
 
     if ( mimeData->hasFormat( "chemical/x-mdl-molfile" ) ) {
       pasteFormat = conv.FindFormat( "mdl" );
 
       text = mimeData->data( "chemical/x-mdl-molfile" );
+		} else if ( mimeData->hasFormat( "chemical/x-cdx" ) ) {
+      pasteFormat = conv.FindFormat( "cdx" );
+			text = mimeData->data( "chemical/x-cdx" );
     } else if ( mimeData->hasText() ) {
       pasteFormat = conv.FindFormat( "xyz" );
 
-      text = mimeData->text();
+      text = mimeData->text().toAscii();
     }
 
     if ( text.length() == 0 )
@@ -1066,10 +1107,11 @@ namespace Avogadro
       return false;
     }
 
-    if ( conv.ReadString( &newMol, text.toStdString() ) && newMol.NumAtoms() != 0 ) {
+    if ( conv.ReadString( &newMol, text.data() ) 
+         && newMol.NumAtoms() != 0 ) {
       vector3 offset; // small offset so that pasted mols don't fall on top
       offset.randomUnitVector();
-      offset *= 0.3;
+      offset *= 0.2;
 
       newMol.Translate( offset );
       PasteCommand *command = new PasteCommand( d->molecule, newMol, d->glWidget );
@@ -1424,6 +1466,13 @@ namespace Avogadro
     connect( ui.configureAvogadroAction, SIGNAL( triggered() ),
         this, SLOT( showSettingsDialog() ) );
 
+    connect( ui.actionTutorials, SIGNAL( triggered() ), this, SLOT( openTutorialURL() ));
+    connect( ui.actionFAQ, SIGNAL( triggered() ), this, SLOT( openFAQURL() ) );
+    connect( ui.actionRelease_Notes, SIGNAL( triggered() ), this, SLOT( openReleaseNotesURL() ));
+    connect( ui.actionAvogadro_Website, SIGNAL( triggered() ), this, SLOT( openWebsiteURL() ) );
+    connect( ui.actionReport_a_Bug, SIGNAL( triggered() ), this, SLOT( openBugURL() ) );
+    
+
     connect( d->toolGroup, SIGNAL( toolActivated( Tool * ) ), this, SLOT( setTool( Tool * ) ) );
     connect( this, SIGNAL( moleculeChanged( Molecule * ) ), d->toolGroup, SLOT( setMolecule( Molecule * ) ) );
 
@@ -1616,7 +1665,7 @@ namespace Avogadro
     pluginPaths << prefixPath;
 
 #ifdef WIN32
-    pluginPaths << "./extensions";
+	pluginPaths << QCoreApplication::applicationDirPath() + "/extensions";
 #endif
 
     // Krazy: Use QProcess:
@@ -1884,11 +1933,11 @@ namespace Avogadro
     if (!d->currentSelectedEngine)
       return;
 
-		QWidget *settingsWindow = new QWidget();
+    QWidget *settingsWindow = new QWidget();
     settingsWindow->setWindowTitle(d->currentSelectedEngine->name() + ' ' + tr("Settings"));
-		QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout;
 
-		// now set up the tabs: Currently settings and objects (primitives)
+    // now set up the tabs: Currently settings and objects (primitives)
     QTabWidget *settingsTabs = new QTabWidget(settingsWindow);
     settingsTabs->addTab(d->currentSelectedEngine->settingsWidget(), tr("Settings"));
     
@@ -1897,8 +1946,8 @@ namespace Avogadro
     primitivesWidget->setEngine(d->currentSelectedEngine);
     settingsTabs->addTab(primitivesWidget, tr("Objects"));
 
-		layout->addWidget(settingsTabs);
-		settingsWindow->setLayout(layout);
+    layout->addWidget(settingsTabs);
+    settingsWindow->setLayout(layout);
     settingsWindow->show();
   }
 
@@ -1958,6 +2007,7 @@ namespace Avogadro
 
         if(engine) {
           d->glWidget->removeEngine(engine);
+		  emit enableEngineSettingsButton(false);
         }
         break;
       }

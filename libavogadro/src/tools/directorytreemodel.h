@@ -62,6 +62,7 @@ namespace Avogadro {
   
   private:
     void setupModelData(const QStringList &directories, FileTreeItem *parent);
+    void invalidateIndexes();
 
     QStringList _directoryList;
     FileTreeItem *_rootItem;

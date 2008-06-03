@@ -108,6 +108,11 @@ const float    LIGHT1_POSITION[4]                    = { -0.8, 0.7, -0.5, 0.0 };
 
 namespace Avogadro
 {
+  /**
+   * @class Library global.h <avogadro/global.h>
+   * @brief Interface for static calls for versions, installation prefix, and other compiler macros
+   * @author Donald Ephraim Curtis
+   */
   class A_EXPORT Library
   {
     public:

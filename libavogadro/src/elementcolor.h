@@ -32,10 +32,11 @@
 namespace Avogadro {
 
   /**
-   * This class provides a default mapping for colors based on elements
-   *
-   * @author Benoit Jacob
+   * @class ElementColor elementcolor.h <avogadro/elementcolor.h>
+   * @brief Default atom color scheme based on periodic table
    * @author Geoff Hutchison
+   *
+   * Map atom colors based on elements: Carbon = Grey, Oxygen = Red, etc.
    */
   class A_EXPORT ElementColor: public Color
   {
@@ -47,7 +48,7 @@ namespace Avogadro {
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
     virtual void set(const Primitive *);
-
+    
     virtual QString type() const { return "Color by Element"; }
   };
 

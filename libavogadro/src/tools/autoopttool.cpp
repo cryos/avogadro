@@ -47,7 +47,7 @@ namespace Avogadro {
   AutoOptTool::AutoOptTool(QObject *parent) : Tool(parent), m_clickedAtom(0),
   m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false),
   m_running(false), m_block(false), m_setupFailed(false), m_timerId(0) ,m_toolGroup(0), 
-  m_settingsWidget(0)
+  m_settingsWidget(0), m_lastEnergy(0.0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/autoopttool/autoopttool.png")));
@@ -78,6 +78,12 @@ namespace Avogadro {
 
   AutoOptTool::~AutoOptTool()
   {
+    if (m_thread) {
+      m_thread->exit();
+      m_thread->wait();
+      delete m_thread;
+      m_thread = 0;
+    }
   }
 
   int AutoOptTool::usefulness() const
@@ -274,15 +280,22 @@ namespace Avogadro {
   bool AutoOptTool::paint(GLWidget *widget)
   {
     QPoint labelPos(10, 10);
+    //QPoint debugPos(10, 50);
     glColor3f(1.0,1.0,1.0);
     if (m_running) {
       if (m_setupFailed) {
         widget->painter()->drawText(labelPos, tr("AutoOpt: Could not setup force field...."));
       } else {
-        widget->painter()->drawText(labelPos, tr("AutoOpt: Running..."));
+        double energy = m_forceField->Energy(false);
+        widget->painter()->drawText(labelPos, 
+            tr("AutoOpt: E = %1 %2 (dE = %3)").arg(energy).
+            arg(m_forceField->GetUnit().c_str()).
+            arg( fabs(m_lastEnergy - energy) ));
+        //widget->painter()->drawText(debugPos, 
+        //    tr("Num Constraints: %1").arg(m_forceField->GetConstraints().Size()));
+        m_lastEnergy = energy;
       }
     }
-
 
     m_glwidget = widget;
     if(m_leftButtonPressed) {
@@ -351,6 +364,7 @@ namespace Avogadro {
 
       m_comboAlgorithm = new QComboBox(m_settingsWidget);
       m_comboAlgorithm->addItem(tr("Steepest Descent"));
+      m_comboAlgorithm->addItem(tr("Conjugate Gradients"));
       m_comboAlgorithm->addItem(tr("Molecular Dynamics (300K)"));
       m_comboAlgorithm->addItem(tr("Molecular Dynamics (600K)"));
       m_comboAlgorithm->addItem(tr("Molecular Dynamics (900K)"));
@@ -576,12 +590,15 @@ namespace Avogadro {
         m_forceField->SteepestDescent(m_steps/*, m_convergence*/);
         break;
       case 1:
-        m_forceField->MolecularDynamicsTakeNSteps(m_steps, 300, 0.001);
+        m_forceField->ConjugateGradients(m_steps);
         break;
       case 2:
-        m_forceField->MolecularDynamicsTakeNSteps(m_steps, 600, 0.001);
+        m_forceField->MolecularDynamicsTakeNSteps(m_steps, 300, 0.001);
         break;
       case 3:
+        m_forceField->MolecularDynamicsTakeNSteps(m_steps, 600, 0.001);
+        break;
+      case 4:
         m_forceField->MolecularDynamicsTakeNSteps(m_steps, 900, 0.001);
         break;
     }

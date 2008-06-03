@@ -5,14 +5,23 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>496</width>
-    <height>431</height>
+    <width>536</width>
+    <height>450</height>
    </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle" >
    <string>Gaussian Input Deck Generator</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
+   <property name="sizeConstraint" >
+    <enum>QLayout::SetFixedSize</enum>
+   </property>
    <item>
     <layout class="QGridLayout" name="gridLayout" >
      <item row="0" column="0" >
@@ -35,7 +44,7 @@
      <item row="1" column="0" >
       <widget class="QLabel" name="label" >
        <property name="text" >
-        <string>Calculation Type:</string>
+        <string>Calculation:</string>
        </property>
        <property name="buddy" >
         <cstring>calculationCombo</cstring>
@@ -365,7 +374,7 @@
         <string>Checkpoint:</string>
        </property>
        <property name="buddy" >
-        <cstring>multiplicitySpin</cstring>
+        <cstring>checkpointCheck</cstring>
        </property>
       </widget>
      </item>
@@ -375,6 +384,83 @@
         <string/>
        </property>
       </widget>
+     </item>
+     <item row="5" column="0" >
+      <widget class="QLabel" name="label_10" >
+       <property name="text" >
+        <string>Format:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>formatCombo</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1" >
+      <layout class="QHBoxLayout" name="horizontalLayout_9" >
+       <item>
+        <widget class="QComboBox" name="formatCombo" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="currentIndex" >
+          <number>0</number>
+         </property>
+         <item>
+          <property name="text" >
+           <string>Cartesian</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Z-matrix</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_9" >
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>18</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="5" column="3" >
+      <layout class="QHBoxLayout" name="horizontalLayout_10" >
+       <item>
+        <spacer name="horizontalSpacer_8" >
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>18</width>
+           <height>26</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="moreButton" >
+         <property name="sizePolicy" >
+          <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text" >
+          <string>Hide Preview</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
@@ -393,6 +479,9 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3" >
+     <property name="sizeConstraint" >
+      <enum>QLayout::SetFixedSize</enum>
+     </property>
      <item>
       <widget class="QPushButton" name="resetButton" >
        <property name="text" >
@@ -451,10 +540,13 @@
   <tabstop>multiplicitySpin</tabstop>
   <tabstop>outputCombo</tabstop>
   <tabstop>checkpointCheck</tabstop>
+  <tabstop>formatCombo</tabstop>
+  <tabstop>moreButton</tabstop>
   <tabstop>previewText</tabstop>
   <tabstop>generateButton</tabstop>
   <tabstop>closeButton</tabstop>
   <tabstop>resetButton</tabstop>
+  <tabstop>enableFormButton</tabstop>
  </tabstops>
  <resources/>
  <connections>

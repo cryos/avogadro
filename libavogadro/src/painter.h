@@ -33,7 +33,7 @@
 namespace Avogadro
 {
   /**
-   * @class Painter painter.h
+   * @class Painter painter.h <avogadro/painter.h>
    * @brief Pure virtual Painter base class to be implemented by painters.
    * @author Marcus D. Hanwell
    *

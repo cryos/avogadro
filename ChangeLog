@@ -1,3 +1,204 @@
+2008-06-03  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engine.h, libavogadro/src/extension.h,
+	libavogadro/src/tool.h: Bumped our plugin version to 1.1 - should help
+	with bugs 1973909 and 1982102 - warning a make clean is needed.
+
+2008-06-02  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/engines/dipoleengine.*: New dipole moment engine
+	-- needs more work, but displays dipole moments from Gaussian,
+	GAMESS and Q-Chem output  with recent OB-trunk.
+
+2008-06-02  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/orbitalengine.cpp: Fixed bug 1968565 -
+	orbitals are now cleared correctly along with everything else.
+
+2008-05-30  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/gaussianinputdialog.*: Implemented
+	showing and hiding of the preview text - defaults to shown.
+
+	* libavogadro/src/extensions/CMakeLists.txt,
+	libavogadro/src/extensions/templateextension.*: Fixed up the template
+	extension so that it would actually compile, added an example minimal
+	entry in the CMake file too (commented out).
+
+2008-05-30  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* avogadro/src/mainwindow.cpp: emit enableEngineSettingsButton(false)
+	when you delete an engine. Otherwise when you pressed "Settings...",
+	it would segfault.
+
+2008-05-30  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/glwidget.cpp, libavogadro/src/toolgroup.cpp,
+	avogadro/src/mainwindow.cpp: In windows, use
+	QCoreApplication::applicationDirPath() to find the plugins. 
+	(fixes #1977338)
+
+2008-05-30  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/extensions/constraintsdialog.ui: Disable unimplemented
+	Save/Load buttons.
+
+	* libavogadro/src/extensions/forcefieldextension.*: Only create new
+	dialogs when needed. (in performAction, not in constructor)
+
+	* libavogadro/src/extensions/constraintsdialog.cpp: Small GUI changes
+	(min/max values, singleStep, ...)
+
+	* libavogadro/src/extensions/propmodel.cpp: Angle and Torsion
+	properties are not editable, don't set writable flag.
+
+	* libavogadro/src/extensions/propextension.*: Only create dialogs
+	(views) and models when needed. Call QObject::deleteLater() on both
+	the model and the view in PropertiesView::hideEvent().
+
+	* libavogadro/src/tools/autoopttool.*: Exit, wait, and delete the
+	thread in the destructor. Display the energy while running. Added
+	conjugate gradients again.
+
+2008-05-28  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/insertfragmentdialog.cpp: workaround for bug
+	#1977172. Create a new OBConversion object each time you insert a
+	fragment from the library.
+
+2008-05-28  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/directorytreemodel.*: Invalidate persistent
+	indexes. See this blogpost for details: last code block at the bottom
+	http://der-dakon.net/blog/KDE/persistent-crash.html (This fixes the
+	crashes I was having with the "Reset List" button.
+
+2008-05-28  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* libavogadro/src/glwidget.*: Add method to clear unit cell data.
+
+	* libavogadro/src/extensions/unitcell*: Improved unit cell
+	dialog. Added "Apply" button to change parameters. Automatically
+	changes number of cells to display via signals/slots. Button to
+	delete unit cells. New button to "fill" unit cells with
+	symmetry-defined atoms via the space group.
+
+2008-05-27  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/extensions/propmodel.cpp: Get energy for all
+	conformers and only use OBMol::GetEnergy() if no ConformerData is
+	available. (fixes #1976199)
+
+2008-05-26  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* avogadro/src/mainwindow.cpp: Fixed PR 1973714 - removed the file
+	ending from the file name passed to the save dialog. Also placed the
+	macchempasteboard.h in a Mac ifdef to fix compilation on other OSes.
+
+2008-05-27  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/drawtool.cpp: Do not try to change the bond
+	order for X-H bonds when adjust hydrogens is on. Not sure if we should
+	ever have double bonds to hydrogens...
+
+2008-05-26  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* avogadro/src/CMakeLists.txt,
+	avogaro/src/mac/locversion.plist.in: Add additional Mac i18n
+	support, solving PR#1972467.
+
+	* Doxyfile, avogadro/src/mainwindow.h, 
+	libavogadro/src/*: Update doxygen documentation.
+
+	* avogadro/src/macchempasteboard.*: Add mime converter to supply
+	MIME types for Mac chemical clipboard/pasteboard types
+	(i.e. ChemDraw).
+
+	* avogadro/src/mainwindow.cpp: Add support for ChemDraw. Doesn't
+	parse -- need more debugging.
+
+2008-05-23  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* CMakeLists.txt: Bump our dependencies on CMake and Qt.
+
+2008-05-22  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/insertfragmentdialog.cpp: Fix insert smiles.
+	Also disable the driectoryTreeView and smilesLineEdit while in insert
+	mode. This makes it impossible to change the smiles and forget to
+	press Stop/Start.
+
+2008-05-22  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/python/deleteAll.py: Fixed the
+	deleteAll script for the new DeleteAtom function signature.
+
+	* libavogadro/src/extensions/pythonextension.cpp: Search the system
+	wide path for Python scripts too.
+
+	* libavogadro/src/extensions/hydrogensextension.cpp: Fixed PR 1947734, 
+	now the number of hydrogrens most people would expect are added....
+
+2008-05-20  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	Changes from the win32 build:
+
+	* CMakeLists.txt: Change "C:\Program Files\avogadro" into  "C:\\Program
+	Files\\avogadro".
+
+	* avogadro/src/main.cpp: Windows build had problems with printVersion/
+	printHelp. Quick fix with cout & #ifdef WIN32.
+
+	* libavogadro/src/cylinder.cpp: Make sure M_PI isdefined.
+
+	* libavogadro/src/elementtranslate.cpp: Global instance should be
+	extern.
+
+	* libavogadro/src/engines/iso.cpp: MSVC doesn't have
+	__attribute__((aligned(16)). Quick fix with #ifdef WIN32 and without
+	the data alignment.
+
+	* libavogadro/src/engines/labelengine.cpp: Local instance should not
+	be extern.
+
+	* libavogadro/src/engines/polygonengine.cpp: Change static_cast<const
+	Atom*> into static_cast<Atom*>.
+
+	* libavogadro/src/periodictableview.cpp: Local instance should not be
+	extern.
+
+	* libavogadro/src/tools/aligntool.cpp: Change static_cast<const Atom*> 
+	into static_cast<Atom*>.
+
+	* libavogadro/src/tools/bondcentrictool.cpp: This file defined its own
+	isnan() function which resulted in a conflict with OpenBabel::IsNan().
+	Now uses OpenBabel::IsNan().
+
+	* libavogadro/src/tools/drawtool.cpp:  Local instance should not be
+	extern.
+
+	* scripts/avogadro.nsi: update installer generating script.
+
+2008-05-19  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/tools/drawtool.cpp: Fixed the same bug that was
+	fixed in navigate tool where no atoms were in the molecule.
+
+	* libavogadro/src/tools/navigatetool.cpp: Made the valid molecule
+	check safer.
+
+	* libavogadro/src/tools/manipulatetool.*: Made the manipulate tool a
+	lot faster by only saving undo points on mouse up and mouse down.
+
+	* CMakeLists.txt, avogadro/src/CMakeLists.txt: Added -DQT_NO_DEBUG to
+	release mode and removed a -DQT_DEBUG in the Avogadro app build file.
+
+	* libavogadro/src/engines/CMakeLists.txt,
+	libavogadro/src/extensions/CMakeLists.txt,
+	libavogadro/src/tools/CMakeLists.txt: Changed build scripts to build
+	all plugins as modules, this seems more appropriate after reading the
+	CMake man page and should decrease build times due to less linkage.
+
 2008-05-17  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* avogadro/src/CMakeLists.txt, libavogadro/src/CMakeLists.txt: Add the

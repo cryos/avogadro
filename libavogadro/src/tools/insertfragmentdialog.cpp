@@ -99,6 +99,7 @@ namespace Avogadro {
     ui.directoryTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
     ui.directoryTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui.directoryTreeView->setUniformRowHeights(true);
+    ui.insertFragmentButton->setFocusPolicy(Qt::NoFocus);
 
     connect(ui.insertFragmentButton, SIGNAL(clicked(bool)),
             this, SLOT(setupInsertMode(bool)));
@@ -120,7 +121,7 @@ namespace Avogadro {
     // SMILES insert
     if (d->smilesMode) { 
 	
-  		// We should use the method because it will grab updates to the line edit
+      // We should use the method because it will grab updates to the line edit
       std::string SmilesString(smilesString().toAscii());
       if(d->conv.SetInFormat("smi")
          && d->conv.ReadString(&d->fragment, SmilesString))
@@ -135,8 +136,11 @@ namespace Avogadro {
         QString file = d->model->filePath(selected.first());
         if (!file.isEmpty()) {
           std::string fileName(file.toAscii());
-          OBFormat *inFormat = d->conv.FormatFromExt(fileName.c_str());
-          if (!inFormat || !d->conv.SetInFormat(inFormat)) {
+          //OBFormat *inFormat = d->conv.FormatFromExt(fileName.c_str());
+          //if (!inFormat || !d->conv.SetInFormat(inFormat)) {
+          OBConversion conv;
+          OBFormat *inFormat = conv.FormatFromExt(fileName.c_str());
+          if (!inFormat || !conv.SetInFormat(inFormat)) {
             QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
                                   tr( "Cannot read file format of file %1." )
                                   .arg( QString(fileName.c_str()) ) );
@@ -151,8 +155,10 @@ namespace Avogadro {
             return &d->fragment;
           }
 
-          d->conv.Read(&d->fragment, &ifs);
+          //d->conv.Read(&d->fragment, &ifs);
+          conv.Read(&d->fragment, &ifs);
           d->fragment.Center();
+          ifs.close();
         }
       }
     }
@@ -162,16 +168,16 @@ namespace Avogadro {
 
   const QString InsertFragmentDialog::smilesString()
   {
-	  if (!ui.smilesLineEdit->text().isEmpty()) {
-			_smilesString = ui.smilesLineEdit->text();
-		}
+    if (!ui.smilesLineEdit->text().isEmpty()) {
+      _smilesString = ui.smilesLineEdit->text();
+    }
     return _smilesString;
   }
 
   void InsertFragmentDialog::setSmilesString(const QString smiles)
   {
     _smilesString = smiles;
-		ui.smilesLineEdit->setText(_smilesString);
+    ui.smilesLineEdit->setText(_smilesString);
   }
 
   const QStringList InsertFragmentDialog::directoryList() const
@@ -196,18 +202,24 @@ namespace Avogadro {
   {
     bool inserting = (ui.insertFragmentButton->text() == tr("Stop Inserting"));
 
-		if (ui.smilesLineEdit->hasFocus()) {
-    	ui.smilesLineEdit->clearFocus();
-			d->smilesMode = true;
-		}
-		else {
-			d->smilesMode = false;
-		}
-
-    if(!inserting) {
+   if(!inserting) {
+     if (ui.smilesLineEdit->hasFocus()) {
+        d->smilesMode = true;
+      } else {
+        d->smilesMode = false;
+      }
       ui.insertFragmentButton->setText(tr("Stop Inserting"));
-    } else {
+      ui.smilesLineEdit->setEnabled(false);
+      ui.directoryTreeView->setEnabled(false);
+   } else {
       ui.insertFragmentButton->setText(tr("Insert Fragment"));
+      ui.smilesLineEdit->setEnabled(true);
+      ui.directoryTreeView->setEnabled(true);
+      if (d->smilesMode) {
+        ui.smilesLineEdit->setFocus();
+      } else {
+        ui.directoryTreeView->setFocus();
+      }
     }
     emit setInsertMode(!inserting);
   }

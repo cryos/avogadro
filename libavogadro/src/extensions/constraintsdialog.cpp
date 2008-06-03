@@ -83,15 +83,18 @@ namespace Avogadro {
       case 5:
 	if (m_molecule->NumAtoms() >= 2) {
           ui.editA->setMinimum(1);
-          ui.editB->setMinimum(2);
+          ui.editB->setMinimum(1);
           ui.editC->setMinimum(0);
           ui.editD->setMinimum(0);
           ui.editA->setMaximum(m_molecule->NumAtoms() - 1);
           ui.editB->setMaximum(m_molecule->NumAtoms());
           ui.editC->setMaximum(0);
           ui.editD->setMaximum(0);
+          ui.editB->setValue(2);
           ui.editValue->setMinimum(0.0);
           ui.editValue->setMaximum(5.0);
+          ui.editValue->setSingleStep(0.05);
+          ui.editValue->setValue(1.5);
 	} else {
           ui.editA->setMinimum(0);
           ui.editB->setMinimum(0);
@@ -108,15 +111,19 @@ namespace Avogadro {
       case 6:
        	if (m_molecule->NumAtoms() >= 3) {
           ui.editA->setMinimum(1);
-          ui.editB->setMinimum(2);
-          ui.editC->setMinimum(3);
+          ui.editB->setMinimum(1);
+          ui.editC->setMinimum(1);
           ui.editD->setMinimum(0);
           ui.editA->setMaximum(m_molecule->NumAtoms() - 2);
           ui.editB->setMaximum(m_molecule->NumAtoms() - 1);
           ui.editC->setMaximum(m_molecule->NumAtoms());
           ui.editD->setMaximum(0);
+          ui.editB->setValue(2);
+          ui.editC->setValue(3);
           ui.editValue->setMinimum(0.0);
           ui.editValue->setMaximum(180.0);
+          ui.editValue->setSingleStep(1.0);
+          ui.editValue->setValue(109.0);	
 	} else {
           ui.editA->setMinimum(0);
           ui.editB->setMinimum(0);
@@ -133,15 +140,20 @@ namespace Avogadro {
       case 7:
         if (m_molecule->NumAtoms() >= 4) {
           ui.editA->setMinimum(1);
-          ui.editB->setMinimum(2);
-          ui.editC->setMinimum(3);
-          ui.editD->setMinimum(4);
+          ui.editB->setMinimum(1);
+          ui.editC->setMinimum(1);
+          ui.editD->setMinimum(1);
           ui.editA->setMaximum(m_molecule->NumAtoms() - 3);
           ui.editB->setMaximum(m_molecule->NumAtoms() - 2);
           ui.editC->setMaximum(m_molecule->NumAtoms() - 1);
           ui.editD->setMaximum(m_molecule->NumAtoms());
+          ui.editB->setValue(2);
+          ui.editC->setValue(3);
+          ui.editD->setValue(4);
           ui.editValue->setMinimum(-180.0);
           ui.editValue->setMaximum(180.0);
+          ui.editValue->setSingleStep(10.0);
+          ui.editValue->setValue(0.0);
 	} else {
           ui.editA->setMinimum(0);
           ui.editB->setMinimum(0);
@@ -210,15 +222,18 @@ namespace Avogadro {
       case 5:
 	if (m_molecule->NumAtoms() >= 2) {
           ui.editA->setMinimum(1);
-          ui.editB->setMinimum(2);
+          ui.editB->setMinimum(1);
           ui.editC->setMinimum(0);
           ui.editD->setMinimum(0);
           ui.editA->setMaximum(m_molecule->NumAtoms() - 1);
           ui.editB->setMaximum(m_molecule->NumAtoms());
           ui.editC->setMaximum(0);
           ui.editD->setMaximum(0);
+          ui.editB->setValue(2);
           ui.editValue->setMinimum(0.0);
           ui.editValue->setMaximum(5.0);
+          ui.editValue->setSingleStep(0.05);
+          ui.editValue->setValue(1.5);
 	} else {
           ui.editA->setMinimum(0);
           ui.editB->setMinimum(0);
@@ -235,15 +250,19 @@ namespace Avogadro {
       case 6:
        	if (m_molecule->NumAtoms() >= 3) {
           ui.editA->setMinimum(1);
-          ui.editB->setMinimum(2);
-          ui.editC->setMinimum(3);
+          ui.editB->setMinimum(1);
+          ui.editC->setMinimum(1);
           ui.editD->setMinimum(0);
           ui.editA->setMaximum(m_molecule->NumAtoms() - 2);
           ui.editB->setMaximum(m_molecule->NumAtoms() - 1);
           ui.editC->setMaximum(m_molecule->NumAtoms());
           ui.editD->setMaximum(0);
+          ui.editB->setValue(2);
+          ui.editC->setValue(3);
           ui.editValue->setMinimum(0.0);
           ui.editValue->setMaximum(180.0);
+          ui.editValue->setSingleStep(10.0);
+          ui.editValue->setValue(109.0);
 	} else {
           ui.editA->setMinimum(0);
           ui.editB->setMinimum(0);
@@ -260,15 +279,20 @@ namespace Avogadro {
       case 7:
         if (m_molecule->NumAtoms() >= 4) {
           ui.editA->setMinimum(1);
-          ui.editB->setMinimum(2);
-          ui.editC->setMinimum(3);
-          ui.editD->setMinimum(4);
+          ui.editB->setMinimum(1);
+          ui.editC->setMinimum(1);
+          ui.editD->setMinimum(1);
           ui.editA->setMaximum(m_molecule->NumAtoms() - 3);
           ui.editB->setMaximum(m_molecule->NumAtoms() - 2);
           ui.editC->setMaximum(m_molecule->NumAtoms() - 1);
           ui.editD->setMaximum(m_molecule->NumAtoms());
+          ui.editB->setValue(2);
+          ui.editC->setValue(3);
+          ui.editD->setValue(4);
           ui.editValue->setMinimum(-180.0);
           ui.editValue->setMaximum(180.0);
+          ui.editValue->setSingleStep(10.0);
+          ui.editValue->setValue(0.0);
 	} else {
           ui.editA->setMinimum(0);
           ui.editB->setMinimum(0);

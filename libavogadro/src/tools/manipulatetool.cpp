@@ -41,7 +41,7 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false), m_undo(0),
+  ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false),
   m_eyecandy(new Eyecandy)
   {
     m_eyecandy->setColor(Color(1.0, 0., 0., .7));
@@ -70,7 +70,6 @@ namespace Avogadro {
     widget->setCursor(Qt::SizeVerCursor);
 
     // Move the selected atom(s) in to or out of the screen
-    MoveAtomCommand *cmd  = 0;
     Vector3d transformedGoal = widget->camera()->modelview() * goal;
     double distanceToGoal = transformedGoal.norm();
 
@@ -85,48 +84,44 @@ namespace Avogadro {
     MatrixP3d atomTranslation;
     atomTranslation.loadTranslation(widget->camera()->backTransformedZAxis() * t);
 
+    widget->molecule()->BeginModify();
     if (widget->selectedPrimitives().size())
-    {
       foreach(Primitive *p, widget->selectedPrimitives())
-      {
         if (p->type() == Primitive::AtomType)
-        {
-          Atom *a = static_cast<Atom *>(p);
-          cmd = new MoveAtomCommand(widget->molecule(), a, atomTranslation * a->pos(), m_undo);
-        }
-      }
-    }
+          static_cast<Atom *>(p)->setPos(atomTranslation * static_cast<Atom *>(p)->pos());
     if (m_clickedAtom && !widget->isSelected(m_clickedAtom))
-      cmd = new MoveAtomCommand(widget->molecule(), m_clickedAtom, atomTranslation * m_clickedAtom->pos(), m_undo);
+      m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
+    widget->molecule()->EndModify();
+    widget->molecule()->update();
   }
 
   void ManipulateTool::translate(GLWidget *widget, const Eigen::Vector3d &what,
                                  const QPoint &from, const QPoint &to) const
   {
     // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+    // Currently, there's a Qt/Mac bug -- SizeAllCursor looks like a spreadsheet cursor
+#ifdef Q_WS_MAC
+    widget->setCursor(Qt::CrossCursor);
+#else 
     widget->setCursor(Qt::SizeAllCursor);
+#endif
 
     // Translate the selected atoms in the x and y sense of the view
-    MoveAtomCommand *cmd  = 0;
     Vector3d fromPos = widget->camera()->unProject(from, what);
     Vector3d toPos = widget->camera()->unProject(to, what);
 
     MatrixP3d atomTranslation;
     atomTranslation.loadTranslation(toPos - fromPos);
 
+    widget->molecule()->BeginModify();
     if (widget->selectedPrimitives().size())
-    {
       foreach(Primitive *p, widget->selectedPrimitives())
-      {
         if (p->type() == Primitive::AtomType)
-        {
-          Atom *a = static_cast<Atom *>(p);
-          cmd = new MoveAtomCommand(widget->molecule(), a, atomTranslation * a->pos(), m_undo);
-        }
-      }
-    }
+          static_cast<Atom *>(p)->setPos(atomTranslation * static_cast<Atom *>(p)->pos());
     if (m_clickedAtom && !widget->isSelected(m_clickedAtom))
-      cmd = new MoveAtomCommand(widget->molecule(), m_clickedAtom, atomTranslation * m_clickedAtom->pos(), m_undo);
+      m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
+    widget->molecule()->EndModify();
+    widget->molecule()->update();
   }
 
   void ManipulateTool::rotate(GLWidget *widget, const Eigen::Vector3d &center,
@@ -136,7 +131,6 @@ namespace Avogadro {
     widget->setCursor(Qt::ClosedHandCursor);
 
     // Rotate the selected atoms about the center
-    MoveAtomCommand *cmd  = 0;
     // rotate only selected primitives
     MatrixP3d fragmentRotation;
     fragmentRotation.loadTranslation(center);
@@ -144,33 +138,28 @@ namespace Avogadro {
     fragmentRotation.rotate3(deltaX * ROTATION_SPEED, widget->camera()->backTransformedYAxis());
     fragmentRotation.translate(-center);
 
+    widget->molecule()->BeginModify();
     foreach(Primitive *p, widget->selectedPrimitives())
-    {
       if (p->type() == Primitive::AtomType)
-      {
-        Atom *a = static_cast<Atom *>(p);
-        cmd = new MoveAtomCommand(widget->molecule(), a, fragmentRotation * a->pos(), m_undo);
-      }
-    }
+        static_cast<Atom *>(p)->setPos(fragmentRotation * static_cast<Atom *>(p)->pos());
+    widget->molecule()->EndModify();
+    widget->molecule()->update();
   }
 
   void ManipulateTool::tilt(GLWidget *widget, const Eigen::Vector3d &center, double delta) const
   {
     // Tilt the selected atoms about the center
-    MoveAtomCommand *cmd  = 0;
     MatrixP3d fragmentRotation;
     fragmentRotation.loadTranslation(center);
     fragmentRotation.rotate3(delta * ROTATION_SPEED, widget->camera()->backTransformedZAxis());
     fragmentRotation.translate(-center);
 
+    widget->molecule()->BeginModify();
     foreach(Primitive *p, widget->selectedPrimitives())
-    {
       if (p->type() == Primitive::AtomType)
-      {
-        Atom *a = static_cast<Atom *>(p);
-        cmd = new MoveAtomCommand(widget->molecule(), a, fragmentRotation * a->pos(), m_undo);
-      }
-    }
+        static_cast<Atom *>(p)->setPos(fragmentRotation * static_cast<Atom *>(p)->pos());
+    widget->molecule()->EndModify();
+    widget->molecule()->update();
   }
 
   QUndoCommand* ManipulateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
@@ -184,7 +173,12 @@ namespace Avogadro {
     {
       m_leftButtonPressed = true;
       // Set the cursor - this needs to be reset to Qt::ArrowCursor after
+      // Currently, there's a Qt/Mac bug -- SizeAllCursor looks like a spreadsheet cursor
+#ifdef Q_WS_MAC
+      widget->setCursor(Qt::CrossCursor);
+#else 
       widget->setCursor(Qt::SizeAllCursor);
+#endif
     }
 
     // On a Mac, click and hold the Shift key
@@ -217,8 +211,8 @@ namespace Avogadro {
 
     widget->update();
 
-    m_undo = new MoveAtomCommand(widget->molecule());
-    return m_undo;
+    QUndoCommand* undo = new MoveAtomCommand(widget->molecule());
+    return undo;
   }
 
   QUndoCommand* ManipulateTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
@@ -232,15 +226,14 @@ namespace Avogadro {
     widget->setCursor(Qt::ArrowCursor);
 
     widget->update();
-    return 0;
+    QUndoCommand* undo = new MoveAtomCommand(widget->molecule());
+    return undo;
   }
 
   QUndoCommand* ManipulateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
   {
-    if(!widget->molecule()) {
+    if(!widget->molecule())
       return 0;
-    }
-    m_undo = new MoveAtomCommand(widget->molecule());
 
     // Get the currently selected atoms from the view
     PrimitiveList currentSelection = widget->selectedPrimitives();
@@ -314,7 +307,7 @@ namespace Avogadro {
     m_lastDraggingPosition = event->pos();
     widget->update();
 
-    return m_undo;
+    return 0;
   }
 
   QUndoCommand* ManipulateTool::wheel(GLWidget*widget, const QWheelEvent*event)
@@ -386,18 +379,16 @@ namespace Avogadro {
     setText(QObject::tr("Manipulate Atom"));
     m_moleculeCopy = *molecule;
     m_molecule = molecule;
-    m_atomIndex = 0;
     undone = false;
   }
 
-  MoveAtomCommand::MoveAtomCommand(Molecule *molecule, Atom *atom, Eigen::Vector3d pos, QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)
+  MoveAtomCommand::MoveAtomCommand(Molecule *molecule, int type, QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)
   {
     // Store the original molecule before any modifications are made
     setText(QObject::tr("Manipulate Atom"));
     m_moleculeCopy = *molecule;
     m_molecule = molecule;
-    m_atomIndex = atom->GetIdx();
-    m_pos = pos;
+    m_type =type;
     undone = false;
   }
 
@@ -409,14 +400,6 @@ namespace Avogadro {
       Molecule newMolecule = *m_molecule;
       *m_molecule = m_moleculeCopy;
       m_moleculeCopy = newMolecule;
-    }
-    else if (m_atomIndex)
-    {
-      m_molecule->BeginModify();
-      Atom *atom = static_cast<Atom *>(m_molecule->GetAtom(m_atomIndex));
-      atom->setPos(m_pos);
-      m_molecule->EndModify();
-      atom->update();
     }
     QUndoCommand::redo();
   }

@@ -155,17 +155,31 @@ int main(int argc, char *argv[])
 
 void printVersion(const QString &)
 {
+  #ifdef WIN32
+  std::cout << "Avogadro: 0.8.0" << std::endl;
+  std::cout << "LibAvogadro: 0.8.0" << std::endl;
+  std::cout << "Qt: \t\t4.3.4" << std::endl;
+  #else
   std::wcout << QObject::tr("Avogadro: \t%1 (rev %2)\n"
       "LibAvogadro: \t%3 (rev %4)\n"
       "Qt: \t\t%5\n").arg(VERSION, SVN_REVISION, Library::version(), Library::svnRevision(), qVersion()).toStdWString();
+  #endif
 }
 
 void printHelp(const QString &appName)
 {
+  #ifdef WIN32
+  std::cout << "Usage: avogadro [options] [files]" << std::endl << std::endl;
+  std::cout << "Advanced Molecular Editor (version 0.8.0)" << std::endl << std::endl;
+  std::cout << "Options:" << std::endl;
+  std::cout << "  -h, --help\t\tShow help options (this)" << std::endl;
+  std::cout << "  -v, --version\t\tShow version information" << std::endl;
+  #else
   std::wcout << QObject::tr("Usage: %1 [options] [files]\n\n"
       "Advanced Molecular Editor (version %2)\n\n"
       "Options:\n"
       "  -h, --help\t\tShow help options (this)\n"
       "  -v, --version\t\tShow version information\n"
       ).arg(appName, VERSION).toStdWString();
+  #endif
 }

@@ -100,7 +100,7 @@ namespace Avogadro {
     if (m_SelectedList.size() == 0) {
       switch(m_action) {
         case AddHydrogens:
-          m_molecule->AddHydrogens(false,true);
+          m_molecule->AddHydrogens(false, false);
           break;
         case RemoveHydrogens:
           m_molecule->DeleteHydrogens();

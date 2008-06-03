@@ -31,9 +31,11 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
+  /// Constructor
   ElementColor::ElementColor()
   { }
 
+  // Destructor
   ElementColor::~ElementColor()
   {   }
 

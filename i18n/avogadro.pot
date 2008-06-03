@@ -1,0 +1,5545 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Avogadro Project
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2008-06-03 15:16-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: avogadro/src/aboutdialog.cpp:56
+#, qt-format
+msgid ""
+"<h3>%1</h3><br/><br/>Application Version: %2 (svn revision: %3)<br/><br/"
+">Library Version: %4 (svn revision: %5)<br/><br/>For more information check "
+"the <a href=\"http://avogadro.sourceforge.net/\">Avogadro homepage</a>.<br/"
+"><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING "
+"THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE."
+"<br/>"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 13
+#: avogadro/src/aboutdialog.cpp:63 avogadro/src/mainwindow.cpp:601
+#: avogadro/src/mainwindow.cpp:614 avogadro/src/mainwindow.cpp:624
+#: avogadro/src/mainwindow.cpp:635 avogadro/src/mainwindow.cpp:645
+#: avogadro/src/mainwindow.cpp:768 avogadro/src/mainwindow.cpp:776
+#: avogadro/src/mainwindow.cpp:790 avogadro/src/mainwindow.cpp:802
+#: avogadro/src/mainwindow.cpp:905 avogadro/src/mainwindow.cpp:990
+#: avogadro/src/mainwindow.cpp:1517 avogadro/src/mainwindow.cpp:1926
+#: libavogadro/src/extensions/animationextension.cpp:110
+#: libavogadro/src/extensions/animationextension.cpp:117
+#: libavogadro/src/extensions/forcefieldextension.cpp:185
+#: libavogadro/src/extensions/forcefieldextension.cpp:193
+#: libavogadro/src/extensions/forcefieldextension.cpp:204
+#: libavogadro/src/extensions/forcefieldextension.cpp:223
+#: libavogadro/src/extensions/unitcellextension.cpp:83
+#: libavogadro/src/tools/insertfragmentdialog.cpp:144
+#: libavogadro/src/tools/insertfragmentdialog.cpp:152 rc.cpp:39 rc.cpp:39
+msgid "Avogadro"
+msgstr ""
+
+#: avogadro/src/editcommands.cpp:41
+msgid "Cut Molecule"
+msgstr ""
+
+#: avogadro/src/editcommands.cpp:43
+msgid "Cut Atoms"
+msgstr ""
+
+#: avogadro/src/editcommands.cpp:80
+msgid "Paste"
+msgstr ""
+
+#: avogadro/src/editcommands.cpp:114
+msgid "Clear Molecule"
+msgstr ""
+
+#: avogadro/src/editcommands.cpp:116
+msgid "Clear Atoms"
+msgstr ""
+
+#: avogadro/src/main.cpp:163
+#, qt-format
+msgid ""
+"Avogadro: \t%1 (rev %2)\n"
+"LibAvogadro: \t%3 (rev %4)\n"
+"Qt: \t\t%5\n"
+msgstr ""
+
+#: avogadro/src/main.cpp:178
+#, qt-format
+msgid ""
+"Usage: %1 [options] [files]\n"
+"\n"
+"Advanced Molecular Editor (version %2)\n"
+"\n"
+"Options:\n"
+"  -h, --help\t\tShow help options (this)\n"
+"  -v, --version\t\tShow version information\n"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:212
+msgid "Messages"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:409
+msgid "Tool Settings"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:513 avogadro/src/mainwindow.cpp:725
+msgid "Common molecule formats"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:518 avogadro/src/mainwindow.cpp:722
+#: avogadro/src/mainwindow.cpp:850 avogadro/src/mainwindow.cpp:918
+msgid "All files"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:519 avogadro/src/mainwindow.cpp:719
+#: avogadro/src/mainwindow.cpp:731
+msgid "CML"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:520
+msgid "Crystallographic Interchange CIF"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:521
+msgid "GAMESS-US Output"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:522
+msgid "Gaussian 98/03 Output"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:523
+msgid "Gaussian Formatted Checkpoint"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:524
+msgid "HyperChem"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:525
+msgid "MDL Mol"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:526 avogadro/src/mainwindow.cpp:736
+msgid "PDB"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:527 avogadro/src/mainwindow.cpp:737
+msgid "Sybyl Mol2"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:528 avogadro/src/mainwindow.cpp:738
+msgid "XYZ"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:531
+msgid "Open File"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:596 avogadro/src/mainwindow.cpp:630
+#, qt-format
+msgid "Loading %1..."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:602
+#, qt-format
+msgid ""
+"Cannot read file %1:\n"
+"%2."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:615
+#: libavogadro/src/extensions/animationextension.cpp:111
+#: libavogadro/src/tools/insertfragmentdialog.cpp:145
+#, qt-format
+msgid "Cannot read file format of file %1."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:625
+#: libavogadro/src/tools/insertfragmentdialog.cpp:153
+#, qt-format
+msgid "Cannot read file %1."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:636
+msgid ""
+"This file does not contain 3D coordinates. You may not be able to edit or "
+"view properly."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:646
+msgid ""
+"This file appears to contain multiple molecule records. Avogadro will only "
+"read the first molecule. If you save, all other molecules may be lost."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:654
+msgid "Atoms: "
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:655
+msgid " Bonds: "
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:659
+msgid "Reading molecular file failed."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:664
+msgid "File Loaded..."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:665 libavogadro/src/tools/navigatetool.h:72
+msgid "Navigate"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:732
+msgid "GAMESS Input"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:733
+msgid "Gaussian Cartesian Input"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:734
+msgid "Gaussian Z-matrix Input"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:735
+msgid "MDL SDfile"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:741
+msgid "Save Molecule As"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:769
+#, qt-format
+msgid "Cannot write to file format of file %1."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:777 avogadro/src/mainwindow.cpp:791
+#, qt-format
+msgid ""
+"Cannot write to the file %1:\n"
+"%2."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:803
+#, qt-format
+msgid "Cannot write to the file %1."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:809
+msgid "Saving file."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:815
+msgid "Save succeeded."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:819
+msgid "Saving molecular file failed."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:840 avogadro/src/mainwindow.cpp:852
+msgid "PNG"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:847
+msgid "Common image formats"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:851
+msgid "BMP"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:853
+msgid "JPEG"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:862
+msgid "Export Bitmap Graphics"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:906
+#, qt-format
+msgid "Cannot save file %1."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:914 avogadro/src/mainwindow.cpp:917
+msgid "POV-Ray format"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:921
+msgid "Export POV Scene"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:940
+msgid "Set Aspect Ratio"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:941
+#, qt-format
+msgid ""
+"The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
+"ratio %3.\n"
+"You may keep this value, for example if you intend to use POV-Ray\n"
+"to produce an image of %4x1000 pixels, or you may enter any other positive "
+"value,\n"
+"for example 1 if you intend to use POV-Ray to produce a square image, like "
+"1000x1000 pixels."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:991
+msgid ""
+"The document has been modified.\n"
+"Do you want to save your changes?"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1077
+msgid "Unable to paste molecule."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1106
+msgid "Paste failed (format unavailable)."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1119 libavogadro/src/tools/manipulatetool.h:63
+msgid "Manipulate"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1165
+msgid "Copy failed (mdl unavailable)."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1278 avogadro/src/mainwindow.cpp:1306
+#: avogadro/src/mainwindow.cpp:1341 avogadro/src/mainwindow.cpp:1620
+#, qt-format
+msgid "View %1"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1363
+msgid "Normal Size"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1373
+msgid "Full Screen"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1511
+msgid "[*]Avogadro"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1516
+#, qt-format
+msgid "%1[*] - %2"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1869
+msgid "Settings..."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 120
+#: avogadro/src/mainwindow.cpp:1880 rc.cpp:501 rc.cpp:501
+msgid "Add"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1885
+msgid "Duplicate"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1890
+msgid "Remove"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1918
+msgid "No tools or engines loaded."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1920
+msgid "No engines loaded."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1922
+msgid "No tools loaded."
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1923
+msgid ""
+" It is unlikely this application will function correctly. Please correct "
+"this error."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 82
+#. i18n: tag string
+#. i18n: file ./avogadro/src/settingsdialog.ui line 13
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 82
+#. i18n: tag string
+#. i18n: file ./avogadro/src/settingsdialog.ui line 13
+#: avogadro/src/mainwindow.cpp:1937 avogadro/src/mainwindow.cpp:1942 rc.cpp:54
+#: rc.cpp:252 rc.cpp:54 rc.cpp:252
+msgid "Settings"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1947
+msgid "Objects"
+msgstr ""
+
+#: avogadro/src/mainwindow.cpp:1990
+msgid " copy"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 143
+#: avogadro/src/savedialog.cpp:68 rc.cpp:507 rc.cpp:507
+msgid "Save"
+msgstr ""
+
+#: avogadro/src/savedialog.cpp:86
+msgid "untitled"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:34
+msgid "Hydrogen"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:37
+msgid "Helium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:40
+msgid "Lithium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:43
+msgid "Beryllium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:46
+msgid "Boron"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:49
+msgid "Carbon"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:52
+msgid "Nitrogen"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:55
+msgid "Oxygen"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:58
+msgid "Fluorine"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:61
+msgid "Neon"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:64
+msgid "Sodium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:67
+msgid "Magnesium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:70
+msgid "Aluminum"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:73
+msgid "Silicon"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:76
+msgid "Phosphorus"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:79
+msgid "Sulfur"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:82
+msgid "Chlorine"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:85
+msgid "Argon"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:88
+msgid "Potassium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:91
+msgid "Calcium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:94
+msgid "Scandium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:97
+msgid "Titanium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:100
+msgid "Vanadium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:103
+msgid "Chromium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:106
+msgid "Manganese"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:109
+msgid "Iron"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:112
+msgid "Cobalt"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:115
+msgid "Nickel"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:118
+msgid "Copper"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:121
+msgid "Zinc"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:124
+msgid "Gallium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:127
+msgid "Germanium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:130
+msgid "Arsenic"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:133
+msgid "Selenium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:136
+msgid "Bromine"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:139
+msgid "Krypton"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:142
+msgid "Rubidium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:145
+msgid "Strontium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:148
+msgid "Yttrium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:151
+msgid "Zirconium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:154
+msgid "Niobium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:157
+msgid "Molybdenum"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:160
+msgid "Technetium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:163
+msgid "Ruthenium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:166
+msgid "Rhodium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:169
+msgid "Palladium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:172
+msgid "Silver"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:175
+msgid "Cadmium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:178
+msgid "Indium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:181
+msgid "Tin"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:184
+msgid "Antimony"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:187
+msgid "Tellurium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:190
+msgid "Iodine"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:193
+msgid "Xenon"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:196
+msgid "Caesium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:199
+msgid "Barium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:202
+msgid "Lanthanum"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:205
+msgid "Cerium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:208
+msgid "Praseodymium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:211
+msgid "Neodymium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:214
+msgid "Promethium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:217
+msgid "Samarium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:220
+msgid "Europium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:223
+msgid "Gadolinium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:226
+msgid "Terbium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:229
+msgid "Dysprosium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:232
+msgid "Holmium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:235
+msgid "Erbium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:238
+msgid "Thulium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:241
+msgid "Ytterbium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:244
+msgid "Lutetium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:247
+msgid "Hafnium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:250
+msgid "Tantalum"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:253
+msgid "Tungsten"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:256
+msgid "Rhenium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:259
+msgid "Osmium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:262
+msgid "Iridium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:265
+msgid "Platinum"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:268
+msgid "Gold"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:271
+msgid "Mercury"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:274
+msgid "Thallium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:277
+msgid "Lead"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:280
+msgid "Bismuth"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:283
+msgid "Polonium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:286
+msgid "Astatine"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:289
+msgid "Radon"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:292
+msgid "Francium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:295
+msgid "Radium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:298
+msgid "Actinium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:301
+msgid "Thorium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:304
+msgid "Protactinium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:307
+msgid "Uranium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:310
+msgid "Neptunium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:313
+msgid "Plutonium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:316
+msgid "Americium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:319
+msgid "Curium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:322
+msgid "Berkelium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:325
+msgid "Californium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:328
+msgid "Einsteinium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:331
+msgid "Fermium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:334
+msgid "Mendelevium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:337
+msgid "Nobelium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:340
+msgid "Lawrencium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:343
+msgid "Rutherfordium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:346
+msgid "Dubnium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:349
+msgid "Seaborgium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:352
+msgid "Bohrium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:355
+msgid "Hassium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:358
+msgid "Meitnerium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:361
+msgid "Darmstadtium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:364
+msgid "Roentgenium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:367
+msgid "Ununbium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:370
+msgid "Ununtrium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:373
+msgid "Ununquadium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:376
+msgid "Ununpentium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:379
+msgid "Ununhexium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:382
+msgid "Ununseptium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:385
+msgid "Ununoctium"
+msgstr ""
+
+#: libavogadro/src/elementtranslate.cpp:389 libavogadro/src/extension.cpp:31
+msgid "Unknown"
+msgstr ""
+
+#: libavogadro/src/engines/axesengine.cpp:43
+msgid "Renders the x, y and z axes"
+msgstr ""
+
+#: libavogadro/src/engines/axesengine.h:37
+msgid "Axes"
+msgstr ""
+
+#: libavogadro/src/engines/bsdyengine.cpp:87
+msgid "Renders primitives using Balls (atoms) and Sticks (bonds)."
+msgstr ""
+
+#: libavogadro/src/engines/bsdyengine.h:41 libavogadro/src/glwidget.cpp:1728
+msgid "Ball and Stick"
+msgstr ""
+
+#: libavogadro/src/engines/dipoleengine.cpp:38
+msgid "Renders dipole moments and other 3D data"
+msgstr ""
+
+#: libavogadro/src/engines/dipoleengine.h:37
+msgid "Dipole"
+msgstr ""
+
+#: libavogadro/src/engines/forceengine.cpp:46
+msgid "Renders forces on atoms"
+msgstr ""
+
+#: libavogadro/src/engines/forceengine.h:41
+msgid "Force"
+msgstr ""
+
+#: libavogadro/src/engines/hbondengine.cpp:48
+msgid "Renders hydrogen bonds"
+msgstr ""
+
+#: libavogadro/src/engines/hbondengine.h:42
+msgid "Hydrogen Bond"
+msgstr ""
+
+#: libavogadro/src/engines/labelengine.cpp:46
+msgid "Renders primitive labels"
+msgstr ""
+
+#: libavogadro/src/engines/labelengine.h:43
+msgid "Label"
+msgstr ""
+
+#: libavogadro/src/engines/orbitalengine.cpp:50
+msgid "Orbital Rendering"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/orbitaldialog.ui line 19
+#: libavogadro/src/engines/orbitalengine.h:45
+#: libavogadro/src/extensions/orbitalextension.h:44 rc.cpp:1623 rc.cpp:1623
+msgid "Orbitals"
+msgstr ""
+
+#: libavogadro/src/engines/polygonengine.cpp:41
+msgid "Renders structures as polygons"
+msgstr ""
+
+#: libavogadro/src/engines/polygonengine.h:38
+msgid "Polygon"
+msgstr ""
+
+#: libavogadro/src/engines/ribbonengine.cpp:48
+msgid "Renders residues as ribbons"
+msgstr ""
+
+#: libavogadro/src/engines/ribbonengine.h:41
+msgid "Ribbon"
+msgstr ""
+
+#: libavogadro/src/engines/ringengine.cpp:45
+msgid "Renders rings"
+msgstr ""
+
+#: libavogadro/src/engines/ringengine.h:41
+msgid "Ring"
+msgstr ""
+
+#: libavogadro/src/engines/sphereengine.cpp:49
+msgid "Renders atoms as Van der Waals spheres"
+msgstr ""
+
+#: libavogadro/src/engines/sphereengine.h:43
+msgid "Van der Waals Spheres"
+msgstr ""
+
+#: libavogadro/src/engines/stickengine.cpp:52
+msgid "Renders as Cylinders"
+msgstr ""
+
+#: libavogadro/src/engines/stickengine.h:40
+msgid "Stick"
+msgstr ""
+
+#: libavogadro/src/engines/surfaceengine.cpp:51
+msgid "Surface rendering"
+msgstr ""
+
+#: libavogadro/src/engines/surfaceengine.h:71
+msgid "Surface"
+msgstr ""
+
+#: libavogadro/src/engines/wireengine.cpp:48
+msgid "Wireframe rendering"
+msgstr ""
+
+#: libavogadro/src/engines/wireengine.h:43
+msgid "Wireframe"
+msgstr ""
+
+#: libavogadro/src/extension.cpp:36
+msgid "Unknown Extension"
+msgstr ""
+
+#: libavogadro/src/extensions/animationdialog.cpp:62
+msgid "Open trajectory file"
+msgstr ""
+
+#: libavogadro/src/extensions/animationdialog.cpp:63
+msgid "Trajectory files (*.xtc)"
+msgstr ""
+
+#: libavogadro/src/extensions/animationdialog.cpp:71
+#, qt-format
+msgid "%1/%2"
+msgstr ""
+
+#: libavogadro/src/extensions/animationextension.cpp:39
+msgid "Animation..."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 134
+#: libavogadro/src/extensions/animationextension.cpp:69
+#: libavogadro/src/extensions/dockingextension.cpp:123
+#: libavogadro/src/extensions/forcefieldextension.cpp:149
+#: libavogadro/src/extensions/gamessextension.cpp:92
+#: libavogadro/src/extensions/gaussianextension.cpp:63
+#: libavogadro/src/extensions/orbitalextension.cpp:71
+#: libavogadro/src/extensions/templateextension.cpp:70
+#: libavogadro/src/extensions/wiitrackextension.cpp:83 rc.cpp:72 rc.cpp:72
+msgid "&Extensions"
+msgstr ""
+
+#: libavogadro/src/extensions/animationextension.cpp:118
+#, qt-format
+msgid "Read trajectory file %1 failed."
+msgstr ""
+
+#: libavogadro/src/extensions/animationextension.h:54
+msgid "Animation"
+msgstr ""
+
+#: libavogadro/src/extensions/animationextension.h:56
+msgid "Animation Plugin"
+msgstr ""
+
+#: libavogadro/src/extensions/conformersearchdialog.cpp:131
+#, qt-format
+msgid "Number of atoms: %1"
+msgstr ""
+
+#: libavogadro/src/extensions/conformersearchdialog.cpp:132
+#, qt-format
+msgid "Number of rotatable bonds: %1"
+msgstr ""
+
+#: libavogadro/src/extensions/constraintsdialog.cpp:334
+#: libavogadro/src/extensions/constraintsdialog.cpp:357
+#: libavogadro/src/extensions/constraintsdialog.cpp:366
+#: libavogadro/src/extensions/constraintsdialog.cpp:376
+msgid "Add constraint"
+msgstr ""
+
+#: libavogadro/src/extensions/constraintsdialog.cpp:335
+msgid "Your molecule must contain at least one atom to add a constraint"
+msgstr ""
+
+#: libavogadro/src/extensions/constraintsdialog.cpp:358
+msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgstr ""
+
+#: libavogadro/src/extensions/constraintsdialog.cpp:367
+msgid ""
+"Your molecule must contain at least three atoms to add an angle constraint"
+msgstr ""
+
+#: libavogadro/src/extensions/constraintsdialog.cpp:377
+msgid ""
+"Your molecule must contain at least four atoms to add a torsion constraint"
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:58
+msgid "Create Ligand..."
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:63
+msgid "Create Binding Pocket..."
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:72
+msgid "Select Ligand"
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:77
+msgid "Select Binding Pocket"
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:82
+msgid "Select Ligand + Pocket"
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:91
+msgid "Dock..."
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:96
+msgid "View Poses..."
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:123
+msgid "&Docking"
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:160
+#: libavogadro/src/extensions/dockingextension.cpp:165
+msgid "Select ligand"
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:161
+msgid ""
+"Your ligands are stored in a different file, open that file to view them"
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:165
+#: libavogadro/src/extensions/dockingextension.cpp:197
+msgid "Create a ligand first..."
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:180
+msgid "Select binding pocket"
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:180
+#: libavogadro/src/extensions/dockingextension.cpp:201
+msgid "Create a binding pocket first..."
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:194
+#: libavogadro/src/extensions/dockingextension.cpp:197
+#: libavogadro/src/extensions/dockingextension.cpp:201
+msgid "Select ligand + pocket"
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.cpp:195
+msgid ""
+"Your ligands are stored in a different file, only the pocket will be selected"
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.h:62
+msgid "Docking"
+msgstr ""
+
+#: libavogadro/src/extensions/dockingextension.h:64
+msgid "Docking Plugin"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:66
+msgid "Optimize Geometry"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:71
+msgid "Setup Force Field..."
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:81
+msgid "Calculate Energy"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:86
+msgid "Conformer Search..."
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:97
+msgid "Constraints..."
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:102
+msgid "Ignore Selection"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:107
+msgid "Fix Selected Atoms"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:149
+msgid "&Molecular Mechanics"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:186
+#: libavogadro/src/extensions/forcefieldextension.cpp:205
+#: libavogadro/src/extensions/forcefieldextension.cpp:224
+msgid "Cannot set up the force field for this molecule."
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:191
+#, qt-format
+msgid "Energy = %1 %2"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:234
+msgid "Geometric Optimization"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:455
+msgid "Forcefield Optimization"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:456
+#: libavogadro/src/extensions/forcefieldextension.cpp:459
+#: libavogadro/src/extensions/forcefieldextension.cpp:462
+#: libavogadro/src/extensions/forcefieldextension.cpp:465
+msgid "Cancel"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:458
+msgid "Systematic Rotor Search"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:461
+msgid "Random Rotor Search"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.cpp:464
+msgid "Weighted Rotor Search"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.h:63
+msgid "ForceField"
+msgstr ""
+
+#: libavogadro/src/extensions/forcefieldextension.h:65
+msgid "ForceField Plugin"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessefpmatchdialog.cpp:49
+msgid "QM Matches"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:60
+msgid "Input Deck Generator..."
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:65
+msgid "EFP Selection..."
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:70
+msgid "QM Selection..."
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:92
+msgid "&GAMESS"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:98
+msgid "GAMESS EFP Information"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:99
+msgid "gamessEfpDock"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:113
+msgid "Delete"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:194
+msgid "No Atoms Selected"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:195
+msgid "You must make a selection!"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:202
+msgid "SMILES Conversion Unavailable"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:203
+msgid "SMILES Format Conversion Not Available!"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:291
+#: libavogadro/src/extensions/gamessextension.cpp:303
+#: libavogadro/src/extensions/gamessextension.cpp:482
+#: libavogadro/src/extensions/gamessextension.cpp:594
+msgid ", "
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:470
+msgid "Group Name"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:523
+msgid " ("
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:523
+msgid "qm"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.cpp:523
+msgid ")"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessextension.h:54
+msgid "GAMESS"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 13
+#: libavogadro/src/extensions/gamessextension.h:56 rc.cpp:561 rc.cpp:561
+msgid "GAMESS Input Deck Generator"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1956
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 40
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1956
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 40
+#: libavogadro/src/extensions/gamessinputdialog.cpp:635 rc.cpp:1086
+#: rc.cpp:1500 rc.cpp:1086 rc.cpp:1500
+msgid "Title"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1552
+msgid "Advanced Settings Changed"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1553
+msgid ""
+"Advanced settings have changed.\n"
+"Discard?"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1574
+msgid "Advanced Settings Reset"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1575
+msgid ""
+"Are you sure you wish to reset advanced settings?\n"
+"All changes will be lost!"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1587
+msgid "Basic Settings Reset"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1588
+msgid ""
+"Are you sure you wish to reset basic settings?\n"
+"All changes will be lost!"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1654
+msgid "Export Input Deck"
+msgstr ""
+
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1655
+msgid "GAMESS Input Deck (*.inp)"
+msgstr ""
+
+#: libavogadro/src/extensions/gaussianextension.cpp:43
+msgid "Gaussian Input..."
+msgstr ""
+
+#: libavogadro/src/extensions/gaussianextension.h:43
+msgid "Gaussian Input Deck"
+msgstr ""
+
+#: libavogadro/src/extensions/gaussianextension.h:46
+msgid "Gaussian input deck generator"
+msgstr ""
+
+#: libavogadro/src/extensions/gaussianinputdialog.cpp:149
+msgid "Save Gaussian Input Deck"
+msgstr ""
+
+#: libavogadro/src/extensions/gaussianinputdialog.cpp:150
+msgid "Gaussian Input Deck (*.com)"
+msgstr ""
+
+#: libavogadro/src/extensions/gaussianinputdialog.cpp:165
+msgid "Show Preview"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 459
+#: libavogadro/src/extensions/gaussianinputdialog.cpp:169 rc.cpp:1584
+#: rc.cpp:1584
+msgid "Hide Preview"
+msgstr ""
+
+#: libavogadro/src/extensions/h2methylextension.cpp:40
+msgid "Change H to Methyl"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 101
+#: libavogadro/src/extensions/h2methylextension.cpp:55
+#: libavogadro/src/extensions/hydrogensextension.cpp:59
+#: libavogadro/src/extensions/propextension.cpp:108
+#: libavogadro/src/extensions/propextension.cpp:111
+#: libavogadro/src/extensions/unitcellextension.cpp:61 rc.cpp:63 rc.cpp:63
+msgid "&Build"
+msgstr ""
+
+#: libavogadro/src/extensions/h2methylextension.cpp:78
+msgid "H to Methyl"
+msgstr ""
+
+#: libavogadro/src/extensions/h2methylextension.h:52
+msgid "H2Methyl"
+msgstr ""
+
+#: libavogadro/src/extensions/h2methylextension.h:54
+msgid "H2Methyl Plugin"
+msgstr ""
+
+#: libavogadro/src/extensions/hydrogensextension.cpp:40
+#: libavogadro/src/extensions/hydrogensextension.cpp:90
+msgid "Add Hydrogens"
+msgstr ""
+
+#: libavogadro/src/extensions/hydrogensextension.cpp:44
+#: libavogadro/src/extensions/hydrogensextension.cpp:93
+msgid "Remove Hydrogens"
+msgstr ""
+
+#: libavogadro/src/extensions/hydrogensextension.h:53
+msgid "Hydrogens"
+msgstr ""
+
+#: libavogadro/src/extensions/hydrogensextension.h:55
+msgid "Hydrogens Plugin"
+msgstr ""
+
+#: libavogadro/src/extensions/liganddialog.cpp:63
+msgid "Open ligand file"
+msgstr ""
+
+#: libavogadro/src/extensions/liganddialog.cpp:63
+msgid "Avogadro files (*.*)"
+msgstr ""
+
+#: libavogadro/src/extensions/orbitaldialog.cpp:107
+msgid "Open quantum file"
+msgstr ""
+
+#: libavogadro/src/extensions/orbitaldialog.cpp:108
+msgid "Quantum files (*.fchk *.fch)"
+msgstr ""
+
+#: libavogadro/src/extensions/orbitalextension.cpp:51
+msgid "Import Molecular Orbitals..."
+msgstr ""
+
+#: libavogadro/src/extensions/orbitalextension.h:47
+msgid "Orbital cube generator"
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.cpp:56
+msgid "Atom Properties..."
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.cpp:61
+msgid "Bond Properties..."
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.cpp:66
+msgid "Angles Properties..."
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.cpp:71
+msgid "Torsion Properties..."
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.cpp:76
+msgid "Conformers..."
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.cpp:81
+msgid "Cartesian Editor..."
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.cpp:108
+msgid "&Properties"
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.cpp:231
+#: libavogadro/src/primitiveitemmodel.cpp:253
+#: libavogadro/src/tools/selectrotatetool.cpp:394
+msgid "Atom"
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.cpp:234
+#: libavogadro/src/primitiveitemmodel.cpp:261
+msgid "Bond"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 78
+#: libavogadro/src/extensions/propextension.cpp:237 rc.cpp:489 rc.cpp:489
+msgid "Angle"
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.cpp:240
+msgid "Torsion"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 410
+#: libavogadro/src/extensions/propextension.cpp:243 rc.cpp:1578 rc.cpp:1578
+msgid "Cartesian"
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.cpp:246
+msgid "Conformer"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1188
+#: libavogadro/src/extensions/propextension.cpp:251
+#: libavogadro/src/extensions/propextension.h:63 rc.cpp:870 rc.cpp:870
+msgid "Properties"
+msgstr ""
+
+#: libavogadro/src/extensions/propextension.h:65
+msgid "Properties Plugin"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 40
+#: libavogadro/src/extensions/propmodel.cpp:249 rc.cpp:468 rc.cpp:468
+msgid "Type"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:251
+msgid "Atomic Number"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:253
+msgid "Isotope"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:255
+msgid "Formal Charge"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 79
+#: libavogadro/src/extensions/propmodel.cpp:257 rc.cpp:306 rc.cpp:306
+msgid "Partial Charge"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:259
+msgid "Valence"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:261
+#: libavogadro/src/extensions/propmodel.cpp:275
+msgid "Bond Order"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:263
+msgid "Chirality"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:266
+#: libavogadro/src/extensions/propmodel.cpp:325
+#, qt-format
+msgid "Atom %1"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:271
+#: libavogadro/src/extensions/propmodel.cpp:288
+msgid "Start Atom"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:273
+#: libavogadro/src/extensions/propmodel.cpp:292
+msgid "End Atom"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:277
+msgid "Length (Å)"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:279
+msgid "Rotatable"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:283
+#, qt-format
+msgid "Bond %1"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:290
+msgid "Vertex"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:294
+msgid "Angle (°)"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:297
+#, qt-format
+msgid "Angle %1"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:302
+#: libavogadro/src/extensions/propmodel.cpp:304
+#: libavogadro/src/extensions/propmodel.cpp:306
+#: libavogadro/src/extensions/propmodel.cpp:308
+msgid "Atom Index"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:310
+msgid "Torsion (°)"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:313
+#, qt-format
+msgid "Torsion %1"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:318
+msgid "X (Å)"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:320
+msgid "Y (Å)"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:322
+msgid "Z (Å)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1138
+#: libavogadro/src/extensions/propmodel.cpp:330 rc.cpp:840 rc.cpp:840
+msgid "Energy"
+msgstr ""
+
+#: libavogadro/src/extensions/propmodel.cpp:333
+#, qt-format
+msgid "Conformer %1"
+msgstr ""
+
+#: libavogadro/src/extensions/pythonextension.cpp:171
+msgid "&Scripts"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pythonterminalwidget.ui line 13
+#: libavogadro/src/extensions/pythonextension.cpp:178 rc.cpp:1668 rc.cpp:1668
+msgid "Python Terminal"
+msgstr ""
+
+#: libavogadro/src/extensions/pythonextension.cpp:181
+msgid "pythonTerminalDock"
+msgstr ""
+
+#: libavogadro/src/extensions/pythonextension.h:73
+msgid "Python"
+msgstr ""
+
+#: libavogadro/src/extensions/pythonextension.h:74
+msgid "Python helper things"
+msgstr ""
+
+#: libavogadro/src/extensions/selectextension.cpp:56
+msgid "&Invert Selection"
+msgstr ""
+
+#: libavogadro/src/extensions/selectextension.cpp:61
+msgid "Select SMARTS..."
+msgstr ""
+
+#: libavogadro/src/extensions/selectextension.cpp:66
+msgid "Select by Element..."
+msgstr ""
+
+#: libavogadro/src/extensions/selectextension.cpp:71
+msgid "Select by Residue..."
+msgstr ""
+
+#: libavogadro/src/extensions/selectextension.cpp:76
+msgid "Select Solvent"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 139
+#: libavogadro/src/extensions/selectextension.cpp:93 rc.cpp:75 rc.cpp:75
+msgid "&Select"
+msgstr ""
+
+#: libavogadro/src/extensions/selectextension.cpp:146
+msgid "SMARTS Selection"
+msgstr ""
+
+#: libavogadro/src/extensions/selectextension.cpp:147
+msgid "SMARTS pattern to select"
+msgstr ""
+
+#: libavogadro/src/extensions/selectextension.cpp:209
+msgid "Select by residue"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 69
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 60
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 55
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 69
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 60
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 55
+#: libavogadro/src/extensions/selectextension.cpp:209 rc.cpp:300 rc.cpp:1617
+#: rc.cpp:1656 rc.cpp:300 rc.cpp:1617 rc.cpp:1656
+msgid "Residue name"
+msgstr ""
+
+#: libavogadro/src/extensions/selectextension.h:49
+msgid "Selections"
+msgstr ""
+
+#: libavogadro/src/extensions/selectextension.h:51
+msgid "Selection Plugin"
+msgstr ""
+
+#: libavogadro/src/extensions/templateextension.cpp:42
+msgid "First Action"
+msgstr ""
+
+#: libavogadro/src/extensions/templateextension.cpp:48
+msgid "Second Action"
+msgstr ""
+
+#: libavogadro/src/extensions/templateextension.cpp:70
+#: libavogadro/src/extensions/templateextension.cpp:73
+msgid "&Template"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 121
+#: libavogadro/src/extensions/templateextension.cpp:73 rc.cpp:69 rc.cpp:69
+msgid "&Edit"
+msgstr ""
+
+#: libavogadro/src/extensions/templateextension.h:41
+msgid "Template"
+msgstr ""
+
+#: libavogadro/src/extensions/templateextension.h:42
+msgid "Template for developing extensions"
+msgstr ""
+
+#: libavogadro/src/extensions/unitcellextension.cpp:36
+msgid "Unit Cell Parameters..."
+msgstr ""
+
+#: libavogadro/src/extensions/unitcellextension.cpp:84
+msgid ""
+"This document is currently an isolated molecule.\n"
+"\n"
+"Do you want to create a crystal unit cell?"
+msgstr ""
+
+#: libavogadro/src/extensions/unitcellextension.h:52
+msgid "UnitCell"
+msgstr ""
+
+#: libavogadro/src/extensions/unitcellextension.h:54
+msgid "Unit Cell Parameters Plugin"
+msgstr ""
+
+#: libavogadro/src/extensions/unitcellparamdialog.cpp:94
+#: libavogadro/src/extensions/unitcellparamdialog.cpp:99
+msgid "Apply"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 212
+#: libavogadro/src/extensions/unitcellparamdialog.cpp:97 rc.cpp:519 rc.cpp:519
+msgid "OK"
+msgstr ""
+
+#: libavogadro/src/extensions/wiitrackextension.cpp:58
+msgid "Connect"
+msgstr ""
+
+#: libavogadro/src/extensions/wiitrackextension.cpp:63
+msgid "Disconnect"
+msgstr ""
+
+#: libavogadro/src/extensions/wiitrackextension.cpp:83
+msgid "&WiiTrack"
+msgstr ""
+
+#: libavogadro/src/extensions/wiitrackextension.h:52
+msgid "WiiTrack"
+msgstr ""
+
+#: libavogadro/src/extensions/wiitrackextension.h:54
+msgid "WiiTrack Plugin"
+msgstr ""
+
+#: libavogadro/src/glwidget.cpp:539
+msgid ""
+"Invalid OpenGL context.\n"
+"Either something is completely broken in your OpenGL setup (can you run any "
+"OpenGL application?), or you found a bug."
+msgstr ""
+
+#: libavogadro/src/glwidget.cpp:544
+msgid "OpenGL error"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 636
+#: libavogadro/src/glwidget.cpp:947 rc.cpp:234 rc.cpp:234
+msgid "Debug Information"
+msgstr ""
+
+#: libavogadro/src/glwidget.cpp:948
+msgid "FPS"
+msgstr ""
+
+#: libavogadro/src/glwidget.cpp:950
+msgid "View Size"
+msgstr ""
+
+#: libavogadro/src/glwidget.cpp:956 libavogadro/src/primitiveitemmodel.cpp:297
+msgid "Atoms"
+msgstr ""
+
+#: libavogadro/src/glwidget.cpp:959 libavogadro/src/primitiveitemmodel.cpp:299
+msgid "Bonds"
+msgstr ""
+
+#: libavogadro/src/primitiveitemmodel.cpp:249
+#: libavogadro/src/tools/aligntool.cpp:293
+#: libavogadro/src/tools/selectrotatetool.cpp:396
+msgid "Molecule"
+msgstr ""
+
+#: libavogadro/src/primitiveitemmodel.cpp:281
+#: libavogadro/src/tools/selectrotatetool.cpp:395
+msgid "Residue"
+msgstr ""
+
+#: libavogadro/src/primitiveitemmodel.cpp:301
+msgid "Residues"
+msgstr ""
+
+#: libavogadro/src/tool.cpp:56
+msgid "No Description"
+msgstr ""
+
+#: libavogadro/src/tools/aligntool.cpp:56
+msgid ""
+"Align Molecules\n"
+"\n"
+"Left Mouse: \tSelect up to two atoms.\n"
+"\tThe first atom is centered at the origin.\n"
+"\tThe second atom is aligned to the selected axis.\n"
+"Right Mouse: \tReset alignment."
+msgstr ""
+
+#: libavogadro/src/tools/aligntool.cpp:276
+msgid "Axis:"
+msgstr ""
+
+#: libavogadro/src/tools/aligntool.cpp:287
+msgid "Align:"
+msgstr ""
+
+#: libavogadro/src/tools/aligntool.cpp:292
+msgid "Everything"
+msgstr ""
+
+#: libavogadro/src/tools/aligntool.cpp:297
+#: libavogadro/src/tools/aligntool.h:54
+msgid "Align"
+msgstr ""
+
+#: libavogadro/src/tools/aligntool.h:56
+msgid "Align molecules"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:54
+msgid ""
+"Auto Optimization Tool\n"
+"\n"
+"Navigation Functions when Clicking in empty space.\n"
+"Left Mouse: Rotate Space\n"
+"Middle Mouse: Zoom Space\n"
+"Right Mouse: Move Space\n"
+"\n"
+"Extra Function when running\n"
+"Left Mouse: Click and drag atoms to move them"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:287
+msgid "AutoOpt: Could not setup force field...."
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:291
+#, qt-format
+msgid "AutoOpt: E = %1 %2 (dE = %3)"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:331
+msgid "Force Field:"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:346
+msgid "Steps per Update:"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:361
+msgid "Algorithm:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 90
+#: libavogadro/src/tools/autoopttool.cpp:366 rc.cpp:543 rc.cpp:543
+msgid "Steepest Descent"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 95
+#: libavogadro/src/tools/autoopttool.cpp:367 rc.cpp:546 rc.cpp:546
+msgid "Conjugate Gradients"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:368
+msgid "Molecular Dynamics (300K)"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:369
+msgid "Molecular Dynamics (600K)"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:370
+msgid "Molecular Dynamics (900K)"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:372
+#: libavogadro/src/tools/autoopttool.cpp:457
+#: libavogadro/src/tools/autorotatetool.cpp:224
+#: libavogadro/src/tools/autorotatetool.cpp:285
+msgid "Start"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:374
+msgid "Fixed atoms are movable"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:375
+msgid "Ignored atoms are movable"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:431
+#: libavogadro/src/tools/autorotatetool.cpp:214
+msgid "Stop"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.cpp:620
+msgid "AutoOpt Molecule"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.h:102
+msgid "AutoOptimization"
+msgstr ""
+
+#: libavogadro/src/tools/autoopttool.h:104
+msgid "Automatic Optimization Tool"
+msgstr ""
+
+#: libavogadro/src/tools/autorotatetool.cpp:52
+#: libavogadro/src/tools/autorotatetool.h:67
+msgid "Auto Rotation Tool"
+msgstr ""
+
+#: libavogadro/src/tools/autorotatetool.cpp:239
+msgid "x rotation:"
+msgstr ""
+
+#: libavogadro/src/tools/autorotatetool.cpp:245
+msgid "x rotation"
+msgstr ""
+
+#: libavogadro/src/tools/autorotatetool.cpp:255
+msgid "y rotation:"
+msgstr ""
+
+#: libavogadro/src/tools/autorotatetool.cpp:260
+msgid "y rotation"
+msgstr ""
+
+#: libavogadro/src/tools/autorotatetool.cpp:270
+msgid "z rotation:"
+msgstr ""
+
+#: libavogadro/src/tools/autorotatetool.cpp:275
+msgid "z rotation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 488
+#: libavogadro/src/tools/autorotatetool.cpp:286 rc.cpp:1587 rc.cpp:1587
+msgid "Reset"
+msgstr ""
+
+#: libavogadro/src/tools/autorotatetool.h:65
+msgid "AutoRotate"
+msgstr ""
+
+#: libavogadro/src/tools/bondcentrictool.cpp:81
+msgid ""
+"Bond Centric Manipulation Tool\n"
+"\n"
+"Left Mouse:   Click and drag to rotate the view\n"
+"Middle Mouse: Click and drag to zoom in or out\n"
+"Right Mouse:  Click and drag to move the view\n"
+"\n"
+"Left Click & drag on a Bond to set the Manipulation Plane:\n"
+"- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+"- Right Click & Drag one of the Atoms in the Bond to change the length"
+msgstr ""
+
+#: libavogadro/src/tools/bondcentrictool.cpp:875
+msgid "Bond Length:  "
+msgstr ""
+
+#: libavogadro/src/tools/bondcentrictool.cpp:1806
+msgid " Show Angles"
+msgstr ""
+
+#: libavogadro/src/tools/bondcentrictool.cpp:1809
+msgid " Snap-to Bonds"
+msgstr ""
+
+#: libavogadro/src/tools/bondcentrictool.cpp:1812
+msgid "Snap-to Threshold: "
+msgstr ""
+
+#: libavogadro/src/tools/bondcentrictool.cpp:1866
+#: libavogadro/src/tools/bondcentrictool.cpp:1881
+msgid "Bond Centric Manipulation"
+msgstr ""
+
+#: libavogadro/src/tools/bondcentrictool.h:76
+msgid "Bond Centric Manipulate"
+msgstr ""
+
+#: libavogadro/src/tools/bondcentrictool.h:78
+msgid "Bond Centric Manipulation Tool"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.cpp:50
+msgid ""
+"Click to Measure (F12)\n"
+"\n"
+"Left Mouse: \tSelect up to three Atoms.\n"
+"\tDistances are measured between 1-2 and 2-3\n"
+"\tAngle is measured between 1-3 using 2 as the common point\n"
+"Right Mouse: Reset the measurements."
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.cpp:146
+#, qt-format
+msgid "Distance (1->2): %1 %2"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.cpp:164
+#, qt-format
+msgid "Distance (2->3): %1 %2"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.cpp:171
+#, qt-format
+msgid "Angle: %1 %2"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.cpp:193
+#, qt-format
+msgid "Distance (3->4): %1 %2"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.cpp:208
+#, qt-format
+msgid "Dihedral Angle: %1 %2"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.cpp:254
+msgid "*1"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.cpp:262
+msgid "*2"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.cpp:271
+msgid "*3"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.cpp:280
+msgid "*4"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.cpp:284
+msgid "Distance(s):"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.h:61
+msgid "Measure"
+msgstr ""
+
+#: libavogadro/src/tools/clickmeasuretool.h:63
+msgid "Click to Measure Tool"
+msgstr ""
+
+#: libavogadro/src/tools/drawcommand.cpp:75
+#: libavogadro/src/tools/drawcommand.cpp:85
+msgid "Add Atom"
+msgstr ""
+
+#: libavogadro/src/tools/drawcommand.cpp:173
+msgid "Delete Atom"
+msgstr ""
+
+#: libavogadro/src/tools/drawcommand.cpp:240
+#: libavogadro/src/tools/drawcommand.cpp:250
+msgid "Add Bond"
+msgstr ""
+
+#: libavogadro/src/tools/drawcommand.cpp:392
+msgid "Delete Bond"
+msgstr ""
+
+#: libavogadro/src/tools/drawcommand.cpp:448
+msgid "Change Element"
+msgstr ""
+
+#: libavogadro/src/tools/drawcommand.cpp:515
+#: libavogadro/src/tools/drawtool.cpp:421
+msgid "Change Bond Order"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/tools/insertfragmentdialog.ui line 92
+#: libavogadro/src/tools/drawcommand.cpp:591
+#: libavogadro/src/tools/insertfragmentdialog.cpp:215 rc.cpp:1731 rc.cpp:1731
+msgid "Insert Fragment"
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.cpp:71
+msgid ""
+"Draw Tool (F8)\n"
+"\n"
+"Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+"Right Mouse: Delete Atom"
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.cpp:368
+#: libavogadro/src/tools/drawtool.cpp:374
+msgid "Draw Atom"
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.cpp:380
+msgid "Draw Bond"
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.cpp:389 libavogadro/src/tools/drawtool.h:64
+msgid "Draw"
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.cpp:649
+msgid "Element:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1595
+#: libavogadro/src/tools/drawtool.cpp:676 rc.cpp:1011 rc.cpp:1011
+msgid "Other..."
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.cpp:680
+msgid "Bond Order:"
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.cpp:685
+msgid "Single"
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.cpp:686
+msgid "Double"
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.cpp:687
+msgid "Triple"
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.cpp:702
+msgid "Adjust Hydrogens"
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.cpp:706
+msgid "Fragment Library..."
+msgstr ""
+
+#: libavogadro/src/tools/drawtool.h:66
+msgid "Draws Things"
+msgstr ""
+
+#: libavogadro/src/tools/insertfragmentdialog.cpp:203
+#: libavogadro/src/tools/insertfragmentdialog.cpp:211
+#: libavogadro/src/tools/insertfragmentdialog.cpp:230
+msgid "Stop Inserting"
+msgstr ""
+
+#: libavogadro/src/tools/insertfragmentdialog.cpp:237
+msgid "Open Directory"
+msgstr ""
+
+#: libavogadro/src/tools/manipulatetool.cpp:50
+msgid ""
+"Manipulation Tool (F10)\n"
+"\n"
+"Left Mouse:   Click and drag to move atoms\n"
+"Middle Mouse: Click and drag to move atoms further away or closer\n"
+"Right Mouse:  Click and drag to rotate selected atoms."
+msgstr ""
+
+#: libavogadro/src/tools/manipulatetool.cpp:379
+#: libavogadro/src/tools/manipulatetool.cpp:388
+msgid "Manipulate Atom"
+msgstr ""
+
+#: libavogadro/src/tools/manipulatetool.h:65
+msgid "Manipulation Tool"
+msgstr ""
+
+#: libavogadro/src/tools/navigatetool.cpp:50
+msgid ""
+"Navigation Tool (F9)\n"
+"\n"
+"Left Mouse:   Click and drag to rotate the view\n"
+"Middle Mouse: Click and drag to zoom in or out\n"
+"Right Mouse:  Click and drag to move the view"
+msgstr ""
+
+#: libavogadro/src/tools/navigatetool.h:77
+msgid "Navigation Tool"
+msgstr ""
+
+#: libavogadro/src/tools/selectrotatetool.cpp:55
+msgid ""
+"Selection Tool (F11)\n"
+"Click to pick individual atoms, residues, or fragments\n"
+"Drag to select a range of atoms\n"
+"Use Ctrl to toggle the selection and shift to add to the selection"
+msgstr ""
+
+#: libavogadro/src/tools/selectrotatetool.cpp:389
+msgid "Selection Mode:"
+msgstr ""
+
+#: libavogadro/src/tools/selectrotatetool.h:62
+msgid "Select/Rotate"
+msgstr ""
+
+#: libavogadro/src/tools/selectrotatetool.h:64
+msgid "Selection and Rotation Tool"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/addenginedialog.ui line 13
+#: rc.cpp:3 rc.cpp:3
+msgid "Add Display Type"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/addenginedialog.ui line 19
+#: rc.cpp:6 rc.cpp:6
+msgid "Type:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/addenginedialog.ui line 32
+#: rc.cpp:9 rc.cpp:9
+msgid "Name:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/addenginedialog.ui line 45
+#: rc.cpp:12 rc.cpp:12
+msgid "Description:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 41
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 44
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 41
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 44
+#: rc.cpp:15 rc.cpp:18 rc.cpp:15 rc.cpp:18
+msgid "Add Selected Primitives"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 54
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 57
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 54
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 57
+#: rc.cpp:21 rc.cpp:24 rc.cpp:21 rc.cpp:24
+msgid "Remove Selected Primitives"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 67
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 70
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 67
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 70
+#: rc.cpp:27 rc.cpp:30 rc.cpp:27 rc.cpp:30
+msgid "Add All Primitives"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 80
+#: rc.cpp:33 rc.cpp:33
+msgid "Assign Engine to Selected Primitives"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/engineprimitiveswidget.ui line 83
+#: rc.cpp:36 rc.cpp:36
+msgid "Assign to Selection"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 40
+#: rc.cpp:42 rc.cpp:42
+msgid "&Help"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 54
+#: rc.cpp:45 rc.cpp:45
+msgid "&File"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 58
+#: rc.cpp:48 rc.cpp:48
+msgid "Open &Recent"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 63
+#: rc.cpp:51 rc.cpp:51
+msgid "Export"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 86
+#: rc.cpp:57 rc.cpp:57
+msgid "Toolbars"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 91
+#: rc.cpp:60 rc.cpp:60
+msgid "&Docks"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 106
+#: rc.cpp:66 rc.cpp:66
+msgid "&View"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 174
+#: rc.cpp:78 rc.cpp:78
+msgid "Main Toolbar"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 213
+#: rc.cpp:81 rc.cpp:81
+msgid "Project"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 269
+#: rc.cpp:84 rc.cpp:84
+msgid "Tools"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 298
+#: rc.cpp:87 rc.cpp:87
+msgid "Display Types"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 320
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 332
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 320
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 332
+#: rc.cpp:90 rc.cpp:96 rc.cpp:90 rc.cpp:96
+msgid "&Open"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 323
+#: rc.cpp:93 rc.cpp:93
+msgid "Ctrl+O"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 341
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 353
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 341
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 353
+#: rc.cpp:99 rc.cpp:105 rc.cpp:99 rc.cpp:105
+msgid "&Quit"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 344
+#: rc.cpp:102 rc.cpp:102
+msgid "Ctrl+Q"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 358
+#: rc.cpp:108 rc.cpp:108
+msgid "Recent"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 363
+#: rc.cpp:111 rc.cpp:111
+msgid "&Clear Recent"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 372
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 384
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 372
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 384
+#: rc.cpp:114 rc.cpp:120 rc.cpp:114 rc.cpp:120
+msgid "&New"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 375
+#: rc.cpp:117 rc.cpp:117
+msgid "Ctrl+N"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 393
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 405
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 393
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 405
+#: rc.cpp:123 rc.cpp:129 rc.cpp:123 rc.cpp:129
+msgid "&Close"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 396
+#: rc.cpp:126 rc.cpp:126
+msgid "Ctrl+W"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 414
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 426
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 414
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 426
+#: rc.cpp:132 rc.cpp:138 rc.cpp:132 rc.cpp:138
+msgid "&Save"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 417
+#: rc.cpp:135 rc.cpp:135
+msgid "Ctrl+S"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 435
+#: rc.cpp:141 rc.cpp:141
+msgid "Save &As..."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 438
+#: rc.cpp:144 rc.cpp:144
+msgid "Ctrl+Shift+S"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 447
+#: rc.cpp:147 rc.cpp:147
+msgid "Revert To Saved"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 456
+#: rc.cpp:150 rc.cpp:150
+msgid "&Export Graphics..."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 465
+#: rc.cpp:153 rc.cpp:153
+msgid "&Full Screen Mode"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 474
+#: rc.cpp:156 rc.cpp:156
+msgid "Set &Background Color..."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 479
+#: rc.cpp:159 rc.cpp:159
+msgid "&About"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 488
+#: rc.cpp:162 rc.cpp:162
+msgid "&Undo"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 491
+#: rc.cpp:165 rc.cpp:165
+msgid "Ctrl+Z"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 500
+#: rc.cpp:168 rc.cpp:168
+msgid "&Redo"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 503
+#: rc.cpp:171 rc.cpp:171
+msgid "Ctrl+Shift+Z"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 512
+#: rc.cpp:174 rc.cpp:174
+msgid "New View"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 524
+#: rc.cpp:177 rc.cpp:177
+msgid "Close View"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 533
+#: rc.cpp:180 rc.cpp:180
+msgid "Center"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 542
+#: rc.cpp:183 rc.cpp:183
+msgid "&Paste"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 545
+#: rc.cpp:186 rc.cpp:186
+msgid "Ctrl+V"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 554
+#: rc.cpp:189 rc.cpp:189
+msgid "Copy"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 557
+#: rc.cpp:192 rc.cpp:192
+msgid "Ctrl+C"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 566
+#: rc.cpp:195 rc.cpp:195
+msgid "Cut"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 569
+#: rc.cpp:198 rc.cpp:198
+msgid "Ctrl+X"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 574
+#: rc.cpp:201 rc.cpp:201
+msgid "Clear"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 577
+#: rc.cpp:204 rc.cpp:204
+msgid "Ctrl+Backspace"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 582
+#: rc.cpp:207 rc.cpp:207
+msgid "Select All"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 585
+#: rc.cpp:210 rc.cpp:210
+msgid "Ctrl+A"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 590
+#: rc.cpp:213 rc.cpp:213
+msgid "Select None"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 593
+#: rc.cpp:216 rc.cpp:216
+msgid "Ctrl+Shift+A"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 602
+#: rc.cpp:219 rc.cpp:219
+msgid "Configure Avogadro..."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 607
+#: rc.cpp:222 rc.cpp:222
+msgid "Export POVRay..."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 615
+#: rc.cpp:225 rc.cpp:225
+msgid "Tutorials"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 620
+#: rc.cpp:228 rc.cpp:228
+msgid "Duplicate View"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 628
+#: rc.cpp:231 rc.cpp:231
+msgid "Display Axes"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 644
+#: rc.cpp:237 rc.cpp:237
+msgid "Avogadro Help"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 649
+#: rc.cpp:240 rc.cpp:240
+msgid "Release Notes"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 654
+#: rc.cpp:243 rc.cpp:243
+msgid "Report a Bug"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 659
+#: rc.cpp:246 rc.cpp:246
+msgid "FAQ"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/mainwindow.ui line 664
+#: rc.cpp:249 rc.cpp:249
+msgid "Avogadro Website"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/settingsdialog.ui line 28
+#: rc.cpp:255 rc.cpp:255
+msgid "Quality:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/settingsdialog.ui line 69
+#: rc.cpp:258 rc.cpp:258
+msgid "Medium"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./avogadro/src/settingsdialog.ui line 81
+#: rc.cpp:261 rc.cpp:261
+msgid "Tabbed Tools"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/bsdysettingswidget.ui line 18
+#: rc.cpp:264 rc.cpp:264
+msgid "Atom Radius:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/bsdysettingswidget.ui line 47
+#: rc.cpp:267 rc.cpp:267
+msgid "Bond Radius:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/bsdysettingswidget.ui line 78
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/wiresettingswidget.ui line 31
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/bsdysettingswidget.ui line 78
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/wiresettingswidget.ui line 31
+#: rc.cpp:270 rc.cpp:417 rc.cpp:270 rc.cpp:417
+msgid "Show Multiple Bonds"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/hbondsettingswidget.ui line 16
+#: rc.cpp:273 rc.cpp:273
+msgid "Width:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/hbondsettingswidget.ui line 57
+#: rc.cpp:276 rc.cpp:276
+msgid "Cut-off radius:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/hbondsettingswidget.ui line 64
+#: rc.cpp:279 rc.cpp:279
+msgid "A"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/hbondsettingswidget.ui line 74
+#: rc.cpp:282 rc.cpp:282
+msgid "°"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/hbondsettingswidget.ui line 90
+#: rc.cpp:285 rc.cpp:285
+msgid "Cut-off angle:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 22
+#: rc.cpp:288 rc.cpp:288
+msgid "Atom Labels:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 54
+#: rc.cpp:291 rc.cpp:291
+msgid "Atom number"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 59
+#: rc.cpp:294 rc.cpp:294
+msgid "Element symbol"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 64
+#: rc.cpp:297 rc.cpp:297
+msgid "Element name"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 74
+#: rc.cpp:303 rc.cpp:303
+msgid "Residue number"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 84
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 134
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 705
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1350
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1420
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1466
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2785
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 84
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 134
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 705
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1350
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1420
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1466
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2785
+#: rc.cpp:309 rc.cpp:321 rc.cpp:720 rc.cpp:924 rc.cpp:948 rc.cpp:972
+#: rc.cpp:1245 rc.cpp:309 rc.cpp:321 rc.cpp:720 rc.cpp:924 rc.cpp:948
+#: rc.cpp:972 rc.cpp:1245
+msgid "None"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 92
+#: rc.cpp:312 rc.cpp:312
+msgid "Bond Labels:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 124
+#: rc.cpp:315 rc.cpp:315
+msgid "Bond number"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/labelsettingswidget.ui line 129
+#: rc.cpp:318 rc.cpp:318
+msgid "Bond order"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 16
+#: rc.cpp:324 rc.cpp:324
+msgid "Orbital:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 29
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/ringsettingswidget.ui line 16
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 16
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 29
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/ringsettingswidget.ui line 16
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 16
+#: rc.cpp:327 rc.cpp:375 rc.cpp:384 rc.cpp:327 rc.cpp:375 rc.cpp:384
+msgid "Opacity:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 73
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 57
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 73
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 57
+#: rc.cpp:330 rc.cpp:387 rc.cpp:330 rc.cpp:387
+msgid "Render:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 84
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 65
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 84
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 65
+#: rc.cpp:333 rc.cpp:390 rc.cpp:333 rc.cpp:390
+msgid "Fill"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 89
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/ribbonsettingswidget.ui line 29
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 70
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 89
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/ribbonsettingswidget.ui line 29
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 70
+#: rc.cpp:336 rc.cpp:366 rc.cpp:393 rc.cpp:336 rc.cpp:366 rc.cpp:393
+msgid "Lines"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 94
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 75
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 94
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 75
+#: rc.cpp:339 rc.cpp:396 rc.cpp:339 rc.cpp:396
+msgid "Points"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 102
+#: rc.cpp:342 rc.cpp:342
+msgid "Draw Box:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 125
+#: rc.cpp:345 rc.cpp:345
+msgid "IsoValue:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 154
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 83
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 154
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 83
+#: rc.cpp:348 rc.cpp:399 rc.cpp:348 rc.cpp:399
+msgid "Color:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 166
+#: rc.cpp:351 rc.cpp:351
+msgid "Positive"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 189
+#: rc.cpp:354 rc.cpp:354
+msgid "Negative"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 242
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 431
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3557
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/orbitaldialog.ui line 45
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/orbitalsettingswidget.ui line 242
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 431
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3557
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/orbitaldialog.ui line 45
+#: rc.cpp:357 rc.cpp:663 rc.cpp:1422 rc.cpp:1629 rc.cpp:357 rc.cpp:663
+#: rc.cpp:1422 rc.cpp:1629
+msgid "Calculate"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/ribbonsettingswidget.ui line 16
+#: rc.cpp:360 rc.cpp:360
+msgid "Rendering:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/ribbonsettingswidget.ui line 24
+#: rc.cpp:363 rc.cpp:363
+msgid "Backbone"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/ribbonsettingswidget.ui line 37
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/sticksettingswidget.ui line 16
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/ribbonsettingswidget.ui line 37
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/sticksettingswidget.ui line 16
+#: rc.cpp:369 rc.cpp:381 rc.cpp:369 rc.cpp:381
+msgid "Radius:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/ribbonsettingswidget.ui line 91
+#: rc.cpp:372 rc.cpp:372
+msgid "Include Nitrogens"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/spheresettingswidget.ui line 16
+#: rc.cpp:378 rc.cpp:378
+msgid "VdW Opacity:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 91
+#: rc.cpp:402 rc.cpp:402
+msgid "Custom Color"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 96
+#: rc.cpp:405 rc.cpp:405
+msgid "Electrostatic Potential (ESP)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 104
+#: rc.cpp:408 rc.cpp:408
+msgid "Custom Color:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/surfacesettingswidget.ui line 189
+#: rc.cpp:411 rc.cpp:411
+msgid "Clipping plane: Ax + By + Cz + D = 0"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/engines/wiresettingswidget.ui line 18
+#: rc.cpp:414 rc.cpp:414
+msgid "Show Atoms"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/animationdialog.ui line 13
+#: rc.cpp:420 rc.cpp:420
+msgid "Dialog"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/animationdialog.ui line 24
+#: rc.cpp:423 rc.cpp:423
+msgid "Load File..."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/animationdialog.ui line 44
+#: rc.cpp:426 rc.cpp:426
+msgid "0/0"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/animationdialog.ui line 158
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2502
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/animationdialog.ui line 158
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2502
+#: rc.cpp:429 rc.cpp:1194 rc.cpp:429 rc.cpp:1194
+msgid "Loop"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/animationdialog.ui line 178
+#: rc.cpp:432 rc.cpp:432
+msgid "fps"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/conformersearchdialog.ui line 13
+#: rc.cpp:435 rc.cpp:435
+msgid "Conformer Search"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/conformersearchdialog.ui line 19
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 132
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/conformersearchdialog.ui line 19
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 132
+#: rc.cpp:438 rc.cpp:504 rc.cpp:438 rc.cpp:504
+msgid "Options"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/conformersearchdialog.ui line 25
+#: rc.cpp:441 rc.cpp:441
+msgid "Number of atoms:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/conformersearchdialog.ui line 32
+#: rc.cpp:444 rc.cpp:444
+msgid "Number of rotatable bonds:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/conformersearchdialog.ui line 41
+#: rc.cpp:447 rc.cpp:447
+msgid "Number of conformers"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/conformersearchdialog.ui line 60
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3394
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 21
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 34
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 21
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 34
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/conformersearchdialog.ui line 60
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3394
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 21
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 34
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 21
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 34
+#: rc.cpp:450 rc.cpp:1386 rc.cpp:1602 rc.cpp:1605 rc.cpp:1644 rc.cpp:1647
+#: rc.cpp:450 rc.cpp:1386 rc.cpp:1602 rc.cpp:1605 rc.cpp:1644 rc.cpp:1647
+msgid "Method"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/conformersearchdialog.ui line 66
+#: rc.cpp:453 rc.cpp:453
+msgid "Systematic rotor search"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/conformersearchdialog.ui line 73
+#: rc.cpp:456 rc.cpp:456
+msgid "Random rotor search"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/conformersearchdialog.ui line 80
+#: rc.cpp:459 rc.cpp:459
+msgid "Weighted rotor search"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 13
+#: rc.cpp:462 rc.cpp:462
+msgid "Constraints"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 26
+#: rc.cpp:465 rc.cpp:465
+msgid "Add Constraints"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 48
+#: rc.cpp:471 rc.cpp:471
+msgid "Ignore Atom"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 53
+#: rc.cpp:474 rc.cpp:474
+msgid "Fix Atom"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 58
+#: rc.cpp:477 rc.cpp:477
+msgid "Fix Atom X"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 63
+#: rc.cpp:480 rc.cpp:480
+msgid "Fix Atom Y"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 68
+#: rc.cpp:483 rc.cpp:483
+msgid "Fix Atom Z"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 73
+#: rc.cpp:486 rc.cpp:486
+msgid "Distance"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 83
+#: rc.cpp:492 rc.cpp:492
+msgid "Torsion angle"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 91
+#: rc.cpp:495 rc.cpp:495
+msgid "Constraint Value"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 101
+#: rc.cpp:498 rc.cpp:498
+msgid "Atom Indices"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 153
+#: rc.cpp:510 rc.cpp:510
+msgid "Load"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 185
+#: rc.cpp:513 rc.cpp:513
+msgid "Delete Selected"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/constraintsdialog.ui line 192
+#: rc.cpp:516 rc.cpp:516
+msgid "Delete All"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 13
+#: rc.cpp:522 rc.cpp:522
+msgid "Setup Force Field"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 25
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 31
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 25
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 31
+#: rc.cpp:525 rc.cpp:528 rc.cpp:525 rc.cpp:528
+msgid "Force Field"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 42
+#: rc.cpp:531 rc.cpp:531
+msgid "Ghemical"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 59
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 68
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 59
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 68
+#: rc.cpp:534 rc.cpp:1509 rc.cpp:534 rc.cpp:1509
+msgid "Geometry Optimization"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 65
+#: rc.cpp:537 rc.cpp:537
+msgid "Number of steps"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 82
+#: rc.cpp:540 rc.cpp:540
+msgid "Algorithm"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 103
+#: rc.cpp:549 rc.cpp:549
+msgid "Convergence"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/forcefielddialog.ui line 113
+#: rc.cpp:552 rc.cpp:552
+msgid "10e-"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessefpmatchdialog.ui line 16
+#: rc.cpp:555 rc.cpp:555
+msgid "EFP Matches"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessefpmatchdialog.ui line 25
+#: rc.cpp:558 rc.cpp:558
+msgid "Group Label:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 41
+#: rc.cpp:564 rc.cpp:564
+msgid "&Basic Setup"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 89
+#: rc.cpp:567 rc.cpp:567
+msgid "megabytes"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 129
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 949
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 149
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 129
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 949
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 149
+#: rc.cpp:570 rc.cpp:801 rc.cpp:1521 rc.cpp:570 rc.cpp:801 rc.cpp:1521
+msgid "AM1"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 134
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 954
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 154
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 134
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 954
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 154
+#: rc.cpp:573 rc.cpp:804 rc.cpp:1524 rc.cpp:573 rc.cpp:804 rc.cpp:1524
+msgid "PM3"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 139
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1284
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 159
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 139
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1284
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 159
+#: rc.cpp:576 rc.cpp:906 rc.cpp:1527 rc.cpp:576 rc.cpp:906 rc.cpp:1527
+msgid "RHF"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 144
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3029
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 164
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 144
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3029
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 164
+#: rc.cpp:579 rc.cpp:1296 rc.cpp:1530 rc.cpp:579 rc.cpp:1296 rc.cpp:1530
+msgid "B3LYP"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 149
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 607
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 169
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 149
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 607
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 169
+#: rc.cpp:582 rc.cpp:696 rc.cpp:1533 rc.cpp:582 rc.cpp:696 rc.cpp:1533
+msgid "MP2"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 154
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1486
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 154
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1486
+#: rc.cpp:585 rc.cpp:984 rc.cpp:585 rc.cpp:984
+msgid "CCSD(T)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 163
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 864
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 213
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 163
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 864
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 213
+#: rc.cpp:588 rc.cpp:750 rc.cpp:1542 rc.cpp:588 rc.cpp:750 rc.cpp:1542
+msgid "STO-3G"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 168
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 849
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 168
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 849
+#: rc.cpp:591 rc.cpp:741 rc.cpp:591 rc.cpp:741
+msgid "MINI"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 173
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 884
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 218
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 173
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 884
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 218
+#: rc.cpp:594 rc.cpp:762 rc.cpp:1545 rc.cpp:594 rc.cpp:762 rc.cpp:1545
+msgid "3-21G"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 178
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 223
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 178
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 223
+#: rc.cpp:597 rc.cpp:1548 rc.cpp:597 rc.cpp:1548
+msgid "6-31G(d)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 183
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 228
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 183
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 228
+#: rc.cpp:600 rc.cpp:1551 rc.cpp:600 rc.cpp:1551
+msgid "6-31G(d,p)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 188
+#: rc.cpp:603 rc.cpp:603
+msgid "6-31+G(d,p)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 193
+#: rc.cpp:606 rc.cpp:606
+msgid "6-31+G(2d,p)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 198
+#: rc.cpp:609 rc.cpp:609
+msgid "6-311++G(2d,p)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 203
+#: rc.cpp:612 rc.cpp:612
+msgid "Core Potential"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 226
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2467
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3258
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 226
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2467
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3258
+#: rc.cpp:615 rc.cpp:1185 rc.cpp:1359 rc.cpp:615 rc.cpp:1185 rc.cpp:1359
+msgid "Memory:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 254
+#: rc.cpp:618 rc.cpp:618
+msgid "Singlet"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 259
+#: rc.cpp:621 rc.cpp:621
+msgid "Doublet"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 264
+#: rc.cpp:624 rc.cpp:624
+msgid "Triplet"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 273
+#: rc.cpp:627 rc.cpp:627
+msgid "Dication"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 278
+#: rc.cpp:630 rc.cpp:630
+msgid "Cation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 283
+#: rc.cpp:633 rc.cpp:633
+msgid "Neutral"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 288
+#: rc.cpp:636 rc.cpp:636
+msgid "Anion"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 293
+#: rc.cpp:639 rc.cpp:639
+msgid "Dianion"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 316
+#: rc.cpp:642 rc.cpp:642
+msgid "On:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 347
+#: rc.cpp:645 rc.cpp:645
+msgid "Single Point Entry"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 352
+#: rc.cpp:648 rc.cpp:648
+msgid "Equilibrium Geometry"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 357
+#: rc.cpp:651 rc.cpp:651
+msgid "Transition State"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 362
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 73
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 362
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 73
+#: rc.cpp:654 rc.cpp:1512 rc.cpp:654 rc.cpp:1512
+msgid "Frequencies"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 403
+#: rc.cpp:657 rc.cpp:657
+msgid "Gas"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 408
+#: rc.cpp:660 rc.cpp:660
+msgid "Water"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 441
+#: rc.cpp:666 rc.cpp:666
+msgid "With:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 451
+#: rc.cpp:669 rc.cpp:669
+msgid "In:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 464
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2453
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 464
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2453
+#: rc.cpp:672 rc.cpp:1179 rc.cpp:672 rc.cpp:1179
+msgid "Time Limit:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 498
+#: rc.cpp:675 rc.cpp:675
+msgid "hour(s)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 534
+#: rc.cpp:678 rc.cpp:678
+msgid "&Advanced Setup"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 583
+#: rc.cpp:681 rc.cpp:681
+msgid "Advanced"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 588
+#: rc.cpp:684 rc.cpp:684
+msgid "Basis"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 593
+#: rc.cpp:687 rc.cpp:687
+msgid "Control"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 597
+#: rc.cpp:690 rc.cpp:690
+msgid "SCF"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 602
+#: rc.cpp:693 rc.cpp:693
+msgid "DFT"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 612
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1148
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 612
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1148
+#: rc.cpp:699 rc.cpp:846 rc.cpp:699 rc.cpp:846
+msgid "Hessian"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 617
+#: rc.cpp:702 rc.cpp:702
+msgid "Stat Point"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 623
+#: rc.cpp:705 rc.cpp:705
+msgid "Data"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 628
+#: rc.cpp:708 rc.cpp:708
+msgid "System"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 633
+#: rc.cpp:711 rc.cpp:711
+msgid "MO Guess"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 638
+#: rc.cpp:714 rc.cpp:714
+msgid "Misc"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 677
+#: rc.cpp:717 rc.cpp:717
+msgid "#D Heavy Atom Polarization Functions:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 710
+#: rc.cpp:723 rc.cpp:723
+msgid "Read"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 715
+#: rc.cpp:726 rc.cpp:726
+msgid "SBKJC"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 720
+#: rc.cpp:729 rc.cpp:729
+msgid "Hay-Wadt"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 763
+#: rc.cpp:732 rc.cpp:732
+msgid "Diffuse S-Shell on Heavy Atoms"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 770
+#: rc.cpp:735 rc.cpp:735
+msgid "Diffuse L-Shell on Heavy Atoms"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 835
+#: rc.cpp:738 rc.cpp:738
+msgid "Basis Set:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 854
+#: rc.cpp:744 rc.cpp:744
+msgid "MIDI"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 859
+#: rc.cpp:747 rc.cpp:747
+msgid "STO-2G"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 869
+#: rc.cpp:753 rc.cpp:753
+msgid "STO-4G"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 874
+#: rc.cpp:756 rc.cpp:756
+msgid "STO-5G"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 879
+#: rc.cpp:759 rc.cpp:759
+msgid "STO-6G"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 889
+#: rc.cpp:765 rc.cpp:765
+msgid "6-21G"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 894
+#: rc.cpp:768 rc.cpp:768
+msgid "4-31G"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 899
+#: rc.cpp:771 rc.cpp:771
+msgid "5-31G"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 904
+#: rc.cpp:774 rc.cpp:774
+msgid "6-31G"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 909
+#: rc.cpp:777 rc.cpp:777
+msgid "6-311G"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 914
+#: rc.cpp:780 rc.cpp:780
+msgid "Double Zeta Valence"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 919
+#: rc.cpp:783 rc.cpp:783
+msgid "Dunning/Hay DZ"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 924
+#: rc.cpp:786 rc.cpp:786
+msgid "Triple Zeta Valence"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 929
+#: rc.cpp:789 rc.cpp:789
+msgid "McLean/Chandler"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 934
+#: rc.cpp:792 rc.cpp:792
+msgid "SBKJA Valence"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 939
+#: rc.cpp:795 rc.cpp:795
+msgid "Hay/Wadt Valence"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 944
+#: rc.cpp:798 rc.cpp:798
+msgid "MNDO"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 991
+#: rc.cpp:807 rc.cpp:807
+msgid "ECP Type:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1005
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2430
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1005
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2430
+#: rc.cpp:810 rc.cpp:1167 rc.cpp:810 rc.cpp:1167
+msgid "Default"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1010
+#: rc.cpp:813 rc.cpp:813
+msgid "Pople"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1015
+#: rc.cpp:816 rc.cpp:816
+msgid "Pople N311"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1020
+#: rc.cpp:819 rc.cpp:819
+msgid "Dunning"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1025
+#: rc.cpp:822 rc.cpp:822
+msgid "Huzinaga"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1030
+#: rc.cpp:825 rc.cpp:825
+msgid "Hondo7"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1038
+#: rc.cpp:828 rc.cpp:828
+msgid "#F Heavy Atom Polarization Functions:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1048
+#: rc.cpp:831 rc.cpp:831
+msgid "#light Atom Polarization Functions:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1065
+#: rc.cpp:834 rc.cpp:834
+msgid "Polar:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1113
+#: rc.cpp:837 rc.cpp:837
+msgid "Max SCF Iterations:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1143
+#: rc.cpp:843 rc.cpp:843
+msgid "Gradient"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1153
+#: rc.cpp:849 rc.cpp:849
+msgid "Optimization"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1158
+#: rc.cpp:852 rc.cpp:852
+msgid "Trudge"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1163
+#: rc.cpp:855 rc.cpp:855
+msgid "Saddle Point"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1168
+#: rc.cpp:858 rc.cpp:858
+msgid "IRC"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1173
+#: rc.cpp:861 rc.cpp:861
+msgid "Gradient Extremal"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1178
+#: rc.cpp:864 rc.cpp:864
+msgid "DRC"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1183
+#: rc.cpp:867 rc.cpp:867
+msgid "Energy Surface"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1193
+#: rc.cpp:873 rc.cpp:873
+msgid "Morokuma"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1198
+#: rc.cpp:876 rc.cpp:876
+msgid "Radiative Transition mom."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1203
+#: rc.cpp:879 rc.cpp:879
+msgid "Spin Orbit"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1208
+#: rc.cpp:882 rc.cpp:882
+msgid "Finite Electric Field"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1213
+#: rc.cpp:885 rc.cpp:885
+msgid "TDHF"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1218
+#: rc.cpp:888 rc.cpp:888
+msgid "Global Optimization"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1223
+#: rc.cpp:891 rc.cpp:891
+msgid "VSCF"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1228
+#: rc.cpp:894 rc.cpp:894
+msgid "FMO Optimization"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1233
+#: rc.cpp:897 rc.cpp:897
+msgid "Raman Intensities"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1238
+#: rc.cpp:900 rc.cpp:900
+msgid "NMR"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1243
+#: rc.cpp:903 rc.cpp:903
+msgid "Make EFP"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1289
+#: rc.cpp:909 rc.cpp:909
+msgid "UHF"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1294
+#: rc.cpp:912 rc.cpp:912
+msgid "ROHF"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1299
+#: rc.cpp:915 rc.cpp:915
+msgid "GVB"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1304
+#: rc.cpp:918 rc.cpp:918
+msgid "MCSCF"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1309
+#: rc.cpp:921 rc.cpp:921
+msgid "None (CI)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1355
+#: rc.cpp:927 rc.cpp:927
+msgid "Foster-Boys"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1360
+#: rc.cpp:930 rc.cpp:930
+msgid "Edmistron-Ruedenberg"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1365
+#: rc.cpp:933 rc.cpp:933
+msgid "Pipek-Mezey"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1388
+#: rc.cpp:936 rc.cpp:936
+msgid "SCF Type:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1395
+#: rc.cpp:939 rc.cpp:939
+msgid "Localization Method:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1405
+#: rc.cpp:942 rc.cpp:942
+msgid "Exec Type:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1412
+#: rc.cpp:945 rc.cpp:945
+msgid "CI:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1425
+#: rc.cpp:951 rc.cpp:951
+msgid "GUGA"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1430
+#: rc.cpp:954 rc.cpp:954
+msgid "Ames Lab. Determinant"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1435
+#: rc.cpp:957 rc.cpp:957
+msgid "Occupation Restricted Multiple Active Space"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1440
+#: rc.cpp:960 rc.cpp:960
+msgid "CI Singles"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1445
+#: rc.cpp:963 rc.cpp:963
+msgid "Full Second Order CI"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1450
+#: rc.cpp:966 rc.cpp:966
+msgid "General CI"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1458
+#: rc.cpp:969 rc.cpp:969
+msgid "CC:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1471
+#: rc.cpp:975 rc.cpp:975
+msgid "LCCD: Linearized CC"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1476
+#: rc.cpp:978 rc.cpp:978
+msgid "CCD: CC with Doubles"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1481
+#: rc.cpp:981 rc.cpp:981
+msgid "CCSD: CC with Singles and Doubles"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1491
+#: rc.cpp:987 rc.cpp:987
+msgid "R-CC"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1496
+#: rc.cpp:990 rc.cpp:990
+msgid "CR-CC"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1501
+#: rc.cpp:993 rc.cpp:993
+msgid "EOM-CCSD"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1506
+#: rc.cpp:996 rc.cpp:996
+msgid "CR-EOM"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1550
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 288
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1550
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 288
+#: rc.cpp:999 rc.cpp:1557 rc.cpp:999 rc.cpp:1557
+msgid "Multiplicity:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1580
+#: rc.cpp:1002 rc.cpp:1002
+msgid "Normal Run"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1585
+#: rc.cpp:1005 rc.cpp:1005
+msgid "Check"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1590
+#: rc.cpp:1008 rc.cpp:1008
+msgid "Debug"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1619
+#: rc.cpp:1014 rc.cpp:1014
+msgid "Molecule Charge:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1631
+#: rc.cpp:1017 rc.cpp:1017
+msgid "Run Type:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1668
+#: rc.cpp:1020 rc.cpp:1020
+msgid "Use MP2"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1694
+#: rc.cpp:1023 rc.cpp:1023
+msgid "Use DFT"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1761
+#: rc.cpp:1026 rc.cpp:1026
+msgid "# of Z-Matrix Variables"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1786
+#: rc.cpp:1029 rc.cpp:1029
+msgid "Ǻngstrom"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1791
+#: rc.cpp:1032 rc.cpp:1032
+msgid "Bohr"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1814
+#: rc.cpp:1035 rc.cpp:1035
+msgid "Order of Principal Axis:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1821
+#: rc.cpp:1038 rc.cpp:1038
+msgid "Coordinate Type:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1846
+#: rc.cpp:1041 rc.cpp:1041
+msgid "C1"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1851
+#: rc.cpp:1044 rc.cpp:1044
+msgid "CS"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1856
+#: rc.cpp:1047 rc.cpp:1047
+msgid "CI"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1861
+#: rc.cpp:1050 rc.cpp:1050
+msgid "CnH"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1866
+#: rc.cpp:1053 rc.cpp:1053
+msgid "CnV"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1871
+#: rc.cpp:1056 rc.cpp:1056
+msgid "Cn"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1876
+#: rc.cpp:1059 rc.cpp:1059
+msgid "S2n"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1881
+#: rc.cpp:1062 rc.cpp:1062
+msgid "DnD"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1886
+#: rc.cpp:1065 rc.cpp:1065
+msgid "DnH"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1891
+#: rc.cpp:1068 rc.cpp:1068
+msgid "Dn"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1896
+#: rc.cpp:1071 rc.cpp:1071
+msgid "TD"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1901
+#: rc.cpp:1074 rc.cpp:1074
+msgid "TH"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1906
+#: rc.cpp:1077 rc.cpp:1077
+msgid "T"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1911
+#: rc.cpp:1080 rc.cpp:1080
+msgid "OH"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1916
+#: rc.cpp:1083 rc.cpp:1083
+msgid "O"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 1996
+#: rc.cpp:1089 rc.cpp:1089
+msgid "Unique cartesian Coords."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2001
+#: rc.cpp:1092 rc.cpp:1092
+msgid "Hilderbrant internals"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2006
+#: rc.cpp:1095 rc.cpp:1095
+msgid "Cartesian coordinates"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2011
+#: rc.cpp:1098 rc.cpp:1098
+msgid "Z-Matrix"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2016
+#: rc.cpp:1101 rc.cpp:1101
+msgid "MOPAC Z-Matrix"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2039
+#: rc.cpp:1104 rc.cpp:1104
+msgid "Use Symmetry During Calculation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2049
+#: rc.cpp:1107 rc.cpp:1107
+msgid "Units:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2056
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 30
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2056
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 30
+#: rc.cpp:1110 rc.cpp:1497 rc.cpp:1110 rc.cpp:1497
+msgid "Title:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2143
+#: rc.cpp:1113 rc.cpp:1113
+msgid "Point Group:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2203
+#: rc.cpp:1116 rc.cpp:1116
+msgid "Seconds"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2208
+#: rc.cpp:1119 rc.cpp:1119
+msgid "Minutes"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2213
+#: rc.cpp:1122 rc.cpp:1122
+msgid "Hours"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2218
+#: rc.cpp:1125 rc.cpp:1125
+msgid "Days"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2223
+#: rc.cpp:1128 rc.cpp:1128
+msgid "Weeks"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2228
+#: rc.cpp:1131 rc.cpp:1131
+msgid "Years"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2233
+#: rc.cpp:1134 rc.cpp:1134
+msgid "Millenia"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2277
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2336
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2277
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2336
+#: rc.cpp:1137 rc.cpp:1149 rc.cpp:1137 rc.cpp:1149
+msgid "Words"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2282
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2341
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2282
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2341
+#: rc.cpp:1140 rc.cpp:1152 rc.cpp:1140 rc.cpp:1152
+msgid "Bytes"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2287
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2346
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2287
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2346
+#: rc.cpp:1143 rc.cpp:1155 rc.cpp:1143 rc.cpp:1155
+msgid "MegaWords"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2292
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2351
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2292
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2351
+#: rc.cpp:1146 rc.cpp:1158 rc.cpp:1146 rc.cpp:1158
+msgid "MegaBytes"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2394
+#: rc.cpp:1161 rc.cpp:1161
+msgid "Force Parallel Methods"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2417
+#: rc.cpp:1164 rc.cpp:1164
+msgid "Produce \"core\" file upon abort"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2435
+#: rc.cpp:1170 rc.cpp:1170
+msgid "EVVRSP"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2440
+#: rc.cpp:1173 rc.cpp:1173
+msgid "GIVEIS"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2445
+#: rc.cpp:1176 rc.cpp:1176
+msgid "JACOBI"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2460
+#: rc.cpp:1182 rc.cpp:1182
+msgid "MemDDI:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2474
+#: rc.cpp:1188 rc.cpp:1188
+msgid "Diagonalization Method:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2481
+#: rc.cpp:1191 rc.cpp:1191
+msgid "Parallel Load Balance Type"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2512
+#: rc.cpp:1197 rc.cpp:1197
+msgid "Next Value"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2522
+#: rc.cpp:1200 rc.cpp:1200
+msgid "Use External Data Representation for Messages"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2603
+#: rc.cpp:1203 rc.cpp:1203
+msgid "Initial Guess:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2614
+#: rc.cpp:1206 rc.cpp:1206
+msgid "Huckel"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2619
+#: rc.cpp:1209 rc.cpp:1209
+msgid "HCore"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2624
+#: rc.cpp:1212 rc.cpp:1212
+msgid "MO Read ($VEC)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2629
+#: rc.cpp:1215 rc.cpp:1215
+msgid "MO Saved (DICTNRY)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2634
+#: rc.cpp:1218 rc.cpp:1218
+msgid "Skip"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2657
+#: rc.cpp:1221 rc.cpp:1221
+msgid "Rotate Alpha and Beta Orbitals"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2664
+#: rc.cpp:1224 rc.cpp:1224
+msgid "Print the Initial Guess"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2706
+#: rc.cpp:1227 rc.cpp:1227
+msgid "GAMESS Interface to Other Codes"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2730
+#: rc.cpp:1230 rc.cpp:1230
+msgid "MolPlt"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2737
+#: rc.cpp:1233 rc.cpp:1233
+msgid "PltOrb"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2744
+#: rc.cpp:1236 rc.cpp:1236
+msgid "AIMPAC"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2751
+#: rc.cpp:1239 rc.cpp:1239
+msgid "RPAC"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2761
+#: rc.cpp:1242 rc.cpp:1242
+msgid "Force a Check Run Type"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2795
+#: rc.cpp:1248 rc.cpp:1248
+msgid "Hondo 8.2"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2802
+#: rc.cpp:1251 rc.cpp:1251
+msgid "MELDF"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2809
+#: rc.cpp:1254 rc.cpp:1254
+msgid "GAMESS (UK Version)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2816
+#: rc.cpp:1257 rc.cpp:1257
+msgid "Gaussian 9x"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2823
+#: rc.cpp:1260 rc.cpp:1260
+msgid "All"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2863
+#: rc.cpp:1263 rc.cpp:1263
+msgid "Solvate with Water"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2920
+#: rc.cpp:1266 rc.cpp:1266
+msgid "Generate UHF Natural Orbitals"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2927
+#: rc.cpp:1269 rc.cpp:1269
+msgid "Direct SCF"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2934
+#: rc.cpp:1272 rc.cpp:1272
+msgid "Compute Only Changed in Fock Matrix"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2994
+#: rc.cpp:1275 rc.cpp:1275
+msgid "Slater exchange"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 2999
+#: rc.cpp:1278 rc.cpp:1278
+msgid "Becke 1988 exchange"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3004
+#: rc.cpp:1281 rc.cpp:1281
+msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3009
+#: rc.cpp:1284 rc.cpp:1284
+msgid "LYP: Lee-Yang-Parr correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3014
+#: rc.cpp:1287 rc.cpp:1287
+msgid "SVWN: Slater exhange + VWN correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3019
+#: rc.cpp:1290 rc.cpp:1290
+msgid "BVWN: BECKE exchange + VWN5 correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3024
+#: rc.cpp:1293 rc.cpp:1293
+msgid "BLYP: BECKE exchange + LYP correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3034
+#: rc.cpp:1299 rc.cpp:1299
+msgid "Gill 1996 exchange"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3039
+#: rc.cpp:1302 rc.cpp:1302
+msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3044
+#: rc.cpp:1305 rc.cpp:1305
+msgid "OP: One-parameter Progressive correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3049
+#: rc.cpp:1308 rc.cpp:1308
+msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3054
+#: rc.cpp:1311 rc.cpp:1311
+msgid "SOP: SLATER + OP correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3059
+#: rc.cpp:1314 rc.cpp:1314
+msgid "BOP: BECKE exchange + OP correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3064
+#: rc.cpp:1317 rc.cpp:1317
+msgid "BVWN: GILL exchange + VWN5 correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3069
+#: rc.cpp:1320 rc.cpp:1320
+msgid "GLYP: GILL exchange + LYP correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3074
+#: rc.cpp:1323 rc.cpp:1323
+msgid "PBEVWN: PBE exchange + VWN6 correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3079
+#: rc.cpp:1326 rc.cpp:1326
+msgid "PBELYP: PBE exchange +LYP correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3084
+#: rc.cpp:1329 rc.cpp:1329
+msgid "PBEOP: PBE exchange + OP correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3089
+#: rc.cpp:1332 rc.cpp:1332
+msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3130
+#: rc.cpp:1335 rc.cpp:1335
+msgid "Grid"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3135
+#: rc.cpp:1338 rc.cpp:1338
+msgid "Grid-Free"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3158
+#: rc.cpp:1341 rc.cpp:1341
+msgid "DFT Functional:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3165
+#: rc.cpp:1344 rc.cpp:1344
+msgid "Method:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3207
+#: rc.cpp:1347 rc.cpp:1347
+msgid "AO Integral Storage"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3231
+#: rc.cpp:1350 rc.cpp:1350
+msgid "Duplicated on Each Node"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3238
+#: rc.cpp:1353 rc.cpp:1353
+msgid "Distributed Across All Nodes"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3251
+#: rc.cpp:1356 rc.cpp:1356
+msgid "words"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3265
+#: rc.cpp:1362 rc.cpp:1362
+msgid "Compute MP2 Properties"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3272
+#: rc.cpp:1365 rc.cpp:1365
+msgid "Integral Retention Cutoff:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3285
+#: rc.cpp:1368 rc.cpp:1368
+msgid "Use Localized Orbitals"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3292
+#: rc.cpp:1371 rc.cpp:1371
+msgid "# of Core Electrons:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3299
+#: rc.cpp:1374 rc.cpp:1374
+msgid "Transformation Method"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3326
+#: rc.cpp:1377 rc.cpp:1377
+msgid "Two Phase Bin Sort"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3333
+#: rc.cpp:1380 rc.cpp:1380
+msgid "Segmented Transformation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3384
+#: rc.cpp:1383 rc.cpp:1383
+msgid "Vibrational Analysis"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3415
+#: rc.cpp:1389 rc.cpp:1389
+msgid "Analytic"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3425
+#: rc.cpp:1392 rc.cpp:1392
+msgid "Numeric"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3435
+#: rc.cpp:1395 rc.cpp:1395
+msgid "Double Differenced Hessian"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3442
+#: rc.cpp:1398 rc.cpp:1398
+msgid "Print Internal Force Constants"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3449
+#: rc.cpp:1401 rc.cpp:1401
+msgid "Displacement Size:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3456
+#: rc.cpp:1404 rc.cpp:1404
+msgid "Purify Hessian"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3463
+#: rc.cpp:1407 rc.cpp:1407
+msgid "Frequency Scale Factor:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3470
+#: rc.cpp:1410 rc.cpp:1410
+msgid "bohrs"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3522
+#: rc.cpp:1413 rc.cpp:1413
+msgid "Initial Hessian"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3543
+#: rc.cpp:1416 rc.cpp:1416
+msgid "Guess (+ define)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3550
+#: rc.cpp:1419 rc.cpp:1419
+msgid "Read (from $HESS)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3567
+#: rc.cpp:1425 rc.cpp:1425
+msgid "Update Step Size"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3577
+#: rc.cpp:1428 rc.cpp:1428
+msgid "Print Orbs at Each Iteration"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3584
+#: rc.cpp:1431 rc.cpp:1431
+msgid "Gradient Convergence Criteria:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3613
+#: rc.cpp:1434 rc.cpp:1434
+msgid "Jump Size:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3620
+#: rc.cpp:1437 rc.cpp:1437
+msgid "Stationary Point"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3630
+#: rc.cpp:1440 rc.cpp:1440
+msgid "Optimization Method:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3640
+#: rc.cpp:1443 rc.cpp:1443
+msgid "Step Size"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3664
+#: rc.cpp:1446 rc.cpp:1446
+msgid "Maximum:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3671
+#: rc.cpp:1449 rc.cpp:1449
+msgid "Minimum:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3681
+#: rc.cpp:1452 rc.cpp:1452
+msgid "Initial:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3725
+#: rc.cpp:1455 rc.cpp:1455
+msgid "Newton-Raphson"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3730
+#: rc.cpp:1458 rc.cpp:1458
+msgid "Rational Function Optimization"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3735
+#: rc.cpp:1461 rc.cpp:1461
+msgid "Quadratic Approximation"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3740
+#: rc.cpp:1464 rc.cpp:1464
+msgid "Schlegel (quasi-NR)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3745
+#: rc.cpp:1467 rc.cpp:1467
+msgid "Constrained Optimization"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3773
+#: rc.cpp:1470 rc.cpp:1470
+msgid "steps"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3795
+#: rc.cpp:1473 rc.cpp:1473
+msgid "Recalculate Hessian Every:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3805
+#: rc.cpp:1476 rc.cpp:1476
+msgid "Follow Mode:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3815
+#: rc.cpp:1479 rc.cpp:1479
+msgid "Maximum Steps:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3863
+#: rc.cpp:1482 rc.cpp:1482
+msgid "Reset All"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3870
+#: rc.cpp:1485 rc.cpp:1485
+msgid "Defaults"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3893
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 518
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3893
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 518
+#: rc.cpp:1488 rc.cpp:1593 rc.cpp:1488 rc.cpp:1593
+msgid "Generate"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3900
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 525
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gamessinputdialog.ui line 3900
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 525
+#: rc.cpp:1491 rc.cpp:1596 rc.cpp:1491 rc.cpp:1596
+msgid "Close"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 19
+#: rc.cpp:1494 rc.cpp:1494
+msgid "Gaussian Input Deck Generator"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 47
+#: rc.cpp:1503 rc.cpp:1503
+msgid "Calculation:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 63
+#: rc.cpp:1506 rc.cpp:1506
+msgid "Single Point Energy"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 96
+#: rc.cpp:1515 rc.cpp:1515
+msgid "Processors:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 133
+#: rc.cpp:1518 rc.cpp:1518
+msgid "Theory:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 174
+#: rc.cpp:1536 rc.cpp:1536
+msgid "CCSD"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 197
+#: rc.cpp:1539 rc.cpp:1539
+msgid "Basis:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 251
+#: rc.cpp:1554 rc.cpp:1554
+msgid "Charge:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 325
+#: rc.cpp:1560 rc.cpp:1560
+msgid "Output:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 341
+#: rc.cpp:1563 rc.cpp:1563
+msgid "Standard"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 346
+#: rc.cpp:1566 rc.cpp:1566
+msgid "Molden"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 351
+#: rc.cpp:1569 rc.cpp:1569
+msgid "Molekel"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 374
+#: rc.cpp:1572 rc.cpp:1572
+msgid "Checkpoint:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 391
+#: rc.cpp:1575 rc.cpp:1575
+msgid "Format:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 415
+#: rc.cpp:1581 rc.cpp:1581
+msgid "Z-matrix"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/gaussianinputdialog.ui line 498
+#: rc.cpp:1590 rc.cpp:1590
+msgid "Use Form"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 13
+#: rc.cpp:1599 rc.cpp:1599
+msgid "Create ligand"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 38
+#: rc.cpp:1608 rc.cpp:1608
+msgid "create ligand from current selection"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 43
+#: rc.cpp:1611 rc.cpp:1611
+msgid "create ligand from residue name"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 48
+#: rc.cpp:1614 rc.cpp:1614
+msgid "create ligand from file..."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 79
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 74
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/liganddialog.ui line 79
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 74
+#: rc.cpp:1620 rc.cpp:1659 rc.cpp:1620 rc.cpp:1659
+msgid "The residue name"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/orbitaldialog.ui line 28
+#: rc.cpp:1626 rc.cpp:1626
+msgid "Load File"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/orbitaldialog.ui line 162
+#: rc.cpp:1632 rc.cpp:1632
+msgid "Steps:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/orbitaldialog.ui line 172
+#: rc.cpp:1635 rc.cpp:1635
+msgid "Step SIze:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/orbitaldialog.ui line 182
+#: rc.cpp:1638 rc.cpp:1638
+msgid "Origin:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 13
+#: rc.cpp:1641 rc.cpp:1641
+msgid "Create binding pocket"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 38
+#: rc.cpp:1650 rc.cpp:1650
+msgid "create pocket from current selection"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 43
+#: rc.cpp:1653 rc.cpp:1653
+msgid "create pocket from residue name"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 85
+#: rc.cpp:1662 rc.cpp:1662
+msgid "Radius"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/pocketdialog.ui line 98
+#: rc.cpp:1665 rc.cpp:1665
+msgid ""
+"All atoms within radius from the ligand will be part of the binding pocket"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 13
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 110
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 13
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 110
+#: rc.cpp:1671 rc.cpp:1692 rc.cpp:1671 rc.cpp:1692
+msgid "Unit Cell Parameters"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 28
+#: rc.cpp:1674 rc.cpp:1674
+msgid "Unit Cell Display Options"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 34
+#: rc.cpp:1677 rc.cpp:1677
+msgid "A repeat:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 48
+#: rc.cpp:1680 rc.cpp:1680
+msgid "B repeat:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 62
+#: rc.cpp:1683 rc.cpp:1683
+msgid "C repeat:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 81
+#: rc.cpp:1686 rc.cpp:1686
+msgid "Delete Unit Cell"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 101
+#: rc.cpp:1689 rc.cpp:1689
+msgid "Fill Unit Cell"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 131
+#: rc.cpp:1695 rc.cpp:1695
+msgid "Axes (Å)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 151
+#: rc.cpp:1698 rc.cpp:1698
+msgid "Angles (°)"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 175
+#: rc.cpp:1701 rc.cpp:1701
+msgid "A:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 192
+#: rc.cpp:1704 rc.cpp:1704
+msgid "alpha:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 212
+#: rc.cpp:1707 rc.cpp:1707
+msgid "B:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 229
+#: rc.cpp:1710 rc.cpp:1710
+msgid "beta:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 249
+#: rc.cpp:1713 rc.cpp:1713
+msgid "C:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/extensions/unitcellparamdialog.ui line 266
+#: rc.cpp:1716 rc.cpp:1716
+msgid "gamma:"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/tools/insertfragmentdialog.ui line 13
+#: rc.cpp:1719 rc.cpp:1719
+msgid "Insert Fragment..."
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/tools/insertfragmentdialog.ui line 24
+#: rc.cpp:1722 rc.cpp:1722
+msgid "Add Directory"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/tools/insertfragmentdialog.ui line 31
+#: rc.cpp:1725 rc.cpp:1725
+msgid "Reset List"
+msgstr ""
+
+#. i18n: tag string
+#. i18n: file ./libavogadro/src/tools/insertfragmentdialog.ui line 60
+#: rc.cpp:1728 rc.cpp:1728
+msgid "Generate from SMILES:"
+msgstr ""
+
+#: rc.cpp:1732 rc.cpp:1732
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#: rc.cpp:1733 rc.cpp:1733
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""

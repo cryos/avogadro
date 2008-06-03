@@ -104,14 +104,9 @@ namespace Avogadro
       ~TextRenderer();
 
       /**
-       * This should be called only once, before any printing occurs.
-       * @param glwidget The GLWidget in which to render.
-       */
-//       void setGLWidget( GLWidget *glwidget );
-
-      /**
        * Call this before drawing any text. This method saves the GL state
        * and changes it to prepare for text rendering.
+       * @param widget The widget to use for rendering
        */
       void begin(GLWidget *widget);
 

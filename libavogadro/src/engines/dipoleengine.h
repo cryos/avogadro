@@ -1,7 +1,7 @@
 /**********************************************************************
-  ResidueColor - Class for coloring based on residues (if available)
+  DipoleEngine - Engine to display a 3D vector such as the dipole moment
 
-  Copyright (C) 2007 Geoffrey R. Hutchison
+  Copyright (C) 2008      Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -22,36 +22,49 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef RESIDUECOLOR_H
-#define RESIDUECOLOR_H
+#ifndef DIPOLEENGINE_H
+#define DIPOLEENGINE_H
 
 #include <avogadro/global.h>
-#include <avogadro/color.h>
+#include <avogadro/engine.h>
 
 namespace Avogadro {
 
-  /**
-   * @class ResidueColor residuecolor.h <avogadro/residuecolor.h>
-   * @brief Atom coloring based on residue for biomolecules
-   * @author Geoff Hutchison
-   *
-   * This class maps colors based on residues
-   * http://jmol.sourceforge.net/jscolors/
-   */
-  class A_EXPORT ResidueColor: public Color
+  //! Dipole Engine class.
+  class DipoleEngine : public Engine
   {
-  public:
-    ResidueColor();
-    virtual ~ResidueColor();
+    Q_OBJECT
+    AVOGADRO_ENGINE(tr("Dipole"))
 
-    /**
-     * Set the color based on the supplied Primitive
-     * If NULL is passed, do nothing */
-    virtual void set(const Primitive *);
+    public:
+      //! Constructor
+      DipoleEngine(QObject *parent=0);
+      //! Deconstructor
+      ~DipoleEngine();
 
-    virtual QString type() const { return "Color by Residue"; }
+      //! Copy
+      Engine *clone() const;
+
+      //! \name Render Methods
+      //@{
+      bool renderOpaque(PainterDevice *pd);
+      //@}
+
+      double transparencyDepth() const;
+      EngineFlags flags() const;
+
+      double radius(const PainterDevice *pd, const Primitive *p = 0) const;
+
   };
 
-}
+  //! Generates instances of our AxesEngine class
+  class DipoleEngineFactory : public QObject, public EngineFactory
+  {
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::EngineFactory)
+    AVOGADRO_ENGINE_FACTORY(DipoleEngine)
+  };
+
+} // end namespace Avogadro
 
 #endif

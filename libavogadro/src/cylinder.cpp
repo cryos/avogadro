@@ -25,6 +25,12 @@
 #include "cylinder.h"
 #include <QGLWidget>
 
+// Win32 build (19/05/08)
+#include <math.h> 
+#ifndef M_PI
+  #define M_PI 3.1415926535897932384626433832795 
+#endif
+
 using namespace Eigen;
 
 namespace Avogadro {
@@ -142,7 +148,7 @@ namespace Avogadro {
     d->isValid = true;
   }
 
-  void Cylinder::draw( const Vector3d &end1, const Vector3d &end2,
+  void Cylinder::draw( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
       double radius ) const
   {
     // the "axis vector" of the cylinder
@@ -186,9 +192,9 @@ namespace Avogadro {
     glPopMatrix();
   }
 
-  void Cylinder::drawMulti( const Vector3d &end1, const Vector3d &end2,
+  void Cylinder::drawMulti( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,
       double radius, int order, double shift,
-      const Vector3d &planeNormalVector ) const
+      const Eigen::Vector3d &planeNormalVector ) const
   {
 
     // the "axis vector" of the cylinder
