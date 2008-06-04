@@ -78,7 +78,6 @@ IF( APPLE )
   SET( TRANSLATIONS en fr de en_GB )
 	FOREACH(lang ${TRANSLATIONS})
 	  EXEC_PROGRAM("mkdir ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj")
-		EXEC_PROGRAM("sed -e s/LANG/${lang}/ <${MACOSX_SRC_DIR}/locversion.plist.in | sed -e s/VERSION/${VERSION}/ >${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj/locversion.plist;")
 	ENDFOREACH(lang ${TRANSLATIONS})
 
   # Overload the Info.plist default
