@@ -79,7 +79,8 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       bool renderOpaque(PainterDevice *pd);
-      void doWork(Molecule *mol);
+      bool renderTransparent(PainterDevice *pd);
+      bool renderQuick(PainterDevice *pd);
       //@}
 
       double transparencyDepth() const;
@@ -130,6 +131,8 @@ namespace Avogadro {
       bool m_clip;
       double m_clipEqA, m_clipEqB, m_clipEqC, m_clipEqD;
       // clipping stuff
+
+      void doWork(Molecule *mol);
 
     private Q_SLOTS:
       void vdwThreadFinished();

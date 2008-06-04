@@ -6,6 +6,9 @@
 
 2008-06-04  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/engines/surfaceengine.*: Added a quick render and
+	render transparent function.
+
 	* libavogadro/src/engines/sphereengine.*: Added a quick render
 	function to fix rendering when quick draw is used.
 
