@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>GAMESS Input Deck Generator</string>
+   <string>GAMESS Input</string>
   </property>
   <layout class="QGridLayout" >
    <property name="leftMargin" >

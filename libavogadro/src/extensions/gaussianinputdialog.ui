@@ -16,7 +16,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle" >
-   <string>Gaussian Input Deck Generator</string>
+   <string>Gaussian Input</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
    <property name="sizeConstraint" >
