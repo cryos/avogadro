@@ -87,10 +87,6 @@ namespace Avogadro {
       if (m_update)
         updateSurfaces(pd);
 
-      qDebug() << "Rendering opaque surface...";
-
-      qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
-
       switch (m_renderMode)
       {
       case 0:
@@ -114,6 +110,7 @@ namespace Avogadro {
         glEnable(GL_LIGHTING);
       }
     }
+
     return true;
   }
 
@@ -185,7 +182,7 @@ namespace Avogadro {
     return true;
   }
 
-  bool OrbitalEngine::renderSurfaces(PainterDevice *)
+  bool OrbitalEngine::renderSurfaces(PainterDevice *pd)
   {
     glBegin(GL_TRIANGLES);
 
@@ -223,7 +220,43 @@ namespace Avogadro {
       glVertex3fv(t.p0.array());
     }
     glEnd();
-    
+
+    // Draw the extents of the cube if requested to
+    if (m_drawBox) {
+      pd->painter()->setColor(1.0, 1.0, 1.0);
+
+      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
+                              Vector3d(m_max.x(), m_min.y(), m_min.z()), 1.0);
+      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
+                              Vector3d(m_max.x(), m_min.y(), m_min.z()), 1.0);
+      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
+                              Vector3d(m_min.x(), m_max.y(), m_min.z()), 1.0);
+      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
+                              Vector3d(m_min.x(), m_min.y(), m_max.z()), 1.0);
+
+      pd->painter()->drawLine(Vector3d(m_max.x(), m_min.y(), m_min.z()),
+                              Vector3d(m_max.x(), m_max.y(), m_min.z()), 1.0);
+      pd->painter()->drawLine(Vector3d(m_max.x(), m_min.y(), m_min.z()),
+                              Vector3d(m_max.x(), m_min.y(), m_max.z()), 1.0);
+
+      pd->painter()->drawLine(Vector3d(m_min.x(), m_max.y(), m_min.z()),
+                              Vector3d(m_max.x(), m_max.y(), m_min.z()), 1.0);
+      pd->painter()->drawLine(Vector3d(m_min.x(), m_max.y(), m_min.z()),
+                              Vector3d(m_min.x(), m_max.y(), m_max.z()), 1.0);
+
+      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_max.z()),
+                              Vector3d(m_min.x(), m_max.y(), m_max.z()), 1.0);
+      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_max.z()),
+                              Vector3d(m_max.x(), m_min.y(), m_max.z()), 1.0);
+
+      pd->painter()->drawLine(Vector3d(m_max.x(), m_max.y(), m_max.z()),
+                              Vector3d(m_max.x(), m_max.y(), m_min.z()), 1.0);
+      pd->painter()->drawLine(Vector3d(m_max.x(), m_max.y(), m_max.z()),
+                              Vector3d(m_max.x(), m_min.y(), m_max.z()), 1.0);
+      pd->painter()->drawLine(Vector3d(m_max.x(), m_max.y(), m_max.z()),
+                              Vector3d(m_min.x(), m_max.y(), m_max.z()), 1.0);
+    }
+
     return true;
   }
 
@@ -281,8 +314,13 @@ namespace Avogadro {
     m_min = Vector3f(m_grid->grid()->GetOriginVector().x(),
                      m_grid->grid()->GetOriginVector().y(),
                      m_grid->grid()->GetOriginVector().z());
-
-    qDebug() << "Origin: " << m_min.x() << m_min.y() << m_min.z();
+    int nx, ny, nz;
+    m_grid->grid()->GetNumberOfPoints(nx, ny, nz);
+    double x[3], y[3], z[3];
+    m_grid->grid()->GetAxes(x, y, z);
+    m_max = Vector3f(m_min.x() + nx * x[0],
+                     m_min.y() + ny * y[1],
+                     m_min.z() + nz * z[2]);
 
     // We may need some logic to check if a cube is an orbital or not...
     // (e.g., someone might bring in spin density = always positive)
@@ -358,7 +396,6 @@ namespace Avogadro {
   {
     if (value == 0) m_drawBox = false;
     else m_drawBox = true;
-    m_update = true;
     emit changed();
   }
 

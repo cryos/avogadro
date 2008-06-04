@@ -3,13 +3,14 @@
 	* libavogadro/src/engines/surfaceengine.cpp: Scale numBoxes with
 	quality.
 
-2008-06-04  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
-
 	* libavogadro/src/engines/surfaceengine.cpp: Instead of iterating over
 	all atoms for each grid point, iterate over all atoms once and only
 	update grid points around the atom. This is 100-200x times faster...
 
 2008-06-04  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/orbitalengine.*: Actually draw the extents of
+	the cube if requested to.
 
 	* libavogadro/src/engines/surfaceengine.*: Added a quick render and
 	render transparent function.
