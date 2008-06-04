@@ -556,7 +556,7 @@ namespace Avogadro {
     zDim = grid.GetZdim();
 
     vector3 coord;
-    double distance, minDistance;
+    double distance/*, minDistance*/;
 
     // Now set up our VdW grid
     OBGridData *vdwGrid = new OBGridData;
@@ -567,7 +567,57 @@ namespace Avogadro {
 
     vdwGrid->SetNumberOfPoints(xDim, yDim, zDim);
     vdwGrid->SetLimits(min, xAxis, yAxis, zAxis);
+ 
+    for (int i = 0; i < xDim; ++i) 
+      for (int j = 0; j < yDim; ++j) 
+        for (int k = 0; k < zDim; ++k) 
+          vdwGrid->SetValue(i, j, k, -1.0E+10);
+    
+    int index[3];
+    double pos[3];
+    const int numBoxes = 8;
+    for (int ai=0; ai < surfaceAtomsPos.size(); ai++) {
+      surfaceAtomsPos[ai].Get(pos);
+      grid.CoordsToIndex(index, pos);
+      // cout << "center(i,j,k) = " << index[0] << ", " << index[1] << ", " << index[2] << endl; 
 
+      for (int i = index[0] - numBoxes; i < index[0] + numBoxes; ++i) {
+	if (i < 0) continue;
+        coord.SetX(min[0] + i * m_stepSize);
+        for (int j = index[1] - numBoxes; j < index[1] + numBoxes; ++j) {
+	  if (j < 0) continue;
+          coord.SetY(min[1] + j * m_stepSize);
+          for (int k = index[2] - numBoxes; k < index[2] + numBoxes; ++k) {
+  	    if (k < 0) continue;
+            coord.SetZ(min[2] + k * m_stepSize);
+           
+	    //cout << "   i,j,k = " << i << ", " << j << ", " << k << endl; 
+            distance = sqrt(coord.distSq(surfaceAtomsPos[ai]));
+            distance -= etab.GetVdwRad(surfaceAtomsNum[ai]);
+            const double value = vdwGrid->GetValue(i, j, k);
+            if ((value < -1.0E+9) || (distance < -value)) {
+              vdwGrid->SetValue(i, j, k, -distance);
+	    }
+	    /*
+            if (value < -1.0E+9) {
+              vdwGrid->SetValue(i, j, k, -distance);
+	    } else if (distance < -value) {
+              vdwGrid->SetValue(i, j, k, -distance);
+	    }
+	    */
+	  }
+	}
+      }
+    }
+/*
+    for (int i = 0; i < xDim; ++i)
+      for (int j = 0; j < yDim; ++j)
+        for (int k = 0; k < zDim; ++k)
+          cout << vdwGrid->GetValue(i, j, k) << endl;
+*/
+
+
+    /*
     for (int i = 0; i < xDim; ++i) {
       coord.SetX(min[0] + i * m_stepSize);
       for (int j = 0; j < yDim; ++j) {
@@ -589,6 +639,7 @@ namespace Avogadro {
         } // z-axis
       } // y-axis
     } // x-axis
+    */
 
     m_grid->setGrid(vdwGrid);
     m_grid->setIsoValue(0.0);
