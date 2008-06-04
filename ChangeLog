@@ -1,4 +1,9 @@
-2008-05-30  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+2008-06-04  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/engines/surfaceengine.cpp: Scale numBoxes with
+	quality.
+
+2008-06-04  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/engines/surfaceengine.cpp: Instead of iterating over
 	all atoms for each grid point, iterate over all atoms once and only

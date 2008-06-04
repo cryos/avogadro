@@ -730,7 +730,10 @@ namespace Avogadro {
 
     int index[3];
     double pos[3];
-    const int numBoxes = 8;
+    int numBoxes = (int) 2.5 / m_stepSize;
+    if (numBoxes < 3)
+      numBoxes = 3;
+    //cout << "numBoxes = " << numBoxes << endl;
     for (int ai=0; ai < surfaceAtomsPos.size(); ai++) {
       surfaceAtomsPos[ai].Get(pos);
       grid.CoordsToIndex(index, pos);
