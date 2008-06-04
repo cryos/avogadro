@@ -255,7 +255,7 @@ namespace Avogadro {
 
     doWork(mol);
 
-    if (m_renderMode < 2)
+    if (m_renderMode)
       glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     return true;
@@ -381,7 +381,7 @@ namespace Avogadro {
     glDisable(GL_BLEND);
     glDepthMask(GL_FALSE);
 
-    if (m_renderMode < 2)
+    if (m_renderMode)
       glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     return true;
@@ -417,8 +417,7 @@ namespace Avogadro {
 
     doWork(mol);
 
-    if (m_renderMode < 2)
-      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     return true;
   }
