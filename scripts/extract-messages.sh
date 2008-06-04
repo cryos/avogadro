@@ -3,6 +3,7 @@ BASEDIR="../avogadro"	# root of translatable sources
 PROJECT="avogadro"	# project name
 BUGADDR="avogadro-devel@lists.sourceforge.net"	# MSGID-Bugs
 WDIR=`pwd`		# working dir
+I18NDIR="i18n"          # i18n dir
 
 echo "Preparing rc files"
 cd ${BASEDIR}
@@ -20,7 +21,7 @@ echo "Extracting messages"
 cd ${BASEDIR}
 # see above on sorting
 find . -name '*.cpp' -o -name '*.h' -o -name '*.c' | sort > ${WDIR}/infiles.list
-echo "rc.cpp" >> ${WDIR}/infiles.list
+#echo "rc.cpp" >> ${WDIR}/infiles.list
 cd ${WDIR}
 xgettext --from-code=UTF-8 -C -kde -ci18n -ki18n:1 -ki18nc:1c,2 -ki18np:1,2 -ki18ncp:1c,2,3 -ktr2i18n:1 \
 	-kI18N_NOOP:1 -kI18N_NOOP2:1c,2 -kaliasLocale -kki18n:1 -kki18nc:1c,2 -kki18np:1,2 -kki18ncp:1c,2,3 \
@@ -29,7 +30,9 @@ xgettext --from-code=UTF-8 -C -kde -ci18n -ki18n:1 -ki18nc:1c,2 -ki18np:1,2 -ki1
 	--files-from=infiles.list -D ${BASEDIR} -D ${WDIR} -o ${PROJECT}.pot || { echo "error while calling xgettext. aborting."; exit 1; }
 echo "Done extracting messages"
  
- 
+mv ${PROJECT}.pot ${I18NDIR}
+
+cd ${I18NDIR} 
 echo "Merging translations"
 catalogs=`find . -name '*.po'`
 for cat in $catalogs; do
@@ -42,7 +45,7 @@ echo "Done merging translations"
  
 echo "Cleaning up"
 cd ${WDIR}
-#rm rcfiles.list
-#rm infiles.list
-#rm rc.cpp
+rm rcfiles.list
+rm infiles.list
+rm rc.cpp
 echo "Done"

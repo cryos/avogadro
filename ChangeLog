@@ -1,3 +1,12 @@
+2008-06-03  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* i18n/*, scripts/extract-messages.sh: Added additional resources
+	for .pot and .po file generation to integrate with
+	Rosetta/Launchpad. Includes pt and es initial translations.
+
+	* avogadro/src/CMakeLists.txt: Use a file glob for ts files to
+	build into qm files.
+
 2008-06-03  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engine.h, libavogadro/src/extension.h,

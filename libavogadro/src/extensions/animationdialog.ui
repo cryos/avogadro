@@ -6,11 +6,11 @@
     <x>0</x>
     <y>0</y>
     <width>499</width>
-    <height>130</height>
+    <height>146</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Dialog</string>
+   <string>Animate Trajectory</string>
   </property>
   <layout class="QVBoxLayout" >
    <item>
@@ -82,7 +82,8 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="animation.qrc" >:/amarok/icons/amarok_play.png</iconset>
+        <iconset resource="animation.qrc" >
+         <normaloff>:/amarok/icons/amarok_play.png</normaloff>:/amarok/icons/amarok_play.png</iconset>
        </property>
        <property name="iconSize" >
         <size>
@@ -110,7 +111,8 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="animation.qrc" >:/amarok/icons/amarok_pause.png</iconset>
+        <iconset resource="animation.qrc" >
+         <normaloff>:/amarok/icons/amarok_pause.png</normaloff>:/amarok/icons/amarok_pause.png</iconset>
        </property>
        <property name="iconSize" >
         <size>
@@ -138,7 +140,8 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="animation.qrc" >:/amarok/icons/amarok_stop.png</iconset>
+        <iconset resource="animation.qrc" >
+         <normaloff>:/amarok/icons/amarok_stop.png</normaloff>:/amarok/icons/amarok_stop.png</iconset>
        </property>
        <property name="iconSize" >
         <size>
@@ -164,7 +167,7 @@
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>40</width>
          <height>20</height>
