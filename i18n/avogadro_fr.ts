@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="fr">
+<defaultcodec></defaultcodec>
 <context>
     <name>AddEngineDialog</name>
     <message>
@@ -25,12 +26,12 @@
     <message>
         <location filename="../avogadro/src/addenginedialog.ui" line="13"/>
         <source>Add Display Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter type d&apos;affichage</translation>
     </message>
     <message>
         <location filename="../avogadro/src/addenginedialog.ui" line="19"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Type:</translation>
     </message>
 </context>
 <context>
@@ -38,27 +39,27 @@
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="24"/>
         <source>Load File...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir fichier...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="44"/>
         <source>0/0</source>
-        <translation type="unfinished">0/0</translation>
+        <translation>0/0</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="161"/>
         <source>Loop</source>
-        <translation type="unfinished">Boucle</translation>
+        <translation>Boucle</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="181"/>
         <source>fps</source>
-        <translation type="unfinished"></translation>
+        <translation>fps</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="13"/>
         <source>Animate Trajectory</source>
-        <translation type="unfinished"></translation>
+        <translation>Trajectoire d&apos;animation</translation>
     </message>
 </context>
 <context>
@@ -127,17 +128,17 @@ Bouton droit: <byte value="x9"/>Réinitialiser l&apos;alignement.</translation>
     <message>
         <location filename="../libavogadro/src/tools/aligntool.cpp" line="287"/>
         <source>Align:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aligner:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/aligntool.cpp" line="292"/>
         <source>Everything</source>
-        <translation type="unfinished"></translation>
+        <translation>Tout</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/aligntool.cpp" line="293"/>
         <source>Molecule</source>
-        <translation type="unfinished">Molécule</translation>
+        <translation>Molécule</translation>
     </message>
 </context>
 <context>
@@ -145,17 +146,17 @@ Bouton droit: <byte value="x9"/>Réinitialiser l&apos;alignement.</translation>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="62"/>
         <source>Open trajectory file</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir fichier de trajectoire</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="63"/>
         <source>Trajectory files (*.xtc)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers de trajectoires (*.xtc)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="71"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/%2</translation>
     </message>
 </context>
 <context>
@@ -163,27 +164,27 @@ Bouton droit: <byte value="x9"/>Réinitialiser l&apos;alignement.</translation>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.cpp" line="39"/>
         <source>Animation...</source>
-        <translation type="unfinished"></translation>
+        <translation>Animation...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.cpp" line="69"/>
         <source>&amp;Extensions</source>
-        <translation type="unfinished">&amp;Extensions</translation>
+        <translation>&amp;Extensions</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.cpp" line="117"/>
         <source>Avogadro</source>
-        <translation type="unfinished">Avogadro</translation>
+        <translation>Avogadro</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.cpp" line="112"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished">Impossible de lire le format du fichier %1.</translation>
+        <translation>Impossible de lire le format du fichier %1.</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.cpp" line="119"/>
         <source>Read trajectory file %1 failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>La lecture du fichier de trajectoire %1 a échoué.</translation>
     </message>
 </context>
 <context>
@@ -227,7 +228,7 @@ Bouton gauche: déplacement des atomes par glisser-déposer</translation>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="367"/>
         <source>Conjugate Gradients</source>
-        <translation type="unfinished">Gradients conjugués</translation>
+        <translation>Gradients conjugués</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="366"/>
@@ -348,12 +349,12 @@ Bouton gauche: déplacement des atomes par glisser-déposer </translation>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="291"/>
         <source>AutoOpt: E = %1 %2 (dE = %3)</source>
-        <translation type="unfinished"></translation>
+        <translation>AutoOpt: E = %1 %2 (dE = %3)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="346"/>
         <source>Steps per Update:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre d&apos;étapes avant d&apos;actualiser:</translation>
     </message>
 </context>
 <context>
@@ -686,12 +687,12 @@ Bouton droit: réinitialise les mesures.</translation>
     <message>
         <location filename="../libavogadro/src/engines/dipoleengine.cpp" line="38"/>
         <source>Renders dipole moments and other 3D data</source>
-        <translation type="unfinished"></translation>
+        <translation>Rendu des moments dipolaires et autres données 3D</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/dipoleengine.h" line="37"/>
         <source>Dipole</source>
-        <translation type="unfinished"></translation>
+        <translation>Dipôle</translation>
     </message>
 </context>
 <context>
@@ -1671,12 +1672,13 @@ Bouton droit: effacer un atome</translation>
         <location filename="../libavogadro/src/glwidget.cpp" line="542"/>
         <source>Invalid OpenGL context.
 Either something is completely broken in your OpenGL setup (can you run any OpenGL application?), or you found a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>Contexte OpenGL invalide.
+Soit quelque chose ne vas pas du tout dans votre configuration OpenGL (pouvez-vous exécuter n&apos;importe quelle application OpenGL?), soit vous avez trouvé un bug.</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/glwidget.cpp" line="544"/>
         <source>OpenGL error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur OpenGL</translation>
     </message>
 </context>
 <context>
@@ -1844,7 +1846,7 @@ Tous les changements seront oubliés!</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="43"/>
         <source>Gaussian Input...</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrée Gaussian...</translation>
     </message>
 </context>
 <context>
@@ -1862,12 +1864,12 @@ Tous les changements seront oubliés!</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.cpp" line="165"/>
         <source>Show Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher l&apos;aperçu</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.cpp" line="169"/>
         <source>Hide Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Cacher l&apos;aperçu</translation>
     </message>
 </context>
 <context>
@@ -1906,7 +1908,7 @@ Tous les changements seront oubliés!</translation>
     <message>
         <location filename="../libavogadro/src/engines/hbondengine.h" line="42"/>
         <source>Hydrogen Bond</source>
-        <translation type="unfinished"></translation>
+        <translation>Liaison Hydrogène</translation>
     </message>
 </context>
 <context>
@@ -2364,27 +2366,27 @@ Voulez-vous enregistrer vos changements?</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="520"/>
         <source>Crystallographic Interchange CIF</source>
-        <translation type="unfinished"></translation>
+        <translation>Echange cristallographique CIF</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="1869"/>
         <source>Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="1942"/>
         <source>Settings</source>
-        <translation type="unfinished">Paramètres</translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="1947"/>
         <source>Objects</source>
-        <translation type="unfinished"></translation>
+        <translation>Objets</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="1990"/>
         <source> copy</source>
-        <translation type="unfinished"></translation>
+        <translation>copier</translation>
     </message>
 </context>
 <context>
@@ -2502,7 +2504,7 @@ Bouton droit: Cliquer et glisser-déposer pour déplacer la vue</translation>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="108"/>
         <source>Quantum files (*.fchk *.fch)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers quantiques (*.fchk *.fch)</translation>
     </message>
 </context>
 <context>
@@ -2533,7 +2535,7 @@ Bouton droit: Cliquer et glisser-déposer pour déplacer la vue</translation>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="51"/>
         <source>Import Molecular Orbitals...</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer orbitales moléculaires...</translation>
     </message>
 </context>
 <context>
@@ -2978,7 +2980,9 @@ Glisser-déposer pour sélectionner un groupe d&apos;atomes</translation>
 Click to pick individual atoms, residues, or fragments
 Drag to select a range of atoms
 Use Ctrl to toggle the selection and shift to add to the selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Cliquer pour sélectionner individuellement des atomes, résidus, fragments
+Glisser pour sélectionner un groupe d&apos;atomes
+Maintenir Ctrl enfoncé pour inverser la sélection et Shift pour ajouter à la sélection</translation>
     </message>
 </context>
 <context>
@@ -3098,12 +3102,12 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/unitcellparamdialog.cpp" line="99"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Appliquer</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/unitcellparamdialog.cpp" line="97"/>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -5194,27 +5198,27 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="47"/>
         <source>Calculation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Calcul:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="391"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Format:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="410"/>
         <source>Cartesian</source>
-        <translation type="unfinished">Cartésien</translation>
+        <translation>Cartésien</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="415"/>
         <source>Z-matrix</source>
-        <translation type="unfinished"></translation>
+        <translation>Z-matrice</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="459"/>
         <source>Hide Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Cacher l&apos;aperçu</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="498"/>
@@ -5737,47 +5741,47 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="298"/>
         <source>Display Types</source>
-        <translation type="unfinished"></translation>
+        <translation>Types d&apos;affichage</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="456"/>
         <source>&amp;Export Graphics...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Exporter comme image...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="607"/>
         <source>Export POVRay...</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporter au format POV-Ray...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="615"/>
         <source>Tutorials</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutoriels</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="644"/>
         <source>Avogadro Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Aide d&apos;Avogadro</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="649"/>
         <source>Release Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Notes sur cette version</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="654"/>
         <source>Report a Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapporter un bug</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="659"/>
         <source>FAQ</source>
-        <translation type="unfinished"></translation>
+        <translation>Questions fréquentes</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="664"/>
         <source>Avogadro Website</source>
-        <translation type="unfinished"></translation>
+        <translation>Site Web d&apos;Avogadro</translation>
     </message>
 </context>
 <context>
@@ -5873,12 +5877,12 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="102"/>
         <source>Draw Box:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tracer boîte:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="242"/>
         <source>Calculate</source>
-        <translation type="unfinished">Calculer</translation>
+        <translation>Calculer</translation>
     </message>
 </context>
 <context>
@@ -6886,12 +6890,12 @@ par exemple 1 si vous voulez utiliser POV-Ray pour produire une image carrée, p
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.h" line="54"/>
         <source>Animation</source>
-        <translation type="unfinished"></translation>
+        <translation>Animation</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.h" line="56"/>
         <source>Animation Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Greffon Animation</translation>
     </message>
 </context>
 <context>
@@ -7161,12 +7165,12 @@ par exemple 1 si vous voulez utiliser POV-Ray pour produire une image carrée, p
     <message>
         <location filename="../libavogadro/src/extensions/unitcellparamdialog.ui" line="81"/>
         <source>Delete Unit Cell</source>
-        <translation type="unfinished"></translation>
+        <translation>Effacer maille élémentaire</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/unitcellparamdialog.ui" line="101"/>
         <source>Fill Unit Cell</source>
-        <translation type="unfinished"></translation>
+        <translation>Remplir maille élémentaire</translation>
     </message>
 </context>
 <context>
