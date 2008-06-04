@@ -730,9 +730,9 @@ namespace Avogadro {
 
     int index[3];
     double pos[3];
-    int numBoxes = (int) 2.5 / m_stepSize;
-    if (numBoxes < 3)
-      numBoxes = 3;
+    int numBoxes = (int) 3.0 / m_stepSize;
+    if (numBoxes < 4)
+      numBoxes = 4;
     //cout << "numBoxes = " << numBoxes << endl;
     for (int ai=0; ai < surfaceAtomsPos.size(); ai++) {
       surfaceAtomsPos[ai].Get(pos);
