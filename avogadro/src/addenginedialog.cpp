@@ -29,6 +29,7 @@
 #include <QAbstractButton>
 #include <QDialogButtonBox>
 #include <QtAlgorithms>
+#include <QDebug>
 
 namespace Avogadro {
 
@@ -56,10 +57,21 @@ namespace Avogadro {
     int accepted = dialog.exec();
     if(accepted)
     {
-      Engine *engine = engineFactories.at(dialog.typeIndex())->createInstance();
-      engine->setName(dialog.nameText());
-      engine->setEnabled(true);
-      engine->setDescription(dialog.descriptionText());
+      // Find the engine in the list and instantiate it - needed now we sort the list
+      Engine *engine = 0;
+      foreach(EngineFactory *factory, engineFactories)
+        if (factory->type() == types.at(dialog.typeIndex()))
+          engine = factory->createInstance();
+
+      // We should always be able to find the engine requested
+      if (engine) {
+        engine->setName(dialog.nameText());
+        engine->setEnabled(true);
+        engine->setDescription(dialog.descriptionText());
+      }
+      else
+        qDebug() << "Error - engine not found in engineFactories.";
+
       return engine;
     }
 
