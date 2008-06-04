@@ -1,9 +1,9 @@
 /**********************************************************************
   SphereEngine - Engine for "spheres" display
 
+  Copyright (C) 2007-2008 Marcus D. Hanwell
   Copyright (C) 2006-2007 Geoffrey R. Hutchison
   Copyright (C) 2007      Benoit Jacob
-  Copyright (C) 2007      Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -74,12 +74,12 @@ namespace Avogadro {
       QList<Primitive *> list;
       list = primitives().subList(Primitive::AtomType);
       // Render the atoms as VdW spheres
-      glDisable( GL_NORMALIZE );
-      glEnable( GL_RESCALE_NORMAL );
-      foreach( Primitive *p, list )
+      glDisable(GL_NORMALIZE);
+      glEnable(GL_RESCALE_NORMAL);
+      foreach(Primitive *p, list)
         render(pd, static_cast<const Atom *>(p));
-      glDisable( GL_RESCALE_NORMAL);
-      glEnable( GL_NORMALIZE );
+      glDisable(GL_RESCALE_NORMAL);
+      glEnable(GL_NORMALIZE);
     }
     return true;
   }
@@ -95,28 +95,25 @@ namespace Avogadro {
       glDepthMask(GL_TRUE);
 
       // First pass using a colour mask - nothing is actually drawn
-      glColorMask(GL_FALSE,GL_FALSE,GL_FALSE,GL_FALSE);
+      glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
       glDisable(GL_LIGHTING);
       glDisable(GL_BLEND);
-      foreach( Primitive *p, list )
-      {
+      foreach(Primitive *p, list)
         render(pd, static_cast<const Atom *>(p));
-      }
-      glColorMask(GL_TRUE,GL_TRUE,GL_TRUE,GL_TRUE);
+
+      glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
       glEnable(GL_BLEND);
       glEnable(GL_LIGHTING);
 
       // Render the atoms as VdW spheres
-      glDisable( GL_NORMALIZE );
-      glEnable( GL_RESCALE_NORMAL );
+      glDisable(GL_NORMALIZE);
+      glEnable(GL_RESCALE_NORMAL);
 
-      foreach( Primitive *p, list )
-      {
+      foreach(Primitive *p, list)
         render(pd, static_cast<const Atom *>(p));
-      }
 
-      glDisable( GL_RESCALE_NORMAL);
-      glEnable( GL_NORMALIZE );
+      glDisable(GL_RESCALE_NORMAL);
+      glEnable(GL_NORMALIZE);
 
       // return to previous state
       glDepthMask(GL_FALSE);
@@ -131,14 +128,37 @@ namespace Avogadro {
       {
         const Atom *a = static_cast<const Atom *>(p);
         map->setToSelectionColor();
-        glEnable( GL_BLEND );
+        glEnable(GL_BLEND);
         pd->painter()->setColor(map);
         pd->painter()->setName(a);
-        pd->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
-        glDisable( GL_BLEND );
+        pd->painter()->drawSphere(a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a));
+        glDisable(GL_BLEND);
       }
     }
 
+    return true;
+  }
+
+  bool SphereEngine::renderQuick(PainterDevice *pd)
+  {
+    QList<Primitive *> list;
+    list = primitives().subList(Primitive::AtomType);
+    // Render the atoms as VdW spheres
+    glDisable(GL_NORMALIZE);
+    glEnable(GL_RESCALE_NORMAL);
+    Color *map = colorMap();
+    if (!map) map = pd->colorMap();
+
+    foreach(Primitive *p, list) {
+      const Atom *a = static_cast<const Atom *>(p);
+      map->set(a);
+      pd->painter()->setColor(map);
+      pd->painter()->setName(a);
+      pd->painter()->drawSphere(a->pos(), radius(a));
+    }
+
+    glDisable(GL_RESCALE_NORMAL);
+    glEnable(GL_NORMALIZE);
     return true;
   }
 
@@ -152,7 +172,7 @@ namespace Avogadro {
     map->setAlpha(m_alpha);
     pd->painter()->setColor(map);
     pd->painter()->setName(a);
-    pd->painter()->drawSphere( a->pos(), radius(a) );
+    pd->painter()->drawSphere(a->pos(), radius(a));
 
     return true;
   }

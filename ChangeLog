@@ -6,6 +6,9 @@
 
 2008-06-04  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/engines/sphereengine.*: Added a quick render
+	function to fix rendering when quick draw is used.
+
 	* avogadro/src/addenginedialog.cpp: Fixes bug 1984080 - the added
 	engine was somewhat random before.
 
