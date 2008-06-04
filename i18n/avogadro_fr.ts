@@ -2316,7 +2316,7 @@ Voulez-vous enregistrer vos changements?</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="523"/>
         <source>Gaussian Formatted Checkpoint</source>
-        <translation>Point d&apos;arrêt formatté Gaussian</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="524"/>
@@ -5178,7 +5178,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="374"/>
         <source>Checkpoint:</source>
-        <translation>Point d&apos;arrêt:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="488"/>
