@@ -1,5 +1,8 @@
 2008-06-05  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/gaussianinputdialog.*: Finally added the
+	z-matrix support from Michael Banck in bug 1954332.
+
 	* libavogadro/src/extensions/gamessinputdialog.ui: Reduced the
 	vertical size of the GAMESS dialog, fixes bug 1982113.
 

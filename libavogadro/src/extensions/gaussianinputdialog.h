@@ -61,6 +61,7 @@ namespace Avogadro
       int m_procs;
       QString m_output;
       bool m_chk;
+      int m_coords;
       bool m_dirty;
 
       // Generate an input deck as a string
@@ -93,6 +94,7 @@ namespace Avogadro
       void setProcs(int);
       void setOutput(int);
       void setChk(int);
+      void setCoords(int);
 
   };
 }

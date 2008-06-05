@@ -391,16 +391,16 @@
         <string>Format:</string>
        </property>
        <property name="buddy" >
-        <cstring>formatCombo</cstring>
+        <cstring>coordCombo</cstring>
        </property>
       </widget>
      </item>
      <item row="5" column="1" >
       <layout class="QHBoxLayout" name="horizontalLayout_9" >
        <item>
-        <widget class="QComboBox" name="formatCombo" >
+        <widget class="QComboBox" name="coordCombo" >
          <property name="enabled" >
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="currentIndex" >
           <number>0</number>
@@ -540,7 +540,7 @@
   <tabstop>multiplicitySpin</tabstop>
   <tabstop>outputCombo</tabstop>
   <tabstop>checkpointCheck</tabstop>
-  <tabstop>formatCombo</tabstop>
+  <tabstop>coordCombo</tabstop>
   <tabstop>moreButton</tabstop>
   <tabstop>previewText</tabstop>
   <tabstop>generateButton</tabstop>
