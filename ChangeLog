@@ -9,6 +9,9 @@
 
 2008-06-04  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/glwidget.cpp: Added more verbosity to the engine
+	loading in order to help diagnose issues.
+
 	* libavogadro/src/engines/ribbonengine.cpp: Fixed issue with atom IDs
 	not getting trimmed and the ribbon not being displayed.
 
