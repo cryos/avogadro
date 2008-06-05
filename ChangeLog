@@ -9,6 +9,9 @@
 
 2008-06-04  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/engines/ribbonengine.cpp: Fixed issue with atom IDs
+	not getting trimmed and the ribbon not being displayed.
+
 	* libavogadro/src/engines/orbitalengine.*: Actually draw the extents of
 	the cube if requested to.
 
