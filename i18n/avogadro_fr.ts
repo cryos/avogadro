@@ -889,7 +889,7 @@ Bouton droit: effacer un atome</translation>
     <message>
         <location filename="../libavogadro/src/tools/drawtool.cpp" line="680"/>
         <source>Bond Order:</source>
-        <translation>Multiplicité de la liaison:</translation>
+        <translation>Multiplicité:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/drawtool.cpp" line="685"/>
@@ -1603,7 +1603,7 @@ Bouton droit: effacer un atome</translation>
     <message>
         <location filename="../libavogadro/src/extensions/forcefieldextension.cpp" line="86"/>
         <source>Conformer Search...</source>
-        <translation>Recherche de conformeur...</translation>
+        <translation>Recherche de conformère...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/forcefieldextension.cpp" line="97"/>
@@ -1639,44 +1639,44 @@ Bouton droit: effacer un atome</translation>
 <context>
     <name>Avogadro::GLWidget</name>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="1728"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="1732"/>
         <source>Ball and Stick</source>
         <translation>Boules et bâtonnets</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="947"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="951"/>
         <source>Debug Information</source>
         <translation>Informations de débogage</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="948"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="952"/>
         <source>FPS</source>
         <translation>FPS</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="950"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="954"/>
         <source>View Size</source>
         <translation>Taille de la vue</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="956"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="960"/>
         <source>Atoms</source>
         <translation>Atomes</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="959"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="963"/>
         <source>Bonds</source>
         <translation>Liaisons</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="542"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="546"/>
         <source>Invalid OpenGL context.
 Either something is completely broken in your OpenGL setup (can you run any OpenGL application?), or you found a bug.</source>
         <translation>Contexte OpenGL invalide.
 Soit quelque chose ne vas pas du tout dans votre configuration OpenGL (pouvez-vous exécuter n&apos;importe quelle application OpenGL?), soit vous avez trouvé un bug.</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="544"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="548"/>
         <source>OpenGL error</source>
         <translation>Erreur OpenGL</translation>
     </message>
@@ -2316,7 +2316,7 @@ Voulez-vous enregistrer vos changements?</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="523"/>
         <source>Gaussian Formatted Checkpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>Checkpoint formaté Gaussian</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="524"/>
@@ -2351,7 +2351,7 @@ Voulez-vous enregistrer vos changements?</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="734"/>
         <source>Gaussian Z-matrix Input</source>
-        <translation>Entrée Z-matrice Gaussian</translation>
+        <translation>Entrée matrice Z Gaussian</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="735"/>
@@ -2619,7 +2619,7 @@ Bouton droit: Cliquer et glisser-déposer pour déplacer la vue</translation>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="76"/>
         <source>Conformers...</source>
-        <translation>Conformeurs...</translation>
+        <translation>Conformères...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="103"/>
@@ -2772,7 +2772,7 @@ Bouton droit: Cliquer et glisser-déposer pour déplacer la vue</translation>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="333"/>
         <source>Conformer %1</source>
-        <translation>Conformeur %1</translation>
+        <translation>Conformère %1</translation>
     </message>
 </context>
 <context>
@@ -2805,7 +2805,7 @@ Bouton droit: Cliquer et glisser-déposer pour déplacer la vue</translation>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="246"/>
         <source>Conformer</source>
-        <translation>Conformeur</translation>
+        <translation>Conformère</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="251"/>
@@ -3246,7 +3246,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="13"/>
         <source>Conformer Search</source>
-        <translation>Recherche de conformeur</translation>
+        <translation>Recherche de conformère</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="19"/>
@@ -3266,7 +3266,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="41"/>
         <source>Number of conformers</source>
-        <translation>Nombre de conformeurs</translation>
+        <translation>Nombre de conformères</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="60"/>
@@ -3585,7 +3585,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="13"/>
         <source>GAMESS Input Deck Generator</source>
-        <translation>Générateur d&apos;entrée GAMESS</translation>
+        <translation type="obsolete">Générateur d&apos;entrée GAMESS</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="41"/>
@@ -4075,12 +4075,12 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1198"/>
         <source>Radiative Transition mom.</source>
-        <translation>Mom. de transition radiative</translation>
+        <translation>Moment de transition radiative</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1203"/>
         <source>Spin Orbit</source>
-        <translation>Orbite de spin</translation>
+        <translation>Spin-orbitale</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1208"/>
@@ -4165,7 +4165,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1388"/>
         <source>SCF Type:</source>
-        <translation>Type SCF:</translation>
+        <translation>Type de SCF:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1395"/>
@@ -4175,7 +4175,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1405"/>
         <source>Exec Type:</source>
-        <translation>Type Exec:</translation>
+        <translation>Type d&apos;exécution:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1412"/>
@@ -4195,7 +4195,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1435"/>
         <source>Occupation Restricted Multiple Active Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Contrainte d&apos;occupation dans un espace actif multiple</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1440"/>
@@ -4300,7 +4300,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1761"/>
         <source># of Z-Matrix Variables</source>
-        <translation>Nombre de variables de Z-matrice</translation>
+        <translation>Nombre de variables de matrice Z</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1786"/>
@@ -4420,12 +4420,12 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2011"/>
         <source>Z-Matrix</source>
-        <translation>Z-matrice</translation>
+        <translation>Matrice Z</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2016"/>
         <source>MOPAC Z-Matrix</source>
-        <translation>Z-matrice MOPAC</translation>
+        <translation>Matrice Z MOPAC</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2039"/>
@@ -4505,7 +4505,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2394"/>
         <source>Force Parallel Methods</source>
-        <translation type="unfinished"></translation>
+        <translation>Forcer l&apos;usage de méthodes parallèles</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2417"/>
@@ -4540,7 +4540,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2481"/>
         <source>Parallel Load Balance Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Type de répartition de charge en parallèle</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2502"/>
@@ -4590,7 +4590,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2657"/>
         <source>Rotate Alpha and Beta Orbitals</source>
-        <translation>Rotation des orbites alpha et beta</translation>
+        <translation>Rotation des orbitales alpha et beta</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2664"/>
@@ -4625,7 +4625,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2761"/>
         <source>Force a Check Run Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Forcer une vérification de type</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2795"/>
@@ -4660,7 +4660,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2920"/>
         <source>Generate UHF Natural Orbitals</source>
-        <translation>Générer orbites naturelles UHF</translation>
+        <translation>Générer orbitales naturelles UHF</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2927"/>
@@ -4790,7 +4790,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3207"/>
         <source>AO Integral Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Stockage des intégrales OA</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3231"/>
@@ -4815,7 +4815,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3272"/>
         <source>Integral Retention Cutoff:</source>
-        <translation type="unfinished"></translation>
+        <translation>Limite de prise en compte des orbitales</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3285"/>
@@ -4835,7 +4835,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3326"/>
         <source>Two Phase Bin Sort</source>
-        <translation type="unfinished"></translation>
+        <translation>Tri &quot;bin sort&quot; à deux phases</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3333"/>
@@ -4865,7 +4865,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3435"/>
         <source>Double Differenced Hessian</source>
-        <translation type="unfinished"></translation>
+        <translation>Matrice hessienne</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3442"/>
@@ -4915,7 +4915,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3577"/>
         <source>Print Orbs at Each Iteration</source>
-        <translation>Afficher orbites à chaque itération</translation>
+        <translation>Afficher orbitales à chaque itération</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3584"/>
@@ -5042,13 +5042,18 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
         <source>Order of Principal Axis:</source>
         <translation>Ordre de l&apos;axe principal:</translation>
     </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="13"/>
+        <source>GAMESS Input</source>
+        <translation>Entrée GAMESS</translation>
+    </message>
 </context>
 <context>
     <name>GaussianInputDialog</name>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="19"/>
         <source>Gaussian Input Deck Generator</source>
-        <translation>Générateur de table d&apos;entrée Gaussian</translation>
+        <translation type="obsolete">Générateur de table d&apos;entrée Gaussian</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="30"/>
@@ -5178,7 +5183,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="374"/>
         <source>Checkpoint:</source>
-        <translation type="unfinished"></translation>
+        <translation>Checkpoint:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="488"/>
@@ -5213,7 +5218,7 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="415"/>
         <source>Z-matrix</source>
-        <translation>Z-matrice</translation>
+        <translation>Matrice Z</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="459"/>
@@ -5223,7 +5228,12 @@ Voulez-vous créer une maille élémentaire de cristal?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="498"/>
         <source>Use Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Utiliser formulaire</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="19"/>
+        <source>Gaussian Input</source>
+        <translation>Entrée Gaussian</translation>
     </message>
 </context>
 <context>
