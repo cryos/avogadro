@@ -2,6 +2,7 @@
   GaussianInputDialog - Dialog for generating Gaussian input decks
 
   Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008 Michael Banck
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
