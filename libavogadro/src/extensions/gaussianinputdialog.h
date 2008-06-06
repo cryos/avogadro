@@ -2,6 +2,7 @@
   GaussianInputDialog - Dialog for generating Gaussian input decks
 
   Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008 Michael Banck
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -61,6 +62,7 @@ namespace Avogadro
       int m_procs;
       QString m_output;
       bool m_chk;
+      int m_coords;
       bool m_dirty;
 
       // Generate an input deck as a string
@@ -93,6 +95,7 @@ namespace Avogadro
       void setProcs(int);
       void setOutput(int);
       void setChk(int);
+      void setCoords(int);
 
   };
 }

@@ -8,12 +8,12 @@
         <translation type="obsolete">Engine-Typ:</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_addenginedialog.h" line="97"/>
+        <location filename="../avogadro/src/addenginedialog.ui" line="32"/>
         <source>Name:</source>
         <translation>Name:</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_addenginedialog.h" line="98"/>
+        <location filename="../avogadro/src/addenginedialog.ui" line="45"/>
         <source>Description:</source>
         <translation>Beschreibung:</translation>
     </message>
@@ -23,12 +23,12 @@
         <translation type="obsolete">Engine hinzufügen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_addenginedialog.h" line="95"/>
+        <location filename="../avogadro/src/addenginedialog.ui" line="13"/>
         <source>Add Display Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_addenginedialog.h" line="96"/>
+        <location filename="../avogadro/src/addenginedialog.ui" line="19"/>
         <source>Type:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -36,29 +36,29 @@
 <context>
     <name>AnimationDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_animationdialog.h" line="158"/>
-        <source>Dialog</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/extensions/ui_animationdialog.h" line="159"/>
+        <location filename="../libavogadro/src/extensions/animationdialog.ui" line="24"/>
         <source>Load File...</source>
         <translation>Datei laden...</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_animationdialog.h" line="160"/>
+        <location filename="../libavogadro/src/extensions/animationdialog.ui" line="44"/>
         <source>0/0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_animationdialog.h" line="164"/>
+        <location filename="../libavogadro/src/extensions/animationdialog.ui" line="161"/>
         <source>Loop</source>
         <translation>Schleife</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_animationdialog.h" line="165"/>
+        <location filename="../libavogadro/src/extensions/animationdialog.ui" line="181"/>
         <source>fps</source>
         <translation>FPS</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/animationdialog.ui" line="13"/>
+        <source>Animate Trajectory</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2774,17 +2774,17 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>BSDYSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/ui_bsdysettingswidget.h" line="102"/>
+        <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="18"/>
         <source>Atom Radius:</source>
         <translation>Atomradius:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/ui_bsdysettingswidget.h" line="103"/>
+        <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="47"/>
         <source>Bond Radius:</source>
         <translation>Bindungsradius:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/ui_bsdysettingswidget.h" line="104"/>
+        <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="78"/>
         <source>Show Multiple Bonds</source>
         <translation>Mehrere Bindungen anzeigen</translation>
     </message>
@@ -2792,47 +2792,47 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>ConformerSearchDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_conformersearchdialog.h" line="125"/>
+        <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="13"/>
         <source>Conformer Search</source>
         <translation>Konformerensuche</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_conformersearchdialog.h" line="126"/>
+        <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="19"/>
         <source>Options</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_conformersearchdialog.h" line="127"/>
+        <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="25"/>
         <source>Number of atoms:</source>
         <translation>Anzahl der Atome:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_conformersearchdialog.h" line="128"/>
+        <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="32"/>
         <source>Number of rotatable bonds:</source>
         <translation>Anzahl der rotierbaren Bindungen:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_conformersearchdialog.h" line="129"/>
+        <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="41"/>
         <source>Number of conformers</source>
         <translation>Anzahl der Konformeren</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_conformersearchdialog.h" line="130"/>
+        <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="60"/>
         <source>Method</source>
         <translation>Methode</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_conformersearchdialog.h" line="131"/>
+        <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="66"/>
         <source>Systematic rotor search</source>
         <translation>Systematische Drehpunkt-Suche</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_conformersearchdialog.h" line="132"/>
+        <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="73"/>
         <source>Random rotor search</source>
         <translation>Zufällige Drehpunkt-Suche</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_conformersearchdialog.h" line="133"/>
+        <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="80"/>
         <source>Weighted rotor search</source>
         <translation>Gewichtete Drehpunkt-Suche</translation>
     </message>
@@ -2840,102 +2840,102 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>ConstraintsDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="197"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="13"/>
         <source>Constraints</source>
         <translation>Einschränkungen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="198"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="26"/>
         <source>Add Constraints</source>
         <translation>Einschränkungen hinzufügen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="199"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="40"/>
         <source>Type</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="202"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="48"/>
         <source>Ignore Atom</source>
         <translation>Atom ignorieren</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="203"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="53"/>
         <source>Fix Atom</source>
         <translation>Atom fixieren</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="204"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="58"/>
         <source>Fix Atom X</source>
         <translation>Atom fixieren (x-Koordinate)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="205"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="63"/>
         <source>Fix Atom Y</source>
         <translation>Atom fixieren (y-Koordinate)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="206"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="68"/>
         <source>Fix Atom Z</source>
         <translation>Atom fixieren (z-Koordinate)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="208"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="78"/>
         <source>Angle</source>
         <translation>Winkel</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="209"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="83"/>
         <source>Torsion angle</source>
         <translation>Torsionswinkel</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="210"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="91"/>
         <source>Constraint Value</source>
         <translation>Einschränkungswert</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="211"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="101"/>
         <source>Atom Indices</source>
         <translation>Atomindizes</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="212"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="120"/>
         <source>Add</source>
         <translation>Hinzufügen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="213"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="132"/>
         <source>Options</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="214"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="143"/>
         <source>Save</source>
         <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="215"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="153"/>
         <source>Load</source>
         <translation>Laden</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="216"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="185"/>
         <source>Delete Selected</source>
         <translation>Auswahl entfernen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="217"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="192"/>
         <source>Delete All</source>
         <translation>Alle entfernen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="218"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="212"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_constraintsdialog.h" line="207"/>
+        <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="73"/>
         <source>Distance</source>
         <translation>Distanz</translation>
     </message>
@@ -2943,12 +2943,12 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>EnginePrimitivesWidget</name>
     <message>
-        <location filename="../avogadro/src/ui_engineprimitiveswidget.h" line="104"/>
+        <location filename="../avogadro/src/engineprimitiveswidget.ui" line="44"/>
         <source>Add Selected Primitives</source>
         <translation>Hinzufügen ausgewählter Primitive</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_engineprimitiveswidget.h" line="110"/>
+        <location filename="../avogadro/src/engineprimitiveswidget.ui" line="57"/>
         <source>Remove Selected Primitives</source>
         <translation>Entfernen ausgewählter Primitive</translation>
     </message>
@@ -2958,17 +2958,17 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_engineprimitiveswidget.h" line="116"/>
+        <location filename="../avogadro/src/engineprimitiveswidget.ui" line="70"/>
         <source>Add All Primitives</source>
         <translation>Alle primitive hinzufügen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_engineprimitiveswidget.h" line="119"/>
+        <location filename="../avogadro/src/engineprimitiveswidget.ui" line="80"/>
         <source>Assign Engine to Selected Primitives</source>
         <translation>Engine den ausgewählten primitiven zuordnen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_engineprimitiveswidget.h" line="122"/>
+        <location filename="../avogadro/src/engineprimitiveswidget.ui" line="83"/>
         <source>Assign to Selection</source>
         <translation>Der Auswahl zuordnen</translation>
     </message>
@@ -3004,27 +3004,27 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>ForceFieldDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_forcefielddialog.h" line="145"/>
+        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="13"/>
         <source>Setup Force Field</source>
         <translation>Kraftfeld einrichten</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_forcefielddialog.h" line="147"/>
+        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="31"/>
         <source>Force Field</source>
         <translation>Kraftfeld</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_forcefielddialog.h" line="150"/>
+        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="42"/>
         <source>Ghemical</source>
         <translation>Ghemical</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_forcefielddialog.h" line="151"/>
+        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="59"/>
         <source>Geometry Optimization</source>
         <translation>Geometrie-Optimierung</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_forcefielddialog.h" line="152"/>
+        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="65"/>
         <source>Number of steps</source>
         <translation>Anzahl der Schritte</translation>
     </message>
@@ -3034,7 +3034,7 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Winkel</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_forcefielddialog.h" line="153"/>
+        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="82"/>
         <source>Algorithm</source>
         <translation>Algorithmus</translation>
     </message>
@@ -3049,22 +3049,22 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Analytisch</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_forcefielddialog.h" line="156"/>
+        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="90"/>
         <source>Steepest Descent</source>
         <translation>Tiefster Abstieg</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_forcefielddialog.h" line="157"/>
+        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="95"/>
         <source>Conjugate Gradients</source>
         <translation>Verlaufskonjugation</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_forcefielddialog.h" line="158"/>
+        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="103"/>
         <source>Convergence</source>
         <translation>Konvergenz</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_forcefielddialog.h" line="160"/>
+        <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="113"/>
         <source>10e-</source>
         <translation>10e-</translation>
     </message>
@@ -3072,12 +3072,12 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>GamessEfpMatchDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessefpmatchdialog.h" line="78"/>
+        <location filename="../libavogadro/src/extensions/gamessefpmatchdialog.ui" line="16"/>
         <source>EFP Matches</source>
         <translation>EFP-Übereinstimmungen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessefpmatchdialog.h" line="79"/>
+        <location filename="../libavogadro/src/extensions/gamessefpmatchdialog.ui" line="25"/>
         <source>Group Label:</source>
         <translation>Gruppen-Beschriftung:</translation>
     </message>
@@ -3085,1442 +3085,1442 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>GamessInputDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2033"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1956"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1820"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="13"/>
         <source>GAMESS Input Deck Generator</source>
         <translation>GAMESS Eingabe-Deck-Generator</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1870"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="41"/>
         <source>&amp;Basic Setup</source>
         <translation>&amp;Grundeinstellungen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1821"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="89"/>
         <source>megabytes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1920"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="949"/>
         <source>AM1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1921"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="954"/>
         <source>PM3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1961"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1284"/>
         <source>RHF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2117"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3029"/>
         <source>B3LYP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1879"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="607"/>
         <source>MP2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1993"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1486"/>
         <source>CCSD(T)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1903"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="864"/>
         <source>STO-3G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1900"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="849"/>
         <source>MINI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1907"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="884"/>
         <source>3-21G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1835"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="178"/>
         <source>6-31G(d)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1836"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="183"/>
         <source>6-31G(d,p)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1837"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="188"/>
         <source>6-31+G(d,p)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1838"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="193"/>
         <source>6-31+G(2d,p)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1839"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="198"/>
         <source>6-311++G(2d,p)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1840"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="203"/>
         <source>Core Potential</source>
         <translation>Kern-Potential</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2140"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3258"/>
         <source>Memory:</source>
         <translation>Speicher:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1844"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="254"/>
         <source>Singlet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1845"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="259"/>
         <source>Doublet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1846"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="264"/>
         <source>Triplet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1849"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="273"/>
         <source>Dication</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1850"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="278"/>
         <source>Cation</source>
         <translation>Kation</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1851"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="283"/>
         <source>Neutral</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1852"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="288"/>
         <source>Anion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1853"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="293"/>
         <source>Dianion</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1854"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="316"/>
         <source>On:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1857"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="347"/>
         <source>Single Point Entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1858"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="352"/>
         <source>Equilibrium Geometry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1859"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="357"/>
         <source>Transition State</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1860"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="362"/>
         <source>Frequencies</source>
         <translation>Frequenzen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1863"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="403"/>
         <source>Gas</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1864"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="408"/>
         <source>Water</source>
         <translation>Wasser</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2161"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3557"/>
         <source>Calculate</source>
         <translation>Berechnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1866"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="441"/>
         <source>With:</source>
         <translation>Mit:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1867"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="451"/>
         <source>In:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2074"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2453"/>
         <source>Time Limit:</source>
         <translation>Zeit-Limit:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1869"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="498"/>
         <source>hour(s)</source>
         <translation>Stunde(n)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2183"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="534"/>
         <source>&amp;Advanced Setup</source>
         <translation>&amp;Erweiterte Einstellungen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1871"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="583"/>
         <source>Advanced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1875"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="588"/>
         <source>Basis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1876"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="593"/>
         <source>Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1877"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="597"/>
         <source>SCF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1878"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="602"/>
         <source>DFT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1939"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1148"/>
         <source>Hessian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1881"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="617"/>
         <source>Stat Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1882"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="623"/>
         <source>Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1883"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="628"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1884"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="633"/>
         <source>MO Guess</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1885"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="638"/>
         <source>Misc</source>
         <translation>Versch.</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1888"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="677"/>
         <source>#D Heavy Atom Polarization Functions:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2098"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2785"/>
         <source>None</source>
         <translation>Keine</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1892"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="710"/>
         <source>Read</source>
         <translation>Lese</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1893"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="715"/>
         <source>SBKJC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1894"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="720"/>
         <source>Hay-Wadt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1895"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="763"/>
         <source>Diffuse S-Shell on Heavy Atoms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1896"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="770"/>
         <source>Diffuse L-Shell on Heavy Atoms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1897"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="835"/>
         <source>Basis Set:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1901"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="854"/>
         <source>MIDI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1902"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="859"/>
         <source>STO-2G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1904"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="869"/>
         <source>STO-4G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1905"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="874"/>
         <source>STO-5G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1906"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="879"/>
         <source>STO-6G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1908"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="889"/>
         <source>6-21G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1909"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="894"/>
         <source>4-31G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1910"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="899"/>
         <source>5-31G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1911"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="904"/>
         <source>6-31G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1912"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="909"/>
         <source>6-311G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1914"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="919"/>
         <source>Dunning/Hay DZ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1915"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="924"/>
         <source>Triple Zeta Valence</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1916"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="929"/>
         <source>McLean/Chandler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1919"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="944"/>
         <source>MNDO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1922"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="991"/>
         <source>ECP Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2070"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2430"/>
         <source>Default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1926"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1010"/>
         <source>Pople</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1927"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1015"/>
         <source>Pople N311</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1928"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1020"/>
         <source>Dunning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1929"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1025"/>
         <source>Huzinaga</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1930"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1030"/>
         <source>Hondo7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1931"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1038"/>
         <source>#F Heavy Atom Polarization Functions:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1932"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1048"/>
         <source>#light Atom Polarization Functions:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1933"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1065"/>
         <source>Polar:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1934"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1113"/>
         <source>Max SCF Iterations:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1937"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1138"/>
         <source>Energy</source>
         <translation>Energie</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1938"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1143"/>
         <source>Gradient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1940"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1153"/>
         <source>Optimization</source>
         <translation>Optimierung</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1941"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1158"/>
         <source>Trudge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1942"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1163"/>
         <source>Saddle Point</source>
         <translation>Sattelpunkt</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1943"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1168"/>
         <source>IRC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1944"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1173"/>
         <source>Gradient Extremal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1945"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1178"/>
         <source>DRC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1946"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1183"/>
         <source>Energy Surface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1947"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1188"/>
         <source>Properties</source>
         <translation>Eigenschaften</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1948"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1193"/>
         <source>Morokuma</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1949"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1198"/>
         <source>Radiative Transition mom.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1950"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1203"/>
         <source>Spin Orbit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1951"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1208"/>
         <source>Finite Electric Field</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1952"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1213"/>
         <source>TDHF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1953"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1218"/>
         <source>Global Optimization</source>
         <translation>Globale Optimierung</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1954"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1223"/>
         <source>VSCF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1955"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1228"/>
         <source>FMO Optimization</source>
         <translation>FMO Optimierung</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1956"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1233"/>
         <source>Raman Intensities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1957"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1238"/>
         <source>NMR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1958"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1243"/>
         <source>Make EFP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1962"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1289"/>
         <source>UHF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1963"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1294"/>
         <source>ROHF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1964"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1299"/>
         <source>GVB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1965"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1304"/>
         <source>MCSCF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1966"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1309"/>
         <source>None (CI)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1970"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1355"/>
         <source>Foster-Boys</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1971"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1360"/>
         <source>Edmistron-Ruedenberg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1972"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1365"/>
         <source>Pipek-Mezey</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1973"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1388"/>
         <source>SCF Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1974"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1395"/>
         <source>Localization Method:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1975"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1405"/>
         <source>Exec Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1976"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1412"/>
         <source>CI:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1980"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1425"/>
         <source>GUGA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1981"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1430"/>
         <source>Ames Lab. Determinant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1982"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1435"/>
         <source>Occupation Restricted Multiple Active Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1983"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1440"/>
         <source>CI Singles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1984"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1445"/>
         <source>Full Second Order CI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1985"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1450"/>
         <source>General CI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1986"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1458"/>
         <source>CC:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1990"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1471"/>
         <source>LCCD: Linearized CC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1991"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1476"/>
         <source>CCD: CC with Doubles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1992"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1481"/>
         <source>CCSD: CC with Singles and Doubles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1994"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1491"/>
         <source>R-CC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1995"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1496"/>
         <source>CR-CC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1996"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1501"/>
         <source>EOM-CCSD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1997"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1506"/>
         <source>CR-EOM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1998"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1550"/>
         <source>Multiplicity:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2001"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1580"/>
         <source>Normal Run</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2002"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1585"/>
         <source>Check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2003"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1590"/>
         <source>Debug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2004"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1595"/>
         <source>Other...</source>
         <translation>Anderes...</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2005"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1619"/>
         <source>Molecule Charge:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2006"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1631"/>
         <source>Run Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2007"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1668"/>
         <source>Use MP2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2008"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1694"/>
         <source>Use DFT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2009"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1761"/>
         <source># of Z-Matrix Variables</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2012"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1786"/>
         <source>Ǻngstrom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2013"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1791"/>
         <source>Bohr</source>
         <translation>Bohr</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2015"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1821"/>
         <source>Coordinate Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2018"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1846"/>
         <source>C1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2019"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1851"/>
         <source>CS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2020"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1856"/>
         <source>CI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2021"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1861"/>
         <source>CnH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2022"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1866"/>
         <source>CnV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2023"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1871"/>
         <source>Cn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2024"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1876"/>
         <source>S2n</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2025"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1881"/>
         <source>DnD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2026"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1886"/>
         <source>DnH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2027"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1891"/>
         <source>Dn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2028"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1896"/>
         <source>TD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2029"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1901"/>
         <source>TH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2030"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1906"/>
         <source>T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2031"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1911"/>
         <source>OH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2032"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1916"/>
         <source>O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2036"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1996"/>
         <source>Unique cartesian Coords.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2037"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2001"/>
         <source>Hilderbrant internals</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2038"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2006"/>
         <source>Cartesian coordinates</source>
         <translation>Kartesische Koordinaten</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2039"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2011"/>
         <source>Z-Matrix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2040"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2016"/>
         <source>MOPAC Z-Matrix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2041"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2039"/>
         <source>Use Symmetry During Calculation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2042"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2049"/>
         <source>Units:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2043"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2056"/>
         <source>Title:</source>
         <translation>Titel:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2044"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2143"/>
         <source>Point Group:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2047"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2203"/>
         <source>Seconds</source>
         <translation>Sekunden</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2048"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2208"/>
         <source>Minutes</source>
         <translation>Minuten</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2049"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2213"/>
         <source>Hours</source>
         <translation>Stunden</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2050"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2218"/>
         <source>Days</source>
         <translation>Tage</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2051"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2223"/>
         <source>Weeks</source>
         <translation>Wochen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2052"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2228"/>
         <source>Years</source>
         <translation>Jahre</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2053"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2233"/>
         <source>Millenia</source>
         <translation>Jahrtausende</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2062"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2336"/>
         <source>Words</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2063"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2341"/>
         <source>Bytes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2064"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2346"/>
         <source>MegaWords</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2065"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2351"/>
         <source>MegaBytes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2066"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2394"/>
         <source>Force Parallel Methods</source>
         <translation>Parallele Methoden erzwingen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2067"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2417"/>
         <source>Produce &quot;core&quot; file upon abort</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2071"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2435"/>
         <source>EVVRSP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2072"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2440"/>
         <source>GIVEIS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2073"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2445"/>
         <source>JACOBI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2075"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2460"/>
         <source>MemDDI:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2077"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2474"/>
         <source>Diagonalization Method:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2078"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2481"/>
         <source>Parallel Load Balance Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2079"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2502"/>
         <source>Loop</source>
         <translation>Schleife</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2080"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2512"/>
         <source>Next Value</source>
         <translation>Nächster Wert</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2081"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2522"/>
         <source>Use External Data Representation for Messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2082"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2603"/>
         <source>Initial Guess:</source>
         <translation>Anfangsannahme:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2085"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2614"/>
         <source>Huckel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2086"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2619"/>
         <source>HCore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2087"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2624"/>
         <source>MO Read ($VEC)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2088"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2629"/>
         <source>MO Saved (DICTNRY)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2089"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2634"/>
         <source>Skip</source>
         <translation>Überspringen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2090"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2657"/>
         <source>Rotate Alpha and Beta Orbitals</source>
         <translation>Alpha- und Beta-Orbitale rotieren</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2091"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2664"/>
         <source>Print the Initial Guess</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2092"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2706"/>
         <source>GAMESS Interface to Other Codes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2093"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2730"/>
         <source>MolPlt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2094"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2737"/>
         <source>PltOrb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2095"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2744"/>
         <source>AIMPAC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2096"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2751"/>
         <source>RPAC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2097"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2761"/>
         <source>Force a Check Run Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2099"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2795"/>
         <source>Hondo 8.2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2100"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2802"/>
         <source>MELDF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2101"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2809"/>
         <source>GAMESS (UK Version)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2102"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2816"/>
         <source>Gaussian 9x</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2103"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2823"/>
         <source>All</source>
         <translation>Alle</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2104"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2863"/>
         <source>Solvate with Water</source>
         <translation>In Wasser lösen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2105"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2920"/>
         <source>Generate UHF Natural Orbitals</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2106"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2927"/>
         <source>Direct SCF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2107"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2934"/>
         <source>Compute Only Changed in Fock Matrix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2110"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2994"/>
         <source>Slater exchange</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2111"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2999"/>
         <source>Becke 1988 exchange</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2112"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3004"/>
         <source>VWN: Vosko-Wilk-Nusair (VWN5) correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2113"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3009"/>
         <source>LYP: Lee-Yang-Parr correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2114"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3014"/>
         <source>SVWN: Slater exhange + VWN correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2115"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3019"/>
         <source>BVWN: BECKE exchange + VWN5 correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2116"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3024"/>
         <source>BLYP: BECKE exchange + LYP correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2118"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3034"/>
         <source>Gill 1996 exchange</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2119"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3039"/>
         <source>Perdew-Burke-Ernzerhof (PBE) exchange</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2120"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3044"/>
         <source>OP: One-parameter Progressive correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2121"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3049"/>
         <source>SLYP: SLATER + Lee-Yang-Parr (LYP) correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2122"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3054"/>
         <source>SOP: SLATER + OP correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2123"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3059"/>
         <source>BOP: BECKE exchange + OP correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2124"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3064"/>
         <source>BVWN: GILL exchange + VWN5 correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2125"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3069"/>
         <source>GLYP: GILL exchange + LYP correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2126"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3074"/>
         <source>PBEVWN: PBE exchange + VWN6 correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2127"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3079"/>
         <source>PBELYP: PBE exchange +LYP correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2128"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3084"/>
         <source>PBEOP: PBE exchange + OP correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2129"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3089"/>
         <source>BHHLYP: HF and BECKE exchange + LYP correlation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2132"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3130"/>
         <source>Grid</source>
         <translation>Raster</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2133"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3135"/>
         <source>Grid-Free</source>
         <translation>Rasterfrei</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2134"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3158"/>
         <source>DFT Functional:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2135"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3165"/>
         <source>Method:</source>
         <translation>Methode:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2136"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3207"/>
         <source>AO Integral Storage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2137"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3231"/>
         <source>Duplicated on Each Node</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2138"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3238"/>
         <source>Distributed Across All Nodes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2139"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3251"/>
         <source>words</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2141"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3265"/>
         <source>Compute MP2 Properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2142"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3272"/>
         <source>Integral Retention Cutoff:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2143"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3285"/>
         <source>Use Localized Orbitals</source>
         <translation>Lokalisierte Orbitale benutzen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2144"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3292"/>
         <source># of Core Electrons:</source>
         <translation>Anzahl der Kern-Elektronen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2145"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3299"/>
         <source>Transformation Method</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2146"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3326"/>
         <source>Two Phase Bin Sort</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2147"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3333"/>
         <source>Segmented Transformation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2148"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3384"/>
         <source>Vibrational Analysis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2149"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3394"/>
         <source>Method</source>
         <translation>Methode</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2150"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3415"/>
         <source>Analytic</source>
         <translation>Analytisch</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2151"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3425"/>
         <source>Numeric</source>
         <translation>Numerisch</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2152"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3435"/>
         <source>Double Differenced Hessian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2153"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3442"/>
         <source>Print Internal Force Constants</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2154"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3449"/>
         <source>Displacement Size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2155"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3456"/>
         <source>Purify Hessian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2156"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3463"/>
         <source>Frequency Scale Factor:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2157"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3470"/>
         <source>bohrs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2158"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3522"/>
         <source>Initial Hessian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2159"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3543"/>
         <source>Guess (+ define)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2160"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3550"/>
         <source>Read (from $HESS)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2162"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3567"/>
         <source>Update Step Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2163"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3577"/>
         <source>Print Orbs at Each Iteration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2164"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3584"/>
         <source>Gradient Convergence Criteria:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2165"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3613"/>
         <source>Jump Size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2166"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3620"/>
         <source>Stationary Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2167"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3630"/>
         <source>Optimization Method:</source>
         <translation>Optimierungs-Methode:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2168"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3640"/>
         <source>Step Size</source>
         <translation>Schrittgröße</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2169"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3664"/>
         <source>Maximum:</source>
         <translation>Maximum:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2170"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3671"/>
         <source>Minimum:</source>
         <translation>Minimum</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2171"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3681"/>
         <source>Initial:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2174"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3725"/>
         <source>Newton-Raphson</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2175"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3730"/>
         <source>Rational Function Optimization</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2176"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3735"/>
         <source>Quadratic Approximation</source>
         <translation>Quadratische Annährung</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2177"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3740"/>
         <source>Schlegel (quasi-NR)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2178"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3745"/>
         <source>Constrained Optimization</source>
         <translation>Eingeschränkte Optimierung</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2179"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3773"/>
         <source>steps</source>
         <translation>Schritte</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2180"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3795"/>
         <source>Recalculate Hessian Every:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2181"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3805"/>
         <source>Follow Mode:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2182"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3815"/>
         <source>Maximum Steps:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2184"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3863"/>
         <source>Reset All</source>
         <translation>Alles zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2185"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3870"/>
         <source>Defaults</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2186"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3893"/>
         <source>Generate</source>
         <translation>Erzeugen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2187"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3900"/>
         <source>Close</source>
         <translation>Schließen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1913"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="914"/>
         <source>Double Zeta Valence</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1917"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="934"/>
         <source>SBKJA Valence</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="1918"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="939"/>
         <source>Hay/Wadt Valence</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gamessinputdialog.h" line="2014"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1814"/>
         <source>Order of Principal Axis:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4528,17 +4528,17 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>GaussianInputDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="377"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="19"/>
         <source>Gaussian Input Deck Generator</source>
         <translation>Gauss&apos;scher Eingabe-Deck-Generator</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="378"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="30"/>
         <source>Title:</source>
         <translation>Titel:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="379"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="40"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
@@ -4548,162 +4548,162 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Kalkulationstyp:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="383"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="63"/>
         <source>Single Point Energy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="384"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="68"/>
         <source>Geometry Optimization</source>
         <translation>Geometrie-Optimierung</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="385"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="73"/>
         <source>Frequencies</source>
         <translation>Frequenzen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="386"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="96"/>
         <source>Processors:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="387"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="133"/>
         <source>Theory:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="390"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="149"/>
         <source>AM1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="391"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="154"/>
         <source>PM3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="392"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="159"/>
         <source>RHF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="393"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="164"/>
         <source>B3LYP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="394"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="169"/>
         <source>MP2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="395"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="174"/>
         <source>CCSD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="396"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="197"/>
         <source>Basis:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="399"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="213"/>
         <source>STO-3G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="400"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="218"/>
         <source>3-21G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="401"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="223"/>
         <source>6-31G(d)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="402"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="228"/>
         <source>6-31G(d,p)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="403"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="251"/>
         <source>Charge:</source>
         <translation>Ladung:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="404"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="288"/>
         <source>Multiplicity:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="405"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="325"/>
         <source>Output:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="408"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="341"/>
         <source>Standard</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="409"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="346"/>
         <source>Molden</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="410"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="351"/>
         <source>Molekel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="411"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="374"/>
         <source>Checkpoint:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="419"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="488"/>
         <source>Reset</source>
         <translation>Zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="421"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="518"/>
         <source>Generate</source>
         <translation>Erzeugen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="422"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="525"/>
         <source>Close</source>
         <translation>Schließen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="420"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="498"/>
         <source>Use Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="380"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="47"/>
         <source>Calculation:</source>
         <translation>Kalkulation:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="413"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="391"/>
         <source>Format:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="416"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="410"/>
         <source>Cartesian</source>
         <translation>Kartesisch</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="417"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="415"/>
         <source>Z-matrix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_gaussianinputdialog.h" line="418"/>
+        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="459"/>
         <source>Hide Preview</source>
         <translation type="unfinished">Vorschau verstecken</translation>
     </message>
@@ -4711,27 +4711,27 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>HBondSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/ui_hbondsettingswidget.h" line="101"/>
+        <location filename="../libavogadro/src/engines/hbondsettingswidget.ui" line="16"/>
         <source>Width:</source>
         <translation>Strichdicke:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_hbondsettingswidget.h" line="102"/>
+        <location filename="../libavogadro/src/engines/hbondsettingswidget.ui" line="57"/>
         <source>Cut-off radius:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_hbondsettingswidget.h" line="103"/>
+        <location filename="../libavogadro/src/engines/hbondsettingswidget.ui" line="64"/>
         <source>A</source>
         <translation>A</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../libavogadro/src/engines/ui_hbondsettingswidget.h" line="104"/>
+        <location filename="../libavogadro/src/engines/hbondsettingswidget.ui" line="74"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_hbondsettingswidget.h" line="105"/>
+        <location filename="../libavogadro/src/engines/hbondsettingswidget.ui" line="90"/>
         <source>Cut-off angle:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4739,22 +4739,22 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>InsertFragmentDialog</name>
     <message>
-        <location filename="../libavogadro/src/tools/ui_insertfragmentdialog.h" line="129"/>
+        <location filename="../libavogadro/src/tools/insertfragmentdialog.ui" line="13"/>
         <source>Insert Fragment...</source>
         <translation>Fragment einfügen...</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/ui_insertfragmentdialog.h" line="130"/>
+        <location filename="../libavogadro/src/tools/insertfragmentdialog.ui" line="24"/>
         <source>Add Directory</source>
         <translation>Verzeichnis hinzufügen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/ui_insertfragmentdialog.h" line="132"/>
+        <location filename="../libavogadro/src/tools/insertfragmentdialog.ui" line="60"/>
         <source>Generate from SMILES:</source>
         <translation>Durch SMILES erzeugen:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/ui_insertfragmentdialog.h" line="133"/>
+        <location filename="../libavogadro/src/tools/insertfragmentdialog.ui" line="92"/>
         <source>Insert Fragment</source>
         <translation>Fragment einfügen</translation>
     </message>
@@ -4764,7 +4764,7 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Liste löschen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/ui_insertfragmentdialog.h" line="131"/>
+        <location filename="../libavogadro/src/tools/insertfragmentdialog.ui" line="31"/>
         <source>Reset List</source>
         <translation>Liste zurücksetzen</translation>
     </message>
@@ -4772,57 +4772,57 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>LabelSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/ui_labelsettingswidget.h" line="94"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="22"/>
         <source>Atom Labels:</source>
         <translation>Atombeschriftung:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_labelsettingswidget.h" line="97"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="54"/>
         <source>Atom number</source>
         <translation>Ordungszahl</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_labelsettingswidget.h" line="98"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="59"/>
         <source>Element symbol</source>
         <translation>Elementsymbol</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_labelsettingswidget.h" line="99"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="64"/>
         <source>Element name</source>
         <translation>Elementbezeichnung</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_labelsettingswidget.h" line="109"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="134"/>
         <source>None</source>
         <translation>Keine</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_labelsettingswidget.h" line="104"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="92"/>
         <source>Bond Labels:</source>
         <translation>Bindungsbeschriftung:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_labelsettingswidget.h" line="107"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="124"/>
         <source>Bond number</source>
         <translation>Bindungsnummer</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_labelsettingswidget.h" line="100"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="69"/>
         <source>Residue name</source>
         <translation>Restname</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_labelsettingswidget.h" line="101"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="74"/>
         <source>Residue number</source>
         <translation>Restnummer</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_labelsettingswidget.h" line="102"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="79"/>
         <source>Partial Charge</source>
         <translation>Teilladung</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_labelsettingswidget.h" line="108"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="129"/>
         <source>Bond order</source>
         <translation>Bindungsanzahl</translation>
     </message>
@@ -4868,57 +4868,57 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="402"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="13"/>
         <source>Avogadro</source>
         <translation>Avogadro</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="457"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="40"/>
         <source>&amp;Help</source>
         <translation>&amp;Hilfe</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="458"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="54"/>
         <source>&amp;File</source>
         <translation>&amp;Datei</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="459"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="58"/>
         <source>Open &amp;Recent</source>
         <translation>&amp;Zuletzt geöffnet</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="462"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="86"/>
         <source>Toolbars</source>
         <translation>Werkzeugleiste</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="463"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="91"/>
         <source>&amp;Docks</source>
         <translation>&amp;Seitenleisten</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="465"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="106"/>
         <source>&amp;View</source>
         <translation>&amp;Ansicht</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="466"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="121"/>
         <source>&amp;Edit</source>
         <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="469"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="174"/>
         <source>Main Toolbar</source>
         <translation>Hauptleiste</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="470"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="213"/>
         <source>Project</source>
         <translation>Projekt</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="471"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="269"/>
         <source>Tools</source>
         <translation>Werkzeuge</translation>
     </message>
@@ -4928,77 +4928,77 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Engines</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="405"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="332"/>
         <source>&amp;Open</source>
         <translation>&amp;Öffnen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="404"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="323"/>
         <source>Ctrl+O</source>
         <translation>Strg+Ö</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="408"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="353"/>
         <source>&amp;Quit</source>
         <translation>&amp;Beenden</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="407"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="344"/>
         <source>Ctrl+Q</source>
         <translation>Strg+B</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="409"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="358"/>
         <source>Recent</source>
         <translation>Zuletzt</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="410"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="363"/>
         <source>&amp;Clear Recent</source>
         <translation>&amp;Liste löschen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="413"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="384"/>
         <source>&amp;New</source>
         <translation>&amp;Neu</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="412"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="375"/>
         <source>Ctrl+N</source>
         <translation>Strg+N</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="416"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="405"/>
         <source>&amp;Close</source>
         <translation>&amp;Schließen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="415"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="396"/>
         <source>Ctrl+W</source>
         <translation>Strg+W</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="419"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="426"/>
         <source>&amp;Save</source>
         <translation>&amp;Speichern</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="418"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="417"/>
         <source>Ctrl+S</source>
         <translation>Strg+S</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="420"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="435"/>
         <source>Save &amp;As...</source>
         <translation>Speichern &amp;als...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="421"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="438"/>
         <source>Ctrl+Shift+S</source>
         <translation>Strg+Umschalt+S</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="422"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="447"/>
         <source>Revert To Saved</source>
         <translation>Urzustand wiederherstellen</translation>
     </message>
@@ -5008,112 +5008,112 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">&amp;Exportiere Grafik</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="424"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="465"/>
         <source>&amp;Full Screen Mode</source>
         <translation>&amp;Vollbild</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="425"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="474"/>
         <source>Set &amp;Background Color...</source>
         <translation>&amp;Hintergrundfarbe auswählen...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="426"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="479"/>
         <source>&amp;About</source>
         <translation>&amp;Über</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="427"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="488"/>
         <source>&amp;Undo</source>
         <translation>Rückgängig</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="428"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="491"/>
         <source>Ctrl+Z</source>
         <translation>Strg+Z</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="429"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="500"/>
         <source>&amp;Redo</source>
         <translation>Wiede&amp;rherstellen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="430"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="503"/>
         <source>Ctrl+Shift+Z</source>
         <translation>Strg+Umschalt+Z</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="431"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="512"/>
         <source>New View</source>
         <translation>Neue Ansicht</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="432"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="524"/>
         <source>Close View</source>
         <translation>Schließe Ansicht</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="433"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="533"/>
         <source>Center</source>
         <translation>Molekül zentrieren</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="434"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="542"/>
         <source>&amp;Paste</source>
         <translation>Einfügen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="435"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="545"/>
         <source>Ctrl+V</source>
         <translation>Strg+V</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="436"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="554"/>
         <source>Copy</source>
         <translation>Kopieren</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="437"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="557"/>
         <source>Ctrl+C</source>
         <translation>Strg+C</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="438"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="566"/>
         <source>Cut</source>
         <translation>Ausschneiden</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="439"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="569"/>
         <source>Ctrl+X</source>
         <translation>Strg+X</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="440"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="574"/>
         <source>Clear</source>
         <translation>Alles löschen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="442"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="582"/>
         <source>Select All</source>
         <translation>Alles Auswählen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="443"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="585"/>
         <source>Ctrl+A</source>
         <translation>Strg+A</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="444"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="590"/>
         <source>Select None</source>
         <translation>Auswahl aufheben</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="445"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="593"/>
         <source>Ctrl+Shift+A</source>
         <translation>Strg+Umschalt+A</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="446"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="602"/>
         <source>Configure Avogadro...</source>
         <translation>Avogadro einrichten...</translation>
     </message>
@@ -5123,27 +5123,27 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Exportiere POVRay</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="441"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="577"/>
         <source>Ctrl+Backspace</source>
         <translation>Strg+Leertaste</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="461"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="82"/>
         <source>Settings</source>
         <translation>&amp;Einstellungen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="464"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="101"/>
         <source>&amp;Build</source>
         <translation>S&amp;truktur</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="467"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="134"/>
         <source>&amp;Extensions</source>
         <translation>Er&amp;weiterungen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="468"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="139"/>
         <source>&amp;Select</source>
         <translation>Au&amp;swahl</translation>
     </message>
@@ -5163,67 +5163,67 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Primitive</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="449"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="620"/>
         <source>Duplicate View</source>
         <translation>Ansicht duplizieren</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="460"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="63"/>
         <source>Export</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="450"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="628"/>
         <source>Display Axes</source>
         <translation>Achsen anzeigen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="451"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="636"/>
         <source>Debug Information</source>
         <translation>Debug-Informationen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="472"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="298"/>
         <source>Display Types</source>
         <translation>Anzeige-Typen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="423"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="456"/>
         <source>&amp;Export Graphics...</source>
         <translation>&amp;Exportiere Grafik...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="447"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="607"/>
         <source>Export POVRay...</source>
         <translation>Exportiere POVRay...</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="448"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="615"/>
         <source>Tutorials</source>
         <translation>Anleitungen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="452"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="644"/>
         <source>Avogadro Help</source>
         <translation>Avogadro-Hilfe</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="453"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="649"/>
         <source>Release Notes</source>
         <translation>Veröffentlichungsdetails</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="454"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="654"/>
         <source>Report a Bug</source>
         <translation>Fehler melden</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="455"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="659"/>
         <source>FAQ</source>
         <translation>Häufige Fragen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_mainwindow.h" line="456"/>
+        <location filename="../avogadro/src/mainwindow.ui" line="664"/>
         <source>Avogadro Website</source>
         <translation>Avogadro-Webseite</translation>
     </message>
@@ -5231,32 +5231,32 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>OrbitalDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_orbitaldialog.h" line="225"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="19"/>
         <source>Orbitals</source>
         <translation>Elektronenumlaufbahnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_orbitaldialog.h" line="226"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="28"/>
         <source>Load File</source>
         <translation>Datei laden</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_orbitaldialog.h" line="227"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="45"/>
         <source>Calculate</source>
         <translation>Berechnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_orbitaldialog.h" line="228"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="162"/>
         <source>Steps:</source>
         <translation>Schritte:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_orbitaldialog.h" line="229"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="172"/>
         <source>Step SIze:</source>
         <translation>Schrittgröße:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/ui_orbitaldialog.h" line="230"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="182"/>
         <source>Origin:</source>
         <translation>Herkunft:</translation>
     </message>
@@ -5264,22 +5264,22 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>OrbitalSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="212"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="29"/>
         <source>Opacity:</source>
         <translation>Transparenz:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="216"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="84"/>
         <source>Fill</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="217"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="89"/>
         <source>Lines</source>
         <translation>Linien</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="218"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="94"/>
         <source>Points</source>
         <translation>Punkte</translation>
     </message>
@@ -5299,7 +5299,7 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Elektrostatisches Potential</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="213"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="73"/>
         <source>Render:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5309,27 +5309,27 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Schrittgröße:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="221"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="125"/>
         <source>IsoValue:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="222"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="154"/>
         <source>Color:</source>
         <translation>Farbe:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="223"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="166"/>
         <source>Positive</source>
         <translation>Positiv</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="224"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="189"/>
         <source>Negative</source>
         <translation>Negativ</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="211"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="16"/>
         <source>Orbital:</source>
         <translation>Elektronenumlaufbahn:</translation>
     </message>
@@ -5339,12 +5339,12 @@ Elementarzelle erzeugen?</translation>
         <translation type="obsolete">Interpolation:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="219"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="102"/>
         <source>Draw Box:</source>
         <translation>Box zeichnen:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_orbitalsettingswidget.h" line="225"/>
+        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="242"/>
         <source>Calculate</source>
         <translation>Berechnen</translation>
     </message>
@@ -5719,27 +5719,27 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
 <context>
     <name>RibbonSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/ui_ribbonsettingswidget.h" line="92"/>
+        <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="16"/>
         <source>Rendering:</source>
         <translation>Darstellung:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_ribbonsettingswidget.h" line="95"/>
+        <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="24"/>
         <source>Backbone</source>
         <translation>Rückgrat</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_ribbonsettingswidget.h" line="96"/>
+        <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="29"/>
         <source>Lines</source>
         <translation>Linien</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_ribbonsettingswidget.h" line="97"/>
+        <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="37"/>
         <source>Radius:</source>
         <translation>Radius:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_ribbonsettingswidget.h" line="98"/>
+        <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="91"/>
         <source>Include Nitrogens</source>
         <translation>Stickstoff miteinbeziehen</translation>
     </message>
@@ -5747,7 +5747,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
 <context>
     <name>RingSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/ui_ringsettingswidget.h" line="72"/>
+        <location filename="../libavogadro/src/engines/ringsettingswidget.ui" line="16"/>
         <source>Opacity:</source>
         <translation>Transparenz:</translation>
     </message>
@@ -5755,17 +5755,17 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../avogadro/src/ui_settingsdialog.h" line="105"/>
+        <location filename="../avogadro/src/settingsdialog.ui" line="13"/>
         <source>Settings</source>
         <translation>&amp;Einstellungen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_settingsdialog.h" line="106"/>
+        <location filename="../avogadro/src/settingsdialog.ui" line="28"/>
         <source>Quality:</source>
         <translation>Qualität</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_settingsdialog.h" line="108"/>
+        <location filename="../avogadro/src/settingsdialog.ui" line="81"/>
         <source>Tabbed Tools</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5780,7 +5780,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <translation type="obsolete">Debug-Informationen anzeigen</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/ui_settingsdialog.h" line="107"/>
+        <location filename="../avogadro/src/settingsdialog.ui" line="69"/>
         <source>Medium</source>
         <translation>Mittel</translation>
     </message>
@@ -5788,7 +5788,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
 <context>
     <name>SphereSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/ui_spheresettingswidget.h" line="72"/>
+        <location filename="../libavogadro/src/engines/spheresettingswidget.ui" line="16"/>
         <source>VdW Opacity:</source>
         <translation>Van-der-Waals-Transparenz:</translation>
     </message>
@@ -5796,7 +5796,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
 <context>
     <name>StickSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/ui_sticksettingswidget.h" line="72"/>
+        <location filename="../libavogadro/src/engines/sticksettingswidget.ui" line="16"/>
         <source>Radius:</source>
         <translation>Radius:</translation>
     </message>
@@ -5804,52 +5804,52 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
 <context>
     <name>SurfaceSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/ui_surfacesettingswidget.h" line="167"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="16"/>
         <source>Opacity:</source>
         <translation>Transparenz:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_surfacesettingswidget.h" line="168"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="57"/>
         <source>Render:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_surfacesettingswidget.h" line="171"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="65"/>
         <source>Fill</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_surfacesettingswidget.h" line="172"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="70"/>
         <source>Lines</source>
         <translation>Linien</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_surfacesettingswidget.h" line="173"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="75"/>
         <source>Points</source>
         <translation>Punkte</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_surfacesettingswidget.h" line="174"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="83"/>
         <source>Color:</source>
         <translation>Farbe:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_surfacesettingswidget.h" line="177"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="91"/>
         <source>Custom Color</source>
         <translation>Eigene Farbe</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_surfacesettingswidget.h" line="178"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="96"/>
         <source>Electrostatic Potential (ESP)</source>
         <translation>Elektrostatisches Potential</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_surfacesettingswidget.h" line="179"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="104"/>
         <source>Custom Color:</source>
         <translation>Eigene Farbe:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/ui_surfacesettingswidget.h" line="180"/>
+        <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="189"/>
         <source>Clipping plane: Ax + By + Cz + D = 0</source>
         <translation type="unfinished"></translation>
     </message>

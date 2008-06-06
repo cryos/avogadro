@@ -44,11 +44,8 @@ qt4_automoc(${avogadro_SRCS})
 qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
-SET(avogadro_TS
-	${CMAKE_SOURCE_DIR}/i18n/avogadro_de.ts
-	${CMAKE_SOURCE_DIR}/i18n/avogadro_fr.ts
-	${CMAKE_SOURCE_DIR}/i18n/avogadro_en_GB.ts
-)
+FILE(GLOB avogadro_TS "${CMAKE_SOURCE_DIR}/i18n/*.ts")
+
 QT4_WRAP_TS(avogadro_QM ${avogadro_TS})
 
 add_executable(avogadro-app WIN32 MACOSX_BUNDLE
@@ -81,7 +78,6 @@ IF( APPLE )
   SET( TRANSLATIONS en fr de en_GB )
 	FOREACH(lang ${TRANSLATIONS})
 	  EXEC_PROGRAM("mkdir ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj")
-		EXEC_PROGRAM("sed -e s/LANG/${lang}/ <${MACOSX_SRC_DIR}/locversion.plist.in | sed -e s/VERSION/${VERSION}/ >${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj/locversion.plist;")
 	ENDFOREACH(lang ${TRANSLATIONS})
 
   # Overload the Info.plist default

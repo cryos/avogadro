@@ -143,6 +143,9 @@ namespace Avogadro {
 
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
   {
+    // Don't render if the surface is transparent
+    if (m_alpha < 0.999)
+      return false;
     // Don't try to render anything while the surface is being calculated.
     if (m_vdwThread->isRunning())
       return false;
@@ -161,13 +164,7 @@ namespace Avogadro {
       return true;
     }
 
-    qDebug() << "Number of triangles = " << m_isoGen->numTriangles();
-
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glEnable(GL_BLEND);
-    glShadeModel(GL_SMOOTH);
-
-    pd->painter()->setColor(1.0, 0.0, 0.0, m_alpha);
+    pd->painter()->setColor(1.0, 0.0, 0.0);
     m_color.applyAsMaterials();
 
     switch (m_renderMode) {
@@ -182,89 +179,251 @@ namespace Avogadro {
       break;
     }
 
-    if (m_clip) 
-    {
+    if (m_clip) {
+      GLdouble eq[4] = {m_clipEqA, m_clipEqB, m_clipEqC, m_clipEqD};
+      glEnable(GL_CLIP_PLANE0);
+      glClipPlane(GL_CLIP_PLANE0, eq);
+      // Rendering the mesh's clip edge 
+      glEnable(GL_STENCIL_TEST);
+      glClear(GL_STENCIL_BUFFER_BIT);
+      glDisable(GL_DEPTH_TEST);
+      glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+      // first pass: increment stencil buffer value on back faces
+      glStencilFunc(GL_ALWAYS, 0, 0);
+      glStencilOp(GL_KEEP, GL_KEEP, GL_INCR);
+      glCullFace(GL_FRONT); // render back faces only
+      doWork(mol);
+      // second pass: decrement stencil buffer value on front faces
+      glStencilOp(GL_KEEP, GL_KEEP, GL_DECR);
+      glCullFace(GL_BACK); // render front faces only
+      doWork(mol);
+      // drawing clip planes masked by stencil buffer content
+      glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+      glEnable(GL_DEPTH_TEST);
+      glDisable(GL_CLIP_PLANE0);
+      glStencilFunc(GL_NOTEQUAL, 0, ~0); 
+      // stencil test will pass only when stencil buffer value = 0; 
+      // (~0 = 0x11...11)
+      glPushMatrix();
+      Vector3f normalEq(m_clipEqA, m_clipEqB, m_clipEqC);
+      Vector3f point1(-m_clipEqD / normalEq.norm(),  1000.,  1000.);
+      Vector3f point2(-m_clipEqD / normalEq.norm(),  1000., -1000.);
+      Vector3f point3(-m_clipEqD / normalEq.norm(), -1000.,  1000.);
+      Vector3f point4(-m_clipEqD / normalEq.norm(), -1000., -1000.);
 
-    GLdouble eq[4] = {m_clipEqA, m_clipEqB, m_clipEqC, m_clipEqD};
-    glEnable(GL_CLIP_PLANE0);
-    glClipPlane(GL_CLIP_PLANE0, eq);
-    // Rendering the mesh's clip edge 
-    glEnable(GL_STENCIL_TEST);
-    glClear(GL_STENCIL_BUFFER_BIT);
-    glDisable(GL_DEPTH_TEST);
-    glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-    // first pass: increment stencil buffer value on back faces
-    glStencilFunc(GL_ALWAYS, 0, 0);
-    glStencilOp(GL_KEEP, GL_KEEP, GL_INCR);
-    glCullFace(GL_FRONT); // render back faces only
-    doWork(mol);
-    // second pass: decrement stencil buffer value on front faces
-    glStencilOp(GL_KEEP, GL_KEEP, GL_DECR);
-    glCullFace(GL_BACK); // render front faces only
-    doWork(mol);
-    // drawing clip planes masked by stencil buffer content
-    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-    glEnable(GL_DEPTH_TEST);
-    glDisable(GL_CLIP_PLANE0);
-    glStencilFunc(GL_NOTEQUAL, 0, ~0); 
-    // stencil test will pass only when stencil buffer value = 0; 
-    // (~0 = 0x11...11)
-    glPushMatrix();
-    Vector3f normalEq(m_clipEqA, m_clipEqB, m_clipEqC);
-    Vector3f point1(-m_clipEqD / normalEq.norm(),  1000.,  1000.);
-    Vector3f point2(-m_clipEqD / normalEq.norm(),  1000., -1000.);
-    Vector3f point3(-m_clipEqD / normalEq.norm(), -1000.,  1000.);
-    Vector3f point4(-m_clipEqD / normalEq.norm(), -1000., -1000.);
+      if ( (m_clipEqB == 0.0) && (m_clipEqC == 0.0) ) {
+        if (m_clipEqA < 0.0 ) {
+          MatrixP3f mat;
+          Vector3f zAxis(0., 0., 1.);
+          mat.loadRotation3(M_PI, zAxis);
 
-    if ( (m_clipEqB == 0.0) && (m_clipEqC == 0.0) ) {
-      if (m_clipEqA < 0.0 ) {
+          point1 = mat * point1;    
+          point2 = mat * point2;    
+          point3 = mat * point3;    
+          point4 = mat * point4;    
+        }
+      }
+      else {
         MatrixP3f mat;
-        Vector3f zAxis(0., 0., 1.);
-        mat.loadRotation3(M_PI, zAxis);
+        Vector3f normal(1., 0., 0.);
+        normalEq.normalize();
+        double angle = acos(normal.dot(normalEq));
+        Vector3f axis = normal.cross(normalEq);
+        axis.normalize();
+        mat.loadRotation3(angle, axis);
 
         point1 = mat * point1;    
         point2 = mat * point2;    
         point3 = mat * point3;    
         point4 = mat * point4;    
       }
-    } else {
-      MatrixP3f mat;
-      Vector3f normal(1., 0., 0.);
-      normalEq.normalize();
-      double angle = acos(normal.dot(normalEq));
-      Vector3f axis = normal.cross(normalEq);
-      axis.normalize();
-      mat.loadRotation3(angle, axis);
 
-      point1 = mat * point1;    
-      point2 = mat * point2;    
-      point3 = mat * point3;    
-      point4 = mat * point4;    
-    }
+      glBegin(GL_QUADS); // rendering the plane quad. Note, it should be big 
+                        // enough to cover all clip edge area.
 
-    glBegin(GL_QUADS); // rendering the plane quad. Note, it should be big 
-                       // enough to cover all clip edge area.
-
-    glVertex3fv(point1.array());
-    glVertex3fv(point2.array());
-    glVertex3fv(point4.array());
-    glVertex3fv(point3.array());
-    glEnd();
-    glPopMatrix();
-    // End rendering mesh's clip edge
-    // Rendering mesh  
-    glDisable(GL_STENCIL_TEST);
-    glEnable(GL_CLIP_PLANE0); // enabling clip plane again
+      glVertex3fv(point1.array());
+      glVertex3fv(point2.array());
+      glVertex3fv(point4.array());
+      glVertex3fv(point3.array());
+      glEnd();
+      glPopMatrix();
+      // End rendering mesh's clip edge
+      // Rendering mesh  
+      glDisable(GL_STENCIL_TEST);
+      glEnable(GL_CLIP_PLANE0); // enabling clip plane again
     }
 
     doWork(mol);
 
-    glPopAttrib();
+    if (m_renderMode)
+      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     return true;
   }
 
-  void SurfaceEngine::doWork(Molecule *mol) {
+  bool SurfaceEngine::renderTransparent(PainterDevice *pd)
+  {
+    // Don't render any transparency if alpha is 1 or 0
+    if (m_alpha > 0.999 || m_alpha < 0.001)
+      return false;
+    // Don't try to render anything while the surface is being calculated.
+    if (m_vdwThread->isRunning())
+      return false;
+    Molecule *mol = const_cast<Molecule *>(pd->molecule());
+    if (!m_surfaceValid)
+    {
+      //VDWSurface(mol);
+
+      PrimitiveList prims = primitives();
+      m_vdwThread->init(mol, prims, pd);
+      m_vdwThread->start();
+
+      //m_isoGen->init(m_grid, pd);
+      //m_isoGen->start();
+      m_surfaceValid = true;
+      return true;
+    }
+
+    glEnable(GL_BLEND);
+    glDepthMask(GL_TRUE);
+
+    pd->painter()->setColor(1.0, 0.0, 0.0, m_alpha);
+    m_color.applyAsMaterials();
+
+    switch (m_renderMode) {
+      case 0:
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        break;
+      case 1:
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        break;
+      case 2:
+        glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+        break;
+    }
+
+    if (m_clip) {
+      GLdouble eq[4] = {m_clipEqA, m_clipEqB, m_clipEqC, m_clipEqD};
+      glEnable(GL_CLIP_PLANE0);
+      glClipPlane(GL_CLIP_PLANE0, eq);
+      // Rendering the mesh's clip edge
+      glEnable(GL_STENCIL_TEST);
+      glClear(GL_STENCIL_BUFFER_BIT);
+      glDisable(GL_DEPTH_TEST);
+      glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+      // first pass: increment stencil buffer value on back faces
+      glStencilFunc(GL_ALWAYS, 0, 0);
+      glStencilOp(GL_KEEP, GL_KEEP, GL_INCR);
+      glCullFace(GL_FRONT); // render back faces only
+      doWork(mol);
+      // second pass: decrement stencil buffer value on front faces
+      glStencilOp(GL_KEEP, GL_KEEP, GL_DECR);
+      glCullFace(GL_BACK); // render front faces only
+      doWork(mol);
+      // drawing clip planes masked by stencil buffer content
+      glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+      glEnable(GL_DEPTH_TEST);
+      glDisable(GL_CLIP_PLANE0);
+      glStencilFunc(GL_NOTEQUAL, 0, ~0);
+      // stencil test will pass only when stencil buffer value = 0;
+      // (~0 = 0x11...11)
+      glPushMatrix();
+      Vector3f normalEq(m_clipEqA, m_clipEqB, m_clipEqC);
+      Vector3f point1(-m_clipEqD / normalEq.norm(),  1000.,  1000.);
+      Vector3f point2(-m_clipEqD / normalEq.norm(),  1000., -1000.);
+      Vector3f point3(-m_clipEqD / normalEq.norm(), -1000.,  1000.);
+      Vector3f point4(-m_clipEqD / normalEq.norm(), -1000., -1000.);
+
+      if ( (m_clipEqB == 0.0) && (m_clipEqC == 0.0) ) {
+        if (m_clipEqA < 0.0 ) {
+          MatrixP3f mat;
+          Vector3f zAxis(0., 0., 1.);
+          mat.loadRotation3(M_PI, zAxis);
+
+          point1 = mat * point1;
+          point2 = mat * point2;
+          point3 = mat * point3;
+          point4 = mat * point4;
+        }
+      }
+      else {
+        MatrixP3f mat;
+        Vector3f normal(1., 0., 0.);
+        normalEq.normalize();
+        double angle = acos(normal.dot(normalEq));
+        Vector3f axis = normal.cross(normalEq);
+        axis.normalize();
+        mat.loadRotation3(angle, axis);
+
+        point1 = mat * point1;
+        point2 = mat * point2;
+        point3 = mat * point3;
+        point4 = mat * point4;
+      }
+
+      glBegin(GL_QUADS); // rendering the plane quad. Note, it should be big
+                        // enough to cover all clip edge area.
+
+      glVertex3fv(point1.array());
+      glVertex3fv(point2.array());
+      glVertex3fv(point4.array());
+      glVertex3fv(point3.array());
+      glEnd();
+      glPopMatrix();
+      // End rendering mesh's clip edge
+      // Rendering mesh
+      glDisable(GL_STENCIL_TEST);
+      glEnable(GL_CLIP_PLANE0); // enabling clip plane again
+    }
+
+    doWork(mol);
+
+    glDisable(GL_BLEND);
+    glDepthMask(GL_FALSE);
+
+    if (m_renderMode)
+      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+    return true;
+  }
+
+  bool SurfaceEngine::renderQuick(PainterDevice *pd)
+  {
+    // Don't try to render anything while the surface is being calculated.
+    if (m_vdwThread->isRunning())
+      return false;
+    Molecule *mol = const_cast<Molecule *>(pd->molecule());
+    if (!m_surfaceValid)
+    {
+      PrimitiveList prims = primitives();
+      m_vdwThread->init(mol, prims, pd);
+      m_vdwThread->start();
+      m_surfaceValid = true;
+      return true;
+    }
+
+    pd->painter()->setColor(1.0, 0.0, 0.0);
+    m_color.applyAsMaterials();
+
+    switch (m_renderMode) {
+      case 0:
+      case 1:
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        break;
+      case 2:
+        glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+        break;
+    }
+
+    doWork(mol);
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+    return true;
+  }
+
+  void SurfaceEngine::doWork(Molecule *mol)
+  {
     glBegin(GL_TRIANGLES);
     if (m_colorMode == 1) { // ESP
       Color color;
@@ -288,10 +447,9 @@ namespace Avogadro {
         glNormal3fv(n.p2.array());
         glVertex3fv(t.p2.array());
       }
-    } else { // RGB
-      //m_color.applyAsMaterials();
-      for(int i=0; i < m_isoGen->numTriangles(); ++i)
-      {
+    }
+    else { // RGB
+      for(int i=0; i < m_isoGen->numTriangles(); ++i) {
         triangle t = m_isoGen->getTriangle(i);
         triangle n = m_isoGen->getNormal(i);
 
@@ -320,10 +478,6 @@ namespace Avogadro {
     {
       if(primitives().contains(p))
       {
-        //if (pd && pd->isSelected(p))
-        //{
-        //  return radius(static_cast<const Atom *>(p)) + SEL_ATOM_EXTRA_RADIUS;
-        //}
         return radius(static_cast<const Atom *>(p));
       }
     }
@@ -556,7 +710,7 @@ namespace Avogadro {
     zDim = grid.GetZdim();
 
     vector3 coord;
-    double distance, minDistance;
+    double distance/*, minDistance*/;
 
     // Now set up our VdW grid
     OBGridData *vdwGrid = new OBGridData;
@@ -567,28 +721,41 @@ namespace Avogadro {
 
     vdwGrid->SetNumberOfPoints(xDim, yDim, zDim);
     vdwGrid->SetLimits(min, xAxis, yAxis, zAxis);
+ 
+    for (int i = 0; i < xDim; ++i) 
+      for (int j = 0; j < yDim; ++j) 
+        for (int k = 0; k < zDim; ++k) 
+          vdwGrid->SetValue(i, j, k, -1.0E+10);
 
-    for (int i = 0; i < xDim; ++i) {
-      coord.SetX(min[0] + i * m_stepSize);
-      for (int j = 0; j < yDim; ++j) {
-        coord.SetY(min[1] + j * m_stepSize);
-        for (int k = 0; k < zDim; ++k)
-        {
-          coord.SetZ(min[2] + k * m_stepSize);
-          minDistance = 1.0E+10;
-	        for (int ai=0; ai < surfaceAtomsPos.size(); ai++)
-	        {
+    int index[3];
+    double pos[3];
+    int numBoxes = (int) 3.0 / m_stepSize;
+    if (numBoxes < 4)
+      numBoxes = 4;
+    //cout << "numBoxes = " << numBoxes << endl;
+    for (int ai=0; ai < surfaceAtomsPos.size(); ai++) {
+      surfaceAtomsPos[ai].Get(pos);
+      grid.CoordsToIndex(index, pos);
+      // cout << "center(i,j,k) = " << index[0] << ", " << index[1] << ", " << index[2] << endl; 
+
+      for (int i = index[0] - numBoxes; i < index[0] + numBoxes; ++i) {
+        if (i < 0) continue;
+        coord.SetX(min[0] + i * m_stepSize);
+        for (int j = index[1] - numBoxes; j < index[1] + numBoxes; ++j) {
+          if (j < 0) continue;
+          coord.SetY(min[1] + j * m_stepSize);
+          for (int k = index[2] - numBoxes; k < index[2] + numBoxes; ++k) {
+            if (k < 0) continue;
+            coord.SetZ(min[2] + k * m_stepSize);
             distance = sqrt(coord.distSq(surfaceAtomsPos[ai]));
             distance -= etab.GetVdwRad(surfaceAtomsNum[ai]);
-
-            if (distance < minDistance)
-              minDistance = distance;
-          } // end checking atoms
-          // negative = away from molecule, 0 = vdw surface, positive = inside
-          vdwGrid->SetValue(i, j, k, -minDistance);
-        } // z-axis
-      } // y-axis
-    } // x-axis
+            const double value = vdwGrid->GetValue(i, j, k);
+            if ((value < -1.0E+9) || (distance < -value))
+              vdwGrid->SetValue(i, j, k, -distance);
+          }
+        }
+      }
+    }
 
     m_grid->setGrid(vdwGrid);
     m_grid->setIsoValue(0.0);
@@ -616,14 +783,9 @@ namespace Avogadro {
     setRenderMode(settings.value("renderMode", 0).toInt());
     setColorMode(settings.value("colorMode", 0).toInt());
     m_color.set(settings.value("colorRed", 1.0).toDouble(),
-                     settings.value("colorGreen", 0.0).toDouble(),
-		     settings.value("colorBlue", 0.0).toDouble());
+                settings.value("colorGreen", 0.0).toDouble(),
+                settings.value("colorBlue", 0.0).toDouble());
 
-    /*
-    m_color.setRed(settings.value("colorRed", 1.0).toDouble());
-    m_color.setGreen(settings.value("colorGreen", 0.0).toDouble());
-    m_color.setBlue(settings.value("colorBlue", 0.0).toDouble());
-    */
     if(m_settingsWidget)
     {
       m_settingsWidget->opacitySlider->setValue(static_cast<int>(20*m_alpha));

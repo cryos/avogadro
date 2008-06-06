@@ -317,26 +317,30 @@ namespace Avogadro {
 
         // load static plugins first
         EngineFactory *bsFactory = qobject_cast<EngineFactory *>(new BSDYEngineFactory);
-        if (bsFactory)
-        {
+        if (bsFactory) {
           engineFactories.append(bsFactory);
           engineClassFactory[bsFactory->className()] = bsFactory;
         }
+        else
+          qDebug() << "Instantiation of the static ball and sticks plugin failed.";
 
         // now load plugins from paths
         foreach(const QString& path, pluginPaths)
         {
-          QDir dir( path );
+          QDir dir(path);
+          qDebug() << "Searching for engines in" << path;
           foreach(const QString& fileName, dir.entryList(QDir::Files))
           {
-            QPluginLoader loader( dir.absoluteFilePath( fileName ) );
+            QPluginLoader loader(dir.absoluteFilePath(fileName));
             QObject *instance = loader.instance();
-            EngineFactory *factory = qobject_cast<EngineFactory *>( instance );
-            if (factory)
-            {
+            EngineFactory *factory = qobject_cast<EngineFactory *>(instance);
+            if (factory) {
               engineFactories.append(factory);
               engineClassFactory[factory->className()] = factory;
+              qDebug() << fileName << "loaded successfully.";
             }
+            else
+              qDebug() << fileName << "failed to load." << loader.errorString();
           }
         }
         enginesLoaded = true;
@@ -1607,7 +1611,7 @@ namespace Avogadro {
     d->uc = NULL; // The unit cell is associated with our old molecule, it should have been freed elsewhere
     updateGeometry();
     d->camera->initializeViewPoint();
-    update();    
+    update();
   }
 
   int GLWidget::aCells()

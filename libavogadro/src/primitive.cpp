@@ -226,9 +226,9 @@ namespace Avogadro {
     Q_D(Molecule);
     Atom *atom = static_cast<Atom *>(obatom);
     if(atom) {
-      emit primitiveRemoved(atom);
       atom->deleteLater();
       d->atoms[atom->id()] = 0;
+      emit primitiveRemoved(atom);
     }
   }
 
@@ -272,9 +272,9 @@ namespace Avogadro {
     Q_D(Molecule);
     Bond *bond = static_cast<Bond *>(obbond);
     if(bond) {
-      emit primitiveRemoved(bond);
       bond->deleteLater();
       d->bonds[bond->id()] = 0;
+      emit primitiveRemoved(bond);
     }
   }
 
@@ -292,8 +292,8 @@ namespace Avogadro {
   {
     Residue *residue = static_cast<Residue *>(obresidue);
     if(residue) {
-      emit primitiveRemoved(residue);
       residue->deleteLater();
+      emit primitiveRemoved(residue);
     }
   }
 
@@ -397,7 +397,6 @@ namespace Avogadro {
 
   void Molecule::computeGeomInfo() const
   {
-//     MoleculePrivate *d = reinterpret_cast<MoleculePrivate *>(d_ptr);
     Q_D(const Molecule);
     d->invalidGeomInfo = true;
     d->farthestAtom = 0;

@@ -81,7 +81,7 @@ namespace Avogadro {
       Grid *m_grid2;
       IsoGen *m_isoGen;
       IsoGen *m_isoGen2;
-      Eigen::Vector3f m_min;
+      Eigen::Vector3f m_min, m_max;
       Color  m_posColor;
       Color  m_negColor;
       double m_alpha;

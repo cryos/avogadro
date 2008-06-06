@@ -108,10 +108,3 @@ qt4_automoc(${axesengine_SRCS})
 add_library(axesengine MODULE ${axesengine_SRCS})
 target_link_libraries(axesengine ${LINK_LIBS})
 install(TARGETS axesengine DESTINATION ${DESTINATION_DIR})
-
-# Dipole engine -- dipole moment
-set(dipoleengine_SRCS dipoleengine.cpp)
-qt4_automoc(${dipoleengine_SRCS})
-add_library(dipoleengine MODULE ${dipoleengine_SRCS})
-target_link_libraries(dipoleengine ${LINK_LIBS})
-install(TARGETS dipoleengine DESTINATION ${DESTINATION_DIR})

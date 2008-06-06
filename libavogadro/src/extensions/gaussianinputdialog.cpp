@@ -2,6 +2,7 @@
   GaussianInputDialog - Dialog for generating Gaussian input decks
 
   Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008 Michael Banck
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -38,7 +39,7 @@ namespace Avogadro
   GaussianInputDialog::GaussianInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
     m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
-    m_procs(1), m_output(""), m_chk(false), m_dirty(false)
+    m_procs(1), m_output(""), m_chk(false), m_coords(0), m_dirty(false)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -60,6 +61,8 @@ namespace Avogadro
         this, SLOT(setOutput(int)));
     connect(ui.checkpointCheck, SIGNAL(stateChanged(int)),
         this, SLOT(setChk(int)));
+    connect(ui.coordCombo, SIGNAL(currentIndexChanged(int)),
+        this, SLOT(setCoords(int)));
     connect(ui.previewText, SIGNAL(textChanged()),
         this, SLOT(previewEdited()));
     connect(ui.generateButton, SIGNAL(clicked()),
@@ -306,6 +309,12 @@ namespace Avogadro
     updatePreviewText();
   }
 
+  void GaussianInputDialog::setCoords(int n)
+  {
+    m_coords = n;
+    updatePreviewText();
+  }
+
   QString GaussianInputDialog::generateInputDeck()
   {
     // Generate an input deck based on the settings of the dialog
@@ -338,8 +347,8 @@ namespace Avogadro
     mol << m_charge << " " << m_multiplicity << "\n";
 
     // Now to output the actual molecular coordinates
-    //Atom* atom;
-    if (m_molecule)
+    // Cartesian coordinates
+    if (m_molecule && m_coords == 0)
     {
       QTextStream mol(&buffer);
       FOR_ATOMS_OF_MOL(atom, m_molecule)
@@ -348,6 +357,62 @@ namespace Avogadro
             << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
             << fixed << right << atom->GetX() << atom->GetY() << atom->GetZ()
             << qSetFieldWidth(0) << "\n";
+      }
+      mol << "\n";
+    }
+    // Z-matrix
+    if (m_molecule && m_coords == 1)
+    {
+      QTextStream mol(&buffer);
+      OBAtom *a, *b, *c;
+      double r, w, t;
+
+      /* Taken from OpenBabel's gzmat file format converter */
+      std::vector<OBInternalCoord*> vic;
+      vic.push_back((OBInternalCoord*)NULL);
+      FOR_ATOMS_OF_MOL(atom, m_molecule)
+        vic.push_back(new OBInternalCoord);
+      CartesianToInternal(vic, (OpenBabel::OBMol&)*m_molecule);
+
+      FOR_ATOMS_OF_MOL(atom, m_molecule)
+      {
+        a = vic[atom->GetIdx()]->_a;
+        b = vic[atom->GetIdx()]->_b;
+        c = vic[atom->GetIdx()]->_c;
+
+        mol << qSetFieldWidth(3) << left << QString(etab.GetSymbol(atom->GetAtomicNum()))
+            << qSetFieldWidth(0);
+        if (atom->GetIdx() > 1)
+          mol << " " << a->GetIdx() << " r" << atom->GetIdx();
+        if (atom->GetIdx() > 2)
+          mol << " " << b->GetIdx() << " a" << atom->GetIdx();
+        if (atom->GetIdx() > 3)
+          mol << " " << c->GetIdx() << " d" << atom->GetIdx();
+        mol << "\n";
+      }
+
+      mol << "Variables:" << endl;
+      FOR_ATOMS_OF_MOL(atom, m_molecule)
+      {
+        r = vic[atom->GetIdx()]->_dst;
+        w = vic[atom->GetIdx()]->_ang;
+        if (w < 0.0)
+          w += 360.0;
+        t = vic[atom->GetIdx()]->_tor;
+        if (t < 0.0)
+          t += 360.0;
+        if (atom->GetIdx() > 1)
+          mol << "r" << atom->GetIdx() << qSetFieldWidth(15)
+              << qSetRealNumberPrecision(5) << forcepoint << fixed << right
+              << r << qSetFieldWidth(0) << "\n";
+        if (atom->GetIdx() > 2)
+          mol << "a" << atom->GetIdx() << qSetFieldWidth(15)
+              << qSetRealNumberPrecision(5) << forcepoint << fixed << right
+              << w << qSetFieldWidth(0) << "\n";
+        if (atom->GetIdx() > 3)
+          mol << "d" << atom->GetIdx() << qSetFieldWidth(15)
+              << qSetRealNumberPrecision(5) << forcepoint << fixed << right
+              << t << qSetFieldWidth(0) << "\n";
       }
       mol << "\n";
     }

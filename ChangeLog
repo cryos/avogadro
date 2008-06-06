@@ -1,3 +1,54 @@
+2008-06-06  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/primitive.cpp: Tweaked the calling order for the
+	signals.
+
+2008-06-05  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/gaussianinputdialog.*: Finally added the
+	z-matrix support from Michael Banck in bug 1954332.
+
+	* libavogadro/src/extensions/gamessinputdialog.ui: Reduced the
+	vertical size of the GAMESS dialog, fixes bug 1982113.
+
+2008-06-04  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/engines/surfaceengine.cpp: Scale numBoxes with
+	quality.
+
+	* libavogadro/src/engines/surfaceengine.cpp: Instead of iterating over
+	all atoms for each grid point, iterate over all atoms once and only
+	update grid points around the atom. This is 100-200x times faster...
+
+2008-06-04  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glwidget.cpp: Added more verbosity to the engine
+	loading in order to help diagnose issues.
+
+	* libavogadro/src/engines/ribbonengine.cpp: Fixed issue with atom IDs
+	not getting trimmed and the ribbon not being displayed.
+
+	* libavogadro/src/engines/orbitalengine.*: Actually draw the extents of
+	the cube if requested to.
+
+	* libavogadro/src/engines/surfaceengine.*: Added a quick render and
+	render transparent function.
+
+	* libavogadro/src/engines/sphereengine.*: Added a quick render
+	function to fix rendering when quick draw is used.
+
+	* avogadro/src/addenginedialog.cpp: Fixes bug 1984080 - the added
+	engine was somewhat random before.
+
+2008-06-03  Geoffrey Hutchison  <babel@geoffhutchison.net>
+
+	* i18n/*, scripts/extract-messages.sh: Added additional resources
+	for .pot and .po file generation to integrate with
+	Rosetta/Launchpad. Includes pt and es initial translations.
+
+	* avogadro/src/CMakeLists.txt: Use a file glob for ts files to
+	build into qm files.
+
 2008-06-03  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engine.h, libavogadro/src/extension.h,

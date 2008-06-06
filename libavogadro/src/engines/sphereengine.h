@@ -1,9 +1,9 @@
 /**********************************************************************
   SphereEngine - Engine for "spheres" display
 
+  Copyright (C) 2007-2008 Marcus D. Hanwell
   Copyright (C) 2006-2007 Geoffrey R. Hutchison
   Copyright (C) 2007      Benoit Jacob
-  Copyright (C) 2007      Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -55,6 +55,7 @@ namespace Avogadro {
       //@{
       bool renderOpaque(PainterDevice *pd);
       bool renderTransparent(PainterDevice *pd);
+      bool renderQuick(PainterDevice *pd);
       //! Render an Atom.
       bool render(PainterDevice *pd, const Atom *a);
       //@}

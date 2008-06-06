@@ -1,7 +1,7 @@
 /**********************************************************************
   RibbonEngine - Engine for "ribbon" display
 
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007-2008 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -161,7 +161,6 @@ namespace Avogadro {
   void RibbonEngine::updateChains()
   {
     if (!isEnabled()) return;
-    qDebug() << "Update chains called.";
     // Get a list of residues for the molecule
     m_chains.clear();
     QList<Primitive *> list;
@@ -178,7 +177,6 @@ namespace Avogadro {
         // this residue is on a new chain
         if(pts.size() > 0)
           m_chains.push_back(pts);
-        qDebug() << "Chain " << m_chains.size() << " added.";
         currentChain = r->GetChainNum();
         pts.clear();
       }
@@ -186,13 +184,11 @@ namespace Avogadro {
       FOR_ATOMS_OF_RESIDUE(a, r) {
         // should be CA
         QString atomID = QString(r->GetAtomID(&*a).c_str());
-        atomID.trimmed();
-        if (atomID == "CA") {
+        atomID = atomID.trimmed();
+        if (atomID == "CA")
           pts.push_back(static_cast<Atom *>(&*a)->pos());
-        }
-        else if (atomID == "N" && m_useNitrogens == 2 ) {
+        else if (atomID == "N" && m_useNitrogens == 2)
          pts.push_back(static_cast<Atom *>(&*a)->pos());
-        }
       } // end atoms in residue
 
     } // end primitive list (i.e., all residues)
@@ -234,10 +230,14 @@ namespace Avogadro {
     if(!m_settingsWidget)
     {
       m_settingsWidget = new RibbonSettingsWidget();
-      connect(m_settingsWidget->renderType, SIGNAL(activated(int)), this, SLOT(setType(int)));
-      connect(m_settingsWidget->radiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setRadius(int)));
-      connect(m_settingsWidget->useNitrogens, SIGNAL(stateChanged(int)), this, SLOT(setUseNitrogens(int)));
-      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      connect(m_settingsWidget->renderType, SIGNAL(activated(int)),
+              this, SLOT(setType(int)));
+      connect(m_settingsWidget->radiusSlider, SIGNAL(valueChanged(int)),
+              this, SLOT(setRadius(int)));
+      connect(m_settingsWidget->useNitrogens, SIGNAL(stateChanged(int)),
+              this, SLOT(setUseNitrogens(int)));
+      connect(m_settingsWidget, SIGNAL(destroyed()),
+              this, SLOT(settingsWidgetDestroyed()));
       m_settingsWidget->renderType->setCurrentIndex(m_type);
       m_settingsWidget->radiusSlider->setValue(int(10 * m_radius));
       m_settingsWidget->useNitrogens->setCheckState((Qt::CheckState)m_useNitrogens);
