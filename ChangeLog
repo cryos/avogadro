@@ -1,5 +1,8 @@
 2008-06-06  Marcus D. Hanwell  <marcus@cryos.org>
 
+	* libavogadro/src/extensions/orbitalextension.cpp: Added calls to tr
+	for i18n, thanks to Louis Ricard in bug 1986689.
+
 	* libavogadro/src/primitive.cpp: Tweaked the calling order for the
 	signals.
 
