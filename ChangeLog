@@ -1,3 +1,8 @@
+2008-06-06  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/primitive.cpp: Tweaked the calling order for the
+	signals.
+
 2008-06-05  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/gaussianinputdialog.*: Finally added the
