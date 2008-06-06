@@ -169,6 +169,10 @@ namespace Avogadro {
               FOR_ATOMS_OF_RESIDUE(a, residue) {
                 neighborList.append(static_cast<Atom *>(&*a));
               }
+	      vector<OBBond*> bonds = residue->GetBonds();
+              for (unsigned int i = 0; i < bonds.size(); ++i) {
+                neighborList.append(static_cast<Bond *>(bonds[i]));
+              }
               widget->setSelected(neighborList, select);
             }
           } // end for(hits)
@@ -391,7 +395,7 @@ namespace Avogadro {
       labelMode->setMaximumHeight(15);
 
       m_comboSelectionMode = new QComboBox(m_settingsWidget);
-      m_comboSelectionMode->addItem(tr("Atom"));
+      m_comboSelectionMode->addItem(tr("Atom/Bond"));
       m_comboSelectionMode->addItem(tr("Residue"));
       m_comboSelectionMode->addItem(tr("Molecule"));
 

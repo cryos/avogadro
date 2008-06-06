@@ -80,11 +80,12 @@ namespace Avogadro {
     public:
       enum Action {
         AddHydrogens = 0,
+        AddHydrogensPH,
         RemoveHydrogens
       };
 
     public:
-      HydrogensCommand(Molecule *molecule, enum Action action, GLWidget *widget);
+      HydrogensCommand(Molecule *molecule, enum Action action, GLWidget *widget, double pH = 7.4);
 
       virtual void undo();
       virtual void redo();
@@ -96,6 +97,7 @@ namespace Avogadro {
       Molecule m_moleculeCopy;
       IDList m_SelectedList;
       enum Action m_action;
+      double m_pH;
   };
 
 } // end namespace Avogadro

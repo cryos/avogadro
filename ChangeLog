@@ -1,3 +1,11 @@
+2008-06-04  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/tools/selectrotatetool.cpp: When selecting residues,
+	also select the bonds.
+
+	* libavogadro/src/extensions/hydrogenextension.*: Added "Add Hydrogens
+	for pH...".
+
 2008-06-06  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/orbitalextension.cpp: Added calls to tr

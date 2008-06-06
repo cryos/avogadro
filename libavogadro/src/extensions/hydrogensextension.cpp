@@ -28,6 +28,8 @@
 #include <openbabel/obiter.h>
 
 #include <QAction>
+#include <QInputDialog>
+#include <QString>
 
 using namespace std;
 using namespace OpenBabel;
@@ -38,6 +40,10 @@ namespace Avogadro {
   {
     QAction *action = new QAction(this);
     action->setText(tr("Add Hydrogens"));
+    m_actions.append(action);
+
+    action = new QAction(this);
+    action->setText(tr("Add Hydrogens for pH..."));
     m_actions.append(action);
 
     action = new QAction(this);
@@ -69,17 +75,28 @@ namespace Avogadro {
 
     QUndoCommand *undo = 0;
     int i = m_actions.indexOf(action);
-    if( 0 <= i && i <= 1) {
-      undo = new HydrogensCommand(m_molecule, (enum HydrogensCommand::Action) i, widget);
+    if( 0 <= i && i <= 2) {
+      if(i == 1) {
+        bool ok;
+        double pH = QInputDialog::getDouble(0, 
+          tr("Add Hydrogens for pH"), tr("pH"), 7.4, 0.0, 14.0, 1, &ok);
+      
+        if (!ok)
+          return undo;
+ 
+        undo = new HydrogensCommand(m_molecule, (enum HydrogensCommand::Action) i, widget, pH);
+      } else {
+        undo = new HydrogensCommand(m_molecule, (enum HydrogensCommand::Action) i, widget);
+      }
     }
 
     return undo;
   }
 
   HydrogensCommand::HydrogensCommand(Molecule *molecule, enum Action action,
-      GLWidget *widget):
+      GLWidget *widget, double pH):
     m_molecule(molecule), m_moleculeCopy(*molecule),
-    m_SelectedList(widget->selectedPrimitives()), m_action(action)
+    m_SelectedList(widget->selectedPrimitives()), m_action(action), m_pH(pH)
   {
     // save the selection from the current view widget
     // (i.e., only modify a few hydrogens)
@@ -88,6 +105,9 @@ namespace Avogadro {
     switch(action) {
       case AddHydrogens:
         setText(QObject::tr("Add Hydrogens"));
+        break;
+      case AddHydrogensPH:
+        setText(QObject::tr("Add Hydrogens for pH"));
         break;
       case RemoveHydrogens:
         setText(QObject::tr("Remove Hydrogens"));
@@ -101,6 +121,13 @@ namespace Avogadro {
       switch(m_action) {
         case AddHydrogens:
           m_molecule->AddHydrogens(false, false);
+          break;
+        case AddHydrogensPH:
+	  m_molecule->UnsetFlag(OB_PH_CORRECTED_MOL);
+	  FOR_ATOMS_OF_MOL (a, m_molecule)
+            a->SetFormalCharge(0.0);
+	  m_molecule->SetAutomaticFormalCharge(true);
+          m_molecule->AddHydrogens(false, true, m_pH);
           break;
         case RemoveHydrogens:
           m_molecule->DeleteHydrogens();
