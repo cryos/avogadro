@@ -1,0 +1,13 @@
+Version 1.0
+
+- The file extension ".cml" is registered to be opened with Avogadro when
+   double-clicking on cml-files (can be deselected in the installer menu)
+- Desktop icon is provided (can be deselected in the installer menu)
+- Avogadro is installed for all users, when the the user is admin
+- Installer is translatable
+- English and German translation is delivered, (the installer detects the
+   used language by checking the default language of Windows)
+- Installer can also be used under Windows Vista
+- Avogardo is correctly uninstalled
+- Avogadro can be directly started after the installation (checkbox in
+   the last installer window)
