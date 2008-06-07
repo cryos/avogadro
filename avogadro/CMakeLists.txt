@@ -1,5 +1,5 @@
 project(avogadro)
-set(VERSION "0.8.0")
+set(VERSION "0.8.1")
 
 # Generate SVN_REVISION variable
 execute_process(COMMAND svnversion -n ${CMAKE_SOURCE_DIR}
