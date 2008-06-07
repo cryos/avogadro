@@ -1,4 +1,9 @@
-2008-06-04  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+2008-06-07  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* avogadro/CMakeLists.txt, libavogadro/CMakeLists.txt: Bumped version
+	to 0.8.2 now trunk is open for changes again.
+
+2008-06-06  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/tools/selectrotatetool.cpp: When selecting residues,
 	also select the bonds.

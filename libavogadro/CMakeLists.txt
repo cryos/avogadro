@@ -1,7 +1,7 @@
 project(libavogadro)
 # Library versioning
 # We probably want to adopt the libtool scheme once we hit 1.0.0
-set(VERSION 0.8.0)
+set(VERSION 0.8.2)
 set(SOVERSION 0)
 
 # Generate SVN_REVISION variable
