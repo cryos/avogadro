@@ -21,7 +21,7 @@ RequestExecutionLevel user
 ; you only need to change this section for new releases
 VIProductVersion "0.8.1.0" ; file version for the installer in the scheme "x.x.x.x"
 !define VERSION "0.8.1"
-Name "Avogadro ${VERSION}"
+Name "Avogadro"
 !define REGKEY "SOFTWARE\Avogadro"
 !define COMPANY "Avogadro Team"
 !define URL "http://avogadro.openmolecules.net/wiki/Main_Page"
@@ -184,7 +184,7 @@ Section "-Installation actions" SecInstallation
   CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\$(^Name).lnk" "${PRODUCT_EXE}" "" "$INSTDIR\Avogadro.exe"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Release Notes.lnk" "http://avogadro.openmolecules.net/wiki/Avogadro_${VERSION}" ""
-  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Uninstall $(^Name).lnk" "$INSTDIR\uninstall.exe"
+  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Uninstall.lnk" "$INSTDIR\uninstall.exe"
   
   ; create desktop icon
   ${if} $CreateDesktopIcon == "true"
