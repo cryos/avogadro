@@ -726,6 +726,13 @@ namespace Avogadro {
        */
       void engineRemoved(Engine *engine);
 
+      /**
+       * Signal that the GLWidget has resized. Can be used to update child 
+       * widgets, see overlay extension for example.
+       */
+      void resized();
+
+
   };
 
 } // end namespace Avogadro

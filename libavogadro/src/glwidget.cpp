@@ -608,6 +608,7 @@ namespace Avogadro {
     // specific functions here - need to look at Mac and Windows code.
     resizeGL( event->size().width(), event->size().height() );
 #endif
+    emit resized();
   }
 
   void GLWidget::resizeGL( int width, int height )
