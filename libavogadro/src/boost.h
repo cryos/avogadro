@@ -46,7 +46,7 @@ BOOST_PYTHON_MODULE(Avogadro) {
 	void (OBMol::*ToInertialFrame)() = &OBMol::ToInertialFrame;
 	void (OBMol::*Center)() = &OBMol::Center;
 	bool (OBMol::*DeleteHydrogens)() = &OBMol::DeleteHydrogens;
-	bool (OBMol::*AddHydrogens)(bool, bool) = &OBMol::AddHydrogens;
+	bool (OBMol::*AddHydrogens)(bool, bool, double) = &OBMol::AddHydrogens;
 	OBBond * (OBMol::*GetBondIDX)(int)const = &OBMol::GetBond;
 	OBBond * (OBMol::*GetBondAtoms)(int, int)const = &OBMol::GetBond;
 

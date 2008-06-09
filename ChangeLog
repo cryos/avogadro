@@ -8,6 +8,9 @@
 	specifying interaction groups in the force field setup dialog. This
 	would be expanded in the future (tree view).
 
+	* libavogadro/src/boost.h: adjust OBMol::AddHydrogens() for added pH
+	paramter.
+
 2008-06-08  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/glwidget.*: Add resized() signal.
