@@ -30,6 +30,7 @@
 #include <QList>
 #include <QString>
 #include <QUndoCommand>
+#include <QListView>
 
 namespace Avogadro {
 
@@ -69,6 +70,8 @@ namespace Avogadro {
       void selectSMARTS(GLWidget *widget);
       void selectResidue(GLWidget *widget);
       void selectSolvent(GLWidget *widget);
+      void addNamedSelection(GLWidget *widget);
+      void namedSelections(GLWidget *widget);
   };
 
   class SelectExtensionFactory : public QObject, public ExtensionFactory
@@ -80,6 +83,20 @@ namespace Avogadro {
     Extension *createInstance(QObject *parent = 0) { return new SelectExtension(parent); }
   };
 
+  class NamedSelectionView : public QListView
+  {
+    Q_OBJECT
+
+     public:
+       explicit NamedSelectionView(GLWidget *widget, QWidget *parent = 0);
+
+       void selectionChanged(const QItemSelection &selected, const QItemSelection &previous);
+       void hideEvent(QHideEvent *event);
+
+     private:
+       GLWidget *m_widget;
+ };
+ 
 } // end namespace Avogadro
 
 #endif

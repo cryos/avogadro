@@ -448,6 +448,54 @@ namespace Avogadro {
        * @return true if the Primitive is selected.
        */
       bool isSelected(const Primitive *p) const;
+
+      /**
+       * Add a new named selection.
+       *
+       * @param name name of the new selection.
+       * @param primitives the primitives ids.
+       * @return true if the name is not taken
+       */
+      bool addNamedSelection(const QString &name, PrimitiveList &primitives);
+      /**
+       * Remove a named selection by name.
+       *
+       * @param name name of the selection to remove.
+       */
+      void removeNamedSelection(const QString &name);
+      /**
+       * Remove a named selection by index. Using the index is useful in Models.
+       *
+       * @param index index of the selection to remove.
+       */
+      void removeNamedSelection(int index);
+      /**
+       * Rename a named selection by index. Using the index is useful in Models.
+       *
+       * @param index index of the selection to rename.
+       */
+      void renameNamedSelection(int index, const QString &name);
+      /**
+       * Get the names of all named selections.
+       *
+       * @return a list with all the named selections.
+       */
+      QStringList namedSelections();
+      /**
+       * Get the primitives of a named selections by name.
+       *
+       * @param name name of the selection.
+       * @return the primitives for this named selection.
+       */
+      PrimitiveList namedSelectionPrimitives(const QString &name);
+      /**
+       * Get the primitives of a named selections by index.
+       * Using the index is useful in Models.
+       *
+       * @param index index of the selection.
+       * @return the primitives for this named selection.
+       */
+      PrimitiveList namedSelectionPrimitives(int index);
       /* end selection method grouping */
       /** @} */
 

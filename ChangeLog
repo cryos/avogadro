@@ -1,5 +1,15 @@
 2008-06-08  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
+	* libavogadro/src/glwidget.*: Functions for named selections.
+
+	* libavogadro/src/extensions/selectextension.*,
+	libavogadro/src/extension/namedselectionmodel.*: Use them. At the
+	moment the model is a simple list. I needed this functionality for
+	specifying interaction groups in the force field setup dialog. This
+	would be expanded in the future (tree view).
+
+2008-06-08  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
 	* libavogadro/src/glwidget.*: Add resized() signal.
 
 	* libavogadro/src/extensions/overlayextension.*: 2D overlay extension

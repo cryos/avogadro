@@ -259,6 +259,7 @@ namespace Avogadro {
     GLuint                *selectBuf;
     int                    selectBufSize;
 
+    QList<QPair<QString, QPair<QList<unsigned int>, QList<unsigned int> > > > namedSelections;
     PrimitiveList          selectedPrimitives;
     PrimitiveList          primitives;
 
@@ -1595,6 +1596,91 @@ namespace Avogadro {
   {
     // Return true if the item is selected
     return d->selectedPrimitives.contains( const_cast<Primitive *>( p ) );
+  }
+
+  bool GLWidget::addNamedSelection(const QString &name, PrimitiveList &primitives)
+  {
+    // make sure the name is unique
+    for (int i = 0; i < d->namedSelections.size(); ++i)
+      if (d->namedSelections.at(i).first == name)
+	return false;
+    
+    QList<unsigned int> atomIds;
+    QList<unsigned int> bondIds;
+    foreach(Primitive *item, primitives) {
+      if (item->type() == Primitive::AtomType)
+        atomIds.append(item->id());
+      if (item->type() == Primitive::BondType)
+        bondIds.append(item->id());
+    }
+
+    QPair<QList<unsigned int>,QList<unsigned int> > pair(atomIds, bondIds);
+    QPair<QString, QPair<QList<unsigned int>,QList<unsigned int> > > namedSelection(name, pair);
+    d->namedSelections.append(namedSelection);
+
+    return true;
+  }
+  
+  void GLWidget::removeNamedSelection(const QString &name)
+  {
+    for (int i = 0; i < d->namedSelections.size(); ++i)
+      if (d->namedSelections.at(i).first == name) {
+        d->namedSelections.removeAt(i);
+        return;
+      }
+  }
+
+  void GLWidget::removeNamedSelection(int index)
+  {
+    d->namedSelections.removeAt(index);
+  }
+
+  void GLWidget::renameNamedSelection(int index, const QString &name)
+  {
+    if (name.isEmpty())
+      return;
+    
+    QPair<QString, QPair<QList<unsigned int>,QList<unsigned int> > > pair = d->namedSelections.takeAt(index);
+    pair.first = name;
+    d->namedSelections.insert(index, pair);
+  }
+
+  QStringList GLWidget::namedSelections()
+  {
+    QStringList names;
+    for (int i = 0; i < d->namedSelections.size(); ++i)
+      names.append(d->namedSelections.at(i).first);
+
+    return names;
+  }
+  
+  PrimitiveList GLWidget::namedSelectionPrimitives(const QString &name)
+  {
+    for (int i = 0; i < d->namedSelections.size(); ++i)
+      if (d->namedSelections.at(i).first == name) {
+	return namedSelectionPrimitives(i);
+    }
+
+    return PrimitiveList();
+  }
+ 
+  PrimitiveList GLWidget::namedSelectionPrimitives(int index)
+  {
+    PrimitiveList list;
+
+    for (int j = 0; j < d->namedSelections.at(index).second.first.size(); ++j) {
+      Atom *atom = d->molecule->getAtomById(d->namedSelections.at(index).second.first.at(j));
+      if (atom)
+        list.append(atom);
+    }
+    
+    for (int j = 0; j < d->namedSelections.at(index).second.second.size(); ++j) {
+      Bond *bond = d->molecule->getBondById(d->namedSelections.at(index).second.second.at(j));
+      if (bond)
+        list.append(bond);
+    }
+    
+    return list;
   }
 
   void GLWidget::setUnitCells( int a, int b, int c )

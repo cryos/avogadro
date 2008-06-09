@@ -87,7 +87,7 @@ target_link_libraries(hydrogensextension ${LINK_LIBS})
 install(TARGETS hydrogensextension DESTINATION ${DESTINATION_DIR})
 
 ### Selections
-set(selectextension_SRCS selectextension.cpp)
+set(selectextension_SRCS selectextension.cpp namedselectionmodel.cpp)
 qt4_automoc(${selectextension_SRCS})
 add_library(selectextension MODULE ${selectextension_SRCS})
 target_link_libraries(selectextension ${LINK_LIBS})

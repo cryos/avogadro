@@ -3,6 +3,7 @@
 
   Copyright (C) 2006-2007 by Donald Ephraim Curtis
   Copyright (C) 2006-2007 by Geoffrey R. Hutchison
+  Copyright (C) 2008 by Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -21,6 +22,7 @@
  ***********************************************************************/
 
 #include "selectextension.h"
+#include "namedselectionmodel.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 
@@ -29,6 +31,7 @@
 
 #include <QLineEdit>
 #include <QInputDialog>
+#include <QMessageBox>
 #include <QAction>
 
 using namespace std;
@@ -42,7 +45,10 @@ namespace Avogadro {
       ElementIndex,
       ResidueIndex,
       SolventIndex,
-      SMARTSIndex
+      SMARTSIndex,
+      AddNamedIndex,
+      NamedIndex,
+      SeparatorIndex
     };
 
   SelectExtension::SelectExtension(QObject *parent) : Extension(parent)
@@ -77,6 +83,20 @@ namespace Avogadro {
     action->setData(SolventIndex);
     m_actions.append(action);
   
+    action = new QAction( this );
+    action->setSeparator(true);
+    action->setData(SeparatorIndex);
+    m_actions.append( action );
+
+    action = new QAction(this);
+    action->setText(tr("Add Named Selection..."));
+    action->setData(AddNamedIndex);
+    m_actions.append(action);
+ 
+    action = new QAction(this);
+    action->setText(tr("Named Selections..."));
+    action->setData(NamedIndex);
+    m_actions.append(action);
   }
 
   SelectExtension::~SelectExtension()
@@ -119,6 +139,12 @@ namespace Avogadro {
       break;
     case SolventIndex:
       selectSolvent(widget);
+      break;
+    case AddNamedIndex:
+      addNamedSelection(widget);
+      break;
+    case NamedIndex:
+      namedSelections(widget);
       break;
     default:
       break;
@@ -234,6 +260,81 @@ namespace Avogadro {
     widget->update();
   }
 
+  void SelectExtension::addNamedSelection(GLWidget *widget)
+  {
+    PrimitiveList primitives = widget->selectedPrimitives();
+
+    if (primitives.isEmpty()) {
+      QMessageBox::warning( widget, tr( "Avogadro" ),
+        tr( "There is no current selection." ));
+      return;
+    }
+
+    bool ok;
+    QString name = QInputDialog::getText(qobject_cast<QWidget*>(parent()),
+        tr("Add Named Selection"), tr("name"), QLineEdit::Normal, "", &ok);
+
+    if (!ok) return;
+
+    if (name.isEmpty()) {
+      QMessageBox::warning( widget, tr( "Avogadro" ),
+        tr( "Name cannot be empty." ));
+      return; 
+    }
+
+    if (!widget->addNamedSelection(name, primitives)) {
+       QMessageBox::warning( widget, tr( "Avogadro" ),
+        tr( "There is already a selection with this name." ));
+    }
+  }
+
+  void SelectExtension::namedSelections(GLWidget *widget)
+  {
+    NamedSelectionView  *view  = new NamedSelectionView(widget);
+    NamedSelectionModel *model = new NamedSelectionModel(widget, this);
+
+    view->setModel(model);
+    view->show();
+  }
+  
+  NamedSelectionView::NamedSelectionView(GLWidget *widget, QWidget *parent) : QListView(parent), m_widget(widget)
+  {
+    QString title = tr("Selections");
+    this->setWindowTitle(title);
+  }
+  
+  void NamedSelectionView::selectionChanged(const QItemSelection &selected, const QItemSelection &)
+  {
+    QModelIndex index;
+    QModelIndexList items = selected.indexes();
+    
+    m_widget->clearSelected();
+    foreach (index, items) {
+      if (!index.isValid())
+        return;
+    
+      if (index.row() >= m_widget->namedSelections().size())
+        return;
+
+      PrimitiveList primitives = m_widget->namedSelectionPrimitives(index.row());
+
+      if (!primitives.size()) {
+        QMessageBox::warning( m_widget, tr( "Avogadro" ),
+        tr( "The selection items have been deleted." ));
+      }
+
+      m_widget->setSelected(primitives, true);
+    }  
+  }
+  
+  void NamedSelectionView::hideEvent(QHideEvent *)
+  {
+    QAbstractItemModel *m_model = model();
+    if (m_model)
+      m_model->deleteLater();
+
+    this->deleteLater();
+  }
 
 } // end namespace Avogadro
 
