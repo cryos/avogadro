@@ -39,7 +39,7 @@ namespace Avogadro
   GaussianInputDialog::GaussianInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
     m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
-    m_procs(1), m_output(""), m_chk(false), m_coords(0), m_dirty(false)
+    m_procs(1), m_output(""), m_chk(false), m_coordType(CARTESIAN), m_dirty(false)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -311,7 +311,20 @@ namespace Avogadro
 
   void GaussianInputDialog::setCoords(int n)
   {
-    m_coords = n;
+    switch (n)
+    {
+      case 0:
+        m_coordType = CARTESIAN;
+        break;
+      case 1:
+        m_coordType = ZMATRIX;
+        break;
+      case 2:
+        m_coordType = ZMATRIX_COMPACT;
+        break;
+      default:
+        m_coordType = CARTESIAN;
+    }
     updatePreviewText();
   }
 
@@ -348,7 +361,7 @@ namespace Avogadro
 
     // Now to output the actual molecular coordinates
     // Cartesian coordinates
-    if (m_molecule && m_coords == 0)
+    if (m_molecule && m_coordType == CARTESIAN)
     {
       QTextStream mol(&buffer);
       FOR_ATOMS_OF_MOL(atom, m_molecule)
@@ -361,7 +374,7 @@ namespace Avogadro
       mol << "\n";
     }
     // Z-matrix
-    if (m_molecule && m_coords == 1)
+    else if (m_molecule && m_coordType == ZMATRIX)
     {
       QTextStream mol(&buffer);
       OBAtom *a, *b, *c;
@@ -413,6 +426,47 @@ namespace Avogadro
           mol << "d" << atom->GetIdx() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
               << t << qSetFieldWidth(0) << "\n";
+      }
+      mol << "\n";
+    }
+    else if (m_molecule && m_coordType == ZMATRIX_COMPACT)
+    {
+      QTextStream mol(&buffer);
+      OBAtom *a, *b, *c;
+      double r, w, t;
+
+      /* Taken from OpenBabel's gzmat file format converter */
+      std::vector<OBInternalCoord*> vic;
+      vic.push_back((OBInternalCoord*)NULL);
+      FOR_ATOMS_OF_MOL(atom, m_molecule)
+        vic.push_back(new OBInternalCoord);
+      CartesianToInternal(vic, (OpenBabel::OBMol&)*m_molecule);
+
+      FOR_ATOMS_OF_MOL(atom, m_molecule)
+      {
+        a = vic[atom->GetIdx()]->_a;
+        b = vic[atom->GetIdx()]->_b;
+        c = vic[atom->GetIdx()]->_c;
+        r = vic[atom->GetIdx()]->_dst;
+        w = vic[atom->GetIdx()]->_ang;
+        if (w < 0.0)
+          w += 360.0;
+        t = vic[atom->GetIdx()]->_tor;
+        if (t < 0.0)
+          t += 360.0;
+
+        mol << qSetFieldWidth(3) << left << QString(etab.GetSymbol(atom->GetAtomicNum()))
+            << qSetFieldWidth(6) << right;
+        if (atom->GetIdx() > 1)
+          mol << a->GetIdx() << qSetFieldWidth(15)
+          << qSetRealNumberPrecision(5) << forcepoint << fixed << right << r;
+        if (atom->GetIdx() > 2)
+          mol << qSetFieldWidth(6) << right << b->GetIdx() << qSetFieldWidth(15)
+          << qSetRealNumberPrecision(5) << forcepoint << fixed << right << w;
+        if (atom->GetIdx() > 3)
+          mol << qSetFieldWidth(6) << right << c->GetIdx() << qSetFieldWidth(15)
+          << qSetRealNumberPrecision(5) << forcepoint << fixed << right << t;
+        mol << qSetFieldWidth(0) << "\n";
       }
       mol << "\n";
     }

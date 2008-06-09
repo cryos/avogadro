@@ -1,3 +1,8 @@
+2008-06-09  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/gaussianinputdialog.*: Added a compact
+	form of the z-matrix as an option.
+
 2008-06-08  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/glwidget.*: Functions for named selections.
@@ -10,8 +15,6 @@
 
 	* libavogadro/src/boost.h: adjust OBMol::AddHydrogens() for added pH
 	paramter.
-
-2008-06-08  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/glwidget.*: Add resized() signal.
 

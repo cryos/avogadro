@@ -415,6 +415,11 @@
            <string>Z-matrix</string>
           </property>
          </item>
+         <item>
+          <property name="text" >
+           <string>Z-matrix (compact)</string>
+          </property>
+         </item>
         </widget>
        </item>
        <item>

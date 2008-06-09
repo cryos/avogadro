@@ -47,6 +47,7 @@ namespace Avogadro
       enum calculationType{SP, OPT, FREQ};
       enum theoryType{AM1, PM3, RHF, B3LYP, MP2, CCSD};
       enum basisType{STO3G, B321G, B631Gd, B631Gdp};
+      enum coordType{CARTESIAN, ZMATRIX, ZMATRIX_COMPACT};
 
     private:
       Ui::GaussianInputDialog ui;
@@ -62,7 +63,7 @@ namespace Avogadro
       int m_procs;
       QString m_output;
       bool m_chk;
-      int m_coords;
+      coordType m_coordType;
       bool m_dirty;
 
       // Generate an input deck as a string
