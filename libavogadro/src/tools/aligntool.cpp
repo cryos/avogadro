@@ -49,7 +49,8 @@ using namespace Eigen;
 namespace Avogadro {
 
   AlignTool::AlignTool(QObject *parent) : Tool(parent),  m_molecule(0),
-  m_numSelectedAtoms(0), m_axis(2), m_alignType(0), m_settingsWidget(0)
+    m_selectedAtoms(2), m_numSelectedAtoms(0), m_axis(2), m_alignType(0),
+    m_settingsWidget(0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/align/align.png")));
@@ -63,9 +64,7 @@ namespace Avogadro {
     // clear the selected atoms
     int size = m_selectedAtoms.size();
     for(int i=0; i<size; i++)
-    {
       m_selectedAtoms[i] = NULL;
-    }
   }
 
   AlignTool::~AlignTool()
@@ -87,7 +86,7 @@ namespace Avogadro {
       if(m_hits[0].type() != Primitive::AtomType)
         return 0;
 
-      Atom *atom = (Atom *)m_molecule->GetAtom(m_hits[0].name());
+      Atom *atom = static_cast<Atom *>(m_molecule->GetAtom(m_hits[0].name()));
 
       if(m_numSelectedAtoms < 2)
       {

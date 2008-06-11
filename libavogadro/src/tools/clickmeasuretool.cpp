@@ -43,7 +43,8 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  ClickMeasureTool::ClickMeasureTool(QObject *parent) : Tool(parent),  m_numSelectedAtoms(0)
+  ClickMeasureTool::ClickMeasureTool(QObject *parent) : Tool(parent),
+    m_selectedAtoms(4), m_numSelectedAtoms(0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/measure/measure.png")));
