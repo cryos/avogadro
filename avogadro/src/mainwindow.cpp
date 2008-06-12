@@ -36,9 +36,9 @@
 
 #include "icontabwidget.h"
 
-#ifdef Q_WS_MAC
-#include "macchempasteboard.h"
-#endif
+//#ifdef Q_WS_MAC
+//#include "macchempasteboard.h"
+//#endif
 
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>

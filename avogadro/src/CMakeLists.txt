@@ -27,9 +27,10 @@ include(${QT_USE_FILE})
 
 FILE(GLOB avogadro_SRCS "*.cpp")
 
-if(NOT APPLE)
+# Mac ChemPasteboard currently disabled -- prevents drag-and-drop
+#if(NOT APPLE)
   LIST(REMOVE_ITEM avogadro_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/macchempasteboard.cpp)
-endif(NOT APPLE)
+#endif(NOT APPLE)
 
 if( WIN32 )
   set(avogadro_SRCS ${avogadro_SRCS} windows/avogadro.rc)
