@@ -61,7 +61,7 @@ namespace Avogadro {
   {
     QList<Primitive *> list;
 
-    if (m_atomType < 6)
+    if (m_atomType > 0)
     {
       // Render atom labels
       list = primitives().subList(Primitive::AtomType);
@@ -69,7 +69,7 @@ namespace Avogadro {
         renderOpaque(pd, static_cast<Atom *>(p));
     }
 
-    if (m_bondType < 2)
+    if (m_bondType > 0)
     {
       // Now render the bond labels
       list = primitives().subList(Primitive::BondType);
@@ -101,20 +101,20 @@ namespace Avogadro {
       QString str;
       switch(m_atomType)
       {
-        case 0:
+        case 1:
           str = QString::number(a->GetIdx());
           break;
-        case 1:
+        case 3:
           str = QString(etab.GetSymbol(a->GetAtomicNum()));
           break;
-        case 3:
+        case 4:
           str = QString(((const_cast<Atom *>(a)->GetResidue())->GetName()).c_str());
           break;
-        case 4:
+        case 5:
           str = QString::number((const_cast<Atom *>(a)->GetResidue())->GetNum());
           break;
-        case 5:
-          str = QString::number(const_cast<Atom *>(a)->GetPartialCharge(), 10, 2);
+        case 6:
+          str = QString::number(const_cast<Atom *>(a)->GetPartialCharge(), 'g', 2);
           break;
         case 2:
         default:
@@ -161,10 +161,13 @@ namespace Avogadro {
       QString str;
       switch(m_bondType)
       {
-        case 0:
+        case 1:
+          str = QString::number(b->GetLength(), 'g', 4);
+          break;
+        case 2:
           str = QString::number(b->GetIdx());
           break;
-        case 1:
+        case 3:
         default:
           str = QString::number(b->GetBondOrder());
       }
@@ -226,7 +229,7 @@ namespace Avogadro {
   {
     Engine::readSettings(settings);
     setAtomType(settings.value("atomLabel", 1).toInt());
-    setBondType(settings.value("bondLabel", 2).toInt());
+    setBondType(settings.value("bondLabel", 3).toInt());
     if(m_settingsWidget)
     {
       m_settingsWidget->atomType->setCurrentIndex(m_atomType);
