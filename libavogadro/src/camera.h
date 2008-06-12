@@ -70,18 +70,6 @@ namespace Avogadro {
         * @sa parent() */
       void setParent(const GLWidget *glwidget);
 
-      /** The linear component (ie the 3x3 topleft block) of the camera matrix must
-        * always be a rotation. But after several hundreds of operations on it,
-        * it can drift farther and farther away from being a rotation. This method
-        * normalizes the camera matrix so that the linear component is guaranteed to be
-        * a rotation. Concretely, it performs a Gram-Schmidt orthonormalization to
-        * transform the linear component into a nearby rotation.
-        *
-        * The bottom row must always have entries 0, 0, 0, 1. This function overwrites
-        * the bottom row with these values.
-        */
-      void normalize();
-
     public:
       /** The constructor.
         * @param parent the GLWidget parent of this camera instance.
@@ -280,6 +268,18 @@ namespace Avogadro {
        * space coordinate system.
        */
       Eigen::Vector3d transformedZAxis() const;
+      
+      /** The linear component (ie the 3x3 topleft block) of the camera matrix must
+        * always be a rotation. But after several hundreds of operations on it,
+        * it can drift farther and farther away from being a rotation. This method
+        * normalizes the camera matrix so that the linear component is guaranteed to be
+        * a rotation. Concretely, it performs a Gram-Schmidt orthonormalization to
+        * transform the linear component into a nearby rotation.
+        *
+        * The bottom row must always have entries 0, 0, 0, 1. This function overwrites
+        * the bottom row with these values.
+        */
+      void normalize();
 
     private:
       CameraPrivate * const d;
