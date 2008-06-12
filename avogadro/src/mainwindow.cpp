@@ -49,6 +49,7 @@
 
 #include <openbabel/obconversion.h>
 #include <openbabel/mol.h>
+#include <openbabel/forcefield.h>
 
 #include <fstream>
 
@@ -632,8 +633,52 @@ namespace Avogadro
     Molecule *molecule = new Molecule;
     if ( conv.Read( molecule, &ifs ) ) {
       if (molecule->GetDimension() != 3) {
-        QMessageBox::warning( this, tr( "Avogadro" ),
-            tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));
+	if (molecule->Has2D()) {
+          int retval = QMessageBox::warning( this, tr( "Avogadro" ),
+              tr( "This file contains 2D coordinates only. Do you want Avogadro "
+              "to scale the bonds and do a quick optimization?"), QMessageBox::Yes, QMessageBox::No );
+
+          if (retval == QMessageBox::Yes) {
+	    // Scale the bond lengths  
+            double sum = 0.0;
+            FOR_BONDS_OF_MOL (bond, molecule) {
+              sum += bond->GetLength();
+            }
+            double scale = (1.5 * molecule->NumBonds()) / sum;
+            FOR_ATOMS_OF_MOL (atom, molecule) {
+              vector3 vec = atom->GetVector();
+              vec.SetX(vec.x() * scale); 
+              vec.SetY(vec.y() * scale); 
+              atom->SetVector(vec);
+            }
+            molecule->Center();
+
+	    // place end atoms of wedge bonds at +1.0 Z
+	    // place end atoms of hash bonds at -1.0 Z
+            FOR_ATOMS_OF_MOL (atom, molecule) {
+              FOR_BONDS_OF_ATOM (bond, &*atom) {
+                if (bond->IsHash() && (&*atom == bond->GetBeginAtom())) {
+                  vector3 vec = bond->GetEndAtom()->GetVector();
+                  vec.SetZ(-1.0);
+                  bond->GetEndAtom()->SetVector(vec);
+                } else if (bond->IsWedge() && (&*atom == bond->GetBeginAtom())) {
+                  vector3 vec = bond->GetEndAtom()->GetVector();
+                  vec.SetZ(1.0);
+                  bond->GetEndAtom()->SetVector(vec);
+                }
+              }
+            }
+            OBForceField *ff = OBForceField::FindForceField("UFF");
+            if (ff) {
+  	      ff->Setup(*molecule);
+              ff->SteepestDescent(100);
+              ff->GetCoordinates(*molecule);
+	    }
+	  }	  
+	} else {
+          QMessageBox::warning( this, tr( "Avogadro" ),
+              tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));
+	}
       }
 
       setMolecule( molecule );

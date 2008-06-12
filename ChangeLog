@@ -1,3 +1,9 @@
+2008-06-12  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* avogadro/src/mainwindow.cpp: When opening a 2D file, ask to do a
+	quick conversion to 3D. (scale bonds, wedge -> Z+1, hash -> Z-1, 
+	UFF 100 steps, should we add hydrogens?)
+
 2008-06-11  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/tools/aligntool.cpp,
