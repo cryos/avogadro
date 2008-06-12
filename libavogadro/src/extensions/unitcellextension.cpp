@@ -122,6 +122,8 @@ namespace Avogadro {
   {
     if (m_Widget) {
       m_Widget->setUnitCells(a, b, c);
+      if (m_Molecule)
+        m_Molecule->update();
     }
   }
 
@@ -133,6 +135,8 @@ namespace Avogadro {
       if (m_Molecule && m_Molecule->HasData(OBGenericDataType::UnitCell)) {
         uc = dynamic_cast<OBUnitCell*>(m_Molecule->GetData(OBGenericDataType::UnitCell));
         uc->SetData(a, b, c, alpha, beta, gamma);
+        
+        m_Molecule->update();
 
         if (m_Widget)
           m_Widget->update();
@@ -144,6 +148,8 @@ namespace Avogadro {
   void UnitCellExtension::deleteUnitCell()
   {
     m_Molecule->DeleteData(OBGenericDataType::UnitCell);
+    m_Molecule->update();
+    
     m_Widget->clearUnitCell();
   }
   
@@ -197,6 +203,8 @@ namespace Avogadro {
         
         // m_Molecule->ConnectTheDots();
         // m_Molecule->PerceiveBondOrders(); // optional
+
+        m_Molecule->update();
         
       } // end (if unit cell)
   }

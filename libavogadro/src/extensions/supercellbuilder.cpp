@@ -72,12 +72,12 @@ namespace Avogadro {
     m_Dialog->exec();
     
     // What follows is a complete rotation for (hkl)[uvw]
-    int u = m_Dialog->millerH();
-    int v = m_Dialog->millerK();
-    int w = m_Dialog->millerL();
-    int h = 0;
-    int k = 0;
-    int l = 1;
+    int h = m_Dialog->millerH();
+    int k = m_Dialog->millerK();
+    int l = m_Dialog->millerL();
+    int u = 1;
+    int v = 0;
+    int w = 0;
     double m = sqrt(h*h + k*k + l*l);
     double n = sqrt(u*u + v*v + w*w);
     
@@ -93,12 +93,15 @@ namespace Avogadro {
     millerRotation(2,1) = k/m;
     millerRotation(2,2) = l/m;
     
-    Eigen::MatrixP3d modelview = widget->camera()->modelview();
-//    Eigen::Matrix3d modelMatrix;
-//     modelview.getLinearComponent(&modelMatrix);
-//    modelMatrix *= millerRotation;
+    Eigen::MatrixP3d modelview;
+    const Eigen::Vector3d Zaxis(0.0,0.0,1.0);
+    
+    modelview.loadIdentity();
     modelview.setLinearComponent(millerRotation);
     widget->camera()->setModelview(modelview);
+    widget->camera()->pretranslate( -3.0 * ( widget->radius() ) * Zaxis );
+    widget->camera()->translate( - widget->center());
+    widget->camera()->normalize();
 
     return NULL;
   }
