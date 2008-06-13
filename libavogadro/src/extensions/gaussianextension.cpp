@@ -37,20 +37,24 @@ namespace Avogadro
 {
 
   GaussianExtension::GaussianExtension(QObject* parent) : Extension(parent),
-    m_gaussianInputDialog(0), m_molecule(0)
+    m_gaussianInputDialog(0), m_qchemInputDialog(0), m_molecule(0)
   {
     QAction* action = new QAction(this);
     action->setText(tr("Gaussian Input..."));
+    action->setData("Gaussian");
+    m_actions.append(action);
+    action = new QAction(this);
+    action->setText(tr("QChem Input..."));
+    action->setData("QChem");
     m_actions.append(action);
   }
 
   GaussianExtension::~GaussianExtension()
   {
-    if (m_gaussianInputDialog)
-    {
-      delete m_gaussianInputDialog;
-      m_gaussianInputDialog = 0;
-    }
+    delete m_gaussianInputDialog;
+    m_gaussianInputDialog = 0;
+    delete m_qchemInputDialog;
+    m_qchemInputDialog = 0;
   }
 
   QList<QAction *> GaussianExtension::actions() const
@@ -63,20 +67,26 @@ namespace Avogadro
     return tr("&Extensions");
   }
 
-  QUndoCommand* GaussianExtension::performAction(QAction *, GLWidget *)
+  QUndoCommand* GaussianExtension::performAction(QAction *action, GLWidget *)
   {
-    if (!m_gaussianInputDialog)
-    {
-      m_gaussianInputDialog = new GaussianInputDialog();
-      m_gaussianInputDialog->setMolecule(m_molecule);
-//      connect(m_orbitalDialog, SIGNAL(fileName(QString)),
-//              this, SLOT(loadBasis(QString)));
-//      connect(m_orbitalDialog, SIGNAL(calculateMO(int)),
-//              this, SLOT(calculateMO(int)));
-      m_gaussianInputDialog->show();
+    if (action->data() == "Gaussian") {
+      if (!m_gaussianInputDialog) {
+        m_gaussianInputDialog = new GaussianInputDialog();
+        m_gaussianInputDialog->setMolecule(m_molecule);
+        m_gaussianInputDialog->show();
+      }
+      else
+        m_gaussianInputDialog->show();
     }
-    else
-      m_gaussianInputDialog->show();
+    else if (action->data() == "QChem") {
+      if (!m_qchemInputDialog) {
+        m_qchemInputDialog = new QChemInputDialog();
+        m_qchemInputDialog->setMolecule(m_molecule);
+        m_qchemInputDialog->show();
+      }
+      else
+        m_qchemInputDialog->show();
+    }
     return 0;
   }
 

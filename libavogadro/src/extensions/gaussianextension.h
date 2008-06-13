@@ -29,6 +29,7 @@
 #include <avogadro/extension.h>
 
 #include "gaussianinputdialog.h"
+#include "qcheminputdialog.h"
 
 namespace Avogadro
 {
@@ -56,6 +57,7 @@ namespace Avogadro
 
   private:
     GaussianInputDialog* m_gaussianInputDialog;
+    QChemInputDialog* m_qchemInputDialog;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
 

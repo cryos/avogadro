@@ -140,10 +140,15 @@ target_link_libraries(orbitalextension ${LINK_LIBS})
 install(TARGETS orbitalextension DESTINATION ${DESTINATION_DIR})
 
 ### Gaussian input deck generator
-set(gaussianextension_SRCS gaussianextension.cpp gaussianinputdialog.cpp)
-qt4_wrap_ui(gaussianextension_UIS_H gaussianinputdialog.ui)
+set(gaussianextension_SRCS gaussianextension.cpp 
+	gaussianinputdialog.cpp
+	qcheminputdialog.cpp)
+qt4_wrap_ui(gaussianextension_UIS_H 
+	gaussianinputdialog.ui
+	qcheminputdialog.ui)
 qt4_automoc(${gaussianextension_SRCS})
-add_library(gaussianextension MODULE ${gaussianextension_SRCS} ${gaussianextension_UIS_H})
+add_library(gaussianextension MODULE ${gaussianextension_SRCS}
+	${gaussianextension_UIS_H})
 target_link_libraries(gaussianextension ${LINK_LIBS})
 install(TARGETS gaussianextension DESTINATION ${DESTINATION_DIR})
 

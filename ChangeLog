@@ -1,3 +1,11 @@
+2008-06-13  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/extensions/CMakeLists.txt,
+	libavogadro/src/extensions/gaussianextension.*,
+	libavogadro/src/extensions/qcheminputdialog.*: Added a new QChem input
+	deck generator. The input file generated is still not correct but
+	VLANs and the fact that it compiles mean it is better to add it now.
+
 2008-06-12  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/mainwindow.cpp: When opening a 2D file, ask to do a
