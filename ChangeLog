@@ -1,3 +1,12 @@
+2008-06-16  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/boost.h: Add extract_swig_wrapped_ptr to convert
+	SWIG object (from openbabel) to be converted to boost::python/C++
+	objects. Still very limited, but you can now do:
+	>>> atom = obcore.OBAtom()
+	>>> atom.SetAtomicNum(6)
+	>>> Avogadro.molecule.AddAtom(atom)
+
 2008-06-13  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/extensions/CMakeLists.txt,

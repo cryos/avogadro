@@ -14,6 +14,29 @@ using namespace boost::python;
 using namespace Avogadro;
 using namespace OpenBabel;
 
+struct PySwigObject {
+  PyObject_HEAD 
+  void * ptr;
+  const char * desc;
+};
+
+// get the pointer to a OpenBabel:: object from its SWIG object
+void* extract_swig_wrapped_pointer(PyObject* obj)
+{
+  char thisStr[] = "this";
+  //first we need to get the this attribute from the Python Object
+  if (!PyObject_HasAttrString(obj, thisStr))
+    return NULL;
+                    
+  PyObject* thisAttr = PyObject_GetAttrString(obj, thisStr);
+  if (thisAttr == NULL)
+    return NULL;
+
+  //This Python Object is a SWIG Wrapper and contains our pointer
+  return (((PySwigObject*)thisAttr)->ptr);
+}
+
+
 BOOST_PYTHON_MODULE(Avogadro) {
   class_<OpenBabel::OBBond>("OBBond");
   class_<Avogadro::Bond, bases<OpenBabel::OBBond>, boost::noncopyable>("Bond")
@@ -61,6 +84,7 @@ BOOST_PYTHON_MODULE(Avogadro) {
     .def("GetTotalCharge", &OBMol::GetTotalCharge)
     .def("GetSpinMultiplicity", &OBMol::GetTotalSpinMultiplicity)
     .def("NewAtom", &OBMol::NewAtom, return_value_policy<reference_existing_object>())
+    .def("AddAtom", &OBMol::AddAtom)
     .def("DeleteAtom", &OBMol::DeleteAtom)
     .def("DeleteBond", &OBMol::DeleteBond)
     .def("SetTitle", SetTitle)
@@ -76,6 +100,11 @@ BOOST_PYTHON_MODULE(Avogadro) {
     .def("GetBond", GetBondAtoms, return_value_policy<reference_existing_object>()) //, return_internal_reference<1> >())
     .def("GetAtom", &OBMol::GetAtom, return_value_policy<reference_existing_object>()) //, return_internal_reference<1> >())
     .def("farthestAtom",&Molecule::farthestAtom, return_value_policy<reference_existing_object>() );
+
+  
+  // register openbabel SWIG objects
+  converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBMol>());
+  converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBAtom>());
 }
 
 #endif
