@@ -111,7 +111,8 @@ install(TARGETS axesengine DESTINATION ${DESTINATION_DIR})
 
 # Dipole engine -- dipole moment
 set(dipoleengine_SRCS dipoleengine.cpp)
+qt4_wrap_ui(dipoleengine_UIS dipolesettingswidget.ui)
 qt4_automoc(${dipoleengine_SRCS})
-add_library(dipoleengine MODULE ${dipoleengine_SRCS})
+add_library(dipoleengine MODULE ${dipoleengine_SRCS} ${dipoleengine_UIS})
 target_link_libraries(dipoleengine ${LINK_LIBS})
 install(TARGETS dipoleengine DESTINATION ${DESTINATION_DIR})

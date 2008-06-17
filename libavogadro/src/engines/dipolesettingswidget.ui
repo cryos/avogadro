@@ -1,0 +1,127 @@
+<ui version="4.0" >
+ <class>DipoleSettingsWidget</class>
+ <widget class="QWidget" name="DipoleSettingsWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>370</width>
+    <height>162</height>
+   </rect>
+  </property>
+  <property name="sizeIncrement" >
+   <size>
+    <width>10</width>
+    <height>0</height>
+   </size>
+  </property>
+  <layout class="QGridLayout" name="gridLayout" >
+   <item row="0" column="0" >
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>Dipole:</string>
+     </property>
+     <property name="textFormat" >
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="3" >
+    <widget class="QComboBox" name="dipoleType" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+       <horstretch>1</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="sizeIncrement" >
+      <size>
+       <width>1</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
+     <property name="modelColumn" >
+      <number>0</number>
+     </property>
+     <item>
+      <property name="text" >
+       <string>Estimated Dipole</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Custom Value</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="customLabel" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>Custom:</string>
+     </property>
+     <property name="textFormat" >
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QDoubleSpinBox" name="xDipoleSpinBox" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="minimum" >
+      <double>-99.989999999999995</double>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <widget class="QDoubleSpinBox" name="yDipoleSpinBox" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="minimum" >
+      <double>-99.989999999999995</double>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3" >
+    <widget class="QDoubleSpinBox" name="zDipoleSpinBox" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="minimum" >
+      <double>-99.989999999999995</double>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" >
+    <spacer name="verticalSpacer" >
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

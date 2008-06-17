@@ -28,8 +28,13 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
+#include "ui_dipolesettingswidget.h"
+
 namespace Avogadro {
 
+  //! Settings class
+  class DipoleSettingsWidget;
+  
   //! Dipole Engine class.
   class DipoleEngine : public Engine
   {
@@ -55,6 +60,28 @@ namespace Avogadro {
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 
+      //! Display a window for the user to pick rendering options
+      QWidget *settingsWidget();
+      
+      private:
+        Molecule *m_molecule;
+        int m_dipoleType; // type of dipole to render
+        Eigen::Vector3d m_dipole; // cached dipole moment
+        DipoleSettingsWidget* m_settingsWidget;
+
+      private Q_SLOTS:
+        void setDipoleType(int value);
+        void settingsWidgetDestroyed();
+        void updateDipole();
+      
+  };
+
+  class DipoleSettingsWidget : public QWidget, public Ui::DipoleSettingsWidget
+  {
+    public:
+      DipoleSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+        setupUi(this);
+      }
   };
 
   //! Generates instances of our AxesEngine class

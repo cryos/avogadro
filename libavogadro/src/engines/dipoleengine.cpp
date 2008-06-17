@@ -28,18 +28,28 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
+#include <QDebug>
+
 using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
 
-  DipoleEngine::DipoleEngine(QObject *parent) : Engine(parent)
+  DipoleEngine::DipoleEngine(QObject *parent) : Engine(parent), m_molecule(0), m_dipoleType(0),
+    m_settingsWidget(0)
   {
     setDescription(tr("Renders dipole moments and other 3D data"));
+    
+    m_dipole.x() = 0.0;
+    m_dipole.y() = 0.0;
+    m_dipole.z() = 0.0;
   }
 
   DipoleEngine::~DipoleEngine()
   {
+    // Delete the settings widget if it exists
+    if(m_settingsWidget)
+      m_settingsWidget->deleteLater();
   }
 
   Engine* DipoleEngine::clone() const
@@ -54,25 +64,13 @@ namespace Avogadro {
   bool DipoleEngine::renderOpaque(PainterDevice *pd)
   {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
+    m_molecule = mol;
+    
+    Vector3d origin = Vector3d(0.0, 0.0, 0.0); // start at the origin
+    Vector3d joint = 0.2 * m_dipole; // 80% along the length
 
     pd->painter()->setColor(1.0, 0.0, 0.0);
-
-    // TODO: Get all vectors (e.g., pre-calculated, estimated, custom)
-    // pop-up menu to select options:
-    //    pre-calculated e.g., from Gaussian
-    //    estimated = based on calculated partial charges
-    //    custom = enter components
-    // TODO: Allow users to pick a custom color for the display
-    if (!mol->HasData(OBGenericDataType::VectorData))
-      return false;
-    
-    OBVectorData *vd = (OBVectorData*) mol->GetData(OBGenericDataType::VectorData);
-    vector3 moment = vd->GetData();
-
-    Vector3d origin = Vector3d(0.0, 0.0, 0.0); // start at the origin
-    Vector3d end = Vector3d(moment.x(), moment.y(), moment.z()); // end of cone
-    Vector3d joint = 0.2 * end; // 80% along the length
-    pd->painter()->drawLine(end, joint, 2.0);
+    pd->painter()->drawLine(m_dipole, joint, 2.0);
     pd->painter()->drawCone(joint, origin, 0.1);
     // TODO: add a "cross" line for the <--+ look to the dipole moment)
 
@@ -92,6 +90,73 @@ namespace Avogadro {
   Engine::EngineFlags DipoleEngine::flags() const
   {
     return Engine::Overlay;
+  }
+
+  QWidget *DipoleEngine::settingsWidget()
+  {
+    if(!m_settingsWidget)
+    {
+      m_settingsWidget = new DipoleSettingsWidget();
+      m_settingsWidget->dipoleType->setCurrentIndex(m_dipoleType);
+      connect(m_settingsWidget->dipoleType, SIGNAL(activated(int)), this, SLOT(setDipoleType(int)));
+      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+    }
+    return m_settingsWidget;
+  }
+  
+  void DipoleEngine::setDipoleType(int value)
+  {
+    m_dipoleType = value;
+    updateDipole();
+    
+    if (m_dipoleType != 1) { // not the custom version
+      m_settingsWidget->customLabel->setEnabled(false);
+      m_settingsWidget->xDipoleSpinBox->setEnabled(false);
+      m_settingsWidget->yDipoleSpinBox->setEnabled(false);
+      m_settingsWidget->zDipoleSpinBox->setEnabled(false);
+    } else {
+      m_settingsWidget->customLabel->setEnabled(true);
+      m_settingsWidget->xDipoleSpinBox->setEnabled(true);
+      m_settingsWidget->yDipoleSpinBox->setEnabled(true);
+      m_settingsWidget->zDipoleSpinBox->setEnabled(true);      
+    }
+    
+    emit changed();
+  }
+
+  void DipoleEngine::updateDipole()
+  {
+    vector3 tempMoment(0.0, 0.0, 0.0);
+    
+    switch(m_dipoleType)
+    {
+      case 0: // estimated
+      if (!m_molecule || m_molecule->NumAtoms() == 0)
+        return;
+        
+      FOR_ATOMS_OF_MOL(a, m_molecule) {
+        tempMoment += a->GetVector() * a->GetPartialCharge();
+      }
+      break;
+
+      case 1: // custom
+      tempMoment.Set(m_settingsWidget->xDipoleSpinBox->value(),
+        m_settingsWidget->yDipoleSpinBox->value(),
+        m_settingsWidget->zDipoleSpinBox->value());
+      break;
+
+      default:; // embedded OBGenericData type -- handle 
+    }
+    
+    m_dipole(0) = tempMoment.x();
+    m_dipole(1) = tempMoment.y();
+    m_dipole(2) = tempMoment.z();
+  }
+
+  void DipoleEngine::settingsWidgetDestroyed()
+  {
+    qDebug() << "Destroyed Settings Widget";
+    m_settingsWidget = 0;
   }
 
 }
