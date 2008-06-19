@@ -43,6 +43,7 @@ namespace Avogadro {
   }
 
   Color::~Color() {
+      //delete d;
   }
 
   Color::Color( GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha ):

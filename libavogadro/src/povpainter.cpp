@@ -62,7 +62,7 @@ namespace Avogadro
 
   POVPainter::~POVPainter()
   {
-
+    delete d;
   }
 
   void POVPainter::setColor (const Color *color)

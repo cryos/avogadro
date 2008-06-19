@@ -45,7 +45,7 @@ namespace Avogadro {
 
       /*
        * for Molecules we have to cache additions / subtractions
-       * because when we get the signal we haven't actually added 
+       * because when we get the signal we haven't actually added
        * the atom to the molecule, rather it's been created but not
        * yet added.
        */
@@ -93,6 +93,11 @@ namespace Avogadro {
         this, SLOT(removePrimitive(Primitive *)));
   }
 
+  void PrimitiveItemModel::~PrimitiveItemModel()
+  {
+      delete d;
+  }
+
   void PrimitiveItemModel::addPrimitive(Primitive *primitive)
   {
     int parentRow = d->rowTypeMap.key(primitive->type());
@@ -100,14 +105,14 @@ namespace Avogadro {
     if(parentRow < d->size.size())
     {
       emit layoutAboutToBeChanged(); // we need to tell the view that the data is going to change
-      
+
       int last = d->size[parentRow]++;
       beginInsertRows(createIndex(parentRow, 0, 0), last, last);
       if(d->molecule) {
         d->moleculeCache[parentRow].append(primitive);
       }
       endInsertRows();
-      
+
       emit layoutChanged(); // we need to tell the view to refresh
     }
   }
@@ -133,7 +138,7 @@ namespace Avogadro {
       if (row < 0)
         return;
       emit layoutAboutToBeChanged(); // we need to tell the view that the data is going to change
-      
+
       beginRemoveRows(createIndex(parentRow, 0, 0), row, row);
       if(d->molecule)
       {
@@ -141,7 +146,7 @@ namespace Avogadro {
       }
       d->size[parentRow]--;
       endRemoveRows();
-      
+
       emit layoutChanged(); // we need to tell the view to refresh
     }
   }
@@ -153,7 +158,7 @@ namespace Avogadro {
       int parentRow = d->rowTypeMap.key(primitive->type());
       return d->moleculeCache[parentRow].indexOf(primitive);
     }
-    else if (d->engine) 
+    else if (d->engine)
     {
       QList<Primitive *> subList = d->engine->primitives().subList(primitive->type());
       return subList.indexOf(primitive);
@@ -176,11 +181,11 @@ namespace Avogadro {
         d->size[row] = newsize;
 
         emit layoutAboutToBeChanged(); // we need to tell the view that the data is going to change
-        
+
         beginRemoveRows(createIndex(row,0,0), newsize, oldsize-1);
         // this is a minor hack to simplify things although it doesn't currently update the view
         endRemoveRows();
-        
+
         emit layoutChanged();
       }
       else if(newsize > oldsize)
