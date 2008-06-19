@@ -93,7 +93,7 @@ namespace Avogadro {
         this, SLOT(removePrimitive(Primitive *)));
   }
 
-  void PrimitiveItemModel::~PrimitiveItemModel()
+  PrimitiveItemModel::~PrimitiveItemModel()
   {
       delete d;
   }
