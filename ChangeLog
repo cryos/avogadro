@@ -1,3 +1,8 @@
+2008-07-03  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/engines/orbitalengine.cpp: Use some of the newer
+	OBGridData API - requires OpenBabel trunk/OpenBabel 2.2.0 release.
+
 2008-06-16  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/boost.h: Add extract_swig_wrapped_ptr to convert

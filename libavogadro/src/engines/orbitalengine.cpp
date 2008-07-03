@@ -314,13 +314,9 @@ namespace Avogadro {
     m_min = Vector3f(m_grid->grid()->GetOriginVector().x(),
                      m_grid->grid()->GetOriginVector().y(),
                      m_grid->grid()->GetOriginVector().z());
-    int nx, ny, nz;
-    m_grid->grid()->GetNumberOfPoints(nx, ny, nz);
-    double x[3], y[3], z[3];
-    m_grid->grid()->GetAxes(x, y, z);
-    m_max = Vector3f(m_min.x() + nx * x[0],
-                     m_min.y() + ny * y[1],
-                     m_min.z() + nz * z[2]);
+    m_max = Vector3f(m_grid->grid()->GetMaxVector().x(),
+                     m_grid->grid()->GetMaxVector().y(),
+                     m_grid->grid()->GetMaxVector().z());
 
     // We may need some logic to check if a cube is an orbital or not...
     // (e.g., someone might bring in spin density = always positive)
