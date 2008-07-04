@@ -1,3 +1,14 @@
+2008-07-04  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* avogadro/src/enginecolorswidget.*: Widget for setting an engine's
+	color map.
+
+	* avogadro/src/mainwindow.cpp: Add the color widget to engine settings
+	window.
+
+	* libavogadro/src/engine.cpp: emit changed() when
+	Engine::setColorMap() is called.
+
 2008-07-03  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* libavogadro/src/engines/orbitalengine.cpp: Use some of the newer

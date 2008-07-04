@@ -33,6 +33,7 @@
 
 #include "enginelistview.h"
 #include "engineprimitiveswidget.h"
+#include "enginecolorswidget.h"
 
 #include "icontabwidget.h"
 
@@ -1990,6 +1991,10 @@ namespace Avogadro
           new EnginePrimitivesWidget(d->glWidget, settingsWindow);
     primitivesWidget->setEngine(d->currentSelectedEngine);
     settingsTabs->addTab(primitivesWidget, tr("Objects"));
+    
+    EngineColorsWidget *colorsWidget = new EngineColorsWidget(settingsWindow);
+    colorsWidget->setEngine(d->currentSelectedEngine);
+    settingsTabs->addTab(colorsWidget, tr("Colors"));
 
     layout->addWidget(settingsTabs);
     settingsWindow->setLayout(layout);

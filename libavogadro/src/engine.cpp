@@ -100,6 +100,7 @@ namespace Avogadro {
   void Engine::setColorMap(Color *map)
   {
     d->colorMap = map;
+    emit changed();
   }
 
   QWidget *Engine::settingsWidget()
