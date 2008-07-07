@@ -34,7 +34,7 @@ namespace Avogadro {
   class Molecule;
   class Color;
 
-  class PainterDevice
+  class A_EXPORT PainterDevice
   {
   public:
     PainterDevice() {}

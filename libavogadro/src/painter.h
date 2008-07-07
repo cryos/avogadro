@@ -44,7 +44,7 @@ namespace Avogadro
    * @sa GLPainter, POVPainter
    */
   class Color;
-  class Painter : public QObject
+  class A_EXPORT Painter : public QObject
   {
     Q_OBJECT
 

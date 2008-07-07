@@ -1,3 +1,10 @@
+2008-07-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* sip/*: Initial attempt to make SIP python bindings.
+
+	* libavogadro/src/painter(device).h: export Painter and PainterDevice.
+	See sip/README for more info (revert if this is wrong)
+
 2008-07-04  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/enginecolorswidget.*: Widget for setting an engine's
