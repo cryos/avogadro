@@ -23,6 +23,11 @@
 	      - Not yet used for extensions.
 	      - Better descriptions, download updates, ...
 
+	Compiling problems?
+	  - run cmake again to include the new *.h, *.cpp and *.ui files...
+	  - if mainwindow.cpp can't find <avogadro/pluginmanager.h>, copy the
+	    file to /usr/(local/)include/avogadro
+
 	Remove overlay extension:
 	------------------------
 	* libavogadro/src/extensions/CMakeLists.txt: Removed overlay
