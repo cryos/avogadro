@@ -236,10 +236,11 @@ namespace Avogadro {
     foreach (const QString& path, pluginPaths)
     {
       QDir dir(path);
+      qDebug() << "Searching for tools in" << path;
       foreach (const QString& fileName, dir.entryList(QDir::Files))
       {
-        PluginItem *tool = new PluginItem(PluginItem::ToolType, fileName, dir.absoluteFilePath(fileName));
-        d->plugins.append(tool);
+        PluginItem *plugin = new PluginItem(PluginItem::ToolType, fileName, dir.absoluteFilePath(fileName));
+        d->plugins.append(plugin);
       }
     }
   }
@@ -265,16 +266,82 @@ namespace Avogadro {
           if (settings.value(tool->name(), true).toBool()) 
           {
             plugin->setEnabled(true);
-            qDebug() << "Found Tool: " << tool->name() << " - " << tool->description() << " (enabled)";
             d->tools.append(tool);
           } 
           else
           {
             plugin->setEnabled(false);
-            qDebug() << "Found Tool: " << tool->name() << " - " << tool->description() << " (diabled)";
             delete tool;
           }
         }
+        else
+          qDebug() << plugin->fileName() << "failed to load." << loader.errorString();
+      }
+    }
+    settings.endGroup();
+    settings.endGroup();
+  }
+  
+  void PluginManager::findExtensions()
+  {
+    QString prefixPath = QString(INSTALL_PREFIX) + '/'
+      + QString(INSTALL_LIBDIR) + "/avogadro/extensions";
+    QStringList pluginPaths;
+    pluginPaths << prefixPath;
+
+    #ifdef WIN32
+      pluginPaths << QCoreApplication::applicationDirPath() + "/extensions";
+    #endif
+
+    // Krazy: Use QProcess:
+    // http://doc.trolltech.com/4.3/qprocess.html#systemEnvironment
+    if (getenv("AVOGADRO_EXTENSIONS") != NULL) {
+      pluginPaths = QString(getenv("AVOGADRO_EXTENSIONS") ).split(':');
+    }
+
+    foreach(const QString& path, pluginPaths)
+    {
+      QDir dir(path);
+      qDebug() << "Searching for extensions in" << path;
+      foreach(const QString& fileName, dir.entryList(QDir::Files))
+      {
+        PluginItem *plugin = new PluginItem(PluginItem::ExtensionType, fileName, dir.absoluteFilePath(fileName));
+        d->plugins.append(plugin);
+      }
+    }
+  }
+        
+  void PluginManager::loadExtensions()
+  {
+    findExtensions();
+
+    QSettings settings;
+    settings.beginGroup("plugins");
+    settings.beginGroup("extensions");
+    foreach (PluginItem *plugin, d->plugins)
+    {
+      if (plugin->type() == PluginItem::ExtensionType)
+      {
+        QPluginLoader loader(plugin->absoluteFilePath());
+        QObject *instance = loader.instance();
+        ExtensionFactory *factory = qobject_cast<ExtensionFactory *>(instance);
+        if (factory)
+        {
+          Extension *extension = factory->createInstance(/*this*/);
+          plugin->setName(extension->name());
+          if (settings.value(extension->name(), true).toBool()) 
+          {
+            plugin->setEnabled(true);
+            d->extensions.append(extension);
+          } 
+          else
+          {
+            plugin->setEnabled(false);
+            delete extension;
+          }
+        }
+        else
+          qDebug() << plugin->fileName() << "failed to load." << loader.errorString();
       }
     }
     settings.endGroup();
@@ -326,8 +393,6 @@ namespace Avogadro {
     
   void PluginManager::writeSettings(QSettings &settings) const
   {
-    qDebug() << "PluginManager::writeSettings()";
-
     // write the engine's isEnabled()
     settings.beginGroup("engines");
     foreach(PluginItem *plugin, d->plugins) 
@@ -345,13 +410,16 @@ namespace Avogadro {
         settings.setValue(plugin->name(), plugin->isEnabled());
     }
     settings.endGroup();
-  }
 
-  void PluginManager::readSettings(QSettings &settings)
-  {
-    Q_UNUSED(settings);
-
-    qDebug() << "PluginManager::readwriteSettings()";
+    // write the extension's isEnabled()
+    settings.beginGroup("extensions");
+    foreach(PluginItem *plugin, d->plugins) 
+    {
+      if (plugin->type() == PluginItem::ExtensionType)
+        settings.setValue(plugin->name(), plugin->isEnabled());
+    }
+    settings.endGroup();
+ 
   }
 
   PluginManager pluginManager; // global instance

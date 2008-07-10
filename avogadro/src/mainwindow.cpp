@@ -178,7 +178,6 @@ namespace Avogadro
 //    setUnifiedTitleAndToolBarOnMac(true);
 
     QSettings settings;
-    pluginManager.readSettings(settings);
 
     d->tabbedTools = settings.value("tabbedTools", true).toBool();
 
@@ -1718,111 +1717,88 @@ namespace Avogadro
 
   void MainWindow::loadExtensions()
   {
-    QString prefixPath = QString(INSTALL_PREFIX) + '/'
-      + QString(INSTALL_LIBDIR) + "/avogadro/extensions";
-    QStringList pluginPaths;
-    pluginPaths << prefixPath;
+    pluginManager.loadExtensions();
 
-#ifdef WIN32
-	pluginPaths << QCoreApplication::applicationDirPath() + "/extensions";
-#endif
-
-    // Krazy: Use QProcess:
-    // http://doc.trolltech.com/4.3/qprocess.html#systemEnvironment
-    if (getenv("AVOGADRO_EXTENSIONS") != NULL) {
-      pluginPaths = QString(getenv("AVOGADRO_EXTENSIONS") ).split(':');
-    }
-
-    foreach(const QString& path, pluginPaths)
+    foreach(Extension *extension, pluginManager.extensions())
     {
-      QDir dir(path);
-      //      qDebug() << "SearchPath:" << dir.absolutePath() << endl;
-      foreach(const QString& fileName, dir.entryList(QDir::Files))
+      qDebug() << "Found Extension: " << extension->name() << " - "
+               << extension->description();
+
+      QList<QAction *> actions = extension->actions();
+
+      foreach(QAction *action, actions)
       {
-        QPluginLoader loader(dir.absoluteFilePath(fileName));
-        QObject *instance = loader.instance();
-        // qDebug() << "File: " << fileName;
-        ExtensionFactory *factory = qobject_cast<ExtensionFactory *>(instance);
-        if ( factory )
-        {
-          Extension *extension = factory->createInstance(this);
-          qDebug() << "Found Extension: " << extension->name() << " - "
-                   << extension->description();
+        // Here's the fun part, we go customize our menus
+        // Add these actions to the menu described by the menuPath
+        QString menuPathString = extension->menuPath(action);
+        QMenu *path = NULL;
 
-          QList<QAction *>actions = extension->actions();
+        if ( menuPathString.size() ) {
+          QStringList menuPath = menuPathString.split( ">" );
+          // Root menus are a special case, we need to check menuBar()
+          foreach( QAction *menu, menuBar()->actions() ) {
+            if ( menu->text() == menuPath.at( 0 ) ) {
+              path = menu->menu();
+              break;
+            }
+          }
+          
+          if ( !path ) {
+            // Gotta add a new root menu
+            path = new QMenu(menuPath.at( 0 ));
+            menuBar()->insertMenu( ui.menuSettings->menuAction(), path);
+          }
 
-          foreach(QAction *action, actions)
-          {
-            // Here's the fun part, we go customize our menus
-            // Add these actions to the menu described by the menuPath
-            QString menuPathString = extension->menuPath(action);
-            QMenu *path = NULL;
+          // Now handle submenus
+          if ( menuPath.size() > 1 ) {
+            QMenu *nextPath = NULL;
 
-            if ( menuPathString.size() ) {
-              QStringList menuPath = menuPathString.split( ">" );
-              // Root menus are a special case, we need to check menuBar()
-              foreach( QAction *menu, menuBar()->actions() ) {
-                if ( menu->text() == menuPath.at( 0 ) ) {
-                  path = menu->menu();
+            // Go through each submenu level, find the match
+            // and update the "path" pointer
+            for ( int i = 1; i < menuPath.size(); ++i ) {
+
+              foreach( QAction *menu, path->actions() ) {
+                if ( menu->text() == menuPath.at( i ) ) {
+                  nextPath = menu->menu();
                   break;
                 }
+              } // end checking menu items
+              
+              if ( !nextPath ) {
+                // add a new submenu
+                nextPath = path->addMenu( menuPath.at( i ) );
               }
-              if ( !path ) {
-                // Gotta add a new root menu
-                path = new QMenu(menuPath.at( 0 ));
-                menuBar()->insertMenu( ui.menuSettings->menuAction(), path);
-              }
-
-              // Now handle submenus
-              if ( menuPath.size() > 1 ) {
-                QMenu *nextPath = NULL;
-
-                // Go through each submenu level, find the match
-                // and update the "path" pointer
-                for ( int i = 1; i < menuPath.size(); ++i ) {
-
-                  foreach( QAction *menu, path->actions() ) {
-                    if ( menu->text() == menuPath.at( i ) ) {
-                      nextPath = menu->menu();
-                      break;
-                    }
-                  } // end checking menu items
-                  if ( !nextPath ) {
-                    // add a new submenu
-                    nextPath = path->addMenu( menuPath.at( i ) );
-                  }
-                  path = nextPath;
-                } // end looping through menuPath
-              } // endif
-            }
-
-            if(!path)
-            {
-              path = ui.menuExtensions;
-            }
-
-            path->addAction( action );
-            connect( action, SIGNAL( triggered() ), this, SLOT( actionTriggered() ) );
-          }
-
-          QDockWidget *dockWidget = extension->dockWidget();
-          if(dockWidget)
-          {
-            addDockWidget(Qt::RightDockWidgetArea, dockWidget);
-            ui.menuDocks->addAction(dockWidget->toggleViewAction());
-          }
-
-          connect(this, SIGNAL( moleculeChanged(Molecule*)),
-                  extension, SLOT(setMolecule(Molecule*)));
-          // When loading a molecule with an already open window with another
-          // molecule this signal is never triggered. If we already have a
-          // molecule at the point of loading then set it for the extension
-          if (d->molecule)
-            extension->setMolecule(d->molecule);
-          connect(extension, SIGNAL( message(QString)),
-                  d->messagesText, SLOT(append(QString)));
+              
+              path = nextPath;
+            } // end looping through menuPath
+          } // endif
         }
+
+        if(!path) {
+          path = ui.menuExtensions;
+        }
+
+        path->addAction( action );
+        connect( action, SIGNAL( triggered() ), this, SLOT( actionTriggered() ) );
       }
+
+      QDockWidget *dockWidget = extension->dockWidget();
+      if(dockWidget)
+      {
+        addDockWidget(Qt::RightDockWidgetArea, dockWidget);
+        ui.menuDocks->addAction(dockWidget->toggleViewAction());
+      }
+
+      connect(this, SIGNAL( moleculeChanged(Molecule*)),
+              extension, SLOT(setMolecule(Molecule*)));
+      // When loading a molecule with an already open window with another
+      // molecule this signal is never triggered. If we already have a
+      // molecule at the point of loading then set it for the extension
+      if (d->molecule)
+        extension->setMolecule(d->molecule);
+
+      connect(extension, SIGNAL( message(QString)),
+            d->messagesText, SLOT(append(QString)));
     }
   }
 

@@ -1,5 +1,11 @@
 2008-07-10  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
+	* libavogadro/src/pluginmanager.*: Added support for extensions.
+
+	* avogadro/src/mainwindow.cpp: Use PluginManager for extensions.
+
+2008-07-10  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
 	Plugin Manager:
 	--------------
 	* libavogadro/src/pluginmanager.*: The PluginManager class. This class

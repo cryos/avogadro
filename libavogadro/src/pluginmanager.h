@@ -116,7 +116,7 @@ namespace Avogadro {
      *    /usr/lib/avogadro/engines
      *    /usr/local/lib/avogadro/engines
      *
-     * You can set the AVOGADRO_PATH to designate a path
+     * You can set the AVOGADRO_ENGINES to designate a path
      * at runtime.
      */
     void loadEngineFactories();
@@ -135,7 +135,7 @@ namespace Avogadro {
      *    /usr/lib/avogadro/tools
      *    /usr/local/lib/avogadro/tools
      *
-     * You can set the AVOGADRO_PATH to designate a path
+     * You can set the AVOGADRO_TOOLS to designate a path
      * at runtime.
      */
     void findTools();
@@ -153,18 +153,14 @@ namespace Avogadro {
      *    /usr/lib/avogadro/extensions
      *    /usr/local/lib/avogadro/extensions
      *
-     * You can set the AVOGADRO_PATH to designate a path
+     * You can set the AVOGADRO_EXTENSIONS to designate a path
      * at runtime.
      */
-    //void findExtensions();
+    void findExtensions();
     /**
      * Load the tools 
      */
-    //void loadExtensions();
-    /**
-     * Get the loaded tools
-     */
-    
+    void loadExtensions();
     /**
      * Get the loaded extensions
      */
@@ -174,10 +170,6 @@ namespace Avogadro {
      * Write the settings of the PluginManager in order to save them to disk.
      */
     void writeSettings(QSettings &settings) const;
-    /**
-     * Read the settings of the PluginManager and restore them.
-     */
-    void readSettings(QSettings &settings);
   
   public Q_SLOTS:
     void showDialog();
