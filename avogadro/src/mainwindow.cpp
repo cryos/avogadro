@@ -41,6 +41,7 @@
 //#include "macchempasteboard.h"
 //#endif
 
+#include <avogadro/pluginmanager.h>
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
 #include <avogadro/primitive.h>
@@ -177,6 +178,8 @@ namespace Avogadro
 //    setUnifiedTitleAndToolBarOnMac(true);
 
     QSettings settings;
+    pluginManager.readSettings(settings);
+
     d->tabbedTools = settings.value("tabbedTools", true).toBool();
 
     d->centralLayout = new QVBoxLayout(ui.centralWidget);
@@ -1512,6 +1515,9 @@ namespace Avogadro
     connect( ui.configureAvogadroAction, SIGNAL( triggered() ),
         this, SLOT( showSettingsDialog() ) );
 
+    connect( ui.pluginManagerAction, SIGNAL( triggered() ),
+        &pluginManager, SLOT( showDialog() ) );
+
     connect( ui.actionTutorials, SIGNAL( triggered() ), this, SLOT( openTutorialURL() ));
     connect( ui.actionFAQ, SIGNAL( triggered() ), this, SLOT( openFAQURL() ) );
     connect( ui.actionRelease_Notes, SIGNAL( triggered() ), this, SLOT( openReleaseNotesURL() ));
@@ -1689,6 +1695,7 @@ namespace Avogadro
     settings.setValue( "tabbedTools", d->tabbedTools );
     settings.setValue( "enginesDock", ui.enginesDock->saveGeometry());
 
+    // save the views
     settings.beginWriteArray("view");
     int count = d->glWidgets.size();
     for(int i=0; i<count; i++)
@@ -1698,8 +1705,14 @@ namespace Avogadro
     }
     settings.endArray();
 
+    // write the settings for every tool
     settings.beginGroup("tools");
     d->toolGroup->writeSettings(settings);
+    settings.endGroup();
+    
+    // write the plugin manager settings
+    settings.beginGroup("plugins");
+    pluginManager.writeSettings(settings);
     settings.endGroup();
   }
 
@@ -1957,7 +1970,7 @@ namespace Avogadro
 //        primitivesWidget, SLOT( setEngine( Engine * ) ) );
 
     // Warn the user if no engines or tools are loaded
-    int nEngines = d->glWidget->engineFactories().size() - 1;
+    int nEngines = pluginManager.engineFactories().size() - 1;
     int nTools = d->glWidget->toolGroup()->tools().size();
     QString error;
     if(!nEngines && !nTools)
@@ -2003,7 +2016,7 @@ namespace Avogadro
 
   void MainWindow::addEngineClicked()
   {
-    Engine *engine =  AddEngineDialog::getEngine(this, d->glWidget->engineFactories());
+    Engine *engine =  AddEngineDialog::getEngine(this, pluginManager.engineFactories());
     if(engine) {
       PrimitiveList p = d->glWidget->selectedPrimitives();
       if(!p.size()) {

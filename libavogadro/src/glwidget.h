@@ -309,11 +309,6 @@ namespace Avogadro {
       QList<Engine *> engines() const;
 
       /**
-       * @return a list of the engine factories.
-       */
-      QList<EngineFactory *> engineFactories() const;
-
-      /**
        * Get the hits for a region starting at (x, y) of size (w * h).
        */
       QList<GLHit> hits(int x, int y, int w, int h);
@@ -643,7 +638,7 @@ namespace Avogadro {
       virtual void renderDebugOverlay();
 
       /**
-       * Helper function to load all engine factories.
+       * Helper function to get the engine factories from the PluginManager.
        */
       void loadEngineFactories();
 

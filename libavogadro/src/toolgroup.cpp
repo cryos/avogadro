@@ -26,6 +26,7 @@
 #include <config.h>
 
 #include <avogadro/toolgroup.h>
+#include "pluginmanager.h"
 
 #include <QActionGroup>
 #include <QAction>
@@ -67,43 +68,20 @@ namespace Avogadro {
 
   void ToolGroup::load()
   {
-    QString prefixPath = QString(INSTALL_PREFIX) + '/'
-      + QString(INSTALL_LIBDIR) + "/avogadro/tools";
-    QStringList pluginPaths;
-    pluginPaths << prefixPath;
-
-#ifdef WIN32
-	pluginPaths << QCoreApplication::applicationDirPath() + "/tools";
-#endif
-
-    // Krazy: Use QProcess:
-    // http://doc.trolltech.com/4.3/qprocess.html#systemEnvironment
-    if(getenv("AVOGADRO_TOOLS") != NULL)
-    {
-      pluginPaths = QString(getenv("AVOGADRO_TOOLS")).split(':');
+    // get the tools from the plugin manager
+    pluginManager.loadTools();
+    d->tools = pluginManager.tools();
+    
+    foreach (Tool *tool, d->tools) {
+      d->activateActions->addAction(tool->activateAction());
+      connect(tool->activateAction(), SIGNAL(triggered(bool)),
+          this, SLOT(activateTool()));
     }
 
-    foreach (const QString& path, pluginPaths)
-    {
-      QDir dir(path);
-      foreach (const QString& fileName, dir.entryList(QDir::Files))
-      {
-        QPluginLoader loader(dir.absoluteFilePath(fileName));
-        QObject *instance = loader.instance();
-        ToolFactory *factory = qobject_cast<ToolFactory *>(instance);
-        if (factory)
-        {
-          Tool *tool = factory->createInstance(this);
-          qDebug() << "Found Tool: " << tool->name() << " - " << tool->description();
-          d->tools.append(tool);
-          d->activateActions->addAction(tool->activateAction());
-          connect(tool->activateAction(), SIGNAL(triggered(bool)),
-              this, SLOT(activateTool()));
-        }
-      }
-    }
-
+    // sort the tools
     qSort(d->tools.begin(), d->tools.end(), toolGreaterThan);
+    
+    // activate the first tool
     if(d->tools.count()) {
       setActiveTool(d->tools.at(0));
       d->activeTool->activateAction()->setChecked(true);
@@ -155,6 +133,11 @@ namespace Avogadro {
       d->activeTool = tool;
       emit toolActivated(tool);
     }
+  }
+
+  Tool* ToolGroup::tool(int i) const
+  {
+    return d->tools.at(i);
   }
 
   const QList<Tool *>& ToolGroup::tools() const

@@ -28,13 +28,6 @@ set(LINK_LIBS "avogadro-lib")
 #target_link_libraries(templateextension ${LINK_LIBS})
 #install(TARGETS templateextension DESTINATION ${DESTINATION_DIR})
 
-### 2D overlay extensions
-set(overlayextension_SRCS overlayextension.cpp)
-qt4_automoc(${overlayextension_SRCS})
-add_library(overlayextension MODULE ${overlayextension_SRCS})
-target_link_libraries(overlayextension ${LINK_LIBS})
-install(TARGETS overlayextension DESTINATION ${DESTINATION_DIR})
-
 ### gamess
 set(gamessextension_SRCS gamessextension.cpp
   gamessinputdialog.cpp

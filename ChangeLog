@@ -1,3 +1,35 @@
+2008-07-10  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	Plugin Manager:
+	--------------
+	* libavogadro/src/pluginmanager.*: The PluginManager class. This class
+	is now a central class to handle the loading of plugins.
+
+	* libavogadro/src/pluginitemmodel.*: The PluginItemModel class.
+
+	* libavogadro/src/pluginlistview.*: The PluginListView class.
+
+	* libavogadro/src/plugindialog.*: The PluginManager dialog.
+
+	* libavogadro/src/glwidget.*: Use PluginManager. 
+
+	* libavogadro/src/toolgroup.cpp: Use PluginManager.
+
+	* avogadro/src/mainwindow.ui, avogadro/src/mainwindow.cpp: Use the 
+	PluginManager. Added the menu entry "Settings > Plugin Manager".
+
+	TODO: - Avogadro needs to be restarted at the moment in order
+	        for the changes to take effect.
+	      - Not yet used for extensions.
+	      - Better descriptions, download updates, ...
+
+	Remove overlay extension:
+	------------------------
+	* libavogadro/src/extensions/CMakeLists.txt: Removed overlay
+	extension.
+	* libavogadro/src/extensions/overlayextension.*: Deleted.
+	* libavogadro/src/CMakeLists.txt: Include *.ui in the build.
+
 2008-07-07  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* sip/*: Initial attempt to make SIP python bindings.

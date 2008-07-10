@@ -40,6 +40,8 @@
 // Include static engine headers
 #include "engines/bsdyengine.h"
 
+#include "pluginmanager.h"
+
 #include <QDebug>
 #include <QUndoStack>
 #include <QDir>
@@ -230,8 +232,6 @@ namespace Avogadro {
 
     void updateListQuick();
     static void loadEngineFactories();
-    static QList<EngineFactory *> engineFactories;
-    static QHash<QString, EngineFactory *> engineClassFactory;
 
     QList<Engine *>        engines;
 
@@ -294,58 +294,14 @@ namespace Avogadro {
     GLPainterDevice *pd;
   };
 
-  QList<EngineFactory *> GLWidgetPrivate::engineFactories;
-  QHash<QString, EngineFactory *> GLWidgetPrivate::engineClassFactory;
-
   void GLWidgetPrivate::loadEngineFactories()
   {
     static bool enginesLoaded = false;
     if(!enginesLoaded)
-      {
-        QString prefixPath = QString(INSTALL_PREFIX) + '/'
-          + QString(INSTALL_LIBDIR) + "/avogadro/engines";
-        QStringList pluginPaths;
-        pluginPaths << prefixPath;
-
-#ifdef WIN32
-		pluginPaths << QCoreApplication::applicationDirPath() + "/engines";
-#endif
-
-        // Krazy: Use QProcess:
-        // http://doc.trolltech.com/4.3/qprocess.html#systemEnvironment
-        if (getenv("AVOGADRO_ENGINES") != NULL)
-          pluginPaths = QString(getenv("AVOGADRO_ENGINES")).split(':');
-
-        // load static plugins first
-        EngineFactory *bsFactory = qobject_cast<EngineFactory *>(new BSDYEngineFactory);
-        if (bsFactory) {
-          engineFactories.append(bsFactory);
-          engineClassFactory[bsFactory->className()] = bsFactory;
-        }
-        else
-          qDebug() << "Instantiation of the static ball and sticks plugin failed.";
-
-        // now load plugins from paths
-        foreach(const QString& path, pluginPaths)
-        {
-          QDir dir(path);
-          qDebug() << "Searching for engines in" << path;
-          foreach(const QString& fileName, dir.entryList(QDir::Files))
-          {
-            QPluginLoader loader(dir.absoluteFilePath(fileName));
-            QObject *instance = loader.instance();
-            EngineFactory *factory = qobject_cast<EngineFactory *>(instance);
-            if (factory) {
-              engineFactories.append(factory);
-              engineClassFactory[factory->className()] = factory;
-              qDebug() << fileName << "loaded successfully.";
-            }
-            else
-              qDebug() << fileName << "failed to load." << loader.errorString();
-          }
-        }
-        enginesLoaded = true;
-      }
+    {
+      pluginManager.loadEngineFactories();
+      enginesLoaded = true;
+    }
   }
 
   void GLWidgetPrivate::updateListQuick()
@@ -510,6 +466,7 @@ namespace Avogadro {
     }
     d->painter->incrementShare();
 
+    //setAutoFillBackground( false );
     setSizePolicy( QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding );
     d->camera->setParent( this );
     setAutoBufferSwap( false );
@@ -593,7 +550,6 @@ namespace Avogadro {
 
   void GLWidget::resizeEvent( QResizeEvent *event )
   {
-    //qDebug() << "resizeEvent";
 #ifdef ENABLE_THREADED_GL
     d->thread->resize( event->size().width(), event->size().height() );
 #else
@@ -1245,11 +1201,6 @@ namespace Avogadro {
     return d->engines;
   }
 
-  QList<EngineFactory *> GLWidget::engineFactories() const
-  {
-    return d->engineFactories;
-  }
-
   PrimitiveList GLWidget::primitives() const
   {
     return d->primitives;
@@ -1780,9 +1731,9 @@ namespace Avogadro {
         settings.setArrayIndex(i);
         QString engineClass = settings.value("engineClass", QString()).toString();
 
-        if(!engineClass.isEmpty() && d->engineClassFactory.contains(engineClass))
+        if(!engineClass.isEmpty() && pluginManager.engineClassFactory().contains(engineClass))
           {
-            EngineFactory *factory = d->engineClassFactory.value(engineClass);
+            EngineFactory *factory = pluginManager.engineClassFactory().value(engineClass);
             Engine *engine = factory->createInstance(this);
             engine->readSettings(settings);
 
@@ -1813,7 +1764,7 @@ namespace Avogadro {
     foreach(Engine *engine, engines)
       delete engine;
 
-    foreach(EngineFactory *factory, d->engineFactories)
+    foreach(EngineFactory *factory, pluginManager.engineFactories())
       {
         Engine *engine = factory->createInstance(this);
         if ( engine->name() == tr("Ball and Stick") ) {
