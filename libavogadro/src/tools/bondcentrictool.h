@@ -418,13 +418,11 @@ namespace Avogadro {
   };
 
 
-  class BondCentricToolFactory : public QObject, public ToolFactory
+  class BondCentricToolFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::ToolFactory)
-
-    public:
-      Tool *createInstance(QObject *parent = 0) { return new BondCentricTool(parent); }
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_TOOL_FACTORY(BondCentricTool, tr("Bond Centric Tool"), tr("Bond centric manipulation tool."))
   };
 
 } // end namespace Avogadro

@@ -1717,8 +1717,6 @@ namespace Avogadro
 
   void MainWindow::loadExtensions()
   {
-    pluginManager.loadExtensions();
-
     foreach(Extension *extension, pluginManager.extensions())
     {
       qDebug() << "Found Extension: " << extension->name() << " - "

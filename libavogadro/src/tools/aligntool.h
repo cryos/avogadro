@@ -90,14 +90,12 @@ namespace Avogadro {
 
   };
 
-  class AlignToolFactory : public QObject, public ToolFactory
-    {
-      Q_OBJECT
-      Q_INTERFACES(Avogadro::ToolFactory)
-
-      public:
-        Tool *createInstance(QObject *parent = 0) { return new AlignTool(parent); }
-    };
+  class AlignToolFactory : public QObject, public PluginFactory
+  {
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_TOOL_FACTORY(AlignTool, tr("Align Tool"), tr("Align  molecules with XYZ axes."))
+  };
 
 } // end namespace Avogadro
 

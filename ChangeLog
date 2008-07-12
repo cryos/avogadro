@@ -1,3 +1,64 @@
+2008-07-12  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* avogadro/src/addenginedialog.*: Use new PluginFactory class.
+	
+	* avogadro/src/enginecolorswidget.*: Use new ColorPlugin class.
+
+	* avogadro/src/main.cpp: Load the plugins here...
+
+	* avogadro/src/mainwindow.cpp: Remove call to
+	PluginManager::loadExtensions().
+	
+	* libavogadro/src/CMakeLists.txt: Statically link ElementColor in
+	libavogadro.
+
+	* libavogadro/src/color.h: Move settingsWidget() to ColorPlugin.
+
+	* libavogadro/src/elementcolor.*: Moved to colors/.
+
+	* libavogadro/src/engine.*: Use new Plugin base class.
+	
+	* libavogadro/src/engines/CMakeLists.txt: Add overlay engine.
+
+	* libavogadro/src/engines/*engine.h: Use new PluginFactory class.
+
+	* libavogadro/src/extension.*: Use new Plugin base class. 
+
+	* libavogadro/src/extensions/*extension.h: Use new PluginFactory
+	class.
+
+	* libavogadro/src/glwidget.*: Use new PluginFactory class.
+
+	* libavogadro/src/plugindialog.*: Use the PluginFactory's
+	descriptions. Added Colors to the combo box.
+
+	* libavogadro/src/pluginmanager.*: Load all plugins in the same
+	generic function, PluginFactory::type() is used to determine the
+	plugin type. 
+
+	* libavogadro/src/residuecolor.*: Moved to colors/.
+
+	* libavogadro/src/tool.*: Use new Plugin base class.
+
+	* libavogadro/src/toolgroup.cpp: Remove call to
+	PluginManager::loadTools().
+	
+	* libavogadro/src/tools/*tool.h: Use new PluginFactory
+	class.
+
+	* libavogadro/src/colorplugin.*: Add new ColorPlugin class for Color
+	plugins.
+
+	* libavogadro/src/colors/: New directory for color plugins.
+	ElementColor and ResidueColor can now be found here.
+	
+	* libavogadro/src/engines/overlayengine.*,
+	libavogadro/src/engines/overlaysettingswidget.ui: Replaces overlay
+	extension. There is an initial delay when creating the QPainter on the
+	QGLWidget... :(
+
+	* libavogadro/src/plugin.*: New Plugin base class.
+
 2008-07-10  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/pluginmanager.*: Added support for extensions.

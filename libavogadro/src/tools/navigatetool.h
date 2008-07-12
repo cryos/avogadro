@@ -121,16 +121,11 @@ namespace Avogadro {
    * @class NavigateToolFactory navigatetool.h
    * @brief Factory class to create instances of the NavigateTool class.
    */
-  class NavigateToolFactory : public QObject, public ToolFactory
+  class NavigateToolFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::ToolFactory)
-
-  public:
-    /**
-     * Creates an instance of the NavigateTool class.
-     */
-    Tool *createInstance(QObject *parent = 0) { return new NavigateTool(parent); }
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_TOOL_FACTORY(NavigateTool, tr("Navigate Tool"), tr("Tool for navigating."))
   };
 
 } // end namespace Avogadro

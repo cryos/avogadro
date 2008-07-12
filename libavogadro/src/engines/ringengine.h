@@ -99,11 +99,11 @@ namespace Avogadro {
 
 
   //! Generates instances of our RingEngine class
-  class RingEngineFactory : public QObject, public EngineFactory
+  class RingEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(RingEngine)
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(RingEngine, tr("Render ring planes."))
   };
 
 } // end namespace Avogadro

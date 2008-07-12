@@ -36,6 +36,11 @@
           <string>Extensions</string>
          </property>
         </item>
+        <item>
+         <property name="text" >
+          <string>Colors</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item rowspan="2" row="1" column="0" >
@@ -47,7 +52,7 @@
    <item row="0" column="1" >
     <widget class="QGroupBox" name="groupBox_2" >
      <property name="title" >
-      <string>Description</string>
+      <string>Details</string>
      </property>
      <layout class="QGridLayout" >
       <item row="0" column="0" >

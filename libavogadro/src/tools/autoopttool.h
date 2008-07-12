@@ -193,14 +193,12 @@ namespace Avogadro {
       bool undone;
   };
 
-  class AutoOptToolFactory : public QObject, public ToolFactory
-    {
-      Q_OBJECT
-      Q_INTERFACES(Avogadro::ToolFactory)
-
-      public:
-        Tool *createInstance(QObject *parent = 0) { return new AutoOptTool(parent); }
-    };
+  class AutoOptToolFactory : public QObject, public PluginFactory
+  {
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_TOOL_FACTORY(AutoOptTool, tr("AutoOpt Tool"), tr("Tool for interactivly optimizing a molecule."))
+  };
 
 } // end namespace Avogadro
 

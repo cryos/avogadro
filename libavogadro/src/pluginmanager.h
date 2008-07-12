@@ -29,23 +29,15 @@
 #include <avogadro/engine.h>
 #include <avogadro/tool.h>
 #include <avogadro/extension.h>
+#include <avogadro/colorplugin.h>
 
 #include <QSettings>
 
 namespace Avogadro {
 
-  
   class PluginItemPrivate;
   class PluginItem 
   {
-    public:
-      enum Type
-      {
-        EngineType = 0,
-        ToolType,
-        ExtensionType
-      };
-
     public:
       PluginItem();
       PluginItem(int type, const QString &fileName, const QString &filePath);
@@ -59,6 +51,10 @@ namespace Avogadro {
        * The plugin name (Draw, Stick, ...)
        */
       QString name() const;
+      /**
+       * The plugin description (Draw, Stick, ...)
+       */
+      QString description() const;
       /**
        * The plugin filename (libdrawtool.so, libaligntool.dll, ...)
        */ 
@@ -80,6 +76,10 @@ namespace Avogadro {
        * Set the plugin name (Draw, Stick, ...)
        */
       void setName( const QString &name );
+      /**
+       * Set the plugin description
+       */
+      void setDescription( const QString &description );
       /**
        * The plugin filename (libdrawtool.so, libaligntool.dll, ...)
        */ 
@@ -112,59 +112,40 @@ namespace Avogadro {
     QList<PluginItem *> plugins( int type );
  
     /**
-     * Find all the engine plugins by looking through the search paths:
-     *    /usr/lib/avogadro/engines
-     *    /usr/local/lib/avogadro/engines
+     * Find all plugins by looking through the search paths:
+     *    /usr/(local/)lib/avogadro/engines
+     *    /usr/(local/)lib/avogadro/tools
+     *    /usr/(local/)lib/avogadro/extensions
+     *    /usr/(local/)lib/avogadro/colors
      *
-     * You can set the AVOGADRO_ENGINES to designate a path
-     * at runtime.
-     */
-    void loadEngineFactories();
+     * You can set AVOGADRO_ENGINES, AVOGADRO_TOOLS, AVOGADRO_EXTENSIONS 
+     * and AVOGADRO_COLORS to designate a path at runtime.
+     *
+     * WIN32: look in the applications working dir ( ./engines, ...)
+     */ 
+    void loadPlugins();
+    
     /**
      * Get the loaded engine factories
      */
-    const QList<EngineFactory *>& engineFactories() const;
+    const QList<PluginFactory *>& engineFactories() const;
     /**
      * Get the QHash to translate an engine className to 
-     * a EngineFactory* pointer.
+     * a PluginFactory* pointer.
      */
-    const QHash<QString, EngineFactory *>& engineClassFactory() const;
-    
-    /**
-     * Find all the tool plugins by looking through the search paths:
-     *    /usr/lib/avogadro/tools
-     *    /usr/local/lib/avogadro/tools
-     *
-     * You can set the AVOGADRO_TOOLS to designate a path
-     * at runtime.
-     */
-    void findTools();
-    /**
-     * Load the tools 
-     */
-    void loadTools();
+    const QHash<QString, PluginFactory *>& engineClassFactory() const;
     /**
      * Get the loaded tools
      */
     const QList<Tool *>& tools() const;
-    
-    /**
-     * Find all the extension plugins by looking through the search paths:
-     *    /usr/lib/avogadro/extensions
-     *    /usr/local/lib/avogadro/extensions
-     *
-     * You can set the AVOGADRO_EXTENSIONS to designate a path
-     * at runtime.
-     */
-    void findExtensions();
-    /**
-     * Load the tools 
-     */
-    void loadExtensions();
     /**
      * Get the loaded extensions
      */
     const QList<Extension *>& extensions() const;
+    /**
+     * Get the loaded color plugins
+     */
+    const QList<ColorPlugin *>& colorPlugins() const;
 
     /**
      * Write the settings of the PluginManager in order to save them to disk.

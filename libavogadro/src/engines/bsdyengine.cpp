@@ -433,4 +433,5 @@ namespace Avogadro
 
 #include "bsdyengine.moc"
 
-Q_EXPORT_PLUGIN2( bsdyengine, Avogadro::BSDYEngineFactory )
+// This is a static engine...
+// Q_EXPORT_PLUGIN2( bsdyengine, Avogadro::BSDYEngineFactory )

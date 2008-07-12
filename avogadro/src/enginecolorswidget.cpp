@@ -26,10 +26,10 @@
 
 #include <avogadro/engine.h>
 #include <avogadro/color.h>
-#include <avogadro/elementcolor.h>
-#include <avogadro/residuecolor.h>
+#include <avogadro/pluginmanager.h>
 
 #include <QDialog>
+#include <QDebug>
 
 namespace Avogadro {
 
@@ -45,7 +45,10 @@ namespace Avogadro {
   {
     ui.setupUi(this);
 
-    //ui.colorCombo->setEnabled(false);
+    foreach (ColorPlugin *colorPlugin, pluginManager.colorPlugins())
+    {
+      ui.colorCombo->addItem(colorPlugin->name());
+    }
 
     connect(ui.colorCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(colorChanged(int)));
@@ -58,28 +61,10 @@ namespace Avogadro {
 
   void EngineColorsWidget::colorChanged(int index)
   {
-    Color *map;
+    ColorPlugin *colorPlugin = pluginManager.colorPlugins().at(index);
 
-    switch (index) {
-      default:
-      case 0:
-        map = new ElementColor();
-        break;
-      case 1:
-        map = new ResidueColor();
-        break;
-      case 2:
-        map = new Color(1.0, 0.0, 0.0, 1.0);
-        break;
-      case 3:
-        map = new Color(0.0, 1.0, 0.0, 1.0);
-        break;
-      case 4:
-        map = new Color(0.0, 0.0, 1.0, 1.0);
-        break;
-    }
-
-    d->engine->setColorMap(map);
+    if (colorPlugin)
+      d->engine->setColorMap(colorPlugin->color());
   }
 
   void EngineColorsWidget::setEngine( Engine *engine )

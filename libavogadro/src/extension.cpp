@@ -26,14 +26,14 @@
 
 namespace Avogadro {
 
-  QString Extension::name() const
+  int Extension::type() const
   { 
-    return QObject::tr("Unknown"); 
+    return Plugin::ExtensionType; 
   }
-
-  QString Extension::description() const
+  
+  QString Extension::typeName() const
   { 
-    return QObject::tr("Unknown Extension"); 
+    return tr("Extensions"); 
   }
 
   QString Extension::menuPath(QAction *action) const 

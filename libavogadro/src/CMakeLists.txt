@@ -25,12 +25,17 @@ FILE(GLOB libavogadro_SRCS "*.cpp")
 FILE(GLOB libavogadro_HDRS "*.h")
 FILE(GLOB libavogadro_UIS "*.ui")
 qt4_wrap_ui(libavogadro_UIS plugindialog.ui)
+set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
 
 # Statically link the core engines and tools so that users have a working
 # system even if no plugins can be found.
 set(bsdyengine_SRCS engines/bsdyengine.cpp)
 qt4_wrap_ui(bsdyengine_UIS engines/bsdysettingswidget.ui)
-set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS} ${bsdyengine_SRCS} ${bsdyengine_UIS})
+set(libavogadro_SRCS ${libavogadro_SRCS} ${bsdyengine_SRCS} ${bsdyengine_UIS})
+
+set(elementcolor_SRCS colors/elementcolor.cpp)
+set(libavogadro_SRCS ${libavogadro_SRCS} ${elementcolor_SRCS})
+
 
 # If Boost Python isn't found remove the interpreter files
 if(NOT BOOST_PYTHON_LIBS AND NOT Boost_PYTHON_FOUND)
@@ -85,3 +90,4 @@ INSTALL(FILES ${libavogadro_QM} DESTINATION share/libavogadro/i18n)
 add_subdirectory(engines)
 add_subdirectory(tools)
 add_subdirectory(extensions)
+add_subdirectory(colors)

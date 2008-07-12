@@ -113,11 +113,11 @@ namespace Avogadro {
   };
 
   //! Generates instances of our RibbonEngine class
-  class RibbonEngineFactory : public QObject, public EngineFactory
+  class RibbonEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(RibbonEngine)
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(RibbonEngine, tr("Render ribbons."))
   };
 
 } // end namespace Avogadro

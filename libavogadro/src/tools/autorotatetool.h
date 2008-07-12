@@ -120,14 +120,13 @@ namespace Avogadro {
       void settingsWidgetDestroyed();
   };
 
-  class AutoRotateToolFactory : public QObject, public ToolFactory
-    {
-      Q_OBJECT
-      Q_INTERFACES(Avogadro::ToolFactory)
-
-      public:
-        Tool* createInstance(QObject *parent = 0) { return new AutoRotateTool(parent); }
-    };
+  class AutoRotateToolFactory : public QObject, public PluginFactory
+  {
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_TOOL_FACTORY(AutoRotateTool, tr("AutoRotate Tool"), 
+        tr("This tool allows the user to rotate a molecule around any axis and a given speed."))
+  };
 
 } // end namespace Avogadro
 

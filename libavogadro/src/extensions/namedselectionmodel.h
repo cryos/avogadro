@@ -39,7 +39,69 @@
 
 namespace Avogadro {
 
- class NamedSelectionModel : public QAbstractListModel
+  namespace SelectTreeItemType 
+  {
+    enum {
+      HeaderType=1,
+      AtomType,
+      BondType,
+      ResidueType,
+      ChainType,
+      SelectionType
+    };
+  }
+
+
+  class SelectTreeItem
+  {
+    public:
+      SelectTreeItem(const QList<QVariant> &data, int type, SelectTreeItem *parent = 0);
+      ~SelectTreeItem();
+
+      void appendChild(SelectTreeItem *child);
+
+      SelectTreeItem *child(int row);
+      int childCount() const;
+      int columnCount() const;
+      QVariant data(int column) const;
+      int row() const;
+      SelectTreeItem *parent();
+      
+      int type() const;
+
+    private:
+      QList<SelectTreeItem*>	m_childItems;
+      QList<QVariant>		m_itemData;
+      SelectTreeItem		*m_parentItem;
+      int 			m_type;
+  };
+
+  class SelectTreeModel : public QAbstractItemModel
+  {
+    Q_OBJECT
+    
+    public:
+      SelectTreeModel(GLWidget* widget, QObject *parent = 0);
+      ~SelectTreeModel();
+
+      QVariant data(const QModelIndex &index, int role) const;
+      Qt::ItemFlags flags(const QModelIndex &index) const;
+      QVariant headerData(int section, Qt::Orientation orientation,
+      int role = Qt::DisplayRole) const;
+      QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
+      QModelIndex parent(const QModelIndex &index) const;
+      int rowCount(const QModelIndex &parent = QModelIndex()) const;
+      int columnCount(const QModelIndex &parent = QModelIndex()) const;
+
+    private:
+      void addChainData(Molecule *molecule, QList<SelectTreeItem*> &parents);
+      void addSelectionData(GLWidget *widget, QList<SelectTreeItem*> &parents);
+      void addResidueData(Molecule *molecule, char chain, QList<SelectTreeItem*> &parents);
+      void setupModelData(GLWidget *widget, SelectTreeItem *parent);
+      SelectTreeItem *rootItem;
+  };
+
+  class NamedSelectionModel : public QAbstractListModel
   {
     Q_OBJECT
      

@@ -107,14 +107,13 @@ namespace Avogadro {
 
   };
 
-  class ClickMeasureToolFactory : public QObject, public ToolFactory
-    {
-      Q_OBJECT
-      Q_INTERFACES(Avogadro::ToolFactory)
-
-      public:
-        Tool *createInstance(QObject *parent = 0) { return new ClickMeasureTool(parent); }
-    };
+  class ClickMeasureToolFactory : public QObject, public PluginFactory
+  {
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_TOOL_FACTORY(ClickMeasureTool, tr("Measure Tool"),
+        tr("Tool for measuring distances, angles and torsion angles between atoms.."))
+  };
 
 } // end namespace Avogadro
 

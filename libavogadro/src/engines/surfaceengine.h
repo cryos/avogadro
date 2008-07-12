@@ -194,11 +194,11 @@ namespace Avogadro {
   };
 
   //! Generates instances of our SurfaceEngine class
-  class SurfaceEngineFactory : public QObject, public EngineFactory
+  class SurfaceEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(SurfaceEngine)
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(SurfaceEngine, tr("Compute and render Van der Waals surfaces."))
 
   };
 

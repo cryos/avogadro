@@ -48,7 +48,6 @@ namespace Avogadro {
   StickEngine::StickEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
 		m_radius(0.25)
   {
-    setName(type());
     setDescription(tr("Renders as Cylinders"));
   }
 

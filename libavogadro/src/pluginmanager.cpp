@@ -26,8 +26,9 @@
 #include "pluginmanager.h"
 #include "plugindialog.h"
 
-// Include static engine headers
+// Include static headers
 #include "engines/bsdyengine.h"
+#include "colors/elementcolor.h"
 
 #include <QDir>
 #include <QList>
@@ -42,6 +43,7 @@ namespace Avogadro {
     public:
       int type;
       QString name;
+      QString description;
       QString fileName;
       QString absoluteFilePath;
       bool enabled;
@@ -75,6 +77,11 @@ namespace Avogadro {
   {
     return d->name;
   }
+ 
+  QString PluginItem::description() const
+  {
+    return d->description;
+  }
   
   QString PluginItem::fileName() const
   {
@@ -100,6 +107,11 @@ namespace Avogadro {
   {
     d->name = name;
   }
+ 
+  void PluginItem::setDescription( const QString &description )
+  {
+    d->description = description;
+  }
   
   void PluginItem::setFileName( const QString &fileName )
   {
@@ -124,21 +136,23 @@ namespace Avogadro {
 
       static QList<PluginItem *> plugins;
 
-      static QList<EngineFactory *> engineFactories;
-      static QHash<QString, EngineFactory *> engineClassFactory;
+      static QList<PluginFactory *> engineFactories;
+      static QHash<QString, PluginFactory *> engineClassFactory;
 
       static QList<Tool *> tools;
       static QList<Extension *> extensions;
+      static QList<ColorPlugin *> colors;
       
       static PluginDialog *dialog;
   };
   
   // the static members
   QList<PluginItem *> PluginManagerPrivate::plugins;
-  QList<EngineFactory *> PluginManagerPrivate::engineFactories;
-  QHash<QString, EngineFactory *> PluginManagerPrivate::engineClassFactory;
+  QList<PluginFactory *> PluginManagerPrivate::engineFactories;
+  QHash<QString, PluginFactory *> PluginManagerPrivate::engineClassFactory;
   QList<Tool *> PluginManagerPrivate::tools;
   QList<Extension *> PluginManagerPrivate::extensions;
+  QList<ColorPlugin *> PluginManagerPrivate::colors;
   PluginDialog *PluginManagerPrivate::dialog;
 
   PluginManager::PluginManager(QObject *parent) : QObject(parent), d(new PluginManagerPrivate)
@@ -151,203 +165,190 @@ namespace Avogadro {
     delete(d);
   }
 
-  void PluginManager::loadEngineFactories()
+  void PluginManager::loadPlugins()
   {
-    // set the search paths
-    QString prefixPath = QString(INSTALL_PREFIX) + '/'
-      + QString(INSTALL_LIBDIR) + "/avogadro/engines";
-    QStringList pluginPaths;
-    pluginPaths << prefixPath;
-
-    #ifdef WIN32
-      pluginPaths << QCoreApplication::applicationDirPath() + "/engines";
-    #endif
-
-    // Krazy: Use QProcess:
-    // http://doc.trolltech.com/4.3/qprocess.html#systemEnvironment
-    if (getenv("AVOGADRO_ENGINES") != NULL)
-      pluginPaths = QString(getenv("AVOGADRO_ENGINES")).split(':');
-
+    ////////////////////////////// 
     // load static plugins first
-    EngineFactory *bsFactory = qobject_cast<EngineFactory *>(new BSDYEngineFactory);
+    //////////////////////////////
+    PluginFactory *bsFactory = qobject_cast<PluginFactory *>(new BSDYEngineFactory);
     if (bsFactory) {
       d->engineFactories.append(bsFactory);
-      d->engineClassFactory[bsFactory->className()] = bsFactory;
+      d->engineClassFactory[bsFactory->name()] = bsFactory;
     }
     else
       qDebug() << "Instantiation of the static ball and sticks plugin failed.";
 
-    // now load plugins from paths
-    QSettings settings;
-    settings.beginGroup("plugins");
-    settings.beginGroup("engines");
-    foreach(const QString& path, pluginPaths)
+    PluginFactory *elementFactory = qobject_cast<PluginFactory *>(new ElementColorFactory);
+    if (elementFactory) 
     {
-      QDir dir(path);
-      qDebug() << "Searching for engines in" << path;
-      foreach(const QString& fileName, dir.entryList(QDir::Files))
-      {
-        QPluginLoader loader(dir.absoluteFilePath(fileName));
-        QObject *instance = loader.instance();
-        EngineFactory *factory = qobject_cast<EngineFactory *>(instance);
-        if (factory)
-        {
-          PluginItem *plugin = new PluginItem(PluginItem::EngineType, fileName, dir.absoluteFilePath(fileName));
-          plugin->setName(factory->type());
-         
-          // add the engine to the engineFactories list only when it the plugin is enabled 
-          if (settings.value(factory->type(), true).toBool())
-          {
-            plugin->setEnabled(true);
-            d->engineFactories.append(factory);
-            d->engineClassFactory[factory->className()] = factory;
-          }
-          else
-            plugin->setEnabled(false);
-          
-          d->plugins.append(plugin);
-        }
-        else
-          qDebug() << fileName << "failed to load." << loader.errorString();
-      }
+      ColorPlugin *colorPlugin = (ColorPlugin*) elementFactory->createInstance(this);
+      d->colors.append(colorPlugin);
     }
-    settings.endGroup();
-    settings.endGroup();
-  }
- 
-  void PluginManager::findTools()
-  {
-    QString prefixPath = QString(INSTALL_PREFIX) + '/'
-      + QString(INSTALL_LIBDIR) + "/avogadro/tools";
+    else
+      qDebug() << "Instantiation of the static element color plugin failed.";
+
+    ////////////////////////////// 
+    // setup the paths
+    //////////////////////////////
     QStringList pluginPaths;
-    pluginPaths << prefixPath;
-
-    #ifdef WIN32
-      pluginPaths << QCoreApplication::applicationDirPath() + "/tools";
-    #endif
-
+ 
     // Krazy: Use QProcess:
     // http://doc.trolltech.com/4.3/qprocess.html#systemEnvironment
-    if(getenv("AVOGADRO_TOOLS") != NULL)
+    if (getenv("AVOGADRO_ENGINES") != NULL)
     {
-      pluginPaths = QString(getenv("AVOGADRO_TOOLS")).split(':');
+      pluginPaths << QString(getenv("AVOGADRO_ENGINES")).split(':');
+    }
+    else
+    {
+      QString prefixPath = QString(INSTALL_PREFIX) + '/'
+        + QString(INSTALL_LIBDIR) + "/avogadro/engines";
+      pluginPaths << prefixPath;
+
+      #ifdef WIN32
+        pluginPaths << QCoreApplication::applicationDirPath() + "/engines";
+      #endif
     }
 
+    if(getenv("AVOGADRO_TOOLS") != NULL)
+    {
+      pluginPaths << QString(getenv("AVOGADRO_TOOLS")).split(':');
+    }
+    else
+    {
+      QString prefixPath = QString(INSTALL_PREFIX) + '/'
+        + QString(INSTALL_LIBDIR) + "/avogadro/tools";
+      pluginPaths << prefixPath;
+
+      #ifdef WIN32
+        pluginPaths << QCoreApplication::applicationDirPath() + "/tools";
+      #endif
+    }
+
+    if (getenv("AVOGADRO_EXTENSIONS") != NULL) 
+    {
+      pluginPaths << QString(getenv("AVOGADRO_EXTENSIONS") ).split(':');
+    }
+    else
+    {
+      QString prefixPath = QString(INSTALL_PREFIX) + '/'
+        + QString(INSTALL_LIBDIR) + "/avogadro/extensions";
+      pluginPaths << prefixPath;
+
+      #ifdef WIN32
+        pluginPaths << QCoreApplication::applicationDirPath() + "/extensions";
+      #endif
+    }
+
+    if(getenv("AVOGADRO_COLORS") != NULL)
+    {
+      pluginPaths << QString(getenv("AVOGADRO_TOOLS")).split(':');
+    }
+    else
+    {
+      QString prefixPath = QString(INSTALL_PREFIX) + '/'
+        + QString(INSTALL_LIBDIR) + "/avogadro/colors";
+      pluginPaths << prefixPath;
+
+      #ifdef WIN32
+        pluginPaths << QCoreApplication::applicationDirPath() + "/colors";
+      #endif
+    }
+
+    ////////////////////////////// 
+    // load the plugins 
+    //////////////////////////////
+    QSettings settings;
+    settings.beginGroup("plugins");
     foreach (const QString& path, pluginPaths)
     {
       QDir dir(path);
-      qDebug() << "Searching for tools in" << path;
+      qDebug() << "Searching for plugins in" << path;
       foreach (const QString& fileName, dir.entryList(QDir::Files))
       {
-        PluginItem *plugin = new PluginItem(PluginItem::ToolType, fileName, dir.absoluteFilePath(fileName));
-        d->plugins.append(plugin);
-      }
-    }
-  }
-  
-  void PluginManager::loadTools()
-  {
-    findTools();
-
-    QSettings settings;
-    settings.beginGroup("plugins");
-    settings.beginGroup("tools");
-    foreach (PluginItem *plugin, d->plugins)
-    {
-      if (plugin->type() == PluginItem::ToolType)
-      {
-        QPluginLoader loader(plugin->absoluteFilePath());
+        QPluginLoader loader(dir.absoluteFilePath(fileName));
         QObject *instance = loader.instance();
-        ToolFactory *factory = qobject_cast<ToolFactory *>(instance);
+        PluginFactory *factory = qobject_cast<PluginFactory *>(instance);
         if (factory)
         {
-          Tool *tool = factory->createInstance(this);
-          plugin->setName(tool->name());
-          if (settings.value(tool->name(), true).toBool()) 
+          PluginItem *plugin = new PluginItem(factory->type(), fileName, dir.absoluteFilePath(fileName));
+ 
+          if (factory->type() == Plugin::EngineType)
           {
-            plugin->setEnabled(true);
-            d->tools.append(tool);
-          } 
-          else
+            settings.beginGroup("engines");
+            
+            if (settings.value(factory->name(), true).toBool()) 
+            {
+              d->engineFactories.append(factory);
+              d->engineClassFactory[factory->name()] = factory;
+              plugin->setEnabled(true);
+            } 
+            else
+              plugin->setEnabled(false);
+
+            settings.endGroup();
+          }
+ 
+          if (factory->type() == Plugin::ToolType)
           {
-            plugin->setEnabled(false);
-            delete tool;
+            settings.beginGroup("tools");
+            
+            if (settings.value(factory->name(), true).toBool()) 
+            {
+              Tool *tool = (Tool*) factory->createInstance(this);
+              d->tools.append(tool);
+              plugin->setEnabled(true);
+            } 
+            else
+              plugin->setEnabled(false);
+
+            settings.endGroup();
+          }
+          else if (factory->type() == Plugin::ExtensionType)
+          {
+            settings.beginGroup("extensions");
+            
+            if (settings.value(factory->name(), true).toBool()) 
+            {
+              Extension *extension = (Extension*) factory->createInstance(/*this*/);
+              d->extensions.append(extension);
+              plugin->setEnabled(true);
+            } 
+            else
+              plugin->setEnabled(false);
+
+            settings.endGroup();
+          }
+          else if (factory->type() == Plugin::ColorType)
+          {
+            settings.beginGroup("colors");
+            
+            if (settings.value(factory->name(), true).toBool()) 
+            {
+              ColorPlugin *colorPlugin = (ColorPlugin*) factory->createInstance(this);
+              d->colors.append(colorPlugin);
+              plugin->setEnabled(true);
+            } 
+            else
+              plugin->setEnabled(false);
+
+            settings.endGroup();
+          }
+ 
+          if (plugin)
+          {
+            plugin->setName(factory->name());
+            plugin->setDescription(factory->description());
+            d->plugins.append(plugin);
           }
         }
         else
-          qDebug() << plugin->fileName() << "failed to load." << loader.errorString();
+          qDebug() << fileName << "failed to load. " << loader.errorString();
+ 
       }
     }
     settings.endGroup();
-    settings.endGroup();
   }
-  
-  void PluginManager::findExtensions()
-  {
-    QString prefixPath = QString(INSTALL_PREFIX) + '/'
-      + QString(INSTALL_LIBDIR) + "/avogadro/extensions";
-    QStringList pluginPaths;
-    pluginPaths << prefixPath;
 
-    #ifdef WIN32
-      pluginPaths << QCoreApplication::applicationDirPath() + "/extensions";
-    #endif
-
-    // Krazy: Use QProcess:
-    // http://doc.trolltech.com/4.3/qprocess.html#systemEnvironment
-    if (getenv("AVOGADRO_EXTENSIONS") != NULL) {
-      pluginPaths = QString(getenv("AVOGADRO_EXTENSIONS") ).split(':');
-    }
-
-    foreach(const QString& path, pluginPaths)
-    {
-      QDir dir(path);
-      qDebug() << "Searching for extensions in" << path;
-      foreach(const QString& fileName, dir.entryList(QDir::Files))
-      {
-        PluginItem *plugin = new PluginItem(PluginItem::ExtensionType, fileName, dir.absoluteFilePath(fileName));
-        d->plugins.append(plugin);
-      }
-    }
-  }
-        
-  void PluginManager::loadExtensions()
-  {
-    findExtensions();
-
-    QSettings settings;
-    settings.beginGroup("plugins");
-    settings.beginGroup("extensions");
-    foreach (PluginItem *plugin, d->plugins)
-    {
-      if (plugin->type() == PluginItem::ExtensionType)
-      {
-        QPluginLoader loader(plugin->absoluteFilePath());
-        QObject *instance = loader.instance();
-        ExtensionFactory *factory = qobject_cast<ExtensionFactory *>(instance);
-        if (factory)
-        {
-          Extension *extension = factory->createInstance(/*this*/);
-          plugin->setName(extension->name());
-          if (settings.value(extension->name(), true).toBool()) 
-          {
-            plugin->setEnabled(true);
-            d->extensions.append(extension);
-          } 
-          else
-          {
-            plugin->setEnabled(false);
-            delete extension;
-          }
-        }
-        else
-          qDebug() << plugin->fileName() << "failed to load." << loader.errorString();
-      }
-    }
-    settings.endGroup();
-    settings.endGroup();
-  }
-    
   QList<PluginItem *> PluginManager::plugins( int type )
   {
     QList<PluginItem *> list;
@@ -371,12 +372,12 @@ namespace Avogadro {
     d->dialog->show();
   }
   
-  const QList<EngineFactory *>& PluginManager::engineFactories() const
+  const QList<PluginFactory *>& PluginManager::engineFactories() const
   {
     return d->engineFactories;
   }
     
-  const QHash<QString, EngineFactory *>& PluginManager::engineClassFactory() const
+  const QHash<QString, PluginFactory *>& PluginManager::engineClassFactory() const
   {
     return d->engineClassFactory;
   }
@@ -391,13 +392,18 @@ namespace Avogadro {
     return d->extensions;
   }
     
+  const QList<ColorPlugin *>& PluginManager::colorPlugins() const
+  {
+    return d->colors;
+  }
+  
   void PluginManager::writeSettings(QSettings &settings) const
   {
     // write the engine's isEnabled()
     settings.beginGroup("engines");
     foreach(PluginItem *plugin, d->plugins) 
     {
-      if (plugin->type() == PluginItem::EngineType)
+      if (plugin->type() == Plugin::EngineType)
         settings.setValue(plugin->name(), plugin->isEnabled());
     }
     settings.endGroup();
@@ -406,7 +412,7 @@ namespace Avogadro {
     settings.beginGroup("tools");
     foreach(PluginItem *plugin, d->plugins) 
     {
-      if (plugin->type() == PluginItem::ToolType)
+      if (plugin->type() == Plugin::ToolType)
         settings.setValue(plugin->name(), plugin->isEnabled());
     }
     settings.endGroup();
@@ -415,7 +421,7 @@ namespace Avogadro {
     settings.beginGroup("extensions");
     foreach(PluginItem *plugin, d->plugins) 
     {
-      if (plugin->type() == PluginItem::ExtensionType)
+      if (plugin->type() == Plugin::ExtensionType)
         settings.setValue(plugin->name(), plugin->isEnabled());
     }
     settings.endGroup();

@@ -66,15 +66,6 @@ namespace Avogadro {
       Molecule *m_molecule;
   };
 
-  class HydrogensExtensionFactory : public QObject, public ExtensionFactory
-  {
-    Q_OBJECT
-    Q_INTERFACES(Avogadro::ExtensionFactory)
-
-    public:
-    Extension *createInstance(QObject *parent = 0) { return new HydrogensExtension(parent); }
-  };
-
   class HydrogensCommand : public QUndoCommand
   {
     public:
@@ -99,6 +90,19 @@ namespace Avogadro {
       enum Action m_action;
       double m_pH;
   };
+
+  class HydrogensExtensionFactory : public QObject, public PluginFactory
+  {
+      Q_OBJECT
+      Q_INTERFACES(Avogadro::PluginFactory)
+
+    public:
+      Plugin *createInstance(QObject *parent = 0) { return new HydrogensExtension(parent); }
+      int type() const { return Plugin::ExtensionType; };
+      QString name() const { return tr("Hydrogens Extension"); };
+      QString description() const { return tr("Extension to add or delete hydrogens."); };
+  };
+
 
 } // end namespace Avogadro
 

@@ -33,7 +33,7 @@ namespace Avogadro {
   {
     ui.setupUi(this);
 
-    PluginItemModel *model = new PluginItemModel(PluginItem::EngineType);
+    PluginItemModel *model = new PluginItemModel(Plugin::EngineType);
     ui.listView->setModel(model);
 
     connect(ui.listView, SIGNAL(clicked(QModelIndex)),
@@ -55,7 +55,8 @@ namespace Avogadro {
     QString text;
 
     text  = tr("Name: ") + plugin->name() + "\n";
-    text += tr("File: ") + plugin->fileName() + "\n";
+    text += tr("File: ") + plugin->fileName() + "\n\n";
+    text += tr("Description:\n") + plugin->description() + "\n";
 
     ui.textEdit->setText(text);
   }

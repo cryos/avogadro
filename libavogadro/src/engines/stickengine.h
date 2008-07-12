@@ -99,11 +99,11 @@ namespace Avogadro {
   };
 
   //! Generates instances of our StickEngine class
-  class StickEngineFactory : public QObject, public EngineFactory
+  class StickEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(StickEngine)
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(StickEngine, tr("Render sticks."))
   };
 
 } // end namespace Avogadro

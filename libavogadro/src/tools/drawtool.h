@@ -165,14 +165,12 @@ namespace Avogadro {
       void showFragmentDialog(bool checked);
   };
 
-  class DrawToolFactory : public QObject, public ToolFactory
+  class DrawToolFactory : public QObject, public PluginFactory
   {
-      Q_OBJECT
-      Q_INTERFACES(Avogadro::ToolFactory)
-
-      public:
-      Tool *createInstance(QObject *parent = 0) { return new DrawTool(parent); }
-    };
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_TOOL_FACTORY(DrawTool, tr("Draw Tool"), tr("Draw molecules, insert smiles or fragments."))
+  };
 
 } // end namespace Avogadro
 

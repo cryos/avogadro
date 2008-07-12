@@ -38,7 +38,7 @@ namespace Avogadro {
       QAction *activateAction;
   };
 
-  Tool::Tool(QObject *parent) : QObject(parent), d(new ToolPrivate)
+  Tool::Tool(QObject *parent) : Plugin(parent), d(new ToolPrivate)
   {
     d->activateAction = new QAction(this);
     d->activateAction->setCheckable(true);
@@ -51,9 +51,14 @@ namespace Avogadro {
     delete d;
   }
 
-  QString Tool::description() const
-  {
-    return QObject::tr("No Description");
+  int Tool::type() const
+  { 
+    return Plugin::ToolType; 
+  }
+  
+  QString Tool::typeName() const
+  { 
+    return tr("Tools"); 
   }
 
   QAction* Tool::activateAction() const {

@@ -114,15 +114,14 @@ namespace Avogadro {
       void settingsWidgetDestroyed();
   };
 
-  class SelectRotateToolFactory : public QObject, public ToolFactory
-    {
-      Q_OBJECT
-      Q_INTERFACES(Avogadro::ToolFactory)
+  class SelectRotateToolFactory : public QObject, public PluginFactory
+  {
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_TOOL_FACTORY(SelectRotateTool, tr("Select-Rotate Tool"), 
+        tr("Tool for selecting atoms, residues and molecules."))
+  };
 
-      public:
-        Tool *createInstance(QObject *parent = 0) { return new SelectRotateTool(parent); }
-    };
-
-  } // end namespace Avogadro
+} // end namespace Avogadro
 
 #endif

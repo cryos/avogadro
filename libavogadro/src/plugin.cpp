@@ -1,7 +1,7 @@
 /**********************************************************************
- ElementColor - Default class for coloring atoms based on element
+  Tool - Avogadro Tool Interface
 
-  Copyright (C) 2007 Geoffrey R. Hutchison
+  Copyright (C) 2007 Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -22,34 +22,46 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "elementcolor.h"
-
+#include "plugin.h"
 #include <config.h>
-#include <avogadro/primitive.h>
 
-using namespace OpenBabel;
+#include <QAction>
+#include <QIcon>
 
 namespace Avogadro {
 
-  /// Constructor
-  ElementColor::ElementColor()
-  { }
-
-  // Destructor
-  ElementColor::~ElementColor()
-  {   }
-
-  void ElementColor::set(const Primitive *p)
+  /*
+  class PluginPrivate
   {
-    if (!p || p->type() != Primitive::AtomType)
-      return;
+    public:
+      PluginPrivate() {}
+  };
+  */
 
-    const Atom *atom = static_cast<const Atom*>(p);
-    std::vector<double> rgb = etab.GetRGB( atom->GetAtomicNum() );
-    m_red = rgb[0];
-    m_green = rgb[1];
-    m_blue = rgb[2];
-    m_alpha = 1.0;
+  Plugin::Plugin(QObject *parent) : QObject(parent)/*, d(new PluginPrivate)*/
+  {
   }
 
-}
+  Plugin::~Plugin()
+  {
+    //delete d;
+  }
+
+  /*
+  Plugin& Plugin::operator= (const Plugin &plugin)
+  {
+    Q_UNUSED(plugin)
+
+    return *this;
+  }
+  */
+
+  QString Plugin::description() const
+  {
+    return QObject::tr("No Description");
+  }
+
+
+} // end namespace Avogadro
+
+#include "plugin.moc"

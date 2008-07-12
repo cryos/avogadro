@@ -41,27 +41,29 @@ namespace Avogadro {
              this, SLOT(typeChanged(const QString)) );
   }
 
-  Engine * AddEngineDialog::getEngine(QWidget *parent, const QList<EngineFactory *> &engineFactories)
+  Engine * AddEngineDialog::getEngine(QWidget *parent, const QList<PluginFactory *> &engineFactories)
   {
     AddEngineDialog dialog(parent);
-		QStringList types;
+    QStringList types;
 
-		// We get the list from the EngineFactories in rendering order
-		// So we re-sort alphabetically for users
-    foreach(EngineFactory *factory, engineFactories)
-			types.append(factory->type());
-		qSort(types);
-		foreach(const QString &type, types)
-			dialog.addType(type);
+    // We get the list from the PluginFactories in rendering order
+    // So we re-sort alphabetically for users
+    foreach(PluginFactory *factory, engineFactories)
+      types.append(factory->name());
+    
+    qSort(types);
+    
+    foreach(const QString &type, types)
+      dialog.addType(type);
 
     int accepted = dialog.exec();
     if(accepted)
     {
       // Find the engine in the list and instantiate it - needed now we sort the list
       Engine *engine = 0;
-      foreach(EngineFactory *factory, engineFactories)
-        if (factory->type() == types.at(dialog.typeIndex()))
-          engine = factory->createInstance();
+      foreach(PluginFactory *factory, engineFactories)
+        if (factory->name() == types.at(dialog.typeIndex()))
+          engine = (Engine *) factory->createInstance();
 
       // We should always be able to find the engine requested
       if (engine) {

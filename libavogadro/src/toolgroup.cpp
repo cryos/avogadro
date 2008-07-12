@@ -69,7 +69,6 @@ namespace Avogadro {
   void ToolGroup::load()
   {
     // get the tools from the plugin manager
-    pluginManager.loadTools();
     d->tools = pluginManager.tools();
     
     foreach (Tool *tool, d->tools) {

@@ -638,11 +638,6 @@ namespace Avogadro {
       virtual void renderDebugOverlay();
 
       /**
-       * Helper function to get the engine factories from the PluginManager.
-       */
-      void loadEngineFactories();
-
-      /**
        * This will return a painting condition that must be met each time
        * before a GLThread can run.
        *

@@ -102,11 +102,11 @@ namespace Avogadro {
   };
 
   //! Generates instances of our HBondEngine class
-  class HBondEngineFactory : public QObject, public EngineFactory
+  class HBondEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(HBondEngine)
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(HBondEngine, tr("Render hydrogen bonds"))
   };
 
 } // end namespace Avogadro

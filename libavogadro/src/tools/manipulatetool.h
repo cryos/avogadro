@@ -114,14 +114,12 @@ namespace Avogadro {
       bool undone;
   };
 
-  class ManipulateToolFactory : public QObject, public ToolFactory
-    {
-      Q_OBJECT
-      Q_INTERFACES(Avogadro::ToolFactory)
-
-      public:
-        Tool *createInstance(QObject *parent = 0) { return new ManipulateTool(parent); }
-    };
+  class ManipulateToolFactory : public QObject, public PluginFactory
+  {
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_TOOL_FACTORY(ManipulateTool, tr("Manipulate Tool"), tr("Tool for manipulating atoms (moving atoms)."))
+  };
 
 } // end namespace Avogadro
 

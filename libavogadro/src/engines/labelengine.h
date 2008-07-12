@@ -97,12 +97,11 @@ namespace Avogadro {
   };
 
   //! Generates instances of our LabelEngine class
-  class LabelEngineFactory : public QObject, public EngineFactory
+  class LabelEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-
-    AVOGADRO_ENGINE_FACTORY(LabelEngine)
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(LabelEngine, tr("Render various atom labels."))
   };
 
 } // end namespace Avogadro

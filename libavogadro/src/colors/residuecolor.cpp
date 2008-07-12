@@ -24,13 +24,28 @@
 
 #include "residuecolor.h"
 #include <config.h>
-
 #include <avogadro/primitive.h>
+#include <QtPlugin>
 
 using namespace OpenBabel;
 
 namespace Avogadro {
-
+  
+  ResidueColorPlugin::ResidueColorPlugin(QObject *parent) : ColorPlugin(parent)
+  {
+    m_color = new ResidueColor();
+  }
+  
+  ResidueColorPlugin::~ResidueColorPlugin()
+  {
+    delete m_color;
+  }
+  
+  Color* ResidueColorPlugin::color() const
+  {
+    return m_color;
+  }
+ 
   ResidueColor::ResidueColor()
   { }
 
@@ -168,3 +183,7 @@ namespace Avogadro {
   }
 
 }
+
+#include "residuecolor.moc"
+
+Q_EXPORT_PLUGIN2(residuecolor, Avogadro::ResidueColorFactory)

@@ -24,6 +24,14 @@ add_library(labelengine MODULE ${labelengine_SRCS} ${labelengine_UIS} )
 target_link_libraries(labelengine ${LINK_LIBS})
 install(TARGETS labelengine DESTINATION ${DESTINATION_DIR})
 
+# overlay engine
+set(overlayengine_SRCS overlayengine.cpp)
+qt4_wrap_ui(overlayengine_UIS overlaysettingswidget.ui)
+qt4_automoc(${overlayengine_SRCS})
+add_library(overlayengine MODULE ${overlayengine_SRCS} ${overlayengine_UIS} )
+target_link_libraries(overlayengine ${LINK_LIBS})
+install(TARGETS overlayengine DESTINATION ${DESTINATION_DIR})
+
 # wireframe
 set(wireengine_SRCS wireengine.cpp)
 qt4_automoc(${wireengine_SRCS})

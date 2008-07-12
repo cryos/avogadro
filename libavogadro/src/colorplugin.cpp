@@ -1,7 +1,7 @@
 /**********************************************************************
-  ResidueColor - Class for coloring based on residues (if available)
+  ColorPlugin - Avogadro Color Interface
 
-  Copyright (C) 2007 Geoffrey R. Hutchison
+  Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -22,36 +22,30 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef RESIDUECOLOR_H
-#define RESIDUECOLOR_H
+#include "colorplugin.h"
+#include <config.h>
 
-#include <avogadro/global.h>
-#include <avogadro/color.h>
 
 namespace Avogadro {
 
-  /**
-   * @class ResidueColor residuecolor.h <avogadro/residuecolor.h>
-   * @brief Atom coloring based on residue for biomolecules
-   * @author Geoff Hutchison
-   *
-   * This class maps colors based on residues
-   * http://jmol.sourceforge.net/jscolors/
-   */
-  class A_EXPORT ResidueColor: public Color
+  ColorPlugin::ColorPlugin(QObject *parent) : Plugin(parent)
   {
-  public:
-    ResidueColor();
-    virtual ~ResidueColor();
+  }
 
-    /**
-     * Set the color based on the supplied Primitive
-     * If NULL is passed, do nothing */
-    virtual void set(const Primitive *);
+  ColorPlugin::~ColorPlugin()
+  {
+  }
 
-    virtual QString type() const { return "Color by Residue"; }
-  };
+  int ColorPlugin::type() const
+  { 
+    return Plugin::ColorType; 
+  }
+  
+  QString ColorPlugin::typeName() const
+  { 
+    return tr("Colors"); 
+  }
 
-}
+} // end namespace Avogadro
 
-#endif
+#include "colorplugin.moc"

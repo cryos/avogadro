@@ -173,11 +173,6 @@ namespace Avogadro {
      */
     virtual QString type() const { return "Virtual Base Class"; }
 
-    /**
-     * @return the widget for controlling settings for this color map
-     * or NULL if none exists. */
-    virtual QWidget *settingsWidget() { return NULL; }
-
   protected:
     /**
      * \var GLfloat m_red

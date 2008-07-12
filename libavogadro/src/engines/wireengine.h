@@ -105,11 +105,12 @@ namespace Avogadro {
   };
 
   //! Generates instances of our WireEngine class
-  class WireEngineFactory : public QObject, public EngineFactory
+  class WireEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(WireEngine)
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(WireEngine, 
+        tr("Render bonds as wires (lines), this display type is ideal for very large (bio)molecules."))
   };
 
 } // end namespace Avogadro

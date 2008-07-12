@@ -33,6 +33,8 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QAction>
+#include <QDockWidget>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -205,14 +207,7 @@ namespace Avogadro {
     if(m_widget)
     {
       QList<Primitive *> selectedAtoms;
-      /*
-      bool ok;
-      int element = QInputDialog::getInteger(qobject_cast<QWidget*>(parent()), 
-          tr("Select by element"), tr("Element number"), 6, 1, 103, 1, &ok);
       
-      if (!ok)
-        return;
-      */
       FOR_ATOMS_OF_MOL (atom, m_molecule) {
         if (atom->GetAtomicNum() == static_cast<unsigned int>(element))
           selectedAtoms.append(static_cast<Atom*>(m_molecule->GetAtom(atom->GetIdx())));
@@ -290,20 +285,27 @@ namespace Avogadro {
 
   void SelectExtension::namedSelections(GLWidget *widget)
   {
-    NamedSelectionView  *view  = new NamedSelectionView(widget);
-    NamedSelectionModel *model = new NamedSelectionModel(widget, this);
+    SelectTreeView  *view  = new SelectTreeView(widget);
+    SelectTreeModel *model = new SelectTreeModel(widget, this);
 
     view->setModel(model);
+    view->setSelectionBehavior(QAbstractItemView::SelectRows);
+    view->setSelectionMode(QAbstractItemView::SingleSelection);
     view->show();
+
   }
-  
-  NamedSelectionView::NamedSelectionView(GLWidget *widget, QWidget *parent) : QListView(parent), m_widget(widget)
+
+  ///////////////////////////////////
+  // tree view
+  ///////////////////////////////////  
+
+  SelectTreeView::SelectTreeView(GLWidget *widget, QWidget *parent) : QTreeView(parent), m_widget(widget)
   {
     QString title = tr("Selections");
     this->setWindowTitle(title);
   }
   
-  void NamedSelectionView::selectionChanged(const QItemSelection &selected, const QItemSelection &)
+  void SelectTreeView::selectionChanged(const QItemSelection &selected, const QItemSelection &)
   {
     QModelIndex index;
     QModelIndexList items = selected.indexes();
@@ -313,21 +315,57 @@ namespace Avogadro {
       if (!index.isValid())
         return;
     
-      if (index.row() >= m_widget->namedSelections().size())
-        return;
+      SelectTreeItem *item = static_cast<SelectTreeItem*>(index.internalPointer());
 
-      PrimitiveList primitives = m_widget->namedSelectionPrimitives(index.row());
+      if (!item)
+	return;
 
-      if (!primitives.size()) {
-        QMessageBox::warning( m_widget, tr( "Avogadro" ),
-        tr( "The selection items have been deleted." ));
+      PrimitiveList primitives;
+      if (item->type() == SelectTreeItemType::SelectionType) { 
+        if (index.row() >= m_widget->namedSelections().size())
+          return;
+
+        primitives = m_widget->namedSelectionPrimitives(index.row());
+
+        if (!primitives.size()) {
+          QMessageBox::warning( m_widget, tr( "Avogadro" ),
+          tr( "The selection items have been deleted." ));
+        }
+      } else if (item->type() == SelectTreeItemType::AtomType) {
+	unsigned int idx = item->data(1).toUInt(); // index is stored in column 1
+        if (idx > m_widget->molecule()->NumAtoms())
+          return;
+
+        Atom *atom = static_cast<Atom *>( m_widget->molecule()->GetAtom(idx) );
+	primitives.append(atom);
+      } else if (item->type() == SelectTreeItemType::ResidueType) {
+	unsigned int idx = item->data(1).toUInt(); // index is stored in column 1
+        if (idx > m_widget->molecule()->NumResidues())
+          return;
+    
+	OBResidue *res = m_widget->molecule()->GetResidue(idx);
+    	FOR_ATOMS_OF_RESIDUE (atom, res) {
+          primitives.append(static_cast<Atom*>( &*atom ));
+        }
+      } else if (item->type() == SelectTreeItemType::ChainType) {
+	char chain = item->data(1).toChar().toAscii(); // index is stored in column 1
+    
+    	FOR_RESIDUES_OF_MOL (res, m_widget->molecule()) {
+	  if (res->GetChain() == chain) {
+            FOR_ATOMS_OF_RESIDUE (atom, &*res) {
+              primitives.append(static_cast<Atom*>( &*atom ));
+	    }
+          }
+	}
+ 
       }
+
 
       m_widget->setSelected(primitives, true);
     }  
   }
   
-  void NamedSelectionView::hideEvent(QHideEvent *)
+  void SelectTreeView::hideEvent(QHideEvent *)
   {
     QAbstractItemModel *m_model = model();
     if (m_model)
@@ -335,6 +373,7 @@ namespace Avogadro {
 
     this->deleteLater();
   }
+
 
 } // end namespace Avogadro
 

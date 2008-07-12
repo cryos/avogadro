@@ -37,7 +37,6 @@ namespace Avogadro {
   class BSDYEngine : public Engine
   {
     Q_OBJECT
-
     AVOGADRO_ENGINE(tr("Ball and Stick"))
 
     public:
@@ -110,12 +109,11 @@ namespace Avogadro {
       }
   };
 
-  class BSDYEngineFactory : public QObject, public EngineFactory
+  class BSDYEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-
-    AVOGADRO_ENGINE_FACTORY(BSDYEngine)
+    Q_INTERFACES(Avogadro::PluginFactory) 
+    AVOGADRO_ENGINE_FACTORY(BSDYEngine, tr("Ball and stick display type."))
   };
 
 

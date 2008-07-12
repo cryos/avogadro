@@ -85,11 +85,11 @@ namespace Avogadro {
   };
 
   //! Generates instances of our AxesEngine class
-  class DipoleEngineFactory : public QObject, public EngineFactory
+  class DipoleEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(DipoleEngine)
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(DipoleEngine, tr("Render dipole moments."))
   };
 
 } // end namespace Avogadro

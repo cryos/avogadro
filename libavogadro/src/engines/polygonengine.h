@@ -62,11 +62,11 @@ namespace Avogadro {
     };
 
   //! Generates instances of our PolygonEngine class
-  class PolygonEngineFactory : public QObject, public EngineFactory
+  class PolygonEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(PolygonEngine)
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(PolygonEngine, tr("Render polygons."))
   };
 
 } // end namespace Avogadro

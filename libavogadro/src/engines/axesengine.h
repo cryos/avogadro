@@ -58,11 +58,11 @@ namespace Avogadro {
   };
 
   //! Generates instances of our AxesEngine class
-  class AxesEngineFactory : public QObject, public EngineFactory
+  class AxesEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(AxesEngine)
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(AxesEngine, tr("Render xyz axes at the origin."))
   };
 
 } // end namespace Avogadro

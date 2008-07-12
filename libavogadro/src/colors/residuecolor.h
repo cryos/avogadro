@@ -1,7 +1,6 @@
 /**********************************************************************
-  ElementColor - Default class for coloring atoms based on element
+  ResidueColor - Class for coloring based on residues (if available)
 
-  Copyright (C) 2006 Benoit Jacob
   Copyright (C) 2007 Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
@@ -23,34 +22,59 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef ELEMENTCOLOR_H
-#define ELEMENTCOLOR_H
+#ifndef RESIDUECOLOR_H
+#define RESIDUECOLOR_H
 
 #include <avogadro/global.h>
+#include <avogadro/plugin.h>
 #include <avogadro/color.h>
+#include <avogadro/colorplugin.h>
 
 namespace Avogadro {
 
   /**
-   * @class ElementColor elementcolor.h <avogadro/elementcolor.h>
-   * @brief Default atom color scheme based on periodic table
+   * @class ResidueColor residuecolor.h <avogadro/residuecolor.h>
+   * @brief Atom coloring based on residue for biomolecules
    * @author Geoff Hutchison
    *
-   * Map atom colors based on elements: Carbon = Grey, Oxygen = Red, etc.
+   * This class maps colors based on residues
+   * http://jmol.sourceforge.net/jscolors/
    */
-  class A_EXPORT ElementColor: public Color
+  class ResidueColor: public Color
   {
   public:
-    ElementColor();
-    virtual ~ElementColor();
+    ResidueColor();
+    virtual ~ResidueColor();
 
     /**
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
     virtual void set(const Primitive *);
-    
-    virtual QString type() const { return "Color by Element"; }
+
+    virtual QString type() const { return "Color by Residue"; }
   };
+
+  class ResidueColorPlugin : public ColorPlugin
+  {
+    public:
+      ResidueColorPlugin(QObject *parent = 0);
+      ~ResidueColorPlugin();
+
+      QString name() const { return(tr("Color by Residue")); }
+      Color* color() const;
+
+    private:
+      Color *m_color;
+  };
+
+  class ResidueColorFactory : public QObject, public PluginFactory
+  {
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_COLOR_FACTORY(ResidueColorPlugin, tr("Color by Residue"), 
+        tr("Color by Residue."))
+  };
+
 
 }
 

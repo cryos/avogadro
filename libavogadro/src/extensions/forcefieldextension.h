@@ -86,15 +86,6 @@ namespace Avogadro {
       Molecule *m_molecule;
   };
 
-  class ForceFieldExtensionFactory : public QObject, public ExtensionFactory
-  {
-    Q_OBJECT
-    Q_INTERFACES(Avogadro::ExtensionFactory)
-
-    public:
-    Extension *createInstance(QObject *parent = 0) { return new ForceFieldExtension(parent); }
-  };
-
   class ForceFieldThread : public QThread
   {
     Q_OBJECT
@@ -179,7 +170,19 @@ namespace Avogadro {
 
      mutable bool m_detached;
 
- };
+  };
+
+  class ForceFieldExtensionFactory : public QObject, public PluginFactory
+  {
+      Q_OBJECT
+      Q_INTERFACES(Avogadro::PluginFactory)
+
+    public:
+      Plugin *createInstance(QObject *parent = 0) { return new ForceFieldExtension(parent); }
+      int type() const { return Plugin::ExtensionType; };
+      QString name() const { return tr("Force Field Extension"); };
+      QString description() const { return tr("Extension for optimizing molecules and conformer generation."); };
+  };
 
 } // end namespace Avogadro
 

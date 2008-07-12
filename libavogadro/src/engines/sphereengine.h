@@ -103,11 +103,11 @@ namespace Avogadro {
   };
 
   //! Generates instances of our SphereEngine class
-  class SphereEngineFactory : public QObject, public EngineFactory
+  class SphereEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(SphereEngine)
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(SphereEngine, tr("Render Van der Waals spheres."))
   };
 
 } // end namespace Avogadro

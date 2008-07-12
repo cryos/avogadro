@@ -65,13 +65,16 @@ namespace Avogadro {
     Molecule *m_Molecule;
   };
 
-  class SuperCellBuilderFactory : public QObject, public ExtensionFactory
+  class SuperCellBuilderFactory : public QObject, public PluginFactory
   {
-    Q_OBJECT
-    Q_INTERFACES(Avogadro::ExtensionFactory)
+      Q_OBJECT
+      Q_INTERFACES(Avogadro::PluginFactory)
 
-  public:
-    Extension *createInstance(QObject *parent = 0) { return new SuperCellBuilder(parent); }
+    public:
+      Plugin *createInstance(QObject *parent = 0) { return new SuperCellBuilder(parent); }
+      int type() const { return Plugin::ExtensionType; };
+      QString name() const { return tr("Super Cell Builder"); };
+      QString description() const { return tr("Extension for building super cells."); };
   };
 
 } // end namespace Avogadro

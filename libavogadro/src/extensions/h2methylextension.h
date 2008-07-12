@@ -66,15 +66,6 @@ namespace Avogadro {
       Molecule *m_molecule;
   };
 
-  class H2MethylExtensionFactory : public QObject, public ExtensionFactory
-  {
-    Q_OBJECT
-    Q_INTERFACES(Avogadro::ExtensionFactory)
-
-    public:
-    Extension *createInstance(QObject *parent = 0) { return new H2MethylExtension(parent); }
-  };
-
   class H2MethylCommand : public QUndoCommand
   {
     public:
@@ -90,6 +81,20 @@ namespace Avogadro {
       Molecule m_moleculeCopy;
       PrimitiveList m_SelectedList;
   };
+
+  class H2MethylExtensionFactory : public QObject, public PluginFactory
+  {
+      Q_OBJECT
+      Q_INTERFACES(Avogadro::PluginFactory)
+
+    public:
+      Plugin *createInstance(QObject *parent = 0) { return new H2MethylExtension(parent); }
+      int type() const { return Plugin::ExtensionType; };
+      QString name() const { return tr("H2Methyl Extension"); };
+      QString description() const { return tr("Extension for transforming hydrogens to methyl groups."); };
+ 
+  };
+
 
 } // end namespace Avogadro
 

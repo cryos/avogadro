@@ -97,15 +97,6 @@ namespace Avogadro {
 
   };
 
-  class PythonExtensionFactory : public QObject, public ExtensionFactory
-  {
-    Q_OBJECT
-    Q_INTERFACES(Avogadro::ExtensionFactory)
-
-    public:
-      Extension *createInstance(QObject *parent = 0) { return new PythonExtension(parent); }
-  };
-
   class PythonTerminalLineEdit : public QLineEdit
   {
     Q_OBJECT
@@ -128,6 +119,18 @@ namespace Avogadro {
       PythonTerminalWidget( QWidget *parent = 0 );
       Ui::PythonTerminalWidget ui;
       PythonTerminalLineEdit * inputLine;
+  };
+
+  class PythonExtensionFactory : public QObject, public PluginFactory
+  {
+      Q_OBJECT
+      Q_INTERFACES(Avogadro::PluginFactory)
+
+    public:
+      Plugin *createInstance(QObject *parent = 0) { return new PythonExtension(parent); }
+      int type() const { return Plugin::ExtensionType; };
+      QString name() const { return tr("Python Extension"); };
+      QString description() const { return tr("Extension to handle python extension scripts."); };
   };
 
 } // end namespace Avogadro

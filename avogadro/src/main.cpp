@@ -34,6 +34,7 @@
 #include <iostream>
 
 #include <avogadro/global.h>
+#include <avogadro/pluginmanager.h>
 
 // Avogadro Includes
 #include "mainwindow.h"
@@ -135,6 +136,9 @@ int main(int argc, char *argv[])
     printHelp(arguments[0]);
     return 0;
   }
+
+  // load the plugins
+  pluginManager.loadPlugins();
 
   MainWindow *window = new MainWindow();
   if (arguments.size() > 1) {

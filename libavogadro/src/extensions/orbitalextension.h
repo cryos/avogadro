@@ -68,14 +68,17 @@ namespace Avogadro
 
   };
 
-  class OrbitalExtensionFactory : public QObject, public ExtensionFactory
+  class OrbitalExtensionFactory : public QObject, public PluginFactory
   {
-    Q_OBJECT
-    Q_INTERFACES(Avogadro::ExtensionFactory)
+      Q_OBJECT
+      Q_INTERFACES(Avogadro::PluginFactory)
 
     public:
-      Extension *createInstance(QObject *parent = 0)
-      { return new OrbitalExtension(parent); }
+      Plugin *createInstance(QObject *parent = 0) { return new OrbitalExtension(parent); }
+      int type() const { return Plugin::ExtensionType; };
+      QString name() const { return tr("Orbital Extension"); };
+      QString description() const { return tr("Extension for calculating orbitals."); };
+ 
   };
 
 } // End namespace Avogadro

@@ -28,6 +28,7 @@
 #include <avogadro/global.h>
 #include <avogadro/primitivelist.h>
 #include "painterdevice.h"
+#include "plugin.h"
 
 #include <QSettings>
 #include <QtPlugin>
@@ -35,16 +36,14 @@
 #define AVOGADRO_ENGINE(t) \
   public: \
     static QString staticType() { return t; } \
-    QString type() const { return staticType(); } \
-  private:
+    QString staticName() const { return staticType(); } \
 
-#define AVOGADRO_ENGINE_FACTORY(n) \
-    public: \
-      Engine *createInstance(QObject *parent = 0) { return new n(parent); } \
- \
-      QString className() { return n::staticMetaObject.className(); } \
-      QString type() { return n::staticType(); } \
-    private:
+#define AVOGADRO_ENGINE_FACTORY(c,d) \
+  public: \
+    Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
+    int type() const { return Plugin::EngineType; }; \
+    QString name() const { return c::staticType(); } \
+    QString description() const { return d; }; 
 
 namespace Avogadro {
 
@@ -63,7 +62,7 @@ namespace Avogadro {
    * \sa GLWidget::render()
    */
   class EnginePrivate;
-  class A_EXPORT Engine : public QObject
+  class A_EXPORT Engine : public Plugin
   {
     Q_OBJECT
 
@@ -92,6 +91,20 @@ namespace Avogadro {
        */
       virtual ~Engine();
 
+      /** 
+       * Plugin Type 
+       */
+      int type() const;
+ 
+      /** 
+       * Plugin Type Name (Engines)
+       */
+      QString typeName() const;
+      /**
+       * @return a string with the static name of the engine.
+       */
+      virtual QString staticName() const = 0;
+
       /**
        * @return the name of the engine.
        */
@@ -116,11 +129,6 @@ namespace Avogadro {
        * @return the flags for this engine.
        */
       virtual EngineFlags flags() const;
-
-      /**
-       * @return a string with the type of the engine.
-       */
-      virtual QString type() const = 0;
 
       /**
        * Render opaque elements.  This function is allowed to render
@@ -317,48 +325,9 @@ namespace Avogadro {
       EnginePrivate *const d;
   };
 
-  /**
-   * @class EngineFactory engine.h <avogadro/engine.h>
-   * @brief Generates new instances of the Engine class for which it is defined.
-   * @warning This function needs to be looked at again.  It was originally designed
-   * so that for a single thread we could have multiple rendering engines.  We have
-   * decided that each molecule will have it's own window which will be it's own thread.
-   * However, this style of plugin creation may still be needed as we might want to have
-   * multiple views of the same molecule.
-   *
-   * This class is used to generate new instances of the Engine class for which
-   * it is defined.
-   */
-  class A_EXPORT EngineFactory
-  {
-    public:
-      /**
-       * Destructor.
-       */
-      virtual ~EngineFactory() {}
-
-      /**
-       * @return pointer to a new instance of an Engine subclass object.
-       */
-      virtual Engine *createInstance(QObject *parent=0) = 0;
-
-      /**
-       * @return the name of the class.
-       */
-      virtual QString className() = 0;
-
-      /**
-       * @return the type of the engine instance.
-       */
-      virtual QString type() = 0;
-
-  };
-
-
 } // end namespace Avogadro
 
 Q_DECLARE_METATYPE(Avogadro::Engine*)
-Q_DECLARE_INTERFACE(Avogadro::EngineFactory, "net.sourceforge.avogadro.enginefactory/1.1")
 Q_DECLARE_OPERATORS_FOR_FLAGS(Avogadro::Engine::EngineFlags)
 
 #endif

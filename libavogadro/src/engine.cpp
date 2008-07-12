@@ -39,13 +39,23 @@ namespace Avogadro {
     QString description;
   };
 
-  Engine::Engine(QObject *parent) : QObject(parent), d(new EnginePrivate)
+  Engine::Engine(QObject *parent) : Plugin(parent), d(new EnginePrivate)
   {
   }
 
   Engine::~Engine()
   {
     delete d;
+  }
+
+  int Engine::type() const
+  { 
+    return Plugin::EngineType; 
+  }
+  
+  QString Engine::typeName() const
+  { 
+    return tr("Engines"); 
   }
 
   PrimitiveList Engine::primitives() const
@@ -120,7 +130,7 @@ namespace Avogadro {
 
   QString Engine::name() const
   {
-    if(d->name.isEmpty()) { return type(); }
+    if(d->name.isEmpty()) { return staticName(); }
     return d->name;
   }
 

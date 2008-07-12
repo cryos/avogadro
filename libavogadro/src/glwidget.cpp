@@ -35,7 +35,7 @@
 #include <avogadro/painterdevice.h>
 #include <avogadro/toolgroup.h>
 
-#include "elementcolor.h"
+//#include "elementcolor.h"
 
 // Include static engine headers
 #include "engines/bsdyengine.h"
@@ -204,7 +204,7 @@ namespace Avogadro {
 #endif
                         painter( 0 ),
                         map( 0),
-                        defaultMap( new ElementColor ),
+                        defaultMap( pluginManager.colorPlugins().at(0)->color() ), 
                         updateCache(true),
                         quickRender(false),
                         renderAxes(false),
@@ -212,14 +212,12 @@ namespace Avogadro {
                         dlistQuick(0), dlistOpaque(0), dlistTransparent(0),
                         pd(0)
     {
-      loadEngineFactories();
     }
 
     ~GLWidgetPrivate()
     {
       if ( selectBuf ) delete[] selectBuf;
       delete camera;
-      delete defaultMap;
 
       // free the display lists
       if (dlistQuick)
@@ -231,7 +229,6 @@ namespace Avogadro {
     }
 
     void updateListQuick();
-    static void loadEngineFactories();
 
     QList<Engine *>        engines;
 
@@ -293,16 +290,6 @@ namespace Avogadro {
       */
     GLPainterDevice *pd;
   };
-
-  void GLWidgetPrivate::loadEngineFactories()
-  {
-    static bool enginesLoaded = false;
-    if(!enginesLoaded)
-    {
-      pluginManager.loadEngineFactories();
-      enginesLoaded = true;
-    }
-  }
 
   void GLWidgetPrivate::updateListQuick()
   {
@@ -466,7 +453,7 @@ namespace Avogadro {
     }
     d->painter->incrementShare();
 
-    //setAutoFillBackground( false );
+    setAutoFillBackground( false );
     setSizePolicy( QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding );
     d->camera->setParent( this );
     setAutoBufferSwap( false );
@@ -1711,7 +1698,7 @@ namespace Avogadro {
       {
         settings.setArrayIndex(i);
         Engine *engine = d->engines.at(i);
-        settings.setValue("engineClass", engine->metaObject()->className());
+        settings.setValue("engineClass", engine->staticName());
         engine->writeSettings(settings);
       }
     settings.endArray();
@@ -1733,8 +1720,8 @@ namespace Avogadro {
 
         if(!engineClass.isEmpty() && pluginManager.engineClassFactory().contains(engineClass))
           {
-            EngineFactory *factory = pluginManager.engineClassFactory().value(engineClass);
-            Engine *engine = factory->createInstance(this);
+            PluginFactory *factory = pluginManager.engineClassFactory().value(engineClass);
+            Engine *engine = (Engine *) factory->createInstance(this);
             engine->readSettings(settings);
 
             // eventually settings will store which has what but
@@ -1764,9 +1751,9 @@ namespace Avogadro {
     foreach(Engine *engine, engines)
       delete engine;
 
-    foreach(EngineFactory *factory, pluginManager.engineFactories())
+    foreach(PluginFactory *factory, pluginManager.engineFactories())
       {
-        Engine *engine = factory->createInstance(this);
+        Engine *engine = (Engine *) factory->createInstance(this);
         if ( engine->name() == tr("Ball and Stick") ) {
           engine->setEnabled( true );
         }

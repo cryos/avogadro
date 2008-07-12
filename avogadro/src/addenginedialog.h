@@ -31,7 +31,7 @@ class QAbstractButton;
 namespace Avogadro {
 
   class Engine;
-  class EngineFactory;
+  class PluginFactory;
   class AddEngineDialog : public QDialog
   {
     Q_OBJECT
@@ -43,7 +43,7 @@ namespace Avogadro {
        * \return a new engine object or 0
        */
       static Engine * getEngine(QWidget *parent, 
-                                const QList<EngineFactory *> &engineFactories);
+                                const QList<PluginFactory *> &engineFactories);
 
       //! Add a new Engine type to the list
       void addType(const QString &type);

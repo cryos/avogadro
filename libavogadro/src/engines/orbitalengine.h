@@ -144,12 +144,11 @@ namespace Avogadro {
   };
 
   //! Generates instances of our OrbitalEngine class
-  class OrbitalEngineFactory : public QObject, public EngineFactory
+  class OrbitalEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::EngineFactory)
-    AVOGADRO_ENGINE_FACTORY(OrbitalEngine)
-
+    Q_INTERFACES(Avogadro::PluginFactory)
+    AVOGADRO_ENGINE_FACTORY(OrbitalEngine, tr("Render molecular orbitals."))
   };
 
 } // end namespace Avogadro

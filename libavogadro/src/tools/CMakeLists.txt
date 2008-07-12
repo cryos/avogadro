@@ -35,7 +35,7 @@ set(bondcentrictool_SRCS bondcentrictool.cpp skeletontree.cpp)
 qt4_add_resources(bondcentrictool_RC_SRCS bondcentrictool.qrc)
 qt4_automoc(${bondcentrictool_SRCS})
 add_library(bondcentrictool MODULE quaternion.cpp
-                            ${bondcentrictool_SRCS} ${bondcentrictool_RC_SRCS})
+    ${bondcentrictool_SRCS} ${bondcentrictool_RC_SRCS})
 target_link_libraries(bondcentrictool ${LINK_LIBS})
 install(TARGETS bondcentrictool DESTINATION ${DESTINATION_DIR})
 
@@ -53,7 +53,7 @@ set(selectrotatetool_SRCS selectrotatetool.cpp)
 qt4_add_resources(selectrotatetool_RC_SRCS selectrotatetool.qrc)
 qt4_automoc(${selectrotatetool_SRCS})
 add_library(selectrotatetool MODULE
-	${selectrotatetool_SRCS} ${selectrotatetool_RC_SRCS})
+    ${selectrotatetool_SRCS} ${selectrotatetool_RC_SRCS})
 target_link_libraries(selectrotatetool ${LINK_LIBS})
 install(TARGETS selectrotatetool DESTINATION ${DESTINATION_DIR})
 
@@ -62,7 +62,7 @@ set(autoopttool_SRCS autoopttool.cpp)
 qt4_add_resources(autoopttool_RC_SRCS autoopttool.qrc)
 qt4_automoc(${autoopttool_SRCS})
 add_library(autoopttool MODULE
-	${autoopttool_SRCS} ${autoopttool_RC_SRCS})
+    ${autoopttool_SRCS} ${autoopttool_RC_SRCS})
 target_link_libraries(autoopttool ${LINK_LIBS})
 install(TARGETS autoopttool DESTINATION ${DESTINATION_DIR})
 
@@ -71,7 +71,7 @@ set(navigatetool_SRCS navigatetool.cpp)
 qt4_add_resources(navigatetool_RC_SRCS navigatetool.qrc)
 qt4_automoc(${navigatetool_SRCS})
 add_library(navigatetool MODULE eyecandy.cpp
-	${navigatetool_SRCS} ${navigatetool_RC_SRCS})
+    ${navigatetool_SRCS} ${navigatetool_RC_SRCS})
 target_link_libraries(navigatetool ${LINK_LIBS})
 install(TARGETS navigatetool DESTINATION ${DESTINATION_DIR})
 
@@ -89,7 +89,7 @@ set(autorotatetool_SRCS autorotatetool.cpp)
 qt4_add_resources(autorotatetool_RC_SRCS autorotatetool.qrc)
 qt4_automoc(${autorotatetool_SRCS})
 add_library(autorotatetool MODULE ${autorotatetool_SRCS}
-  ${autorotatetool_RC_SRCS})
+    ${autorotatetool_RC_SRCS})
 target_link_libraries(autorotatetool ${LINK_LIBS})
 install(TARGETS autorotatetool DESTINATION ${DESTINATION_DIR})
 

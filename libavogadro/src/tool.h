@@ -26,9 +26,18 @@
 #define TOOL_H
 
 #include <avogadro/global.h>
+#include "plugin.h"
 
 #include <QSettings>
+#include <QtPlugin>
 #include <QWheelEvent>
+
+#define AVOGADRO_TOOL_FACTORY(c,n,d) \
+  public: \
+    Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
+    int type() const { return Plugin::ToolType; }; \
+    QString name() const { return n; }; \
+    QString description() const { return d; }; 
 
 class QAction;
 class QUndoCommand;
@@ -49,7 +58,7 @@ namespace Avogadro {
    * performed by the user on the GLWidget.
    */
   class ToolPrivate;
-  class A_EXPORT Tool : public QObject
+  class A_EXPORT Tool : public Plugin
   {
     Q_OBJECT
 
@@ -64,16 +73,16 @@ namespace Avogadro {
        */
       virtual ~Tool();
 
-      /**
-       * @return the name of the tool.
+      /** 
+       * Plugin Type 
        */
-      virtual QString name() const = 0;
-
-      /**
-       * @return a description of the tool.
+      int type() const;
+ 
+      /** 
+       * Plugin Type Name (Tools)
        */
-      virtual QString description() const;
-
+      QString typeName() const;
+ 
       /**
        * @return the QAction of the tool
        */
@@ -157,29 +166,6 @@ namespace Avogadro {
       ToolPrivate *const d;
   };
 
-  /**
-   * @class ToolFactory tool.h <avogadro/tool.h>
-   * @brief Generates new instances of the Tool class for which it is defined.
-   *
-   * Generates new instances of the Tool class for which it is defined.
-   */
-  class A_EXPORT ToolFactory
-  {
-    public:
-      /**
-       * Destructor.
-       */
-      virtual ~ToolFactory() {}
-
-      /**
-       * @return pointer to a new instance of an Engine subclass object.
-       */
-      virtual Tool *createInstance(QObject *parent=0) = 0;
-  };
-
 } // end namespace Avogadro
-
-Q_DECLARE_METATYPE(Avogadro::Tool*)
-Q_DECLARE_INTERFACE(Avogadro::ToolFactory, "net.sourceforge.avogadro.toolfactory/1.1")
 
 #endif
