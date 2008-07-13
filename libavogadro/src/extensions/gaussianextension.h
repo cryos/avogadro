@@ -67,13 +67,10 @@ namespace Avogadro
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new GaussianExtension(parent); }
-      int type() const { return Plugin::ExtensionType; };
-      QString name() const { return tr("Gaussian Extension"); };
-      QString description() const { return tr("Extension for creating input files for the Gaussian"
-          " quantum chemistry package."); };
+    AVOGADRO_EXTENSION_FACTORY(GaussianExtension,
+        tr("Gaussian Extension"),
+        tr("Extension for creating input files for the Gaussian"
+          " quantum chemistry package."))
  
   };
 

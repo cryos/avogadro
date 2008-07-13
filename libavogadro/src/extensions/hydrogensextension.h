@@ -96,11 +96,10 @@ namespace Avogadro {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
 
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new HydrogensExtension(parent); }
-      int type() const { return Plugin::ExtensionType; };
-      QString name() const { return tr("Hydrogens Extension"); };
-      QString description() const { return tr("Extension to add or delete hydrogens."); };
+      AVOGADRO_EXTENSION_FACTORY(HydrogensExtension,
+          tr("Hydrogens Extension"),
+          tr("Extension to add or delete hydrogens."))
+
   };
 
 

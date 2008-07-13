@@ -49,7 +49,7 @@ namespace Avogadro {
   Engine *LabelEngine::clone() const
   {
     LabelEngine *engine = new LabelEngine(parent());
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->setAtomType(m_atomType);
     engine->setBondType(m_bondType);
     engine->setEnabled(isEnabled());

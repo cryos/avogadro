@@ -204,7 +204,7 @@ namespace Avogadro {
 #endif
                         painter( 0 ),
                         map( 0),
-                        defaultMap( pluginManager.colorPlugins().at(0)->color() ), 
+                        defaultMap( pluginManager.colors().at(0) ), 
                         updateCache(true),
                         quickRender(false),
                         renderAxes(false),
@@ -1698,7 +1698,7 @@ namespace Avogadro {
       {
         settings.setArrayIndex(i);
         Engine *engine = d->engines.at(i);
-        settings.setValue("engineClass", engine->staticName());
+        settings.setValue("engineClass", engine->name());
         engine->writeSettings(settings);
       }
     settings.endArray();

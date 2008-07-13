@@ -60,7 +60,7 @@ namespace Avogadro {
   {
     SphereEngine* engine = new SphereEngine(parent());
     
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->m_alpha = m_alpha;
     engine->setEnabled(isEnabled());
     return engine;

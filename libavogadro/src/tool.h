@@ -35,7 +35,7 @@
 #define AVOGADRO_TOOL_FACTORY(c,n,d) \
   public: \
     Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
-    int type() const { return Plugin::ToolType; }; \
+    Plugin::Type type() const { return Plugin::ToolType; }; \
     QString name() const { return n; }; \
     QString description() const { return d; }; 
 
@@ -58,7 +58,7 @@ namespace Avogadro {
    * performed by the user on the GLWidget.
    */
   class ToolPrivate;
-  class A_EXPORT Tool : public Plugin
+  class A_EXPORT Tool : public QObject, public Plugin
   {
     Q_OBJECT
 
@@ -76,7 +76,7 @@ namespace Avogadro {
       /** 
        * Plugin Type 
        */
-      int type() const;
+      Plugin::Type type() const;
  
       /** 
        * Plugin Type Name (Tools)

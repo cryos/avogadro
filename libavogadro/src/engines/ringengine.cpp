@@ -55,7 +55,7 @@ namespace Avogadro{
   Engine *RingEngine::clone() const
   {
     RingEngine *engine = new RingEngine(parent());
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->m_alpha = m_alpha;
     engine->setEnabled(isEnabled());
 

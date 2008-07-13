@@ -38,7 +38,7 @@ namespace Avogadro {
   };
   */
 
-  Plugin::Plugin(QObject *parent) : QObject(parent)/*, d(new PluginPrivate)*/
+  Plugin::Plugin() /*, d(new PluginPrivate)*/
   {
   }
 
@@ -63,5 +63,3 @@ namespace Avogadro {
 
 
 } // end namespace Avogadro
-
-#include "plugin.moc"

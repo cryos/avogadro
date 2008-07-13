@@ -94,11 +94,10 @@ namespace Avogadro {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
 
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new SelectExtension(parent); }
-      int type() const { return Plugin::ExtensionType; };
-      QString name() const { return tr("Select Extension"); };
-      QString description() const { return tr("Extension with various select actions."); };
+    AVOGADRO_EXTENSION_FACTORY(SelectExtension,
+      tr("Select Extension"),
+      tr("Extension with various select actions."))
+
   };
 
 

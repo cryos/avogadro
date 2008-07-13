@@ -49,7 +49,7 @@ namespace Avogadro {
   Engine *OverlayEngine::clone() const
   {
     OverlayEngine *engine = new OverlayEngine(parent());
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->setEnabled(isEnabled());
 
     return engine;

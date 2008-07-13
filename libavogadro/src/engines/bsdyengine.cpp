@@ -91,7 +91,7 @@ namespace Avogadro
   Engine *BSDYEngine::clone() const
   {
     BSDYEngine *engine = new BSDYEngine(parent());
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->m_atomRadiusPercentage = m_atomRadiusPercentage;
     engine->m_bondRadius = m_bondRadius;
     engine->m_showMulti = m_showMulti;

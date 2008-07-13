@@ -29,7 +29,6 @@
 #include <avogadro/global.h>
 #include <avogadro/plugin.h>
 #include <avogadro/color.h>
-#include <avogadro/colorplugin.h>
 
 namespace Avogadro {
 
@@ -51,27 +50,27 @@ namespace Avogadro {
      * If NULL is passed, do nothing */
     void set(const Primitive *);
     
-    QString type() const { return "Color by Element"; }
+    QString name() const { return "Color by Element"; }
   };
 
-  class ElementColorPlugin : public ColorPlugin
-  {
-    public:
-      ElementColorPlugin(QObject *parent = 0);
-      ~ElementColorPlugin();
+  /*class ElementColorPlugin : public ColorPlugin*/
+  /*{*/
+    /*public:*/
+      /*ElementColorPlugin(QObject *parent = 0);*/
+      /*~ElementColorPlugin();*/
 
-      QString name() const { return(tr("Color by Element")); }
-      Color* color() const;
+      /*QString name() const { return(tr("Color by Element")); }*/
+      /*Color* color() const;*/
 
-    private:
-      Color *m_color;
-  };
+    /*private:*/
+      /*Color *m_color;*/
+  /*};*/
 
   class ElementColorFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_COLOR_FACTORY(ElementColorPlugin, tr("Color by Element"), 
+    AVOGADRO_COLOR_FACTORY(ElementColor, tr("Color by Element"), 
         tr("Color by Element (carbon = grey, oxygen = red, ...)."))
   };
 

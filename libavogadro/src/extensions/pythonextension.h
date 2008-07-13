@@ -126,11 +126,9 @@ namespace Avogadro {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
 
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new PythonExtension(parent); }
-      int type() const { return Plugin::ExtensionType; };
-      QString name() const { return tr("Python Extension"); };
-      QString description() const { return tr("Extension to handle python extension scripts."); };
+      AVOGADRO_EXTENSION_FACTORY(PythonExtension,
+        tr("Python Extension"),
+        tr("Extension to handle python extension scripts."))
   };
 
 } // end namespace Avogadro

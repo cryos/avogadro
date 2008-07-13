@@ -31,20 +31,20 @@ using namespace OpenBabel;
 
 namespace Avogadro {
   
-  ResidueColorPlugin::ResidueColorPlugin(QObject *parent) : ColorPlugin(parent)
-  {
-    m_color = new ResidueColor();
-  }
+  //ResidueColorPlugin::ResidueColorPlugin(QObject *parent) : ColorPlugin(parent)
+  //{
+    //m_color = new ResidueColor();
+  //}
   
-  ResidueColorPlugin::~ResidueColorPlugin()
-  {
-    delete m_color;
-  }
+  //ResidueColorPlugin::~ResidueColorPlugin()
+  //{
+    //delete m_color;
+  //}
   
-  Color* ResidueColorPlugin::color() const
-  {
-    return m_color;
-  }
+  //Color* ResidueColorPlugin::color() const
+  //{
+    //return m_color;
+  //}
  
   ResidueColor::ResidueColor()
   { }

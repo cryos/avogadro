@@ -40,10 +40,8 @@ namespace Avogadro {
    * extensions, colors, ...
    */
   //class PluginPrivate;
-  class A_EXPORT Plugin : public QObject
+  class A_EXPORT Plugin
   {
-    Q_OBJECT
-
     public:
       enum Type 
       {
@@ -59,7 +57,7 @@ namespace Avogadro {
       /**
        * Constructor
        */
-      Plugin(QObject *parent = 0);
+      Plugin();
 
       /**
        * Destructor
@@ -69,11 +67,7 @@ namespace Avogadro {
       /**
        * @return the type of the plugin.
        */
-      virtual int type() const = 0;
-      /**
-       * @return the type name of the plugin.
-       */
-      virtual QString typeName() const = 0;
+      virtual Plugin::Type type() const = 0;
 
       /**
        * @return the name of the plugin.
@@ -111,7 +105,7 @@ namespace Avogadro {
       /**
        * @return the type of the plugin.
        */
-      virtual int type() const = 0;
+      virtual Plugin::Type type() const = 0;
 
       /**
        * @return the name of the plugin.

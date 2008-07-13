@@ -2024,7 +2024,7 @@ namespace Avogadro
           } else {
             newEngine->setPrimitives(d->glWidget->primitives());
           }
-          newEngine->setName(newEngine->name() + tr(" copy"));
+          newEngine->setAlias(newEngine->alias() + tr(" copy"));
           d->glWidget->addEngine(newEngine);
         }
         break;

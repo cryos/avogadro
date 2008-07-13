@@ -73,7 +73,7 @@ namespace Avogadro {
   Engine *OrbitalEngine::clone() const
   {
     OrbitalEngine *engine = new OrbitalEngine(parent());
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->setEnabled(isEnabled());
 
     return engine;

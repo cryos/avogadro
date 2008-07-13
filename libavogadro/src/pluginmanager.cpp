@@ -141,7 +141,7 @@ namespace Avogadro {
 
       static QList<Tool *> tools;
       static QList<Extension *> extensions;
-      static QList<ColorPlugin *> colors;
+      static QList<Color *> colors;
       
       static PluginDialog *dialog;
   };
@@ -152,7 +152,7 @@ namespace Avogadro {
   QHash<QString, PluginFactory *> PluginManagerPrivate::engineClassFactory;
   QList<Tool *> PluginManagerPrivate::tools;
   QList<Extension *> PluginManagerPrivate::extensions;
-  QList<ColorPlugin *> PluginManagerPrivate::colors;
+  QList<Color *> PluginManagerPrivate::colors;
   PluginDialog *PluginManagerPrivate::dialog;
 
   PluginManager::PluginManager(QObject *parent) : QObject(parent), d(new PluginManagerPrivate)
@@ -181,8 +181,8 @@ namespace Avogadro {
     PluginFactory *elementFactory = qobject_cast<PluginFactory *>(new ElementColorFactory);
     if (elementFactory) 
     {
-      ColorPlugin *colorPlugin = (ColorPlugin*) elementFactory->createInstance(this);
-      d->colors.append(colorPlugin);
+      Color *color = (Color*) elementFactory->createInstance(this);
+      d->colors.append(color);
     }
     else
       qDebug() << "Instantiation of the static element color plugin failed.";
@@ -324,8 +324,8 @@ namespace Avogadro {
             
             if (settings.value(factory->name(), true).toBool()) 
             {
-              ColorPlugin *colorPlugin = (ColorPlugin*) factory->createInstance(this);
-              d->colors.append(colorPlugin);
+              Color *color = (Color*) factory->createInstance(this);
+              d->colors.append(color);
               plugin->setEnabled(true);
             } 
             else
@@ -392,7 +392,7 @@ namespace Avogadro {
     return d->extensions;
   }
     
-  const QList<ColorPlugin *>& PluginManager::colorPlugins() const
+  const QList<Color *>& PluginManager::colors() const
   {
     return d->colors;
   }

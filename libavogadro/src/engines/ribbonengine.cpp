@@ -61,7 +61,7 @@ namespace Avogadro {
   Engine *RibbonEngine::clone() const
   {
     RibbonEngine *engine = new RibbonEngine(parent());
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->m_type = m_type;
     engine->m_radius = m_radius;
     engine->setUseNitrogens(m_useNitrogens);

@@ -27,9 +27,17 @@
 #define COLOR_H
 
 #include <avogadro/global.h>
+#include <avogadro/plugin.h>
 
 #include <QGLWidget> // for GLfloat
 #include <QColor> // for returning QColor
+
+#define AVOGADRO_COLOR_FACTORY(c,n,d) \
+  public: \
+    Plugin *createInstance(QObject *parent = 0) { Q_UNUSED(parent); return new c(); } \
+    Plugin::Type type() const { return Plugin::ColorType; }; \
+    QString name() const { return n; }; \
+    QString description() const { return d; }; 
 
 namespace Avogadro {
 
@@ -45,7 +53,7 @@ namespace Avogadro {
    * Color plugins are used to provide custom coloring for engines -- mapping atoms
    * and residues. Provide new plugins based on atomic or residue properties
    */
-  class A_EXPORT Color
+  class A_EXPORT Color : public Plugin
   {
   public:
     Color();
@@ -171,7 +179,7 @@ namespace Avogadro {
     /**
      * @return the type of the Color class.
      */
-    virtual QString type() const { return "Virtual Base Class"; }
+    virtual Plugin::Type type() const { return Plugin::ColorType; }
 
   protected:
     /**

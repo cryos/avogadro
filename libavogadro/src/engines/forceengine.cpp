@@ -49,7 +49,7 @@ namespace Avogadro {
   Engine *ForceEngine::clone() const
   {
     ForceEngine *engine = new ForceEngine(parent());
-    engine->setName(name());
+    engine->setAlias(alias());
     //engine->setWidth(m_width);
     //engine->setRadius(m_radius);
     //engine->setAngle(m_angle);

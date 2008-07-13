@@ -67,7 +67,7 @@ namespace Avogadro {
 
       // We should always be able to find the engine requested
       if (engine) {
-        engine->setName(dialog.nameText());
+        engine->setAlias(dialog.nameText());
         engine->setEnabled(true);
         engine->setDescription(dialog.descriptionText());
       }

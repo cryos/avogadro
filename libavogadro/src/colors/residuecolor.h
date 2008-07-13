@@ -28,7 +28,6 @@
 #include <avogadro/global.h>
 #include <avogadro/plugin.h>
 #include <avogadro/color.h>
-#include <avogadro/colorplugin.h>
 
 namespace Avogadro {
 
@@ -51,27 +50,28 @@ namespace Avogadro {
      * If NULL is passed, do nothing */
     virtual void set(const Primitive *);
 
-    virtual QString type() const { return "Color by Residue"; }
+    virtual QString name() const { return "Color by Residue"; }
   };
 
-  class ResidueColorPlugin : public ColorPlugin
-  {
-    public:
-      ResidueColorPlugin(QObject *parent = 0);
-      ~ResidueColorPlugin();
+  /*class ResidueColorPlugin : public ColorPlugin*/
+  /*{*/
+    /*public:*/
+      /*ResidueColorPlugin(QObject *parent = 0);*/
+      /*~ResidueColorPlugin();*/
 
-      QString name() const { return(tr("Color by Residue")); }
-      Color* color() const;
+      /*QString name() const { return(tr("Color by Residue")); }*/
+      /*Color* color() const;*/
 
-    private:
-      Color *m_color;
-  };
+    /*private:*/
+      /*Color *m_color;*/
+  /*};*/
 
   class ResidueColorFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_COLOR_FACTORY(ResidueColorPlugin, tr("Color by Residue"), 
+    AVOGADRO_COLOR_FACTORY(ResidueColor, 
+        tr("Color by Residue"), 
         tr("Color by Residue."))
   };
 

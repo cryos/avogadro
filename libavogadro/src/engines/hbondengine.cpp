@@ -51,7 +51,7 @@ namespace Avogadro {
   Engine *HBondEngine::clone() const
   {
     HBondEngine *engine = new HBondEngine(parent());
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->setWidth(m_width);
     engine->setRadius(m_radius);
     engine->setAngle(m_angle);

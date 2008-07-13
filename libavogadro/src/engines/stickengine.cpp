@@ -62,7 +62,7 @@ namespace Avogadro {
   {
     StickEngine* engine = new StickEngine(parent());
     
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->setEnabled(isEnabled());
 		engine->setRadius(m_radius * SCALING_FACTOR);
     return engine;

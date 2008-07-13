@@ -29,7 +29,7 @@
 #include <avogadro/engine.h>
 #include <avogadro/tool.h>
 #include <avogadro/extension.h>
-#include <avogadro/colorplugin.h>
+#include <avogadro/color.h>
 
 #include <QSettings>
 
@@ -145,7 +145,7 @@ namespace Avogadro {
     /**
      * Get the loaded color plugins
      */
-    const QList<ColorPlugin *>& colorPlugins() const;
+    const QList<Color *>& colors() const;
 
     /**
      * Write the settings of the PluginManager in order to save them to disk.

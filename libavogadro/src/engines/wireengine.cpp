@@ -52,7 +52,7 @@ namespace Avogadro {
   {
     WireEngine* engine = new WireEngine(parent());
     
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->setShowDots(m_showDots);
     engine->setShowMultipleBonds(m_showMulti);
     engine->setEnabled(isEnabled());

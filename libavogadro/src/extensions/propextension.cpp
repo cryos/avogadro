@@ -27,6 +27,8 @@
 #include <QAbstractTableModel>
 #include <QHeaderView>
 #include <QAction>
+#include <QDialog>
+#include <QVBoxLayout>
 
 using namespace std;
 using namespace OpenBabel;
@@ -203,24 +205,31 @@ namespace Avogadro
       view->show();
       break;
     case ConformerIndex: // conformers
+      QDialog *dialog = new QDialog();
+      QVBoxLayout *layout = new QVBoxLayout(dialog);
+      layout->setSpacing(0);
+      layout->setContentsMargins(0,0,0,0);
       // model will be deleted in PropertiesView::hideEvent using deleteLater().
-      model = new PropertiesModel(PropertiesModel::ConformerType);
+      model = new PropertiesModel(PropertiesModel::ConformerType, dialog);
       model->setMolecule( m_molecule );
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
-      view = new PropertiesView(PropertiesView::ConformerType);
+      view = new PropertiesView(PropertiesView::ConformerType, dialog);
       connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
       view->setMolecule( m_molecule );
       view->setWidget( widget );
       view->setModel( model );
       view->resize(180, 500);
       view->sortByColumn(0, Qt::AscendingOrder);
-      view->show();
+      layout->addWidget(view);
+      dialog->show();
+      // delete the dialog when we're done.
+      connect(dialog, SIGNAL(rejected()), dialog, SLOT(deleteLater()));
       break;
     }
 
     return undo;
   }
-  
+
   PropertiesView::PropertiesView(Type type, QWidget *parent) : QTableView(parent), m_molecule(NULL), m_widget(NULL)
   {
     m_type = type;

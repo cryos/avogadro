@@ -87,12 +87,10 @@ namespace Avogadro {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
 
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new H2MethylExtension(parent); }
-      int type() const { return Plugin::ExtensionType; };
-      QString name() const { return tr("H2Methyl Extension"); };
-      QString description() const { return tr("Extension for transforming hydrogens to methyl groups."); };
- 
+      AVOGADRO_EXTENSION_FACTORY(H2MethylExtension,
+          tr("H2Methyl Extension"),
+          tr("Extension for transforming hydrogens to methyl groups."))
+
   };
 
 

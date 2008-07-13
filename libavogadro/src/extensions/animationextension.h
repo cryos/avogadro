@@ -83,11 +83,7 @@ namespace Avogadro {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
 
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new AnimationExtension(parent); }
-      int type() const { return Plugin::ExtensionType; };
-      QString name() const { return tr("Animate Extension"); };
-      QString description() const { return tr("Extension for animating trajectories."); };
+      AVOGADRO_EXTENSION_FACTORY(AnimationExtension, tr("Animate Extension"), tr("Extension for animating trajectories."))
   };
 
 } // end namespace Avogadro

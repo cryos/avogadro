@@ -56,7 +56,7 @@ namespace Avogadro {
   {
     DipoleEngine* engine = new DipoleEngine(parent());
 
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->setEnabled(isEnabled());
     return engine;
   }

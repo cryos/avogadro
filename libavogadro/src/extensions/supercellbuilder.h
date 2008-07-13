@@ -70,11 +70,9 @@ namespace Avogadro {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
 
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new SuperCellBuilder(parent); }
-      int type() const { return Plugin::ExtensionType; };
-      QString name() const { return tr("Super Cell Builder"); };
-      QString description() const { return tr("Extension for building super cells."); };
+      AVOGADRO_EXTENSION_FACTORY(SuperCellBuilder,
+          tr("Super Cell Builder"),
+          tr("Extension for building super cells."))
   };
 
 } // end namespace Avogadro

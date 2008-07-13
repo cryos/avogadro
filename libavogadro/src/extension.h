@@ -35,7 +35,7 @@
 #define AVOGADRO_EXTENSION_FACTORY(c,n,d) \
   public: \
     Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
-    int type() const { return Plugin::ExtensionType; }; \
+    Plugin::Type type() const { return Plugin::ExtensionType; }; \
     QString name() const { return n; }; \
     QString description() const { return d; }; 
 
@@ -64,18 +64,18 @@ namespace Avogadro {
    * based on the required functionality of the extension and return
    * the command based on the action being peformed.
    */
-  class A_EXPORT Extension : public Plugin
+  class A_EXPORT Extension : public QObject, public Plugin
   {
     Q_OBJECT
 
     public:
-    Extension(QObject *parent) : Plugin(parent) {};
+    Extension(QObject *parent) : QObject(parent) {};
     virtual ~Extension() {};
 
     /** 
      * Plugin Type 
      */
-    int type() const;
+    Plugin::Type type() const;
 
     /** 
      * Plugin Type Name (Tools)

@@ -51,7 +51,7 @@ namespace Avogadro {
   {
     AxesEngine* engine = new AxesEngine(parent());
 
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->setEnabled(isEnabled());
     return engine;
   }

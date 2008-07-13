@@ -78,7 +78,7 @@
   <customwidget>
    <class>Avogadro::PluginListView</class>
    <extends>QListView</extends>
-   <header>pluginlistview.h</header>
+   <header>avogadro/pluginlistview.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

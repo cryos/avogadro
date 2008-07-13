@@ -80,7 +80,7 @@ namespace Avogadro {
   Engine *SurfaceEngine::clone() const
   {
     SurfaceEngine *engine = new SurfaceEngine(parent());
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->setEnabled(isEnabled());
 
     return engine;

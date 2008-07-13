@@ -35,14 +35,14 @@
 
 #define AVOGADRO_ENGINE(t) \
   public: \
-    static QString staticType() { return t; } \
-    QString staticName() const { return staticType(); } \
+    static QString staticName() { return t; } \
+    QString name() const { return t; } \
 
 #define AVOGADRO_ENGINE_FACTORY(c,d) \
   public: \
     Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
-    int type() const { return Plugin::EngineType; }; \
-    QString name() const { return c::staticType(); } \
+    Plugin::Type type() const { return Plugin::EngineType; }; \
+    QString name() const { return c::staticName(); } \
     QString description() const { return d; }; 
 
 namespace Avogadro {
@@ -62,7 +62,7 @@ namespace Avogadro {
    * \sa GLWidget::render()
    */
   class EnginePrivate;
-  class A_EXPORT Engine : public Plugin
+  class A_EXPORT Engine : public QObject, public Plugin
   {
     Q_OBJECT
 
@@ -94,26 +94,27 @@ namespace Avogadro {
       /** 
        * Plugin Type 
        */
-      int type() const;
+      Plugin::Type type() const;
  
       /** 
        * Plugin Type Name (Engines)
        */
       QString typeName() const;
-      /**
-       * @return a string with the static name of the engine.
-       */
-      virtual QString staticName() const = 0;
 
       /**
-       * @return the name of the engine.
+       * @return a string with the name of the engine.
        */
-      QString name() const;
+      virtual QString name() const = 0;
 
       /**
-       * @param name the new name for the engine instance.
+       * @return the alias of the engine.
        */
-      void setName(const QString &name);
+      QString alias() const;
+
+      /**
+       * @param alias the new alias for the engine instance.
+       */
+      void setAlias(const QString &alias);
 
       /**
        * @return engine description.

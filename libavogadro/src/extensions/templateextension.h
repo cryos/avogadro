@@ -62,8 +62,9 @@ namespace Avogadro {
     Q_OBJECT
     Q_INTERFACES(Avogadro::ExtensionFactory)
 
-    public:
-      Extension *createInstance(QObject *parent = 0) { return new TemplateExtension(parent); }
+    AVOGADRO_EXTENSION_FACTORY(TemplateExtension, 
+        tr("Template Extension"),
+        tr("Template Extension Example"));
   };
 
 } // end namespace Avogadro

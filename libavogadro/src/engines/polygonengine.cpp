@@ -44,7 +44,7 @@ namespace Avogadro{
   Engine *PolygonEngine::clone() const
   {
     PolygonEngine *engine = new PolygonEngine(parent());
-    engine->setName(name());
+    engine->setAlias(alias());
     engine->setEnabled(isEnabled());
 
     return engine;

@@ -99,7 +99,7 @@ namespace Avogadro {
     if(engine)
     {
       if(role == Qt::DisplayRole || role == Qt::EditRole) {
-          return engine->name();
+          return engine->alias();
       } else if ( role == Qt::CheckStateRole) {
           if(engine->isEnabled()) {
             return Qt::Checked;
@@ -132,7 +132,7 @@ namespace Avogadro {
       emit dataChanged(index, index);
       return true;
     } else if ( role == Qt::DisplayRole  || role == Qt::EditRole ) {
-      engine->setName(value.toString());
+      engine->setAlias(value.toString());
       emit dataChanged(index, index);
       return true;
     }

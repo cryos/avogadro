@@ -73,11 +73,9 @@ namespace Avogadro
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
 
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new OrbitalExtension(parent); }
-      int type() const { return Plugin::ExtensionType; };
-      QString name() const { return tr("Orbital Extension"); };
-      QString description() const { return tr("Extension for calculating orbitals."); };
+      AVOGADRO_EXTENSION_FACTORY(OrbitalExtension,
+          tr("Orbital Extension"),
+          tr("Extension for calculating orbitals."))
  
   };
 

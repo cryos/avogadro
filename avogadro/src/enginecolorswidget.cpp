@@ -45,9 +45,9 @@ namespace Avogadro {
   {
     ui.setupUi(this);
 
-    foreach (ColorPlugin *colorPlugin, pluginManager.colorPlugins())
+    foreach (Color *color, pluginManager.colors())
     {
-      ui.colorCombo->addItem(colorPlugin->name());
+      ui.colorCombo->addItem(color->name());
     }
 
     connect(ui.colorCombo, SIGNAL(currentIndexChanged(int)),
@@ -61,10 +61,10 @@ namespace Avogadro {
 
   void EngineColorsWidget::colorChanged(int index)
   {
-    ColorPlugin *colorPlugin = pluginManager.colorPlugins().at(index);
+    Color *color = pluginManager.colors().at(index);
 
-    if (colorPlugin)
-      d->engine->setColorMap(colorPlugin->color());
+    if (color)
+      d->engine->setColorMap(color);
   }
 
   void EngineColorsWidget::setEngine( Engine *engine )

@@ -26,7 +26,7 @@
 
 namespace Avogadro {
 
-  int Extension::type() const
+  Plugin::Type Extension::type() const
   { 
     return Plugin::ExtensionType; 
   }

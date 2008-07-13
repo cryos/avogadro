@@ -86,6 +86,7 @@ namespace Avogadro {
 */
       QList<QAction *> m_actions;
       Molecule *m_molecule;
+
   };
 
   class PropertiesView : public QTableView
@@ -121,12 +122,10 @@ namespace Avogadro {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
 
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new PropertiesExtension(parent); }
-      int type() const { return Plugin::ExtensionType; };
-      QString name() const { return tr("Properties Extension"); };
-      QString description() const { return tr("Extension with dialogs for displaying atom, bond, "
-          "angle and tosion properties. It also includes a cartesian coordinate editor."); };
+    AVOGADRO_EXTENSION_FACTORY(PropertiesExtension,
+        tr("Properties Extension"),
+      tr("Extension with dialogs for displaying atom, bond, "
+          "angle and tosion properties. It also includes a cartesian coordinate editor."))
  
   };
  

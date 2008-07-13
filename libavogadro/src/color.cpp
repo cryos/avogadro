@@ -131,7 +131,8 @@ namespace Avogadro {
   QString Color::name() const
   {
    if (m_name.isEmpty())
-     return type();
+     //return type();
+     return "BLEH";
     else
       return m_name;
   }

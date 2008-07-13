@@ -35,11 +35,11 @@ namespace Avogadro {
     Color *colorMap;
     bool enabled;
 
-    QString name;
+    QString alias;
     QString description;
   };
 
-  Engine::Engine(QObject *parent) : Plugin(parent), d(new EnginePrivate)
+  Engine::Engine(QObject *parent) : QObject(parent), d(new EnginePrivate)
   {
   }
 
@@ -48,7 +48,7 @@ namespace Avogadro {
     delete d;
   }
 
-  int Engine::type() const
+  Plugin::Type Engine::type() const
   { 
     return Plugin::EngineType; 
   }
@@ -123,15 +123,15 @@ namespace Avogadro {
     return d->colorMap;
   }
 
-  void Engine::setName(const QString &name)
+  void Engine::setAlias(const QString &alias)
   {
-    d->name = name;
+    d->alias = alias;
   }
 
-  QString Engine::name() const
+  QString Engine::alias() const
   {
-    if(d->name.isEmpty()) { return staticName(); }
-    return d->name;
+    if(d->alias.isEmpty()) { return name(); }
+    return d->alias;
   }
 
   void Engine::setDescription(const QString &description)
@@ -157,14 +157,14 @@ namespace Avogadro {
   void Engine::writeSettings(QSettings &settings) const
   {
     settings.setValue("enabled", isEnabled());
-    settings.setValue("name", name());
+    settings.setValue("alias", alias());
     settings.setValue("description", description());
   }
 
   void Engine::readSettings(QSettings &settings)
   {
     setEnabled(settings.value("enabled", false).toBool());
-    setName(settings.value("name", name()).toString());
+    setAlias(settings.value("alias", name()).toString());
     setDescription(settings.value("description", description()).toString());
   }
 }

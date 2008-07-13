@@ -177,11 +177,8 @@ namespace Avogadro {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
 
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new ForceFieldExtension(parent); }
-      int type() const { return Plugin::ExtensionType; };
-      QString name() const { return tr("Force Field Extension"); };
-      QString description() const { return tr("Extension for optimizing molecules and conformer generation."); };
+      AVOGADRO_EXTENSION_FACTORY(ForceFieldExtension, tr("Force Field Extension"), tr("Extension for optimizing molecules and conformer generation."))
+
   };
 
 } // end namespace Avogadro

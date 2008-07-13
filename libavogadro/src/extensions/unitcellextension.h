@@ -79,11 +79,9 @@ namespace Avogadro {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
 
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new UnitCellExtension(parent); }
-      int type() const { return Plugin::ExtensionType; };
-      QString name() const { return tr("Unit Cell Extension"); };
-      QString description() const { return tr("Extension for building unit cells."); };
+      AVOGADRO_EXTENSION_FACTORY(UnitCellExtension,
+          tr("Unit Cell Extension"),
+          tr("Extension for building unit cells."))
   };
 
 } // end namespace Avogadro
