@@ -1,3 +1,10 @@
+2008-08-06  Naomi Fox  <naomi.fox@gmail.com>
+
+	* libavogadro/src/extensions/linmorph* : LinMorph extension 
+	from animation branch.
+
+	* testfiles/tyr-33-conf* : Test conformations for LinMorph extension
+
 2008-07-12  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* avogadro/src/addenginedialog.*: Use new PluginFactory class.
