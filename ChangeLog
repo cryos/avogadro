@@ -1,3 +1,12 @@
+2008-08-08  Naomi Fox  <naomi.fox@gmail.com>
+	
+	* libavogadro/src/extensions/trajvideomaker.* : static functions for 
+	making a .avi of a trajectory.
+
+	* libavogadro/src/extensions/linmorph.* : fixed a bug with the total
+	number of frames not matching the number of conformations. also now
+	tell user where the video file they created is stored.
+
 2008-08-06  Naomi Fox  <naomi.fox@gmail.com>
 
 	* libavogadro/src/extensions/linmorph* : LinMorph extension 

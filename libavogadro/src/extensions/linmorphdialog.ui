@@ -237,6 +237,20 @@
      </item>
     </layout>
    </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2" >
+     <item>
+      <widget class="QLineEdit" name="movieFileLine" />
+     </item>
+     <item>
+      <widget class="QPushButton" name="saveMovieButton" >
+       <property name="text" >
+        <string>Save movie...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <resources>

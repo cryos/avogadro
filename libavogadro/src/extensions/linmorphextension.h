@@ -71,12 +71,12 @@ namespace Avogadro {
       QList<QAction *> m_actions;
       LinMorphDialog *m_linMorphDialog;
       QTimeLine *m_timeLine;
-      
-      //!the current frame
-      int m_frameCount;
 
+      // the total number of frames
+      int m_frameCount;
     
    protected Q_SLOTS:
+      void saveMovie(QString movieFileName);
       void saveGlSnapshots(QString prefix);
       void savePovSnapshots(QString prefix);
       void setDuration(int i);
@@ -89,26 +89,15 @@ namespace Avogadro {
       
   private:
       virtual void computeConformers(Molecule* conformer2Mol);
+
                   
   };
-
-  class AnimationExtensionFactory : public QObject, public PluginFactory
-  {
-      Q_OBJECT
-      Q_INTERFACES(Avogadro::PluginFactory)
-
-      
-  };
-
 
   class LinMorphExtensionFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::PluginFactory)
-
-
-    public:
-    AVOGADRO_EXTENSION_FACTORY(LinMorphExtension, tr("LinMorph Extension"), tr("Extension for animating trajectories as lin morph between two conformations with corresponding atom numbering."))
+    Q_INTERFACES(Avogadro::PluginFactory)  
+    AVOGADRO_EXTENSION_FACTORY(LinMorphExtension, tr("LinMorph Extension"), tr("Extension for producing LinMorph trajectories."))
   };
 
 }

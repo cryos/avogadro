@@ -27,7 +27,10 @@
 #include <QButtonGroup>
 #include <QModelIndex>
 
+
 #include "ui_linmorphdialog.h"
+
+
 
 namespace Avogadro
 {
@@ -49,14 +52,16 @@ namespace Avogadro
     private:
       Ui::LinMorphDialog ui;
       int m_frameCount;
-
+      
     public Q_SLOTS:
       void loadFile();
       void savePovSnapshots();
+      void saveMovie();
 
     Q_SIGNALS:
       void fileName(QString filename);
       void snapshotsPrefix(QString ssFullPrefixText);
+      void movieFileInfo(QString movieFileName);
       void sliderChanged(int i);
       void fpsChanged(int i);
       void frameCountChanged(int i);

@@ -1,6 +1,5 @@
 /**********************************************************************
   LinMorphDialog - dialog for lin morph extension
-
   Copyright (C) 2008 by Naomi Fox
 
   This file is part of the Avogadro molecular editor project.
@@ -47,9 +46,11 @@ namespace Avogadro {
     connect(ui.loopBox, SIGNAL(stateChanged(int)), this, SIGNAL(loopChanged(int)));
     connect(ui.numFramesSpin, SIGNAL(valueChanged(int)), this, SIGNAL(frameCountChanged(int)));    
     connect(ui.saveSnapshotsButton, SIGNAL(clicked()), this, SLOT(savePovSnapshots()));
+    connect(ui.saveMovieButton, SIGNAL(clicked()), this, SLOT(saveMovie()));
     connect(ui.playButton, SIGNAL(clicked()), this, SIGNAL(play()));
     connect(ui.pauseButton, SIGNAL(clicked()), this, SIGNAL(pause()));
     connect(ui.stopButton, SIGNAL(clicked()), this, SIGNAL(stop()));
+    
   }
 
   LinMorphDialog::~LinMorphDialog()
@@ -65,6 +66,28 @@ namespace Avogadro {
 				   tr("Any files (*.*)"));
     ui.fileEdit->setText(file); 
     emit fileName(file);
+  }
+
+
+  void LinMorphDialog::saveMovie()
+  {
+    QString sMovieFileName = QFileDialog::getSaveFileName(this, 
+							  tr("Save Movie File"),
+							  ui.movieFileLine->text(),
+							  tr("movie files (*.avi)"));
+
+    
+    if (!sMovieFileName.isEmpty() )  { 
+      if (!sMovieFileName.endsWith(".avi")){
+	QMessageBox::warning( NULL, tr( "Avogadro" ),
+			      tr( "Adding .avi extension" ));
+	sMovieFileName = sMovieFileName + ".avi";
+      }
+      ui.movieFileLine->setText(sMovieFileName);
+    }
+    
+    emit movieFileInfo(sMovieFileName);
+
   }
 
   void LinMorphDialog::savePovSnapshots()

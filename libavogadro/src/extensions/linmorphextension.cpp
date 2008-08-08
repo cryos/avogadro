@@ -20,7 +20,9 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+
 #include "linmorphextension.h"
+#include "trajvideomaker.h"
 
 #include <openbabel/obconversion.h>
 #include <avogadro/povpainter.h>
@@ -34,8 +36,11 @@ using namespace OpenBabel;
 
 namespace Avogadro
 {
-  LinMorphExtension::LinMorphExtension( QObject *parent ) :Extension( parent ), m_molecule(0), m_linMorphDialog(0), m_timeLine(0), m_frameCount(100) 
+  LinMorphExtension::LinMorphExtension( QObject *parent ) :Extension( parent ), m_molecule(0), m_secondMolecule(0), m_widget(0), m_linMorphDialog(0), m_timeLine(0), m_frameCount(0)
   {  
+    
+    setFrameCount(10);
+
     QAction *action = new QAction(this);
     action->setText(tr("Lin Morph..."));
     m_actions.append(action);
@@ -43,6 +48,7 @@ namespace Avogadro
     action = new QAction( this );
     action->setSeparator(true);
     m_actions.append(action);
+
   }
 
   LinMorphExtension::~LinMorphExtension()
@@ -157,6 +163,8 @@ namespace Avogadro
 		this, SLOT(loadFile(QString)));
 	connect(m_linMorphDialog, SIGNAL(snapshotsPrefix(QString)), 
 		this, SLOT(savePovSnapshots(QString)));
+	connect(m_linMorphDialog, SIGNAL(movieFileInfo(QString)), 
+		this, SLOT(saveMovie(QString)));
 	connect(m_linMorphDialog, SIGNAL(sliderChanged(int)), 
 		this, SLOT(setFrame(int)));
 	connect(m_linMorphDialog, SIGNAL(fpsChanged(int)), 
@@ -174,6 +182,7 @@ namespace Avogadro
 	connect(m_linMorphDialog, SIGNAL(frameCountChanged(int)), 
 		this, SLOT(setFrameCount(int)));
 	} 
+    setFrameCount(m_frameCount);
     m_linMorphDialog->show();
     return 0;
   } 
@@ -191,7 +200,8 @@ namespace Avogadro
   void LinMorphExtension::setFrameCount(int i)
   {
     m_frameCount = i;
-    m_linMorphDialog->setFrameCount(i);
+    if (m_linMorphDialog)
+      m_linMorphDialog->setFrameCount(i);
     if (m_secondMolecule)
       computeConformers(m_secondMolecule);
   }
@@ -243,6 +253,59 @@ namespace Avogadro
   }
 
 
+  //movieFileName is the full filename (with full path)
+  void LinMorphExtension::saveMovie(QString movieFileName) {
+        
+    if (movieFileName.isEmpty()) {
+      QMessageBox::warning( NULL, tr( "Avogadro" ),
+			    tr( "Must specify a valid .avi file name" ));
+      return;
+    }
+    
+    if (!movieFileName.endsWith(".avi")){
+      QMessageBox::warning( NULL, tr( "Avogadro" ),
+			    tr( "Must specify a valid .avi file name" ));
+      return;
+    }
+    
+    // use the current glWidge for things like camera
+    if (!m_widget) {
+      QMessageBox::warning( NULL, tr( "Avogadro" ),
+			    tr( "GL widget was not correctly initialized in order to save movie" ));
+      return;
+    }
+    
+    //first, split out the directory and filenames
+    QString dir, fileName, prefix;
+
+    int slashPos = movieFileName.lastIndexOf("/");
+    
+    if (slashPos < 0) {
+      QMessageBox::warning( NULL, tr( "Avogadro" ),
+			    tr( "Invalid movie filename.  Must include full directory path" ));
+      return;
+    }
+
+    dir = movieFileName.left(slashPos) + "/"; 
+    fileName = movieFileName.right(movieFileName.length() - (slashPos+1));
+    if (fileName.isEmpty()) {
+      QMessageBox::warning( NULL, tr( "Avogadro" ),
+			    tr( "Invalid movie filename.  Must include full directory path and name, ending with .avi" ));
+      return;
+    }
+    
+    //if (fileName.endsWith(".avi")) {
+    prefix = fileName.left(fileName.length() - 4);
+    
+
+    //Make the directory where the snapshots will be saved
+    QString snapshotsDir = dir + prefix + "/";
+    QString mkdirCommand = "mkdir " + snapshotsDir;
+    system(mkdirCommand.toStdString().c_str());
+
+    TrajVideoMaker::makeVideo(m_widget, snapshotsDir, movieFileName);
+  }
+    
   void LinMorphExtension::savePovSnapshots(QString prefix)
   {
     // use the current glWidge for things like camera
