@@ -20,6 +20,7 @@
  ***********************************************************************/
 
 #include "animationextension.h"
+#include "trajvideomaker.h"
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -33,7 +34,7 @@ using namespace OpenBabel;
 namespace Avogadro {
 
   AnimationExtension::AnimationExtension(QObject *parent) : Extension(parent), m_molecule(0),
-      m_animationDialog(0), m_timeLine(0), m_frameCount(0)
+							    m_animationDialog(0), m_timeLine(0), m_frameCount(0), m_widget(0)
   {
     QAction *action = new QAction(this);
     action->setText(tr("Animation..."));
@@ -74,8 +75,10 @@ namespace Avogadro {
     m_molecule = molecule;
   }
 
-  QUndoCommand* AnimationExtension::performAction(QAction *, GLWidget*)
+  QUndoCommand* AnimationExtension::performAction(QAction *, GLWidget* widget)
   {
+    m_widget = widget;
+
     if (!m_animationDialog)
     {
       m_timeLine = new QTimeLine;
@@ -90,6 +93,7 @@ namespace Avogadro {
       connect(m_animationDialog, SIGNAL(play()), m_timeLine, SLOT(start()));
       connect(m_animationDialog, SIGNAL(pause()), m_timeLine, SLOT(stop()));
       connect(m_animationDialog, SIGNAL(stop()), this, SLOT(stop()));
+      connect(m_animationDialog, SIGNAL(videoFileInfo(QString)), this, SLOT(saveVideo(QString)));
     } 
 
     m_animationDialog->show();
@@ -159,6 +163,58 @@ namespace Avogadro {
     m_timeLine->stop();
     m_timeLine->setCurrentTime(0);
     setFrame(1);
+  }
+
+  void AnimationExtension::saveVideo(QString videoFileName) 
+  {       
+    if (videoFileName.isEmpty()) {
+      QMessageBox::warning( NULL, tr( "Avogadro" ),
+			    tr( "Must specify a valid .avi file name" ));
+      return;
+    }
+    
+    if (!videoFileName.endsWith(".avi")){
+      QMessageBox::warning( NULL, tr( "Avogadro" ),
+			    tr( "Must specify a valid .avi file name" ));
+      return;
+    }
+    
+    if (!m_widget) {
+      QMessageBox::warning( NULL, tr( "Avogadro" ),
+			    tr( "GL widget was not correctly initialized in order to save video" ));
+      return;
+    }
+    
+    //first, split out the directory and filenames
+    QString dir, fileName, prefix;
+
+    int slashPos = videoFileName.lastIndexOf("/");
+    
+    if (slashPos < 0) {
+      QMessageBox::warning( NULL, tr( "Avogadro" ),
+			    tr( "Invalid video filename.  Must include full directory path" ));
+      return;
+    }
+
+    dir = videoFileName.left(slashPos) + "/"; 
+    fileName = videoFileName.right(videoFileName.length() - (slashPos+1));
+    if (fileName.isEmpty()) {
+      QMessageBox::warning( NULL, tr( "Avogadro" ),
+			    tr( "Invalid video filename.  Must include full directory path and name, ending with .avi" ));
+      return;
+    }
+    
+    //if (fileName.endsWith(".avi")) {
+    prefix = fileName.left(fileName.length() - 4);
+    
+
+    //Make the directory where the snapshots will be saved
+    QString snapshotsDir = dir + prefix + "/";
+    QString mkdirCommand = "mkdir " + snapshotsDir;
+    system(mkdirCommand.toStdString().c_str());
+
+    TrajVideoMaker::makeVideo(m_widget, snapshotsDir, videoFileName);
+
   }
 
 

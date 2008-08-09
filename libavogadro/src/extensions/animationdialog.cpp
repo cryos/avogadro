@@ -27,8 +27,9 @@
 
 #include <QFileDialog>
 #include <QFile>
-
 #include <QMessageBox>
+#include <QProgressDialog>
+
 
 #include <openbabel/plugin.h>
 
@@ -48,7 +49,8 @@ namespace Avogadro {
     connect(ui.playButton, SIGNAL(clicked()), this, SIGNAL(play()));
     connect(ui.pauseButton, SIGNAL(clicked()), this, SIGNAL(pause()));
     connect(ui.stopButton, SIGNAL(clicked()), this, SIGNAL(stop()));
-  }
+    connect(ui.saveVideoButton, SIGNAL(clicked()), this, SLOT(saveVideo()));
+      }
 
   AnimationDialog::~AnimationDialog()
   {
@@ -83,6 +85,28 @@ namespace Avogadro {
   int AnimationDialog::fps()
   {
     return ui.fpsSpin->value();
+  }
+
+
+  void AnimationDialog::saveVideo()
+  {
+    QString sVideoFileName = QFileDialog::getSaveFileName(this, 
+							  tr("Save Vidoe File"),
+							  ui.videoFileLine->text(),
+							  tr("video files (*.avi)"));
+
+    
+    if (!sVideoFileName.isEmpty() )  { 
+      if (!sVideoFileName.endsWith(".avi")){
+	QMessageBox::warning( NULL, tr( "Avogadro" ),
+			      tr( "Adding .avi extension" ));
+	sVideoFileName = sVideoFileName + ".avi";
+      }
+      ui.videoFileLine->setText(sVideoFileName);
+    }
+    
+    emit videoFileInfo(sVideoFileName);
+
   }
 
 }

@@ -160,8 +160,10 @@ if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
 	install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/scripts)
 endif(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
 
+
+
 ### Animation
-set(animationextension_SRCS animationextension.cpp animationdialog.cpp)
+set(animationextension_SRCS animationextension.cpp animationdialog.cpp trajvideomaker.cpp)
 qt4_add_resources(animationextension_RC_SRCS animation.qrc)
 qt4_wrap_ui(animationextension_UIS_H animationdialog.ui)
 qt4_automoc(${animationextension_SRCS})
@@ -171,7 +173,7 @@ target_link_libraries(animationextension ${LINK_LIBS})
 install(TARGETS animationextension DESTINATION ${DESTINATION_DIR})
 
 ### Lin Morph Animation
-set(linmorphextension_SRCS linmorphextension.cpp trajvideomaker.cpp )
+set(linmorphextension_SRCS linmorphextension.cpp linmorphdialog.cpp trajvideomaker.cpp)
 qt4_add_resources(linmorphextension_RC_SRCS linmorph.qrc)
 qt4_wrap_ui(linmorphdialog_UIS_H linmorphdialog.ui)
 qt4_automoc(${linmorphextension_SRCS})

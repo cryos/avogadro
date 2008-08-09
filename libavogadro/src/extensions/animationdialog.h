@@ -51,9 +51,11 @@ namespace Avogadro
 
     public Q_SLOTS:
       void loadFile();
+      void saveVideo();
 
     Q_SIGNALS:
       void fileName(QString filename);
+      void videoFileInfo(QString filename); 
       void sliderChanged(int i);
       void fpsChanged(int i);
       bool loopChanged(int state);

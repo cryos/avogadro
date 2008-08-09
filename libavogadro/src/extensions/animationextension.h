@@ -67,6 +67,9 @@ namespace Avogadro {
       Molecule *m_molecule;
       AnimationDialog *m_animationDialog;
       QTimeLine *m_timeLine;
+      
+      //only needed for rendering a video
+      GLWidget* m_widget;
 
       int m_frameCount;
     
@@ -76,6 +79,7 @@ namespace Avogadro {
       void setLoop(int state);
       void setFrame(int i);
       void stop();
+      void saveVideo(QString videoFileName);
   };
 
   class AnimationExtensionFactory : public QObject, public PluginFactory
