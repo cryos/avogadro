@@ -203,6 +203,8 @@ namespace Avogadro {
       void duplicateEngineClicked();
       void removeEngineClicked();
       void engineClicked(Engine *engine);
+
+      void centerStep();
   };
 
 } // end namespace Avogadro

@@ -54,6 +54,8 @@
 #include <openbabel/forcefield.h>
 
 #include <fstream>
+#include <algorithm>
+
 
 #include <QClipboard>
 #include <QCheckBox>
@@ -102,7 +104,8 @@ namespace Avogadro
       glWidget(0),
       centralLayout(0), centralTab(0), bottomFlat(0),
       toolGroup( 0 ),
-      settingsDialog( 0 ), initialized( false )
+      settingsDialog( 0 ), initialized( false ),
+      centerTimer(0)
     {}
 
       Molecule  *molecule;
@@ -145,6 +148,14 @@ namespace Avogadro
       bool initialized;
 
       bool tabbedTools;
+
+      double startH, startB, startA;
+      double deltaH, deltaB, deltaA;
+      double rotationAcceleration;
+      long rotationStart;
+      int rotationTime;
+
+      QTimer *centerTimer;
   };
 
   unsigned int getMainWindowCount()
@@ -1399,10 +1410,162 @@ namespace Avogadro
     writeSettings();
   }
 
+  void MainWindow::centerStep()
+  {
+    Camera *camera = d->glWidget->camera();
+    if(!camera)
+    {
+      d->centerTimer->deleteLater();
+      d->centerTimer = 0;
+      return;
+    }
+
+    Matrix3d rotation;
+
+    // calculate elapsed time
+    struct timeval tv;
+    gettimeofday(&tv,0);
+    long elapsedTime = tv.tv_sec*1000 + tv.tv_usec/1000 - d->rotationStart;
+
+    // make sure we don't divide by zero (0)
+    if(d->rotationTime != 0)
+    {
+
+      double x = (elapsedTime * (M_PI) / d->rotationTime);
+      double r = (cos(x-M_PI)+1)/2;
+
+      double curH, curB, curA;
+      curH = d->startH + d->deltaH * r;
+      curB = d->startB + d->deltaB * r;
+      curA = d->startA + d->deltaA * r;
+      double ch = cos(curH);
+      double sh = sin(curH);
+      double ca = cos(curA);
+      double sa = sin(curA);
+      double cb = cos(curB);
+      double sb = sin(curB);
+
+      rotation(0,0) = ch * ca;
+      rotation(0,1) = sh*sb - ch*sa*cb;
+      rotation(0,2) = ch*sa*sb + sh*cb;
+      rotation(1,0) = sa;
+      rotation(1,1) = ca*cb;
+      rotation(1,2) = -ca*sb;
+      rotation(2,0) = -sh*ca;
+      rotation(2,1) = sh*sa*cb + ch*sb;
+      rotation(2,2) = -sh*sa*sb + ch*cb;
+
+      camera->setModelview(rotation);
+    }
+
+    if(elapsedTime >= d->rotationTime)
+    {
+      d->centerTimer->deleteLater();
+      d->centerTimer = 0;
+    }
+
+    const Vector3d Zaxis(0,0,1);
+    camera->pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
+
+    camera->translate( - d->glWidget->center() );
+
+    d->glWidget->update();
+  }
+
   void MainWindow::centerView()
   {
-    d->glWidget->camera()->initializeViewPoint();
-    d->glWidget->update();
+    Camera * camera = d->glWidget->camera();
+    if(d->centerTimer || !camera)
+    {
+      return;
+    }
+
+    if( d->molecule->NumAtoms() == 0 )
+    {
+      camera->translate( d->glWidget->center() - Vector3d( 0, 0, 10 ) );
+      return;
+    }
+
+    // determine our goal matrix
+    Matrix3d goal;
+    //d->rotation = camera->modelview();
+    goal.setRow(2, -d->glWidget->normalVector());
+    goal.setRow(0, goal.row(2).ortho());
+    goal.setRow(1, goal.row(2).cross(goal.row(0)));
+
+    // convert to Euler (heading, attitude, bank)
+    // http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToEuler/index.htm
+    double endH, endA, endB;
+    if(goal(1,0) > 0.998) {
+      endH = atan2(goal(0,2), goal(2,2));
+      endA = M_PI_2;
+      endB = 0;
+    }
+    else if(goal(1,0) < -0.998)
+    {
+      endH = atan2(goal(0,2), goal(2,2));
+      endA = -M_PI_2;
+      endB = 0;
+    }
+    else
+    {
+      endH = atan2(goal(2,0), goal(0,0));
+      endB = atan2(goal(1,2), goal(1,1));
+      endA = asin(goal(1,0));
+    }
+
+    // convert our current modelview to Euler (as above)
+    if(camera->modelview().linearComponent()(1,0) > 0.998) {
+      d->startH = atan2(camera->modelview().linearComponent()(0,2), camera->modelview().linearComponent()(2,2));
+      d->startA = M_PI_2;
+      d->startB = 0;
+    }
+    else if(camera->modelview().linearComponent()(1,0) < -0.998)
+    {
+      d->startH = atan2(camera->modelview().linearComponent()(0,2), camera->modelview().linearComponent()(2,2));
+      d->startA = -M_PI_2;
+      d->startB = 0;
+    }
+    else
+    {
+      d->startH = atan2(-camera->modelview().linearComponent()(2,0), camera->modelview().linearComponent()(0,0));
+      d->startB = atan2(-camera->modelview().linearComponent()(1,2), camera->modelview().linearComponent()(1,1));
+      d->startA = asin(camera->modelview().linearComponent()(1,0));
+    }
+
+    // calculate the difference in Euler coordinates
+    d->deltaH = endH - d->startH;
+    d->deltaB = endB - d->startB;
+    d->deltaA = endA - d->startA;
+
+    // calculate the current time in milliseconds
+    struct timeval tv;
+    gettimeofday(&tv,0);
+    d->rotationStart = tv.tv_sec*1000 + tv.tv_usec/1000;
+
+    // use the max rotation to calculate our animation time
+    double m = max(abs(d->deltaH), max(abs(d->deltaB), abs(d->deltaA)));
+    d->rotationTime = m*300;
+
+    // make sure we need to rotate
+    if(d->rotationTime > 0)
+    {
+      d->centerTimer = new QTimer();
+      connect(d->centerTimer, SIGNAL(timeout()),
+          this, SLOT(centerStep()));
+      d->centerTimer->start(10);
+    }
+    else
+    {
+      camera->setModelview(goal);
+
+      const Vector3d Zaxis(0,0,1);
+      camera->pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
+
+      camera->translate( - d->glWidget->center() );
+
+    }
+
   }
 
   void MainWindow::fullScreen()
