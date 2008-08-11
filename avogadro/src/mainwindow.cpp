@@ -149,6 +149,8 @@ namespace Avogadro
 
       bool tabbedTools;
 
+      bool animationsEnabled;
+
       double startH, startB, startA;
       double deltaH, deltaB, deltaA;
       Vector3d deltaTrans, startTrans;
@@ -1043,6 +1045,16 @@ namespace Avogadro
       qApp->quit();
   }
 
+  void MainWindow::setAnimationsEnabled(bool animations)
+  {
+    d->animationsEnabled = animations;
+  }
+
+  bool MainWindow::animationsEnabled() const
+  {
+    return d->animationsEnabled;
+  }
+
   bool MainWindow::maybeSave()
   {
     if ( isWindowModified() ) {
@@ -1490,13 +1502,22 @@ namespace Avogadro
       return;
     }
 
+    if( !d->animationsEnabled )
+    {
+      camera->initializeViewPoint();
+      return;
+    }
+
     // determine our goal matrix
     Matrix3d goal;
     goal.loadIdentity();
     //d->rotation = camera->modelview();
-    goal.setRow(2, -d->glWidget->normalVector());
+    //goal.setRow(2, -d->glWidget->normalVector());
     //goal.setRow(1, Vector3d(0,1,0));goal.row(2).ortho());
     //goal.setRow(0, goal.row(2).cross(goal.row(1)));
+    goal.setRow(2, d->glWidget->normalVector());
+    goal.setRow(0, goal.row(2).ortho());
+    goal.setRow(1, goal.row(2).cross(goal.row(0)));
 
 
     // calculate the translation matrix
@@ -1824,6 +1845,8 @@ namespace Avogadro
     QSize size = settings.value( "size", QSize( 640, 480 ) ).toSize();
     resize( size );
 
+    d->animationsEnabled = settings.value( "animationsEnabled", false ).toBool();
+
     QByteArray ba = settings.value( "state" ).toByteArray();
     if(!ba.isEmpty())
     {
@@ -1880,6 +1903,7 @@ namespace Avogadro
 
     settings.setValue( "tabbedTools", d->tabbedTools );
     settings.setValue( "enginesDock", ui.enginesDock->saveGeometry());
+    settings.setValue( "animationsEnabled", d->animationsEnabled );
 
     // save the views
     settings.beginWriteArray("view");

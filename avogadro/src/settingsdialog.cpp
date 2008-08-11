@@ -62,6 +62,7 @@ namespace Avogadro {
   {
     m_mainWindow->setPainterQuality(ui.qualitySlider->value());
     m_mainWindow->setTabbedTools(ui.tabbedToolsCheck->isChecked());
+    m_mainWindow->setAnimationsEnabled(ui.animationsCheck->isChecked());
   }
 
   void SettingsDialog::loadValues()
@@ -69,6 +70,7 @@ namespace Avogadro {
     ui.qualitySlider->setValue(m_mainWindow->painterQuality());
     qualityChanged(m_mainWindow->painterQuality());
     ui.tabbedToolsCheck->setChecked(m_mainWindow->tabbedTools());
+    ui.animationsCheck->setChecked(m_mainWindow->animationsEnabled());
   }
 
   void SettingsDialog::qualityChanged(int value)

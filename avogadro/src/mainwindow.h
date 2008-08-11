@@ -121,6 +121,10 @@ namespace Avogadro {
       // Mac helper
       void macQuit();
 
+      // animations
+      void setAnimationsEnabled(bool animations);
+      bool animationsEnabled() const;
+
     Q_SIGNALS:
       void moleculeChanged(Molecule *);
       void enableEngineSettingsButton(bool);

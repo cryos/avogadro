@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>241</width>
-    <height>100</height>
+    <width>238</width>
+    <height>208</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -31,6 +31,9 @@
      </item>
      <item>
       <widget class="QSlider" name="qualitySlider" >
+       <property name="toolTip" >
+        <string>Set the global rendering quality.</string>
+       </property>
        <property name="maximum" >
         <number>4</number>
        </property>
@@ -77,8 +80,24 @@
    </item>
    <item>
     <widget class="QCheckBox" name="tabbedToolsCheck" >
+     <property name="toolTip" >
+      <string>Enable the tabbed tool layout.</string>
+     </property>
      <property name="text" >
       <string>Tabbed Tools</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="animationsCheck" >
+     <property name="toolTip" >
+      <string>Smooths animations of various functions where availabe.</string>
+     </property>
+     <property name="whatsThis" >
+      <string>Enables the use of transitional animations when performing automatic positioning of the GLWidget.</string>
+     </property>
+     <property name="text" >
+      <string>Smooth Transitions</string>
      </property>
     </widget>
    </item>
