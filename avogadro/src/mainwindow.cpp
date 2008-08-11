@@ -151,6 +151,7 @@ namespace Avogadro
 
       double startH, startB, startA;
       double deltaH, deltaB, deltaA;
+      Vector3d deltaTrans, startTrans;
       double rotationAcceleration;
       long rotationStart;
       int rotationTime;
@@ -1456,18 +1457,21 @@ namespace Avogadro
       rotation(2,2) = -sh*sa*sb + ch*cb;
 
       camera->setModelview(rotation);
+      camera->modelview().setTranslationVector(d->startTrans + d->deltaTrans * r);
     }
+
+    //const Vector3d Zaxis(0,0,1);
+    //camera->pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
+
+    //camera->translate( - d->glWidget->center() );
 
     if(elapsedTime >= d->rotationTime)
     {
       d->centerTimer->deleteLater();
       d->centerTimer = 0;
+      cout << "Final: " << camera->modelview().translationVector() << endl;
     }
 
-    const Vector3d Zaxis(0,0,1);
-    camera->pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
-
-    camera->translate( - d->glWidget->center() );
 
     d->glWidget->update();
   }
@@ -1488,10 +1492,26 @@ namespace Avogadro
 
     // determine our goal matrix
     Matrix3d goal;
+    goal.loadIdentity();
     //d->rotation = camera->modelview();
     goal.setRow(2, -d->glWidget->normalVector());
-    goal.setRow(0, goal.row(2).ortho());
-    goal.setRow(1, goal.row(2).cross(goal.row(0)));
+    //goal.setRow(1, Vector3d(0,1,0));goal.row(2).ortho());
+    //goal.setRow(0, goal.row(2).cross(goal.row(1)));
+
+
+    // calculate the translation matrix
+    MatrixP3d translationGoal(goal);
+    const Vector3d Zaxis(0,0,1);
+    translationGoal.pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
+
+    translationGoal.translate( - d->glWidget->center() );
+
+    cout << "Initial: " << camera->modelview().translationVector() << endl;
+    cout << "Calculated Final: " << translationGoal.translationVector() << endl;
+
+    d->startTrans = camera->modelview().translationVector();
+    d->deltaTrans = translationGoal.translationVector() - d->startTrans;
+
 
     // convert to Euler (heading, attitude, bank)
     // http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToEuler/index.htm
@@ -1547,6 +1567,11 @@ namespace Avogadro
     double m = max(abs(d->deltaH), max(abs(d->deltaB), abs(d->deltaA)));
     d->rotationTime = m*300;
 
+    if(d->rotationTime == 0 && d->deltaTrans.norm2() > 1)
+    {
+      d->rotationTime = 500;
+    }
+
     // make sure we need to rotate
     if(d->rotationTime > 0)
     {
@@ -1557,13 +1582,12 @@ namespace Avogadro
     }
     else
     {
-      camera->setModelview(goal);
+      //camera->setModelview(goal);
 
-      const Vector3d Zaxis(0,0,1);
-      camera->pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
+      //const Vector3d Zaxis(0,0,1);
+      //camera->pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
 
-      camera->translate( - d->glWidget->center() );
-
+      //camera->translate( - d->glWidget->center() );
     }
 
   }
