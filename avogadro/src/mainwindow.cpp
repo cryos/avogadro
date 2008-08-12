@@ -1440,6 +1440,11 @@ namespace Avogadro
     gettimeofday(&tv,0);
     long elapsedTime = tv.tv_sec*1000 + tv.tv_usec/1000 - d->rotationStart;
 
+    if( elapsedTime > d->rotationTime )
+    {
+      elapsedTime = d->rotationTime;
+    }
+
     // make sure we don't divide by zero (0)
     if(d->rotationTime != 0)
     {
@@ -1472,6 +1477,7 @@ namespace Avogadro
       camera->modelview().setTranslationVector(d->startTrans + d->deltaTrans * r);
     }
 
+
     //const Vector3d Zaxis(0,0,1);
     //camera->pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
 
@@ -1481,7 +1487,8 @@ namespace Avogadro
     {
       d->centerTimer->deleteLater();
       d->centerTimer = 0;
-      cout << "Final: " << camera->modelview().translationVector() << endl;
+      //cout << "Final Translation: " << camera->modelview().translationVector() << endl;
+      //cout << "Final Linear: " << camera->modelview().linearComponent() << endl << endl;
     }
 
 
@@ -1505,33 +1512,36 @@ namespace Avogadro
     if( !d->animationsEnabled )
     {
       camera->initializeViewPoint();
+      //cout << "Final Translation: " << camera->modelview().translationVector() << endl;
+      //cout << "Final Linear: " << camera->modelview().linearComponent() << endl << endl;
       return;
     }
 
     // determine our goal matrix
-    Matrix3d goal;
-    goal.loadIdentity();
+    Matrix3d linearGoal;
+    linearGoal.loadIdentity();
     //d->rotation = camera->modelview();
     //goal.setRow(2, -d->glWidget->normalVector());
     //goal.setRow(1, Vector3d(0,1,0));goal.row(2).ortho());
     //goal.setRow(0, goal.row(2).cross(goal.row(1)));
-    goal.setRow(2, d->glWidget->normalVector());
-    goal.setRow(0, goal.row(2).ortho());
-    goal.setRow(1, goal.row(2).cross(goal.row(0)));
+    linearGoal.setRow(2, d->glWidget->normalVector());
+    linearGoal.setRow(0, linearGoal.row(2).ortho());
+    linearGoal.setRow(1, linearGoal.row(2).cross(linearGoal.row(0)));
 
 
     // calculate the translation matrix
-    MatrixP3d translationGoal(goal);
+    MatrixP3d goal(linearGoal);
+
     const Vector3d Zaxis(0,0,1);
-    translationGoal.pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
+    goal.pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
 
-    translationGoal.translate( - d->glWidget->center() );
+    goal.translate( - d->glWidget->center() );
 
-    cout << "Initial: " << camera->modelview().translationVector() << endl;
-    cout << "Calculated Final: " << translationGoal.translationVector() << endl;
+    //cout << "Calculated Translation: " << goal.translationVector() << endl;
+    //cout << "Calculated Linear: " << goal.linearComponent() << endl << endl;
 
     d->startTrans = camera->modelview().translationVector();
-    d->deltaTrans = translationGoal.translationVector() - d->startTrans;
+    d->deltaTrans = goal.translationVector() - d->startTrans;
 
 
     // convert to Euler (heading, attitude, bank)
@@ -1550,28 +1560,28 @@ namespace Avogadro
     }
     else
     {
-      endH = atan2(goal(2,0), goal(0,0));
-      endB = atan2(goal(1,2), goal(1,1));
+      endH = atan2(-goal(2,0), goal(0,0));
+      endB = atan2(-goal(1,2), goal(1,1));
       endA = asin(goal(1,0));
     }
 
     // convert our current modelview to Euler (as above)
-    if(camera->modelview().linearComponent()(1,0) > 0.998) {
-      d->startH = atan2(camera->modelview().linearComponent()(0,2), camera->modelview().linearComponent()(2,2));
+    if(camera->modelview()(1,0) > 0.998) {
+      d->startH = atan2(camera->modelview()(0,2), camera->modelview()(2,2));
       d->startA = M_PI_2;
       d->startB = 0;
     }
-    else if(camera->modelview().linearComponent()(1,0) < -0.998)
+    else if(camera->modelview()(1,0) < -0.998)
     {
-      d->startH = atan2(camera->modelview().linearComponent()(0,2), camera->modelview().linearComponent()(2,2));
+      d->startH = atan2(camera->modelview()(0,2), camera->modelview()(2,2));
       d->startA = -M_PI_2;
       d->startB = 0;
     }
     else
     {
-      d->startH = atan2(-camera->modelview().linearComponent()(2,0), camera->modelview().linearComponent()(0,0));
-      d->startB = atan2(-camera->modelview().linearComponent()(1,2), camera->modelview().linearComponent()(1,1));
-      d->startA = asin(camera->modelview().linearComponent()(1,0));
+      d->startH = atan2(-camera->modelview()(2,0), camera->modelview()(0,0));
+      d->startB = atan2(-camera->modelview()(1,2), camera->modelview()(1,1));
+      d->startA = asin(camera->modelview()(1,0));
     }
 
     // calculate the difference in Euler coordinates
@@ -1588,7 +1598,7 @@ namespace Avogadro
     double m = max(abs(d->deltaH), max(abs(d->deltaB), abs(d->deltaA)));
     d->rotationTime = m*300;
 
-    if(d->rotationTime == 0 && d->deltaTrans.norm2() > 1)
+    if(d->rotationTime < 300 && d->deltaTrans.norm2() > 1)
     {
       d->rotationTime = 500;
     }
@@ -1600,15 +1610,6 @@ namespace Avogadro
       connect(d->centerTimer, SIGNAL(timeout()),
           this, SLOT(centerStep()));
       d->centerTimer->start(10);
-    }
-    else
-    {
-      //camera->setModelview(goal);
-
-      //const Vector3d Zaxis(0,0,1);
-      //camera->pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
-
-      //camera->translate( - d->glWidget->center() );
     }
 
   }

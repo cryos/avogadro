@@ -262,6 +262,12 @@ namespace Avogadro {
     foreach (const QString& path, pluginPaths)
     {
       QDir dir(path);
+#ifdef Q_WS_X11
+      QStringList dirFilters;
+      dirFilters << "*.so";
+      dir.setNameFilters(dirFilters);
+      dir.setFilter(QDir::Files | QDir::Readable);
+#endif
       qDebug() << "Searching for plugins in" << path;
       foreach (const QString& fileName, dir.entryList(QDir::Files))
       {

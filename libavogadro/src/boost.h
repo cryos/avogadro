@@ -37,10 +37,15 @@ void* extract_swig_wrapped_pointer(PyObject* obj)
 }
 
 
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(OBMol_AddBondOverloads, OBMol::AddBond, 3, 4)
+
 BOOST_PYTHON_MODULE(Avogadro) {
   class_<OpenBabel::OBBond>("OBBond");
   class_<Avogadro::Bond, bases<OpenBabel::OBBond>, boost::noncopyable>("Bond")
     .def("GetLength", &OBBond::GetLength)
+    .def("GetBeginAtomIdx", &OBBond::GetBeginAtomIdx)
+    .def("GetEndAtomIdx", &OBBond::GetEndAtomIdx)
+    .def("GetFlags", &OBBond::GetFlags)
     .def("GetBO", &OBBond::GetBO)
 		.def("SetBO", &OBBond::SetBO);
   class_<OpenBabel::OBAtom>("OBAtom");
@@ -62,6 +67,7 @@ BOOST_PYTHON_MODULE(Avogadro) {
     .def("GetY", &OBAtom::GetY)
     .def("GetZ", &OBAtom::GetZ)
     .def("GetPartialCharge", &OBAtom::GetPartialCharge);
+
   class_<OpenBabel::OBMol>("OBMol");
 
 // OVerloaded methods, so we give them aliases
@@ -72,9 +78,14 @@ BOOST_PYTHON_MODULE(Avogadro) {
 	bool (OBMol::*AddHydrogens)(bool, bool, double) = &OBMol::AddHydrogens;
 	OBBond * (OBMol::*GetBondIDX)(int)const = &OBMol::GetBond;
 	OBBond * (OBMol::*GetBondAtoms)(int, int)const = &OBMol::GetBond;
+    bool (OBMol::*AddBondValues)(int, int, int, int, int) = &OBMol::AddBond;
+
 
   class_<Avogadro::Molecule, bases<OpenBabel::OBMol> >("Molecule")
+    .def(init<Molecule *>())
     //.add_property("atoms", range(&OBMol::BeginAtoms(), &OBMol::EndAtoms()))
+    .def("BeginModify", &OBMol::BeginModify)
+    .def("EndModify", &OBMol::EndModify)
     .def("NumAtoms", &OBMol::NumAtoms)
     .def("NumBonds", &OBMol::NumBonds)
     .def("NumResidues", &OBMol::NumResidues)
@@ -96,6 +107,10 @@ BOOST_PYTHON_MODULE(Avogadro) {
     .def("AddPolarHydrogens", &OBMol::AddPolarHydrogens)
     .def("AddHydrogens", AddHydrogens)
     .def("DeleteHydrogens", DeleteHydrogens)
+    .def("deleteLater", &Molecule::deleteLater)
+    .def("radius", &Molecule::radius, return_value_policy<copy_const_reference>() )
+    .def("update", &Molecule::update)
+    .def("AddBond", AddBondValues, OBMol_AddBondOverloads())
     .def("GetBond", GetBondIDX, return_value_policy<reference_existing_object>()) //, return_internal_reference<1> >())
     .def("GetBond", GetBondAtoms, return_value_policy<reference_existing_object>()) //, return_internal_reference<1> >())
     .def("GetAtom", &OBMol::GetAtom, return_value_policy<reference_existing_object>()) //, return_internal_reference<1> >())
@@ -106,5 +121,6 @@ BOOST_PYTHON_MODULE(Avogadro) {
   converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBMol>());
   converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBAtom>());
 }
+
 
 #endif
