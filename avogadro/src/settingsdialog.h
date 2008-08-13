@@ -1,7 +1,7 @@
 /**********************************************************************
   SettingsDialog - Settings Dialog
 
-  Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2007-2008 Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>

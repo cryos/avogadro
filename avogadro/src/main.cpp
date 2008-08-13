@@ -2,7 +2,7 @@
   main.cpp - main program, initialization and launching
 
   Copyright (C) 2006 by Geoffrey R. Hutchison
-  Copyright (C) 2006,2007 by Donald Ephraim Curtis
+  Copyright (C) 2006-2008 by Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -136,9 +136,6 @@ int main(int argc, char *argv[])
     printHelp(arguments[0]);
     return 0;
   }
-
-  // load the plugins
-  pluginManager.loadPlugins();
 
   MainWindow *window = new MainWindow();
   if (arguments.size() > 1) {

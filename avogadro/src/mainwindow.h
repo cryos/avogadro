@@ -30,6 +30,7 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <avogadro/primitivelist.h>
+#include <QTabWidget>
 
 class QUndoStack;
 class QStackedLayout;
@@ -48,6 +49,7 @@ namespace Avogadro {
     public:
       MainWindow();
       MainWindow(const QString &fileName);
+      ~MainWindow();
 
       int painterQuality();
 
@@ -96,6 +98,9 @@ namespace Avogadro {
 
       bool tabbedTools() const;
       void setTabbedTools(bool tabbedTools);
+
+      QTabWidget::TabPosition toolsTabPosition() const;
+      void setToolsTabPosition(QTabWidget::TabPosition tabPosition);
 
       bool renderAxes() const;
       void setRenderAxes(bool render);

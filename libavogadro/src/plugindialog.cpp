@@ -68,7 +68,7 @@ namespace Avogadro {
       delete ui.listView->model();
     }
 
-    PluginItemModel *model = new PluginItemModel(index);
+    PluginItemModel *model = new PluginItemModel((Plugin::Type)index);
     ui.listView->setModel(model);
     ui.textEdit->setText("");
   }

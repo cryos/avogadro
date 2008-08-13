@@ -38,7 +38,7 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-      explicit PluginItemModel( int type, QObject *parent = 0 );
+      explicit PluginItemModel( Plugin::Type type, QObject *parent = 0 );
       QModelIndex parent( const QModelIndex & ) const { return QModelIndex(); }
       int rowCount( const QModelIndex & parent = QModelIndex() ) const;
       int columnCount( const QModelIndex & parent = QModelIndex() ) const;

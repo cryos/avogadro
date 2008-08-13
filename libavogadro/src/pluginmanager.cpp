@@ -1,6 +1,7 @@
 /**********************************************************************
   PluginManager - Class to handle dynamic loading/unloading of plugins
 
+  Copyright (C) 2008 Donald Ephraim Curtis
   Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
@@ -41,26 +42,38 @@ namespace Avogadro {
   class PluginItemPrivate
   {
     public:
-      int type;
       QString name;
       QString description;
       QString fileName;
       QString absoluteFilePath;
+      Plugin::Type type;
+      PluginFactory *factory;
       bool enabled;
   };
 
   PluginItem::PluginItem() : d(new PluginItemPrivate)
   {
-    d->type = -1;
+    d->type = Plugin::OtherType;
     d->enabled = false;
   }
   
-  PluginItem::PluginItem(int type, const QString &fileName, const QString &filePath) : d(new PluginItemPrivate)
+  PluginItem::PluginItem(
+      const QString &name, 
+      const QString &description,
+      Plugin::Type type, 
+      const QString &fileName, 
+      const QString &filePath, 
+      PluginFactory *factory,
+      bool enabled
+      ) : d(new PluginItemPrivate)
   {
+    d->name = name;
+    d->description = description;
     d->type = type;
     d->fileName = fileName;
     d->absoluteFilePath = filePath;
-    d->enabled = false;
+    d->enabled = enabled;
+    d->factory = factory;
   }
   
   PluginItem::~PluginItem()
@@ -98,7 +111,12 @@ namespace Avogadro {
     return d->enabled;
   }
 
-  void PluginItem::setType( int type )
+  PluginFactory *PluginItem::factory() const
+  {
+    return d->factory;
+  }
+
+  void PluginItem::setType( Plugin::Type type )
   {
     d->type = type;
   }
@@ -128,32 +146,36 @@ namespace Avogadro {
     d->enabled = enable;
   }
 
+  void PluginItem::setFactory( PluginFactory *factory)
+  {
+    d->factory = factory;
+  }
+
   class PluginManagerPrivate
   {
     public:
-      PluginManagerPrivate() {}
+      PluginManagerPrivate() : 
+        toolsLoaded(false), 
+        extensionsLoaded(false),
+        colorsLoaded(false) {}
       ~PluginManagerPrivate() {}
 
-      static QList<PluginItem *> plugins;
+      static QList<PluginItem *> items;
 
-      static QList<PluginFactory *> engineFactories;
-      static QHash<QString, PluginFactory *> engineClassFactory;
+      bool toolsLoaded;
+      QList<Tool *> tools;
+      bool extensionsLoaded;
+      QList<Extension *> extensions;
+      bool colorsLoaded;
+      QList<Color *> colors;
 
-      static QList<Tool *> tools;
-      static QList<Extension *> extensions;
-      static QList<Color *> colors;
-      
-      static PluginDialog *dialog;
+      PluginDialog *dialog;
+
+      static QVector<QList<PluginItem *> > &m_items();
+      static QVector<QList<PluginFactory *> > &m_enabledFactories();
+      static QVector<QList<PluginFactory *> > &m_disabledFactories();
+
   };
-  
-  // the static members
-  QList<PluginItem *> PluginManagerPrivate::plugins;
-  QList<PluginFactory *> PluginManagerPrivate::engineFactories;
-  QHash<QString, PluginFactory *> PluginManagerPrivate::engineClassFactory;
-  QList<Tool *> PluginManagerPrivate::tools;
-  QList<Extension *> PluginManagerPrivate::extensions;
-  QList<Color *> PluginManagerPrivate::colors;
-  PluginDialog *PluginManagerPrivate::dialog;
 
   PluginManager::PluginManager(QObject *parent) : QObject(parent), d(new PluginManagerPrivate)
   {
@@ -162,30 +184,154 @@ namespace Avogadro {
 
   PluginManager::~PluginManager()
   {
+    if(d->dialog) {
+      d->dialog->deleteLater();
+    }
+
+    QSettings settings;
+    writeSettings(settings);
     delete(d);
   }
 
-  void PluginManager::loadPlugins()
+  QList<Extension *> PluginManager::extensions(QObject *parent) const
   {
+    loadFactories();
+    if(d->extensionsLoaded)
+    {
+      return d->extensions;
+    }
+
+    foreach(PluginFactory *factory, factories(Plugin::ExtensionType))
+    {
+      Extension *extension = static_cast<Extension *>(factory->createInstance(parent));
+      d->extensions.append(extension);
+    }
+    
+    d->extensionsLoaded = true;
+
+    return d->extensions;
+  }
+
+  QList<Tool *> PluginManager::tools(QObject *parent) const
+  {
+    loadFactories();
+    if(d->toolsLoaded)
+    {
+      return d->tools;
+    }
+
+    foreach(PluginFactory *factory, factories(Plugin::ToolType))
+    {
+      Tool *tool = static_cast<Tool *>(factory->createInstance(parent));
+      d->tools.append(tool);
+    }
+
+    d->toolsLoaded = true;
+    return d->tools;
+  }
+
+  QList<Color *> PluginManager::colors(QObject *parent) const
+  {
+    loadFactories();
+    if(d->colorsLoaded)
+    {
+      return d->colors;
+    }
+
+    foreach(PluginFactory *factory, factories(Plugin::ColorType))
+    {
+      Color *color = static_cast<Color *>(factory->createInstance(parent));
+      d->colors.append(color);
+    }
+
+    d->colorsLoaded = true;
+    return d->colors;
+  }
+
+  PluginFactory * PluginManager::factory(const QString &name, Plugin::Type type)
+  {
+    loadFactories();
+    if(type < Plugin::TypeCount)
+    {
+      foreach(PluginFactory *factory, PluginManagerPrivate::m_enabledFactories()[type])
+      {
+        if(factory->name() == name)
+        {
+          return factory;
+        }
+      }
+    }
+
+    return 0;
+  }
+
+  QVector<QList<PluginItem *> > &PluginManagerPrivate::m_items()
+  {
+    static QVector<QList<PluginItem *> > items;
+
+    if(items.size() < Plugin::TypeCount)
+    {
+      items.resize(Plugin::TypeCount);
+    }
+
+    return items;
+  }
+
+  QVector<QList<PluginFactory *> > &PluginManagerPrivate::m_enabledFactories()
+  {
+    static QVector<QList<PluginFactory *> > factories;
+
+    if(factories.size() < Plugin::TypeCount)
+    {
+      factories.resize(Plugin::TypeCount);
+    }
+
+    return factories;
+  }
+
+  QVector<QList<PluginFactory *> > &PluginManagerPrivate::m_disabledFactories()
+  {
+    static QVector<QList<PluginFactory *> > factories;
+
+    if(factories.size() < Plugin::TypeCount)
+    {
+      factories.resize(Plugin::TypeCount);
+    }
+
+    return factories;
+  }
+
+  void PluginManager::loadFactories()
+  {
+    static bool factoriesLoaded = false;
+    if(factoriesLoaded)
+    {
+      return;
+    }
+
+    QVector<QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
+    QVector<QList<PluginFactory *> > &df = PluginManagerPrivate::m_disabledFactories();
+
     ////////////////////////////// 
     // load static plugins first
     //////////////////////////////
     PluginFactory *bsFactory = qobject_cast<PluginFactory *>(new BSDYEngineFactory);
     if (bsFactory) {
-      d->engineFactories.append(bsFactory);
-      d->engineClassFactory[bsFactory->name()] = bsFactory;
+      ef[bsFactory->type()].append(bsFactory);
+      //d->engineClassFactory[bsFactory->name()] = bsFactory;
     }
-    else
+    else {
       qDebug() << "Instantiation of the static ball and sticks plugin failed.";
+    }
 
     PluginFactory *elementFactory = qobject_cast<PluginFactory *>(new ElementColorFactory);
     if (elementFactory) 
     {
-      Color *color = (Color*) elementFactory->createInstance(this);
-      d->colors.append(color);
+      ef[elementFactory->type()].append(elementFactory);
     }
-    else
+    else {
       qDebug() << "Instantiation of the static element color plugin failed.";
+    }
 
     ////////////////////////////// 
     // setup the paths
@@ -258,7 +404,7 @@ namespace Avogadro {
     // load the plugins 
     //////////////////////////////
     QSettings settings;
-    settings.beginGroup("plugins");
+    settings.beginGroup("Plugins");
     foreach (const QString& path, pluginPaths)
     {
       QDir dir(path);
@@ -276,98 +422,40 @@ namespace Avogadro {
         PluginFactory *factory = qobject_cast<PluginFactory *>(instance);
         if (factory)
         {
-          PluginItem *plugin = new PluginItem(factory->type(), fileName, dir.absoluteFilePath(fileName));
- 
-          if (factory->type() == Plugin::EngineType)
+          settings.beginGroup(QString::number(factory->type()));
+          PluginItem *item = new PluginItem(factory->name(), factory->description(), factory->type(), fileName, dir.absoluteFilePath(fileName), factory);
+          if(settings.value(factory->name(), true).toBool())
           {
-            settings.beginGroup("engines");
-            
-            if (settings.value(factory->name(), true).toBool()) 
-            {
-              d->engineFactories.append(factory);
-              d->engineClassFactory[factory->name()] = factory;
-              plugin->setEnabled(true);
-            } 
-            else
-              plugin->setEnabled(false);
-
-            settings.endGroup();
+            ef[factory->type()].append(factory);
+            item->setEnabled(true);
           }
- 
-          if (factory->type() == Plugin::ToolType)
+          else
           {
-            settings.beginGroup("tools");
-            
-            if (settings.value(factory->name(), true).toBool()) 
-            {
-              Tool *tool = (Tool*) factory->createInstance(this);
-              d->tools.append(tool);
-              plugin->setEnabled(true);
-            } 
-            else
-              plugin->setEnabled(false);
-
-            settings.endGroup();
+            df[factory->type()].append(factory);
+            item->setEnabled(false);
           }
-          else if (factory->type() == Plugin::ExtensionType)
-          {
-            settings.beginGroup("extensions");
-            
-            if (settings.value(factory->name(), true).toBool()) 
-            {
-              Extension *extension = (Extension*) factory->createInstance(/*this*/);
-              d->extensions.append(extension);
-              plugin->setEnabled(true);
-            } 
-            else
-              plugin->setEnabled(false);
-
-            settings.endGroup();
-          }
-          else if (factory->type() == Plugin::ColorType)
-          {
-            settings.beginGroup("colors");
-            
-            if (settings.value(factory->name(), true).toBool()) 
-            {
-              Color *color = (Color*) factory->createInstance(this);
-              d->colors.append(color);
-              plugin->setEnabled(true);
-            } 
-            else
-              plugin->setEnabled(false);
-
-            settings.endGroup();
-          }
- 
-          if (plugin)
-          {
-            plugin->setName(factory->name());
-            plugin->setDescription(factory->description());
-            d->plugins.append(plugin);
-          }
+          PluginManagerPrivate::m_items()[factory->type()].append(item);
+          settings.endGroup();
         }
         else
+        {
           qDebug() << fileName << "failed to load. " << loader.errorString();
- 
+        }
       }
     }
     settings.endGroup();
+    factoriesLoaded = true;
   }
 
-  QList<PluginItem *> PluginManager::plugins( int type )
+  QList<PluginFactory *> PluginManager::factories( int type )
   {
-    QList<PluginItem *> list;
-
-    foreach (PluginItem *plugin, d->plugins)
+    if (type < PluginManagerPrivate::m_enabledFactories().size() )
     {
-      if (plugin->type() == type)
-      {
-        list.append(plugin);
-      }
+      loadFactories();
+      return PluginManagerPrivate::m_enabledFactories()[type];
     }
- 
-    return list;
+
+    return QList<PluginFactory *>();
   }
     
   void PluginManager::showDialog()
@@ -378,63 +466,28 @@ namespace Avogadro {
     d->dialog->show();
   }
   
-  const QList<PluginFactory *>& PluginManager::engineFactories() const
-  {
-    return d->engineFactories;
-  }
-    
-  const QHash<QString, PluginFactory *>& PluginManager::engineClassFactory() const
-  {
-    return d->engineClassFactory;
-  }
 
-  const QList<Tool *>& PluginManager::tools() const
+  QList<PluginItem *> PluginManager::pluginItems(Plugin::Type type)
   {
-    return d->tools;
+    return PluginManagerPrivate::m_items()[type];
   }
   
-  const QList<Extension *>& PluginManager::extensions() const
-  {
-    return d->extensions;
-  }
-    
-  const QList<Color *>& PluginManager::colors() const
-  {
-    return d->colors;
-  }
-  
-  void PluginManager::writeSettings(QSettings &settings) const
+  void PluginManager::writeSettings(QSettings &settings)
   {
     // write the engine's isEnabled()
-    settings.beginGroup("engines");
-    foreach(PluginItem *plugin, d->plugins) 
+    settings.beginGroup("Plugins");
+    for(int i=0; i<Plugin::TypeCount; i++)
     {
-      if (plugin->type() == Plugin::EngineType)
-        settings.setValue(plugin->name(), plugin->isEnabled());
+      settings.beginGroup(QString::number(i));
+      foreach(PluginItem *item, PluginManagerPrivate::m_items()[i])
+      {
+        settings.setValue(item->name(), item->isEnabled());
+      }
+      settings.endGroup();
     }
     settings.endGroup();
- 
-    // write the tool's isEnabled()
-    settings.beginGroup("tools");
-    foreach(PluginItem *plugin, d->plugins) 
-    {
-      if (plugin->type() == Plugin::ToolType)
-        settings.setValue(plugin->name(), plugin->isEnabled());
-    }
-    settings.endGroup();
-
-    // write the extension's isEnabled()
-    settings.beginGroup("extensions");
-    foreach(PluginItem *plugin, d->plugins) 
-    {
-      if (plugin->type() == Plugin::ExtensionType)
-        settings.setValue(plugin->name(), plugin->isEnabled());
-    }
-    settings.endGroup();
- 
   }
 
-  PluginManager pluginManager; // global instance
 }
 
 #include "pluginmanager.moc"

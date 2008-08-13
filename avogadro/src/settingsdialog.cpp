@@ -1,7 +1,7 @@
 /**********************************************************************
   SettingsDialog - Settings Dialog
 
-  Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2007-2008 Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -63,6 +63,7 @@ namespace Avogadro {
     m_mainWindow->setPainterQuality(ui.qualitySlider->value());
     m_mainWindow->setTabbedTools(ui.tabbedToolsCheck->isChecked());
     m_mainWindow->setAnimationsEnabled(ui.animationsCheck->isChecked());
+    m_mainWindow->setToolsTabPosition((QTabWidget::TabPosition)ui.tabPositionCombo->currentIndex());
   }
 
   void SettingsDialog::loadValues()
@@ -71,6 +72,7 @@ namespace Avogadro {
     qualityChanged(m_mainWindow->painterQuality());
     ui.tabbedToolsCheck->setChecked(m_mainWindow->tabbedTools());
     ui.animationsCheck->setChecked(m_mainWindow->animationsEnabled());
+    ui.tabPositionCombo->setCurrentIndex(m_mainWindow->toolsTabPosition());
   }
 
   void SettingsDialog::qualityChanged(int value)

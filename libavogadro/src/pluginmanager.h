@@ -1,6 +1,7 @@
 /**********************************************************************
   PluginManager - Class to handle dynamic loading/unloading of plugins
 
+  Copyright (C) 2008 Donald Ephraim Curtis
   Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
@@ -35,12 +36,15 @@
 
 namespace Avogadro {
 
+  class PluginFactory;
+
   class PluginItemPrivate;
   class PluginItem 
   {
     public:
       PluginItem();
-      PluginItem(int type, const QString &fileName, const QString &filePath);
+      PluginItem(int type, const QString &fileName, const QString &filePath, PluginFactory *factory);
+      PluginItem( const QString &name, const QString &description, Plugin::Type type, const QString &fileName, const QString &filePath, PluginFactory *factory = 0, bool enabled = true);
       ~PluginItem();
 
       /**
@@ -68,10 +72,12 @@ namespace Avogadro {
        */
       bool isEnabled() const;
 
+      PluginFactory *factory() const;
+
       /**
        * Set the plugin type (engine = 0, tool = 1, extension = 2)
        */
-      void setType( int type );
+      void setType( Plugin::Type type );
       /**
        * Set the plugin name (Draw, Stick, ...)
        */
@@ -93,6 +99,8 @@ namespace Avogadro {
        */
       void setEnabled( bool enable );
 
+      void setFactory( PluginFactory *factory );
+
     private:
       PluginItemPrivate * const d;
   };
@@ -107,11 +115,6 @@ namespace Avogadro {
     ~PluginManager();
 
     /**
-     * Get all the PluginItems for a given type
-     */
-    QList<PluginItem *> plugins( int type );
- 
-    /**
      * Find all plugins by looking through the search paths:
      *    /usr/(local/)lib/avogadro/engines
      *    /usr/(local/)lib/avogadro/tools
@@ -123,40 +126,33 @@ namespace Avogadro {
      *
      * WIN32: look in the applications working dir ( ./engines, ...)
      */ 
-    void loadPlugins();
+    static void loadFactories();
     
     /**
-     * Get the loaded engine factories
+     * Get all the PluginItems for a given type
      */
-    const QList<PluginFactory *>& engineFactories() const;
-    /**
-     * Get the QHash to translate an engine className to 
-     * a PluginFactory* pointer.
-     */
-    const QHash<QString, PluginFactory *>& engineClassFactory() const;
-    /**
-     * Get the loaded tools
-     */
-    const QList<Tool *>& tools() const;
-    /**
-     * Get the loaded extensions
-     */
-    const QList<Extension *>& extensions() const;
-    /**
-     * Get the loaded color plugins
-     */
-    const QList<Color *>& colors() const;
+    static QList<PluginFactory *> factories( int type );
 
+    static PluginFactory *factory(const QString &name, Plugin::Type type);
+    static QList<PluginItem *> pluginItems(Plugin::Type);
+
+    QList<Extension *> extensions(QObject *parent=0) const;
+    QList<Tool *> tools(QObject *parent=0) const;
+    QList<Color *> colors(QObject *parent=0) const;
+ 
     /**
      * Write the settings of the PluginManager in order to save them to disk.
      */
-    void writeSettings(QSettings &settings) const;
+    static void writeSettings(QSettings &settings);
+    /*static void readSettings(QSettings &settings);*/
+
   
   public Q_SLOTS:
     void showDialog();
  
   private:
     PluginManagerPrivate * const d;
+
   };
 
   A_DECL_EXPORT extern PluginManager pluginManager;

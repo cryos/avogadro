@@ -33,15 +33,15 @@ namespace Avogadro {
   {
     public:
       int type;
-      QList<PluginItem *> plugins;
+      QList<PluginItem *> pluginItems;
   };
 
-  PluginItemModel::PluginItemModel( int type, QObject *parent ) : 
+  PluginItemModel::PluginItemModel( Plugin::Type type, QObject *parent ) : 
       QAbstractItemModel(parent), 
       d(new PluginItemModelPrivate)
   {
     d->type = type;
-    d->plugins = pluginManager.plugins(type);
+    d->pluginItems = pluginManager.pluginItems(type);
   }
 
   int PluginItemModel::columnCount( const QModelIndex & ) const
@@ -53,7 +53,7 @@ namespace Avogadro {
   {
     Q_UNUSED(parent);
 
-    return d->plugins.size();
+    return d->pluginItems.size();
   }
 
   QVariant PluginItemModel::data ( const QModelIndex & index, int role ) const
@@ -103,9 +103,9 @@ namespace Avogadro {
 
   QModelIndex PluginItemModel::index ( int row, int column, const QModelIndex & parent ) const
   {
-    if(!parent.isValid() && row >=0 && row < d->plugins.size())
+    if(!parent.isValid() && row >=0 && row < d->pluginItems.size())
     {
-      PluginItem *plugin = d->plugins.at(row);
+      PluginItem *plugin = d->pluginItems.at(row);
       return createIndex(row, column, plugin);
     }
     

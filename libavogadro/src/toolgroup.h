@@ -1,7 +1,7 @@
 /**********************************************************************
   ToolGroup - GLWidget manager for Tools.
 
-  Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2007,2008 Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -26,6 +26,7 @@
 #define TOOLGROUP_H
 
 #include <QObject>
+#include <avogadro/plugin.h>
 #include <avogadro/tool.h>
 
 class QActionGroup;
@@ -65,7 +66,9 @@ namespace Avogadro {
        * You can set the AVOGADRO_PATH to designate a path
        * at runtime.
        */
-      void load();
+      void append(QList<Tool *> tools);
+
+      void append(Tool *tool);
 
       /**
        * @return the active tool

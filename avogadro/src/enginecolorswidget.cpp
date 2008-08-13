@@ -39,13 +39,15 @@ namespace Avogadro {
       EngineColorsWidgetPrivate() : engine(0) {};
 
       Engine *engine;
+      const PluginManager *pluginManager;
   };
 
-  EngineColorsWidget::EngineColorsWidget( QWidget *parent ) : QWidget(parent), d(new EngineColorsWidgetPrivate)
+  EngineColorsWidget::EngineColorsWidget( const PluginManager *pluginManager, QWidget *parent ) : QWidget(parent), d(new EngineColorsWidgetPrivate)
   {
     ui.setupUi(this);
+    d->pluginManager = pluginManager;
 
-    foreach (Color *color, pluginManager.colors())
+    foreach(Color *color, pluginManager->colors())
     {
       ui.colorCombo->addItem(color->name());
     }
@@ -61,7 +63,7 @@ namespace Avogadro {
 
   void EngineColorsWidget::colorChanged(int index)
   {
-    Color *color = pluginManager.colors().at(index);
+    Color *color = d->pluginManager->colors().at(index);
 
     if (color)
       d->engine->setColorMap(color);

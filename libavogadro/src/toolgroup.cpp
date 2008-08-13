@@ -1,7 +1,7 @@
 /**********************************************************************
   ToolGroup - GLWidget manager for Tools.
 
-  Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2007,2008 Donald Ephraim Curtis
   Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
@@ -37,6 +37,8 @@
 #include <QCoreApplication>
 #include <QMessageBox>
 
+#include <QObject>
+
 using namespace std;
 namespace Avogadro {
 
@@ -66,25 +68,39 @@ namespace Avogadro {
     delete(d);
   }
 
-  void ToolGroup::load()
+  void ToolGroup::append(QList<Tool *> tools)
   {
-    // get the tools from the plugin manager
-    d->tools = pluginManager.tools();
-    
-    foreach (Tool *tool, d->tools) {
-      d->activateActions->addAction(tool->activateAction());
-      connect(tool->activateAction(), SIGNAL(triggered(bool)),
-          this, SLOT(activateTool()));
+    foreach (Tool *tool, tools) {
+      if(tool)
+      {
+        d->tools.append(tool);
+
+        d->activateActions->addAction(tool->activateAction());
+        connect(tool->activateAction(), SIGNAL(triggered(bool)),
+            this, SLOT(activateTool()));
+      }
     }
 
     // sort the tools
     qSort(d->tools.begin(), d->tools.end(), toolGreaterThan);
-    
+
     // activate the first tool
     if(d->tools.count()) {
       setActiveTool(d->tools.at(0));
       d->activeTool->activateAction()->setChecked(true);
     }
+  }
+
+  void ToolGroup::append(Tool *tool)
+  {
+    d->tools.append(tool);
+
+    d->activateActions->addAction(tool->activateAction());
+    connect(tool->activateAction(), SIGNAL(triggered(bool)),
+        this, SLOT(activateTool()));
+
+    // sort the tools
+    qSort(d->tools.begin(), d->tools.end(), toolGreaterThan);
   }
 
   void ToolGroup::activateTool()

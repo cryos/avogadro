@@ -49,6 +49,7 @@
 #include <QTime>
 #include <QReadWriteLock>
 #include <QMessageBox>
+#include <QObject>
 
 #ifdef ENABLE_THREADED_GL
 #include <QWaitCondition>
@@ -203,8 +204,8 @@ namespace Avogadro {
                         initialized( false ),
 #endif
                         painter( 0 ),
-                        map( 0),
-                        defaultMap( pluginManager.colors().at(0) ), 
+                        colorMap( 0),
+                        defaultColorMap( 0), 
                         updateCache(true),
                         quickRender(false),
                         renderAxes(false),
@@ -274,8 +275,8 @@ namespace Avogadro {
 #endif
 
     GLPainter             *painter;
-    Color                 *map; // global color map
-    Color *defaultMap;  // default fall-back coloring (i.e., by elements)
+    Color                 *colorMap; // global color map
+    Color                 *defaultColorMap;  // default fall-back coloring (i.e., by elements)
     bool                   updateCache; // Update engine caches in quick render?
     bool                   quickRender; // Are we using quick render?
     bool                   renderAxes;  // Should the x, y, z axes be rendered?
@@ -577,17 +578,23 @@ namespace Avogadro {
     return d->background;
   }
 
-  void GLWidget::setColorMap(Color *map)
+  void GLWidget::setColorMap(Color *colorMap)
   {
-    d->map = map;
+    d->colorMap = colorMap;
   }
 
   Color *GLWidget::colorMap() const
   {
-    if (d->map)
-      return d->map;
-    else
-      return d->defaultMap;
+    if (d->colorMap) {
+      return d->colorMap;
+    }
+    else {
+      if(!d->defaultColorMap)
+      {
+        d->defaultColorMap = static_cast<Color*>(PluginManager::factories(Plugin::ColorType).at(0)->createInstance());
+      }
+      return d->defaultColorMap;
+    }
   }
 
   void GLWidget::setQuality(int quality)
@@ -1698,7 +1705,7 @@ namespace Avogadro {
       {
         settings.setArrayIndex(i);
         Engine *engine = d->engines.at(i);
-        settings.setValue("engineClass", engine->name());
+        settings.setValue("engineName", engine->name());
         engine->writeSettings(settings);
       }
     settings.endArray();
@@ -1714,52 +1721,55 @@ namespace Avogadro {
 
     int count = settings.beginReadArray("engines");
     for(int i=0; i<count; i++)
+    {
+      settings.setArrayIndex(i);
+      QString engineClass = settings.value("engineName", QString()).toString();
+
+      PluginFactory *factory;
+      if(!engineClass.isEmpty() && (factory = PluginManager::factory(engineClass, Plugin::EngineType)))
       {
-        settings.setArrayIndex(i);
-        QString engineClass = settings.value("engineClass", QString()).toString();
+        Engine *engine = static_cast<Engine *>(factory->createInstance(this));
+        engine->readSettings(settings);
 
-        if(!engineClass.isEmpty() && pluginManager.engineClassFactory().contains(engineClass))
-          {
-            PluginFactory *factory = pluginManager.engineClassFactory().value(engineClass);
-            Engine *engine = (Engine *) factory->createInstance(this);
-            engine->readSettings(settings);
+        // eventually settings will store which has what but
+        // for now we ignore this.  (will need this when we
+        // copy the selected primitives also).
+        if(!engine->primitives().size())
+        {
+          engine->setPrimitives(primitives());
+        }
 
-            // eventually settings will store which has what but
-            // for now we ignore this.  (will need this when we
-            // copy the selected primitives also).
-            if(!engine->primitives().size())
-              {
-                engine->setPrimitives(primitives());
-              }
-
-            addEngine(engine);
-          }
+        addEngine(engine);
       }
+    }
     settings.endArray();
 
     if(!d->engines.count())
-      {
-        loadDefaultEngines();
-      }
+    {
+      loadDefaultEngines();
+    }
   }
 
   void GLWidget::loadDefaultEngines()
   {
     QList<Engine *> engines = d->engines;
 
-    d->engines.clear();
     foreach(Engine *engine, engines)
+    {
       delete engine;
+    }
 
-    foreach(PluginFactory *factory, pluginManager.engineFactories())
-      {
-        Engine *engine = (Engine *) factory->createInstance(this);
-        if ( engine->name() == tr("Ball and Stick") ) {
-          engine->setEnabled( true );
-        }
-        engine->setPrimitives(primitives());
-        addEngine(engine);
+    d->engines.clear();
+
+    foreach(PluginFactory *factory, PluginManager::factories(Plugin::EngineType))
+    {
+      Engine *engine = static_cast<Engine *>(factory->createInstance(this));
+      if ( engine->name() == tr("Ball and Stick") ) {
+        engine->setEnabled( true );
       }
+      engine->setPrimitives(primitives());
+      addEngine(engine);
+    }
   }
 
   void GLWidget::invalidateDLs()

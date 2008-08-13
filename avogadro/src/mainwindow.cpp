@@ -148,6 +148,7 @@ namespace Avogadro
       bool initialized;
 
       bool tabbedTools;
+      QTabWidget::TabPosition toolsTabPosition;
 
       bool animationsEnabled;
 
@@ -159,6 +160,8 @@ namespace Avogadro
       int rotationTime;
 
       QTimer *centerTimer;
+
+      PluginManager pluginManager;
   };
 
   unsigned int getMainWindowCount()
@@ -181,6 +184,11 @@ namespace Avogadro
   {
     constructor();
     d->fileName = fileName;
+  }
+
+  MainWindow::~MainWindow()
+  {
+    delete(d);
   }
 
   void MainWindow::constructor()
@@ -212,7 +220,7 @@ namespace Avogadro
     d->undoStack = new QUndoStack( this );
 
     d->toolGroup = new ToolGroup( this );
-    d->toolGroup->load();
+    d->toolGroup->append(d->pluginManager.tools());
 
     ui.menuDocks->addAction( ui.toolsDock->toggleViewAction() );
 
@@ -346,6 +354,20 @@ namespace Avogadro
     QMainWindow::show();
   }
 
+  QTabWidget::TabPosition MainWindow::toolsTabPosition() const
+  {
+    return d->toolsTabPosition;
+  }
+
+  void MainWindow::setToolsTabPosition(QTabWidget::TabPosition tabPosition)
+  {
+    d->toolsTabPosition = tabPosition;
+    if(d->tabbedTools)
+    {
+      d->toolsTab->setTabPosition(d->toolsTabPosition);
+    }
+  }
+
   bool MainWindow::tabbedTools() const
   {
     return d->tabbedTools;
@@ -411,6 +433,8 @@ namespace Avogadro
       d->toolsTab = new IconTabWidget(ui.toolsWidget);
       d->toolsTab->setObjectName("toolsTab");
       d->toolsLayout->addWidget(d->toolsTab);
+
+      d->toolsTab->setTabPosition(d->toolsTabPosition);
 
       // connect changing the tab
       connect(d->toolsTab, SIGNAL(currentChanged(int)),
@@ -1506,12 +1530,14 @@ namespace Avogadro
     if( d->molecule->NumAtoms() == 0 )
     {
       camera->translate( d->glWidget->center() - Vector3d( 0, 0, 10 ) );
+      d->glWidget->update();
       return;
     }
 
     if( !d->animationsEnabled )
     {
       camera->initializeViewPoint();
+      d->glWidget->update();
       //cout << "Final Translation: " << camera->modelview().translationVector() << endl;
       //cout << "Final Linear: " << camera->modelview().linearComponent() << endl << endl;
       return;
@@ -1723,8 +1749,7 @@ namespace Avogadro
     connect( ui.configureAvogadroAction, SIGNAL( triggered() ),
         this, SLOT( showSettingsDialog() ) );
 
-    connect( ui.pluginManagerAction, SIGNAL( triggered() ),
-        &pluginManager, SLOT( showDialog() ) );
+    connect( ui.pluginManagerAction, SIGNAL( triggered() ), &d->pluginManager, SLOT( showDialog() ) );
 
     connect( ui.actionTutorials, SIGNAL( triggered() ), this, SLOT( openTutorialURL() ));
     connect( ui.actionFAQ, SIGNAL( triggered() ), this, SLOT( openFAQURL() ) );
@@ -1859,6 +1884,7 @@ namespace Avogadro
     }
 
     setTabbedTools(settings.value( "tabbedTools", true ).toBool());
+    setToolsTabPosition((QTabWidget::TabPosition)settings.value( "toolsTabPosition", QTabWidget::North ).toInt());
 
     settings.beginGroup("tools");
     d->toolGroup->readSettings(settings);
@@ -1903,6 +1929,7 @@ namespace Avogadro
     settings.setValue( "state", saveState() );
 
     settings.setValue( "tabbedTools", d->tabbedTools );
+    settings.setValue( "toolsTabPosition", d->toolsTabPosition );
     settings.setValue( "enginesDock", ui.enginesDock->saveGeometry());
     settings.setValue( "animationsEnabled", d->animationsEnabled );
 
@@ -1922,14 +1949,14 @@ namespace Avogadro
     settings.endGroup();
     
     // write the plugin manager settings
-    settings.beginGroup("plugins");
-    pluginManager.writeSettings(settings);
-    settings.endGroup();
+    //settings.beginGroup("plugins");
+    //pluginManager.writeSettings(settings);
+    //settings.endGroup();
   }
 
   void MainWindow::loadExtensions()
   {
-    foreach(Extension *extension, pluginManager.extensions())
+    foreach(Extension *extension, d->pluginManager.extensions())
     {
       qDebug() << "Found Extension: " << extension->name() << " - "
                << extension->description();
@@ -2156,8 +2183,8 @@ namespace Avogadro
 //        primitivesWidget, SLOT( setEngine( Engine * ) ) );
 
     // Warn the user if no engines or tools are loaded
-    int nEngines = pluginManager.engineFactories().size() - 1;
-    int nTools = d->glWidget->toolGroup()->tools().size();
+    int nEngines = pluginManager.factories(Plugin::EngineType).size() - 1;
+    int nTools = pluginManager.factories(Plugin::ToolType).size();
     QString error;
     if(!nEngines && !nTools)
       error = tr("No tools or engines loaded.");
@@ -2178,7 +2205,7 @@ namespace Avogadro
     if (!d->currentSelectedEngine)
       return;
 
-    QWidget *settingsWindow = new QWidget();
+    QWidget *settingsWindow = new QWidget(this);
     settingsWindow->setWindowTitle(d->currentSelectedEngine->name() + ' ' + tr("Settings"));
     QVBoxLayout *layout = new QVBoxLayout;
 
@@ -2191,7 +2218,7 @@ namespace Avogadro
     primitivesWidget->setEngine(d->currentSelectedEngine);
     settingsTabs->addTab(primitivesWidget, tr("Objects"));
     
-    EngineColorsWidget *colorsWidget = new EngineColorsWidget(settingsWindow);
+    EngineColorsWidget *colorsWidget = new EngineColorsWidget(&d->pluginManager, settingsWindow);
     colorsWidget->setEngine(d->currentSelectedEngine);
     settingsTabs->addTab(colorsWidget, tr("Colors"));
 
@@ -2202,7 +2229,7 @@ namespace Avogadro
 
   void MainWindow::addEngineClicked()
   {
-    Engine *engine =  AddEngineDialog::getEngine(this, pluginManager.engineFactories());
+    Engine *engine =  AddEngineDialog::getEngine(this, pluginManager.factories(Plugin::EngineType));
     if(engine) {
       PrimitiveList p = d->glWidget->selectedPrimitives();
       if(!p.size()) {

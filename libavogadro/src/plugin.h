@@ -2,6 +2,7 @@
   Plugin - Avogadro Plugin Interface Base Class
 
   Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2008 Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -39,6 +40,14 @@ namespace Avogadro {
    * This is a template class for plugins like tools, engines, 
    * extensions, colors, ...
    */
+
+  /*class A_EXPORT PluginMeta*/
+  /*{*/
+    /*public:*/
+      /*QString className();*/
+      /*QString type();*/
+  /*}*/
+
   //class PluginPrivate;
   class A_EXPORT Plugin
   {
@@ -50,7 +59,8 @@ namespace Avogadro {
         ExtensionType,
         ColorType,
         GradientType,
-        OtherType
+        OtherType,
+        TypeCount // this needs to be last always
       };
  
     public:
