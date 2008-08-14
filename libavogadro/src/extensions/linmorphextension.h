@@ -78,7 +78,8 @@ namespace Avogadro {
    protected Q_SLOTS:
       void saveMovie(QString movieFileName);
       void saveGlSnapshots(QString prefix);
-      void savePovSnapshots(QString prefix);
+      //void savePovSnapshots(QString prefix);
+      void saveTrajectoryFile(QString filename);
       void setDuration(int i);
       void setLoop(int state);
       void setFrame(int i);
@@ -90,6 +91,7 @@ namespace Avogadro {
   private:
       virtual void computeConformers(Molecule* conformer2Mol);
 
+      bool writeXYZTraj(QString filename);
                   
   };
 

@@ -62,7 +62,7 @@ namespace Avogadro {
     // Load a file
     QString file = QFileDialog::getOpenFileName(this,
       tr("Open trajectory file"), ui.fileEdit->text(),
-      tr("Trajectory files (*.xtc)"));
+      tr("Trajectory files (*.xtc *.xyz)"));
     ui.fileEdit->setText(file);
     
     emit fileName(file);

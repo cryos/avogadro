@@ -45,7 +45,7 @@ namespace Avogadro {
     connect(ui.fpsSpin, SIGNAL(valueChanged(int)), this, SIGNAL(fpsChanged(int)));
     connect(ui.loopBox, SIGNAL(stateChanged(int)), this, SIGNAL(loopChanged(int)));
     connect(ui.numFramesSpin, SIGNAL(valueChanged(int)), this, SIGNAL(frameCountChanged(int)));    
-    connect(ui.saveSnapshotsButton, SIGNAL(clicked()), this, SLOT(savePovSnapshots()));
+    connect(ui.saveTrajButton, SIGNAL(clicked()), this, SLOT(saveTrajectoryFile()));
     connect(ui.saveMovieButton, SIGNAL(clicked()), this, SLOT(saveMovie()));
     connect(ui.playButton, SIGNAL(clicked()), this, SIGNAL(play()));
     connect(ui.pauseButton, SIGNAL(clicked()), this, SIGNAL(pause()));
@@ -90,33 +90,14 @@ namespace Avogadro {
 
   }
 
-  void LinMorphDialog::savePovSnapshots()
+  void LinMorphDialog::saveTrajectoryFile()
   {
-    QString ssDirectory = 
-      QFileDialog::getExistingDirectory(this, 
-					tr("Open Directory"),
-					ui.fileEdit->text(),
-					QFileDialog::ShowDirsOnly
-					| QFileDialog::DontResolveSymlinks);    
+    QString sTrajFileName = QFileDialog::getSaveFileName(this, 
+							  tr("Save Traj File"),
+							  ui.trajLine->text(),
+							  tr("trajectory file (*.xyz)"));
     
-    bool ok;
-    QString ssPrefixText = 
-      QInputDialog::getText(this, tr("QInputDialog::getText()"),
-			    tr("prefix for pov files"), 
-			    QLineEdit::Normal,
-			    QDir::home().dirName(), &ok);
-    
-    QString ssFullPrefixText;
-    if (ok && !ssPrefixText.isEmpty() && !ssDirectory.isEmpty()) {
-      ssFullPrefixText = ssDirectory + ssPrefixText;
-      ui.fullPrefixLine->setText(ssFullPrefixText);
-    }
-    else {
-      QMessageBox::warning( NULL, tr( "Avogadro" ),
-			    tr( "Directory and prefix for snapshots not given" ));
-      return;
-    }    
-    emit snapshotsPrefix(ssFullPrefixText);
+    emit trajFileName(sTrajFileName);
   }
   
   void LinMorphDialog::setFrame(int i)

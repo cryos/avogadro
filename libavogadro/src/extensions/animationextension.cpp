@@ -29,6 +29,9 @@
 
 #include <QMessageBox>
 
+#include <fstream>
+
+
 using namespace OpenBabel;
 
 namespace Avogadro {
@@ -108,8 +111,15 @@ namespace Avogadro {
     if (file.isEmpty())
       return;
 
+    if (file.endsWith(".xyz")) {
+      readTrajFromXyz(file);
+    }
+    
+    else { //non xyz 
+
     OBConversion conv;
     OBFormat *inFormat = conv.FormatFromExt(( file.toAscii() ).data() );
+    
     if ( !inFormat || !conv.SetInFormat( inFormat ) ) {
       QMessageBox::warning( NULL, tr( "Avogadro" ),
           tr( "Cannot read file format of file %1." )
@@ -117,11 +127,13 @@ namespace Avogadro {
       return;
     }
 
-    if (!conv.ReadFile(m_molecule, file.toStdString())) {
-      QMessageBox::warning( NULL, tr( "Avogadro" ),
-          tr( "Read trajectory file %1 failed." )
-          .arg( file ) );
-      return;
+
+      if (!conv.ReadFile(m_molecule, file.toStdString())) {
+	QMessageBox::warning( NULL, tr( "Avogadro" ),
+			      tr( "Read trajectory file %1 failed." )
+			      .arg( file ) );
+	return;
+      }
     }
 
     m_frameCount = m_molecule->NumConformers();
@@ -130,6 +142,7 @@ namespace Avogadro {
     m_timeLine->setFrameRange(1, m_frameCount);
     setDuration(m_animationDialog->fps());
   }
+
 
   void AnimationExtension::setDuration(int i)
   {
@@ -217,7 +230,77 @@ namespace Avogadro {
 
   }
 
+  void AnimationExtension::readTrajFromXyz(QString xyzfile){
+    
+    OBConversion conv;
+    if (!conv.SetInFormat("XYZ")) {
+      QMessageBox::warning( NULL, tr( "Avogadro" ),
+			    tr( "could not set format to XYZ" ));
+    }
+    
+    while (m_molecule->NumConformers() > 1) {
+      m_molecule->DeleteConformer(1);
+    }
+    
+    std::ifstream file(xyzfile.toStdString().c_str());
 
+    Molecule* tmpMol = new Molecule;
+        
+    int i=0;
+    while ( conv.Read(tmpMol, &file)) {
+  
+      double* coords = new double[tmpMol->NumAtoms()*3];
+      double* tmpCoords = tmpMol->GetCoordinates();
+      if (!tmpCoords) {
+	QMessageBox::warning( NULL, tr( "Avogadro" ),
+			      tr( "Problem reading traj file %1").arg(xyzfile));
+	return;
+      }
+	
+
+      if (tmpMol->NumAtoms() != m_molecule->NumAtoms()) {
+	QMessageBox::warning( NULL, tr( "Avogadro" ),
+			      tr( "Trajectory file %1 disagrees on the number of atoms in the present molecule").arg(xyzfile));
+	return;
+      }
+      
+      //copy coords read in to a new array that will not be deleted
+      for (uint j = 0; j < tmpMol->NumAtoms()*3; j++)  {
+	coords[j] = tmpCoords[j];
+      }
+
+      if (i == 0)
+	m_molecule->SetCoordinates(coords);
+      else
+	m_molecule->AddConformer(coords);
+      
+      i++;      
+    }
+
+    delete tmpMol;
+     
+    file.close();
+  }
+
+
+ 
+  bool AnimationExtension::writeXyzTraj(QString filename) {
+    OBConversion conv;
+    conv.SetInAndOutFormats("XYZ","XYZ");
+    
+    std::ofstream file;
+    file.open(filename.toStdString().c_str());
+    
+    for (int i=1; i <= m_molecule->NumConformers(); i++) {
+      setFrame(i);
+      conv.Write(m_molecule,&file);
+      file << std::endl;
+    }
+          
+    file.close();
+    
+    return true;
+  }
 } // end namespace Avogadro
 
 #include "animationextension.moc"

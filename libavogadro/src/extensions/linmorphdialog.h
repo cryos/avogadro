@@ -55,12 +55,12 @@ namespace Avogadro
       
     public Q_SLOTS:
       void loadFile();
-      void savePovSnapshots();
+      void saveTrajectoryFile();
       void saveMovie();
 
     Q_SIGNALS:
       void fileName(QString filename);
-      void snapshotsPrefix(QString ssFullPrefixText);
+      void trajFileName(QString fileName);
       void movieFileInfo(QString movieFileName);
       void sliderChanged(int i);
       void fpsChanged(int i);

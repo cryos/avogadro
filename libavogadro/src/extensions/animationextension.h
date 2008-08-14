@@ -73,13 +73,22 @@ namespace Avogadro {
 
       int m_frameCount;
     
-    private Q_SLOTS:
+   private Q_SLOTS:
       void loadFile(QString file);
       void setDuration(int i);
       void setLoop(int state);
       void setFrame(int i);
       void stop();
       void saveVideo(QString videoFileName);
+
+  private:
+      //!support to read a trajectory from xyz as described here:
+      //!http://www.ks.uiuc.edu/Research/vmd/plugins/molfile/xyzplugin.html
+      void readTrajFromXyz(QString filename);
+
+      //!support to write a trajectory to xyz as described here:
+      //!http://www.ks.uiuc.edu/Research/vmd/plugins/molfile/xyzplugin.html
+      bool writeXyzTraj(QString filename);
   };
 
   class AnimationExtensionFactory : public QObject, public PluginFactory

@@ -161,8 +161,10 @@ namespace Avogadro
 	
 	connect(m_linMorphDialog, SIGNAL(fileName(QString)), 
 		this, SLOT(loadFile(QString)));
-	connect(m_linMorphDialog, SIGNAL(snapshotsPrefix(QString)), 
-		this, SLOT(savePovSnapshots(QString)));
+	//connect(m_linMorphDialog, SIGNAL(snapshotsPrefix(QString)), 
+	//	this, SLOT(savePovSnapshots(QString)));
+	connect(m_linMorphDialog, SIGNAL(trajFileName(QString)), 
+		this, SLOT(saveTrajectoryFile(QString)));
 	connect(m_linMorphDialog, SIGNAL(movieFileInfo(QString)), 
 		this, SLOT(saveMovie(QString)));
 	connect(m_linMorphDialog, SIGNAL(sliderChanged(int)), 
@@ -306,54 +308,42 @@ namespace Avogadro
     TrajVideoMaker::makeVideo(m_widget, snapshotsDir, movieFileName);
   }
     
-  void LinMorphExtension::savePovSnapshots(QString prefix)
-  {
-    // use the current glWidge for things like camera
-    if (!m_widget) {
-      QMessageBox::warning( NULL, tr( "Avogadro" ),
-			    tr( "GL widget was not correctly initialized in order to save snapshots" ));
-      return;
-    }
+  void LinMorphExtension::saveTrajectoryFile(QString filename) {
+    
+    OBConversion conv;
 
-    //computeConformers(m_secondMolecule);
-    if (m_frameCount != m_molecule->NumConformers()){
-      QMessageBox::warning( NULL, tr( "Avogadro" ),
-			    tr( "m_frameCount != numConformers" ) );
-      return;
-    }
+    QMessageBox::warning( NULL, tr( "Avogadro" ),
+			tr( "Would write file to %1." )
+			.arg( filename ) );
 
-    bool ok;
-    int w = m_widget->width();
-    int h = m_widget->height();
-    double defaultAspectRatio = static_cast<double>(w)/h;
-    double aspectRatio =
-      QInputDialog::getDouble(0,
-			      QObject::tr("Set Aspect Ratio"),
-			      QObject::tr("The current Avogadro scene is %1x%2 pixels large, "
-					  "and therefore has aspect ratio %3.\n"
-					  "You may keep this value, for example if you intend to use POV-Ray\n"
-					  "to produce an image of %4x1000 pixels, or you may enter any other positive value,\n"
-					  "for example 1 if you intend to use POV-Ray to produce a square image, like 1000x1000 pixels.")
-			      .arg(w).arg(h).arg(defaultAspectRatio)
-			      .arg(static_cast<int>(1000*defaultAspectRatio)),
-			      defaultAspectRatio,
-			      0.1,
-			      10,
-			      6,
-			      &ok);
-    if(ok) { 
-      for (int i=1; i<=m_frameCount; i++) {  
-	setFrame(i);
-	QString ssfileName = prefix + QString::number(i) + ".pov";
-	POVPainterDevice pd( ssfileName, aspectRatio, m_widget );
-      }
+    conv.SetInAndOutFormats("XYZ","XYZ");
+    
+    
+    writeXYZTraj(filename);
+
+QMessageBox::warning( NULL, tr( "Avogadro" ),
+		      tr( "Wrote file %1." )
+		      .arg( filename ) );
+    
+
+  }
+
+  bool LinMorphExtension::writeXYZTraj(QString filename) {
+    OBConversion conv;
+    conv.SetInAndOutFormats("XYZ","XYZ");
+    
+    ofstream file;
+    file.open(filename.toStdString().c_str());
+	
+    for (int i=1; i <= m_molecule->NumConformers(); i++) {
+      setFrame(i);
+      conv.Write(m_molecule,&file);
+      file << endl;
     }
-    else {
-      QMessageBox::warning( NULL, tr( "Avogadro" ),
-			    tr( "Problem setting aspect ratio.",
-				"No .pov files will be generated" ));
-      return;
-    }
+    
+    file.close();				//close it
+    
+    return true;
   }
 }
 #include "linmorphextension.moc"

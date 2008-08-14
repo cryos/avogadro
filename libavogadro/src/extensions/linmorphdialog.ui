@@ -220,18 +220,18 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout" >
      <item>
-      <widget class="QLineEdit" name="fullPrefixLine" />
+      <widget class="QLineEdit" name="trajLine" />
      </item>
      <item>
-      <widget class="QPushButton" name="saveSnapshotsButton" >
+      <widget class="QPushButton" name="saveTrajButton" >
        <property name="toolTip" >
         <string>Save snapshots of the trajectory as a series of POVRay files.  These can then be used to make a movie.</string>
        </property>
        <property name="whatsThis" >
-        <string>Button to save the current trajectory.</string>
+        <string>Button to save an .xyz trajectory.</string>
        </property>
        <property name="text" >
-        <string>Save Snapshots...</string>
+        <string>Save trajectory...</string>
        </property>
       </widget>
      </item>
