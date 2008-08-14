@@ -1,3 +1,8 @@
+2008-08-13  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* avogadro/src/mainwindow.cpp: Revert the settingsWindow from being
+	instantiated as a child of MainWindow - caused issues here.
+
 2008-08-08  Naomi Fox  <naomi.fox@gmail.com>
 	
 	* libavogadro/src/extensions/trajvideomaker.* : static functions for 

@@ -2205,7 +2205,7 @@ namespace Avogadro
     if (!d->currentSelectedEngine)
       return;
 
-    QWidget *settingsWindow = new QWidget(this);
+    QWidget *settingsWindow = new QWidget();
     settingsWindow->setWindowTitle(d->currentSelectedEngine->name() + ' ' + tr("Settings"));
     QVBoxLayout *layout = new QVBoxLayout;
 
