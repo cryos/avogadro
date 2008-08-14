@@ -1,3 +1,9 @@
+2008-08-13  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* avogadro/src/mainwindow.cpp: Fix the settingsWindow to be a parent of
+	MainWindow (so that it gets properly deleted when the program exits)
+	and make it so that only one settings window per engine can be active.
+
 2008-08-13  Marcus D. Hanwell  <marcus@cryos.org>
 
 	* avogadro/src/mainwindow.cpp: Revert the settingsWindow from being

@@ -162,6 +162,8 @@ namespace Avogadro
       QTimer *centerTimer;
 
       PluginManager pluginManager;
+
+      QMap<Engine*, QWidget*> engineSettingsWindows;
   };
 
   unsigned int getMainWindowCount()
@@ -2205,13 +2207,22 @@ namespace Avogadro
     if (!d->currentSelectedEngine)
       return;
 
-    QWidget *settingsWindow = new QWidget();
+    QWidget *settingsWindow = d->engineSettingsWindows.value(d->currentSelectedEngine);
+
+    if(settingsWindow)
+    {
+      settingsWindow->show();
+      return;
+    }
+    settingsWindow = new QWidget(this, Qt::Dialog);
     settingsWindow->setWindowTitle(d->currentSelectedEngine->name() + ' ' + tr("Settings"));
-    QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout *layout = new QVBoxLayout(settingsWindow);
+
+    QWidget *settingsWidget = d->currentSelectedEngine->settingsWidget();
 
     // now set up the tabs: Currently settings and objects (primitives)
     QTabWidget *settingsTabs = new QTabWidget(settingsWindow);
-    settingsTabs->addTab(d->currentSelectedEngine->settingsWidget(), tr("Settings"));
+    settingsTabs->addTab(settingsWidget, tr("Settings"));
     
     EnginePrimitivesWidget *primitivesWidget =
           new EnginePrimitivesWidget(d->glWidget, settingsWindow);
@@ -2222,6 +2233,9 @@ namespace Avogadro
     colorsWidget->setEngine(d->currentSelectedEngine);
     settingsTabs->addTab(colorsWidget, tr("Colors"));
 
+    connect(settingsWidget, SIGNAL(destroyed()), settingsWindow, SLOT(deleteLater()));
+
+    d->engineSettingsWindows[d->currentSelectedEngine] = settingsWindow;
     layout->addWidget(settingsTabs);
     settingsWindow->setLayout(layout);
     settingsWindow->show();
@@ -2283,11 +2297,13 @@ namespace Avogadro
 
         if(engine) {
           d->glWidget->removeEngine(engine);
+          d->engineSettingsWindows.remove(engine);
 		  emit enableEngineSettingsButton(false);
         }
         break;
       }
     }
+
   }
 
   void MainWindow::engineClicked(Engine *engine)
