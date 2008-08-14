@@ -1,3 +1,9 @@
+2008-08-14  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* libavogadro/src/glwidget.*: Removed the isStable / setStable functions
+	from the GLWidget.  They are not being used and I acnnot tell why they
+	are even in there.
+
 2008-08-13  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* avogadro/src/mainwindow.cpp: Fix the settingsWindow to be a parent of
@@ -8,6 +14,17 @@
 
 	* avogadro/src/mainwindow.cpp: Revert the settingsWindow from being
 	instantiated as a child of MainWindow - caused issues here.
+
+2008-08-12  Donald E. Curtis <dcurtis3@sourceforge.net>
+
+	* libavogadro/src/*: Fixed the plugin manager so that it works properly
+	with multiple main windows.
+
+	* avogadro/src/settingswidget.*: Added a setting for smooth transitions.
+
+	* avogadro/src/mainwindow.cpp: Added a movement function so that when 
+	you center the view it is animated.  This will make zooming look cooler.
+	Eye candy.
 
 2008-08-08  Naomi Fox  <naomi.fox@gmail.com>
 	

@@ -207,6 +207,7 @@ namespace Avogadro {
                         colorMap( 0),
                         defaultColorMap( 0), 
                         updateCache(true),
+                        quickRenderEnabled(false),
                         quickRender(false),
                         renderAxes(false),
                         renderDebug(false),
@@ -263,8 +264,6 @@ namespace Avogadro {
 
     QUndoStack            *undoStack;
 
-    bool                   stable;
-
 #ifdef ENABLE_THREADED_GL
     QWaitCondition         paintCondition;
     QMutex                 renderMutex;
@@ -297,20 +296,23 @@ namespace Avogadro {
     // Create a display list cache
     if (updateCache) {
 //      qDebug() << "Making new quick display lists...";
-      if (dlistQuick == 0)
+      if (dlistQuick == 0) {
         dlistQuick = glGenLists(1);
+      }
 
       // Don't use dynamic scaling when rendering quickly
       painter->setDynamicScaling(false);
 
       glNewList(dlistQuick, GL_COMPILE);
       foreach(Engine *engine, engines)
+      {
         if(engine->isEnabled())
         {
           molecule->lock()->lockForRead();
           engine->renderQuick(pd);
           molecule->lock()->unlock();
         }
+      }
       glEndList();
 
       updateCache = false;
@@ -648,8 +650,9 @@ namespace Avogadro {
     if (d->quickRender) {
       d->updateListQuick();
       glCallList(d->dlistQuick);
-      if (d->uc)
+      if (d->uc) {
         renderCrystal(d->dlistQuick);
+      }
     }
     else {
       // we save a display list if we're doing a crystal
@@ -695,10 +698,10 @@ namespace Avogadro {
     }
 
     // If enabled draw the axes
-    if (d->renderAxes) renderAxesOverlay();
+    if (d->renderAxes) { renderAxesOverlay(); }
 
     // If enabled show debug information
-    if (d->renderDebug) renderDebugOverlay();
+    if (d->renderDebug) { renderDebugOverlay(); }
 
     d->painter->end();
   }
@@ -1488,16 +1491,6 @@ namespace Avogadro {
     return radius;
   }
 
-  bool GLWidget::isStable() const
-  {
-    return d->stable;
-  }
-
-  void GLWidget::setStable( bool stable )
-  {
-    d->stable = stable;
-  }
-
   void GLWidget::setSelected(PrimitiveList primitives, bool select)
   {
     foreach(Primitive *item, primitives)
@@ -1770,6 +1763,16 @@ namespace Avogadro {
       engine->setPrimitives(primitives());
       addEngine(engine);
     }
+  }
+
+  void GLWidget::setQuickRenderEnabled(bool enabled)
+  {
+    d->quickRenderEnabled = enabled;
+  }
+
+  bool GLWidget::isQuickRenderEnabled const
+  {
+    return d->quickRenderEnabled;
   }
 
   void GLWidget::invalidateDLs()

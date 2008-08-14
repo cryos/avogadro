@@ -208,15 +208,14 @@ namespace Avogadro {
       ~GLWidget();
 
       /**
-       * @return true if the GLWidget is stable as determined
-       * by the tools and extensions.
+       * @param enabled quick render to be enabled
        */
-      bool isStable() const;
+      void setQuickRenderEnabled(bool enabled);
 
       /**
-       * @param stable the new stable value.
+       * @return is quick rendering enabled
        */
-      void setStable(bool stable);
+      bool isQuickRenderEnabled const
 
       /**
        * @return the width of the widget in pixels.
