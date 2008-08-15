@@ -1,3 +1,8 @@
+2008-08-13  Marcus D. Hanwell  <marcus@cryos.org>
+
+	* libavogadro/src/glwidget.*: Fixed compilation due to errors with new
+	isQuickRenderEnabled and setQuickRenderEnabled (is Enabled needed).
+
 2008-08-14  Donald E. Curtis <dcurtis3@sourceforge.net>
 
 	* libavogadro/src/glwidget.*: Removed the isStable / setStable functions

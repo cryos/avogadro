@@ -215,7 +215,7 @@ namespace Avogadro {
       /**
        * @return is quick rendering enabled
        */
-      bool isQuickRenderEnabled const
+      bool isQuickRenderEnabled() const;
 
       /**
        * @return the width of the widget in pixels.

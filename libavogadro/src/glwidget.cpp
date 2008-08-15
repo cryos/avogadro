@@ -207,7 +207,6 @@ namespace Avogadro {
                         colorMap( 0),
                         defaultColorMap( 0), 
                         updateCache(true),
-                        quickRenderEnabled(false),
                         quickRender(false),
                         renderAxes(false),
                         renderDebug(false),
@@ -1254,14 +1253,14 @@ namespace Avogadro {
     update();
   }
 
-  void GLWidget::setTool( Tool *tool )
+  void GLWidget::setTool(Tool *tool)
   {
     if ( tool ) {
       d->tool = tool;
     }
   }
 
-  void GLWidget::setToolGroup( ToolGroup *toolGroup )
+  void GLWidget::setToolGroup(ToolGroup *toolGroup)
   {
     if ( d->toolGroup ) {
       disconnect( d->toolGroup, 0, this, 0 );
@@ -1440,10 +1439,9 @@ namespace Avogadro {
 
     // Find the first atom (if any) in hits - this will be the closest
     foreach(const GLHit& hit, chits)
-    {
       if(hit.type() == Primitive::AtomType)
         return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
-    }
+
     return 0;
   }
 
@@ -1458,10 +1456,9 @@ namespace Avogadro {
 
     // Find the first bond (if any) in hits - this will be the closest
     foreach(const GLHit& hit, chits)
-    {
       if(hit.type() == Primitive::BondType)
         return static_cast<Bond *>(molecule()->GetBond(hit.name()));
-    }
+
     return 0;
   }
 
@@ -1728,9 +1725,7 @@ namespace Avogadro {
         // for now we ignore this.  (will need this when we
         // copy the selected primitives also).
         if(!engine->primitives().size())
-        {
           engine->setPrimitives(primitives());
-        }
 
         addEngine(engine);
       }
@@ -1738,9 +1733,7 @@ namespace Avogadro {
     settings.endArray();
 
     if(!d->engines.count())
-    {
       loadDefaultEngines();
-    }
   }
 
   void GLWidget::loadDefaultEngines()
@@ -1748,18 +1741,15 @@ namespace Avogadro {
     QList<Engine *> engines = d->engines;
 
     foreach(Engine *engine, engines)
-    {
       delete engine;
-    }
 
     d->engines.clear();
 
     foreach(PluginFactory *factory, PluginManager::factories(Plugin::EngineType))
     {
       Engine *engine = static_cast<Engine *>(factory->createInstance(this));
-      if ( engine->name() == tr("Ball and Stick") ) {
+      if (engine->name() == tr("Ball and Stick"))
         engine->setEnabled( true );
-      }
       engine->setPrimitives(primitives());
       addEngine(engine);
     }
@@ -1767,12 +1757,12 @@ namespace Avogadro {
 
   void GLWidget::setQuickRenderEnabled(bool enabled)
   {
-    d->quickRenderEnabled = enabled;
+    d->quickRender = enabled;
   }
 
-  bool GLWidget::isQuickRenderEnabled const
+  bool GLWidget::isQuickRenderEnabled() const
   {
-    return d->quickRenderEnabled;
+    return d->quickRender;
   }
 
   void GLWidget::invalidateDLs()
