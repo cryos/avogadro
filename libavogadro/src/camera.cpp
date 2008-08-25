@@ -35,15 +35,15 @@ namespace Avogadro
     public:
       CameraPrivate() {};
 
-      MatrixP3d modelview, projection;
+      Eigen::Transform3d modelview, projection;
       const GLWidget *parent;
       double angleOfViewY;
   };
 
   Camera::Camera(const GLWidget *parent, double angleOfViewY) : d(new CameraPrivate)
   {
-    d->modelview.loadIdentity();
-    d->projection.loadIdentity();
+    d->modelview.setIdentity();
+    d->projection.setIdentity();
     d->parent = parent;
     d->angleOfViewY = angleOfViewY;
   }
@@ -68,27 +68,18 @@ namespace Avogadro
 
   void Camera::normalize()
   {
-    Matrix3d m;
-    Vector3d c0, c1, c2;
-    d->modelview.getLinearComponent(&m);
-
-    m.getColumn(0, &c0);
+    Eigen::Block<Matrix4d, 3, 1> c0(d->modelview.matrix(), 0, 0),
+                                 c1(d->modelview.matrix(), 0, 1),
+                                 c2(d->modelview.matrix(), 0, 2);
     c0.normalize();
-    m.setColumn(0, c0);
-    m.getColumn(1, &c1);
     c1.normalize();
-    c1 -= dot(c0, c1) * c0;
+    c1 -= c0.dot(c1) * c0;
     c1.normalize();
-    m.setColumn(1, c1);
-    m.getColumn(2, &c2);
     c2.normalize();
-    c2 -= dot(c0, c2) * c0;
-    c2 -= dot(c1, c2) * c1;
+    c2 -= c0.dot(c2) * c0;
+    c2 -= c1.dot(c2) * c1;
     c2.normalize();
-    m.setColumn(2, c2);
-
-    d->modelview.setLinearComponent(m);
-    d->modelview.matrix().setRow(3, Vector4d(0.0, 0.0, 0.0, 1.0));
+    d->modelview.matrix().row(3) << 0, 0, 0, 1;
   }
 
   const GLWidget *Camera::parent() const
@@ -118,13 +109,13 @@ namespace Avogadro
 
   void Camera::rotate(const double &angle, const Eigen::Vector3d &axis)
   {
-    d->modelview.rotate3(angle, axis);
+    d->modelview.rotate(Eigen::AngleAxisd(angle, axis));
     normalize();
   }
 
   void Camera::prerotate(const double &angle, const Eigen::Vector3d &axis)
   {
-    d->modelview.prerotate3(angle, axis);
+    d->modelview.prerotate(Eigen::AngleAxisd(angle, axis));
     normalize();
   }
 
@@ -133,24 +124,24 @@ namespace Avogadro
     return ( d->modelview * point ).norm();
   }
 
-  void Camera::setModelview(const Eigen::MatrixP3d &matrix)
+  void Camera::setModelview(const Eigen::Transform3d &matrix)
   {
     d->modelview = matrix;
   }
 
-  const Eigen::MatrixP3d & Camera::modelview() const
+  const Eigen::Transform3d & Camera::modelview() const
   {
     return d->modelview;
   }
 
-  Eigen::MatrixP3d & Camera::modelview()
+  Eigen::Transform3d & Camera::modelview()
   {
     return d->modelview;
   }
 
   void Camera::initializeViewPoint()
   {
-    d->modelview.loadIdentity();
+    d->modelview.setIdentity();
     if( d->parent == 0 ) return;
     if( d->parent->molecule() == 0 ) return;
 
@@ -169,12 +160,12 @@ namespace Avogadro
     // to the normal vector of the molecule's fitting plane.
     // Thus we construct a suitable base-change rotation.
     Matrix3d rotation;
-    rotation.setRow(2, d->parent->normalVector());
-    rotation.setRow(0, rotation.row(2).ortho());
-    rotation.setRow(1, rotation.row(2).cross(rotation.row(0)));
+    rotation.row(2) = d->parent->normalVector();
+    rotation.row(0) = rotation.row(2).unitOrthogonal();
+    rotation.row(1) = rotation.row(2).cross(rotation.row(0));
 
     // set the camera's matrix to be (the 4x4 version of) this rotation.
-    setModelview(rotation);
+    d->modelview.linear() = rotation;
 
     // now we want to move backwards, in order
     // to view the molecule from a distance, not from inside it.
@@ -202,12 +193,12 @@ namespace Avogadro
     double zFar = distanceToMolCenter + molRadius;
     double aspectRatio = static_cast<double>(d->parent->width()) / d->parent->height();
     gluPerspective( d->angleOfViewY, aspectRatio, zNear, zFar );
-    glGetDoublev(GL_PROJECTION_MATRIX, d->projection.array());
+    glGetDoublev(GL_PROJECTION_MATRIX, d->projection.data());
   }
 
   void Camera::applyModelview() const
   {
-    glMultMatrixd( d->modelview.array() );
+    glMultMatrixd( d->modelview.data() );
   }
 
   Eigen::Vector3d Camera::unProject(const Eigen::Vector3d & v) const
@@ -215,7 +206,7 @@ namespace Avogadro
     GLint viewport[4] = {0, 0, parent()->width(), parent()->height() };
     Eigen::Vector3d pos;
     gluUnProject(v.x(), parent()->height() - v.y(), v.z(),
-                 d->modelview.array(), d->projection.array(), viewport, &pos.x(), &pos.y(), &pos.z());
+                 d->modelview.data(), d->projection.data(), viewport, &pos.x(), &pos.y(), &pos.z());
     return pos;
   }
 
@@ -234,7 +225,7 @@ namespace Avogadro
     GLint viewport[4] = {0, 0, parent()->width(), parent()->height() };
     Eigen::Vector3d pos;
     gluProject(v.x(), v.y(), v.z(),
-               d->modelview.array(), d->projection.array(), viewport, &pos.x(), &pos.y(), &pos.z());
+               d->modelview.data(), d->projection.data(), viewport, &pos.x(), &pos.y(), &pos.z());
 
     pos.y() = parent()->height() - pos.y();
     return pos;
@@ -242,47 +233,32 @@ namespace Avogadro
 
   Eigen::Vector3d Camera::backTransformedXAxis() const
   {
-    return Eigen::Vector3d( d->modelview(0, 0),
-                            d->modelview(0, 1),
-                            d->modelview(0, 2) );
+    return d->modelview.linear().row(0).transpose();
   }
 
   Eigen::Vector3d Camera::backTransformedYAxis() const
   {
-    return Eigen::Vector3d( d->modelview(1, 0),
-                            d->modelview(1, 1),
-                            d->modelview(1, 2) );
+    return d->modelview.linear().row(1).transpose();
   }
 
   Eigen::Vector3d Camera::backTransformedZAxis() const
   {
-    return Eigen::Vector3d( d->modelview(2, 0),
-                            d->modelview(2, 1),
-                            d->modelview(2, 2) );
+    return d->modelview.linear().row(2).transpose();
   }
 
   Eigen::Vector3d Camera::transformedXAxis() const
   {
-    // The x unit vector in space coordinates
-    return Eigen::Vector3d( d->modelview(0, 0),
-                            d->modelview(1, 0),
-                            d->modelview(2, 0) );
+    return d->modelview.linear().col(0);
   }
 
   Eigen::Vector3d Camera::transformedYAxis() const
   {
-    // The y unit vector in space coordinates
-    return Eigen::Vector3d( d->modelview(0, 1),
-                            d->modelview(1, 1),
-                            d->modelview(2, 1) );
+    return d->modelview.linear().col(1);
   }
 
   Eigen::Vector3d Camera::transformedZAxis() const
   {
-    // The z unit vector in space coordinates
-    return Eigen::Vector3d( d->modelview(0, 2),
-                            d->modelview(1, 2),
-                            d->modelview(2, 2) );
+    return d->modelview.linear().col(2);
   }
 
 } // end namespace Avogadro

@@ -27,7 +27,7 @@
 #define DRAWCOMMAND_H
 
 #include <QUndoCommand>
-#include <eigen/vector.h>
+#include <Eigen/Core>
 
 namespace Avogadro {
 

@@ -33,7 +33,7 @@
 #include <openbabel/obiter.h>
 #include <openbabel/math/matrix3x3.h>
 
-#include <eigen/projective.h>
+#include <Eigen/Geometry>
 
 #include <QtPlugin>
 #include <QApplication>

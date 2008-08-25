@@ -27,7 +27,7 @@
 
 #include <QDialog>
 #include <QList>
-#include <eigen/vector.h>
+#include <Eigen/Core>
 
 #include "ui_orbitaldialog.h"
 

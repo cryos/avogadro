@@ -211,13 +211,11 @@ namespace Avogadro {
     if (m_numSelectedAtoms >= 1)
     {
       // Translate the first selected atom to the origin
-      MatrixP3d atomTranslation;
-      atomTranslation.loadTranslation(-m_selectedAtoms[0]->pos());
       foreach(Primitive *p, neighborList)
       {
         if (!p) continue;
         Atom *a = static_cast<Atom *>(p);
-        a->setPos(atomTranslation * a->pos());
+        a->setPos(a->pos()-m_selectedAtoms[0]->pos());
         a->update();
       }
     }
@@ -251,15 +249,11 @@ namespace Avogadro {
         axis = axis.cross(pos);
         axis.normalize();
 
-        // Now to load up the rotation matrix and rotate the molecule
-        MatrixP3d atomRotation;
-        atomRotation.loadRotation3(-angle, axis);
-
         // Now to rotate the fragment
         foreach(Primitive *p, neighborList)
         {
           Atom *a = static_cast<Atom *>(p);
-          a->setPos(atomRotation * a->pos());
+          a->setPos(Eigen::AngleAxisd(-angle,axis) * a->pos());
           a->update();
         }
       }

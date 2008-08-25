@@ -3,14 +3,14 @@ namespace Eigen {
 class Vector3d 
 {
 %TypeHeaderCode
-#include <eigen/vector.h>
+#include <Eigen/Core>
 %End
 };
 
-class MatrixP3d 
+class Transform3d 
 {
 %TypeHeaderCode
-#include <eigen/projective.h>
+#include <Eigen/Geometry>
 %End
 };
 

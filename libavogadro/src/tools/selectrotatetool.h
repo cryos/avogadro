@@ -29,7 +29,7 @@
 #include <avogadro/tool.h>
 #include <avogadro/glwidget.h>
 
-#include <eigen/vector.h>
+#include <Eigen/Core>
 
 #include <QObject>
 #include <QString>

@@ -27,7 +27,7 @@
 
 #include <avogadro/global.h>
 
-#include <eigen/matrix.h>
+#include <Eigen/Core>
 #include <QGLWidget>
 
 namespace Avogadro {

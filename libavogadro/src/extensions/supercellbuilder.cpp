@@ -93,11 +93,11 @@ namespace Avogadro {
     millerRotation(2,1) = k/m;
     millerRotation(2,2) = l/m;
     
-    Eigen::MatrixP3d modelview;
+    Eigen::Transform3d modelview;
     const Eigen::Vector3d Zaxis(0.0,0.0,1.0);
     
-    modelview.loadIdentity();
-    modelview.setLinearComponent(millerRotation);
+    modelview.matrix().setIdentity();
+    modelview.linear() = millerRotation;
     widget->camera()->setModelview(modelview);
     widget->camera()->pretranslate( -3.0 * ( widget->radius() ) * Zaxis );
     widget->camera()->translate( - widget->center());

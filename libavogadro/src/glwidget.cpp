@@ -855,19 +855,12 @@ namespace Avogadro {
 
     // Set the origin and calculate the positions of the axes
     Vector3d origin = Vector3d(0.07, 0.07, -.07);
-    MatrixP3d axisTranslation;
-    axisTranslation.loadTranslation(d->pd->camera()->transformedXAxis() * 0.04);
-    Vector3d aXa = axisTranslation * origin;
-    axisTranslation.loadTranslation(d->pd->camera()->transformedXAxis() * 0.06);
-    Vector3d aX = axisTranslation * origin;
-    axisTranslation.loadTranslation(d->pd->camera()->transformedYAxis() * 0.04);
-    Vector3d aYa = axisTranslation * origin;
-    axisTranslation.loadTranslation(d->pd->camera()->transformedYAxis() * 0.06);
-    Vector3d aY = axisTranslation * origin;
-    axisTranslation.loadTranslation(d->pd->camera()->transformedZAxis() * 0.04);
-    Vector3d aZa = axisTranslation * origin;
-    axisTranslation.loadTranslation(d->pd->camera()->transformedZAxis() * 0.06);
-    Vector3d aZ = axisTranslation * origin;
+    Vector3d aXa = d->pd->camera()->transformedXAxis() * 0.04 + origin;
+    Vector3d aX = d->pd->camera()->transformedXAxis() * 0.06 + origin;
+    Vector3d aYa = d->pd->camera()->transformedYAxis() * 0.04 + origin;
+    Vector3d aY = d->pd->camera()->transformedYAxis() * 0.06 + origin;
+    Vector3d aZa = d->pd->camera()->transformedZAxis() * 0.04 + origin;
+    Vector3d aZ = d->pd->camera()->transformedZAxis() * 0.06 + origin;
 
     // Turn off dynamic scaling in the painter (cylinders don't render correctly)
     d->painter->setDynamicScaling(false);

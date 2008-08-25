@@ -50,9 +50,9 @@ namespace Avogadro {
       Vector3d v = cos(alpha) * m_xAxis + sin(alpha) * m_zAxis;
       Vector3d v1 = v - RIBBON_WIDTH * m_yAxis;
       Vector3d v2 = v + RIBBON_WIDTH * m_yAxis;
-      glNormal3dv(v.array());
-      glVertex3dv((m_center + m_radius * v1).array());
-      glVertex3dv((m_center + m_radius * v2).array());
+      glNormal3dv(v.data());
+      glVertex3dv((m_center + m_radius * v1).eval().data());
+      glVertex3dv((m_center + m_radius * v2).eval().data());
     }
     glEnd();
   }
@@ -66,9 +66,9 @@ namespace Avogadro {
       Vector3d v = cos(alpha) * m_yAxis + sin(alpha) * m_zAxis;
       Vector3d v1 = v - RIBBON_WIDTH * m_xAxis;
       Vector3d v2 = v + RIBBON_WIDTH * m_xAxis;
-      glNormal3dv(v.array());
-      glVertex3dv((m_center + m_radius * v2).array());
-      glVertex3dv((m_center + m_radius * v1).array());
+      glNormal3dv(v.data());
+      glVertex3dv((m_center + m_radius * v2).eval().data());
+      glVertex3dv((m_center + m_radius * v1).eval().data());
     }
     glEnd();
   }
@@ -80,10 +80,10 @@ namespace Avogadro {
     Vector3d v2 = v - RIBBON_ARROW_WIDTH * m_yAxis;
     Vector3d v3 = v + RIBBON_ARROW_LENGTH * v.cross(m_yAxis);
     glBegin(GL_TRIANGLES);
-    glNormal3dv(v.array());
-    glVertex3dv((m_center + m_radius * v1).array());
-    glVertex3dv((m_center + m_radius * v3).array());
-    glVertex3dv((m_center + m_radius * v2).array());
+    glNormal3dv(v.data());
+    glVertex3dv((m_center + m_radius * v1).eval().data());
+    glVertex3dv((m_center + m_radius * v3).eval().data());
+    glVertex3dv((m_center + m_radius * v2).eval().data());
     glEnd();
   }
 
@@ -94,10 +94,10 @@ namespace Avogadro {
     Vector3d v2 = v + RIBBON_ARROW_WIDTH * m_yAxis;
     Vector3d v3 = v - RIBBON_ARROW_LENGTH * v.cross(m_yAxis);
     glBegin(GL_TRIANGLES);
-    glNormal3dv(v.array());
-    glVertex3dv((m_center + m_radius * v1).array());
-    glVertex3dv((m_center + m_radius * v3).array());
-    glVertex3dv((m_center + m_radius * v2).array());
+    glNormal3dv(v.data());
+    glVertex3dv((m_center + m_radius * v1).eval().data());
+    glVertex3dv((m_center + m_radius * v3).eval().data());
+    glVertex3dv((m_center + m_radius * v2).eval().data());
     glEnd();
   }
 
@@ -108,10 +108,10 @@ namespace Avogadro {
     Vector3d v2 = v + RIBBON_ARROW_WIDTH * m_xAxis;
     Vector3d v3 = v + RIBBON_ARROW_LENGTH * v.cross(m_xAxis);
     glBegin(GL_TRIANGLES);
-    glNormal3dv(v.array());
-    glVertex3dv((m_center + m_radius * v1).array());
-    glVertex3dv((m_center + m_radius * v2).array());
-    glVertex3dv((m_center + m_radius * v3).array());
+    glNormal3dv(v.data());
+    glVertex3dv((m_center + m_radius * v1).eval().data());
+    glVertex3dv((m_center + m_radius * v2).eval().data());
+    glVertex3dv((m_center + m_radius * v3).eval().data());
     glEnd();
   }
 
@@ -122,10 +122,10 @@ namespace Avogadro {
     Vector3d v2 = v - RIBBON_ARROW_WIDTH * m_xAxis;
     Vector3d v3 = v - RIBBON_ARROW_LENGTH * v.cross(m_xAxis);
     glBegin(GL_TRIANGLES);
-    glNormal3dv(v.array());
-    glVertex3dv((m_center + m_radius * v1).array());
-    glVertex3dv((m_center + m_radius * v2).array());
-    glVertex3dv((m_center + m_radius * v3).array());
+    glNormal3dv(v.data());
+    glVertex3dv((m_center + m_radius * v1).eval().data());
+    glVertex3dv((m_center + m_radius * v2).eval().data());
+    glVertex3dv((m_center + m_radius * v3).eval().data());
     glEnd();
   }
 
@@ -223,58 +223,58 @@ namespace Avogadro {
     // Horizontal arrow, pointing left
     v = center + shift * zAxis;
     glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
     v += RIBBON_LENGTH * size * xAxis;
-    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
     glEnd();
     glBegin(GL_TRIANGLES);
-    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
-    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
-    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*xAxis).eval().data());
     glEnd();
     // Horizontal arrow, pointing right
     v = center + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
     v -= RIBBON_LENGTH*size * xAxis;
-    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
     glEnd();
     glBegin(GL_TRIANGLES);
-    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
-    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
-    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*xAxis).eval().data());
     glEnd();
     // Vertical arrow, pointing up
     v = center + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
     v += RIBBON_LENGTH*size * yAxis;
-    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
     glEnd();
     glBegin(GL_TRIANGLES);
-    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
-    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
-    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*yAxis).eval().data());
     glEnd();
     // Vertical arrow, pointing down
     v = center + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());
     v -= RIBBON_LENGTH*size * yAxis;
-    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());
     glEnd();
     glBegin(GL_TRIANGLES);
-    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
-    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
-    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*yAxis).eval().data());
     glEnd();
 
 //    glDisable(GL_BLEND);
@@ -323,58 +323,58 @@ namespace Avogadro {
     // Horizontal arrow, pointing left
     v = center; // * zAxis;
     glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
     v += RIBBON_LENGTH * size * zAxis;
-    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
-    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
     glEnd();
     glBegin(GL_TRIANGLES);
-    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
-    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
-    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*zAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*zAxis).eval().data());
     glEnd();
     // Horizontal arrow, pointing right
     v = center; // + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
     v -= RIBBON_LENGTH*size * zAxis;
-    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).array());
-    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
     glEnd();
     glBegin(GL_TRIANGLES);
-    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).array());
-    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).array());
-    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*zAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*yAxis).eval().data());
+    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*zAxis).eval().data());
     glEnd();
     // Vertical arrow, pointing up
     v = center; // + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
     v += RIBBON_LENGTH*size * zAxis;
-    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
-    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
     glEnd();
     glBegin(GL_TRIANGLES);
-    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
-    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
-    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*zAxis).array());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v + RIBBON_ARROW_LENGTH*size*zAxis).eval().data());
     glEnd();
     // Vertical arrow, pointing down
     v = center; // + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
-    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());
     v -= RIBBON_LENGTH*size * zAxis;
-    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).array());
-    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).array());
+    glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());
     glEnd();
     glBegin(GL_TRIANGLES);
-    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).array());
-    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).array());
-    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*zAxis).array());
+    glVertex3dv((v + RIBBON_ARROW_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v - RIBBON_ARROW_WIDTH*size*xAxis).eval().data());
+    glVertex3dv((v - RIBBON_ARROW_LENGTH*size*zAxis).eval().data());
     glEnd();
 
     //draw back faces

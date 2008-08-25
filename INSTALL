@@ -46,7 +46,7 @@ installation locations.
 
    -DOPENBABEL2_INCLUDE_DIR : specify the OpenBabel2 include directory
 
-   -DEIGEN_INCLUDE_DIR : specify the Eigen include directory
+   -DEIGEN2_INCLUDE_DIR : specify the Eigen include directory
 
    -DENABLE_PYTHON : specify whether to build Boost.Python interpreter
                     (default = TRUE)

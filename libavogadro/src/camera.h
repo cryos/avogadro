@@ -26,7 +26,7 @@
 #define CAMERA_H
 
 #include <avogadro/global.h>
-#include <eigen/projective.h>
+#include <Eigen/Geometry>
 #include <QPoint>
 
 namespace Avogadro {
@@ -94,16 +94,16 @@ namespace Avogadro {
       double angleOfViewY() const;
       /** Sets 4x4 "modelview" matrix representing the camera orientation and position.
         * @param matrix the matrix to copy from
-        * @sa Eigen::MatrixP3d & modelview(), applyModelview() */
-      void setModelview(const Eigen::MatrixP3d &matrix);
+        * @sa Eigen::Transform3d & modelview(), applyModelview() */
+      void setModelview(const Eigen::Transform3d &matrix);
       /** @return a constant reference to the 4x4 "modelview" matrix representing
         *         the camera orientation and position
-        * @sa setModelview(), Eigen::MatrixP3d & modelview() */
-      const Eigen::MatrixP3d & modelview() const;
+        * @sa setModelview(), Eigen::Transform3d & modelview() */
+      const Eigen::Transform3d & modelview() const;
       /** @return a non-constant reference to the 4x4 "modelview" matrix representing
         *         the camera orientation and position
-        * @sa setModelview(), const Eigen::MatrixP3d & modelview() const */
-      Eigen::MatrixP3d & modelview();
+        * @sa setModelview(), const Eigen::Transform3d & modelview() const */
+      Eigen::Transform3d & modelview();
       /** Calls gluPerspective() with parameters automatically chosen
         * for rendering the GLWidget's molecule with this camera. Should be called
         * only in GL_PROJECTION matrix mode. Example code is given

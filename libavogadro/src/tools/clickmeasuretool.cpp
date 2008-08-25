@@ -36,6 +36,7 @@
 #include <math.h>
 
 #include <QtPlugin>
+#include <Eigen/Geometry>
 
 using namespace std;
 using namespace OpenBabel;
@@ -91,8 +92,8 @@ namespace Avogadro {
     else
     {
       m_angle = 0;
-      m_vector[0].loadZero();
-      m_vector[1].loadZero();
+      m_vector[0].setZero();
+      m_vector[1].setZero();
       m_numSelectedAtoms = 0;
       widget->update();
     }
@@ -317,29 +318,7 @@ namespace Avogadro {
           && m_selectedAtoms[2])
         {
           Vector3d origin = m_selectedAtoms[1]->pos();
-          Vector3d d1 = m_selectedAtoms[0]->pos() - origin;
-          Vector3d d2 = m_selectedAtoms[2]->pos() - origin;
-          // The vector length is half the average vector length
-          double radius = (d1.norm()+d2.norm()) * 0.25;
-          // Adjust the length of u and v to the length calculated above.
-          d1 = (d1 / d1.norm()) * radius;
-          d2 = (d2 / d2.norm()) * radius;
-          if (m_angle < 1) return true;
-          // Vector perpindicular to both d1 and d2
-          Vector3d n = d1.cross(d2);
 
-          Vector3d xAxis = Vector3d(1, 0, 0);
-          Vector3d yAxis = Vector3d(0, 1, 0);
-
-          if (n.norm() < 1e-16)
-          {
-            Eigen::Vector3d A = d1.cross(xAxis);
-            Eigen::Vector3d B = d1.cross(yAxis);
-
-            n = A.norm() >= B.norm() ? A : B;
-          }
-
-          n = n / n.norm();
           glEnable(GL_BLEND);
           glDepthMask(GL_FALSE);
           widget->painter()->setColor(0, 1.0, 0, 0.3);

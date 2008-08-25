@@ -26,6 +26,7 @@
 
 #include <QFile>
 #include <QDebug>
+#include <Eigen/Geometry>
 
 namespace Avogadro
 {
@@ -121,10 +122,10 @@ namespace Avogadro
     Vector3d ortho1 = axisNormalized.cross(d->planeNormalVector);
     double ortho1Norm = ortho1.norm();
     if( ortho1Norm > 0.001 ) ortho1 /= ortho1Norm;
-    else ortho1 = axisNormalized.ortho();
+    else ortho1 = axisNormalized.unitOrthogonal();
     // This number seems to work well for drawing the multiCylinder inside
     ortho1 *= radius*1.5;
-    Vector3d ortho2 = cross( axisNormalized, ortho1 );
+    Vector3d ortho2 = axisNormalized.cross(ortho1);
     // Use an angle offset of zero for double bonds, 90 for triple and 22.5 for higher order
     double angleOffset = 0.0;
     if( order >= 3 )
@@ -236,8 +237,8 @@ namespace Avogadro
     // The POV-Ray camera basically has the same matrix elements - we just need to translate
     // FIXME Still working on getting the translation to POV-Ray right...
     m_aspectRatio = static_cast<double>(m_glwidget->width()) / m_glwidget->height();
-    Vector3d cameraT = -( m_glwidget->camera()->modelview().linearComponent().adjoint()
-                          * m_glwidget->camera()->modelview().translationVector()
+    Vector3d cameraT = -( m_glwidget->camera()->modelview().linear().adjoint()
+                          * m_glwidget->camera()->modelview().translation()
                         );
     Vector3d cameraX = m_glwidget->camera()->backTransformedXAxis() * m_aspectRatio;
     Vector3d cameraY = m_glwidget->camera()->backTransformedYAxis();
@@ -253,9 +254,9 @@ namespace Avogadro
       huge = 10;
     }
 
-    Vector3d light0pos = huge * ( m_glwidget->camera()->modelview().linearComponent().adjoint()
+    Vector3d light0pos = huge * ( m_glwidget->camera()->modelview().linear().adjoint()
                                   * Vector3d(LIGHT0_POSITION[0], LIGHT0_POSITION[1], LIGHT0_POSITION[2]) );
-    Vector3d light1pos = huge * ( m_glwidget->camera()->modelview().linearComponent().adjoint()
+    Vector3d light1pos = huge * ( m_glwidget->camera()->modelview().linear().adjoint()
                                   * Vector3d(LIGHT1_POSITION[0], LIGHT1_POSITION[1], LIGHT1_POSITION[2]) );
 
     // Output the POV-Ray initialisation code

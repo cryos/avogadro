@@ -25,14 +25,14 @@
  **********************************************************************/
 
 #include "glpainter.h"
-
-#include <avogadro/glwidget.h>
+#include "glwidget.h"
 #include "sphere.h"
 #include "cylinder.h"
 #include "textrenderer.h"
 
 #include <QDebug>
 #include <QVarLengthArray>
+#include <Eigen/Geometry>
 
 namespace Avogadro
 {
@@ -407,9 +407,9 @@ namespace Avogadro
     Eigen::Vector3d axis = tip - base;
     Eigen::Vector3d axisNormalized = axis.normalized();
     Eigen::Vector3d ortho1, ortho2;
-    ortho1.loadOrtho(axisNormalized);
+    ortho1 = axisNormalized.unitOrthogonal();
     ortho1 *= radius;
-    axisNormalized.cross(ortho1, &ortho2);
+    ortho2 = axisNormalized.cross(ortho1);
 
     d->color.applyAsMaterials();
 
@@ -427,23 +427,23 @@ namespace Avogadro
       Eigen::Vector3d n = (tip - v).cross(v - vPrec).normalized();
       Eigen::Vector3d nNext = (tip - vNext).cross(vNext - v).normalized();
       glBegin(GL_TRIANGLES);
-      glNormal3dv((n+nNext).normalized().array());
-      glVertex3dv(tip.array());
-      glNormal3dv(nNext.array());
-      glVertex3dv(vNext.array());
-      glNormal3dv(n.array());
-      glVertex3dv(v.array());
+      glNormal3dv((n+nNext).normalized().data());
+      glVertex3dv(tip.data());
+      glNormal3dv(nNext.data());
+      glVertex3dv(vNext.data());
+      glNormal3dv(n.data());
+      glVertex3dv(v.data());
       glEnd();
     }
 
     // Now to draw the base
     glBegin(GL_TRIANGLE_FAN);
-    glNormal3dv((-axisNormalized).array());
-    glVertex3dv(base.array());
+    glNormal3dv((-axisNormalized).eval().data());
+    glVertex3dv(base.data());
     for (int j = 0; j <= CONE_TESS_LEVEL; j++) {
       double alpha = -j * M_PI / (CONE_TESS_LEVEL/2.0);
       Eigen::Vector3d v = cos(alpha) * ortho1 + sin(alpha) * ortho2 + base;
-      glVertex3dv(v.array());
+      glVertex3dv(v.data());
     }
     glEnd();
   }
@@ -461,8 +461,8 @@ namespace Avogadro
 
     // Draw the line
     glBegin(GL_LINE_STRIP);
-    glVertex3dv(start.array());
-    glVertex3dv(end.array());
+    glVertex3dv(start.data());
+    glVertex3dv(end.data());
     glEnd();
 
     glEnable(GL_LIGHTING);
@@ -475,55 +475,27 @@ namespace Avogadro
     // Draw multiple lines between two points of the specified thickness
     if(!d->isValid()) { return; }
 
-    // the normal to the plane of the viewing widget
-    const Eigen::Vector3d planeNormalVector = d->widget->normalVector();
-    // the "axis vector" of the line
-    Eigen::Vector3d axis = end2 - end1;
-
-    // now we want to construct an orthonormal basis whose first
-    // vector is axis.normalized(). We don't use Eigen's loadOrthoBasis()
-    // for that, because we want one more thing. The second vector in this
+    // construct the 4D transformation matrix
+    Eigen::Matrix4d matrix;
+    matrix.row(3) << 0,0,0,1;
+    matrix.block<3,1>(0,3) = end1;
+    matrix.block<3,1>(0,2) = end2 - end1; // the "axis vector" of the line
+    // Now we want to construct an orthonormal basis whose third
+    // vector is axis.normalized(). The first vector in this
     // basis, which we call ortho1, should be approximately lying in the
     // z=0 plane if possible. This is to ensure double bonds don't look
     // like single bonds from the default point of view.
-    double axisNorm = axis.norm();
-    if( axisNorm == 0.0 ) return;
-    Eigen::Vector3d axisNormalized = axis / axisNorm;
-
-    Eigen::Vector3d ortho1 = axisNormalized.cross(planeNormalVector);
+    Eigen::Vector3d axisNormalized = matrix.block<3,1>(0,2).normalized();
+    Eigen::Block<Eigen::Matrix4d, 3, 1> ortho1(matrix, 0, 0);
+    ortho1 = axisNormalized.cross(d->widget->normalVector());
     double ortho1Norm = ortho1.norm();
-    if( ortho1Norm > 0.001 ) ortho1 /= ortho1Norm;
-    else ortho1 = axisNormalized.ortho();
-    ortho1 *= lineWidth;
+    if( ortho1Norm > 0.001 ) ortho1 = ortho1.normalized() * lineWidth;
+    else ortho1 = axisNormalized.unitOrthogonal() * lineWidth;
+    matrix.block<3,1>(0,1) = axisNormalized.cross(ortho1);
 
-    Eigen::Vector3d ortho2 = cross( axisNormalized, ortho1 );
-
-    // construct the 4D transformation matrix
-    Eigen::Matrix4d matrix;
-
-    matrix(0, 0) = ortho1(0);
-    matrix(1, 0) = ortho1(1);
-    matrix(2, 0) = ortho1(2);
-    matrix(3, 0) = 0.0;
-
-    matrix(0, 1) = ortho2(0);
-    matrix(1, 1) = ortho2(1);
-    matrix(2, 1) = ortho2(2);
-    matrix(3, 1) = 0.0;
-
-    matrix(0, 2) = axis(0);
-    matrix(1, 2) = axis(1);
-    matrix(2, 2) = axis(2);
-    matrix(3, 2) = 0.0;
-
-    matrix(0, 3) = end1(0);
-    matrix(1, 3) = end1(1);
-    matrix(2, 3) = end1(2);
-    matrix(3, 3) = 1.0;
-
-    //now we can do the actual drawing !
+    // now the matrix is entirely filled, so we can do the actual drawing !
     glPushMatrix();
-    glMultMatrixd( matrix.array() );
+    glMultMatrixd( matrix.data() );
 
     glDisable(GL_LIGHTING);
 
@@ -602,10 +574,10 @@ namespace Avogadro
     }
 
     glBegin(GL_TRIANGLES);
-    glNormal3dv(n.array());
-    glVertex3dv(p1.array());
-    glVertex3dv(tp2.array());
-    glVertex3dv(tp3.array());
+    glNormal3dv(n.data());
+    glVertex3dv(p1.data());
+    glVertex3dv(tp2.data());
+    glVertex3dv(tp3.data());
     glEnd();
   }
 
@@ -641,10 +613,10 @@ namespace Avogadro
     }
 
     glBegin(GL_TRIANGLES);
-    glNormal3dv(n.array());
-    glVertex3dv(p1.array());
-    glVertex3dv(tp2.array());
-    glVertex3dv(tp3.array());
+    glNormal3dv(n.data());
+    glVertex3dv(p1.data());
+    glVertex3dv(tp2.data());
+    glVertex3dv(tp3.data());
     glEnd();
   }
 
@@ -707,14 +679,11 @@ namespace Avogadro
     QVarLengthArray<GLfloat> uknots(points.size() + 4);
 
     // The first one is a special case
-    Eigen::Vector3f axis = Eigen::Vector3f(points[1].x() - points[0].x(),
-                                           points[1].y() - points[0].y(),
-                                           points[1].z() - points[0].z());
+    Eigen::Vector3f axis = points[1] - points[0];
     Eigen::Vector3f axisNormalized = axis.normalized();
     Eigen::Vector3f ortho1, ortho2;
-    ortho1.loadOrtho(axisNormalized);
-    ortho1 *= radius;
-    axisNormalized.cross(ortho1, &ortho2);
+    ortho1 = axisNormalized.unitOrthogonal() * radius;
+    ortho2 = axisNormalized.cross(ortho1);
     for (int j = 0; j < TUBE_TESS; j++) {
       double alpha = j * M_PI / 1.5f;
       Eigen::Vector3f v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
@@ -729,9 +698,9 @@ namespace Avogadro
                              points[i-1].y() - points[i].y(),
                              points[i-1].z() - points[i].z());
       axisNormalized = axis.normalized();
-      ortho1.loadOrtho(axisNormalized);
+      ortho1 = axisNormalized.unitOrthogonal();
       ortho1 *= radius;
-      axisNormalized.cross(ortho1, &ortho2);
+      ortho2 = axisNormalized.cross(ortho1);
       for (int j = 0; j < TUBE_TESS; j++) {
         double alpha = j * M_PI / 1.5f;
         Eigen::Vector3f v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
@@ -782,8 +751,8 @@ namespace Avogadro
     Eigen::Vector3d v = direction2 - origin;
 
     // Adjust the length of u and v to the radius given.
-    u = (u / u.norm()) * radius;
-    v = (v / v.norm()) * radius;
+    u = u.normalized() * radius;
+    v = v.normalized() * radius;
 
     // Angle between u and v.
     double uvAngle = acos(u.dot(v) / v.norm2()) * 180.0 / M_PI;
@@ -801,48 +770,35 @@ namespace Avogadro
     // Vector perpindicular to both u and v.
     Eigen::Vector3d n = u.cross(v);
 
-    Eigen::Vector3d x = Eigen::Vector3d(1, 0, 0);
-    Eigen::Vector3d y = Eigen::Vector3d(0, 1, 0);
-
-    if (n.norm() < 1e-16)
+    if (n.norm() < 1e-3)
       {
-        Eigen::Vector3d A = u.cross(x);
-        Eigen::Vector3d B = u.cross(y);
+        Eigen::Vector3d A = u.cross(Eigen::Vector3d::UnitX());
+        Eigen::Vector3d B = u.cross(Eigen::Vector3d::UnitY());
 
         n = A.norm() >= B.norm() ? A : B;
       }
 
-    n = n / n.norm();
-
-    // Add the vectors to the origin vector to find the positions along the lines
-    // of the two points the curve starts and ends at.
-    Eigen::Vector3d _direction1 = origin + u;
-    Eigen::Vector3d _direction2 = origin + v;
+    n.normalize();
 
     // Calculate the points along the curve at each half-degree increment until we
     // reach the next line.
     Eigen::Vector3d points[720];
     for (int theta = 1; theta < (uvAngle * 2); theta++)
       {
-        // Create a Matrix that represents a rotation about a vector perpindicular
-        // to the plane.
-        Eigen::Matrix3d rotMat;
-        rotMat.loadRotation3((theta / 2 * (M_PI / 180.0)), n);
-
-        // Apply the rotation Matrix to the vector to find the new point.
+        // Apply a rotation about a vector perpindicular
+        // to the plane to the vector to find the new point.
         if (alternateAngle) {
-          rotMat.multiply(v, &points[theta-1]);
+          points[theta-1] = Eigen::AngleAxisd(theta * (M_PI / 180.0) / 2, n) * v;
         } else {
-          rotMat.multiply(u, &points[theta-1]);
+          points[theta-1] = Eigen::AngleAxisd(theta * (M_PI / 180.0) / 2, n) * u;
         }
-        points[theta-1] += origin;
-        points[theta-1] = d->widget->camera()->modelview() * points[theta-1];
+        points[theta-1] = d->widget->camera()->modelview() * (origin + points[theta-1]);
       }
 
     // Get vectors representing the points' positions in terms of the model view.
     Eigen::Vector3d _origin = d->widget->camera()->modelview() * origin;
-    _direction1 = d->widget->camera()->modelview() * _direction1;
-    _direction2 = d->widget->camera()->modelview() * _direction2;
+    Eigen::Vector3d _direction1 = d->widget->camera()->modelview() * (origin+u);
+    Eigen::Vector3d _direction2 = d->widget->camera()->modelview() * (origin+v);
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glPushMatrix();
@@ -854,20 +810,20 @@ namespace Avogadro
 
     // Draw the transparent polygon that makes up the sector.
     glBegin(GL_TRIANGLE_FAN);
-    glVertex3d(_origin.x(), _origin.y(), _origin.z());
+    glVertex3dv(_origin.data());
     if (alternateAngle)
       {
-        glVertex3d(_direction2.x(), _direction2.y(), _direction2.z());
+        glVertex3dv(_direction2.data());
         for (int i = 0; i < uvAngle*2 - 1; i++)
-          glVertex3d(points[i].x(), points[i].y(), points[i].z());
-        glVertex3d(_direction1.x(), _direction1.y(), _direction1.z());
+          glVertex3dv(points[i].data());
+        glVertex3dv(_direction1.data());
       }
     else
       {
-        glVertex3d(_direction1.x(), _direction1.y(), _direction1.z());
+        glVertex3dv(_direction1.data());
         for (int i = 0; i < uvAngle*2 - 1; i++)
-          glVertex3d(points[i].x(), points[i].y(), points[i].z());
-        glVertex3d(_direction2.x(), _direction2.y(), _direction2.z());
+          glVertex3dv(points[i].data());
+        glVertex3dv(_direction2.data());
       }
     glEnd();
 
@@ -886,8 +842,8 @@ namespace Avogadro
     Eigen::Vector3d v = direction2 - origin;
 
     // Adjust the length of u and v to the radius given.
-    u = (u / u.norm()) * radius;
-    v = (v / v.norm()) * radius;
+    u = u.normalized() * radius;
+    v = v.normalized() * radius;
 
     // Angle between u and v.
     double uvAngle = acos(u.dot(v) / v.norm2()) * 180.0 / M_PI;
@@ -905,48 +861,34 @@ namespace Avogadro
     // Vector perpindicular to both u and v.
     Eigen::Vector3d n = u.cross(v);
 
-    Eigen::Vector3d x = Eigen::Vector3d(1, 0, 0);
-    Eigen::Vector3d y = Eigen::Vector3d(0, 1, 0);
-
-    if (n.norm() < 1e-16)
+    if (n.norm() < 1e-3)
       {
-        Eigen::Vector3d A = u.cross(x);
-        Eigen::Vector3d B = u.cross(y);
+        Eigen::Vector3d A = u.cross(Eigen::Vector3d::UnitX());
+        Eigen::Vector3d B = u.cross(Eigen::Vector3d::UnitY());
 
         n = A.norm() >= B.norm() ? A : B;
       }
 
-    n = n / n.norm();
-
-    // Add the vectors to the origin vector to find the positions along the lines
-    // of the two points the curve starts and ends at.
-    Eigen::Vector3d _direction1 = origin + u;
-    Eigen::Vector3d _direction2 = origin + v;
+    n.normalize();
 
     // Calculate the points along the curve at each half-degree increment until we
     // reach the next line.
     Eigen::Vector3d points[720];
     for (int theta = 1; theta < (uvAngle * 2); theta++)
       {
-        // Create a Matrix that represents a rotation about a vector perpindicular
-        // to the plane.
-        Eigen::Matrix3d rotMat;
-        rotMat.loadRotation3((theta / 2 * (M_PI / 180.0)), n);
-
-        // Apply the rotation Matrix to the vector to find the new point.
+        // Apply a rotation about a vector perpindicular
+        // to the plane to the vector to find the new point.
         if (alternateAngle) {
-          rotMat.multiply(v, &points[theta-1]);
+          points[theta-1] = Eigen::AngleAxisd(theta * (M_PI / 180.0) / 2, n) * v;
         } else {
-          rotMat.multiply(u, &points[theta-1]);
+          points[theta-1] = Eigen::AngleAxisd(theta * (M_PI / 180.0) / 2, n) * u;
         }
-        points[theta-1] += origin;
-        points[theta-1] = d->widget->camera()->modelview() * points[theta-1];
+        points[theta-1] = d->widget->camera()->modelview() * (origin + points[theta-1]);
       }
 
     // Get vectors representing the points' positions in terms of the model view.
-    Eigen::Vector3d _origin = d->widget->camera()->modelview() * origin;
-    _direction1 = d->widget->camera()->modelview() * _direction1;
-    _direction2 = d->widget->camera()->modelview() * _direction2;
+    Eigen::Vector3d _direction1 = d->widget->camera()->modelview() * (origin + u);
+    Eigen::Vector3d _direction2 = d->widget->camera()->modelview() * (origin + v);
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glPushMatrix();

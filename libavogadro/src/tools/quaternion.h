@@ -27,7 +27,7 @@
 #ifndef QUATERNION_H
 #define QUATERNION_H
 
-#include <eigen/vector.h>
+#include <Eigen/Core>
 
 namespace Avogadro {
 

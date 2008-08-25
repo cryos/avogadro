@@ -30,7 +30,7 @@
 #include <avogadro/glwidget.h>
 
 #include <openbabel/obiter.h>
-#include <eigen/regression.h>
+#include <Eigen/Regression>
 
 #include <QMessageBox>
 #include <QString>

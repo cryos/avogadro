@@ -25,7 +25,7 @@
 #include <config.h>
 
 #include <avogadro/primitive.h>
-#include <eigen/regression.h>
+#include <Eigen/Regression>
 
 #include <QReadWriteLock>
 
@@ -400,8 +400,8 @@ namespace Avogadro {
     Q_D(const Molecule);
     d->invalidGeomInfo = true;
     d->farthestAtom = 0;
-    d->center.loadZero();
-    d->normalVector.loadZero();
+    d->center.setZero();
+    d->normalVector.setZero();
     d->radius = 0.0;
     if( NumAtoms() != 0 )
     {
@@ -414,17 +414,16 @@ namespace Avogadro {
       d->center /= NumAtoms();
 
       // compute the normal vector to the molecule's best-fitting plane
-      Eigen::Vector3d * atomPositions = new Eigen::Vector3d[NumAtoms()];
+      Eigen::Vector3d ** atomPositions = new Eigen::Vector3d*[NumAtoms()];
       int i = 0;
       for( Atom* atom = (Atom*) const_cast<Molecule*>(this)->BeginAtom(atom_iterator); atom; atom = (Atom *) const_cast<Molecule*>(this)->NextAtom(atom_iterator) )
       {
-        atomPositions[i++] = atom->pos();
+        atomPositions[i++] = const_cast<Eigen::Vector3d*>(&atom->pos());
       }
       Eigen::Vector4d planeCoeffs;
-      Eigen::computeFittingHyperplane( NumAtoms(), atomPositions, &planeCoeffs );
+      Eigen::fitHyperplane( NumAtoms(), atomPositions, &planeCoeffs );
       delete[] atomPositions;
-      d->normalVector = Eigen::Vector3d( planeCoeffs.x(), planeCoeffs.y(), planeCoeffs.z() );
-      d->normalVector.normalize();
+      d->normalVector = planeCoeffs.start<3>().normalized();
 
       // compute radius and the farthest atom
       d->radius = -1.0; // so that ( squaredDistanceToCenter > d->radius ) is true for at least one atom.

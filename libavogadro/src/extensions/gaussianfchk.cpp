@@ -24,7 +24,7 @@
 
 #include "gaussianfchk.h"
 
-#include <eigen/vector.h>
+#include <Eigen/Core>
 
 #include <QFile>
 #include <QTextStream>

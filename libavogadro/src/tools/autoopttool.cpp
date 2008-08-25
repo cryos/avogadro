@@ -97,8 +97,7 @@ namespace Avogadro {
     Vector3d fromPos = widget->camera()->unProject(from, what);
     Vector3d toPos = widget->camera()->unProject(to, what);
 
-    MatrixP3d atomTranslation;
-    atomTranslation.loadTranslation(toPos - fromPos);
+    Vector3d atomTranslation = toPos - fromPos;
 
     if (widget->selectedPrimitives().size())
     {
@@ -108,7 +107,7 @@ namespace Avogadro {
         {
           Atom *a = static_cast<Atom *>(p);
           widget->molecule()->BeginModify();
-          a->setPos(atomTranslation * a->pos());
+          a->setPos(atomTranslation + a->pos());
           widget->molecule()->EndModify();
           a->update();
         }
@@ -117,7 +116,7 @@ namespace Avogadro {
     if (m_clickedAtom)
     {
       widget->molecule()->BeginModify();
-      m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
+      m_clickedAtom->setPos(atomTranslation + m_clickedAtom->pos());
       widget->molecule()->EndModify();
       m_clickedAtom->update();
     }

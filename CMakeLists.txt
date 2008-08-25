@@ -1,5 +1,5 @@
 project(avogadro) # the name of your project
- 
+
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
 cmake_minimum_required(VERSION 2.4.7)
@@ -7,6 +7,17 @@ cmake_minimum_required(VERSION 2.4.7)
 if(COMMAND cmake_policy)
   cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
+
+# this is adapted from KDE's FindKDE4Internal.cmake : default the build type to
+# "release with debug info".
+#
+# We will define two other build types: Debug and Release.
+# These names are case-insensitive i.e. you can do -DCMAKE_BUILD_TYPE=debug
+if (NOT CMAKE_BUILD_TYPE)
+   set(CMAKE_BUILD_TYPE RelWithDebInfo)
+endif (NOT CMAKE_BUILD_TYPE)
+
+message(STATUS "The build type is ${CMAKE_BUILD_TYPE}")
 
 include (CheckCXXCompilerFlag)
 include (MacroEnsureVersion)
@@ -54,8 +65,10 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 		endif (GCC_IS_NEWER_THAN_4_2)
 	endif (HAVE_GCC_VISIBILITY AND GCC_IS_NEWER_THAN_4_1 AND NOT _GCC_COMPILED_WITH_BAD_ALLOCATOR)
 
-  # Set up build flags for particular build types
+  # Set up additional build flags for particular build types. These will be added to CMAKE_CXX_FLAGS,
+  # they will not replace them.
   set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG")
+  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g -DEIGEN_NO_DEBUG -DQT_NO_DEBUG")
   set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline")
 
   TEST_IF_WE_NEED_FPERMISSIVE(NEED_FPERMISSIVE)
@@ -66,23 +79,27 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     set (CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -fpermissive")
   endif(NEED_FPERMISSIVE)
 
-endif (CMAKE_COMPILER_IS_GNUCXX)
-
-if(RELEASE_MODE)
- add_definitions(-DNDEBUG)
- add_definitions(-DQT_NO_DEBUG)
- if (CMAKE_COMPILER_IS_GNUCXX)
-  set (CMAKE_C_FLAGS     "${CMAKE_C_FLAGS} -O2")
-  set (CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -O2")
- endif (CMAKE_COMPILER_IS_GNUCXX)
-endif(RELEASE_MODE)
+  # define WITH_SSE2 to enable the SSE2 instruction set.
+  # Available on Pentium 4, Athlon 64, and newer CPUs.
+  # Enabled by default on the x86_64 architecture, but not on the x86 architecture.
+  # If SSE2 is enabled, Eigen uses it by default; this can be disabled by
+  # definining EIGEN_DONT_VECTORIZE.
+  if(WITH_SSE2)
+    message(STATUS "Enabling the SSE2 instruction set")
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse2")
+  endif(WITH_SSE2)
+else(CMAKE_COMPILER_IS_GNUCXX)
+  set(CMAKE_CXX_FLAGS_RELEASE "-DNDEBUG -DQT_NO_DEBUG")
+  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-DEIGEN_NO_DEBUG -DQT_NO_DEBUG")
+endif(CMAKE_COMPILER_IS_GNUCXX)
 
 set(QT_MIN_VERSION "4.3.4") # we need at least version 4.3 of Qt
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
-find_package(Eigen REQUIRED) # find and setup Eigen
-find_package(Linguist REQUIRED) # find and setup Eigen
+find_package(Linguist REQUIRED) # find and setup Linguist
+find_package(Eigen2 REQUIRED) # find and setup Eigen2
+include_directories(${EIGEN2_INCLUDE_DIR})
 
 OPTION(ENABLE_PYTHON "Enable python support" ON)
 

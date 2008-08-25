@@ -27,7 +27,7 @@
 
 #include <avogadro/global.h>
 
-#include <eigen/matrix.h>
+#include <Eigen/Core>
 
 namespace Avogadro {
 

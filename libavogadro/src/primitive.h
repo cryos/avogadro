@@ -31,7 +31,7 @@
 
 #include <QAbstractItemModel>
 
-#include <eigen/vector.h>
+#include <Eigen/Core>
 
 class QReadWriteLock;
 

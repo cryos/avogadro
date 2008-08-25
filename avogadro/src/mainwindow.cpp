@@ -81,6 +81,8 @@
 
 #include <QDebug>
 
+#include <Eigen/Geometry>
+
 // This is a "hidden" exported Qt function on the Mac for Qt-4.x.
 #ifdef Q_WS_MAC
  void qt_mac_set_menubar_icons(bool enable);
@@ -1459,8 +1461,6 @@ namespace Avogadro
       return;
     }
 
-    Matrix3d rotation;
-
     // calculate elapsed time
     struct timeval tv;
     gettimeofday(&tv,0);
@@ -1489,18 +1489,17 @@ namespace Avogadro
       double cb = cos(curB);
       double sb = sin(curB);
 
-      rotation(0,0) = ch * ca;
-      rotation(0,1) = sh*sb - ch*sa*cb;
-      rotation(0,2) = ch*sa*sb + sh*cb;
-      rotation(1,0) = sa;
-      rotation(1,1) = ca*cb;
-      rotation(1,2) = -ca*sb;
-      rotation(2,0) = -sh*ca;
-      rotation(2,1) = sh*sa*cb + ch*sb;
-      rotation(2,2) = -sh*sa*sb + ch*cb;
+      camera->modelview().matrix()(0,0) = ch * ca;
+      camera->modelview().matrix()(0,1) = sh*sb - ch*sa*cb;
+      camera->modelview().matrix()(0,2) = ch*sa*sb + sh*cb;
+      camera->modelview().matrix()(1,0) = sa;
+      camera->modelview().matrix()(1,1) = ca*cb;
+      camera->modelview().matrix()(1,2) = -ca*sb;
+      camera->modelview().matrix()(2,0) = -sh*ca;
+      camera->modelview().matrix()(2,1) = sh*sa*cb + ch*sb;
+      camera->modelview().matrix()(2,2) = -sh*sa*sb + ch*cb;
 
-      camera->setModelview(rotation);
-      camera->modelview().setTranslationVector(d->startTrans + d->deltaTrans * r);
+      camera->modelview().translation() = d->startTrans + d->deltaTrans * r;
     }
 
 
@@ -1547,69 +1546,67 @@ namespace Avogadro
 
     // determine our goal matrix
     Matrix3d linearGoal;
-    linearGoal.loadIdentity();
     //d->rotation = camera->modelview();
     //goal.setRow(2, -d->glWidget->normalVector());
-    //goal.setRow(1, Vector3d(0,1,0));goal.row(2).ortho());
+    //goal.setRow(1, Vector3d(0,1,0));goal.row(2).unitOrthogonal());
     //goal.setRow(0, goal.row(2).cross(goal.row(1)));
-    linearGoal.setRow(2, d->glWidget->normalVector());
-    linearGoal.setRow(0, linearGoal.row(2).ortho());
-    linearGoal.setRow(1, linearGoal.row(2).cross(linearGoal.row(0)));
+    linearGoal.row(2) = d->glWidget->normalVector();
+    linearGoal.row(0) = linearGoal.row(2).unitOrthogonal();
+    linearGoal.row(1) = linearGoal.row(2).cross(linearGoal.row(0));
 
 
     // calculate the translation matrix
-    MatrixP3d goal(linearGoal);
+    Transform3d goal(linearGoal);
 
-    const Vector3d Zaxis(0,0,1);
-    goal.pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
+    goal.pretranslate(- 3.0 * (d->glWidget->radius() + CAMERA_NEAR_DISTANCE) * Vector3d::UnitZ());
 
     goal.translate( - d->glWidget->center() );
 
     //cout << "Calculated Translation: " << goal.translationVector() << endl;
     //cout << "Calculated Linear: " << goal.linearComponent() << endl << endl;
 
-    d->startTrans = camera->modelview().translationVector();
-    d->deltaTrans = goal.translationVector() - d->startTrans;
+    d->startTrans = camera->modelview().translation();
+    d->deltaTrans = goal.translation() - d->startTrans;
 
 
     // convert to Euler (heading, attitude, bank)
     // http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToEuler/index.htm
     double endH, endA, endB;
-    if(goal(1,0) > 0.998) {
-      endH = atan2(goal(0,2), goal(2,2));
+    if(goal.matrix()(1,0) > 0.998) {
+      endH = atan2(goal.matrix()(0,2), goal.matrix()(2,2));
       endA = M_PI_2;
       endB = 0;
     }
-    else if(goal(1,0) < -0.998)
+    else if(goal.matrix()(1,0) < -0.998)
     {
-      endH = atan2(goal(0,2), goal(2,2));
+      endH = atan2(goal.matrix()(0,2), goal.matrix()(2,2));
       endA = -M_PI_2;
       endB = 0;
     }
     else
     {
-      endH = atan2(-goal(2,0), goal(0,0));
-      endB = atan2(-goal(1,2), goal(1,1));
-      endA = asin(goal(1,0));
+      endH = atan2(-goal.matrix()(2,0), goal.matrix()(0,0));
+      endB = atan2(-goal.matrix()(1,2), goal.matrix()(1,1));
+      endA = asin(goal.matrix()(1,0));
     }
 
     // convert our current modelview to Euler (as above)
-    if(camera->modelview()(1,0) > 0.998) {
-      d->startH = atan2(camera->modelview()(0,2), camera->modelview()(2,2));
+    if(camera->modelview().matrix()(1,0) > 0.998) {
+      d->startH = atan2(camera->modelview().matrix()(0,2), camera->modelview().matrix()(2,2));
       d->startA = M_PI_2;
       d->startB = 0;
     }
-    else if(camera->modelview()(1,0) < -0.998)
+    else if(camera->modelview().matrix()(1,0) < -0.998)
     {
-      d->startH = atan2(camera->modelview()(0,2), camera->modelview()(2,2));
+      d->startH = atan2(camera->modelview().matrix()(0,2), camera->modelview().matrix()(2,2));
       d->startA = -M_PI_2;
       d->startB = 0;
     }
     else
     {
-      d->startH = atan2(-camera->modelview()(2,0), camera->modelview()(0,0));
-      d->startB = atan2(-camera->modelview()(1,2), camera->modelview()(1,1));
-      d->startA = asin(camera->modelview()(1,0));
+      d->startH = atan2(-camera->modelview().matrix()(2,0), camera->modelview().matrix()(0,0));
+      d->startB = atan2(-camera->modelview().matrix()(1,2), camera->modelview().matrix()(1,1));
+      d->startA = asin(camera->modelview().matrix()(1,0));
     }
 
     // calculate the difference in Euler coordinates

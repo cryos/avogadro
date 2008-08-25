@@ -27,7 +27,7 @@
 #define TEXTRENDERER_H
 
 #include <avogadro/global.h>
-#include <eigen/vector.h>
+#include <Eigen/Core>
 
 
 /**

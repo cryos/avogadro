@@ -193,12 +193,12 @@ namespace Avogadro {
     {
       triangle t = m_isoGen->getTriangle(i);
       triangle n = m_isoGen->getNormal(i);
-      glNormal3fv(n.p0.array());
-      glVertex3fv(t.p0.array());
-      glNormal3fv(n.p1.array());
-      glVertex3fv(t.p1.array());
-      glNormal3fv(n.p2.array());
-      glVertex3fv(t.p2.array());
+      glNormal3fv(n.p0.data());
+      glVertex3fv(t.p0.data());
+      glNormal3fv(n.p1.data());
+      glVertex3fv(t.p1.data());
+      glNormal3fv(n.p2.data());
+      glVertex3fv(t.p2.data());
     }
 
     // Render the negative surface
@@ -212,12 +212,12 @@ namespace Avogadro {
       n.p0 *= -1;
       n.p1 *= -1;
       n.p2 *= -1;
-      glNormal3fv(n.p2.array());
-      glVertex3fv(t.p2.array());
-      glNormal3fv(n.p1.array());
-      glVertex3fv(t.p1.array());
-      glNormal3fv(n.p0.array());
-      glVertex3fv(t.p0.array());
+      glNormal3fv(n.p2.data());
+      glVertex3fv(t.p2.data());
+      glNormal3fv(n.p1.data());
+      glVertex3fv(t.p1.data());
+      glNormal3fv(n.p0.data());
+      glVertex3fv(t.p0.data());
     }
     glEnd();
 

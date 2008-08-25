@@ -29,7 +29,7 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
 
-#include <eigen/regression.h>
+#include <Eigen/Core>
 #include <openbabel/mol.h>
 
 #include <QGLWidget>

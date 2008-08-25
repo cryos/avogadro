@@ -27,7 +27,7 @@
 #define BASISSET_H
 
 #include <avogadro/primitive.h>
-#include <eigen/vector.h>
+#include <Eigen/Core>
 #include <vector>
 #include <QDebug>
 

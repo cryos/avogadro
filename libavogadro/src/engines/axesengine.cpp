@@ -28,7 +28,7 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <eigen/regression.h>
+#include <Eigen/Regression>
 
 #include <QMessageBox>
 #include <QDebug>

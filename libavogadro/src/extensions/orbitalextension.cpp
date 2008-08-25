@@ -31,7 +31,7 @@
 #include <openbabel/math/vector3.h>
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
-#include <eigen/vector.h>
+#include <Eigen/Core>
 
 #include <QProgressDialog>
 #include <QCoreApplication>

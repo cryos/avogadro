@@ -33,7 +33,7 @@
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
 
-#include <eigen/projective.h>
+#include <Eigen/Geometry>
 
 #include <QGLWidget>
 #include <QReadWriteLock>
@@ -213,24 +213,23 @@ namespace Avogadro {
 
       if ( (m_clipEqB == 0.0) && (m_clipEqC == 0.0) ) {
         if (m_clipEqA < 0.0 ) {
-          MatrixP3f mat;
-          Vector3f zAxis(0., 0., 1.);
-          mat.loadRotation3(M_PI, zAxis);
-
-          point1 = mat * point1;    
-          point2 = mat * point2;    
-          point3 = mat * point3;    
-          point4 = mat * point4;    
+          point1.x() = -point1.x();    
+          point1.y() = -point1.y();    
+          point2.x() = -point2.x();    
+          point2.y() = -point2.y();    
+          point3.x() = -point3.x();    
+          point3.y() = -point3.y();    
+          point4.x() = -point4.x();    
+          point4.y() = -point4.y();    
         }
       }
       else {
-        MatrixP3f mat;
         Vector3f normal(1., 0., 0.);
         normalEq.normalize();
         double angle = acos(normal.dot(normalEq));
         Vector3f axis = normal.cross(normalEq);
         axis.normalize();
-        mat.loadRotation3(angle, axis);
+        Matrix3f mat(AngleAxisf(angle, axis));
 
         point1 = mat * point1;    
         point2 = mat * point2;    
@@ -241,10 +240,10 @@ namespace Avogadro {
       glBegin(GL_QUADS); // rendering the plane quad. Note, it should be big 
                         // enough to cover all clip edge area.
 
-      glVertex3fv(point1.array());
-      glVertex3fv(point2.array());
-      glVertex3fv(point4.array());
-      glVertex3fv(point3.array());
+      glVertex3fv(point1.data());
+      glVertex3fv(point2.data());
+      glVertex3fv(point4.data());
+      glVertex3fv(point3.data());
       glEnd();
       glPopMatrix();
       // End rendering mesh's clip edge
@@ -336,24 +335,23 @@ namespace Avogadro {
 
       if ( (m_clipEqB == 0.0) && (m_clipEqC == 0.0) ) {
         if (m_clipEqA < 0.0 ) {
-          MatrixP3f mat;
-          Vector3f zAxis(0., 0., 1.);
-          mat.loadRotation3(M_PI, zAxis);
-
-          point1 = mat * point1;
-          point2 = mat * point2;
-          point3 = mat * point3;
-          point4 = mat * point4;
+          point1.x() = -point1.x();    
+          point1.y() = -point1.y();    
+          point2.x() = -point2.x();    
+          point2.y() = -point2.y();    
+          point3.x() = -point3.x();    
+          point3.y() = -point3.y();    
+          point4.x() = -point4.x();    
+          point4.y() = -point4.y();    
         }
       }
       else {
-        MatrixP3f mat;
         Vector3f normal(1., 0., 0.);
         normalEq.normalize();
         double angle = acos(normal.dot(normalEq));
         Vector3f axis = normal.cross(normalEq);
         axis.normalize();
-        mat.loadRotation3(angle, axis);
+        Matrix3f mat(AngleAxisf(angle, axis));
 
         point1 = mat * point1;
         point2 = mat * point2;
@@ -364,10 +362,10 @@ namespace Avogadro {
       glBegin(GL_QUADS); // rendering the plane quad. Note, it should be big
                         // enough to cover all clip edge area.
 
-      glVertex3fv(point1.array());
-      glVertex3fv(point2.array());
-      glVertex3fv(point4.array());
-      glVertex3fv(point3.array());
+      glVertex3fv(point1.data());
+      glVertex3fv(point2.data());
+      glVertex3fv(point4.data());
+      glVertex3fv(point3.data());
       glEnd();
       glPopMatrix();
       // End rendering mesh's clip edge
@@ -434,18 +432,18 @@ namespace Avogadro {
 
         color = espColor(mol, t.p0);
         color.applyAsMaterials();
-        glNormal3fv(n.p0.array());
-        glVertex3fv(t.p0.array());
+        glNormal3fv(n.p0.data());
+        glVertex3fv(t.p0.data());
 
         color = espColor(mol, t.p1);
         color.applyAsMaterials();
-        glNormal3fv(n.p1.array());
-        glVertex3fv(t.p1.array());
+        glNormal3fv(n.p1.data());
+        glVertex3fv(t.p1.data());
 
         color = espColor(mol, t.p2);
         color.applyAsMaterials();
-        glNormal3fv(n.p2.array());
-        glVertex3fv(t.p2.array());
+        glNormal3fv(n.p2.data());
+        glVertex3fv(t.p2.data());
       }
     }
     else { // RGB
@@ -453,14 +451,14 @@ namespace Avogadro {
         triangle t = m_isoGen->getTriangle(i);
         triangle n = m_isoGen->getNormal(i);
 
-        glNormal3fv(n.p0.array());
-        glVertex3fv(t.p0.array());
+        glNormal3fv(n.p0.data());
+        glVertex3fv(t.p0.data());
 
-        glNormal3fv(n.p1.array());
-        glVertex3fv(t.p1.array());
+        glNormal3fv(n.p1.data());
+        glVertex3fv(t.p1.data());
 
-        glNormal3fv(n.p2.array());
-        glVertex3fv(t.p2.array());
+        glNormal3fv(n.p2.data());
+        glVertex3fv(t.p2.data());
       }
     }
     glEnd();

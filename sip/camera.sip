@@ -16,9 +16,9 @@ class Camera
       const Avogadro::GLWidget *parent() const;
       void setAngleOfViewY(double angleOfViewY);
       double angleOfViewY() const;
-      void setModelview(const Eigen::MatrixP3d &matrix);
-      // const Eigen::MatrixP3d & modelview() const;
-      Eigen::MatrixP3d & modelview();
+      void setModelview(const Eigen::Transform3d &matrix);
+      // const Eigen::Transform3d & modelview() const;
+      Eigen::Transform3d & modelview();
       void applyPerspective() const;
       void applyModelview() const;
       void initializeViewPoint();

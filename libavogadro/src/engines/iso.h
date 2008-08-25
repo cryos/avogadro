@@ -64,7 +64,7 @@
 #include <QList>
 #include <QThread>
 #include <QMutex>
-#include <eigen/vector.h>
+#include <Eigen/Core>
 #include <avogadro/painterdevice.h>
 #include <openbabel/mol.h> // Shouldn't need this but get compilation error without
 #include <openbabel/griddata.h>

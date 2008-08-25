@@ -81,16 +81,15 @@ namespace Avogadro {
       t = u;
     }
 
-    MatrixP3d atomTranslation;
-    atomTranslation.loadTranslation(widget->camera()->backTransformedZAxis() * t);
+    Vector3d atomTranslation = widget->camera()->backTransformedZAxis() * t;
 
     widget->molecule()->BeginModify();
     if (widget->selectedPrimitives().size())
       foreach(Primitive *p, widget->selectedPrimitives())
         if (p->type() == Primitive::AtomType)
-          static_cast<Atom *>(p)->setPos(atomTranslation * static_cast<Atom *>(p)->pos());
+          static_cast<Atom *>(p)->setPos(atomTranslation + static_cast<Atom *>(p)->pos());
     if (m_clickedAtom && !widget->isSelected(m_clickedAtom))
-      m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
+      m_clickedAtom->setPos(atomTranslation + m_clickedAtom->pos());
     widget->molecule()->EndModify();
     widget->molecule()->update();
   }
@@ -110,16 +109,15 @@ namespace Avogadro {
     Vector3d fromPos = widget->camera()->unProject(from, what);
     Vector3d toPos = widget->camera()->unProject(to, what);
 
-    MatrixP3d atomTranslation;
-    atomTranslation.loadTranslation(toPos - fromPos);
+    Vector3d atomTranslation = toPos - fromPos;
 
     widget->molecule()->BeginModify();
     if (widget->selectedPrimitives().size())
       foreach(Primitive *p, widget->selectedPrimitives())
         if (p->type() == Primitive::AtomType)
-          static_cast<Atom *>(p)->setPos(atomTranslation * static_cast<Atom *>(p)->pos());
+          static_cast<Atom *>(p)->setPos(atomTranslation + static_cast<Atom *>(p)->pos());
     if (m_clickedAtom && !widget->isSelected(m_clickedAtom))
-      m_clickedAtom->setPos(atomTranslation * m_clickedAtom->pos());
+      m_clickedAtom->setPos(atomTranslation + m_clickedAtom->pos());
     widget->molecule()->EndModify();
     widget->molecule()->update();
   }
@@ -132,10 +130,13 @@ namespace Avogadro {
 
     // Rotate the selected atoms about the center
     // rotate only selected primitives
-    MatrixP3d fragmentRotation;
-    fragmentRotation.loadTranslation(center);
-    fragmentRotation.rotate3(deltaY * ROTATION_SPEED, widget->camera()->backTransformedXAxis());
-    fragmentRotation.rotate3(deltaX * ROTATION_SPEED, widget->camera()->backTransformedYAxis());
+    Transform3d fragmentRotation;
+    fragmentRotation.matrix().setIdentity();
+    fragmentRotation.translation() = center;
+    fragmentRotation.rotate(
+      AngleAxisd(deltaY * ROTATION_SPEED, widget->camera()->backTransformedXAxis()));
+    fragmentRotation.rotate(
+      AngleAxisd(deltaX * ROTATION_SPEED, widget->camera()->backTransformedYAxis()));
     fragmentRotation.translate(-center);
 
     widget->molecule()->BeginModify();
@@ -149,9 +150,10 @@ namespace Avogadro {
   void ManipulateTool::tilt(GLWidget *widget, const Eigen::Vector3d &center, double delta) const
   {
     // Tilt the selected atoms about the center
-    MatrixP3d fragmentRotation;
-    fragmentRotation.loadTranslation(center);
-    fragmentRotation.rotate3(delta * ROTATION_SPEED, widget->camera()->backTransformedZAxis());
+    Transform3d fragmentRotation;
+    fragmentRotation.matrix().setIdentity();
+    fragmentRotation.translation() = center;
+    fragmentRotation.rotate(AngleAxisd(delta * ROTATION_SPEED, widget->camera()->backTransformedZAxis()));
     fragmentRotation.translate(-center);
 
     widget->molecule()->BeginModify();
@@ -271,7 +273,7 @@ namespace Avogadro {
     else if (currentSelection.size())
     {
       // Some atoms are selected - work out where the center is
-      m_selectedPrimitivesCenter.loadZero();
+      m_selectedPrimitivesCenter.setZero();
       int numPrimitives = 0;
       foreach(Primitive *hit, currentSelection)
       {

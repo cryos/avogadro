@@ -19,7 +19,7 @@ include_directories(
   ${avogadro_SOURCE_DIR}/src
   ${avogadro_SOURCE_DIR}/include
   ${OPENBABEL2_INCLUDE_DIR}
-  ${EIGEN_INCLUDE_DIR}
+  ${EIGEN2_INCLUDE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
 )
 
