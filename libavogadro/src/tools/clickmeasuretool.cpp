@@ -246,11 +246,8 @@ namespace Avogadro {
       Vector3d pos = m_selectedAtoms[0]->pos();
       double radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3 ;
 
-      Vector3d xAxis = widget->camera()->backTransformedXAxis();
-      Vector3d zAxis = widget->camera()->backTransformedZAxis();
-
       // relative position of the text on the atom
-      Vector3d textRelPos = radius * (zAxis + xAxis);
+      Vector3d textRelPos = radius * widget->camera()->backTransformedZAxis();
 
       Vector3d textPos = pos+textRelPos;
       widget->painter()->drawText(textPos, tr("*1", "*1 is a number. You most likely do not need to translate this" ));
