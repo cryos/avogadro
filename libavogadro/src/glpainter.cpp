@@ -457,7 +457,7 @@ namespace Avogadro
     glDisable(GL_LIGHTING);
 
     glLineWidth(lineWidth);
-    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+    d->color.apply();
 
     // Draw the line
     glBegin(GL_LINE_STRIP);
@@ -500,7 +500,7 @@ namespace Avogadro
     glDisable(GL_LIGHTING);
 
     glLineWidth(lineWidth);
-    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+    d->color.apply();
 
     glEnable(GL_LINE_STIPPLE);
     glLineStipple(1, stipple);
@@ -806,7 +806,7 @@ namespace Avogadro
     glDisable(GL_LIGHTING);
     glDisable(GL_CULL_FACE);
 
-    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+    d->color.apply();
 
     // Draw the transparent polygon that makes up the sector.
     glBegin(GL_TRIANGLE_FAN);
@@ -897,23 +897,23 @@ namespace Avogadro
     glDisable(GL_CULL_FACE);
 
     glLineWidth(lineWidth);
-    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+    d->color.apply();
 
     // Draw the arc.
     glBegin(GL_LINE_STRIP);
     if (alternateAngle)
       {
-        glVertex3d(_direction2.x(), _direction2.y(), _direction2.z());
+        glVertex3dv(_direction2.data());
         for (int i = 0; i < uvAngle*2 - 1; i++)
-          glVertex3d(points[i].x(), points[i].y(), points[i].z());
-        glVertex3d(_direction1.x(), _direction1.y(), _direction1.z());
+          glVertex3dv(points[i].data());
+        glVertex3dv(_direction1.data());
       }
     else
       {
-        glVertex3d(_direction1.x(), _direction1.y(), _direction1.z());
+        glVertex3dv(_direction1.data());
         for (int i = 0; i < uvAngle*2 - 1; i++)
-          glVertex3d(points[i].x(), points[i].y(), points[i].z());
-        glVertex3d(_direction2.x(), _direction2.y(), _direction2.z());
+          glVertex3dv(points[i].data());
+        glVertex3dv(_direction2.data());
       }
     glEnd();
 
@@ -932,13 +932,13 @@ namespace Avogadro
     glDisable(GL_LIGHTING);
     glDisable(GL_CULL_FACE);
 
-    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+    d->color.apply();
 
     glBegin(GL_TRIANGLE_FAN);
-    glVertex3d(point1.x(), point1.y(), point1.z());
-    glVertex3d(point2.x(), point2.y(), point2.z());
-    glVertex3d(point3.x(), point3.y(), point3.z());
-    glVertex3d(point4.x(), point4.y(), point4.z());
+    glVertex3dv(point1.data());
+    glVertex3dv(point2.data());
+    glVertex3dv(point3.data());
+    glVertex3dv(point4.data());
     glEnd();
 
     glPopMatrix();
@@ -958,13 +958,13 @@ namespace Avogadro
     glDisable(GL_CULL_FACE);
 
     glLineWidth(lineWidth);
-    glColor4f(d->color.red(), d->color.green(), d->color.blue(), d->color.alpha());
+    d->color.apply();
 
     glBegin(GL_LINE_LOOP);
-    glVertex3d(point1.x(), point1.y(), point1.z());
-    glVertex3d(point2.x(), point2.y(), point2.z());
-    glVertex3d(point3.x(), point3.y(), point3.z());
-    glVertex3d(point4.x(), point4.y(), point4.z());
+    glVertex3dv(point1.data());
+    glVertex3dv(point2.data());
+    glVertex3dv(point3.data());
+    glVertex3dv(point4.data());
     glEnd();
 
     glPopMatrix();

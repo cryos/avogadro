@@ -70,10 +70,10 @@ namespace Avogadro {
       if (!residue ||
           strncasecmp(residue->GetName().c_str(), "UNK",3) == 0) {
         std::vector<double> rgb = etab.GetRGB( atom->GetAtomicNum() );
-        m_red = rgb[0];
-        m_green = rgb[1];
-        m_blue = rgb[2];
-        m_alpha = 1.0;
+        m_channels[0] = rgb[0];
+        m_channels[1] = rgb[1];
+        m_channels[2] = rgb[2];
+        m_channels[3] = 1.0;
         return; // default if no residue is specified
       }
     } else
@@ -176,10 +176,10 @@ namespace Avogadro {
       blue = 0x6E;
     }
 
-    m_alpha = 1.0;
-    m_red = red / 255.0;
-    m_blue = blue / 255.0;
-    m_green = green / 255.0;
+    m_channels[3] = 1.0;
+    m_channels[0] = red / 255.0;
+    m_channels[2] = blue / 255.0;
+    m_channels[1] = green / 255.0;
   }
 
 }

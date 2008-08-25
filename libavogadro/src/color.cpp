@@ -46,9 +46,13 @@ namespace Avogadro {
       //delete d;
   }
 
-  Color::Color( GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha ):
-    m_red(red), m_green(green), m_blue(blue), m_alpha(alpha), d(0)
-  {  }
+  Color::Color( GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha ) : d(0)
+  {
+    m_channels[0] = red;
+    m_channels[1] = green;
+    m_channels[2] = blue;
+    m_channels[3] = alpha;
+  }
 
   Color::Color( const Primitive *p ): d(0)
   {
@@ -57,28 +61,28 @@ namespace Avogadro {
 
   Color& Color::operator=( const QColor& other )
   {
-    m_red = other.red();
-    m_green = other.green();
-    m_blue = other.blue();
-    m_alpha = other.alpha();
+    m_channels[0] = other.red();
+    m_channels[1] = other.green();
+    m_channels[2] = other.blue();
+    m_channels[3] = other.alpha();
 
     return *this;
   }
 
   void Color::set(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
   {
-    m_red = red;
-    m_green = green;
-    m_blue = blue;
-    m_alpha = alpha;
+    m_channels[0] = red;
+    m_channels[1] = green;
+    m_channels[2] = blue;
+    m_channels[3] = alpha;
   }
 
   void Color::setToSelectionColor()
   {
-    m_red = 0.3;
-    m_green = 0.6;
-    m_blue = 1.0;
-    m_alpha = 0.7;
+    m_channels[0] = 0.3;
+    m_channels[1] = 0.6;
+    m_channels[2] = 1.0;
+    m_channels[3] = 0.7;
   }
 
   void Color::set(const Primitive *)
@@ -88,38 +92,35 @@ namespace Avogadro {
 
   void Color::setAlpha(double alpha)
   {
-    m_alpha = alpha;
+    m_channels[3] = alpha;
   }
 
   void Color::applyAsMaterials()
   {
-    GLfloat ambientColor [] = { m_red / 3, m_green / 3, m_blue / 3,
-      m_alpha };
-    GLfloat diffuseColor [] = { m_red, m_green, m_blue, m_alpha };
+    GLfloat ambientColor [] = { m_channels[0] / 3, m_channels[1] / 3, m_channels[2] / 3,
+      m_channels[3] };
 
-    float s = ( 0.5 + fabsf( m_red - m_green )
-        + fabsf( m_blue - m_green ) + fabsf( m_blue - m_red ) ) / 4.0;
+    float s = ( 0.5 + fabsf( m_channels[0] - m_channels[1] )
+        + fabsf( m_channels[2] - m_channels[1] ) + fabsf( m_channels[2] - m_channels[0] ) ) / 4.0;
 
     float t = 1.0 - s;
 
-    GLfloat specularColor [] = { s + t * m_red,
-      s + t * m_green,
-      s + t * m_blue,
-      m_alpha };
+    GLfloat specularColor [] = { s + t * m_channels[0],
+      s + t * m_channels[1],
+      s + t * m_channels[2],
+      m_channels[3] };
 
     glMaterialfv( GL_FRONT, GL_AMBIENT, ambientColor );
-    glMaterialfv( GL_FRONT, GL_DIFFUSE, diffuseColor );
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, m_channels );
     glMaterialfv( GL_FRONT, GL_SPECULAR, specularColor );
     glMaterialf( GL_FRONT, GL_SHININESS, 50.0 );
   }
 
   void Color::applyAsFlatMaterials()
   {
-    GLfloat diffuseColor [] = { m_red, m_green, m_blue, m_alpha };
-
-    glMaterialfv( GL_FRONT, GL_AMBIENT, diffuseColor );
-    glMaterialfv( GL_FRONT, GL_DIFFUSE, diffuseColor );
-    glMaterialfv( GL_FRONT, GL_SPECULAR, diffuseColor );
+    glMaterialfv( GL_FRONT, GL_AMBIENT, m_channels );
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, m_channels );
+    glMaterialfv( GL_FRONT, GL_SPECULAR, m_channels );
     glMaterialf( GL_FRONT, GL_SHININESS, 1.0 );
   }
 

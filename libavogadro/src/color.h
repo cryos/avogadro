@@ -128,7 +128,7 @@ namespace Avogadro {
      */
     inline virtual void apply()
     {
-      glColor4fv( &m_red );
+      glColor4fv(m_channels);
     }
 
     /**
@@ -146,27 +146,27 @@ namespace Avogadro {
     /**
      * @return the color as a QColor.
      */
-    inline QColor color() { return QColor(static_cast<int>(m_red),
-                                          static_cast<int>(m_blue),
-                                          static_cast<int>(m_green),
-                                          static_cast<int>(m_alpha)); }
+    inline QColor color() { return QColor(static_cast<int>(m_channels[0]),
+                                          static_cast<int>(m_channels[1]),
+                                          static_cast<int>(m_channels[2]),
+                                          static_cast<int>(m_channels[3])); }
 
     /**
      * @return the red component of the color.
      */
-    inline float red() { return m_red; }
+    inline float red() { return m_channels[0]; }
     /**
      * @return the green component of the color.
      */
-    inline float green() { return m_green; }
+    inline float green() { return m_channels[1]; }
     /**
      * @return the blue component of the color.
      */
-    inline float blue() { return m_blue; }
+    inline float blue() { return m_channels[2]; }
     /**
      * @return the alpha component of the color.
      */
-    inline float alpha() { return m_alpha; }
+    inline float alpha() { return m_channels[3]; }
 
     /**
      * Set the name of this instance of the class.
@@ -183,22 +183,10 @@ namespace Avogadro {
 
   protected:
     /**
-     * \var GLfloat m_red
-     * The red component of the color ranging from 0 to 1.
+     * \var GLfloat m_channels
+     * The components of the color ranging from 0 to 1.
      */
-    /**
-     * \var GLfloat m_green
-     * The green component of the color ranging from 0 to 1.
-     */
-    /**
-     * \var GLfloat m_blue
-     * The blue component of the color ranging from 0 to 1.
-     */
-    /**
-     * \var GLfloat m_alpha
-     * The alpha component of the color ranging from 0 to 1.
-     */
-    GLfloat m_red, m_green, m_blue, m_alpha;
+    GLfloat m_channels[4];
 
     /**
      * The name of the class instance.

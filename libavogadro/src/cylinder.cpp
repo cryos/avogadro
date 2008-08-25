@@ -154,10 +154,10 @@ namespace Avogadro {
   {
     // construct the 4D transformation matrix
     Eigen::Matrix4d matrix;
-    matrix.row(3) = Eigen::Vector4d(0, 0, 0, 1);
+    matrix.row(3) << 0, 0, 0, 1;
     matrix.block<3,1>(0,2) = end2 - end1; // the axis
 
-    // construct an orthogonal basis whose first vector the axis, and whose other vectors
+    // construct an orthogonal basis whose first vector is the axis, and whose other vectors
     // have norm equal to 'radius'.
     Vector3d axisNormalized = matrix.block<3,1>(0,2).normalized();
     matrix.block<3,1>(0,0) = axisNormalized.unitOrthogonal() * radius;
