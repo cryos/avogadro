@@ -420,10 +420,10 @@ namespace Avogadro {
       {
         atomPositions[i++] = const_cast<Eigen::Vector3d*>(&atom->pos());
       }
-      Eigen::Vector4d planeCoeffs;
+      Eigen::Hyperplane<double, 3> planeCoeffs;
       Eigen::fitHyperplane( NumAtoms(), atomPositions, &planeCoeffs );
       delete[] atomPositions;
-      d->normalVector = planeCoeffs.start<3>().normalized();
+      d->normalVector = planeCoeffs.normal();
 
       // compute radius and the farthest atom
       d->radius = -1.0; // so that ( squaredDistanceToCenter > d->radius ) is true for at least one atom.
