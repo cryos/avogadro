@@ -82,7 +82,8 @@
 #include <QDebug>
 
 #include <Eigen/Geometry>
-
+#include <Eigen/Array>
+#define USEQUAT
 // This is a "hidden" exported Qt function on the Mac for Qt-4.x.
 #ifdef Q_WS_MAC
  void qt_mac_set_menubar_icons(bool enable);
@@ -154,8 +155,7 @@ namespace Avogadro
 
       bool animationsEnabled;
 
-      double startH, startB, startA;
-      double deltaH, deltaB, deltaA;
+      Quaterniond startOrientation, endOrientation;
       Vector3d deltaTrans, startTrans;
       double rotationAcceleration;
       long rotationStart;
@@ -1478,27 +1478,7 @@ namespace Avogadro
       double x = (elapsedTime * (M_PI) / d->rotationTime);
       double r = (cos(x-M_PI)+1)/2;
 
-      double curH, curB, curA;
-      curH = d->startH + d->deltaH * r;
-      curB = d->startB + d->deltaB * r;
-      curA = d->startA + d->deltaA * r;
-      double ch = cos(curH);
-      double sh = sin(curH);
-      double ca = cos(curA);
-      double sa = sin(curA);
-      double cb = cos(curB);
-      double sb = sin(curB);
-
-      camera->modelview().matrix()(0,0) = ch * ca;
-      camera->modelview().matrix()(0,1) = sh*sb - ch*sa*cb;
-      camera->modelview().matrix()(0,2) = ch*sa*sb + sh*cb;
-      camera->modelview().matrix()(1,0) = sa;
-      camera->modelview().matrix()(1,1) = ca*cb;
-      camera->modelview().matrix()(1,2) = -ca*sb;
-      camera->modelview().matrix()(2,0) = -sh*ca;
-      camera->modelview().matrix()(2,1) = sh*sa*cb + ch*sb;
-      camera->modelview().matrix()(2,2) = -sh*sa*sb + ch*cb;
-
+      camera->modelview().linear() = d->startOrientation.slerp(r,d->endOrientation).toRotationMatrix();
       camera->modelview().translation() = d->startTrans + d->deltaTrans * r;
     }
 
@@ -1568,59 +1548,16 @@ namespace Avogadro
     d->startTrans = camera->modelview().translation();
     d->deltaTrans = goal.translation() - d->startTrans;
 
-
-    // convert to Euler (heading, attitude, bank)
-    // http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToEuler/index.htm
-    double endH, endA, endB;
-    if(goal.matrix()(1,0) > 0.998) {
-      endH = atan2(goal.matrix()(0,2), goal.matrix()(2,2));
-      endA = M_PI_2;
-      endB = 0;
-    }
-    else if(goal.matrix()(1,0) < -0.998)
-    {
-      endH = atan2(goal.matrix()(0,2), goal.matrix()(2,2));
-      endA = -M_PI_2;
-      endB = 0;
-    }
-    else
-    {
-      endH = atan2(-goal.matrix()(2,0), goal.matrix()(0,0));
-      endB = atan2(-goal.matrix()(1,2), goal.matrix()(1,1));
-      endA = asin(goal.matrix()(1,0));
-    }
-
-    // convert our current modelview to Euler (as above)
-    if(camera->modelview().matrix()(1,0) > 0.998) {
-      d->startH = atan2(camera->modelview().matrix()(0,2), camera->modelview().matrix()(2,2));
-      d->startA = M_PI_2;
-      d->startB = 0;
-    }
-    else if(camera->modelview().matrix()(1,0) < -0.998)
-    {
-      d->startH = atan2(camera->modelview().matrix()(0,2), camera->modelview().matrix()(2,2));
-      d->startA = -M_PI_2;
-      d->startB = 0;
-    }
-    else
-    {
-      d->startH = atan2(-camera->modelview().matrix()(2,0), camera->modelview().matrix()(0,0));
-      d->startB = atan2(-camera->modelview().matrix()(1,2), camera->modelview().matrix()(1,1));
-      d->startA = asin(camera->modelview().matrix()(1,0));
-    }
-
-    // calculate the difference in Euler coordinates
-    d->deltaH = endH - d->startH;
-    d->deltaB = endB - d->startB;
-    d->deltaA = endA - d->startA;
+    d->startOrientation = camera->modelview().linear();
+    d->endOrientation = goal.linear();
 
     // calculate the current time in milliseconds
     struct timeval tv;
     gettimeofday(&tv,0);
     d->rotationStart = tv.tv_sec*1000 + tv.tv_usec/1000;
 
-    // use the max rotation to calculate our animation time
-    double m = max(abs(d->deltaH), max(abs(d->deltaB), abs(d->deltaA)));
+    // use the rotation angle between the two orientations to calculate our animation time
+    double m = AngleAxisd(d->startOrientation.inverse() * d->endOrientation).angle();
     d->rotationTime = m*300;
 
     if(d->rotationTime < 300 && d->deltaTrans.norm2() > 1)
