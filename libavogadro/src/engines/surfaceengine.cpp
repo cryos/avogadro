@@ -150,6 +150,9 @@ namespace Avogadro {
     if (m_vdwThread->isRunning())
       return false;
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
+    if (!mol->NumAtoms())
+      return false; // no atoms -> no surface
+
     if (!m_surfaceValid)
     {
       //VDWSurface(mol);
@@ -269,6 +272,9 @@ namespace Avogadro {
     if (m_vdwThread->isRunning())
       return false;
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
+    if (!mol->NumAtoms())
+      return false; // no atoms -> no surface
+
     if (!m_surfaceValid)
     {
       //VDWSurface(mol);
@@ -391,6 +397,9 @@ namespace Avogadro {
     if (m_vdwThread->isRunning())
       return false;
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
+    if (!mol->NumAtoms())
+      return false; // no atoms -> no surface
+
     if (!m_surfaceValid)
     {
       PrimitiveList prims = primitives();
