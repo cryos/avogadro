@@ -1,4 +1,4 @@
-%Module Avogadro 0
+%Module AvoSIP 0
 
 %ModuleHeaderCode
 #include <python2.5/Python.h>
