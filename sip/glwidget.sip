@@ -12,8 +12,8 @@ class GLWidget : QGLWidget
       GLWidget(Avogadro::Molecule *molecule, const QGLFormat &format, QWidget *parent = 0, 
           const Avogadro::GLWidget * shareWidget = 0);
       ~GLWidget();
-      bool isStable() const;
-      void setStable(bool stable);
+      //bool isStable() const;
+      //void setStable(bool stable);
       int deviceWidth();
       int deviceHeight();
       QSize sizeHint() const;
@@ -91,6 +91,7 @@ class GLWidget : QGLWidget
       virtual void renderDebugOverlay();
 //      void loadEngineFactories();
 //       QWaitCondition *paintCondition() const;
+
 
     public slots:
       void setTool(Avogadro::Tool *tool);

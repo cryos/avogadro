@@ -17,11 +17,11 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 set(LINK_LIBS "avogadro-lib")
 
 ### elementcolor
-set(elementcolor_SRCS elementcolor.cpp)
-qt4_automoc(${elementcolor_SRCS})
-add_library(elementcolor MODULE ${elementcolor_SRCS})
-target_link_libraries(elementcolor ${LINK_LIBS})
-install(TARGETS elementcolor DESTINATION ${DESTINATION_DIR})
+#set(elementcolor_SRCS elementcolor.cpp)
+#qt4_automoc(${elementcolor_SRCS})
+#add_library(elementcolor MODULE ${elementcolor_SRCS})
+#target_link_libraries(elementcolor ${LINK_LIBS})
+#install(TARGETS elementcolor DESTINATION ${DESTINATION_DIR})
 
 ### residuecolor
 set(residuecolor_SRCS residuecolor.cpp)

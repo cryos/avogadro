@@ -9,7 +9,11 @@ class ToolGroup : QObject
     public:
       ToolGroup(QObject *parent = 0);
       ~ToolGroup();
-      void load();
+      //void load();
+      void append(QList<Avogadro::Tool *> tools);
+      void append(Avogadro::Tool *tool);
+
+
       Avogadro::Tool* activeTool() const;
       Avogadro::Tool* tool(int i) const;
       const QList<Avogadro::Tool *>& tools() const;

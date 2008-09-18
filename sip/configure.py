@@ -19,13 +19,13 @@ print "pyqt_sip_dir =", config.pyqt_sip_dir
 
 # Run SIP to generate the code.  Note that we tell SIP where to find the qt
 # module's specification files using the -I flag.
-os.system(" ".join([config.sip_bin, "-c", ".", "-b", build_file, "-I", config.pyqt_sip_dir, qt_sip_flags, "avogadro.sip"]))
+os.system(" ".join([config.sip_bin, "-c", "build", "-b", build_file, "-I", config.pyqt_sip_dir, qt_sip_flags, "avogadro.sip"]))
 
 # We are going to install the SIP specification file for this module and
 # its configuration module.
 installs = []
 
-installs.append(["avogadro.sip", os.path.join(config.default_sip_dir, "avogadro")])
+installs.append(["../avogadro.sip", os.path.join(config.default_sip_dir, "avogadro")])
 
 # Create the Makefile.  The QtModuleMakefile class provided by the
 # pyqtconfig module takes care of all the extra preprocessor, compiler and
@@ -34,9 +34,11 @@ installs.append(["avogadro.sip", os.path.join(config.default_sip_dir, "avogadro"
 makefile = pyqtconfig.QtOpenGLModuleMakefile(
     configuration=config,
     build_file=build_file,
+    dir="build",
     installs=installs
 )
 
+makefile.extra_include_dirs = ["/usr/local/include/openbabel-2.0", "/usr/local/include/eigen2"]
 # Add the library we are wrapping.  The name doesn't include any platform
 # specific prefixes or extensions (e.g. the "lib" prefix on UNIX, or the
 # ".dll" extension on Windows).

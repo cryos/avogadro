@@ -26,8 +26,8 @@ class Color
     float alpha();
     virtual void setName(const QString& name);
     virtual QString name() const;
-    virtual QString type() const;
-    virtual QWidget *settingsWidget();
+    //virtual QString type() const;
+    //virtual QWidget *settingsWidget();
 
 };
 

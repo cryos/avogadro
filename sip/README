@@ -2,20 +2,11 @@ SIP python bindings:
 
 to compile:
 
-In order for the sip bindings to work, I had to export Painter and PainterDevice 
-(class A_EXPORT Painter...). If these classes are not exported, you can't define
-all pure virtual functions in engines and the generated cpp files don't compile...
-
-
 $ python configure.py
+$ cd build
 $ make
 $ sudo make install
 
 example script: 
 
 $ python test.py
-
-
-TODO:
-
- - Eigen

@@ -18,14 +18,16 @@ class Engine : QObject
       };
       */
 
-      Engine(QObject *parent = 0);
-      virtual ~Engine();
-      QString name() const;
-      void setName(const QString &name);
+      //Engine(QObject *parent = 0);
+      //virtual ~Engine();
+      //QString name() const = 0;
+      virtual QString name() const = 0;
+      QString alias() const;
+      void setAlias(const QString &name);
       QString description() const;
       void setDescription(const QString &description);
       // virtual Avogadro::Engine::EngineFlags flags() const;
-      virtual QString type() const = 0;
+      // Avogadro::Plugin::Type type() const;
       virtual bool renderOpaque(Avogadro::PainterDevice *pd) = 0;
       virtual bool renderTransparent(Avogadro::PainterDevice *);
       virtual bool renderQuick(Avogadro::PainterDevice *pd);

@@ -1,6 +1,8 @@
 from PyQt4.Qt import *
 from AvoSIP import *
 import sys
+import pybel
+import openbabel
 
 # create a new application
 # (must be done before creating a GLWidget)
@@ -16,27 +18,25 @@ glwidget.show()
 undostack = QUndoStack()
 glwidget.setUndoStack(undostack)
 
+pluginManager = Avogadro.PluginManager();
+
 # load the tools
 toolgroup = Avogadro.ToolGroup()
-toolgroup.load()
 glwidget.setToolGroup(toolgroup)
 
 # print the names of the found tools
-for tool in toolgroup.tools():
-  print tool.name()
+for tool in pluginManager.tools():
   if tool.name() == "Navigate":
     toolgroup.setActiveTool(tool)
-
 
 # show the settings widget for the active tool (drawtool)
 if (toolgroup.activeTool().settingsWidget()):
   toolgroup.activeTool().settingsWidget().show();
 
-# create the molecule and add a nitrogen atom
+# create the molecule and read a molecule from file
 mol = Avogadro.Molecule()
+readFile("test.sdf", mol)
 glwidget.setMolecule(mol);
-atom = mol.newAtom()
-atom.SetAtomicNum(7)
 
 
 sys.exit(app.exec_())
