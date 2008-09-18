@@ -85,7 +85,6 @@ class Molecule : Avogadro::Primitive, OpenBabel::OBMol
     public:
       Molecule(QObject *parent=0);
       Molecule(const Avogadro::Molecule &other);
-      Molecule(const OpenBabel::OBMol &other);
       virtual ~Molecule();
       void update();
       Avogadro::Atom *CreateAtom();
