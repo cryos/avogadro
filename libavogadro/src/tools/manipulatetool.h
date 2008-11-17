@@ -27,7 +27,7 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
 
-#include <openbabel/mol.h>
+#include <avogadro/molecule.h>
 
 #include <QGLWidget>
 #include <QObject>

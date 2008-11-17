@@ -37,6 +37,7 @@
 namespace Avogadro {
 
   class OrbitalSettingsWidget;
+  class Cube;
 
   //! Surface Engine class.
   class OrbitalEngine : public Engine

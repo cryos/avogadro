@@ -61,6 +61,11 @@ namespace Avogadro {
     setData(1, 8 + m_element);
   }
 
+  ElementItem::~ElementItem()
+  {
+    delete m_color;
+  }
+
   QRectF ElementItem::boundingRect() const
   {
     return QRectF(-m_width/2, -m_height/2, m_width, m_height);

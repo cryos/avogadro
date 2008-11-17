@@ -37,7 +37,6 @@
 #include <QHBoxLayout>
 
 using namespace std;
-using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
@@ -66,7 +65,7 @@ namespace Avogadro {
     if (!m_glwidget->molecule()) {
       return; // done!
     }
-    
+
     // Get back transformed axes that we can rotate around
     Vector3d xAxis = m_glwidget->camera()->backTransformedXAxis();
     Vector3d yAxis = m_glwidget->camera()->backTransformedYAxis();

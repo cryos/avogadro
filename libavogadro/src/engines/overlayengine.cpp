@@ -35,7 +35,6 @@
 #include <QPainter>
 
 using namespace std;
-using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
@@ -75,10 +74,10 @@ namespace Avogadro {
     p.drawRect(pd->width() / 2 - 190, pd->height() - 44, 30, 8);
     p.drawRect(pd->width() / 2 + 160, pd->height() - 44, 30, 8);
     p.drawRect(pd->width() / 2 + 171, pd->height() - 55, 8, 30);
- 
+
     p.restore();
     p.end();
-    
+
     return true;
   }
 

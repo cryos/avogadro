@@ -16,23 +16,14 @@
    <iconset resource="avogadro.qrc" >
     <normaloff>:/icons/avogadro.png</normaloff>:/icons/avogadro.png</iconset>
   </property>
-  <widget class="QWidget" name="centralWidget" >
-   <property name="geometry" >
-    <rect>
-     <x>74</x>
-     <y>60</y>
-     <width>281</width>
-     <height>469</height>
-    </rect>
-   </property>
-  </widget>
+  <widget class="QWidget" name="centralWidget" />
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >
     <rect>
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>27</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -63,7 +54,6 @@
       <string>Export</string>
      </property>
      <addaction name="actionExportGraphics" />
-     <addaction name="actionExportPOV" />
     </widget>
     <addaction name="actionNew" />
     <addaction name="actionOpen" />
@@ -152,25 +142,8 @@
    <addaction name="menuSettings" />
    <addaction name="menuHelp" />
   </widget>
-  <widget class="QStatusBar" name="statusbar" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>529</y>
-     <width>621</width>
-     <height>24</height>
-    </rect>
-   </property>
-  </widget>
+  <widget class="QStatusBar" name="statusbar" />
   <widget class="QToolBar" name="fileToolBar" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>27</y>
-     <width>621</width>
-     <height>33</height>
-    </rect>
-   </property>
    <property name="windowTitle" >
     <string>Main Toolbar</string>
    </property>
@@ -193,18 +166,10 @@
    <addaction name="actionQuitTool" />
   </widget>
   <widget class="QDockWidget" name="projectDock" >
-   <property name="geometry" >
-    <rect>
-     <x>361</x>
-     <y>60</y>
-     <width>260</width>
-     <height>469</height>
-    </rect>
-   </property>
    <property name="minimumSize" >
     <size>
-     <width>165</width>
-     <height>0</height>
+     <width>173</width>
+     <height>93</height>
     </size>
    </property>
    <property name="allowedAreas" >
@@ -217,14 +182,6 @@
     <number>2</number>
    </attribute>
    <widget class="QWidget" name="projectWidget" >
-    <property name="geometry" >
-     <rect>
-      <x>2</x>
-      <y>22</y>
-      <width>256</width>
-      <height>445</height>
-     </rect>
-    </property>
     <layout class="QVBoxLayout" >
      <property name="spacing" >
       <number>6</number>
@@ -255,14 +212,6 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="toolsDock" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>60</y>
-     <width>68</width>
-     <height>232</height>
-    </rect>
-   </property>
    <property name="allowedAreas" >
     <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
@@ -272,26 +221,9 @@
    <attribute name="dockWidgetArea" >
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="toolsWidget" >
-    <property name="geometry" >
-     <rect>
-      <x>2</x>
-      <y>22</y>
-      <width>64</width>
-      <height>208</height>
-     </rect>
-    </property>
-   </widget>
+   <widget class="QWidget" name="toolsWidget" />
   </widget>
   <widget class="QDockWidget" name="enginesDock" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>298</y>
-     <width>68</width>
-     <height>231</height>
-    </rect>
-   </property>
    <property name="allowedAreas" >
     <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
@@ -301,16 +233,7 @@
    <attribute name="dockWidgetArea" >
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="enginesWidget" >
-    <property name="geometry" >
-     <rect>
-      <x>2</x>
-      <y>22</y>
-      <width>64</width>
-      <height>207</height>
-     </rect>
-    </property>
-   </widget>
+   <widget class="QWidget" name="enginesWidget" />
   </widget>
   <action name="actionOpen" >
    <property name="icon" >
@@ -601,11 +524,6 @@
    </property>
    <property name="text" >
     <string>Configure Avogadro...</string>
-   </property>
-  </action>
-  <action name="actionExportPOV" >
-   <property name="text" >
-    <string>Export POVRay...</string>
    </property>
   </action>
   <action name="actionTutorials" >

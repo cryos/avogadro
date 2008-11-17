@@ -45,7 +45,7 @@ namespace Avogadro
     void setLUMO(int num);
     void setCube(Eigen::Vector3d origin, int nx, int ny, int nz, double step);
     Eigen::Vector3d origin();
-    QList<int> steps();
+    Eigen::Vector3i steps();
     double stepSize();
 
   private:

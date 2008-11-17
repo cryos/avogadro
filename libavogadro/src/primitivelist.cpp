@@ -23,7 +23,6 @@
  **********************************************************************/
 
 #include <config.h>
-#include <avogadro/primitive.h>
 #include <avogadro/primitivelist.h>
 
 namespace Avogadro {

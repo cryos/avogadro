@@ -36,6 +36,7 @@
 namespace Avogadro {
 
   //! Sphere Engine class.
+  class Atom;
   class SphereSettingsWidget;
   class SphereEngine : public Engine
   {

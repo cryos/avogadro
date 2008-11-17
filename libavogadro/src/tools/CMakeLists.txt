@@ -31,13 +31,13 @@ target_link_libraries(drawtool ${LINK_LIBS})
 install(TARGETS drawtool DESTINATION ${DESTINATION_DIR})
 
 ### bondcentrictool
-set(bondcentrictool_SRCS bondcentrictool.cpp skeletontree.cpp)
-qt4_add_resources(bondcentrictool_RC_SRCS bondcentrictool.qrc)
-qt4_automoc(${bondcentrictool_SRCS})
-add_library(bondcentrictool MODULE quaternion.cpp
-    ${bondcentrictool_SRCS} ${bondcentrictool_RC_SRCS})
-target_link_libraries(bondcentrictool ${LINK_LIBS})
-install(TARGETS bondcentrictool DESTINATION ${DESTINATION_DIR})
+#set(bondcentrictool_SRCS bondcentrictool.cpp skeletontree.cpp)
+#qt4_add_resources(bondcentrictool_RC_SRCS bondcentrictool.qrc)
+#qt4_automoc(${bondcentrictool_SRCS})
+#add_library(bondcentrictool MODULE quaternion.cpp
+#    ${bondcentrictool_SRCS} ${bondcentrictool_RC_SRCS})
+#target_link_libraries(bondcentrictool ${LINK_LIBS})
+#install(TARGETS bondcentrictool DESTINATION ${DESTINATION_DIR})
 
 ### clickmeasuretool
 set(clickmeasuretool_SRCS clickmeasuretool.cpp)

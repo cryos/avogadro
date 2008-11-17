@@ -27,6 +27,8 @@
 #include <avogadro/primitive.h>
 #include <QtPlugin>
 
+#include <openbabel/mol.h>
+
 using namespace OpenBabel;
 
 namespace Avogadro {

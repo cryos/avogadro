@@ -146,27 +146,27 @@ namespace Avogadro {
     /**
      * @return the color as a QColor.
      */
-    inline QColor color() { return QColor(static_cast<int>(m_channels[0]),
-                                          static_cast<int>(m_channels[1]),
-                                          static_cast<int>(m_channels[2]),
-                                          static_cast<int>(m_channels[3])); }
+    inline QColor color() const { return QColor(static_cast<int>(m_channels[0]),
+                                                static_cast<int>(m_channels[1]),
+                                                static_cast<int>(m_channels[2]),
+                                                static_cast<int>(m_channels[3])); }
 
     /**
      * @return the red component of the color.
      */
-    inline float red() { return m_channels[0]; }
+    inline float red() const { return m_channels[0]; }
     /**
      * @return the green component of the color.
      */
-    inline float green() { return m_channels[1]; }
+    inline float green() const { return m_channels[1]; }
     /**
      * @return the blue component of the color.
      */
-    inline float blue() { return m_channels[2]; }
+    inline float blue() const { return m_channels[2]; }
     /**
      * @return the alpha component of the color.
      */
-    inline float alpha() { return m_channels[3]; }
+    inline float alpha() const { return m_channels[3]; }
 
     /**
      * Set the name of this instance of the class.

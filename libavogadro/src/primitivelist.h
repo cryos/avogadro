@@ -137,7 +137,7 @@ namespace Avogadro
         QVector< QList<Primitive *> >::const_iterator vit;
         QList<Primitive *>::const_iterator lit;
 
-        inline const_iterator(QVector< QList<Primitive *> > *p) : vl(p) 
+        inline const_iterator(QVector< QList<Primitive *> > *p) : vl(p)
         {
           vit = vl->begin();
           lit = (*vit).begin();
@@ -156,14 +156,14 @@ namespace Avogadro
         }
 
         inline Primitive* operator*() const { return *lit; }
-        inline const_iterator operator++(int) { 
+        inline const_iterator operator++(int) {
           const_iterator p = *this;
           ++(*this);
           return p;
         }
 
-        inline const_iterator &operator++() 
-        { 
+        inline const_iterator &operator++()
+        {
           if(vit != vl->end())
           {
             lit++;
@@ -181,16 +181,16 @@ namespace Avogadro
           return *this;
         }
 
-        inline bool operator!=(const const_iterator &o) const 
-        { 
+        inline bool operator!=(const const_iterator &o) const
+        {
           return !(vit == vl->end() && o.vit == vl->end()) &&
               !(vit == o.vit && lit == o.lit);
         }
 
-        inline bool operator==(const const_iterator &o) const 
+        inline bool operator==(const const_iterator &o) const
         { // equal if both are at the end
-          return (vit == vl->end() && o.vit == vl->end()) || 
-            (vit == o.vit && lit == o.lit); 
+          return (vit == vl->end() && o.vit == vl->end()) ||
+            (vit == o.vit && lit == o.lit);
         }
       };
 

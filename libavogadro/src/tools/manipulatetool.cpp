@@ -26,12 +26,12 @@
 
 #include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
+#include <avogadro/atom.h>
+#include <avogadro/molecule.h>
+
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
-
-#include <openbabel/obiter.h>
-#include <openbabel/mol.h>
 
 #include <QtPlugin>
 
@@ -83,14 +83,12 @@ namespace Avogadro {
 
     Vector3d atomTranslation = widget->camera()->backTransformedZAxis() * t;
 
-    widget->molecule()->BeginModify();
     if (widget->selectedPrimitives().size())
       foreach(Primitive *p, widget->selectedPrimitives())
         if (p->type() == Primitive::AtomType)
           static_cast<Atom *>(p)->setPos(atomTranslation + static_cast<Atom *>(p)->pos());
     if (m_clickedAtom && !widget->isSelected(m_clickedAtom))
       m_clickedAtom->setPos(atomTranslation + m_clickedAtom->pos());
-    widget->molecule()->EndModify();
     widget->molecule()->update();
   }
 
@@ -101,7 +99,7 @@ namespace Avogadro {
     // Currently, there's a Qt/Mac bug -- SizeAllCursor looks like a spreadsheet cursor
 #ifdef Q_WS_MAC
     widget->setCursor(Qt::CrossCursor);
-#else 
+#else
     widget->setCursor(Qt::SizeAllCursor);
 #endif
 
@@ -111,14 +109,12 @@ namespace Avogadro {
 
     Vector3d atomTranslation = toPos - fromPos;
 
-    widget->molecule()->BeginModify();
     if (widget->selectedPrimitives().size())
       foreach(Primitive *p, widget->selectedPrimitives())
         if (p->type() == Primitive::AtomType)
           static_cast<Atom *>(p)->setPos(atomTranslation + static_cast<Atom *>(p)->pos());
     if (m_clickedAtom && !widget->isSelected(m_clickedAtom))
       m_clickedAtom->setPos(atomTranslation + m_clickedAtom->pos());
-    widget->molecule()->EndModify();
     widget->molecule()->update();
   }
 
@@ -139,11 +135,9 @@ namespace Avogadro {
       AngleAxisd(deltaX * ROTATION_SPEED, widget->camera()->backTransformedYAxis()));
     fragmentRotation.translate(-center);
 
-    widget->molecule()->BeginModify();
     foreach(Primitive *p, widget->selectedPrimitives())
       if (p->type() == Primitive::AtomType)
         static_cast<Atom *>(p)->setPos(fragmentRotation * static_cast<Atom *>(p)->pos());
-    widget->molecule()->EndModify();
     widget->molecule()->update();
   }
 
@@ -156,11 +150,9 @@ namespace Avogadro {
     fragmentRotation.rotate(AngleAxisd(delta * ROTATION_SPEED, widget->camera()->backTransformedZAxis()));
     fragmentRotation.translate(-center);
 
-    widget->molecule()->BeginModify();
     foreach(Primitive *p, widget->selectedPrimitives())
       if (p->type() == Primitive::AtomType)
         static_cast<Atom *>(p)->setPos(fragmentRotation * static_cast<Atom *>(p)->pos());
-    widget->molecule()->EndModify();
     widget->molecule()->update();
   }
 
@@ -178,7 +170,7 @@ namespace Avogadro {
       // Currently, there's a Qt/Mac bug -- SizeAllCursor looks like a spreadsheet cursor
 #ifdef Q_WS_MAC
       widget->setCursor(Qt::CrossCursor);
-#else 
+#else
       widget->setCursor(Qt::SizeAllCursor);
 #endif
     }
@@ -318,9 +310,8 @@ namespace Avogadro {
     // part of the molecule.
     Eigen::Vector3d atomsBarycenter(0., 0., 0.);
     double sumOfWeights = 0.;
-    std::vector<OpenBabel::OBNodeBase*>::iterator i;
-    for ( Atom *atom = static_cast<Atom*>(widget->molecule()->BeginAtom(i));
-          atom; atom = static_cast<Atom*>(widget->molecule()->NextAtom(i))) {
+    QList<Atom*> atoms = widget->molecule()->atoms();
+    foreach (Atom *atom, atoms) {
       Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
       double atomDistance = transformedAtomPos.norm();
       double dot = transformedAtomPos.z() / atomDistance;

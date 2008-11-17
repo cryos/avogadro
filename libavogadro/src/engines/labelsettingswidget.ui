@@ -84,6 +84,11 @@
        <string>Partial Charge</string>
       </property>
      </item>
+     <item>
+      <property name="text" >
+       <string>Unique ID</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="1" column="0" >
@@ -137,6 +142,11 @@
      <item>
       <property name="text" >
        <string>Bond order</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Unique ID</string>
       </property>
      </item>
     </widget>

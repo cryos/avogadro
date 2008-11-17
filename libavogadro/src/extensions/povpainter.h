@@ -1,7 +1,7 @@
 /**********************************************************************
   POVPainter - drawing spheres, cylinders and text in a POVRay scene
 
-  Copyright (C) 2007 Marcus D. Hanwell
+  Copyright (C) 2007, 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -269,6 +269,11 @@ namespace Avogadro
     void drawQuadrilateral(const Eigen::Vector3d & point1, const Eigen::Vector3d & point2,
                            const Eigen::Vector3d & point3, const Eigen::Vector3d & point4,
                            double lineWidth);
+
+    /**
+     * Draws the given mesh.
+     */
+    void drawMesh(const Mesh & mesh, int mode = 0, bool normalWind = true);
 
     int drawText (int x, int y, const QString &string) const;
     int drawText (const QPoint& pos, const QString &string) const;

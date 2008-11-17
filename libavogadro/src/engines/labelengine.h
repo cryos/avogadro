@@ -36,6 +36,8 @@
 namespace Avogadro {
 
   //! Label Engine class.
+  class Atom;
+  class Bond;
   class LabelSettingsWidget;
   class LabelEngine : public Engine
   {

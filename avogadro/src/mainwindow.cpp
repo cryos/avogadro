@@ -44,10 +44,13 @@
 #include <avogadro/pluginmanager.h>
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
+
 #include <avogadro/primitive.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+
 #include <avogadro/primitiveitemmodel.h>
 #include <avogadro/toolgroup.h>
-#include <avogadro/povpainter.h>
 
 #include <openbabel/obconversion.h>
 #include <openbabel/mol.h>
@@ -91,6 +94,7 @@
 
 using namespace std;
 using namespace OpenBabel;
+using namespace Eigen;
 
 namespace Avogadro
 {
@@ -632,10 +636,9 @@ namespace Avogadro
 
   bool MainWindow::loadFile( const QString &fileName )
   {
-    if(fileName.isEmpty())
-    {
-      setFileName( fileName );
-      setMolecule( new Molecule(this) );
+    if(fileName.isEmpty()) {
+      setFileName(fileName);
+      setMolecule(new Molecule(this));
       return true;
     }
 
@@ -675,16 +678,16 @@ namespace Avogadro
 
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
 
-    Molecule *molecule = new Molecule;
-    if ( conv.Read( molecule, &ifs ) ) {
+    OBMol *molecule = new OBMol;
+    if (conv.Read( molecule, &ifs)) {
       if (molecule->GetDimension() != 3) {
-	if (molecule->Has2D()) {
+        if (molecule->Has2D()) {
           int retval = QMessageBox::warning( this, tr( "Avogadro" ),
               tr( "This file contains 2D coordinates only. Do you want Avogadro "
               "to scale the bonds and do a quick optimization?"), QMessageBox::Yes, QMessageBox::No );
 
           if (retval == QMessageBox::Yes) {
-	    // Scale the bond lengths  
+            // Scale the bond lengths
             double sum = 0.0;
             FOR_BONDS_OF_MOL (bond, molecule) {
               sum += bond->GetLength();
@@ -692,14 +695,14 @@ namespace Avogadro
             double scale = (1.5 * molecule->NumBonds()) / sum;
             FOR_ATOMS_OF_MOL (atom, molecule) {
               vector3 vec = atom->GetVector();
-              vec.SetX(vec.x() * scale); 
-              vec.SetY(vec.y() * scale); 
+              vec.SetX(vec.x() * scale);
+              vec.SetY(vec.y() * scale);
               atom->SetVector(vec);
             }
             molecule->Center();
 
-	    // place end atoms of wedge bonds at +1.0 Z
-	    // place end atoms of hash bonds at -1.0 Z
+            // place end atoms of wedge bonds at +1.0 Z
+            // place end atoms of hash bonds at -1.0 Z
             FOR_ATOMS_OF_MOL (atom, molecule) {
               FOR_BONDS_OF_ATOM (bond, &*atom) {
                 if (bond->IsHash() && (&*atom == bond->GetBeginAtom())) {
@@ -715,18 +718,21 @@ namespace Avogadro
             }
             OBForceField *ff = OBForceField::FindForceField("UFF");
             if (ff) {
-  	      ff->Setup(*molecule);
+              ff->Setup(*molecule);
               ff->SteepestDescent(100);
               ff->GetCoordinates(*molecule);
-	    }
-	  }	  
-	} else {
+            }
+          }
+        }
+        else {
           QMessageBox::warning( this, tr( "Avogadro" ),
               tr( "This file does not contain 3D coordinates. You may not be able to edit or view properly." ));
-	}
+        }
       }
 
-      setMolecule( molecule );
+      Molecule *mol = new Molecule;
+      mol->setOBMol(molecule);
+      setMolecule(mol);
 
       // do we have a multi-molecule file?
       // Changed this -- we have problems knowing if we're at the end of a gzipped file
@@ -741,10 +747,11 @@ namespace Avogadro
       QApplication::restoreOverrideCursor();
 
       QString status;
-      QTextStream( &status ) << tr("Atoms: ") << d->molecule->NumAtoms() <<
-        tr(" Bonds: ") << d->molecule->NumBonds();
+      QTextStream( &status ) << tr("Atoms: ") << d->molecule->numAtoms() <<
+        tr(" Bonds: ") << d->molecule->numBonds();
       statusBar()->showMessage( status, 5000 );
-    } else {
+    }
+    else {
       QApplication::restoreOverrideCursor();
       statusBar()->showMessage( tr("Reading molecular file failed."), 5000 );
       return false;
@@ -870,7 +877,7 @@ namespace Avogadro
       return false;
     }
     file.close();
-    
+
     // We'll save to a new file and then rename it to the requested file name
     // This way, if an error occurs, we won't destroy the old file
     QString newFileName(fileName);
@@ -974,9 +981,10 @@ namespace Avogadro
     // supports either 2D or 3D, generic data
     OBFormat *mdlFormat = conv.FindFormat( "mdl" );
     QByteArray copyData;
+    OBMol obmol = d->molecule->OBMol();
     string output;
     if ( mdlFormat && conv.SetOutFormat( mdlFormat ) ) {
-      output = conv.WriteString( d->molecule );
+      output = conv.WriteString(&obmol);
       copyData = output.c_str();
       // we embed the molfile into the image
       // e.g. http://baoilleach.blogspot.com/2007/08/access-embedded-molecular-information.html
@@ -986,7 +994,7 @@ namespace Avogadro
     // save a canonical SMILES too
     OBFormat *canFormat = conv.FindFormat( "can" );
     if ( canFormat && conv.SetOutFormat( canFormat ) ) {
-      output = conv.WriteString( d->molecule );
+      output = conv.WriteString(&obmol);
       copyData = output.c_str();
       exportImage.setText("SMILES", copyData);
     }
@@ -996,55 +1004,6 @@ namespace Avogadro
           tr( "Cannot save file %1." ).arg( fileName ) );
       return;
     }
-  }
-
-  void MainWindow::exportPOV()
-  {
-    QSettings settings;
-    QString selectedFilter = settings.value("Export POV-Ray Filter", tr("POV-Ray format") + " (*.pov)").toString();
-
-    QStringList filters;
-    filters << tr("POV-Ray format") + " (*.pov)"
-            << tr("All files") + " (* *.*)";
-
-    QString fileName = SaveDialog::run(this,
-                                       tr("Export POV Scene"),
-                                       d->fileDialogPath,
-                                       d->fileName,
-                                       filters,
-                                       "pov",
-                                       selectedFilter);
-
-    settings.setValue("Export POV-Ray Filter", selectedFilter);
-
-    if(fileName.isEmpty()) {
-      return;
-    }
-
-    bool ok;
-    int w = d->glWidget->width();
-    int h = d->glWidget->height();
-    double defaultAspectRatio = static_cast<double>(w)/h;
-    double aspectRatio =
-      QInputDialog::getDouble(0,
-      QObject::tr("Set Aspect Ratio"),
-      QObject::tr("The current Avogadro scene is %1x%2 pixels large, "
-          "and therefore has aspect ratio %3.\n"
-          "You may keep this value, for example if you intend to use POV-Ray\n"
-          "to produce an image of %4x1000 pixels, "
-          "or you may enter any other positive value,\n"
-          "for example 1 if you intend to use POV-Ray to produce a square image, "
-          "like 1000x1000 pixels.")
-          .arg(w).arg(h).arg(defaultAspectRatio)
-          .arg(static_cast<int>(1000*defaultAspectRatio)),
-      defaultAspectRatio,
-      0.1,
-      10,
-      6,
-      &ok);
-
-    if(ok)
-      POVPainterDevice pd( fileName, aspectRatio, d->glWidget );
   }
 
   void MainWindow::revert()
@@ -1115,35 +1074,35 @@ namespace Avogadro
     AboutDialog * about = new AboutDialog( this );
     about->show();
   }
-  
+
   // Unfortunately Qt signals/slots doesn't let us pass an arbitrary URL to a slot
   // or we'd have one openURL("string")
   // Instead, we've got a bunch of one-line actions...
   void MainWindow::openTutorialURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/Tutorials"));    
+    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/Tutorials"));
   }
 
   void MainWindow::openFAQURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/Avogadro:FAQ"));    
+    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/Avogadro:FAQ"));
   }
 
   void MainWindow::openWebsiteURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/"));    
+    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/"));
   }
 
   void MainWindow::openReleaseNotesURL() const
   {
-    QDesktopServices::openUrl(QUrl( "http://avogadro.openmolecules.net/wiki/Avogadro_" + QString(VERSION) ));    
+    QDesktopServices::openUrl(QUrl( "http://avogadro.openmolecules.net/wiki/Avogadro_" + QString(VERSION) ));
   }
 
   void MainWindow::openBugURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://sourceforge.net/tracker/?group_id=165310&atid=835077"));    
+    QDesktopServices::openUrl(QUrl("http://sourceforge.net/tracker/?group_id=165310&atid=835077"));
   }
-  
+
   void MainWindow::setView( int index )
   {
     d->glWidget = d->glWidgets.at( index );
@@ -1184,7 +1143,7 @@ namespace Avogadro
     OBConversion conv;
     OBFormat *pasteFormat = NULL;
     QByteArray text;
-    Molecule newMol;
+    OBMol newMol;
 
     if ( mimeData->hasFormat( "chemical/x-mdl-molfile" ) ) {
       pasteFormat = conv.FindFormat( "mdl" );
@@ -1207,15 +1166,17 @@ namespace Avogadro
       return false;
     }
 
-    if ( conv.ReadString( &newMol, text.data() ) 
+    if ( conv.ReadString( &newMol, text.data() )
          && newMol.NumAtoms() != 0 ) {
       vector3 offset; // small offset so that pasted mols don't fall on top
       offset.randomUnitVector();
       offset *= 0.2;
 
-      newMol.Translate( offset );
-      PasteCommand *command = new PasteCommand( d->molecule, newMol, d->glWidget );
-      d->undoStack->push( command );
+      newMol.Translate(offset);
+      Molecule newMolecule;
+      newMolecule.setOBMol(&newMol);
+      PasteCommand *command = new PasteCommand(d->molecule, newMolecule, d->glWidget);
+      d->undoStack->push(command);
       d->toolGroup->setActiveTool(tr("Manipulate")); // set the tool to manipulate, so we can immediate move the selection
     } else {
       return false;
@@ -1225,75 +1186,78 @@ namespace Avogadro
 
   // Helper function -- works for "cut" or "copy"
   // FIXME add parameter to set "Copy" or "Cut" in messages
-  QMimeData* MainWindow::prepareClipboardData( PrimitiveList selectedItems )
+  QMimeData* MainWindow::prepareClipboardData(PrimitiveList selectedItems)
   {
     QMimeData *mimeData = new QMimeData;
     // we also save an image for copy/paste to office programs, presentations, etc.
-    QImage clipboardImage = d->glWidget->grabFrameBuffer( true );
+    QImage clipboardImage = d->glWidget->grabFrameBuffer(true);
 
-    Molecule *moleculeCopy = d->molecule;
-    if ( !selectedItems.isEmpty() ) { // we only want to copy the selected items
+    Molecule *moleculeCopy;// = d->molecule;
+    if (!selectedItems.isEmpty()) { // we only want to copy the selected items
       moleculeCopy = new Molecule;
-      std::map<OBAtom*, OBAtom*> AtomMap; // key is from old, value from new
-      // copy atoms and create a map of atom indexes
-      foreach( Primitive *item, selectedItems.subList(Primitive::AtomType) ) {
-        OBAtom *selected = static_cast<Atom*>( item );
-        moleculeCopy->InsertAtom( *selected );
-        AtomMap[selected] = moleculeCopy->GetAtom( moleculeCopy->NumAtoms() );
+      std::map<Atom*, Atom*> AtomMap; // key is from old, value from new
+      // copy atoms and create a map of atom indices
+      foreach(Primitive *item, selectedItems.subList(Primitive::AtomType)) {
+        Atom *selected = moleculeCopy->newAtom();
+        *selected = *(static_cast<Atom *>(item));
+        AtomMap[selected] = moleculeCopy->atom(moleculeCopy->numAtoms()-1);
       }
 
+      /// FIXME Need to get bond copying working again
       // use the atom map to map bonds
-      map<OBAtom*, OBAtom*>::iterator posBegin, posEnd;
-      FOR_BONDS_OF_MOL( b, d->molecule ) {
-        posBegin = AtomMap.find( b->GetBeginAtom() );
-        posEnd = AtomMap.find( b->GetEndAtom() );
+/*      map<Atom*, Atom*>::iterator posBegin, posEnd;
+      QList<const Bond*> bonds = d->molecule->bonds();
+      foreach(const Bond *bond, bonds) {
+        posBegin = AtomMap.find(bond->beginAtom());
+        posEnd = AtomMap.find(bond->endAtom());
         // make sure both bonds are in the map (i.e. selected)
         if ( posBegin != AtomMap.end() && posEnd != AtomMap.end() ) {
           moleculeCopy->AddBond(( posBegin->second )->GetIdx(),
               ( posEnd->second )->GetIdx(),
               b->GetBO(), b->GetFlags() );
         }
-      } // end looping over bonds
+      } // end looping over bonds */
     } // should now have a copy of our selected fragment
 
     OBConversion conv;
     // MDL format is used for main copy -- atoms, bonds, chirality
     // supports either 2D or 3D, generic data
     // CML is another option, but not as well tested in Open Babel
-    OBFormat *mdlFormat = conv.FindFormat( "mdl" );
-    if ( !mdlFormat || !conv.SetOutFormat( mdlFormat ) ) {
+    OBFormat *mdlFormat = conv.FindFormat("mdl");
+    if (!mdlFormat || !conv.SetOutFormat(mdlFormat)) {
       statusBar()->showMessage( tr( "Copy failed (mdl unavailable)." ), 5000 );
       return NULL; // nothing in it yet
     }
 
     // write an MDL file first (with bond orders, radicals, etc.)
     // (CML might be better in the future, but this works well now)
-    string output = conv.WriteString( moleculeCopy );
-    QByteArray copyData( output.c_str(), output.length() );
-    mimeData->setData( "chemical/x-mdl-molfile", copyData );
+    OBMol obmol = moleculeCopy->OBMol();
+    string output = conv.WriteString(&obmol);
+    QByteArray copyData(output.c_str(), output.length());
+    mimeData->setData("chemical/x-mdl-molfile", copyData);
 
     // we embed the molfile into the image
     // e.g. http://baoilleach.blogspot.com/2007/08/access-embedded-molecular-information.html
     clipboardImage.setText("molfile", copyData);
 
     // save a canonical SMILES too
-    OBFormat *canFormat = conv.FindFormat( "can" );
+    OBFormat *canFormat = conv.FindFormat("can");
     if ( canFormat && conv.SetOutFormat( canFormat ) ) {
-      output = conv.WriteString( moleculeCopy );
+      output = conv.WriteString(&obmol);
       copyData = output.c_str();
       clipboardImage.setText("SMILES", copyData);
     }
 
     // Copy XYZ coordinates to the text selection buffer
-    OBFormat *xyzFormat = conv.FindFormat( "xyz" );
-    if ( xyzFormat && conv.SetOutFormat( xyzFormat ) ) {
-      output = conv.WriteString( moleculeCopy );
+    OBFormat *xyzFormat = conv.FindFormat("xyz");
+    if ( xyzFormat && conv.SetOutFormat(xyzFormat)) {
+      output = conv.WriteString(&obmol);
       copyData = output.c_str();
-      mimeData->setText( QString( copyData ) );
+      mimeData->setText(QString(copyData));
     }
 
     // need to free our temporary moleculeCopy
-    if ( !selectedItems.isEmpty() ) {
+    if (!selectedItems.isEmpty()) {
       delete moleculeCopy;
     }
 
@@ -1335,15 +1299,16 @@ namespace Avogadro
   void MainWindow::selectAll()
   {
     QList<Primitive*> selection;
-    FOR_ATOMS_OF_MOL( a, d->molecule ) {
-      Atom *atom = static_cast<Atom*>( &*a );
-      selection.append( atom );
+    QList<Atom*> atoms = d->molecule->atoms();
+    foreach(Atom* atom, atoms) {
+      selection.append(const_cast<Atom*>(atom));
     }
-    FOR_BONDS_OF_MOL( b, d->molecule ) {
-      Bond *bond = static_cast<Bond*>( &*b );
-      selection.append( bond );
+    QList<Bond*> bonds = d->molecule->bonds();
+     foreach(Bond* bond, bonds) {
+      selection.append(const_cast<Bond*>(bond));
     }
-    d->glWidget->setSelected( selection, true );
+
+    d->glWidget->setSelected(selection, true);
 
     d->glWidget->update();
   }
@@ -1508,7 +1473,7 @@ namespace Avogadro
       return;
     }
 
-    if( d->molecule->NumAtoms() == 0 )
+    if(d->molecule->numAtoms() == 0)
     {
       camera->translate( d->glWidget->center() - Vector3d( 0, 0, 10 ) );
       d->glWidget->update();
@@ -1648,7 +1613,6 @@ namespace Avogadro
     connect( ui.actionRevert, SIGNAL( triggered() ), this, SLOT( revert() ) );
     connect( ui.actionExportGraphics, SIGNAL( triggered() ), this, SLOT( exportGraphics() ) );
     ui.actionExportGraphics->setEnabled( QGLFramebufferObject::hasOpenGLFramebufferObjects() );
-    connect( ui.actionExportPOV, SIGNAL( triggered() ), this, SLOT( exportPOV() ) );
 #ifdef Q_WS_MAC
     connect( ui.actionQuit, SIGNAL( triggered() ), this, SLOT( macQuit() ) );
     connect( ui.actionQuitTool, SIGNAL( triggered() ), this, SLOT( macQuit() ) );
@@ -1692,7 +1656,7 @@ namespace Avogadro
     connect( ui.actionRelease_Notes, SIGNAL( triggered() ), this, SLOT( openReleaseNotesURL() ));
     connect( ui.actionAvogadro_Website, SIGNAL( triggered() ), this, SLOT( openWebsiteURL() ) );
     connect( ui.actionReport_a_Bug, SIGNAL( triggered() ), this, SLOT( openBugURL() ) );
-    
+
 
     connect( d->toolGroup, SIGNAL( toolActivated( Tool * ) ), this, SLOT( setTool( Tool * ) ) );
     connect( this, SIGNAL( moleculeChanged( Molecule * ) ), d->toolGroup, SLOT( setMolecule( Molecule * ) ) );
@@ -1883,7 +1847,7 @@ namespace Avogadro
     settings.beginGroup("tools");
     d->toolGroup->writeSettings(settings);
     settings.endGroup();
-    
+
     // write the plugin manager settings
     //settings.beginGroup("plugins");
     //pluginManager.writeSettings(settings);
@@ -1915,7 +1879,7 @@ namespace Avogadro
               break;
             }
           }
-          
+
           if ( !path ) {
             // Gotta add a new root menu
             path = new QMenu(menuPath.at( 0 ));
@@ -1936,12 +1900,12 @@ namespace Avogadro
                   break;
                 }
               } // end checking menu items
-              
+
               if ( !nextPath ) {
                 // add a new submenu
                 nextPath = path->addMenu( menuPath.at( i ) );
               }
-              
+
               path = nextPath;
             } // end looping through menuPath
           } // endif
@@ -2009,8 +1973,8 @@ namespace Avogadro
       foreach( QAction *menuItem, menu->menu()->actions() ) {
         menuItem->setEnabled(false);
       }
-    }    
-    
+    }
+
     // Now enable key menu items -- new, open, open recent, quit, etc.
     ui.actionAbout->setEnabled( true );
     ui.actionNew->setEnabled( true );
@@ -2081,7 +2045,7 @@ namespace Avogadro
     connect(this, SIGNAL(enableEngineSettingsButton(bool)), engineSettingsButton, SLOT(setEnabled(bool)));
 //    hlayout->addStretch(1);
     vlayout->addLayout(hlayout);
-    
+
     // Then a row of add, duplicate, remove
     hlayout = new QHBoxLayout();
     // add
@@ -2157,12 +2121,12 @@ namespace Avogadro
     // now set up the tabs: Currently settings and objects (primitives)
     QTabWidget *settingsTabs = new QTabWidget(settingsWindow);
     settingsTabs->addTab(settingsWidget, tr("Settings"));
-    
+
     EnginePrimitivesWidget *primitivesWidget =
           new EnginePrimitivesWidget(d->glWidget, settingsWindow);
     primitivesWidget->setEngine(d->currentSelectedEngine);
     settingsTabs->addTab(primitivesWidget, tr("Objects"));
-    
+
     EngineColorsWidget *colorsWidget = new EngineColorsWidget(&d->pluginManager, settingsWindow);
     colorsWidget->setEngine(d->currentSelectedEngine);
     settingsTabs->addTab(colorsWidget, tr("Colors"));

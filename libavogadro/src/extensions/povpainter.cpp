@@ -1,7 +1,7 @@
 /**********************************************************************
   POVPainter - drawing spheres, cylinders and text in a POVRay scene
 
-  Copyright (C) 2007 Marcus D. Hanwell
+  Copyright (C) 2007, 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -23,6 +23,10 @@
  **********************************************************************/
 
 #include "povpainter.h"
+
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/mesh.h>
 
 #include <QFile>
 #include <QDebug>
@@ -175,6 +179,107 @@ namespace Avogadro
   {
   }
 
+  void POVPainter::drawMesh(const Mesh & mesh, int mode, bool normalWind)
+  {
+    // Now we draw the given mesh to the OpenGL widget
+    switch (mode)
+    {
+      case 0: // Filled triangles
+        break;
+      case 1: // Lines
+        break;
+      case 2: // Points
+        break;
+    }
+
+    // Render the triangles of the mesh
+    std::vector<Eigen::Vector3f> t = mesh.triangles();
+    std::vector<Eigen::Vector3f> n = mesh.normals();
+
+    // Normal or reverse winding?
+    QString vertsStr, ivertsStr, normsStr, inormsStr;
+    QTextStream verts(&vertsStr);
+    verts << "vertex_vectors{" << t.size() << ",\n";
+    QTextStream iverts(&ivertsStr);
+    iverts << "face_indices{" << t.size() / 3 << ",\n";
+    QTextStream norms(&normsStr);
+    norms << "normal_vectors{" << n.size() << ",\n";
+    QTextStream inorms(&inormsStr);
+    inorms << "normal_indices{" << n.size() / 3 << ",\n";
+    if (normalWind) {
+      for(unsigned int i = 0; i < t.size(); ++i) {
+        verts << "<" << t[i].x() << "," << t[i].y() << "," << t[i].z() << ">";
+        norms << "<" << n[i].x() << "," << n[i].y() << "," << n[i].z() << ">";
+        if (i != t.size()-1) {
+          verts << ", ";
+          norms << ", ";
+        }
+        if (i != 0 && i%3 == 0) {
+          verts << "\n";
+          norms << "\n";
+        }
+      }
+      // Now to write out the indices
+      for (unsigned int i = 0; i < t.size(); i += 3) {
+        iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
+        inorms << "<" << i << "," << i+1 << "," << i+2 << ">";
+        if (i != t.size()-3) {
+          iverts << ", ";
+          inorms << ", ";
+        }
+        if (i != 0 && ((i+1)/3)%3 == 0) {
+          iverts << "\n";
+          inorms << "\n";
+        }
+      }
+    }
+    /// FIXME - this is a fudge to fix the negative windings right now - FIXME!
+    else {
+      for(unsigned int i = t.size(); i > 0; --i) {
+        Eigen::Vector3f tmp = n[i-1] * -1;
+        verts << "<" << t[i-1].x() << "," << t[i-1].y() << "," << t[i-1].z() << ">";
+        norms << "<" << tmp.x() << "," << tmp.y() << "," << tmp.z() << ">";
+        if (i != t.size()-1) {
+          verts << ", ";
+          norms << ", ";
+        }
+        if (i != 0 && i%3 == 0) {
+          verts << "\n";
+          norms << "\n";
+        }
+      }
+      // Now to write out the indices
+      for (unsigned int i = 0; i < t.size(); i += 3) {
+        iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
+        inorms << "<" << i << "," << i+1 << "," << i+2 << ">";
+        if (i != t.size()-3) {
+          iverts << ", ";
+          inorms << ", ";
+        }
+        if (i != 0 && ((i+1)/3)%3 == 0) {
+          iverts << "\n";
+          inorms << "\n";
+        }
+      }
+    }
+    // Now to close off all the arrays
+    verts << "\n}";
+    norms << "\n}";
+    iverts << "\n}";
+    inorms << "\n}";
+    // Now to write out the full mesh - could be pretty big...
+    *(d->output) << "mesh2 {\n"
+                 << vertsStr << "\n"
+                 << normsStr << "\n"
+                 << ivertsStr << "\n"
+                 << inormsStr << "\n"
+                 << "\tpigment { rgbf <" << d->color.red() << ", "
+                 << d->color.green() << ", "
+                 << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }"
+                 << "}\n\n";
+  }
+
+
   int POVPainter::drawText (int, int, const QString &) const
   {
     return 0;
@@ -201,7 +306,8 @@ namespace Avogadro
     d->output = 0;
   }
 
-  POVPainterDevice::POVPainterDevice(const QString& filename, bool aspectRatio, const GLWidget* glwidget)
+  POVPainterDevice::POVPainterDevice(const QString& filename, bool aspectRatio,
+                                     const GLWidget* glwidget)
   {
     m_painter = 0;
     m_output = 0;
@@ -220,6 +326,7 @@ namespace Avogadro
 
     initializePOV();
     render();
+    m_file->close();
   }
 
   POVPainterDevice::~POVPainterDevice()
@@ -227,7 +334,6 @@ namespace Avogadro
     m_painter->end();
     delete m_output;
     m_output = 0;
-    m_file->close();
     delete m_file;
   }
 
@@ -280,8 +386,8 @@ namespace Avogadro
 
       << "light_source {\n"
       << "\t<" << light0pos[0]
-       << ", " << light0pos[1]
-       << ", " << light0pos[2] << ">\n"
+      << ", " << light0pos[1]
+      << ", " << light0pos[2] << ">\n"
       << "\tcolor rgb <" << LIGHT0_DIFFUSE[0] << ", "
                          << LIGHT0_DIFFUSE[1] << ", "
                          << LIGHT0_DIFFUSE[2] << ">\n"
@@ -295,8 +401,8 @@ namespace Avogadro
 
       << "light_source {\n"
       << "\t<" << light1pos[0]
-       << ", " << light1pos[1]
-       << ", " << light1pos[2] << ">\n"
+      << ", " << light1pos[1]
+      << ", " << light1pos[2] << ">\n"
       << "\tcolor rgb <" << LIGHT1_DIFFUSE[0] << ", "
                          << LIGHT1_DIFFUSE[1] << ", "
                          << LIGHT1_DIFFUSE[2] << ">\n"

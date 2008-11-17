@@ -30,12 +30,16 @@
 #include <avogadro/elementtranslate.h>
 #include <avogadro/camera.h>
 #include <avogadro/painter.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/molecule.h>
 
 #include <QGLWidget> // for OpenGL bits
 #include <QDebug>
 
+#include <openbabel/mol.h>
+
 using namespace std;
-using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
@@ -101,24 +105,28 @@ namespace Avogadro {
       QString str;
       switch(m_atomType)
       {
-        case 1:
-          str = QString::number(a->GetIdx());
+        case 1: // Atom index
+          str = QString::number(a->index());
           break;
-        case 3:
-          str = QString(etab.GetSymbol(a->GetAtomicNum()));
+        case 3: // Atomic Symbol
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
           break;
-        case 4:
+          /// FIXME Add back in residue numbers
+/*        case 4: // Residue name
           str = QString(((const_cast<Atom *>(a)->GetResidue())->GetName()).c_str());
           break;
-        case 5:
+        case 5: // Residue number
           str = QString::number((const_cast<Atom *>(a)->GetResidue())->GetNum());
+          break; */
+        case 6: // Partial charge
+          str = QString::number(const_cast<Atom *>(a)->partialCharge(), 'g', 2);
           break;
-        case 6:
-          str = QString::number(const_cast<Atom *>(a)->GetPartialCharge(), 'g', 2);
+        case 7: // Unique ID
+          str = QString::number(a->id());
           break;
-        case 2:
+        case 2: // Element name
         default:
-          str = elementTranslator.name(a->GetAtomicNum());
+          str = elementTranslator.name(a->atomicNumber());
       }
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
@@ -134,8 +142,8 @@ namespace Avogadro {
   bool LabelEngine::renderOpaque(PainterDevice *pd, const Bond *b)
   {
     // Render bond labels
-    const Atom* atom1 = static_cast<const Atom *>(b->GetBeginAtom());
-    const Atom* atom2 = static_cast<const Atom *>(b->GetEndAtom());
+    Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
+    Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
     Vector3d v1 (atom1->pos());
     Vector3d v2 (atom2->pos());
     Vector3d d = v2 - v1;
@@ -162,14 +170,17 @@ namespace Avogadro {
       switch(m_bondType)
       {
         case 1:
-          str = QString::number(b->GetLength(), 'g', 4);
+          str = QString::number(b->length(), 'g', 4);
           break;
         case 2:
-          str = QString::number(b->GetIdx());
+          str = QString::number(b->index());
+          break;
+        case 4:
+          str = QString::number(b->id());
           break;
         case 3:
         default:
-          str = QString::number(b->GetBondOrder());
+          str = QString::number(b->order());
       }
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();

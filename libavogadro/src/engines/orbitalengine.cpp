@@ -28,6 +28,8 @@
 
 #include <config.h>
 #include <avogadro/primitive.h>
+#include <avogadro/molecule.h>
+#include <avogadro/cube.h>
 
 #include <openbabel/math/vector3.h>
 #include <openbabel/griddata.h>
@@ -87,28 +89,13 @@ namespace Avogadro {
       if (m_update)
         updateSurfaces(pd);
 
-      switch (m_renderMode)
-      {
-      case 0:
-        glPolygonMode(GL_FRONT, GL_FILL);
-        break;
-      case 1:
-        glPolygonMode(GL_FRONT, GL_LINE);
-        glDisable(GL_LIGHTING);
-        break;
-      case 2:
-        glPolygonMode(GL_FRONT, GL_POINT);
-        glDisable(GL_LIGHTING);
-        break;
-      }
+      pd->painter()->setColor(&m_posColor);
+      pd->painter()->drawMesh(m_isoGen->mesh(), m_renderMode);
+
+      pd->painter()->setColor(&m_negColor);
+      pd->painter()->drawMesh(m_isoGen2->mesh(), m_renderMode, false);
 
       renderSurfaces(pd);
-
-      if (m_renderMode)
-      {
-        glPolygonMode(GL_FRONT, GL_FILL);
-        glEnable(GL_LIGHTING);
-      }
     }
 
     return true;
@@ -122,34 +109,22 @@ namespace Avogadro {
       if (m_update)
         updateSurfaces(pd);
 
-      switch (m_renderMode)
-      {
-      case 0:
-        glPolygonMode(GL_FRONT, GL_FILL);
+      if (m_renderMode == 0) {
         glEnable(GL_BLEND);
         glDepthMask(GL_TRUE);
-        break;
-      case 1:
-        glPolygonMode(GL_FRONT, GL_LINE);
-        glDisable(GL_LIGHTING);
-        break;
-      case 2:
-        glPolygonMode(GL_FRONT, GL_POINT);
-        glDisable(GL_LIGHTING);
-        break;
       }
+
+      pd->painter()->setColor(&m_posColor);
+      pd->painter()->drawMesh(m_isoGen->mesh(), m_renderMode);
+
+      pd->painter()->setColor(&m_negColor);
+      pd->painter()->drawMesh(m_isoGen2->mesh(), m_renderMode, false);
 
       renderSurfaces(pd);
 
-      if (m_renderMode == 0)
-      {
+      if (m_renderMode == 0) {
         glDisable(GL_BLEND);
         glDepthMask(GL_FALSE);
-      }
-      else
-      {
-        glPolygonMode(GL_FRONT, GL_FILL);
-        glEnable(GL_LIGHTING);
       }
     }
     return true;
@@ -160,67 +135,25 @@ namespace Avogadro {
     if (m_update)
       updateSurfaces(pd);
 
-    switch (m_renderMode)
-    {
-      case 0:
-        ;
-      case 1:
-        glPolygonMode(GL_FRONT, GL_LINE);
-        glDisable(GL_LIGHTING);
-        break;
-      case 2:
-        glPolygonMode(GL_FRONT, GL_POINT);
-        glDisable(GL_LIGHTING);
-        break;
+    if (m_renderMode < 2) {
+      pd->painter()->setColor(&m_posColor);
+      pd->painter()->drawMesh(m_isoGen->mesh(), 1);
+      pd->painter()->setColor(&m_negColor);
+      pd->painter()->drawMesh(m_isoGen2->mesh(), 1, false);
     }
-
+    else {
+      pd->painter()->setColor(&m_posColor);
+      pd->painter()->drawMesh(m_isoGen->mesh(), 2);
+      pd->painter()->setColor(&m_negColor);
+      pd->painter()->drawMesh(m_isoGen2->mesh(), 2, false);
+    }
     renderSurfaces(pd);
-
-    glPolygonMode(GL_FRONT, GL_FILL);
-    glEnable(GL_LIGHTING);
 
     return true;
   }
 
   bool OrbitalEngine::renderSurfaces(PainterDevice *pd)
   {
-    glBegin(GL_TRIANGLES);
-
-    // Render the positive surface
-    m_posColor.apply();
-    m_posColor.applyAsMaterials();
-    for(int i=0; i < m_isoGen->numTriangles(); ++i)
-    {
-      triangle t = m_isoGen->getTriangle(i);
-      triangle n = m_isoGen->getNormal(i);
-      glNormal3fv(n.p0.data());
-      glVertex3fv(t.p0.data());
-      glNormal3fv(n.p1.data());
-      glVertex3fv(t.p1.data());
-      glNormal3fv(n.p2.data());
-      glVertex3fv(t.p2.data());
-    }
-
-    // Render the negative surface
-    m_negColor.apply();
-    m_negColor.applyAsMaterials();
-    for(int i=0; i < m_isoGen2->numTriangles(); ++i)
-    {
-      triangle t = m_isoGen2->getTriangle(i);
-      triangle n = m_isoGen2->getNormal(i);
-      // Fix the lighting by reversing the normals and the triangle winding
-      n.p0 *= -1;
-      n.p1 *= -1;
-      n.p2 *= -1;
-      glNormal3fv(n.p2.data());
-      glVertex3fv(t.p2.data());
-      glNormal3fv(n.p1.data());
-      glVertex3fv(t.p1.data());
-      glNormal3fv(n.p0.data());
-      glVertex3fv(t.p0.data());
-    }
-    glEnd();
-
     // Draw the extents of the cube if requested to
     if (m_drawBox) {
       pd->painter()->setColor(1.0, 1.0, 1.0);
@@ -264,15 +197,16 @@ namespace Avogadro {
   {
     // Attempt to find a grid
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
-    if (!mol->HasData(OBGenericDataType::GridData))
+    QList<Cube *> cubes = mol->cubes();
+    if (mol->cubes().size() == 0) {
+      qDebug() << "No cubes.";
       return;
-    else
-    {
-      if (!m_settingsWidget)
-      {
+    }
+    else {
+      if (!m_settingsWidget) {
         // Use first grid/orbital
-        m_grid->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
-        m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
+        m_grid->setCube(cubes[0]);
+        m_grid2->setCube(cubes[0]);
       }
       else
       {
@@ -280,8 +214,8 @@ namespace Avogadro {
         {
           // Use first grid/orbital
           // Two grids -- one for positive isovalue, one for negative
-          m_grid->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
-          m_grid2->setGrid(static_cast<OBGridData *>(mol->GetData(OBGenericDataType::GridData)));
+          m_grid->setCube(cubes[0]);
+          m_grid2->setCube(cubes[0]);
 
           // Add the orbitals
           m_molecule = mol;
@@ -291,33 +225,27 @@ namespace Avogadro {
         }
         else
         {
-          vector<OBGenericData*> data = mol->GetAllData(OBGenericDataType::GridData);
           unsigned int index = m_settingsWidget->orbitalCombo->currentIndex();
-          if (index >= data.size())
+          if (index >= cubes.size())
           {
             qDebug() << "Invalid orbital selected.";
             return;
           }
-          m_grid->setGrid(static_cast<OBGridData *>(data[index]));
-          m_grid2->setGrid(static_cast<OBGridData *>(data[index]));
+          m_grid->setCube(cubes[index]);
+          m_grid2->setCube(cubes[index]);
         }
       }
     }
 
     // attribute is the text key for the grid (as an std::string)
-    qDebug() << " Orbital title: " << m_grid->grid()->GetAttribute().c_str();
+    qDebug() << " Orbital title: " << m_grid->cube()->name();
 
-    qDebug() << "Min value = " << m_grid->grid()->GetMinValue()
-             << "Max value = " << m_grid->grid()->GetMaxValue();
+//    qDebug() << "Min value = " << m_grid->grid()->GetMinValue()
+//             << "Max value = " << m_grid->grid()->GetMaxValue();
 
     // Find the minima for the grid
-    m_min = Vector3f(m_grid->grid()->GetOriginVector().x(),
-                     m_grid->grid()->GetOriginVector().y(),
-                     m_grid->grid()->GetOriginVector().z());
-    m_max = Vector3f(m_grid->grid()->GetMaxVector().x(),
-                     m_grid->grid()->GetMaxVector().y(),
-                     m_grid->grid()->GetMaxVector().z());
-
+    m_min = m_grid->cube()->min();
+    m_max = m_grid->cube()->max();
     // We may need some logic to check if a cube is an orbital or not...
     // (e.g., someone might bring in spin density = always positive)
     m_grid->setIsoValue(m_iso);
@@ -336,15 +264,15 @@ namespace Avogadro {
     if (tmp < 0) tmp = 0;
     m_settingsWidget->orbitalCombo->clear();
     m_molecule->lock()->lockForRead();
-    vector<OBGenericData*> data = m_molecule->GetAllData(OBGenericDataType::GridData);
-    for (unsigned int i = 0; i < data.size(); ++i) {
-      QString str = QString(data[i]->GetAttribute().c_str());
+    QList<Cube *> cubes = m_molecule->cubes();
+    for (unsigned int i = 0; i < cubes.size(); ++i) {
+      QString str = cubes[i]->name();
       m_settingsWidget->orbitalCombo->addItem(str);
     }
     // If all of the orbitals disappear the molecule has been cleared
-    if (data.size() == 0) {
-      m_grid->setGrid(0);
-      m_grid2->setGrid(0);
+    if (cubes.size() == 0) {
+      m_grid->setCube(0);
+      m_grid2->setCube(0);
       disconnect(m_isoGen, 0, this, 0);
       disconnect(m_isoGen2, 0, this, 0);
       delete m_isoGen;

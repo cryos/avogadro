@@ -24,6 +24,8 @@
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
 
 #include <openbabel/obiter.h>
 
@@ -68,7 +70,7 @@ namespace Avogadro {
   }
 
   H2MethylCommand::H2MethylCommand(Molecule *molecule, GLWidget *widget):
-    m_molecule(molecule), m_moleculeCopy(*molecule),
+    m_molecule(molecule), m_moleculeCopy(new Molecule(*molecule)),
     m_SelectedList(widget->selectedPrimitives())
   {
     // save the selection from the current view widget
@@ -78,23 +80,32 @@ namespace Avogadro {
     setText(QObject::tr("H to Methyl"));
   }
 
+  H2MethylCommand::~H2MethylCommand()
+  {
+    delete m_moleculeCopy;
+  }
+
   void H2MethylCommand::redo()
   {
     if (m_SelectedList.size() == 0) {
-      QList<Atom*> hydrogenList;
-      FOR_ATOMS_OF_MOL(a, m_molecule) {
-        if (a->IsHydrogen())
-          hydrogenList.append(static_cast<Atom *>(&*a));
+      QList<Atom*> hydrogenList, atoms;
+      atoms = m_molecule->atoms();
+      foreach(Atom *a, atoms) {
+        if (a->isHydrogen()) {
+          hydrogenList.append(a);
+        }
       }
       foreach(Atom *a, hydrogenList) {
-        a->HtoMethyl();
+        a->setAtomicNumber(6);
+        m_molecule->addHydrogens(a);
       }
     }
     else { // user selected some atoms, only operate on those
 
       foreach(Primitive *a, m_SelectedList.subList(Primitive::AtomType)) {
         Atom *atom = static_cast<Atom *>(a);
-        atom->HtoMethyl();
+        atom->setAtomicNumber(6);
+        m_molecule->addHydrogens(atom);
       }
     } // end adding to selected atoms
     m_molecule->update();

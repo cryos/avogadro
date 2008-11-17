@@ -29,18 +29,23 @@
 #include <avogadro/painter.h>
 #include <avogadro/color.h>
 
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/molecule.h>
+
 #include <QGLWidget> // for OpenGL bits
 #include <QDebug>
 
+#include <openbabel/mol.h>
+
 using namespace std;
-using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro
 {
 
 // our sort function
-  Camera *camera = 0;
+/*  Camera *camera = 0;
   bool sortCameraFarthest( const Primitive* lhs, const Primitive* rhs )
   {
     if ( !lhs ) {
@@ -78,14 +83,13 @@ namespace Avogadro
       }
     }
     return false;
-  }
+  } */
 
-  BSDYEngine::BSDYEngine( QObject *parent ) : Engine( parent ),
-      m_settingsWidget( 0 ), m_atomRadiusPercentage( 0.3 ), m_bondRadius( 0.1 ),
+  BSDYEngine::BSDYEngine(QObject *parent) : Engine(parent),
+      m_settingsWidget(0), m_atomRadiusPercentage(0.3), m_bondRadius(0.1),
       m_showMulti(true)
   {
-    setDescription( tr( "Renders primitives using Balls (atoms) and Sticks (bonds)." ) );
-
+    setDescription(tr("Renders primitives using Balls (atoms) and Sticks (bonds)."));
   }
 
   Engine *BSDYEngine::clone() const
@@ -123,17 +127,23 @@ namespace Avogadro
     foreach(const Primitive *p, list ) {
       const Bond *b = static_cast<const Bond *>( p );
 
-      const Atom* atom1 = static_cast<const Atom *>( b->GetBeginAtom() );
-      const Atom* atom2 = static_cast<const Atom *>( b->GetEndAtom() );
-      Vector3d v1( atom1->pos() );
-      Vector3d v2( atom2->pos() );
+      Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
+      Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
+      if (!atom1 || !atom2) {
+        qDebug() << "Invalid bond atom IDs" << b->beginAtomId() << atom1
+                 << b->endAtomId() << atom2 << "Bond" << b->id();
+        continue;
+      }
+
+      Vector3d v1(atom1->pos());
+      Vector3d v2(atom2->pos());
       Vector3d d = v2 - v1;
       d.normalize();
-      Vector3d v3(( v1 + v2 + d*( radius( atom1 )-radius( atom2 ) ) ) / 2 );
+      Vector3d v3((v1 + v2 + d*(radius(atom1) - radius(atom2))) / 2);
 
       double shift = 0.15;
       int order = 1;
-      if (m_showMulti) order = b->GetBO();
+      if (m_showMulti) order = b->order();
 
       map->set( atom1 );
       pd->painter()->setColor( map );
@@ -173,8 +183,6 @@ namespace Avogadro
   {
     QList<Primitive *> list;
 
-    camera = pd->camera();
-
     glPushAttrib( GL_TRANSFORM_BIT );
 
     Color *map = colorMap(); // possible custom color map
@@ -195,13 +203,13 @@ namespace Avogadro
 
       // Render the selection highlight
       if ( pd->isSelected( b ) ) {
-        const Atom* atom1 = static_cast<const Atom *>( b->GetBeginAtom() );
-        const Atom* atom2 = static_cast<const Atom *>( b->GetEndAtom() );
-        Vector3d v1( atom1->pos() );
-        Vector3d v2( atom2->pos() );
+        Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
+        Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
+        Vector3d v1(atom1->pos());
+        Vector3d v2(atom2->pos());
 
         double shift = 0.15;
-        int order = b->GetBO();
+        int order = b->order();
 
         map->setToSelectionColor();
         glEnable( GL_BLEND );
@@ -265,8 +273,8 @@ namespace Avogadro
     {
       const Bond *b = static_cast<const Bond *>(p);
 
-      const Atom* atom1 = static_cast<const Atom *>(b->GetBeginAtom());
-      const Atom* atom2 = static_cast<const Atom *>(b->GetEndAtom());
+      Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
+      Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
       Vector3d v1(atom1->pos());
       Vector3d v2(atom2->pos());
       Vector3d d = v2 - v1;
@@ -275,7 +283,7 @@ namespace Avogadro
 
       double shift = 0.15;
       int order = 1;
-      if (m_showMulti) order = b->GetBO();
+      if (m_showMulti) order = b->order();
 
       if (pd->isSelected(b))
       {
@@ -330,7 +338,7 @@ namespace Avogadro
 
   inline double BSDYEngine::radius( const Atom *atom ) const
   {
-    return etab.GetVdwRad( atom->GetAtomicNum() ) * m_atomRadiusPercentage;
+    return OpenBabel::etab.GetVdwRad(atom->atomicNumber()) * m_atomRadiusPercentage;
   }
 
   void BSDYEngine::setAtomRadiusPercentage( int percent )

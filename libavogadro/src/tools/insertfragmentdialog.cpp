@@ -28,6 +28,9 @@
 #include <config.h>
 
 #include <avogadro/primitive.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/molecule.h>
 
 #include <openbabel/obconversion.h>
 #include <openbabel/mol.h>
@@ -78,7 +81,7 @@ namespace Avogadro {
     _directoryList << "/Library/Application Support/Avogadro/Fragments";
     _directoryList << QDir::homePath() + "/Library/Application Support/Avogadro/Fragments";
 #endif
-    
+
     return _directoryList;
   }
 
@@ -116,19 +119,21 @@ namespace Avogadro {
 
   const Molecule *InsertFragmentDialog::fragment()
   {
-    d->fragment.Clear();
+    d->fragment.clear();
+    OBMol obfragment;
 
     // SMILES insert
-    if (d->smilesMode) { 
-	
+    if (d->smilesMode) {
+
       // We should use the method because it will grab updates to the line edit
       std::string SmilesString(smilesString().toAscii());
       if(d->conv.SetInFormat("smi")
-         && d->conv.ReadString(&d->fragment, SmilesString))
+         && d->conv.ReadString(&obfragment, SmilesString))
         {
-          d->builder.Build(d->fragment);
-          d->fragment.Center();
-          d->fragment.AddHydrogens();
+          d->builder.Build(obfragment);
+          d->fragment.setOBMol(&obfragment);
+          d->fragment.center();
+          d->fragment.addHydrogens();
         }
     } else {
       QModelIndexList selected = ui.directoryTreeView->selectionModel()->selectedIndexes();
@@ -156,8 +161,9 @@ namespace Avogadro {
           }
 
           //d->conv.Read(&d->fragment, &ifs);
-          conv.Read(&d->fragment, &ifs);
-          d->fragment.Center();
+          conv.Read(&obfragment, &ifs);
+          d->fragment.setOBMol(&obfragment);
+          d->fragment.center();
           ifs.close();
         }
       }
@@ -184,7 +190,7 @@ namespace Avogadro {
   {
     return _directoryList;
   }
-  
+
   void InsertFragmentDialog::setDirectoryList(const QStringList dirList)
   {
     if (dirList.size() != 0)
@@ -236,14 +242,14 @@ namespace Avogadro {
   {
     QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
                                                     "/home");
-    
+
     // If this is a new directory, add it in
     if (!_directoryList.contains(dir)) {
       _directoryList << dir;
       refresh();
     }
   }
-  
+
   void InsertFragmentDialog::clearDirectoryList(bool)
   {
     _directoryList.clear();

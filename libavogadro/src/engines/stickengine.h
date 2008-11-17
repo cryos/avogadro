@@ -33,6 +33,8 @@
 namespace Avogadro {
 
   //! Stick / Licorice Engine class.
+  class Atom;
+  class Bond;
   class StickSettingsWidget;
   class StickEngine : public Engine
   {
@@ -44,10 +46,10 @@ namespace Avogadro {
       StickEngine(QObject *parent=0);
       //! Deconstructor
       ~StickEngine();
-      
-      //! Copy 
+
+      //! Copy
       Engine *clone() const;
- 
+
       //! \name Render Methods
       //@{
       //! Render an Atom.
@@ -79,7 +81,7 @@ namespace Avogadro {
       StickSettingsWidget *m_settingsWidget;
 
 			double m_radius; //!< The radius of the stick bonds
-			
+
 		private Q_SLOTS:
 	    void settingsWidgetDestroyed();
 

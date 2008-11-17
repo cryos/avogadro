@@ -64,7 +64,7 @@ namespace Avogadro
   #else
   const float IsoGen::fTargetValue __attribute__((aligned(16))) = 0.0f;
   #endif
- 
+
   // These tables are used so that everything can be done in little loops that
   // you can look at all at once rather than in pages and pages of unrolled code
   // a2fVertexOffset lists the positions, relative to vertex0, of each of the
@@ -535,7 +535,7 @@ namespace Avogadro
     qDebug() << "start run()";
     int nx, ny, nz;
 
-    if (m_grid->grid() == 0)
+    if (m_grid->cube() == 0)
     {
       qDebug() << "m_grid == 0 => returning...";
       return;
@@ -545,8 +545,7 @@ namespace Avogadro
       return;
 
     // Clear vertex/normal-lists
-    m_normList.clear();
-    m_vertList.clear();
+    m_mesh.clear();
 
     // Interpolate if m_interpolate is true, otherwise use the faster access
     // methods available if we are iterating over the actual grid points.
@@ -569,7 +568,9 @@ namespace Avogadro
     else
     {
       // Don't do any interpolation...
-      m_grid->grid()->GetNumberOfPoints(nx, ny, nz);
+      Eigen::Vector3i dim;
+      dim = m_grid->cube()->dimensions();
+      nx = dim.x(); ny = dim.y(); nz = dim.z();
       m_stepSize = (m_max.x() - m_min.x()) / nx;
 
       // Just go to nX-1 as the cube extends one unit from the given point
@@ -580,8 +581,7 @@ namespace Avogadro
     }
 
     // Save previous vertex/normal-lists for rendering
-    m_normListCopy = m_normList;
-    m_vertListCopy = m_vertList;
+    m_meshCopy = m_mesh;
 
     m_mutex.unlock();
     qDebug() << "end run()";
@@ -627,17 +627,10 @@ namespace Avogadro
         m_stepSize = 0.10;
       }
     }
-    m_min = Vector3f(m_grid->grid()->GetOriginVector().x(),
-                     m_grid->grid()->GetOriginVector().y(),
-                     m_grid->grid()->GetOriginVector().z());
+    m_min = m_grid->cube()->min();
+
     // Work out the max coordinate too
-    int nx, ny, nz;
-    m_grid->grid()->GetNumberOfPoints(nx, ny, nz);
-    double x[3], y[3], z[3];
-    m_grid->grid()->GetAxes(x, y, z);
-    m_max = Vector3f(m_min.x() + nx * x[0],
-                     m_min.y() + ny * y[1],
-                     m_min.z() + nz * z[2]);
+    m_max = m_grid->cube()->max();
 
     // Right now we are just using one tessellation method
     m_tessellation=&IsoGen::vMarchCube1;
@@ -654,9 +647,19 @@ namespace Avogadro
   // This gradient can be used as a very accurate vertex normal for lighting calculations
   void IsoGen::vGetNormal(Eigen::Vector3f &rfNormal, const float fX, const float fY, const float fZ)
   {
-    rfNormal = Vector3f(m_grid->eval(fX-0.01f, fY, fZ) - m_grid->eval(fX+0.01f, fY, fZ),
+    rfNormal = Vector3f(
+        m_grid->eval(fX-0.01f, fY, fZ) - m_grid->eval(fX+0.01f, fY, fZ),
         m_grid->eval(fX, fY-0.01f, fZ) - m_grid->eval(fX, fY+0.01f, fZ),
         m_grid->eval(fX, fY, fZ-0.01f) - m_grid->eval(fX, fY, fZ+0.01f));
+
+    rfNormal.normalize();
+  }
+
+  void IsoGen::vGetNormal(Eigen::Vector3f &rfNormal, int i, int j, int k)
+  {
+    rfNormal = Vector3f(m_grid->eval(i-1, j, k) - m_grid->eval(i+1, j, k),
+        m_grid->eval(i, j-1, k) - m_grid->eval(i, j+1, k),
+        m_grid->eval(i, j, k-1) - m_grid->eval(i, j, k+1));
 
     rfNormal.normalize();
   }
@@ -665,7 +668,7 @@ namespace Avogadro
   void IsoGen::vMarchCube1(const float fX, const float fY, const float fZ)
   {
     long iTriangle, iEdge, iEdgeFlags, iFlagIndex=0;
-    
+
     #ifdef WIN32
     Vector3f asEdgeVertex[12];
     Vector3f asEdgeNorm[12];
@@ -679,7 +682,7 @@ namespace Avogadro
     #endif
 
     // Check we have a valid grid
-    if (m_grid->grid() == 0)
+    if (m_grid->cube() == 0)
     {
       qDebug() << "No valid grid :-(";
       return;
@@ -754,8 +757,8 @@ namespace Avogadro
     }
 
     // Vertex/normal temporaries
-    triangle normTmp;
-    triangle vertTmp;
+    std::vector<Eigen::Vector3f> vertexTmp(3);
+    std::vector<Eigen::Vector3f> normalTmp(3);
 
     // Draw the triangles that were found. There can be up to five per cube
     // "Abuse" free iEdgeFlags
@@ -766,20 +769,20 @@ namespace Avogadro
         break;
 
       iEdgeFlags = a2iTriangleConnectionTable[iFlagIndex][iEdge++];
-      normTmp.p0 = asEdgeNorm[iEdgeFlags];
-      vertTmp.p0 = asEdgeVertex[iEdgeFlags];
+      vertexTmp[0] = asEdgeVertex[iEdgeFlags];
+      normalTmp[0] = asEdgeNorm[iEdgeFlags];
 
       iEdgeFlags = a2iTriangleConnectionTable[iFlagIndex][iEdge++];
-      normTmp.p1 = asEdgeNorm[iEdgeFlags];
-      vertTmp.p1 = asEdgeVertex[iEdgeFlags];
+      vertexTmp[1] = asEdgeVertex[iEdgeFlags];
+      normalTmp[1] = asEdgeNorm[iEdgeFlags];
 
       iEdgeFlags = a2iTriangleConnectionTable[iFlagIndex][iEdge];
-      normTmp.p2 = asEdgeNorm[iEdgeFlags];
-      vertTmp.p2 = asEdgeVertex[iEdgeFlags];
+      vertexTmp[2] = asEdgeVertex[iEdgeFlags];
+      normalTmp[2] = asEdgeNorm[iEdgeFlags];
 
-      m_normList.append(normTmp);
-      m_vertList.append(vertTmp);
-    }
+      m_mesh.addTriangles(vertexTmp);
+      m_mesh.addNormals(normalTmp);
+   }
   } // vMarchCube1()
 
   // vMarchCube1 performs the Marching Cubes algorithm on a single cube
@@ -805,7 +808,7 @@ namespace Avogadro
     float fZ = k * m_stepSize + m_min.z();
 
     // Check we have a valid grid
-    if (m_grid->grid() == 0)
+    if (m_grid->cube() == 0)
     {
       qDebug() << "No valid grid :-(";
       return;
@@ -866,23 +869,22 @@ namespace Avogadro
           fOffset = 0.5f;
 
         // The  - 0.5 * m_stepSize correction is only needed if for vMarchCube1(float,float,float)
+        // Do this with ints - much faster and just as accurate with our cubes
+//        vGetNormal(asEdgeNorm[iEdge], i, j, k);
         asEdgeVertex[iEdge] = Vector3f(
           fX + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][0]
-             + fOffset * a2fEdgeDirection[iEdge][0]) * m_stepSize
-             /*- 0.5*m_stepSize*/,
+             + fOffset * a2fEdgeDirection[iEdge][0]) * m_stepSize,
           fY + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][1]
-             + fOffset * a2fEdgeDirection[iEdge][1]) * m_stepSize
-             /*- 0.5*m_stepSize*/,
+             + fOffset * a2fEdgeDirection[iEdge][1]) * m_stepSize,
           fZ + (a2fVertexOffset[a2iEdgeConnection[iEdge][0]][2]
-             + fOffset * a2fEdgeDirection[iEdge][2]) * m_stepSize
-             /*- 0.5*m_stepSize*/);
+             + fOffset * a2fEdgeDirection[iEdge][2]) * m_stepSize);
         vGetNormal(asEdgeNorm[iEdge], asEdgeVertex[iEdge].x(), asEdgeVertex[iEdge].y(), asEdgeVertex[iEdge].z());
       }
     }
 
     // Vertex/normal temporaries
-    triangle normTmp;
-    triangle vertTmp;
+    std::vector<Eigen::Vector3f> vertexTmp(3);
+    std::vector<Eigen::Vector3f> normalTmp(3);
 
     // Draw the triangles that were found. There can be up to five per cube
     // "Abuse" free iEdgeFlags
@@ -893,22 +895,22 @@ namespace Avogadro
         break;
 
       iEdgeFlags = a2iTriangleConnectionTable[iFlagIndex][iEdge++];
-      normTmp.p0 = asEdgeNorm[iEdgeFlags];
-      vertTmp.p0 = asEdgeVertex[iEdgeFlags];
+      vertexTmp[0] = asEdgeVertex[iEdgeFlags];
+      normalTmp[0] = asEdgeNorm[iEdgeFlags];
 
       iEdgeFlags = a2iTriangleConnectionTable[iFlagIndex][iEdge++];
-      normTmp.p1 = asEdgeNorm[iEdgeFlags];
-      vertTmp.p1 = asEdgeVertex[iEdgeFlags];
+      vertexTmp[1] = asEdgeVertex[iEdgeFlags];
+      normalTmp[1] = asEdgeNorm[iEdgeFlags];
 
       iEdgeFlags = a2iTriangleConnectionTable[iFlagIndex][iEdge];
-      normTmp.p2 = asEdgeNorm[iEdgeFlags];
-      vertTmp.p2 = asEdgeVertex[iEdgeFlags];
+      vertexTmp[2] = asEdgeVertex[iEdgeFlags];
+      normalTmp[2] = asEdgeNorm[iEdgeFlags];
 
-      m_normList.append(normTmp);
-      m_vertList.append(vertTmp);
+      m_mesh.addTriangles(vertexTmp);
+      m_mesh.addNormals(normalTmp);
     }
   } // vMarchCube1()
-
+/*
   int IsoGen::numTriangles()
   {
     return m_vertListCopy.size();
@@ -923,7 +925,7 @@ namespace Avogadro
   {
     return m_normListCopy[i];
   }
-
+*/
   // vMarchCube2 performs the Marching Tetrahedrons algorithm on a single cube by
 /*  // making six calls to vMarchTetrahedron
 void IsoGen::vMarchCube2(const float fX, const float fY, const float fZ)

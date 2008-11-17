@@ -23,9 +23,6 @@
 #ifndef HYDROGENSEXTENSION_H
 #define HYDROGENSEXTENSION_H
 
-
-#include <openbabel/mol.h>
-
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
 #include <avogadro/idlist.h>
@@ -77,6 +74,7 @@ namespace Avogadro {
 
     public:
       HydrogensCommand(Molecule *molecule, enum Action action, GLWidget *widget, double pH = 7.4);
+      ~HydrogensCommand();
 
       virtual void undo();
       virtual void redo();
@@ -85,7 +83,7 @@ namespace Avogadro {
 
     private:
       Molecule *m_molecule;
-      Molecule m_moleculeCopy;
+      Molecule *m_moleculeCopy;
       IDList m_SelectedList;
       enum Action m_action;
       double m_pH;

@@ -23,9 +23,12 @@
 #include "gamessextension.h"
 
 #include <avogadro/primitive.h>
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
+#include <openbabel/mol.h>
 #include <openbabel/obiter.h>
 #include <openbabel/obconversion.h>
 
@@ -188,7 +191,8 @@ namespace Avogadro
     return 0;
   }
 
-  GamessEfpMatchDialog *GamessExtension::matchesDialog( Molecule *molecule, GLWidget *widget, GamessEfpMatchDialog::Type type )
+  GamessEfpMatchDialog *GamessExtension::matchesDialog(Molecule *molecule,
+       GLWidget *widget, GamessEfpMatchDialog::Type type)
   {
     if ( !widget->selectedPrimitives().size() ) {
       QMessageBox::information( 0, tr( "No Atoms Selected" ),
@@ -205,21 +209,22 @@ namespace Avogadro
     }
 
     PrimitiveList selectedPrimitives = widget->selectedPrimitives();
-    Molecule selectedMolecule;
+    OpenBabel::OBMol selectedMolecule;
 
     int numAtoms = 0;
     std::map<OBAtom*, OBAtom*> AtomMap; // key is from old, value from new
-    foreach( Primitive *p, selectedPrimitives.subList(Primitive::AtomType) ) {
-      OBAtom *selected = static_cast<Atom*>( p );
-      selectedMolecule.InsertAtom( *selected );
-      AtomMap[selected] = selectedMolecule.GetAtom( selectedMolecule.NumAtoms() );
+    foreach(Primitive *p, selectedPrimitives.subList(Primitive::AtomType)) {
+      OpenBabel::OBAtom selected = static_cast<Atom*>(p)->OBAtom();
+      selectedMolecule.InsertAtom(selected);
+      AtomMap[&selected] = selectedMolecule.GetAtom(selectedMolecule.NumAtoms());
       numAtoms++;
     }
 
     // use the atom map to map bonds
     int numBonds = 0;
     map<OBAtom*, OBAtom*>::iterator posBegin, posEnd;
-    FOR_BONDS_OF_MOL( b, molecule ) {
+    OpenBabel::OBMol obmol = molecule->OBMol();
+    FOR_BONDS_OF_MOL(b, &obmol) {
       posBegin = AtomMap.find( b->GetBeginAtom() );
       posEnd = AtomMap.find( b->GetEndAtom() );
       // make sure both bonds are in the map (i.e. selected)
@@ -240,10 +245,10 @@ namespace Avogadro
     OBSmartsPattern sp;
     sp.Init( pattern );
 
-    if ( sp.Match( *molecule ) ) {
+    if (sp.Match(obmol)) {
       // before we begin we need to see what has already been selected.
 
-      QVector<Atom *> usedAtoms;
+      QVector<OpenBabel::OBAtom *> usedAtoms;
 
       for(int parentNum = 0; parentNum < m_efpModel->rowCount(); parentNum++ )
       {
@@ -273,7 +278,7 @@ namespace Avogadro
         bool selected = false;
         QVector<Atom *> atomMatches;
         foreach( int i, matches ) {
-          Atom *atom = static_cast<Atom *>(molecule->GetAtom( i ));
+          OpenBabel::OBAtom *atom = obmol.GetAtom(i);
 
           if(usedAtoms.contains(atom))
           {

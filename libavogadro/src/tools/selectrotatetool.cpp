@@ -26,10 +26,14 @@
 #include "selectrotatetool.h"
 #include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
 
+#include <openbabel/mol.h>
 #include <openbabel/obiter.h>
 #include <openbabel/math/matrix3x3.h>
 
@@ -112,7 +116,7 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget, 
+  QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget,
 		                                       const QMouseEvent *event)
   {
     // Reset the cursor
@@ -140,13 +144,13 @@ namespace Avogadro {
       {
         if(hit.type() == Primitive::AtomType) // Atom selection
         {
-          Atom *atom = static_cast<Atom *>(molecule->GetAtom(hit.name()));
+          Atom *atom = molecule->atom(hit.name());
           hitList.append(atom);
           break;
         }
         else if(hit.type() == Primitive::BondType) // Bond selection
         {
-          Bond *bond = static_cast<Bond *>(molecule->GetBond(hit.name()));
+          Bond *bond = molecule->bond(hit.name());
           hitList.append(bond);
           break;
         }
@@ -158,7 +162,8 @@ namespace Avogadro {
 
       switch (m_selectionMode)
       {
-        case 2: // residue
+      /// FIXME Add back in residue selections...
+/*        case 2: // residue
           foreach(Primitive *hit, hitList) {
             if (hit->type() == Primitive::AtomType) {
               Atom *atom = static_cast<Atom *>(hit);
@@ -176,7 +181,7 @@ namespace Avogadro {
               widget->setSelected(neighborList, select);
             }
           } // end for(hits)
-          break;
+          break; */
         case 3: // molecule
           foreach(Primitive *hit, hitList) {
             if (hit->type() == Primitive::AtomType) {
@@ -188,16 +193,18 @@ namespace Avogadro {
               // We really want the "connected fragment" since a Molecule can contain
               // multiple user-visible molecule fragments
               // we can use either BFS or DFS interators -- look for the connected fragment
-              OBMolAtomDFSIter iter(molecule, atom->GetIdx());
+              OpenBabel::OBMol mol = molecule->OBMol();
+              OpenBabel::OBMolAtomDFSIter iter(mol, atom->index());
               Atom *tmpNeighbor;
               do {
-                tmpNeighbor = static_cast<Atom*>(&*iter);
+                tmpNeighbor = molecule->atom(iter->GetIdx());
                 neighborList.append(tmpNeighbor);
 
                 // we want to find all bonds on this site
                 // (obviously all bonds will be in this fragment)
-                FOR_BONDS_OF_ATOM(b, *tmpNeighbor)
-                  neighborList.append(static_cast<Bond*>(&*b));
+
+                FOR_BONDS_OF_ATOM(b, *iter)
+                  neighborList.append(molecule->bond(b->GetIdx()));
 
               } while ((iter++).next()); // this returns false when we've gone looped through the fragment
 
@@ -241,7 +248,7 @@ namespace Avogadro {
       {
         if(hit.type() == Primitive::AtomType) // Atom selection
         {
-          Atom *atom = static_cast<Atom *>(molecule->GetAtom(hit.name()));
+          Atom *atom = molecule->atom(hit.name());
           if(!hitList.contains(atom))
           {
             hitList.append(atom);
@@ -249,7 +256,7 @@ namespace Avogadro {
         }
         if(hit.type() == Primitive::BondType) // Bond selection
         {
-          Bond *bond = static_cast<Bond *>(molecule->GetBond(hit.name()));
+          Bond *bond = molecule->bond(hit.name());
           if(!hitList.contains(bond)) {
             hitList.append(bond);
           }
@@ -308,9 +315,8 @@ namespace Avogadro {
     // part of the molecule.
     Eigen::Vector3d atomsBarycenter(0., 0., 0.);
     double sumOfWeights = 0.;
-    std::vector<OpenBabel::OBNodeBase*>::iterator i;
-    for ( Atom *atom = static_cast<Atom*>(widget->molecule()->BeginAtom(i));
-          atom; atom = static_cast<Atom*>(widget->molecule()->NextAtom(i))) {
+    QList<Atom*> atoms = widget->molecule()->atoms();
+    foreach (Atom *atom, atoms) {
       Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
       double atomDistance = transformedAtomPos.norm();
       double dot = transformedAtomPos.z() / atomDistance;

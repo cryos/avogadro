@@ -25,7 +25,6 @@
 #include <config.h>
 
 using namespace std;
-using namespace OpenBabel;
 
 namespace Avogadro
 {
@@ -79,12 +78,12 @@ namespace Avogadro
                                 QString &defaultFilter)
   {
     QString result;
-    
+
     // Make sure we always have something for a file name
     QString fileName(defaultFileName);
     if (fileName.isEmpty())
       fileName = tr("untitled");
-    
+
 #if defined (Q_WS_MAC) || defined (Q_WS_WIN)
 // The Mac and Windows Qt/Native dialog already update extensions for us. So we'll call the static version.
     result = QFileDialog::getSaveFileName(widget,

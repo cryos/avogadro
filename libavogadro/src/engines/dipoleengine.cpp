@@ -27,10 +27,11 @@
 
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/atom.h>
+#include <avogadro/molecule.h>
 
 #include <QDebug>
 
-using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
@@ -39,7 +40,7 @@ namespace Avogadro {
     m_settingsWidget(0)
   {
     setDescription(tr("Renders dipole moments and other 3D data"));
-    
+
     m_dipole.x() = 0.0;
     m_dipole.y() = 0.0;
     m_dipole.z() = 0.0;
@@ -65,7 +66,7 @@ namespace Avogadro {
   {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
     m_molecule = mol;
-    
+
     Vector3d origin = Vector3d(0.0, 0.0, 0.0); // start at the origin
     Vector3d joint = 0.2 * m_dipole; // 80% along the length
 
@@ -103,51 +104,57 @@ namespace Avogadro {
     }
     return m_settingsWidget;
   }
-  
+
   void DipoleEngine::setDipoleType(int value)
   {
     m_dipoleType = value;
     updateDipole();
-    
+
     if (m_dipoleType != 1) { // not the custom version
       m_settingsWidget->customLabel->setEnabled(false);
       m_settingsWidget->xDipoleSpinBox->setEnabled(false);
       m_settingsWidget->yDipoleSpinBox->setEnabled(false);
       m_settingsWidget->zDipoleSpinBox->setEnabled(false);
-    } else {
+    }
+    else {
       m_settingsWidget->customLabel->setEnabled(true);
       m_settingsWidget->xDipoleSpinBox->setEnabled(true);
       m_settingsWidget->yDipoleSpinBox->setEnabled(true);
-      m_settingsWidget->zDipoleSpinBox->setEnabled(true);      
+      m_settingsWidget->zDipoleSpinBox->setEnabled(true);
     }
-    
+
     emit changed();
   }
 
   void DipoleEngine::updateDipole()
   {
-    vector3 tempMoment(0.0, 0.0, 0.0);
-    
+    Vector3d tempMoment(0.0, 0.0, 0.0);
+
+    QList<Primitive *> list;
+    // Get a list of atoms and calculate the dipole moment
+    list = primitives().subList(Primitive::AtomType);
+
     switch(m_dipoleType)
     {
       case 0: // estimated
-      if (!m_molecule || m_molecule->NumAtoms() == 0)
+      if (list.size() == 0)
         return;
-        
-      FOR_ATOMS_OF_MOL(a, m_molecule) {
-        tempMoment += a->GetVector() * a->GetPartialCharge();
+
+      foreach(const Primitive *p, list) {
+        const Atom *a = static_cast<const Atom *>(p);
+        tempMoment += a->pos() * a->partialCharge();
       }
       break;
 
       case 1: // custom
-      tempMoment.Set(m_settingsWidget->xDipoleSpinBox->value(),
+      tempMoment = Vector3d(m_settingsWidget->xDipoleSpinBox->value(),
         m_settingsWidget->yDipoleSpinBox->value(),
         m_settingsWidget->zDipoleSpinBox->value());
       break;
 
-      default:; // embedded OBGenericData type -- handle 
+      default:; // embedded OBGenericData type -- handle
     }
-    
+
     m_dipole(0) = tempMoment.x();
     m_dipole(1) = tempMoment.y();
     m_dipole(2) = tempMoment.z();

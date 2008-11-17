@@ -24,9 +24,9 @@ set(LINK_LIBS "avogadro-lib")
 #install(TARGETS elementcolor DESTINATION ${DESTINATION_DIR})
 
 ### residuecolor
-set(residuecolor_SRCS residuecolor.cpp)
-qt4_automoc(${residuecolor_SRCS})
-add_library(residuecolor MODULE ${residuecolor_SRCS})
-target_link_libraries(residuecolor ${LINK_LIBS})
-install(TARGETS residuecolor DESTINATION ${DESTINATION_DIR})
+#set(residuecolor_SRCS residuecolor.cpp)
+#qt4_automoc(${residuecolor_SRCS})
+#add_library(residuecolor MODULE ${residuecolor_SRCS})
+#target_link_libraries(residuecolor ${LINK_LIBS})
+#install(TARGETS residuecolor DESTINATION ${DESTINATION_DIR})
 

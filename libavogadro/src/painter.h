@@ -44,6 +44,7 @@ namespace Avogadro
    * @sa GLPainter, POVPainter
    */
   class Color;
+  class Mesh;
   class A_EXPORT Painter : public QObject
   {
     Q_OBJECT
@@ -272,6 +273,11 @@ namespace Avogadro
                                    const Eigen::Vector3d & point3,
                                    const Eigen::Vector3d & point4,
                                    double lineWidth) = 0;
+    /**
+     * Draws the given mesh.
+     */
+    virtual void drawMesh(const Mesh & mesh, int mode = 0,
+                          bool normalWind = true) = 0;
 
     /**
      * Draws text at a given window position, on top of the scene.
@@ -321,6 +327,7 @@ namespace Avogadro
      */
     virtual int drawText (const Eigen::Vector3d & pos,
                           const QString &string) const = 0;
+
   };
 } // end namespace Avogadro
 

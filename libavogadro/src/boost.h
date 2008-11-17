@@ -5,9 +5,9 @@
 #include <boost/python.hpp>
 #include <avogadro/primitive.h>
 
-#include <openbabel/mol.h>
-#include <openbabel/atom.h>
-#include <openbabel/bond.h>
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
 
 using namespace boost::python;
 
@@ -15,7 +15,7 @@ using namespace Avogadro;
 using namespace OpenBabel;
 
 struct PySwigObject {
-  PyObject_HEAD 
+  PyObject_HEAD
   void * ptr;
   const char * desc;
 };
@@ -27,7 +27,7 @@ void* extract_swig_wrapped_pointer(PyObject* obj)
   //first we need to get the this attribute from the Python Object
   if (!PyObject_HasAttrString(obj, thisStr))
     return NULL;
-                    
+
   PyObject* thisAttr = PyObject_GetAttrString(obj, thisStr);
   if (thisAttr == NULL)
     return NULL;
@@ -38,35 +38,25 @@ void* extract_swig_wrapped_pointer(PyObject* obj)
 
 
 BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(OBMol_AddBondOverloads, OBMol::AddBond, 3, 4)
-
+/*
 BOOST_PYTHON_MODULE(Avogadro) {
-  class_<OpenBabel::OBBond>("OBBond");
-  class_<Avogadro::Bond, bases<OpenBabel::OBBond>, boost::noncopyable>("Bond")
-    .def("GetLength", &OBBond::GetLength)
-    .def("GetBeginAtomIdx", &OBBond::GetBeginAtomIdx)
-    .def("GetEndAtomIdx", &OBBond::GetEndAtomIdx)
-    .def("GetFlags", &OBBond::GetFlags)
-    .def("GetBO", &OBBond::GetBO)
-		.def("SetBO", &OBBond::SetBO);
-  class_<OpenBabel::OBAtom>("OBAtom");
-// Overloaded SetVector, so we give it an alias
-	void (OBAtom::*SetVectorDouble)(double,double,double) = &OBAtom::SetVector;
 
-  class_<Avogadro::Atom, bases<OpenBabel::OBAtom>, boost::noncopyable>("Atom")
-    .def("SetAtomicNum", &OBAtom::SetAtomicNum)
-    .def("SetIsotope", &OBAtom::SetIsotope)
-    .def("SetImplicitValence", &OBAtom::SetImplicitValence)
-    .def("SetPartialCharge", &OBAtom::SetPartialCharge)
-    .def("SetFormalCharge", &OBAtom::SetFormalCharge)
-    .def("SetVector", SetVectorDouble)
-    .def("MatchesSMARTS", &OBAtom::MatchesSMARTS)
-    .def("GetIdx", &OBAtom::GetIdx)
-    .def("GetAtomicNum", &OBAtom::GetAtomicNum)
-    .def("GetAtomicMass", &OBAtom::GetAtomicMass)
+  class_<Avogadro::Bond, bases<Avogadro::Primitive>, boost::noncopyable>("Bond")
+    .def("length", length)
+    .def("beginAtomId", beginAtomId)
+    .def("endAtomId", endAtomId)
+    .def("order", order)
+    .def("setOrder", setOrder);
+
+  class_<Avogadro::Atom, bases<Avogadro::Primitive>, boost::noncopyable>("Atom")
+    .def("setAtomicNumber", setAtomicNumber)
+    .def("setPos", setPos)
+    .def("index", index)
+    .def("atomicNumber", atomicNumber)
     .def("GetX", &OBAtom::GetX)
     .def("GetY", &OBAtom::GetY)
     .def("GetZ", &OBAtom::GetZ)
-    .def("GetPartialCharge", &OBAtom::GetPartialCharge);
+    .def("partialCharge", partialCharge);
 
   class_<OpenBabel::OBMol>("OBMol");
 
@@ -116,11 +106,11 @@ BOOST_PYTHON_MODULE(Avogadro) {
     .def("GetAtom", &OBMol::GetAtom, return_value_policy<reference_existing_object>()) //, return_internal_reference<1> >())
     .def("farthestAtom",&Molecule::farthestAtom, return_value_policy<reference_existing_object>() );
 
-  
+
   // register openbabel SWIG objects
   converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBMol>());
   converter::registry::insert(&extract_swig_wrapped_pointer, type_id<OpenBabel::OBAtom>());
-}
+} */
 
 
 #endif

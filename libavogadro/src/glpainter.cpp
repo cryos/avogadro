@@ -30,6 +30,11 @@
 #include "cylinder.h"
 #include "textrenderer.h"
 
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/molecule.h>
+#include <avogadro/mesh.h>
+
 #include <QDebug>
 #include <QVarLengthArray>
 #include <Eigen/Geometry>
@@ -297,13 +302,9 @@ namespace Avogadro
   {
     d->type = primitive->type();
     if (d->type == Primitive::AtomType)
-      {
-        d->id = static_cast<const Atom *>(primitive)->GetIdx();
-      }
+      d->id = static_cast<const Atom *>(primitive)->index();
     else if (d->type == Primitive::BondType)
-      {
-        d->id = static_cast<const Bond *>(primitive)->GetIdx();
-      }
+      d->id = static_cast<const Bond *>(primitive)->index();
   }
 
   void GLPainter::setName ( Primitive::Type type, int id )
@@ -971,6 +972,54 @@ namespace Avogadro
     glPopAttrib();
   }
 
+  void GLPainter::drawMesh(const Mesh & mesh, int mode, bool normalWind)
+  {
+    // Now we draw the given mesh to the OpenGL widget
+    switch (mode)
+    {
+      case 0:
+        glPolygonMode(GL_FRONT, GL_FILL);
+        glEnable(GL_LIGHTING);
+        break;
+      case 1:
+        glPolygonMode(GL_FRONT, GL_LINE);
+        glDisable(GL_LIGHTING);
+        break;
+      case 2:
+        glPolygonMode(GL_FRONT, GL_POINT);
+        glDisable(GL_LIGHTING);
+        break;
+    }
+
+    d->color.apply();
+    d->color.applyAsMaterials();
+    glBegin(GL_TRIANGLES);
+
+    // Render the triangles of the mesh
+    std::vector<Eigen::Vector3f> t = mesh.triangles();
+    std::vector<Eigen::Vector3f> n = mesh.normals();
+
+    // Normal or reverse winding?
+    if (normalWind) {
+      for(unsigned int i = 0; i < t.size(); ++i) {
+        glNormal3fv(n[i].data());
+        glVertex3fv(t[i].data());
+      }
+    }
+    /// FIXME - this is a fudge to fix the negative windings right now - FIXME!
+    else {
+      for(unsigned int i = t.size(); i > 0; --i) {
+        Eigen::Vector3f tmp = n[i-1] * -1;
+        glNormal3fv(tmp.data());
+        glVertex3fv(t[i-1].data());
+      }
+    }
+    glEnd();
+
+    glPolygonMode(GL_FRONT, GL_FILL);
+    glEnable(GL_LIGHTING);
+  }
+
   int GLPainter::drawText ( int x, int y, const QString &string ) const
   {
     if(!d->isValid()) { return 0; }
@@ -1056,13 +1105,13 @@ namespace Avogadro
         glPushName(d->id);
       }
   }
-  
+
   void GLPainter::resetName()
   {
     d->type = Primitive::OtherType;
     d->id = -1;
   }
-  
+
   void GLPainter::popName()
   {
     // Pop the type and id if they are set, then reset them

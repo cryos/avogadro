@@ -48,12 +48,12 @@ add_library(hbondengine MODULE ${hbondengine_SRCS} ${hbondengine_UIS})
 target_link_libraries(hbondengine ${LINK_LIBS})
 install(TARGETS hbondengine DESTINATION ${DESTINATION_DIR})
 
-# force engine
-set(forceengine_SRCS forceengine.cpp)
-qt4_automoc(${forceengine_SRCS})
-add_library(forceengine MODULE ${forceengine_SRCS} ${forceengine_UIS})
-target_link_libraries(forceengine ${LINK_LIBS})
-install(TARGETS forceengine DESTINATION ${DESTINATION_DIR})
+# force engine - DISABLED TEMPORARILY
+#set(forceengine_SRCS forceengine.cpp)
+#qt4_automoc(${forceengine_SRCS})
+#add_library(forceengine MODULE ${forceengine_SRCS} ${forceengine_UIS})
+#target_link_libraries(forceengine ${LINK_LIBS})
+#install(TARGETS forceengine DESTINATION ${DESTINATION_DIR})
 
 # sphere
 set(sphereengine_SRCS sphereengine.cpp)
@@ -72,12 +72,12 @@ target_link_libraries(stickengine ${LINK_LIBS})
 install(TARGETS stickengine DESTINATION ${DESTINATION_DIR})
 
 # Ribbon engine (biological structure)
-set(ribbonengine_SRCS ribbonengine.cpp)
-qt4_wrap_ui(ribbonengine_UIS ribbonsettingswidget.ui)
-qt4_automoc(${ribbonengine_SRCS})
-add_library(ribbonengine MODULE ${ribbonengine_SRCS} ${ribbonengine_UIS} )
-target_link_libraries(ribbonengine ${LINK_LIBS})
-install(TARGETS ribbonengine DESTINATION ${DESTINATION_DIR})
+#set(ribbonengine_SRCS ribbonengine.cpp)
+#qt4_wrap_ui(ribbonengine_UIS ribbonsettingswidget.ui)
+#qt4_automoc(${ribbonengine_SRCS})
+#add_library(ribbonengine MODULE ${ribbonengine_SRCS} ${ribbonengine_UIS} )
+#target_link_libraries(ribbonengine ${LINK_LIBS})
+#install(TARGETS ribbonengine DESTINATION ${DESTINATION_DIR})
 
 # Ring engine - display cyclic rings
 set(ringengine_SRCS ringengine.cpp)
@@ -88,19 +88,19 @@ target_link_libraries(ringengine ${LINK_LIBS})
 install(TARGETS ringengine DESTINATION ${DESTINATION_DIR})
 
 # Polygon engine
-set(polygonengine_SRCS polygonengine.cpp)
-qt4_automoc(${polygonengine_SRCS})
-add_library(polygonengine MODULE ${polygonengine_SRCS} )
-target_link_libraries(polygonengine ${LINK_LIBS})
-install(TARGETS polygonengine DESTINATION ${DESTINATION_DIR})
+#set(polygonengine_SRCS polygonengine.cpp)
+#qt4_automoc(${polygonengine_SRCS})
+#add_library(polygonengine MODULE ${polygonengine_SRCS} )
+#target_link_libraries(polygonengine ${LINK_LIBS})
+#install(TARGETS polygonengine DESTINATION ${DESTINATION_DIR})
 
 # Surface engine - molecular surfaces and 3D functions
-set(surfaceengine_SRCS iso.cpp surfaceengine.cpp)
-qt4_wrap_ui(surfaceengine_UIS surfacesettingswidget.ui)
-qt4_automoc(${surfaceengine_SRCS})
-add_library(surfaceengine MODULE ${surfaceengine_SRCS} ${surfaceengine_UIS})
-target_link_libraries(surfaceengine ${LINK_LIBS})
-install(TARGETS surfaceengine DESTINATION ${DESTINATION_DIR})
+#set(surfaceengine_SRCS iso.cpp surfaceengine.cpp)
+#qt4_wrap_ui(surfaceengine_UIS surfacesettingswidget.ui)
+#qt4_automoc(${surfaceengine_SRCS})
+#add_library(surfaceengine MODULE ${surfaceengine_SRCS} ${surfaceengine_UIS})
+#target_link_libraries(surfaceengine ${LINK_LIBS})
+#install(TARGETS surfaceengine DESTINATION ${DESTINATION_DIR})
 
 # Orbital engine - molecular orbitals
 set(orbitalengine_SRCS iso.cpp orbitalengine.cpp)

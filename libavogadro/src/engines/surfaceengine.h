@@ -30,15 +30,19 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 #include <avogadro/color.h>
+#include <avogadro/point.h>
+#include <avogadro/line.h>
 
 #include "iso.h"
 #include "ui_surfacesettingswidget.h"
 
 namespace Avogadro {
 
+  class Atom;
   class SurfacePrivateData;
   class SurfaceSettingsWidget;
-  
+  class BoxControl;
+
   //! VDWGridThread
   class VDWGridThread : public QThread
   {
@@ -48,21 +52,25 @@ namespace Avogadro {
       VDWGridThread(QObject *parent=0);
       ~VDWGridThread();
 
-      void init(Molecule *molecule, PrimitiveList &primitives, const PainterDevice* pd, 
+      void init(Molecule *molecule, PrimitiveList &primitives, const PainterDevice* pd,
                 double stepSize = 0.0);
+      void init(Molecule *molecule, PrimitiveList &primitives, const PainterDevice* pd,
+                BoxControl *boxControl, double stepSize = 0.0);
       void run();
       Grid* grid();
       double stepSize();
 
     private:
+      void initStepSize(const PainterDevice *pd, double stepSize);
+      
       QMutex m_mutex;
       Molecule *m_molecule;
       PrimitiveList m_primitives;
       Grid *m_grid;
       double m_stepSize;
       double m_padding;
+      BoxControl *m_boxControl;
   };
-
 
   //! Surface Engine class.
   class SurfaceEngine : public Engine
@@ -102,11 +110,15 @@ namespace Avogadro {
        * Read in the settings that have been saved for the engine instance.
        */
       void readSettings(QSettings &settings);
-
+    
     public Q_SLOTS:
       void addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
+      
+      void setDrawBox(int value);
+      void boxModified();
+      void resetBox();
 
     protected:
       SurfaceSettingsWidget *m_settingsWidget;
@@ -122,6 +134,9 @@ namespace Avogadro {
       int    m_renderMode;
       int    m_colorMode;
       bool   m_surfaceValid;
+      bool   m_drawBox;
+
+      BoxControl *m_boxControl;
 
       inline double radius(const Atom *a) const;
       //void VDWSurface(Molecule *mol);
@@ -132,7 +147,7 @@ namespace Avogadro {
       double m_clipEqA, m_clipEqB, m_clipEqC, m_clipEqD;
       // clipping stuff
 
-      void doWork(Molecule *mol);
+      void doWork(PainterDevice *pd, Molecule *mol);
 
     private Q_SLOTS:
       void vdwThreadFinished();
@@ -156,29 +171,29 @@ namespace Avogadro {
       void setColor(const QColor& color);
 
       // clipping stuff
-      void setClipEnabled(int value) 
-      { 
-        m_clip = value; 
+      void setClipEnabled(int value)
+      {
+        m_clip = value;
         emit changed();
       }
-      void setClipEqA(double value) 
+      void setClipEqA(double value)
       {
-        m_clipEqA = value; 
-        emit changed();
-      } 
-      void setClipEqB(double value) 
-      {
-        m_clipEqB = value; 
+        m_clipEqA = value;
         emit changed();
       }
-      void setClipEqC(double value) 
+      void setClipEqB(double value)
       {
-        m_clipEqC = value; 
+        m_clipEqB = value;
         emit changed();
       }
-      void setClipEqD(double value) 
+      void setClipEqC(double value)
       {
-        m_clipEqD = value; 
+        m_clipEqC = value;
+        emit changed();
+      }
+      void setClipEqD(double value)
+      {
+        m_clipEqD = value;
         emit changed();
       }
       // clipping stuff

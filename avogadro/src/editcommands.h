@@ -29,6 +29,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/idlist.h>
+#include <avogadro/molecule.h>
 
 namespace Avogadro {
 

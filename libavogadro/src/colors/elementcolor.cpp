@@ -26,9 +26,10 @@
 
 #include <config.h>
 #include <avogadro/primitive.h>
+#include <avogadro/atom.h>
 #include <QtPlugin>
 
-using namespace OpenBabel;
+#include <openbabel/mol.h>
 
 namespace Avogadro {
 
@@ -36,12 +37,12 @@ namespace Avogadro {
   //{
     //m_color = new ElementColor();
   //}
-  
+
   //ElementColorPlugin::~ElementColorPlugin()
   //{
     //delete m_color;
   //}
-  
+
   //Color* ElementColorPlugin::color() const
   //{
     //return m_color;
@@ -61,7 +62,7 @@ namespace Avogadro {
       return;
 
     const Atom *atom = static_cast<const Atom*>(p);
-    std::vector<double> rgb = etab.GetRGB( atom->GetAtomicNum() );
+    std::vector<double> rgb = OpenBabel::etab.GetRGB(atom->atomicNumber());
     m_channels[0] = rgb[0];
     m_channels[1] = rgb[1];
     m_channels[2] = rgb[2];

@@ -48,6 +48,8 @@
 namespace Avogadro
 {
 
+  class Molecule;
+
   // Orbital types that are handled
   enum orbital { S, SP, P, D, D5, F, F7 };
 

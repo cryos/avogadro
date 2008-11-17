@@ -27,6 +27,12 @@
 #include <QTimer>
 #include <QVector>
 
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/residue.h>
+#include <avogadro/molecule.h>
+#include <openbabel/mol.h>
+
 namespace Avogadro {
   class PrimitiveItemModelPrivate
   {
@@ -70,7 +76,7 @@ namespace Avogadro {
     }
   }
 
-  PrimitiveItemModel::PrimitiveItemModel( Molecule *molecule, QObject *parent) : QAbstractItemModel(parent), d(new PrimitiveItemModelPrivate)
+  PrimitiveItemModel::PrimitiveItemModel(Molecule *molecule, QObject *parent) : QAbstractItemModel(parent), d(new PrimitiveItemModelPrivate)
   {
     d->molecule = molecule;
 
@@ -81,9 +87,9 @@ namespace Avogadro {
     d->size.resize(d->rowTypeMap.size());
     d->moleculeCache.resize(d->rowTypeMap.size());
 
-    d->size[0] = molecule->NumAtoms();
-    d->size[1] = molecule->NumBonds();
-    d->size[2] = molecule->NumResidues();
+    d->size[0] = molecule->numAtoms();
+    d->size[1] = molecule->numBonds();
+    d->size[2] = molecule->numResidues();
 
     connect(molecule, SIGNAL(primitiveAdded(Primitive *)),
         this, SLOT(addPrimitive(Primitive *)));
@@ -236,7 +242,7 @@ namespace Avogadro {
     return 1;
   }
 
-  QVariant PrimitiveItemModel::data ( const QModelIndex & index, int role ) const
+  QVariant PrimitiveItemModel::data (const QModelIndex & index, int role) const
   {
     if(!index.isValid() || index.column() != 0)
     {
@@ -256,36 +262,34 @@ namespace Avogadro {
         else if(type == Primitive::AtomType) {
           Atom *atom = (Atom*)primitive;
           str = tr("Atom") + ' '
-            + QString(OpenBabel::etab.GetSymbol(atom->GetAtomicNum()))
-            + ' ' + QString::number(atom->GetIdx());
+            + QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
+            + ' ' + QString::number(atom->index());
         }
         else if(type == Primitive::BondType){
           Bond *bond = (Bond*)primitive;
-          Atom *beginAtom = (Atom *)bond->GetBeginAtom();
-          Atom *endAtom = (Atom *)bond->GetEndAtom();
-          str = tr("Bond") + ' ' + QString::number(bond->GetIdx()) + " (";
-          if(beginAtom) {
-            str += QString::number(beginAtom->GetIdx());
-          } else {
+          const Atom *beginAtom = d->molecule->atomById(bond->beginAtomId());
+          const Atom *endAtom = d->molecule->atomById(bond->endAtomId());
+          str = tr("Bond") + ' ' + QString::number(bond->index()) + " (";
+          if(beginAtom)
+            str += QString::number(beginAtom->index());
+          else
             // this should never happen: Bond always has a beginning -GRH
             str += '-';
-          }
 
           str += ',';
 
-          if(endAtom) {
-            str += QString::number(endAtom->GetIdx());
-          } else {
+          if(endAtom)
+            str += QString::number(endAtom->index());
+          else
             // this should never happen: Bond always has an end -GRH
             str += '-';
-          }
+
           str += ')';
         } // end bond
         else if(type == Primitive::ResidueType) {
           Residue *residue = (Residue*)primitive;
           str = tr("Residue") + ' ';
-          str += QString(residue->GetName().c_str()) + ' '
-            + QString(residue->GetNumString().c_str());
+          str += residue->name() + ' ' + residue->numString();
         }
 
         return str;

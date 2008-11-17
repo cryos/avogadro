@@ -3,6 +3,7 @@
 
   Copyright (C) 2006-2007 by Geoffrey R. Hutchison
   Copyright (C) 2006-2008 by Donald E. Curtis
+  Copyright (C) 2007-2008 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -73,7 +74,6 @@ namespace Avogadro {
       bool saveAs();
       void revert();
       void exportGraphics();
-      void exportPOV();
 
       void closeFile();
 

@@ -69,6 +69,8 @@
 #include <openbabel/mol.h> // Shouldn't need this but get compilation error without
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
+#include "../cube.h"
+#include "../mesh.h"
 
 namespace Avogadro
 {
@@ -84,43 +86,28 @@ namespace Avogadro
   class Grid : public ImplicitFunction
   {
   public:
-    Grid(): m_iso(0.), m_gd(0) { ; }
-    ~Grid()
-    {
-      if (m_gd)
-      {
-        //        delete m_gd;
-        m_gd = 0;
-      }
-    }
+    Grid(): m_iso(0.), m_cube(0) { ; }
+    ~Grid() { ; }
 
-    void setIsoValue(float i) { m_iso = i; }
-    float isoValue() { return m_iso; }
-    void setGrid(OpenBabel::OBGridData *gd) { m_gd = gd; }
-    OpenBabel::OBGridData* grid() { return m_gd; }
+    inline void setIsoValue(float i) { m_iso = i; }
+    inline float isoValue() { return m_iso; }
+    inline void setCube(Cube *cube) { m_cube = cube; }
+    inline Cube* cube() { return m_cube; }
 
     float eval(float x, float y, float z)
     {
-      OpenBabel::vector3 v(x, y, z);
-      return m_gd->GetValue(v) - m_iso;
+      Eigen::Vector3d v(x, y, z);
+      return m_cube->value(v) - m_iso;
     }
 
     float eval(int i, int j, int k)
     {
-      return m_gd->GetValue(i, j, k) - m_iso;
+      return m_cube->value(i, j, k) - m_iso;
     }
 
   private:
     double m_iso;
-    OpenBabel::OBGridData *m_gd;
-  };
-
-  // Triangle structure
-  struct triangle
-  {
-    Eigen::Vector3f p0;
-    Eigen::Vector3f p1;
-    Eigen::Vector3f p2;
+    Cube *m_cube;
   };
 
   // Does isosurface tessellation. Called from gldraw only
@@ -135,17 +122,17 @@ namespace Avogadro
     ~IsoGen() { ; }
 
     // Vertex/normal-lists
-    QList<triangle> m_normList, m_normListCopy;
-    QList<triangle> m_vertList, m_vertListCopy;
+    Mesh m_mesh, m_meshCopy;
 
     void run();
 
     // Central functions
     void init(Grid *grid, const PainterDevice *pd, bool interpolate = false,
               double stepSize = 0.0);
-    int numTriangles();
-    triangle getTriangle(int i);
-    triangle getNormal(int i);
+//    int numTriangles();
+//    triangle getTriangle(int i);
+//    triangle getNormal(int i);
+    Mesh & mesh() { return m_mesh; }
 
   private:
     Grid *m_grid; // OpenBabel Grid
@@ -172,6 +159,7 @@ namespace Avogadro
 
     void vGetNormal(Eigen::Vector3f &rfNormal, const float fX, const float fY,
         const float fZ);
+    void vGetNormal(Eigen::Vector3f &rfNormal, int i, int j, int k);
     void vMarchCube1(const float fX, const float fY, const float fZ);
     void vMarchCube1(int i, int j, int k);
 //    void vMarchCube2(const float fX, const float fY, const float fZ);

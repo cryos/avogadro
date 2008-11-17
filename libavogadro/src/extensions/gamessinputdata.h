@@ -30,6 +30,9 @@
 using namespace std;
 namespace Avogadro {
 
+  class Molecule;
+  class Atom;
+
   enum TypeOfRun {
     InvalidRunType=0,
     Energy=1,

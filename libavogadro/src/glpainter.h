@@ -270,6 +270,11 @@ namespace Avogadro
                              double lineWidth);
 
       /**
+       * Draws the given mesh.
+        */
+      void drawMesh(const Mesh & mesh, int mode = 0, bool normalWind = true);
+
+      /**
        * Draws text at a given window position, on top of the scene.
        * @note Calls to drawText methods must be enclosed between begin() and end().
        * @note Text is rendered as a transparent object, and should therefore be rendered after

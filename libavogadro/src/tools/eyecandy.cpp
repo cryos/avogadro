@@ -25,6 +25,8 @@
 
 #include "eyecandy.h"
 
+#include <avogadro/atom.h>
+
 #define TESS_LEVEL 32
 #define RIBBON_WIDTH 0.05
 #define RIBBON_LENGTH 0.6

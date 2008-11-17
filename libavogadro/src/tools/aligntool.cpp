@@ -26,9 +26,12 @@
 
 #include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
+#include <avogadro/atom.h>
+#include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
+#include <openbabel/mol.h>
 #include <openbabel/obiter.h>
 #include <openbabel/generic.h>
 
@@ -86,7 +89,7 @@ namespace Avogadro {
       if(m_hits[0].type() != Primitive::AtomType)
         return 0;
 
-      Atom *atom = static_cast<Atom *>(m_molecule->GetAtom(m_hits[0].name()));
+      Atom *atom = m_molecule->atom(m_hits[0].name());
 
       if(m_numSelectedAtoms < 2)
       {
@@ -120,9 +123,8 @@ namespace Avogadro {
     // part of the molecule.
     Eigen::Vector3d atomsBarycenter(0., 0., 0.);
     double sumOfWeights = 0.;
-    std::vector<OpenBabel::OBNodeBase*>::iterator i;
-    for ( Atom *atom = static_cast<Atom*>(widget->molecule()->BeginAtom(i));
-          atom; atom = static_cast<Atom*>(widget->molecule()->NextAtom(i))) {
+    QList<Atom*> atoms = widget->molecule()->atoms();
+    foreach (const Atom *atom, atoms) {
       Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
       double atomDistance = transformedAtomPos.norm();
       double dot = transformedAtomPos.z() / atomDistance;
@@ -186,7 +188,7 @@ namespace Avogadro {
     if (m_molecule.isNull())
       return;
 
-    QList<Primitive*> neighborList;
+    QList<Atom*> neighborList;
     if (m_numSelectedAtoms)
     {
       // Check the first atom still exists, return if not
@@ -194,18 +196,19 @@ namespace Avogadro {
         return;
 
       // If m_alignType is 0 we want everything, otherwise just the fragment
-      if (m_alignType) {
-        OBMolAtomDFSIter iter(m_molecule, m_selectedAtoms[0]->GetIdx());
+      /// FIXME Add back fragment alignment too!
+/*      if (m_alignType) {
+        OBMolAtomDFSIter iter(m_molecule, m_selectedAtoms[0]->index());
         Atom *tmpNeighbor;
         do {
           tmpNeighbor = static_cast<Atom*>(&*iter);
           neighborList.append(tmpNeighbor);
         } while ((iter++).next()); // this returns false when we are done
       }
-      else {
-        FOR_ATOMS_OF_MOL(atom, m_molecule)
-          neighborList.append(static_cast<Atom *>(&*atom));
-      }
+      else { */
+      QList<Atom*> atoms = m_molecule->atoms();
+      foreach(Atom *atom, atoms)
+        neighborList.append(atom);
     }
     // Align the molecule along the selected axis
     if (m_numSelectedAtoms >= 1)

@@ -28,17 +28,18 @@
 
 #include <config.h>
 #include <avogadro/primitive.h>
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <openbabel/obiter.h>
 #include <Eigen/Regression>
 
 #include <QMessageBox>
 #include <QDebug>
 
-using namespace std;
-using namespace OpenBabel;
+#include <openbabel/mol.h>
+
 using namespace Eigen;
 
 namespace Avogadro {
@@ -55,11 +56,11 @@ namespace Avogadro {
     if(m_settingsWidget)
       m_settingsWidget->deleteLater();
   }
-  
+
   Engine* SphereEngine::clone() const
   {
     SphereEngine* engine = new SphereEngine(parent());
-    
+
     engine->setAlias(alias());
     engine->m_alpha = m_alpha;
     engine->setEnabled(isEnabled());
@@ -179,7 +180,7 @@ namespace Avogadro {
 
   inline double SphereEngine::radius(const Atom *a) const
   {
-    return etab.GetVdwRad(a->GetAtomicNum());
+    return OpenBabel::etab.GetVdwRad(a->atomicNumber());
   }
 
   double SphereEngine::radius(const PainterDevice *pd, const Primitive *p) const

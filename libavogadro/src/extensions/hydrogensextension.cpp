@@ -24,8 +24,8 @@
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
-
-#include <openbabel/obiter.h>
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
 
 #include <QAction>
 #include <QInputDialog>
@@ -78,12 +78,12 @@ namespace Avogadro {
     if( 0 <= i && i <= 2) {
       if(i == 1) {
         bool ok;
-        double pH = QInputDialog::getDouble(0, 
+        double pH = QInputDialog::getDouble(0,
           tr("Add Hydrogens for pH"), tr("pH"), 7.4, 0.0, 14.0, 1, &ok);
-      
+
         if (!ok)
           return undo;
- 
+
         undo = new HydrogensCommand(m_molecule, (enum HydrogensCommand::Action) i, widget, pH);
       } else {
         undo = new HydrogensCommand(m_molecule, (enum HydrogensCommand::Action) i, widget);
@@ -95,7 +95,7 @@ namespace Avogadro {
 
   HydrogensCommand::HydrogensCommand(Molecule *molecule, enum Action action,
       GLWidget *widget, double pH):
-    m_molecule(molecule), m_moleculeCopy(*molecule),
+    m_molecule(molecule), m_moleculeCopy(new Molecule(*molecule)),
     m_SelectedList(widget->selectedPrimitives()), m_action(action), m_pH(pH)
   {
     // save the selection from the current view widget
@@ -115,22 +115,29 @@ namespace Avogadro {
     }
   }
 
+  HydrogensCommand::~HydrogensCommand()
+  {
+    delete m_moleculeCopy;
+  }
+
   void HydrogensCommand::redo()
   {
     if (m_SelectedList.size() == 0) {
       switch(m_action) {
         case AddHydrogens:
-          m_molecule->AddHydrogens(false, false);
+          m_molecule->addHydrogens();
           break;
         case AddHydrogensPH:
-	  m_molecule->UnsetFlag(OB_PH_CORRECTED_MOL);
+          /// FIXME - need to add back in pH corrected
+          m_molecule->addHydrogens();
+/*	  m_molecule->UnsetFlag(OB_PH_CORRECTED_MOL);
 	  FOR_ATOMS_OF_MOL (a, m_molecule)
             a->SetFormalCharge(0.0);
 	  m_molecule->SetAutomaticFormalCharge(true);
-          m_molecule->AddHydrogens(false, true, m_pH);
+          m_molecule->AddHydrogens(false, true, m_pH); */
           break;
         case RemoveHydrogens:
-          m_molecule->DeleteHydrogens();
+          m_molecule->deleteHydrogens();
           break;
       }
     }
@@ -138,15 +145,15 @@ namespace Avogadro {
 
       foreach(unsigned long id, m_SelectedList.subList(Primitive::AtomType))
       {
-        Atom *atom = m_molecule->getAtomById(id);
+        Atom *atom = m_molecule->atomById(id);
         if(atom)
         {
           switch(m_action) {
             case AddHydrogens:
-              m_molecule->AddHydrogens(atom);
+              m_molecule->addHydrogens(atom);
               break;
             case RemoveHydrogens:
-              m_molecule->DeleteHydrogens(atom);
+              m_molecule->deleteHydrogens(atom);
               break;
           }
         }

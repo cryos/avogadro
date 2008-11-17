@@ -25,6 +25,7 @@
 #include "pythoninterpreter.h"
 
 #include <avogadro/global.h>
+#include <avogadro/molecule.h>
 #include <avogadro/boost.h>
 #include <QString>
 #include <QDebug>
@@ -42,7 +43,7 @@ namespace Avogadro {
 //      {
         std::cout << "initializing python interpreter\n";
         try {
-          PyImport_AppendInittab( const_cast<char *>("Avogadro"), &initAvogadro );
+//          PyImport_AppendInittab( const_cast<char *>("Avogadro"), &initAvogadro );
 
           Py_Initialize();
 
@@ -135,7 +136,7 @@ namespace Avogadro {
     QString exp("sys.path.insert(0,\"");
     exp.append(path);
     exp.append("\")");
-    execWrapper(exp, main_namespace, main_namespace); 
+    execWrapper(exp, main_namespace, main_namespace);
   }
 
   QString PythonInterpreter::exec(const QString &command, object local)

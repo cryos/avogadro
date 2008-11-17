@@ -184,6 +184,7 @@ namespace Avogadro {
   QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *event)
   {
     m_undo = 0;
+    Molecule *molecule = widget->molecule();
 
     m_lastDraggingPosition = event->pos();
     m_movedSinceButtonPressed = false;
@@ -210,7 +211,7 @@ namespace Avogadro {
     m_clickedAtom = NULL;
     m_clickedBond = NULL;
 
-    int oldName = m_selectedBond ? m_selectedBond->GetIdx() : -1;
+    int oldName = m_selectedBond ? m_selectedBond->index() : -1;
 
     // Check if the mouse clicked on any Atoms or Bonds.
     Primitive *clickedPrim = widget->computeClickedPrimitive(event->pos());
@@ -236,10 +237,10 @@ namespace Avogadro {
           // jitter, saving it now prevents this.
 
           Atom *otherAtom;
-          if (m_clickedAtom == static_cast<Atom*>(m_selectedBond->GetBeginAtom()))
-            otherAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+          if (m_clickedAtom == molecule->getAtomById(m_selectedBond->beginAtomId()))
+            otherAtom = molecule->getAtomById(m_selectedBond->endAtomId());
           else
-            otherAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
+            otherAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
 
           Vector3d centerProj = widget->camera()->project(otherAtom->pos());
           centerProj -= Vector3d(0,0,centerProj.z());
@@ -266,17 +267,15 @@ namespace Avogadro {
         Atom *dihedralRotCen = NULL;
         Bond *skeleBond = NULL;
 
-        Atom *beginAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
-        Atom *endAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+        Atom *beginAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
+        Atom *endAtom = molecule->getAtomById(m_selectedBond->endAtomId());
 
         // Check which atom in the selected bond the atom being manipulated will
         // be rotated around to change its dihedral angle.
-        if ((skeleBond = static_cast<Bond*>(m_clickedAtom->GetBond(beginAtom)))) {
+        if ((skeleBond = molecule->bond(m_clickedAtom, beginAtom)))
           dihedralRotCen = beginAtom;
-        }
-        else if ((skeleBond = static_cast<Bond*>(m_clickedAtom->GetBond(endAtom)))) {
+        else if ((skeleBond = molecule->bond(m_clickedAtom, endAtom)))
           dihedralRotCen = endAtom;
-        }
 
         bool skeletonSet = false;
         if (m_rightButtonPressed && skeleBond)
@@ -330,7 +329,7 @@ namespace Avogadro {
     else if (clickedPrim && clickedPrim->type() == Primitive::BondType)
     {
       // Bond clicked on.
-      m_clickedBond = (Bond*)clickedPrim;
+      m_clickedBond = static_cast<Bond *>(clickedPrim);
 
       // If the Bond was clicked on with the left mouse button, set it as the
       // currently selected bond and reset the reference point (if the Bond has
@@ -339,7 +338,7 @@ namespace Avogadro {
       {
         m_selectedBond = m_clickedBond;
 
-        if ((int)m_selectedBond->GetIdx() != oldName)
+        if (m_selectedBond->index() != oldName)
         {
           delete m_referencePoint;
           m_referencePoint = NULL;
@@ -349,8 +348,8 @@ namespace Avogadro {
 
           m_snapped = false;
 
-          Atom *leftAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
-          Atom *rightAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+          Atom *leftAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
+          Atom *rightAtom = molecule->getAtomById(m_selectedBond->endAtomId());
 
           Vector3d left = leftAtom->pos();
           Vector3d right = rightAtom->pos();
@@ -429,6 +428,8 @@ namespace Avogadro {
       return 0;
     }
 
+    Molecule *molecule = widget->molecule();
+
     QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
     if (deltaDragging.manhattanLength() > 2) {
@@ -446,8 +447,8 @@ namespace Avogadro {
       {
         if (m_clickedBond && m_selectedBond && m_referencePoint)
         {
-          Atom *beginAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
-          Atom *endAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+          Atom *beginAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
+          Atom *endAtom = molecule->getAtomById(m_selectedBond->endAtomId());
 
           Vector3d rotationVector = endAtom->pos() - beginAtom->pos();
           rotationVector = rotationVector / rotationVector.norm();
@@ -491,10 +492,10 @@ namespace Avogadro {
           //Do atom rotation.
           Atom *otherAtom;
 
-          if (m_clickedAtom == static_cast<Atom*>(m_selectedBond->GetBeginAtom()))
-            otherAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+          if (m_clickedAtom == molecule->getAtomById(m_selectedBond->beginAtomId()))
+            otherAtom = molecule->getAtomById(m_selectedBond->endAtomId());
           else
-            otherAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
+            otherAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
 
           Vector3d center = otherAtom->pos();
           Vector3d clicked = m_clickedAtom->pos();
@@ -553,17 +554,17 @@ namespace Avogadro {
           }
         }
         else if (m_selectedBond && m_clickedAtom &&
-            (m_clickedAtom->GetBond(m_selectedBond->GetBeginAtom()) ||
-             m_clickedAtom->GetBond(m_selectedBond->GetEndAtom())))
+            (molecule->bond(m_clickedAtom->id(), m_selectedBond->beginAtomId()) ||
+             molecule->bond(m_clickedAtom->id(), m_selectedBond->endAtomId())))
         {
           // Do multiple dihedral rotation (twising of the bond).
 
-          Atom *beginAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
-          Atom *endAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+          Atom *beginAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
+          Atom *endAtom = molecule->getAtomById(m_selectedBond->endAtomId());
 
           Vector3d center;
           Vector3d other;
-          if (m_clickedAtom->GetBond(beginAtom))
+          if (molecule->bond(m_clickedAtom, beginAtom))
           {
             center = beginAtom->pos();
             other = endAtom->pos();
@@ -641,8 +642,8 @@ namespace Avogadro {
         }
         else if (m_clickedBond)
         {
-          Atom *begin = static_cast<Atom *>(m_clickedBond->GetBeginAtom());
-          Atom *end = static_cast<Atom *>(m_clickedBond->GetEndAtom());
+          Atom *begin = molecule->getAtomById(m_clickedBond->beginAtomId());
+          Atom *end = molecule->getAtomById(m_clickedBond->endAtomId());
 
           Vector3d btoe = end->pos() - begin->pos();
           double newLen = btoe.norm() / 2;
@@ -681,10 +682,10 @@ namespace Avogadro {
 
           Atom *otherAtom;
 
-          if (m_clickedAtom == static_cast<Atom*>(m_selectedBond->GetBeginAtom()))
-            otherAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+          if (m_clickedAtom == molecule->getAtomById(m_selectedBond->beginAtomId()))
+            otherAtom = molecule->getAtomById(m_selectedBond->endAtomId());
           else
-            otherAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
+            otherAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
 
           Vector3d clicked = m_clickedAtom->pos();
           Vector3d other = otherAtom->pos();
@@ -701,18 +702,17 @@ namespace Avogadro {
           }
         }
         else if (m_selectedBond && m_clickedAtom &&
-            (m_clickedAtom->GetBond(m_selectedBond->GetBeginAtom()) ||
-             m_clickedAtom->GetBond(m_selectedBond->GetEndAtom())))
+            (molecule->bond(m_clickedAtom->id(), m_selectedBond->beginAtomId()) ||
+             molecule->bond(m_clickedAtom->id(), m_selectedBond->endAtomId())))
         {
           // Do dihedral angle manipulation of the clicked atom.
 
-          Atom *beginAtom = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
-          Atom *endAtom = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+          Atom *beginAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
+          Atom *endAtom = molecule->getAtomById(m_selectedBond->endAtomId());
 
           Vector3d center;
           Vector3d other;
-          if (m_clickedAtom->GetBond(beginAtom))
-          {
+          if (molecule->bond(m_clickedAtom, beginAtom)) {
             center = beginAtom->pos();
             other = endAtom->pos();
           }
@@ -784,6 +784,8 @@ namespace Avogadro {
     m_clickedAtom = NULL;
     m_clickedBond = NULL;
 
+    Molecule *molecule = widget->molecule();
+
     Primitive *clickedPrim = widget->computeClickedPrimitive(event->pos());
 
     if (clickedPrim && clickedPrim->type() == Primitive::AtomType)
@@ -796,8 +798,8 @@ namespace Avogadro {
     {
       Bond *clickedBond = (Bond*)clickedPrim;
 
-      Atom *begin = static_cast<Atom *>(clickedBond->GetBeginAtom());
-      Atom *end = static_cast<Atom *>(clickedBond->GetEndAtom());
+      Atom *begin = molecule->getAtomById(clickedBond->beginAtomId());
+      Atom *end = molecule->getAtomById(clickedBond->endAtomId());
 
       Vector3d btoe = end->pos() - begin->pos();
       double newLen = btoe.norm() / 2;
@@ -826,16 +828,19 @@ namespace Avogadro {
       clearData();
     }
 
+    Molecule *molecule = widget->molecule();
+
     bool dihedralAtomClicked = false;
 
     // Draw the dihedral angles and rectangles if they apply.
     if ((m_leftButtonPressed || m_rightButtonPressed) && m_clickedAtom &&
         m_selectedBond && !isAtomInBond(m_clickedAtom, m_selectedBond))
     {
-      Atom *begin = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
-      Atom *end = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+      Atom *begin = molecule->getAtomById(m_selectedBond->beginAtomId());
+      Atom *end = molecule->getAtomById(m_selectedBond->endAtomId());
 
-      if (m_clickedAtom->GetBond(begin) || m_clickedAtom->GetBond(end))
+      if (molecule->bond(m_clickedAtom, begin) ||
+          molecule->bond(m_clickedAtom, end))
       {
         dihedralAtomClicked = true;
 
@@ -866,14 +871,14 @@ namespace Avogadro {
     // Draw the manipulation rectangle and relative angles.
     if (m_selectedBond && !dihedralAtomClicked)
     {
-      Atom *begin = static_cast<Atom*>(m_selectedBond->GetBeginAtom());
-      Atom *end = static_cast<Atom*>(m_selectedBond->GetEndAtom());
+      Atom *begin = molecule->getAtomById(m_selectedBond->beginAtomId());
+      Atom *end = molecule->getAtomById(m_selectedBond->endAtomId());
 
       if (m_currentReference)
       {
         // Draw bond length text.
         QString length = tr("Bond Length:  ") +
-          QString::number(m_selectedBond->GetLength(), 10, 1) +
+          QString::number(m_selectedBond->length(), 10, 1) +
           QString::fromUtf8(" Å (Angstrom)");
 
         glColor4f(1.0, 1.0, 1.0, 1.0);
@@ -941,11 +946,10 @@ namespace Avogadro {
       return false;
     }
 
-    if (atom == static_cast<Atom*>(bond->GetBeginAtom())) {
+    if (atom->id() == bond->beginAtomId() || atom->id() == bond->endAtomId())
       return true;
-    }
-
-    return atom == static_cast<Atom*>(bond->GetEndAtom());
+    else
+      return false;
   }
 
   // ##########  drawAngleSector  ##########

@@ -5,11 +5,11 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>312</width>
-    <height>249</height>
+    <width>412</width>
+    <height>362</height>
    </rect>
   </property>
-  <layout class="QGridLayout" >
+  <layout class="QGridLayout" name="gridLayout" >
    <item row="0" column="0" >
     <widget class="QLabel" name="opacityLabel" >
      <property name="text" >
@@ -99,13 +99,51 @@
     </widget>
    </item>
    <item row="3" column="0" >
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>Draw Box:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" >
+    <layout class="QHBoxLayout" name="horizontalLayout" >
+     <item>
+      <widget class="QCheckBox" name="drawBoxCheck" >
+       <property name="text" >
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="drawBoxResetButton" >
+       <property name="text" >
+        <string>Reset</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0" >
     <widget class="QLabel" name="customColorLabel" >
      <property name="text" >
       <string>Custom Color:</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1" >
+   <item row="4" column="1" >
     <layout class="QHBoxLayout" >
      <item>
       <widget class="ColorButton" native="1" name="customColorButton" >
@@ -122,7 +160,7 @@
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>40</width>
          <height>20</height>
@@ -132,7 +170,14 @@
      </item>
     </layout>
    </item>
-   <item rowspan="2" row="5" column="0" colspan="2" >
+   <item row="5" column="0" colspan="2" >
+    <widget class="QCheckBox" name="clipCheckBox" >
+     <property name="text" >
+      <string>Clipping plane: Ax + By + Cz + D = 0</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2" >
     <layout class="QHBoxLayout" >
      <item>
       <widget class="QDoubleSpinBox" name="ASpinBox" >
@@ -175,20 +220,13 @@
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>20</width>
        <height>40</height>
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="4" column="0" colspan="2" >
-    <widget class="QCheckBox" name="clipCheckBox" >
-     <property name="text" >
-      <string>Clipping plane: Ax + By + Cz + D = 0</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>

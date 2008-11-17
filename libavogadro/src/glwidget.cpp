@@ -34,6 +34,12 @@
 #include <avogadro/glpainter.h>
 #include <avogadro/painterdevice.h>
 #include <avogadro/toolgroup.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/molecule.h>
+
+#include <avogadro/point.h>
+#include <avogadro/line.h>
 
 //#include "elementcolor.h"
 
@@ -59,6 +65,8 @@
 #include <cstdio>
 #include <vector>
 #include <cstdlib>
+
+#include <openbabel/mol.h>
 
 using namespace OpenBabel;
 using namespace Eigen;
@@ -205,7 +213,7 @@ namespace Avogadro {
 #endif
                         painter( 0 ),
                         colorMap( 0),
-                        defaultColorMap( 0), 
+                        defaultColorMap( 0),
                         updateCache(true),
                         quickRender(false),
                         renderAxes(false),
@@ -283,6 +291,8 @@ namespace Avogadro {
     GLuint                 dlistQuick;
     GLuint                 dlistOpaque;
     GLuint                 dlistTransparent;
+
+    Primitive             *clickedPrimitive;
 
     /**
       * Member GLPainterDevice which is passed to the engines.
@@ -367,13 +377,12 @@ namespace Avogadro {
         m_initialized = true;
       }
 
-
       if ( m_resize ) {
         m_widget->resizeGL( m_width, m_height );
         m_resize=false;
       }
 
-			d->background.setAlphaF(0.0);
+      d->background.setAlphaF(0.0);
       m_widget->qglClearColor(d->background);
       m_widget->paintGL();
       m_widget->swapBuffers();
@@ -632,6 +641,35 @@ namespace Avogadro {
     return d->renderDebug;
   }
 
+  bool GLWidget::renderPrimitives()
+  {
+    QVector<int> ids(Primitive::LastType, 0);
+    foreach ( Primitive *primitive, d->primitives) {
+      switch (primitive->type()) {
+        case Primitive::PointType:
+          {
+          Point *point = static_cast<Point*>(primitive);
+          d->pd->painter()->setColor( point->color() );
+          d->pd->painter()->setName( Primitive::PointType, ids[Primitive::PointType]++ );
+          d->pd->painter()->drawSphere( point->pos(), point->radius() );
+          }
+          break;
+        case Primitive::LineType:
+          {
+          Line *line = static_cast<Line*>(primitive);
+          d->pd->painter()->setColor( line->color() );
+          d->pd->painter()->setName( Primitive::LineType, ids[Primitive::LineType]++ );
+          d->pd->painter()->drawLine( line->begin(), line->end(), line->width() );
+          }
+          break; 
+        default:
+          break;
+      }
+    }
+
+    return true;
+  }
+
   void GLWidget::render()
   {
     d->painter->begin(this);
@@ -690,6 +728,9 @@ namespace Avogadro {
         }
       }
     }
+
+    // Render graphical primitives like arrows, points, planes and so on...
+    renderPrimitives();
 
     // Render the active tool
     if ( d->tool ) {
@@ -962,6 +1003,23 @@ namespace Avogadro {
 
   void GLWidget::mousePressEvent( QMouseEvent * event )
   {
+    d->clickedPrimitive = computeClickedPrimitive( event->pos() );
+
+    if ( d->clickedPrimitive ) {
+      switch (d->clickedPrimitive->type()) {
+        case Primitive::PointType:
+          {
+          Point *point = static_cast<Point*>(d->clickedPrimitive);
+          point->mousePressed( event );
+          qDebug() << "point clicked!!";
+          }
+          return;
+        default:
+          d->clickedPrimitive = 0;
+          break;
+      }
+    }
+    
     if ( d->tool ) {
       QUndoCommand *command = 0;
       command = d->tool->mousePress( this, event );
@@ -976,7 +1034,21 @@ namespace Avogadro {
 
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   {
-    if ( d->tool ) {
+    if ( d->clickedPrimitive ) {
+      switch (d->clickedPrimitive->type()) {
+        case Primitive::PointType:
+          {
+          Point *point = static_cast<Point*>(d->clickedPrimitive);
+          point->mouseReleased( event );
+          qDebug() << "point clicked!!";
+          }
+          return;
+        default:
+          break;
+      }
+
+      d->clickedPrimitive = 0;
+    } else if ( d->tool ) {
       QUndoCommand *command = d->tool->mouseRelease( this, event );
 
       if ( command && d->undoStack ) {
@@ -1005,7 +1077,20 @@ namespace Avogadro {
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.unlock();
 #endif
-    if ( d->tool ) {
+    if ( d->clickedPrimitive ) {
+      switch (d->clickedPrimitive->type()) {
+        case Primitive::PointType:
+          {
+          Point *point = static_cast<Point*>(d->clickedPrimitive);
+          point->mouseMoved( event );
+          qDebug() << "point clicked!!";
+          }
+          return;
+        default:
+          break;
+      }
+ 
+    } else if ( d->tool ) {
       QUndoCommand *command = d->tool->mouseMove( this, event );
       if ( command && d->undoStack ) {
         d->undoStack->push( command );
@@ -1041,8 +1126,16 @@ namespace Avogadro {
     }
     d->primitives.clear();
 
+    /// FIXME - add back in these loops!
+
     // add the atoms to the default queue
-    std::vector<OpenBabel::OBNodeBase*>::iterator i;
+    QList<Atom *> atoms = molecule->atoms();
+    foreach(Atom *atom, atoms)
+      d->primitives.append(atom);
+    QList<Bond *> bonds = molecule->bonds();
+    foreach(Bond *bond, bonds)
+      d->primitives.append(bond);
+/*    std::vector<OpenBabel::OBNodeBase*>::iterator i;
     for ( Atom *atom = ( Atom* )d->molecule->BeginAtom( i );
           atom; atom = ( Atom* )d->molecule->NextAtom( i ) ) {
       d->primitives.append( atom );
@@ -1061,7 +1154,7 @@ namespace Avogadro {
           residue; residue = ( Residue * )d->molecule->NextResidue( k ) ) {
       d->primitives.append( residue );
     }
-
+*/
     d->primitives.append( d->molecule );
 
     std::cout << "SetMolecule Called!" << std::endl;
@@ -1118,8 +1211,9 @@ namespace Avogadro {
 
   void GLWidget::updateGeometry()
   {
-    if (d->molecule->HasData(OBGenericDataType::UnitCell))
-      d->uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
+    /// FIXME Bring back the unit cell
+//    if (d->molecule->HasData(OBGenericDataType::UnitCell))
+//      d->uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
 
     if ( !d->uc ) { // a plain molecule, no crystal cell
       d->center = d->molecule->center();
@@ -1149,32 +1243,26 @@ namespace Avogadro {
       d->normalVector = d->molecule->normalVector();
       // Computation of the farthest atom.
       // First case: the molecule is empty
-      if(d->molecule->NumAtoms() == 0 ) {
+      if(d->molecule->numAtoms() == 0)
         d->farthestAtom = 0;
-      }
       // Second case: there is no repetition of the molecule
-      else if(d->aCells <= 1 && d->bCells <= 1 && d->cCells <= 1) {
+      else if(d->aCells <= 1 && d->bCells <= 1 && d->cCells <= 1)
         d->farthestAtom = d->molecule->farthestAtom();
-      }
       // General case: the farthest atom is the one that is located the
       // farthest in the direction pointed to by centerOffset.
       else {
-        std::vector<OBAtom*>::iterator atom_iterator;
-        Atom *atom;
+        QList<Atom *> atoms = d->molecule->atoms();
         double x, max_x;
-        for(
-            atom = static_cast<Atom*>(d->molecule->BeginAtom(atom_iterator)),
-              max_x = centerOffset.dot(atom->pos()),
-              d->farthestAtom = atom;
-            atom;
-            atom = static_cast<Atom*>(d->molecule->NextAtom(atom_iterator))
-            ) {
-          x = centerOffset.dot(atom->pos());
-          if(x > max_x)
-            {
+        if (atoms.size()) {
+          d->farthestAtom = atoms.at(0);
+          max_x = centerOffset.dot(d->farthestAtom->pos());
+          foreach (Atom *atom, atoms) {
+            x = centerOffset.dot(atom->pos());
+            if (x > max_x) {
               max_x = x;
               d->farthestAtom = atom;
             }
+          }
         }
       }
     }
@@ -1306,7 +1394,7 @@ namespace Avogadro {
     int cy = h/2 + y;
 
     // setup the selection buffer
-    int requiredSelectBufSize = ( d->molecule->NumAtoms() + d->molecule->NumBonds() ) * 8;
+    int requiredSelectBufSize = (d->molecule->numAtoms() + d->molecule->numBonds()) * 8;
     if ( requiredSelectBufSize > d->selectBufSize ) {
       //resize selection buffer
       if ( d->selectBuf ) delete[] d->selectBuf;
@@ -1414,9 +1502,11 @@ namespace Avogadro {
     {
       //qDebug() << "Hit: " << hit.name();
       if(hit.type() == Primitive::AtomType)
-        return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
+        return static_cast<Atom *>(molecule()->atom(hit.name()));
       else if(hit.type() == Primitive::BondType)
-        return static_cast<Bond *>(molecule()->GetBond(hit.name()));
+        return static_cast<Bond *>(molecule()->bond(hit.name()));
+      else if(hit.type() == Primitive::PointType)
+        return static_cast<Point *>( d->primitives.subList(Primitive::PointType).at(hit.name()) );
     }
     return 0;
   }
@@ -1433,7 +1523,7 @@ namespace Avogadro {
     // Find the first atom (if any) in hits - this will be the closest
     foreach(const GLHit& hit, chits)
       if(hit.type() == Primitive::AtomType)
-        return static_cast<Atom *>(molecule()->GetAtom(hit.name()));
+        return static_cast<Atom *>(molecule()->atom(hit.name()));
 
     return 0;
   }
@@ -1450,7 +1540,7 @@ namespace Avogadro {
     // Find the first bond (if any) in hits - this will be the closest
     foreach(const GLHit& hit, chits)
       if(hit.type() == Primitive::BondType)
-        return static_cast<Bond *>(molecule()->GetBond(hit.name()));
+        return static_cast<Bond *>(molecule()->bond(hit.name()));
 
     return 0;
   }
@@ -1532,7 +1622,7 @@ namespace Avogadro {
     for (int i = 0; i < d->namedSelections.size(); ++i)
       if (d->namedSelections.at(i).first == name)
 	return false;
-    
+
     QList<unsigned int> atomIds;
     QList<unsigned int> bondIds;
     foreach(Primitive *item, primitives) {
@@ -1548,7 +1638,7 @@ namespace Avogadro {
 
     return true;
   }
-  
+
   void GLWidget::removeNamedSelection(const QString &name)
   {
     for (int i = 0; i < d->namedSelections.size(); ++i)
@@ -1567,7 +1657,7 @@ namespace Avogadro {
   {
     if (name.isEmpty())
       return;
-    
+
     QPair<QString, QPair<QList<unsigned int>,QList<unsigned int> > > pair = d->namedSelections.takeAt(index);
     pair.first = name;
     d->namedSelections.insert(index, pair);
@@ -1581,7 +1671,7 @@ namespace Avogadro {
 
     return names;
   }
-  
+
   PrimitiveList GLWidget::namedSelectionPrimitives(const QString &name)
   {
     for (int i = 0; i < d->namedSelections.size(); ++i)
@@ -1591,23 +1681,23 @@ namespace Avogadro {
 
     return PrimitiveList();
   }
- 
+
   PrimitiveList GLWidget::namedSelectionPrimitives(int index)
   {
     PrimitiveList list;
 
     for (int j = 0; j < d->namedSelections.at(index).second.first.size(); ++j) {
-      Atom *atom = d->molecule->getAtomById(d->namedSelections.at(index).second.first.at(j));
+      Atom *atom = d->molecule->atomById(d->namedSelections.at(index).second.first.at(j));
       if (atom)
         list.append(atom);
     }
-    
+
     for (int j = 0; j < d->namedSelections.at(index).second.second.size(); ++j) {
-      Bond *bond = d->molecule->getBondById(d->namedSelections.at(index).second.second.at(j));
+      Bond *bond = d->molecule->bondById(d->namedSelections.at(index).second.second.at(j));
       if (bond)
         list.append(bond);
     }
-    
+
     return list;
   }
 

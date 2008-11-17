@@ -56,6 +56,11 @@ namespace Avogadro {
     ElementItem(int elementNumber = 0);
 
     /**
+     * Destructor.
+     */
+    ~ElementItem();
+
+    /**
      * @return the bounding rectangle of the element item.
      */
     QRectF boundingRect() const;

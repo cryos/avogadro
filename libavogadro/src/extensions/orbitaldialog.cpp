@@ -31,6 +31,7 @@
 namespace Avogadro
 {
   using Eigen::Vector3d;
+  using Eigen::Vector3i;
 
   OrbitalDialog::OrbitalDialog(QWidget* parent, Qt::WindowFlags f)
     : QDialog(parent, f)
@@ -86,13 +87,12 @@ namespace Avogadro
                     QString(ui.originY->text()).toDouble(),
                     QString(ui.originZ->text()).toDouble());
   }
-  
-  QList<int> OrbitalDialog::steps()
+
+  Vector3i OrbitalDialog::steps()
   {
-    QList<int> tmp;
-    tmp.push_back(QString(ui.stepsX->text()).toInt());
-    tmp.push_back(QString(ui.stepsY->text()).toInt());
-    tmp.push_back(QString(ui.stepsZ->text()).toInt());
+    Vector3i tmp(QString(ui.stepsX->text()).toInt(),
+                 QString(ui.stepsY->text()).toInt(),
+                 QString(ui.stepsZ->text()).toInt());
     return tmp;
   }
   double OrbitalDialog::stepSize()

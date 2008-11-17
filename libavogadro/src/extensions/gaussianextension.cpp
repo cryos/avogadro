@@ -25,6 +25,7 @@
 #include "gaussianextension.h"
 
 #include <vector>
+#include <openbabel/mol.h>
 #include <openbabel/math/vector3.h>
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>

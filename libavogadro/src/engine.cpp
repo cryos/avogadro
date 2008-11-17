@@ -49,13 +49,13 @@ namespace Avogadro {
   }
 
   Plugin::Type Engine::type() const
-  { 
-    return Plugin::EngineType; 
+  {
+    return Plugin::EngineType;
   }
-  
+
   QString Engine::typeName() const
-  { 
-    return tr("Engines"); 
+  {
+    return tr("Engines");
   }
 
   PrimitiveList Engine::primitives() const
@@ -92,7 +92,8 @@ namespace Avogadro {
 
   void Engine::addPrimitive(Primitive *primitive)
   {
-    d->primitives.append(primitive);
+    if(!d->primitives.contains(primitive))
+      d->primitives.append(primitive);
     emit changed();
   }
 

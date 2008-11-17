@@ -33,6 +33,7 @@
 namespace Avogadro {
 
   //! Ball and Stick Engine class.
+  class Atom;
   class BSDYSettingsWidget;
   class BSDYEngine : public Engine
   {
@@ -112,7 +113,7 @@ namespace Avogadro {
   class BSDYEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::PluginFactory) 
+    Q_INTERFACES(Avogadro::PluginFactory)
     AVOGADRO_ENGINE_FACTORY(BSDYEngine, tr("Ball and stick display type."))
   };
 

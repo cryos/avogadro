@@ -27,17 +27,19 @@
 
 #include <config.h>
 #include <avogadro/primitive.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <openbabel/obiter.h>
+#include <openbabel/mol.h>
 #include <Eigen/Regression>
 
 #include <QMessageBox>
 #include <QDebug>
 
 using namespace std;
-using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
@@ -51,7 +53,7 @@ namespace Avogadro {
   Engine* WireEngine::clone() const
   {
     WireEngine* engine = new WireEngine(parent());
-    
+
     engine->setAlias(alias());
     engine->setShowDots(m_showDots);
     engine->setShowMultipleBonds(m_showMulti);
@@ -70,15 +72,13 @@ namespace Avogadro {
     // Skip this entire step if the user turns it off
     if (m_showDots) {
       list = primitives().subList(Primitive::AtomType);
-      foreach( Primitive *p, list ) {
+      foreach(Primitive *p, list)
         renderOpaque(pd, static_cast<const Atom *>(p));
-      }
     }
-    
+
     list = primitives().subList(Primitive::BondType);
-    foreach( Primitive *p, list ) {
+    foreach(Primitive *p, list)
       renderOpaque(pd, static_cast<const Bond *>(p));
-    }
 
     glEnable(GL_LIGHTING);
     glEnable(GL_BLEND);
@@ -100,7 +100,7 @@ namespace Avogadro {
     if (!map) map = pd->colorMap(); // fall back to global color map
 
     glPushName(Primitive::AtomType);
-    glPushName(a->GetIdx());
+    glPushName(a->index());
 
     // Compute a rough "dynamic" size for the atom dots
     // We could probably have a better gradient here, but it looks decent
@@ -118,12 +118,12 @@ namespace Avogadro {
     if (pd->isSelected(a)) {
       map->setToSelectionColor();
       map->apply();
-      glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * (size + 1.0));
+      glPointSize(OpenBabel::etab.GetVdwRad(a->atomicNumber()) * (size + 1.0));
     }
     else {
       map->set(a);
       map->apply();
-      glPointSize(etab.GetVdwRad(a->GetAtomicNum()) * size);
+      glPointSize(OpenBabel::etab.GetVdwRad(a->atomicNumber()) * size);
     }
 
     glBegin(GL_POINTS);
@@ -138,12 +138,12 @@ namespace Avogadro {
 
   inline double WireEngine::radius (const Atom *atom) const
   {
-    return etab.GetVdwRad(atom->GetAtomicNum());
+    return OpenBabel::etab.GetVdwRad(atom->atomicNumber());
   }
 
   bool WireEngine::renderOpaque(PainterDevice *pd, const Bond *b)
   {
-    const Atom *atom1 = static_cast<const Atom *>( b->GetBeginAtom() );
+    const Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
     const Vector3d & v1 = atom1->pos();
     const Camera *camera = pd->camera();
 
@@ -155,7 +155,7 @@ namespace Avogadro {
     double dot = transformedEnd1.z() / transformedEnd1.norm();
     if(dot > -0.8) return true; // i.e., don't bother rendering
 
-    const Atom *atom2 = static_cast<const Atom *>( b->GetEndAtom() );
+    const Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
     const Vector3d & v2 = atom2->pos();
     Vector3d d = v2 - v1;
     d.normalize(); // compute the "transition point" between the two atoms
@@ -173,7 +173,7 @@ namespace Avogadro {
 
     int order = 1;
     if (m_showMulti) {
-      order = b->GetBO();
+      order = b->order();
       // For aromatic (dashed bonds) eventually
 //       if (b->IsAromatic())
 //         order = 5;
@@ -217,7 +217,7 @@ namespace Avogadro {
       connect(m_settingsWidget->showDotsCheckBox, SIGNAL(stateChanged(int)), this, SLOT(setShowDots(int)));
 
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
-      
+
       m_settingsWidget->showDotsCheckBox->setCheckState((Qt::CheckState)m_showDots);
       m_settingsWidget->showMultipleCheckBox->setCheckState((Qt::CheckState)m_showMulti);
     }
@@ -229,7 +229,7 @@ namespace Avogadro {
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
   }
-  
+
   void WireEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);

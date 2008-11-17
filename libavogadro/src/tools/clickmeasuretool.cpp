@@ -27,6 +27,8 @@
 
 #include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
+#include <avogadro/atom.h>
+#include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
@@ -80,7 +82,7 @@ namespace Avogadro {
       if(m_hits[0].type() != Primitive::AtomType)
         return 0;
 
-      Atom *atom = (Atom *)molecule->GetAtom(m_hits[0].name());
+      Atom *atom = molecule->atom(m_hits[0].name());
 
       if(m_numSelectedAtoms < 4) {
         // Select another atom
@@ -117,8 +119,8 @@ namespace Avogadro {
     Eigen::Vector3d atomsBarycenter(0., 0., 0.);
     double sumOfWeights = 0.;
     std::vector<OpenBabel::OBNodeBase*>::iterator i;
-    for ( Atom *atom = static_cast<Atom*>(widget->molecule()->BeginAtom(i));
-          atom; atom = static_cast<Atom*>(widget->molecule()->NextAtom(i))) {
+    QList<Atom*> atoms = widget->molecule()->atoms();
+    foreach (Atom *atom, atoms) {
       Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
       double atomDistance = transformedAtomPos.norm();
       double dot = transformedAtomPos.z() / atomDistance;
@@ -244,7 +246,7 @@ namespace Avogadro {
 
       glColor3f(1.0,0.0,0.0);
       Vector3d pos = m_selectedAtoms[0]->pos();
-      double radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[0]->GetAtomicNum()) * 0.3 ;
+      double radius = 0.18 + OpenBabel::etab.GetVdwRad(m_selectedAtoms[0]->atomicNumber()) * 0.3 ;
 
       // relative position of the text on the atom
       Vector3d textRelPos = radius * widget->camera()->backTransformedZAxis();
@@ -257,14 +259,14 @@ namespace Avogadro {
         glColor3f(0.0,1.0,0.0);
         pos = m_selectedAtoms[1]->pos();
         Vector3d textPos = pos+textRelPos;
-        radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[1]->GetAtomicNum()) * 0.3;
+        radius = 0.18 + OpenBabel::etab.GetVdwRad(m_selectedAtoms[1]->atomicNumber()) * 0.3;
         widget->painter()->drawText(textPos, tr("*2", "*2 is a number. You most likely do not need to translate this"));
 
         if(m_numSelectedAtoms >= 3 && m_selectedAtoms[2])
         {
           // Display a label on the third atom
           pos = m_selectedAtoms[2]->pos();
-          radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[2]->GetAtomicNum()) * 0.3;
+          radius = 0.18 + OpenBabel::etab.GetVdwRad(m_selectedAtoms[2]->atomicNumber()) * 0.3;
           textPos = pos+textRelPos;
           glColor3f(0.0,0.0,1.0);
           widget->painter()->drawText(textPos, tr("*3", "*3 is a number. You most likely do not need to translate this"));
@@ -273,7 +275,7 @@ namespace Avogadro {
         {
           // Display a label on the fourth atom
           pos = m_selectedAtoms[3]->pos();
-          radius = 0.18 + etab.GetVdwRad(m_selectedAtoms[3]->GetAtomicNum()) * 0.3;
+          radius = 0.18 + OpenBabel::etab.GetVdwRad(m_selectedAtoms[3]->atomicNumber()) * 0.3;
           textPos = pos + textRelPos;
           glColor3f(0.0,1.0,1.0);
           widget->painter()->drawText(textPos, tr("*4", "*4 is a number. You most likely do not need to translate this"));

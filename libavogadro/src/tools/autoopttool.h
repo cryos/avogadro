@@ -4,6 +4,7 @@
   Copyright (C) 2007 by Marcus D. Hanwell
   Copyright (C) 2007 by Geoffrey R. Hutchison
   Copyright (C) 2007 by Benoit Jacob
+  Copyright (C) 2008 by Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -26,6 +27,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
+#include <avogadro/molecule.h>
 
 #include <openbabel/mol.h>
 #include <openbabel/forcefield.h>
@@ -50,10 +52,10 @@ namespace Avogadro {
     Q_OBJECT
 
     public:
-    AutoOptThread(QObject *parent=0);
+      AutoOptThread(QObject *parent=0);
 
-    void setup(Molecule *molecule, OpenBabel::OBForceField* forceField, 
-        int algorithm, /* int convergence, */ int steps);
+      void setup(Molecule *molecule, OpenBabel::OBForceField* forceField, 
+          int algorithm, /* int convergence, */ int steps);
 
       void run();
       void update();

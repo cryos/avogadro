@@ -25,6 +25,9 @@
 
 #include "basisset.h"
 
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
+
 #include <cmath>
 
 using namespace Eigen;
@@ -361,13 +364,10 @@ namespace Avogadro
   void BasisSet::addAtoms(Molecule* mol)
   {
     // Add our atoms to the molecule
-    for (unsigned int i = 0; i < m_atoms.size(); ++i)
-    {
-      mol->BeginModify();
-      Atom* atom = static_cast<Atom*>(mol->NewAtom());
+    for (unsigned int i = 0; i < m_atoms.size(); ++i) {
+      Atom* atom = mol->newAtom();
       atom->setPos(m_atoms.at(i)->pos * BOHR_TO_ANGSTROM);
-      atom->SetAtomicNum(m_atoms.at(i)->num);
-      mol->EndModify();
+      atom->setAtomicNumber(m_atoms.at(i)->num);
     }
   }
 

@@ -70,6 +70,7 @@ namespace Avogadro {
   {
     public:
       H2MethylCommand(Molecule *molecule, GLWidget *widget);
+      ~H2MethylCommand();
 
       virtual void undo();
       virtual void redo();
@@ -78,7 +79,7 @@ namespace Avogadro {
 
     private:
       Molecule *m_molecule;
-      Molecule m_moleculeCopy;
+      Molecule *m_moleculeCopy;
       PrimitiveList m_SelectedList;
   };
 
