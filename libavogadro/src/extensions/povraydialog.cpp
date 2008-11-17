@@ -33,13 +33,13 @@ namespace Avogadro
   using Eigen::Vector3d;
 
   POVRayDialog::POVRayDialog(QWidget* parent, Qt::WindowFlags f)
-    : QDialog(parent, f), m_width(0), m_height(0)
+    : QDialog(parent, f)
   {
     ui.setupUi(this);
     connect(ui.selectFileName, SIGNAL(clicked()), this, SLOT(selectFileName()));
     connect(ui.render, SIGNAL(clicked()), this, SLOT(renderClicked()));
-    ui.dimX->setText(QString::number(m_width));
-    ui.dimY->setText(QString::number(m_height));
+    ui.dimX->setText(QString::number(0));
+    ui.dimY->setText(QString::number(0));
   }
 
   POVRayDialog::~POVRayDialog()
@@ -48,26 +48,39 @@ namespace Avogadro
 
   void POVRayDialog::setImageSize(int width, int height)
   {
-    m_width = width;
-    m_height = height;
-    ui.dimX->setText(QString::number(m_width));
-    ui.dimY->setText(QString::number(m_height));
+    ui.dimX->setText(QString::number(width));
+    ui.dimY->setText(QString::number(height));
+  }
+
+  int POVRayDialog::imageWidth()
+  {
+    return ui.dimX->text().toInt();
+  }
+
+  int POVRayDialog::imageHeight()
+  {
+    return ui.dimY->text().toInt();
   }
 
   void POVRayDialog::setFileName(const QString& fileName)
   {
-    m_fileName = fileName;
     ui.fileName->setText(fileName);
+  }
+
+  QString POVRayDialog::fileName()
+  {
+    return ui.fileName->text();
   }
 
   QStringList POVRayDialog::commandLine()
   {
-    QString fileName = m_fileName.mid(0, m_fileName.lastIndexOf("."));
+    QString fileName = ui.fileName->text().mid(0,
+                                    ui.fileName->text().lastIndexOf("."));
     QStringList tmp;
     tmp << "+I" + fileName + ".pov"
         << "+O" + fileName + ".png"
-        << "+W" + QString::number(m_width)
-        << "+H" + QString::number(m_height)
+        << "+W" + ui.dimX->text()
+        << "+H" + ui.dimY->text()
         << "+V" << "+D" << "+FN" << "+Q10";
 //        << "+P";
     if (ui.antialias->isChecked())
@@ -80,10 +93,10 @@ namespace Avogadro
   void POVRayDialog::selectFileName()
   {
     // Load a file
-    m_fileName = QFileDialog::getSaveFileName(this,
+    QString fileName = QFileDialog::getSaveFileName(this,
       tr("Save POV-Ray rendered image"), ui.fileName->text(),
       tr("Image files (*.png *.pbm)"));
-    ui.fileName->setText(m_fileName);
+    ui.fileName->setText(fileName);
 //    emit fileName(file);
     ui.command->setText(commandLine().join(" "));
   }

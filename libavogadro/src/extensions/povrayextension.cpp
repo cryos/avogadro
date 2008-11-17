@@ -100,7 +100,9 @@ namespace Avogadro
     if(fileName.isEmpty()) {
       return;
     }
-    double aspectRatio = m_POVRayDialog->imageWidth() / m_POVRayDialog->imageHeight();
+    double aspectRatio = static_cast<double>(m_POVRayDialog->imageWidth())
+                         / m_POVRayDialog->imageHeight();
+    qDebug() << "Aspect ratio:" << aspectRatio;
     POVPainterDevice pd(fileName + ".pov", aspectRatio, m_glwidget);
     // Set up the environment for the process
     QStringList env = QProcess::systemEnvironment();

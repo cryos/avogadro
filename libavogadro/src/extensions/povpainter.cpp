@@ -326,12 +326,12 @@ namespace Avogadro
 
     initializePOV();
     render();
+    m_painter->end();
     m_file->close();
   }
 
   POVPainterDevice::~POVPainterDevice()
   {
-    m_painter->end();
     delete m_output;
     m_output = 0;
     delete m_file;
@@ -342,7 +342,6 @@ namespace Avogadro
     // Initialise our POV-Ray scene
     // The POV-Ray camera basically has the same matrix elements - we just need to translate
     // FIXME Still working on getting the translation to POV-Ray right...
-    m_aspectRatio = static_cast<double>(m_glwidget->width()) / m_glwidget->height();
     Vector3d cameraT = -( m_glwidget->camera()->modelview().linear().adjoint()
                           * m_glwidget->camera()->modelview().translation()
                         );

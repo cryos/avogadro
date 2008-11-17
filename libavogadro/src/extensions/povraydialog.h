@@ -50,12 +50,12 @@ namespace Avogadro
     /**
      * @return the width of the POV-Ray scene in pixels.
      */
-    inline int imageWidth() { return m_width; }
+    int imageWidth();
 
     /**
      * @return the height of the POV-Ray scene in pixels.
      */
-    inline int imageHeight() { return m_height; }
+    int imageHeight();
 
     /**
      * Set the file name of the POV-Ray file
@@ -65,7 +65,7 @@ namespace Avogadro
     /**
      * @return the file name of the output.
      */
-    QString fileName() { return m_fileName; }
+    QString fileName();
 
     /**
      * @return the command line to run POV-Ray and generate the image file.
@@ -74,9 +74,6 @@ namespace Avogadro
 
   private:
     Ui::POVRayDialog ui;
-    int m_width;          /// Width of the POV-Ray scene
-    int m_height;         /// Height of the POV-Ray scene
-    QString m_fileName;
 
   Q_SIGNALS:
     void render();
