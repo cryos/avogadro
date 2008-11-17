@@ -306,7 +306,7 @@ namespace Avogadro
     d->output = 0;
   }
 
-  POVPainterDevice::POVPainterDevice(const QString& filename, bool aspectRatio,
+  POVPainterDevice::POVPainterDevice(const QString& filename, double aspectRatio,
                                      const GLWidget* glwidget)
   {
     m_painter = 0;
@@ -345,7 +345,7 @@ namespace Avogadro
     Vector3d cameraT = -( m_glwidget->camera()->modelview().linear().adjoint()
                           * m_glwidget->camera()->modelview().translation()
                         );
-    Vector3d cameraX = m_glwidget->camera()->backTransformedXAxis() * m_aspectRatio;
+    Vector3d cameraX = m_glwidget->camera()->backTransformedXAxis();
     Vector3d cameraY = m_glwidget->camera()->backTransformedYAxis();
     Vector3d cameraZ = -m_glwidget->camera()->backTransformedZAxis();
 
@@ -380,7 +380,8 @@ namespace Avogadro
       << "\tlocation <" << cameraT.x() << ", " << cameraT.y() << ", " << cameraT.z() << ">\n"
       << "\tangle " << m_aspectRatio * m_glwidget->camera()->angleOfViewY() << "\n"
       << "\tup <" << cameraY.x() << ", " << cameraY.y() << ", " << cameraY.z() << ">\n"
-      << "\tright <" << cameraX.x() << ", " << cameraX.y() << ", " << cameraX.z() << ">\n"
+      << "\tright <" << cameraX.x() << ", " << cameraX.y() << ", " << cameraX.z()
+      << "> * " << m_aspectRatio << "\n"
       << "\tdirection <" << cameraZ.x() << ", " << cameraZ.y() << ", " << cameraZ.z() << "> }\n\n"
 
       << "light_source {\n"
