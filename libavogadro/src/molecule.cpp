@@ -47,14 +47,15 @@
   class MoleculePrivate {
     public:
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
-        invalidRings(true), autoId(true), obmol(0) {}
+        invalidRings(true), obmol(0) {}
       mutable Eigen::Vector3d       center;
       mutable Eigen::Vector3d       normalVector;
       mutable double                radius;
       mutable Atom *                farthestAtom;
       mutable bool                  invalidGeomInfo;
       mutable bool                  invalidRings;
-      bool                          autoId;
+
+      QString                       fileName;
 
       // std::vector used over QVector due to index issues, QVector uses ints
       std::vector<Atom *>           atoms;
@@ -91,11 +92,38 @@
   {
     // Need to iterate through all atoms/bonds and destroy them
     Q_D(Molecule);
-    foreach (Atom *atom, d->atomList)
+    foreach (Atom *atom, d->atomList) {
       atom->deleteLater();
-    foreach (Bond *bond, d->bondList)
+    }
+    foreach (Bond *bond, d->bondList) {
       bond->deleteLater();
+    }
+    foreach (Cube *cube, d->cubeList) {
+      cube->deleteLater();
+    }
+    foreach (Fragment *residue, d->residueList) {
+      residue->deleteLater();
+    }
+    foreach (Fragment *ring, d->ringList) {
+      ring->deleteLater();
+    }
+    if (d->obmol) {
+      delete d->obmol;
+      d->obmol = 0;
+    }
     delete d_ptr;
+  }
+
+  void Molecule::setFileName(const QString& name)
+  {
+    Q_D(Molecule);
+    d->fileName = name;
+  }
+
+  QString Molecule::fileName() const
+  {
+    Q_D(const Molecule);
+    return d->fileName;
   }
 /*
   Atom * Molecule::CreateAtom()
@@ -170,10 +198,7 @@
     Q_D(Molecule);
     m_lock->lockForWrite();
     d->invalidRings = true;
-    // we have to bypass the emit given by CreateAtom()
-    d->autoId = false;
     Atom *atom = new Atom(this);
-    d->autoId = true;
 
     if(id >= d->atoms.size())
       d->atoms.resize(id+1,0);
@@ -259,9 +284,7 @@
   {
     Q_D(Molecule);
     d->invalidRings = true;
-    d->autoId = false;
     Bond *bond = new Bond(this);
-    d->autoId = true;
 
     if(id >= d->bonds.size())
       d->bonds.resize(id+1,0);
@@ -485,30 +508,33 @@
 
   void Molecule::deleteHydrogens(Atom *atom)
   {
-    // Delete any connected hydrogen atoms
-    QList<unsigned long int> neighbors = atom->neighbors();
-    
-    foreach (unsigned long int a, neighbors) {
-      Atom *nbrAtom = atomById(a);
-      // we need to check if the atom still exists
-      if (nbrAtom) {
-        if (nbrAtom->isHydrogen()) {
-          deleteAtom(a);
+    if (atom) {
+      // Delete any connected hydrogen atoms
+      QList<unsigned long int> neighbors = atom->neighbors();
+
+      foreach (unsigned long int a, neighbors) {
+        Atom *nbrAtom = atomById(a);
+        // we need to check if the atom still exists
+        if (nbrAtom) {
+          if (nbrAtom->isHydrogen()) {
+            deleteAtom(a);
+          }
+        }
+        else {
+          qDebug() << "Error, atom advertising deleted neighbor" << atom->id()
+                   << a;
         }
       }
-      else {
-        qDebug() << "Error, atom advertising deleted neighbor" << atom->id()
-                 << a;
+    }
+    // Delete all of the hydrogens
+    else {
+      Q_D(Molecule);
+      foreach (Atom *atom, d->atomList) {
+        if (atom->isHydrogen()) {
+          deleteAtom(atom);
+        }
       }
     }
-  }
-
-  void Molecule::deleteHydrogens()
-  {
-    Q_D(Molecule);
-    foreach (Atom *atom, d->atomList)
-      if (atom->isHydrogen())
-        deleteAtom(atom);
   }
 
   unsigned int Molecule::numAtoms() const
@@ -641,7 +667,7 @@
     }
     obmol.EndModify();
 
-    qDebug() << "OBMol() run" << obmol.NumAtoms() << obmol.NumBonds();
+//    qDebug() << "OBMol() run" << obmol.NumAtoms() << obmol.NumBonds();
 
     return obmol;
   }
@@ -660,9 +686,9 @@
           obatom; obatom = static_cast<OpenBabel::OBAtom *>(obmol->NextAtom(i))) {
       Atom *atom = newAtom();
       atom->setOBAtom(obatom);
-      qDebug() << "Old atom:" << obatom->GetIdx() << obatom->GetX() << obatom->GetY() << obatom->GetZ() << obatom->GetAtomicNum();
+//      qDebug() << "Old atom:" << obatom->GetIdx() << obatom->GetX() << obatom->GetY() << obatom->GetZ() << obatom->GetAtomicNum();
 
-      qDebug() << "New atom:" << atom->index() << atom->pos().x() << atom->pos().y() << atom->pos().z() << atom->atomicNumber();
+//      qDebug() << "New atom:" << atom->index() << atom->pos().x() << atom->pos().y() << atom->pos().z() << atom->atomicNumber();
     }
 
     // Now bonds, we use the indices of the atoms to get the bonding right
@@ -695,7 +721,7 @@
       cube->setLimits(min, max, points);
       cube->setData(grid->GetValues());
       cube->setName(name);
-      qDebug() << "Cube" << i << "added.";
+//      qDebug() << "Cube" << i << "added.";
     }
 
     // Copy the residues across...
@@ -785,7 +811,6 @@
   {
     Q_D(Molecule);
     clear();
-    d->autoId = false;
     const MoleculePrivate *e = other.d_func();
     d->atoms.resize(e->atoms.size(), 0);
     d->bonds.resize(e->bonds.size(), 0);
@@ -814,8 +839,6 @@
         emit primitiveAdded(bond);
       }
     }
-
-    d->autoId = true;
 
     return *this;
   }

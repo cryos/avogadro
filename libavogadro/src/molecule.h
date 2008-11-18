@@ -58,96 +58,143 @@ namespace Avogadro {
 
     public:
       /**
-       * Constructor
+       * Constructor.
        *
-       * @param parent the object parent.
+       * @param parent The object parent.
        */
       Molecule(QObject *parent=0);
+
+      /**
+       * Copy constructor.
+       * @param other Molecule to make a copy of.
+       */
       Molecule(const Molecule &other);
+
+      /**
+       * Destructor.
+       */
       virtual ~Molecule();
+
+      /**
+       * Call to trigger an update signal, causing the molecule to be redrawn.
+       */
       void update();
 
       /**
-       * Virtual function inherited from OpenBabel::OBMol.
-       * Creates a new Atom object.
-       *
-       * @return pointer to a newly allocated Atom object
+       * Set the filename of the molecule.
        */
-//      Atom *CreateAtom();
-//      void createAtom(Atom *) { ; }
+      void setFileName(const QString& name);
 
       /**
-       * Virtual function inherited from OpenBabel::OBMol.
-       * Creates a new Bond object.
-       *
-       * @return pointer to a newly allocated Bond object
+       * @return The full path filename of the molecule.
        */
-//      Bond *CreateBond();
+      QString fileName() const;
 
       /**
-       * Virtual function inherited from OpenBabel::OBMol.
-       * Creates a new Residue object.
-       *
-       * @return pointer to a newly allocated Residue object
-       */
-//      Residue *CreateResidue();
-
-      /**
-       * Virtual function inherited from OpenBabel::OBMol.
-       * Deletes an Atom object.
-       *
-       * @param atom the atom to delete
-       */
-//      void DestroyAtom(Atom* atom);
-
-      /**
-       * Virtual function inherited from OpenBabel::OBMol.
-       * Deletes an Bond object.
-       *
-       * @param bond the bond to delete
-       */
-//      void DestroyBond(Bond* bond);
-
-      /**
-       * Virtual function inherited from OpenBabel::OBMol.
-       * Deletes an Residue object.
-       *
-       * @param residue the residue to delete
-       */
-//      void DestroyResidue(Residue* residue);
-
-      /**
-       * These are new functions to replace OBMol::NewAtom
-       * to use our new unique identifier functionality.
+       * Create a new atom object and return a pointer to it.
+       * @note Do not delete the object, use deleteAtom(Atom*).
        */
       Atom *newAtom();
+
+      /**
+       * Create a new atom object with the specified id and return a pointer to
+       * it. Used when you need to recreate an atom with the same unique id.
+       * @note Do not delete the object, use deleteAtom(unsigned long int id).
+       */
       Atom *newAtom(unsigned long id);
+
+      /**
+       * Delete the supplied atom.
+       */
       void deleteAtom(Atom *atom);
+
+      /**
+       * Delete the atom with the unique id specified.
+       */
       void deleteAtom(unsigned long int id);
 
       /**
-       * These are new functions to replace OBMol::NewBond
-       * to use our new unique identifier functionality.
+       * Create a new Bond object and return a pointer to it.
+       * @note Do not delete the object, use deleteBond(Bond*).
        */
       Bond *newBond();
+
+      /**
+       * Create a new bond object with the specified id and return a pointer to
+       * it. Used when you need to recreate a bond with the same unique id.
+       * @note Do not delete the object, use deleteBond(unsigned long int id).
+       */
       Bond *newBond(unsigned long id);
+
+      /**
+       * Delete the supplied bond.
+       */
       void deleteBond(Bond *bond);
+
+      /**
+       * Delete the bond with the unique id specified.
+       */
       void deleteBond(unsigned long int id);
 
+      /**
+       * Add hydrogens to the molecule.
+       * @param atom If supplied only add hydrogens to the specified atom.
+       */
       void addHydrogens(Atom *atom = 0);
-      void deleteHydrogens(Atom *atom);
-      void deleteHydrogens();
 
+      /**
+       * Delete hydrogens from the molecule.
+       * @param atom If supplied only delete hydrogens connected to the
+       * specified atom.
+       */
+      void deleteHydrogens(Atom *atom = 0);
+
+      /**
+       * Create a new cube object and return a pointer to it.
+       * @note Do not delete the object, use deleteCube(Cube *cube).
+       */
       Cube *newCube();
+
+      /**
+       * Delete the supplied cube.
+       */
       void deleteCube(Cube *cube);
+
+      /**
+       * Delete the cube with the unique id specified.
+       */
       void deleteCube(unsigned long int id);
 
+      /**
+       * Create a new residue object and return a pointer to it.
+       * @note Do not delete the object, use deleteResidue(Residue *residue).
+       */
       Fragment *newResidue();
+
+      /**
+       * Delete the supplied residue.
+       */
       void deleteResidue(Fragment *residue);
+
+      /**
+       * Delete the residue with the unique id specified.
+       */
       void deleteResidue(unsigned long int id);
 
+      /**
+       * Create a new ring object and return a pointer to it.
+       * @note Do not delete the object, use deleteRing(Fragment *ring).
+       */
       Fragment *newRing();
+
+      /**
+       * Delete the supplied ring.
+       */
       void deleteRing(Fragment *ring);
+
+      /**
+       * Delete the ring with the unique id specified.
+       */
       void deleteRing(unsigned long int id);
 
       /**
@@ -176,24 +223,24 @@ namespace Avogadro {
       unsigned int numRings() const;
 
       /**
-       * @return the atom at the supplied index.
+       * @return The atom at the supplied index.
        * @note Replaces GetAtom.
        */
       Atom* atom(int index);
 
       /**
-       * @return the atom at the supplied unqique id.
+       * @return The atom at the supplied unqique id.
        */
       Atom *atomById(unsigned long id) const;
 
       /**
-       * @return the bond at the supplied index.
+       * @return The bond at the supplied index.
        * @note Replaces GetBond.
        */
       Bond* bond(int index);
 
       /**
-       * @return the bond at the supplied unique id.
+       * @return The bond at the supplied unique id.
        */
       Bond *bondById(unsigned long id) const;
 
@@ -210,27 +257,27 @@ namespace Avogadro {
       Bond* bond(const Atom*, const Atom*);
 
       /**
-       * @return a QList of all atoms in the molecule.
+       * @return QList of all atoms in the molecule.
        */
       QList<Atom *> atoms() const;
 
       /**
-       * @return a QList of all bonds in the molecule.
+       * @return QList of all bonds in the molecule.
        */
       QList<Bond *> bonds() const;
 
       /**
-       * @return a QList of all cubes in the molecule.
+       * @return QList of all cubes in the molecule.
        */
       QList<Cube *> cubes() const;
 
       /**
-       * @return a QList of all residues in the molecule.
+       * @return QList of all residues in the molecule.
        */
       QList<Fragment *> residues() const;
 
       /**
-       * @return a QList of all rings in the molecule.
+       * @return QList of all rings in the molecule.
        */
       QList<Fragment *> rings();
 
