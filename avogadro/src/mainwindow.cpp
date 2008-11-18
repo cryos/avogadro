@@ -1709,6 +1709,11 @@ namespace Avogadro
         files.removeLast();
 
       settings.setValue( "recentFileList", files );
+
+      // Set the fileName for the actual molecule too
+      if (d->molecule) {
+        d->molecule->setFileName(fileInfo.absoluteFilePath());
+      }
     }
 
     foreach( QWidget *widget, QApplication::topLevelWidgets() ) {

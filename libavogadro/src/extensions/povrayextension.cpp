@@ -26,6 +26,7 @@
 
 #include "povpainter.h"
 
+#include <avogadro/molecule.h>
 #include <avogadro/toolgroup.h>
 
 #include <QFileDialog>
@@ -74,7 +75,7 @@ namespace Avogadro
     if (!m_POVRayDialog)
     {
       m_POVRayDialog = new POVRayDialog();
-      m_POVRayDialog->setImageSize(m_glwidget->width(), m_glwidget->height());
+//      m_POVRayDialog->setImageSize(m_glwidget->width(), m_glwidget->height());
       connect(m_POVRayDialog, SIGNAL(render()),
               this, SLOT(render()));
       connect(m_glwidget, SIGNAL(resized()),
@@ -83,6 +84,9 @@ namespace Avogadro
     }
     else {
 //      m_POVRayDialog->setImageSize(m_glwidget->width(), m_glwidget->height());
+      QFileInfo info(m_molecule->fileName());
+      m_POVRayDialog->setFileName(info.absolutePath() + "/" + info.baseName()
+                                  + ".png");
       m_POVRayDialog->show();
     }
     return 0;
@@ -155,18 +159,28 @@ namespace Avogadro
       qDebug() << "Command:" << "povray " + m_POVRayDialog->commandLine().join(" ");
       qDebug() << "Rendering started...";
       if (!m_process->waitForStarted()) {
-        qDebug() << "POV-Ray never started!";
+        QMessageBox::warning(m_POVRayDialog, tr("POV-Ray failed to start."),
+                             tr("POV-Ray failed to start. May be the path to the executable is not set correctly."));
       }
-
-      QByteArray result = m_process->readAll();
-      qDebug() << "POV-Ray output:" << result << "Exit code:"
-               << m_process->exitCode();
+      connect(m_process, SIGNAL(finished(int)), this, SLOT(finished(int)));
     }
+  }
 
+  void POVRayExtension::finished(int exitCode)
+  {
     if (!m_POVRayDialog->keepSource()) {
+      QString fileName = m_POVRayDialog->fileName().mid(0,
+                                   m_POVRayDialog->fileName().lastIndexOf("."));
       QFile povSource(fileName + ".pov");
       povSource.remove();
     }
+    qDebug() << "Rendering complete.";
+    QByteArray result = m_process->readAll();
+    qDebug() << "POV-Ray output:" << result << "Exit code:"
+             << exitCode;
+    disconnect(m_process, 0, this, 0);
+    m_process->deleteLater();
+    m_process = 0;
   }
 
 } // End namespace Avogadro
