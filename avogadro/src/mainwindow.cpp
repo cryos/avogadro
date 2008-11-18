@@ -1790,6 +1790,12 @@ namespace Avogadro
     d->toolGroup->readSettings(settings);
     settings.endGroup();
 
+    settings.beginGroup("extensions");
+    foreach(Extension *extension, d->pluginManager.extensions()) {
+      extension->readSettings(settings);
+    }
+    settings.endGroup();
+
     int count = settings.beginReadArray("view");
     if(count < 1)
     {
@@ -1846,6 +1852,12 @@ namespace Avogadro
     // write the settings for every tool
     settings.beginGroup("tools");
     d->toolGroup->writeSettings(settings);
+    settings.endGroup();
+
+    settings.beginGroup("extensions");
+    foreach(Extension *extension, d->pluginManager.extensions()) {
+      extension->writeSettings(settings);
+    }
     settings.endGroup();
 
     // write the plugin manager settings
