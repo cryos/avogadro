@@ -38,9 +38,8 @@ namespace Avogadro
   {
     ui.setupUi(this);
     // Hide the advanced stuff for now
-    ui.frame->hide();
-    resize(325, 100);
-    connect(ui.loadFile, SIGNAL(clicked()), this, SLOT(loadFile()));
+    //ui.frame->hide();
+    //resize(325, 100);
     connect(ui.calculate, SIGNAL(clicked()),
             this, SLOT(calculate()));
   }
@@ -98,16 +97,6 @@ namespace Avogadro
   double OrbitalDialog::stepSize()
   {
     return QString(ui.stepSize->text()).toDouble();
-  }
-
-  void OrbitalDialog::loadFile()
-  {
-    // Load a file
-    QString file = QFileDialog::getOpenFileName(this,
-      tr("Open quantum file"), ui.fileName->text(),
-      tr("Quantum files (*.fchk *.fch)"));
-    ui.fileName->setText(file);
-    emit fileName(file);
   }
 
   void OrbitalDialog::calculate()

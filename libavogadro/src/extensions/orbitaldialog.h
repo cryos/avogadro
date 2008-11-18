@@ -52,11 +52,9 @@ namespace Avogadro
     Ui::OrbitalDialog ui;
 
   public Q_SLOTS:
-    void loadFile();
     void calculate();
 
   Q_SIGNALS:
-    void fileName(QString filename);
     void calculateMO(int MO);
 
   };

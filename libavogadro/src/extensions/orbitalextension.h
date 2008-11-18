@@ -55,15 +55,17 @@ namespace Avogadro
 
     void setMolecule(Molecule *molecule);
 
+    bool loadBasis();
+
   private:
     GLWidget* m_glwidget;
     OrbitalDialog* m_orbitalDialog;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
     BasisSet* m_basis;
+    QString m_loadedFileName;
 
   private Q_SLOTS:
-    void loadBasis(QString fileName);
     void calculateMO(int n);
 
   };

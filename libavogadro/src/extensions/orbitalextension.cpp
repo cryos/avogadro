@@ -35,6 +35,8 @@
 
 #include <QProgressDialog>
 #include <QCoreApplication>
+#include <QFileInfo>
+#include <QMessageBox>
 
 using namespace std;
 using namespace OpenBabel;
@@ -55,10 +57,13 @@ namespace Avogadro
 
   OrbitalExtension::~OrbitalExtension()
   {
-    if (m_orbitalDialog)
-    {
+    if (m_orbitalDialog) {
       delete m_orbitalDialog;
       m_orbitalDialog = 0;
+    }
+    if (m_basis) {
+      delete m_basis;
+      m_basis = 0;
     }
   }
 
@@ -78,14 +83,25 @@ namespace Avogadro
     if (!m_orbitalDialog)
     {
       m_orbitalDialog = new OrbitalDialog();
-      connect(m_orbitalDialog, SIGNAL(fileName(QString)),
-              this, SLOT(loadBasis(QString)));
       connect(m_orbitalDialog, SIGNAL(calculateMO(int)),
               this, SLOT(calculateMO(int)));
-      m_orbitalDialog->show();
+      if (loadBasis()) {
+        m_orbitalDialog->show();
+      }
+      else {
+        QMessageBox::warning(m_orbitalDialog, tr("File type not supported"),
+                             tr("Either no file is loaded, or the loaded file type is not supported. Currently Gaussian checkpoints (.fchk/.fch) are supported."));
+      }
     }
-    else
-      m_orbitalDialog->show();
+    else {
+      if (loadBasis()) {
+        m_orbitalDialog->show();
+      }
+      else {
+        QMessageBox::warning(m_orbitalDialog, tr("File type not supported"),
+                             tr("Either no file is loaded, or the loaded file type is not supported. Currently Gaussian checkpoints (.fchk/.fch) are supported."));
+      }
+    }
     return 0;
   }
 
@@ -94,43 +110,44 @@ namespace Avogadro
     m_molecule = molecule;
   }
 
-  void OrbitalExtension::loadBasis(QString fileName)
+  bool OrbitalExtension::loadBasis()
   {
-    // Reset the basis class, then load up the checkpoint file
-    if (fileName.isEmpty())
-      return;
-
-    if (m_basis)
-      delete m_basis;
-    m_basis = new BasisSet;
-    GaussianFchk fchk(fileName, m_basis);
-    // Add the molecule, perceive bonds etc
-    m_molecule->clear();
-    m_basis->addAtoms(m_molecule);
-//    m_molecule->ConnectTheDots();
-//    m_molecule->PerceiveBondOrders();
-    // Debug output of the basis set
-//    m_basis->outputAll();
-
-    m_orbitalDialog->setMOs(m_basis->numMOs());
-    for (int i = 0; i < m_basis->numMOs(); ++i)
-    {
-      if (m_basis->HOMO(i)) m_orbitalDialog->setHOMO(i);
-      else if (m_basis->LUMO(i)) m_orbitalDialog->setLUMO(i);
+    if (m_molecule->fileName().isEmpty()) {
+      return false;
+    }
+    else if (m_loadedFileName == m_molecule->fileName()) {
+      return true;
     }
 
-    // Now to set the default cube...
-    Cube cube;
-    double step = 0.1;
-    cube.setLimits(m_molecule, step, 3.0);
-    Vector3d min = cube.min();// / BOHR_TO_ANGSTROM;
-    Vector3i dim = cube.dimensions();
-    // Set these values on the form - they can then be altered by the user
-    m_orbitalDialog->setCube(min, dim.x(), dim.y(), dim.z(), step);
+    // Everything looks good, a new basis set needs to be loaded
+    QFileInfo info(m_molecule->fileName());
+    if (info.completeSuffix() == "fchk" || info.completeSuffix() == "fch") {
+      if (m_basis)
+        delete m_basis;
+      m_basis = new BasisSet;
+      GaussianFchk fchk(m_molecule->fileName(), m_basis);
 
-    // Set the tool to navigate
-    if (m_glwidget)
-      m_glwidget->toolGroup()->setActiveTool("Navigate");
+      m_orbitalDialog->setMOs(m_basis->numMOs());
+      for (int i = 0; i < m_basis->numMOs(); ++i) {
+        if (m_basis->HOMO(i)) m_orbitalDialog->setHOMO(i);
+        else if (m_basis->LUMO(i)) m_orbitalDialog->setLUMO(i);
+      }
+
+      // Now to set the default cube...
+      Cube cube;
+      double step = 0.1;
+      cube.setLimits(m_molecule, step, 3.0);
+      Vector3d min = cube.min();// / BOHR_TO_ANGSTROM;
+      Vector3i dim = cube.dimensions();
+      // Set these values on the form - they can then be altered by the user
+      m_orbitalDialog->setCube(min, dim.x(), dim.y(), dim.z(), step);
+      return true;
+    }
+    // If we get here it is a basis set we cannot load yet
+    else {
+      qDebug() << "baseName:" << info.completeSuffix();
+      return false;
+    }
   }
 
   void OrbitalExtension::calculateMO(int n)
