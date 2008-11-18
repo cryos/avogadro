@@ -29,9 +29,11 @@
 #include <avogadro/toolgroup.h>
 
 #include <QFileDialog>
+#include <QMessageBox>
 #include <QProgressDialog>
 #include <QCoreApplication>
 #include <QProcess>
+#include <QFileInfo>
 #include <QDebug>
 
 namespace Avogadro
@@ -80,10 +82,34 @@ namespace Avogadro
       m_POVRayDialog->show();
     }
     else {
-      m_POVRayDialog->setImageSize(m_glwidget->width(), m_glwidget->height());
+//      m_POVRayDialog->setImageSize(m_glwidget->width(), m_glwidget->height());
       m_POVRayDialog->show();
     }
     return 0;
+  }
+
+  void POVRayExtension::writeSettings(QSettings &settings) const
+  {
+    Extension::writeSettings(settings);
+    if (m_POVRayDialog) {
+      m_POVRayDialog->writeSettings(settings);
+    }
+  }
+
+  void POVRayExtension::readSettings(QSettings &settings)
+  {
+    Extension::readSettings(settings);
+    if (m_POVRayDialog) {
+      m_POVRayDialog->readSettings(settings);
+    }
+    else {
+      m_POVRayDialog = new POVRayDialog();
+      m_POVRayDialog->readSettings(settings);
+      connect(m_POVRayDialog, SIGNAL(render()),
+              this, SLOT(render()));
+      connect(m_glwidget, SIGNAL(resized()),
+              m_POVRayDialog, SLOT(resized()));
+    }
   }
 
   void POVRayExtension::setMolecule(Molecule *molecule)
@@ -94,34 +120,53 @@ namespace Avogadro
   void POVRayExtension::render()
   {
     // Render the scene using POV-Ray
-    m_process = new QProcess(this);
     QString fileName = m_POVRayDialog->fileName().mid(0,
                                 m_POVRayDialog->fileName().lastIndexOf("."));
-    if(fileName.isEmpty()) {
+
+    // Check a filename was supplied
+    if (fileName.isEmpty()) {
+      QMessageBox::warning(m_POVRayDialog, tr("No filename supplied."),
+                           tr("No valid filename was supplied."));
       return;
     }
+
+    if (!m_POVRayDialog->renderDirect() && !m_POVRayDialog->keepSource()) {
+      QMessageBox::warning(m_POVRayDialog, tr("Does not compute."),
+                           tr("You requested no direct rendering using POV-Ray and not to keep the POV-Ray file. This will result in no output being saved. Are you sure that is what you want?"));
+      return;
+    }
+
+    // Check that the povray executable exists - FIXME implement path search...
+/*    QFileInfo info(m_POVRayDialog->command());
+    if (!info.exists()) {
+      QMessageBox::warning(m_POVRayDialog, "POV-Ray executable not found.",
+                           "The POV-Ray executable, normally named 'povray', cannot be found.");
+      return;
+    } */
+
     double aspectRatio = static_cast<double>(m_POVRayDialog->imageWidth())
                          / m_POVRayDialog->imageHeight();
     qDebug() << "Aspect ratio:" << aspectRatio;
     POVPainterDevice pd(fileName + ".pov", aspectRatio, m_glwidget);
-    // Set up the environment for the process
-    QStringList env = QProcess::systemEnvironment();
-    env << "POVRAY_BETA=925866419";
-    m_process->setEnvironment(env);
-//    qDebug() << "Env:" << env.join("\n");
-    //m_process->start("povray", m_POVRayDialog->commandLine());
-    qDebug() << "Command:" << "povray " + m_POVRayDialog->commandLine().join(" ");
-    m_process->start("povray " + m_POVRayDialog->commandLine().join(" "));
-    qDebug() << "Rendering started...";
-    if (!m_process->waitForStarted()) {
-      qDebug() << "POV-Ray never started!";
+
+    if (m_POVRayDialog->renderDirect()) {
+      m_process = new QProcess(this);
+      m_process->start("povray", m_POVRayDialog->commandLine());
+      qDebug() << "Command:" << "povray " + m_POVRayDialog->commandLine().join(" ");
+      qDebug() << "Rendering started...";
+      if (!m_process->waitForStarted()) {
+        qDebug() << "POV-Ray never started!";
+      }
+
+      QByteArray result = m_process->readAll();
+      qDebug() << "POV-Ray output:" << result << "Exit code:"
+               << m_process->exitCode();
     }
-    if (!m_process->waitForFinished()) {
-      qDebug() << "POV-Ray never finished!";
+
+    if (!m_POVRayDialog->keepSource()) {
+      QFile povSource(fileName + ".pov");
+      povSource.remove();
     }
-    QByteArray result = m_process->readAll();
-    qDebug() << "POV-Ray output:" << result << "Exit code:"
-             << m_process->exitCode();
   }
 
 } // End namespace Avogadro

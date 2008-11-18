@@ -196,6 +196,11 @@ namespace Avogadro
     std::vector<Eigen::Vector3f> t = mesh.triangles();
     std::vector<Eigen::Vector3f> n = mesh.normals();
 
+    // If there are no triangles then don't bother doing anything
+    if (t.size() == 0) {
+      return;
+    }
+
     // Normal or reverse winding?
     QString vertsStr, ivertsStr, normsStr, inormsStr;
     QTextStream verts(&vertsStr);
@@ -204,8 +209,6 @@ namespace Avogadro
     iverts << "face_indices{" << t.size() / 3 << ",\n";
     QTextStream norms(&normsStr);
     norms << "normal_vectors{" << n.size() << ",\n";
-    QTextStream inorms(&inormsStr);
-    inorms << "normal_indices{" << n.size() / 3 << ",\n";
     if (normalWind) {
       for(unsigned int i = 0; i < t.size(); ++i) {
         verts << "<" << t[i].x() << "," << t[i].y() << "," << t[i].z() << ">";
@@ -222,14 +225,11 @@ namespace Avogadro
       // Now to write out the indices
       for (unsigned int i = 0; i < t.size(); i += 3) {
         iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
-        inorms << "<" << i << "," << i+1 << "," << i+2 << ">";
         if (i != t.size()-3) {
           iverts << ", ";
-          inorms << ", ";
         }
         if (i != 0 && ((i+1)/3)%3 == 0) {
           iverts << "\n";
-          inorms << "\n";
         }
       }
     }
@@ -251,14 +251,11 @@ namespace Avogadro
       // Now to write out the indices
       for (unsigned int i = 0; i < t.size(); i += 3) {
         iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
-        inorms << "<" << i << "," << i+1 << "," << i+2 << ">";
         if (i != t.size()-3) {
           iverts << ", ";
-          inorms << ", ";
         }
         if (i != 0 && ((i+1)/3)%3 == 0) {
           iverts << "\n";
-          inorms << "\n";
         }
       }
     }
@@ -266,13 +263,11 @@ namespace Avogadro
     verts << "\n}";
     norms << "\n}";
     iverts << "\n}";
-    inorms << "\n}";
     // Now to write out the full mesh - could be pretty big...
     *(d->output) << "mesh2 {\n"
                  << vertsStr << "\n"
                  << normsStr << "\n"
                  << ivertsStr << "\n"
-                 << inormsStr << "\n"
                  << "\tpigment { rgbf <" << d->color.red() << ", "
                  << d->color.green() << ", "
                  << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }"

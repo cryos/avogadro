@@ -48,12 +48,40 @@ namespace Avogadro
       return QObject::tr("Export images rendered using POV-Ray");
     }
 
+    /**
+     * @return a list of actions which this widget can perform
+     */
     virtual QList<QAction *> actions() const;
 
+    /**
+     * @return the menu path for the specified action
+     */
     virtual QString menuPath(QAction* action) const;
 
+    /**
+     * @param action The action that triggered the calls.
+     * @param widget The currently active GLWidget (feedback to the user).
+     * @return An undo command for this action.
+     */
     virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
 
+    /**
+     * Save the settings for this extension.
+     * @param settings Settings variable to write settings to.
+     */
+    virtual void writeSettings(QSettings &settings) const;
+
+    /**
+     * Read the settings for this extension.
+     * @param settings Settings variable to read settings from.
+     */
+    virtual void readSettings(QSettings &settings);
+
+  public Q_SLOTS:
+
+    /**
+     * Slot to change the current molecule.
+     */
     void setMolecule(Molecule *molecule);
 
   private:

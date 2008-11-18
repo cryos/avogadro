@@ -32,6 +32,8 @@
 
 #include "ui_povraydialog.h"
 
+class QSettings;
+
 namespace Avogadro
 {
   class POVRayDialog : public QDialog
@@ -48,7 +50,7 @@ namespace Avogadro
     void setImageSize(int width, int height);
 
     /**
-     * @return the width of the POV-Ray scene in pixels.
+     * @return The width of the POV-Ray scene in pixels.
      */
     int imageWidth();
 
@@ -63,14 +65,46 @@ namespace Avogadro
     void setFileName(const QString& fileName);
 
     /**
-     * @return the file name of the output.
+     * @return The file name of the output.
      */
     QString fileName();
 
     /**
-     * @return the command line to run POV-Ray and generate the image file.
+     * Set the path to the POV-Ray executable.
      */
-     QStringList commandLine();
+    void setCommand(const QString& command);
+
+    /**
+     * @return The path to the POV-Ray executable.
+     */
+    QString command();
+
+    /**
+     * @return The command line to run POV-Ray and generate the image file.
+     */
+    QStringList commandLine();
+
+    /**
+     * @return True if the POV-Ray source should be kept after rendering.
+     */
+    bool keepSource();
+
+    /**
+     * @return True if POV-Ray should be called by Avogadro to render the image.
+     */
+    bool renderDirect();
+
+     /**
+     * Save the settings for this dialog.
+     * @param settings Settings variable to write settings to.
+     */
+    virtual void writeSettings(QSettings &settings) const;
+
+    /**
+     * Read the settings for this dialog.
+     * @param settings Settings variable to read settings from.
+     */
+    virtual void readSettings(QSettings &settings);
 
   private:
     Ui::POVRayDialog ui;

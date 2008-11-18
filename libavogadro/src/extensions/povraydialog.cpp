@@ -26,6 +26,7 @@
 
 #include <QFileDialog>
 #include <QString>
+#include <QSettings>
 #include <QDebug>
 
 namespace Avogadro
@@ -72,6 +73,16 @@ namespace Avogadro
     return ui.fileName->text();
   }
 
+  void POVRayDialog::setCommand(const QString& command)
+  {
+    ui.povrayPath->setText(command);
+  }
+
+  QString POVRayDialog::command()
+  {
+    return ui.povrayPath->text();
+  }
+
   QStringList POVRayDialog::commandLine()
   {
     QString fileName = ui.fileName->text().mid(0,
@@ -89,6 +100,39 @@ namespace Avogadro
       tmp << "+UA";
     return tmp;
   }
+
+  bool POVRayDialog::keepSource()
+  {
+    return ui.keepSource->isChecked();
+  }
+
+  bool POVRayDialog::renderDirect()
+  {
+    return ui.renderDirect->isChecked();
+  }
+
+  void POVRayDialog::writeSettings(QSettings &settings) const
+  {
+    settings.setValue("imageWidth", ui.dimX->text().toInt());
+    settings.setValue("imageHeight", ui.dimY->text().toInt());
+    settings.setValue("antialias", ui.antialias->isChecked());
+    settings.setValue("transparency", ui.transparency->isChecked());
+    settings.setValue("keepSource", ui.keepSource->isChecked());
+    settings.setValue("renderDirect", ui.renderDirect->isChecked());
+    settings.setValue("povrayPath", ui.povrayPath->text());
+  }
+
+  void POVRayDialog::readSettings(QSettings &settings)
+  {
+    ui.dimX->setText(settings.value("imageWidth", 1024).toString());
+    ui.dimY->setText(settings.value("imageHeight", 768).toString());
+    ui.antialias->setChecked(settings.value("antialias", true).toBool());
+    ui.transparency->setChecked(settings.value("transparency", true).toBool());
+    ui.keepSource->setChecked(settings.value("keepSource", true).toBool());
+    ui.renderDirect->setChecked(settings.value("renderDirect", true).toBool());
+    ui.povrayPath->setText(settings.value("povrayPath", "povray").toString());
+  }
+
 
   void POVRayDialog::selectFileName()
   {

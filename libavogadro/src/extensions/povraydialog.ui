@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>414</width>
-    <height>212</height>
+    <width>357</width>
+    <height>285</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -29,7 +29,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" >
+   <item row="0" column="1" colspan="2" >
     <layout class="QHBoxLayout" name="horizontalLayout_4" >
      <item>
       <widget class="QLineEdit" name="fileName" />
@@ -53,7 +53,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
+   <item row="1" column="1" colspan="2" >
     <layout class="QHBoxLayout" name="horizontalLayout" >
      <item>
       <widget class="QLineEdit" name="dimX" />
@@ -76,8 +76,11 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0" colspan="2" >
+   <item row="2" column="0" colspan="3" >
     <widget class="QCheckBox" name="antialias" >
+     <property name="toolTip" >
+      <string>Use full scene antialiasing</string>
+     </property>
      <property name="text" >
       <string>Antialias</string>
      </property>
@@ -86,8 +89,11 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2" >
+   <item row="3" column="0" colspan="3" >
     <widget class="QCheckBox" name="transparency" >
+     <property name="toolTip" >
+      <string>Set the background color to be transparent</string>
+     </property>
      <property name="text" >
       <string>Alpha transparency</string>
      </property>
@@ -96,7 +102,54 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0" >
+   <item row="4" column="0" colspan="3" >
+    <widget class="QCheckBox" name="keepSource" >
+     <property name="toolTip" >
+      <string>Keep the POV-Ray source after rendering has completed</string>
+     </property>
+     <property name="text" >
+      <string>Keep POV-Ray source after rendering</string>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="3" >
+    <widget class="QCheckBox" name="renderDirect" >
+     <property name="toolTip" >
+      <string>Render the molecule directly using command line POV-Ray</string>
+     </property>
+     <property name="text" >
+      <string>Render using POV-Ray</string>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" >
+    <widget class="QLabel" name="label_6" >
+     <property name="text" >
+      <string>Path:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>dimX</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2" >
+    <layout class="QHBoxLayout" name="horizontalLayout_6" >
+     <item>
+      <widget class="QLineEdit" name="povrayPath" >
+       <property name="text" >
+        <string>povray</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="7" column="0" >
     <widget class="QLabel" name="label_5" >
      <property name="text" >
       <string>Command:</string>
@@ -106,14 +159,14 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1" >
+   <item row="7" column="2" >
     <layout class="QHBoxLayout" name="horizontalLayout_5" >
      <item>
       <widget class="QLineEdit" name="command" />
      </item>
     </layout>
    </item>
-   <item row="5" column="0" colspan="2" >
+   <item row="8" column="0" colspan="3" >
     <spacer name="verticalSpacer_2" >
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -129,7 +182,7 @@
      </property>
     </spacer>
    </item>
-   <item row="6" column="0" colspan="2" >
+   <item row="9" column="0" colspan="3" >
     <layout class="QHBoxLayout" name="horizontalLayout_2" >
      <item>
       <spacer name="horizontalSpacer_2" >
@@ -161,6 +214,15 @@
     </layout>
    </item>
   </layout>
+  <zorder>label_4</zorder>
+  <zorder>label</zorder>
+  <zorder>antialias</zorder>
+  <zorder>transparency</zorder>
+  <zorder>label_5</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>renderDirect</zorder>
+  <zorder>keepSource</zorder>
+  <zorder>label_6</zorder>
  </widget>
  <tabstops>
   <tabstop>fileName</tabstop>
