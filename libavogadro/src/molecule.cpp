@@ -742,7 +742,7 @@
       }
       std::vector<OpenBabel::OBBond*> obbonds = obres->GetBonds();
       foreach (OpenBabel::OBBond *obbond, obbonds) {
-        residue->addBond(bond(obbond->GetIdx()-1)->id());
+        residue->addBond(bond(obbond->GetIdx())->id());
       }
     }
 
