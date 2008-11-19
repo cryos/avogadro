@@ -194,10 +194,10 @@ namespace Avogadro {
               // multiple user-visible molecule fragments
               // we can use either BFS or DFS interators -- look for the connected fragment
               OpenBabel::OBMol mol = molecule->OBMol();
-              OpenBabel::OBMolAtomDFSIter iter(mol, atom->index());
+              OpenBabel::OBMolAtomDFSIter iter(mol, atom->index() + 1);
               Atom *tmpNeighbor;
               do {
-                tmpNeighbor = molecule->atom(iter->GetIdx());
+                tmpNeighbor = molecule->atom(iter->GetIdx() - 1);
                 neighborList.append(tmpNeighbor);
 
                 // we want to find all bonds on this site
