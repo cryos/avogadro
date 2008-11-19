@@ -189,8 +189,7 @@ namespace Avogadro {
       return;
 
     QList<Atom*> neighborList;
-    if (m_numSelectedAtoms)
-    {
+    if (m_numSelectedAtoms) {
       // Check the first atom still exists, return if not
       if (m_selectedAtoms[0].isNull())
         return;
@@ -206,21 +205,17 @@ namespace Avogadro {
         } while ((iter++).next()); // this returns false when we are done
       }
       else { */
-      QList<Atom*> atoms = m_molecule->atoms();
-      foreach(Atom *atom, atoms)
-        neighborList.append(atom);
+      neighborList = m_molecule->atoms();
     }
     // Align the molecule along the selected axis
-    if (m_numSelectedAtoms >= 1)
-    {
+    if (m_numSelectedAtoms >= 1) {
       // Translate the first selected atom to the origin
-      foreach(Primitive *p, neighborList)
-      {
-        if (!p) continue;
-        Atom *a = static_cast<Atom *>(p);
-        a->setPos(a->pos()-m_selectedAtoms[0]->pos());
-        a->update();
+      Vector3d pos = m_selectedAtoms[0]->pos();
+      foreach(Atom *a, neighborList) {
+        if (!a) continue;
+        a->setPos(a->pos()-pos);
       }
+      m_molecule->update();
     }
     if (m_numSelectedAtoms >= 2)
     {
@@ -253,12 +248,10 @@ namespace Avogadro {
         axis.normalize();
 
         // Now to rotate the fragment
-        foreach(Primitive *p, neighborList)
-        {
-          Atom *a = static_cast<Atom *>(p);
+        foreach(Atom *a, neighborList) {
           a->setPos(Eigen::AngleAxisd(-angle,axis) * a->pos());
-          a->update();
         }
+        m_molecule->update();
       }
     }
     m_numSelectedAtoms = 0;
