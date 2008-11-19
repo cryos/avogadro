@@ -905,8 +905,8 @@ namespace Avogadro
     QApplication::setOverrideCursor( Qt::WaitCursor );
     statusBar()->showMessage( tr( "Saving file." ), 2000 );
 
-    OBMol *molecule = dynamic_cast<OBMol*>( d->molecule );
-    if ( conv.Write( molecule, &ofs ) ) {
+    OBMol obmol = d->molecule->OBMol();
+    if ( conv.Write( &obmol, &ofs ) ) {
       file.remove(); // remove the old file: WARNING -- would much prefer to just rename, but Qt won't let you
       newFile.rename(fileName);
       statusBar()->showMessage( tr("Save succeeded."), 5000 );
