@@ -29,6 +29,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/molecule.h>
+#include <avogadro/residue.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
@@ -162,26 +163,59 @@ namespace Avogadro {
 
       switch (m_selectionMode)
       {
-      /// FIXME Add back in residue selections...
-/*        case 2: // residue
+        case 2: // residue
           foreach(Primitive *hit, hitList) {
             if (hit->type() == Primitive::AtomType) {
               Atom *atom = static_cast<Atom *>(hit);
               // If the atom is unselected, select the whole residue
               bool select = !widget->isSelected(atom);
-              Residue *residue = static_cast<Residue *>(atom->GetResidue());
-              QList<Primitive *> neighborList;
-              FOR_ATOMS_OF_RESIDUE(a, residue) {
-                neighborList.append(static_cast<Atom *>(&*a));
-              }
-	      vector<OBBond*> bonds = residue->GetBonds();
-              for (unsigned int i = 0; i < bonds.size(); ++i) {
-                neighborList.append(static_cast<Bond *>(bonds[i]));
-              }
-              widget->setSelected(neighborList, select);
+              
+              // Since the atom doesn't know to which residue it belongs,
+              // we iterate over all residues and check if the atom is in
+              // the current residue.
+              foreach (Residue *residue, molecule->residues()) {
+                QList<unsigned long int> atoms = residue->atoms();
+                if (atoms.contains(atom->id())) {
+                  QList<Primitive *> neighborList;
+                  
+                  // add the atoms
+                  foreach (unsigned long int id, atoms)
+                    neighborList.append(molecule->atomById(id));
+                  
+                  // add the bonds
+                  foreach (unsigned long int id, residue->bonds())
+                    neighborList.append(molecule->bondById(id));
+                
+                  widget->setSelected(neighborList, select);
+                }
+              } // end for(residues)
+            } else if (hit->type() == Primitive::BondType) {
+              Bond *bond = static_cast<Bond *>(hit);
+              // If the bond is unselected, select the whole residue
+              bool select = !widget->isSelected(bond);
+              
+              // Since the bond doesn't know to which residue it belongs,
+              // we iterate over all residues and check if the bond is in
+              // the current residue.
+              foreach (Residue *residue, molecule->residues()) {
+                QList<unsigned long int> bonds = residue->bonds();
+                if (bonds.contains(bond->id())) {
+                  QList<Primitive *> neighborList;
+                  
+                  // add the atoms
+                  foreach (unsigned long int id, residue->atoms())
+                    neighborList.append(molecule->atomById(id));
+                  
+                  // add the bonds
+                  foreach (unsigned long int id, bonds)
+                    neighborList.append(molecule->bondById(id));
+                
+                  widget->setSelected(neighborList, select);
+                }
+              } // end for(residues)
             }
           } // end for(hits)
-          break; */
+          break;
         case 3: // molecule
           foreach(Primitive *hit, hitList) {
             if (hit->type() == Primitive::AtomType) {
@@ -209,12 +243,38 @@ namespace Avogadro {
               } while ((iter++).next()); // this returns false when we've gone looped through the fragment
 
               widget->setSelected(neighborList, select);
+            } else if (hit->type() == Primitive::BondType) {
+              Bond *bond = static_cast<Bond *>(hit);
+              // if this atom is unselected, select the whole fragment
+              bool select = !widget->isSelected(bond);
+              QList<Primitive *> neighborList;
+
+              // We really want the "connected fragment" since a Molecule can contain
+              // multiple user-visible molecule fragments
+              // we can use either BFS or DFS interators -- look for the connected fragment
+              OpenBabel::OBMol mol = molecule->OBMol();
+              OpenBabel::OBMolAtomDFSIter iter(mol, molecule->atomById(bond->beginAtomId())->index() + 1);
+              Atom *tmpNeighbor;
+              do {
+                tmpNeighbor = molecule->atom(iter->GetIdx() - 1);
+                neighborList.append(tmpNeighbor);
+
+                // we want to find all bonds on this site
+                // (obviously all bonds will be in this fragment)
+
+                FOR_BONDS_OF_ATOM(b, *iter)
+                  neighborList.append(molecule->bond(b->GetIdx()));
+
+              } while ((iter++).next()); // this returns false when we've gone looped through the fragment
+
+              widget->setSelected(neighborList, select);
             }
+ 
             // FIXME -- also need to handle other primitive hit types
             // (e.g., if we hit a residue, bond, etc.)
           }
           break;
-        case 1: // atom
+        case 1: // atom/bond
         default:
           // If the Ctrl modifier is pressed toggle selection
           if(event->modifiers() & Qt::ControlModifier)
