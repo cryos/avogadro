@@ -28,6 +28,7 @@
 #include "bond.h"
 #include "cube.h"
 #include "fragment.h"
+#include "residue.h"
 
 #include <Eigen/Regression>
 #include <Eigen/Geometry>
@@ -61,14 +62,14 @@
       std::vector<Atom *>           atoms;
       std::vector<Bond *>           bonds;
       std::vector<Cube *>           cubes;
-      std::vector<Fragment *>       residues;
+      std::vector<Residue *>        residues;
       std::vector<Fragment *>       rings;
 
       // Used to store the index based list (not unique ids)
       QList<Atom *>                 atomList;
       QList<Bond *>                 bondList;
       QList<Cube *>                 cubeList;
-      QList<Fragment *>             residueList;
+      QList<Residue *>              residueList;
       QList<Fragment *>             ringList;
 
       // Our OpenBabel OBMol object
@@ -101,7 +102,7 @@
     foreach (Cube *cube, d->cubeList) {
       cube->deleteLater();
     }
-    foreach (Fragment *residue, d->residueList) {
+    foreach (Residue *residue, d->residueList) {
       residue->deleteLater();
     }
     foreach (Fragment *ring, d->ringList) {
@@ -392,11 +393,11 @@
       deleteCube(d->cubes[id]);
   }
 
-  Fragment * Molecule::newResidue()
+  Residue * Molecule::newResidue()
   {
     Q_D(Molecule);
 
-    Fragment *residue = new Fragment(this);
+    Residue *residue = new Residue(this);
 
     d->residues.push_back(residue);
     residue->setId(d->residues.size()-1);
@@ -410,7 +411,7 @@
     return(residue);
   }
 
-  void Molecule::deleteResidue(Fragment *residue)
+  void Molecule::deleteResidue(Residue *residue)
   {
     Q_D(Molecule);
     if(residue) {
@@ -621,7 +622,7 @@
     return d->cubeList;
   }
 
-  QList<Fragment *> Molecule::residues() const
+  QList<Residue *> Molecule::residues() const
   {
     Q_D(const Molecule);
     return d->residueList;
@@ -725,11 +726,28 @@
     }
 
     // Copy the residues across...
-    
+    std::vector<OpenBabel::OBResidue *> residues;
+    OpenBabel::OBResidueIterator iResidue;
+    for (OpenBabel::OBResidue *obres = static_cast<OpenBabel::OBResidue *>(obmol->BeginResidue(iResidue));
+          obres; obres = static_cast<OpenBabel::OBResidue *>(obmol->NextResidue(iResidue))) {
+      /// Copy these residues!
+      Residue *residue = newResidue();
+      residue->setName(obres->GetName().c_str());
+      residue->setNumber(obres->GetNumString().c_str());
+      std::vector<OpenBabel::OBAtom*> obatoms = obres->GetAtoms();
+      foreach (OpenBabel::OBAtom *obatom, obatoms) {
+        unsigned long int atomId = atom(obatom->GetIdx()-1)->id();
+        residue->addAtom(atomId);
+        residue->setAtomId(atomId, obres->GetAtomID(obatom).c_str());
+      }
+      std::vector<OpenBabel::OBBond*> obbonds = obres->GetBonds();
+      foreach (OpenBabel::OBBond *obbond, obbonds) {
+        residue->addBond(bond(obbond->GetIdx()-1)->id());
+      }
+    }
 
     // Copy the rings across now
-    std::vector<OpenBabel::OBRing *> rings;
-    rings = obmol->GetSSSR();
+    std::vector<OpenBabel::OBRing *> rings = obmol->GetSSSR();
     foreach(OpenBabel::OBRing *r, rings) {
       Fragment *ring = newRing();
       foreach(int index, r->_path) {

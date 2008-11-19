@@ -289,7 +289,7 @@ namespace Avogadro {
         else if(type == Primitive::ResidueType) {
           Residue *residue = (Residue*)primitive;
           str = tr("Residue") + ' ';
-          str += residue->name() + ' ' + residue->numString();
+          str += residue->name() + ' ' + residue->number();
         }
 
         return str;

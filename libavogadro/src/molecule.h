@@ -169,12 +169,12 @@ namespace Avogadro {
        * Create a new residue object and return a pointer to it.
        * @note Do not delete the object, use deleteResidue(Residue *residue).
        */
-      Fragment *newResidue();
+      Residue *newResidue();
 
       /**
        * Delete the supplied residue.
        */
-      void deleteResidue(Fragment *residue);
+      void deleteResidue(Residue *residue);
 
       /**
        * Delete the residue with the unique id specified.
@@ -274,7 +274,7 @@ namespace Avogadro {
       /**
        * @return QList of all residues in the molecule.
        */
-      QList<Fragment *> residues() const;
+      QList<Residue *> residues() const;
 
       /**
        * @return QList of all rings in the molecule.

@@ -54,8 +54,14 @@ namespace Avogadro {
        */
       Fragment(QObject *parent=0);
 
+      /**
+       * Consttructor. This class is further inherited by Residue.
+       */
       explicit Fragment(Type type, QObject *parent=0);
 
+      /**
+       * Destructor.
+       */
       ~Fragment();
 
       /**
@@ -69,17 +75,40 @@ namespace Avogadro {
        */
       inline void setName(QString name) { m_name = name; }
 
+      /**
+       * Add an Atom to the Fragment.
+       */
       void addAtom(unsigned long int id);
+
+      /**
+       * Remove the Atom from the Fragment.
+       */
       void removeAtom(unsigned long int id);
+
+      /**
+       * @return QList of the unique ids of the atoms in this Fragment.
+       */
       QList<unsigned long int> atoms();
+
+      /**
+       * Add a Bond to the Fragment.
+       */
       void addBond(unsigned long int id);
+
+      /**
+       * Remove the Bond from the Fragment.
+       */
       void removeBond(unsigned long int id);
+
+      /**
+       * @return QList of the unique ids of the bonds in this Fragment.
+       */
       QList<unsigned long int> bonds();
 
     protected:
-      QString m_name;
-      QList<unsigned long int> m_atoms;
-      QList<unsigned long int> m_bonds;
+      QString m_name; /** The name of the Fragment. **/
+      QList<unsigned long int> m_atoms; /** QList of the atom ids. **/
+      QList<unsigned long int> m_bonds; /** QList of the bond ids. **/
 
     private:
       Q_DECLARE_PRIVATE(Fragment)

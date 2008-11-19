@@ -23,11 +23,80 @@
   02110-1301, USA.
  **********************************************************************/
 
- #include "residue.h"
+#include "residue.h"
 
- namespace Avogadro {
+#include <QDebug>
 
- } // End namespace Avogadro
+namespace Avogadro {
+
+  Residue::Residue(QObject *parent): Fragment(ResidueType, parent)
+  {
+  }
+
+  Residue::~Residue()
+  {
+  }
+
+
+  void Residue::setNumber(const QString& number)
+  {
+    m_number = number;
+  }
+
+  QString Residue::number()
+  {
+    return m_number;
+  }
+
+  bool Residue::setAtomId(unsigned long int id, QString atomId)
+  {
+    int index = m_atoms.indexOf(id);
+    if (index != -1) {
+      if (m_atomId.size() == index) {
+        m_atomId.push_back(atomId);
+        return true;
+      }
+      else if (m_atomId.size() < index) {
+        m_atomId[index] = atomId;
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+    return false;
+  }
+
+  bool Residue::setAtomIds(const QList<QString> &atomIds)
+  {
+    if (atomIds.size() == m_atoms.size()) {
+      m_atomId.clear();
+      m_atomId = atomIds;
+      return true;
+    }
+    return false;
+  }
+
+  QString Residue::atomId(unsigned long int id)
+  {
+    int index = m_atoms.indexOf(id);
+    if (index != -1) {
+      if (m_atomId.size() < index + 1) {
+        return "";
+      }
+      else {
+        return m_atomId.at(index);
+      }
+    }
+    return "";
+  }
+
+  const QList<QString> & Residue::atomIds() const
+  {
+    return m_atomId;
+  }
+
+} // End namespace Avogadro
 
  #include "residue.moc"
  
