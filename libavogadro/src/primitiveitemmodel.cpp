@@ -26,6 +26,7 @@
 
 #include <QTimer>
 #include <QVector>
+#include <QDebug>
 
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
@@ -260,31 +261,34 @@ namespace Avogadro {
           str = tr("Molecule");
         }
         else if(type == Primitive::AtomType) {
-          Atom *atom = (Atom*)primitive;
+          Atom *atom = static_cast<Atom*>(primitive);
           str = tr("Atom") + ' '
             + QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
             + ' ' + QString::number(atom->index());
         }
         else if(type == Primitive::BondType){
-          Bond *bond = (Bond*)primitive;
-          const Atom *beginAtom = d->molecule->atomById(bond->beginAtomId());
-          const Atom *endAtom = d->molecule->atomById(bond->endAtomId());
-          str = tr("Bond") + ' ' + QString::number(bond->index()) + " (";
-          if(beginAtom)
-            str += QString::number(beginAtom->index());
-          else
-            // this should never happen: Bond always has a beginning -GRH
-            str += '-';
+          Bond *bond = static_cast<Bond*>(primitive);
+          str = tr("Bond") + ' ' + QString::number(bond->index());
+          if (d->molecule) {
+            const Atom *beginAtom = d->molecule->atomById(bond->beginAtomId());
+            const Atom *endAtom = d->molecule->atomById(bond->endAtomId());
+            str += " (";
+            if(beginAtom)
+              str += QString::number(beginAtom->index());
+            else
+              // this should never happen: Bond always has a beginning -GRH
+              str += '-';
 
-          str += ',';
+            str += ',';
 
-          if(endAtom)
-            str += QString::number(endAtom->index());
-          else
-            // this should never happen: Bond always has an end -GRH
-            str += '-';
+            if(endAtom)
+              str += QString::number(endAtom->index());
+            else
+              // this should never happen: Bond always has an end -GRH
+              str += '-';
 
-          str += ')';
+            str += ')';
+          }
         } // end bond
         else if(type == Primitive::ResidueType) {
           Residue *residue = (Residue*)primitive;
