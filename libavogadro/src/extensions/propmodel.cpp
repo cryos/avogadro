@@ -20,7 +20,7 @@
  ***********************************************************************/
 
 #include "propmodel.h"
-#include <avogadro/primitive.h>
+#include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
@@ -29,23 +29,22 @@
 #include <QDebug>
 
 using namespace std;
-using namespace OpenBabel;
 
 namespace Avogadro
 {
   int PropertiesModel::rowCount(const QModelIndex &parent) const
   {
     Q_UNUSED(parent);
-    
-    m_molecule->DeleteData(OBGenericDataType::AngleData);
-    m_molecule->DeleteData(OBGenericDataType::TorsionData);
-    
+
+//    m_molecule->DeleteData(OBGenericDataType::AngleData);
+//    m_molecule->DeleteData(OBGenericDataType::TorsionData);
+
     if (m_type == AtomType) {
-      return m_molecule->NumAtoms();
+      return m_molecule->numAtoms();
     } else if (m_type == BondType) {
-      return m_molecule->NumBonds();
+      return m_molecule->numBonds();
     } else if (m_type == CartesianType) {
-      return m_molecule->NumAtoms();
+      return m_molecule->numAtoms();
     } else if (m_type == ConformerType) {
       return m_molecule->NumConformers();
     } else if (m_type == AngleType) {
@@ -67,7 +66,7 @@ namespace Avogadro
 
       return rowCount;
     }
-    
+
     return 0;
   }
 
@@ -99,7 +98,7 @@ namespace Avogadro
 
     if (role != Qt::DisplayRole)
       return QVariant();
-    
+
     if (m_type == AtomType) {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->NumAtoms())
         return QVariant();
@@ -208,11 +207,11 @@ namespace Avogadro
       OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
 
       switch (index.column()) {
-      case 0: 
+      case 0:
         return QString::number(atom->GetX(), 'f', 5);
-      case 1: 
+      case 1:
         return QString::number(atom->GetY(), 'f', 5);
-      case 2: 
+      case 2:
         return QString::number(atom->GetZ(), 'f', 5);
       }
     } else if (m_type == ConformerType) {
@@ -226,14 +225,14 @@ namespace Avogadro
 
         OBConformerData *cd = (OBConformerData*) m_molecule->GetData(OBGenericDataType::ConformerData);
         vector<double> allEnergies = cd->GetEnergies();
-        
+
         if ((unsigned int) index.row() >= allEnergies.size())
           return QVariant();
 
         return allEnergies[index.row()];
       }
-    } 
-  
+    }
+
     return QVariant();
   }
 
@@ -332,15 +331,15 @@ namespace Avogadro
       } else
         return tr("Conformer %1").arg(section + 1);
     }
-    
+
     return QVariant();
   }
- 
+
   Qt::ItemFlags PropertiesModel::flags(const QModelIndex &index) const
   {
     if (!index.isValid())
       return Qt::ItemIsEnabled;
-    
+
     if (m_type == AtomType) {
       switch (index.column()) {
       case 0: // type
@@ -372,23 +371,23 @@ namespace Avogadro
     } else if (m_type == ConformerType) {
       return QAbstractItemModel::flags(index);
     }
-    
-    
+
+
     return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
   }
 
-  bool PropertiesModel::setData(const QModelIndex &index, const QVariant &value, int role) 
+  bool PropertiesModel::setData(const QModelIndex &index, const QVariant &value, int role)
   {
     if (!index.isValid())
-      return false; 
-      
+      return false;
+
     if (role != Qt::EditRole)
       return false;
-      
+
     if (m_type == AtomType) {
       OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
       std::string buff;
-      
+
       switch (index.column()) {
       case 0: // type
         buff = (value.toString()).toStdString();
@@ -425,7 +424,7 @@ namespace Avogadro
       }
     } else if (m_type == BondType) {
       // OpenBabel::OBBond *bond = m_molecule->GetBond(index.row());
-      
+
       switch (index.column()) {
       case 0: // atom 1
       case 1: // atom 2
@@ -437,28 +436,28 @@ namespace Avogadro
     } else if (m_type == CartesianType) {
       OpenBabel::OBAtom *atom = m_molecule->GetAtom(index.row() + 1);
       OpenBabel::vector3 coord = atom->GetVector();
-      
+
       switch (index.column()) {
-      case 0: 
+      case 0:
         coord.SetX(value.toDouble());
         atom->SetVector(coord);
         m_molecule->update();
         emit dataChanged(index, index);
         return true;
-      case 1: 
+      case 1:
         coord.SetY(value.toDouble());
         atom->SetVector(coord);
         m_molecule->update();
         emit dataChanged(index, index);
         return true;
-      case 2: 
+      case 2:
         coord.SetZ(value.toDouble());
         atom->SetVector(coord);
         m_molecule->update();
         emit dataChanged(index, index);
         return true;
       }
-    
+
     }
     return false;
   }
@@ -471,7 +470,7 @@ namespace Avogadro
     OBAngleData *ad = (OBAngleData *) m_molecule->GetData(OBGenericDataType::AngleData);
     m_rowCount = ad->GetSize();
   }
-  
+
   void PropertiesModel::primitiveAdded(Primitive *primitive)
   {
     //m_molecule->DeleteData(OBGenericDataType::AngleData);
@@ -502,11 +501,11 @@ namespace Avogadro
       }
     }
   }
-  
+
   void PropertiesModel::primitiveRemoved(Primitive *primitive)
   {
     //m_molecule->DeleteData(OBGenericDataType::AngleData);
-    
+
     if ( (primitive->type() == Primitive::AtomType) && ( (m_type == AtomType) || (m_type == CartesianType) ) ) {
       beginRemoveRows(QModelIndex(), static_cast<Atom*>(primitive)->GetIdx() - 1, static_cast<Atom*>(primitive)->GetIdx() - 1);
       endRemoveRows();
@@ -533,10 +532,10 @@ namespace Avogadro
       }
     }
   }
-  
+
   void PropertiesModel::updateTable()
   {
-    emit dataChanged(QAbstractItemModel::createIndex(0, 0), 
+    emit dataChanged(QAbstractItemModel::createIndex(0, 0),
                      QAbstractItemModel::createIndex(rowCount(), columnCount()));
   }
 
