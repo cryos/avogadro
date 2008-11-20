@@ -29,7 +29,8 @@
 
 namespace Avogadro {
 
-  Residue::Residue(QObject *parent): Fragment(ResidueType, parent)
+  Residue::Residue(QObject *parent): Fragment(ResidueType, parent),
+    m_chainNumber(0)
   {
   }
 
@@ -46,6 +47,16 @@ namespace Avogadro {
   QString Residue::number()
   {
     return m_number;
+  }
+
+  void Residue::setChainNumber(unsigned int number)
+  {
+    m_chainNumber = number;
+  }
+
+  unsigned int Residue::chainNumber()
+  {
+    return m_chainNumber;
   }
 
   bool Residue::setAtomId(unsigned long int id, QString atomId)
@@ -99,4 +110,4 @@ namespace Avogadro {
 } // End namespace Avogadro
 
  #include "residue.moc"
- 
+

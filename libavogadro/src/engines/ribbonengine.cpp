@@ -25,25 +25,24 @@
 #include "ribbonengine.h"
 
 #include <config.h>
-#include <avogadro/primitive.h>
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
+#include <avogadro/residue.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <openbabel/obiter.h>
 #include <Eigen/Regression>
 
 #include <QMessageBox>
 #include <QString>
 #include <QDebug>
 
-using namespace std;
-using namespace OpenBabel;
-using namespace Eigen;
+using Eigen::Vector3d;
 
 namespace Avogadro {
 
-  RibbonEngine::RibbonEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
-  m_type(0), m_radius(1.0), m_useNitrogens(2)
+  RibbonEngine::RibbonEngine(QObject *parent) : Engine(parent),
+    m_settingsWidget(0), m_type(0), m_radius(1.0), m_useNitrogens(2)
   {
     setDescription(tr("Renders residues as ribbons"));
 
@@ -80,7 +79,7 @@ namespace Avogadro {
   bool RibbonEngine::renderOpaque(PainterDevice *pd)
   {
     // Check if the chains need updating before drawing them
-    if (m_update) updateChains();
+    if (m_update) updateChains(pd);
 
     if (m_type == 0) {
       for (int i = 0; i < m_chains.size(); i++) {
@@ -158,10 +157,11 @@ namespace Avogadro {
     m_update = true;
   }
 
-  void RibbonEngine::updateChains()
+  void RibbonEngine::updateChains(PainterDevice *pd)
   {
     if (!isEnabled()) return;
     // Get a list of residues for the molecule
+    const Molecule *molecule = pd->molecule();
     m_chains.clear();
     QList<Primitive *> list;
     list = primitives().subList(Primitive::ResidueType);
@@ -170,25 +170,29 @@ namespace Avogadro {
 
     foreach(Primitive *p, list) {
       Residue *r = static_cast<Residue *>(p);
-      if(r->GetName().find("HOH") != string::npos)
+      if(r->name() =="HOH") {
         continue;
+      }
 
-      if(r->GetChainNum() != currentChain) {
+      if(r->chainNumber() != currentChain) {
         // this residue is on a new chain
         if(pts.size() > 0)
           m_chains.push_back(pts);
-        currentChain = r->GetChainNum();
+        currentChain = r->chainNumber();
         pts.clear();
       }
 
-      FOR_ATOMS_OF_RESIDUE(a, r) {
+      QList<unsigned long int> atoms = r->atoms();
+      foreach (unsigned long int atom, atoms) {
         // should be CA
-        QString atomID = QString(r->GetAtomID(&*a).c_str());
-        atomID = atomID.trimmed();
-        if (atomID == "CA")
-          pts.push_back(static_cast<Atom *>(&*a)->pos());
-        else if (atomID == "N" && m_useNitrogens == 2)
-         pts.push_back(static_cast<Atom *>(&*a)->pos());
+        QString atomId = r->atomId(atom);
+        atomId = atomId.trimmed();
+        if (atomId == "CA") {
+          pts.push_back(molecule->atomById(atom)->pos());
+        }
+        else if (atomId == "N" && m_useNitrogens == 2) {
+          pts.push_back(molecule->atomById(atom)->pos());
+        }
       } // end atoms in residue
 
     } // end primitive list (i.e., all residues)
@@ -221,7 +225,7 @@ namespace Avogadro {
   void RibbonEngine::setUseNitrogens(int setting)
   {
     m_useNitrogens = setting;
-    updateChains();
+    m_update = true;
     emit changed();
   }
 
@@ -247,7 +251,6 @@ namespace Avogadro {
 
   void RibbonEngine::settingsWidgetDestroyed()
   {
-    qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
   }
   void RibbonEngine::writeSettings(QSettings &settings) const
@@ -276,3 +279,4 @@ namespace Avogadro {
 #include "ribbonengine.moc"
 
 Q_EXPORT_PLUGIN2(ribbonengine, Avogadro::RibbonEngineFactory)
+

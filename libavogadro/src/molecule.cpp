@@ -237,7 +237,6 @@
       atom->deleteLater();
       disconnect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
       emit primitiveRemoved(atom);
-      qDebug() << "Atom" << atom->id() << atom->index() << "deleted";
       m_lock->unlock();
     }
   }
@@ -319,7 +318,6 @@
       bond->deleteLater();
       disconnect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
       emit primitiveRemoved(bond);
-      qDebug() << "Bond" << bond->id() << bond->index() << "deleted";
     }
   }
 
@@ -382,7 +380,6 @@
       cube->deleteLater();
       disconnect(cube, SIGNAL(updated()), this, SLOT(updatePrimitive()));
       emit primitiveRemoved(cube);
-      qDebug() << "Cube" << cube->id() << cube->index() << "deleted";
     }
   }
 
@@ -426,7 +423,6 @@
       residue->deleteLater();
       disconnect(residue, SIGNAL(updated()), this, SLOT(updatePrimitive()));
       emit primitiveRemoved(residue);
-      qDebug() << "Residue" << residue->id() << residue->index() << "deleted";
     }
   }
 
@@ -470,7 +466,6 @@
       ring->deleteLater();
       disconnect(ring, SIGNAL(updated()), this, SLOT(updatePrimitive()));
 //      emit primitiveRemoved(ring);
-      qDebug() << "Ring" << ring->id() << ring->index() << "deleted";
     }
   }
 
@@ -734,6 +729,7 @@
       Residue *residue = newResidue();
       residue->setName(obres->GetName().c_str());
       residue->setNumber(obres->GetNumString().c_str());
+      residue->setChainNumber(obres->GetChainNum());
       std::vector<OpenBabel::OBAtom*> obatoms = obres->GetAtoms();
       foreach (OpenBabel::OBAtom *obatom, obatoms) {
         unsigned long int atomId = atom(obatom->GetIdx()-1)->id();
@@ -811,7 +807,7 @@
     d->cubeList.clear();
 
     d->residues.resize(0);
-    foreach (Fragment *residue, d->residueList) {
+    foreach (Residue *residue, d->residueList) {
       residue->deleteLater();
       emit primitiveRemoved(residue);
     }

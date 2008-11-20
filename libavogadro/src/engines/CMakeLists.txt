@@ -72,12 +72,12 @@ target_link_libraries(stickengine ${LINK_LIBS})
 install(TARGETS stickengine DESTINATION ${DESTINATION_DIR})
 
 # Ribbon engine (biological structure)
-#set(ribbonengine_SRCS ribbonengine.cpp)
-#qt4_wrap_ui(ribbonengine_UIS ribbonsettingswidget.ui)
-#qt4_automoc(${ribbonengine_SRCS})
-#add_library(ribbonengine MODULE ${ribbonengine_SRCS} ${ribbonengine_UIS} )
-#target_link_libraries(ribbonengine ${LINK_LIBS})
-#install(TARGETS ribbonengine DESTINATION ${DESTINATION_DIR})
+set(ribbonengine_SRCS ribbonengine.cpp)
+qt4_wrap_ui(ribbonengine_UIS ribbonsettingswidget.ui)
+qt4_automoc(${ribbonengine_SRCS})
+add_library(ribbonengine MODULE ${ribbonengine_SRCS} ${ribbonengine_UIS} )
+target_link_libraries(ribbonengine ${LINK_LIBS})
+install(TARGETS ribbonengine DESTINATION ${DESTINATION_DIR})
 
 # Ring engine - display cyclic rings
 set(ringengine_SRCS ringengine.cpp)

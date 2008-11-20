@@ -36,6 +36,7 @@
 #include <avogadro/toolgroup.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
+#include <avogadro/residue.h>
 #include <avogadro/molecule.h>
 
 #include <avogadro/point.h>
@@ -661,7 +662,7 @@ namespace Avogadro {
           d->pd->painter()->setName( Primitive::LineType, ids[Primitive::LineType]++ );
           d->pd->painter()->drawLine( line->begin(), line->end(), line->width() );
           }
-          break; 
+          break;
         default:
           break;
       }
@@ -1019,7 +1020,7 @@ namespace Avogadro {
           break;
       }
     }
-    
+
     if ( d->tool ) {
       QUndoCommand *command = 0;
       command = d->tool->mousePress( this, event );
@@ -1089,7 +1090,7 @@ namespace Avogadro {
         default:
           break;
       }
- 
+
     } else if ( d->tool ) {
       QUndoCommand *command = d->tool->mouseMove( this, event );
       if ( command && d->undoStack ) {
@@ -1126,36 +1127,20 @@ namespace Avogadro {
     }
     d->primitives.clear();
 
-    /// FIXME - add back in these loops!
-
     // add the atoms to the default queue
     QList<Atom *> atoms = molecule->atoms();
     foreach(Atom *atom, atoms)
       d->primitives.append(atom);
+    // Add the bonds to the default queue
     QList<Bond *> bonds = molecule->bonds();
     foreach(Bond *bond, bonds)
       d->primitives.append(bond);
-/*    std::vector<OpenBabel::OBNodeBase*>::iterator i;
-    for ( Atom *atom = ( Atom* )d->molecule->BeginAtom( i );
-          atom; atom = ( Atom* )d->molecule->NextAtom( i ) ) {
-      d->primitives.append( atom );
-    }
+    // Add the residues to the default queue
+    QList<Residue *> residues = molecule->residues();
+    foreach(Residue *residue, residues)
+      d->primitives.append(residue);
 
-    // add the bonds to the default queue
-    std::vector<OpenBabel::OBEdgeBase*>::iterator j;
-    for ( Bond *bond = ( Bond* )d->molecule->BeginBond( j );
-          bond; bond = ( Bond* )d->molecule->NextBond( j ) ) {
-      d->primitives.append( bond );
-    }
-
-    // add the residues to the default queue
-    std::vector<OpenBabel::OBResidue*>::iterator k;
-    for ( Residue *residue = ( Residue* )d->molecule->BeginResidue( k );
-          residue; residue = ( Residue * )d->molecule->NextResidue( k ) ) {
-      d->primitives.append( residue );
-    }
-*/
-    d->primitives.append( d->molecule );
+    d->primitives.append(d->molecule);
 
     std::cout << "SetMolecule Called!" << std::endl;
     // Now set the primitives for the engines

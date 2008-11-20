@@ -180,7 +180,7 @@ endif(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
 #target_link_libraries(linmorphextension ${LINK_LIBS})
 #install(TARGETS linmorphextension DESTINATION ${DESTINATION_DIR})
 
-### unit cells
+### POV-Ray extension
 set(povrayextension_SRCS povrayextension.cpp povpainter.cpp povraydialog.cpp)
 qt4_wrap_ui(povrayextension_UIS_H povraydialog.ui)
 qt4_automoc(${povrayextension_SRCS})

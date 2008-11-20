@@ -81,7 +81,7 @@ namespace Avogadro {
       void removePrimitive(Primitive *primitive);
 
     private:
-      void updateChains();
+      void updateChains(PainterDevice *pd);
 
       RibbonSettingsWidget *m_settingsWidget;
 
