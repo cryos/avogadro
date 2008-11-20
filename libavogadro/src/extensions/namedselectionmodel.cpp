@@ -20,11 +20,10 @@
  ***********************************************************************/
 
 #include "namedselectionmodel.h"
-#include <avogadro/primitive.h>
+#include <avogadro/molecule.h>
+#include <avogadro/residue.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
-
-#include <openbabel/mol.h>
 
 #include <QDebug>
 
@@ -38,7 +37,7 @@ namespace Avogadro
   //
   // SelectTreeItem
   //
-  ////////////////////////////////////////////////////////	
+  ////////////////////////////////////////////////////////
 
   SelectTreeItem::SelectTreeItem(const QList<QVariant> &data, int type, SelectTreeItem *parent)
   {
@@ -89,7 +88,7 @@ namespace Avogadro
 
     return 0;
   }
-  
+
   int SelectTreeItem::type() const
   {
     return m_type;
@@ -99,7 +98,7 @@ namespace Avogadro
   //
   // SelectTreeModel
   //
-  ////////////////////////////////////////////////////////	
+  ////////////////////////////////////////////////////////
 
   SelectTreeModel::SelectTreeModel(GLWidget *widget, QObject *parent)
     : QAbstractItemModel(parent)
@@ -202,12 +201,12 @@ namespace Avogadro
 
   void SelectTreeModel::addChainData(Molecule *molecule, QList<SelectTreeItem*> &parents)
   {
-    QList<QVariant> chainsData;
+/*    QList<QVariant> chainsData;
     chainsData << "Chains";
     parents.last()->appendChild(new SelectTreeItem(chainsData, SelectTreeItemType::HeaderType, parents.last()));
     if (parents.last()->childCount() > 0)
       parents << parents.last()->child(parents.last()->childCount()-1);
-
+    /// FIXME - what was this trying to do?
     QList<char> chains;
     FOR_RESIDUES_OF_MOL (res, molecule) {
       if (!chains.contains(res->GetChain()))
@@ -220,19 +219,20 @@ namespace Avogadro
       parents.last()->appendChild(new SelectTreeItem(chainData, SelectTreeItemType::ChainType, parents.last()));
       if (parents.last()->childCount() > 0)
         parents << parents.last()->child(parents.last()->childCount()-1);
-      
+
       addResidueData(molecule, chains[i], parents);
-      
+
       parents.pop_back(); // chains X
     }
-    
-    parents.pop_back(); // Chains 
-  
+
+    parents.pop_back(); // Chains
+*/
   }
 
   void SelectTreeModel::addResidueData(Molecule *molecule, char chain, QList<SelectTreeItem*> &parents)
   {
-    QList<QVariant> residueData;
+    /// FIXME - wasn't sure what this was doing either
+/*    QList<QVariant> residueData;
     residueData << "Residues";
     parents.last()->appendChild(new SelectTreeItem(residueData, SelectTreeItemType::HeaderType, parents.last()));
     if (parents.last()->childCount() > 0)
@@ -255,7 +255,7 @@ namespace Avogadro
       }
       parents.pop_back(); // resname idex
     }
-    parents.pop_back(); // Residues 
+    parents.pop_back(); // Residues */
   }
 
   void SelectTreeModel::addSelectionData(GLWidget *widget, QList<SelectTreeItem*> &parents)
@@ -271,8 +271,8 @@ namespace Avogadro
       chainData << widget->namedSelections().at(i);
       parents.last()->appendChild(new SelectTreeItem(chainData, SelectTreeItemType::SelectionType, parents.last()));
     }
-    
-    parents.pop_back(); // User selections 
+
+    parents.pop_back(); // User selections
   }
 
 
@@ -289,29 +289,30 @@ namespace Avogadro
     addChainData(molecule, parents);
     addResidueData(molecule, 0, parents);
     addSelectionData(widget, parents);
-    
-    /*
+/*
     QList<QVariant> residueData;
     residueData << "residues";
     parents.last()->appendChild(new SelectTreeItem(residueData, parents.last()));
     if (parents.last()->childCount() > 0)
       parents << parents.last()->child(parents.last()->childCount()-1);
-    FOR_RESIDUES_OF_MOL (res, molecule) {
+    QList<Residue*> residues = molecule->residues();
+    foreach (Residue *res, residues) {
       QList<QVariant> columnData;
-      columnData << res->GetName().c_str();
-      columnData << res->GetIdx();
+      columnData << res->name();
+      columnData << res->index();
       parents.last()->appendChild(new SelectTreeItem(columnData, parents.last()));
       if (parents.last()->childCount() > 0)
         parents << parents.last()->child(parents.last()->childCount()-1);
-      FOR_ATOMS_OF_RESIDUE (atom, &*res) {
+      QList<Atom*> atoms = res->atoms();
+      foreach (Atom *atom, atoms) {
         QList<QVariant> atomData;
-        atomData << atom->GetType();
-        atomData << atom->GetIdx();
+//        atomData << atom->GetType();
+        atomData << atom->index();
         parents.last()->appendChild(new SelectTreeItem(atomData, parents.last()));
       }
       parents.pop_back();
     }
-    */
+*/
     /*
     while (number < lines.count()) {
         int position = 0;
@@ -363,7 +364,7 @@ namespace Avogadro
   int NamedSelectionModel::rowCount(const QModelIndex &parent) const
   {
     Q_UNUSED(parent);
-    
+
     return m_widget->namedSelections().size();
   }
 
@@ -374,13 +375,13 @@ namespace Avogadro
 
     if (role != Qt::DisplayRole)
       return QVariant();
-    
+
     if (index.row() >= m_widget->namedSelections().size())
       return QVariant();
 
     return m_widget->namedSelections().at(index.row());
   }
-  
+
   QVariant NamedSelectionModel::headerData(int /*section*/, Qt::Orientation /*orientation*/, int role) const
   {
     if (role != Qt::DisplayRole)
@@ -388,22 +389,22 @@ namespace Avogadro
 
     return tr("Selections");
   }
- 
+
   Qt::ItemFlags NamedSelectionModel::flags(const QModelIndex &index) const
   {
     return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
   }
 
-  bool NamedSelectionModel::setData(const QModelIndex &index, const QVariant &value, int role) 
+  bool NamedSelectionModel::setData(const QModelIndex &index, const QVariant &value, int role)
   {
     if (!index.isValid())
-      return false; 
-      
+      return false;
+
     if (role != Qt::EditRole)
       return false;
-    
+
     m_widget->renameNamedSelection(index.row(), value.toString());
-    
+
     return true;
   }
 

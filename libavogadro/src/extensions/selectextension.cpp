@@ -23,7 +23,11 @@
 
 #include "selectextension.h"
 #include "namedselectionmodel.h"
-#include <avogadro/primitive.h>
+
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/residue.h>
 #include <avogadro/color.h>
 
 #include <openbabel/mol.h>
@@ -69,22 +73,22 @@ namespace Avogadro {
     action->setText(tr("Select SMARTS..."));
     action->setData(SMARTSIndex);
     m_actions.append(action);
-    
+
     action = new QAction(this);
     action->setText(tr("Select by Element..."));
     action->setData(ElementIndex);
     m_actions.append(action);
-    
+
     action = new QAction(this);
     action->setText(tr("Select by Residue..."));
     action->setData(ResidueIndex);
     m_actions.append(action);
-    
+
     action = new QAction(this);
     action->setText(tr("Select Solvent"));
     action->setData(SolventIndex);
     m_actions.append(action);
-  
+
     action = new QAction( this );
     action->setSeparator(true);
     action->setData(SeparatorIndex);
@@ -94,7 +98,7 @@ namespace Avogadro {
     action->setText(tr("Add Named Selection..."));
     action->setData(AddNamedIndex);
     m_actions.append(action);
- 
+
     action = new QAction(this);
     action->setText(tr("Named Selections..."));
     action->setData(NamedIndex);
@@ -178,7 +182,8 @@ namespace Avogadro {
     if (ok && !pattern.isEmpty()) {
       OBSmartsPattern smarts;
       smarts.Init(pattern.toStdString());
-      smarts.Match(*m_molecule);
+      OpenBabel::OBMol obmol = m_molecule->OBMol();
+      smarts.Match(obmol);
 
       // if we have matches, select them
       if(smarts.NumMatches() != 0) {
@@ -187,10 +192,11 @@ namespace Avogadro {
         vector< vector <int> > mapList = smarts.GetUMapList();
         vector< vector <int> >::iterator i; // a set of matching atoms
         vector<int>::iterator j; // atom ids in each match
-        for (i = mapList.begin(); i != mapList.end(); ++i)
+        for (i = mapList.begin(); i != mapList.end(); ++i) {
           for (j = i->begin(); j != i->end(); ++j) {
-            matchedAtoms.append(static_cast<Atom*>(m_molecule->GetAtom(*j)));
+            matchedAtoms.append(m_molecule->atom(obmol.GetAtom(*j)->GetIdx()-1));
           }
+        }
 
         widget->clearSelected();
         widget->setSelected(matchedAtoms, true);
@@ -199,7 +205,7 @@ namespace Avogadro {
     }
     return;
   }
-  
+
   // Helper function -- handle element selections
   // Connected to signal from PeriodicTableView
   void SelectExtension::selectElement(int element)
@@ -207,10 +213,12 @@ namespace Avogadro {
     if(m_widget)
     {
       QList<Primitive *> selectedAtoms;
-      
-      FOR_ATOMS_OF_MOL (atom, m_molecule) {
-        if (atom->GetAtomicNum() == static_cast<unsigned int>(element))
-          selectedAtoms.append(static_cast<Atom*>(m_molecule->GetAtom(atom->GetIdx())));
+
+      QList<Atom *> atoms = m_molecule->atoms();
+      foreach (Atom *atom, atoms) {
+        if (atom->atomicNumber() == element) {
+          selectedAtoms.append(atom);
+        }
       }
 
       m_widget->clearSelected();
@@ -219,7 +227,7 @@ namespace Avogadro {
     }
   }
 
- 
+
   // Helper function -- handle residue selections
   // Called by performAction()
   void SelectExtension::selectResidue(GLWidget *widget)
@@ -228,12 +236,20 @@ namespace Avogadro {
     bool ok;
     QString resname = QInputDialog::getText(qobject_cast<QWidget*>(parent()),
         tr("Select by residue"), tr("Residue name"), QLineEdit::Normal, "", &ok);
-    
-    FOR_ATOMS_OF_MOL (atom, m_molecule) {
-      if (atom->GetResidue()->GetName() == resname.toStdString())
-        selectedAtoms.append(static_cast<Atom*>(m_molecule->GetAtom(atom->GetIdx())));
-    }
 
+    QList<Residue*> residues = m_molecule->residues();
+    foreach (Residue *res, residues) {
+      if (res->name() == resname) {
+        QList<unsigned long int> atoms = res->atoms();
+        foreach(unsigned long int atom, atoms) {
+          selectedAtoms.push_back(m_molecule->atomById(atom));
+        }
+        QList<unsigned long int> bonds = res->bonds();
+        foreach(unsigned long int bond, bonds) {
+          selectedAtoms.push_back(m_molecule->bondById(bond));
+        }
+      }
+    }
     widget->clearSelected();
     widget->setSelected(selectedAtoms, true);
     widget->update();
@@ -244,12 +260,20 @@ namespace Avogadro {
   void SelectExtension::selectSolvent(GLWidget *widget)
   {
     QList<Primitive *> selectedAtoms;
-    
-    FOR_ATOMS_OF_MOL (atom, m_molecule) {
-      if (atom->GetResidue()->GetName() == "HOH")
-        selectedAtoms.append(static_cast<Atom*>(m_molecule->GetAtom(atom->GetIdx())));
-    }
 
+    QList<Residue*> residues = m_molecule->residues();
+    foreach (Residue *res, residues) {
+      if (res->name() == "HOH") {
+        QList<unsigned long int> atoms = res->atoms();
+        foreach(unsigned long int atom, atoms) {
+          selectedAtoms.push_back(m_molecule->atomById(atom));
+        }
+        QList<unsigned long int> bonds = res->bonds();
+        foreach(unsigned long int bond, bonds) {
+          selectedAtoms.push_back(m_molecule->bondById(bond));
+        }
+      }
+    }
     widget->clearSelected();
     widget->setSelected(selectedAtoms, true);
     widget->update();
@@ -274,7 +298,7 @@ namespace Avogadro {
     if (name.isEmpty()) {
       QMessageBox::warning( widget, tr( "Avogadro" ),
         tr( "Name cannot be empty." ));
-      return; 
+      return;
     }
 
     if (!widget->addNamedSelection(name, primitives)) {
@@ -297,31 +321,32 @@ namespace Avogadro {
 
   ///////////////////////////////////
   // tree view
-  ///////////////////////////////////  
+  ///////////////////////////////////
 
   SelectTreeView::SelectTreeView(GLWidget *widget, QWidget *parent) : QTreeView(parent), m_widget(widget)
   {
     QString title = tr("Selections");
     this->setWindowTitle(title);
   }
-  
-  void SelectTreeView::selectionChanged(const QItemSelection &selected, const QItemSelection &)
+
+  void SelectTreeView::selectionChanged(const QItemSelection &selected,
+                                        const QItemSelection &)
   {
     QModelIndex index;
     QModelIndexList items = selected.indexes();
-    
+
     m_widget->clearSelected();
     foreach (index, items) {
       if (!index.isValid())
         return;
-    
+
       SelectTreeItem *item = static_cast<SelectTreeItem*>(index.internalPointer());
 
       if (!item)
-	return;
+        return;
 
       PrimitiveList primitives;
-      if (item->type() == SelectTreeItemType::SelectionType) { 
+      if (item->type() == SelectTreeItemType::SelectionType) {
         if (index.row() >= m_widget->namedSelections().size())
           return;
 
@@ -331,40 +356,44 @@ namespace Avogadro {
           QMessageBox::warning( m_widget, tr( "Avogadro" ),
           tr( "The selection items have been deleted." ));
         }
-      } else if (item->type() == SelectTreeItemType::AtomType) {
-	unsigned int idx = item->data(1).toUInt(); // index is stored in column 1
-        if (idx > m_widget->molecule()->NumAtoms())
+      }
+      else if (item->type() == SelectTreeItemType::AtomType) {
+        unsigned int idx = item->data(1).toUInt(); // index is stored in column 1
+        if (idx > m_widget->molecule()->numAtoms())
           return;
 
-        Atom *atom = static_cast<Atom *>( m_widget->molecule()->GetAtom(idx) );
-	primitives.append(atom);
-      } else if (item->type() == SelectTreeItemType::ResidueType) {
-	unsigned int idx = item->data(1).toUInt(); // index is stored in column 1
-        if (idx > m_widget->molecule()->NumResidues())
+        Atom *atom = m_widget->molecule()->atom(idx);
+        primitives.append(atom);
+      }
+      /// FIXME Add back in the residue and chain types
+      /*
+      else if (item->type() == SelectTreeItemType::ResidueType) {
+        unsigned int idx = item->data(1).toUInt(); // index is stored in column 1
+        if (idx > m_widget->molecule()->numResidues())
           return;
-    
-	OBResidue *res = m_widget->molecule()->GetResidue(idx);
-    	FOR_ATOMS_OF_RESIDUE (atom, res) {
+
+        OBResidue *res = m_widget->molecule()->residue(idx);
+        FOR_ATOMS_OF_RESIDUE (atom, res) {
           primitives.append(static_cast<Atom*>( &*atom ));
         }
-      } else if (item->type() == SelectTreeItemType::ChainType) {
-	char chain = item->data(1).toChar().toAscii(); // index is stored in column 1
-    
-    	FOR_RESIDUES_OF_MOL (res, m_widget->molecule()) {
-	  if (res->GetChain() == chain) {
+      }
+      else if (item->type() == SelectTreeItemType::ChainType) {
+        char chain = item->data(1).toChar().toAscii(); // index is stored in column 1
+
+        FOR_RESIDUES_OF_MOL (res, m_widget->molecule()) {
+          if (res->GetChain() == chain) {
             FOR_ATOMS_OF_RESIDUE (atom, &*res) {
               primitives.append(static_cast<Atom*>( &*atom ));
-	    }
+            }
           }
-	}
- 
+        }
       }
-
+      */
 
       m_widget->setSelected(primitives, true);
-    }  
+    }
   }
-  
+
   void SelectTreeView::hideEvent(QHideEvent *)
   {
     QAbstractItemModel *m_model = model();
