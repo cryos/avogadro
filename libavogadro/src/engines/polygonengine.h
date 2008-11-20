@@ -28,8 +28,9 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
-
 namespace Avogadro {
+
+  class Atom;
 
   //! Polygon Engine class.
   class PolygonEngine : public Engine

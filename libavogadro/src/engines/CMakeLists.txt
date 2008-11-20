@@ -88,11 +88,11 @@ target_link_libraries(ringengine ${LINK_LIBS})
 install(TARGETS ringengine DESTINATION ${DESTINATION_DIR})
 
 # Polygon engine
-#set(polygonengine_SRCS polygonengine.cpp)
-#qt4_automoc(${polygonengine_SRCS})
-#add_library(polygonengine MODULE ${polygonengine_SRCS} )
-#target_link_libraries(polygonengine ${LINK_LIBS})
-#install(TARGETS polygonengine DESTINATION ${DESTINATION_DIR})
+set(polygonengine_SRCS polygonengine.cpp)
+qt4_automoc(${polygonengine_SRCS})
+add_library(polygonengine MODULE ${polygonengine_SRCS} )
+target_link_libraries(polygonengine ${LINK_LIBS})
+install(TARGETS polygonengine DESTINATION ${DESTINATION_DIR})
 
 # Surface engine - molecular surfaces and 3D functions
 #set(surfaceengine_SRCS iso.cpp surfaceengine.cpp)

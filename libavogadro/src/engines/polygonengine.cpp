@@ -27,12 +27,13 @@
 #include <config.h>
 #include <avogadro/color.h>
 #include <avogadro/painter.h>
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
 
 #include <QGLWidget>
+#include <QDebug>
 
-using namespace std;
-using namespace OpenBabel;
-using namespace Eigen;
+using Eigen::Vector3d;
 
 namespace Avogadro{
 
@@ -72,7 +73,7 @@ namespace Avogadro{
   bool PolygonEngine::renderPolygon(PainterDevice *pd, Atom *a)
   {
     // Check if the atom is of the right type and has enough neighbours
-    switch (a->GetAtomicNum()) {
+    switch (a->atomicNumber()) {
       case 1:
       case 6:
       case 7:
@@ -82,7 +83,7 @@ namespace Avogadro{
         break;
       default:
         // we're fine, render this as a possible polygon
-        if (a->GetValence() < 4)
+        if (a->valence() < 4)
           return true;
     }
 
@@ -93,8 +94,10 @@ namespace Avogadro{
     pd->painter()->setColor(map);
 
     QVector<Vector3d> atoms;
-    FOR_NBORS_OF_ATOM(neighbor, a)
-      atoms.push_back(static_cast<Atom *>(&*neighbor)->pos());
+    QList<unsigned long int> neighbors = a->neighbors();
+    foreach (unsigned long int neighbor, neighbors) {
+      atoms.push_back(pd->molecule()->atomById(neighbor)->pos());
+    }
 
     // Disable face culling for ring structures.
 //    glDisable(GL_CULL_FACE);

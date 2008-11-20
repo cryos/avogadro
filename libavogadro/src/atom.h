@@ -108,10 +108,9 @@ namespace Avogadro {
       QList<unsigned long int> neighbors() { return m_neighbors; }
 
       /**
-       * Needs implelementing.
+       * The valence of the atom. FIXME - don't think this will cut it...
        */
-       ///FIXME Implement me!
-      double valence() { return 0.0; }
+      double valence() { return static_cast<double>(m_neighbors.size()); }
 
       /**
        * @return True if the atom is a hydrogen.
