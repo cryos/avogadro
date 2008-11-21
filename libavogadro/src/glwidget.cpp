@@ -980,8 +980,7 @@ namespace Avogadro {
       d->paintCondition.wakeAll();
 #else
       makeCurrent();
-      if(!d->initialized)
-      {
+      if(!d->initialized) {
         d->initialized = true;
         initializeGL();
       }

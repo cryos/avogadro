@@ -42,7 +42,9 @@
 //#endif
 
 #include <avogadro/pluginmanager.h>
-#include <avogadro/projecttreeeditor.h>
+// Does not work for me with out of source builds at least - ui_projecttreeeditor.h
+// can't be found and avogadro should be able to build without libavogadro
+// #include <avogadro/projecttreeeditor.h>
 
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
@@ -170,7 +172,7 @@ namespace Avogadro
       QTimer *centerTimer;
 
       PluginManager pluginManager;
-      ProjectTreeEditor projectTreeEditor;
+      // ProjectTreeEditor projectTreeEditor;
 
       QMap<Engine*, QWidget*> engineSettingsWindows;
   };
@@ -404,7 +406,6 @@ namespace Avogadro
 
   void MainWindow::setRenderAxes(bool render)
   {
-    qDebug() << "setRenderAxes called: " << render;
     d->glWidget->setRenderAxes(render);
   }
 
@@ -1653,12 +1654,12 @@ namespace Avogadro
         this, SLOT( showSettingsDialog() ) );
 
     connect( ui.pluginManagerAction, SIGNAL( triggered() ), &d->pluginManager, SLOT( showDialog() ) );
+
+//    connect( ui.projectTreeEditorAction, SIGNAL( triggered() ), &d->projectTreeEditor, SLOT( show() ) );
     
-    connect( ui.projectTreeEditorAction, SIGNAL( triggered() ), &d->projectTreeEditor, SLOT( show() ) );
-    
-    connect( &d->projectTreeEditor, SIGNAL( structureChanged() ), this, SLOT( setupProjectTree() ) );
-    connect( ui.projectTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), 
-        this, SLOT(projectTreeItemClicked(QTreeWidgetItem*,int)));
+//    connect( &d->projectTreeEditor, SIGNAL( structureChanged() ), this, SLOT( setupProjectTree() ) );
+//    connect( ui.projectTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), 
+//        this, SLOT(projectTreeItemClicked(QTreeWidgetItem*,int)));
 
     connect( ui.actionTutorials, SIGNAL( triggered() ), this, SLOT( openTutorialURL() ));
     connect( ui.actionFAQ, SIGNAL( triggered() ), this, SLOT( openFAQURL() ) );
@@ -1695,7 +1696,7 @@ namespace Avogadro
       
   void MainWindow::setupProjectTree()
   {
-    ui.projectTreeWidget->clear();
+/*    ui.projectTreeWidget->clear();
     
     QList<QTreeWidgetItem*> parents;
     QList<int> indentations;
@@ -1738,11 +1739,11 @@ namespace Avogadro
     }
 
     settings.endArray();
-    settings.endGroup();  
+    settings.endGroup();  */
   }
  
   void MainWindow::projectTreeItemClicked(QTreeWidgetItem *item, int column)
-  {
+  { /*
     qDebug() << "projectTreeItemClicked";
 
     item->setSelected(true);
@@ -1751,7 +1752,7 @@ namespace Avogadro
     if (projectItem) {
       d->glWidget->clearSelected();
       d->glWidget->setSelected(projectItem->primitives(), true);
-    }
+    } */
   }
 
   Molecule *MainWindow::molecule() const

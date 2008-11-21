@@ -22,7 +22,7 @@ link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
 FILE(GLOB libavogadro_SRCS "*.cpp")
 FILE(GLOB libavogadro_HDRS "*.h")
-FILE(GLOB libavogadro_UIS "*.ui")
+
 qt4_wrap_ui(libavogadro_UIS plugindialog.ui projecttreeeditor.ui)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
 
