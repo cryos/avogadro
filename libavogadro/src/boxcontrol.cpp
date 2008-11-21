@@ -48,7 +48,7 @@ namespace Avogadro {
   {
     m_min.setZero();
     m_max.setZero();
-        
+
     // Create the eight points of the box and connect the signals
     m_points.resize(8);
     for (int i = 0; i < 8; ++i) {
@@ -71,7 +71,7 @@ namespace Avogadro {
   
   BoxControl::~BoxControl() 
   {
-    removePrimitives();
+//    removePrimitives();
     foreach (Point *point, m_points) {
       delete point;
       point = 0;
