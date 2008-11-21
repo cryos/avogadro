@@ -442,7 +442,7 @@ namespace Avogadro {
       
       // Append a new item to the current parent's list of children.
       newItem = new QTreeWidgetItem(parents.last());
-      newItem->setText(0, settings.value("name").toString());
+      newItem->setText(0, settings.value("alias").toString());
 
       // create a new ProjectPlugin for this QTreeWidgetItem
       PluginFactory *factory = pluginManager.factory(settings.value("name").toString(), Plugin::ProjectType);
@@ -493,6 +493,8 @@ namespace Avogadro {
 
     //deleteLater();
     hide();
+    
+    emit structureChanged();
   }
 
 }

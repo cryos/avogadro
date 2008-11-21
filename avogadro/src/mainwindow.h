@@ -132,8 +132,8 @@ namespace Avogadro {
       void setAnimationsEnabled(bool animations);
       bool animationsEnabled() const;
 
-      //void projectTreeItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
       void projectTreeItemClicked(QTreeWidgetItem *item, int column);
+      void setupProjectTree();
 
     Q_SIGNALS:
       void moleculeChanged(Molecule *);
@@ -208,9 +208,6 @@ namespace Avogadro {
       void hideMainWindowMac();
       //! Helper function for Mac -- show main window and re-enable menus
       void showMainWindowMac();
-
-      void setupProjectTree();
-
     private Q_SLOTS:
 /*      void initialize();*/
 

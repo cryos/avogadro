@@ -80,6 +80,8 @@ namespace Avogadro {
       void on_settingsButton_clicked();
 
       void accept();
+    signals:
+      void structureChanged();
 
     private:
       void updateEditor();

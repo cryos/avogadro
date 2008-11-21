@@ -1653,7 +1653,10 @@ namespace Avogadro
         this, SLOT( showSettingsDialog() ) );
 
     connect( ui.pluginManagerAction, SIGNAL( triggered() ), &d->pluginManager, SLOT( showDialog() ) );
+    
     connect( ui.projectTreeEditorAction, SIGNAL( triggered() ), &d->projectTreeEditor, SLOT( show() ) );
+    
+    connect( &d->projectTreeEditor, SIGNAL( structureChanged() ), this, SLOT( setupProjectTree() ) );
     connect( ui.projectTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), 
         this, SLOT(projectTreeItemClicked(QTreeWidgetItem*,int)));
 
