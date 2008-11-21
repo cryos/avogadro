@@ -141,12 +141,12 @@ namespace Avogadro
         {
           vit = vl->begin();
           lit = (*vit).begin();
-          while(lit == (*vit).end())
+          while(lit == (*vit).constEnd())
           {
             vit++;
-            if(vit != vl->end())
+            if(vit != vl->constEnd())
             {
-              lit = (*vit).begin();
+              lit = (*vit).constBegin();
             }
             else
             {
@@ -164,18 +164,18 @@ namespace Avogadro
 
         inline const_iterator &operator++()
         {
-          if(vit != vl->end())
+          if(vit != vl->constEnd())
           {
             lit++;
-            while(lit == (*vit).end())
+            while(lit == (*vit).constEnd())
             {
               vit++;
 
-              if(vit == vl->end())
+              if(vit == vl->constEnd())
               {
                 break;
               }
-              lit = (*vit).begin();
+              lit = (*vit).constBegin();
             }
           }
           return *this;
@@ -183,13 +183,13 @@ namespace Avogadro
 
         inline bool operator!=(const const_iterator &o) const
         {
-          return !(vit == vl->end() && o.vit == vl->end()) &&
+          return !(vit == vl->constEnd() && o.vit == vl->constEnd()) &&
               !(vit == o.vit && lit == o.lit);
         }
 
         inline bool operator==(const const_iterator &o) const
         { // equal if both are at the end
-          return (vit == vl->end() && o.vit == vl->end()) ||
+          return (vit == vl->constEnd() && o.vit == vl->constEnd()) ||
             (vit == o.vit && lit == o.lit);
         }
       };
