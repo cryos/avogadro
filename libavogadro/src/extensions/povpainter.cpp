@@ -272,6 +272,7 @@ namespace Avogadro
                  << d->color.green() << ", "
                  << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }"
                  << "}\n\n";
+
   }
 
   void POVPainter::drawColorMesh(const Mesh & mesh, int mode, bool normalWind)
@@ -288,27 +289,33 @@ namespace Avogadro
     }
 
     // Render the triangles of the mesh
-    std::vector<Eigen::Vector3f> t = mesh.vertices();
+    std::vector<Eigen::Vector3f> v = mesh.vertices();
     std::vector<Eigen::Vector3f> n = mesh.normals();
+    std::vector<QColor> c = mesh.colors();
 
     // If there are no triangles then don't bother doing anything
-    if (t.size() == 0) {
+    if (v.size() == 0 || v.size() != c.size()) {
       return;
     }
 
     // Normal or reverse winding?
-    QString vertsStr, ivertsStr, normsStr, inormsStr;
+    QString vertsStr, ivertsStr, normsStr, texturesStr;
     QTextStream verts(&vertsStr);
-    verts << "vertex_vectors{" << t.size() << ",\n";
+    verts << "vertex_vectors{" << v.size() << ",\n";
     QTextStream iverts(&ivertsStr);
-    iverts << "face_indices{" << t.size() / 3 << ",\n";
+    iverts << "face_indices{" << v.size() / 3 << ",\n";
     QTextStream norms(&normsStr);
     norms << "normal_vectors{" << n.size() << ",\n";
+    QTextStream textures(&texturesStr);
+    textures << "texture_list{" << c.size() << ",\n";
     if (normalWind) {
-      for(unsigned int i = 0; i < t.size(); ++i) {
-        verts << "<" << t[i].x() << "," << t[i].y() << "," << t[i].z() << ">";
+      for(unsigned int i = 0; i < v.size(); ++i) {
+        verts << "<" << v[i].x() << "," << v[i].y() << "," << v[i].z() << ">";
         norms << "<" << n[i].x() << "," << n[i].y() << "," << n[i].z() << ">";
-        if (i != t.size()-1) {
+        textures << "texture{pigment{rgbf<" << c[i].redF() << ","
+                 << c[i].greenF() << "," << c[i].blueF() << "," << c[i].alphaF()
+                 << ">}},\n";
+        if (i != v.size()-1) {
           verts << ", ";
           norms << ", ";
         }
@@ -318,9 +325,10 @@ namespace Avogadro
         }
       }
       // Now to write out the indices
-      for (unsigned int i = 0; i < t.size(); i += 3) {
+      for (unsigned int i = 0; i < v.size(); i += 3) {
         iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
-        if (i != t.size()-3) {
+        iverts << "," << i << "," << i+1 << "," << i+2;
+        if (i != v.size()-3) {
           iverts << ", ";
         }
         if (i != 0 && ((i+1)/3)%3 == 0) {
@@ -330,11 +338,14 @@ namespace Avogadro
     }
     /// FIXME - this is a fudge to fix the negative windings right now - FIXME!
     else {
-      for(unsigned int i = t.size(); i > 0; --i) {
+      for(unsigned int i = v.size(); i > 0; --i) {
         Eigen::Vector3f tmp = n[i-1] * -1;
-        verts << "<" << t[i-1].x() << "," << t[i-1].y() << "," << t[i-1].z() << ">";
+        verts << "<" << v[i-1].x() << "," << v[i-1].y() << "," << v[i-1].z() << ">";
         norms << "<" << tmp.x() << "," << tmp.y() << "," << tmp.z() << ">";
-        if (i != t.size()-1) {
+        textures << "texture{pigment{rgbf{" << c[i].redF() << ","
+                 << c[i].greenF() << "," << c[i].blueF() << "," << c[i].alphaF()
+                 << "}}}\n";
+        if (i != v.size()-1) {
           verts << ", ";
           norms << ", ";
         }
@@ -344,9 +355,9 @@ namespace Avogadro
         }
       }
       // Now to write out the indices
-      for (unsigned int i = 0; i < t.size(); i += 3) {
+      for (unsigned int i = 0; i < v.size(); i += 3) {
         iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
-        if (i != t.size()-3) {
+        if (i != v.size()-3) {
           iverts << ", ";
         }
         if (i != 0 && ((i+1)/3)%3 == 0) {
@@ -358,14 +369,13 @@ namespace Avogadro
     verts << "\n}";
     norms << "\n}";
     iverts << "\n}";
+    textures << "\n}";
     // Now to write out the full mesh - could be pretty big...
     *(d->output) << "mesh2 {\n"
                  << vertsStr << "\n"
                  << normsStr << "\n"
+                 << texturesStr << "\n"
                  << ivertsStr << "\n"
-                 << "\tpigment { rgbf <" << d->color.red() << ", "
-                 << d->color.green() << ", "
-                 << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }"
                  << "}\n\n";
   }
 

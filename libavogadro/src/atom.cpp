@@ -37,7 +37,7 @@
   };
 
   Atom::Atom(QObject *parent) : Primitive(AtomType, parent), m_pos(0., 0., 0.),
-    m_atomicNum(0)
+    m_atomicNum(0), m_partialCharge(0.0)
   {
   }
 
