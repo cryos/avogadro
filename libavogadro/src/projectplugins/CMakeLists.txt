@@ -24,10 +24,10 @@ set(LINK_LIBS "avogadro-lib")
 #install(TARGETS selectionitem DESTINATION ${DESTINATION_DIR})
 
 ### smartsitems
-set(smartsitems_SRCS smartsitems.cpp)
-qt4_automoc(${smartsitems_SRCS})
-qt4_wrap_ui(smartsitems_UIS smartsitems.ui)
-add_library(smartsitems MODULE ${smartsitems_SRCS} ${smartsitems_UIS})
-target_link_libraries(smartsitems ${LINK_LIBS})
-install(TARGETS smartsitems DESTINATION ${DESTINATION_DIR})
+#set(smartsitems_SRCS smartsitems.cpp)
+#qt4_automoc(${smartsitems_SRCS})
+#qt4_wrap_ui(smartsitems_UIS smartsitems.ui)
+#add_library(smartsitems MODULE ${smartsitems_SRCS} ${smartsitems_UIS})
+#target_link_libraries(smartsitems ${LINK_LIBS})
+#install(TARGETS smartsitems DESTINATION ${DESTINATION_DIR})
 
