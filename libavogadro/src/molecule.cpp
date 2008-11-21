@@ -658,8 +658,16 @@
       *a = obatom;
     }
     foreach (Bond *bond, d->bondList) {
-      obmol.AddBond(atomById(bond->beginAtomId())->index() + 1,
-                    atomById(bond->endAtomId())->index() + 1, bond->order());
+      Atom *beginAtom = atomById(bond->beginAtomId());
+      if (!beginAtom)
+        continue;
+
+      Atom *endAtom = atomById(bond->endAtomId());
+      if (!endAtom)
+        continue;
+      
+      obmol.AddBond(beginAtom->index() + 1, 
+                      endAtom->index() + 1, bond->order());
     }
     obmol.EndModify();
 

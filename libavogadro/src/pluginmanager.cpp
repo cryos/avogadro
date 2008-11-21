@@ -387,7 +387,7 @@ namespace Avogadro {
 
     if(getenv("AVOGADRO_COLORS") != NULL)
     {
-      pluginPaths << QString(getenv("AVOGADRO_TOOLS")).split(':');
+      pluginPaths << QString(getenv("AVOGADRO_COLORS")).split(':');
     }
     else
     {
@@ -399,6 +399,22 @@ namespace Avogadro {
         pluginPaths << QCoreApplication::applicationDirPath() + "/colors";
       #endif
     }
+
+    if(getenv("AVOGADRO_PROJECTS") != NULL)
+    {
+      pluginPaths << QString(getenv("AVOGADRO_PROJECTS")).split(':');
+    }
+    else
+    {
+      QString prefixPath = QString(INSTALL_PREFIX) + '/'
+        + QString(INSTALL_LIBDIR) + "/avogadro/projectplugins";
+      pluginPaths << prefixPath;
+
+      #ifdef WIN32
+        pluginPaths << QCoreApplication::applicationDirPath() + "/projectplugins";
+      #endif
+    }
+
 
     ////////////////////////////// 
     // load the plugins 
@@ -447,7 +463,7 @@ namespace Avogadro {
     factoriesLoaded = true;
   }
 
-  QList<PluginFactory *> PluginManager::factories( int type )
+  QList<PluginFactory *> PluginManager::factories( Plugin::Type type )
   {
     if (type < PluginManagerPrivate::m_enabledFactories().size() )
     {

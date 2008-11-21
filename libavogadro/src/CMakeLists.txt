@@ -23,7 +23,7 @@ link_directories(${OPENBABEL2_LIBRARY_DIRS})
 FILE(GLOB libavogadro_SRCS "*.cpp")
 FILE(GLOB libavogadro_HDRS "*.h")
 FILE(GLOB libavogadro_UIS "*.ui")
-qt4_wrap_ui(libavogadro_UIS plugindialog.ui)
+qt4_wrap_ui(libavogadro_UIS plugindialog.ui projecttreeeditor.ui)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
 
 # Statically link the core engines and tools so that users have a working
@@ -90,3 +90,4 @@ add_subdirectory(engines)
 add_subdirectory(tools)
 add_subdirectory(extensions)
 add_subdirectory(colors)
+add_subdirectory(projectplugins)

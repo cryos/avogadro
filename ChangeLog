@@ -1,3 +1,29 @@
+2008-11-21  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
+
+	* libavogadro/src/projectplugin.*: A new plugin type to create a user
+	configurable tree view with various items (User Selections, Chains/Residues, 
+	smarts, ...)
+
+	* libavogadro/src/pluginmanager.*: load the new ProjectPlugins.
+
+	* libavogadro/src/molecule.cpp: Add a check in ::OBMol() to make sure the 
+	both bond atoms exist before adding the bond. This was causing a problem 
+	when functions, invoked by the Molecule::primitive*() signals, called it.
+
+	* libavogadro/src/projectplugins/smartsitems.*: A ProjectPlugin for smarts patterns. 
+	This is the only plugin working at the moment, still some performance issues too.
+
+	* libavogadro/src/projectplugins/selectionitem.*: still need to update this, not build right now...
+
+	* libavogadro/src/projecttreeeditor.*: The tree editor. Still need to add the arrow images...
+
+	* libavogadro/src/plugin.h: Add the new type to the Type enum.
+
+	* avogadro/src/mainwindow.*: Use the Project Tree View system. The old Project dock is replaced,
+	the editor is available through Settings > Project Tree Editor.
+
+	The code still has some rough edges, but it works well enough to illustrate what it could become....
+
 2008-09-17  Tim Vandermeersch  <tim.vandermeersch@gmail.com>
 
 	* libavogadro/src/colors/CMakeLists.txt: remove elementcolor, this is

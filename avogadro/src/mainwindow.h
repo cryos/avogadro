@@ -41,6 +41,8 @@ namespace Avogadro {
   class Tool;
   class Primitive;
   class GLWidget;
+  class Molecule;
+  class Engine;
 
   class MainWindowPrivate;
   class MainWindow : public QMainWindow
@@ -130,6 +132,9 @@ namespace Avogadro {
       void setAnimationsEnabled(bool animations);
       bool animationsEnabled() const;
 
+      //void projectTreeItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
+      void projectTreeItemClicked(QTreeWidgetItem *item, int column);
+
     Q_SIGNALS:
       void moleculeChanged(Molecule *);
       void enableEngineSettingsButton(bool);
@@ -203,6 +208,8 @@ namespace Avogadro {
       void hideMainWindowMac();
       //! Helper function for Mac -- show main window and re-enable menus
       void showMainWindowMac();
+
+      void setupProjectTree();
 
     private Q_SLOTS:
 /*      void initialize();*/

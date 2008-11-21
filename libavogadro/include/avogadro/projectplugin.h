@@ -1,0 +1,1 @@
+#include "../../src/projectplugin.h"

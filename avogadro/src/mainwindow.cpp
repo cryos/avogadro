@@ -42,6 +42,8 @@
 //#endif
 
 #include <avogadro/pluginmanager.h>
+#include <avogadro/projecttreeeditor.h>
+
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
 
@@ -168,6 +170,7 @@ namespace Avogadro
       QTimer *centerTimer;
 
       PluginManager pluginManager;
+      ProjectTreeEditor projectTreeEditor;
 
       QMap<Engine*, QWidget*> engineSettingsWindows;
   };
@@ -1650,6 +1653,9 @@ namespace Avogadro
         this, SLOT( showSettingsDialog() ) );
 
     connect( ui.pluginManagerAction, SIGNAL( triggered() ), &d->pluginManager, SLOT( showDialog() ) );
+    connect( ui.projectTreeEditorAction, SIGNAL( triggered() ), &d->projectTreeEditor, SLOT( show() ) );
+    connect( ui.projectTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), 
+        this, SLOT(projectTreeItemClicked(QTreeWidgetItem*,int)));
 
     connect( ui.actionTutorials, SIGNAL( triggered() ), this, SLOT( openTutorialURL() ));
     connect( ui.actionFAQ, SIGNAL( triggered() ), this, SLOT( openFAQURL() ) );
@@ -1679,9 +1685,70 @@ namespace Avogadro
 
     emit moleculeChanged(molecule);
 
-    ui.projectTree->setModel( new PrimitiveItemModel( d->molecule, this ) );
+    //ui.projectTree->setModel( new PrimitiveItemModel( d->molecule, this ) );
 
     setWindowModified( false );
+  }
+      
+  void MainWindow::setupProjectTree()
+  {
+    ui.projectTreeWidget->clear();
+    
+    QList<QTreeWidgetItem*> parents;
+    QList<int> indentations;
+    parents << ui.projectTreeWidget->invisibleRootItem();
+    indentations << 0;
+    
+    QSettings settings;
+    settings.beginGroup("projectTree");
+    int size = settings.beginReadArray("items");
+    
+    for (int i = 0; i < size; ++i) {
+      settings.setArrayIndex( i );
+      int position = settings.value("indent").toInt();
+
+      if (position > indentations.last()) {
+        // The last child of the current parent is now the new parent
+
+        // unless the current parent has no children.
+        if (parents.last()->childCount() > 0) {
+          parents << parents.last()->child(parents.last()->childCount()-1);
+            indentations << position;
+        }
+      } else {
+        while (position < indentations.last() && parents.count() > 0) {
+          parents.pop_back();
+          indentations.pop_back();
+        }
+      }
+      
+      // create a new ProjectPlugin for this QTreeWidgetItem
+      PluginFactory *factory = pluginManager.factory(settings.value("name").toString(), Plugin::ProjectType);
+      if (factory) 
+      {
+        ProjectPlugin *plugin = (ProjectPlugin*) factory->createInstance();
+        plugin->readSettings(settings);
+        // Append the items to the current parent's list of children.
+        plugin->setupModelData(d->glWidget, parents.last());
+      }
+
+    }
+
+    settings.endArray();
+    settings.endGroup();  
+  }
+ 
+  void MainWindow::projectTreeItemClicked(QTreeWidgetItem *item, int column)
+  {
+    qDebug() << "projectTreeItemClicked";
+
+    item->setSelected(true);
+    // select the new primitives
+    ProjectItem *projectItem = dynamic_cast<ProjectItem*>(item);
+    if (projectItem) {
+      d->glWidget->clearSelected();
+      d->glWidget->setSelected(projectItem->primitives(), true);
+    }
   }
 
   Molecule *MainWindow::molecule() const
@@ -1815,6 +1882,8 @@ namespace Avogadro
       layout->setSpacing( 6 );
       GLWidget *gl = newGLWidget();
       layout->addWidget(gl);
+      
+      setupProjectTree();
 
       QString tabName = tr("View %1").arg(QString::number(i+1));
       d->centralTab->addTab(widget, tabName);

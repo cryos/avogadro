@@ -59,6 +59,7 @@ namespace Avogadro {
         ExtensionType,
         ColorType,
         GradientType,
+        ProjectType,
         OtherType,
         TypeCount // this needs to be last always
       };

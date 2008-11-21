@@ -129,15 +129,27 @@ namespace Avogadro {
     static void loadFactories();
     
     /**
-     * Get all the PluginItems for a given type
+     * Get all the PluginFactory obacjects for a given type.
      */
-    static QList<PluginFactory *> factories( int type );
+    static QList<PluginFactory *> factories( Plugin::Type type );
 
+    /**
+     * Get the PluginFactory of type @p type with plugin name @p name.
+     */
     static PluginFactory *factory(const QString &name, Plugin::Type type);
     static QList<PluginItem *> pluginItems(Plugin::Type);
 
+    /**
+     * Get a list of all extension (new instances)
+     */
     QList<Extension *> extensions(QObject *parent=0) const;
+    /**
+     * Get a list of all tools (new instances)
+     */ 
     QList<Tool *> tools(QObject *parent=0) const;
+    /**
+     * Get a list of all colors (new instances)
+     */
     QList<Color *> colors(QObject *parent=0) const;
  
     /**
