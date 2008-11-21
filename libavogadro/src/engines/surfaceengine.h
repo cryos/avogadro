@@ -140,7 +140,7 @@ namespace Avogadro {
 
       inline double radius(const Atom *a) const;
       //void VDWSurface(Molecule *mol);
-      Color espColor(Molecule *mol, Eigen::Vector3f &pos);
+      QColor espColor(Molecule *mol, const Eigen::Vector3f &pos);
 
       // clipping stuff
       bool m_clip;

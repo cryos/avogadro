@@ -118,11 +118,21 @@ namespace Avogadro {
       bool isHydrogen() const { return m_atomicNum == 1; }
 
       /**
+       * Set the partial charge of the atom.
+       * @note This is not calculated at the moment!
+       */
+      inline void setPartialCharge(double charge)
+      {
+        m_partialCharge = charge;
+      }
+
+      /**
        * @return Partial charge of the atom.
        */
-      /// FIXME New function that needs implenenting
       inline double partialCharge() const
-      { return 0.0; }
+      {
+        return m_partialCharge;
+      }
 
       /// Our OpenBabel conversion functions
       /**
@@ -142,6 +152,7 @@ namespace Avogadro {
       Eigen::Vector3d m_pos;
       int m_atomicNum;
       QList<unsigned long int> m_bonds, m_neighbors;
+      double m_partialCharge;
       Q_DECLARE_PRIVATE(Atom)
   };
 

@@ -79,6 +79,7 @@
     // Copy all needed OBAtom data to our atom
     m_pos = Eigen::Vector3d(obatom->x(), obatom->y(), obatom->z());
     m_atomicNum = obatom->GetAtomicNum();
+    m_partialCharge = obatom->GetPartialCharge();
     update();
     return true;
   }

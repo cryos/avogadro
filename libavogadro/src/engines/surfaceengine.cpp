@@ -30,6 +30,7 @@
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
 #include <avogadro/cube.h>
+#include <avogadro/mesh.h>
 #include <avogadro/molecule.h>
 
 #include <avogadro/boxcontrol.h>
@@ -106,7 +107,7 @@ namespace Avogadro {
   //  a = 20 * energy
   //  b = 20 * energy
   //
-  Color SurfaceEngine::espColor(Molecule *, Vector3f &pos)
+  QColor SurfaceEngine::espColor(Molecule *, const Vector3f &pos)
   {
     GLfloat red, green, blue;
     double energy = 0.0;
@@ -123,27 +124,33 @@ namespace Avogadro {
     }
 
     // Chemistry convention: red = negative, blue = positive
+    QColor color;
 
     if (energy < 0.0) {
       red = -20.0*energy;
       if (red >= 1.0) {
-        return Color(1.0, 0.0, 0.0, m_alpha);
+        color.setRgbF(1.0, 0.0, 0.0, m_alpha);
+        return color;
       }
 
       green = 1.0 - red;
-      return Color(red, green, 0.0, m_alpha);
+      color.setRgbF(red, green, 0.0, m_alpha);
+      return color;
     }
 
     if (energy > 0.0) {
       blue = 20.0*energy;
       if (blue >= 1.0) {
-        return Color(0.0, 0.0, 1.0, m_alpha);
+        color.setRgbF(0.0, 0.0, 1.0, m_alpha);
+        return color;
       }
       green = 1.0 - blue;
-      return Color(0.0, green, blue, m_alpha);
+      color.setRgbF(0.0, green, blue, m_alpha);
+      return color;
     }
 
-    return Color(0.0, 1.0, 0.0, m_alpha);
+    color.setRgbF(0.0, 1.0, 0.0, m_alpha);
+    return color;
   }
 
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
@@ -415,71 +422,30 @@ namespace Avogadro {
       return true;
     }
 
-    pd->painter()->setColor(1.0, 0.0, 0.0);
-    m_color.applyAsMaterials();
-
-    switch (m_renderMode) {
-      case 0:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        break;
-      case 1:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        break;
-      case 2:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-        break;
-    }
+    pd->painter()->setColor(&m_color);
 
     doWork(pd, mol);
-
-    if (m_renderMode)
-      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     return true;
   }
 
   void SurfaceEngine::doWork(PainterDevice *pd, Molecule *mol)
   {
-    glBegin(GL_TRIANGLES);
     if (m_colorMode == 1) { // ESP
-      Color color;
-      for(int i=0; i < m_isoGen->numTriangles(); ++i)
-      {
-        triangle t = m_isoGen->getTriangle(i);
-        triangle n = m_isoGen->getNormal(i);
-
-        color = espColor(mol, t.p0);
-        color.applyAsMaterials();
-        glNormal3fv(n.p0.data());
-        glVertex3fv(t.p0.data());
-
-        color = espColor(mol, t.p1);
-        color.applyAsMaterials();
-        glNormal3fv(n.p1.data());
-        glVertex3fv(t.p1.data());
-
-        color = espColor(mol, t.p2);
-        color.applyAsMaterials();
-        glNormal3fv(n.p2.data());
-        glVertex3fv(t.p2.data());
+      if (m_isoGen->mesh().colors().size() == 0) {
+        // Generate the colours for the isosurface
+        std::vector<QColor> colors;
+        for(unsigned int i=0; i < m_isoGen->mesh().vertices().size(); ++i) {
+          const Vector3f *v = m_isoGen->mesh().vertex(i);
+          colors.push_back(espColor(mol, *v));
+        }
+        m_isoGen->mesh().setColors(colors);
       }
+      pd->painter()->drawColorMesh(m_isoGen->mesh(), m_renderMode);
     }
     else { // RGB
-      for(int i=0; i < m_isoGen->numTriangles(); ++i) {
-        triangle t = m_isoGen->getTriangle(i);
-        triangle n = m_isoGen->getNormal(i);
-
-        glNormal3fv(n.p0.data());
-        glVertex3fv(t.p0.data());
-
-        glNormal3fv(n.p1.data());
-        glVertex3fv(t.p1.data());
-
-        glNormal3fv(n.p2.data());
-        glVertex3fv(t.p2.data());
-      }
+      pd->painter()->drawMesh(m_isoGen->mesh(), m_renderMode);
     }
-    glEnd();
 
     if (m_drawBox)
       m_boxControl->addPrimitives();

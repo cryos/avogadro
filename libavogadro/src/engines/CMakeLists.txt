@@ -95,12 +95,12 @@ target_link_libraries(polygonengine ${LINK_LIBS})
 install(TARGETS polygonengine DESTINATION ${DESTINATION_DIR})
 
 # Surface engine - molecular surfaces and 3D functions
-#set(surfaceengine_SRCS iso.cpp surfaceengine.cpp)
-#qt4_wrap_ui(surfaceengine_UIS surfacesettingswidget.ui)
-#qt4_automoc(${surfaceengine_SRCS})
-#add_library(surfaceengine MODULE ${surfaceengine_SRCS} ${surfaceengine_UIS})
-#target_link_libraries(surfaceengine ${LINK_LIBS})
-#install(TARGETS surfaceengine DESTINATION ${DESTINATION_DIR})
+set(surfaceengine_SRCS iso.cpp surfaceengine.cpp)
+qt4_wrap_ui(surfaceengine_UIS surfacesettingswidget.ui)
+qt4_automoc(${surfaceengine_SRCS})
+add_library(surfaceengine MODULE ${surfaceengine_SRCS} ${surfaceengine_UIS})
+target_link_libraries(surfaceengine ${LINK_LIBS})
+install(TARGETS surfaceengine DESTINATION ${DESTINATION_DIR})
 
 # Orbital engine - molecular orbitals
 set(orbitalengine_SRCS iso.cpp orbitalengine.cpp)

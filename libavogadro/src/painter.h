@@ -3,7 +3,7 @@
 
   Copyright (C) 2007 Benoit Jacob
   Copyright (C) 2007 Donald Ephraim Curtis
-  Copyright (C) 2007 Marcus D. Hanwell
+  Copyright (C) 2007-2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -274,9 +274,21 @@ namespace Avogadro
                                    const Eigen::Vector3d & point4,
                                    double lineWidth) = 0;
     /**
-     * Draws the given mesh.
+     * Draws a continuous mesh of triangles.
+     * @param mesh the mesh to be drawn.
+     * @param mode the mode to use. 0 = filled, 1 = lines and 2 = points.
+     * @param normalWind the winding and normal direction - false flips it.
      */
     virtual void drawMesh(const Mesh & mesh, int mode = 0,
+                          bool normalWind = true) = 0;
+
+    /**
+     * Draws a continuous mesh of triangles and respects the colors stored.
+     * @param mesh the mesh to be drawn.
+     * @param mode the mode to use. 0 = filled, 1 = lines and 2 = points.
+     * @param normalWind the winding and normal direction - false flips it.
+     */
+    virtual void drawColorMesh(const Mesh & mesh, int mode = 0,
                           bool normalWind = true) = 0;
 
     /**

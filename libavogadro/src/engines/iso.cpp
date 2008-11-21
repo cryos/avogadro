@@ -780,7 +780,7 @@ namespace Avogadro
       vertexTmp[2] = asEdgeVertex[iEdgeFlags];
       normalTmp[2] = asEdgeNorm[iEdgeFlags];
 
-      m_mesh.addTriangles(vertexTmp);
+      m_mesh.addVertices(vertexTmp);
       m_mesh.addNormals(normalTmp);
    }
   } // vMarchCube1()
@@ -906,7 +906,7 @@ namespace Avogadro
       vertexTmp[2] = asEdgeVertex[iEdgeFlags];
       normalTmp[2] = asEdgeNorm[iEdgeFlags];
 
-      m_mesh.addTriangles(vertexTmp);
+      m_mesh.addVertices(vertexTmp);
       m_mesh.addNormals(normalTmp);
     }
   } // vMarchCube1()

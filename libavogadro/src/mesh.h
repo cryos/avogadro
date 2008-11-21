@@ -30,10 +30,11 @@
 
 #include <vector>
 
+class QColor;
+
 namespace Avogadro {
 
   class Molecule;
-  class Color;
 
   class MeshPrivate;
   class A_EXPORT Mesh : public Primitive
@@ -47,23 +48,23 @@ namespace Avogadro {
     /**
      * @return Vector containing all of the vertices in a one dimensional array.
      */
-    const std::vector<Eigen::Vector3f> & triangles() const;
+    const std::vector<Eigen::Vector3f> & vertices() const;
 
     /**
      * @return Pointer to the first vertex of the specified triangle.
      */
-    const Eigen::Vector3f * triangle(int n) const;
+    const Eigen::Vector3f * vertex(int n) const;
 
     /**
-     * Clear the triangles vector and assign new values.
+     * Clear the vertices vector and assign new values.
      */
-    bool setTriangles(const std::vector<Eigen::Vector3f> &values);
+    bool setVertices(const std::vector<Eigen::Vector3f> &values);
 
     /**
-     * Add one or more triangles, i.e., the vector is expected to be of length
+     * Add one or more vertices, i.e., the vector is expected to be of length
      * 3 x n where n is an integer.
      */
-    bool addTriangles(const std::vector<Eigen::Vector3f> &values);
+    bool addVertices(const std::vector<Eigen::Vector3f> &values);
 
     /**
      * @return Vector containing all of the normals in a one-dimensional array.
@@ -89,23 +90,23 @@ namespace Avogadro {
     /**
      * @return Vector containing all of the colors in a one-dimensional array.
      */
-    const std::vector<Color> & colors() const;
+    const std::vector<QColor> & colors() const;
 
     /**
      * @return Pointer to the first color of the specified triangle.
      */
-    const Color * color(int n) const;
+    const QColor * color(int n) const;
 
     /**
      * Clear the colors vector and assign new values.
      */
-    bool setColors(const std::vector<Color> &values);
+    bool setColors(const std::vector<QColor> &values);
 
     /**
      * Add one or more normals, i.e., the vector is expected to be of length
      * 3 x n where n is an integer.
      */
-    bool addColors(const std::vector<Color> &values);
+    bool addColors(const std::vector<QColor> &values);
 
     /**
      * Sanity checking function - is the mesh sane?
@@ -126,9 +127,9 @@ namespace Avogadro {
     inline QString name() { return m_name; }
 
   private:
-    std::vector<Eigen::Vector3f> m_triangles;
+    std::vector<Eigen::Vector3f> m_vertices;
     std::vector<Eigen::Vector3f> m_normals;
-    std::vector<Color> m_colors;
+    std::vector<QColor> m_colors;
     QString m_name;
     Q_DECLARE_PRIVATE(Mesh)
   };

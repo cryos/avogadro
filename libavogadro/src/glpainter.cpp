@@ -3,7 +3,7 @@
 
   Copyright (C) 2007 Benoit Jacob
   Copyright (C) 2007 Donald Ephraim Curtis
-  Copyright (C) 2007 Marcus D. Hanwell
+  Copyright (C) 2007-2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -996,22 +996,75 @@ namespace Avogadro
     glBegin(GL_TRIANGLES);
 
     // Render the triangles of the mesh
-    std::vector<Eigen::Vector3f> t = mesh.triangles();
+    std::vector<Eigen::Vector3f> v = mesh.vertices();
     std::vector<Eigen::Vector3f> n = mesh.normals();
 
     // Normal or reverse winding?
     if (normalWind) {
-      for(unsigned int i = 0; i < t.size(); ++i) {
+      for(unsigned int i = 0; i < v.size(); ++i) {
         glNormal3fv(n[i].data());
-        glVertex3fv(t[i].data());
+        glVertex3fv(v[i].data());
       }
     }
     /// FIXME - this is a fudge to fix the negative windings right now - FIXME!
     else {
-      for(unsigned int i = t.size(); i > 0; --i) {
+      for(unsigned int i = v.size(); i > 0; --i) {
         Eigen::Vector3f tmp = n[i-1] * -1;
         glNormal3fv(tmp.data());
-        glVertex3fv(t[i-1].data());
+        glVertex3fv(v[i-1].data());
+      }
+    }
+    glEnd();
+
+    glPolygonMode(GL_FRONT, GL_FILL);
+    glEnable(GL_LIGHTING);
+  }
+
+  void GLPainter::drawColorMesh(const Mesh & mesh, int mode, bool normalWind)
+  {
+    // Now we draw the given mesh to the OpenGL widget
+    switch (mode)
+    {
+      case 0:
+        glPolygonMode(GL_FRONT, GL_FILL);
+        glEnable(GL_LIGHTING);
+        break;
+      case 1:
+        glPolygonMode(GL_FRONT, GL_LINE);
+        glDisable(GL_LIGHTING);
+        break;
+      case 2:
+        glPolygonMode(GL_FRONT, GL_POINT);
+        glDisable(GL_LIGHTING);
+        break;
+    }
+
+    glBegin(GL_TRIANGLES);
+
+    // Render the triangles of the mesh
+    std::vector<Eigen::Vector3f> v = mesh.vertices();
+    std::vector<Eigen::Vector3f> n = mesh.normals();
+    std::vector<QColor> c = mesh.colors();
+
+    // Normal or reverse winding?
+    Color color;
+    if (normalWind) {
+      for(unsigned int i = 0; i < v.size(); ++i) {
+        color = Color(c[i].redF(), c[i].greenF(), c[i].blueF(), c[i].alphaF());
+        color.applyAsMaterials();
+        glNormal3fv(n[i].data());
+        glVertex3fv(v[i].data());
+      }
+    }
+    /// FIXME - this is a fudge to fix the negative windings right now - FIXME!
+    else {
+      for(unsigned int i = v.size(); i > 0; --i) {
+        color = Color(c[i].redF(), c[i].greenF(), c[i].blueF(), c[i].alphaF());
+        color.apply();
+        color.applyAsMaterials();
+        Eigen::Vector3f tmp = n[i-1] * -1;
+        glNormal3fv(tmp.data());
+        glVertex3fv(v[i-1].data());
       }
     }
     glEnd();

@@ -24,14 +24,12 @@
 
 #include "mesh.h"
 
-#include <avogadro/color.h>
-#include <vector>
-
+#include <QColor>
 #include <QDebug>
 
 namespace Avogadro {
 
-  Mesh::Mesh(QObject *parent) : Primitive(MeshType, parent), m_triangles(0),
+  Mesh::Mesh(QObject *parent) : Primitive(MeshType, parent), m_vertices(0),
     m_normals(0), m_colors(0)
   {
   }
@@ -40,33 +38,33 @@ namespace Avogadro {
   {
   }
 
-  const std::vector<Eigen::Vector3f> & Mesh::triangles() const
+  const std::vector<Eigen::Vector3f> & Mesh::vertices() const
   {
-    return m_triangles;
+    return m_vertices;
   }
 
-  const Eigen::Vector3f * Mesh::triangle(int n) const
+  const Eigen::Vector3f * Mesh::vertex(int n) const
   {
-    return &(m_triangles[n*3]);
+    return &(m_vertices[n]);
   }
 
-  bool Mesh::setTriangles(const std::vector<Eigen::Vector3f> &values)
+  bool Mesh::setVertices(const std::vector<Eigen::Vector3f> &values)
   {
-    m_triangles.clear();
-    m_triangles = values;
+    m_vertices.clear();
+    m_vertices = values;
     return true;
   }
 
-  bool Mesh::addTriangles(const std::vector<Eigen::Vector3f> &values)
+  bool Mesh::addVertices(const std::vector<Eigen::Vector3f> &values)
   {
     if (values.size() % 3 == 0) {
       for (unsigned int i = 0; i < values.size(); ++i) {
-        m_triangles.push_back(values.at(i));
+        m_vertices.push_back(values.at(i));
       }
       return true;
     }
     else {
-      qDebug() << "Error adding triangles." << values.size();
+      qDebug() << "Error adding vertices." << values.size();
       return false;
     }
   }
@@ -102,12 +100,12 @@ namespace Avogadro {
     }
   }
 
-  const std::vector<Color> & Mesh::colors() const
+  const std::vector<QColor> & Mesh::colors() const
   {
     return m_colors;
   }
 
-  const Color * Mesh::color(int n) const
+  const QColor * Mesh::color(int n) const
   {
     // If there is only one color return that, otherwise colored by vertex
     if (m_colors.size() == 1) {
@@ -118,14 +116,14 @@ namespace Avogadro {
     }
   }
 
-  bool Mesh::setColors(const std::vector<Color> &values)
+  bool Mesh::setColors(const std::vector<QColor> &values)
   {
     m_colors.clear();
     m_colors = values;
     return true;
   }
 
-  bool Mesh::addColors(const std::vector<Color> &values)
+  bool Mesh::addColors(const std::vector<QColor> &values)
   {
     if (values.size() % 3 == 0) {
       for (unsigned int i = 0; i < values.size(); ++i) {
@@ -141,8 +139,8 @@ namespace Avogadro {
 
   bool Mesh::valid() const
   {
-    if (m_triangles.size() == m_normals.size()) {
-      if (m_colors.size() == 1 || m_colors.size() == m_triangles.size()) {
+    if (m_vertices.size() == m_normals.size()) {
+      if (m_colors.size() == 1 || m_colors.size() == m_vertices.size()) {
         return true;
       }
       else {
@@ -156,7 +154,7 @@ namespace Avogadro {
 
   bool Mesh::clear()
   {
-    m_triangles.clear();
+    m_vertices.clear();
     m_normals.clear();
     m_colors.clear();
     return true;
@@ -164,8 +162,8 @@ namespace Avogadro {
 
   Mesh& Mesh::operator=(const Mesh& other)
   {
-    m_triangles = other.m_triangles;
-    m_normals = other.m_triangles;
+    m_vertices = other.m_vertices;
+    m_normals = other.m_vertices;
     m_colors = other.m_colors;
     m_name = other.m_name;
     return *this;

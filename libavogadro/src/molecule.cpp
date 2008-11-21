@@ -690,9 +690,6 @@
           obatom; obatom = static_cast<OpenBabel::OBAtom *>(obmol->NextAtom(i))) {
       Atom *atom = newAtom();
       atom->setOBAtom(obatom);
-//      qDebug() << "Old atom:" << obatom->GetIdx() << obatom->GetX() << obatom->GetY() << obatom->GetZ() << obatom->GetAtomicNum();
-
-//      qDebug() << "New atom:" << atom->index() << atom->pos().x() << atom->pos().y() << atom->pos().z() << atom->atomicNumber();
     }
 
     // Now bonds, we use the indices of the atoms to get the bonding right
