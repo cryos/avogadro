@@ -209,7 +209,7 @@ namespace Avogadro {
   }
 
 
-  void BoxControl::mousePressEvent(Point *point, QMouseEvent * event)
+  void BoxControl::mousePressEvent(Point * /*point*/, QMouseEvent * event)
   {
     m_lastDraggingPosition = event->pos();
   }
@@ -255,7 +255,7 @@ namespace Avogadro {
     glwidget->update();
   }
 
-  void BoxControl::mouseReleaseEvent(Point *point, QMouseEvent * event) 
+  void BoxControl::mouseReleaseEvent(Point * /*point*/, QMouseEvent * /*event*/) 
   {
     emit modified();  
   }

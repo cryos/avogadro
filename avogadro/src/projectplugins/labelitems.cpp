@@ -1,5 +1,5 @@
 /**********************************************************************
-  selectionitem.h - Base class for ProjectItem plugins.
+  LabelItems - Project Tree Items for labels.
 
   Copyright (C) 2008 by Tim Vandermeersch
 
@@ -19,7 +19,9 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "selectionitem.h"
+#include "labelitems.h"
+
+#include <avogadro/glwidget.h>
 
 #include <QDebug>
 #include <QString>
@@ -30,35 +32,34 @@ using namespace std;
 namespace Avogadro
 {
 
-  void SelectionItems::setupModelData(GLWidget *widget, ProjectItem *parent)
+  LabelItems::LabelItems() : m_label(0)
   {
-    QList<QVariant> data;
-    
-    // add the label
-    data << alias();
-    ProjectItem *label = new ProjectItem(parent, data);
-    parent->appendChild(label);
-
-    // add the named selections
-    for (int i = 0; i < widget->namedSelections().size(); ++i) 
-    {
-      data.clear();
-      data << widget->namedSelections().at(i);
-      ProjectItem *item = new ProjectItem(label, data);
-      PrimitiveList primitives = widget->namedSelectionPrimitives(i);
-      item->setPrimitives(primitives);
-      label->appendChild(item);
-    }
-  }
-
-  void SelectionItems::refresh()
-  {
-  
   }
  
+  LabelItems::~LabelItems()
+  {
+  }
+    
+  void LabelItems::setupModelData(ProjectTreeModel *model, GLWidget *widget, ProjectTreeItem *parent)
+  {
+    // add the label
+    int position = parent->childCount();
+    model->insertRows(parent, position, 1);
+    m_label = parent->child(position);
+    m_label->setData(0, alias());
+  }
+
+  void LabelItems::writeSettings(QSettings &settings) const
+  {
+    ProjectPlugin::writeSettings(settings);
+  }
   
+  void LabelItems::readSettings(QSettings &settings)
+  {
+    ProjectPlugin::readSettings(settings);
+  }
+
 } // end namespace Avogadro
 
-#include "selectionitem.moc"
+#include "labelitems.moc"
 
-Q_EXPORT_PLUGIN2(selectionitem, Avogadro::SelectionItemsFactory)

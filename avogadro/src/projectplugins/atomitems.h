@@ -1,5 +1,5 @@
 /**********************************************************************
-  selectionitem.h - ProjectItem for named selections.
+  AtomItems - Project Tree Item for atoms.
 
   Copyright (C) 2008 by Tim Vandermeersch
 
@@ -19,43 +19,47 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef SELECTIONITEM_H
-#define SELECTIONITEM_H
+#ifndef ATOMITEMS_H
+#define ATOMITEMS_H
 
 #include <avogadro/global.h>
-#include <avogadro/plugin.h>
-#include <avogadro/projectplugin.h>
+#include "../projectplugin.h"
+#include "../projecttreemodel.h"
+
+#include <QString>
 
 namespace Avogadro {
 
-  class A_EXPORT SelectionItems : public ProjectPlugin
+  class Primitive;
+
+  class A_EXPORT AtomItems : public ProjectPlugin
   {
     Q_OBJECT
 
     public:
-      SelectionItems() {}
-      ~SelectionItems() {}
+      AtomItems();
+      ~AtomItems();
 
-      QString name() const { return QObject::tr("Named Selections"); }
-      void setupModelData(GLWidget *, ProjectItem *parent);
-    
+      QString name() const { return QObject::tr("Atoms"); }
+      
+      void setupModelData(ProjectTreeModel *, GLWidget *, ProjectTreeItem *parent);
+      
+      void writeSettings(QSettings &settings) const;
+      void readSettings(QSettings &settings);
+
     public slots:
-      void refresh();
-  };
- 
-  class SelectionItemsFactory : public QObject, public PluginFactory
-  {
-      Q_OBJECT
-      Q_INTERFACES(Avogadro::PluginFactory)
+      void primitiveAdded(Primitive*);
+      void primitiveUpdated(Primitive*);
+      void primitiveRemoved(Primitive*);
 
-    public:
-      Plugin *createInstance(QObject *parent = 0) { return new SelectionItems(); }
-      Plugin::Type type() const { return Plugin::ProjectType; };
-      QString name() const { return QObject::tr("Named Selections"); };
-      QString description() const { return QObject::tr("Named Selections"); };
+    private:
+      void initialize();
+
+      ProjectTreeItem  *m_label;
+      ProjectTreeModel *m_model;
+      GLWidget         *m_widget;
   };
 
- 
 } // end namespace Avogadro
 
 #endif

@@ -19,7 +19,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include <avogadro/projectplugin.h>
+#include "projectplugin.h"
 #include <avogadro/primitivelist.h>
 
 #include <QDebug>
@@ -30,7 +30,8 @@ using namespace std;
 
 namespace Avogadro
 {
- 
+
+ /* 
   class ProjectItemPrivate
   {
     public:
@@ -56,7 +57,7 @@ namespace Avogadro
   {
     d->primitives = primitives;
   }
- 
+ */
   
   
   class ProjectPluginPrivate 

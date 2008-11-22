@@ -25,48 +25,14 @@
 #include <avogadro/global.h>
 #include <avogadro/plugin.h>
 
+#include "projecttreeitem.h"
+
 #include <QtPlugin>
-#include <QTreeWidgetItem>
 
 namespace Avogadro {
 
   class GLWidget;
-  class PrimitiveList;
-  
-  class ProjectItemPrivate;
-  class A_EXPORT ProjectItem : public QTreeWidgetItem
-  {
-    public:
-      enum Type {
-        /**
-         * Static types are not updated, these are items such as labels etc.
-         */
-        StaticType = QTreeWidgetItem::UserType,
-        /**
-         * Dynamic types can be updated (removed, changed, ...)
-         */
-        DynamicType
-      };
-      /**
-       * Constructor
-       */
-      ProjectItem(QTreeWidgetItem *parent, Type = StaticType);
-      /**
-       * Constructor
-       */
-      ~ProjectItem();
-      /**
-       * Get the primitives for this item
-       */
-      PrimitiveList primitives() const;
-      /**
-       * Get the primitives for this item
-       */
-      void setPrimitives(PrimitiveList &primitives);
-      
-    private:
-      ProjectItemPrivate * const d;
-  };
+  class ProjectTreeModel;
 
   class ProjectPluginPrivate;   
   class A_EXPORT ProjectPlugin : public QObject, public Plugin
@@ -91,7 +57,7 @@ namespace Avogadro {
       /**
        * Add the tree items for this project item to parent
        */
-      virtual void setupModelData(GLWidget *widget, QTreeWidgetItem *parent) = 0;
+      virtual void setupModelData(ProjectTreeModel *model, GLWidget *widget, ProjectTreeItem *parent) = 0;
       /**
        * @return a QWidget containing the settings or 0
        * if no settings widget is available.

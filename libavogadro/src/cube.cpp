@@ -119,7 +119,7 @@ namespace Avogadro {
 
   bool Cube::setData(const std::vector<double> &values)
   {
-    if (values.size() == m_points.x() * m_points.y() * m_points.z()) {
+    if (static_cast<int>(values.size()) == m_points.x() * m_points.y() * m_points.z()) {
       m_data = values;
       qDebug() << "Loaded in cube data" << m_data.size();
       return true;

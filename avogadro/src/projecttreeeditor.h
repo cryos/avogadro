@@ -45,7 +45,7 @@
 #define TREEWIDGETEDITOR_H
 
 #include <avogadro/global.h>
-#include <avogadro/projectplugin.h>
+#include "projectplugin.h"
 
 #include <QDialog>
 #include <QHash>

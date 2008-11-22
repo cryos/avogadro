@@ -42,9 +42,11 @@
 //#endif
 
 #include <avogadro/pluginmanager.h>
+
 // Does not work for me with out of source builds at least - ui_projecttreeeditor.h
 // can't be found and avogadro should be able to build without libavogadro
-// #include <avogadro/projecttreeeditor.h>
+#include "projecttreeeditor.h"
+#include "projecttreemodel.h"
 
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
@@ -172,7 +174,7 @@ namespace Avogadro
       QTimer *centerTimer;
 
       PluginManager pluginManager;
-      // ProjectTreeEditor projectTreeEditor;
+      ProjectTreeEditor projectTreeEditor;
 
       QMap<Engine*, QWidget*> engineSettingsWindows;
   };
@@ -1655,11 +1657,11 @@ namespace Avogadro
 
     connect( ui.pluginManagerAction, SIGNAL( triggered() ), &d->pluginManager, SLOT( showDialog() ) );
 
-//    connect( ui.projectTreeEditorAction, SIGNAL( triggered() ), &d->projectTreeEditor, SLOT( show() ) );
+    connect( ui.projectTreeEditorAction, SIGNAL( triggered() ), &d->projectTreeEditor, SLOT( show() ) );
     
-//    connect( &d->projectTreeEditor, SIGNAL( structureChanged() ), this, SLOT( setupProjectTree() ) );
-//    connect( ui.projectTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), 
-//        this, SLOT(projectTreeItemClicked(QTreeWidgetItem*,int)));
+    connect( &d->projectTreeEditor, SIGNAL( structureChanged() ), this, SLOT( setupProjectTree() ) );
+    connect( ui.projectTreeView, SIGNAL(activated(const QModelIndex&)), 
+        this, SLOT(projectItemActivated(const QModelIndex&)));
 
     connect( ui.actionTutorials, SIGNAL( triggered() ), this, SLOT( openTutorialURL() ));
     connect( ui.actionFAQ, SIGNAL( triggered() ), this, SLOT( openFAQURL() ) );
@@ -1696,63 +1698,26 @@ namespace Avogadro
       
   void MainWindow::setupProjectTree()
   {
-/*    ui.projectTreeWidget->clear();
-    
-    QList<QTreeWidgetItem*> parents;
-    QList<int> indentations;
-    parents << ui.projectTreeWidget->invisibleRootItem();
-    indentations << 0;
-    
-    QSettings settings;
-    settings.beginGroup("projectTree");
-    int size = settings.beginReadArray("items");
-    
-    for (int i = 0; i < size; ++i) {
-      settings.setArrayIndex( i );
-      int position = settings.value("indent").toInt();
-
-      if (position > indentations.last()) {
-        // The last child of the current parent is now the new parent
-
-        // unless the current parent has no children.
-        if (parents.last()->childCount() > 0) {
-          parents << parents.last()->child(parents.last()->childCount()-1);
-            indentations << position;
-        }
-      } else {
-        while (position < indentations.last() && parents.count() > 0) {
-          parents.pop_back();
-          indentations.pop_back();
-        }
-      }
-      
-      // create a new ProjectPlugin for this QTreeWidgetItem
-      PluginFactory *factory = pluginManager.factory(settings.value("name").toString(), Plugin::ProjectType);
-      if (factory) 
-      {
-        ProjectPlugin *plugin = (ProjectPlugin*) factory->createInstance();
-        plugin->readSettings(settings);
-        // Append the items to the current parent's list of children.
-        plugin->setupModelData(d->glWidget, parents.last());
-      }
-
-    }
-
-    settings.endArray();
-    settings.endGroup();  */
+    ProjectTreeModel *model = dynamic_cast<ProjectTreeModel*>(ui.projectTreeView->model());
+    ui.projectTreeView->setModel(new ProjectTreeModel( d->glWidget, this ));
+    if (model)
+      delete model;
   }
- 
-  void MainWindow::projectTreeItemClicked(QTreeWidgetItem *item, int column)
-  { /*
-    qDebug() << "projectTreeItemClicked";
 
-    item->setSelected(true);
+  void MainWindow::projectItemActivated(const QModelIndex& index)
+  { 
     // select the new primitives
-    ProjectItem *projectItem = dynamic_cast<ProjectItem*>(item);
+    ProjectTreeModel *model = dynamic_cast<ProjectTreeModel*>(ui.projectTreeView->model());
+    if (!model)
+      return;
+
+    qDebug() << "index : " << index;
+
+    ProjectTreeItem *projectItem = model->item(index);
     if (projectItem) {
       d->glWidget->clearSelected();
       d->glWidget->setSelected(projectItem->primitives(), true);
-    } */
+    } 
   }
 
   Molecule *MainWindow::molecule() const

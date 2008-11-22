@@ -169,8 +169,8 @@
   <widget class="QDockWidget" name="projectDock" >
    <property name="minimumSize" >
     <size>
-     <width>333</width>
-     <height>233</height>
+     <width>0</width>
+     <height>0</height>
     </size>
    </property>
    <property name="allowedAreas" >
@@ -200,28 +200,7 @@
       <number>2</number>
      </property>
      <item>
-      <widget class="QTreeWidget" name="projectTreeWidget" >
-       <property name="autoScroll" >
-        <bool>false</bool>
-       </property>
-       <property name="selectionMode" >
-        <enum>QAbstractItemView::SingleSelection</enum>
-       </property>
-       <property name="selectionBehavior" >
-        <enum>QAbstractItemView::SelectItems</enum>
-       </property>
-       <property name="headerHidden" >
-        <bool>true</bool>
-       </property>
-       <property name="expandsOnDoubleClick" >
-        <bool>false</bool>
-       </property>
-       <column>
-        <property name="text" >
-         <string>1</string>
-        </property>
-       </column>
-      </widget>
+      <widget class="QTreeView" name="projectTreeView" />
      </item>
     </layout>
    </widget>

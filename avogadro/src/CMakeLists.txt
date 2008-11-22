@@ -27,6 +27,9 @@ include(${QT_USE_FILE})
 
 FILE(GLOB avogadro_SRCS "*.cpp")
 
+FILE(GLOB projectPlugin_SRCS "projectplugins/*.cpp")
+set(avogadro_SRCS ${avogadro_SRCS} ${projectPlugin_SRCS})
+
 # Mac ChemPasteboard currently disabled -- prevents drag-and-drop
 #if(NOT APPLE)
   LIST(REMOVE_ITEM avogadro_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/macchempasteboard.cpp)
@@ -94,3 +97,4 @@ ENDIF( APPLE)
 
 INSTALL(FILES ${avogadro_QM} DESTINATION share/avogadro/i18n)
 
+#add_subdirectory(projectplugins)

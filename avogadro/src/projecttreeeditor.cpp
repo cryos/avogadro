@@ -23,40 +23,47 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <avogadro/projecttreeeditor.h>
-#include <avogadro/pluginmanager.h>
+#include "projecttreeeditor.h"
+//#include <avogadro/pluginmanager.h>
+
+#include "projectplugins/labelitems.h"
+#include "projectplugins/moleculeitems.h"
+#include "projectplugins/atomitems.h"
+#include "projectplugins/bonditems.h"
 
 #include <QDir>
 #include <QIcon>
 #include <QQueue>
 #include <QHeaderView>
+#include <QMessageBox>
 
 namespace Avogadro {
+
+  enum Index {
+    LabelIndex,
+    MoleculeIndex,
+    AtomIndex,
+    BondIndex
+  };
 
   ProjectTreeEditor::ProjectTreeEditor(QWidget *parent) : QDialog(parent), m_updating(false)
   {
     ui.setupUi(this);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-    QIcon upIcon(QString::fromUtf8("up.png"));
-    QIcon downIcon(QString::fromUtf8("down.png"));
-    QIcon backIcon(QString::fromUtf8("back.png"));
-    QIcon forwardIcon(QString::fromUtf8("forward.png"));
-    QIcon minusIcon(QString::fromUtf8("minus.png"));
-    QIcon plusIcon(QString::fromUtf8("plus.png"));
-    ui.newItemButton->setIcon(plusIcon);
-    ui.deleteItemButton->setIcon(minusIcon);
-    ui.moveItemUpButton->setIcon(upIcon);
-    ui.moveItemDownButton->setIcon(downIcon);
-    ui.moveItemRightButton->setIcon(forwardIcon);
-    ui.moveItemLeftButton->setIcon(backIcon);
 
     ui.treeWidget->header()->setMovable(false);
 
+    /*
     QList<PluginFactory*> factories = pluginManager.factories( Plugin::ProjectType );
-    
     // add all possible types
     foreach(PluginFactory *factory, factories)
       ui.itemTypeCombo->addItem(factory->name());
+    */
+      
+    ui.itemTypeCombo->addItem("Label");
+    ui.itemTypeCombo->addItem("Molecule");
+    ui.itemTypeCombo->addItem("Atoms");
+    ui.itemTypeCombo->addItem("Bonds");
   }
 
   ProjectTreeEditor::~ProjectTreeEditor()
@@ -79,11 +86,28 @@ namespace Avogadro {
     newItem->setText(0, ui.itemTypeCombo->currentText());
     
     // create a new ProjectPlugin for this QTreeWidgetItem
+    /*
     PluginFactory *factory = pluginManager.factory(ui.itemTypeCombo->currentText(), Plugin::ProjectType);
     if (factory) 
     {
       ProjectPlugin *plugin = (ProjectPlugin*) factory->createInstance();
       m_hash[newItem] = plugin;
+    }
+    */
+    switch (ui.itemTypeCombo->currentIndex()) {
+      default:
+      case LabelIndex:
+        m_hash[newItem] = (ProjectPlugin*) new LabelItems();
+        break;
+      case MoleculeIndex:
+        m_hash[newItem] = (ProjectPlugin*) new MoleculeItems();
+        break;
+      case AtomIndex:
+        m_hash[newItem] = (ProjectPlugin*) new AtomItems();
+        break;
+      case BondIndex:
+        m_hash[newItem] = (ProjectPlugin*) new BondItems();
+        break;
     }
 
     ui.treeWidget->setCurrentItem(newItem, 0);
@@ -97,6 +121,11 @@ namespace Avogadro {
     if (!curItem)
         return;
 
+    if (m_hash[curItem]->name() != "Label") {
+      QMessageBox::information(this, tr("Error"), tr("only labels can have sub items"));
+      return;
+    }
+    
     m_updating = true;
 
     // create a new QTreeWidgetItem
@@ -104,11 +133,28 @@ namespace Avogadro {
     newItem->setText(0, ui.itemTypeCombo->currentText());
 
     // create a new ProjectPlugin for this QTreeWidgetItem
+    /*
     PluginFactory *factory = pluginManager.factory(ui.itemTypeCombo->currentText(), Plugin::ProjectType);
     if (factory) 
     {
       ProjectPlugin *plugin = (ProjectPlugin*) factory->createInstance();
       m_hash[newItem] = plugin;
+    }
+    */
+    switch (ui.itemTypeCombo->currentIndex()) {
+      default:
+      case LabelIndex:
+        m_hash[newItem] = (ProjectPlugin*) new LabelItems();
+        break;
+      case MoleculeIndex:
+        m_hash[newItem] = (ProjectPlugin*) new MoleculeItems();
+        break;
+      case AtomIndex:
+        m_hash[newItem] = (ProjectPlugin*) new AtomItems();
+        break;
+      case BondIndex:
+        m_hash[newItem] = (ProjectPlugin*) new BondItems();
+        break;
     }
 
     ui.treeWidget->setCurrentItem(newItem, 0);
@@ -349,7 +395,7 @@ namespace Avogadro {
     
     ui.itemsBox->setEnabled(itemsEnabled);
     ui.textLabel->setEnabled(currentItemEnabled);
-    ui.itemTypeCombo->setEnabled(currentItemEnabled);
+    //ui.itemTypeCombo->setEnabled(currentItemEnabled);
     ui.newSubItemButton->setEnabled(currentItemEnabled);
     ui.deleteItemButton->setEnabled(currentItemEnabled);
 
@@ -445,6 +491,7 @@ namespace Avogadro {
       newItem->setText(0, settings.value("alias").toString());
 
       // create a new ProjectPlugin for this QTreeWidgetItem
+      /*
       PluginFactory *factory = pluginManager.factory(settings.value("name").toString(), Plugin::ProjectType);
       if (factory) 
       {
@@ -452,6 +499,20 @@ namespace Avogadro {
         m_hash[newItem] = plugin;
         plugin->readSettings(settings);
       }
+      */
+      if (settings.value("name").toString() == "Label") {
+        m_hash[newItem] = (ProjectPlugin*) new LabelItems();
+      } else if (settings.value("name").toString() == "Molecule") {
+        m_hash[newItem] = (ProjectPlugin*) new MoleculeItems();
+      } else if (settings.value("name").toString() == "Bonds") {
+        m_hash[newItem] = (ProjectPlugin*) new BondItems();
+      }
+     
+      if (!m_hash[newItem])
+        continue;
+
+      m_hash[newItem]->readSettings(settings);
+
 
     }
 
