@@ -1699,7 +1699,11 @@ namespace Avogadro
   void MainWindow::setupProjectTree()
   {
     ProjectTreeModel *model = dynamic_cast<ProjectTreeModel*>(ui.projectTreeView->model());
-    ui.projectTreeView->setModel(new ProjectTreeModel( d->glWidget, this ));
+
+    ProjectTreeModel *newModel = new ProjectTreeModel( d->glWidget, this );
+    connect(ui.projectTreeView, SIGNAL(expanded(const QModelIndex&)), newModel, SLOT(itemExpanded(const QModelIndex&)));
+    ui.projectTreeView->setModel(newModel);
+
     if (model)
       delete model;
   }
@@ -1710,8 +1714,6 @@ namespace Avogadro
     ProjectTreeModel *model = dynamic_cast<ProjectTreeModel*>(ui.projectTreeView->model());
     if (!model)
       return;
-
-    qDebug() << "index : " << index;
 
     ProjectTreeItem *projectItem = model->item(index);
     if (projectItem) {

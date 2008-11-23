@@ -1,5 +1,5 @@
 /**********************************************************************
-  MoleculeItems - Project Tree Items for molecule (atoms, bonds, ...).
+  LabelDelegate - Project Tree Items for labels.
 
   Copyright (C) 2008 by Tim Vandermeersch
 
@@ -19,11 +19,11 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef MOLECULEITEMS_H
-#define MOLECULEITEMS_H
+#ifndef LABELITEMS_H
+#define LABELITEMS_H
 
 #include <avogadro/global.h>
-#include "../projectplugin.h"
+#include "../projecttreemodeldelegate.h"
 #include "../projecttreemodel.h"
 
 #include <QString>
@@ -31,50 +31,26 @@
 namespace Avogadro {
 
   class Primitive;
-  class AtomItems;
-  class BondItems;
 
-  class A_EXPORT MoleculeItems : public ProjectPlugin
+  class A_EXPORT LabelDelegate : public ProjectTreeModelDelegate
   {
     Q_OBJECT
 
     public:
-      MoleculeItems();
-      ~MoleculeItems();
+      LabelDelegate(ProjectTreeModel *model);
+      ~LabelDelegate();
 
-      QString name() const { return QObject::tr("Molecule"); }
+      QString name() const { return QObject::tr("Label"); }
       
-      void setupModelData(ProjectTreeModel *, GLWidget *, ProjectTreeItem *parent);
+      void initStructure(GLWidget *widget, ProjectTreeItem *parent);
       
       void writeSettings(QSettings &settings) const;
       void readSettings(QSettings &settings);
 
     private:
-      ProjectTreeItem *m_moleculeLabel;
-      
-      AtomItems *m_atomItems;
-      BondItems *m_bondItems;
-      
-      ProjectTreeItem *m_residueLabel;
-      ProjectTreeModel *m_model;
-      GLWidget *m_widget;
+      ProjectTreeItem *m_label;
   };
 
-  /* 
-  class MoleculeItemsFactory : public QObject, public PluginFactory
-  {
-      Q_OBJECT
-      Q_INTERFACES(Avogadro::PluginFactory)
-
-    public:
-      Plugin *createInstance(QObject * parent = 0) { return new MoleculeItems(); }
-      Plugin::Type type() const { return Plugin::ProjectType; };
-      QString name() const { return QObject::tr("Molecule"); };
-      QString description() const { return QObject::tr("Project item for molecule."); };
-  };
-  */
-
- 
 } // end namespace Avogadro
 
 #endif

@@ -33,6 +33,7 @@ namespace Avogadro {
   {
     m_parentItem = parent;
     m_itemData = data;
+    m_terminal = true;
   }
 
   ProjectTreeItem::~ProjectTreeItem()
@@ -146,6 +147,16 @@ namespace Avogadro {
   void ProjectTreeItem::setPrimitives(const PrimitiveList& primitives)
   {
     m_primitives = primitives;  
+  }
+  
+  bool ProjectTreeItem::isTerminal() const
+  {
+    return m_terminal;
+  }
+
+  void ProjectTreeItem::setTerminal(bool terminal)
+  {
+    m_terminal = terminal;
   }
 
 

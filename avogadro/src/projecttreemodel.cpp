@@ -23,7 +23,7 @@
  **********************************************************************/
 
 #include "projecttreemodel.h"
-#include "projectplugin.h"
+#include "projecttreemodeldelegate.h"
 
 #include <QTimer>
 #include <QVector>
@@ -33,13 +33,11 @@
 #include <avogadro/bond.h>
 #include <avogadro/residue.h>
 #include <avogadro/molecule.h>
-//#include <avogadro/pluginmanager.h>
 
-
-#include "projectplugins/labelitems.h"
-#include "projectplugins/moleculeitems.h"
-#include "projectplugins/atomitems.h"
-#include "projectplugins/bonditems.h"
+#include "projectdelegates/labeldelegate.h"
+#include "projectdelegates/moleculedelegate.h"
+#include "projectdelegates/atomdelegate.h"
+#include "projectdelegates/bonddelegate.h"
 
 namespace Avogadro {
 
@@ -53,7 +51,7 @@ namespace Avogadro {
       GLWidget *glWidget;
       ProjectTreeItem *rootItem;
 
-      QList<ProjectPlugin*> plugins;
+      QList<ProjectTreeModelDelegate*> delegates;
   };
 
   ProjectTreeModel::ProjectTreeModel(GLWidget *widget, QObject *parent) : 
@@ -65,6 +63,7 @@ namespace Avogadro {
     rootData << tr("title");
     rootData << tr("more");
     d->rootItem = new ProjectTreeItem(rootData);
+    d->rootItem->setTerminal(false);
     
 
     init();
@@ -72,8 +71,8 @@ namespace Avogadro {
 
   ProjectTreeModel::~ProjectTreeModel()
   {
-    foreach (ProjectPlugin *plugin, d->plugins)
-      delete plugin;
+    foreach (ProjectTreeModelDelegate *delegate, d->delegates)
+      delete delegate;
 
     delete d->rootItem;
 
@@ -184,44 +183,30 @@ namespace Avogadro {
         }
       }
  
-      ProjectPlugin *plugin = 0;
+      ProjectTreeModelDelegate *delegate = 0;
       if (settings.value("name").toString() == "Label") {
-        plugin = (ProjectPlugin*) new LabelItems();
+        delegate = (ProjectTreeModelDelegate*) new LabelDelegate(this);
      } else if (settings.value("name").toString() == "Molecule") {
-        plugin = (ProjectPlugin*) new MoleculeItems();
+        delegate = (ProjectTreeModelDelegate*) new MoleculeDelegate(this);
       } else if (settings.value("name").toString() == "Bonds") {
-        plugin = (ProjectPlugin*) new BondItems();
+        delegate = (ProjectTreeModelDelegate*) new BondDelegate(this);
       } else if (settings.value("name").toString() == "Atoms") {
-        plugin = (ProjectPlugin*) new AtomItems();
+        delegate = (ProjectTreeModelDelegate*) new AtomDelegate(this);
       }
 
-      if (plugin) {
-        plugin->readSettings(settings);
-        plugin->setupModelData(this, d->glWidget, parents.last());
-        d->plugins.append(plugin);
+      if (delegate) {
+        delegate->readSettings(settings);
+        delegate->initStructure(d->glWidget, parents.last());
+        d->delegates.append(delegate);
       }
- 
       
-      /*
-      PluginFactory *factory = pluginManager.factory(settings.value("name").toString(), Plugin::ProjectType);
-      if (factory) 
-      {
-        qDebug() << "loading...";
-        ProjectPlugin *plugin = (ProjectPlugin*) factory->createInstance();
-        plugin->readSettings(settings);
-        // Append the items to the current parent's list of children.
-        plugin->setupModelData(this, d->glWidget, parents.last());
-        d->plugins.append(plugin);
-      }
-      */
-
     }
 
     settings.endArray();
     settings.endGroup(); 
  
   }
-
+      
   bool ProjectTreeModel::insertRows(ProjectTreeItem *parentItem, int position, int rows)
   {
     bool success;
@@ -251,6 +236,39 @@ namespace Avogadro {
     emit dataChanged( left, right );
   }
    
+  bool ProjectTreeModel::hasChildren(const QModelIndex &parent) const
+  {
+    ProjectTreeItem *parentItem = item(parent);
+    return !parentItem->isTerminal();
+  }
+
+  bool ProjectTreeModel::canFetchMore(const QModelIndex& parent) const
+  {
+    // if we might have children, more data could possibly be fetched...
+    return hasChildren(parent);
+  }
+      
+  void ProjectTreeModel::fetchMore(const QModelIndex& parent)
+  {
+    if(!parent.isValid())
+      return;
+    
+    ProjectTreeItem *parentItem = item(parent);
+    if (!parentItem)
+      return;
+
+    foreach (ProjectTreeModelDelegate *delegate, d->delegates) {
+      if (delegate->hasExpandableItem(parentItem)) {
+        delegate->fetchMore(parentItem);
+      }
+    }
+  }
+      
+  void ProjectTreeModel::importDelegate(ProjectTreeModelDelegate *delegate)
+  {
+    d->delegates.append(delegate);
+  }
+
 
 } // end namespace Avogadro
 

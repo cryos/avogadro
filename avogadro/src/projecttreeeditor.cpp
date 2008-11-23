@@ -24,12 +24,11 @@
  **********************************************************************/
 
 #include "projecttreeeditor.h"
-//#include <avogadro/pluginmanager.h>
 
-#include "projectplugins/labelitems.h"
-#include "projectplugins/moleculeitems.h"
-#include "projectplugins/atomitems.h"
-#include "projectplugins/bonditems.h"
+#include "projectdelegates/labeldelegate.h"
+#include "projectdelegates/moleculedelegate.h"
+#include "projectdelegates/atomdelegate.h"
+#include "projectdelegates/bonddelegate.h"
 
 #include <QDir>
 #include <QIcon>
@@ -53,13 +52,6 @@ namespace Avogadro {
 
     ui.treeWidget->header()->setMovable(false);
 
-    /*
-    QList<PluginFactory*> factories = pluginManager.factories( Plugin::ProjectType );
-    // add all possible types
-    foreach(PluginFactory *factory, factories)
-      ui.itemTypeCombo->addItem(factory->name());
-    */
-      
     ui.itemTypeCombo->addItem("Label");
     ui.itemTypeCombo->addItem("Molecule");
     ui.itemTypeCombo->addItem("Atoms");
@@ -85,28 +77,20 @@ namespace Avogadro {
         newItem = new QTreeWidgetItem(ui.treeWidget);
     newItem->setText(0, ui.itemTypeCombo->currentText());
     
-    // create a new ProjectPlugin for this QTreeWidgetItem
-    /*
-    PluginFactory *factory = pluginManager.factory(ui.itemTypeCombo->currentText(), Plugin::ProjectType);
-    if (factory) 
-    {
-      ProjectPlugin *plugin = (ProjectPlugin*) factory->createInstance();
-      m_hash[newItem] = plugin;
-    }
-    */
+    // create a new ProjectTreeModelDelegate for this QTreeWidgetItem
     switch (ui.itemTypeCombo->currentIndex()) {
       default:
       case LabelIndex:
-        m_hash[newItem] = (ProjectPlugin*) new LabelItems();
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new LabelDelegate(0);
         break;
       case MoleculeIndex:
-        m_hash[newItem] = (ProjectPlugin*) new MoleculeItems();
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new MoleculeDelegate(0);
         break;
       case AtomIndex:
-        m_hash[newItem] = (ProjectPlugin*) new AtomItems();
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new AtomDelegate(0);
         break;
       case BondIndex:
-        m_hash[newItem] = (ProjectPlugin*) new BondItems();
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new BondDelegate(0);
         break;
     }
 
@@ -132,28 +116,20 @@ namespace Avogadro {
     QTreeWidgetItem *newItem = new QTreeWidgetItem(curItem);
     newItem->setText(0, ui.itemTypeCombo->currentText());
 
-    // create a new ProjectPlugin for this QTreeWidgetItem
-    /*
-    PluginFactory *factory = pluginManager.factory(ui.itemTypeCombo->currentText(), Plugin::ProjectType);
-    if (factory) 
-    {
-      ProjectPlugin *plugin = (ProjectPlugin*) factory->createInstance();
-      m_hash[newItem] = plugin;
-    }
-    */
+    // create a new ProjectTreeModelDelegate for this QTreeWidgetItem
     switch (ui.itemTypeCombo->currentIndex()) {
       default:
       case LabelIndex:
-        m_hash[newItem] = (ProjectPlugin*) new LabelItems();
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new LabelDelegate(0);
         break;
       case MoleculeIndex:
-        m_hash[newItem] = (ProjectPlugin*) new MoleculeItems();
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new MoleculeDelegate(0);
         break;
       case AtomIndex:
-        m_hash[newItem] = (ProjectPlugin*) new AtomItems();
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new AtomDelegate(0);
         break;
       case BondIndex:
-        m_hash[newItem] = (ProjectPlugin*) new BondItems();
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new BondDelegate(0);
         break;
     }
 
@@ -382,7 +358,7 @@ namespace Avogadro {
         moveItemRightEnabled = true;
       }
 
-      ProjectPlugin *plugin = m_hash.value(current);
+      ProjectTreeModelDelegate *plugin = m_hash.value(current);
       if (plugin)
       {
         aliasText = plugin->alias();
@@ -422,14 +398,14 @@ namespace Avogadro {
     m_updating = true;
     curItem->setText(0, ui.itemTypeCombo->currentText());
     
-    ProjectPlugin *oldPlugin = m_hash.value(curItem);
+    ProjectTreeModelDelegate *oldPlugin = m_hash.value(curItem);
     delete oldPlugin;
 
     m_hash.remove(curItem);
     PluginFactory *factory = pluginManager.projectItemClassFactory().value(ui.itemTypeCombo->currentText());
     if (factory) 
     {
-      ProjectPlugin *plugin = factory->createInstance();
+      ProjectTreeModelDelegate *plugin = factory->createInstance();
       m_hash[curItem] = plugin;
     }
 
@@ -490,22 +466,15 @@ namespace Avogadro {
       newItem = new QTreeWidgetItem(parents.last());
       newItem->setText(0, settings.value("alias").toString());
 
-      // create a new ProjectPlugin for this QTreeWidgetItem
-      /*
-      PluginFactory *factory = pluginManager.factory(settings.value("name").toString(), Plugin::ProjectType);
-      if (factory) 
-      {
-        ProjectPlugin *plugin = (ProjectPlugin*) factory->createInstance();
-        m_hash[newItem] = plugin;
-        plugin->readSettings(settings);
-      }
-      */
+      // create a new ProjectTreeModelDelegate for this QTreeWidgetItem
       if (settings.value("name").toString() == "Label") {
-        m_hash[newItem] = (ProjectPlugin*) new LabelItems();
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new LabelDelegate(0);
       } else if (settings.value("name").toString() == "Molecule") {
-        m_hash[newItem] = (ProjectPlugin*) new MoleculeItems();
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new MoleculeDelegate(0);
+      } else if (settings.value("name").toString() == "Atoms") {
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new AtomDelegate(0);
       } else if (settings.value("name").toString() == "Bonds") {
-        m_hash[newItem] = (ProjectPlugin*) new BondItems();
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new BondDelegate(0);
       }
      
       if (!m_hash[newItem])

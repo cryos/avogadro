@@ -27,8 +27,8 @@ include(${QT_USE_FILE})
 
 FILE(GLOB avogadro_SRCS "*.cpp")
 
-FILE(GLOB projectPlugin_SRCS "projectplugins/*.cpp")
-set(avogadro_SRCS ${avogadro_SRCS} ${projectPlugin_SRCS})
+FILE(GLOB projectDelegates_SRCS "projectdelegates/*.cpp")
+set(avogadro_SRCS ${avogadro_SRCS} ${projectDelegates_SRCS})
 
 # Mac ChemPasteboard currently disabled -- prevents drag-and-drop
 #if(NOT APPLE)

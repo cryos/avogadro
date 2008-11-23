@@ -1,5 +1,5 @@
 /**********************************************************************
-  LabelItems - Project Tree Items for labels.
+  LabelDelegate - Project Tree Items for labels.
 
   Copyright (C) 2008 by Tim Vandermeersch
 
@@ -19,7 +19,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "labelitems.h"
+#include "labeldelegate.h"
 
 #include <avogadro/glwidget.h>
 
@@ -32,34 +32,32 @@ using namespace std;
 namespace Avogadro
 {
 
-  LabelItems::LabelItems() : m_label(0)
+  LabelDelegate::LabelDelegate(ProjectTreeModel *model) : ProjectTreeModelDelegate(model), m_label(0)
   {
   }
  
-  LabelItems::~LabelItems()
+  LabelDelegate::~LabelDelegate()
   {
   }
     
-  void LabelItems::setupModelData(ProjectTreeModel *model, GLWidget *widget, ProjectTreeItem *parent)
+  void LabelDelegate::initStructure(GLWidget *, ProjectTreeItem *parent)
   {
     // add the label
-    int position = parent->childCount();
-    model->insertRows(parent, position, 1);
-    m_label = parent->child(position);
+    m_label = insertExpandableItem(parent);
     m_label->setData(0, alias());
   }
 
-  void LabelItems::writeSettings(QSettings &settings) const
+  void LabelDelegate::writeSettings(QSettings &settings) const
   {
-    ProjectPlugin::writeSettings(settings);
+    ProjectTreeModelDelegate::writeSettings(settings);
   }
   
-  void LabelItems::readSettings(QSettings &settings)
+  void LabelDelegate::readSettings(QSettings &settings)
   {
-    ProjectPlugin::readSettings(settings);
+    ProjectTreeModelDelegate::readSettings(settings);
   }
 
 } // end namespace Avogadro
 
-#include "labelitems.moc"
+#include "labeldelegate.moc"
 

@@ -1,5 +1,5 @@
 /**********************************************************************
-  LabelItems - Project Tree Items for labels.
+  MoleculeDelegate - Project Tree Items for molecule (atoms, bonds, ...).
 
   Copyright (C) 2008 by Tim Vandermeersch
 
@@ -19,11 +19,11 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef LABELITEMS_H
-#define LABELITEMS_H
+#ifndef MOLECULEITEMS_H
+#define MOLECULEITEMS_H
 
 #include <avogadro/global.h>
-#include "../projectplugin.h"
+#include "../projecttreemodeldelegate.h"
 #include "../projecttreemodel.h"
 
 #include <QString>
@@ -31,24 +31,31 @@
 namespace Avogadro {
 
   class Primitive;
+  class AtomDelegate;
+  class BondDelegate;
 
-  class A_EXPORT LabelItems : public ProjectPlugin
+  class A_EXPORT MoleculeDelegate : public ProjectTreeModelDelegate
   {
     Q_OBJECT
 
     public:
-      LabelItems();
-      ~LabelItems();
+      MoleculeDelegate(ProjectTreeModel *model);
+      ~MoleculeDelegate();
 
-      QString name() const { return QObject::tr("Label"); }
+      QString name() const { return QObject::tr("Molecule"); }
       
-      void setupModelData(ProjectTreeModel *, GLWidget *, ProjectTreeItem *parent);
+      void initStructure(GLWidget *, ProjectTreeItem *parent);
       
       void writeSettings(QSettings &settings) const;
       void readSettings(QSettings &settings);
 
     private:
-      ProjectTreeItem *m_label;
+      ProjectTreeItem *m_moleculeLabel;
+      
+      AtomDelegate *m_atomItems;
+      BondDelegate *m_bondItems;
+      
+      //ProjectTreeItem *m_residueLabel;
   };
 
 } // end namespace Avogadro

@@ -36,6 +36,7 @@ namespace Avogadro {
 
   class GLWidget;
   class Primitive;
+  class ProjectTreeModelDelegate;
 
   class ProjectTreeModelPrivate;
   class A_EXPORT ProjectTreeModel : public QAbstractItemModel
@@ -46,21 +47,108 @@ namespace Avogadro {
       explicit ProjectTreeModel( GLWidget *widget, QObject *parent = 0 );
       ~ProjectTreeModel();
 
-      // read-only functions
+      /**********************************************************************
+       * The following functions are used by the QTreeView to get the data.
+       **********************************************************************/
+
+      /**
+       * @return The data at position @p index.
+       */
       QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
+      /**
+       * @return A global model QModelIndex based on a parent, row and column
+       */
       QModelIndex index ( int row, int column, const QModelIndex & parent = QModelIndex() ) const;
+      /**
+       * @return A QModelIndex for the parent of @p index.
+       */
       QModelIndex parent( const QModelIndex & index ) const;
+      /**
+       * @return The number of rows for @p parent.
+       */
       int rowCount( const QModelIndex & parent = QModelIndex() ) const;
+      /**
+       * @return The number of columns in the model.
+       *
+       * This is always the same values as d->rootItem->columnCount(), you
+       * can add more columns by adding more data items to d->rootItem in
+       * the constructor.
+       */
       int columnCount( const QModelIndex & parent = QModelIndex() ) const;
-      
-      // resizing functions
+      /**
+       * @return The flags for item with index @p index.
+       */
       Qt::ItemFlags flags ( const QModelIndex & index ) const;
+
+      /**********************************************************************
+       * The following functions are used by the various ProjectItems to 
+       * add, remove and update the ProjectTreeItems.
+       **********************************************************************/
+      
+      /*
+       * Add @p rows rows at position @p position to parent @p parentItem.
+       */
       bool insertRows(ProjectTreeItem *parentItem, int position, int rows);
+      /*
+       * Remove @p rows rows at position @p position in parent @p parentItem.
+       */
       bool removeRows(ProjectTreeItem *parentItem, int position, int rows);
 
+      /**
+       * Use this function in the ProjectItems classes to make the associated
+       * QTreeView aware that some data has changed. For example, you can call 
+       * this after responding to a primitiveUpdated(...) signal.
+       */
       void emitDataChanged(ProjectTreeItem *parentItem, int row);
-
+      /**
+       * @return The ProjectTreeItem for @p index
+       */
       ProjectTreeItem* item(const QModelIndex& index) const;
+
+
+      /**********************************************************************
+       * These functions are used to handle dynamic model creation as needed.
+       * In other words, create items when the parent is expaneded.
+       **********************************************************************/
+
+      /**
+       * @return true if the item with index @p parent has children.
+       *
+       * QTreeView uses this (and not rowCount()) to determine wether it
+       * should draw a expandable item (with the plus/triangle)
+       */
+      bool hasChildren(const QModelIndex &parent = QModelIndex()) const;
+      /**
+       * @return true if there is more data available for parent, 
+       * otherwise false.
+       *
+       * If a user expands an item, Qt will call:
+       * if (canFetchMore(parent)) fetchMore()
+       *
+       * So we can delay the initialization of the model (and connecting the
+       * signal) until the user actually expands an item.)   
+       *
+       * The default Qt implementation always returns false, we return true
+       * for non-terminal items.
+       */
+      bool canFetchMore(const QModelIndex& parent) const;
+      /**
+       * Initialize more model data, see canFetchMore(). This function does 
+       * the actual updating of the model.
+       */
+      void fetchMore(const QModelIndex& parent);
+      
+      
+      /**
+       * Some delegates may delegate their work to other delegates. However, to keep the
+       * model informed about all the delegates, these delegates will export thier delegates
+       * using ProjectTreeModelDelegate::exportDelegate(...). This function will then call 
+       * importDelegate(...). This will also steal the pointer, you don't need to delete them.
+       *
+       * See MoleculeDelegate for example.
+       */
+      void importDelegate(ProjectTreeModelDelegate *delegate);
+ 
 
     private Q_SLOTS:
       void init();

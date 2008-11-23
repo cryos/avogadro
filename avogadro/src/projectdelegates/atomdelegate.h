@@ -1,5 +1,5 @@
 /**********************************************************************
-  AtomItems - Project Tree Item for atoms.
+  AtomDelegate - Project Tree Item for atoms.
 
   Copyright (C) 2008 by Tim Vandermeersch
 
@@ -23,7 +23,7 @@
 #define ATOMITEMS_H
 
 #include <avogadro/global.h>
-#include "../projectplugin.h"
+#include "../projecttreemodeldelegate.h"
 #include "../projecttreemodel.h"
 
 #include <QString>
@@ -32,20 +32,22 @@ namespace Avogadro {
 
   class Primitive;
 
-  class A_EXPORT AtomItems : public ProjectPlugin
+  class A_EXPORT AtomDelegate : public ProjectTreeModelDelegate
   {
     Q_OBJECT
 
     public:
-      AtomItems();
-      ~AtomItems();
+      AtomDelegate(ProjectTreeModel *model);
+      ~AtomDelegate();
 
       QString name() const { return QObject::tr("Atoms"); }
       
-      void setupModelData(ProjectTreeModel *, GLWidget *, ProjectTreeItem *parent);
+      void initStructure(GLWidget *widget, ProjectTreeItem *parent);
       
       void writeSettings(QSettings &settings) const;
       void readSettings(QSettings &settings);
+      
+      void fetchMore(ProjectTreeItem *parent);
 
     public slots:
       void primitiveAdded(Primitive*);

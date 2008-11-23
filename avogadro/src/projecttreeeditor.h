@@ -45,7 +45,7 @@
 #define TREEWIDGETEDITOR_H
 
 #include <avogadro/global.h>
-#include "projectplugin.h"
+#include "projecttreemodeldelegate.h"
 
 #include <QDialog>
 #include <QHash>
@@ -91,7 +91,7 @@ namespace Avogadro {
 
       Ui::ProjectTreeEditor ui;
       bool m_updating;
-      QHash<QTreeWidgetItem*, ProjectPlugin*> m_hash;
+      QHash<QTreeWidgetItem*, ProjectTreeModelDelegate*> m_hash;
   };
 
 }  // namespace

@@ -1,5 +1,5 @@
 /**********************************************************************
-  BondItems - Project Tree Items for bonds.
+  BondDelegate - Project Tree Items for bonds.
 
   Copyright (C) 2008 by Tim Vandermeersch
 
@@ -23,7 +23,7 @@
 #define BONDITEMS_H
 
 #include <avogadro/global.h>
-#include "../projectplugin.h"
+#include "../projecttreemodeldelegate.h"
 #include "../projecttreemodel.h"
 
 #include <QString>
@@ -32,20 +32,22 @@ namespace Avogadro {
 
   class Primitive;
 
-  class A_EXPORT BondItems : public ProjectPlugin
+  class A_EXPORT BondDelegate : public ProjectTreeModelDelegate
   {
     Q_OBJECT
 
     public:
-      BondItems();
-      ~BondItems();
+      BondDelegate(ProjectTreeModel *model);
+      ~BondDelegate();
 
       QString name() const { return QObject::tr("Bonds"); }
       
-      void setupModelData(ProjectTreeModel *, GLWidget *, ProjectTreeItem *parent);
+      void initStructure(GLWidget *, ProjectTreeItem *parent);
       
       void writeSettings(QSettings &settings) const;
       void readSettings(QSettings &settings);
+      
+      void fetchMore(ProjectTreeItem *parent);
     
     public slots:
       void primitiveAdded(Primitive*);
@@ -56,7 +58,6 @@ namespace Avogadro {
       void initialize();
 
       ProjectTreeItem  *m_label;
-      ProjectTreeModel *m_model;
       GLWidget         *m_widget;
   };
 
