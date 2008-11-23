@@ -85,11 +85,11 @@ namespace Avogadro
 
   QStringList POVRayDialog::commandLine()
   {
-    QString fileName = ui.fileName->text().mid(0,
-                                    ui.fileName->text().lastIndexOf("."));
+    QString fileName = ui.fileName->text();
+    QFileInfo info(fileName);
     QStringList tmp;
-    tmp << "+I" + fileName + ".pov"
-        << "+O" + fileName + ".png"
+    tmp << "+I" + info.baseName() + ".pov"
+        << "+O" + info.baseName() + ".png"
         << "+W" + ui.dimX->text()
         << "+H" + ui.dimY->text()
         << "+V" << "+D" << "+FN" << "+Q10";

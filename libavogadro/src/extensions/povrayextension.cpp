@@ -155,6 +155,8 @@ namespace Avogadro
 
     if (m_POVRayDialog->renderDirect()) {
       m_process = new QProcess(this);
+      QFileInfo info(fileName + ".png");
+      m_process->setWorkingDirectory(info.absolutePath());
       m_process->start("povray", m_POVRayDialog->commandLine());
       qDebug() << "Command:" << "povray " + m_POVRayDialog->commandLine().join(" ");
       qDebug() << "Rendering started...";
