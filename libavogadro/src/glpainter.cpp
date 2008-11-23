@@ -1005,19 +1005,25 @@ namespace Avogadro
     std::vector<Eigen::Vector3f> v = mesh.vertices();
     std::vector<Eigen::Vector3f> n = mesh.normals();
 
+    if (v.size() != n.size()) {
+      qDebug() << "Vertices size does not equal normals size:" << v.size()
+               << n.size();
+      return;
+    }
+
     // Normal or reverse winding?
     if (normalWind) {
       for(unsigned int i = 0; i < v.size(); ++i) {
-        glNormal3fv(n[i].data());
-        glVertex3fv(v[i].data());
+        glNormal3fv(n.at(i).data());
+        glVertex3fv(v.at(i).data());
       }
     }
     /// FIXME - this is a fudge to fix the negative windings right now - FIXME!
     else {
       for(unsigned int i = v.size(); i > 0; --i) {
-        Eigen::Vector3f tmp = n[i-1] * -1;
+        Eigen::Vector3f tmp = n.at(i-1) * -1;
         glNormal3fv(tmp.data());
-        glVertex3fv(v[i-1].data());
+        glVertex3fv(v.at(i-1).data());
       }
     }
     glEnd();
@@ -1051,6 +1057,12 @@ namespace Avogadro
     std::vector<Eigen::Vector3f> v = mesh.vertices();
     std::vector<Eigen::Vector3f> n = mesh.normals();
     std::vector<QColor> c = mesh.colors();
+
+    if (v.size() != n.size() || v.size() != c.size()) {
+      qDebug() << "Vertices size does not equal normals size or color size:"
+               << v.size() << n.size() << c.size();
+      return;
+    }
 
     // Normal or reverse winding?
     Color color;
