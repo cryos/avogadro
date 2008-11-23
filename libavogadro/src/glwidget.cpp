@@ -652,7 +652,7 @@ namespace Avogadro {
           Point *point = static_cast<Point*>(primitive);
           d->pd->painter()->setColor( point->color() );
           d->pd->painter()->setName( Primitive::PointType, ids[Primitive::PointType]++ );
-          d->pd->painter()->drawSphere( point->pos(), point->radius() );
+          d->pd->painter()->drawSphere( &point->pos(), point->radius() );
           }
           break;
         case Primitive::LineType:
@@ -1239,9 +1239,9 @@ namespace Avogadro {
         double x, max_x;
         if (atoms.size()) {
           d->farthestAtom = atoms.at(0);
-          max_x = centerOffset.dot(d->farthestAtom->pos());
+          max_x = centerOffset.dot(*d->farthestAtom->pos());
           foreach (Atom *atom, atoms) {
-            x = centerOffset.dot(atom->pos());
+            x = centerOffset.dot(*atom->pos());
             if (x > max_x) {
               max_x = x;
               d->farthestAtom = atom;

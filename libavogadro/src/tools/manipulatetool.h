@@ -90,10 +90,14 @@ namespace Avogadro {
       Eyecandy            *m_eyecandy;
       double              m_yAngleEyecandy, m_xAngleEyecandy;
 
-      void zoom(GLWidget *widget, const Eigen::Vector3d &goal, double delta) const;
-      void translate(GLWidget *widget, const Eigen::Vector3d &what, const QPoint &from, const QPoint &to) const;
-      void rotate(GLWidget *widget, const Eigen::Vector3d &center, double deltaX, double deltaY) const;
-      void tilt(GLWidget *widget, const Eigen::Vector3d &center, double delta) const;
+      void zoom(GLWidget *widget, const Eigen::Vector3d *goal,
+                double delta) const;
+      void translate(GLWidget *widget, const Eigen::Vector3d *what, const QPoint
+                     &from, const QPoint &to) const;
+      void rotate(GLWidget *widget, const Eigen::Vector3d *center, double deltaX,
+                  double deltaY) const;
+      void tilt(GLWidget *widget, const Eigen::Vector3d *center,
+                double delta) const;
   };
 
  class MoveAtomCommand : public QUndoCommand

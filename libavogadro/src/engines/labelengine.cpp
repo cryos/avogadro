@@ -93,7 +93,7 @@ namespace Avogadro {
   bool LabelEngine::renderOpaque(PainterDevice *pd, const Atom *a)
   {
     // Render atom labels
-    const Vector3d pos = a->pos();
+    const Vector3d pos = *a->pos();
 
     double renderRadius = pd->radius(a);
     renderRadius += 0.05;
@@ -144,8 +144,8 @@ namespace Avogadro {
     // Render bond labels
     Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
     Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
-    Vector3d v1 (atom1->pos());
-    Vector3d v2 (atom2->pos());
+    Vector3d v1 (*atom1->pos());
+    Vector3d v2 (*atom2->pos());
     Vector3d d = v2 - v1;
     d.normalize();
 

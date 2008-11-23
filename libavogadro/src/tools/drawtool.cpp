@@ -48,9 +48,8 @@
 #include <QDir>
 #include <QDebug>
 
-using namespace std;
-using namespace Eigen;
-using namespace OpenBabel;
+using Eigen::Vector3d;
+using OpenBabel::OBForceField;
 
 namespace Avogadro {
 
@@ -165,13 +164,13 @@ namespace Avogadro {
       }
       else { // a genuine click in new space == create a new atom or fragment
         if (m_insertFragmentMode) { // insert a new fragment
-          Eigen::Vector3d refPoint;
+          Vector3d refPoint;
           if (m_beginAtom) {
-            refPoint = m_beginAtom->pos();
+            refPoint = *m_beginAtom->pos();
           } else {
             refPoint = widget->center();
           }
-          Eigen::Vector3d newMolPos = widget->camera()->unProject(event->pos(), refPoint);
+          Vector3d newMolPos = widget->camera()->unProject(event->pos(), refPoint);
           Molecule m_generatedMolecule = *m_fragmentDialog->fragment();
           m_generatedMolecule.center();
           m_generatedMolecule.translate(Vector3d(newMolPos.x(),
@@ -503,12 +502,12 @@ namespace Avogadro {
     if(widget->molecule()->numAtoms()) {
       QList<Atom*> atoms = widget->molecule()->atoms();
       foreach(Atom* atom, atoms) {
-        Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
+        Vector3d transformedAtomPos = widget->camera()->modelview() * *atom->pos();
         double atomDistance = transformedAtomPos.norm();
         double dot = transformedAtomPos.z() / atomDistance;
         double weight = exp(-30. * (1. + dot));
         sumOfWeights += weight;
-        atomsBarycenter += weight * atom->pos();
+        atomsBarycenter += weight * *atom->pos();
       }
       atomsBarycenter /= sumOfWeights;
     }
@@ -529,9 +528,9 @@ namespace Avogadro {
 
   void DrawTool::moveAtom(GLWidget *widget, Atom *atom, const QPoint& p)
   {
-    Eigen::Vector3d refPoint;
+    Vector3d refPoint;
     if(m_beginAtom) {
-      refPoint = m_beginAtom->pos();
+      refPoint = *m_beginAtom->pos();
     } else {
       refPoint = widget->center();
     }

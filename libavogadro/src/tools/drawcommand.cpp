@@ -37,7 +37,7 @@ using namespace OpenBabel;
 namespace Avogadro {
 
   /// Utility function -- unset OpenBabel perception
-  void UnsetFlags(Molecule *mol)
+  void UnsetFlags(Molecule *)
   {
 /*    mol->UnsetFlag(OB_AROMATIC_MOL);
     mol->UnsetFlag(OB_SSSR_MOL);
@@ -86,7 +86,7 @@ namespace Avogadro {
   {
     setText(QObject::tr("Add Atom"));
     d->molecule = molecule;
-    d->pos = atom->pos();
+    d->pos = *atom->pos();
     d->element = atom->atomicNumber();
     d->atom = atom;
     d->adjustValence = adjustValence;

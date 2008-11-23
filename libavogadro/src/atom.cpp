@@ -25,9 +25,14 @@
 
 #include "atom.h"
 
+#include "molecule.h"
 #include "bond.h"
 
 #include <openbabel/mol.h>
+
+#include <QDebug>
+
+using Eigen::Vector3d;
 
  namespace Avogadro{
 
@@ -36,9 +41,23 @@
       AtomPrivate() {}
   };
 
-  Atom::Atom(QObject *parent) : Primitive(AtomType, parent), m_pos(0., 0., 0.),
-    m_atomicNum(0), m_partialCharge(0.0)
+  Atom::Atom(QObject *parent) : Primitive(AtomType, parent), m_atomicNumber(0),
+    m_partialCharge(0.0)
   {
+    if (!parent) {
+      qDebug() << "I am an orphaned atom! I feel so invalid...";
+    }
+    m_molecule = static_cast<Molecule*>(parent);
+  }
+
+  const Eigen::Vector3d * Atom::pos() const
+  {
+    return m_molecule->atomPos(m_id);
+  }
+
+  void Atom::setPos(const Eigen::Vector3d &vec)
+  {
+    m_molecule->setAtomPos(m_id, vec);
   }
 
   void Atom::addBond(Bond* bond)
@@ -68,8 +87,9 @@
   {
     // Need to copy all relevant data over to the OBAtom
     OpenBabel::OBAtom obatom;
-    obatom.SetVector(m_pos.x(), m_pos.y(), m_pos.z());
-    obatom.SetAtomicNum(m_atomicNum);
+    const Vector3d *v = m_molecule->atomPos(m_id);
+    obatom.SetVector(v->x(), v->y(), v->z());
+    obatom.SetAtomicNum(m_atomicNumber);
 
     return obatom;
   }
@@ -77,10 +97,9 @@
   bool Atom::setOBAtom(OpenBabel::OBAtom *obatom)
   {
     // Copy all needed OBAtom data to our atom
-    m_pos = Eigen::Vector3d(obatom->x(), obatom->y(), obatom->z());
-    m_atomicNum = obatom->GetAtomicNum();
+    m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
+    m_atomicNumber = obatom->GetAtomicNum();
     m_partialCharge = obatom->GetPartialCharge();
-    update();
     return true;
   }
 
@@ -88,7 +107,7 @@
   {
     // Virtually everything here is invariant apart from the index and possibly id
     m_pos = other.m_pos;
-    m_atomicNum = other.m_atomicNum;
+    m_atomicNumber = other.m_atomicNumber;
     m_bonds = other.m_bonds;
     return *this;
   }

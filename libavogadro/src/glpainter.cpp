@@ -36,6 +36,7 @@
 #include <avogadro/mesh.h>
 
 #include <QDebug>
+#include <QColor>
 #include <QVarLengthArray>
 #include <Eigen/Geometry>
 
@@ -313,9 +314,15 @@ namespace Avogadro
     d->id = id;
   }
 
-  void GLPainter::setColor ( const Color *color )
+  void GLPainter::setColor (const Color *color)
   {
     d->color = *color;
+  }
+
+  void GLPainter::setColor (const QColor *color)
+  {
+    d->color = Color(color->redF(), color->greenF(), color->blueF(),
+                     color->alphaF());
   }
 
   void GLPainter::setColor ( float red, float green, float blue, float alpha )
@@ -323,7 +330,7 @@ namespace Avogadro
     d->color.set(red, green, blue, alpha);
   }
 
-  void GLPainter::drawSphere ( const Eigen::Vector3d & center, double radius )
+  void GLPainter::drawSphere ( const Eigen::Vector3d *center, float radius )
   {
     if(!d->isValid()) { return; }
 
@@ -331,10 +338,9 @@ namespace Avogadro
     int detailLevel = PAINTER_MAX_DETAIL_LEVEL / 3;
 
     if (m_dynamicScaling) {
-      double apparentRadius = radius / d->widget->camera()->distance(center);
-      detailLevel = 1 + static_cast<int> ( floor (PAINTER_SPHERES_DETAIL_COEFF
-                        * ( sqrt ( apparentRadius ) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL )
-                        ) );
+      double apparentRadius = radius / d->widget->camera()->distance(*center);
+      detailLevel = 1 + static_cast<int>(floor (PAINTER_SPHERES_DETAIL_COEFF
+                        * (sqrt(apparentRadius) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL)));
       if (detailLevel < 0)
         detailLevel = 0;
       if (detailLevel > PAINTER_MAX_DETAIL_LEVEL)
@@ -343,7 +349,7 @@ namespace Avogadro
 
     d->color.applyAsMaterials();
     pushName();
-    d->spheres[detailLevel]->draw ( center, radius );
+    d->spheres[detailLevel]->draw (*center, radius);
     popName();
   }
 

@@ -75,6 +75,12 @@ namespace Avogadro
     d->color = *color;
   }
 
+  void POVPainter::setColor (const QColor *color)
+  {
+    d->color = Color(color->redF(), color->greenF(), color->blueF(),
+                     color->alphaF());
+  }
+
   void POVPainter::setColor (float red, float green, float blue, float alpha)
   {
     d->color = Color(red, green, blue, alpha);
@@ -86,13 +92,14 @@ namespace Avogadro
     d->planeNormalVector = planeNormalVector;
   }
 
-  void POVPainter::drawSphere (const Vector3d & center, double radius)
+  void POVPainter::drawSphere (const Vector3d *center, float radius)
   {
     // Write out a POVRay sphere for rendering
     *(d->output) << "sphere {\n"
-      << "\t<" << center.x() << ", " << center.y() << ", " << center.z() << ">, " << radius
-      << "\n\tpigment { rgbf <" << d->color.red() << ", " << d->color.green() << ", "
-      << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }\n}\n";
+      << "\t<" << center->x() << ", " << center->y() << ", " << center->z()
+      << ">, " << radius
+      << "\n\tpigment { rgbf <" << d->color.red() << ", " << d->color.green()
+      << ", " << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }\n}\n";
   }
 
   void POVPainter::drawCylinder (const Vector3d &end1, const Vector3d &end2,
@@ -449,12 +456,10 @@ namespace Avogadro
     Vector3d cameraZ = -m_glwidget->camera()->backTransformedZAxis();
 
     double huge;
-    if(m_glwidget->farthestAtom())
-    {
-      huge = 10 * m_glwidget->farthestAtom()->pos().norm();
+    if(m_glwidget->farthestAtom()) {
+      huge = 10 * m_glwidget->farthestAtom()->pos()->norm();
     }
-    else
-    {
+    else {
       huge = 10;
     }
 

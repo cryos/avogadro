@@ -49,7 +49,7 @@ namespace Avogadro {
 
   AutoOptTool::AutoOptTool(QObject *parent) : Tool(parent), m_clickedAtom(0),
   m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false),
-  m_running(false), m_block(false), m_setupFailed(false), m_timerId(0) ,m_toolGroup(0), 
+  m_running(false), m_block(false), m_setupFailed(false), m_timerId(0) ,m_toolGroup(0),
   m_settingsWidget(0), m_lastEnergy(0.0)
   {
     QAction *action = activateAction();
@@ -109,7 +109,7 @@ namespace Avogadro {
         if (p->type() == Primitive::AtomType)
         {
           Atom *a = static_cast<Atom *>(p);
-          a->setPos(atomTranslation + a->pos());
+          a->setPos(atomTranslation + *a->pos());
           a->update();
         }
       }
@@ -117,7 +117,7 @@ namespace Avogadro {
 
     if (m_clickedAtom)
     {
-      m_clickedAtom->setPos(atomTranslation + m_clickedAtom->pos());
+      m_clickedAtom->setPos(atomTranslation + *m_clickedAtom->pos());
       m_clickedAtom->update();
     }
   }
@@ -195,9 +195,9 @@ namespace Avogadro {
       if (m_leftButtonPressed)
       {
           // translate the molecule following mouse movement
-          Vector3d begin = widget->camera()->project(m_clickedAtom->pos());
+          Vector3d begin = widget->camera()->project(*m_clickedAtom->pos());
           QPoint point = QPoint(begin.x(), begin.y());
-          translate(widget, m_clickedAtom->pos(), point/*m_lastDraggingPosition*/, event->pos());
+          translate(widget, *m_clickedAtom->pos(), point/*m_lastDraggingPosition*/, event->pos());
       }
       else if (m_midButtonPressed)
       {
@@ -248,7 +248,7 @@ namespace Avogadro {
     {
       Atom *clickedAtom = (Atom*)clickedPrim;
       // Perform the zoom toward clicked atom
-      Navigate::zoom(widget, clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
+      Navigate::zoom(widget, *clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
     }
     else if (clickedPrim && clickedPrim->type() == Primitive::BondType)
     {
@@ -257,11 +257,11 @@ namespace Avogadro {
       Atom *begin = widget->molecule()->atomById(clickedBond->beginAtomId());
       Atom *end = widget->molecule()->atomById(clickedBond->endAtomId());
 
-      Vector3d btoe = end->pos() - begin->pos();
+      Vector3d btoe = *end->pos() - *begin->pos();
       double newLen = btoe.norm() / 2;
       btoe = btoe / btoe.norm();
 
-      Vector3d mid = begin->pos() + btoe * newLen;
+      Vector3d mid = *begin->pos() + btoe * newLen;
 
       // Perform the zoom toward the centre of a clicked bond
       Navigate::zoom(widget, mid, - MOUSE_WHEEL_SPEED * event->delta());
@@ -285,11 +285,11 @@ namespace Avogadro {
         widget->painter()->drawText(labelPos, tr("AutoOpt: Could not setup force field...."));
       } else {
         double energy = m_forceField->Energy(false);
-        widget->painter()->drawText(labelPos, 
+        widget->painter()->drawText(labelPos,
             tr("AutoOpt: E = %1 %2 (dE = %3)").arg(energy).
             arg(m_forceField->GetUnit().c_str()).
             arg( fabs(m_lastEnergy - energy) ));
-        //widget->painter()->drawText(debugPos, 
+        //widget->painter()->drawText(debugPos,
         //    tr("Num Constraints: %1").arg(m_forceField->GetConstraints().Size()));
         m_lastEnergy = energy;
       }
@@ -310,14 +310,14 @@ namespace Avogadro {
       else if (m_leftButtonPressed || m_midButtonPressed || m_rightButtonPressed)
       {
         widget->painter()->setColor(1.0, 0.3, 0.3, 0.7);
-        widget->painter()->drawSphere(m_selectedPrimitivesCenter, 0.10);
+        widget->painter()->drawSphere(&m_selectedPrimitivesCenter, 0.10);
       }
     }
-    else if (m_leftButtonPressed && !m_clickedAtom
-        || m_midButtonPressed || m_rightButtonPressed)
+    else if (m_leftButtonPressed && (!m_clickedAtom
+        || m_midButtonPressed || m_rightButtonPressed))
     {
       widget->painter()->setColor(1.0, 0.3, 0.3, 0.7);
-      widget->painter()->drawSphere(m_selectedPrimitivesCenter, 0.10);
+      widget->painter()->drawSphere(&m_selectedPrimitivesCenter, 0.10);
     }
     return true;
   }
@@ -340,7 +340,7 @@ namespace Avogadro {
       QGridLayout* grid = new QGridLayout;
       grid->addWidget(labelFF, 0, 0, Qt::AlignRight);
       grid->addLayout(hbox, 0, 1);
-      
+
       QLabel* labelSteps = new QLabel(tr("Steps per Update:"));
       labelSteps->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
       labelSteps->setMaximumHeight(15);
@@ -371,7 +371,7 @@ namespace Avogadro {
 
       m_fixedMovable = new QCheckBox(tr("Fixed atoms are movable"), m_settingsWidget);
       m_ignoredMovable = new QCheckBox(tr("Ignored atoms are movable"), m_settingsWidget);
-      
+
       QVBoxLayout* layout = new QVBoxLayout();
       layout->addLayout(grid); // force field, steps and labels
 
@@ -421,7 +421,7 @@ namespace Avogadro {
 
     if(!m_running)
     {
-      m_thread->setup(m_glwidget->molecule(), m_forceField, 
+      m_thread->setup(m_glwidget->molecule(), m_forceField,
                       m_comboAlgorithm->currentIndex(),
                       m_stepsSpinBox->value());
       m_thread->start();
@@ -455,7 +455,7 @@ namespace Avogadro {
       m_buttonStartStop->setText(tr("Start"));
 
       m_glwidget->update(); // redraw AutoOpt label
-      
+
       m_clickedAtom = 0;
       m_forceField->UnsetFixAtom();
       m_leftButtonPressed = false;
@@ -483,8 +483,8 @@ namespace Avogadro {
       emit setupFailed();
       return;
     }
-    
-    m_thread->setup(m_glwidget->molecule(), m_forceField, 
+
+    m_thread->setup(m_glwidget->molecule(), m_forceField,
                     m_comboAlgorithm->currentIndex(),
                     m_stepsSpinBox->value());
     m_thread->update();
@@ -501,12 +501,12 @@ namespace Avogadro {
         OBAtom *obatom = mol.GetAtom(atom->index() + 1);
         atom->setPos(Eigen::Vector3d(obatom->GetVector().AsArray()));
       }
- 
+
       if(m_clickedAtom && m_leftButtonPressed)
       {
-        Vector3d begin = m_glwidget->camera()->project(m_clickedAtom->pos());
+        Vector3d begin = m_glwidget->camera()->project(*m_clickedAtom->pos());
         QPoint point = QPoint(begin.x(), begin.y());
-        translate(m_glwidget, m_clickedAtom->pos(), point, m_lastDraggingPosition);
+        translate(m_glwidget, *m_clickedAtom->pos(), point, m_lastDraggingPosition);
       }
     }
 
@@ -514,7 +514,7 @@ namespace Avogadro {
     m_glwidget->update();
     m_block = false;
   }
-  
+
   void AutoOptTool::setupDone()
   {
     if(!m_timerId)
@@ -525,12 +525,12 @@ namespace Avogadro {
 
   void AutoOptTool::setupFailed()
   {
-    m_setupFailed = true; 
+    m_setupFailed = true;
   }
-  
+
   void AutoOptTool::setupSucces()
   {
-    m_setupFailed = false; 
+    m_setupFailed = false;
   }
 
   AutoOptThread::AutoOptThread(QObject*)
@@ -538,8 +538,8 @@ namespace Avogadro {
     m_stop = false;
     m_velocities = false;
   }
-  
-  void AutoOptThread::setup(Molecule *molecule, OpenBabel::OBForceField* forceField, 
+
+  void AutoOptThread::setup(Molecule *molecule, OpenBabel::OBForceField* forceField,
         int algorithm, int steps)
   {
     //cout << "start AutoOptThread::setup()" << endl;
@@ -555,7 +555,7 @@ namespace Avogadro {
     //cout << "stop AutoOptThread::setup()" << endl;
   }
 
- 
+
   void AutoOptThread::run()
   {
     exec();
@@ -604,7 +604,7 @@ namespace Avogadro {
      }
 
      m_mutex.unlock();
-     
+
      emit finished(m_stop ? false : true);
   }
 
@@ -613,7 +613,7 @@ namespace Avogadro {
     m_stop = true;
   }
 
-  AutoOptCommand::AutoOptCommand(Molecule *molecule, AutoOptTool *tool, 
+  AutoOptCommand::AutoOptCommand(Molecule *molecule, AutoOptTool *tool,
       QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)
   {
     // Store the original molecule before any modifications are made
@@ -647,7 +647,7 @@ namespace Avogadro {
   {
     return 1311387;
   }
-  
+
   void AutoOptTool::writeSettings(QSettings &settings) const
   {
     Tool::writeSettings(settings);

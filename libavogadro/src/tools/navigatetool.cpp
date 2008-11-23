@@ -74,7 +74,7 @@ namespace Avogadro {
     else if(!widget->molecule()->numAtoms())
       m_referencePoint = Vector3d(0., 0., 0.);
     else if(m_clickedAtom)
-      m_referencePoint = m_clickedAtom->pos();
+      m_referencePoint = *m_clickedAtom->pos();
     else {
       // let's set m_referencePoint to be the center of the visible
       // part of the molecule.
@@ -82,12 +82,12 @@ namespace Avogadro {
       double sumOfWeights = 0.;
       QList<Atom*> atoms = widget->molecule()->atoms();
       foreach (Atom *atom, atoms) {
-        Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
+        Vector3d transformedAtomPos = widget->camera()->modelview() * *atom->pos();
         double atomDistance = transformedAtomPos.norm();
         double dot = transformedAtomPos.z() / atomDistance;
         double weight = exp(-30. * (1. + dot));
         sumOfWeights += weight;
-        atomsBarycenter += weight * atom->pos();
+        atomsBarycenter += weight * *atom->pos();
       }
       atomsBarycenter /= sumOfWeights;
       m_referencePoint = atomsBarycenter;
@@ -223,15 +223,15 @@ namespace Avogadro {
   bool NavigateTool::paint(GLWidget *widget)
   {
     if(m_leftButtonPressed) {
-      m_eyecandy->drawRotation(widget, m_clickedAtom, m_xAngleEyecandy, m_yAngleEyecandy, m_referencePoint);
+      m_eyecandy->drawRotation(widget, m_clickedAtom, m_xAngleEyecandy, m_yAngleEyecandy, &m_referencePoint);
     }
 
     else if(m_midButtonPressed) {
-      m_eyecandy->drawZoom(widget, m_clickedAtom, m_referencePoint);
+      m_eyecandy->drawZoom(widget, m_clickedAtom, &m_referencePoint);
     }
 
     else if(m_rightButtonPressed) {
-      m_eyecandy->drawTranslation(widget, m_clickedAtom, m_referencePoint);
+      m_eyecandy->drawTranslation(widget, m_clickedAtom, &m_referencePoint);
     }
 
     return true;

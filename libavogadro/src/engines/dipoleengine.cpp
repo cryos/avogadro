@@ -142,7 +142,7 @@ namespace Avogadro {
 
       foreach(const Primitive *p, list) {
         const Atom *a = static_cast<const Atom *>(p);
-        tempMoment += a->pos() * a->partialCharge();
+        tempMoment += *a->pos() * a->partialCharge();
       }
       break;
 

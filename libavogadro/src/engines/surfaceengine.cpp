@@ -119,7 +119,7 @@ namespace Avogadro {
 
     foreach(const Primitive *p, list) {
       const Atom *a = static_cast<const Atom *>(p);
-      dist = a->pos() - pos;
+      dist = *a->pos() - pos;
       energy += a->partialCharge() / dist.norm2();
     }
 
@@ -515,14 +515,14 @@ namespace Avogadro {
     m_color.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();
   }
- 
+
   void SurfaceEngine::setDrawBox(int value)
   {
     if (value == 0) {
       m_drawBox = false;
       m_boxControl->removePrimitives();
     } else {
-      m_drawBox = true;      
+      m_drawBox = true;
       m_boxControl->addPrimitives();
     }
 
@@ -534,12 +534,12 @@ namespace Avogadro {
     m_surfaceValid = false;
     emit changed();
   }
-  
+
   void SurfaceEngine::resetBox()
   {
     m_surfaceValid = false;
     m_boxControl->setModified(false);
-    emit changed();  
+    emit changed();
   }
 
   QWidget* SurfaceEngine::settingsWidget()
@@ -552,13 +552,13 @@ namespace Avogadro {
       connect(m_settingsWidget->colorCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setColorMode(int)));
       connect(m_settingsWidget->customColorButton, SIGNAL(colorChanged(QColor)), this, SLOT(setColor(QColor)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
-      
+
       // draw box...
       connect(m_settingsWidget->drawBoxCheck, SIGNAL(stateChanged(int)),
               this, SLOT(setDrawBox(int)));
       connect(m_settingsWidget->drawBoxResetButton, SIGNAL(clicked()),
               this, SLOT(resetBox()));
- 
+
       // clipping stuff
       connect(m_settingsWidget->clipCheckBox, SIGNAL(stateChanged(int)), this, SLOT(setClipEnabled(int)));
       connect(m_settingsWidget->ASpinBox, SIGNAL(valueChanged(double)), this, SLOT(setClipEqA(double)));
@@ -589,7 +589,7 @@ namespace Avogadro {
 
     if (!m_boxControl->isModified())
       m_boxControl->setOppositeCorners( m_vdwThread->grid()->cube()->min(), m_vdwThread->grid()->cube()->max() );
- 
+
     m_isoGen->init(m_vdwThread->grid(), 0, false, m_vdwThread->stepSize());
     m_isoGen->start();
   }
@@ -694,7 +694,7 @@ namespace Avogadro {
     m_mutex.unlock();
   }
 
-  void VDWGridThread::init(Molecule *molecule, PrimitiveList &primitives, const PainterDevice* pd, 
+  void VDWGridThread::init(Molecule *molecule, PrimitiveList &primitives, const PainterDevice* pd,
       BoxControl *boxControl, double stepSize)
   {
     m_mutex.lock();
@@ -767,7 +767,7 @@ namespace Avogadro {
     QList<int> surfaceAtomsNum;
     foreach(Primitive* p, pSurfaceAtoms) {
       Atom* a = static_cast<Atom *>(p);
-      surfaceAtomsPos.push_back(a->pos());
+      surfaceAtomsPos.push_back(*a->pos());
       surfaceAtomsNum.push_back(a->atomicNumber());
     }
     m_molecule->lock()->unlock();

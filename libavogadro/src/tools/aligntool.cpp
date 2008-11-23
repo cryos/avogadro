@@ -125,12 +125,12 @@ namespace Avogadro {
     double sumOfWeights = 0.;
     QList<Atom*> atoms = widget->molecule()->atoms();
     foreach (const Atom *atom, atoms) {
-      Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
+      Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * *atom->pos();
       double atomDistance = transformedAtomPos.norm();
       double dot = transformedAtomPos.z() / atomDistance;
       double weight = exp(-30. * (1. + dot));
       sumOfWeights += weight;
-      atomsBarycenter += weight * atom->pos();
+      atomsBarycenter += weight * *atom->pos();
     }
     atomsBarycenter /= sumOfWeights;
 
@@ -151,13 +151,13 @@ namespace Avogadro {
       {
         glColor3f(1.0,0.0,0.0);
         widget->painter()->setColor(1.0, 0.0, 0.0);
-        Vector3d pos = m_selectedAtoms[0]->pos();
+        const Vector3d *pos = m_selectedAtoms[0]->pos();
 
         // relative position of the text on the atom
         double radius = widget->radius(m_selectedAtoms[0]) + 0.05;
         Vector3d textRelPos = radius * (zAxis + xAxis);
 
-        Vector3d textPos = pos+textRelPos;
+        Vector3d textPos = *pos + textRelPos;
         widget->painter()->drawText(textPos, "*1");
         widget->painter()->drawSphere(pos, radius);
       }
@@ -169,11 +169,11 @@ namespace Avogadro {
         {
           glColor3f(0.0,1.0,0.0);
           widget->painter()->setColor(0.0, 1.0, 0.0);
-          Vector3d pos = m_selectedAtoms[1]->pos();
+          const Vector3d *pos = m_selectedAtoms[1]->pos();
           double radius = widget->radius(m_selectedAtoms[1]) + 0.05;
           widget->painter()->drawSphere(pos, radius);
           Vector3d textRelPos = radius * (zAxis + xAxis);
-          Vector3d textPos = pos+textRelPos;
+          Vector3d textPos = *pos + textRelPos;
           widget->painter()->drawText(textPos, "*2");
         }
       }
@@ -210,10 +210,10 @@ namespace Avogadro {
     // Align the molecule along the selected axis
     if (m_numSelectedAtoms >= 1) {
       // Translate the first selected atom to the origin
-      Vector3d pos = m_selectedAtoms[0]->pos();
+      const Vector3d *pos = m_selectedAtoms[0]->pos();
       foreach(Atom *a, neighborList) {
         if (!a) continue;
-        a->setPos(a->pos()-pos);
+        a->setPos(*a->pos() - *pos);
       }
       m_molecule->update();
     }
@@ -226,7 +226,7 @@ namespace Avogadro {
       double alpha, beta, gamma;
       alpha = beta = gamma = 0.0;
 
-      Vector3d pos = m_selectedAtoms[1]->pos();
+      Vector3d pos = *m_selectedAtoms[1]->pos();
       pos.normalize();
       Vector3d axis;
 
@@ -249,7 +249,7 @@ namespace Avogadro {
 
         // Now to rotate the fragment
         foreach(Atom *a, neighborList) {
-          a->setPos(Eigen::AngleAxisd(-angle,axis) * a->pos());
+          a->setPos(Eigen::AngleAxisd(-angle,axis) * *a->pos());
         }
         m_molecule->update();
       }

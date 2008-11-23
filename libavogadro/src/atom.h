@@ -34,6 +34,7 @@ namespace OpenBabel {
 
 namespace Avogadro {
 
+  class Molecule;
   /**
    * @class Atom primitive.h <avogadro/primitive.h>
    * @brief Atom Class
@@ -62,30 +63,30 @@ namespace Avogadro {
         * Returns the position of the atom.
         * @return The position of the atom.
         */
-      inline const Eigen::Vector3d &pos () const
-      {
-        return m_pos;
-      }
+      const Eigen::Vector3d * pos() const;
 
       /**
        * Sets the position of the atom.
        * @param vec Position of the atom.
        */
-      inline void setPos(const Eigen::Vector3d &vec)
-      {
-        m_pos = vec;
-      }
+      void setPos(const Eigen::Vector3d &vec);
+
+      /**
+       * Sets the position of the atom.
+       * @param vec Position of the atom.
+       */
+      void setPos(const Eigen::Vector3d *vec) { setPos(*vec); }
 
       /**
        * @return Atomic number of the atom.
        * @note Replaces GetAtomicNum()
        */
-      inline int atomicNumber() const { return m_atomicNum; }
+      inline int atomicNumber() const { return m_atomicNumber; }
 
       /**
        * Set the atomic number of the atom.
        */
-      inline void setAtomicNumber(int num) { m_atomicNum = num; }
+      inline void setAtomicNumber(int num) { m_atomicNumber = num; }
 
       /**
        * Adds a reference to a bond to the atom.
@@ -115,7 +116,7 @@ namespace Avogadro {
       /**
        * @return True if the atom is a hydrogen.
        */
-      bool isHydrogen() const { return m_atomicNum == 1; }
+      bool isHydrogen() const { return m_atomicNumber == 1; }
 
       /**
        * Set the partial charge of the atom.
@@ -149,8 +150,9 @@ namespace Avogadro {
 
     private:
       /* shared d_ptr with Primitive */
-      Eigen::Vector3d m_pos;
-      int m_atomicNum;
+      Molecule *m_molecule; /** Parent molecule - should always be valid. **/
+      int m_pos;
+      int m_atomicNumber;
       QList<unsigned long int> m_bonds, m_neighbors;
       double m_partialCharge;
       Q_DECLARE_PRIVATE(Atom)

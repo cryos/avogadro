@@ -30,6 +30,8 @@
 #include <avogadro/global.h>
 #include <avogadro/primitive.h>
 
+class QColor;
+
 namespace Avogadro
 {
   /**
@@ -85,6 +87,12 @@ namespace Avogadro
     virtual void setColor (const Color *color) = 0;
 
     /**
+     * Set the color to paint the primitive elements with.
+     * @param color the color to be used for painting.
+    */
+    virtual void setColor (const QColor *color) = 0;
+
+    /**
      * Set the color to paint elements with where 0.0 is the minimum and 1.0
      * is the maximum.
      * @param red component of the color.
@@ -100,7 +108,7 @@ namespace Avogadro
      * @param center the position of the center of the sphere.
      * @param radius the radius of the sphere.
      */
-    virtual void drawSphere (const Eigen::Vector3d & center, double radius) = 0;
+    virtual void drawSphere (const Eigen::Vector3d *center, float radius) = 0;
 
     /**
      * Draws a cylinder, leaving the Painter choose the appropriate detail level based on the

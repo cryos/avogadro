@@ -175,7 +175,7 @@ namespace Avogadro
       povSource.remove();
     }
     qDebug() << "Rendering complete.";
-    QByteArray result = m_process->readAll();
+    QByteArray result = m_process->readAllStandardError();//m_process->readAll();
     qDebug() << "POV-Ray output:" << result << "Exit code:"
              << exitCode;
     disconnect(m_process, 0, this, 0);

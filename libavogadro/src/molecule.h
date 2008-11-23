@@ -28,6 +28,8 @@
 
 #include <avogadro/primitive.h>
 
+#include <vector>
+
 namespace OpenBabel {
   class OBAtom;
   class OBBond;
@@ -49,7 +51,7 @@ namespace Avogadro {
    * @author Marcus D. Hanwell
    *
    * The Molecule class implements the core molecule data that is the cetral
-   * model holding all data by our various views. 
+   * model holding all data by our various views.
    */
   class MoleculePrivate;
   class A_EXPORT Molecule : public Primitive
@@ -102,6 +104,20 @@ namespace Avogadro {
        * @note Do not delete the object, use deleteAtom(unsigned long int id).
        */
       Atom *newAtom(unsigned long id);
+
+      /**
+       * Set the atom position.
+       * @param id Unique id of the atom to set the position for.
+       * @param vec Position vector to set the atom to.
+       */
+      void setAtomPos(unsigned long int id, const Eigen::Vector3d &vec);
+
+      /**
+       * Get the position vector of the supplied atom.
+       * @param id Unique id of the atom.
+       * @return Position vector of the atom.
+       */
+      const Eigen::Vector3d * atomPos(unsigned long int id) const;
 
       /**
        * Delete the supplied atom.
@@ -314,6 +330,8 @@ namespace Avogadro {
 
     private:
       /* shared d_ptr with Primitive */
+      QString m_fileName;
+      std::vector<Eigen::Vector3d> *m_atomPos;
       Q_DECLARE_PRIVATE(Molecule)
 
       void computeGeomInfo() const;

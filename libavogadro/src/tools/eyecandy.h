@@ -33,6 +33,29 @@ namespace Avogadro {
 
   class Eyecandy
   {
+    public:
+      Eyecandy() : m_color(1.0, 1.0, 0.3, 1.0) {}
+      ~Eyecandy() {}
+
+      void setColor(const Color &color);
+      Color color() const;
+
+      void drawRotation(GLWidget *widget, const Eigen::Vector3d *center,
+                        double radius, double xAngle, double yAngle);
+
+      void drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle,
+                        double yAngle, const Eigen::Vector3d *center);
+
+      void drawTranslation(GLWidget *widget, const Eigen::Vector3d *center,
+                           double size, double shift);
+      void drawTranslation(GLWidget *widget, Atom *clickedAtom,
+                           const Eigen::Vector3d *center);
+
+      void drawZoom(GLWidget *widget, const Eigen::Vector3d *center,
+                    double radius);
+      void drawZoom(GLWidget *widget, Atom *clickedAtom,
+                    const Eigen::Vector3d *center);
+
     private:
       void drawRotationHorizRibbon();
       void drawRotationVertRibbon();
@@ -45,22 +68,6 @@ namespace Avogadro {
       double m_radius;
       Eigen::Vector3d m_center, m_xAxis, m_yAxis, m_zAxis;
       Color m_color;
-
-    public:
-      Eyecandy() : m_color(1.0, 1.0, 0.3, 0.7) {}
-      ~Eyecandy() {}
-
-      void setColor(const Color &color);
-      Color color() const;
-
-      void drawRotation(GLWidget *widget, const Eigen::Vector3d& center, double radius, double xAngle, double yAngle);
-      void drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle, const Eigen::Vector3d &center);
-
-      void drawTranslation(GLWidget *widget, const Eigen::Vector3d& center, double size, double shift);
-      void drawTranslation(GLWidget *widget, Atom *clickedAtom, const Eigen::Vector3d &center);
-
-      void drawZoom(GLWidget *widget, const Eigen::Vector3d& center, double radius);
-      void drawZoom(GLWidget *widget, Atom *clickedAtom, const Eigen::Vector3d &center);
   };
 
 }

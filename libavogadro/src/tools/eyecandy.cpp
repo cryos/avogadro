@@ -39,7 +39,7 @@
 #define ZOOM_SIZE_FACTOR 0.3
 #define ATOM_SIZE_FACTOR 1.1
 
-using namespace Eigen;
+using Eigen::Vector3d;
 
 namespace Avogadro {
 
@@ -131,14 +131,16 @@ namespace Avogadro {
     glEnd();
   }
 
-  void Eyecandy::drawRotation(GLWidget *widget, Atom *clickedAtom, double xAngle, double yAngle, const Eigen::Vector3d &center)
+  void Eyecandy::drawRotation(GLWidget *widget, Atom *clickedAtom,
+                              double xAngle, double yAngle,
+                              const Eigen::Vector3d *center)
   {
     if(clickedAtom)
     {
       drawRotation(widget, clickedAtom->pos(),
           qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
-            MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
-          xAngle, yAngle);
+               MINIMUM_APPARENT_SIZE * widget->camera()->distance(*center)),
+               xAngle, yAngle);
     }
     else
     {
@@ -146,15 +148,16 @@ namespace Avogadro {
           qMin(
             qMax(
               qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
-              MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
-            MAXIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
+              MINIMUM_APPARENT_SIZE * widget->camera()->distance(*center)),
+            MAXIMUM_APPARENT_SIZE * widget->camera()->distance(*center)),
           xAngle, yAngle);
     }
   }
 
-  void Eyecandy::drawRotation(GLWidget *widget, const Eigen::Vector3d& center, double radius, double xAngle, double yAngle)
+  void Eyecandy::drawRotation(GLWidget *widget, const Eigen::Vector3d *center,
+                              double radius, double xAngle, double yAngle)
   {
-    m_center = center;
+    m_center = *center;
     m_radius = radius;
     m_xAngleStart = 2.0 * M_PI * (0.25 + RIBBON_APERTURE) - xAngle;
     m_xAngleEnd = 2.0 * M_PI * (1.25 - RIBBON_APERTURE) - xAngle;
@@ -164,8 +167,6 @@ namespace Avogadro {
     m_yAxis = widget->camera()->backTransformedYAxis();
     m_zAxis = widget->camera()->backTransformedZAxis();
 
-//    glEnable(GL_BLEND);
-//    glDepthMask(GL_FALSE);
     m_color.applyAsMaterials();
 
     //draw back faces
@@ -185,18 +186,16 @@ namespace Avogadro {
     drawRotationLeftArrow();
     drawRotationUpArrow();
     drawRotationDownArrow();
-
-//    glDisable(GL_BLEND);
-//    glDepthMask(GL_TRUE);
   }
 
-  void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom, const Eigen::Vector3d &center)
+  void Eyecandy::drawTranslation(GLWidget *widget, Atom *clickedAtom,
+                                 const Eigen::Vector3d *center)
   {
     if(clickedAtom)
     {
       drawTranslation(widget, center,
         qMax(widget->radius(clickedAtom) * ATOM_SIZE_FACTOR,
-             MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
+             MINIMUM_APPARENT_SIZE * widget->camera()->distance(*center)),
           widget->radius(clickedAtom));
     }
     else
@@ -204,16 +203,17 @@ namespace Avogadro {
       drawTranslation(widget, center, qMin(
         qMax(
           qMax(widget->radius() * SIZE_FACTOR_WHEN_NOTHING_CLICKED, CAMERA_NEAR_DISTANCE),
-              MINIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
-            MAXIMUM_APPARENT_SIZE * widget->camera()->distance(center)),
+              MINIMUM_APPARENT_SIZE * widget->camera()->distance(*center)),
+            MAXIMUM_APPARENT_SIZE * widget->camera()->distance(*center)),
           0.);
     }
   }
-  void Eyecandy::drawTranslation(GLWidget *widget, const Eigen::Vector3d& center, double size, double shift)
+
+  void Eyecandy::drawTranslation(GLWidget *widget,
+                                 const Eigen::Vector3d *center,
+                                 double size, double shift)
   {
-//    glEnable(GL_BLEND);
     glDisable(GL_LIGHTING);
-//    glDepthMask(GL_FALSE);
     m_color.apply();
 
     // Set up the axes and some vectors to work with
@@ -223,7 +223,7 @@ namespace Avogadro {
     Vector3d v;
 
     // Horizontal arrow, pointing left
-    v = center + shift * zAxis;
+    v = *center + shift * zAxis;
     glBegin(GL_QUAD_STRIP);
     glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
     glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
@@ -237,7 +237,7 @@ namespace Avogadro {
     glVertex3dv((v + RIBBON_ARROW_LENGTH*size*xAxis).eval().data());
     glEnd();
     // Horizontal arrow, pointing right
-    v = center + shift*zAxis;
+    v = *center + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
     glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
     glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
@@ -251,7 +251,7 @@ namespace Avogadro {
     glVertex3dv((v - RIBBON_ARROW_LENGTH*size*xAxis).eval().data());
     glEnd();
     // Vertical arrow, pointing up
-    v = center + shift*zAxis;
+    v = *center + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
     glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());
     glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
@@ -265,7 +265,7 @@ namespace Avogadro {
     glVertex3dv((v + RIBBON_ARROW_LENGTH*size*yAxis).eval().data());
     glEnd();
     // Vertical arrow, pointing down
-    v = center + shift*zAxis;
+    v = *center + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
     glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
     glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());
@@ -279,12 +279,11 @@ namespace Avogadro {
     glVertex3dv((v - RIBBON_ARROW_LENGTH*size*yAxis).eval().data());
     glEnd();
 
-//    glDisable(GL_BLEND);
     glEnable(GL_LIGHTING);
-//    glDepthMask(GL_TRUE);
   }
 
-  void Eyecandy::drawZoom(GLWidget *widget, Atom *clickedAtom, const Eigen::Vector3d &center)
+  void Eyecandy::drawZoom(GLWidget *widget, Atom *clickedAtom,
+                          const Eigen::Vector3d *center)
   {
     if(clickedAtom) {
       drawZoom(widget, center,
@@ -303,7 +302,8 @@ namespace Avogadro {
     }
   }
 
-  void Eyecandy::drawZoom(GLWidget *widget, const Eigen::Vector3d& center, double size)
+  void Eyecandy::drawZoom(GLWidget *widget, const Eigen::Vector3d *center,
+                          double size)
   {
     widget->painter()->setColor(&m_color);
     //   glEnable( GL_BLEND );
@@ -323,7 +323,7 @@ namespace Avogadro {
     Vector3d v;
 
     // Horizontal arrow, pointing left
-    v = center; // * zAxis;
+    v = *center; // * zAxis;
     glBegin(GL_QUAD_STRIP);
     glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
     glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
@@ -337,7 +337,7 @@ namespace Avogadro {
     glVertex3dv((v + RIBBON_ARROW_LENGTH*size*zAxis).eval().data());
     glEnd();
     // Horizontal arrow, pointing right
-    v = center; // + shift*zAxis;
+    v = *center; // + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
     glVertex3dv((v - RIBBON_WIDTH*size*yAxis).eval().data());
     glVertex3dv((v + RIBBON_WIDTH*size*yAxis).eval().data());
@@ -351,7 +351,7 @@ namespace Avogadro {
     glVertex3dv((v - RIBBON_ARROW_LENGTH*size*zAxis).eval().data());
     glEnd();
     // Vertical arrow, pointing up
-    v = center; // + shift*zAxis;
+    v = *center; // + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
     glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());
     glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
@@ -365,7 +365,7 @@ namespace Avogadro {
     glVertex3dv((v + RIBBON_ARROW_LENGTH*size*zAxis).eval().data());
     glEnd();
     // Vertical arrow, pointing down
-    v = center; // + shift*zAxis;
+    v = *center; // + shift*zAxis;
     glBegin(GL_QUAD_STRIP);
     glVertex3dv((v + RIBBON_WIDTH*size*xAxis).eval().data());
     glVertex3dv((v - RIBBON_WIDTH*size*xAxis).eval().data());

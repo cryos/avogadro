@@ -94,6 +94,12 @@ namespace Avogadro
       void setColor (const Color *color);
 
       /**
+       * Set the color to paint the OpenGL primitives with.
+       * @param color the color to be used for painting.
+      */
+      void setColor (const QColor *color);
+
+      /**
        * Set the color to paint elements with where 0.0 is the minimum and 1.0
        * is the maximum.
        * @param red component of the color.
@@ -109,7 +115,7 @@ namespace Avogadro
        * @param center the position of the center of the sphere.
        * @param radius the radius of the sphere.
        */
-      void drawSphere (const Eigen::Vector3d & center, double radius);
+      void drawSphere (const Eigen::Vector3d *center, float radius);
 
       /**
        * Draws a cylinder, leaving the Painter choose the appropriate detail level based on the

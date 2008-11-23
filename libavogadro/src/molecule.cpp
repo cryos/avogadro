@@ -40,10 +40,13 @@
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
 
+#include <QDir>
 #include <QReadWriteLock>
 #include <QDebug>
 
- namespace Avogadro{
+using Eigen::Vector3d;
+
+namespace Avogadro{
 
   class MoleculePrivate {
     public:
@@ -55,8 +58,6 @@
       mutable Atom *                farthestAtom;
       mutable bool                  invalidGeomInfo;
       mutable bool                  invalidRings;
-
-      QString                       fileName;
 
       // std::vector used over QVector due to index issues, QVector uses ints
       std::vector<Atom *>           atoms;
@@ -77,13 +78,15 @@
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
-    d_ptr(new MoleculePrivate)
+    d_ptr(new MoleculePrivate), m_atomPos(0)
   {
+    m_fileName = QDir::homePath() + "/untitled";
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
   }
 
   Molecule::Molecule(const Molecule &other) :
-    Primitive(MoleculeType, other.parent()), d_ptr(new MoleculePrivate)
+    Primitive(MoleculeType, other.parent()), d_ptr(new MoleculePrivate),
+    m_atomPos(0)
   {
     *this = other;
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -93,6 +96,11 @@
   {
     // Need to iterate through all atoms/bonds and destroy them
     Q_D(Molecule);
+
+    if (m_atomPos) {
+      delete m_atomPos;
+    }
+
     foreach (Atom *atom, d->atomList) {
       atom->deleteLater();
     }
@@ -117,14 +125,12 @@
 
   void Molecule::setFileName(const QString& name)
   {
-    Q_D(Molecule);
-    d->fileName = name;
+    m_fileName = name;
   }
 
   QString Molecule::fileName() const
   {
-    Q_D(const Molecule);
-    return d->fileName;
+    return m_fileName;
   }
 /*
   Atom * Molecule::CreateAtom()
@@ -191,6 +197,34 @@
     emit primitiveAdded(atom);
     m_lock->unlock();
     return atom;
+  }
+
+  void Molecule::setAtomPos(unsigned long int id, const Eigen::Vector3d& vec)
+  {
+    if (m_atomPos) {
+      if (m_atomPos->size() > id) {
+        (*m_atomPos)[id] = vec;
+      }
+      else {
+        m_atomPos->resize(id+1);
+        (*m_atomPos)[id] = vec;
+      }
+    }
+    else {
+      m_atomPos = new std::vector<Vector3d>;
+      m_atomPos->resize(id+1);
+      (*m_atomPos)[id] = vec;
+    }
+  }
+
+  const Eigen::Vector3d * Molecule::atomPos(unsigned long int id) const
+  {
+    if (m_atomPos->size() > id) {
+      return const_cast<const Vector3d*>(&m_atomPos->at(id));
+    }
+    else {
+      return 0;
+    }
   }
 
   // do some fancy footwork when we add an atom previously created
@@ -665,8 +699,8 @@
       Atom *endAtom = atomById(bond->endAtomId());
       if (!endAtom)
         continue;
-      
-      obmol.AddBond(beginAtom->index() + 1, 
+
+      obmol.AddBond(beginAtom->index() + 1,
                       endAtom->index() + 1, bond->order());
     }
     obmol.EndModify();
@@ -837,7 +871,7 @@
     // Copy the atoms and bonds over
     for (unsigned int i = 0; i < e->atoms.size(); ++i) {
       if (e->atoms.at(i) > 0) {
-        Atom *atom = new Atom;
+        Atom *atom = new Atom(this);
         *atom = *(e->atoms[i]);
         atom->setId(e->atoms[i]->id());
         atom->setIndex(e->atoms[i]->index());
@@ -849,7 +883,7 @@
 
     for (unsigned int i = 0; i < e->bonds.size(); ++i) {
       if (e->bonds.at(i)) {
-        Bond *bond = new Bond;
+        Bond *bond = new Bond(this);
         *bond = *(e->bonds[i]);
         bond->setId(e->bonds[i]->id());
         bond->setIndex(e->bonds[i]->index());
@@ -895,15 +929,15 @@
     {
       // compute center
       foreach (Atom *atom, d->atomList)
-        d->center += atom->pos();
+        d->center += *atom->pos();
 
       d->center /= numAtoms();
 
       // compute the normal vector to the molecule's best-fitting plane
       int i = 0;
-      Eigen::Vector3d ** atomPositions = new Eigen::Vector3d*[numAtoms()];
+      Vector3d ** atomPositions = new Vector3d*[numAtoms()];
       foreach (Atom *atom, d->atomList)
-        atomPositions[i++] = const_cast<Eigen::Vector3d*>(&atom->pos());
+        atomPositions[i++] = const_cast<Vector3d*>(atom->pos());
 
       Eigen::Hyperplane<double, 3> planeCoeffs;
       Eigen::fitHyperplane(numAtoms(), atomPositions, &planeCoeffs);
@@ -913,7 +947,7 @@
       // compute radius and the farthest atom
       d->radius = -1.0; // so that ( squaredDistanceToCenter > d->radius ) is true for at least one atom.
       foreach (Atom *atom, d->atomList) {
-        double distanceToCenter = (atom->pos() - d->center).norm();
+        double distanceToCenter = (*atom->pos() - d->center).norm();
         if(distanceToCenter > d->radius) {
           d->radius = distanceToCenter;
           d->farthestAtom = atom;

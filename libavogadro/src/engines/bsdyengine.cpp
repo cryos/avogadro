@@ -135,8 +135,8 @@ namespace Avogadro
         continue;
       }
 
-      Vector3d v1(atom1->pos());
-      Vector3d v2(atom2->pos());
+      Vector3d v1(*atom1->pos());
+      Vector3d v2(*atom2->pos());
       Vector3d d = v2 - v1;
       d.normalize();
       Vector3d v3((v1 + v2 + d*(radius(atom1) - radius(atom2))) / 2);
@@ -167,7 +167,7 @@ namespace Avogadro
       map->set( a );
       pd->painter()->setColor( map );
       pd->painter()->setName( a );
-      pd->painter()->drawSphere( a->pos(), radius( a ) );
+      pd->painter()->drawSphere(a->pos(), radius( a ));
     }
 
     // normalize normal vectors of bonds
@@ -205,8 +205,8 @@ namespace Avogadro
       if ( pd->isSelected( b ) ) {
         Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
         Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
-        Vector3d v1(atom1->pos());
-        Vector3d v2(atom2->pos());
+        Vector3d v1(*atom1->pos());
+        Vector3d v2(*atom2->pos());
 
         double shift = 0.15;
         int order = b->order();
@@ -275,8 +275,8 @@ namespace Avogadro
 
       Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
       Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
-      Vector3d v1(atom1->pos());
-      Vector3d v2(atom2->pos());
+      Vector3d v1(*atom1->pos());
+      Vector3d v2(*atom2->pos());
       Vector3d d = v2 - v1;
       d.normalize();
       Vector3d v3((v1 + v2 + d*(radius(atom1)-radius(atom2))) / 2);

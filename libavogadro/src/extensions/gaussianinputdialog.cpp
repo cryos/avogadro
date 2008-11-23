@@ -374,8 +374,8 @@ namespace Avogadro
         mol << qSetFieldWidth(3) << left
             << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
             << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
-            << fixed << right << atom->pos().x() << atom->pos().y()
-            << atom->pos().z()
+            << fixed << right << atom->pos()->x() << atom->pos()->y()
+            << atom->pos()->z()
             << qSetFieldWidth(0) << "\n";
       }
       mol << "\n";

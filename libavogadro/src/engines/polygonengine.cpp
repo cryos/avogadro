@@ -93,7 +93,7 @@ namespace Avogadro{
     map->set(a);
     pd->painter()->setColor(map);
 
-    QVector<Vector3d> atoms;
+    QVector<const Vector3d*> atoms;
     QList<unsigned long int> neighbors = a->neighbors();
     foreach (unsigned long int neighbor, neighbors) {
       atoms.push_back(pd->molecule()->atomById(neighbor)->pos());
@@ -104,7 +104,7 @@ namespace Avogadro{
     for (int i = 0; i < atoms.size(); i++) {
       for (int j = 0; j < atoms.size(); j++)
         for (int k = 1; k < atoms.size(); k++)
-          pd->painter()->drawTriangle(atoms[i], atoms[j], atoms[k]);
+          pd->painter()->drawTriangle(*atoms[i], *atoms[j], *atoms[k]);
 //      pd->painter()->drawTriangle(atoms[i], atoms[0], atoms[atoms.size()-1]);
     }
     // Disable face culling for ring structures.

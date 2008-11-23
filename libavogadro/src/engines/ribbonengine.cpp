@@ -95,9 +95,9 @@ namespace Avogadro {
         if (m_chains[i].size() <= 1)
           continue;
         pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
-        pd->painter()->drawSphere(m_chains[i][0], m_radius);
+        pd->painter()->drawSphere(&m_chains[i][0], m_radius);
         for (int j = 1; j < m_chains[i].size(); j++) {
-          pd->painter()->drawSphere(m_chains[i][j], m_radius);
+          pd->painter()->drawSphere(&m_chains[i][j], m_radius);
           pd->painter()->drawCylinder(m_chains[i][j-1], m_chains[i][j], m_radius);
         }
       }
@@ -119,9 +119,9 @@ namespace Avogadro {
       if (m_chains[i].size() <= 1)
         continue;
       pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
-      pd->painter()->drawSphere(m_chains[i][0], tRadius);
+      pd->painter()->drawSphere(&m_chains[i][0], tRadius);
       for (int j = 1; j < m_chains[i].size(); j++) {
-        pd->painter()->drawSphere(m_chains[i][j], tRadius);
+        pd->painter()->drawSphere(&m_chains[i][j], tRadius);
         pd->painter()->drawCylinder(m_chains[i][j-1], m_chains[i][j], tRadius);
       }
     }
@@ -188,10 +188,10 @@ namespace Avogadro {
         QString atomId = r->atomId(atom);
         atomId = atomId.trimmed();
         if (atomId == "CA") {
-          pts.push_back(molecule->atomById(atom)->pos());
+          pts.push_back(*molecule->atomById(atom)->pos());
         }
         else if (atomId == "N" && m_useNitrogens == 2) {
-          pts.push_back(molecule->atomById(atom)->pos());
+          pts.push_back(*molecule->atomById(atom)->pos());
         }
       } // end atoms in residue
 

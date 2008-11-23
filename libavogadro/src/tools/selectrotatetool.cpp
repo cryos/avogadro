@@ -169,7 +169,7 @@ namespace Avogadro {
               Atom *atom = static_cast<Atom *>(hit);
               // If the atom is unselected, select the whole residue
               bool select = !widget->isSelected(atom);
-              
+
               // Since the atom doesn't know to which residue it belongs,
               // we iterate over all residues and check if the atom is in
               // the current residue.
@@ -177,15 +177,15 @@ namespace Avogadro {
                 QList<unsigned long int> atoms = residue->atoms();
                 if (atoms.contains(atom->id())) {
                   QList<Primitive *> neighborList;
-                  
+
                   // add the atoms
                   foreach (unsigned long int id, atoms)
                     neighborList.append(molecule->atomById(id));
-                  
+
                   // add the bonds
                   foreach (unsigned long int id, residue->bonds())
                     neighborList.append(molecule->bondById(id));
-                
+
                   widget->setSelected(neighborList, select);
                 }
               } // end for(residues)
@@ -193,7 +193,7 @@ namespace Avogadro {
               Bond *bond = static_cast<Bond *>(hit);
               // If the bond is unselected, select the whole residue
               bool select = !widget->isSelected(bond);
-              
+
               // Since the bond doesn't know to which residue it belongs,
               // we iterate over all residues and check if the bond is in
               // the current residue.
@@ -201,15 +201,15 @@ namespace Avogadro {
                 QList<unsigned long int> bonds = residue->bonds();
                 if (bonds.contains(bond->id())) {
                   QList<Primitive *> neighborList;
-                  
+
                   // add the atoms
                   foreach (unsigned long int id, residue->atoms())
                     neighborList.append(molecule->atomById(id));
-                  
+
                   // add the bonds
                   foreach (unsigned long int id, bonds)
                     neighborList.append(molecule->bondById(id));
-                
+
                   widget->setSelected(neighborList, select);
                 }
               } // end for(residues)
@@ -269,7 +269,7 @@ namespace Avogadro {
 
               widget->setSelected(neighborList, select);
             }
- 
+
             // FIXME -- also need to handle other primitive hit types
             // (e.g., if we hit a residue, bond, etc.)
           }
@@ -377,12 +377,12 @@ namespace Avogadro {
     double sumOfWeights = 0.;
     QList<Atom*> atoms = widget->molecule()->atoms();
     foreach (Atom *atom, atoms) {
-      Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
+      Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * *atom->pos();
       double atomDistance = transformedAtomPos.norm();
       double dot = transformedAtomPos.z() / atomDistance;
       double weight = exp(-30. * (1. + dot));
       sumOfWeights += weight;
-      atomsBarycenter += weight * atom->pos();
+      atomsBarycenter += weight * *atom->pos();
     }
     atomsBarycenter /= sumOfWeights;
 

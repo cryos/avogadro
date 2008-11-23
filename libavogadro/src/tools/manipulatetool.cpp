@@ -35,16 +35,17 @@
 
 #include <QtPlugin>
 
-using namespace std;
-using namespace OpenBabel;
-using namespace Eigen;
+using Eigen::Vector3d;
+using Eigen::Transform3d;
+using Eigen::AngleAxisd;
 
 namespace Avogadro {
 
-  ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false),
-  m_eyecandy(new Eyecandy)
+  ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent),
+    m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false),
+    m_rightButtonPressed(false), m_eyecandy(new Eyecandy)
   {
-    m_eyecandy->setColor(Color(1.0, 0., 0., .7));
+    m_eyecandy->setColor(Color(1.0, 0.0, 0.0, 1.0));
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/manipulate/manipulate.png")));
     action->setToolTip(tr("Manipulation Tool (F10)\n\n"
@@ -64,13 +65,14 @@ namespace Avogadro {
     return 600000;
   }
 
-  void ManipulateTool::zoom(GLWidget *widget, const Eigen::Vector3d &goal, double delta) const
+  void ManipulateTool::zoom(GLWidget *widget, const Eigen::Vector3d *goal,
+                            double delta) const
   {
     // Set the cursor - this needs to be reset to Qt::ArrowCursor after
     widget->setCursor(Qt::SizeVerCursor);
 
     // Move the selected atom(s) in to or out of the screen
-    Vector3d transformedGoal = widget->camera()->modelview() * goal;
+    Vector3d transformedGoal = widget->camera()->modelview() * *goal;
     double distanceToGoal = transformedGoal.norm();
 
     double t = ZOOM_SPEED * delta;
@@ -86,13 +88,13 @@ namespace Avogadro {
     if (widget->selectedPrimitives().size())
       foreach(Primitive *p, widget->selectedPrimitives())
         if (p->type() == Primitive::AtomType)
-          static_cast<Atom *>(p)->setPos(atomTranslation + static_cast<Atom *>(p)->pos());
+          static_cast<Atom *>(p)->setPos(atomTranslation + *static_cast<Atom *>(p)->pos());
     if (m_clickedAtom && !widget->isSelected(m_clickedAtom))
-      m_clickedAtom->setPos(atomTranslation + m_clickedAtom->pos());
+      m_clickedAtom->setPos(atomTranslation + *m_clickedAtom->pos());
     widget->molecule()->update();
   }
 
-  void ManipulateTool::translate(GLWidget *widget, const Eigen::Vector3d &what,
+  void ManipulateTool::translate(GLWidget *widget, const Eigen::Vector3d *what,
                                  const QPoint &from, const QPoint &to) const
   {
     // Set the cursor - this needs to be reset to Qt::ArrowCursor after
@@ -104,21 +106,21 @@ namespace Avogadro {
 #endif
 
     // Translate the selected atoms in the x and y sense of the view
-    Vector3d fromPos = widget->camera()->unProject(from, what);
-    Vector3d toPos = widget->camera()->unProject(to, what);
+    Vector3d fromPos = widget->camera()->unProject(from, *what);
+    Vector3d toPos = widget->camera()->unProject(to, *what);
 
     Vector3d atomTranslation = toPos - fromPos;
 
     if (widget->selectedPrimitives().size())
       foreach(Primitive *p, widget->selectedPrimitives())
         if (p->type() == Primitive::AtomType)
-          static_cast<Atom *>(p)->setPos(atomTranslation + static_cast<Atom *>(p)->pos());
+          static_cast<Atom *>(p)->setPos(atomTranslation + *static_cast<Atom *>(p)->pos());
     if (m_clickedAtom && !widget->isSelected(m_clickedAtom))
-      m_clickedAtom->setPos(atomTranslation + m_clickedAtom->pos());
+      m_clickedAtom->setPos(atomTranslation + *m_clickedAtom->pos());
     widget->molecule()->update();
   }
 
-  void ManipulateTool::rotate(GLWidget *widget, const Eigen::Vector3d &center,
+  void ManipulateTool::rotate(GLWidget *widget, const Eigen::Vector3d *center,
                               double deltaX, double deltaY) const
   {
     // Set the cursor - this needs to be reset to Qt::ArrowCursor after
@@ -128,31 +130,32 @@ namespace Avogadro {
     // rotate only selected primitives
     Transform3d fragmentRotation;
     fragmentRotation.matrix().setIdentity();
-    fragmentRotation.translation() = center;
+    fragmentRotation.translation() = *center;
     fragmentRotation.rotate(
       AngleAxisd(deltaY * ROTATION_SPEED, widget->camera()->backTransformedXAxis()));
     fragmentRotation.rotate(
       AngleAxisd(deltaX * ROTATION_SPEED, widget->camera()->backTransformedYAxis()));
-    fragmentRotation.translate(-center);
+    fragmentRotation.translate(- *center);
 
     foreach(Primitive *p, widget->selectedPrimitives())
       if (p->type() == Primitive::AtomType)
-        static_cast<Atom *>(p)->setPos(fragmentRotation * static_cast<Atom *>(p)->pos());
+        static_cast<Atom *>(p)->setPos(fragmentRotation * *static_cast<Atom *>(p)->pos());
     widget->molecule()->update();
   }
 
-  void ManipulateTool::tilt(GLWidget *widget, const Eigen::Vector3d &center, double delta) const
+  void ManipulateTool::tilt(GLWidget *widget, const Eigen::Vector3d *center,
+                            double delta) const
   {
     // Tilt the selected atoms about the center
     Transform3d fragmentRotation;
     fragmentRotation.matrix().setIdentity();
-    fragmentRotation.translation() = center;
+    fragmentRotation.translation() = *center;
     fragmentRotation.rotate(AngleAxisd(delta * ROTATION_SPEED, widget->camera()->backTransformedZAxis()));
-    fragmentRotation.translate(-center);
+    fragmentRotation.translate(- *center);
 
     foreach(Primitive *p, widget->selectedPrimitives())
       if (p->type() == Primitive::AtomType)
-        static_cast<Atom *>(p)->setPos(fragmentRotation * static_cast<Atom *>(p)->pos());
+        static_cast<Atom *>(p)->setPos(fragmentRotation * *static_cast<Atom *>(p)->pos());
     widget->molecule()->update();
   }
 
@@ -245,7 +248,8 @@ namespace Avogadro {
       if (m_leftButtonPressed)
       {
         // translate the molecule following mouse movement
-        translate(widget, m_clickedAtom->pos(), m_lastDraggingPosition, event->pos());
+        translate(widget, m_clickedAtom->pos(), m_lastDraggingPosition,
+                  event->pos());
       }
       else if (m_midButtonPressed)
       {
@@ -259,7 +263,8 @@ namespace Avogadro {
       else if (m_rightButtonPressed)
       {
         // Atom centred rotation
-        rotate(widget, m_clickedAtom->pos(), deltaDragging.x(), deltaDragging.y());
+        rotate(widget, m_clickedAtom->pos(), deltaDragging.x(),
+               deltaDragging.y());
       }
     }
     else if (currentSelection.size())
@@ -272,7 +277,7 @@ namespace Avogadro {
         if (hit->type() == Primitive::AtomType)
         {
           Atom *atom = static_cast<Atom *>(hit);
-          m_selectedPrimitivesCenter += atom->pos();
+          m_selectedPrimitivesCenter += *atom->pos();
           numPrimitives++;
         }
       }
@@ -281,20 +286,21 @@ namespace Avogadro {
       if (m_leftButtonPressed)
       {
         // translate the molecule following mouse movement
-        translate(widget, m_selectedPrimitivesCenter, m_lastDraggingPosition, event->pos());
+        translate(widget, &m_selectedPrimitivesCenter, m_lastDraggingPosition,
+                  event->pos());
       }
       else if (m_midButtonPressed)
       {
         // Perform the rotation
-        tilt(widget, m_selectedPrimitivesCenter, deltaDragging.x());
+        tilt(widget, &m_selectedPrimitivesCenter, deltaDragging.x());
 
         // Perform the zoom toward molecule center
-        zoom(widget, m_selectedPrimitivesCenter, deltaDragging.y());
+        zoom(widget, &m_selectedPrimitivesCenter, deltaDragging.y());
       }
       else if(m_rightButtonPressed)
       {
         // rotation around the center of the selected atoms
-        rotate(widget, m_selectedPrimitivesCenter, deltaDragging.x(), deltaDragging.y());
+        rotate(widget, &m_selectedPrimitivesCenter, deltaDragging.x(), deltaDragging.y());
       }
     }
 
@@ -312,12 +318,12 @@ namespace Avogadro {
     double sumOfWeights = 0.;
     QList<Atom*> atoms = widget->molecule()->atoms();
     foreach (Atom *atom, atoms) {
-      Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * atom->pos();
+      Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * *atom->pos();
       double atomDistance = transformedAtomPos.norm();
       double dot = transformedAtomPos.z() / atomDistance;
       double weight = exp(-30. * (1. + dot));
       sumOfWeights += weight;
-      atomsBarycenter += weight * atom->pos();
+      atomsBarycenter += weight * *atom->pos();
     }
     atomsBarycenter /= sumOfWeights;
 
@@ -350,15 +356,15 @@ namespace Avogadro {
     {
       if(m_leftButtonPressed)
       {
-        m_eyecandy->drawTranslation(widget, m_selectedPrimitivesCenter, 1.5, 0.);
+        m_eyecandy->drawTranslation(widget, &m_selectedPrimitivesCenter, 1.5, 0.);
       }
       else if(m_midButtonPressed)
       {
-        m_eyecandy->drawZoom(widget, m_selectedPrimitivesCenter, 1.5);
+        m_eyecandy->drawZoom(widget, &m_selectedPrimitivesCenter, 1.5);
       }
       else if(m_rightButtonPressed)
       {
-        m_eyecandy->drawRotation(widget, m_selectedPrimitivesCenter, 3.,
+        m_eyecandy->drawRotation(widget, &m_selectedPrimitivesCenter, 3.,
             m_xAngleEyecandy, m_yAngleEyecandy);
       }
     }
