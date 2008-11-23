@@ -90,10 +90,16 @@ namespace Avogadro
       
       // set the primitive
       PrimitiveList primitives;
-      foreach (unsigned long int id, residues.at(i)->atoms())
-        primitives.append(molecule->atomById(id));
-      foreach (unsigned long int id, residues.at(i)->bonds())
-        primitives.append(molecule->bondById(id));
+      foreach (unsigned long int id, residues.at(i)->atoms()) {
+        Atom *atom = molecule->atomById(id);
+        if (atom)
+          primitives.append(atom);
+      }
+      foreach (unsigned long int id, residues.at(i)->bonds()) {
+        Bond *bond = molecule->bondById(id);
+        if (bond)
+          primitives.append(bond);
+      }
       item->setPrimitives(primitives);
     }
 
@@ -114,10 +120,16 @@ namespace Avogadro
     
     // set the primitive
     PrimitiveList primitives;
-    foreach (unsigned long int id, residue->atoms())
-      primitives.append(molecule->atomById(id));
-    foreach (unsigned long int id, residue->bonds())
-      primitives.append(molecule->bondById(id));
+    foreach (unsigned long int id, residue->atoms()) {
+      Atom *atom = molecule->atomById(id);
+      if (atom)
+        primitives.append(atom);
+    }
+    foreach (unsigned long int id, residue->bonds()) {
+      Bond *bond = molecule->bondById(id);
+      if (bond)
+        primitives.append(bond);
+    }
     item->setPrimitives(primitives);
   }
  

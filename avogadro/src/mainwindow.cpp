@@ -1700,9 +1700,7 @@ namespace Avogadro
   {
     ProjectTreeModel *model = dynamic_cast<ProjectTreeModel*>(ui.projectTreeView->model());
 
-    ProjectTreeModel *newModel = new ProjectTreeModel( d->glWidget, this );
-    connect(ui.projectTreeView, SIGNAL(expanded(const QModelIndex&)), newModel, SLOT(itemExpanded(const QModelIndex&)));
-    ui.projectTreeView->setModel(newModel);
+    ui.projectTreeView->setModel(new ProjectTreeModel( d->glWidget, this ));
 
     if (model)
       delete model;
