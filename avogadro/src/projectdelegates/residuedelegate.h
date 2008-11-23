@@ -1,5 +1,5 @@
 /**********************************************************************
-  MoleculeDelegate - Project Tree Items for molecule (atoms, bonds, ...).
+  AtomDelegate - Project Tree Item for atoms.
 
   Copyright (C) 2008 by Tim Vandermeersch
 
@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef MOLECULEITEMS_H
-#define MOLECULEITEMS_H
+#ifndef RESIDUEDELEGATE_H
+#define RESIDUEDELEGATE_H
 
 #include <avogadro/global.h>
 #include "../projecttreemodeldelegate.h"
@@ -32,20 +32,34 @@ namespace Avogadro {
 
   class Primitive;
 
-  class A_EXPORT MoleculeDelegate : public ProjectTreeModelDelegate
+  class A_EXPORT ResidueDelegate : public ProjectTreeModelDelegate
   {
     Q_OBJECT
 
     public:
-      MoleculeDelegate(ProjectTreeModel *model);
-      ~MoleculeDelegate();
+      ResidueDelegate(ProjectTreeModel *model);
+      ~ResidueDelegate();
 
-      QString name() const { return QObject::tr("Molecule"); }
+      QString name() const { return QObject::tr("Residues"); }
       
-      void initStructure(GLWidget *, ProjectTreeItem *parent);
+      void initStructure(GLWidget *widget, ProjectTreeItem *parent);
       
       void writeSettings(QSettings &settings) const;
       void readSettings(QSettings &settings);
+      
+      void fetchMore(ProjectTreeItem *parent);
+
+    public slots:
+      void primitiveAdded(Primitive*);
+      void primitiveUpdated(Primitive*);
+      void primitiveRemoved(Primitive*);
+
+    private:
+      void initialize();
+
+      ProjectTreeItem  *m_label;
+      ProjectTreeModel *m_model;
+      GLWidget         *m_widget;
   };
 
 } // end namespace Avogadro

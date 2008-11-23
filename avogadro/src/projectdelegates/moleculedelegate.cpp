@@ -22,6 +22,7 @@
 #include "moleculedelegate.h"
 #include "atomdelegate.h"
 #include "bonddelegate.h"
+#include "residuedelegate.h"
 
 #include <avogadro/glwidget.h>
 #include <avogadro/molecule.h>
@@ -36,36 +37,34 @@ using namespace std;
 namespace Avogadro
 {
 
-  MoleculeDelegate::MoleculeDelegate(ProjectTreeModel *model) : ProjectTreeModelDelegate(model), 
-      m_moleculeLabel(0), m_atomItems(0), m_bondItems(0)/*, m_residueLabel(0)*/
+  MoleculeDelegate::MoleculeDelegate(ProjectTreeModel *model) : ProjectTreeModelDelegate(model)
   {
   }
  
   MoleculeDelegate::~MoleculeDelegate()
   {
-    // pointer now stolen by exportDelegate(...) !!
-
-    //if (m_atomItems)
-    //  delete m_atomItems;
-    //if (m_bondItems)
-    //  delete m_bondItems;
   }
     
   void MoleculeDelegate::initStructure(GLWidget *widget, ProjectTreeItem *parent)
   {
     // add the "Molecule" label
-    m_moleculeLabel = insertExpandableItem(parent);
-    m_moleculeLabel->setData(0, alias());
+    ProjectTreeItem *moleculeLabel = insertExpandableItem(parent);
+    moleculeLabel->setData(0, alias());
     
     // delegate the atoms
-    m_atomItems = new AtomDelegate(model());
-    m_atomItems->initStructure(widget, m_moleculeLabel);
-    exportDelegate(m_atomItems);
+    ProjectTreeModelDelegate *atomDelegate = new AtomDelegate(model());
+    atomDelegate->initStructure(widget, moleculeLabel);
+    exportDelegate(atomDelegate);
  
     // delegate the bonds
-    m_bondItems = new BondDelegate(model());
-    m_bondItems->initStructure(widget, m_moleculeLabel);
-    exportDelegate(m_bondItems);
+    ProjectTreeModelDelegate *bondDelegate = new BondDelegate(model());
+    bondDelegate->initStructure(widget, moleculeLabel);
+    exportDelegate(bondDelegate);
+
+    // delegate the residues
+    ProjectTreeModelDelegate *residueDelegate = new ResidueDelegate(model());
+    residueDelegate->initStructure(widget, moleculeLabel);
+    exportDelegate(residueDelegate);
   }
 
   void MoleculeDelegate::writeSettings(QSettings &settings) const

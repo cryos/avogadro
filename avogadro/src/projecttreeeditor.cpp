@@ -29,6 +29,7 @@
 #include "projectdelegates/moleculedelegate.h"
 #include "projectdelegates/atomdelegate.h"
 #include "projectdelegates/bonddelegate.h"
+#include "projectdelegates/residuedelegate.h"
 
 #include <QDir>
 #include <QIcon>
@@ -42,7 +43,8 @@ namespace Avogadro {
     LabelIndex,
     MoleculeIndex,
     AtomIndex,
-    BondIndex
+    BondIndex,
+    ResidueIndex
   };
 
   ProjectTreeEditor::ProjectTreeEditor(QWidget *parent) : QDialog(parent), m_updating(false)
@@ -56,6 +58,7 @@ namespace Avogadro {
     ui.itemTypeCombo->addItem("Molecule");
     ui.itemTypeCombo->addItem("Atoms");
     ui.itemTypeCombo->addItem("Bonds");
+    ui.itemTypeCombo->addItem("Residues");
   }
 
   ProjectTreeEditor::~ProjectTreeEditor()
@@ -91,6 +94,9 @@ namespace Avogadro {
         break;
       case BondIndex:
         m_hash[newItem] = (ProjectTreeModelDelegate*) new BondDelegate(0);
+        break;
+      case ResidueIndex:
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new ResidueDelegate(0);
         break;
     }
 
@@ -130,6 +136,9 @@ namespace Avogadro {
         break;
       case BondIndex:
         m_hash[newItem] = (ProjectTreeModelDelegate*) new BondDelegate(0);
+        break;
+      case ResidueIndex:
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new ResidueDelegate(0);
         break;
     }
 
@@ -475,6 +484,8 @@ namespace Avogadro {
         m_hash[newItem] = (ProjectTreeModelDelegate*) new AtomDelegate(0);
       } else if (settings.value("name").toString() == "Bonds") {
         m_hash[newItem] = (ProjectTreeModelDelegate*) new BondDelegate(0);
+      } else if (settings.value("name").toString() == "Residues") {
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new ResidueDelegate(0);
       }
      
       if (!m_hash[newItem])
