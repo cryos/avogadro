@@ -45,6 +45,8 @@ namespace Avogadro
     connect(ui.transparency, SIGNAL(clicked()), this, SLOT(updateCommandLine()));
     connect(ui.povrayPath, SIGNAL(editingFinished()),
             this, SLOT(updateCommandLine()));
+    connect(ui.fileName, SIGNAL(editingFinished()),
+            this, SLOT(updateCommandLine()));
     ui.dimX->setText(QString::number(0));
     ui.dimY->setText(QString::number(0));
     updateCommandLine();
@@ -138,6 +140,7 @@ namespace Avogadro
     ui.keepSource->setChecked(settings.value("keepSource", true).toBool());
     ui.renderDirect->setChecked(settings.value("renderDirect", true).toBool());
     ui.povrayPath->setText(settings.value("povrayPath", "povray").toString());
+    updateCommandLine();
   }
 
 
@@ -163,7 +166,7 @@ namespace Avogadro
   void POVRayDialog::updateCommandLine()
   {
     // Should update the command line when anything is changed
-    ui.command->setText(ui.povrayPath->text() + commandLine().join(" "));
+    ui.command->setText(ui.povrayPath->text() + " " + commandLine().join(" "));
   }
 
 } // End namespace Avogadro

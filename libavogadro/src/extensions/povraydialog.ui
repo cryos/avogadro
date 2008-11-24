@@ -19,16 +19,6 @@
    <string>POV-Ray Export</string>
   </property>
   <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" >
-    <widget class="QLabel" name="label_4" >
-     <property name="text" >
-      <string>Filename:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>dimX</cstring>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="1" colspan="2" >
     <layout class="QHBoxLayout" name="horizontalLayout_4" >
      <item>
@@ -42,16 +32,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="label" >
-     <property name="text" >
-      <string>Resolution:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>dimX</cstring>
-     </property>
-    </widget>
    </item>
    <item row="1" column="1" colspan="2" >
     <layout class="QHBoxLayout" name="horizontalLayout" >
@@ -76,68 +56,6 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0" colspan="3" >
-    <widget class="QCheckBox" name="antialias" >
-     <property name="toolTip" >
-      <string>Use full scene antialiasing</string>
-     </property>
-     <property name="text" >
-      <string>Antialias</string>
-     </property>
-     <property name="checked" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="3" >
-    <widget class="QCheckBox" name="transparency" >
-     <property name="toolTip" >
-      <string>Set the background color to be transparent</string>
-     </property>
-     <property name="text" >
-      <string>Alpha transparency</string>
-     </property>
-     <property name="checked" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="3" >
-    <widget class="QCheckBox" name="keepSource" >
-     <property name="toolTip" >
-      <string>Keep the POV-Ray source after rendering has completed</string>
-     </property>
-     <property name="text" >
-      <string>Keep POV-Ray source after rendering</string>
-     </property>
-     <property name="checked" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="3" >
-    <widget class="QCheckBox" name="renderDirect" >
-     <property name="toolTip" >
-      <string>Render the molecule directly using command line POV-Ray</string>
-     </property>
-     <property name="text" >
-      <string>Render using POV-Ray</string>
-     </property>
-     <property name="checked" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" >
-    <widget class="QLabel" name="label_6" >
-     <property name="text" >
-      <string>Path:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>dimX</cstring>
-     </property>
-    </widget>
-   </item>
    <item row="6" column="2" >
     <layout class="QHBoxLayout" name="horizontalLayout_6" >
      <item>
@@ -148,16 +66,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="7" column="0" >
-    <widget class="QLabel" name="label_5" >
-     <property name="text" >
-      <string>Command:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>dimX</cstring>
-     </property>
-    </widget>
    </item>
    <item row="7" column="2" >
     <layout class="QHBoxLayout" name="horizontalLayout_5" >
@@ -213,13 +121,104 @@
      </item>
     </layout>
    </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="label_4" >
+     <property name="text" >
+      <string>Filename:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>dimX</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>Resolution:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>dimX</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3" >
+    <widget class="QCheckBox" name="antialias" >
+     <property name="toolTip" >
+      <string>Use full scene antialiasing</string>
+     </property>
+     <property name="text" >
+      <string>Antialias</string>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3" >
+    <widget class="QCheckBox" name="transparency" >
+     <property name="toolTip" >
+      <string>Set the background color to be transparent</string>
+     </property>
+     <property name="text" >
+      <string>Alpha transparency</string>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" >
+    <widget class="QLabel" name="label_5" >
+     <property name="text" >
+      <string>Command:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>dimX</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="3" >
+    <widget class="QCheckBox" name="renderDirect" >
+     <property name="toolTip" >
+      <string>Render the molecule directly using command line POV-Ray</string>
+     </property>
+     <property name="text" >
+      <string>Render using POV-Ray</string>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="3" >
+    <widget class="QCheckBox" name="keepSource" >
+     <property name="toolTip" >
+      <string>Keep the POV-Ray source after rendering has completed</string>
+     </property>
+     <property name="text" >
+      <string>Keep POV-Ray source after rendering</string>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" >
+    <widget class="QLabel" name="label_6" >
+     <property name="text" >
+      <string>Path:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>dimX</cstring>
+     </property>
+    </widget>
+   </item>
   </layout>
   <zorder>label_4</zorder>
   <zorder>label</zorder>
   <zorder>antialias</zorder>
   <zorder>transparency</zorder>
   <zorder>label_5</zorder>
-  <zorder>layoutWidget</zorder>
   <zorder>renderDirect</zorder>
   <zorder>keepSource</zorder>
   <zorder>label_6</zorder>
@@ -229,6 +228,14 @@
   <tabstop>selectFileName</tabstop>
   <tabstop>dimX</tabstop>
   <tabstop>dimY</tabstop>
+  <tabstop>antialias</tabstop>
+  <tabstop>transparency</tabstop>
+  <tabstop>keepSource</tabstop>
+  <tabstop>renderDirect</tabstop>
+  <tabstop>povrayPath</tabstop>
+  <tabstop>command</tabstop>
+  <tabstop>render</tabstop>
+  <tabstop>close</tabstop>
  </tabstops>
  <resources/>
  <connections>
