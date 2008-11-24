@@ -39,8 +39,15 @@ namespace Avogadro
     ui.setupUi(this);
     connect(ui.selectFileName, SIGNAL(clicked()), this, SLOT(selectFileName()));
     connect(ui.render, SIGNAL(clicked()), this, SLOT(renderClicked()));
+    connect(ui.dimX, SIGNAL(editingFinished()), this, SLOT(updateCommandLine()));
+    connect(ui.dimY, SIGNAL(editingFinished()), this, SLOT(updateCommandLine()));
+    connect(ui.antialias, SIGNAL(clicked()), this, SLOT(updateCommandLine()));
+    connect(ui.transparency, SIGNAL(clicked()), this, SLOT(updateCommandLine()));
+    connect(ui.povrayPath, SIGNAL(editingFinished()),
+            this, SLOT(updateCommandLine()));
     ui.dimX->setText(QString::number(0));
     ui.dimY->setText(QString::number(0));
+    updateCommandLine();
   }
 
   POVRayDialog::~POVRayDialog()
@@ -141,8 +148,6 @@ namespace Avogadro
       tr("Save POV-Ray rendered image"), ui.fileName->text(),
       tr("Image files (*.png *.pbm)"));
     ui.fileName->setText(fileName);
-//    emit fileName(file);
-    ui.command->setText(commandLine().join(" "));
   }
 
   void POVRayDialog::renderClicked()
@@ -153,6 +158,12 @@ namespace Avogadro
   void POVRayDialog::resized()
   {
     // Adjust the size here on the form
+  }
+
+  void POVRayDialog::updateCommandLine()
+  {
+    // Should update the command line when anything is changed
+    ui.command->setText(ui.povrayPath->text() + commandLine().join(" "));
   }
 
 } // End namespace Avogadro

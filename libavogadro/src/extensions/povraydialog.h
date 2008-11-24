@@ -111,11 +111,13 @@ namespace Avogadro
 
   Q_SIGNALS:
     void render();
+    void preview(int, int);
 
   public Q_SLOTS:
     void selectFileName();
     void renderClicked();
     void resized();
+    void updateCommandLine();
 
   };
 
