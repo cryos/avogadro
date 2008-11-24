@@ -497,9 +497,10 @@ namespace Avogadro {
       OBMol mol = m_glwidget->molecule()->OBMol();
       m_forceField->GetCoordinates( mol );
       QList<Atom*> atoms = m_glwidget->molecule()->atoms();
+      double *coordPtr = mol.GetCoordinates();
       foreach(Atom* atom, atoms) {
-        OBAtom *obatom = mol.GetAtom(atom->index() + 1);
-        atom->setPos(Eigen::Vector3d(obatom->GetVector().AsArray()));
+        atom->setPos(Eigen::Vector3d(coordPtr));
+        coordPtr += 3;
       }
 
       if(m_clickedAtom && m_leftButtonPressed)

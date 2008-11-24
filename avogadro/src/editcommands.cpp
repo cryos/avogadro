@@ -62,6 +62,20 @@ namespace Avogadro {
           m_molecule->deleteAtom(atom);
         }
       }
+      foreach(unsigned long bondid, m_selectedList.subList(Primitive::BondType)) {
+        Bond *bond = m_molecule->bondById(bondid);
+        if(bond)
+        {
+          m_molecule->deleteBond(bond);
+        }
+      }
+      foreach(unsigned long residueid, m_selectedList.subList(Primitive::ResidueType)) {
+        Residue *residue = m_molecule->residueById(residueid);
+        if(residue)
+        {
+          m_molecule->deleteResidue(residue);
+        }
+      }
     }
     m_molecule->update();
   }
@@ -133,6 +147,20 @@ namespace Avogadro {
         if(atom)
         {
           m_molecule->deleteAtom(atom);
+        }
+      }
+      foreach(unsigned long bondid, m_selectedList.subList(Primitive::BondType)) {
+        Bond *bond = m_molecule->bondById(bondid);
+        if(bond)
+        {
+          m_molecule->deleteBond(bond);
+        }
+      }
+      foreach(unsigned long residueid, m_selectedList.subList(Primitive::ResidueType)) {
+        Residue *residue = m_molecule->residueById(residueid);
+        if(residue)
+        {
+          m_molecule->deleteResidue(residue);
         }
       }
     }

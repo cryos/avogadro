@@ -381,6 +381,25 @@ namespace Avogadro{
     return 0;
   }
 
+  Residue *Molecule::residue(int index)
+  {
+    Q_D(Molecule);
+    if (index >= 0 && index < d->residueList.size())
+      return d->residueList[index];
+    else
+      return 0;
+  }
+
+  Residue *Molecule::residueById(unsigned long id) const
+  {
+    Q_D(const Molecule);
+    if(id < d->residues.size())
+    {
+      return d->residues[id];
+    }
+    return 0;
+  }
+
   Cube *Molecule::newCube()
   {
     Q_D(Molecule);

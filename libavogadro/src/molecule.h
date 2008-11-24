@@ -273,6 +273,17 @@ namespace Avogadro {
       Bond* bond(const Atom*, const Atom*);
 
       /**
+       * @return The residue at the supplied index.
+       * @note Replaces GetResidue.
+       */
+      Residue* residue(int index);
+
+      /**
+       * @return The residue at the supplied unique id.
+       */
+      Residue *residueById(unsigned long id) const;
+
+      /**
        * @return QList of all atoms in the molecule.
        */
       QList<Atom *> atoms() const;
