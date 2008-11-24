@@ -24,6 +24,7 @@
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/atom.h>
 
 #include <QProgressDialog>
 #include <QWriteLocker>
@@ -171,6 +172,7 @@ namespace Avogadro
     int i = action->data().toInt();
     double energy = 0.0;
     QString msg;
+    OBMol mol;
     switch ( i ) {
     case SetupForceFieldIndex: // setup force field
       m_dialog->show();
@@ -181,7 +183,8 @@ namespace Avogadro
 
       m_forceField->SetLogLevel( OBFF_LOGLVL_HIGH );
 
-      if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
+      mol = m_molecule->OBMol();
+      if ( !m_forceField->Setup( mol, m_constraints->constraints() ) ) {
         QMessageBox::warning( widget, tr( "Avogadro" ),
           tr( "Cannot set up the force field for this molecule." ));
         break;
@@ -200,7 +203,8 @@ namespace Avogadro
 
       m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
 
-      if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
+      mol = m_molecule->OBMol();
+      if ( !m_forceField->Setup( mol, m_constraints->constraints() ) ) {
         QMessageBox::warning( widget, tr( "Avogadro" ),
           tr( "Cannot set up the force field for this molecule." ));
         break;
@@ -219,7 +223,8 @@ namespace Avogadro
 
       m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
 
-      if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
+      mol = m_molecule->OBMol();
+      if ( !m_forceField->Setup( mol, m_constraints->constraints() ) ) {
         QMessageBox::warning( widget, tr( "Avogadro" ),
           tr( "Cannot set up the force field for this molecule." ));
         break;
@@ -248,7 +253,7 @@ namespace Avogadro
       foreach(Primitive *p, selectedAtoms)
       {
         Atom *atom = static_cast<Atom *>(p);
-        m_constraints->addIgnore(atom->GetIdx());
+        m_constraints->addIgnore(atom->index() + 1);
       }
 
       m_forceField->SetConstraints(m_constraints->constraints());
@@ -261,7 +266,7 @@ namespace Avogadro
       foreach(Primitive *p, selectedAtoms)
       {
         Atom *atom = static_cast<Atom *>(p);
-        m_constraints->addAtomConstraint(atom->GetIdx());
+        m_constraints->addAtomConstraint(atom->index() + 1);
       }
 
       m_forceField->SetConstraints(m_constraints->constraints());
@@ -316,7 +321,8 @@ namespace Avogadro
     m_forceField->SetLogFile( &buff );
     m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
 
-    if ( !m_forceField->Setup( *m_molecule, m_constraints->constraints() ) ) {
+    OBMol mol = m_molecule->OBMol();
+    if ( !m_forceField->Setup( mol, m_constraints->constraints() ) ) {
       qWarning() << "ForceFieldCommand: Could not set up force field on " << m_molecule;
       return;
     }
@@ -325,8 +331,16 @@ namespace Avogadro
       if ( m_algorithm == 0 ) {
         m_forceField->SteepestDescentInitialize( m_nSteps, pow( 10.0, -m_convergence )); // initialize sd
 
+        OBMol mol;
         while ( m_forceField->SteepestDescentTakeNSteps( 5 ) ) { // take 5 steps until convergence or m_nSteps taken
-          m_forceField->UpdateCoordinates( *m_molecule );
+          mol = m_molecule->OBMol();
+          m_forceField->UpdateCoordinates( mol );
+          assert( mol.NumAtoms() == m_molecule->numAtoms() );
+          double *coordPtr = mol.GetCoordinates();
+          foreach (Atom *atom, m_molecule->atoms()) {
+            atom->setPos(Eigen::Vector3d(coordPtr));
+            coordPtr += 3;
+          }
           m_molecule->update();
           m_cycles++;
           steps += 5;
@@ -341,8 +355,16 @@ namespace Avogadro
       } else if ( m_algorithm == 1 ) {
         m_forceField->ConjugateGradientsInitialize( m_nSteps, pow( 10.0, -m_convergence )); // initialize cg
 
+        OBMol mol;
         while ( m_forceField->ConjugateGradientsTakeNSteps( 5 ) ) { // take 5 steps until convergence or m_nSteps taken
-          m_forceField->UpdateCoordinates( *m_molecule );
+          mol = m_molecule->OBMol();
+          m_forceField->UpdateCoordinates( mol );
+          assert( mol.NumAtoms() == m_molecule->numAtoms() );
+          double *coordPtr = mol.GetCoordinates();
+          foreach (Atom *atom, m_molecule->atoms()) {
+            atom->setPos(Eigen::Vector3d(coordPtr));
+            coordPtr += 3;
+          }
           m_molecule->update();
           m_cycles++;
           steps += 5;
@@ -358,7 +380,8 @@ namespace Avogadro
     } else if ( m_task == 1 ) {
       int n = m_forceField->SystematicRotorSearchInitialize(m_nSteps);
       while (m_forceField->SystematicRotorSearchNextConformer(m_nSteps)) {
-        m_forceField->GetConformers( *m_molecule );
+        // FIXME: we don't have support for conformers yet
+        //m_forceField->GetConformers( *m_molecule );
         m_molecule->update();
         m_cycles++;
         m_mutex.lock();
@@ -372,7 +395,8 @@ namespace Avogadro
     } else if ( m_task == 2 ) {
       m_forceField->RandomRotorSearchInitialize(m_numConformers, m_nSteps);
       while (m_forceField->RandomRotorSearchNextConformer(m_nSteps)) {
-        m_forceField->GetConformers( *m_molecule );
+        // FIXME: we don't have support for conformers yet
+        //m_forceField->GetConformers( *m_molecule );
         m_molecule->update();
         m_cycles++;
         m_mutex.lock();
@@ -385,11 +409,13 @@ namespace Avogadro
       }
     } else if ( m_task == 3 ) {
       m_forceField->WeightedRotorSearch(m_numConformers, m_nSteps);
-      m_forceField->GetConformers( *m_molecule );
+      // FIXME: we don't have support for conformers yet
+      //m_forceField->GetConformers( *m_molecule );
       m_forceField->ConjugateGradients(250);
     }
 
-    m_forceField->GetConformers( *m_molecule );
+    // FIXME: we don't have support for conformers yet
+    //m_forceField->GetConformers( *m_molecule );
     m_molecule->update();
 
     emit message( QObject::tr( buff.str().c_str() ) );

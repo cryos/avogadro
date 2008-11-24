@@ -30,6 +30,7 @@
 
 #include <openbabel/forcefield.h>
 
+#include <avogadro/molecule.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
 

@@ -48,15 +48,15 @@ set(LINK_LIBS "avogadro-lib")
 #install(TARGETS propextension DESTINATION ${DESTINATION_DIR})
 
 ### Molecular Mechanics force fields
-#set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp
-#  constraintsdialog.cpp constraintsmodel.cpp conformersearchdialog.cpp)
-#qt4_wrap_ui(forcefieldextension_UIS_H forcefielddialog.ui constraintsdialog.ui
-#  conformersearchdialog.ui)
-#qt4_automoc(${forcefieldextension_SRCS})
-#add_library(forcefieldextension MODULE ${forcefieldextension_SRCS}
-#  ${forcefieldextension_UIS_H})
-#target_link_libraries(forcefieldextension ${LINK_LIBS})
-#install(TARGETS forcefieldextension DESTINATION ${DESTINATION_DIR})
+set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp
+  constraintsdialog.cpp constraintsmodel.cpp conformersearchdialog.cpp)
+qt4_wrap_ui(forcefieldextension_UIS_H forcefielddialog.ui constraintsdialog.ui
+  conformersearchdialog.ui)
+qt4_automoc(${forcefieldextension_SRCS})
+add_library(forcefieldextension MODULE ${forcefieldextension_SRCS}
+  ${forcefieldextension_UIS_H})
+target_link_libraries(forcefieldextension ${LINK_LIBS})
+install(TARGETS forcefieldextension DESTINATION ${DESTINATION_DIR})
 
 ### Docking
 ###set(dockingextension_SRCS dockingextension.cpp liganddialog.cpp pocketdialog.cpp)

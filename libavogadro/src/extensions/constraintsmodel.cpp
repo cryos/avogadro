@@ -21,6 +21,7 @@
 
 #include "constraintsmodel.h"
 #include <avogadro/primitive.h>
+#include <avogadro/atom.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
@@ -204,7 +205,7 @@ namespace Avogadro
   {
     qDebug() << "ConstraintsModel::primitiveRemoved(...)" << endl;
     if (primitive->type() == Primitive::AtomType) {
-      int index = static_cast<Atom*>(primitive)->GetIdx();
+      int index = static_cast<Atom*>(primitive)->index() + 1;
       for (int i = 0; i < m_constraints.Size(); ++i) {
         if ( (m_constraints.GetConstraintAtomA(i) == index) || 
              (m_constraints.GetConstraintAtomB(i) == index) || 

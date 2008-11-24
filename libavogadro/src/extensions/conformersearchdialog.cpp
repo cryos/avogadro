@@ -128,7 +128,7 @@ namespace Avogadro {
     else
       systematicToggled(true);
  
-    ui.atomLabel->setText(QString(tr("Number of atoms: %1")).arg(m_molecule->NumAtoms()));
+    ui.atomLabel->setText(QString(tr("Number of atoms: %1")).arg(m_molecule->numAtoms()));
     ui.bondsLabel->setText(QString(tr("Number of rotatable bonds: %1")).arg(rl.Size()));
   }
   

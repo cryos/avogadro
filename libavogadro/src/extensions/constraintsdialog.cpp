@@ -21,6 +21,8 @@
 
 #include "constraintsdialog.h"
 
+#include <avogadro/molecule.h>
+
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QDebug>
@@ -56,12 +58,12 @@ namespace Avogadro {
       case 2:
       case 3:
       case 4:
-       	if (m_molecule->NumAtoms() >= 1) {
+       	if (m_molecule->numAtoms() >= 1) {
           ui.editA->setMinimum(1);
           ui.editB->setMinimum(0);
           ui.editC->setMinimum(0);
           ui.editD->setMinimum(0);
-          ui.editA->setMaximum(m_molecule->NumAtoms());
+          ui.editA->setMaximum(m_molecule->numAtoms());
           ui.editB->setMaximum(0);
           ui.editC->setMaximum(0);
           ui.editD->setMaximum(0);
@@ -81,13 +83,13 @@ namespace Avogadro {
 	}
         break;
       case 5:
-	if (m_molecule->NumAtoms() >= 2) {
+	if (m_molecule->numAtoms() >= 2) {
           ui.editA->setMinimum(1);
           ui.editB->setMinimum(1);
           ui.editC->setMinimum(0);
           ui.editD->setMinimum(0);
-          ui.editA->setMaximum(m_molecule->NumAtoms() - 1);
-          ui.editB->setMaximum(m_molecule->NumAtoms());
+          ui.editA->setMaximum(m_molecule->numAtoms() - 1);
+          ui.editB->setMaximum(m_molecule->numAtoms());
           ui.editC->setMaximum(0);
           ui.editD->setMaximum(0);
           ui.editB->setValue(2);
@@ -109,14 +111,14 @@ namespace Avogadro {
 	}
         break;
       case 6:
-       	if (m_molecule->NumAtoms() >= 3) {
+       	if (m_molecule->numAtoms() >= 3) {
           ui.editA->setMinimum(1);
           ui.editB->setMinimum(1);
           ui.editC->setMinimum(1);
           ui.editD->setMinimum(0);
-          ui.editA->setMaximum(m_molecule->NumAtoms() - 2);
-          ui.editB->setMaximum(m_molecule->NumAtoms() - 1);
-          ui.editC->setMaximum(m_molecule->NumAtoms());
+          ui.editA->setMaximum(m_molecule->numAtoms() - 2);
+          ui.editB->setMaximum(m_molecule->numAtoms() - 1);
+          ui.editC->setMaximum(m_molecule->numAtoms());
           ui.editD->setMaximum(0);
           ui.editB->setValue(2);
           ui.editC->setValue(3);
@@ -138,15 +140,15 @@ namespace Avogadro {
 	}
 	break;
       case 7:
-        if (m_molecule->NumAtoms() >= 4) {
+        if (m_molecule->numAtoms() >= 4) {
           ui.editA->setMinimum(1);
           ui.editB->setMinimum(1);
           ui.editC->setMinimum(1);
           ui.editD->setMinimum(1);
-          ui.editA->setMaximum(m_molecule->NumAtoms() - 3);
-          ui.editB->setMaximum(m_molecule->NumAtoms() - 2);
-          ui.editC->setMaximum(m_molecule->NumAtoms() - 1);
-          ui.editD->setMaximum(m_molecule->NumAtoms());
+          ui.editA->setMaximum(m_molecule->numAtoms() - 3);
+          ui.editB->setMaximum(m_molecule->numAtoms() - 2);
+          ui.editC->setMaximum(m_molecule->numAtoms() - 1);
+          ui.editD->setMaximum(m_molecule->numAtoms());
           ui.editB->setValue(2);
           ui.editC->setValue(3);
           ui.editD->setValue(4);
@@ -195,12 +197,12 @@ namespace Avogadro {
       case 2:
       case 3:
       case 4:
-       	if (m_molecule->NumAtoms() >= 1) {
+       	if (m_molecule->numAtoms() >= 1) {
           ui.editA->setMinimum(1);
           ui.editB->setMinimum(0);
           ui.editC->setMinimum(0);
           ui.editD->setMinimum(0);
-          ui.editA->setMaximum(m_molecule->NumAtoms());
+          ui.editA->setMaximum(m_molecule->numAtoms());
           ui.editB->setMaximum(0);
           ui.editC->setMaximum(0);
           ui.editD->setMaximum(0);
@@ -220,13 +222,13 @@ namespace Avogadro {
 	}
         break;
       case 5:
-	if (m_molecule->NumAtoms() >= 2) {
+	if (m_molecule->numAtoms() >= 2) {
           ui.editA->setMinimum(1);
           ui.editB->setMinimum(1);
           ui.editC->setMinimum(0);
           ui.editD->setMinimum(0);
-          ui.editA->setMaximum(m_molecule->NumAtoms() - 1);
-          ui.editB->setMaximum(m_molecule->NumAtoms());
+          ui.editA->setMaximum(m_molecule->numAtoms() - 1);
+          ui.editB->setMaximum(m_molecule->numAtoms());
           ui.editC->setMaximum(0);
           ui.editD->setMaximum(0);
           ui.editB->setValue(2);
@@ -248,14 +250,14 @@ namespace Avogadro {
 	}
         break;
       case 6:
-       	if (m_molecule->NumAtoms() >= 3) {
+       	if (m_molecule->numAtoms() >= 3) {
           ui.editA->setMinimum(1);
           ui.editB->setMinimum(1);
           ui.editC->setMinimum(1);
           ui.editD->setMinimum(0);
-          ui.editA->setMaximum(m_molecule->NumAtoms() - 2);
-          ui.editB->setMaximum(m_molecule->NumAtoms() - 1);
-          ui.editC->setMaximum(m_molecule->NumAtoms());
+          ui.editA->setMaximum(m_molecule->numAtoms() - 2);
+          ui.editB->setMaximum(m_molecule->numAtoms() - 1);
+          ui.editC->setMaximum(m_molecule->numAtoms());
           ui.editD->setMaximum(0);
           ui.editB->setValue(2);
           ui.editC->setValue(3);
@@ -277,15 +279,15 @@ namespace Avogadro {
 	}
 	break;
       case 7:
-        if (m_molecule->NumAtoms() >= 4) {
+        if (m_molecule->numAtoms() >= 4) {
           ui.editA->setMinimum(1);
           ui.editB->setMinimum(1);
           ui.editC->setMinimum(1);
           ui.editD->setMinimum(1);
-          ui.editA->setMaximum(m_molecule->NumAtoms() - 3);
-          ui.editB->setMaximum(m_molecule->NumAtoms() - 2);
-          ui.editC->setMaximum(m_molecule->NumAtoms() - 1);
-          ui.editD->setMaximum(m_molecule->NumAtoms());
+          ui.editA->setMaximum(m_molecule->numAtoms() - 3);
+          ui.editB->setMaximum(m_molecule->numAtoms() - 2);
+          ui.editC->setMaximum(m_molecule->numAtoms() - 1);
+          ui.editD->setMaximum(m_molecule->numAtoms());
           ui.editB->setValue(2);
           ui.editC->setValue(3);
           ui.editD->setValue(4);
@@ -330,7 +332,7 @@ namespace Avogadro {
   
   void ConstraintsDialog::addConstraint()
   {
-    if (!m_molecule->NumAtoms()) {
+    if (!m_molecule->numAtoms()) {
       QMessageBox::warning(static_cast<QWidget*>(parent()), tr("Add constraint"), 
           tr("Your molecule must contain at least one atom to add a constraint"));
       return;
@@ -353,7 +355,7 @@ namespace Avogadro {
         m_constraints->addAtomZConstraint(ui.editA->value());
 	break;
       case 5: // Distance
-        if (m_molecule->NumAtoms() < 2) {
+        if (m_molecule->numAtoms() < 2) {
           QMessageBox::warning(static_cast<QWidget*>(parent()), tr("Add constraint"), 
             tr("Your molecule must contain at least two atoms to add a bond constraint"));
 	  break;
@@ -362,7 +364,7 @@ namespace Avogadro {
 	    ui.editB->value(), ui.editValue->value());
 	break;
       case 6: // Angle
-        if (m_molecule->NumAtoms() < 3) {
+        if (m_molecule->numAtoms() < 3) {
           QMessageBox::warning(static_cast<QWidget*>(parent()), tr("Add constraint"), 
             tr("Your molecule must contain at least three atoms to add an angle constraint"));
 	  break;
@@ -372,7 +374,7 @@ namespace Avogadro {
 	    ui.editB->value(), ui.editC->value(), ui.editValue->value());
 	break;
       case 7: // Torsion
-        if (m_molecule->NumAtoms() < 4) {
+        if (m_molecule->numAtoms() < 4) {
           QMessageBox::warning(static_cast<QWidget*>(parent()), tr("Add constraint"), 
             tr("Your molecule must contain at least four atoms to add a torsion constraint"));
 	  break;
