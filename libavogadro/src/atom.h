@@ -36,14 +36,13 @@ namespace Avogadro {
 
   class Molecule;
   /**
-   * @class Atom primitive.h <avogadro/primitive.h>
+   * @class Atom atom.h <avogadro/atom.h>
    * @brief Atom Class
-   * @author Donald Ephraim Curtis
+   * @author Marcus D. Hanwell
    *
-   * The Atom class is a Primitive subclass that provides a wrapper around
-   * OpenBabel::OBAtom.  This class is provided to give more control of
-   * the OpenBabel::OBAtom class through slots/signals provided by the
-   * Primitive superclass.
+   * The Atom class is a Primitive subclass that provides an atom object. All
+   * atoms must be owned by a Molecule and should also be deleted by the
+   * Molecule that owns it.
    */
   class Bond;
   class AtomPrivate;
@@ -60,7 +59,6 @@ namespace Avogadro {
       Atom(QObject *parent=0);
 
       /**
-        * Returns the position of the atom.
         * @return The position of the atom.
         */
       const Eigen::Vector3d * pos() const;
@@ -122,7 +120,7 @@ namespace Avogadro {
        * Set the partial charge of the atom.
        * @note This is not calculated at the moment!
        */
-      inline void setPartialCharge(double charge)
+      inline void setPartialCharge(double charge) const
       {
         m_partialCharge = charge;
       }
@@ -130,10 +128,7 @@ namespace Avogadro {
       /**
        * @return Partial charge of the atom.
        */
-      inline double partialCharge() const
-      {
-        return m_partialCharge;
-      }
+      double partialCharge() const;
 
       /// Our OpenBabel conversion functions
       /**
@@ -154,7 +149,7 @@ namespace Avogadro {
       int m_pos;
       int m_atomicNumber;
       QList<unsigned long int> m_bonds, m_neighbors;
-      double m_partialCharge;
+      mutable double m_partialCharge;
       Q_DECLARE_PRIVATE(Atom)
   };
 

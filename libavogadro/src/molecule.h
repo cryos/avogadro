@@ -51,7 +51,8 @@ namespace Avogadro {
    * @author Marcus D. Hanwell
    *
    * The Molecule class implements the core molecule data that is the cetral
-   * model holding all data by our various views.
+   * model holding all information displayed by our various views and
+   * manipulated by tools and extensions.
    */
   class MoleculePrivate;
   class A_EXPORT Molecule : public Primitive
@@ -166,6 +167,11 @@ namespace Avogadro {
       void deleteHydrogens(Atom *atom = 0);
 
       /**
+       * Calculate the partial charges on each atom.
+       */
+      void calculatePartialCharges() const;
+
+      /**
        * Create a new cube object and return a pointer to it.
        * @note Do not delete the object, use deleteCube(Cube *cube).
        */
@@ -243,6 +249,8 @@ namespace Avogadro {
        * @note Replaces GetAtom.
        */
       Atom* atom(int index);
+
+      const Atom * atom(int index) const;
 
       /**
        * @return The atom at the supplied unqique id.
@@ -343,6 +351,7 @@ namespace Avogadro {
       /* shared d_ptr with Primitive */
       QString m_fileName;
       std::vector<Eigen::Vector3d> *m_atomPos;
+      mutable bool m_invalidPartialCharges;
       Q_DECLARE_PRIVATE(Molecule)
 
       void computeGeomInfo() const;

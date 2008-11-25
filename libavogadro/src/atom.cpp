@@ -83,6 +83,17 @@ using Eigen::Vector3d;
       m_neighbors.removeAt(m_neighbors.indexOf(bond->beginAtomId()));
   }
 
+  double Atom::partialCharge() const
+  {
+    if (m_molecule && m_atomicNumber) {
+      m_molecule->calculatePartialCharges();
+      return m_partialCharge;
+    }
+    else {
+      return 0.0;
+    }
+  }
+
   OpenBabel::OBAtom Atom::OBAtom()
   {
     // Need to copy all relevant data over to the OBAtom
