@@ -311,7 +311,6 @@ namespace Avogadro
 
   void ForceFieldThread::run()
   {
-    QWriteLocker locker( m_molecule->lock() );
     m_stop = false;
     m_cycles = 0;
 
@@ -331,9 +330,7 @@ namespace Avogadro
       if ( m_algorithm == 0 ) {
         m_forceField->SteepestDescentInitialize( m_nSteps, pow( 10.0, -m_convergence )); // initialize sd
 
-        OBMol mol;
         while ( m_forceField->SteepestDescentTakeNSteps( 5 ) ) { // take 5 steps until convergence or m_nSteps taken
-          mol = m_molecule->OBMol();
           m_forceField->UpdateCoordinates( mol );
           assert( mol.NumAtoms() == m_molecule->numAtoms() );
           double *coordPtr = mol.GetCoordinates();
