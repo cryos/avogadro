@@ -54,7 +54,10 @@ namespace Avogadro {
       MainWindow(const QString &fileName);
       ~MainWindow();
 
-      int painterQuality();
+      int painterQuality() const;
+      int fogLevel() const;
+      bool renderAxes() const;
+      bool renderDebug() const;
 
     protected:
       void closeEvent(QCloseEvent *event);
@@ -97,6 +100,7 @@ namespace Avogadro {
       void showSettingsDialog();
       void setBackgroundColor();
       void setPainterQuality(int quality);
+      void setFogLevel(int level);
 
       bool tabbedTools() const;
       void setTabbedTools(bool tabbedTools);
@@ -104,10 +108,7 @@ namespace Avogadro {
       QTabWidget::TabPosition toolsTabPosition() const;
       void setToolsTabPosition(QTabWidget::TabPosition tabPosition);
 
-      bool renderAxes() const;
       void setRenderAxes(bool render);
-
-      bool renderDebug() const;
       void setRenderDebug(bool render);
 
       void undoStackClean(bool clean);

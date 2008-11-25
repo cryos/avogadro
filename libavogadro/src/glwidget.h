@@ -357,10 +357,21 @@ namespace Avogadro {
        * @param quality set the global quality of the widget.
        */
       void setQuality(int quality);
+
       /**
        * @return the global quality of the widget.
        */
       int quality() const;
+
+      /**
+       * @param level Set the global fog level of the widget.
+       */
+      void setFogLevel(int level);
+
+      /**
+       * @return The global fog level of the widget.
+       */
+      int fogLevel() const;
 
       /**
        * Set to render x, y, z axes as an overlay in the bottom left of the widget.

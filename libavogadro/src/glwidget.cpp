@@ -217,6 +217,7 @@ namespace Avogadro {
                         defaultColorMap( 0),
                         updateCache(true),
                         quickRender(false),
+                        fogLevel(0),
                         renderAxes(false),
                         renderDebug(false),
                         dlistQuick(0), dlistOpaque(0), dlistTransparent(0),
@@ -286,6 +287,7 @@ namespace Avogadro {
     Color                 *defaultColorMap;  // default fall-back coloring (i.e., by elements)
     bool                   updateCache; // Update engine caches in quick render?
     bool                   quickRender; // Are we using quick render?
+    int                    fogLevel;    // The level of fog to use (0=none, 9=max)
     bool                   renderAxes;  // Should the x, y, z axes be rendered?
     bool                   renderDebug; // Should the debug information be shown?
 
@@ -535,9 +537,6 @@ namespace Avogadro {
     glEnable( GL_LIGHT0 );
 
     // Create a second light source to illuminate those shadows a little better
-    // FIXME: this is quite expensive, especially on software-only systems,
-    // so we must add a way to disable the second light! Probably it should only be enabled
-    // at high "quality levels".
     glLightfv( GL_LIGHT1, GL_AMBIENT, LIGHT_AMBIENT );
     glLightfv( GL_LIGHT1, GL_DIFFUSE, LIGHT1_DIFFUSE );
     glLightfv( GL_LIGHT1, GL_SPECULAR, LIGHT1_SPECULAR );
@@ -620,6 +619,16 @@ namespace Avogadro {
     return d->painter->quality();
   }
 
+  void GLWidget::setFogLevel(int level)
+  {
+    d->fogLevel = level;
+  }
+
+  int GLWidget::fogLevel() const
+  {
+    return d->fogLevel;
+  }
+
   void GLWidget::setRenderAxes(bool renderAxes)
   {
     d->renderAxes = renderAxes;
@@ -675,13 +684,25 @@ namespace Avogadro {
   {
     d->painter->begin(this);
 
-    if(d->painter->quality() >= 3)
-    {
+    if (d->painter->quality() >= 3) {
       glEnable(GL_LIGHT1);
     }
-    else
-    {
+    else {
       glDisable(GL_LIGHT1);
+    }
+
+    if (d->fogLevel) {
+      glFogi(GL_FOG_MODE, GL_LINEAR);
+      GLfloat fogColor[4]= {d->background.redF(), d->background.greenF(),
+                            d->background.blueF(), d->background.alphaF()};
+      glFogfv(GL_FOG_COLOR, fogColor);
+      glFogf(GL_FOG_DENSITY, d->fogLevel * 0.1);
+      glFogf(GL_FOG_START, (10 - d->fogLevel) * 2.5f);
+      glFogf(GL_FOG_END, (10 - d->fogLevel) * 17.0f);
+      glEnable(GL_FOG);
+    }
+    else {
+      glDisable(GL_FOG);
     }
 
     // Use renderQuick if the view is being moved, otherwise full render
@@ -1753,6 +1774,7 @@ namespace Avogadro {
   {
     settings.setValue("background", d->background);
     settings.setValue("quality", d->painter->quality());
+    settings.setValue("fogLevel", d->fogLevel);
     settings.setValue("renderAxes", d->renderAxes);
     settings.setValue("renderDebug", d->renderDebug);
 
@@ -1772,6 +1794,7 @@ namespace Avogadro {
   {
     // Make sure to provide some default values for any settings.value("", DEFAULT) call
     setQuality(settings.value("quality", 2).toInt());
+    setFogLevel(settings.value("fogLevel", 0).toInt());
     d->background = settings.value("background", QColor(0,0,0,0)).value<QColor>();
     d->renderAxes = settings.value("renderAxes", 1).value<bool>();
     d->renderDebug = settings.value("renderDebug", 0).value<bool>();

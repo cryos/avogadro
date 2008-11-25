@@ -1331,9 +1331,20 @@ namespace Avogadro
     d->glWidget->update();
   }
 
-  int MainWindow::painterQuality()
+  int MainWindow::painterQuality() const
   {
     return d->glWidget->quality();
+  }
+
+  void MainWindow::setFogLevel(int level)
+  {
+    d->glWidget->setFogLevel(level);
+    d->glWidget->update();
+  }
+
+  int MainWindow::fogLevel() const
+  {
+    return d->glWidget->fogLevel();
   }
 
   void MainWindow::newView()

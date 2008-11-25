@@ -48,6 +48,7 @@ namespace Avogadro {
       void saveValues();
       void loadValues();
       void qualityChanged(int value);
+      void fogChanged(int value);
   };
 
 } // end namespace Avogadro
