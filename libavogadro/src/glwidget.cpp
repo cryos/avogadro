@@ -696,9 +696,12 @@ namespace Avogadro {
       GLfloat fogColor[4]= {d->background.redF(), d->background.greenF(),
                             d->background.blueF(), d->background.alphaF()};
       glFogfv(GL_FOG_COLOR, fogColor);
-      glFogf(GL_FOG_DENSITY, d->fogLevel * 0.1);
-      glFogf(GL_FOG_START, (10 - d->fogLevel) * 2.5f);
-      glFogf(GL_FOG_END, (10 - d->fogLevel) * 17.0f);
+      Vector3d distance = camera()->modelview() * d->center;
+      double distanceToCenter = distance.norm();
+      glFogf(GL_FOG_DENSITY, 1.0);
+      glHint(GL_FOG_HINT, GL_NICEST);
+      glFogf(GL_FOG_START, distanceToCenter - (d->fogLevel / 8.0) * d->radius);
+      glFogf(GL_FOG_END, distanceToCenter + ((10-d->fogLevel)/8.0 * 2.0) * d->radius);
       glEnable(GL_FOG);
     }
     else {
