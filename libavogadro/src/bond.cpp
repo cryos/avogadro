@@ -25,7 +25,12 @@
 
  #include "bond.h"
 
+ #include "molecule.h"
+ #include "atom.h"
+
  #include <openbabel/mol.h>
+
+ #include <QDebug>
 
  namespace Avogadro{
 
@@ -37,6 +42,45 @@
   Bond::Bond(QObject *parent) : Primitive(BondType, parent), m_beginAtomId(0),
     m_endAtomId(0), m_order(1)
   {
+    m_molecule = static_cast<Molecule*>(parent);
+  }
+
+  Bond::~Bond()
+  {
+    m_molecule->atomById(m_beginAtomId)->deleteBond(this);
+    m_molecule->atomById(m_endAtomId)->deleteBond(this);
+  }
+
+  void Bond::setBegin(Atom* atom)
+  {
+    m_beginAtomId = atom->id();
+    atom->addBond(this);
+  }
+
+  void Bond::setEnd(Atom* atom)
+  {
+    m_endAtomId = atom->id();
+    atom->addBond(this);
+  }
+
+  void Bond::setAtoms(unsigned long int atom1, unsigned long int atom2)
+  {
+    Atom *atom = m_molecule->atomById(atom1);
+    if (atom) {
+      m_beginAtomId = atom1;
+      atom->addBond(this);
+    }
+    else {
+      qDebug() << "Non-existant atom:" << atom1;
+    }
+    atom = m_molecule->atomById(atom2);
+    if (atom) {
+      m_endAtomId = atom2;
+      atom->addBond(this);
+    }
+    else {
+      qDebug() << "Non-existant atom:" << atom2;
+    }
   }
 
   bool Bond::setOBBond(OpenBabel::OBBond *obbond)

@@ -209,15 +209,20 @@ namespace Avogadro{
         m_lock->unlock();
       }
       else {
+        // Reserve size in blocks of 100
+        unsigned int reserve = (static_cast<int>(id / 100) + 1) * 100;
         m_lock->lockForWrite();
+        if (m_atomPos->capacity() < reserve) {
+          m_atomPos->reserve(reserve);
+        }
         m_atomPos->resize(id+1);
         (*m_atomPos)[id] = vec;
         m_lock->unlock();
       }
     }
     else {
-      m_lock->lockForWrite();
       m_atomPos = new std::vector<Vector3d>;
+      m_atomPos->reserve(100);
       m_atomPos->resize(id+1);
       (*m_atomPos)[id] = vec;
       m_lock->unlock();
@@ -807,6 +812,7 @@ namespace Avogadro{
     clear();
     // Copy all the parts of the OBMol to our Molecule
 
+    qDebug() << "Copying atoms...";
     // Begin by copying all of the atoms
     std::vector<OpenBabel::OBNodeBase*>::iterator i;
     for (OpenBabel::OBAtom *obatom = static_cast<OpenBabel::OBAtom *>(obmol->BeginAtom(i));
@@ -815,6 +821,7 @@ namespace Avogadro{
       atom->setOBAtom(obatom);
     }
 
+    qDebug() << "Copying bonds...";
     // Now bonds, we use the indices of the atoms to get the bonding right
     std::vector<OpenBabel::OBEdgeBase*>::iterator j;
     for (OpenBabel::OBBond *obbond = static_cast<OpenBabel::OBBond*>(obmol->BeginBond(j));

@@ -43,6 +43,7 @@ namespace Avogadro {
    * The Bond class is a Primitive subclass that provides a bond object.
    */
   class Atom;
+  class Molecule;
   class BondPrivate;
   class A_EXPORT Bond : public Primitive
   {
@@ -56,6 +57,8 @@ namespace Avogadro {
        */
       Bond(QObject *parent=0);
 
+      ~Bond();
+
       /**
        * @return the unique ID of the first atom in the bond.
        */
@@ -64,7 +67,7 @@ namespace Avogadro {
       /**
        * Set the unique ID of the first atom in the bond.
        */
-      void setBegin(Atom* atom) { m_beginAtomId = atom->id(); }
+      void setBegin(Atom* atom);
 
       /**
        * @return the unique ID of the second atom in the bond.
@@ -74,7 +77,9 @@ namespace Avogadro {
       /**
        * Set the unique ID of the second atom in the bond.
        */
-      void setEnd(Atom* atom) { m_endAtomId = atom->id(); }
+      void setEnd(Atom* atom);
+
+      void setAtoms(unsigned long int atom1, unsigned long int atom2);
 
       /**
        * @return the order of the bond - 1 = single, 2 = double etc.
@@ -102,6 +107,7 @@ namespace Avogadro {
     private:
       unsigned long int m_beginAtomId, m_endAtomId;
       int m_order;
+      Molecule *m_molecule;
       /* shared d_ptr with Primitive */
       Q_DECLARE_PRIVATE(Bond)
   };
