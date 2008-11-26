@@ -187,3 +187,12 @@ qt4_automoc(${povrayextension_SRCS})
 add_library(povrayextension MODULE ${povrayextension_SRCS} ${povrayextension_UIS_H})
 target_link_libraries(povrayextension ${LINK_LIBS})
 install(TARGETS povrayextension DESTINATION ${DESTINATION_DIR})
+
+### File import extension
+set(fileimportextension_SRCS fileimportextension.cpp)
+qt4_wrap_ui(fileimportextension_UIS_H fileimportdialog.ui)
+qt4_automoc(${fileimportextension_SRCS})
+add_library(fileimportextension MODULE ${fileimportextension_SRCS}
+  ${fileimportextension_UIS_H})
+target_link_libraries(fileimportextension ${LINK_LIBS})
+install(TARGETS fileimportextension DESTINATION ${DESTINATION_DIR})
