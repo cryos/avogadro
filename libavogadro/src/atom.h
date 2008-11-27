@@ -92,19 +92,29 @@ namespace Avogadro {
       void addBond(Bond* bond);
 
       /**
+       * Adds a reference to a bond to the atom.
+       */
+      void addBond(unsigned long int bond);
+
+      /**
        * Deletes the reference of the bond to the atom.
        */
       void deleteBond(Bond* bond);
 
       /**
+       * Deletes the reference of the bond to the atom.
+       */
+      void deleteBond(unsigned long int bond);
+
+      /**
        * @return List of bond ids to the atom.
        */
-      QList<unsigned long int> bonds() { return m_bonds; }
+      QList<unsigned long int> bonds() const { return m_bonds; }
 
       /**
        * @return List of neighbor ids to the atom (atoms bonded to that atom).
        */
-      QList<unsigned long int> neighbors() { return m_neighbors; }
+      QList<unsigned long int> neighbors() const;
 
       /**
        * The valence of the atom. FIXME - don't think this will cut it...

@@ -60,14 +60,19 @@ namespace Avogadro {
       ~Bond();
 
       /**
+       * Set the unique ID of the first atom in the bond.
+       */
+      void setBegin(Atom* atom);
+
+      /**
        * @return the unique ID of the first atom in the bond.
        */
       inline unsigned long int beginAtomId() const { return m_beginAtomId; }
 
       /**
-       * Set the unique ID of the first atom in the bond.
+       * Set the unique ID of the second atom in the bond.
        */
-      void setBegin(Atom* atom);
+      void setEnd(Atom* atom);
 
       /**
        * @return the unique ID of the second atom in the bond.
@@ -75,21 +80,32 @@ namespace Avogadro {
       inline unsigned long int endAtomId() const { return m_endAtomId; }
 
       /**
-       * Set the unique ID of the second atom in the bond.
+       * Set the unique ID of both atoms in the bond
+       * @param atom1 First atom in the bond.
+       * @param atom2 Second atom in the bond.
+       * @param order Bond order (defaults to 1).
        */
-      void setEnd(Atom* atom);
+      void setAtoms(unsigned long int atom1, unsigned long int atom2,
+                    short order = 1);
 
-      void setAtoms(unsigned long int atom1, unsigned long int atom2);
+      /**
+       * Get the unique id of the other atom in the bond.
+       * @param atomId The unique id of the Atom.
+       * @return The unique if of the other Atom in the bond.
+       * @note This function does not perform checks to ensure the supplied
+       * Atom is actually in the bond.
+       */
+      unsigned long int otherAtom(unsigned long int atomId) const;
 
       /**
        * @return the order of the bond - 1 = single, 2 = double etc.
        */
-      inline int order() const { return m_order; }
+      inline short order() const { return m_order; }
 
       /**
        * Set the order of the bond.
        */
-      inline void setOrder(int order) { m_order = order; }
+      inline void setOrder(short order) { m_order = order; }
 
       /**
        * @return the length of the bond.
@@ -106,7 +122,7 @@ namespace Avogadro {
 
     private:
       unsigned long int m_beginAtomId, m_endAtomId;
-      int m_order;
+      short m_order;
       Molecule *m_molecule;
       /* shared d_ptr with Primitive */
       Q_DECLARE_PRIVATE(Bond)

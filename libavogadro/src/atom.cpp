@@ -62,25 +62,55 @@ using Eigen::Vector3d;
 
   void Atom::addBond(Bond* bond)
   {
-    m_bonds.push_back(bond->id());
+    if (bond) {
+      addBond(bond->id());
+    }
+  }
+
+  void Atom::addBond(unsigned long int bond)
+  {
+    m_bonds.push_back(bond);
     // Update the neighbors list
-    if (bond->beginAtomId() == id())
-      m_neighbors.push_back(bond->endAtomId());
-    else
-      m_neighbors.push_back(bond->beginAtomId());
+//    if (bond->beginAtomId() == id())
+//      m_neighbors.push_back(bond->endAtomId());
+//    else
+//      m_neighbors.push_back(bond->beginAtomId());
   }
 
   void Atom::deleteBond(Bond* bond)
   {
-    int index = m_bonds.indexOf(bond->id());
-    if (index >= 0)
-      m_bonds.removeAt(index);
+    if (bond) {
+      deleteBond(bond->id());
+    }
+  }
 
+  void Atom::deleteBond(unsigned long int bond)
+  {
+    qDebug() << "Atom" << m_id << "deleting bond" << bond;
+    int index = m_bonds.indexOf(bond);
+    if (index >= 0) {
+      m_bonds.removeAt(index);
+    }
     // Update the neighbors list too
-    if (bond->beginAtomId() == id())
-      m_neighbors.removeAt(m_neighbors.indexOf(bond->endAtomId()));
-    else
-      m_neighbors.removeAt(m_neighbors.indexOf(bond->beginAtomId()));
+//    if (bond->beginAtomId() == id())
+//      m_neighbors.removeAt(m_neighbors.indexOf(bond->endAtomId()));
+//    else
+//      m_neighbors.removeAt(m_neighbors.indexOf(bond->beginAtomId()));
+  }
+
+  QList<unsigned long int> Atom::neighbors() const
+  {
+    if (m_molecule && m_bonds.size()) {
+      QList<unsigned long int> list;
+      foreach(unsigned long int id, m_bonds) {
+        const Bond *bond = m_molecule->bondById(id);
+        if (bond) {
+          list.push_back(bond->otherAtom(m_id));
+        }
+      }
+      return list;
+    }
+    return QList<unsigned long int>();
   }
 
   double Atom::partialCharge() const

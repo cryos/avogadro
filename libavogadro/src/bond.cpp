@@ -43,12 +43,11 @@
     m_endAtomId(0), m_order(1)
   {
     m_molecule = static_cast<Molecule*>(parent);
+    m_id = 0l - 1;
   }
 
   Bond::~Bond()
   {
-    m_molecule->atomById(m_beginAtomId)->deleteBond(this);
-    m_molecule->atomById(m_endAtomId)->deleteBond(this);
   }
 
   void Bond::setBegin(Atom* atom)
@@ -63,7 +62,8 @@
     atom->addBond(this);
   }
 
-  void Bond::setAtoms(unsigned long int atom1, unsigned long int atom2)
+  void Bond::setAtoms(unsigned long int atom1, unsigned long int atom2,
+                      short order)
   {
     Atom *atom = m_molecule->atomById(atom1);
     if (atom) {
@@ -80,6 +80,17 @@
     }
     else {
       qDebug() << "Non-existant atom:" << atom2;
+    }
+    m_order = order;
+  }
+
+  unsigned long int Bond::otherAtom(unsigned long int atomId) const
+  {
+    if (atomId == m_beginAtomId) {
+      return m_endAtomId;
+    }
+    else {
+      return m_beginAtomId;
     }
   }
 

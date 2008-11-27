@@ -221,6 +221,7 @@ namespace Avogadro{
       }
     }
     else {
+      m_lock->lockForWrite();
       m_atomPos = new std::vector<Vector3d>;
       m_atomPos->reserve(100);
       m_atomPos->resize(id+1);
@@ -268,8 +269,10 @@ namespace Avogadro{
     if(atom) {
       // When deleting an atom this also implicitly deletes any bonds to the atom
       QList<unsigned long int> bonds = atom->bonds();
-      foreach (unsigned long int bond, bonds)
-        deleteBond(bondById(bond));
+      foreach (unsigned long int bond, bonds) {
+        qDebug() << "Deleting bond" << bond;
+        deleteBond(bond);
+      }
 
       m_lock->lockForWrite();
       d->atoms[atom->id()] = 0;
@@ -364,33 +367,44 @@ namespace Avogadro{
 
   void Molecule::deleteBond(Bond *bond)
   {
-    Q_D(Molecule);
     if(bond) {
-
-      m_lock->lockForWrite();
-      d->invalidRings = true;
-      m_invalidPartialCharges = true;
-      d->bonds[bond->id()] = 0;
-      // 1 based arrays stored/shown to user
-      int index = bond->index();
-      d->bondList.removeAt(index);
-      for (int i = index; i < d->bondList.size(); ++i)
-        d->bondList[i]->setIndex(i);
-      m_lock->unlock();
-
-      // Also delete the bond from the attached atoms
-      (atomById(bond->beginAtomId()))->deleteBond(bond);
-      (atomById(bond->endAtomId()))->deleteBond(bond);
-
-      bond->deleteLater();
-      disconnect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
-      emit primitiveRemoved(bond);
+      deleteBond(bond->id());
     }
   }
 
   void Molecule::deleteBond(unsigned long int id)
   {
-    deleteBond(bondById(id));
+    Q_D(Molecule);
+    if (id < d->bonds.size()) {
+      if (d->bonds[id] == 0) {
+        return;
+      }
+
+      m_lock->lockForWrite();
+      d->invalidRings = true;
+      m_invalidPartialCharges = true;
+      Bond *bond = d->bonds[id];
+      d->bonds[id] = 0;
+      // Delete the bond from the list and reorder the remaining bonds
+      int index = bond->index();
+      d->bondList.removeAt(index);
+      for (int i = index; i < d->bondList.size(); ++i) {
+        d->bondList[i]->setIndex(i);
+      }
+      m_lock->unlock();
+
+      // Also delete the bond from the attached atoms
+      if (d->atoms[bond->beginAtomId()]) {
+        d->atoms[bond->beginAtomId()]->deleteBond(id);
+      }
+      if (d->atoms[bond->endAtomId()]) {
+        d->atoms[bond->endAtomId()]->deleteBond(id);
+      }
+
+      disconnect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
+      emit primitiveRemoved(bond);
+      bond->deleteLater();
+    }
   }
 
   Bond *Molecule::bond(int index)
@@ -700,22 +714,28 @@ namespace Avogadro{
   Bond* Molecule::bond(unsigned long int id1, unsigned long int id2)
   {
     // Take two atom IDs and see if we have a bond between the two
-    Q_D(Molecule);
-    foreach (Bond *bond, d->bondList) {
-      if (bond->beginAtomId() == id1 && bond->endAtomId() == id2)
-        return bond;
-      if (bond->beginAtomId() == id2 && bond->endAtomId() == id1)
-        return bond;
+    if (atomById(id1)) {
+      QList<unsigned long> bonds = atomById(id1)->bonds();
+      foreach (unsigned long id, bonds) {
+        Bond *bond = bondById(id);
+        if (bond) {
+          if (bond->otherAtom(id1) == id2) {
+            return bond;
+          }
+        }
+      }
     }
     return 0;
   }
 
   Bond* Molecule::bond(const Atom *a1, const Atom *a2)
   {
-    if (a1 && a2)
+    if (a1 && a2) {
       return bond(a1->id(), a2->id());
-    else
+    }
+    else {
       return 0;
+    }
   }
 
   QList<Atom *> Molecule::atoms() const
