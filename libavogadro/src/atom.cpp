@@ -69,7 +69,14 @@ using Eigen::Vector3d;
 
   void Atom::addBond(unsigned long int bond)
   {
-    m_bonds.push_back(bond);
+    // Ensure that only unique bonds are added to the list
+    if (m_bonds.indexOf(bond) == -1) {
+      m_bonds.push_back(bond);
+    }
+    else {
+      // Should never happen - warn if it does...
+      qDebug() << "Atom" << m_id << "tried to add duplicate bond" << bond;
+    }
     // Update the neighbors list
 //    if (bond->beginAtomId() == id())
 //      m_neighbors.push_back(bond->endAtomId());
@@ -86,7 +93,6 @@ using Eigen::Vector3d;
 
   void Atom::deleteBond(unsigned long int bond)
   {
-    qDebug() << "Atom" << m_id << "deleting bond" << bond;
     int index = m_bonds.indexOf(bond);
     if (index >= 0) {
       m_bonds.removeAt(index);

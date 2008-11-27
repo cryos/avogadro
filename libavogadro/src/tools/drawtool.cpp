@@ -274,10 +274,11 @@ namespace Avogadro {
                 m_endAtom = 0;
               } else {
                 Atom *oldAtom = molecule->atomById(m_bond->endAtomId());
-                oldAtom->deleteBond(m_bond);
+                if (oldAtom) {
+                  oldAtom->deleteBond(m_bond);
+                }
               }
               m_bond->setEnd(existingAtom);
-              existingAtom->addBond(m_bond);
             }
             else {
               m_bond = newBond(molecule, m_beginAtom, existingAtom);
@@ -298,6 +299,8 @@ namespace Avogadro {
             if(m_bond && m_bond != existingBond) {
               if(m_endAtom) {
                 // will delete bonds too (namely m_bond)
+                qDebug() << "Deleting m_endAtom and bond" << m_endAtom->id()
+                         << m_bond->id();
                 molecule->deleteAtom(m_endAtom);
                 m_endAtomAdded = false;
                 m_endAtom = 0;
@@ -328,7 +331,6 @@ namespace Avogadro {
             Atom *oldAtom = molecule->atomById(m_bond->endAtomId());
             oldAtom->deleteBond(m_bond);
             m_bond->setEnd(m_endAtom);
-            m_endAtom->addBond(m_bond);
           }
         }
         else { // we're moving -- stretch a bond
@@ -546,8 +548,6 @@ namespace Avogadro {
     bond->setOrder(bondOrder());
     bond->setBegin(beginAtom);
     bond->setEnd(endAtom);
-    beginAtom->addBond(bond);
-    endAtom->addBond(bond);
     return bond;
   }
 

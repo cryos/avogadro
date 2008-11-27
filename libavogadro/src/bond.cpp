@@ -68,7 +68,7 @@
     Atom *atom = m_molecule->atomById(atom1);
     if (atom) {
       m_beginAtomId = atom1;
-      atom->addBond(this);
+      atom->addBond(m_id);
     }
     else {
       qDebug() << "Non-existant atom:" << atom1;
@@ -76,7 +76,7 @@
     atom = m_molecule->atomById(atom2);
     if (atom) {
       m_endAtomId = atom2;
-      atom->addBond(this);
+      atom->addBond(m_id);
     }
     else {
       qDebug() << "Non-existant atom:" << atom2;

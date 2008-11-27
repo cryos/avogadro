@@ -270,7 +270,6 @@ namespace Avogadro{
       // When deleting an atom this also implicitly deletes any bonds to the atom
       QList<unsigned long int> bonds = atom->bonds();
       foreach (unsigned long int bond, bonds) {
-        qDebug() << "Deleting bond" << bond;
         deleteBond(bond);
       }
 
@@ -609,8 +608,6 @@ namespace Avogadro{
         Bond *bond = newBond();
         bond->setEnd(Molecule::atom(atom->index()));
         bond->setBegin(Molecule::atom(next->GetIdx()-1));
-        Molecule::atom(next->GetIdx()-1)->addBond(bond);
-        atom->addBond(bond);
       }
     }
     for (unsigned int i = 1; i <= numberAtoms; ++i) {
@@ -847,15 +844,13 @@ namespace Avogadro{
     for (OpenBabel::OBBond *obbond = static_cast<OpenBabel::OBBond*>(obmol->BeginBond(j));
          obbond; obbond = static_cast<OpenBabel::OBBond*>(obmol->NextBond(j))) {
       Bond *bond = newBond();
-      bond->setOBBond(obbond);
       // Get the begin and end atoms - we use a 0 based index, OB uses 1 based
-      bond->setBegin(atom(obbond->GetBeginAtom()->GetIdx()-1));
-      bond->setEnd(atom(obbond->GetEndAtom()->GetIdx()-1));
-      // Set the bond to the atoms too, remember the 0 based and 1 based arrays
-      atom(obbond->GetBeginAtom()->GetIdx()-1)->addBond(bond);
-      atom(obbond->GetEndAtom()->GetIdx()-1)->addBond(bond);
+      bond->setAtoms(obbond->GetBeginAtom()->GetIdx()-1,
+                     obbond->GetEndAtom()->GetIdx()-1,
+                     obbond->GetBondOrder());
     }
 
+    qDebug() << "Copying cubes...";
     // Now for the volumetric data
     std::vector<OpenBabel::OBGenericData*> data = obmol->GetAllData(OpenBabel::OBGenericDataType::GridData);
     for (unsigned int i = 0; i < data.size(); ++i) {

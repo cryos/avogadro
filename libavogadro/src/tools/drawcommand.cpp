@@ -169,7 +169,6 @@ namespace Avogadro {
     d->molecule = molecule;
     d->moleculeCopy = *molecule;
     d->id = molecule->atom(index)->id();
-    qDebug() << "Deleting atom" << d->id;
     d->adjustValence = adjustValence;
   }
 
@@ -335,8 +334,6 @@ namespace Avogadro {
     bond->setOrder(d->order);
     bond->setBegin(beginAtom);
     bond->setEnd(endAtom);
-    beginAtom->addBond(bond);
-    endAtom->addBond(bond);
     if (d->adjustValence) {
       if (!beginAtom->isHydrogen())
       {
