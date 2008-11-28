@@ -53,19 +53,6 @@ namespace Avogadro {
     virtual QString name() const { return "Color by Residue"; }
   };
 
-  /*class ResidueColorPlugin : public ColorPlugin*/
-  /*{*/
-    /*public:*/
-      /*ResidueColorPlugin(QObject *parent = 0);*/
-      /*~ResidueColorPlugin();*/
-
-      /*QString name() const { return(tr("Color by Residue")); }*/
-      /*Color* color() const;*/
-
-    /*private:*/
-      /*Color *m_color;*/
-  /*};*/
-
   class ResidueColorFactory : public QObject, public PluginFactory
   {
     Q_OBJECT

@@ -1,8 +1,7 @@
 /**********************************************************************
-  ElementColor - Default class for coloring atoms based on element
+  IndexColor - Color atoms by numbering in the file
 
-  Copyright (C) 2006 Benoit Jacob
-  Copyright (C) 2007 Geoffrey R. Hutchison
+  Copyright (C) 2008 Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -23,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef ELEMENTCOLOR_H
-#define ELEMENTCOLOR_H
+#ifndef INDEXCOLOR_H
+#define INDEXCOLOR_H
 
 #include <avogadro/global.h>
 #include <avogadro/plugin.h>
@@ -33,32 +32,32 @@
 namespace Avogadro {
 
   /**
-   * @class ElementColor elementcolor.h <avogadro/elementcolor.h>
-   * @brief Default atom color scheme based on periodic table
+   * @class IndexColor indexcolor.h <avogadro/indexcolor.h>
+   * @brief Color by atomic index (i.e., order in the file)
    * @author Geoff Hutchison
    *
-   * Map atom colors based on elements: Carbon = Grey, Oxygen = Red, etc.
+   * Map atom colors based on atom numbering (with rainbow colors)
    */
-  class ElementColor: public Color
+  class IndexColor: public Color
   {
   public:
-    ElementColor();
-    virtual ~ElementColor();
+    IndexColor();
+    virtual ~IndexColor();
 
     /**
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
     void set(const Primitive *);
     
-    QString name() const { return "Color by Element"; }
+    QString name() const { return "Color by Index"; }
   };
 
-  class ElementColorFactory : public QObject, public PluginFactory
+  class IndexColorFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_COLOR_FACTORY(ElementColor, tr("Color by Element"), 
-        tr("Color by Element (carbon = grey, oxygen = red, ...)."))
+    AVOGADRO_COLOR_FACTORY(IndexColor, tr("Color by Index"), 
+        tr("Color by Index (red, orange, yellow, green, blue, violet)."))
   };
 
 

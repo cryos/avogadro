@@ -33,21 +33,6 @@
 
 namespace Avogadro {
 
-  //ElementColorPlugin::ElementColorPlugin(QObject *parent) : ColorPlugin(parent)
-  //{
-    //m_color = new ElementColor();
-  //}
-
-  //ElementColorPlugin::~ElementColorPlugin()
-  //{
-    //delete m_color;
-  //}
-
-  //Color* ElementColorPlugin::color() const
-  //{
-    //return m_color;
-  //}
-
   /// Constructor
   ElementColor::ElementColor()
   { }

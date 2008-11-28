@@ -27,26 +27,14 @@
 #include <avogadro/primitive.h>
 #include <QtPlugin>
 
-#include <openbabel/mol.h>
+#include <avogadro/residue.h>
+#include <avogadro/atom.h>
 
-using namespace OpenBabel;
+#include <openbabel/mol.h>
+#include <openbabel/atom.h>
+#include <openbabel/residue.h>
 
 namespace Avogadro {
-  
-  //ResidueColorPlugin::ResidueColorPlugin(QObject *parent) : ColorPlugin(parent)
-  //{
-    //m_color = new ResidueColor();
-  //}
-  
-  //ResidueColorPlugin::~ResidueColorPlugin()
-  //{
-    //delete m_color;
-  //}
-  
-  //Color* ResidueColorPlugin::color() const
-  //{
-    //return m_color;
-  //}
  
   ResidueColor::ResidueColor()
   { }
@@ -60,23 +48,26 @@ namespace Avogadro {
       return;
 
     Primitive *p = const_cast<Primitive *>(primitive);
-    Residue *residue;
-    Atom *atom;
+    QString residueName; // this colors by residue name
+
     if (p->type() == Primitive::ResidueType) {
-      residue = static_cast<Residue*>(p);
+      Residue *residue = static_cast<Residue*>(p);
+      residueName = residue->name();
     } else if (p->type() == Primitive::AtomType) {
-      atom = static_cast<Atom*>(p);
+      Atom *atom = static_cast<Atom*>(p);
 
       // do not perceive new residues
-      residue = static_cast<Residue*>(atom->GetResidue(false));
+      OpenBabel::OBResidue *residue = atom->OBAtom().GetResidue(false);
+      residueName = residue->GetName().c_str();
       if (!residue ||
-          strncasecmp(residue->GetName().c_str(), "UNK",3) == 0) {
-        std::vector<double> rgb = etab.GetRGB( atom->GetAtomicNum() );
+          residueName.compare("UNK", Qt::CaseInsensitive) == 0) {
+	// default is to color by element if no residue is specified
+        std::vector<double> rgb = OpenBabel::etab.GetRGB( atom->atomicNumber() );
         m_channels[0] = rgb[0];
         m_channels[1] = rgb[1];
         m_channels[2] = rgb[2];
         m_channels[3] = 1.0;
-        return; // default if no residue is specified
+        return;
       }
     } else
       return; // not something we can color
@@ -84,91 +75,91 @@ namespace Avogadro {
     // Colors from http://jmol.sourceforge.net/jscolors/
     // "Protein amino"
     int red, blue, green;
-    if (strncasecmp(residue->GetName().c_str(), "Ala",3) == 0) {
+    if (residueName.compare("Ala", Qt::CaseInsensitive) == 0) {
       red = 0xC8;
       green = 0xC8;
       blue = 0xC8;
-    } else if (strncasecmp(residue->GetName().c_str(), "Arg",3) == 0) {
+    } else if (residueName.compare("Arg", Qt::CaseInsensitive) == 0) {
       red = 0x14;
       green = 0x5A;
       blue = 0xFF;
-    } else if (strncasecmp(residue->GetName().c_str(), "Asn",3) == 0) {
+    } else if (residueName.compare("Asn", Qt::CaseInsensitive) == 0) {
       red = 0x00;
       green = 0xDC;
       blue = 0xDC;
-    } else if (strncasecmp(residue->GetName().c_str(), "Asp",3) == 0) {
+    } else if (residueName.compare("Asp", Qt::CaseInsensitive) == 0) {
       red = 0xE6;
       green = 0x0A;
       blue = 0x0A;
-    } else if (strncasecmp(residue->GetName().c_str(), "Cys",3) == 0) {
+    } else if (residueName.compare("Cys", Qt::CaseInsensitive) == 0) {
       red = 0xE6;
       green = 0xE6;
       blue = 0x00;
-    } else if (strncasecmp(residue->GetName().c_str(), "Gln",3) == 0) {
+    } else if (residueName.compare("Gln", Qt::CaseInsensitive) == 0) {
       red = 0x00;
       green = 0xDC;
       blue = 0xDC;
-    } else if (strncasecmp(residue->GetName().c_str(), "Glu",3) == 0) {
+    } else if (residueName.compare("Glu", Qt::CaseInsensitive) == 0) {
       red = 0xE6;
       green = 0x0A;
       blue = 0x0A;
-    } else if (strncasecmp(residue->GetName().c_str(), "Gly",3) == 0) {
+    } else if (residueName.compare("Gly", Qt::CaseInsensitive) == 0) {
       red = 0xEB;
       green = 0xEB;
       blue = 0xEB;
-    } else if (strncasecmp(residue->GetName().c_str(), "His",3) == 0) {
+    } else if (residueName.compare("His", Qt::CaseInsensitive) == 0) {
       red = 0x82;
       green = 0x82;
       blue = 0xD2;
-    } else if (strncasecmp(residue->GetName().c_str(), "Ile",3) == 0) {
+    } else if (residueName.compare("Ile", Qt::CaseInsensitive) == 0) {
       red = 0x0F;
       green = 0x82;
       blue = 0x0F;
-    } else if (strncasecmp(residue->GetName().c_str(), "Leu",3) == 0) {
+    } else if (residueName.compare("Leu", Qt::CaseInsensitive) == 0) {
       red = 0x0F;
       green = 0x82;
       blue = 0x0F;
-    } else if (strncasecmp(residue->GetName().c_str(), "Lys",3) == 0) {
+    } else if (residueName.compare("Lys", Qt::CaseInsensitive) == 0) {
       red = 0x14;
       green = 0x5A;
       blue = 0xFF;
-    } else if (strncasecmp(residue->GetName().c_str(), "Met",3) == 0) {
+    } else if (residueName.compare("Met", Qt::CaseInsensitive) == 0) {
       red = 0xE6;
       green = 0xE6;
       blue = 0x00;
-    } else if (strncasecmp(residue->GetName().c_str(), "Phe",3) == 0) {
+    } else if (residueName.compare("Phe", Qt::CaseInsensitive) == 0) {
       red = 0x32;
       green = 0x32;
       blue = 0xAA;
-    } else if (strncasecmp(residue->GetName().c_str(), "Pro",3) == 0) {
+    } else if (residueName.compare("Pro", Qt::CaseInsensitive) == 0) {
       red = 0xDC;
       green = 0x96;
       blue = 0x82;
-    } else if (strncasecmp(residue->GetName().c_str(), "Ser",3) == 0) {
+    } else if (residueName.compare("Ser", Qt::CaseInsensitive) == 0) {
       red = 0xFA;
       green = 0x96;
       blue = 0x00;
-    } else if (strncasecmp(residue->GetName().c_str(), "Thr",3) == 0) {
+    } else if (residueName.compare("Thr", Qt::CaseInsensitive) == 0) {
       red = 0xFA;
       green = 0x96;
       blue = 0x00;
-    } else if (strncasecmp(residue->GetName().c_str(), "Trp",3) == 0) {
+    } else if (residueName.compare("Trp", Qt::CaseInsensitive) == 0) {
       red = 0xB4;
       green = 0x5A;
       blue = 0xB4;
-    } else if (strncasecmp(residue->GetName().c_str(), "Tyr",3) == 0) {
+    } else if (residueName.compare("Tyr", Qt::CaseInsensitive) == 0) {
       red = 0x32;
       green = 0x32;
       blue = 0xAA;
-    } else if (strncasecmp(residue->GetName().c_str(), "Val",3) == 0) {
+    } else if (residueName.compare("Val", Qt::CaseInsensitive) == 0) {
       red = 0x0F;
       green = 0x82;
       blue = 0x0F;
-    } else if (strncasecmp(residue->GetName().c_str(), "Asx",3) == 0) {
+    } else if (residueName.compare("Asx", Qt::CaseInsensitive) == 0) {
       red = 0xFF;
       green = 0x69;
       blue = 0xB4;
-    } else if (strncasecmp(residue->GetName().c_str(), "Glx",3) == 0) {
+    } else if (residueName.compare("Glx", Qt::CaseInsensitive) == 0) {
       red = 0xFF;
       green = 0x69;
       blue = 0xB4;

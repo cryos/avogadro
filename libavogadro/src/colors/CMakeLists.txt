@@ -17,16 +17,18 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 set(LINK_LIBS "avogadro-lib")
 
 ### elementcolor
-#set(elementcolor_SRCS elementcolor.cpp)
-#qt4_automoc(${elementcolor_SRCS})
-#add_library(elementcolor MODULE ${elementcolor_SRCS})
-#target_link_libraries(elementcolor ${LINK_LIBS})
-#install(TARGETS elementcolor DESTINATION ${DESTINATION_DIR})
+# This is built statically by the main libavogadro -- we do not build it again
 
 ### residuecolor
-#set(residuecolor_SRCS residuecolor.cpp)
-#qt4_automoc(${residuecolor_SRCS})
-#add_library(residuecolor MODULE ${residuecolor_SRCS})
-#target_link_libraries(residuecolor ${LINK_LIBS})
-#install(TARGETS residuecolor DESTINATION ${DESTINATION_DIR})
+set(residuecolor_SRCS residuecolor.cpp)
+qt4_automoc(${residuecolor_SRCS})
+add_library(residuecolor MODULE ${residuecolor_SRCS})
+target_link_libraries(residuecolor ${LINK_LIBS})
+install(TARGETS residuecolor DESTINATION ${DESTINATION_DIR})
 
+### indexcolor
+set(indexcolor_SRCS indexcolor.cpp)
+qt4_automoc(${indexcolor_SRCS})
+add_library(indexcolor MODULE ${indexcolor_SRCS})
+target_link_libraries(indexcolor ${LINK_LIBS})
+install(TARGETS indexcolor DESTINATION ${DESTINATION_DIR})
