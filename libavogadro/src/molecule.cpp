@@ -652,7 +652,7 @@ namespace Avogadro{
       return;
     }
     OpenBabel::OBMol obmol = OBMol();
-    for (int i = 0; i < numAtoms(); ++i) {
+    for (unsigned int i = 0; i < numAtoms(); ++i) {
       atom(i)->setPartialCharge(obmol.GetAtom(i+1)->GetPartialCharge());
     }
     m_invalidPartialCharges = false;
