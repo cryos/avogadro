@@ -979,7 +979,11 @@ namespace Avogadro
     qDebug() << "Exported filename:" << fileName;
 
     // render it (with alpha channel)
-    QImage exportImage = d->glWidget->grabFrameBuffer( true );
+    //QImage exportImage = d->glWidget->grabFrameBuffer( true );
+    d->glWidget->raise();
+    d->glWidget->repaint();
+    QPixmap pixmap = QPixmap::grabWindow( d->glWidget->winId() );
+    QImage exportImage = pixmap.toImage();
 
     // now we embed molecular information into the file, if possible
     OBConversion conv;
@@ -1004,7 +1008,6 @@ namespace Avogadro
       copyData = output.c_str();
       exportImage.setText("SMILES", copyData);
     }
-
     if ( !exportImage.save( fileName ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
           tr( "Cannot save file %1." ).arg( fileName ) );
@@ -1629,7 +1632,7 @@ namespace Avogadro
     connect( ui.actionSaveAs, SIGNAL( triggered() ), this, SLOT( saveAs() ) );
     connect( ui.actionRevert, SIGNAL( triggered() ), this, SLOT( revert() ) );
     connect( ui.actionExportGraphics, SIGNAL( triggered() ), this, SLOT( exportGraphics() ) );
-    ui.actionExportGraphics->setEnabled( QGLFramebufferObject::hasOpenGLFramebufferObjects() );
+//    ui.actionExportGraphics->setEnabled( QGLFramebufferObject::hasOpenGLFramebufferObjects() );
 #ifdef Q_WS_MAC
     connect( ui.actionQuit, SIGNAL( triggered() ), this, SLOT( macQuit() ) );
     connect( ui.actionQuitTool, SIGNAL( triggered() ), this, SLOT( macQuit() ) );

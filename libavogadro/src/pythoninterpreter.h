@@ -27,11 +27,14 @@
 #define AVOPYTHON_H
 
 #include <avogadro/global.h>
-#include <avogadro/boost.h>
+//#include <avogadro/boost.h>
+#include <boost/python.hpp>
 #include <avogadro/primitive.h>
 #include <QString>
 
 namespace Avogadro {
+
+  class Molecule;
 
   /**
    * @author Donald Ephraim Curtis
@@ -71,15 +74,15 @@ namespace Avogadro {
        */
       QString exec(const QString &command);
 
-      QString exec(const QString &command, object local);
+      QString exec(const QString &command, boost::python::object local);
 
-      QString eval(const QString &string, object local);
+      QString eval(const QString &string, boost::python::object local);
 
     private:
       PythonInterpreterPrivate *const d;
 
-      object execWrapper(const QString &command, object main, object local);
-      object evalWrapper(const QString &string, object main, object local);
+      boost::python::object execWrapper(const QString &command, boost::python::object main, boost::python::object local);
+      boost::python::object evalWrapper(const QString &string, boost::python::object main, boost::python::object local);
   };
 
 }

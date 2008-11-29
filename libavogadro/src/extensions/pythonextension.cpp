@@ -28,7 +28,8 @@
 #include <QDebug>
 
 using namespace std;
-using namespace OpenBabel;
+//using namespace OpenBabel;
+using namespace boost::python;
 
 namespace Avogadro
 {

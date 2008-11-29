@@ -256,11 +256,6 @@ namespace Avogadro {
       Tool* tool() const;
 
       /**
-       * @return the ToolGroup manager.
-       */
-      ToolGroup toolManger() const;
-
-      /**
        * @return the current background color of the rendering area.
        */
       QColor background() const;

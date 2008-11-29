@@ -26,9 +26,11 @@
 
 #include <avogadro/global.h>
 #include <avogadro/molecule.h>
-#include <avogadro/boost.h>
+//#include <avogadro/boost.h>
 #include <QString>
 #include <QDebug>
+
+using namespace boost::python;
 
 namespace Avogadro {
 
@@ -43,7 +45,7 @@ namespace Avogadro {
 //      {
         std::cout << "initializing python interpreter\n";
         try {
-//          PyImport_AppendInittab( const_cast<char *>("Avogadro"), &initAvogadro );
+          //PyImport_AppendInittab( const_cast<char *>("Avogadro"), &initAvogadro );
 
           Py_Initialize();
 
@@ -144,11 +146,13 @@ namespace Avogadro {
     object main_module = object(( handle<>(borrowed(PyImport_AddModule("__main__")))));
     object main_namespace = main_module.attr("__dict__");
 
+    /*
     object avogadro_module(handle<>(PyImport_ImportModule("Avogadro")) );
     if(d->molecule)
     {
       avogadro_module.attr("molecule") = ptr(d->molecule);
     }
+    */
 
     local["sys"] = object(handle<>(PyImport_ImportModule("sys")));
     local["cStringIO"] = object(handle<>(PyImport_ImportModule("cStringIO")));

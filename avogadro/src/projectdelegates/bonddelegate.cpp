@@ -79,7 +79,7 @@ namespace Avogadro
     model()->insertRows(m_label, 0, molecule->numBonds());
     for (int i = 0; i < m_label->childCount(); ++i) {
       ProjectTreeItem *item = m_label->child(i);
-      item->setData(0, tr("bond %1").arg(i + 1));
+      item->setData(0, tr("bond %1").arg(i));
       // set the primitive
       PrimitiveList primitives;
       primitives.append(molecule->bond(i));
@@ -97,7 +97,7 @@ namespace Avogadro
     model()->insertRows(m_label, m_label->childCount(), 1); 
     // get the item
     ProjectTreeItem *item = m_label->child(m_label->childCount() - 1);
-    item->setData(0, tr("bond %1").arg(primitive->index() + 1));
+    item->setData(0, tr("bond %1").arg(primitive->index()));
     // set the primitive
     PrimitiveList primitives;
     primitives.append(primitive);
@@ -115,7 +115,7 @@ namespace Avogadro
       return;
     
     ProjectTreeItem *item = m_label->child(primitive->index()); 
-    item->setData(0, tr("bond %1").arg(primitive->index() + 1));
+    item->setData(0, tr("bond %1").arg(primitive->index()));
   }
  
   void BondDelegate::primitiveRemoved(Primitive *primitive)
@@ -130,7 +130,7 @@ namespace Avogadro
     if ((primitive->index() + 1) < (unsigned long int) m_label->childCount()) {
       for (int i = primitive->index(); i < m_label->childCount(); ++i) {
         ProjectTreeItem *item = m_label->child(i);
-        item->setData(0, tr("bond %1").arg(i + 1));
+        item->setData(0, tr("bond %1").arg(i));
       }
     }
   }

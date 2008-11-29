@@ -233,6 +233,8 @@ namespace Avogadro{
   const Eigen::Vector3d * Molecule::atomPos(unsigned long int id) const
   {
     QReadLocker lock(m_lock);
+    if (!m_atomPos)
+      return 0;
     if (m_atomPos->size() > id) {
       return const_cast<const Vector3d*>(&m_atomPos->at(id));
     }

@@ -26,7 +26,7 @@
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
-#include <avogadro/boost.h>
+//#include <avogadro/boost.h>
 #include <avogadro/pythoninterpreter.h>
 
 #include "ui_pythonterminalwidget.h"
@@ -48,14 +48,14 @@ namespace Avogadro {
       PythonScript(QDir dir, QString fileName);
 
       QString moduleName() const;
-      object module() const;
+      boost::python::object module() const;
 
     private:
       QString m_moduleName;
       QString m_fileName;
       QDir m_dir;
       mutable QDateTime m_lastModified;
-      mutable object m_module;
+      mutable boost::python::object m_module;
   };
 
 

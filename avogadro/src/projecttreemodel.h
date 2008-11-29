@@ -56,6 +56,10 @@ namespace Avogadro {
        */
       QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
       /**
+       * @return The header data at position @p index.
+       */
+      QVariant headerData( int section, Qt::Orientation orientation, int role ) const;
+      /**
        * @return A global model QModelIndex based on a parent, row and column
        */
       QModelIndex index ( int row, int column, const QModelIndex & parent = QModelIndex() ) const;

@@ -61,8 +61,8 @@ namespace Avogadro {
     d->glWidget = widget;
 
     QVector<QVariant> rootData;
-    rootData << tr("title");
-    rootData << tr("more");
+    rootData << tr("tree");
+    rootData << tr("index");
     d->rootItem = new ProjectTreeItem(rootData);
     d->rootItem->setTerminal(false);
     
@@ -128,6 +128,14 @@ namespace Avogadro {
     if (projectItem)
       if (index.column() < projectItem->columnCount())
         return projectItem->data(index.column());
+
+    return QVariant();
+  }
+      
+  QVariant ProjectTreeModel::headerData( int section, Qt::Orientation orientation, int role ) const
+  {
+    if (orientation == Qt::Horizontal && role == Qt::DisplayRole)
+      return d->rootItem->data(section);
 
     return QVariant();
   }
