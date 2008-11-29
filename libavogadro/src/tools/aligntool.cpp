@@ -210,10 +210,11 @@ namespace Avogadro {
     // Align the molecule along the selected axis
     if (m_numSelectedAtoms >= 1) {
       // Translate the first selected atom to the origin
-      const Vector3d *pos = m_selectedAtoms[0]->pos();
+      Vector3d pos = *m_selectedAtoms[0]->pos();
       foreach(Atom *a, neighborList) {
-        if (!a) continue;
-        a->setPos(*a->pos() - *pos);
+        if (a) {
+          a->setPos(*a->pos() - pos);
+        }
       }
       m_molecule->update();
     }
