@@ -650,7 +650,7 @@ namespace Avogadro{
 
   void Molecule::calculatePartialCharges() const
   {
-    if (numAtoms() < 1 || m_invalidPartialCharges) {
+    if (numAtoms() < 1 || !m_invalidPartialCharges) {
       return;
     }
     OpenBabel::OBMol obmol = OBMol();
