@@ -215,7 +215,12 @@ namespace Avogadro{
         if (m_atomPos->capacity() < reserve) {
           m_atomPos->reserve(reserve);
         }
+        // Ensure that all new Vector3d objects are initialised to zero
+        int initialSize = m_atomPos->size();
         m_atomPos->resize(id+1);
+        for (unsigned int i = initialSize - 1; i < id; ++i) {
+          (*m_atomPos)[i].setZero();
+        }
         (*m_atomPos)[id] = vec;
         m_lock->unlock();
       }
@@ -224,7 +229,11 @@ namespace Avogadro{
       m_lock->lockForWrite();
       m_atomPos = new std::vector<Vector3d>;
       m_atomPos->reserve(100);
+      // Ensure that all new Vector3d objects are initialised to zero
       m_atomPos->resize(id+1);
+      for (unsigned int i = 0; i < id; ++i) {
+        (*m_atomPos)[i] = Vector3d::Zero();
+      }
       (*m_atomPos)[id] = vec;
       m_lock->unlock();
     }
