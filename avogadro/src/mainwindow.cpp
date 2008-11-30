@@ -956,7 +956,7 @@ namespace Avogadro
             << tr("JPEG") + " (*.jpg *.jpeg)";
 
     // Remove the filename ending - hopefully this is fairly robust
-    QString file = d->fileName.mid(d->fileName.lastIndexOf("/")+1,
+    QString file = d->fileName.mid(d->fileName.lastIndexOf("/"),
                            d->fileName.lastIndexOf("."));
 
     qDebug() << "Exported filename:" << file;
