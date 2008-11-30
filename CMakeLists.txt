@@ -101,7 +101,7 @@ find_package(Linguist REQUIRED) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
 include_directories(${EIGEN2_INCLUDE_DIR})
 
-OPTION(ENABLE_PYTHON "Enable python support" ON)
+option(ENABLE_PYTHON "Enable python support" ON)
 
 # This may not be the best way to do this - please correct me if I am wrong.
 # Getting rid of automagic is nice and so this seems reasonable.
@@ -122,6 +122,14 @@ if(ENABLE_PYTHON MATCHES ON)
 else(ENABLE_PYTHON MATCHES ON)
   message(STATUS "Python support disabled.")
 endif(ENABLE_PYTHON MATCHES ON)
+
+option(ENABLE_TESTS "Enable unit testing" ON)
+
+if(ENABLE_TESTS MATCHES ON)
+  set(QT_USE_QTTEST TRUE)
+  enable_testing()
+  message(STATUS "Unit testing enabled, run make test to run them")
+endif(ENABLE_TESTS MATCHES ON)
 
 if(NOT LIB_INSTALL_DIR)
   set(LIB_INSTALL_DIR lib)
