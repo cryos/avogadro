@@ -62,7 +62,7 @@ namespace Avogadro {
     protected:
       void closeEvent(QCloseEvent *event);
       bool event(QEvent *event);
-      
+
       // Handle drag and drop -- accept files dragged on the window
       void dragEnterEvent(QDragEnterEvent *event);
       void dropEvent(QDropEvent *event);
@@ -93,6 +93,7 @@ namespace Avogadro {
 
       void newView();
       void duplicateView();
+      void detachView();
       void closeView();
       void centerView();
       void setView(int index);
@@ -189,7 +190,7 @@ namespace Avogadro {
        * @param molecule set the current molecule and take ownership
        */
       void setMolecule(Molecule *molecule);
-      
+
       /**
        * @return the current molecule for this window
        */

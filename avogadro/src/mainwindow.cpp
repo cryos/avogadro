@@ -1398,6 +1398,35 @@ namespace Avogadro
     writeSettings();
   }
 
+  void MainWindow::detachView()
+  {
+    // Create a new QDialog and layout
+    QDialog *dialog = new QDialog(this);
+    QVBoxLayout *layout = new QVBoxLayout(dialog);
+    layout->setMargin( 0 );
+    layout->setSpacing( 6 );
+
+    // Get the GLWidget of the current view, close in in the tabs
+    QWidget *widget = d->centralTab->currentWidget();
+    foreach(QObject *object, widget->children()) {
+      GLWidget *glWidget = qobject_cast<GLWidget *>(object);
+      if (glWidget) {
+        int index = d->centralTab->currentIndex();
+        d->centralTab->removeTab(index);
+
+        for (int count=d->centralTab->count(); index < count; index++) {
+          d->centralTab->setTabText(index, tr( "View %1" )
+                                           .arg(QString::number( index + 1)));
+        }
+        ui.actionCloseView->setEnabled( d->centralTab->count() != 1 );
+        // Set the GLWidget as the main widget in the dialog
+        layout->addWidget(glWidget);
+      }
+    }
+    dialog->setWindowTitle(tr("Avogadro: Detached View"));
+    dialog->show();
+  }
+
   void MainWindow::closeView()
   {
     QWidget *widget = d->centralTab->currentWidget();
@@ -1653,7 +1682,9 @@ namespace Avogadro
     connect( ui.actionSelect_None, SIGNAL( triggered() ), this, SLOT( selectNone() ) );
 
     connect( ui.actionNewView, SIGNAL( triggered() ), this, SLOT( newView() ) );
-    connect( ui.actionDuplicateView, SIGNAL( triggered() ), this, SLOT( duplicateView() ) );
+    connect( ui.actionDuplicateView, SIGNAL( triggered() ),
+            this, SLOT( duplicateView() ) );
+    connect(ui.actionDetachView, SIGNAL(triggered()), this, SLOT(detachView()));
     connect( ui.actionCloseView, SIGNAL( triggered() ), this, SLOT( closeView() ) );
     connect( ui.actionCenter, SIGNAL( triggered() ), this, SLOT( centerView() ) );
     connect( ui.actionFullScreen, SIGNAL( triggered() ), this, SLOT( fullScreen() ) );
@@ -1672,9 +1703,9 @@ namespace Avogadro
     connect( ui.pluginManagerAction, SIGNAL( triggered() ), &d->pluginManager, SLOT( showDialog() ) );
 
     connect( ui.projectTreeEditorAction, SIGNAL( triggered() ), &d->projectTreeEditor, SLOT( show() ) );
-    
+
     connect( &d->projectTreeEditor, SIGNAL( structureChanged() ), this, SLOT( setupProjectTree() ) );
-    connect( ui.projectTreeView, SIGNAL(activated(const QModelIndex&)), 
+    connect( ui.projectTreeView, SIGNAL(activated(const QModelIndex&)),
         this, SLOT(projectItemActivated(const QModelIndex&)));
 
     connect( ui.actionTutorials, SIGNAL( triggered() ), this, SLOT( openTutorialURL() ));
@@ -1709,7 +1740,7 @@ namespace Avogadro
 
     setWindowModified( false );
   }
-      
+
   void MainWindow::setupProjectTree()
   {
     ProjectTreeModel *model = dynamic_cast<ProjectTreeModel*>(ui.projectTreeView->model());
@@ -1721,7 +1752,7 @@ namespace Avogadro
   }
 
   void MainWindow::projectItemActivated(const QModelIndex& index)
-  { 
+  {
     // select the new primitives
     ProjectTreeModel *model = dynamic_cast<ProjectTreeModel*>(ui.projectTreeView->model());
     if (!model)
@@ -1731,7 +1762,7 @@ namespace Avogadro
     if (projectItem) {
       d->glWidget->clearSelected();
       d->glWidget->setSelected(projectItem->primitives(), true);
-    } 
+    }
   }
 
   Molecule *MainWindow::molecule() const
@@ -1865,7 +1896,7 @@ namespace Avogadro
       layout->setSpacing( 6 );
       GLWidget *gl = newGLWidget();
       layout->addWidget(gl);
-      
+
       setupProjectTree();
 
       QString tabName = tr("View %1").arg(QString::number(i+1));
