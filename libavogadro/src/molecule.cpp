@@ -218,7 +218,7 @@ namespace Avogadro{
         // Ensure that all new Vector3d objects are initialised to zero
         int initialSize = m_atomPos->size();
         m_atomPos->resize(id+1);
-        for (unsigned int i = initialSize - 1; i < id; ++i) {
+        for (unsigned int i = initialSize; i < id; ++i) {
           (*m_atomPos)[i].setZero();
         }
         (*m_atomPos)[id] = vec;
@@ -1061,7 +1061,7 @@ namespace Avogadro{
       int i = 0;
       Vector3d ** atomPositions = new Vector3d*[numAtoms()];
       foreach (Atom *atom, d->atomList)
-        atomPositions[i++] = const_cast<Vector3d*>(atom->pos());
+        atomPositions[i++] = &m_atomPos->at(atom->id());
 
       Eigen::Hyperplane<double, 3> planeCoeffs;
       Eigen::fitHyperplane(numAtoms(), atomPositions, &planeCoeffs);
