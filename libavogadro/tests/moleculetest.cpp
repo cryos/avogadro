@@ -24,12 +24,19 @@
 
 #include <QtTest>
 #include <avogadro/molecule.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
 
 using Avogadro::Molecule;
+using Avogadro::Atom;
+using Avogadro::Bond;
 
 class MoleculeTest : public QObject
 {
   Q_OBJECT
+
+  private:
+    Molecule *m_molecule; /// Molecule object for use by the test class.
 
   private slots:
     /**
@@ -53,24 +60,35 @@ class MoleculeTest : public QObject
     void cleanup();
 
     /**
-     * Instantiates a new Molecule object, adds a couple of atoms and ensures
-     * they are successfully added to the Molecule.
+     * Tests the addition of new Atom objects to the Molecule.
      */
-    void testAtoms();
+    void testNewAtoms();
 
     /**
-     * Instantiates a new Molecule object, adds a couple of bonds and ensures
-     * they are successfully added to the Molecule.
+     * Tests the deletion of Atom objects from the Molecule.
      */
-    void testBonds();
+    void testDeleteAtoms();
+
+    /**
+     * Tests the addition of new Bond objects to the Molecule.
+     */
+    void testNewBonds();
+
+    /**
+     * Tests the deletion of Bond objects from the Molecule.
+     */
+    void testDeleteBonds();
 };
 
 void MoleculeTest::initTestCase()
 {
+  m_molecule = new Molecule;
 }
 
 void MoleculeTest::cleanupTestCase()
 {
+  delete m_molecule;
+  m_molecule = 0;
 }
 
 void MoleculeTest::init()
@@ -81,22 +99,40 @@ void MoleculeTest::cleanup()
 {
 }
 
-void MoleculeTest::testAtoms()
+void MoleculeTest::testNewAtoms()
 {
-  Molecule mol;
-  mol.newAtom();
-  QVERIFY(mol.numAtoms() == 1);
-  mol.newAtom();
-  QVERIFY(mol.numAtoms() == 2);
+  m_molecule->newAtom();
+  QVERIFY(m_molecule->numAtoms() == 1);
+  m_molecule->newAtom();
+  QVERIFY(m_molecule->numAtoms() == 2);
 }
 
-void MoleculeTest::testBonds()
+void MoleculeTest::testDeleteAtoms()
 {
-  Molecule mol;
-  mol.newBond();
-  QVERIFY(mol.numBonds() == 1);
-  mol.newBond();
-  QVERIFY(mol.numBonds() == 2);
+  // Should now to two atoms in the Molecule with ids 0 and 1.
+  Atom *a = m_molecule->atom(1);
+  m_molecule->deleteAtom(a);
+  QVERIFY(m_molecule->numAtoms() == 1);
+  m_molecule->deleteAtom(0ul);
+  QVERIFY(m_molecule->numAtoms() == 0);
+}
+
+void MoleculeTest::testNewBonds()
+{
+  m_molecule->newBond();
+  QVERIFY(m_molecule->numBonds() == 1);
+  m_molecule->newBond();
+  QVERIFY(m_molecule->numBonds() == 2);
+}
+
+void MoleculeTest::testDeleteBonds()
+{
+  // Should now to two atoms in the Molecule with ids 0 and 1.
+  Bond *b = m_molecule->bond(1);
+  m_molecule->deleteBond(b);
+  QVERIFY(m_molecule->numBonds() == 1);
+  m_molecule->deleteBond(0ul);
+  QVERIFY(m_molecule->numBonds() == 0);
 }
 
 QTEST_MAIN(MoleculeTest)
