@@ -25,6 +25,7 @@
 #include "mesh.h"
 
 #include <QColor>
+#include <QReadWriteLock>
 #include <QDebug>
 
 namespace Avogadro {
@@ -40,16 +41,19 @@ namespace Avogadro {
 
   const std::vector<Eigen::Vector3f> & Mesh::vertices() const
   {
+    QReadLocker lock(m_lock);
     return m_vertices;
   }
 
   const Eigen::Vector3f * Mesh::vertex(int n) const
   {
+    QReadLocker lock(m_lock);
     return &(m_vertices[n]);
   }
 
   bool Mesh::setVertices(const std::vector<Eigen::Vector3f> &values)
   {
+    QWriteLocker lock(m_lock);
     m_vertices.clear();
     m_vertices = values;
     return true;
@@ -57,6 +61,7 @@ namespace Avogadro {
 
   bool Mesh::addVertices(const std::vector<Eigen::Vector3f> &values)
   {
+    QWriteLocker lock(m_lock);
     if (values.size() % 3 == 0) {
       for (unsigned int i = 0; i < values.size(); ++i) {
         m_vertices.push_back(values.at(i));
@@ -71,16 +76,19 @@ namespace Avogadro {
 
   const std::vector<Eigen::Vector3f> & Mesh::normals() const
   {
+    QReadLocker lock(m_lock);
     return m_normals;
   }
 
   const Eigen::Vector3f * Mesh::normal(int n) const
   {
+    QReadLocker lock(m_lock);
     return &(m_normals[n*3]);
   }
 
   bool Mesh::setNormals(const std::vector<Eigen::Vector3f> &values)
   {
+    QWriteLocker lock(m_lock);
     m_normals.clear();
     m_normals = values;
     return true;
@@ -88,6 +96,7 @@ namespace Avogadro {
 
   bool Mesh::addNormals(const std::vector<Eigen::Vector3f> &values)
   {
+    QWriteLocker lock(m_lock);
     if (values.size() % 3 == 0) {
       for (unsigned int i = 0; i < values.size(); ++i) {
         m_normals.push_back(values.at(i));
@@ -102,11 +111,13 @@ namespace Avogadro {
 
   const std::vector<QColor> & Mesh::colors() const
   {
+    QReadLocker lock(m_lock);
     return m_colors;
   }
 
   const QColor * Mesh::color(int n) const
   {
+    QReadLocker lock(m_lock);
     // If there is only one color return that, otherwise colored by vertex
     if (m_colors.size() == 1) {
       return &(m_colors[0]);
@@ -118,6 +129,7 @@ namespace Avogadro {
 
   bool Mesh::setColors(const std::vector<QColor> &values)
   {
+    QWriteLocker lock(m_lock);
     m_colors.clear();
     m_colors = values;
     return true;
@@ -125,6 +137,7 @@ namespace Avogadro {
 
   bool Mesh::addColors(const std::vector<QColor> &values)
   {
+    QWriteLocker lock(m_lock);
     if (values.size() % 3 == 0) {
       for (unsigned int i = 0; i < values.size(); ++i) {
         m_colors.push_back(values.at(i));
@@ -139,6 +152,7 @@ namespace Avogadro {
 
   bool Mesh::valid() const
   {
+    QWriteLocker lock(m_lock);
     if (m_vertices.size() == m_normals.size()) {
       if (m_colors.size() == 1 || m_colors.size() == m_vertices.size()) {
         return true;
@@ -154,6 +168,7 @@ namespace Avogadro {
 
   bool Mesh::clear()
   {
+    QWriteLocker lock(m_lock);
     m_vertices.clear();
     m_normals.clear();
     m_colors.clear();
@@ -162,6 +177,8 @@ namespace Avogadro {
 
   Mesh& Mesh::operator=(const Mesh& other)
   {
+    QWriteLocker lock(m_lock);
+    QReadLocker oLock(other.m_lock);
     m_vertices = other.m_vertices;
     m_normals = other.m_vertices;
     m_colors = other.m_colors;
