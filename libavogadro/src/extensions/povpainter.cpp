@@ -98,8 +98,8 @@ namespace Avogadro
     *(d->output) << "sphere {\n"
       << "\t<" << center->x() << ", " << center->y() << ", " << center->z()
       << ">, " << radius
-      << "\n\tpigment { rgbf <" << d->color.red() << ", " << d->color.green()
-      << ", " << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }\n}\n";
+      << "\n\tpigment { rgbt <" << d->color.red() << ", " << d->color.green()
+      << ", " << d->color.blue() << "," << 1.0 - d->color.alpha() << "> }\n}\n";
   }
 
   void POVPainter::drawCylinder (const Vector3d &end1, const Vector3d &end2,
@@ -109,7 +109,7 @@ namespace Avogadro
     *(d->output) << "cylinder {\n"
       << "\t<" << end1.x() << ", " << end1.y() << ", " << end1.z() << ">, "
       << "\t<" << end2.x() << ", " << end2.y() << ", " << end2.z() << ">, " << radius
-      << "\n\tpigment { rgbf <" << d->color.red() << ", " << d->color.green() << ", "
+      << "\n\tpigment { rgbt <" << d->color.red() << ", " << d->color.green() << ", "
       << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }\n}\n";
   }
 
@@ -159,7 +159,7 @@ namespace Avogadro
         << "\t<" << displacedEnd2.x() << ", "
                  << displacedEnd2.y() << ", "
                  << displacedEnd2.z() << ">, " << radius
-        << "\n\tpigment { rgbf <" << d->color.red() << ", " << d->color.green() << ", "
+        << "\n\tpigment { rgbt <" << d->color.red() << ", " << d->color.green() << ", "
         << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }\n}\n";
 
     }
@@ -275,7 +275,7 @@ namespace Avogadro
                  << vertsStr << "\n"
                  << normsStr << "\n"
                  << ivertsStr << "\n"
-                 << "\tpigment { rgbf <" << d->color.red() << ", "
+                 << "\tpigment { rgbt <" << d->color.red() << ", "
                  << d->color.green() << ", "
                  << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }"
                  << "}\n\n";
@@ -319,7 +319,7 @@ namespace Avogadro
       for(unsigned int i = 0; i < v.size(); ++i) {
         verts << "<" << v[i].x() << "," << v[i].y() << "," << v[i].z() << ">";
         norms << "<" << n[i].x() << "," << n[i].y() << "," << n[i].z() << ">";
-        textures << "texture{pigment{rgbf<" << c[i].redF() << ","
+        textures << "texture{pigment{rgbt<" << c[i].redF() << ","
                  << c[i].greenF() << "," << c[i].blueF() << "," << c[i].alphaF()
                  << ">}},\n";
         if (i != v.size()-1) {
@@ -349,7 +349,7 @@ namespace Avogadro
         Eigen::Vector3f tmp = n[i-1] * -1;
         verts << "<" << v[i-1].x() << "," << v[i-1].y() << "," << v[i-1].z() << ">";
         norms << "<" << tmp.x() << "," << tmp.y() << "," << tmp.z() << ">";
-        textures << "texture{pigment{rgbf{" << c[i].redF() << ","
+        textures << "texture{pigment{rgbt{" << c[i].redF() << ","
                  << c[i].greenF() << "," << c[i].blueF() << "," << c[i].alphaF()
                  << "}}}\n";
         if (i != v.size()-1) {
@@ -472,7 +472,7 @@ namespace Avogadro
     *(m_output) << "global_settings {\n"
       << "\tambient_light rgb <"
       << LIGHT_AMBIENT[0] << ", " << LIGHT_AMBIENT[1] << ", " << LIGHT_AMBIENT[2] << ">\n"
-      << "\tmax_trace_level 20\n}\n\n"
+      << "\tmax_trace_level 15\n}\n\n"
       << "background { color rgb <"
       << m_glwidget->background().redF() << ","
       << m_glwidget->background().greenF() << ","
@@ -518,17 +518,25 @@ namespace Avogadro
                 << ", " << -light1pos[2] << ">\n"
       << "}\n\n"
 
-      << "#default {\n\tfinish {ambient .8 diffuse 1 specular 1 roughness .005 metallic 0.5}\n}";
+      << "#default {\n\tfinish {ambient .8 diffuse 1 specular 1 roughness .005 metallic 0.5}\n}\n\n";
   }
 
   void POVPainterDevice::render()
   {
     // Now render the scene using the active engines
     foreach( Engine *engine, m_engines ) {
-      if ( engine->isEnabled() )
+      if (engine->isEnabled()) {
+        // Use unions for opaque objects - they are faster
+        *m_output << "union {\n";
         engine->renderOpaque(this);
-      if ( engine->isEnabled() && engine->flags() & Engine::Transparent )
+        *m_output << "}\n";
+      }
+      if (engine->isEnabled() && engine->flags() & Engine::Transparent) {
+        // Use merge for transparent objects, slower but more correct
+        *m_output << "merge {\n";
         engine->renderTransparent(this);
+        *m_output << "}\n";
+      }
     }
   }
 
