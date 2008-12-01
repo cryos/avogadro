@@ -23,7 +23,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -85,8 +85,8 @@
     <addaction name="menuDocks" />
     <addaction name="separator" />
     <addaction name="pluginManagerAction" />
-    <addaction name="configureAvogadroAction" />
     <addaction name="projectTreeEditorAction" />
+    <addaction name="configureAvogadroAction" />
    </widget>
    <widget class="QMenu" name="menuBuild" >
     <property name="title" >
@@ -170,8 +170,8 @@
   <widget class="QDockWidget" name="projectDock" >
    <property name="minimumSize" >
     <size>
-     <width>81</width>
-     <height>93</height>
+     <width>84</width>
+     <height>108</height>
     </size>
    </property>
    <property name="allowedAreas" >

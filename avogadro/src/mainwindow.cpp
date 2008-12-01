@@ -302,14 +302,14 @@ namespace Avogadro
     // Change the "Settings" menu to be Window
     ui.menuSettings->setTitle("Window");
     // and remove the trailing separator
-    ui.menuSettings->removeAction( ui.menuSettings->actions().last() );
+    QAction *lastSettingsAction = ui.menuSettings->actions().last();
+    if (lastSettingsAction->isSeparator())
+      ui.menuSettings->removeAction( lastSettingsAction );
 
     // Remove all menu icons (violates Apple interface guidelines)
     // This is a not-quite-hidden Qt call on the Mac
     //    http://doc.trolltech.com/exportedfunctions.html
     qt_mac_set_menubar_icons(false);
-
-    ui.menuSettings->setTitle("Window");
 #endif
 
     setCorner(Qt::BottomLeftCorner, Qt::LeftDockWidgetArea);
@@ -1201,7 +1201,7 @@ namespace Avogadro
     // we also save an image for copy/paste to office programs, presentations, etc.
     QImage clipboardImage = d->glWidget->grabFrameBuffer(true);
 
-    Molecule *moleculeCopy;// = d->molecule;
+    Molecule *moleculeCopy = d->molecule;
     if (!selectedItems.isEmpty()) { // we only want to copy the selected items
       moleculeCopy = new Molecule;
       std::map<Atom*, Atom*> AtomMap; // key is from old, value from new
