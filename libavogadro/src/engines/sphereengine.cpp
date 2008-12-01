@@ -99,8 +99,16 @@ namespace Avogadro {
       glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
       glDisable(GL_LIGHTING);
       glDisable(GL_BLEND);
-      foreach(Primitive *p, list)
-        render(pd, static_cast<const Atom *>(p));
+      // This is a little hackish but I am not sure there is a better way,
+      // OpenGL requires this to cull the internal surfaces but it breaks POV-Ray
+      // renders. So I set the color to black and totally transparent, render
+      // with a slightly smaller radius than the actual VdW spheres. Works but
+      // not pretty...
+      pd->painter()->setColor(0.0, 0.0, 0.0, 1.0);
+      foreach(Primitive *p, list) {
+        Atom *a = static_cast<Atom *>(p);
+        pd->painter()->drawSphere(a->pos(), radius(a)*0.9999);
+      }
 
       glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
       glEnable(GL_BLEND);
