@@ -60,6 +60,20 @@ namespace Avogadro {
   {
     return QObject::tr("No Description");
   }
+  
+  QWidget *Plugin::settingsWidget()
+  {
+    return NULL; // no settings widget
+  }
 
+  void Plugin::writeSettings(QSettings &settings) const
+  {
+    // needs to be implemented by the plugin
+  }
+
+  void Plugin::readSettings(QSettings &settings)
+  {
+    // needs to be implemented by the plugin
+  }
 
 } // end namespace Avogadro

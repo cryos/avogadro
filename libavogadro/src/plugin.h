@@ -90,6 +90,22 @@ namespace Avogadro {
        */
       virtual QString description() const;
 
+      /**
+       * @return a QWidget containing the engine settings or 0
+       * if no settings widget is available.
+       */
+      virtual QWidget *settingsWidget();
+
+      /**
+       * Write the engine settings so that they can be saved between sessions.
+       */
+      virtual void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read in the settings that have been saved for the engine instance.
+       */
+      virtual void readSettings(QSettings &settings);
+
     protected:
       //PluginPrivate *const d;
   };
