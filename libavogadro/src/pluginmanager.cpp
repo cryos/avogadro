@@ -400,22 +400,6 @@ namespace Avogadro {
       #endif
     }
 
-    if(getenv("AVOGADRO_PROJECTS") != NULL)
-    {
-      pluginPaths << QString(getenv("AVOGADRO_PROJECTS")).split(':');
-    }
-    else
-    {
-      QString prefixPath = QString(INSTALL_PREFIX) + '/'
-        + QString(INSTALL_LIBDIR) + "/avogadro/projectplugins";
-      pluginPaths << prefixPath;
-
-      #ifdef WIN32
-        pluginPaths << QCoreApplication::applicationDirPath() + "/projectplugins";
-      #endif
-    }
-
-
     ////////////////////////////// 
     // load the plugins 
     //////////////////////////////
