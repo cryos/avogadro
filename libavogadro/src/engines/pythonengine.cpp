@@ -112,8 +112,15 @@ namespace Avogadro {
     boost::python::reference_existing_object::apply<PainterDevice*>::type converter;
     PyObject *obj = converter(pd);
     object real_obj = object(handle<>(obj));
- 
-    m_scripts.at(m_scriptIndex).module().attr("renderOpaque")(real_obj);
+    
+    try
+    {
+      m_scripts.at(m_scriptIndex).module().attr("renderOpaque")(real_obj);
+    }
+    catch(error_already_set const &)
+    {
+      PyErr_Print();
+    }
 
     return true;
   }
