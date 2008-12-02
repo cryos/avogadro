@@ -29,43 +29,52 @@ void export_GLWidget()
   Molecule* (GLWidget::*molecule_ptr)() = &GLWidget::molecule;
  
   class_<Avogadro::GLWidget, boost::noncopyable>("GLWidget")
-    .def("setQuickRenderEnabled", &GLWidget::setQuickRenderEnabled)
-    .def("isQuickRenderEnabled", &GLWidget::isQuickRenderEnabled)
-    .def("deviceWidth", &GLWidget::deviceWidth)
-    .def("deviceHeight", &GLWidget::deviceHeight)
+    // read/write properties
+    .add_property("quickRenderEnabled", &GLWidget::setQuickRenderEnabled, &GLWidget::isQuickRenderEnabled)
+    .add_property("colorMap", make_function(&GLWidget::colorMap, return_value_policy<reference_existing_object>()),
+        &GLWidget::setColorMap)
+    .add_property("molecule", make_function(molecule_ptr, return_value_policy<reference_existing_object>()),
+        &GLWidget::setMolecule)
+    .add_property("tool", make_function(&GLWidget::tool, return_value_policy<reference_existing_object>()),
+        &GLWidget::setTool)
+    .add_property("quality", &GLWidget::quality, &GLWidget::setQuality)
+    .add_property("fogLevel", &GLWidget::fogLevel, &GLWidget::setFogLevel)
+    .add_property("renderAxes", &GLWidget::renderAxes, &GLWidget::setRenderAxes)
+    .add_property("renderDebug", &GLWidget::renderDebug, &GLWidget::setRenderDebug)
+    .add_property("toolGroup", make_function(&GLWidget::toolGroup, return_value_policy<reference_existing_object>()),
+        &GLWidget::setToolGroup)
+ 
+    //.def("background", &GLWidget::background)  // QColor
+    //void setBackground(const QColor &background); // QColor
+    //.def("setUndoStack", &GLWidget::setUndoStack) // QUndoStack
+    //.def("undoStack", &GLWidget::undoStack) // QUndoStack
+ 
+    // read-only properties
+    .add_property("deviceWidth", &GLWidget::deviceWidth)
+    .add_property("deviceHeight", &GLWidget::deviceHeight)
+    .add_property("camera", make_function(&GLWidget::camera, return_value_policy<reference_existing_object>()))
+    .add_property("engines", &GLWidget::engines)
+    .add_property("center", make_function(&GLWidget::center, return_value_policy<return_by_value>()))
+    .add_property("normalVector", make_function(&GLWidget::normalVector, return_value_policy<return_by_value>()))
+    .add_property("farthestAtom", make_function(&GLWidget::farthestAtom, return_value_policy<reference_existing_object>()))
+    .add_property("painter", make_function(&GLWidget::painter, return_value_policy<reference_existing_object>()))
+    .add_property("primitives", &GLWidget::primitives)
+    .add_property("selectedPrimitives", &GLWidget::selectedPrimitives)
+    .add_property("namedSelections", &GLWidget::namedSelections)
+    .add_property("aCells", &GLWidget::aCells)
+    .add_property("bCells", &GLWidget::bCells)
+    .add_property("cCells", &GLWidget::cCells)
+    
+   
+    // real functions
     .def("radius", radius_ptr1, return_value_policy<copy_const_reference>())
     .def("radius", radius_ptr2)
-    .def("tool", &GLWidget::tool, return_value_policy<reference_existing_object>())
-    .def("background", &GLWidget::background)
-    .def("setColorMap", &GLWidget::setColorMap)
-    .def("colorMap", &GLWidget::colorMap, return_value_policy<reference_existing_object>())
-    //.def("setUndoStack", &GLWidget::setUndoStack)
-    //.def("undoStack", &GLWidget::undoStack)
-    .def("molecule", molecule_ptr, return_value_policy<reference_existing_object>())
     .def("updateGeometry", &GLWidget::updateGeometry)
-    .def("camera", &GLWidget::camera, return_value_policy<reference_existing_object>())
-    .def("engines", &GLWidget::engines)
     .def("hits", &GLWidget::hits)
     .def("computeClickedPrimitive", &GLWidget::computeClickedPrimitive, return_value_policy<reference_existing_object>())
     .def("computeClickedAtom", &GLWidget::computeClickedAtom, return_value_policy<reference_existing_object>())
     .def("computeClickedBond", &GLWidget::computeClickedBond, return_value_policy<reference_existing_object>())
-    .def("center", &GLWidget::center, return_value_policy<return_by_value>())
-    .def("normalVector", &GLWidget::normalVector, return_value_policy<return_by_value>())
-    .def("farthestAtom", &GLWidget::farthestAtom, return_value_policy<reference_existing_object>())
-    .def("setQuality", &GLWidget::setQuality)
-    .def("quality", &GLWidget::quality)
-    .def("setFogLevel", &GLWidget::setFogLevel)
-    .def("fogLevel", &GLWidget::fogLevel)
-    .def("setRenderAxes", &GLWidget::setRenderAxes)
-    .def("renderAxes", &GLWidget::renderAxes)
-    .def("setRenderDebug", &GLWidget::setRenderDebug)
-    .def("renderDebug", &GLWidget::renderDebug)
     .def("renderPrimitives", &GLWidget::renderPrimitives)
-    .def("setToolGroup", &GLWidget::setToolGroup)
-    .def("toolGroup", &GLWidget::toolGroup, return_value_policy<reference_existing_object>())
-    .def("painter", &GLWidget::painter, return_value_policy<reference_existing_object>())
-    .def("primitives", &GLWidget::primitives)
-    .def("selectedPrimitives", &GLWidget::selectedPrimitives)
     .def("toggleSelected", &GLWidget::toggleSelected)
     .def("setSelected", &GLWidget::setSelected)
     .def("clearSelected", &GLWidget::clearSelected)
@@ -74,14 +83,10 @@ void export_GLWidget()
     .def("removeNamedSelection", removeNamedSelection_ptr1)
     .def("removeNamedSelection", removeNamedSelection_ptr2)
     .def("renameNamedSelection", &GLWidget::renameNamedSelection)
-    .def("namedSelections", &GLWidget::namedSelections)
     .def("namedSelectionPrimitives", namedSelectionPrimitives_ptr1)
     .def("namedSelectionPrimitives", namedSelectionPrimitives_ptr2)
     .def("setUnitCells", &GLWidget::setUnitCells)
     .def("clearUnitCell", &GLWidget::clearUnitCell)
-    .def("aCells", &GLWidget::aCells)
-    .def("bCells", &GLWidget::bCells)
-    .def("cCells", &GLWidget::cCells)
     .def("current", &GLWidget::current, return_value_policy<reference_existing_object>())
     .staticmethod("current")
     .def("setCurrent", &GLWidget::setCurrent)
@@ -89,12 +94,9 @@ void export_GLWidget()
     .def("readSettings", &GLWidget::readSettings)
 /*
     public Q_SLOTS:
-      void setTool(Tool *tool);
       void addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
-      void setBackground(const QColor &background);
-      void setMolecule(Molecule *molecule);
       void addEngine(Engine *engine);
       void removeEngine(Engine *engine);
       void loadDefaultEngines();

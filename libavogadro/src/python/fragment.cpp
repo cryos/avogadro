@@ -12,14 +12,16 @@ void export_Fragment()
 { 
  
   class_<Avogadro::Fragment, bases<Avogadro::Primitive>, boost::noncopyable>("Fragment", no_init)
-    .def("name", &Fragment::name)
-    .def("setName", &Fragment::setName)
+    // read/write properties
+    .add_property("name", &Fragment::name, &Fragment::setName)
+    // read-only properties
+    .def("atoms", &Fragment::atoms)
+    .def("bonds", &Fragment::bonds)
+    // real functions
     .def("addAtom", &Fragment::addAtom)
     .def("removeAtom", &Fragment::removeAtom)
-    //.def("atoms", &Fragment::atoms)
     .def("addBond", &Fragment::addBond)
     .def("removeBond", &Fragment::removeBond)
-    //.def("bonds", &Fragment::bonds)
     ;
 
 }

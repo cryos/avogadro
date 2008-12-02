@@ -19,15 +19,18 @@ void export_Cube()
   double (Cube::*value_ptr3)(const Eigen::Vector3d &) const = &Cube::value;
 
   class_<Avogadro::Cube, bases<Avogadro::Primitive>, boost::noncopyable>("Cube", no_init)
-    .def("min", &Cube::min)
-    .def("max", &Cube::max)
-    .def("spacing", &Cube::spacing)
-    .def("dimensions", &Cube::dimensions)
+    // read/write properties
+    .add_property("name", &Cube::name, &Cube::setName)
+    .add_property("data", &Cube::data, &Cube::setData)
+    // read-only properties
+    .add_property("min", &Cube::min)
+    .add_property("max", &Cube::max)
+    .add_property("spacing", &Cube::spacing)
+    .add_property("dimensions", &Cube::dimensions)
+    // real functions
     .def("setLimits", setLimits_ptr1)
     .def("setLimits", setLimits_ptr2)
     .def("setLimits", setLimits_ptr3)
-    .def("data", &Cube::data)
-    .def("setData", &Cube::setData)
     .def("closestIndex", &Cube::closestIndex)
     .def("indexVector", &Cube::indexVector)
     .def("position", &Cube::position)
@@ -35,8 +38,6 @@ void export_Cube()
     .def("value", value_ptr2)
     .def("value", value_ptr3)
     .def("setValue", &Cube::setValue)
-    .def("name", &Cube::name)
-    .def("setName", &Cube::setName)
     ;
 
 }

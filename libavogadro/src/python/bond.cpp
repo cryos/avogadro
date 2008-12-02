@@ -11,15 +11,17 @@ using namespace Avogadro;
 void export_Bond()
 {
   class_<Avogadro::Bond, bases<Avogadro::Primitive>, boost::noncopyable>("Bond", no_init)
+    // read/write properties
+    .add_property("order", &Bond::order, &Bond::setOrder)
+    // read-only poperties 
+    .add_property("beginAtomId", &Bond::beginAtomId)
+    .add_property("endAtomId", &Bond::endAtomId)
+    .add_property("otherAtom", &Bond::otherAtom)
+    .add_property("length", &Bond::length)
+    // real functions
     .def("setBegin", &Bond::setBegin)
-    .def("beginAtomId", &Bond::beginAtomId)
     .def("setEnd", &Bond::setEnd)
-    .def("endAtomId", &Bond::endAtomId)
     .def("setAtoms", &Bond::setAtoms)
-    .def("otherAtom", &Bond::otherAtom)
-    .def("order", &Bond::order)
-    .def("setOrder", &Bond::setOrder)
-    .def("length", &Bond::length)
     ;
    
 }

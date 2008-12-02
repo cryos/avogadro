@@ -3,6 +3,7 @@
 
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
+#include <avogadro/bond.h>
 #include <avogadro/molecule.h>
 
 using namespace boost::python;
@@ -12,28 +13,26 @@ void export_Atom()
 {
   // define function pointers to handle overloading
   void (Atom::*setPos_ptr)(const Eigen::Vector3d&) = &Atom::setPos;
-  void (Atom::*addBond_ptr)(unsigned long int) = &Atom::addBond;
-  void (Atom::*deleteBond_ptr)(unsigned long int) = &Atom::deleteBond;
+  void (Atom::*addBond_ptr1)(Bond*) = &Atom::addBond;
+  void (Atom::*addBond_ptr2)(unsigned long int) = &Atom::addBond;
+  void (Atom::*deleteBond_ptr1)(Bond*) = &Atom::deleteBond;
+  void (Atom::*deleteBond_ptr2)(unsigned long int) = &Atom::deleteBond;
 
   class_<Avogadro::Atom, bases<Avogadro::Primitive>, boost::noncopyable>("Atom", no_init)
-    .def("pos", &Atom::pos, return_value_policy<return_by_value>())
-    .def("setPos", setPos_ptr)
-    
-    //.def("atomicNumber", &Atom::atomicNumber)
-    //.def("setAtomicNumber", &Atom::setAtomicNumber)
+    // read/write properties
+    .add_property("pos", make_function(&Atom::pos, return_value_policy<return_by_value>()), setPos_ptr)
     .add_property("atomicNumber", &Atom::atomicNumber, &Atom::setAtomicNumber)
-    
-    .def("addBond", addBond_ptr)
-    .def("deleteBond", deleteBond_ptr)
-    .def("bonds", &Atom::bonds)
-    
-    .def("neighbors", &Atom::neighbors)
-    .def("valence", &Atom::valence)
-    .def("isHydrogen", &Atom::isHydrogen)
-    
-    //.def("partialCharge", &Atom::partialCharge)
-    //.def("setPartialCharge", &Atom::setPartialCharge)
     .add_property("partialCharge", &Atom::partialCharge, &Atom::setPartialCharge)
+    // read-only properties
+    .add_property("bonds", &Atom::bonds)
+    .add_property("neighbors", &Atom::neighbors)
+    .add_property("valence", &Atom::valence)
+    .add_property("isHydrogen", &Atom::isHydrogen)
+    // real functions
+    .def("addBond", addBond_ptr1)
+    .def("addBond", addBond_ptr2)
+    .def("deleteBond", deleteBond_ptr1)
+    .def("deleteBond", deleteBond_ptr2)
     ;
 
 }
