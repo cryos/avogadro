@@ -185,14 +185,23 @@ namespace Avogadro{
     return(residue);
   }
 */
+
   Atom *Molecule::newAtom()
   {
     Q_D(Molecule);
     Atom *atom = new Atom(this);
+    
     m_lock->lockForWrite();
+    if (!m_atomPos) {
+      m_atomPos = new std::vector<Vector3d>;
+      m_atomPos->reserve(100);
+    } 
+    // Ensure that all new Vector3d objects are initialised to zero
+    m_atomPos->push_back(Vector3d::Zero());
     d->atoms.push_back(atom);
     d->atomList.push_back(atom);
     m_lock->unlock();
+    
     atom->setId(d->atoms.size()-1);
     atom->setIndex(d->atomList.size()-1);
     connect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -225,6 +234,7 @@ namespace Avogadro{
         m_lock->unlock();
       }
     }
+    /*
     else {
       m_lock->lockForWrite();
       m_atomPos = new std::vector<Vector3d>;
@@ -237,13 +247,15 @@ namespace Avogadro{
       (*m_atomPos)[id] = vec;
       m_lock->unlock();
     }
+    */
   }
 
   const Eigen::Vector3d * Molecule::atomPos(unsigned long int id) const
   {
     QReadLocker lock(m_lock);
-    if (!m_atomPos)
+    if (!m_atomPos) 
       return 0;
+
     if (m_atomPos->size() > id) {
       return const_cast<const Vector3d*>(&m_atomPos->at(id));
     }
@@ -259,6 +271,13 @@ namespace Avogadro{
     Atom *atom = new Atom(this);
 
     m_lock->lockForWrite();
+    if (!m_atomPos) {
+      m_atomPos = new std::vector<Vector3d>;
+      m_atomPos->reserve(100);
+    } 
+    // Ensure that all new Vector3d objects are initialised to zero
+    m_atomPos->push_back(Vector3d::Zero());
+    
     if(id >= d->atoms.size())
       d->atoms.resize(id+1,0);
     d->atoms[id] = atom;
