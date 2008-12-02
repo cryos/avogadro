@@ -28,7 +28,6 @@
 #include <avogadro/global.h>
 
 #include <Eigen/Core>
-#include <QGLWidget>
 
 namespace Avogadro {
 

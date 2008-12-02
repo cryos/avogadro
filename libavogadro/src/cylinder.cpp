@@ -23,7 +23,13 @@
  **********************************************************************/
 
 #include "cylinder.h"
+
+#ifdef ENABLE_GLSL
+  #include <GL/glew.h>
+#endif
+
 #include <QGLWidget>
+
 #include <Eigen/Geometry>
 
 // Win32 build (19/05/08)

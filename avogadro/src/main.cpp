@@ -20,6 +20,10 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#ifdef ENABLE_GLSL
+  #include <GL/glew.h>
+#endif
+
 // QT Includes
 #include <QApplication>
 #include <QMessageBox>
@@ -108,21 +112,20 @@ int main(int argc, char *argv[])
   }
 
   // Extra debug messages to check out where some init segfaults are happening
-  std::cout << "Loaded translations (if needed) about to test OpenGL capabilities."
-            << std::endl;
+  qDebug() << "About to test OpenGL capabilities.";
   // use multi-sample (anti-aliased) OpenGL if available
   QGLFormat defFormat = QGLFormat::defaultFormat();
   defFormat.setSampleBuffers(true);
   QGLFormat::setDefaultFormat(defFormat);
 
   // Test what capabilities we have
-  std::cout << "OpenGL capabilities found: " << std::endl;
+  qDebug() << "OpenGL capabilities found: ";
   if (defFormat.doubleBuffer())
-    std::cout << "\tDouble Buffering." << std::endl;
+    qDebug() << "\tDouble Buffering.";
   if (defFormat.directRendering())
-    std::cout << "\tDirect Rendering." << std::endl;
+    qDebug() << "\tDirect Rendering.";
   if (defFormat.sampleBuffers())
-    std::cout << "\tAntialiasing." << std::endl << std::endl;
+    qDebug() << "\tAntialiasing.\n";
 
   QStringList arguments = app.arguments();
 

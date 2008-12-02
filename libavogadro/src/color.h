@@ -29,6 +29,10 @@
 #include <avogadro/global.h>
 #include <avogadro/plugin.h>
 
+#ifdef ENABLE_GLSL
+  #include <GL/glew.h>
+#endif
+
 #include <QGLWidget> // for GLfloat
 #include <QColor> // for returning QColor
 

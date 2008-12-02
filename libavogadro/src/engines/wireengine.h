@@ -28,7 +28,6 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
-#include <QGLWidget>
 
 #include "ui_wiresettingswidget.h"
 

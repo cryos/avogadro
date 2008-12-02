@@ -24,6 +24,12 @@
 
 #include "sphere.h"
 
+#ifdef ENABLE_GLSL
+  #include <GL/glew.h>
+#endif
+
+#include <QGLWidget>
+
 using namespace Eigen;
 
 namespace Avogadro {
