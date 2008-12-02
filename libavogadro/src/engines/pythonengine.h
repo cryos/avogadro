@@ -29,7 +29,6 @@
 #include <avogadro/engine.h>
 #include <avogadro/pythoninterpreter.h>
 #include <avogadro/pythonscript.h>
-#include <QGLWidget>
 
 #include "ui_pythonsettingswidget.h"
 
