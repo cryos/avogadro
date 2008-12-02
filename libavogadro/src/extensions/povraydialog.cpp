@@ -101,10 +101,10 @@ namespace Avogadro
         << "+O" + info.baseName() + ".png"
         << "+W" + ui.dimX->text()
         << "+H" + ui.dimY->text()
-        << "+V" << "+D" << "+FN" << "+Q10";
-//        << "+P";
+        << "+V" << "+D" << "+FN" << "+Q9"
+        << "+P" << "+UD" << "+UL" << "+UV";
     if (ui.antialias->isChecked())
-      tmp << "+A";
+      tmp << "+A" << "+AM2";
     if (ui.transparency->isChecked())
       tmp << "+UA";
     return tmp;
