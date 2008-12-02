@@ -26,7 +26,6 @@
 
 #include <avogadro/global.h>
 #include <avogadro/molecule.h>
-//#include <avogadro/boost.h>
 #include <QString>
 #include <QDebug>
 
@@ -45,7 +44,7 @@ namespace Avogadro {
 //      {
         std::cout << "initializing python interpreter\n";
         try {
-          //PyImport_AppendInittab( const_cast<char *>("Avogadro"), &initAvogadro );
+//          PyImport_AppendInittab( const_cast<char *>("Avogadro"), &initAvogadro );
 
           Py_Initialize();
 
@@ -79,7 +78,6 @@ namespace Avogadro {
   void PythonInterpreter::setMolecule(Molecule *molecule)
   {
     d->molecule = molecule;
-
   }
 
   object PythonInterpreter::execWrapper(const QString &command, object main, object local)
@@ -117,17 +115,14 @@ namespace Avogadro {
 
     object result = evalWrapper(string, main_namespace, local);
 
-    QString s;
     try
     {
-      s = extract<const char *>(result);
+      return QString(extract<const char *>(result));
     }
     catch(error_already_set const &)
     {
       return QString();
     }
-//    return extract<>(result);
-    return s;
   }
 
   void PythonInterpreter::addSearchPath(const QString &path)
@@ -145,14 +140,17 @@ namespace Avogadro {
   {
     object main_module = object(( handle<>(borrowed(PyImport_AddModule("__main__")))));
     object main_namespace = main_module.attr("__dict__");
-
-    /*
-    object avogadro_module(handle<>(PyImport_ImportModule("Avogadro")) );
-    if(d->molecule)
+      
+    try
     {
-      avogadro_module.attr("molecule") = ptr(d->molecule);
+      object avogadro_module(handle<>(PyImport_ImportModule("Avogadro")) );
+      if(d->molecule)
+        avogadro_module.attr("molecule") = ptr(d->molecule);
     }
-    */
+    catch(error_already_set const &)
+    {
+      qDebug() << "Could not find python module...";
+    }
 
     local["sys"] = object(handle<>(PyImport_ImportModule("sys")));
     local["cStringIO"] = object(handle<>(PyImport_ImportModule("cStringIO")));
@@ -162,20 +160,16 @@ namespace Avogadro {
 
 //    handle<> ignored(( PyRun_String( command.toAscii().constData(), Py_file_input, main_namespace.ptr(), main_namespace.ptr() ) ));
     object ignored = execWrapper(command.toAscii().constData(), main_namespace, local);
-
     object result = evalWrapper("str(CIO.getvalue())", main_namespace, local);
 
-    QString s;
     try
     {
-      s = extract<const char *>(result);
+      return QString(extract<const char *>(result));
     }
     catch(error_already_set const &)
     {
       return QString();
     }
-//    return extract<>(result);
-    return s;
   }
 
   QString PythonInterpreter::exec(const QString &command)
