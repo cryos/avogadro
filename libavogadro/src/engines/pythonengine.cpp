@@ -129,17 +129,18 @@ namespace Avogadro {
     if(!m_settingsWidget)
     {
       m_settingsWidget = new PythonSettingsWidget();
-      connect(m_settingsWidget->scriptsComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(setScriptIndex(int)));
-      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
-      
+
       foreach (const PythonScript &script, m_scripts) {
         dict local;
         local[script.moduleName().toStdString()] = script.module();
         QString name = m_interpreter.eval(script.moduleName() + ".name()", local);
         m_settingsWidget->scriptsComboBox->addItem(name);
       }
-      
+ 
       m_settingsWidget->scriptsComboBox->setCurrentIndex(m_scriptIndex);
+
+      connect(m_settingsWidget->scriptsComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(setScriptIndex(int)));
+      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
     }
     
     return m_settingsWidget;
