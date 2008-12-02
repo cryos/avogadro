@@ -13,16 +13,28 @@ def renderOpaque(pd):
     # Molecule
     molecule = pd.molecule
 
+    # Color
+    color = pd.colorMap
+
     # set color to white
     painter.setColor(1.0, 1.0, 1.0, 1.0)
     # draw some text
     painter.drawText(10,10, "Python wireframe engine")
 
     # set color to green
-    painter.setColor(0.0, 1.0, 0.0, 1.0) 
     for bond in molecule.bonds:
       beginAtom = molecule.atomById(bond.beginAtomId)
       endAtom = molecule.atomById(bond.endAtomId)
 
-      painter.drawLine(beginAtom.pos, endAtom.pos, 2.0)
+      delta = beginAtom.pos - endAtom.pos
+      #center = (beginAtom.pos + endAtom.pos + delta) / 2
+      center = (beginAtom.pos + endAtom.pos) / 2
+
+      color.set(beginAtom)
+      painter.setColor(color)
+      painter.drawLine(beginAtom.pos, center, 2.0)
+
+      color.set(endAtom)
+      painter.setColor(color)
+      painter.drawLine(endAtom.pos, center, 2.0)
 

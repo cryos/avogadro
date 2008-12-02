@@ -19,6 +19,8 @@ void export_Camera();
 void export_GLWidget();
 void export_Painter();
 void export_PainterDevice();
+void export_Plugin();
+void export_Color();
 
 BOOST_PYTHON_MODULE(Avogadro) {
   
@@ -39,6 +41,9 @@ BOOST_PYTHON_MODULE(Avogadro) {
   export_GLWidget();
   export_Painter();
   export_PainterDevice();
+  export_Plugin();
+  export_Color();
+
 
 
 } 
