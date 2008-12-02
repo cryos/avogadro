@@ -35,6 +35,13 @@ set(libavogadro_SRCS ${libavogadro_SRCS} ${bsdyengine_SRCS} ${bsdyengine_UIS})
 set(elementcolor_SRCS colors/elementcolor.cpp)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${elementcolor_SRCS})
 
+set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES} ${OPENGL_LIBRARIES})
+
+if(GLEW_FOUND)
+	include_directories(${GLEW_INCLUDE_DIRS})
+	link_directories(${GLEW_LIBRARY_DIR})
+	set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${GLEW_LIBRARY})
+endif(GLEW_FOUND)
 
 # If Boost Python isn't found remove the interpreter files
 if(NOT BOOST_PYTHON_LIBS AND NOT Boost_PYTHON_FOUND)
@@ -57,33 +64,27 @@ if(Boost_PYTHON_FOUND)
 	link_directories(${Boost_LIBRARY_DIRS})
 endif(Boost_PYTHON_FOUND)
 
-ADD_LIBRARY(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})
-SET_TARGET_PROPERTIES(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
+add_library(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})
+set_target_properties(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 set_target_properties(avogadro-lib PROPERTIES VERSION ${VERSION} SOVERSION 0 )
 
 if(BOOST_PYTHON_FOUND)
-	TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES}
-				${QT_LIBRARIES}
-				${OPENGL_LIBRARIES}
-				${BOOST_PYTHON_LIBS})
+	set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${BOOST_PYTHON_LIBS})
 else(BOOST_PYTHON_FOUND)
-	if(Boost_PYTHON_FOUND)
-		message(STATUS "Setting new boost python libraries")
-		TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES}
-			${QT_LIBRARIES}
-			${OPENGL_LIBRARIES}
-			${PYTHON_LIBRARIES}
-			${Boost_LIBRARIES})
-	else(Boost_PYTHON_FOUND)
-		TARGET_LINK_LIBRARIES(avogadro-lib ${OPENBABEL2_LIBRARIES}
-			${QT_LIBRARIES}
-			${OPENGL_LIBRARIES})
-	endif(Boost_PYTHON_FOUND)
+  if(Boost_PYTHON_FOUND)
+    message(STATUS "Setting new boost python libraries")
+    set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${PYTHON_LIBRARIES} 
+                           ${Boost_LIBRARIES})
+  endif(Boost_PYTHON_FOUND)
 endif(BOOST_PYTHON_FOUND)
 
-INSTALL(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
-INSTALL(FILES ${libavogadro_HDRS} DESTINATION include/avogadro)
-INSTALL(FILES ${libavogadro_QM} DESTINATION share/libavogadro/i18n)
+message(STATUS "AVO_LINK_LIBS: ${AVO_LINK_LIBRARIES}")
+
+target_link_libraries(avogadro-lib ${AVO_LINK_LIBRARIES})
+
+install(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
+install(FILES ${libavogadro_HDRS} DESTINATION include/avogadro)
+install(FILES ${libavogadro_QM} DESTINATION share/libavogadro/i18n)
 
 # Add the engiens, tools and extensions directories
 add_subdirectory(engines)
