@@ -28,6 +28,7 @@
 
 //#include <avogadro/boost.h>
 #include <avogadro/pythoninterpreter.h>
+#include <avogadro/pythonscript.h>
 
 #include "ui_pythonterminalwidget.h"
 
@@ -41,23 +42,6 @@
 
 class QDockWidget;
 namespace Avogadro {
-
-  class PythonScript
-  {
-    public:
-      PythonScript(QDir dir, QString fileName);
-
-      QString moduleName() const;
-      boost::python::object module() const;
-
-    private:
-      QString m_moduleName;
-      QString m_fileName;
-      QDir m_dir;
-      mutable QDateTime m_lastModified;
-      mutable boost::python::object m_module;
-  };
-
 
   class PythonTerminalWidget;
   class PythonExtension : public Extension
