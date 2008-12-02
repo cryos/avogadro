@@ -32,7 +32,6 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <openbabel/mol.h>
 #include <Eigen/Regression>
 
 #include <QMessageBox>
@@ -44,7 +43,7 @@ using namespace boost::python;
 
 namespace Avogadro {
 
-  PythonEngine::PythonEngine(QObject *parent) : Engine(parent)/*, m_settingsWidget(NULL),*/
+  PythonEngine::PythonEngine(QObject *parent) : Engine(parent), m_settingsWidget(NULL), m_scriptIndex(0)
   {
     setDescription(tr("Python script rendering"));
   
@@ -98,8 +97,7 @@ namespace Avogadro {
     PythonEngine* engine = new PythonEngine(parent());
 
     engine->setAlias(alias());
-    //engine->setShowDots(m_showDots);
-    //engine->setShowMultipleBonds(m_showMulti);
+    engine->setScriptIndex(m_scriptIndex);
     engine->setEnabled(isEnabled());
 
     return engine;
@@ -107,14 +105,15 @@ namespace Avogadro {
 
   bool PythonEngine::renderOpaque(PainterDevice *pd)
   {
-    if (m_scripts.isEmpty())
+    if (m_scriptIndex >= m_scripts.size())
       return false;
 
+    // FIXME: we may want to chache this...
     boost::python::reference_existing_object::apply<PainterDevice*>::type converter;
     PyObject *obj = converter(pd);
     object real_obj = object(handle<>(obj));
  
-    m_scripts.at(0).module().attr("renderOpaque")(real_obj);
+    m_scripts.at(m_scriptIndex).module().attr("renderOpaque")(real_obj);
 
     return true;
   }
@@ -127,43 +126,49 @@ namespace Avogadro {
 
   QWidget* PythonEngine::settingsWidget()
   {
-    return 0;
-    /*
     if(!m_settingsWidget)
     {
       m_settingsWidget = new PythonSettingsWidget();
-      connect(m_settingsWidget->showMultipleCheckBox, SIGNAL(stateChanged(int)), this, SLOT(setShowMultipleBonds(int)));
-      connect(m_settingsWidget->showDotsCheckBox, SIGNAL(stateChanged(int)), this, SLOT(setShowDots(int)));
+      connect(m_settingsWidget->scriptsComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(setScriptIndex(int)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
-      m_settingsWidget->showDotsCheckBox->setCheckState((Qt::CheckState)m_showDots);
-      m_settingsWidget->showMultipleCheckBox->setCheckState((Qt::CheckState)m_showMulti);
+      
+      foreach (const PythonScript &script, m_scripts) {
+        dict local;
+        local[script.moduleName().toStdString()] = script.module();
+        QString name = m_interpreter.eval(script.moduleName() + ".name()", local);
+        m_settingsWidget->scriptsComboBox->addItem(name);
+      }
+      
+      m_settingsWidget->scriptsComboBox->setCurrentIndex(m_scriptIndex);
     }
+    
     return m_settingsWidget;
-    */
   }
-/*
+  
   void PythonEngine::settingsWidgetDestroyed()
   {
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
   }
-*/
+  
   void PythonEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);
-  //  settings.setValue("showDots", m_showDots);
-  //  settings.setValue("showMulti", m_showMulti);
+    if (m_scriptIndex < m_scripts.size())
+      settings.setValue("scriptName", m_scripts.at(m_scriptIndex).moduleName());
   }
 
   void PythonEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
-  //  setShowDots(settings.value("showDots", 2).toInt());
-  //  setShowMultipleBonds(settings.value("showMulti", 0).toInt());
-//    if (m_settingsWidget) {
- //     m_settingsWidget->showDotsCheckBox->setCheckState((Qt::CheckState)m_showDots);
-   //   m_settingsWidget->showMultipleCheckBox->setCheckState((Qt::CheckState)m_showMulti);
-    //}
+
+    QString refName = settings.value("scriptName").toString();
+    int index = 0;
+    foreach (const PythonScript &script, m_scripts) {
+      if (script.moduleName() == refName)
+        setScriptIndex(index);
+      index++;
+    }
   }
 
   void PythonEngine::loadScripts(QDir dir)
@@ -181,17 +186,9 @@ namespace Avogadro {
       qDebug() << file;
       PythonScript script(dir.canonicalPath(), file);
       if(script.module())
-      {
-        dict local;
-        local[script.moduleName().toStdString()] = script.module();
-        QString name = m_interpreter.eval(script.moduleName() + ".name()", local);
-        //m_actions.append(action);
-        qDebug() << "Python engine name: " << name;
         m_scripts.append(script);
-      }
     }
   }
-
 
 
 }

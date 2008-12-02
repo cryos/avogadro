@@ -1,5 +1,5 @@
 /**********************************************************************
-  PythonEngine - Engine for python script engines
+  PythonEngine - Allow python scripts to be used as engines.
 
   Copyright (C) 2008 Tim Vandermeersch
 
@@ -31,13 +31,13 @@
 #include <avogadro/pythonscript.h>
 #include <QGLWidget>
 
-//#include "ui_pythonsettingswidget.h"
+#include "ui_pythonsettingswidget.h"
 
 namespace Avogadro {
 
   class Atom;
   class Bond;
-  //class PythonSettingsWidget;
+  class PythonSettingsWidget;
 
   class PythonEngine : public Engine
   {
@@ -72,19 +72,19 @@ namespace Avogadro {
 
 
   private:
-    //PythonSettingsWidget *m_settingsWidget;
+    PythonSettingsWidget *m_settingsWidget;
     
     QList<PythonScript> m_scripts;
     PythonInterpreter m_interpreter;
     int m_scriptIndex;
     
     void loadScripts(QDir dir);
+
   private Q_SLOTS:
     void settingsWidgetDestroyed();
     void setScriptIndex(int index);
   };
 
-  /*
   class PythonSettingsWidget : public QWidget, public Ui::PythonSettingsWidget
   {
   public:
@@ -92,7 +92,6 @@ namespace Avogadro {
       setupUi(this);
     }
   };
-  */
 
   //! Generates instances of our PythonEngine class
   class PythonEngineFactory : public QObject, public PluginFactory

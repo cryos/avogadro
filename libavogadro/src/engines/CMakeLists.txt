@@ -129,7 +129,7 @@ if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
 	### python engine
 	message(STATUS "Enabled python engine")
         set(pythonengine_SRCS pythonengine.cpp)
-        #qt4_wrap_ui(pythonengine_UIS pythonsettingswidget.ui)
+        qt4_wrap_ui(pythonengine_UIS pythonsettingswidget.ui)
         qt4_automoc(${pythonengine_SRCS})
         add_library(pythonengine MODULE ${pythonengine_SRCS} ${pythonengine_UIS})
         target_link_libraries(pythonengine ${LINK_LIBS})
