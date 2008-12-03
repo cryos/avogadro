@@ -196,3 +196,17 @@ add_library(fileimportextension MODULE ${fileimportextension_SRCS}
   ${fileimportextension_UIS_H})
 target_link_libraries(fileimportextension ${LINK_LIBS})
 install(TARGETS fileimportextension DESTINATION ${DESTINATION_DIR})
+
+### Shader extension
+if(GLEW_FOUND)
+  set(shaderextension_SRCS shaderextension.cpp)
+  qt4_wrap_ui(shaderextension_UIS_H shaderdialog.ui)
+  qt4_automoc(${shaderextension_SRCS})
+  add_library(shaderextension MODULE ${shaderextension_SRCS}
+              ${shaderextension_UIS_H})
+  target_link_libraries(shaderextension ${LINK_LIBS})
+  install(TARGETS shaderextension DESTINATION ${DESTINATION_DIR})
+  file(GLOB shader_SRC "shaders/*")
+  install(FILES ${shader_SRC} DESTINATION share/libavogadro/shaders)
+endif(GLEW_FOUND)
+

@@ -632,8 +632,6 @@ namespace Avogadro {
     }
   }
 
-
-
   void GLWidget::resizeEvent( QResizeEvent *event )
   {
 #ifdef ENABLE_THREADED_GL
@@ -813,8 +811,12 @@ namespace Avogadro {
 
       if (d->uc) glNewList(d->dlistOpaque, GL_COMPILE);
       foreach(Engine *engine, d->engines)
-        if(engine->isEnabled())
+        if(engine->isEnabled()) {
+#ifdef ENABLE_GLSL
+          glUseProgram(engine->shader());
+#endif
           engine->renderOpaque(d->pd);
+        }
       if (d->uc) { // end the main list and render the opaque crystal
         glEndList();
         renderCrystal(d->dlistOpaque);
@@ -822,9 +824,14 @@ namespace Avogadro {
 
       glDepthMask(GL_FALSE);
       if (d->uc) glNewList(d->dlistTransparent, GL_COMPILE);
-      foreach(Engine *engine, d->engines)
-        if(engine->isEnabled() && engine->flags() & Engine::Transparent)
+      foreach(Engine *engine, d->engines) {
+        if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
+#ifdef ENABLE_GLSL
+          glUseProgram(engine->shader());
+#endif
           engine->renderTransparent(d->pd);
+        }
+      }
       if (d->uc) { // end the main list and render the transparent bits
         glEndList();
         renderCrystal(d->dlistTransparent);
@@ -855,6 +862,10 @@ namespace Avogadro {
 
     // If enabled show debug information
     if (d->renderDebug) { renderDebugOverlay(); }
+
+#ifdef ENABLE_GLSL
+          glUseProgram(0);
+#endif
 
     d->painter->end();
   }

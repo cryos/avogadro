@@ -39,7 +39,8 @@ namespace Avogadro {
     QString description;
   };
 
-  Engine::Engine(QObject *parent) : QObject(parent), d(new EnginePrivate)
+  Engine::Engine(QObject *parent) : QObject(parent), d(new EnginePrivate),
+    m_shader(0)
   {
   }
 

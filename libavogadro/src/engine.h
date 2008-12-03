@@ -25,6 +25,12 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#ifdef ENABLE_GLSL
+  #include <GL/glew.h>
+#else
+  #include <avogadro/glwidget>
+#endif
+
 #include <avogadro/global.h>
 #include <avogadro/primitivelist.h>
 #include "painterdevice.h"
@@ -125,6 +131,16 @@ namespace Avogadro {
        * @param description the new description of this engine.
        */
       void setDescription(const QString &description);
+
+      /**
+       * @return The active GLSL shader for this engine, only used if GLSL is supported.
+       */
+      GLuint shader() { return m_shader; }
+
+      /**
+       * Set the active GLSL shader for this engine, only used if GLSL is supported.
+       */
+      void setShader(GLuint shader) { m_shader = shader; }
 
       /**
        * @return the flags for this engine.
@@ -324,6 +340,7 @@ namespace Avogadro {
 
     private:
       EnginePrivate *const d;
+      GLuint m_shader;
   };
 
 } // end namespace Avogadro
