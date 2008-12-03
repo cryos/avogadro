@@ -45,8 +45,14 @@ endif(GLEW_FOUND)
 
 # If Boost Python isn't found remove the interpreter files
 if(NOT BOOST_PYTHON_LIBS AND NOT Boost_PYTHON_FOUND)
-	LIST(REMOVE_ITEM libavogadro_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp)
-	LIST(REMOVE_ITEM libavogadro_HDRS ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.h)
+	list(REMOVE_ITEM libavogadro_SRCS 
+		${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp)
+	list(REMOVE_ITEM libavogadro_HDRS
+		${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.h)
+	list(REMOVE_ITEM libavogadro_SRCS
+		${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.cpp)
+	list(REMOVE_ITEM libavogadro_HDRS
+		${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.h)
 endif(NOT BOOST_PYTHON_LIBS AND NOT Boost_PYTHON_FOUND)
 
 qt4_automoc(${libavogadro_SRCS})
