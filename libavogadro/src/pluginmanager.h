@@ -114,6 +114,8 @@ namespace Avogadro {
     PluginManager(QObject *parent = 0);
     ~PluginManager();
 
+    static PluginManager* instance(); 
+
     /**
      * Find all plugins by looking through the search paths:
      *    /usr/(local/)lib/avogadro/engines
@@ -166,8 +168,6 @@ namespace Avogadro {
     PluginManagerPrivate * const d;
 
   };
-
-  A_DECL_EXPORT extern PluginManager pluginManager;
 
 }
 

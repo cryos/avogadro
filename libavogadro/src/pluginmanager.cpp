@@ -192,6 +192,16 @@ namespace Avogadro {
     writeSettings(settings);
     delete(d);
   }
+    
+  PluginManager* PluginManager::instance()
+  {
+    static PluginManager *obj = 0;
+
+    if (!obj)
+      obj = new PluginManager();
+
+    return obj;  
+  }
 
   QList<Extension *> PluginManager::extensions(QObject *parent) const
   {

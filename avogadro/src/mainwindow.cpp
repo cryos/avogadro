@@ -174,7 +174,6 @@ namespace Avogadro
 
       QTimer *centerTimer;
 
-      PluginManager pluginManager;
       ProjectTreeEditor projectTreeEditor;
 
       QMap<Engine*, QWidget*> engineSettingsWindows;
@@ -236,7 +235,7 @@ namespace Avogadro
     d->undoStack = new QUndoStack( this );
 
     d->toolGroup = new ToolGroup( this );
-    d->toolGroup->append(d->pluginManager.tools());
+    d->toolGroup->append(PluginManager::instance()->tools());
 
     ui.menuDocks->addAction( ui.toolsDock->toggleViewAction() );
 
@@ -1716,7 +1715,7 @@ namespace Avogadro
     connect( ui.configureAvogadroAction, SIGNAL( triggered() ),
         this, SLOT( showSettingsDialog() ) );
 
-    connect( ui.pluginManagerAction, SIGNAL( triggered() ), &d->pluginManager, SLOT( showDialog() ) );
+    connect( ui.pluginManagerAction, SIGNAL( triggered() ), PluginManager::instance(), SLOT( showDialog() ) );
 
     connect( ui.projectTreeEditorAction, SIGNAL( triggered() ), &d->projectTreeEditor, SLOT( show() ) );
 
@@ -1893,7 +1892,7 @@ namespace Avogadro
     settings.endGroup();
 
     settings.beginGroup("extensions");
-    foreach(Extension *extension, d->pluginManager.extensions()) {
+    foreach(Extension *extension, PluginManager::instance()->extensions()) {
       extension->readSettings(settings);
     }
     settings.endGroup();
@@ -1959,7 +1958,7 @@ namespace Avogadro
     settings.endGroup();
 
     settings.beginGroup("extensions");
-    foreach(Extension *extension, d->pluginManager.extensions()) {
+    foreach(Extension *extension, PluginManager::instance()->extensions()) {
       extension->writeSettings(settings);
     }
     settings.endGroup();
@@ -1972,7 +1971,7 @@ namespace Avogadro
 
   void MainWindow::loadExtensions()
   {
-    foreach(Extension *extension, d->pluginManager.extensions())
+    foreach(Extension *extension, PluginManager::instance()->extensions())
     {
       qDebug() << "Found Extension: " << extension->name() << " - "
                << extension->description();
@@ -2199,8 +2198,8 @@ namespace Avogadro
 //        primitivesWidget, SLOT( setEngine( Engine * ) ) );
 
     // Warn the user if no engines or tools are loaded
-    int nEngines = pluginManager.factories(Plugin::EngineType).size() - 1;
-    int nTools = pluginManager.factories(Plugin::ToolType).size();
+    int nEngines = PluginManager::instance()->factories(Plugin::EngineType).size() - 1;
+    int nTools = PluginManager::instance()->factories(Plugin::ToolType).size();
     QString error;
     if(!nEngines && !nTools)
       error = tr("No tools or engines loaded.");
@@ -2243,7 +2242,7 @@ namespace Avogadro
     primitivesWidget->setEngine(d->currentSelectedEngine);
     settingsTabs->addTab(primitivesWidget, tr("Objects"));
 
-    EngineColorsWidget *colorsWidget = new EngineColorsWidget(&d->pluginManager, settingsWindow);
+    EngineColorsWidget *colorsWidget = new EngineColorsWidget(PluginManager::instance(), settingsWindow);
     colorsWidget->setEngine(d->currentSelectedEngine);
     settingsTabs->addTab(colorsWidget, tr("Colors"));
 
@@ -2257,7 +2256,7 @@ namespace Avogadro
 
   void MainWindow::addEngineClicked()
   {
-    Engine *engine =  AddEngineDialog::getEngine(this, pluginManager.factories(Plugin::EngineType));
+    Engine *engine =  AddEngineDialog::getEngine(this, PluginManager::instance()->factories(Plugin::EngineType));
     if(engine) {
       PrimitiveList p = d->glWidget->selectedPrimitives();
       if(!p.size()) {

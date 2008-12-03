@@ -41,7 +41,7 @@ namespace Avogadro {
       d(new PluginItemModelPrivate)
   {
     d->type = type;
-    d->pluginItems = pluginManager.pluginItems(type);
+    d->pluginItems = PluginManager::instance()->pluginItems(type);
   }
 
   int PluginItemModel::columnCount( const QModelIndex & ) const
