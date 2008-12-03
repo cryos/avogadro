@@ -206,7 +206,9 @@ if(GLEW_FOUND)
               ${shaderextension_UIS_H})
   target_link_libraries(shaderextension ${LINK_LIBS})
   install(TARGETS shaderextension DESTINATION ${DESTINATION_DIR})
-  file(GLOB shader_SRC "shaders/*")
-  install(FILES ${shader_SRC} DESTINATION share/libavogadro/shaders)
+  file(GLOB shader_VERT "shaders/*.vert")
+  file(GLOB shader_FRAG "shaders/*.frag")
+  install(FILES ${shader_VERT} ${shader_FRAG} 
+          DESTINATION share/libavogadro/shaders)
 endif(GLEW_FOUND)
 
