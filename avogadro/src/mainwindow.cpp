@@ -51,6 +51,8 @@
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
 
+#include <avogadro/glgraphicsview.h>
+
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
@@ -64,7 +66,6 @@
 
 #include <fstream>
 #include <algorithm>
-
 
 #include <QClipboard>
 #include <QCheckBox>
@@ -1401,10 +1402,10 @@ namespace Avogadro
   void MainWindow::detachView()
   {
     // Create a new QDialog and layout
-    QDialog *dialog = new QDialog(this);
-    QVBoxLayout *layout = new QVBoxLayout(dialog);
-    layout->setMargin( 0 );
-    layout->setSpacing( 6 );
+//    QDialog *dialog = new QDialog(this);
+//    QVBoxLayout *layout = new QVBoxLayout(dialog);
+//    layout->setMargin( 0 );
+//    layout->setSpacing( 6 );
 
     // Get the GLWidget of the current view, close in in the tabs
     QWidget *widget = d->centralTab->currentWidget();
@@ -1420,11 +1421,26 @@ namespace Avogadro
         }
         ui.actionCloseView->setEnabled( d->centralTab->count() != 1 );
         // Set the GLWidget as the main widget in the dialog
-        layout->addWidget(glWidget);
+        //layout->addWidget(glWidget);
+        GLGraphicsView *view = new GLGraphicsView(glWidget, 0);
+        view->setWindowTitle(tr("Avogadro: Detached View"));
+        view->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+        view->setScene(new QGraphicsScene);
+        view->scene()->addText("Avogadro GLGraphicsView");
+//        view->scene()->addLine(0, 0, 60, 90);
+//        QDialog *dialog = new QDialog(view);
+//        dialog->resize(150,100);
+//        dialog->setWindowTitle("Testing");
+//        view->scene()->addWidget(dialog);
+//        dialog->show();
+//        dialog->move(100,200);
+        view->show();
+
+    //    layout->addWidget(view);
       }
     }
-    dialog->setWindowTitle(tr("Avogadro: Detached View"));
-    dialog->show();
+   // dialog->setWindowTitle(tr("Avogadro: Detached View"));
+   // dialog->show();
   }
 
   void MainWindow::closeView()
