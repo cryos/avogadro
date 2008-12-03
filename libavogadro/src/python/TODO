@@ -1,14 +1,40 @@
 atom.cpp                done
 bond.cpp                done
-camera.cpp
+camera.cpp              done
 cube.cpp                done
-eigen.cpp               Transform3d, Vector3i, ??
+eigen.cpp               done
 fragment.cpp            done
 glwidget.cpp
-molecule.cpp            done (export atomPos/setAtomPos??)
+molecule.cpp            done
 primitive.cpp           done
 qlist.cpp               done
 qstring.cpp             done
 residue.cpp             done
 painter.cpp             done
 paiterdevice.cpp        done
+plugin.cpp              done
+color.cpp               done
+engine.cpp              done (don't wrap renderOpaque, ...)
+tool.cpp                done (don't wrap mousePress, wheel, ...)
+mesh.h                  need std::vector
+
+# next
+toolgroup.h
+line.h
+point.h
+pluginmanager.h
+primitivelist.h
+
+# later...
+elementtranslate.h
+navigate.h
+periodictableview.h
+undosequence.h
+
+# needed?
+pythoninterpreter.h
+pythonscript.h
+idlist.h
+sphere.h
+cylinder.h
+extension.h

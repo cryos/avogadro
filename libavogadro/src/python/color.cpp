@@ -11,8 +11,10 @@ void export_Color()
   void (Color::*set_ptr1)(GLfloat, GLfloat, GLfloat, GLfloat) = &Color::set;
   void (Color::*set_ptr2)(const Primitive*) = &Color::set;
 
-  // FIXME : add constructors
-  class_<Avogadro::Color, bases<Avogadro::Plugin>, boost::noncopyable>("Color", no_init)
+  class_<Avogadro::Color, bases<Avogadro::Plugin>, boost::noncopyable>("Color")
+    // constructors
+    .def(init<GLfloat, GLfloat, GLfloat, GLfloat>())
+    .def(init<const Primitive*>())
     // read-only poperties 
     .add_property("red", &Color::red)
     .add_property("green", &Color::green)

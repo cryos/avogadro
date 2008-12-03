@@ -37,10 +37,6 @@ void export_Molecule()
   class_<Avogadro::Molecule, bases<Avogadro::Primitive>, boost::noncopyable>("Molecule")
     // read/write properties
     .add_property("fileName", &Molecule::fileName, &Molecule::setFileName)
-    
-    .def("setAtomPos", &Molecule::setAtomPos)
-    .def("atomPos", &Molecule::atomPos, return_value_policy<return_by_value>())
-
     // read-only poperties 
     .add_property("numAtoms", &Molecule::numAtoms)
     .add_property("numBonds", &Molecule::numBonds)
@@ -60,6 +56,9 @@ void export_Molecule()
     // real functions
     //
     
+    .def("setAtomPos", &Molecule::setAtomPos)
+    .def("atomPos", &Molecule::atomPos, return_value_policy<return_by_value>())
+
     // atom functions
     .def("newAtom", newAtom_ptr1, return_value_policy<reference_existing_object>())
     .def("newAtom", newAtom_ptr2, return_value_policy<reference_existing_object>())

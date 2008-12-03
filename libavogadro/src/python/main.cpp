@@ -21,6 +21,8 @@ void export_Painter();
 void export_PainterDevice();
 void export_Plugin();
 void export_Color();
+void export_Tool();
+void export_Engine();
 
 BOOST_PYTHON_MODULE(Avogadro) {
   
@@ -43,6 +45,9 @@ BOOST_PYTHON_MODULE(Avogadro) {
   export_PainterDevice();
   export_Plugin();
   export_Color();
+  export_Tool();
+  export_Engine();
+
 
 
 

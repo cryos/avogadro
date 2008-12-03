@@ -10,17 +10,27 @@ using namespace Avogadro;
 void export_Camera()
 {
 
-  //Eigen::Transform3d& (Camera::*modelview_ptr)() = &Camera::modelview;
+  const Eigen::Transform3d& (Camera::*modelview_ptr)() const = &Camera::modelview;
   Eigen::Vector3d (Camera::*unProject_ptr1)(const Eigen::Vector3d&) const = &Camera::unProject;
   Eigen::Vector3d (Camera::*unProject_ptr2)(const QPoint&, const Eigen::Vector3d&) const = &Camera::unProject;
   Eigen::Vector3d (Camera::*unProject_ptr3)(const QPoint&) const = &Camera::unProject;
   
   class_<Avogadro::Camera, boost::noncopyable>("Camera")
-    .def("parent", &Camera::parent, return_value_policy<reference_existing_object>())
-    .def("setAngleOfViewY", &Camera::setAngleOfViewY)
-    .def("angleOfViewY", &Camera::angleOfViewY)
-    .def("setModelview", &Camera::setModelview)
-    //.def("modelview", modelview_ptr)
+    // read/write properties
+    .add_property("angleOfViewY", &Camera::angleOfViewY, &Camera::setAngleOfViewY)
+    .add_property("modelview", make_function(modelview_ptr, return_value_policy<return_by_value>()),
+        &Camera::setModelview)
+ 
+    // read-only properties
+    .add_property("parent", make_function(&Camera::parent, return_value_policy<reference_existing_object>()))
+    .add_property("backTransformedXAxis", &Camera::backTransformedXAxis)
+    .add_property("backTransformedYAxis", &Camera::backTransformedYAxis)
+    .add_property("backTransformedZAxis", &Camera::backTransformedZAxis)
+    .add_property("transformedXAxis", &Camera::transformedXAxis)
+    .add_property("transformedYAxis", &Camera::transformedYAxis)
+    .add_property("transformedZAxis", &Camera::transformedZAxis)
+
+    // real functions 
     .def("applyPerspective", &Camera::applyPerspective)
     .def("applyModelview", &Camera::applyModelview)
     .def("initializeViewPoint", &Camera::initializeViewPoint)
@@ -33,12 +43,6 @@ void export_Camera()
     .def("unProject", unProject_ptr2)
     .def("unProject", unProject_ptr3)
     .def("project", &Camera::project)
-    .def("backTransformedXAxis", &Camera::backTransformedXAxis)
-    .def("backTransformedYAxis", &Camera::backTransformedYAxis)
-    .def("backTransformed2Axis", &Camera::backTransformedZAxis)
-    .def("transformedXAxis", &Camera::transformedXAxis)
-    .def("transformedYAxis", &Camera::transformedYAxis)
-    .def("transformedZAxis", &Camera::transformedZAxis)
     .def("normalize", &Camera::normalize)
     ;
 
