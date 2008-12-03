@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>431</width>
+    <width>448</width>
     <height>255</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget" >
      <property name="currentIndex" >
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="loadTab" >
       <attribute name="title" >
@@ -102,7 +102,7 @@
          <property name="sizeHint" stdset="0" >
           <size>
            <width>20</width>
-           <height>63</height>
+           <height>68</height>
           </size>
          </property>
         </spacer>

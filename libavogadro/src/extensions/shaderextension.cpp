@@ -46,27 +46,36 @@ namespace Avogadro
   class Shader
   {
   public:
-    Shader(QByteArray& vertSource, QByteArray& fragSource)
+    Shader(QByteArray* vertSource, QByteArray* fragSource)
     {
-      const char *cVert = vertSource.data();
-      const char *cFrag = fragSource.data();
+      // Not all shaders need a fragment shader
+      shaderProgram = glCreateProgram();
+      const char *cVert = vertSource->data();
       vertexShader = glCreateShader(GL_VERTEX_SHADER);
       glShaderSource(vertexShader, 1, &cVert, 0);
       glCompileShader(vertexShader);
-      fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-      glShaderSource(fragmentShader, 1, &cFrag, 0);
-      glCompileShader(fragmentShader);
-      shaderProgram = glCreateProgram();
       glAttachShader(shaderProgram, vertexShader);
-      glAttachShader(shaderProgram, fragmentShader);
+
+      if (fragSource) {
+        const char *cFrag = fragSource->data();
+        fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+        glShaderSource(fragmentShader, 1, &cFrag, 0);
+        glCompileShader(fragmentShader);
+        glAttachShader(shaderProgram, fragmentShader);
+      }
       glLinkProgram(shaderProgram);
     }
 
     ~Shader()
-    { 
-      glDeleteProgram(shaderProgram);
+    {
+      // First detach the shaders
+      glDetachShader(shaderProgram, vertexShader);
+      glDetachShader(shaderProgram, fragmentShader);
+      // Now the shaders can be deleted
       glDeleteShader(vertexShader);
       glDeleteShader(fragmentShader);
+      // Finally the program can be deleted
+      glDeleteProgram(shaderProgram);
     }
 
     GLuint shaderProgram, vertexShader, fragmentShader;
@@ -175,51 +184,45 @@ namespace Avogadro
   void ShaderExtension::loadShaders()
   {
     // Now for the system wide shaders
-    QDir verts, frags;
+    QDir verts;
     QString systemShadersPath = QString(INSTALL_PREFIX) + '/'
       + "share/libavogadro/shaders";
     verts.cd(systemShadersPath);
-    frags.cd(systemShadersPath);
 
     QStringList filters;
     filters << "*.vert";
     verts.setNameFilters(filters);
     verts.setFilter(QDir::Files | QDir::Readable);
-    foreach(const QString& file, verts.entryList()) {
-      qDebug() << file;
-    }
-    filters.clear();
-    filters << "*.frag";
-    frags.setNameFilters(filters);
-    frags.setFilter(QDir::Files | QDir::Readable);
-    foreach(const QString& file, frags.entryList()) {
-      qDebug() << file;
-    }
 
-    if (frags.entryList().size() == verts.entryList().size()) {
-      for (int i = 0; i < verts.entryList().size(); ++i) {
-        QFile vertFile(verts.filePath(verts.entryList().at(i)));
-        if (!vertFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-          qDebug() << "Error opening vert file:"
-                   << QFileInfo(verts.entryList().at(i)).baseName();
-          qDebug() << "Error:" << vertFile.error();
-          continue;
-        }
-        QFile fragFile(frags.filePath(frags.entryList().at(i)));
+    for (int i = 0; i < verts.entryList().size(); ++i) {
+      Shader *shader = 0;
+      QFileInfo info(verts.filePath(verts.entryList().at(i)));
+      QFile vertFile(info.absoluteFilePath());
+      if (!vertFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Error opening vert file:" << info.absoluteFilePath();
+        continue;
+      }
+      QByteArray vertSource = vertFile.readAll();
+      vertFile.close();
+      // Is there a corresponding fragment file?
+      if (verts.exists(info.baseName() + ".frag")) {
+        QFile fragFile(info.canonicalPath() + "/" + info.baseName() + ".frag");
         if (!fragFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-          qDebug() << "Error opening frag file...";
+          qDebug() << "Error opening frag file..."
+                   << info.canonicalPath() + "/" + info.baseName() + ".frag";
           continue;
         }
-        QByteArray vertSource = vertFile.readAll();
         QByteArray fragSource = fragFile.readAll();
         vertFile.close();
-        vertFile.close();
-        qDebug() << "Shader loaded:" << QFileInfo(verts.entryList().at(i)).baseName();
-//                 << "\n" << vertSource << "\n" << fragSource << "\n";
-        Shader *shader = new Shader(vertSource, fragSource);
-        shader->name = QFileInfo(verts.entryList().at(i)).baseName();
-        m_shaders.push_back(shader);
+        shader = new Shader(&vertSource, &fragSource);
       }
+      else {
+        shader = new Shader(&vertSource, 0);
+      }
+      qDebug() << "Shader loaded:" << info.baseName();
+
+      shader->name = info.baseName();
+      m_shaders.push_back(shader);
     }
   }
 
