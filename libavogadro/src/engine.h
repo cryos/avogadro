@@ -28,7 +28,7 @@
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
 #else
-  #include <avogadro/glwidget>
+  #include <QGLWidget>
 #endif
 
 #include <avogadro/global.h>
