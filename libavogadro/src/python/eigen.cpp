@@ -236,12 +236,11 @@ using namespace boost::python;
       if ((array->dimensions[0] != 4) || (array->dimensions[1] != 4))
         throw_error_already_set(); // the 1D array does not have exactly 3 elements
 
+      // I think this is a better way to get at the double array, where is this
+      // deleted though? Does Boost::Python do it?
       double *values = reinterpret_cast<double*>(array->data);
- 
-      void *storage = ((converter::rvalue_from_python_storage<Eigen::Transform3d>*)data)->storage.bytes;
-      new (storage) Eigen::Transform3d();
-      
-      double *dataPtr = reinterpret_cast<double*>(storage);
+      Eigen::Transform3d *storage = new Eigen::Transform3d();
+      double *dataPtr = storage->data();
 
       for (int i = 0; i < 16; ++i)
         dataPtr[i] = values[i];
