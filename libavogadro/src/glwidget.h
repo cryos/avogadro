@@ -565,6 +565,7 @@ namespace Avogadro {
 
 
     protected:
+      friend class GLGraphicsView;
       /**
        * Virtual function called by QGLWidget on initialization of
        * the GL area.
@@ -578,6 +579,17 @@ namespace Avogadro {
       virtual void paintGL();
 
       /**
+       * Virtual function called by GLGraphicsView before render() to set up the
+       * display correctly and leave it in an appropriate state after.
+       */
+      virtual void paintGL2();
+
+      /**
+       * Virtual function called whn the GL area is resized
+       */
+      virtual void resizeGL(int, int);
+
+      /**
        * Virtual function called when the GL area needs repainting.
        */
       virtual void paintEvent(QPaintEvent *event);
@@ -586,11 +598,6 @@ namespace Avogadro {
        * Called on resize of the GLWidget to perform resizing of the display.
        */
       virtual void resizeEvent(QResizeEvent *event);
-
-      /**
-       * Virtual function called whn the GL area is resized
-       */
-      virtual void resizeGL(int, int);
 
       /**
        * Focus Event

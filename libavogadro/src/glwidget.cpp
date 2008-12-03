@@ -508,6 +508,18 @@ namespace Avogadro {
       QMessageBox::critical(0, tr("OpenGL error"), error_msg);
       abort();
     }
+
+    // Try to initialise GLEW if GLSL was enabled, test for OpenGL 2.0 support
+    #ifdef ENABLE_GLSL
+    GLenum err = glewInit();
+    if (err != GLEW_OK)
+      qDebug() << "GLSL support enabled but GLEW could not initialise!";
+    if (GLEW_VERSION_2_0)
+      qDebug() << "GLSL support enabled, OpenGL 2.0 support confirmed.";
+    else
+      qDebug() << "GLSL support disabled, OpenGL 2.0 support not present.";
+    #endif
+
     qglClearColor( d->background );
 
     glShadeModel( GL_SMOOTH );
@@ -544,8 +556,83 @@ namespace Avogadro {
     glLightfv( GL_LIGHT1, GL_POSITION, LIGHT1_POSITION );
     glEnable( GL_LIGHT1 );
 
+    resizeGL(width(), height()); // fix for bug #1797069. don't remove!
+
     qDebug() << "GLWidget initialised...";
   }
+
+  void GLWidget::paintGL()
+  {
+//    resizeGL(width(), height()); // fix for bug #1797069. don't remove!
+    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
+    // setup the OpenGL projection matrix using the camera
+    glMatrixMode( GL_PROJECTION );
+    glLoadIdentity();
+    d->camera->applyPerspective();
+
+    // setup the OpenGL modelview matrix using the camera
+    glMatrixMode( GL_MODELVIEW );
+    glLoadIdentity();
+    d->camera->applyModelview();
+
+    render();
+  }
+
+  void GLWidget::paintGL2()
+  {
+    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
+    // setup the OpenGL projection matrix using the camera
+    glMatrixMode( GL_PROJECTION );
+    glPushMatrix();
+    glLoadIdentity();
+    d->camera->applyPerspective();
+
+    // setup the OpenGL modelview matrix using the camera
+    glMatrixMode( GL_MODELVIEW );
+    glPushMatrix();
+    glLoadIdentity();
+    d->camera->applyModelview();
+
+    glEnable( GL_CULL_FACE );
+    glEnable( GL_LIGHTING );
+    glShadeModel( GL_SMOOTH );
+    glEnable( GL_DEPTH_TEST );
+
+    render();
+
+    // Restore the OpenGL modelview matrix for the GLGraphicsView painter
+    glMatrixMode( GL_MODELVIEW );
+    glPopMatrix();
+    glMatrixMode( GL_PROJECTION );
+    glPopMatrix();
+
+    glDisable( GL_CULL_FACE );
+    glDisable( GL_LIGHTING );
+  }
+
+  void GLWidget::paintEvent( QPaintEvent * )
+  {
+    if(updatesEnabled())
+    {
+#ifdef ENABLE_THREADED_GL
+      // tell our thread to paint
+      d->paintCondition.wakeAll();
+#else
+      makeCurrent();
+      if(!d->initialized) {
+        d->initialized = true;
+        initializeGL();
+      }
+      qglClearColor(d->background);
+      paintGL();
+      swapBuffers();
+#endif
+    }
+  }
+
+
 
   void GLWidget::resizeEvent( QResizeEvent *event )
   {
@@ -562,7 +649,7 @@ namespace Avogadro {
     }
     // GLXWaitX() is called by the TT resizeEvent on Linux... We may need
     // specific functions here - need to look at Mac and Windows code.
-    resizeGL( event->size().width(), event->size().height() );
+    resizeGL(event->size().width(), event->size().height());
 #endif
     emit resized();
   }
@@ -932,6 +1019,9 @@ namespace Avogadro {
     // Turn off dynamic scaling in the painter (cylinders don't render correctly)
     d->painter->setDynamicScaling(false);
 
+    // Circle next to the axes
+    painter()->setColor(1.0, 0.0, 0.0);
+    painter()->drawSphere(&origin, 0.005);
     // x axis
     painter()->setColor(1.0, 0.0, 0.0);
     painter()->drawCylinder(origin, aXa, 0.005);
@@ -975,45 +1065,6 @@ namespace Avogadro {
 
     list = primitives().subList(Primitive::BondType);
     y += d->pd->painter()->drawText(x, y, tr("Bonds") + ": " + QString::number(list.size()));
-  }
-
-  void GLWidget::paintGL()
-  {
-    resizeGL(width(), height()); // fix for bug #1797069. don't remove!
-
-    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
-    // setup the OpenGL projection matrix using the camera
-    glMatrixMode( GL_PROJECTION );
-    glLoadIdentity();
-    d->camera->applyPerspective();
-
-    // setup the OpenGL modelview matrix using the camera
-    glMatrixMode( GL_MODELVIEW );
-    glLoadIdentity();
-    d->camera->applyModelview();
-
-    render();
-  }
-
-  void GLWidget::paintEvent( QPaintEvent * )
-  {
-    if(updatesEnabled())
-    {
-#ifdef ENABLE_THREADED_GL
-      // tell our thread to paint
-      d->paintCondition.wakeAll();
-#else
-      makeCurrent();
-      if(!d->initialized) {
-        d->initialized = true;
-        initializeGL();
-      }
-      qglClearColor(d->background);
-      paintGL();
-      swapBuffers();
-#endif
-    }
   }
 
   bool GLWidget::event( QEvent *event )
