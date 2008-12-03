@@ -5,7 +5,7 @@
 
 #include <Eigen/Geometry>
 
-#include <iostream>
+//#include <iostream>
 
 using namespace boost::python;
 
@@ -116,13 +116,12 @@ using namespace boost::python;
       //  
       //  void function(const Vector3x * vec)
       converter::registry::insert( &convert, type_id<Vector3x>() );
- 
     }
 
     static void* convert(PyObject *obj_ptr)
     {
-      if (!PyArray_Check(obj_ptr))
-        return 0;
+      //if (!PyArray_Check(obj_ptr))
+      //  throw_error_already_set();
 
       PyArrayObject *array = reinterpret_cast<PyArrayObject*>(obj_ptr);
 
@@ -141,11 +140,8 @@ using namespace boost::python;
  
     static void* convertible(PyObject *obj_ptr)
     {
-      std::cout << "convertible()" << std::endl;
       if (!PyArray_Check(obj_ptr))
         return 0;
-      
-      std::cout << "convertible ( YES )" << std::endl;
       
       return obj_ptr;
     }
