@@ -119,7 +119,7 @@ namespace Avogadro {
 
     foreach(const Primitive *p, list) {
       const Atom *a = static_cast<const Atom *>(p);
-      dist = *a->pos() - pos;
+      dist = a->pos()->cast<float>() - pos;
       energy += a->partialCharge() / dist.norm2();
     }
 
