@@ -119,6 +119,8 @@ if(ENABLE_PYTHON MATCHES ON)
   endif(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
 
   find_package(PythonLibs)
+  find_package(PythonInterp)
+  find_package(Numpy)
 else(ENABLE_PYTHON MATCHES ON)
   message(STATUS "Python support disabled.")
 endif(ENABLE_PYTHON MATCHES ON)
