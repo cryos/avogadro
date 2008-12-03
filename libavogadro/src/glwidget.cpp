@@ -556,14 +556,12 @@ namespace Avogadro {
     glLightfv( GL_LIGHT1, GL_POSITION, LIGHT1_POSITION );
     glEnable( GL_LIGHT1 );
 
-    resizeGL(width(), height()); // fix for bug #1797069. don't remove!
-
     qDebug() << "GLWidget initialised...";
   }
 
   void GLWidget::paintGL()
   {
-//    resizeGL(width(), height()); // fix for bug #1797069. don't remove!
+    resizeGL(width(), height()); // fix for bug #1797069. don't remove!
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
     // setup the OpenGL projection matrix using the camera
