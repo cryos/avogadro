@@ -29,4 +29,5 @@ target_link_libraries(moleculetest
   ${QT_LIBRARIES}
   ${QT_QTTEST_LIBRARY}
   avogadro-lib)
-add_test(MoleculeTest ${EXECUTABLE_OUTPUT_PATH}/moleculetest)
+#add_test(MoleculeTest ${EXECUTABLE_OUTPUT_PATH}/moleculetest)
+add_test(MoleculeTest moleculetest)
