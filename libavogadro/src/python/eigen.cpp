@@ -181,20 +181,57 @@ using namespace boost::python;
       //
       static PyObject* convert(Eigen::Transform3d const &trans)
       {
-        return incref(numeric::array(
-              make_tuple(
-                make_tuple(trans(0,0), trans(1,0), trans(2,0), trans(3,0)),
-                make_tuple(trans(0,1), trans(1,1), trans(2,1), trans(3,1)),
-                make_tuple(trans(0,2), trans(1,2), trans(2,2), trans(3,2)),
-                make_tuple(trans(0,3), trans(1,3), trans(2,3), trans(3,3))
-              )
-            ).ptr());
+        int dims[2] = { 4, 4 };
+        PyObject *result = PyArray_FromDims(2, dims, PyArray_DOUBLE);
+        
+        // copy the data
+        double *data = (double*) reinterpret_cast<PyArrayObject*>(result)->data;
+        double *dataPtr = trans.matrix().data();
+        for (int i = 0; i < 16; ++i)
+          data[i] = dataPtr[i];
+ 
+        return incref(result);
       }
+      //
+      //  Eigen::Transform3d* --> python array (4x4)
+      //
+      static PyObject* convert(Eigen::Transform3d *trans)
+      {
+        int dims[2] = { 4, 4 };
+        PyObject *result = PyArray_FromDims(2, dims, PyArray_DOUBLE);
+        
+        // copy the data
+        double *data = (double*) reinterpret_cast<PyArrayObject*>(result)->data;
+        double *dataPtr = trans->matrix().data();
+        for (int i = 0; i < 16; ++i)
+          data[i] = dataPtr[i];
+ 
+        return incref(result);
+      }
+      //
+      //  const Eigen::Transform3d* --> python array (4x4)
+      //
+      static PyObject* convert(const Eigen::Transform3d *trans)
+      {
+        int dims[2] = { 4, 4 };
+        PyObject *result = PyArray_FromDims(2, dims, PyArray_DOUBLE);
+        
+        // copy the data
+        double *data = (double*) reinterpret_cast<PyArrayObject*>(result)->data;
+        double *dataPtr = trans->matrix().data();
+        for (int i = 0; i < 16; ++i)
+          data[i] = dataPtr[i];
+ 
+        return incref(result);
+      }
+ 
     };
    
     Transform3d_to_python_array()
     {
       to_python_converter<Eigen::Transform3d, innerclass>();
+      to_python_converter<Eigen::Transform3d*, innerclass>();
+      to_python_converter<const Eigen::Transform3d*, innerclass>();
     }
 
   };
@@ -215,8 +252,34 @@ using namespace boost::python;
       //  void function(const Eigen::Transform3d & vec)
       //
       converter::registry::push_back( &convertible, &construct, type_id<Eigen::Transform3d>() );
+      
+      converter::registry::insert( &convert, type_id<Eigen::Transform3d>() );
     }
 
+    static void* convert(PyObject *obj_ptr)
+    {
+      //if (!PyArray_Check(obj_ptr))
+      //  throw_error_already_set();
+
+      PyArrayObject *array = reinterpret_cast<PyArrayObject*>(obj_ptr);
+
+      // check the dimensions
+      if (array->nd != 2)
+        throw_error_already_set(); // the array has at least two dimensions (matrix)
+      
+      if ((array->dimensions[0] != 4) || (array->dimensions[1] != 4))
+        throw_error_already_set(); // the 1D array does not have exactly 3 elements
+
+      double *values = reinterpret_cast<double*>(array->data);
+      Eigen::Transform3d *c_obj = new Eigen::Transform3d();
+      double *dataPtr = c_obj->data();
+
+      for (int i = 0; i < 16; ++i)
+        dataPtr[i] = values[i];
+
+      return c_obj;
+    }
+ 
     static void* convertible(PyObject *obj_ptr)
     {
       if (!PyArray_Check(obj_ptr))
@@ -249,10 +312,75 @@ using namespace boost::python;
     }
   };
 
+/* 
+ * used for unittest to test all get/set options with Eigen classes
+ */
+class EigenUnitTestHelper
+{
+  public:
+    EigenUnitTestHelper() : m_vector3d(Eigen::Vector3d(1., 2., 3.))
+    {
+    }
+    Eigen::Vector3d             vector3d()              { return m_vector3d; }
+    Eigen::Vector3d&            vector3d_ref()          { return m_vector3d; }
+    const Eigen::Vector3d&      const_vector3d_ref()    { return m_vector3d; }
+    Eigen::Vector3d*            vector3d_ptr()          { return &m_vector3d; }
+    const Eigen::Vector3d*      const_vector3d_ptr()    { return &m_vector3d; }
+
+    void set_vector3d(Eigen::Vector3d vec)                      { m_vector3d = vec; }
+    void set_vector3d_ref(Eigen::Vector3d& vec)                 { m_vector3d = vec; }
+    void set_const_vector3d_ref(const Eigen::Vector3d& vec)     { m_vector3d = vec; }
+    void set_vector3d_ptr(Eigen::Vector3d* vec)                 { m_vector3d = *vec; }
+    void set_const_vector3d_ptr(const Eigen::Vector3d* const vec) { m_vector3d = *vec; }
+
+    Eigen::Transform3d             transform3d()              { return m_transform3d; }
+    Eigen::Transform3d&            transform3d_ref()          { return m_transform3d; }
+    const Eigen::Transform3d&      const_transform3d_ref()    { return m_transform3d; }
+    Eigen::Transform3d*            transform3d_ptr()          { return &m_transform3d; }
+    const Eigen::Transform3d*      const_transform3d_ptr()    { return &m_transform3d; }
+
+    void set_transform3d(Eigen::Transform3d vec)                      { m_transform3d = vec; }
+    void set_transform3d_ref(Eigen::Transform3d& vec)                 { m_transform3d = vec; }
+    void set_const_transform3d_ref(const Eigen::Transform3d& vec)     { m_transform3d = vec; }
+    void set_transform3d_ptr(Eigen::Transform3d* vec)                 { m_transform3d = *vec; }
+    void set_const_transform3d_ptr(const Eigen::Transform3d* const vec) { m_transform3d = *vec; }
+ 
+  private:
+    Eigen::Vector3d m_vector3d;
+    Eigen::Transform3d m_transform3d;
+
+};
 
 void export_Eigen()
 {
   import_array(); // needed for NumPy 
+
+  class_<EigenUnitTestHelper>("EigenUnitTestHelper")
+   .def("vector3d", &EigenUnitTestHelper::vector3d)
+   .def("vector3d_ref", &EigenUnitTestHelper::vector3d_ref, return_value_policy<return_by_value>())
+   .def("const_vector3d_ref", &EigenUnitTestHelper::const_vector3d_ref, return_value_policy<return_by_value>())
+   .def("vector3d_ptr", &EigenUnitTestHelper::vector3d_ptr, return_value_policy<return_by_value>())
+   .def("const_vector3d_ptr", &EigenUnitTestHelper::const_vector3d_ptr, return_value_policy<return_by_value>())
+
+   .def("set_vector3d", &EigenUnitTestHelper::set_vector3d)
+   .def("set_vector3d_ref", &EigenUnitTestHelper::set_vector3d_ref)
+   .def("set_const_vector3d_ref", &EigenUnitTestHelper::set_const_vector3d_ref)
+   .def("set_vector3d_ptr", &EigenUnitTestHelper::set_vector3d_ptr)
+   .def("set_const_vector3d_ptr", &EigenUnitTestHelper::set_const_vector3d_ptr)
+ 
+   .def("transform3d", &EigenUnitTestHelper::transform3d)
+   .def("transform3d_ref", &EigenUnitTestHelper::transform3d_ref, return_value_policy<return_by_value>())
+   .def("const_transform3d_ref", &EigenUnitTestHelper::const_transform3d_ref, return_value_policy<return_by_value>())
+   .def("transform3d_ptr", &EigenUnitTestHelper::transform3d_ptr, return_value_policy<return_by_value>())
+   .def("const_transform3d_ptr", &EigenUnitTestHelper::const_transform3d_ptr, return_value_policy<return_by_value>())
+
+   .def("set_transform3d", &EigenUnitTestHelper::set_transform3d)
+   .def("set_transform3d_ref", &EigenUnitTestHelper::set_transform3d_ref)
+   .def("set_const_transform3d_ref", &EigenUnitTestHelper::set_const_transform3d_ref)
+   .def("set_transform3d_ptr", &EigenUnitTestHelper::set_transform3d_ptr)
+   .def("set_const_transform3d_ptr", &EigenUnitTestHelper::set_const_transform3d_ptr)
+ 
+   ; 
   
   // Eigen::Vector3d
   Vector3x_to_python_array<Eigen::Vector3d>();

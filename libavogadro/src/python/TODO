@@ -16,14 +16,14 @@ plugin.cpp              done
 color.cpp               done
 engine.cpp              done (don't wrap renderOpaque, ...)
 tool.cpp                done (don't wrap mousePress, wheel, ...)
-mesh.h                  need std::vector
+mesh.cpp                need std::vector
+primitivelist.cpp       done
+toolgroup.cpp           done
+pluginmanager.cpp       done (need testing...)
 
 # next
-toolgroup.h
 line.h
 point.h
-pluginmanager.h
-primitivelist.h
 
 # later...
 elementtranslate.h
