@@ -423,11 +423,13 @@ namespace Avogadro{
       m_lock->unlock();
 
       // Also delete the bond from the attached atoms
-      if (d->atoms[bond->beginAtomId()]) {
-        d->atoms[bond->beginAtomId()]->deleteBond(id);
+      if (d->atoms.size() > bond->beginAtomId()) {
+        if (d->atoms[bond->beginAtomId()])
+          d->atoms[bond->beginAtomId()]->deleteBond(id);
       }
-      if (d->atoms[bond->endAtomId()]) {
-        d->atoms[bond->endAtomId()]->deleteBond(id);
+      if (d->atoms.size() > bond->endAtomId()) {
+        if (d->atoms[bond->endAtomId()])
+          d->atoms[bond->endAtomId()]->deleteBond(id);
       }
 
       disconnect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
