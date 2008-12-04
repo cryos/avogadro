@@ -1,10 +1,10 @@
 atom.cpp                done + unittest (Atom::valence not working)
 bond.cpp                done + unittest (Bond::otherAtom not working)
-molecule.cpp            done + 
+molecule.cpp            done + unittest 
+fragment.cpp            done + unittest
 camera.cpp              done
 cube.cpp                done
 eigen.cpp               done
-fragment.cpp            done
 glwidget.cpp
 primitive.cpp           done
 qlist.cpp               done

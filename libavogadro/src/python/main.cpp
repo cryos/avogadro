@@ -33,11 +33,11 @@ BOOST_PYTHON_MODULE(Avogadro) {
   export_QList();
 
   export_Primitive();
+  export_Molecule();
   export_Atom();
   export_Bond();
   export_Fragment();
   export_Residue();
-  export_Molecule();
   export_Cube();
   export_Camera();
   export_GLWidget();

@@ -15,8 +15,8 @@ void export_Fragment()
     // read/write properties
     .add_property("name", &Fragment::name, &Fragment::setName)
     // read-only properties
-    .def("atoms", &Fragment::atoms)
-    .def("bonds", &Fragment::bonds)
+    .add_property("atoms", &Fragment::atoms)
+    .add_property("bonds", &Fragment::bonds)
     // real functions
     .def("addAtom", &Fragment::addAtom)
     .def("removeAtom", &Fragment::removeAtom)
