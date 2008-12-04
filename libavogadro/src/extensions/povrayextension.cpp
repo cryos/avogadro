@@ -111,8 +111,11 @@ namespace Avogadro
       m_POVRayDialog->readSettings(settings);
       connect(m_POVRayDialog, SIGNAL(render()),
               this, SLOT(render()));
-      connect(m_glwidget, SIGNAL(resized()),
-              m_POVRayDialog, SLOT(resized()));
+      // This is connecting a NULL on my Mac - Geoff
+      // QObject::connect: Cannot connect (null)::resized() to Avogadro::POVRayDialog::resized()
+      if (m_glwidget)
+        connect(m_glwidget, SIGNAL(resized()),
+                m_POVRayDialog, SLOT(resized()));
     }
   }
 
