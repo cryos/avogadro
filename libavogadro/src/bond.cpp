@@ -94,6 +94,12 @@
     }
   }
 
+  double Bond::length() const
+  {
+    return (*m_molecule->atomById(m_endAtomId)->pos()
+            - *m_molecule->atomById(m_beginAtomId)->pos()).norm();
+  }
+
   bool Bond::setOBBond(OpenBabel::OBBond *obbond)
   {
     m_order = obbond->GetBondOrder();

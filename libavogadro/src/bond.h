@@ -109,9 +109,8 @@ namespace Avogadro {
 
       /**
        * @return the length of the bond.
-       * FIXME Not yet implemented - is it used anywhere?
        */
-      inline double length() const { return 0.0; }
+      double length() const;
 
       /**
        * Copy an OpenBabel::OBBond's data to create a similar bond.
