@@ -237,7 +237,7 @@ namespace Avogadro
     d->toolGroup = new ToolGroup( this );
     d->toolGroup->append(PluginManager::instance()->tools());
 
-    ui.menuDocks->addAction( ui.toolsDock->toggleViewAction() );
+    ui.menuToolbars->addAction( ui.toolsDock->toggleViewAction() );
 
     d->enginesStacked = new QStackedLayout( ui.enginesWidget );
 //    d->engineConfigurationStacked = new QStackedLayout( ui.engineConfigurationWidget );
@@ -278,10 +278,10 @@ namespace Avogadro
       ui.menuEdit->addAction( redoAction );
     }
 
-    ui.menuDocks->addAction( ui.projectDock->toggleViewAction() );
-    ui.menuDocks->addAction( ui.enginesDock->toggleViewAction() );
-//    ui.menuDocks->addAction( ui.engineConfigurationDock->toggleViewAction() );
-//    ui.menuDocks->addAction( ui.enginePrimitivesDock->toggleViewAction() );
+    ui.menuToolbars->addAction( ui.projectDock->toggleViewAction() );
+    ui.menuToolbars->addAction( ui.enginesDock->toggleViewAction() );
+//    ui.menuToolbars->addAction( ui.engineConfigurationDock->toggleViewAction() );
+//    ui.menuToolbars->addAction( ui.enginePrimitivesDock->toggleViewAction() );
     ui.menuToolbars->addAction( ui.fileToolBar->toggleViewAction() );
 
     // Disable the "Revert" and "Save" actions -- we haven't modified anything
@@ -472,7 +472,7 @@ namespace Avogadro
 
       // add blank widget for those tools with no settings widget
       d->toolSettingsStacked->addWidget( new QWidget );
-      ui.menuDocks->addAction( d->toolSettingsDock->toggleViewAction() );
+      ui.menuToolbars->addAction( d->toolSettingsDock->toggleViewAction() );
 
       tabifyDockWidget(ui.toolsDock, d->toolSettingsDock);
       ui.toolsDock->raise();
@@ -2038,7 +2038,7 @@ namespace Avogadro
       if(dockWidget)
       {
         addDockWidget(Qt::RightDockWidgetArea, dockWidget);
-        ui.menuDocks->addAction(dockWidget->toggleViewAction());
+        ui.menuToolbars->addAction(dockWidget->toggleViewAction());
       }
 
       connect(this, SIGNAL( moleculeChanged(Molecule*)),
