@@ -11,6 +11,10 @@ class TestBond(unittest.TestCase):
     for x in range(7):
       self.molecule.newBond()
 
+  def test_type(self):
+    bond = self.molecule.newBond()
+    self.assertEqual(bond.type, Avogadro.PrimitiveType.BondType)
+
   # also tests bond.beginAtomId
   def test_setBegin(self):
     atom = self.molecule.newAtom()
@@ -51,7 +55,24 @@ class TestBond(unittest.TestCase):
     bond.setAtoms(beginAtom.id, endAtom.id, 2)
     # check if setAtoms added the bond to the atoms
     #self.assertEqual(bond.otherAtom(beginAtom.id), endAtom.id)
-    bond.otherAtom(bond, 0)
+    bond.otherAtom(beginAtom.id) # why doesn't this work??
+
+  def test_order(self):
+    bond = self.molecule.newBond()
+    bond.order = 2
+    self.assertEqual(bond.order, 2)
+
+  def test_length(self):
+    beginAtom = self.molecule.newAtom()
+    endAtom = self.molecule.newAtom()
+    bond = self.molecule.newBond()
+
+    #translate one atom
+    endAtom.pos = array([1.5, 0., 0.])
+    bond.setAtoms(beginAtom.id, endAtom.id, 1)
+    self.assertEqual(bond.length, 1.5)
+
+
 
 
 

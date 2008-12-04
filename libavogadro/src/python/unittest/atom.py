@@ -6,6 +6,10 @@ class TestAtom(unittest.TestCase):
   def setUp(self):
     self.molecule = Avogadro.Molecule()
 
+  def test_type(self):
+    atom = self.molecule.newAtom()
+    self.assertEqual(atom.type, Avogadro.PrimitiveType.AtomType)
+
   def test_pos(self):
     atom = self.molecule.newAtom()
     atom.pos
