@@ -69,6 +69,7 @@ namespace Avogadro {
       QList<QAction *> m_actions;
       QList<PythonScript> m_scripts;
 
+      Molecule *m_molecule;
       QDockWidget *m_terminalDock;
       PythonTerminalWidget *m_terminalWidget;
 

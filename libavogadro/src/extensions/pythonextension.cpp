@@ -22,6 +22,8 @@
 #include "pythonextension.h"
 #include "../config.h"
 
+#include <avogadro/molecule.h>
+
 #include <QDockWidget>
 #include <QCompleter>
 
@@ -39,7 +41,7 @@ namespace Avogadro
     ScriptIndex = 0
   };
 
-  PythonExtension::PythonExtension( QObject *parent ) : Extension( parent ), m_terminalDock(0)
+  PythonExtension::PythonExtension( QObject *parent ) : Extension( parent ), m_molecule(0), m_terminalDock(0)
   {
     // create this directory for the user if it does not exist
     QDir pluginDir = QDir::home();
@@ -146,6 +148,7 @@ namespace Avogadro
 
   void PythonExtension::setMolecule(Molecule *molecule)
   {
+    m_molecule = molecule;
     m_interpreter.setMolecule(molecule);
   }
 
@@ -160,6 +163,8 @@ namespace Avogadro
         m_terminalWidget->ui.outputText->append(result);
       }
       m_terminalWidget->inputLine->clear();
+      // Always update the molecule when running commands from the terminal widget
+      m_molecule->update();
     }
   }
 
