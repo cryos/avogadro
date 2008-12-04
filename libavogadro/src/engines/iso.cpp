@@ -545,6 +545,7 @@ namespace Avogadro
       return;
 
     // Clear vertex/normal-lists
+    m_mesh.setStable(false);
     m_mesh.clear();
 
     // Interpolate if m_interpolate is true, otherwise use the faster access
@@ -581,9 +582,10 @@ namespace Avogadro
     }
 
     // Save previous vertex/normal-lists for rendering
-    m_meshCopy = m_mesh;
-
+//    m_meshCopy = m_mesh;
+    m_mesh.setStable(true);
     m_mutex.unlock();
+    m_mesh.update();
     qDebug() << "end run()";
   }
 

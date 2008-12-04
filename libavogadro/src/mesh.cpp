@@ -31,12 +31,36 @@
 namespace Avogadro {
 
   Mesh::Mesh(QObject *parent) : Primitive(MeshType, parent), m_vertices(0),
-    m_normals(0), m_colors(0)
+    m_normals(0), m_colors(0), m_stable(true)
   {
+    m_vertices.reserve(100);
+    m_normals.reserve(100);
+    m_colors.reserve(1);
   }
 
   Mesh::~Mesh()
   {
+  }
+
+  bool Mesh::reserve(unsigned int size, bool colors)
+  {
+    QWriteLocker lock(m_lock);
+    m_vertices.reserve(size);
+    m_normals.reserve(size);
+    if (colors) m_colors.reserve(size);
+    return true;
+  }
+
+  void Mesh::setStable(bool stable)
+  {
+    QWriteLocker lock(m_lock);
+    m_stable = stable;
+  }
+
+  bool Mesh::stable()
+  {
+    QReadLocker lock(m_lock);
+    return m_stable;
   }
 
   const std::vector<Eigen::Vector3f> & Mesh::vertices() const
@@ -62,6 +86,9 @@ namespace Avogadro {
   bool Mesh::addVertices(const std::vector<Eigen::Vector3f> &values)
   {
     QWriteLocker lock(m_lock);
+    if (m_vertices.capacity() < m_vertices.size() + values.size()) {
+      m_vertices.reserve(m_vertices.capacity()*2);
+    }
     if (values.size() % 3 == 0) {
       for (unsigned int i = 0; i < values.size(); ++i) {
         m_vertices.push_back(values.at(i));
@@ -97,6 +124,9 @@ namespace Avogadro {
   bool Mesh::addNormals(const std::vector<Eigen::Vector3f> &values)
   {
     QWriteLocker lock(m_lock);
+    if (m_normals.capacity() < m_normals.size() + values.size()) {
+      m_normals.reserve(m_normals.capacity()*2);
+    }
     if (values.size() % 3 == 0) {
       for (unsigned int i = 0; i < values.size(); ++i) {
         m_normals.push_back(values.at(i));
@@ -138,6 +168,9 @@ namespace Avogadro {
   bool Mesh::addColors(const std::vector<QColor> &values)
   {
     QWriteLocker lock(m_lock);
+    if (m_colors.capacity() < m_colors.size() + values.size()) {
+      m_colors.reserve(m_colors.capacity()*2);
+    }
     if (values.size() % 3 == 0) {
       for (unsigned int i = 0; i < values.size(); ++i) {
         m_colors.push_back(values.at(i));

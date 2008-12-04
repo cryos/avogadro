@@ -46,6 +46,30 @@ namespace Avogadro {
     ~Mesh();
 
     /**
+     * Reserve the expected space for the mesh. This causes all member vector
+     * storage to call the reserve function with the number specified.
+     * @param size Expected size of the mesh.
+     * @param colors Should the colors vector reserve this space too? Defaults
+     * to false.
+     * @return True on success.
+     */
+    bool reserve(unsigned int size, bool colors = false);
+
+    /**
+     * This function allows long running calculations to mark the mesh as in
+     * progress.
+     * @param stable Indicate that the Mesh is currently being modified.
+     */
+    void setStable(bool stable);
+
+    /**
+     * Indicate whether the Mesh is complete or currently being modified. In
+     * general using Mesh values from an unstable Mesh is not advisable.
+     * @return True if the Mesh is complete, false if it is being modified.
+     */
+    bool stable();
+
+    /**
      * @return Vector containing all of the vertices in a one dimensional array.
      */
     const std::vector<Eigen::Vector3f> & vertices() const;
@@ -131,6 +155,7 @@ namespace Avogadro {
     std::vector<Eigen::Vector3f> m_normals;
     std::vector<QColor> m_colors;
     QString m_name;
+    bool m_stable;
     Q_DECLARE_PRIVATE(Mesh)
   };
 } // End namespace Avogadro

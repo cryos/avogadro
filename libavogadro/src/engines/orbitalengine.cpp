@@ -89,11 +89,15 @@ namespace Avogadro {
       if (m_update)
         updateSurfaces(pd);
 
-      pd->painter()->setColor(&m_posColor);
-      pd->painter()->drawMesh(m_isoGen->mesh(), m_renderMode);
+      if (m_isoGen->mesh().stable()) {
+        pd->painter()->setColor(&m_posColor);
+        pd->painter()->drawMesh(m_isoGen->mesh(), m_renderMode);
+      }
 
-      pd->painter()->setColor(&m_negColor);
-      pd->painter()->drawMesh(m_isoGen2->mesh(), m_renderMode, false);
+      if (m_isoGen2->mesh().stable()) {
+        pd->painter()->setColor(&m_negColor);
+        pd->painter()->drawMesh(m_isoGen2->mesh(), m_renderMode, false);
+      }
 
       renderSurfaces(pd);
     }
@@ -114,11 +118,15 @@ namespace Avogadro {
         glDepthMask(GL_TRUE);
       }
 
-      pd->painter()->setColor(&m_posColor);
-      pd->painter()->drawMesh(m_isoGen->mesh(), m_renderMode);
+      if (m_isoGen->mesh().stable()) {
+        pd->painter()->setColor(&m_posColor);
+        pd->painter()->drawMesh(m_isoGen->mesh(), m_renderMode);
+      }
 
-      pd->painter()->setColor(&m_negColor);
-      pd->painter()->drawMesh(m_isoGen2->mesh(), m_renderMode, false);
+      if (m_isoGen2->mesh().stable()) {
+        pd->painter()->setColor(&m_negColor);
+        pd->painter()->drawMesh(m_isoGen2->mesh(), m_renderMode, false);
+      }
 
       renderSurfaces(pd);
 
@@ -135,19 +143,21 @@ namespace Avogadro {
     if (m_update)
       updateSurfaces(pd);
 
-    if (m_renderMode < 2) {
-      pd->painter()->setColor(&m_posColor);
-      pd->painter()->drawMesh(m_isoGen->mesh(), 1);
-      pd->painter()->setColor(&m_negColor);
-      pd->painter()->drawMesh(m_isoGen2->mesh(), 1, false);
+    if (m_isoGen->mesh().stable() && m_isoGen2->mesh().stable()) {
+      if (m_renderMode < 2) {
+        pd->painter()->setColor(&m_posColor);
+        pd->painter()->drawMesh(m_isoGen->mesh(), 1);
+        pd->painter()->setColor(&m_negColor);
+        pd->painter()->drawMesh(m_isoGen2->mesh(), 1, false);
+      }
+      else {
+        pd->painter()->setColor(&m_posColor);
+        pd->painter()->drawMesh(m_isoGen->mesh(), 2);
+        pd->painter()->setColor(&m_negColor);
+        pd->painter()->drawMesh(m_isoGen2->mesh(), 2, false);
+      }
+      renderSurfaces(pd);
     }
-    else {
-      pd->painter()->setColor(&m_posColor);
-      pd->painter()->drawMesh(m_isoGen->mesh(), 2);
-      pd->painter()->setColor(&m_negColor);
-      pd->painter()->drawMesh(m_isoGen2->mesh(), 2, false);
-    }
-    renderSurfaces(pd);
 
     return true;
   }
