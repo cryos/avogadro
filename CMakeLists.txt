@@ -99,7 +99,7 @@ find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Linguist REQUIRED) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
-find_package(libxml2 REQUIRED) # find and setup libxml2
+find_package(LibXml2 REQUIRED) # find and setup libxml2
 include_directories(${EIGEN2_INCLUDE_DIR})
 
 option(ENABLE_PYTHON "Enable python support" ON)

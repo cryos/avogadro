@@ -88,8 +88,6 @@ else(BOOST_PYTHON_FOUND)
   endif(Boost_PYTHON_FOUND)
 endif(BOOST_PYTHON_FOUND)
 
-message(STATUS "AVO_LINK_LIBS: ${AVO_LINK_LIBRARIES}")
-
 target_link_libraries(avogadro-lib ${AVO_LINK_LIBRARIES})
 
 install(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
