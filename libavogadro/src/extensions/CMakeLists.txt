@@ -208,7 +208,8 @@ if(GLEW_FOUND)
   install(TARGETS shaderextension DESTINATION ${DESTINATION_DIR})
   file(GLOB shader_VERT "shaders/*.vert")
   file(GLOB shader_FRAG "shaders/*.frag")
-  install(FILES ${shader_VERT} ${shader_FRAG} 
+  file(GLOB shader_PARAMS "shaders/*.params")
+  install(FILES ${shader_VERT} ${shader_FRAG} ${shader_PARAMS}
           DESTINATION share/libavogadro/shaders)
 endif(GLEW_FOUND)
 

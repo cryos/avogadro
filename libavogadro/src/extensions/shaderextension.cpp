@@ -78,11 +78,57 @@ namespace Avogadro
       glDeleteProgram(shaderProgram);
     }
 
+    bool loadParameters(QByteArray* params)
+    {
+      // It appears you need to be using the shader to assign values to it
+      glUseProgram(shaderProgram);
+      QList<QByteArray> lines = params->split('\n');
+      foreach(QByteArray line, lines) {
+        QList<QByteArray> halves = line.split('\t');
+        QList<QByteArray> tokens = halves.at(0).split(' ');
+        if (tokens.size() != 2) {
+          qDebug() << "Line not correctly space delimited:" << line;
+          continue;
+        }
+        if (halves.size() != 2) {
+          qDebug() << "Line not correctly tab delimited:" << line;
+          continue;
+        }
+        // Retrieve the position of the variable
+        const char *name = tokens.at(1).data();
+        GLint pos = glGetUniformLocation(shaderProgram, name);
+        if (pos < 0) {
+          qDebug() << "Error, variable" << tokens.at(1) << "not found.";
+          qDebug() << line;
+          qDebug() << "Position:" << pos;
+          continue;
+        }
+        if (tokens.at(0) == "float") {
+          qDebug() << pos << "float line processed:" << line;
+          glUniform1f(pos, halves.at(1).toFloat());
+        }
+        else if (tokens.at(0) == "vec3") {
+          QList<QByteArray> numbers = halves.at(1).split(' ');
+          if (numbers.size() != 3) {
+            qDebug() << "Numbers not space delimited/wrong number, size:"
+                     << numbers.size() << "token:" << halves.at(1);
+            qDebug() << "Line:" << line;
+          }
+          else {
+            qDebug() << pos << "vec3 line processed:" << line;
+            glUniform3f(pos, numbers.at(0).toFloat(),
+                             numbers.at(1).toFloat(),
+                             numbers.at(2).toFloat());
+          }
+        }
+      }
+      glUseProgram(0);
+      return true;
+    }
+
     GLuint shaderProgram, vertexShader, fragmentShader;
     QString name, description;
   };
-
-  using Eigen::Vector3d;
 
   ShaderExtension::ShaderExtension(QObject* parent) : Extension(parent),
     m_glwidget(0), m_molecule(0), m_shaderDialog(0)
@@ -223,6 +269,21 @@ namespace Avogadro
 
       shader->name = info.baseName();
       m_shaders.push_back(shader);
+
+      // Now let us see if there are any parameter files that need loading...
+      if (verts.exists(info.baseName() + ".params")) {
+        QFile paramsFile(info.canonicalPath() + "/" + info.baseName() + ".params");
+        if (!paramsFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+          qDebug() << "Error opening parameters file..."
+                   << info.canonicalPath() + "/" + info.baseName() + ".params";
+          continue;
+        }
+        QByteArray params = paramsFile.readAll();
+        paramsFile.close();
+        if (!shader->loadParameters(&params)) {
+          qDebug() << "Error reading parameter file in." << info.baseName();
+        }
+      }
     }
   }
 

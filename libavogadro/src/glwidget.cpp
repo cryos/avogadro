@@ -815,6 +815,9 @@ namespace Avogadro {
 #endif
           engine->renderOpaque(d->pd);
         }
+#ifdef ENABLE_GLSL
+          glUseProgram(0);
+#endif
       if (d->uc) { // end the main list and render the opaque crystal
         glEndList();
         renderCrystal(d->dlistOpaque);
@@ -830,6 +833,9 @@ namespace Avogadro {
           engine->renderTransparent(d->pd);
         }
       }
+#ifdef ENABLE_GLSL
+          glUseProgram(0);
+#endif
       if (d->uc) { // end the main list and render the transparent bits
         glEndList();
         renderCrystal(d->dlistTransparent);
@@ -856,14 +862,10 @@ namespace Avogadro {
     }
 
     // If enabled draw the axes
-    if (d->renderAxes) { renderAxesOverlay(); }
+    if (d->renderAxes) renderAxesOverlay();
 
     // If enabled show debug information
-    if (d->renderDebug) { renderDebugOverlay(); }
-
-#ifdef ENABLE_GLSL
-          glUseProgram(0);
-#endif
+    if (d->renderDebug) renderDebugOverlay();
 
     d->painter->end();
   }

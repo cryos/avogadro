@@ -1,0 +1,5 @@
+vec3 color	0.482353 0.956863 0.917647
+float da	0
+vec3 eyePosition	0 0 0
+float maxOpacity	1
+float minOpacity	0
