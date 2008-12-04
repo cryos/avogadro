@@ -90,6 +90,26 @@ namespace Avogadro
      */
     void setShader();
 
+    /**
+     * Slot to load up a new vertex shader.
+     */
+    void loadShader();
+
+    /**
+     * Slot to choose the vertex file.
+     */
+    void loadVertFileDialog();
+
+    /**
+     * Slot to choose the vertex file.
+     */
+    void loadFragFileDialog();
+
+    /**
+     * Slot to choose the vertex file.
+     */
+    void loadParamsFileDialog();
+
   private:
     GLWidget *m_glwidget;
     QList<QAction *> m_actions;

@@ -49,6 +49,16 @@ namespace Avogadro
     Shader(QByteArray* vertSource, QByteArray* fragSource)
     {
       // Not all shaders need a fragment shader
+      if (vertSource->isEmpty()) {
+        qDebug() << "Empty vertex shader source sent to the shader constructor.";
+        return;
+      }
+      if (fragSource) {
+        if (fragSource->isEmpty()) {
+          qDebug() << "Empty fragment shader source sent to the shader constructor.";
+          return;
+        }
+      }
       shaderProgram = glCreateProgramObjectARB();
       const char *cVert = vertSource->data();
       vertexShader = glCreateShaderObjectARB(GL_VERTEX_SHADER_ARB);
@@ -81,8 +91,14 @@ namespace Avogadro
     bool loadParameters(QByteArray* params)
     {
       // It appears you need to be using the shader to assign values to it
-      glUseProgram(shaderProgram);
+      if (params->isEmpty()) {
+        qDebug() << "Empty paramters sent to the load parameters function.";
+        return false;
+      }
+      glUseProgramObjectARB(shaderProgram);
       QList<QByteArray> lines = params->split('\n');
+      qDebug() << "Loading shader parameter file:" << lines.size();
+      qDebug() << *params;
       foreach(QByteArray line, lines) {
         QList<QByteArray> halves = line.split('\t');
         QList<QByteArray> tokens = halves.at(0).split(' ');
@@ -96,7 +112,7 @@ namespace Avogadro
         }
         // Retrieve the position of the variable
         const char *name = tokens.at(1).data();
-        GLint pos = glGetUniformLocation(shaderProgram, name);
+        GLint pos = glGetUniformLocationARB(shaderProgram, name);
         if (pos < 0) {
           qDebug() << "Error, variable" << tokens.at(1) << "not found.";
           qDebug() << line;
@@ -105,7 +121,7 @@ namespace Avogadro
         }
         if (tokens.at(0) == "float") {
           qDebug() << pos << "float line processed:" << line;
-          glUniform1f(pos, halves.at(1).toFloat());
+          glUniform1fARB(pos, halves.at(1).toFloat());
         }
         else if (tokens.at(0) == "vec3") {
           QList<QByteArray> numbers = halves.at(1).split(' ');
@@ -116,13 +132,28 @@ namespace Avogadro
           }
           else {
             qDebug() << pos << "vec3 line processed:" << line;
-            glUniform3f(pos, numbers.at(0).toFloat(),
-                             numbers.at(1).toFloat(),
-                             numbers.at(2).toFloat());
+            glUniform3fARB(pos, numbers.at(0).toFloat(),
+                                numbers.at(1).toFloat(),
+                                numbers.at(2).toFloat());
+          }
+        }
+        else if (tokens.at(0) == "vec4") {
+          QList<QByteArray> numbers = halves.at(1).split(' ');
+          if (numbers.size() != 4) {
+            qDebug() << "Numbers not space delimited/wrong number, size:"
+                     << numbers.size() << "token:" << halves.at(1);
+            qDebug() << "Line:" << line;
+          }
+          else {
+            qDebug() << pos << "vec4 line processed:" << line;
+            glUniform4fARB(pos, numbers.at(0).toFloat(),
+                                numbers.at(1).toFloat(),
+                                numbers.at(2).toFloat(),
+                                numbers.at(2).toFloat());
           }
         }
       }
-      glUseProgram(0);
+      glUseProgramObjectARB(0);
       return true;
     }
 
@@ -170,6 +201,14 @@ namespace Avogadro
 
       connect(m_shaderDialog->shaderButton, SIGNAL(clicked()),
               this, SLOT(setShader()));
+      connect(m_shaderDialog->vertFileButton, SIGNAL(clicked()),
+              this, SLOT(loadVertFileDialog()));
+      connect(m_shaderDialog->fragFileButton, SIGNAL(clicked()),
+              this, SLOT(loadFragFileDialog()));
+      connect(m_shaderDialog->paramsFileButton, SIGNAL(clicked()),
+              this, SLOT(loadParamsFileDialog()));
+      connect(m_shaderDialog->loadVertButton, SIGNAL(accepted()),
+              this, SLOT(loadShader()));
     }
     else {
       m_shaderDialog->show();
@@ -207,6 +246,106 @@ namespace Avogadro
         m_glwidget->update();
         return;
       }
+    }
+  }
+
+  void ShaderExtension::loadShader()
+  {
+    if (!m_shaderDialog->vertFile->text().length()) {
+      return;
+    }
+    QFileInfo vertInfo(m_shaderDialog->vertFile->text());
+    if (vertInfo.exists()) {
+      QFile vertFile(vertInfo.absoluteFilePath());
+      if (!vertFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Error opening vert file:" << vertInfo.absoluteFilePath();
+        return;
+      }
+      Shader *shader = 0;
+      QByteArray vertSource = vertFile.readAll();
+      vertFile.close();
+      // The shader file exists, check for a fragment file
+      QFileInfo fragInfo(m_shaderDialog->fragFile->text());
+      if (fragInfo.exists()) {
+        QFile fragFile(fragInfo.absoluteFilePath());
+        if (!fragFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+          qDebug() << "Error opening vert file:" << fragInfo.absoluteFilePath();
+          return;
+        }
+        QByteArray fragSource = fragFile.readAll();
+        fragFile.close();
+        shader = new Shader(&vertSource, &fragSource);
+      }
+      else {
+        shader = new Shader(&vertSource, 0);
+      }
+      qDebug() << "Shader loaded:" << vertInfo.baseName();
+
+      shader->name = m_shaderDialog->shaderName->text();
+      m_shaders.push_back(shader);
+
+      // Now check for a parameter file and load it if necessary
+      if (m_shaderDialog->paramsFile->text().size()) {
+        QFileInfo paramsInfo(m_shaderDialog->paramsFile->text());
+        if (paramsInfo.exists()) {
+          QFile paramsFile(paramsInfo.absoluteFilePath());
+          if (!paramsFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            qDebug() << "Error opening parameters file..."
+                    << paramsInfo.absoluteFilePath();
+            return;
+          }
+          QByteArray params = paramsFile.readAll();
+          paramsFile.close();
+          if (!shader->loadParameters(&params)) {
+            qDebug() << "Error reading parameter file in."
+                     << paramsInfo.absoluteFilePath();
+          }
+        }
+      }
+      populateShaderCombo();
+    }
+  }
+
+  void ShaderExtension::loadVertFileDialog()
+  {
+    // Load a file
+    QString fileName = QFileDialog::getOpenFileName(m_shaderDialog,
+      tr("Open a vertex shader source file"), m_shaderDialog->vertFile->text(),
+      tr("Vertex shader files (*.vert)"));
+    if (!fileName.isEmpty()) {
+      m_shaderDialog->vertFile->setText(fileName);
+      QFileInfo vert(fileName);
+      // See if we can guess the other two from this
+      vert.setFile(vert.absolutePath() + "/" + vert.baseName() + ".frag");
+      if (vert.exists()) {
+        m_shaderDialog->fragFile->setText(vert.absoluteFilePath());
+      }
+      vert.setFile(vert.absolutePath() + "/" + vert.baseName() + ".params");
+      if (vert.exists()) {
+        m_shaderDialog->paramsFile->setText(vert.absoluteFilePath());
+      }
+    }
+  }
+
+  void ShaderExtension::loadFragFileDialog()
+  {
+    // Load a file
+    QString fileName = QFileDialog::getOpenFileName(m_shaderDialog,
+      tr("Open a fragment shader source file"), m_shaderDialog->fragFile->text(),
+      tr("Fragment shader files (*.frag)"));
+    if (!fileName.isEmpty()) {
+      m_shaderDialog->fragFile->setText(fileName);
+    }
+  }
+
+  void ShaderExtension::loadParamsFileDialog()
+  {
+    // Load a file
+    QString fileName = QFileDialog::getOpenFileName(m_shaderDialog,
+      tr("Open a shader parameters file"), m_shaderDialog->paramsFile->text(),
+      tr("Shader parameters files (*.params)"));
+    if (!fileName.isEmpty()) {
+      m_shaderDialog->paramsFile->setText(fileName);
     }
   }
 
