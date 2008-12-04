@@ -49,33 +49,33 @@ namespace Avogadro
     Shader(QByteArray* vertSource, QByteArray* fragSource)
     {
       // Not all shaders need a fragment shader
-      shaderProgram = glCreateProgram();
+      shaderProgram = glCreateProgramObjectARB();
       const char *cVert = vertSource->data();
-      vertexShader = glCreateShader(GL_VERTEX_SHADER);
-      glShaderSource(vertexShader, 1, &cVert, 0);
-      glCompileShader(vertexShader);
-      glAttachShader(shaderProgram, vertexShader);
+      vertexShader = glCreateShaderObjectARB(GL_VERTEX_SHADER_ARB);
+      glShaderSourceARB(vertexShader, 1, &cVert, 0);
+      glCompileShaderARB(vertexShader);
+      glAttachObjectARB(shaderProgram, vertexShader);
 
       if (fragSource) {
         const char *cFrag = fragSource->data();
-        fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-        glShaderSource(fragmentShader, 1, &cFrag, 0);
-        glCompileShader(fragmentShader);
-        glAttachShader(shaderProgram, fragmentShader);
+        fragmentShader = glCreateShaderObjectARB(GL_FRAGMENT_SHADER);
+        glShaderSourceARB(fragmentShader, 1, &cFrag, 0);
+        glCompileShaderARB(fragmentShader);
+        glAttachObjectARB(shaderProgram, fragmentShader);
       }
-      glLinkProgram(shaderProgram);
+      glLinkProgramARB(shaderProgram);
     }
 
     ~Shader()
     {
       // First detach the shaders
-      glDetachShader(shaderProgram, vertexShader);
-      glDetachShader(shaderProgram, fragmentShader);
+      glDetachObjectARB(shaderProgram, vertexShader);
+      glDetachObjectARB(shaderProgram, fragmentShader);
       // Now the shaders can be deleted
-      glDeleteShader(vertexShader);
-      glDeleteShader(fragmentShader);
+      glDeleteObjectARB(vertexShader);
+      glDeleteObjectARB(fragmentShader);
       // Finally the program can be deleted
-      glDeleteProgram(shaderProgram);
+      glDeleteObjectARB(shaderProgram);
     }
 
     bool loadParameters(QByteArray* params)

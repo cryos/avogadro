@@ -521,6 +521,10 @@ namespace Avogadro {
       qDebug() << "GLSL support enabled, OpenGL 2.0 support confirmed.";
       m_glslEnabled = true;
     }
+    else if (GLEW_ARB_vertex_shader && GLEW_ARB_fragment_shader) {
+      qDebug() << "GLSL support enabled, no OpenGL 2.0 support.";
+      m_glslEnabled = true;
+    }
     else {
       qDebug() << "GLSL support disabled, OpenGL 2.0 support not present.";
       m_glslEnabled = false;
@@ -818,12 +822,12 @@ namespace Avogadro {
       foreach(Engine *engine, d->engines)
         if(engine->isEnabled()) {
 #ifdef ENABLE_GLSL
-          if (m_glslEnabled) glUseProgram(engine->shader());
+          if (m_glslEnabled) glUseProgramObjectARB(engine->shader());
 #endif
           engine->renderOpaque(d->pd);
         }
 #ifdef ENABLE_GLSL
-          if (m_glslEnabled) glUseProgram(0);
+          if (m_glslEnabled) glUseProgramObjectARB(0);
 #endif
       if (d->uc) { // end the main list and render the opaque crystal
         glEndList();
@@ -835,13 +839,13 @@ namespace Avogadro {
       foreach(Engine *engine, d->engines) {
         if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
 #ifdef ENABLE_GLSL
-          if (m_glslEnabled) glUseProgram(engine->shader());
+          if (m_glslEnabled) glUseProgramObjectARB(engine->shader());
 #endif
           engine->renderTransparent(d->pd);
         }
       }
 #ifdef ENABLE_GLSL
-          if (m_glslEnabled) glUseProgram(0);
+          if (m_glslEnabled) glUseProgramObjectARB(0);
 #endif
       if (d->uc) { // end the main list and render the transparent bits
         glEndList();
