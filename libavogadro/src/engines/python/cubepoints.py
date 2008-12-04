@@ -1,5 +1,5 @@
 import Avogadro
-from Numeric import *
+from numpy import *
 
 def name():
     return "Cube Point Engine"

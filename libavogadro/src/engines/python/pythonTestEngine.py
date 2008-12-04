@@ -1,5 +1,5 @@
 import Avogadro
-from Numeric import * # array, ...
+from numpy import * # array, ...
 
 def name():
     return "PyEngine test"
