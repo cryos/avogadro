@@ -338,7 +338,9 @@ namespace Avogadro
 
   inline double BSDYEngine::radius( const Atom *atom ) const
   {
-    return OpenBabel::etab.GetVdwRad(atom->atomicNumber()) * m_atomRadiusPercentage;
+    if (atom->atomicNumber())
+      return OpenBabel::etab.GetVdwRad(atom->atomicNumber()) * m_atomRadiusPercentage;
+    return m_atomRadiusPercentage;
   }
 
   void BSDYEngine::setAtomRadiusPercentage( int percent )

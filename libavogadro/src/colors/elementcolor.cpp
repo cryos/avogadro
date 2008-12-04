@@ -47,10 +47,18 @@ namespace Avogadro {
       return;
 
     const Atom *atom = static_cast<const Atom*>(p);
-    std::vector<double> rgb = OpenBabel::etab.GetRGB(atom->atomicNumber());
-    m_channels[0] = rgb[0];
-    m_channels[1] = rgb[1];
-    m_channels[2] = rgb[2];
+    
+    if (atom->atomicNumber()) {
+      std::vector<double> rgb = OpenBabel::etab.GetRGB(atom->atomicNumber());
+      m_channels[0] = rgb[0];
+      m_channels[1] = rgb[1];
+      m_channels[2] = rgb[2];
+    } else {
+      m_channels[0] = 0.2;
+      m_channels[1] = 0.2;
+      m_channels[2] = 0.2;
+    }
+    
     m_channels[3] = 1.0;
   }
 
