@@ -120,7 +120,7 @@ namespace Avogadro {
     foreach(const Primitive *p, list) {
       const Atom *a = static_cast<const Atom *>(p);
       dist = a->pos()->cast<float>() - pos;
-      energy += a->partialCharge() / dist.squaredNorm();
+      energy += a->partialCharge() / dist.norm2();
     }
 
     // Chemistry convention: red = negative, blue = positive
