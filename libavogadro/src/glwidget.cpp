@@ -472,6 +472,7 @@ namespace Avogadro {
     setSizePolicy( QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding );
     d->camera->setParent( this );
     setAutoBufferSwap( false );
+    m_glslEnabled = false;
 #ifdef ENABLE_THREADED_GL
     qDebug() << "Threaded GL enabled.";
     d->thread = new GLThread( this, this );
@@ -512,12 +513,18 @@ namespace Avogadro {
     // Try to initialise GLEW if GLSL was enabled, test for OpenGL 2.0 support
     #ifdef ENABLE_GLSL
     GLenum err = glewInit();
-    if (err != GLEW_OK)
+    if (err != GLEW_OK) {
       qDebug() << "GLSL support enabled but GLEW could not initialise!";
-    if (GLEW_VERSION_2_0)
+      m_glslEnabled = false;
+    }
+    if (GLEW_VERSION_2_0) {
       qDebug() << "GLSL support enabled, OpenGL 2.0 support confirmed.";
-    else
+      m_glslEnabled = true;
+    }
+    else {
       qDebug() << "GLSL support disabled, OpenGL 2.0 support not present.";
+      m_glslEnabled = false;
+    }
     #endif
 
     qglClearColor( d->background );
@@ -811,12 +818,12 @@ namespace Avogadro {
       foreach(Engine *engine, d->engines)
         if(engine->isEnabled()) {
 #ifdef ENABLE_GLSL
-          glUseProgram(engine->shader());
+          if (m_glslEnabled) glUseProgram(engine->shader());
 #endif
           engine->renderOpaque(d->pd);
         }
 #ifdef ENABLE_GLSL
-          glUseProgram(0);
+          if (m_glslEnabled) glUseProgram(0);
 #endif
       if (d->uc) { // end the main list and render the opaque crystal
         glEndList();
@@ -828,13 +835,13 @@ namespace Avogadro {
       foreach(Engine *engine, d->engines) {
         if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
 #ifdef ENABLE_GLSL
-          glUseProgram(engine->shader());
+          if (m_glslEnabled) glUseProgram(engine->shader());
 #endif
           engine->renderTransparent(d->pd);
         }
       }
 #ifdef ENABLE_GLSL
-          glUseProgram(0);
+          if (m_glslEnabled) glUseProgram(0);
 #endif
       if (d->uc) { // end the main list and render the transparent bits
         glEndList();

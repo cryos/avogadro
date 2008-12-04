@@ -679,6 +679,8 @@ namespace Avogadro {
        */
       inline double computeFramesPerSecond();
 
+      bool              m_glslEnabled;
+
     public Q_SLOTS:
 
       /**
