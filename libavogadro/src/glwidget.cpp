@@ -217,6 +217,7 @@ namespace Avogadro {
                         defaultColorMap( 0),
                         updateCache(true),
                         quickRender(false),
+                        allowQuickRender(true),
                         fogLevel(0),
                         renderAxes(false),
                         renderDebug(false),
@@ -288,6 +289,7 @@ namespace Avogadro {
     Color                 *defaultColorMap;  // default fall-back coloring (i.e., by elements)
     bool                   updateCache; // Update engine caches in quick render?
     bool                   quickRender; // Are we using quick render?
+    bool                   allowQuickRender; // Are we allowed to use quick render?
     int                    fogLevel;    // The level of fog to use (0=none, 9=max)
     bool                   renderAxes;  // Should the x, y, z axes be rendered?
     bool                   renderDebug; // Should the debug information be shown?
@@ -1171,7 +1173,8 @@ namespace Avogadro {
     d->renderMutex.lock();
 #endif
     // Use quick render while the mouse is down
-    d->quickRender = true;
+    if (d->allowQuickRender)
+      d->quickRender = true;
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.unlock();
 #endif
@@ -1516,7 +1519,8 @@ namespace Avogadro {
 
     // now actually render using low quality a.k.a. "quickrender"
     bool oldQuickRender = d->quickRender;
-    d->quickRender = true;
+    if (d->allowQuickRender)
+      d->quickRender = true;
     render();
     d->quickRender = oldQuickRender;
 
@@ -1854,6 +1858,7 @@ namespace Avogadro {
     settings.setValue("fogLevel", d->fogLevel);
     settings.setValue("renderAxes", d->renderAxes);
     settings.setValue("renderDebug", d->renderDebug);
+    settings.setValue("allowQuickRender", d->allowQuickRender);
 
     int count = d->engines.size();
     settings.beginWriteArray("engines");
@@ -1875,6 +1880,7 @@ namespace Avogadro {
     d->background = settings.value("background", QColor(0,0,0,0)).value<QColor>();
     d->renderAxes = settings.value("renderAxes", 1).value<bool>();
     d->renderDebug = settings.value("renderDebug", 0).value<bool>();
+    d->allowQuickRender = settings.value("allowQuickRender", 1).value<bool>();
 
     int count = settings.beginReadArray("engines");
     for(int i=0; i<count; i++)
@@ -1922,14 +1928,14 @@ namespace Avogadro {
     }
   }
 
-  void GLWidget::setQuickRenderEnabled(bool enabled)
+  void GLWidget::setQuickRender(bool enabled)
   {
-    d->quickRender = enabled;
+    d->allowQuickRender = enabled;
   }
 
-  bool GLWidget::isQuickRenderEnabled() const
+  bool GLWidget::quickRender() const
   {
-    return d->quickRender;
+    return d->allowQuickRender;
   }
 
   void GLWidget::invalidateDLs()

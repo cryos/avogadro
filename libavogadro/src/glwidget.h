@@ -211,14 +211,14 @@ namespace Avogadro {
       ~GLWidget();
 
       /**
-       * @param enabled quick render to be enabled
+       * @param enabled True if quick render is desired when moving the view.
        */
-      void setQuickRenderEnabled(bool enabled);
+      void setQuickRender(bool enabled);
 
       /**
-       * @return is quick rendering enabled
+       * @return True if quick rendering is being used.
        */
-      bool isQuickRenderEnabled() const;
+      bool quickRender() const;
 
       /**
        * @return the width of the widget in pixels.

@@ -30,7 +30,7 @@ void export_GLWidget()
  
   class_<Avogadro::GLWidget, boost::noncopyable>("GLWidget")
     // read/write properties
-    .add_property("quickRenderEnabled", &GLWidget::setQuickRenderEnabled, &GLWidget::isQuickRenderEnabled)
+    .add_property("quickRender", &GLWidget::setQuickRender, &GLWidget::quickRender)
     .add_property("colorMap", make_function(&GLWidget::colorMap, return_value_policy<reference_existing_object>()),
         &GLWidget::setColorMap)
     .add_property("molecule", make_function(molecule_ptr, return_value_policy<reference_existing_object>()),

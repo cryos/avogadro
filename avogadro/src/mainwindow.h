@@ -58,6 +58,7 @@ namespace Avogadro {
       int fogLevel() const;
       bool renderAxes() const;
       bool renderDebug() const;
+      bool quickRender() const;
 
     protected:
       void closeEvent(QCloseEvent *event);
@@ -111,6 +112,7 @@ namespace Avogadro {
 
       void setRenderAxes(bool render);
       void setRenderDebug(bool render);
+      void setQuickRender(bool quick);
 
       void undoStackClean(bool clean);
 

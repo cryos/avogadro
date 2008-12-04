@@ -421,6 +421,17 @@ namespace Avogadro
     d->glWidget->setRenderDebug(render);
   }
 
+  bool MainWindow::quickRender() const
+  {
+    // Is the current widget using quick render?
+    return d->glWidget->quickRender();
+  }
+
+  void MainWindow::setQuickRender(bool quick)
+  {
+    d->glWidget->setQuickRender(quick);
+  }
+
   void MainWindow::reloadTabbedTools()
   {
     if(d->toolSettingsDock)
@@ -1121,6 +1132,7 @@ namespace Avogadro
 //    d->enginePrimitivesStacked->setCurrentIndex( index );
     ui.actionDisplayAxes->setChecked(renderAxes());
     ui.actionDebugInformation->setChecked(renderDebug());
+    ui.actionQuickRender->setChecked(quickRender());
   }
 
   void MainWindow::paste()
@@ -1365,6 +1377,7 @@ namespace Avogadro
     d->centralTab->addTab(widget, tabName);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
+    ui.actionQuickRender->setChecked(gl->quickRender());
     writeSettings();
   }
 
@@ -1394,6 +1407,7 @@ namespace Avogadro
     ui.actionCloseView->setEnabled( true );
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
+    ui.actionQuickRender->setChecked(gl->quickRender());
 
     writeSettings();
   }
@@ -1708,6 +1722,8 @@ namespace Avogadro
             this, SLOT(setRenderAxes(bool)));
     connect(ui.actionDebugInformation, SIGNAL(triggered(bool)),
             this, SLOT(setRenderDebug(bool)));
+    connect(ui.actionQuickRender, SIGNAL(triggered(bool)),
+            this, SLOT(setQuickRender(bool)));
     connect( ui.actionAbout, SIGNAL( triggered() ), this, SLOT( about() ) );
 
     connect( d->centralTab, SIGNAL( currentChanged( int ) ), this, SLOT( setView( int ) ) );
