@@ -30,8 +30,9 @@ if( WIN32 )
               PATHS c:/glew/lib ${COMPILER_PATH}/PlatformSDK/Lib )
 else( WIN32 )
    FIND_PATH( GLEW_INCLUDE_DIR glew.h wglew.h
+              NAMES gl/glew.h GL/glew.h
               PATHS /usr/local/include /opt/local/include /usr/include
-              PATH_SUFFIXES gl/ GL/ )
+            )
    SET( GLEW_NAMES glew GLEW )
    FIND_LIBRARY( GLEW_LIBRARY
               NAMES ${GLEW_NAMES}

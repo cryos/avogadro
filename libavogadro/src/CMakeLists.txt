@@ -15,6 +15,7 @@ include_directories(
   ${OPENBABEL2_INCLUDE_DIR}
   ${BOOST_PYTHON_INCLUDES}
   ${PYTHON_INCLUDE_PATH}
+  ${LIBXML2_INCLUDE_DIR}
 )
 
 # I think this is necessary now in order to tell the linker where openbabel is
@@ -35,10 +36,13 @@ set(libavogadro_SRCS ${libavogadro_SRCS} ${bsdyengine_SRCS} ${bsdyengine_UIS})
 set(elementcolor_SRCS colors/elementcolor.cpp)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${elementcolor_SRCS})
 
-set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES} ${OPENGL_LIBRARIES})
+set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
+                       ${QT_LIBRARIES}
+                       ${OPENGL_LIBRARIES}
+                       ${LIBXML2_LIBRARIES}  )
 
 if(GLEW_FOUND)
-	include_directories(${GLEW_INCLUDE_DIRS})
+	include_directories(${GLEW_INCLUDE_DIR})
 	link_directories(${GLEW_LIBRARY_DIR})
 	set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${GLEW_LIBRARY})
 endif(GLEW_FOUND)
