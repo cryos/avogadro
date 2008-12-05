@@ -21,7 +21,7 @@ void export_Color()
     .add_property("blue", &Color::blue)
     // read/write properties
     .add_property("name", &Color::name, &Color::setName)
-    .add_property("aplha", &Color::alpha, &Color::setAlpha)
+    .add_property("alpha", &Color::alpha, &Color::setAlpha)
     // real functions
     .def("set", set_ptr1)
     .def("set", set_ptr2)

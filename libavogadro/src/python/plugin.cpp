@@ -3,6 +3,8 @@
 
 #include <avogadro/plugin.h>
 
+#include <QWidget>
+
 using namespace boost::python;
 using namespace Avogadro;
 
@@ -24,7 +26,8 @@ void export_Plugin()
     .add_property("type", &Plugin::type)
     .add_property("name", &Plugin::name)
     .add_property("description", &Plugin::description)
-    //.add_property("settingsWidget", &Plugin::settingsWidget) // QWidget
+    .add_property("settingsWidget", make_function(&Plugin::settingsWidget, 
+          return_value_policy<reference_existing_object>()))
     ;
   
   class_<Avogadro::PluginFactory, boost::noncopyable>("PluginFactory", no_init)

@@ -31,9 +31,6 @@ void export_GLWidget()
   Molecule* (GLWidget::*molecule_ptr)() = &GLWidget::molecule;
 
 
-  // QWidget
-  void (QWidget::*resize_ptr)(int, int) = &QWidget::resize;
-
   class_<Avogadro::GLWidget, boost::noncopyable>("GLWidget")
     // read/write properties
     .add_property("quickRender", &GLWidget::setQuickRender, &GLWidget::quickRender)
@@ -100,9 +97,6 @@ void export_GLWidget()
     .def("readSettings", &GLWidget::readSettings)
     .def("loadDefaultEngines", &GLWidget::loadDefaultEngines)
 
-    // some QWidget stuff
-    .def("show", &GLWidget::show)
-    .def("resize", resize_ptr)
 /*
     public Q_SLOTS:
       void addPrimitive(Primitive *primitive);

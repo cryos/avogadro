@@ -15,6 +15,7 @@ from primitivelist import *
 from pluginmanager import *
 from toolgroup import *
 from pluginfactory import *
+from tool import *
 
 if __name__ == "__main__":
   
@@ -30,10 +31,11 @@ if __name__ == "__main__":
   suite8 = unittest.TestLoader().loadTestsFromTestCase(TestPrimitiveList)
   suite9 = unittest.TestLoader().loadTestsFromTestCase(TestPluginManager)
   suite10 = unittest.TestLoader().loadTestsFromTestCase(TestToolGroup)
-  suite11 = unittest.TestLoader().loadTestsFromTestCase(TestToolGroup)
+  suite11 = unittest.TestLoader().loadTestsFromTestCase(TestPluginFactory)
+  suite12 = unittest.TestLoader().loadTestsFromTestCase(TestTool)
 
   alltests = unittest.TestSuite([suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite8, suite9, suite10, 
-      suite11, suite0])
+      suite11, suite12, suite0])
   
   app = QApplication(sys.argv)
   unittest.TextTestRunner(verbosity=2).run(alltests)

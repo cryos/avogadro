@@ -9,6 +9,7 @@ using namespace Avogadro;
 
 void export_Tool()
 {
+  //class_<Avogadro::Tool, bases<QObject, Avogadro::Plugin>, boost::noncopyable>("Tool", no_init)
   class_<Avogadro::Tool, bases<Avogadro::Plugin>, boost::noncopyable>("Tool", no_init)
     // read-only poperties
     .add_property("usefulness", &Tool::usefulness)
@@ -22,8 +23,7 @@ void export_Tool()
     //.def("mouseMove", &Tool::mouseMove) // QUndoCommand
     //.def("mouseRelease", &Tool::mouseRelease) // QUndoCommand
     //.def("wheel", &Tool::wheel) // QUndoCommand
-    .def("paint", &Tool::paint)
-    //.def("settingsWidget", &Tool::settingsWidget) // QWidget
+    //.def("paint", &Tool::paint)
     //.def("readSettings", &Tool::readSettings) // QSettings
     //.def("writeSettings", &Tool::writeSettings) // QSettings
     .def("setMolecule", &Tool::setMolecule)

@@ -3,6 +3,8 @@
 
 using namespace boost::python;
 
+void export_QtLib();
+
 void export_Eigen();
 
 void export_QString();
@@ -57,6 +59,7 @@ BOOST_PYTHON_MODULE(Avogadro) {
   export_PrimitiveList();
   export_PluginManager();
   export_ToolGroup();
+  export_QtLib();
 
 
 
