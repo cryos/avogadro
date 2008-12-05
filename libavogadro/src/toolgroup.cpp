@@ -152,7 +152,9 @@ namespace Avogadro {
 
   Tool* ToolGroup::tool(int i) const
   {
-    return d->tools.at(i);
+    if (i < d->tools.size())
+      return d->tools.at(i);
+    return 0;
   }
 
   const QList<Tool *>& ToolGroup::tools() const
