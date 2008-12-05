@@ -212,6 +212,14 @@ namespace Avogadro
 
   PythonTerminalLineEdit::PythonTerminalLineEdit(QWidget *parent ) : QLineEdit(parent), m_current(0)
   {
+    // Load the saved commands
+    QSettings settings;
+    int size = settings.beginReadArray("pythonCommands");
+    for (int i = 0; i < size; ++i) {
+      settings.setArrayIndex(i);
+      m_commandStack.append( settings.value("command").toString() );
+    }
+    settings.endArray();
   }
 
   void PythonTerminalLineEdit::keyPressEvent ( QKeyEvent * event )
@@ -269,6 +277,15 @@ namespace Avogadro
         {
           m_commandStack.removeFirst();
         }
+        // save the commands before we execute, this will allow users to see
+        // what they did before the crash
+        QSettings settings;
+        settings.beginWriteArray("pythonCommands");
+        for (int i = 0; i < m_commandStack.size(); ++i) {
+          settings.setArrayIndex(i);
+          settings.setValue("command", m_commandStack.at(i));
+        }
+        settings.endArray();
       }
       m_current = m_commandStack.size();
       event->accept();
