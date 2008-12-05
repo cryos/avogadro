@@ -14,6 +14,8 @@
 #include <avogadro/tool.h>
 #include <avogadro/color.h>
 
+#include <QWidget>
+
 using namespace boost::python;
 using namespace Avogadro;
 
@@ -27,7 +29,11 @@ void export_GLWidget()
   PrimitiveList (GLWidget::*namedSelectionPrimitives_ptr1)(const QString &name) = &GLWidget::namedSelectionPrimitives;
   PrimitiveList (GLWidget::*namedSelectionPrimitives_ptr2)(int index) = &GLWidget::namedSelectionPrimitives;
   Molecule* (GLWidget::*molecule_ptr)() = &GLWidget::molecule;
- 
+
+
+  // QWidget
+  void (QWidget::*resize_ptr)(int, int) = &QWidget::resize;
+
   class_<Avogadro::GLWidget, boost::noncopyable>("GLWidget")
     // read/write properties
     .add_property("quickRender", &GLWidget::setQuickRender, &GLWidget::quickRender)
@@ -92,6 +98,11 @@ void export_GLWidget()
     .def("setCurrent", &GLWidget::setCurrent)
     .def("writeSettings", &GLWidget::writeSettings)
     .def("readSettings", &GLWidget::readSettings)
+    .def("loadDefaultEngines", &GLWidget::loadDefaultEngines)
+
+    // some QWidget stuff
+    .def("show", &GLWidget::show)
+    .def("resize", resize_ptr)
 /*
     public Q_SLOTS:
       void addPrimitive(Primitive *primitive);
@@ -99,7 +110,6 @@ void export_GLWidget()
       void removePrimitive(Primitive *primitive);
       void addEngine(Engine *engine);
       void removeEngine(Engine *engine);
-      void loadDefaultEngines();
       void invalidateDLs();
       */
     ;

@@ -10,17 +10,14 @@ residue.cpp             done + unittest
 primitive.cpp           done + unit tests for this are spread out over the other tests
 mesh.cpp                done + unittest
 primitivelist.cpp       done + unittest
-
-
-pluginmanager.cpp       done (need testing...)
-
+pluginmanager.cpp       done + unittest
+toolgroup.cpp           done + unittest
 
 plugin.cpp              done
 color.cpp               done
 engine.cpp              done (don't wrap renderOpaque, ...)
 tool.cpp                done (don't wrap mousePress, wheel, ...)
 
-toolgroup.cpp           done
 
 camera.cpp              done
 glwidget.cpp

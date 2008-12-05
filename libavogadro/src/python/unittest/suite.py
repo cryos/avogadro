@@ -1,5 +1,8 @@
 import unittest
 
+from PyQt4.Qt import *
+import sys
+
 from eigen import *
 from atom import *
 from bond import *
@@ -9,6 +12,8 @@ from cube import *
 from residue import *
 from mesh import *
 from primitivelist import *
+from pluginmanager import *
+from toolgroup import *
 
 if __name__ == "__main__":
   
@@ -22,12 +27,11 @@ if __name__ == "__main__":
   suite6 = unittest.TestLoader().loadTestsFromTestCase(TestResidue)
   suite7 = unittest.TestLoader().loadTestsFromTestCase(TestMesh)
   suite8 = unittest.TestLoader().loadTestsFromTestCase(TestPrimitiveList)
+  suite9 = unittest.TestLoader().loadTestsFromTestCase(TestPluginManager)
+  suite10 = unittest.TestLoader().loadTestsFromTestCase(TestToolGroup)
 
-
-
-
-  alltests = unittest.TestSuite([suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite8, suite0])
+  alltests = unittest.TestSuite([suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite8, suite9, suite10, suite0])
+  
+  app = QApplication(sys.argv)
   unittest.TextTestRunner(verbosity=2).run(alltests)
-  #result = unittest.TestResult()
-  #suite.run(result)
-  #print result
+  #sys.exit(app.exec_())

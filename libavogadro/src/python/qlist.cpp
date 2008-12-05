@@ -9,6 +9,11 @@
 #include <avogadro/fragment.h>
 #include <avogadro/cube.h>
 
+#include <avogadro/engine.h>
+#include <avogadro/tool.h>
+#include <avogadro/color.h>
+#include <avogadro/extension.h>
+
 using namespace boost::python;
 
 // C = QList<T>
@@ -313,4 +318,10 @@ void export_QList()
   export_ptr_list< QList<Residue*> >();
   export_ptr_list< QList<Cube*> >();
   export_ptr_list< QList<Fragment*> >();
+  
+  export_ptr_list< QList<PluginFactory*> >();
+  export_ptr_list< QList<Engine*> >();
+  export_ptr_list< QList<Tool*> >();
+  export_ptr_list< QList<Color*> >();
+  export_ptr_list< QList<Extension*> >();
 }
