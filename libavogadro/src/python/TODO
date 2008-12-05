@@ -12,8 +12,8 @@ mesh.cpp                done + unittest
 primitivelist.cpp       done + unittest
 pluginmanager.cpp       done + unittest
 toolgroup.cpp           done + unittest
+plugin.cpp              done + unittest
 
-plugin.cpp              done
 color.cpp               done
 engine.cpp              done (don't wrap renderOpaque, ...)
 tool.cpp                done (don't wrap mousePress, wheel, ...)
