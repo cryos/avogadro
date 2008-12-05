@@ -7,20 +7,26 @@ qstring.cpp             done + unit tests for this are spread out over the other
 qlist.cpp               done + unit tests for this are spread out over the other tests
 cube.cpp                done + unittest
 residue.cpp             done + unittest
+primitive.cpp           done + unit tests for this are spread out over the other tests
+mesh.cpp                done + unittest
 
-camera.cpp              done
-glwidget.cpp
-primitive.cpp           done
-painter.cpp             done
-paiterdevice.cpp        done
+
+primitivelist.cpp       done
+pluginmanager.cpp       done (need testing...)
+
+
 plugin.cpp              done
 color.cpp               done
 engine.cpp              done (don't wrap renderOpaque, ...)
 tool.cpp                done (don't wrap mousePress, wheel, ...)
-mesh.cpp                need std::vector
-primitivelist.cpp       done
+
 toolgroup.cpp           done
-pluginmanager.cpp       done (need testing...)
+
+camera.cpp              done
+glwidget.cpp
+painter.cpp             done
+paiterdevice.cpp        done
+
 
 # next
 line.h

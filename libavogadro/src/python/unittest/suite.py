@@ -7,6 +7,7 @@ from molecule import *
 from fragment import *
 from cube import *
 from residue import *
+from mesh import *
 
 if __name__ == "__main__":
   
@@ -18,11 +19,12 @@ if __name__ == "__main__":
   suite4 = unittest.TestLoader().loadTestsFromTestCase(TestFragment)
   suite5 = unittest.TestLoader().loadTestsFromTestCase(TestCube)
   suite6 = unittest.TestLoader().loadTestsFromTestCase(TestResidue)
+  suite7 = unittest.TestLoader().loadTestsFromTestCase(TestMesh)
 
 
 
 
-  alltests = unittest.TestSuite([suite1, suite2, suite3, suite4, suite5, suite0])
+  alltests = unittest.TestSuite([suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite0])
   unittest.TextTestRunner(verbosity=2).run(alltests)
   #result = unittest.TestResult()
   #suite.run(result)

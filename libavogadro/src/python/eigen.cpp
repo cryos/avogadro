@@ -12,19 +12,15 @@ using namespace boost::python;
 template <typename Scalar> struct ScalarTraits;
 template <> struct ScalarTraits<int>
 {
-  enum { isIntOrLong = 1, isFloatOrDouble = 0 };
-};
-template <> struct ScalarTraits<long>
-{
-  enum { isIntOrLong = 1, isFloatOrDouble = 0 };
+  enum { isInt = 1, isFloat = 0, isDouble = 0 };
 };
 template <> struct ScalarTraits<float>
 {
-  enum { isIntOrLong = 0, isFloatOrDouble = 1 };
+  enum { isInt = 0, isFloat = 1, isDouble = 0 };
 };
 template <> struct ScalarTraits<double>
 {
-  enum { isIntOrLong = 0, isFloatOrDouble = 1 };
+  enum { isInt = 0, isFloat = 0, isDouble = 1 };
 };
 
 
@@ -37,6 +33,8 @@ template <> struct ScalarTraits<double>
   template <class Vector3x>
   struct Vector3x_to_python_array
   {
+    typedef typename Vector3x::Scalar Scalar;
+    
     struct innerclass
     {
       //
@@ -45,10 +43,16 @@ template <> struct ScalarTraits<double>
       static PyObject* convert(Vector3x const &vec)
       {
         int dims[1] = { 3 };
-        PyObject *result = PyArray_FromDims(1, dims, PyArray_DOUBLE);
+        PyObject *result;
+        if (ScalarTraits<Scalar>::isInt)
+          result = PyArray_FromDims(1, dims, PyArray_INT);
+        else if (ScalarTraits<Scalar>::isFloat)
+          result = PyArray_FromDims(1, dims, PyArray_FLOAT);
+        else
+          result = PyArray_FromDims(1, dims, PyArray_DOUBLE);
         
         // copy the data
-        double *data = (double*) reinterpret_cast<PyArrayObject*>(result)->data;
+        Scalar *data = (Scalar*) reinterpret_cast<PyArrayObject*>(result)->data;
         data[0] = vec.x();
         data[1] = vec.y();
         data[2] = vec.z();
@@ -65,10 +69,16 @@ template <> struct ScalarTraits<double>
           throw_error_already_set();
  
         int dims[1] = { 3 };
-        PyObject *result = PyArray_FromDims(1, dims, PyArray_DOUBLE);
+        PyObject *result;
+        if (ScalarTraits<Scalar>::isInt)
+          result = PyArray_FromDims(1, dims, PyArray_INT);
+        else if (ScalarTraits<Scalar>::isFloat)
+          result = PyArray_FromDims(1, dims, PyArray_FLOAT);
+        else
+          result = PyArray_FromDims(1, dims, PyArray_DOUBLE);
         
         // copy the data
-        double *data = (double*) reinterpret_cast<PyArrayObject*>(result)->data;
+        Scalar *data = (Scalar*) reinterpret_cast<PyArrayObject*>(result)->data;
         data[0] = vec->x();
         data[1] = vec->y();
         data[2] = vec->z();
@@ -85,10 +95,16 @@ template <> struct ScalarTraits<double>
           throw_error_already_set();
 
         int dims[1] = { 3 };
-        PyObject *result = PyArray_FromDims(1, dims, PyArray_DOUBLE);
+        PyObject *result;
+        if (ScalarTraits<Scalar>::isInt)
+          result = PyArray_FromDims(1, dims, PyArray_INT);
+        else if (ScalarTraits<Scalar>::isFloat)
+          result = PyArray_FromDims(1, dims, PyArray_FLOAT);
+        else
+          result = PyArray_FromDims(1, dims, PyArray_DOUBLE);
         
         // copy the data
-        double *data = (double*) reinterpret_cast<PyArrayObject*>(result)->data;
+        Scalar *data = (Scalar*) reinterpret_cast<PyArrayObject*>(result)->data;
         data[0] = vec->x();
         data[1] = vec->y();
         data[2] = vec->z();
@@ -142,16 +158,27 @@ template <> struct ScalarTraits<double>
       if (!PyArray_Check(obj_ptr))
         throw_error_already_set();
 
-      PyArrayObject *array = reinterpret_cast<PyArrayObject*>(obj_ptr);
+      // only accept int, long, float and double
+      switch (PyArray_ObjectType(obj_ptr, 0)) {
+        case NPY_INT:
+        case NPY_LONG:
+        case NPY_FLOAT:
+        case NPY_DOUBLE:
+          break;
+        default:
+          return 0;
+      }
 
       // do some type checking
       if ((PyArray_ObjectType(obj_ptr, 0) == NPY_FLOAT) || (PyArray_ObjectType(obj_ptr, 0) == NPY_DOUBLE))
-        if (ScalarTraits<Scalar>::isIntOrLong)
+        if (ScalarTraits<Scalar>::isInt)
           return 0;
 
       if ((PyArray_ObjectType(obj_ptr, 0) == NPY_INT) || (PyArray_ObjectType(obj_ptr, 0) == NPY_LONG))
-        if (ScalarTraits<Scalar>::isFloatOrDouble)
+        if (ScalarTraits<Scalar>::isFloat || ScalarTraits<Scalar>::isDouble)
           return 0;
+      
+      PyArrayObject *array = reinterpret_cast<PyArrayObject*>(obj_ptr);
 
       // check the dimensions
       if (array->nd != 1)
@@ -160,9 +187,32 @@ template <> struct ScalarTraits<double>
       if (array->dimensions[0] != 3)
         throw_error_already_set(); // the 1D array does not have exactly 3 elements
 
-      Scalar *values = reinterpret_cast<Scalar*>(array->data);
-      
-      return new Vector3x(values[0], values[1], values[2]);
+      switch (PyArray_ObjectType(obj_ptr, 0)) {
+        case NPY_INT:
+          {
+            int *values = reinterpret_cast<int*>(array->data);
+            return new Vector3x(values[0], values[1], values[2]);
+          }
+        case NPY_LONG:
+          {
+            long *values = reinterpret_cast<long*>(array->data);
+            return new Vector3x(values[0], values[1], values[2]);      
+          }
+        case NPY_FLOAT:
+          {
+            float *values = reinterpret_cast<float*>(array->data);
+            return new Vector3x(values[0], values[1], values[2]);
+          }
+        case NPY_DOUBLE:
+          {
+            double *values = reinterpret_cast<double*>(array->data);
+            return new Vector3x(values[0], values[1], values[2]);
+          }
+          break;
+        default:
+          return 0;
+      }
+
     }
  
     static void* convertible(PyObject *obj_ptr)
@@ -170,33 +220,72 @@ template <> struct ScalarTraits<double>
       if (!PyArray_Check(obj_ptr))
         return 0;
 
+      // only accept int, long, float and double
+      switch (PyArray_ObjectType(obj_ptr, 0)) {
+        case NPY_INT:
+        case NPY_LONG:
+        case NPY_FLOAT:
+        case NPY_DOUBLE:
+          break;
+        default:
+          return 0;
+      }
+      
       // do some type checking
       if ((PyArray_ObjectType(obj_ptr, 0) == NPY_FLOAT) || (PyArray_ObjectType(obj_ptr, 0) == NPY_DOUBLE))
-        if (ScalarTraits<Scalar>::isIntOrLong)
+        if (ScalarTraits<Scalar>::isInt)
           return 0;
 
       if ((PyArray_ObjectType(obj_ptr, 0) == NPY_INT) || (PyArray_ObjectType(obj_ptr, 0) == NPY_LONG))
-        if (ScalarTraits<Scalar>::isFloatOrDouble)
+        if (ScalarTraits<Scalar>::isFloat || ScalarTraits<Scalar>::isDouble)
           return 0;
+      
+      PyArrayObject *array = reinterpret_cast<PyArrayObject*>(obj_ptr);
 
+      // check the dimensions
+      if (array->nd != 1)
+        return 0; // the array has at least two dimensions (matrix)
+  
+      if (array->dimensions[0] != 3)
+        return 0; // the 1D array does not have exactly 3 elements
+ 
       return obj_ptr;
     }
 
     static void construct(PyObject *obj_ptr, converter::rvalue_from_python_stage1_data *data)
     {
       PyArrayObject *array = reinterpret_cast<PyArrayObject*>(obj_ptr);
-
-      // check the dimensions
-      if (array->nd != 1)
-        throw_error_already_set(); // the array has at least two dimensions (matrix)
-  
-      if (array->dimensions[0] != 3)
-        throw_error_already_set(); // the 1D array does not have exactly 3 elements
-
-      Scalar *values = reinterpret_cast<Scalar*>(array->data);
-    
       void *storage = ((converter::rvalue_from_python_storage<Vector3x>*)data)->storage.bytes;
-      new (storage) Vector3x(values[0], values[1], values[2]);
+
+      switch (PyArray_ObjectType(obj_ptr, 0)) {
+        case NPY_INT:
+          {
+            int *values = reinterpret_cast<int*>(array->data);
+            new (storage) Vector3x(values[0], values[1], values[2]);
+          }
+          break;
+        case NPY_LONG:
+          {
+            long *values = reinterpret_cast<long*>(array->data);
+            new (storage) Vector3x(values[0], values[1], values[2]);
+          }
+          break;
+        case NPY_FLOAT:
+          {
+            float *values = reinterpret_cast<float*>(array->data);
+            new (storage) Vector3x(values[0], values[1], values[2]);
+          }
+          break;
+        case NPY_DOUBLE:
+          {
+            double *values = reinterpret_cast<double*>(array->data);
+            new (storage) Vector3x(values[0], values[1], values[2]);
+          }
+          break;
+        default:
+          return 0;
+      }
+
       data->convertible = storage;
     }
   };

@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include <Eigen/Core>
+
 using namespace boost::python;
 
 // C = std::vector<T>
@@ -159,7 +161,8 @@ class QListTest
 
 void export_std_vector()
 {
-  export_std_vector< std::vector<double> >();
+  export_std_vector< std::vector<double> >(); // for Cube
+  export_std_vector< std::vector<Eigen::Vector3f> >(); // for Mesh
 
   /*  
   class_<QListTest>("QListTest")
