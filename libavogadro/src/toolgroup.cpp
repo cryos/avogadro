@@ -121,9 +121,10 @@ namespace Avogadro {
 
   void ToolGroup::setActiveTool(int i)
   {
-    Tool *tool = d->tools.at(i);
-    if(tool) {
-      setActiveTool(tool);
+    if (i < d->tools.size()) {
+      Tool *tool = d->tools.at(i);
+      if (tool)
+        setActiveTool(tool);
     }
   }
 
