@@ -6,11 +6,11 @@ eigen.cpp               done + unittest
 qstring.cpp             done + unit tests for this are spread out over the other tests
 qlist.cpp               done + unit tests for this are spread out over the other tests
 cube.cpp                done + unittest
+residue.cpp             done + unittest
 
 camera.cpp              done
 glwidget.cpp
 primitive.cpp           done
-residue.cpp             done
 painter.cpp             done
 paiterdevice.cpp        done
 plugin.cpp              done

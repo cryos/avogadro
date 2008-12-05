@@ -6,6 +6,7 @@ from bond import *
 from molecule import *
 from fragment import *
 from cube import *
+from residue import *
 
 if __name__ == "__main__":
   
@@ -16,6 +17,7 @@ if __name__ == "__main__":
   suite3 = unittest.TestLoader().loadTestsFromTestCase(TestMolecule)
   suite4 = unittest.TestLoader().loadTestsFromTestCase(TestFragment)
   suite5 = unittest.TestLoader().loadTestsFromTestCase(TestCube)
+  suite6 = unittest.TestLoader().loadTestsFromTestCase(TestResidue)
 
 
 

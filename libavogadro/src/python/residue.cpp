@@ -20,6 +20,8 @@ void export_Residue()
     // real functions 
     .def("atomId", &Residue::atomId)
     .def("setAtomId", &Residue::setAtomId)
+    // returns bool...
+    .def("setAtomIds", &Residue::setAtomIds)
     ;
 
 }
