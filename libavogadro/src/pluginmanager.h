@@ -139,7 +139,36 @@ namespace Avogadro {
      * Get the PluginFactory of type @p type with plugin name @p name.
      */
     static PluginFactory *factory(const QString &name, Plugin::Type type);
-    static QList<PluginItem *> pluginItems(Plugin::Type);
+    
+    /**
+     * Get a new instance of the extension with name @name
+     * @return 0 if there is no extension plugin with name @nam
+     */
+    Extension *extension(const QString &name, QObject *parent = 0);
+    /**
+     * Get a new instance of the tool with name @name
+     * @return 0 if there is no tool plugin with name @nam
+     */
+    Tool *tool(const QString &name, QObject *parent = 0);
+    /**
+     * Get a new instance of the color with name @name
+     * @return 0 if there is no color plugin with name @nam
+     */
+    Color *color(const QString &name, QObject *parent = 0);
+    /**
+     * Get a new instance of the color with name @name
+     * @return 0 if there is no engine plugin with name @nam
+     */
+    Engine *engine(const QString &name, QObject *parent = 0);
+
+    /** 
+     * Get a list with the plugin names of type @type
+     */
+    QList<QString> names(Plugin::Type type);
+    /** 
+     * Get a list with the plugin descriptions of type @type
+     */
+    QList<QString> descriptions(Plugin::Type type);
 
     /**
      * Get a list of all extension (new instances)
@@ -161,6 +190,11 @@ namespace Avogadro {
     /*static void readSettings(QSettings &settings);*/
 
   
+    /**
+     * Use by the plugin manager dialog
+     */
+    static QList<PluginItem *> pluginItems(Plugin::Type);
+
   public Q_SLOTS:
     void showDialog();
  

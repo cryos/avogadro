@@ -274,6 +274,81 @@ namespace Avogadro {
 
     return 0;
   }
+  
+  Extension* PluginManager::extension(const QString &name, QObject *parent)
+  {
+    loadFactories();
+    foreach(PluginFactory *factory, factories(Plugin::ExtensionType)) {
+      if (factory->name() == name) {
+        Extension *extension = static_cast<Extension *>(factory->createInstance(parent));
+        return extension;
+      }
+    }
+
+    return 0;
+  }
+
+  Tool* PluginManager::tool(const QString &name, QObject *parent)
+  {
+    loadFactories();
+    foreach(PluginFactory *factory, factories(Plugin::ToolType)) {
+      if (factory->name() == name) {
+        Tool *tool = static_cast<Tool *>(factory->createInstance(parent));
+        return tool;
+      }
+    }
+
+    return 0;
+  }
+
+  Color* PluginManager::color(const QString &name, QObject *parent)
+  {
+    loadFactories();
+    foreach(PluginFactory *factory, factories(Plugin::ColorType)) {
+      if (factory->name() == name) {
+        Color *color = static_cast<Color *>(factory->createInstance(parent));
+        return color;
+      }
+    }
+
+    return 0;
+  }
+
+  Engine* PluginManager::engine(const QString &name, QObject *parent)
+  {
+    loadFactories();
+    
+    foreach(PluginFactory *factory, factories(Plugin::EngineType)) {
+      if (factory->name() == name) {
+        Engine *engine = static_cast<Engine *>(factory->createInstance(parent));
+        return engine;
+      }
+    }
+
+    return 0;
+  }
+
+  QList<QString> PluginManager::names(Plugin::Type type)
+  {
+    loadFactories();
+
+    QList<QString> names;
+    foreach(PluginFactory *factory, factories(type))
+      names.append(factory->name());
+    
+    return names;
+  }
+
+  QList<QString> PluginManager::descriptions(Plugin::Type type)
+  {
+    loadFactories();
+
+    QList<QString> descriptions;
+    foreach(PluginFactory *factory, factories(type))
+      descriptions.append(factory->description());
+    
+    return descriptions;
+  }
 
   QVector<QList<PluginItem *> > &PluginManagerPrivate::m_items()
   {
