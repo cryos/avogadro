@@ -67,7 +67,7 @@ namespace Avogadro {
         m_atomId.push_back(atomId);
         return true;
       }
-      else if (m_atomId.size() < index) {
+      else if (index < m_atomId.size()) {
         m_atomId[index] = atomId;
         return true;
       }
