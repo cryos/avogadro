@@ -38,6 +38,8 @@ namespace Avogadro {
 
   class OrbitalSettingsWidget;
   class Cube;
+  class Mesh;
+  class MeshGenerator;
 
   //! Surface Engine class.
   class OrbitalEngine : public Engine
@@ -78,10 +80,10 @@ namespace Avogadro {
 
     protected:
       OrbitalSettingsWidget *m_settingsWidget;
-      Grid *m_grid;
-      Grid *m_grid2;
-      IsoGen *m_isoGen;
-      IsoGen *m_isoGen2;
+      MeshGenerator *m_meshGen1;
+      MeshGenerator *m_meshGen2;
+      Mesh *m_mesh1;
+      Mesh *m_mesh2;
       Eigen::Vector3f m_min, m_max;
       Color  m_posColor;
       Color  m_negColor;
@@ -90,7 +92,7 @@ namespace Avogadro {
       int    m_renderMode;
       bool   m_drawBox;
       bool   m_update;
-      Molecule *m_molecule;
+      const Molecule *m_molecule;
 
       void updateSurfaces(PainterDevice *pd);
 
