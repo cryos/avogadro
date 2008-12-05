@@ -34,6 +34,7 @@
 namespace Avogadro {
 
   using Eigen::Vector3i;
+  using Eigen::Vector3f;
   using Eigen::Vector3d;
 
   Cube::Cube(QObject *parent) : Primitive(CubeType, parent), m_data(0),
@@ -182,8 +183,39 @@ namespace Avogadro {
                          pos.z();
     if (index < m_data.size())
       return m_data.at(index);
-    else
-      return 0.0;
+    else {
+      qDebug() << "Attempted to access an index out of range.";
+      return 6969.0;
+    }
+  }
+
+  float Cube::valuef(const Vector3f &pos) const
+  {
+    // This is a really expensive operation and so should be avoided
+    // Interpolate the value at the supplied vector - trilinear interpolation...
+    Vector3f delta = pos - m_min;
+    // Find the integer low and high corners
+    Vector3i lC(delta.x() / m_spacing.x(),
+                delta.y() / m_spacing.y(),
+                delta.z() / m_spacing.z());
+    Vector3i hC(lC.x() + 1,
+                lC.y() + 1,
+                lC.z() + 1);
+    // So there are six corners in total - work out the delta of the position
+    // and the low corner
+    Vector3f P((delta.x() - lC.x()*m_spacing.x()) / m_spacing.x(),
+               (delta.y() - lC.y()*m_spacing.y()) / m_spacing.y(),
+               (delta.z() - lC.z()*m_spacing.z()) / m_spacing.z());
+    Vector3f dP = Vector3f(1.0, 1.0, 1.0) - P;
+    // Now calculate and return the interpolated value
+    return value(lC.x(), lC.y(), lC.z()) * dP.x() * dP.y() * dP.z() +
+           value(hC.x(), lC.y(), lC.z()) * P.x()  * dP.y() * dP.z() +
+           value(lC.x(), hC.y(), lC.z()) * dP.x() * P.y()  * dP.z() +
+           value(lC.x(), lC.y(), hC.z()) * dP.x() * dP.y() * P.z()  +
+           value(hC.x(), lC.y(), hC.z()) * P.x()  * dP.y() * P.z()  +
+           value(lC.x(), hC.y(), hC.z()) * dP.x() * P.y()  * P.z()  +
+           value(hC.x(), hC.y(), lC.z()) * P.x()  * P.y()  * dP.z() +
+           value(hC.x(), hC.y(), hC.z()) * P.x()  * P.y()  * P.z();
   }
 
   double Cube::value(const Vector3d &pos) const

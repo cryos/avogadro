@@ -45,22 +45,22 @@ namespace Avogadro {
    /**
     * @return The minimum point in the cube.
     */
-    Eigen::Vector3d min() { return m_min; }
+    Eigen::Vector3d min() const { return m_min; }
 
    /**
     * @return The maximum point in the cube.
     */
-    Eigen::Vector3d max() { return m_max; }
+    Eigen::Vector3d max() const { return m_max; }
 
    /**
     * @return The spacing of the grid.
     */
-    Eigen::Vector3d spacing() { return m_spacing; }
+    Eigen::Vector3d spacing() const { return m_spacing; }
 
    /**
     * @return The x, y and z dimensions of the cube.
     */
-    Eigen::Vector3i dimensions() { return m_points; }
+    Eigen::Vector3i dimensions() const { return m_points; }
 
     /**
      * Set the limits of the cube.
@@ -146,6 +146,15 @@ namespace Avogadro {
      * @warning This function is quite computationally expensive and should be
      * avoided where possible.
      */
+    float valuef(const Eigen::Vector3f &pos) const;
+
+    /**
+     * This function uses trilinear interpolation to find the value at points
+     * between those specified in the cube.
+     * @return Cube value at the specified position.
+     * @warning This function is quite computationally expensive and should be
+     * avoided where possible.
+     */
     double value(const Eigen::Vector3d &pos) const;
 
     /**
@@ -158,7 +167,7 @@ namespace Avogadro {
     bool setValue(int i, int j, int k, double value);
 
     inline void setName(QString name) { m_name = name; }
-    inline QString name() { return m_name; }
+    inline QString name() const { return m_name; }
 
   private:
     std::vector<double> m_data;
