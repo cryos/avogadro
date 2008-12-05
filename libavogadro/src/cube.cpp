@@ -88,21 +88,25 @@ namespace Avogadro {
   bool Cube::setLimits(const Molecule *mol, double spacing, double padding)
   {
     QList<Atom *> atoms = mol->atoms();
-    Vector3d min(0.0, 0.0, 0.0);
-    Vector3d max(0.0, 0.0, 0.0);
-    foreach (Atom *atom, atoms) {
-      if (atom->pos()->x() < min.x())
-        min[0] = atom->pos()->x();
-      else if (atom->pos()->x() > max.x())
-        max(0) = atom->pos()->x();
-      if (atom->pos()->y() < min.y())
-        min(1) = atom->pos()->y();
-      else if (atom->pos()->y() > max.y())
-        max(1) = atom->pos()->y();
-      if (atom->pos()->z() < min.z())
-        min(2) = atom->pos()->z();
-      else if (atom->pos()->z() > max.z())
-        max(2) = atom->pos()->z();
+    Vector3d min, max;
+    if (atoms.size()) {
+      min = max = *(atoms.at(0)->pos());
+      foreach (Atom *atom, atoms) {
+        if (atom->pos()->x() < min.x())
+          min[0] = atom->pos()->x();
+        else if (atom->pos()->x() > max.x())
+          max(0) = atom->pos()->x();
+        if (atom->pos()->y() < min.y())
+          min(1) = atom->pos()->y();
+        else if (atom->pos()->y() > max.y())
+          max(1) = atom->pos()->y();
+        if (atom->pos()->z() < min.z())
+          min(2) = atom->pos()->z();
+        else if (atom->pos()->z() > max.z())
+          max(2) = atom->pos()->z();
+      }
+    } else {
+      min = max = Eigen::Vector3d::Zero();
     }
 
     // Now to take care of the padding term

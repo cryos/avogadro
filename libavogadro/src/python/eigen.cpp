@@ -5,9 +5,28 @@
 
 #include <Eigen/Geometry>
 
-//#include <iostream>
+#include <iostream>
 
 using namespace boost::python;
+
+template <typename Scalar> struct ScalarTraits;
+template <> struct ScalarTraits<int>
+{
+  enum { isIntOrLong = 1, isFloatOrDouble = 0 };
+};
+template <> struct ScalarTraits<long>
+{
+  enum { isIntOrLong = 1, isFloatOrDouble = 0 };
+};
+template <> struct ScalarTraits<float>
+{
+  enum { isIntOrLong = 0, isFloatOrDouble = 1 };
+};
+template <> struct ScalarTraits<double>
+{
+  enum { isIntOrLong = 0, isFloatOrDouble = 1 };
+};
+
 
   /***********************************************************************
    *
@@ -120,10 +139,19 @@ using namespace boost::python;
 
     static void* convert(PyObject *obj_ptr)
     {
-      //if (!PyArray_Check(obj_ptr))
-      //  throw_error_already_set();
+      if (!PyArray_Check(obj_ptr))
+        throw_error_already_set();
 
       PyArrayObject *array = reinterpret_cast<PyArrayObject*>(obj_ptr);
+
+      // do some type checking
+      if ((PyArray_ObjectType(obj_ptr, 0) == NPY_FLOAT) || (PyArray_ObjectType(obj_ptr, 0) == NPY_DOUBLE))
+        if (ScalarTraits<Scalar>::isIntOrLong)
+          return 0;
+
+      if ((PyArray_ObjectType(obj_ptr, 0) == NPY_INT) || (PyArray_ObjectType(obj_ptr, 0) == NPY_LONG))
+        if (ScalarTraits<Scalar>::isFloatOrDouble)
+          return 0;
 
       // check the dimensions
       if (array->nd != 1)
@@ -132,7 +160,6 @@ using namespace boost::python;
       if (array->dimensions[0] != 3)
         throw_error_already_set(); // the 1D array does not have exactly 3 elements
 
-      //double *values = reinterpret_cast<double*>(array->data);
       Scalar *values = reinterpret_cast<Scalar*>(array->data);
       
       return new Vector3x(values[0], values[1], values[2]);
@@ -142,7 +169,16 @@ using namespace boost::python;
     {
       if (!PyArray_Check(obj_ptr))
         return 0;
-      
+
+      // do some type checking
+      if ((PyArray_ObjectType(obj_ptr, 0) == NPY_FLOAT) || (PyArray_ObjectType(obj_ptr, 0) == NPY_DOUBLE))
+        if (ScalarTraits<Scalar>::isIntOrLong)
+          return 0;
+
+      if ((PyArray_ObjectType(obj_ptr, 0) == NPY_INT) || (PyArray_ObjectType(obj_ptr, 0) == NPY_LONG))
+        if (ScalarTraits<Scalar>::isFloatOrDouble)
+          return 0;
+
       return obj_ptr;
     }
 
@@ -157,7 +193,6 @@ using namespace boost::python;
       if (array->dimensions[0] != 3)
         throw_error_already_set(); // the 1D array does not have exactly 3 elements
 
-      //double *values = reinterpret_cast<double*>(array->data);
       Scalar *values = reinterpret_cast<Scalar*>(array->data);
     
       void *storage = ((converter::rvalue_from_python_storage<Vector3x>*)data)->storage.bytes;
@@ -258,8 +293,8 @@ using namespace boost::python;
 
     static void* convert(PyObject *obj_ptr)
     {
-      //if (!PyArray_Check(obj_ptr))
-      //  throw_error_already_set();
+      if (!PyArray_Check(obj_ptr))
+        throw_error_already_set();
 
       PyArrayObject *array = reinterpret_cast<PyArrayObject*>(obj_ptr);
 

@@ -2,13 +2,14 @@ atom.cpp                done + unittest (Atom::valence not working)
 bond.cpp                done + unittest (Bond::otherAtom not working)
 molecule.cpp            done + unittest 
 fragment.cpp            done + unittest
+eigen.cpp               done + unittest
+qstring.cpp             done + unit tests for this are spread out over the other tests
+qlist.cpp               done + unit tests for this are spread out over the other tests
+cube.cpp                done + unittest
+
 camera.cpp              done
-cube.cpp                done
-eigen.cpp               done
 glwidget.cpp
 primitive.cpp           done
-qlist.cpp               done
-qstring.cpp             done
 residue.cpp             done
 painter.cpp             done
 paiterdevice.cpp        done

@@ -11,9 +11,11 @@ using namespace Avogadro;
 void export_Cube()
 {
 
-  bool (Cube::*setLimits_ptr1)(const Eigen::Vector3d &, const Eigen::Vector3d &, double) = &Cube::setLimits;
-  bool (Cube::*setLimits_ptr2)(const Eigen::Vector3d &, const Eigen::Vector3i &, double) = &Cube::setLimits;
-  bool (Cube::*setLimits_ptr3)(const Molecule *, double, double) = &Cube::setLimits;
+  bool (Cube::*setLimits_ptr1)(const Eigen::Vector3d &, const Eigen::Vector3d &, 
+      const Eigen::Vector3i&) = &Cube::setLimits;
+  bool (Cube::*setLimits_ptr2)(const Eigen::Vector3d &, const Eigen::Vector3d &, double) = &Cube::setLimits;
+  bool (Cube::*setLimits_ptr3)(const Eigen::Vector3d &, const Eigen::Vector3i &, double) = &Cube::setLimits;
+  bool (Cube::*setLimits_ptr4)(const Molecule *, double, double) = &Cube::setLimits;
   double (Cube::*value_ptr1)(int, int, int) const = &Cube::value;
   double (Cube::*value_ptr2)(const Eigen::Vector3i &) const = &Cube::value;
   double (Cube::*value_ptr3)(const Eigen::Vector3d &) const = &Cube::value;
@@ -31,6 +33,7 @@ void export_Cube()
     .def("setLimits", setLimits_ptr1)
     .def("setLimits", setLimits_ptr2)
     .def("setLimits", setLimits_ptr3)
+    .def("setLimits", setLimits_ptr4)
     .def("closestIndex", &Cube::closestIndex)
     .def("indexVector", &Cube::indexVector)
     .def("position", &Cube::position)
@@ -38,6 +41,8 @@ void export_Cube()
     .def("value", value_ptr2)
     .def("value", value_ptr3)
     .def("setValue", &Cube::setValue)
+    // provide setData, it return bool...
+    .def("setData", &Cube::setData)
     ;
 
 }

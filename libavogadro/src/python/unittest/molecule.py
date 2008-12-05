@@ -34,11 +34,15 @@ class TestMolecule(unittest.TestCase):
     atom = self.molecule.newAtom()
 
     pos = self.molecule.atomPos(atom.id)
-    self.assertEqual(pos.all(), array([0., 0., 0.]).all())
+    self.assertEqual(pos[0], 0.0)
+    self.assertEqual(pos[0], 0.0)
+    self.assertEqual(pos[0], 0.0)
     
     self.molecule.setAtomPos(atom.id, array([1., 2., 3.]))
     pos = self.molecule.atomPos(atom.id)
-    self.assertEqual(pos.all(), array([1., 2., 3.]).all())
+    self.assertEqual(pos[0], 1.0)
+    self.assertEqual(pos[1], 2.0)
+    self.assertEqual(pos[2], 3.0)
 
   def test_deleteAtom(self):
     # add 2 atoms
@@ -344,7 +348,9 @@ class TestMolecule(unittest.TestCase):
     # compute the center
     center = (atom1.pos + atom2.pos) / 2.0
 
-    self.assertEqual(self.molecule.center.all(), center.all())
+    self.assertEqual(self.molecule.center[0], center[0])
+    self.assertEqual(self.molecule.center[1], center[1])
+    self.assertEqual(self.molecule.center[2], center[2])
   
   def test_normalVector(self):
     atom1 = self.molecule.newAtom()
@@ -370,7 +376,6 @@ class TestMolecule(unittest.TestCase):
     atom = self.molecule.newAtom()
     vec = array([1., 2., 3.])
     self.molecule.translate(vec)
-    #self.assertEqual(atom.pos.all(), vec.all())
 
 
 

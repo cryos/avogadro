@@ -14,8 +14,6 @@ class TestFragment(unittest.TestCase):
     fragment.name = "testing"
     self.assertEqual(fragment.name, "testing")
     
-    print "FIXME: Fragment doesn't require a Molecule as parent, should users be able to instanciate Fragments from python?"
-
   def test_atom(self):
     fragment = self.molecule.newRing() # Ring = Fragment
 

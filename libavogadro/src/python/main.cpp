@@ -7,6 +7,7 @@ void export_Eigen();
 
 void export_QString();
 void export_QList();
+void export_std_vector();
 
 void export_Primitive();
 void export_Atom();
@@ -31,6 +32,7 @@ BOOST_PYTHON_MODULE(Avogadro) {
 
   export_QString();
   export_QList();
+  export_std_vector();
 
   export_Primitive();
   export_Molecule();
