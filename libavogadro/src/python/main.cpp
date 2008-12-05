@@ -25,6 +25,7 @@ void export_Color();
 void export_Tool();
 void export_Engine();
 void export_Mesh();
+void export_PrimitiveList();
 
 BOOST_PYTHON_MODULE(Avogadro) {
   
@@ -51,6 +52,7 @@ BOOST_PYTHON_MODULE(Avogadro) {
   export_Tool();
   export_Engine();
   export_Mesh();
+  export_PrimitiveList();
 
 
 

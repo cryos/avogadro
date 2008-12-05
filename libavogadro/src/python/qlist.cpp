@@ -154,9 +154,6 @@ struct QList_from_python_list
 
 };
 
-
-// NEEDED ?????
-/*
 template <class C>
 struct QList_ptr_from_python_list
 {
@@ -253,7 +250,6 @@ struct QList_ptr_from_python_list
   }
 
 };
-*/
 
 template <class T>
 void export_list()
@@ -266,7 +262,7 @@ template <class T>
 void export_ptr_list()
 {
   to_python_converter<T, QList_ptr_to_python_list<T> >();
-  //QList_ptr_from_python_list<T>();
+  QList_ptr_from_python_list<T>();
 }
 
 /*
@@ -311,6 +307,7 @@ void export_QList()
     ;
   */
 
+  export_ptr_list< QList<Primitive*> >();
   export_ptr_list< QList<Atom*> >();
   export_ptr_list< QList<Bond*> >();
   export_ptr_list< QList<Residue*> >();

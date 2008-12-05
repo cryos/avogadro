@@ -9,9 +9,9 @@ cube.cpp                done + unittest
 residue.cpp             done + unittest
 primitive.cpp           done + unit tests for this are spread out over the other tests
 mesh.cpp                done + unittest
+primitivelist.cpp       done + unittest
 
 
-primitivelist.cpp       done
 pluginmanager.cpp       done (need testing...)
 
 
