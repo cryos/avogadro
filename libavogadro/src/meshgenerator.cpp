@@ -91,6 +91,16 @@ namespace Avogadro {
     m_normals.resize(0);
   }
 
+  void MeshGenerator::clear()
+  {
+    m_iso = 0.0;
+    m_cube =0;
+    m_mesh = 0;
+    m_stepSize = 0.0;
+    m_min.setZero();
+    m_dim.setZero();
+  }
+
   Vector3f MeshGenerator::normal(const Vector3f &pos)
   {
     Vector3f normal(m_cube->valuef(pos - Vector3f(0.01, 0.00, 0.00))
@@ -177,7 +187,7 @@ namespace Avogadro {
           m_vertices.push_back(asEdgeVertex[iVertex]);
         }
       }
-        
+
     }
     return true;
   }
