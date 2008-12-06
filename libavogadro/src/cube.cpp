@@ -193,7 +193,7 @@ namespace Avogadro {
   {
     // This is a really expensive operation and so should be avoided
     // Interpolate the value at the supplied vector - trilinear interpolation...
-    Vector3f delta = pos - m_min;
+    Vector3f delta = pos - m_min.cast<float>();
     // Find the integer low and high corners
     Vector3i lC(delta.x() / m_spacing.x(),
                 delta.y() / m_spacing.y(),
