@@ -16,6 +16,7 @@ plugin.cpp              done + unittest
 tool.cpp                done + unittest
 color.cpp               done + unittest
 engine.cpp              done + unittest
+extension.h             done + unittest
 
 
 
@@ -41,4 +42,3 @@ pythonscript.h
 idlist.h
 sphere.h
 cylinder.h
-extension.h

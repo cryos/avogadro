@@ -101,6 +101,6 @@ add_subdirectory(extensions)
 add_subdirectory(colors)
 
 # Add the boost python module if the boost::python was found
-if(BOOST_PYTHON_LIBS OR Boost_PYTHON_FOUND)
+if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
         add_subdirectory(python)
-endif(BOOST_PYTHON_LIBS OR Boost_PYTHON_FOUND)
+endif(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)

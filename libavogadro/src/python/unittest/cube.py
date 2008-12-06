@@ -43,9 +43,9 @@ class TestCube(unittest.TestCase):
     self.assertEqual(cube.dimensions[1], dimensions[1])
     self.assertEqual(cube.dimensions[2], dimensions[2])
    
-    self.assertEqual(cube.spacing[0], 1.0)
-    self.assertEqual(cube.spacing[1], 2.0)
-    self.assertEqual(cube.spacing[2], 5.0)
+    self.assertEqual(cube.spacing[0], 20.0 / 19)
+    self.assertEqual(cube.spacing[1], 20.0 / 9 )
+    self.assertEqual(cube.spacing[2], 20.0 / 3)
 
   # test setLimits(Vector3d, Vector3d, double)
   def test_setLimits_spacing(self):
@@ -67,9 +67,9 @@ class TestCube(unittest.TestCase):
     self.assertEqual(cube.dimensions[1], 20)
     self.assertEqual(cube.dimensions[2], 20)
    
-    self.assertEqual(cube.spacing[0], 1.0)
-    self.assertEqual(cube.spacing[1], 1.0)
-    self.assertEqual(cube.spacing[2], 1.0)
+    self.assertEqual(cube.spacing[0], 20.0 / 19)
+    self.assertEqual(cube.spacing[1], 20.0 / 19)
+    self.assertEqual(cube.spacing[2], 20.0 / 19)
 
   # test setLimits(Vector3d, Vector3i, double)
   def test_setLimits_dimensions_spacing(self):
@@ -83,9 +83,9 @@ class TestCube(unittest.TestCase):
     self.assertEqual(cube.min[1], min[1])
     self.assertEqual(cube.min[2], min[2])
     
-    self.assertEqual(cube.max[0], 10.0)
-    self.assertEqual(cube.max[1], 0.0)
-    self.assertEqual(cube.max[2], -6.0)
+    self.assertEqual(cube.max[0], 9.0)
+    self.assertEqual(cube.max[1], -1.0)
+    self.assertEqual(cube.max[2], -7.0)
  
     self.assertEqual(cube.dimensions[0], 20)
     self.assertEqual(cube.dimensions[1], 10)
@@ -115,9 +115,9 @@ class TestCube(unittest.TestCase):
     self.assertEqual(cube.dimensions[1], 4)
     self.assertEqual(cube.dimensions[2], 4)
    
-    self.assertEqual(cube.spacing[0], 1.0)
-    self.assertEqual(cube.spacing[1], 1.0)
-    self.assertEqual(cube.spacing[2], 1.0)
+    self.assertEqual(cube.spacing[0], 4.0 / 3)
+    self.assertEqual(cube.spacing[1], 4.0 / 3)
+    self.assertEqual(cube.spacing[2], 4.0 / 3)
 
   def test_data(self):
     cube = self.molecule.newCube()

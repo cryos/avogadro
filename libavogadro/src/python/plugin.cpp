@@ -27,7 +27,8 @@ void export_Plugin()
     .add_property("name", &Plugin::name)
     .add_property("description", &Plugin::description)
     .add_property("settingsWidget", make_function(&Plugin::settingsWidget, 
-          return_value_policy<reference_existing_object>()))
+          //return_value_policy<reference_existing_object>()))
+          return_value_policy<return_by_value>())) // use the QClass_converters to give a real PyQt object
     ;
   
   class_<Avogadro::PluginFactory, boost::noncopyable>("PluginFactory", no_init)

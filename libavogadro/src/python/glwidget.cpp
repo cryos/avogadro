@@ -31,7 +31,7 @@ void export_GLWidget()
   Molecule* (GLWidget::*molecule_ptr)() = &GLWidget::molecule;
 
 
-  class_<Avogadro::GLWidget, boost::noncopyable>("GLWidget")
+  class_<Avogadro::GLWidget, /*bases<QWidget>,*/ boost::noncopyable>("GLWidget")
     // read/write properties
     .add_property("quickRender", &GLWidget::setQuickRender, &GLWidget::quickRender)
     .add_property("colorMap", make_function(&GLWidget::colorMap, return_value_policy<reference_existing_object>()),

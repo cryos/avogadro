@@ -3,7 +3,7 @@
 
 using namespace boost::python;
 
-void export_QtLib();
+void export_sip();
 
 void export_Eigen();
 
@@ -30,11 +30,14 @@ void export_Mesh();
 void export_PrimitiveList();
 void export_PluginManager();
 void export_ToolGroup();
+void export_Extension();
 
 BOOST_PYTHON_MODULE(Avogadro) {
   
   // include the Eigen converter(s)
   export_Eigen();
+
+  export_sip();
 
   export_QString();
   export_QList();
@@ -59,7 +62,7 @@ BOOST_PYTHON_MODULE(Avogadro) {
   export_PrimitiveList();
   export_PluginManager();
   export_ToolGroup();
-  export_QtLib();
+  export_Extension();
 
 
 
