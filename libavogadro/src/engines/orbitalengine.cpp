@@ -30,7 +30,6 @@
 #include <avogadro/cube.h>
 #include <avogadro/meshgenerator.h>
 
-#include <QGLWidget>
 #include <QReadWriteLock>
 #include <QDebug>
 
@@ -89,12 +88,12 @@ namespace Avogadro {
 
       if (m_mesh1->stable()) {
         pd->painter()->setColor(&m_posColor);
-        pd->painter()->drawMesh(m_mesh1, m_renderMode);
+        pd->painter()->drawMesh(*m_mesh1, m_renderMode);
       }
 
       if (m_mesh2->stable()) {
         pd->painter()->setColor(&m_negColor);
-        pd->painter()->drawMesh(m_mesh2, m_renderMode);
+        pd->painter()->drawMesh(*m_mesh2, m_renderMode);
       }
 
       renderSurfaces(pd);
@@ -148,15 +147,15 @@ namespace Avogadro {
     if (m_mesh1->stable() && m_mesh2->stable()) {
       if (m_renderMode < 2) {
         pd->painter()->setColor(&m_posColor);
-        pd->painter()->drawMesh(m_mesh1, 1);
+        pd->painter()->drawMesh(*m_mesh1, 1);
         pd->painter()->setColor(&m_negColor);
-        pd->painter()->drawMesh(m_mesh2, 1);
+        pd->painter()->drawMesh(*m_mesh2, 1);
       }
       else {
         pd->painter()->setColor(&m_posColor);
-        pd->painter()->drawMesh(m_mesh1, 2);
+        pd->painter()->drawMesh(*m_mesh1, 2);
         pd->painter()->setColor(&m_negColor);
-        pd->painter()->drawMesh(m_mesh2, 2);
+        pd->painter()->drawMesh(*m_mesh2, 2);
       }
       renderSurfaces(pd);
     }
@@ -207,7 +206,7 @@ namespace Avogadro {
 
   void OrbitalEngine::updateSurfaces(PainterDevice *pd)
   {
-    // Attempt to find a grid
+    // Attempt to find a cube
     m_molecule = pd->molecule();
     int iCube = 0;
     QList<Cube *> cubes = pd->molecule()->cubes();
@@ -218,8 +217,8 @@ namespace Avogadro {
     else {
       if (m_settingsWidget) {
         if (!m_settingsWidget->orbitalCombo->count()) {
-          // Use first grid/orbital
-          // Two grids -- one for positive isovalue, one for negative
+          // Use first cube/orbital
+          // Two meshes -- one for positive isovalue, one for negative
           iCube = 0;
           // Add the orbitals
           connect(m_molecule, SIGNAL(updated()),
@@ -285,7 +284,7 @@ namespace Avogadro {
 
   Engine::EngineFlags OrbitalEngine::flags() const
   {
-    return Engine::Transparent | Engine::Atoms;
+    return Engine::Transparent | Engine::Surfaces;
   }
 
   void OrbitalEngine::setOrbital(int)
@@ -375,7 +374,7 @@ namespace Avogadro {
       m_settingsWidget->posColor->setColor(initial);
       initial.setRgbF(m_negColor.red(), m_negColor.green(), m_negColor.blue());
       m_settingsWidget->negColor->setColor(initial);
-      m_update = true;
+      updateOrbitalCombo();
     }
     return m_settingsWidget;
   }
@@ -430,6 +429,8 @@ namespace Avogadro {
   {
     Engine::readSettings(settings);
     m_alpha = settings.value("alpha", 0.5).toDouble();
+    m_posColor.setAlpha(m_alpha);
+    m_negColor.setAlpha(m_alpha);
     m_iso = settings.value("iso", 0.02).toDouble();
     m_renderMode = settings.value("renderMode", 0).toInt();
     m_drawBox = settings.value("drawBox", false).toBool();

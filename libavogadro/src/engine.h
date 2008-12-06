@@ -49,7 +49,7 @@
     Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
     Plugin::Type type() const { return Plugin::EngineType; }; \
     QString name() const { return c::staticName(); } \
-    QString description() const { return d; }; 
+    QString description() const { return d; };
 
 namespace Avogadro {
 
@@ -83,7 +83,8 @@ namespace Avogadro {
         Overlay = 0x02, /// renders overlay
         Bonds = 0x04, /// renders bonds
         Atoms = 0x08, /// renders atoms
-        Molecules = 0x10 /// renders molecules
+        Molecules = 0x10, /// renders molecules
+        Surfaces = 0x12 /// renders some kind of surface
       };
       Q_DECLARE_FLAGS(EngineFlags, EngineFlag)
 
@@ -97,12 +98,12 @@ namespace Avogadro {
        */
       virtual ~Engine();
 
-      /** 
-       * Plugin Type 
+      /**
+       * Plugin Type
        */
       Plugin::Type type() const;
- 
-      /** 
+
+      /**
        * Plugin Type Name (Engines)
        */
       QString typeName() const;
