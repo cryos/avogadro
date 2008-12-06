@@ -37,6 +37,7 @@
 #include <QCoreApplication>
 #include <QFileInfo>
 #include <QMessageBox>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
