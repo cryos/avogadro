@@ -119,7 +119,7 @@ namespace Avogadro {
       /**
        * The valence of the atom. FIXME - don't think this will cut it...
        */
-      double valence() { return static_cast<double>(m_neighbors.size()); }
+      double valence() { return static_cast<double>(m_bonds.size()); }
 
       /**
        * @return True if the atom is a hydrogen.
@@ -158,7 +158,7 @@ namespace Avogadro {
       Molecule *m_molecule; /** Parent molecule - should always be valid. **/
       int m_pos;
       int m_atomicNumber;
-      QList<unsigned long int> m_bonds, m_neighbors;
+      QList<unsigned long int> m_bonds;
       mutable double m_partialCharge;
       Q_DECLARE_PRIVATE(Atom)
   };

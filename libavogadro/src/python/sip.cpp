@@ -1,3 +1,5 @@
+#ifdef ENABLE_PYTHON_SIP
+
 #include <boost/python.hpp>
 #include <boost/tuple/tuple.hpp>
 
@@ -75,6 +77,7 @@ struct QClass_converters
   
 };
 
+// QUndoCommand doesn't have metaObject()
 template <>
 struct QClass_converters<QUndoCommand>
 {
@@ -116,61 +119,38 @@ struct QClass_converters<QUndoCommand>
 
 
 
-  //template <typename T>
-  struct QList_QClass_to_array_PyQt
-  {
-    typedef QList<QAction*>::const_iterator iter;
-
-    static PyObject* convert(const QList<QAction*> &qList)
-    {
-      sipWrapperType *type = sip_API->api_find_class("QAction");
-      if (!type)
-        return 0;
-      
-      boost::python::list pyList;
-
-      foreach (QAction *action, qList) {
-        PyObject *sip_obj = sip_API->api_convert_from_instance(action, type, 0);
-        if (!sip_obj)
-          continue;
-        boost::python::object real_obj = object(handle<>(sip_obj));
-        pyList.append(real_obj);
-      }
-
-      return boost::python::incref(pyList.ptr());
-    }
-  };
-
-
-
-
-
-
-
-
-
-
-
-class PyQtTest
+struct QList_QClass_to_array_PyQt
 {
-  public:
-    void function(QWidget *widget)
-    {
-      widget->show();
+  typedef QList<QAction*>::const_iterator iter;
+
+  static PyObject* convert(const QList<QAction*> &qList)
+  {
+    sipWrapperType *type = sip_API->api_find_class("QAction");
+    if (!type)
+      return 0;
+     
+    boost::python::list pyList;
+
+    foreach (QAction *action, qList) {
+      PyObject *sip_obj = sip_API->api_convert_from_instance(action, type, 0);
+      if (!sip_obj)
+        continue;
+      boost::python::object real_obj = object(handle<>(sip_obj));
+      pyList.append(real_obj);
     }
 
-    QWidget* newWidget()
-    {
-      return new QWidget(0);
-    }
-
+    return boost::python::incref(pyList.ptr());
+  }
 };
 
+#endif
 
 
 void export_sip()
 {
-  init_sip_api();
+#ifdef ENABLE_PYTHON_SIP
+  if (!init_sip_api())
+    return;
   
   QClass_converters<QWidget>();
   QClass_converters<QAction>();
@@ -178,10 +158,6 @@ void export_sip()
   QClass_converters<QUndoCommand>();
   
   to_python_converter<QList<QAction*>, QList_QClass_to_array_PyQt>();
-
-  class_<PyQtTest>("PyQtTest")
-    .def("show", &PyQtTest::function)
-    .def("newWidget", &PyQtTest::newWidget, return_value_policy<return_by_value>())
-    ;
-
+#endif
 }
+

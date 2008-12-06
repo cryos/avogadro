@@ -96,6 +96,8 @@ class TestAtom(unittest.TestCase):
     # bond.setAtoms() calls atom.addBond()
     bond1.setAtoms(atom1.id, atom2.id, 1)
     bond2.setAtoms(atom1.id, atom3.id, 1)
+
+    print atom1.bonds
     
     self.assertEqual(atom1.valence, 2)
 

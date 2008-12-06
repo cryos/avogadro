@@ -12,13 +12,8 @@ FILE(GLOB wrapper_SRCS "*.cpp")
 # make sure we have sip
 if (EXISTS ${PYTHON_INCLUDE_PATH}/sip.h)
   message(STATUS "Found sip.h - Enabled PyQt support")
-  set(PYTHON_SIP_FOUND TRUE)
+  add_definitions( -DENABLE_PYTHON_SIP )
 endif (EXISTS ${PYTHON_INCLUDE_PATH}/sip.h)
-
-# remove sip.cpp from the list if we don't have sip.h
-if (NOT PYTHON_SIP_FOUND)
-  list(REMOVE_ITEM wrapper_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/sip.cpp)
-endif (NOT PYTHON_SIP_FOUND)
 
 ADD_LIBRARY(python-module SHARED ${wrapper_SRCS})
 SET_TARGET_PROPERTIES(python-module PROPERTIES OUTPUT_NAME Avogadro)

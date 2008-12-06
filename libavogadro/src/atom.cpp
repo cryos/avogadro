@@ -77,11 +77,6 @@ using Eigen::Vector3d;
       // Should never happen - warn if it does...
       qDebug() << "Atom" << m_id << "tried to add duplicate bond" << bond;
     }
-    // Update the neighbors list
-//    if (bond->beginAtomId() == id())
-//      m_neighbors.push_back(bond->endAtomId());
-//    else
-//      m_neighbors.push_back(bond->beginAtomId());
   }
 
   void Atom::deleteBond(Bond* bond)
@@ -97,11 +92,6 @@ using Eigen::Vector3d;
     if (index >= 0) {
       m_bonds.removeAt(index);
     }
-    // Update the neighbors list too
-//    if (bond->beginAtomId() == id())
-//      m_neighbors.removeAt(m_neighbors.indexOf(bond->endAtomId()));
-//    else
-//      m_neighbors.removeAt(m_neighbors.indexOf(bond->beginAtomId()));
   }
 
   QList<unsigned long int> Atom::neighbors() const
