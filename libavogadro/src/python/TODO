@@ -15,8 +15,8 @@ toolgroup.cpp           done + unittest
 plugin.cpp              done + unittest
 tool.cpp                done + unittest
 color.cpp               done + unittest
+engine.cpp              done + unittest
 
-engine.cpp              done (don't wrap renderOpaque, ...)
 
 
 camera.cpp              done

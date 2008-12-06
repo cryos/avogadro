@@ -10,7 +10,8 @@ void export_PrimitiveList()
 {
   int (PrimitiveList::*count_ptr)( Primitive::Type ) const = &PrimitiveList::count;
 
-  class_<Avogadro::PrimitiveList, boost::noncopyable>("PrimitiveList")
+  //class_<Avogadro::PrimitiveList, boost::noncopyable>("PrimitiveList")
+  class_<Avogadro::PrimitiveList>("PrimitiveList")
     // constructors
     .def(init<const PrimitiveList&>())
     .def(init<const QList<Primitive*>&>())

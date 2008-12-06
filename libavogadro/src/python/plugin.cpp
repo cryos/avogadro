@@ -34,7 +34,8 @@ void export_Plugin()
     .add_property("type", &PluginFactory::type)
     .add_property("name", &PluginFactory::name)
     .add_property("description", &PluginFactory::description)
-    .def("createInstance", &PluginFactory::createInstance, return_value_policy<reference_existing_object>())
+    //.def("createInstance", &PluginFactory::createInstance, return_value_policy<reference_existing_object>())
+    .def("createInstance", &PluginFactory::createInstance, return_value_policy<manage_new_object>())
     ;
    
 }
