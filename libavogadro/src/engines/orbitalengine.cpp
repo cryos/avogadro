@@ -255,6 +255,8 @@ namespace Avogadro {
 
   void OrbitalEngine::updateOrbitalCombo()
   {
+    if (!m_settingsWidget)
+      return;
     // Reset the orbital combo
     qDebug() << "Update orbital combo called...";
     int tmp = m_settingsWidget->orbitalCombo->currentIndex();

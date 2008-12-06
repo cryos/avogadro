@@ -52,6 +52,8 @@ namespace Avogadro {
 
   bool MeshGenerator::initialize(const Cube *cube, Mesh *mesh, float iso)
   {
+    if (!cube || !mesh)
+      return false;
     m_cube = cube;
     m_mesh = mesh;
     m_iso = iso;
