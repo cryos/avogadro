@@ -166,13 +166,24 @@ namespace Avogadro {
      */
     bool setValue(int i, int j, int k, double value);
 
-    inline void setName(QString name) { m_name = name; }
-    inline QString name() const { return m_name; }
+    /**
+     * @return The minimum  value at any point in the Cube.
+     */
+    double minValue() const { return m_minValue; }
+
+    /**
+     * @return The minimum  value at any point in the Cube.
+     */
+    double maxValue() const { return m_maxValue; }
+
+    void setName(QString name) { m_name = name; }
+    QString name() const { return m_name; }
 
   private:
     std::vector<double> m_data;
     Eigen::Vector3d m_min, m_max, m_spacing;
     Eigen::Vector3i m_points;
+    double m_minValue, m_maxValue;
     QString m_name;
     Q_DECLARE_PRIVATE(Cube)
   };

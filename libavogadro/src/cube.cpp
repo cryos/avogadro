@@ -39,7 +39,7 @@ namespace Avogadro {
 
   Cube::Cube(QObject *parent) : Primitive(CubeType, parent), m_data(0),
     m_min(0.0, 0.0, 0.0), m_max(0.0, 0.0, 0.0), m_spacing(0.0, 0.0, 0.0),
-    m_points(0, 0, 0)
+    m_points(0, 0, 0), m_minValue(0.0), m_maxValue(0.0)
   {
   }
 
@@ -52,9 +52,9 @@ namespace Avogadro {
   {
     // We can calculate all necessary properties and initialise our data
     Vector3d delta = max - min;
-    m_spacing = Vector3d(delta.x() / points.x(),
-                         delta.y() / points.y(),
-                         delta.z() / points.z());
+    m_spacing = Vector3d(delta.x() / (points.x()-1),
+                         delta.y() / (points.y()-1),
+                         delta.z() / (points.z()-1));
     m_min = min;
     m_max = max;
     m_points = points;
@@ -75,9 +75,9 @@ namespace Avogadro {
   bool Cube::setLimits(const Vector3d &min, const Vector3i &dim,
                        double spacing)
   {
-    Vector3d max = Vector3d(min.x() + dim.x() * spacing,
-                            min.y() + dim.y() * spacing,
-                            min.z() + dim.z() * spacing);
+    Vector3d max = Vector3d(min.x() + (dim.x()-1) * spacing,
+                            min.y() + (dim.y()-1) * spacing,
+                            min.z() + (dim.z()-1) * spacing);
     m_min = min;
     m_max = max;
     m_points = dim;
@@ -124,12 +124,27 @@ namespace Avogadro {
 
   bool Cube::setData(const std::vector<double> &values)
   {
+    if (!values.size()) {
+      qDebug() << "Zero sized vector passed to Cube::setData. Nothing to do.";
+      return false;
+    }
     if (static_cast<int>(values.size()) == m_points.x() * m_points.y() * m_points.z()) {
       m_data = values;
       qDebug() << "Loaded in cube data" << m_data.size();
+      // Now to update the minimum and maximum values
+      m_minValue = m_maxValue = m_data[0];
+      foreach(double val, m_data) {
+        if (val < m_minValue)
+          m_minValue = val;
+        else if (val > m_maxValue)
+          m_maxValue = val;
+      }
       return true;
     }
     else {
+      qDebug() << "The vector passed to Cube::setData does not have the correct"
+               << "size. Expected" << m_points.x() * m_points.y() * m_points.z()
+               << "got" << values.size();
       return false;
     }
   }
