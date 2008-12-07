@@ -227,7 +227,8 @@ namespace Avogadro
     double doD5(const Basis* basis, const Eigen::Vector3d& delta, double dr2);
 
     /// These are the re-entrant, entire cube forms of the calculations
-    static void processShell(BasisShell &shell);
+    static Cube * processShell(BasisShell &shell);
+    static void reduceShells(Cube *rCube, Cube *iCube);
     static void cubeS(BasisSet *set, std::vector<double> &vals, const Basis* basis,
                       const std::vector<double> &delta2, unsigned int indexMO);
     static void cubeP(BasisSet *set, std::vector<double> &vals, const Basis* basis,

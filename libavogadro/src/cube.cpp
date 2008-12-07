@@ -171,6 +171,10 @@ namespace Avogadro {
     }
     for (unsigned int i = 0; i < m_data.size(); i++) {
       m_data[i] += values[i];
+      if (m_data[i] < m_minValue)
+        m_minValue = m_data[i];
+      else if (m_data[i] > m_maxValue)
+        m_maxValue = m_data[i];
     }
     return true;
   }
