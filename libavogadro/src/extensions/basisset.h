@@ -9,7 +9,7 @@
 
   This library is free software; you can redistribute it and/or modify
   it under the terms of the GNU Library General Public License as
-  published by the Free Software Foundation; either version 2 of the
+  published by the Free Software Foundation; either version 2.1 of the
   License, or (at your option) any later version.
 
   This library is distributed in the hope that it will be useful,
@@ -26,46 +26,69 @@
 #ifndef BASISSET_H
 #define BASISSET_H
 
-#include <avogadro/primitive.h>
 #include <Eigen/Core>
 #include <vector>
-#include <QDebug>
 
 // Basis sets...
 
 /**
- * This class implements a transparent data structure for storing the basis sets
- * output by many quantum mechanical codes. It has a certain hierarchy where
- * shells are built up from n primitives, in this case Gaussian Type Orbitals
- * (GTOs). Each shell has a type (S, P, D, F) and is composed of one or more
- * GTOs. Each GTO has a contraction coefficient, c, and an exponent, a.
- * When calculatating Molecular Orbitals (MOs) each orthogonal shell has an
+ * @class BasisSet basisset.h
+ * @brief BasisSet Class
+ * @author Marcus D. Hanwell
+ *
+ * The BasisSet class has a transparent data structure for storing the basis
+ * sets output by many quantum mechanical codes. It has a certain hierarchy
+ * where shells are built up from n primitives, in this case Gaussian Type
+ * Orbitals (GTOs). Each shell has a type (S, P, D, F, etc) and is composed of
+ * one or more GTOs. Each GTO has a contraction coefficient, c, and an exponent,
+ * a.
+ *
+ * When calculating Molecular Orbitals (MOs) each orthogonal shell has an
  * independent coefficient. That is the S type orbitals have one coefficient,
  * the P type orbitals have three coefficients (Px, Py and Pz), the D type
- * orbitals have five (or six) coefficients and so on.
+ * orbitals have five (or six if cartesian types) coefficients, and so on.
  */
 
 namespace Avogadro
 {
 
   class Molecule;
+  class Cube;
+  struct BasisShell;
 
-  // Orbital types that are handled
+  /**
+   * This enumerates the different types of shells.
+   */
   enum orbital { S, SP, P, D, D5, F, F7 };
 
+  /**
+   * Simple structure to encapsulate a GTO, where c is the contraction
+   * coefficient and a is th exponent.
+   */
   struct GTO
   {
     double c;
     double a;
+    unsigned int index;
   };
 
+  /**
+   * Simple structure containing a Basis, where atom is the atom id, the index
+   * is the position index in the MO vector, type is orbital type and GTOs is a
+   * vector containing the GTOs for the Basis.
+   */
   struct Basis
   {
-    int atom; // The ID of the atom the basis belongs to
+    unsigned int atom;
+    unsigned int index;
     orbital type; // The orbital type, i.e. S, P, D etc.
     std::vector<GTO *> GTOs;
   };
 
+  /**
+   * Simple, minimalistic Quantum Atom containing the position of the atom
+   * center and the atomic number.
+   */
   struct QAtom
   {
     Eigen::Vector3d pos;
@@ -75,53 +98,147 @@ namespace Avogadro
   class BasisSet
   {
   public:
+    /**
+     * Constructor.
+     */
     BasisSet();
-    ~BasisSet();
-    int addAtom(const Eigen::Vector3d& pos, int num = 0); // Just want a postion - return the index
-    int addBasis(int atom, orbital type); // The basis type return the index
-    int addGTO(int basis, double c, double a); // Add the GTO
-    void addMOs(const std::vector<double>& MOs); // Add MO coefficients
-    void addMO(double MO); // Add the MO coefficient
-    void setElectrons(int n) { m_electrons = n; }
 
+    /**
+     * Destructor.
+     */
+    ~BasisSet();
+
+    /**
+     * Function to add an atom to the BasisSet.
+     * @param pos Position of the center of the QAtom.
+     * @param num The atomic number of the QAtom.
+     * @return The index of the added atom.
+     */
+    unsigned int addAtom(const Eigen::Vector3d& pos, int num = 0);
+
+    /**
+     * Add a basis to the basis set.
+     * @param atom Index of the atom to add the Basis too.
+     * @param type The type of the Basis being added.
+     * @return The index of the added Basis.
+     */
+    unsigned int addBasis(unsigned int atom, orbital type);
+
+    /**
+     * Add a GTO to the supplied basis.
+     * @param basis The index of the Basis to add the GTO to.
+     * @param c The contraction coefficient of the GTO.
+     * @param a The exponent of the GTO.
+     * @return The index of the added GTO.
+     */
+    unsigned int addGTO(unsigned int basis, double c, double a);
+
+    /**
+     * Add MO coefficients to the BasisSet.
+     * @param MOs Vector containing the MO coefficients for the BasisSet.
+     */
+    void addMOs(const std::vector<double>& MOs);
+
+    /**
+     * Add an individual MO coefficient.
+     * @param MO The MO coefficient.
+     */
+    void addMO(double MO);
+
+    /**
+     * Set the number of electrons in the BasisSet.
+     * @param n The number of electrons in the BasisSet.
+     */
+    void setElectrons(unsigned int n) { m_electrons = n; }
+
+    /**
+     * Add all of the atoms in the Molecule to the BasisSet.
+     * @param mol Molecule to copy atoms across from.
+     */
     void addAtoms(Molecule* mol);
+
+    /**
+     * Debug routine, outputs all of the data in the BasisSet.
+     */
     void outputAll();
 
+    /**
+     * @return The number of MOs in the BasisSet.
+     */
     int numMOs();
 
-    bool HOMO(int n)
+    /**
+     * Check if the given MO number is the HOMO or not.
+     * @param n The MO number.
+     * @return True if the given MO number is the HOMO.
+     */
+    bool HOMO(unsigned int n)
     {
-      if (n+1 == static_cast<int>(m_electrons / 2)) return true;
-      else return false;
-    }
-    bool LUMO(int n)
-    {
-      if (n == static_cast<int>(m_electrons / 2)) return true;
+      if (n+1 == static_cast<unsigned int>(m_electrons / 2)) return true;
       else return false;
     }
 
+    /**
+     * Check if the given MO number is the LUMO or not.
+     * @param n The MO number.
+     * @return True if the given MO number is the LUMO.
+     */
+    bool LUMO(unsigned int n)
+    {
+      if (n == static_cast<unsigned int>(m_electrons / 2)) return true;
+      else return false;
+    }
+
+    /**
+     * Calculate the value at the supplied point in the supplied MO.
+     * @param pos The position to calculate the MO at.
+     * @param state The MO number to use.
+     */
     double calculateMO(const Eigen::Vector3d& pos, unsigned int state = 1);
-    // Evaluate the MO at pos
+
+    /**
+     * Calculate the MO over the entire range of the supplied Cube.
+     * @param cube The cube to write the values of the MO into.
+     * @return True if the calculation was successful.
+     */
+    bool calculateCubeMO(Cube *cube, unsigned int state = 1);
 
   private:
     std::vector<GTO *> m_GTOs;
     std::vector<Basis *> m_basis;
+    std::vector< std::vector<Basis *> > m_shells;
     std::vector<QAtom *> m_atoms;
     std::vector<double> m_MOs; // These are the LCAO contributions
     std::vector<double> m_c;   // These are the normalised contraction coeffs
 
-    int m_MO;  // The current MO
-    int m_cPos; // The current c position
-    int m_numMOs; // The number of GTOs
-    int m_electrons; // Total number of electrons
+    unsigned int m_MO;  // The current MO
+    unsigned int m_cPos; // The current c position
+    unsigned int m_numMOs; // The number of GTOs
+    unsigned int m_numCs; // Number of contraction coefficients
+    unsigned int m_electrons; // Total number of electrons
+    bool m_init; // Has the calculation been initialised?
 
     void initCalculation();  // Perform initialisation when necessary
-    double processShell(const Basis* basis, const Eigen::Vector3d& delta,
+    double processBasis(const Basis* basis, const Eigen::Vector3d& delta,
       double dr2);
     double doS(const Basis* basis, double dr2);
     double doP(const Basis* basis, const Eigen::Vector3d& delta, double dr2);
     double doD(const Basis* basis, const Eigen::Vector3d& delta, double dr2);
     double doD5(const Basis* basis, const Eigen::Vector3d& delta, double dr2);
+
+    /// These are the re-entrant, entire cube forms of the calculations
+    static void processShell(BasisShell &shell);
+    static void cubeS(BasisSet *set, std::vector<double> &vals, const Basis* basis,
+                      const std::vector<double> &delta2, unsigned int indexMO);
+    static void cubeP(BasisSet *set, std::vector<double> &vals, const Basis* basis,
+                      const std::vector<Eigen::Vector3d> &delta,
+                      const std::vector<double> &delta2, unsigned int indexMO);
+    static void cubeD(BasisSet *set, std::vector<double> &vals, const Basis* basis,
+                      const std::vector<Eigen::Vector3d> &delta,
+                      const std::vector<double> &delta2, unsigned int indexMO);
+    static void cubeD5(BasisSet *set, std::vector<double> &vals, const Basis* basis,
+                      const std::vector<Eigen::Vector3d> &delta,
+                      const std::vector<double> &delta2, unsigned int indexMO);
   };
 
 } // End namespace Avogadro

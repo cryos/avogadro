@@ -37,6 +37,7 @@
 #include <QCoreApplication>
 #include <QFileInfo>
 #include <QMessageBox>
+#include <QTime>
 #include <QDebug>
 
 using namespace std;
@@ -176,9 +177,14 @@ namespace Avogadro
     progress.setWindowModality(Qt::WindowModal);
     progress.setValue(0);
 
+    // Let's measure some performance and see how we are doing...
+    QTime time = QTime::currentTime();
+
+    time.start();
+
     Cube *cube = m_molecule->newCube();
     cube->setLimits(origin * BOHR_TO_ANGSTROM, nSteps, step * BOHR_TO_ANGSTROM);
-
+    qDebug() << "Starting old cube calculations";
     for (int i = 0; i < nSteps.x(); ++i) {
       progress.setValue(i);
       if (progress.wasCanceled())
@@ -198,12 +204,41 @@ namespace Avogadro
 
     cube->setName(QString(tr("MO ") + QString::number(n)));
 
+    qDebug() << "Old method took" << time.elapsed() / 1000.0 << "seconds.";
+
     m_molecule->update();
 
-    // Output the first line of the cube file too...
-    for (int i = 0; i < nSteps.z(); ++i)
-      qDebug() << i << cube->value(0, 0, i);
+    qDebug() << "Switching to the new method.";
 
+    time.restart();
+
+    Cube *cube2 = m_molecule->newCube();
+    cube2->setName(QString(tr("New MO ") + QString::number(n)));
+    cube2->setLimits(origin * BOHR_TO_ANGSTROM, nSteps, step * BOHR_TO_ANGSTROM);
+    m_basis->calculateCubeMO(cube2, n);
+
+    qDebug() << "New method took" << time.elapsed() / 1000.0 << "seconds.";
+
+    qDebug() << "Done";
+
+    m_molecule->update();
+
+/*    for (int i = 0; i < nSteps.x(); ++i) {
+    for (int j = 0; j < nSteps.y(); ++j) {
+    for (int k = 0; k < nSteps.z(); ++k) {
+      qDebug() << i << cube->value(i, j, k)
+               << i << cube2->value(i, j, k) << "delta ="
+               << cube->value(i, j, k) - cube2->value(i, j, k);
+    }
+    }
+    } */
+    // Output the first line of the cube file too...
+/*    for (int i = 0; i < nSteps.z(); ++i) {
+      qDebug() << i << cube->value(0, 0, i);
+      qDebug() << i << cube2->value(0,0,i) << "delta ="
+               << cube->value(0,0,i) - cube2->value(0,0,i);
+    }
+*/
     qDebug() << "Cube generated...";
   }
 

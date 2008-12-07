@@ -9,7 +9,7 @@
 
   This library is free software; you can redistribute it and/or modify
   it under the terms of the GNU Library General Public License as
-  published by the Free Software Foundation; either version 2 of the
+  published by the Free Software Foundation; either version 2.1 of the
   License, or (at your option) any later version.
 
   This library is distributed in the hope that it will be useful,
@@ -27,21 +27,35 @@
 
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
+#include <avogadro/cube.h>
 
 #include <cmath>
+
+#include <QtConcurrentMap>
+#include <QFuture>
+#include <QDebug>
 
 using namespace Eigen;
 using namespace std;
 
 namespace Avogadro
 {
+  struct BasisShell
+  {
+    BasisSet *set;     // A pointer to the BasisSet, cannot write to member vars
+    Cube *cube;        // A pointer to the Cube that will be calculated
+    std::vector<double> vals; // A vector of values
+    unsigned int shell;// The shell to calculate
+    unsigned int state;// The MO number to calculate
+  };
 
   using std::vector;
 
   static const double BOHR_TO_ANGSTROM = 0.529177249;
   static const double ANGSTROM_TO_BOHR = 1.0 / 0.529177249;
 
-  BasisSet::BasisSet() : m_MO(0), m_cPos(0), m_numMOs(0), m_electrons(0)
+  BasisSet::BasisSet() : m_MO(0), m_cPos(0), m_numMOs(0), m_numCs(0),
+    m_electrons(0), m_init(false)
   {
   }
 
@@ -60,22 +74,26 @@ namespace Avogadro
     m_basis.clear();
   }
 
-  int BasisSet::addAtom(const Vector3d& pos, int num)
+  unsigned int BasisSet::addAtom(const Vector3d& pos, int num)
   {
     qDebug() << "New atom added" << num;
     QAtom *tmp = new QAtom;
     tmp->pos = pos;
     tmp->num = num;
     m_atoms.push_back(tmp);
+    m_shells.resize(m_atoms.size());
+    m_init = false;
     return m_atoms.size() - 1;
   }
 
-  int BasisSet::addBasis(int atom, orbital type)
+  unsigned int BasisSet::addBasis(unsigned int atom, orbital type)
   {
     Basis *tmp = new Basis;
     tmp->atom = atom;
+    tmp->index = m_numMOs;
     tmp->type = type;
     m_basis.push_back(tmp);
+    m_shells[atom].push_back(tmp);
     // Count the number of independent basis functions
     switch (type)
     {
@@ -95,10 +113,11 @@ namespace Avogadro
         // Should never hit here
         ;
     }
+    m_init = false;
     return m_basis.size() - 1;
   }
 
-  int BasisSet::addGTO(int basis, double c, double a)
+  unsigned int BasisSet::addGTO(unsigned int basis, double c, double a)
   {
     // Add a new GTO - if normalised is true then un-normalise c
     // In fact I don't think this should be called and so am going to assume it
@@ -123,19 +142,40 @@ namespace Avogadro
     tmp->c = c;
     tmp->a = a;
     m_basis[basis]->GTOs.push_back(tmp);
+    m_init = false;
+
+    switch (m_basis[basis]->type) {
+      case S:
+        m_numCs++;
+        break;
+      case P:
+        m_numCs +=3;
+        break;
+      case D:
+        m_numCs +=6;
+        break;
+      case D5:
+        m_numCs +=5;
+      default:
+        qDebug() << "Unhandled orbital type.";
+    }
+
     return m_basis[basis]->GTOs.size() - 1;
   }
 
   void BasisSet::addMOs(const vector<double>& MOs)
   {
     // Append the MOs to our internal vector
+    m_MOs.reserve(m_MOs.size() + MOs.size());
     for (unsigned int i = 0; i < MOs.size(); ++i)
       m_MOs.push_back(MOs[i]);
+    m_init = false;
   }
 
   void BasisSet::addMO(double MO)
   {
     m_MOs.push_back(MO);
+    m_init = false;
   }
 
   double BasisSet::calculateMO(const Vector3d& pos, unsigned int state)
@@ -144,18 +184,18 @@ namespace Avogadro
     if (state < 1 || state > m_MOs.size())
       return 0.0;
 
-    static bool init = false;
-    if (!init)
+    if (!m_init) {
       initCalculation();
+      m_init = true;
+    }
 
     vector<Vector3d> deltas;
     vector<double> dr2;
-    for (unsigned int i = 0; i < m_atoms.size(); ++i)
-    {
+    deltas.reserve(m_atoms.size());
+    dr2.reserve(m_atoms.size());
+    for (unsigned int i = 0; i < m_atoms.size(); ++i) {
       deltas.push_back(pos - m_atoms.at(i)->pos);
-      dr2.push_back(deltas.at(i).x()*deltas.at(i).x()
-                 + deltas.at(i).y()*deltas.at(i).y()
-                 + deltas.at(i).z()*deltas.at(i).z());
+      dr2.push_back(deltas[i].norm2());
     }
 
     // Reset the m_MO counter and start processing shells
@@ -163,47 +203,84 @@ namespace Avogadro
     m_cPos = 0;
 
     double tmp = 0.0;
-    for (unsigned int i = 0; i < m_basis.size(); ++i)
-      tmp += processShell(m_basis.at(i), deltas.at(m_basis[i]->atom),
+    for (unsigned int i = 0; i < m_basis.size(); ++i) {
+      tmp += processBasis(m_basis[i], deltas.at(m_basis[i]->atom),
         dr2.at(m_basis[i]->atom));
-
+    }
     return tmp;
+  }
+
+  bool BasisSet::calculateCubeMO(Cube *cube, unsigned int state)
+  {
+    // Set up the calculation and ideally use the new QtConcurrent code to
+    // multithread the calculation... FIXME - I want more threads!!!!
+    if (state < 1 || state > m_MOs.size())
+      return 0.0;
+
+    initCalculation();
+
+    // It is more efficient to process each shell over the entire cube than it
+    // is to process each MO at each point in the cube. This is probably the best
+    // point at which to multithread too - QtConcurrent!
+    QVector<BasisShell> basisShells(m_shells.size());
+
+    for (uint i = 0; i < m_shells.size(); ++i) {
+      Cube *mapCube = new Cube;
+      mapCube->setLimits(*cube);
+      basisShells[i].set = this;
+      basisShells[i].cube = mapCube;
+      basisShells[i].shell = i;
+      basisShells[i].state = state;
+      // FIXME - QtConcurrent Map should do this!
+//    processShell(&basisShells[i]);
+    }
+
+    // Let's get this Qt Magic on!
+    QFuture<void> future = QtConcurrent::map(basisShells, BasisSet::processShell);
+    future.waitForFinished();
+
+    foreach(BasisShell shell, basisShells) {
+      cube->addData(*shell.cube->data());
+      delete shell.cube;
+    }
+    return true;
+
   }
 
   void BasisSet::initCalculation()
   {
     // This currently just involves normalising all contraction coefficients
     m_c.clear();
-    GTO* gto;
-    Basis* basis;
-    for (unsigned int i = 0; i < m_basis.size(); ++i)
-    {
-      basis = m_basis.at(i);
-      switch (basis->type)
-      {
+    // Assign c and MO indices to the GTOs and basis sets
+    unsigned int index = 0;
+    unsigned int indexMO = 0;
+    foreach(Basis *basis, m_basis) {
+      switch (basis->type) {
         case S:
-          for (unsigned int j = 0; j < basis->GTOs.size(); ++j)
-          {
-            gto = basis->GTOs.at(j);
+          basis->index = indexMO++;
+          foreach(GTO *gto, basis->GTOs) {
             m_c.push_back(gto->c * pow(2.0 * gto->a / M_PI, 0.75));
+            gto->index = index++;
           }
           break;
         case P:
-          for (unsigned int j = 0; j < basis->GTOs.size(); ++j)
-          {
-            gto = basis->GTOs.at(j);
+          basis->index = indexMO;
+          indexMO += 3;
+          foreach(GTO *gto, basis->GTOs) {
             m_c.push_back(gto->c * pow(128.0 * pow(gto->a, 5.0)
                           / (M_PI*M_PI*M_PI), 0.25));
             m_c.push_back(m_c.at(m_c.size()-1));
             m_c.push_back(m_c.at(m_c.size()-1));
+            gto->index = index;
+            index += 3;
           }
           break;
         case D:
           // Cartesian - 6 d components
           // Order in xx, yy, zz, xy, xz, yz
-          for (unsigned int j = 0; j < basis->GTOs.size(); ++j)
-          {
-            gto = basis->GTOs.at(j);
+          basis->index = indexMO;
+          indexMO += 6;
+          foreach(GTO *gto, basis->GTOs) {
             m_c.push_back(gto->c * pow(2048.0 * pow(gto->a, 7.0)
                           / (9.0 * M_PI*M_PI*M_PI), 0.25));
             m_c.push_back(m_c.at(m_c.size()-1));
@@ -213,15 +290,17 @@ namespace Avogadro
                           / (M_PI*M_PI*M_PI), 0.25));
             m_c.push_back(m_c.at(m_c.size()-1));
             m_c.push_back(m_c.at(m_c.size()-1));
+            gto->index = index;
+            index += 6;
           }
           break;
         case D5:
           // Spherical - 5 d components
           // Order in d0, d+1, d-1, d+2, d-2
           // Form d(z^2-r^2), dxz, dyz, d(x^2-y^2), dxy
-          for (unsigned int j = 0; j < basis->GTOs.size(); ++j)
-          {
-            gto = basis->GTOs.at(j);
+          basis->index = indexMO;
+          indexMO += 5;
+          foreach(GTO *gto, basis->GTOs) {
             m_c.push_back(gto->c * pow(2048.0 * pow(gto->a, 7.0)
                           / (9.0 * M_PI*M_PI*M_PI), 0.25));
             m_c.push_back(gto->c * pow(2048.0 * pow(gto->a, 7.0)
@@ -232,6 +311,8 @@ namespace Avogadro
                           / (M_PI*M_PI*M_PI), 0.25));
             m_c.push_back(gto->c * pow(2048.0 * pow(gto->a, 7.0)
                           / (M_PI*M_PI*M_PI), 0.25));
+            gto->index = index;
+            index += 5;
           }
           break;
         default:
@@ -240,7 +321,7 @@ namespace Avogadro
     }
   }
 
-  double BasisSet::processShell(const Basis* basis, const Vector3d& delta,
+  double BasisSet::processBasis(const Basis* basis, const Vector3d& delta,
     double dr2)
   {
     switch(basis->type)
@@ -267,8 +348,9 @@ namespace Avogadro
   {
     // S type orbitals - the simplest of the calculations with one component
     double tmp = 0.0;
-    for (unsigned int i = 0; i < basis->GTOs.size(); ++i)
+    for (unsigned int i = 0; i < basis->GTOs.size(); ++i) {
       tmp += m_c.at(m_cPos++) * exp(-basis->GTOs.at(i)->a * dr2);
+    }
     // There is one MO coefficient per S shell basis - advance by 1 and use
     return m_MOs.at(m_MO++) * tmp;
   }
@@ -354,6 +436,177 @@ namespace Avogadro
     }
     return tmp;
   }
+
+  void BasisSet::processShell(BasisShell &shell)
+  {
+    // Static member variable. Must be re-entrant in order to be used by
+    // Qt Concurrent
+
+    double step = shell.cube->spacing().x() * ANGSTROM_TO_BOHR;
+    Vector3i dim = shell.cube->dimensions();
+    Vector3d min = shell.cube->min() * ANGSTROM_TO_BOHR;
+
+    unsigned int size = dim.x() * dim.y() * dim.z();
+    vector<double> &vals = *shell.cube->data();
+    vector<Vector3d> delta(size);
+    vector<double> dr2(size);
+
+    Vector3d atomPos = shell.set->m_atoms[shell.shell]->pos;
+    Vector3d tmpPos = min;
+
+    // Calculate the delta and dr2 vectors
+    uint counter = 0;
+    for (int i = 0; i < dim.x(); ++i) {
+      for (int j = 0; j < dim.y(); ++j) {
+        for (int k = 0; k < dim.z(); ++k) {
+          tmpPos = Vector3d(min.x() + i * step,
+                            min.y() + j * step,
+                            min.z() + k * step);
+          delta[counter] = tmpPos - atomPos;
+          dr2[counter] = delta[counter].norm2();
+          ++counter;
+        }
+      }
+    }
+
+    // The indexMO is the index into the MO coefficients
+    unsigned int indexMO = (shell.state - 1) * shell.set->m_numMOs;
+
+    foreach(Basis *basis, shell.set->m_shells[shell.shell]) {
+      switch(basis->type) {
+        case S:
+          cubeS(shell.set, vals, basis, dr2, indexMO);
+          break;
+        case P:
+          cubeP(shell.set, vals, basis, delta, dr2, indexMO);
+          break;
+        case D:
+          cubeD(shell.set, vals, basis, delta, dr2, indexMO);
+          break;
+        case D5:
+          cubeD5(shell.set, vals, basis, delta, dr2, indexMO);
+          break;
+        default:
+        // Not handled - return a zero contribution
+        qDebug() << "Error: Cannot process basis.";
+      }
+    }
+  }
+
+  void BasisSet::cubeS(BasisSet *set, vector<double> &vals, const Basis* basis,
+                       const vector<double> &dr2, unsigned int indexMO)
+  {
+    // S type orbitals - the simplest of the calculations with one component
+    double tmp;
+    for (unsigned int pos = 0; pos < vals.size(); ++pos) {
+      tmp = 0.0;
+      for (unsigned int i = 0; i < basis->GTOs.size(); ++i) {
+        tmp += set->m_c[basis->GTOs[i]->index] * exp(-basis->GTOs[i]->a * dr2[pos]);
+      }
+      // There is one MO coefficient per S shell basis
+      tmp *= set->m_MOs[indexMO + basis->index];
+      vals[pos] += tmp;
+    }
+  }
+
+  void BasisSet::cubeP(BasisSet *set, vector<double> &vals, const Basis* basis,
+                       const vector<Vector3d> &delta,
+                       const vector<double> &dr2, unsigned int indexMO)
+  {
+    // P type orbitals have three components and each component has a different
+    // independent MO weighting. Many things can be cached to save time though
+    double tmp, Px, Py, Pz, tmpGTO;
+
+    for (unsigned int pos = 0; pos < vals.size(); ++pos) {
+      tmp = 0.0;
+      // Calculate the prefactors for Px, Py and Pz
+      Px = set->m_MOs[indexMO + basis->index  ] * delta[pos].x();
+      Py = set->m_MOs[indexMO + basis->index+1] * delta[pos].y();
+      Pz = set->m_MOs[indexMO + basis->index+2] * delta[pos].z();
+
+      // Now iterate through the P type GTOs and sum their contributions
+      for (unsigned int i = 0; i < basis->GTOs.size(); ++i) {
+        tmpGTO = exp(-basis->GTOs[i]->a * dr2[pos]);
+        tmp += set->m_c[basis->GTOs[i]->index  ] * Px * tmpGTO;
+        tmp += set->m_c[basis->GTOs[i]->index+1] * Py * tmpGTO;
+        tmp += set->m_c[basis->GTOs[i]->index+2] * Pz * tmpGTO;
+      }
+      vals[pos] += tmp;
+    }
+  }
+
+  void BasisSet::cubeD(BasisSet *set, vector<double> &vals, const Basis* basis,
+                       const vector<Vector3d> &delta,
+                       const vector<double> &dr2, unsigned int indexMO)
+  {
+    // D type orbitals have five components and each component has a different
+    // independent MO weighting. Many things can be cached to save time though
+    double tmp;
+
+    for (unsigned int pos = 0; pos < vals.size(); ++pos) {
+      tmp = 0.0;
+      // Calculate the prefactors
+      double Dxx = set->m_MOs[indexMO + basis->index  ] * delta[pos].x()
+                   * delta[pos].x();
+      double Dyy = set->m_MOs[indexMO + basis->index+1] * delta[pos].y()
+                   * delta[pos].y();
+      double Dzz = set->m_MOs[indexMO + basis->index+2] * delta[pos].z()
+                   * delta[pos].z();
+      double Dxy = set->m_MOs[indexMO + basis->index+3] * delta[pos].x()
+                   * delta[pos].y();
+      double Dxz = set->m_MOs[indexMO + basis->index+4] * delta[pos].x()
+                   * delta[pos].z();
+      double Dyz = set->m_MOs[indexMO + basis->index+5] * delta[pos].y()
+                   * delta[pos].z();
+
+      // Now iterate through the D type GTOs and sum their contributions
+      for (unsigned int i = 0; i < basis->GTOs.size(); ++i) {
+        // Calculate the common factor
+        double tmpGTO = exp(-basis->GTOs.at(i)->a * dr2[pos]);
+        tmp += set->m_c[basis->GTOs[i]->index  ] * Dxx * tmpGTO; // Dxx
+        tmp += set->m_c[basis->GTOs[i]->index+1] * Dyy * tmpGTO; // Dyy
+        tmp += set->m_c[basis->GTOs[i]->index+2] * Dzz * tmpGTO; // Dzz
+        tmp += set->m_c[basis->GTOs[i]->index+3] * Dxy * tmpGTO; // Dxy
+        tmp += set->m_c[basis->GTOs[i]->index+4] * Dxz * tmpGTO; // Dxz
+        tmp += set->m_c[basis->GTOs[i]->index+5] * Dyz * tmpGTO; // Dyz
+      }
+      vals[pos] += tmp;
+    }
+  }
+
+  void BasisSet::cubeD5(BasisSet *set, vector<double> &vals, const Basis* basis,
+                        const vector<Vector3d> &delta,
+                        const vector<double> &delta2, unsigned int indexMO)
+  {
+/*    // D type orbitals have five components and each component has a different
+    // MO weighting. Many things can be cached to save time
+    double tmp = 0.0;
+    // Calculate the prefactors
+    double xx = delta.x() * delta.x();
+    double yy = delta.y() * delta.y();
+    double zz = delta.z() * delta.z();
+    double xy = delta.x() * delta.y();
+    double xz = delta.x() * delta.z();
+    double yz = delta.y() * delta.z();
+
+    double D0 = m_MOs.at(m_MO++) * (zz - dr2);
+    double D1p = m_MOs.at(m_MO++) * xz;
+    double D1n = m_MOs.at(m_MO++) * yz;
+    double D2p = m_MOs.at(m_MO++) * (xx - yy);
+    double D2n = m_MOs.at(m_MO++) * xy;
+
+    // Not iterate through the GTOs
+    for (unsigned int i = 0; i < basis->GTOs.size(); ++i)
+    {
+      double tmpGTO = exp(-basis->GTOs.at(i)->a * dr2);
+      tmp += m_c.at(m_cPos++) * D0 * tmpGTO;  // D0
+      tmp += m_c.at(m_cPos++) * D1p * tmpGTO; // D1p
+      tmp += m_c.at(m_cPos++) * D1n * tmpGTO; // D1n
+      tmp += m_c.at(m_cPos++) * D2p * tmpGTO; // D2p
+      tmp += m_c.at(m_cPos++) * D2n * tmpGTO; // D2n
+    }
+    return tmp;
+*/  }
 
   int BasisSet::numMOs()
   {
