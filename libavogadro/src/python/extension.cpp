@@ -5,6 +5,8 @@
 #include <avogadro/glwidget.h>
 
 #include <QAction>
+#include <QDockWidget>
+#include <QUndoCommand>
 
 using namespace boost::python;
 using namespace Avogadro;
