@@ -117,9 +117,19 @@ namespace Avogadro {
     return setLimits(min, max, spacing);
   }
 
-  std::vector<double> Cube::data()
+  bool Cube::setLimits(const Cube &cube)
   {
-    return m_data;
+    m_min = cube.m_min;
+    m_max = cube.m_max;
+    m_points = cube.m_points;
+    m_spacing = cube.m_spacing;
+    m_data.resize(m_points.x() * m_points.y() * m_points.z());
+    return true;
+  }
+
+  std::vector<double> * Cube::data()
+  {
+    return &m_data;
   }
 
   bool Cube::setData(const std::vector<double> &values)
@@ -147,6 +157,22 @@ namespace Avogadro {
                << "got" << values.size();
       return false;
     }
+  }
+
+  bool Cube::addData(const std::vector<double> &values)
+  {
+    // Initialise the cube to zero if necessary
+    if (!m_data.size()) {
+      m_data.resize(m_points.x() * m_points.y() * m_points.z());
+    }
+    if (values.size() != m_data.size() || !values.size()) {
+      qDebug() << "Attempted to add values to cube - sizes do not match...";
+      return false;
+    }
+    for (unsigned int i = 0; i < m_data.size(); i++) {
+      m_data[i] += values[i];
+    }
+    return true;
   }
 
   unsigned int Cube::closestIndex(const Vector3d &pos) const

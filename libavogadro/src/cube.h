@@ -90,6 +90,12 @@ namespace Avogadro {
                    double spacing);
 
     /**
+     * Set the limits of the cube - copy the limits of an existing Cube.
+     * @param cube Existing Cube to copy the limits from.
+     */
+    bool setLimits(const Cube &cube);
+
+    /**
      * Set the limits of the cube by the molecule supplied with padding.
      * @param mol The molecule to use when finding bounds.
      * @param spacing The interval between points in the cube.
@@ -100,12 +106,17 @@ namespace Avogadro {
     /**
      * @return Vector containing all the data in a one-dimensional array.
      */
-    std::vector<double> data();
+    std::vector<double> * data();
 
     /**
      * Set the values in the cube to those passed in the vector.
      */
     bool setData(const std::vector<double> &values);
+
+    /**
+     * Adds the values in the cube to those passed in the vector.
+     */
+    bool addData(const std::vector<double> &values);
 
     /**
      * @return Index of the point closest to the position supplied.

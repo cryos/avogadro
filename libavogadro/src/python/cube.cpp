@@ -11,7 +11,7 @@ using namespace Avogadro;
 void export_Cube()
 {
 
-  bool (Cube::*setLimits_ptr1)(const Eigen::Vector3d &, const Eigen::Vector3d &, 
+  bool (Cube::*setLimits_ptr1)(const Eigen::Vector3d &, const Eigen::Vector3d &,
       const Eigen::Vector3i&) = &Cube::setLimits;
   bool (Cube::*setLimits_ptr2)(const Eigen::Vector3d &, const Eigen::Vector3d &, double) = &Cube::setLimits;
   bool (Cube::*setLimits_ptr3)(const Eigen::Vector3d &, const Eigen::Vector3i &, double) = &Cube::setLimits;
@@ -23,7 +23,7 @@ void export_Cube()
   class_<Avogadro::Cube, bases<Avogadro::Primitive>, boost::noncopyable>("Cube", no_init)
     // read/write properties
     .add_property("name", &Cube::name, &Cube::setName)
-    .add_property("data", &Cube::data, &Cube::setData)
+//    .add_property("data", &Cube::data, &Cube::setData)
     // read-only properties
     .add_property("min", &Cube::min)
     .add_property("max", &Cube::max)
