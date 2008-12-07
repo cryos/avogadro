@@ -165,73 +165,34 @@ namespace Avogadro
     double step = m_orbitalDialog->stepSize() * ANGSTROM_TO_BOHR;
     Vector3d origin = ANGSTROM_TO_BOHR * m_orbitalDialog->origin();
     Vector3i nSteps = m_orbitalDialog->steps();
-    double x, y, z;
 
     // Debug output
     qDebug() << "Origin = " << origin.x() << origin.y() << origin.z()
              << "\nStep = " << step << ", nz = " << nSteps.z();
 
-    // Set up a progress dialog
-    QProgressDialog progress(tr("Calculating MO..."), tr("Abort Calculation"), 0,
-                             nSteps.x(), m_orbitalDialog);
-    progress.setWindowModality(Qt::WindowModal);
-    progress.setValue(0);
-
-    // Let's measure some performance and see how we are doing...
-    QTime time = QTime::currentTime();
-
-    time.start();
-
     Cube *cube = m_molecule->newCube();
-    cube->setLimits(origin * BOHR_TO_ANGSTROM, nSteps, step * BOHR_TO_ANGSTROM);
-    qDebug() << "Starting old cube calculations";
-    for (int i = 0; i < nSteps.x(); ++i) {
-      progress.setValue(i);
-      if (progress.wasCanceled())
-        break;
-      // Give the event loop a chance...
-      QCoreApplication::processEvents();
-      x = origin.x() + double(i)*step;
-      for (int j = 0; j < nSteps.y(); ++j) {
-        y = origin.y() + double(j)*step;
-        for (int k = 0; k < nSteps.z(); ++k) {
-          z = origin.z() + double(k)*step;
-          cube->setValue(i, j, k, m_basis->calculateMO(Vector3d(x, y, z), n));
-        }
-      }
-    }
-    progress.setValue(nSteps.x());
-
     cube->setName(QString(tr("MO ") + QString::number(n)));
+    cube->setLimits(origin * BOHR_TO_ANGSTROM, nSteps, step * BOHR_TO_ANGSTROM);
+    m_basis->calculateCubeMO(cube, n);
 
-    qDebug() << "Old method took" << time.elapsed() / 1000.0 << "seconds.";
+    // Set up a progress dialog
+    m_progress = new QProgressDialog(tr("Calculating MO..."),
+                                     tr("Abort Calculation"),
+                                     m_basis->watcher().progressMinimum(),
+                                     m_basis->watcher().progressMinimum(),
+                                     m_orbitalDialog);
+    m_progress->setWindowModality(Qt::WindowModal);
+    m_progress->setValue(m_basis->watcher().progressValue());
 
-    m_molecule->update();
+    connect(&m_basis->watcher(), SIGNAL(progressValueChanged(int)),
+            m_progress, SLOT(setValue(int)));
+    connect(&m_basis->watcher(), SIGNAL(progressRangeChanged(int, int)),
+            m_progress, SLOT(setRange(int, int)));
+    connect(m_progress, SIGNAL(canceled()),
+            this, SLOT(calculationCanceled()));
+    connect(&m_basis->watcher(), SIGNAL(finished()),
+            this, SLOT(calculationDone()));
 
-    qDebug() << "Switching to the new method.";
-
-    time.restart();
-
-    Cube *cube2 = m_molecule->newCube();
-    cube2->setName(QString(tr("New MO ") + QString::number(n)));
-    cube2->setLimits(origin * BOHR_TO_ANGSTROM, nSteps, step * BOHR_TO_ANGSTROM);
-    m_basis->calculateCubeMO(cube2, n);
-
-    qDebug() << "New method took" << time.elapsed() / 1000.0 << "seconds.";
-
-    qDebug() << "Done";
-
-    m_molecule->update();
-
-/*    for (int i = 0; i < nSteps.x(); ++i) {
-    for (int j = 0; j < nSteps.y(); ++j) {
-    for (int k = 0; k < nSteps.z(); ++k) {
-      qDebug() << i << cube->value(i, j, k)
-               << i << cube2->value(i, j, k) << "delta ="
-               << cube->value(i, j, k) - cube2->value(i, j, k);
-    }
-    }
-    } */
     // Output the first line of the cube file too...
 /*    for (int i = 0; i < nSteps.z(); ++i) {
       qDebug() << i << cube->value(0, 0, i);
@@ -240,6 +201,31 @@ namespace Avogadro
     }
 */
     qDebug() << "Cube generated...";
+  }
+
+  void OrbitalExtension::calculationDone()
+  {
+    disconnect(&m_basis->watcher(), SIGNAL(progressValueChanged(int)),
+               m_progress, SLOT(setValue(int)));
+    disconnect(&m_basis->watcher(), SIGNAL(progressRangeChanged(int, int)),
+            m_progress, SLOT(setRange(int, int)));
+    disconnect(&m_basis->watcher(), SIGNAL(finished()),
+            this, SLOT(calculationDone()));
+    qDebug() << "Done...";
+    m_progress->deleteLater();
+  }
+
+  void OrbitalExtension::calculationCanceled()
+  {
+    disconnect(&m_basis->watcher(), SIGNAL(progressValueChanged(int)),
+               m_progress, SLOT(setValue(int)));
+    disconnect(&m_basis->watcher(), SIGNAL(progressRangeChanged(int, int)),
+            m_progress, SLOT(setRange(int, int)));
+    disconnect(&m_basis->watcher(), SIGNAL(finished()),
+            this, SLOT(calculationDone()));
+    m_basis->watcher().cancel();
+    qDebug() << "Canceled...";
+    m_progress->deleteLater();
   }
 
 } // End namespace Avogadro

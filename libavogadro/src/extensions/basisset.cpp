@@ -33,10 +33,12 @@
 
 #include <QtConcurrentMap>
 #include <QFuture>
+#include <QFutureWatcher>
 #include <QDebug>
 
-using namespace Eigen;
-using namespace std;
+using std::vector;
+using Eigen::Vector3d;
+using Eigen::Vector3i;
 
 namespace Avogadro
 {
@@ -44,8 +46,6 @@ namespace Avogadro
   {
     BasisSet *set;     // A pointer to the BasisSet, cannot write to member vars
     Cube *tCube;       // The target cube, used to initialise temp cubes too
-    Cube *cube;        // A pointer to the Cube that will be calculated
-    std::vector<double> *vals; // A vector of values
     unsigned int shell;// The shell to calculate
     unsigned int state;// The MO number to calculate
   };
@@ -77,7 +77,6 @@ namespace Avogadro
 
   unsigned int BasisSet::addAtom(const Vector3d& pos, int num)
   {
-    qDebug() << "New atom added" << num;
     QAtom *tmp = new QAtom;
     tmp->pos = pos;
     tmp->num = num;
@@ -123,22 +122,6 @@ namespace Avogadro
     // Add a new GTO - if normalised is true then un-normalise c
     // In fact I don't think this should be called and so am going to assume it
     // isn't for now - do any programs give you normalised contraction coeffs???
-/*    if (normalised)
-    {
-      double norm;
-      switch (m_basis[basis]->type)
-      {
-        case S:
-          norm = pow(2.0*a / M_PI, 0.75);
-          break;
-        case P:
-          norm = pow(128.0 * pow(a, 5.0) / (M_PI*M_PI*M_PI), 0.25);
-          break;
-        default:
-          norm = 1.0;
-      }
-      c /= norm;
-    } */
     GTO *tmp = new GTO;
     tmp->c = c;
     tmp->a = a;
@@ -218,6 +201,7 @@ namespace Avogadro
     if (state < 1 || state > m_MOs.size())
       return 0.0;
 
+    // Must be called before calculations begin
     initCalculation();
 
     // It is more efficient to process each shell over the entire cube than it
@@ -226,35 +210,37 @@ namespace Avogadro
     QVector<BasisShell> basisShells(m_shells.size());
 
     for (uint i = 0; i < m_shells.size(); ++i) {
-//      Cube *mapCube = new Cube;
-//      mapCube->setLimits(*cube);
       basisShells[i].set = this;
       basisShells[i].tCube = cube;
-//      basisShells[i].cube = mapCube;
       basisShells[i].shell = i;
       basisShells[i].state = state;
-      // FIXME - QtConcurrent Map should do this!
-//    processShell(&basisShells[i]);
     }
 
-    // Let's get this Qt Magic on!
-    QFuture<void> future = QtConcurrent::map(basisShells, BasisSet::processShell);
-//    future.waitForFinished();
-//    QFuture<Cube *> future = QtConcurrent::mapped(basisShells, &BasisSet::processShell);
+    // Watch for the future
+    connect(&m_watcher, SIGNAL(finished()), this, SLOT(calculationComplete()));
 
-//    QFuture<Cube *> future = QtConcurrent::blockingMappedReduced(basisShells,
-//                                                      &BasisSet::processShell,
-//                                                      &BasisSet::reduceShells);
-    future.waitForFinished();
+    // The main part of the mapped reduced function...
+    m_future = QtConcurrent::mappedReduced(basisShells, BasisSet::processShell,
+                                           BasisSet::reduceShells);
+    // Connect our watcher to our future
+    m_watcher.setFuture(m_future);
 
-    foreach(BasisShell shell, basisShells) {
-//      cube->addData(*shell.cube->data());
-//      delete shell.cube;
-      cube->addData(*shell.vals);
-      delete shell.vals;
-    }
+    m_cube = cube;
+
     return true;
+  }
 
+  void BasisSet::calculationComplete()
+  {
+    if (m_future.resultCount()) {
+      m_cube->setData(m_future.resultAt(0));
+      m_cube->update();
+    }
+    else {
+      m_cube->setName("Calculation cancelled...");
+    }
+    disconnect(&m_watcher, SIGNAL(finished()), this, SLOT(calculationComplete()));
+    qDebug() << "Calculation complete - cube map-reduce...";
   }
 
   void BasisSet::initCalculation()
@@ -447,22 +433,16 @@ namespace Avogadro
     return tmp;
   }
 
-  Cube * BasisSet::processShell(BasisShell &shell)
+  vector<double> BasisSet::processShell(const BasisShell &shell)
   {
     // Static member variable. Must be re-entrant in order to be used by
     // Qt Concurrent
-//    Cube *cube = new Cube();
-//    cube->setLimits(*shell.tCube);
-//    shell.cube = cube;
-
     double step = shell.tCube->spacing().x() * ANGSTROM_TO_BOHR;
     Vector3i dim = shell.tCube->dimensions();
     Vector3d min = shell.tCube->min() * ANGSTROM_TO_BOHR;
 
     unsigned int size = dim.x() * dim.y() * dim.z();
-//    vector<double> &vals = *shell.cube->data();
-    vector<double> *vals = new vector<double>(size);
-    shell.vals = vals;
+    vector<double> vals(size);
     vector<Vector3d> delta(size);
     vector<double> dr2(size);
 
@@ -490,31 +470,36 @@ namespace Avogadro
     foreach(Basis *basis, shell.set->m_shells[shell.shell]) {
       switch(basis->type) {
         case S:
-          cubeS(shell.set, *vals, basis, dr2, indexMO);
+          cubeS(shell.set, vals, basis, dr2, indexMO);
           break;
         case P:
-          cubeP(shell.set, *vals, basis, delta, dr2, indexMO);
+          cubeP(shell.set, vals, basis, delta, dr2, indexMO);
           break;
         case D:
-          cubeD(shell.set, *vals, basis, delta, dr2, indexMO);
+          cubeD(shell.set, vals, basis, delta, dr2, indexMO);
           break;
         case D5:
-          cubeD5(shell.set, *vals, basis, delta, dr2, indexMO);
+          cubeD5(shell.set, vals, basis, delta, dr2, indexMO);
           break;
         default:
         // Not handled - return a zero contribution
         qDebug() << "Error: Cannot process basis.";
       }
     }
-    return shell.cube;
+    return vals;
   }
 
-  void BasisSet::reduceShells(Cube *rCube, Cube *iCube)
+  void BasisSet::reduceShells(vector<double> &result, const vector<double> &add)
   {
     // This is the reduce function for the QtConcurrent map-reduce technique
-    rCube->addData(*iCube->data());
-    delete iCube;
-    qDebug() << "Adding a cube to the result cube...";
+    if (!result.size()) {
+      result = add;
+    }
+    else {
+      for (unsigned int i = 0; i < result.size(); i++) {
+        result[i] += add[i];
+      }
+    }
   }
 
   inline void BasisSet::cubeS(BasisSet *set, vector<double> &vals, const Basis* basis,
@@ -673,3 +658,5 @@ namespace Avogadro
   }
 
 }
+
+#include "basisset.moc"

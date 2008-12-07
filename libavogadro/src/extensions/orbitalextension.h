@@ -31,6 +31,8 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
 
+class QProgressDialog;
+
 namespace Avogadro
 {
   class OrbitalExtension : public Extension
@@ -64,9 +66,12 @@ namespace Avogadro
     Molecule *m_molecule;
     BasisSet* m_basis;
     QString m_loadedFileName;
+    QProgressDialog *m_progress;
 
   private Q_SLOTS:
     void calculateMO(int n);
+    void calculationDone();
+    void calculationCanceled();
 
   };
 
@@ -78,7 +83,7 @@ namespace Avogadro
       AVOGADRO_EXTENSION_FACTORY(OrbitalExtension,
           tr("Orbital Extension"),
           tr("Extension for calculating orbitals."))
- 
+
   };
 
 } // End namespace Avogadro

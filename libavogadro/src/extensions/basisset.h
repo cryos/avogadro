@@ -26,6 +26,10 @@
 #ifndef BASISSET_H
 #define BASISSET_H
 
+#include <QObject>
+#include <QFuture>
+#include <QFutureWatcher>
+
 #include <Eigen/Core>
 #include <vector>
 
@@ -95,8 +99,10 @@ namespace Avogadro
     int num;
   };
 
-  class BasisSet
+  class BasisSet : public QObject
   {
+  Q_OBJECT
+
   public:
     /**
      * Constructor.
@@ -203,6 +209,20 @@ namespace Avogadro
      */
     bool calculateCubeMO(Cube *cube, unsigned int state = 1);
 
+    /**
+     * When performing a calculation the QFutureWatcher is useful if you want
+     * to update a progress bar.
+     */
+    QFutureWatcher< std::vector<double> > & watcher() { return m_watcher; }
+
+  private Q_SLOTS:
+    /**
+     * Slot to set the cube data once Qt Concurrent is done
+     */
+     void calculationComplete();
+
+  Q_SIGNALS:
+
   private:
     std::vector<GTO *> m_GTOs;
     std::vector<Basis *> m_basis;
@@ -218,6 +238,10 @@ namespace Avogadro
     unsigned int m_electrons; // Total number of electrons
     bool m_init; // Has the calculation been initialised?
 
+    QFuture< std::vector<double> > m_future;
+    QFutureWatcher< std::vector<double> > m_watcher;
+    Cube *m_cube; // Cube to put the results into
+
     void initCalculation();  // Perform initialisation when necessary
     double processBasis(const Basis* basis, const Eigen::Vector3d& delta,
       double dr2);
@@ -227,8 +251,8 @@ namespace Avogadro
     double doD5(const Basis* basis, const Eigen::Vector3d& delta, double dr2);
 
     /// These are the re-entrant, entire cube forms of the calculations
-    static Cube * processShell(BasisShell &shell);
-    static void reduceShells(Cube *rCube, Cube *iCube);
+    static std::vector<double> processShell(const BasisShell &shell);
+    static void reduceShells(std::vector<double> &result, const std::vector<double> &add);
     static void cubeS(BasisSet *set, std::vector<double> &vals, const Basis* basis,
                       const std::vector<double> &delta2, unsigned int indexMO);
     static void cubeP(BasisSet *set, std::vector<double> &vals, const Basis* basis,
