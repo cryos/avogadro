@@ -6,8 +6,15 @@
 #include <sip.h>
 #include <iostream>
 
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/cube.h>
+#include <avogadro/molecule.h>
+#include <avogadro/glwidget.h>
+
 #include <QList>
 #include <QWidget>
+#include <QGLWidget>
 #include <QDockWidget>
 #include <QAction>
 #include <QUndoCommand>
@@ -143,6 +150,30 @@ struct QList_QClass_to_array_PyQt
   }
 };
 
+template <typename T> struct MetaData;
+template <> struct MetaData<Avogadro::Atom> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::Bond> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::Cube> { static const char* className() { return "Qobject";} };
+template <> struct MetaData<Avogadro::Molecule> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::GLWidget> { static const char* className() { return "QGLWidget";} };
+
+template <typename T>
+PyObject* toPyQt(T *obj)
+{
+  if (!obj)
+    return incref(Py_None);
+      
+  sipWrapperType *type = sip_API->api_find_class(MetaData<T>::className());
+  if (!type)
+    return incref(Py_None);
+      
+  PyObject *sip_obj = sip_API->api_convert_from_instance(obj, type, 0);
+  if (!sip_obj)
+    return incref(Py_None);
+
+  return incref(sip_obj);
+}
+
 #endif
 
 
@@ -151,11 +182,18 @@ void export_sip()
 #ifdef ENABLE_PYTHON_SIP
   if (!init_sip_api())
     return;
+ 
+  def("toPyQt", &toPyQt<Avogadro::Atom>);
+  def("toPyQt", &toPyQt<Avogadro::Bond>);
+  def("toPyQt", &toPyQt<Avogadro::Cube>);
+  def("toPyQt", &toPyQt<Avogadro::Molecule>);
+  def("toPyQt", &toPyQt<Avogadro::GLWidget>);
   
   QClass_converters<QWidget>();
   QClass_converters<QAction>();
   QClass_converters<QDockWidget>();
   QClass_converters<QUndoCommand>();
+  QClass_converters<QUndoStack>();
   
   to_python_converter<QList<QAction*>, QList_QClass_to_array_PyQt>();
 #endif

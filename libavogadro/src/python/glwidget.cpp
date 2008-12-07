@@ -15,6 +15,7 @@
 #include <avogadro/color.h>
 
 #include <QWidget>
+#include <QUndoStack>
 
 using namespace boost::python;
 using namespace Avogadro;
@@ -49,8 +50,8 @@ void export_GLWidget()
  
     //.def("background", &GLWidget::background)  // QColor
     //void setBackground(const QColor &background); // QColor
-    //.def("setUndoStack", &GLWidget::setUndoStack) // QUndoStack
-    //.def("undoStack", &GLWidget::undoStack) // QUndoStack
+    .add_property("undoStack", make_function(&GLWidget::undoStack, return_value_policy<return_by_value>()), 
+        &GLWidget::setUndoStack)
  
     // read-only properties
     .add_property("deviceWidth", &GLWidget::deviceWidth)

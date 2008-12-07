@@ -17,11 +17,11 @@ tool.cpp                done + unittest
 color.cpp               done + unittest
 engine.cpp              done + unittest
 extension.h             done + unittest
+glwidget.cpp
 
 
 
 camera.cpp              done
-glwidget.cpp
 painter.cpp             done
 paiterdevice.cpp        done
 
@@ -42,3 +42,19 @@ pythonscript.h
 idlist.h
 sphere.h
 cylinder.h
+
+
+
+
+boxcontrol.h
+colorbutton.h
+cutoffgrid.h
+filetreeitem.h
+glgraphicsview.h
+meshgenerator.h
+moleculetreeview.h
+periodictableview.h
+pluginlistview.h
+pluginmanager.h
+primitiveitemmodel.h
+undosequence.h
