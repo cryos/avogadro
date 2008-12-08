@@ -154,7 +154,7 @@ struct QList_QClass_to_array_PyQt
   {
     sipWrapperType *type = sip_API->api_find_class("QAction");
     if (!type)
-      return 0;
+      return incref(Py_None);
      
     boost::python::list pyList;
 

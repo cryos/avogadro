@@ -18,10 +18,10 @@ color.cpp               done + unittest
 engine.cpp              done + unittest
 extension.h             done + unittest
 glwidget.cpp            done + unittest
+camera.cpp              done + unittest
 
 
 
-camera.cpp              done
 painter.cpp             done
 paiterdevice.cpp        done
 

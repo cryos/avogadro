@@ -19,6 +19,7 @@ from color import *
 from engine import *
 from extension import *
 from glwidget import *
+from camera import *
 
 if __name__ == "__main__":
   
@@ -39,9 +40,10 @@ if __name__ == "__main__":
   suite14 = unittest.TestLoader().loadTestsFromTestCase(TestEngine)
   suite15 = unittest.TestLoader().loadTestsFromTestCase(TestExtension)
   suite16 = unittest.TestLoader().loadTestsFromTestCase(TestGLWidget)
+  suite17 = unittest.TestLoader().loadTestsFromTestCase(TestCamera)
 
   alltests = unittest.TestSuite([suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite8, suite9, suite10, 
-      suite12, suite13, suite14, suite15, suite16, suite0])
+      suite12, suite13, suite14, suite15, suite16, suite17, suite0])
   
   app = QApplication(sys.argv)
   unittest.TextTestRunner(verbosity=2).run(alltests)
