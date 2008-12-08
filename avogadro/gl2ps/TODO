@@ -1,0 +1,70 @@
+$Id: TODO,v 1.27 2006/08/08 15:20:32 geuzaine Exp $
+
+------------------------------------------------------------------------
+
+* Add an option to limit the recursion level depth in BSP tree
+
+------------------------------------------------------------------------
+
+* Add an simple option to subdivide long, stretched triangles so that
+  SIMPLE_SORT can still be used for simple, non-intersecting geometries
+  (cf. Olivier Couet's long cylinders at Cern) where BSP_SORT is very
+  slow due to the presence of many, many curved surfaces
+
+------------------------------------------------------------------------
+
+* do we really need gl2psEnable(GL2PS_BLEND)? Couldn't we just check
+  what's in rgba[3] and try to do the "right thing" right away?
+  Update Thu Jul 20 14:51:33 2006: that's what I do now for SVG and it
+  works pretty well. We could probably significantly simplify the PDF
+  code that way.
+
+------------------------------------------------------------------------
+
+* Think about a way to provide a progress indicator through a
+  callback. Not easy for BSP trees due to the recursive
+  implementation.
+
+------------------------------------------------------------------------
+
+* Apple's Preview.app doesn't support '/ShadingType 4'... Submit a bug 
+  report to Apple?
+
+------------------------------------------------------------------------
+
+* Escape special characters?
+
+From Jennifer, Jeff, Trevor, and Sophia" <cafun@ameritech.net>:
+
+>> I do have a suggestion though for the  "gl2psText" routine.
+>> I have noted that if your string has a "special" character to 
+>> postscript then the
+>> postscript file becomes corrupted.  This happens when
+>> you try and print a string which has only one "(" in it.
+>> For instance this string will cause a bad eps file "(this is a 
+>> string".  Note that only one bracket is in this string.
+>>
+>> This can be fixed, I believe, by checking for this character and 
+>> placing an escape in front
+>> of it.  I was thinking about making the change for you but I do not 
+>> know much about
+>> PS and I am sure that there are probably other special characters 
+>> which should also be
+>> included in this check.
+>
+>
+> Good idea. Looking at the PostScript reference, we should escape '(', 
+> ')' and '\'.
+>
+> But should we make this escaping optional? Some people might still 
+> want to use the special characters with their original meaning (e.g. 
+> to access special characters using their octal codes '\XXX'). 
+
+Now that you mention it I could see where some may want to do this.
+
+>
+>
+> What should we do for LaTeX output? 
+
+I have not used your LaTeX ouput option so I am not sure how this would 
+effect it.
