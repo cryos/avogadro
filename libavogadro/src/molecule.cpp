@@ -190,7 +190,7 @@ namespace Avogadro{
   {
     Q_D(Molecule);
     Atom *atom = new Atom(this);
-    
+
     m_lock->lockForWrite();
     if (!m_atomPos) {
       m_atomPos = new std::vector<Vector3d>;
@@ -201,7 +201,7 @@ namespace Avogadro{
     d->atoms.push_back(atom);
     d->atomList.push_back(atom);
     m_lock->unlock();
-    
+
     atom->setId(d->atoms.size()-1);
     atom->setIndex(d->atomList.size()-1);
     connect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -974,6 +974,8 @@ namespace Avogadro{
       emit primitiveRemoved(atom);
     }
     d->atomList.clear();
+    delete m_atomPos;
+    m_atomPos = 0;
 
     d->bonds.resize(0);
     foreach (Bond *bond, d->bondList) {
@@ -1011,17 +1013,24 @@ namespace Avogadro{
     clear();
     const MoleculePrivate *e = other.d_func();
     d->atoms.resize(e->atoms.size(), 0);
+    if (other.m_atomPos) {
+      m_atomPos = new std::vector<Vector3d>;
+      m_atomPos->resize(other.m_atomPos->size());
+    }
+    else
+      qDebug() << "Other atom has a position list of size zero!";
+
     d->bonds.resize(e->bonds.size(), 0);
 
     // Copy the atoms and bonds over
     for (unsigned int i = 0; i < e->atoms.size(); ++i) {
       if (e->atoms.at(i) > 0) {
         Atom *atom = new Atom(this);
-        *atom = *(e->atoms[i]);
         atom->setId(e->atoms[i]->id());
         atom->setIndex(e->atoms[i]->index());
         d->atoms[i] = atom;
         d->atomList.push_back(atom);
+        *atom = *(e->atoms[i]);
         emit primitiveAdded(atom);
       }
     }

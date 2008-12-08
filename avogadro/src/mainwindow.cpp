@@ -1237,9 +1237,9 @@ namespace Avogadro
       pasteFormat = conv.FindFormat( "mdl" );
 
       text = mimeData->data( "chemical/x-mdl-molfile" );
-		} else if ( mimeData->hasFormat( "chemical/x-cdx" ) ) {
+    } else if ( mimeData->hasFormat( "chemical/x-cdx" ) ) {
       pasteFormat = conv.FindFormat( "cdx" );
-			text = mimeData->data( "chemical/x-cdx" );
+      text = mimeData->data( "chemical/x-cdx" );
     } else if ( mimeData->hasText() ) {
       pasteFormat = conv.FindFormat( "xyz" );
 
@@ -1280,31 +1280,31 @@ namespace Avogadro
     // we also save an image for copy/paste to office programs, presentations, etc.
     QImage clipboardImage = d->glWidget->grabFrameBuffer(true);
 
-    Molecule *moleculeCopy = d->molecule;
+//    Molecule *moleculeCopy = d->molecule;
+    Molecule *moleculeCopy = 0;
     if (!selectedItems.isEmpty()) { // we only want to copy the selected items
       moleculeCopy = new Molecule;
-      std::map<Atom*, Atom*> AtomMap; // key is from old, value from new
+      std::map<unsigned int, unsigned int> AtomMap; // key is from old, value from new
       // copy atoms and create a map of atom indices
       foreach(Primitive *item, selectedItems.subList(Primitive::AtomType)) {
         Atom *selected = moleculeCopy->newAtom();
         *selected = *(static_cast<Atom *>(item));
-        AtomMap[selected] = moleculeCopy->atom(moleculeCopy->numAtoms()-1);
+        AtomMap[item->id()] = selected->id();
       }
 
       /// FIXME Need to get bond copying working again
       // use the atom map to map bonds
-/*      map<Atom*, Atom*>::iterator posBegin, posEnd;
-      QList<const Bond*> bonds = d->molecule->bonds();
+      map<unsigned int, unsigned int>::iterator posBegin, posEnd;
+      QList<Bond*> bonds = d->molecule->bonds();
       foreach(const Bond *bond, bonds) {
-        posBegin = AtomMap.find(bond->beginAtom());
-        posEnd = AtomMap.find(bond->endAtom());
+        posBegin = AtomMap.find(bond->beginAtomId());
+        posEnd = AtomMap.find(bond->endAtomId());
         // make sure both bonds are in the map (i.e. selected)
         if ( posBegin != AtomMap.end() && posEnd != AtomMap.end() ) {
-          moleculeCopy->AddBond(( posBegin->second )->GetIdx(),
-              ( posEnd->second )->GetIdx(),
-              b->GetBO(), b->GetFlags() );
+          Bond *bondCopy = moleculeCopy->newBond();
+          bondCopy->setAtoms(posBegin->second, posEnd->second, bond->order());
         }
-      } // end looping over bonds */
+      } // end looping over bonds
     } // should now have a copy of our selected fragment
 
     OBConversion conv;

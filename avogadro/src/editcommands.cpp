@@ -101,7 +101,7 @@ namespace Avogadro {
   {
     m_widget->clearSelected();
     // save the current number of atoms -- we'll select all new ones
-    unsigned int currentNumAtoms = m_molecule->numAtoms();
+    unsigned int currentNumAtoms = m_molecule->numAtoms() - 1;
     *m_molecule += m_pastedMolecule;
 
     QList<Primitive*> newSelection;

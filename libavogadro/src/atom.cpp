@@ -143,9 +143,14 @@ using Eigen::Vector3d;
   Atom& Atom::operator=(const Atom& other)
   {
     // Virtually everything here is invariant apart from the index and possibly id
-    m_pos = other.m_pos;
+    if (other.pos()) {
+      m_molecule->setAtomPos(m_id, *other.pos());
+    }
+    else {
+      qDebug() << "Atom position returned null.";
+    }
     m_atomicNumber = other.m_atomicNumber;
-    m_bonds = other.m_bonds;
+//    m_bonds = other.m_bonds;
     return *this;
   }
 
