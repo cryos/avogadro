@@ -1643,6 +1643,8 @@ namespace Avogadro {
 
   double GLWidget::radius( const Primitive *p ) const
   {
+    if (!p)
+      return 0.0;
     double radius = 0.0;
     foreach(Engine *engine, d->engines)
     {
@@ -1749,9 +1751,9 @@ namespace Avogadro {
     d->namedSelections.insert(index, pair);
   }
 
-  QStringList GLWidget::namedSelections()
+  QList<QString> GLWidget::namedSelections()
   {
-    QStringList names;
+    QList<QString> names;
     for (int i = 0; i < d->namedSelections.size(); ++i)
       names.append(d->namedSelections.at(i).first);
 
