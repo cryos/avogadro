@@ -27,6 +27,7 @@
 #include <avogadro/cube.h>
 #include <avogadro/mesh.h>
 
+#include <QReadWriteLock>
 #include <QDebug>
 
 using Eigen::Vector3f;
@@ -57,9 +58,14 @@ namespace Avogadro {
     m_cube = cube;
     m_mesh = mesh;
     m_iso = iso;
+    if (!m_cube->lock()->tryLockForRead()) {
+      qDebug() << "Cannot get a read lock...";
+      return false;
+    }
     m_stepSize = m_cube->spacing().x();
     m_min = m_cube->min().cast<float>();
     m_dim = m_cube->dimensions();
+    m_cube->lock()->unlock();
     return true;
   }
 
@@ -73,6 +79,13 @@ namespace Avogadro {
     m_mesh->setStable(false);
     m_mesh->clear();
 
+    m_vertices.reserve(m_dim.x()*m_dim.y()*m_dim.z()*3);
+    m_normals.reserve(m_dim.x()*m_dim.y()*m_dim.z()*3);
+
+    if (!m_cube->lock()->tryLockForRead()) {
+      qDebug() << "Cannot get a read lock...";
+    }
+
     // Now to march the cube
     for(int i = 0; i < m_dim.x()-1; ++i) {
       for(int j = 0; j < m_dim.y()-1; ++j) {
@@ -80,7 +93,14 @@ namespace Avogadro {
           marchingCube(Vector3i(i, j, k));
         }
       }
+      if (m_vertices.capacity() < m_vertices.size() + m_dim.y()*m_dim.x()*3) {
+        m_vertices.reserve(m_vertices.capacity()*2);
+        m_normals.reserve(m_normals.capacity()*2);
+      }
     }
+
+    m_cube->lock()->unlock();
+
     // Copy the data across
     m_mesh->setVertices(m_vertices);
     m_mesh->setNormals(m_normals);
@@ -111,6 +131,19 @@ namespace Avogadro {
                   - m_cube->valuef(pos + Vector3f(0.00, 0.00, 0.01)));
     normal.normalize();
     return normal;
+  }
+
+//unsigned int index = pos.x()*m_points.y()*m_points.z() +
+//                         pos.y()*m_points.z() +
+//                         pos.z();
+
+  unsigned long MeshGenerator::duplicate(const Vector3i &i, const Vector3f &pos)
+  {
+    if (i.z()) {
+//      foreach(unsigned long index, m_vDone[i.x()*i.y() + i.z()-1) {
+
+//      }
+    }
   }
 
   bool MeshGenerator::marchingCube(const Vector3i &pos)
@@ -176,6 +209,7 @@ namespace Avogadro {
       if (m_iso >= 0.0f) {
         for(int j = 0; j < 3; ++j) {
           iVertex = a2iTriangleConnectionTable[iFlagIndex][3*i+j];
+          m_indices.push_back(m_vertices.size());
           m_normals.push_back(asEdgeNorm[iVertex]);
           m_vertices.push_back(asEdgeVertex[iVertex]);
         }
@@ -183,6 +217,7 @@ namespace Avogadro {
       else {
         for(int j = 2; j >= 0; --j) {
           iVertex = a2iTriangleConnectionTable[iFlagIndex][3*i+j];
+          m_indices.push_back(m_vertices.size());
           m_normals.push_back(-asEdgeNorm[iVertex]);
           m_vertices.push_back(asEdgeVertex[iVertex]);
         }

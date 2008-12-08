@@ -126,6 +126,9 @@
      */
     float offset(float val1, float val2);
 
+    unsigned long duplicate(const Eigen::Vector3i &c,
+                            const Eigen::Vector3f &pos);
+
     /**
      * Perform a marching cubes step on a single cube.
      */
@@ -138,6 +141,8 @@
     Eigen::Vector3f m_min; /** The minimum point in the cube. */
     Eigen::Vector3i m_dim; /** The dimensions of the cube. */
     std::vector<Eigen::Vector3f> m_vertices, m_normals;
+    std::vector<unsigned int> m_indices;
+    std::vector< std::vector<unsigned int> > m_vDone;
 
     /**
      * These are the tables of constants for the marching cubes and tetrahedra

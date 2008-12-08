@@ -34,6 +34,7 @@
 #include <QtConcurrentMap>
 #include <QFuture>
 #include <QFutureWatcher>
+#include <QReadWriteLock>
 #include <QDebug>
 
 using std::vector;
@@ -257,6 +258,9 @@ namespace Avogadro
 //               << basisShells[i].tCube << ", pos =" << basisShells[i].pos;
     }
 
+    // Lock the cube until we are done.
+    cube->lock()->lockForWrite();
+
     // Watch for the future
     connect(&m_watcher2, SIGNAL(finished()), this, SLOT(calculationComplete2()));
 
@@ -287,6 +291,7 @@ namespace Avogadro
     disconnect(&m_watcher2, SIGNAL(finished()), this, SLOT(calculationComplete2()));
     qDebug() << (*m_basisShells)[0].tCube->data()->at(0) << (*m_basisShells)[0].tCube->data()->at(1);
     qDebug() << "Calculation2 complete - cube map-reduce...";
+    (*m_basisShells)[0].tCube->lock()->unlock();
     delete m_basisShells;
   }
 

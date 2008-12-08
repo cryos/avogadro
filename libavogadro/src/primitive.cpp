@@ -64,7 +64,7 @@ namespace Avogadro {
     return m_type;
   }
 
-  QReadWriteLock *Primitive::lock()
+  QReadWriteLock *Primitive::lock() const
   {
     return m_lock;
   }

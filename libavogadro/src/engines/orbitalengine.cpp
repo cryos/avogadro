@@ -216,13 +216,13 @@ namespace Avogadro {
     }
     else {
       if (m_settingsWidget) {
+        // Add the orbitals
+        connect(m_molecule, SIGNAL(updated()),
+                this, SLOT(updateOrbitalCombo()));
         if (!m_settingsWidget->orbitalCombo->count()) {
           // Use first cube/orbital
           // Two meshes -- one for positive isovalue, one for negative
           iCube = 0;
-          // Add the orbitals
-          connect(m_molecule, SIGNAL(updated()),
-                  this, SLOT(updateOrbitalCombo()));
           updateOrbitalCombo();
         }
         else {
@@ -232,6 +232,9 @@ namespace Avogadro {
             return;
           }
         }
+      }
+      else {
+        iCube = 0;
       }
     }
 
@@ -263,11 +266,16 @@ namespace Avogadro {
     if (tmp < 0) tmp = 0;
     m_settingsWidget->orbitalCombo->clear();
     foreach(Cube *cube, m_molecule->cubes()) {
+      if (!cube->lock()->tryLockForRead()) {
+        qDebug() << "Cannot get a read lock...";
+        continue;
+      }
       m_settingsWidget->orbitalCombo->addItem(cube->name());
       qDebug() << "Adding Cube:" << cube->name();
+      cube->lock()->unlock();
     }
     // If all of the orbitals disappear the molecule has been cleared
-    if (m_molecule->cubes().size() == 0) {
+    if (m_molecule->cubes().size() == 0 && m_mesh1 && m_mesh2) {
       /// FIXME Again - engines should not really manage their primitives!
       delete m_mesh1;
       m_mesh1 = 0;

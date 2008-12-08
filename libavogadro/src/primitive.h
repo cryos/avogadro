@@ -132,7 +132,7 @@ namespace Avogadro {
        */
       Type type() const;
 
-      QReadWriteLock *lock();
+      QReadWriteLock *lock() const;
 
       /**
        * Set the id of the primitive, used to uniquely indentify the primitive.

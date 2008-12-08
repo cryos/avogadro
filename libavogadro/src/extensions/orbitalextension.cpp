@@ -256,6 +256,7 @@ namespace Avogadro
     delete m_timer1;
     m_timer1 = 0;
     m_progress->deleteLater();
+    m_molecule->update();
   }
 
   void OrbitalExtension::calculation2Done()
@@ -272,6 +273,7 @@ namespace Avogadro
     delete m_timer2;
     m_timer2 = 0;
     m_progress2->deleteLater();
+    m_molecule->update();
   }
 
   void OrbitalExtension::calculationCanceled()
