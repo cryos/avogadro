@@ -1292,7 +1292,6 @@ namespace Avogadro
         AtomMap[item->id()] = selected->id();
       }
 
-      /// FIXME Need to get bond copying working again
       // use the atom map to map bonds
       map<unsigned int, unsigned int>::iterator posBegin, posEnd;
       QList<Bond*> bonds = d->molecule->bonds();
