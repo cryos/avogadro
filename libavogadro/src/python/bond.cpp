@@ -17,10 +17,9 @@ void export_Bond()
     // read-only poperties 
     .add_property("beginAtomId", &Bond::beginAtomId)
     .add_property("endAtomId", &Bond::endAtomId)
-    //.add_property("otherAtom", &Bond::otherAtom)
-    .add_property("otherAtom", &Bond::otherAtom)
     .add_property("length", &Bond::length)
     // real functions
+    .def("otherAtom", &Bond::otherAtom)
     .def("setBegin", &Bond::setBegin)
     .def("setEnd", &Bond::setEnd)
     .def("setAtoms", &Bond::setAtoms)

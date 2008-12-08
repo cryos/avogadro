@@ -23,7 +23,7 @@ void export_Cube()
   class_<Avogadro::Cube, bases<Avogadro::Primitive>, boost::noncopyable>("Cube", no_init)
     // read/write properties
     .add_property("name", &Cube::name, &Cube::setName)
-//    .add_property("data", &Cube::data, &Cube::setData)
+    .add_property("data", make_function(&Cube::data, return_value_policy<return_by_value>()), &Cube::setData)
     // read-only properties
     .add_property("min", &Cube::min)
     .add_property("max", &Cube::max)
@@ -41,8 +41,9 @@ void export_Cube()
     .def("value", value_ptr2)
     .def("value", value_ptr3)
     .def("setValue", &Cube::setValue)
-    // provide setData, it return bool...
+    // provide setData, it returns bool...
     .def("setData", &Cube::setData)
+    .def("addData", &Cube::addData)
     ;
 
 }

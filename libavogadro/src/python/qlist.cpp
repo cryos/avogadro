@@ -302,6 +302,7 @@ using namespace Avogadro;
 void export_QList()
 {
   export_list< QList<QString> >();
+  export_list< QList<GLHit> >();
   export_list< QList<unsigned long int> >();
 
   /*  

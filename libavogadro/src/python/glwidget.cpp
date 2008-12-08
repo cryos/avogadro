@@ -16,12 +16,20 @@
 
 #include <QWidget>
 #include <QUndoStack>
+#include <QPoint>
+#include <QColor>
 
 using namespace boost::python;
 using namespace Avogadro;
 
 void export_GLWidget()
 {
+  class_<Avogadro::GLHit, boost::noncopyable>("GLHit", no_init)
+    .add_property("type", &GLHit::type)
+    .add_property("name", &GLHit::name)
+    .add_property("minZ", &GLHit::minZ)
+    .add_property("maxZ", &GLHit::maxZ)
+    ;
  
   const double & (GLWidget::*radius_ptr1)() const = &GLWidget::radius;
   double (GLWidget::*radius_ptr2)(const Primitive *) const = &GLWidget::radius; 
@@ -33,8 +41,14 @@ void export_GLWidget()
 
 
   class_<Avogadro::GLWidget, /*bases<QWidget>,*/ boost::noncopyable>("GLWidget")
+    // constructors
+    .def(init<QWidget*>())
+    .def(init<const QGLFormat&, QWidget*, const GLWidget*>())
+    .def(init<Molecule*, const QGLFormat&, QWidget*, const GLWidget*>())
+
+
     // read/write properties
-    .add_property("quickRender", &GLWidget::setQuickRender, &GLWidget::quickRender)
+    .add_property("quickRender", &GLWidget::quickRender, &GLWidget::setQuickRender)
     .add_property("colorMap", make_function(&GLWidget::colorMap, return_value_policy<reference_existing_object>()),
         &GLWidget::setColorMap)
     .add_property("molecule", make_function(molecule_ptr, return_value_policy<reference_existing_object>()),
@@ -47,9 +61,7 @@ void export_GLWidget()
     .add_property("renderDebug", &GLWidget::renderDebug, &GLWidget::setRenderDebug)
     .add_property("toolGroup", make_function(&GLWidget::toolGroup, return_value_policy<reference_existing_object>()),
         &GLWidget::setToolGroup)
- 
-    //.def("background", &GLWidget::background)  // QColor
-    //void setBackground(const QColor &background); // QColor
+    .add_property("background", &GLWidget::background, &GLWidget::setBackground) 
     .add_property("undoStack", make_function(&GLWidget::undoStack, return_value_policy<return_by_value>()), 
         &GLWidget::setUndoStack)
  
@@ -97,16 +109,12 @@ void export_GLWidget()
     .def("writeSettings", &GLWidget::writeSettings)
     .def("readSettings", &GLWidget::readSettings)
     .def("loadDefaultEngines", &GLWidget::loadDefaultEngines)
-
-/*
-    public Q_SLOTS:
-      void addPrimitive(Primitive *primitive);
-      void updatePrimitive(Primitive *primitive);
-      void removePrimitive(Primitive *primitive);
-      void addEngine(Engine *engine);
-      void removeEngine(Engine *engine);
-      void invalidateDLs();
-      */
+    .def("addPrimitive", &GLWidget::addPrimitive)
+    .def("updatePrimitive", &GLWidget::updatePrimitive)
+    .def("removePrimitive", &GLWidget::removePrimitive)
+    .def("addEngine", &GLWidget::addEngine)
+    .def("removeEngine", &GLWidget::removeEngine)
+    .def("invalidateDLs", &GLWidget::invalidateDLs)
     ;
 
 } 

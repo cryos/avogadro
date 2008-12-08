@@ -13,7 +13,10 @@ struct std_vector_to_python_list
 {
   typedef typename C::value_type T;
   typedef typename C::const_iterator iter;
-  
+ 
+  // 
+  // example std::vector<double> ???::data()
+  //
   static PyObject* convert(C const &list)
   {
     // the python list
@@ -25,7 +28,32 @@ struct std_vector_to_python_list
 
     return incref(pyList.ptr());
   }
+
 };
+
+struct std_vector_double_ptr_to_python_list
+{
+  //typedef typename std::vector<double>::const_iterator iter;
+  typedef std::vector<double>::const_iterator iter;
+
+  //
+  // example: std::vector<double>* Cube::data()
+  //
+  static PyObject* convert(std::vector<double>* list)
+  {
+    // the python list
+    boost::python::list pyList;
+
+    for (iter i = list->begin(); i != list->end(); ++i) {
+      pyList.append(*i);
+    }
+
+    return incref(pyList.ptr());
+  }
+};
+
+
+
 
 template <class C>
 struct std_vector_from_python_list
@@ -163,6 +191,8 @@ void export_std_vector()
 {
   export_std_vector< std::vector<double> >(); // for Cube
   export_std_vector< std::vector<Eigen::Vector3f> >(); // for Mesh
+  
+  to_python_converter<std::vector<double>*, std_vector_double_ptr_to_python_list >();
 
   /*  
   class_<QListTest>("QListTest")
