@@ -210,16 +210,34 @@ namespace Avogadro
     bool calculateCubeMO(Cube *cube, unsigned int state = 1);
 
     /**
+     * Calculate the MO over the entire range of the supplied Cube.
+     * @param cube The cube to write the values of the MO into.
+     * @return True if the calculation was successful.
+     */
+    bool calculateCubeMO2(Cube *cube, unsigned int state = 1);
+
+    /**
      * When performing a calculation the QFutureWatcher is useful if you want
      * to update a progress bar.
      */
     QFutureWatcher< std::vector<double> > & watcher() { return m_watcher; }
+
+    /**
+     * When performing a calculation the QFutureWatcher is useful if you want
+     * to update a progress bar.
+     */
+    QFutureWatcher<void> & watcher2() { return m_watcher2; }
 
   private Q_SLOTS:
     /**
      * Slot to set the cube data once Qt Concurrent is done
      */
      void calculationComplete();
+
+     /**
+     * Slot to set the cube data once Qt Concurrent is done
+     */
+     void calculationComplete2();
 
   Q_SIGNALS:
 
@@ -236,11 +254,17 @@ namespace Avogadro
     unsigned int m_numMOs; // The number of GTOs
     unsigned int m_numCs; // Number of contraction coefficients
     unsigned int m_electrons; // Total number of electrons
+    unsigned int m_numAtoms;  // Total number of atoms in the basis set
     bool m_init; // Has the calculation been initialised?
 
     QFuture< std::vector<double> > m_future;
+    QFuture<void> m_future2;
     QFutureWatcher< std::vector<double> > m_watcher;
+    QFutureWatcher<void> m_watcher2;
     Cube *m_cube; // Cube to put the results into
+    QVector<BasisShell> *m_basisShells;
+
+    static bool isSmall(double val);
 
     void initCalculation();  // Perform initialisation when necessary
     double processBasis(const Basis* basis, const Eigen::Vector3d& delta,
@@ -254,16 +278,30 @@ namespace Avogadro
     static std::vector<double> processShell(const BasisShell &shell);
     static void reduceShells(std::vector<double> &result, const std::vector<double> &add);
     static void cubeS(BasisSet *set, std::vector<double> &vals, const Basis* basis,
-                      const std::vector<double> &delta2, unsigned int indexMO);
+                      const std::vector<double> &dr2, unsigned int indexMO);
     static void cubeP(BasisSet *set, std::vector<double> &vals, const Basis* basis,
                       const std::vector<Eigen::Vector3d> &delta,
-                      const std::vector<double> &delta2, unsigned int indexMO);
+                      const std::vector<double> &dr2, unsigned int indexMO);
     static void cubeD(BasisSet *set, std::vector<double> &vals, const Basis* basis,
                       const std::vector<Eigen::Vector3d> &delta,
-                      const std::vector<double> &delta2, unsigned int indexMO);
+                      const std::vector<double> &dr2, unsigned int indexMO);
     static void cubeD5(BasisSet *set, std::vector<double> &vals, const Basis* basis,
                       const std::vector<Eigen::Vector3d> &delta,
-                      const std::vector<double> &delta2, unsigned int indexMO);
+                      const std::vector<double> &dr2, unsigned int indexMO);
+
+    /// Re-entrant single point forms of the calculations
+    static void processPoint(BasisShell &shell);
+    static double pointS(BasisSet *set, const Basis* basis,
+                      const double &dr2, unsigned int indexMO);
+    static double pointP(BasisSet *set, const Basis* basis,
+                      const Eigen::Vector3d &delta,
+                      const double &dr2, unsigned int indexMO);
+    static double pointD(BasisSet *set, const Basis* basis,
+                      const Eigen::Vector3d &delta,
+                      const double &dr2, unsigned int indexMO);
+    static double pointD5(BasisSet *set, const Basis* basis,
+                      const Eigen::Vector3d &delta,
+                      const double &dr2, unsigned int indexMO);
   };
 
 } // End namespace Avogadro

@@ -19,6 +19,7 @@ void export_Cube()
   double (Cube::*value_ptr1)(int, int, int) const = &Cube::value;
   double (Cube::*value_ptr2)(const Eigen::Vector3i &) const = &Cube::value;
   double (Cube::*value_ptr3)(const Eigen::Vector3d &) const = &Cube::value;
+  bool (Cube::*setValue_ptr1)(int, int, int, double) = &Cube::setValue;
 
   class_<Avogadro::Cube, bases<Avogadro::Primitive>, boost::noncopyable>("Cube", no_init)
     // read/write properties
@@ -40,7 +41,7 @@ void export_Cube()
     .def("value", value_ptr1)
     .def("value", value_ptr2)
     .def("value", value_ptr3)
-    .def("setValue", &Cube::setValue)
+    .def("setValue", setValue_ptr1)
     // provide setData, it returns bool...
     .def("setData", &Cube::setData)
     .def("addData", &Cube::addData)

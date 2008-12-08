@@ -32,6 +32,7 @@
 #include <avogadro/extension.h>
 
 class QProgressDialog;
+class QTime;
 
 namespace Avogadro
 {
@@ -66,11 +67,13 @@ namespace Avogadro
     Molecule *m_molecule;
     BasisSet* m_basis;
     QString m_loadedFileName;
-    QProgressDialog *m_progress;
+    QProgressDialog *m_progress, *m_progress2;
+    QTime *m_timer1, *m_timer2;
 
   private Q_SLOTS:
     void calculateMO(int n);
     void calculationDone();
+    void calculation2Done();
     void calculationCanceled();
 
   };

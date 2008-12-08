@@ -178,6 +178,12 @@ namespace Avogadro {
     bool setValue(int i, int j, int k, double value);
 
     /**
+     * Sets the value at the specified index in the cube.
+     * @param i 1-dimenional index of the point to set in the cube.
+     */
+    bool setValue(unsigned int i, double value);
+
+    /**
      * @return The minimum  value at any point in the Cube.
      */
     double minValue() const { return m_minValue; }
@@ -198,6 +204,17 @@ namespace Avogadro {
     QString m_name;
     Q_DECLARE_PRIVATE(Cube)
   };
+
+  inline bool Cube::setValue(unsigned int i, double value)
+  {
+    if (i < m_data.size()) {
+      m_data[i] = value;
+      return true;
+    }
+    else
+      return false;
+  }
+
 } // End namespace Avogadro
 
  #endif
