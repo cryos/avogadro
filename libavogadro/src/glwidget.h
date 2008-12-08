@@ -554,6 +554,11 @@ namespace Avogadro {
       static void setCurrent(GLWidget *current);
 
       /**
+       * Trigger a render for GL2PS.
+       */
+      void renderNow();
+
+      /**
        * Write the settings of the GLWidget in order to save them to disk.
        */
       virtual void writeSettings(QSettings &settings) const;

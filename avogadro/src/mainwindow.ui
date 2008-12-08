@@ -54,6 +54,7 @@
       <string>Export</string>
      </property>
      <addaction name="actionExportGraphics" />
+     <addaction name="actionExportGL2PS" />
     </widget>
     <widget class="QMenu" name="menuImport" >
      <property name="title" >
@@ -172,8 +173,8 @@
   <widget class="QDockWidget" name="projectDock" >
    <property name="minimumSize" >
     <size>
-     <width>92</width>
-     <height>115</height>
+     <width>100</width>
+     <height>122</height>
     </size>
    </property>
    <property name="allowedAreas" >
@@ -609,6 +610,11 @@
    </property>
    <property name="text" >
     <string>Use Quick Render</string>
+   </property>
+  </action>
+  <action name="actionExportGL2PS" >
+   <property name="text" >
+    <string>Export Vector Graphics</string>
    </property>
   </action>
  </widget>

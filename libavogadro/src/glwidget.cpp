@@ -495,6 +495,11 @@ namespace Avogadro {
     m_current = current;
   }
 
+  void GLWidget::renderNow()
+  {
+    paintGL();
+  }
+
   void GLWidget::initializeGL()
   {
     qDebug() << "GLWidget initialisation...";

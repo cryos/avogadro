@@ -41,6 +41,9 @@
 //#include "macchempasteboard.h"
 //#endif
 
+// Include the GL2PS header
+#include "../gl2ps/gl2ps.h"
+
 #include <avogadro/pluginmanager.h>
 
 // Does not work for me with out of source builds at least - ui_projecttreeeditor.h
@@ -966,16 +969,13 @@ namespace Avogadro
             << tr("PNG") + " (*.png)"
             << tr("JPEG") + " (*.jpg *.jpeg)";
 
-    // Remove the filename ending - hopefully this is fairly robust
-    QString file = d->fileName.mid(d->fileName.lastIndexOf("/"),
-                           d->fileName.lastIndexOf("."));
-
-    qDebug() << "Exported filename:" << file;
+    // Use QFileInfo to get the parts of the path we want
+    QFileInfo info(d->molecule->fileName());
 
     QString fileName = SaveDialog::run(this,
                                        tr("Export Bitmap Graphics"),
-                                       d->fileDialogPath,
-                                       file,
+                                       info.absolutePath(),
+                                       info.baseName(),
                                        filters,
                                        "png",
                                        selectedFilter);
@@ -983,9 +983,7 @@ namespace Avogadro
     settings.setValue("Export Graphics Filter", selectedFilter);
 
     if(fileName.isEmpty())
-    {
       return;
-    }
 
     qDebug() << "Exported filename:" << fileName;
 
@@ -1024,6 +1022,75 @@ namespace Avogadro
           tr( "Cannot save file %1." ).arg( fileName ) );
       return;
     }
+  }
+
+  void MainWindow::exportGL2PS()
+  {
+    QSettings settings;
+    QString selectedFilter = settings.value("Export GL2PS Filter", tr("PDF")
+                                            + " (*.pdf)").toString();
+    QStringList filters;
+// Omit "common image formats" on Mac
+#ifdef Q_WS_MAC
+    filters
+#else
+    filters << tr("Common vector image formats")
+              + " (*.pdf *.svg *.eps)"
+#endif
+            << tr("All files") + " (* *.*)"
+            << tr("PDF") + " (*.pdf)"
+            << tr("SVG") + " (*.svg)"
+            << tr("EPS") + " (*.eps)";
+
+    // Use QFileInfo to get the parts of the path we want
+    QFileInfo info(d->molecule->fileName());
+
+    QString fileName = SaveDialog::run(this,
+                                       tr("Export Bitmap Graphics"),
+                                       info.absolutePath(),
+                                       info.baseName(),
+                                       filters,
+                                       "pdf",
+                                       selectedFilter);
+
+    settings.setValue("Export GL2PS Filter", selectedFilter);
+
+    if(fileName.isEmpty())
+      return;
+
+    qDebug() << "Exported filename:" << fileName;
+    info.setFile(fileName);
+
+    // Just using the example right now, this is a C library but may be the
+    // file calls need cleaning up a little.
+    FILE *fp;
+    int state = GL2PS_OVERFLOW, buffsize = 8*1024*1024, fileType = GL2PS_PDF;
+
+    // Enumerate through the supported file types
+    if (info.suffix() == "pdf")
+      fileType = GL2PS_PDF;
+    else if (info.suffix() == "svg")
+      fileType = GL2PS_SVG;
+    else if (info.suffix() == "eps")
+      fileType = GL2PS_EPS;
+    else
+      return;
+
+    fp = fopen(fileName.toStdString().c_str(), "wb");
+    qDebug() << "Writing out a vector graphics file...";
+    while(state == GL2PS_OVERFLOW) {
+      buffsize += 1024*1024;
+      gl2psBeginPage("test", "gl2psTestSimple", NULL, fileType, GL2PS_BSP_SORT,
+                     GL2PS_DRAW_BACKGROUND
+                     | GL2PS_USE_CURRENT_VIEWPORT | GL2PS_OCCLUSION_CULL
+                     | GL2PS_BEST_ROOT,
+                     GL_RGBA, 0, NULL, 0, 0, 0, buffsize, fp,
+                     info.baseName().toStdString().c_str());
+      d->glWidget->renderNow();
+      state = gl2psEndPage();
+    }
+    fclose(fp);
+    qDebug() << "Done...";
   }
 
   void MainWindow::revert()
@@ -1690,6 +1757,7 @@ namespace Avogadro
     connect( ui.actionSaveAs, SIGNAL( triggered() ), this, SLOT( saveAs() ) );
     connect( ui.actionRevert, SIGNAL( triggered() ), this, SLOT( revert() ) );
     connect( ui.actionExportGraphics, SIGNAL( triggered() ), this, SLOT( exportGraphics() ) );
+    connect( ui.actionExportGL2PS, SIGNAL(triggered()), this, SLOT(exportGL2PS()));
 //    ui.actionExportGraphics->setEnabled( QGLFramebufferObject::hasOpenGLFramebufferObjects() );
 #ifdef Q_WS_MAC
     connect( ui.actionQuit, SIGNAL( triggered() ), this, SLOT( macQuit() ) );

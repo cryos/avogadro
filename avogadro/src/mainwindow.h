@@ -80,6 +80,7 @@ namespace Avogadro {
       bool saveAs();
       void revert();
       void exportGraphics();
+      void exportGL2PS();
 
       void closeFile();
 

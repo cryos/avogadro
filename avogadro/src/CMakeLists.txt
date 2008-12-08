@@ -30,6 +30,8 @@ FILE(GLOB avogadro_SRCS "*.cpp")
 
 FILE(GLOB projectDelegates_SRCS "projectdelegates/*.cpp")
 set(avogadro_SRCS ${avogadro_SRCS} ${projectDelegates_SRCS})
+# Add GL2PS to the executable
+set(avogadro_SRCS ${avogadro_SRCS} "../gl2ps/gl2ps.c")
 
 # Mac ChemPasteboard currently disabled -- prevents drag-and-drop
 #if(NOT APPLE)
