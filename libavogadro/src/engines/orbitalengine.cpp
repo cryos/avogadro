@@ -258,7 +258,7 @@ namespace Avogadro {
 
   void OrbitalEngine::updateOrbitalCombo()
   {
-    if (!m_settingsWidget)
+    if (!m_settingsWidget || !m_molecule)
       return;
     // Reset the orbital combo
     qDebug() << "Update orbital combo called...";

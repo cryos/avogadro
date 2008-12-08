@@ -213,18 +213,18 @@ namespace Avogadro
     // Set up a progress dialog
     m_progress2 = new QProgressDialog(tr("Calculating MO..."),
                                      tr("Abort Calculation"),
-                                     m_basis->watcher().progressMinimum(),
-                                     m_basis->watcher().progressMinimum(),
+                                     m_basis->watcher2().progressMinimum(),
+                                     m_basis->watcher2().progressMinimum(),
                                      m_orbitalDialog);
-    m_progress2->setWindowModality(Qt::WindowModal);
-    m_progress2->setValue(m_basis->watcher().progressValue());
+    m_progress2->setWindowModality(Qt::NonModal);
+    m_progress2->setValue(m_basis->watcher2().progressValue());
 
     connect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
             m_progress2, SLOT(setValue(int)));
     connect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
             m_progress2, SLOT(setRange(int, int)));
     connect(m_progress2, SIGNAL(canceled()),
-            this, SLOT(calculationCanceled()));
+            this, SLOT(calculation2Canceled()));
     connect(&m_basis->watcher2(), SIGNAL(finished()),
             this, SLOT(calculation2Done()));
 
@@ -248,6 +248,8 @@ namespace Avogadro
                m_progress, SLOT(setValue(int)));
     disconnect(&m_basis->watcher(), SIGNAL(progressRangeChanged(int, int)),
             m_progress, SLOT(setRange(int, int)));
+    disconnect(m_progress, SIGNAL(canceled()),
+            this, SLOT(calculationCanceled()));
     disconnect(&m_basis->watcher(), SIGNAL(finished()),
             this, SLOT(calculationDone()));
     
@@ -265,6 +267,8 @@ namespace Avogadro
                m_progress2, SLOT(setValue(int)));
     disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
             m_progress2, SLOT(setRange(int, int)));
+    disconnect(m_progress2, SIGNAL(canceled()),
+            this, SLOT(calculation2Canceled()));
     disconnect(&m_basis->watcher2(), SIGNAL(finished()),
             this, SLOT(calculation2Done()));
 
@@ -282,11 +286,28 @@ namespace Avogadro
                m_progress, SLOT(setValue(int)));
     disconnect(&m_basis->watcher(), SIGNAL(progressRangeChanged(int, int)),
             m_progress, SLOT(setRange(int, int)));
+    connect(m_progress, SIGNAL(canceled()),
+            this, SLOT(calculationCanceled()));
     disconnect(&m_basis->watcher(), SIGNAL(finished()),
             this, SLOT(calculationDone()));
     m_basis->watcher().cancel();
     qDebug() << "Canceled...";
     m_progress->deleteLater();
+  }
+
+  void OrbitalExtension::calculation2Canceled()
+  {
+    disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
+               m_progress2, SLOT(setValue(int)));
+    disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
+            m_progress2, SLOT(setRange(int, int)));
+    connect(m_progress2, SIGNAL(canceled()),
+            this, SLOT(calculation2Canceled()));
+    disconnect(&m_basis->watcher2(), SIGNAL(finished()),
+            this, SLOT(calculation2Done()));
+    m_basis->watcher2().cancel();
+    qDebug() << "Canceled...";
+    m_progress2->deleteLater();
   }
 
 } // End namespace Avogadro

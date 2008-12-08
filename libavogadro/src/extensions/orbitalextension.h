@@ -75,6 +75,7 @@ namespace Avogadro
     void calculationDone();
     void calculation2Done();
     void calculationCanceled();
+    void calculation2Canceled();
 
   };
 

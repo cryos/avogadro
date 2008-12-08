@@ -856,7 +856,7 @@ namespace Avogadro{
     Q_D(Molecule);
     qDebug() << "setOBMol called.";
     m_lock->lockForWrite();
-    d->obmol = obmol;
+//    d->obmol = obmol;
     m_lock->unlock();
     clear();
     // Copy all the parts of the OBMol to our Molecule
