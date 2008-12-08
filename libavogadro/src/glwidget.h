@@ -488,7 +488,7 @@ namespace Avogadro {
        *
        * @return a list with all the named selections.
        */
-      QStringList namedSelections();
+      QList<QString> namedSelections();
       /**
        * Get the primitives of a named selections by name.
        *
