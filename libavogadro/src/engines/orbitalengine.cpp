@@ -265,7 +265,10 @@ namespace Avogadro {
     int tmp = m_settingsWidget->orbitalCombo->currentIndex();
     if (tmp < 0) tmp = 0;
     m_settingsWidget->orbitalCombo->clear();
-    foreach(Cube *cube, m_molecule->cubes()) {
+    QList<Cube *> cubeList = m_molecule->cubes();
+    if (cubeList.empty())
+      return;
+    foreach(Cube *cube, cubeList) {
       if (!cube->lock()->tryLockForRead()) {
         qDebug() << "Cannot get a read lock...";
         continue;
