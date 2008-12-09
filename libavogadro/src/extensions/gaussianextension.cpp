@@ -98,6 +98,29 @@ namespace Avogadro
       m_gaussianInputDialog->setMolecule(m_molecule);
   }
 
+  void GaussianExtension::writeSettings(QSettings &settings) const
+  {
+    Extension::writeSettings(settings);
+    if (m_gaussianInputDialog) {
+      m_gaussianInputDialog->writeSettings(settings);
+    }
+  }
+
+  void GaussianExtension::readSettings(QSettings &settings)
+  {
+    Extension::readSettings(settings);
+    if (m_gaussianInputDialog) {
+      m_gaussianInputDialog->readSettings(settings);
+    }
+    else {
+      m_gaussianInputDialog = new GaussianInputDialog();
+      m_gaussianInputDialog->readSettings(settings);
+      if (m_molecule) {
+        m_gaussianInputDialog->setMolecule(m_molecule);
+      }
+    }
+  }
+
 } // End namespace Avogadro
 
 #include "gaussianextension.moc"

@@ -206,7 +206,7 @@
        <item>
         <widget class="QComboBox" name="basisCombo" >
          <property name="currentIndex" >
-          <number>2</number>
+          <number>0</number>
          </property>
          <item>
           <property name="text" >
@@ -226,6 +226,11 @@
          <item>
           <property name="text" >
            <string>6-31G(d,p)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>LANL2DZ</string>
           </property>
          </item>
         </widget>

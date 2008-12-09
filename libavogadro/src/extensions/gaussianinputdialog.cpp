@@ -44,7 +44,8 @@ namespace Avogadro
   GaussianInputDialog::GaussianInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
     m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
-    m_procs(1), m_output(""), m_chk(false), m_coordType(CARTESIAN), m_dirty(false)
+    m_procs(1), m_output(""), m_chk(false), m_coordType(CARTESIAN),
+    m_dirty(false), m_warned(false)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -87,11 +88,40 @@ namespace Avogadro
   {
   }
 
+  void GaussianInputDialog::writeSettings(QSettings &settings) const
+  {
+    settings.setValue("gaussianCalcType", ui.calculationCombo->currentIndex());
+    settings.setValue("gaussianProcs", ui.procSpin->value());
+    settings.setValue("gaussianTheory", ui.theoryCombo->currentIndex());
+    settings.setValue("gaussianBasis", ui.basisCombo->currentIndex());
+    settings.setValue("gaussianOutput", ui.outputCombo->currentIndex());
+    settings.setValue("gaussianChk", ui.checkpointCheck->isChecked());
+    settings.setValue("gaussianCoord", ui.coordCombo->currentIndex());
+  }
+
+  void GaussianInputDialog::readSettings(QSettings &settings)
+  {
+    qDebug() << "Read settings called in GaussianInputDialog.";
+    setProcs(settings.value("gaussianProcs", 2).toInt());
+    ui.procSpin->setValue(settings.value("gaussianProcs", 1).toInt());
+    setCalculation(settings.value("gaussianCalcType", 1).toInt());
+    ui.calculationCombo->setCurrentIndex(settings.value("gaussianCalcType", 1).toInt());
+    setTheory(settings.value("gaussianTheory", 3).toInt());
+    ui.theoryCombo->setCurrentIndex(settings.value("gaussianTheory", 3).toInt());
+    setBasis(settings.value("gaussianBasis", 2).toInt());
+    ui.basisCombo->setCurrentIndex(settings.value("gaussianBasis", 2).toInt());
+    setOutput(settings.value("gaussianOutput", 0).toInt());
+    ui.outputCombo->setCurrentIndex(settings.value("gaussianOutput", 0).toInt());
+    setChk(settings.value("gaussianChk", false).toBool());
+    ui.checkpointCheck->setChecked(settings.value("gaussianChk", false).toBool());
+    setCoords(settings.value("gaussianCoord", 0).toInt());
+    ui.coordCombo->setCurrentIndex(settings.value("gaussianCoord", 0).toInt());
+  }
+
   void GaussianInputDialog::setMolecule(Molecule *molecule)
   {
     // Disconnect the old molecule first...
-    if (m_molecule)
-    {
+    if (m_molecule) {
       disconnect(m_molecule, 0, this, 0);
     }
 
@@ -110,9 +140,8 @@ namespace Avogadro
   void GaussianInputDialog::updatePreviewText()
   {
     // Generate the input deck and display it
-    static bool called = false;
-    if (m_dirty && !called) {
-      called = true;
+    if (m_dirty && !m_warned) {
+      m_warned = true;
       QMessageBox msgBox;
 
       msgBox.setWindowTitle("Gaussian Input Deck Generator Warning");
@@ -123,21 +152,21 @@ namespace Avogadro
       switch (msgBox.exec()) {
         case QMessageBox::Yes:
           // yes was clicked
-          m_dirty = false;
+          deckDirty(false);
+          ui.previewText->setText(generateInputDeck());
+          m_warned = false;
           break;
         case QMessageBox::No:
           // no was clicked
+          m_warned = false;
           break;
         default:
           // should never be reached
           break;
       }
     }
-
-    if (!m_dirty)
+    else if (!m_dirty)
       ui.previewText->setText(generateInputDeck());
-
-    called = false;
   }
 
   void GaussianInputDialog::resetClicked()
@@ -180,6 +209,7 @@ namespace Avogadro
 
   void GaussianInputDialog::enableFormClicked()
   {
+    deckDirty(false);
     updatePreviewText();
   }
 
@@ -266,6 +296,9 @@ namespace Avogadro
         break;
       case 3:
         m_basisType = B631Gdp;
+        break;
+      case 4:
+        m_basisType = LANL2DZ;
         break;
       default:
         m_basisType = B631Gd;
@@ -535,6 +568,8 @@ namespace Avogadro
         return "6-31G(d)";
       case B631Gdp:
         return "6-31G(d,p)";
+      case LANL2DZ:
+        return "LANL2DZ";
       default:
         return "6-31G(d)";
     }

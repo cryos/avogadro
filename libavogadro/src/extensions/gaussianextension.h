@@ -55,6 +55,18 @@ namespace Avogadro
 
     void setMolecule(Molecule *molecule);
 
+    /**
+     * Save the settings for this extension.
+     * @param settings Settings variable to write settings to.
+     */
+    void writeSettings(QSettings &settings) const;
+
+    /**
+     * Read the settings for this extension.
+     * @param settings Settings variable to read settings from.
+     */
+    void readSettings(QSettings &settings);
+
   private:
     GaussianInputDialog* m_gaussianInputDialog;
     QChemInputDialog* m_qchemInputDialog;
