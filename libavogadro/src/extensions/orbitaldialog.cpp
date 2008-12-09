@@ -116,9 +116,9 @@ namespace Avogadro
 
   Vector3i OrbitalDialog::steps()
   {
-    Vector3i tmp(QString(ui.stepsX->text()).toInt(),
-                 QString(ui.stepsY->text()).toInt(),
-                 QString(ui.stepsZ->text()).toInt());
+    Vector3i tmp(QString(ui.stepsX->text()).toInt()+1,
+                 QString(ui.stepsY->text()).toInt()+1,
+                 QString(ui.stepsZ->text()).toInt()+1);
     return tmp;
   }
   double OrbitalDialog::stepSize()
