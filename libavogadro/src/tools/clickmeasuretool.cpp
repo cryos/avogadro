@@ -32,12 +32,13 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <openbabel/obiter.h>
-#include <openbabel/generic.h>
+#include <cmath>
 
-#include <math.h>
+#include <openbabel/math/vector3.h>
 
 #include <QtPlugin>
+#include <QAction>
+#include <QDebug>
 #include <Eigen/Geometry>
 
 using namespace std;
@@ -66,7 +67,7 @@ namespace Avogadro {
   {
   }
 
-  QUndoCommand* ClickMeasureTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* ClickMeasureTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
     Molecule *molecule = widget->molecule();
     if(!molecule) {
@@ -82,6 +83,8 @@ namespace Avogadro {
       if(m_hits[0].type() != Primitive::AtomType)
         return 0;
 
+      event->accept();
+
       Atom *atom = molecule->atom(m_hits[0].name());
 
       if(m_numSelectedAtoms < 4) {
@@ -91,8 +94,8 @@ namespace Avogadro {
       }
     }
     // Right button or Left Button + modifier (e.g., Mac)
-    else
-    {
+    else {
+      event->accept();
       m_angle = 0;
       m_vector[0].setZero();
       m_vector[1].setZero();
@@ -102,38 +105,19 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* ClickMeasureTool::mouseMove(GLWidget*, const QMouseEvent *)
+  QUndoCommand* ClickMeasureTool::mouseMoveEvent(GLWidget*, QMouseEvent *)
   {
     return 0;
   }
 
-  QUndoCommand* ClickMeasureTool::mouseRelease(GLWidget*, const QMouseEvent*)
+  QUndoCommand* ClickMeasureTool::mouseReleaseEvent(GLWidget*, QMouseEvent*)
   {
     return 0;
   }
 
-  QUndoCommand* ClickMeasureTool::wheel(GLWidget*widget, const QWheelEvent*event)
+  QUndoCommand* ClickMeasureTool::wheelEvent(GLWidget*, QWheelEvent*)
   {
-    // let's set the reference to be the center of the visible
-    // part of the molecule.
-    Eigen::Vector3d atomsBarycenter(0., 0., 0.);
-    double sumOfWeights = 0.;
-    std::vector<OpenBabel::OBNodeBase*>::iterator i;
-    QList<Atom*> atoms = widget->molecule()->atoms();
-    foreach (Atom *atom, atoms) {
-      Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * *atom->pos();
-      double atomDistance = transformedAtomPos.norm();
-      double dot = transformedAtomPos.z() / atomDistance;
-      double weight = exp(-30. * (1. + dot));
-      sumOfWeights += weight;
-      atomsBarycenter += weight * *atom->pos();
-    }
-    atomsBarycenter /= sumOfWeights;
-
-    Navigate::zoom(widget, atomsBarycenter, - MOUSE_WHEEL_SPEED * event->delta());
-    widget->update();
-
-    return NULL;
+    return 0;
   }
 
   void ClickMeasureTool::calculateParameters()
@@ -170,8 +154,10 @@ namespace Avogadro {
                                QString::fromUtf8("Å"));
 
       // Calculate the angle between the atoms
-      m_angle = vectorAngle(vector3(m_vector[0].x(), m_vector[0].y(), m_vector[0].z()),
-      		  				vector3(m_vector[1].x(), m_vector[1].y(), m_vector[1].z()));
+      m_angle = acos(m_vector[0].normalized().dot(m_vector[1].normalized()));
+      m_angle *= 180.0 / M_PI;
+//      m_angle = vectorAngle(vector3(m_vector[0].x(), m_vector[0].y(), m_vector[0].z()),
+//                            vector3(m_vector[1].x(), m_vector[1].y(), m_vector[1].z()));
       QString angleString = tr("Angle: %1 %2").arg(
                             QString::number(m_angle),
                             QString("°"));
@@ -197,6 +183,7 @@ namespace Avogadro {
       QString distanceString = tr("Distance (3->4): %1 %2").arg(
                                 QString::number(m_vector[2].norm()),
                                 QString::fromUtf8("Å"));
+
       m_dihedral = CalcTorsionAngle(vector3(m_selectedAtoms[0]->pos()->x(),
                                 m_selectedAtoms[0]->pos()->y(),
                                 m_selectedAtoms[0]->pos()->z()),
@@ -246,7 +233,7 @@ namespace Avogadro {
 
       glColor3f(1.0,0.0,0.0);
       const Vector3d *pos = m_selectedAtoms[0]->pos();
-      double radius = 0.18 + OpenBabel::etab.GetVdwRad(m_selectedAtoms[0]->atomicNumber()) * 0.3 ;
+      double radius = 0.18 + widget->radius(m_selectedAtoms[0]);
 
       // relative position of the text on the atom
       Vector3d textRelPos = radius * widget->camera()->backTransformedZAxis();
@@ -259,14 +246,14 @@ namespace Avogadro {
         glColor3f(0.0,1.0,0.0);
         pos = m_selectedAtoms[1]->pos();
         Vector3d textPos = *pos + textRelPos;
-        radius = 0.18 + OpenBabel::etab.GetVdwRad(m_selectedAtoms[1]->atomicNumber()) * 0.3;
+        radius = 0.18 + widget->radius(m_selectedAtoms[1]);
         widget->painter()->drawText(textPos, tr("*2", "*2 is a number. You most likely do not need to translate this"));
 
         if(m_numSelectedAtoms >= 3 && m_selectedAtoms[2])
         {
           // Display a label on the third atom
           pos = m_selectedAtoms[2]->pos();
-          radius = 0.18 + OpenBabel::etab.GetVdwRad(m_selectedAtoms[2]->atomicNumber()) * 0.3;
+          radius = 0.18 + widget->radius(m_selectedAtoms[2]);
           textPos = *pos + textRelPos;
           glColor3f(0.0,0.0,1.0);
           widget->painter()->drawText(textPos, tr("*3", "*3 is a number. You most likely do not need to translate this"));
@@ -275,7 +262,7 @@ namespace Avogadro {
         {
           // Display a label on the fourth atom
           pos = m_selectedAtoms[3]->pos();
-          radius = 0.18 + OpenBabel::etab.GetVdwRad(m_selectedAtoms[3]->atomicNumber()) * 0.3;
+          radius = 0.18 + widget->radius(m_selectedAtoms[3]);
           textPos = *pos + textRelPos;
           glColor3f(0.0,1.0,1.0);
           widget->painter()->drawText(textPos, tr("*4", "*4 is a number. You most likely do not need to translate this"));

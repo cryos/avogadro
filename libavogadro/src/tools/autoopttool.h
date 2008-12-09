@@ -1,7 +1,7 @@
 /**********************************************************************
   AutoOptTool - Automatic Optimization Tool for Avogadro
 
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007,2008 by Marcus D. Hanwell
   Copyright (C) 2007 by Geoffrey R. Hutchison
   Copyright (C) 2007 by Benoit Jacob
   Copyright (C) 2008 by Tim Vandermeersch
@@ -54,7 +54,7 @@ namespace Avogadro {
     public:
       AutoOptThread(QObject *parent=0);
 
-      void setup(Molecule *molecule, OpenBabel::OBForceField* forceField, 
+      void setup(Molecule *molecule, OpenBabel::OBForceField* forceField,
           int algorithm, /* int convergence, */ int steps);
 
       void run();
@@ -111,10 +111,10 @@ namespace Avogadro {
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
       */
-      virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
+      virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
 
       virtual int usefulness() const;
 

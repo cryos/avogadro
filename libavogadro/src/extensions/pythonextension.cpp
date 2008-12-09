@@ -26,6 +26,7 @@
 
 #include <QDockWidget>
 #include <QCompleter>
+#include <QKeyEvent>
 
 #include <QDebug>
 
@@ -200,7 +201,7 @@ namespace Avogadro
     QStringList wordList;
     wordList << "Avogadro" << "molecule" << "atom" << "bond";
     wordList << "numAtoms" << "numBonds";
-    
+
     wordList << "import Avogadro" << "widget = Avogadro.GLWidget.current()";
 
     QCompleter *completer = new QCompleter(wordList, this);

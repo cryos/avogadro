@@ -2,7 +2,7 @@
   SelectRotateTool - Selection and Rotation Tool for Avogadro
 
   Copyright (C) 2007 Donald Ephraim Curtis
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007,2008 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -34,12 +34,11 @@
 #include <QObject>
 #include <QString>
 #include <QPoint>
-#include <QAction>
-#include <QComboBox>
-#include <QVBoxLayout>
 
 class QMouseEvent;
 class QWheelEvent;
+class QComboBox;
+class QVBoxLayout;
 
 namespace Avogadro {
 
@@ -59,9 +58,9 @@ namespace Avogadro {
       //! \name Description methods
       //@{
       //! Tool Name (ie Draw)
-      virtual QString name() const { return(tr("Select/Rotate")); }
+      virtual QString name() const { return(tr("Selection")); }
       //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Selection and Rotation Tool")); }
+      virtual QString description() const { return(tr("Selection Tool")); }
       //@}
 
       //! \name Tool Methods
@@ -69,10 +68,10 @@ namespace Avogadro {
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
       */
-      virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
+      virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
 
       virtual int usefulness() const;
 
@@ -118,7 +117,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_TOOL_FACTORY(SelectRotateTool, tr("Select-Rotate Tool"), 
+    AVOGADRO_TOOL_FACTORY(SelectRotateTool, tr("Select-Rotate Tool"),
         tr("Tool for selecting atoms, residues and molecules."))
   };
 

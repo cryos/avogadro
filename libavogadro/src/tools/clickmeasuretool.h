@@ -30,18 +30,15 @@
 #include <avogadro/tool.h>
 
 #include <Eigen/Core>
-#include <openbabel/mol.h>
 
 #include <QGLWidget>
 #include <QObject>
-#include <QStringList>
-#include <QComboBox>
-#include <QVBoxLayout>
+
 #include <QVarLengthArray>
-#include <QImage>
-#include <QAction>
 #include <QPointer>
-#include <QVector>
+
+class QComboBox;
+class QVBoxLayout;
 
 namespace Avogadro {
 
@@ -68,10 +65,10 @@ namespace Avogadro {
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
         */
-      virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
+      virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
 
       virtual bool paint(GLWidget *widget);
 

@@ -33,6 +33,7 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/glpainter.h>
 #include <avogadro/painterdevice.h>
+#include <avogadro/tool.h>
 #include <avogadro/toolgroup.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
@@ -1110,6 +1111,9 @@ namespace Avogadro {
   {
     d->clickedPrimitive = computeClickedPrimitive( event->pos() );
 
+    // Set the event to ignored, check whether any tools accept it
+    event->ignore();
+
     if ( d->clickedPrimitive ) {
       switch (d->clickedPrimitive->type()) {
         case Primitive::PointType:
@@ -1127,7 +1131,11 @@ namespace Avogadro {
 
     if ( d->tool ) {
       QUndoCommand *command = 0;
-      command = d->tool->mousePress( this, event );
+      command = d->tool->mousePressEvent( this, event );
+      // If the mouse event is not accepted, pass it to the navigate tool
+      if (!event->isAccepted()) {
+        command = m_navigateTool->mousePressEvent(this, event);
+      }
 
       if ( command && d->undoStack ) {
         d->undoStack->push( command );
@@ -1139,6 +1147,9 @@ namespace Avogadro {
 
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
   {
+    // Set the event to ignored, check whether any tools accept it
+    event->ignore();
+
     if ( d->clickedPrimitive ) {
       switch (d->clickedPrimitive->type()) {
         case Primitive::PointType:
@@ -1153,8 +1164,14 @@ namespace Avogadro {
       }
 
       d->clickedPrimitive = 0;
-    } else if ( d->tool ) {
-      QUndoCommand *command = d->tool->mouseRelease( this, event );
+    }
+    else if ( d->tool ) {
+      QUndoCommand *command;
+      command = d->tool->mouseReleaseEvent( this, event );
+      // If the mouse event is not accepted, pass it to the navigate tool
+      if (!event->isAccepted()) {
+        command = m_navigateTool->mouseReleaseEvent(this, event);
+      }
 
       if ( command && d->undoStack ) {
         d->undoStack->push( command );
@@ -1174,6 +1191,9 @@ namespace Avogadro {
 
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
   {
+    // Set the event to ignored, check whether any tools accept it
+    event->ignore();
+
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.lock();
 #endif
@@ -1196,8 +1216,14 @@ namespace Avogadro {
           break;
       }
 
-    } else if ( d->tool ) {
-      QUndoCommand *command = d->tool->mouseMove( this, event );
+    }
+    else if ( d->tool ) {
+      QUndoCommand *command;
+      command = d->tool->mouseMoveEvent( this, event );
+      // If the mouse event is not accepted, pass it to the navigate tool
+      if (!event->isAccepted()) {
+        command = m_navigateTool->mouseMoveEvent(this, event);
+      }
       if ( command && d->undoStack ) {
         d->undoStack->push( command );
       }
@@ -1206,8 +1232,15 @@ namespace Avogadro {
 
   void GLWidget::wheelEvent( QWheelEvent * event )
   {
+    // Set the event to ignored, check whether any tools accept it
+    event->ignore();
     if ( d->tool ) {
-      QUndoCommand *command = d->tool->wheel( this, event );
+      QUndoCommand *command;
+      command = d->tool->wheelEvent( this, event );
+      // If the mouse event is not accepted, pass it to the navigate tool
+      if (!event->isAccepted()) {
+        command = m_navigateTool->wheelEvent(this, event);
+      }
       if ( command && d->undoStack ) {
         d->undoStack->push( command );
       }
@@ -1442,6 +1475,12 @@ namespace Avogadro {
       d->tool = toolGroup->activeTool();
       connect( toolGroup, SIGNAL( toolActivated( Tool* ) ),
                this, SLOT( setTool( Tool* ) ) );
+    }
+    // Find the navigate tool and set it
+    foreach (Tool *tool, d->toolGroup->tools()) {
+      if (tool->name() == "Navigate") {
+        m_navigateTool = tool;
+      }
     }
   }
 

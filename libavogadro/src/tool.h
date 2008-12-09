@@ -37,7 +37,7 @@
     Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
     Plugin::Type type() const { return Plugin::ToolType; }; \
     QString name() const { return n; }; \
-    QString description() const { return d; }; 
+    QString description() const { return d; };
 
 class QAction;
 class QUndoCommand;
@@ -73,16 +73,16 @@ namespace Avogadro {
        */
       virtual ~Tool();
 
-      /** 
-       * Plugin Type 
+      /**
+       * Plugin Type
        */
       Plugin::Type type() const;
- 
-      /** 
+
+      /**
        * Plugin Type Name (Tools)
        */
       QString typeName() const;
- 
+
       /**
        * @return the QAction of the tool
        */
@@ -98,28 +98,28 @@ namespace Avogadro {
        * @param widget the %GLWidget where the even occurred
        * @param event the mouse event information
        */
-      virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event) = 0;
 
       /**
        * Response to mouse release
        * @param widget the %GLWidget where the even occurred
        * @param event the mouse event information
        */
-      virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event) = 0;
 
       /**
        * Response to mouse movement
        * @param widget the %GLWidget where the even occurred
        * @param event the mouse event information
        */
-      virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event) = 0;
+      virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event) = 0;
 
       /**
        * Response to mouse wheel movement
        * @param widget the %GLWidget where the even occurred
        * @param event the mouse wheel event information
        */
-      virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event) = 0;
+      virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event) = 0;
 
       /**
        * Called by the GLWidget allowing overlay painting by the

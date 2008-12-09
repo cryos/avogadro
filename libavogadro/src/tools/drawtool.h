@@ -2,6 +2,7 @@
   DrawTool - Tool for drawing molecules
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2007-2008 Marcus D. Hanwell
   Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
@@ -72,16 +73,16 @@ namespace Avogadro {
 
       /*! Handle a mouse press (i.e., beginning of drawing)
       */
-      virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event);
+      virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       /*! Handle a mouse release (i.e., the end of drawing)
       */
-      virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event);
+      virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
       /*! Handle a mouse move (perhaps drawing a bond)
       */
-      virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
+      virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
       /*! Handle a scroll wheel (i.e., zooming in and out of the canvas)
       */
-      virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
+      virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
       //@}
 
       /**

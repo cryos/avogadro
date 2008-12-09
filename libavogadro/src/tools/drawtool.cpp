@@ -95,7 +95,7 @@ namespace Avogadro {
   }
 
   // Handle a user click
-  QUndoCommand* DrawTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* DrawTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
     Molecule *molecule = widget->molecule();
     if(!molecule) {
@@ -115,6 +115,9 @@ namespace Avogadro {
                           event->pos().y()-SEL_BOX_HALF_SIZE,
                           SEL_BOX_SIZE,
                           SEL_BOX_SIZE);
+
+    // The draw tool always accepts mouse presses
+    event->accept();
 
     if(_buttons & Qt::LeftButton) {
       // The user clicked on an atom
@@ -190,12 +193,15 @@ namespace Avogadro {
     return undo;
   }
 
-  QUndoCommand* DrawTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* DrawTool::mouseMoveEvent(GLWidget *widget, QMouseEvent *event)
   {
     Molecule *molecule = widget->molecule();
     if(!molecule) {
       return 0;
     }
+
+    // The draw tool always accepts mouse presses
+    event->accept();
 
     if((_buttons & Qt::LeftButton) && m_beginAtom) {
       m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
@@ -343,10 +349,13 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* DrawTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* DrawTool::mouseReleaseEvent(GLWidget *widget, QMouseEvent *event)
   {
     QUndoCommand *undo = 0;
     Molecule *molecule = widget->molecule();
+
+    // The draw tool always accepts mouse presses
+    event->accept();
 
     if(_buttons & Qt::LeftButton && (event->modifiers() == Qt::NoModifier)) {
 
@@ -495,29 +504,9 @@ namespace Avogadro {
   }
 
   // Zoom the camera
-  QUndoCommand* DrawTool::wheel(GLWidget *widget, const QWheelEvent *event)
+  QUndoCommand* DrawTool::wheelEvent(GLWidget*, QWheelEvent*)
   {
-    // let's set the reference to be the center of the visible
-    // part of the molecule.
-    Eigen::Vector3d atomsBarycenter(0., 0., 0.);
-    double sumOfWeights = 0.;
-    if(widget->molecule()->numAtoms()) {
-      QList<Atom*> atoms = widget->molecule()->atoms();
-      foreach(Atom* atom, atoms) {
-        Vector3d transformedAtomPos = widget->camera()->modelview() * *atom->pos();
-        double atomDistance = transformedAtomPos.norm();
-        double dot = transformedAtomPos.z() / atomDistance;
-        double weight = exp(-30. * (1. + dot));
-        sumOfWeights += weight;
-        atomsBarycenter += weight * *atom->pos();
-      }
-      atomsBarycenter /= sumOfWeights;
-    }
-
-    Navigate::zoom(widget, atomsBarycenter, -MOUSE_WHEEL_SPEED*event->delta());
-    widget->update();
-
-    return NULL;
+    return 0;
   }
 
   Atom *DrawTool::newAtom(GLWidget *widget, const QPoint& p)

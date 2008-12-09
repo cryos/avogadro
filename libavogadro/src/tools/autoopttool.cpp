@@ -1,7 +1,7 @@
 /**********************************************************************
   AutoOptTool - Automatic Optimization Tool for Avogadro
 
-  Copyright (C) 2007-2008 by Marcus D. Hanwell
+  Copyright (C) 2007,2008 by Marcus D. Hanwell
   Copyright (C) 2007 by Geoffrey R. Hutchison
   Copyright (C) 2007 by Benoit Jacob
   Copyright (C) 2008 by Tim Vandermeersch
@@ -122,12 +122,11 @@ namespace Avogadro {
     }
   }
 
-  QUndoCommand* AutoOptTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* AutoOptTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
     m_glwidget = widget;
     m_lastDraggingPosition = event->pos();
 
-#ifdef Q_WS_MAC
     m_leftButtonPressed = (event->buttons() & Qt::LeftButton
         && event->modifiers() == Qt::NoModifier);
     // On the Mac, either use a three-button mouse
@@ -138,15 +137,11 @@ namespace Avogadro {
     // Hold down the Command key (ControlModifier in Qt notation) for right button
     m_rightButtonPressed = ((event->buttons() & Qt::RightButton) ||
         (event->buttons() & Qt::LeftButton && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)));
-#else
-    m_leftButtonPressed = (event->buttons() & Qt::LeftButton);
-    m_midButtonPressed = (event->buttons() & Qt::MidButton);
-    m_rightButtonPressed = (event->buttons() & Qt::RightButton);
-#endif
 
     m_clickedAtom = widget->computeClickedAtom(event->pos());
     if(m_clickedAtom != 0 && m_leftButtonPressed && m_running)
     {
+      event->accept();
       if (m_forceField->GetConstraints().IsIgnored(m_clickedAtom->index()+1) && !m_ignoredMovable->isChecked() )
         m_clickedAtom = 0;
       else if (m_forceField->GetConstraints().IsFixed(m_clickedAtom->index()+1) && !m_fixedMovable->isChecked() )
@@ -162,9 +157,10 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* AutoOptTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
+  QUndoCommand* AutoOptTool::mouseReleaseEvent(GLWidget *widget, QMouseEvent *event)
   {
     m_glwidget = widget;
+
     m_leftButtonPressed = false;
     m_midButtonPressed = false;
     m_rightButtonPressed = false;
@@ -176,7 +172,7 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* AutoOptTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* AutoOptTool::mouseMoveEvent(GLWidget *widget, QMouseEvent *event)
   {
     m_glwidget = widget;
     if(!widget->molecule()) {
@@ -194,42 +190,11 @@ namespace Avogadro {
     {
       if (m_leftButtonPressed)
       {
-          // translate the molecule following mouse movement
-          Vector3d begin = widget->camera()->project(*m_clickedAtom->pos());
-          QPoint point = QPoint(begin.x(), begin.y());
-          translate(widget, *m_clickedAtom->pos(), point/*m_lastDraggingPosition*/, event->pos());
-      }
-      else if (m_midButtonPressed)
-      {
-        // Perform the rotation
-        Navigate::tilt(widget, widget->center(), deltaDragging.x());
-
-        // Perform the zoom toward molecule center
-        Navigate::zoom(widget, widget->center(), deltaDragging.y());
-      }
-      else if (m_rightButtonPressed)
-      {
-        Navigate::translate(widget, widget->center(), m_lastDraggingPosition, event->pos());
-      }
-    }
-    else
-    {
-      if (m_leftButtonPressed)
-      {
-        // rotation around the center of the molecule
-        Navigate::rotate(widget, widget->center(), deltaDragging.x(), deltaDragging.y());
-      }
-      else if (m_midButtonPressed)
-      {
-        // Perform the rotation
-        Navigate::tilt(widget, widget->center(), deltaDragging.x());
-
-        // Perform the zoom toward molecule center
-        Navigate::zoom(widget, widget->center(), deltaDragging.y());
-      }
-      else if (m_rightButtonPressed)
-      {
-        Navigate::translate(widget, widget->center(), m_lastDraggingPosition, event->pos());
+        event->accept();
+        // translate the molecule following mouse movement
+        Vector3d begin = widget->camera()->project(*m_clickedAtom->pos());
+        QPoint point = QPoint(begin.x(), begin.y());
+        translate(widget, *m_clickedAtom->pos(), point/*m_lastDraggingPosition*/, event->pos());
       }
     }
 
@@ -239,39 +204,8 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* AutoOptTool::wheel(GLWidget* widget, const QWheelEvent* event)
+  QUndoCommand* AutoOptTool::wheelEvent(GLWidget*, QWheelEvent*)
   {
-    m_glwidget = widget;
-    Primitive *clickedPrim = widget->computeClickedPrimitive(event->pos());
-
-    if (clickedPrim && clickedPrim->type() == Primitive::AtomType)
-    {
-      Atom *clickedAtom = (Atom*)clickedPrim;
-      // Perform the zoom toward clicked atom
-      Navigate::zoom(widget, *clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
-    }
-    else if (clickedPrim && clickedPrim->type() == Primitive::BondType)
-    {
-      Bond *clickedBond = (Bond*)clickedPrim;
-
-      Atom *begin = widget->molecule()->atomById(clickedBond->beginAtomId());
-      Atom *end = widget->molecule()->atomById(clickedBond->endAtomId());
-
-      Vector3d btoe = *end->pos() - *begin->pos();
-      double newLen = btoe.norm() / 2;
-      btoe = btoe / btoe.norm();
-
-      Vector3d mid = *begin->pos() + btoe * newLen;
-
-      // Perform the zoom toward the centre of a clicked bond
-      Navigate::zoom(widget, mid, - MOUSE_WHEEL_SPEED * event->delta());
-    }
-    else {
-      // Perform the zoom toward molecule center
-      Navigate::zoom(widget, widget->center(), - MOUSE_WHEEL_SPEED * event->delta());
-    }
-
-    widget->update();
     return 0;
   }
 

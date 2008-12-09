@@ -24,25 +24,23 @@
  **********************************************************************/
 
 #include "selectrotatetool.h"
-#include <avogadro/navigate.h>
-#include <avogadro/primitive.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/molecule.h>
 #include <avogadro/residue.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
-#include <avogadro/camera.h>
 
 #include <openbabel/mol.h>
-#include <openbabel/obiter.h>
-#include <openbabel/math/matrix3x3.h>
 
 #include <Eigen/Geometry>
 
 #include <QtPlugin>
 #include <QApplication>
 #include <QLabel>
+#include <QAction>
+#include <QVBoxLayout>
+#include <QComboBox>
 #include <QDebug>
 
 using namespace std;
@@ -76,7 +74,7 @@ namespace Avogadro {
     return 500000;
   }
 
-  QUndoCommand* SelectRotateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* SelectRotateTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
 
     m_movedSinceButtonPressed = false;
@@ -93,32 +91,15 @@ namespace Avogadro {
       m_selectionBox = true;
     }
 
-    if(!m_selectionBox)
-    {
-      if( event->buttons() & Qt::LeftButton )
-      {
-        // Rotation about the centre of the molecule
-        widget->setCursor(Qt::ClosedHandCursor);
-      }
-      else if ( event->buttons() & Qt::MidButton )
-      {
-        // Rotation about the centre of the molecule in the z axis
-        widget->setCursor(Qt::SizeVerCursor);
-      }
-      else if ( event->buttons() & Qt::RightButton )
-      {
-        // Translation about the centre of the molecule in the x and y axes
-        widget->setCursor(Qt::SizeAllCursor);
-      }
-    }
-    else
+    if(!m_selectionBox) {
       widget->setCursor(Qt::CrossCursor);
+    }
 
     return 0;
   }
 
-  QUndoCommand* SelectRotateTool::mouseRelease(GLWidget *widget,
-		                                       const QMouseEvent *event)
+  QUndoCommand* SelectRotateTool::mouseReleaseEvent(GLWidget *widget,
+                                                    QMouseEvent *event)
   {
     // Reset the cursor
     widget->setCursor(Qt::ArrowCursor);
@@ -334,33 +315,15 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* SelectRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* SelectRotateTool::mouseMoveEvent(GLWidget *widget, QMouseEvent *event)
   {
     QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
     if( ( event->pos() - m_initialDraggingPosition ).manhattanLength() > 2 )
       m_movedSinceButtonPressed = true;
 
-    if( m_hits.size() )
-    {
-      if( event->buttons() & Qt::LeftButton )
-      {
-        // Rotation about the centre of the molecule
-        Navigate::rotate(widget, widget->center(), deltaDragging.x(), deltaDragging.y());
-      }
-      else if ( event->buttons() & Qt::RightButton )
-      {
-        // Translation about the centre of the molecule in the x and y axes
-        Navigate::translate(widget, widget->center(), m_lastDraggingPosition, event->pos());
-      }
-      else if ( event->buttons() & Qt::MidButton )
-      {
-        // Rotation about the centre of the molecule in the z axis
-        Navigate::tilt(widget, widget->center(), deltaDragging.x());
-
-        // Zoom toward the centre of the molecule
-        Navigate::zoom(widget, widget->center(), deltaDragging.y());
-      }
+    if(!m_hits.size()) {
+      event->accept();
     }
 
     m_lastDraggingPosition = event->pos();
@@ -369,27 +332,9 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* SelectRotateTool::wheel(GLWidget*widget, const QWheelEvent*event)
+  QUndoCommand* SelectRotateTool::wheelEvent(GLWidget*, QWheelEvent*)
   {
-    // let's set the reference to be the center of the visible
-    // part of the molecule.
-    Eigen::Vector3d atomsBarycenter(0., 0., 0.);
-    double sumOfWeights = 0.;
-    QList<Atom*> atoms = widget->molecule()->atoms();
-    foreach (Atom *atom, atoms) {
-      Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * *atom->pos();
-      double atomDistance = transformedAtomPos.norm();
-      double dot = transformedAtomPos.z() / atomDistance;
-      double weight = exp(-30. * (1. + dot));
-      sumOfWeights += weight;
-      atomsBarycenter += weight * *atom->pos();
-    }
-    atomsBarycenter /= sumOfWeights;
-
-    Navigate::zoom(widget, atomsBarycenter, - MOUSE_WHEEL_SPEED * event->delta());
-    widget->update();
-
-    return NULL;
+    return 0;
   }
 
   void SelectRotateTool::selectionBox(float sx, float sy, float ex, float ey)

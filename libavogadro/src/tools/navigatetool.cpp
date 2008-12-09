@@ -1,7 +1,7 @@
 /**********************************************************************
   NavigateTool - Navigation Tool for Avogadro
 
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007,2008 by Marcus D. Hanwell
   Copyright (C) 2006,2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
@@ -26,15 +26,11 @@
 #include "navigatetool.h"
 #include "eyecandy.h"
 #include <avogadro/navigate.h>
-#include <avogadro/primitive.h>
 #include <avogadro/atom.h>
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
-
-#include <openbabel/obiter.h>
-#include <openbabel/mol.h>
 
 #include <QtPlugin>
 
@@ -44,7 +40,7 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false),
+  NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false), m_draggingInitialized(false),
   m_eyecandy(new Eyecandy)
   {
     QAction *action = activateAction();
@@ -94,8 +90,9 @@ namespace Avogadro {
     }
   }
 
-  QUndoCommand* NavigateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* NavigateTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
+    event->accept();
     m_lastDraggingPosition = event->pos();
     // Make sure there aren't modifier keys clicked with the left button
     // If the user has a Mac and only a one-button mouse, everything
@@ -146,12 +143,14 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* NavigateTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
+  QUndoCommand* NavigateTool::mouseReleaseEvent(GLWidget *widget, QMouseEvent *event)
   {
+    event->accept();
     m_leftButtonPressed = false;
     m_midButtonPressed = false;
     m_rightButtonPressed = false;
     m_clickedAtom = 0;
+    m_draggingInitialized = false;
 
     // Set the cursor back to the default cursor
     widget->setCursor(Qt::ArrowCursor);
@@ -160,13 +159,22 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* NavigateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* NavigateTool::mouseMoveEvent(GLWidget *widget, QMouseEvent *event)
   {
     if(!widget->molecule()) {
       return 0;
     }
 
-    QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
+    event->accept();
+
+    QPoint deltaDragging;
+    if (m_draggingInitialized) {
+      deltaDragging = event->pos() - m_lastDraggingPosition;
+    }
+    else {
+      m_lastDraggingPosition = event->pos();
+      m_draggingInitialized = true;
+    }
 
     // Mouse navigation has two modes - atom centred when an atom is clicked
     // and scene if no atom has been clicked. However we don't need two codepaths
@@ -207,8 +215,9 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* NavigateTool::wheel(GLWidget *widget, const QWheelEvent *event )
+  QUndoCommand* NavigateTool::wheelEvent(GLWidget *widget, QWheelEvent *event )
   {
+    event->accept();
     m_clickedAtom = 0; // no need for mouse wheel to detect exactly the atom,
                        // the referencePoint will be accurate enough, and
                        // on large molecules doing a gl selection on every

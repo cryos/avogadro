@@ -1,7 +1,7 @@
 /**********************************************************************
   NavigateTool - Navigation Tool for Avogadro
 
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007,2008 by Marcus D. Hanwell
   Copyright (C) 2006,2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
@@ -28,8 +28,6 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
-
-#include <openbabel/mol.h>
 
 #include <QGLWidget>
 #include <QObject>
@@ -81,10 +79,10 @@ namespace Avogadro {
      * @{
      * @brief Callback methods for ui.actions on the canvas.
      */
-    virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event);
-    virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event);
-    virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
-    virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
+    virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
+    virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
+    virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+    virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
     //@}
 
     /**
@@ -110,9 +108,10 @@ namespace Avogadro {
     double m_yAngleEyecandy, m_xAngleEyecandy;
 
     QPoint              m_lastDraggingPosition;
+    bool                m_draggingInitialized;  // Has dragging been initialized?
 
     Eyecandy * m_eyecandy;
-    
+
     /** recomputes m_referencePoint. Uses the value of m_clickedAtom. */
     void computeReferencePoint(GLWidget *widget);
   };

@@ -1,7 +1,7 @@
 /**********************************************************************
   AutoRotateTool - Auto Rotation Tool for Avogadro
 
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007,2008 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -30,9 +30,7 @@
 
 #include <QGLWidget>
 #include <QObject>
-#include <QStringList>
-#include <QImage>
-#include <QAction>
+
 #include <QWidget>
 
 class QPushButton;
@@ -72,10 +70,10 @@ namespace Avogadro {
       //! \brief Callback methods for ui.actions on the canvas.
       /*!
       */
-      virtual QUndoCommand* mousePress(GLWidget*, const QMouseEvent*);
-      virtual QUndoCommand* mouseRelease(GLWidget*, const QMouseEvent*);
-      virtual QUndoCommand* mouseMove(GLWidget*, const QMouseEvent*);
-      virtual QUndoCommand* wheel(GLWidget*, const QWheelEvent*) { return 0; }
+      virtual QUndoCommand* mousePressEvent(GLWidget*, QMouseEvent*);
+      virtual QUndoCommand* mouseReleaseEvent(GLWidget*, QMouseEvent*);
+      virtual QUndoCommand* mouseMoveEvent(GLWidget*, QMouseEvent*);
+      virtual QUndoCommand* wheelEvent(GLWidget*, QWheelEvent*) { return 0; }
 
       virtual int usefulness() const;
 
@@ -124,7 +122,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_TOOL_FACTORY(AutoRotateTool, tr("AutoRotate Tool"), 
+    AVOGADRO_TOOL_FACTORY(AutoRotateTool, tr("AutoRotate Tool"),
         tr("This tool allows the user to rotate a molecule around any axis and a given speed."))
   };
 

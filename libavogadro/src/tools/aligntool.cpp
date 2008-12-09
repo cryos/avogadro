@@ -74,7 +74,7 @@ namespace Avogadro {
   {
   }
 
-  QUndoCommand* AlignTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* AlignTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
     m_molecule = widget->molecule();
     if(!m_molecule)
@@ -90,6 +90,7 @@ namespace Avogadro {
         return 0;
 
       Atom *atom = m_molecule->atom(m_hits[0].name());
+      event->accept();
 
       if(m_numSelectedAtoms < 2)
       {
@@ -101,43 +102,26 @@ namespace Avogadro {
     // Right button or Left Button + modifier (e.g., Mac)
     else
     {
+      event->accept();
       m_numSelectedAtoms = 0;
       widget->update();
     }
     return 0;
   }
 
-  QUndoCommand* AlignTool::mouseMove(GLWidget*, const QMouseEvent *)
+  QUndoCommand* AlignTool::mouseMoveEvent(GLWidget*, QMouseEvent *)
   {
     return 0;
   }
 
-  QUndoCommand* AlignTool::mouseRelease(GLWidget*, const QMouseEvent*)
+  QUndoCommand* AlignTool::mouseReleaseEvent(GLWidget*, QMouseEvent*)
   {
     return 0;
   }
 
-  QUndoCommand* AlignTool::wheel(GLWidget*widget, const QWheelEvent*event)
+  QUndoCommand* AlignTool::wheelEvent(GLWidget *widget, QWheelEvent *event)
   {
-    // let's set the reference to be the center of the visible
-    // part of the molecule.
-    Eigen::Vector3d atomsBarycenter(0., 0., 0.);
-    double sumOfWeights = 0.;
-    QList<Atom*> atoms = widget->molecule()->atoms();
-    foreach (const Atom *atom, atoms) {
-      Eigen::Vector3d transformedAtomPos = widget->camera()->modelview() * *atom->pos();
-      double atomDistance = transformedAtomPos.norm();
-      double dot = transformedAtomPos.z() / atomDistance;
-      double weight = exp(-30. * (1. + dot));
-      sumOfWeights += weight;
-      atomsBarycenter += weight * *atom->pos();
-    }
-    atomsBarycenter /= sumOfWeights;
-
-    Navigate::zoom(widget, atomsBarycenter, - MOUSE_WHEEL_SPEED * event->delta());
-    widget->update();
-
-    return NULL;
+    return 0;
   }
 
   bool AlignTool::paint(GLWidget *widget)

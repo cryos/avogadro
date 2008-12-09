@@ -1,7 +1,7 @@
 /**********************************************************************
   AutoRotateTool - Auto Rotation Tool for Avogadro
 
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007,2008 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -29,6 +29,7 @@
 
 #include <QtPlugin>
 #include <QObject>
+#include <QAction>
 
 #include <QSlider>
 #include <QLabel>
@@ -78,7 +79,7 @@ namespace Avogadro {
     m_glwidget->camera()->translate( -m_glwidget->center() );
   }
 
-  QUndoCommand* AutoRotateTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* AutoRotateTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
     // Record the starting postion and which mouse button was pressed
     m_glwidget = widget;
@@ -87,12 +88,15 @@ namespace Avogadro {
     m_leftButtonPressed = ( event->buttons() & Qt::LeftButton );
     m_midButtonPressed = ( event->buttons() & Qt::MidButton );
 
+    if (m_leftButtonPressed || m_midButtonPressed)
+      event->accept();
+
     m_glwidget->update();
 
     return 0;
   }
 
-  QUndoCommand* AutoRotateTool::mouseRelease(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* AutoRotateTool::mouseReleaseEvent(GLWidget *widget, QMouseEvent *event)
   {
     m_glwidget = widget;
     // Calculate some multipliers for the delta
@@ -100,8 +104,8 @@ namespace Avogadro {
     double yMultiplier = m_maxRotation / static_cast<double>(m_glwidget->height());
     QPoint deltaDragging = event->pos() - m_startDraggingPosition;
 
-    if(m_leftButtonPressed)
-    {
+    if(m_leftButtonPressed) {
+      event->accept();
       // Rotation about the x and y axes
       m_xRotation = static_cast<int>(deltaDragging.x() * xMultiplier);
       m_sliderX->setValue(m_xRotation);
@@ -112,8 +116,8 @@ namespace Avogadro {
 
       enableTimer();
     }
-    else if (m_midButtonPressed)
-    {
+    else if (m_midButtonPressed) {
+      event->accept();
       // Rotation about the z axis
       m_xRotation = 0;
       m_sliderX->setValue(m_xRotation);
@@ -133,12 +137,15 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* AutoRotateTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* AutoRotateTool::mouseMoveEvent(GLWidget *widget, QMouseEvent *event)
   {
     m_glwidget = widget;
 
     // Keep track of the current position to draw the movement line
     m_currentDraggingPosition = event->pos();
+
+    if (m_leftButtonPressed || m_midButtonPressed)
+      event->accept();
 
     m_glwidget->update();
 

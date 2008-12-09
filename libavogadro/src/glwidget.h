@@ -29,7 +29,6 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
-#include <avogadro/tool.h>
 #include <avogadro/color.h>
 #include <avogadro/painter.h>
 #include <avogadro/camera.h>
@@ -47,6 +46,7 @@ namespace Avogadro {
   class Atom;
   class Bond;
   class Molecule;
+  class Tool;
   class ToolGroup;
 
   /**
@@ -387,7 +387,7 @@ namespace Avogadro {
        * @return true if the debug panel is being drawn
        */
       bool renderDebug();
-      
+
       /**
        * @return true if the primitives have being drawn
        */
@@ -685,6 +685,7 @@ namespace Avogadro {
       inline double computeFramesPerSecond();
 
       bool              m_glslEnabled;
+      Tool*             m_navigateTool; /// NavigateTool is a super tool
 
     public Q_SLOTS:
 
@@ -792,7 +793,7 @@ namespace Avogadro {
       void engineRemoved(Engine *engine);
 
       /**
-       * Signal that the GLWidget has resized. Can be used to update child 
+       * Signal that the GLWidget has resized. Can be used to update child
        * widgets, see overlay extension for example.
        */
       void resized();
