@@ -15,10 +15,13 @@ if (EXISTS ${PYTHON_INCLUDE_PATH}/sip.h)
   add_definitions( -DENABLE_PYTHON_SIP )
 endif (EXISTS ${PYTHON_INCLUDE_PATH}/sip.h)
 
-ADD_LIBRARY(python-module SHARED ${wrapper_SRCS})
+ADD_LIBRARY(python-module MODULE ${wrapper_SRCS})
 SET_TARGET_PROPERTIES(python-module PROPERTIES OUTPUT_NAME Avogadro)
 SET_TARGET_PROPERTIES(python-module PROPERTIES PREFIX "")
 TARGET_LINK_LIBRARIES(python-module stdc++ avogadro-lib)
+
+# Let's try to use this instead:
+python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"
 
 #message("Looking for python site-packages directory...")
 set(PYTHON_VERSIONS "python;python2.5;python2.4;python2.3;python2.2")
