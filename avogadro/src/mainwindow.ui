@@ -16,14 +16,23 @@
    <iconset resource="avogadro.qrc" >
     <normaloff>:/icons/avogadro.png</normaloff>:/icons/avogadro.png</iconset>
   </property>
-  <widget class="QWidget" name="centralWidget" />
+  <widget class="QWidget" name="centralWidget" >
+   <property name="geometry" >
+    <rect>
+     <x>84</x>
+     <y>66</y>
+     <width>271</width>
+     <height>465</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >
     <rect>
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -147,8 +156,25 @@
    <addaction name="menuSettings" />
    <addaction name="menuHelp" />
   </widget>
-  <widget class="QStatusBar" name="statusbar" />
+  <widget class="QStatusBar" name="statusbar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>531</y>
+     <width>621</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QToolBar" name="fileToolBar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>22</y>
+     <width>621</width>
+     <height>44</height>
+    </rect>
+   </property>
    <property name="windowTitle" >
     <string>Main Toolbar</string>
    </property>
@@ -171,6 +197,14 @@
    <addaction name="actionQuitTool" />
   </widget>
   <widget class="QDockWidget" name="projectDock" >
+   <property name="geometry" >
+    <rect>
+     <x>361</x>
+     <y>66</y>
+     <width>260</width>
+     <height>465</height>
+    </rect>
+   </property>
    <property name="minimumSize" >
     <size>
      <width>100</width>
@@ -187,6 +221,14 @@
     <number>2</number>
    </attribute>
    <widget class="QWidget" name="projectWidget" >
+    <property name="geometry" >
+     <rect>
+      <x>0</x>
+      <y>26</y>
+      <width>260</width>
+      <height>439</height>
+     </rect>
+    </property>
     <layout class="QVBoxLayout" >
      <property name="spacing" >
       <number>6</number>
@@ -210,6 +252,14 @@
    </widget>
   </widget>
   <widget class="QDockWidget" name="toolsDock" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>66</y>
+     <width>78</width>
+     <height>230</height>
+    </rect>
+   </property>
    <property name="allowedAreas" >
     <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
@@ -219,9 +269,26 @@
    <attribute name="dockWidgetArea" >
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="toolsWidget" />
+   <widget class="QWidget" name="toolsWidget" >
+    <property name="geometry" >
+     <rect>
+      <x>0</x>
+      <y>26</y>
+      <width>78</width>
+      <height>204</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QDockWidget" name="enginesDock" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>302</y>
+     <width>78</width>
+     <height>229</height>
+    </rect>
+   </property>
    <property name="allowedAreas" >
     <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
@@ -231,7 +298,16 @@
    <attribute name="dockWidgetArea" >
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="enginesWidget" />
+   <widget class="QWidget" name="enginesWidget" >
+    <property name="geometry" >
+     <rect>
+      <x>0</x>
+      <y>26</y>
+      <width>78</width>
+      <height>203</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <action name="actionOpen" >
    <property name="icon" >
@@ -375,7 +451,7 @@
      <normaloff>:/icons/fileexport.png</normaloff>:/icons/fileexport.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Export Graphics...</string>
+    <string>&amp;Graphics...</string>
    </property>
   </action>
   <action name="actionFullScreen" >
@@ -583,12 +659,12 @@
   </action>
   <action name="pluginManagerAction" >
    <property name="text" >
-    <string>Plugin Manager</string>
+    <string>Plugin Manager...</string>
    </property>
   </action>
   <action name="projectTreeEditorAction" >
    <property name="text" >
-    <string>Project Tree Editor</string>
+    <string>Project Tree Editor...</string>
    </property>
   </action>
   <action name="actionDetachView" >
@@ -598,7 +674,7 @@
   </action>
   <action name="actionImport_File" >
    <property name="text" >
-    <string>Import File</string>
+    <string>Molecule File...</string>
    </property>
   </action>
   <action name="actionQuickRender" >
@@ -614,7 +690,7 @@
   </action>
   <action name="actionExportGL2PS" >
    <property name="text" >
-    <string>Export Vector Graphics</string>
+    <string>&amp;Vector Graphics...</string>
    </property>
   </action>
  </widget>
