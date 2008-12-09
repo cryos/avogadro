@@ -54,6 +54,19 @@ namespace Avogadro
   public Q_SLOTS:
     void calculate();
 
+  private Q_SLOTS:
+    /**
+     * Slot responsible for updating the parameters of the cube when any of the
+     * text edit boxes are changed.
+     */
+    void originChanged();
+
+    void maxChanged();
+
+    void stepsChanged();
+
+    void stepSizeChanged();
+
   Q_SIGNALS:
     void calculateMO(int MO);
 
