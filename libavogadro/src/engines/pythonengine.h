@@ -47,18 +47,23 @@ namespace Avogadro {
       //! Constructor
       PythonEngine(QObject *parent=0);
       //! Deconstructor
-      ~PythonEngine() {}
-
+      ~PythonEngine();
       //! Copy
       Engine *clone() const;
 
-      //! \name Render Methods
-      //@{
-      bool renderOpaque(PainterDevice *pd);
-      //@}
 
+      //! \name Methods Render Methods
+      //@{
+      //! Return flags from the current script
+      EngineFlags flags() const;
+      double transparencyDepth() const;
+      bool renderOpaque(PainterDevice *pd);
+      
       //! Configuration options
       QWidget* settingsWidget();
+      //@}
+      
+      
       /**
        * Write the engine settings so that they can be saved between sessions.
        */
@@ -75,7 +80,9 @@ namespace Avogadro {
     
     QList<PythonScript> m_scripts;
     PythonInterpreter m_interpreter;
+
     int m_scriptIndex;
+    boost::python::object m_instance;
     
     void loadScripts(QDir dir);
 

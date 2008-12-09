@@ -1,13 +1,11 @@
 import Avogadro
 from numpy import *
 
-def name():
+class Engine():
+  def name(self):
     return "Cube Point Engine"
 
-def description():
-    return "Render cubes points as spheres"
-
-def renderOpaque(pd):
+  def renderOpaque(self, pd):
     # Painter 
     painter = pd.painter
     # Molecule

@@ -9,26 +9,24 @@
     <height>233</height>
    </rect>
   </property>
-  <layout class="QGridLayout" >
-   <item row="0" column="0" >
-    <layout class="QVBoxLayout" >
-     <item>
-      <widget class="QComboBox" name="scriptsComboBox" />
-     </item>
-    </layout>
+  <layout class="QVBoxLayout" name="verticalLayout" >
+   <item>
+    <widget class="QComboBox" name="scriptsComboBox" />
    </item>
-   <item row="1" column="0" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+   <item>
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Python Settings</string>
      </property>
-     <property name="sizeHint" stdset="0" >
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
-    </spacer>
+     <layout class="QVBoxLayout" name="verticalLayout_3" >
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2" />
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>

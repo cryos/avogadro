@@ -48,6 +48,7 @@ namespace Avogadro
     }
     catch(error_already_set const &)
     {
+      PyErr_Print();
     }
   }
 

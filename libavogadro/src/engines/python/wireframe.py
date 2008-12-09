@@ -1,13 +1,40 @@
-import sys
+from PyQt4.Qt import *
 import Avogadro
 
-def name():
+
+class Engine(QObject):
+  # declare the changed() signal
+  __pyqtSignals__ = ("changed()",)
+
+  # constructor
+  def __init__(self):
+    QObject.__init__(self)
+    self.widget = None
+    self.width = 1
+
+  def name(self):
     return "Python Wireframe Engine"
 
-def description():
-    return "A simple wireframe engine in python"
+  def flags(self):
+    return Avogadro.EngineFlags.NoFlags
 
-def renderOpaque(pd):
+  # slot
+  @pyqtSignature("int")
+  def sliderChanged(self, value):
+    self.width = value
+    self.emit(SIGNAL("changed()"))
+    
+  def settingsWidget(self):
+    self.widget = QWidget()
+    slider = QSlider(Qt.Horizontal, self.widget)
+    slider.setMinimum(1)
+    slider.setMaximum(5)
+
+    QObject.connect(slider, SIGNAL("valueChanged(int)"), self, SLOT("sliderChanged(int)"))
+
+    return self.widget
+
+  def renderOpaque(self, pd):
     # Painter 
     painter = pd.painter
     # Molecule
@@ -16,25 +43,18 @@ def renderOpaque(pd):
     # Color
     color = pd.colorMap
 
-    # set color to white
-    painter.setColor(1.0, 1.0, 1.0, 1.0)
-    # draw some text
-    painter.drawText(10,10, "Python wireframe engine")
-
-    # set color to green
     for bond in molecule.bonds:
       beginAtom = molecule.atomById(bond.beginAtomId)
       endAtom = molecule.atomById(bond.endAtomId)
 
       delta = beginAtom.pos - endAtom.pos
-      #center = (beginAtom.pos + endAtom.pos + delta) / 2
       center = (beginAtom.pos + endAtom.pos) / 2
 
       color.set(beginAtom)
       painter.setColor(color)
-      painter.drawLine(beginAtom.pos, center, 2.0)
+      painter.drawLine(beginAtom.pos, center, self.width)
 
       color.set(endAtom)
       painter.setColor(color)
-      painter.drawLine(endAtom.pos, center, 2.0)
+      painter.drawLine(endAtom.pos, center, self.width)
 

@@ -80,6 +80,7 @@ namespace Avogadro {
 
     private:
       PythonInterpreterPrivate *const d;
+      static int m_initCount;
 
       boost::python::object execWrapper(const QString &command, boost::python::object main, boost::python::object local);
       boost::python::object evalWrapper(const QString &string, boost::python::object main, boost::python::object local);

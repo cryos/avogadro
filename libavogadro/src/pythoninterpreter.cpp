@@ -33,46 +33,39 @@ using namespace boost::python;
 
 namespace Avogadro {
 
-  class PythonInterpreterPrivate {
-
+  class PythonInterpreterPrivate 
+  {
     public:
+
       PythonInterpreterPrivate() : molecule(0)
-    {
-//      static bool initialized = false;
-
-//      if(!initialized)
-//      {
-        std::cout << "initializing python interpreter\n";
-        try {
-//          PyImport_AppendInittab( const_cast<char *>("Avogadro"), &initAvogadro );
-
-          Py_Initialize();
-
-//          object sys_module( handle<>(PyImport_ImportModule("sys")) );
-//          object cStringIO_module( handle<>(PyImport_ImportModule("cStringIO")) );
-//          main_module = handle<>(borrowed(PyImport_AddModule("__main__")));
-
-          //        m_main_namespace = main_module.attr("__dict__");
-
-          //        scope(avogadro_module).attr("widget") = ptr(widget);
-        } catch( error_already_set ) {
-          PyErr_Print();
-        }
-//        initialized = true;
-//      }
-    }
+      {
+      }
 
       dict local_namespace;
       Molecule *molecule;
   };
 
+  int PythonInterpreter::m_initCount = 0;
+
   PythonInterpreter::PythonInterpreter() : d(new PythonInterpreterPrivate)
   {
+    if (!m_initCount) {
+      std::cout << "initializing python interpreter\n";
+      try {
+        Py_Initialize();
+      } catch( error_already_set ) {
+        PyErr_Print();
+      }
+    }
+    m_initCount++;
   }
 
   PythonInterpreter::~PythonInterpreter()
   {
-    Py_Finalize();
+    m_initCount--;
+    if (!m_initCount) {
+      Py_Finalize();
+    }
   }
 
   void PythonInterpreter::setMolecule(Molecule *molecule)
@@ -158,7 +151,6 @@ namespace Avogadro {
     execWrapper("sys.stdout=CIO", main_namespace, local);
     execWrapper("sys.stderr=CIO", main_namespace, local);
 
-//    handle<> ignored(( PyRun_String( command.toAscii().constData(), Py_file_input, main_namespace.ptr(), main_namespace.ptr() ) ));
     object ignored = execWrapper(command.toAscii().constData(), main_namespace, local);
     object result = evalWrapper("str(CIO.getvalue())", main_namespace, local);
 

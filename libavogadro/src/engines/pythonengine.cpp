@@ -71,7 +71,6 @@ namespace Avogadro {
     }
 #endif
 
-
     if(!pluginDir.cd("engineScripts")) {
       if(!pluginDir.mkdir("engineScripts")) {
         return;
@@ -88,8 +87,10 @@ namespace Avogadro {
       + "share/libavogadro/engineScripts";
     pluginDir.cd(systemScriptsPath);
     loadScripts(pluginDir);
-
+  }
   
+  PythonEngine::~PythonEngine()
+  {
   }
 
   Engine* PythonEngine::clone() const
@@ -108,17 +109,13 @@ namespace Avogadro {
     if (m_scriptIndex >= m_scripts.size())
       return false;
 
-    // FIXME: we may want to chache this...
     boost::python::reference_existing_object::apply<PainterDevice*>::type converter;
     PyObject *obj = converter(pd);
     object real_obj = object(handle<>(obj));
-    
-    try
-    {
-      m_scripts.at(m_scriptIndex).module().attr("renderOpaque")(real_obj);
-    }
-    catch(error_already_set const &)
-    {
+ 
+    try {
+      m_instance.attr("renderOpaque")(real_obj);
+    } catch(error_already_set const &) {
       PyErr_Print();
     }
 
@@ -128,6 +125,26 @@ namespace Avogadro {
   void PythonEngine::setScriptIndex(int index)
   {
     m_scriptIndex = index;
+    try {
+      // instantiate the new engine
+      if (PyObject_HasAttrString(m_scripts.at(index).module().ptr(), "Engine")) {
+        m_instance = m_scripts.at(index).module().attr("Engine")();
+        QObject *instance = extract<QObject*>(m_instance);
+        if (instance)
+          connect(instance, SIGNAL(changed()), this, SIGNAL(changed()));
+
+        if (m_settingsWidget) {
+          if (PyObject_HasAttrString(m_instance.ptr(), "settingsWidget")) {
+            QWidget *widget = extract<QWidget*>(m_instance.attr("settingsWidget")());
+            if (widget) 
+              m_settingsWidget->groupBox->layout()->addWidget(widget);
+          }
+        }
+
+      }
+    } catch (error_already_set const &) {
+      PyErr_Print();
+    }
     emit changed();
   }
 
@@ -138,13 +155,17 @@ namespace Avogadro {
       m_settingsWidget = new PythonSettingsWidget();
 
       foreach (const PythonScript &script, m_scripts) {
-        dict local;
-        local[script.moduleName().toStdString()] = script.module();
-        QString name = m_interpreter.eval(script.moduleName() + ".name()", local);
-        m_settingsWidget->scriptsComboBox->addItem(name);
+        m_settingsWidget->scriptsComboBox->addItem(script.moduleName());
       }
- 
       m_settingsWidget->scriptsComboBox->setCurrentIndex(m_scriptIndex);
+
+      try {
+        QWidget *widget = extract<QWidget*>(m_instance.attr("settingsWidget")());
+        if (widget)
+          m_settingsWidget->groupBox->layout()->addWidget(widget);
+      } catch (error_already_set const &) {
+        PyErr_Print();
+      }
 
       connect(m_settingsWidget->scriptsComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(setScriptIndex(int)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
@@ -181,9 +202,8 @@ namespace Avogadro {
 
   void PythonEngine::loadScripts(QDir dir)
   {
-    // add it to the search path
     m_interpreter.addSearchPath(dir.canonicalPath());
-
+    
     QStringList filters;
     filters << "*.py";
     dir.setNameFilters(filters);
@@ -191,13 +211,49 @@ namespace Avogadro {
 
     foreach(const QString& file, dir.entryList())
     {
-      qDebug() << file;
+      qDebug() << "PythonEngine: checking " << file << "...";
       PythonScript script(dir.canonicalPath(), file);
-      if(script.module())
-        m_scripts.append(script);
-    }
+      
+      if(script.module()) {
+        // make sure there is an Engine class defined
+        if (PyObject_HasAttrString(script.module().ptr(), "Engine")) {
+          m_scripts.append(script);
+          qDebug() << "  + 'Engine' class found";
+        } else
+          qDebug() << "  - script has no 'Engine' class defined";
+      } else
+        qDebug() << "  - no module";
+
+    } // foreach file
   }
 
+  Engine::EngineFlags PythonEngine::flags() const
+  {
+    try {
+      // return flags from python script if the function is defined
+      if (PyObject_HasAttrString(m_instance.ptr(), "flags"))
+        return extract<Engine::EngineFlags>(m_instance.attr("flags")());
+    } catch(error_already_set const &) {
+      PyErr_Print();
+    }
+      
+    // return NoFlags, don't print an error, don't want to overwhelm new users with errors
+    return Engine::NoFlags;
+  }
+  
+  double PythonEngine::transparencyDepth() const
+  {
+    // see flags()
+    try {
+      if (PyObject_HasAttrString(m_instance.ptr(), "transparencyDepth"))
+        return extract<double>(m_instance.attr("transparencyDepth")());
+    } catch(error_already_set const &) {
+      PyErr_Print();
+    }
+      
+    return 0.0;
+  }
+ 
 
 }
 
