@@ -21,7 +21,8 @@ SET_TARGET_PROPERTIES(python-module PROPERTIES PREFIX "")
 TARGET_LINK_LIBRARIES(python-module stdc++ avogadro-lib)
 
 # Let's try to use this instead:
-EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"
+EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c 
+    "from sys import stdout; from distutils import sysconfig; stdout.write(sysconfig.get_python_lib())"
     OUTPUT_VARIABLE PYTHON_LIB_PATH)
 
 message(STATUS "Python site-packages directory: ${PYTHON_LIB_PATH}")
