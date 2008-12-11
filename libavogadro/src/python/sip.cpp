@@ -19,6 +19,9 @@
 #include <QDockWidget>
 #include <QAction>
 #include <QUndoCommand>
+#include <QColor>
+#include <QMouseEvent>
+#include <QWheelEvent>
 
 using namespace boost::python;
 
@@ -80,6 +83,8 @@ template <> struct MetaData<QUndoCommand> { static const char* className() { ret
 template <> struct MetaData<QUndoStack> { static const char* className() { return "QUndoStack";} };
 template <> struct MetaData<QPoint> { static const char* className() { return "QPoint";} };
 template <> struct MetaData<QColor> { static const char* className() { return "QColor";} };
+template <> struct MetaData<QMouseEvent> { static const char* className() { return "QMouseEvent";} };
+template <> struct MetaData<QWheelEvent> { static const char* className() { return "QWheelEvent";} };
  
 
 /**
@@ -216,6 +221,8 @@ void export_sip()
   QClass_converters<QUndoStack>();
   QClass_converters<QPoint>();
   QClass_converters<QColor>();
+  QClass_converters<QMouseEvent>();
+  QClass_converters<QWheelEvent>();
  
   // special case 
   to_python_converter<QList<QAction*>, QList_QClass_to_array_PyQt>();

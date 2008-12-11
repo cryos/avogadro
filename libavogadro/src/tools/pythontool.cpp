@@ -1,5 +1,5 @@
 /**********************************************************************
-  PythonEngine - Engine for python scripts
+  PythonTool - PythonTool Tool for Avogadro
 
   Copyright (C) 2008 Tim Vandermeersch
 
@@ -22,20 +22,26 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "pythonengine.h"
+#include "pythontool.h"
 
 #include <config.h>
+#include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
-#include <avogadro/bond.h>
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
-#include <Eigen/Regression>
+#include <cmath>
 
-#include <QMessageBox>
 #include <QDebug>
+#include <QtPlugin>
+#include <QLabel>
+#include <QPushButton>
+#include <QComboBox>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QUndoCommand>
 
 using namespace std;
 using namespace Eigen;
@@ -43,10 +49,13 @@ using namespace boost::python;
 
 namespace Avogadro {
 
-  PythonEngine::PythonEngine(QObject *parent) : Engine(parent), m_settingsWidget(NULL), m_scriptIndex(0)
+  PythonTool::PythonTool(QObject *parent) : Tool(parent), m_settingsWidget(0)
   {
-    setDescription(tr("Python script rendering"));
-  
+    QAction *action = activateAction();
+    action->setIcon(QIcon(QString::fromUtf8(":/python/python.png")));
+    action->setToolTip(tr("Python Tools"));
+    action->setShortcut(Qt::Key_F12);
+
     // create this directory for the user if it does not exist
     QDir pluginDir = QDir::home();
 
@@ -71,11 +80,11 @@ namespace Avogadro {
     }
 #endif
 
-    if(!pluginDir.cd("engineScripts")) {
-      if(!pluginDir.mkdir("engineScripts")) {
+    if(!pluginDir.cd("toolScripts")) {
+      if(!pluginDir.mkdir("toolScripts")) {
         return;
       }
-      if(!pluginDir.cd("engineScripts")) {
+      if(!pluginDir.cd("toolScripts")) {
         return;
       }
     }
@@ -84,37 +93,87 @@ namespace Avogadro {
 
     // Now for the system wide Python scripts
     QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
-      + "share/libavogadro/engineScripts";
-    pluginDir.cd(systemScriptsPath);
-    loadScripts(pluginDir);
-  }
+      + "share/libavogadro/toolScripts";
+    if (pluginDir.cd(systemScriptsPath))
+      loadScripts(pluginDir);
   
-  PythonEngine::~PythonEngine()
+    setScriptIndex(0);
+  }
+
+  PythonTool::~PythonTool()
   {
   }
 
-  Engine* PythonEngine::clone() const
+  QUndoCommand* PythonTool::mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event)
   {
-    PythonEngine* engine = new PythonEngine(parent());
+    if (!PyObject_HasAttrString(m_instance.ptr(), what.toStdString().c_str()))
+      return 0;
 
-    engine->setAlias(alias());
-    engine->setScriptIndex(m_scriptIndex);
-    engine->setEnabled(isEnabled());
-
-    return engine;
+    try {
+      boost::python::reference_existing_object::apply<GLWidget*>::type converter;
+      PyObject *obj = converter(widget);
+      object real_obj = object(handle<>(obj));
+    
+      boost::python::return_by_value::apply<QMouseEvent*>::type qconverter;
+      PyObject *qobj = qconverter(event);
+      object real_qobj = object(handle<>(qobj));
+ 
+      return extract<QUndoCommand*>(m_instance.attr(what.toStdString().c_str())(real_obj, real_qobj));
+    } catch(error_already_set const &) {
+      PyErr_Print();
+    }
+ 
+    return 0;
   }
 
-  bool PythonEngine::renderOpaque(PainterDevice *pd)
+  QUndoCommand* PythonTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
-    if (m_scriptIndex >= m_scripts.size())
+    return mouseEvent("mousePressEvent", widget, event);
+  }
+
+  QUndoCommand* PythonTool::mouseMoveEvent(GLWidget *widget, QMouseEvent *event)
+  {
+    return mouseEvent("mouseMoveEvent", widget, event);
+  }
+
+  QUndoCommand* PythonTool::mouseReleaseEvent(GLWidget *widget, QMouseEvent *event)
+  {
+    return mouseEvent("mouseReleaseEvent", widget, event);
+  }
+
+  QUndoCommand* PythonTool::wheelEvent(GLWidget *widget, QWheelEvent *event)
+  {
+    if (!PyObject_HasAttrString(m_instance.ptr(), "wheelEvent"))
+      return 0;
+
+    try {
+      boost::python::reference_existing_object::apply<GLWidget*>::type converter;
+      PyObject *obj = converter(widget);
+      object real_obj = object(handle<>(obj));
+    
+      boost::python::return_by_value::apply<QWheelEvent*>::type qconverter;
+      PyObject *qobj = qconverter(event);
+      object real_qobj = object(handle<>(qobj));
+ 
+      return extract<QUndoCommand*>(m_instance.attr("wheelEvent")(real_obj, real_qobj));
+    } catch(error_already_set const &) {
+      PyErr_Print();
+    }
+ 
+    return 0;
+  }
+
+  bool PythonTool::paint(GLWidget *widget)
+  {
+    if (!PyObject_HasAttrString(m_instance.ptr(), "paint"))
       return false;
 
-    boost::python::reference_existing_object::apply<PainterDevice*>::type converter;
-    PyObject *obj = converter(pd);
-    object real_obj = object(handle<>(obj));
- 
     try {
-      m_instance.attr("renderOpaque")(real_obj);
+      boost::python::reference_existing_object::apply<GLWidget*>::type converter;
+      PyObject *obj = converter(widget);
+      object real_obj = object(handle<>(obj));
+ 
+      m_instance.attr("paint")(real_obj);
     } catch(error_already_set const &) {
       PyErr_Print();
     }
@@ -122,17 +181,13 @@ namespace Avogadro {
     return true;
   }
 
-  void PythonEngine::setScriptIndex(int index)
+  void PythonTool::setScriptIndex(int index)
   {
     m_scriptIndex = index;
     try {
-      // instantiate the new engine
-      if (PyObject_HasAttrString(m_scripts.at(index).module().ptr(), "Engine")) {
-        m_instance = m_scripts.at(index).module().attr("Engine")();
-        QObject *instance = extract<QObject*>(m_instance);
-        if (instance)
-          connect(instance, SIGNAL(changed()), this, SIGNAL(changed()));
-
+      // instantiate the new tool
+      if (PyObject_HasAttrString(m_scripts.at(index).module().ptr(), "Tool")) {
+        m_instance = m_scripts.at(index).module().attr("Tool")();
         if (m_settingsWidget) {
           if (PyObject_HasAttrString(m_instance.ptr(), "settingsWidget")) {
             QWidget *widget = extract<QWidget*>(m_instance.attr("settingsWidget")());
@@ -145,10 +200,9 @@ namespace Avogadro {
     } catch (error_already_set const &) {
       PyErr_Print();
     }
-    emit changed();
   }
 
-  QWidget* PythonEngine::settingsWidget()
+  QWidget* PythonTool::settingsWidget()
   {
     if(!m_settingsWidget)
     {
@@ -173,33 +227,13 @@ namespace Avogadro {
     
     return m_settingsWidget;
   }
-  
-  void PythonEngine::settingsWidgetDestroyed()
+
+  void PythonTool::settingsWidgetDestroyed()
   {
     m_settingsWidget = 0;
   }
-  
-  void PythonEngine::writeSettings(QSettings &settings) const
-  {
-    Engine::writeSettings(settings);
-    if (m_scriptIndex < m_scripts.size())
-      settings.setValue("scriptName", m_scripts.at(m_scriptIndex).moduleName());
-  }
 
-  void PythonEngine::readSettings(QSettings &settings)
-  {
-    Engine::readSettings(settings);
-
-    QString refName = settings.value("scriptName").toString();
-    int index = 0;
-    foreach (const PythonScript &script, m_scripts) {
-      if (script.moduleName() == refName)
-        setScriptIndex(index);
-      index++;
-    }
-  }
-
-  void PythonEngine::loadScripts(QDir dir)
+  void PythonTool::loadScripts(QDir dir)
   {
     m_interpreter.addSearchPath(dir.canonicalPath());
     
@@ -210,52 +244,24 @@ namespace Avogadro {
 
     foreach(const QString& file, dir.entryList())
     {
-      qDebug() << "PythonEngine: checking " << file << "...";
+      qDebug() << "PythonTool: checking " << file << "...";
       PythonScript script(dir.canonicalPath(), file);
       
       if(script.module()) {
-        // make sure there is an Engine class defined
-        if (PyObject_HasAttrString(script.module().ptr(), "Engine")) {
+        // make sure there is a Tool class defined
+        if (PyObject_HasAttrString(script.module().ptr(), "Tool")) {
           m_scripts.append(script);
-          qDebug() << "  + 'Engine' class found";
+          qDebug() << "  + 'Tool' class found";
         } else
-          qDebug() << "  - script has no 'Engine' class defined";
+          qDebug() << "  - script has no 'Tool' class defined";
       } else
         qDebug() << "  - no module";
 
     } // foreach file
   }
 
-  Engine::EngineFlags PythonEngine::flags() const
-  {
-    try {
-      // return flags from python script if the function is defined
-      if (PyObject_HasAttrString(m_instance.ptr(), "flags"))
-        return extract<Engine::EngineFlags>(m_instance.attr("flags")());
-    } catch(error_already_set const &) {
-      PyErr_Print();
-    }
-      
-    // return NoFlags, don't print an error, don't want to overwhelm new users with errors
-    return Engine::NoFlags;
-  }
-  
-  double PythonEngine::transparencyDepth() const
-  {
-    // see flags()
-    try {
-      if (PyObject_HasAttrString(m_instance.ptr(), "transparencyDepth"))
-        return extract<double>(m_instance.attr("transparencyDepth")());
-    } catch(error_already_set const &) {
-      PyErr_Print();
-    }
-      
-    return 0.0;
-  }
- 
-
 }
 
-#include "pythonengine.moc"
+#include "pythontool.moc"
 
-Q_EXPORT_PLUGIN2(pythonengine, Avogadro::PythonEngineFactory)
+Q_EXPORT_PLUGIN2(pythontool, Avogadro::PythonToolFactory)

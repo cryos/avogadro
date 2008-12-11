@@ -100,3 +100,17 @@ qt4_automoc(${aligntool_SRCS})
 add_library(aligntool MODULE ${aligntool_SRCS} ${aligntool_RC_SRCS})
 target_link_libraries(aligntool ${LINK_LIBS})
 install(TARGETS aligntool DESTINATION ${DESTINATION_DIR})
+
+if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
+  ### pythontool
+  set(pythontool_SRCS pythontool.cpp)
+  qt4_add_resources(pythontool_RC_SRCS pythontool.qrc)
+  qt4_wrap_ui(pythontool_UIS pythonsettingswidget.ui)
+  qt4_automoc(${pythontool_SRCS})
+  add_library(pythontool MODULE ${pythontool_SRCS} ${pythontool_UIS} ${pythontool_RC_SRCS})
+  target_link_libraries(pythontool ${LINK_LIBS})
+  install(TARGETS pythontool DESTINATION ${DESTINATION_DIR})
+
+  file(GLOB python_SCRIPTS "python/*.py")
+  install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/toolScripts)
+endif(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
