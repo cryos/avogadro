@@ -76,6 +76,7 @@ namespace Avogadro {
     /**
      * \enum EngineFlag
      * Different properties an engine can set which affect the rendering order.
+     * This also affects the tabs in the Engine Settings windows.
      */
       enum EngineFlag {
         NoFlags = 0x00, /// no flags
@@ -84,7 +85,9 @@ namespace Avogadro {
         Bonds = 0x04, /// renders bonds
         Atoms = 0x08, /// renders atoms
         Molecules = 0x10, /// renders molecules
-        Surfaces = 0x12 /// renders some kind of surface
+        Surfaces = 0x12, /// renders some kind of surface
+        Fragments = 0x14, /// renders fragments or residues
+        ColorPlugins = 0x18 /// uses color plugins defined in color.h
       };
       Q_DECLARE_FLAGS(EngineFlags, EngineFlag)
 
