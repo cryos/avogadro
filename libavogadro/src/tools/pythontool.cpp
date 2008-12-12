@@ -184,6 +184,9 @@ namespace Avogadro {
   void PythonTool::setScriptIndex(int index)
   {
     m_scriptIndex = index;
+    if (m_scripts.empty())
+      return; // nothing we can do -- we don't have any real scripts
+      
     try {
       // instantiate the new tool
       if (PyObject_HasAttrString(m_scripts.at(index).module().ptr(), "Tool")) {
@@ -204,6 +207,9 @@ namespace Avogadro {
 
   QWidget* PythonTool::settingsWidget()
   {
+    if (m_scripts.empty())
+      return NULL; // nothing we can do -- we don't have any real scripts
+
     if(!m_settingsWidget)
     {
       m_settingsWidget = new PythonSettingsWidget();
