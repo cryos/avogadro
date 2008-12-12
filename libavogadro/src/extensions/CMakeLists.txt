@@ -125,7 +125,7 @@ install(TARGETS h2methylextension DESTINATION ${DESTINATION_DIR})
 
 ### Orbitals
 set(orbitalextension_SRCS orbitalextension.cpp orbitaldialog.cpp
-    basisset.cpp gaussianfchk.cpp)
+    basisset.cpp gaussianfchk.cpp slaterset.cpp mopacaux.cpp)
 qt4_wrap_ui(orbitalextension_UIS_H orbitaldialog.ui)
 qt4_automoc(${orbitalextension_SRCS})
 add_library(orbitalextension MODULE ${orbitalextension_SRCS} ${orbitalextension_UIS_H})

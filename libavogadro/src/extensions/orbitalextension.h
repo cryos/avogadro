@@ -36,6 +36,9 @@ class QTime;
 
 namespace Avogadro
 {
+  class BasisSet;
+  class SlaterSet;
+
   class OrbitalExtension : public Extension
   {
   Q_OBJECT
@@ -66,6 +69,7 @@ namespace Avogadro
     QList<QAction *> m_actions;
     Molecule *m_molecule;
     BasisSet* m_basis;
+    SlaterSet *m_slater;
     QString m_loadedFileName;
     QProgressDialog *m_progress, *m_progress2;
     QTime *m_timer1, *m_timer2;
@@ -76,6 +80,7 @@ namespace Avogadro
     void calculation2Done();
     void calculationCanceled();
     void calculation2Canceled();
+    void slaterDone();
 
   };
 

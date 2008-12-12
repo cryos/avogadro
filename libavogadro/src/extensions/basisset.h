@@ -61,9 +61,9 @@ namespace Avogadro
   struct BasisShell;
 
   /**
-   * This enumerates the different types of shells.
+   * Enumeration of the Gaussian type orbitals.
    */
-  enum orbital { S, SP, P, D, D5, F, F7 };
+  enum orbital { S, SP, P, D, D5, F, F7, UU };
 
   /**
    * Simple structure to encapsulate a GTO, where c is the contraction
