@@ -52,13 +52,13 @@ namespace Avogadro {
   }
 
   Plugin::Type Tool::type() const
-  { 
-    return Plugin::ToolType; 
+  {
+    return Plugin::ToolType;
   }
-  
+
   QString Tool::typeName() const
-  { 
-    return tr("Tools"); 
+  {
+    return tr("Tools");
   }
 
   QAction* Tool::activateAction() const {
@@ -88,6 +88,21 @@ namespace Avogadro {
 
   bool Tool::operator<(const Tool &other) const {
     return usefulness() < other.usefulness();
+  }
+
+  QUndoCommand* Tool::wheelEvent(GLWidget *, QWheelEvent *)
+  {
+    return 0;
+  }
+
+  QUndoCommand* Tool::keyPressEvent(GLWidget *, QKeyEvent *)
+  {
+    return 0;
+  }
+
+  QUndoCommand* Tool::keyReleaseEvent(GLWidget *, QKeyEvent *)
+  {
+    return 0;
   }
 
   bool Tool::paint(GLWidget*)

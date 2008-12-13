@@ -109,17 +109,31 @@ namespace Avogadro {
 
       /**
        * Response to mouse movement
-       * @param widget the %GLWidget where the even occurred
+       * @param widget the %GLWidget where the event occurred
        * @param event the mouse event information
        */
       virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event) = 0;
 
       /**
        * Response to mouse wheel movement
-       * @param widget the %GLWidget where the even occurred
+       * @param widget the %GLWidget where the event occurred
        * @param event the mouse wheel event information
        */
-      virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event) = 0;
+      virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
+
+      /**
+       * Response to key press events.
+       * @param widget the %GLWidget where the event occurred
+       * @param event the key event information
+       */
+      virtual QUndoCommand* keyPressEvent(GLWidget *widget, QKeyEvent *event);
+
+      /**
+       * Response to key release events.
+       * @param widget the %GLWidget where the event occurred
+       * @param event the key event information
+       */
+      virtual QUndoCommand* keyReleaseEvent(GLWidget *widget, QKeyEvent *event);
 
       /**
        * Called by the GLWidget allowing overlay painting by the
