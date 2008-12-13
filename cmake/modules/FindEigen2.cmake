@@ -17,9 +17,13 @@ else (EIGEN2_INCLUDE_DIR)
 
 find_path(EIGEN2_INCLUDE_DIR NAMES Eigen/Core
      PATHS /usr/local/include /usr/include
+     /sw/include # Fink
+     /opt/local/include # DarwinPorts
+     /opt/csw/include # Blastwave
+     /opt/include
      ${INCLUDE_INSTALL_DIR}
      ${KDE4_INCLUDE_DIR}
-     ${CMAKE_INCLUDE_PATH}
+     # ${CMAKE_INCLUDE_PATH} Not needed -- searched by CMake automatically
      ${CMAKE_INSTALL_PREFIX}/include
      PATH_SUFFIXES eigen2/
    )
