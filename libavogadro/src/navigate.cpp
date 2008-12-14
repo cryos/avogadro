@@ -65,7 +65,9 @@ namespace Avogadro {
   void Navigate::translate(GLWidget *widget, const Eigen::Vector3d &what,
                            double deltaX, double deltaY)
   {
-    widget->camera()->translate(Vector3d(deltaX * 0.05, deltaY * 0.05, 0));
+    Vector3d fromPos = widget->camera()->unProject(QPoint(0, 0), what);
+    Vector3d toPos = widget->camera()->unProject(QPoint(deltaX, deltaY), what);
+    widget->camera()->translate(toPos - fromPos);
   }
 
   void Navigate::rotate(GLWidget *widget, const Eigen::Vector3d &center,

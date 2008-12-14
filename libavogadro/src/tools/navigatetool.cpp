@@ -257,7 +257,7 @@ namespace Avogadro {
         else if (event->modifiers() & Qt::ShiftModifier)
           Navigate::zoom(widget, m_referencePoint, -5);
         else if (event->modifiers() & Qt::ControlModifier)
-          Navigate::translate(widget, m_referencePoint, 0, 5);
+          Navigate::translate(widget, m_referencePoint, 0, -5);
         event->accept();
         break;
       case Qt::Key_Down: // Down arrow
@@ -266,7 +266,7 @@ namespace Avogadro {
         else if (event->modifiers() & Qt::ShiftModifier)
           Navigate::zoom(widget, m_referencePoint, 5);
         else if (event->modifiers() & Qt::ControlModifier)
-          Navigate::translate(widget, m_referencePoint, 0, -5);
+          Navigate::translate(widget, m_referencePoint, 0, 5);
         event->accept();
         break;
       default:
@@ -275,7 +275,7 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* NavigateTool::keyReleaseEvent(GLWidget *widget, QKeyEvent *event)
+  QUndoCommand* NavigateTool::keyReleaseEvent(GLWidget *, QKeyEvent *)
   {
     return 0;
   }
