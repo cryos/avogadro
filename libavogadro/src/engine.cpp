@@ -24,28 +24,26 @@
 
 #include "engine.h"
 
+#include "molecule.h"
+
 namespace Avogadro {
 
   class EnginePrivate
   {
   public:
-    EnginePrivate() : colorMap(0), enabled(false) {}
-
-    PrimitiveList primitives;
-    Color *colorMap;
-    bool enabled;
-
-    QString alias;
-    QString description;
+    EnginePrivate() {}
   };
 
   Engine::Engine(QObject *parent) : QObject(parent), d(new EnginePrivate),
-    m_shader(0)
+    m_shader(0), m_pd(0), m_colorMap(0), m_enabled(false), m_customPrims(false)
   {
   }
 
   Engine::~Engine()
   {
+    if (m_pd)
+      if (m_pd->molecule())
+        disconnect(m_pd->molecule(), 0, this, 0);
     delete d;
   }
 
@@ -59,14 +57,10 @@ namespace Avogadro {
     return tr("Engines");
   }
 
-  PrimitiveList Engine::primitives() const
-  {
-    return d->primitives;
-  }
-
   void Engine::setPrimitives(const PrimitiveList &primitives)
   {
-    d->primitives = primitives;
+    m_customPrims = true;
+    m_primitives = primitives;
     emit changed();
   }
 
@@ -77,24 +71,35 @@ namespace Avogadro {
 
   void Engine::clearPrimitives()
   {
-    d->primitives.clear();
-  }
-
-  bool Engine::isEnabled() const
-  {
-    return d->enabled;
+    m_customPrims = false;
+    m_primitives.clear();
   }
 
   void Engine::setEnabled(bool enabled)
   {
-    d->enabled = enabled;
+    m_enabled = enabled;
     emit changed();
   }
 
   void Engine::addPrimitive(Primitive *primitive)
   {
-    if(!d->primitives.contains(primitive))
-      d->primitives.append(primitive);
+    if (m_customPrims) {
+      if(!m_primitives.contains(primitive))
+        m_primitives.append(primitive);
+    }
+    else {
+      m_customPrims = true;
+      m_primitives = *m_pd->primitives();
+      if(!m_primitives.contains(primitive))
+        m_primitives.append(primitive);
+
+      // Now listen to the molecule
+      connect(m_pd->molecule(), SIGNAL(primitiveAdded(Primitive*)),
+              this, SLOT(addPrimitive(Primitive*)));
+      connect(m_pd->molecule(), SIGNAL(primitiveRemoved(Primitive*)),
+              this, SLOT(removePrimitive(Primitive*)));
+    }
+
     emit changed();
   }
 
@@ -105,13 +110,20 @@ namespace Avogadro {
 
   void Engine::removePrimitive(Primitive *primitive)
   {
-    d->primitives.removeAll(primitive);
+    if (m_customPrims)
+      m_primitives.removeAll(primitive);
+    else {
+      m_customPrims = true;
+      m_primitives = *m_pd->primitives();
+      m_primitives.removeAll(primitive);
+    }
+    m_primitives.removeAll(primitive);
     emit changed();
   }
 
   void Engine::setColorMap(Color *map)
   {
-    d->colorMap = map;
+    m_colorMap = map;
     emit changed();
   }
 
@@ -120,30 +132,25 @@ namespace Avogadro {
     return 0;
   }
 
-  Color *Engine::colorMap()
-  {
-    return d->colorMap;
-  }
-
   void Engine::setAlias(const QString &alias)
   {
-    d->alias = alias;
+    m_alias = alias;
   }
 
   QString Engine::alias() const
   {
-    if(d->alias.isEmpty()) { return name(); }
-    return d->alias;
+    if(m_alias.isEmpty()) { return name(); }
+    return m_alias;
   }
 
   void Engine::setDescription(const QString &description)
   {
-    d->description = description;
+    m_description = description;
   }
 
   QString Engine::description() const
   {
-    return d->description;
+    return m_description;
   }
 
   Engine::EngineFlags Engine::flags() const
@@ -168,6 +175,15 @@ namespace Avogadro {
     setEnabled(settings.value("enabled", false).toBool());
     setAlias(settings.value("alias", name()).toString());
     setDescription(settings.value("description", description()).toString());
+  }
+
+  void Engine::changeMolecule(Molecule *previous, Molecule *)
+  {
+    if (m_customPrims) {
+      m_primitives.clear();
+      m_customPrims = false;
+      disconnect(previous, 0, this, 0);
+    }
   }
 }
 

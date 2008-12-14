@@ -33,6 +33,7 @@ namespace Avogadro {
   class Primitive;
   class Molecule;
   class Color;
+  class PrimitiveList;
 
   class A_EXPORT PainterDevice
   {
@@ -46,6 +47,7 @@ namespace Avogadro {
     virtual double radius( const Primitive *p ) const = 0;
     virtual const Molecule *molecule() const = 0;
     virtual Color* colorMap() const = 0;
+    virtual PrimitiveList * primitives() const { return 0; }
 
     virtual int width() = 0;
     virtual int height() = 0;

@@ -30,9 +30,9 @@ void export_GLWidget()
     .add_property("minZ", &GLHit::minZ)
     .add_property("maxZ", &GLHit::maxZ)
     ;
- 
+
   const double & (GLWidget::*radius_ptr1)() const = &GLWidget::radius;
-  double (GLWidget::*radius_ptr2)(const Primitive *) const = &GLWidget::radius; 
+  double (GLWidget::*radius_ptr2)(const Primitive *) const = &GLWidget::radius;
   void (GLWidget::*removeNamedSelection_ptr1)(const QString &name) = &GLWidget::removeNamedSelection;
   void (GLWidget::*removeNamedSelection_ptr2)(int index) = &GLWidget::removeNamedSelection;
   PrimitiveList (GLWidget::*namedSelectionPrimitives_ptr1)(const QString &name) = &GLWidget::namedSelectionPrimitives;
@@ -61,10 +61,10 @@ void export_GLWidget()
     .add_property("renderDebug", &GLWidget::renderDebug, &GLWidget::setRenderDebug)
     .add_property("toolGroup", make_function(&GLWidget::toolGroup, return_value_policy<reference_existing_object>()),
         &GLWidget::setToolGroup)
-    .add_property("background", &GLWidget::background, &GLWidget::setBackground) 
-    .add_property("undoStack", make_function(&GLWidget::undoStack, return_value_policy<return_by_value>()), 
+    .add_property("background", &GLWidget::background, &GLWidget::setBackground)
+    .add_property("undoStack", make_function(&GLWidget::undoStack, return_value_policy<return_by_value>()),
         &GLWidget::setUndoStack)
- 
+
     // read-only properties
     .add_property("deviceWidth", &GLWidget::deviceWidth)
     .add_property("deviceHeight", &GLWidget::deviceHeight)
@@ -74,14 +74,14 @@ void export_GLWidget()
     .add_property("normalVector", make_function(&GLWidget::normalVector, return_value_policy<return_by_value>()))
     .add_property("farthestAtom", make_function(&GLWidget::farthestAtom, return_value_policy<reference_existing_object>()))
     .add_property("painter", make_function(&GLWidget::painter, return_value_policy<reference_existing_object>()))
-    .add_property("primitives", &GLWidget::primitives)
+    .add_property("primitives", make_function(&GLWidget::primitives, return_value_policy<reference_existing_object>()))
     .add_property("selectedPrimitives", &GLWidget::selectedPrimitives)
     .add_property("namedSelections", &GLWidget::namedSelections)
     .add_property("aCells", &GLWidget::aCells)
     .add_property("bCells", &GLWidget::bCells)
     .add_property("cCells", &GLWidget::cCells)
-    
-   
+
+
     // real functions
     .def("radius", radius_ptr1, return_value_policy<copy_const_reference>())
     .def("radius", radius_ptr2)
@@ -117,5 +117,5 @@ void export_GLWidget()
     .def("invalidateDLs", &GLWidget::invalidateDLs)
     ;
 
-} 
+}
 

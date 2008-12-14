@@ -415,7 +415,7 @@ namespace Avogadro {
       /**
        * @return list of primitives for this widget
        */
-      PrimitiveList primitives() const;
+      PrimitiveList & primitives() const;
 
       /** @name Selection Methods
        *  These methods are used to manipulate user-selected primitives.
@@ -630,6 +630,18 @@ namespace Avogadro {
       virtual void wheelEvent(QWheelEvent * event);
 
       /**
+       * Response to key press events.
+       * @param event the key event information
+       */
+      virtual void keyPressEvent(QKeyEvent *event);
+
+      /**
+       * Response to key release events.
+       * @param event the key event information
+       */
+      virtual void keyReleaseEvent(QKeyEvent *event);
+
+      /**
        * Render the scene. To be used in both modes GL_RENDER and GL_SELECT.
        * This function calls the render functions of the engines as well as the
        * paint events of the tools and is where everything drawn onto the widget
@@ -758,22 +770,22 @@ namespace Avogadro {
 
     Q_SIGNALS:
       /**
-       * Signal for the mouse press event which is passed to the engines and tools.
+       * Signal for the mouse press event which is passed to the tools.
        */
       void mousePress(QMouseEvent * event);
 
       /**
-       * Signal for the mouse release event which is passed to the engines and tools.
+       * Signal for the mouse release event which is passed to the tools.
        */
       void mouseRelease( QMouseEvent * event );
 
       /**
-       * Signal for the mouse move event which is passed to the engines and tools.
+       * Signal for the mouse move event which is passed to the tools.
        */
       void mouseMove( QMouseEvent * event );
 
       /**
-       * Signal for the mouse wheel event which is passed to the engines and tools.
+       * Signal for the mouse wheel event which is passed to the tools.
        */
       void wheel( QWheelEvent * event);
 

@@ -246,10 +246,21 @@ namespace Avogadro {
       }
 
       /**
+       * Render all elements the engine is responsible for quickly with an
+       * emphasis on speed and only rendering things which can be picked.
+       * Things such as color can be neglected here as this is never seen.
+       */
+      virtual bool renderPick(PainterDevice *pd)
+      {
+        renderQuick(pd);
+        return true;
+      }
+
+      /**
        * @return the engine's PrimitiveList containing all primitives the engine
        * can render.
        */
-      PrimitiveList primitives() const;
+      virtual const PrimitiveList & primitives() const;
 
       /**
        * Set the primitives that the engine instance can render.
@@ -261,6 +272,16 @@ namespace Avogadro {
        * Clear the primitives of the engine instance.
        */
       virtual void clearPrimitives();
+
+      /**
+       * Get the PainterDevice for the engine.
+       */
+      virtual const PainterDevice * painterDevice() const { return m_pd; }
+
+      /**
+       * Set the PainterDevice pointer for this engine.
+       */
+      virtual void setPainterDevice(const PainterDevice *pd) { m_pd = pd; }
 
       /** Get the radius of the primitive referred to.
        * @param pd is the painter device used for rendering (e.g., if a primitive is selected)
@@ -277,7 +298,7 @@ namespace Avogadro {
       /**
        * @return true if the engine is enabled or false if it is not.
        */
-      bool isEnabled() const;
+      bool isEnabled() const { return m_enabled; }
 
       /**
        * Setter to enable or disable the engine instance.
@@ -290,6 +311,10 @@ namespace Avogadro {
        * if no settings widget is available.
        */
       virtual QWidget *settingsWidget();
+
+      /** @return the current color map used by this engine
+       */
+      virtual Color *colorMap() { return m_colorMap; }
 
       /**
        * @return a pointer to an identical engine or 0 if this fails
@@ -338,14 +363,30 @@ namespace Avogadro {
        */
       virtual void setColorMap(Color *map);
 
-      /** @return the current color map used by this engine
+      /**
+       * If the Molecule is changed and we are rendering a custom list of
+       * primitives they should be invalidated.
        */
-      virtual Color *colorMap();
+      void changeMolecule(Molecule *previous, Molecule *next);
 
-    private:
+    protected:
       EnginePrivate *const d;
       GLuint m_shader;
+      const PainterDevice *m_pd;
+      Color *m_colorMap;
+      bool m_enabled;
+      bool m_customPrims;
+      PrimitiveList m_primitives;
+      QString m_alias;
+      QString m_description;
   };
+
+  inline const PrimitiveList & Engine::primitives() const
+  {
+    if (m_customPrims) return m_primitives;
+    else if (m_pd->primitives()->size()) return (*m_pd->primitives());
+    else return m_primitives;
+  }
 
 } // end namespace Avogadro
 

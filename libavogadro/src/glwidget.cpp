@@ -186,7 +186,8 @@ namespace Avogadro {
     bool isSelected( const Primitive *p ) const { return widget->isSelected(p); }
     double radius( const Primitive *p ) const { return widget->radius(p); }
     const Molecule *molecule() const { return widget->molecule(); }
-    Color *colorMap() const { return widget->colorMap();  }
+    Color *colorMap() const { return widget->colorMap(); }
+    PrimitiveList * primitives() const { return &widget->primitives(); }
 
     int width() { return widget->width(); }
     int height() { return widget->height(); }
@@ -460,6 +461,10 @@ namespace Avogadro {
 
   void GLWidget::constructor(const GLWidget *shareWidget)
   {
+    // Make sure we get keyboard events
+    setFocusPolicy(Qt::StrongFocus);
+
+    // New PainterDevice
     d->pd = new GLPainterDevice(this);
     if(shareWidget && isSharing()) {
       // we are sharing contexts
@@ -1247,6 +1252,39 @@ namespace Avogadro {
     }
   }
 
+  void GLWidget::keyPressEvent(QKeyEvent *event)
+  {
+    event->ignore();
+    if (d->tool) {
+      QUndoCommand *command;
+      command = d->tool->keyPressEvent(this, event);
+      // If the mouse event is not accepted, pass it to the navigate tool
+      if (!event->isAccepted()) {
+        command = m_navigateTool->keyPressEvent(this, event);
+      }
+      if ( command && d->undoStack ) {
+        d->undoStack->push( command );
+      }
+    }
+    update();
+  }
+
+  void GLWidget::keyReleaseEvent(QKeyEvent *event)
+  {
+    event->ignore();
+    if (d->tool) {
+      QUndoCommand *command;
+      command = d->tool->keyReleaseEvent(this, event);
+      // If the mouse event is not accepted, pass it to the navigate tool
+      if (!event->isAccepted()) {
+        command = m_navigateTool->keyReleaseEvent(this, event);
+      }
+      if ( command && d->undoStack ) {
+        d->undoStack->push( command );
+      }
+    }
+  }
+
   void GLWidget::setMolecule( Molecule *molecule )
   {
     if ( !molecule ) { return; }
@@ -1259,10 +1297,6 @@ namespace Avogadro {
 
     d->molecule = molecule;
 
-    // clear our engine queues
-    for ( int i=0; i < d->engines.size(); i++ ) {
-      d->engines.at( i )->clearPrimitives();
-    }
     d->primitives.clear();
 
     // add the atoms to the default queue
@@ -1282,8 +1316,8 @@ namespace Avogadro {
 
     std::cout << "SetMolecule Called!" << std::endl;
     // Now set the primitives for the engines
-    for (int i = 0; i < d->engines.size(); i++)
-      d->engines.at(i)->setPrimitives(d->primitives);
+//    for (int i = 0; i < d->engines.size(); i++)
+//      d->engines.at(i)->setPrimitives(d->primitives);
 
     // connect our signals so if the molecule gets updated
     connect( d->molecule, SIGNAL( primitiveAdded( Primitive* ) ),
@@ -1401,56 +1435,55 @@ namespace Avogadro {
     return d->engines;
   }
 
-  PrimitiveList GLWidget::primitives() const
+  PrimitiveList & GLWidget::primitives() const
   {
     return d->primitives;
   }
 
-  void GLWidget::addPrimitive( Primitive *primitive )
+  void GLWidget::addPrimitive(Primitive *primitive)
   {
     if ( primitive ) {
-      // add the molecule to the default queue
-      for ( int i=0; i < d->engines.size(); i++ ) {
-        d->engines.at( i )->addPrimitive( primitive );
-      }
-      d->primitives.append( primitive );
+      d->primitives.append(primitive);
+      invalidateDLs();
+      update();
     }
   }
 
-  void GLWidget::updatePrimitive( Primitive *primitive )
+  void GLWidget::updatePrimitive(Primitive *)
   {
-    for ( int i=0; i< d->engines.size(); i++ ) {
-      d->engines.at( i )->updatePrimitive( primitive );
-    }
     updateGeometry();
+    invalidateDLs();
+    update();
   }
 
   void GLWidget::removePrimitive( Primitive *primitive )
   {
     if ( primitive ) {
-      // add the molecule to the default queue
-      for ( int i=0; i < d->engines.size(); i++ ) {
-        d->engines.at( i )->removePrimitive( primitive );
-      }
-      d->selectedPrimitives.removeAll( primitive );
-      d->primitives.removeAll( primitive );
+      d->selectedPrimitives.removeAll(primitive);
+      d->primitives.removeAll(primitive);
+      invalidateDLs();
+      update();
     }
   }
 
   void GLWidget::addEngine(Engine *engine)
   {
-    connect( engine, SIGNAL(changed()), this, SLOT(update()));
+    connect(engine, SIGNAL(changed()), this, SLOT(update()));
     connect(engine, SIGNAL(changed()), this, SLOT(invalidateDLs()));
+    connect(this, SIGNAL(moleculeChanged(Molecule *, Molecule *)),
+            engine, SLOT(changeMolecule(Molecule *, Molecule *)));
     d->engines.append(engine);
     qSort(d->engines.begin(), d->engines.end(), engineLessThan);
+    engine->setPainterDevice(d->pd);
     emit engineAdded(engine);
     update();
   }
 
   void GLWidget::removeEngine(Engine *engine)
   {
-    disconnect(engine, SIGNAL(changed()), this, SLOT(update()));
+    disconnect(engine, 0, this, 0);
     disconnect(engine, SIGNAL(changed()), this, SLOT(invalidateDLs()));
+    connect(this, 0, engine, 0);
     d->engines.removeAll(engine);
     emit engineRemoved(engine);
     engine->deleteLater();
@@ -1561,12 +1594,17 @@ namespace Avogadro {
     glLoadIdentity();
     d->camera->applyModelview();
 
-    // now actually render using low quality a.k.a. "quickrender"
-    bool oldQuickRender = d->quickRender;
-    if (d->allowQuickRender)
-      d->quickRender = true;
-    render();
-    d->quickRender = oldQuickRender;
+    // now actually render using low quality, "pickrender"
+    d->painter->begin(this);
+#ifdef ENABLE_GLSL
+        if (m_glslEnabled) glUseProgramObjectARB(0);
+#endif
+    foreach(Engine *engine, d->engines) {
+      if(engine->isEnabled()) {
+        engine->renderPick(d->pd);
+      }
+    }
+    d->painter->end();
 
     // returning to normal rendering mode
     hit_count = glRenderMode( GL_RENDER );
@@ -1943,8 +1981,8 @@ namespace Avogadro {
         // eventually settings will store which has what but
         // for now we ignore this.  (will need this when we
         // copy the selected primitives also).
-        if(!engine->primitives().size())
-          engine->setPrimitives(primitives());
+//        if(!engine->primitives().size())
+//          engine->setPrimitives(primitives());
 
         addEngine(engine);
       }
@@ -1964,12 +2002,10 @@ namespace Avogadro {
 
     d->engines.clear();
 
-    foreach(PluginFactory *factory, PluginManager::factories(Plugin::EngineType))
-    {
+    foreach(PluginFactory *factory, PluginManager::factories(Plugin::EngineType)) {
       Engine *engine = static_cast<Engine *>(factory->createInstance(this));
       if (engine->name() == tr("Ball and Stick"))
-        engine->setEnabled( true );
-      engine->setPrimitives(primitives());
+        engine->setEnabled(true);
       addEngine(engine);
     }
   }
