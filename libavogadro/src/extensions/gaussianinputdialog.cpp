@@ -126,19 +126,14 @@ namespace Avogadro
     }
 
     m_molecule = molecule;
-    // Update the preview text whenever primitives are changed
-    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
-            this, SLOT(updatePreviewText()));
-    connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
-            this, SLOT(updatePreviewText()));
-    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive *)),
-            this, SLOT(updatePreviewText()));
     // Add atom coordinates
-    updatePreviewText();
+//    updatePreviewText();
   }
 
   void GaussianInputDialog::updatePreviewText()
   {
+    if (!isVisible())
+      return;
     // Generate the input deck and display it
     if (m_dirty && !m_warned) {
       m_warned = true;
@@ -216,8 +211,16 @@ namespace Avogadro
   void GaussianInputDialog::previewEdited()
   {
     // Determine if the preview text has changed from the form generated
-    if(ui.previewText->toPlainText() != generateInputDeck())
+    if(ui.previewText->toPlainText() != generateInputDeck()) {
       deckDirty(true);
+      // Update the preview text whenever primitives are changed
+      connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
+              this, SLOT(updatePreviewText()));
+      connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
+              this, SLOT(updatePreviewText()));
+      connect(m_molecule, SIGNAL(primitiveUpdated(Primitive *)),
+              this, SLOT(updatePreviewText()));
+    }
     else
       deckDirty(false);
   }
