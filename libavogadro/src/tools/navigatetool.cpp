@@ -229,6 +229,57 @@ namespace Avogadro {
     return 0;
   }
 
+  QUndoCommand* NavigateTool::keyPressEvent(GLWidget *widget, QKeyEvent *event)
+  {
+    computeReferencePoint(widget);
+    switch (event->key()) {
+      case Qt::Key_Left: // Left arrow
+        if (event->modifiers() == Qt::NoModifier)
+          Navigate::rotate(widget, m_referencePoint, -5, 0);
+        else if (event->modifiers() & Qt::ShiftModifier)
+          Navigate::tilt(widget, m_referencePoint, -5);
+        else if (event->modifiers() & Qt::ControlModifier)
+          Navigate::translate(widget, m_referencePoint, -5, 0);
+        event->accept();
+        break;
+      case Qt::Key_Right: // Right arrow
+        if (event->modifiers() == Qt::NoModifier)
+          Navigate::rotate(widget, m_referencePoint, 5, 0);
+        else if ((event->modifiers() & Qt::ShiftModifier))
+          Navigate::tilt(widget, m_referencePoint, 5);
+        else if (event->modifiers() & Qt::ControlModifier)
+          Navigate::translate(widget, m_referencePoint, 5, 0);
+        event->accept();
+        break;
+      case Qt::Key_Up: // Up arrow
+        if (event->modifiers() == Qt::NoModifier)
+          Navigate::rotate(widget, m_referencePoint, 0, -5);
+        else if (event->modifiers() & Qt::ShiftModifier)
+          Navigate::zoom(widget, m_referencePoint, -5);
+        else if (event->modifiers() & Qt::ControlModifier)
+          Navigate::translate(widget, m_referencePoint, 0, 5);
+        event->accept();
+        break;
+      case Qt::Key_Down: // Down arrow
+        if (event->modifiers() == Qt::NoModifier)
+          Navigate::rotate(widget, m_referencePoint, 0, 5);
+        else if (event->modifiers() & Qt::ShiftModifier)
+          Navigate::zoom(widget, m_referencePoint, 5);
+        else if (event->modifiers() & Qt::ControlModifier)
+          Navigate::translate(widget, m_referencePoint, 0, -5);
+        event->accept();
+        break;
+      default:
+       return 0;
+    }
+    return 0;
+  }
+
+  QUndoCommand* NavigateTool::keyReleaseEvent(GLWidget *widget, QKeyEvent *event)
+  {
+    return 0;
+  }
+
   bool NavigateTool::paint(GLWidget *widget)
   {
     if(m_leftButtonPressed) {
