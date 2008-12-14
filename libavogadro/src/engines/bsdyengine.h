@@ -55,6 +55,7 @@ namespace Avogadro {
       bool renderOpaque(PainterDevice *pd);
       bool renderTransparent(PainterDevice *pd);
       bool renderQuick(PainterDevice *pd);
+      bool renderPick(PainterDevice *pd);
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 

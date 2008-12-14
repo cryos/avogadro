@@ -336,6 +336,37 @@ namespace Avogadro
     return true;
   }
 
+  bool BSDYEngine::renderPick(PainterDevice *pd)
+  {
+    // Render atoms and bonds for picking...
+    QList<Primitive *> list;
+
+    // Get a list of bonds and render them
+    list = primitives().subList(Primitive::BondType);
+    foreach(const Primitive *p, list) {
+      const Bond *b = static_cast<const Bond *>(p);
+
+      Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
+      Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
+
+      double shift = 0.15;
+      int order = 1;
+      if (m_showMulti) order = b->order();
+      pd->painter()->setName(b);
+      pd->painter()->drawMultiCylinder(*atom1->pos(), *atom2->pos(),
+                                       m_bondRadius, order, shift);
+    }
+
+    // Build up a list of the atoms and render them
+    list = primitives().subList(Primitive::AtomType);
+    foreach(const Primitive *p, list)  {
+      const Atom *a = static_cast<const Atom *>(p);
+      pd->painter()->setName(a);
+      pd->painter()->drawSphere(a->pos(), radius(a));
+    }
+    return true;
+  }
+
   inline double BSDYEngine::radius( const Atom *atom ) const
   {
     if (atom->atomicNumber())
