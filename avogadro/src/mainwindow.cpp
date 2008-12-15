@@ -699,10 +699,10 @@ namespace Avogadro
 
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
 
-    OBMol *molecule = new OBMol;
-    if (conv.Read( molecule, &ifs)) {
-      if (molecule->GetDimension() != 3) {
-        if (molecule->Has2D()) {
+    OBMol *obMolecule = new OBMol;
+    if (conv.Read( obMolecule, &ifs)) {
+      if (obMolecule->GetDimension() != 3) {
+        if (obMolecule->Has2D()) {
           int retval = QMessageBox::warning( this, tr( "Avogadro" ),
               tr( "This file contains 2D coordinates only. Do you want Avogadro "
               "to scale the bonds and do a quick optimization?"), QMessageBox::Yes, QMessageBox::No );
@@ -710,21 +710,21 @@ namespace Avogadro
           if (retval == QMessageBox::Yes) {
             // Scale the bond lengths
             double sum = 0.0;
-            FOR_BONDS_OF_MOL (bond, molecule) {
+            FOR_BONDS_OF_MOL (bond, obMolecule) {
               sum += bond->GetLength();
             }
-            double scale = (1.5 * molecule->NumBonds()) / sum;
-            FOR_ATOMS_OF_MOL (atom, molecule) {
+            double scale = (1.5 * obMolecule->NumBonds()) / sum;
+            FOR_ATOMS_OF_MOL (atom, obMolecule) {
               vector3 vec = atom->GetVector();
               vec.SetX(vec.x() * scale);
               vec.SetY(vec.y() * scale);
               atom->SetVector(vec);
             }
-            molecule->Center();
+            obMolecule->Center();
 
             // place end atoms of wedge bonds at +1.0 Z
             // place end atoms of hash bonds at -1.0 Z
-            FOR_ATOMS_OF_MOL (atom, molecule) {
+            FOR_ATOMS_OF_MOL (atom, obMolecule) {
               FOR_BONDS_OF_ATOM (bond, &*atom) {
                 if (bond->IsHash() && (&*atom == bond->GetBeginAtom())) {
                   vector3 vec = bond->GetEndAtom()->GetVector();
@@ -739,9 +739,9 @@ namespace Avogadro
             }
             OBForceField *ff = OBForceField::FindForceField("UFF");
             if (ff) {
-              ff->Setup(*molecule);
-              ff->SteepestDescent(100);
-              ff->GetCoordinates(*molecule);
+              ff->Setup(*obMolecule);
+              ff->SteepestDescent(250);
+              ff->GetCoordinates(*obMolecule);
             }
           }
         }
@@ -752,8 +752,28 @@ namespace Avogadro
       }
 
       Molecule *mol = new Molecule;
-      mol->setOBMol(molecule);
+      mol->setOBMol(obMolecule);
       setMolecule(mol);
+      // Now unroll any settings we saved in the file
+      if (obMolecule->HasData(OBGenericDataType::PairData)) {
+        QSettings settings;
+        // We've saved the settings with key Avogadro:blah as an OBPairData.
+        std::vector<OBGenericData *> pairDataVector = obMolecule->GetAllData(OBGenericDataType::PairData);
+        OBPairData *savedSetting;
+        OBDataIterator i;
+        QString attribute;
+        
+        for (i = pairDataVector.begin(); i != pairDataVector.end(); ++i) {
+          savedSetting = dynamic_cast<OBPairData *>(*i);
+          // Check to see if this is an Avogadro setting
+          attribute = savedSetting->GetAttribute().c_str();
+          if (attribute.startsWith("Avogadro:")) {
+            attribute.remove("Avogadro:");
+            settings.setValue(attribute, savedSetting->GetValue().c_str());
+            // TODO: we should probably delete the entry now, but I'm going to play it safe first
+          }
+        }
+      } // end reading OBPairData
 
       // do we have a multi-molecule file?
       // Changed this -- we have problems knowing if we're at the end of a gzipped file
@@ -927,6 +947,43 @@ namespace Avogadro
     statusBar()->showMessage( tr( "Saving file." ), 2000 );
 
     OBMol obmol = d->molecule->OBMol();
+    
+    // We're going to wrap up the QSettings and save them to the CML file
+    if (strcasestr(outFormat->GetID(),"cml") != NULL) {
+      // First off, let's set some CML options
+      conv.AddOption("p"); // add properties -- including OBPairData
+      conv.AddOption("m"); // Dublin Core metadata
+      conv.AddOption("a"); // array format for atoms & bonds
+      
+      QSettings settings;
+      OBPairData *savedSetting;
+      QString attribute, value;
+      
+      // Walk through all our settings (is there a more efficient way to do this?)
+      foreach(QString key, settings.allKeys()) {
+        // Ignore this key -- there are definitely some on Mac with Apple... or com/
+        // There may be others to ignore on Linux and Windows, but I haven't tested those yet.
+        if (key.startsWith("Apple") || key.startsWith("com/") || key.startsWith("NS"))
+          continue;
+          
+        if (key.startsWith("enginesDock")) {
+          continue; // TODO: this seems to kill the CML
+        }
+        
+        // We're going to save all our settings as Avogadro:blah
+        savedSetting = new OBPairData;
+        attribute = "Avogadro:" + key;
+        // Convert from QString to char*
+        savedSetting->SetAttribute(attribute.toAscii().constData());
+        
+        value = settings.value(key).toString();
+        // Convert from QString to char*
+        savedSetting->SetValue(value.toAscii().constData());
+        savedSetting->SetOrigin(userInput);
+        obmol.SetData(savedSetting);
+      }
+    } // end saving settings for CML files
+    
     if ( conv.Write( &obmol, &ofs ) ) {
       file.remove(); // remove the old file: WARNING -- would much prefer to just rename, but Qt won't let you
       newFile.rename(fileName);
