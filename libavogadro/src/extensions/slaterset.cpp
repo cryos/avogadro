@@ -62,7 +62,7 @@ namespace Avogadro
   static const double BOHR_TO_ANGSTROM = 0.529177249;
   static const double ANGSTROM_TO_BOHR = 1.0 / 0.529177249;
 
-  SlaterSet::SlaterSet()
+  SlaterSet::SlaterSet() : m_initialized(false)
   {
   }
 
@@ -239,6 +239,10 @@ namespace Avogadro
       }
     }
     m_initialized = true;
+
+//    std::cout << m_normalized << std::endl << std::endl;
+//    std::cout << s.eigenvalues() << std::endl << std::endl;
+    std::cout << s.eigenvalues().minCoeff() << " " << s.eigenvalues().maxCoeff() << std::endl << std::endl;
     return true;
   }
 
