@@ -217,8 +217,25 @@ namespace Avogadro
           m_factors[i] = pow(2.0 * m_zetas[i], m_pqns[i] + 0.5) *
                          sqrt(3.0 / (4.0*M_PI) / factorial(2*m_pqns[i]));
           break;
+        case X2:
+          m_factors[i] = 0.5 * pow(2.0 * m_zetas[i], m_pqns[i] + 0.5) *
+                         sqrt(15.0 / (4.0*M_PI) / factorial(2*m_pqns[i]));
+          break;
+        case XZ:
+          m_factors[i] = pow(2.0 * m_zetas[i], m_pqns[i] + 0.5) *
+                         sqrt(15.0 / (4.0*M_PI) / factorial(2*m_pqns[i]));
+          break;
+        case Z2:
+          m_factors[i] = (0.5/sqrt(3.0)) * pow(2.0 * m_zetas[i], m_pqns[i] + 0.5) *
+                         sqrt(15.0 / (4.0*M_PI) / factorial(2*m_pqns[i]));
+          break;
+        case YZ:
+        case XY:
+          m_factors[i] = pow(2.0 * m_zetas[i], m_pqns[i] + 0.5) *
+                         sqrt(15.0 / (4.0*M_PI) / factorial(2*m_pqns[i]));
+          break;
         default:
-         ;
+         qDebug() << "Orbital" << i << "not handled, type" << m_slaterTypes[i];
       }
     }
     m_initialized = true;
@@ -282,6 +299,32 @@ namespace Avogadro
         for (int i = 0; i <= set->m_pqns[slater]-2; ++i)
           tmp *= dr;
         tmp *= delta.z();
+        break;
+      case X2: // (x^2 - y^2)r^n
+        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
+          tmp *= dr;
+        tmp *= delta.x() * delta.x() - delta.y() * delta.y();
+        break;
+      case XZ: // xzr^n
+        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
+          tmp *= dr;
+        tmp *= delta.x() * delta.z();
+        break;
+      case Z2: // (2z^2 - x^2 - y^2)r^n
+        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
+          tmp *= dr;
+        tmp *= 2.0 * delta.z() * delta.z() - delta.x() * delta.x()
+             - delta.y() * delta.y();
+        break;
+      case YZ: // yzr^n
+        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
+          tmp *= dr;
+        tmp *= delta.y() * delta.z();
+        break;
+      case XY: // xyr^n
+        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
+          tmp *= dr;
+        tmp *= delta.x() * delta.y();
         break;
       default:
         return 0.0;
