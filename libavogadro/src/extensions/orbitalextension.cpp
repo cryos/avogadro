@@ -52,8 +52,8 @@ namespace Avogadro
   using Eigen::Vector3i;
 
   OrbitalExtension::OrbitalExtension(QObject* parent) : Extension(parent),
-    m_glwidget(0), m_orbitalDialog(0), m_molecule(0), m_basis(0), m_slater(0), m_timer1(0),
-    m_timer2(0)
+    m_glwidget(0), m_orbitalDialog(0), m_molecule(0), m_basis(0), m_slater(0),
+    m_progress(0), m_timer(0)
   {
     QAction* action = new QAction(this);
     action->setText(tr("Import Molecular Orbitals..."));
@@ -194,22 +194,26 @@ namespace Avogadro
       cube->setName(QString(tr("MO ") + QString::number(mo)));
       cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
                       stepSize * BOHR_TO_ANGSTROM);
-      if (!m_timer1) {
-        m_timer1 = new QTime;
-        m_timer1->start();
+      if (!m_timer) {
+        m_timer = new QTime;
+        m_timer->start();
       }
       m_slater->calculateCubeMO(cube, mo);
 
       // Set up a progress dialog
-      if (m_progress)
-        m_progress->deleteLater();
-      m_progress = new QProgressDialog(tr("Calculating MO ") + QString::number(mo),
-                                     tr("Abort Calculation"),
-                                     m_slater->watcher().progressMinimum(),
-                                     m_slater->watcher().progressMinimum(),
-                                     m_orbitalDialog);
-      m_progress->setWindowModality(Qt::NonModal);
+      if (!m_progress) {
+        m_progress = new QProgressDialog(m_orbitalDialog);
+        m_progress->setCancelButtonText(tr("Abort Calculation"));
+        m_progress->setWindowModality(Qt::NonModal);
+      }
+
+      // Set up the progress bar
+      m_progress->setWindowTitle(tr("Calculating MO ") + QString::number(mo));
+      m_progress->setRange(m_slater->watcher().progressMinimum(),
+                           m_slater->watcher().progressMinimum());
       m_progress->setValue(m_slater->watcher().progressValue());
+      m_progress->show();
+
       // Connect the signals and slots
       connect(&m_slater->watcher(), SIGNAL(progressValueChanged(int)),
               m_progress, SLOT(setValue(int)));
@@ -227,28 +231,31 @@ namespace Avogadro
       cube->setName(QString(tr("MO ") + QString::number(mo)));
       cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
                       stepSize * BOHR_TO_ANGSTROM);
-      if (!m_timer2) {
-        m_timer2 = new QTime;
-        m_timer2->start();
+      if (!m_timer) {
+        m_timer = new QTime;
+        m_timer->start();
       }
       m_basis->calculateCubeMO2(cube, mo);
 
-      // Set up a progress dialog
-      if (m_progress2)
-        m_progress2->deleteLater();
-      m_progress2 = new QProgressDialog(tr("Calculating MO ") + QString::number(mo),
-                                      tr("Abort Calculation"),
-                                      m_basis->watcher2().progressMinimum(),
-                                      m_basis->watcher2().progressMinimum(),
-                                      m_orbitalDialog);
-      m_progress2->setWindowModality(Qt::NonModal);
-      m_progress2->setValue(m_basis->watcher2().progressValue());
+     // Set up a progress dialog
+      if (!m_progress) {
+        m_progress = new QProgressDialog(m_orbitalDialog);
+        m_progress->setCancelButtonText(tr("Abort Calculation"));
+        m_progress->setWindowModality(Qt::NonModal);
+      }
+
+      // Set up the progress bar
+      m_progress->setWindowTitle(tr("Calculating MO ") + QString::number(mo));
+      m_progress->setRange(m_basis->watcher2().progressMinimum(),
+                           m_basis->watcher2().progressMinimum());
+      m_progress->setValue(m_basis->watcher2().progressValue());
+
       // Connect signals and slots
       connect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-              m_progress2, SLOT(setValue(int)));
+              m_progress, SLOT(setValue(int)));
       connect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-              m_progress2, SLOT(setRange(int, int)));
-      connect(m_progress2, SIGNAL(canceled()),
+              m_progress, SLOT(setRange(int, int)));
+      connect(m_progress, SIGNAL(canceled()),
               this, SLOT(calculation2Canceled()));
       connect(&m_basis->watcher2(), SIGNAL(finished()),
               this, SLOT(calculation2Done()));
@@ -314,22 +321,25 @@ namespace Avogadro
       cube->setName(QString(tr("Electron Density")));
       cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
                       stepSize * BOHR_TO_ANGSTROM);
-      if (!m_timer1) {
-        m_timer1 = new QTime;
-        m_timer1->start();
+      if (!m_timer) {
+        m_timer = new QTime;
+        m_timer->start();
       }
       m_slater->calculateCubeDensity(cube);
 
       // Set up a progress dialog
-      if (m_progress)
-        m_progress->deleteLater();
-      m_progress = new QProgressDialog(tr("Calculating Electron Density"),
-                                     tr("Abort Calculation"),
-                                     m_slater->watcher().progressMinimum(),
-                                     m_slater->watcher().progressMinimum(),
-                                     m_orbitalDialog);
-      m_progress->setWindowModality(Qt::NonModal);
+      if (!m_progress) {
+        m_progress = new QProgressDialog(m_orbitalDialog);
+        m_progress->setCancelButtonText(tr("Abort Calculation"));
+        m_progress->setWindowModality(Qt::NonModal);
+      }
+
+      // Set up the progress bar
+      m_progress->setWindowTitle(tr("Calculating Electron Density"));
+      m_progress->setRange(m_slater->watcher().progressMinimum(),
+                           m_slater->watcher().progressMinimum());
       m_progress->setValue(m_slater->watcher().progressValue());
+
       // Connect the signals and slots
       connect(&m_slater->watcher(), SIGNAL(progressValueChanged(int)),
               m_progress, SLOT(setValue(int)));
@@ -356,12 +366,11 @@ namespace Avogadro
             this, SLOT(calculationCanceled()));
     disconnect(&m_basis->watcher(), SIGNAL(finished()),
             this, SLOT(calculationDone()));
-    
-    qDebug() << "Whole cube calculation done in" << m_timer1->elapsed() / 1000.0
+
+    qDebug() << "Whole cube calculation done in" << m_timer->elapsed() / 1000.0
              << "seconds";
-    delete m_timer1;
-    m_timer1 = 0;
-    m_progress->deleteLater();
+    delete m_timer;
+    m_timer = 0;
     m_molecule->update();
     m_orbitalDialog->enableCalculation(true);
   }
@@ -371,49 +380,45 @@ namespace Avogadro
     // Calculation complete
     if (!m_currentMO) {
       disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-                 m_progress2, SLOT(setValue(int)));
+                 m_progress, SLOT(setValue(int)));
       disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-                 m_progress2, SLOT(setRange(int, int)));
-      disconnect(m_progress2, SIGNAL(canceled()),
+                 m_progress, SLOT(setRange(int, int)));
+      disconnect(m_progress, SIGNAL(canceled()),
                  this, SLOT(calculation2Canceled()));
       disconnect(&m_basis->watcher2(), SIGNAL(finished()),
                  this, SLOT(calculation2Done()));
 
-      qDebug() << "Single points calculation done in" << m_timer2->elapsed() / 1000.0
+      qDebug() << "Single points calculation done in" << m_timer->elapsed() / 1000.0
                << "seconds";
-      delete m_timer2;
-      m_timer2 = 0;
-      m_progress2->deleteLater();
-      m_progress2 = 0;
+      delete m_timer;
+      m_timer = 0;
       m_molecule->update();
       m_orbitalDialog->enableCalculation(true);
     }
     else if (m_basis->numMOs() == m_currentMO) { // All MOs have been calculated
       disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-                 m_progress2, SLOT(setValue(int)));
+                 m_progress, SLOT(setValue(int)));
       disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-                 m_progress2, SLOT(setRange(int, int)));
-      disconnect(m_progress2, SIGNAL(canceled()),
+                 m_progress, SLOT(setRange(int, int)));
+      disconnect(m_progress, SIGNAL(canceled()),
                  this, SLOT(calculation2Canceled()));
       disconnect(&m_basis->watcher2(), SIGNAL(finished()),
                  this, SLOT(calculation2Done()));
 
-      qDebug() << "All cube MOs calculated in" << m_timer2->elapsed() / 1000.0
+      qDebug() << "All cube MOs calculated in" << m_timer->elapsed() / 1000.0
                << "seconds";
-      delete m_timer2;
-      m_timer2 = 0;
-      m_progress2->deleteLater();
-      m_progress2 = 0;
+      delete m_timer;
+      m_timer = 0;
       m_molecule->update();
       m_orbitalDialog->enableCalculation(true);
       m_currentMO = 0;
     }
     else { // More work to do
       disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-                 m_progress2, SLOT(setValue(int)));
+                 m_progress, SLOT(setValue(int)));
       disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-                 m_progress2, SLOT(setRange(int, int)));
-      disconnect(m_progress2, SIGNAL(canceled()),
+                 m_progress, SLOT(setRange(int, int)));
+      disconnect(m_progress, SIGNAL(canceled()),
                  this, SLOT(calculation2Canceled()));
       disconnect(&m_basis->watcher2(), SIGNAL(finished()),
                  this, SLOT(calculation2Done()));
@@ -428,17 +433,15 @@ namespace Avogadro
                  m_progress, SLOT(setValue(int)));
       disconnect(&m_slater->watcher(), SIGNAL(progressRangeChanged(int, int)),
                  m_progress, SLOT(setRange(int, int)));
-    disconnect(m_progress, SIGNAL(canceled()),
-            this, SLOT(slaterCanceled()));
+      disconnect(m_progress, SIGNAL(canceled()),
+                 this, SLOT(slaterCanceled()));
       disconnect(&m_slater->watcher(), SIGNAL(finished()),
                  this, SLOT(slaterDone()));
 
-      qDebug() << "Single points calculation done in" << m_timer1->elapsed() / 1000.0
+      qDebug() << "Single points calculation done in" << m_timer->elapsed() / 1000.0
                << "seconds";
-      delete m_timer1;
-      m_timer1 = 0;
-      m_progress->deleteLater();
-      m_progress = 0;
+      delete m_timer;
+      m_timer = 0;
       m_molecule->update();
       m_orbitalDialog->enableCalculation(true);
     }
@@ -452,12 +455,10 @@ namespace Avogadro
       disconnect(&m_slater->watcher(), SIGNAL(finished()),
                  this, SLOT(slaterDone()));
 
-      qDebug() << "All cube MOs calculated in" << m_timer1->elapsed() / 1000.0
+      qDebug() << "All cube MOs calculated in" << m_timer->elapsed() / 1000.0
                << "seconds";
-      delete m_timer1;
-      m_timer1 = 0;
-      m_progress->deleteLater();
-      m_progress = 0;
+      delete m_timer;
+      m_timer = 0;
       m_molecule->update();
       m_orbitalDialog->enableCalculation(true);
       m_currentMO = 0;
@@ -494,17 +495,15 @@ namespace Avogadro
   void OrbitalExtension::calculation2Canceled()
   {
     disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-               m_progress2, SLOT(setValue(int)));
+               m_progress, SLOT(setValue(int)));
     disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-            m_progress2, SLOT(setRange(int, int)));
-    connect(m_progress2, SIGNAL(canceled()),
+            m_progress, SLOT(setRange(int, int)));
+    connect(m_progress, SIGNAL(canceled()),
             this, SLOT(calculation2Canceled()));
     disconnect(&m_basis->watcher2(), SIGNAL(finished()),
             this, SLOT(calculation2Done()));
     m_basis->watcher2().cancel();
     qDebug() << "Canceled...";
-    m_progress2->deleteLater();
-    m_progress2 = 0;
     m_orbitalDialog->enableCalculation(true);
     m_currentMO = 0;
   }
@@ -521,8 +520,6 @@ namespace Avogadro
             this, SLOT(slaterDone()));
     m_slater->watcher().cancel();
     qDebug() << "Canceled...";
-    m_progress->deleteLater();
-    m_progress = 0;
     m_orbitalDialog->enableCalculation(true);
     m_currentMO = 0;
   }

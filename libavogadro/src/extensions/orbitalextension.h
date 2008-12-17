@@ -71,8 +71,8 @@ namespace Avogadro
     BasisSet* m_basis;
     SlaterSet *m_slater;
     QString m_loadedFileName;
-    QProgressDialog *m_progress, *m_progress2;
-    QTime *m_timer1, *m_timer2;
+    QProgressDialog *m_progress;
+    QTime *m_timer;
     unsigned int m_currentMO;
     double m_stepSize;
     Eigen::Vector3d m_origin;
