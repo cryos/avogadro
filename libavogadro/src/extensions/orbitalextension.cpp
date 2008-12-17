@@ -92,6 +92,8 @@ namespace Avogadro
               this, SLOT(calculateMO(int)));
       connect(m_orbitalDialog, SIGNAL(calculateAll()),
               this, SLOT(calculateAll()));
+      connect(m_orbitalDialog, SIGNAL(calculateDensity()),
+              this, SLOT(calculateDensity()));
       if (loadBasis()) {
         m_orbitalDialog->show();
       }
@@ -291,6 +293,58 @@ namespace Avogadro
     // Call the calculation, starting at MO 1
     m_currentMO = 1;
     calculateMO(m_currentMO, m_origin, m_steps, m_stepSize);
+  }
+
+  void OrbitalExtension::calculateDensity()
+  {
+    if (!m_basis && !m_slater)
+      return;
+
+    const double BOHR_TO_ANGSTROM = 0.529177249;
+    const double ANGSTROM_TO_BOHR = 1.0/BOHR_TO_ANGSTROM;
+    qDebug() << "Calculating electron density...";
+    double stepSize = m_orbitalDialog->stepSize() * ANGSTROM_TO_BOHR;
+    Vector3d origin = ANGSTROM_TO_BOHR * m_orbitalDialog->origin();
+    Vector3i steps = m_orbitalDialog->steps();
+
+    // Call the calculation, starting at MO 1
+    m_currentMO = 0;
+    if (m_slater) {
+      // We have a slater type orbital....
+      Cube *cube = m_molecule->newCube();
+      cube->setName(QString(tr("Electron Density")));
+      cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
+                      stepSize * BOHR_TO_ANGSTROM);
+      if (!m_timer1) {
+        m_timer1 = new QTime;
+        m_timer1->start();
+      }
+      m_slater->calculateCubeDensity(cube);
+
+      // Set up a progress dialog
+      if (m_progress)
+        m_progress->deleteLater();
+      m_progress = new QProgressDialog(tr("Calculating Electron Density"),
+                                     tr("Abort Calculation"),
+                                     m_slater->watcher().progressMinimum(),
+                                     m_slater->watcher().progressMinimum(),
+                                     m_orbitalDialog);
+      m_progress->setWindowModality(Qt::NonModal);
+      m_progress->setValue(m_slater->watcher().progressValue());
+      // Connect the signals and slots
+      connect(&m_slater->watcher(), SIGNAL(progressValueChanged(int)),
+              m_progress, SLOT(setValue(int)));
+      connect(&m_slater->watcher(), SIGNAL(progressRangeChanged(int, int)),
+              m_progress, SLOT(setRange(int, int)));
+      connect(m_progress, SIGNAL(canceled()),
+              this, SLOT(slaterCanceled()));
+      connect(&m_slater->watcher(), SIGNAL(finished()),
+              this, SLOT(slaterDone()));
+      m_orbitalDialog->enableCalculation(false);
+    }
+    else if (m_basis) {
+      // FIXME Not implemented yet...
+    }
   }
 
   void OrbitalExtension::calculationDone()

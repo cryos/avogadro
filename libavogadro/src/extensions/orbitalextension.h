@@ -84,6 +84,7 @@ namespace Avogadro
   private Q_SLOTS:
     void calculateMO(int n);
     void calculateAll();
+    void calculateDensity();
     void calculationDone();
     void calculation2Done();
     void calculationCanceled();

@@ -54,6 +54,7 @@ namespace Avogadro
   public Q_SLOTS:
     void calculate();
     void calculateAllClicked();
+    void calculateDensityClicked();
     void enableCalculation(bool enable);
     void setCurrentTab(int n);
 
@@ -73,6 +74,7 @@ namespace Avogadro
   Q_SIGNALS:
     void calculateMO(int MO);
     void calculateAll();
+    void calculateDensity();
 
   };
 

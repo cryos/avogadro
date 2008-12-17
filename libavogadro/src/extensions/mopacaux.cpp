@@ -107,6 +107,11 @@ namespace Avogadro
       for (unsigned int i = 0; i < m_pqn.size(); ++i)
         qDebug() << i << ":" << m_pqn[i];
     }
+    else if (key.contains("NUM_ELECTRONS")) {
+      QString tmp = key.split("=").at(1);
+      qDebug() << "Number of electrons =" << tmp.toInt();
+      m_electrons = tmp.toInt();
+    }
     else if (key.contains("ATOM_X_OPT:ANGSTROMS")) {
       QString tmp = key.mid(key.indexOf("[")+1, 4);
       qDebug() << "Number of atomic coordinates =" << tmp.toInt();
@@ -129,6 +134,14 @@ namespace Avogadro
       readEigenVectors(tmp.toInt());
       for (unsigned int i = 0; i < m_zeta.size(); ++i)
         qDebug() << i << ":" << m_eigenVectors(i,0) << m_eigenVectors(i,1) << m_eigenVectors(i,2);
+    }
+    else if (key.contains("TOTAL_DENSITY_MATRIX")) {
+      QString tmp = key.mid(key.indexOf("[")+1, 6);
+      qDebug() << "Size of lower half triangle of density matrix =" << tmp.toInt();
+
+      readDensityMatrix(tmp.toInt());
+      for (unsigned int i = 0; i < m_zeta.size(); ++i)
+        qDebug() << i << ":" << m_density(i,0) << m_density(i,1) << m_density(i,2);
     }
 /*    else if (key == "Number of electrons")
       m_electrons = list.at(1).toInt();
@@ -169,8 +182,10 @@ namespace Avogadro
     basis->addSlaterTypes(m_atomSym);
     basis->addZetas(m_zeta);
     basis->addPQNs(m_pqn);
+    basis->setNumElectrons(m_electrons);
     basis->addOverlapMatrix(m_overlap);
     basis->addEigenVectors(m_eigenVectors);
+    basis->addDensityMatrix(m_density);
   }
 
   vector<int> MopacAux::readArrayI(unsigned int n)
@@ -276,6 +291,32 @@ namespace Avogadro
         if (i == m_zeta.size()) {
           // We need to move down to the next row and increment f - lower tri
           i = 0;
+          ++j;
+        }
+      }
+    }
+    return true;
+  }
+
+  bool MopacAux::readDensityMatrix(unsigned int n)
+  {
+    m_density.resize(m_zeta.size(), m_zeta.size());
+    unsigned int cnt = 0;
+    unsigned int i = 0, j = 0;
+    unsigned int f = 1;
+    // Skip the first commment line...
+    m_in.readLine();
+    while (cnt < n) {
+      QString line = m_in.readLine();
+      QStringList list = line.split(" ", QString::SkipEmptyParts);
+      for (int k = 0; k < list.size(); ++k) {
+        //m_overlap.part<Eigen::SelfAdjoint>()(i, j) = list.at(k).toDouble();
+        m_density(i, j) = m_density(j, i) = list.at(k).toDouble();
+        ++i; ++cnt;
+        if (i == f) {
+          // We need to move down to the next row and increment f - lower tri
+          i = 0;
+          ++f;
           ++j;
         }
       }

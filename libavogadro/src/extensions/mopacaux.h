@@ -51,6 +51,7 @@ namespace Avogadro
     std::vector<Eigen::Vector3d> readArrayVec(unsigned int n);
     bool readOverlapMatrix(unsigned int n);
     bool readEigenVectors(unsigned int n);
+    bool readDensityMatrix(unsigned int n);
 
     int m_electrons;
     std::vector<int> m_aNums;
@@ -71,6 +72,7 @@ namespace Avogadro
 
     Eigen::MatrixXd m_overlap;     /// Overlap matrix
     Eigen::MatrixXd m_eigenVectors;
+    Eigen::MatrixXd m_density;     /// Total density matrix
   };
 
 } // End namespace Avogadro

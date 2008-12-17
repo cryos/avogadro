@@ -101,6 +101,12 @@ namespace Avogadro
     return true;
   }
 
+  bool SlaterSet::setNumElectrons(double electrons)
+  {
+    m_electrons = electrons;
+    return true;
+  }
+
   bool SlaterSet::addOverlapMatrix(const Eigen::MatrixXd &m)
   {
     m_overlap.resize(m.rows(), m.cols());
@@ -112,6 +118,13 @@ namespace Avogadro
   {
     m_eigenVectors.resize(e.rows(), e.cols());
     m_eigenVectors = e;
+    return true;
+  }
+
+  bool SlaterSet::addDensityMatrix(const Eigen::MatrixXd &d)
+  {
+    m_density.resize(d.rows(), d.cols());
+    m_density = d;
     return true;
   }
 
@@ -178,21 +191,51 @@ namespace Avogadro
     return true;
   }
 
+  bool SlaterSet::calculateCubeDensity(Cube *cube)
+  {
+    // Set up the calculation and ideally use the new QtConcurrent code to
+    // multithread the calculation...
+    if (!m_initialized)
+      initialize();
+
+    // It is more efficient to process each shell over the entire cube than it
+    // is to process each MO at each point in the cube. This is probably the best
+    // point at which to multithread too - QtConcurrent!
+    m_slaterShells.resize(cube->data()->size());
+
+    qDebug() << "Number of points for density:" << m_slaterShells.size();
+
+    for (int i = 0; i < m_slaterShells.size(); ++i) {
+      m_slaterShells[i].set = this;
+      m_slaterShells[i].cube = cube;
+      m_slaterShells[i].pos = i;
+      m_slaterShells[i].state = 0;
+    }
+
+    // Lock the cube until we are done.
+    cube->lock()->lockForWrite();
+
+    // Watch for the future
+    connect(&m_watcher, SIGNAL(finished()), this, SLOT(calculationComplete()));
+
+    // The main part of the mapped reduced function...
+    m_future = QtConcurrent::map(m_slaterShells, SlaterSet::processDensity);
+    // Connect our watcher to our future
+    m_watcher.setFuture(m_future);
+
+    return true;
+  }
+
   void SlaterSet::calculationComplete()
   {
     disconnect(&m_watcher, SIGNAL(finished()), this, SLOT(calculationComplete()));
     qDebug() << m_slaterShells[0].cube->data()->at(0) << m_slaterShells[0].cube->data()->at(1);
     qDebug() << "Calculation complete - cube map...";
     m_slaterShells[0].cube->lock()->unlock();
-    m_slaterShells.clear();
   }
 
   bool SlaterSet::initialize()
-  {
-    // Convert the exponents into Angstroms
-    for (unsigned int i = 0; i < m_zetas.size(); ++i)
-      m_zetas[i] = m_zetas[i] / BOHR_TO_ANGSTROM;
-  
+  {  
     m_normalized.resize(m_overlap.cols(), m_overlap.rows());
 
     SelfAdjointEigenSolver<MatrixXd> s(m_overlap);
@@ -201,7 +244,11 @@ namespace Avogadro
     m_normalized = m * m_eigenVectors;
 
     if (!(m_overlap*m*m).isIdentity())
-      qDebug() << "Identity test failed - do you need a newer version of Eigen?";
+      qDebug() << "Identity test FAILED - do you need a newer version of Eigen?";
+//    std::cout << m_normalized << std::endl << std::endl;
+//    std::cout << s.eigenvalues() << std::endl << std::endl;
+//    std::cout << m_overlap << std::endl << std::endl;
+//    std::cout << s.eigenvalues().minCoeff() << " " << s.eigenvalues().maxCoeff() << std::endl << std::endl;
 
     m_factors.resize(m_zetas.size());
     // Calculate the normalizations of the orbitals
@@ -238,11 +285,12 @@ namespace Avogadro
          qDebug() << "Orbital" << i << "not handled, type" << m_slaterTypes[i];
       }
     }
+    // Convert the exponents into Angstroms
+    for (unsigned int i = 0; i < m_zetas.size(); ++i)
+      m_zetas[i] = m_zetas[i] / BOHR_TO_ANGSTROM;
+
     m_initialized = true;
 
-//    std::cout << m_normalized << std::endl << std::endl;
-//    std::cout << s.eigenvalues() << std::endl << std::endl;
-    std::cout << s.eigenvalues().minCoeff() << " " << s.eigenvalues().maxCoeff() << std::endl << std::endl;
     return true;
   }
 
@@ -279,28 +327,77 @@ namespace Avogadro
     shell.cube->setValue(shell.pos, tmp);
   }
 
+  void SlaterSet::processDensity(SlaterShell &shell)
+  {
+    // Calculate the electron density
+    SlaterSet *set = shell.set;
+    unsigned int atomsSize = set->m_atomPos.size();
+    unsigned int basisSize = set->m_zetas.size();
+    unsigned int matrixSize = set->m_density.rows();
+
+    vector<Vector3d> deltas;
+    vector<double> dr;
+    deltas.reserve(atomsSize);
+    dr.reserve(atomsSize);
+
+    // Calculate our position
+    Vector3d pos = shell.cube->position(shell.pos);// * ANGSTROM_TO_BOHR;
+
+    // Calculate the deltas for the position
+    for (unsigned int i = 0; i < atomsSize; ++i) {
+      deltas.push_back(pos - set->m_atomPos[i]);
+      dr.push_back(deltas[i].norm());
+    }
+
+    // Now calculate the value of the density at this point in space
+    double rho = 0.0;
+    for (unsigned int i = 0; i < matrixSize; ++i) {
+      // Calculate the off-diagonal parts of the matrix
+      for (unsigned int j = 0; j < i; ++j) {
+        double a = 0.0, b = 0.0;
+        for (unsigned int k = 0; k < basisSize; ++k) {
+          a += pointSlater(shell.set, deltas[set->m_slaterIndices[k]],
+                             dr[set->m_slaterIndices[k]], k, i);
+          b += pointSlater(shell.set, deltas[set->m_slaterIndices[k]],
+                             dr[set->m_slaterIndices[k]], k, j);
+        } // MOs at point done
+        rho += 2.0 * set->m_density.coeffRef(i, j) * a * b;
+      }
+      // Now calculate the matrix diagonal
+      double a = 0.0, tmp = 0.0;
+      for (unsigned int k = 0; k < basisSize; ++k) {
+        tmp = pointSlater(shell.set, deltas[set->m_slaterIndices[k]],
+                                 dr[set->m_slaterIndices[k]], k, i);
+        a += tmp*tmp;
+      } // MOs at diagonal done
+      rho += set->m_density.coeffRef(i, i) * a;
+    }
+    // Set the value
+    shell.cube->setValue(shell.pos, rho);
+  }
+
   inline double SlaterSet::pointSlater(SlaterSet *set, const Eigen::Vector3d &delta,
                       const double &dr, unsigned int slater, unsigned int indexMO)
   {
-    double tmp = set->m_normalized(slater, indexMO) *
+    double tmp = set->m_normalized.coeffRef(slater, indexMO) *
                  set->m_factors[slater] * exp(- set->m_zetas[slater] * dr);
     switch (set->m_slaterTypes[slater]) {
       case S:
-        for (int i = 0; i <= set->m_pqns[slater]-1; ++i)
+        for (int i = 0; i < set->m_pqns[slater]-1; ++i)
           tmp *= dr;
         break;
       case PX:
-        for (int i = 0; i <= set->m_pqns[slater]-2; ++i)
+        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
           tmp *= dr;
         tmp *= delta.x();
         break;
       case PY:
-        for (int i = 0; i <= set->m_pqns[slater]-2; ++i)
+        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
           tmp *= dr;
         tmp *= delta.y();
         break;
       case PZ:
-        for (int i = 0; i <= set->m_pqns[slater]-2; ++i)
+        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
           tmp *= dr;
         tmp *= delta.z();
         break;

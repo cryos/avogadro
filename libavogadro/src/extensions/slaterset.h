@@ -110,6 +110,11 @@ namespace Avogadro
     bool addPQNs(const std::vector<double> &pqns);
 
     /**
+     * The number of electrons in the molecule.
+     */
+    bool setNumElectrons(double electrons);
+
+    /**
      * The overlap matrix.
      * @param m Matrix containing the overlap matrix for the basis.
      */
@@ -120,6 +125,12 @@ namespace Avogadro
      * @param MOs Matrix of the eigen vectors for the SlaterSet.
      */
     bool addEigenVectors(const Eigen::MatrixXd &e);
+
+    /**
+     * Add the density matrix to the SlaterSet.
+     * @param d Density matrix for the SlaterSet.
+     */
+    bool addDensityMatrix(const Eigen::MatrixXd &d);
 
     /**
      * @return The number of MOs in the BasisSet.
@@ -133,7 +144,7 @@ namespace Avogadro
      */
     bool HOMO(unsigned int n)
     {
-      if (n+1 == static_cast<unsigned int>(m_zetas.size() / 2)) return true;
+      if (n+1 == static_cast<unsigned int>(m_electrons / 2)) return true;
       else return false;
     }
 
@@ -144,13 +155,15 @@ namespace Avogadro
      */
     bool LUMO(unsigned int n)
     {
-      if (n == static_cast<unsigned int>(m_zetas.size() / 2)) return true;
+      if (n == static_cast<unsigned int>(m_electrons / 2)) return true;
       else return false;
     }
 
     void outputAll();
 
     bool calculateCubeMO(Cube *cube, unsigned int state = 1);
+
+    bool calculateCubeDensity(Cube *cube);
 
     QFutureWatcher<void> & watcher() { return m_watcher; }
 
@@ -166,9 +179,11 @@ namespace Avogadro
     std::vector<int> m_slaterTypes;
     std::vector<double> m_zetas;
     std::vector<double> m_pqns;
+    unsigned int m_electrons;
     std::vector<double> m_factors;
     Eigen::MatrixXd m_overlap;
     Eigen::MatrixXd m_eigenVectors;
+    Eigen::MatrixXd m_density;
     Eigen::MatrixXd m_normalized;
     bool m_initialized;
 
@@ -183,6 +198,7 @@ namespace Avogadro
     unsigned int factorial(unsigned int n);
 
     static void processPoint(SlaterShell &shell);
+    static void processDensity(SlaterShell &shell);
     static double pointSlater(SlaterSet *set, const Eigen::Vector3d &delta,
                       const double &dr2, unsigned int slater, unsigned int indexMO);
   };
