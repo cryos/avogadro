@@ -73,14 +73,23 @@ namespace Avogadro
     QString m_loadedFileName;
     QProgressDialog *m_progress, *m_progress2;
     QTime *m_timer1, *m_timer2;
+    unsigned int m_currentMO;
+    double m_stepSize;
+    Eigen::Vector3d m_origin;
+    Eigen::Vector3i m_steps;
+
+    void calculateMO(int MO, const Eigen::Vector3d &origin,
+                     const Eigen::Vector3i &steps, double stepSize);
 
   private Q_SLOTS:
     void calculateMO(int n);
+    void calculateAll();
     void calculationDone();
     void calculation2Done();
     void calculationCanceled();
     void calculation2Canceled();
     void slaterDone();
+    void slaterCanceled();
 
   };
 

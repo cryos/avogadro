@@ -42,6 +42,8 @@ namespace Avogadro
     //resize(325, 100);
     connect(ui.calculate, SIGNAL(clicked()),
             this, SLOT(calculate()));
+    connect(ui.calculateAll, SIGNAL(clicked()),
+            this, SLOT(calculateAllClicked()));
 
     // Connect up the various edits to their slots
     connect(ui.originX, SIGNAL(editingFinished()),
@@ -77,6 +79,7 @@ namespace Avogadro
     for (int i = 1; i <= num; ++i)
       ui.orbitalCombo->addItem("MO " + QString::number(i));
     ui.calculate->setEnabled(true);
+    ui.calculateAll->setEnabled(true);
   }
 
   void OrbitalDialog::setHOMO(int n)
@@ -129,6 +132,22 @@ namespace Avogadro
   void OrbitalDialog::calculate()
   {
     emit calculateMO(ui.orbitalCombo->currentIndex());
+  }
+
+  void OrbitalDialog::calculateAllClicked()
+  {
+    emit calculateAll();
+  }
+
+  void OrbitalDialog::enableCalculation(bool enable)
+  {
+    ui.calculate->setEnabled(enable);
+    ui.calculateAll->setEnabled(enable);
+  }
+
+  void OrbitalDialog::setCurrentTab(int n)
+  {
+    ui.tabWidget->setCurrentIndex(n);
   }
 
   void OrbitalDialog::originChanged()

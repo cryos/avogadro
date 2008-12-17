@@ -53,6 +53,9 @@ namespace Avogadro
 
   public Q_SLOTS:
     void calculate();
+    void calculateAllClicked();
+    void enableCalculation(bool enable);
+    void setCurrentTab(int n);
 
   private Q_SLOTS:
     /**
@@ -69,6 +72,7 @@ namespace Avogadro
 
   Q_SIGNALS:
     void calculateMO(int MO);
+    void calculateAll();
 
   };
 
