@@ -2,6 +2,14 @@
 # do it using qmake as it doesn't have
 # QMAKE_LUPDATE and QMAKE_LRELEASE variables :(
 
+# One problem is that FindQt4.cmake will look for these and cache the results
+# If users have lrelease from Qt3 (e.g., Debian, Ubuntu)
+#  then we will fail.
+
+# First remove these from cache
+set(QT_LUPDATE_EXECUTABLE NOTFOUND CACHE FILEPATH "" FORCE)
+set(QT_LRELEASE_EXECUTABLE NOTFOUND CACHE FILEPATH "" FORCE)
+
 FIND_PROGRAM(QT_LUPDATE_EXECUTABLE NAMES lupdate-qt4 lupdate PATHS
   "[HKEY_CURRENT_USER\\Software\\Trolltech\\Qt3Versions\\4.0.0;InstallDir]/bin"
   "[HKEY_CURRENT_USER\\Software\\Trolltech\\Versions\\4.0.0;InstallDir]/bin"
