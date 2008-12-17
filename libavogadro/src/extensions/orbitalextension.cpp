@@ -143,8 +143,8 @@ namespace Avogadro
 
       // Now to set the default cube...
       Cube cube;
-      double step = 0.1;
-      cube.setLimits(m_molecule, step, 3.0);
+      double step = 0.18;
+      cube.setLimits(m_molecule, step, 2.5);
       Vector3d min = cube.min();// / BOHR_TO_ANGSTROM;
       Vector3i dim = cube.dimensions();
       // Set these values on the form - they can then be altered by the user
@@ -165,8 +165,8 @@ namespace Avogadro
       }
 
       Cube cube;
-      double step = 0.1;
-      cube.setLimits(m_molecule, step, 3.0);
+      double step = 0.18;
+      cube.setLimits(m_molecule, step, 2.5);
       Vector3d min = cube.min();// / BOHR_TO_ANGSTROM;
       Vector3i dim = cube.dimensions();
       // Set these values on the form - they can then be altered by the user
@@ -186,7 +186,6 @@ namespace Avogadro
                                      const Vector3i &steps, double stepSize)
   {
     const double BOHR_TO_ANGSTROM = 0.529177249;
-    const double ANGSTROM_TO_BOHR = 1.0/BOHR_TO_ANGSTROM;
     // Slater type orbital
     if (m_slater) {
       // We have a slater type orbital....

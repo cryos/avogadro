@@ -354,6 +354,7 @@ namespace Avogadro
     for (unsigned int i = 0; i < matrixSize; ++i) {
       // Calculate the off-diagonal parts of the matrix
       for (unsigned int j = 0; j < i; ++j) {
+        if (isSmall(set->m_density.coeffRef(i, j))) continue;
         double a = 0.0, b = 0.0;
         for (unsigned int k = 0; k < basisSize; ++k) {
           a += pointSlater(shell.set, deltas[set->m_slaterIndices[k]],
@@ -364,6 +365,7 @@ namespace Avogadro
         rho += 2.0 * set->m_density.coeffRef(i, j) * a * b;
       }
       // Now calculate the matrix diagonal
+      if (isSmall(set->m_density.coeffRef(i, i))) continue;
       double a = 0.0, tmp = 0.0;
       for (unsigned int k = 0; k < basisSize; ++k) {
         tmp = pointSlater(shell.set, deltas[set->m_slaterIndices[k]],
@@ -379,6 +381,7 @@ namespace Avogadro
   inline double SlaterSet::pointSlater(SlaterSet *set, const Eigen::Vector3d &delta,
                       const double &dr, unsigned int slater, unsigned int indexMO)
   {
+    if (isSmall(set->m_normalized.coeffRef(slater, indexMO))) return 0.0;
     double tmp = set->m_normalized.coeffRef(slater, indexMO) *
                  set->m_factors[slater] * exp(- set->m_zetas[slater] * dr);
     switch (set->m_slaterTypes[slater]) {
