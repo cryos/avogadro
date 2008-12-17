@@ -48,7 +48,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   ClickMeasureTool::ClickMeasureTool(QObject *parent) : Tool(parent),
-    m_selectedAtoms(4), m_numSelectedAtoms(0)
+    m_selectedAtoms(), m_numSelectedAtoms(0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/measure/measure.png")));
@@ -86,20 +86,32 @@ namespace Avogadro {
       event->accept();
 
       Atom *atom = molecule->atom(m_hits[0].name());
-
-      if(m_numSelectedAtoms < 4) {
-        // Select another atom
-        m_selectedAtoms[m_numSelectedAtoms++] = atom;
-        widget->update();
+      // First check if we've already selected this atom
+      // Fixes PR#
+      int indexOfAtom = m_selectedAtoms.indexOf(atom);
+      if (indexOfAtom != -1) { // in the list
+        m_numSelectedAtoms--; // update the count
+        m_selectedAtoms.removeAt(indexOfAtom);
       }
+      else { // new atom to add to list  
+        if(m_numSelectedAtoms < 4) {
+          // Select another atom
+          ++m_numSelectedAtoms;
+          m_selectedAtoms.append(atom);
+        }
+        
+      }
+      widget->update();
     }
     // Right button or Left Button + modifier (e.g., Mac)
     else {
+      // Clear all atoms
       event->accept();
       m_angle = 0;
       m_vector[0].setZero();
       m_vector[1].setZero();
       m_numSelectedAtoms = 0;
+      m_selectedAtoms.clear();
       widget->update();
     }
     return 0;

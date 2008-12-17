@@ -87,7 +87,7 @@ namespace Avogadro {
       QPoint              m_initialDraggingPosition;
       QPoint              m_lastDraggingPosition;
 
-      QVarLengthArray<QPointer<Atom>, 4> m_selectedAtoms;
+      QList<QPointer<Atom> > m_selectedAtoms;
       int m_numSelectedAtoms;
       QList<GLHit> m_hits;
 
