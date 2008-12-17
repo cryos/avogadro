@@ -103,7 +103,7 @@ namespace Avogadro
     else if (key.contains("ATOM_PQN")) {
       QString tmp = key.mid(key.indexOf("[")+1, 4);
       qDebug() << "Number of PQN values =" << tmp.toInt();
-      m_pqn = readArrayD(tmp.toInt());
+      m_pqn = readArrayI(tmp.toInt());
       for (unsigned int i = 0; i < m_pqn.size(); ++i)
         qDebug() << i << ":" << m_pqn[i];
     }

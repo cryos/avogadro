@@ -67,7 +67,7 @@ namespace Avogadro
     std::vector<int> m_atomIndex;
     std::vector<int> m_atomSym;
     std::vector<double> m_zeta;
-    std::vector<double> m_pqn;
+    std::vector<int> m_pqn;
     std::vector<Eigen::Vector3d> m_atomPos;
 
     Eigen::MatrixXd m_overlap;     /// Overlap matrix

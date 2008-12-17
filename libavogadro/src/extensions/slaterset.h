@@ -107,7 +107,7 @@ namespace Avogadro
     /**
      * The PQNs for the orbitals.
      */
-    bool addPQNs(const std::vector<double> &pqns);
+    bool addPQNs(const std::vector<int> &pqns);
 
     /**
      * The number of electrons in the molecule.
@@ -178,7 +178,8 @@ namespace Avogadro
     std::vector<int> m_slaterIndices;
     std::vector<int> m_slaterTypes;
     std::vector<double> m_zetas;
-    std::vector<double> m_pqns;
+    std::vector<int> m_pqns, m_PQNs;
+
     unsigned int m_electrons;
     std::vector<double> m_factors;
     Eigen::MatrixXd m_overlap;

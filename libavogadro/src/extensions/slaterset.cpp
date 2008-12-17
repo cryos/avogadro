@@ -95,7 +95,7 @@ namespace Avogadro
     return true;
   }
 
-  bool SlaterSet::addPQNs(const std::vector<double> &pqns)
+  bool SlaterSet::addPQNs(const std::vector<int> &pqns)
   {
     m_pqns = pqns;
     return true;
@@ -251,35 +251,42 @@ namespace Avogadro
 //    std::cout << s.eigenvalues().minCoeff() << " " << s.eigenvalues().maxCoeff() << std::endl << std::endl;
 
     m_factors.resize(m_zetas.size());
+    m_PQNs = m_pqns;
     // Calculate the normalizations of the orbitals
     for (unsigned int i = 0; i < m_zetas.size(); ++i) {
       switch (m_slaterTypes[i]) {
         case S:
           m_factors[i] = pow(2.0 * m_zetas[i], m_pqns[i] + 0.5) *
                          sqrt(1.0 / (4.0*M_PI) / factorial(2*m_pqns[i]));
+          m_PQNs[i] -= 1;
           break;
         case PX:
         case PY:
         case PZ:
           m_factors[i] = pow(2.0 * m_zetas[i], m_pqns[i] + 0.5) *
                          sqrt(3.0 / (4.0*M_PI) / factorial(2*m_pqns[i]));
+          m_PQNs[i] -= 2;
           break;
         case X2:
           m_factors[i] = 0.5 * pow(2.0 * m_zetas[i], m_pqns[i] + 0.5) *
                          sqrt(15.0 / (4.0*M_PI) / factorial(2*m_pqns[i]));
+          m_PQNs[i] -= 3;
           break;
         case XZ:
           m_factors[i] = pow(2.0 * m_zetas[i], m_pqns[i] + 0.5) *
                          sqrt(15.0 / (4.0*M_PI) / factorial(2*m_pqns[i]));
+          m_PQNs[i] -= 3;
           break;
         case Z2:
           m_factors[i] = (0.5/sqrt(3.0)) * pow(2.0 * m_zetas[i], m_pqns[i] + 0.5) *
                          sqrt(15.0 / (4.0*M_PI) / factorial(2*m_pqns[i]));
+          m_PQNs[i] -= 3;
           break;
         case YZ:
         case XY:
           m_factors[i] = pow(2.0 * m_zetas[i], m_pqns[i] + 0.5) *
                          sqrt(15.0 / (4.0*M_PI) / factorial(2*m_pqns[i]));
+          m_PQNs[i] -= 3;
           break;
         default:
          qDebug() << "Orbital" << i << "not handled, type" << m_slaterTypes[i];
@@ -393,50 +400,35 @@ namespace Avogadro
     if (isSmall(set->m_normalized.coeffRef(slater, indexMO))) return 0.0;
     double tmp = set->m_normalized.coeffRef(slater, indexMO) *
                  set->m_factors[slater] * exp(- set->m_zetas[slater] * dr);
+    // Radial part with effective PQNs
+    for (int i = 0; i < set->m_PQNs[slater]; ++i)
+      tmp *= dr;
     switch (set->m_slaterTypes[slater]) {
       case S:
-        for (int i = 0; i < set->m_pqns[slater]-1; ++i)
-          tmp *= dr;
         break;
       case PX:
-        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
-          tmp *= dr;
         tmp *= delta.x();
         break;
       case PY:
-        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
-          tmp *= dr;
         tmp *= delta.y();
         break;
       case PZ:
-        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
-          tmp *= dr;
         tmp *= delta.z();
         break;
       case X2: // (x^2 - y^2)r^n
-        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
-          tmp *= dr;
         tmp *= delta.x() * delta.x() - delta.y() * delta.y();
         break;
       case XZ: // xzr^n
-        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
-          tmp *= dr;
         tmp *= delta.x() * delta.z();
         break;
       case Z2: // (2z^2 - x^2 - y^2)r^n
-        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
-          tmp *= dr;
         tmp *= 2.0 * delta.z() * delta.z() - delta.x() * delta.x()
              - delta.y() * delta.y();
         break;
       case YZ: // yzr^n
-        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
-          tmp *= dr;
         tmp *= delta.y() * delta.z();
         break;
       case XY: // xyr^n
-        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
-          tmp *= dr;
         tmp *= delta.x() * delta.y();
         break;
       default:
@@ -451,50 +443,35 @@ namespace Avogadro
   {
     if (isSmall(set->m_normalized.coeffRef(slater, indexMO))) return 0.0;
     double tmp = set->m_normalized.coeffRef(slater, indexMO) * expZeta;
+    // Radial part with effective PQNs
+    for (int i = 0; i < set->m_PQNs[slater]; ++i)
+      tmp *= dr;
     switch (set->m_slaterTypes[slater]) {
       case S:
-        for (int i = 0; i < set->m_pqns[slater]-1; ++i)
-          tmp *= dr;
         break;
       case PX:
-        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
-          tmp *= dr;
         tmp *= delta.x();
         break;
       case PY:
-        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
-          tmp *= dr;
         tmp *= delta.y();
         break;
       case PZ:
-        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
-          tmp *= dr;
         tmp *= delta.z();
         break;
       case X2: // (x^2 - y^2)r^n
-        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
-          tmp *= dr;
         tmp *= delta.x() * delta.x() - delta.y() * delta.y();
         break;
       case XZ: // xzr^n
-        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
-          tmp *= dr;
         tmp *= delta.x() * delta.z();
         break;
       case Z2: // (2z^2 - x^2 - y^2)r^n
-        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
-          tmp *= dr;
         tmp *= 2.0 * delta.z() * delta.z() - delta.x() * delta.x()
              - delta.y() * delta.y();
         break;
       case YZ: // yzr^n
-        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
-          tmp *= dr;
         tmp *= delta.y() * delta.z();
         break;
       case XY: // xyr^n
-        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
-          tmp *= dr;
         tmp *= delta.x() * delta.y();
         break;
       default:
