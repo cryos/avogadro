@@ -349,6 +349,13 @@ namespace Avogadro
       dr.push_back(deltas[i].norm());
     }
 
+    // Precompute the factor * exp (-zeta * drs)
+    vector<double> expZetas(basisSize);
+    for (unsigned int i = 0; i < basisSize; ++i) {
+      expZetas[i] = set->m_factors[i] * exp(- set->m_zetas[i]
+                  * dr[set->m_slaterIndices[i]]);
+    }
+
     // Now calculate the value of the density at this point in space
     double rho = 0.0;
     for (unsigned int i = 0; i < matrixSize; ++i) {
@@ -357,10 +364,11 @@ namespace Avogadro
         if (isSmall(set->m_density.coeffRef(i, j))) continue;
         double a = 0.0, b = 0.0;
         for (unsigned int k = 0; k < basisSize; ++k) {
-          a += pointSlater(shell.set, deltas[set->m_slaterIndices[k]],
-                             dr[set->m_slaterIndices[k]], k, i);
-          b += pointSlater(shell.set, deltas[set->m_slaterIndices[k]],
-                             dr[set->m_slaterIndices[k]], k, j);
+          unsigned int cAtom = set->m_slaterIndices[k];
+          a += pointSlater(shell.set, deltas[cAtom], dr[cAtom], k, i,
+                             expZetas[k]);
+          b += pointSlater(shell.set, deltas[cAtom], dr[cAtom], k, j,
+                             expZetas[k]);
         } // MOs at point done
         rho += 2.0 * set->m_density.coeffRef(i, j) * a * b;
       }
@@ -368,8 +376,9 @@ namespace Avogadro
       if (isSmall(set->m_density.coeffRef(i, i))) continue;
       double a = 0.0, tmp = 0.0;
       for (unsigned int k = 0; k < basisSize; ++k) {
-        tmp = pointSlater(shell.set, deltas[set->m_slaterIndices[k]],
-                                 dr[set->m_slaterIndices[k]], k, i);
+        unsigned int cAtom = set->m_slaterIndices[k];
+        tmp = pointSlater(shell.set, deltas[cAtom], dr[cAtom], k, i,
+                                 expZetas[k]);
         a += tmp*tmp;
       } // MOs at diagonal done
       rho += set->m_density.coeffRef(i, i) * a;
@@ -384,6 +393,64 @@ namespace Avogadro
     if (isSmall(set->m_normalized.coeffRef(slater, indexMO))) return 0.0;
     double tmp = set->m_normalized.coeffRef(slater, indexMO) *
                  set->m_factors[slater] * exp(- set->m_zetas[slater] * dr);
+    switch (set->m_slaterTypes[slater]) {
+      case S:
+        for (int i = 0; i < set->m_pqns[slater]-1; ++i)
+          tmp *= dr;
+        break;
+      case PX:
+        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
+          tmp *= dr;
+        tmp *= delta.x();
+        break;
+      case PY:
+        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
+          tmp *= dr;
+        tmp *= delta.y();
+        break;
+      case PZ:
+        for (int i = 0; i < set->m_pqns[slater]-2; ++i)
+          tmp *= dr;
+        tmp *= delta.z();
+        break;
+      case X2: // (x^2 - y^2)r^n
+        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
+          tmp *= dr;
+        tmp *= delta.x() * delta.x() - delta.y() * delta.y();
+        break;
+      case XZ: // xzr^n
+        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
+          tmp *= dr;
+        tmp *= delta.x() * delta.z();
+        break;
+      case Z2: // (2z^2 - x^2 - y^2)r^n
+        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
+          tmp *= dr;
+        tmp *= 2.0 * delta.z() * delta.z() - delta.x() * delta.x()
+             - delta.y() * delta.y();
+        break;
+      case YZ: // yzr^n
+        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
+          tmp *= dr;
+        tmp *= delta.y() * delta.z();
+        break;
+      case XY: // xyr^n
+        for (int i = 0; i <= set->m_pqns[slater]-3; ++i)
+          tmp *= dr;
+        tmp *= delta.x() * delta.y();
+        break;
+      default:
+        return 0.0;
+    }
+    return tmp;
+  }
+
+  inline double SlaterSet::pointSlater(SlaterSet *set, const Eigen::Vector3d &delta,
+                      const double &dr, unsigned int slater, unsigned int indexMO,
+                      double expZeta)
+  {
+    if (isSmall(set->m_normalized.coeffRef(slater, indexMO))) return 0.0;
+    double tmp = set->m_normalized.coeffRef(slater, indexMO) * expZeta;
     switch (set->m_slaterTypes[slater]) {
       case S:
         for (int i = 0; i < set->m_pqns[slater]-1; ++i)

@@ -201,6 +201,9 @@ namespace Avogadro
     static void processDensity(SlaterShell &shell);
     static double pointSlater(SlaterSet *set, const Eigen::Vector3d &delta,
                       const double &dr2, unsigned int slater, unsigned int indexMO);
+    static double pointSlater(SlaterSet *set, const Eigen::Vector3d &delta,
+                      const double &dr2, unsigned int slater, unsigned int indexMO,
+                      double expZeta);
   };
 
 } // End namespace Avogadro
