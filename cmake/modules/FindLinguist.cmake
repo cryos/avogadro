@@ -47,7 +47,7 @@ MACRO (QT4_WRAP_TS outfiles)
     SET(outfile ${CMAKE_CURRENT_BINARY_DIR}/${outfile}.qm)
     ADD_CUSTOM_COMMAND(OUTPUT ${outfile}
                        COMMAND ${QT_LRELEASE_EXECUTABLE}
-                       ARGS -compress -nounfinished -silent ${it} -qm ${outfile}
+                       ARGS -compress -nounfinished -removeidentical -silent ${it} -qm ${outfile}
                        DEPENDS ${it}
     )
 
