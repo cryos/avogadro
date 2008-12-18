@@ -43,6 +43,7 @@ namespace Avogadro {
   class Bond;
   class Residue;
   class Cube;
+  class Mesh;
   class Fragment;
 
   /**
@@ -188,6 +189,22 @@ namespace Avogadro {
       void deleteCube(unsigned long int id);
 
       /**
+       * Create a new Mesh object and return a pointer to it.
+       * @note Do not delete the object, use deleteMesh(Mesh *mesh).
+       */
+      Mesh * newMesh();
+
+      /**
+       * Delete the supplied Mesh.
+       */
+      void deleteMesh(Mesh *mesh);
+
+      /**
+       * Delete the Mesh with the unique id specified.
+       */
+      void deleteMesh(unsigned long int id);
+
+      /**
        * Create a new residue object and return a pointer to it.
        * @note Do not delete the object, use deleteResidue(Residue *residue).
        */
@@ -233,6 +250,11 @@ namespace Avogadro {
        * @return The total number of cubes in the molecule.
        */
       unsigned int numCubes() const;
+
+      /**
+       * @return The total number of meshes in the molecule.
+       */
+      unsigned int numMeshes() const;
 
       /**
        * @return The total number of residues in the molecule.
@@ -303,6 +325,17 @@ namespace Avogadro {
       Cube *cubeById(unsigned long id) const;
 
       /**
+       * @return The Mesh at the supplied index.
+       * @note Replaces GetResidue.
+       */
+      Mesh* mesh(int index) const;
+
+      /**
+       * @return The Mesh at the supplied unique id.
+       */
+      Mesh *meshById(unsigned long id) const;
+
+      /**
        * @return QList of all atoms in the molecule.
        */
       QList<Atom *> atoms() const;
@@ -316,6 +349,11 @@ namespace Avogadro {
        * @return QList of all cubes in the molecule.
        */
       QList<Cube *> cubes() const;
+
+      /**
+       * @return QList of all meshes in the molecule.
+       */
+      QList<Mesh *> meshes() const;
 
       /**
        * @return QList of all residues in the molecule.

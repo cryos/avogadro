@@ -27,6 +27,7 @@
 #include "atom.h"
 #include "bond.h"
 #include "cube.h"
+#include "mesh.h"
 #include "fragment.h"
 #include "residue.h"
 
@@ -63,6 +64,7 @@ namespace Avogadro{
       std::vector<Atom *>           atoms;
       std::vector<Bond *>           bonds;
       std::vector<Cube *>           cubes;
+      std::vector<Mesh *>           meshes;
       std::vector<Residue *>        residues;
       std::vector<Fragment *>       rings;
 
@@ -70,6 +72,7 @@ namespace Avogadro{
       QList<Atom *>                 atomList;
       QList<Bond *>                 bondList;
       QList<Cube *>                 cubeList;
+      QList<Mesh *>                 meshList;
       QList<Residue *>              residueList;
       QList<Fragment *>             ringList;
 
@@ -134,57 +137,6 @@ namespace Avogadro{
     QReadLocker lock(m_lock);
     return m_fileName;
   }
-/*
-  Atom * Molecule::CreateAtom()
-  {
-    Q_D(Molecule);
-
-    d->lock.lockForWrite();
-    Atom *atom = new Atom(this);
-    connect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
-
-    if(!d->autoId) {
-      d->lock.unlock();
-      return(atom);
-    }
-
-    atom->setId(d->atoms.size());
-    d->atoms.push_back(atom);
-    d->lock.unlock();
-
-    emit primitiveAdded(atom);
-    return(atom);
-  }
-
-  Bond * Molecule::CreateBond()
-  {
-    Q_D(Molecule);
-
-    d->lock.lockForWrite();
-    Bond *bond = new Bond(this);
-    connect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
-
-    if(!d->autoId) {
-      d->lock.unlock();
-      return(bond);
-    }
-
-    bond->setId(d->bonds.size());
-    d->bonds.push_back(bond);
-    d->lock.unlock();
-
-    emit primitiveAdded(bond);
-    return(bond);
-  }
-
-  Residue * Molecule::CreateResidue()
-  {
-    Residue *residue = new Residue(this);
-    connect(residue, SIGNAL(updated()), this, SLOT(updatePrimitive()));
-    emit primitiveAdded(residue);
-    return(residue);
-  }
-*/
 
   Atom *Molecule::newAtom()
   {
@@ -234,20 +186,6 @@ namespace Avogadro{
         m_lock->unlock();
       }
     }
-    /*
-    else {
-      m_lock->lockForWrite();
-      m_atomPos = new std::vector<Vector3d>;
-      m_atomPos->reserve(100);
-      // Ensure that all new Vector3d objects are initialised to zero
-      m_atomPos->resize(id+1);
-      for (unsigned int i = 0; i < id; ++i) {
-        (*m_atomPos)[i] = Vector3d::Zero();
-      }
-      (*m_atomPos)[id] = vec;
-      m_lock->unlock();
-    }
-    */
   }
 
   const Eigen::Vector3d * Molecule::atomPos(unsigned long int id) const
@@ -464,7 +402,7 @@ namespace Avogadro{
 
   Residue *Molecule::residue(int index) const
   {
-    Q_D(Molecule);
+    Q_D(const Molecule);
     QReadLocker lock(m_lock);
     if (index >= 0 && index < d->residueList.size()) {
       return d->residueList[index];
@@ -488,7 +426,7 @@ namespace Avogadro{
 
   Cube *Molecule::cube(int index) const
   {
-    Q_D(Molecule);
+    Q_D(const Molecule);
     QReadLocker lock(m_lock);
     if (index >= 0 && index < d->cubeList.size()) {
       return d->cubeList[index];
@@ -555,6 +493,77 @@ namespace Avogadro{
     Q_D(Molecule);
     if (id < d->cubes.size())
       deleteCube(d->cubes[id]);
+  }
+
+  Mesh * Molecule::newMesh()
+  {
+    Q_D(Molecule);
+
+    Mesh *mesh = new Mesh(this);
+
+    m_lock->lockForWrite();
+    d->meshes.push_back(mesh);
+    d->meshList.push_back(mesh);
+    m_lock->unlock();
+
+    mesh->setId(d->meshes.size()-1);
+    mesh->setIndex(d->meshList.size()-1);
+
+    // now that the id is correct, emit the signal
+    connect(mesh, SIGNAL(updated()), this, SLOT(updatePrimitive()));
+    emit primitiveAdded(mesh);
+    return(mesh);
+  }
+
+  void Molecule::deleteMesh(Mesh *mesh)
+  {
+    Q_D(Molecule);
+    if(mesh) {
+      m_lock->lockForWrite();
+      d->meshes[mesh->id()] = 0;
+      // 0 based arrays stored/shown to user
+      int index = mesh->index();
+      d->meshList.removeAt(index);
+      for (int i = index; i < d->meshList.size(); ++i) {
+        d->meshList[i]->setIndex(i);
+      }
+      m_lock->unlock();
+
+      mesh->deleteLater();
+      disconnect(mesh, SIGNAL(updated()), this, SLOT(updatePrimitive()));
+      emit primitiveRemoved(mesh);
+    }
+  }
+
+  void Molecule::deleteMesh(unsigned long int id)
+  {
+    Q_D(Molecule);
+    if (id < d->meshes.size())
+      deleteMesh(d->meshes[id]);
+  }
+
+  Mesh * Molecule::mesh(int index) const
+  {
+    Q_D(const Molecule);
+    QReadLocker lock(m_lock);
+    if (index >= 0 && index < d->meshList.size()) {
+      return d->meshList[index];
+    }
+    else {
+      return 0;
+    }
+  }
+
+  Mesh * Molecule::meshById(unsigned long id) const
+  {
+    Q_D(const Molecule);
+    QReadLocker lock(m_lock);
+    if(id < d->meshes.size()) {
+      return d->meshes[id];
+    }
+    else {
+      return 0;
+    }
   }
 
   Residue * Molecule::newResidue()
@@ -735,6 +744,13 @@ namespace Avogadro{
     return d->cubeList.size();
   }
 
+  unsigned int Molecule::numMeshes() const
+  {
+    Q_D(const Molecule);
+    QReadLocker lock(m_lock);
+    return d->meshList.size();
+  }
+
   unsigned int Molecule::numResidues() const
   {
     Q_D(const Molecule);
@@ -810,6 +826,13 @@ namespace Avogadro{
     Q_D(const Molecule);
     QReadLocker lock(m_lock);
     return d->cubeList;
+  }
+
+  QList<Mesh *> Molecule::meshes() const
+  {
+    Q_D(const Molecule);
+    QReadLocker lock(m_lock);
+    return d->meshList;
   }
 
   QList<Residue *> Molecule::residues() const
