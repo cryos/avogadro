@@ -1,5 +1,7 @@
 #include <boost/python.hpp>
 
+#include <Eigen/Core>
+
 #include <avogadro/engine.h>
 #include <avogadro/color.h>
 #include <avogadro/primitive.h>
@@ -9,7 +11,7 @@ using namespace Avogadro;
 
 void export_Engine()
 {
-
+  
   enum_<Engine::Layers>("Layers")
     // the Type enum
     .value("Opaque", Engine::Opaque)
@@ -25,7 +27,7 @@ void export_Engine()
     .value("Surfaces", Engine::Surfaces)
     .value("Fragments", Engine::Fragments)
     ;
-
+ 
   enum_<Engine::ColorTypes>("ColorTypes")
     .value("NoColors", Engine::NoColors)
     .value("ColorPlugins", Engine::ColorPlugins)
@@ -34,7 +36,7 @@ void export_Engine()
     ;
     
   class_<Avogadro::Engine, bases<Avogadro::Plugin>, boost::noncopyable>("Engine", no_init)
-    // read-only poperties
+    // read-only poperties 
     .add_property("typeName", &Engine::typeName)
     .add_property("layers", &Engine::layers)
     .add_property("primitiveTypes", &Engine::primitiveTypes)
@@ -54,5 +56,5 @@ void export_Engine()
     .def("removePrimitive", &Engine::removePrimitive)
     .def("clone", &Engine::clone, return_value_policy<manage_new_object>())
     ;
-
+   
 }

@@ -84,7 +84,7 @@ struct QList_from_python_list
       
       //can they all be converted to type 'T'?
       for (int i=0; i<n; ++i) {
-        if (not boost::python::extract<T>(t[i]).check())
+        if (!boost::python::extract<T>(t[i]).check())
           return 0;  
       }
                             
@@ -101,7 +101,7 @@ struct QList_from_python_list
                   
       //can all of the elements be converted to type 'T'?
       for (int i=0; i<n; ++i) {
-        if (not boost::python::extract<T>(l[i]).check())
+        if (!boost::python::extract<T>(l[i]).check())
           return 0;
       }
 
@@ -181,7 +181,7 @@ struct QList_ptr_from_python_list
       
       //can they all be converted to type 'T'?
       for (int i=0; i<n; ++i) {
-        if (not boost::python::extract<T>(t[i]).check())
+        if (!boost::python::extract<T>(t[i]).check())
           return 0;  
       }
                             
@@ -198,7 +198,7 @@ struct QList_ptr_from_python_list
                   
       //can all of the elements be converted to type 'T'?
       for (int i=0; i<n; ++i) {
-        if (not boost::python::extract<T>(l[i]).check())
+        if (!boost::python::extract<T>(l[i]).check())
           return 0;
       }
 
