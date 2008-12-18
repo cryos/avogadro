@@ -294,10 +294,20 @@ namespace Avogadro {
   {
     return 1.0;
   }
-
-  Engine::EngineFlags OrbitalEngine::flags() const
+  
+  Engine::Layers OrbitalEngine::layers() const
   {
-    return Engine::Transparent | Engine::Surfaces;
+    return Engine::Transparent;
+  }
+
+  Engine::PrimitiveTypes OrbitalEngine::primitiveTypes() const
+  {
+    return Engine::Surfaces; // i.e., don't display the "primitives tab"
+  }
+
+  Engine::ColorTypes OrbitalEngine::colorTypes() const
+  {
+    return Engine::ColorGradients;
   }
 
   void OrbitalEngine::setOrbital(int)

@@ -62,7 +62,8 @@ namespace Avogadro {
       //@}
 
       double transparencyDepth() const;
-      EngineFlags flags() const;
+      Layers layers() const;
+      PrimitiveTypes primitiveTypes() const;
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 

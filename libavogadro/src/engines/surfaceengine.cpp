@@ -475,9 +475,19 @@ namespace Avogadro {
     return 1.0;
   }
 
-  Engine::EngineFlags SurfaceEngine::flags() const
+  Engine::Layers SurfaceEngine::layers() const
   {
-    return Engine::Transparent | Engine::Atoms;
+    return Engine::Transparent;
+  }
+  
+  Engine::PrimitiveTypes SurfaceEngine::primitiveTypes() const
+  {
+    return Engine::Atoms;
+  }
+
+  Engine::ColorTypes SurfaceEngine::colorTypes() const
+  {
+    return Engine::ColorGradients;
   }
 
   void SurfaceEngine::setOpacity(int value)

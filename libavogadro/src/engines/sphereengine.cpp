@@ -214,9 +214,14 @@ namespace Avogadro {
     return 1.0;
   }
 
-  Engine::EngineFlags SphereEngine::flags() const
+  Engine::Layers SphereEngine::layers() const
   {
-    return Engine::Transparent | Engine::Atoms;
+    return Engine::Transparent;
+  }
+
+  Engine::PrimitiveTypes SphereEngine::primitiveTypes() const
+  {
+    return Engine::Atoms;
   }
 
   void SphereEngine::setOpacity(int value)

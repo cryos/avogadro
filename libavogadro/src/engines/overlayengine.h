@@ -56,7 +56,9 @@ namespace Avogadro {
       bool renderQuick(PainterDevice *pd);
       //@}
 
-      EngineFlags flags() const;
+      Layers layers() const;
+      PrimitiveTypes primitiveTypes() const;
+      ColorTypes colorTypes() const;
 
       //! Display a window for the user to pick rendering options
       QWidget *settingsWidget();

@@ -49,11 +49,7 @@ namespace Avogadro {
       //! Deconstructor
       ~BSDYEngine();
 
-      double transparencyDepth() const;
-      EngineFlags flags() const;
-
       bool renderOpaque(PainterDevice *pd);
-      bool renderTransparent(PainterDevice *pd);
       bool renderQuick(PainterDevice *pd);
       bool renderPick(PainterDevice *pd);
 

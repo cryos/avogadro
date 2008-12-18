@@ -153,9 +153,19 @@ namespace Avogadro {
     return m_description;
   }
 
-  Engine::EngineFlags Engine::flags() const
+  Engine::Layers Engine::layers() const
   {
-    return Engine::NoFlags;
+    return Engine::Opaque;
+  }
+
+  Engine::PrimitiveTypes Engine::primitiveTypes() const
+  {
+    return (Engine::Atoms | Engine::Bonds);
+  }
+
+  Engine::ColorTypes Engine::colorTypes() const
+  {
+    return Engine::ColorPlugins;
   }
 
   double Engine::transparencyDepth() const

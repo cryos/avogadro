@@ -179,6 +179,9 @@ namespace Avogadro
     return true;
   }
 
+/*
+*  -GRH 2008-12-17 not sure why this should be here
+*   so I'm removing it for now
   bool BSDYEngine::renderTransparent( PainterDevice *pd )
   {
     QList<Primitive *> list;
@@ -255,6 +258,7 @@ namespace Avogadro
 
     return true;
   }
+*/
 
   bool BSDYEngine::renderQuick(PainterDevice *pd)
   {
@@ -415,10 +419,12 @@ namespace Avogadro
       return 0.;
   }
 
+/* GRH 2008-12-17 removing renderTransparent as above
   double BSDYEngine::transparencyDepth() const
   {
     return m_atomRadiusPercentage;
   }
+*/
 
   QWidget *BSDYEngine::settingsWidget()
   {
@@ -462,12 +468,7 @@ namespace Avogadro
       m_settingsWidget->showMulti->setCheckState((Qt::CheckState)m_showMulti);
     }
   }
-
-
-  Engine::EngineFlags BSDYEngine::flags() const
-  {
-    return Engine::Transparent | Engine::Atoms | Engine::Bonds;
-  }
+  
 //   AVOGADRO_ENGINE_FACTORY(BSDYEngine)
 
 }

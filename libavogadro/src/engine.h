@@ -74,22 +74,47 @@ namespace Avogadro {
 
     public:
     /**
-     * \enum EngineFlag
-     * Different properties an engine can set which affect the rendering order.
-     * This also affects the tabs in the Engine Settings windows.
+     * \enum Layer
+     * Different properties of an engine which affect the rendering order.
+     * This also affects the tabs in the Display Settings windows.
+     * Defulat: Opaque
      */
-      enum EngineFlag {
-        NoFlags = 0x00, /// no flags
+      enum Layer {
+        Opaque = 0x00, /// renders only opaque bits (default)
         Transparent = 0x01, /// renders transparency
-        Overlay = 0x02, /// renders overlay
-        Bonds = 0x04, /// renders bonds
-        Atoms = 0x08, /// renders atoms
-        Molecules = 0x10, /// renders molecules
-        Surfaces = 0x12, /// renders some kind of surface
-        Fragments = 0x14, /// renders fragments or residues
-        ColorPlugins = 0x18 /// uses color plugins defined in color.h
+        Overlay = 0x02 /// renders overlays (always "on top")
       };
-      Q_DECLARE_FLAGS(EngineFlags, EngineFlag)
+      Q_DECLARE_FLAGS(Layers, Layer)
+      
+    /**
+     * \enum PrimitiveType
+     * Primitives accepted by an engine (or none)
+     * This also affects the tabs in the Display Settings windows.
+     * Default: Atoms | Bonds
+     */
+      enum PrimitiveType {
+        NoPrimitives = 0x00, /// renders no primitives (e.g., overlays)
+        Atoms = 0x01, /// renders atoms
+        Bonds = 0x02, /// renders bonds
+        Molecules = 0x04, /// renders whole molecules
+        Surfaces = 0x08, /// renders some kind of surface
+        Fragments = 0x10 /// renders fragments or residues
+      };
+      Q_DECLARE_FLAGS(PrimitiveTypes, PrimitiveType)
+      
+    /**
+     * \enum ColorType
+     * Color schemes used by the engine
+     * This also affects the tabs in the Display Settings windows.
+     * Default: ColorPlugins
+     */
+      enum ColorType {
+        NoColors = 0x00, /// predefined colors in the engine (e.g., overlays)
+        ColorPlugins = 0x01, /// uses color plugins defined in color.h (default)
+        IndexedColors = 0x02, /// uses a set of colors defined in indexcolor.h
+        ColorGradients = 0x04 /// uses a three-color gradient (e.g., charge from negative to 0 to positive)
+      };
+      Q_DECLARE_FLAGS(ColorTypes, ColorType)
 
     public:
       /**
@@ -147,9 +172,9 @@ namespace Avogadro {
       void setShader(GLuint shader) { m_shader = shader; }
 
       /**
-       * @return the flags for this engine.
+       * @return the layers used by this engine.
        */
-      virtual EngineFlags flags() const;
+      virtual Layers layers() const;
 
       /**
        * Render opaque elements.  This function is allowed to render
@@ -257,6 +282,16 @@ namespace Avogadro {
       }
 
       /**
+       * @return transparency level, rendered low to high.
+       */
+      virtual double transparencyDepth() const;
+
+      /**
+       * @return the primitive types used by this engine.
+       */
+      virtual PrimitiveTypes primitiveTypes() const;
+
+      /**
        * @return the engine's PrimitiveList containing all primitives the engine
        * can render.
        */
@@ -291,11 +326,6 @@ namespace Avogadro {
       virtual double radius(const PainterDevice *pd, const Primitive *primitive = 0) const;
 
       /**
-       * @return transparency level, rendered low to high.
-       */
-      virtual double transparencyDepth() const;
-
-      /**
        * @return true if the engine is enabled or false if it is not.
        */
       bool isEnabled() const { return m_enabled; }
@@ -305,12 +335,11 @@ namespace Avogadro {
        * @param enabled true to enable the egine, false to disable the engine.
        */
       void setEnabled(bool enabled);
-
+      
       /**
-       * @return a QWidget containing the engine settings or 0
-       * if no settings widget is available.
+       * @return the color schemes used by this engine.
        */
-      virtual QWidget *settingsWidget();
+      virtual ColorTypes colorTypes() const;
 
       /** @return the current color map used by this engine
        */
@@ -320,6 +349,12 @@ namespace Avogadro {
        * @return a pointer to an identical engine or 0 if this fails
        */
       virtual Engine *clone() const = 0;
+
+      /**
+       * @return a QWidget containing the engine settings or 0
+       * if no settings widget is available.
+       */
+      virtual QWidget *settingsWidget();
 
       /**
        * Write the engine settings so that they can be saved between sessions.
@@ -391,6 +426,9 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 Q_DECLARE_METATYPE(Avogadro::Engine*)
-Q_DECLARE_OPERATORS_FOR_FLAGS(Avogadro::Engine::EngineFlags)
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(Avogadro::Engine::Layers)
+Q_DECLARE_OPERATORS_FOR_FLAGS(Avogadro::Engine::PrimitiveTypes)
+Q_DECLARE_OPERATORS_FOR_FLAGS(Avogadro::Engine::ColorTypes)
 
 #endif

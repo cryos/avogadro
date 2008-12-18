@@ -92,7 +92,9 @@ namespace Avogadro {
       //@}
 
       double transparencyDepth() const;
-      EngineFlags flags() const;
+      Layers layers() const;
+      PrimitiveTypes primitiveTypes() const;
+      ColorTypes colorTypes() const;
 
       Engine *clone() const;
 

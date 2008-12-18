@@ -65,11 +65,6 @@ namespace Avogadro{
     return true;
   }
 
-  bool PolygonEngine::renderTransparent(PainterDevice *)
-  {
-    return true;
-  }
-
   bool PolygonEngine::renderPolygon(PainterDevice *pd, Atom *a)
   {
     // Check if the atom is of the right type and has enough neighbours
@@ -117,7 +112,7 @@ namespace Avogadro{
     return 0.;
   }
 
-  Engine::EngineFlags PolygonEngine::flags() const
+  Engine::PrimitiveTypes PolygonEngine::primitiveTypes() const
   {
     return Engine::Atoms;
   }

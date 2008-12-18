@@ -226,18 +226,18 @@ namespace Avogadro {
     } // foreach file
   }
 
-  Engine::EngineFlags PythonEngine::flags() const
+  Engine::Layers PythonEngine::layers() const
   {
     try {
       // return flags from python script if the function is defined
-      if (PyObject_HasAttrString(m_instance.ptr(), "flags"))
-        return extract<Engine::EngineFlags>(m_instance.attr("flags")());
+      if (PyObject_HasAttrString(m_instance.ptr(), "layers"))
+        return extract<Engine::Layers>(m_instance.attr("layers")());
     } catch(error_already_set const &) {
       PyErr_Print();
     }
       
     // return NoFlags, don't print an error, don't want to overwhelm new users with errors
-    return Engine::NoFlags;
+    return Engine::Opaque;
   }
   
   double PythonEngine::transparencyDepth() const

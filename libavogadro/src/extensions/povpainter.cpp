@@ -531,7 +531,7 @@ namespace Avogadro
         engine->renderOpaque(this);
         *m_output << "}\n";
       }
-      if (engine->isEnabled() && engine->flags() & Engine::Transparent) {
+      if (engine->isEnabled() && engine->layers() & Engine::Transparent) {
         // Use merge for transparent objects, slower but more correct
         *m_output << "merge {\n";
         engine->renderTransparent(this);

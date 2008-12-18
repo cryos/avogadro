@@ -77,32 +77,37 @@ namespace Avogadro {
 
   bool engineLessThan( const Engine* lhs, const Engine* rhs )
   {
-    Engine::EngineFlags lhsFlags = lhs->flags();
-    Engine::EngineFlags rhsFlags = rhs->flags();
+    Engine::Layers lhsLayers = lhs->layers();
+    Engine::Layers rhsLayers = rhs->layers();
+    Engine::PrimitiveTypes lhsPrimitives = lhs->primitiveTypes();
+    Engine::PrimitiveTypes rhsPrimitives = rhs->primitiveTypes();
 
-    if ( !( lhsFlags & Engine::Overlay ) && rhsFlags & Engine::Overlay ) {
+    if ( !( lhsLayers & Engine::Overlay ) && rhsLayers & Engine::Overlay ) {
       return true;
-    } else if (( lhsFlags & Engine::Overlay ) && ( rhsFlags & Engine::Overlay ) ) {
+    } else if (( lhsLayers & Engine::Overlay ) && ( rhsLayers & Engine::Overlay ) ) {
       return lhs->transparencyDepth() < rhs->transparencyDepth();
-    } else if (( lhsFlags & Engine::Overlay ) && !( rhsFlags & Engine::Overlay ) ) {
+    } else if (( lhsLayers & Engine::Overlay ) && !( rhsLayers & Engine::Overlay ) ) {
       return false;
-    } else if ( !( lhsFlags & Engine::Molecules ) && rhsFlags & Engine::Molecules ) {
+      
+    } else if ( !( lhsPrimitives & Engine::Molecules ) && rhsPrimitives & Engine::Molecules ) {
       return true;
-    } else if (( lhsFlags & Engine::Molecules ) && ( rhsFlags & Engine::Molecules ) ) {
+    } else if (( lhsPrimitives & Engine::Molecules ) && ( rhsPrimitives & Engine::Molecules ) ) {
       return lhs->transparencyDepth() < rhs->transparencyDepth();
-    } else if (( lhsFlags & Engine::Molecules ) && !( rhsFlags & Engine::Molecules ) ) {
+    } else if (( lhsPrimitives & Engine::Molecules ) && !( rhsPrimitives & Engine::Molecules ) ) {
       return false;
-    } else if ( !( lhsFlags & Engine::Atoms ) && rhsFlags & Engine::Atoms ) {
+      
+    } else if ( !( lhsPrimitives & Engine::Atoms ) && rhsPrimitives & Engine::Atoms ) {
       return true;
-    } else if (( lhsFlags & Engine::Atoms ) && ( rhsFlags & Engine::Atoms ) ) {
+    } else if (( lhsPrimitives & Engine::Atoms ) && ( rhsPrimitives & Engine::Atoms ) ) {
       return lhs->transparencyDepth() < rhs->transparencyDepth();
-    } else if (( lhsFlags & Engine::Atoms ) && !( rhsFlags & Engine::Atoms ) ) {
+    } else if (( lhsPrimitives & Engine::Atoms ) && !( rhsPrimitives & Engine::Atoms ) ) {
       return false;
-    } else if ( !( lhsFlags & Engine::Bonds ) && rhsFlags & Engine::Bonds ) {
+      
+    } else if ( !( lhsPrimitives & Engine::Bonds ) && rhsPrimitives & Engine::Bonds ) {
       return true;
-    } else if (( lhsFlags & Engine::Bonds ) && ( rhsFlags & Engine::Bonds ) ) {
+    } else if (( lhsPrimitives & Engine::Bonds ) && ( rhsPrimitives & Engine::Bonds ) ) {
       return lhs->transparencyDepth() < rhs->transparencyDepth();
-    } else if (( lhsFlags & Engine::Bonds ) && !( rhsFlags & Engine::Bonds ) ) {
+    } else if (( lhsPrimitives & Engine::Bonds ) && !( rhsPrimitives & Engine::Bonds ) ) {
       return false;
     }
     return false;
@@ -850,7 +855,7 @@ namespace Avogadro {
       glDepthMask(GL_FALSE);
       if (d->uc) glNewList(d->dlistTransparent, GL_COMPILE);
       foreach(Engine *engine, d->engines) {
-        if(engine->isEnabled() && engine->flags() & Engine::Transparent) {
+        if(engine->isEnabled() && engine->layers() & Engine::Transparent) {
 #ifdef ENABLE_GLSL
           if (m_glslEnabled) glUseProgramObjectARB(engine->shader());
 #endif

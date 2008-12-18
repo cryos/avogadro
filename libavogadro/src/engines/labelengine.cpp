@@ -224,9 +224,14 @@ namespace Avogadro {
     m_settingsWidget = 0;
   }
 
-  Engine::EngineFlags LabelEngine::flags() const
+  Engine::Layers LabelEngine::layers() const
   {
     return Engine::Overlay;
+  }
+
+  Engine::ColorTypes LabelEngine::colorTypes() const
+  {
+    return Engine::NoColors;
   }
 
   void LabelEngine::writeSettings(QSettings &settings) const

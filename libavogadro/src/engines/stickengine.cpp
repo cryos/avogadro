@@ -189,16 +189,6 @@ namespace Avogadro {
       return 0.;
   }
 
-  double StickEngine::transparencyDepth() const
-  {
-    return 0.25;
-  }
-
-  Engine::EngineFlags StickEngine::flags() const
-  {
-    return Engine::Atoms | Engine::Bonds;
-  }
-
   inline double StickEngine::radius(const Atom*) const
   {
     return m_radius;

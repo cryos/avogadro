@@ -106,11 +106,6 @@ namespace Avogadro {
     return true;
   }
 
-  bool RibbonEngine::renderTransparent(PainterDevice *)
-  {
-    return true;
-  }
-
   bool RibbonEngine::renderQuick(PainterDevice *pd)
   {
     // Just render cylinders between the backbone...
@@ -200,14 +195,14 @@ namespace Avogadro {
     m_update = false;
   }
 
-  double RibbonEngine::transparencyDepth() const
+  Engine::PrimitiveTypes RibbonEngine::primitiveTypes() const
   {
-    return 1.0;
+    return Engine::Atoms;
   }
 
-  Engine::EngineFlags RibbonEngine::flags() const
+  Engine::ColorTypes RibbonEngine::colorTypes() const
   {
-    return Engine::Transparent | Engine::Atoms;
+    return Engine::IndexedColors;
   }
 
   void RibbonEngine::setType(int value)

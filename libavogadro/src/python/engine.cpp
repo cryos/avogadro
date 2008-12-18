@@ -10,20 +10,35 @@ using namespace Avogadro;
 void export_Engine()
 {
 
-  enum_<Engine::EngineFlags>("EngineFlags")
+  enum_<Engine::Layers>("Layers")
     // the Type enum
-    .value("NoFlags", Engine::NoFlags)
+    .value("Opaque", Engine::Opaque)
     .value("Transparent", Engine::Transparent)
     .value("Overlay", Engine::Overlay)
-    .value("Bonds", Engine::Bonds)
+    ;
+    
+  enum_<Engine::PrimitiveTypes>("PrimitiveTypes")
+    .value("NoPrimitives", Engine::NoPrimitives)
     .value("Atoms", Engine::Atoms)
+    .value("Bonds", Engine::Bonds)
     .value("Molecules", Engine::Molecules)
+    .value("Surfaces", Engine::Surfaces)
+    .value("Fragments", Engine::Fragments)
     ;
 
+  enum_<Engine::ColorTypes>("ColorTypes")
+    .value("NoColors", Engine::NoColors)
+    .value("ColorPlugins", Engine::ColorPlugins)
+    .value("IndexedColors", Engine::IndexedColors)
+    .value("ColorGradients", Engine::ColorGradients)
+    ;
+    
   class_<Avogadro::Engine, bases<Avogadro::Plugin>, boost::noncopyable>("Engine", no_init)
     // read-only poperties
     .add_property("typeName", &Engine::typeName)
-    .add_property("flags", &Engine::flags)
+    .add_property("layers", &Engine::layers)
+    .add_property("primitiveTypes", &Engine::primitiveTypes)
+    .add_property("colorTypes", &Engine::colorTypes)
     // read/write properties
     .add_property("alias", &Engine::alias, &Engine::setAlias)
     .add_property("shader", &Engine::shader, &Engine::setShader)

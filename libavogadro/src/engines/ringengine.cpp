@@ -211,9 +211,19 @@ namespace Avogadro{
     return 1.0;
   }
 
-  Engine::EngineFlags RingEngine::flags() const
+  Engine::Layers RingEngine::layers() const
   {
     return Engine::Transparent;
+  }
+
+  Engine::PrimitiveTypes RingEngine::primitiveTypes() const
+  {
+    return Engine::Fragments;
+  }
+
+  Engine::ColorTypes RingEngine::colorTypes() const
+  {
+    return Engine::IndexedColors;
   }
 
   void RingEngine::setOpacity(int value)

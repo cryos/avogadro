@@ -103,9 +103,19 @@ namespace Avogadro {
     m_settingsWidget = 0;
   }
 
-  Engine::EngineFlags OverlayEngine::flags() const
+  Engine::Layers OverlayEngine::layers() const
   {
     return Engine::Overlay;
+  }
+
+  Engine::PrimitiveTypes OverlayEngine::primitiveTypes() const
+  {
+    return Engine::NoPrimitives;
+  }
+
+  Engine::ColorTypes OverlayEngine::colorTypes() const
+  {
+    return Engine::ColorGradients;
   }
 
   void OverlayEngine::writeSettings(QSettings &settings) const

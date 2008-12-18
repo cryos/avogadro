@@ -92,9 +92,19 @@ namespace Avogadro {
     return 1.0;
   }
 
-  Engine::EngineFlags AxesEngine::flags() const
+  Engine::Layers AxesEngine::layers() const
   {
     return Engine::Overlay;
+  }
+
+  Engine::PrimitiveTypes AxesEngine::primitiveTypes() const
+  {
+    return Engine::NoPrimitives;
+  }
+
+  Engine::ColorTypes AxesEngine::colorTypes() const
+  {
+    return Engine::NoColors;
   }
 
 }

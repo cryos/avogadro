@@ -54,8 +54,9 @@ namespace Avogadro {
 
       //! \name Methods Render Methods
       //@{
-      //! Return flags from the current script
-      EngineFlags flags() const;
+      //! Return layers from the current script
+      Layers layers() const;
+
       double transparencyDepth() const;
       bool renderOpaque(PainterDevice *pd);
       

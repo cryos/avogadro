@@ -52,12 +52,11 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       bool renderOpaque(PainterDevice *pd);
-      bool renderTransparent(PainterDevice *pd);
       bool renderQuick(PainterDevice *pd);
       //@}
 
-      double transparencyDepth() const;
-      EngineFlags flags() const;
+      PrimitiveTypes primitiveTypes() const;
+      ColorTypes colorTypes() const;
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 

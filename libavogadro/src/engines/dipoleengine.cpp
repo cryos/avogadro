@@ -88,9 +88,19 @@ namespace Avogadro {
     return 1.0;
   }
 
-  Engine::EngineFlags DipoleEngine::flags() const
+  Engine::Layers DipoleEngine::layers() const
   {
     return Engine::Overlay;
+  }
+
+  Engine::PrimitiveTypes DipoleEngine::primitiveTypes() const
+  {
+    return Engine::NoPrimitives;
+  }
+
+  Engine::ColorTypes DipoleEngine::colorTypes() const
+  {
+    return Engine::NoColors;
   }
 
   QWidget *DipoleEngine::settingsWidget()

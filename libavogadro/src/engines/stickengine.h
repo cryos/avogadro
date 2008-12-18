@@ -60,8 +60,6 @@ namespace Avogadro {
       bool renderOpaque(PainterDevice *pd);
       //@}
 
-      double transparencyDepth() const;
-      EngineFlags flags() const;
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 
       QWidget* settingsWidget();
