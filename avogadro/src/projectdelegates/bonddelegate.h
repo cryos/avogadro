@@ -32,7 +32,7 @@ namespace Avogadro {
 
   class Primitive;
 
-  class A_EXPORT BondDelegate : public ProjectTreeModelDelegate
+  class BondDelegate : public ProjectTreeModelDelegate
   {
     Q_OBJECT
 
