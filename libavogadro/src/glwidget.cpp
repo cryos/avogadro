@@ -828,6 +828,10 @@ namespace Avogadro {
       if (d->uc) {
         renderCrystal(d->dlistQuick);
       }
+      // Render the active tool
+      if ( d->tool ) {
+        d->tool->paint( this );
+      }
     }
     else {
       // we save a display list if we're doing a crystal
@@ -836,6 +840,7 @@ namespace Avogadro {
       if (d->dlistTransparent == 0)
         d->dlistTransparent = glGenLists(1);
 
+      // Opaque engine elements rendered first
       if (d->uc) glNewList(d->dlistOpaque, GL_COMPILE);
       foreach(Engine *engine, d->engines)
         if(engine->isEnabled()) {
@@ -852,6 +857,12 @@ namespace Avogadro {
         renderCrystal(d->dlistOpaque);
       }
 
+      // Render the active tool
+      if ( d->tool ) {
+        d->tool->paint( this );
+      }
+
+      // Now render transparent
       glDepthMask(GL_FALSE);
       if (d->uc) glNewList(d->dlistTransparent, GL_COMPILE);
       foreach(Engine *engine, d->engines) {
@@ -884,11 +895,6 @@ namespace Avogadro {
 
     // Render graphical primitives like arrows, points, planes and so on...
     renderPrimitives();
-
-    // Render the active tool
-    if ( d->tool ) {
-      d->tool->paint( this );
-    }
 
     // If enabled draw the axes
     if (d->renderAxes) renderAxesOverlay();
