@@ -214,9 +214,6 @@ namespace Avogadro
   {
 
     ui.setupUi( this );
-    // We cannot reliably set this via Designer
-    // editing on Windows or Linux loses the flag
-//    setUnifiedTitleAndToolBarOnMac(true);
 
     QSettings settings;
 
@@ -284,8 +281,6 @@ namespace Avogadro
 
     ui.menuToolbars->addAction( ui.projectDock->toggleViewAction() );
     ui.menuToolbars->addAction( ui.enginesDock->toggleViewAction() );
-//    ui.menuToolbars->addAction( ui.engineConfigurationDock->toggleViewAction() );
-//    ui.menuToolbars->addAction( ui.enginePrimitivesDock->toggleViewAction() );
     ui.menuToolbars->addAction( ui.fileToolBar->toggleViewAction() );
 
     // Disable the "Revert" and "Save" actions -- we haven't modified anything
@@ -301,7 +296,9 @@ namespace Avogadro
     ui.menuFile->addAction( ui.configureAvogadroAction );
 
     // Turn off the file toolbar (not really Mac-native)
-    ui.fileToolBar->toggleViewAction();
+    // Fixes PR#1965004
+    ui.menuToolbars->removeAction( ui.fileToolBar->toggleViewAction() );
+    ui.fileToolBar->hide();
 
     // Change the "Settings" menu to be Window
     ui.menuSettings->setTitle("Window");
