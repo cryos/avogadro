@@ -25,6 +25,11 @@
 
 #include "basisset.h"
 
+#ifdef WIN32
+#define _USE_MATH_DEFINES
+#include <math.h> // needed for M_PI
+#endif
+
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 #include <avogadro/cube.h>
