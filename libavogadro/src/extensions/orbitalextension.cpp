@@ -85,9 +85,10 @@ namespace Avogadro
   QUndoCommand* OrbitalExtension::performAction(QAction *, GLWidget *widget)
   {
     m_glwidget = widget;
-    if (!m_orbitalDialog)
-    {
+    if (!m_orbitalDialog) {
       m_orbitalDialog = new OrbitalDialog();
+      m_orbitalDialog->setGLWidget(widget);
+      m_orbitalDialog->setMolecule(m_molecule);
       connect(m_orbitalDialog, SIGNAL(calculateMO(int)),
               this, SLOT(calculateMO(int)));
       connect(m_orbitalDialog, SIGNAL(calculateAll()),
@@ -103,6 +104,7 @@ namespace Avogadro
     }
     else {
       if (loadBasis()) {
+        m_orbitalDialog->setGLWidget(widget);
         m_orbitalDialog->show();
       }
       else {
@@ -115,7 +117,10 @@ namespace Avogadro
 
   void OrbitalExtension::setMolecule(Molecule *molecule)
   {
+    qDebug() << "Set molecule called in OrbitalExtension...";
     m_molecule = molecule;
+    if (m_orbitalDialog)
+      m_orbitalDialog->setMolecule(molecule);
   }
 
   bool OrbitalExtension::loadBasis()

@@ -209,6 +209,8 @@ namespace Avogadro {
   {
     if (i < m_data.size()) {
       m_data[i] = value;
+      if (value > m_maxValue) m_maxValue = value;
+      if (value < m_minValue) m_minValue = value;
       return true;
     }
     else

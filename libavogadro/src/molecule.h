@@ -284,12 +284,23 @@ namespace Avogadro {
        * @return The residue at the supplied index.
        * @note Replaces GetResidue.
        */
-      Residue* residue(int index);
+      Residue* residue(int index) const;
 
       /**
        * @return The residue at the supplied unique id.
        */
       Residue *residueById(unsigned long id) const;
+
+      /**
+       * @return The Cube at the supplied index.
+       * @note Replaces GetResidue.
+       */
+      Cube* cube(int index) const;
+
+      /**
+       * @return The Cube at the supplied unique id.
+       */
+      Cube *cubeById(unsigned long id) const;
 
       /**
        * @return QList of all atoms in the molecule.

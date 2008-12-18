@@ -24,6 +24,10 @@
 
 #include "orbitaldialog.h"
 
+#include <avogadro/glwidget.h>
+#include <avogadro/molecule.h>
+#include <avogadro/cube.h>
+
 #include <QFileDialog>
 #include <QString>
 #include <QDebug>
@@ -34,7 +38,7 @@ namespace Avogadro
   using Eigen::Vector3i;
 
   OrbitalDialog::OrbitalDialog(QWidget* parent, Qt::WindowFlags f)
-    : QDialog(parent, f)
+    : QDialog(parent, f), m_glwidget(0), m_molecule(0)
   {
     ui.setupUi(this);
     // Hide the advanced stuff for now
@@ -47,7 +51,7 @@ namespace Avogadro
     connect(ui.calculateDensity, SIGNAL(clicked()),
             this, SLOT(calculateDensityClicked()));
 
-    // Connect up the various edits to their slots
+    // Connect up the various edits to their slots - electron cube calculation
     connect(ui.originX, SIGNAL(editingFinished()),
             this, SLOT(originChanged()));
     connect(ui.originY, SIGNAL(editingFinished()),
@@ -68,6 +72,14 @@ namespace Avogadro
             this, SLOT(stepsChanged()));
     connect(ui.stepSize, SIGNAL(editingFinished()),
             this, SLOT(stepSizeChanged()));
+
+    // Mesh calculation
+    connect(ui.cubeCombo, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(orbitalComboChanged(int)));
+    connect(ui.isoValue, SIGNAL(editingFinished()),
+            this, SLOT(isoEditChanged()));
+    connect(ui.isoSlider, SIGNAL(sliderMoved(int)),
+            this, SLOT(isoSliderChanged(int)));
   }
 
   OrbitalDialog::~OrbitalDialog()
@@ -159,6 +171,39 @@ namespace Avogadro
     ui.tabWidget->setCurrentIndex(n);
   }
 
+  void OrbitalDialog::setGLWidget(const GLWidget *gl)
+  {
+    m_glwidget = gl;
+    ui.engineCombo->clear();
+    foreach (Engine *engine, m_glwidget->engines()) {
+      if (engine->name() == "Orbitals")
+        ui.engineCombo->addItem(engine->alias());
+    }
+  }
+
+  void OrbitalDialog::setMolecule(const Molecule *mol)
+  {
+    if (m_molecule)
+      disconnect(m_molecule, 0, this, 0);
+    m_molecule = mol;
+    updateCubes(0);
+    connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
+            this, SLOT(updateCubes(Primitive *)));
+    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive *)),
+            this, SLOT(updateCubes(Primitive *)));
+    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
+            this, SLOT(updateCubes(Primitive *)));
+  }
+
+  void OrbitalDialog::updateCubes(Primitive *)
+  {
+    ui.cubeCombo->clear();
+    qDebug() << "updateCubes()";
+    foreach (Cube *cube, m_molecule->cubes()) {
+      ui.cubeCombo->addItem(cube->name());
+    }
+  }
+
   void OrbitalDialog::originChanged()
   {
     // The origin has been changed - the size of the cube should be contracted
@@ -231,6 +276,36 @@ namespace Avogadro
     ui.stepsX->setText(QString::number(steps.x()));
     ui.stepsY->setText(QString::number(steps.y()));
     ui.stepsZ->setText(QString::number(steps.z()));
+  }
+
+  void OrbitalDialog::orbitalComboChanged(int n)
+  {
+    Cube *cube = m_molecule->cube(n);
+    if (cube) {
+      m_min = cube->minValue();
+      m_max = cube->maxValue();
+      if (m_min < 0) {
+        if (m_min * -1.0 > m_max)
+          m_max = m_min * -1.0;
+        m_min = 0.0;
+      }
+      ui.cubeLow->setText(QString::number(m_min));
+      ui.cubeHigh->setText(QString::number(m_max));
+    }
+    else
+      qDebug() << "OrbitalDialog failed - cube = 0.";
+  }
+
+  void OrbitalDialog::isoSliderChanged(int n)
+  {
+    ui.isoValue->setText(QString::number(
+                         n/99.0 * (m_max-m_min) + m_min ));
+  }
+
+  void OrbitalDialog::isoEditChanged()
+  {
+    ui.isoSlider->setValue(
+         (ui.isoValue->text().toDouble()-m_min) / (m_max-m_min) * 99.0 );
   }
 
 } // End namespace Avogadro

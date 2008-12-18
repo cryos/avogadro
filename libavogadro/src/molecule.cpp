@@ -195,7 +195,7 @@ namespace Avogadro{
     if (!m_atomPos) {
       m_atomPos = new std::vector<Vector3d>;
       m_atomPos->reserve(100);
-    } 
+    }
     // Ensure that all new Vector3d objects are initialised to zero
     m_atomPos->push_back(Vector3d::Zero());
     d->atoms.push_back(atom);
@@ -253,7 +253,7 @@ namespace Avogadro{
   const Eigen::Vector3d * Molecule::atomPos(unsigned long int id) const
   {
     QReadLocker lock(m_lock);
-    if (!m_atomPos) 
+    if (!m_atomPos)
       return 0;
 
     if (m_atomPos->size() > id) {
@@ -274,10 +274,10 @@ namespace Avogadro{
     if (!m_atomPos) {
       m_atomPos = new std::vector<Vector3d>;
       m_atomPos->reserve(100);
-    } 
+    }
     // Ensure that all new Vector3d objects are initialised to zero
     m_atomPos->push_back(Vector3d::Zero());
-    
+
     if(id >= d->atoms.size())
       d->atoms.resize(id+1,0);
     d->atoms[id] = atom;
@@ -462,7 +462,7 @@ namespace Avogadro{
     }
   }
 
-  Residue *Molecule::residue(int index)
+  Residue *Molecule::residue(int index) const
   {
     Q_D(Molecule);
     QReadLocker lock(m_lock);
@@ -480,6 +480,30 @@ namespace Avogadro{
     QReadLocker lock(m_lock);
     if(id < d->residues.size()) {
       return d->residues[id];
+    }
+    else {
+      return 0;
+    }
+  }
+
+  Cube *Molecule::cube(int index) const
+  {
+    Q_D(Molecule);
+    QReadLocker lock(m_lock);
+    if (index >= 0 && index < d->cubeList.size()) {
+      return d->cubeList[index];
+    }
+    else {
+      return 0;
+    }
+  }
+
+  Cube *Molecule::cubeById(unsigned long id) const
+  {
+    Q_D(const Molecule);
+    QReadLocker lock(m_lock);
+    if(id < d->cubes.size()) {
+      return d->cubes[id];
     }
     else {
       return 0;

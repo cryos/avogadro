@@ -33,6 +33,10 @@
 
 namespace Avogadro
 {
+  class GLWidget;
+  class Primitive;
+  class Molecule;
+
   class OrbitalDialog : public QDialog
   {
   Q_OBJECT
@@ -50,6 +54,9 @@ namespace Avogadro
 
   private:
     Ui::OrbitalDialog ui;
+    const GLWidget *m_glwidget;
+    const Molecule *m_molecule;
+    double m_min, m_max;
 
   public Q_SLOTS:
     void calculate();
@@ -57,6 +64,9 @@ namespace Avogadro
     void calculateDensityClicked();
     void enableCalculation(bool enable);
     void setCurrentTab(int n);
+    void setGLWidget(const GLWidget *gl);
+    void setMolecule(const Molecule *mol);
+    void updateCubes(Primitive *p);
 
   private Q_SLOTS:
     /**
@@ -71,10 +81,17 @@ namespace Avogadro
 
     void stepSizeChanged();
 
+    void orbitalComboChanged(int n);
+
+    void isoSliderChanged(int);
+
+    void isoEditChanged();
+
   Q_SIGNALS:
     void calculateMO(int MO);
     void calculateAll();
     void calculateDensity();
+    void calculateMesh(unsigned int cube, double isoValue, int calc);
 
   };
 
