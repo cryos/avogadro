@@ -39,7 +39,7 @@ namespace Avogadro {
   class ProjectTreeModelDelegate;
 
   class ProjectTreeModelPrivate;
-  class A_EXPORT ProjectTreeModel : public QAbstractItemModel
+  class ProjectTreeModel : public QAbstractItemModel
   {
     Q_OBJECT
 

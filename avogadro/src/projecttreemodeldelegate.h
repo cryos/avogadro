@@ -33,7 +33,7 @@ namespace Avogadro {
   class GLWidget;
 
   class ProjectTreeModelDelegatePrivate;   
-  class A_EXPORT ProjectTreeModelDelegate : public QObject
+  class ProjectTreeModelDelegate : public QObject
   {
     Q_OBJECT
 

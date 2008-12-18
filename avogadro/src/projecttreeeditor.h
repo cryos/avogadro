@@ -55,7 +55,7 @@ class QTreeWidget;
 
 namespace Avogadro {
 
-  class A_EXPORT ProjectTreeEditor: public QDialog
+  class ProjectTreeEditor: public QDialog
   {
       Q_OBJECT
     public:
