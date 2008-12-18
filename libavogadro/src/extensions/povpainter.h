@@ -51,7 +51,7 @@ namespace Avogadro
    * @sa Painter
    */
   class POVPainterPrivate;
-  class A_EXPORT POVPainter : public Painter
+  class POVPainter : public Painter
   {
   public:
     /**
@@ -304,7 +304,7 @@ namespace Avogadro
 
   };
 
-  class A_EXPORT POVPainterDevice : public PainterDevice
+  class POVPainterDevice : public PainterDevice
   {
   public:
     POVPainterDevice(const QString& filename, double aspectRatio, const GLWidget* glwidget);
