@@ -41,14 +41,9 @@ namespace Avogadro {
 
   OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent),
     m_settingsWidget(0), m_mesh1(0), m_mesh2(0), m_min(0., 0., 0.), m_max(0.,0.,0.),
-    m_alpha(0.75), m_iso(0.01), m_renderMode(0), m_drawBox(false),
-    m_update(true), m_molecule(0)
+    m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_update(true), m_molecule(0)
   {
     setDescription(tr("Orbital Rendering"));
-    m_meshGen1 = new MeshGenerator;
-    m_meshGen2 = new MeshGenerator;
-    connect(m_meshGen1, SIGNAL(finished()), this, SLOT(isoGenFinished()));
-    connect(m_meshGen2, SIGNAL(finished()), this, SLOT(isoGenFinished()));
 
     m_negColor = Color(1.0, 0.0, 0.0, m_alpha);
     m_posColor = Color(0.0, 0.0, 1.0, m_alpha);
@@ -56,12 +51,6 @@ namespace Avogadro {
 
   OrbitalEngine::~OrbitalEngine()
   {
-    delete m_meshGen1;
-    delete m_meshGen2;
-    /// FIXME Meshes should be managed by displays, not engines!
-    delete m_mesh1;
-    delete m_mesh2;
-
     // Delete the settings widget if it exists
     if(m_settingsWidget)
       m_settingsWidget->deleteLater();
@@ -83,17 +72,18 @@ namespace Avogadro {
     {
       if (m_update)
         updateSurfaces(pd);
-      if (!m_mesh1 || !m_mesh2)
-        return false;
 
-      if (m_mesh1->stable()) {
-        pd->painter()->setColor(&m_posColor);
-        pd->painter()->drawMesh(*m_mesh1, m_renderMode);
+      if (m_mesh1) {
+        if (m_mesh1->stable()) {
+          pd->painter()->setColor(&m_posColor);
+          pd->painter()->drawMesh(*m_mesh1, m_renderMode);
+        }
       }
-
-      if (m_mesh2->stable()) {
-        pd->painter()->setColor(&m_negColor);
-        pd->painter()->drawMesh(*m_mesh2, m_renderMode);
+      if (m_mesh2) {
+        if (m_mesh2->stable()) {
+          pd->painter()->setColor(&m_negColor);
+          pd->painter()->drawMesh(*m_mesh2, m_renderMode);
+        }
       }
 
       renderSurfaces(pd);
@@ -109,22 +99,24 @@ namespace Avogadro {
     {
       if (m_update)
         updateSurfaces(pd);
-      if (!m_mesh1 || !m_mesh2)
-        return false;
 
       if (m_renderMode == 0) {
         glEnable(GL_BLEND);
         glDepthMask(GL_TRUE);
       }
 
-      if (m_mesh1->stable()) {
-        pd->painter()->setColor(&m_posColor);
-        pd->painter()->drawMesh(*m_mesh1, m_renderMode);
+      if (m_mesh1) {
+        if (m_mesh1->stable()) {
+          pd->painter()->setColor(&m_posColor);
+          pd->painter()->drawMesh(*m_mesh1, m_renderMode);
+        }
       }
 
-      if (m_mesh2->stable()) {
-        pd->painter()->setColor(&m_negColor);
-        pd->painter()->drawMesh(*m_mesh2, m_renderMode);
+      if (m_mesh2) {
+        if (m_mesh2->stable()) {
+          pd->painter()->setColor(&m_negColor);
+          pd->painter()->drawMesh(*m_mesh2, m_renderMode);
+        }
       }
 
       renderSurfaces(pd);
@@ -141,24 +133,24 @@ namespace Avogadro {
   {
     if (m_update)
       updateSurfaces(pd);
-    if (!m_mesh1 || !m_mesh2)
-        return false;
 
-    if (m_mesh1->stable() && m_mesh2->stable()) {
-      if (m_renderMode < 2) {
+    int renderMode = 1;
+    if (m_renderMode == 2)
+      renderMode = 2;
+
+    if (m_mesh1) {
+      if (m_mesh1->stable()) {
         pd->painter()->setColor(&m_posColor);
-        pd->painter()->drawMesh(*m_mesh1, 1);
-        pd->painter()->setColor(&m_negColor);
-        pd->painter()->drawMesh(*m_mesh2, 1);
+        pd->painter()->drawMesh(*m_mesh1, renderMode);
       }
-      else {
-        pd->painter()->setColor(&m_posColor);
-        pd->painter()->drawMesh(*m_mesh1, 2);
-        pd->painter()->setColor(&m_negColor);
-        pd->painter()->drawMesh(*m_mesh2, 2);
-      }
-      renderSurfaces(pd);
     }
+    if (m_mesh2) {
+      if (m_mesh2->stable()) {
+        pd->painter()->setColor(&m_negColor);
+        pd->painter()->drawMesh(*m_mesh2, renderMode);
+      }
+    }
+    renderSurfaces(pd);
 
     return true;
   }
@@ -208,10 +200,14 @@ namespace Avogadro {
   {
     // Attempt to find a cube
     m_molecule = pd->molecule();
-    int iCube = 0;
-    QList<Cube *> cubes = pd->molecule()->cubes();
-    if (cubes.size() == 0) {
-      qDebug() << "No cubes.";
+    int iMesh1 = 0;
+    int iMesh2 = 1;
+    if (m_mesh1)
+      iMesh1 = m_mesh1->index();
+    if (m_mesh2)
+      iMesh2 = m_mesh2->index();
+    QList<Mesh *> meshes = pd->molecule()->meshes();
+    if (meshes.size() == 0) {
       return;
     }
     else {
@@ -219,39 +215,28 @@ namespace Avogadro {
         // Add the orbitals
         connect(m_molecule, SIGNAL(updated()),
                 this, SLOT(updateOrbitalCombo()));
-        if (!m_settingsWidget->orbitalCombo->count()) {
-          // Use first cube/orbital
+        if (!m_settingsWidget->orbital1Combo->count()) {
+          // Use first mesh/orbital
           // Two meshes -- one for positive isovalue, one for negative
-          iCube = 0;
           updateOrbitalCombo();
         }
         else {
-          iCube = m_settingsWidget->orbitalCombo->currentIndex();
-          if (iCube >= cubes.size()) {
+          // Valid settings widget with populated orbital combos
+          iMesh1 = m_settingsWidget->orbital1Combo->currentIndex();
+          iMesh2 = m_settingsWidget->orbital2Combo->currentIndex();
+          if (iMesh1 >= meshes.size() || iMesh2 >= meshes.size()) {
             qDebug() << "Invalid orbital selected.";
             return;
           }
         }
       }
-      else {
-        iCube = 0;
-      }
     }
 
     // attribute is the text key for the grid (as an std::string)
-    qDebug() << " Orbital title: " << cubes[iCube]->name();
-
-    if (!m_mesh1 || !m_mesh2) {
-      m_mesh1 = new Mesh;
-      m_mesh2 = new Mesh;
-    }
-
-    m_min = cubes[iCube]->min();
-    m_max = cubes[iCube]->max();
-    m_meshGen1->initialize(cubes[iCube], m_mesh1, m_iso);
-    m_meshGen1->start();
-    m_meshGen2->initialize(cubes[iCube], m_mesh2, -m_iso);
-    m_meshGen2->start();
+    qDebug() << " Orbital 1 title: " << meshes[iMesh1]->name();
+    qDebug() << " Orbital 2 title: " << meshes[iMesh2]->name();
+    m_mesh1 = meshes[iMesh1];
+    m_mesh2 = meshes[iMesh2];
 
     m_update = false;
   }
@@ -262,32 +247,38 @@ namespace Avogadro {
       return;
     // Reset the orbital combo
     qDebug() << "Update orbital combo called...";
-    int tmp = m_settingsWidget->orbitalCombo->currentIndex();
-    if (tmp < 0) tmp = 0;
-    m_settingsWidget->orbitalCombo->clear();
-    QList<Cube *> cubeList = m_molecule->cubes();
-    if (cubeList.empty())
+    int tmp1 = m_settingsWidget->orbital1Combo->currentIndex();
+    if (tmp1 < 0) tmp1 = 0;
+    int tmp2 = m_settingsWidget->orbital2Combo->currentIndex();
+    if (tmp2 < 0) tmp2 = 1;
+    m_settingsWidget->orbital1Combo->clear();
+    m_settingsWidget->orbital2Combo->clear();
+    QList<Mesh *> meshList = m_molecule->meshes();
+    if (meshList.empty())
       return;
-    foreach(Cube *cube, cubeList) {
-      if (!cube->lock()->tryLockForRead()) {
-        qDebug() << "Cannot get a read lock...";
+
+    foreach(Mesh *mesh, meshList) {
+      if (!mesh->lock()->tryLockForRead()) {
+        qDebug() << "Cannot get a read lock on the mesh...";
         continue;
       }
-      m_settingsWidget->orbitalCombo->addItem(cube->name());
-      qDebug() << "Adding Cube:" << cube->name();
-      cube->lock()->unlock();
+      m_settingsWidget->orbital1Combo->addItem(mesh->name());
+      m_settingsWidget->orbital2Combo->addItem(mesh->name());
+      mesh->lock()->unlock();
     }
     // If all of the orbitals disappear the molecule has been cleared
-    if (m_molecule->cubes().size() == 0 && m_mesh1 && m_mesh2) {
-      /// FIXME Again - engines should not really manage their primitives!
-      delete m_mesh1;
+    if (m_molecule->numMeshes() == 0) {
       m_mesh1 = 0;
-      delete m_mesh2;
       m_mesh2 = 0;
-      m_meshGen1->initialize(0, 0, 0);
-      m_meshGen2->initialize(0, 0, 0);
     }
-    m_settingsWidget->orbitalCombo->setCurrentIndex(tmp);
+    if (m_mesh1)
+      m_settingsWidget->orbital1Combo->setCurrentIndex(m_mesh1->index());
+    else
+      m_settingsWidget->orbital1Combo->setCurrentIndex(tmp1);
+    if (m_mesh2)
+      m_settingsWidget->orbital2Combo->setCurrentIndex(m_mesh2->index());
+    else
+      m_settingsWidget->orbital2Combo->setCurrentIndex(tmp2);
   }
 
   double OrbitalEngine::transparencyDepth() const
@@ -310,7 +301,13 @@ namespace Avogadro {
     return Engine::ColorGradients;
   }
 
-  void OrbitalEngine::setOrbital(int)
+  void OrbitalEngine::setOrbital1(int)
+  {
+    m_update = true;
+    emit changed();
+  }
+
+  void OrbitalEngine::setOrbital2(int)
   {
     m_update = true;
     emit changed();
@@ -337,18 +334,6 @@ namespace Avogadro {
     emit changed();
   }
 
-
-  void OrbitalEngine::setIso(double d)
-  {
-    m_iso = d;
-  }
-
-  void OrbitalEngine::isoDone()
-  {
-    m_update = true;
-    emit changed();
-  }
-
   void OrbitalEngine::setPosColor(const QColor& color)
   {
     m_posColor.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
@@ -366,18 +351,16 @@ namespace Avogadro {
     if(!m_settingsWidget)
     {
       m_settingsWidget = new OrbitalSettingsWidget();
-      connect(m_settingsWidget->orbitalCombo, SIGNAL(currentIndexChanged(int)),
-              this, SLOT(setOrbital(int)));
+      connect(m_settingsWidget->orbital1Combo, SIGNAL(currentIndexChanged(int)),
+              this, SLOT(setOrbital1(int)));
+      connect(m_settingsWidget->orbital2Combo, SIGNAL(currentIndexChanged(int)),
+              this, SLOT(setOrbital2(int)));
       connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)),
               this, SLOT(setOpacity(int)));
       connect(m_settingsWidget->renderCombo, SIGNAL(currentIndexChanged(int)),
               this, SLOT(setRenderMode(int)));
       connect(m_settingsWidget->drawBoxCheck, SIGNAL(stateChanged(int)),
               this, SLOT(setDrawBox(int)));
-      connect(m_settingsWidget->isoSpin, SIGNAL(valueChanged(double)),
-              this, SLOT(setIso(double)));
-      connect(m_settingsWidget->isoSpin, SIGNAL(editingFinished()),
-              this, SLOT(isoDone()));
       connect(m_settingsWidget->posColor, SIGNAL(colorChanged(QColor)),
               this, SLOT(setPosColor(QColor)));
       connect(m_settingsWidget->negColor, SIGNAL(colorChanged(QColor)),
@@ -387,7 +370,6 @@ namespace Avogadro {
 
       // Initialise the widget from saved settings
       m_settingsWidget->opacitySlider->setValue(static_cast<int>(m_alpha * 20));
-      m_settingsWidget->isoSpin->setValue(m_iso);
       m_settingsWidget->renderCombo->setCurrentIndex(m_renderMode);
       m_settingsWidget->drawBoxCheck->setChecked(m_drawBox);
 
@@ -400,11 +382,6 @@ namespace Avogadro {
       updateOrbitalCombo();
     }
     return m_settingsWidget;
-  }
-
-  void OrbitalEngine::isoGenFinished()
-  {
-    emit changed();
   }
 
   void OrbitalEngine::settingsWidgetDestroyed()
@@ -441,9 +418,12 @@ namespace Avogadro {
   {
     Engine::writeSettings(settings);
     settings.setValue("alpha", m_alpha);
-    settings.setValue("iso", m_iso);
     settings.setValue("renderMode", m_renderMode);
     settings.setValue("drawBox", m_drawBox);
+    if (m_mesh1)
+      settings.setValue("mesh1Id", static_cast<int>(m_mesh1->id()));
+    if (m_mesh2)
+      settings.setValue("mesh2Id", static_cast<int>(m_mesh2->id()));
 //    settings.setValue("posColor", m_posColor);
 //    settings.setValue("posColor", m_negColor);
   }
@@ -454,9 +434,12 @@ namespace Avogadro {
     m_alpha = settings.value("alpha", 0.5).toDouble();
     m_posColor.setAlpha(m_alpha);
     m_negColor.setAlpha(m_alpha);
-    m_iso = settings.value("iso", 0.02).toDouble();
     m_renderMode = settings.value("renderMode", 0).toInt();
     m_drawBox = settings.value("drawBox", false).toBool();
+    if (m_molecule) {
+      m_mesh1 = m_molecule->meshById(settings.value("mesh1Id", 0).toInt());
+      m_mesh2 = m_molecule->meshById(settings.value("mesh2Id", 0).toInt());
+    }
   }
 
 }

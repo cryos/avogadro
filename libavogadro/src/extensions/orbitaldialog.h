@@ -36,6 +36,7 @@ namespace Avogadro
   class GLWidget;
   class Primitive;
   class Molecule;
+  class Engine;
 
   class OrbitalDialog : public QDialog
   {
@@ -51,6 +52,7 @@ namespace Avogadro
     Eigen::Vector3d origin();
     Eigen::Vector3i steps();
     double stepSize();
+    Engine * currentEngine();
 
   private:
     Ui::OrbitalDialog ui;
@@ -87,11 +89,13 @@ namespace Avogadro
 
     void isoEditChanged();
 
+    void calculateMeshClicked();
+
   Q_SIGNALS:
     void calculateMO(int MO);
     void calculateAll();
     void calculateDensity();
-    void calculateMesh(unsigned int cube, double isoValue, int calc);
+    void calculateMesh(int cube, double isoValue, int calc);
 
   };
 

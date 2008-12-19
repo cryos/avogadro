@@ -38,6 +38,8 @@ namespace Avogadro
 {
   class BasisSet;
   class SlaterSet;
+  class Mesh;
+  class MeshGenerator;
 
   class OrbitalExtension : public Extension
   {
@@ -78,6 +80,10 @@ namespace Avogadro
     Eigen::Vector3d m_origin;
     Eigen::Vector3i m_steps;
 
+    Mesh *m_mesh1, *m_mesh2;
+    MeshGenerator *m_meshGen1;
+    MeshGenerator *m_meshGen2;
+
     void calculateMO(int MO, const Eigen::Vector3d &origin,
                      const Eigen::Vector3i &steps, double stepSize);
 
@@ -91,6 +97,10 @@ namespace Avogadro
     void calculation2Canceled();
     void slaterDone();
     void slaterCanceled();
+
+    /** Mesh rendering. */
+    void generateMesh(int cube, double isoValue, int calc);
+    void meshGenerated();
 
   };
 

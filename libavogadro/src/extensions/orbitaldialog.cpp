@@ -80,6 +80,8 @@ namespace Avogadro
             this, SLOT(isoEditChanged()));
     connect(ui.isoSlider, SIGNAL(sliderMoved(int)),
             this, SLOT(isoSliderChanged(int)));
+    connect(ui.calculateMesh, SIGNAL(clicked()),
+            this, SLOT(calculateMeshClicked()));
   }
 
   OrbitalDialog::~OrbitalDialog()
@@ -144,6 +146,15 @@ namespace Avogadro
     return QString(ui.stepSize->text()).toDouble();
   }
 
+  Engine * OrbitalDialog::currentEngine()
+  {
+    foreach (Engine *engine, m_glwidget->engines()) {
+      if (engine->alias() == ui.engineCombo->currentText())
+        return engine;
+    }
+    return 0;
+  }
+
   void OrbitalDialog::calculate()
   {
     emit calculateMO(ui.orbitalCombo->currentIndex());
@@ -197,11 +208,13 @@ namespace Avogadro
 
   void OrbitalDialog::updateCubes(Primitive *)
   {
+    int tmp = ui.cubeCombo->currentIndex();
     ui.cubeCombo->clear();
-    qDebug() << "updateCubes()";
     foreach (Cube *cube, m_molecule->cubes()) {
       ui.cubeCombo->addItem(cube->name());
     }
+    ui.calculateMesh->setEnabled(true);
+    ui.cubeCombo->setCurrentIndex(tmp);
   }
 
   void OrbitalDialog::originChanged()
@@ -306,6 +319,13 @@ namespace Avogadro
   {
     ui.isoSlider->setValue(
          (ui.isoValue->text().toDouble()-m_min) / (m_max-m_min) * 99.0 );
+  }
+
+  void OrbitalDialog::calculateMeshClicked()
+  {
+    emit calculateMesh(ui.cubeCombo->currentIndex(),
+                       ui.isoValue->text().toDouble(),
+                       0);
   }
 
 } // End namespace Avogadro

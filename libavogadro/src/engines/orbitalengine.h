@@ -37,9 +37,7 @@
 namespace Avogadro {
 
   class OrbitalSettingsWidget;
-  class Cube;
   class Mesh;
-  class MeshGenerator;
 
   //! Surface Engine class.
   class OrbitalEngine : public Engine
@@ -83,15 +81,12 @@ namespace Avogadro {
 
     protected:
       OrbitalSettingsWidget *m_settingsWidget;
-      MeshGenerator *m_meshGen1;
-      MeshGenerator *m_meshGen2;
       Mesh *m_mesh1;
       Mesh *m_mesh2;
       Eigen::Vector3f m_min, m_max;
       Color  m_posColor;
       Color  m_negColor;
       double m_alpha;
-      double m_iso;
       int    m_renderMode;
       bool   m_drawBox;
       bool   m_update;
@@ -104,15 +99,16 @@ namespace Avogadro {
        * Update the orbital combo box with new orbitals
        */
       void updateOrbitalCombo();
-      /**
-       * Slot for when isoGen has finished
-       */
-      void isoGenFinished();
+
       void settingsWidgetDestroyed();
       /**
        * @param value orbital index
        */
-      void setOrbital(int value);
+      void setOrbital1(int value);
+      /**
+       * @param value orbital index
+       */
+      void setOrbital2(int value);
       /**
        * @param value opacity of the surface / 20
        */
@@ -125,12 +121,7 @@ namespace Avogadro {
        * @param value interpolate (0 = no, 1 = yes)
        */
       void setDrawBox(int value);
-      /**
-       * @param d the value of the iso surface to be rendered
-       */
-      void setIso(double d);
 
-      void isoDone();
       /**
        * @param color the color for the positive iso surface
        */

@@ -33,6 +33,8 @@
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 #include <avogadro/cube.h>
+#include <avogadro/mesh.h>
+#include <avogadro/meshgenerator.h>
 #include <Eigen/Core>
 
 #include <QProgressDialog>
@@ -53,7 +55,7 @@ namespace Avogadro
 
   OrbitalExtension::OrbitalExtension(QObject* parent) : Extension(parent),
     m_glwidget(0), m_orbitalDialog(0), m_molecule(0), m_basis(0), m_slater(0),
-    m_progress(0), m_timer(0)
+    m_progress(0), m_timer(0), m_meshGen1(0), m_meshGen2(0)
   {
     QAction* action = new QAction(this);
     action->setText(tr("Import Molecular Orbitals..."));
@@ -95,6 +97,8 @@ namespace Avogadro
               this, SLOT(calculateAll()));
       connect(m_orbitalDialog, SIGNAL(calculateDensity()),
               this, SLOT(calculateDensity()));
+      connect(m_orbitalDialog, SIGNAL(calculateMesh(int, double, int)),
+              this, SLOT(generateMesh(int, double, int)));
       if (loadBasis()) {
         m_orbitalDialog->show();
       }
@@ -527,6 +531,45 @@ namespace Avogadro
     qDebug() << "Canceled...";
     m_orbitalDialog->enableCalculation(true);
     m_currentMO = 0;
+  }
+
+  void OrbitalExtension::generateMesh(int iCube, double isoValue, int calc)
+  {
+    qDebug() << "Calculate Mesh called" << isoValue << iCube;
+    if (!m_molecule->cube(iCube))
+      return;
+
+    Cube *cube = m_molecule->cube(iCube);
+    double m_min = cube->minValue();
+    double m_max = cube->maxValue();
+    m_mesh1 = m_molecule->newMesh();
+    m_mesh1->setName(cube->name() + ", iso=" + QString::number(isoValue));
+    m_mesh2 = m_molecule->newMesh();
+    m_mesh2->setName(cube->name() + ", iso=" + QString::number(-isoValue));
+    if (!m_meshGen1) {
+      m_meshGen1 = new MeshGenerator;
+      connect(m_meshGen1, SIGNAL(finished()), this, SLOT(meshGenerated()));
+    }
+    if (!m_meshGen2) {
+      m_meshGen2 = new MeshGenerator;
+      connect(m_meshGen2, SIGNAL(finished()), this, SLOT(meshGenerated()));
+    }
+    m_meshGen1->initialize(cube, m_mesh1, isoValue);
+    m_meshGen1->start();
+    m_meshGen2->initialize(cube, m_mesh2, -isoValue);
+    m_meshGen2->start();
+    qDebug() << "Calculate Mesh called" << isoValue;
+  }
+
+  void OrbitalExtension::meshGenerated()
+  {
+    Engine *engine = m_orbitalDialog->currentEngine();
+    QSettings settings;
+    engine->writeSettings(settings);
+    settings.setValue("mesh1Id", static_cast<int>(m_mesh1->id()));
+    settings.setValue("mesh2Id", static_cast<int>(m_mesh2->id()));
+    engine->readSettings(settings);
+    m_molecule->update();
   }
 
 } // End namespace Avogadro
