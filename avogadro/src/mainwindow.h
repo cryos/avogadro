@@ -37,6 +37,10 @@ class QUndoStack;
 class QStackedLayout;
 class QStandardItem;
 
+namespace OpenBabel{
+  class OBFormat;  
+}
+
 namespace Avogadro {
   class Tool;
   class Primitive;
@@ -60,6 +64,20 @@ namespace Avogadro {
       bool renderDebug() const;
       bool quickRender() const;
 
+      /**
+       * @param fileName fileName to load (defaults to loading a blank file)
+       * @return whether the loading process was successful
+       */
+      bool loadFile(const QString &fileName = QString(),
+		    OpenBabel::OBFormat *format = NULL,
+		    const QString &options = QString());
+
+      /**
+       * @param fileName the filename to save the currently loaded file to
+       */
+      bool saveFile(const QString &fileName,
+		    OpenBabel::OBFormat *format = NULL);
+
     protected:
       void closeEvent(QCloseEvent *event);
       bool event(QEvent *event);
@@ -79,6 +97,7 @@ namespace Avogadro {
       bool save();
       bool saveAs();
       void revert();
+      void importFile();
       void exportGraphics();
       void exportGL2PS();
 
@@ -157,17 +176,6 @@ namespace Avogadro {
       void readSettings();
       void writeSettings();
       void connectUi();
-
-      /**
-       * @param fileName fileName to load (defaults to loading a blank file)
-       * @return whether the loading process was successful
-       */
-      bool loadFile(const QString &fileName = QString());
-
-      /**
-       * @param fileName the filename to save the currently loaded file to
-       */
-      bool saveFile(const QString &fileName);
 
       bool maybeSave();
       void setFileName(const QString &fileName);

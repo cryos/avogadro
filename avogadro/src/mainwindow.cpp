@@ -28,6 +28,7 @@
 #include "aboutdialog.h"
 #include "addenginedialog.h"
 #include "editcommands.h"
+#include "importdialog.h"
 #include "settingsdialog.h"
 #include "savedialog.h"
 
@@ -121,7 +122,8 @@ namespace Avogadro
       glWidget(0),
       centralLayout(0), centralTab(0), bottomFlat(0),
       toolGroup( 0 ),
-      settingsDialog( 0 ), initialized( false ),
+      settingsDialog( 0 ), importFile(0),
+      initialized( false ),
       centerTimer(0)
     {}
 
@@ -142,8 +144,6 @@ namespace Avogadro
 
       QStackedLayout *enginesStacked;
       Engine         *currentSelectedEngine; // for settings widget title, etc.
-//      QStackedLayout *engineConfigurationStacked;
-//      QStackedLayout *enginePrimitivesStacked;
 
       QTextEdit *messagesText;
 
@@ -158,6 +158,7 @@ namespace Avogadro
       QAction    *actionRecentFile[MainWindow::maxRecentFiles];
 
       SettingsDialog *settingsDialog;
+      ImportDialog *importFile;
 
       // used for hideMainWindowMac() / showMainWindowMac()
       // save enable/disable status of every menu item
@@ -652,7 +653,9 @@ namespace Avogadro
     }
   }
 
-  bool MainWindow::loadFile( const QString &fileName )
+  bool MainWindow::loadFile(const QString &fileName,
+			    OBFormat *format,
+			    const QString &options)
   {
     if(fileName.isEmpty()) {
       setFileName(fileName);
@@ -675,7 +678,19 @@ namespace Avogadro
 
     QApplication::setOverrideCursor( Qt::WaitCursor );
     OBConversion conv;
-    OBFormat     *inFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
+
+    // set any options
+    if (!options.isEmpty()) {
+      foreach(const QString option, options.split('\n', QString::SkipEmptyParts)) {
+	conv.AddOption(option.toAscii().data(), OBConversion::INOPTIONS);
+      }
+    }
+
+    OBFormat     *inFormat;
+    if (format != NULL)
+      inFormat = format;
+    else
+      inFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
     if ( !inFormat || !conv.SetInFormat( inFormat ) ) {
       QApplication::restoreOverrideCursor();
       QMessageBox::warning( this, tr( "Avogadro" ),
@@ -894,11 +909,15 @@ namespace Avogadro
     return result;
   }
 
-  bool MainWindow::saveFile( const QString &fileName )
+  bool MainWindow::saveFile( const QString &fileName, OBFormat *format )
   {
     // Check the format next (before we try creating a file)
     OBConversion conv;
-    OBFormat     *outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
+    OBFormat     *outFormat;
+    if (format != NULL)
+      outFormat = format;
+    else 
+      outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
     if ( !outFormat || !conv.SetOutFormat( outFormat ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
           tr( "Cannot write to file format of file %1." )
@@ -1215,6 +1234,14 @@ namespace Avogadro
   {
     AboutDialog * about = new AboutDialog( this );
     about->show();
+  }
+
+  void MainWindow::importFile()
+  {
+    if (!d->importFile) {
+      d->importFile = new ImportDialog(this);
+    }
+    d->importFile->show();
   }
 
   // Unfortunately Qt signals/slots doesn't let us pass an arbitrary URL to a slot
@@ -1810,6 +1837,7 @@ namespace Avogadro
     connect( ui.actionSaveTool, SIGNAL( triggered() ), this, SLOT( save() ) );
     connect( ui.actionSaveAs, SIGNAL( triggered() ), this, SLOT( saveAs() ) );
     connect( ui.actionRevert, SIGNAL( triggered() ), this, SLOT( revert() ) );
+    connect( ui.actionImport_File, SIGNAL( triggered() ), this, SLOT( importFile() ) );
     connect( ui.actionExportGraphics, SIGNAL( triggered() ), this, SLOT( exportGraphics() ) );
     connect( ui.actionExportGL2PS, SIGNAL(triggered()), this, SLOT(exportGL2PS()));
 //    ui.actionExportGraphics->setEnabled( QGLFramebufferObject::hasOpenGLFramebufferObjects() );
