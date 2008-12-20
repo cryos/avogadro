@@ -2357,37 +2357,52 @@ namespace Avogadro
   {
     if (!d->currentSelectedEngine)
       return;
+    Engine *selectedEngine = d->currentSelectedEngine;
 
-    QWidget *settingsWindow = d->engineSettingsWindows.value(d->currentSelectedEngine);
+    QWidget *settingsWindow = d->engineSettingsWindows.value(selectedEngine);
 
-    if(settingsWindow)
-    {
+    if(settingsWindow) {
       settingsWindow->show();
       return;
     }
     settingsWindow = new QWidget(this, Qt::Dialog);
-    settingsWindow->setWindowTitle(d->currentSelectedEngine->name() + ' ' + tr("Settings"));
+    settingsWindow->setWindowTitle(selectedEngine->name() + ' ' + tr("Settings"));
     QVBoxLayout *layout = new QVBoxLayout(settingsWindow);
 
-    QWidget *settingsWidget = d->currentSelectedEngine->settingsWidget();
+    QWidget *settingsWidget = selectedEngine->settingsWidget();
+    QTabWidget *settingsTabs; // may be unused
 
-    // now set up the tabs: Currently settings and objects (primitives)
-    QTabWidget *settingsTabs = new QTabWidget(settingsWindow);
-    settingsTabs->addTab(settingsWidget, tr("Settings"));
+    //Check to see what tabs are needed (if any)
+    bool objectsTab = (selectedEngine->primitiveTypes() & (Engine::Atoms | Engine::Bonds));
+    bool colorsTab = (selectedEngine->colorTypes() & Engine::ColorPlugins);
+    // do we even need tabs for the window (e.g., axes engine with no objects or colors)
+    bool multipleTabsNeeded = (objectsTab || colorsTab);
+    
+    if (!multipleTabsNeeded) {
+      layout->addWidget(settingsWidget);
+    }
+    else {
+      settingsTabs = new QTabWidget(settingsWindow);
+      settingsTabs->addTab(settingsWidget, tr("Settings"));
 
-    EnginePrimitivesWidget *primitivesWidget =
-          new EnginePrimitivesWidget(d->glWidget, settingsWindow);
-    primitivesWidget->setEngine(d->currentSelectedEngine);
-    settingsTabs->addTab(primitivesWidget, tr("Objects"));
+      if (objectsTab) {
+        EnginePrimitivesWidget *primitivesWidget =
+            new EnginePrimitivesWidget(d->glWidget, settingsWindow);
+          primitivesWidget->setEngine(selectedEngine);
+          settingsTabs->addTab(primitivesWidget, tr("Objects"));
+      }
 
-    EngineColorsWidget *colorsWidget = new EngineColorsWidget(&(d->pluginManager), settingsWindow);
-    colorsWidget->setEngine(d->currentSelectedEngine);
-    settingsTabs->addTab(colorsWidget, tr("Colors"));
+      if (colorsTab) {
+        EngineColorsWidget *colorsWidget = new EngineColorsWidget(&(d->pluginManager), settingsWindow);
+        colorsWidget->setEngine(selectedEngine);
+        settingsTabs->addTab(colorsWidget, tr("Colors"));
+      }
+      layout->addWidget(settingsTabs);
+    }
 
     connect(settingsWidget, SIGNAL(destroyed()), settingsWindow, SLOT(deleteLater()));
 
-    d->engineSettingsWindows[d->currentSelectedEngine] = settingsWindow;
-    layout->addWidget(settingsTabs);
+    d->engineSettingsWindows[selectedEngine] = settingsWindow;
     settingsWindow->setLayout(layout);
     settingsWindow->show();
   }
