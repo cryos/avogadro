@@ -164,6 +164,7 @@ namespace Avogadro {
     // Compute the width to draw the wireframe bonds
     double width = 1.0;
     double averageDistance = (camera->distance(v1) + camera->distance(v2)) / 2.0;
+
     if (averageDistance < 20.0 && averageDistance > 10.0)
       width = 1.5;
     else if (averageDistance < 10.0 && averageDistance > 5.0)
@@ -174,15 +175,17 @@ namespace Avogadro {
     int order = 1;
     if (m_showMulti) {
       order = b->order();
-      // For aromatic (dashed bonds) eventually
-//       if (b->IsAromatic())
-//         order = 5;
+      if (order > 1)
+        width *= order * 0.75; // make multiple bonds a litte thicker too
+      // For aromatic (dashed bonds)
+      //  if (b->isAromatic())
+      //  order = -1;
     }
 
     // optional line stipple to use for aromatic bonds
     //    int stipple = 0xF0F0;
     int stipple = 0xFFFF;
-
+    
     map->set(atom1);
     pd->painter()->setColor(map);
     if (order > 1) pd->painter()->drawMultiLine(v1, v3, width, order, stipple);
@@ -241,7 +244,7 @@ namespace Avogadro {
   {
     Engine::readSettings(settings);
     setShowDots(settings.value("showDots", 2).toInt());
-    setShowMultipleBonds(settings.value("showMulti", 0).toInt());
+    setShowMultipleBonds(settings.value("showMulti", 1).toInt());
     if (m_settingsWidget) {
       m_settingsWidget->showDotsCheckBox->setCheckState((Qt::CheckState)m_showDots);
       m_settingsWidget->showMultipleCheckBox->setCheckState((Qt::CheckState)m_showMulti);

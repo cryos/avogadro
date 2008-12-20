@@ -509,15 +509,20 @@ namespace Avogadro
     glLineWidth(lineWidth);
     d->color.apply();
 
-    glEnable(GL_LINE_STIPPLE);
-    glLineStipple(1, stipple);
-
     // Draw the line
     if (order == 1) {
       glBegin(GL_LINE_STRIP);
       glVertex3f(0.0, 0.0, 0.0);
       glVertex3f(0.0, 0.0, 1.0);
       glEnd();
+    } else if (order == -1) {// aromatic 
+      glEnable(GL_LINE_STIPPLE);
+      glLineStipple(1, stipple);
+      glBegin(GL_LINE_STRIP);
+      glVertex3f(0.0, 0.0, 0.0);
+      glVertex3f(0.0, 0.0, 1.0);
+      glEnd();
+      glDisable(GL_LINE_STIPPLE);      
     }
     else {
       double angleOffset = 0.0;
@@ -526,7 +531,8 @@ namespace Avogadro
         else angleOffset = 22.5;
       }
 
-      double displacementFactor = 0.011 * sqrt(lineWidth);
+      // these may need further refinement
+      double displacementFactor = 0.00089 * lineWidth + 0.013;
       for( int i = 0; i < order; i++) {
         glPushMatrix();
         glRotated( angleOffset + 360.0 * i / order,
@@ -542,8 +548,6 @@ namespace Avogadro
       }
     }
     glPopMatrix();
-
-    glDisable(GL_LINE_STIPPLE);
 
     glEnable(GL_LIGHTING);
   }
