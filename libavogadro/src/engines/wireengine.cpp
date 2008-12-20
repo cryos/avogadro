@@ -106,13 +106,15 @@ namespace Avogadro {
     // We could probably have a better gradient here, but it looks decent
     double size = 3.0; // default size;
     if (camera->distance(v) < 5.0)
-      size = 5.0;
+      size = 5.5;
     else if (camera->distance(v) > 5.0 && camera->distance(v) < 10.0)
       size = 4.0;
-    else if (camera->distance(v) > 40.0 && camera->distance(v) < 85.0)
+    else if (camera->distance(v) > 30.0 && camera->distance(v) < 60.0)
       size = 2.0;
-    else if (camera->distance(v) > 85.0)
+    else if (camera->distance(v) > 60.0 && camera->distance(v) < 85.0)
       size = 1.5;
+    else if (camera->distance(v) > 85.0)
+      size = 1.0;
 
     // All dots are scaled by the VDW radius -- subtle, but effective
     if (pd->isSelected(a)) {

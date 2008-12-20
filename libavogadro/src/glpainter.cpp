@@ -532,7 +532,7 @@ namespace Avogadro
       }
 
       // these may need further refinement
-      double displacementFactor = 0.00089 * lineWidth + 0.013;
+      double displacementFactor = 0.0004 * lineWidth + 0.018;
       for( int i = 0; i < order; i++) {
         glPushMatrix();
         glRotated( angleOffset + 360.0 * i / order,
