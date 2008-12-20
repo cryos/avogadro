@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "Importdialog.h"
+#include "importdialog.h"
 
 #include "mainwindow.h"
 
@@ -43,7 +43,7 @@ namespace Avogadro {
     return first->Description() < second->Description();
   }
 
-  ImportDialog::ImportDialog(MainWindow *mainWindow) : 
+  ImportDialog::ImportDialog(MainWindow *mainWindow) :
     QDialog(mainWindow),
     m_mainWindow(mainWindow),
     m_filename(""),
@@ -56,7 +56,7 @@ namespace Avogadro {
     OBFormat *pFormat;
     Formatpos pos;
     const char* str=NULL;
-    
+
     // This loops through by unique extension
     // The catch is that some formats have multiple extensions
     // So some formats, we'll see them a few times
@@ -64,14 +64,14 @@ namespace Avogadro {
       {
         if(!pFormat || (pFormat->Flags() & NOTREADABLE))
           continue; // obviously we only care about readable formats
-        
+
         if (!m_formatList.contains(pFormat)) {
           m_formatList.append(pFormat);
         }
       }
-        
+
     qSort(m_formatList.begin(), m_formatList.end(), formatCompare);
-      
+
     foreach(OBFormat *pFormat, m_formatList) {
       QString description(pFormat->Description());
       // There can be multiple lines in the description -- we only want one
@@ -80,7 +80,7 @@ namespace Avogadro {
         description.truncate(lineEnding);
       // remove any remaining initial or ending whitespace
       description = description.trimmed();
-      
+
       ui.formatComboBox->addItem(description);
     }
 
@@ -107,7 +107,7 @@ namespace Avogadro {
     else if (role == QDialogButtonBox::RejectRole)
       rejected();
   }
-  
+
   void ImportDialog::accepted()
   {
     if (!m_mainWindow)
@@ -130,16 +130,16 @@ namespace Avogadro {
 
     m_mainWindow->loadFile(ui.fileName->text(), pFormat, options);
   }
-  
+
   void ImportDialog::rejected()
   {
     //    qDebug() << "close";
   }
-  
+
   void ImportDialog::changedFormat(int formatIndex)
   {
     m_currentFormat = formatIndex;
-    
+
     // reset the checkboxes to defaults
     ui.checkBoxBonding->setEnabled(true);
     ui.checkBoxBonding->setChecked(true);
@@ -149,11 +149,11 @@ namespace Avogadro {
     ui.checkBoxAngstroms->setChecked(true);
 
     // need to hide a bunch of stuff for auto-detection
-    
+
     if (formatIndex >= 1) // not automatic detection
       {
 	QString description = m_formatList[formatIndex - 1]->Description();
-      
+
 	// Don't translate these search strings -- they are literals from Open Babel
 	ui.checkBoxBonding->setEnabled(description.contains("Disable bonding entirely"));
 
@@ -162,7 +162,7 @@ namespace Avogadro {
 	ui.checkBoxAngstroms->setEnabled(description.contains("Input in Angstroms"));
       }
   }
-  
+
   void ImportDialog::changedOptions(int state)
   {
     // if the bonding checkbox is set, we can set or unset bond orders
