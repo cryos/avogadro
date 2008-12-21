@@ -160,8 +160,6 @@ namespace Avogadro {
         colorsLoaded(false) {}
       ~PluginManagerPrivate() {}
 
-      static QList<PluginItem *> items;
-
       bool toolsLoaded;
       QList<Tool *> tools;
       bool extensionsLoaded;
@@ -171,11 +169,14 @@ namespace Avogadro {
 
       PluginDialog *dialog;
 
+      static bool factoriesLoaded;
       static QVector<QList<PluginItem *> > &m_items();
       static QVector<QList<PluginFactory *> > &m_enabledFactories();
       static QVector<QList<PluginFactory *> > &m_disabledFactories();
 
   };
+
+  bool PluginManagerPrivate::factoriesLoaded = false;
 
   PluginManager::PluginManager(QObject *parent) : QObject(parent), d(new PluginManagerPrivate)
   {
@@ -388,11 +389,8 @@ namespace Avogadro {
 
   void PluginManager::loadFactories()
   {
-    static bool factoriesLoaded = false;
-    if(factoriesLoaded)
-    {
+    if (PluginManagerPrivate::factoriesLoaded)
       return;
-    }
 
     QVector<QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
     QVector<QList<PluginFactory *> > &df = PluginManagerPrivate::m_disabledFactories();
@@ -403,7 +401,6 @@ namespace Avogadro {
     PluginFactory *bsFactory = qobject_cast<PluginFactory *>(new BSDYEngineFactory);
     if (bsFactory) {
       ef[bsFactory->type()].append(bsFactory);
-      //d->engineClassFactory[bsFactory->name()] = bsFactory;
     }
     else {
       qDebug() << "Instantiation of the static ball and sticks plugin failed.";
@@ -529,7 +526,7 @@ namespace Avogadro {
       }
     }
     settings.endGroup();
-    factoriesLoaded = true;
+    PluginManagerPrivate::factoriesLoaded = true;
   }
 
   QList<PluginFactory *> PluginManager::factories( Plugin::Type type )
@@ -545,10 +542,77 @@ namespace Avogadro {
     
   void PluginManager::showDialog()
   {
-    if (!d->dialog)
+    if (!d->dialog) {
       d->dialog = new PluginDialog();
+      connect(d->dialog, SIGNAL(reloadPlugins()), this, SLOT(reload()));
+    }
 
     d->dialog->show();
+  }
+
+  void PluginManager::reload()
+  {
+    // make sure to write the settings before reloading
+    QSettings settings;
+    writeSettings(settings); // the isEnabled settings for all plugins
+
+    // delete the dialog with the now invalid model
+    if (d->dialog) {
+      d->dialog->deleteLater();
+      d->dialog = 0;
+    }
+
+    // write the tool settings
+    settings.beginGroup("tools");
+    foreach(Tool *tool, d->tools) {
+      tool->writeSettings(settings);
+      tool->deleteLater(); // and delete the tool, this will inform the 
+                           // ToolGroup which will inform the GLWidget.
+    }
+    settings.endGroup();
+
+    // set toolsLoaded to false and clear the tools list
+    d->toolsLoaded = false;
+    d->tools.clear();
+
+    // write the extension settings
+    settings.beginGroup("extensions");
+    foreach(Extension *extension, d->extensions) {
+      extension->writeSettings(settings);
+      extension->deleteLater(); // and delete the extension, when the QACtions
+                                // are deleted, they are removed from the menu.
+    }
+    settings.endGroup();
+    
+    // set extensionsLoaded to false and clear the extensions list
+    d->extensionsLoaded = false;
+    d->extensions.clear();
+
+
+    PluginManagerPrivate::factoriesLoaded = false;
+    
+    // delete the ProjectItem objects and clear the list
+    for(int i=0; i<Plugin::TypeCount; i++) {
+      foreach(PluginItem *item, PluginManagerPrivate::m_items()[i])
+        delete item;
+    }
+    PluginManagerPrivate::m_items().clear();
+    
+    // delete the enabled PluginFactory objects and clear the list
+    for(int i=0; i<Plugin::TypeCount; i++) {
+      foreach(PluginFactory *factory, PluginManagerPrivate::m_enabledFactories()[i])
+        delete factory;
+    }
+    PluginManagerPrivate::m_enabledFactories().clear();
+    
+    // delete the disabled PluginFactory objects and clear the list
+    for(int i=0; i<Plugin::TypeCount; i++) {
+      foreach(PluginFactory *factory, PluginManagerPrivate::m_disabledFactories()[i])
+        delete factory;
+    }
+    PluginManagerPrivate::m_disabledFactories().clear();
+
+    emit reloadPlugins();
   }
   
 
@@ -559,7 +623,7 @@ namespace Avogadro {
   
   void PluginManager::writeSettings(QSettings &settings)
   {
-    // write the engine's isEnabled()
+    // write the plugin item's isEnabled()
     settings.beginGroup("Plugins");
     for(int i=0; i<Plugin::TypeCount; i++)
     {

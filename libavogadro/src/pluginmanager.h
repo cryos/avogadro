@@ -197,6 +197,10 @@ namespace Avogadro {
 
   public Q_SLOTS:
     void showDialog();
+    void reload();
+
+  Q_SIGNALS:
+    void reloadPlugins();
  
   private:
     PluginManagerPrivate * const d;
