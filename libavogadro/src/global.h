@@ -31,6 +31,7 @@
 #ifdef WIN32
 # ifndef NOMINMAX
 #  define NOMINMAX 1
+#  include <limits>
 # endif
 #endif
 
@@ -95,15 +96,15 @@ const int      SEL_BOX_SIZE                          = 2 * SEL_BOX_HALF_SIZE + 1
 const double   SEL_ATOM_EXTRA_RADIUS                 = 0.18;
 const double   SEL_BOND_EXTRA_RADIUS                 = 0.07;
 
-const float    LIGHT_AMBIENT[4]                     = { 0.2, 0.2, 0.2, 1.0 };
+const float    LIGHT_AMBIENT[4]                     = { 0.2f, 0.2f, 0.2f, 1.0f };
 
-const float    LIGHT0_DIFFUSE[4]                     = { 1.0, 1.0, 1.0, 1.0 };
-const float    LIGHT0_SPECULAR[4]                    = { 1.0, 1.0, 1.0, 1.0 };
-const float    LIGHT0_POSITION[4]                    = { 0.8, 0.7, 1.0, 0.0 };
+const float    LIGHT0_DIFFUSE[4]                     = { 1.0f, 1.0f, 1.0f, 1.0f };
+const float    LIGHT0_SPECULAR[4]                    = { 1.0f, 1.0f, 1.0f, 1.0f };
+const float    LIGHT0_POSITION[4]                    = { 0.8f, 0.7f, 1.0f, 0.0f };
 
-const float    LIGHT1_DIFFUSE[4]                     = { 0.3, 0.3, 0.3, 1.0 };
-const float    LIGHT1_SPECULAR[4]                    = { 0.5, 0.5, 0.5, 1.0 };
-const float    LIGHT1_POSITION[4]                    = { -0.8, 0.7, -0.5, 0.0 };
+const float    LIGHT1_DIFFUSE[4]                     = { 0.3f, 0.3f, 0.3f, 1.0f };
+const float    LIGHT1_SPECULAR[4]                    = { 0.5f, 0.5f, 0.5f, 1.0f };
+const float    LIGHT1_POSITION[4]                    = { -0.8f, 0.7f, -0.5f, 0.0f };
 
 
 namespace Avogadro
