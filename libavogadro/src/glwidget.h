@@ -768,6 +768,11 @@ namespace Avogadro {
        */
       void invalidateDLs();
 
+      /**
+       * One or more tools are deleted..
+       */
+      void toolsDestroyed();
+
     Q_SIGNALS:
       /**
        * Signal for the mouse press event which is passed to the tools.

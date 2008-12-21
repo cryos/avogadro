@@ -486,6 +486,8 @@ namespace Avogadro {
     d->camera->setParent( this );
     setAutoBufferSwap( false );
     m_glslEnabled = false;
+    m_navigateTool = 0;
+
 #ifdef ENABLE_THREADED_GL
     qDebug() << "Threaded GL enabled.";
     d->thread = new GLThread( this, this );
@@ -1149,7 +1151,7 @@ namespace Avogadro {
       QUndoCommand *command = 0;
       command = d->tool->mousePressEvent( this, event );
       // If the mouse event is not accepted, pass it to the navigate tool
-      if (!event->isAccepted()) {
+      if (!event->isAccepted() && m_navigateTool) {
         command = m_navigateTool->mousePressEvent(this, event);
       }
 
@@ -1185,7 +1187,7 @@ namespace Avogadro {
       QUndoCommand *command;
       command = d->tool->mouseReleaseEvent( this, event );
       // If the mouse event is not accepted, pass it to the navigate tool
-      if (!event->isAccepted()) {
+      if (!event->isAccepted() && m_navigateTool) {
         command = m_navigateTool->mouseReleaseEvent(this, event);
       }
 
@@ -1237,7 +1239,7 @@ namespace Avogadro {
       QUndoCommand *command;
       command = d->tool->mouseMoveEvent( this, event );
       // If the mouse event is not accepted, pass it to the navigate tool
-      if (!event->isAccepted()) {
+      if (!event->isAccepted() && m_navigateTool) {
         command = m_navigateTool->mouseMoveEvent(this, event);
       }
       if ( command && d->undoStack ) {
@@ -1254,7 +1256,7 @@ namespace Avogadro {
       QUndoCommand *command;
       command = d->tool->wheelEvent( this, event );
       // If the mouse event is not accepted, pass it to the navigate tool
-      if (!event->isAccepted()) {
+      if (!event->isAccepted() && m_navigateTool) {
         command = m_navigateTool->wheelEvent(this, event);
       }
       if ( command && d->undoStack ) {
@@ -1270,7 +1272,7 @@ namespace Avogadro {
       QUndoCommand *command;
       command = d->tool->keyPressEvent(this, event);
       // If the mouse event is not accepted, pass it to the navigate tool
-      if (!event->isAccepted()) {
+      if (!event->isAccepted() && m_navigateTool) {
         command = m_navigateTool->keyPressEvent(this, event);
       }
       if ( command && d->undoStack ) {
@@ -1287,7 +1289,7 @@ namespace Avogadro {
       QUndoCommand *command;
       command = d->tool->keyReleaseEvent(this, event);
       // If the mouse event is not accepted, pass it to the navigate tool
-      if (!event->isAccepted()) {
+      if (!event->isAccepted() && m_navigateTool) {
         command = m_navigateTool->keyReleaseEvent(this, event);
       }
       if ( command && d->undoStack ) {
@@ -1325,7 +1327,6 @@ namespace Avogadro {
 
     d->primitives.append(d->molecule);
 
-    std::cout << "SetMolecule Called!" << std::endl;
     // Now set the primitives for the engines
 //    for (int i = 0; i < d->engines.size(); i++)
 //      d->engines.at(i)->setPrimitives(d->primitives);
@@ -1519,6 +1520,8 @@ namespace Avogadro {
       d->tool = toolGroup->activeTool();
       connect( toolGroup, SIGNAL( toolActivated( Tool* ) ),
                this, SLOT( setTool( Tool* ) ) );
+      connect( toolGroup, SIGNAL( toolsDestroyed() ),
+               this, SLOT( toolsDestroyed() ) );
     }
     // Find the navigate tool and set it
     foreach (Tool *tool, d->toolGroup->tools()) {
@@ -1526,6 +1529,12 @@ namespace Avogadro {
         m_navigateTool = tool;
       }
     }
+  }
+
+  void GLWidget::toolsDestroyed()
+  {
+    d->tool = 0;
+    m_navigateTool = 0;
   }
 
 
