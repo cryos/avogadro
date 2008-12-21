@@ -58,6 +58,9 @@ namespace Avogadro
       }
     }
 #else
+  #ifdef WIN32
+    pluginDir = QCoreApplication::applicationDirPath();
+  #else
     if(!pluginDir.cd(".avogadro")) {
       if(!pluginDir.mkdir(".avogadro")) {
         return; // We can't create directories here
@@ -66,8 +69,8 @@ namespace Avogadro
         return; // We created the directory, but can't go into it?
       }
     }
+  #endif
 #endif
-
 
     if(!pluginDir.cd("scripts")) {
       if(!pluginDir.mkdir("scripts")) {
@@ -80,11 +83,13 @@ namespace Avogadro
 
     loadScripts(pluginDir);
 
+#ifndef WIN32
     // Now for the system wide Python scripts
     QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
       + "share/libavogadro/scripts";
     pluginDir.cd(systemScriptsPath);
     loadScripts(pluginDir);
+#endif
   }
 
   void PythonExtension::loadScripts(QDir dir)
@@ -119,6 +124,8 @@ namespace Avogadro
 
   PythonExtension::~PythonExtension()
   {
+    if (m_terminalDock)
+      m_terminalDock->deleteLater();
   }
 
   QList<QAction *> PythonExtension::actions() const
@@ -205,6 +212,7 @@ namespace Avogadro
     wordList << "import Avogadro" << "widget = Avogadro.GLWidget.current()";
 
     QCompleter *completer = new QCompleter(wordList, this);
+    completer->setCompletionMode(QCompleter::InlineCompletion);
     completer->setCaseSensitivity(Qt::CaseSensitive);
     inputLine->setCompleter(completer);
 
