@@ -106,7 +106,7 @@ namespace Avogadro {
     // We could probably have a better gradient here, but it looks decent
     double size = 3.0; // default size;
     if (camera->distance(v) < 5.0)
-      size = 5.5;
+      size = 7.0;
     else if (camera->distance(v) > 5.0 && camera->distance(v) < 10.0)
       size = 4.0;
     else if (camera->distance(v) > 30.0 && camera->distance(v) < 60.0)
@@ -160,13 +160,17 @@ namespace Avogadro {
     const Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
     const Vector3d & v2 = *atom2->pos();
     Vector3d d = v2 - v1;
-    d.normalize(); // compute the "transition point" between the two atoms
-    Vector3d v3(( v1 + v2 + d*( radius( atom1 )-radius( atom2 ) ) ) / 2 );
+    d.normalize();
 
+    Vector3d v3;
+    if (atom1->atomicNumber() != atom2->atomicNumber()) {
+      // compute the "transition point" between the two atoms
+      v3 = ( v1 + v2 + d*( radius( atom1 )-radius( atom2 ) ) ) / 2.0;
+    }
+    
     // Compute the width to draw the wireframe bonds
     double width = 1.0;
     double averageDistance = (camera->distance(v1) + camera->distance(v2)) / 2.0;
-
     if (averageDistance < 20.0 && averageDistance > 10.0)
       width = 1.5;
     else if (averageDistance < 10.0 && averageDistance > 5.0)
@@ -180,23 +184,30 @@ namespace Avogadro {
       if (order > 1)
         width *= order * 0.75; // make multiple bonds a litte thicker too
       // For aromatic (dashed bonds)
-      //  if (b->isAromatic())
-      //  order = -1;
+      if (b->isAromatic()) {
+        order = -1;
+      }
     }
 
     // optional line stipple to use for aromatic bonds
-    //    int stipple = 0xF0F0;
-    int stipple = 0xFFFF;
+    int stipple = 0xCCCC;
     
     map->set(atom1);
     pd->painter()->setColor(map);
-    if (order > 1) pd->painter()->drawMultiLine(v1, v3, width, order, stipple);
+    // if have two of the same atoms, just draw one line
+    if (atom1->atomicNumber() == atom2->atomicNumber()) {
+      if (order != 1) pd->painter()->drawMultiLine(v1, v2, width, order, stipple);
+      else pd->painter()->drawLine(v1, v2, width);
+      return true;
+    }
+    // otherwise, we draw a line to the "transition point", change color, etc.
+    if (order != 1) pd->painter()->drawMultiLine(v1, v3, width, order, stipple);
     else pd->painter()->drawLine(v1, v3, width);
 
     map->set(atom2);
     pd->painter()->setColor(map);
-    if (order > 1) pd->painter()->drawMultiLine(v2, v3, width, order, stipple);
-    else pd->painter()->drawLine(v2, v3, width);
+    if (order != 1) pd->painter()->drawMultiLine(v3, v2, width, order, stipple);
+    else pd->painter()->drawLine(v3, v2, width);
 
     return true;
   }
