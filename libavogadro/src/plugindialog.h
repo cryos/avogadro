@@ -40,10 +40,13 @@ namespace Avogadro
       //! Desconstructor
       ~PluginDialog();
 
-    public slots:
+    public Q_SLOTS:
       void accept();
       void selectPluginType( int index );
       void selectPlugin( PluginItem * );
+
+    Q_SIGNALS:
+      void reloadPlugins();
 
     private:
       Ui::PluginDialog ui;

@@ -78,6 +78,7 @@ namespace Avogadro {
     QMessageBox::warning(this, tr("Plugin Manager"),
         tr("Avogadro needs to be restarted in order for the changes to take effect"));
     
+    emit reloadPlugins();
     hide();
   }
 
