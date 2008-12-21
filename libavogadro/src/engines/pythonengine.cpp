@@ -46,7 +46,13 @@ namespace Avogadro {
   PythonEngine::PythonEngine(QObject *parent) : Engine(parent), m_settingsWidget(NULL), m_scriptIndex(0)
   {
     setDescription(tr("Python script rendering"));
-  
+
+    // create the error in a QTextEdit
+    m_errorWidget = new QTextEdit();
+    m_errorWidget->resize(500,300); 
+    m_errorWidget->setReadOnly(true);
+    connect(this, SIGNAL(destroyed()), m_errorWidget, SLOT(deleteLater()));
+
     // create this directory for the user if it does not exist
     QDir pluginDir = QDir::home();
 
@@ -61,6 +67,9 @@ namespace Avogadro {
       }
     }
 #else
+  #ifdef WIN32
+    pluginDir = QCoreApplication::applicationDirPath();
+  #else
     if(!pluginDir.cd(".avogadro")) {
       if(!pluginDir.mkdir(".avogadro")) {
         return; // We can't create directories here
@@ -69,6 +78,7 @@ namespace Avogadro {
         return; // We created the directory, but can't go into it?
       }
     }
+  #endif
 #endif
 
     if(!pluginDir.cd("engineScripts")) {
@@ -82,11 +92,13 @@ namespace Avogadro {
 
     loadScripts(pluginDir);
 
+#ifndef WIN32
     // Now for the system wide Python scripts
     QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
       + "share/libavogadro/engineScripts";
     pluginDir.cd(systemScriptsPath);
     loadScripts(pluginDir);
+#endif
   }
   
   PythonEngine::~PythonEngine()
@@ -114,9 +126,11 @@ namespace Avogadro {
     object real_obj = object(handle<>(obj));
  
     try {
+      prepareToCatchError();
       m_instance.attr("renderOpaque")(real_obj);
     } catch(error_already_set const &) {
-      PyErr_Print();
+      m_errorWidget->append(QString(catchError()));
+      m_errorWidget->show();
     }
 
     return true;
@@ -126,6 +140,8 @@ namespace Avogadro {
   {
     m_scriptIndex = index;
     try {
+      prepareToCatchError();
+
       // instantiate the new engine
       if (PyObject_HasAttrString(m_scripts.at(index).module().ptr(), "Engine")) {
         m_instance = m_scripts.at(index).module().attr("Engine")();
@@ -143,7 +159,8 @@ namespace Avogadro {
 
       }
     } catch (error_already_set const &) {
-      PyErr_Print();
+      m_errorWidget->append(QString(catchError()));
+      m_errorWidget->show();
     }
     emit changed();
   }
@@ -160,11 +177,14 @@ namespace Avogadro {
       m_settingsWidget->scriptsComboBox->setCurrentIndex(m_scriptIndex);
 
       try {
+        prepareToCatchError();
+
         QWidget *widget = extract<QWidget*>(m_instance.attr("settingsWidget")());
         if (widget)
           m_settingsWidget->groupBox->layout()->addWidget(widget);
       } catch (error_already_set const &) {
-        PyErr_Print();
+        m_errorWidget->append(QString(catchError()));
+        m_errorWidget->show();
       }
 
       connect(m_settingsWidget->scriptsComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(setScriptIndex(int)));
@@ -220,8 +240,9 @@ namespace Avogadro {
           qDebug() << "  + 'Engine' class found";
         } else
           qDebug() << "  - script has no 'Engine' class defined";
-      } else
+      } else {
         qDebug() << "  - no module";
+      }
 
     } // foreach file
   }
@@ -229,11 +250,13 @@ namespace Avogadro {
   Engine::Layers PythonEngine::layers() const
   {
     try {
+      prepareToCatchError();
       // return flags from python script if the function is defined
       if (PyObject_HasAttrString(m_instance.ptr(), "layers"))
         return extract<Engine::Layers>(m_instance.attr("layers")());
     } catch(error_already_set const &) {
-      PyErr_Print();
+      m_errorWidget->append(QString(catchError()));
+      m_errorWidget->show();
     }
       
     // return NoFlags, don't print an error, don't want to overwhelm new users with errors
@@ -244,10 +267,12 @@ namespace Avogadro {
   {
     // see flags()
     try {
-      if (PyObject_HasAttrString(m_instance.ptr(), "transparencyDepth"))
+      prepareToCatchError();
+      if (PyObject_HasAttrString(m_instance.ptr(), "transparencyDepth")) 
         return extract<double>(m_instance.attr("transparencyDepth")());
     } catch(error_already_set const &) {
-      PyErr_Print();
+      m_errorWidget->append(QString(catchError()));
+      m_errorWidget->show();
     }
       
     return 0.0;
