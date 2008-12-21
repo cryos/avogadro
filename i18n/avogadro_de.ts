@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>AddEngineDialog</name>
     <message>
@@ -25,12 +26,12 @@
     <message>
         <location filename="../avogadro/src/addenginedialog.ui" line="13"/>
         <source>Add Display Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Darstellungs-Typen hinzufügen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/addenginedialog.ui" line="19"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ:</translation>
     </message>
 </context>
 <context>
@@ -58,7 +59,7 @@
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="13"/>
         <source>Animate Trajectory</source>
-        <translation type="unfinished"></translation>
+        <translation>Flugbahn animieren</translation>
     </message>
 </context>
 <context>
@@ -553,12 +554,12 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../libavogadro/src/engines/dipoleengine.cpp" line="38"/>
         <source>Renders dipole moments and other 3D data</source>
-        <translation type="unfinished"></translation>
+        <translation>Rendert Dipolbahnen und andere 3D Objekte</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/dipoleengine.h" line="37"/>
         <source>Dipole</source>
-        <translation type="unfinished"></translation>
+        <translation>Dipol</translation>
     </message>
 </context>
 <context>
@@ -576,7 +577,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="91"/>
         <source>Dock...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="123"/>
@@ -591,7 +592,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="197"/>
         <source>Create a ligand first...</source>
-        <translation>Zuerst Ligand erstellen</translation>
+        <translation>Zuerst Ligand erstellen...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="201"/>
@@ -641,7 +642,7 @@ Rechte Maustaste:  Messungen zurücksetzen.</translation>
     <message>
         <location filename="../libavogadro/src/extensions/dockingextension.cpp" line="96"/>
         <source>View Poses...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeige Aufstellungen...</translation>
     </message>
 </context>
 <context>
@@ -2082,7 +2083,7 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="1942"/>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation>&amp;Einstellungen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="1947"/>
@@ -2360,7 +2361,7 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="277"/>
         <source>Length (&#xc3;&#x85;)</source>
-        <translation type="unfinished"></translation>
+        <translation>Länge (Ã)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="279"/>
@@ -2375,12 +2376,12 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="290"/>
         <source>Vertex</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertex</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="294"/>
         <source>Angle (&#xc2;&#xb0;)</source>
-        <translation type="unfinished"></translation>
+        <translation>Winkel (Â°)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="297"/>
@@ -2390,12 +2391,12 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="308"/>
         <source>Atom Index</source>
-        <translation type="unfinished"></translation>
+        <translation>Atomindex</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="310"/>
         <source>Torsion (&#xc2;&#xb0;)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="313"/>
@@ -2405,17 +2406,17 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="318"/>
         <source>X (&#xc3;&#x85;)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="320"/>
         <source>Y (&#xc3;&#x85;)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="322"/>
         <source>Z (&#xc3;&#x85;)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="330"/>
@@ -3242,7 +3243,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="357"/>
         <source>Transition State</source>
-        <translation type="unfinished"></translation>
+        <translation>Übergangsstatus</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="362"/>
@@ -3292,7 +3293,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="583"/>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Erweitert</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="588"/>
@@ -5185,7 +5186,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="298"/>
         <source>Display Types</source>
-        <translation>Anzeige-Typen</translation>
+        <translation>Darstellungs-Typen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="456"/>
@@ -5271,7 +5272,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="84"/>
         <source>Fill</source>
-        <translation type="unfinished"></translation>
+        <translation>Fläche</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="89"/>
@@ -5301,7 +5302,7 @@ Elementarzelle erzeugen?</translation>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="73"/>
         <source>Render:</source>
-        <translation type="unfinished"></translation>
+        <translation>Darstellung:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="83"/>
@@ -5590,7 +5591,7 @@ Options:
   -h, --help<byte value="x9"/><byte value="x9"/>Show help options (this)
   -v, --version<byte value="x9"/><byte value="x9"/>Show version information
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="940"/>
@@ -5757,17 +5758,17 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="13"/>
         <source>Settings</source>
-        <translation>&amp;Einstellungen</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="28"/>
         <source>Quality:</source>
-        <translation>Qualität</translation>
+        <translation>Qualität:</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="81"/>
         <source>Tabbed Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkzeuge in Reitern</translation>
     </message>
     <message>
         <location filename="../build/avogadro/src/ui_settingsdialog.h" line="111"/>
@@ -5811,7 +5812,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="57"/>
         <source>Render:</source>
-        <translation type="unfinished"></translation>
+        <translation>Darstellung:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="65"/>
@@ -5851,7 +5852,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="189"/>
         <source>Clipping plane: Ax + By + Cz + D = 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Fläche des Ausschnitts: Ax + By + Cz + D = 0</translation>
     </message>
 </context>
 <context>
@@ -5924,12 +5925,12 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/extensions/unitcellparamdialog.ui" line="81"/>
         <source>Delete Unit Cell</source>
-        <translation type="unfinished"></translation>
+        <translation>Kern löschen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/unitcellparamdialog.ui" line="101"/>
         <source>Fill Unit Cell</source>
-        <translation type="unfinished"></translation>
+        <translation>Kern ausfüllen</translation>
     </message>
 </context>
 <context>
