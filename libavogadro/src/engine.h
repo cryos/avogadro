@@ -25,6 +25,8 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#include <Eigen/Core>
+
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
 #else
