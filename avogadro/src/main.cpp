@@ -20,6 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include <avogadro/global.h>
+
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
 #endif
@@ -37,7 +39,9 @@
 
 #include <iostream>
 
-#include <avogadro/global.h>
+// get the SVN revision string
+#include <config.h>
+
 #include <avogadro/pluginmanager.h>
 
 // Avogadro Includes
@@ -47,8 +51,7 @@
 #ifdef Q_WS_X11
 #include <X11/Xlib.h>
 #endif
-// get the SVN revision string
-#include <config.h>
+
 
 using namespace Avogadro;
 
