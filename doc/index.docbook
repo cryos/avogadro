@@ -111,9 +111,27 @@
 
 		<sect1 id="requirements">
 			<title>Requirements</title>
+			<para>
+				Although Avogadro can work without any 3D-acceleration, an OpenGL-capable card will vastly improve user experience.
+			</para>
+
+		</sect1>
+		<sect1 id="building">
+			<title>Building Avogadro from source</title>
 
 			<para>
-				Avogadro  itself can be found on <ulink url="http://avogadro.sf.net">the Avogadro home page</ulink>.
+				If you decide to build Avogadro from source, the following resources will be necessary:
+				<itemizedlist>
+					<listitem><para>Subversion, to access certain code repositories</para></listitem>
+					<listitem><para>CMake (>=2.4.5), the open-source build system</para></listitem>
+					<listitem><para>Qt4 (>=4.3.0), the open-source application framework</para></listitem>
+					<listitem><para>Eigen, a library for linear algebra as a compile-time dependency of Avogadro</para></listitem>
+					<listitem><para>OpenBabel, the chemistry toolbox</para></listitem>
+				</itemizedlist>
+					Most of them might be available through your distribution's repository, although it is recommended to fetch the latest OpenBabel source from the code repository.
+				</para>
+			<para>
+				Further information can be found on <ulink url="http://avogadro.openmolecules.net/wiki/Compiling">the Avogadro home page</ulink>.
 			</para>
 		</sect1>
 
