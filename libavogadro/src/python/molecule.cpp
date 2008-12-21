@@ -13,7 +13,7 @@ using namespace Avogadro;
 
 void export_Molecule()
 {
- 
+
   // define function pointers to handle overloading
   Atom* (Molecule::*newAtom_ptr1)() = &Molecule::newAtom;
   Atom* (Molecule::*newAtom_ptr2)(unsigned long int) = &Molecule::newAtom;
@@ -37,7 +37,7 @@ void export_Molecule()
   class_<Avogadro::Molecule, bases<Avogadro::Primitive>, boost::noncopyable>("Molecule")
     // read/write properties
     .add_property("fileName", &Molecule::fileName, &Molecule::setFileName)
-    // read-only poperties 
+    // read-only poperties
     .add_property("numAtoms", &Molecule::numAtoms)
     .add_property("numBonds", &Molecule::numBonds)
     .add_property("numCubes", &Molecule::numCubes)
@@ -52,11 +52,11 @@ void export_Molecule()
     .add_property("normalVector", make_function(&Molecule::normalVector, return_value_policy<return_by_value>()))
     .add_property("radius", &Molecule::radius)
     .add_property("farthestAtom", make_function(&Molecule::farthestAtom, return_value_policy<reference_existing_object>()))
- 
-    // 
+
+    //
     // real functions
     //
-    
+
     .def("setAtomPos", &Molecule::setAtomPos)
     .def("atomPos", &Molecule::atomPos, return_value_policy<return_by_value>())
 
@@ -76,7 +76,7 @@ void export_Molecule()
     .def("bondById", &Molecule::bondById, return_value_policy<reference_existing_object>())
     .def("deleteBond", deleteBond_ptr1)
     .def("deleteBond", deleteBond_ptr2)
-    // cube functions  
+    // cube functions
     .def("newCube", &Molecule::newCube, return_value_policy<reference_existing_object>())
     .def("deleteCube", deleteCube_ptr1)
     .def("deleteCube", deleteCube_ptr2)
@@ -95,7 +95,7 @@ void export_Molecule()
     .def("deleteHydrogens", &Molecule::deleteHydrogens)
     .def("calculatePartialCharges", &Molecule::calculatePartialCharges)
     .def("clear", &Molecule::clear)
-    .def("translate", &Molecule::translate)    
+    .def("translate", &Molecule::translate)
     ;
 
-} 
+}

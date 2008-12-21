@@ -100,12 +100,22 @@ namespace Avogadro {
       /**
        * @return the order of the bond - 1 = single, 2 = double etc.
        */
-      inline short order() const { return m_order; }
+      short order() const { return m_order; }
 
       /**
        * Set the order of the bond.
        */
-      inline void setOrder(short order) { m_order = order; }
+      void setOrder(short order) { m_order = order; }
+
+      /**
+       * @return True if the bond is aromatic.
+       */
+      bool isAromatic() const;
+
+      /**
+       * Set the aromaticity of the bond.
+       */
+      void setAromaticity(bool isAromatic) const;
 
       /**
        * @return the length of the bond.
@@ -122,6 +132,7 @@ namespace Avogadro {
     private:
       unsigned long int m_beginAtomId, m_endAtomId;
       short m_order;
+      mutable bool m_isAromatic;
       Molecule *m_molecule;
       /* shared d_ptr with Primitive */
       Q_DECLARE_PRIVATE(Bond)

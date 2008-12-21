@@ -94,6 +94,22 @@
     }
   }
 
+  bool Bond::isAromatic() const
+  {
+    if (m_molecule && m_order) {
+      m_molecule->calculateAromaticity();
+      return m_isAromatic;
+    }
+    else {
+      return false;
+    }
+  }
+
+  void Bond::setAromaticity(bool isAromatic) const
+  {
+    m_isAromatic = isAromatic;
+  }
+
   double Bond::length() const
   {
     return (*m_molecule->atomById(m_endAtomId)->pos()

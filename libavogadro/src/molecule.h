@@ -173,6 +173,11 @@ namespace Avogadro {
       void calculatePartialCharges() const;
 
       /**
+       * Calculate the aromaticity of the bonds.
+       */
+      void calculateAromaticity() const;
+
+      /**
        * Create a new cube object and return a pointer to it.
        * @note Do not delete the object, use deleteCube(Cube *cube).
        */
@@ -270,8 +275,7 @@ namespace Avogadro {
        * @return The atom at the supplied index.
        * @note Replaces GetAtom.
        */
-      Atom* atom(int index);
-
+      Atom * atom(int index);
       const Atom * atom(int index) const;
 
       /**
@@ -284,6 +288,7 @@ namespace Avogadro {
        * @note Replaces GetBond.
        */
       Bond* bond(int index);
+      const Bond* bond(int index) const;
 
       /**
        * @return The bond at the supplied unique id.
@@ -401,6 +406,7 @@ namespace Avogadro {
       QString m_fileName;
       std::vector<Eigen::Vector3d> *m_atomPos;
       mutable bool m_invalidPartialCharges;
+      mutable bool m_invalidAromaticity;
       Q_DECLARE_PRIVATE(Molecule)
 
       void computeGeomInfo() const;

@@ -130,7 +130,7 @@ namespace Avogadro {
        * Set the partial charge of the atom.
        * @note This is not calculated at the moment!
        */
-      inline void setPartialCharge(double charge) const
+      void setPartialCharge(double charge) const
       {
         m_partialCharge = charge;
       }

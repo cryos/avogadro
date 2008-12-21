@@ -81,7 +81,8 @@ namespace Avogadro{
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
-    d_ptr(new MoleculePrivate), m_atomPos(0), m_invalidPartialCharges(true)
+    d_ptr(new MoleculePrivate), m_atomPos(0), m_invalidPartialCharges(true),
+    m_invalidAromaticity(true)
   {
     m_fileName = QDir::homePath() + "/untitled";
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -89,7 +90,7 @@ namespace Avogadro{
 
   Molecule::Molecule(const Molecule &other) :
     Primitive(MoleculeType, other.parent()), d_ptr(new MoleculePrivate),
-    m_atomPos(0), m_invalidPartialCharges(true)
+    m_atomPos(0), m_invalidPartialCharges(true), m_invalidAromaticity(true)
   {
     *this = other;
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -299,6 +300,7 @@ namespace Avogadro{
     m_lock->lockForWrite();
     d->invalidRings = true;
     m_invalidPartialCharges = true;
+    m_invalidAromaticity = true;
     d->bonds.push_back(bond);
     d->bondList.push_back(bond);
     m_lock->unlock();
@@ -318,6 +320,7 @@ namespace Avogadro{
     m_lock->lockForWrite();
     d->invalidRings = true;
     m_invalidPartialCharges = true;
+    m_invalidAromaticity = true;
     if(id >= d->bonds.size())
       d->bonds.resize(id+1,0);
     d->bonds[id] = bond;
@@ -350,6 +353,7 @@ namespace Avogadro{
       m_lock->lockForWrite();
       d->invalidRings = true;
       m_invalidPartialCharges = true;
+      m_invalidAromaticity = true;
       Bond *bond = d->bonds[id];
       d->bonds[id] = 0;
       // Delete the bond from the list and reorder the remaining bonds
@@ -379,6 +383,18 @@ namespace Avogadro{
   Bond *Molecule::bond(int index)
   {
     Q_D(Molecule);
+    QReadLocker lock(m_lock);
+    if (index >= 0 && index < d->bondList.size()) {
+      return d->bondList[index];
+    }
+    else {
+      return 0;
+    }
+  }
+
+  const Bond *Molecule::bond(int index) const
+  {
+    Q_D(const Molecule);
     QReadLocker lock(m_lock);
     if (index >= 0 && index < d->bondList.size()) {
       return d->bondList[index];
@@ -721,6 +737,18 @@ namespace Avogadro{
       atom(i)->setPartialCharge(obmol.GetAtom(i+1)->GetPartialCharge());
     }
     m_invalidPartialCharges = false;
+  }
+
+  void Molecule::calculateAromaticity() const
+  {
+    if (numBonds() < 1 || !m_invalidAromaticity)
+      return;
+
+    OpenBabel::OBMol obmol = OBMol();
+    for (int i = 0; i < numBonds(); ++i) {
+      bond(i)->setAromaticity(obmol.GetBond(i)->IsAromatic());
+    }
+    m_invalidAromaticity = false;
   }
 
   unsigned int Molecule::numAtoms() const
