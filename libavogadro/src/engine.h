@@ -25,7 +25,7 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-#include <Eigen/Core>
+#include <avogadro/global.h>
 
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
@@ -33,7 +33,6 @@
   #include <QGLWidget>
 #endif
 
-#include <avogadro/global.h>
 #include <avogadro/primitivelist.h>
 #include "painterdevice.h"
 #include "plugin.h"
