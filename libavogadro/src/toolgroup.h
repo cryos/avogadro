@@ -121,6 +121,10 @@ namespace Avogadro {
        * Read the settings of the GLWidget and restore them.
        */
       void readSettings(QSettings &settings);
+      /**
+       * Reset the toolgroup to it's original state
+       */
+      void removeAllTools();
 
     private Q_SLOTS:
       void activateTool();
@@ -130,6 +134,11 @@ namespace Avogadro {
        * @param tool the activated tool
        */
       void toolActivated(Tool *tool);
+      /**
+       * This signal is emitted when one or more tools are destoyed. 
+       * (Happens when plugins are reloaded)
+       */
+      void toolsDestroyed();
 
     private:
       ToolGroupPrivate * const d;

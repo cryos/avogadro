@@ -68,6 +68,16 @@ namespace Avogadro {
     delete(d);
   }
 
+  void ToolGroup::removeAllTools()
+  {
+    d->activeTool = 0;
+    
+    delete d->activateActions;
+    d->activateActions = new QActionGroup(this);
+
+    d->tools.clear();
+  }
+
   void ToolGroup::append(QList<Tool *> tools)
   {
     foreach (Tool *tool, tools) {
@@ -78,6 +88,7 @@ namespace Avogadro {
         d->activateActions->addAction(tool->activateAction());
         connect(tool->activateAction(), SIGNAL(triggered(bool)),
             this, SLOT(activateTool()));
+        connect(tool, SIGNAL(destroyed()), this, SIGNAL(toolsDestroyed()));
       }
     }
 
