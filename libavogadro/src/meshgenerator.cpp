@@ -24,6 +24,7 @@
 
 #include "meshgenerator.h"
 
+#include <Eigen/Geometry>
 #include <avogadro/cube.h>
 #include <avogadro/mesh.h>
 
@@ -144,6 +145,7 @@ namespace Avogadro {
 
 //      }
     }
+    return 0;
   }
 
   bool MeshGenerator::marchingCube(const Vector3i &pos)
