@@ -30,13 +30,16 @@
 #include <QString>
 #include <QDateTime>
 #include <QFileInfo>
+#include <QTextEdit>
 
 namespace Avogadro {
 
   class A_EXPORT PythonScript
   {
+
     public:
       PythonScript(QDir dir, QString fileName);
+      ~PythonScript();
 
       QString moduleName() const;
       boost::python::object module() const;
@@ -48,6 +51,26 @@ namespace Avogadro {
       mutable QDateTime m_lastModified;
       mutable boost::python::object m_module;
   };
+
+  
+  inline void prepareToCatchError()
+  {
+    // make sure output is available to extract it in catch if the import fails
+    PyRun_SimpleString("import cStringIO");
+    PyRun_SimpleString("import sys");
+    PyRun_SimpleString("sys.stderr = cStringIO.StringIO()");
+  }
+
+  inline const char* catchError()
+  {
+    PyErr_Print();
+    // extract the error to a string
+    boost::python::object sys = boost::python::import("sys");
+    boost::python::object err = sys.attr("stderr");
+    return boost::python::extract<const char*>(err.attr("getvalue")());
+  }
+
+  
 
 } // end namespace Avogadro
 

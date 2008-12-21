@@ -22,6 +22,7 @@
 #include <avogadro/pythonscript.h>
 
 #include <QDebug>
+#include <QTextEdit>
 
 using namespace std;
 using namespace boost::python;
@@ -31,25 +32,31 @@ namespace Avogadro
 
   PythonScript::PythonScript(QDir dir, QString fileName)
   {
-    m_fileName = fileName;
     m_dir = dir;
+    m_fileName = fileName;
+    m_moduleName = fileName.left(fileName.size()-3);
     m_lastModified = QFileInfo(dir, fileName).lastModified();
-
-    QString moduleName = fileName.left(fileName.size()-3);
-
-    m_moduleName = moduleName;
-//    object script_module(handle<>(PyImport_ImportModule(moduleName.toAscii().data())));
+     
     try
     {
-      // these do the same thing one is just a boost helper function
-      // the other just wraps in the same way
-//      m_module = object(handle<>(PyImport_ImportModule(moduleName.toAscii().data())));
-      m_module = import(moduleName.toAscii().data());
+      prepareToCatchError();
+      // try to import the module
+      m_module = import(m_moduleName.toAscii().data());
     }
     catch(error_already_set const &)
     {
-      PyErr_Print();
+      // display the error in a QTextEdit
+      QTextEdit *errorWidget = new QTextEdit();
+      errorWidget->setAttribute(Qt::WA_DeleteOnClose);
+      errorWidget->resize(500,300); 
+      errorWidget->setReadOnly(true);
+      errorWidget->append(QString(catchError()));
+      errorWidget->show();
     }
+  }
+
+  PythonScript::~PythonScript()
+  {
   }
 
   QString PythonScript::moduleName() const
@@ -60,18 +67,30 @@ namespace Avogadro
   object PythonScript::module() const
   {
     QFileInfo fileInfo(m_dir, m_fileName);
+    
     if(fileInfo.lastModified() > m_lastModified)
     {
       try
       {
+        prepareToCatchError();
         m_module = object(handle<>(PyImport_ReloadModule(m_module.ptr())));
       }
       catch(error_already_set const &)
-      { }
+      {
+        // display the error in a QTextEdit
+        QTextEdit *errorWidget = new QTextEdit();
+        errorWidget->setAttribute(Qt::WA_DeleteOnClose);
+        errorWidget->resize(500,300); 
+        errorWidget->setReadOnly(true);
+        errorWidget->append(QString(catchError()));
+        errorWidget->show();
+      }
       m_lastModified = fileInfo.lastModified();
     }
+
     return m_module;
   }
 
-}
 
+
+}
