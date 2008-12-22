@@ -423,6 +423,22 @@ namespace Avogadro {
        */
       void updatePrimitive();
 
+      /**
+       * Slot that handles when an atom has been updated.
+       * @sa atomAdded
+       * @sa atomUpdated
+       * @sa atomRemoved
+       */
+      void updateAtom();
+
+      /**
+       * Slot that handles when a bond has been updated.
+       * @sa bondAdded
+       * @sa bondUpdated
+       * @sa bondRemoved
+       */
+      void updateBond();
+
     Q_SIGNALS:
       /**
        * Emitted when a child primitive is added.
@@ -439,9 +455,45 @@ namespace Avogadro {
       /**
        * Emitted when a child primitive is deleted.
        *
-       * @param primitive pointer to the primitive that was updated before it is free'd
+       * @param primitive pointer to the primitive that was removed.
        */
       void primitiveRemoved(Primitive *primitive);
+
+      /**
+       * Emitted when an Atom is added.
+       * @param Atom pointer to the Atom that was added.
+       */
+      void atomAdded(Atom *atom);
+
+      /**
+       * Emitted when an Atom is updated.
+       * @param Atom pointer to the Atom that was updated.
+       */
+      void atomUpdated(Atom *atom);
+
+      /**
+       * Emitted when an Atom is removed.
+       * @param Atom pointer to the Atom that was removed.
+       */
+      void atomRemoved(Atom *atom);
+
+      /**
+       * Emitted when a Bond is added.
+       * @param Bond pointer to the bond that was added.
+       */
+      void bondAdded(Bond *bond);
+
+      /**
+       * Emitted when a Bond is updated.
+       * @param Bond pointer to the bond that was updated.
+       */
+      void bondUpdated(Bond *bond);
+
+      /**
+       * Emitted when a Bond is removed.
+       * @param Bond pointer to the Bond that was removed.
+       */
+      void bondRemoved(Bond *bond);
   };
 
 } // End namespace Avogadro

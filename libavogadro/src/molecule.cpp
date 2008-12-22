@@ -114,6 +114,9 @@ namespace Avogadro{
     foreach (Cube *cube, d->cubeList) {
       cube->deleteLater();
     }
+    foreach (Mesh *mesh, d->meshList) {
+      mesh->deleteLater();
+    }
     foreach (Residue *residue, d->residueList) {
       residue->deleteLater();
     }
@@ -157,8 +160,8 @@ namespace Avogadro{
 
     atom->setId(d->atoms.size()-1);
     atom->setIndex(d->atomList.size()-1);
-    connect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
-    emit primitiveAdded(atom);
+    connect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
+    emit atomAdded(atom);
     return atom;
   }
 
@@ -227,8 +230,8 @@ namespace Avogadro{
     atom->setId(id);
     atom->setIndex(d->atomList.size()-1);
     // now that the id is correct, emit the signal
-    connect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
-    emit primitiveAdded(atom);
+    connect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
+    emit atomAdded(atom);
     return(atom);
   }
 
@@ -252,8 +255,8 @@ namespace Avogadro{
       atom->deleteLater();
       m_lock->unlock();
 
-      disconnect(atom, SIGNAL(updated()), this, SLOT(updatePrimitive()));
-      emit primitiveRemoved(atom);
+      disconnect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
+      emit atomRemoved(atom);
     }
   }
 
@@ -307,8 +310,8 @@ namespace Avogadro{
 
     bond->setId(d->bonds.size()-1);
     bond->setIndex(d->bondList.size()-1);
-    connect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
-    emit primitiveAdded(bond);
+    connect(bond, SIGNAL(updated()), this, SLOT(updateBond()));
+    emit bondAdded(bond);
     return bond;
   }
 
@@ -330,8 +333,8 @@ namespace Avogadro{
     bond->setId(id);
     bond->setIndex(d->bondList.size()-1);
     // now that the id is correct, emit the signal
-    connect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
-    emit primitiveAdded(bond);
+    connect(bond, SIGNAL(updated()), this, SLOT(updateBond()));
+    emit bondAdded(bond);
     return(bond);
   }
 
@@ -374,8 +377,8 @@ namespace Avogadro{
           d->atoms[bond->endAtomId()]->deleteBond(id);
       }
 
-      disconnect(bond, SIGNAL(updated()), this, SLOT(updatePrimitive()));
-      emit primitiveRemoved(bond);
+      disconnect(bond, SIGNAL(updated()), this, SLOT(updateBond()));
+      emit bondRemoved(bond);
       bond->deleteLater();
     }
   }
@@ -799,6 +802,22 @@ namespace Avogadro{
     Primitive *primitive = qobject_cast<Primitive *>(sender());
     d->invalidGeomInfo = true;
     emit primitiveUpdated(primitive);
+  }
+
+  void Molecule::updateAtom()
+  {
+    Q_D(Molecule);
+    Atom *atom = qobject_cast<Atom *>(sender());
+    d->invalidGeomInfo = true;
+    emit atomUpdated(atom);
+  }
+
+  void Molecule::updateBond()
+  {
+    Q_D(Molecule);
+    Bond *bond = qobject_cast<Bond *>(sender());
+    d->invalidGeomInfo = true;
+    emit bondUpdated(bond);
   }
 
   void Molecule::update()
