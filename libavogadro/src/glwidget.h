@@ -439,6 +439,12 @@ namespace Avogadro {
       void toggleSelected(PrimitiveList primitives);
 
       /**
+       * Toggle the selection for the GLWidget, that is if the primitive is
+       * selected, deselect it and vice-versa.
+       */
+      void toggleSelected();
+
+      /**
        * Change the selection status for the atoms in the supplied list.
        * All objects in the list will have the same selection status.
        *

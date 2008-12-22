@@ -88,21 +88,21 @@ namespace Avogadro {
       return lhs->transparencyDepth() < rhs->transparencyDepth();
     } else if (( lhsLayers & Engine::Overlay ) && !( rhsLayers & Engine::Overlay ) ) {
       return false;
-      
+
     } else if ( !( lhsPrimitives & Engine::Molecules ) && rhsPrimitives & Engine::Molecules ) {
       return true;
     } else if (( lhsPrimitives & Engine::Molecules ) && ( rhsPrimitives & Engine::Molecules ) ) {
       return lhs->transparencyDepth() < rhs->transparencyDepth();
     } else if (( lhsPrimitives & Engine::Molecules ) && !( rhsPrimitives & Engine::Molecules ) ) {
       return false;
-      
+
     } else if ( !( lhsPrimitives & Engine::Atoms ) && rhsPrimitives & Engine::Atoms ) {
       return true;
     } else if (( lhsPrimitives & Engine::Atoms ) && ( rhsPrimitives & Engine::Atoms ) ) {
       return lhs->transparencyDepth() < rhs->transparencyDepth();
     } else if (( lhsPrimitives & Engine::Atoms ) && !( rhsPrimitives & Engine::Atoms ) ) {
       return false;
-      
+
     } else if ( !( lhsPrimitives & Engine::Bonds ) && rhsPrimitives & Engine::Bonds ) {
       return true;
     } else if (( lhsPrimitives & Engine::Bonds ) && ( rhsPrimitives & Engine::Bonds ) ) {
@@ -865,8 +865,9 @@ namespace Avogadro {
       }
 
       // Now render transparent
-      glDepthMask(GL_FALSE);
-      if (d->uc) glNewList(d->dlistTransparent, GL_COMPILE);
+      glEnable(GL_BLEND);
+      if (d->uc)
+        glNewList(d->dlistTransparent, GL_COMPILE);
       foreach(Engine *engine, d->engines) {
         if(engine->isEnabled() && engine->layers() & Engine::Transparent) {
 #ifdef ENABLE_GLSL
@@ -875,6 +876,7 @@ namespace Avogadro {
           engine->renderTransparent(d->pd);
         }
       }
+      glDisable(GL_BLEND);
 #ifdef ENABLE_GLSL
           if (m_glslEnabled) glUseProgramObjectARB(0);
 #endif
@@ -882,9 +884,7 @@ namespace Avogadro {
         glEndList();
         renderCrystal(d->dlistTransparent);
       }
-      glDepthMask(GL_TRUE);
     }
-
     // Render all the inactive tools
     if ( d->toolGroup ) {
       QList<Tool *> tools = d->toolGroup->tools();
@@ -1108,11 +1108,11 @@ namespace Avogadro {
                                  + " x "
                                  + QString::number(d->pd->height()) );
 
-    list = primitives().subList(Primitive::AtomType);
-    y += d->pd->painter()->drawText(x, y, tr("Atoms") + ": " + QString::number(list.size()));
+//    list = primitives().subList(Primitive::AtomType);
+    y += d->pd->painter()->drawText(x, y, tr("Atoms") + ": " + QString::number(d->molecule->numAtoms()));
 
-    list = primitives().subList(Primitive::BondType);
-    y += d->pd->painter()->drawText(x, y, tr("Bonds") + ": " + QString::number(list.size()));
+//    list = primitives().subList(Primitive::BondType);
+    y += d->pd->painter()->drawText(x, y, tr("Bonds") + ": " + QString::number(d->molecule->numBonds()));
   }
 
   bool GLWidget::event( QEvent *event )
@@ -1307,6 +1307,9 @@ namespace Avogadro {
       QObject::disconnect( d->molecule, 0, this, 0 );
       d->uc = NULL; // The unit cell is associated with our old molecule, we don't have to free it.
     }
+
+    // Emit the molecule changed signal
+    emit moleculeChanged(d->molecule, molecule);
 
     d->molecule = molecule;
 
@@ -1690,9 +1693,9 @@ namespace Avogadro {
     {
       //qDebug() << "Hit: " << hit.name();
       if(hit.type() == Primitive::AtomType)
-        return static_cast<Atom *>(molecule()->atom(hit.name()));
+        return molecule()->atom(hit.name());
       else if(hit.type() == Primitive::BondType)
-        return static_cast<Bond *>(molecule()->bond(hit.name()));
+        return molecule()->bond(hit.name());
       else if(hit.type() == Primitive::PointType)
         return static_cast<Point *>( d->primitives.subList(Primitive::PointType).at(hit.name()) );
     }
@@ -1711,7 +1714,7 @@ namespace Avogadro {
     // Find the first atom (if any) in hits - this will be the closest
     foreach(const GLHit& hit, chits)
       if(hit.type() == Primitive::AtomType)
-        return static_cast<Atom *>(molecule()->atom(hit.name()));
+        return molecule()->atom(hit.name());
 
     return 0;
   }
@@ -1763,8 +1766,7 @@ namespace Avogadro {
 
   void GLWidget::setSelected(PrimitiveList primitives, bool select)
   {
-    foreach(Primitive *item, primitives)
-    {
+    foreach(Primitive *item, primitives) {
       if (select && !d->selectedPrimitives.contains(item))
           d->selectedPrimitives.append( item );
       else if (!select)
@@ -1793,6 +1795,27 @@ namespace Avogadro {
     d->updateCache = true;
   }
 
+  void GLWidget::toggleSelected()
+  {
+    // Currently handle atoms and bonds
+    foreach(Atom *a, d->molecule->atoms()) {
+      Primitive *p = static_cast<Primitive *>(a);
+      if (d->selectedPrimitives.contains(p))
+        d->selectedPrimitives.removeAll(p);
+      else
+        d->selectedPrimitives.append(p);
+    }
+    foreach(Bond *b, d->molecule->bonds()) {
+      Primitive *p = static_cast<Primitive *>(b);
+      if (d->selectedPrimitives.contains(p))
+        d->selectedPrimitives.removeAll(p);
+      else
+        d->selectedPrimitives.append(p);
+    }
+    // The engine caches must be invalidated
+    d->updateCache = true;
+  }
+
   void GLWidget::clearSelected()
   {
     d->selectedPrimitives.clear();
@@ -1803,7 +1826,7 @@ namespace Avogadro {
   bool GLWidget::isSelected( const Primitive *p ) const
   {
     // Return true if the item is selected
-    return d->selectedPrimitives.contains( const_cast<Primitive *>( p ) );
+    return d->selectedPrimitives.contains(const_cast<Primitive *>(p));
   }
 
   bool GLWidget::addNamedSelection(const QString &name, PrimitiveList &primitives)
