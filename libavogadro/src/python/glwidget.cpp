@@ -33,6 +33,8 @@ void export_GLWidget()
 
   const double & (GLWidget::*radius_ptr1)() const = &GLWidget::radius;
   double (GLWidget::*radius_ptr2)(const Primitive *) const = &GLWidget::radius;
+  void (GLWidget::*toggleSelected_ptr1)() = &GLWidget::toggleSelected;
+  void (GLWidget::*toggleSelected_ptr2)(PrimitiveList list) = &GLWidget::toggleSelected;
   void (GLWidget::*removeNamedSelection_ptr1)(const QString &name) = &GLWidget::removeNamedSelection;
   void (GLWidget::*removeNamedSelection_ptr2)(int index) = &GLWidget::removeNamedSelection;
   PrimitiveList (GLWidget::*namedSelectionPrimitives_ptr1)(const QString &name) = &GLWidget::namedSelectionPrimitives;
@@ -74,7 +76,6 @@ void export_GLWidget()
     .add_property("normalVector", make_function(&GLWidget::normalVector, return_value_policy<return_by_value>()))
     .add_property("farthestAtom", make_function(&GLWidget::farthestAtom, return_value_policy<reference_existing_object>()))
     .add_property("painter", make_function(&GLWidget::painter, return_value_policy<reference_existing_object>()))
-    .add_property("primitives", make_function(&GLWidget::primitives, return_value_policy<reference_existing_object>()))
     .add_property("selectedPrimitives", &GLWidget::selectedPrimitives)
     .add_property("namedSelections", &GLWidget::namedSelections)
     .add_property("aCells", &GLWidget::aCells)
@@ -91,7 +92,7 @@ void export_GLWidget()
     .def("computeClickedAtom", &GLWidget::computeClickedAtom, return_value_policy<reference_existing_object>())
     .def("computeClickedBond", &GLWidget::computeClickedBond, return_value_policy<reference_existing_object>())
     .def("renderPrimitives", &GLWidget::renderPrimitives)
-    .def("toggleSelected", &GLWidget::toggleSelected)
+    .def("toggleSelected", toggleSelected_ptr1)
     .def("setSelected", &GLWidget::setSelected)
     .def("clearSelected", &GLWidget::clearSelected)
     .def("isSelected", &GLWidget::isSelected)
