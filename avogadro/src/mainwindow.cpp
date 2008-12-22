@@ -681,9 +681,14 @@ namespace Avogadro
 			    OBFormat *format,
 			    const QString &options)
   {
+    // Now also sets the window icon on Mac
+    // http://labs.trolltech.com/blogs/2007/12/28/spotlight-on-little-things/
+    QString shownName = fileName;
     if(fileName.isEmpty()) {
       setFileName(fileName);
       setMolecule(new Molecule(this));
+      shownName = "untitled.cml";
+      setWindowFilePath(shownName);
       return true;
     }
 
@@ -835,6 +840,7 @@ namespace Avogadro
     }
 
     setFileName( fileName );
+    setWindowFilePath(shownName);
     statusBar()->showMessage( tr("File Loaded..."), 5000 );
     d->toolGroup->setActiveTool(tr("Navigate"));
     return true;
