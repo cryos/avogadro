@@ -92,6 +92,7 @@
 #include <QInputDialog>
 #include <QUrl>
 #include <QDesktopServices>
+#include <QTime>
 
 #include <QDebug>
 
@@ -237,7 +238,7 @@ namespace Avogadro
     d->undoStack = new QUndoStack( this );
 
     d->toolGroup = new ToolGroup( this );
-    d->toolGroup->append(d->pluginManager.tools());
+    connect(&(d->pluginManager), SIGNAL(reloadPlugins()), this, SLOT(reloadPlugins()));
 
     ui.menuToolbars->addAction( ui.toolsDock->toggleViewAction() );
 
@@ -434,6 +435,22 @@ namespace Avogadro
     d->glWidget->setQuickRender(quick);
   }
 
+  void MainWindow::reloadPlugins()
+  {
+    qDebug() << "MainWindow::reloadPlugins";
+
+    /**
+     *  Extensions: instances are deleted by the PluginManager after writing the settings.
+     *  The QActions are removed from the menus when they are deleted. So we only have to 
+     *  the new load extensions.
+     */
+
+    loadExtensions();
+    reloadTabbedTools();
+
+    qDebug() << "end MainWindow::reloadPlugins";
+  }
+
   void MainWindow::reloadTabbedTools()
   {
     if(d->toolSettingsDock)
@@ -491,9 +508,16 @@ namespace Avogadro
       ui.toolsDock->raise();
     }
 
+    d->toolGroup->removeAllTools();
+    d->toolGroup->append(d->pluginManager.tools());
+
+    //qDebug() << "pluginManager.tools().size() = " << d->pluginManager.tools().size();
+
     const QList<Tool *> tools = d->toolGroup->tools();
     Tool *activeTool = d->toolGroup->activeTool();
     int toolCount = tools.size();
+
+    //qDebug() << "TOOLCOUNT = " << toolCount;
 
     for ( int i = 0; i < toolCount; i++ ) {
       Tool *tool = tools.at(i);
@@ -965,7 +989,7 @@ namespace Avogadro
     OBMol obmol = d->molecule->OBMol();
     
     // We're going to wrap up the QSettings and save them to the CML file
-    if (strcasestr(outFormat->GetID(),"cml") != NULL) {
+    if (QString(outFormat->GetID()).compare("cml", Qt::CaseInsensitive) == 0) {
       // First off, let's set some CML options
       conv.AddOption("p"); // add properties -- including OBPairData
       conv.AddOption("m"); // Dublin Core metadata
@@ -1652,10 +1676,18 @@ namespace Avogadro
       return;
     }
 
+
     // calculate elapsed time
+#ifndef WIN32
     struct timeval tv;
     gettimeofday(&tv,0);
     long elapsedTime = tv.tv_sec*1000 + tv.tv_usec/1000 - d->rotationStart;
+#else
+    // FIXME: smooth transitions are not working on windows..
+    QTime time = QTime::currentTime();
+    long elapsedTime = ( time.minute() * 60 + time.second() )*1000 + time.msec() / 1000000 - d->rotationStart;
+#endif
+
 
     if( elapsedTime > d->rotationTime )
     {
@@ -1693,12 +1725,15 @@ namespace Avogadro
 
   void MainWindow::centerView()
   {
-    Camera * camera = d->glWidget->camera();
-    if(d->centerTimer || !camera)
-    {
+    // do nothing if there is a timer running
+    if(d->centerTimer)
       return;
-    }
+     
+    Camera * camera = d->glWidget->camera();
+    if(!camera)
+      return;
 
+    // no need to animate when there are no atoms
     if(d->molecule->numAtoms() == 0)
     {
       camera->translate( d->glWidget->center() - Vector3d( 0, 0, 10 ) );
@@ -1706,6 +1741,7 @@ namespace Avogadro
       return;
     }
 
+    // if smooth transitions are disabled, center now and return
     if( !d->animationsEnabled )
     {
       camera->initializeViewPoint();
@@ -1730,7 +1766,6 @@ namespace Avogadro
     Transform3d goal(linearGoal);
 
     goal.pretranslate(- 3.0 * (d->glWidget->radius() + CAMERA_NEAR_DISTANCE) * Vector3d::UnitZ());
-
     goal.translate( - d->glWidget->center() );
 
     //cout << "Calculated Translation: " << goal.translationVector() << endl;
@@ -1742,10 +1777,17 @@ namespace Avogadro
     d->startOrientation = camera->modelview().linear();
     d->endOrientation = goal.linear();
 
+    // FIXME: use QTimer for smooth transitions
     // calculate the current time in milliseconds
+#ifndef WIN32
     struct timeval tv;
     gettimeofday(&tv,0);
     d->rotationStart = tv.tv_sec*1000 + tv.tv_usec/1000;
+#else
+    // FIXME: smooth transitions are not working on windows..
+    QTime time = QTime::currentTime();
+    d->rotationStart = (time.minute() * 60 + time.second())*1000 + time.msec() / 1000000;
+#endif
 
     // use the rotation angle between the two orientations to calculate our animation time
     double m = AngleAxisd(d->startOrientation.inverse() * d->endOrientation).angle();

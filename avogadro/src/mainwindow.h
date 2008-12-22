@@ -24,6 +24,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <Eigen/Geometry>
 #include "ui_mainwindow.h"
 #include "flowlayout.h"
 #include "flattabwidget.h"
@@ -160,6 +161,9 @@ namespace Avogadro {
       void setupProjectTree();
       void projectItemActivated(const QModelIndex& index);
 
+      void reloadTabbedTools();
+      void reloadPlugins();
+
     Q_SIGNALS:
       void moleculeChanged(Molecule *);
       void enableEngineSettingsButton(bool);
@@ -180,8 +184,6 @@ namespace Avogadro {
       bool maybeSave();
       void setFileName(const QString &fileName);
       void updateRecentFileActions();
-
-      void reloadTabbedTools();
 
       /***
        * Function for creating new GLWidgets
