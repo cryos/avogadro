@@ -45,14 +45,7 @@ namespace Avogadro
 
   PythonExtension::PythonExtension( QObject *parent ) : Extension( parent ), m_molecule(0), m_terminalDock(0)
   {
-    // create the error in a QTextEdit
-    m_errorWidget = new QTextEdit();
-    m_errorWidget->resize(500,300);
-    m_errorWidget->setReadOnly(true);
-    connect(this, SIGNAL(destroyed()), m_errorWidget, SLOT(deleteLater()));
-
     m_reloadAction = 0;
-
     findScripts();
   }
 
@@ -159,15 +152,14 @@ namespace Avogadro
               }
 
             } catch (error_already_set const &) {
-              m_errorWidget->append(QString(catchError()));
-              m_errorWidget->show();
+              catchError();
             }
           } else {
             QString msg;
             msg = "PythonExtension: checking " + file + "...\n";
             msg += "  - script has no 'Extension.actions()' method defined\n";
-            m_errorWidget->append(msg);
-            m_errorWidget->show();
+            pythonError()->append( msg );
+
 
             qDebug() << "  - script has no 'Extension.actions()' method defined";
           }
@@ -176,8 +168,7 @@ namespace Avogadro
           QString msg;
           msg = "PythonExtension: checking " + file + "...\n";
           msg += "  - script has no 'Extension' class defined\n";
-          m_errorWidget->append(msg);
-          m_errorWidget->show();
+          pythonError()->append( msg );
 
           qDebug() << "  - script has no 'Extension' class defined";
         }
@@ -224,8 +215,7 @@ namespace Avogadro
 
       return extract<QString>(m_instances.at(instanceIdx).attr("menuPath")(real_qobj));
     } catch(error_already_set const &) {
-      m_errorWidget->append(QString(catchError()));
-      m_errorWidget->show();
+      catchError();
     }
 
     return tr("&Scripts");
@@ -297,8 +287,7 @@ namespace Avogadro
 
       return extract<QUndoCommand*>(m_instances.at(instanceIdx).attr("performAction")(real_qobj, real_obj));
     } catch(error_already_set const &) {
-      m_errorWidget->append(QString(catchError()));
-      m_errorWidget->show();
+      catchError();
     }
 
     return 0;

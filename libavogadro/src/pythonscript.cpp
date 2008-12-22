@@ -48,13 +48,7 @@ namespace Avogadro
     }
     catch(error_already_set const &)
     {
-      // display the error in a QTextEdit
-      QTextEdit *errorWidget = new QTextEdit();
-      errorWidget->setAttribute(Qt::WA_DeleteOnClose);
-      errorWidget->resize(500,300); 
-      errorWidget->setReadOnly(true);
-      errorWidget->append(QString(catchError()));
-      errorWidget->show();
+      catchError();
     }
   }
 
@@ -76,18 +70,12 @@ namespace Avogadro
       try
       {
         prepareToCatchError();
-        qDebug() << "reloading module...";
+        //qDebug() << "reloading module...";
         m_module = object(handle<>(PyImport_ReloadModule(m_module.ptr())));
       }
       catch(error_already_set const &)
       {
-        // display the error in a QTextEdit
-        QTextEdit *errorWidget = new QTextEdit();
-        errorWidget->setAttribute(Qt::WA_DeleteOnClose);
-        errorWidget->resize(500,300); 
-        errorWidget->setReadOnly(true);
-        errorWidget->append(QString(catchError()));
-        errorWidget->show();
+        catchError();
       }
 
       m_lastModified = fileInfo.lastModified();

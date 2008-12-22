@@ -47,12 +47,6 @@ namespace Avogadro {
   {
     setDescription(tr("Python script rendering"));
 
-    // create the error in a QTextEdit
-    m_errorWidget = new QTextEdit();
-    m_errorWidget->resize(500,300); 
-    m_errorWidget->setReadOnly(true);
-    connect(this, SIGNAL(destroyed()), m_errorWidget, SLOT(deleteLater()));
-
     // create this directory for the user if it does not exist
     QDir pluginDir = QDir::home();
 
@@ -129,8 +123,7 @@ namespace Avogadro {
       prepareToCatchError();
       m_instance.attr("renderOpaque")(real_obj);
     } catch(error_already_set const &) {
-      m_errorWidget->append(QString(catchError()));
-      m_errorWidget->show();
+      catchError();
     }
 
     return true;
@@ -159,8 +152,7 @@ namespace Avogadro {
 
       }
     } catch (error_already_set const &) {
-      m_errorWidget->append(QString(catchError()));
-      m_errorWidget->show();
+      catchError();
     }
     emit changed();
   }
@@ -183,8 +175,7 @@ namespace Avogadro {
         if (widget)
           m_settingsWidget->groupBox->layout()->addWidget(widget);
       } catch (error_already_set const &) {
-        m_errorWidget->append(QString(catchError()));
-        m_errorWidget->show();
+        catchError();
       }
 
       connect(m_settingsWidget->scriptsComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(setScriptIndex(int)));
@@ -242,9 +233,8 @@ namespace Avogadro {
           QString msg;
           msg = "PythonEngine: checking " + file + "...\n";
           msg += "  - script has no 'Engine' class defined\n";
-          m_errorWidget->append(msg);
-          m_errorWidget->show();
-
+          pythonError()->append( msg );
+          
           qDebug() << "  - script has no 'Engine' class defined";
         }
       } else {
@@ -262,8 +252,7 @@ namespace Avogadro {
       if (PyObject_HasAttrString(m_instance.ptr(), "layers"))
         return extract<Engine::Layers>(m_instance.attr("layers")());
     } catch(error_already_set const &) {
-      m_errorWidget->append(QString(catchError()));
-      m_errorWidget->show();
+      catchError();
     }
       
     // return NoFlags, don't print an error, don't want to overwhelm new users with errors
@@ -278,8 +267,7 @@ namespace Avogadro {
       if (PyObject_HasAttrString(m_instance.ptr(), "transparencyDepth")) 
         return extract<double>(m_instance.attr("transparencyDepth")());
     } catch(error_already_set const &) {
-      m_errorWidget->append(QString(catchError()));
-      m_errorWidget->show();
+      catchError();
     }
       
     return 0.0;

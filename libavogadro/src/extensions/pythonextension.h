@@ -38,7 +38,6 @@
 #include <QString>
 #include <QDateTime>
 #include <QFileInfo>
-#include <QTextEdit>
 #include <QHash>
 
 class QDockWidget;
@@ -73,7 +72,6 @@ namespace Avogadro {
       QList<boost::python::object> m_instances;
       QHash<QAction*, int> m_actionHash;
       QAction *m_reloadAction;
-      QTextEdit *m_errorWidget;
 
       Molecule *m_molecule;
       QDockWidget *m_terminalDock;

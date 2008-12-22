@@ -29,7 +29,6 @@
 #include <avogadro/engine.h>
 #include <avogadro/pythoninterpreter.h>
 #include <avogadro/pythonscript.h>
-#include <QTextEdit>
 
 #include "ui_pythonsettingswidget.h"
 
@@ -85,8 +84,6 @@ namespace Avogadro {
 
     int m_scriptIndex;
     boost::python::object m_instance;
-
-    QTextEdit *m_errorWidget;
     
     void loadScripts(QDir dir);
 
