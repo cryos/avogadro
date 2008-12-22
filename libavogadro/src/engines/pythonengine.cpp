@@ -238,8 +238,15 @@ namespace Avogadro {
         if (PyObject_HasAttrString(script.module().ptr(), "Engine")) {
           m_scripts.append(script);
           qDebug() << "  + 'Engine' class found";
-        } else
+        } else {
+          QString msg;
+          msg = "PythonEngine: checking " + file + "...\n";
+          msg += "  - script has no 'Engine' class defined\n";
+          m_errorWidget->append(msg);
+          m_errorWidget->show();
+
           qDebug() << "  - script has no 'Engine' class defined";
+        }
       } else {
         qDebug() << "  - no module";
       }
