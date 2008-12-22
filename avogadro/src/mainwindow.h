@@ -48,6 +48,7 @@ namespace Avogadro {
   class GLWidget;
   class Molecule;
   class Engine;
+  class Extension;
 
   class MainWindowPrivate;
   class MainWindow : public QMainWindow
@@ -163,6 +164,11 @@ namespace Avogadro {
 
       void reloadTabbedTools();
       void reloadPlugins();
+
+      /**
+       * Add an extension's actions to the menu
+       */
+      void addActionsToMenu(Extension *extension);
 
     Q_SIGNALS:
       void moleculeChanged(Molecule *);
