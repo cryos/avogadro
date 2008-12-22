@@ -629,10 +629,10 @@ namespace Avogadro
         m_stepSize = 0.10;
       }
     }
-    m_min = m_grid->cube()->min();
+    m_min = m_grid->cube()->min().cast<float>();
 
     // Work out the max coordinate too
-    m_max = m_grid->cube()->max();
+    m_max = m_grid->cube()->max().cast<float>();
 
     // Right now we are just using one tessellation method
     m_tessellation=&IsoGen::vMarchCube1;
