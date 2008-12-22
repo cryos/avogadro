@@ -27,6 +27,7 @@
 #include <QDockWidget>
 #include <QCompleter>
 #include <QKeyEvent>
+#include <QUndoCommand>
 
 #include <QDebug>
 
@@ -46,7 +47,7 @@ namespace Avogadro
   {
     // create the error in a QTextEdit
     m_errorWidget = new QTextEdit();
-    m_errorWidget->resize(500,300); 
+    m_errorWidget->resize(500,300);
     m_errorWidget->setReadOnly(true);
     connect(this, SIGNAL(destroyed()), m_errorWidget, SLOT(deleteLater()));
 
@@ -116,7 +117,7 @@ namespace Avogadro
       + "share/libavogadro/extensionScripts";
     pluginDir.cd(systemScriptsPath);
     loadScripts(pluginDir);
-#endif  
+#endif
   }
 
   void PythonExtension::loadScripts(QDir dir)
@@ -156,7 +157,7 @@ namespace Avogadro
                 m_actions.append(action);
                 m_actionHash[action] = m_instances.indexOf(instance);
               }
-              
+
             } catch (error_already_set const &) {
               m_errorWidget->append(QString(catchError()));
               m_errorWidget->show();
@@ -167,17 +168,17 @@ namespace Avogadro
             msg += "  - script has no 'Extension.actions()' method defined\n";
             m_errorWidget->append(msg);
             m_errorWidget->show();
-          
+
             qDebug() << "  - script has no 'Extension.actions()' method defined";
           }
-        
+
         } else {
           QString msg;
           msg = "PythonExtension: checking " + file + "...\n";
           msg += "  - script has no 'Extension' class defined\n";
           m_errorWidget->append(msg);
           m_errorWidget->show();
-          
+
           qDebug() << "  - script has no 'Extension' class defined";
         }
 
@@ -213,20 +214,20 @@ namespace Avogadro
     if (!PyObject_HasAttrString(m_instances.at(instanceIdx).ptr(), "menuPath")) {
       return tr("&Scripts");
     }
-      
+
     try {
       prepareToCatchError();
-    
+
       boost::python::return_by_value::apply<QAction*>::type qconverter;
       PyObject *qobj = qconverter(action);
       object real_qobj = object(handle<>(qobj));
- 
+
       return extract<QString>(m_instances.at(instanceIdx).attr("menuPath")(real_qobj));
     } catch(error_already_set const &) {
       m_errorWidget->append(QString(catchError()));
       m_errorWidget->show();
     }
- 
+
     return tr("&Scripts");
   }
 
@@ -283,23 +284,23 @@ namespace Avogadro
     if (!PyObject_HasAttrString(m_instances.at(instanceIdx).ptr(), "performAction")) {
       return 0;
     }
-      
+
     try {
       prepareToCatchError();
       boost::python::reference_existing_object::apply<GLWidget*>::type converter;
       PyObject *obj = converter(widget);
       object real_obj = object(handle<>(obj));
-    
+
       boost::python::return_by_value::apply<QAction*>::type qconverter;
       PyObject *qobj = qconverter(action);
       object real_qobj = object(handle<>(qobj));
- 
+
       return extract<QUndoCommand*>(m_instances.at(instanceIdx).attr("performAction")(real_qobj, real_obj));
     } catch(error_already_set const &) {
       m_errorWidget->append(QString(catchError()));
       m_errorWidget->show();
     }
- 
+
     return 0;
   }
 
