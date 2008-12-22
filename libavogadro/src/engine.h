@@ -2,6 +2,7 @@
   Engine - Engine interface and plugin factory.
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -34,9 +35,9 @@
 #endif
 
 #include <avogadro/primitivelist.h>
-#include "painterdevice.h"
 #include "plugin.h"
 
+#include <QList>
 #include <QSettings>
 #include <QtPlugin>
 
@@ -55,6 +56,10 @@
 namespace Avogadro {
 
   class PainterDevice;
+  class Atom;
+  class Bond;
+  class Molecule;
+  class Color;
 
   /**
    * @class Engine engine.h <avogadro/engine.h>
@@ -86,7 +91,7 @@ namespace Avogadro {
         Overlay = 0x02 /// renders overlays (always "on top")
       };
       Q_DECLARE_FLAGS(Layers, Layer)
-      
+
     /**
      * \enum PrimitiveType
      * Primitives accepted by an engine (or none)
@@ -102,7 +107,7 @@ namespace Avogadro {
         Fragments = 0x10 /// renders fragments or residues
       };
       Q_DECLARE_FLAGS(PrimitiveTypes, PrimitiveType)
-      
+
     /**
      * \enum ColorType
      * Color schemes used by the engine
@@ -299,6 +304,18 @@ namespace Avogadro {
       virtual const PrimitiveList & primitives() const;
 
       /**
+       * @return the engine's Atom list containing all atoms the engine
+       * can render.
+       */
+      virtual const QList<Atom *> atoms() const;
+
+      /**
+       * @return the engine's Bond list containing all bonds the engine
+       * can render.
+       */
+      virtual const QList<Bond *> bonds() const;
+
+      /**
        * Set the primitives that the engine instance can render.
        * @param primitives the PrimitiveList the engine can render from.
        */
@@ -317,7 +334,12 @@ namespace Avogadro {
       /**
        * Set the PainterDevice pointer for this engine.
        */
-      virtual void setPainterDevice(const PainterDevice *pd) { m_pd = pd; }
+      virtual void setPainterDevice(const PainterDevice *pd);
+
+      /**
+       * Get the Molecule for the engine.
+       */
+      virtual const Molecule * molecule() const { return m_molecule; }
 
       /** Get the radius of the primitive referred to.
        * @param pd is the painter device used for rendering (e.g., if a primitive is selected)
@@ -336,7 +358,7 @@ namespace Avogadro {
        * @param enabled true to enable the egine, false to disable the engine.
        */
       void setEnabled(bool enabled);
-      
+
       /**
        * @return the color schemes used by this engine.
        */
@@ -388,10 +410,34 @@ namespace Avogadro {
       virtual void updatePrimitive(Primitive *primitive);
 
       /**
-       * Remove the primitive to from the engines PrimitiveList.
+       * Remove the primitive from from the engines PrimitiveList.
        * @param primitive to be removed from the PrimitiveList.
        */
       virtual void removePrimitive(Primitive *primitive);
+
+      /**
+       * Add the Atom to the engines atom list.
+       * @param atom to be added to the atom list.
+       */
+      virtual void addAtom(Atom *atom);
+
+      /**
+       * Remove the Atom from from the engines atom list.
+       * @param atom to be removed from the atom list.
+       */
+      virtual void removeAtom(Atom *atom);
+
+      /**
+       * Add the Bond to the engines bond list.
+       * @param bond to be added to the bond list.
+       */
+      virtual void addBond(Bond *bond);
+
+      /**
+       * Remove the Bond from from the engines bond list.
+       * @param bond to be removed from the bond list.
+       */
+      virtual void removeBond(Bond *bond);
 
       /** Set the color map to be used for this engine.
        * The default is to color each atom by element.
@@ -400,29 +446,31 @@ namespace Avogadro {
       virtual void setColorMap(Color *map);
 
       /**
-       * If the Molecule is changed and we are rendering a custom list of
-       * primitives they should be invalidated.
+       * Slot to set the Molecule pointer for this engine.
        */
-      void changeMolecule(Molecule *previous, Molecule *next);
+      virtual void setMolecule(const Molecule *molecule);
+
+      /**
+       * Slot to change the molecule of the engine.
+       */
+      virtual void changeMolecule(Molecule *previous, Molecule *next);
 
     protected:
       EnginePrivate *const d;
       GLuint m_shader;
       const PainterDevice *m_pd;
+      const Molecule *m_molecule;
       Color *m_colorMap;
       bool m_enabled;
       bool m_customPrims;
       PrimitiveList m_primitives;
+      QList<Atom *> m_atoms;
+      QList<Bond *> m_bonds;
       QString m_alias;
       QString m_description;
-  };
 
-  inline const PrimitiveList & Engine::primitives() const
-  {
-    if (m_customPrims) return m_primitives;
-    else if (m_pd->primitives()->size()) return (*m_pd->primitives());
-    else return m_primitives;
-  }
+      virtual void useCustomPrimitives();
+  };
 
 } // end namespace Avogadro
 

@@ -2,6 +2,7 @@
   Engine - Engine interface and plugin factory.
 
   Copyright (C) 2006,2007 Donald Ephraim Curtis
+  Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -24,7 +25,10 @@
 
 #include "engine.h"
 
-#include "molecule.h"
+#include <avogadro/painterdevice.h>
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
 
 namespace Avogadro {
 
@@ -35,15 +39,15 @@ namespace Avogadro {
   };
 
   Engine::Engine(QObject *parent) : QObject(parent), d(new EnginePrivate),
-    m_shader(0), m_pd(0), m_colorMap(0), m_enabled(false), m_customPrims(false)
+    m_shader(0), m_pd(0), m_molecule(0), m_colorMap(0), m_enabled(false),
+    m_customPrims(false)
   {
   }
 
   Engine::~Engine()
   {
-    if (m_pd)
-      if (m_pd->molecule())
-        disconnect(m_pd->molecule(), 0, this, 0);
+    if (m_molecule)
+      disconnect(m_molecule, 0, this, 0);
     delete d;
   }
 
@@ -75,29 +79,48 @@ namespace Avogadro {
     m_primitives.clear();
   }
 
+  void Engine::setPainterDevice(const PainterDevice *pd)
+  {
+    m_pd = pd;
+    m_molecule = m_pd->molecule();
+  }
+
   void Engine::setEnabled(bool enabled)
   {
     m_enabled = enabled;
     emit changed();
   }
 
-  void Engine::addPrimitive(Primitive *primitive)
+  void Engine::addPrimitive(Primitive *p)
   {
     if (m_customPrims) {
-      if(!m_primitives.contains(primitive))
-        m_primitives.append(primitive);
+      if (p->type() == Primitive::AtomType) {
+        if (!m_atoms.contains(static_cast<Atom *>(p)))
+          m_atoms.append(static_cast<Atom *>(p));
+      }
+      else if (p->type() == Primitive::BondType) {
+        if (!m_bonds.contains(static_cast<Bond *>(p)))
+          m_bonds.append(static_cast<Bond *>(p));
+      }
+      else {
+        if(!m_primitives.contains(p))
+          m_primitives.append(p);
+      }
     }
     else {
-      m_customPrims = true;
-      m_primitives = *m_pd->primitives();
-      if(!m_primitives.contains(primitive))
-        m_primitives.append(primitive);
-
-      // Now listen to the molecule
-      connect(m_pd->molecule(), SIGNAL(primitiveAdded(Primitive*)),
-              this, SLOT(addPrimitive(Primitive*)));
-      connect(m_pd->molecule(), SIGNAL(primitiveRemoved(Primitive*)),
-              this, SLOT(removePrimitive(Primitive*)));
+      useCustomPrimitives();
+      if (p->type() == Primitive::AtomType) {
+        if (!m_atoms.contains(static_cast<Atom *>(p)))
+          m_atoms.append(static_cast<Atom *>(p));
+      }
+      else if (p->type() == Primitive::BondType) {
+        if (!m_bonds.contains(static_cast<Bond *>(p)))
+          m_bonds.append(static_cast<Bond *>(p));
+      }
+      else {
+        if(!m_primitives.contains(p))
+          m_primitives.append(p);
+      }
     }
 
     emit changed();
@@ -108,16 +131,77 @@ namespace Avogadro {
     emit changed();
   }
 
-  void Engine::removePrimitive(Primitive *primitive)
+  void Engine::removePrimitive(Primitive *p)
   {
-    if (m_customPrims)
-      m_primitives.removeAll(primitive);
-    else {
-      m_customPrims = true;
-      m_primitives = *m_pd->primitives();
-      m_primitives.removeAll(primitive);
+    if (m_customPrims) {
+      if (p->type() == Primitive::AtomType)
+        m_atoms.removeAll(static_cast<Atom *>(p));
+      else if (p->type() == Primitive::BondType)
+        m_bonds.removeAll(static_cast<Bond *>(p));
+      else
+        m_primitives.removeAll(p);
     }
-    m_primitives.removeAll(primitive);
+    else {
+      useCustomPrimitives();
+      if (p->type() == Primitive::AtomType)
+        m_atoms.removeAll(static_cast<Atom *>(p));
+      else if (p->type() == Primitive::BondType)
+        m_bonds.removeAll(static_cast<Bond *>(p));
+      else
+        m_primitives.removeAll(p);
+    }
+    emit changed();
+  }
+
+  void Engine::addAtom(Atom *a)
+  {
+    if (m_customPrims) {
+      if (!m_atoms.contains(a))
+        m_atoms.append(a);
+    }
+    else {
+      useCustomPrimitives();
+      if (!m_atoms.contains(a))
+        m_atoms.append(a);
+    }
+    emit changed();
+  }
+
+  void Engine::removeAtom(Atom *a)
+  {
+    if (m_customPrims) {
+      m_atoms.removeAll(a);
+    }
+    else {
+      useCustomPrimitives();
+      m_atoms.removeAll(a);
+    }
+    emit changed();
+  }
+
+  void Engine::addBond(Bond *b)
+  {
+    if (m_customPrims) {
+      if (!m_bonds.contains(b))
+        m_bonds.append(b);
+    }
+    else {
+      useCustomPrimitives();
+      if (!m_bonds.contains(b))
+        m_bonds.append(b);
+    }
+    emit changed();
+  }
+
+  void Engine::removeBond(Bond *b)
+  {
+    if (m_customPrims) {
+      m_bonds.removeAll(b);
+    }
+    else {
+      useCustomPrimitives();
+      m_bonds.removeAll(b);
+    }
     emit changed();
   }
 
@@ -187,13 +271,63 @@ namespace Avogadro {
     setDescription(settings.value("description", description()).toString());
   }
 
-  void Engine::changeMolecule(Molecule *previous, Molecule *)
+  void Engine::setMolecule(const Molecule *mol)
   {
     if (m_customPrims) {
       m_primitives.clear();
+      m_atoms.clear();
+      m_bonds.clear();
       m_customPrims = false;
-      disconnect(previous, 0, this, 0);
+      if (m_molecule)
+        disconnect(m_molecule, 0, this, 0);
     }
+    m_molecule = mol;
+  }
+
+  void Engine::changeMolecule(Molecule *previous, Molecule *next)
+  {
+    setMolecule(next);
+  }
+
+  void Engine::useCustomPrimitives()
+  {
+    m_customPrims = true;
+    m_atoms = m_molecule->atoms();
+    m_bonds = m_molecule->bonds();
+    m_primitives = *m_pd->primitives();
+
+    // Now listen to the molecule
+    connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)),
+            this, SLOT(addPrimitive(Primitive*)));
+    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)),
+            this, SLOT(removePrimitive(Primitive*)));
+    connect(m_molecule, SIGNAL(atomAdded(Atom*)),
+            this, SLOT(addAtom(Atom*)));
+    connect(m_molecule, SIGNAL(atomRemoved(Atom*)),
+            this, SLOT(removeAtom(Atom*)));
+    connect(m_molecule, SIGNAL(bondAdded(Bond*)),
+            this, SLOT(addBond(Bond*)));
+    connect(m_molecule, SIGNAL(bondRemoved(Bond*)),
+            this, SLOT(removeBond(Bond*)));
+  }
+
+  const PrimitiveList & Engine::primitives() const
+  {
+    if (m_customPrims) return m_primitives;
+    else if (m_pd->primitives()->size()) return *m_pd->primitives();
+    else return m_primitives;
+  }
+
+  const QList<Atom *> Engine::atoms() const
+  {
+    if (m_customPrims) return m_atoms;
+    else return m_molecule->atoms();
+  }
+
+  const QList<Bond *> Engine::bonds() const
+  {
+    if (m_customPrims) return m_bonds;
+    else return m_molecule->bonds();
   }
 }
 
