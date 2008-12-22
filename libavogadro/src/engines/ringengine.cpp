@@ -73,14 +73,11 @@ namespace Avogadro{
   {
     if (m_alpha < 1.0) return true;
 
-    // Use the openbabel GetSSSR() function to find all rings.
     // Special case for everything up to 7 membered rings.
     QList<Fragment *> rings = const_cast<Molecule *>(pd->molecule())->rings();
-
     // Now actually draw the ring structures
-    foreach(Fragment *r, rings) {
+    foreach(Fragment *r, rings)
       renderRing(r->atoms(), pd);
-    }
 
     return true;
   }
@@ -89,20 +86,13 @@ namespace Avogadro{
   {
     if (m_alpha > 0.999) return true;
 
-    // Use the openbabel GetSSSR() function to find all rings.
+    foreach (Color color, m_ringColors)
+      color.setAlpha(m_alpha);
     // Special case for everything up to 7 membered rings.
     QList<Fragment *> rings = const_cast<Molecule *>(pd->molecule())->rings();
-
-    pd->painter()->setColor(0.7, 0.7, 0.7, m_alpha);
-
-    glDepthMask(GL_TRUE);
-    glEnable(GL_BLEND);
     // Now actually draw the ring structures
-    foreach(Fragment *r, rings) {
+    foreach(Fragment *r, rings)
       renderRing(r->atoms(), pd);
-    }
-    glEnable(GL_BLEND);
-    glDepthMask(GL_FALSE);
 
     return true;
   }
@@ -214,7 +204,7 @@ namespace Avogadro{
 
   Engine::Layers RingEngine::layers() const
   {
-    return Engine::Transparent;
+    return Engine::Opaque | Engine::Transparent;
   }
 
   Engine::PrimitiveTypes RingEngine::primitiveTypes() const
@@ -238,8 +228,10 @@ namespace Avogadro{
     if(!m_settingsWidget)
     {
       m_settingsWidget = new RingSettingsWidget();
-      connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
-      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)),
+              this, SLOT(setOpacity(int)));
+      connect(m_settingsWidget, SIGNAL(destroyed()),
+              this, SLOT(settingsWidgetDestroyed()));
       m_settingsWidget->opacitySlider->setValue(20*m_alpha);
     }
     return m_settingsWidget;

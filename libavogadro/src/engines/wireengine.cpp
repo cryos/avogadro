@@ -65,20 +65,16 @@ namespace Avogadro {
 
   bool WireEngine::renderOpaque(PainterDevice *pd)
   {
-    QList<Primitive *> list;
-
     glDisable(GL_LIGHTING);
 
     // Skip this entire step if the user turns it off
     if (m_showDots) {
-      list = primitives().subList(Primitive::AtomType);
-      foreach(Primitive *p, list)
-        renderOpaque(pd, static_cast<const Atom *>(p));
+      foreach(Atom *a, atoms())
+        renderOpaque(pd, a);
     }
 
-    list = primitives().subList(Primitive::BondType);
-    foreach(Primitive *p, list)
-      renderOpaque(pd, static_cast<const Bond *>(p));
+    foreach(Bond *b, bonds())
+      renderOpaque(pd, b);
 
     glEnable(GL_LIGHTING);
 

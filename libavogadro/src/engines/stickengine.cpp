@@ -94,7 +94,6 @@ namespace Avogadro {
 
   bool StickEngine::renderTransparent(PainterDevice *pd)
   {
-    glEnable( GL_BLEND );
     glDisable( GL_NORMALIZE );
     glEnable( GL_RESCALE_NORMAL );
 
@@ -196,6 +195,11 @@ namespace Avogadro {
   inline double StickEngine::radius(const Atom*) const
   {
     return m_radius;
+  }
+
+  Engine::Layers StickEngine::layers() const
+  {
+    return Engine::Opaque | Engine::Transparent;
   }
 
 	// **** Settings Widget ***

@@ -59,6 +59,8 @@ namespace Avogadro {
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 
+      Engine::Layers layers() const;
+
       QWidget* settingsWidget();
       /**
        * Write the engine settings so that they can be saved between sessions.

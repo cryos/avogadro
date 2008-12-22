@@ -100,11 +100,6 @@ namespace Avogadro {
       if (m_update)
         updateSurfaces(pd);
 
-      if (m_renderMode == 0) {
-        glEnable(GL_BLEND);
-        glDepthMask(GL_TRUE);
-      }
-
       if (m_mesh1) {
         if (m_mesh1->stable()) {
           pd->painter()->setColor(&m_posColor);
@@ -120,11 +115,6 @@ namespace Avogadro {
       }
 
       renderSurfaces(pd);
-
-      if (m_renderMode == 0) {
-        glDisable(GL_BLEND);
-        glDepthMask(GL_FALSE);
-      }
     }
     return true;
   }
@@ -285,7 +275,7 @@ namespace Avogadro {
   {
     return 1.0;
   }
-  
+
   Engine::Layers OrbitalEngine::layers() const
   {
     return Engine::Transparent;

@@ -602,6 +602,7 @@ namespace Avogadro
 
     // Don't want planes to be too shiny.
     d->color.applyAsFlatMaterials();
+    d->color.apply();
 
     // The plane normal vector of the view
     const Eigen::Vector3d planeNormalVector = d->widget->normalVector();
