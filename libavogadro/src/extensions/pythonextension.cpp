@@ -44,6 +44,33 @@ namespace Avogadro
 
   PythonExtension::PythonExtension( QObject *parent ) : Extension( parent ), m_molecule(0), m_terminalDock(0)
   {
+    // create the error in a QTextEdit
+    m_errorWidget = new QTextEdit();
+    m_errorWidget->resize(500,300); 
+    m_errorWidget->setReadOnly(true);
+    connect(this, SIGNAL(destroyed()), m_errorWidget, SLOT(deleteLater()));
+
+    m_reloadAction = 0;
+
+    findScripts();
+  }
+
+  void PythonExtension::findScripts()
+  {
+    m_scripts.clear();
+    m_instances.clear();
+    foreach (QAction *action, m_actions)
+      action->deleteLater();
+    m_actions.clear();
+    m_actionHash.clear();
+
+    //if (m_reloadAction)
+    //  delete m_reloadAction;
+    m_reloadAction = new QAction( this );
+    m_reloadAction->setText("Reload Python Extensions");
+    m_actions.append(m_reloadAction);
+
+
     // create this directory for the user if it does not exist
     QDir pluginDir = QDir::home();
 
@@ -72,11 +99,11 @@ namespace Avogadro
   #endif
 #endif
 
-    if(!pluginDir.cd("scripts")) {
-      if(!pluginDir.mkdir("scripts")) {
+    if(!pluginDir.cd("extensionScripts")) {
+      if(!pluginDir.mkdir("extensionScripts")) {
         return;
       }
-      if(!pluginDir.cd("scripts")) {
+      if(!pluginDir.cd("extensionScripts")) {
         return;
       }
     }
@@ -86,10 +113,10 @@ namespace Avogadro
 #ifndef WIN32
     // Now for the system wide Python scripts
     QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
-      + "share/libavogadro/scripts";
+      + "share/libavogadro/extensionScripts";
     pluginDir.cd(systemScriptsPath);
     loadScripts(pluginDir);
-#endif
+#endif  
   }
 
   void PythonExtension::loadScripts(QDir dir)
@@ -104,20 +131,59 @@ namespace Avogadro
 
     foreach(const QString& file, dir.entryList())
     {
-      qDebug() << file;
+      qDebug() << "PythonExtension: checking " << file << "...";
       PythonScript script(dir.canonicalPath(), file);
       if(script.module())
       {
-        dict local;
-        local[script.moduleName().toStdString()] = script.module();
-        QAction *action = new QAction( this );
-        QString name = m_interpreter.eval(script.moduleName() + ".name()", local);
-        action->setText( name );
-        action->setData(ScriptIndex + m_scripts.size());
-        m_actions.append(action);
+        // make sure there is an Engine class defined
+        if (PyObject_HasAttrString(script.module().ptr(), "Extension")) {
+          m_scripts.append(script);
+          qDebug() << "  + 'Extension' class found";
 
-        m_scripts.append(script);
+          // instantiate the python extension
+          object instance = script.module().attr("Extension")(); // FIXME: can this generate an exception??
+          m_instances.append(instance);
 
+          // try getting the QActions
+          if (PyObject_HasAttrString(instance.ptr(), "actions")) {
+            //object pyqtActions = instance.attr("actions")();
+            try {
+              prepareToCatchError();
+              QList<QAction*> actions = extract< QList<QAction*> >(instance.attr("actions")());
+
+              foreach (QAction *action, actions) {
+                action->setParent( this ); // this will make the MainWindow call performAction on this extension
+                m_actions.append(action);
+                m_actionHash[action] = m_instances.indexOf(instance);
+              }
+              
+            } catch (error_already_set const &) {
+              m_errorWidget->append(QString(catchError()));
+              m_errorWidget->show();
+            }
+          } else {
+            QString msg;
+            msg = "PythonExtension: checking " + file + "...\n";
+            msg += "  - script has no 'Extension.actions()' method defined\n";
+            m_errorWidget->append(msg);
+            m_errorWidget->show();
+          
+            qDebug() << "  - script has no 'Extension.actions()' method defined";
+          }
+        
+        } else {
+          QString msg;
+          msg = "PythonExtension: checking " + file + "...\n";
+          msg += "  - script has no 'Extension' class defined\n";
+          m_errorWidget->append(msg);
+          m_errorWidget->show();
+          
+          qDebug() << "  - script has no 'Extension' class defined";
+        }
+
+      } else {
+        // PythonScript::module() creates it's own dialog with the error...
+        qDebug() << "  - no module";
       }
     }
   }
@@ -134,8 +200,33 @@ namespace Avogadro
   }
 
   // allows us to set the intended menu path for each action
-  QString PythonExtension::menuPath(QAction *) const
+  QString PythonExtension::menuPath(QAction *action) const
   {
+    qDebug() << "PythonExtension::menuPath()";
+
+    if (action == m_reloadAction) {
+      return tr("&Extensions");
+    }
+
+    int instanceIdx = m_actionHash[action];
+
+    if (!PyObject_HasAttrString(m_instances.at(instanceIdx).ptr(), "menuPath")) {
+      return tr("&Scripts");
+    }
+      
+    try {
+      prepareToCatchError();
+    
+      boost::python::return_by_value::apply<QAction*>::type qconverter;
+      PyObject *qobj = qconverter(action);
+      object real_qobj = object(handle<>(qobj));
+ 
+      return extract<QString>(m_instances.at(instanceIdx).attr("menuPath")(real_qobj));
+    } catch(error_already_set const &) {
+      m_errorWidget->append(QString(catchError()));
+      m_errorWidget->show();
+    }
+ 
     return tr("&Scripts");
   }
 
@@ -178,20 +269,37 @@ namespace Avogadro
 
   QUndoCommand* PythonExtension::performAction( QAction *action, GLWidget *widget )
   {
-    Q_UNUSED(widget);
-    int i = action->data().toInt();
+    qDebug() << "PythonExtension::performAction()";
 
-    // are we running a script?
-    if(i >= ScriptIndex)
-    {
-//      PythonScript script = m_scripts.at(i - ScriptIndex);
-//      qDebug() << "Executing Script" << script.name();
-      dict local;
-      local[m_scripts.at(i - ScriptIndex).moduleName().toStdString()] =
-        m_scripts.at(i - ScriptIndex).module();
-      QString output = m_interpreter.exec(m_scripts.at(i-ScriptIndex).moduleName() + ".extension()", local);
-      emit message(output);
+    if (action == m_reloadAction) {
+      qDebug() << "Reloading python extensions";
+      findScripts();
+      emit actionsChanged( this );
+      return 0;
     }
+
+    int instanceIdx = m_actionHash[action];
+
+    if (!PyObject_HasAttrString(m_instances.at(instanceIdx).ptr(), "performAction")) {
+      return 0;
+    }
+      
+    try {
+      prepareToCatchError();
+      boost::python::reference_existing_object::apply<GLWidget*>::type converter;
+      PyObject *obj = converter(widget);
+      object real_obj = object(handle<>(obj));
+    
+      boost::python::return_by_value::apply<QAction*>::type qconverter;
+      PyObject *qobj = qconverter(action);
+      object real_qobj = object(handle<>(qobj));
+ 
+      return extract<QUndoCommand*>(m_instances.at(instanceIdx).attr("performAction")(real_qobj, real_obj));
+    } catch(error_already_set const &) {
+      m_errorWidget->append(QString(catchError()));
+      m_errorWidget->show();
+    }
+ 
     return 0;
   }
 

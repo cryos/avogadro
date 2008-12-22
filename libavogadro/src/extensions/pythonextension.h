@@ -26,7 +26,6 @@
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
-//#include <avogadro/boost.h>
 #include <avogadro/pythoninterpreter.h>
 #include <avogadro/pythonscript.h>
 
@@ -39,6 +38,8 @@
 #include <QString>
 #include <QDateTime>
 #include <QFileInfo>
+#include <QTextEdit>
+#include <QHash>
 
 class QDockWidget;
 namespace Avogadro {
@@ -69,12 +70,18 @@ namespace Avogadro {
       QList<QAction *> m_actions;
       QList<PythonScript> m_scripts;
 
+      QList<boost::python::object> m_instances;
+      QHash<QAction*, int> m_actionHash;
+      QAction *m_reloadAction;
+      QTextEdit *m_errorWidget;
+
       Molecule *m_molecule;
       QDockWidget *m_terminalDock;
       PythonTerminalWidget *m_terminalWidget;
 
       PythonInterpreter m_interpreter;
 
+      void findScripts();
       void loadScripts(QDir dir);
 
     private Q_SLOTS:
