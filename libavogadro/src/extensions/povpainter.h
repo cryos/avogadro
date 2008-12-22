@@ -27,6 +27,7 @@
 
 #include <avogadro/global.h>
 #include <avogadro/painter.h>
+#include <avogadro/painterdevice.h>
 #include <avogadro/glwidget.h>
 
 class QFile;
