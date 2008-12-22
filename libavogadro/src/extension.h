@@ -126,6 +126,10 @@ namespace Avogadro {
      * @param m the message to add to the message pane.
      */
     void message(const QString &m);
+    /**
+     * Can be used to notify the MainWindow to refresh the QActions for this extension.
+     */
+    void actionsChanged(Extension*);
 
   };
 
