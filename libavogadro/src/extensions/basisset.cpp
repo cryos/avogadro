@@ -186,7 +186,7 @@ namespace Avogadro
     dr2.reserve(m_atoms.size());
     for (unsigned int i = 0; i < m_atoms.size(); ++i) {
       deltas.push_back(pos - m_atoms.at(i)->pos);
-      dr2.push_back(deltas[i].norm2());
+      dr2.push_back(deltas[i].squaredNorm());
     }
 
     // Reset the m_MO counter and start processing shells
@@ -524,7 +524,7 @@ namespace Avogadro
                             min.y() + j * step,
                             min.z() + k * step);
           delta[counter] = tmpPos - atomPos;
-          dr2[counter] = delta[counter].norm2();
+          dr2[counter] = delta[counter].squaredNorm();
           ++counter;
         }
       }
@@ -708,7 +708,7 @@ namespace Avogadro
     // Calculate the deltas for the position
     for (unsigned int i = 0; i < atomsSize; ++i) {
       deltas.push_back(pos - set->m_atoms[i]->pos);
-      dr2.push_back(deltas[i].norm2());
+      dr2.push_back(deltas[i].squaredNorm());
     }
 
     // Now calculate the value at this point in space

@@ -766,7 +766,7 @@ namespace Avogadro
     v = v.normalized() * radius;
 
     // Angle between u and v.
-    double uvAngle = acos(u.dot(v) / v.norm2()) * 180.0 / M_PI;
+    double uvAngle = acos(u.dot(v) / v.squaredNorm()) * 180.0 / M_PI;
 
     // If angle is less than 1 (will be approximated to 0), attempting to draw
     // will crash, so return.
@@ -857,7 +857,7 @@ namespace Avogadro
     v = v.normalized() * radius;
 
     // Angle between u and v.
-    double uvAngle = acos(u.dot(v) / v.norm2()) * 180.0 / M_PI;
+    double uvAngle = acos(u.dot(v) / v.squaredNorm()) * 180.0 / M_PI;
 
     // If angle is less than 1 (will be approximated to 0), attempting to draw
     // will crash, so return.
