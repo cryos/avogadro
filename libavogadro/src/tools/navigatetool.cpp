@@ -40,8 +40,10 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false), m_draggingInitialized(false),
-  m_eyecandy(new Eyecandy)
+  NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0),
+  m_leftButtonPressed(false), m_midButtonPressed(false),
+  m_rightButtonPressed(false), m_drawEyeCandy(false),
+  m_draggingInitialized(false), m_eyecandy(new Eyecandy)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
@@ -93,6 +95,7 @@ namespace Avogadro {
   QUndoCommand* NavigateTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
     event->accept();
+    m_drawEyeCandy = false;
     m_lastDraggingPosition = event->pos();
     // Make sure there aren't modifier keys clicked with the left button
     // If the user has a Mac and only a one-button mouse, everything
@@ -149,6 +152,7 @@ namespace Avogadro {
     m_leftButtonPressed = false;
     m_midButtonPressed = false;
     m_rightButtonPressed = false;
+    m_drawEyeCandy = false;
     m_clickedAtom = 0;
     m_draggingInitialized = false;
 
@@ -165,6 +169,7 @@ namespace Avogadro {
       return 0;
     }
 
+    m_drawEyeCandy = true;
     event->accept();
 
     QPoint deltaDragging;
@@ -282,18 +287,15 @@ namespace Avogadro {
 
   bool NavigateTool::paint(GLWidget *widget)
   {
-    if(m_leftButtonPressed) {
-      m_eyecandy->drawRotation(widget, m_clickedAtom, m_xAngleEyecandy, m_yAngleEyecandy, &m_referencePoint);
+    if (m_drawEyeCandy) {
+      if(m_leftButtonPressed)
+        m_eyecandy->drawRotation(widget, m_clickedAtom, m_xAngleEyecandy,
+                                 m_yAngleEyecandy, &m_referencePoint);
+      else if(m_midButtonPressed)
+        m_eyecandy->drawZoom(widget, m_clickedAtom, &m_referencePoint);
+      else if(m_rightButtonPressed)
+        m_eyecandy->drawTranslation(widget, m_clickedAtom, &m_referencePoint);
     }
-
-    else if(m_midButtonPressed) {
-      m_eyecandy->drawZoom(widget, m_clickedAtom, &m_referencePoint);
-    }
-
-    else if(m_rightButtonPressed) {
-      m_eyecandy->drawTranslation(widget, m_clickedAtom, &m_referencePoint);
-    }
-
     return true;
   }
 }

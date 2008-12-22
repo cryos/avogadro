@@ -107,6 +107,7 @@ namespace Avogadro {
     bool                m_leftButtonPressed;  // rotation
     bool                m_midButtonPressed;   // scale / zoom
     bool                m_rightButtonPressed; // translation
+    bool                m_drawEyeCandy;       // Should eye candy be drawn?
     double m_yAngleEyecandy, m_xAngleEyecandy;
 
     QPoint              m_lastDraggingPosition;
