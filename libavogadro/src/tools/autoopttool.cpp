@@ -400,14 +400,10 @@ namespace Avogadro {
 
   void AutoOptTool::timerEvent(QTimerEvent*)
   {
-    if(m_block || m_glwidget->primitives().subList(Primitive::AtomType).size() < 2)
-    {
+    if(m_block || m_glwidget->molecule()->numAtoms() < 2)
       return;
-    }
     else
-    {
       m_block = true;
-    }
 
     m_forceField = OBForceField::FindForceField(m_forceFieldList[m_comboFF->currentIndex()]);
 
