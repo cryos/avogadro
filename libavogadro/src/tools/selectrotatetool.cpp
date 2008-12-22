@@ -50,8 +50,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent),
-  m_selectionBox(false),
-  m_settingsWidget(0)
+    m_selectionBox(false), m_selectionMode(0), m_settingsWidget(0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
@@ -76,7 +75,6 @@ namespace Avogadro {
 
   QUndoCommand* SelectRotateTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
-
     m_movedSinceButtonPressed = false;
     m_lastDraggingPosition = event->pos();
     m_initialDraggingPosition = event->pos();
@@ -86,10 +84,16 @@ namespace Avogadro {
         event->pos().y()-SEL_BOX_HALF_SIZE,
         SEL_BOX_SIZE, SEL_BOX_SIZE);
 
-    if(!m_hits.size())
-    {
+    if (event->buttons() & Qt::LeftButton && !m_hits.size()) {
+      m_leftButtonPressed = true;
+      event->accept();
       m_selectionBox = true;
     }
+    else if (event->buttons() & Qt::LeftButton) {
+      m_leftButtonPressed = true;
+    }
+    else
+      m_leftButtonPressed = false;
 
     if(!m_selectionBox) {
       widget->setCursor(Qt::CrossCursor);
@@ -114,16 +118,14 @@ namespace Avogadro {
     }
 
     QList<Primitive *> hitList;
-    if(!m_movedSinceButtonPressed && m_hits.size())
-    {
+    if (m_leftButtonPressed && !m_movedSinceButtonPressed && m_hits.size()) {
+      event->accept();
       // user didn't move the mouse -- regular picking, not selection box
-
       // we'll assemble separate "hit lists" of selected atoms and residues
       // (e.g., if we're in residue selection mode, picking an atom
       // will select the whole residue
 
-      foreach (const GLHit& hit, m_hits)
-      {
+      foreach (const GLHit& hit, m_hits) {
         if(hit.type() == Primitive::AtomType) // Atom selection
         {
           Atom *atom = molecule->atom(hit.name());
@@ -142,8 +144,7 @@ namespace Avogadro {
         //        break;
       }
 
-      switch (m_selectionMode)
-      {
+      switch (m_selectionMode) {
         case 2: // residue
           foreach(Primitive *hit, hitList) {
             if (hit->type() == Primitive::AtomType) {
@@ -317,17 +318,22 @@ namespace Avogadro {
 
   QUndoCommand* SelectRotateTool::mouseMoveEvent(GLWidget *widget, QMouseEvent *event)
   {
-    QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
-
-    if( ( event->pos() - m_initialDraggingPosition ).manhattanLength() > 2 )
-      m_movedSinceButtonPressed = true;
-
-    if(!m_hits.size()) {
+    if (m_leftButtonPressed && !m_hits.size()) {
       event->accept();
-    }
+      QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
-    m_lastDraggingPosition = event->pos();
-    widget->update();
+      if( ( event->pos() - m_initialDraggingPosition ).manhattanLength() > 2 )
+        m_movedSinceButtonPressed = true;
+
+      m_lastDraggingPosition = event->pos();
+      widget->update();
+    }
+    else if (m_leftButtonPressed) {
+      if((event->pos() - m_initialDraggingPosition).manhattanLength() > 2)
+        m_movedSinceButtonPressed = true;
+      else
+        event->accept();
+    }
 
     return 0;
   }
