@@ -67,7 +67,6 @@ namespace Avogadro {
     QList<Primitive *> list;
 
     glDisable(GL_LIGHTING);
-    glDisable(GL_BLEND);
 
     // Skip this entire step if the user turns it off
     if (m_showDots) {
@@ -81,7 +80,6 @@ namespace Avogadro {
       renderOpaque(pd, static_cast<const Bond *>(p));
 
     glEnable(GL_LIGHTING);
-    glEnable(GL_BLEND);
 
     return true;
   }
@@ -167,7 +165,7 @@ namespace Avogadro {
       // compute the "transition point" between the two atoms
       v3 = ( v1 + v2 + d*( radius( atom1 )-radius( atom2 ) ) ) / 2.0;
     }
-    
+
     // Compute the width to draw the wireframe bonds
     double width = 1.0;
     double averageDistance = (camera->distance(v1) + camera->distance(v2)) / 2.0;
@@ -191,7 +189,7 @@ namespace Avogadro {
 
     // optional line stipple to use for aromatic bonds
     int stipple = 0xCCCC;
-    
+
     map->set(atom1);
     pd->painter()->setColor(map);
     // if have two of the same atoms, just draw one line
