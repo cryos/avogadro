@@ -151,7 +151,7 @@ struct QClass_converters
 /**
  *  Special case QList<QAction*> --> PyQt object
  */
-struct QList_QClass_to_array_PyQt
+struct QList_QAction_to_python_list_PyQt
 {
   typedef QList<QAction*>::const_iterator iter;
 
@@ -173,6 +173,107 @@ struct QList_QClass_to_array_PyQt
 
     return boost::python::incref(pyList.ptr());
   }
+};
+
+struct QList_QAction_from_python_list_PyQt
+{
+  QList_QAction_from_python_list_PyQt()
+  {
+    converter::registry::push_back( &convertible, &construct, type_id< QList<QAction*> >() );
+  }
+
+  static void* convertible(PyObject *obj_ptr)
+  {
+
+    //is this a tuple type?
+    if (PyTuple_Check(obj_ptr)) {
+      //check the tuple elements... - convert to a boost::tuple object
+      boost::python::tuple t( handle<>(borrowed(obj_ptr)) );
+      
+      //how many elements are there?
+      int n = PyTuple_Size(obj_ptr);
+      
+      //can they all be converted to type 'T'?
+      for (int i=0; i<n; ++i) {
+        if (!boost::python::extract<QAction*>(t[i]).check())
+          return 0;
+      }
+                            
+      //the tuple is ok!
+      return obj_ptr;                         
+    }
+    //is this a list type?
+    else if (PyList_Check(obj_ptr)) {             
+      //check that all of the list elements can be converted to the right type                    
+      boost::python::list l( handle<>(borrowed(obj_ptr)) );
+                                
+      //how many elements are there?                
+      int n = PyList_Size(obj_ptr);
+
+      //return obj_ptr;
+                  
+      //can all of the elements be converted to type 'T'?
+      for (int i=0; i<n; ++i) {
+        if (!boost::python::extract<QAction*>(l[i]).check())
+          return 0;
+      }
+
+      //the list is ok!
+      return obj_ptr;
+    }    
+               
+    //could not recognise the type...
+    return 0;
+  }
+
+  static void construct(PyObject *obj_ptr, converter::rvalue_from_python_stage1_data *data)
+  {
+    if (PyTuple_Check(obj_ptr)) {
+      //convert the PyObject to a boost::python::object
+      boost::python::tuple t( handle<>(borrowed(obj_ptr)) );
+
+      //locate the storage space for the result
+      void* storage = ((converter::rvalue_from_python_storage< QList<QAction*> >*)data)->storage.bytes;
+
+      //create the T container
+      new (storage) QList<QAction*>();
+
+      QList<QAction*> *container = static_cast< QList<QAction*>* >(storage);
+
+      //add all of the elements from the tuple - get the number of elements in the tuple
+      int n = PyTuple_Size(obj_ptr);
+
+      for (int i=0; i<n; ++i) {
+        QAction *action = boost::python::extract<QAction*>(t[i]);
+        container->append( action );
+      }
+
+      data->convertible = storage;
+    }
+    else if (PyList_Check(obj_ptr)) {
+      //convert the PyObject to a boost::python::object
+      boost::python::list l( handle<>(borrowed(obj_ptr)) );
+
+      //locate the storage space for the result
+      void* storage = ((converter::rvalue_from_python_storage< QList<QAction*> >*)data)->storage.bytes;
+
+      //create the T container
+      new (storage) QList<QAction*>();
+
+      QList<QAction*> *container = static_cast< QList<QAction*>* >(storage);
+
+      //add all of the elements from the tuple - get the number of elements in the tuple
+      int n = PyList_Size(obj_ptr);
+
+      for (int i=0; i<n; ++i) {
+        QAction *action = boost::python::extract<QAction*>(l[i]);
+        container->append( action );
+      }
+
+      data->convertible = storage;
+    }
+  }
+
 };
 
 
@@ -223,9 +324,11 @@ void export_sip()
   QClass_converters<QColor>();
   QClass_converters<QMouseEvent>();
   QClass_converters<QWheelEvent>();
- 
+
+
   // special case 
-  to_python_converter<QList<QAction*>, QList_QClass_to_array_PyQt>();
+  to_python_converter<QList<QAction*>, QList_QAction_to_python_list_PyQt>();
+  QList_QAction_from_python_list_PyQt();
 #endif
 }
 
