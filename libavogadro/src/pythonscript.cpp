@@ -42,6 +42,9 @@ namespace Avogadro
       prepareToCatchError();
       // try to import the module
       m_module = import(m_moduleName.toAscii().data());
+      // import doesn't really reload the module if it was already loaded
+      // to be save, we always reload it
+      m_module = object(handle<>(PyImport_ReloadModule(m_module.ptr())));
     }
     catch(error_already_set const &)
     {
@@ -67,12 +70,13 @@ namespace Avogadro
   object PythonScript::module() const
   {
     QFileInfo fileInfo(m_dir, m_fileName);
-    
+
     if(fileInfo.lastModified() > m_lastModified)
     {
       try
       {
         prepareToCatchError();
+        qDebug() << "reloading module...";
         m_module = object(handle<>(PyImport_ReloadModule(m_module.ptr())));
       }
       catch(error_already_set const &)
@@ -85,6 +89,7 @@ namespace Avogadro
         errorWidget->append(QString(catchError()));
         errorWidget->show();
       }
+
       m_lastModified = fileInfo.lastModified();
     }
 
