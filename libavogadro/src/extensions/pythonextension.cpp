@@ -135,9 +135,15 @@ namespace Avogadro
           qDebug() << "  + 'Extension' class found";
 
           // instantiate the python extension
-          object instance = script.module().attr("Extension")(); // FIXME: can this generate an exception??
-          m_instances.append(instance);
-
+          object instance;
+          try {
+            prepareToCatchError();
+            instance = script.module().attr("Extension")();
+            m_instances.append(instance);
+          } catch (error_already_set const &) {
+            catchError();
+          }
+          
           // try getting the QActions
           if (PyObject_HasAttrString(instance.ptr(), "actions")) {
             //object pyqtActions = instance.attr("actions")();
