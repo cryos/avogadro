@@ -3,7 +3,7 @@
 
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007 Benoit Jacob
-  Copyright (C) 2007 Marcus D. Hanwell
+  Copyright (C) 2007,2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -30,6 +30,7 @@
 #include <avogadro/elementtranslate.h>
 #include <avogadro/camera.h>
 #include <avogadro/painter.h>
+#include <avogadro/painterdevice.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/molecule.h>
@@ -63,24 +64,17 @@ namespace Avogadro {
 
   bool LabelEngine::renderOpaque(PainterDevice *pd)
   {
-    QList<Primitive *> list;
-
-    if (m_atomType > 0)
-    {
+    if (m_atomType > 0) {
       // Render atom labels
-      list = primitives().subList(Primitive::AtomType);
-      foreach( Primitive *p, list )
-        renderOpaque(pd, static_cast<Atom *>(p));
+      foreach(Atom *a, atoms())
+        renderOpaque(pd, a);
     }
 
-    if (m_bondType > 0)
-    {
+    if (m_bondType > 0) {
       // Now render the bond labels
-      list = primitives().subList(Primitive::BondType);
-      foreach( Primitive *p, list )
-        renderOpaque(pd, static_cast<const Bond*>(p));
+      foreach(Bond *b, bonds())
+        renderOpaque(pd, b);
     }
-
     return true;
   }
 
@@ -100,11 +94,9 @@ namespace Avogadro {
 
     double zDistance = pd->camera()->distance(pos);
 
-    if(zDistance < 50.0)
-    {
+    if(zDistance < 50.0) {
       QString str;
-      switch(m_atomType)
-      {
+      switch(m_atomType) {
         case 1: // Atom index
           str = QString::number(a->index());
           break;
@@ -164,11 +156,9 @@ namespace Avogadro {
 
     double zDistance = pd->camera()->distance(pos);
 
-    if(zDistance < 50.0)
-    {
+    if(zDistance < 50.0) {
       QString str;
-      switch(m_bondType)
-      {
+      switch(m_bondType) {
         case 1:
           str = QString::number(b->length(), 'g', 4);
           break;
@@ -246,8 +236,7 @@ namespace Avogadro {
     Engine::readSettings(settings);
     setAtomType(settings.value("atomLabel", 1).toInt());
     setBondType(settings.value("bondLabel", 3).toInt());
-    if(m_settingsWidget)
-    {
+    if(m_settingsWidget) {
       m_settingsWidget->atomType->setCurrentIndex(m_atomType);
       m_settingsWidget->bondType->setCurrentIndex(m_bondType);
     }

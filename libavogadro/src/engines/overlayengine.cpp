@@ -28,6 +28,7 @@
 #include <avogadro/elementtranslate.h>
 #include <avogadro/camera.h>
 #include <avogadro/painter.h>
+#include <avogadro/painterdevice.h>
 #include <avogadro/glwidget.h>
 
 #include <QGLWidget> // for OpenGL bits

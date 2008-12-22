@@ -27,6 +27,7 @@
 #include <config.h>
 #include <avogadro/color.h>
 #include <avogadro/painter.h>
+#include <avogadro/painterdevice.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 
@@ -57,10 +58,8 @@ namespace Avogadro{
 
   bool PolygonEngine::renderOpaque(PainterDevice *pd)
   {
-    QList<Primitive *> list;
-    list = primitives().subList(Primitive::AtomType);
-    foreach(Primitive *p, list)
-      renderPolygon(pd, static_cast<Atom *>(p));
+    foreach(Atom *a, atoms())
+      renderPolygon(pd, a);
 
     return true;
   }
@@ -95,7 +94,6 @@ namespace Avogadro{
     }
 
     // Disable face culling for ring structures.
-//    glDisable(GL_CULL_FACE);
     for (int i = 0; i < atoms.size(); i++) {
       for (int j = 0; j < atoms.size(); j++)
         for (int k = 1; k < atoms.size(); k++)
@@ -103,7 +101,6 @@ namespace Avogadro{
 //      pd->painter()->drawTriangle(atoms[i], atoms[0], atoms[atoms.size()-1]);
     }
     // Disable face culling for ring structures.
-    glEnable(GL_CULL_FACE);
     return true;
   }
 

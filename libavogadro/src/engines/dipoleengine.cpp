@@ -27,6 +27,7 @@
 
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/painterdevice.h>
 #include <avogadro/atom.h>
 #include <avogadro/molecule.h>
 

@@ -28,6 +28,7 @@
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/painterdevice.h>
 #include <avogadro/molecule.h>
 #include <avogadro/fragment.h>
 #include <avogadro/atom.h>

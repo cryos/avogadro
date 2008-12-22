@@ -164,7 +164,7 @@ namespace Avogadro {
   // Called by performAction()
   void SelectExtension::invertSelection(GLWidget *widget)
   {
-    widget->toggleSelected(widget->primitives().list());
+    widget->toggleSelected();
     widget->update(); // make sure to call for a redraw or you won't see it
     return;
   }

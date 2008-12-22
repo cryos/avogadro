@@ -2,6 +2,7 @@
   StickEngine - Engine for "stick" display
 
   Copyright (C) 2006-2007 Geoffrey R. Hutchison
+  Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -52,12 +53,8 @@ namespace Avogadro {
 
       //! \name Render Methods
       //@{
-      //! Render an Atom.
-      bool renderOpaque(PainterDevice *pd, const Atom *a);
-      //! Render a Bond.
-      bool renderOpaque(PainterDevice *pd, const Bond *b);
-
       bool renderOpaque(PainterDevice *pd);
+      bool renderTransparent(PainterDevice *pd);
       //@}
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
@@ -74,7 +71,11 @@ namespace Avogadro {
       void readSettings(QSettings &settings);
 
     private:
-      inline double radius(const Atom *a) const;
+      double radius(const Atom *a) const;
+      //! Render an Atom.
+      bool renderOpaque(PainterDevice *pd, const Atom *a);
+      //! Render a Bond.
+      bool renderOpaque(PainterDevice *pd, const Bond *b);
 
       StickSettingsWidget *m_settingsWidget;
 
@@ -82,8 +83,6 @@ namespace Avogadro {
 
 		private Q_SLOTS:
 	    void settingsWidgetDestroyed();
-
-
 	    /**
 	     * @param value radius of the sticks / 20
 	     */

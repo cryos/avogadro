@@ -31,6 +31,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/painterdevice.h>
 
 #include <Eigen/Regression>
 
@@ -94,7 +95,7 @@ namespace Avogadro {
     loadScripts(pluginDir);
 #endif
   }
-  
+
   PythonEngine::~PythonEngine()
   {
   }
@@ -118,7 +119,7 @@ namespace Avogadro {
     boost::python::reference_existing_object::apply<PainterDevice*>::type converter;
     PyObject *obj = converter(pd);
     object real_obj = object(handle<>(obj));
- 
+
     try {
       prepareToCatchError();
       m_instance.attr("renderOpaque")(real_obj);
@@ -145,7 +146,7 @@ namespace Avogadro {
         if (m_settingsWidget) {
           if (PyObject_HasAttrString(m_instance.ptr(), "settingsWidget")) {
             QWidget *widget = extract<QWidget*>(m_instance.attr("settingsWidget")());
-            if (widget) 
+            if (widget)
               m_settingsWidget->groupBox->layout()->addWidget(widget);
           }
         }
@@ -181,15 +182,15 @@ namespace Avogadro {
       connect(m_settingsWidget->scriptsComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(setScriptIndex(int)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
     }
-    
+
     return m_settingsWidget;
   }
-  
+
   void PythonEngine::settingsWidgetDestroyed()
   {
     m_settingsWidget = 0;
   }
-  
+
   void PythonEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);
@@ -213,7 +214,7 @@ namespace Avogadro {
   void PythonEngine::loadScripts(QDir dir)
   {
     m_interpreter.addSearchPath(dir.canonicalPath());
-    
+
     QStringList filters;
     filters << "*.py";
     dir.setNameFilters(filters);
@@ -223,7 +224,7 @@ namespace Avogadro {
     {
       qDebug() << "PythonEngine: checking " << file << "...";
       PythonScript script(dir.canonicalPath(), file);
-      
+
       if(script.module()) {
         // make sure there is an Engine class defined
         if (PyObject_HasAttrString(script.module().ptr(), "Engine")) {
@@ -234,7 +235,7 @@ namespace Avogadro {
           msg = "PythonEngine: checking " + file + "...\n";
           msg += "  - script has no 'Engine' class defined\n";
           pythonError()->append( msg );
-          
+
           qDebug() << "  - script has no 'Engine' class defined";
         }
       } else {
@@ -254,25 +255,25 @@ namespace Avogadro {
     } catch(error_already_set const &) {
       catchError();
     }
-      
+
     // return NoFlags, don't print an error, don't want to overwhelm new users with errors
     return Engine::Opaque;
   }
-  
+
   double PythonEngine::transparencyDepth() const
   {
     // see flags()
     try {
       prepareToCatchError();
-      if (PyObject_HasAttrString(m_instance.ptr(), "transparencyDepth")) 
+      if (PyObject_HasAttrString(m_instance.ptr(), "transparencyDepth"))
         return extract<double>(m_instance.attr("transparencyDepth")());
     } catch(error_already_set const &) {
       catchError();
     }
-      
+
     return 0.0;
   }
- 
+
 
 }
 

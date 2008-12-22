@@ -32,6 +32,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/painterdevice.h>
 
 #include <Eigen/Regression>
 
@@ -72,13 +73,11 @@ namespace Avogadro {
     // Render the opaque spheres if m_alpha is 1
     if (m_alpha >= 0.999)
     {
-      QList<Primitive *> list;
-      list = primitives().subList(Primitive::AtomType);
       // Render the atoms as VdW spheres
       glDisable(GL_NORMALIZE);
       glEnable(GL_RESCALE_NORMAL);
-      foreach(Primitive *p, list)
-        render(pd, static_cast<const Atom *>(p));
+      foreach(Atom *a, atoms())
+        render(pd, a);
       glDisable(GL_RESCALE_NORMAL);
       glEnable(GL_NORMALIZE);
     }
@@ -87,14 +86,9 @@ namespace Avogadro {
 
   bool SphereEngine::renderTransparent(PainterDevice *pd)
   {
-    QList<Primitive *> list;
-    list = primitives().subList(Primitive::AtomType);
     // If m_alpha is between 0 and 1 then render our transparent spheres
     if (m_alpha > 0.001 && m_alpha < 0.999)
     {
-      // Looks better and more like what we want.
-      glDepthMask(GL_TRUE);
-
       // First pass using a colour mask - nothing is actually drawn
       glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
       glDisable(GL_LIGHTING);
@@ -105,8 +99,7 @@ namespace Avogadro {
       // with a slightly smaller radius than the actual VdW spheres. Works but
       // not pretty...
       pd->painter()->setColor(0.0, 0.0, 0.0, 1.0);
-      foreach(Primitive *p, list) {
-        Atom *a = static_cast<Atom *>(p);
+      foreach(Atom *a, atoms()) {
         pd->painter()->drawSphere(a->pos(), radius(a)*0.9999);
       }
 
@@ -118,30 +111,22 @@ namespace Avogadro {
       glDisable(GL_NORMALIZE);
       glEnable(GL_RESCALE_NORMAL);
 
-      foreach(Primitive *p, list)
-        render(pd, static_cast<const Atom *>(p));
+      foreach(Atom *a, atoms())
+        render(pd, a);
 
       glDisable(GL_RESCALE_NORMAL);
       glEnable(GL_NORMALIZE);
-
-      // return to previous state
-      glDepthMask(GL_FALSE);
     }
 
     // Render the selection sphere if required
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
-    foreach( Primitive *p, list )
-    {
-      if (pd->isSelected(p))
-      {
-        const Atom *a = static_cast<const Atom *>(p);
+    foreach(Atom *a, atoms()) {
+      if (pd->isSelected(a)) {
         map->setToSelectionColor();
-        glEnable(GL_BLEND);
         pd->painter()->setColor(map);
         pd->painter()->setName(a);
         pd->painter()->drawSphere(a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a));
-        glDisable(GL_BLEND);
       }
     }
 
@@ -150,16 +135,13 @@ namespace Avogadro {
 
   bool SphereEngine::renderQuick(PainterDevice *pd)
   {
-    QList<Primitive *> list;
-    list = primitives().subList(Primitive::AtomType);
     // Render the atoms as VdW spheres
     glDisable(GL_NORMALIZE);
     glEnable(GL_RESCALE_NORMAL);
     Color *map = colorMap();
     if (!map) map = pd->colorMap();
 
-    foreach(Primitive *p, list) {
-      const Atom *a = static_cast<const Atom *>(p);
+    foreach(Atom *a, atoms()) {
       map->set(a);
       pd->painter()->setColor(map);
       pd->painter()->setName(a);
@@ -216,7 +198,7 @@ namespace Avogadro {
 
   Engine::Layers SphereEngine::layers() const
   {
-    return Engine::Transparent;
+    return Engine::Opaque | Engine::Transparent;
   }
 
   Engine::PrimitiveTypes SphereEngine::primitiveTypes() const

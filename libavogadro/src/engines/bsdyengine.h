@@ -50,8 +50,13 @@ namespace Avogadro {
       ~BSDYEngine();
 
       bool renderOpaque(PainterDevice *pd);
+      bool renderTransparent(PainterDevice *pd);
       bool renderQuick(PainterDevice *pd);
       bool renderPick(PainterDevice *pd);
+
+      double transparencyDepth() const;
+
+      Engine::Layers layers() const;
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 

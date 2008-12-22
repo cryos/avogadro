@@ -2,6 +2,7 @@
   StickEngine - Engine for "stick" display
 
   Copyright (C) 2006-2008 Geoffrey R. Hutchison
+  Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -31,6 +32,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/painterdevice.h>
 #include <avogadro/camera.h>
 
 #include <openbabel/mol.h>
@@ -71,62 +73,75 @@ namespace Avogadro {
 
   bool StickEngine::renderOpaque(PainterDevice *pd)
   {
-    QList<Primitive *> list;
-
-    glPushAttrib(GL_TRANSFORM_BIT);
+//    glPushAttrib(GL_TRANSFORM_BIT);
     glDisable( GL_NORMALIZE );
     glEnable( GL_RESCALE_NORMAL );
 
-    // Build up a list of the atoms and render them
-    list = primitives().subList(Primitive::AtomType);
-    foreach( Primitive *p, list )
-    {
-      renderOpaque(pd, static_cast<Atom *>(p));
-    }
-
-    list = primitives().subList(Primitive::BondType);
+    // Render the atoms
+    foreach(Atom *a, atoms())
+      renderOpaque(pd, a);
 
     // render bonds (sticks)
     glDisable( GL_RESCALE_NORMAL );
     glEnable( GL_NORMALIZE );
+    foreach(Bond *b, bonds())
+      renderOpaque(pd, b);
 
-    // Get a list of bonds and render them
-    list = primitives().subList(Primitive::BondType);
-    foreach( Primitive *p, list )
-    {
-      renderOpaque(pd, static_cast<const Bond *>(p));
-    }
-
-    glPopAttrib();
+//    glPopAttrib();
 
     return true;
   }
 
-  bool StickEngine::renderOpaque(PainterDevice *pd, const Atom* a)
+  bool StickEngine::renderTransparent(PainterDevice *pd)
+  {
+    glEnable( GL_BLEND );
+    glDisable( GL_NORMALIZE );
+    glEnable( GL_RESCALE_NORMAL );
+
+    Color *map = colorMap();
+    map->setToSelectionColor();
+    pd->painter()->setColor(map);
+
+    // Render the atoms
+    foreach(Atom *a, atoms()) {
+      if (pd->isSelected(a)) {
+        pd->painter()->setName(a);
+        pd->painter()->drawSphere(a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a));
+      }
+    }
+
+    // render bonds (sticks)
+    glDisable( GL_RESCALE_NORMAL );
+    glEnable( GL_NORMALIZE );
+    foreach(Bond *b, bonds()) {
+      if (pd->isSelected(b)) {
+        Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
+        Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
+        Vector3d v1 (*atom1->pos());
+        Vector3d v2 (*atom2->pos());
+        Vector3d v3 (( v1 + v2 ) / 2);
+        pd->painter()->setName(b);
+        pd->painter()->drawCylinder(v1, v2, SEL_BOND_EXTRA_RADIUS + radius(atom1));
+      }
+    }
+
+    return true;
+  }
+
+  inline bool StickEngine::renderOpaque(PainterDevice *pd, const Atom* a)
   {
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
 
     map->set(a);
     pd->painter()->setColor(map);
-
     pd->painter()->setName(a);
     pd->painter()->drawSphere( a->pos(), radius(a) );
-
-    if (pd->isSelected(a))
-    {
-      map->setToSelectionColor();
-      glEnable( GL_BLEND );
-      pd->painter()->setColor(map);
-      pd->painter()->setName(a);
-      pd->painter()->drawSphere( a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a) );
-      glDisable( GL_BLEND );
-    }
 
     return true;
   }
 
-  bool StickEngine::renderOpaque(PainterDevice *pd, const Bond* b)
+  inline bool StickEngine::renderOpaque(PainterDevice *pd, const Bond* b)
   {
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
@@ -146,17 +161,6 @@ namespace Avogadro {
     pd->painter()->setColor(map);
     pd->painter()->setName(b);
     pd->painter()->drawCylinder( v3, v2, radius(atom1) );
-
-    // Render the selection highlight
-    if (pd->isSelected(b))
-    {
-      map->setToSelectionColor();
-      glEnable( GL_BLEND );
-      pd->painter()->setColor(map);
-      pd->painter()->setName(b);
-      pd->painter()->drawCylinder( v1, v2, SEL_BOND_EXTRA_RADIUS + radius(atom1) );
-      glDisable( GL_BLEND );
-    }
 
     return true;
   }

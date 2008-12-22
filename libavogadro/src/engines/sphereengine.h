@@ -57,8 +57,6 @@ namespace Avogadro {
       bool renderOpaque(PainterDevice *pd);
       bool renderTransparent(PainterDevice *pd);
       bool renderQuick(PainterDevice *pd);
-      //! Render an Atom.
-      bool render(PainterDevice *pd, const Atom *a);
       //@}
 
       double transparencyDepth() const;
@@ -79,7 +77,9 @@ namespace Avogadro {
       void readSettings(QSettings &settings);
 
     private:
-      inline double radius(const Atom *a) const;
+      double radius(const Atom *a) const;
+      //! Render an Atom.
+      bool render(PainterDevice *pd, const Atom *a);
 
       SphereSettingsWidget *m_settingsWidget;
 

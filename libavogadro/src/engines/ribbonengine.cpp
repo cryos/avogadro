@@ -30,6 +30,7 @@
 #include <avogadro/residue.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/painterdevice.h>
 
 #include <Eigen/Regression>
 

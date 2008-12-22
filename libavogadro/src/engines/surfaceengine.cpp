@@ -120,7 +120,7 @@ namespace Avogadro {
     foreach(const Primitive *p, list) {
       const Atom *a = static_cast<const Atom *>(p);
       dist = a->pos()->cast<float>() - pos;
-      energy += a->partialCharge() / dist.norm2();
+      energy += a->partialCharge() / dist.squaredNorm();
     }
 
     // Chemistry convention: red = negative, blue = positive
@@ -200,7 +200,6 @@ namespace Avogadro {
       // Rendering the mesh's clip edge
       glEnable(GL_STENCIL_TEST);
       glClear(GL_STENCIL_BUFFER_BIT);
-      glDisable(GL_DEPTH_TEST);
       glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
       // first pass: increment stencil buffer value on back faces
       glStencilFunc(GL_ALWAYS, 0, 0);
@@ -213,7 +212,6 @@ namespace Avogadro {
       doWork(pd, mol);
       // drawing clip planes masked by stencil buffer content
       glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-      glEnable(GL_DEPTH_TEST);
       glDisable(GL_CLIP_PLANE0);
       glStencilFunc(GL_NOTEQUAL, 0, ~0);
       // stencil test will pass only when stencil buffer value = 0;
@@ -299,9 +297,6 @@ namespace Avogadro {
       return true;
     }
 
-    glEnable(GL_BLEND);
-    glDepthMask(GL_TRUE);
-
     pd->painter()->setColor(1.0, 0.0, 0.0, m_alpha);
     m_color.applyAsMaterials();
 
@@ -324,7 +319,6 @@ namespace Avogadro {
       // Rendering the mesh's clip edge
       glEnable(GL_STENCIL_TEST);
       glClear(GL_STENCIL_BUFFER_BIT);
-      glDisable(GL_DEPTH_TEST);
       glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
       // first pass: increment stencil buffer value on back faces
       glStencilFunc(GL_ALWAYS, 0, 0);
@@ -337,7 +331,6 @@ namespace Avogadro {
       doWork(pd, mol);
       // drawing clip planes masked by stencil buffer content
       glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-      glEnable(GL_DEPTH_TEST);
       glDisable(GL_CLIP_PLANE0);
       glStencilFunc(GL_NOTEQUAL, 0, ~0);
       // stencil test will pass only when stencil buffer value = 0;
@@ -391,9 +384,6 @@ namespace Avogadro {
     }
 
     doWork(pd, mol);
-
-    glDisable(GL_BLEND);
-    glDepthMask(GL_FALSE);
 
     if (m_renderMode)
       glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -477,9 +467,9 @@ namespace Avogadro {
 
   Engine::Layers SurfaceEngine::layers() const
   {
-    return Engine::Transparent;
+    return Engine::Opaque | Engine::Transparent;
   }
-  
+
   Engine::PrimitiveTypes SurfaceEngine::primitiveTypes() const
   {
     return Engine::Atoms;

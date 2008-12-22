@@ -28,6 +28,7 @@
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/painterdevice.h>
 
 #include <openbabel/obiter.h>
 
@@ -70,10 +71,10 @@ namespace Avogadro {
 
     if (!mol->HasData(OBGenericDataType::ConformerData))
       return false;
-    
+
     OBConformerData *cd = (OBConformerData*) mol->GetData(OBGenericDataType::ConformerData);
     vector<vector<vector3> > allForces = cd->GetForces();
-    
+
     if (!allForces.size())
       return false;
     vector<vector3> forces = allForces[0];
@@ -84,14 +85,14 @@ namespace Avogadro {
     FOR_ATOMS_OF_MOL (atom, mol) {
       vector3 pos = atom->GetVector();
       vector3 force = forces[atom->GetIdx()-1];
-      
+
       Vector3d v1 = Vector3d(pos.x(), pos.y(), pos.z()); // start point line
       Vector3d v2 = Vector3d(pos.x()+force.x(), pos.y()+force.y(), pos.z()+force.z()); // end point both
       Vector3d v3 = Vector3d(pos.x()+0.8*force.x(), pos.y()+0.8*force.y(), pos.z()+0.8*force.z()); // start point cone
       pd->painter()->drawLine(v1, v2, 2);
       pd->painter()->drawCone(v3, v2, 0.1);
     }
-    
+
     return true;
   }
 
@@ -111,19 +112,19 @@ namespace Avogadro {
       }
     return m_settingsWidget;
   }
-  
+
   void HBondEngine::setWidth(int value)
   {
     m_width = (double) value;
     emit changed();
   }
-  
+
   void HBondEngine::setRadius(double value)
   {
     m_radius = value;
     emit changed();
   }
-  
+
   void HBondEngine::setAngle(double value)
   {
     m_angle = value;
@@ -136,7 +137,7 @@ namespace Avogadro {
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
   }
-  
+
   void HBondEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);

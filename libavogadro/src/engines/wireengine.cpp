@@ -32,6 +32,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/painterdevice.h>
 
 #include <openbabel/mol.h>
 #include <Eigen/Regression>
