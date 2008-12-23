@@ -127,7 +127,8 @@ namespace Avogadro
       toolGroup( 0 ),
       settingsDialog( 0 ), importFile(0),
       initialized( false ),
-      centerTimer(0)
+      centerTimer(0),
+      centerTime(0)
     {}
 
       Molecule  *molecule;
@@ -180,6 +181,7 @@ namespace Avogadro
       int rotationTime;
 
       QTimer *centerTimer;
+      int centerTime;
 
       PluginManager pluginManager;
       ProjectTreeEditor projectTreeEditor;
@@ -253,12 +255,12 @@ namespace Avogadro
     QVBoxLayout *messagesVBox = new QVBoxLayout( messagesWidget );
     d->messagesText = new QTextEdit();
     d->messagesText->setReadOnly( true );
-    
-    connect(pythonError(), SIGNAL(message(const QString&)), 
+
+    connect(pythonError(), SIGNAL(message(const QString&)),
         d->messagesText, SLOT(append(const QString&)));
     d->messagesText->append( pythonError()->string() );
     pythonError()->setListening(true); // switch to 'listening mode'
-    
+
 
 
     messagesVBox->setMargin( 3 );
@@ -451,7 +453,7 @@ namespace Avogadro
 
     /**
      *  Extensions: instances are deleted by the PluginManager after writing the settings.
-     *  The QActions are removed from the menus when they are deleted. So we only have to 
+     *  The QActions are removed from the menus when they are deleted. So we only have to
      *  the new load extensions.
      */
 
@@ -813,7 +815,7 @@ namespace Avogadro
         OBPairData *savedSetting;
         OBDataIterator i;
         QString attribute;
-        
+
         for (i = pairDataVector.begin(); i != pairDataVector.end(); ++i) {
           savedSetting = dynamic_cast<OBPairData *>(*i);
           // Check to see if this is an Avogadro setting
@@ -956,7 +958,7 @@ namespace Avogadro
     OBFormat     *outFormat;
     if (format != NULL)
       outFormat = format;
-    else 
+    else
       outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
     if ( !outFormat || !conv.SetOutFormat( outFormat ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
@@ -1003,35 +1005,35 @@ namespace Avogadro
     statusBar()->showMessage( tr( "Saving file." ), 2000 );
 
     OBMol obmol = d->molecule->OBMol();
-    
+
     // We're going to wrap up the QSettings and save them to the CML file
     if (QString(outFormat->GetID()).compare("cml", Qt::CaseInsensitive) == 0) {
       // First off, let's set some CML options
       conv.AddOption("p"); // add properties -- including OBPairData
       conv.AddOption("m"); // Dublin Core metadata
       conv.AddOption("a"); // array format for atoms & bonds
-      
+
       QSettings settings;
       OBPairData *savedSetting;
       QString attribute, value;
-      
+
       // Walk through all our settings (is there a more efficient way to do this?)
       foreach(QString key, settings.allKeys()) {
         // Ignore this key -- there are definitely some on Mac with Apple... or com/
         // There may be others to ignore on Linux and Windows, but I haven't tested those yet.
         if (key.startsWith("Apple") || key.startsWith("com/") || key.startsWith("NS"))
           continue;
-          
+
         if (key.startsWith("enginesDock")) {
           continue; // TODO: this seems to kill the CML
         }
-        
+
         // We're going to save all our settings as Avogadro:blah
         savedSetting = new OBPairData;
         attribute = "Avogadro:" + key;
         // Convert from QString to char*
         savedSetting->SetAttribute(attribute.toAscii().constData());
-        
+
         value = settings.value(key).toString();
         // Convert from QString to char*
         savedSetting->SetValue(value.toAscii().constData());
@@ -1039,7 +1041,7 @@ namespace Avogadro
         obmol.SetData(savedSetting);
       }
     } // end saving settings for CML files
-    
+
     if ( conv.Write( &obmol, &ofs ) ) {
       file.remove(); // remove the old file: WARNING -- would much prefer to just rename, but Qt won't let you
       newFile.rename(fileName);
@@ -1689,31 +1691,20 @@ namespace Avogadro
     {
       d->centerTimer->deleteLater();
       d->centerTimer = 0;
+      d->centerTime = 0;
       return;
     }
 
 
     // calculate elapsed time
-#ifndef WIN32
-    struct timeval tv;
-    gettimeofday(&tv,0);
-    long elapsedTime = tv.tv_sec*1000 + tv.tv_usec/1000 - d->rotationStart;
-#else
-    // FIXME: smooth transitions are not working on windows..
-    QTime time = QTime::currentTime();
-    long elapsedTime = ( time.minute() * 60 + time.second() )*1000 + time.msec() / 1000000 - d->rotationStart;
-#endif
+    d->centerTime += 10;
+    int elapsedTime = d->centerTime;
 
-
-    if( elapsedTime > d->rotationTime )
-    {
+    if(elapsedTime > d->rotationTime)
       elapsedTime = d->rotationTime;
-    }
 
     // make sure we don't divide by zero (0)
-    if(d->rotationTime != 0)
-    {
-
+    if(d->rotationTime != 0) {
       double x = (elapsedTime * (M_PI) / d->rotationTime);
       double r = (cos(x-M_PI)+1)/2;
 
@@ -1721,20 +1712,13 @@ namespace Avogadro
       camera->modelview().translation() = d->startTrans + d->deltaTrans * r;
     }
 
-
-    //const Vector3d Zaxis(0,0,1);
-    //camera->pretranslate( - 3.0 * ( d->glWidget->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
-
-    //camera->translate( - d->glWidget->center() );
-
-    if(elapsedTime >= d->rotationTime)
-    {
+    if(elapsedTime >= d->rotationTime) {
       d->centerTimer->deleteLater();
       d->centerTimer = 0;
+      d->centerTime = 0;
       //cout << "Final Translation: " << camera->modelview().translationVector() << endl;
       //cout << "Final Linear: " << camera->modelview().linearComponent() << endl << endl;
     }
-
 
     d->glWidget->update();
   }
@@ -1744,22 +1728,20 @@ namespace Avogadro
     // do nothing if there is a timer running
     if(d->centerTimer)
       return;
-     
+
     Camera * camera = d->glWidget->camera();
     if(!camera)
       return;
 
     // no need to animate when there are no atoms
-    if(d->molecule->numAtoms() == 0)
-    {
+    if(d->molecule->numAtoms() == 0)  {
       camera->translate( d->glWidget->center() - Vector3d( 0, 0, 10 ) );
       d->glWidget->update();
       return;
     }
 
     // if smooth transitions are disabled, center now and return
-    if( !d->animationsEnabled )
-    {
+    if( !d->animationsEnabled ) {
       camera->initializeViewPoint();
       d->glWidget->update();
       //cout << "Final Translation: " << camera->modelview().translationVector() << endl;
@@ -1777,7 +1759,6 @@ namespace Avogadro
     linearGoal.row(0) = linearGoal.row(2).unitOrthogonal();
     linearGoal.row(1) = linearGoal.row(2).cross(linearGoal.row(0));
 
-
     // calculate the translation matrix
     Transform3d goal(linearGoal);
 
@@ -1793,36 +1774,23 @@ namespace Avogadro
     d->startOrientation = camera->modelview().linear();
     d->endOrientation = goal.linear();
 
-    // FIXME: use QTimer for smooth transitions
-    // calculate the current time in milliseconds
-#ifndef WIN32
-    struct timeval tv;
-    gettimeofday(&tv,0);
-    d->rotationStart = tv.tv_sec*1000 + tv.tv_usec/1000;
-#else
-    // FIXME: smooth transitions are not working on windows..
-    QTime time = QTime::currentTime();
-    d->rotationStart = (time.minute() * 60 + time.second())*1000 + time.msec() / 1000000;
-#endif
+    // Use QTimer for smooth transitions
+    d->centerTime = 0;
 
     // use the rotation angle between the two orientations to calculate our animation time
     double m = AngleAxisd(d->startOrientation.inverse() * d->endOrientation).angle();
     d->rotationTime = m*300;
 
-    if(d->rotationTime < 300 && d->deltaTrans.norm2() > 1)
-    {
+    if(d->rotationTime < 300 && d->deltaTrans.squaredNorm() > 1)
       d->rotationTime = 500;
-    }
 
     // make sure we need to rotate
-    if(d->rotationTime > 0)
-    {
+    if(d->rotationTime > 0) {
       d->centerTimer = new QTimer();
       connect(d->centerTimer, SIGNAL(timeout()),
           this, SLOT(centerStep()));
       d->centerTimer->start(10);
     }
-
   }
 
   void MainWindow::fullScreen()
@@ -2470,7 +2438,7 @@ namespace Avogadro
     bool colorsTab = (selectedEngine->colorTypes() & Engine::ColorPlugins);
     // do we even need tabs for the window (e.g., axes engine with no objects or colors)
     bool multipleTabsNeeded = (objectsTab || colorsTab);
-    
+
     if (!multipleTabsNeeded) {
       layout->addWidget(settingsWidget);
     }
