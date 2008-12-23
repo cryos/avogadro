@@ -87,12 +87,12 @@ target_link_libraries(selectextension ${LINK_LIBS})
 install(TARGETS selectextension DESTINATION ${DESTINATION_DIR})
 
 ### unit cells
-#set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)
-#qt4_wrap_ui(unitcellextension_UIS_H unitcellparamdialog.ui)
-#qt4_automoc(${unitcellextension_SRCS})
-#add_library(unitcellextension MODULE ${unitcellextension_SRCS} ${unitcellextension_UIS_H})
-#target_link_libraries(unitcellextension ${LINK_LIBS})
-#install(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
+set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)
+qt4_wrap_ui(unitcellextension_UIS_H unitcellparamdialog.ui)
+qt4_automoc(${unitcellextension_SRCS})
+add_library(unitcellextension MODULE ${unitcellextension_SRCS} ${unitcellextension_UIS_H})
+target_link_libraries(unitcellextension ${LINK_LIBS})
+install(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
 
 ### super cell builder
 #set(supercellextension_SRCS supercellbuilder.cpp supercelldialog.cpp)

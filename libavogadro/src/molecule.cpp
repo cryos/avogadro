@@ -946,6 +946,9 @@ namespace Avogadro{
                     endAtom->index() + 1, bond->order());
     }
     obmol.EndModify();
+    // TODO: Copy residue information, cubes, etc.
+    if (d->obunitcell != NULL)
+      obmol.SetData(d->obunitcell);
 
 //    qDebug() << "OBMol() run" << obmol.NumAtoms() << obmol.NumBonds();
 
@@ -1053,6 +1056,11 @@ namespace Avogadro{
   {
     Q_D(Molecule);
     d->obunitcell = obunitcell;
+    if (obunitcell == NULL) {
+      // delete it from our private obmol
+      if (d->obmol)
+	d->obmol->DeleteData(OpenBabel::OBGenericDataType::UnitCell);
+    }
     return true;
   }
 

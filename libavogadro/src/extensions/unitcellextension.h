@@ -69,9 +69,9 @@ namespace Avogadro {
 
   private:
     QList<QAction *> m_actions;
-    UnitCellParamDialog *m_Dialog;
-    GLWidget *m_Widget;
-    Molecule *m_Molecule;
+    UnitCellParamDialog *m_dialog;
+    GLWidget *m_widget;
+    Molecule *m_molecule;
   };
 
   class UnitCellExtensionFactory : public QObject, public PluginFactory
