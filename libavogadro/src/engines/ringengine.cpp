@@ -71,7 +71,7 @@ namespace Avogadro{
 
   bool RingEngine::renderOpaque(PainterDevice *pd)
   {
-    if (m_alpha < 1.0) return true;
+    if (m_alpha < 0.999) return true;
 
     // Special case for everything up to 7 membered rings.
     QList<Fragment *> rings = const_cast<Molecule *>(pd->molecule())->rings();
@@ -86,8 +86,8 @@ namespace Avogadro{
   {
     if (m_alpha > 0.999) return true;
 
-    foreach (Color color, m_ringColors)
-      color.setAlpha(m_alpha);
+    for (int i = 0; i < m_ringColors.size(); ++i)
+      m_ringColors[i].setAlpha(m_alpha);
     // Special case for everything up to 7 membered rings.
     QList<Fragment *> rings = const_cast<Molecule *>(pd->molecule())->rings();
     // Now actually draw the ring structures

@@ -597,38 +597,15 @@ namespace Avogadro
   {
     if(!d->isValid()) { return; }
 
-    // Sort out the winding order by assigning in the correct order
-    Eigen::Vector3d tp2, tp3;
-
     // Don't want planes to be too shiny.
     d->color.applyAsFlatMaterials();
     d->color.apply();
 
-    // The plane normal vector of the view
-    const Eigen::Vector3d planeNormalVector = d->widget->normalVector();
-
-    // Calculate the normal for the triangle as GL_AUTO_NORMAL doesn't seem to work
-    Eigen::Vector3d v1, v2, norm;
-    v1 = p2 - p1;
-    v2 = p3 - p2;
-    norm = v1.cross(v2);
-    norm.normalize();
-
-    // Dot product is 1 or -1 - want normals facing the same direction
-    if (norm.dot(p1 - d->widget->camera()->backTransformedZAxis()) < 0) {
-      tp2 = p3;
-      tp3 = p2;
-    }
-    else {
-      tp2 = p2;
-      tp3 = p3;
-    }
-
     glBegin(GL_TRIANGLES);
     glNormal3dv(n.data());
     glVertex3dv(p1.data());
-    glVertex3dv(tp2.data());
-    glVertex3dv(tp3.data());
+    glVertex3dv(p2.data());
+    glVertex3dv(p3.data());
     glEnd();
   }
 
