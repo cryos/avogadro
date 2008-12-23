@@ -40,6 +40,7 @@
 #include <openbabel/math/vector3.h>
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
+#include <openbabel/generic.h>
 
 #include <QDir>
 #include <QReadWriteLock>
@@ -52,7 +53,10 @@ namespace Avogadro{
   class MoleculePrivate {
     public:
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
-        invalidRings(true), obmol(0) {}
+			  invalidRings(true), obmol(0), obunitcell(0) {}
+    // These are logically cached variables and thus are marked as mutable.
+    // Const objects should be logically constant (and not mutable)
+    // http://www.highprogrammer.com/alan/rants/mutable.html
       mutable Eigen::Vector3d       center;
       mutable Eigen::Vector3d       normalVector;
       mutable double                radius;
@@ -78,6 +82,8 @@ namespace Avogadro{
 
       // Our OpenBabel OBMol object
       OpenBabel::OBMol *            obmol;
+      // Our OpenBabel OBUnitCell object (if any)
+      OpenBabel::OBUnitCell *       obunitcell;
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
@@ -695,6 +701,7 @@ namespace Avogadro{
       }
     }
     for (unsigned int i = 1; i <= numberAtoms; ++i) {
+      // Warning -- OB atom index off-by-one here
       atom(i-1)->setPartialCharge(obmol.GetAtom(i)->GetPartialCharge());
     }
   }
@@ -737,6 +744,7 @@ namespace Avogadro{
     }
     OpenBabel::OBMol obmol = OBMol();
     for (unsigned int i = 0; i < numAtoms(); ++i) {
+      // Warning: OB off-by-one index
       atom(i)->setPartialCharge(obmol.GetAtom(i+1)->GetPartialCharge());
     }
     m_invalidPartialCharges = false;
@@ -748,7 +756,7 @@ namespace Avogadro{
       return;
 
     OpenBabel::OBMol obmol = OBMol();
-    for (int i = 0; i < numBonds(); ++i) {
+    for (unsigned int i = 0; i < numBonds(); ++i) {
       bond(i)->setAromaticity(obmol.GetBond(i)->IsAromatic());
     }
     m_invalidAromaticity = false;
@@ -1023,10 +1031,28 @@ namespace Avogadro{
     foreach(OpenBabel::OBRing *r, rings) {
       Fragment *ring = newRing();
       foreach(int index, r->_path) {
+	// FIXME: Is this an OB off-by-one index issue?
         ring->addAtom(atom(index-1)->id());
       }
     }
 
+    // If available, copy the unit cell
+    d->obunitcell = static_cast<OpenBabel::OBUnitCell *>(obmol->GetData(OpenBabel::OBGenericDataType::UnitCell));
+    // (that could return NULL, but other methods know they could get NULL)
+
+    return true;
+  }
+
+  OpenBabel::OBUnitCell *Molecule::OBUnitCell() const
+  {
+    Q_D(const Molecule);
+    return d->obunitcell;
+  }
+
+  bool Molecule::setOBUnitCell(OpenBabel::OBUnitCell *obunitcell)
+  {
+    Q_D(Molecule);
+    d->obunitcell = obunitcell;
     return true;
   }
 

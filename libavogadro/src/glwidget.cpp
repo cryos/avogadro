@@ -206,7 +206,6 @@ namespace Avogadro {
   public:
     GLWidgetPrivate() : background( 0,0,0,0 ),
                         aCells( 1 ), bCells( 1 ), cCells( 1 ),
-                        uc (0),
                         molecule( 0 ),
                         camera( new Camera ),
                         tool( 0 ),
@@ -263,8 +262,6 @@ namespace Avogadro {
     unsigned char          aCells;
     unsigned char          bCells;
     unsigned char          cCells;
-
-    OBUnitCell            *uc;
 
     Molecule              *molecule;
 
@@ -805,6 +802,7 @@ namespace Avogadro {
     else {
       glDisable(GL_LIGHT1);
     }
+    bool hasUnitCell = (d->molecule->OBUnitCell() != NULL);
 
     if (d->fogLevel) {
       glFogi(GL_FOG_MODE, GL_LINEAR);
@@ -827,7 +825,7 @@ namespace Avogadro {
     if (d->quickRender) {
       d->updateListQuick();
       glCallList(d->dlistQuick);
-      if (d->uc) {
+      if (hasUnitCell) {
         renderCrystal(d->dlistQuick);
       }
       // Render the active tool
@@ -843,7 +841,7 @@ namespace Avogadro {
         d->dlistTransparent = glGenLists(1);
 
       // Opaque engine elements rendered first
-      if (d->uc) glNewList(d->dlistOpaque, GL_COMPILE);
+      if (hasUnitCell) glNewList(d->dlistOpaque, GL_COMPILE);
       foreach(Engine *engine, d->engines)
         if(engine->isEnabled()) {
 #ifdef ENABLE_GLSL
@@ -854,7 +852,7 @@ namespace Avogadro {
 #ifdef ENABLE_GLSL
           if (m_glslEnabled) glUseProgramObjectARB(0);
 #endif
-      if (d->uc) { // end the main list and render the opaque crystal
+      if (hasUnitCell) { // end the main list and render the opaque crystal
         glEndList();
         renderCrystal(d->dlistOpaque);
       }
@@ -866,7 +864,7 @@ namespace Avogadro {
 
       // Now render transparent
       glEnable(GL_BLEND);
-      if (d->uc)
+      if (hasUnitCell)
         glNewList(d->dlistTransparent, GL_COMPILE);
       foreach(Engine *engine, d->engines) {
         if(engine->isEnabled() && engine->layers() & Engine::Transparent) {
@@ -880,7 +878,7 @@ namespace Avogadro {
 #ifdef ENABLE_GLSL
           if (m_glslEnabled) glUseProgramObjectARB(0);
 #endif
-      if (d->uc) { // end the main list and render the transparent bits
+      if (hasUnitCell) { // end the main list and render the transparent bits
         glEndList();
         renderCrystal(d->dlistTransparent);
       }
@@ -909,7 +907,7 @@ namespace Avogadro {
 
   void GLWidget::renderCrystal(GLuint displayList)
   {
-    std::vector<vector3> cellVectors = d->uc->GetCellVectors();
+    std::vector<vector3> cellVectors = d->molecule->OBUnitCell()->GetCellVectors();
 
     for (int a = 0; a < d->aCells; a++) {
       for (int b = 0; b < d->bCells; b++)  {
@@ -945,7 +943,7 @@ namespace Avogadro {
   //    0---1
   void GLWidget::renderCrystalAxes()
   {
-    std::vector<vector3> cellVectors = d->uc->GetCellVectors();
+    std::vector<vector3> cellVectors = d->molecule->OBUnitCell()->GetCellVectors();
     vector3 v0(0.0, 0.0, 0.0);
     vector3 v1(cellVectors[0]);
     vector3 v3(cellVectors[1]);
@@ -1305,7 +1303,6 @@ namespace Avogadro {
     // disconnect from our old molecule
     if ( d->molecule ) {
       QObject::disconnect( d->molecule, 0, this, 0 );
-      d->uc = NULL; // The unit cell is associated with our old molecule, we don't have to free it.
     }
 
     // Emit the molecule changed signal
@@ -1383,61 +1380,59 @@ namespace Avogadro {
 
   void GLWidget::updateGeometry()
   {
-    /// FIXME Bring back the unit cell
-//    if (d->molecule->HasData(OBGenericDataType::UnitCell))
-//      d->uc = dynamic_cast<OBUnitCell*>(d->molecule->GetData(OBGenericDataType::UnitCell));
-
-    if ( !d->uc ) { // a plain molecule, no crystal cell
+    if ( d->molecule->OBUnitCell() == NULL ) {
+      //plain molecule, no crystal cell
       d->center = d->molecule->center();
       d->normalVector = d->molecule->normalVector();
       d->radius = d->molecule->radius();
       d->farthestAtom = d->molecule->farthestAtom();
-    } else {
-      // render a crystal (so most geometry comes from the cell vectors)
-      // Origin at 0.0, 0.0, 0.0
-      // a = <x0, y0, z0>
-      // b = <x1, y1, z1>
-      // c = <x2, y2, z2>
-      std::vector<vector3> cellVectors = d->uc->GetCellVectors();
-      Vector3d a(cellVectors[0].AsArray());
-      Vector3d b(cellVectors[1].AsArray());
-      Vector3d c(cellVectors[2].AsArray());
-      Vector3d centerOffset = ( a * (d->aCells - 1)
-                                + b * (d->bCells - 1)
-                                + c * (d->cCells - 1) ) / 2.0;
-      // the center is the center of the molecule translated by centerOffset
-      d->center = d->molecule->center() + centerOffset;
-      // the radius is the length of centerOffset plus the molecule radius
-      d->radius = d->molecule->radius() + centerOffset.norm();
-      // for the normal vector, we just ask for the molecule's normal vector,
-      // crossing our fingers hoping that it will give a nice viewpoint not only
-      // with respect to the molecule but also with respect to the cells.
-      d->normalVector = d->molecule->normalVector();
-      // Computation of the farthest atom.
-      // First case: the molecule is empty
-      if(d->molecule->numAtoms() == 0)
-        d->farthestAtom = 0;
-      // Second case: there is no repetition of the molecule
-      else if(d->aCells <= 1 && d->bCells <= 1 && d->cCells <= 1)
-        d->farthestAtom = d->molecule->farthestAtom();
-      // General case: the farthest atom is the one that is located the
-      // farthest in the direction pointed to by centerOffset.
-      else {
-        QList<Atom *> atoms = d->molecule->atoms();
-        double x, max_x;
-        if (atoms.size()) {
-          d->farthestAtom = atoms.at(0);
-          max_x = centerOffset.dot(*d->farthestAtom->pos());
-          foreach (Atom *atom, atoms) {
-            x = centerOffset.dot(*atom->pos());
-            if (x > max_x) {
-              max_x = x;
-              d->farthestAtom = atom;
-            }
-          }
-        }
-      }
+      return;
     }
+
+    // render a crystal (so most geometry comes from the cell vectors)
+    // Origin at 0.0, 0.0, 0.0
+    // a = <x0, y0, z0>
+    // b = <x1, y1, z1>
+    // c = <x2, y2, z2>
+    std::vector<vector3> cellVectors = d->molecule->OBUnitCell()->GetCellVectors();
+    Vector3d a(cellVectors[0].AsArray());
+    Vector3d b(cellVectors[1].AsArray());
+    Vector3d c(cellVectors[2].AsArray());
+    Vector3d centerOffset = ( a * (d->aCells - 1)
+			      + b * (d->bCells - 1)
+			      + c * (d->cCells - 1) ) / 2.0;
+    // the center is the center of the molecule translated by centerOffset
+    d->center = d->molecule->center() + centerOffset;
+    // the radius is the length of centerOffset plus the molecule radius
+    d->radius = d->molecule->radius() + centerOffset.norm();
+    // for the normal vector, we just ask for the molecule's normal vector,
+    // crossing our fingers hoping that it will give a nice viewpoint not only
+    // with respect to the molecule but also with respect to the cells.
+    d->normalVector = d->molecule->normalVector();
+    // Computation of the farthest atom.
+    // First case: the molecule is empty
+    if(d->molecule->numAtoms() == 0)
+      d->farthestAtom = 0;
+    // Second case: there is no repetition of the molecule
+    else if(d->aCells <= 1 && d->bCells <= 1 && d->cCells <= 1)
+      d->farthestAtom = d->molecule->farthestAtom();
+    // General case: the farthest atom is the one that is located the
+    // farthest in the direction pointed to by centerOffset.
+    else {
+      QList<Atom *> atoms = d->molecule->atoms();
+      double x, max_x;
+      // We don't need tis conditional, we tested for atoms above
+      //      if (atoms.size()) {
+      d->farthestAtom = atoms.at(0);
+      max_x = centerOffset.dot(*d->farthestAtom->pos());
+      foreach (Atom *atom, atoms) {
+	x = centerOffset.dot(*atom->pos());
+	if (x > max_x) {
+	  max_x = x;
+	  d->farthestAtom = atom;
+	}
+      } // end foreach
+    } // end general repeat (many atoms, multiple cells)
   }
 
   Camera * GLWidget::camera() const
@@ -1926,7 +1921,6 @@ namespace Avogadro {
 
   void GLWidget::clearUnitCell()
   {
-    d->uc = NULL; // The unit cell is associated with our old molecule, it should have been freed elsewhere
     updateGeometry();
     d->camera->initializeViewPoint();
     update();

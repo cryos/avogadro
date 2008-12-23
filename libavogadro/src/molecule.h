@@ -34,6 +34,7 @@ namespace OpenBabel {
   class OBAtom;
   class OBBond;
   class OBMol;
+  class OBUnitCell;
 }
 
 namespace Avogadro {
@@ -376,8 +377,8 @@ namespace Avogadro {
       void clear();
 
       /**
-       * Get access to an OpenBabel atom, this is a copy of the internal data
-       * structure in OpenBabel form, you must call setOBAtom in order to save
+       * Get access to an OpenBabel molcule, this is a copy of the internal data
+       * structure in OpenBabel form, you must call setOBMol in order to save
        * any changes you make to this object.
        */
       OpenBabel::OBMol OBMol() const;
@@ -387,6 +388,19 @@ namespace Avogadro {
        * Avogadro Molecule object.
        */
       bool setOBMol(OpenBabel::OBMol *obmol);
+
+      /**
+       * Get access to the OpenBabel unit cell, if any
+       * @return the OBUnitCell or NULL if none exists
+       */
+      OpenBabel::OBUnitCell *OBUnitCell() const;
+
+      /**
+       * Copy as much data as possible from the supplied OpenBabel OBUnitCell
+       * to this Avogadro Molecule object.
+       * @return True if successful
+       */
+      bool setOBUnitCell(OpenBabel::OBUnitCell *obunitcell);
 
       const Eigen::Vector3d & center() const;
       const Eigen::Vector3d & normalVector() const;
