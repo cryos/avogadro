@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <authors>
-<author uid="dcurtis3">
-Donald Ephraim Curtis &lt;dcurtis3@sourceforge.net&gt;
-</author>
-<author uid="ghutchis">
-Geoffrey Hutchison &lt;geoff@geoffhutchison.net&gt;
-</author>
-<author uid="cryosuk">
-Marcus D. Hanwell &lt;marcus@cryos.org&gt;
-</author>
-<author uid="benoitjacob">
-Benoit Jacob &lt;jacob@math.jussieu.fr&gt;
-</author>
-<author uid="cniehaus">
-Carsten Niehaus &lt;carsten.niehaus@gmail.com&gt;
-</author>
+  <author uid="dcurtis3">
+    Donald Ephraim Curtis &lt;dcurtis3@sourceforge.net&gt;
+  </author>
+  <author uid="ghutchis">
+    Geoffrey Hutchison &lt;geoff@geoffhutchison.net&gt;
+  </author>
+  <author uid="cryosuk">
+    Marcus D. Hanwell &lt;marcus@cryos.org&gt;
+  </author>
+  <author uid="benoitjacob">
+    Benoit Jacob &lt;jacob.benoit.1@gmail.com&gt;
+  </author>
+  <author uid="cniehaus">
+    Carsten Niehaus &lt;carsten.niehaus@gmail.com&gt;
+  </author>
+  <author uid="timvdm">
+    Tim Vandermeersch &lt;tim.vandermeersch@gmail.com&gt;
+  </author>
+  <author uid="naomifox">
+    Naomi Fox &lt;naomi.fox@gmail.com&gt;
+  </author>
+  <author uid="rbraith">
+    Ross Braithwaite &lt;dark.nz@gmail.com&gt;
+  </author>
+  <author uid="jbunt">
+    James Bunt &lt;james.bunt@gmail.com&gt;
+  </author>
+  <author uid="shahzadali">
+    Shahzad Ali &lt;saky.org@gmail.com&gt;
+  </author>
+  <author uid="soc88">
+    Simon Ochsenreither &lt;simon@ochsenreither.de&gt;
+  </author>
+  <author uid="j_mantha">
+    Jordan Mantha &lt;jordan.mantha@gmail.com&gt;
+  </author>
 </authors>
 
