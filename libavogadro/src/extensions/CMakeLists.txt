@@ -94,14 +94,6 @@ add_library(unitcellextension MODULE ${unitcellextension_SRCS} ${unitcellextensi
 target_link_libraries(unitcellextension ${LINK_LIBS})
 install(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
 
-### super cell builder
-#set(supercellextension_SRCS supercellbuilder.cpp supercelldialog.cpp)
-#qt4_wrap_ui(supercellextension_UIS_H supercelldialog.ui)
-#qt4_automoc(${supercellextension_SRCS})
-#add_library(supercellextension MODULE ${supercellextension_SRCS} ${supercellextension_UIS_H})
-#target_link_libraries(supercellextension ${LINK_LIBS})
-#install(TARGETS supercellextension DESTINATION ${DESTINATION_DIR})
-
 ### h->methyl
 set(h2methylextension_SRCS h2methylextension.cpp)
 qt4_automoc(${h2methylextension_SRCS})
