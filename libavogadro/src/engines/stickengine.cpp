@@ -67,7 +67,7 @@ namespace Avogadro {
 
     engine->setAlias(alias());
     engine->setEnabled(isEnabled());
-		engine->setRadius(m_radius * SCALING_FACTOR);
+    engine->setRadius(m_radius * SCALING_FACTOR);
     return engine;
   }
 
@@ -97,7 +97,8 @@ namespace Avogadro {
     glDisable( GL_NORMALIZE );
     glEnable( GL_RESCALE_NORMAL );
 
-    Color *map = colorMap();
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
     map->setToSelectionColor();
     pd->painter()->setColor(map);
 
