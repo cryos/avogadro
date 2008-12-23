@@ -68,7 +68,9 @@
 #include <openbabel/mol.h>
 #include <openbabel/forcefield.h>
 
+#ifdef ENABLE_PYTHON
 #include <avogadro/pythonerror.h>
+#endif
 
 #include <fstream>
 #include <algorithm>
@@ -256,12 +258,12 @@ namespace Avogadro
     d->messagesText = new QTextEdit();
     d->messagesText->setReadOnly( true );
 
+#ifdef ENABLE_PYTHON
     connect(pythonError(), SIGNAL(message(const QString&)),
         d->messagesText, SLOT(append(const QString&)));
     d->messagesText->append( pythonError()->string() );
     pythonError()->setListening(true); // switch to 'listening mode'
-
-
+#endif
 
     messagesVBox->setMargin( 3 );
     messagesVBox->addWidget( d->messagesText );

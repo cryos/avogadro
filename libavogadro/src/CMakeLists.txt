@@ -56,6 +56,10 @@ if(NOT BOOST_PYTHON_LIBS AND NOT Boost_PYTHON_FOUND)
 		${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.cpp)
 	list(REMOVE_ITEM libavogadro_HDRS
 		${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.h)
+	list(REMOVE_ITEM libavogadro_SRCS
+		${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.cpp)
+	list(REMOVE_ITEM libavogadro_HDRS
+		${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.h)
 endif(NOT BOOST_PYTHON_LIBS AND NOT Boost_PYTHON_FOUND)
 
 qt4_automoc(${libavogadro_SRCS})
