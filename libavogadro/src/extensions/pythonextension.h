@@ -79,6 +79,8 @@ namespace Avogadro {
 
       PythonInterpreter m_interpreter;
 
+      QString m_lines;
+
       void findScripts();
       void loadScripts(QDir dir);
 

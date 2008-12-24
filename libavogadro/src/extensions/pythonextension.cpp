@@ -46,6 +46,7 @@ namespace Avogadro
   PythonExtension::PythonExtension( QObject *parent ) : Extension( parent ), m_molecule(0), m_terminalDock(0)
   {
     m_reloadAction = 0;
+//    m_indentation = 0;
     findScripts();
   }
 
@@ -250,17 +251,54 @@ namespace Avogadro
 
   void PythonExtension::runCommand()
   {
+    int indent = 0;
     QString text = m_terminalWidget->inputLine->text();
-    if(!text.isEmpty())
-    {
-      m_terminalWidget->ui.outputText->append(">>> " + text);
-      QString result = m_interpreter.exec(text);
-      if(!result.isEmpty()) {
-        m_terminalWidget->ui.outputText->append(result);
+    if(!text.trimmed().isEmpty()) {
+      QString line = text;
+      while (line.startsWith("  ")) {
+        line.remove(0, 2);
+        indent++;
       }
-      m_terminalWidget->inputLine->clear();
+      line += text.trimmed();
+
+      if (line.endsWith(':')) {
+        indent++;
+
+        // first line still has >>> 
+        if (indent > 1)
+          m_terminalWidget->ui.outputText->append("... " + text);
+        else
+          m_terminalWidget->ui.outputText->append(">>> " + text);
+        text += "\n";
+        m_lines.append(text);
+      } else {
+        if (indent && !m_lines.isEmpty()) {
+          m_terminalWidget->ui.outputText->append("... " + text);
+          text += "\n";
+          m_lines.append(text);
+        } else {
+          m_terminalWidget->ui.outputText->append(">>> " + text);
+          QString result = m_interpreter.exec(text);
+          if(!result.isEmpty())
+            m_terminalWidget->ui.outputText->append(result);
+        }
+      }
+      QString indentString;
+      for (int i = 0; i < indent; ++i)
+        indentString += "  ";
+      m_terminalWidget->inputLine->setText(indentString);
+
       // Always update the molecule when running commands from the terminal widget
       m_molecule->update();
+    } else {
+      QString result = m_interpreter.exec(m_lines);
+      if(!result.isEmpty())
+        m_terminalWidget->ui.outputText->append(result);
+
+      m_terminalWidget->ui.outputText->append(">>>");
+      m_terminalWidget->inputLine->clear();
+
+      m_lines.clear();
     }
   }
 
@@ -303,10 +341,12 @@ namespace Avogadro
   {
     ui.setupUi(this);
     QFont font;
-    font.setFamily(QString::fromUtf8("DejaVu Sans Mono"));
+    font.setFamily(QString::fromUtf8("Courier New"));
     inputLine = new PythonTerminalLineEdit(this);
     inputLine->setObjectName(QString::fromUtf8("inputLine"));
     inputLine->setFont(font);
+
+    ui.outputText->setFont(font);
 
     // TODO: Make a full completion list, including spaces, separators, etc.
     QStringList wordList;
