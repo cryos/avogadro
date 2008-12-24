@@ -72,7 +72,7 @@
      * @return True if the MeshGenerator was successfully initialized.
      */
     explicit MeshGenerator(const Cube *cube, Mesh *mesh, float iso,
-                           QObject *parent = 0);
+                           bool reverse = false, QObject *parent = 0);
 
     /**
      * Destructor.
@@ -86,7 +86,8 @@
      * @param mesh The Mesh that will hold the isosurface.
      * @param iso The iso value of the surface.
      */
-    bool initialize(const Cube *cube, Mesh *mesh, float iso);
+    bool initialize(const Cube *cube, Mesh *mesh, float iso,
+                    bool reverse = false);
 
     /**
      * Use this function to begin Mesh generation. Uses an asynchronous thread,
@@ -135,6 +136,7 @@
     bool marchingCube(const Eigen::Vector3i &pos);
 
     float m_iso;           /** The value of the isosurface. */
+    bool m_reverseWinding; /** Whether the winding and normals are reversed */
     const Cube *m_cube;    /** The cube that we are generating a Mesh from. */
     Mesh *m_mesh;          /** The mesh that is being generated. */
     float m_stepSize;      /** The step size of the cube. */

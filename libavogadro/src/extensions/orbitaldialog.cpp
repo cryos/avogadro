@@ -82,6 +82,16 @@ namespace Avogadro
             this, SLOT(isoSliderChanged(int)));
     connect(ui.calculateMesh, SIGNAL(clicked()),
             this, SLOT(calculateMeshClicked()));
+
+    // VdW stuff
+    connect(ui.calculateVdW, SIGNAL(clicked()),
+            this, SLOT(calculateVdWCubeClicked()));
+    connect(ui.surfaceDistance, SIGNAL(editingFinished()),
+            this, SLOT(VdWEditChanged()));
+    connect(ui.surfaceSlider, SIGNAL(sliderMoved(int)),
+            this, SLOT(VdWSliderChanged(int)));
+    connect(ui.calculateVdWMesh, SIGNAL(clicked()),
+            this, SLOT(calculateVdWMeshClicked()));
   }
 
   OrbitalDialog::~OrbitalDialog()
@@ -189,6 +199,8 @@ namespace Avogadro
     foreach (Engine *engine, m_glwidget->engines()) {
       if (engine->name() == "Orbitals")
         ui.engineCombo->addItem(engine->alias());
+      if (engine->name() == "Surface")
+        ui.surfaceEngineCombo->addItem(engine->alias());
     }
   }
 
@@ -208,13 +220,31 @@ namespace Avogadro
 
   void OrbitalDialog::updateCubes(Primitive *)
   {
-    int tmp = ui.cubeCombo->currentIndex();
+    int cubeIndex = ui.cubeCombo->currentIndex();
+    int colorCubeIndex = ui.colorCubeCombo->currentIndex();
+    int surfaceCubeIndex = ui.surfaceCubeCombo->currentIndex();
+    int surfaceColorCubeIndex = ui.surfaceColorCubeCombo->currentIndex();
     ui.cubeCombo->clear();
+    ui.colorCubeCombo->clear();
+    ui.colorCubeCombo->addItem(tr("None"));
+    ui.surfaceCubeCombo->clear();
+    ui.surfaceColorCubeCombo->clear();
+    ui.surfaceColorCubeCombo->addItem(tr("None"));
     foreach (Cube *cube, m_molecule->cubes()) {
       ui.cubeCombo->addItem(cube->name());
+      ui.colorCubeCombo->addItem(cube->name());
+      ui.surfaceCubeCombo->addItem(cube->name());
+      ui.surfaceColorCubeCombo->addItem(cube->name());
     }
     ui.calculateMesh->setEnabled(true);
-    ui.cubeCombo->setCurrentIndex(tmp);
+    ui.calculateVdWMesh->setEnabled(true);
+    // Set the indices of the combos
+    ui.cubeCombo->setCurrentIndex(cubeIndex>-1 ? cubeIndex : 0);
+    ui.cubeCombo->setCurrentIndex(colorCubeIndex>-1 ? colorCubeIndex : 0);
+    ui.surfaceCubeCombo->setCurrentIndex(surfaceCubeIndex>-1 ?
+                                         surfaceCubeIndex : 0);
+    ui.surfaceColorCubeCombo->setCurrentIndex(surfaceColorCubeIndex>-1 ?
+                                              surfaceColorCubeIndex : 0);
   }
 
   void OrbitalDialog::originChanged()
@@ -326,6 +356,28 @@ namespace Avogadro
     emit calculateMesh(ui.cubeCombo->currentIndex(),
                        ui.isoValue->text().toDouble(),
                        0);
+  }
+
+  void OrbitalDialog::calculateVdWCubeClicked()
+  {
+    emit calculateVdWCube();
+  }
+
+  void OrbitalDialog::VdWSliderChanged(int n)
+  {
+    ui.surfaceDistance->setText(QString::number(n/25.0));
+  }
+
+  void OrbitalDialog::VdWEditChanged()
+  {
+    ui.surfaceSlider->setValue(
+         (ui.surfaceDistance->text().toDouble()) * 25.0 );
+  }
+
+  void OrbitalDialog::calculateVdWMeshClicked()
+  {
+    emit calculateVdWMesh(ui.cubeCombo->currentIndex(),
+                          ui.isoValue->text().toDouble());
   }
 
 } // End namespace Avogadro

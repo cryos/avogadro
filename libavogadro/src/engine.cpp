@@ -284,7 +284,7 @@ namespace Avogadro {
     m_molecule = mol;
   }
 
-  void Engine::changeMolecule(Molecule *previous, Molecule *next)
+  void Engine::changeMolecule(Molecule *, Molecule *next)
   {
     setMolecule(next);
   }
