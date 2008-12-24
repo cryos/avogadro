@@ -98,6 +98,11 @@ namespace Avogadro
       m_c = readArrayD(list.at(2).toInt());
     else if (key == "P(S=P) Contraction coefficients")
       m_csp = readArrayD(list.at(2).toInt());
+    else if (key == "Alpha Orbital Energies")
+    {
+      m_orbitalEnergy = readArrayD(list.at(2).toInt());
+      qDebug() << "MO energies, n =" << m_orbitalEnergy.size();
+    }
     else if (key == "Alpha MO coefficients")
     {
       m_MOcoeffs = readArrayD(list.at(2).toInt());
