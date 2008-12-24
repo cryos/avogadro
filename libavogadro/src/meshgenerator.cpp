@@ -37,13 +37,15 @@ using Eigen::Vector3i;
 namespace Avogadro {
 
   MeshGenerator::MeshGenerator(QObject *parent) : QThread(parent), m_iso(0.0),
-    m_cube(0), m_mesh(0), m_stepSize(0.0), m_min(0.0, 0.0, 0.0), m_dim(0,0,0)
+    m_reverseWinding(false), m_cube(0), m_mesh(0), m_stepSize(0.0),
+    m_min(0.0, 0.0, 0.0), m_dim(0,0,0)
   {
   }
 
   MeshGenerator::MeshGenerator(const Cube *cube, Mesh *mesh,
-    float iso, QObject *parent) : QThread(parent), m_iso(0.0), m_cube(0),
-    m_mesh(0), m_stepSize(0.0), m_min(0.0, 0.0, 0.0), m_dim(0,0,0)
+    float iso, bool reverse, QObject *parent) : QThread(parent), m_iso(0.0),
+    m_reverseWinding(reverse), m_cube(0), m_mesh(0), m_stepSize(0.0),
+    m_min(0.0, 0.0, 0.0), m_dim(0,0,0)
   {
     initialize(cube, mesh, iso);
   }
@@ -52,13 +54,15 @@ namespace Avogadro {
   {
   }
 
-  bool MeshGenerator::initialize(const Cube *cube, Mesh *mesh, float iso)
+  bool MeshGenerator::initialize(const Cube *cube, Mesh *mesh, float iso,
+                                 bool reverse)
   {
     if (!cube || !mesh)
       return false;
     m_cube = cube;
     m_mesh = mesh;
     m_iso = iso;
+    m_reverseWinding = reverse;
     if (!m_cube->lock()->tryLockForRead()) {
       qDebug() << "Cannot get a read lock...";
       return false;
@@ -208,7 +212,7 @@ namespace Avogadro {
       int iVertex = 0;
       iEdgeFlags = a2iTriangleConnectionTable[iFlagIndex][3*i];
       // Make sure we get the triangle winding the right way around!
-      if (m_iso >= 0.0f) {
+      if (!m_reverseWinding) {
         for(int j = 0; j < 3; ++j) {
           iVertex = a2iTriangleConnectionTable[iFlagIndex][3*i+j];
           m_indices.push_back(m_vertices.size());
