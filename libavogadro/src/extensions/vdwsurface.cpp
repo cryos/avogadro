@@ -89,8 +89,6 @@ namespace Avogadro
     // Lock the cube until we are done.
     cube->lock()->lockForWrite();
 
-    qDebug() << "Number of points" << m_VdWvector.size() << cube->data()->size();
-
     // Watch for the future
     connect(&m_watcher, SIGNAL(finished()), this, SLOT(calculationComplete()));
 
@@ -104,7 +102,7 @@ namespace Avogadro
   {
     disconnect(&m_watcher, SIGNAL(finished()), this, SLOT(calculationComplete()));
     m_cube->lock()->unlock();
-    qDebug() << "Calculation complete - VdW cube mapped...";
+    m_cube->update();
   }
 
   void VdWSurface::processPoint(VdWStruct &vdw)

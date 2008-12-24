@@ -40,6 +40,7 @@ namespace Avogadro
   class SlaterSet;
   class Mesh;
   class MeshGenerator;
+  class VdWSurface;
 
   class OrbitalExtension : public Extension
   {
@@ -63,6 +64,8 @@ namespace Avogadro
 
     void setMolecule(Molecule *molecule);
 
+    void setDefaultCube();
+
     bool loadBasis();
 
   private:
@@ -84,6 +87,8 @@ namespace Avogadro
     MeshGenerator *m_meshGen1;
     MeshGenerator *m_meshGen2;
 
+    VdWSurface *m_VdWsurface;
+
     void calculateMO(int MO, const Eigen::Vector3d &origin,
                      const Eigen::Vector3i &steps, double stepSize);
 
@@ -101,6 +106,13 @@ namespace Avogadro
     /** Mesh rendering. */
     void generateMesh(int cube, double isoValue, int calc);
     void meshGenerated();
+
+    /** VdW calculations/rendering */
+    void calculateVdWCube();
+    void calculateVdWDone();
+    void calculateVdWCanceled();
+    void generateVdWMesh(int cube, double isoValue);
+    void VdWMeshGenerated();
 
   };
 

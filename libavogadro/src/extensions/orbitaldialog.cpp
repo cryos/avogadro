@@ -159,8 +159,14 @@ namespace Avogadro
   Engine * OrbitalDialog::currentEngine()
   {
     foreach (Engine *engine, m_glwidget->engines()) {
-      if (engine->alias() == ui.engineCombo->currentText())
-        return engine;
+      if (ui.tabWidget->currentIndex() == 1) {
+        if (engine->alias() == ui.engineCombo->currentText())
+          return engine;
+      }
+      else if (ui.tabWidget->currentIndex() == 2) {
+        if (engine->alias() == ui.surfaceEngineCombo->currentText())
+          return engine;
+      }
     }
     return 0;
   }
@@ -335,8 +341,6 @@ namespace Avogadro
       ui.cubeLow->setText(QString::number(m_min));
       ui.cubeHigh->setText(QString::number(m_max));
     }
-    else
-      qDebug() << "OrbitalDialog failed - cube = 0.";
   }
 
   void OrbitalDialog::isoSliderChanged(int n)
@@ -377,7 +381,7 @@ namespace Avogadro
   void OrbitalDialog::calculateVdWMeshClicked()
   {
     emit calculateVdWMesh(ui.cubeCombo->currentIndex(),
-                          ui.isoValue->text().toDouble());
+                          ui.surfaceDistance->text().toDouble());
   }
 
 } // End namespace Avogadro

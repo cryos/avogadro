@@ -197,9 +197,10 @@ namespace Avogadro {
     if (m_mesh2)
       iMesh2 = m_mesh2->index();
     QList<Mesh *> meshes = pd->molecule()->meshes();
-    if (meshes.size() == 0) {
+    if (meshes.size() == 0)
       return;
-    }
+    if (meshes.size() == 1)
+      iMesh2 = 0;
     else {
       if (m_settingsWidget) {
         // Add the orbitals
@@ -261,6 +262,8 @@ namespace Avogadro {
       m_mesh1 = 0;
       m_mesh2 = 0;
     }
+    else if (m_molecule->numMeshes() == 1)
+      tmp2 = 0;
     if (m_mesh1)
       m_settingsWidget->orbital1Combo->setCurrentIndex(m_mesh1->index());
     else

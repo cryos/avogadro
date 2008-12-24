@@ -27,6 +27,7 @@
 #include "gaussianfchk.h"
 #include "slaterset.h"
 #include "mopacaux.h"
+#include "vdwsurface.h"
 
 #include <vector>
 #include <avogadro/toolgroup.h>
@@ -55,7 +56,7 @@ namespace Avogadro
 
   OrbitalExtension::OrbitalExtension(QObject* parent) : Extension(parent),
     m_glwidget(0), m_orbitalDialog(0), m_molecule(0), m_basis(0), m_slater(0),
-    m_progress(0), m_timer(0), m_meshGen1(0), m_meshGen2(0)
+    m_progress(0), m_timer(0), m_meshGen1(0), m_meshGen2(0), m_VdWsurface(0)
   {
     QAction* action = new QAction(this);
     action->setText(tr("Import Molecular Orbitals..."));
@@ -99,6 +100,11 @@ namespace Avogadro
               this, SLOT(calculateDensity()));
       connect(m_orbitalDialog, SIGNAL(calculateMesh(int, double, int)),
               this, SLOT(generateMesh(int, double, int)));
+      connect(m_orbitalDialog, SIGNAL(calculateVdWCube()),
+              this, SLOT(calculateVdWCube()));
+      connect(m_orbitalDialog, SIGNAL(calculateVdWMesh(int, double)),
+              this, SLOT(generateVdWMesh(int, double)));
+      setDefaultCube();
       if (loadBasis()) {
         m_orbitalDialog->show();
       }
@@ -107,14 +113,8 @@ namespace Avogadro
       }
     }
     else {
-      if (loadBasis()) {
-        m_orbitalDialog->setGLWidget(widget);
-        m_orbitalDialog->show();
-      }
-      else {
-        QMessageBox::warning(m_orbitalDialog, tr("File type not supported"),
-                             tr("Either no file is loaded, or the loaded file type is not supported. Currently Gaussian checkpoints (.fchk/.fch) are supported."));
-      }
+      m_orbitalDialog->setGLWidget(widget);
+      m_orbitalDialog->show();
     }
     return 0;
   }
@@ -125,6 +125,18 @@ namespace Avogadro
     m_molecule = molecule;
     if (m_orbitalDialog)
       m_orbitalDialog->setMolecule(molecule);
+  }
+
+  void OrbitalExtension::setDefaultCube()
+  {
+    // Now to set the default cube...
+    Cube cube;
+    double step = 0.18;
+    cube.setLimits(m_molecule, step, 2.5);
+    Vector3d min = cube.min();// / BOHR_TO_ANGSTROM;
+    Vector3i dim = cube.dimensions();
+    // Set these values on the form - they can then be altered by the user
+    m_orbitalDialog->setCube(min, dim.x(), dim.y(), dim.z(), step);
   }
 
   bool OrbitalExtension::loadBasis()
@@ -149,15 +161,6 @@ namespace Avogadro
         if (m_basis->HOMO(i)) m_orbitalDialog->setHOMO(i);
         else if (m_basis->LUMO(i)) m_orbitalDialog->setLUMO(i);
       }
-
-      // Now to set the default cube...
-      Cube cube;
-      double step = 0.18;
-      cube.setLimits(m_molecule, step, 2.5);
-      Vector3d min = cube.min();// / BOHR_TO_ANGSTROM;
-      Vector3i dim = cube.dimensions();
-      // Set these values on the form - they can then be altered by the user
-      m_orbitalDialog->setCube(min, dim.x(), dim.y(), dim.z(), step);
       return true;
     }
     else if (info.completeSuffix() == "mopout" || info.completeSuffix() == "out") {
@@ -172,21 +175,12 @@ namespace Avogadro
         if (m_slater->HOMO(i)) m_orbitalDialog->setHOMO(i);
         else if (m_slater->LUMO(i)) m_orbitalDialog->setLUMO(i);
       }
-
-      Cube cube;
-      double step = 0.18;
-      cube.setLimits(m_molecule, step, 2.5);
-      Vector3d min = cube.min();// / BOHR_TO_ANGSTROM;
-      Vector3i dim = cube.dimensions();
-      // Set these values on the form - they can then be altered by the user
-      m_orbitalDialog->setCube(min, dim.x(), dim.y(), dim.z(), step);
-
       return true;
     }
     // If we get here it is a basis set we cannot load yet
     else {
       qDebug() << "baseName:" << info.completeSuffix();
-      m_orbitalDialog->setCurrentTab(1);
+      m_orbitalDialog->setCurrentTab(0);
       return false;
     }
   }
@@ -569,6 +563,101 @@ namespace Avogadro
     settings.setValue("mesh1Id", static_cast<int>(m_mesh1->id()));
     settings.setValue("mesh2Id", static_cast<int>(m_mesh2->id()));
     engine->readSettings(settings);
+    engine->setEnabled(true);
+    m_molecule->update();
+  }
+
+  void OrbitalExtension::calculateVdWCube()
+  {
+    if (!m_VdWsurface)
+      m_VdWsurface = new VdWSurface;
+
+    if (m_molecule)
+      m_VdWsurface->setAtoms(m_molecule);
+    else
+      return;
+
+    qDebug() << "Calculating VdW cube...";
+    double stepSize = m_orbitalDialog->stepSize();
+    Vector3d origin = m_orbitalDialog->origin();
+    Vector3i steps = m_orbitalDialog->steps();
+    Cube *cube = m_molecule->newCube();
+    cube->setName(QString(tr("VdW Cube")));
+    cube->setLimits(origin, steps, stepSize);
+
+    m_VdWsurface->calculateCube(cube);
+
+    // Set up a progress dialog
+    if (!m_progress) {
+      m_progress = new QProgressDialog(m_orbitalDialog);
+      m_progress->setCancelButtonText(tr("Abort Calculation"));
+      m_progress->setWindowModality(Qt::NonModal);
+    }
+
+    // Set up the progress bar
+    m_progress->setWindowTitle(tr("Calculating VdW Cube"));
+    m_progress->setRange(m_VdWsurface->watcher().progressMinimum(),
+                         m_VdWsurface->watcher().progressMinimum());
+    m_progress->setValue(m_VdWsurface->watcher().progressValue());
+
+    connect(&m_VdWsurface->watcher(), SIGNAL(progressValueChanged(int)),
+            m_progress, SLOT(setValue(int)));
+    connect(&m_VdWsurface->watcher(), SIGNAL(progressRangeChanged(int, int)),
+            m_progress, SLOT(setRange(int, int)));
+    connect(m_progress, SIGNAL(canceled()),
+            this, SLOT(calculateVdWCanceled()));
+    connect(&m_VdWsurface->watcher(), SIGNAL(finished()),
+            this, SLOT(calculateVdWDone()));
+    m_progress->show();
+  }
+
+  void OrbitalExtension::calculateVdWDone()
+  {
+    disconnect(&m_VdWsurface->watcher(), 0, m_progress, 0);
+    disconnect(m_progress, 0, this, 0);
+  }
+
+  void OrbitalExtension::calculateVdWCanceled()
+  {
+    disconnect(&m_VdWsurface->watcher(), 0, m_progress, 0);
+    disconnect(m_progress, 0, this, 0);
+    m_VdWsurface->watcher().cancel();
+    qDebug() << "Canceled...";
+  }
+
+  void OrbitalExtension::generateVdWMesh(int iCube, double isoValue)
+  {
+    qDebug() << "Calculate VdW Mesh called" << isoValue << iCube;
+    if (!m_molecule->cube(iCube))
+      return;
+
+    Cube *cube = m_molecule->cube(iCube);
+    double m_min = cube->minValue();
+    double m_max = cube->maxValue();
+    m_mesh1 = m_molecule->newMesh();
+    m_mesh1->setName(cube->name() + ", iso=" + QString::number(isoValue));
+
+    if (!m_meshGen1) {
+      m_meshGen1 = new MeshGenerator;
+      connect(m_meshGen1, SIGNAL(finished()), this, SLOT(VdWMeshGenerated()));
+    }
+    else {
+      disconnect(m_meshGen1, 0, this, 0);
+      connect(m_meshGen1, SIGNAL(finished()), this, SLOT(VdWMeshGenerated()));
+    }
+    m_meshGen1->initialize(cube, m_mesh1, isoValue, true);
+    m_meshGen1->start();
+    qDebug() << "Calculate Mesh called" << isoValue;
+  }
+
+  void OrbitalExtension::VdWMeshGenerated()
+  {
+    Engine *engine = m_orbitalDialog->currentEngine();
+    QSettings settings;
+    engine->writeSettings(settings);
+    settings.setValue("meshId", static_cast<int>(m_mesh1->id()));
+    engine->readSettings(settings);
+    engine->setEnabled(true);
     m_molecule->update();
   }
 
