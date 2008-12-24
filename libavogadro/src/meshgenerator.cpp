@@ -138,7 +138,7 @@ namespace Avogadro {
 //                         pos.y()*m_points.z() +
 //                         pos.z();
 
-  unsigned long MeshGenerator::duplicate(const Vector3i &i, const Vector3f &pos)
+  unsigned long MeshGenerator::duplicate(const Vector3i &i, const Vector3f &)
   {
     if (i.z()) {
 //      foreach(unsigned long index, m_vDone[i.x()*i.y() + i.z()-1) {
