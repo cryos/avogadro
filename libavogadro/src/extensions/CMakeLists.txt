@@ -87,12 +87,20 @@ target_link_libraries(selectextension ${LINK_LIBS})
 install(TARGETS selectextension DESTINATION ${DESTINATION_DIR})
 
 ### unit cells
-set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)
-qt4_wrap_ui(unitcellextension_UIS_H unitcellparamdialog.ui)
-qt4_automoc(${unitcellextension_SRCS})
-add_library(unitcellextension MODULE ${unitcellextension_SRCS} ${unitcellextension_UIS_H})
-target_link_libraries(unitcellextension ${LINK_LIBS})
-install(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
+#set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)
+#qt4_wrap_ui(unitcellextension_UIS_H unitcellparamdialog.ui)
+#qt4_automoc(${unitcellextension_SRCS})
+#add_library(unitcellextension MODULE ${unitcellextension_SRCS} ${unitcellextension_UIS_H})
+#target_link_libraries(unitcellextension ${LINK_LIBS})
+#install(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
+
+### super cell builder
+#set(supercellextension_SRCS supercellbuilder.cpp supercelldialog.cpp)
+#qt4_wrap_ui(supercellextension_UIS_H supercelldialog.ui)
+#qt4_automoc(${supercellextension_SRCS})
+#add_library(supercellextension MODULE ${supercellextension_SRCS} ${supercellextension_UIS_H})
+#target_link_libraries(supercellextension ${LINK_LIBS})
+#install(TARGETS supercellextension DESTINATION ${DESTINATION_DIR})
 
 ### h->methyl
 set(h2methylextension_SRCS h2methylextension.cpp)
@@ -141,12 +149,21 @@ if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
 	### python extensions
 	message(STATUS "Enabled python extension")
 	set(pythonextension_SRCS pythonextension.cpp)
-	qt4_wrap_ui(pythonextension_UIS_H pythonterminalwidget.ui)
 	qt4_automoc(${pythonextension_SRCS})
-	add_library(pythonextension MODULE ${pythonextension_SRCS}
-		${pythonextension_UIS_H})
+	add_library(pythonextension MODULE ${pythonextension_SRCS})
 	target_link_libraries(pythonextension ${LINK_LIBS})
 	install(TARGETS pythonextension DESTINATION ${DESTINATION_DIR})
+
+	### python terminal
+	message(STATUS "Enabled python terminal")
+	set(pythonterminal_SRCS pythonterminal.cpp highlighter.cpp)
+	qt4_wrap_ui(pythonterminal_UIS_H pythonterminalwidget.ui)
+	qt4_automoc(${pythonterminal_SRCS})
+	add_library(pythonterminal MODULE ${pythonterminal_SRCS}
+		${pythonterminal_UIS_H})
+	target_link_libraries(pythonterminal ${LINK_LIBS})
+	install(TARGETS pythonterminal DESTINATION ${DESTINATION_DIR})
+
 
 	file(GLOB python_SCRIPTS "python/*.py")
 	install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/scripts)
