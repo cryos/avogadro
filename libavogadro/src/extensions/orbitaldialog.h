@@ -91,11 +91,21 @@ namespace Avogadro
 
     void calculateMeshClicked();
 
+    void VdWSliderChanged(int);
+
+    void VdWEditChanged();
+
+    void calculateVdWCubeClicked();
+
+    void calculateVdWMeshClicked();
+
   Q_SIGNALS:
     void calculateMO(int MO);
     void calculateAll();
     void calculateDensity();
     void calculateMesh(int cube, double isoValue, int calc);
+    void calculateVdWMesh(int cube, double value);
+    void calculateVdWCube();
 
   };
 
