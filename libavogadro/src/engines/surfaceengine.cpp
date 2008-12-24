@@ -47,8 +47,9 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  SurfaceEngine::SurfaceEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
-  m_alpha(0.5), m_stepSize(0.33333), m_padding(2.5), m_renderMode(0), m_colorMode(0), m_drawBox(false)
+  SurfaceEngine::SurfaceEngine(QObject *parent) : Engine(parent),
+    m_settingsWidget(0), m_mesh(0), m_alpha(0.5), m_stepSize(0.33333),
+    m_padding(2.5), m_renderMode(0), m_colorMode(0), m_drawBox(false)
   {
     setDescription(tr("Surface rendering"));
     m_vdwThread = new VDWGridThread;
@@ -155,267 +156,46 @@ namespace Avogadro {
 
   bool SurfaceEngine::renderOpaque(PainterDevice *pd)
   {
-    // Don't render if the surface is transparent
-    if (m_alpha < 0.999)
-      return false;
-    // Don't try to render anything while the surface is being calculated.
-    if (m_vdwThread->isRunning())
-      return false;
-    Molecule *mol = const_cast<Molecule *>(pd->molecule());
-    if (!mol->numAtoms())
-      return false; // no atoms -> no surface
-
-    if (!m_surfaceValid)
+    // Render the opaque surface if m_alpha is 1
+    if (m_alpha >= 0.999)
     {
-      PrimitiveList prims = primitives();
-      if (!m_boxControl->isModified())
-        m_vdwThread->init(mol, prims, pd);
-      else
-        m_vdwThread->init(mol, prims, pd, m_boxControl);
-      m_vdwThread->start();
-
-      m_surfaceValid = true;
-      return true;
-    }
-
-    pd->painter()->setColor(1.0, 0.0, 0.0);
-    m_color.applyAsMaterials();
-
-    switch (m_renderMode) {
-    case 0:
-      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-      break;
-    case 1:
-      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-      break;
-    case 2:
-      glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-      break;
-    }
-
-    if (m_clip) {
-      GLdouble eq[4] = {m_clipEqA, m_clipEqB, m_clipEqC, m_clipEqD};
-      glEnable(GL_CLIP_PLANE0);
-      glClipPlane(GL_CLIP_PLANE0, eq);
-      // Rendering the mesh's clip edge
-      glEnable(GL_STENCIL_TEST);
-      glClear(GL_STENCIL_BUFFER_BIT);
-      glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-      // first pass: increment stencil buffer value on back faces
-      glStencilFunc(GL_ALWAYS, 0, 0);
-      glStencilOp(GL_KEEP, GL_KEEP, GL_INCR);
-      glCullFace(GL_FRONT); // render back faces only
-      doWork(pd, mol);
-      // second pass: decrement stencil buffer value on front faces
-      glStencilOp(GL_KEEP, GL_KEEP, GL_DECR);
-      glCullFace(GL_BACK); // render front faces only
-      doWork(pd, mol);
-      // drawing clip planes masked by stencil buffer content
-      glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-      glDisable(GL_CLIP_PLANE0);
-      glStencilFunc(GL_NOTEQUAL, 0, ~0);
-      // stencil test will pass only when stencil buffer value = 0;
-      // (~0 = 0x11...11)
-      glPushMatrix();
-      Vector3f normalEq(m_clipEqA, m_clipEqB, m_clipEqC);
-      Vector3f point1(-m_clipEqD / normalEq.norm(),  1000.,  1000.);
-      Vector3f point2(-m_clipEqD / normalEq.norm(),  1000., -1000.);
-      Vector3f point3(-m_clipEqD / normalEq.norm(), -1000.,  1000.);
-      Vector3f point4(-m_clipEqD / normalEq.norm(), -1000., -1000.);
-
-      if ( (m_clipEqB == 0.0) && (m_clipEqC == 0.0) ) {
-        if (m_clipEqA < 0.0 ) {
-          point1.x() = -point1.x();
-          point1.y() = -point1.y();
-          point2.x() = -point2.x();
-          point2.y() = -point2.y();
-          point3.x() = -point3.x();
-          point3.y() = -point3.y();
-          point4.x() = -point4.x();
-          point4.y() = -point4.y();
+      if (m_mesh) {
+        if (m_mesh->stable()) {
+          pd->painter()->setColor(&m_color);
+          pd->painter()->drawMesh(*m_mesh, m_renderMode);
         }
       }
-      else {
-        Vector3f normal(1., 0., 0.);
-        normalEq.normalize();
-        double angle = acos(normal.dot(normalEq));
-        Vector3f axis = normal.cross(normalEq);
-        axis.normalize();
-        Matrix3f mat(AngleAxisf(angle, axis));
-
-        point1 = mat * point1;
-        point2 = mat * point2;
-        point3 = mat * point3;
-        point4 = mat * point4;
-      }
-
-      glBegin(GL_QUADS); // rendering the plane quad. Note, it should be big
-                        // enough to cover all clip edge area.
-
-      glVertex3fv(point1.data());
-      glVertex3fv(point2.data());
-      glVertex3fv(point4.data());
-      glVertex3fv(point3.data());
-      glEnd();
-      glPopMatrix();
-      // End rendering mesh's clip edge
-      // Rendering mesh
-      glDisable(GL_STENCIL_TEST);
-      glEnable(GL_CLIP_PLANE0); // enabling clip plane again
     }
-
-    doWork(pd, mol);
-
-    if (m_renderMode)
-      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
     return true;
   }
 
   bool SurfaceEngine::renderTransparent(PainterDevice *pd)
   {
-    // Don't render any transparency if alpha is 1 or 0
-    if (m_alpha > 0.999 || m_alpha < 0.001)
-      return false;
-    // Don't try to render anything while the surface is being calculated.
-    if (m_vdwThread->isRunning())
-      return false;
-    Molecule *mol = const_cast<Molecule *>(pd->molecule());
-    if (!mol->numAtoms())
-      return false; // no atoms -> no surface
-
-    if (!m_surfaceValid)
+    // Render the transparent surface if m_alpha is between 0 and 1.
+    if (m_alpha > 0.001 && m_alpha < 0.999)
     {
-      PrimitiveList prims = primitives();
-      if (!m_boxControl->isModified())
-        m_vdwThread->init(mol, prims, pd);
-      else
-        m_vdwThread->init(mol, prims, pd, m_boxControl);
-      m_vdwThread->start();
-
-      m_surfaceValid = true;
-      return true;
-    }
-
-    pd->painter()->setColor(1.0, 0.0, 0.0, m_alpha);
-    m_color.applyAsMaterials();
-
-    switch (m_renderMode) {
-      case 0:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        break;
-      case 1:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        break;
-      case 2:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-        break;
-    }
-
-    if (m_clip) {
-      GLdouble eq[4] = {m_clipEqA, m_clipEqB, m_clipEqC, m_clipEqD};
-      glEnable(GL_CLIP_PLANE0);
-      glClipPlane(GL_CLIP_PLANE0, eq);
-      // Rendering the mesh's clip edge
-      glEnable(GL_STENCIL_TEST);
-      glClear(GL_STENCIL_BUFFER_BIT);
-      glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-      // first pass: increment stencil buffer value on back faces
-      glStencilFunc(GL_ALWAYS, 0, 0);
-      glStencilOp(GL_KEEP, GL_KEEP, GL_INCR);
-      glCullFace(GL_FRONT); // render back faces only
-      doWork(pd, mol);
-      // second pass: decrement stencil buffer value on front faces
-      glStencilOp(GL_KEEP, GL_KEEP, GL_DECR);
-      glCullFace(GL_BACK); // render front faces only
-      doWork(pd, mol);
-      // drawing clip planes masked by stencil buffer content
-      glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-      glDisable(GL_CLIP_PLANE0);
-      glStencilFunc(GL_NOTEQUAL, 0, ~0);
-      // stencil test will pass only when stencil buffer value = 0;
-      // (~0 = 0x11...11)
-      glPushMatrix();
-      Vector3f normalEq(m_clipEqA, m_clipEqB, m_clipEqC);
-      Vector3f point1(-m_clipEqD / normalEq.norm(),  1000.,  1000.);
-      Vector3f point2(-m_clipEqD / normalEq.norm(),  1000., -1000.);
-      Vector3f point3(-m_clipEqD / normalEq.norm(), -1000.,  1000.);
-      Vector3f point4(-m_clipEqD / normalEq.norm(), -1000., -1000.);
-
-      if ( (m_clipEqB == 0.0) && (m_clipEqC == 0.0) ) {
-        if (m_clipEqA < 0.0 ) {
-          point1.x() = -point1.x();
-          point1.y() = -point1.y();
-          point2.x() = -point2.x();
-          point2.y() = -point2.y();
-          point3.x() = -point3.x();
-          point3.y() = -point3.y();
-          point4.x() = -point4.x();
-          point4.y() = -point4.y();
+      if (m_mesh) {
+        if (m_mesh->stable()) {
+          pd->painter()->setColor(&m_color);
+          pd->painter()->drawMesh(*m_mesh, m_renderMode);
         }
       }
-      else {
-        Vector3f normal(1., 0., 0.);
-        normalEq.normalize();
-        double angle = acos(normal.dot(normalEq));
-        Vector3f axis = normal.cross(normalEq);
-        axis.normalize();
-        Matrix3f mat(AngleAxisf(angle, axis));
-
-        point1 = mat * point1;
-        point2 = mat * point2;
-        point3 = mat * point3;
-        point4 = mat * point4;
-      }
-
-      glBegin(GL_QUADS); // rendering the plane quad. Note, it should be big
-                        // enough to cover all clip edge area.
-
-      glVertex3fv(point1.data());
-      glVertex3fv(point2.data());
-      glVertex3fv(point4.data());
-      glVertex3fv(point3.data());
-      glEnd();
-      glPopMatrix();
-      // End rendering mesh's clip edge
-      // Rendering mesh
-      glDisable(GL_STENCIL_TEST);
-      glEnable(GL_CLIP_PLANE0); // enabling clip plane again
     }
-
-    doWork(pd, mol);
-
-    if (m_renderMode)
-      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
     return true;
   }
 
   bool SurfaceEngine::renderQuick(PainterDevice *pd)
   {
-    // Don't try to render anything while the surface is being calculated.
-    if (m_vdwThread->isRunning())
-      return false;
-    Molecule *mol = const_cast<Molecule *>(pd->molecule());
-    if (!mol->numAtoms())
-      return false; // no atoms -> no surface
+    int renderMode = 1;
+    if (m_renderMode == 2)
+      renderMode = 2;
 
-    if (!m_surfaceValid)
-    {
-      PrimitiveList prims = primitives();
-      if (!m_boxControl->isModified())
-        m_vdwThread->init(mol, prims, pd);
-      else
-        m_vdwThread->init(mol, prims, pd, m_boxControl);
-      m_vdwThread->start();
-      m_surfaceValid = true;
-      return true;
+    if (m_mesh) {
+      if (m_mesh->stable()) {
+        pd->painter()->setColor(&m_color);
+        pd->painter()->drawMesh(*m_mesh, renderMode);
+      }
     }
-
-    pd->painter()->setColor(&m_color);
-
-    doWork(pd, mol);
-
     return true;
   }
 
@@ -645,11 +425,12 @@ namespace Avogadro {
     settings.setValue("colorMode", m_colorMode);
     settings.setValue("color", m_color.color());
     settings.setValue("drawBox", m_drawBox);
+    if (m_mesh)
+      settings.setValue("meshId", static_cast<int>(m_mesh->id()));
   }
 
   void SurfaceEngine::readSettings(QSettings &settings)
   {
-    qDebug() << "readSettings()";
     Engine::readSettings(settings);
     setOpacity(settings.value("opacity", 20).toInt());
     setRenderMode(settings.value("renderMode", 0).toInt());
@@ -658,8 +439,10 @@ namespace Avogadro {
     m_color.setAlpha(m_alpha);
     setDrawBox(settings.value("drawBox").toBool());
 
-    if(m_settingsWidget)
-    {
+    if (m_molecule)
+      m_mesh = m_molecule->meshById(settings.value("meshId", 0).toInt());
+
+    if(m_settingsWidget) {
       m_settingsWidget->opacitySlider->setValue(static_cast<int>(20*m_alpha));
       m_settingsWidget->renderCombo->setCurrentIndex(m_renderMode);
       m_settingsWidget->colorCombo->setCurrentIndex(m_colorMode);

@@ -39,6 +39,7 @@
 namespace Avogadro {
 
   class Atom;
+  class Mesh;
   class SurfacePrivateData;
   class SurfaceSettingsWidget;
   class BoxControl;
@@ -62,7 +63,7 @@ namespace Avogadro {
 
     private:
       void initStepSize(const PainterDevice *pd, double stepSize);
-      
+
       QMutex m_mutex;
       Molecule *m_molecule;
       PrimitiveList m_primitives;
@@ -112,12 +113,12 @@ namespace Avogadro {
        * Read in the settings that have been saved for the engine instance.
        */
       void readSettings(QSettings &settings);
-    
+
     public Q_SLOTS:
       void addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
-      
+
       void setDrawBox(int value);
       void boxModified();
       void resetBox();
@@ -127,6 +128,7 @@ namespace Avogadro {
       //Grid *m_grid;
       VDWGridThread *m_vdwThread;
       IsoGen *m_isoGen;
+      Mesh *m_mesh;
       //Eigen::Vector3f m_min;
       PainterDevice *m_pd;
       Color  m_color;
