@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef PYTHONEXTENSION_H
-#define PYTHONEXTENSION_H
+#ifndef PYTHONTERMINAL_H
+#define PYTHONTERMINAL_H
 
 #include <avogadro/extension.h>
 #include <avogadro/primitive.h>
@@ -30,7 +30,10 @@
 #include <avogadro/pythoninterpreter.h>
 #include <avogadro/pythonscript.h>
 
+#include "ui_pythonterminalwidget.h"
+
 #include <QWidget>
+#include <QLineEdit>
 #include <QList>
 #include <QDir>
 #include <QString>
@@ -38,49 +41,76 @@
 #include <QFileInfo>
 #include <QHash>
 
+class QDockWidget;
+
 namespace Avogadro {
 
   class PythonTerminalWidget;
-  class PythonExtension : public Extension
+  class PythonTerminal : public Extension
   {
     Q_OBJECT
 
     public:
       //! Constructor
-      PythonExtension(QObject *parent=0);
+      PythonTerminal(QObject *parent=0);
       //! Deconstructor
-      virtual ~PythonExtension();
+      virtual ~PythonTerminal();
 
-      virtual QString name() const { return QObject::tr("Python"); }
-      virtual QString description() const { return QObject::tr("Python helper things"); };
+      virtual QString name() const { return QObject::tr("Python Terminal"); }
+      virtual QString description() const { return QObject::tr("Python Terminal"); };
 
       virtual QList<QAction *> actions() const;
       virtual QString menuPath(QAction *action) const;
 
+      virtual QDockWidget * dockWidget();
       virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
 
+      void setMolecule(Molecule *molecule);
+
     private:
-      QList<QAction *> m_actions;
-      QList<PythonScript> m_scripts;
-
-      QList<boost::python::object> m_instances;
-      QHash<QAction*, int> m_actionHash;
-      QAction *m_reloadAction;
-
+      Molecule *m_molecule;
+      QDockWidget *m_terminalDock;
+      PythonTerminalWidget *m_terminalWidget;
       PythonInterpreter m_interpreter;
+      QString m_lines;
 
-      void findScripts();
-      void loadScripts(QDir dir);
+    private Q_SLOTS:
+      void runCommand();
+
   };
 
-  class PythonExtensionFactory : public QObject, public PluginFactory
+  class PythonTerminalLineEdit : public QLineEdit
+  {
+    Q_OBJECT
+
+    public:
+    PythonTerminalLineEdit(QWidget *parent = 0);
+    virtual void keyPressEvent ( QKeyEvent * event );
+
+    private:
+      QList<QString> m_commandStack;
+      int m_current;
+
+  };
+
+  class PythonTerminalWidget : public QWidget
+  {
+    Q_OBJECT
+
+    public:
+      PythonTerminalWidget( QWidget *parent = 0 );
+      Ui::PythonTerminalWidget ui;
+      PythonTerminalLineEdit * inputLine;
+  };
+
+  class PythonTerminalFactory : public QObject, public PluginFactory
   {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
 
-      AVOGADRO_EXTENSION_FACTORY(PythonExtension,
-        tr("Python Extension"),
-        tr("Extension to handle python extension scripts."))
+      AVOGADRO_EXTENSION_FACTORY(PythonTerminal,
+        tr("Python Terminal"),
+        tr("Extension to provide an interactive python terminal."))
   };
 
 } // end namespace Avogadro
