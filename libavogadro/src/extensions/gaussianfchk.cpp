@@ -101,7 +101,7 @@ namespace Avogadro
     else if (key == "Alpha Orbital Energies")
     {
       m_orbitalEnergy = readArrayD(list.at(2).toInt());
-      qDebug() << MO energies, n =" << m_orbitalEnergy.size();
+      qDebug() << "MO energies, n =" << m_orbitalEnergy.size();
     }
     else if (key == "Alpha MO coefficients")
     {
