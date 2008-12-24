@@ -31,7 +31,7 @@ using namespace Eigen;
 
 namespace Avogadro
 {
-  class CameraPrivate
+  class CameraPrivate : public Eigen::WithAlignedOperatorNew
   {
     public:
       CameraPrivate() {};
