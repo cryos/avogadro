@@ -122,10 +122,10 @@
 			<para>
 				If you decide to build Avogadro from source, the following resources will be necessary:
 				<itemizedlist>
-					<listitem><para>Subversion, to access certain code repositories</para></listitem>
-					<listitem><para>CMake (>=2.4.5), the open-source build system</para></listitem>
-					<listitem><para>Qt4 (>=4.3.0), the open-source application framework</para></listitem>
-					<listitem><para>Eigen, a library for linear algebra as a compile-time dependency of Avogadro</para></listitem>
+					<listitem><para>Git, to access certain code repositories</para></listitem>
+					<listitem><para>CMake (>=2.4.7), the open-source build system</para></listitem>
+					<listitem><para>Qt4 (>=4.4.0), the open-source application framework</para></listitem>
+					<listitem><para>Eigen2, a library for linear algebra as a compile-time dependency of Avogadro</para></listitem>
 					<listitem><para>OpenBabel, the chemistry toolbox</para></listitem>
 				</itemizedlist>
 					Most of them might be available through your distribution's repository, although it is recommended to fetch the latest OpenBabel source from the code repository.
