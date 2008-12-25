@@ -529,7 +529,6 @@ namespace Avogadro
 
   void OrbitalExtension::generateMesh(int iCube, double isoValue, int calc)
   {
-    qDebug() << "Calculate Mesh called" << isoValue << iCube;
     if (!m_molecule->cube(iCube))
       return;
 
@@ -550,9 +549,8 @@ namespace Avogadro
     }
     m_meshGen1->initialize(cube, m_mesh1, isoValue);
     m_meshGen1->start();
-    m_meshGen2->initialize(cube, m_mesh2, -isoValue);
+    m_meshGen2->initialize(cube, m_mesh2, -isoValue, true);
     m_meshGen2->start();
-    qDebug() << "Calculate Mesh called" << isoValue;
   }
 
   void OrbitalExtension::meshGenerated()
