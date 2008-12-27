@@ -425,7 +425,7 @@ namespace Avogadro {
     foreach (const QString& path, pluginPaths) {
       loadPluginDir(path + "/colors", settings);
       loadPluginDir(path + "/engines", settings);
-      loadPluginDir(path + "/exntesions", settings);
+      loadPluginDir(path + "/extensions", settings);
       loadPluginDir(path + "/tools", settings);
     }
     settings.endGroup();
