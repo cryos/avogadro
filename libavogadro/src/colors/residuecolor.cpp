@@ -35,7 +35,37 @@
 #include <openbabel/residue.h>
 
 namespace Avogadro {
- 
+
+  // color tables
+#define RESNUM  23
+  // Colors from http://jmol.sourceforge.net/jscolors/
+  // "Protein amino"
+  int jMolAmino[RESNUM][3] = {
+    { 0xC8, 0xC8, 0xC8 }, /*  0: "Ala" */
+    { 0x14, 0x5A, 0xFF }, /*  1: "Arg" */
+    { 0x00, 0xDC, 0xDC }, /*  2: "Asn" */
+    { 0xE6, 0x0A, 0x0A }, /*  3: "Asp" */
+    { 0xE6, 0xE6, 0x00 }, /*  4: "Cys" */
+    { 0x00, 0xDC, 0xDC }, /*  5: "Gln" */
+    { 0xE6, 0x0A, 0x0A }, /*  6: "Glu" */
+    { 0xEB, 0xEB, 0xEB }, /*  7: "Gly" */
+    { 0x82, 0x82, 0xD2 }, /*  8: "His" */
+    { 0x0F, 0x82, 0x0F }, /*  9: "Ile" */
+    { 0x0F, 0x82, 0x0F }, /* 10: "Leu" */
+    { 0x14, 0x5A, 0xFF }, /* 11: "Lys" */
+    { 0xE6, 0xE6, 0x00 }, /* 12: "Met" */
+    { 0x32, 0x32, 0xAA }, /* 13: "Phe" */
+    { 0xDC, 0x96, 0x82 }, /* 14: "Pro" */
+    { 0xFA, 0x96, 0x00 }, /* 15: "Ser" */
+    { 0xFA, 0x96, 0x00 }, /* 16: "Thr" */
+    { 0xB4, 0x5A, 0xB4 }, /* 17: "Trp" */
+    { 0x32, 0x32, 0xAA }, /* 18: "Tyr" */
+    { 0x0F, 0x82, 0x0F }, /* 19: "Val" */
+    { 0xFF, 0x69, 0xB4 }, /* 20: "Asx" */
+    { 0xFF, 0x69, 0xB4 }, /* 21: "Glx" */
+    { 0xBE, 0xA0, 0x6E }  /* 22: Other / UNK */
+  };
+
   ResidueColor::ResidueColor()
   { }
 
@@ -58,121 +88,79 @@ namespace Avogadro {
 
       // do not perceive new residues
       OpenBabel::OBResidue *residue = atom->OBAtom().GetResidue(false);
-      residueName = residue->GetName().c_str();
-      if (!residue ||
-          residueName.compare("UNK", Qt::CaseInsensitive) == 0) {
-	// default is to color by element if no residue is specified
-        std::vector<double> rgb = OpenBabel::etab.GetRGB( atom->atomicNumber() );
+      // default is to color by element if no residue is specified
+      std::vector<double> rgb = OpenBabel::etab.GetRGB( atom->atomicNumber() );
+      if (!residue) {
         m_channels[0] = rgb[0];
         m_channels[1] = rgb[1];
         m_channels[2] = rgb[2];
         m_channels[3] = 1.0;
         return;
       }
-    } else
+      residueName = residue->GetName().c_str();
+      if (residueName.compare("UNK", Qt::CaseInsensitive) == 0) {
+        m_channels[0] = rgb[0];
+        m_channels[1] = rgb[1];
+        m_channels[2] = rgb[2];
+        m_channels[3] = 1.0;
+        return;
+      }
+    } else // not a residue or atom
       return; // not something we can color
 
-    // Colors from http://jmol.sourceforge.net/jscolors/
-    // "Protein amino"
-    int red, blue, green;
+    int offset;
     if (residueName.compare("Ala", Qt::CaseInsensitive) == 0) {
-      red = 0xC8;
-      green = 0xC8;
-      blue = 0xC8;
+      offset = 0;
     } else if (residueName.compare("Arg", Qt::CaseInsensitive) == 0) {
-      red = 0x14;
-      green = 0x5A;
-      blue = 0xFF;
+      offset = 1;
     } else if (residueName.compare("Asn", Qt::CaseInsensitive) == 0) {
-      red = 0x00;
-      green = 0xDC;
-      blue = 0xDC;
+      offset = 2;
     } else if (residueName.compare("Asp", Qt::CaseInsensitive) == 0) {
-      red = 0xE6;
-      green = 0x0A;
-      blue = 0x0A;
+      offset = 3;
     } else if (residueName.compare("Cys", Qt::CaseInsensitive) == 0) {
-      red = 0xE6;
-      green = 0xE6;
-      blue = 0x00;
+      offset = 4;
     } else if (residueName.compare("Gln", Qt::CaseInsensitive) == 0) {
-      red = 0x00;
-      green = 0xDC;
-      blue = 0xDC;
+      offset = 5;
     } else if (residueName.compare("Glu", Qt::CaseInsensitive) == 0) {
-      red = 0xE6;
-      green = 0x0A;
-      blue = 0x0A;
+      offset = 6;
     } else if (residueName.compare("Gly", Qt::CaseInsensitive) == 0) {
-      red = 0xEB;
-      green = 0xEB;
-      blue = 0xEB;
+      offset = 7;
     } else if (residueName.compare("His", Qt::CaseInsensitive) == 0) {
-      red = 0x82;
-      green = 0x82;
-      blue = 0xD2;
+      offset = 8;
     } else if (residueName.compare("Ile", Qt::CaseInsensitive) == 0) {
-      red = 0x0F;
-      green = 0x82;
-      blue = 0x0F;
+      offset = 9;
     } else if (residueName.compare("Leu", Qt::CaseInsensitive) == 0) {
-      red = 0x0F;
-      green = 0x82;
-      blue = 0x0F;
+      offset = 10;
     } else if (residueName.compare("Lys", Qt::CaseInsensitive) == 0) {
-      red = 0x14;
-      green = 0x5A;
-      blue = 0xFF;
+      offset = 11;
     } else if (residueName.compare("Met", Qt::CaseInsensitive) == 0) {
-      red = 0xE6;
-      green = 0xE6;
-      blue = 0x00;
+      offset = 12;
     } else if (residueName.compare("Phe", Qt::CaseInsensitive) == 0) {
-      red = 0x32;
-      green = 0x32;
-      blue = 0xAA;
+      offset = 13;
     } else if (residueName.compare("Pro", Qt::CaseInsensitive) == 0) {
-      red = 0xDC;
-      green = 0x96;
-      blue = 0x82;
+      offset = 14;
     } else if (residueName.compare("Ser", Qt::CaseInsensitive) == 0) {
-      red = 0xFA;
-      green = 0x96;
-      blue = 0x00;
+      offset = 15;
     } else if (residueName.compare("Thr", Qt::CaseInsensitive) == 0) {
-      red = 0xFA;
-      green = 0x96;
-      blue = 0x00;
+      offset = 16;
     } else if (residueName.compare("Trp", Qt::CaseInsensitive) == 0) {
-      red = 0xB4;
-      green = 0x5A;
-      blue = 0xB4;
+      offset = 17;
     } else if (residueName.compare("Tyr", Qt::CaseInsensitive) == 0) {
-      red = 0x32;
-      green = 0x32;
-      blue = 0xAA;
+      offset = 18;
     } else if (residueName.compare("Val", Qt::CaseInsensitive) == 0) {
-      red = 0x0F;
-      green = 0x82;
-      blue = 0x0F;
+      offset = 19;
     } else if (residueName.compare("Asx", Qt::CaseInsensitive) == 0) {
-      red = 0xFF;
-      green = 0x69;
-      blue = 0xB4;
+      offset = 20;
     } else if (residueName.compare("Glx", Qt::CaseInsensitive) == 0) {
-      red = 0xFF;
-      green = 0x69;
-      blue = 0xB4;
+      offset = 21;
     } else {
-      red = 0xBE;
-      green = 0xA0;
-      blue = 0x6E;
+      offset = 22;
     }
 
+    m_channels[0] = jMolAmino[offset][0] / 255.0;
+    m_channels[2] = jMolAmino[offset][1] / 255.0;
+    m_channels[1] = jMolAmino[offset][2] / 255.0;
     m_channels[3] = 1.0;
-    m_channels[0] = red / 255.0;
-    m_channels[2] = blue / 255.0;
-    m_channels[1] = green / 255.0;
   }
 
 }
