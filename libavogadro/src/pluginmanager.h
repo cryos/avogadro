@@ -3,6 +3,7 @@
 
   Copyright (C) 2008 Donald Ephraim Curtis
   Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -27,94 +28,106 @@
 #define PLUGINMANAGER_H
 
 #include <avogadro/global.h>
-#include <avogadro/engine.h>
-#include <avogadro/tool.h>
-#include <avogadro/extension.h>
-#include <avogadro/color.h>
+#include <avogadro/plugin.h>
 
-#include <QSettings>
+class QDir;
+class QSettings;
 
 namespace Avogadro {
 
   class PluginFactory;
-
+  class Tool;
+  class Engine;
+  class Extension;
+  class Color;
   class PluginItemPrivate;
-  class PluginItem 
+
+  class PluginItem
   {
-    public:
-      PluginItem();
-      PluginItem(int type, const QString &fileName, const QString &filePath, PluginFactory *factory);
-      PluginItem( const QString &name, const QString &description, Plugin::Type type, const QString &fileName, const QString &filePath, PluginFactory *factory = 0, bool enabled = true);
-      ~PluginItem();
+  public:
+    PluginItem();
+    PluginItem(int type, const QString &fileName, const QString &filePath, PluginFactory *factory);
+    PluginItem( const QString &name, const QString &description, Plugin::Type type, const QString &fileName, const QString &filePath, PluginFactory *factory = 0, bool enabled = true);
+    ~PluginItem();
 
-      /**
-       * The plugin type (engine = 0, tool = 1, extension = 2)
-       */
-      int type() const;
-      /**
-       * The plugin name (Draw, Stick, ...)
-       */
-      QString name() const;
-      /**
-       * The plugin description (Draw, Stick, ...)
-       */
-      QString description() const;
-      /**
-       * The plugin filename (libdrawtool.so, libaligntool.dll, ...)
-       */ 
-      QString fileName() const;
-      /**
-       * The absolute file path
-       */
-      QString absoluteFilePath() const;
-      /**
-       * Should the plugin be loaded
-       */
-      bool isEnabled() const;
+    /**
+     * The plugin type (engine = 0, tool = 1, extension = 2)
+     */
+    int type() const;
 
-      PluginFactory *factory() const;
+    /**
+     * The plugin name (Draw, Stick, ...)
+     */
+    QString name() const;
 
-      /**
-       * Set the plugin type (engine = 0, tool = 1, extension = 2)
-       */
-      void setType( Plugin::Type type );
-      /**
-       * Set the plugin name (Draw, Stick, ...)
-       */
-      void setName( const QString &name );
-      /**
-       * Set the plugin description
-       */
-      void setDescription( const QString &description );
-      /**
-       * The plugin filename (libdrawtool.so, libaligntool.dll, ...)
-       */ 
-      void setFileName( const QString &fileName );
-      /**
-       * The absolute file path
-       */
-      void setAbsoluteFilePath( const QString &filePath );
-      /**
-       * Should the plugin be loaded
-       */
-      void setEnabled( bool enable );
+    /**
+     * The plugin description (Draw, Stick, ...)
+     */
 
-      void setFactory( PluginFactory *factory );
+    QString description() const;
+    /**
+     * The plugin filename (libdrawtool.so, libaligntool.dll, ...)
+     */
 
-    private:
-      PluginItemPrivate * const d;
+    QString fileName() const;
+    /**
+     * The absolute file path
+     */
+    QString absoluteFilePath() const;
+
+    /**
+     * Should the plugin be loaded
+     */
+    bool isEnabled() const;
+
+    PluginFactory *factory() const;
+
+    /**
+     * Set the plugin type (engine = 0, tool = 1, extension = 2)
+     */
+    void setType( Plugin::Type type );
+
+    /**
+     * Set the plugin name (Draw, Stick, ...)
+     */
+    void setName( const QString &name );
+
+    /**
+     * Set the plugin description
+     */
+    void setDescription( const QString &description );
+
+    /**
+     * The plugin filename (libdrawtool.so, libaligntool.dll, ...)
+     */
+    void setFileName( const QString &fileName );
+
+    /**
+     * The absolute file path
+     */
+    void setAbsoluteFilePath( const QString &filePath );
+
+    /**
+     * Should the plugin be loaded
+     */
+    void setEnabled( bool enable );
+
+    void setFactory( PluginFactory *factory );
+
+  private:
+    PluginItemPrivate * const d;
   };
 
   class PluginManagerPrivate;
   class A_EXPORT PluginManager: public QObject
   {
-    Q_OBJECT
+  Q_OBJECT
 
   public:
     PluginManager(QObject *parent = 0);
     ~PluginManager();
 
-    static PluginManager* instance(); 
+    static PluginManager* instance();
 
     /**
      * Find all plugins by looking through the search paths:
@@ -123,13 +136,12 @@ namespace Avogadro {
      *    /usr/(local/)lib/avogadro/extensions
      *    /usr/(local/)lib/avogadro/colors
      *
-     * You can set AVOGADRO_ENGINES, AVOGADRO_TOOLS, AVOGADRO_EXTENSIONS 
-     * and AVOGADRO_COLORS to designate a path at runtime.
+     * You can set AVOGADRO_PLUGINS to designate a path at runtime to search.
      *
      * WIN32: look in the applications working dir ( ./engines, ...)
-     */ 
+     */
     static void loadFactories();
-    
+
     /**
      * Get all the PluginFactory obacjects for a given type.
      */
@@ -139,33 +151,37 @@ namespace Avogadro {
      * Get the PluginFactory of type @p type with plugin name @p name.
      */
     static PluginFactory *factory(const QString &name, Plugin::Type type);
-    
+
     /**
      * Get a new instance of the extension with name @name
      * @return 0 if there is no extension plugin with name @nam
      */
     Extension *extension(const QString &name, QObject *parent = 0);
+
     /**
      * Get a new instance of the tool with name @name
      * @return 0 if there is no tool plugin with name @nam
      */
     Tool *tool(const QString &name, QObject *parent = 0);
+
     /**
      * Get a new instance of the color with name @name
      * @return 0 if there is no color plugin with name @nam
      */
     Color *color(const QString &name, QObject *parent = 0);
+
     /**
      * Get a new instance of the color with name @name
      * @return 0 if there is no engine plugin with name @nam
      */
     Engine *engine(const QString &name, QObject *parent = 0);
 
-    /** 
+    /**
      * Get a list with the plugin names of type @type
      */
     QList<QString> names(Plugin::Type type);
-    /** 
+
+    /**
      * Get a list with the plugin descriptions of type @type
      */
     QList<QString> descriptions(Plugin::Type type);
@@ -174,22 +190,23 @@ namespace Avogadro {
      * Get a list of all extension (new instances)
      */
     QList<Extension *> extensions(QObject *parent=0) const;
+
     /**
      * Get a list of all tools (new instances)
-     */ 
+     */
     QList<Tool *> tools(QObject *parent=0) const;
+
     /**
      * Get a list of all colors (new instances)
      */
     QList<Color *> colors(QObject *parent=0) const;
- 
+
     /**
      * Write the settings of the PluginManager in order to save them to disk.
      */
     static void writeSettings(QSettings &settings);
     /*static void readSettings(QSettings &settings);*/
 
-  
     /**
      * Use by the plugin manager dialog
      */
@@ -201,9 +218,15 @@ namespace Avogadro {
 
   Q_SIGNALS:
     void reloadPlugins();
- 
+
   private:
     PluginManagerPrivate * const d;
+
+    /**
+     * Private function that traverses a directory loading plugins if they are
+     * valid.
+     */
+    static void loadPluginDir(const QString &directory, QSettings &settings);
 
   };
 
