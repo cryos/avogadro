@@ -173,6 +173,8 @@ namespace Avogadro {
     else if (averageDistance < 5.0)
       width = 2.5;
 
+		// Default to single bond, no stipple
+		short stipple = 0xFFFF;
     int order = 1;
     if (m_showMulti) {
       order = b->order();
@@ -181,11 +183,9 @@ namespace Avogadro {
       // For aromatic (dashed bonds)
       if (b->isAromatic()) {
         order = -1;
+				stipple = 0xCCCC;
       }
     }
-
-    // optional line stipple to use for aromatic bonds
-    int stipple = 0xCCCC;
 
     map->set(atom1);
     pd->painter()->setColor(map);

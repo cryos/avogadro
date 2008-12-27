@@ -509,20 +509,15 @@ namespace Avogadro
     glLineWidth(lineWidth);
     d->color.apply();
 
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(1, stipple);
+
     // Draw the line
-    if (order == 1) {
+    if (order == 1 || order == -1) { // single or aromatic
       glBegin(GL_LINE_STRIP);
       glVertex3f(0.0, 0.0, 0.0);
       glVertex3f(0.0, 0.0, 1.0);
       glEnd();
-    } else if (order == -1) {// aromatic
-      glEnable(GL_LINE_STIPPLE);
-      glLineStipple(1, stipple);
-      glBegin(GL_LINE_STRIP);
-      glVertex3f(0.0, 0.0, 0.0);
-      glVertex3f(0.0, 0.0, 1.0);
-      glEnd();
-      glDisable(GL_LINE_STIPPLE);
     }
     else {
       double angleOffset = 0.0;
@@ -547,6 +542,7 @@ namespace Avogadro
         glPopMatrix();
       }
     }
+    glDisable(GL_LINE_STIPPLE);
     glPopMatrix();
 
     glEnable(GL_LIGHTING);
