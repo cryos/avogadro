@@ -33,6 +33,7 @@
 #include <avogadro/painterdevice.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
+#include <avogadro/residue.h>
 #include <avogadro/molecule.h>
 
 #include <QGLWidget> // for OpenGL bits
@@ -103,13 +104,14 @@ namespace Avogadro {
         case 3: // Atomic Symbol
           str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
           break;
-          /// FIXME Add back in residue numbers
-/*        case 4: // Residue name
-          str = QString(((const_cast<Atom *>(a)->GetResidue())->GetName()).c_str());
+        case 4: // Residue name
+          if (a->residue())
+            str = a->residue()->name();
           break;
         case 5: // Residue number
-          str = QString::number((const_cast<Atom *>(a)->GetResidue())->GetNum());
-          break; */
+          if (a->residue())
+            str = a->residue()->number();
+          break;
         case 6: // Partial charge
           str = QString::number(const_cast<Atom *>(a)->partialCharge(), 'g', 2);
           break;
@@ -120,6 +122,8 @@ namespace Avogadro {
         default:
           str = elementTranslator.name(a->atomicNumber());
       }
+
+      qDebug() << "Atom string:" << str;
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
 
