@@ -43,12 +43,16 @@ using Eigen::Vector3d;
   };
 
   Atom::Atom(QObject *parent) : Primitive(AtomType, parent), m_atomicNumber(0),
-    m_partialCharge(0.0), m_residue(-1)
+    m_residue(-1), m_partialCharge(0.0)
   {
     if (!parent) {
       qDebug() << "I am an orphaned atom! I feel so invalid...";
     }
     m_molecule = static_cast<Molecule*>(parent);
+  }
+
+  Atom::~Atom()
+  {
   }
 
   const Eigen::Vector3d * Atom::pos() const

@@ -56,10 +56,20 @@
     atom->addBond(this);
   }
 
+  Atom * Bond::beginAtom() const
+  {
+    return m_molecule->atomById(m_beginAtomId);
+  }
+
   void Bond::setEnd(Atom* atom)
   {
     m_endAtomId = atom->id();
     atom->addBond(this);
+  }
+
+  Atom * Bond::endAtom() const
+  {
+    return m_molecule->atomById(m_endAtomId);
   }
 
   void Bond::setAtoms(unsigned long int atom1, unsigned long int atom2,
@@ -82,6 +92,22 @@
       qDebug() << "Non-existant atom:" << atom2;
     }
     m_order = order;
+  }
+
+  const Eigen::Vector3d * Bond::beginPos() const
+  {
+    return m_molecule->atomPos(m_beginAtomId);
+  }
+
+  const Eigen::Vector3d * Bond::midPos() const
+  {
+    // FIXME Implement this function
+    return 0;
+  }
+
+  const Eigen::Vector3d * Bond::endPos() const
+  {
+    return m_molecule->atomPos(m_endAtomId);
   }
 
   unsigned long int Bond::otherAtom(unsigned long int atomId) const

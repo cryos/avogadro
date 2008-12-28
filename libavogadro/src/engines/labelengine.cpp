@@ -123,8 +123,6 @@ namespace Avogadro {
           str = elementTranslator.name(a->atomicNumber());
       }
 
-      qDebug() << "Atom string:" << str;
-
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
 
       Vector3d drawPos = pos + zAxis * renderRadius;
