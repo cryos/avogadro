@@ -1310,7 +1310,9 @@ namespace Avogadro {
 
     d->molecule = molecule;
 
+    // Clear the primitives list, selection lists etc
     d->primitives.clear();
+    d->selectedPrimitives.clear();
 
     // add the atoms to the default queue
     QList<Atom *> atoms = molecule->atoms();
