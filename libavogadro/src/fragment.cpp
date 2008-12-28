@@ -24,13 +24,19 @@
 
 #include "fragment.h"
 
+#include "molecule.h"
+
 namespace Avogadro {
 
   Fragment::Fragment(QObject *parent) : Primitive(FragmentType, parent)
-  { }
+  {
+    m_molecule = static_cast<Molecule*>(parent);
+  }
 
   Fragment::Fragment(Type type, QObject *parent) : Primitive(type, parent)
-  { }
+  {
+    m_molecule = static_cast<Molecule*>(parent);
+  }
 
   Fragment::~Fragment()
   { }

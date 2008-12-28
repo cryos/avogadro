@@ -54,6 +54,16 @@ namespace Avogadro {
       ~Residue();
 
       /**
+       * Add an Atom to the Fragment.
+       */
+      void addAtom(unsigned long int id);
+
+      /**
+       * Remove the Atom from the Fragment.
+       */
+      void removeAtom(unsigned long int id);
+
+      /**
        * Set the number of the Residue, as in the file, e.g. 5A, 69, etc.
        */
       void setNumber(const QString& number);

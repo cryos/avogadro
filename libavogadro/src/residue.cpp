@@ -24,6 +24,8 @@
  **********************************************************************/
 
 #include "residue.h"
+#include "molecule.h"
+#include "atom.h"
 
 #include <QDebug>
 
@@ -38,6 +40,25 @@ namespace Avogadro {
   {
   }
 
+  void Residue::addAtom(unsigned long int id)
+  {
+    if (!m_molecule->atomById(id))
+      return;
+    if (!m_atoms.contains(id))
+      m_atoms.push_back(id);
+    m_molecule->atomById(id)->setResidue(m_id);
+  }
+
+  void Residue::removeAtom(unsigned long int id)
+  {
+    int index = m_atoms.indexOf(id);
+    if (index > -1) {
+      m_atoms.removeAt(index);
+    }
+    if (!m_molecule->atomById(id))
+      return;
+    m_molecule->atomById(id)->setResidue(-1);
+  }
 
   void Residue::setNumber(const QString& number)
   {
