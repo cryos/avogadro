@@ -56,10 +56,20 @@
     atom->addBond(this);
   }
 
+  Atom * Bond::beginAtom() const
+  {
+    return m_molecule->atomById(m_beginAtomId);
+  }
+
   void Bond::setEnd(Atom* atom)
   {
     m_endAtomId = atom->id();
     atom->addBond(this);
+  }
+
+  Atom * Bond::endAtom() const
+  {
+    return m_molecule->atomById(m_endAtomId);
   }
 
   void Bond::setAtoms(unsigned long int atom1, unsigned long int atom2,
