@@ -94,6 +94,22 @@
     m_order = order;
   }
 
+  const Eigen::Vector3d * Bond::beginPos() const
+  {
+    return m_molecule->atomPos(m_beginAtomId);
+  }
+
+  const Eigen::Vector3d * Bond::midPos() const
+  {
+    // FIXME Implement this function
+    return 0;
+  }
+
+  const Eigen::Vector3d * Bond::endPos() const
+  {
+    return m_molecule->atomPos(m_endAtomId);
+  }
+
   unsigned long int Bond::otherAtom(unsigned long int atomId) const
   {
     if (atomId == m_beginAtomId) {

@@ -119,6 +119,21 @@ namespace Avogadro {
     Atom * endAtom() const;
 
     /**
+     * @return The position of the start of the Bond.
+     */
+    const Eigen::Vector3d * beginPos() const;
+
+    /**
+     * @return The position of the mid-point of the Bond.
+     */
+    const Eigen::Vector3d * midPos() const;
+
+    /**
+     * @return The position of the end of the Bond.
+     */
+    const Eigen::Vector3d * endPos() const;
+
+    /**
      * Get the unique id of the other atom in the bond.
      * @param atomId The unique id of the Atom.
      * @return The unique if of the other Atom in the bond.
