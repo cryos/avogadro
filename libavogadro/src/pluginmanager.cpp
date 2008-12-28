@@ -43,6 +43,7 @@
 #include <QStringList>
 #include <QPluginLoader>
 #include <QDebug>
+#include <QProcess>
 
 namespace Avogadro {
 
@@ -404,18 +405,21 @@ namespace Avogadro {
     // Set up the paths
     QStringList pluginPaths;
 
-    // Krazy: Use QProcess:
-    // http://doc.trolltech.com/4.3/qprocess.html#systemEnvironment
-    if (getenv("AVOGADRO_PLUGINS") != NULL) {
-      pluginPaths << QString(getenv("AVOGADRO_PLUGINS")).split(':');
+    foreach (const QString &variable, QProcess::systemEnvironment()) {
+      QStringList split1 = variable.split('=');
+      if (split1[0] == "AVOGADRO_PLUGINS") {
+        foreach (const QString &path, split1[1].split(':'))
+          pluginPaths << path;
+      }
     }
-    else {
-      QString prefixPath = QString(INSTALL_PREFIX) + '/'
-        + QString(INSTALL_LIBDIR) + "/avogadro";
-      pluginPaths << prefixPath;
 
+    if (!pluginPaths.size()) {
       #ifdef WIN32
         pluginPaths << QCoreApplication::applicationDirPath();
+      #else
+        QString prefixPath = QString(INSTALL_PREFIX) + '/'
+            + QString(INSTALL_LIBDIR) + "/avogadro";
+        pluginPaths << prefixPath;
       #endif
     }
 
