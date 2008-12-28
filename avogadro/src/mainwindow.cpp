@@ -1129,13 +1129,12 @@ namespace Avogadro
     }
 
     // save a canonical SMILES too
-// FIXME: This causes a crash in the new framework
-//    OBFormat *canFormat = conv.FindFormat( "can" );
-//    if ( canFormat && conv.SetOutFormat( canFormat ) ) {
-//      output = conv.WriteString(&obmol);
-//      copyData = output.c_str();
-//      exportImage.setText("SMILES", copyData);
-//    }
+    OBFormat *canFormat = conv.FindFormat( "can" );
+    if ( canFormat && conv.SetOutFormat( canFormat ) ) {
+      output = conv.WriteString(&obmol);
+      copyData = output.c_str();
+      exportImage.setText("SMILES", copyData);
+    }
     if ( !exportImage.save( fileName ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
           tr( "Cannot save file %1." ).arg( fileName ) );
