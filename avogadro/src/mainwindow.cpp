@@ -1132,8 +1132,10 @@ namespace Avogadro
     OBFormat *canFormat = conv.FindFormat( "can" );
     if ( canFormat && conv.SetOutFormat( canFormat ) ) {
       output = conv.WriteString(&obmol);
-      copyData = output.c_str();
-      exportImage.setText("SMILES", copyData);
+      if (output.size()) { // might be empty (e.g., large protein)
+        copyData = output.c_str();
+        exportImage.setText("SMILES", copyData);
+      }
     }
     if ( !exportImage.save( fileName ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
