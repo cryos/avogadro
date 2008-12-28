@@ -39,7 +39,7 @@ namespace Avogadro {
    * @brief Bond Class
    * @author Marcus D. Hanwell
    *
-   * The Bond class is a Primitive subclass that provides a bond object.
+   * The Bond class is a Primitive subclass that provides a Bond object.
    */
   class Atom;
   class Molecule;
@@ -58,10 +58,45 @@ namespace Avogadro {
 
     ~Bond();
 
+    /** @name Set bonding information
+     * These functions are used to set bonding information.
+     * @{
+     */
+
     /**
      * Set the unique ID of the first atom in the bond.
      */
     void setBegin(Atom* atom);
+
+    /**
+     * Set the unique ID of the second atom in the bond.
+     */
+    void setEnd(Atom* atom);
+
+    /**
+     * Set the unique ID of both atoms in the bond
+     * @param atom1 First atom in the bond.
+     * @param atom2 Second atom in the bond.
+     * @param order Bond order (defaults to 1).
+     */
+    void setAtoms(unsigned long int atom1, unsigned long int atom2,
+                  short order = 1);
+
+    /**
+     * Set the order of the bond.
+     */
+    void setOrder(short order) { m_order = order; }
+
+    /**
+     * Set the aromaticity of the bond.
+     */
+    void setAromaticity(bool isAromatic) const;
+    /** @} */
+
+    /** @name Get bonding information
+     * These functions are used to get bonding information.
+     * @{
+     */
 
     /**
      * @return the unique ID of the first atom in the bond.
@@ -74,11 +109,6 @@ namespace Avogadro {
     Atom * beginAtom() const;
 
     /**
-     * Set the unique ID of the second atom in the bond.
-     */
-    void setEnd(Atom* atom);
-
-    /**
      * @return the unique ID of the second atom in the bond.
      */
     unsigned long int endAtomId() const { return m_endAtomId; }
@@ -87,15 +117,6 @@ namespace Avogadro {
      * @return Pointer to the second atom in the bond.
      */
     Atom * endAtom() const;
-
-    /**
-     * Set the unique ID of both atoms in the bond
-     * @param atom1 First atom in the bond.
-     * @param atom2 Second atom in the bond.
-     * @param order Bond order (defaults to 1).
-     */
-    void setAtoms(unsigned long int atom1, unsigned long int atom2,
-                  short order = 1);
 
     /**
      * Get the unique id of the other atom in the bond.
@@ -112,31 +133,33 @@ namespace Avogadro {
     short order() const { return m_order; }
 
     /**
-     * Set the order of the bond.
-     */
-    void setOrder(short order) { m_order = order; }
-
-    /**
      * @return True if the bond is aromatic.
      */
     bool isAromatic() const;
 
     /**
-     * Set the aromaticity of the bond.
-     */
-    void setAromaticity(bool isAromatic) const;
-
-    /**
      * @return the length of the bond.
      */
     double length() const;
+    /** @} */
+
+    /** @name OpenBabel conversion functions
+     * These functions are used convert between Avogadro and OpenBabel bonds.
+     * @{
+     */
 
     /**
-     * Copy an OpenBabel::OBBond's data to create a similar bond.
+     * Copy the data from an OpenBabel::OBBond to create a similar bond.
      */
     bool setOBBond(OpenBabel::OBBond *obbond);
+    /** @} */
 
+    /** @name Operators
+     * Overloaded operators.
+     * @{
+     */
     Bond& operator=(const Bond& other);
+    /** @} */
 
   private:
     unsigned long int m_beginAtomId, m_endAtomId;
