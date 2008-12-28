@@ -140,11 +140,11 @@ namespace Avogadro
       int order = 1;
       if (m_showMulti) order = b->order();
 
-      map->set( atom1 );
+      map->set(atom1);
       pd->painter()->setColor( map );
       pd->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
 
-      map->set( atom2 );
+      map->set(atom2);
       pd->painter()->setColor( map );
       pd->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
     }
@@ -266,10 +266,8 @@ namespace Avogadro
   {
     // Render the bonds
     foreach(Bond *b, bonds()) {
-      Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
-      Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
       pd->painter()->setName(b);
-      pd->painter()->drawCylinder(*atom1->pos(), *atom2->pos(), m_bondRadius);
+      pd->painter()->drawCylinder(*b->beginPos(), *b->endPos(), m_bondRadius);
     }
 
     // Render the atoms
