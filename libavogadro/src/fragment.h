@@ -31,6 +31,8 @@
 
 namespace Avogadro {
 
+  class Molecule;
+
   /**
    * @class Fragment fragment.h <avogadro/fragment.h>
    * @brief Fragment Class
@@ -106,6 +108,7 @@ namespace Avogadro {
       QList<unsigned long int> bonds();
 
     protected:
+      Molecule *m_molecule;
       QString m_name; /** The name of the Fragment. **/
       QList<unsigned long int> m_atoms; /** QList of the atom ids. **/
       QList<unsigned long int> m_bonds; /** QList of the bond ids. **/
