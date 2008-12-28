@@ -27,6 +27,7 @@
 
 #include "molecule.h"
 #include "bond.h"
+#include "residue.h"
 
 #include <openbabel/mol.h>
 
@@ -118,6 +119,26 @@ using Eigen::Vector3d;
     else {
       return 0.0;
     }
+  }
+
+  void Atom::setResidue(unsigned long int id)
+  {
+    m_residue = id;
+  }
+
+  void Atom::setResidue(const Residue *residue)
+  {
+    m_residue = residue->id();
+  }
+
+  unsigned long int Atom::residueId() const
+  {
+    return m_residue;
+  }
+
+  Residue * Atom::residue() const
+  {
+    return m_molecule->residueById(m_residue);
   }
 
   OpenBabel::OBAtom Atom::OBAtom()
