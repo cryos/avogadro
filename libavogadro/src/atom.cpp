@@ -51,6 +51,10 @@ using Eigen::Vector3d;
     m_molecule = static_cast<Molecule*>(parent);
   }
 
+  Atom::~Atom()
+  {
+  }
+
   const Eigen::Vector3d * Atom::pos() const
   {
     return m_molecule->atomPos(m_id);

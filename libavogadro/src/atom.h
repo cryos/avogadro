@@ -40,8 +40,8 @@ namespace Avogadro {
    * @brief Atom Class
    * @author Marcus D. Hanwell
    *
-   * The Atom class is a Primitive subclass that provides an atom object. All
-   * atoms must be owned by a Molecule and should also be deleted by the
+   * The Atom class is a Primitive subclass that provides an Atom object. All
+   * atoms must be owned by a Molecule. It should also be deleted by the
    * Molecule that owns it.
    */
   class Bond;
@@ -53,22 +53,83 @@ namespace Avogadro {
 
   public:
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param parent the object parent.
+     * @param parent the parent object, which should be a molecule.
      */
     Atom(QObject *parent=0);
 
     /**
-      * @return The position of the atom.
-      */
-    const Eigen::Vector3d * pos() const;
+     * Destructor.
+     */
+    ~Atom();
+
+    /** @name Set atomic information
+     * These functions are used to set atomic information.
+     * @{
+     */
 
     /**
      * Sets the position of the atom.
      * @param vec Position of the atom.
      */
     void setPos(const Eigen::Vector3d &vec);
+
+    /**
+     * Set the atomic number of the atom.
+     */
+    void setAtomicNumber(int num) { m_atomicNumber = num; }
+
+    /**
+     * Adds a reference to a bond to the atom.
+     */
+    void addBond(unsigned long int bond);
+
+    /**
+     * Adds a reference to a bond to the atom.
+     */
+    void addBond(Bond* bond);
+
+    /**
+     * Deletes the reference of the bond to the atom.
+     */
+    void deleteBond(Bond* bond);
+
+    /**
+     * Deletes the reference of the bond to the atom.
+     */
+    void deleteBond(unsigned long int bond);
+
+    /**
+     * Set the partial charge of the atom.
+     * @note This is not calculated at the moment!
+     */
+    void setPartialCharge(double charge) const
+    {
+      m_partialCharge = charge;
+    }
+
+    /**
+     * Set the Residue that this Atom is a part of.
+     */
+    void setResidue(unsigned long int id);
+
+    /**
+     * Set the Residue that this Atom is a part of.
+     */
+    void setResidue(const Residue *residue);
+    /** @} */
+
+
+    /** @name Get atomic information
+     * These functions are used to get atomic information.
+     * @{
+     */
+
+    /**
+      * @return The position of the atom.
+      */
+    const Eigen::Vector3d * pos() const;
 
     /**
      * Sets the position of the atom.
@@ -83,31 +144,6 @@ namespace Avogadro {
     int atomicNumber() const { return m_atomicNumber; }
 
     /**
-     * Set the atomic number of the atom.
-     */
-    void setAtomicNumber(int num) { m_atomicNumber = num; }
-
-    /**
-     * Adds a reference to a bond to the atom.
-     */
-    void addBond(Bond* bond);
-
-    /**
-     * Adds a reference to a bond to the atom.
-     */
-    void addBond(unsigned long int bond);
-
-    /**
-     * Deletes the reference of the bond to the atom.
-     */
-    void deleteBond(Bond* bond);
-
-    /**
-     * Deletes the reference of the bond to the atom.
-     */
-    void deleteBond(unsigned long int bond);
-
-    /**
      * @return List of bond ids to the atom.
      */
     QList<unsigned long int> bonds() const { return m_bonds; }
@@ -120,7 +156,7 @@ namespace Avogadro {
     /**
      * The valence of the atom. FIXME - don't think this will cut it...
      */
-    double valence() { return static_cast<double>(m_bonds.size()); }
+    double valence() const { return static_cast<double>(m_bonds.size()); }
 
     /**
      * @return True if the atom is a hydrogen.
@@ -128,28 +164,9 @@ namespace Avogadro {
     bool isHydrogen() const { return m_atomicNumber == 1; }
 
     /**
-     * Set the partial charge of the atom.
-     * @note This is not calculated at the moment!
-     */
-    void setPartialCharge(double charge) const
-    {
-      m_partialCharge = charge;
-    }
-
-    /**
      * @return Partial charge of the atom.
      */
     double partialCharge() const;
-
-    /**
-     * Set the Residue that this Atom is a part of.
-     */
-    void setResidue(unsigned long int id);
-
-    /**
-     * Set the Residue that this Atom is a part of.
-     */
-    void setResidue(const Residue *residue);
 
     /**
      * @return The Id of the Residue that the Atom is a part of.
@@ -160,19 +177,31 @@ namespace Avogadro {
      * @return A pointer to the Residue that the Atom is a part of.
      */
     Residue * residue() const;
+    /** @} */
 
-    /// Our OpenBabel conversion functions
+
+    /** @name OpenBabel conversion functions
+     * These functions are used convert between Avogadro and OpenBabel atoms.
+     * @{
+     */
+
     /**
      * @return An OpenBabel::OBAtom copy of the atom.
      */
     OpenBabel::OBAtom OBAtom();
 
     /**
-     * Copies an OpenBabel::OBAtom to the atom.
+     * Copies the data from an OpenBabel::OBAtom to the atom.
      */
     bool setOBAtom(OpenBabel::OBAtom *obatom);
+    /** @} */
 
+    /** @name Operators
+     * Overloaded operators.
+     * @{
+     */
     Atom& operator=(const Atom& other);
+    /** @} */
 
   private:
     /* shared d_ptr with Primitive */
