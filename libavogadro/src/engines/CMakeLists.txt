@@ -3,7 +3,7 @@ set(QT_USE_QTOPENGL true)
 include(${QT_USE_FILE})
 
 include_directories(${OPENBABEL_INCLUDE_DIR}
-	${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
   ${GLEW_INCLUDE_DIR}
 )
 
@@ -126,16 +126,15 @@ add_library(dipoleengine MODULE ${dipoleengine_SRCS} ${dipoleengine_UIS})
 target_link_libraries(dipoleengine ${LINK_LIBS})
 install(TARGETS dipoleengine DESTINATION ${DESTINATION_DIR})
 
-if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
-	### python engine
-	message(STATUS "Enabled python engine")
-        set(pythonengine_SRCS pythonengine.cpp)
-        qt4_wrap_ui(pythonengine_UIS pythonsettingswidget.ui)
-        qt4_automoc(${pythonengine_SRCS})
-        add_library(pythonengine MODULE ${pythonengine_SRCS} ${pythonengine_UIS})
-        target_link_libraries(pythonengine ${LINK_LIBS})
-        install(TARGETS pythonengine DESTINATION ${DESTINATION_DIR})
-	
-	file(GLOB python_SCRIPTS "python/*.py")
-	install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/engineScripts)
-endif(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
+if(Boost_PYTHON_FOUND)
+  ### python engine
+  message(STATUS "Enabled python engine")
+  set(pythonengine_SRCS pythonengine.cpp)
+  qt4_wrap_ui(pythonengine_UIS pythonsettingswidget.ui)
+  qt4_automoc(${pythonengine_SRCS})
+  add_library(pythonengine MODULE ${pythonengine_SRCS} ${pythonengine_UIS})
+  target_link_libraries(pythonengine ${LINK_LIBS})
+  install(TARGETS pythonengine DESTINATION ${DESTINATION_DIR})
+  file(GLOB python_SCRIPTS "python/*.py")
+  install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/engineScripts)
+endif(Boost_PYTHON_FOUND)

@@ -2,11 +2,8 @@ project(avogadro) # the name of your project
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
-cmake_minimum_required(VERSION 2.4.7)
-
-if(COMMAND cmake_policy)
-  cmake_policy(SET CMP0003 NEW)
-endif(COMMAND cmake_policy)
+cmake_minimum_required(VERSION 2.6.0)
+cmake_policy(SET CMP0003 NEW)
 
 # this is adapted from KDE's FindKDE4Internal.cmake : default the build type to
 # "release with debug info".
@@ -14,7 +11,7 @@ endif(COMMAND cmake_policy)
 # We will define two other build types: Debug and Release.
 # These names are case-insensitive i.e. you can do -DCMAKE_BUILD_TYPE=debug
 if (NOT CMAKE_BUILD_TYPE)
-   set(CMAKE_BUILD_TYPE RelWithDebInfo)
+  set(CMAKE_BUILD_TYPE RelWithDebInfo)
 endif (NOT CMAKE_BUILD_TYPE)
 
 message(STATUS "The build type is ${CMAKE_BUILD_TYPE}")
@@ -34,41 +31,41 @@ endif(MSVC)
 ###########################################################
 # We should always respect the users CXXFLAGS if they have set them
 if (CMAKE_COMPILER_IS_GNUCXX)
-	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} $ENV{CXXFLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
-	add_definitions (-D_BSD_SOURCE)
-	# Set some linker flags
-	if (CMAKE_SYSTEM_NAME MATCHES Linux)
-		set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined -lc ${CMAKE_SHARED_LINKER_FLAGS}")
-		set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--enable-new-dtags ${CMAKE_SHARED_LINKER_FLAGS}")
-		set (CMAKE_EXE_LINKER_FLAGS "-Wl,--enable-new-dtags ${CMAKE_EXE_LINKER_FLAGS}")
-	endif (CMAKE_SYSTEM_NAME MATCHES Linux)
-	# Now check if we can use visibility to selectively export symbols
-	# Get the GCC version - from KDE4 cmake files
-	exec_program(${CMAKE_C_COMPILER} ARGS --version OUTPUT_VARIABLE	_gcc_version_info)
-	string (REGEX MATCH "[345]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
-	# gcc on mac just reports: "gcc (GCC) 3.3 20030304 ..." without the
-	# patch level, handle this here:
-	if (NOT _gcc_version)
-		string (REGEX REPLACE ".*\\(GCC\\).* ([34]\\.[0-9]) .*" "\\1.0" _gcc_version "${_gcc_version_info}")
-	endif (NOT _gcc_version)
-	check_cxx_compiler_flag(-fvisibility=hidden HAVE_GCC_VISIBILITY)
-	set(HAVE_GCC_VISIBILITY ${HAVE_GCC_VISIBILITY} CACHE BOOL "GCC support for hidden visibility")
-	macro_ensure_version("4.1.0" "${_gcc_version}" GCC_IS_NEWER_THAN_4_1)
-	macro_ensure_version("4.2.0" "${_gcc_version}" GCC_IS_NEWER_THAN_4_2)
-	set(_GCC_COMPILED_WITH_BAD_ALLOCATOR FALSE)
-	if (GCC_IS_NEWER_THAN_4_1)
-		exec_program(${CMAKE_C_COMPILER} ARGS -v OUTPUT_VARIABLE _gcc_alloc_info)
-		string(REGEX MATCH "(--enable-libstdcxx-allocator=mt)" _GCC_COMPILED_WITH_BAD_ALLOCATOR "${_gcc_alloc_info}")
-	endif (GCC_IS_NEWER_THAN_4_1)
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} $ENV{CXXFLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
+  add_definitions (-D_BSD_SOURCE)
+  # Set some linker flags
+  if (CMAKE_SYSTEM_NAME MATCHES Linux)
+    set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined -lc ${CMAKE_SHARED_LINKER_FLAGS}")
+    set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--enable-new-dtags ${CMAKE_SHARED_LINKER_FLAGS}")
+    set (CMAKE_EXE_LINKER_FLAGS "-Wl,--enable-new-dtags ${CMAKE_EXE_LINKER_FLAGS}")
+  endif (CMAKE_SYSTEM_NAME MATCHES Linux)
+  # Now check if we can use visibility to selectively export symbols
+  # Get the GCC version - from KDE4 cmake files
+  exec_program(${CMAKE_C_COMPILER} ARGS --version OUTPUT_VARIABLE	_gcc_version_info)
+  string (REGEX MATCH "[345]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
+  # gcc on mac just reports: "gcc (GCC) 3.3 20030304 ..." without the
+  # patch level, handle this here:
+  if (NOT _gcc_version)
+    string (REGEX REPLACE ".*\\(GCC\\).* ([34]\\.[0-9]) .*" "\\1.0" _gcc_version "${_gcc_version_info}")
+  endif (NOT _gcc_version)
+  check_cxx_compiler_flag(-fvisibility=hidden HAVE_GCC_VISIBILITY)
+  set(HAVE_GCC_VISIBILITY ${HAVE_GCC_VISIBILITY} CACHE BOOL "GCC support for hidden visibility")
+  macro_ensure_version("4.1.0" "${_gcc_version}" GCC_IS_NEWER_THAN_4_1)
+  macro_ensure_version("4.2.0" "${_gcc_version}" GCC_IS_NEWER_THAN_4_2)
+  set(_GCC_COMPILED_WITH_BAD_ALLOCATOR FALSE)
+  if (GCC_IS_NEWER_THAN_4_1)
+    exec_program(${CMAKE_C_COMPILER} ARGS -v OUTPUT_VARIABLE _gcc_alloc_info)
+    string(REGEX MATCH "(--enable-libstdcxx-allocator=mt)" _GCC_COMPILED_WITH_BAD_ALLOCATOR "${_gcc_alloc_info}")
+  endif (GCC_IS_NEWER_THAN_4_1)
 
-	if (HAVE_GCC_VISIBILITY AND GCC_IS_NEWER_THAN_4_1 AND NOT _GCC_COMPILED_WITH_BAD_ALLOCATOR)
-		# We have all the parts necessary - use visibility support
-		add_definitions(-DHAVE_GCC_VISIBILITY)
-		set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
-		if (GCC_IS_NEWER_THAN_4_2)
-			set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
-		endif (GCC_IS_NEWER_THAN_4_2)
-	endif (HAVE_GCC_VISIBILITY AND GCC_IS_NEWER_THAN_4_1 AND NOT _GCC_COMPILED_WITH_BAD_ALLOCATOR)
+  if (HAVE_GCC_VISIBILITY AND GCC_IS_NEWER_THAN_4_1 AND NOT _GCC_COMPILED_WITH_BAD_ALLOCATOR)
+    # We have all the parts necessary - use visibility support
+    add_definitions(-DHAVE_GCC_VISIBILITY)
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
+    if (GCC_IS_NEWER_THAN_4_2)
+      set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+    endif (GCC_IS_NEWER_THAN_4_2)
+  endif (HAVE_GCC_VISIBILITY AND GCC_IS_NEWER_THAN_4_1 AND NOT _GCC_COMPILED_WITH_BAD_ALLOCATOR)
 
   # Set up additional build flags for particular build types. These will be added to CMAKE_CXX_FLAGS,
   # they will not replace them.
@@ -111,22 +108,13 @@ option(ENABLE_PYTHON "Enable python support" ON)
 # This may not be the best way to do this - please correct me if I am wrong.
 # Getting rid of automagic is nice and so this seems reasonable.
 if(ENABLE_PYTHON MATCHES ON)
-  # The CMake 2.6 FindBoost function is far better than the 2.4 version
-  # So use it if possible
-  if(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
-    message(STATUS "Using CMake 2.6")
-    # Cmake's new FindBoost has an option to look for additional versions
-    # because boost hard-codes version numbers into filenames
-    # and because Cmake isn't necessarily updated in sync with boost
-    # e.g., there's now a 1.37.0 (and thus 1.37) release.
-    SET(Boost_ADDITIONAL_VERSIONS "1.37" "1.37.0")
-    find_package(Boost COMPONENTS python)
-    if(Boost_PYTHON_FOUND)
-      message(STATUS "Boost Python found!")
-    endif(Boost_PYTHON_FOUND)
-  else(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
-    find_package(BoostPython)
-  endif(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
+  # Cmake's new FindBoost has an option to look for additional versions
+  # e.g., there's now a 1.37.0 (and thus 1.37) release.
+  SET(Boost_ADDITIONAL_VERSIONS "1.37" "1.37.0")
+  find_package(Boost COMPONENTS python)
+  if(Boost_PYTHON_FOUND)
+    message(STATUS "Boost Python found - Python support enabled.")
+  endif(Boost_PYTHON_FOUND)
 
   find_package(PythonLibs)
   find_package(PythonInterp)
@@ -135,16 +123,16 @@ else(ENABLE_PYTHON MATCHES ON)
   message(STATUS "Python support disabled.")
 endif(ENABLE_PYTHON MATCHES ON)
 
-option(ENABLE_TESTS "Enable unit testing" ON)
-
+# Unit testing, mainly useful for developers and so defaults to off
+option(ENABLE_TESTS "Enable unit testing" OFF)
 if(ENABLE_TESTS MATCHES ON)
   set(QT_USE_QTTEST TRUE)
   enable_testing()
   message(STATUS "Unit testing enabled, run make test to run them")
 endif(ENABLE_TESTS MATCHES ON)
 
+# GLSL support is needed for OpenGL shaders
 option(ENABLE_GLSL "Enable GLSL support" OFF)
-
 if(ENABLE_GLSL MATCHES ON)
   find_package(GLEW)
   if(GLEW_FOUND)
@@ -155,8 +143,8 @@ if(ENABLE_GLSL MATCHES ON)
   endif(GLEW_FOUND)
 endif(ENABLE_GLSL MATCHES ON)
 
+# Multithreaded OpenGL. Seems mostly broken on Linux right now.
 option(ENABLE_THREADEDGL "Enable threaded OpenGL rendering" OFF)
-
 if(ENABLE_THREADEDGL MATCHES ON)
   add_definitions( -DENABLE_THREADED_GL )
   set(THREADED_GL true)
@@ -166,6 +154,7 @@ else(ENABLE_THREADEDGL MATCHES ON)
   message(STATUS "Threaded OpenGL rendering not enabled")
 endif(ENABLE_THREADEDGL MATCHES ON)
 
+# Default to using lib, other architectures can set alternate lib directories
 if(NOT LIB_INSTALL_DIR)
   set(LIB_INSTALL_DIR lib)
 endif(NOT LIB_INSTALL_DIR)
@@ -181,11 +170,10 @@ ADD_CUSTOM_TARGET(uninstall
 
 FILE(GLOB_RECURSE avogadro_TS i18n/*.ts)
 ADD_CUSTOM_TARGET(update-translations
-		COMMAND ${QT_LUPDATE_EXECUTABLE}
-		${CMAKE_CURRENT_SOURCE_DIR} -ts ${avogadro_TS}
-		WORKING_DIRECTORY
-		${CMAKE_CURRENT_SOURCE_DIR}
-												                       )
+    COMMAND ${QT_LUPDATE_EXECUTABLE}
+    ${CMAKE_CURRENT_SOURCE_DIR} -ts ${avogadro_TS}
+    WORKING_DIRECTORY
+    ${CMAKE_CURRENT_SOURCE_DIR})
 # tell cmake to process CMakeLists.txt in that subdirectory
 add_subdirectory(libavogadro)
 add_subdirectory(avogadro)
@@ -194,13 +182,12 @@ add_subdirectory(doc)
 # Linux Default: /usr/local/share/avogadro/fragments
 set(avogadro_FRAGMENTS share/avogadro)
 if(WIN32)
-   set(avogadro_FRAGMENTS "C:\\Program Files\\Avogadro")
+  set(avogadro_FRAGMENTS "C:\\Program Files\\Avogadro")
 endif(WIN32)
 if(APPLE)
-   set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")
+  set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")
 endif(APPLE)
 
 # When installing, make sure to install some fragments
 INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
-               DESTINATION ${avogadro_FRAGMENTS}
-               PATTERN ".svn" EXCLUDE )
+        DESTINATION ${avogadro_FRAGMENTS})

@@ -9,13 +9,13 @@ ADD_DEFINITIONS(-DQT_SHARED)
 set(DESTINATION_DIR ${LIB_INSTALL_DIR}/avogadro/extensions)
 
 include_directories(
-    ../
-	${CMAKE_CURRENT_BINARY_DIR}
-	${OPENBABEL2_INCLUDE_DIR}
-	${EIGEN2_INCLUDE_DIR}
-	${AVOGADRO_INCLUDE_DIR}
-	${BOOST_INCLUDE_DIRS}
-	${PYTHON_INCLUDE_PATH}
+  ../
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${OPENBABEL2_INCLUDE_DIR}
+  ${EIGEN2_INCLUDE_DIR}
+  ${AVOGADRO_INCLUDE_DIR}
+  ${BOOST_INCLUDE_DIRS}
+  ${PYTHON_INCLUDE_PATH}
 )
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
@@ -134,40 +134,40 @@ install(TARGETS orbitalextension DESTINATION ${DESTINATION_DIR})
 
 ### Gaussian input deck generator
 set(gaussianextension_SRCS gaussianextension.cpp
-	gaussianinputdialog.cpp
-	qcheminputdialog.cpp)
+  gaussianinputdialog.cpp
+  qcheminputdialog.cpp)
 qt4_wrap_ui(gaussianextension_UIS_H
-	gaussianinputdialog.ui
-	qcheminputdialog.ui)
+  gaussianinputdialog.ui
+  qcheminputdialog.ui)
 qt4_automoc(${gaussianextension_SRCS})
 add_library(gaussianextension MODULE ${gaussianextension_SRCS}
-	${gaussianextension_UIS_H})
+  ${gaussianextension_UIS_H})
 target_link_libraries(gaussianextension ${LINK_LIBS})
 install(TARGETS gaussianextension DESTINATION ${DESTINATION_DIR})
 
-if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
-	### python extensions
-	message(STATUS "Enabled python extension")
-	set(pythonextension_SRCS pythonextension.cpp)
-	qt4_automoc(${pythonextension_SRCS})
-	add_library(pythonextension MODULE ${pythonextension_SRCS})
-	target_link_libraries(pythonextension ${LINK_LIBS})
-	install(TARGETS pythonextension DESTINATION ${DESTINATION_DIR})
+if(Boost_PYTHON_FOUND)
+  ### python extensions
+  message(STATUS "Enabled python extension")
+  set(pythonextension_SRCS pythonextension.cpp)
+  qt4_automoc(${pythonextension_SRCS})
+  add_library(pythonextension MODULE ${pythonextension_SRCS})
+  target_link_libraries(pythonextension ${LINK_LIBS})
+  install(TARGETS pythonextension DESTINATION ${DESTINATION_DIR})
 
-	### python terminal
-	message(STATUS "Enabled python terminal")
-	set(pythonterminal_SRCS pythonterminal.cpp highlighter.cpp)
-	qt4_wrap_ui(pythonterminal_UIS_H pythonterminalwidget.ui)
-	qt4_automoc(${pythonterminal_SRCS})
-	add_library(pythonterminal MODULE ${pythonterminal_SRCS}
-		${pythonterminal_UIS_H})
-	target_link_libraries(pythonterminal ${LINK_LIBS})
-	install(TARGETS pythonterminal DESTINATION ${DESTINATION_DIR})
+  ### python terminal
+  message(STATUS "Enabled python terminal")
+  set(pythonterminal_SRCS pythonterminal.cpp highlighter.cpp)
+  qt4_wrap_ui(pythonterminal_UIS_H pythonterminalwidget.ui)
+  qt4_automoc(${pythonterminal_SRCS})
+  add_library(pythonterminal MODULE ${pythonterminal_SRCS}
+    ${pythonterminal_UIS_H})
+  target_link_libraries(pythonterminal ${LINK_LIBS})
+  install(TARGETS pythonterminal DESTINATION ${DESTINATION_DIR})
 
 
-	file(GLOB python_SCRIPTS "python/*.py")
-	install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/scripts)
-endif(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
+  file(GLOB python_SCRIPTS "python/*.py")
+  install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/scripts)
+endif(Boost_PYTHON_FOUND)
 
 ### Animation
 #set(animationextension_SRCS animationextension.cpp animationdialog.cpp trajvideomaker.cpp)
