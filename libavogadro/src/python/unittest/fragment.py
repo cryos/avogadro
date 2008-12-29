@@ -10,16 +10,16 @@ class TestFragment(unittest.TestCase):
     self.molecule = Avogadro.Molecule()
 
   def test_name(self):
-    fragment = self.molecule.newRing() # Ring = Fragment
+    fragment = self.molecule.addRing() # Ring = Fragment
     fragment.name = "testing"
     self.assertEqual(fragment.name, "testing")
     
   def test_atom(self):
-    fragment = self.molecule.newRing() # Ring = Fragment
+    fragment = self.molecule.addRing() # Ring = Fragment
 
     # create two atoms
-    atom1 = self.molecule.newAtom()
-    atom2 = self.molecule.newBond()
+    atom1 = self.molecule.addAtom()
+    atom2 = self.molecule.addBond()
     # add atom 2 to the fragment - test addAtom(id)
     fragment.addAtom(atom2.id)
 
@@ -32,11 +32,11 @@ class TestFragment(unittest.TestCase):
     self.assertEqual(len(fragment.atoms), 0)
 
   def test_bond(self):
-    fragment = self.molecule.newRing() # Ring = Fragment
+    fragment = self.molecule.addRing() # Ring = Fragment
 
     # create two bonds
-    bond1 = self.molecule.newBond()
-    bond2 = self.molecule.newBond()
+    bond1 = self.molecule.addBond()
+    bond2 = self.molecule.addBond()
     # add bond 2 to the fragment - test addBond(id)
     fragment.addBond(bond2.id)
 

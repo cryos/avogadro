@@ -12,7 +12,7 @@ class TestGLWidget(unittest.TestCase):
     self.glwidget.loadDefaultEngines()
     
     self.molecule = Avogadro.Molecule()
-    self.molecule.newAtom()
+    self.molecule.addAtom()
     self.glwidget.molecule = self.molecule
 
   def tearDown(self):

@@ -34,7 +34,7 @@ class TestExtension(unittest.TestCase):
     glwidget = Avogadro.GLWidget()
     molecule = Avogadro.Molecule()
     #glwidget.molecule = molecule
-    molecule.newAtom().atomicNumber = 6
+    molecule.addAtom().atomicNumber = 6
 
     for extension in self.extensions:
       if extension.name == "Hydrogens":

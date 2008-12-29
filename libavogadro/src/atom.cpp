@@ -84,14 +84,14 @@ using Eigen::Vector3d;
     }
   }
 
-  void Atom::deleteBond(Bond* bond)
+  void Atom::removeBond(Bond* bond)
   {
     if (bond) {
-      deleteBond(bond->id());
+      removeBond(bond->id());
     }
   }
 
-  void Atom::deleteBond(unsigned long int bond)
+  void Atom::removeBond(unsigned long int bond)
   {
     int index = m_bonds.indexOf(bond);
     if (index >= 0) {

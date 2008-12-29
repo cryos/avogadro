@@ -20,8 +20,43 @@ include_directories(
 # I think this is necessary now in order to tell the linker where openbabel is
 link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
-FILE(GLOB libavogadro_SRCS "*.cpp")
-FILE(GLOB libavogadro_HDRS "*.h")
+file(GLOB libavogadro_SRCS "*.cpp")
+
+# Only headers with exported symbols should actually be installed
+set(libavogadro_HDRS
+  atom.h
+  bond.h
+  camera.h
+  color.h
+  colorbutton.h
+  cube.h
+  elementtranslate.h
+  engine.h
+  extension.h
+  filetreeitem.h
+  fragment.h
+  glgraphicsview.h
+  glwidget.h
+  idlist.h
+  line.h
+  mesh.h
+  meshgenerator.h
+  molecule.h
+  navigate.h
+  painter.h
+  painterdevice.h
+  periodictableview.h
+  plugin.h
+  pluginmanager.h
+  point.h
+  primitive.h
+  primitiveitemmodel.h
+  primitivelist.h
+  residue.h
+  tool.h
+  toolgroup.h
+  undosequence.h
+)
 
 qt4_wrap_ui(libavogadro_UIS plugindialog.ui)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
@@ -36,60 +71,58 @@ set(elementcolor_SRCS colors/elementcolor.cpp)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${elementcolor_SRCS})
 
 set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
-                       ${QT_LIBRARIES}
-                       ${OPENGL_LIBRARIES}
-                       )
+                      ${QT_LIBRARIES}
+                      ${OPENGL_LIBRARIES}
+                      )
 
 if(GLEW_FOUND)
-	include_directories(${GLEW_INCLUDE_DIR})
-	link_directories(${GLEW_LIBRARY_DIR})
-	set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${GLEW_LIBRARY})
+  include_directories(${GLEW_INCLUDE_DIR})
+  link_directories(${GLEW_LIBRARY_DIR})
+  set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${GLEW_LIBRARY})
 endif(GLEW_FOUND)
 
 # If Boost Python isn't found remove the interpreter files
-if(NOT BOOST_PYTHON_LIBS AND NOT Boost_PYTHON_FOUND)
-	list(REMOVE_ITEM libavogadro_SRCS 
-		${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp)
-	list(REMOVE_ITEM libavogadro_HDRS
-		${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.h)
-	list(REMOVE_ITEM libavogadro_SRCS
-		${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.cpp)
-	list(REMOVE_ITEM libavogadro_HDRS
-		${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.h)
-	list(REMOVE_ITEM libavogadro_SRCS
-		${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.cpp)
-	list(REMOVE_ITEM libavogadro_HDRS
-		${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.h)
-endif(NOT BOOST_PYTHON_LIBS AND NOT Boost_PYTHON_FOUND)
+if(NOT Boost_PYTHON_FOUND)
+  list(REMOVE_ITEM libavogadro_SRCS
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp)
+  list(REMOVE_ITEM libavogadro_SRCS
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.cpp)
+  list(REMOVE_ITEM libavogadro_SRCS
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.cpp)
+endif(NOT Boost_PYTHON_FOUND)
 
 qt4_automoc(${libavogadro_SRCS})
 
 SET(libavogadro_TS
-	${CMAKE_SOURCE_DIR}/i18n/avogadro_de.ts
-	${CMAKE_SOURCE_DIR}/i18n/avogadro_fr.ts
-	${CMAKE_SOURCE_DIR}/i18n/avogadro_en_GB.ts
+  ${CMAKE_SOURCE_DIR}/i18n/avogadro_de.ts
+  ${CMAKE_SOURCE_DIR}/i18n/avogadro_fr.ts
+  ${CMAKE_SOURCE_DIR}/i18n/avogadro_en_GB.ts
 )
 QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 
 # you have to add link_directories before you add the target
 if(Boost_PYTHON_FOUND)
-	include_directories(${Boost_INCLUDE_DIRS})
-	link_directories(${Boost_LIBRARY_DIRS})
+  include_directories(${Boost_INCLUDE_DIRS})
+  link_directories(${Boost_LIBRARY_DIRS})
 endif(Boost_PYTHON_FOUND)
 
 add_library(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})
 set_target_properties(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 set_target_properties(avogadro-lib PROPERTIES VERSION ${VERSION} SOVERSION 0 )
 
-if(BOOST_PYTHON_FOUND)
-	set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${BOOST_PYTHON_LIBS})
-else(BOOST_PYTHON_FOUND)
-  if(Boost_PYTHON_FOUND)
-    message(STATUS "Setting new boost python libraries")
-    set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${PYTHON_LIBRARIES} 
-                           ${Boost_LIBRARIES})
-  endif(Boost_PYTHON_FOUND)
-endif(BOOST_PYTHON_FOUND)
+# The Python headers, only installed if Python is enabled
+set(python_HDRS
+  pythoninterpreter.h
+  pythonscript.h
+  pythonerror.h
+)
+
+if(Boost_PYTHON_FOUND)
+  message(STATUS "Setting new boost python libraries")
+  set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${PYTHON_LIBRARIES}
+                         ${Boost_LIBRARIES})
+  set(libavogadro_HDRS ${libavogadro_HDRS} ${python_HDRS})
+endif(Boost_PYTHON_FOUND)
 
 target_link_libraries(avogadro-lib ${AVO_LINK_LIBRARIES})
 
@@ -104,6 +137,6 @@ add_subdirectory(extensions)
 add_subdirectory(colors)
 
 # Add the boost python module if the boost::python was found
-if(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
-        add_subdirectory(python)
-endif(BOOST_PYTHON_FOUND OR Boost_PYTHON_FOUND)
+if(Boost_PYTHON_FOUND)
+  add_subdirectory(python)
+endif(Boost_PYTHON_FOUND)

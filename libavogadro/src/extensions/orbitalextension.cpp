@@ -193,7 +193,7 @@ namespace Avogadro
     if (m_slater) {
       // We have a slater type orbital....
       qDebug() << "Adding a slater type orbital...." << mo;
-      Cube *cube = m_molecule->newCube();
+      Cube *cube = m_molecule->addCube();
       cube->setName(QString(tr("MO ") + QString::number(mo)));
       cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
                       stepSize * BOHR_TO_ANGSTROM);
@@ -230,7 +230,7 @@ namespace Avogadro
     }
     else if (m_basis) {
       // Calculate each point in the cube in parallel
-      Cube *cube = m_molecule->newCube();
+      Cube *cube = m_molecule->addCube();
       cube->setName(QString(tr("MO ") + QString::number(mo)));
       cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
                       stepSize * BOHR_TO_ANGSTROM);
@@ -320,7 +320,7 @@ namespace Avogadro
     m_currentMO = 0;
     if (m_slater) {
       // We have a slater type orbital....
-      Cube *cube = m_molecule->newCube();
+      Cube *cube = m_molecule->addCube();
       cube->setName(QString(tr("Electron Density")));
       cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
                       stepSize * BOHR_TO_ANGSTROM);
@@ -535,9 +535,9 @@ namespace Avogadro
     Cube *cube = m_molecule->cube(iCube);
     double m_min = cube->minValue();
     double m_max = cube->maxValue();
-    m_mesh1 = m_molecule->newMesh();
+    m_mesh1 = m_molecule->addMesh();
     m_mesh1->setName(cube->name() + ", iso=" + QString::number(isoValue));
-    m_mesh2 = m_molecule->newMesh();
+    m_mesh2 = m_molecule->addMesh();
     m_mesh2->setName(cube->name() + ", iso=" + QString::number(-isoValue));
     if (!m_meshGen1) {
       m_meshGen1 = new MeshGenerator;
@@ -579,7 +579,7 @@ namespace Avogadro
     double stepSize = m_orbitalDialog->stepSize();
     Vector3d origin = m_orbitalDialog->origin();
     Vector3i steps = m_orbitalDialog->steps();
-    Cube *cube = m_molecule->newCube();
+    Cube *cube = m_molecule->addCube();
     cube->setName(QString(tr("VdW Cube")));
     cube->setLimits(origin, steps, stepSize);
 
@@ -632,7 +632,7 @@ namespace Avogadro
     Cube *cube = m_molecule->cube(iCube);
     double m_min = cube->minValue();
     double m_max = cube->maxValue();
-    m_mesh1 = m_molecule->newMesh();
+    m_mesh1 = m_molecule->addMesh();
     m_mesh1->setName(cube->name() + ", iso=" + QString::number(isoValue));
 
     if (!m_meshGen1) {

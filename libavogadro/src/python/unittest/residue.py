@@ -7,20 +7,20 @@ class TestResidue(unittest.TestCase):
     self.molecule = Avogadro.Molecule()
 
   def test_number(self):
-    residue = self.molecule.newResidue()
+    residue = self.molecule.addResidue()
     residue.number = "5A"
     self.assertEqual(residue.number, "5A")
 
   def test_chainNumber(self):
-    residue = self.molecule.newResidue()
+    residue = self.molecule.addResidue()
     residue.chainNumber = 5
     self.assertEqual(residue.chainNumber, 5)
   
   def test_atomIds(self):
-    residue = self.molecule.newResidue()
+    residue = self.molecule.addResidue()
     # add 4 atoms
     for i in range(4):
-      atom = self.molecule.newAtom()
+      atom = self.molecule.addAtom()
       residue.addAtom(atom.id)
 
     # set the atoms ids

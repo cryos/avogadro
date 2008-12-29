@@ -182,7 +182,7 @@ namespace Avogadro {
           undo = new InsertFragmentCommand(widget->molecule(), m_generatedMolecule);
         } // end insert fragment mode
         else { // create a new atom
-          m_beginAtom = newAtom(widget, event->pos());
+          m_beginAtom = addAtom(widget, event->pos());
           m_beginAtomAdded = true;
           m_forceField->SetIgnoreAtom(m_beginAtom->index());
           m_beginAtom->update();
@@ -237,7 +237,7 @@ namespace Avogadro {
 
       if(hitBeginAtom) { // we came back to our original atom -- undo the bond
         if(m_endAtom) {
-          molecule->deleteAtom(m_endAtom); // this also deletes bonds
+          molecule->removeAtom(m_endAtom); // this also deletes bonds
           m_endAtomAdded = false;
           m_bond = 0;
           m_endAtom = 0;
@@ -248,7 +248,7 @@ namespace Avogadro {
         else if(m_bond) {
           //          Atom *oldAtom = (Atom *)m_bond->GetEndAtom();
           //          oldAtom->DeleteBond(m_bond);
-          molecule->deleteBond(m_bond);
+          molecule->removeBond(m_bond);
           m_bond=0;
           m_prevAtomElement = m_beginAtom->atomicNumber();
           m_beginAtom->setAtomicNumber(m_element);
@@ -274,20 +274,20 @@ namespace Avogadro {
 
             if(m_bond) {
               if(m_endAtom) {
-                m_endAtom->deleteBond(m_bond);
-                molecule->deleteAtom(m_endAtom);
+                m_endAtom->removeBond(m_bond);
+                molecule->removeAtom(m_endAtom);
                 m_endAtomAdded = false;
                 m_endAtom = 0;
               } else {
                 Atom *oldAtom = molecule->atomById(m_bond->endAtomId());
                 if (oldAtom) {
-                  oldAtom->deleteBond(m_bond);
+                  oldAtom->removeBond(m_bond);
                 }
               }
               m_bond->setEnd(existingAtom);
             }
             else {
-              m_bond = newBond(molecule, m_beginAtom, existingAtom);
+              m_bond = addBond(molecule, m_beginAtom, existingAtom);
             }
           } // end no existing bond
           else {
@@ -307,11 +307,11 @@ namespace Avogadro {
                 // will delete bonds too (namely m_bond)
                 qDebug() << "Deleting m_endAtom and bond" << m_endAtom->id()
                          << m_bond->id();
-                molecule->deleteAtom(m_endAtom);
+                molecule->removeAtom(m_endAtom);
                 m_endAtomAdded = false;
                 m_endAtom = 0;
               } else {
-                molecule->deleteBond(m_bond);
+                molecule->removeBond(m_bond);
               }
               m_bond = 0;
             }
@@ -326,16 +326,16 @@ namespace Avogadro {
             m_prevBond = 0;
             m_prevBondOrder = 0;
           }
-          m_endAtom = newAtom(widget, event->pos());
+          m_endAtom = addAtom(widget, event->pos());
           m_endAtomAdded = true;
           m_forceField->SetIgnoreAtom(m_endAtom->index());
 
           if(!m_bond) {
-            m_bond = newBond(molecule, m_beginAtom, m_endAtom);
+            m_bond = addBond(molecule, m_beginAtom, m_endAtom);
           }
           else {
             Atom *oldAtom = molecule->atomById(m_bond->endAtomId());
-            oldAtom->deleteBond(m_bond);
+            oldAtom->removeBond(m_bond);
             m_bond->setEnd(m_endAtom);
           }
         }
@@ -509,9 +509,9 @@ namespace Avogadro {
     return 0;
   }
 
-  Atom *DrawTool::newAtom(GLWidget *widget, const QPoint& p)
+  Atom *DrawTool::addAtom(GLWidget *widget, const QPoint& p)
   {
-    Atom *atom = widget->molecule()->newAtom();
+    Atom *atom = widget->molecule()->addAtom();
     moveAtom(widget, atom, p);
     atom->setAtomicNumber(element());
     return atom;
@@ -525,15 +525,15 @@ namespace Avogadro {
     } else {
       refPoint = widget->center();
     }
-    Eigen::Vector3d newAtomPos = widget->camera()->unProject(p, refPoint);
+    Eigen::Vector3d addAtomPos = widget->camera()->unProject(p, refPoint);
 
-    atom->setPos(newAtomPos);
+    atom->setPos(addAtomPos);
   }
 
 
-  Bond *DrawTool::newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom)
+  Bond *DrawTool::addBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom)
   {
-    Bond *bond = molecule->newBond();
+    Bond *bond = molecule->addBond();
     bond->setOrder(bondOrder());
     bond->setBegin(beginAtom);
     bond->setEnd(endAtom);
