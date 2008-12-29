@@ -115,6 +115,11 @@ if(ENABLE_PYTHON MATCHES ON)
   # So use it if possible
   if(CMAKE_MAJOR_VERSION MATCHES 2 AND CMAKE_MINOR_VERSION MATCHES 6)
     message(STATUS "Using CMake 2.6")
+    # Cmake's new FindBoost has an option to look for additional versions
+    # because boost hard-codes version numbers into filenames
+    # and because Cmake isn't necessarily updated in sync with boost
+    # e.g., there's now a 1.37.0 (and thus 1.37) release.
+    SET(Boost_ADDITIONAL_VERSIONS "1.37" "1.37.0")
     find_package(Boost COMPONENTS python)
     if(Boost_PYTHON_FOUND)
       message(STATUS "Boost Python found!")
