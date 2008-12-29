@@ -1415,7 +1415,7 @@ namespace Avogadro
       std::map<unsigned int, unsigned int> AtomMap; // key is from old, value from new
       // copy atoms and create a map of atom indices
       foreach(Primitive *item, selectedItems.subList(Primitive::AtomType)) {
-        Atom *selected = moleculeCopy->newAtom();
+        Atom *selected = moleculeCopy->addAtom();
         *selected = *(static_cast<Atom *>(item));
         AtomMap[item->id()] = selected->id();
       }
@@ -1428,7 +1428,7 @@ namespace Avogadro
         posEnd = AtomMap.find(bond->endAtomId());
         // make sure both bonds are in the map (i.e. selected)
         if ( posBegin != AtomMap.end() && posEnd != AtomMap.end() ) {
-          Bond *bondCopy = moleculeCopy->newBond();
+          Bond *bondCopy = moleculeCopy->addBond();
           bondCopy->setAtoms(posBegin->second, posEnd->second, bond->order());
         }
       } // end looping over bonds

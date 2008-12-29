@@ -46,7 +46,7 @@ class TestEngine(unittest.TestCase):
   def test_primitives(self):
     molecule = Avogadro.Molecule()
     for i in range(10):
-      molecule.newAtom()
+      molecule.addAtom()
 
     list = Avogadro.PrimitiveList(molecule.atoms)
 

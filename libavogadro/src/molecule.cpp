@@ -148,7 +148,7 @@ namespace Avogadro{
     return m_fileName;
   }
 
-  Atom *Molecule::newAtom()
+  Atom *Molecule::addAtom()
   {
     Q_D(Molecule);
     Atom *atom = new Atom(this);
@@ -218,7 +218,7 @@ namespace Avogadro{
   }
 
   // do some fancy footwork when we add an atom previously created
-  Atom *Molecule::newAtom(unsigned long id)
+  Atom *Molecule::addAtom(unsigned long id)
   {
     Q_D(Molecule);
     Atom *atom = new Atom(this);
@@ -246,14 +246,14 @@ namespace Avogadro{
     return(atom);
   }
 
-  void Molecule::deleteAtom(Atom *atom)
+  void Molecule::removeAtom(Atom *atom)
   {
     Q_D(Molecule);
     if(atom) {
       // When deleting an atom this also implicitly deletes any bonds to the atom
       QList<unsigned long int> bonds = atom->bonds();
       foreach (unsigned long int bond, bonds) {
-        deleteBond(bond);
+        removeBond(bond);
       }
 
       m_lock->lockForWrite();
@@ -271,9 +271,9 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::deleteAtom(unsigned long int id)
+  void Molecule::removeAtom(unsigned long int id)
   {
-    deleteAtom(atomById(id));
+    removeAtom(atomById(id));
   }
 
   Atom *Molecule::atom(int index)
@@ -306,7 +306,7 @@ namespace Avogadro{
       return 0;
   }
 
-  Bond *Molecule::newBond()
+  Bond *Molecule::addBond()
   {
     Q_D(Molecule);
     Bond *bond = new Bond(this);
@@ -326,7 +326,7 @@ namespace Avogadro{
     return bond;
   }
 
-  Bond *Molecule::newBond(unsigned long id)
+  Bond *Molecule::addBond(unsigned long id)
   {
     Q_D(Molecule);
     Bond *bond = new Bond(this);
@@ -349,14 +349,14 @@ namespace Avogadro{
     return(bond);
   }
 
-  void Molecule::deleteBond(Bond *bond)
+  void Molecule::removeBond(Bond *bond)
   {
     if(bond) {
-      deleteBond(bond->id());
+      removeBond(bond->id());
     }
   }
 
-  void Molecule::deleteBond(unsigned long int id)
+  void Molecule::removeBond(unsigned long int id)
   {
     Q_D(Molecule);
     if (id < d->bonds.size()) {
@@ -381,11 +381,11 @@ namespace Avogadro{
       // Also delete the bond from the attached atoms
       if (d->atoms.size() > bond->beginAtomId()) {
         if (d->atoms[bond->beginAtomId()])
-          d->atoms[bond->beginAtomId()]->deleteBond(id);
+          d->atoms[bond->beginAtomId()]->removeBond(id);
       }
       if (d->atoms.size() > bond->endAtomId()) {
         if (d->atoms[bond->endAtomId()])
-          d->atoms[bond->endAtomId()]->deleteBond(id);
+          d->atoms[bond->endAtomId()]->removeBond(id);
       }
 
       disconnect(bond, SIGNAL(updated()), this, SLOT(updateBond()));
@@ -490,7 +490,7 @@ namespace Avogadro{
     }
   }
 
-  Cube *Molecule::newCube()
+  Cube *Molecule::addCube()
   {
     Q_D(Molecule);
 
@@ -510,7 +510,7 @@ namespace Avogadro{
     return(cube);
   }
 
-  void Molecule::deleteCube(Cube *cube)
+  void Molecule::removeCube(Cube *cube)
   {
     Q_D(Molecule);
     if(cube) {
@@ -530,14 +530,14 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::deleteCube(unsigned long int id)
+  void Molecule::removeCube(unsigned long int id)
   {
     Q_D(Molecule);
     if (id < d->cubes.size())
-      deleteCube(d->cubes[id]);
+      removeCube(d->cubes[id]);
   }
 
-  Mesh * Molecule::newMesh()
+  Mesh * Molecule::addMesh()
   {
     Q_D(Molecule);
 
@@ -557,7 +557,7 @@ namespace Avogadro{
     return(mesh);
   }
 
-  void Molecule::deleteMesh(Mesh *mesh)
+  void Molecule::removeMesh(Mesh *mesh)
   {
     Q_D(Molecule);
     if(mesh) {
@@ -577,11 +577,11 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::deleteMesh(unsigned long int id)
+  void Molecule::removeMesh(unsigned long int id)
   {
     Q_D(Molecule);
     if (id < d->meshes.size())
-      deleteMesh(d->meshes[id]);
+      removeMesh(d->meshes[id]);
   }
 
   Mesh * Molecule::mesh(int index) const
@@ -608,7 +608,7 @@ namespace Avogadro{
     }
   }
 
-  Residue * Molecule::newResidue()
+  Residue * Molecule::addResidue()
   {
     Q_D(Molecule);
 
@@ -626,7 +626,7 @@ namespace Avogadro{
     return(residue);
   }
 
-  void Molecule::deleteResidue(Residue *residue)
+  void Molecule::removeResidue(Residue *residue)
   {
     Q_D(Molecule);
     if(residue) {
@@ -644,14 +644,14 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::deleteResidue(unsigned long int id)
+  void Molecule::removeResidue(unsigned long int id)
   {
     Q_D(Molecule);
     if (id < d->residues.size())
-      deleteResidue(d->residues[id]);
+      removeResidue(d->residues[id]);
   }
 
-  Fragment * Molecule::newRing()
+  Fragment * Molecule::addRing()
   {
     Q_D(Molecule);
 
@@ -669,7 +669,7 @@ namespace Avogadro{
     return(ring);
   }
 
-  void Molecule::deleteRing(Fragment *ring)
+  void Molecule::removeRing(Fragment *ring)
   {
     Q_D(Molecule);
     if(ring) {
@@ -687,11 +687,11 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::deleteRing(unsigned long int id)
+  void Molecule::removeRing(unsigned long int id)
   {
     Q_D(Molecule);
     if (id < d->rings.size())
-      deleteRing(d->rings[id]);
+      removeRing(d->rings[id]);
   }
 
   void Molecule::addHydrogens(Atom *a)
@@ -707,12 +707,12 @@ namespace Avogadro{
     for (unsigned int i = numberAtoms+1; i <= obmol.NumAtoms(); ++i) {
       if (obmol.GetAtom(i)->IsHydrogen()) {
         OpenBabel::OBAtom *obatom = obmol.GetAtom(i);
-        Atom *atom = newAtom();
+        Atom *atom = addAtom();
         atom->setOBAtom(obatom);
         // Get the neighbor atom
         OpenBabel::OBBondIterator iter;
         OpenBabel::OBAtom *next = obatom->BeginNbrAtom(iter);
-        Bond *bond = newBond();
+        Bond *bond = addBond();
         bond->setEnd(Molecule::atom(atom->index()));
         bond->setBegin(Molecule::atom(next->GetIdx()-1));
       }
@@ -723,7 +723,7 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::deleteHydrogens(Atom *atom)
+  void Molecule::removeHydrogens(Atom *atom)
   {
     if (atom) {
       // Delete any connected hydrogen atoms
@@ -734,7 +734,7 @@ namespace Avogadro{
         // we need to check if the atom still exists
         if (nbrAtom) {
           if (nbrAtom->isHydrogen()) {
-            deleteAtom(a);
+            removeAtom(a);
           }
         }
         else {
@@ -748,7 +748,7 @@ namespace Avogadro{
       Q_D(Molecule);
       foreach (Atom *atom, d->atomList) {
         if (atom->isHydrogen()) {
-          deleteAtom(atom);
+          removeAtom(atom);
         }
       }
     }
@@ -921,13 +921,13 @@ namespace Avogadro{
     if(d->invalidRings) {
       // Now update the rings
       foreach(Fragment *ring, d->ringList) {
-        deleteRing(ring);
+        removeRing(ring);
       }
       OpenBabel::OBMol obmol = OBMol();
       std::vector<OpenBabel::OBRing *> rings;
       rings = obmol.GetSSSR();
       foreach(OpenBabel::OBRing *r, rings) {
-        Fragment *ring = newRing();
+        Fragment *ring = addRing();
         foreach(int index, r->_path) {
           ring->addAtom(atom(index-1)->id());
         }
@@ -988,7 +988,7 @@ namespace Avogadro{
     std::vector<OpenBabel::OBNodeBase*>::iterator i;
     for (OpenBabel::OBAtom *obatom = static_cast<OpenBabel::OBAtom *>(obmol->BeginAtom(i));
           obatom; obatom = static_cast<OpenBabel::OBAtom *>(obmol->NextAtom(i))) {
-      Atom *atom = newAtom();
+      Atom *atom = addAtom();
       atom->setOBAtom(obatom);
     }
 
@@ -997,7 +997,7 @@ namespace Avogadro{
     std::vector<OpenBabel::OBEdgeBase*>::iterator j;
     for (OpenBabel::OBBond *obbond = static_cast<OpenBabel::OBBond*>(obmol->BeginBond(j));
          obbond; obbond = static_cast<OpenBabel::OBBond*>(obmol->NextBond(j))) {
-      Bond *bond = newBond();
+      Bond *bond = addBond();
       // Get the begin and end atoms - we use a 0 based index, OB uses 1 based
       bond->setAtoms(obbond->GetBeginAtom()->GetIdx()-1,
                      obbond->GetEndAtom()->GetIdx()-1,
@@ -1017,7 +1017,7 @@ namespace Avogadro{
       int x, y, z;
       grid->GetNumberOfPoints(x, y, z);
       Eigen::Vector3i points(x, y, z);
-      Cube *cube = newCube();
+      Cube *cube = addCube();
       cube->setLimits(min, max, points);
       cube->setData(grid->GetValues());
       cube->setName(name);
@@ -1030,7 +1030,7 @@ namespace Avogadro{
     for (OpenBabel::OBResidue *obres = static_cast<OpenBabel::OBResidue *>(obmol->BeginResidue(iResidue));
           obres; obres = static_cast<OpenBabel::OBResidue *>(obmol->NextResidue(iResidue))) {
       /// Copy these residues!
-      Residue *residue = newResidue();
+      Residue *residue = addResidue();
       residue->setName(obres->GetName().c_str());
       residue->setNumber(obres->GetNumString().c_str());
       residue->setChainNumber(obres->GetChainNum());
@@ -1049,7 +1049,7 @@ namespace Avogadro{
     // Copy the rings across now
     std::vector<OpenBabel::OBRing *> rings = obmol->GetSSSR();
     foreach(OpenBabel::OBRing *r, rings) {
-      Fragment *ring = newRing();
+      Fragment *ring = addRing();
       foreach(int index, r->_path) {
         ring->addAtom(atom(index-1)->id());
       }
@@ -1200,13 +1200,13 @@ namespace Avogadro{
     // Create a temporary map from the old indices to the new for bonding
     QList<int> map;
     foreach (Atom *a, e->atomList) {
-      Atom *atom = newAtom();
+      Atom *atom = addAtom();
       *atom = *a;
       map.push_back(atom->id());
       emit primitiveAdded(atom);
     }
     foreach (Bond *b, e->bondList) {
-      Bond *bond = newBond();
+      Bond *bond = addBond();
       *bond = *b;
       bond->setBegin(atomById(map.at(other.atomById(b->beginAtomId())->index())));
       bond->setEnd(atomById(map.at(other.atomById(b->endAtomId())->index())));

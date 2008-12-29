@@ -93,12 +93,12 @@ namespace Avogadro {
     /**
      * Deletes the reference of the bond to the atom.
      */
-    void deleteBond(Bond* bond);
+    void removeBond(Bond* bond);
 
     /**
      * Deletes the reference of the bond to the atom.
      */
-    void deleteBond(unsigned long int bond);
+    void removeBond(unsigned long int bond);
 
     /**
      * Set the partial charge of the atom.

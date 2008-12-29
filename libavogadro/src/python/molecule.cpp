@@ -15,24 +15,24 @@ void export_Molecule()
 {
 
   // define function pointers to handle overloading
-  Atom* (Molecule::*newAtom_ptr1)() = &Molecule::newAtom;
-  Atom* (Molecule::*newAtom_ptr2)(unsigned long int) = &Molecule::newAtom;
-  void (Molecule::*deleteAtom_ptr1)(Atom*) = &Molecule::deleteAtom;
-  void (Molecule::*deleteAtom_ptr2)(unsigned long int) = &Molecule::deleteAtom;
+  Atom* (Molecule::*addAtom_ptr1)() = &Molecule::newAtom;
+  Atom* (Molecule::*addAtom_ptr2)(unsigned long int) = &Molecule::newAtom;
+  void (Molecule::*removeAtom_ptr1)(Atom*) = &Molecule::deleteAtom;
+  void (Molecule::*removeAtom_ptr2)(unsigned long int) = &Molecule::deleteAtom;
   void (Molecule::*setAtomPos_ptr1)(unsigned long int, const Eigen::Vector3d &) = &Molecule::setAtomPos;
-  Bond* (Molecule::*newBond_ptr1)() = &Molecule::newBond;
-  Bond* (Molecule::*newBond_ptr2)(unsigned long int) = &Molecule::newBond;
-  void (Molecule::*deleteBond_ptr1)(Bond*) = &Molecule::deleteBond;
-  void (Molecule::*deleteBond_ptr2)(unsigned long int) = &Molecule::deleteBond;
-  Cube* (Molecule::*newCube_ptr1)() = &Molecule::newCube;
-  void (Molecule::*deleteCube_ptr1)(Cube*) = &Molecule::deleteCube;
-  void (Molecule::*deleteCube_ptr2)(unsigned long int) = &Molecule::deleteCube;
-  Residue* (Molecule::*newResidue_ptr1)() = &Molecule::newResidue;
-  void (Molecule::*deleteResidue_ptr1)(Residue*) = &Molecule::deleteResidue;
-  void (Molecule::*deleteResidue_ptr2)(unsigned long int) = &Molecule::deleteResidue;
-  Fragment* (Molecule::*newRing_ptr1)() = &Molecule::newRing;
-  void (Molecule::*deleteRing_ptr1)(Fragment*) = &Molecule::deleteRing;
-  void (Molecule::*deleteRing_ptr2)(unsigned long int) = &Molecule::deleteRing;
+  Bond* (Molecule::*addBond_ptr1)() = &Molecule::newBond;
+  Bond* (Molecule::*addBond_ptr2)(unsigned long int) = &Molecule::newBond;
+  void (Molecule::*removeBond_ptr1)(Bond*) = &Molecule::deleteBond;
+  void (Molecule::*removeBond_ptr2)(unsigned long int) = &Molecule::deleteBond;
+  Cube* (Molecule::*addCube_ptr1)() = &Molecule::newCube;
+  void (Molecule::*removeCube_ptr1)(Cube*) = &Molecule::deleteCube;
+  void (Molecule::*removeCube_ptr2)(unsigned long int) = &Molecule::deleteCube;
+  Residue* (Molecule::*addResidue_ptr1)() = &Molecule::newResidue;
+  void (Molecule::*removeResidue_ptr1)(Residue*) = &Molecule::deleteResidue;
+  void (Molecule::*removeResidue_ptr2)(unsigned long int) = &Molecule::deleteResidue;
+  Fragment* (Molecule::*addRing_ptr1)() = &Molecule::newRing;
+  void (Molecule::*removeRing_ptr1)(Fragment*) = &Molecule::deleteRing;
+  void (Molecule::*removeRing_ptr2)(unsigned long int) = &Molecule::deleteRing;
   Atom* (Molecule::*atom_ptr)(int) = &Molecule::atom;
   Bond* (Molecule::*bond_ptr1)(int) = &Molecule::bond;
   Bond* (Molecule::*bond_ptr2)(unsigned long, unsigned long) = &Molecule::bond;
@@ -66,38 +66,38 @@ void export_Molecule()
     .def("atomPos", &Molecule::atomPos, return_value_policy<return_by_value>())
 
     // atom functions
-    .def("newAtom", newAtom_ptr1, return_value_policy<reference_existing_object>())
-    .def("newAtom", newAtom_ptr2, return_value_policy<reference_existing_object>())
+    .def("addAtom", newAtom_ptr1, return_value_policy<reference_existing_object>())
+    .def("addAtom", newAtom_ptr2, return_value_policy<reference_existing_object>())
     .def("atom", atom_ptr, return_value_policy<reference_existing_object>())
     .def("atomById", &Molecule::atomById, return_value_policy<reference_existing_object>())
-    .def("deleteAtom", deleteAtom_ptr1)
-    .def("deleteAtom", deleteAtom_ptr2)
+    .def("removeAtom", deleteAtom_ptr1)
+    .def("removeAtom", deleteAtom_ptr2)
     // bond functions
-    .def("newBond", newBond_ptr1, return_value_policy<reference_existing_object>())
-    .def("newBond", newBond_ptr2, return_value_policy<reference_existing_object>())
+    .def("addBond", newBond_ptr1, return_value_policy<reference_existing_object>())
+    .def("addBond", newBond_ptr2, return_value_policy<reference_existing_object>())
     .def("bond", bond_ptr1, return_value_policy<reference_existing_object>())
     .def("bond", bond_ptr2, return_value_policy<reference_existing_object>())
     .def("bond", bond_ptr3, return_value_policy<reference_existing_object>())
     .def("bondById", &Molecule::bondById, return_value_policy<reference_existing_object>())
-    .def("deleteBond", deleteBond_ptr1)
-    .def("deleteBond", deleteBond_ptr2)
+    .def("removeBond", deleteBond_ptr1)
+    .def("removeBond", deleteBond_ptr2)
     // cube functions
-    .def("newCube", newCube_ptr1, return_value_policy<reference_existing_object>())
-    .def("deleteCube", deleteCube_ptr1)
-    .def("deleteCube", deleteCube_ptr2)
+    .def("addCube", newCube_ptr1, return_value_policy<reference_existing_object>())
+    .def("removeCube", deleteCube_ptr1)
+    .def("removeCube", deleteCube_ptr2)
     // residue functions
-    .def("newResidue", newResidue_ptr1, return_value_policy<reference_existing_object>())
+    .def("addResidue", newResidue_ptr1, return_value_policy<reference_existing_object>())
     .def("residue", residue_ptr, return_value_policy<reference_existing_object>())
     .def("residueById", &Molecule::residueById, return_value_policy<reference_existing_object>())
-    .def("deleteResidue", deleteResidue_ptr1)
-    .def("deleteResidue", deleteResidue_ptr2)
+    .def("removeResidue", deleteResidue_ptr1)
+    .def("removeResidue", deleteResidue_ptr2)
     // ring functions
-    .def("newRing", newRing_ptr1, return_value_policy<reference_existing_object>())
-    .def("deleteRing", deleteRing_ptr1)
-    .def("deleteRing", deleteRing_ptr2)
+    .def("addRing", newRing_ptr1, return_value_policy<reference_existing_object>())
+    .def("removeRing", deleteRing_ptr1)
+    .def("removeRing", deleteRing_ptr2)
     // general functions
     .def("addHydrogens", &Molecule::addHydrogens)
-    .def("deleteHydrogens", &Molecule::deleteHydrogens)
+    .def("removeHydrogens", &Molecule::deleteHydrogens)
     .def("calculatePartialCharges", &Molecule::calculatePartialCharges)
     .def("clear", &Molecule::clear)
     .def("translate", &Molecule::translate)

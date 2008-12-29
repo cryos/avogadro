@@ -146,7 +146,7 @@ namespace Avogadro
         list += line.split(" ", QString::SkipEmptyParts);
         if (list.size() == 30) {
           for (int i = 0; i <= 27; i += 3) {
-            Bond *bond = mol->newBond();
+            Bond *bond = mol->addBond();
             bond->setAtoms(list.at(i).toInt()/3, list.at(i+1).toInt()/3);
             //bond->setOrder(list.at(i+2).toInt());
           }

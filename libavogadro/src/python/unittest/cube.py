@@ -7,24 +7,24 @@ class TestCube(unittest.TestCase):
     self.molecule = Avogadro.Molecule()
 
   def test_min(self):
-    cube = self.molecule.newCube()
+    cube = self.molecule.addCube()
     self.assertEqual(len(cube.min), 3)
 
   def test_max(self):
-    cube = self.molecule.newCube()
+    cube = self.molecule.addCube()
     self.assertEqual(len(cube.max), 3)
 
   def test_spacing(self):
-    cube = self.molecule.newCube()
+    cube = self.molecule.addCube()
     self.assertEqual(len(cube.spacing), 3)
 
   def test_dimensions(self):
-    cube = self.molecule.newCube()
+    cube = self.molecule.addCube()
     self.assertEqual(len(cube.dimensions), 3)
 
   # test setLimits(Vector3d, Vector3d, Vector3i)
   def test_setLimits_points(self):
-    cube = self.molecule.newCube()
+    cube = self.molecule.addCube()
     min = array([-10.0, -10.0, -10.0])
     max = array([10.0, 10.0, 10.0])
     dimensions = array([20, 10, 4])
@@ -49,7 +49,7 @@ class TestCube(unittest.TestCase):
 
   # test setLimits(Vector3d, Vector3d, double)
   def test_setLimits_spacing(self):
-    cube = self.molecule.newCube()
+    cube = self.molecule.addCube()
     min = array([-10.0, -10.0, -10.0])
     max = array([10.0, 10.0, 10.0])
     # setLimits(min, max, spacing)
@@ -73,7 +73,7 @@ class TestCube(unittest.TestCase):
 
   # test setLimits(Vector3d, Vector3i, double)
   def test_setLimits_dimensions_spacing(self):
-    cube = self.molecule.newCube()
+    cube = self.molecule.addCube()
     min = array([-10.0, -10.0, -10.0])
     dimensions = array([20, 10, 4])
     # setLimits(min, dimensions, spacing)
@@ -97,8 +97,8 @@ class TestCube(unittest.TestCase):
 
   # test setLimits(Molecule, double, double)
   def test_setLimits_molecule(self):
-    cube = self.molecule.newCube()
-    atom = self.molecule.newAtom()
+    cube = self.molecule.addCube()
+    atom = self.molecule.addAtom()
     atom.pos = array([1., 1., 1.])
     # setLimits(Molecle, spacing, padding)
     cube.setLimits(self.molecule, 1.0, 2.0)
@@ -120,7 +120,7 @@ class TestCube(unittest.TestCase):
     self.assertEqual(cube.spacing[2], 4.0 / 3)
 
   def test_data(self):
-    cube = self.molecule.newCube()
+    cube = self.molecule.addCube()
     self.assertEqual(len(cube.data), 0)
   
     # 5x5x5 = 125 data points 
@@ -141,7 +141,7 @@ class TestCube(unittest.TestCase):
     self.assertEqual(len(cube.data), 125)
   
   def test_index(self):
-    cube = self.molecule.newCube()
+    cube = self.molecule.addCube()
     min = array([0.0, 0.0, 0.0])
     dimensions = array([5, 5, 5])
     cube.setLimits(min, dimensions, 1.0)
@@ -153,7 +153,7 @@ class TestCube(unittest.TestCase):
     vec = cube.position(3)
 
   def test_value(self):
-    cube = self.molecule.newCube()
+    cube = self.molecule.addCube()
     # 5x5x5 = 125 data points 
     min = array([0.0, 0.0, 0.0])
     dimensions = array([5, 5, 5])
@@ -182,7 +182,7 @@ class TestCube(unittest.TestCase):
 
  
   def test_name(self):
-    cube = self.molecule.newCube()
+    cube = self.molecule.addCube()
     cube.name = "testing"
     self.assertEqual(cube.name, "testing")
  

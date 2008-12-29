@@ -862,7 +862,7 @@ namespace Avogadro
   {
     // Add our atoms to the molecule
     for (unsigned int i = 0; i < m_atoms.size(); ++i) {
-      Atom* atom = mol->newAtom();
+      Atom* atom = mol->addAtom();
       atom->setPos(m_atoms.at(i)->pos * BOHR_TO_ANGSTROM);
       atom->setAtomicNumber(m_atoms.at(i)->num);
     }

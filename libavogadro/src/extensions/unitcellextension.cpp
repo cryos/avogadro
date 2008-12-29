@@ -180,7 +180,7 @@ namespace Avogadro {
     vector3 uniqueV, newV;
     list<vector3> transformedVectors; // list of symmetry-defined copies of the atom
     list<vector3>::iterator transformIterator;
-    OBAtom *newAtom;
+    OBAtom *addAtom;
     QList<const OBAtom*> atoms; // keep the current list of unique atoms -- don't double-create
     FOR_ATOMS_OF_MOL(atom, mol)
       atoms.push_back(&(*atom));
@@ -202,10 +202,10 @@ namespace Avogadro {
         else if (transformIterator->z() < 0.0 || transformIterator->z() > 1.0)
           continue;
 	
-        newAtom = mol.NewAtom();
+        addAtom = mol.NewAtom();
         // it would help to have a decent "duplicate atom" method here
-        newAtom->SetAtomicNum(atom->GetAtomicNum());
-        newAtom->SetVector(uc->GetOrthoMatrix() * (*transformIterator));
+        addAtom->SetAtomicNum(atom->GetAtomicNum());
+        addAtom->SetVector(uc->GetOrthoMatrix() * (*transformIterator));
       } // end loop of transformed atoms
     } // end loop of atoms
     

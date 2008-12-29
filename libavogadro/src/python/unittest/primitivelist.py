@@ -10,7 +10,7 @@ class TestPrimitiveList(unittest.TestCase):
   def test_constructors(self):
     qlist = []
     for i in range(10):
-      atom = self.molecule.newAtom()
+      atom = self.molecule.addAtom()
       self.list.append(atom)
       qlist.append(atom)
     self.assertEqual(self.list.size, 10)
@@ -22,9 +22,9 @@ class TestPrimitiveList(unittest.TestCase):
 
   def test_subList(self):
     for i in range(3):
-      self.list.append(self.molecule.newAtom())
-      self.list.append(self.molecule.newBond())
-      self.list.append(self.molecule.newCube())
+      self.list.append(self.molecule.addAtom())
+      self.list.append(self.molecule.addBond())
+      self.list.append(self.molecule.addCube())
 
     atomList = self.list.subList(Avogadro.PrimitiveType.AtomType)
     self.assertEqual(len(atomList), 3)
@@ -33,30 +33,30 @@ class TestPrimitiveList(unittest.TestCase):
       
   def test_list(self):
     for i in range(3):
-      self.list.append(self.molecule.newAtom())
-      self.list.append(self.molecule.newBond())
-      self.list.append(self.molecule.newCube())
+      self.list.append(self.molecule.addAtom())
+      self.list.append(self.molecule.addBond())
+      self.list.append(self.molecule.addCube())
 
     self.assertEqual(len(self.list.list), 9)
  
   def test_contains(self):
     for i in range(3):
-      self.list.append(self.molecule.newAtom())
-      self.list.append(self.molecule.newBond())
-      self.list.append(self.molecule.newCube())
+      self.list.append(self.molecule.addAtom())
+      self.list.append(self.molecule.addBond())
+      self.list.append(self.molecule.addCube())
 
     atom1 = self.molecule.atom(0)
-    atom2 = self.molecule.newAtom()
+    atom2 = self.molecule.addAtom()
     self.assertEqual(self.list.contains(atom1), True)
     self.assertEqual(self.list.contains(atom2), False)
  
   def test_removeAll(self):
     for i in range(3):
-      self.list.append(self.molecule.newAtom())
-      self.list.append(self.molecule.newBond())
-      self.list.append(self.molecule.newCube())
+      self.list.append(self.molecule.addAtom())
+      self.list.append(self.molecule.addBond())
+      self.list.append(self.molecule.addCube())
 
-    atom = self.molecule.newAtom()
+    atom = self.molecule.addAtom()
     self.list.removeAll(atom)
     self.assertEqual(len(self.list.list), 9)
     self.list.removeAll(self.molecule.atom(0))
@@ -64,14 +64,14 @@ class TestPrimitiveList(unittest.TestCase):
 
   def test_isEmpty(self):
     self.assertEqual(self.list.isEmpty, True)
-    self.list.append(self.molecule.newAtom())
+    self.list.append(self.molecule.addAtom())
     self.assertEqual(self.list.isEmpty, False)
 
   def test_count(self):
     for i in range(3):
-      self.list.append(self.molecule.newAtom())
-      self.list.append(self.molecule.newBond())
-      self.list.append(self.molecule.newCube())
+      self.list.append(self.molecule.addAtom())
+      self.list.append(self.molecule.addBond())
+      self.list.append(self.molecule.addCube())
     
     self.assertEqual(self.list.count(Avogadro.PrimitiveType.AtomType), 3)
     self.assertEqual(self.list.count(Avogadro.PrimitiveType.BondType), 3)
@@ -81,9 +81,9 @@ class TestPrimitiveList(unittest.TestCase):
 
   def test_clear(self):
     for i in range(3):
-      self.list.append(self.molecule.newAtom())
-      self.list.append(self.molecule.newBond())
-      self.list.append(self.molecule.newCube())
+      self.list.append(self.molecule.addAtom())
+      self.list.append(self.molecule.addBond())
+      self.list.append(self.molecule.addCube())
     
     self.assertEqual(self.list.size, 9)
     self.list.clear()

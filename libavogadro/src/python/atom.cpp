@@ -15,8 +15,8 @@ void export_Atom()
   void (Atom::*setPos_ptr)(const Eigen::Vector3d&) = &Atom::setPos;
   void (Atom::*addBond_ptr1)(Bond*) = &Atom::addBond;
   void (Atom::*addBond_ptr2)(unsigned long int) = &Atom::addBond;
-  void (Atom::*deleteBond_ptr1)(Bond*) = &Atom::deleteBond;
-  void (Atom::*deleteBond_ptr2)(unsigned long int) = &Atom::deleteBond;
+  void (Atom::*removeBond_ptr1)(Bond*) = &Atom::deleteBond;
+  void (Atom::*removeBond_ptr2)(unsigned long int) = &Atom::deleteBond;
 
   class_<Avogadro::Atom, bases<Avogadro::Primitive>, boost::noncopyable>("Atom", no_init)
     // read/write properties
@@ -31,8 +31,8 @@ void export_Atom()
     // real functions
     .def("addBond", addBond_ptr1)
     .def("addBond", addBond_ptr2)
-    .def("deleteBond", deleteBond_ptr1)
-    .def("deleteBond", deleteBond_ptr2)
+    .def("removeBond", deleteBond_ptr1)
+    .def("removeBond", deleteBond_ptr2)
     ;
 
 }

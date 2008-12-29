@@ -155,9 +155,9 @@ namespace Avogadro {
 
       QWidget *m_settingsWidget;
 
-      Atom *newAtom(GLWidget *widget, const QPoint& p);
+      Atom *addAtom(GLWidget *widget, const QPoint& p);
       void moveAtom(GLWidget *widget, Atom *atom, const QPoint& p);
-      Bond *newBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
+      Bond *addBond(Molecule *molecule, Atom *beginAtom, Atom *endAtom);
 
       OpenBabel::OBForceField *m_forceField;
 

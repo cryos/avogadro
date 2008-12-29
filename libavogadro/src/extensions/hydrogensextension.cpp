@@ -137,7 +137,7 @@ namespace Avogadro {
           m_molecule->AddHydrogens(false, true, m_pH); */
           break;
         case RemoveHydrogens:
-          m_molecule->deleteHydrogens();
+          m_molecule->removeHydrogens();
           break;
       }
     }
@@ -153,7 +153,7 @@ namespace Avogadro {
               m_molecule->addHydrogens(atom);
               break;
             case RemoveHydrogens:
-              m_molecule->deleteHydrogens(atom);
+              m_molecule->removeHydrogens(atom);
               break;
           }
         }

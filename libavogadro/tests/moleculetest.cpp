@@ -66,7 +66,7 @@ class MoleculeTest : public QObject
     /**
      * Tests the addition of new Atom objects to the Molecule.
      */
-    void newAtom();
+    void addAtom();
 
     /**
      * Tests the setting of the Atom position.
@@ -96,17 +96,17 @@ class MoleculeTest : public QObject
     /**
      * Tests the deletion of Atom objects from the Molecule.
      */
-    void deleteAtom();
+    void removeAtom();
 
     /**
      * Tests the addition of new Bond objects to the Molecule.
      */
-    void newBond();
+    void addBond();
 
     /**
      * Tests the deletion of Bond objects from the Molecule.
      */
-    void deleteBond();
+    void removeBond();
 };
 
 void MoleculeTest::initTestCase()
@@ -128,11 +128,11 @@ void MoleculeTest::cleanup()
 {
 }
 
-void MoleculeTest::newAtom()
+void MoleculeTest::addAtom()
 {
-  m_molecule->newAtom();
+  m_molecule->addAtom();
   QVERIFY(m_molecule->numAtoms() == 1);
-  m_molecule->newAtom();
+  m_molecule->addAtom();
   QVERIFY(m_molecule->numAtoms() == 2);
 }
 
@@ -177,31 +177,31 @@ void MoleculeTest::atomById()
   QVERIFY(a != 0);
 }
 
-void MoleculeTest::deleteAtom()
+void MoleculeTest::removeAtom()
 {
   // Should now to two atoms in the Molecule with ids 0 and 1.
   Atom *a = m_molecule->atom(1);
-  m_molecule->deleteAtom(a);
+  m_molecule->removeAtom(a);
   QVERIFY(m_molecule->numAtoms() == 1);
-  m_molecule->deleteAtom(0ul);
+  m_molecule->removeAtom(0ul);
   QVERIFY(m_molecule->numAtoms() == 0);
 }
 
-void MoleculeTest::newBond()
+void MoleculeTest::addBond()
 {
-  m_molecule->newBond();
+  m_molecule->addBond();
   QVERIFY(m_molecule->numBonds() == 1);
-  m_molecule->newBond();
+  m_molecule->addBond();
   QVERIFY(m_molecule->numBonds() == 2);
 }
 
-void MoleculeTest::deleteBond()
+void MoleculeTest::removeBond()
 {
   // Should now to two atoms in the Molecule with ids 0 and 1.
   Bond *b = m_molecule->bond(1);
-  m_molecule->deleteBond(b);
+  m_molecule->removeBond(b);
   QVERIFY(m_molecule->numBonds() == 1);
-  m_molecule->deleteBond(0ul);
+  m_molecule->removeBond(0ul);
   QVERIFY(m_molecule->numBonds() == 0);
 }
 
