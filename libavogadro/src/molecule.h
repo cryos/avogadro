@@ -59,455 +59,587 @@ namespace Avogadro {
   class MoleculePrivate;
   class A_EXPORT Molecule : public Primitive
   {
-    Q_OBJECT
-
-    public:
-      /**
-       * Constructor.
-       *
-       * @param parent The object parent.
-       */
-      Molecule(QObject *parent=0);
-
-      /**
-       * Copy constructor.
-       * @param other Molecule to make a copy of.
-       */
-      Molecule(const Molecule &other);
-
-      /**
-       * Destructor.
-       */
-      virtual ~Molecule();
-
-      /**
-       * Call to trigger an update signal, causing the molecule to be redrawn.
-       */
-      void update();
-
-      /**
-       * Set the filename of the molecule.
-       */
-      void setFileName(const QString& name);
-
-      /**
-       * @return The full path filename of the molecule.
-       */
-      QString fileName() const;
-
-      /**
-       * Create a new atom object and return a pointer to it.
-       * @note Do not delete the object, use deleteAtom(Atom*).
-       */
-      Atom *newAtom();
-
-      /**
-       * Create a new atom object with the specified id and return a pointer to
-       * it. Used when you need to recreate an atom with the same unique id.
-       * @note Do not delete the object, use deleteAtom(unsigned long int id).
-       */
-      Atom *newAtom(unsigned long id);
-
-      /**
-       * Set the atom position.
-       * @param id Unique id of the atom to set the position for.
-       * @param vec Position vector to set the atom to.
-       */
-      void setAtomPos(unsigned long int id, const Eigen::Vector3d &vec);
-
-      /**
-       * Get the position vector of the supplied atom.
-       * @param id Unique id of the atom.
-       * @return Position vector of the atom.
-       */
-      const Eigen::Vector3d * atomPos(unsigned long int id) const;
-
-      /**
-       * Delete the supplied atom.
-       */
-      void deleteAtom(Atom *atom);
-
-      /**
-       * Delete the atom with the unique id specified.
-       */
-      void deleteAtom(unsigned long int id);
-
-      /**
-       * Create a new Bond object and return a pointer to it.
-       * @note Do not delete the object, use deleteBond(Bond*).
-       */
-      Bond *newBond();
-
-      /**
-       * Create a new bond object with the specified id and return a pointer to
-       * it. Used when you need to recreate a bond with the same unique id.
-       * @note Do not delete the object, use deleteBond(unsigned long int id).
-       */
-      Bond *newBond(unsigned long id);
-
-      /**
-       * Delete the supplied bond.
-       */
-      void deleteBond(Bond *bond);
-
-      /**
-       * Delete the bond with the unique id specified.
-       */
-      void deleteBond(unsigned long int id);
-
-      /**
-       * Add hydrogens to the molecule.
-       * @param atom If supplied only add hydrogens to the specified atom.
-       */
-      void addHydrogens(Atom *atom = 0);
-
-      /**
-       * Delete hydrogens from the molecule.
-       * @param atom If supplied only delete hydrogens connected to the
-       * specified atom.
-       */
-      void deleteHydrogens(Atom *atom = 0);
-
-      /**
-       * Calculate the partial charges on each atom.
-       */
-      void calculatePartialCharges() const;
-
-      /**
-       * Calculate the aromaticity of the bonds.
-       */
-      void calculateAromaticity() const;
-
-      /**
-       * Create a new cube object and return a pointer to it.
-       * @note Do not delete the object, use deleteCube(Cube *cube).
-       */
-      Cube *newCube();
-
-      /**
-       * Delete the supplied cube.
-       */
-      void deleteCube(Cube *cube);
-
-      /**
-       * Delete the cube with the unique id specified.
-       */
-      void deleteCube(unsigned long int id);
-
-      /**
-       * Create a new Mesh object and return a pointer to it.
-       * @note Do not delete the object, use deleteMesh(Mesh *mesh).
-       */
-      Mesh * newMesh();
-
-      /**
-       * Delete the supplied Mesh.
-       */
-      void deleteMesh(Mesh *mesh);
-
-      /**
-       * Delete the Mesh with the unique id specified.
-       */
-      void deleteMesh(unsigned long int id);
-
-      /**
-       * Create a new residue object and return a pointer to it.
-       * @note Do not delete the object, use deleteResidue(Residue *residue).
-       */
-      Residue *newResidue();
-
-      /**
-       * Delete the supplied residue.
-       */
-      void deleteResidue(Residue *residue);
-
-      /**
-       * Delete the residue with the unique id specified.
-       */
-      void deleteResidue(unsigned long int id);
-
-      /**
-       * Create a new ring object and return a pointer to it.
-       * @note Do not delete the object, use deleteRing(Fragment *ring).
-       */
-      Fragment *newRing();
-
-      /**
-       * Delete the supplied ring.
-       */
-      void deleteRing(Fragment *ring);
-
-      /**
-       * Delete the ring with the unique id specified.
-       */
-      void deleteRing(unsigned long int id);
-
-      /**
-       * @return The total number of atoms in the molecule.
-       */
-      unsigned int numAtoms() const;
-
-      /**
-       * @return The total number of bonds in the molecule.
-       */
-      unsigned int numBonds() const;
-
-      /**
-       * @return The total number of cubes in the molecule.
-       */
-      unsigned int numCubes() const;
-
-      /**
-       * @return The total number of meshes in the molecule.
-       */
-      unsigned int numMeshes() const;
-
-      /**
-       * @return The total number of residues in the molecule.
-       */
-      unsigned int numResidues() const;
-
-      /**
-       * @return The total number of rings in the molecule.
-       */
-      unsigned int numRings() const;
-
-      /**
-       * @return The atom at the supplied index.
-       * @note Replaces GetAtom.
-       */
-      Atom * atom(int index);
-      const Atom * atom(int index) const;
-
-      /**
-       * @return The atom at the supplied unqique id.
-       */
-      Atom *atomById(unsigned long id) const;
-
-      /**
-       * @return The bond at the supplied index.
-       * @note Replaces GetBond.
-       */
-      Bond* bond(int index);
-      const Bond* bond(int index) const;
-
-      /**
-       * @return The bond at the supplied unique id.
-       */
-      Bond *bondById(unsigned long id) const;
-
-      /**
-       * @return The bond between the two supplied atom ids if one exists,
-       * otherwise 0 is returned.
-       */
-      Bond* bond(unsigned long int id1, unsigned long int id2);
-
-      /**
-       * @return The bond between the two supplied atom pointers if one exists,
-       * otherwise 0 is returned.
-       */
-      Bond* bond(const Atom*, const Atom*);
-
-      /**
-       * @return The residue at the supplied index.
-       * @note Replaces GetResidue.
-       */
-      Residue* residue(int index) const;
-
-      /**
-       * @return The residue at the supplied unique id.
-       */
-      Residue *residueById(unsigned long id) const;
-
-      /**
-       * @return The Cube at the supplied index.
-       * @note Replaces GetResidue.
-       */
-      Cube* cube(int index) const;
-
-      /**
-       * @return The Cube at the supplied unique id.
-       */
-      Cube *cubeById(unsigned long id) const;
-
-      /**
-       * @return The Mesh at the supplied index.
-       * @note Replaces GetResidue.
-       */
-      Mesh* mesh(int index) const;
-
-      /**
-       * @return The Mesh at the supplied unique id.
-       */
-      Mesh *meshById(unsigned long id) const;
-
-      /**
-       * @return QList of all atoms in the molecule.
-       */
-      QList<Atom *> atoms() const;
-
-      /**
-       * @return QList of all bonds in the molecule.
-       */
-      QList<Bond *> bonds() const;
-
-      /**
-       * @return QList of all cubes in the molecule.
-       */
-      QList<Cube *> cubes() const;
-
-      /**
-       * @return QList of all meshes in the molecule.
-       */
-      QList<Mesh *> meshes() const;
-
-      /**
-       * @return QList of all residues in the molecule.
-       */
-      QList<Residue *> residues() const;
-
-      /**
-       * @return QList of all rings in the molecule.
-       */
-      QList<Fragment *> rings();
-
-      /**
-       * Delete all elements of the molecule.
-       */
-      void clear();
-
-      /**
-       * Get access to an OpenBabel molcule, this is a copy of the internal data
-       * structure in OpenBabel form, you must call setOBMol in order to save
-       * any changes you make to this object.
-       */
-      OpenBabel::OBMol OBMol() const;
-
-      /**
-       * Copy as much data as possible from the supplied OpenBabel OBMol to the
-       * Avogadro Molecule object.
-       */
-      bool setOBMol(OpenBabel::OBMol *obmol);
-
-      /**
-       * Get access to the OpenBabel unit cell, if any
-       * @return the OBUnitCell or NULL if none exists
-       */
-      OpenBabel::OBUnitCell *OBUnitCell() const;
-
-      /**
-       * Copy as much data as possible from the supplied OpenBabel OBUnitCell
-       * to this Avogadro Molecule object.
-       * @return True if successful
-       */
-      bool setOBUnitCell(OpenBabel::OBUnitCell *obunitcell);
-
-      const Eigen::Vector3d & center() const;
-      const Eigen::Vector3d & normalVector() const;
-      double radius() const;
-      const Atom *farthestAtom() const;
-      void translate(const Eigen::Vector3d&) { ; }
-
-      Molecule& operator=(const Molecule& other);
-
-      Molecule& operator+=(const Molecule& other);
-
-    protected:
-      MoleculePrivate * const d_ptr;
-
-    private:
-      /* shared d_ptr with Primitive */
-      QString m_fileName;
-      std::vector<Eigen::Vector3d> *m_atomPos;
-      mutable bool m_invalidPartialCharges;
-      mutable bool m_invalidAromaticity;
-      Q_DECLARE_PRIVATE(Molecule)
-
-      void computeGeomInfo() const;
-
-    private Q_SLOTS:
-      /**
-       * Function which handles when a child primitive has been
-       * updated.  The response is to find the sender object
-       * and then emit a signal passing the sender as a parameter.
-       *
-       * @sa primitiveAdded
-       * @sa primitiveUpdated
-       * @sa primitiveRemoved
-       */
-      void updatePrimitive();
-
-      /**
-       * Slot that handles when an atom has been updated.
-       * @sa atomAdded
-       * @sa atomUpdated
-       * @sa atomRemoved
-       */
-      void updateAtom();
-
-      /**
-       * Slot that handles when a bond has been updated.
-       * @sa bondAdded
-       * @sa bondUpdated
-       * @sa bondRemoved
-       */
-      void updateBond();
-
-    Q_SIGNALS:
-      /**
-       * Emitted when a child primitive is added.
-       *
-       * @param primitive pointer to the primitive that was added
-       */
-      void primitiveAdded(Primitive *primitive);
-      /**
-       * Emitted when a child primitive is updated.
-       *
-       * @param primitive pointer to the primitive that was updated
-       */
-      void primitiveUpdated(Primitive *primitive);
-      /**
-       * Emitted when a child primitive is deleted.
-       *
-       * @param primitive pointer to the primitive that was removed.
-       */
-      void primitiveRemoved(Primitive *primitive);
-
-      /**
-       * Emitted when an Atom is added.
-       * @param Atom pointer to the Atom that was added.
-       */
-      void atomAdded(Atom *atom);
-
-      /**
-       * Emitted when an Atom is updated.
-       * @param Atom pointer to the Atom that was updated.
-       */
-      void atomUpdated(Atom *atom);
-
-      /**
-       * Emitted when an Atom is removed.
-       * @param Atom pointer to the Atom that was removed.
-       */
-      void atomRemoved(Atom *atom);
-
-      /**
-       * Emitted when a Bond is added.
-       * @param Bond pointer to the bond that was added.
-       */
-      void bondAdded(Bond *bond);
-
-      /**
-       * Emitted when a Bond is updated.
-       * @param Bond pointer to the bond that was updated.
-       */
-      void bondUpdated(Bond *bond);
-
-      /**
-       * Emitted when a Bond is removed.
-       * @param Bond pointer to the Bond that was removed.
-       */
-      void bondRemoved(Bond *bond);
+  Q_OBJECT
+
+  public:
+    /**
+     * Constructor.
+     *
+     * @param parent The object parent.
+     */
+    Molecule(QObject *parent=0);
+
+    /**
+     * Copy constructor.
+     * @param other Molecule to make a copy of.
+     */
+    Molecule(const Molecule &other);
+
+    /**
+     * Destructor.
+     */
+    virtual ~Molecule();
+
+    /**
+     * Call to trigger an update signal, causing the molecule to be redrawn.
+     */
+    void update();
+
+
+    /** @name Molecule parameters
+     * These methods set and get Molecule parameters.
+     * @{
+     */
+
+    /**
+     * Set the filename of the molecule.
+     */
+    void setFileName(const QString& name);
+
+    /**
+     * @return The full path filename of the molecule.
+     */
+    QString fileName() const;
+    /** @} */
+
+    /** @name Atom properties
+     * These functions are used to change and retrieve the properties of the
+     * Atom objects in the Molecule.
+     * @{
+     */
+
+    /**
+     * Create a new Atom object and return a pointer to it.
+     * @note Do not delete the object, use deleteAtom(Atom*).
+     */
+    Atom *newAtom();
+
+    /**
+     * Create a new Atom object with the specified id and return a pointer to
+     * it. Used when you need to recreate an Atom with the same unique id.
+     * @note Do not delete the object, use deleteAtom(unsigned long int id).
+     */
+    Atom *newAtom(unsigned long id);
+
+    /**
+     * Delete the supplied Atom.
+     */
+    void deleteAtom(Atom *atom);
+
+    /**
+     * Delete the Atom with the unique id specified.
+     */
+    void deleteAtom(unsigned long int id);
+
+    /**
+     * @return The Atom at the supplied index.
+     * @note Replaces GetAtom.
+     */
+    Atom * atom(int index);
+    const Atom * atom(int index) const;
+
+    /**
+     * @return The Atom at the supplied unqique id.
+     */
+    Atom *atomById(unsigned long id) const;
+
+    /**
+     * @return QList of all Atom objects in the Molecule.
+     */
+    QList<Atom *> atoms() const;
+
+    /**
+     * Set the Atom position.
+     * @param id Unique id of the Atom to set the position for.
+     * @param vec Position vector to set the Atom to.
+     */
+    void setAtomPos(unsigned long int id, const Eigen::Vector3d &vec);
+
+    /**
+     * Set the Atom position.
+     * @param id Unique id of the Atom to set the position for.
+     * @param vec Position vector to set the Atom to.
+     */
+    void setAtomPos(unsigned long int id, const Eigen::Vector3d *vec);
+
+    /**
+     * Get the position vector of the supplied Atom.
+     * @param id Unique id of the Atom.
+     * @return Position vector of the Atom.
+     */
+    const Eigen::Vector3d * atomPos(unsigned long int id) const;
+
+    /**
+     * @return The total number of Atom objects in the molecule.
+     */
+    unsigned int numAtoms() const;
+    /** @} */
+
+
+    /** @name Bond properties
+     * These functions are used to change and retrieve the properties of the
+     * Bond objects in the Molecule.
+     * @{
+     */
+
+    /**
+     * Create a new Bond object and return a pointer to it.
+     * @note Do not delete the object, use deleteBond(Bond*).
+     */
+    Bond *newBond();
+
+    /**
+     * Create a new Bond object with the specified id and return a pointer to
+     * it. Used when you need to recreate a Bond with the same unique id.
+     * @note Do not delete the object, use deleteBond(unsigned long int id).
+     */
+    Bond *newBond(unsigned long id);
+
+    /**
+     * Delete the supplied Bond.
+     */
+    void deleteBond(Bond *bond);
+
+    /**
+     * Delete the Bond with the unique id specified.
+     */
+    void deleteBond(unsigned long int id);
+
+    /**
+     * @return The Bond at the supplied index.
+     * @note Replaces GetBond.
+     */
+    Bond* bond(int index);
+    const Bond* bond(int index) const;
+
+    /**
+     * @return The Bond at the supplied unique id.
+     */
+    Bond *bondById(unsigned long id) const;
+
+    /**
+     * @return QList of all Bond objects in the Molecule.
+     */
+    QList<Bond *> bonds() const;
+
+    /**
+     * @return The total number of Bond objects in the Mmolecule.
+     */
+    unsigned int numBonds() const;
+    /** @} */
+
+    /** @name Residue properties
+     * These functions are used to change and retrieve the properties of the
+     * Residue objects in the Molecule.
+     * @{
+     */
+
+    /**
+     * Create a new Residue object and return a pointer to it.
+     * @note Do not delete the object, use deleteResidue(Residue *residue).
+     */
+    Residue *newResidue();
+
+    /**
+     * Create a new Residue object with the specified id and return a pointer to
+     * it. Used when you need to recreate a Residue with the same unique id.
+     * @note Do not delete the object, use deleteResidue(unsigned long int id).
+     */
+    Residue *newResidue(unsigned long id);
+
+    /**
+     * Delete the supplied residue.
+     */
+    void deleteResidue(Residue *residue);
+
+    /**
+     * Delete the residue with the unique id specified.
+     */
+    void deleteResidue(unsigned long int id);
+
+    /**
+     * @return The residue at the supplied index.
+     * @note Replaces GetResidue.
+     */
+    Residue* residue(int index);
+    const Residue* residue(int index) const;
+
+    /**
+     * @return The residue at the supplied unique id.
+     */
+    Residue *residueById(unsigned long id) const;
+
+    /**
+     * @return QList of all Residue objects in the Molecule.
+     */
+    QList<Residue *> residues() const;
+
+    /**
+     * @return The total number of Residue objects in the Molecule.
+     */
+    unsigned int numResidues() const;
+    /** @} */
+
+    /** @name Ring properties
+     * These functions are used to change and retrieve the properties of the
+     * Ring objects in the Molecule.
+     * @note These should probably be generalized to Fragments, but then a
+     * convenience function to return a list of just rings would be needed.
+     * @{
+     */
+
+    /**
+     * Create a new ring object and return a pointer to it.
+     * @note Do not delete the object, use deleteRing(Fragment *ring).
+     */
+    Fragment *newRing();
+
+    /**
+     * Create a new Ring object with the specified id and return a pointer to
+     * it. Used when you need to recreate a Ring with the same unique id.
+     * @note Do not delete the object, use deleteRing(unsigned long int id).
+     */
+    Fragment *newRing(unsigned long id);
+
+    /**
+     * Delete the supplied ring.
+     */
+    void deleteRing(Fragment *ring);
+
+    /**
+     * Delete the ring with the unique id specified.
+     */
+    void deleteRing(unsigned long int id);
+
+    /**
+     * @return QList of all rings in the Molecule.
+     */
+    QList<Fragment *> rings();
+
+    /**
+     * @return The total number of rings in the molecule.
+     */
+    unsigned int numRings() const;
+    /** @} */
+
+    /** @name Cube properties
+     * These functions are used to change and retrieve the properties of the
+     * Cube objects in the Molecule.
+     * @{
+     */
+
+    /**
+     * Create a new Cube object and return a pointer to it.
+     * @note Do not delete the object, use deleteCube(unsigned long int id).
+     */
+    Cube *newCube();
+
+    /**
+     * Create a new Cube object with the specified id and return a pointer to
+     * it. Used when you need to recreate a Cube with the same unique id.
+     * @note Do not delete the object, use deleteCube(unsigned long int id).
+     */
+    Cube *newCube(unsigned long id);
+
+    /**
+     * Delete the supplied Cube.
+     */
+    void deleteCube(Cube *cube);
+
+    /**
+     * Delete the Cube with the unique id specified.
+     */
+    void deleteCube(unsigned long int id);
+
+    /**
+     * @return The Cube at the supplied index.
+     */
+    Cube* cube(int index) const;
+
+    /**
+     * @return The Cube at the supplied unique id.
+     */
+    Cube *cubeById(unsigned long id) const;
+
+    /**
+     * @return QList of all cubes in the molecule.
+     */
+    QList<Cube *> cubes() const;
+
+    /**
+     * @return The total number of Cube objects in the Molecule.
+     */
+    unsigned int numCubes() const;
+    /** @} */
+
+    /** @name Mesh properties
+     * These functions are used to change and retrieve the properties of the
+     * Mesh objects in the Molecule.
+     * @{
+     */
+
+    /**
+     * Create a new Mesh object and return a pointer to it.
+     * @note Do not delete the object, use deleteMesh(unsigned long int id).
+     */
+    Mesh * newMesh();
+
+    /**
+     * Create a new Mesh object with the specified id and return a pointer to
+     * it. Used when you need to recreate a Mesh with the same unique id.
+     * @note Do not delete the object, use deleteMesh(unsigned long int id).
+     */
+    Mesh *newMesh(unsigned long id);
+
+    /**
+     * Delete the supplied Mesh.
+     */
+    void deleteMesh(Mesh *mesh);
+
+    /**
+     * Delete the Mesh with the unique id specified.
+     */
+    void deleteMesh(unsigned long int id);
+
+    /**
+     * @return The Mesh at the supplied index.
+     */
+    Mesh* mesh(int index) const;
+
+    /**
+     * @return The Mesh at the supplied unique id.
+     */
+    Mesh *meshById(unsigned long id) const;
+
+    /**
+     * @return QList of all Mesh objects in the Molecule.
+     */
+    QList<Mesh *> meshes() const;
+
+    /**
+     * @return The total number of meshes in the molecule.
+     */
+    unsigned int numMeshes() const;
+    /** @} */
+
+    /**
+     * Add hydrogens to the molecule.
+     * @param atom If supplied only add hydrogens to the specified atom.
+     */
+    void addHydrogens(Atom *atom = 0);
+
+    /**
+     * Delete hydrogens from the molecule.
+     * @param atom If supplied only delete hydrogens connected to the
+     * specified atom.
+     */
+    void deleteHydrogens(Atom *atom = 0);
+
+    /**
+     * Calculate the partial charges on each atom.
+     */
+    void calculatePartialCharges() const;
+
+    /**
+     * Calculate the aromaticity of the bonds.
+     */
+    void calculateAromaticity() const;
+
+    /**
+     * @return The bond between the two supplied atom ids if one exists,
+     * otherwise 0 is returned.
+     */
+    Bond* bond(unsigned long int id1, unsigned long int id2);
+
+    /**
+     * @return The bond between the two supplied atom pointers if one exists,
+     * otherwise 0 is returned.
+     */
+    Bond* bond(const Atom*, const Atom*);
+
+    /**
+     * Delete all elements of the molecule.
+     */
+    void clear();
+
+    /** @name OpenBabel translation functions
+     * These functions are used to exchange information with OpenBabel.
+     * @{
+     */
+
+    /**
+     * Get access to an OpenBabel::OBMol, this is a copy of the internal data
+     * structure in OpenBabel form, you must call setOBMol in order to save
+     * any changes you make to this object.
+     */
+    OpenBabel::OBMol OBMol() const;
+
+    /**
+     * Copy as much data as possible from the supplied OpenBabel::OBMol to the
+     * Avogadro Molecule object.
+     */
+    bool setOBMol(OpenBabel::OBMol *obmol);
+
+    /**
+     * Get access to the OpenBabel unit cell, if any
+     * @return the OBUnitCell or NULL if none exists
+     */
+    OpenBabel::OBUnitCell *OBUnitCell() const;
+
+    /**
+     * Copy as much data as possible from the supplied OpenBabel::OBUnitCell
+     * to this Avogadro Molecule object.
+     * @return True if successful
+     */
+    bool setOBUnitCell(OpenBabel::OBUnitCell *obunitcell);
+    /** @} */
+
+    /** @name Molecule geometry information and manipulation
+     * These functions can be used to retrieve several aspects of Molecule
+     * geometry and to manipulate some aspects.
+     * @{
+     */
+
+    /**
+     * @return The position of the center of the Molecule.
+     */
+    const Eigen::Vector3d & center() const;
+
+    /**
+     * @return The normal vector of the Molecule.
+     */
+    const Eigen::Vector3d & normalVector() const;
+
+    /**
+     * @return The radius of the Molecule.
+     */
+    double radius() const;
+
+    /**
+     * @return The Atom furthest away from the center of the Molecule.
+     */
+    const Atom *farthestAtom() const;
+
+    /**
+     * Translate the Molecule using the supplied vector.
+     * @note FIXME Not implemented.
+     */
+    void translate(const Eigen::Vector3d&) { ; }
+    /** @} */
+
+    /** @name Operators
+     * Overloaded operators.
+     * @{
+     */
+
+    /**
+     * Assignment operator used to set this Molecule equal to other.
+     */
+    Molecule& operator=(const Molecule& other);
+
+    /**
+     * Addition operator used to add elements from the other Molecule to this
+     * one.
+     */
+    Molecule& operator+=(const Molecule& other);
+    /** @} */
+
+  protected:
+    MoleculePrivate * const d_ptr;
+    QString m_fileName;
+    std::vector<Eigen::Vector3d> *m_atomPos;
+    mutable bool m_invalidPartialCharges;
+    mutable bool m_invalidAromaticity;
+    Q_DECLARE_PRIVATE(Molecule)
+
+    /**
+     * Compute all the geometry information for the Molecule. This allows
+     * several relatively expensive calculations to be cached by the Molecule
+     * instead of being recalculated every time the Molecule is drawn.
+     */
+    void computeGeomInfo() const;
+
+  private Q_SLOTS:
+    /**
+     * Function which handles when a child primitive has been
+     * updated.  The response is to find the sender object
+     * and then emit a signal passing the sender as a parameter.
+     * @sa primitiveAdded
+     * @sa primitiveUpdated
+     * @sa primitiveRemoved
+     */
+    void updatePrimitive();
+
+    /**
+     * Slot that handles when an atom has been updated.
+     * @sa atomAdded
+     * @sa atomUpdated
+     * @sa atomRemoved
+     */
+    void updateAtom();
+
+    /**
+     * Slot that handles when a bond has been updated.
+     * @sa bondAdded
+     * @sa bondUpdated
+     * @sa bondRemoved
+     */
+    void updateBond();
+
+  Q_SIGNALS:
+    /**
+     * Emitted when a child primitive is added.
+     * @param primitive pointer to the primitive that was added
+     */
+    void primitiveAdded(Primitive *primitive);
+
+    /**
+     * Emitted when a child primitive is updated.
+     * @param primitive pointer to the primitive that was updated
+     */
+    void primitiveUpdated(Primitive *primitive);
+
+    /**
+     * Emitted when a child primitive is deleted.
+     * @param primitive pointer to the primitive that was removed.
+     */
+    void primitiveRemoved(Primitive *primitive);
+
+    /**
+     * Emitted when an Atom is added.
+     * @param Atom pointer to the Atom that was added.
+     */
+    void atomAdded(Atom *atom);
+
+    /**
+     * Emitted when an Atom is updated.
+     * @param Atom pointer to the Atom that was updated.
+     */
+    void atomUpdated(Atom *atom);
+
+    /**
+     * Emitted when an Atom is removed.
+     * @param Atom pointer to the Atom that was removed.
+     */
+    void atomRemoved(Atom *atom);
+
+    /**
+     * Emitted when a Bond is added.
+     * @param Bond pointer to the bond that was added.
+     */
+    void bondAdded(Bond *bond);
+
+    /**
+     * Emitted when a Bond is updated.
+     * @param Bond pointer to the bond that was updated.
+     */
+    void bondUpdated(Bond *bond);
+
+    /**
+     * Emitted when a Bond is removed.
+     * @param Bond pointer to the Bond that was removed.
+     */
+    void bondRemoved(Bond *bond);
   };
 
 } // End namespace Avogadro

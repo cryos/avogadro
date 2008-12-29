@@ -19,20 +19,25 @@ void export_Molecule()
   Atom* (Molecule::*newAtom_ptr2)(unsigned long int) = &Molecule::newAtom;
   void (Molecule::*deleteAtom_ptr1)(Atom*) = &Molecule::deleteAtom;
   void (Molecule::*deleteAtom_ptr2)(unsigned long int) = &Molecule::deleteAtom;
+  void (Molecule::*setAtomPos_ptr1)(unsigned long int, const Eigen::Vector3d &) = &Molecule::setAtomPos;
   Bond* (Molecule::*newBond_ptr1)() = &Molecule::newBond;
   Bond* (Molecule::*newBond_ptr2)(unsigned long int) = &Molecule::newBond;
   void (Molecule::*deleteBond_ptr1)(Bond*) = &Molecule::deleteBond;
   void (Molecule::*deleteBond_ptr2)(unsigned long int) = &Molecule::deleteBond;
+  Cube* (Molecule::*newCube_ptr1)() = &Molecule::newCube;
   void (Molecule::*deleteCube_ptr1)(Cube*) = &Molecule::deleteCube;
   void (Molecule::*deleteCube_ptr2)(unsigned long int) = &Molecule::deleteCube;
+  Residue* (Molecule::*newResidue_ptr1)() = &Molecule::newResidue;
   void (Molecule::*deleteResidue_ptr1)(Residue*) = &Molecule::deleteResidue;
   void (Molecule::*deleteResidue_ptr2)(unsigned long int) = &Molecule::deleteResidue;
+  Fragment* (Molecule::*newRing_ptr1)() = &Molecule::newRing;
   void (Molecule::*deleteRing_ptr1)(Fragment*) = &Molecule::deleteRing;
   void (Molecule::*deleteRing_ptr2)(unsigned long int) = &Molecule::deleteRing;
   Atom* (Molecule::*atom_ptr)(int) = &Molecule::atom;
   Bond* (Molecule::*bond_ptr1)(int) = &Molecule::bond;
   Bond* (Molecule::*bond_ptr2)(unsigned long, unsigned long) = &Molecule::bond;
   Bond* (Molecule::*bond_ptr3)(const Atom*, const Atom*) = &Molecule::bond;
+  Residue* (Molecule::*residue_ptr)(int) = &Molecule::residue;
 
   class_<Avogadro::Molecule, bases<Avogadro::Primitive>, boost::noncopyable>("Molecule")
     // read/write properties
@@ -57,7 +62,7 @@ void export_Molecule()
     // real functions
     //
 
-    .def("setAtomPos", &Molecule::setAtomPos)
+    .def("setAtomPos", setAtomPos_ptr1)
     .def("atomPos", &Molecule::atomPos, return_value_policy<return_by_value>())
 
     // atom functions
@@ -77,17 +82,17 @@ void export_Molecule()
     .def("deleteBond", deleteBond_ptr1)
     .def("deleteBond", deleteBond_ptr2)
     // cube functions
-    .def("newCube", &Molecule::newCube, return_value_policy<reference_existing_object>())
+    .def("newCube", newCube_ptr1, return_value_policy<reference_existing_object>())
     .def("deleteCube", deleteCube_ptr1)
     .def("deleteCube", deleteCube_ptr2)
     // residue functions
-    .def("newResidue", &Molecule::newResidue, return_value_policy<reference_existing_object>())
-    .def("residue", &Molecule::residue, return_value_policy<reference_existing_object>())
+    .def("newResidue", newResidue_ptr1, return_value_policy<reference_existing_object>())
+    .def("residue", residue_ptr, return_value_policy<reference_existing_object>())
     .def("residueById", &Molecule::residueById, return_value_policy<reference_existing_object>())
     .def("deleteResidue", deleteResidue_ptr1)
     .def("deleteResidue", deleteResidue_ptr2)
     // ring functions
-    .def("newRing", &Molecule::newRing, return_value_policy<reference_existing_object>())
+    .def("newRing", newRing_ptr1, return_value_policy<reference_existing_object>())
     .def("deleteRing", deleteRing_ptr1)
     .def("deleteRing", deleteRing_ptr2)
     // general functions

@@ -23,6 +23,11 @@ include (CheckCXXCompilerFlag)
 include (MacroEnsureVersion)
 include (TestIfWeNeedFPermissive)
 
+# use mulithreaded dll runtime on windows when using MSVC
+if (MSVC)
+  set(CMAKE_CXX_FLAGS "/MD ${CMAKE_CXX_FLAGS}")
+endif(MSVC)
+
 ###########################################################
 # Here I am adding GCC magic from KDE. With these settings#
 # compiler issues are fixed and more warnings are issued. #
