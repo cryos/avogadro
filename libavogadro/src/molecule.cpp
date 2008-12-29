@@ -198,6 +198,11 @@ namespace Avogadro{
     }
   }
 
+  void Molecule::setAtomPos(unsigned long int id, const Eigen::Vector3d *vec)
+  {
+    if (vec) setAtomPos(id, *vec);
+  }
+
   const Eigen::Vector3d * Molecule::atomPos(unsigned long int id) const
   {
     QReadLocker lock(m_lock);
@@ -425,7 +430,19 @@ namespace Avogadro{
     }
   }
 
-  Residue *Molecule::residue(int index) const
+  Residue *Molecule::residue(int index)
+  {
+    Q_D(Molecule);
+    QReadLocker lock(m_lock);
+    if (index >= 0 && index < d->residueList.size()) {
+      return d->residueList[index];
+    }
+    else {
+      return 0;
+    }
+  }
+
+  const Residue *Molecule::residue(int index) const
   {
     Q_D(const Molecule);
     QReadLocker lock(m_lock);
@@ -1034,7 +1051,6 @@ namespace Avogadro{
     foreach(OpenBabel::OBRing *r, rings) {
       Fragment *ring = newRing();
       foreach(int index, r->_path) {
-	// FIXME: Is this an OB off-by-one index issue?
         ring->addAtom(atom(index-1)->id());
       }
     }
@@ -1059,7 +1075,7 @@ namespace Avogadro{
     if (obunitcell == NULL) {
       // delete it from our private obmol
       if (d->obmol)
-	d->obmol->DeleteData(OpenBabel::OBGenericDataType::UnitCell);
+        d->obmol->DeleteData(OpenBabel::OBGenericDataType::UnitCell);
     }
     return true;
   }

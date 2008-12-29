@@ -78,18 +78,22 @@ namespace Avogadro {
       return;
 
     Primitive *p = const_cast<Primitive *>(primitive);
+    Residue *residue = NULL;
     QString residueName; // this colors by residue name
 
     if (p->type() == Primitive::ResidueType) {
-      Residue *residue = static_cast<Residue*>(p);
+      residue = static_cast<Residue*>(p);
+      if (!residue)
+        return; // can't color this
       residueName = residue->name();
     } else if (p->type() == Primitive::AtomType) {
       Atom *atom = static_cast<Atom*>(p);
+      if (atom)
+        residue = atom->residue();
 
-      // do not perceive new residues
-      OpenBabel::OBResidue *residue = atom->OBAtom().GetResidue(false);
       // default is to color by element if no residue is specified
       std::vector<double> rgb = OpenBabel::etab.GetRGB( atom->atomicNumber() );
+
       if (!residue) {
         m_channels[0] = rgb[0];
         m_channels[1] = rgb[1];
@@ -97,7 +101,7 @@ namespace Avogadro {
         m_channels[3] = 1.0;
         return;
       }
-      residueName = residue->GetName().c_str();
+      residueName = residue->name();
       if (residueName.compare("UNK", Qt::CaseInsensitive) == 0) {
         m_channels[0] = rgb[0];
         m_channels[1] = rgb[1];
@@ -105,6 +109,7 @@ namespace Avogadro {
         m_channels[3] = 1.0;
         return;
       }
+
     } else // not a residue or atom
       return; // not something we can color
 
