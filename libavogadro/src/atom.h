@@ -41,7 +41,7 @@ namespace Avogadro {
    * @author Marcus D. Hanwell
    *
    * The Atom class is a Primitive subclass that provides an Atom object. All
-   * atoms must be owned by a Molecule. It should also be deleted by the
+   * atoms must be owned by a Molecule. It should also be removed by the
    * Molecule that owns it.
    */
   class Bond;
@@ -91,18 +91,18 @@ namespace Avogadro {
     void addBond(Bond* bond);
 
     /**
-     * Deletes the reference of the bond to the atom.
+     * Removes the reference of the bond to the atom.
      */
     void removeBond(Bond* bond);
 
     /**
-     * Deletes the reference of the bond to the atom.
+     * Removes the reference of the bond to the atom.
      */
     void removeBond(unsigned long int bond);
 
     /**
      * Set the partial charge of the atom.
-     * @note This is not calculated at the moment!
+     * @note This is not calculated by the atom, instead call Molecule::calculatePartialCharges()
      */
     void setPartialCharge(double charge) const
     {

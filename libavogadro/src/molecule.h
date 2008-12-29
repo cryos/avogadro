@@ -122,7 +122,7 @@ namespace Avogadro {
     Atom *addAtom(unsigned long id);
 
     /**
-     * Delete the supplied Atom.
+     * Remove the supplied Atom.
      */
     void removeAtom(Atom *atom);
 
@@ -196,12 +196,12 @@ namespace Avogadro {
     Bond *addBond(unsigned long id);
 
     /**
-     * Delete the supplied Bond.
+     * Remove the supplied Bond.
      */
     void removeBond(Bond *bond);
 
     /**
-     * Delete the Bond with the unique id specified.
+     * Remove the Bond with the unique id specified.
      */
     void removeBond(unsigned long int id);
 
@@ -248,12 +248,12 @@ namespace Avogadro {
     Residue *addResidue(unsigned long id);
 
     /**
-     * Delete the supplied residue.
+     * Remove the supplied residue.
      */
     void removeResidue(Residue *residue);
 
     /**
-     * Delete the residue with the unique id specified.
+     * Remove the residue with the unique id specified.
      */
     void removeResidue(unsigned long int id);
 
@@ -302,12 +302,12 @@ namespace Avogadro {
     Fragment *addRing(unsigned long id);
 
     /**
-     * Delete the supplied ring.
+     * Remove the supplied ring.
      */
     void removeRing(Fragment *ring);
 
     /**
-     * Delete the ring with the unique id specified.
+     * Remove the ring with the unique id specified.
      */
     void removeRing(unsigned long int id);
 
@@ -342,12 +342,12 @@ namespace Avogadro {
     Cube *addCube(unsigned long id);
 
     /**
-     * Delete the supplied Cube.
+     * Remove the supplied Cube.
      */
     void removeCube(Cube *cube);
 
     /**
-     * Delete the Cube with the unique id specified.
+     * Remove the Cube with the unique id specified.
      */
     void removeCube(unsigned long int id);
 
@@ -392,12 +392,12 @@ namespace Avogadro {
     Mesh *addMesh(unsigned long id);
 
     /**
-     * Delete the supplied Mesh.
+     * Remove the supplied Mesh.
      */
     void removeMesh(Mesh *mesh);
 
     /**
-     * Delete the Mesh with the unique id specified.
+     * Remove the Mesh with the unique id specified.
      */
     void removeMesh(unsigned long int id);
 
@@ -429,8 +429,8 @@ namespace Avogadro {
     void addHydrogens(Atom *atom = 0);
 
     /**
-     * Delete hydrogens from the molecule.
-     * @param atom If supplied only delete hydrogens connected to the
+     * Remove all hydrogens from the molecule.
+     * @param atom If supplied only remove hydrogens connected to the
      * specified atom.
      */
     void removeHydrogens(Atom *atom = 0);
@@ -458,7 +458,7 @@ namespace Avogadro {
     Bond* bond(const Atom*, const Atom*);
 
     /**
-     * Delete all elements of the molecule.
+     * Remove all elements of the molecule.
      */
     void clear();
 
@@ -600,7 +600,7 @@ namespace Avogadro {
     void primitiveUpdated(Primitive *primitive);
 
     /**
-     * Emitted when a child primitive is deleted.
+     * Emitted when a child primitive is removed.
      * @param primitive pointer to the primitive that was removed.
      */
     void primitiveRemoved(Primitive *primitive);
