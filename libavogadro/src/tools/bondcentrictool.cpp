@@ -29,8 +29,6 @@
 #include "bondcentrictool.h"
 #include "quaternion.h"
 
-#include <iostream>
-
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/color.h>
@@ -43,10 +41,14 @@
 
 #include <QDebug>
 
-using namespace std;
-using namespace Eigen;
+using Eigen::Vector3d;
 
 namespace Avogadro {
+
+  bool isNan(double x)
+  {
+    return x != x;
+  }
 
   // ############################ BondCentricTool ################################
 
@@ -470,7 +472,7 @@ namespace Avogadro {
               rotationVector, Vector3d(0, 0, 0),
               *m_referencePoint);
 
-          Eigen::Vector3d *reference = calculateSnapTo(m_selectedBond,
+          Vector3d *reference = calculateSnapTo(m_selectedBond,
               m_referencePoint, m_snapToAngle);
           if (reference && m_snapToEnabled)
           {
@@ -532,7 +534,7 @@ namespace Avogadro {
               double testAngle2 = acos(tester.dot(currMouseVector) /
                   currMouseVector.squaredNorm());
 
-              if(testAngle1 > testAngle2 || OpenBabel::IsNan((double)testAngle2)) {
+              if(testAngle1 > testAngle2 || isNan((double)testAngle2)) {
                 mouseAngle = -mouseAngle;
               }
 
@@ -602,7 +604,7 @@ namespace Avogadro {
               double testAngle2 = acos(tester.dot(currMouseVector) /
                   currMouseVector.squaredNorm());
 
-              if(testAngle1 > testAngle2 || OpenBabel::IsNan((double)testAngle2)) {
+              if(testAngle1 > testAngle2 || isNan((double)testAngle2)) {
                 mouseAngle = -mouseAngle;
               }
 
@@ -697,7 +699,7 @@ namespace Avogadro {
               double testAngle2 = acos(tester.dot(currMouseVector) /
                   currMouseVector.squaredNorm());
 
-              if(testAngle1 > testAngle2 || OpenBabel::IsNan((double)testAngle2)) {
+              if(testAngle1 > testAngle2 || isNan((double)testAngle2)) {
                 mouseAngle = -mouseAngle;
               }
 
@@ -861,13 +863,13 @@ namespace Avogadro {
 
   // ##########  drawAngleSector  ##########
 
-  void BondCentricTool::drawAngleSector(GLWidget *widget, Eigen::Vector3d origin,
-      Eigen::Vector3d direction1, Eigen::Vector3d direction2,
+  void BondCentricTool::drawAngleSector(GLWidget *widget, Vector3d origin,
+      Vector3d direction1, Vector3d direction2,
       bool alternateAngle)
   {
     // Get vectors representing the lines from centre to left and centre to right.
-    Eigen::Vector3d u = direction1 - origin;
-    Eigen::Vector3d v = direction2 - origin;
+    Vector3d u = direction1 - origin;
+    Vector3d v = direction2 - origin;
 
     // Calculate the length of the vectors (half the length of the shortest vector.)
     double radius = qMin(u.norm(), v.norm()) * 0.5;
@@ -891,15 +893,15 @@ namespace Avogadro {
     }
 
     // Vector perpindicular to both u and v.
-    Eigen::Vector3d n = u.cross(v);
+    Vector3d n = u.cross(v);
 
-    Eigen::Vector3d x = Vector3d(1, 0, 0);
-    Eigen::Vector3d y = Vector3d(0, 1, 0);
+    Vector3d x = Vector3d(1, 0, 0);
+    Vector3d y = Vector3d(0, 1, 0);
 
     if (n.norm() < 1e-16)
     {
-      Eigen::Vector3d A = u.cross(x);
-      Eigen::Vector3d B = u.cross(y);
+      Vector3d A = u.cross(x);
+      Vector3d B = u.cross(y);
 
       n = A.norm() >= B.norm() ? A : B;
     }
@@ -1008,22 +1010,22 @@ namespace Avogadro {
       }
     }
 
-    Eigen::Vector3d BCVec = *C->pos() - *B->pos();
-    Eigen::Vector3d BAVec = *A->pos() - *B->pos();
-    Eigen::Vector3d CDVec = *D->pos() - *C->pos();
+    Vector3d BCVec = *C->pos() - *B->pos();
+    Vector3d BAVec = *A->pos() - *B->pos();
+    Vector3d CDVec = *D->pos() - *C->pos();
 
-    Eigen::Vector3d tmp = BAVec.cross(BCVec);
+    Vector3d tmp = BAVec.cross(BCVec);
     BAVec = BCVec.cross(tmp);
     tmp = CDVec.cross(BCVec);
     CDVec = BCVec.cross(tmp);
 
-    Eigen::Vector3d mid = *B->pos() + (BCVec.normalized() * (BCVec.norm() / 2));
+    Vector3d mid = *B->pos() + (BCVec.normalized() * (BCVec.norm() / 2));
 
     BAVec = BAVec.normalized() * 1.5;
     CDVec = CDVec.normalized() * 1.5;
 
-    Eigen::Vector3d a = mid + BAVec;
-    Eigen::Vector3d d = mid + CDVec;
+    Vector3d a = mid + BAVec;
+    Vector3d d = mid + CDVec;
 
     //TODO: radius = qMin(BAVec.norm(), CDVec.norm()) * 0.5;
     // if (BAVec.norm() == CDVec.norm())
@@ -1244,22 +1246,22 @@ namespace Avogadro {
 
   // ##########  calcualteSnapTo  ##########
 
-  Eigen::Vector3d* BondCentricTool::calculateSnapTo(Bond *bond,
-      Eigen::Vector3d *referencePoint, double maximumAngle)
+  Vector3d* BondCentricTool::calculateSnapTo(Bond *bond,
+      Vector3d *referencePoint, double maximumAngle)
   {
     if(!referencePoint || !bond ) {
       return NULL;
     }
 
     double angle = -1;
-    Eigen::Vector3d *smallestRef = NULL;
+    Vector3d *smallestRef = NULL;
     Atom *b = bond->beginAtom();
     Atom *e = bond->endAtom();
     Atom *t = 0;
 
-    Eigen::Vector3d begin = *b->pos();
-    Eigen::Vector3d end = *e->pos();
-    Eigen::Vector3d target;
+    Vector3d begin = *b->pos();
+    Vector3d end = *e->pos();
+    Vector3d target;
 
     QList<unsigned long> neighbors = b->neighbors();
     foreach (unsigned long a, neighbors) {
@@ -1269,16 +1271,16 @@ namespace Avogadro {
 
       target = *t->pos();
 
-      Eigen::Vector3d u = end - begin;
-      Eigen::Vector3d v = target - begin;
+      Vector3d u = end - begin;
+      Vector3d v = target - begin;
       double tAngle = acos(u.dot(v) / (v.norm() * u.norm())) * 180.0 / M_PI;
 
       if(!(tAngle > 1 && tAngle < 179)) {
         continue;
       }
 
-      Eigen::Vector3d orth1 = u.cross(v);
-      Eigen::Vector3d orth2 = referencePoint->cross(u);
+      Vector3d orth1 = u.cross(v);
+      Vector3d orth2 = referencePoint->cross(u);
 
       tAngle = acos(orth1.dot(orth2) / (orth1.norm() * orth2.norm())) * 180.0 / M_PI;
       tAngle = tAngle > 90 ? 180 - tAngle : tAngle;
@@ -1302,16 +1304,16 @@ namespace Avogadro {
 
       target = *t->pos();
 
-      Eigen::Vector3d u = begin - end;
-      Eigen::Vector3d v = target - end;
+      Vector3d u = begin - end;
+      Vector3d v = target - end;
       double tAngle = acos(u.dot(v) / (v.norm() * u.norm())) * 180.0 / M_PI;
 
       if(!(tAngle > 1 && tAngle < 179)) {
         continue;
       }
 
-      Eigen::Vector3d orth1 = u.cross(v);
-      Eigen::Vector3d orth2 = referencePoint->cross(u);
+      Vector3d orth1 = u.cross(v);
+      Vector3d orth2 = referencePoint->cross(u);
 
       tAngle = acos(orth1.dot(orth2) / (orth1.norm() * orth2.norm())) * 180.0 / M_PI;
       tAngle = tAngle > 90 ? 180 - tAngle : tAngle;
@@ -1340,7 +1342,7 @@ namespace Avogadro {
   // ##########  drawManipulationRectangle  ##########
 
   void BondCentricTool::drawManipulationRectangle(GLWidget *widget, Bond *bond,
-      Eigen::Vector3d *referencePoint, double rgb[3])
+      Vector3d *referencePoint, double rgb[3])
   {
     if (!bond || !widget || !referencePoint) {
       return;
@@ -1349,22 +1351,22 @@ namespace Avogadro {
     Atom *leftAtom = bond->beginAtom();
     Atom *rightAtom = bond->endAtom();
 
-    Eigen::Vector3d left = *leftAtom->pos();
-    Eigen::Vector3d right = *rightAtom->pos();
+    Vector3d left = *leftAtom->pos();
+    Vector3d right = *rightAtom->pos();
 
-    Eigen::Vector3d leftToRight = right - left;
+    Vector3d leftToRight = right - left;
 
-    Eigen::Vector3d vec = leftToRight.cross(*referencePoint);
-    Eigen::Vector3d planeVec = vec.cross(leftToRight);
+    Vector3d vec = leftToRight.cross(*referencePoint);
+    Vector3d planeVec = vec.cross(leftToRight);
 
     double length = 1;
 
     planeVec = length * (planeVec / planeVec.norm());
 
-    Eigen::Vector3d topLeft = widget->camera()->modelview() * (left + planeVec);
-    Eigen::Vector3d topRight = widget->camera()->modelview() * (right + planeVec);
-    Eigen::Vector3d botRight = widget->camera()->modelview() * (right - planeVec);
-    Eigen::Vector3d botLeft = widget->camera()->modelview() * (left - planeVec);
+    Vector3d topLeft = widget->camera()->modelview() * (left + planeVec);
+    Vector3d topRight = widget->camera()->modelview() * (right + planeVec);
+    Vector3d botRight = widget->camera()->modelview() * (right - planeVec);
+    Vector3d botLeft = widget->camera()->modelview() * (left - planeVec);
 
     float alpha = 0.4;
     double lineWidth = 1.5;
@@ -1396,20 +1398,20 @@ namespace Avogadro {
       rightAtom = bond->beginAtom();
     }
 
-    Eigen::Vector3d left = *leftAtom->pos();
-    Eigen::Vector3d right = *rightAtom->pos();
+    Vector3d left = *leftAtom->pos();
+    Vector3d right = *rightAtom->pos();
 
-    Eigen::Vector3d leftToRight = right - left;
+    Vector3d leftToRight = right - left;
 
-    Eigen::Vector3d A = left + (leftToRight.normalized() * (leftToRight.norm() / 2));
+    Vector3d A = left + (leftToRight.normalized() * (leftToRight.norm() / 2));
 
-    Eigen::Vector3d rightToAtom = *atom->pos() - *rightAtom->pos();
+    Vector3d rightToAtom = *atom->pos() - *rightAtom->pos();
 
-    Eigen::Vector3d B = right + rightToAtom.dot(leftToRight) / leftToRight.norm() *
+    Vector3d B = right + rightToAtom.dot(leftToRight) / leftToRight.norm() *
       leftToRight.normalized();
 
-    Eigen::Vector3d C;
-    Eigen::Vector3d D;
+    Vector3d C;
+    Vector3d D;
 
     // Clicked atom is in front of the middle of the bond.
     if ((B-left).norm() < (A-left).norm()) {
@@ -1443,10 +1445,10 @@ namespace Avogadro {
       C = D + ((C-D).normalized() * minWidth);
     }
 
-    Eigen::Vector3d topLeft = widget->camera()->modelview() * D;
-    Eigen::Vector3d topRight = widget->camera()->modelview() * C;
-    Eigen::Vector3d botRight = widget->camera()->modelview() * B;
-    Eigen::Vector3d botLeft = widget->camera()->modelview() * A;
+    Vector3d topLeft = widget->camera()->modelview() * D;
+    Vector3d topRight = widget->camera()->modelview() * C;
+    Vector3d botRight = widget->camera()->modelview() * B;
+    Vector3d botLeft = widget->camera()->modelview() * A;
 
     float alpha = 0.4;
     double lineWidth = 1.5;
@@ -1489,7 +1491,7 @@ namespace Avogadro {
 
   // ##########  drawSphere  ##########
 
-  void BondCentricTool::drawSphere(GLWidget *widget, const Eigen::Vector3d &position,
+  void BondCentricTool::drawSphere(GLWidget *widget, const Vector3d &position,
       double radius, float alpha )
   {
     glEnable(GL_BLEND);
@@ -1500,9 +1502,9 @@ namespace Avogadro {
 
   // ##########  performRotation  ##########
 
-  Eigen::Vector3d BondCentricTool::performRotation(double angle,
-      Eigen::Vector3d rotationVector, Eigen::Vector3d centerVector,
-      Eigen::Vector3d positionVector)
+  Vector3d BondCentricTool::performRotation(double angle,
+      Vector3d rotationVector, Vector3d centerVector,
+      Vector3d positionVector)
   {
     Quaternion qLeft = Quaternion::createRotationLeftHalf(angle, rotationVector);
     Quaternion qRight = qLeft.multiplicitiveInverse();
@@ -1533,7 +1535,7 @@ namespace Avogadro {
       return;
     }
 
-    Eigen::Vector3d *reference = calculateSnapTo(m_selectedBond,
+    Vector3d *reference = calculateSnapTo(m_selectedBond,
         m_referencePoint, m_snapToAngle);
     if (reference && m_snapToEnabled)
     {
@@ -1564,7 +1566,7 @@ namespace Avogadro {
       return;
     }
 
-    Eigen::Vector3d *reference = calculateSnapTo(m_selectedBond, m_referencePoint, m_snapToAngle);
+    Vector3d *reference = calculateSnapTo(m_selectedBond, m_referencePoint, m_snapToAngle);
     if (reference && m_snapToEnabled)
     {
       m_snapped = true;
@@ -1662,7 +1664,7 @@ namespace Avogadro {
   // ##########  Constructor  ##########
 
   BondCentricMoveCommand::BondCentricMoveCommand(Molecule *molecule,
-      Atom *atom, Eigen::Vector3d pos,
+      Atom *atom, Vector3d pos,
       QUndoCommand *parent)
     : QUndoCommand(parent), m_molecule(0)
   {

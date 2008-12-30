@@ -38,11 +38,7 @@
 
 #include <avogadro/molecule.h>
 
-#include <openbabel/mol.h>
-
 #include <QGLWidget>
-#include <QObject>
-#include <QStringList>
 #include <QImage>
 #include <QAction>
 #include <QUndoCommand>
