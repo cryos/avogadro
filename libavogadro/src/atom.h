@@ -124,6 +124,13 @@ namespace Avogadro {
     QList<unsigned long int> neighbors() const;
 
     /**
+     * Use this function to get the bond between this Atom and another.
+     * @param other The other Atom to test for bonding.
+     * @return Pointer to the bond between the two atoms, or 0.
+     */
+    Bond * bond(const Atom *other) const;
+
+    /**
      * The valence of the atom. FIXME - don't think this will cut it...
      */
     double valence() const { return static_cast<double>(m_bonds.size()); }
