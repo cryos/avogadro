@@ -31,7 +31,6 @@
 
 #include <iostream>
 
-#include <avogadro/navigate.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/color.h>
@@ -618,63 +617,10 @@ namespace Avogadro {
             }
           }
         }
-        else {
-          // rotation around the center of the molecule
-          Navigate::rotate(widget, widget->center(), deltaDragging.x(), deltaDragging.y());
-        }
       }
-#ifdef Q_WS_MAC
-    // On the Mac, either use a three-button mouse
-    // or hold down the Shift key
-      else if ((event->buttons() & Qt::MidButton) || (event->buttons() &
-            Qt::LeftButton && event->modifiers() & Qt::ShiftModifier))
-#else
-      else if (event->buttons() & Qt::MidButton)
-#endif
-      {
-        if (m_clickedAtom)
-        {
-          // Perform the rotation
-          Navigate::tilt(widget, *m_clickedAtom->pos(), deltaDragging.x());
-
-          // Perform the zoom toward the center of a clicked atom
-          Navigate::zoom(widget, *m_clickedAtom->pos(), deltaDragging.y());
-        }
-        else if (m_clickedBond)
-        {
-          Atom *begin = molecule->atomById(m_clickedBond->beginAtomId());
-          Atom *end = molecule->atomById(m_clickedBond->endAtomId());
-
-          Vector3d btoe = *end->pos() - *begin->pos();
-          double newLen = btoe.norm() / 2;
-          btoe = btoe / btoe.norm();
-
-          Vector3d mid = *begin->pos() + btoe * newLen;
-
-          // Perform the rotation
-          Navigate::tilt(widget, mid, deltaDragging.x());
-
-          // Perform the zoom toward the centre of a clicked bond
-          Navigate::zoom(widget, mid, deltaDragging.y());
-        }
-        else
-        {
-          // Perform the rotation
-          Navigate::tilt(widget, widget->center(), deltaDragging.x());
-
-          // Perform the zoom toward molecule center
-          Navigate::zoom(widget, widget->center(), deltaDragging.y());
-        }
-      }
-#ifdef Q_WS_MAC
-    // On the Mac, either use a three-button mouse
-    // or hold down the Command key (ControlModifier in Qt notation)
       else if ((event->buttons() & Qt::RightButton) ||
           (event->buttons() & Qt::LeftButton &&
-           (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)))
-#else
-      else if (event->buttons() & Qt::RightButton)
-#endif
+           event->modifiers() == Qt::ControlModifier))
       {
         if (isAtomInBond(m_clickedAtom, m_selectedBond))
         {
@@ -765,10 +711,6 @@ namespace Avogadro {
               }
             }
           }
-        }
-        else {
-          // Translate the molecule following mouse movement.
-          Navigate::translate(widget, widget->center(), m_lastDraggingPosition, event->pos());
         }
       }
 
