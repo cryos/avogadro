@@ -717,7 +717,7 @@ namespace Avogadro {
       }
 
     m_lastDraggingPosition = event->pos();
-    widget->update();
+    m_molecule->update();
 
     return 0;
   }
