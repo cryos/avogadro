@@ -4,7 +4,7 @@
   Copyright (C) 2007 by Shahzad Ali
   Copyright (C) 2007 by Ross Braithwaite
   Copyright (C) 2007 by James Bunt
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007,2008 by Marcus D. Hanwell
   Copyright (C) 2006,2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
@@ -32,14 +32,12 @@
 #include <iostream>
 
 #include <avogadro/navigate.h>
-#include <avogadro/primitive.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
 #include <avogadro/toolgroup.h>
-
-#include <openbabel/obiter.h>
-#include <openbabel/mol.h>
 
 #include <QtPlugin>
 #include <QString>
@@ -47,7 +45,6 @@
 #include <QDebug>
 
 using namespace std;
-using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
@@ -181,9 +178,10 @@ namespace Avogadro {
 
   // ##########  mousePress  ##########
 
-  QUndoCommand* BondCentricTool::mousePress(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* BondCentricTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
     m_undo = 0;
+    event->accept();
     Molecule *molecule = widget->molecule();
 
     m_lastDraggingPosition = event->pos();
@@ -237,14 +235,14 @@ namespace Avogadro {
           // jitter, saving it now prevents this.
 
           Atom *otherAtom;
-          if (m_clickedAtom == molecule->getAtomById(m_selectedBond->beginAtomId()))
-            otherAtom = molecule->getAtomById(m_selectedBond->endAtomId());
+          if (m_clickedAtom == molecule->atomById(m_selectedBond->beginAtomId()))
+            otherAtom = molecule->atomById(m_selectedBond->endAtomId());
           else
-            otherAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
+            otherAtom = molecule->atomById(m_selectedBond->beginAtomId());
 
-          Vector3d centerProj = widget->camera()->project(otherAtom->pos());
+          Vector3d centerProj = widget->camera()->project(*otherAtom->pos());
           centerProj -= Vector3d(0,0,centerProj.z());
-          Vector3d clickedProj = widget->camera()->project(m_clickedAtom->pos());
+          Vector3d clickedProj = widget->camera()->project(*m_clickedAtom->pos());
           clickedProj -= Vector3d(0,0,clickedProj.z());
 
           if ((clickedProj - centerProj).norm() == 0)
@@ -267,8 +265,8 @@ namespace Avogadro {
         Atom *dihedralRotCen = NULL;
         Bond *skeleBond = NULL;
 
-        Atom *beginAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
-        Atom *endAtom = molecule->getAtomById(m_selectedBond->endAtomId());
+        Atom *beginAtom = molecule->atomById(m_selectedBond->beginAtomId());
+        Atom *endAtom = molecule->atomById(m_selectedBond->endAtomId());
 
         // Check which atom in the selected bond the atom being manipulated will
         // be rotated around to change its dihedral angle.
@@ -308,9 +306,9 @@ namespace Avogadro {
           // calculation. If the vector is calculated every mouse movement it causes
           // the molecule to jitter, saving it now prevents this.
 
-          Vector3d centerProj = widget->camera()->project(dihedralRotCen->pos());
+          Vector3d centerProj = widget->camera()->project(*dihedralRotCen->pos());
           centerProj -= Vector3d(0,0,centerProj.z());
-          Vector3d clickedProj = widget->camera()->project(m_clickedAtom->pos());
+          Vector3d clickedProj = widget->camera()->project(*m_clickedAtom->pos());
           clickedProj -= Vector3d(0,0,clickedProj.z());
 
           if ((clickedProj - centerProj).norm() == 0)
@@ -348,11 +346,11 @@ namespace Avogadro {
 
           m_snapped = false;
 
-          Atom *leftAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
-          Atom *rightAtom = molecule->getAtomById(m_selectedBond->endAtomId());
+          Atom *leftAtom = molecule->atomById(m_selectedBond->beginAtomId());
+          Atom *rightAtom = molecule->atomById(m_selectedBond->endAtomId());
 
-          Vector3d left = leftAtom->pos();
-          Vector3d right = rightAtom->pos();
+          Vector3d left = *leftAtom->pos();
+          Vector3d right = *rightAtom->pos();
           Vector3d leftToRight = right - left;
 
           Vector3d x = Vector3d(1, 0, 0);
@@ -386,8 +384,9 @@ namespace Avogadro {
 
   // ##########  mouseRelease  ##########
 
-  QUndoCommand* BondCentricTool::mouseRelease(GLWidget *widget, const QMouseEvent*)
+  QUndoCommand* BondCentricTool::mouseReleaseEvent(GLWidget *widget, QMouseEvent *event)
   {
+    event->accept();
     delete m_directionVector;
     m_directionVector = NULL;
 
@@ -422,11 +421,12 @@ namespace Avogadro {
 
   // ##########  mouseMove  ##########
 
-  QUndoCommand* BondCentricTool::mouseMove(GLWidget *widget, const QMouseEvent *event)
+  QUndoCommand* BondCentricTool::mouseMoveEvent(GLWidget *widget, QMouseEvent *event)
   {
     if (!m_molecule) {
       return 0;
     }
+    event->accept();
 
     Molecule *molecule = widget->molecule();
 
@@ -447,14 +447,14 @@ namespace Avogadro {
       {
         if (m_clickedBond && m_selectedBond && m_referencePoint)
         {
-          Atom *beginAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
-          Atom *endAtom = molecule->getAtomById(m_selectedBond->endAtomId());
+          Atom *beginAtom = molecule->atomById(m_selectedBond->beginAtomId());
+          Atom *endAtom = molecule->atomById(m_selectedBond->endAtomId());
 
-          Vector3d rotationVector = endAtom->pos() - beginAtom->pos();
+          Vector3d rotationVector = *endAtom->pos() - *beginAtom->pos();
           rotationVector = rotationVector / rotationVector.norm();
 
-          Vector3d begin = widget->camera()->project(beginAtom->pos());
-          Vector3d end = widget->camera()->project(endAtom->pos());
+          Vector3d begin = widget->camera()->project(*beginAtom->pos());
+          Vector3d end = widget->camera()->project(*endAtom->pos());
 
           Vector3d zAxis = Vector3d(0, 0, 1);
           Vector3d beginToEnd = end - begin;
@@ -492,13 +492,13 @@ namespace Avogadro {
           //Do atom rotation.
           Atom *otherAtom;
 
-          if (m_clickedAtom == molecule->getAtomById(m_selectedBond->beginAtomId()))
-            otherAtom = molecule->getAtomById(m_selectedBond->endAtomId());
+          if (m_clickedAtom == molecule->atomById(m_selectedBond->beginAtomId()))
+            otherAtom = molecule->atomById(m_selectedBond->endAtomId());
           else
-            otherAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
+            otherAtom = molecule->atomById(m_selectedBond->beginAtomId());
 
-          Vector3d center = otherAtom->pos();
-          Vector3d clicked = m_clickedAtom->pos();
+          Vector3d center = *otherAtom->pos();
+          Vector3d clicked = *m_clickedAtom->pos();
 
           Vector3d centerProj = widget->camera()->project(center);
           centerProj -= Vector3d(0,0,centerProj.z());
@@ -517,7 +517,7 @@ namespace Avogadro {
           {
             currMouseVector = currMouseVector.normalized();
             double mouseAngle = acos(m_directionVector->dot(currMouseVector) /
-                currMouseVector.norm2());
+                currMouseVector.squaredNorm());
 
             if(mouseAngle > 0)
             {
@@ -526,12 +526,12 @@ namespace Avogadro {
               tester = performRotation(mouseAngle, rotationVector, Vector3d(0, 0, 0),
                   *m_directionVector);
               double testAngle1 = acos(tester.dot(currMouseVector) /
-                  currMouseVector.norm2());
+                  currMouseVector.squaredNorm());
 
               tester = performRotation(-mouseAngle, rotationVector, Vector3d(0, 0, 0),
                   *m_directionVector);
               double testAngle2 = acos(tester.dot(currMouseVector) /
-                  currMouseVector.norm2());
+                  currMouseVector.squaredNorm());
 
               if(testAngle1 > testAngle2 || OpenBabel::IsNan((double)testAngle2)) {
                 mouseAngle = -mouseAngle;
@@ -559,22 +559,22 @@ namespace Avogadro {
         {
           // Do multiple dihedral rotation (twising of the bond).
 
-          Atom *beginAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
-          Atom *endAtom = molecule->getAtomById(m_selectedBond->endAtomId());
+          Atom *beginAtom = molecule->atomById(m_selectedBond->beginAtomId());
+          Atom *endAtom = molecule->atomById(m_selectedBond->endAtomId());
 
           Vector3d center;
           Vector3d other;
           if (molecule->bond(m_clickedAtom, beginAtom))
           {
-            center = beginAtom->pos();
-            other = endAtom->pos();
+            center = *beginAtom->pos();
+            other = *endAtom->pos();
           }
           else {
-            center = endAtom->pos();
-            other = beginAtom->pos();
+            center = *endAtom->pos();
+            other = *beginAtom->pos();
           }
 
-          Vector3d clicked = m_clickedAtom->pos();
+          Vector3d clicked = *m_clickedAtom->pos();
 
           Vector3d axis = Vector3d(0, 0, ((widget->camera()->modelview() * other).z() >=
                 (widget->camera()->modelview() * center).z() ? -1 : 1));
@@ -589,7 +589,7 @@ namespace Avogadro {
           {
             currMouseVector = currMouseVector.normalized();
             double mouseAngle = acos(m_directionVector->dot(currMouseVector) /
-                currMouseVector.norm2());
+                currMouseVector.squaredNorm());
 
             if(mouseAngle > 0)
             {
@@ -597,11 +597,11 @@ namespace Avogadro {
 
               tester = performRotation(mouseAngle, axis, Vector3d(0, 0, 0), *m_directionVector);
               double testAngle1 = acos(tester.dot(currMouseVector) /
-                  currMouseVector.norm2());
+                  currMouseVector.squaredNorm());
 
               tester = performRotation(-mouseAngle, axis, Vector3d(0, 0, 0), *m_directionVector);
               double testAngle2 = acos(tester.dot(currMouseVector) /
-                  currMouseVector.norm2());
+                  currMouseVector.squaredNorm());
 
               if(testAngle1 > testAngle2 || OpenBabel::IsNan((double)testAngle2)) {
                 mouseAngle = -mouseAngle;
@@ -635,21 +635,21 @@ namespace Avogadro {
         if (m_clickedAtom)
         {
           // Perform the rotation
-          Navigate::tilt(widget, m_clickedAtom->pos(), deltaDragging.x());
+          Navigate::tilt(widget, *m_clickedAtom->pos(), deltaDragging.x());
 
           // Perform the zoom toward the center of a clicked atom
-          Navigate::zoom(widget, m_clickedAtom->pos(), deltaDragging.y());
+          Navigate::zoom(widget, *m_clickedAtom->pos(), deltaDragging.y());
         }
         else if (m_clickedBond)
         {
-          Atom *begin = molecule->getAtomById(m_clickedBond->beginAtomId());
-          Atom *end = molecule->getAtomById(m_clickedBond->endAtomId());
+          Atom *begin = molecule->atomById(m_clickedBond->beginAtomId());
+          Atom *end = molecule->atomById(m_clickedBond->endAtomId());
 
-          Vector3d btoe = end->pos() - begin->pos();
+          Vector3d btoe = *end->pos() - *begin->pos();
           double newLen = btoe.norm() / 2;
           btoe = btoe / btoe.norm();
 
-          Vector3d mid = begin->pos() + btoe * newLen;
+          Vector3d mid = *begin->pos() + btoe * newLen;
 
           // Perform the rotation
           Navigate::tilt(widget, mid, deltaDragging.x());
@@ -682,20 +682,21 @@ namespace Avogadro {
 
           Atom *otherAtom;
 
-          if (m_clickedAtom == molecule->getAtomById(m_selectedBond->beginAtomId()))
-            otherAtom = molecule->getAtomById(m_selectedBond->endAtomId());
+          if (m_clickedAtom == molecule->atomById(m_selectedBond->beginAtomId()))
+            otherAtom = molecule->atomById(m_selectedBond->endAtomId());
           else
-            otherAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
+            otherAtom = molecule->atomById(m_selectedBond->beginAtomId());
 
-          Vector3d clicked = m_clickedAtom->pos();
-          Vector3d other = otherAtom->pos();
+          Vector3d clicked = *m_clickedAtom->pos();
+          Vector3d other = *otherAtom->pos();
           Vector3d direction = clicked - other;
 
           Vector3d mouseLast = widget->camera()->unProject(m_lastDraggingPosition);
           Vector3d mouseCurr = widget->camera()->unProject(event->pos());
           Vector3d mouseDir = mouseCurr - mouseLast;
 
-          Vector3d component = mouseDir.dot(direction) / direction.norm2() * direction;
+          Vector3d component = mouseDir.dot(direction) / direction.squaredNorm()
+                               * direction;
 
           if (m_skeleton) {
             m_skeleton->skeletonTranslate(component.x(), component.y(), component.z());
@@ -707,21 +708,21 @@ namespace Avogadro {
         {
           // Do dihedral angle manipulation of the clicked atom.
 
-          Atom *beginAtom = molecule->getAtomById(m_selectedBond->beginAtomId());
-          Atom *endAtom = molecule->getAtomById(m_selectedBond->endAtomId());
+          Atom *beginAtom = molecule->atomById(m_selectedBond->beginAtomId());
+          Atom *endAtom = molecule->atomById(m_selectedBond->endAtomId());
 
           Vector3d center;
           Vector3d other;
           if (molecule->bond(m_clickedAtom, beginAtom)) {
-            center = beginAtom->pos();
-            other = endAtom->pos();
+            center = *beginAtom->pos();
+            other = *endAtom->pos();
           }
           else {
-            center = endAtom->pos();
-            other = beginAtom->pos();
+            center = *endAtom->pos();
+            other = *beginAtom->pos();
           }
 
-          Vector3d clicked = m_clickedAtom->pos();
+          Vector3d clicked = *m_clickedAtom->pos();
 
           Vector3d axis = Vector3d(0, 0, ((widget->camera()->modelview() * other).z() >=
                 (widget->camera()->modelview() * center).z() ? -1 : 1));
@@ -736,7 +737,7 @@ namespace Avogadro {
           {
             currMouseVector = currMouseVector.normalized();
             double mouseAngle = acos(m_directionVector->dot(currMouseVector) /
-                currMouseVector.norm2());
+                currMouseVector.squaredNorm());
 
             if(mouseAngle > 0)
             {
@@ -744,11 +745,11 @@ namespace Avogadro {
 
               tester = performRotation(mouseAngle, axis, Vector3d(0, 0, 0), *m_directionVector);
               double testAngle1 = acos(tester.dot(currMouseVector) /
-                  currMouseVector.norm2());
+                  currMouseVector.squaredNorm());
 
               tester = performRotation(-mouseAngle, axis, Vector3d(0, 0, 0), *m_directionVector);
               double testAngle2 = acos(tester.dot(currMouseVector) /
-                  currMouseVector.norm2());
+                  currMouseVector.squaredNorm());
 
               if(testAngle1 > testAngle2 || OpenBabel::IsNan((double)testAngle2)) {
                 mouseAngle = -mouseAngle;
@@ -779,44 +780,8 @@ namespace Avogadro {
 
   // ##########  wheel  ##########
 
-  QUndoCommand* BondCentricTool::wheel(GLWidget *widget, const QWheelEvent *event)
+  QUndoCommand* BondCentricTool::wheelEvent(GLWidget *widget, QWheelEvent *event)
   {
-    m_clickedAtom = NULL;
-    m_clickedBond = NULL;
-
-    Molecule *molecule = widget->molecule();
-
-    Primitive *clickedPrim = widget->computeClickedPrimitive(event->pos());
-
-    if (clickedPrim && clickedPrim->type() == Primitive::AtomType)
-    {
-      Atom *clickedAtom = (Atom*)clickedPrim;
-      // Perform the zoom toward clicked atom
-      Navigate::zoom(widget, clickedAtom->pos(), - MOUSE_WHEEL_SPEED * event->delta());
-    }
-    else if (clickedPrim && clickedPrim->type() == Primitive::BondType)
-    {
-      Bond *clickedBond = (Bond*)clickedPrim;
-
-      Atom *begin = molecule->getAtomById(clickedBond->beginAtomId());
-      Atom *end = molecule->getAtomById(clickedBond->endAtomId());
-
-      Vector3d btoe = end->pos() - begin->pos();
-      double newLen = btoe.norm() / 2;
-      btoe = btoe / btoe.norm();
-
-      Vector3d mid = begin->pos() + btoe * newLen;
-
-      // Perform the zoom toward the centre of a clicked bond
-      Navigate::zoom(widget, mid, - MOUSE_WHEEL_SPEED * event->delta());
-    }
-    else {
-      // Perform the zoom toward molecule center
-      Navigate::zoom(widget, widget->center(), - MOUSE_WHEEL_SPEED * event->delta());
-    }
-
-    widget->update();
-
     return 0;
   }
 
@@ -836,8 +801,8 @@ namespace Avogadro {
     if ((m_leftButtonPressed || m_rightButtonPressed) && m_clickedAtom &&
         m_selectedBond && !isAtomInBond(m_clickedAtom, m_selectedBond))
     {
-      Atom *begin = molecule->getAtomById(m_selectedBond->beginAtomId());
-      Atom *end = molecule->getAtomById(m_selectedBond->endAtomId());
+      Atom *begin = molecule->atomById(m_selectedBond->beginAtomId());
+      Atom *end = molecule->atomById(m_selectedBond->endAtomId());
 
       if (molecule->bond(m_clickedAtom, begin) ||
           molecule->bond(m_clickedAtom, end))
@@ -871,8 +836,8 @@ namespace Avogadro {
     // Draw the manipulation rectangle and relative angles.
     if (m_selectedBond && !dihedralAtomClicked)
     {
-      Atom *begin = molecule->getAtomById(m_selectedBond->beginAtomId());
-      Atom *end = molecule->getAtomById(m_selectedBond->endAtomId());
+      Atom *begin = molecule->atomById(m_selectedBond->beginAtomId());
+      Atom *end = molecule->atomById(m_selectedBond->endAtomId());
 
       if (m_currentReference)
       {
@@ -971,7 +936,7 @@ namespace Avogadro {
     v = (v / v.norm()) * radius;
 
     // Angle between u and v.
-    double uvAngle = acos(u.dot(v) / v.norm2()) * 180.0 / M_PI;
+    double uvAngle = acos(u.dot(v) / v.squaredNorm()) * 180.0 / M_PI;
 
     // If angle is less than 1 (will be approximated to 0), attempting to draw
     // will crash, so return.
@@ -1026,22 +991,16 @@ namespace Avogadro {
       return;
     }
 
-    OBBondIterator bondIter = atom->EndBonds();
-
-    Atom *u = static_cast<Atom*>(atom->BeginNbrAtom(bondIter));
-    Atom *v = NULL;
-
-    if (u != NULL)
-    {
-      do
-      {
-        OBBondIterator tmpIter = bondIter;
-
-        while ((v = static_cast<Atom*>(atom->NextNbrAtom(tmpIter))) != NULL) {
-          drawAngleSector(widget, atom->pos(), u->pos(), v->pos());
-        }
+    QList<unsigned long> neighbors = atom->neighbors();
+    if (neighbors.size() > 1) {
+      Atom *u = 0;
+      Atom *v = 0;
+      foreach (unsigned long a, neighbors) {
+        v = m_molecule->atomById(a);
+        if (u)
+          drawAngleSector(widget, *atom->pos(), *u->pos(), *v->pos());
+        u = v;
       }
-      while((u = static_cast<Atom*>(atom->NextNbrAtom(bondIter))) != NULL);
     }
   }
 
@@ -1054,30 +1013,20 @@ namespace Avogadro {
     }
 
     Atom *ref = NULL;
-    if (atom == static_cast<Atom*>(bond->GetBeginAtom())) {
-      ref = static_cast<Atom*>(bond->GetEndAtom());
-    }
-    else if (atom == static_cast<Atom*>(bond->GetEndAtom())) {
-      ref = static_cast<Atom*>(bond->GetBeginAtom());
-    }
-    else {
+    if (atom == bond->beginAtom())
+      ref = bond->endAtom();
+    else if (atom == bond->endAtom())
+      ref = bond->beginAtom();
+    else
       return;
-    }
 
-    OBBondIterator bondIter = atom->EndBonds();
-    Atom *v = static_cast<Atom*>(atom->BeginNbrAtom(bondIter));
-
-    if (v != NULL)
-    {
-      do
-      {
-        if (v == ref) {
+    Atom *v = 0;
+    QList<unsigned long> neighbors = atom->neighbors();
+    foreach (unsigned long a, neighbors) {
+      v = m_molecule->atomById(a);
+      if (v == ref)
           continue;
-        }
-
-        drawAngleSector(widget, atom->pos(), ref->pos(), v->pos());
-      }
-      while ((v = static_cast<Atom*>(atom->NextNbrAtom(bondIter))) != NULL);
+      drawAngleSector(widget, *atom->pos(), *ref->pos(), *v->pos());
     }
   }
 
@@ -1092,69 +1041,41 @@ namespace Avogadro {
     Atom *atom = skeleton->rootAtom();
     Bond *bond = skeleton->rootBond();
 
-    Atom *ref = NULL;
-    if (atom == static_cast<Atom*>(bond->GetBeginAtom())) {
-      ref = static_cast<Atom*>(bond->GetEndAtom());
-    }
-    else if (atom == static_cast<Atom*>(bond->GetEndAtom())) {
-      ref = static_cast<Atom*>(bond->GetBeginAtom());
-    }
-    else {
-      return;
-    }
-
-    OBBondIterator bondIter = atom->EndBonds();
-    Atom *v = static_cast<Atom*>(atom->BeginNbrAtom(bondIter));
-
-    if (v != NULL)
-    {
-      do
-      {
-        if (v == ref) {
-          continue;
-        }
-
-        if (!skeleton->containsAtom(v)) {
-          drawAngleSector(widget, atom->pos(), ref->pos(), v->pos());
-        }
-      }
-      while ((v = static_cast<Atom*>(atom->NextNbrAtom(bondIter))) != NULL);
-    }
+    drawAngles(widget, atom, bond);
   }
 
   // ##########  drawDihedralAngle  ##########
 
   // Dihedral angle between atoms A & D for the four atoms A-B-C-D
-  void BondCentricTool::drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D, Bond *BC,
-      bool alternateAngle)
+  void BondCentricTool::drawDihedralAngle(GLWidget *widget, Atom *A, Atom *D,
+                                          Bond *BC, bool alternateAngle)
   {
     if (!A || !D || !BC || !widget) {
       return;
     }
 
-    Atom *B = static_cast<Atom*>(BC->GetBeginAtom());
-    Atom *C = static_cast<Atom*>(BC->GetEndAtom());
+    Atom *B = BC->beginAtom();
+    Atom *C = BC->endAtom();
 
-    if (!A->GetBond(B) || !D->GetBond(C))
-    {
-      B = static_cast<Atom*>(BC->GetEndAtom());
-      C = static_cast<Atom*>(BC->GetBeginAtom());
+    if (!A->bond(B) || !D->bond(C)) {
+      B = BC->endAtom();
+      C = BC->beginAtom();
 
-      if (!A->GetBond(B) || !D->GetBond(C)) {
+      if (!A->bond(B) || !D->bond(C)) {
         return;
       }
     }
 
-    Eigen::Vector3d BCVec = C->pos() - B->pos();
-    Eigen::Vector3d BAVec = A->pos() - B->pos();
-    Eigen::Vector3d CDVec = D->pos() - C->pos();
+    Eigen::Vector3d BCVec = *C->pos() - *B->pos();
+    Eigen::Vector3d BAVec = *A->pos() - *B->pos();
+    Eigen::Vector3d CDVec = *D->pos() - *C->pos();
 
     Eigen::Vector3d tmp = BAVec.cross(BCVec);
     BAVec = BCVec.cross(tmp);
     tmp = CDVec.cross(BCVec);
     CDVec = BCVec.cross(tmp);
 
-    Eigen::Vector3d mid = B->pos() + (BCVec.normalized() * (BCVec.norm() / 2));
+    Eigen::Vector3d mid = *B->pos() + (BCVec.normalized() * (BCVec.norm() / 2));
 
     BAVec = BAVec.normalized() * 1.5;
     CDVec = CDVec.normalized() * 1.5;
@@ -1178,15 +1099,14 @@ namespace Avogadro {
 
     Molecule *mol = widget->molecule();
 
-    Atom *B = static_cast<Atom*>(BC->GetBeginAtom());
-    Atom *C = static_cast<Atom*>(BC->GetEndAtom());
+    Atom *B = BC->beginAtom();
+    Atom *C = BC->endAtom();
 
-    if (!A->GetBond(B))
-    {
-      B = static_cast<Atom*>(BC->GetEndAtom());
-      C = static_cast<Atom*>(BC->GetBeginAtom());
+    if (!A->bond(B)) {
+      B = BC->endAtom();
+      C = BC->beginAtom();
 
-      if (!A->GetBond(B)) {
+      if (!A->bond(B)) {
         return;
       }
     }
@@ -1200,69 +1120,56 @@ namespace Avogadro {
     Atom *minNegTorsAtom = NULL;
     Atom *maxNegTorsAtom = NULL;
 
-    OBBondIterator bondIter = C->EndBonds();
-    Atom *D = static_cast<Atom*>(C->BeginNbrAtom(bondIter));
+    QList<unsigned long> neighbors = C->neighbors();
+    Atom *D = 0;
+    foreach (unsigned long a, neighbors) {
+      D = m_molecule->atomById(a);
+      if (D == B)
+        continue;
 
-    if (D != NULL)
-    {
-      do
-      {
-        if (D == B) {
-          continue;
+      /// FIXME Implement this for torsions...
+      //double torsion = mol->GetTorsion(A, B, C, D);
+      double torsion = 0.0;
+
+      if (torsion == 0.0)
+        continue;
+
+      if (torsion < 0.0) {
+        if (minNegTorsion == 0.0 || torsion > minNegTorsion) {
+          minNegTorsion = torsion;
+          minNegTorsAtom = D;
         }
 
-        double torsion = mol->GetTorsion(A, B, C, D);
-
-        if (torsion == 0.0) {
-          continue;
-        }
-
-        if (torsion < 0.0)
-        {
-          if (minNegTorsion == 0.0 || torsion > minNegTorsion)
-          {
-            minNegTorsion = torsion;
-            minNegTorsAtom = D;
-          }
-
-          if (torsion < maxNegTorsion)
-          {
-            maxNegTorsion = torsion;
-            maxNegTorsAtom = D;
-          }
-        }
-        else
-        {
-          if (minTorsion == 0.0 || torsion < minTorsion)
-          {
-            minTorsion = torsion;
-            minTorsAtom = D;
-          }
-
-          if (torsion > maxTorsion)
-          {
-            maxTorsion = torsion;
-            maxTorsAtom = D;
-          }
+        if (torsion < maxNegTorsion) {
+          maxNegTorsion = torsion;
+          maxNegTorsAtom = D;
         }
       }
-      while ((D = static_cast<Atom*>(C->NextNbrAtom(bondIter))) != NULL);
+      else {
+        if (minTorsion == 0.0 || torsion < minTorsion) {
+          minTorsion = torsion;
+          minTorsAtom = D;
+        }
+
+        if (torsion > maxTorsion) {
+          maxTorsion = torsion;
+          maxTorsAtom = D;
+        }
+      }
     }
 
     double rgb[3] = {1.0, 1.0, 0.2};
     drawDihedralRectangle(widget, BC, A, rgb);
 
     // One positive, one negative angle.
-    if (minNegTorsion && minTorsion)
-    {
+    if (minNegTorsion && minTorsion) {
       drawDihedralRectangle(widget, BC, minTorsAtom, rgb);
       drawDihedralRectangle(widget, BC, minNegTorsAtom, rgb);
       drawDihedralAngle(widget, A, minTorsAtom, BC);
       drawDihedralAngle(widget, A, minNegTorsAtom, BC);
     }
     // Only positive angle(s).
-    else if (minTorsion)
-    {
+    else if (minTorsion) {
       drawDihedralRectangle(widget, BC, minTorsAtom, rgb);
       if (minTorsAtom != maxTorsAtom) {
         drawDihedralRectangle(widget, BC, maxTorsAtom, rgb);
@@ -1271,8 +1178,7 @@ namespace Avogadro {
       drawDihedralAngle(widget, A, maxTorsAtom, BC, true);
     }
     // Only negative angle(s).
-    else if (minNegTorsion)
-    {
+    else if (minNegTorsion) {
       drawDihedralRectangle(widget, BC, minNegTorsAtom, rgb);
       if (minNegTorsAtom != maxNegTorsAtom) {
         drawDihedralRectangle(widget, BC, maxNegTorsAtom, rgb);
@@ -1292,15 +1198,14 @@ namespace Avogadro {
 
     Molecule *mol = widget->molecule();
 
-    Atom *B = static_cast<Atom*>(BC->GetBeginAtom());
-    Atom *C = static_cast<Atom*>(BC->GetEndAtom());
+    Atom *B = BC->beginAtom();
+    Atom *C = BC->endAtom();
 
-    if (!A->GetBond(B))
-    {
-      B = static_cast<Atom*>(BC->GetEndAtom());
-      C = static_cast<Atom*>(BC->GetBeginAtom());
+    if (!A->bond(B)) {
+      B = BC->endAtom();
+      C = BC->beginAtom();
 
-      if (!A->GetBond(B)) {
+      if (!A->bond(B)) {
         return;
       }
     }
@@ -1314,69 +1219,56 @@ namespace Avogadro {
     Atom *minNegTorsAtom = NULL;
     Atom *maxNegTorsAtom = NULL;
 
-    OBBondIterator bondIter = C->EndBonds();
-    Atom *D = static_cast<Atom*>(C->BeginNbrAtom(bondIter));
+    QList<unsigned long> neighbors = C->neighbors();
+    Atom *D = 0;
+    foreach (unsigned long a, neighbors) {
+      D = m_molecule->atomById(a);
+      if (D == B)
+        continue;
 
-    if (D != NULL)
-    {
-      do
-      {
-        if (D == B) {
-          continue;
+      /// FIXME Implement this to get the torsion...
+//      double torsion = mol->GetTorsion(A, B, C, D);
+      double torsion = 0.0;
+
+      if (torsion == 0.0)
+        continue;
+
+      if (torsion < 0.0) {
+        if (minNegTorsion == 0.0 || torsion > minNegTorsion) {
+          minNegTorsion = torsion;
+          minNegTorsAtom = D;
         }
 
-        double torsion = mol->GetTorsion(A, B, C, D);
-
-        if (torsion == 0.0) {
-          continue;
-        }
-
-        if (torsion < 0.0)
-        {
-          if (minNegTorsion == 0.0 || torsion > minNegTorsion)
-          {
-            minNegTorsion = torsion;
-            minNegTorsAtom = D;
-          }
-
-          if (torsion < maxNegTorsion)
-          {
-            maxNegTorsion = torsion;
-            maxNegTorsAtom = D;
-          }
-        }
-        else
-        {
-          if (minTorsion == 0.0 || torsion < minTorsion)
-          {
-            minTorsion = torsion;
-            minTorsAtom = D;
-          }
-
-          if (torsion > maxTorsion)
-          {
-            maxTorsion = torsion;
-            maxTorsAtom = D;
-          }
+        if (torsion < maxNegTorsion) {
+          maxNegTorsion = torsion;
+          maxNegTorsAtom = D;
         }
       }
-      while ((D = static_cast<Atom*>(C->NextNbrAtom(bondIter))) != NULL);
+      else {
+        if (minTorsion == 0.0 || torsion < minTorsion) {
+          minTorsion = torsion;
+          minTorsAtom = D;
+        }
+
+        if (torsion > maxTorsion) {
+          maxTorsion = torsion;
+          maxTorsAtom = D;
+        }
+      }
     }
 
     double rgb[3] = {1.0, 1.0, 0.2};
     drawDihedralRectangle(widget, BC, A, rgb);
 
     // One positive, one negative angle.
-    if (minNegTorsion && minTorsion)
-    {
+    if (minNegTorsion && minTorsion) {
       drawDihedralRectangle(widget, BC, minTorsAtom, rgb);
       drawDihedralRectangle(widget, BC, minNegTorsAtom, rgb);
       drawDihedralAngle(widget, A, minTorsAtom, BC);
       drawDihedralAngle(widget, A, minNegTorsAtom, BC);
     }
     // Only positive angle(s).
-    else if (minTorsion)
-    {
+    else if (minTorsion) {
       drawDihedralRectangle(widget, BC, minTorsAtom, rgb);
       if (minTorsAtom != maxTorsAtom) {
         drawDihedralRectangle(widget, BC, maxTorsAtom, rgb);
@@ -1385,8 +1277,7 @@ namespace Avogadro {
       drawDihedralAngle(widget, A, maxTorsAtom, BC, true);
     }
     // Only negative angle(s).
-    else if (minNegTorsion)
-    {
+    else if (minNegTorsion) {
       drawDihedralRectangle(widget, BC, minNegTorsAtom, rgb);
       if (minNegTorsAtom != maxNegTorsAtom) {
         drawDihedralRectangle(widget, BC, maxNegTorsAtom, rgb);
@@ -1395,31 +1286,17 @@ namespace Avogadro {
       drawDihedralAngle(widget, A, maxNegTorsAtom, BC, true);
     }
 
-    bondIter = B->EndBonds();
+    neighbors = B->neighbors();
+    Atom *u = 0;
+    Atom *v = 0;
+    foreach (unsigned long a, neighbors) {
+      v = m_molecule->atomById(a);
+      if (v == C)
+        continue;
 
-    Atom *u = static_cast<Atom*>(B->BeginNbrAtom(bondIter));
-    Atom *v = NULL;
-
-    if (u != NULL)
-    {
-      do
-      {
-        if (u == C) {
-          continue;
-        }
-
-        OBBondIterator tmpIter = bondIter;
-
-        while ((v = static_cast<Atom*>(B->NextNbrAtom(tmpIter))) != NULL)
-        {
-          if (v == C) {
-            continue;
-          }
-
-          drawAngleSector(widget, B->pos(), u->pos(), v->pos());
-        }
-      }
-      while((u = static_cast<Atom*>(B->NextNbrAtom(bondIter))) != NULL);
+      if (u)
+        drawAngleSector(widget, *B->pos(), *u->pos(), *v->pos());
+      u = v;
     }
   }
 
@@ -1434,103 +1311,84 @@ namespace Avogadro {
 
     double angle = -1;
     Eigen::Vector3d *smallestRef = NULL;
-    Atom *b = static_cast<Atom*>(bond->GetBeginAtom());
-    Atom *e = static_cast<Atom*>(bond->GetEndAtom());
+    Atom *b = bond->beginAtom();
+    Atom *e = bond->endAtom();
+    Atom *t = 0;
 
-    OBBondIterator bondIter = b->EndBonds();
-    Atom *t = static_cast<Atom*>(b->BeginNbrAtom(bondIter));
-
-    Eigen::Vector3d begin = b->pos();
-    Eigen::Vector3d end = e->pos();
+    Eigen::Vector3d begin = *b->pos();
+    Eigen::Vector3d end = *e->pos();
     Eigen::Vector3d target;
 
-    if (t != NULL)
-    {
-      do
-      {
-        if (t == e) {
-          continue;
-        }
+    QList<unsigned long> neighbors = b->neighbors();
+    foreach (unsigned long a, neighbors) {
+      t = m_molecule->atomById(a);
+      if (t == e)
+        continue;
 
-        target = t->pos();
+      target = *t->pos();
 
-        Eigen::Vector3d u = end - begin;
-        Eigen::Vector3d v = target - begin;
-        double tAngle = acos(u.dot(v) / (v.norm() * u.norm())) * 180.0 / M_PI;
+      Eigen::Vector3d u = end - begin;
+      Eigen::Vector3d v = target - begin;
+      double tAngle = acos(u.dot(v) / (v.norm() * u.norm())) * 180.0 / M_PI;
 
-        if(!(tAngle > 1 && tAngle < 179)) {
-          continue;
-        }
-
-        Eigen::Vector3d orth1 = u.cross(v);
-        Eigen::Vector3d orth2 = referencePoint->cross(u);
-
-        tAngle = acos(orth1.dot(orth2) / (orth1.norm() * orth2.norm())) * 180.0 / M_PI;
-        tAngle = tAngle > 90 ? 180 - tAngle : tAngle;
-
-        if(angle < 0)
-        {
-          angle = tAngle;
-          smallestRef = new Vector3d(v);
-        }
-        else if(tAngle < angle)
-        {
-          angle = tAngle;
-          delete smallestRef;
-          smallestRef = new Vector3d(v);
-        }
+      if(!(tAngle > 1 && tAngle < 179)) {
+        continue;
       }
-      while ((t = static_cast<Atom*>(b->NextNbrAtom(bondIter))) != NULL);
+
+      Eigen::Vector3d orth1 = u.cross(v);
+      Eigen::Vector3d orth2 = referencePoint->cross(u);
+
+      tAngle = acos(orth1.dot(orth2) / (orth1.norm() * orth2.norm())) * 180.0 / M_PI;
+      tAngle = tAngle > 90 ? 180 - tAngle : tAngle;
+
+      if(angle < 0) {
+        angle = tAngle;
+        smallestRef = new Vector3d(v);
+      }
+      else if(tAngle < angle) {
+        angle = tAngle;
+        delete smallestRef;
+        smallestRef = new Vector3d(v);
+      }
     }
 
-    bondIter = e->EndBonds();
-    t = static_cast<Atom*>(e->BeginNbrAtom(bondIter));
+    neighbors = e->neighbors();
+    foreach (unsigned long a, neighbors) {
+      t = m_molecule->atomById(a);
+      if (t == b)
+        continue;
 
-    if (t != NULL)
-    {
-      do
-      {
-        if (t == b) {
-          continue;
-        }
+      target = *t->pos();
 
-        target = t->pos();
+      Eigen::Vector3d u = begin - end;
+      Eigen::Vector3d v = target - end;
+      double tAngle = acos(u.dot(v) / (v.norm() * u.norm())) * 180.0 / M_PI;
 
-        Eigen::Vector3d u = begin - end;
-        Eigen::Vector3d v = target - end;
-        double tAngle = acos(u.dot(v) / (v.norm() * u.norm())) * 180.0 / M_PI;
-
-        if(!(tAngle > 1 && tAngle < 179)) {
-          continue;
-        }
-
-        Eigen::Vector3d orth1 = u.cross(v);
-        Eigen::Vector3d orth2 = referencePoint->cross(u);
-
-        tAngle = acos(orth1.dot(orth2) / (orth1.norm() * orth2.norm())) * 180.0 / M_PI;
-        tAngle = tAngle > 90 ? 180 - tAngle : tAngle;
-
-        if(angle < 0)
-        {
-          angle = tAngle;
-          smallestRef = new Vector3d(v);
-        }
-        else if(tAngle < angle)
-        {
-          angle = tAngle;
-          delete smallestRef;
-          smallestRef = new Vector3d(v);
-        }
+      if(!(tAngle > 1 && tAngle < 179)) {
+        continue;
       }
-      while ((t = static_cast<Atom*>(e->NextNbrAtom(bondIter))) != NULL);
+
+      Eigen::Vector3d orth1 = u.cross(v);
+      Eigen::Vector3d orth2 = referencePoint->cross(u);
+
+      tAngle = acos(orth1.dot(orth2) / (orth1.norm() * orth2.norm())) * 180.0 / M_PI;
+      tAngle = tAngle > 90 ? 180 - tAngle : tAngle;
+
+      if(angle < 0) {
+        angle = tAngle;
+        smallestRef = new Vector3d(v);
+      }
+      else if(tAngle < angle) {
+        angle = tAngle;
+        delete smallestRef;
+        smallestRef = new Vector3d(v);
+      }
     }
 
-    if (angle > maximumAngle)
-    {
+    if (angle > maximumAngle) {
       if (smallestRef) {
         delete smallestRef;
       }
-
       return NULL;
     }
 
@@ -1546,11 +1404,11 @@ namespace Avogadro {
       return;
     }
 
-    Atom *leftAtom = static_cast<Atom*>(bond->GetBeginAtom());
-    Atom *rightAtom = static_cast<Atom*>(bond->GetEndAtom());
+    Atom *leftAtom = bond->beginAtom();
+    Atom *rightAtom = bond->endAtom();
 
-    Eigen::Vector3d left = leftAtom->pos();
-    Eigen::Vector3d right = rightAtom->pos();
+    Eigen::Vector3d left = *leftAtom->pos();
+    Eigen::Vector3d right = *rightAtom->pos();
 
     Eigen::Vector3d leftToRight = right - left;
 
@@ -1588,23 +1446,22 @@ namespace Avogadro {
       return;
     }
 
-    Atom *leftAtom = static_cast<Atom*>(bond->GetBeginAtom());
-    Atom *rightAtom = static_cast<Atom*>(bond->GetEndAtom());
+    Atom *leftAtom = bond->beginAtom();
+    Atom *rightAtom = bond->endAtom();
 
-    if (!atom->GetBond(rightAtom))
-    {
+    if (!atom->bond(rightAtom)) {
       leftAtom = rightAtom;
-      rightAtom = static_cast<Atom*>(bond->GetBeginAtom());
+      rightAtom = bond->beginAtom();
     }
 
-    Eigen::Vector3d left = leftAtom->pos();
-    Eigen::Vector3d right = rightAtom->pos();
+    Eigen::Vector3d left = *leftAtom->pos();
+    Eigen::Vector3d right = *rightAtom->pos();
 
     Eigen::Vector3d leftToRight = right - left;
 
     Eigen::Vector3d A = left + (leftToRight.normalized() * (leftToRight.norm() / 2));
 
-    Eigen::Vector3d rightToAtom = atom->pos() - rightAtom->pos();
+    Eigen::Vector3d rightToAtom = *atom->pos() - *rightAtom->pos();
 
     Eigen::Vector3d B = right + rightToAtom.dot(leftToRight) / leftToRight.norm() *
       leftToRight.normalized();
@@ -1613,22 +1470,19 @@ namespace Avogadro {
     Eigen::Vector3d D;
 
     // Clicked atom is in front of the middle of the bond.
-    if ((B-left).norm() < (A-left).norm())
-    {
-      C = atom->pos() + (right - B);
+    if ((B-left).norm() < (A-left).norm()) {
+      C = *atom->pos() + (right - B);
       B = right;
       D = C - (B - A);
     }
     // Clicked atom is in front of the end of the bond.
-    else if ((B-A).norm() < (right-A).norm())
-    {
-      C = atom->pos() + (right - B);
+    else if ((B-A).norm() < (right-A).norm()) {
+      C = *atom->pos() + (right - B);
       B = right;
       D = C - (B - A);
     }
-    else
-    {
-      C = atom->pos();
+    else {
+      C = *atom->pos();
       D = C - (B - A);
     }
 
@@ -1636,15 +1490,13 @@ namespace Avogadro {
     double minWidth = 3;
 
     // Rectangle is too short.
-    if ((C-B).norm() < minHeight)
-    {
+    if ((C-B).norm() < minHeight) {
       C = B + ((C-B).normalized() * minHeight);
       D = A + ((D-A).normalized() * minHeight);
     }
 
     // Rectangle is too thin.
-    if ((B-A).norm() < minWidth)
-    {
+    if ((B-A).norm() < minWidth) {
       B = A + ((B-A).normalized() * minWidth);
       C = D + ((C-D).normalized() * minWidth);
     }
@@ -1677,39 +1529,30 @@ namespace Avogadro {
     }
 
     Atom *other = NULL;
-    if (atom == static_cast<Atom*>(bond->GetBeginAtom())) {
-      other = static_cast<Atom*>(bond->GetEndAtom());
-    }
-    else if (atom == static_cast<Atom*>(bond->GetEndAtom())) {
-      other = static_cast<Atom*>(bond->GetBeginAtom());
-    }
-    else {
+    if (atom == bond->beginAtom())
+      other = bond->endAtom();
+    else if (atom == bond->endAtom())
+      other = bond->beginAtom();
+    else
       return;
-    }
 
-    OBBondIterator bondIter = atom->EndBonds();
-
-    Atom *a = static_cast<Atom*>(atom->BeginNbrAtom(bondIter));
-
-    do
-    {
-      if (a == other) {
+    foreach (unsigned long a, atom->neighbors()) {
+      Atom *atom = m_molecule->atomById(a);
+      if (atom == other)
         continue;
-      }
 
-      drawDihedralRectangle(widget, bond, a, rgb);
+      drawDihedralRectangle(widget, bond, atom, rgb);
     }
-    while ((a = static_cast<Atom*>(atom->NextNbrAtom(bondIter))) != NULL);
   }
 
   // ##########  drawSphere  ##########
 
-  void BondCentricTool::drawSphere(GLWidget *widget,  const Eigen::Vector3d &position,
+  void BondCentricTool::drawSphere(GLWidget *widget, const Eigen::Vector3d &position,
       double radius, float alpha )
   {
     glEnable(GL_BLEND);
     widget->painter()->setColor(1.0, 1.0, 0.3, alpha);
-    widget->painter()->drawSphere(position, radius);
+    widget->painter()->drawSphere(&position, radius);
     glDisable(GL_BLEND);
   }
 
@@ -1885,7 +1728,7 @@ namespace Avogadro {
     setText(QObject::tr("Bond Centric Manipulation"));
     m_moleculeCopy = *molecule;
     m_molecule = molecule;
-    m_atomIndex = atom->GetIdx();
+    m_atomIndex = atom->index();
     m_pos = pos;
     undone = false;
   }
@@ -1895,21 +1738,16 @@ namespace Avogadro {
   void BondCentricMoveCommand::redo()
   {
     // Move the specified atom to the location given
-    if (undone)
-    {
+    if (undone) {
       Molecule newMolecule = *m_molecule;
       *m_molecule = m_moleculeCopy;
       m_moleculeCopy = newMolecule;
     }
-    else if (m_atomIndex)
-    {
-      m_molecule->BeginModify();
-      Atom *atom = static_cast<Atom *>(m_molecule->GetAtom(m_atomIndex));
+    else if (m_atomIndex) {
+      Atom *atom = m_molecule->atom(m_atomIndex);
       atom->setPos(m_pos);
-      m_molecule->EndModify();
       atom->update();
     }
-
     QUndoCommand::redo();
   }
 

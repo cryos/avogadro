@@ -29,12 +29,14 @@
 
 #include "quaternion.h"
 
-#include <avogadro/primitive.h>
-
 #include <QObject>
 #include <QList>
 
 namespace Avogadro {
+
+  class Atom;
+  class Bond;
+  class Molecule;
 
   /**
    * @class Node

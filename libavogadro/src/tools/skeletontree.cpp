@@ -26,8 +26,11 @@
 
 #include "skeletontree.h"
 
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <avogadro/molecule.h>
+
 using namespace Eigen;
-using namespace OpenBabel;
 using namespace std;
 
 namespace Avogadro {
@@ -146,8 +149,8 @@ namespace Avogadro {
 
     m_rootBond = rootBond;
 
-    Atom* bAtom = static_cast<Atom*>(m_rootBond->GetBeginAtom());
-    Atom* eAtom = static_cast<Atom*>(m_rootBond->GetEndAtom());
+    Atom* bAtom = m_rootBond->beginAtom();
+    Atom* eAtom = m_rootBond->endAtom();
 
     if (bAtom != m_rootNode->atom() && eAtom != m_rootNode->atom()) {
       return;
@@ -180,20 +183,17 @@ namespace Avogadro {
     Atom* atom = node->atom();
     int found = 0;
 
-    for (unsigned int i=0; i < mol->NumBonds(); i++)
-    {
-      Bond* b = static_cast<Bond*>(mol->GetBond(i));
-      Atom* bAtom = static_cast<Atom*>(b->GetBeginAtom());
-      Atom* eAtom = static_cast<Atom*>(b->GetEndAtom());
+    for (unsigned int i=0; i < mol->numBonds(); i++) {
+      Bond* b = mol->bond(i);
+      Atom* bAtom = b->beginAtom();
+      Atom* eAtom = b->endAtom();
 
-      if ((b != bond) && ((bAtom == atom) || (eAtom == atom)))
-      {
+      if ((b != bond) && ((bAtom == atom) || (eAtom == atom))) {
         Atom* diffAtom = (bAtom == atom) ? eAtom : bAtom;
 
         //Check if this atom already exists, so not to form loops
         if ((!m_endNode->containsAtom(diffAtom)) &&
-            (!m_rootNode->containsAtom(diffAtom)))
-        {
+            (!m_rootNode->containsAtom(diffAtom))) {
           Node* newNode = new Node(diffAtom);
           node -> addNode(newNode);
           found++;
@@ -233,11 +233,10 @@ namespace Avogadro {
     QList<Node*>* listNodes = n->nodes();
     Atom* a = n->atom();
 
-    a->SetVector(a->x() + x, a->y() + y, a->z() + z);
+    a->setPos(Vector3d(a->pos()->x() + x, a->pos()->y() + y, a->pos()->z() + z));
     a->update();
 
-    for (int i = 0; i < listNodes->size(); i++)
-    {
+    for (int i = 0; i < listNodes->size(); i++) {
       Node* node = listNodes->at(i);
       recursiveTranslate(node, x, y, z);
     }
@@ -250,9 +249,9 @@ namespace Avogadro {
   {
     QList<Node*>* listNodes = n->nodes();
     Atom* a = n->atom();
-    Vector3d final = performRotation(left, right, centerVector, a->pos());
+    Vector3d final = performRotation(left, right, centerVector, *a->pos());
 
-    a->SetVector(final.x(), final.y(), final.z());
+    a->setPos(final);
     a->update();
 
     for (int i = 0; i < listNodes->size(); i++)
@@ -275,7 +274,7 @@ namespace Avogadro {
     }
 
     Atom* a = n->atom();
-    cout << a->x() << "," << a->y()<< ","<<a->z() << endl;
+    cout << a->pos()->x() << "," << a->pos()->y()<< ","<<a->pos()->z() << endl;
 
     if (!n->isLeaf()) {
       cout << "-------------" << endl;
