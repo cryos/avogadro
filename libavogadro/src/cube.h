@@ -196,6 +196,8 @@ namespace Avogadro {
     void setName(QString name) { m_name = name; }
     QString name() const { return m_name; }
 
+    friend class Molecule;
+
   private:
     std::vector<double> m_data;
     Eigen::Vector3d m_min, m_max, m_spacing;

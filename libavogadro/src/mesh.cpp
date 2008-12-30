@@ -28,6 +28,9 @@
 #include <QReadWriteLock>
 #include <QDebug>
 
+using Eigen::Vector3f;
+using std::vector;
+
 namespace Avogadro {
 
   Mesh::Mesh(QObject *parent) : Primitive(MeshType, parent), m_vertices(0),
@@ -63,19 +66,19 @@ namespace Avogadro {
     return m_stable;
   }
 
-  const std::vector<Eigen::Vector3f> & Mesh::vertices() const
+  const vector<Vector3f> & Mesh::vertices() const
   {
     QReadLocker lock(m_lock);
     return m_vertices;
   }
 
-  const Eigen::Vector3f * Mesh::vertex(int n) const
+  const Vector3f * Mesh::vertex(int n) const
   {
     QReadLocker lock(m_lock);
     return &(m_vertices[n]);
   }
 
-  bool Mesh::setVertices(const std::vector<Eigen::Vector3f> &values)
+  bool Mesh::setVertices(const vector<Vector3f> &values)
   {
     QWriteLocker lock(m_lock);
     m_vertices.clear();
@@ -83,7 +86,7 @@ namespace Avogadro {
     return true;
   }
 
-  bool Mesh::addVertices(const std::vector<Eigen::Vector3f> &values)
+  bool Mesh::addVertices(const vector<Vector3f> &values)
   {
     QWriteLocker lock(m_lock);
     if (m_vertices.capacity() < m_vertices.size() + values.size()) {
@@ -101,19 +104,19 @@ namespace Avogadro {
     }
   }
 
-  const std::vector<Eigen::Vector3f> & Mesh::normals() const
+  const vector<Vector3f> & Mesh::normals() const
   {
     QReadLocker lock(m_lock);
     return m_normals;
   }
 
-  const Eigen::Vector3f * Mesh::normal(int n) const
+  const Vector3f * Mesh::normal(int n) const
   {
     QReadLocker lock(m_lock);
     return &(m_normals[n*3]);
   }
 
-  bool Mesh::setNormals(const std::vector<Eigen::Vector3f> &values)
+  bool Mesh::setNormals(const vector<Vector3f> &values)
   {
     QWriteLocker lock(m_lock);
     m_normals.clear();
@@ -121,7 +124,7 @@ namespace Avogadro {
     return true;
   }
 
-  bool Mesh::addNormals(const std::vector<Eigen::Vector3f> &values)
+  bool Mesh::addNormals(const vector<Vector3f> &values)
   {
     QWriteLocker lock(m_lock);
     if (m_normals.capacity() < m_normals.size() + values.size()) {
@@ -139,7 +142,7 @@ namespace Avogadro {
     }
   }
 
-  const std::vector<QColor> & Mesh::colors() const
+  const vector<QColor> & Mesh::colors() const
   {
     QReadLocker lock(m_lock);
     return m_colors;
@@ -157,7 +160,7 @@ namespace Avogadro {
     }
   }
 
-  bool Mesh::setColors(const std::vector<QColor> &values)
+  bool Mesh::setColors(const vector<QColor> &values)
   {
     QWriteLocker lock(m_lock);
     m_colors.clear();
@@ -165,7 +168,7 @@ namespace Avogadro {
     return true;
   }
 
-  bool Mesh::addColors(const std::vector<QColor> &values)
+  bool Mesh::addColors(const vector<QColor> &values)
   {
     QWriteLocker lock(m_lock);
     if (m_colors.capacity() < m_colors.size() + values.size()) {
