@@ -320,8 +320,6 @@
 	<string>${MACOSX_BUNDLE_COPYRIGHT}</string>
 	<key>LSHasLocalizedDisplayName</key>
 	<false/>
-	<key>LSUIElement</key>
-	<false/>
 	<key>NSAppleScriptEnabled</key>
 	<true/>
 	<key>UTExportedTypeDeclarations</key>
