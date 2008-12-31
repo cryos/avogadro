@@ -786,9 +786,9 @@ namespace Avogadro {
       if (m_currentReference)
       {
         // Draw bond length text.
-        QString length = tr("Bond Length:  ") +
+        QString length = tr("Bond Length: ") +
           QString::number(m_selectedBond->length(), 10, 1) +
-          QString::fromUtf8(" Å (Angstrom)");
+          QString::fromUtf8(" Å");
 
         glColor4f(1.0, 1.0, 1.0, 1.0);
         widget->painter()->setColor(1.0, 1.0, 1.0, 1.0);
@@ -1742,8 +1742,6 @@ namespace Avogadro {
       m_snapToAngleBox->setValue(settings.value("snapToAngle", 10).toInt());
     }
   }
-
-
 
 }
 
