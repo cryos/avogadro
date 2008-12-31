@@ -192,6 +192,18 @@ namespace Avogadro
   QUndoCommand* ShaderExtension::performAction(QAction *, GLWidget *widget)
   {
     m_glwidget = widget;
+
+    bool glslEnabled = false;
+    if (GLEW_VERSION_2_0) {
+      glslEnabled = true;
+    } else if (GLEW_ARB_vertex_shader && GLEW_ARB_fragment_shader) {
+      glslEnabled = true;
+    }
+    if (!glslEnabled) {
+      QMessageBox::warning(widget, "no GLSL support", "This system doesn't support shaders.");
+      return 0;
+    }
+    
     if (!m_shaderDialog) {
       m_shaderDialog = new ShaderDialog();
       populateEngineCombo();
@@ -370,10 +382,15 @@ namespace Avogadro
   {
     // Now for the system wide shaders
     QDir verts;
+    #ifdef WIN32
+    verts = QCoreApplication::applicationDirPath();
+    verts.cd("shaders");
+    #else
     QString systemShadersPath = QString(INSTALL_PREFIX) + '/'
       + "share/libavogadro/shaders";
     verts.cd(systemShadersPath);
-
+    #endif
+    
     QStringList filters;
     filters << "*.vert";
     verts.setNameFilters(filters);

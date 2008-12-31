@@ -18,7 +18,11 @@ endif (EXISTS ${PYTHON_INCLUDE_PATH}/sip.h)
 ADD_LIBRARY(python-module MODULE ${wrapper_SRCS})
 SET_TARGET_PROPERTIES(python-module PROPERTIES OUTPUT_NAME Avogadro)
 SET_TARGET_PROPERTIES(python-module PROPERTIES PREFIX "")
+if (WIN32)
+TARGET_LINK_LIBRARIES(python-module avogadro-lib)
+else (WIN32)
 TARGET_LINK_LIBRARIES(python-module stdc++ avogadro-lib)
+endif (WIN32)
 
 # Let's try to use this instead:
 EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c 

@@ -70,6 +70,9 @@ namespace Avogadro {
       }
     }
 #else
+  #ifdef WIN32
+    pluginDir = QCoreApplication::applicationDirPath();
+  #else
     if(!pluginDir.cd(".avogadro")) {
       if(!pluginDir.mkdir(".avogadro")) {
         return; // We can't create directories here
@@ -78,6 +81,7 @@ namespace Avogadro {
         return; // We created the directory, but can't go into it?
       }
     }
+  #endif
 #endif
 
     if(!pluginDir.cd("toolScripts")) {
@@ -91,11 +95,13 @@ namespace Avogadro {
 
     loadScripts(pluginDir);
 
+#ifndef WIN32
     // Now for the system wide Python scripts
     QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
       + "share/libavogadro/toolScripts";
     if (pluginDir.cd(systemScriptsPath))
       loadScripts(pluginDir);
+#endif
   
     setScriptIndex(0);
   }

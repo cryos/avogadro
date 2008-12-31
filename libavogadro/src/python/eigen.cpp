@@ -283,7 +283,7 @@ template <> struct ScalarTraits<double>
           }
           break;
         default:
-          return 0;
+          return;
       }
 
       data->convertible = storage;
@@ -310,7 +310,7 @@ template <> struct ScalarTraits<double>
         
         // copy the data
         double *data = (double*) reinterpret_cast<PyArrayObject*>(result)->data;
-        double *dataPtr = trans.matrix().data();
+        const double *dataPtr = trans.matrix().data();
         for (int i = 0; i < 16; ++i)
           data[i] = dataPtr[i];
  
@@ -342,7 +342,7 @@ template <> struct ScalarTraits<double>
         
         // copy the data
         double *data = (double*) reinterpret_cast<PyArrayObject*>(result)->data;
-        double *dataPtr = trans->matrix().data();
+        const double *dataPtr = trans->matrix().data();
         for (int i = 0; i < 16; ++i)
           data[i] = dataPtr[i];
  
@@ -353,7 +353,9 @@ template <> struct ScalarTraits<double>
    
     Transform3d_to_python_array()
     {
+      #ifndef WIN32
       to_python_converter<Eigen::Transform3d, innerclass>();
+      #endif
       to_python_converter<Eigen::Transform3d*, innerclass>();
       to_python_converter<const Eigen::Transform3d*, innerclass>();
     }
@@ -439,6 +441,8 @@ template <> struct ScalarTraits<double>
 /* 
  * used for unittest to test all get/set options with Eigen classes
  */
+  
+#ifndef WIN32
 class EigenUnitTestHelper
 {
   public:
@@ -474,11 +478,13 @@ class EigenUnitTestHelper
     Eigen::Transform3d m_transform3d;
 
 };
+#endif
 
 void export_Eigen()
 {
   import_array(); // needed for NumPy 
 
+#ifndef WIN32
   class_<EigenUnitTestHelper>("EigenUnitTestHelper")
    .def("vector3d", &EigenUnitTestHelper::vector3d)
    .def("vector3d_ref", &EigenUnitTestHelper::vector3d_ref, return_value_policy<return_by_value>())
@@ -498,13 +504,14 @@ void export_Eigen()
    .def("transform3d_ptr", &EigenUnitTestHelper::transform3d_ptr, return_value_policy<return_by_value>())
    .def("const_transform3d_ptr", &EigenUnitTestHelper::const_transform3d_ptr, return_value_policy<return_by_value>())
 
-   .def("set_transform3d", &EigenUnitTestHelper::set_transform3d)
+   //.def("set_transform3d", &EigenUnitTestHelper::set_transform3d)
    .def("set_transform3d_ref", &EigenUnitTestHelper::set_transform3d_ref)
    .def("set_const_transform3d_ref", &EigenUnitTestHelper::set_const_transform3d_ref)
    .def("set_transform3d_ptr", &EigenUnitTestHelper::set_transform3d_ptr)
    .def("set_const_transform3d_ptr", &EigenUnitTestHelper::set_const_transform3d_ptr)
  
    ; 
+#endif
   
   // Eigen::Vector3d
   Vector3x_to_python_array<Eigen::Vector3d>();
