@@ -29,16 +29,16 @@ set(LINK_LIBS "avogadro-lib")
 #install(TARGETS templateextension DESTINATION ${DESTINATION_DIR})
 
 ### gamess
-#set(gamessextension_SRCS gamessextension.cpp
-#  gamessinputdialog.cpp
-#  gamessinputdata.cpp
-#  gamessefpmatchdialog.cpp
-#)
-#qt4_wrap_ui(gamessextension_UIS_H gamessinputdialog.ui gamessefpmatchdialog.ui)
-#qt4_automoc(${gamessextension_SRCS})
-#add_library(gamessextension MODULE ${gamessextension_SRCS} ${gamessextension_UIS_H})
-#target_link_libraries(gamessextension ${LINK_LIBS})
-#install(TARGETS gamessextension DESTINATION ${DESTINATION_DIR})
+set(gamessextension_SRCS gamessextension.cpp
+  gamessinputdialog.cpp
+  gamessinputdata.cpp
+  gamessefpmatchdialog.cpp
+)
+qt4_wrap_ui(gamessextension_UIS_H gamessinputdialog.ui gamessefpmatchdialog.ui)
+qt4_automoc(${gamessextension_SRCS})
+add_library(gamessextension MODULE ${gamessextension_SRCS} ${gamessextension_UIS_H})
+target_link_libraries(gamessextension ${LINK_LIBS})
+install(TARGETS gamessextension DESTINATION ${DESTINATION_DIR})
 
 ### Properties
 #set(propextension_SRCS propmodel.cpp propextension.cpp)
