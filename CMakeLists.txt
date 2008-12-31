@@ -105,8 +105,6 @@ include_directories(${EIGEN2_INCLUDE_DIR})
 
 option(ENABLE_PYTHON "Enable python support" ON)
 
-# This may not be the best way to do this - please correct me if I am wrong.
-# Getting rid of automagic is nice and so this seems reasonable.
 if(ENABLE_PYTHON MATCHES ON)
   # Cmake's new FindBoost has an option to look for additional versions
   # e.g., there's now a 1.37.0 (and thus 1.37) release.
@@ -114,11 +112,10 @@ if(ENABLE_PYTHON MATCHES ON)
   find_package(Boost COMPONENTS python)
   if(Boost_PYTHON_FOUND)
     message(STATUS "Boost Python found - Python support enabled.")
+    find_package(PythonLibs)
+    find_package(PythonInterp)
+    find_package(Numpy)
   endif(Boost_PYTHON_FOUND)
-
-  find_package(PythonLibs)
-  find_package(PythonInterp)
-  find_package(Numpy)
 else(ENABLE_PYTHON MATCHES ON)
   message(STATUS "Python support disabled.")
 endif(ENABLE_PYTHON MATCHES ON)
