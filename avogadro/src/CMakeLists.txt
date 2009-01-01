@@ -33,11 +33,6 @@ set(avogadro_SRCS ${avogadro_SRCS} ${projectDelegates_SRCS})
 # Add GL2PS to the executable
 set(avogadro_SRCS ${avogadro_SRCS} "../gl2ps/gl2ps.c")
 
-# Mac ChemPasteboard currently disabled -- prevents drag-and-drop
-#if(NOT APPLE)
-  LIST(REMOVE_ITEM avogadro_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/macchempasteboard.cpp)
-#endif(NOT APPLE)
-
 if( WIN32 )
   set(avogadro_SRCS ${avogadro_SRCS} windows/avogadro.rc)
 endif( WIN32)
