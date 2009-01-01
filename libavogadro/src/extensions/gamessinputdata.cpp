@@ -1771,6 +1771,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
     }
 
     File << " $EFRAG" << endl;
+    File << "COORD=CART" << endl;
 
     for ( EFPGroupIter iter = IData->EFP->GetGroupBegin(); iter != IData->EFP->GetGroupEnd(); iter++ ) {
       if (( *iter )->type != GamessEFPGroup::EFPType ) { continue; }
@@ -1826,8 +1827,8 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
 
         char atomicNumber = atomIdx[i]->atomicNumber();
 
-        sprintf( Out, "%s   %5.1f  %10.5f  %10.5f  %10.5f",
-                  OpenBabel::etab.GetSymbol( atomicNumber ), ( float ) atomicNumber,
+        sprintf( Out, "%s%d    %10.5f  %10.5f  %10.5f",
+                  OpenBabel::etab.GetSymbol( atomicNumber ), i+1, ( float ) atomicNumber,
                   atomIdx[i]->pos()->x(), atomIdx[i]->pos()->y(), atomIdx[i]->pos()->z() );
         File << Out << endl;
       }
