@@ -107,6 +107,8 @@ namespace Avogadro {
        */
       QList<unsigned long int> bonds();
 
+      friend class Molecule;
+
     protected:
       Molecule *m_molecule;
       QString m_name; /** The name of the Fragment. **/

@@ -22,11 +22,11 @@
   02110-1301, USA.
  **********************************************************************/
 
- #ifndef MESH_H
- #define MESH_H
+#ifndef MESH_H
+#define MESH_H
 
-#include <Eigen/Core>
 #include <avogadro/primitive.h>
+#include <Eigen/Core>
 
 #include <vector>
 
@@ -149,6 +149,8 @@ namespace Avogadro {
 
     inline void setName(QString name) { m_name = name; }
     inline QString name() { return m_name; }
+
+    friend class Molecule;
 
   private:
     std::vector<Eigen::Vector3f> m_vertices;

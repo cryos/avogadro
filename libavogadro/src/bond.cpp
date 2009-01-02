@@ -39,8 +39,8 @@
       BondPrivate() {}
   };
 
-  Bond::Bond(QObject *parent) : Primitive(BondType, parent), m_beginAtomId(0),
-    m_endAtomId(0), m_order(1)
+  Bond::Bond(QObject *parent) : Primitive(BondType, parent),
+    m_beginAtomId(FALSE_ID), m_endAtomId(FALSE_ID), m_order(1)
   {
     m_molecule = static_cast<Molecule*>(parent);
     m_id = 0l - 1;
@@ -52,6 +52,10 @@
 
   void Bond::setBegin(Atom* atom)
   {
+    if (m_beginAtomId != FALSE_ID) {
+      Atom *a = m_molecule->atomById(m_beginAtomId);
+      if (a) a->removeBond(this);
+    }
     m_beginAtomId = atom->id();
     atom->addBond(this);
   }
@@ -63,6 +67,10 @@
 
   void Bond::setEnd(Atom* atom)
   {
+    if (m_endAtomId != FALSE_ID) {
+      Atom *a = m_molecule->atomById(m_endAtomId);
+      if (a) a->removeBond(this);
+    }
     m_endAtomId = atom->id();
     atom->addBond(this);
   }

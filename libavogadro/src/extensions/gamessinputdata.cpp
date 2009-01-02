@@ -12,11 +12,18 @@
     */
 
 #include "gamessinputdata.h"
+
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+
+#include <openbabel/atom.h>
+#include <openbabel/mol.h>
+
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 
-using namespace OpenBabel;
 
 #define GAMESS_BUFF_LEN 180
 
@@ -211,8 +218,8 @@ long GamessInputData::GetNumElectrons() const
 {
   long numElectrons = 0;
   if ( m_molecule ) {
-    FOR_ATOMS_OF_MOL( atom, m_molecule ) {
-      numElectrons += atom->GetAtomicNum();
+    foreach (Atom *atom, m_molecule->atoms()) {
+      numElectrons += atom->atomicNumber();
     }
   }
   return numElectrons;
@@ -257,13 +264,13 @@ void GamessEFPGroup::GetCenterOfMass( Molecule *molecule, double &x, double &y, 
   for ( std::vector<Atom *>::iterator i = atoms.begin(); i != atoms.end(); i++ ) {
     Atom *atom = *i;
 
-    double m = atom->GetAtomicMass();
+    double m = atom->OBAtom().GetAtomicMass();
 
     mass += m;
 
-    sum[0] += m * atom->x();
-    sum[1] += m * atom->y();
-    sum[2] += m * atom->z();
+    sum[0] += m * atom->pos()->x();
+    sum[1] += m * atom->pos()->y();
+    sum[2] += m * atom->pos()->z();
   }
 
   x = sum[0] / mass;
@@ -1750,11 +1757,11 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
       for ( std::vector<Atom *>::iterator i = ( *iter )->atoms.begin(); i != ( *iter )->atoms.end(); i++ ) {
         Atom *atom = *i;
 
-        char atomicNumber = atom ->GetAtomicNum();
+        char atomicNumber = atom ->atomicNumber();
 
         sprintf( Out, "%s   %5.1f  %10.5f  %10.5f  %10.5f",
-                  etab.GetSymbol( atomicNumber ), ( float ) atomicNumber,
-                  atom->GetX(), atom->GetY(), atom->GetZ() );
+                  OpenBabel::etab.GetSymbol( atomicNumber ), ( float ) atomicNumber,
+                  atom->pos()->x(), atom->pos()->y(), atom->pos()->z() );
         File << Out << endl;
       }
     }
@@ -1764,6 +1771,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
     }
 
     File << " $EFRAG" << endl;
+    File << "COORD=CART" << endl;
 
     for ( EFPGroupIter iter = IData->EFP->GetGroupBegin(); iter != IData->EFP->GetGroupEnd(); iter++ ) {
       if (( *iter )->type != GamessEFPGroup::EFPType ) { continue; }
@@ -1784,9 +1792,9 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
         Atom *atom = *idx;
 
         double atomPos[3];
-        atomPos[0] = atom->GetX();
-        atomPos[1] = atom->GetY();
-        atomPos[2] = atom->GetZ();
+        atomPos[0] = atom->pos()->x();
+        atomPos[1] = atom->pos()->y();
+        atomPos[2] = atom->pos()->z();
 
         double d = distance( atomPos, com );
 
@@ -1817,11 +1825,11 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
       for ( int i=0; i<3; i++ ) {
         if ( !atomIdx[i] ) { break; }
 
-        char atomicNumber = atomIdx[i]->GetAtomicNum();
+        char atomicNumber = atomIdx[i]->atomicNumber();
 
-        sprintf( Out, "%s   %5.1f  %10.5f  %10.5f  %10.5f",
-                  etab.GetSymbol( atomicNumber ), ( float ) atomicNumber,
-                  atomIdx[i]->GetX(), atomIdx[i]->GetY(), atomIdx[i]->GetZ() );
+        sprintf( Out, "%s%d    %10.5f  %10.5f  %10.5f",
+                  OpenBabel::etab.GetSymbol( atomicNumber ), i+1, 
+                  atomIdx[i]->pos()->x(), atomIdx[i]->pos()->y(), atomIdx[i]->pos()->z() );
         File << Out << endl;
       }
 
@@ -1843,11 +1851,11 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
 
   } else {
     // write out normal molecule stuff
-    FOR_ATOMS_OF_MOL( atom, molecule ) {
-      int atomicNumber = atom->GetAtomicNum();
+    foreach (Atom *atom, molecule->atoms()) {
+      int atomicNumber = atom->atomicNumber();
       sprintf( Out, "%s   %5.1f  %10.5f  %10.5f  %10.5f",
-               etab.GetSymbol( atomicNumber ), ( float ) atomicNumber,
-               atom->GetX(), atom->GetY(), atom->GetZ() );
+               OpenBabel::etab.GetSymbol( atomicNumber ), ( float ) atomicNumber,
+               atom->pos()->x(), atom->pos()->y(), atom->pos()->z() );
       File << Out << endl;
       //       if (BasisTest) lBasis->WriteBasis(File, iatom);
     }

@@ -79,7 +79,7 @@ namespace Avogadro {
      * @param atom2 Second atom in the bond.
      * @param order Bond order (defaults to 1).
      */
-    void setAtoms(unsigned long int atom1, unsigned long int atom2,
+    void setAtoms(unsigned long atom1, unsigned long atom2,
                   short order = 1);
 
     /**
@@ -101,7 +101,7 @@ namespace Avogadro {
     /**
      * @return the unique ID of the first atom in the bond.
      */
-    unsigned long int beginAtomId() const { return m_beginAtomId; }
+    unsigned long beginAtomId() const { return m_beginAtomId; }
 
     /**
      * @return Pointer to the first atom in the bond.
@@ -111,7 +111,7 @@ namespace Avogadro {
     /**
      * @return the unique ID of the second atom in the bond.
      */
-    unsigned long int endAtomId() const { return m_endAtomId; }
+    unsigned long endAtomId() const { return m_endAtomId; }
 
     /**
      * @return Pointer to the second atom in the bond.
@@ -140,7 +140,7 @@ namespace Avogadro {
      * @note This function does not perform checks to ensure the supplied
      * Atom is actually in the bond.
      */
-    unsigned long int otherAtom(unsigned long int atomId) const;
+    unsigned long otherAtom(unsigned long atomId) const;
 
     /**
      * @return the order of the bond - 1 = single, 2 = double etc.
@@ -176,8 +176,10 @@ namespace Avogadro {
     Bond& operator=(const Bond& other);
     /** @} */
 
+    friend class Molecule;
+
   private:
-    unsigned long int m_beginAtomId, m_endAtomId;
+    unsigned long m_beginAtomId, m_endAtomId;
     short m_order;
     mutable bool m_isAromatic;
     Molecule *m_molecule;

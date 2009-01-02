@@ -22,6 +22,10 @@
 
 #include "gamessinputdialog.h"
 
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QDebug>
@@ -33,7 +37,9 @@
 
 namespace Avogadro {
 
-  GamessInputDialog::GamessInputDialog( GamessInputData *inputData, QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f ), m_inputData(NULL), m_advancedChanged( false )
+  GamessInputDialog::GamessInputDialog( GamessInputData *inputData,
+    QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f ),
+    m_inputData(NULL), m_advancedChanged( false )
   {
     setInputData(inputData);
 

@@ -4,7 +4,7 @@
   Copyright (C) 2007 by Shahzad Ali
   Copyright (C) 2007 by Ross Braithwaite
   Copyright (C) 2007 by James Bunt
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2007,2008 by Marcus D. Hanwell
   Copyright (C) 2006,2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
@@ -34,11 +34,11 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
 
-#include <openbabel/mol.h>
+#include <Eigen/Core>
+
+#include <avogadro/molecule.h>
 
 #include <QGLWidget>
-#include <QObject>
-#include <QStringList>
 #include <QImage>
 #include <QAction>
 #include <QUndoCommand>
@@ -47,7 +47,6 @@
 #include <QSpinBox>
 #include <QCheckBox>
 #include <QGridLayout>
-
 
 namespace Avogadro {
 
@@ -81,10 +80,10 @@ namespace Avogadro {
       //! \name Tool Methods
       //@{
       //! \brief Callback methods for ui.actions on the canvas.
-      virtual QUndoCommand* mousePress(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* mouseRelease(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* mouseMove(GLWidget *widget, const QMouseEvent *event);
-      virtual QUndoCommand* wheel(GLWidget *widget, const QWheelEvent *event);
+      virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
       //@}
 
       virtual int usefulness() const;

@@ -81,26 +81,6 @@ namespace Avogadro {
     void setAtomicNumber(int num) { m_atomicNumber = num; }
 
     /**
-     * Adds a reference to a bond to the atom.
-     */
-    void addBond(unsigned long int bond);
-
-    /**
-     * Adds a reference to a bond to the atom.
-     */
-    void addBond(Bond* bond);
-
-    /**
-     * Removes the reference of the bond to the atom.
-     */
-    void removeBond(Bond* bond);
-
-    /**
-     * Removes the reference of the bond to the atom.
-     */
-    void removeBond(unsigned long int bond);
-
-    /**
      * Set the partial charge of the atom.
      * @note This is not calculated by the atom, instead call Molecule::calculatePartialCharges()
      */
@@ -108,16 +88,6 @@ namespace Avogadro {
     {
       m_partialCharge = charge;
     }
-
-    /**
-     * Set the Residue that this Atom is a part of.
-     */
-    void setResidue(unsigned long int id);
-
-    /**
-     * Set the Residue that this Atom is a part of.
-     */
-    void setResidue(const Residue *residue);
     /** @} */
 
 
@@ -152,6 +122,13 @@ namespace Avogadro {
      * @return List of neighbor ids to the atom (atoms bonded to that atom).
      */
     QList<unsigned long int> neighbors() const;
+
+    /**
+     * Use this function to get the bond between this Atom and another.
+     * @param other The other Atom to test for bonding.
+     * @return Pointer to the bond between the two atoms, or 0.
+     */
+    Bond * bond(const Atom *other) const;
 
     /**
      * The valence of the atom. FIXME - don't think this will cut it...
@@ -203,7 +180,41 @@ namespace Avogadro {
     Atom& operator=(const Atom& other);
     /** @} */
 
-  private:
+    friend class Molecule;
+    friend class Bond;
+    friend class Residue;
+
+  protected:
+    /**
+     * Adds a reference to a bond to the atom.
+     */
+    void addBond(unsigned long int bond);
+
+    /**
+     * Adds a reference to a bond to the atom.
+     */
+    void addBond(Bond* bond);
+
+    /**
+     * Removes the reference of the bond to the atom.
+     */
+    void removeBond(Bond* bond);
+
+    /**
+     * Removes the reference of the bond to the atom.
+     */
+    void removeBond(unsigned long int bond);
+
+    /**
+     * Set the Residue that this Atom is a part of.
+     */
+    void setResidue(unsigned long int id);
+
+    /**
+     * Set the Residue that this Atom is a part of.
+     */
+    void setResidue(const Residue *residue);
+
     /* shared d_ptr with Primitive */
     Molecule *m_molecule; /** Parent molecule - should always be valid. **/
     int m_pos;

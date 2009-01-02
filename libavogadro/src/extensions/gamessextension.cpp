@@ -22,9 +22,9 @@
 
 #include "gamessextension.h"
 
-#include <avogadro/primitive.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
+#include <avogadro/bond.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 
@@ -42,6 +42,7 @@
 #include <QSpacerItem>
 #include <QMessageBox>
 #include <QHeaderView>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -208,54 +209,44 @@ namespace Avogadro
       return 0;
     }
 
-    PrimitiveList selectedPrimitives = widget->selectedPrimitives();
-    OpenBabel::OBMol selectedMolecule;
+    m_molecule = molecule;
 
-    int numAtoms = 0;
-    std::map<OBAtom*, OBAtom*> AtomMap; // key is from old, value from new
+    PrimitiveList selectedPrimitives = widget->selectedPrimitives();
+    Molecule selectedMolecule;
+
     foreach(Primitive *p, selectedPrimitives.subList(Primitive::AtomType)) {
-      OpenBabel::OBAtom selected = static_cast<Atom*>(p)->OBAtom();
-      selectedMolecule.InsertAtom(selected);
-      AtomMap[&selected] = selectedMolecule.GetAtom(selectedMolecule.NumAtoms());
-      numAtoms++;
+      Atom *selected = static_cast<Atom*>(p);
+      Atom *atom = selectedMolecule.addAtom(selected->id());
+      *atom = *selected;
     }
 
     // use the atom map to map bonds
-    int numBonds = 0;
-    map<OBAtom*, OBAtom*>::iterator posBegin, posEnd;
-    OpenBabel::OBMol obmol = molecule->OBMol();
-    FOR_BONDS_OF_MOL(b, &obmol) {
-      posBegin = AtomMap.find( b->GetBeginAtom() );
-      posEnd = AtomMap.find( b->GetEndAtom() );
+    foreach (Bond *b, m_molecule->bonds()) {
       // make sure both bonds are in the map (i.e. selected)
-      if ( posBegin != AtomMap.end() && posEnd != AtomMap.end() ) {
-        selectedMolecule.AddBond(( posBegin->second )->GetIdx(),
-                                 ( posEnd->second )->GetIdx(),
-                                 b->GetBO(), b->GetFlags() );
-        numBonds++;
+      if (selectedMolecule.atomById(b->beginAtomId()) &&
+          selectedMolecule.atomById(b->endAtomId())) {
+        Bond *bond = selectedMolecule.addBond(b->id());
+        bond->setAtoms(b->beginAtomId(), b->endAtomId(), b->order());
       }
     } // end looping over bonds
 
     // get the SMARTS pattern
-    string pattern = conv.WriteString( &selectedMolecule );
+    OpenBabel::OBMol obmol = selectedMolecule.OBMol();
+    string pattern = conv.WriteString( &obmol );
     pattern.erase( pattern.find_first_of( " \t\n\r" ) );
 
-//     QMessageBox::information( 0, tr( "" ), "Got Pattern : " + QString::fromStdString( pattern ) );
+//    QMessageBox::information( 0, tr( "" ), "Got Pattern : " + QString::fromStdString( pattern ) );
 
     OBSmartsPattern sp;
     sp.Init( pattern );
 
     if (sp.Match(obmol)) {
       // before we begin we need to see what has already been selected.
-
-      QVector<OpenBabel::OBAtom *> usedAtoms;
-
-      for(int parentNum = 0; parentNum < m_efpModel->rowCount(); parentNum++ )
-      {
+      QVector<Atom *> usedAtoms;
+      for(int parentNum = 0; parentNum < m_efpModel->rowCount(); parentNum++ ) {
         QStandardItem *parentItem = m_efpModel->item(parentNum);
 
-        for(int childNum = 0; childNum < parentItem->rowCount(); childNum++ )
-        {
+        for(int childNum = 0; childNum < parentItem->rowCount(); childNum++ ) {
           QStandardItem *childItem = parentItem->child(childNum);
           QVector<Atom *> atoms = childItem->data().value<QVector<Atom *> >();
 
@@ -268,7 +259,8 @@ namespace Avogadro
 
       vector< vector<int> > maplist = sp.GetUMapList();
 
-      for ( vector< vector<int> >::iterator it1 = maplist.begin(); it1 != maplist.end(); it1++ ) {
+      for (vector< vector<int> >::iterator it1 = maplist.begin();
+           it1 != maplist.end(); it1++) {
 
         QVector<int> matches = QVector<int>::fromStdVector( *it1 );
 
@@ -277,40 +269,42 @@ namespace Avogadro
         bool first = true;
         bool selected = false;
         QVector<Atom *> atomMatches;
-        foreach( int i, matches ) {
-          OpenBabel::OBAtom *atom = obmol.GetAtom(i);
+        foreach(int i, matches) {
+          Atom *atom = selectedMolecule.atom(i-1);
 
-          if(usedAtoms.contains(atom))
-          {
+          if(usedAtoms.contains(m_molecule->atomById(atom->id()))) {
             valid=false;
             break;
           }
 
-          atomMatches.append(atom);
+          atomMatches.append(m_molecule->atomById(atom->id()));
           // if this matches our original atom
-          if(!selected && selectedPrimitives.contains(atom)) {
+          if(!selected && selectedPrimitives.contains(m_molecule->atomById(atom->id()))) {
             selected = true;
           }
 
           if ( !first ) {
             text.append( tr( ", " ) );
-          } else {
+          }
+          else {
             first = false;
           }
 
           text.append( QString::number( i ) );
 
-          FOR_NBORS_OF_ATOM( a, atom ) {
+          foreach (unsigned long ai, atom->neighbors()) {
+            Atom *a = m_molecule->atom(ai);
             // all connected atoms must also be in our match
             // see if each neighbor is a hydrogen or another match
-            if ( a->IsHydrogen() ) {
+            if ( a->isHydrogen() ) {
               if ( !first ) {
                 text.append( tr( ", " ) );
               }
-              int idx = a->GetIdx();
-              text.append( QString::number( idx ) );
-              atomMatches.append( static_cast<Atom *>(&*a) );
-            } else if ( !matches.contains( a->GetIdx() ) ) {
+              int idx = m_molecule->atomById(a->id())->index();
+              text.append(QString::number(idx));
+              atomMatches.append((m_molecule->atomById(a->id())));
+            }
+            else if (!matches.contains(selectedMolecule.atomById(a->id())->index()+1)) {
               valid = false;
               break;
             }
@@ -468,7 +462,8 @@ namespace Avogadro
 
   }
 
-  void GamessExtension::efpWidgetAccepted( const GamessEfpMatchDialog::Type &type, const QString &name, const QList<QVector<Atom *> > &groups )
+  void GamessExtension::efpWidgetAccepted( const GamessEfpMatchDialog::Type &type,
+                    const QString &name, const QList<QVector<Atom *> > &groups )
   {
     QString groupName = name;
     if ( !groupName.size() ) {
@@ -488,7 +483,7 @@ namespace Avogadro
         } else {
           first = false;
         }
-        groupString.append( QString::number( atom->GetIdx() ) );
+        groupString.append( QString::number( atom->index()+1 ) );
 
       }
 
@@ -600,7 +595,7 @@ namespace Avogadro
           } else {
             first = false;
           }
-          text.append( QString::number( atom->GetIdx() ) );
+          text.append( QString::number( atom->index()+1 ) );
 
           if(atom == primitive)
           {

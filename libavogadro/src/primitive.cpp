@@ -42,16 +42,22 @@ namespace Avogadro {
   };
 
   Primitive::Primitive(QObject *parent) : QObject(parent),
-    d_ptr(new PrimitivePrivate), m_type(Primitive::OtherType), m_id(-1),
+    d_ptr(new PrimitivePrivate), m_type(Primitive::OtherType), m_id(FALSE_ID),
     m_lock(new QReadWriteLock) {}
 
   Primitive::Primitive(enum Type type, QObject *parent) : QObject(parent),
-    d_ptr(new PrimitivePrivate), m_type(type), m_id(-1), m_lock(new QReadWriteLock)
+    d_ptr(new PrimitivePrivate), m_type(type), m_id(FALSE_ID),
+    m_lock(new QReadWriteLock)
   {}
 
-  Primitive::Primitive(PrimitivePrivate &dd, QObject *parent) : QObject(parent), d_ptr(&dd) {}
+  Primitive::Primitive(PrimitivePrivate &dd, QObject *parent) : QObject(parent),
+    d_ptr(&dd)
+  {}
 
-  Primitive::Primitive(PrimitivePrivate &dd, enum Type type, QObject *parent) : QObject(parent), d_ptr(&dd), m_type(type), m_id(-1), m_lock(new QReadWriteLock) {}
+  Primitive::Primitive(PrimitivePrivate &dd, enum Type type, QObject *parent)
+    : QObject(parent), d_ptr(&dd), m_type(type), m_id(FALSE_ID),
+    m_lock(new QReadWriteLock)
+  {}
 
   Primitive::~Primitive()
   {
@@ -79,19 +85,9 @@ namespace Avogadro {
     m_id = id;
   }
 
-  unsigned long Primitive::id() const
-  {
-    return m_id;
-  }
-
   void Primitive::setIndex(unsigned long index)
   {
     m_index = index;
-  }
-
-  unsigned long Primitive::index() const
-  {
-    return m_index;
   }
 
 }

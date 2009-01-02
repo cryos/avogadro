@@ -114,6 +114,11 @@ using Eigen::Vector3d;
     return QList<unsigned long int>();
   }
 
+  Bond * Atom::bond(const Atom *other) const
+  {
+    return m_molecule->bond(this, other);
+  }
+
   double Atom::partialCharge() const
   {
     if (m_molecule && m_atomicNumber) {

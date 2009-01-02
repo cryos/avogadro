@@ -29,16 +29,16 @@ set(LINK_LIBS "avogadro-lib")
 #install(TARGETS templateextension DESTINATION ${DESTINATION_DIR})
 
 ### gamess
-#set(gamessextension_SRCS gamessextension.cpp
-#  gamessinputdialog.cpp
-#  gamessinputdata.cpp
-#  gamessefpmatchdialog.cpp
-#)
-#qt4_wrap_ui(gamessextension_UIS_H gamessinputdialog.ui gamessefpmatchdialog.ui)
-#qt4_automoc(${gamessextension_SRCS})
-#add_library(gamessextension MODULE ${gamessextension_SRCS} ${gamessextension_UIS_H})
-#target_link_libraries(gamessextension ${LINK_LIBS})
-#install(TARGETS gamessextension DESTINATION ${DESTINATION_DIR})
+set(gamessextension_SRCS gamessextension.cpp
+  gamessinputdialog.cpp
+  gamessinputdata.cpp
+  gamessefpmatchdialog.cpp
+)
+qt4_wrap_ui(gamessextension_UIS_H gamessinputdialog.ui gamessefpmatchdialog.ui)
+qt4_automoc(${gamessextension_SRCS})
+add_library(gamessextension MODULE ${gamessextension_SRCS} ${gamessextension_UIS_H})
+target_link_libraries(gamessextension ${LINK_LIBS})
+install(TARGETS gamessextension DESTINATION ${DESTINATION_DIR})
 
 ### Properties
 #set(propextension_SRCS propmodel.cpp propextension.cpp)
@@ -87,20 +87,12 @@ target_link_libraries(selectextension ${LINK_LIBS})
 install(TARGETS selectextension DESTINATION ${DESTINATION_DIR})
 
 ### unit cells
-#set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)
-#qt4_wrap_ui(unitcellextension_UIS_H unitcellparamdialog.ui)
-#qt4_automoc(${unitcellextension_SRCS})
-#add_library(unitcellextension MODULE ${unitcellextension_SRCS} ${unitcellextension_UIS_H})
-#target_link_libraries(unitcellextension ${LINK_LIBS})
-#install(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
-
-### super cell builder
-#set(supercellextension_SRCS supercellbuilder.cpp supercelldialog.cpp)
-#qt4_wrap_ui(supercellextension_UIS_H supercelldialog.ui)
-#qt4_automoc(${supercellextension_SRCS})
-#add_library(supercellextension MODULE ${supercellextension_SRCS} ${supercellextension_UIS_H})
-#target_link_libraries(supercellextension ${LINK_LIBS})
-#install(TARGETS supercellextension DESTINATION ${DESTINATION_DIR})
+set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)
+qt4_wrap_ui(unitcellextension_UIS_H unitcellparamdialog.ui)
+qt4_automoc(${unitcellextension_SRCS})
+add_library(unitcellextension MODULE ${unitcellextension_SRCS} ${unitcellextension_UIS_H})
+target_link_libraries(unitcellextension ${LINK_LIBS})
+install(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
 
 ### h->methyl
 set(h2methylextension_SRCS h2methylextension.cpp)

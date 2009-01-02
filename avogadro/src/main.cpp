@@ -79,6 +79,19 @@ int main(int argc, char *argv[])
 
   Application app(argc, argv);
 
+  QStringList arguments = app.arguments();
+
+  if(arguments.contains("-v") || arguments.contains("--version"))
+  {
+    printVersion(arguments[0]);
+    return 0;
+  }
+  else if(arguments.contains("-h") || arguments.contains("--help"))
+  {
+    printHelp(arguments[0]);
+    return 0;
+  }
+
   if (!QGLFormat::hasOpenGL()) {
     QMessageBox::information(0, "Avogadro",
         "This system does not support OpenGL.");
@@ -129,19 +142,6 @@ int main(int argc, char *argv[])
     qDebug() << "\tDirect Rendering.";
   if (defFormat.sampleBuffers())
     qDebug() << "\tAntialiasing.\n";
-
-  QStringList arguments = app.arguments();
-
-  if(arguments.contains("-v") || arguments.contains("--version"))
-  {
-    printVersion(arguments[0]);
-    return 0;
-  }
-  else if(arguments.contains("-h") || arguments.contains("--help"))
-  {
-    printHelp(arguments[0]);
-    return 0;
-  }
 
   MainWindow *window = new MainWindow();
   if (arguments.size() > 1) {

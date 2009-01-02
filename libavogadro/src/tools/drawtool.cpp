@@ -273,18 +273,12 @@ namespace Avogadro {
             }
 
             if(m_bond) {
+              m_bond->setEnd(existingAtom);
               if(m_endAtom) {
-                m_endAtom->removeBond(m_bond);
                 molecule->removeAtom(m_endAtom);
                 m_endAtomAdded = false;
                 m_endAtom = 0;
-              } else {
-                Atom *oldAtom = molecule->atomById(m_bond->endAtomId());
-                if (oldAtom) {
-                  oldAtom->removeBond(m_bond);
-                }
               }
-              m_bond->setEnd(existingAtom);
             }
             else {
               m_bond = addBond(molecule, m_beginAtom, existingAtom);
@@ -334,8 +328,6 @@ namespace Avogadro {
             m_bond = addBond(molecule, m_beginAtom, m_endAtom);
           }
           else {
-            Atom *oldAtom = molecule->atomById(m_bond->endAtomId());
-            oldAtom->removeBond(m_bond);
             m_bond->setEnd(m_endAtom);
           }
         }
