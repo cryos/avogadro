@@ -114,6 +114,7 @@ if(ENABLE_PYTHON MATCHES ON)
   find_package(Boost COMPONENTS python)
   if(Boost_PYTHON_FOUND)
     message(STATUS "Boost Python found - Python support enabled.")
+    add_definitions( -DENABLE_PYTHON )
   endif(Boost_PYTHON_FOUND)
 
   find_package(PythonLibs)
