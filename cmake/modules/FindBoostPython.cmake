@@ -25,7 +25,7 @@ set(BOOST_PYTHON_INCLUDES)
 set(BOOST_PYTHON_LIBS)
 
 # handy arrays
-set(PYTHON_VERSIONS "python;python2.5;python2.4;python2.3;python2.2")
+set(PYTHON_VERSIONS "python;python2.6;python2.5;python2.4;python2.3;python2.2")
 set(PYTHON_INCLUDE_DIRS "/usr/include/$pyver;/usr/local/include/$pyver;/usr/$pyver/include;/usr/local/$pyver/include;$prefix/include/$pyver;$prefix/$pyver/include")
 set(PYTHON_LIBRARY_DIRS "/usr/lib${LIB_SUFFIX};/usr/local/lib${LIB_SUFFIX};/usr/lib${LIB_SUFFIX}/$pyver/config")
 set(PYTHON_LIBS "boost_python-gcc-mt;boost_python-mt;boost_python-gcc-mt-1_33;boost_python-gcc-mt-1_33_1;boost_python;boost_python-gcc-mt-1_32;boost_python")
