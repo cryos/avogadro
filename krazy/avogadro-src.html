@@ -5,21 +5,19 @@
 </head>
 <body>
 <h1>krazy2 Analysis</h1>
-<p>Checkers Run = 24<br>
-Files Processed = 29<br>
-Total Issues = 4 ...as of Mai 25 2008 14:15:26</p>
+<p>Checkers Run = 27<br>
+Files Processed = 41<br>
+Total Issues = 17 ...as of January 04 2009 13:12:49 CET</p>
 <ul>
 <li><b><u>For File Type c++
 </u></b>
 <ol>
-<li>Check for TRUE and FALSE macros... 
-<b>okay!</b>
-<li>Check for methods that return 'const' refs in public classes... 
-<b>okay!</b>
-<li>Check for contractions in strings... 
-<b>okay!</b>
-<li>Check for cpp macros and usage... 
-<b>OOPS! 2 issues found!</b>
+<li>Check for TRUE and FALSE macros [captruefalse]...
+<b>Ok!</b>
+<li>Check for methods that return 'const' refs in public classes [constref]...
+<b>Ok!</b>
+<li>Check for cpp macros and usage [cpp]...
+<b>2 issues found</b>
 <ul>
 <li>	../avogadro/src/application.cpp: O/S or Compiler specific macro line#25[Q_OS_UNIX],35[Q_OS_UNIX] (2)
 </li>
@@ -30,54 +28,128 @@ Total Issues = 4 ...as of Mai 25 2008 14:15:26</p>
 	during CMake time rather than for a specific O/S.</p>
 </li>
 
-<li>Check single-char QString operations that could be written more efficiently... 
-<b>okay!</b>
-<li>Check for unwanted doxygen tags in major versions... 
-<b>okay!</b>
-<li>Check public classes with private members or d-pointer issues... 
-<b>okay!</b>
-<li>Check for QString compares to ""... 
-<b>okay!</b>
-<li>Check that file ends with a newline... 
-<b>okay!</b>
-<li>Check for C++ ctors that should be declared 'explicit'... 
-<b>okay!</b>
-<li>Check validity of i18n calls... 
-<b>okay!</b>
-<li>Check for invalid icon names... 
-<b>okay!</b>
-<li>Check for proper include directives... 
-<b>okay!</b>
-<li>Check for inline methods in public classes... 
-<b>okay!</b>
-<li>Check for assignments to QString::null... 
-<b>okay!</b>
-<li>Check for compares to QString::null... 
-<b>okay!</b>
-<li>Check for inappropriate pass-by-value function args... 
-<b>okay!</b>
-<li>Check for invalid SIGNALs and SLOTs passed to connect()... 
-<b>okay!</b>
-<li>Check for Qt methods that should be avoided... 
-<b>okay!</b>
-<li>Check for QMIN and QMAX macros... 
-<b>okay!</b>
-<li>Check for classes that should use the 'Q_OBJECT' macro... 
-<b>okay!</b>
-<li>Check for signals: and slots:... 
-<b>okay!</b>
-<li>Check for spelling errors... 
-<b>okay!</b>
-<li>Check for system calls to replace by KDE or Qt equivalents... 
-<b>OOPS! 2 issues found!</b>
+<li>Check single-char QString operations for efficiency [doublequote_chars]...
+<b>2 issues found</b>
 <ul>
-<li>	../avogadro/src/mainwindow.cpp: line#1657 getenv[qgetenv],1658 getenv[qgetenv] (2)
+<li>	../avogadro/src/mainwindow.cpp: split issues line#2180 (1)
+</li>
+<li>	../avogadro/src/savedialog.cpp: line#91 (1)
 </li>
 </ul>
-<p><p><p><b>Why should I care?</b>	Some system calls are not portable, please use the suggested
-	portable wrapper instead. See kde_file.h</p>
+<p><p><p><b>Why should I care?</b>	Adding single characters to a QString is faster if the characters
+	are QChars and not QStrings.  For example: QString path = oldpath +
+	&quot;/&quot; + base is better written as QString path = oldpath + &#39;/&#39; +
+	base. Same holds for arguments to QString::startsWith(),
+	QString::endsWith(), QString::remove() and QString::split(). Use
+	QString::remove() instead of QString::replace(foo,&quot;&quot;)</p>
 </li>
 
+<li>Check for unwanted doxygen tags in major versions [doxytags]...
+<b>Ok!</b>
+<li>Check public classes with private members or d-pointer issues [dpointer]...
+<b>Ok!</b>
+<li>Check for QString compares to "" [emptystrcompare]...
+<b>Ok!</b>
+<li>Check that file ends with a newline [endswithnewline]...
+<b>Ok!</b>
+<li>Check for C++ ctors that should be declared 'explicit' [explicit]...
+<b>1 issue found</b>
+<ul>
+<li>	../avogadro/src/projecttreeitem.h: line#41 (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Make all C++ class constructors that can be used with only one
+	required argument &#39;explicit&#39; to minimize wrong use of the class. Do
+	this to avoid mistaken implicit constructor ambiguities. Copy
+	constructors should not be explicit.</p>
+</li>
+
+<li>Check for foreach loop issues [foreach]...
+<b>8 issues found</b>
+<ul>
+<li>	../avogadro/src/editcommands.cpp: line#58,65,72,145,152,159 (6)
+</li>
+<li>	../avogadro/src/mainwindow.cpp: line#727,1023 (2)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	When not using POD types (int, double, pointer, ...) you should use
+	const &amp; for your foreach variables. There are two reasons for this:
+	1) Prevents you from the mistake of writing foreach loops that
+	modify the list, that is &#39;foreach(Foo f, list) f.a = f.b = f.c =
+	0;&#39; compiles but does not modify the contents of list 2) Saves a
+	copy constructor call for each of the list elements</p>
+</li>
+
+<li>Check validity of i18n calls [i18ncheckarg]...
+<b>Ok!</b>
+<li>Check for invalid icon names [iconnames]...
+<b>Ok!</b>
+<li>Check for proper include directives [includes]...
+<b>1 issue found</b>
+<ul>
+<li>	../avogadro/src/projecttreeeditor.h: missing or improper include guard in header
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Use &lt;..&gt; to include installed headers; &lt;QtModule/QClass&gt; to include
+	Qt headers from installed headers; cpp file should include their
+	own headers first (but below config.h); other rules apply, see
+	<a href="http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right">http://techbase.kde.org/Policies/Library_Code_Policy#Getting_.23in
+	cludes_right</a>. Use include guards in headers with appropriatedly
+	encoded macro names.</p>
+</li>
+
+<li>Check for inline methods in public classes [inline]...
+<b>Ok!</b>
+<li>Check for assignments to QString::null [nullstrassign]...
+<b>Ok!</b>
+<li>Check for compares to QString::null or QString() [nullstrcompare]...
+<b>Ok!</b>
+<li>Check for inappropriate pass-by-value function args [passbyvalue]...
+<b>Ok!</b>
+<li>Check for postfix usage of ++ and -- [postfixop]...
+<b>1 issue found</b>
+<ul>
+<li>	../avogadro/src/mainwindow.cpp: line#1677 (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	You should use ++ and -- as prefix whenever possible as these are
+	more efficient than postfix operators. Prefix increments first and
+	then uses the variable, postfix uses the actual; the variable is
+	incremented as well. Because of this, the prefix operators are
+	inherently more efficient. <strong>WARNING</strong> Make sure that you don&#39;t
+	introduce off-by-one errors when changing i++ to ++i.</p>
+</li>
+
+<li>Check for dangerous or inefficient QByteArray usage [qbytearray]...
+<b>Ok!</b>
+<li>Check for invalid SIGNALs and SLOTs passed to connect() [qconnect]...
+<b>Ok!</b>
+<li>Check for Qt methods that should be avoided [qmethods]...
+<b>Ok!</b>
+<li>Check for QMIN and QMAX macros [qminmax]...
+<b>Ok!</b>
+<li>Check for classes that should use the 'Q_OBJECT' macro [qobject]...
+<b>Ok!</b>
+<li>Check for signals: and slots: [sigsandslots]...
+<b>Ok!</b>
+<li>Check for spelling errors [spelling]...
+<b>2 issues found</b>
+<ul>
+<li>	../avogadro/src/projecttreemodel.h: line#121[wether] (1)
+</li>
+<li>	../avogadro/src/projecttreemodeldelegate.h: line#82[initilize] (1)
+</li>
+</ul>
+<p><p><p><b>Why should I care?</b>	Spelling errors in comments and strings should be fixed as they may
+	show up later in API documentation, handbooks, etc.  Misspelled
+	strings make the translator&#39;s job harder. Please use US English.</p>
+</li>
+
+<li>Check for system calls to replace by KDE or Qt equivalents [syscalls]...
+<b>Ok!</b>
+<li>Check for typedefs that should be replaced by Qt typedefs [typedefs]...
+<b>Ok!</b>
 </ol>
 <br>
 </ul>
