@@ -74,20 +74,28 @@ IF( APPLE )
   # Need to copy the icon files and other resources
   SET( MACOSX_BUILD_CONTENTS_DIR ${CMAKE_CURRENT_BINARY_DIR}/Avogadro.app/Contents/Resources )
 	SET( MACOSX_SRC_DIR ${avogadro_SOURCE_DIR}/src/mac )
-  EXEC_PROGRAM( "mkdir -p   ${MACOSX_BUILD_CONTENTS_DIR}" )
-  EXEC_PROGRAM( "cp ${MACOSX_SRC_DIR}/avogadro.icns ${MACOSX_BUILD_CONTENTS_DIR}" )
-  EXEC_PROGRAM("cp ${MACOSX_SRC_DIR}/AvogadroDocument.icns ${MACOSX_BUILD_CONTENTS_DIR}" )
-  SET( TRANSLATIONS ar ca de en en_GB es fr it pl pt pt_BR ru zh_CN zh_TW )
+  EXECUTE_PROCESS(
+                  COMMAND mkdir -p   ${MACOSX_BUILD_CONTENTS_DIR}
+                  OUTPUT_QUIET)
+  EXECUTE_PROCESS(
+                  COMMAND cp ${MACOSX_SRC_DIR}/avogadro.icns ${MACOSX_BUILD_CONTENTS_DIR}
+                  OUTPUT_QUIET)
+  EXECUTE_PROCESS(
+                  COMMAND cp ${MACOSX_SRC_DIR}/AvogadroDocument.icns ${MACOSX_BUILD_CONTENTS_DIR}
+                  OUTPUT_QUIET)
+  SET( TRANSLATIONS ar ca de en en_GB es fr it pl pt pt_BR ru zh zh_CN zh_TW )
 	FOREACH(lang ${TRANSLATIONS})
-	  EXEC_PROGRAM("if [ ! -d ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj ]; then mkdir ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj; fi" )
+	  EXECUTE_PROCESS(COMMAND
+          if [ ! -d ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj ]; then mkdir ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj; fi
+          OUTPUT_QUIET)
 	ENDFOREACH(lang ${TRANSLATIONS})
 
   # Overload the Info.plist default
   SET( CMAKE_MODULE_PATH ${avogadro_SOURCE_DIR}/src/mac ${CMAKE_MODULE_PATH} )
   INSTALL(TARGETS avogadro-app DESTINATION /Applications)
   INSTALL(
-          CODE "EXEC_PROGRAM(\"install_name_tool -change ${libavogadro_BINARY_DIR}/src/libavogadro.0.dylib ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/libavogadro.0.dylib /Applications/avogadro.app/Contents/MacOS/avogadro\")")
-  INSTALL(CODE "EXEC_PROGRAM(\"mv /Applications/avogadro.app /Applications/Avogadro.app\")")
+          CODE "EXECUTE_PROCESS(COMMAND install_name_tool -change ${libavogadro_BINARY_DIR}/src/libavogadro.0.dylib ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/libavogadro.0.dylib /Applications/avogadro.app/Contents/MacOS/avogadro OUTPUT_QUIET)")
+  INSTALL(CODE "EXECUTE_PROCESS(COMMAND mv /Applications/avogadro.app /Applications/Avogadro.app OUTPUT_QUIET)")
 
 ELSE( APPLE)
   INSTALL(TARGETS avogadro-app DESTINATION bin)
