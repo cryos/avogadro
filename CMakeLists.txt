@@ -168,7 +168,7 @@ ADD_CUSTOM_TARGET(uninstall
 FILE(GLOB_RECURSE avogadro_TS i18n/*.ts)
 ADD_CUSTOM_TARGET(update-translations
     COMMAND ${QT_LUPDATE_EXECUTABLE}
-    ${CMAKE_CURRENT_SOURCE_DIR} -ts ${avogadro_TS}
+    ${CMAKE_CURRENT_SOURCE_DIR} -noobsolete -ts ${avogadro_TS}
     WORKING_DIRECTORY
     ${CMAKE_CURRENT_SOURCE_DIR})
 # tell cmake to process CMakeLists.txt in that subdirectory
