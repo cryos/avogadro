@@ -16,8 +16,8 @@ namespace Avogadro {
 
   public:
     GLGraphicsView(QWidget *parent = 0);
-    GLGraphicsView(GLWidget *widget, QWidget *parent = 0);
-    GLGraphicsView(QGraphicsScene *scene, QWidget *parent = 0);
+    explicit GLGraphicsView(GLWidget *widget, QWidget *parent = 0);
+    explicit GLGraphicsView(QGraphicsScene *scene, QWidget *parent = 0);
 
     void constructor();
 

@@ -92,7 +92,7 @@ namespace Avogadro
     {
       // It appears you need to be using the shader to assign values to it
       if (params->isEmpty()) {
-        qDebug() << "Empty paramters sent to the load parameters function.";
+        qDebug() << "Empty parameters sent to the load parameters function.";
         return false;
       }
       glUseProgramObjectARB(shaderProgram);
@@ -203,7 +203,7 @@ namespace Avogadro
       QMessageBox::warning(widget, "no GLSL support", "This system doesn't support shaders.");
       return 0;
     }
-    
+
     if (!m_shaderDialog) {
       m_shaderDialog = new ShaderDialog();
       populateEngineCombo();
@@ -390,7 +390,7 @@ namespace Avogadro
       + "share/libavogadro/shaders";
     verts.cd(systemShadersPath);
     #endif
-    
+
     QStringList filters;
     filters << "*.vert";
     verts.setNameFilters(filters);

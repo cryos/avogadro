@@ -22,9 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-
-#ifndef AVOPYTHON_H
-#define AVOPYTHON_H
+#ifndef PYTHONINTERPRETER_H
+#define PYTHONINTERPRETER_H
 
 #include <avogadro/global.h>
 //#include <avogadro/boost.h>
