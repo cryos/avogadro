@@ -1,6 +1,9 @@
 #!/bin/sh
 BASEDIR="../avogadro"	# root of translatable sources
 PROJECT="avogadro"	# project name
+PACKAGE="Avogadro"  # user-readable package name
+# user-readable version
+VERSION=`grep 'set(VERSION' libavogadro/CMakeLists.txt | cut -f 2 -d ' ' | cut -f 1 -d ')'`
 BUGADDR="avogadro-devel@lists.sourceforge.net"	# MSGID-Bugs
 WDIR=`pwd`		# working dir
 I18NDIR="i18n"          # i18n dir
@@ -26,10 +29,19 @@ cd ${WDIR}
 xgettext --from-code=UTF-8 -C -kde -ci18n -ki18n:1 -ki18nc:1c,2 -ki18np:1,2 -ki18ncp:1c,2,3 -ktr2i18n:1 \
 	-kI18N_NOOP:1 -kI18N_NOOP2:1c,2 -kaliasLocale -kki18n:1 -kki18nc:1c,2 -kki18np:1,2 -kki18ncp:1c,2,3 \
   -ktr:1 -ktrUtf8:1 --qt \
+  --package-name=${PACKAGE} --package-version=${VERSION} \
 	--msgid-bugs-address="${BUGADDR}" --foreign-user --copyright-holder="The Avogadro Project" \
 	--files-from=infiles.list -D ${BASEDIR} -D ${WDIR} -o ${PROJECT}.pot || { echo "error while calling xgettext. aborting."; exit 1; }
 echo "Done extracting messages"
- 
+
+# Replace some boilerplate strings
+sed -e "s/SOME DESCRIPTIVE TITLE/Translations for the Avogadro molecular editor/" <${PROJECT}.pot >${PROJECT}.new
+mv ${PROJECT}.new ${PROJECT}.pot
+sed -e 's/Copyright (C) YEAR/Copyright (C) 2006-2009/' <${PROJECT}.pot >${PROJECT}.new
+mv ${PROJECT}.new ${PROJECT}.pot
+sed -e 's/as the PACKAGE package/as the Avogadro package/' <${PROJECT}.pot >${PROJECT}.new
+mv ${PROJECT}.new ${PROJECT}.pot
+
 mv ${PROJECT}.pot ${I18NDIR}
 
 cd ${I18NDIR} 
