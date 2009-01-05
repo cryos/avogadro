@@ -1,5 +1,5 @@
 project(avogadro)
-set(VERSION "0.8.9")
+set(VERSION "0.9.0")
 
 if (WIN32)
   add_definitions( -DWIN32 )
