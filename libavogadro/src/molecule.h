@@ -436,6 +436,17 @@ namespace Avogadro {
     void removeHydrogens(Atom *atom = 0);
 
     /**
+     * Set the dipole moment of the Molecule.
+     * @param moment The dipole moment of the Molecule.
+     */
+    void setDipoleMoment(const Eigen::Vector3d &moment);
+
+    /**
+     * @return The dipole moment of the Molecule.
+     */
+    const Eigen::Vector3d * dipoleMoment() const;
+
+    /**
      * Calculate the partial charges on each atom.
      */
     void calculatePartialCharges() const;
@@ -548,6 +559,7 @@ namespace Avogadro {
     MoleculePrivate * const d_ptr;
     QString m_fileName;
     std::vector<Eigen::Vector3d> *m_atomPos;
+    mutable Eigen::Vector3d *m_dipoleMoment;
     mutable bool m_invalidPartialCharges;
     mutable bool m_invalidAromaticity;
     Q_DECLARE_PRIVATE(Molecule)

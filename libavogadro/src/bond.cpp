@@ -89,7 +89,7 @@
       atom->addBond(m_id);
     }
     else {
-      qDebug() << "Non-existant atom:" << atom1;
+      qDebug() << "Non-existent atom:" << atom1;
     }
     atom = m_molecule->atomById(atom2);
     if (atom) {
@@ -97,7 +97,7 @@
       atom->addBond(m_id);
     }
     else {
-      qDebug() << "Non-existant atom:" << atom2;
+      qDebug() << "Non-existent atom:" << atom2;
     }
     m_order = order;
   }

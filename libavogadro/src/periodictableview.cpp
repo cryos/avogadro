@@ -302,7 +302,7 @@ namespace Avogadro {
 
     element = 71;
 
-    for (int i = 2; i < 18; i++) {
+    for (int i = 2; i < 18; ++i) {
       item = new ElementItem(element++);
       item->setPos(i * width, 5 * height);
       addItem(item);
@@ -318,7 +318,7 @@ namespace Avogadro {
 
     element = 103;
 
-    for (int i = 2; i < 16; i++) {
+    for (int i = 2; i < 16; ++i) {
       item = new ElementItem(element++);
       item->setPos(i * width, 6 * height);
       addItem(item);
@@ -326,13 +326,13 @@ namespace Avogadro {
 
     // Now for the weird ones at the bottom...
     element = 57;
-    for (int i = 2; i < 16; i++) {
+    for (int i = 2; i < 16; ++i) {
       item = new ElementItem(element++);
       item->setPos(i * width, 7.5 * height);
       addItem(item);
     }
     element = 89;
-    for (int i = 2; i < 16; i++) {
+    for (int i = 2; i < 16; ++i) {
       item = new ElementItem(element++);
       item->setPos(i * width, 8.5 * height);
       addItem(item);

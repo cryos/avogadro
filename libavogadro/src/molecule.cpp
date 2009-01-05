@@ -87,8 +87,8 @@ namespace Avogadro{
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
-    d_ptr(new MoleculePrivate), m_atomPos(0), m_invalidPartialCharges(true),
-    m_invalidAromaticity(true)
+    d_ptr(new MoleculePrivate), m_atomPos(0), m_dipoleMoment(0),
+    m_invalidPartialCharges(true), m_invalidAromaticity(true)
   {
     m_fileName = QDir::homePath() + "/untitled";
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -96,7 +96,8 @@ namespace Avogadro{
 
   Molecule::Molecule(const Molecule &other) :
     Primitive(MoleculeType, other.parent()), d_ptr(new MoleculePrivate),
-    m_atomPos(0), m_invalidPartialCharges(true), m_invalidAromaticity(true)
+    m_atomPos(0), m_dipoleMoment(0), m_invalidPartialCharges(true),
+    m_invalidAromaticity(true)
   {
     *this = other;
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -109,6 +110,10 @@ namespace Avogadro{
 
     if (m_atomPos) {
       delete m_atomPos;
+    }
+
+    if (m_dipoleMoment) {
+      delete m_dipoleMoment;
     }
 
     foreach (Atom *atom, d->atomList) {
@@ -754,6 +759,25 @@ namespace Avogadro{
     }
   }
 
+  void Molecule::setDipoleMoment(const Eigen::Vector3d &moment)
+  {
+    m_dipoleMoment = new Vector3d(moment);
+  }
+
+  const Eigen::Vector3d * Molecule::dipoleMoment() const
+  {
+    if (m_dipoleMoment)
+      return m_dipoleMoment;
+    else {
+      // Calculate an estimate
+      m_dipoleMoment = new Vector3d(0.0, 0.0, 0.0);
+      foreach (Atom *a, atoms()) {
+        *m_dipoleMoment += *a->pos() * a->partialCharge();
+      }
+      return m_dipoleMoment;
+    }
+  }
+
   void Molecule::calculatePartialCharges() const
   {
     if (numAtoms() < 1 || !m_invalidPartialCharges) {
@@ -1055,6 +1079,11 @@ namespace Avogadro{
       }
     }
 
+    // FIXME: Causes segfaults. Copy the dipole moment of the molecule
+//    OpenBabel::OBVectorData *vd = (OpenBabel::OBVectorData*) obmol->GetData(OpenBabel::OBGenericDataType::VectorData);
+//    OpenBabel::vector3 moment = vd->GetData();
+//    m_dipoleMoment = new Vector3d(moment.x(), moment.y(), moment.z());
+
     // If available, copy the unit cell
     d->obunitcell = static_cast<OpenBabel::OBUnitCell *>(obmol->GetData(OpenBabel::OBGenericDataType::UnitCell));
     // (that could return NULL, but other methods know they could get NULL)
@@ -1120,6 +1149,8 @@ namespace Avogadro{
     d->atomList.clear();
     delete m_atomPos;
     m_atomPos = 0;
+    delete m_dipoleMoment;
+    m_dipoleMoment = 0;
 
     d->bonds.resize(0);
     foreach (Bond *bond, d->bondList) {

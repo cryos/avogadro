@@ -37,8 +37,8 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  DipoleEngine::DipoleEngine(QObject *parent) : Engine(parent), m_molecule(0), m_dipoleType(0),
-    m_settingsWidget(0)
+  DipoleEngine::DipoleEngine(QObject *parent) : Engine(parent), m_molecule(0),
+    m_dipoleType(0), m_settingsWidget(0)
   {
     setDescription(tr("Renders dipole moments and other 3D data"));
 
@@ -67,6 +67,8 @@ namespace Avogadro {
   {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
     m_molecule = mol;
+
+    updateDipole();
 
     Vector3d origin = Vector3d(0.0, 0.0, 0.0); // start at the origin
     Vector3d joint = 0.2 * m_dipole; // 80% along the length
@@ -141,34 +143,24 @@ namespace Avogadro {
   {
     Vector3d tempMoment(0.0, 0.0, 0.0);
 
-    QList<Primitive *> list;
-    // Get a list of atoms and calculate the dipole moment
-    list = primitives().subList(Primitive::AtomType);
-
     switch(m_dipoleType)
     {
       case 0: // estimated
-      if (list.size() == 0)
-        return;
-
-      foreach(const Primitive *p, list) {
-        const Atom *a = static_cast<const Atom *>(p);
-        tempMoment += *a->pos() * a->partialCharge();
-      }
-      break;
+        foreach(const Atom *a, atoms()) {
+          tempMoment += *a->pos() * a->partialCharge();
+        }
+        break;
 
       case 1: // custom
-      tempMoment = Vector3d(m_settingsWidget->xDipoleSpinBox->value(),
-        m_settingsWidget->yDipoleSpinBox->value(),
-        m_settingsWidget->zDipoleSpinBox->value());
-      break;
+        tempMoment = Vector3d(m_settingsWidget->xDipoleSpinBox->value(),
+                              m_settingsWidget->yDipoleSpinBox->value(),
+                              m_settingsWidget->zDipoleSpinBox->value());
+        break;
 
       default:; // embedded OBGenericData type -- handle
     }
 
-    m_dipole(0) = tempMoment.x();
-    m_dipole(1) = tempMoment.y();
-    m_dipole(2) = tempMoment.z();
+    m_dipole = tempMoment;
   }
 
   void DipoleEngine::settingsWidgetDestroyed()
