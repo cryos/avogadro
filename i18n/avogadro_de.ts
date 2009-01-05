@@ -3,11 +3,6 @@
 <context>
     <name>AddEngineDialog</name>
     <message>
-        <location filename="../avogadro/src/addenginedialog.ui" line="19"/>
-        <source>Engine Type:</source>
-        <translation type="obsolete">Engine-Typ:</translation>
-    </message>
-    <message>
         <location filename="../avogadro/src/addenginedialog.ui" line="32"/>
         <source>Name:</source>
         <translation>Name:</translation>
@@ -16,11 +11,6 @@
         <location filename="../avogadro/src/addenginedialog.ui" line="45"/>
         <source>Description:</source>
         <translation>Beschreibung:</translation>
-    </message>
-    <message>
-        <location filename="../avogadro/src/addenginedialog.ui" line="13"/>
-        <source>Add Engine</source>
-        <translation type="obsolete">Engine hinzufügen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/addenginedialog.ui" line="13"/>
@@ -141,11 +131,6 @@ Right Mouse: <byte value="x9"/>Reset alignment.</source>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="64"/>
         <source>Open trajectory file</source>
         <translation>Trajektorie-Datei öffnen</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="63"/>
-        <source>Trajectory files (*.xtc)</source>
-        <translation type="obsolete">Trajektorie-Dateien (*.xtc)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="73"/>
@@ -272,16 +257,6 @@ Right Mouse: <byte value="x9"/>Reset alignment.</source>
         <translation>Tiefster Abstieg</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="342"/>
-        <source>Convergence:</source>
-        <translation type="obsolete">Konvergenz:</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="350"/>
-        <source>10e-</source>
-        <translation type="obsolete">10e-</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="389"/>
         <source>Start</source>
         <translation>Start</translation>
@@ -351,16 +326,6 @@ Linke Maustaste: Klicken und ziehen um Atome zu bewegen</translation>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="219"/>
         <source>AutoOpt: Could not setup force field....</source>
         <translation>AutoOpt: Kraftfeld konnte nicht initialisiert werden...</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="282"/>
-        <source>AutoOpt: Running...</source>
-        <translation type="obsolete">AutoOpt: Läuft...</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="349"/>
-        <source>Steps per update:</source>
-        <translation type="obsolete">Schritte pro Aktualisierung:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="278"/>
@@ -531,11 +496,6 @@ Rechte Maustaste:<byte value="x9"/>Klicken und ziehen um Ansicht zu verschieben
 Linke Maustaste: <byte value="x9"/>Klick auf Bindung und ziehen um Manipulationsebene festzulegen
 <byte value="x9"/>- Linke Maustaste: <byte value="x9"/>Klicken und ziehen eines Atoms der Bindung um Winkel zu verändern
 <byte value="x9"/>- Rechte Maustaste:<byte value="x9"/>Klicken und ziehen eines Atoms der Bindung um Länge zu verändern</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="876"/>
-        <source>Bond Length:  </source>
-        <translation type="obsolete">Bindungslänge:  </translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1597"/>
@@ -886,21 +846,6 @@ Rechte Maustaste: Atom löschen</translation>
         <location filename="../libavogadro/src/tools/drawtool.cpp" line="672"/>
         <source>Triple</source>
         <translation>Dreifach</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="669"/>
-        <source>Insert SMILES</source>
-        <translation type="obsolete">SMILES einfügen</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="521"/>
-        <source>Stop Insert</source>
-        <translation type="obsolete">Eingabe beenden</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="666"/>
-        <source>Generate from SMILES:</source>
-        <translation type="obsolete">Durch SMILES erzeugen:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/drawtool.cpp" line="687"/>
@@ -2011,11 +1956,6 @@ All changes will be lost!</source>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/hbondengine.h" line="42"/>
-        <source>HBond</source>
-        <translation type="obsolete">Wasserstoffbindung</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/engines/hbondengine.h" line="42"/>
         <source>Hydrogen Bond</source>
         <translation>Wasserstoffbindung</translation>
     </message>
@@ -2341,11 +2281,6 @@ All changes will be lost!</source>
         <translation>Datei %1 konnte nicht geschrieben werden.</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="734"/>
-        <source>File saved</source>
-        <translation type="obsolete">Datei gespeichert</translation>
-    </message>
-    <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="1169"/>
         <source>Export Bitmap Graphics</source>
         <translation>Bilddatei exportieren</translation>
@@ -2354,11 +2289,6 @@ All changes will be lost!</source>
         <location filename="../avogadro/src/mainwindow.cpp" line="1142"/>
         <source>Cannot save file %1.</source>
         <translation>Datei %1 konnte nicht gespeichert werden.</translation>
-    </message>
-    <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="921"/>
-        <source>Export POV Scene</source>
-        <translation type="obsolete">POV-Szene exportieren</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="1258"/>
@@ -2560,11 +2490,6 @@ Do you want to save your changes?</source>
         <location filename="../avogadro/src/mainwindow.cpp" line="1088"/>
         <source>JPEG</source>
         <translation></translation>
-    </message>
-    <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="917"/>
-        <source>POV-Ray format</source>
-        <translation type="obsolete">POV-Ray Format</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="628"/>
@@ -2776,21 +2701,6 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
 <context>
     <name>Avogadro::OrbitalDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="107"/>
-        <source>Open quantum file</source>
-        <translation type="obsolete">Quanten-Datei öffnen</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="103"/>
-        <source>Quantum files (*.fchk *.gamout *.g03)</source>
-        <translation type="obsolete">Quanten-Dateien (*.fchk *.gamout *.g03</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="108"/>
-        <source>Quantum files (*.fchk *.fch)</source>
-        <translation type="obsolete">Quanten-Dateien (*.fchk *.fch)</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="238"/>
         <source>None</source>
         <translation type="unfinished">Keine</translation>
@@ -2819,11 +2729,6 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
 </context>
 <context>
     <name>Avogadro::OrbitalExtension</name>
-    <message>
-        <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="51"/>
-        <source>Molecular Orbitals</source>
-        <translation type="obsolete">Molekulare Elektronenumlaufbahnen</translation>
-    </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="85"/>
         <source>&amp;Extensions</source>
@@ -3094,11 +2999,6 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
 </context>
 <context>
     <name>Avogadro::PropertiesExtension</name>
-    <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="103"/>
-        <source>&amp;Extensions</source>
-        <translation type="obsolete">Er&amp;weiterungen</translation>
-    </message>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="110"/>
         <source>&amp;Properties</source>
@@ -3633,33 +3533,9 @@ Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen</translation>
 <context>
     <name>Avogadro::SelectRotateTool</name>
     <message>
-        <location filename="../libavogadro/src/tools/selectrotatetool.h" line="62"/>
-        <source>Select/Rotate</source>
-        <translation type="obsolete">Auswählen/Rotieren</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/selectrotatetool.h" line="64"/>
-        <source>Selection and Rotation Tool</source>
-        <translation type="obsolete">Auswählen/Rotieren</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="57"/>
-        <source>Selection Tool (F11)
-Click to pick individual atoms, residues, or fragments
-Drag to select a range of atoms</source>
-        <translation type="obsolete">Auswählen/Rotieren (F11)
-Klicken um einzelne Atome, Reste oder Fragmente auszuwählen
-Gedrückt halten um Atome auszuwählen</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="410"/>
         <source>Selection Mode:</source>
         <translation>Auswahl-Modus:</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="394"/>
-        <source>Atom</source>
-        <translation type="obsolete">Atom</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="416"/>
@@ -4268,11 +4144,6 @@ Elementarzelle erzeugen?</translation>
         <translation>Entfernen ausgewählter Primitive</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/engineprimitiveswidget.ui" line="76"/>
-        <source>Reset</source>
-        <translation type="obsolete">Zurücksetzen</translation>
-    </message>
-    <message>
         <location filename="../avogadro/src/engineprimitiveswidget.ui" line="70"/>
         <source>Add All Primitives</source>
         <translation>Alle primitive hinzufügen</translation>
@@ -4286,34 +4157,6 @@ Elementarzelle erzeugen?</translation>
         <location filename="../avogadro/src/engineprimitiveswidget.ui" line="83"/>
         <source>Assign to Selection</source>
         <translation>Der Auswahl zuordnen</translation>
-    </message>
-</context>
-<context>
-    <name>EngineSetupWidget</name>
-    <message>
-        <location filename="../build/avogadro/src/ui_enginesetupwidget.h" line="114"/>
-        <source>Settings</source>
-        <translation type="obsolete">&amp;Einstellungen</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/ui_enginesetupwidget.h" line="118"/>
-        <source>Primitives</source>
-        <translation type="obsolete">Primitive</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/ui_enginesetupwidget.h" line="115"/>
-        <source>Add Selected Primitives</source>
-        <translation type="obsolete">Hinzufügen ausgewählter Primitive</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/ui_enginesetupwidget.h" line="116"/>
-        <source>Remove Selected Primitives</source>
-        <translation type="obsolete">Entfernen ausgewählter Primitive</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/ui_enginesetupwidget.h" line="117"/>
-        <source>Reset</source>
-        <translation type="obsolete">Zurücksetzen</translation>
     </message>
 </context>
 <context>
@@ -4377,24 +4220,9 @@ Elementarzelle erzeugen?</translation>
         <translation>Anzahl der Schritte</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="168"/>
-        <source>Gradients</source>
-        <translation type="obsolete">Winkel</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="82"/>
         <source>Algorithm</source>
         <translation>Algorithmus</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="173"/>
-        <source>Numerical</source>
-        <translation type="obsolete">Numerisch</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/extensions/ui_forcefielddialog.h" line="174"/>
-        <source>Analytical</source>
-        <translation type="obsolete">Analytisch</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="90"/>
@@ -4436,11 +4264,6 @@ Elementarzelle erzeugen?</translation>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1762"/>
         <source>Title</source>
         <translation>Titel</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="13"/>
-        <source>GAMESS Input Deck Generator</source>
-        <translation type="obsolete">GAMESS Eingabe-Deck-Generator</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="37"/>
@@ -5881,11 +5704,6 @@ Elementarzelle erzeugen?</translation>
 <context>
     <name>GaussianInputDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="19"/>
-        <source>Gaussian Input Deck Generator</source>
-        <translation type="obsolete">Gauss&apos;scher Eingabe-Deck-Generator</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="30"/>
         <source>Title:</source>
         <translation>Titel:</translation>
@@ -5894,11 +5712,6 @@ Elementarzelle erzeugen?</translation>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="40"/>
         <source>Title</source>
         <translation>Titel</translation>
-    </message>
-    <message>
-        <location filename="../build/libavogadro/src/extensions/ui_gaussianinputdialog.h" line="325"/>
-        <source>Calculation Type:</source>
-        <translation type="obsolete">Kalkulationstyp:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="63"/>
@@ -6170,11 +5983,6 @@ Elementarzelle erzeugen?</translation>
         <translation>Fragment einfügen</translation>
     </message>
     <message>
-        <location filename="../build/libavogadro/src/tools/ui_insertfragmentdialog.h" line="129"/>
-        <source>Clear List</source>
-        <translation type="obsolete">Liste löschen</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/tools/insertfragmentdialog.ui" line="31"/>
         <source>Reset List</source>
         <translation>Liste zurücksetzen</translation>
@@ -6377,11 +6185,6 @@ Elementarzelle erzeugen?</translation>
         <translation>Werkzeugleiste</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="91"/>
-        <source>&amp;Docks</source>
-        <translation type="obsolete">&amp;Seitenleisten</translation>
-    </message>
-    <message>
         <location filename="../avogadro/src/mainwindow.ui" line="109"/>
         <source>&amp;View</source>
         <translation>&amp;Ansicht</translation>
@@ -6405,11 +6208,6 @@ Elementarzelle erzeugen?</translation>
         <location filename="../avogadro/src/mainwindow.ui" line="267"/>
         <source>Tools</source>
         <translation>Werkzeuge</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/ui_mainwindow.h" line="423"/>
-        <source>Engines</source>
-        <translation type="obsolete">Engines</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="330"/>
@@ -6485,11 +6283,6 @@ Elementarzelle erzeugen?</translation>
         <location filename="../avogadro/src/mainwindow.ui" line="445"/>
         <source>Revert To Saved</source>
         <translation>Urzustand wiederherstellen</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/ui_mainwindow.h" line="379"/>
-        <source>&amp;Export Graphics</source>
-        <translation type="obsolete">&amp;Exportiere Grafik</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="463"/>
@@ -6602,11 +6395,6 @@ Elementarzelle erzeugen?</translation>
         <translation>Avogadro einrichten...</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/ui_mainwindow.h" line="403"/>
-        <source>Export POVRay</source>
-        <translation type="obsolete">Exportiere POVRay</translation>
-    </message>
-    <message>
         <location filename="../avogadro/src/mainwindow.ui" line="575"/>
         <source>Ctrl+Backspace</source>
         <translation>Strg+Leertaste</translation>
@@ -6632,21 +6420,6 @@ Elementarzelle erzeugen?</translation>
         <translation>Au&amp;swahl</translation>
     </message>
     <message>
-        <location filename="../build/avogadro/src/ui_mainwindow.h" line="404"/>
-        <source>Tutorial</source>
-        <translation type="obsolete">Tutorial</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/ui_mainwindow.h" line="424"/>
-        <source>Configuration</source>
-        <translation type="obsolete">Einstellungen</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/ui_mainwindow.h" line="425"/>
-        <source>Primitives</source>
-        <translation type="obsolete">Primitive</translation>
-    </message>
-    <message>
         <location filename="../avogadro/src/mainwindow.ui" line="613"/>
         <source>Duplicate View</source>
         <translation>Ansicht duplizieren</translation>
@@ -6670,16 +6443,6 @@ Elementarzelle erzeugen?</translation>
         <location filename="../avogadro/src/mainwindow.ui" line="296"/>
         <source>Display Types</source>
         <translation>Darstellungs-Typen</translation>
-    </message>
-    <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="456"/>
-        <source>&amp;Export Graphics...</source>
-        <translation type="obsolete">&amp;Exportiere Grafik...</translation>
-    </message>
-    <message>
-        <location filename="../avogadro/src/mainwindow.ui" line="607"/>
-        <source>Export POVRay...</source>
-        <translation type="obsolete">Exportiere POVRay...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="608"/>
@@ -6760,24 +6523,9 @@ Elementarzelle erzeugen?</translation>
         <translation>Elektronenumlaufbahnen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="28"/>
-        <source>Load File</source>
-        <translation type="obsolete">Datei laden</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="45"/>
-        <source>Calculate</source>
-        <translation type="obsolete">Berechnen</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="171"/>
         <source>Steps:</source>
         <translation>Schritte:</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="172"/>
-        <source>Step SIze:</source>
-        <translation type="obsolete">Schrittgröße:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="87"/>
@@ -6928,29 +6676,9 @@ Elementarzelle erzeugen?</translation>
         <translation>Punkte</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="83"/>
-        <source>Step Size</source>
-        <translation type="obsolete">Schrittgröße</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="132"/>
-        <source>Color</source>
-        <translation type="obsolete">Farbe</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="145"/>
-        <source>Electrostatic Potential (ESP)</source>
-        <translation type="obsolete">Elektrostatisches Potential</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="105"/>
         <source>Render:</source>
         <translation>Darstellung:</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="83"/>
-        <source>Step Size:</source>
-        <translation type="obsolete">Schrittgröße:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="138"/>
@@ -6968,24 +6696,9 @@ Elementarzelle erzeugen?</translation>
         <translation>Negativ</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="16"/>
-        <source>Orbital:</source>
-        <translation type="obsolete">Elektronenumlaufbahn:</translation>
-    </message>
-    <message>
-        <location filename="../build/libavogadro/src/engines/ui_orbitalsettingswidget.h" line="189"/>
-        <source>Interpolate:</source>
-        <translation type="obsolete">Interpolation:</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="115"/>
         <source>Draw Box:</source>
         <translation>Box zeichnen:</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="242"/>
-        <source>Calculate</source>
-        <translation type="obsolete">Berechnen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="16"/>
@@ -7565,16 +7278,6 @@ Elementarzelle erzeugen?</translation>
         <translation>Atome entfernen</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extension.cpp" line="31"/>
-        <source>Unknown</source>
-        <translation type="obsolete">Unbekannt</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/extension.cpp" line="36"/>
-        <source>Unknown Extension</source>
-        <translation type="obsolete">Unbekannte Erweiterung</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/dockingextension.h" line="62"/>
         <source>Docking</source>
         <translation type="unfinished"></translation>
@@ -7786,11 +7489,6 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <location filename="../libavogadro/src/tools/drawcommand.cpp" line="493"/>
         <source>Change Bond Order</source>
         <translation>Anzahl der Bindungen ändern</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/tools/drawcommand.cpp" line="527"/>
-        <source>Insert SMILES</source>
-        <translation type="obsolete">SMILES einfügen</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/manipulatetool.cpp" line="370"/>
@@ -8010,16 +7708,6 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <location filename="../avogadro/src/settingsdialog.ui" line="179"/>
         <source>Tabbed Tools</source>
         <translation>Werkzeuge in Reitern</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/ui_settingsdialog.h" line="111"/>
-        <source>Display Axes</source>
-        <translation type="obsolete">Achsen anzeigen</translation>
-    </message>
-    <message>
-        <location filename="../build/avogadro/src/ui_settingsdialog.h" line="112"/>
-        <source>Display Debug Information</source>
-        <translation type="obsolete">Debug-Informationen anzeigen</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="72"/>
