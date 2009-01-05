@@ -43,7 +43,7 @@ namespace Avogadro {
       QGridLayout *layout = new QGridLayout(this);
       QLabel *label = new QLabel(this);
       QLabel *lbl = new QLabel(this);
-      QPushButton *cmd = new QPushButton("OK", this);
+      QPushButton *cmd = new QPushButton(tr("OK"), this);
       QPixmap logo = QPixmap(":/icons/avogadro.png");
 
       label->setPixmap(logo.scaled(256, 256,
