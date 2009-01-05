@@ -79,7 +79,7 @@ IF( APPLE )
   EXEC_PROGRAM("cp ${MACOSX_SRC_DIR}/AvogadroDocument.icns ${MACOSX_BUILD_CONTENTS_DIR}" )
   SET( TRANSLATIONS ar ca de en en_GB es fr it pl pt pt_BR ru zh_CN zh_TW )
 	FOREACH(lang ${TRANSLATIONS})
-	  EXEC_PROGRAM("mkdir ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj" )
+	  EXEC_PROGRAM("if [ ! -d ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj ]; then mkdir ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj; fi" )
 	ENDFOREACH(lang ${TRANSLATIONS})
 
   # Overload the Info.plist default
