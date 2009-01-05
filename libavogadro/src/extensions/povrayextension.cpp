@@ -66,7 +66,7 @@ namespace Avogadro
 
   QString POVRayExtension::menuPath(QAction*) const
   {
-    return tr("&File") + '>' + tr("&Export");
+    return tr("&File") + '>' + tr("Export");
   }
 
   QUndoCommand* POVRayExtension::performAction(QAction *, GLWidget *widget)

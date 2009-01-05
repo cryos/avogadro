@@ -54,14 +54,13 @@ namespace Avogadro {
       lbl->setOpenExternalLinks(true);
       lbl->setText(
           tr("<h3>%1</h3>"
-            "<br/><br/>Application Version: %2 (svn revision: %3)"
-            "<br/><br/>Library Version: %4 (svn revision: %5)"
+            "<br/><br/>Application Version: %2"
+            "<br/><br/>Library Version: %3"
             "<br/><br/>For more information check the <a href=\"http://avogadro.sourceforge.net/\">Avogadro homepage</a>."
             "<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND,"
             " INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A"
             " PARTICULAR PURPOSE.<br/>"
-            ).arg(tr("Avogadro")).arg(VERSION).arg(SVN_REVISION).arg(Avogadro::Library::version()).arg(Avogadro::Library::svnRevision())
-          );
+             ).arg(tr("Avogadro")).arg(VERSION).arg(Avogadro::Library::version()));
 
       cmd->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
       cmd->setDefault(true);

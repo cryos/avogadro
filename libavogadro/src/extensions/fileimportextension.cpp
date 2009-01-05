@@ -72,7 +72,7 @@ namespace Avogadro
 
   QString FileImportExtension::menuPath(QAction*) const
   {
-    return tr("&File") + ">" + tr("&Import");
+    return tr("&File") + ">" + tr("Import");
   }
 
   QUndoCommand* FileImportExtension::performAction(QAction *, GLWidget *widget)
