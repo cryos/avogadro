@@ -60,13 +60,18 @@
     <name>Avogadro::AboutDialog</name>
     <message>
         <location filename="../avogadro/src/aboutdialog.cpp" line="63"/>
-        <source>&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;Application Version: %2 (svn revision: %3)&lt;br/&gt;&lt;br/&gt;Library Version: %4 (svn revision: %5)&lt;br/&gt;&lt;br/&gt;For more information check the &lt;a href=&quot;http://avogadro.sourceforge.net/&quot;&gt;Avogadro homepage&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;br/&gt;</source>
-        <translation type="unfinished">&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;Version de l&apos;application: %2 (révision SVN: %3)&lt;br/&gt;&lt;br/&gt;Version de la bibliothèque: %4 (révision SVN: %5)&lt;br/&gt;&lt;br/&gt;Pour plus d&apos;informations, visitez le &lt;a href=&quot;http://avogadro.sourceforge.net/&quot;&gt;site Web d&apos;Avogadro&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;&lt;i&gt;The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;/i&gt;&lt;br/&gt;</translation>
+        <source>Avogadro</source>
+        <translation type="unfinished">Avogadro</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/aboutdialog.cpp" line="46"/>
+        <source>OK</source>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <location filename="../avogadro/src/aboutdialog.cpp" line="63"/>
-        <source>Avogadro</source>
-        <translation type="unfinished">Avogadro</translation>
+        <source>&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;Application Version: %2&lt;br/&gt;&lt;br/&gt;Library Version: %3&lt;br/&gt;&lt;br/&gt;For more information check the &lt;a href=&quot;http://avogadro.sourceforge.net/&quot;&gt;Avogadro homepage&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;br/&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1482,11 +1487,6 @@ Right Mouse: Delete Atom</source>
 <context>
     <name>Avogadro::FileImportExtension</name>
     <message>
-        <location filename="../libavogadro/src/extensions/fileimportextension.cpp" line="56"/>
-        <source>Import Trajectory...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/fileimportextension.cpp" line="75"/>
         <source>&amp;File</source>
         <translation type="unfinished">&amp;Fichier</translation>
@@ -1529,6 +1529,11 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/extensions/fileimportextension.cpp" line="212"/>
         <source>Chemical files (*.parm7)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/fileimportextension.cpp" line="56"/>
+        <source>Trajectory...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7315,11 +7320,6 @@ Options:
         <translation type="unfinished">Greffon de docking</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/fileimportextension.h" line="48"/>
-        <source>File import</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/fileimportextension.h" line="51"/>
         <source>Import chemical files</source>
         <translation type="unfinished"></translation>
@@ -7629,6 +7629,11 @@ par exemple 1 si vous voulez utiliser POV-Ray pour produire une image carrée, p
         <location filename="../libavogadro/src/tools/manipulatetool.cpp" line="370"/>
         <source>Manipulate Atom</source>
         <translation type="unfinished">Manipuler atome</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/fileimportextension.h" line="48"/>
+        <source>Import Trajectory</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -60,13 +60,18 @@
     <name>Avogadro::AboutDialog</name>
     <message>
         <location filename="../avogadro/src/aboutdialog.cpp" line="63"/>
-        <source>&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;Application Version: %2 (svn revision: %3)&lt;br/&gt;&lt;br/&gt;Library Version: %4 (svn revision: %5)&lt;br/&gt;&lt;br/&gt;For more information check the &lt;a href=&quot;http://avogadro.sourceforge.net/&quot;&gt;Avogadro homepage&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;br/&gt;</source>
-        <translation type="unfinished">&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;应用程序版本: %2 (svn revision: %3)&lt;br/&gt;&lt;br/&gt;资源库版本: %4 (svn 版本: %5)&lt;br/&gt;&lt;br/&gt;更多信息请访问 &lt;a href=&quot;http://avogadro.sourceforge.net/&quot;&gt;Avogadro 主页&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;本程序不附带任何保障, 包括针对设计、商业应用性和针对特定目的的适用性的保障。&lt;br/&gt;</translation>
+        <source>Avogadro</source>
+        <translation type="unfinished">Avogadro</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/aboutdialog.cpp" line="46"/>
+        <source>OK</source>
+        <translation type="unfinished">确定</translation>
     </message>
     <message>
         <location filename="../avogadro/src/aboutdialog.cpp" line="63"/>
-        <source>Avogadro</source>
-        <translation type="unfinished">Avogadro</translation>
+        <source>&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;Application Version: %2&lt;br/&gt;&lt;br/&gt;Library Version: %3&lt;br/&gt;&lt;br/&gt;For more information check the &lt;a href=&quot;http://avogadro.sourceforge.net/&quot;&gt;Avogadro homepage&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;br/&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1498,11 +1503,6 @@ Right Mouse: Delete Atom</source>
 <context>
     <name>Avogadro::FileImportExtension</name>
     <message>
-        <location filename="../libavogadro/src/extensions/fileimportextension.cpp" line="56"/>
-        <source>Import Trajectory...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/fileimportextension.cpp" line="75"/>
         <source>&amp;File</source>
         <translation type="unfinished">文件(&amp;F)</translation>
@@ -1545,6 +1545,11 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/extensions/fileimportextension.cpp" line="212"/>
         <source>Chemical files (*.parm7)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/fileimportextension.cpp" line="56"/>
+        <source>Trajectory...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7338,11 +7343,6 @@ Options:
         <translation type="unfinished">Docking插件</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/fileimportextension.h" line="48"/>
-        <source>File import</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/fileimportextension.h" line="51"/>
         <source>Import chemical files</source>
         <translation type="unfinished"></translation>
@@ -7652,6 +7652,11 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <location filename="../libavogadro/src/tools/manipulatetool.cpp" line="370"/>
         <source>Manipulate Atom</source>
         <translation type="unfinished">操纵原子</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/fileimportextension.h" line="48"/>
+        <source>Import Trajectory</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
