@@ -93,7 +93,6 @@ namespace Avogadro
       action->setData(SeparatorIndex);
       m_actions.append( action );
 
-      // Disable the constraints menu for now...
       action = new QAction( this );
       action->setText( tr("Constraints..." ));
       action->setData(ConstraintsIndex);
@@ -107,6 +106,12 @@ namespace Avogadro
       action = new QAction( this );
       action->setText( tr("Fix Selected Atoms" ));
       action->setData(FixAtomsIndex);
+      m_actions.append( action );
+
+      // back in the main menu -- separate us from others
+      action = new QAction( this );
+      action->setSeparator(true);
+      action->setData(OptimizeGeometryIndex);
       m_actions.append( action );
     }
     else
