@@ -903,6 +903,35 @@ namespace Avogadro{
     }
   }
 
+  bool Molecule::addConformer(const std::vector<Eigen::Vector3d> &conformer,
+                              int index)
+  {
+    if (conformer.size() != m_atomPos->size())
+      return false;
+
+    if (m_atomConformers.size() < index+1)
+      m_atomConformers.resize(index+1);
+    m_atomConformers[index] = conformer;
+    return true;
+  }
+
+  bool Molecule::setConformer(int index)
+  {
+    if (m_atomConformers.size() < index + 1)
+      return false;
+    else {
+      unsigned int size = m_atomPos->size();
+      m_atomPos = &m_atomConformers[index];
+      m_atomPos->resize(size);
+      return true;
+    }
+  }
+
+  int Molecule::numConformers() const
+  {
+    return m_atomConformers.size();
+  }
+
   QList<Atom *> Molecule::atoms() const
   {
     Q_D(const Molecule);

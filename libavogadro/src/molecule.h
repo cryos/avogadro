@@ -469,6 +469,24 @@ namespace Avogadro {
     Bond* bond(const Atom*, const Atom*);
 
     /**
+     * Add a new conformer to the Molecule. The conformers are mapped onto the
+     * unique ids of the atoms in the Molecule.
+     * @param conformer A vector of Vector3d with all atom positions.
+     * @param index The index of the conformer to add.
+     */
+    bool addConformer(const std::vector<Eigen::Vector3d> &conformer, int index);
+
+    /**
+     * Change the conformer to the one at the specified index.
+     */
+    bool setConformer(int index);
+
+    /**
+     * @return The number of conformers.
+     */
+    int numConformers() const;
+
+    /**
      * Remove all elements of the molecule.
      */
     void clear();
@@ -558,7 +576,9 @@ namespace Avogadro {
   protected:
     MoleculePrivate * const d_ptr;
     QString m_fileName;
-    std::vector<Eigen::Vector3d> *m_atomPos;
+    std::vector<Eigen::Vector3d> *m_atomPos; // Atom position vector
+    /** Vector containing pointers to various conformers. **/
+    std::vector< std::vector<Eigen::Vector3d> > m_atomConformers;
     mutable Eigen::Vector3d *m_dipoleMoment;
     mutable bool m_invalidPartialCharges;
     mutable bool m_invalidAromaticity;
