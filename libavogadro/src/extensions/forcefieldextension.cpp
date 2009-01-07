@@ -309,6 +309,35 @@ namespace Avogadro
     m_numConformers = numConformers;
   }
 
+  void ForceFieldThread::copyConformers()
+  {
+    OBMol obmol = m_molecule->OBMol();
+    // copy conformers to obmol
+    m_forceField->GetConformers( obmol );
+    // set the current conformer
+    obmol.SetConformer(m_cycles);
+    // copy the coordinates
+    double *coordPtr = obmol.GetCoordinates();
+    std::vector<Eigen::Vector3d> conformer;
+    foreach (Atom *atom, m_molecule->atoms()) {
+      while (conformer.size() < atom->id())
+        conformer.push_back(Eigen::Vector3d(0.0, 0.0, 0.0));
+      conformer.push_back(Eigen::Vector3d(coordPtr));
+      coordPtr += 3;
+    }
+
+    // add the conformer to m_molecule
+    qDebug() << m_molecule->addConformer(conformer, m_cycles);
+    // set it to the current conformer
+    m_molecule->setConformer(m_cycles);
+
+    // copy the conformer energies
+    if (obmol.HasData(OBGenericDataType::ConformerData)) {
+      OBConformerData *cd = (OBConformerData*) obmol.GetData(OBGenericDataType::ConformerData);
+      m_molecule->setEnergies(cd->GetEnergies());
+    }
+  }
+
   void ForceFieldThread::run()
   {
     m_stop = false;
@@ -377,8 +406,7 @@ namespace Avogadro
     } else if ( m_task == 1 ) {
       int n = m_forceField->SystematicRotorSearchInitialize(m_nSteps);
       while (m_forceField->SystematicRotorSearchNextConformer(m_nSteps)) {
-        // FIXME: we don't have support for conformers yet
-        //m_forceField->GetConformers( *m_molecule );
+        copyConformers();
         m_molecule->update();
         m_cycles++;
         m_mutex.lock();
@@ -392,8 +420,7 @@ namespace Avogadro
     } else if ( m_task == 2 ) {
       m_forceField->RandomRotorSearchInitialize(m_numConformers, m_nSteps);
       while (m_forceField->RandomRotorSearchNextConformer(m_nSteps)) {
-        // FIXME: we don't have support for conformers yet
-        //m_forceField->GetConformers( *m_molecule );
+        copyConformers();
         m_molecule->update();
         m_cycles++;
         m_mutex.lock();
@@ -406,13 +433,10 @@ namespace Avogadro
       }
     } else if ( m_task == 3 ) {
       m_forceField->WeightedRotorSearch(m_numConformers, m_nSteps);
-      // FIXME: we don't have support for conformers yet
-      //m_forceField->GetConformers( *m_molecule );
       m_forceField->ConjugateGradients(250);
+      copyConformers();
     }
 
-    // FIXME: we don't have support for conformers yet
-    //m_forceField->GetConformers( *m_molecule );
     m_molecule->update();
 
     emit message( QObject::tr( buff.str().c_str() ) );

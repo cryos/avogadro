@@ -41,11 +41,11 @@ target_link_libraries(gamessextension ${LINK_LIBS})
 install(TARGETS gamessextension DESTINATION ${DESTINATION_DIR})
 
 ### Properties
-#set(propextension_SRCS propmodel.cpp propextension.cpp)
-#qt4_automoc(${propextension_SRCS})
-#add_library(propextension MODULE ${propextension_SRCS} ${propextension_UIS_H})
-#target_link_libraries(propextension ${LINK_LIBS})
-#install(TARGETS propextension DESTINATION ${DESTINATION_DIR})
+set(propextension_SRCS propmodel.cpp propextension.cpp)
+qt4_automoc(${propextension_SRCS})
+add_library(propextension MODULE ${propextension_SRCS} ${propextension_UIS_H})
+target_link_libraries(propextension ${LINK_LIBS})
+install(TARGETS propextension DESTINATION ${DESTINATION_DIR})
 
 ### Molecular Mechanics force fields
 set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp

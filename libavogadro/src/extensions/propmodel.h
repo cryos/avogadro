@@ -48,6 +48,11 @@ namespace Avogadro {
        void updateTable();
        void primitiveAdded(Primitive *primitive);
        void primitiveRemoved(Primitive *primitive);
+       void atomAdded(Atom *atom);
+       void atomRemoved(Atom *atom);
+       void bondAdded(Bond *bond);
+       void bondRemoved(Bond *bond);
+
 
      public:
        enum Type {

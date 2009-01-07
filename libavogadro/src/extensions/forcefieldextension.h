@@ -109,6 +109,8 @@ namespace Avogadro {
       void stop();
 
     private:
+      void copyConformers();
+
       Molecule *m_molecule;
       ConstraintsModel* m_constraints;
 
