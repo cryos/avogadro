@@ -41,6 +41,10 @@ namespace Avogadro {
     QAction *action = new QAction(this);
     action->setText(tr("Change H to Methyl"));
     m_actions.append(action);
+
+    action = new QAction( this );
+    action->setSeparator(true);
+    m_actions.append( action );
   }
 
   H2MethylExtension::~H2MethylExtension()
