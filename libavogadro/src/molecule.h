@@ -476,10 +476,14 @@ namespace Avogadro {
      */
     bool addConformer(const std::vector<Eigen::Vector3d> &conformer, int index);
 
+    std::vector<Eigen::Vector3d> * addConformer(int index);
+
     /**
      * Change the conformer to the one at the specified index.
      */
     bool setConformer(int index);
+
+    void clearConformers();
 
     /**
      * @return The number of conformers.
@@ -532,12 +536,12 @@ namespace Avogadro {
     /**
      * @return The position of the center of the Molecule.
      */
-    const Eigen::Vector3d & center() const;
+    const Eigen::Vector3d center() const;
 
     /**
      * @return The normal vector of the Molecule.
      */
-    const Eigen::Vector3d & normalVector() const;
+    const Eigen::Vector3d normalVector() const;
 
     /**
      * @return The radius of the Molecule.
@@ -578,7 +582,7 @@ namespace Avogadro {
     QString m_fileName;
     std::vector<Eigen::Vector3d> *m_atomPos; // Atom position vector
     /** Vector containing pointers to various conformers. **/
-    std::vector< std::vector<Eigen::Vector3d> > m_atomConformers;
+    std::vector< std::vector<Eigen::Vector3d>* > m_atomConformers;
     mutable Eigen::Vector3d *m_dipoleMoment;
     mutable bool m_invalidPartialCharges;
     mutable bool m_invalidAromaticity;
