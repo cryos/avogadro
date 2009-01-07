@@ -74,19 +74,17 @@ IF( APPLE )
   # Need to copy the icon files and other resources
   SET( MACOSX_BUILD_CONTENTS_DIR ${CMAKE_CURRENT_BINARY_DIR}/Avogadro.app/Contents/Resources )
 	SET( MACOSX_SRC_DIR ${avogadro_SOURCE_DIR}/src/mac )
-  EXECUTE_PROCESS(
-                  COMMAND mkdir -p   ${MACOSX_BUILD_CONTENTS_DIR}
-                  OUTPUT_QUIET)
-  EXECUTE_PROCESS(
-                  COMMAND cp ${MACOSX_SRC_DIR}/avogadro.icns ${MACOSX_BUILD_CONTENTS_DIR}
-                  OUTPUT_QUIET)
-  EXECUTE_PROCESS(
-                  COMMAND cp ${MACOSX_SRC_DIR}/AvogadroDocument.icns ${MACOSX_BUILD_CONTENTS_DIR}
-                  OUTPUT_QUIET)
-  SET( TRANSLATIONS ar ca de en en_GB es fr it pl pt pt_BR ru zh zh_CN zh_TW )
+  EXECUTE_PROCESS(COMMAND mkdir -p ${MACOSX_BUILD_CONTENTS_DIR} )
+  EXECUTE_PROCESS(COMMAND cp ${MACOSX_SRC_DIR}/avogadro.icns ${MACOSX_BUILD_CONTENTS_DIR} )
+  EXECUTE_PROCESS(COMMAND cp ${MACOSX_SRC_DIR}/AvogadroDocument.icns ${MACOSX_BUILD_CONTENTS_DIR} )
+  SET( TRANSLATIONS "ar;ca;de;en;en_GB;es;fr;it;pl;pt;pt_BR;ru;zh;zh_CN;zh_TW" )
 	FOREACH(lang ${TRANSLATIONS})
+    SET( MAC_LANG_DIR ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj )
 	  EXECUTE_PROCESS(COMMAND
-          if [ ! -d ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj ]; then mkdir ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj; fi
+          mkdir ${MAC_LANG_DIR}
+          ERROR_QUIET)
+    EXECUTE_PROCESS(COMMAND
+          ${MACOSX_SRC_DIR}/lang.sh ${MACOSX_SRC_DIR} ${MAC_LANG_DIR} ${VERSION} ${lang}
           OUTPUT_QUIET)
 	ENDFOREACH(lang ${TRANSLATIONS})
 
