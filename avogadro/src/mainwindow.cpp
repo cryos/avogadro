@@ -115,7 +115,7 @@ using namespace Eigen;
 namespace Avogadro
 {
 
-  class MainWindowPrivate
+  class MainWindowPrivate : public Eigen::WithAlignedOperatorNew
   {
     public:
       MainWindowPrivate() : molecule( 0 ),
