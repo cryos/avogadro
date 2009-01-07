@@ -64,6 +64,7 @@ namespace Avogadro{
       mutable Atom *                farthestAtom;
       mutable bool                  invalidGeomInfo;
       mutable bool                  invalidRings;
+      mutable std::vector<double>   energies;
 
       // std::vector used over QVector due to index issues, QVector uses ints
       std::vector<Atom *>           atoms;
@@ -836,9 +837,8 @@ namespace Avogadro{
 
     if (m_atomConformers.size() < index+1) {
       unsigned int size = m_atomConformers.size();
-      m_atomConformers.resize(index+1);
-      for (unsigned int i = size; i < index; ++i)
-        m_atomConformers[i] = new vector<Vector3d>(m_atomPos->size());
+      for (unsigned int i = size; i <= index; ++i)
+        m_atomConformers.push_back( new vector<Vector3d>(m_atomPos->size()) );
     }
     *m_atomConformers[index] = conformer;
     return true;
@@ -865,7 +865,8 @@ namespace Avogadro{
     else {
       unsigned int size = m_atomPos->size();
       m_atomPos = m_atomConformers[index];
-      m_atomPos->resize(size);
+      while (m_atomPos->size() < size)
+        m_atomPos->push_back(Eigen::Vector3d::Zero());
       return true;
     }
   }
@@ -881,6 +882,21 @@ namespace Avogadro{
   {
     return m_atomConformers.size();
   }
+
+  const std::vector<double>& Molecule::energies() const
+  {
+    Q_D(const Molecule);
+    while (d->energies.size() != numConformers())
+      d->energies.push_back(0.0);
+    return d->energies;
+  }
+
+  void Molecule::setEnergies(const std::vector<double>& energies)
+  {
+    Q_D(const Molecule);
+    d->energies = energies;    
+  }
+
 
   QList<Atom *> Molecule::atoms() const
   {
@@ -1170,6 +1186,11 @@ namespace Avogadro{
     const MoleculePrivate *e = other.d_func();
     d->atoms.resize(e->atoms.size(), 0);
     if (other.m_atomPos) {
+      m_atomConformers.resize(1);
+      m_atomConformers[0] = new vector<Vector3d>;
+      m_atomPos = m_atomConformers[0];
+      m_atomPos->reserve(100);
+
       m_atomPos->clear();
       m_atomPos->resize(other.m_atomPos->size());
     }

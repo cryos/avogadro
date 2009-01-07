@@ -491,6 +491,18 @@ namespace Avogadro {
     int numConformers() const;
 
     /**
+     * @return The energies for all conformers.
+     */
+    const std::vector<double>& energies() const;
+    /**
+     * Set the energies for all conformers.
+     */
+    void setEnergies(const std::vector<double>& energies);
+
+
+
+
+    /**
      * Remove all elements of the molecule.
      */
     void clear();
