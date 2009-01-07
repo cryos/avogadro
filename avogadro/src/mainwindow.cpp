@@ -317,7 +317,7 @@ namespace Avogadro
     ui.fileToolBar->hide();
 
     // Change the "Settings" menu to be Window
-    ui.menuSettings->setTitle("Window");
+    ui.menuSettings->setTitle(tr("Window"));
     // and remove the trailing separator
     QAction *lastSettingsAction = ui.menuSettings->actions().last();
     if (lastSettingsAction->isSeparator())
@@ -701,7 +701,7 @@ namespace Avogadro
     if(fileName.isEmpty()) {
       setFileName(fileName);
       setMolecule(new Molecule(this));
-      shownName = "untitled.cml";
+      shownName = tr("untitled") + ".cml";
       setWindowFilePath(shownName);
       return true;
     }
@@ -1634,20 +1634,10 @@ namespace Avogadro
         view->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
         view->setScene(new QGraphicsScene);
         view->scene()->addText("Avogadro GLGraphicsView");
-//        view->scene()->addLine(0, 0, 60, 90);
-//        QDialog *dialog = new QDialog(view);
-//        dialog->resize(150,100);
-//        dialog->setWindowTitle("Testing");
-//        view->scene()->addWidget(dialog);
-//        dialog->show();
-//        dialog->move(100,200);
         view->show();
 
-    //    layout->addWidget(view);
       }
     }
-   // dialog->setWindowTitle(tr("Avogadro: Detached View"));
-   // dialog->show();
   }
 
   void MainWindow::closeView()
@@ -1663,16 +1653,6 @@ namespace Avogadro
         QWidget *widget = d->enginesStacked->widget( index );
         d->enginesStacked->removeWidget( widget );
         delete widget;
-
-        // delete the engine configuration for this GLWidget
-//        widget = d->engineConfigurationStacked->widget( index );
-//        d->engineConfigurationStacked->removeWidget( widget );
-//        delete widget;
-
-        // delete the engine primitives for this GLWidget
-//        widget = d->enginePrimitivesStacked->widget( index );
-//        d->enginePrimitivesStacked->removeWidget( widget );
-//        delete widget;
 
         for ( int count=d->centralTab->count(); index < count; index++ ) {
           d->centralTab->setTabText( index, tr( "View %1" ).arg( QString::number( index + 1 ) ) );

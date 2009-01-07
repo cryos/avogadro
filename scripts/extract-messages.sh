@@ -41,6 +41,8 @@ sed -e 's/Copyright (C) YEAR/Copyright (C) 2006-2009/' <${PROJECT}.pot >${PROJEC
 mv ${PROJECT}.new ${PROJECT}.pot
 sed -e 's/as the PACKAGE package/as the Avogadro package/' <${PROJECT}.pot >${PROJECT}.new
 mv ${PROJECT}.new ${PROJECT}.pot
+sed -e 's/^#. i18n: .\//#: /' <${PROJECT}.pot >${PROJECT}.new
+mv ${PROJECT}.new ${PROJECT}.pot
 
 mv ${PROJECT}.pot ${I18NDIR}
 
