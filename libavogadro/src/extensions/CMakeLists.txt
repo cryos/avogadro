@@ -162,14 +162,15 @@ if(Boost_PYTHON_FOUND)
 endif(Boost_PYTHON_FOUND)
 
 ### Animation
-#set(animationextension_SRCS animationextension.cpp animationdialog.cpp trajvideomaker.cpp)
-#qt4_add_resources(animationextension_RC_SRCS animation.qrc)
-#qt4_wrap_ui(animationextension_UIS_H animationdialog.ui)
-#qt4_automoc(${animationextension_SRCS})
-#add_library(animationextension MODULE ${animationextension_SRCS}
-#	${animationextension_UIS_H} ${animationextension_RC_SRCS} )
-#target_link_libraries(animationextension ${LINK_LIBS})
-#install(TARGETS animationextension DESTINATION ${DESTINATION_DIR})
+set(animationextension_SRCS animationextension.cpp animationdialog.cpp
+    povpainter.cpp trajvideomaker.cpp )
+qt4_add_resources(animationextension_RC_SRCS animation.qrc)
+qt4_wrap_ui(animationextension_UIS_H animationdialog.ui)
+qt4_automoc(${animationextension_SRCS})
+add_library(animationextension MODULE ${animationextension_SRCS}
+	${animationextension_UIS_H} ${animationextension_RC_SRCS} )
+target_link_libraries(animationextension ${LINK_LIBS})
+install(TARGETS animationextension DESTINATION ${DESTINATION_DIR})
 
 ### Lin Morph Animation
 #set(linmorphextension_SRCS linmorphextension.cpp linmorphdialog.cpp trajvideomaker.cpp)
