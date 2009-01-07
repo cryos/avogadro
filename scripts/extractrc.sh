@@ -161,8 +161,7 @@ for my $file_name ( @ARGV )
      {
        if ( not $context or $context ne "KDE::DoNotExtract" )
        {
-         print "//i18n: tag $tag\n";
-         print "//i18n: file $file_name line $.\n";
+         print "//i18n: $file_name:$.\n";
          print "// xgettext: no-c-format\n" if $text =~ /%/o;
          if ( $context )
          {
