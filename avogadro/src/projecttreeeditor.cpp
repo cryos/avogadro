@@ -455,7 +455,7 @@ namespace Avogadro {
     if (size == 0) { // default (i.e., never started a project tree)
        // Start with a molecule delegate
        newItem = new QTreeWidgetItem(parents.last());
-       newItem->setText(0, tr("Molecule"))
+       newItem->setText(0, tr("Molecule"));
        m_hash[newItem] = (ProjectTreeModelDelegate*) new MoleculeDelegate(0);
     }
     else {
