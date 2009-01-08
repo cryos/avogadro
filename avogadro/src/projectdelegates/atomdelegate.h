@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef ATOMITEMS_H
-#define ATOMITEMS_H
+#ifndef ATOMDELEGATE_H
+#define ATOMDELEGATE_H
 
 #include <avogadro/global.h>
 #include "../projecttreemodeldelegate.h"

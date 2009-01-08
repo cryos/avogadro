@@ -79,7 +79,7 @@ namespace Avogadro {
        * so that it can be retrieved by the ProjectTreeModel to if determine the user
        * just expanded this item. If so, the model will call 
        * ProjectTreeModelDelegate::fetchMore(ProjectTreeItem*) and we can further 
-       * initilize the data and connect signals if needed.
+       * initialize the data and connect signals if needed.
        *
        * Note: these are never removed, if a new tree structure is set in the editor,
        * the current model is deleted (along with all its delegates and expandable items)

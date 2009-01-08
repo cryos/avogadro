@@ -118,7 +118,7 @@ namespace Avogadro {
       /**
        * @return true if the item with index @p parent has children.
        *
-       * QTreeView uses this (and not rowCount()) to determine wether it
+       * QTreeView uses this (and not rowCount()) to determine whether it
        * should draw a expandable item (with the plus/triangle)
        */
       bool hasChildren(const QModelIndex &parent = QModelIndex()) const;

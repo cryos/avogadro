@@ -476,6 +476,11 @@ namespace Avogadro {
      */
     bool addConformer(const std::vector<Eigen::Vector3d> &conformer, int index);
 
+    /**
+     * Add a new conformer and return a pointer to it.
+     * @param index The index of the new conformer.
+     * @return Pointer to the conformer added.
+     */
     std::vector<Eigen::Vector3d> * addConformer(int index);
 
     /**
@@ -483,6 +488,9 @@ namespace Avogadro {
      */
     bool setConformer(int index);
 
+    /**
+     * Clear all conformers from the molecule, leaving just conformer zero.
+     */
     void clearConformers();
 
     /**
@@ -494,13 +502,19 @@ namespace Avogadro {
      * @return The energies for all conformers.
      */
     const std::vector<double>& energies() const;
+
+    /**
+     * Get the energy of the supplied conformer, defaults to returning the
+     * energy of the current conformer.
+     * @param index The conformer, defaults to the current conformer.
+     * @return The energy of the Molecule (or current conformer).
+     */
+    double energy(int index = -1) const;
+
     /**
      * Set the energies for all conformers.
      */
     void setEnergies(const std::vector<double>& energies);
-
-
-
 
     /**
      * Remove all elements of the molecule.
