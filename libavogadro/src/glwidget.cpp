@@ -1846,6 +1846,7 @@ namespace Avogadro {
     QPair<QString, QPair<QList<unsigned int>,QList<unsigned int> > > namedSelection(name, pair);
     d->namedSelections.append(namedSelection);
 
+    emit namedSelectionsChanged();
     return true;
   }
 
@@ -1854,6 +1855,7 @@ namespace Avogadro {
     for (int i = 0; i < d->namedSelections.size(); ++i)
       if (d->namedSelections.at(i).first == name) {
         d->namedSelections.removeAt(i);
+        emit namedSelectionsChanged();
         return;
       }
   }
@@ -1871,6 +1873,7 @@ namespace Avogadro {
     QPair<QString, QPair<QList<unsigned int>,QList<unsigned int> > > pair = d->namedSelections.takeAt(index);
     pair.first = name;
     d->namedSelections.insert(index, pair);
+    emit namedSelectionsChanged();
   }
 
   QList<QString> GLWidget::namedSelections()
