@@ -891,6 +891,15 @@ namespace Avogadro{
     return d->energies;
   }
 
+  double Molecule::energy(int index) const
+  {
+    Q_D(const Molecule);
+    if (index < d->energies.size())
+      return d->energies[index];
+    else
+      return 0.0;
+  }
+
   void Molecule::setEnergies(const std::vector<double>& energies)
   {
     Q_D(const Molecule);
