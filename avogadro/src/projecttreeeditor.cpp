@@ -30,6 +30,7 @@
 #include "projectdelegates/atomdelegate.h"
 #include "projectdelegates/bonddelegate.h"
 #include "projectdelegates/residuedelegate.h"
+#include "projectdelegates/selectiondelegate.h"
 
 #include <QDir>
 #include <QIcon>
@@ -59,6 +60,7 @@ namespace Avogadro {
     ui.itemTypeCombo->addItem(tr("Atoms"));
     ui.itemTypeCombo->addItem(tr("Bonds"));
     ui.itemTypeCombo->addItem(tr("Residues"));
+    ui.itemTypeCombo->addItem(tr("User Selections"));
   }
 
   ProjectTreeEditor::~ProjectTreeEditor()
@@ -493,6 +495,8 @@ namespace Avogadro {
         m_hash[newItem] = (ProjectTreeModelDelegate*) new BondDelegate(0);
       } else if (settings.value("name").toString() == tr("Residues")) {
         m_hash[newItem] = (ProjectTreeModelDelegate*) new ResidueDelegate(0);
+      } else if (settings.value("name").toString() == tr("User Slections")) {
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new SelectionDelegate(0);
       }
      
       if (!m_hash[newItem])
