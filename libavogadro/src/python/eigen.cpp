@@ -1,8 +1,10 @@
+
 #include <Python.h>
 #include <numpy/arrayobject.h> 
 #include <boost/python.hpp>
 #include <boost/python/tuple.hpp>
 
+#include <avogadro/global.h>
 #include <Eigen/Geometry>
 
 #include <iostream>
