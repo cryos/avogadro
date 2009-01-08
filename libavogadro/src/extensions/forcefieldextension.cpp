@@ -332,7 +332,7 @@ namespace Avogadro
     }
 
     // add the conformer to m_molecule
-    qDebug() << m_molecule->addConformer(conformer, m_cycles);
+    m_molecule->addConformer(conformer, m_cycles);
     // set it to the current conformer
     m_molecule->setConformer(m_cycles);
 
