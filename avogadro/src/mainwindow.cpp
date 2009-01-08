@@ -1654,8 +1654,8 @@ namespace Avogadro
         d->enginesStacked->removeWidget( widget );
         delete widget;
 
-        for ( int count=d->centralTab->count(); index < count; index++ ) {
-          d->centralTab->setTabText( index, tr( "View %1" ).arg( QString::number( index + 1 ) ) );
+        for ( int count=d->centralTab->count(); index < count; ++index ) {
+          d->centralTab->setTabText(index, tr("View %1").arg(QString::number(index + 1)));
         }
         d->glWidgets.removeAll( glWidget );
         delete glWidget;
@@ -2157,7 +2157,7 @@ namespace Avogadro
       QMenu *path = NULL;
 
       if ( menuPathString.size() ) {
-        QStringList menuPath = menuPathString.split( ">" );
+        QStringList menuPath = menuPathString.split( '>' );
         // Root menus are a special case, we need to check menuBar()
         foreach( QAction *menu, menuBar()->actions() ) {
           if ( menu->text() == menuPath.at( 0 ) ) {
