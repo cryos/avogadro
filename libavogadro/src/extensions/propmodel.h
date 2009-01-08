@@ -46,8 +46,8 @@ namespace Avogadro {
      
      public slots:
        void updateTable();
-       void primitiveAdded(Primitive *primitive);
-       void primitiveRemoved(Primitive *primitive);
+       //       void primitiveAdded(Primitive *primitive);
+       //       void primitiveRemoved(Primitive *primitive);
        void atomAdded(Atom *atom);
        void atomRemoved(Atom *atom);
        void bondAdded(Bond *bond);
@@ -57,12 +57,12 @@ namespace Avogadro {
      public:
        enum Type {
          OtherType=0,
- 	 AtomType,
-	 BondType,
-	 AngleType,
-	 TorsionType,
-	 CartesianType,
-	 ConformerType
+         AtomType,
+         BondType,
+         AngleType,
+         TorsionType,
+         CartesianType,
+         ConformerType
        };
 
        explicit PropertiesModel(Type type, QObject *parent = 0) : QAbstractTableModel(parent) 
