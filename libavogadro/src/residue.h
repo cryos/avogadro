@@ -32,7 +32,7 @@ namespace Avogadro {
 
   /**
    * @class Residue residue.h <avogadro/residue.h>
-   * @brief Residue Class
+   * @brief A biological residue that contains atoms and bonds.
    * @author Marcus D. Hanwell
    *
    * The Residue class is a Fragment subclass that provides the unique

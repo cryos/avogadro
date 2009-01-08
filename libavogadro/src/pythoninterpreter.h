@@ -26,7 +26,6 @@
 #define PYTHONINTERPRETER_H
 
 #include <avogadro/global.h>
-//#include <avogadro/boost.h>
 #include <boost/python.hpp>
 #include <avogadro/primitive.h>
 #include <QString>
@@ -37,7 +36,8 @@ namespace Avogadro {
 
   /**
    * @author Donald Ephraim Curtis
-   * @class PythonInterpreter
+   * @class PythonInterpreter pyhtoninterpreter.h <avogadro/pythoninterpreter.h>
+   * @brief Class to embed the Python interpreter in Avogadro.
    *
    * This class is used to help embed the Python interpreter into C++ apps
    * which wish to expose parts of the Avogadro API.  Specifically instances

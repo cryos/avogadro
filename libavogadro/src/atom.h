@@ -37,7 +37,7 @@ namespace Avogadro {
   class Molecule;
   /**
    * @class Atom atom.h <avogadro/atom.h>
-   * @brief Atom Class
+   * @brief Representation of an atom.
    * @author Marcus D. Hanwell
    *
    * The Atom class is a Primitive subclass that provides an Atom object. All
