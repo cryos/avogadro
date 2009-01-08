@@ -85,10 +85,11 @@ namespace Avogadro
       fileName = tr("untitled");
 
 #if defined (Q_WS_MAC) || defined (Q_WS_WIN)
-// The Mac and Windows Qt/Native dialog already update extensions for us. So we'll call the static version.
+// The Mac and Windows Qt/Native dialog already update extensions for us.
+// So we'll call the static version.
     result = QFileDialog::getSaveFileName(widget,
                                           windowTitle,
-                                          defaultDirectory + "/" + fileName,
+                                          defaultDirectory + '/' + fileName,
                                           filters.join(";;"), &defaultFilter);
 #else
     SaveDialog dialog(widget, windowTitle, defaultDirectory, fileName, filters, defaultSuffix);

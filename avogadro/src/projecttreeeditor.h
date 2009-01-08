@@ -41,8 +41,8 @@
 **
 ****************************************************************************/
 
-#ifndef TREEWIDGETEDITOR_H
-#define TREEWIDGETEDITOR_H
+#ifndef PROJECTTREEEDITOR_H
+#define PROJECTTREEEDITOR_H
 
 #include <avogadro/global.h>
 #include "projecttreemodeldelegate.h"
