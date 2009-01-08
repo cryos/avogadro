@@ -28,6 +28,8 @@
 
 #include <QTranslator>
 
+#define EIGEN_WORK_AROUND_QT_BUG_CALLING_WRONG_OPERATOR_NEW_FIXED_IN_QT_4_5 
+
 #ifdef WIN32
 # ifndef NOMINMAX
 #  define NOMINMAX 1
