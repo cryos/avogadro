@@ -49,12 +49,14 @@ namespace Avogadro {
 
   /**
    * @class Molecule molecule.h <avogadro/molecule.h>
-   * @brief Molecule Class
+   * @brief The molecule contains all of the molecular primitives.
    * @author Marcus D. Hanwell
    *
-   * The Molecule class implements the core molecule data that is the cetral
-   * model holding all information displayed by our various views and
-   * manipulated by tools and extensions.
+   * The Molecule class contains the core data of the molecule. It is the cetral
+   * model, holding all information displayed by our various views and
+   * manipulated by tools and extensions. It typically contains Atom and Bond
+   * objects, but may also contain Cube, Mesh, Fragment, Residue and other
+   * objects.
    */
   class MoleculePrivate;
   class A_EXPORT Molecule : public Primitive
