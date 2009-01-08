@@ -1,14 +1,14 @@
 /**********************************************************************
  PeriodicTableView - Periodic Table Graphics View for Avogadro
 
- Copyright (C) 2007 by Marcus D. Hanwell
+ Copyright (C) 2007-2009 by Marcus D. Hanwell
 
  This file is part of the Avogadro molecular editor project.
  For more information, see <http://avogadro.sourceforge.net/>
 
  Avogadro is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
+ it under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation; either version 2.1 of the License, or
  (at your option) any later version.
 
  Avogadro is distributed in the hope that it will be useful,
@@ -35,9 +35,9 @@
 
 namespace Avogadro {
   /**
-   * @class ElementItem periodictablegv.h <avogadro/periodictablegv.h>
+   * @class ElementItem periodictableview.h <avogadro/periodictableview.h>
    * @author Marcus D. Hanwell
-   * @brief An element item intended to display a single element box.
+   * @brief An element item, intended to display a single element.
    *
    * This class implements a QGraphicsItem for displaying single elements in a
    * perdiodic table. It currently allows the setting of the proton number and
@@ -89,16 +89,19 @@ namespace Avogadro {
      */
     QColor *m_color;
 
-    int m_width, m_height;    // width and height of the rectangle of the item
+    /**
+     * Width and height of the elements.
+     */
+    int m_width, m_height;
 
     /**
      * The proton number of the item - all other attributes are derived from this.
      */
-    int m_element;            // element number
+    int m_element;
   };
 
   /**
-   * @class ElementDetail periodictablegv.h <avogadro/periodictablegv.h>
+   * @class ElementDetail periodictableview.h <avogadro/periodictableview.h>
    * @author Marcus D. Hanwell
    * @brief An item box displaying more detailed information on the element.
    *
@@ -141,54 +144,107 @@ namespace Avogadro {
     void elementChanged(int element);
 
   private:
-    int m_width, m_height;    // width and height of the rectangle of the item
+    /**
+     * Width and height of the item.
+     */
+    int m_width, m_height;
 
     /**
      * The proton number of the item - all other attributes are derived from this.
      */
-    int m_element;            // element number
+    int m_element;
   };
 
+  /**
+   * @class PeriodicTableScene periodictableview.h <avogadro/periodictableview.h>
+   * @author Marcus D. Hanwell
+   * @brief This class encapsulates the scene, all items are contained in it.
+   *
+   * This class implements a QGraphicsScene that holds all of the element items.
+   * Any items owned by this class are automatically deleted by it.
+   */
   class PeriodicTableScene : public QGraphicsScene
   {
-    Q_OBJECT
+  Q_OBJECT
 
   public:
+    /**
+     * Constructor.
+     */
     PeriodicTableScene(QObject *parent = 0);
 
   Q_SIGNALS:
     /**
-     * This signal is sent when the element is clicked on to indicate a change
+     * This signal is emitted when an element item is clicked.
      */
     void elementChanged(int element);
 
   protected:
+    /**
+     * Handles the mouse press events to change the active element.
+     */
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
+
+    /**
+     * Not used at present.
+     */
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+
+    /**
+     * Not used at present.
+     */
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
   };
 
+  /**
+   * @class PeriodicTableView periodictableview.h <avogadro/periodictableview.h>
+   * @author Marcus D. Hanwell
+   * @brief This class implements the view of the PeriodicTableScene.
+   *
+   * This is the class that actually draws the widget onto screen. This is
+   * the class that should normally be instantiated in order to display a
+   * Periodic Table.
+   */
   class A_EXPORT PeriodicTableView : public QGraphicsView
   {
     Q_OBJECT
 
   public:
+    /**
+     * Constructor - contructs a new PeriodicTableView with an internal instance
+     * of PeriodicTableScene.
+     */
     PeriodicTableView(QWidget *parent = 0);
+
+    /**
+     * Constructor - used to construct a PeriodicTableView with a copy of an
+     * existing PeriodicTableScene.
+     */
     explicit PeriodicTableView(QGraphicsScene *scene, QWidget *parent = 0);
 
-    void setSelectedElement(int element);
-
   private Q_SLOTS:
+    /**
+     * Use this slot to change the active element.
+     */
     void elementClicked(int element);
 
   Q_SIGNALS:
+    /**
+     * Signal emitted when the active element in the PeriodicTableView changes.
+     */
     void elementChanged(int element);
 
   private:
+    /**
+     * Proton number of the active element.
+     */
     int m_element;
 
   protected:
-    void mouseDoubleClickEvent(QMouseEvent *event); 
+    /**
+     * Double click event - select an element and hide the PeriodicTableView.
+     */
+    void mouseDoubleClickEvent(QMouseEvent *event);
   };
 
 } // End of Avogadro namespace
