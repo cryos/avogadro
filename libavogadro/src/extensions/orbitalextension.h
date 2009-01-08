@@ -1,7 +1,7 @@
 /**********************************************************************
-  OrbitalExtension - Extension for generating orbital cubes
+  OrbitalExtension - Extension for generating cubes and meshes
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -50,10 +50,10 @@ namespace Avogadro
     OrbitalExtension(QObject* parent = 0);
     virtual ~OrbitalExtension();
 
-    virtual QString name() const { return QObject::tr("Orbitals"); }
+    virtual QString name() const { return QObject::tr("Surfaces"); }
     virtual QString description() const
     {
-      return QObject::tr("Orbital cube generator");
+      return QObject::tr("Create and edit cubes and surfaces.");
     }
 
     virtual QList<QAction *> actions() const;
