@@ -903,7 +903,7 @@ namespace Avogadro{
   void Molecule::setEnergies(const std::vector<double>& energies)
   {
     Q_D(const Molecule);
-    d->energies = energies;    
+    d->energies = energies;
   }
 
 
@@ -1264,9 +1264,9 @@ namespace Avogadro{
     d->farthestAtom = 0;
     d->center.setZero();
     d->normalVector.setZero();
-    d->radius = 0.0;
-    if(numAtoms() != 0)
-    {
+    d->radius = 1.0;
+    // In order to calculate many parameters we need at least two atoms
+    if(numAtoms() > 1) {
       // compute center
       foreach (Atom *atom, d->atomList)
         d->center += *atom->pos();
