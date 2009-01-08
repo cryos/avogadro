@@ -6,11 +6,11 @@
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = Avogadro
 PROJECT_NUMBER         = 0.9.0
-OUTPUT_DIRECTORY       = doc/internal
+OUTPUT_DIRECTORY       = doc/api
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = YES
-REPEAT_BRIEF           = NO
+REPEAT_BRIEF           = YES
 ABBREVIATE_BRIEF       = "The $name class" \
                          "The $name widget" \
                          "The $name file" \
@@ -83,7 +83,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = libavogadro/ 
+INPUT                  = libavogadro/src/ doc/
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
@@ -126,7 +126,7 @@ FILE_PATTERNS          = *.c \
                          *.M \
                          *.MM \
                          *.PY
-RECURSIVE              = YES
+RECURSIVE              = NO
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = ui* */.svn/* */engines/* */extensions/* */tools/*
