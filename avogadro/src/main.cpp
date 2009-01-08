@@ -95,6 +95,9 @@ int main(int argc, char *argv[])
   if (avoTranslator.load(avoFilename, prefixPath )) {
     app.installTranslator(&avoTranslator);
   }
+  else {
+    qDebug() << prefixPath + avoFilename << "not found.";
+  }
   
   // Check if we just need a version or help message
   QStringList arguments = app.arguments();

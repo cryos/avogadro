@@ -26,6 +26,7 @@
 #include <config.h>
 
 #include <QLocale>
+#include <QDebug>
 
 namespace Avogadro
 {
@@ -37,9 +38,11 @@ namespace Avogadro
 
     QTranslator *translator = new QTranslator(0);
 
-    if (translator->load(fileName, prefixPath ))
-    {
+    if (translator->load(fileName, prefixPath )) {
       return translator;
+    }
+    else {
+      qDebug() << prefixPath + fileName << "not found.";
     }
     delete translator;
     return 0;
