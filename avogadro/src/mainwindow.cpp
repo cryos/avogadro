@@ -1953,6 +1953,7 @@ namespace Avogadro
     if (projectItem) {
       d->glWidget->clearSelected();
       d->glWidget->setSelected(projectItem->primitives(), true);
+      d->glWidget->update();
     }
   }
 

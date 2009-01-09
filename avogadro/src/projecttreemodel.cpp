@@ -39,6 +39,7 @@
 #include "projectdelegates/atomdelegate.h"
 #include "projectdelegates/bonddelegate.h"
 #include "projectdelegates/residuedelegate.h"
+#include "projectdelegates/selectiondelegate.h"
 
 namespace Avogadro {
 
@@ -210,6 +211,8 @@ namespace Avogadro {
         delegate = (ProjectTreeModelDelegate*) new AtomDelegate(this);
       } else if (settings.value("name").toString() == tr("Residues")) {
         delegate = (ProjectTreeModelDelegate*) new ResidueDelegate(this);
+      } else if (settings.value("name").toString() == tr("User Selections")) {
+        delegate = (ProjectTreeModelDelegate*) new SelectionDelegate(this);
       }
 
       if (delegate) {
