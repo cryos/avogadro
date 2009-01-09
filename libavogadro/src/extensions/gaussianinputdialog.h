@@ -1,7 +1,7 @@
 /**********************************************************************
   GaussianInputDialog - Dialog for generating Gaussian input decks
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
   Copyright (C) 2008 Michael Banck
 
   This file is part of the Avogadro molecular editor project.
@@ -60,6 +60,12 @@ namespace Avogadro
      * @param settings Settings variable to read settings from.
      */
     virtual void readSettings(QSettings &settings);
+
+  protected:
+    /**
+     * Reimplemented to update the dialog when it is shown
+     */
+    void showEvent(QShowEvent *event);
 
   private:
     Ui::GaussianInputDialog ui;

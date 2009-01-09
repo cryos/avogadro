@@ -34,6 +34,7 @@
 #include <QTextStream>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QShowEvent>
 #include <QDebug>
 
 using namespace OpenBabel;
@@ -118,6 +119,11 @@ namespace Avogadro
     ui.coordCombo->setCurrentIndex(settings.value("gaussianCoord", 0).toInt());
   }
 
+  void GaussianInputDialog::showEvent(QShowEvent *)
+  {
+    updatePreviewText();
+  }
+
   void GaussianInputDialog::setMolecule(Molecule *molecule)
   {
     // Disconnect the old molecule first...
@@ -127,7 +133,7 @@ namespace Avogadro
 
     m_molecule = molecule;
     // Add atom coordinates
-//    updatePreviewText();
+    updatePreviewText();
   }
 
   void GaussianInputDialog::updatePreviewText()
