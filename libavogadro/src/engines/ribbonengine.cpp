@@ -32,8 +32,6 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/painterdevice.h>
 
-#include <Eigen/Regression>
-
 #include <QMessageBox>
 #include <QString>
 #include <QDebug>

@@ -33,6 +33,7 @@
 #include <QGLFormat>
 #include <QDebug>
 #include <QLibraryInfo>
+#include <QProcess>
 
 #include <iostream>
 
@@ -74,8 +75,20 @@ int main(int argc, char *argv[])
 
   // Before we do much else, load translations
   // This ensures help messages and debugging info will be translated
+  QStringList translationPaths;
+
+  foreach (const QString &variable, QProcess::systemEnvironment()) {
+    QStringList split1 = variable.split('=');
+    if (split1[0] == "AVOGADRO_TRANSLATIONS") {
+      foreach (const QString &path, split1[1].split(':'))
+        translationPaths << path;
+    }
+  }
+
   QString translationCode = QLocale::system().name();
   QString prefixPath = QString( INSTALL_PREFIX ) + "/share/avogadro/i18n/";
+
+  translationPaths << prefixPath;
 
   qDebug() << "Locale: " << translationCode;
   // Load Qt translations first
@@ -92,10 +105,17 @@ int main(int argc, char *argv[])
   }
   QTranslator avoTranslator(0);
   QString avoFilename = "avogadro_" + translationCode + ".qm";
-  if (avoTranslator.load(avoFilename, prefixPath )) {
-    app.installTranslator(&avoTranslator);
+
+  foreach (QString translationPath, translationPaths) {
+    if (avoTranslator.load(avoFilename, translationPath)) {
+      app.installTranslator(&avoTranslator);
+      break;
+    }
+    else {
+      qDebug() << translationPath + avoFilename << "not found.";
+    }
   }
-  
+
   // Check if we just need a version or help message
   QStringList arguments = app.arguments();
   if(arguments.contains("-v") || arguments.contains("--version"))

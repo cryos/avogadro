@@ -23,12 +23,9 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "primitive.h"
+
 #include <config.h>
-
-#include <avogadro/primitive.h>
-
-#include <Eigen/Regression>
-#include <Eigen/Geometry>
 
 #include <QReadWriteLock>
 

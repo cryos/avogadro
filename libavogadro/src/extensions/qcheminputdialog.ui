@@ -16,7 +16,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle" >
-   <string>QChem Input</string>
+   <string>Q-Chem Input</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
    <property name="sizeConstraint" >
@@ -90,28 +90,8 @@
        </item>
       </layout>
      </item>
-     <item row="1" column="2" >
-      <widget class="QLabel" name="label_4" >
-       <property name="text" >
-        <string>Processors:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>procSpin</cstring>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="3" >
       <layout class="QHBoxLayout" name="horizontalLayout_5" >
-       <item>
-        <widget class="QSpinBox" name="procSpin" >
-         <property name="minimum" >
-          <number>1</number>
-         </property>
-         <property name="value" >
-          <number>1</number>
-         </property>
-        </widget>
-       </item>
        <item>
         <spacer name="horizontalSpacer_5" >
          <property name="orientation" >
@@ -226,6 +206,11 @@
          <item>
           <property name="text" >
            <string>6-31G(d,p)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>LANL2DZ</string>
           </property>
          </item>
         </widget>
@@ -362,23 +347,6 @@
         </spacer>
        </item>
       </layout>
-     </item>
-     <item row="4" column="2" >
-      <widget class="QLabel" name="label_9" >
-       <property name="text" >
-        <string>Checkpoint:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>checkpointCheck</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="3" >
-      <widget class="QCheckBox" name="checkpointCheck" >
-       <property name="text" >
-        <string/>
-       </property>
-      </widget>
      </item>
      <item row="5" column="0" >
       <widget class="QLabel" name="label_10" >
@@ -533,13 +501,11 @@
  <tabstops>
   <tabstop>titleLine</tabstop>
   <tabstop>calculationCombo</tabstop>
-  <tabstop>procSpin</tabstop>
   <tabstop>theoryCombo</tabstop>
   <tabstop>basisCombo</tabstop>
   <tabstop>chargeSpin</tabstop>
   <tabstop>multiplicitySpin</tabstop>
   <tabstop>outputCombo</tabstop>
-  <tabstop>checkpointCheck</tabstop>
   <tabstop>coordCombo</tabstop>
   <tabstop>moreButton</tabstop>
   <tabstop>previewText</tabstop>
