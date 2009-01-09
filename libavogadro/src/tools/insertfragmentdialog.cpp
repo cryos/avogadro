@@ -214,11 +214,13 @@ namespace Avogadro {
       } else {
         d->smilesMode = false;
       }
+      ui.toolTipLabel->setText(tr("Click to insert the fragment at that position."));
       ui.insertFragmentButton->setText(tr("Stop Inserting"));
       ui.smilesLineEdit->setEnabled(false);
       ui.directoryTreeView->setEnabled(false);
    } else {
       ui.insertFragmentButton->setText(tr("Insert Fragment"));
+      ui.toolTipLabel->setText(QString());
       ui.smilesLineEdit->setEnabled(true);
       ui.directoryTreeView->setEnabled(true);
       if (d->smilesMode) {
