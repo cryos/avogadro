@@ -33,6 +33,7 @@
 #include <QGLFormat>
 #include <QDebug>
 #include <QLibraryInfo>
+#include <QProcess>
 
 #include <iostream>
 
@@ -108,6 +109,7 @@ int main(int argc, char *argv[])
   foreach (QString translationPath, translationPaths) {
     if (avoTranslator.load(avoFilename, translationPath)) {
       app.installTranslator(&avoTranslator);
+      break;
     }
     else {
       qDebug() << translationPath + avoFilename << "not found.";
