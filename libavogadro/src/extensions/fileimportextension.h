@@ -45,7 +45,7 @@ namespace Avogadro
     FileImportExtension(QObject* parent = 0);
     virtual ~FileImportExtension();
 
-    virtual QString name() const { return QObject::tr("File import"); }
+    virtual QString name() const { return QObject::tr("Import Trajectory"); }
     virtual QString description() const
     {
       return QObject::tr("Import chemical files");

@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef MOLECULEITEMS_H
-#define MOLECULEITEMS_H
+#ifndef MOLECULEDELEGATE_H
+#define MOLECULEDELEGATE_H
 
 #include <avogadro/global.h>
 #include "../projecttreemodeldelegate.h"

@@ -82,7 +82,7 @@ namespace Avogadro {
   void Engine::setPainterDevice(const PainterDevice *pd)
   {
     m_pd = pd;
-    m_molecule = m_pd->molecule();
+    setMolecule(m_pd->molecule());
   }
 
   void Engine::setEnabled(bool enabled)

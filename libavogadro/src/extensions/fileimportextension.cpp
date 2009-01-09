@@ -53,7 +53,7 @@ namespace Avogadro
     m_glwidget(0), m_molecule(0), m_fileImportDialog(0)
   {
     QAction* action = new QAction(this);
-    action->setText(tr("Import Trajectory..."));
+    action->setText(tr("Trajectory..."));
     m_actions.append(action);
   }
 

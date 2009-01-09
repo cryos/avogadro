@@ -41,11 +41,11 @@ target_link_libraries(gamessextension ${LINK_LIBS})
 install(TARGETS gamessextension DESTINATION ${DESTINATION_DIR})
 
 ### Properties
-#set(propextension_SRCS propmodel.cpp propextension.cpp)
-#qt4_automoc(${propextension_SRCS})
-#add_library(propextension MODULE ${propextension_SRCS} ${propextension_UIS_H})
-#target_link_libraries(propextension ${LINK_LIBS})
-#install(TARGETS propextension DESTINATION ${DESTINATION_DIR})
+set(propextension_SRCS propmodel.cpp propextension.cpp)
+qt4_automoc(${propextension_SRCS})
+add_library(propextension MODULE ${propextension_SRCS} ${propextension_UIS_H})
+target_link_libraries(propextension ${LINK_LIBS})
+install(TARGETS propextension DESTINATION ${DESTINATION_DIR})
 
 ### Molecular Mechanics force fields
 set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp
@@ -58,20 +58,6 @@ add_library(forcefieldextension MODULE ${forcefieldextension_SRCS}
 target_link_libraries(forcefieldextension ${LINK_LIBS})
 install(TARGETS forcefieldextension DESTINATION ${DESTINATION_DIR})
 
-### Docking
-###set(dockingextension_SRCS dockingextension.cpp liganddialog.cpp pocketdialog.cpp)
-###qt4_wrap_ui(dockingextension_UIS_H liganddialog.ui pocketdialog.ui)
-###qt4_automoc(${dockingextension_SRCS})
-###ADD_LIBRARY(dockingextension SHARED ${dockingextension_SRCS} ${dockingextension_UIS_H})
-###TARGET_LINK_LIBRARIES(dockingextension
-###	${OPENBABEL2_LIBRARIES}
-###	${QT_LIBRARIES}
-###	${OPENGL_LIBRARIES}
-###	avogadro-lib
-###)
-###INSTALL(TARGETS dockingextension DESTINATION ${DESTINATION_DIR})
-
-
 ### hydrogens
 set(hydrogensextension_SRCS hydrogensextension.cpp)
 qt4_automoc(${hydrogensextension_SRCS})
@@ -80,7 +66,7 @@ target_link_libraries(hydrogensextension ${LINK_LIBS})
 install(TARGETS hydrogensextension DESTINATION ${DESTINATION_DIR})
 
 ### Selections
-set(selectextension_SRCS selectextension.cpp namedselectionmodel.cpp)
+set(selectextension_SRCS selectextension.cpp)
 qt4_automoc(${selectextension_SRCS})
 add_library(selectextension MODULE ${selectextension_SRCS})
 target_link_libraries(selectextension ${LINK_LIBS})
@@ -162,14 +148,15 @@ if(Boost_PYTHON_FOUND)
 endif(Boost_PYTHON_FOUND)
 
 ### Animation
-#set(animationextension_SRCS animationextension.cpp animationdialog.cpp trajvideomaker.cpp)
-#qt4_add_resources(animationextension_RC_SRCS animation.qrc)
-#qt4_wrap_ui(animationextension_UIS_H animationdialog.ui)
-#qt4_automoc(${animationextension_SRCS})
-#add_library(animationextension MODULE ${animationextension_SRCS}
-#	${animationextension_UIS_H} ${animationextension_RC_SRCS} )
-#target_link_libraries(animationextension ${LINK_LIBS})
-#install(TARGETS animationextension DESTINATION ${DESTINATION_DIR})
+set(animationextension_SRCS animationextension.cpp animationdialog.cpp
+    povpainter.cpp trajvideomaker.cpp )
+qt4_add_resources(animationextension_RC_SRCS animation.qrc)
+qt4_wrap_ui(animationextension_UIS_H animationdialog.ui)
+qt4_automoc(${animationextension_SRCS})
+add_library(animationextension MODULE ${animationextension_SRCS}
+	${animationextension_UIS_H} ${animationextension_RC_SRCS} )
+target_link_libraries(animationextension ${LINK_LIBS})
+install(TARGETS animationextension DESTINATION ${DESTINATION_DIR})
 
 ### Lin Morph Animation
 #set(linmorphextension_SRCS linmorphextension.cpp linmorphdialog.cpp trajvideomaker.cpp)

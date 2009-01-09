@@ -37,6 +37,7 @@ set(libavogadro_HDRS
   fragment.h
   glgraphicsview.h
   glwidget.h
+  global.h
   idlist.h
   line.h
   mesh.h

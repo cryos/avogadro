@@ -46,6 +46,7 @@
 #include <QReadWriteLock>
 #include <QDebug>
 
+using std::vector;
 using Eigen::Vector3d;
 
 namespace Avogadro{
@@ -63,6 +64,7 @@ namespace Avogadro{
       mutable Atom *                farthestAtom;
       mutable bool                  invalidGeomInfo;
       mutable bool                  invalidRings;
+      mutable std::vector<double>   energies;
 
       // std::vector used over QVector due to index issues, QVector uses ints
       std::vector<Atom *>           atoms;
@@ -87,8 +89,8 @@ namespace Avogadro{
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
-    d_ptr(new MoleculePrivate), m_atomPos(0), m_invalidPartialCharges(true),
-    m_invalidAromaticity(true)
+    d_ptr(new MoleculePrivate), m_atomPos(0), m_dipoleMoment(0),
+    m_invalidPartialCharges(true), m_invalidAromaticity(true)
   {
     m_fileName = QDir::homePath() + "/untitled";
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -96,7 +98,8 @@ namespace Avogadro{
 
   Molecule::Molecule(const Molecule &other) :
     Primitive(MoleculeType, other.parent()), d_ptr(new MoleculePrivate),
-    m_atomPos(0), m_invalidPartialCharges(true), m_invalidAromaticity(true)
+    m_atomPos(0), m_dipoleMoment(0), m_invalidPartialCharges(true),
+    m_invalidAromaticity(true)
   {
     *this = other;
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -106,33 +109,7 @@ namespace Avogadro{
   {
     // Need to iterate through all atoms/bonds and destroy them
     Q_D(Molecule);
-
-    if (m_atomPos) {
-      delete m_atomPos;
-    }
-
-    foreach (Atom *atom, d->atomList) {
-      atom->deleteLater();
-    }
-    foreach (Bond *bond, d->bondList) {
-      bond->deleteLater();
-    }
-    foreach (Cube *cube, d->cubeList) {
-      cube->deleteLater();
-    }
-    foreach (Mesh *mesh, d->meshList) {
-      mesh->deleteLater();
-    }
-    foreach (Residue *residue, d->residueList) {
-      residue->deleteLater();
-    }
-    foreach (Fragment *ring, d->ringList) {
-      ring->deleteLater();
-    }
-    if (d->obmol) {
-      delete d->obmol;
-      d->obmol = 0;
-    }
+    clear();
     delete d_ptr;
   }
 
@@ -151,21 +128,36 @@ namespace Avogadro{
   Atom *Molecule::addAtom()
   {
     Q_D(Molecule);
+    // Add an atom with the next unique id
+    return addAtom(d->atoms.size());
+  }
+
+    // do some fancy footwork when we add an atom previously created
+  Atom *Molecule::addAtom(unsigned long id)
+  {
+    Q_D(Molecule);
     Atom *atom = new Atom(this);
 
     m_lock->lockForWrite();
     if (!m_atomPos) {
-      m_atomPos = new std::vector<Vector3d>;
+      m_atomConformers.resize(1);
+      m_atomConformers[0] = new vector<Vector3d>;
+      m_atomPos = m_atomConformers[0];
       m_atomPos->reserve(100);
     }
-    // Ensure that all new Vector3d objects are initialised to zero
-    m_atomPos->push_back(Vector3d::Zero());
-    d->atoms.push_back(atom);
+
+    if(id >= d->atoms.size()) {
+      d->atoms.resize(id+1,0);
+      m_atomPos->resize(id+1, Vector3d::Zero());
+    }
+    d->atoms[id] = atom;
+    // Does this still want to have the same index as before somehow?
     d->atomList.push_back(atom);
     m_lock->unlock();
 
-    atom->setId(d->atoms.size()-1);
+    atom->setId(id);
     atom->setIndex(d->atomList.size()-1);
+    // now that the id is correct, emit the signal
     connect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
     emit atomAdded(atom);
     return atom;
@@ -173,28 +165,10 @@ namespace Avogadro{
 
   void Molecule::setAtomPos(unsigned long int id, const Eigen::Vector3d& vec)
   {
-    if (m_atomPos) {
-      if (m_atomPos->size() > id) {
-        m_lock->lockForWrite();
-        (*m_atomPos)[id] = vec;
-        m_lock->unlock();
-      }
-      else {
-        // Reserve size in blocks of 100
-        unsigned int reserve = (static_cast<int>(id / 100) + 1) * 100;
-        m_lock->lockForWrite();
-        if (m_atomPos->capacity() < reserve) {
-          m_atomPos->reserve(reserve);
-        }
-        // Ensure that all new Vector3d objects are initialised to zero
-        int initialSize = m_atomPos->size();
-        m_atomPos->resize(id+1);
-        for (unsigned int i = initialSize; i < id; ++i) {
-          (*m_atomPos)[i].setZero();
-        }
-        (*m_atomPos)[id] = vec;
-        m_lock->unlock();
-      }
+    if (id < m_atomPos->size()) {
+      m_lock->lockForWrite();
+      (*m_atomPos)[id] = vec;
+      m_lock->unlock();
     }
   }
 
@@ -209,41 +183,12 @@ namespace Avogadro{
     if (!m_atomPos)
       return 0;
 
-    if (m_atomPos->size() > id) {
-      return const_cast<const Vector3d*>(&m_atomPos->at(id));
+    if (id < m_atomPos->size()) {
+      return &m_atomPos->at(id);
     }
     else {
       return 0;
     }
-  }
-
-  // do some fancy footwork when we add an atom previously created
-  Atom *Molecule::addAtom(unsigned long id)
-  {
-    Q_D(Molecule);
-    Atom *atom = new Atom(this);
-
-    m_lock->lockForWrite();
-    if (!m_atomPos) {
-      m_atomPos = new std::vector<Vector3d>;
-      m_atomPos->reserve(100);
-    }
-    // Ensure that all new Vector3d objects are initialised to zero
-    m_atomPos->push_back(Vector3d::Zero());
-
-    if(id >= d->atoms.size())
-      d->atoms.resize(id+1,0);
-    d->atoms[id] = atom;
-    // Does this still want to have the same index as before somehow?
-    d->atomList.push_back(atom);
-    m_lock->unlock();
-
-    atom->setId(id);
-    atom->setIndex(d->atomList.size()-1);
-    // now that the id is correct, emit the signal
-    connect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
-    emit atomAdded(atom);
-    return(atom);
   }
 
   void Molecule::removeAtom(Atom *atom)
@@ -251,8 +196,7 @@ namespace Avogadro{
     Q_D(Molecule);
     if(atom) {
       // When deleting an atom this also implicitly deletes any bonds to the atom
-      QList<unsigned long int> bonds = atom->bonds();
-      foreach (unsigned long int bond, bonds) {
+      foreach (unsigned long int bond, atom->bonds()) {
         removeBond(bond);
       }
 
@@ -309,21 +253,8 @@ namespace Avogadro{
   Bond *Molecule::addBond()
   {
     Q_D(Molecule);
+    return addBond(d->bonds.size());
     Bond *bond = new Bond(this);
-
-    m_lock->lockForWrite();
-    d->invalidRings = true;
-    m_invalidPartialCharges = true;
-    m_invalidAromaticity = true;
-    d->bonds.push_back(bond);
-    d->bondList.push_back(bond);
-    m_lock->unlock();
-
-    bond->setId(d->bonds.size()-1);
-    bond->setIndex(d->bondList.size()-1);
-    connect(bond, SIGNAL(updated()), this, SLOT(updateBond()));
-    emit bondAdded(bond);
-    return bond;
   }
 
   Bond *Molecule::addBond(unsigned long id)
@@ -754,6 +685,25 @@ namespace Avogadro{
     }
   }
 
+  void Molecule::setDipoleMoment(const Eigen::Vector3d &moment)
+  {
+    m_dipoleMoment = new Vector3d(moment);
+  }
+
+  const Eigen::Vector3d * Molecule::dipoleMoment() const
+  {
+    if (m_dipoleMoment)
+      return m_dipoleMoment;
+    else {
+      // Calculate an estimate
+      m_dipoleMoment = new Vector3d(0.0, 0.0, 0.0);
+      foreach (Atom *a, atoms()) {
+        *m_dipoleMoment += *a->pos() * a->partialCharge();
+      }
+      return m_dipoleMoment;
+    }
+  }
+
   void Molecule::calculatePartialCharges() const
   {
     if (numAtoms() < 1 || !m_invalidPartialCharges) {
@@ -878,6 +828,84 @@ namespace Avogadro{
       return 0;
     }
   }
+
+  bool Molecule::addConformer(const std::vector<Eigen::Vector3d> &conformer,
+                              int index)
+  {
+    if (conformer.size() != m_atomPos->size())
+      return false;
+
+    if (m_atomConformers.size() < index+1) {
+      unsigned int size = m_atomConformers.size();
+      for (unsigned int i = size; i <= index; ++i)
+        m_atomConformers.push_back( new vector<Vector3d>(m_atomPos->size()) );
+    }
+    *m_atomConformers[index] = conformer;
+    return true;
+  }
+
+  vector<Vector3d> * Molecule::addConformer(int index)
+  {
+    if (index < m_atomConformers.size())
+      return m_atomConformers[index];
+    else {
+      unsigned int size = m_atomConformers.size();
+      m_atomConformers.resize(index+1);
+      for (unsigned int i = size; i <= index; ++i)
+        m_atomConformers[i] = new vector<Vector3d>(m_atomPos->size());
+      return m_atomConformers[index];
+    }
+  }
+
+  bool Molecule::setConformer(int index)
+  {
+    // If the index is higher than the size
+    if (m_atomConformers.size() < index + 1)
+      return false;
+    else {
+      unsigned int size = m_atomPos->size();
+      m_atomPos = m_atomConformers[index];
+      while (m_atomPos->size() < size)
+        m_atomPos->push_back(Eigen::Vector3d::Zero());
+      return true;
+    }
+  }
+
+  void Molecule::clearConformers()
+  {
+    for (unsigned int i = 1; i < m_atomConformers.size(); ++i)
+      delete m_atomConformers[i];
+    m_atomConformers.resize(1);
+  }
+
+  int Molecule::numConformers() const
+  {
+    return m_atomConformers.size();
+  }
+
+  const std::vector<double>& Molecule::energies() const
+  {
+    Q_D(const Molecule);
+    while (d->energies.size() != numConformers())
+      d->energies.push_back(0.0);
+    return d->energies;
+  }
+
+  double Molecule::energy(int index) const
+  {
+    Q_D(const Molecule);
+    if (index < d->energies.size())
+      return d->energies[index];
+    else
+      return 0.0;
+  }
+
+  void Molecule::setEnergies(const std::vector<double>& energies)
+  {
+    Q_D(const Molecule);
+    d->energies = energies;
+  }
+
 
   QList<Atom *> Molecule::atoms() const
   {
@@ -1055,6 +1083,12 @@ namespace Avogadro{
       }
     }
 
+    // FIXME: Causes segfaults. Copy the dipole moment of the molecule
+//    OpenBabel::OBVectorData *vd = (OpenBabel::OBVectorData*) obmol->GetData(OpenBabel::OBGenericDataType::VectorData);
+//    OpenBabel::vector3 moment = vd->GetData();
+//    if (vd)
+//      m_dipoleMoment = new Vector3d(moment.x(), moment.y(), moment.z());
+
     // If available, copy the unit cell
     d->obunitcell = static_cast<OpenBabel::OBUnitCell *>(obmol->GetData(OpenBabel::OBGenericDataType::UnitCell));
     // (that could return NULL, but other methods know they could get NULL)
@@ -1080,14 +1114,14 @@ namespace Avogadro{
     return true;
   }
 
-  const Eigen::Vector3d & Molecule::center() const
+  const Eigen::Vector3d Molecule::center() const
   {
     Q_D(const Molecule);
     if( d->invalidGeomInfo ) computeGeomInfo();
     return d->center;
   }
 
-  const Eigen::Vector3d & Molecule::normalVector() const
+  const Eigen::Vector3d Molecule::normalVector() const
   {
     Q_D(const Molecule);
     if( d->invalidGeomInfo ) computeGeomInfo();
@@ -1118,8 +1152,11 @@ namespace Avogadro{
       emit primitiveRemoved(atom);
     }
     d->atomList.clear();
+    clearConformers();
     delete m_atomPos;
     m_atomPos = 0;
+    delete m_dipoleMoment;
+    m_dipoleMoment = 0;
 
     d->bonds.resize(0);
     foreach (Bond *bond, d->bondList) {
@@ -1158,7 +1195,12 @@ namespace Avogadro{
     const MoleculePrivate *e = other.d_func();
     d->atoms.resize(e->atoms.size(), 0);
     if (other.m_atomPos) {
-      m_atomPos = new std::vector<Vector3d>;
+      m_atomConformers.resize(1);
+      m_atomConformers[0] = new vector<Vector3d>;
+      m_atomPos = m_atomConformers[0];
+      m_atomPos->reserve(100);
+
+      m_atomPos->clear();
       m_atomPos->resize(other.m_atomPos->size());
     }
     else
@@ -1222,9 +1264,9 @@ namespace Avogadro{
     d->farthestAtom = 0;
     d->center.setZero();
     d->normalVector.setZero();
-    d->radius = 0.0;
-    if(numAtoms() != 0)
-    {
+    d->radius = 1.0;
+    // In order to calculate many parameters we need at least two atoms
+    if(numAtoms() > 1) {
       // compute center
       foreach (Atom *atom, d->atomList)
         d->center += *atom->pos();

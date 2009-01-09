@@ -30,6 +30,7 @@
 #include "projectdelegates/atomdelegate.h"
 #include "projectdelegates/bonddelegate.h"
 #include "projectdelegates/residuedelegate.h"
+#include "projectdelegates/selectiondelegate.h"
 
 #include <QDir>
 #include <QIcon>
@@ -44,7 +45,8 @@ namespace Avogadro {
     MoleculeIndex,
     AtomIndex,
     BondIndex,
-    ResidueIndex
+    ResidueIndex,
+    SelectionIndex
   };
 
   ProjectTreeEditor::ProjectTreeEditor(QWidget *parent) : QDialog(parent), m_updating(false)
@@ -54,11 +56,12 @@ namespace Avogadro {
 
     ui.treeWidget->header()->setMovable(false);
 
-    ui.itemTypeCombo->addItem("Label");
-    ui.itemTypeCombo->addItem("Molecule");
-    ui.itemTypeCombo->addItem("Atoms");
-    ui.itemTypeCombo->addItem("Bonds");
-    ui.itemTypeCombo->addItem("Residues");
+    ui.itemTypeCombo->addItem(tr("Label"));
+    ui.itemTypeCombo->addItem(tr("Molecule"));
+    ui.itemTypeCombo->addItem(tr("Atoms"));
+    ui.itemTypeCombo->addItem(tr("Bonds"));
+    ui.itemTypeCombo->addItem(tr("Residues"));
+    ui.itemTypeCombo->addItem(tr("User Selections"));
   }
 
   ProjectTreeEditor::~ProjectTreeEditor()
@@ -98,6 +101,9 @@ namespace Avogadro {
       case ResidueIndex:
         m_hash[newItem] = (ProjectTreeModelDelegate*) new ResidueDelegate(0);
         break;
+      case SelectionIndex:
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new SelectionDelegate(0);
+        break;
     }
 
     ui.treeWidget->setCurrentItem(newItem, 0);
@@ -111,7 +117,7 @@ namespace Avogadro {
     if (!curItem)
         return;
 
-    if (m_hash[curItem]->name() != "Label") {
+    if (m_hash[curItem]->name() != tr("Label")) {
       QMessageBox::information(this, tr("Error"), tr("only labels can have sub items"));
       return;
     }
@@ -139,6 +145,9 @@ namespace Avogadro {
         break;
       case ResidueIndex:
         m_hash[newItem] = (ProjectTreeModelDelegate*) new ResidueDelegate(0);
+        break;
+      case SelectionIndex:
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new SelectionDelegate(0);
         break;
     }
 
@@ -452,6 +461,13 @@ namespace Avogadro {
     settings.beginGroup("projectTree");
     int size = settings.beginReadArray("items");
     
+    if (size == 0) { // default (i.e., never started a project tree)
+       // Start with a molecule delegate
+       newItem = new QTreeWidgetItem(parents.last());
+       newItem->setText(0, tr("Molecule"));
+       m_hash[newItem] = (ProjectTreeModelDelegate*) new MoleculeDelegate(0);
+    }
+    else {
     for (int i = 0; i < size; ++i) {
       settings.setArrayIndex( i );
       int position = settings.value("indent").toInt();
@@ -476,25 +492,26 @@ namespace Avogadro {
       newItem->setText(0, settings.value("alias").toString());
 
       // create a new ProjectTreeModelDelegate for this QTreeWidgetItem
-      if (settings.value("name").toString() == "Label") {
+      if (settings.value("name").toString() == tr("Label")) {
         m_hash[newItem] = (ProjectTreeModelDelegate*) new LabelDelegate(0);
-      } else if (settings.value("name").toString() == "Molecule") {
+      } else if (settings.value("name").toString() == tr("Molecule")) {
         m_hash[newItem] = (ProjectTreeModelDelegate*) new MoleculeDelegate(0);
-      } else if (settings.value("name").toString() == "Atoms") {
+      } else if (settings.value("name").toString() == tr("Atoms")) {
         m_hash[newItem] = (ProjectTreeModelDelegate*) new AtomDelegate(0);
-      } else if (settings.value("name").toString() == "Bonds") {
+      } else if (settings.value("name").toString() == tr("Bonds")) {
         m_hash[newItem] = (ProjectTreeModelDelegate*) new BondDelegate(0);
-      } else if (settings.value("name").toString() == "Residues") {
+      } else if (settings.value("name").toString() == tr("Residues")) {
         m_hash[newItem] = (ProjectTreeModelDelegate*) new ResidueDelegate(0);
+      } else if (settings.value("name").toString() == tr("User Selections")) {
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new SelectionDelegate(0); 
       }
      
       if (!m_hash[newItem])
         continue;
 
       m_hash[newItem]->readSettings(settings);
-
-
     }
+  }
 
     settings.endArray();
     settings.endGroup();  

@@ -36,7 +36,7 @@ namespace Avogadro {
 
   /**
    * @class Bond bond.h <avogadro/bond.h>
-   * @brief Bond Class
+   * @brief Representation of a chemical bond.
    * @author Marcus D. Hanwell
    *
    * The Bond class is a Primitive subclass that provides a Bond object.

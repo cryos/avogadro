@@ -821,6 +821,11 @@ namespace Avogadro {
        */
       void resized();
 
+      /**
+       * Named selections have changed.
+       */
+      void namedSelectionsChanged();
+
 
   };
 

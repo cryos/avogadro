@@ -1649,7 +1649,7 @@ namespace Avogadro {
       //X   printf ("hits = %d\n", hits);
       ptr = ( GLuint * ) d->selectBuf;
       // for all hits and not past end of buffer
-      for ( i = 0; i < hit_count && !( ptr > d->selectBuf + d->selectBufSize ); i++ ) {
+      for (i = 0; i < hit_count && !(ptr > d->selectBuf + d->selectBufSize); ++i) {
         names = *ptr++;
         // make sure that we won't be passing the end of bufer
         if ( ptr + names + 2 > d->selectBuf + d->selectBufSize ) {
@@ -1660,11 +1660,11 @@ namespace Avogadro {
 
         // allow names of 0
         name = -1;
-        for ( j = 0; j < names/2; j++ ) { /*  for each name */
+        for (j = 0; j < names/2; ++j) { /*  for each name */
           type = *ptr++;
           name = *ptr++;
         }
-        if ( name > -1 ) {
+        if (name > -1) {
           //            printf ("%ld(%d) ", name,type);
           hits.append( GLHit( type,name,minZ,maxZ ) );
         }
@@ -1846,6 +1846,7 @@ namespace Avogadro {
     QPair<QString, QPair<QList<unsigned int>,QList<unsigned int> > > namedSelection(name, pair);
     d->namedSelections.append(namedSelection);
 
+    emit namedSelectionsChanged();
     return true;
   }
 
@@ -1854,6 +1855,7 @@ namespace Avogadro {
     for (int i = 0; i < d->namedSelections.size(); ++i)
       if (d->namedSelections.at(i).first == name) {
         d->namedSelections.removeAt(i);
+        emit namedSelectionsChanged();
         return;
       }
   }
@@ -1871,6 +1873,7 @@ namespace Avogadro {
     QPair<QString, QPair<QList<unsigned int>,QList<unsigned int> > > pair = d->namedSelections.takeAt(index);
     pair.first = name;
     d->namedSelections.insert(index, pair);
+    emit namedSelectionsChanged();
   }
 
   QList<QString> GLWidget::namedSelections()

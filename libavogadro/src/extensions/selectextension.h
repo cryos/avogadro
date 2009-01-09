@@ -75,20 +75,6 @@ namespace Avogadro {
       void namedSelections(GLWidget *widget);
   };
 
-  class SelectTreeView : public QTreeView
-  {
-    Q_OBJECT
-
-     public:
-       explicit SelectTreeView(GLWidget *widget, QWidget *parent = 0);
-
-       void selectionChanged(const QItemSelection &selected, const QItemSelection &previous);
-       void hideEvent(QHideEvent *event);
-
-     private:
-       GLWidget *m_widget;
-  };
-  
   class SelectExtensionFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
