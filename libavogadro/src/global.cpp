@@ -2,6 +2,7 @@
   main.cpp - Global library functions
 
   Copyright (C) 2007 by Donald Ephraim Curtis
+  Copyright (C) 2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -22,8 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <avogadro/global.h>
-#include <config.h>
+#include "global.h"
+#include "config.h"
 
 #include <QLocale>
 #include <QDebug>
@@ -43,9 +44,9 @@ namespace Avogadro
     }
     else {
       qDebug() << prefixPath + fileName << "not found.";
+      delete translator;
+      return 0;
     }
-    delete translator;
-    return 0;
   }
 
   QString Library::version()
@@ -69,3 +70,4 @@ namespace Avogadro
   }
 
 }
+
