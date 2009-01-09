@@ -24,6 +24,7 @@
  **********************************************************************/
 
 #include "molecule.h"
+
 #include "atom.h"
 #include "bond.h"
 #include "cube.h"
@@ -31,8 +32,8 @@
 #include "fragment.h"
 #include "residue.h"
 
-#include <Eigen/Regression>
 #include <Eigen/Geometry>
+#include <Eigen/LeastSquares>
 
 #include <vector>
 

@@ -35,7 +35,6 @@
 #include <avogadro/painterdevice.h>
 
 #include <openbabel/mol.h>
-#include <Eigen/Regression>
 
 #include <QMessageBox>
 #include <QDebug>
