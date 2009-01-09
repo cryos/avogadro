@@ -579,7 +579,7 @@ namespace Avogadro {
     }
 
     // And now we set up a new entry into the combo list
-    QString entryName(elementTranslator.name(index)); // (e.g., "Hydrogen")
+    QString entryName(ElementTranslator::name(index)); // (e.g., "Hydrogen")
     entryName += " (" + QString::number(index) + ')';
 
     m_elementsIndex.insert(position, index);
@@ -638,25 +638,25 @@ namespace Avogadro {
       // Small popup with 10 most common elements for organic chemistry
       // (and extra for "other" to bring up periodic table window)
       m_comboElements = new QComboBox(m_settingsWidget);
-      m_comboElements->addItem(elementTranslator.name(1) + " (1)");
+      m_comboElements->addItem(ElementTranslator::name(1) + " (1)");
       m_elementsIndex.append(1);
-      m_comboElements->addItem(elementTranslator.name(5) + " (5)");
+      m_comboElements->addItem(ElementTranslator::name(5) + " (5)");
       m_elementsIndex.append(5);
-      m_comboElements->addItem(elementTranslator.name(6) + " (6)");
+      m_comboElements->addItem(ElementTranslator::name(6) + " (6)");
       m_elementsIndex.append(6);
-      m_comboElements->addItem(elementTranslator.name(7) + " (7)");
+      m_comboElements->addItem(ElementTranslator::name(7) + " (7)");
       m_elementsIndex.append(7);
-      m_comboElements->addItem(elementTranslator.name(8) + " (8)");
+      m_comboElements->addItem(ElementTranslator::name(8) + " (8)");
       m_elementsIndex.append(8);
-      m_comboElements->addItem(elementTranslator.name(9) + " (9)");
+      m_comboElements->addItem(ElementTranslator::name(9) + " (9)");
       m_elementsIndex.append(9);
-      m_comboElements->addItem(elementTranslator.name(15) + " (15)");
+      m_comboElements->addItem(ElementTranslator::name(15) + " (15)");
       m_elementsIndex.append(15);
-      m_comboElements->addItem(elementTranslator.name(16) + " (16)");
+      m_comboElements->addItem(ElementTranslator::name(16) + " (16)");
       m_elementsIndex.append(16);
-      m_comboElements->addItem(elementTranslator.name(17) + " (17)");
+      m_comboElements->addItem(ElementTranslator::name(17) + " (17)");
       m_elementsIndex.append(17);
-      m_comboElements->addItem(elementTranslator.name(35) + " (35)");
+      m_comboElements->addItem(ElementTranslator::name(35) + " (35)");
       m_elementsIndex.append(35);
       m_comboElements->addItem(tr("Other..."));
       m_elementsIndex.append(0);

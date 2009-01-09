@@ -133,7 +133,7 @@ namespace Avogadro {
     int pixelHeight = fm.height();
 
     QString symbol = OpenBabel::etab.GetSymbol(m_element);
-    QString name(elementTranslator.name(m_element));
+    QString name(ElementTranslator::name(m_element));
     QString mass = QString::number(OpenBabel::etab.GetMass(m_element), 'f', 3);
 
     std::vector<double> color = OpenBabel::etab.GetRGB(m_element);
