@@ -47,19 +47,16 @@ namespace Avogadro {
     Q_OBJECT
 
   public:
-    ElementTranslator(): QObject() {}
-    ~ElementTranslator() {}
+    ElementTranslator();
+    ~ElementTranslator();
 
     /**
      * Translate element names.
      * @param element The atomic number of the element to be translated
      * @return a QString with the appropriate translation for the current locale
      */
-    QString name(int element) const;
+    static QString name(int element);
   };
-
-  //A_DECL_EXPORT extern ElementTranslator elementTranslator;
-  A_EXPORT extern ElementTranslator elementTranslator;
 
 }
 
