@@ -1334,12 +1334,33 @@ namespace Avogadro {
 //      d->engines.at(i)->setPrimitives(d->primitives);
 
     // connect our signals so if the molecule gets updated
-    connect( d->molecule, SIGNAL( primitiveAdded( Primitive* ) ),
-             this, SLOT( addPrimitive( Primitive* ) ) );
-    connect( d->molecule, SIGNAL( primitiveUpdated( Primitive* ) ),
-             this, SLOT( updatePrimitive( Primitive* ) ) );
-    connect( d->molecule, SIGNAL( primitiveRemoved( Primitive* ) ),
-             this, SLOT( removePrimitive( Primitive* ) ) );
+    connect(d->molecule,SIGNAL(primitiveAdded(Primitive*)),
+             this, SLOT(addPrimitive(Primitive*)));
+    connect(d->molecule, SIGNAL(primitiveUpdated(Primitive*)),
+             this, SLOT(updatePrimitive(Primitive*)));
+    connect(d->molecule, SIGNAL(primitiveRemoved(Primitive*)),
+             this, SLOT(removePrimitive(Primitive*)));
+    // Atoms
+    connect(d->molecule, SIGNAL(atomAdded(Atom*)),
+            this, SLOT(addAtom(Atom*)));
+    connect(d->molecule, SIGNAL(atomUpdated(Atom*)),
+            this, SLOT(updateAtom(Atom*)));
+    connect(d->molecule, SIGNAL(atomRemoved(Atom*)),
+             this, SLOT(removeAtom(Atom*)));
+    // Atoms
+    connect(d->molecule, SIGNAL(atomAdded(Atom*)),
+             this, SLOT(addAtom(Atom*)));
+    connect(d->molecule, SIGNAL(atomUpdated(Atom*)),
+             this, SLOT(updateAtom(Atom*)));
+    connect(d->molecule, SIGNAL(atomRemoved(Atom*)),
+             this, SLOT(removeAtom(Atom*)));
+    // Bonds
+    connect(d->molecule, SIGNAL(BondAdded(Bond*)),
+             this, SLOT(addBond(Bond*)));
+    connect(d->molecule, SIGNAL(BondUpdated(Bond*)),
+             this, SLOT(updateBond(Bond*)));
+    connect(d->molecule, SIGNAL(bondRemoved(Bond*)),
+             this, SLOT(removeBond(Bond*)));
 
     // compute the molecule's geometric info
     updateGeometry();
@@ -1473,6 +1494,58 @@ namespace Avogadro {
     if ( primitive ) {
       d->selectedPrimitives.removeAll(primitive);
       d->primitives.removeAll(primitive);
+      invalidateDLs();
+      update();
+    }
+  }
+
+  void GLWidget::addAtom(Atom *a)
+  {
+    if (a) {
+      d->primitives.append(a);
+      invalidateDLs();
+      update();
+    }
+  }
+
+  void GLWidget::updateAtom(Atom *)
+  {
+    updateGeometry();
+    invalidateDLs();
+    update();
+  }
+
+  void GLWidget::removeAtom(Atom *a)
+  {
+    if (a) {
+      d->selectedPrimitives.removeAll(a);
+      d->primitives.removeAll(a);
+      invalidateDLs();
+      update();
+    }
+  }
+
+  void GLWidget::addBond(Bond *b)
+  {
+    if (b) {
+      d->primitives.append(b);
+      invalidateDLs();
+      update();
+    }
+  }
+
+  void GLWidget::updateBond(Bond *)
+  {
+    updateGeometry();
+    invalidateDLs();
+    update();
+  }
+
+  void GLWidget::removeBond(Bond *b)
+  {
+    if (b) {
+      d->selectedPrimitives.removeAll(b);
+      d->primitives.removeAll(b);
       invalidateDLs();
       update();
     }
@@ -1831,7 +1904,7 @@ namespace Avogadro {
     // make sure the name is unique
     for (int i = 0; i < d->namedSelections.size(); ++i)
       if (d->namedSelections.at(i).first == name)
-	return false;
+        return false;
 
     QList<unsigned int> atomIds;
     QList<unsigned int> bondIds;

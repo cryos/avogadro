@@ -742,6 +742,64 @@ namespace Avogadro {
       void removePrimitive(Primitive *primitive);
 
       /**
+       * Add the Atom to the GLWidget.  This slot is called whenever
+       * a new Atom is added to our Molecule model.  It adds the
+       * Atom to the list in the appropriate group.
+       *
+       * @note This may change before 1.0 - the Molecule should be used more.
+       *
+       * @param atom Pointer to an Atom to add to the view
+       */
+      void addAtom(Atom *atom);
+
+      /**
+       * Update an Atom.  This slot is called whenever an Atom of our
+       * Molecule model has been changed and we need to update our view.
+       *
+       * @param atom Atom that changed.
+       */
+      void updateAtom(Atom *atom);
+
+      /**
+       * Remove an Atom.  This slot is called whenever an Atom of our
+       * Molecule model has been removed and we need to take it off our list.
+       * Additionally we need to update other items in our view that are impacted
+       * by this change.
+       *
+       * @param atom Atom to remove.
+       */
+      void removeAtom(Atom *atom);
+
+      /**
+       * Add the Bond to the GLWidget.  This slot is called whenever
+       * a new Bond is added to our Molecule model.  It adds the
+       * Bond to the list in the appropriate group.
+       *
+       * @note This may change before 1.0 - the Molecule should be used more.
+       *
+       * @param bond Pointer to a Bond to add to the view
+       */
+      void addBond(Bond *bond);
+
+      /**
+       * Update a Bond.  This slot is called whenever a Bond of our
+       * Molecule model has been changed and we need to update our view.
+       *
+       * @param bond Bond that changed.
+       */
+      void updateBond(Bond *bond);
+
+      /**
+       * Remove a Bond.  This slot is called whenever a Bond of our
+       * Molecule model has been removed and we need to take it off our list.
+       * Additionally we need to update other items in our view that are impacted
+       * by this change.
+       *
+       * @param bond Bond to remove.
+       */
+      void removeBond(Bond *bond);
+
+      /**
        * Set the background color of the rendering area (the default is black).
        *
        * @param background the new background color.
