@@ -86,7 +86,11 @@ int main(int argc, char *argv[])
   }
 
   QString translationCode = QLocale::system().name();
-  QString prefixPath = QString( INSTALL_PREFIX ) + "/share/avogadro/i18n/";
+  #ifdef WIN32
+    QString prefixPath = QCoreApplication::applicationDirPath() + "/i18n/avogadro/";
+  #else
+    QString prefixPath = QString( INSTALL_PREFIX ) + "/share/avogadro/i18n/";
+  #endif
 
   translationPaths << prefixPath;
 
@@ -106,7 +110,10 @@ int main(int argc, char *argv[])
   QTranslator avoTranslator(0);
   QString avoFilename = "avogadro_" + translationCode + ".qm";
 
+  
   foreach (QString translationPath, translationPaths) {
+    qDebug() << "path = " << translationPath;
+
     if (avoTranslator.load(avoFilename, translationPath)) {
       app.installTranslator(&avoTranslator);
       break;

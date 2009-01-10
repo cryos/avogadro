@@ -16,9 +16,9 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include <QtGui>
-
 #include "highlighter.h"
+
+#include <QRegExp>
 
 namespace Avogadro {
 

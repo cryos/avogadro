@@ -28,13 +28,18 @@
 
 #include <QLocale>
 #include <QDebug>
+#include <QCoreApplication>
 
 namespace Avogadro
 {
   QTranslator* Library::createTranslator()
   {
     QString translationCode = QLocale::system().name();
-    QString prefixPath = QString( INSTALL_PREFIX ) + "/share/libavogadro/i18n/";
+    #ifdef WIN32
+      QString prefixPath = QCoreApplication::applicationDirPath() + "/i18n/libavogadro/";
+    #else
+      QString prefixPath = QString( INSTALL_PREFIX ) + "/share/libavogadro/i18n/";
+    #endif
     QString fileName = "avogadro_" + translationCode + ".qm";
 
     QTranslator *translator = new QTranslator(0);

@@ -1,7 +1,7 @@
 /**********************************************************************
-  QChemInputDialog - Dialog for generating Gaussian input decks
+  QChemInputDialog - Dialog for generating Q-Chem input decks
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -35,68 +35,70 @@ namespace Avogadro
 {
   class QChemInputDialog : public QDialog
   {
-      Q_OBJECT
+  Q_OBJECT
 
-    public:
-      explicit QChemInputDialog(QWidget *parent = 0, Qt::WindowFlags f = 0 );
-      ~QChemInputDialog();
+  public:
+    explicit QChemInputDialog(QWidget *parent = 0, Qt::WindowFlags f = 0 );
+    ~QChemInputDialog();
 
-      void setMolecule(Molecule *molecule);
+    void setMolecule(Molecule *molecule);
 
-      enum calculationType{SP, OPT, FREQ};
-      enum theoryType{AM1, PM3, RHF, B3LYP, MP2, CCSD};
-      enum basisType{STO3G, B321G, B631Gd, B631Gdp};
-      enum coordType{CARTESIAN, ZMATRIX, ZMATRIX_COMPACT};
+    enum calculationType{SP, OPT, FREQ};
+    enum theoryType{AM1, PM3, RHF, B3LYP, MP2, CCSD};
+    enum basisType{STO3G, B321G, B631Gd, B631Gdp, LANL2DZ};
+    enum coordType{CARTESIAN, ZMATRIX, ZMATRIX_COMPACT};
 
-    private:
-      Ui::QChemInputDialog ui;
-      Molecule* m_molecule;
+  protected:
+    /**
+     * Reimplemented to update the dialog when it is shown
+     */
+    void showEvent(QShowEvent *event);
 
-      // Internal data structure for the calculation
-      QString m_title;
-      calculationType m_calculationType;
-      theoryType m_theoryType;
-      basisType m_basisType;
-      int m_multiplicity;
-      int m_charge;
-      int m_procs;
-      QString m_output;
-      bool m_chk;
-      coordType m_coordType;
-      bool m_dirty;
+  private:
+    Ui::QChemInputDialog ui;
+    Molecule* m_molecule;
 
-      // Generate an input deck as a string
-      QString generateInputDeck();
-      // Translate enums to strings
-      QString getCalculationType(calculationType t);
-      QString getTheoryType(theoryType t);
-      QString getBasisType(basisType t);
+    // Internal data structure for the calculation
+    QString m_title;
+    calculationType m_calculationType;
+    theoryType m_theoryType;
+    basisType m_basisType;
+    int m_multiplicity;
+    int m_charge;
+    QString m_output;
+    coordType m_coordType;
+    bool m_dirty;
+    bool m_warned;
 
-      // Enable/disable form elements
-      void deckDirty(bool);
+    // Generate an input deck as a string
+    QString generateInputDeck();
+    // Translate enums to strings
+    QString getCalculationType(calculationType t);
+    QString getTheoryType(theoryType t);
+    QString getBasisType(basisType t);
 
-    public Q_SLOTS:
-      void updatePreviewText();
+    // Enable/disable form elements
+    void deckDirty(bool);
 
-    private Q_SLOTS:
-      //! Button Slots
-      void resetClicked();
-      void generateClicked();
-      void enableFormClicked();
-      void moreClicked();
-      void previewEdited();
+  public Q_SLOTS:
+    void updatePreviewText();
 
-      void setTitle();
-      void setCalculation(int);
-      void setTheory(int);
-      void setBasis(int);
-      void setMultiplicity(int);
-      void setCharge(int);
-      void setProcs(int);
-      void setOutput(int);
-      void setChk(int);
-      void setCoords(int);
+  private Q_SLOTS:
+    //! Button Slots
+    void resetClicked();
+    void generateClicked();
+    void enableFormClicked();
+    void moreClicked();
+    void previewEdited();
 
+    void setTitle();
+    void setCalculation(int);
+    void setTheory(int);
+    void setBasis(int);
+    void setMultiplicity(int);
+    void setCharge(int);
+    void setOutput(int);
+    void setCoords(int);
   };
 }
 
