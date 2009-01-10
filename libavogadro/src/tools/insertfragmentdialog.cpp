@@ -102,6 +102,8 @@ namespace Avogadro {
     ui.directoryTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
     ui.directoryTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui.directoryTreeView->setUniformRowHeights(true);
+    ui.directoryTreeView->expandToDepth(1);
+
     ui.insertFragmentButton->setFocusPolicy(Qt::NoFocus);
 
     connect(ui.insertFragmentButton, SIGNAL(clicked(bool)),
