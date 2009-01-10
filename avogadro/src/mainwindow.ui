@@ -215,7 +215,7 @@
     <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle" >
-    <string>Project</string>
+    <string>Project Tree</string>
    </property>
    <attribute name="dockWidgetArea" >
     <number>2</number>
