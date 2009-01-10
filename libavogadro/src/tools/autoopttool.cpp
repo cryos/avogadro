@@ -61,7 +61,7 @@ namespace Avogadro {
           "Right Mouse: Move Space\n\n"
           "Extra Function when running\n"
           "Left Mouse: Click and drag atoms to move them"));
-    m_forceField = OBForceField::FindForceField( "Ghemical" );
+    m_forceField = OBForceField::FindForceField( "UFF" );
     // Check that the force field exists and was initialised OK
     if (!m_forceField)
     {
@@ -169,6 +169,7 @@ namespace Avogadro {
     m_forceField->UnsetFixAtom();
 
     widget->update();
+    event->accept();
     return 0;
   }
 
@@ -267,6 +268,11 @@ namespace Avogadro {
       m_comboFF = new QComboBox(m_settingsWidget);
       for (unsigned int i = 0; i < m_forceFieldList.size(); ++i)
         m_comboFF->addItem(m_forceFieldList[i].c_str());
+
+      // find UFF for the default item
+      int currentFF = m_comboFF->findText("UFF");
+      if (currentFF != -1) // couldn't find it, go for index 0
+        m_comboFF->setCurrentIndex(currentFF);
 
       QHBoxLayout* hbox = new QHBoxLayout;
       hbox->addWidget(m_comboFF);
@@ -593,7 +599,15 @@ namespace Avogadro {
   {
     Tool::readSettings(settings);
     if(m_comboFF) {
-      m_comboFF->setCurrentIndex(settings.value("forceField", 0).toInt());
+      int currentFF = settings.value("forceField", -1).toInt();
+      if (currentFF == -1) {
+        // haven't set a default
+        // find UFF for default
+        currentFF = m_comboFF->findText("UFF");
+        if (currentFF == -1) // couldn't find it, go for index 0
+          currentFF = 0;
+      }
+      m_comboFF->setCurrentIndex(currentFF);
     }
     if(m_comboAlgorithm) {
       m_comboAlgorithm->setCurrentIndex(settings.value("algorithm", 0).toInt());
