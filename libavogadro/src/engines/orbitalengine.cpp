@@ -214,8 +214,7 @@ namespace Avogadro {
         else {
           // Valid settings widget with populated orbital combos
           iMesh1 = m_settingsWidget->orbital1Combo->currentIndex();
-          iMesh2 = m_settingsWidget->orbital2Combo->currentIndex();
-          if (iMesh1 >= meshes.size() || iMesh2 >= meshes.size()) {
+          if (iMesh1 >= meshes.size()) {
             qDebug() << "Invalid orbital selected.";
             return;
           }
@@ -223,11 +222,16 @@ namespace Avogadro {
       }
     }
 
-    // attribute is the text key for the grid (as an std::string)
-    qDebug() << " Orbital 1 title: " << meshes[iMesh1]->name();
-    qDebug() << " Orbital 2 title: " << meshes[iMesh2]->name();
+    // attribute is the text key for the Mesh
     m_mesh1 = meshes[iMesh1];
-    m_mesh2 = meshes[iMesh2];
+    m_mesh2 = m_molecule->meshById(m_mesh1->otherMesh());
+    qDebug() << " Orbital 1 title: " << m_mesh1->name();
+    qDebug() << " Orbital 2 title: " << m_mesh2->name();
+
+    // Get the cube extents
+    Cube *cube = m_molecule->cubeById(m_mesh1->cube());
+    m_min = cube->min();
+    m_max = cube->max();
 
     m_update = false;
   }
@@ -240,10 +244,8 @@ namespace Avogadro {
     qDebug() << "Update orbital combo called...";
     int tmp1 = m_settingsWidget->orbital1Combo->currentIndex();
     if (tmp1 < 0) tmp1 = 0;
-    int tmp2 = m_settingsWidget->orbital2Combo->currentIndex();
-    if (tmp2 < 0) tmp2 = 1;
     m_settingsWidget->orbital1Combo->clear();
-    m_settingsWidget->orbital2Combo->clear();
+
     QList<Mesh *> meshList = m_molecule->meshes();
     if (meshList.empty())
       return;
@@ -253,8 +255,13 @@ namespace Avogadro {
         qDebug() << "Cannot get a read lock on the mesh...";
         continue;
       }
-      m_settingsWidget->orbital1Combo->addItem(mesh->name());
-      m_settingsWidget->orbital2Combo->addItem(mesh->name());
+      if (mesh->isoValue() > 0.0) {
+        if (m_mesh1)
+          if (m_mesh1->id() == mesh->id())
+            tmp1 = m_settingsWidget->orbital1Combo->count();
+        m_settingsWidget->orbital1Combo->addItem(mesh->name() + ", isosurface = "
+                     + QString::number(mesh->isoValue()));
+      }
       mesh->lock()->unlock();
     }
     // If all of the orbitals disappear the molecule has been cleared
@@ -262,16 +269,8 @@ namespace Avogadro {
       m_mesh1 = 0;
       m_mesh2 = 0;
     }
-    else if (m_molecule->numMeshes() == 1)
-      tmp2 = 0;
-    if (m_mesh1)
-      m_settingsWidget->orbital1Combo->setCurrentIndex(m_mesh1->index());
     else
       m_settingsWidget->orbital1Combo->setCurrentIndex(tmp1);
-    if (m_mesh2)
-      m_settingsWidget->orbital2Combo->setCurrentIndex(m_mesh2->index());
-    else
-      m_settingsWidget->orbital2Combo->setCurrentIndex(tmp2);
   }
 
   double OrbitalEngine::transparencyDepth() const
@@ -346,8 +345,6 @@ namespace Avogadro {
       m_settingsWidget = new OrbitalSettingsWidget();
       connect(m_settingsWidget->orbital1Combo, SIGNAL(currentIndexChanged(int)),
               this, SLOT(setOrbital1(int)));
-      connect(m_settingsWidget->orbital2Combo, SIGNAL(currentIndexChanged(int)),
-              this, SLOT(setOrbital2(int)));
       connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)),
               this, SLOT(setOpacity(int)));
       connect(m_settingsWidget->renderCombo, SIGNAL(currentIndexChanged(int)),

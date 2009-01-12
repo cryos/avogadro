@@ -83,7 +83,7 @@ namespace Avogadro {
       OrbitalSettingsWidget *m_settingsWidget;
       Mesh *m_mesh1;
       Mesh *m_mesh2;
-      Eigen::Vector3f m_min, m_max;
+      Eigen::Vector3d m_min, m_max;
       Color  m_posColor;
       Color  m_negColor;
       double m_alpha;
