@@ -583,9 +583,8 @@ namespace Avogadro {
 
     /**
      * Translate the Molecule using the supplied vector.
-     * @note FIXME Not implemented.
      */
-    void translate(const Eigen::Vector3d&) { ; }
+    void translate(const Eigen::Vector3d&);
     /** @} */
 
     /** @name Operators

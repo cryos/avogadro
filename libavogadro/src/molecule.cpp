@@ -1143,6 +1143,20 @@ namespace Avogadro{
     return d->farthestAtom;
   }
 
+  void Molecule::translate(const Eigen::Vector3d& offset)
+  {
+    Q_D(Molecule);
+    m_lock->lockForWrite();
+    if (!m_atomPos)
+      return; // nothing to do
+
+    foreach (Atom *atom, d->atomList) {
+      (*m_atomPos)[atom->id()] += offset;
+      emit atomUpdated(atom);
+    }
+    m_lock->unlock();
+  }
+
   void Molecule::clear()
   {
     Q_D(Molecule);
