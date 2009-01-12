@@ -314,7 +314,7 @@ namespace Avogadro {
   const PrimitiveList & Engine::primitives() const
   {
     if (m_customPrims) return m_primitives;
-    else if (m_pd->primitives()->size()) return *m_pd->primitives();
+    else if (m_pd) if (m_pd->primitives()->size()) return *m_pd->primitives();
     else return m_primitives;
   }
 
