@@ -13,7 +13,7 @@
    <item row="0" column="0" >
     <widget class="QLabel" name="orbitalLabel" >
      <property name="text" >
-      <string>Orbital 1:</string>
+      <string>Orbital:</string>
      </property>
      <property name="alignment" >
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -24,19 +24,6 @@
     <widget class="QComboBox" name="orbital1Combo" />
    </item>
    <item row="1" column="0" >
-    <widget class="QLabel" name="orbitalLabel_2" >
-     <property name="text" >
-      <string>Orbital 2:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" >
-    <widget class="QComboBox" name="orbital2Combo" />
-   </item>
-   <item row="2" column="0" >
     <widget class="QLabel" name="opacityLabel" >
      <property name="text" >
       <string>Opacity:</string>
@@ -46,7 +33,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1" >
+   <item row="1" column="1" >
     <widget class="QSlider" name="opacitySlider" >
      <property name="minimum" >
       <number>0</number>
@@ -80,7 +67,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1" >
+   <item row="2" column="1" >
     <widget class="QComboBox" name="renderCombo" >
      <item>
       <property name="text" >
@@ -99,7 +86,7 @@
      </item>
     </widget>
    </item>
-   <item row="3" column="0" >
+   <item row="2" column="0" >
     <widget class="QLabel" name="renderLabel" >
      <property name="text" >
       <string>Render:</string>
@@ -109,7 +96,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0" >
+   <item row="3" column="0" >
     <widget class="QLabel" name="paddingLabel_2" >
      <property name="text" >
       <string>Draw Box:</string>
@@ -119,7 +106,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1" >
+   <item row="3" column="1" >
     <widget class="QCheckBox" name="drawBoxCheck" >
      <property name="text" >
       <string/>
@@ -132,7 +119,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0" >
+   <item row="4" column="0" >
     <widget class="QLabel" name="colorLabel" >
      <property name="text" >
       <string>Color:</string>
@@ -142,7 +129,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="1" >
+   <item row="4" column="1" >
     <layout class="QHBoxLayout" >
      <item>
       <widget class="QLabel" name="colorLabel_2" >
@@ -205,7 +192,7 @@
      </item>
     </layout>
    </item>
-   <item row="6" column="0" colspan="2" >
+   <item row="5" column="0" colspan="2" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
