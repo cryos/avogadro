@@ -78,7 +78,7 @@ namespace Avogadro
             this, SLOT(orbitalComboChanged(int)));
     connect(ui.isoValue, SIGNAL(editingFinished()),
             this, SLOT(isoEditChanged()));
-    connect(ui.isoSlider, SIGNAL(sliderMoved(int)),
+    connect(ui.isoSlider, SIGNAL(valueChanged(int)),
             this, SLOT(isoSliderChanged(int)));
     connect(ui.calculateMesh, SIGNAL(clicked()),
             this, SLOT(calculateMeshClicked()));
@@ -88,7 +88,7 @@ namespace Avogadro
             this, SLOT(calculateVdWCubeClicked()));
     connect(ui.surfaceDistance, SIGNAL(editingFinished()),
             this, SLOT(VdWEditChanged()));
-    connect(ui.surfaceSlider, SIGNAL(sliderMoved(int)),
+    connect(ui.surfaceSlider, SIGNAL(valueChanged(int)),
             this, SLOT(VdWSliderChanged(int)));
     connect(ui.calculateVdWMesh, SIGNAL(clicked()),
             this, SLOT(calculateVdWMeshClicked()));
