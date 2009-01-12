@@ -52,11 +52,6 @@ namespace Avogadro
     QAction *action;
 
     action = new QAction( this );
-    action->setSeparator(true);
-    action->setData(-1);
-    m_actions.append(action);
-    
-    action = new QAction( this );
     action->setText( tr("Atom Properties..." ));
     action->setData(AtomPropIndex);
     m_actions.append( action );
