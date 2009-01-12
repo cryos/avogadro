@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>403</width>
-    <height>485</height>
+    <height>530</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -22,7 +22,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget" >
      <property name="currentIndex" >
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="cube" >
       <attribute name="title" >
@@ -483,7 +483,11 @@
        <item row="2" column="1" >
         <layout class="QHBoxLayout" name="horizontalLayout_19" >
          <item>
-          <widget class="QLineEdit" name="isoValue" />
+          <widget class="QLineEdit" name="isoValue" >
+           <property name="text" >
+            <string>0.02</string>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_5" >
