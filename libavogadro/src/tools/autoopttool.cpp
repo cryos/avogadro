@@ -169,7 +169,6 @@ namespace Avogadro {
     m_forceField->UnsetFixAtom();
 
     widget->update();
-    event->accept();
     return 0;
   }
 
