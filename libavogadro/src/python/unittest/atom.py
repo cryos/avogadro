@@ -25,40 +25,40 @@ class TestAtom(unittest.TestCase):
     atom.atomicNumber = 6
     self.assertEqual(atom.atomicNumber, 6)
 
-  def test_addBond(self):
-    atom = self.molecule.addAtom()
-    bond1 = self.molecule.addBond()
-    bond2 = self.molecule.addBond()
+#  def test_addBond(self):
+#    atom = self.molecule.addAtom()
+#    bond1 = self.molecule.addBond()
+#    bond2 = self.molecule.addBond()
+#
+#    # test addBond(Bond*)
+#    atom.addBond(bond1)
+#    self.assert_(bond1.id in atom.bonds)
+#    # void addBond(unsigned long int)
+#    atom.addBond(bond2.id)
+#    self.assert_(bond2.id in atom.bonds)
 
-    # test addBond(Bond*)
-    atom.addBond(bond1)
-    self.assert_(bond1.id in atom.bonds)
-    # void addBond(unsigned long int)
-    atom.addBond(bond2.id)
-    self.assert_(bond2.id in atom.bonds)
-
-  def test_removeBond(self):
-    atom = self.molecule.addAtom()
-    # add two bonds
-    bond1 = self.molecule.addBond()
-    bond2 = self.molecule.addBond()
-    atom.addBond(bond1)
-    atom.addBond(bond2)
-    self.assertEqual(len(atom.bonds), 2)
-
-    # test removeBond(Bond*)
-    atom.removeBond(bond1)
-    self.assertEqual(len(atom.bonds), 1)
-    # void removeBond(unsigned long int)
-    atom.removeBond(bond2.id)
-    self.assertEqual(len(atom.bonds), 0)
+#  def test_removeBond(self):
+#    atom = self.molecule.addAtom()
+#    # add two bonds
+#    bond1 = self.molecule.addBond()
+#    bond2 = self.molecule.addBond()
+#    atom.addBond(bond1)
+#    atom.addBond(bond2)
+#    self.assertEqual(len(atom.bonds), 2)
+#
+#    # test removeBond(Bond*)
+#    atom.removeBond(bond1)
+#    self.assertEqual(len(atom.bonds), 1)
+#    # void removeBond(unsigned long int)
+#    atom.removeBond(bond2.id)
+#    self.assertEqual(len(atom.bonds), 0)
 
   def test_bonds(self):
     atom = self.molecule.addAtom()
     # add 5 bonds
     for i in range(5):
       bond = self.molecule.addBond()
-      atom.addBond(bond)
+      bond.setBegin(atom)
     # test the length
     self.assertEqual(len(atom.bonds), 5)
     # test the items

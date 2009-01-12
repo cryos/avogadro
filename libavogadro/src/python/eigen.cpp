@@ -445,32 +445,32 @@ template <> struct ScalarTraits<double>
  */
   
 #ifndef WIN32
-class EigenUnitTestHelper
+class EigenUnitTestHelper : public Eigen::WithAlignedOperatorNew
 {
   public:
     EigenUnitTestHelper() : m_vector3d(Eigen::Vector3d(1., 2., 3.))
     {
     }
-    Eigen::Vector3d             vector3d()              { return m_vector3d; }
-    Eigen::Vector3d&            vector3d_ref()          { return m_vector3d; }
+    //Eigen::Vector3d             vector3d()              { return m_vector3d; }
+    //Eigen::Vector3d&            vector3d_ref()          { return m_vector3d; }
     const Eigen::Vector3d&      const_vector3d_ref()    { return m_vector3d; }
     Eigen::Vector3d*            vector3d_ptr()          { return &m_vector3d; }
     const Eigen::Vector3d*      const_vector3d_ptr()    { return &m_vector3d; }
 
-    void set_vector3d(Eigen::Vector3d vec)                      { m_vector3d = vec; }
-    void set_vector3d_ref(Eigen::Vector3d& vec)                 { m_vector3d = vec; }
+    //void set_vector3d(Eigen::Vector3d vec)                      { m_vector3d = vec; }
+    //void set_vector3d_ref(Eigen::Vector3d& vec)                 { m_vector3d = vec; }
     void set_const_vector3d_ref(const Eigen::Vector3d& vec)     { m_vector3d = vec; }
     void set_vector3d_ptr(Eigen::Vector3d* vec)                 { m_vector3d = *vec; }
     void set_const_vector3d_ptr(const Eigen::Vector3d* const vec) { m_vector3d = *vec; }
 
-    Eigen::Transform3d             transform3d()              { return m_transform3d; }
-    Eigen::Transform3d&            transform3d_ref()          { return m_transform3d; }
+    //Eigen::Transform3d             transform3d()              { return m_transform3d; }
+    //Eigen::Transform3d&            transform3d_ref()          { return m_transform3d; }
     const Eigen::Transform3d&      const_transform3d_ref()    { return m_transform3d; }
     Eigen::Transform3d*            transform3d_ptr()          { return &m_transform3d; }
     const Eigen::Transform3d*      const_transform3d_ptr()    { return &m_transform3d; }
 
-    void set_transform3d(Eigen::Transform3d vec)                      { m_transform3d = vec; }
-    void set_transform3d_ref(Eigen::Transform3d& vec)                 { m_transform3d = vec; }
+    //void set_transform3d(Eigen::Transform3d vec)                      { m_transform3d = vec; }
+    //void set_transform3d_ref(Eigen::Transform3d& vec)                 { m_transform3d = vec; }
     void set_const_transform3d_ref(const Eigen::Transform3d& vec)     { m_transform3d = vec; }
     void set_transform3d_ptr(Eigen::Transform3d* vec)                 { m_transform3d = *vec; }
     void set_const_transform3d_ptr(const Eigen::Transform3d* const vec) { m_transform3d = *vec; }
@@ -488,26 +488,26 @@ void export_Eigen()
 
 #ifndef WIN32
   class_<EigenUnitTestHelper>("EigenUnitTestHelper")
-   .def("vector3d", &EigenUnitTestHelper::vector3d)
-   .def("vector3d_ref", &EigenUnitTestHelper::vector3d_ref, return_value_policy<return_by_value>())
+   //.def("vector3d", &EigenUnitTestHelper::vector3d)
+   //.def("vector3d_ref", &EigenUnitTestHelper::vector3d_ref, return_value_policy<return_by_value>())
    .def("const_vector3d_ref", &EigenUnitTestHelper::const_vector3d_ref, return_value_policy<return_by_value>())
    .def("vector3d_ptr", &EigenUnitTestHelper::vector3d_ptr, return_value_policy<return_by_value>())
    .def("const_vector3d_ptr", &EigenUnitTestHelper::const_vector3d_ptr, return_value_policy<return_by_value>())
 
-   .def("set_vector3d", &EigenUnitTestHelper::set_vector3d)
-   .def("set_vector3d_ref", &EigenUnitTestHelper::set_vector3d_ref)
+   //.def("set_vector3d", &EigenUnitTestHelper::set_vector3d)
+   //.def("set_vector3d_ref", &EigenUnitTestHelper::set_vector3d_ref)
    .def("set_const_vector3d_ref", &EigenUnitTestHelper::set_const_vector3d_ref)
    .def("set_vector3d_ptr", &EigenUnitTestHelper::set_vector3d_ptr)
    .def("set_const_vector3d_ptr", &EigenUnitTestHelper::set_const_vector3d_ptr)
  
-   .def("transform3d", &EigenUnitTestHelper::transform3d)
-   .def("transform3d_ref", &EigenUnitTestHelper::transform3d_ref, return_value_policy<return_by_value>())
+   //.def("transform3d", &EigenUnitTestHelper::transform3d)
+   //.def("transform3d_ref", &EigenUnitTestHelper::transform3d_ref, return_value_policy<return_by_value>())
    .def("const_transform3d_ref", &EigenUnitTestHelper::const_transform3d_ref, return_value_policy<return_by_value>())
    .def("transform3d_ptr", &EigenUnitTestHelper::transform3d_ptr, return_value_policy<return_by_value>())
    .def("const_transform3d_ptr", &EigenUnitTestHelper::const_transform3d_ptr, return_value_policy<return_by_value>())
 
    //.def("set_transform3d", &EigenUnitTestHelper::set_transform3d)
-   .def("set_transform3d_ref", &EigenUnitTestHelper::set_transform3d_ref)
+   //.def("set_transform3d_ref", &EigenUnitTestHelper::set_transform3d_ref)
    .def("set_const_transform3d_ref", &EigenUnitTestHelper::set_const_transform3d_ref)
    .def("set_transform3d_ptr", &EigenUnitTestHelper::set_transform3d_ptr)
    .def("set_const_transform3d_ptr", &EigenUnitTestHelper::set_const_transform3d_ptr)

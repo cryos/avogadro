@@ -39,33 +39,33 @@ class TestEngine(unittest.TestCase):
       engine.shader = 1
       self.assertEqual(engine.shader, 1)
 
-  def test_flags(self):
+  def test_layers(self):
     for engine in self.engines:
-      engine.flags
+      engine.layers
     
-  def test_primitives(self):
-    molecule = Avogadro.Molecule()
-    for i in range(10):
-      molecule.addAtom()
-
-    list = Avogadro.PrimitiveList(molecule.atoms)
-
-    for engine in self.engines:
-      self.assertEqual(engine.primitives.size, 0)
-      engine.primitives = list
-      self.assertNotEqual(engine.primitives.size, 0)
-      engine.clearPrimitives()
-      self.assertEqual(engine.primitives.size, 0)
-
-      for i in range(10):
-        self.assertEqual(engine.primitives.size, i)
-        engine.updatePrimitive(molecule.atom(i))
-        engine.addPrimitive(molecule.atom(i))
-        engine.updatePrimitive(molecule.atom(i))
-
-      for i in range(10):
-        self.assertEqual(engine.primitives.size, 10 - i)
-        engine.removePrimitive(molecule.atom(i))
+#  def test_primitives(self):
+#    molecule = Avogadro.Molecule()
+#    for i in range(10):
+#      molecule.addAtom()
+#
+#    list = Avogadro.PrimitiveList(molecule.atoms)
+#
+#    for engine in self.engines:
+#      self.assertEqual(engine.primitives.size, 0)
+#      engine.primitives = list
+#      self.assertNotEqual(engine.primitives.size, 0)
+#      engine.clearPrimitives()
+#      self.assertEqual(engine.primitives.size, 0)
+#
+#      for i in range(10):
+#        self.assertEqual(engine.primitives.size, i)
+#        engine.updatePrimitive(molecule.atom(i))
+#        engine.addPrimitive(molecule.atom(i))
+#        engine.updatePrimitive(molecule.atom(i))
+#
+#      for i in range(10):
+#        self.assertEqual(engine.primitives.size, 10 - i)
+#        engine.removePrimitive(molecule.atom(i))
 
 
   def test_enabled(self):
