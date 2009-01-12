@@ -380,7 +380,7 @@ namespace Avogadro
 
   void OrbitalDialog::calculateVdWMeshClicked()
   {
-    emit calculateVdWMesh(ui.cubeCombo->currentIndex(),
+    emit calculateVdWMesh(ui.surfaceCubeCombo->currentIndex(),
                           ui.surfaceDistance->text().toDouble());
   }
 

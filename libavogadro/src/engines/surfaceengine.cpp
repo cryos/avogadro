@@ -336,16 +336,6 @@ namespace Avogadro {
       // draw box...
       connect(m_settingsWidget->drawBoxCheck, SIGNAL(stateChanged(int)),
               this, SLOT(setDrawBox(int)));
-      connect(m_settingsWidget->drawBoxResetButton, SIGNAL(clicked()),
-              this, SLOT(resetBox()));
-
-      // clipping stuff
-      connect(m_settingsWidget->clipCheckBox, SIGNAL(stateChanged(int)), this, SLOT(setClipEnabled(int)));
-      connect(m_settingsWidget->ASpinBox, SIGNAL(valueChanged(double)), this, SLOT(setClipEqA(double)));
-      connect(m_settingsWidget->BSpinBox, SIGNAL(valueChanged(double)), this, SLOT(setClipEqB(double)));
-      connect(m_settingsWidget->CSpinBox, SIGNAL(valueChanged(double)), this, SLOT(setClipEqC(double)));
-      connect(m_settingsWidget->DSpinBox, SIGNAL(valueChanged(double)), this, SLOT(setClipEqD(double)));
-      // clipping stuff
 
       m_settingsWidget->opacitySlider->setValue(static_cast<int>(20*m_alpha));
       m_settingsWidget->renderCombo->setCurrentIndex(m_renderMode);
