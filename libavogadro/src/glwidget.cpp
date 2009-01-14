@@ -43,8 +43,6 @@
 #include <avogadro/point.h>
 #include <avogadro/line.h>
 
-//#include "elementcolor.h"
-
 // Include static engine headers
 #include "engines/bsdyengine.h"
 
@@ -1355,9 +1353,9 @@ namespace Avogadro {
     connect(d->molecule, SIGNAL(atomRemoved(Atom*)),
              this, SLOT(removeAtom(Atom*)));
     // Bonds
-    connect(d->molecule, SIGNAL(BondAdded(Bond*)),
+    connect(d->molecule, SIGNAL(bondAdded(Bond*)),
              this, SLOT(addBond(Bond*)));
-    connect(d->molecule, SIGNAL(BondUpdated(Bond*)),
+    connect(d->molecule, SIGNAL(bondUpdated(Bond*)),
              this, SLOT(updateBond(Bond*)));
     connect(d->molecule, SIGNAL(bondRemoved(Bond*)),
              this, SLOT(removeBond(Bond*)));
