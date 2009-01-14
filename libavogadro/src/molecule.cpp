@@ -993,8 +993,11 @@ namespace Avogadro{
     }
     obmol.EndModify();
     // TODO: Copy residue information, cubes, etc.
-    if (d->obunitcell != NULL)
-      obmol.SetData(d->obunitcell);
+    if (d->obunitcell != NULL) {
+      OpenBabel::OBUnitCell *obunitcell = new OpenBabel::OBUnitCell;
+      *obunitcell = *d->obunitcell;
+      obmol.SetData(obunitcell);
+    }
 
 //    qDebug() << "OBMol() run" << obmol.NumAtoms() << obmol.NumBonds();
 
@@ -1091,7 +1094,9 @@ namespace Avogadro{
 //      m_dipoleMoment = new Vector3d(moment.x(), moment.y(), moment.z());
 
     // If available, copy the unit cell
-    d->obunitcell = static_cast<OpenBabel::OBUnitCell *>(obmol->GetData(OpenBabel::OBGenericDataType::UnitCell));
+    OpenBabel::OBUnitCell *obunitcell = static_cast<OpenBabel::OBUnitCell *>(obmol->GetData(OpenBabel::OBGenericDataType::UnitCell));
+    d->obunitcell = new OpenBabel::OBUnitCell;
+    *d->obunitcell = *obunitcell;
     // (that could return NULL, but other methods know they could get NULL)
 
     return true;
@@ -1172,6 +1177,8 @@ namespace Avogadro{
     m_atomPos = 0;
     delete m_dipoleMoment;
     m_dipoleMoment = 0;
+    delete d->obunitcell;
+    d->obunitcell = 0;
 
     d->bonds.resize(0);
     foreach (Bond *bond, d->bondList) {
