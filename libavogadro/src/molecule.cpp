@@ -1095,8 +1095,10 @@ namespace Avogadro{
 
     // If available, copy the unit cell
     OpenBabel::OBUnitCell *obunitcell = static_cast<OpenBabel::OBUnitCell *>(obmol->GetData(OpenBabel::OBGenericDataType::UnitCell));
-    d->obunitcell = new OpenBabel::OBUnitCell;
-    *d->obunitcell = *obunitcell;
+    if (obunitcell) {
+      d->obunitcell = new OpenBabel::OBUnitCell;
+      *d->obunitcell = *obunitcell;
+    }
     // (that could return NULL, but other methods know they could get NULL)
 
     return true;
