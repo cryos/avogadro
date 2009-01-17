@@ -688,6 +688,10 @@ namespace Avogadro{
 
   void Molecule::setDipoleMoment(const Eigen::Vector3d &moment)
   {
+    // Don't leak memory
+    if (m_dipoleMoment)
+      delete m_dipoleMoment;
+    
     m_dipoleMoment = new Vector3d(moment);
   }
 
@@ -1087,11 +1091,12 @@ namespace Avogadro{
       }
     }
 
-    // FIXME: Causes segfaults. Copy the dipole moment of the molecule
-//    OpenBabel::OBVectorData *vd = (OpenBabel::OBVectorData*) obmol->GetData(OpenBabel::OBGenericDataType::VectorData);
-//    OpenBabel::vector3 moment = vd->GetData();
-//    if (vd)
-//      m_dipoleMoment = new Vector3d(moment.x(), moment.y(), moment.z());
+    // Copy the dipole moment of the molecule
+    OpenBabel::OBVectorData *vd = (OpenBabel::OBVectorData*)obmol->GetData("Dipole Moment");
+    if (vd) {
+      OpenBabel::vector3 moment = vd->GetData();
+      m_dipoleMoment = new Vector3d(moment.x(), moment.y(), moment.z());
+    }
 
     // If available, copy the unit cell
     OpenBabel::OBUnitCell *obunitcell = static_cast<OpenBabel::OBUnitCell *>(obmol->GetData(OpenBabel::OBGenericDataType::UnitCell));
