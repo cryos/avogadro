@@ -74,7 +74,7 @@ namespace Avogadro {
       private Q_SLOTS:
         void setDipoleType(int value);
         void settingsWidgetDestroyed();
-        void updateDipole();
+        void updateDipole(double = 0.0);
       
   };
 
