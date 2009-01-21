@@ -45,15 +45,11 @@
 #include <QTime>
 #include <QDebug>
 
-using namespace std;
-using namespace OpenBabel;
+using Eigen::Vector3d;
+using Eigen::Vector3i;
 
 namespace Avogadro
 {
-
-  using Eigen::Vector3d;
-  using Eigen::Vector3i;
-
   OrbitalExtension::OrbitalExtension(QObject* parent) : Extension(parent),
     m_glwidget(0), m_orbitalDialog(0), m_molecule(0), m_basis(0), m_slater(0),
     m_progress(0), m_timer(0), m_meshGen1(0), m_meshGen2(0), m_VdWsurface(0)
@@ -534,9 +530,15 @@ namespace Avogadro
 
     Cube *cube = m_molecule->cube(iCube);
     m_mesh1 = m_molecule->addMesh();
-    m_mesh1->setName(cube->name() + ", iso=" + QString::number(isoValue));
+    m_mesh1->setName(cube->name());
+    m_mesh1->setIsoValue(isoValue);
+    m_mesh1->setCube(cube->id());
     m_mesh2 = m_molecule->addMesh();
-    m_mesh2->setName(cube->name() + ", iso=" + QString::number(-isoValue));
+    m_mesh2->setName(cube->name());
+    m_mesh2->setIsoValue(-isoValue);
+    m_mesh2->setCube(cube->id());
+    m_mesh1->setOtherMesh(m_mesh2->id());
+    m_mesh2->setOtherMesh(m_mesh1->id());
     if (!m_meshGen1) {
       m_meshGen1 = new MeshGenerator;
       connect(m_meshGen1, SIGNAL(finished()), this, SLOT(meshGenerated()));
@@ -629,7 +631,9 @@ namespace Avogadro
 
     Cube *cube = m_molecule->cube(iCube);
     m_mesh1 = m_molecule->addMesh();
-    m_mesh1->setName(cube->name() + ", iso=" + QString::number(isoValue));
+    m_mesh1->setName(cube->name());
+    m_mesh1->setIsoValue(isoValue);
+    m_mesh1->setCube(cube->id());
 
     if (!m_meshGen1) {
       m_meshGen1 = new MeshGenerator;

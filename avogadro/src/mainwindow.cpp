@@ -220,7 +220,6 @@ namespace Avogadro
 
   void MainWindow::constructor()
   {
-
     ui.setupUi( this );
 
     QSettings settings;
@@ -335,6 +334,9 @@ namespace Avogadro
     connectUi();
 
     ui.projectDock->close();
+
+    // Disable the detach view option for now
+    ui.actionDetachView->setVisible(false);
   }
 
   bool MainWindow::event(QEvent *event)

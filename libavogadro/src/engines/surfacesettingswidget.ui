@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>412</width>
-    <height>362</height>
+    <width>321</width>
+    <height>209</height>
    </rect>
   </property>
   <layout class="QGridLayout" name="gridLayout" >
@@ -86,6 +86,9 @@
    </item>
    <item row="2" column="1" >
     <widget class="QComboBox" name="colorCombo" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
      <item>
       <property name="text" >
        <string>Custom Color</string>
@@ -111,13 +114,6 @@
       <widget class="QCheckBox" name="drawBoxCheck" >
        <property name="text" >
         <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="drawBoxResetButton" >
-       <property name="text" >
-        <string>Reset</string>
        </property>
       </widget>
      </item>
@@ -170,52 +166,7 @@
      </item>
     </layout>
    </item>
-   <item row="5" column="0" colspan="2" >
-    <widget class="QCheckBox" name="clipCheckBox" >
-     <property name="text" >
-      <string>Clipping plane: Ax + By + Cz + D = 0</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" colspan="2" >
-    <layout class="QHBoxLayout" >
-     <item>
-      <widget class="QDoubleSpinBox" name="ASpinBox" >
-       <property name="minimum" >
-        <double>-99.989999999999995</double>
-       </property>
-       <property name="value" >
-        <double>1.000000000000000</double>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDoubleSpinBox" name="BSpinBox" >
-       <property name="minimum" >
-        <double>-99.989999999999995</double>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDoubleSpinBox" name="CSpinBox" >
-       <property name="enabled" >
-        <bool>true</bool>
-       </property>
-       <property name="minimum" >
-        <double>-99.989999999999995</double>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDoubleSpinBox" name="DSpinBox" >
-       <property name="minimum" >
-        <double>-99.989999999999995</double>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="7" column="0" >
+   <item row="5" column="0" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>

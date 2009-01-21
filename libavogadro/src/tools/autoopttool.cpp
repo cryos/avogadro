@@ -157,7 +157,7 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* AutoOptTool::mouseReleaseEvent(GLWidget *widget, QMouseEvent *event)
+  QUndoCommand* AutoOptTool::mouseReleaseEvent(GLWidget *widget, QMouseEvent *)
   {
     m_glwidget = widget;
 
@@ -241,17 +241,6 @@ namespace Avogadro {
         widget->painter()->drawSphere(m_clickedAtom->pos(), renderRadius);
         glDisable( GL_BLEND );
       }
-      else if (m_leftButtonPressed || m_midButtonPressed || m_rightButtonPressed)
-      {
-        widget->painter()->setColor(1.0, 0.3, 0.3, 0.7);
-        widget->painter()->drawSphere(&m_selectedPrimitivesCenter, 0.10);
-      }
-    }
-    else if (m_leftButtonPressed && (!m_clickedAtom
-        || m_midButtonPressed || m_rightButtonPressed))
-    {
-      widget->painter()->setColor(1.0, 0.3, 0.3, 0.7);
-      widget->painter()->drawSphere(&m_selectedPrimitivesCenter, 0.10);
     }
     return true;
   }

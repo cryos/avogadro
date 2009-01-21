@@ -156,6 +156,27 @@ namespace Avogadro {
     m_widget->clearUnitCell();
   }
   
+  vector3 transformedFractionalCoordinate(vector3 originalCoordinate)
+  { // ensure the fractional coordinate is entirely within the unit cell
+    vector3 returnValue(originalCoordinate);
+    if (originalCoordinate.x() < 0.0)
+      returnValue.SetX(originalCoordinate.x() + 1.0);
+    else if (originalCoordinate.x() > 1.0)
+      returnValue.SetX(originalCoordinate.x() - 1.0);
+
+    if (originalCoordinate.y() < 0.0)
+      returnValue.SetY(originalCoordinate.y() + 1.0);
+    else if (originalCoordinate.y() > 1.0)
+      returnValue.SetY(originalCoordinate.y() - 1.0);
+
+    if (originalCoordinate.z() < 0.0)
+      returnValue.SetZ(originalCoordinate.z() + 1.0);
+    else if (originalCoordinate.z() > 1.0)
+      returnValue.SetZ(originalCoordinate.z() - 1.0);
+
+    return returnValue;
+  }
+  
   void UnitCellExtension::fillUnitCell()
   {
     /* Change coords back to inverse space, apply the space group transforms
@@ -180,6 +201,8 @@ namespace Avogadro {
     vector3 uniqueV, newV;
     list<vector3> transformedVectors; // list of symmetry-defined copies of the atom
     list<vector3>::iterator transformIterator;
+    vector3 updatedCoordinate;
+    
     OBAtom *addAtom;
     QList<const OBAtom*> atoms; // keep the current list of unique atoms -- don't double-create
     FOR_ATOMS_OF_MOL(atom, mol)
@@ -194,18 +217,13 @@ namespace Avogadro {
       for (transformIterator = transformedVectors.begin();
            transformIterator != transformedVectors.end(); ++transformIterator) {
         // coordinates are in reciprocal space -- check if it's in the unit cell
-        // TODO: transform everything into the unit cell and check for duplicates
-        if (transformIterator->x() < 0.0 || transformIterator->x() > 1.0)
-          continue;
-        else if (transformIterator->y() < 0.0 || transformIterator->y() > 1.0)
-          continue;
-        else if (transformIterator->z() < 0.0 || transformIterator->z() > 1.0)
-          continue;
-	
+        // if not, transform it in place
+        updatedCoordinate = transformedFractionalCoordinate(*transformIterator);
+             	
         addAtom = mol.NewAtom();
         // it would help to have a decent "duplicate atom" method here
         addAtom->SetAtomicNum(atom->GetAtomicNum());
-        addAtom->SetVector(uc->GetOrthoMatrix() * (*transformIterator));
+        addAtom->SetVector(uc->GetOrthoMatrix() * updatedCoordinate);
       } // end loop of transformed atoms
     } // end loop of atoms
     

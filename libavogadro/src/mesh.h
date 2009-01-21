@@ -86,6 +86,36 @@ namespace Avogadro {
     bool stable();
 
     /**
+     * Set the iso value that was used to generate the Mesh.
+     */
+    void setIsoValue(float value) { m_isoValue = value; }
+
+    /**
+     * @return The iso value used to generate the Mesh.
+     */
+    float isoValue() const { return m_isoValue; }
+
+    /**
+     * Set the unique id of the other Mesh if this Mesh is part of a pair.
+     */
+    void setOtherMesh(unsigned int other) { m_other = other; }
+
+    /**
+     * @return The unique id of the other Mesh if this is part of a pair.
+     */
+    unsigned int otherMesh() const { return m_other; }
+
+    /**
+     * Set the unique id of the Cube the Mesh was generated from.
+     */
+    void setCube(unsigned int cube) { m_cube = cube; }
+
+    /**
+     * @return The unique id of the Cube the Mesh was generated from.
+     */
+    unsigned int cube() const { return m_cube; }
+
+    /**
      * @return Vector containing all of the vertices in a one dimensional array.
      */
     const std::vector<Eigen::Vector3f> & vertices() const;
@@ -184,6 +214,9 @@ namespace Avogadro {
     std::vector<QColor> m_colors;
     QString m_name;
     bool m_stable;
+    float m_isoValue;
+    unsigned int m_other; // Unique id of the other mesh if this is part of a pair
+    unsigned int m_cube; // Unique id of the cube this mesh was generated from
     Q_DECLARE_PRIVATE(Mesh)
   };
 } // End namespace Avogadro
