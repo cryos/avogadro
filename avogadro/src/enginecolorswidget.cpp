@@ -35,11 +35,12 @@ namespace Avogadro {
 
   class EngineColorsWidgetPrivate
   {
-    public:
-      EngineColorsWidgetPrivate() : engine(0) {};
-
-      Engine *engine;
-      const PluginManager *pluginManager;
+  public:
+    EngineColorsWidgetPrivate() : engine(0), currentSettingsWidget(0) {};
+    
+    Engine *engine;
+    const PluginManager *pluginManager;
+    QWidget *currentSettingsWidget;
   };
 
   EngineColorsWidget::EngineColorsWidget( const PluginManager *pluginManager, QWidget *parent ) : QWidget(parent), d(new EngineColorsWidgetPrivate)
@@ -54,10 +55,12 @@ namespace Avogadro {
 
     connect(ui.colorCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(colorChanged(int)));
+    // we should actually check the engine settings for the current color choice
   }
 
   EngineColorsWidget::~EngineColorsWidget()
   {
+    d->currentSettingsWidget = NULL;
     delete d;
   }
 
@@ -65,8 +68,28 @@ namespace Avogadro {
   {
     Color *color = d->pluginManager->colors().at(index);
 
-    if (color)
-      d->engine->setColorMap(color);
+    if (!color)
+      return;
+
+    d->engine->setColorMap(color);
+    if (d->currentSettingsWidget) {
+      d->currentSettingsWidget->hide();
+      ui.verticalLayout->removeWidget(d->currentSettingsWidget);
+
+      // Remove the bottom spacer
+      QLayoutItem *space;
+      space = ui.verticalLayout->takeAt(-1);
+      ui.verticalLayout->removeItem(space);
+      
+      d->currentSettingsWidget = NULL;
+    }
+    
+    if (color->settingsWidget()) {
+      d->currentSettingsWidget = color->settingsWidget();
+      ui.verticalLayout->addWidget(d->currentSettingsWidget);
+      ui.verticalLayout->addStretch();
+      d->currentSettingsWidget->show();
+    }
   }
 
   void EngineColorsWidget::setEngine( Engine *engine )
