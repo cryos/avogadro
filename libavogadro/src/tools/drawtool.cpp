@@ -154,8 +154,6 @@ namespace Avogadro {
             bondOrder = 3;
             break;
           case 3:
-            bondOrder = 1;
-            break;
           default:
             bondOrder = 1;
           }
@@ -215,7 +213,7 @@ namespace Avogadro {
         // parse our hits.  we want to know
         // if we hit another existing atom that is not
         // the m_endAtom which we created
-        for(int i=0; i < m_hits.size() && !hitBeginAtom; i++) {
+        for(int i=0; i < m_hits.size() && !hitBeginAtom; ++i) {
           if(m_hits[i].type() == Primitive::AtomType) {
             // hit the beginning atom: either moved here from somewhere else
             // or were already here.
@@ -225,11 +223,27 @@ namespace Avogadro {
             else if(!m_endAtom) {
               // we don't yet have an end atom but
               // hit another atom on screen -- bond to this
+              
               existingAtom = molecule->atom(m_hits[i].name());
+              // if we're auto-adding hydrogens and we hit a hydrogen
+              // look for another target
+              // (unless we've selected hydrogen as our element of choice)
+              if (m_addHydrogens 
+                  && existingAtom->isHydrogen() 
+                  && m_element != 1) {
+                existingAtom = NULL;
+                continue;
+              }
             }
             else if(m_hits[i].name() != m_endAtom->index()) {
               // hit a new atom which isn't our end atom
               existingAtom = molecule->atom(m_hits[i].name());
+              if (m_addHydrogens 
+                  && existingAtom->isHydrogen() 
+                  && m_element != 1) {
+                existingAtom = NULL;
+                continue;
+              }
             }
           } // end hits.type == AtomType
         }
@@ -356,15 +370,13 @@ namespace Avogadro {
         // only add hydrogens to the atoms if it's the only thing
         // we've drawn.  else addbonds will adjust hydrogens.
         int atomAddHydrogens = 0;
-        if(m_addHydrogens)
-        {
+        if(m_addHydrogens) {
           // if no bond then add on undo and redo
           if(!m_bond) {
             atomAddHydrogens = 1;
           }
           // if bond then only remove on undo, rest is handled by bond
-          else
-          {
+          else {
             atomAddHydrogens = 2;
           }
         }
