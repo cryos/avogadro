@@ -349,6 +349,7 @@ namespace Avogadro {
 
     if(!m_running)
     {
+      connect(m_glwidget->molecule(), SIGNAL(destroyed()), this, SLOT(abort()));
       m_thread->setup(m_glwidget->molecule(), m_forceField,
                       m_comboAlgorithm->currentIndex(),
                       m_stepsSpinBox->value());
@@ -366,6 +367,13 @@ namespace Avogadro {
         delete cmd;
       }
     }
+  }
+
+  void AutoOptTool::abort()
+  {
+    killTimer(m_timerId);
+    m_thread->quit();
+    m_running = false;
   }
 
   void AutoOptTool::disable()
