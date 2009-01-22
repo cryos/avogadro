@@ -140,6 +140,7 @@ namespace Avogadro {
       void toggle();
       void enable();
       void disable();
+      void abort();
 
     protected:
       GLWidget *                m_glwidget;
