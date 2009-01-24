@@ -31,9 +31,11 @@ using namespace Eigen;
 
 namespace Avogadro
 {
-  class CameraPrivate : public Eigen::WithAlignedOperatorNew
+  class CameraPrivate
   {
     public:
+      EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
       CameraPrivate() {};
 
       Eigen::Transform3d modelview, projection;

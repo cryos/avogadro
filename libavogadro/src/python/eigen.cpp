@@ -445,9 +445,11 @@ template <> struct ScalarTraits<double>
  */
   
 #ifndef WIN32
-class EigenUnitTestHelper : public Eigen::WithAlignedOperatorNew
+class EigenUnitTestHelper
 {
   public:
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+    
     EigenUnitTestHelper() : m_vector3d(Eigen::Vector3d(1., 2., 3.))
     {
     }
