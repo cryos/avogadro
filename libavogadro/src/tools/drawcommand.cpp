@@ -36,23 +36,6 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  /// Utility function -- unset OpenBabel perception
-  void UnsetFlags(Molecule *)
-  {
-/*    mol->UnsetFlag(OB_AROMATIC_MOL);
-    mol->UnsetFlag(OB_SSSR_MOL);
-    mol->UnsetFlag(OB_RINGFLAGS_MOL);
-    mol->UnsetFlag(OB_ATOMTYPES_MOL);
-    mol->UnsetFlag(OB_RINGTYPES_MOL);
-    mol->UnsetFlag(OB_CHIRALITY_MOL);
-    mol->UnsetFlag(OB_HYBRID_MOL);
-    mol->UnsetFlag(OB_IMPVAL_MOL);
-    mol->UnsetFlag(OB_KEKULE_MOL);
-    mol->UnsetFlag(OB_CLOSURE_MOL);
-    mol->UnsetFlag(OB_H_ADDED_MOL);
-    mol->UnsetFlag(OB_AROM_CORRECTED_MOL); */
-  }
-
   /////////////////////////////////////////////////////////////////////////////
   // Add Atom
   /////////////////////////////////////////////////////////////////////////////
@@ -294,19 +277,14 @@ namespace Avogadro {
       Atom* beginAtom = d->molecule->atomById(d->bond->beginAtomId());
       Atom* endAtom = d->molecule->atomById(d->bond->endAtomId());
       if (d->adjustValence) {
-        if (!beginAtom->isHydrogen()) {
+        if (!beginAtom->isHydrogen() && !endAtom->isHydrogen()) {
           d->molecule->removeHydrogens(beginAtom);
-        }
-        if (!endAtom->isHydrogen()) {
           d->molecule->removeHydrogens(endAtom);
-        }
 
-        if (!beginAtom->isHydrogen()) {
           d->molecule->addHydrogens(beginAtom);
-        }
-        if (!endAtom->isHydrogen()) {
           d->molecule->addHydrogens(endAtom);
         }
+
       }
       d->bond = 0;
       return;
@@ -335,23 +313,12 @@ namespace Avogadro {
     bond->setBegin(beginAtom);
     bond->setEnd(endAtom);
     if (d->adjustValence) {
-      if (!beginAtom->isHydrogen())
+      if (!beginAtom->isHydrogen() && !endAtom->isHydrogen())
       {
         d->molecule->removeHydrogens(beginAtom);
-      }
-      if (!endAtom->isHydrogen())
-      {
         d->molecule->removeHydrogens(endAtom);
-      }
 
-      UnsetFlags(d->molecule);
-
-      if (!beginAtom->isHydrogen())
-      {
         d->molecule->addHydrogens(endAtom);
-      }
-      if (!endAtom->isHydrogen())
-      {
         d->molecule->addHydrogens(beginAtom);
       }
     }
@@ -539,7 +506,6 @@ namespace Avogadro {
         d->molecule->removeHydrogens(a1);
         d->molecule->removeHydrogens(a2);
 
-        UnsetFlags(d->molecule);
         d->molecule->addHydrogens(a1);
         d->molecule->addHydrogens(a2);
       }
