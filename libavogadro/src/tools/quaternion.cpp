@@ -94,7 +94,7 @@ namespace Avogadro {
 
   double Quaternion::norm2()
   {
-    return w() * w() + v().norm2();
+    return w() * w() + v().squaredNorm();
   }
 
   // ##########  multiply  ##########
