@@ -34,18 +34,28 @@ bool init_sip_api()
 {
   // import the sip module
   object sip_module = import("sip");
-  if (!sip_module.ptr())
+  if (!sip_module.ptr()) {
+    std::cout << "Could not import sip python module." << std::endl;
     return false;
+  }
 
   // get the dictionary
   dict sip_dict = extract<dict>(sip_module.attr("__dict__"));
+  if (!sip_dict.ptr()) {
+    std::cout << "Could not find the __dict__ attribute in the sip python module." << std::endl;
+    return false;
+  }
   // get the _C_API object from the dictionary
   object sip_capi_obj = sip_dict.get("_C_API");
-  if (!sip_capi_obj.ptr())
+  if (!sip_capi_obj.ptr()) {
+    std::cout << "Could not find the _C_API entry in the sip python module dictionary." << std::endl;
     return false;
+  }
   
-  if (!sip_capi_obj.ptr() || !PyCObject_Check(sip_capi_obj.ptr()))
+  if (!PyCObject_Check(sip_capi_obj.ptr())) {
+    std::cout << "The _C_API object in the sip python module is invalid." << std::endl;
     return false;
+  }
 
   sip_API = reinterpret_cast<const sipAPIDef*>(PyCObject_AsVoidPtr(sip_capi_obj.ptr()));
 
@@ -303,9 +313,13 @@ PyObject* toPyQt(T *obj)
 void export_sip()
 {
 #ifdef ENABLE_PYTHON_SIP
-  if (!init_sip_api())
+  if (!init_sip_api()) {
+    std::cout << "Could not initialize SIP API !" << std::endl;
     return;
- 
+  } else {
+    std::cout << "SIP API initialized !" << std::endl;
+  }
+
   // toPyQt functions
   def("toPyQt", &toPyQt<Avogadro::Atom>);
   def("toPyQt", &toPyQt<Avogadro::Bond>);
