@@ -53,7 +53,7 @@ else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET
       endif(NOT OPENBABEL2_INCLUDE_DIR)
     endif(WIN32)
 
-    find_library(OPENBABEL2_LIBRARIES NAMES openbabel
+    find_library(OPENBABEL2_LIBRARIES NAMES openbabel openbabel-2
       PATHS
       ${_obLinkDir}
       ${GNUWIN32_DIR}/lib
