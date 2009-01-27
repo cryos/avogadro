@@ -408,8 +408,7 @@ namespace Avogadro
 
     // Now to output the actual molecular coordinates
     // Cartesian coordinates
-    if (m_molecule && m_coordType == CARTESIAN)
-    {
+    if (m_molecule && m_coordType == CARTESIAN) {
       QTextStream mol(&buffer);
       QList<Atom *> atoms = m_molecule->atoms();
       foreach (Atom *atom, atoms) {
@@ -423,8 +422,7 @@ namespace Avogadro
       mol << "\n";
     }
     // Z-matrix
-    else if (m_molecule && m_coordType == ZMATRIX)
-    {
+    else if (m_molecule && m_coordType == ZMATRIX) {
       QTextStream mol(&buffer);
       OpenBabel::OBAtom *a, *b, *c;
       double r, w, t;
@@ -437,8 +435,7 @@ namespace Avogadro
         vic.push_back(new OpenBabel::OBInternalCoord);
       CartesianToInternal(vic, obmol);
 
-      QList<Atom *> atoms = m_molecule->atoms();
-      foreach (Atom *atom, atoms) {
+      foreach (Atom *atom, m_molecule->atoms()) {
         a = vic[atom->index()+1]->_a;
         b = vic[atom->index()+1]->_b;
         c = vic[atom->index()+1]->_c;
@@ -446,35 +443,34 @@ namespace Avogadro
         mol << qSetFieldWidth(3) << left
             << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
             << qSetFieldWidth(0);
-        if (atom->index() > 1)
+        if (atom->index() > 0)
           mol << " " << a->GetIdx() << " r" << atom->index();
-        if (atom->index() > 2)
+        if (atom->index() > 1)
           mol << " " << b->GetIdx() << " a" << atom->index();
-        if (atom->index() > 3)
+        if (atom->index() > 2)
           mol << " " << c->GetIdx() << " d" << atom->index();
         mol << "\n";
       }
 
       mol << "Variables:" << endl;
-      FOR_ATOMS_OF_MOL(atom, &obmol)
-      {
-        r = vic[atom->GetIdx()]->_dst;
-        w = vic[atom->GetIdx()]->_ang;
+      foreach (Atom *atom, m_molecule->atoms()) {
+        r = vic[atom->index()+1]->_dst;
+        w = vic[atom->index()+1]->_ang;
         if (w < 0.0)
           w += 360.0;
-        t = vic[atom->GetIdx()]->_tor;
+        t = vic[atom->index()+1]->_tor;
         if (t < 0.0)
           t += 360.0;
-        if (atom->GetIdx() > 1)
-          mol << "r" << atom->GetIdx() << qSetFieldWidth(15)
+        if (atom->index() > 0)
+          mol << "r" << atom->index() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
               << r << qSetFieldWidth(0) << "\n";
-        if (atom->GetIdx() > 2)
-          mol << "a" << atom->GetIdx() << qSetFieldWidth(15)
+        if (atom->index() > 1)
+          mol << "a" << atom->index() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
               << w << qSetFieldWidth(0) << "\n";
-        if (atom->GetIdx() > 3)
-          mol << "d" << atom->GetIdx() << qSetFieldWidth(15)
+        if (atom->index() > 2)
+          mol << "d" << atom->index() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
               << t << qSetFieldWidth(0) << "\n";
       }
