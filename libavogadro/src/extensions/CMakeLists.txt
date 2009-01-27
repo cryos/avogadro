@@ -123,7 +123,7 @@ add_library(gaussianextension MODULE ${gaussianextension_SRCS}
 target_link_libraries(gaussianextension ${LINK_LIBS})
 install(TARGETS gaussianextension DESTINATION ${DESTINATION_DIR})
 
-if(Boost_PYTHON_FOUND)
+if(ALL_PYTHON_FOUND)
   ### python extensions
   message(STATUS "Enabled python extension")
   set(pythonextension_SRCS pythonextension.cpp)
@@ -145,7 +145,7 @@ if(Boost_PYTHON_FOUND)
 
   file(GLOB python_SCRIPTS "python/*.py")
   install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/scripts)
-endif(Boost_PYTHON_FOUND)
+endif(ALL_PYTHON_FOUND)
 
 ### Animation
 set(animationextension_SRCS animationextension.cpp animationdialog.cpp

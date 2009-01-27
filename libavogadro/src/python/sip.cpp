@@ -1,5 +1,3 @@
-#ifdef ENABLE_PYTHON_SIP
-
 #include <boost/python.hpp>
 #include <boost/tuple/tuple.hpp>
 
@@ -307,12 +305,8 @@ PyObject* toPyQt(T *obj)
   return incref(sip_obj);
 }
 
-#endif
-
-
 void export_sip()
 {
-#ifdef ENABLE_PYTHON_SIP
   if (!init_sip_api()) {
     std::cout << "Could not initialize SIP API !" << std::endl;
     return;
@@ -343,6 +337,5 @@ void export_sip()
   // special case 
   to_python_converter<QList<QAction*>, QList_QAction_to_python_list_PyQt>();
   QList_QAction_from_python_list_PyQt();
-#endif
 }
 

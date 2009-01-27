@@ -103,23 +103,24 @@ find_package(Linguist REQUIRED) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
 include_directories(${EIGEN2_INCLUDE_DIR})
 
+
+###########################################################
+# Python Support: Detect and report all stuff here.       #
+# Subdirectories can use: ALL_PYTHON_FOUND                #
+###########################################################
 option(ENABLE_PYTHON "Enable python support" ON)
 
 if(ENABLE_PYTHON MATCHES ON)
-  # Cmake's new FindBoost has an option to look for additional versions
-  # e.g., there's now a 1.37.0 (and thus 1.37) release.
-  SET(Boost_ADDITIONAL_VERSIONS "1.37" "1.37.0")
-  find_package(Boost COMPONENTS python)
-  if(Boost_PYTHON_FOUND)
-    message(STATUS "Boost Python found - Python support enabled.")
-    add_definitions( -DENABLE_PYTHON )
-    find_package(PythonLibs)
-    find_package(PythonInterp)
-    find_package(Numpy)
-  endif(Boost_PYTHON_FOUND)
+  
+  find_package(AllPython)
+  if (ALL_PYTHON_FOUND)
+    message(STATUS "All python dependencies found - Python support enabled")
+  endif (ALL_PYTHON_FOUND)
+
 else(ENABLE_PYTHON MATCHES ON)
   message(STATUS "Python support disabled.")
 endif(ENABLE_PYTHON MATCHES ON)
+
 
 # Unit testing, mainly useful for developers and so defaults to off
 option(ENABLE_TESTS "Enable unit testing" OFF)
