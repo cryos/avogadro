@@ -4,10 +4,10 @@
 #  NUMPY_INCLUDE_DIR, where to find numpy/arrayobject.h, etc.
 #  NUMPY_FOUND, If false, do not try to use numpy headers.
 
-if (NUMPY_INCLUDE_DIR)
+#if (NUMPY_INCLUDE_DIR)
   # in cache already
-  set (NUMPY_FIND_QUIETLY TRUE)
-endif (NUMPY_INCLUDE_DIR)
+#  set (NUMPY_FIND_QUIETLY TRUE)
+#endif (NUMPY_INCLUDE_DIR)
 
 EXEC_PROGRAM ("${PYTHON_EXECUTABLE}"
   ARGS "-c 'import numpy; print numpy.get_include()'"

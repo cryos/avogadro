@@ -101,7 +101,7 @@ add_library(aligntool MODULE ${aligntool_SRCS} ${aligntool_RC_SRCS})
 target_link_libraries(aligntool ${LINK_LIBS})
 install(TARGETS aligntool DESTINATION ${DESTINATION_DIR})
 
-if(Boost_PYTHON_FOUND)
+if(ALL_PYTHON_FOUND)
   ### pythontool
   set(pythontool_SRCS pythontool.cpp)
   qt4_add_resources(pythontool_RC_SRCS pythontool.qrc)
@@ -113,4 +113,4 @@ if(Boost_PYTHON_FOUND)
 
   file(GLOB python_SCRIPTS "python/*.py")
   install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/toolScripts)
-endif(Boost_PYTHON_FOUND)
+endif(ALL_PYTHON_FOUND)
