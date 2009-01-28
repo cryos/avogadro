@@ -31,15 +31,13 @@
 #include <avogadro/pythoninterpreter.h>
 #include <avogadro/pythonscript.h>
 
-#include "ui_pythonsettingswidget.h"
-
 #include <QGLWidget>
 #include <QObject>
 #include <QAction>
 
 namespace Avogadro {
   
-  class PythonSettingsWidget;
+  class PythonToolPrivate;
 
   class PythonTool : public Tool
   {
@@ -47,63 +45,30 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      PythonTool(QObject *parent = 0);
+      PythonTool(QObject *parent = 0, const QString &filename = QString(""));
       //! Destructor
       virtual ~PythonTool();
 
-      //! \name Description methods
+      //! \name To python delegates functions
       //@{
-      //! Tool Name (i.e. Python)
-      virtual QString name() const { return(tr("Python")); }
-      //! Tool Description (i.e. Python molecules)
-      virtual QString description() const { return(tr("Python tools")); }
-      //@}
-
-      //! \name Tool Methods
-      //@{
-      //! \brief Callback methods for ui.actions on the canvas.
-      /*!
-        */
+      QString name() const;
+      QString description() const; 
       QUndoCommand* mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
-
       bool paint(GLWidget *widget);
-
       QWidget *settingsWidget();
+      //@}
 
     private:
-      PythonSettingsWidget *m_settingsWidget;
-    
-      QList<PythonScript> m_scripts;
-      PythonInterpreter m_interpreter;
+      void loadScript(const QString &filename);
 
-      int m_scriptIndex;
-      boost::python::object m_instance;
- 
-      void loadScripts(QDir dir);
+      PythonToolPrivate * const d;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();
-      void setScriptIndex(int index);
-  };
-
-  class PythonSettingsWidget : public QWidget, public Ui::PythonSettingsWidget
-  {
-  public:
-    PythonSettingsWidget(QWidget *parent=0) : QWidget(parent) {
-      setupUi(this);
-    }
-  };
-
-
-  class PythonToolFactory : public QObject, public PluginFactory
-  {
-    Q_OBJECT
-    Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_TOOL_FACTORY(PythonTool, tr("Python Tool"), tr("Python tools."))
   };
 
 } // end namespace Avogadro

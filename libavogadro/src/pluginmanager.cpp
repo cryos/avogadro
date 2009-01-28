@@ -27,6 +27,7 @@
 #include <config.h>
 #include "pluginmanager.h"
 #include "plugindialog.h"
+#include "pythontool.h"
 
 #include <avogadro/engine.h>
 #include <avogadro/tool.h>
@@ -234,11 +235,66 @@ namespace Avogadro {
     if(d->toolsLoaded)
       return d->tools;
 
+    // 
+    // Initialize C++ Tools
+    //
     foreach(PluginFactory *factory, factories(Plugin::ToolType)) {
       Tool *tool = static_cast<Tool *>(factory->createInstance(parent));
       d->tools.append(tool);
     }
 
+    // 
+    // Initialize python Tools
+    //
+
+    // create this directory for the user if it does not exist
+    QDir dir = QDir::home();
+    QStringList filters;
+    filters << "*.py";
+    dir.setNameFilters(filters);
+    dir.setFilter(QDir::Files | QDir::Readable);
+
+    bool failed = false;
+#ifdef Q_WS_MAC
+    dir.cd("Library/Application Support");
+    if (!dir.cd("Avogadro")) {
+      if (!dir.mkdir("Avogadro")) failed = true;
+      if (!dir.cd("Avogadro")) failed = true;
+    }
+#else
+  #ifdef WIN32
+    dir = QCoreApplication::applicationDirPath();
+  #else
+    if(!dir.cd(".avogadro")) {
+      if (!dir.mkdir(".avogadro")) failed = true;
+      if (!dir.cd(".avogadro")) failed = true;
+    }
+  #endif
+#endif
+
+    if(!dir.cd("toolScripts")) {
+      if (!dir.mkdir("toolScripts")) failed = true;
+      if (!dir.cd("toolScripts")) failed = true; 
+    }
+
+    if (!failed) {
+      foreach(const QString& file, dir.entryList()) {
+        Tool *tool = static_cast<Tool *>( new PythonTool(parent, dir.canonicalPath() + "/" + file) );
+        d->tools.append(tool);
+      }
+    }
+ 
+#ifndef WIN32
+    // Now for the system wide Python scripts
+    QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
+      + "share/libavogadro/toolScripts";
+    if (dir.cd(systemScriptsPath))
+      foreach(const QString& file, dir.entryList()) {
+        Tool *tool = static_cast<Tool *>( new PythonTool(parent, dir.canonicalPath() + "/" + file) );
+        d->tools.append(tool);
+      }
+#endif
+  
     d->toolsLoaded = true;
     return d->tools;
   }
@@ -295,6 +351,8 @@ namespace Avogadro {
         return tool;
       }
     }
+
+    // FIXME: Add python tool support here
 
     return 0;
   }

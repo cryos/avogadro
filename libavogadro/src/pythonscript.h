@@ -2,6 +2,7 @@
   Python - Gives us some Python helper stuff
 
   Copyright (C) 2008 by Donald Ephraim Curtis
+  Copyright (C) 2008-2009 by Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -40,7 +41,7 @@ namespace Avogadro {
   {
 
     public:
-      PythonScript(QDir dir, QString fileName);
+      PythonScript(const QString &fileName);
       ~PythonScript();
 
       QString moduleName() const;
@@ -49,7 +50,6 @@ namespace Avogadro {
     private:
       QString m_moduleName;
       QString m_fileName;
-      QDir m_dir;
       mutable QDateTime m_lastModified;
       mutable boost::python::object m_module;
   };

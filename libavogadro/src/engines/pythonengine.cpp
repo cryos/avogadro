@@ -221,7 +221,7 @@ namespace Avogadro {
     foreach(const QString& file, dir.entryList())
     {
       qDebug() << "PythonEngine: checking " << file << "...";
-      PythonScript script(dir.canonicalPath(), file);
+      PythonScript script(file);
 
       if(script.module()) {
         // make sure there is an Engine class defined

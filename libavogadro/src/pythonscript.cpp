@@ -2,6 +2,7 @@
   Python - Gives us some Python helper stuff
 
   Copyright (C) 2008 by Donald Ephraim Curtis
+  Copyright (C) 2008-2009 by Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -30,12 +31,12 @@ using namespace boost::python;
 namespace Avogadro
 {
 
-  PythonScript::PythonScript(QDir dir, QString fileName)
+  PythonScript::PythonScript(const QString &fileName)
   {
-    m_dir = dir;
     m_fileName = fileName;
-    m_moduleName = fileName.left(fileName.size()-3);
-    m_lastModified = QFileInfo(dir, fileName).lastModified();
+    QFileInfo info(fileName);
+    m_moduleName = info.baseName();
+    m_lastModified = info.lastModified();
      
     try
     {
@@ -63,7 +64,7 @@ namespace Avogadro
 
   object PythonScript::module() const
   {
-    QFileInfo fileInfo(m_dir, m_fileName);
+    QFileInfo fileInfo(m_fileName);
 
     if(fileInfo.lastModified() > m_lastModified)
     {
