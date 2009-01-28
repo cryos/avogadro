@@ -35,7 +35,7 @@ namespace Avogadro {
 
   /**
    * @class Fragment fragment.h <avogadro/fragment.h>
-   * @brief Fragment Class
+   * @brief A fragment containing atoms and bonds.
    * @author Marcus D. Hanwell
    *
    * The Fragment class is a Primitive subclass that provides a generic way

@@ -2,6 +2,7 @@
   main.cpp - Global library functions
 
   Copyright (C) 2007 by Donald Ephraim Curtis
+  Copyright (C) 2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -22,27 +23,35 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <avogadro/global.h>
-#include <config.h>
+#include "global.h"
+#include "config.h"
 
 #include <QLocale>
+#include <QDebug>
+#include <QCoreApplication>
 
 namespace Avogadro
 {
   QTranslator* Library::createTranslator()
   {
     QString translationCode = QLocale::system().name();
-    QString prefixPath = QString( INSTALL_PREFIX ) + "/share/libavogadro/i18n/";
+    #ifdef WIN32
+      QString prefixPath = QCoreApplication::applicationDirPath() + "/i18n/libavogadro/";
+    #else
+      QString prefixPath = QString( INSTALL_PREFIX ) + "/share/libavogadro/i18n/";
+    #endif
     QString fileName = "avogadro_" + translationCode + ".qm";
 
     QTranslator *translator = new QTranslator(0);
 
-    if (translator->load(fileName, prefixPath ))
-    {
+    if (translator->load(fileName, prefixPath )) {
       return translator;
     }
-    delete translator;
-    return 0;
+    else {
+      qDebug() << prefixPath + fileName << "not found.";
+      delete translator;
+      return 0;
+    }
   }
 
   QString Library::version()
@@ -65,38 +74,5 @@ namespace Avogadro
     return THREADED_GL;
   }
 
-  /**
-   * \mainpage Avogadro API Documentation
-   *
-   * \section avogadro Introduction
-   *
-   * Avogadro is a molecular modeling / viewing / editing tool.
-   * The core design allows every feature to be
-   * extended via a plugin. This allows new features and tools to be easily added
-   * and removed and extension into new applications.
-   *
-   *
-   * \subsection main Main Classes
-   *
-   * libavogadro interfaces: Plugins for extending Avogadro
-   * - Painter : General interface for graphical output: OpenGL, POVRay, etc.
-   * - Engine : Interface for display types: graphical styles for molecules and other data
-   * - Extension : Interface for user menu commands
-   * - Tool : Interface for mouse tools
-   * - Color : Interface for coloring atoms, bonds, etc.
-   * - ColorGradient : Interface for mapping numeric data to colors
-   *
-   *
-   * libavogadro classes:
-   * - GLWidget : Widget for rendering 3d representations of a molecule.
-   * - Navigate : Class for manipulating the 3d viewpoint
-   * - Primitive : Base class for all model components
-   *   - Atom : Class for representing atoms
-   *   - Bond : Class for representing bonds
-   *   - Residue : Class for representing residues
-   *   - Molecule : Class for representing molecules
-   *
-   *
-   */
-   
 }
+

@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>334</width>
-    <height>485</height>
+    <width>403</width>
+    <height>530</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -16,7 +16,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle" >
-   <string>Orbitals</string>
+   <string>Surfaces</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2" >
    <item>
@@ -361,33 +361,6 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_23" >
-         <item>
-          <spacer name="horizontalSpacer_4" >
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0" >
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="calculateDensity_2" >
-           <property name="enabled" >
-            <bool>false</bool>
-           </property>
-           <property name="text" >
-            <string>Calculate Electron Density</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_24" >
          <item>
           <spacer name="horizontalSpacer_4" >
@@ -480,7 +453,11 @@
        <item row="1" column="1" >
         <layout class="QHBoxLayout" name="horizontalLayout_2" >
          <item>
-          <widget class="QComboBox" name="colorCubeCombo" />
+          <widget class="QComboBox" name="colorCubeCombo" >
+           <property name="enabled" >
+            <bool>false</bool>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_9" >
@@ -510,7 +487,11 @@
        <item row="2" column="1" >
         <layout class="QHBoxLayout" name="horizontalLayout_19" >
          <item>
-          <widget class="QLineEdit" name="isoValue" />
+          <widget class="QLineEdit" name="isoValue" >
+           <property name="text" >
+            <string>0.02</string>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_5" >
@@ -688,7 +669,11 @@
        <item row="1" column="1" >
         <layout class="QHBoxLayout" name="horizontalLayout_10" >
          <item>
-          <widget class="QComboBox" name="surfaceColorCubeCombo" />
+          <widget class="QComboBox" name="surfaceColorCubeCombo" >
+           <property name="enabled" >
+            <bool>false</bool>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_12" >

@@ -37,6 +37,7 @@ set(libavogadro_HDRS
   fragment.h
   glgraphicsview.h
   glwidget.h
+  global.h
   idlist.h
   line.h
   mesh.h
@@ -82,14 +83,14 @@ if(GLEW_FOUND)
 endif(GLEW_FOUND)
 
 # If Boost Python isn't found remove the interpreter files
-if(NOT Boost_PYTHON_FOUND)
+if(NOT ALL_PYTHON_FOUND)
   list(REMOVE_ITEM libavogadro_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp)
   list(REMOVE_ITEM libavogadro_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.cpp)
   list(REMOVE_ITEM libavogadro_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.cpp)
-endif(NOT Boost_PYTHON_FOUND)
+endif(NOT ALL_PYTHON_FOUND)
 
 qt4_automoc(${libavogadro_SRCS})
 
@@ -101,28 +102,28 @@ SET(libavogadro_TS
 QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 
 # you have to add link_directories before you add the target
-if(Boost_PYTHON_FOUND)
+if(ALL_PYTHON_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
   link_directories(${Boost_LIBRARY_DIRS})
-endif(Boost_PYTHON_FOUND)
+endif(ALL_PYTHON_FOUND)
 
 add_library(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})
 set_target_properties(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 set_target_properties(avogadro-lib PROPERTIES VERSION ${VERSION} SOVERSION 0 )
 
-# The Python headers, only installed if Python is enabled
-set(python_HDRS
-  pythoninterpreter.h
-  pythonscript.h
-  pythonerror.h
-)
+if(ALL_PYTHON_FOUND)
+  # The Python headers, only installed if Python is enabled
+  set(python_HDRS
+    pythoninterpreter.h
+    pythonscript.h
+    pythonerror.h
+  )
 
-if(Boost_PYTHON_FOUND)
-  message(STATUS "Setting new boost python libraries")
+  #message(STATUS "Setting new boost python libraries")
   set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${PYTHON_LIBRARIES}
                          ${Boost_LIBRARIES})
   set(libavogadro_HDRS ${libavogadro_HDRS} ${python_HDRS})
-endif(Boost_PYTHON_FOUND)
+endif(ALL_PYTHON_FOUND)
 
 target_link_libraries(avogadro-lib ${AVO_LINK_LIBRARIES})
 
@@ -137,6 +138,6 @@ add_subdirectory(extensions)
 add_subdirectory(colors)
 
 # Add the boost python module if the boost::python was found
-if(Boost_PYTHON_FOUND)
+if(ALL_PYTHON_FOUND)
   add_subdirectory(python)
-endif(Boost_PYTHON_FOUND)
+endif(ALL_PYTHON_FOUND)

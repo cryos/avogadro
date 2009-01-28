@@ -32,11 +32,11 @@ class TestGLWidget(unittest.TestCase):
     self.glwidget.quickRender = True
     self.assertEqual(self.glwidget.quickRender, True)
  
-  def test_quality(self):
-    print self.glwidget.quality
-    self.glwidget.quality = 4
-    print self.glwidget.quality
-    self.assertEqual(self.glwidget.quality, 3)
+#  def test_quality(self):
+#    print self.glwidget.quality
+#    self.glwidget.quality = 4
+#    print self.glwidget.quality
+#    self.assertEqual(self.glwidget.quality, 3)
   
   def test_fogLevel(self):
     self.glwidget.fogLevel
@@ -102,8 +102,8 @@ class TestGLWidget(unittest.TestCase):
     self.glwidget.radius()
     self.glwidget.radius(None)
   
-  def test_radius(self):
-    self.assertNotEqual(self.glwidget.farthestAtom, None)
+#  def test_radius(self):
+#    self.assertNotEqual(self.glwidget.farthestAtom, None)
 
   def test_tool(self):
     tool = Avogadro.PluginManager.instance.tool("Navigate Tool", None)
@@ -121,15 +121,15 @@ class TestGLWidget(unittest.TestCase):
     self.glwidget.background = color
 
   
-  def test_primitives(self):
-    l = Avogadro.PrimitiveList([ self.molecule.atom(0) ])
-    self.assertNotEqual(self.glwidget.primitives, None)
-    self.assertNotEqual(self.glwidget.selectedPrimitives, None)
-    self.glwidget.toggleSelected(self.glwidget.primitives)
-    self.glwidget.setSelected(l, True)
-    self.assertEqual(self.glwidget.isSelected(self.molecule.atom(0)), True)
-    self.glwidget.clearSelected()
-    self.assertEqual(self.glwidget.isSelected(self.molecule.atom(0)), False)
+#  def test_primitives(self):
+#    l = Avogadro.PrimitiveList([ self.molecule.atom(0) ])
+#    self.assertNotEqual(self.glwidget.primitives, None)
+#    self.assertNotEqual(self.glwidget.selectedPrimitives, None)
+#    self.glwidget.toggleSelected(self.glwidget.primitives)
+#    self.glwidget.setSelected(l, True)
+#    self.assertEqual(self.glwidget.isSelected(self.molecule.atom(0)), True)
+#    self.glwidget.clearSelected()
+#    self.assertEqual(self.glwidget.isSelected(self.molecule.atom(0)), False)
   
   def test_namedSelections(self):
     l = Avogadro.PrimitiveList([ self.molecule.atom(0) ])

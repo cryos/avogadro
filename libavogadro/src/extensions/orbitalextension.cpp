@@ -1,7 +1,7 @@
 /**********************************************************************
-  OrbitalExtension - Extension for generating orbital cubes
+  OrbitalExtension - Extension for generating cubes and meshes
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -45,21 +45,17 @@
 #include <QTime>
 #include <QDebug>
 
-using namespace std;
-using namespace OpenBabel;
+using Eigen::Vector3d;
+using Eigen::Vector3i;
 
 namespace Avogadro
 {
-
-  using Eigen::Vector3d;
-  using Eigen::Vector3i;
-
   OrbitalExtension::OrbitalExtension(QObject* parent) : Extension(parent),
     m_glwidget(0), m_orbitalDialog(0), m_molecule(0), m_basis(0), m_slater(0),
     m_progress(0), m_timer(0), m_meshGen1(0), m_meshGen2(0), m_VdWsurface(0)
   {
     QAction* action = new QAction(this);
-    action->setText(tr("Import Molecular Orbitals..."));
+    action->setText(tr("Create Surfaces..."));
     m_actions.append(action);
   }
 
@@ -121,7 +117,6 @@ namespace Avogadro
 
   void OrbitalExtension::setMolecule(Molecule *molecule)
   {
-    qDebug() << "Set molecule called in OrbitalExtension...";
     m_molecule = molecule;
     if (m_orbitalDialog)
       m_orbitalDialog->setMolecule(molecule);
@@ -398,7 +393,8 @@ namespace Avogadro
       m_molecule->update();
       m_orbitalDialog->enableCalculation(true);
     }
-    else if (m_basis->numMOs() == m_currentMO) { // All MOs have been calculated
+    else if (static_cast<unsigned int>(m_basis->numMOs()) == m_currentMO) {
+      // All MOs have been calculated
       disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
                  m_progress, SLOT(setValue(int)));
       disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
@@ -527,18 +523,22 @@ namespace Avogadro
     m_currentMO = 0;
   }
 
-  void OrbitalExtension::generateMesh(int iCube, double isoValue, int calc)
+  void OrbitalExtension::generateMesh(int iCube, double isoValue, int)
   {
     if (!m_molecule->cube(iCube))
       return;
 
     Cube *cube = m_molecule->cube(iCube);
-    double m_min = cube->minValue();
-    double m_max = cube->maxValue();
     m_mesh1 = m_molecule->addMesh();
-    m_mesh1->setName(cube->name() + ", iso=" + QString::number(isoValue));
+    m_mesh1->setName(cube->name());
+    m_mesh1->setIsoValue(isoValue);
+    m_mesh1->setCube(cube->id());
     m_mesh2 = m_molecule->addMesh();
-    m_mesh2->setName(cube->name() + ", iso=" + QString::number(-isoValue));
+    m_mesh2->setName(cube->name());
+    m_mesh2->setIsoValue(-isoValue);
+    m_mesh2->setCube(cube->id());
+    m_mesh1->setOtherMesh(m_mesh2->id());
+    m_mesh2->setOtherMesh(m_mesh1->id());
     if (!m_meshGen1) {
       m_meshGen1 = new MeshGenerator;
       connect(m_meshGen1, SIGNAL(finished()), this, SLOT(meshGenerated()));
@@ -630,10 +630,10 @@ namespace Avogadro
       return;
 
     Cube *cube = m_molecule->cube(iCube);
-    double m_min = cube->minValue();
-    double m_max = cube->maxValue();
     m_mesh1 = m_molecule->addMesh();
-    m_mesh1->setName(cube->name() + ", iso=" + QString::number(isoValue));
+    m_mesh1->setName(cube->name());
+    m_mesh1->setIsoValue(isoValue);
+    m_mesh1->setCube(cube->id());
 
     if (!m_meshGen1) {
       m_meshGen1 = new MeshGenerator;

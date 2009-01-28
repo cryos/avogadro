@@ -31,55 +31,55 @@
 #include <QAbstractButton>
 #include <QColor>
 
-  /**
-   * @class ColorButton colorbutton.h <avogadro/colorbutton.h>
-   * @author Geoffrey Hutchison
-   * @brief A button to show the current color and bring up the QColorDialog.
-   *
-   * This class implements a QAbstractButton to display a colored rectangle.
-   * When clicked by the user, it brings up a color picker to select a new
-   * color.
-   *
-   * The widget has a default minimium size of 35x20 pixels.
-   */
+/**
+ * @class ColorButton colorbutton.h <avogadro/colorbutton.h>
+ * @author Geoffrey Hutchison
+ * @brief A button to show the current color and bring up the QColorDialog.
+ *
+ * This class implements a QAbstractButton to display a colored rectangle.
+ * When clicked by the user, it brings up a color picker to select a new
+ * color.
+ *
+ * The widget has a default minimium size of 35x20 pixels.
+ */
 
 class A_EXPORT ColorButton : public QAbstractButton
 {
- Q_OBJECT
+Q_OBJECT
 
 public:
-    ColorButton(QWidget *parent = 0);
-    explicit ColorButton(const QColor& initial, QWidget *parent = 0);
+  ColorButton(QWidget *parent = 0);
+  explicit ColorButton(const QColor& initial, QWidget *parent = 0);
 
-    /** 
-     *  Redraw the widget (i.e., refresh the colored rectange)
-     */
-    void paintEvent(QPaintEvent *);
+  /**
+   *  Redraw the widget (i.e., refresh the colored rectange)
+   */
+  void paintEvent(QPaintEvent *);
 
-    /**
-     * @param color the new color to be used
-     */
-    void setColor(const QColor& color);
-    
-    /**
-     * @return the current color
-     */ 
-    QColor color() const;
+  /**
+   * @param color the new color to be used
+   */
+  void setColor(const QColor& color);
+
+  /**
+   * @return the current color
+   */
+  QColor color() const;
 
 signals:
-    /**
-     *  emit any time the color is changed, either by a user or by setColor()
-     */
-    void colorChanged(QColor);
+  /**
+   *  emit any time the color is changed, either by a user or by setColor()
+   */
+  void colorChanged(QColor);
 
 public slots:
-    /**
-     * Call for a change in the current color
-     */
-   void changeColor();
+  /**
+   * Call for a change in the current color
+   */
+  void changeColor();
 
 protected:
-   QColor m_color; //!< The current color
+  QColor m_color; //!< The current color
 };
 
 #endif

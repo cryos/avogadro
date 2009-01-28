@@ -73,7 +73,8 @@ namespace Avogadro {
       ui.randomRadio->setChecked(false);
       ui.weightedRadio->setChecked(false);
       OpenBabel::OBRotorList rl;
-      rl.Setup((OpenBabel::OBMol&)*m_molecule);
+      OpenBabel::OBMol obmol = m_molecule->OBMol();
+      rl.Setup(obmol);
       /*
       OpenBabel::OBRotorIterator ri;
       OpenBabel::OBRotor *rotor = rl.BeginRotor(ri);
@@ -121,7 +122,8 @@ namespace Avogadro {
   void ConformerSearchDialog::showEvent(QShowEvent *)
   {
     OpenBabel::OBRotorList rl;
-    rl.Setup((OpenBabel::OBMol&)*m_molecule);
+    OpenBabel::OBMol obmol = m_molecule->OBMol();
+    rl.Setup(obmol);
      
     if (rl.Size() > 10)
       weightedToggled(true);

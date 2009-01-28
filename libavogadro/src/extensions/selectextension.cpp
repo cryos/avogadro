@@ -22,7 +22,6 @@
  ***********************************************************************/
 
 #include "selectextension.h"
-#include "namedselectionmodel.h"
 
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
@@ -53,7 +52,6 @@ namespace Avogadro {
       SolventIndex,
       SMARTSIndex,
       AddNamedIndex,
-      NamedIndex,
       SeparatorIndex
     };
 
@@ -97,11 +95,6 @@ namespace Avogadro {
     action = new QAction(this);
     action->setText(tr("Add Named Selection..."));
     action->setData(AddNamedIndex);
-    m_actions.append(action);
-
-    action = new QAction(this);
-    action->setText(tr("Named Selections..."));
-    action->setData(NamedIndex);
     m_actions.append(action);
   }
 
@@ -148,9 +141,6 @@ namespace Avogadro {
       break;
     case AddNamedIndex:
       addNamedSelection(widget);
-      break;
-    case NamedIndex:
-      namedSelections(widget);
       break;
     default:
       break;
@@ -306,103 +296,6 @@ namespace Avogadro {
         tr( "There is already a selection with this name." ));
     }
   }
-
-  void SelectExtension::namedSelections(GLWidget *widget)
-  {
-    SelectTreeView  *view  = new SelectTreeView(widget);
-    SelectTreeModel *model = new SelectTreeModel(widget, this);
-
-    view->setModel(model);
-    view->setSelectionBehavior(QAbstractItemView::SelectRows);
-    view->setSelectionMode(QAbstractItemView::SingleSelection);
-    view->show();
-
-  }
-
-  ///////////////////////////////////
-  // tree view
-  ///////////////////////////////////
-
-  SelectTreeView::SelectTreeView(GLWidget *widget, QWidget *parent) : QTreeView(parent), m_widget(widget)
-  {
-    QString title = tr("Selections");
-    this->setWindowTitle(title);
-  }
-
-  void SelectTreeView::selectionChanged(const QItemSelection &selected,
-                                        const QItemSelection &)
-  {
-    QModelIndex index;
-    QModelIndexList items = selected.indexes();
-
-    m_widget->clearSelected();
-    foreach (index, items) {
-      if (!index.isValid())
-        return;
-
-      SelectTreeItem *item = static_cast<SelectTreeItem*>(index.internalPointer());
-
-      if (!item)
-        return;
-
-      PrimitiveList primitives;
-      if (item->type() == SelectTreeItemType::SelectionType) {
-        if (index.row() >= m_widget->namedSelections().size())
-          return;
-
-        primitives = m_widget->namedSelectionPrimitives(index.row());
-
-        if (!primitives.size()) {
-          QMessageBox::warning( m_widget, tr( "Avogadro" ),
-          tr( "The selection items have been deleted." ));
-        }
-      }
-      else if (item->type() == SelectTreeItemType::AtomType) {
-        unsigned int idx = item->data(1).toUInt(); // index is stored in column 1
-        if (idx > m_widget->molecule()->numAtoms())
-          return;
-
-        Atom *atom = m_widget->molecule()->atom(idx);
-        primitives.append(atom);
-      }
-      /// FIXME Add back in the residue and chain types
-      /*
-      else if (item->type() == SelectTreeItemType::ResidueType) {
-        unsigned int idx = item->data(1).toUInt(); // index is stored in column 1
-        if (idx > m_widget->molecule()->numResidues())
-          return;
-
-        OBResidue *res = m_widget->molecule()->residue(idx);
-        FOR_ATOMS_OF_RESIDUE (atom, res) {
-          primitives.append(static_cast<Atom*>( &*atom ));
-        }
-      }
-      else if (item->type() == SelectTreeItemType::ChainType) {
-        char chain = item->data(1).toChar().toAscii(); // index is stored in column 1
-
-        FOR_RESIDUES_OF_MOL (res, m_widget->molecule()) {
-          if (res->GetChain() == chain) {
-            FOR_ATOMS_OF_RESIDUE (atom, &*res) {
-              primitives.append(static_cast<Atom*>( &*atom ));
-            }
-          }
-        }
-      }
-      */
-
-      m_widget->setSelected(primitives, true);
-    }
-  }
-
-  void SelectTreeView::hideEvent(QHideEvent *)
-  {
-    QAbstractItemModel *m_model = model();
-    if (m_model)
-      m_model->deleteLater();
-
-    this->deleteLater();
-  }
-
 
 } // end namespace Avogadro
 

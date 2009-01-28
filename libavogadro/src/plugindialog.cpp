@@ -19,9 +19,9 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include "plugindialog.h"
 #include "pluginitemmodel.h"
 #include "pluginlistview.h"
-#include "plugindialog.h"
 
 #include <QPushButton>
 #include <QMessageBox>
@@ -49,14 +49,14 @@ namespace Avogadro {
   PluginDialog::~PluginDialog()
   {
   }
-  
+
   void PluginDialog::selectPlugin( PluginItem *plugin )
   {
     QString text;
 
-    text  = tr("Name: ") + plugin->name() + "\n";
+    text  = tr("Name: ") + plugin->name() + '\n';
     text += tr("File: ") + plugin->fileName() + "\n\n";
-    text += tr("Description:\n") + plugin->description() + "\n";
+    text += tr("Description:\n") + plugin->description() + '\n';
 
     ui.textEdit->setText(text);
   }
@@ -77,7 +77,7 @@ namespace Avogadro {
   {
     QMessageBox::warning(this, tr("Plugin Manager"),
         tr("Avogadro needs to be restarted in order for the changes to take effect"));
-    
+
     emit reloadPlugins();
     hide();
   }

@@ -45,9 +45,10 @@
 class QProgressDialog;
 namespace Avogadro {
 
+  class Molecule;
   class PropertiesView;
 
- class PropertiesExtension : public Extension
+  class PropertiesExtension : public Extension
   {
     Q_OBJECT
 
@@ -75,15 +76,6 @@ namespace Avogadro {
       void setMolecule(Molecule *molecule);
 
     private:
-/*
-      PropertiesView * m_view;
-      PropertiesModel* m_atomModel;
-      PropertiesModel* m_bondModel;
-      PropertiesModel* m_angleModel;
-      PropertiesModel* m_torsionModel;
-      PropertiesModel* m_cartesianModel;
-      PropertiesModel* m_conformerModel;
-*/
       QList<QAction *> m_actions;
       Molecule *m_molecule;
 

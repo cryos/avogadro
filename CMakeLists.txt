@@ -5,6 +5,9 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 cmake_minimum_required(VERSION 2.6.0)
 cmake_policy(SET CMP0003 NEW)
 
+# Use CPack to do some of our packaging
+include(CPack)
+
 # this is adapted from KDE's FindKDE4Internal.cmake : default the build type to
 # "release with debug info".
 #
@@ -103,28 +106,32 @@ find_package(Linguist REQUIRED) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
 include_directories(${EIGEN2_INCLUDE_DIR})
 
+
+###########################################################
+# Python Support: Detect and report all stuff here.       #
+# Subdirectories can use: ALL_PYTHON_FOUND                #
+###########################################################
 option(ENABLE_PYTHON "Enable python support" ON)
 
 if(ENABLE_PYTHON MATCHES ON)
-  # Cmake's new FindBoost has an option to look for additional versions
-  # e.g., there's now a 1.37.0 (and thus 1.37) release.
-  SET(Boost_ADDITIONAL_VERSIONS "1.37" "1.37.0")
-  find_package(Boost COMPONENTS python)
-  if(Boost_PYTHON_FOUND)
-    message(STATUS "Boost Python found - Python support enabled.")
-    find_package(PythonLibs)
-    find_package(PythonInterp)
-    find_package(Numpy)
-  endif(Boost_PYTHON_FOUND)
+  
+  find_package(AllPython)
+  if (ALL_PYTHON_FOUND)
+    message(STATUS "All python dependencies found - Python support enabled")
+  endif (ALL_PYTHON_FOUND)
+
 else(ENABLE_PYTHON MATCHES ON)
   message(STATUS "Python support disabled.")
 endif(ENABLE_PYTHON MATCHES ON)
+
 
 # Unit testing, mainly useful for developers and so defaults to off
 option(ENABLE_TESTS "Enable unit testing" OFF)
 if(ENABLE_TESTS MATCHES ON)
   set(QT_USE_QTTEST TRUE)
   enable_testing()
+  include (CTest)
+  include (CTestConfig.cmake)
   message(STATUS "Unit testing enabled, run make test to run them")
 endif(ENABLE_TESTS MATCHES ON)
 
@@ -168,7 +175,7 @@ ADD_CUSTOM_TARGET(uninstall
 FILE(GLOB_RECURSE avogadro_TS i18n/*.ts)
 ADD_CUSTOM_TARGET(update-translations
     COMMAND ${QT_LUPDATE_EXECUTABLE}
-    ${CMAKE_CURRENT_SOURCE_DIR} -ts ${avogadro_TS}
+    ${CMAKE_CURRENT_SOURCE_DIR} -noobsolete -ts ${avogadro_TS}
     WORKING_DIRECTORY
     ${CMAKE_CURRENT_SOURCE_DIR})
 # tell cmake to process CMakeLists.txt in that subdirectory

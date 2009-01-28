@@ -2,7 +2,7 @@
   global.h - Setup some default defines.
 
   Copyright (C) 2007 by Donald Ephraim Curtis
-  Copyright (C) 2008 by Marcus D. Hanwell
+  Copyright (C) 2008-2009 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -27,6 +27,8 @@
 #define GLOBAL_H
 
 #include <QTranslator>
+
+#define EIGEN_WORK_AROUND_QT_BUG_CALLING_WRONG_OPERATOR_NEW_FIXED_IN_QT_4_5 
 
 #ifdef WIN32
 # ifndef NOMINMAX
@@ -110,18 +112,41 @@ namespace Avogadro
 {
   /**
    * @class Library global.h <avogadro/global.h>
-   * @brief Interface for static calls for versions, installation prefix, and other compiler macros
-   * @author Donald Ephraim Curtis
+   * @brief Interface for static calls for versions, installation prefix, and
+   * other compiler macros.
+   * @author Marcus D. Hanwell
    */
   class A_EXPORT Library
   {
     public:
+      /**
+       * Create a translator instance for the Avogadro library.
+       */
       static QTranslator *createTranslator();
+
+      /**
+       * @return The version of the Avogadro library.
+       */
       static QString version();
+
+      /**
+       * The svn revision.
+       * @deprecated
+       */
       static QString svnRevision();
+
+      /**
+       * The installation prefix that the Avogadro library was compiled into.
+       * Typically /usr/local or /usr
+       */
       static QString prefix();
+
+      /**
+       * @return True if mutlithreaded OpenGL rendering is enabled.
+       */
       static bool threadedGL();
   };
 }
 
 #endif  // __GLOBAL_H
+

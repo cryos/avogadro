@@ -120,7 +120,7 @@ namespace Avogadro {
           break;
         case 2: // Element name
         default:
-          str = elementTranslator.name(a->atomicNumber());
+          str = ElementTranslator::name(a->atomicNumber());
       }
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();

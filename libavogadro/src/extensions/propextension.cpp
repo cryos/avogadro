@@ -1,7 +1,7 @@
 /**********************************************************************
   propextension.h - Properties Plugin for Avogadro
 
-  Copyright (C) 2007 by Tim Vandermeersch
+  Copyright (C) 2007-2008 by Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -20,9 +20,11 @@
  ***********************************************************************/
 
 #include "propextension.h"
-#include <avogadro/primitive.h>
-#include <avogadro/color.h>
+
 #include <avogadro/glwidget.h>
+#include <avogadro/molecule.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
 
 #include <QAbstractTableModel>
 #include <QHeaderView>
@@ -49,11 +51,6 @@ namespace Avogadro
   {
     QAction *action;
 
-    action = new QAction( this );
-    action->setSeparator(true);
-    action->setData(-1);
-    m_actions.append(action);
-    
     action = new QAction( this );
     action->setText( tr("Atom Properties..." ));
     action->setData(AtomPropIndex);
@@ -136,8 +133,8 @@ namespace Avogadro
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::AtomType);
       connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
-      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
-      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
+      connect(m_molecule, SIGNAL( atomAdded(Atom*) ), model, SLOT( atomAdded(Atom*) ));
+      connect(m_molecule, SIGNAL( atomRemoved(Atom*) ), model, SLOT( atomRemoved(Atom*) ));
       view->setMolecule( m_molecule );
       view->setWidget( widget );
       view->setModel( model );
@@ -151,8 +148,8 @@ namespace Avogadro
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::BondType);
       connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
-      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
-      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
+      connect(m_molecule, SIGNAL( bondAdded(Bond*) ), model, SLOT( bondAdded(Bond*) ));
+      connect(m_molecule, SIGNAL( bondRemoved(Bond*) ), model, SLOT( bondRemoved(Bond*) ));
       view->setMolecule( m_molecule );
       view->setWidget( widget );
       view->setModel( model );
@@ -196,8 +193,8 @@ namespace Avogadro
       // m_view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::CartesianType);
       connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
-      connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
-      connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
+      connect(m_molecule, SIGNAL( atomAdded(Atom*) ), model, SLOT( atomAdded(Atom*) ));
+      connect(m_molecule, SIGNAL( atomRemoved(Atom*) ), model, SLOT( atomRemoved(Atom*) ));
       view->setMolecule( m_molecule );
       view->setWidget( widget );
       view->setModel( model );
@@ -278,26 +275,26 @@ namespace Avogadro
         return;
     
       if (m_type == AtomType) {
-        if ((unsigned int) index.row() >= m_molecule->NumAtoms())
+        if ((unsigned int) index.row() >= m_molecule->numAtoms())
           return;
     
-        matchedPrimitives.append(static_cast<Atom*>(m_molecule->GetAtom(index.row()+1)));
+        matchedPrimitives.append( m_molecule->atom(index.row()) );
         m_widget->clearSelected();
         m_widget->setSelected(matchedPrimitives, true);
         m_widget->update();
       } else if (m_type == BondType) {
-        if((unsigned int) index.row() >= m_molecule->NumBonds())
+        if((unsigned int) index.row() >= m_molecule->numBonds())
           return;
         
-        matchedPrimitives.append(static_cast<Bond*>(m_molecule->GetBond(index.row())));
+        matchedPrimitives.append( m_molecule->bond(index.row()) );
         m_widget->clearSelected();
         m_widget->setSelected(matchedPrimitives, true);
         m_widget->update();
       } else if (m_type == ConformerType) {
-        if (index.row() >= m_molecule->NumConformers())
+        if (index.row() >= m_molecule->numConformers())
           return;
     
-        m_molecule->SetConformer(index.row());
+        m_molecule->setConformer(index.row());
         m_molecule->update();
         return; 
       } 

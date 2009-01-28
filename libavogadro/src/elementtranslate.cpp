@@ -26,7 +26,15 @@
 
 namespace Avogadro {
 
-  QString ElementTranslator::name(int element) const
+  ElementTranslator::ElementTranslator() : QObject()
+  {
+  }
+
+  ElementTranslator::~ElementTranslator()
+  {
+  }
+
+  QString ElementTranslator::name(int element)
   {
     QString result;
     switch(element) {
@@ -392,8 +400,7 @@ namespace Avogadro {
     return result;
   }
 
-  ElementTranslator elementTranslator; // global instance
-
 }
 
 #include "elementtranslate.moc"
+

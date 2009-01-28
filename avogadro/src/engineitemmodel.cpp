@@ -25,7 +25,9 @@
 #include "engineitemmodel.h"
 
 #include <avogadro/glwidget.h>
+
 #include <QString>
+#include <QDebug>
 
 namespace Avogadro {
 
@@ -106,6 +108,8 @@ namespace Avogadro {
           } else {
             return Qt::Unchecked;
           }
+      } else if ( role == Qt::ToolTipRole || role == Qt::WhatsThisRole) {
+        return engine->description();
       } else if ( role == EngineItemModel::EngineRole ) {
         return qVariantFromValue(engine);
       }

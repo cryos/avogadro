@@ -1,7 +1,7 @@
 /**********************************************************************
   GaussianExtension - Extension for generating Gaussian input decks
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -24,16 +24,6 @@
 
 #include "gaussianextension.h"
 
-#include <vector>
-#include <openbabel/mol.h>
-#include <openbabel/math/vector3.h>
-#include <openbabel/griddata.h>
-#include <openbabel/grid.h>
-
-using namespace std;
-using namespace OpenBabel;
-using namespace Eigen;
-
 namespace Avogadro
 {
 
@@ -45,7 +35,7 @@ namespace Avogadro
     action->setData("Gaussian");
     m_actions.append(action);
     action = new QAction(this);
-    action->setText(tr("QChem Input..."));
+    action->setText(tr("Q-Chem Input..."));
     action->setData("QChem");
     m_actions.append(action);
   }
@@ -96,6 +86,8 @@ namespace Avogadro
     m_molecule = molecule;
     if (m_gaussianInputDialog)
       m_gaussianInputDialog->setMolecule(m_molecule);
+    if (m_qchemInputDialog)
+      m_qchemInputDialog->setMolecule(m_molecule);
   }
 
   void GaussianExtension::writeSettings(QSettings &settings) const

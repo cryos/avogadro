@@ -1,7 +1,7 @@
 /**********************************************************************
-  QChemInputDialog - Dialog for generating Gaussian input decks
+  QChemInputDialog - Dialog for generating Q-Chem input decks
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -39,11 +39,10 @@ using namespace OpenBabel;
 
 namespace Avogadro
 {
-
   QChemInputDialog::QChemInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
     m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
-    m_procs(1), m_output(""), m_chk(false), m_coordType(CARTESIAN), m_dirty(false)
+    m_output(""), m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -59,12 +58,8 @@ namespace Avogadro
         this, SLOT(setMultiplicity(int)));
     connect(ui.chargeSpin, SIGNAL(valueChanged(int)),
         this, SLOT(setCharge(int)));
-    connect(ui.procSpin, SIGNAL(valueChanged(int)),
-        this, SLOT(setProcs(int)));
     connect(ui.outputCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(setOutput(int)));
-    connect(ui.checkpointCheck, SIGNAL(stateChanged(int)),
-        this, SLOT(setChk(int)));
     connect(ui.coordCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(setCoords(int)));
     connect(ui.previewText, SIGNAL(textChanged()),
@@ -84,15 +79,15 @@ namespace Avogadro
 
   QChemInputDialog::~QChemInputDialog()
   {
+    if (m_molecule)
+      disconnect(m_molecule, 0, this, 0);
   }
 
   void QChemInputDialog::setMolecule(Molecule *molecule)
   {
     // Disconnect the old molecule first...
     if (m_molecule)
-    {
       disconnect(m_molecule, 0, this, 0);
-    }
 
     m_molecule = molecule;
     // Update the preview text whenever primitives are changed
@@ -106,12 +101,18 @@ namespace Avogadro
     updatePreviewText();
   }
 
+  void QChemInputDialog::showEvent(QShowEvent *)
+  {
+    updatePreviewText();
+  }
+
   void QChemInputDialog::updatePreviewText()
   {
+    if (!isVisible())
+      return;
     // Generate the input deck and display it
-    static bool called = false;
-    if (m_dirty && !called) {
-      called = true;
+    if (m_dirty && !m_warned) {
+      m_warned = true;
       QMessageBox msgBox;
 
       msgBox.setWindowTitle(tr("QChem Input Deck Generator Warning"));
@@ -122,9 +123,11 @@ namespace Avogadro
         case QMessageBox::Yes:
           // yes was clicked
           m_dirty = false;
+          m_warned = false;
           break;
         case QMessageBox::No:
           // no was clicked
+          m_warned = false;
           break;
         default:
           // should never be reached
@@ -134,8 +137,6 @@ namespace Avogadro
 
     if (!m_dirty)
       ui.previewText->setText(generateInputDeck());
-
-    called = false;
   }
 
   void QChemInputDialog::resetClicked()
@@ -147,7 +148,6 @@ namespace Avogadro
     ui.basisCombo->setCurrentIndex(2);
     ui.multiplicitySpin->setValue(0);
     ui.chargeSpin->setValue(0);
-    ui.procSpin->setValue(1);
   }
 
   void QChemInputDialog::generateClicked()
@@ -265,6 +265,9 @@ namespace Avogadro
       case 3:
         m_basisType = B631Gdp;
         break;
+      case 4:
+        m_basisType = LANL2DZ;
+        break;
       default:
         m_basisType = B631Gd;
     }
@@ -282,33 +285,15 @@ namespace Avogadro
     updatePreviewText();
   }
 
-  void QChemInputDialog::setProcs(int n)
-  {
-    if (n > 0)
-      m_procs = n;
-    updatePreviewText();
-  }
-
   void QChemInputDialog::setOutput(int n)
   {
-    switch (n)
-    {
+    switch (n) {
       case 1:
-        m_output = " gfprint pop=full";
-        break;
-      case 2:
-        m_output = " gfoldprint pop=full";
+        m_output = "   GUI=2\n";
         break;
       default:
         m_output = "";
     }
-    updatePreviewText();
-  }
-
-  void QChemInputDialog::setChk(int n)
-  {
-    if (n) m_chk = true;
-    else m_chk = false;
     updatePreviewText();
   }
 
@@ -339,12 +324,6 @@ namespace Avogadro
 
     // Begin the job specification
     mol << "$rem\n";
-
-    // These directives are required before the job specification
-    if (m_procs > 1)
-      mol << "%NProcShared=" << m_procs << "\n";
-    if (m_chk)
-      mol << "%Chk=checkpoint.chk\n";
 
     // Now for the calculation type
     mol << "   JOBTYPE " << getCalculationType(m_calculationType) << "\n";
@@ -554,6 +533,8 @@ namespace Avogadro
         return "6-31G(d)";
       case B631Gdp:
         return "6-31G(d,p)";
+      case LANL2DZ:
+        return "LANL2DZ";
       default:
         return "6-31G(d)";
     }
@@ -568,9 +549,7 @@ namespace Avogadro
     ui.basisCombo->setEnabled(!dirty);
     ui.multiplicitySpin->setEnabled(!dirty);
     ui.chargeSpin->setEnabled(!dirty);
-    ui.procSpin->setEnabled(!dirty);
     ui.outputCombo->setEnabled(!dirty);
-    ui.checkpointCheck->setEnabled(!dirty);
     ui.enableFormButton->setEnabled(dirty);
   }
 

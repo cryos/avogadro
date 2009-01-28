@@ -49,12 +49,14 @@ namespace Avogadro {
 
   /**
    * @class Molecule molecule.h <avogadro/molecule.h>
-   * @brief Molecule Class
+   * @brief The molecule contains all of the molecular primitives.
    * @author Marcus D. Hanwell
    *
-   * The Molecule class implements the core molecule data that is the cetral
-   * model holding all information displayed by our various views and
-   * manipulated by tools and extensions.
+   * The Molecule class contains the core data of the molecule. It is the cetral
+   * model, holding all information displayed by our various views and
+   * manipulated by tools and extensions. It typically contains Atom and Bond
+   * objects, but may also contain Cube, Mesh, Fragment, Residue and other
+   * objects.
    */
   class MoleculePrivate;
   class A_EXPORT Molecule : public Primitive
@@ -436,6 +438,17 @@ namespace Avogadro {
     void removeHydrogens(Atom *atom = 0);
 
     /**
+     * Set the dipole moment of the Molecule.
+     * @param moment The dipole moment of the Molecule.
+     */
+    void setDipoleMoment(const Eigen::Vector3d &moment);
+
+    /**
+     * @return The dipole moment of the Molecule.
+     */
+    const Eigen::Vector3d * dipoleMoment() const;
+
+    /**
      * Calculate the partial charges on each atom.
      */
     void calculatePartialCharges() const;
@@ -456,6 +469,54 @@ namespace Avogadro {
      * otherwise 0 is returned.
      */
     Bond* bond(const Atom*, const Atom*);
+
+    /**
+     * Add a new conformer to the Molecule. The conformers are mapped onto the
+     * unique ids of the atoms in the Molecule.
+     * @param conformer A vector of Vector3d with all atom positions.
+     * @param index The index of the conformer to add.
+     */
+    bool addConformer(const std::vector<Eigen::Vector3d> &conformer, int index);
+
+    /**
+     * Add a new conformer and return a pointer to it.
+     * @param index The index of the new conformer.
+     * @return Pointer to the conformer added.
+     */
+    std::vector<Eigen::Vector3d> * addConformer(int index);
+
+    /**
+     * Change the conformer to the one at the specified index.
+     */
+    bool setConformer(int index);
+
+    /**
+     * Clear all conformers from the molecule, leaving just conformer zero.
+     */
+    void clearConformers();
+
+    /**
+     * @return The number of conformers.
+     */
+    int numConformers() const;
+
+    /**
+     * @return The energies for all conformers.
+     */
+    const std::vector<double>& energies() const;
+
+    /**
+     * Get the energy of the supplied conformer, defaults to returning the
+     * energy of the current conformer.
+     * @param index The conformer, defaults to the current conformer.
+     * @return The energy of the Molecule (or current conformer).
+     */
+    double energy(int index = -1) const;
+
+    /**
+     * Set the energies for all conformers.
+     */
+    void setEnergies(const std::vector<double>& energies);
 
     /**
      * Remove all elements of the molecule.
@@ -503,12 +564,12 @@ namespace Avogadro {
     /**
      * @return The position of the center of the Molecule.
      */
-    const Eigen::Vector3d & center() const;
+    const Eigen::Vector3d center() const;
 
     /**
      * @return The normal vector of the Molecule.
      */
-    const Eigen::Vector3d & normalVector() const;
+    const Eigen::Vector3d normalVector() const;
 
     /**
      * @return The radius of the Molecule.
@@ -522,9 +583,8 @@ namespace Avogadro {
 
     /**
      * Translate the Molecule using the supplied vector.
-     * @note FIXME Not implemented.
      */
-    void translate(const Eigen::Vector3d&) { ; }
+    void translate(const Eigen::Vector3d&);
     /** @} */
 
     /** @name Operators
@@ -547,7 +607,10 @@ namespace Avogadro {
   protected:
     MoleculePrivate * const d_ptr;
     QString m_fileName;
-    std::vector<Eigen::Vector3d> *m_atomPos;
+    std::vector<Eigen::Vector3d> *m_atomPos; // Atom position vector
+    /** Vector containing pointers to various conformers. **/
+    std::vector< std::vector<Eigen::Vector3d>* > m_atomConformers;
+    mutable Eigen::Vector3d *m_dipoleMoment;
     mutable bool m_invalidPartialCharges;
     mutable bool m_invalidAromaticity;
     Q_DECLARE_PRIVATE(Molecule)

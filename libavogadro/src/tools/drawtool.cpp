@@ -154,8 +154,6 @@ namespace Avogadro {
             bondOrder = 3;
             break;
           case 3:
-            bondOrder = 1;
-            break;
           default:
             bondOrder = 1;
           }
@@ -215,7 +213,7 @@ namespace Avogadro {
         // parse our hits.  we want to know
         // if we hit another existing atom that is not
         // the m_endAtom which we created
-        for(int i=0; i < m_hits.size() && !hitBeginAtom; i++) {
+        for(int i=0; i < m_hits.size() && !hitBeginAtom; ++i) {
           if(m_hits[i].type() == Primitive::AtomType) {
             // hit the beginning atom: either moved here from somewhere else
             // or were already here.
@@ -225,11 +223,27 @@ namespace Avogadro {
             else if(!m_endAtom) {
               // we don't yet have an end atom but
               // hit another atom on screen -- bond to this
+              
               existingAtom = molecule->atom(m_hits[i].name());
+              // if we're auto-adding hydrogens and we hit a hydrogen
+              // look for another target
+              // (unless we've selected hydrogen as our element of choice)
+              if (m_addHydrogens 
+                  && existingAtom->isHydrogen() 
+                  && m_element != 1) {
+                existingAtom = NULL;
+                continue;
+              }
             }
             else if(m_hits[i].name() != m_endAtom->index()) {
               // hit a new atom which isn't our end atom
               existingAtom = molecule->atom(m_hits[i].name());
+              if (m_addHydrogens 
+                  && existingAtom->isHydrogen() 
+                  && m_element != 1) {
+                existingAtom = NULL;
+                continue;
+              }
             }
           } // end hits.type == AtomType
         }
@@ -356,15 +370,13 @@ namespace Avogadro {
         // only add hydrogens to the atoms if it's the only thing
         // we've drawn.  else addbonds will adjust hydrogens.
         int atomAddHydrogens = 0;
-        if(m_addHydrogens)
-        {
+        if(m_addHydrogens) {
           // if no bond then add on undo and redo
           if(!m_bond) {
             atomAddHydrogens = 1;
           }
           // if bond then only remove on undo, rest is handled by bond
-          else
-          {
+          else {
             atomAddHydrogens = 2;
           }
         }
@@ -579,7 +591,7 @@ namespace Avogadro {
     }
 
     // And now we set up a new entry into the combo list
-    QString entryName(elementTranslator.name(index)); // (e.g., "Hydrogen")
+    QString entryName(ElementTranslator::name(index)); // (e.g., "Hydrogen")
     entryName += " (" + QString::number(index) + ')';
 
     m_elementsIndex.insert(position, index);
@@ -638,25 +650,25 @@ namespace Avogadro {
       // Small popup with 10 most common elements for organic chemistry
       // (and extra for "other" to bring up periodic table window)
       m_comboElements = new QComboBox(m_settingsWidget);
-      m_comboElements->addItem(elementTranslator.name(1) + " (1)");
+      m_comboElements->addItem(ElementTranslator::name(1) + " (1)");
       m_elementsIndex.append(1);
-      m_comboElements->addItem(elementTranslator.name(5) + " (5)");
+      m_comboElements->addItem(ElementTranslator::name(5) + " (5)");
       m_elementsIndex.append(5);
-      m_comboElements->addItem(elementTranslator.name(6) + " (6)");
+      m_comboElements->addItem(ElementTranslator::name(6) + " (6)");
       m_elementsIndex.append(6);
-      m_comboElements->addItem(elementTranslator.name(7) + " (7)");
+      m_comboElements->addItem(ElementTranslator::name(7) + " (7)");
       m_elementsIndex.append(7);
-      m_comboElements->addItem(elementTranslator.name(8) + " (8)");
+      m_comboElements->addItem(ElementTranslator::name(8) + " (8)");
       m_elementsIndex.append(8);
-      m_comboElements->addItem(elementTranslator.name(9) + " (9)");
+      m_comboElements->addItem(ElementTranslator::name(9) + " (9)");
       m_elementsIndex.append(9);
-      m_comboElements->addItem(elementTranslator.name(15) + " (15)");
+      m_comboElements->addItem(ElementTranslator::name(15) + " (15)");
       m_elementsIndex.append(15);
-      m_comboElements->addItem(elementTranslator.name(16) + " (16)");
+      m_comboElements->addItem(ElementTranslator::name(16) + " (16)");
       m_elementsIndex.append(16);
-      m_comboElements->addItem(elementTranslator.name(17) + " (17)");
+      m_comboElements->addItem(ElementTranslator::name(17) + " (17)");
       m_elementsIndex.append(17);
-      m_comboElements->addItem(elementTranslator.name(35) + " (35)");
+      m_comboElements->addItem(ElementTranslator::name(35) + " (35)");
       m_elementsIndex.append(35);
       m_comboElements->addItem(tr("Other..."));
       m_elementsIndex.append(0);

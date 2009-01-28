@@ -14,18 +14,26 @@
 					<address>cniehaus@kde.org</address>
 				</affiliation>
 			</author>
+      <author>
+        <firstname>Marcus</firstname>
+        <surname>Hanwell</surname>
+        <affiliation>
+          <address>marcus@cryos.org</address>
+        </affiliation>
+      </author>
 		</authorgroup>
 
 		<copyright>
-			<year>2008</year>
+			<year>2008-2009</year>
 			<holder>Carsten Niehaus</holder>
+      <holder>Marcus Hanwell</holder>
 		</copyright>
 
-		<date>2008-03-04</date>
-		<releaseinfo>1.0-pre</releaseinfo>
+		<date>2009-01-05</date>
+		<releaseinfo>0.9-beta1</releaseinfo>
 
 		<abstract>
-			<para>Avogadro is an advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas. It offers flexible rendering and a powerful plugin architecture.  
+			<para>Avogadro is an advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas. It offers flexible rendering and a powerful plugin architecture.
 			</para>
 			<para>The main concept behind Avogadro is to enable a strong framework for molecular visualization and editing. Each community has their own needs and goals for an ideal tool. So Avogadro seeks to allow users to easily provide their own plugins and scripts for rendering, tools, commands... etc.  Avogadro is based on top of existing chemistry software, including Open Babel. In the future, it will offer strong scripting abilities to allow for automated demos, submission of calculations to local computational resources, and user-defined customization.</para>
 		</abstract>
@@ -41,34 +49,34 @@
 	<chapter id="introduction">
 		<title>Introduction</title>
 
-		<para>It is free and licensed under the GNU Public License. For more information, see 
-			the <ulink url="http://avogadro.sourceforge.net">Homepage</ulink>.
+		<para>Avogadro is free, cross-platform and licensed under the GNU Public License. For more information, see
+			the <ulink url="http://avogadro.openmolecules.net/">homepage</ulink>.
 		</para>
 	</chapter>
 
 	<chapter id="quick-start">
 		<title>Avogadro quick start guide</title>
 
-		<para>Here is Avogadro looks like the first time you run it. 
+		<para>This is what Avogadro looks like the first time it is run.
 		</para>
 		<screenshot>
 			<screeninfo>Avogadro main window</screeninfo>
 			<graphic align="center" format="PNG" fileref="figures/screenshot1.png"></graphic>
 		</screenshot>
 	</chapter>
-	
+
 	<chapter id="involvement">
 		<title>Getting Involved</title>
 
 		<para>Avogadro has a very open and active development community. Currently
 			there are more than 10 active developers and other various contributers.
-			If you are interesting in working on or with Avogadro please look at the
-			Developer information that is available and subscribe to the <ulink
-				url="http://lists.sourceforge.net/mailman/listinfo/avogadro-devel">mailinglist</ulink>.
-			Also, join the IRC channel (#avogadro on
+			If you are interested in working on or with Avogadro please look at the
+			developer information that is available on the wiki and subscribe to the <ulink
+				url="http://lists.sourceforge.net/mailman/listinfo/avogadro-devel">mailing list</ulink>.
+			You could also join the IRC channel (#avogadro on
 			irc.freenode.net) and talk with other developers. For information on the
 			internals of Avogadro and LibAvogadro, review the avogadro <ulink
-				url="http://avogadro.sourceforge.net/dev-api/">developer API</ulink>.
+				url="http://avogadro.openmolecules.net/dev-api/">developer API</ulink>.
 		</para>
 	</chapter>
 
@@ -80,21 +88,42 @@
 		<para> Contributors:</para>
 
 		<itemizedlist>
+      <listitem><para>
+          Shahzad Ali <email>saky.org@gmail.com</email>
+      </para></listitem>
+      <listitem><para>
+          Ross Braithwaite <email>dark.nz@gmail.com</email>
+      </para></listitem>
+      <listitem><para>
+          James Bunt <email>james.bunt@gmail.com</email>
+      </para></listitem>
 			<listitem><para>
-					Donald <email></email>
+					Donald Ephraim Curtis <email>dcurtis3@sourceforge.net</email>
 			</para></listitem>
+      <listitem><para>
+          Naomi Fox <email>naomi.fox@gmail.com</email>
+      </para></listitem>
+      <listitem><para>
+          Marcus D. Hanwell <email>marcus@cryos.org</email>
+      </para></listitem>
 			<listitem><para>
-					Geoff <email></email>
+					Geoffrey Hutchison <email>geoff@geoffhutchison.net</email>
 			</para></listitem>
+      <listitem><para>
+          Beno&icirc;t Jacob <email>jacob.benoit.1@gmail.com</email>
+      </para></listitem>
+      <listitem><para>
+          Jordan Mantha <email>jordan.mantha@gmail.com</email>
+      </para></listitem>
 			<listitem><para>
 					Carsten Niehaus <email>cniehaus@kde.org</email>
 			</para></listitem>
-			<listitem><para>
-					Marcus <email></email>
-			</para></listitem>
-			<listitem><para>
-					Beno&icirc;t <email></email>
-			</para></listitem>
+      <listitem><para>
+          Simon Ochsenreither <email>simon@ochsenreither.de</email>
+      </para></listitem>
+      <listitem><para>
+          Tim Vandermeersch <email>tim.vandermeersch@gmail.com</email>
+      </para></listitem>
 		</itemizedlist>
 	</chapter>
 
@@ -104,7 +133,7 @@
 		<sect1 id="getting-avogadro">
 			<title>How to obtain Avogadro</title>
 			<para>
-				Avogadro  itself can be found on <ulink url="http://avogadro.sf.net">the Avogadro home page</ulink>.
+				Avogadro  can be found on <ulink url="http://avogadro.openmolecules.net/">the Avogadro home page</ulink>.
 			</para>
 
 		</sect1>
@@ -112,7 +141,7 @@
 		<sect1 id="requirements">
 			<title>Requirements</title>
 			<para>
-				Although Avogadro can work without any 3D-acceleration, an OpenGL-capable card will vastly improve user experience.
+				Although Avogadro can work without any 3D-acceleration, an OpenGL capable card will vastly improve the user experience. At a minimum Avogadro requires a system capable of providing OpenGL software rendering. It is currently ported and tested on GNU/Linux, Apple Mac OS X and Microsoft Windows.
 			</para>
 
 		</sect1>
@@ -123,12 +152,12 @@
 				If you decide to build Avogadro from source, the following resources will be necessary:
 				<itemizedlist>
 					<listitem><para>Git, to access certain code repositories</para></listitem>
-					<listitem><para>CMake (>=2.4.7), the open-source build system</para></listitem>
+					<listitem><para>CMake (>=2.6.0), the open-source build system</para></listitem>
 					<listitem><para>Qt4 (>=4.4.0), the open-source application framework</para></listitem>
 					<listitem><para>Eigen2, a library for linear algebra as a compile-time dependency of Avogadro</para></listitem>
-					<listitem><para>OpenBabel, the chemistry toolbox</para></listitem>
+					<listitem><para>OpenBabel (>=2.2.0), the chemistry toolbox</para></listitem>
 				</itemizedlist>
-					Most of them might be available through your distribution's repository, although it is recommended to fetch the latest OpenBabel source from the code repository.
+					All of these programs and libraries are likely to be available through your distribution's repository.
 				</para>
 			<para>
 				Further information can be found on <ulink url="http://avogadro.openmolecules.net/wiki/Compiling">the Avogadro home page</ulink>.

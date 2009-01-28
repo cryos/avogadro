@@ -1,5 +1,5 @@
 /**********************************************************************
-  Cube - Primitive class to encapsulate volumetric data
+  Mesh - Primitive class to encapsulate triangular meshes/
 
   Copyright (C) 2008 Marcus D. Hanwell
 
@@ -35,14 +35,30 @@ class QColor;
 namespace Avogadro {
 
   class Molecule;
-
+  /**
+   * @class Mesh mesh.h <avogadro/mesh.h>
+   * @brief Encapsulation of a triangular mesh that makes up a surface.
+   * @author Marcus D. Hanwell
+   *
+   * The Mesh class is a Primitive subclass that provides an Mesh object. All
+   * meshes must be owned by a Molecule. It should also be removed by the
+   * Molecule that owns it. Meshes encapsulate triangular meshes that can also
+   * have colors associated with each vertex.
+   */
   class MeshPrivate;
   class A_EXPORT Mesh : public Primitive
   {
   Q_OBJECT
 
   public:
+    /**
+     * Constructor.
+     */
     Mesh(QObject *parent=0);
+
+    /**
+     * Destructor.
+     */
     ~Mesh();
 
     /**
@@ -68,6 +84,36 @@ namespace Avogadro {
      * @return True if the Mesh is complete, false if it is being modified.
      */
     bool stable();
+
+    /**
+     * Set the iso value that was used to generate the Mesh.
+     */
+    void setIsoValue(float value) { m_isoValue = value; }
+
+    /**
+     * @return The iso value used to generate the Mesh.
+     */
+    float isoValue() const { return m_isoValue; }
+
+    /**
+     * Set the unique id of the other Mesh if this Mesh is part of a pair.
+     */
+    void setOtherMesh(unsigned int other) { m_other = other; }
+
+    /**
+     * @return The unique id of the other Mesh if this is part of a pair.
+     */
+    unsigned int otherMesh() const { return m_other; }
+
+    /**
+     * Set the unique id of the Cube the Mesh was generated from.
+     */
+    void setCube(unsigned int cube) { m_cube = cube; }
+
+    /**
+     * @return The unique id of the Cube the Mesh was generated from.
+     */
+    unsigned int cube() const { return m_cube; }
 
     /**
      * @return Vector containing all of the vertices in a one dimensional array.
@@ -145,10 +191,20 @@ namespace Avogadro {
      */
     bool clear();
 
+    /**
+     * Overloaded operator.
+     */
     Mesh& operator=(const Mesh& other);
 
-    inline void setName(QString name) { m_name = name; }
-    inline QString name() { return m_name; }
+    /**
+     * Set the name of the Mesh.
+     */
+    void setName(QString name) { m_name = name; }
+
+    /**
+     * @return The name of the Mesh.
+     */
+    QString name() { return m_name; }
 
     friend class Molecule;
 
@@ -158,6 +214,9 @@ namespace Avogadro {
     std::vector<QColor> m_colors;
     QString m_name;
     bool m_stable;
+    float m_isoValue;
+    unsigned int m_other; // Unique id of the other mesh if this is part of a pair
+    unsigned int m_cube; // Unique id of the cube this mesh was generated from
     Q_DECLARE_PRIVATE(Mesh)
   };
 } // End namespace Avogadro

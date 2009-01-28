@@ -180,17 +180,13 @@ namespace Avogadro
     int level, lastLevel, n;
     // delete the spheres. One has to be wary that more than one sphere
     // pointer may have the same value. One wants to avoid deleting twice the same sphere.
-    if ( spheres )
-    {
+    if (spheres) {
       lastLevel = -1;
-      for ( n = 0; n < PAINTER_DETAIL_LEVELS; n++ )
-      {
+      for (n = 0; n < PAINTER_DETAIL_LEVELS; ++n) {
         level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
-        if ( level != lastLevel )
-        {
+        if (level != lastLevel) {
           lastLevel = level;
-          if ( spheres[n] )
-          {
+          if (spheres[n]) {
             delete spheres[n];
             spheres[n] = 0;
           }
@@ -202,17 +198,14 @@ namespace Avogadro
 
     // delete the cylinders. One has to be wary that more than one cylinder
     // pointer may have the same value. One wants to avoid deleting twice the same cylinder.
-    if ( cylinders )
+    if (cylinders)
     {
       lastLevel = -1;
-      for ( n = 0; n < PAINTER_DETAIL_LEVELS; n++ )
-      {
+      for (n = 0; n < PAINTER_DETAIL_LEVELS; ++n) {
         level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
-        if ( level != lastLevel )
-        {
+        if (level != lastLevel) {
           lastLevel = level;
-          if ( cylinders[n] )
-          {
+          if (cylinders[n]) {
             delete cylinders[n];
             cylinders[n] = 0;
           }
@@ -234,15 +227,12 @@ namespace Avogadro
       int level, lastLevel;
       lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
       spheres[0] = new Sphere ( lastLevel );
-      for ( int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
-      {
+      for (int n = 1; n < PAINTER_DETAIL_LEVELS; ++n) {
         level = PAINTER_SPHERES_LEVELS_ARRAY[quality][n];
-        if ( level == lastLevel )
-        {
+        if (level == lastLevel) {
           spheres[n] = spheres[n-1];
         }
-        else
-        {
+        else {
           lastLevel = level;
           spheres[n] = new Sphere ( level );
         }
@@ -252,21 +242,17 @@ namespace Avogadro
     // create the cylinders. More than one cylinder detail level may have the same value.
     // in that case we want to reuse the corresponding cylinder by just copying the pointer,
     // instead of creating redundant cylinders.
-    if ( cylinders == 0 )
-    {
+    if (cylinders == 0) {
       cylinders = new Cylinder*[PAINTER_DETAIL_LEVELS];
       int level, lastLevel;
       lastLevel = PAINTER_SPHERES_LEVELS_ARRAY[quality][0];
       cylinders[0] = new Cylinder ( lastLevel );
-      for ( int n = 1; n < PAINTER_DETAIL_LEVELS; n++ )
-      {
+      for (int n = 1; n < PAINTER_DETAIL_LEVELS; ++n) {
         level = PAINTER_CYLINDERS_LEVELS_ARRAY[quality][n];
-        if ( level == lastLevel )
-        {
+        if (level == lastLevel) {
           cylinders[n] = cylinders[n-1];
         }
-        else
-        {
+        else {
           lastLevel = level;
           cylinders[n] = new Cylinder ( level );
         }
@@ -274,13 +260,13 @@ namespace Avogadro
     }
   }
 
-  GLPainter::GLPainter(int quality) : d(new GLPainterPrivate), m_dynamicScaling(true)
+  GLPainter::GLPainter(int quality) : d(new GLPainterPrivate),
+    m_dynamicScaling(true)
   {
     if (quality < 0 || quality >= PAINTER_MAX_DETAIL_LEVEL)
-      {
-        quality = DEFAULT_GLOBAL_QUALITY_SETTING;
-      }
-    d->quality = quality;
+      quality = DEFAULT_GLOBAL_QUALITY_SETTING;
+    else
+      d->quality = quality;
   }
 
   GLPainter::~GLPainter()
@@ -664,14 +650,14 @@ namespace Avogadro
     QVarLengthArray<GLfloat> uknots(points.size() + 4);
 
     // The first one is a special case
-    Eigen::Vector3f axis = points[1] - points[0];
-    Eigen::Vector3f axisNormalized = axis.normalized();
-    Eigen::Vector3f ortho1, ortho2;
+    Eigen::Vector3d axis = points[1] - points[0];
+    Eigen::Vector3d axisNormalized = axis.normalized();
+    Eigen::Vector3d ortho1, ortho2;
     ortho1 = axisNormalized.unitOrthogonal() * radius;
     ortho2 = axisNormalized.cross(ortho1);
     for (int j = 0; j < TUBE_TESS; j++) {
       double alpha = j * M_PI / 1.5f;
-      Eigen::Vector3f v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
+      Eigen::Vector3d v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
       ctrlpts[3*j+0] = v.x() + points[0].x();
       ctrlpts[3*j+1] = v.y() + points[0].y();
       ctrlpts[3*j+2] = v.z() + points[0].z();
@@ -679,7 +665,7 @@ namespace Avogadro
     uknots[2] = 0.0;
 
     for (int i = 1; i < points.size(); i++) {
-      axis = Eigen::Vector3f(points[i-1].x() - points[i].x(),
+      axis = Eigen::Vector3d(points[i-1].x() - points[i].x(),
                              points[i-1].y() - points[i].y(),
                              points[i-1].z() - points[i].z());
       axisNormalized = axis.normalized();
@@ -688,7 +674,7 @@ namespace Avogadro
       ortho2 = axisNormalized.cross(ortho1);
       for (int j = 0; j < TUBE_TESS; j++) {
         double alpha = j * M_PI / 1.5f;
-        Eigen::Vector3f v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
+        Eigen::Vector3d v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
         ctrlpts[(i*TUBE_TESS + j)*3 + 0] = v.x() + points[i].x();
         ctrlpts[(i*TUBE_TESS + j)*3 + 1] = v.y() + points[i].y();
         ctrlpts[(i*TUBE_TESS + j)*3 + 2] = v.z() + points[i].z();

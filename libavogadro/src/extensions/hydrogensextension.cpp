@@ -49,6 +49,10 @@ namespace Avogadro {
     action = new QAction(this);
     action->setText(tr("Remove Hydrogens"));
     m_actions.append(action);
+
+    action = new QAction( this );
+    action->setSeparator(true);
+    m_actions.append( action );
   }
 
   HydrogensExtension::~HydrogensExtension()

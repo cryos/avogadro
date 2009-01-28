@@ -29,7 +29,8 @@
 #include <avogadro/global.h>
 #include <Eigen/Core>
 
-
+namespace Avogadro
+{
 /**
  * @class TextRenderer
  * @internal
@@ -89,10 +90,6 @@
  *   an antialiased font.
  *
  */
-
-namespace Avogadro
-{
-
   class CharRenderer;
   class GLWidget;
 

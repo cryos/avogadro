@@ -37,8 +37,8 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  DipoleEngine::DipoleEngine(QObject *parent) : Engine(parent), m_molecule(0), m_dipoleType(0),
-    m_settingsWidget(0)
+  DipoleEngine::DipoleEngine(QObject *parent) : Engine(parent), m_molecule(0),
+    m_dipoleType(0), m_settingsWidget(0)
   {
     setDescription(tr("Renders dipole moments and other 3D data"));
 
@@ -68,12 +68,14 @@ namespace Avogadro {
     Molecule *mol = const_cast<Molecule *>(pd->molecule());
     m_molecule = mol;
 
+    updateDipole();
+
     Vector3d origin = Vector3d(0.0, 0.0, 0.0); // start at the origin
     Vector3d joint = 0.2 * m_dipole; // 80% along the length
 
     pd->painter()->setColor(1.0, 0.0, 0.0);
-    pd->painter()->drawLine(m_dipole, joint, 2.0);
-    pd->painter()->drawCone(joint, origin, 0.1);
+    pd->painter()->drawLine(m_dipole, joint, 3.0);
+    pd->painter()->drawCone(joint, origin, 0.4);
     // TODO: add a "cross" line for the <--+ look to the dipole moment)
 
     return true;
@@ -81,7 +83,7 @@ namespace Avogadro {
 
   double DipoleEngine::radius(const PainterDevice *, const Primitive *) const
   {
-    return 0.;
+    return 0.0;
   }
 
   double DipoleEngine::transparencyDepth() const
@@ -110,8 +112,16 @@ namespace Avogadro {
     {
       m_settingsWidget = new DipoleSettingsWidget();
       m_settingsWidget->dipoleType->setCurrentIndex(m_dipoleType);
-      connect(m_settingsWidget->dipoleType, SIGNAL(activated(int)), this, SLOT(setDipoleType(int)));
-      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      connect(m_settingsWidget->dipoleType, SIGNAL(activated(int)),
+              this, SLOT(setDipoleType(int)));
+      connect(m_settingsWidget, SIGNAL(destroyed()), 
+              this, SLOT(settingsWidgetDestroyed()));
+      connect(m_settingsWidget->xDipoleSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateDipole(double)));
+      connect(m_settingsWidget->yDipoleSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateDipole(double)));
+      connect(m_settingsWidget->zDipoleSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateDipole(double)));
     }
     return m_settingsWidget;
   }
@@ -137,38 +147,20 @@ namespace Avogadro {
     emit changed();
   }
 
-  void DipoleEngine::updateDipole()
+  void DipoleEngine::updateDipole(double)
   {
-    Vector3d tempMoment(0.0, 0.0, 0.0);
-
-    QList<Primitive *> list;
-    // Get a list of atoms and calculate the dipole moment
-    list = primitives().subList(Primitive::AtomType);
-
     switch(m_dipoleType)
     {
-      case 0: // estimated
-      if (list.size() == 0)
-        return;
-
-      foreach(const Primitive *p, list) {
-        const Atom *a = static_cast<const Atom *>(p);
-        tempMoment += *a->pos() * a->partialCharge();
-      }
-      break;
-
       case 1: // custom
-      tempMoment = Vector3d(m_settingsWidget->xDipoleSpinBox->value(),
-        m_settingsWidget->yDipoleSpinBox->value(),
-        m_settingsWidget->zDipoleSpinBox->value());
-      break;
+        m_dipole = Vector3d(m_settingsWidget->xDipoleSpinBox->value(),
+                              m_settingsWidget->yDipoleSpinBox->value(),
+                              m_settingsWidget->zDipoleSpinBox->value());
+        break;
 
-      default:; // embedded OBGenericData type -- handle
+      default: // embedded OBGenericData type -- handle
+        m_dipole = Vector3d(*m_molecule->dipoleMoment());
     }
-
-    m_dipole(0) = tempMoment.x();
-    m_dipole(1) = tempMoment.y();
-    m_dipole(2) = tempMoment.z();
+    emit changed();
   }
 
   void DipoleEngine::settingsWidgetDestroyed()

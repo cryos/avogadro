@@ -118,6 +118,8 @@ namespace Avogadro
   class MainWindowPrivate
   {
     public:
+      EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
       MainWindowPrivate() : molecule( 0 ),
       undoStack( 0 ), toolsFlow( 0 ), toolsLayout( 0 ),
       toolsTab(0),
@@ -220,7 +222,6 @@ namespace Avogadro
 
   void MainWindow::constructor()
   {
-
     ui.setupUi( this );
 
     QSettings settings;
@@ -317,7 +318,7 @@ namespace Avogadro
     ui.fileToolBar->hide();
 
     // Change the "Settings" menu to be Window
-    ui.menuSettings->setTitle("Window");
+    ui.menuSettings->setTitle(tr("Window"));
     // and remove the trailing separator
     QAction *lastSettingsAction = ui.menuSettings->actions().last();
     if (lastSettingsAction->isSeparator())
@@ -335,6 +336,9 @@ namespace Avogadro
     connectUi();
 
     ui.projectDock->close();
+
+    // Disable the detach view option for now
+    ui.actionDetachView->setVisible(false);
   }
 
   bool MainWindow::event(QEvent *event)
@@ -701,7 +705,7 @@ namespace Avogadro
     if(fileName.isEmpty()) {
       setFileName(fileName);
       setMolecule(new Molecule(this));
-      shownName = "untitled.cml";
+      shownName = tr("untitled") + ".cml";
       setWindowFilePath(shownName);
       return true;
     }
@@ -1634,20 +1638,10 @@ namespace Avogadro
         view->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
         view->setScene(new QGraphicsScene);
         view->scene()->addText("Avogadro GLGraphicsView");
-//        view->scene()->addLine(0, 0, 60, 90);
-//        QDialog *dialog = new QDialog(view);
-//        dialog->resize(150,100);
-//        dialog->setWindowTitle("Testing");
-//        view->scene()->addWidget(dialog);
-//        dialog->show();
-//        dialog->move(100,200);
         view->show();
 
-    //    layout->addWidget(view);
       }
     }
-   // dialog->setWindowTitle(tr("Avogadro: Detached View"));
-   // dialog->show();
   }
 
   void MainWindow::closeView()
@@ -1664,18 +1658,8 @@ namespace Avogadro
         d->enginesStacked->removeWidget( widget );
         delete widget;
 
-        // delete the engine configuration for this GLWidget
-//        widget = d->engineConfigurationStacked->widget( index );
-//        d->engineConfigurationStacked->removeWidget( widget );
-//        delete widget;
-
-        // delete the engine primitives for this GLWidget
-//        widget = d->enginePrimitivesStacked->widget( index );
-//        d->enginePrimitivesStacked->removeWidget( widget );
-//        delete widget;
-
-        for ( int count=d->centralTab->count(); index < count; index++ ) {
-          d->centralTab->setTabText( index, tr( "View %1" ).arg( QString::number( index + 1 ) ) );
+        for ( int count=d->centralTab->count(); index < count; ++index ) {
+          d->centralTab->setTabText(index, tr("View %1").arg(QString::number(index + 1)));
         }
         d->glWidgets.removeAll( glWidget );
         delete glWidget;
@@ -1973,6 +1957,7 @@ namespace Avogadro
     if (projectItem) {
       d->glWidget->clearSelected();
       d->glWidget->setSelected(projectItem->primitives(), true);
+      d->glWidget->update();
     }
   }
 
@@ -2177,7 +2162,7 @@ namespace Avogadro
       QMenu *path = NULL;
 
       if ( menuPathString.size() ) {
-        QStringList menuPath = menuPathString.split( ">" );
+        QStringList menuPath = menuPathString.split( '>' );
         // Root menus are a special case, we need to check menuBar()
         foreach( QAction *menu, menuBar()->actions() ) {
           if ( menu->text() == menuPath.at( 0 ) ) {

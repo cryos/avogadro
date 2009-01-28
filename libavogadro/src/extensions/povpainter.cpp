@@ -482,7 +482,7 @@ namespace Avogadro
       << "camera {\n"
       << "\tperspective\n"
       << "\tlocation <" << cameraT.x() << ", " << cameraT.y() << ", " << cameraT.z() << ">\n"
-      << "\tangle " << m_aspectRatio * m_glwidget->camera()->angleOfViewY() << "\n"
+      << "\tangle " << m_glwidget->camera()->angleOfViewY() << "\n"
       << "\tup <" << cameraY.x() << ", " << cameraY.y() << ", " << cameraY.z() << ">\n"
       << "\tright <" << cameraX.x() << ", " << cameraX.y() << ", " << cameraX.z()
       << "> * " << m_aspectRatio << "\n"

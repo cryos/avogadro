@@ -20,7 +20,8 @@
  ***********************************************************************/
 
 #include "trajvideomaker.h"
-#include <avogadro/povpainter.h>
+#include "povpainter.h"
+#include <avogadro/molecule.h>
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QProgressDialog>
@@ -28,22 +29,19 @@
 #include <fstream>
 #include <vector>
 
-
-
 namespace Avogadro {
-  
+
   TrajVideoMaker::TrajVideoMaker(){}
 
   TrajVideoMaker::~TrajVideoMaker(){}
 
-  void TrajVideoMaker::makeVideo(GLWidget *widget, QString workDirectory, 
-			QString videoFileName) 
+  void TrajVideoMaker::makeVideo(GLWidget *widget, QString workDirectory,
+			QString videoFileName)
   {
-
     if (!workDirectory.endsWith("/"))
       workDirectory += "/";
-    
-    // check widget is okay 
+
+    // check widget is okay
     if (!widget) {
       QMessageBox::warning( NULL, QObject::tr( "Avogadro" ),
 			    QObject::tr( "GL widget was not correctly initialized in order to make a video" ));
@@ -51,50 +49,45 @@ namespace Avogadro {
     }
 
     Molecule* molecule = widget->molecule();
-    
-    // check molecule is okay 
+    // check molecule is okay
     if (!molecule) {
       QMessageBox::warning( NULL, QObject::tr( "Avogadro" ),
 			    QObject::tr( "GL widget has no molecule" ));
       return;
     }
-    
 
     double aspectRatio = getAspectRatio(widget);
-
     //start the progress dialog
-    QProgressDialog progDialog(QObject::tr("Building video "), 
-			  QObject::tr("cancel"), 0, 
-			  molecule->NumConformers()*2);
+    QProgressDialog progDialog(QObject::tr("Building video "),
+			  QObject::tr("cancel"), 0,
+			  molecule->numConformers()*2);
     progDialog.setMinimumDuration(1);
     progDialog.setValue(0);
 
     //list of pngfiles for mencoder
     std::vector<QString> pngFiles;
 
-    for (int i=0; i < molecule->NumConformers(); i++) {
+    for (int i=0; i < molecule->numConformers(); i++) {
       QString povFileName = workDirectory + QString::number(i) + ".pov";
-      molecule->SetConformer(i);
-      
-      {
-	// write the pov file
-	// must be in own scope so object is destroyed and file is closed after
-	// (a design flaw in POVPainterDevice?)
-	POVPainterDevice pd( povFileName, aspectRatio, widget );
-      }
+      molecule->setConformer(i);
+
+      // write the pov file
+      // must be in own scope so object is destroyed and file is closed after
+      // (a design flaw in POVPainterDevice?)
+      POVPainterDevice pd( povFileName, aspectRatio, widget );
 
       progDialog.setValue(2*i);
-      
+
       //make the png
       runPovRay(workDirectory, povFileName);
       progDialog.setValue(2*i+1);
-      
+
       QString pngFileName = workDirectory + QString::number(i) + ".png";
-      pngFiles.push_back(pngFileName); 
-      
+      pngFiles.push_back(pngFileName);
+
       if (progDialog.wasCanceled()) {
-	//stop making
-	return;
+        //stop making
+        return;
       }
     }
 
@@ -106,52 +99,50 @@ namespace Avogadro {
     //tell user if successful
     std::ifstream fin(videoFileName.toStdString().c_str());
     if(!fin.fail()) {
-	fin.close();
-	QString successMessage = "Video file " + videoFileName + " written.";
-	QMessageBox::information( NULL, QObject::tr( "Avogadro" ), 
-				  successMessage); 
-  }
+    fin.close();
+    QString successMessage = "Video file " + videoFileName + " written.";
+    QMessageBox::information( NULL, QObject::tr( "Avogadro" ),
+            successMessage);
+    }
     else {
-	QString failedMessage = QObject::tr("Video file not written.");
-	QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), failedMessage); 
-      }
-
-
+      QString failedMessage = QObject::tr("Video file not written.");
+      QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), failedMessage);
+    }
   }
 
-  void TrajVideoMaker::runPovRay(QString directory, QString povFileName) {
-    
+  void TrajVideoMaker::runPovRay(QString directory, QString povFileName)
+  {
     //executable for povray.  -D suppresses the popup image.
     const QString povrayexe = "povray -D ";
-    
-    QString povRayCommand = "cd " +  directory + 
-      " && " + povrayexe + " " + povFileName; 
+
+    QString povRayCommand = "cd " +  directory +
+      " && " + povrayexe + " " + povFileName;
     //QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), povRayCommand);
     system(povRayCommand.toStdString().c_str());
   }
 
   template <class QStringIterator>
-  void TrajVideoMaker::runMencoder(QString pngFileDirectory, QString videoFileName, 
-				   QStringIterator startPngFiles, QStringIterator endPngFiles) 
+  void TrajVideoMaker::runMencoder(QString pngFileDirectory, QString videoFileName,
+				   QStringIterator startPngFiles, QStringIterator endPngFiles)
   {
     //executable for mencoder
     const QString mencoderexe = "mencoder -ovc lavc -lavcopts vcodec=mpeg4 -of avi -o ";
-    
+
     QString pngString;
-    for (QStringIterator pngIterator = startPngFiles; 
-	 pngIterator != endPngFiles; ++pngIterator) {
+    for (QStringIterator pngIterator = startPngFiles;
+      pngIterator != endPngFiles; ++pngIterator) {
       pngString += *pngIterator + ",";
     }
-    
+
     //strip off last comma
     pngString = pngString.left(pngString.length()-1);
-    
+
     QString mencoderCommand = "cd " + pngFileDirectory + " && " + mencoderexe + " " + videoFileName + " mf://" + pngString ;
     //QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), mencoderCommand);
     system(mencoderCommand.toStdString().c_str());
   }
-  
-  double TrajVideoMaker::getAspectRatio(GLWidget* widget) 
+
+  double TrajVideoMaker::getAspectRatio(GLWidget* widget)
   {
     bool ok;
     int w = widget->width();

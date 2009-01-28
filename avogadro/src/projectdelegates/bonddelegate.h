@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef BONDITEMS_H
-#define BONDITEMS_H
+#ifndef BONDDELEGATE_H
+#define BONDDELEGATE_H
 
 #include <avogadro/global.h>
 #include "../projecttreemodeldelegate.h"

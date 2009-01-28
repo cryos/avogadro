@@ -39,6 +39,7 @@
 #include "projectdelegates/atomdelegate.h"
 #include "projectdelegates/bonddelegate.h"
 #include "projectdelegates/residuedelegate.h"
+#include "projectdelegates/selectiondelegate.h"
 
 namespace Avogadro {
 
@@ -173,6 +174,13 @@ namespace Avogadro {
     settings.beginGroup("projectTree");
     int size = settings.beginReadArray("items");
     
+    if (size == 0) { // default (i.e., never started a project tree)
+       // Start with a molecule delegate
+       ProjectTreeModelDelegate *delegate = (ProjectTreeModelDelegate*) new MoleculeDelegate(this);
+       delegate->initStructure(d->glWidget, parents.last());
+       d->delegates.append(delegate);
+    }
+    else {
     for (int i = 0; i < size; ++i) {
       settings.setArrayIndex( i );
       int position = settings.value("indent").toInt();
@@ -193,16 +201,18 @@ namespace Avogadro {
       }
  
       ProjectTreeModelDelegate *delegate = 0;
-      if (settings.value("name").toString() == "Label") {
+      if (settings.value("name").toString() == tr("Label")) {
         delegate = (ProjectTreeModelDelegate*) new LabelDelegate(this);
-     } else if (settings.value("name").toString() == "Molecule") {
+     } else if (settings.value("name").toString() == tr("Molecule")) {
         delegate = (ProjectTreeModelDelegate*) new MoleculeDelegate(this);
-      } else if (settings.value("name").toString() == "Bonds") {
+      } else if (settings.value("name").toString() == tr("Bonds")) {
         delegate = (ProjectTreeModelDelegate*) new BondDelegate(this);
-      } else if (settings.value("name").toString() == "Atoms") {
+      } else if (settings.value("name").toString() == tr("Atoms")) {
         delegate = (ProjectTreeModelDelegate*) new AtomDelegate(this);
-      } else if (settings.value("name").toString() == "Residues") {
+      } else if (settings.value("name").toString() == tr("Residues")) {
         delegate = (ProjectTreeModelDelegate*) new ResidueDelegate(this);
+      } else if (settings.value("name").toString() == tr("User Selections")) {
+        delegate = (ProjectTreeModelDelegate*) new SelectionDelegate(this);
       }
 
       if (delegate) {
@@ -212,6 +222,7 @@ namespace Avogadro {
       }
       
     }
+  }
 
     settings.endArray();
     settings.endGroup(); 

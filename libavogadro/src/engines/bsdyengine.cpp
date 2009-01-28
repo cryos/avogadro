@@ -273,7 +273,9 @@ namespace Avogadro
     // Render the atoms
     foreach(Atom *a, atoms())  {
       pd->painter()->setName(a);
-      pd->painter()->drawSphere(a->pos(), radius(a));
+      // add a slight "slop" factor to make it easier to pick
+      // (e.g., during drawing)
+      pd->painter()->drawSphere(a->pos(), radius(a) + 0.05);
     }
     return true;
   }
