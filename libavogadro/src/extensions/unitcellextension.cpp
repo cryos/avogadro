@@ -23,6 +23,7 @@
 #include <avogadro/molecule.h>
 
 #include <QMessageBox>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -159,20 +160,12 @@ namespace Avogadro {
   vector3 transformedFractionalCoordinate(vector3 originalCoordinate)
   { // ensure the fractional coordinate is entirely within the unit cell
     vector3 returnValue(originalCoordinate);
-    if (originalCoordinate.x() < 0.0)
-      returnValue.SetX(originalCoordinate.x() + 1.0);
-    else if (originalCoordinate.x() > 1.0)
-      returnValue.SetX(originalCoordinate.x() - 1.0);
-
-    if (originalCoordinate.y() < 0.0)
-      returnValue.SetY(originalCoordinate.y() + 1.0);
-    else if (originalCoordinate.y() > 1.0)
-      returnValue.SetY(originalCoordinate.y() - 1.0);
-
-    if (originalCoordinate.z() < 0.0)
-      returnValue.SetZ(originalCoordinate.z() + 1.0);
-    else if (originalCoordinate.z() > 1.0)
-      returnValue.SetZ(originalCoordinate.z() - 1.0);
+    
+    // trunc() will return the closest integer value
+    // So if we have -2.08, we take -2.08 - (-2) = -0.08 .... exactly what we want
+    returnValue.SetX(originalCoordinate.x() - trunc(originalCoordinate.x()));
+    returnValue.SetY(originalCoordinate.y() - trunc(originalCoordinate.y()));
+    returnValue.SetZ(originalCoordinate.z() - trunc(originalCoordinate.z()));
 
     return returnValue;
   }
@@ -214,6 +207,7 @@ namespace Avogadro {
       uniqueV = atom->GetVector();
       // Assert: won't crash because we already ensure uc != NULL
       uniqueV *= uc->GetFractionalMatrix();
+      uniqueV = transformedFractionalCoordinate(uniqueV);
 			coordinates.push_back(uniqueV);
       
       transformedVectors = sg->Transform(uniqueV);
@@ -227,7 +221,7 @@ namespace Avogadro {
 				// Check if the transformed coordinate is a duplicate of an atom
 				for (duplicateIterator = coordinates.begin();
 						 duplicateIterator != coordinates.end(); ++duplicateIterator) {
-          if (duplicateIterator->distSq(updatedCoordinate) < 1.0e-5) {
+          if (duplicateIterator->distSq(updatedCoordinate) < 1.0e-4) {
             foundDuplicate = true;
             break;
 					}
@@ -240,6 +234,9 @@ namespace Avogadro {
         addAtom->Duplicate(atom);
         addAtom->SetVector(uc->GetOrthoMatrix() * updatedCoordinate);
       } // end loop of transformed atoms
+      
+      // Put the original atom into the proper space in the unit cell too
+      atom->SetVector(uc->GetOrthoMatrix() * uniqueV);
     } // end loop of atoms
     
     // m_molecule->ConnectTheDots();
