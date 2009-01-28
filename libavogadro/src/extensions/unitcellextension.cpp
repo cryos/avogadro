@@ -200,18 +200,21 @@ namespace Avogadro {
     OBMol mol = m_molecule->OBMol();
     vector3 uniqueV, newV;
     list<vector3> transformedVectors; // list of symmetry-defined copies of the atom
-    list<vector3>::iterator transformIterator;
+    list<vector3>::iterator transformIterator, duplicateIterator;
     vector3 updatedCoordinate;
+		bool foundDuplicate;
     
     OBAtom *addAtom;
-    QList<const OBAtom*> atoms; // keep the current list of unique atoms -- don't double-create
+    QList<OBAtom*> atoms; // keep the current list of unique atoms -- don't double-create
+		list<vector3>        coordinates; // all coordinates to prevent duplicates
     FOR_ATOMS_OF_MOL(atom, mol)
       atoms.push_back(&(*atom));
     
-    foreach(const OBAtom *atom, atoms) {
+    foreach(OBAtom *atom, atoms) {
       uniqueV = atom->GetVector();
       // Assert: won't crash because we already ensure uc != NULL
       uniqueV *= uc->GetFractionalMatrix();
+			coordinates.push_back(uniqueV);
       
       transformedVectors = sg->Transform(uniqueV);
       for (transformIterator = transformedVectors.begin();
@@ -219,10 +222,22 @@ namespace Avogadro {
         // coordinates are in reciprocal space -- check if it's in the unit cell
         // if not, transform it in place
         updatedCoordinate = transformedFractionalCoordinate(*transformIterator);
-             	
+				foundDuplicate = false;
+
+				// Check if the transformed coordinate is a duplicate of an atom
+				for (duplicateIterator = coordinates.begin();
+						 duplicateIterator != coordinates.end(); ++duplicateIterator) {
+          if (duplicateIterator->distSq(updatedCoordinate) < 1.0e-5) {
+            foundDuplicate = true;
+            break;
+					}
+        }
+
+        if (foundDuplicate)
+          continue;
+
         addAtom = mol.NewAtom();
-        // it would help to have a decent "duplicate atom" method here
-        addAtom->SetAtomicNum(atom->GetAtomicNum());
+        addAtom->Duplicate(atom);
         addAtom->SetVector(uc->GetOrthoMatrix() * updatedCoordinate);
       } // end loop of transformed atoms
     } // end loop of atoms

@@ -650,14 +650,14 @@ namespace Avogadro
     QVarLengthArray<GLfloat> uknots(points.size() + 4);
 
     // The first one is a special case
-    Eigen::Vector3f axis = points[1] - points[0];
-    Eigen::Vector3f axisNormalized = axis.normalized();
-    Eigen::Vector3f ortho1, ortho2;
+    Eigen::Vector3d axis = points[1] - points[0];
+    Eigen::Vector3d axisNormalized = axis.normalized();
+    Eigen::Vector3d ortho1, ortho2;
     ortho1 = axisNormalized.unitOrthogonal() * radius;
     ortho2 = axisNormalized.cross(ortho1);
     for (int j = 0; j < TUBE_TESS; j++) {
       double alpha = j * M_PI / 1.5f;
-      Eigen::Vector3f v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
+      Eigen::Vector3d v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
       ctrlpts[3*j+0] = v.x() + points[0].x();
       ctrlpts[3*j+1] = v.y() + points[0].y();
       ctrlpts[3*j+2] = v.z() + points[0].z();
@@ -665,7 +665,7 @@ namespace Avogadro
     uknots[2] = 0.0;
 
     for (int i = 1; i < points.size(); i++) {
-      axis = Eigen::Vector3f(points[i-1].x() - points[i].x(),
+      axis = Eigen::Vector3d(points[i-1].x() - points[i].x(),
                              points[i-1].y() - points[i].y(),
                              points[i-1].z() - points[i].z());
       axisNormalized = axis.normalized();
@@ -674,7 +674,7 @@ namespace Avogadro
       ortho2 = axisNormalized.cross(ortho1);
       for (int j = 0; j < TUBE_TESS; j++) {
         double alpha = j * M_PI / 1.5f;
-        Eigen::Vector3f v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
+        Eigen::Vector3d v = cosf(alpha) * ortho1 + sinf(alpha) * ortho2;
         ctrlpts[(i*TUBE_TESS + j)*3 + 0] = v.x() + points[i].x();
         ctrlpts[(i*TUBE_TESS + j)*3 + 1] = v.y() + points[i].y();
         ctrlpts[(i*TUBE_TESS + j)*3 + 2] = v.z() + points[i].z();
