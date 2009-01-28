@@ -5,6 +5,9 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 cmake_minimum_required(VERSION 2.6.0)
 cmake_policy(SET CMP0003 NEW)
 
+# Use CPack to do some of our packaging
+include(CPack)
+
 # this is adapted from KDE's FindKDE4Internal.cmake : default the build type to
 # "release with debug info".
 #
@@ -127,6 +130,8 @@ option(ENABLE_TESTS "Enable unit testing" OFF)
 if(ENABLE_TESTS MATCHES ON)
   set(QT_USE_QTTEST TRUE)
   enable_testing()
+  include (CTest)
+  include (CTestConfig.cmake)
   message(STATUS "Unit testing enabled, run make test to run them")
 endif(ENABLE_TESTS MATCHES ON)
 
