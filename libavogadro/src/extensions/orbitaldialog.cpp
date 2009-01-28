@@ -260,7 +260,7 @@ namespace Avogadro
                    ui.maxY->text().toDouble() - ui.originY->text().toDouble(),
                    ui.maxZ->text().toDouble() - ui.originZ->text().toDouble());
     double step = ui.stepSize->text().toDouble();
-    Vector3i steps = delta / step;
+    Vector3i steps = (delta / step).cast<int>();
     Vector3d max(ui.originX->text().toDouble() + step * steps.x(),
                  ui.originY->text().toDouble() + step * steps.y(),
                  ui.originZ->text().toDouble() + step * steps.z());
@@ -279,7 +279,7 @@ namespace Avogadro
                    ui.maxY->text().toDouble() - ui.originY->text().toDouble(),
                    ui.maxZ->text().toDouble() - ui.originZ->text().toDouble());
     double step = ui.stepSize->text().toDouble();
-    Vector3i steps = delta / step;
+    Vector3i steps = (delta / step).cast<int>();
     Vector3d max(ui.originX->text().toDouble() + step * steps.x(),
                  ui.originY->text().toDouble() + step * steps.y(),
                  ui.originZ->text().toDouble() + step * steps.z());
@@ -315,7 +315,7 @@ namespace Avogadro
                    ui.maxY->text().toDouble() - ui.originY->text().toDouble(),
                    ui.maxZ->text().toDouble() - ui.originZ->text().toDouble());
     double step = ui.stepSize->text().toDouble();
-    Vector3i steps = delta / step;
+    Vector3i steps = (delta / step).cast<int>();
     Vector3d max(ui.originX->text().toDouble() + step * steps.x(),
                  ui.originY->text().toDouble() + step * steps.y(),
                  ui.originZ->text().toDouble() + step * steps.z());
