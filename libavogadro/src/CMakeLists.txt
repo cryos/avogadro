@@ -105,9 +105,10 @@ QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 if(ALL_PYTHON_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
   link_directories(${Boost_LIBRARY_DIRS})
+  qt4_add_resources(pythontool_RC_SRCS pythontool.qrc)
 endif(ALL_PYTHON_FOUND)
 
-add_library(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM})
+add_library(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
 set_target_properties(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
 set_target_properties(avogadro-lib PROPERTIES VERSION ${VERSION} SOVERSION 0 )
 
