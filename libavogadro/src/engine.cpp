@@ -313,21 +313,28 @@ namespace Avogadro {
 
   const PrimitiveList & Engine::primitives() const
   {
-    if (m_customPrims) return m_primitives;
-    else if (m_pd) if (m_pd->primitives()->size()) return *m_pd->primitives();
-    else return m_primitives;
+    if (m_customPrims)
+      return m_primitives;
+    else if (m_pd)
+      return *m_pd->primitives();
+    else
+      return m_primitives;
   }
 
   const QList<Atom *> Engine::atoms() const
   {
-    if (m_customPrims) return m_atoms;
-    else return m_molecule->atoms();
+    if (m_customPrims)
+      return m_atoms;
+    else
+      return m_molecule->atoms();
   }
 
   const QList<Bond *> Engine::bonds() const
   {
-    if (m_customPrims) return m_bonds;
-    else return m_molecule->bonds();
+    if (m_customPrims)
+      return m_bonds;
+    else
+      return m_molecule->bonds();
   }
 }
 
