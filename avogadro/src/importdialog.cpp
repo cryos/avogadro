@@ -165,6 +165,7 @@ namespace Avogadro {
 
   void ImportDialog::changedOptions(int state)
   {
+    Q_UNUSED(state);
     // if the bonding checkbox is set, we can set or unset bond orders
     ui.checkBoxBondOrders->setEnabled(ui.checkBoxBonding->isChecked());
   }

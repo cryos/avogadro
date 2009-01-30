@@ -54,6 +54,7 @@ namespace Avogadro
 
   void BondDelegate::fetchMore(ProjectTreeItem *parent)
   {
+    Q_UNUSED(parent);
     // the user has expanded our label, we now initialize the bond items
     // and keep track of the using the signals...
 

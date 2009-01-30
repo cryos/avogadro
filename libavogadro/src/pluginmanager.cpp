@@ -246,6 +246,19 @@ namespace Avogadro {
     // 
     // Initialize python Tools
     //
+    QList<QString> scripts = toolScripts();
+    foreach(const QString &script, scripts) {
+      Tool *tool = static_cast<Tool *>( new PythonTool(parent, script) );
+      d->tools.append(tool);
+    }
+  
+    d->toolsLoaded = true;
+    return d->tools;
+  }
+    
+  QList<QString> PluginManager::toolScripts() const
+  {
+    QList<QString> scripts;
 
     // create this directory for the user if it does not exist
     QDir dir = QDir::home();
@@ -277,26 +290,19 @@ namespace Avogadro {
       if (!dir.cd("toolScripts")) failed = true; 
     }
 
-    if (!failed) {
-      foreach(const QString& file, dir.entryList()) {
-        Tool *tool = static_cast<Tool *>( new PythonTool(parent, dir.canonicalPath() + "/" + file) );
-        d->tools.append(tool);
-      }
-    }
+    foreach (const QString& file, dir.entryList())
+      scripts.append(QString(dir.canonicalPath() + "/" + file));
  
 #ifndef WIN32
     // Now for the system wide Python scripts
     QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
       + "share/libavogadro/toolScripts";
     if (dir.cd(systemScriptsPath))
-      foreach(const QString& file, dir.entryList()) {
-        Tool *tool = static_cast<Tool *>( new PythonTool(parent, dir.canonicalPath() + "/" + file) );
-        d->tools.append(tool);
-      }
+      foreach (const QString& file, dir.entryList())
+        scripts.append(QString(dir.canonicalPath() + "/" + file));
 #endif
-  
-    d->toolsLoaded = true;
-    return d->tools;
+
+    return scripts;
   }
 
   QList<Color *> PluginManager::colors(QObject *parent) const
@@ -613,20 +619,25 @@ namespace Avogadro {
 #endif
     qDebug() << "Searching for plugins in" << directory;
     foreach (const QString& fileName, dir.entryList(QDir::Files)) {
+      // load the factory
       QPluginLoader loader(dir.absoluteFilePath(fileName));
       QObject *instance = loader.instance();
       PluginFactory *factory = qobject_cast<PluginFactory *>(instance);
+
       if (factory) {
         settings.beginGroup(QString::number(factory->type()));
-        PluginItem *item = new PluginItem(factory->name(), factory->description(), factory->type(), fileName, dir.absoluteFilePath(fileName), factory);
+        // create the PluginItem 
+        PluginItem *item = new PluginItem(factory->name(), factory->description(), 
+            factory->type(), fileName, dir.absoluteFilePath(fileName), factory);
+        // add the factory to the correct list
         if(settings.value(factory->name(), true).toBool()) {
           ef[factory->type()].append(factory);
           item->setEnabled(true);
-        }
-        else {
+        } else {
           df[factory->type()].append(factory);
           item->setEnabled(false);
         }
+        // Store the PluginItem
         PluginManagerPrivate::m_items()[factory->type()].append(item);
         settings.endGroup();
       }

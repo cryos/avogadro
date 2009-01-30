@@ -68,11 +68,13 @@ namespace Avogadro {
 
   void Plugin::writeSettings(QSettings &settings) const
   {
+    Q_UNUSED(settings)
     // needs to be implemented by the plugin
   }
 
   void Plugin::readSettings(QSettings &settings)
   {
+    Q_UNUSED(settings)
     // needs to be implemented by the plugin
   }
 

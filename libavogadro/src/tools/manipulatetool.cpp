@@ -215,6 +215,7 @@ namespace Avogadro {
 
   QUndoCommand* ManipulateTool::mouseReleaseEvent(GLWidget *widget, QMouseEvent *event)
   {
+    Q_UNUSED(event);
     m_leftButtonPressed = false;
     m_midButtonPressed = false;
     m_rightButtonPressed = false;

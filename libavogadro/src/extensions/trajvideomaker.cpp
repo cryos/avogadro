@@ -67,7 +67,7 @@ namespace Avogadro {
     //list of pngfiles for mencoder
     std::vector<QString> pngFiles;
 
-    for (int i=0; i < molecule->numConformers(); i++) {
+    for (unsigned int i=0; i < molecule->numConformers(); i++) {
       QString povFileName = workDirectory + QString::number(i) + ".pov";
       molecule->setConformer(i);
 
@@ -118,7 +118,9 @@ namespace Avogadro {
     QString povRayCommand = "cd " +  directory +
       " && " + povrayexe + " " + povFileName;
     //QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), povRayCommand);
-    system(povRayCommand.toStdString().c_str());
+    int ret = system(povRayCommand.toStdString().c_str());
+    if (ret)
+      QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), QObject::tr("Could not run povray."));
   }
 
   template <class QStringIterator>
@@ -139,7 +141,9 @@ namespace Avogadro {
 
     QString mencoderCommand = "cd " + pngFileDirectory + " && " + mencoderexe + " " + videoFileName + " mf://" + pngString ;
     //QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), mencoderCommand);
-    system(mencoderCommand.toStdString().c_str());
+    int ret = system(mencoderCommand.toStdString().c_str());
+    if (ret)
+      QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), QObject::tr("Could not run mencoder."));
   }
 
   double TrajVideoMaker::getAspectRatio(GLWidget* widget)

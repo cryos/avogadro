@@ -59,6 +59,7 @@ namespace Avogadro
   // allows us to set the intended menu path for each action
   QString PythonTerminal::menuPath(QAction *action) const
   {
+    Q_UNUSED(action);
     return QString();
   }
 
@@ -140,6 +141,8 @@ namespace Avogadro
 
   QUndoCommand* PythonTerminal::performAction( QAction *action, GLWidget *widget )
   {
+    Q_UNUSED(action);
+    Q_UNUSED(widget);
     return 0;
   }
 

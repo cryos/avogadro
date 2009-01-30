@@ -255,7 +255,6 @@ namespace Avogadro{
   {
     Q_D(Molecule);
     return addBond(d->bonds.size());
-    Bond *bond = new Bond(this);
   }
 
   Bond *Molecule::addBond(unsigned long id)
@@ -835,7 +834,7 @@ namespace Avogadro{
   }
 
   bool Molecule::addConformer(const std::vector<Eigen::Vector3d> &conformer,
-                              int index)
+                              unsigned int index)
   {
     if (conformer.size() != m_atomPos->size())
       return false;
@@ -849,7 +848,7 @@ namespace Avogadro{
     return true;
   }
 
-  vector<Vector3d> * Molecule::addConformer(int index)
+  vector<Vector3d> * Molecule::addConformer(unsigned int index)
   {
     if (index < m_atomConformers.size())
       return m_atomConformers[index];
@@ -862,7 +861,7 @@ namespace Avogadro{
     }
   }
 
-  bool Molecule::setConformer(int index)
+  bool Molecule::setConformer(unsigned int index)
   {
     // If the index is higher than the size
     if (m_atomConformers.size() < index + 1)
@@ -883,7 +882,7 @@ namespace Avogadro{
     m_atomConformers.resize(1);
   }
 
-  int Molecule::numConformers() const
+  unsigned int Molecule::numConformers() const
   {
     return m_atomConformers.size();
   }
@@ -896,7 +895,7 @@ namespace Avogadro{
     return d->energies;
   }
 
-  double Molecule::energy(int index) const
+  double Molecule::energy(unsigned int index) const
   {
     Q_D(const Molecule);
     if (index < d->energies.size())

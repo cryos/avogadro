@@ -30,6 +30,7 @@
 #include <Eigen/Core>
 
 #include <QMessageBox>
+#include <QDir>
 
 #include <fstream>
 
@@ -39,8 +40,8 @@ using Eigen::Vector3d;
 namespace Avogadro {
 
   AnimationExtension::AnimationExtension(QObject *parent) : Extension(parent),
-    m_molecule(0), m_animationDialog(0), m_timeLine(0), m_frameCount(0),
-    m_widget(0)
+    m_molecule(0), m_animationDialog(0), m_timeLine(0), m_widget(0),
+    m_frameCount(0)
   {
     QAction *action = new QAction(this);
     action->setText(tr("Animation..."));
@@ -227,8 +228,9 @@ namespace Avogadro {
 
     //Make the directory where the snapshots will be saved
     QString snapshotsDir = dir + prefix + "/";
-    QString mkdirCommand = "mkdir " + snapshotsDir;
-    system(mkdirCommand.toStdString().c_str());
+    QDir qdir;
+    if (!qdir.exists(snapshotsDir))
+      qdir.mkpath(snapshotsDir);
 
     TrajVideoMaker::makeVideo(m_widget, snapshotsDir, videoFileName);
 
@@ -280,9 +282,11 @@ namespace Avogadro {
     std::ofstream file;
     file.open(filename.toStdString().c_str());
 
-    for (int i=1; i <= m_molecule->numConformers(); ++i) {
+    for (unsigned int i = 1; i <= m_molecule->numConformers(); ++i) {
       setFrame(i);
-      conv.Write(&m_molecule->OBMol(), &file);
+
+      OpenBabel::OBMol obmol(m_molecule->OBMol());
+      conv.Write(&obmol, &file);
       file << std::endl;
     }
 

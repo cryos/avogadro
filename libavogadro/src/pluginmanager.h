@@ -208,6 +208,11 @@ namespace Avogadro {
     /*static void readSettings(QSettings &settings);*/
 
     /**
+     * Get a list of all toolScripts.
+     */
+    QList<QString> toolScripts() const;
+
+    /**
      * Use by the plugin manager dialog
      */
     static QList<PluginItem *> pluginItems(Plugin::Type);

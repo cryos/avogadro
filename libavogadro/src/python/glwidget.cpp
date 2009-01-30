@@ -34,7 +34,7 @@ void export_GLWidget()
   const double & (GLWidget::*radius_ptr1)() const = &GLWidget::radius;
   double (GLWidget::*radius_ptr2)(const Primitive *) const = &GLWidget::radius;
   void (GLWidget::*toggleSelected_ptr1)() = &GLWidget::toggleSelected;
-  void (GLWidget::*toggleSelected_ptr2)(PrimitiveList list) = &GLWidget::toggleSelected;
+  //void (GLWidget::*toggleSelected_ptr2)(PrimitiveList list) = &GLWidget::toggleSelected;
   void (GLWidget::*removeNamedSelection_ptr1)(const QString &name) = &GLWidget::removeNamedSelection;
   void (GLWidget::*removeNamedSelection_ptr2)(int index) = &GLWidget::removeNamedSelection;
   PrimitiveList (GLWidget::*namedSelectionPrimitives_ptr1)(const QString &name) = &GLWidget::namedSelectionPrimitives;

@@ -476,19 +476,19 @@ namespace Avogadro {
      * @param conformer A vector of Vector3d with all atom positions.
      * @param index The index of the conformer to add.
      */
-    bool addConformer(const std::vector<Eigen::Vector3d> &conformer, int index);
+    bool addConformer(const std::vector<Eigen::Vector3d> &conformer, unsigned int index);
 
     /**
      * Add a new conformer and return a pointer to it.
      * @param index The index of the new conformer.
      * @return Pointer to the conformer added.
      */
-    std::vector<Eigen::Vector3d> * addConformer(int index);
+    std::vector<Eigen::Vector3d> * addConformer(unsigned int index);
 
     /**
      * Change the conformer to the one at the specified index.
      */
-    bool setConformer(int index);
+    bool setConformer(unsigned int index);
 
     /**
      * Clear all conformers from the molecule, leaving just conformer zero.
@@ -498,7 +498,7 @@ namespace Avogadro {
     /**
      * @return The number of conformers.
      */
-    int numConformers() const;
+    unsigned int numConformers() const;
 
     /**
      * @return The energies for all conformers.
@@ -511,7 +511,7 @@ namespace Avogadro {
      * @param index The conformer, defaults to the current conformer.
      * @return The energy of the Molecule (or current conformer).
      */
-    double energy(int index = -1) const;
+    double energy(unsigned int index = -1) const;
 
     /**
      * Set the energies for all conformers.

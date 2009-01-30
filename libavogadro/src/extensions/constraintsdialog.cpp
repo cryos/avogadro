@@ -52,6 +52,8 @@ namespace Avogadro {
 
   void ConstraintsDialog::showEvent(QShowEvent *event)
   {
+    Q_UNUSED(event);
+
     switch (ui.comboType->currentIndex()) {
       case 0:
       case 1:

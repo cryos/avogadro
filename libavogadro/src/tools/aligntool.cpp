@@ -121,6 +121,8 @@ namespace Avogadro {
 
   QUndoCommand* AlignTool::wheelEvent(GLWidget *widget, QWheelEvent *event)
   {
+    Q_UNUSED(widget);
+    Q_UNUSED(event);
     return 0;
   }
 

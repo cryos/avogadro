@@ -210,7 +210,7 @@ namespace Avogadro {
     m_clickedAtom = NULL;
     m_clickedBond = NULL;
 
-    int oldName = m_selectedBond ? m_selectedBond->index() : -1;
+    unsigned int oldName = m_selectedBond ? m_selectedBond->index() : -1;
 
     // Check if the mouse clicked on any Atoms or Bonds.
     Primitive *clickedPrim = widget->computeClickedPrimitive(event->pos());
@@ -726,6 +726,8 @@ namespace Avogadro {
 
   QUndoCommand* BondCentricTool::wheelEvent(GLWidget *widget, QWheelEvent *event)
   {
+    Q_UNUSED(widget);
+    Q_UNUSED(event);
     return 0;
   }
 
@@ -1041,8 +1043,6 @@ namespace Avogadro {
       return;
     }
 
-    Molecule *mol = widget->molecule();
-
     Atom *B = BC->beginAtom();
     Atom *C = BC->endAtom();
 
@@ -1139,8 +1139,6 @@ namespace Avogadro {
     if (!widget || !A || !BC) {
       return;
     }
-
-    Molecule *mol = widget->molecule();
 
     Atom *B = BC->beginAtom();
     Atom *C = BC->endAtom();
