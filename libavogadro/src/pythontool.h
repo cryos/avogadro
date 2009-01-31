@@ -71,6 +71,33 @@ namespace Avogadro {
       void settingsWidgetDestroyed();
   };
 
+  class PythonToolFactory : public QObject, public PluginFactory
+  {
+    Q_OBJECT
+    Q_INTERFACES(Avogadro::PluginFactory)
+    //AVOGADRO_TOOL_FACTORY(DrawTool, tr("Draw Tool"), tr("Draw molecules, insert smiles or fragments."))
+
+    public:
+      PythonToolFactory(const QString &filename) : m_filename(filename)
+      {
+        PythonTool tool(0, filename);
+        m_name = tool.name();
+        m_desc = tool.description();
+      }
+      Plugin *createInstance(QObject *parent = 0) 
+      { 
+        return new PythonTool(parent, m_filename); 
+      }
+      Plugin::Type type() const { return Plugin::ToolType; };
+      QString name() const { return m_name; };
+      QString description() const { return m_desc; };
+    private:
+      QString m_filename;
+      QString m_name, m_desc;
+  };
+
+
+
 } // end namespace Avogadro
 
 #endif

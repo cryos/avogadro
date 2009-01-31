@@ -2,7 +2,7 @@
   PluginManager - Class to handle dynamic loading/unloading of plugins
 
   Copyright (C) 2008 Donald Ephraim Curtis
-  Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2008,2009 Tim Vandermeersch
   Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
@@ -45,6 +45,7 @@
 #include <QPluginLoader>
 #include <QDebug>
 #include <QProcess>
+#include <QFileInfo>
 
 namespace Avogadro {
 
@@ -235,28 +236,16 @@ namespace Avogadro {
     if(d->toolsLoaded)
       return d->tools;
 
-    // 
-    // Initialize C++ Tools
-    //
     foreach(PluginFactory *factory, factories(Plugin::ToolType)) {
       Tool *tool = static_cast<Tool *>(factory->createInstance(parent));
       d->tools.append(tool);
     }
 
-    // 
-    // Initialize python Tools
-    //
-    QList<QString> scripts = toolScripts();
-    foreach(const QString &script, scripts) {
-      Tool *tool = static_cast<Tool *>( new PythonTool(parent, script) );
-      d->tools.append(tool);
-    }
-  
     d->toolsLoaded = true;
     return d->tools;
   }
     
-  QList<QString> PluginManager::toolScripts() const
+  QList<QString> PluginManager::toolScripts() 
   {
     QList<QString> scripts;
 
@@ -358,8 +347,6 @@ namespace Avogadro {
       }
     }
 
-    // FIXME: Add python tool support here
-
     return 0;
   }
 
@@ -448,8 +435,11 @@ namespace Avogadro {
       return;
 
     QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
-
+    QVector< QList<PluginFactory *> > &df = PluginManagerPrivate::m_disabledFactories();
+ 
+    // 
     // Load the static plugins first
+    //
     PluginFactory *bsFactory = qobject_cast<PluginFactory *>(new BSDYEngineFactory);
     if (bsFactory) {
       ef[bsFactory->type()].append(bsFactory);
@@ -466,7 +456,9 @@ namespace Avogadro {
       qDebug() << "Instantiation of the static element color plugin failed.";
     }
 
+    // 
     // Set up the paths
+    //
     QStringList pluginPaths;
 
     foreach (const QString &variable, QProcess::systemEnvironment()) {
@@ -487,16 +479,50 @@ namespace Avogadro {
       #endif
     }
 
-    // Load the plugins
     QSettings settings;
     settings.beginGroup("Plugins");
+    // 
+    // Load the plugins
+    //
     foreach (const QString& path, pluginPaths) {
       loadPluginDir(path + "/colors", settings);
       loadPluginDir(path + "/engines", settings);
       loadPluginDir(path + "/extensions", settings);
       loadPluginDir(path + "/tools", settings);
     }
-    settings.endGroup();
+
+    //
+    // Load the python tools
+    //
+    QList<QString> scripts = toolScripts();
+    foreach(const QString &script, scripts) {
+      
+      PluginFactory *factory = qobject_cast<PluginFactory *>(new PythonToolFactory(script));
+      
+      if (factory) {
+        QFileInfo info(script);
+        settings.beginGroup(QString::number(factory->type()));
+        // create the PluginItem 
+        PluginItem *item = new PluginItem(factory->name(), factory->description(), 
+            factory->type(), info.fileName(), info.absoluteFilePath(), factory);
+        // add the factory to the correct list
+        if(settings.value(factory->name(), true).toBool()) {
+          ef[factory->type()].append(factory);
+          item->setEnabled(true);
+        } else {
+          df[factory->type()].append(factory);
+          item->setEnabled(false);
+        }
+        // Store the PluginItem
+        PluginManagerPrivate::m_items()[factory->type()].append(item);
+        settings.endGroup();
+      }
+      else {
+        qDebug() << script << "failed to load. ";
+      }
+    }
+    settings.endGroup(); // Plugins
+ 
     PluginManagerPrivate::factoriesLoaded = true;
   }
 

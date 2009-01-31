@@ -2,7 +2,7 @@
   PluginManager - Class to handle dynamic loading/unloading of plugins
 
   Copyright (C) 2008 Donald Ephraim Curtis
-  Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2008,2009 Tim Vandermeersch
   Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
@@ -210,7 +210,7 @@ namespace Avogadro {
     /**
      * Get a list of all toolScripts.
      */
-    QList<QString> toolScripts() const;
+    static QList<QString> toolScripts();
 
     /**
      * Use by the plugin manager dialog

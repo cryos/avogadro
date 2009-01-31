@@ -50,12 +50,16 @@ namespace Avogadro {
   PythonInterpreter::PythonInterpreter() : d(new PythonInterpreterPrivate)
   {
     if (!m_initCount) {
-      std::cout << "initializing python interpreter\n";
+      m_initCount++;
+      qDebug() << "initializing python interpreter\n";
       try {
+        qDebug() << "m_initCount = " << m_initCount;
         Py_Initialize();
       } catch( error_already_set ) {
         PyErr_Print();
       }
+
+      return;
     }
     m_initCount++;
   }
@@ -64,7 +68,7 @@ namespace Avogadro {
   {
     m_initCount--;
     if (!m_initCount) {
-      Py_Finalize();
+      //Py_Finalize();
     }
   }
 

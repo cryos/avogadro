@@ -211,6 +211,7 @@ namespace Avogadro {
     qDebug() << "PythonTool: checking " << filename << "...";
     PythonScript *script = new PythonScript(filename);
 
+    qDebug() << "aaa";
     if(script->module()) {
       // make sure there is a Tool class defined
       if (PyObject_HasAttrString(script->module().ptr(), "Tool")) {
@@ -234,10 +235,12 @@ namespace Avogadro {
         d->script = script;
 
       } else {
+        qDebug() << "2";
         delete script;
         qDebug() << "  - script has no 'Tool' class defined";
       }
     } else {
+      qDebug() << "1";
       delete script;
       qDebug() << "  - no module";
     }
