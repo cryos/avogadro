@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>285</width>
-    <height>184</height>
+    <width>556</width>
+    <height>392</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,252 +19,235 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" >
-   <item>
-    <layout class="QHBoxLayout" name="_3" >
-     <item>
-      <widget class="QLabel" name="qualityLabel" >
-       <property name="text" >
-        <string>Quality:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSlider" name="qualitySlider" >
-       <property name="toolTip" >
-        <string>Set the global rendering quality.</string>
-       </property>
-       <property name="maximum" >
-        <number>4</number>
-       </property>
-       <property name="pageStep" >
-        <number>1</number>
-       </property>
-       <property name="value" >
-        <number>2</number>
-       </property>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="tickPosition" >
-        <enum>QSlider::TicksBelow</enum>
-       </property>
-       <property name="tickInterval" >
-        <number>1</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="qualityValueLabel" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
-         <horstretch>50</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize" >
-        <size>
-         <width>50</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text" >
-        <string>Medium</string>
-       </property>
-       <property name="alignment" >
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_3" >
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+  <layout class="QGridLayout" name="gridLayout" >
+   <item row="0" column="1" >
+    <widget class="QStackedWidget" name="stackedWidget" >
+     <property name="currentIndex" >
+      <number>0</number>
      </property>
-     <property name="sizeHint" stdset="0" >
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="_4" >
-     <item>
-      <widget class="QLabel" name="qualityLabel_2" >
-       <property name="text" >
-        <string>Fog:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSlider" name="fogSlider" >
-       <property name="toolTip" >
-        <string>Set the global rendering quality.</string>
-       </property>
-       <property name="maximum" >
-        <number>9</number>
-       </property>
-       <property name="pageStep" >
-        <number>1</number>
-       </property>
-       <property name="value" >
-        <number>0</number>
-       </property>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="tickPosition" >
-        <enum>QSlider::TicksBelow</enum>
-       </property>
-       <property name="tickInterval" >
-        <number>1</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="fogValueLabel" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
-         <horstretch>50</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize" >
-        <size>
-         <width>50</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text" >
-        <string>None</string>
-       </property>
-       <property name="alignment" >
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_4" >
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0" >
-      <size>
-       <width>20</width>
-       <height>0</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="_2" >
-     <item>
-      <widget class="QCheckBox" name="tabbedToolsCheck" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip" >
-        <string>Enable the tabbed tool layout.</string>
-       </property>
-       <property name="text" >
-        <string>Tabbed Tools</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="tabPositionCombo" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Maximum" >
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <item>
-        <property name="text" >
-         <string>Top</string>
-        </property>
+     <widget class="QWidget" name="general" >
+      <layout class="QGridLayout" name="gridLayout_2" >
+       <item row="0" column="0" >
+        <widget class="QGroupBox" name="groupBox" >
+         <property name="title" >
+          <string>General</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3" >
+          <item row="0" column="0" >
+           <layout class="QHBoxLayout" name="_3" >
+            <item>
+             <widget class="QLabel" name="qualityLabel" >
+              <property name="text" >
+               <string>Quality:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSlider" name="qualitySlider" >
+              <property name="toolTip" >
+               <string>Set the global rendering quality.</string>
+              </property>
+              <property name="maximum" >
+               <number>4</number>
+              </property>
+              <property name="pageStep" >
+               <number>1</number>
+              </property>
+              <property name="value" >
+               <number>2</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="tickPosition" >
+               <enum>QSlider::TicksBelow</enum>
+              </property>
+              <property name="tickInterval" >
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="qualityValueLabel" >
+              <property name="sizePolicy" >
+               <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+                <horstretch>50</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize" >
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text" >
+               <string>Medium</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0" >
+           <layout class="QHBoxLayout" name="_2" >
+            <item>
+             <widget class="QCheckBox" name="tabbedToolsCheck" >
+              <property name="sizePolicy" >
+               <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="toolTip" >
+               <string>Enable the tabbed tool layout.</string>
+              </property>
+              <property name="text" >
+               <string>Tabbed Tools</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="tabPositionCombo" >
+              <property name="sizePolicy" >
+               <sizepolicy vsizetype="Fixed" hsizetype="Maximum" >
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <item>
+               <property name="text" >
+                <string>Top</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Bottom</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Left</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Right</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="tabPositionLabel" >
+              <property name="sizePolicy" >
+               <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text" >
+               <string>Tab Position</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0" >
+           <layout class="QHBoxLayout" name="_4" >
+            <item>
+             <widget class="QLabel" name="qualityLabel_2" >
+              <property name="text" >
+               <string>Fog:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSlider" name="fogSlider" >
+              <property name="toolTip" >
+               <string>Set the global rendering quality.</string>
+              </property>
+              <property name="maximum" >
+               <number>9</number>
+              </property>
+              <property name="pageStep" >
+               <number>1</number>
+              </property>
+              <property name="value" >
+               <number>0</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="tickPosition" >
+               <enum>QSlider::TicksBelow</enum>
+              </property>
+              <property name="tickInterval" >
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="fogValueLabel" >
+              <property name="sizePolicy" >
+               <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+                <horstretch>50</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize" >
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text" >
+               <string>None</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0" >
+           <widget class="QCheckBox" name="animationsCheck" >
+            <property name="toolTip" >
+             <string>Smooths animations of various functions where availabe.</string>
+            </property>
+            <property name="whatsThis" >
+             <string>Enables the use of transitional animations when performing automatic positioning of the GLWidget.</string>
+            </property>
+            <property name="text" >
+             <string>Smooth Transitions</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" >
+           <spacer name="verticalSpacer" >
+            <property name="orientation" >
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0" >
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
        </item>
-       <item>
-        <property name="text" >
-         <string>Bottom</string>
-        </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>Left</string>
-        </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>Right</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="tabPositionLabel" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text" >
-        <string>Tab Position</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_2" >
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0" >
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <widget class="QCheckBox" name="animationsCheck" >
-     <property name="toolTip" >
-      <string>Smooths animations of various functions where availabe.</string>
-     </property>
-     <property name="whatsThis" >
-      <string>Enables the use of transitional animations when performing automatic positioning of the GLWidget.</string>
-     </property>
-     <property name="text" >
-      <string>Smooth Transitions</string>
-     </property>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="plugins" />
+     <widget class="QWidget" name="project" />
     </widget>
    </item>
-   <item>
-    <spacer name="verticalSpacer" >
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0" >
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
+   <item row="1" column="0" colspan="2" >
     <widget class="QDialogButtonBox" name="dialogButtonBox" >
      <property name="layoutDirection" >
       <enum>Qt::LeftToRight</enum>
@@ -275,6 +258,82 @@
      <property name="standardButtons" >
       <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QListWidget" name="listWidget" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Expanding" hsizetype="Fixed" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>0</width>
+       <height>350</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>90</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="textElideMode" >
+      <enum>Qt::ElideMiddle</enum>
+     </property>
+     <property name="flow" >
+      <enum>QListView::LeftToRight</enum>
+     </property>
+     <property name="isWrapping" stdset="0" >
+      <bool>true</bool>
+     </property>
+     <property name="spacing" >
+      <number>12</number>
+     </property>
+     <property name="viewMode" >
+      <enum>QListView::IconMode</enum>
+     </property>
+     <property name="wordWrap" >
+      <bool>true</bool>
+     </property>
+     <property name="selectionRectVisible" >
+      <bool>true</bool>
+     </property>
+     <item>
+      <property name="text" >
+       <string>General</string>
+      </property>
+      <property name="icon" >
+       <iconset resource="avogadro.qrc" >
+        <normaloff>:/icons/tool.png</normaloff>:/icons/tool.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Plugins</string>
+      </property>
+      <property name="icon" >
+       <iconset resource="avogadro.qrc" >
+        <normaloff>:/icons/edit_add.png</normaloff>:/icons/edit_add.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Project Tree</string>
+      </property>
+      <property name="icon" >
+       <iconset resource="avogadro.qrc" >
+        <normaloff>:/icons/avogadro.png</normaloff>:/icons/avogadro.png</iconset>
+      </property>
+     </item>
     </widget>
    </item>
   </layout>
@@ -290,8 +349,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>248</x>
-     <y>254</y>
+     <x>252</x>
+     <y>382</y>
     </hint>
     <hint type="destinationlabel" >
      <x>157</x>
@@ -306,8 +365,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>316</x>
-     <y>260</y>
+     <x>320</x>
+     <y>382</y>
     </hint>
     <hint type="destinationlabel" >
      <x>286</x>
@@ -316,34 +375,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>tabbedToolsCheck</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>tabPositionCombo</receiver>
-   <slot>setEnabled(bool)</slot>
+   <sender>listWidget</sender>
+   <signal>currentRowChanged(int)</signal>
+   <receiver>stackedWidget</receiver>
+   <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>174</x>
-     <y>99</y>
+     <x>84</x>
+     <y>13</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>224</x>
-     <y>112</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tabbedToolsCheck</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>tabPositionLabel</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>91</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>307</x>
-     <y>112</y>
+     <x>125</x>
+     <y>4</y>
     </hint>
    </hints>
   </connection>
