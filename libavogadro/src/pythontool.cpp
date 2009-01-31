@@ -65,10 +65,19 @@ namespace Avogadro {
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/python/python.png")));
-    action->setToolTip(tr("Python Tools")); // FIXME: allow tool to provide this...
-    action->setShortcut(Qt::Key_F12);
+    //action->setShortcut(Qt::Key_F12);
 
     loadScript(filename);
+
+    if (PyObject_HasAttrString(d->instance.ptr(), "toolTip")) {
+      try {
+        prepareToCatchError();
+        const char *toolTip = extract<const char*>(d->instance.attr("toolTip")());
+        action->setToolTip(QString(toolTip)); 
+      } catch(error_already_set const &) {
+        catchError();
+      }
+    }
   }
 
   PythonTool::~PythonTool()
@@ -85,17 +94,29 @@ namespace Avogadro {
     if (!PyObject_HasAttrString(d->instance.ptr(), "name"))
       return tr("Unknown Python Tool");
   
-    const char *name = extract<const char*>(d->instance.attr("name")());
-    qDebug() << QString(name);
-    return QString(name);
+    try {
+      prepareToCatchError();
+      const char *name = extract<const char*>(d->instance.attr("name")());
+      return QString(name);
+    } catch(error_already_set const &) {
+      catchError();
+      return tr("Unknown Python Tool");
+    }
   }
    
   QString PythonTool::description() const
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "description"))
-      return tr("Unknown Python Tool");
+      return tr("N/A");
 
-    return tr("Unknown Python Tool");
+    try {
+      prepareToCatchError();
+      const char *desc = extract<const char*>(d->instance.attr("description")());
+      return QString(desc);
+    } catch(error_already_set const &) {
+      catchError();
+      return tr("N/A");
+    }
   }
  
   QUndoCommand* PythonTool::mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event)
@@ -104,6 +125,7 @@ namespace Avogadro {
       return 0;
 
     try {
+      prepareToCatchError();
       boost::python::reference_existing_object::apply<GLWidget*>::type converter;
       PyObject *obj = converter(widget);
       object real_obj = object(handle<>(obj));
@@ -114,7 +136,7 @@ namespace Avogadro {
  
       return extract<QUndoCommand*>(d->instance.attr(what.toStdString().c_str())(real_obj, real_qobj));
     } catch(error_already_set const &) {
-      PyErr_Print();
+      catchError();
     }
  
     return 0;
@@ -141,6 +163,7 @@ namespace Avogadro {
       return 0;
 
     try {
+      prepareToCatchError();
       boost::python::reference_existing_object::apply<GLWidget*>::type converter;
       PyObject *obj = converter(widget);
       object real_obj = object(handle<>(obj));
@@ -151,7 +174,7 @@ namespace Avogadro {
  
       return extract<QUndoCommand*>(d->instance.attr("wheelEvent")(real_obj, real_qobj));
     } catch(error_already_set const &) {
-      PyErr_Print();
+      catchError();
     }
  
     return 0;
@@ -163,13 +186,14 @@ namespace Avogadro {
       return false;
 
     try {
+      prepareToCatchError();
       boost::python::reference_existing_object::apply<GLWidget*>::type converter;
       PyObject *obj = converter(widget);
       object real_obj = object(handle<>(obj));
  
       d->instance.attr("paint")(real_obj);
     } catch(error_already_set const &) {
-      PyErr_Print();
+      catchError();
     }
 
     return true;
@@ -185,11 +209,12 @@ namespace Avogadro {
       d->settingsWidget = new QWidget();
 
       try {
+        prepareToCatchError();
         QWidget *widget = extract<QWidget*>(d->instance.attr("settingsWidget")());
         if (widget)
           d->settingsWidget->layout()->addWidget(widget); // FIXME: create layout first...
       } catch (error_already_set const &) {
-        PyErr_Print();
+        catchError();
       }
 
       connect(d->settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
@@ -208,15 +233,17 @@ namespace Avogadro {
     QFileInfo info(filename);
     d->interpreter.addSearchPath(info.canonicalPath());
     
-    qDebug() << "PythonTool: checking " << filename << "...";
+    pythonError()->append(tr("PythonTool: checking ") + filename + "...");
+
     PythonScript *script = new PythonScript(filename);
 
-    qDebug() << "aaa";
     if(script->module()) {
       // make sure there is a Tool class defined
       if (PyObject_HasAttrString(script->module().ptr(), "Tool")) {
-        qDebug() << "  + 'Tool' class found";
+        pythonError()->append(tr("  + 'Tool' class found"));
+
         try {
+          prepareToCatchError();
           // instantiate the new tool
           d->instance = script->module().attr("Tool")();
           // if we have a settings widget already, add the python content...
@@ -228,21 +255,19 @@ namespace Avogadro {
             }
           }
         } catch (error_already_set const &) {
-          PyErr_Print();
+          catchError();
           return;
         }
 
         d->script = script;
 
       } else {
-        qDebug() << "2";
         delete script;
-        qDebug() << "  - script has no 'Tool' class defined";
+        pythonError()->append(tr("  - script has no 'Tool' class defined"));
       }
     } else {
-      qDebug() << "1";
       delete script;
-      qDebug() << "  - no module";
+      pythonError()->append(tr("  - no module"));
     }
   }
 

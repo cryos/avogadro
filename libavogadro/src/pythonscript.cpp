@@ -71,7 +71,6 @@ namespace Avogadro
       try
       {
         prepareToCatchError();
-        //qDebug() << "reloading module...";
         m_module = object(handle<>(PyImport_ReloadModule(m_module.ptr())));
       }
       catch(error_already_set const &)

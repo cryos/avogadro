@@ -25,6 +25,7 @@
 
 #include <avogadro/global.h>
 #include <boost/python.hpp>
+#include <avogadro/pythonerror.h>
 
 #include <QList>
 #include <QDir>
@@ -32,8 +33,6 @@
 #include <QDateTime>
 #include <QFileInfo>
 #include <QTextEdit>
-
-#include <avogadro/pythonerror.h>
 
 namespace Avogadro {
 
