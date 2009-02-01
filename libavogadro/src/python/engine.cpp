@@ -55,6 +55,8 @@ void export_Engine()
     .def("updatePrimitive", &Engine::updatePrimitive)
     .def("removePrimitive", &Engine::removePrimitive)
     .def("clone", &Engine::clone, return_value_policy<manage_new_object>())
+    .def("readSettings", &Engine::readSettings)
+    .def("writeSettings", &Engine::writeSettings)
     ;
    
 }
