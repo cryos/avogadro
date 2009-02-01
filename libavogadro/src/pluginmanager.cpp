@@ -26,7 +26,7 @@
 
 #include <config.h>
 #include "pluginmanager.h"
-#include "pluginsettings.h"
+//#include "pluginsettings.h"
 #include "pythontool.h"
 #include "pythonengine.h"
 
@@ -178,8 +178,6 @@ namespace Avogadro {
       bool colorsLoaded;
       QList<Color *> colors;
 
-      PluginSettings *settingsWidget;
-
       static bool factoriesLoaded;
       static QVector<QList<PluginItem *> > &m_items();
       static QVector<QList<PluginFactory *> > &m_enabledFactories();
@@ -191,15 +189,10 @@ namespace Avogadro {
 
   PluginManager::PluginManager(QObject *parent) : QObject(parent), d(new PluginManagerPrivate)
   {
-    d->settingsWidget = 0;
   }
 
   PluginManager::~PluginManager()
   {
-    if(d->settingsWidget) {
-      d->settingsWidget->deleteLater();
-    }
-
     QSettings settings;
     writeSettings(settings);
     delete(d);
@@ -611,16 +604,6 @@ namespace Avogadro {
     return QList<PluginFactory *>();
   }
 
-  QWidget* PluginManager::settingsWidget()
-  {
-    if (!d->settingsWidget) {
-      d->settingsWidget = new PluginSettings;
-      connect(d->settingsWidget, SIGNAL(reloadPlugins()), this, SLOT(reload()));
-    }
-
-    return d->settingsWidget; 
-  }
-
   void PluginManager::reload()
   {
     // make sure to write the settings before reloading
@@ -679,9 +662,6 @@ namespace Avogadro {
 
     // refresh the model in the settings widget
     loadFactories();
-    if (d->settingsWidget) {
-      d->settingsWidget->loadValues();
-    }
 
     emit reloadPlugins();
   }

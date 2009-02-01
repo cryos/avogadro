@@ -30,6 +30,8 @@
 
 namespace Avogadro
 {
+      
+  class PluginSettingsPrivate;
   class A_EXPORT PluginSettings : public QWidget
   {
       Q_OBJECT

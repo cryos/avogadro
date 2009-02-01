@@ -23,6 +23,7 @@
 #include "pluginitemmodel.h"
 #include "pluginlistview.h"
 
+
 #include <QPushButton>
 #include <QMessageBox>
 #include <QDebug>

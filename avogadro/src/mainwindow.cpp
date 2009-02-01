@@ -30,6 +30,7 @@
 #include "editcommands.h"
 #include "importdialog.h"
 #include "settingsdialog.h"
+#include "pluginsettings.h"
 #include "savedialog.h"
 
 #include "enginelistview.h"
@@ -1804,7 +1805,10 @@ namespace Avogadro
     if ( !d->settingsDialog ) {
       d->settingsDialog = new SettingsDialog( this );
       // Add the Plugin settings
-      QWidget *pluginSettings = d->pluginManager.settingsWidget();
+      //QWidget *pluginSettings = d->pluginManager.settingsWidget();
+      QWidget *pluginSettings = new PluginSettings;
+      connect(pluginSettings, SIGNAL(reloadPlugins()), &d->pluginManager, SLOT(reload()));
+      connect(&d->pluginManager, SIGNAL(reloadPlugins()), pluginSettings, SLOT(loadValues()));
       d->settingsDialog->insertWidget(1, pluginSettings);
       // Add the Project Tree Editor
       ProjectTreeEditor *projectTreeEditor = new ProjectTreeEditor;

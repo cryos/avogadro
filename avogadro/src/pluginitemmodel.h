@@ -26,7 +26,7 @@
 #ifndef PLUGINITEMMODEL_H
 #define PLUGINITEMMODEL_H
 
-#include "pluginmanager.h"
+#include <avogadro/pluginmanager.h>
 
 #include <QModelIndex>
 

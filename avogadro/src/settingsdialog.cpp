@@ -23,7 +23,7 @@
  **********************************************************************/
 
 #include "settingsdialog.h"
-#include <avogadro/pluginsettings.h>
+#include "pluginsettings.h"
 #include "projecttreeeditor.h"
 
 #include "mainwindow.h"

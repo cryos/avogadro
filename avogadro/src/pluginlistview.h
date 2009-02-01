@@ -23,7 +23,7 @@
 #ifndef PLUGINLISTVIEW_H
 #define PLUGINLISTVIEW_H
 
-#include "pluginmanager.h"
+#include <avogadro/pluginmanager.h>
 
 #include <QListView>
 

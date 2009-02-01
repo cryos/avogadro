@@ -44,7 +44,7 @@ namespace Avogadro {
   class Color;
   class PluginItemPrivate;
 
-  class PluginItem
+  class A_EXPORT PluginItem
   {
   public:
     PluginItem();
@@ -219,13 +219,10 @@ namespace Avogadro {
      */
     static QList<QString> engineScripts();
 
-
     /**
-     * Use by the plugin manager dialog
+     * Use by the plugin manager settings dialog
      */
     static QList<PluginItem *> pluginItems(Plugin::Type);
-
-    QWidget* settingsWidget();
 
   public Q_SLOTS:
     void reload();
