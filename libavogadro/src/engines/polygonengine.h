@@ -66,7 +66,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(PolygonEngine, tr("Render polygons."))
+    AVOGADRO_ENGINE_FACTORY(PolygonEngine, tr("Polygon"), tr("Render polygons."))
   };
 
 } // end namespace Avogadro

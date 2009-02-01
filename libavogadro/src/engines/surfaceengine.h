@@ -217,7 +217,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(SurfaceEngine, tr("Compute and render Van der Waals surfaces."))
+    AVOGADRO_ENGINE_FACTORY(SurfaceEngine, tr("Surfaces"), tr("Compute and render Van der Waals surfaces."))
 
   };
 

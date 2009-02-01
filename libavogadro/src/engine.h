@@ -43,14 +43,13 @@
 
 #define AVOGADRO_ENGINE(t) \
   public: \
-    static QString staticName() { return t; } \
     QString name() const { return t; } \
 
-#define AVOGADRO_ENGINE_FACTORY(c,d) \
+#define AVOGADRO_ENGINE_FACTORY(c,n,d) \
   public: \
     Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
     Plugin::Type type() const { return Plugin::EngineType; }; \
-    QString name() const { return c::staticName(); } \
+    QString name() const { return n; } \
     QString description() const { return d; };
 
 namespace Avogadro {

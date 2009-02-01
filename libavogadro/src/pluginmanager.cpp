@@ -28,6 +28,7 @@
 #include "pluginmanager.h"
 #include "pluginsettings.h"
 #include "pythontool.h"
+#include "pythonengine.h"
 
 #include <avogadro/engine.h>
 #include <avogadro/tool.h>
@@ -294,6 +295,56 @@ namespace Avogadro {
     return scripts;
   }
 
+  QList<QString> PluginManager::engineScripts() 
+  {
+    QList<QString> scripts;
+
+    // create this directory for the user if it does not exist
+    QDir dir = QDir::home();
+    QStringList filters;
+    filters << "*.py";
+    dir.setNameFilters(filters);
+    dir.setFilter(QDir::Files | QDir::Readable);
+
+    bool failed = false;
+#ifdef Q_WS_MAC
+    dir.cd("Library/Application Support");
+    if (!dir.cd("Avogadro")) {
+      if (!dir.mkdir("Avogadro")) failed = true;
+      if (!dir.cd("Avogadro")) failed = true;
+    }
+#else
+  #ifdef WIN32
+    dir = QCoreApplication::applicationDirPath();
+  #else
+    if(!dir.cd(".avogadro")) {
+      if (!dir.mkdir(".avogadro")) failed = true;
+      if (!dir.cd(".avogadro")) failed = true;
+    }
+  #endif
+#endif
+
+    if(!dir.cd("engineScripts")) {
+      if (!dir.mkdir("engineScripts")) failed = true;
+      if (!dir.cd("engineScripts")) failed = true; 
+    }
+
+    foreach (const QString& file, dir.entryList())
+      scripts.append(QString(dir.canonicalPath() + "/" + file));
+ 
+#ifndef WIN32
+    // Now for the system wide Python scripts
+    QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
+      + "share/libavogadro/engineScripts";
+    if (dir.cd(systemScriptsPath))
+      foreach (const QString& file, dir.entryList())
+        scripts.append(QString(dir.canonicalPath() + "/" + file));
+#endif
+
+    return scripts;
+  }
+
+
   QList<Color *> PluginManager::colors(QObject *parent) const
   {
     loadFactories();
@@ -435,7 +486,6 @@ namespace Avogadro {
       return;
 
     QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
-    QVector< QList<PluginFactory *> > &df = PluginManagerPrivate::m_disabledFactories();
  
     // 
     // Load the static plugins first
@@ -501,29 +551,54 @@ namespace Avogadro {
       
       if (factory) {
         QFileInfo info(script);
-        settings.beginGroup(QString::number(factory->type()));
-        // create the PluginItem 
-        PluginItem *item = new PluginItem(factory->name(), factory->description(), 
-            factory->type(), info.fileName(), info.absoluteFilePath(), factory);
-        // add the factory to the correct list
-        if(settings.value(factory->name(), true).toBool()) {
-          ef[factory->type()].append(factory);
-          item->setEnabled(true);
-        } else {
-          df[factory->type()].append(factory);
-          item->setEnabled(false);
-        }
-        // Store the PluginItem
-        PluginManagerPrivate::m_items()[factory->type()].append(item);
-        settings.endGroup();
-      }
-      else {
+        loadFactory(factory, info, settings);
+      } else {
         qDebug() << script << "failed to load. ";
       }
     }
-    settings.endGroup(); // Plugins
  
+    //
+    // Load the python engines
+    //
+    QList<QString> enginescripts = engineScripts();
+    foreach(const QString &script, enginescripts) {
+      PluginFactory *factory = qobject_cast<PluginFactory *>(new PythonEngineFactory(script));
+      
+      if (factory) {
+        QFileInfo info(script);
+        loadFactory(factory, info, settings);
+      } else {
+        qDebug() << script << "failed to load. ";
+      }
+    }
+    
+    
+    settings.endGroup(); // Plugins
     PluginManagerPrivate::factoriesLoaded = true;
+  }
+    
+  void PluginManager::loadFactory(PluginFactory *factory, QFileInfo &fileInfo, QSettings &settings)
+  {
+    settings.beginGroup(QString::number(factory->type()));
+
+    QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
+    QVector< QList<PluginFactory *> > &df = PluginManagerPrivate::m_disabledFactories();
+ 
+    // create the PluginItem 
+    PluginItem *item = new PluginItem(factory->name(), factory->description(), 
+        factory->type(), fileInfo.fileName(), fileInfo.absoluteFilePath(), factory);
+    // add the factory to the correct list
+    if(settings.value(factory->name(), true).toBool()) {
+      ef[factory->type()].append(factory);
+      item->setEnabled(true);
+    } else {
+      df[factory->type()].append(factory);
+      item->setEnabled(false);
+    }
+    // Store the PluginItem
+    PluginManagerPrivate::m_items()[factory->type()].append(item);
+    
+    settings.endGroup();
   }
 
   QList<PluginFactory *> PluginManager::factories( Plugin::Type type )
@@ -634,8 +709,6 @@ namespace Avogadro {
   inline void PluginManager::loadPluginDir(const QString &directory,
                                            QSettings &settings)
   {
-    QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
-    QVector< QList<PluginFactory *> > &df = PluginManagerPrivate::m_disabledFactories();
     QDir dir(directory);
 #ifdef Q_WS_X11
     QStringList dirFilters;
@@ -651,23 +724,9 @@ namespace Avogadro {
       PluginFactory *factory = qobject_cast<PluginFactory *>(instance);
 
       if (factory) {
-        settings.beginGroup(QString::number(factory->type()));
-        // create the PluginItem 
-        PluginItem *item = new PluginItem(factory->name(), factory->description(), 
-            factory->type(), fileName, dir.absoluteFilePath(fileName), factory);
-        // add the factory to the correct list
-        if(settings.value(factory->name(), true).toBool()) {
-          ef[factory->type()].append(factory);
-          item->setEnabled(true);
-        } else {
-          df[factory->type()].append(factory);
-          item->setEnabled(false);
-        }
-        // Store the PluginItem
-        PluginManagerPrivate::m_items()[factory->type()].append(item);
-        settings.endGroup();
-      }
-      else {
+        QFileInfo info(fileName);
+        loadFactory(factory, info, settings);
+      } else {
         qDebug() << fileName << "failed to load. " << loader.errorString();
       }
     }

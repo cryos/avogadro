@@ -116,7 +116,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(BSDYEngine, tr("Ball and stick display type."))
+    AVOGADRO_ENGINE_FACTORY(BSDYEngine, tr("Ball and Stick"), tr("Ball and stick display type."))
   };
 
 

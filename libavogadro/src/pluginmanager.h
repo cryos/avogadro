@@ -30,6 +30,8 @@
 #include <avogadro/global.h>
 #include <avogadro/plugin.h>
 
+#include <QFileInfo>
+
 class QDir;
 class QSettings;
 
@@ -213,6 +215,12 @@ namespace Avogadro {
     static QList<QString> toolScripts();
 
     /**
+     * Get a list of all engineScripts.
+     */
+    static QList<QString> engineScripts();
+
+
+    /**
      * Use by the plugin manager dialog
      */
     static QList<PluginItem *> pluginItems(Plugin::Type);
@@ -233,6 +241,7 @@ namespace Avogadro {
      * valid.
      */
     static void loadPluginDir(const QString &directory, QSettings &settings);
+    static void loadFactory(PluginFactory *factory, QFileInfo &fileInfo, QSettings &settings);
 
   };
 

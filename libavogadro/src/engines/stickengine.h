@@ -104,7 +104,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(StickEngine, tr("Render sticks."))
+    AVOGADRO_ENGINE_FACTORY(StickEngine, tr("Stick"), tr("Render sticks."))
   };
 
 } // end namespace Avogadro

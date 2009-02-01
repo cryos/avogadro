@@ -110,7 +110,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(WireEngine,
+    AVOGADRO_ENGINE_FACTORY(WireEngine, tr("Wireframe"),
         tr("Render bonds as wires (lines), this display type is ideal for very large (bio)molecules."))
   };
 

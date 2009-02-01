@@ -91,7 +91,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(DipoleEngine, tr("Render dipole moments."))
+    AVOGADRO_ENGINE_FACTORY(DipoleEngine, tr("Dipole"), tr("Render dipole moments."))
   };
 
 } // end namespace Avogadro

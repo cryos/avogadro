@@ -49,7 +49,7 @@ namespace Avogadro {
       //! Destructor
       virtual ~PythonTool();
 
-      //! \name To python delegates functions
+      //! \name To python delegated functions
       //@{
       QString name() const;
       QString description() const; 
@@ -75,7 +75,6 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    //AVOGADRO_TOOL_FACTORY(DrawTool, tr("Draw Tool"), tr("Draw molecules, insert smiles or fragments."))
 
     public:
       PythonToolFactory(const QString &filename) : m_filename(filename)
@@ -88,9 +87,9 @@ namespace Avogadro {
       { 
         return new PythonTool(parent, m_filename); 
       }
-      Plugin::Type type() const { return Plugin::ToolType; };
-      QString name() const { return m_name; };
-      QString description() const { return m_desc; };
+      Plugin::Type type() const { return Plugin::ToolType; }
+      QString name() const { return m_name; }
+      QString description() const { return m_desc; }
     private:
       QString m_filename;
       QString m_name, m_desc;
