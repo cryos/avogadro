@@ -85,8 +85,9 @@ namespace Avogadro
         return "Gwords";
       case gigaBytesUnit:
         return "GB";
+      default:
+        return "invalid";
     }
-    return "invalid";
   }
   bool TextToMemoryUnit( const char * t, MemoryUnit & mu )
   {
@@ -116,8 +117,9 @@ namespace Avogadro
         return "years";
       case milleniaUnit:
         return "millenia";
+      default:
+        return "invalid";
     }
-    return "invalid";
   }
   bool TextToTimeUnit( const char * t, TimeUnit & tu )
   {
@@ -134,18 +136,18 @@ namespace Avogadro
 
 using namespace Avogadro;
 //GamessInputData functions
-#pragma segment IData
+//#pragma segment IData
 GamessInputData::GamessInputData( Molecule *molecule ) :
     m_molecule( molecule ),
     Control( new GamessControlGroup ),
     System( new GamessSystemGroup ),
     Basis( new GamessBasisGroup ),
     Data( new GamessDataGroup ),
-    StatPt( new GamessStatPtGroup ),
     Guess( new GamessGuessGroup ),
     SCF( new GamessSCFGroup ),
     MP2( new GamessMP2Group ),
     Hessian( new GamessHessianGroup ),
+    StatPt( new GamessStatPtGroup ),
     DFT( new GamessDFTGroup ),
     EFP( new GamessEFPData )
 {
@@ -247,13 +249,15 @@ long GamessInputData::WriteInputFile( ostream &buffer )
   return 1;
 }
 
-#pragma segment EFP
+//#pragma segment EFP
 //GamessEFPGroup functions
-GamessEFPData::GamessEFPData() : m_qmCount( 0 ), m_efpCount( 0 )
+GamessEFPData::GamessEFPData() : m_efpCount( 0 ), m_qmCount( 0 )
 {}
 
 void GamessEFPGroup::GetCenterOfMass( Molecule *molecule, double &x, double &y, double &z )
 {
+  Q_UNUSED(molecule);
+
   double sum[3];
   double mass = 0.0;
 
@@ -358,7 +362,7 @@ void GamessEFPData::RemoveGroup( GamessEFPGroup *group )
 
 //GamessEFPData functions
 
-#pragma segment Control
+//#pragma segment Control
 //GamessControlGroup functions
 GamessControlGroup::GamessControlGroup( void )
 {
@@ -424,8 +428,9 @@ const char * GamessControlGroup::GAMESSSCFTypeToText( GAMESS_SCFType t )
       return "MCSCF";
     case GAMESS_NO_SCF:
       return "NONE";
+    default:
+      return "invalid";
   }
-  return "invalid";
 }
 GAMESS_SCFType GamessControlGroup::SetSCFType( const char *SCFText )
 {
@@ -706,8 +711,9 @@ const char * GamessControlGroup::GAMESSLocalizationToText( GAMESS_Localization t
       return "RUEDNBRG";
     case GAMESS_POP_Localization:
       return "POP";
+    default:
+      return "invalid";
   }
-  return "invalid";
 }
 const char * GamessControlGroup::GetFriendText( FriendType f )
 {
@@ -722,8 +728,9 @@ const char * GamessControlGroup::GetFriendText( FriendType f )
       return "GAUSSIAN";
     case Friend_ALL:
       return "ALL";
+    default:
+      return "invalid"; //Getting to here indicates a bad value
   }
-  return "invalid"; //Getting to here indicates a bad value
 }
 FriendType GamessControlGroup::TextToFriend( const char * c )
 {
@@ -955,7 +962,7 @@ void GamessControlGroup::RevertProgPane( GamessControlGroup *OldData )
   SetRPAC( OldData->GetRPAC() );
   SetFriend( OldData->GetFriend() );
 }
-#pragma mark GamessSystemGroup
+//#pragma mark GamessSystemGroup
 //GamessSystemGroup member functions
 long GamessSystemGroup::SetTimeLimit( long NewTime )
 {
@@ -990,13 +997,15 @@ float GamessSystemGroup::GetConvertedTime( void ) const
     case secondUnit:
       factor = 60.0;
       break;
+    default:
+      break;
   }
   result *= factor;
   return result;
 }
 long GamessSystemGroup::SetConvertedTime( float NewTime )
 {
-  long result, factor = 1;
+  long result = 0, factor = 1;
 
   switch ( TimeUnits ) {
     case milleniaUnit:
@@ -1014,6 +1023,8 @@ long GamessSystemGroup::SetConvertedTime( float NewTime )
       break;
     case secondUnit:
       result = ( long )( NewTime/60.0 );
+      break;
+    default:
       break;
   }
   if ( result >= 0 ) TimeLimit = result;
@@ -1048,13 +1059,15 @@ double GamessSystemGroup::GetConvertedMem( void ) const
     case megaBytesUnit:
       factor = 8.0/( 1024*1024 );
       break;
+    default:
+      break;
   }
   result *= factor;
   return result;
 }
 double GamessSystemGroup::SetConvertedMem( double NewMem )
 {
-  double result, factor = 1;
+  double result = 0, factor = 1;
 
   switch ( MemUnits ) {
     case megaBytesUnit:
@@ -1066,6 +1079,8 @@ double GamessSystemGroup::SetConvertedMem( double NewMem )
       factor *= 1000000;
     case wordsUnit:
       result = ( long )( factor*NewMem );
+      break;
+    default:
       break;
   }
   if ( result >= 0 ) Memory = result;
@@ -1097,6 +1112,8 @@ double GamessSystemGroup::GetConvertedMemDDI( void ) const
     case gigaBytesUnit:
       factor = 8.0/( 1000.0 );
       break;
+    default:
+      break;
   }
   result *= factor;
   return result;
@@ -1114,6 +1131,8 @@ double GamessSystemGroup::SetConvertedMemDDI( double NewMem )
       break;
     case gigaBytesUnit:
       factor = 1000.0/8.0;
+      break;
+    default:
       break;
   }
   result = NewMem*factor;
@@ -1214,7 +1233,7 @@ void GamessSystemGroup::WriteToFile( ostream &File )
   }
   File << "$END" << endl;
 }
-#pragma mark GamessBasisGroup
+//#pragma mark GamessBasisGroup
 //GamessBasisGroup member functions
 GamessBasisGroup::GamessBasisGroup( void )
 {
@@ -1272,8 +1291,9 @@ const char * GamessBasisGroup::GAMESSBasisSetToText( GAMESS_BasisSet bs )
       return "AM1";
     case GAMESS_BS_PM3:
       return "PM3";
+    default:
+      return "invalid";
   }
-  return "invalid";
 }
 short GamessBasisGroup::SetBasis( const char *BasisText )
 {
@@ -1404,8 +1424,9 @@ const char * GamessBasisGroup::PolarToText( GAMESS_BS_Polarization p )
       return "HUZINAGA";
     case GAMESS_BS_Hondo7_Polar:
       return "HONDO7";
+    default:
+      return "invalid";
   }
-  return "invalid";
 }
 const char * GamessBasisGroup::GAMESSECPToText( GAMESS_BS_ECPotential p )
 {
@@ -1418,8 +1439,9 @@ const char * GamessBasisGroup::GAMESSECPToText( GAMESS_BS_ECPotential p )
       return "SBK";
     case GAMESS_BS_ECP_HW:
       return "HW";
+    default:
+      return "invalid";
   }
-  return "invalid";
 }
 GAMESS_BS_ECPotential GamessBasisGroup::SetECPPotential( const char *ECPText )
 {
@@ -1504,7 +1526,7 @@ long GamessBasisGroup::WriteToFile( ostream &File, GamessInputData * iData )
   }
   return 0;
 }
-#pragma mark GamessDataGroup
+//#pragma mark GamessDataGroup
 // Data Group member functions
 GamessDataGroup::GamessDataGroup( void )
 {
@@ -1573,8 +1595,9 @@ const char * GamessDataGroup::GetGAMESSPointGroupText( GAMESSPointGroup p )
       return "OH";
     case GAMESS_O:
       return "O";
+    default:
+      return "invalid";
   }
-  return "invalid";
 }
 short GamessDataGroup::SetPointGroup( char *GroupText )
 {
@@ -1663,8 +1686,9 @@ const char * GamessDataGroup::GetCoordTypeText( CoordinateType t )
       return "ZMT";
     case ZMTMPCCoordType:
       return "ZMTMPC";
+    default:
+      return "invalid";
   }
-  return "invalid";
 }
 CoordinateType GamessDataGroup::SetCoordType( const char * CoordText )
 {
@@ -1869,7 +1893,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
 //     if (IntCoords) IntCoords->WriteZMATToFile(File);
 //   }
 }
-#pragma mark GamessGuessGroup
+//#pragma mark GamessGuessGroup
 //Guess Group functions
 //This function is here to provide a default value before returning the string
 const char * GamessGuessGroup::GetGuessText( void ) const
@@ -1970,7 +1994,7 @@ void GamessGuessGroup::WriteToFile( ostream &File, GamessInputData *IData )
     //         }
     //       }
     //     }
-    sprintf( Out, "NORB=%d ", nOrbs );
+    sprintf( Out, "NORB=%d ", static_cast<int>(nOrbs) );
     File << Out;
   } //PrintMO
   if ( GetPrintMO() ) {
@@ -2010,7 +2034,7 @@ void GamessGuessGroup::WriteToFile( ostream &File, GamessInputData *IData )
 //  }
 // }
 
-#pragma mark GamessSCFGroup
+//#pragma mark GamessSCFGroup
 GamessSCFGroup::GamessSCFGroup( void )
 {
   InitData();
@@ -2090,7 +2114,7 @@ void GamessSCFGroup::WriteToFile( ostream &File, GamessInputData *IData )
 
   File << "$END" << endl;
 }
-#pragma mark GamessMP2Group
+//#pragma mark GamessMP2Group
 GamessMP2Group::GamessMP2Group( void )
 {
   InitData();
@@ -2209,7 +2233,7 @@ void GamessMP2Group::WriteToFile( ostream &File, GamessInputData *IData )
 
   File << "$END" << endl;
 }
-#pragma mark GamessHessianGroup
+//#pragma mark GamessHessianGroup
 void GamessHessianGroup::InitData( void )
 {
   DisplacementSize = 0.01;
@@ -2266,7 +2290,7 @@ void GamessHessianGroup::WriteToFile( ostream &File, GamessInputData *IData )
 
   File << "$END" << endl;
 }
-#pragma mark GamessDFTGroup
+//#pragma mark GamessDFTGroup
 void GamessDFTGroup::InitData( void )
 {
   GridSwitch = 3.0e-4;
@@ -2346,8 +2370,9 @@ const char * GamessDFTGroup::GetDFTGridFuncText( DFTFunctionalsGrid type )
       return "PBEOP";
     case DFT_Grid_BHHLYP:
       return "BHHLYP";
+    default:
+      return "invalid";
   }
-  return "invalid";
 }
 const char * GamessDFTGroup::GetDFTGridFreeFuncText( DFTFunctionalsGridFree type )
 {
@@ -2394,8 +2419,9 @@ const char * GamessDFTGroup::GetDFTGridFreeFuncText( DFTFunctionalsGridFree type
       return "WS";
     case DFT_GridFree_WIGEXP:
       return "WIGEXP";
+    default:
+      return "invalid";
   }
-  return "invalid";
 }
 
 const char * GamessDFTGroup::GetFunctionalText( void ) const
@@ -2415,7 +2441,7 @@ short GamessDFTGroup::SetFunctional( short newvalue )
   Functional = newvalue;
   return Functional;
 }
-#pragma mark GamessStatPtGroup
+//#pragma mark GamessStatPtGroup
 void GamessStatPtGroup::InitData( void )
 {
   OptConvergance = 0.0001;
@@ -2483,7 +2509,7 @@ void GamessStatPtGroup::WriteToFile( ostream &File, GamessInputData *IData )
     }
   }
   if (( runType == 6 )&&( GetModeFollow() != 1 ) ) {
-    sprintf( Out, "IFOLOW=%d ", GetModeFollow() );
+    sprintf( Out, "IFOLOW=%d ", static_cast<int>(GetModeFollow()) );
     File << Out;
   }
   if ( GetStatPoint() ) {

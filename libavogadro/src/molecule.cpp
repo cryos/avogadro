@@ -109,7 +109,7 @@ namespace Avogadro{
   Molecule::~Molecule()
   {
     // Need to iterate through all atoms/bonds and destroy them
-    Q_D(Molecule);
+    //Q_D(Molecule);
     clear();
     delete d_ptr;
   }

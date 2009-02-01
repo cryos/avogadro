@@ -159,6 +159,8 @@ namespace Avogadro {
             case RemoveHydrogens:
               m_molecule->removeHydrogens(atom);
               break;
+            default:
+              break;
           }
         }
       }

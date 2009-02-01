@@ -291,7 +291,7 @@ namespace Avogadro
         m_widget->setSelected(matchedPrimitives, true);
         m_widget->update();
       } else if (m_type == ConformerType) {
-        if (index.row() >= m_molecule->numConformers())
+        if (index.row() >= static_cast<int>(m_molecule->numConformers()))
           return;
     
         m_molecule->setConformer(index.row());
