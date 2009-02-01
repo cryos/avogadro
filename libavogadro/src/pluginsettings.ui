@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>PluginDialog</class>
- <widget class="QDialog" name="PluginDialog" >
+ <class>PluginSettings</class>
+ <widget class="QWidget" name="PluginSettings" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -8,9 +8,6 @@
     <width>523</width>
     <height>300</height>
    </rect>
-  </property>
-  <property name="windowTitle" >
-   <string>Plugin Manager</string>
   </property>
   <layout class="QGridLayout" >
    <item row="0" column="0" >
@@ -63,13 +60,6 @@
        </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="1" column="1" >
-    <widget class="QPushButton" name="pushButton" >
-     <property name="text" >
-      <string>Accept</string>
-     </property>
     </widget>
    </item>
   </layout>

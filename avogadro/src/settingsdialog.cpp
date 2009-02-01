@@ -23,6 +23,8 @@
  **********************************************************************/
 
 #include "settingsdialog.h"
+#include <avogadro/pluginsettings.h>
+#include "projecttreeeditor.h"
 
 #include "mainwindow.h"
 
@@ -47,16 +49,37 @@ namespace Avogadro {
         SLOT(fogChanged(int)));
   }
 
+  void SettingsDialog::insertWidget(int index, QWidget *widget)
+  {
+    ui.stackedWidget->insertWidget(index, widget);
+  }
+  
   void SettingsDialog::buttonClicked(QAbstractButton *button)
   {
     QDialogButtonBox::ButtonRole role = ui.dialogButtonBox->buttonRole(button);
     if(role == QDialogButtonBox::ApplyRole || role == QDialogButtonBox::AcceptRole)
     {
+      // general
       saveValues();
+      // plugins
+      PluginSettings *plugins = dynamic_cast<PluginSettings*>(ui.stackedWidget->widget(1));
+      if (plugins)
+        plugins->saveValues();
+      // project tree
+      ProjectTreeEditor *editor = dynamic_cast<ProjectTreeEditor*>(ui.stackedWidget->widget(2));
+      if (editor)
+        editor->saveValues();
     }
     else if (role == QDialogButtonBox::RejectRole)
     {
-        loadValues();
+      // general
+      loadValues();
+      // plugins  
+      // FIXME
+      // project tree
+      ProjectTreeEditor *editor = dynamic_cast<ProjectTreeEditor*>(ui.stackedWidget->widget(2));
+      if (editor)
+        editor->loadValues();
     }
   }
 

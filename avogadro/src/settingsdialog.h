@@ -38,6 +38,8 @@ namespace Avogadro {
     public:
       SettingsDialog(MainWindow *mainWindow);
 
+      void insertWidget(int index, QWidget *widget);
+
     private:
       Ui::SettingsDialog ui;
 

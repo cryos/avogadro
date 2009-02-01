@@ -188,7 +188,6 @@ namespace Avogadro
       int centerTime;
 
       PluginManager pluginManager;
-      ProjectTreeEditor projectTreeEditor;
 
       QMap<Engine*, QWidget*> engineSettingsWindows;
   };
@@ -1804,6 +1803,13 @@ namespace Avogadro
   {
     if ( !d->settingsDialog ) {
       d->settingsDialog = new SettingsDialog( this );
+      // Add the Plugin settings
+      QWidget *pluginSettings = d->pluginManager.settingsWidget();
+      d->settingsDialog->insertWidget(1, pluginSettings);
+      // Add the Project Tree Editor
+      ProjectTreeEditor *projectTreeEditor = new ProjectTreeEditor;
+      connect( projectTreeEditor, SIGNAL( structureChanged() ), this, SLOT( setupProjectTree() ) );
+      d->settingsDialog->insertWidget(2, projectTreeEditor);
     }
     d->settingsDialog->show();
   }
@@ -1895,11 +1901,6 @@ namespace Avogadro
     connect( ui.configureAvogadroAction, SIGNAL( triggered() ),
         this, SLOT( showSettingsDialog() ) );
 
-    connect( ui.pluginManagerAction, SIGNAL( triggered() ), &(d->pluginManager), SLOT( showDialog() ) );
-
-    connect( ui.projectTreeEditorAction, SIGNAL( triggered() ), &d->projectTreeEditor, SLOT( show() ) );
-
-    connect( &d->projectTreeEditor, SIGNAL( structureChanged() ), this, SLOT( setupProjectTree() ) );
     connect( ui.projectTreeView, SIGNAL(activated(const QModelIndex&)),
         this, SLOT(projectItemActivated(const QModelIndex&)));
 

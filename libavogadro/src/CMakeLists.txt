@@ -59,7 +59,7 @@ set(libavogadro_HDRS
   undosequence.h
 )
 
-qt4_wrap_ui(libavogadro_UIS plugindialog.ui)
+qt4_wrap_ui(libavogadro_UIS pluginsettings.ui)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
 
 # Statically link the core engines and tools so that users have a working

@@ -217,8 +217,9 @@ namespace Avogadro {
      */
     static QList<PluginItem *> pluginItems(Plugin::Type);
 
+    QWidget* settingsWidget();
+
   public Q_SLOTS:
-    void showDialog();
     void reload();
 
   Q_SIGNALS:

@@ -1,7 +1,7 @@
 /**********************************************************************
-  PluginDialog - Dialog for Plugin Manager
+  PluginSettings - Settings widget for Plugin Manager
 
-  Copyright (C) 2008 by Tim Vandermeersch
+  Copyright (C) 2008,2009 by Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -23,25 +23,26 @@
 #define PLUGINDIALOG_H
 
 #include "pluginlistview.h"
-#include "ui_plugindialog.h"
+#include "ui_pluginsettings.h"
 
-#include <QDialog>
+#include <QWidget>
 #include <QModelIndex>
 
 namespace Avogadro
 {
-  class PluginDialog : public QDialog
+  class A_EXPORT PluginSettings : public QWidget
   {
       Q_OBJECT
 
     public:
       //! Constructor
-      explicit PluginDialog( QWidget *parent = 0, Qt::WindowFlags f = 0 );
+      explicit PluginSettings( QWidget *parent = 0, Qt::WindowFlags f = 0 );
       //! Desconstructor
-      ~PluginDialog();
+      ~PluginSettings();
 
     public Q_SLOTS:
-      void accept();
+      void loadValues();
+      void saveValues();
       void selectPluginType( int index );
       void selectPlugin( PluginItem * );
 
@@ -49,7 +50,7 @@ namespace Avogadro
       void reloadPlugins();
 
     private:
-      Ui::PluginDialog ui;
+      Ui::PluginSettings ui;
   };
 }
 

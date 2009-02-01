@@ -26,7 +26,7 @@
 
 #include <config.h>
 #include "pluginmanager.h"
-#include "plugindialog.h"
+#include "pluginsettings.h"
 #include "pythontool.h"
 
 #include <avogadro/engine.h>
@@ -177,7 +177,7 @@ namespace Avogadro {
       bool colorsLoaded;
       QList<Color *> colors;
 
-      PluginDialog *dialog;
+      PluginSettings *settingsWidget;
 
       static bool factoriesLoaded;
       static QVector<QList<PluginItem *> > &m_items();
@@ -190,13 +190,13 @@ namespace Avogadro {
 
   PluginManager::PluginManager(QObject *parent) : QObject(parent), d(new PluginManagerPrivate)
   {
-    d->dialog = 0;
+    d->settingsWidget = 0;
   }
 
   PluginManager::~PluginManager()
   {
-    if(d->dialog) {
-      d->dialog->deleteLater();
+    if(d->settingsWidget) {
+      d->settingsWidget->deleteLater();
     }
 
     QSettings settings;
@@ -536,14 +536,14 @@ namespace Avogadro {
     return QList<PluginFactory *>();
   }
 
-  void PluginManager::showDialog()
+  QWidget* PluginManager::settingsWidget()
   {
-    if (!d->dialog) {
-      d->dialog = new PluginDialog();
-      connect(d->dialog, SIGNAL(reloadPlugins()), this, SLOT(reload()));
+    if (!d->settingsWidget) {
+      d->settingsWidget = new PluginSettings;
+      connect(d->settingsWidget, SIGNAL(reloadPlugins()), this, SLOT(reload()));
     }
 
-    d->dialog->show();
+    return d->settingsWidget; 
   }
 
   void PluginManager::reload()
@@ -551,13 +551,7 @@ namespace Avogadro {
     // make sure to write the settings before reloading
     QSettings settings;
     writeSettings(settings); // the isEnabled settings for all plugins
-
-    // delete the dialog with the now invalid model
-    if (d->dialog) {
-      d->dialog->deleteLater();
-      d->dialog = 0;
-    }
-
+    
     // write the tool settings
     settings.beginGroup("tools");
     foreach(Tool *tool, d->tools) {
@@ -607,6 +601,12 @@ namespace Avogadro {
         delete factory;
     }
     PluginManagerPrivate::m_disabledFactories().clear();
+
+    // refresh the model in the settings widget
+    loadFactories();
+    if (d->settingsWidget) {
+      d->settingsWidget->loadValues();
+    }
 
     emit reloadPlugins();
   }

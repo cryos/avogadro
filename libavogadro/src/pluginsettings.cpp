@@ -1,7 +1,7 @@
 /**********************************************************************
-  PluginDialog - Dialog for Plugin Manager
+  PluginSettings - Settings for Plugin Manager
 
-  Copyright (C) 2008 by Tim Vandermeersch
+  Copyright (C) 2008,2009 by Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -19,7 +19,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "plugindialog.h"
+#include "pluginsettings.h"
 #include "pluginitemmodel.h"
 #include "pluginlistview.h"
 
@@ -29,7 +29,7 @@
 
 namespace Avogadro {
 
-  PluginDialog::PluginDialog( QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f )
+  PluginSettings::PluginSettings( QWidget *parent, Qt::WindowFlags f ) : QWidget( parent, f )
   {
     ui.setupUi(this);
 
@@ -42,15 +42,13 @@ namespace Avogadro {
         this, SLOT(selectPlugin(PluginItem*)));
     connect(ui.comboBox, SIGNAL(currentIndexChanged(int)),
         this, SLOT(selectPluginType(int)));
-    connect(ui.pushButton, SIGNAL(clicked()),
-        this, SLOT(accept()));
   }
 
-  PluginDialog::~PluginDialog()
+  PluginSettings::~PluginSettings()
   {
   }
 
-  void PluginDialog::selectPlugin( PluginItem *plugin )
+  void PluginSettings::selectPlugin( PluginItem *plugin )
   {
     QString text;
 
@@ -61,27 +59,35 @@ namespace Avogadro {
     ui.textEdit->setText(text);
   }
 
-  void PluginDialog::selectPluginType( int index )
+  void PluginSettings::selectPluginType( int index )
   {
     if (ui.listView->model())
-    {
       delete ui.listView->model();
-    }
 
     PluginItemModel *model = new PluginItemModel((Plugin::Type)index);
     ui.listView->setModel(model);
     ui.textEdit->setText("");
   }
 
-  void PluginDialog::accept()
+  void PluginSettings::loadValues()
+  {
+    PluginItemModel *model = dynamic_cast<PluginItemModel*>(ui.listView->model());
+    if (model)
+      delete model;
+
+    model = new PluginItemModel((Plugin::Type) ui.comboBox->currentIndex());
+    ui.listView->setModel(model);
+    ui.textEdit->setText("");
+  }
+  
+  void PluginSettings::saveValues()
   {
     QMessageBox::warning(this, tr("Plugin Manager"),
         tr("Avogadro needs to be restarted in order for the changes to take effect"));
 
     emit reloadPlugins();
-    hide();
   }
 
 }
 
-#include "plugindialog.moc"
+#include "pluginsettings.moc"

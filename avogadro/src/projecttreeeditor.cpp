@@ -49,7 +49,7 @@ namespace Avogadro {
     SelectionIndex
   };
 
-  ProjectTreeEditor::ProjectTreeEditor(QWidget *parent) : QDialog(parent), m_updating(false)
+  ProjectTreeEditor::ProjectTreeEditor(QWidget *parent) : QWidget(parent), m_updating(false)
   {
     ui.setupUi(this);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
@@ -62,6 +62,8 @@ namespace Avogadro {
     ui.itemTypeCombo->addItem(tr("Bonds"));
     ui.itemTypeCombo->addItem(tr("Residues"));
     ui.itemTypeCombo->addItem(tr("User Selections"));
+    
+    loadValues();
   }
 
   ProjectTreeEditor::~ProjectTreeEditor()
@@ -443,12 +445,7 @@ namespace Avogadro {
     }
   }
 
-  void ProjectTreeEditor::showEvent(QShowEvent*)
-  {
-    readSettings();
-  }
-  
-  void ProjectTreeEditor::readSettings()
+  void ProjectTreeEditor::loadValues()
   {
     ui.treeWidget->clear();
     QTreeWidgetItem *newItem;
@@ -532,7 +529,7 @@ namespace Avogadro {
     }
   }
   
-  void ProjectTreeEditor::accept() 
+  void ProjectTreeEditor::saveValues() 
   {
     int indent = 0;
     int idx = 0;
@@ -549,9 +546,6 @@ namespace Avogadro {
     settings.endArray();
     settings.endGroup();
 
-    //deleteLater();
-    hide();
-    
     emit structureChanged();
   }
 

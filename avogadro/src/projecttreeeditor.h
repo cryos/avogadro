@@ -47,7 +47,7 @@
 #include <avogadro/global.h>
 #include "projecttreemodeldelegate.h"
 
-#include <QDialog>
+#include <QWidget>
 #include <QHash>
 #include "ui_projecttreeeditor.h"
 
@@ -55,17 +55,18 @@ class QTreeWidget;
 
 namespace Avogadro {
 
-  class ProjectTreeEditor: public QDialog
+  class ProjectTreeEditor: public QWidget
   {
       Q_OBJECT
     public:
       ProjectTreeEditor(QWidget *parent = 0);
       ~ProjectTreeEditor();
 
-    protected:
-      void showEvent(QShowEvent*);
-
-    private slots:
+    public Q_SLOTS:
+      void loadValues();
+      void saveValues();
+    
+    private Q_SLOTS:
       void on_newItemButton_clicked();
       void on_newSubItemButton_clicked();
       void on_deleteItemButton_clicked();
@@ -79,7 +80,6 @@ namespace Avogadro {
       void on_aliasEdit_textEdited(const QString &text);
       void on_settingsButton_clicked();
 
-      void accept();
     signals:
       void structureChanged();
 
@@ -87,7 +87,6 @@ namespace Avogadro {
       void updateEditor();
       void closeEditors();
       void writeItem(QSettings &settings, QTreeWidgetItem *cur, int indent, int &idx);
-      void readSettings();
 
       Ui::ProjectTreeEditor ui;
       bool m_updating;
