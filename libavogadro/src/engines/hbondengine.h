@@ -2,7 +2,7 @@
   HBondEngine - Hydrogen Bond Engine
 
   Copyright (C) 2007 by Marcus D. Hanwell
-  Copyright (C) 2007 by Tim Vandermeersch
+  Copyright (C) 2007,2009 by Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -75,6 +75,10 @@ namespace Avogadro {
       double m_width;
       double m_radius;
       double m_angle;
+  
+      bool isHbondAcceptor(Atom *atom);
+      bool isHbondDonor(Atom *atom);
+      bool isHbondDonorH(Atom *atom);
     
     private Q_SLOTS:
       void settingsWidgetDestroyed();

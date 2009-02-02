@@ -2,7 +2,7 @@
   HBondEngine - Hydrogen Bond Engine
 
   Copyright (C) 2007 by Marcus D. Hanwell
-  Copyright (C) 2007 by Tim Vandermeersch
+  Copyright (C) 2007,2009 by Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.sourceforge.net/>
@@ -26,12 +26,13 @@
 #include "hbondengine.h"
 #include <config.h>
 
-#include <avogadro/primitive.h>
-#include <avogadro/atom.h>
 #include <avogadro/molecule.h>
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/painterdevice.h>
+#include <avogadro/neighborlist.h>
 
 #include <openbabel/mol.h>
 #include <openbabel/obiter.h>
@@ -76,43 +77,51 @@ namespace Avogadro {
     pd->painter()->setColor(1.0, 1.0, 1.0);
     int stipple = 0xF0F0; // pattern for lines
 
-    FOR_PAIRS_OF_MOL (p, mol) {
-      OBAtom *a = mol.GetAtom((*p)[0]);
-      OBAtom *b = mol.GetAtom((*p)[1]);
+    NeighborList *nbrList = new NeighborList(molecule, m_radius, 1);
+    for (unsigned int i = 0; i < molecule->numAtoms(); ++i) {
+      Atom *atom = molecule->atom(i);
+      bool atomIsH = atom->isHydrogen() ? true : false;
 
-      if (a->GetDistance(b) > m_radius)
-        continue;
+      if (!atomIsH && !isHbondAcceptor(atom))
+          continue;        
 
-      if (a->GetDistance(b) < 0.7) // too close
-        continue;
+      QList<Atom*> nbrs = nbrList->nbrs(atom);
+      foreach(Atom *nbr, nbrs) {
 
-      if (a->IsHbondDonorH() && b->IsHbondAcceptor()) {
-        double angle = 180.0; // default, if no neighbours on H
-        FOR_NBORS_OF_ATOM (c, a)
-          angle = c->GetAngle(a, b);
+        double angle = 180.0;
+        Atom *hydrogen, *acceptor, *donor = 0;
+ 
+        if (atomIsH) {
+          if (!isHbondDonorH(atom) || !isHbondAcceptor(nbr))
+            continue;
+
+          hydrogen = atom;
+          acceptor = nbr;
+          foreach (unsigned long id, atom->neighbors()) 
+            donor = static_cast<Molecule*>(atom->parent())->atomById(id);
+        } else {
+           if (!isHbondDonorH(nbr) || !isHbondAcceptor(atom))
+            continue;
+
+          hydrogen = nbr;
+          acceptor = atom;
+          foreach (unsigned long id, nbr->neighbors()) 
+            donor = static_cast<Molecule*>(atom->parent())->atomById(id);
+        }
+        
+        if (donor) {
+          Eigen::Vector3d ab = *donor->pos() - *hydrogen->pos();
+          Eigen::Vector3d bc = *acceptor->pos() - *hydrogen->pos();
+          angle = 180. * acos( ab.dot(bc) / (ab.norm() * bc.norm()) ) / M_PI;
+        }
+        
         if (angle < m_angle)
           continue;
 
-        OBAtom *atom1 = mol.GetAtom((*p)[0]);
-        OBAtom *atom2 = mol.GetAtom((*p)[1]);
-        Vector3d v1(atom1->GetX(), atom1->GetY(), atom1->GetZ());
-        Vector3d v2(atom2->GetX(), atom2->GetY(), atom2->GetZ());
-        pd->painter()->drawMultiLine(v1, v2, m_width, 1, stipple);
-      } else if (b->IsHbondDonorH() && a->IsHbondAcceptor()) {
-        double angle = 180.0; // default, if no neighbours on H
-      	FOR_NBORS_OF_ATOM (c, b)
-          angle = c->GetAngle(b, a);
-        if (angle < m_angle)
-          continue;
-
-        OBAtom *atom1 = mol.GetAtom((*p)[0]);
-        OBAtom *atom2 = mol.GetAtom((*p)[1]);
-        Vector3d v1(atom1->GetX(), atom1->GetY(), atom1->GetZ());
-        Vector3d v2(atom2->GetX(), atom2->GetY(), atom2->GetZ());
-        pd->painter()->drawMultiLine(v1, v2, m_width, 1, stipple);
-      }
-    }
-
+        pd->painter()->drawMultiLine(*atom->pos(), *nbr->pos(), m_width, 1, stipple); 
+      } // for each nbr
+    } // for each atom
+ 
     return true;
   }
 
@@ -158,7 +167,6 @@ namespace Avogadro {
 
   void HBondEngine::settingsWidgetDestroyed()
   {
-    qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
   }
 
@@ -181,6 +189,54 @@ namespace Avogadro {
       m_settingsWidget->radiusSpin->setValue(m_radius);
       m_settingsWidget->angleSpin->setValue(m_angle);
     }
+  }
+
+  bool HBondEngine::isHbondAcceptor(Atom *atom)
+  {
+    if (atom->atomicNumber() == 8 || atom->atomicNumber() == 9)
+      return true;
+    if (atom->atomicNumber() == 7) {
+      int boSum = 0;
+      foreach (unsigned long id, atom->bonds()) 
+        boSum += static_cast<Molecule*>(atom->parent())->bondById(id)->order();
+      if (boSum != 4)
+        return true;
+    }
+    return false;
+  }
+
+  bool HBondEngine::isHbondDonor(Atom *atom)
+  {
+    switch (atom->atomicNumber()) {
+      case 7:
+      case 8:
+      case 9:
+        break;
+      default:
+        return false;
+    }
+
+    foreach (unsigned long id, atom->neighbors()) {
+      Atom *nbr = static_cast<Molecule*>(atom->parent())->atomById(id);
+      if (nbr->isHydrogen())
+        return true;
+    }
+
+    return false;
+  }
+
+  bool HBondEngine::isHbondDonorH(Atom *atom)
+  {
+    if (!atom->isHydrogen())
+      return false;
+
+    foreach (unsigned long id, atom->neighbors()) {
+      Atom *nbr = static_cast<Molecule*>(atom->parent())->atomById(id);
+      if (isHbondDonor(nbr))
+        return true;
+    }
+
+    return false;
   }
 
 }
