@@ -82,14 +82,17 @@ if(GLEW_FOUND)
   set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${GLEW_LIBRARY})
 endif(GLEW_FOUND)
 
-# If Boost Python isn't found remove the interpreter files
+# If Boost Python isn't found remove the Avogadro Python source files
 if(NOT ALL_PYTHON_FOUND)
-  list(REMOVE_ITEM libavogadro_SRCS
-    ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp)
-  list(REMOVE_ITEM libavogadro_SRCS
-    ${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.cpp)
-  list(REMOVE_ITEM libavogadro_SRCS
-    ${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.cpp)
+  set(PYTHON_SRCS
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythontool.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythonengine.cpp)
+  foreach(P_ITEM ${PYTHON_SRCS})
+    list(REMOVE_ITEM libavogadro_SRCS "${P_ITEM}")
+  endforeach(P_ITEM ${PYTHON_SRCS})
 endif(NOT ALL_PYTHON_FOUND)
 
 qt4_automoc(${libavogadro_SRCS})
@@ -120,7 +123,7 @@ if(ALL_PYTHON_FOUND)
     pythonerror.h
   )
 
-  #message(STATUS "Setting new boost python libraries")
+  message(STATUS "Setting new boost python libraries")
   set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${PYTHON_LIBRARIES}
                          ${Boost_LIBRARIES})
   set(libavogadro_HDRS ${libavogadro_HDRS} ${python_HDRS})

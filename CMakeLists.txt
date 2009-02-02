@@ -106,20 +106,16 @@ find_package(Linguist REQUIRED) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
 include_directories(${EIGEN2_INCLUDE_DIR})
 
-
 ###########################################################
 # Python Support: Detect and report all stuff here.       #
 # Subdirectories can use: ALL_PYTHON_FOUND                #
 ###########################################################
 option(ENABLE_PYTHON "Enable python support" ON)
-
 if(ENABLE_PYTHON MATCHES ON)
-  
-  find_package(AllPython)
+  include(PythonDeps.cmake)
   if (ALL_PYTHON_FOUND)
     message(STATUS "All python dependencies found - Python support enabled")
   endif (ALL_PYTHON_FOUND)
-
 else(ENABLE_PYTHON MATCHES ON)
   message(STATUS "Python support disabled.")
 endif(ENABLE_PYTHON MATCHES ON)
