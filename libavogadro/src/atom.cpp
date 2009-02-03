@@ -29,8 +29,10 @@
 #include "bond.h"
 #include "residue.h"
 
-#include <openbabel/mol.h>
+#include <openbabel/atom.h>
+#include <openbabel/generic.h>
 
+#include <QVariant>
 #include <QDebug>
 
 using Eigen::Vector3d;
@@ -158,6 +160,15 @@ using Eigen::Vector3d;
     obatom.SetVector(v->x(), v->y(), v->z());
     obatom.SetAtomicNum(m_atomicNumber);
 
+    // Add dynamic properties as OBPairData
+    OpenBabel::OBPairData *obproperty;
+    foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
+      obproperty = new OpenBabel::OBPairData;
+      obproperty->SetAttribute(propertyName.data());
+      obproperty->SetValue(property(propertyName).toByteArray().data());
+      obatom.SetData(obproperty);
+    }
+
     return obatom;
   }
 
@@ -167,6 +178,18 @@ using Eigen::Vector3d;
     m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
     m_atomicNumber = obatom->GetAtomicNum();
 //    m_partialCharge = obatom->GetPartialCharge();
+
+    // And add any generic data as QObject properties
+    std::vector<OpenBabel::OBGenericData*> data;
+    OpenBabel::OBDataIterator j;
+    OpenBabel::OBPairData *property;
+
+    data = obatom->GetAllData(OpenBabel::OBGenericDataType::PairData);
+    for (j = data.begin(); j != data.end(); ++j) {
+      property = static_cast<OpenBabel::OBPairData *>(*j);
+      setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
+    }
+
     return true;
   }
 
