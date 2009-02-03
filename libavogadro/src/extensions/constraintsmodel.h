@@ -31,6 +31,7 @@
 #include <QObject>
 #include <QList>
 #include <QString>
+#include <QAbstractTableModel>
 
 #ifndef BUFF_SIZE
 #define BUFF_SIZE 256

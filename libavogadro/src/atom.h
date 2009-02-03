@@ -27,6 +27,7 @@
 #define ATOM_H
 
 #include <avogadro/primitive.h>
+#include <QList>
 
 namespace OpenBabel {
   class OBAtom;

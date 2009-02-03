@@ -26,7 +26,7 @@
 
 #include <avogadro/atom.h>
 
-
+#include <QMimeData>
 #include <QApplication>
 #include <QClipboard>
 

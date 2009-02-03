@@ -28,6 +28,7 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
+#include <QAbstractItemModel>
 
 class QTreeView;
 namespace Avogadro {

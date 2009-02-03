@@ -28,7 +28,8 @@
 
 #include "global.h"
 
-#include <QAbstractItemModel>
+#include <QObject>
+#include <QMetaType>
 
 #include <Eigen/Core>
 

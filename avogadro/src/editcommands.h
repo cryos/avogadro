@@ -31,6 +31,9 @@
 #include <avogadro/idlist.h>
 #include <avogadro/molecule.h>
 
+// forward declaratin
+class QMimeData;
+
 namespace Avogadro {
 
   class CutCommand : public QUndoCommand
