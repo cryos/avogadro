@@ -53,6 +53,16 @@ namespace Avogadro {
     detectHBonds();
     detectStructure();
 
+    foreach (const QVector<Residue*> &residues, d->chains) { // for each chain
+      qDebug() << "chain: " << d->chains.indexOf(residues);
+      QByteArray chain;
+      foreach (Residue *residue, residues) { // for each residue in the chain
+        chain.append( d->structure.at(residue->index()) );
+      }
+      qDebug() << chain;
+    }
+
+
     qDebug() << d->structure;
   }
   
@@ -276,6 +286,9 @@ namespace Avogadro {
     QVector<bool> visited(d->molecule->numResidues());
 
     foreach (Residue *residue, d->molecule->residues()) {
+      if (residue->atoms().size() < 4)
+        continue;
+
       foreach (unsigned long int id, residue->atoms()) {
         Atom *atom = d->molecule->atomById(id);
         QString atomId = residue->atomId(id).trimmed();
@@ -298,7 +311,7 @@ namespace Avogadro {
   void Protein::detectHBonds()
   {
     d->hbondPairs.resize(d->molecule->numResidues());
-    NeighborList neighborList(d->molecule, 6, 1);
+    NeighborList neighborList(d->molecule, 4, 1);
     
     for (unsigned int i = 0; i < d->molecule->numAtoms(); ++i) {
       Atom *atom = d->molecule->atom(i);
@@ -383,23 +396,24 @@ namespace Avogadro {
     for (int i = 0 ; i < d->structure.size(); ++i)
       d->structure[i] = '-';
 
-    foreach (const QVector<Residue*> &residues, d->chains) { // for each chain
-      foreach (Residue *residue, residues) { // for each residue in the chain
-        if (d->structure.at(residue->index()) != '-')
-          continue;
 
-        //qDebug() << "--------------------------------------------------";
-        
+    foreach (const QVector<Residue*> &residues, d->chains) { // for each chain
+
+      foreach (Residue *residue, residues) { // for each residue in the chain
+
+        //qDebug() << "extending 3-trun helix...";
         extendHelix('G', 3, residue, residues);
         //qDebug() << "3 turn helix:" << d->structure;
         clearShortPatterns('G', 3);
         //qDebug() << "     cleaned:" << d->structure;
 
+        //qDebug() << "extending 4-trun helix...";
         extendHelix('H', 4, residue, residues);
         //qDebug() << "4 trun helix:" << d->structure;
         clearShortPatterns('H', 4);
         //qDebug() << "     cleaned:" << d->structure;
 
+        //qDebug() << "extending 5-trun helix";
         extendHelix('I', 5, residue, residues);
         //qDebug() << "5 trun helix:" << d->structure;
         clearShortPatterns('I', 5);
@@ -408,7 +422,7 @@ namespace Avogadro {
         if (d->structure.at(residue->index()) != '-')
           continue;
 
-        extendSheet(0, residue, residues);
+        //extendSheet(0, residue, residues);
       }
     }
   
@@ -419,19 +433,26 @@ namespace Avogadro {
 
   void Protein::extendHelix(char c, int turn, Residue *residue, const QVector<Residue*> &residues)
   {
+     if (d->structure.at(residue->index()) != '-')
+       return;
+
     // 4-turn helix
     foreach (Residue *partner, d->hbondPairs.at(residue->index())) { // for each H-bond partner
+      if (residue->chainNumber() != partner->chainNumber())
+        continue;
+
       int res1 = residues.indexOf(residue);
       int res2 = residues.indexOf(partner);
       int delta = abs(res1 - res2);
 
       if (delta == turn) {
+        d->structure.data()[residue->index()] = c;
+
         int next = res1 + 1;
-        if (next == residues.size())
-          continue;
+        if (next >= residues.size())
+          return;
 
         Residue *nextResidue = residues.at(next);
-        d->structure.data()[residue->index()] = c;
         extendHelix(c, turn, nextResidue, residues);
       }
 
@@ -469,7 +490,7 @@ namespace Avogadro {
   {
     for (int i = 0 ; i < d->structure.size(); ++i) {
       if (d->structure.at(i) == c) {
-        QByteArray array(1, '-');
+        QByteArray array;
         for (int j = i ; j < d->structure.size(); ++j) {
           if (d->structure.at(j) == c)
             array.append('-');
