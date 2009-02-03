@@ -88,6 +88,10 @@ namespace Avogadro{
       OpenBabel::OBMol *            obmol;
       // Our OpenBabel OBUnitCell object (if any)
       OpenBabel::OBUnitCell *       obunitcell;
+      // Our OpenBabel OBVibrationData object (if any)
+      // TODO: Cache an OBMol, in which case the vib. data (and others)
+      //       won't be necessary
+      OpenBabel::OBVibrationData *  obvibdata;
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
@@ -1013,6 +1017,11 @@ namespace Avogadro{
       obmol.SetData(obproperty);
     }
 
+    // Copy vibrations, if needed
+    if (d->obvibdata != NULL) {
+      obmol.SetData(d->obvibdata->Clone(&obmol));
+    }
+
     // TODO: Copy residue information, cubes, etc.
 
     return obmol;
@@ -1122,27 +1131,28 @@ namespace Avogadro{
     // (that could return NULL, but other methods know they could get NULL)
 
     // Copy forces, if present and valid
-    if (obmol->HasData(OpenBabel::OBGenericDataType::ConformerData)) {
-      OpenBabel::OBConformerData *cd = static_cast<OpenBabel::OBConformerData*>(obmol->GetData(OpenBabel::OBGenericDataType::ConformerData));
-      if (cd) {
-        std::vector< std::vector<OpenBabel::vector3> > allForces = cd->GetForces();
-
-        // check for validity (i.e., we have some forces, one for each atom
-        if (allForces.size() && allForces[0].size() == numAtoms()) {
-          OpenBabel::vector3 force;
-          foreach (Atom *atom, d->atomList) { // loop through each atom
+    OpenBabel::OBConformerData *cd = static_cast<OpenBabel::OBConformerData*>(obmol->GetData(OpenBabel::OBGenericDataType::ConformerData));
+    if (cd) {
+      std::vector< std::vector<OpenBabel::vector3> > allForces = cd->GetForces();
+      
+      // check for validity (i.e., we have some forces, one for each atom
+      if (allForces.size() && allForces[0].size() == numAtoms()) {
+        OpenBabel::vector3 force;
+        foreach (Atom *atom, d->atomList) { // loop through each atom
             force = allForces[0][atom->index()];
             qDebug() << " copying force " << force.x() << force.y() << force.z();
             atom->setForceVector(Eigen::Vector3d(force.x(), force.y(), force.z()));
           } // end setting forces on each atom
         }
-      }
-    } // end HasData(ConformerData)
+      }  // end HasData(ConformerData)
+
+    // Copy any vibration data if possible
+    OpenBabel::OBVibrationData *vibData = static_cast<OpenBabel::OBVibrationData*>(obmol->GetData(OpenBabel::OBGenericDataType::VibrationData));
+    d->obvibdata = vibData;
 
     // Finally, sync OBPairData to dynamic properties
     OpenBabel::OBDataIterator dIter;
     OpenBabel::OBPairData *property;
-    
     data = obmol->GetAllData(OpenBabel::OBGenericDataType::PairData);
     for (dIter = data.begin(); dIter != data.end(); ++dIter) {
       property = static_cast<OpenBabel::OBPairData *>(*dIter);
