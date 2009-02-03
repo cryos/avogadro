@@ -119,8 +119,16 @@ namespace Avogadro {
           str = QString::number(a->id());
           break;
         case 2: // Element name
-        default:
           str = ElementTranslator::name(a->atomicNumber());
+          break;
+        default: // some custom data -- if available
+          int customIndex = m_atomType - 7 - 1;
+          QList<QByteArray> propertyNames = a->dynamicPropertyNames();
+          // If this is a strange offset, use the element symbol
+          if (customIndex > propertyNames.size())
+            str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
+
+          str = a->property(propertyNames[customIndex].data()).toString();
       }
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
