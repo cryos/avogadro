@@ -1013,25 +1013,24 @@ namespace Avogadro{
     Q_D(Molecule);
     qDebug() << "setOBMol called.";
     m_lock->lockForWrite();
-//    d->obmol = obmol;
     m_lock->unlock();
     clear();
     // Copy all the parts of the OBMol to our Molecule
 
     qDebug() << "Copying atoms...";
+
     // Begin by copying all of the atoms
-    std::vector<OpenBabel::OBNodeBase*>::iterator i;
-    for (OpenBabel::OBAtom *obatom = static_cast<OpenBabel::OBAtom *>(obmol->BeginAtom(i));
-          obatom; obatom = static_cast<OpenBabel::OBAtom *>(obmol->NextAtom(i))) {
+    std::vector<OpenBabel::OBAtom*>::iterator i;
+
+    for (OpenBabel::OBAtom *obatom = obmol->BeginAtom(i); obatom; obatom = obmol->NextAtom(i)) {
       Atom *atom = addAtom();
       atom->setOBAtom(obatom);
     }
 
     qDebug() << "Copying bonds...";
     // Now bonds, we use the indices of the atoms to get the bonding right
-    std::vector<OpenBabel::OBEdgeBase*>::iterator j;
-    for (OpenBabel::OBBond *obbond = static_cast<OpenBabel::OBBond*>(obmol->BeginBond(j));
-         obbond; obbond = static_cast<OpenBabel::OBBond*>(obmol->NextBond(j))) {
+    std::vector<OpenBabel::OBBond*>::iterator j;
+    for (OpenBabel::OBBond *obbond = obmol->BeginBond(j); obbond; obbond = obmol->NextBond(j)) {
       Bond *bond = addBond();
       // Get the begin and end atoms - we use a 0 based index, OB uses 1 based
       bond->setAtoms(obbond->GetBeginAtom()->GetIdx()-1,
