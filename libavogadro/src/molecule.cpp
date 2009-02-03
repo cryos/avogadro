@@ -56,7 +56,7 @@ namespace Avogadro{
   class MoleculePrivate {
     public:
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
-			  invalidRings(true), obmol(0), obunitcell(0) {}
+			  invalidRings(true), obmol(0), obunitcell(0), obvibdata(0) {}
     // These are logically cached variables and thus are marked as mutable.
     // Const objects should be logically constant (and not mutable)
     // http://www.highprogrammer.com/alan/rants/mutable.html
@@ -1016,7 +1016,7 @@ namespace Avogadro{
       obproperty->SetValue(property(propertyName).toByteArray().data());
       obmol.SetData(obproperty);
     }
-
+    
     // Copy vibrations, if needed
     if (d->obvibdata != NULL) {
       obmol.SetData(d->obvibdata->Clone(&obmol));
@@ -1131,6 +1131,7 @@ namespace Avogadro{
     // (that could return NULL, but other methods know they could get NULL)
 
     // Copy forces, if present and valid
+    if (obmol->HasData(OpenBabel::OBGenericDataType::ConformerData)) {
     OpenBabel::OBConformerData *cd = static_cast<OpenBabel::OBConformerData*>(obmol->GetData(OpenBabel::OBGenericDataType::ConformerData));
     if (cd) {
       std::vector< std::vector<OpenBabel::vector3> > allForces = cd->GetForces();
@@ -1144,11 +1145,14 @@ namespace Avogadro{
             atom->setForceVector(Eigen::Vector3d(force.x(), force.y(), force.z()));
           } // end setting forces on each atom
         }
-      }  // end HasData(ConformerData)
+      }
+    }  // end HasData(ConformerData)
 
     // Copy any vibration data if possible
-    OpenBabel::OBVibrationData *vibData = static_cast<OpenBabel::OBVibrationData*>(obmol->GetData(OpenBabel::OBGenericDataType::VibrationData));
-    d->obvibdata = vibData;
+    if (obmol->HasData(OpenBabel::OBGenericDataType::VibrationData)) {
+      OpenBabel::OBVibrationData *vibData = static_cast<OpenBabel::OBVibrationData*>(obmol->GetData(OpenBabel::OBGenericDataType::VibrationData));
+      d->obvibdata = vibData;
+    }
 
     // Finally, sync OBPairData to dynamic properties
     OpenBabel::OBDataIterator dIter;
