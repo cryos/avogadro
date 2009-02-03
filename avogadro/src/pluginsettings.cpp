@@ -83,6 +83,12 @@ namespace Avogadro {
   
   void PluginSettings::saveValues()
   {
+    PluginItemModel *model = dynamic_cast<PluginItemModel*>(ui.listView->model());
+    if (!model)
+      return;
+    if (!model->changed())
+      return;
+        
     QMessageBox::warning(this, tr("Plugin Manager"),
         tr("Avogadro needs to be restarted in order for the changes to take effect"));
 
