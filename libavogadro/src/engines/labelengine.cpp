@@ -125,10 +125,11 @@ namespace Avogadro {
           int customIndex = m_atomType - 7 - 1;
           QList<QByteArray> propertyNames = a->dynamicPropertyNames();
           // If this is a strange offset, use the element symbol
-          if (customIndex > propertyNames.size())
+          if ( customIndex < 0 || customIndex >= propertyNames.size()) {
             str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
-
-          str = a->property(propertyNames[customIndex].data()).toString();
+          }
+          else
+            str = a->property(propertyNames[customIndex].data()).toString();
       }
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
