@@ -90,6 +90,10 @@ namespace Avogadro {
       int m_useNitrogens;
       QList< QVector<Eigen::Vector3d> > m_chains;
       QVector<Color> m_chainColors;
+      
+      QList< QVector<Eigen::Vector3d> > m_helixes3;
+      QList< QVector<Eigen::Vector3d> > m_helixes4;
+      QList< QVector<Eigen::Vector3d> > m_helixes5;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();

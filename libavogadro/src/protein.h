@@ -86,11 +86,13 @@ namespace Avogadro {
       QList<unsigned long int> chainAtoms(int index) const;
       QList<unsigned long int> chainResidues(int index) const;
 
-      int numHelixes3() const;
-      int numHelixes4() const;
-      int numHelixes5() const;
+      int num3turnHelixes() const;
+      int num4turnHelixes() const;
+      int num5turnHelixes() const;
   
+      QList<unsigned long int> helix3BackboneAtoms(int index);
       QList<unsigned long int> helix4BackboneAtoms(int index);
+      QList<unsigned long int> helix5BackboneAtoms(int index);
   
     private:
       void sortResiduesByChain();
@@ -108,6 +110,7 @@ namespace Avogadro {
       int residueIndex(Residue *residue) const;
       
       int numHelixes(char c) const;
+      QList<unsigned long int> helixBackboneAtoms(char c, int index);
 
       ProteinPrivate * const d;
   };

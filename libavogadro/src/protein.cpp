@@ -62,8 +62,6 @@ namespace Avogadro {
       qDebug() << chain;
     }
 
-
-    qDebug() << d->structure;
   }
   
   Protein::~Protein()
@@ -122,7 +120,7 @@ namespace Avogadro {
     return count;
   }
 
-  int Protein::numHelixes3() const
+  int Protein::num3turnHelixes() const
   {
     if (d->num3turnHelixes >= 0)
       return d->num3turnHelixes;
@@ -130,7 +128,7 @@ namespace Avogadro {
     return d->num3turnHelixes;
   }
 
-  int Protein::numHelixes4() const
+  int Protein::num4turnHelixes() const
   {
     if (d->num4turnHelixes >= 0)
       return d->num4turnHelixes;
@@ -138,7 +136,7 @@ namespace Avogadro {
     return d->num4turnHelixes;
   }
 
-  int Protein::numHelixes5() const
+  int Protein::num5turnHelixes() const
   {
     if (d->num5turnHelixes >= 0)
       return d->num5turnHelixes;
@@ -146,15 +144,15 @@ namespace Avogadro {
     return d->num5turnHelixes;
   }
 
-  QList<unsigned long int> Protein::helix4BackboneAtoms(int index)
+  QList<unsigned long int> Protein::helixBackboneAtoms(char c, int index)
   {
     QList <unsigned long int> ids;
     int count = 0;
     for (int i = 0 ; i < d->structure.size(); ++i) {
-      if (d->structure.at(i) == 'H') {
+      if (d->structure.at(i) == c) {
         if (count == index) {
           
-          while (d->structure.at(i) == 'H') {
+          while (d->structure.at(i) == c) {
             Residue *residue = d->molecule->residue(i);
             unsigned long int O, N, C, CA;
             foreach (unsigned long int id, residue->atoms()) {
@@ -176,14 +174,28 @@ namespace Avogadro {
 
         count++;
         // skip to next non 'H' char
-        while (d->structure.at(i) == 'H')
+        while (d->structure.at(i) == c)
           ++i;
       }
     }
 
     return ids;
   } 
+ 
+  QList<unsigned long int> Protein::helix3BackboneAtoms(int index)
+  {
+    return helixBackboneAtoms('G', index);
+  }
+ 
+  QList<unsigned long int> Protein::helix4BackboneAtoms(int index)
+  {
+    return helixBackboneAtoms('H', index);
+  }
 
+  QList<unsigned long int> Protein::helix5BackboneAtoms(int index)
+  {
+    return helixBackboneAtoms('I', index);
+  }
 
   int Protein::residueIndex(Residue *residue) const
   {
