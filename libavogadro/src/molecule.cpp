@@ -1110,6 +1110,23 @@ namespace Avogadro{
     }
     // (that could return NULL, but other methods know they could get NULL)
 
+    // Copy forces, if present and valid
+    if (obmol->HasData(OpenBabel::OBGenericDataType::ConformerData)) {
+      OpenBabel::OBConformerData *cd = static_cast<OpenBabel::OBConformerData*>(obmol->GetData(OpenBabel::OBGenericDataType::ConformerData));
+      if (cd) {
+        std::vector< std::vector<OpenBabel::vector3> > allForces = cd->GetForces();
+
+        // check for validity (i.e., we have some forces, one for each atom
+        if (allForces.size() && allForces[0].size() == numAtoms()) {
+          OpenBabel::vector3 force;
+          foreach (Atom *atom, d->atomList) { // loop through each atom
+            force = allForces[0][atom->index()];
+            atom->setForceVector(Eigen::Vector3d(force.x(), force.y(), force.z()));
+          }
+        }
+      }
+    }
+
     return true;
   }
 
