@@ -46,6 +46,7 @@
 #include <QDir>
 #include <QReadWriteLock>
 #include <QDebug>
+#include <QVariant>
 
 using std::vector;
 using Eigen::Vector3d;
@@ -995,14 +996,24 @@ namespace Avogadro{
                     endAtom->index() + 1, bond->order());
     }
     obmol.EndModify();
-    // TODO: Copy residue information, cubes, etc.
+
+    // Copy unit cells
     if (d->obunitcell != NULL) {
       OpenBabel::OBUnitCell *obunitcell = new OpenBabel::OBUnitCell;
       *obunitcell = *d->obunitcell;
       obmol.SetData(obunitcell);
     }
 
-//    qDebug() << "OBMol() run" << obmol.NumAtoms() << obmol.NumBonds();
+    // Copy OBPairData, if needed
+    OpenBabel::OBPairData *obproperty;
+    foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
+      obproperty = new OpenBabel::OBPairData;
+      obproperty->SetAttribute(propertyName.data());
+      obproperty->SetValue(property(propertyName).toByteArray().data());
+      obmol.SetData(obproperty);
+    }
+
+    // TODO: Copy residue information, cubes, etc.
 
     return obmol;
   }
@@ -1121,10 +1132,21 @@ namespace Avogadro{
           OpenBabel::vector3 force;
           foreach (Atom *atom, d->atomList) { // loop through each atom
             force = allForces[0][atom->index()];
+            qDebug() << " copying force " << force.x() << force.y() << force.z();
             atom->setForceVector(Eigen::Vector3d(force.x(), force.y(), force.z()));
-          }
+          } // end setting forces on each atom
         }
       }
+    } // end HasData(ConformerData)
+
+    // Finally, sync OBPairData to dynamic properties
+    OpenBabel::OBDataIterator dIter;
+    OpenBabel::OBPairData *property;
+    
+    data = obmol->GetAllData(OpenBabel::OBGenericDataType::PairData);
+    for (dIter = data.begin(); dIter != data.end(); ++dIter) {
+      property = static_cast<OpenBabel::OBPairData *>(*dIter);
+      setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
     }
 
     return true;
