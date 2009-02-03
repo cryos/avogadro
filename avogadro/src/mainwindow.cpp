@@ -1412,8 +1412,7 @@ namespace Avogadro
     // we also save an image for copy/paste to office programs, presentations, etc.
     QImage clipboardImage = d->glWidget->grabFrameBuffer(true);
 
-//    Molecule *moleculeCopy = d->molecule;
-    Molecule *moleculeCopy = 0;
+    Molecule *moleculeCopy = d->molecule;
     if (!selectedItems.isEmpty()) { // we only want to copy the selected items
       moleculeCopy = new Molecule;
       std::map<unsigned int, unsigned int> AtomMap; // key is from old, value from new
