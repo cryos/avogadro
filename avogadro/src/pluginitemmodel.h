@@ -49,6 +49,8 @@ namespace Avogadro {
       
       PluginItem *plugin ( const QModelIndex & index ) const;
 
+      bool changed() const;
+
     private:
       PluginItemModelPrivate * const d;
 

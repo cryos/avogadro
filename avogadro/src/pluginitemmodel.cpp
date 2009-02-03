@@ -32,6 +32,7 @@ namespace Avogadro {
   class PluginItemModelPrivate 
   {
     public:
+      bool changed;
       int type;
       QList<PluginItem *> pluginItems;
   };
@@ -40,8 +41,14 @@ namespace Avogadro {
       QAbstractItemModel(parent), 
       d(new PluginItemModelPrivate)
   {
+    d->changed = false;
     d->type = type;
     d->pluginItems = PluginManager::instance()->pluginItems(type);
+  }
+
+  bool PluginItemModel::changed() const
+  {
+    return d->changed;
   }
 
   int PluginItemModel::columnCount( const QModelIndex & ) const
@@ -90,6 +97,7 @@ namespace Avogadro {
         plugin->setEnabled(false);
       }
       emit dataChanged(index, index);
+      d->changed = true;
       return true;
     } 
     
