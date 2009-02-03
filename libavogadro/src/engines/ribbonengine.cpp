@@ -32,6 +32,8 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/painterdevice.h>
 
+#include <avogadro/protein.h>
+
 #include <QMessageBox>
 #include <QString>
 #include <QDebug>
@@ -80,6 +82,13 @@ namespace Avogadro {
     // Check if the chains need updating before drawing them
     if (m_update) updateChains(pd);
 
+    pd->painter()->setColor(&m_chainColors[0]);
+    for (int i = 0; i < m_helixes3.size(); ++i)
+      pd->painter()->drawCylinder(m_helixes3[i][0], m_helixes3[i][1], 2.3);
+    pd->painter()->setColor(&m_chainColors[1]);
+    for (int i = 0; i < m_helixes4.size(); ++i)
+      pd->painter()->drawCylinder(m_helixes4[i][0], m_helixes4[i][1], 2.3);
+
     if (m_type == 0) {
       for (int i = 0; i < m_chains.size(); i++) {
         if (m_chains[i].size() <= 1)
@@ -107,6 +116,13 @@ namespace Avogadro {
 
   bool RibbonEngine::renderQuick(PainterDevice *pd)
   {
+    pd->painter()->setColor(&m_chainColors[0]);
+    for (int i = 0; i < m_helixes3.size(); ++i)
+      pd->painter()->drawCylinder(m_helixes3[i][0], m_helixes3[i][1], 2.3);
+    pd->painter()->setColor(&m_chainColors[1]);
+    for (int i = 0; i < m_helixes4.size(); ++i)
+      pd->painter()->drawCylinder(m_helixes4[i][0], m_helixes4[i][1], 2.3);
+
     // Just render cylinders between the backbone...
     double tRadius = m_radius / 2.0;
     for (int i = 0; i < m_chains.size(); i++) {
@@ -156,6 +172,62 @@ namespace Avogadro {
     if (!isEnabled()) return;
     // Get a list of residues for the molecule
     const Molecule *molecule = pd->molecule();
+    Protein protein((Molecule*)molecule);
+
+    // 4-turn helixes
+    for (int i = 0; i < protein.num4turnHelixes(); ++i) {
+      QList<unsigned long int> helix = protein.helix4BackboneAtoms(i);
+
+      Eigen::Vector3d p1 = Eigen::Vector3d::Zero();
+      for (int i = 0; i < 16; ++i)
+        p1 += *(molecule->atomById(helix.at(i))->pos());
+      p1 /= 16.0;
+
+      Eigen::Vector3d p2 = Eigen::Vector3d::Zero();
+      for (int i = helix.size() - 16; i < helix.size(); ++i)
+        p2 += *(molecule->atomById(helix.at(i))->pos());
+      p2 /= 16.0;
+
+      Eigen::Vector3d ab = p1 - p2;
+      ab.normalize();
+      ab *= 3.5;
+
+      p1 += ab; 
+      p2 -= ab; 
+    
+      QVector<Vector3d> helixPoints;
+      helixPoints.append(p1);
+      helixPoints.append(p2);
+      m_helixes4.append(helixPoints);
+    }
+    // 3-turn helixes
+    for (int i = 0; i < protein.num3turnHelixes(); ++i) {
+      QList<unsigned long int> helix = protein.helix3BackboneAtoms(i);
+
+      Eigen::Vector3d p1 = Eigen::Vector3d::Zero();
+      for (int i = 0; i < 12; ++i)
+        p1 += *(molecule->atomById(helix.at(i))->pos());
+      p1 /= 12.0;
+
+      Eigen::Vector3d p2 = Eigen::Vector3d::Zero();
+      for (int i = helix.size() - 12; i < helix.size(); ++i)
+        p2 += *(molecule->atomById(helix.at(i))->pos());
+      p2 /= 12.0;
+
+      Eigen::Vector3d ab = p1 - p2;
+      ab.normalize();
+      ab *= 3.0;
+
+      p1 += ab; 
+      p2 -= ab; 
+    
+      QVector<Vector3d> helixPoints;
+      helixPoints.append(p1);
+      helixPoints.append(p2);
+      m_helixes3.append(helixPoints);
+    }
+
+ 
     m_chains.clear();
     QList<Primitive *> list;
     list = primitives().subList(Primitive::ResidueType);
