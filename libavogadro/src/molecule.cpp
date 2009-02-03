@@ -1062,13 +1062,19 @@ namespace Avogadro{
     // Copy the residues across...
     std::vector<OpenBabel::OBResidue *> residues;
     OpenBabel::OBResidueIterator iResidue;
+    short chainNumber = 0;
+    QHash<char, short> chains;
     for (OpenBabel::OBResidue *obres = static_cast<OpenBabel::OBResidue *>(obmol->BeginResidue(iResidue));
           obres; obres = static_cast<OpenBabel::OBResidue *>(obmol->NextResidue(iResidue))) {
       /// Copy these residues!
       Residue *residue = addResidue();
       residue->setName(obres->GetName().c_str());
       residue->setNumber(obres->GetNumString().c_str());
-      residue->setChainNumber(obres->GetChainNum());
+      if (!chains.contains(obres->GetChain())) {
+        chains[obres->GetChain()] = chainNumber;
+        chainNumber++;
+      }
+      residue->setChainNumber(chains.value(obres->GetChain()));
       std::vector<OpenBabel::OBAtom*> obatoms = obres->GetAtoms();
       foreach (OpenBabel::OBAtom *obatom, obatoms) {
         unsigned long int atomId = atom(obatom->GetIdx()-1)->id();
