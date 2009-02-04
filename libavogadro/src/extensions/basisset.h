@@ -5,7 +5,7 @@
   Copyright (C) 2008 Albert De Fusco
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.sourceforge.net/>
+  For more information, see <http://avogadro.openmolecules.net/>
 
   This library is free software; you can redistribute it and/or modify
   it under the terms of the GNU Library General Public License as

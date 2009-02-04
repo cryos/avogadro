@@ -5,7 +5,7 @@
   Copyright (C) 2006 by Donald Ephraim Curtis
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.sourceforge.net/>
+  For more information, see <http://avogadro.openmolecules.net/>
 
   Some code is based on WxMacMolPlt
   For more information, see <http://www.scl.ameslab.gov/~brett/MacMolPlt/>

@@ -2,7 +2,7 @@
   Copyright (C) 2007 Carsten Niehaus <cniehaus@kde.org>
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.sourceforge.net/>
+  For more information, see <http://avogadro.openmolecules.net/>
 
   Some code is based on Open Babel
   For more information, see <http://openbabel.sourceforge.net/>
