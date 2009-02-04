@@ -90,8 +90,8 @@ namespace Avogadro {
     hide();
   }
 
-  void VibrationDialog::cellClicked(int row, int column) {
-    qDebug() << " clicked cell";
+  void VibrationDialog::cellClicked(int row, int column)
+  {
     emit selectedMode(row);
   }
 
