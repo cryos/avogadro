@@ -60,14 +60,22 @@ namespace Avogadro {
   {
     pd->painter()->setColor(0.0, 1.0, 0.0); // TODO: make configurable
 
-    Vector3d v1, v2, v3;
+    Vector3d v2, v3;
     foreach(Atom *atom, atoms()) {
-      v1 = Vector3d(*atom->pos());
-      v2 = v1 + atom->forceVector();
-      v3 = v1 + 0.8 * atom->forceVector();
-      pd->painter()->drawLine(v1, v2, 2);
-      pd->painter()->drawCone(v3, v2, 0.1);
+      renderOpaque(pd, atom);
     }
+
+    return true;
+  }
+
+  bool ForceEngine::renderOpaque(PainterDevice *pd, const Atom *atom)
+  {
+    const Vector3d &v1 = *atom->pos();
+    Vector3d v2 = v1 + atom->forceVector();
+    Vector3d v3 = v1 + 0.8 * atom->forceVector();
+
+    pd->painter()->drawLine(v1, v2, 2);
+    pd->painter()->drawCone(v3, v2, 0.1);
 
     return true;
   }

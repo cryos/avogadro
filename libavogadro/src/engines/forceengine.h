@@ -52,6 +52,7 @@ namespace Avogadro {
       //! \name Render Methods
       //@{
       bool renderOpaque(PainterDevice *pd);
+      bool renderOpaque(PainterDevice *pd, const Atom *a);
       //@}
 
       //QWidget* settingsWidget();
