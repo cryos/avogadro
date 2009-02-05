@@ -2296,6 +2296,9 @@ namespace Avogadro
 
   void MainWindow::showMainWindowMac()
   {
+    if (d->menuItemStatus.empty())
+      return; // we're initializing the application, not showing after a hide calls
+
     // Set the status of menu items to what we saved with hideMainWindowMac()
     unsigned int menuIndex = 0;
     unsigned int itemIndex = 0;
