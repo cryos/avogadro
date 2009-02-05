@@ -1,0 +1,995 @@
+                  Welcome to Q-Chem
+     A Quantum Leap Into The Future Of Chemistry
+
+ Y. Shao, L. Fusti-Molnar, Y. Jung, J. Kussmann, C. Ochsenfeld,
+ S. T. Brown, A. T. B. Gilbert, L. V. Slipchenko,S. V. Levchenko,
+ D. P. O'Neill, R. A. DiStasio Jr., R. C. Lochan, T. Wang,
+ G. J. O. Beran, N. A. Besley, J. M. Herbert, C. Y. Lin,
+ T. Van Voorhis, S. H. Chien, A. Sodt, R. P. Steele, 
+ V. A. Rassolov, P. E. Maslen, P. P. Korambath, R. D. Adamson,
+ B. Austin, J. Baker, E. F. C. Byrd, H. Dachsel, R. J. Doerksen,
+ A. Dreuw, B. D. Dunietz, A. D. Dutoi, T. R. Furlani,
+ S. R. Gwaltney, A. Heyden, S. Hirata, C.-P. Hsu, G. Kedziora,
+ R. Z. Khaliullin, P. Klunzinger, A. M. Lee, M. S. Lee, W. Liang,
+ I. Lotan, N. Nair, B. Peters, E. I. Proynov, P. A. Pieniazek, 
+ Y. M. Rhee, J. Ritchie, E. Rosta, C. D. Sherrill, 
+ A. C. Simmonett, J. E. Subotnik, H. L. Woodcock III,
+ W. Zhang, A. T. Bell, A. K. Chakraborty, D. M. Chipman,
+ F. J. Keil, A. Warshel, W. J. Hehre, H. F. Schaefer III,
+ J. Kong, A. I. Krylov, P. M. W. Gill, M. Head-Gordon,
+ Q-Chem, Version 3.1, Q-Chem, Inc., Pittsburgh, PA (2007).
+
+ Additional authors for Version 3.1: 
+ Z. Gan, Y. Zhao, N. E. Schultz, D. Truhlar, E. Epifanovsky and M. Oana.
+
+
+ MAC (Intel) OSX Version
+
+ Q-chem begins on Tue Jan 20 17:28:01 2009  
+
+
+theFileMan(): MAXOPENFILES=206 MAX_SUB_FILE_NUM=16
+Maximum size of a physical file is 2.0 GB, maximum size of a tmp-file is 32.0 GB
+
+
+Total Memory Limit in MB = 2000
+Mega-Array Size in MB = 128
+
+--------------------------------------------------------------
+User input:
+--------------------------------------------------------------
+$molecule
+   0 1
+      C       -4.65592       -0.74617        0.00237
+         O       -3.24135       -0.72185        0.05048
+	    H       -5.03898        0.27689       -0.00745
+	       H       -5.04204       -1.28327        0.87192
+	          H       -4.97128       -1.25963       -0.90962
+		     H       -2.99147       -0.26049        0.86983
+		     $end
+
+$rem
+jobtype               nmr
+exchange              b3lyp 
+basis                 6-31+G*
+thresh                14
+mem_static            128
+mem_total             2000
+$end
+--------------------------------------------------------------
+ Writing REM_CC_EA            0
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C       0.664955    -0.020102    -0.000019
+    2      O      -0.742623     0.130359     0.000006
+    3      H       0.974407    -0.564133    -0.895426
+    4      H       0.974415    -0.564132     0.895496
+    5      H       1.127776     0.970158     0.000016
+    6      H      -1.125338    -0.764156    -0.000019
+ ----------------------------------------------------
+ Molecular Point Group                 C1    NOp =  1
+ Largest Abelian Subgroup              C1    NOp =  1
+ Nuclear Repulsion Energy =    40.3666036986 hartrees
+ There are        9 alpha and        9 beta electrons
+ Requested basis set is 6-31+G(d)
+ There are 18 shells and 46 basis functions
+
+Total QAlloc Memory Limit   2000 MB
+Mega-Array Size       126 MB
+MEM_STATIC part       128 MB
+
+finished with qalloc call
+
+                       Distance Matrix (Angstroms)
+             C (  1)   O (  2)   H (  3)   H (  4)   H (  5)
+   O (  2)  1.415597
+   H (  3)  1.092467  2.057258
+   H (  4)  1.092558  2.057290  1.790922
+   H (  5)  1.093078  2.050282  1.783084  1.783101
+   H (  6)  1.938754  0.972948  2.291439  2.291489  2.843303
+
+ Job number = 2, Threshold = 1.00E-14
+Symmetry turned off temporarily
+ Using the largest function pair in Schwarz integrals
+Total number of integrals generated =           17911
+Symmetry turned back on
+Evaluating contribution to one-electron hamiltonian from nuclear
+ Job number = 11, Threshold = 1.00E-14
+Total number of integrals generated =            6882
+ Smallest overlap matrix eigenvalue = 6.03E-03
+ Multipole matrices computed through 2nd order
+
+  Scale SEOQF with 1.000000e-01/1.000000e-01/1.000000e-01
+
+ Standard Electronic Orientation quadrupole field applied
+ Nucleus-field energy     =     0.0000000004 hartrees
+ Guess from superposition of atomic densities
+ Warning:  Energy on first SCF cycle will be non-variational
+ A restricted hybrid HF-DFT SCF calculation will be
+ performed using Pulay DIIS extrapolation
+ Exchange:     0.2000 Hartree-Fock + 0.0800 Slater + 0.7200 Becke
+ Correlation:  0.8100 LYP + 0.1900 VWN1RPA
+ Using SG-0 standard quadrature grid for H to Cl, except Group VIII elements
+ Using SG-1 standard quadrature grid for other elements
+ SCF converges when DIIS error is below 1.0E-07
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-14
+Approximate symmetry reduction factor = 1.000000
+Total number of integrals generated =          666759
+Target Grid is being used
+ XC job = XCMTRX
+
+Do we need the first derivatives of the weights?    no
+Do we need the second derivatives of the weights?   no
+Do the becke weights directly?                      no
+The Small Product Threshold is :                    1.000E-11
+The SigS2 Reduction Threshold is :                  1.000E-14
+
+IncDFT is :                                       ON
+The incDFT Threshold for XC Quadrature is:        -1.000E+00
+The incDFT Threshold for Density Matrix is:       -1.000E+00
+ CPU 0.00 s  wall 0.00 s
+Total Number of Grid Points = 8168
+ CPU 0.22 s  wall 0.26 s
+
+ Total DFTman time = 0.22 CPUs 0.26 Wall
+Fock build time:  0.61 s (CPU) 0.66 s (wall)
+DIIS Errors:  Max 7.53E-01 RMS 9.98E-02
+
+Current DIIS subspace size = 1
+REM_GRID_RESTART_DIIS = 0
+
+ ---------------------------------------
+  Cycle       Energy         DIIS Error
+ ---------------------------------------
+    1    -115.8553963760      9.98E-02  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-14
+Approximate symmetry reduction factor = 1.000000
+Reusing in-core integrals buffer for job 22
+Target Grid is being used
+ XC job = XCMTRX
+
+Do we need the first derivatives of the weights?    no
+Do we need the second derivatives of the weights?   no
+Do the becke weights directly?                      no
+The Small Product Threshold is :                    1.000E-11
+The SigS2 Reduction Threshold is :                  1.000E-14
+
+IncDFT is :                                       ON
+The incDFT Threshold for XC Quadrature is:        1.000E-10
+The incDFT Threshold for Density Matrix is:       1.000E-10
+ CPU 0.00 s  wall 0.00 s
+Total Number of Grid Points = 8168
+ CPU 0.19 s  wall 0.19 s
+
+ Total DFTman time = 0.19 CPUs 0.19 Wall
+Fock build time:  0.28 s (CPU) 0.28 s (wall)
+DIIS Errors:  Max 1.93E-01 RMS 1.57E-02
+
+Current DIIS subspace size = 2
+REM_GRID_RESTART_DIIS = 0
+
+    2    -115.6668897205      1.57E-02  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-14
+Approximate symmetry reduction factor = 1.000000
+Reusing in-core integrals buffer for job 22
+Target Grid is being used
+ XC job = XCMTRX
+
+Do we need the first derivatives of the weights?    no
+Do we need the second derivatives of the weights?   no
+Do the becke weights directly?                      no
+The Small Product Threshold is :                    1.000E-11
+The SigS2 Reduction Threshold is :                  1.000E-14
+
+IncDFT is :                                       ON
+The incDFT Threshold for XC Quadrature is:        1.000E-10
+The incDFT Threshold for Density Matrix is:       1.000E-10
+ CPU 0.00 s  wall 0.00 s
+Total Number of Grid Points = 8168
+ CPU 0.19 s  wall 0.19 s
+
+ Total DFTman time = 0.19 CPUs 0.19 Wall
+Fock build time:  0.28 s (CPU) 0.28 s (wall)
+DIIS Errors:  Max 3.03E-01 RMS 2.31E-02
+
+Current DIIS subspace size = 3
+REM_GRID_RESTART_DIIS = 0
+
+    3    -115.6128068963      2.31E-02  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-14
+Approximate symmetry reduction factor = 1.000000
+Reusing in-core integrals buffer for job 22
+Target Grid is being used
+ XC job = XCMTRX
+
+Do we need the first derivatives of the weights?    no
+Do we need the second derivatives of the weights?   no
+Do the becke weights directly?                      no
+The Small Product Threshold is :                    1.000E-11
+The SigS2 Reduction Threshold is :                  1.000E-14
+
+IncDFT is :                                       ON
+The incDFT Threshold for XC Quadrature is:        1.000E-10
+The incDFT Threshold for Density Matrix is:       1.000E-10
+ CPU 0.00 s  wall 0.00 s
+Total Number of Grid Points = 8168
+ CPU 0.19 s  wall 0.19 s
+
+ Total DFTman time = 0.19 CPUs 0.19 Wall
+Fock build time:  0.28 s (CPU) 0.28 s (wall)
+DIIS Errors:  Max 2.81E-02 RMS 2.29E-03
+
+Current DIIS subspace size = 4
+REM_GRID_RESTART_DIIS = 0
+
+    4    -115.7229417699      2.29E-03  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-14
+Approximate symmetry reduction factor = 1.000000
+Reusing in-core integrals buffer for job 22
+Target Grid is being used
+ XC job = XCMTRX
+
+Do we need the first derivatives of the weights?    no
+Do we need the second derivatives of the weights?   no
+Do the becke weights directly?                      no
+The Small Product Threshold is :                    1.000E-11
+The SigS2 Reduction Threshold is :                  1.000E-14
+
+IncDFT is :                                       ON
+The incDFT Threshold for XC Quadrature is:        1.000E-10
+The incDFT Threshold for Density Matrix is:       1.000E-10
+ CPU 0.00 s  wall 0.00 s
+Total Number of Grid Points = 8168
+ CPU 0.19 s  wall 0.19 s
+
+ Total DFTman time = 0.19 CPUs 0.19 Wall
+Fock build time:  0.28 s (CPU) 0.28 s (wall)
+DIIS Errors:  Max 8.33E-03 RMS 7.90E-04
+
+Current DIIS subspace size = 5
+REM_GRID_RESTART_DIIS = 0
+
+    5    -115.7239632841      7.90E-04  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-14
+Approximate symmetry reduction factor = 1.000000
+Reusing in-core integrals buffer for job 22
+Target Grid is being used
+ XC job = XCMTRX
+
+Do we need the first derivatives of the weights?    no
+Do we need the second derivatives of the weights?   no
+Do the becke weights directly?                      no
+The Small Product Threshold is :                    1.000E-11
+The SigS2 Reduction Threshold is :                  1.000E-14
+
+IncDFT is :                                       ON
+The incDFT Threshold for XC Quadrature is:        1.000E-10
+The incDFT Threshold for Density Matrix is:       1.000E-10
+ CPU 0.00 s  wall 0.00 s
+Total Number of Grid Points = 8168
+ CPU 0.19 s  wall 0.19 s
+
+ Total DFTman time = 0.19 CPUs 0.19 Wall
+Fock build time:  0.28 s (CPU) 0.28 s (wall)
+DIIS Errors:  Max 7.27E-04 RMS 9.99E-05
+
+Current DIIS subspace size = 6
+REM_GRID_RESTART_DIIS = 0
+
+    6    -115.7241050451      9.99E-05  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-14
+Approximate symmetry reduction factor = 1.000000
+Reusing in-core integrals buffer for job 22
+Target Grid is being used
+ XC job = XCMTRX
+
+Do we need the first derivatives of the weights?    no
+Do we need the second derivatives of the weights?   no
+Do the becke weights directly?                      no
+The Small Product Threshold is :                    1.000E-11
+The SigS2 Reduction Threshold is :                  1.000E-14
+
+IncDFT is :                                       ON
+The incDFT Threshold for XC Quadrature is:        1.000E-10
+The incDFT Threshold for Density Matrix is:       1.000E-10
+ CPU 0.00 s  wall 0.00 s
+Total Number of Grid Points = 8168
+ CPU 0.19 s  wall 0.19 s
+
+ Total DFTman time = 0.19 CPUs 0.19 Wall
+Fock build time:  0.28 s (CPU) 0.28 s (wall)
+DIIS Errors:  Max 7.46E-05 RMS 7.53E-06
+
+Current DIIS subspace size = 7
+REM_GRID_RESTART_DIIS = 0
+
+    7    -115.7241073380      7.53E-06  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-14
+Approximate symmetry reduction factor = 1.000000
+Reusing in-core integrals buffer for job 22
+Target Grid is being used
+ XC job = XCMTRX
+
+Do we need the first derivatives of the weights?    no
+Do we need the second derivatives of the weights?   no
+Do the becke weights directly?                      no
+The Small Product Threshold is :                    1.000E-11
+The SigS2 Reduction Threshold is :                  1.000E-14
+
+IncDFT is :                                       ON
+The incDFT Threshold for XC Quadrature is:        1.000E-10
+The incDFT Threshold for Density Matrix is:       1.000E-10
+ CPU 0.00 s  wall 0.00 s
+Total Number of Grid Points = 8168
+ CPU 0.18 s  wall 0.18 s
+
+ Total DFTman time = 0.18 CPUs 0.18 Wall
+Fock build time:  0.27 s (CPU) 0.27 s (wall)
+DIIS Errors:  Max 9.36E-06 RMS 1.26E-06
+
+Current DIIS subspace size = 8
+REM_GRID_RESTART_DIIS = 0
+
+    8    -115.7241073519      1.26E-06  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-14
+Approximate symmetry reduction factor = 1.000000
+Reusing in-core integrals buffer for job 22
+Target Grid is being used
+ XC job = XCMTRX
+
+Do we need the first derivatives of the weights?    no
+Do we need the second derivatives of the weights?   no
+Do the becke weights directly?                      no
+The Small Product Threshold is :                    1.000E-11
+The SigS2 Reduction Threshold is :                  1.000E-14
+
+IncDFT is :                                       ON
+The incDFT Threshold for XC Quadrature is:        1.000E-10
+The incDFT Threshold for Density Matrix is:       1.000E-10
+ CPU 0.00 s  wall 0.00 s
+Total Number of Grid Points = 8168
+ CPU 0.18 s  wall 0.18 s
+
+ Total DFTman time = 0.18 CPUs 0.18 Wall
+Fock build time:  0.27 s (CPU) 0.27 s (wall)
+DIIS Errors:  Max 1.35E-06 RMS 1.71E-07
+
+Current DIIS subspace size = 9
+REM_GRID_RESTART_DIIS = 0
+
+    9    -115.7241073527      1.71E-07  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-14
+Approximate symmetry reduction factor = 1.000000
+Reusing in-core integrals buffer for job 22
+Target Grid is being used
+ XC job = XCMTRX
+
+Do we need the first derivatives of the weights?    no
+Do we need the second derivatives of the weights?   no
+Do the becke weights directly?                      no
+The Small Product Threshold is :                    1.000E-11
+The SigS2 Reduction Threshold is :                  1.000E-14
+
+IncDFT is :                                       ON
+The incDFT Threshold for XC Quadrature is:        1.000E-10
+The incDFT Threshold for Density Matrix is:       1.000E-10
+ CPU 0.00 s  wall 0.00 s
+Total Number of Grid Points = 8168
+ CPU 0.16 s  wall 0.16 s
+
+ Total DFTman time = 0.16 CPUs 0.16 Wall
+Fock build time:  0.25 s (CPU) 0.25 s (wall)
+DIIS Errors:  Max 2.52E-07 RMS 2.82E-08
+
+Current DIIS subspace size = 10
+REM_GRID_RESTART_DIIS = 0
+
+   10    -115.7241073533      2.82E-08  00000 Convergence criterion met
+ ---------------------------------------
+ SCF time:  CPU 3.13 s  wall 3.17 s
+WARNING! The DFT part of the D-SCF code is not yet well tested 
+WARNING: SYMMETRY USAGE disabled in D-CPSCF for now... 
+      ==================================================== 
+      ===                                              === 
+      ===                   D-GIAO-SCF                 === 
+      ===                                              === 
+      ===          J.Kussmann and C.Ochsenfeld         === 
+      ===                                              === 
+      ===                                              === 
+      ==================================================== 
+ Job number = 82, Threshold = 1.00E-14
+Total number of integrals generated =            6882
+ MakeEFS time:  CPU       0.01 s  wall       0.01 s
+         ============================================= 
+         ===                                       === 
+         ===             Let's do D-CPSCF          === 
+         ===                                       === 
+         ============================================= 
+Using standard thresholds as set in input file 
+LEQS: solver= 40 itmax= 100 lev2max= 75 tol= 0e+00 lev2tol= 1e-02 
+      itol= 2  dodiis = 5 
+ Sinv time:  CPU       0.00 s  wall       0.00 s
+There are 3 perturbations to be evaluated (Bx, By, Bz)
+GIAO-D-CPSCF will evaluate 3 perturbation(s) at once 
+============================================================
+NEXT PERTURBATION(S).... 0 --> 2 
+
+Build one-electron first derivatives... (d/dB)
+
+ Job number = 80, Threshold = 1.00E-14
+Symmetry turned off temporarily
+Symmetry turned back on
+ getshB time:  CPU       0.01 s  wall       0.02 s
+ getPSxP time:  CPU       0.00 s  wall       0.00 s
+
+Calculating d/dB J and d/dB K
+
+ Job number = 185, Threshold = 1.00E-14
+Total number of integrals generated =          666759
+ MakeJKB time:  CPU       1.30 s  wall       1.32 s
+ XC job = EXPLICIT_BFIELD_1STDRV_OF_XCMTRX
+
+Do we need the first derivatives of the weights?    no
+Do we need the second derivatives of the weights?   no
+Do the becke weights directly?                      no
+The Small Product Threshold is :                    1.000E-11
+The SigS2 Reduction Threshold is :                  0.000E+00
+ CPU 0.00 s  wall 0.00 s
+Total Number of Grid Points = 8168
+ CPU 0.53 s  wall 0.54 s
+
+ Total DFTman time = 0.53 CPUs 0.54 Wall
+ getderivB time:  CPU       1.83 s  wall       1.86 s
+ RHS time:  CPU       1.85 s  wall       1.88 s
+ Job number = 81, Threshold = 1.00E-14
+Total number of integrals generated =            6882
+ MakeSOI time:  CPU       0.01 s  wall       0.02 s
+
+ Level-2 iteration 0  max. difference = 1.000000e+10
+
+
+ Now solving A1x=b via cg ... 
+ Level-1 loop converged --- 10 iterations 
+ Final A1x residuum = 9.056025e-03 max_element = 5.743904e-02 
+ CG time:  CPU       0.02 s  wall       0.02 s
+
+ Done with level 1 ... and now level 3 
+
+ Job number = 32, Threshold = 1.00E-14
+Total number of integrals generated =          666759
+ getnfock time:  CPU       0.40 s  wall       0.40 s
+ Fock in Hess time:  CPU       0.40 s  wall       0.40 s
+ Job number = 81, Threshold = 1.00E-14
+Total number of integrals generated =            6882
+ MakeSOI time:  CPU       0.01 s  wall       0.01 s
+
+ ======================================================
+   Intermediate isotropic shifts
+ ======================================================
+       ATOM           ISOTROPIC         DIFF
+  ------------------------------------------------
+   Atom C     1     155.37251154     -169.66220093
+   Atom O     2     337.92397933     -192.30566886
+   Atom H     3      28.87525152       -0.98727831
+   Atom H     4      28.87358137       -0.98667001
+   Atom H     5      28.78013532       -0.19122107
+   Atom H     6      31.51573319        1.44936524
+
+   max. difference:   -192.30566886 (Nuc. 2)
+ ======================================================
+
+
+ Level-2 iteration 1  max. difference = 1.923057e+02
+
+
+ Now solving A1x=b via cg ... 
+ Level-1 loop converged --- 10 iterations 
+ Final A1x residuum = 3.926965e-02 max_element = 2.468833e-01 
+ CG time:  CPU       0.02 s  wall       0.02 s
+
+ Done with level 1 ... and now level 3 
+
+ Job number = 32, Threshold = 1.00E-14
+Total number of integrals generated =          673641
+ getnfock time:  CPU       0.40 s  wall       0.40 s
+ Fock in Hess time:  CPU       0.40 s  wall       0.40 s
+ Job number = 81, Threshold = 1.00E-14
+Total number of integrals generated =            6882
+ MakeSOI time:  CPU       0.01 s  wall       0.01 s
+
+ ======================================================
+   Intermediate isotropic shifts
+ ======================================================
+       ATOM           ISOTROPIC         DIFF
+  ------------------------------------------------
+   Atom C     1     140.69356589      -14.67894564
+   Atom O     2     318.36179324      -19.56218608
+   Atom H     3      28.61600312       -0.25924840
+   Atom H     4      28.61442367       -0.25915770
+   Atom H     5      28.65134506       -0.12879026
+   Atom H     6      32.02868934        0.51295615
+
+   max. difference:    -19.56218608 (Nuc. 2)
+ ======================================================
+
+
+ Level-2 iteration 2  max. difference = 1.956219e+01
+
+
+ Now solving A1x=b via cg ... 
+ Level-1 loop converged --- 10 iterations 
+ Final A1x residuum = 4.284896e-02 max_element = 2.694381e-01 
+ CG time:  CPU       0.02 s  wall       0.02 s
+
+ Done with level 1 ... and now level 3 
+
+ Job number = 32, Threshold = 1.00E-14
+Total number of integrals generated =          673641
+ getnfock time:  CPU       0.40 s  wall       0.40 s
+ Fock in Hess time:  CPU       0.40 s  wall       0.40 s
+ Job number = 81, Threshold = 1.00E-14
+Total number of integrals generated =            6882
+ MakeSOI time:  CPU       0.01 s  wall       0.01 s
+
+ ======================================================
+   Intermediate isotropic shifts
+ ======================================================
+       ATOM           ISOTROPIC         DIFF
+  ------------------------------------------------
+   Atom C     1     139.51481212       -1.17875377
+   Atom O     2     314.70788806       -3.65390518
+   Atom H     3      28.55273306       -0.06327006
+   Atom H     4      28.55116482       -0.06325885
+   Atom H     5      28.63611231       -0.01523276
+   Atom H     6      32.21861715        0.18992781
+
+   max. difference:     -3.65390518 (Nuc. 2)
+ ======================================================
+
+
+ Level-2 iteration 3  max. difference = 3.653905e+00
+
+
+ Now solving A1x=b via cg ... 
+ Level-1 loop converged --- 10 iterations 
+ Final A1x residuum = 4.341979e-02 max_element = 2.729502e-01 
+ CG time:  CPU       0.02 s  wall       0.02 s
+
+ Done with level 1 ... and now level 3 
+
+ Job number = 32, Threshold = 1.00E-14
+Total number of integrals generated =          673641
+ getnfock time:  CPU       0.39 s  wall       0.39 s
+ Fock in Hess time:  CPU       0.39 s  wall       0.39 s
+ Job number = 81, Threshold = 1.00E-14
+Total number of integrals generated =            6882
+ MakeSOI time:  CPU       0.01 s  wall       0.01 s
+
+ ======================================================
+   Intermediate isotropic shifts
+ ======================================================
+       ATOM           ISOTROPIC         DIFF
+  ------------------------------------------------
+   Atom C     1     139.54988219        0.03507007
+   Atom O     2     314.12083213       -0.58705594
+   Atom H     3      28.54661702       -0.00611604
+   Atom H     4      28.54505115       -0.00611367
+   Atom H     5      28.63419261       -0.00191970
+   Atom H     6      32.25228636        0.03366921
+
+   max. difference:     -0.58705594 (Nuc. 2)
+ ======================================================
+
+
+ Level-2 iteration 4  max. difference = 5.870559e-01
+
+
+ Now solving A1x=b via cg ... 
+ Level-1 loop converged --- 10 iterations 
+ Final A1x residuum = 4.347522e-02 max_element = 2.732452e-01 
+ CG time:  CPU       0.02 s  wall       0.02 s
+
+ Done with level 1 ... and now level 3 
+
+ Job number = 32, Threshold = 1.00E-14
+Total number of integrals generated =          673641
+ getnfock time:  CPU       0.39 s  wall       0.39 s
+ Fock in Hess time:  CPU       0.39 s  wall       0.39 s
+ Job number = 81, Threshold = 1.00E-14
+Total number of integrals generated =            6882
+ MakeSOI time:  CPU       0.01 s  wall       0.01 s
+
+ ======================================================
+   Intermediate isotropic shifts
+ ======================================================
+       ATOM           ISOTROPIC         DIFF
+  ------------------------------------------------
+   Atom C     1     139.54950329       -0.00037891
+   Atom O     2     314.10970993       -0.01112220
+   Atom H     3      28.54636683       -0.00025019
+   Atom H     4      28.54480115       -0.00025001
+   Atom H     5      28.63368481       -0.00050780
+   Atom H     6      32.25376174        0.00147538
+
+   max. difference:     -0.01112220 (Nuc. 2)
+ ======================================================
+
+
+ Level-2 iteration 5  max. difference = 1.112220e-02
+
+
+ Now solving A1x=b via cg ... 
+ Level-1 loop converged --- 10 iterations 
+ Final A1x residuum = 4.347035e-02 max_element = 2.732140e-01 
+ CG time:  CPU       0.02 s  wall       0.02 s
+
+ Done with level 1 ... and now level 3 
+
+ Job number = 32, Threshold = 1.00E-14
+Total number of integrals generated =          673641
+ getnfock time:  CPU       0.39 s  wall       0.40 s
+ Fock in Hess time:  CPU       0.39 s  wall       0.40 s
+ Job number = 81, Threshold = 1.00E-14
+Total number of integrals generated =            6882
+ MakeSOI time:  CPU       0.01 s  wall       0.01 s
+
+ ======================================================
+   Intermediate isotropic shifts
+ ======================================================
+       ATOM           ISOTROPIC         DIFF
+  ------------------------------------------------
+   Atom C     1     139.54974364        0.00024035
+   Atom O     2     314.11692792        0.00721800
+   Atom H     3      28.54643103        0.00006420
+   Atom H     4      28.54486538        0.00006423
+   Atom H     5      28.63364455       -0.00004026
+   Atom H     6      32.25366963       -0.00009212
+
+   max. difference:      0.00721800 (Nuc. 2)
+ ======================================================
+
+
+ Level-2 iteration 6  max. difference = 7.217996e-03
+
+D-CPSCF converged!!! 
+Level-2 loop converged!!! 
+========================= 
+ Job number = 81, Threshold = 1.00E-14
+ MakeSOI time:  CPU       0.01 s  wall       0.01 s
+
+
+ A miracle has come to pass --- everything converged!!! 
+
+
+ D-CPSCF terminated its mission successfully 
+
+
+         ============================================= 
+         ===                                       === 
+         ===             Ciao   D-CPSCF ...        === 
+         ===                                       === 
+         ============================================= 
+
+WARNING: no symmetry was used (preliminary integrals)
+
+
+          ============================================= 
+          ===                                       === 
+          ===       NMR-SHIELDING TENSORS (SCF)     === 
+          ===                                       === 
+          ============================================= 
+
+
+  -------------------
+  -- ATOM  C     1 --
+  -------------------
+
+   ISOTROPIC:    139.54974364          ANISOTROPIC:     74.34978117
+
+   diamagnetic (undisturbed density) part of shielding tensor  (EFS)
+      Trace =    254.41638756
+      Full Tensor:
+                263.40828024           -2.39849207           -0.00032720
+                 -0.91479292          249.75418494            0.00020988
+                 -0.00013997            0.00028050          250.08669749
+   paramagnetic (undisturbed density) part of shielding tensor (SOILP)
+      Trace =    -10.90092326
+      Full Tensor:
+                 -7.88828187           -1.41904686           -0.00017382
+                 -1.05140186          -12.95153575           -0.00008344
+                  0.00083011           -0.00002845          -11.86295217
+   paramagnetic (disturbed density) part of shielding tensor   (SOI)
+      Trace =   -103.96572065
+      Full Tensor:
+                -67.49377300           -3.65993353            0.00112300
+                 -7.66565399         -124.13137328           -0.00337769
+                 -0.00083811           -0.00306505         -120.27201568
+   total shielding tensor
+      Trace =    139.54974364
+      Full Tensor:
+                188.02622538           -7.47747246            0.00062198
+                 -9.63184878          112.67127590           -0.00325125
+                 -0.00014797           -0.00281300          117.95172965
+
+
+  -------------------
+  -- ATOM  O     2 --
+  -------------------
+
+   ISOTROPIC:    314.11692792          ANISOTROPIC:    113.60317660
+
+   diamagnetic (undisturbed density) part of shielding tensor  (EFS)
+      Trace =    395.18194127
+      Full Tensor:
+                409.45047546            1.96532436           -0.00033457
+                  1.34935474          394.24182516            0.00039764
+                 -0.00045226            0.00041347          381.85352318
+   paramagnetic (undisturbed density) part of shielding tensor (SOILP)
+      Trace =     -9.27802888
+      Full Tensor:
+                 -3.44663365            0.16967355            0.00000450
+                 -0.14134062           -8.74029969            0.00009959
+                 -0.00015766            0.00017025          -15.64715328
+   paramagnetic (disturbed density) part of shielding tensor   (SOI)
+      Trace =    -71.78698447
+      Full Tensor:
+               -116.82377857           25.18370075            0.00173668
+                 65.66662186          -18.69909912           -0.00013761
+                  0.00816923           -0.00119914          -79.83807571
+   total shielding tensor
+      Trace =    314.11692792
+      Full Tensor:
+                289.18006324           27.31869866            0.00140662
+                 66.87463597          366.80242634            0.00035961
+                  0.00755930           -0.00061542          286.36829419
+
+
+  -------------------
+  -- ATOM  H     3 --
+  -------------------
+
+   ISOTROPIC:     28.54643103          ANISOTROPIC:      8.14208193
+
+   diamagnetic (undisturbed density) part of shielding tensor  (EFS)
+      Trace =     25.84461495
+      Full Tensor:
+                 22.69348703           -4.31657493           -6.35557451
+                 -4.02153744           22.88851646            8.92097173
+                 -6.44721371            9.31191875           31.95184135
+   paramagnetic (undisturbed density) part of shielding tensor (SOILP)
+      Trace =      2.77681597
+      Full Tensor:
+                  5.62367572            0.72223627            1.41154597
+                  0.92880190            2.78307980           -3.31511627
+                  2.08965056           -3.37770993           -0.07630760
+   paramagnetic (disturbed density) part of shielding tensor   (SOI)
+      Trace =     -0.07499989
+      Full Tensor:
+                  3.53798203            1.26741908            1.03927323
+                  1.76397478            0.20083772           -3.65666401
+                  3.38920649           -4.10468525           -3.96381941
+   total shielding tensor
+      Trace =     28.54643103
+      Full Tensor:
+                 31.85514478           -2.32691958           -3.90475532
+                 -1.32876076           25.87243398            1.94919145
+                 -0.96835666            1.82952357           27.91171434
+
+
+  -------------------
+  -- ATOM  H     4 --
+  -------------------
+
+   ISOTROPIC:     28.54486538          ANISOTROPIC:      8.14220142
+
+   diamagnetic (undisturbed density) part of shielding tensor  (EFS)
+      Trace =     25.84267465
+      Full Tensor:
+                 22.69159516           -4.31582462            6.35502729
+                 -4.02079936           22.88599854           -8.91985159
+                  6.44673943           -9.31084652           31.95043025
+   paramagnetic (undisturbed density) part of shielding tensor (SOILP)
+      Trace =      2.77671792
+      Full Tensor:
+                  5.62355634            0.72205879           -1.41147190
+                  0.92841841            2.78350450            3.31475412
+                 -2.08903327            3.37722487           -0.07690707
+   paramagnetic (disturbed density) part of shielding tensor   (SOI)
+      Trace =     -0.07452720
+      Full Tensor:
+                  3.53800561            1.26716429           -1.03906853
+                  1.76331101            0.20134079            3.65514051
+                 -3.38906560            4.10367752           -3.96292798
+   total shielding tensor
+      Trace =     28.54486538
+      Full Tensor:
+                 31.85315710           -2.32660155            3.90448686
+                 -1.32906994           25.87084383           -1.94995696
+                  0.96864056           -1.82994413           27.91059520
+
+
+  -------------------
+  -- ATOM  H     5 --
+  -------------------
+
+   ISOTROPIC:     28.63364455          ANISOTROPIC:      6.70543506
+
+   diamagnetic (undisturbed density) part of shielding tensor  (EFS)
+      Trace =     25.46388860
+      Full Tensor:
+                 24.63908113            8.97446968            0.00025693
+                  9.52010218           34.78072665            0.00054083
+                  0.00031381            0.00061929           16.97185802
+   paramagnetic (undisturbed density) part of shielding tensor (SOILP)
+      Trace =      2.98621262
+      Full Tensor:
+                  4.86704458           -3.26926475           -0.00017455
+                 -3.43188946           -1.63699811           -0.00050584
+                  0.00002946           -0.00034194            5.72859141
+   paramagnetic (disturbed density) part of shielding tensor   (SOI)
+      Trace =      0.18354332
+      Full Tensor:
+                  2.09518845           -1.57294690            0.00003791
+                 -4.91512035           -4.83390293           -0.00005477
+                 -0.00045514           -0.00059105            3.28934445
+   total shielding tensor
+      Trace =     28.63364455
+      Full Tensor:
+                 31.60131416            4.13225803            0.00012029
+                  1.17309237           28.30982561           -0.00001978
+                 -0.00011187           -0.00031370           25.98979387
+
+
+  -------------------
+  -- ATOM  H     6 --
+  -------------------
+
+   ISOTROPIC:     32.25366963          ANISOTROPIC:     17.31907530
+
+   diamagnetic (undisturbed density) part of shielding tensor  (EFS)
+      Trace =     24.35464645
+      Full Tensor:
+                 23.06592562           12.70442946            0.00028027
+                 11.45397867           37.84207571            0.00070281
+                  0.00024469            0.00070940           12.15593801
+   paramagnetic (undisturbed density) part of shielding tensor (SOILP)
+      Trace =      3.45469460
+      Full Tensor:
+                  4.83353485           -2.69491711           -0.00001927
+                 -3.35782050           -0.50253740           -0.00010963
+                 -0.00009638           -0.00021931            6.03308636
+   paramagnetic (disturbed density) part of shielding tensor   (SOI)
+      Trace =      4.44432858
+      Full Tensor:
+                  6.12536095           -2.95752891           -0.00017558
+                 -3.34692241            1.95405406           -0.00025744
+                 -0.00039082           -0.00003665            5.25357072
+   total shielding tensor
+      Trace =     32.25366963
+      Full Tensor:
+                 34.02482142            7.05198344            0.00008542
+                  4.74923576           39.29359237            0.00033574
+                 -0.00024252            0.00045344           23.44259509
+
+  Summary of detailed contributions
+ ===================================
+
+    ATOM        DIAMAGNETIC     PARAMAGNETIC (P)     PARAMAGNETIC (d/dB P)
+  --------------------------------------------------------------------------
+    C     1     254.41638756     -10.90092326         -103.96572065
+    O     2     395.18194127      -9.27802888          -71.78698447
+    H     3      25.84461495       2.77681597           -0.07499989
+    H     4      25.84267465       2.77671792           -0.07452720
+    H     5      25.46388860       2.98621262            0.18354332
+    H     6      24.35464645       3.45469460            4.44432858
+
+  Summary
+ =========
+
+       ATOM           ISOTROPIC        ANISOTROPIC       REL. SHIFTS
+------------------------------------------------------------------------
+   Atom C     1     139.54974364       74.34978117
+   Atom O     2     314.11692792      113.60317660
+   Atom H     3      28.54643103        8.14208193
+   Atom H     4      28.54486538        8.14220142
+   Atom H     5      28.63364455        6.70543506
+   Atom H     6      32.25366963       17.31907530
+
+
+ --- SHIFTS DONE ---
+
+
+      ======================================================== 
+      =   cite:  - C. Ochsenfeld, J. Kussmann, F. Koziol,    = 
+      =            Angew. Chem. Int. Ed. 43, 4485 (2004)     = 
+      =          - J. Kussmann and C. Ochsenfeld,            = 
+      =            J. Chem. Phys. 127, 054103 (2007)         = 
+      ======================================================== 
+
+
+WARNING: no symmetry was used (preliminary integrals)
+
+ D-SCF time:  CPU 4.49 s  wall 4.53 s 
+
+Symmetry turned off temporarily
+ A cutoff of  1.0D-14 yielded    171 shell pairs
+ There are   1147 function pairs
+ Analysis of SCF Wavefunction
+
+ --------------------------------------------------------------
+                    Orbital Energies (a.u.)
+ --------------------------------------------------------------
+
+ Alpha MOs
+ -- Occupied --
+-19.159 -10.232  -1.028  -0.688  -0.514  -0.450  -0.435  -0.343
+ -0.280
+ -- Virtual --
+ -0.001   0.025   0.052   0.054   0.147   0.174   0.188   0.195
+  0.207   0.209   0.246   0.283   0.330   0.640   0.646   0.658
+  0.891   0.896   1.012   1.039   1.153   1.185   1.213   1.267
+  1.495   1.512   1.619   1.732   2.071   2.116   2.189   2.351
+  2.379   2.478   2.848   4.003   4.262
+ --------------------------------------------------------------
+
+         Ground-State Mulliken Net Atomic Charges
+
+     Atom                 Charge (a.u.)
+  ----------------------------------------
+      1 C                    -0.354488
+      2 O                    -0.641386
+      3 H                     0.175161
+      4 H                     0.175139
+      5 H                     0.198570
+      6 H                     0.447004
+  ----------------------------------------
+  Sum of atomic charges =     0.000000
+
+ -----------------------------------------------------------------
+                    Cartesian Multipole Moments
+ -----------------------------------------------------------------
+    Charge (ESU x 10^10)
+                 0.0000
+    Dipole Moment (Debye)
+         X       0.9887      Y      -1.7028      Z      -0.0001
+       Tot       1.9690
+    Quadrupole Moments (Debye-Ang)
+        XX     -13.3323     XY       2.5633     YY     -12.3220
+        XZ       0.0000     YZ       0.0002     ZZ     -14.0621
+    Octapole Moments (Debye-Ang^2)
+       XXX      -3.7880    XXY      -2.3966    XYY      -1.5829
+       YYY      -0.8503    XXZ      -0.0002    XYZ       0.0001
+       YYZ      -0.0001    XZZ      -0.1728    YZZ      -0.7885
+       ZZZ      -0.0003
+    Hexadecapole Moments (Debye-Ang^3)
+      XXXX     -63.4677   XXXY       4.7782   XXYY     -13.0479
+      XYYY       3.3843   YYYY     -21.2781   XXXZ      -0.0004
+      XXYZ       0.0003   XYYZ      -0.0001   YYYZ       0.0004
+      XXZZ     -15.2090   XYZZ       0.1850   YYZZ      -7.2378
+      XZZZ      -0.0003   YZZZ       0.0002   ZZZZ     -21.4365
+ -----------------------------------------------------------------
+ JobOver = TRUE
+ Total job time:  8.39s(wall), 8.09s(cpu) 
+ Tue Jan 20 17:28:10 2009
+
+        *************************************************************
+        *                                                           *
+        *  Thank you very much for using Q-Chem.  Have a nice day.  *
+        *                                                           *
+        *************************************************************
+
+
+*** MISSION COMPLETED -- STARFLEET OUT ***
+

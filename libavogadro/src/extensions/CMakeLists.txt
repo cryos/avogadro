@@ -110,6 +110,14 @@ add_library(orbitalextension MODULE ${orbitalextension_SRCS} ${orbitalextension_
 target_link_libraries(orbitalextension ${LINK_LIBS})
 install(TARGETS orbitalextension DESTINATION ${DESTINATION_DIR})
 
+### Vibrations
+set(vibrationextension_SRCS vibrationextension.cpp vibrationdialog.cpp)
+qt4_wrap_ui(vibrationextension_UIS_H vibrationdialog.ui)
+qt4_automoc(${vibrationextension_SRCS})
+add_library(vibrationextension MODULE ${vibrationextension_SRCS} ${vibrationextension_UIS_H})
+target_link_libraries(vibrationextension ${LINK_LIBS})
+install(TARGETS vibrationextension DESTINATION ${DESTINATION_DIR})
+
 ### Gaussian input deck generator
 set(gaussianextension_SRCS gaussianextension.cpp
   gaussianinputdialog.cpp

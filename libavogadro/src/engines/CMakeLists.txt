@@ -49,12 +49,12 @@ add_library(hbondengine MODULE ${hbondengine_SRCS} ${hbondengine_UIS})
 target_link_libraries(hbondengine ${LINK_LIBS})
 install(TARGETS hbondengine DESTINATION ${DESTINATION_DIR})
 
-# force engine - DISABLED TEMPORARILY
-#set(forceengine_SRCS forceengine.cpp)
-#qt4_automoc(${forceengine_SRCS})
-#add_library(forceengine MODULE ${forceengine_SRCS} ${forceengine_UIS})
-#target_link_libraries(forceengine ${LINK_LIBS})
-#install(TARGETS forceengine DESTINATION ${DESTINATION_DIR})
+# force engine
+set(forceengine_SRCS forceengine.cpp)
+qt4_automoc(${forceengine_SRCS})
+add_library(forceengine MODULE ${forceengine_SRCS} ${forceengine_UIS})
+target_link_libraries(forceengine ${LINK_LIBS})
+install(TARGETS forceengine DESTINATION ${DESTINATION_DIR})
 
 # sphere
 set(sphereengine_SRCS sphereengine.cpp)

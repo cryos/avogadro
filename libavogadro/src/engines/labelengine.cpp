@@ -6,7 +6,7 @@
   Copyright (C) 2007,2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.sourceforge.net/>
+  For more information, see <http://avogadro.openmolecules.net/>
 
   Avogadro is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -119,8 +119,17 @@ namespace Avogadro {
           str = QString::number(a->id());
           break;
         case 2: // Element name
-        default:
           str = ElementTranslator::name(a->atomicNumber());
+          break;
+        default: // some custom data -- if available
+          int customIndex = m_atomType - 7 - 1;
+          QList<QByteArray> propertyNames = a->dynamicPropertyNames();
+          // If this is a strange offset, use the element symbol
+          if ( customIndex < 0 || customIndex >= propertyNames.size()) {
+            str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
+          }
+          else
+            str = a->property(propertyNames[customIndex].data()).toString();
       }
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();

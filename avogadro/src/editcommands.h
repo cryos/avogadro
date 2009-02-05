@@ -4,7 +4,7 @@
   Copyright (C) 2007 Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.sourceforge.net/>
+  For more information, see <http://avogadro.openmolecules.net/>
 
   Avogadro is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -30,6 +30,9 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/idlist.h>
 #include <avogadro/molecule.h>
+
+// forward declaratin
+class QMimeData;
 
 namespace Avogadro {
 

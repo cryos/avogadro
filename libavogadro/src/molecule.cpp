@@ -5,7 +5,7 @@
   Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.sourceforge.net/>
+  For more information, see <http://avogadro.openmolecules.net/>
 
   Avogadro is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -46,6 +46,7 @@
 #include <QDir>
 #include <QReadWriteLock>
 #include <QDebug>
+#include <QVariant>
 
 using std::vector;
 using Eigen::Vector3d;
@@ -55,7 +56,7 @@ namespace Avogadro{
   class MoleculePrivate {
     public:
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
-			  invalidRings(true), obmol(0), obunitcell(0) {}
+			  invalidRings(true), obmol(0), obunitcell(0), obvibdata(0) {}
     // These are logically cached variables and thus are marked as mutable.
     // Const objects should be logically constant (and not mutable)
     // http://www.highprogrammer.com/alan/rants/mutable.html
@@ -87,6 +88,10 @@ namespace Avogadro{
       OpenBabel::OBMol *            obmol;
       // Our OpenBabel OBUnitCell object (if any)
       OpenBabel::OBUnitCell *       obunitcell;
+      // Our OpenBabel OBVibrationData object (if any)
+      // TODO: Cache an OBMol, in which case the vib. data (and others)
+      //       won't be necessary
+      OpenBabel::OBVibrationData *  obvibdata;
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
@@ -995,14 +1000,29 @@ namespace Avogadro{
                     endAtom->index() + 1, bond->order());
     }
     obmol.EndModify();
-    // TODO: Copy residue information, cubes, etc.
+
+    // Copy unit cells
     if (d->obunitcell != NULL) {
       OpenBabel::OBUnitCell *obunitcell = new OpenBabel::OBUnitCell;
       *obunitcell = *d->obunitcell;
       obmol.SetData(obunitcell);
     }
 
-//    qDebug() << "OBMol() run" << obmol.NumAtoms() << obmol.NumBonds();
+    // Copy OBPairData, if needed
+    OpenBabel::OBPairData *obproperty;
+    foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
+      obproperty = new OpenBabel::OBPairData;
+      obproperty->SetAttribute(propertyName.data());
+      obproperty->SetValue(property(propertyName).toByteArray().data());
+      obmol.SetData(obproperty);
+    }
+    
+    // Copy vibrations, if needed
+    if (d->obvibdata != NULL) {
+      obmol.SetData(d->obvibdata->Clone(&obmol));
+    }
+
+    // TODO: Copy residue information, cubes, etc.
 
     return obmol;
   }
@@ -1013,25 +1033,24 @@ namespace Avogadro{
     Q_D(Molecule);
     qDebug() << "setOBMol called.";
     m_lock->lockForWrite();
-//    d->obmol = obmol;
     m_lock->unlock();
     clear();
     // Copy all the parts of the OBMol to our Molecule
 
     qDebug() << "Copying atoms...";
+
     // Begin by copying all of the atoms
-    std::vector<OpenBabel::OBNodeBase*>::iterator i;
-    for (OpenBabel::OBAtom *obatom = static_cast<OpenBabel::OBAtom *>(obmol->BeginAtom(i));
-          obatom; obatom = static_cast<OpenBabel::OBAtom *>(obmol->NextAtom(i))) {
+    std::vector<OpenBabel::OBAtom*>::iterator i;
+
+    for (OpenBabel::OBAtom *obatom = obmol->BeginAtom(i); obatom; obatom = obmol->NextAtom(i)) {
       Atom *atom = addAtom();
       atom->setOBAtom(obatom);
     }
 
     qDebug() << "Copying bonds...";
     // Now bonds, we use the indices of the atoms to get the bonding right
-    std::vector<OpenBabel::OBEdgeBase*>::iterator j;
-    for (OpenBabel::OBBond *obbond = static_cast<OpenBabel::OBBond*>(obmol->BeginBond(j));
-         obbond; obbond = static_cast<OpenBabel::OBBond*>(obmol->NextBond(j))) {
+    std::vector<OpenBabel::OBBond*>::iterator j;
+    for (OpenBabel::OBBond *obbond = obmol->BeginBond(j); obbond; obbond = obmol->NextBond(j)) {
       Bond *bond = addBond();
       // Get the begin and end atoms - we use a 0 based index, OB uses 1 based
       bond->setAtoms(obbond->GetBeginAtom()->GetIdx()-1,
@@ -1110,6 +1129,39 @@ namespace Avogadro{
       *d->obunitcell = *obunitcell;
     }
     // (that could return NULL, but other methods know they could get NULL)
+
+    // Copy forces, if present and valid
+    if (obmol->HasData(OpenBabel::OBGenericDataType::ConformerData)) {
+    OpenBabel::OBConformerData *cd = static_cast<OpenBabel::OBConformerData*>(obmol->GetData(OpenBabel::OBGenericDataType::ConformerData));
+    if (cd) {
+      std::vector< std::vector<OpenBabel::vector3> > allForces = cd->GetForces();
+      
+      // check for validity (i.e., we have some forces, one for each atom
+      if (allForces.size() && allForces[0].size() == numAtoms()) {
+        OpenBabel::vector3 force;
+        foreach (Atom *atom, d->atomList) { // loop through each atom
+            force = allForces[0][atom->index()];
+            qDebug() << " copying force " << force.x() << force.y() << force.z();
+            atom->setForceVector(Eigen::Vector3d(force.x(), force.y(), force.z()));
+          } // end setting forces on each atom
+        }
+      }
+    }  // end HasData(ConformerData)
+
+    // Copy any vibration data if possible
+    if (obmol->HasData(OpenBabel::OBGenericDataType::VibrationData)) {
+      OpenBabel::OBVibrationData *vibData = static_cast<OpenBabel::OBVibrationData*>(obmol->GetData(OpenBabel::OBGenericDataType::VibrationData));
+      d->obvibdata = vibData;
+    }
+
+    // Finally, sync OBPairData to dynamic properties
+    OpenBabel::OBDataIterator dIter;
+    OpenBabel::OBPairData *property;
+    data = obmol->GetAllData(OpenBabel::OBGenericDataType::PairData);
+    for (dIter = data.begin(); dIter != data.end(); ++dIter) {
+      property = static_cast<OpenBabel::OBPairData *>(*dIter);
+      setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
+    }
 
     return true;
   }

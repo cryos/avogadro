@@ -5,7 +5,7 @@
   Copyright (C) 2008 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.sourceforge.net/>
+  For more information, see <http://avogadro.openmolecules.net/>
 
   Avogadro is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@
 #define ATOM_H
 
 #include <avogadro/primitive.h>
+#include <QList>
 
 namespace OpenBabel {
   class OBAtom;
@@ -76,6 +77,12 @@ namespace Avogadro {
     void setPos(const Eigen::Vector3d &vec);
 
     /**
+     * Sets the position of the atom.
+     * @param vec Position of the atom.
+     */
+    void setPos(const Eigen::Vector3d *vec) { setPos(*vec); }
+
+    /**
      * Set the atomic number of the atom.
      */
     void setAtomicNumber(int num) { m_atomicNumber = num; }
@@ -88,6 +95,11 @@ namespace Avogadro {
     {
       m_partialCharge = charge;
     }
+
+    /**
+     * Set the force vector on the atom (e.g., used to display vibrations)
+     */ 
+    void setForceVector(const Eigen::Vector3d &force) { m_forceVector = force; }
     /** @} */
 
 
@@ -100,12 +112,6 @@ namespace Avogadro {
       * @return The position of the atom.
       */
     const Eigen::Vector3d * pos() const;
-
-    /**
-     * Sets the position of the atom.
-     * @param vec Position of the atom.
-     */
-    void setPos(const Eigen::Vector3d *vec) { setPos(*vec); }
 
     /**
      * @return Atomic number of the atom.
@@ -144,6 +150,11 @@ namespace Avogadro {
      * @return Partial charge of the atom.
      */
     double partialCharge() const;
+
+    /**
+     * @return The force vector on this atom (if any)
+     */
+    const Eigen::Vector3d forceVector() const { return m_forceVector; }
 
     /**
      * @return The Id of the Residue that the Atom is a part of.
@@ -222,6 +233,7 @@ namespace Avogadro {
     unsigned long int m_residue;
     QList<unsigned long int> m_bonds;
     mutable double m_partialCharge;
+    Eigen::Vector3d m_forceVector;
     Q_DECLARE_PRIVATE(Atom)
   };
 

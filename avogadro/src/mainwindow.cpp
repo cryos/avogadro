@@ -6,7 +6,7 @@
   Copyright (C) 2007-2008 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.sourceforge.net/>
+  For more information, see <http://avogadro.openmolecules.net/>
 
   Some code is based on Open Babel
   For more information, see <http://openbabel.sourceforge.net/>
@@ -1412,8 +1412,7 @@ namespace Avogadro
     // we also save an image for copy/paste to office programs, presentations, etc.
     QImage clipboardImage = d->glWidget->grabFrameBuffer(true);
 
-//    Molecule *moleculeCopy = d->molecule;
-    Molecule *moleculeCopy = 0;
+    Molecule *moleculeCopy = d->molecule;
     if (!selectedItems.isEmpty()) { // we only want to copy the selected items
       moleculeCopy = new Molecule;
       std::map<unsigned int, unsigned int> AtomMap; // key is from old, value from new

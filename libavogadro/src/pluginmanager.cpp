@@ -3,10 +3,10 @@
 
   Copyright (C) 2008 Donald Ephraim Curtis
   Copyright (C) 2008,2009 Tim Vandermeersch
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008,2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.sourceforge.net/>
+  For more information, see <http://avogadro.openmolecules.net/>
 
   Avogadro is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,9 +26,11 @@
 
 #include <config.h>
 #include "pluginmanager.h"
-//#include "pluginsettings.h"
-#include "pythontool.h"
-#include "pythonengine.h"
+
+#ifdef ENABLE_PYTHON
+  #include "pythontool.h"
+  #include "pythonengine.h"
+#endif
 
 #include <avogadro/engine.h>
 #include <avogadro/tool.h>
@@ -238,8 +240,8 @@ namespace Avogadro {
     d->toolsLoaded = true;
     return d->tools;
   }
-    
-  QList<QString> PluginManager::toolScripts() 
+
+  QList<QString> PluginManager::toolScripts()
   {
     QList<QString> scripts;
 
@@ -270,12 +272,12 @@ namespace Avogadro {
 
     if(!dir.cd("toolScripts")) {
       if (!dir.mkdir("toolScripts")) failed = true;
-      if (!dir.cd("toolScripts")) failed = true; 
+      if (!dir.cd("toolScripts")) failed = true;
     }
 
     foreach (const QString& file, dir.entryList())
       scripts.append(QString(dir.canonicalPath() + "/" + file));
- 
+
 #ifndef WIN32
     // Now for the system wide Python scripts
     QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
@@ -288,7 +290,7 @@ namespace Avogadro {
     return scripts;
   }
 
-  QList<QString> PluginManager::engineScripts() 
+  QList<QString> PluginManager::engineScripts()
   {
     QList<QString> scripts;
 
@@ -319,12 +321,12 @@ namespace Avogadro {
 
     if(!dir.cd("engineScripts")) {
       if (!dir.mkdir("engineScripts")) failed = true;
-      if (!dir.cd("engineScripts")) failed = true; 
+      if (!dir.cd("engineScripts")) failed = true;
     }
 
     foreach (const QString& file, dir.entryList())
       scripts.append(QString(dir.canonicalPath() + "/" + file));
- 
+
 #ifndef WIN32
     // Now for the system wide Python scripts
     QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
@@ -479,8 +481,8 @@ namespace Avogadro {
       return;
 
     QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
- 
-    // 
+
+    //
     // Load the static plugins first
     //
     PluginFactory *bsFactory = qobject_cast<PluginFactory *>(new BSDYEngineFactory);
@@ -499,7 +501,7 @@ namespace Avogadro {
       qDebug() << "Instantiation of the static element color plugin failed.";
     }
 
-    // 
+    //
     // Set up the paths
     //
     QStringList pluginPaths;
@@ -524,9 +526,8 @@ namespace Avogadro {
 
     QSettings settings;
     settings.beginGroup("Plugins");
-    // 
+
     // Load the plugins
-    //
     foreach (const QString& path, pluginPaths) {
       loadPluginDir(path + "/colors", settings);
       loadPluginDir(path + "/engines", settings);
@@ -534,51 +535,47 @@ namespace Avogadro {
       loadPluginDir(path + "/tools", settings);
     }
 
-    //
+#ifdef PYTHON_ENABLED
     // Load the python tools
-    //
     QList<QString> scripts = toolScripts();
     foreach(const QString &script, scripts) {
-      
       PluginFactory *factory = qobject_cast<PluginFactory *>(new PythonToolFactory(script));
-      
       if (factory) {
         QFileInfo info(script);
         loadFactory(factory, info, settings);
-      } else {
+      }
+      else {
         qDebug() << script << "failed to load. ";
       }
     }
- 
-    //
+
     // Load the python engines
-    //
     QList<QString> enginescripts = engineScripts();
     foreach(const QString &script, enginescripts) {
       PluginFactory *factory = qobject_cast<PluginFactory *>(new PythonEngineFactory(script));
-      
       if (factory) {
         QFileInfo info(script);
         loadFactory(factory, info, settings);
-      } else {
+      }
+      else {
         qDebug() << script << "failed to load. ";
       }
     }
-    
-    
+#endif
+
     settings.endGroup(); // Plugins
     PluginManagerPrivate::factoriesLoaded = true;
   }
-    
+
   void PluginManager::loadFactory(PluginFactory *factory, QFileInfo &fileInfo, QSettings &settings)
   {
     settings.beginGroup(QString::number(factory->type()));
 
     QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
     QVector< QList<PluginFactory *> > &df = PluginManagerPrivate::m_disabledFactories();
- 
-    // create the PluginItem 
-    PluginItem *item = new PluginItem(factory->name(), factory->description(), 
+
+    // create the PluginItem
+    PluginItem *item = new PluginItem(factory->name(), factory->description(),
         factory->type(), fileInfo.fileName(), fileInfo.absoluteFilePath(), factory);
     // add the factory to the correct list
     if(settings.value(factory->name(), true).toBool()) {
@@ -590,7 +587,7 @@ namespace Avogadro {
     }
     // Store the PluginItem
     PluginManagerPrivate::m_items()[factory->type()].append(item);
-    
+
     settings.endGroup();
   }
 
@@ -609,7 +606,7 @@ namespace Avogadro {
     // make sure to write the settings before reloading
     QSettings settings;
     writeSettings(settings); // the isEnabled settings for all plugins
-    
+
     // write the tool settings
     settings.beginGroup("tools");
     foreach(Tool *tool, d->tools) {
