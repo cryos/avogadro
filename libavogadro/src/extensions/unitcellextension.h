@@ -22,17 +22,9 @@
 #ifndef UNITCELLEXTENSION_H
 #define UNITCELLEXTENSION_H
 
-#include "unitcellparamdialog.h"
-
-#include <openbabel/mol.h>
-#include <openbabel/generic.h>
-
 #include <avogadro/extension.h>
 
-#include <QObject>
-#include <QList>
-#include <QString>
-#include <QUndoCommand>
+#include "unitcellparamdialog.h"
 
 namespace Avogadro {
 
@@ -40,23 +32,23 @@ namespace Avogadro {
   {
     Q_OBJECT
 
-      public:
+  public:
     //! Constructor
     UnitCellExtension(QObject *parent=0);
-    //! Deconstructor
-    virtual ~UnitCellExtension();
+    //! Destructor
+    ~UnitCellExtension();
 
     //! \name Description methods
     //@{
     //! Plugin Name (ie Draw)
-    virtual QString name() const { return QObject::tr("UnitCell"); }
+    QString name() const { return QObject::tr("UnitCell"); }
     //! Plugin Description (ie. Draws atoms and bonds)
-    virtual QString description() const { return QObject::tr("Unit Cell Parameters Plugin"); };
+    QString description() const { return QObject::tr("Unit Cell Parameters Plugin"); };
     //! Perform Action
-    virtual QList<QAction *> actions() const;
-    virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
-    virtual QString menuPath(QAction *action) const;
-    virtual void setMolecule(Molecule *molecule);
+    QList<QAction *> actions() const;
+    QUndoCommand* performAction(QAction *action, GLWidget *widget);
+    QString menuPath(QAction *action) const;
+    void setMolecule(Molecule *molecule);
     //@}
 
   public Q_SLOTS:
@@ -65,7 +57,7 @@ namespace Avogadro {
                                      double alpha, double beta, double gamma);
 
     void deleteUnitCell();
-    void fillUnitCell();                                 
+    void fillUnitCell();
 
   private:
     QList<QAction *> m_actions;
