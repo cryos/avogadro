@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>529</width>
-    <height>480</height>
+    <width>401</width>
+    <height>285</height>
    </rect>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
@@ -41,14 +41,14 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0" >
+     <item row="1" column="0" >
       <widget class="QLabel" name="bondRadiusLabel" >
        <property name="text" >
         <string>Bond Radius:</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="2" >
+     <item row="1" column="2" >
       <widget class="QSlider" name="bondRadiusSlider" >
        <property name="minimum" >
         <number>1</number>
@@ -70,32 +70,6 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="2" >
-      <spacer name="verticalSpacer" >
-       <property name="orientation" >
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0" >
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="1" column="2" >
-      <spacer name="verticalSpacer_2" >
-       <property name="orientation" >
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0" >
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
     </layout>
    </item>
    <item>
@@ -110,6 +84,19 @@
       <bool>false</bool>
      </property>
     </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer" >
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

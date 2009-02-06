@@ -5,73 +5,63 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>387</width>
+    <width>397</width>
     <height>397</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Molecular Vibrations</string>
   </property>
-  <widget class="QTableWidget" name="vibrationTable" >
-   <property name="geometry" >
-    <rect>
-     <x>12</x>
-     <y>12</y>
-     <width>363</width>
-     <height>333</height>
-    </rect>
-   </property>
-   <property name="horizontalScrollBarPolicy" >
-    <enum>Qt::ScrollBarAlwaysOff</enum>
-   </property>
-   <property name="alternatingRowColors" >
-    <bool>true</bool>
-   </property>
-   <property name="selectionMode" >
-    <enum>QAbstractItemView::SingleSelection</enum>
-   </property>
-   <property name="selectionBehavior" >
-    <enum>QAbstractItemView::SelectRows</enum>
-   </property>
-   <property name="gridStyle" >
-    <enum>Qt::SolidLine</enum>
-   </property>
-   <property name="sortingEnabled" >
-    <bool>false</bool>
-   </property>
-   <property name="rowCount" >
-    <number>0</number>
-   </property>
-   <property name="columnCount" >
-    <number>2</number>
-   </property>
-   <column>
-    <property name="text" >
-     <string>Frequency</string>
-    </property>
-   </column>
-   <column>
-    <property name="text" >
-     <string>Intensity</string>
-    </property>
-   </column>
-  </widget>
-  <widget class="QDialogButtonBox" name="buttonBox" >
-   <property name="geometry" >
-    <rect>
-     <x>6</x>
-     <y>361</y>
-     <width>375</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation" >
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons" >
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout" >
+   <item>
+    <widget class="QTableWidget" name="vibrationTable" >
+     <property name="horizontalScrollBarPolicy" >
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="editTriggers" >
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="alternatingRowColors" >
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode" >
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior" >
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="gridStyle" >
+      <enum>Qt::SolidLine</enum>
+     </property>
+     <property name="rowCount" >
+      <number>0</number>
+     </property>
+     <property name="columnCount" >
+      <number>2</number>
+     </property>
+     <column>
+      <property name="text" >
+       <string>Frequency (cm-1)</string>
+      </property>
+     </column>
+     <column>
+      <property name="text" >
+       <string>Intensity (a.u.)</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons" >
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections>

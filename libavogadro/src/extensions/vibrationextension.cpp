@@ -31,6 +31,7 @@
 #include <openbabel/mol.h>
 
 #include <QAction>
+#include <QMessageBox>
 #include <QDebug>
 
 using namespace std;
@@ -41,17 +42,18 @@ namespace Avogadro {
   VibrationExtension::VibrationExtension(QObject *parent) : Extension(parent),
                                                             m_molecule(NULL)
   {
-    QAction *action = new QAction(this);
+    QAction *action = new QAction( this );
+    action->setSeparator(true);
+    m_actions.append( action );
+
+    action = new QAction(this);
     action->setText(tr("Vibrations..."));
     m_actions.append(action);
 
-    m_dialog = new VibrationDialog(static_cast<QWidget*>(parent));
+    QWidget *parentWidget = static_cast<QWidget*>(parent);
+    m_dialog = new VibrationDialog(parentWidget);
     connect(m_dialog, SIGNAL(selectedMode(int)),
             this, SLOT(updateMode(int)));
-
-    action = new QAction( this );
-    action->setSeparator(true);
-    m_actions.append( action );
   }
 
   VibrationExtension::~VibrationExtension()
@@ -93,9 +95,6 @@ namespace Avogadro {
       return;
     }
 
-    // Else, at least add some force arrows to atoms
-    qDebug() << " mode: " << mode << " Lx size: ";
-
     OBMol obmol = m_molecule->OBMol();
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
 
@@ -106,17 +105,23 @@ namespace Avogadro {
       displacement = displacementVectors[atom->index()];
       atom->setForceVector(Eigen::Vector3d(displacement.x(), displacement.y(), displacement.z()));
     }
-    
+    m_molecule->update();
+
+    // widget->invalidateDL
   }
 
   QUndoCommand* VibrationExtension::performAction( QAction *, GLWidget *widget )
   {
     if (m_molecule == NULL)
       return NULL;
-   
+    
+    OBMol obmol = m_molecule->OBMol();
+    m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
+
     if (m_vibrations)
       m_dialog->show();
     else {
+      QMessageBox::warning(widget, tr("Vibrational Analysis"), tr("No vibrations have been computed for this molecule."));
       // show a warning
     }
 
