@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 2.6.0)
 cmake_policy(SET CMP0003 NEW)
 
 # Use CPack to do some of our packaging
-include(CPack)
+include(AvoCPack.cmake)
 
 # this is adapted from KDE's FindKDE4Internal.cmake : default the build type to
 # "release with debug info".
@@ -26,6 +26,7 @@ include (TestIfWeNeedFPermissive)
 # use mulithreaded dll runtime on windows when using MSVC
 if (MSVC)
   set(CMAKE_CXX_FLAGS "/MD ${CMAKE_CXX_FLAGS}")
+  set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
 endif(MSVC)
 
 ###########################################################
@@ -156,7 +157,12 @@ endif(ENABLE_THREADEDGL MATCHES ON)
 
 # Default to using lib, other architectures can set alternate lib directories
 if(NOT LIB_INSTALL_DIR)
-  set(LIB_INSTALL_DIR lib)
+  if(WIN32)
+    # The DLLs need to be in the same directory as the binary on Windows
+    set(LIB_INSTALL_DIR bin)
+  else(WIN32)
+    set(LIB_INSTALL_DIR lib)
+  endif(WIN32)
 endif(NOT LIB_INSTALL_DIR)
 
 CONFIGURE_FILE(
@@ -181,9 +187,7 @@ add_subdirectory(doc)
 
 # Linux Default: /usr/local/share/avogadro/fragments
 set(avogadro_FRAGMENTS share/avogadro)
-if(WIN32)
-  set(avogadro_FRAGMENTS "C:\\Program Files\\Avogadro")
-endif(WIN32)
+
 if(APPLE)
   set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")
 endif(APPLE)

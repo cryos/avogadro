@@ -62,7 +62,7 @@ SET_TARGET_PROPERTIES(avogadro-app PROPERTIES OUTPUT_NAME avogadro)
 TARGET_LINK_LIBRARIES(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
     avogadro-lib)
 
-IF( APPLE )
+if(APPLE)
   SET( MACOSX_BUNDLE_INFO_STRING "Avogadro - version ${VERSION}" )
   SET( MACOSX_BUNDLE_BUNDLE_VERSION ${VERSION} )
   # Change following line to point to actual icns file in bundle.
@@ -94,11 +94,16 @@ IF( APPLE )
   INSTALL(
           CODE "EXECUTE_PROCESS(COMMAND install_name_tool -change ${libavogadro_BINARY_DIR}/src/libavogadro.0.dylib ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/libavogadro.0.dylib /Applications/avogadro.app/Contents/MacOS/avogadro OUTPUT_QUIET)")
   INSTALL(CODE "EXECUTE_PROCESS(COMMAND mv /Applications/avogadro.app /Applications/Avogadro.app OUTPUT_QUIET)")
+endif(APPLE)
 
-ELSE( APPLE)
-  INSTALL(TARGETS avogadro-app DESTINATION bin)
-ENDIF( APPLE)
+if(UNIX AND NOT APPLE)
+  install(TARGETS avogadro-app DESTINATION bin)
+endif(UNIX AND NOT APPLE)
 
-INSTALL(FILES ${avogadro_QM} DESTINATION share/avogadro/i18n)
+if(WIN32)
+  install(TARGETS avogadro-app DESTINATION bin)
+endif(WIN32)
+
+install(FILES ${avogadro_QM} DESTINATION share/avogadro/i18n)
 
 #add_subdirectory(projectplugins)

@@ -516,7 +516,7 @@ namespace Avogadro {
 
     if (!pluginPaths.size()) {
       #ifdef WIN32
-        pluginPaths << QCoreApplication::applicationDirPath();
+        pluginPaths << QCoreApplication::applicationDirPath() + "/avogadro";
       #else
         QString prefixPath = QString(INSTALL_PREFIX) + '/'
             + QString(INSTALL_LIBDIR) + "/avogadro";
