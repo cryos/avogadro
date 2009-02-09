@@ -1,7 +1,7 @@
 /**********************************************************************
   OrbitalExtension - Extension for generating orbital cubes
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -171,6 +171,13 @@ namespace Avogadro
     return 0;
   }
 
+  int OrbitalDialog::colorBy()
+  {
+    // Returns the cube to color by. 0 means none, 1 means estimated partial
+    // charge and >1 means an actual cube (find by number returned -2)
+    return ui.surfaceColorCubeCombo->currentIndex();
+  }
+
   void OrbitalDialog::calculate()
   {
     emit calculateMO(ui.orbitalCombo->currentIndex());
@@ -233,9 +240,11 @@ namespace Avogadro
     ui.cubeCombo->clear();
     ui.colorCubeCombo->clear();
     ui.colorCubeCombo->addItem(tr("None"));
+    ui.colorCubeCombo->addItem(tr("ESP"));
     ui.surfaceCubeCombo->clear();
     ui.surfaceColorCubeCombo->clear();
     ui.surfaceColorCubeCombo->addItem(tr("None"));
+    ui.surfaceColorCubeCombo->addItem(tr("ESP"));
     foreach (Cube *cube, m_molecule->cubes()) {
       ui.cubeCombo->addItem(cube->name());
       ui.colorCubeCombo->addItem(cube->name());

@@ -671,8 +671,18 @@
          <item>
           <widget class="QComboBox" name="surfaceColorCubeCombo" >
            <property name="enabled" >
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
+           <item>
+            <property name="text" >
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text" >
+             <string>ESP (approximate)</string>
+            </property>
+           </item>
           </widget>
          </item>
          <item>
