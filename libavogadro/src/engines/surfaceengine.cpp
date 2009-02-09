@@ -181,11 +181,6 @@ namespace Avogadro {
     emit changed();
   }
 
-  void SurfaceEngine::setDrawBox(int value)
-  {
-    emit changed();
-  }
-
   QWidget* SurfaceEngine::settingsWidget()
   {
     if(!m_settingsWidget)
@@ -254,7 +249,6 @@ namespace Avogadro {
     settings.setValue("renderMode", m_renderMode);
     settings.setValue("colorMode", m_colorMode);
     settings.setValue("color", m_color.color());
-    settings.setValue("drawBox", m_drawBox);
     settings.setValue("coloredMesh", m_coloredMesh);
     if (m_mesh)
       settings.setValue("meshId", static_cast<int>(m_mesh->id()));
@@ -268,7 +262,6 @@ namespace Avogadro {
     setColorMode(settings.value("colorMode", 0).toInt());
     m_color = settings.value("color").value<QColor>();
     m_color.setAlpha(m_alpha);
-    setDrawBox(settings.value("drawBox").toBool());
     m_coloredMesh = settings.value("coloredMesh").toBool();
 
     if (m_molecule)
