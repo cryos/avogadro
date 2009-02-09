@@ -625,9 +625,11 @@ namespace Avogadro
     engine->writeSettings(settings);
     settings.setValue("mesh1Id", static_cast<int>(m_mesh1->id()));
     settings.setValue("mesh2Id", static_cast<int>(m_mesh2->id()));
-    engine->readSettings(settings);
-    engine->setEnabled(true);
-    m_molecule->update();
+    if (engine) {
+      engine->readSettings(settings);
+      engine->setEnabled(true);
+      m_molecule->update();
+    }
   }
 
   void OrbitalExtension::calculateVdWCube()
