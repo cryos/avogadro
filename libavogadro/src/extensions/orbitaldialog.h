@@ -1,7 +1,7 @@
 /**********************************************************************
   OrbitalExtension - Extension for generating orbital cubes
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -53,6 +53,7 @@ namespace Avogadro
     Eigen::Vector3i steps();
     double stepSize();
     Engine * currentEngine();
+    int colorBy();
 
   private:
     Ui::OrbitalDialog ui;

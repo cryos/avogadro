@@ -45,6 +45,7 @@
 #include <QTime>
 #include <QDebug>
 
+using Eigen::Vector3f;
 using Eigen::Vector3d;
 using Eigen::Vector3i;
 
@@ -259,6 +260,70 @@ namespace Avogadro
               this, SLOT(calculation2Done()));
       m_orbitalDialog->enableCalculation(false);
     }
+  }
+
+  void OrbitalExtension::calculateESP(Mesh *mesh)
+  {
+    //                                          //
+    //     |    red    green     blue           //
+    // 1.0 |...--+       +       +--...         //
+    //     |      \     / \     /               //
+    //     |       \   /   \   /                //
+    //     |        \ /     \ /                 //
+    //     |         X       X                  //
+    //     |        / \     / \                 //
+    //     |       /   \   /   \                //
+    //     |      /     \ /     \               //
+    // 0.0 +...--+-------+-------+--...-->      //
+    //           a      0.0      b      energy
+    //
+    //  a = 20 * energy
+    //  b = 20 * energy
+    //
+    // Calculate the ESP mapped onto the vertices of the Mesh supplied
+    if (!m_molecule)
+      return;
+
+    std::vector<QColor> colors;
+    for(unsigned int i=0; i < mesh->vertices().size(); ++i) {
+      const Vector3f *v = mesh->vertex(i);
+
+      GLfloat red, green, blue;
+      double energy = 0.0;
+
+      foreach(Atom *a, m_molecule->atoms()) {
+        Vector3f dist = a->pos()->cast<float>() - v->cast<float>();
+        energy += a->partialCharge() / dist.squaredNorm();
+      }
+
+      // Chemistry convention: red = negative, blue = positive
+      QColor color;
+      if (energy < 0.0) {
+        red = -20.0*energy;
+        if (red >= 1.0) {
+          color.setRgbF(1.0, 0.0, 0.0, 1.0);
+        }
+        else {
+          green = 1.0 - red;
+          color.setRgbF(red, green, 0.0, 1.0);
+        }
+      }
+      else if (energy > 0.0) {
+        blue = 20.0*energy;
+        if (blue >= 1.0) {
+          color.setRgbF(0.0, 0.0, 1.0, 1.0);
+        }
+        else {
+          green = 1.0 - blue;
+          color.setRgbF(0.0, green, blue, 1.0);
+        }
+      }
+      else
+        color.setRgbF(0.0, 1.0, 0.0, 1.0);
+
+      colors.push_back(color);
+    }
+    mesh->setColors(colors);
   }
 
   void OrbitalExtension::calculateMO(int n)
@@ -651,12 +716,26 @@ namespace Avogadro
   void OrbitalExtension::VdWMeshGenerated()
   {
     Engine *engine = m_orbitalDialog->currentEngine();
-    QSettings settings;
-    engine->writeSettings(settings);
-    settings.setValue("meshId", static_cast<int>(m_mesh1->id()));
-    engine->readSettings(settings);
-    engine->setEnabled(true);
-    m_molecule->update();
+    if (engine) {
+      QSettings settings;
+      engine->writeSettings(settings);
+      // If there is a color by and it is 1 then do ESP estimation
+      if (m_orbitalDialog->colorBy() == 1) {
+        qDebug() << "Calculating approximate ESP mapping...";
+        calculateESP(m_mesh1);
+        settings.setValue("coloredMesh", true);
+      }
+      else
+        settings.setValue("coloredMesh", false);
+
+      settings.setValue("meshId", static_cast<int>(m_mesh1->id()));
+      engine->readSettings(settings);
+      engine->setEnabled(true);
+      m_molecule->update();
+    }
+    else {
+      qDebug() << "Engine is null - no engines of this type loaded.";
+    }
   }
 
 } // End namespace Avogadro

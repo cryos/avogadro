@@ -92,6 +92,10 @@ namespace Avogadro
     void calculateMO(int MO, const Eigen::Vector3d &origin,
                      const Eigen::Vector3i &steps, double stepSize);
 
+    //! Calculate the ESP from the partial charges of the atoms on the supplied
+    //! Mesh object.
+    void calculateESP(Mesh *mesh);
+
   private Q_SLOTS:
     void calculateMO(int n);
     void calculateAll();
