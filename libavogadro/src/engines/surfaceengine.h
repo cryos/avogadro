@@ -33,45 +33,13 @@
 #include <avogadro/point.h>
 #include <avogadro/line.h>
 
-#include "iso.h"
 #include "ui_surfacesettingswidget.h"
 
 namespace Avogadro {
 
   class Atom;
   class Mesh;
-  class SurfacePrivateData;
   class SurfaceSettingsWidget;
-  class BoxControl;
-
-  //! VDWGridThread
-  class VDWGridThread : public QThread
-  {
-    Q_OBJECT
-
-    public:
-      VDWGridThread(QObject *parent=0);
-      ~VDWGridThread();
-
-      void init(Molecule *molecule, PrimitiveList &primitives, const PainterDevice* pd,
-                double stepSize = 0.0);
-      void init(Molecule *molecule, PrimitiveList &primitives, const PainterDevice* pd,
-                BoxControl *boxControl, double stepSize = 0.0);
-      void run();
-      Grid* grid();
-      double stepSize();
-
-    private:
-      void initStepSize(const PainterDevice *pd, double stepSize);
-
-      QMutex m_mutex;
-      Molecule *m_molecule;
-      PrimitiveList m_primitives;
-      Grid *m_grid;
-      double m_stepSize;
-      double m_padding;
-      BoxControl *m_boxControl;
-  };
 
   //! Surface Engine class.
   class SurfaceEngine : public Engine
@@ -82,7 +50,7 @@ namespace Avogadro {
     public:
       //! Constructor
       SurfaceEngine(QObject *parent=0);
-      //! Deconstructor
+      //! Destructor
       ~SurfaceEngine();
 
       //! \name Render Methods
@@ -125,37 +93,16 @@ namespace Avogadro {
 
     protected:
       SurfaceSettingsWidget *m_settingsWidget;
-      //Grid *m_grid;
-      VDWGridThread *m_vdwThread;
-      IsoGen *m_isoGen;
       Mesh *m_mesh;
-      //Eigen::Vector3f m_min;
       PainterDevice *m_pd;
       Color  m_color;
       double m_alpha;
-      double m_stepSize;
-      double m_padding;
       int    m_renderMode;
       int    m_colorMode;
-      bool   m_surfaceValid;
       bool   m_drawBox;
-
-      BoxControl *m_boxControl;
-
-      inline double radius(const Atom *a) const;
-      //void VDWSurface(Molecule *mol);
-      QColor espColor(Molecule *mol, const Eigen::Vector3f &pos);
-
-      // clipping stuff
-      bool m_clip;
-      double m_clipEqA, m_clipEqB, m_clipEqC, m_clipEqD;
-      // clipping stuff
-
-      void doWork(PainterDevice *pd, Molecule *mol);
+      bool   m_coloredMesh;
 
     private Q_SLOTS:
-      void vdwThreadFinished();
-      void isoGenFinished();
       void settingsWidgetDestroyed();
       /**
        * @param value opacity of the surface / 20
@@ -173,35 +120,6 @@ namespace Avogadro {
        * @param color the new color to use
        */
       void setColor(const QColor& color);
-
-      // clipping stuff
-      void setClipEnabled(int value)
-      {
-        m_clip = value;
-        emit changed();
-      }
-      void setClipEqA(double value)
-      {
-        m_clipEqA = value;
-        emit changed();
-      }
-      void setClipEqB(double value)
-      {
-        m_clipEqB = value;
-        emit changed();
-      }
-      void setClipEqC(double value)
-      {
-        m_clipEqC = value;
-        emit changed();
-      }
-      void setClipEqD(double value)
-      {
-        m_clipEqD = value;
-        emit changed();
-      }
-      // clipping stuff
-
   };
 
   class SurfaceSettingsWidget : public QWidget, public Ui::SurfaceSettingsWidget
@@ -217,7 +135,8 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(SurfaceEngine, tr("Surfaces"), tr("Compute and render Van der Waals surfaces."))
+    AVOGADRO_ENGINE_FACTORY(SurfaceEngine, tr("Surface"),
+                            tr("Compute and render Van der Waals surfaces."))
 
   };
 
