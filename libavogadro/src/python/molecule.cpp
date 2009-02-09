@@ -40,6 +40,9 @@ void export_Molecule()
   Residue* (Molecule::*residue_ptr)(int) = &Molecule::residue;
 
   class_<Avogadro::Molecule, bases<Avogadro::Primitive>, boost::noncopyable>("Molecule")
+    // constructor
+    .def(init<const Molecule&>())
+
     // read/write properties
     .add_property("fileName", &Molecule::fileName, &Molecule::setFileName)
     // read-only poperties
