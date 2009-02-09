@@ -210,14 +210,19 @@ namespace Avogadro {
     /*static void readSettings(QSettings &settings);*/
 
     /**
-     * Get a list of all toolScripts.
+     * Get a list of all python tool script filenames.
      */
     static QList<QString> toolScripts();
 
     /**
-     * Get a list of all engineScripts.
+     * Get a list of all python engine script filenames.
      */
     static QList<QString> engineScripts();
+
+    /**
+     * Get a list of all python extension script filenames.
+     */
+    static QList<QString> extensionScripts();
 
     /**
      * Use by the plugin manager settings dialog
@@ -239,6 +244,7 @@ namespace Avogadro {
      */
     static void loadPluginDir(const QString &directory, QSettings &settings);
     static void loadFactory(PluginFactory *factory, QFileInfo &fileInfo, QSettings &settings);
+    static QList<QString> scripts(const QString &type);
 
   };
 

@@ -132,14 +132,6 @@ target_link_libraries(gaussianextension ${LINK_LIBS})
 install(TARGETS gaussianextension DESTINATION ${DESTINATION_DIR})
 
 if(ALL_PYTHON_FOUND)
-  ### python extensions
-  message(STATUS "Enabled python extension")
-  set(pythonextension_SRCS pythonextension.cpp)
-  qt4_automoc(${pythonextension_SRCS})
-  add_library(pythonextension MODULE ${pythonextension_SRCS})
-  target_link_libraries(pythonextension ${LINK_LIBS})
-  install(TARGETS pythonextension DESTINATION ${DESTINATION_DIR})
-
   ### python terminal
   message(STATUS "Enabled python terminal")
   set(pythonterminal_SRCS pythonterminal.cpp highlighter.cpp)
