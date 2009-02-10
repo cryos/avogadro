@@ -83,7 +83,7 @@ namespace Avogadro
       m_aNums = readArrayI(list.at(2).toInt());
     // Now we get to the meat of it - coordinates of the atoms
     else if (key == "Current cartesian coordinates")
-      m_aPos = readArrayD(list.at(2).toInt());
+      m_aPos = readArrayD(list.at(2).toInt(), 16);
     // The real meat is here - basis sets etc!
     else if (key == "Shell types")
       m_shellTypes = readArrayI(list.at(2).toInt());
@@ -93,19 +93,19 @@ namespace Avogadro
       m_shelltoAtom = readArrayI(list.at(2).toInt());
     // Now to get the exponents and coefficients(
     else if (key == "Primitive exponents")
-      m_a = readArrayD(list.at(2).toInt());
+      m_a = readArrayD(list.at(2).toInt(), 16);
     else if (key == "Contraction coefficients")
-      m_c = readArrayD(list.at(2).toInt());
+      m_c = readArrayD(list.at(2).toInt(), 16);
     else if (key == "P(S=P) Contraction coefficients")
-      m_csp = readArrayD(list.at(2).toInt());
+      m_csp = readArrayD(list.at(2).toInt(), 16);
     else if (key == "Alpha Orbital Energies")
     {
-      m_orbitalEnergy = readArrayD(list.at(2).toInt());
+      m_orbitalEnergy = readArrayD(list.at(2).toInt(), 16);
       qDebug() << "MO energies, n =" << m_orbitalEnergy.size();
     }
     else if (key == "Alpha MO coefficients")
     {
-      m_MOcoeffs = readArrayD(list.at(2).toInt());
+      m_MOcoeffs = readArrayD(list.at(2).toInt(), 16);
       qDebug() << "MO coefficients, n =" << m_MOcoeffs.size();
     }
 
@@ -187,15 +187,27 @@ namespace Avogadro
     return tmp;
   }
 
-  vector<double> GaussianFchk::readArrayD(unsigned int n)
+  vector<double> GaussianFchk::readArrayD(unsigned int n, unsigned int width)
   {
     vector<double> tmp;
     while (tmp.size() < n)
     {
       QString line = m_in.readLine();
-      QStringList list = line.split(" ", QString::SkipEmptyParts);
-      for (int i = 0; i < list.size(); ++i)
-        tmp.push_back(list.at(i).toDouble());
+      if (width == 0) { // we can split by spaces
+        QStringList list = line.split(" ", QString::SkipEmptyParts);
+        for (unsigned int i = 0; i < list.size(); ++i)
+          tmp.push_back(list.at(i).toDouble());
+      } else { // Q-Chem files use 16 character fields
+        unsigned int maxColumns = 80 / width;
+
+        for (unsigned int i = 0; i < maxColumns; ++i) {
+          QString substring = line.mid(i * width, width);
+          if (substring.length() != width)
+            break;
+          tmp.push_back(substring.toDouble());
+        }
+
+      }
     }
     return tmp;
   }

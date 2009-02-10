@@ -43,7 +43,7 @@ namespace Avogadro
     void processLine();
     void load(BasisSet* basis);
     std::vector<int> readArrayI(unsigned int n);
-    std::vector<double> readArrayD(unsigned int n);
+    std::vector<double> readArrayD(unsigned int n, unsigned int width = 0);
 
     int m_electrons;
     std::vector<int> m_aNums;
