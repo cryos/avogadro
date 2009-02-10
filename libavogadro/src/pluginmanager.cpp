@@ -30,6 +30,7 @@
 #ifdef ENABLE_PYTHON
   #include "pythontool.h"
   #include "pythonengine.h"
+  #include "pythonextension.h"
 #endif
 
 #include <avogadro/engine.h>
@@ -241,7 +242,7 @@ namespace Avogadro {
     return d->tools;
   }
 
-  QList<QString> PluginManager::toolScripts()
+  QList<QString> PluginManager::scripts(const QString &type)
   {
     QList<QString> scripts;
 
@@ -270,9 +271,9 @@ namespace Avogadro {
   #endif
 #endif
 
-    if(!dir.cd("toolScripts")) {
-      if (!dir.mkdir("toolScripts")) failed = true;
-      if (!dir.cd("toolScripts")) failed = true;
+    if(!dir.cd(type + "Scripts")) {
+      if (!dir.mkdir(type + "Scripts")) failed = true;
+      if (!dir.cd(type + "Scripts")) failed = true;
     }
 
     foreach (const QString& file, dir.entryList())
@@ -281,64 +282,29 @@ namespace Avogadro {
 #ifndef WIN32
     // Now for the system wide Python scripts
     QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
-      + "share/libavogadro/toolScripts";
+      + "share/libavogadro/" + type + "Scripts";
     if (dir.cd(systemScriptsPath))
       foreach (const QString& file, dir.entryList())
         scripts.append(QString(dir.canonicalPath() + "/" + file));
 #endif
 
     return scripts;
+  }
+
+  QList<QString> PluginManager::toolScripts()
+  {
+    return scripts("tool");
   }
 
   QList<QString> PluginManager::engineScripts()
   {
-    QList<QString> scripts;
-
-    // create this directory for the user if it does not exist
-    QDir dir = QDir::home();
-    QStringList filters;
-    filters << "*.py";
-    dir.setNameFilters(filters);
-    dir.setFilter(QDir::Files | QDir::Readable);
-
-    bool failed = false;
-#ifdef Q_WS_MAC
-    dir.cd("Library/Application Support");
-    if (!dir.cd("Avogadro")) {
-      if (!dir.mkdir("Avogadro")) failed = true;
-      if (!dir.cd("Avogadro")) failed = true;
-    }
-#else
-  #ifdef WIN32
-    dir = QCoreApplication::applicationDirPath();
-  #else
-    if(!dir.cd(".avogadro")) {
-      if (!dir.mkdir(".avogadro")) failed = true;
-      if (!dir.cd(".avogadro")) failed = true;
-    }
-  #endif
-#endif
-
-    if(!dir.cd("engineScripts")) {
-      if (!dir.mkdir("engineScripts")) failed = true;
-      if (!dir.cd("engineScripts")) failed = true;
-    }
-
-    foreach (const QString& file, dir.entryList())
-      scripts.append(QString(dir.canonicalPath() + "/" + file));
-
-#ifndef WIN32
-    // Now for the system wide Python scripts
-    QString systemScriptsPath = QString(INSTALL_PREFIX) + '/'
-      + "share/libavogadro/engineScripts";
-    if (dir.cd(systemScriptsPath))
-      foreach (const QString& file, dir.entryList())
-        scripts.append(QString(dir.canonicalPath() + "/" + file));
-#endif
-
-    return scripts;
+    return scripts("engine");
   }
 
+  QList<QString> PluginManager::extensionScripts()
+  {
+    return scripts("extension");
+  }
 
   QList<Color *> PluginManager::colors(QObject *parent) const
   {
@@ -535,7 +501,7 @@ namespace Avogadro {
       loadPluginDir(path + "/tools", settings);
     }
 
-#ifdef PYTHON_ENABLED
+#ifdef ENABLE_PYTHON
     // Load the python tools
     QList<QString> scripts = toolScripts();
     foreach(const QString &script, scripts) {
@@ -553,6 +519,19 @@ namespace Avogadro {
     QList<QString> enginescripts = engineScripts();
     foreach(const QString &script, enginescripts) {
       PluginFactory *factory = qobject_cast<PluginFactory *>(new PythonEngineFactory(script));
+      if (factory) {
+        QFileInfo info(script);
+        loadFactory(factory, info, settings);
+      }
+      else {
+        qDebug() << script << "failed to load. ";
+      }
+    }
+
+    // Load the python extensions
+    QList<QString> extensionscripts = extensionScripts();
+    foreach(const QString &script, extensionscripts) {
+      PluginFactory *factory = qobject_cast<PluginFactory *>(new PythonExtensionFactory(script));
       if (factory) {
         QFileInfo info(script);
         loadFactory(factory, info, settings);

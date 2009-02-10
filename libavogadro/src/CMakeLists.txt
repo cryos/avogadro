@@ -82,14 +82,15 @@ if(GLEW_FOUND)
   set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${GLEW_LIBRARY})
 endif(GLEW_FOUND)
 
-# If Boost Python isn't found remove the Avogadro Python source files
+# If python dependencies aren't found, remove the Avogadro Python source files
 if(NOT ALL_PYTHON_FOUND)
   set(PYTHON_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/pythontool.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/pythonengine.cpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythonengine.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythonextension.cpp)
   foreach(P_ITEM ${PYTHON_SRCS})
     list(REMOVE_ITEM libavogadro_SRCS "${P_ITEM}")
   endforeach(P_ITEM ${PYTHON_SRCS})
