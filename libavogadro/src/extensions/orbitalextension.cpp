@@ -146,6 +146,9 @@ namespace Avogadro
 
     // Everything looks good, a new basis set needs to be loaded
     QFileInfo info(m_molecule->fileName());
+    // TODO: rewrite this to look for .aux, .fchk, etc. with file-insensitive
+    // e.g., we have file.out but it's really Gaussian 03 and we want .FCH
+
     if (info.completeSuffix() == "fchk" || info.completeSuffix() == "fch") {
       if (m_basis)
         delete m_basis;
