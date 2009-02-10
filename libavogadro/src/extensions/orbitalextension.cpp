@@ -43,6 +43,7 @@
 #include <QFileInfo>
 #include <QMessageBox>
 #include <QTime>
+#include <QDir>
 #include <QDebug>
 
 using Eigen::Vector3f;
@@ -145,43 +146,60 @@ namespace Avogadro
     }
 
     // Everything looks good, a new basis set needs to be loaded
-    QFileInfo info(m_molecule->fileName());
-    // TODO: rewrite this to look for .aux, .fchk, etc. with file-insensitive
-    // e.g., we have file.out but it's really Gaussian 03 and we want .FCH
+    // Check for files in this directory -- first the file itself
+    // and then any other similar files
 
-    if (info.completeSuffix() == "fchk" || info.completeSuffix() == "fch") {
-      if (m_basis)
-        delete m_basis;
-      m_basis = new BasisSet;
-      GaussianFchk fchk(m_molecule->fileName(), m_basis);
+    QFileInfo parentInfo(m_molecule->fileName());
+    // Look for files with the same basename, but different extensions
+    QDir parentDir = parentInfo.dir();
+    QStringList nameFilters;
+    nameFilters << parentInfo.baseName() + ".*";
 
-      m_orbitalDialog->setMOs(m_basis->numMOs());
-      for (int i = 0; i < m_basis->numMOs(); ++i) {
-        if (m_basis->HOMO(i)) m_orbitalDialog->setHOMO(i);
-        else if (m_basis->LUMO(i)) m_orbitalDialog->setLUMO(i);
+    QStringList matchingFiles = parentDir.entryList(nameFilters,
+                                                    QDir::Readable | QDir::Files);
+    matchingFiles.prepend(parentInfo.fileName());
+
+    // TODO: Add a warning dialog to make sure that opening up a new file is OK
+    // (i.e., that we found the right checkpoint file)
+    foreach(const QString &fileName, matchingFiles) {
+      QString fullFileName = parentInfo.path() + "/" + fileName;
+      QFileInfo info(fullFileName);
+
+      if (info.completeSuffix().compare("fchk", Qt::CaseInsensitive) == 0
+          || info.completeSuffix().compare("fch", Qt::CaseInsensitive) == 0
+          || info.completeSuffix().compare("fck", Qt::CaseInsensitive) == 0) {
+        if (m_basis)
+          delete m_basis;
+        m_basis = new BasisSet;
+        GaussianFchk fchk(fullFileName, m_basis);
+
+        m_orbitalDialog->setMOs(m_basis->numMOs());
+        for (int i = 0; i < m_basis->numMOs(); ++i) {
+          if (m_basis->HOMO(i)) m_orbitalDialog->setHOMO(i);
+          else if (m_basis->LUMO(i)) m_orbitalDialog->setLUMO(i);
+        }
+        return true;
       }
-      return true;
-    }
-    else if (info.completeSuffix() == "mopout" || info.completeSuffix() == "out") {
-      if (m_basis)
-        delete m_basis;
-      m_slater = new SlaterSet;
-      MopacAux aux(info.absolutePath() + "/" + info.baseName() + ".aux", m_slater);
+      else if (info.completeSuffix().compare("aux", Qt::CaseInsensitive) == 0) {
+        if (m_basis)
+          delete m_basis;
+        m_slater = new SlaterSet;
+        MopacAux aux(fullFileName, m_slater);
 
-      // Set the number of MOs
-      m_orbitalDialog->setMOs(m_slater->numMOs());
-      for (unsigned int i = 0; i < m_slater->numMOs(); ++i) {
-        if (m_slater->HOMO(i)) m_orbitalDialog->setHOMO(i);
-        else if (m_slater->LUMO(i)) m_orbitalDialog->setLUMO(i);
+        // Set the number of MOs
+        m_orbitalDialog->setMOs(m_slater->numMOs());
+        for (unsigned int i = 0; i < m_slater->numMOs(); ++i) {
+          if (m_slater->HOMO(i)) m_orbitalDialog->setHOMO(i);
+          else if (m_slater->LUMO(i)) m_orbitalDialog->setLUMO(i);
+        }
+        return true;
       }
-      return true;
     }
-    // If we get here it is a basis set we cannot load yet
-    else {
-      qDebug() << "baseName:" << info.completeSuffix();
-      m_orbitalDialog->setCurrentTab(0);
-      return false;
-    }
+
+    // We didn't find an appropriate filetype
+    qDebug() << "baseName:" << parentInfo.completeSuffix();
+    m_orbitalDialog->setCurrentTab(0);
+    return false;
   }
 
   void OrbitalExtension::calculateMO(int mo, const Vector3d &origin,
