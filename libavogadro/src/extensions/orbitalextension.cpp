@@ -43,6 +43,7 @@
 #include <QFileInfo>
 #include <QMessageBox>
 #include <QTime>
+#include <QDir>
 #include <QDebug>
 
 using Eigen::Vector3f;
@@ -145,40 +146,60 @@ namespace Avogadro
     }
 
     // Everything looks good, a new basis set needs to be loaded
-    QFileInfo info(m_molecule->fileName());
-    if (info.completeSuffix() == "fchk" || info.completeSuffix() == "fch") {
-      if (m_basis)
-        delete m_basis;
-      m_basis = new BasisSet;
-      GaussianFchk fchk(m_molecule->fileName(), m_basis);
+    // Check for files in this directory -- first the file itself
+    // and then any other similar files
 
-      m_orbitalDialog->setMOs(m_basis->numMOs());
-      for (int i = 0; i < m_basis->numMOs(); ++i) {
-        if (m_basis->HOMO(i)) m_orbitalDialog->setHOMO(i);
-        else if (m_basis->LUMO(i)) m_orbitalDialog->setLUMO(i);
-      }
-      return true;
-    }
-    else if (info.completeSuffix() == "mopout" || info.completeSuffix() == "out") {
-      if (m_basis)
-        delete m_basis;
-      m_slater = new SlaterSet;
-      MopacAux aux(info.absolutePath() + "/" + info.baseName() + ".aux", m_slater);
+    QFileInfo parentInfo(m_molecule->fileName());
+    // Look for files with the same basename, but different extensions
+    QDir parentDir = parentInfo.dir();
+    QStringList nameFilters;
+    nameFilters << parentInfo.baseName() + ".*";
 
-      // Set the number of MOs
-      m_orbitalDialog->setMOs(m_slater->numMOs());
-      for (unsigned int i = 0; i < m_slater->numMOs(); ++i) {
-        if (m_slater->HOMO(i)) m_orbitalDialog->setHOMO(i);
-        else if (m_slater->LUMO(i)) m_orbitalDialog->setLUMO(i);
+    QStringList matchingFiles = parentDir.entryList(nameFilters,
+                                                    QDir::Readable | QDir::Files);
+    matchingFiles.prepend(parentInfo.fileName());
+
+    // TODO: Add a warning dialog to make sure that opening up a new file is OK
+    // (i.e., that we found the right checkpoint file)
+    foreach(const QString &fileName, matchingFiles) {
+      QString fullFileName = parentInfo.path() + "/" + fileName;
+      QFileInfo info(fullFileName);
+
+      if (info.completeSuffix().compare("fchk", Qt::CaseInsensitive) == 0
+          || info.completeSuffix().compare("fch", Qt::CaseInsensitive) == 0
+          || info.completeSuffix().compare("fck", Qt::CaseInsensitive) == 0) {
+        if (m_basis)
+          delete m_basis;
+        m_basis = new BasisSet;
+        GaussianFchk fchk(fullFileName, m_basis);
+
+        m_orbitalDialog->setMOs(m_basis->numMOs());
+        for (int i = 0; i < m_basis->numMOs(); ++i) {
+          if (m_basis->HOMO(i)) m_orbitalDialog->setHOMO(i);
+          else if (m_basis->LUMO(i)) m_orbitalDialog->setLUMO(i);
+        }
+        return true;
       }
-      return true;
+      else if (info.completeSuffix().compare("aux", Qt::CaseInsensitive) == 0) {
+        if (m_basis)
+          delete m_basis;
+        m_slater = new SlaterSet;
+        MopacAux aux(fullFileName, m_slater);
+
+        // Set the number of MOs
+        m_orbitalDialog->setMOs(m_slater->numMOs());
+        for (unsigned int i = 0; i < m_slater->numMOs(); ++i) {
+          if (m_slater->HOMO(i)) m_orbitalDialog->setHOMO(i);
+          else if (m_slater->LUMO(i)) m_orbitalDialog->setLUMO(i);
+        }
+        return true;
+      }
     }
-    // If we get here it is a basis set we cannot load yet
-    else {
-      qDebug() << "baseName:" << info.completeSuffix();
-      m_orbitalDialog->setCurrentTab(0);
-      return false;
-    }
+
+    // We didn't find an appropriate filetype
+    qDebug() << "baseName:" << parentInfo.completeSuffix();
+    m_orbitalDialog->setCurrentTab(0);
+    return false;
   }
 
   void OrbitalExtension::calculateMO(int mo, const Vector3d &origin,
@@ -234,7 +255,7 @@ namespace Avogadro
         m_timer = new QTime;
         m_timer->start();
       }
-      m_basis->calculateCubeMO2(cube, mo);
+      m_basis->calculateCubeMO(cube, mo);
 
      // Set up a progress dialog
       if (!m_progress) {
@@ -245,18 +266,18 @@ namespace Avogadro
 
       // Set up the progress bar
       m_progress->setWindowTitle(tr("Calculating MO ") + QString::number(mo));
-      m_progress->setRange(m_basis->watcher2().progressMinimum(),
-                           m_basis->watcher2().progressMinimum());
-      m_progress->setValue(m_basis->watcher2().progressValue());
+      m_progress->setRange(m_basis->watcher().progressMinimum(),
+                           m_basis->watcher().progressMinimum());
+      m_progress->setValue(m_basis->watcher().progressValue());
 
       // Connect signals and slots
-      connect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
+      connect(&m_basis->watcher(), SIGNAL(progressValueChanged(int)),
               m_progress, SLOT(setValue(int)));
-      connect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
+      connect(&m_basis->watcher(), SIGNAL(progressRangeChanged(int, int)),
               m_progress, SLOT(setRange(int, int)));
       connect(m_progress, SIGNAL(canceled()),
               this, SLOT(calculation2Canceled()));
-      connect(&m_basis->watcher2(), SIGNAL(finished()),
+      connect(&m_basis->watcher(), SIGNAL(finished()),
               this, SLOT(calculation2Done()));
       m_orbitalDialog->enableCalculation(false);
     }
@@ -442,14 +463,10 @@ namespace Avogadro
   {
     // Calculation complete
     if (!m_currentMO) {
-      disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-                 m_progress, SLOT(setValue(int)));
-      disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-                 m_progress, SLOT(setRange(int, int)));
+      disconnect(&m_basis->watcher(), 0, m_progress, 0);
       disconnect(m_progress, SIGNAL(canceled()),
                  this, SLOT(calculation2Canceled()));
-      disconnect(&m_basis->watcher2(), SIGNAL(finished()),
-                 this, SLOT(calculation2Done()));
+      disconnect(&m_basis->watcher(), 0, this, 0);
 
       qDebug() << "Single points calculation done in" << m_timer->elapsed() / 1000.0
                << "seconds";
@@ -460,14 +477,10 @@ namespace Avogadro
     }
     else if (static_cast<unsigned int>(m_basis->numMOs()) == m_currentMO) {
       // All MOs have been calculated
-      disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-                 m_progress, SLOT(setValue(int)));
-      disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-                 m_progress, SLOT(setRange(int, int)));
+      disconnect(&m_basis->watcher(), 0, m_progress,0);
       disconnect(m_progress, SIGNAL(canceled()),
                  this, SLOT(calculation2Canceled()));
-      disconnect(&m_basis->watcher2(), SIGNAL(finished()),
-                 this, SLOT(calculation2Done()));
+      disconnect(&m_basis->watcher(), 0, this, 0);
 
       qDebug() << "All cube MOs calculated in" << m_timer->elapsed() / 1000.0
                << "seconds";
@@ -478,14 +491,10 @@ namespace Avogadro
       m_currentMO = 0;
     }
     else { // More work to do
-      disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-                 m_progress, SLOT(setValue(int)));
-      disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-                 m_progress, SLOT(setRange(int, int)));
+      disconnect(&m_basis->watcher(), 0, m_progress, 0);
       disconnect(m_progress, SIGNAL(canceled()),
                  this, SLOT(calculation2Canceled()));
-      disconnect(&m_basis->watcher2(), SIGNAL(finished()),
-                 this, SLOT(calculation2Done()));
+      disconnect(&m_basis->watcher(), 0, this, 0);
       calculateMO(++m_currentMO, m_origin, m_steps, m_stepSize);
     }
   }
@@ -558,15 +567,11 @@ namespace Avogadro
 
   void OrbitalExtension::calculation2Canceled()
   {
-    disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-               m_progress, SLOT(setValue(int)));
-    disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-            m_progress, SLOT(setRange(int, int)));
+    disconnect(&m_basis->watcher(), 0, m_progress, 0);
     connect(m_progress, SIGNAL(canceled()),
             this, SLOT(calculation2Canceled()));
-    disconnect(&m_basis->watcher2(), SIGNAL(finished()),
-            this, SLOT(calculation2Done()));
-    m_basis->watcher2().cancel();
+    disconnect(&m_basis->watcher(), 0, this, 0);
+    m_basis->watcher().cancel();
     qDebug() << "Canceled...";
     m_orbitalDialog->enableCalculation(true);
     m_currentMO = 0;

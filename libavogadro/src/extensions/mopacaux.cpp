@@ -26,10 +26,7 @@
 
 #include "slaterset.h"
 
-#include <Eigen/Core>
-
 #include <QFile>
-#include <QTextStream>
 #include <QStringList>
 #include <QDebug>
 
@@ -39,7 +36,6 @@ using Eigen::Vector3d;
 
 namespace Avogadro
 {
-  using std::vector;
 
   MopacAux::MopacAux(QString filename, SlaterSet* basis)
   {

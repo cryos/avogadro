@@ -1,14 +1,14 @@
 /**********************************************************************
-  GaussianChk - parses Gaussian formatted checkpoint files
+  GaussianChk - parses Gaussian style formatted checkpoint files
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
 
   This library is free software; you can redistribute it and/or modify
   it under the terms of the GNU Library General Public License as
-  published by the Free Software Foundation; either version 2 of the
+  published by the Free Software Foundation; either version 2.1 of the
   License, or (at your option) any later version.
 
   This library is distributed in the hope that it will be useful,
@@ -25,17 +25,19 @@
 #ifndef GAUSSIANFCHK_H
 #define GAUSSIANFCHK_H
 
-#include "basisset.h"
 #include <QString>
 #include <QTextStream>
+#include <Eigen/Core>
 #include <vector>
 
 namespace Avogadro
 {
+  class BasisSet;
+
   class GaussianFchk
   {
   public:
-    GaussianFchk(QString filename, BasisSet *basis);
+    GaussianFchk(const QString &filename, BasisSet *basis);
     ~GaussianFchk();
     void outputAll();
   private:
@@ -43,9 +45,11 @@ namespace Avogadro
     void processLine();
     void load(BasisSet* basis);
     std::vector<int> readArrayI(unsigned int n);
-    std::vector<double> readArrayD(unsigned int n);
+    std::vector<double> readArrayD(unsigned int n, int width = 0);
+    bool readDensityMatrix(unsigned int n);
 
     int m_electrons;
+    unsigned int m_numBasisFunctions;
     std::vector<int> m_aNums;
     std::vector<double> m_aPos;
     std::vector<int> m_shellTypes;
@@ -56,6 +60,7 @@ namespace Avogadro
     std::vector<double> m_csp;
     std::vector<double> m_orbitalEnergy;
     std::vector<double> m_MOcoeffs;
+    Eigen::MatrixXd m_density;     /// Total density matrix
   };
 
 } // End namespace Avogadro
