@@ -1,7 +1,7 @@
 /**********************************************************************
-  BasisSet - encapsulation of basis sets
+  BasisSet - encapsulation of Gaussian type basis sets
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
   Copyright (C) 2008 Albert De Fusco
 
   This file is part of the Avogadro molecular editor project.
@@ -35,27 +35,8 @@
 
 // Basis sets...
 
-/**
- * @class BasisSet basisset.h
- * @brief BasisSet Class
- * @author Marcus D. Hanwell
- *
- * The BasisSet class has a transparent data structure for storing the basis
- * sets output by many quantum mechanical codes. It has a certain hierarchy
- * where shells are built up from n primitives, in this case Gaussian Type
- * Orbitals (GTOs). Each shell has a type (S, P, D, F, etc) and is composed of
- * one or more GTOs. Each GTO has a contraction coefficient, c, and an exponent,
- * a.
- *
- * When calculating Molecular Orbitals (MOs) each orthogonal shell has an
- * independent coefficient. That is the S type orbitals have one coefficient,
- * the P type orbitals have three coefficients (Px, Py and Pz), the D type
- * orbitals have five (or six if cartesian types) coefficients, and so on.
- */
-
 namespace Avogadro
 {
-
   class Molecule;
   class Cube;
   struct BasisShell;
@@ -66,38 +47,22 @@ namespace Avogadro
   enum orbital { S, SP, P, D, D5, F, F7, UU };
 
   /**
-   * Simple structure to encapsulate a GTO, where c is the contraction
-   * coefficient and a is th exponent.
+   * @class BasisSet basisset.h
+   * @brief BasisSet Class
+   * @author Marcus D. Hanwell
+   *
+   * The BasisSet class has a transparent data structure for storing the basis
+   * sets output by many quantum mechanical codes. It has a certain hierarchy
+   * where shells are built up from n primitives, in this case Gaussian Type
+   * Orbitals (GTOs). Each shell has a type (S, P, D, F, etc) and is composed of
+   * one or more GTOs. Each GTO has a contraction coefficient, c, and an exponent,
+   * a.
+   *
+   * When calculating Molecular Orbitals (MOs) each orthogonal shell has an
+   * independent coefficient. That is the S type orbitals have one coefficient,
+   * the P type orbitals have three coefficients (Px, Py and Pz), the D type
+   * orbitals have five (or six if cartesian types) coefficients, and so on.
    */
-  struct GTO
-  {
-    double c;
-    double a;
-    unsigned int index;
-  };
-
-  /**
-   * Simple structure containing a Basis, where atom is the atom id, the index
-   * is the position index in the MO vector, type is orbital type and GTOs is a
-   * vector containing the GTOs for the Basis.
-   */
-  struct Basis
-  {
-    unsigned int atom;
-    unsigned int index;
-    orbital type; // The orbital type, i.e. S, P, D etc.
-    std::vector<GTO *> GTOs;
-  };
-
-  /**
-   * Simple, minimalistic Quantum Atom containing the position of the atom
-   * center and the atomic number.
-   */
-  struct QAtom
-  {
-    Eigen::Vector3d pos;
-    int num;
-  };
 
   class BasisSet : public QObject
   {
@@ -152,6 +117,11 @@ namespace Avogadro
     void addMO(double MO);
 
     /**
+     * Set the SCF density matrix for the BasisSet.
+     */
+    bool setDensityMatrix(const Eigen::MatrixXd &m);
+
+    /**
      * Set the number of electrons in the BasisSet.
      * @param n The number of electrons in the BasisSet.
      */
@@ -180,8 +150,10 @@ namespace Avogadro
      */
     bool HOMO(unsigned int n)
     {
-      if (n+1 == static_cast<unsigned int>(m_electrons / 2)) return true;
-      else return false;
+      if (n+1 == static_cast<unsigned int>(m_electrons / 2))
+        return true;
+      else
+        return false;
     }
 
     /**
@@ -191,115 +163,71 @@ namespace Avogadro
      */
     bool LUMO(unsigned int n)
     {
-      if (n == static_cast<unsigned int>(m_electrons / 2)) return true;
-      else return false;
+      if (n == static_cast<unsigned int>(m_electrons / 2))
+        return true;
+      else
+        return false;
     }
 
     /**
-     * Calculate the value at the supplied point in the supplied MO.
-     * @param pos The position to calculate the MO at.
-     * @param state The MO number to use.
-     */
-    double calculateMO(const Eigen::Vector3d& pos, unsigned int state = 1);
-
-    /**
      * Calculate the MO over the entire range of the supplied Cube.
      * @param cube The cube to write the values of the MO into.
      * @return True if the calculation was successful.
      */
-    bool calculateCubeMO(Cube *cube, unsigned int state = 1);
-
-    /**
-     * Calculate the MO over the entire range of the supplied Cube.
-     * @param cube The cube to write the values of the MO into.
-     * @return True if the calculation was successful.
-     */
-    bool calculateCubeMO2(Cube *cube, unsigned int state = 1);
+    bool calculateCubeMO(Cube *cube, int state = 1);
 
     /**
      * When performing a calculation the QFutureWatcher is useful if you want
      * to update a progress bar.
      */
-    QFutureWatcher< std::vector<double> > & watcher() { return m_watcher; }
-
-    /**
-     * When performing a calculation the QFutureWatcher is useful if you want
-     * to update a progress bar.
-     */
-    QFutureWatcher<void> & watcher2() { return m_watcher2; }
+    QFutureWatcher<void> & watcher() { return m_watcher; }
 
   private Q_SLOTS:
-    /**
+     /**
      * Slot to set the cube data once Qt Concurrent is done
      */
      void calculationComplete();
 
-     /**
-     * Slot to set the cube data once Qt Concurrent is done
-     */
-     void calculationComplete2();
-
   Q_SIGNALS:
 
   private:
-    std::vector<GTO *> m_GTOs;
-    std::vector<Basis *> m_basis;
-    std::vector< std::vector<Basis *> > m_shells;
-    std::vector<QAtom *> m_atoms;
-    std::vector<double> m_MOs; // These are the LCAO contributions
-    std::vector<double> m_c;   // These are the normalised contraction coeffs
+    // New storage of the data
+    std::vector<Eigen::Vector3d> m_atomPos;  // Atom position vectors
+    std::vector<int> m_symmetry;             // Symmetry of the basis, S, P...
+    std::vector<unsigned int> m_atomIndices; // Indices into the atomPos vector
+    std::vector<unsigned int> m_moIndices;   // Indices into the MO/density matrix
+    std::vector<unsigned int> m_gtoIndices;  // Indices into the GTO vector
+    std::vector<unsigned int> m_cIndices;    // Indices into m_gtoCN
+    std::vector<double> m_gtoA;              // The GTO exponent
+    std::vector<double> m_gtoC;              // The GTO contraction coefficient
+    std::vector<double> m_gtoCN;             // The GTO contraction coefficient (normalized)
+    Eigen::MatrixXd m_moMatrix;              // MO coefficient matrix
+    Eigen::MatrixXd m_density;               // Density matrix
 
-    unsigned int m_MO;  // The current MO
-    unsigned int m_cPos; // The current c position
     unsigned int m_numMOs; // The number of GTOs
-    unsigned int m_numCs; // Number of contraction coefficients
     unsigned int m_electrons; // Total number of electrons
     unsigned int m_numAtoms;  // Total number of atoms in the basis set
     bool m_init; // Has the calculation been initialised?
 
-    QFuture< std::vector<double> > m_future;
-    QFuture<void> m_future2;
-    QFutureWatcher< std::vector<double> > m_watcher;
-    QFutureWatcher<void> m_watcher2;
+    QFuture<void> m_future;
+    QFutureWatcher<void> m_watcher;
     Cube *m_cube; // Cube to put the results into
     QVector<BasisShell> *m_basisShells;
 
     static bool isSmall(double val);
 
-    void initCalculation();  // Perform initialisation when necessary
-    double processBasis(const Basis* basis, const Eigen::Vector3d& delta,
-      double dr2);
-    double doS(const Basis* basis, double dr2);
-    double doP(const Basis* basis, const Eigen::Vector3d& delta, double dr2);
-    double doD(const Basis* basis, const Eigen::Vector3d& delta, double dr2);
-    double doD5(const Basis* basis, const Eigen::Vector3d& delta, double dr2);
-
-    /// These are the re-entrant, entire cube forms of the calculations
-    static std::vector<double> processShell(const BasisShell &shell);
-    static void reduceShells(std::vector<double> &result, const std::vector<double> &add);
-    static void cubeS(BasisSet *set, std::vector<double> &vals, const Basis* basis,
-                      const std::vector<double> &dr2, unsigned int indexMO);
-    static void cubeP(BasisSet *set, std::vector<double> &vals, const Basis* basis,
-                      const std::vector<Eigen::Vector3d> &delta,
-                      const std::vector<double> &dr2, unsigned int indexMO);
-    static void cubeD(BasisSet *set, std::vector<double> &vals, const Basis* basis,
-                      const std::vector<Eigen::Vector3d> &delta,
-                      const std::vector<double> &dr2, unsigned int indexMO);
-    static void cubeD5(BasisSet *set, std::vector<double> &vals, const Basis* basis,
-                      const std::vector<Eigen::Vector3d> &delta,
-                      const std::vector<double> &dr2, unsigned int indexMO);
-
+    void initCalculation();  // Perform initialisation before any calculations
     /// Re-entrant single point forms of the calculations
     static void processPoint(BasisShell &shell);
-    static double pointS(BasisSet *set, const Basis* basis,
+    static double pointS(BasisSet *set, unsigned int moIndex,
                       const double &dr2, unsigned int indexMO);
-    static double pointP(BasisSet *set, const Basis* basis,
+    static double pointP(BasisSet *set, unsigned int moIndex,
                       const Eigen::Vector3d &delta,
                       const double &dr2, unsigned int indexMO);
-    static double pointD(BasisSet *set, const Basis* basis,
+    static double pointD(BasisSet *set, unsigned int moIndex,
                       const Eigen::Vector3d &delta,
                       const double &dr2, unsigned int indexMO);
-    static double pointD5(BasisSet *set, const Basis* basis,
+    static double pointD5(BasisSet *set, unsigned int moIndex,
                       const Eigen::Vector3d &delta,
                       const double &dr2, unsigned int indexMO);
   };
