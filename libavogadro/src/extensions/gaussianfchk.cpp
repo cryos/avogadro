@@ -1,14 +1,14 @@
 /**********************************************************************
-  GaussianFchk - parses Gaussian formatted checkpoint files
+  GaussianFchk - parses Gaussian style formatted checkpoint files
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
 
   This library is free software; you can redistribute it and/or modify
   it under the terms of the GNU Library General Public License as
-  published by the Free Software Foundation; either version 2 of the
+  published by the Free Software Foundation; either version 2.1 of the
   License, or (at your option) any later version.
 
   This library is distributed in the hope that it will be useful,
@@ -23,22 +23,19 @@
  **********************************************************************/
 
 #include "gaussianfchk.h"
-
-#include <Eigen/Core>
+#include "basisset.h"
 
 #include <QFile>
-#include <QTextStream>
 #include <QStringList>
 #include <QDebug>
 
-using namespace Eigen;
-using namespace std;
+using Eigen::Vector3d;
+using std::vector;
 
 namespace Avogadro
 {
-  using std::vector;
 
-  GaussianFchk::GaussianFchk(QString filename, BasisSet* basis)
+  GaussianFchk::GaussianFchk(const QString &filename, BasisSet* basis)
   {
     // Open the file for reading and process it
     QFile file(filename);
@@ -50,9 +47,7 @@ namespace Avogadro
     // Process the formatted checkpoint and extract all the information we need
     m_in.setDevice(&file);
     while (!m_in.atEnd())
-    {
       processLine();
-    }
 
     // Now it should all be loaded load it into the basis set
     load(basis);
@@ -77,8 +72,10 @@ namespace Avogadro
       qDebug() << "Number of atoms =" << list.at(1).toInt();
     else if (key == "Number of electrons")
       m_electrons = list.at(1).toInt();
-    else if (key == "Number of basis functions")
-      qDebug() << "Number of basis functions =" << list.at(1).toInt();
+    else if (key == "Number of basis functions") {
+      m_numBasisFunctions = list.at(1).toInt();
+      qDebug() << "Number of basis functions =" << m_numBasisFunctions;
+    }
     else if (key == "Atomic numbers")
       m_aNums = readArrayI(list.at(2).toInt());
     // Now we get to the meat of it - coordinates of the atoms
@@ -98,15 +95,17 @@ namespace Avogadro
       m_c = readArrayD(list.at(2).toInt(), 16);
     else if (key == "P(S=P) Contraction coefficients")
       m_csp = readArrayD(list.at(2).toInt(), 16);
-    else if (key == "Alpha Orbital Energies")
-    {
+    else if (key == "Alpha Orbital Energies") {
       m_orbitalEnergy = readArrayD(list.at(2).toInt(), 16);
       qDebug() << "MO energies, n =" << m_orbitalEnergy.size();
     }
-    else if (key == "Alpha MO coefficients")
-    {
+    else if (key == "Alpha MO coefficients") {
       m_MOcoeffs = readArrayD(list.at(2).toInt(), 16);
       qDebug() << "MO coefficients, n =" << m_MOcoeffs.size();
+    }
+    else if (key == "Total SCF Density") {
+      readDensityMatrix(list.at(2).toInt());
+      qDebug() << "SCF density matrix read in" << m_density.rows();
     }
 
   }
@@ -177,8 +176,7 @@ namespace Avogadro
   vector<int> GaussianFchk::readArrayI(unsigned int n)
   {
     vector<int> tmp;
-    while (tmp.size() < n)
-    {
+    while (tmp.size() < n) {
       QString line = m_in.readLine();
       QStringList list = line.split(" ", QString::SkipEmptyParts);
       for (int i = 0; i < list.size(); ++i)
@@ -187,20 +185,19 @@ namespace Avogadro
     return tmp;
   }
 
-  vector<double> GaussianFchk::readArrayD(unsigned int n, unsigned int width)
+  vector<double> GaussianFchk::readArrayD(unsigned int n, int width)
   {
     vector<double> tmp;
-    while (tmp.size() < n)
-    {
+    while (tmp.size() < n) {
       QString line = m_in.readLine();
       if (width == 0) { // we can split by spaces
         QStringList list = line.split(" ", QString::SkipEmptyParts);
-        for (unsigned int i = 0; i < list.size(); ++i)
+        for (int i = 0; i < list.size(); ++i)
           tmp.push_back(list.at(i).toDouble());
-      } else { // Q-Chem files use 16 character fields
-        unsigned int maxColumns = 80 / width;
-
-        for (unsigned int i = 0; i < maxColumns; ++i) {
+      }
+      else { // Q-Chem files use 16 character fields
+        int maxColumns = 80 / width;
+        for (int i = 0; i < maxColumns; ++i) {
           QString substring = line.mid(i * width, width);
           if (substring.length() != width)
             break;
@@ -210,6 +207,32 @@ namespace Avogadro
       }
     }
     return tmp;
+  }
+
+  bool GaussianFchk::readDensityMatrix(unsigned int n)
+  {
+    m_density.resize(m_numBasisFunctions, m_numBasisFunctions);
+    unsigned int cnt = 0;
+    unsigned int i = 0, j = 0;
+    unsigned int f = 1;
+    // Skip the first commment line...
+    m_in.readLine();
+    while (cnt < n) {
+      QString line = m_in.readLine();
+      QStringList list = line.split(" ", QString::SkipEmptyParts);
+      for (int k = 0; k < list.size(); ++k) {
+        //m_overlap.part<Eigen::SelfAdjoint>()(i, j) = list.at(k).toDouble();
+        m_density(i, j) = m_density(j, i) = list.at(k).toDouble();
+        ++i; ++cnt;
+        if (i == f) {
+          // We need to move down to the next row and increment f - lower tri
+          i = 0;
+          ++f;
+          ++j;
+        }
+      }
+    }
+    return true;
   }
 
   void GaussianFchk::outputAll()
