@@ -255,7 +255,7 @@ namespace Avogadro
         m_timer = new QTime;
         m_timer->start();
       }
-      m_basis->calculateCubeMO2(cube, mo);
+      m_basis->calculateCubeMO(cube, mo);
 
      // Set up a progress dialog
       if (!m_progress) {
@@ -266,18 +266,18 @@ namespace Avogadro
 
       // Set up the progress bar
       m_progress->setWindowTitle(tr("Calculating MO ") + QString::number(mo));
-      m_progress->setRange(m_basis->watcher2().progressMinimum(),
-                           m_basis->watcher2().progressMinimum());
-      m_progress->setValue(m_basis->watcher2().progressValue());
+      m_progress->setRange(m_basis->watcher().progressMinimum(),
+                           m_basis->watcher().progressMinimum());
+      m_progress->setValue(m_basis->watcher().progressValue());
 
       // Connect signals and slots
-      connect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
+      connect(&m_basis->watcher(), SIGNAL(progressValueChanged(int)),
               m_progress, SLOT(setValue(int)));
-      connect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
+      connect(&m_basis->watcher(), SIGNAL(progressRangeChanged(int, int)),
               m_progress, SLOT(setRange(int, int)));
       connect(m_progress, SIGNAL(canceled()),
               this, SLOT(calculation2Canceled()));
-      connect(&m_basis->watcher2(), SIGNAL(finished()),
+      connect(&m_basis->watcher(), SIGNAL(finished()),
               this, SLOT(calculation2Done()));
       m_orbitalDialog->enableCalculation(false);
     }
@@ -463,14 +463,10 @@ namespace Avogadro
   {
     // Calculation complete
     if (!m_currentMO) {
-      disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-                 m_progress, SLOT(setValue(int)));
-      disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-                 m_progress, SLOT(setRange(int, int)));
+      disconnect(&m_basis->watcher(), 0, m_progress, 0);
       disconnect(m_progress, SIGNAL(canceled()),
                  this, SLOT(calculation2Canceled()));
-      disconnect(&m_basis->watcher2(), SIGNAL(finished()),
-                 this, SLOT(calculation2Done()));
+      disconnect(&m_basis->watcher(), 0, this, 0);
 
       qDebug() << "Single points calculation done in" << m_timer->elapsed() / 1000.0
                << "seconds";
@@ -481,14 +477,10 @@ namespace Avogadro
     }
     else if (static_cast<unsigned int>(m_basis->numMOs()) == m_currentMO) {
       // All MOs have been calculated
-      disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-                 m_progress, SLOT(setValue(int)));
-      disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-                 m_progress, SLOT(setRange(int, int)));
+      disconnect(&m_basis->watcher(), 0, m_progress,0);
       disconnect(m_progress, SIGNAL(canceled()),
                  this, SLOT(calculation2Canceled()));
-      disconnect(&m_basis->watcher2(), SIGNAL(finished()),
-                 this, SLOT(calculation2Done()));
+      disconnect(&m_basis->watcher(), 0, this, 0);
 
       qDebug() << "All cube MOs calculated in" << m_timer->elapsed() / 1000.0
                << "seconds";
@@ -499,14 +491,10 @@ namespace Avogadro
       m_currentMO = 0;
     }
     else { // More work to do
-      disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-                 m_progress, SLOT(setValue(int)));
-      disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-                 m_progress, SLOT(setRange(int, int)));
+      disconnect(&m_basis->watcher(), 0, m_progress, 0);
       disconnect(m_progress, SIGNAL(canceled()),
                  this, SLOT(calculation2Canceled()));
-      disconnect(&m_basis->watcher2(), SIGNAL(finished()),
-                 this, SLOT(calculation2Done()));
+      disconnect(&m_basis->watcher(), 0, this, 0);
       calculateMO(++m_currentMO, m_origin, m_steps, m_stepSize);
     }
   }
@@ -579,15 +567,11 @@ namespace Avogadro
 
   void OrbitalExtension::calculation2Canceled()
   {
-    disconnect(&m_basis->watcher2(), SIGNAL(progressValueChanged(int)),
-               m_progress, SLOT(setValue(int)));
-    disconnect(&m_basis->watcher2(), SIGNAL(progressRangeChanged(int, int)),
-            m_progress, SLOT(setRange(int, int)));
+    disconnect(&m_basis->watcher(), 0, m_progress, 0);
     connect(m_progress, SIGNAL(canceled()),
             this, SLOT(calculation2Canceled()));
-    disconnect(&m_basis->watcher2(), SIGNAL(finished()),
-            this, SLOT(calculation2Done()));
-    m_basis->watcher2().cancel();
+    disconnect(&m_basis->watcher(), 0, this, 0);
+    m_basis->watcher().cancel();
     qDebug() << "Canceled...";
     m_orbitalDialog->enableCalculation(true);
     m_currentMO = 0;
