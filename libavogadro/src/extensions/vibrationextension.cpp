@@ -51,6 +51,7 @@ namespace Avogadro {
     m_actions.append(action);
 
     QWidget *parentWidget = static_cast<QWidget*>(parent);
+    m_widget = parentWidget;
     m_dialog = new VibrationDialog(parentWidget);
     connect(m_dialog, SIGNAL(selectedMode(int)),
             this, SLOT(updateMode(int)));
@@ -98,22 +99,27 @@ namespace Avogadro {
     OBMol obmol = m_molecule->OBMol();
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
 
-    vector<vector3> displacementVectors = m_vibrations->GetLx()[mode];
-    vector3 displacement;
-
-    foreach (Atom *atom, m_molecule->atoms()) {
-      displacement = displacementVectors[atom->index()];
-      atom->setForceVector(Eigen::Vector3d(displacement.x(), displacement.y(), displacement.z()));
+    if (m_vibrations->GetLx().size() != 0) {
+      vector<vector3> displacementVectors = m_vibrations->GetLx()[mode];
+      vector3 displacement;
+      
+      foreach (Atom *atom, m_molecule->atoms()) {
+        displacement = displacementVectors[atom->index()];
+        atom->setForceVector(Eigen::Vector3d(displacement.x(), displacement.y(), displacement.z()));
+      }
+      m_molecule->update();
+    } else {
+      if (m_widget)
+        QMessageBox::warning(m_widget, tr("Vibrational Analysis"), tr("No vibrational displacements exist."));
     }
-    m_molecule->update();
-
-    // widget->invalidateDL
   }
 
   QUndoCommand* VibrationExtension::performAction( QAction *, GLWidget *widget )
   {
     if (m_molecule == NULL)
       return NULL;
+
+    m_widget = widget; // save for warnings in updateMode()
     
     OBMol obmol = m_molecule->OBMol();
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));

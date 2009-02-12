@@ -71,6 +71,7 @@ namespace Avogadro {
       OpenBabel::OBVibrationData *m_vibrations;
       VibrationDialog *m_dialog;
       Molecule *m_molecule;
+      QWidget *m_widget;
   };
 
   class VibrationExtensionFactory : public QObject, public PluginFactory
