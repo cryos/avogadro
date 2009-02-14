@@ -136,13 +136,15 @@ namespace Avogadro {
       d->settingsWidget = new QWidget();
       d->settingsWidget->setLayout( new QVBoxLayout() );
 
-      try {
-        prepareToCatchError();
-        QWidget *widget = extract<QWidget*>(d->instance.attr("settingsWidget")());
-        if (widget)
-          d->settingsWidget->layout()->addWidget(widget);
-      } catch (error_already_set const &) {
-        catchError();
+      if (PyObject_HasAttrString(d->instance.ptr(), "settingsWidget")) {
+        try {
+          prepareToCatchError();
+          QWidget *widget = extract<QWidget*>(d->instance.attr("settingsWidget")());
+          if (widget)
+            d->settingsWidget->layout()->addWidget(widget);
+        } catch (error_already_set const &) {
+          catchError();
+        }
       }
 
       connect(d->settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
@@ -171,14 +173,12 @@ namespace Avogadro {
     QFileInfo info(filename);
     d->interpreter.addSearchPath(info.canonicalPath());
 
-    pythonError()->append(tr("PythonEngine: checking ") + filename + "...");
     
     PythonScript *script = new PythonScript(filename);
 
     if(script->module()) {
       // make sure there is an Engine class defined
       if (PyObject_HasAttrString(script->module().ptr(), "Engine")) {
-        pythonError()->append(tr("  + 'Engine' class found"));
 
         try {
           prepareToCatchError();
@@ -193,10 +193,12 @@ namespace Avogadro {
 
       } else {
         delete script;
+        pythonError()->append(tr("PythonEngine: checking ") + filename + "...");
         pythonError()->append(tr("  - script has no 'Engine' class defined"));
       }
     } else {
       delete script;
+      pythonError()->append(tr("PythonEngine: checking ") + filename + "...");
       pythonError()->append(tr("  - no module"));
     }
   }

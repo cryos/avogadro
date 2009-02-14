@@ -213,8 +213,6 @@ namespace Avogadro
     QFileInfo info(filename);
     d->interpreter.addSearchPath(info.canonicalPath());
       
-    pythonError()->append(tr("PythonExtension: checking ") + filename + "...");
-
     PythonScript *script = new PythonScript(filename);
 
     if (script->module()) {
@@ -232,10 +230,12 @@ namespace Avogadro
           
       } else {
         delete script;
+        pythonError()->append(tr("PythonExtension: checking ") + filename + "...");
         pythonError()->append(tr("  - script has no 'Extension' class defined"));
       }
     } else {
       delete script;
+      pythonError()->append(tr("PythonExtension: checking ") + filename + "...");
       pythonError()->append(tr("  - no module"));
     }
   }

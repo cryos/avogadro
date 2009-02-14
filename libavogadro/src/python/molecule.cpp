@@ -33,9 +33,10 @@ namespace Avogadro {
 
   void MoleculeList::moleculeDestroyed()
   {
-  
+    Molecule* mol = static_cast<Molecule*>(sender());
+    int index = m_molecules.indexOf(mol);
+    m_molecules.removeAt(index);  
   }
-
 
 }
 
