@@ -15,6 +15,12 @@ class MoleculeList : public QObject
     {
     }
     
+    ~MoleculeList()
+    {
+      foreach(Molecule *mol, m_molecules) 
+        delete mol;
+    }
+
     MoleculeList(const MoleculeList &other) : QObject(0)
     {
       m_molecules = other.m_molecules;

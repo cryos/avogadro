@@ -96,7 +96,6 @@ template <> struct MetaData<Avogadro::Primitive> { static const char* className(
 template <> struct MetaData<Avogadro::Residue> { static const char* className() { return "QObject";} };
 template <> struct MetaData<Avogadro::Tool> { static const char* className() { return "QObject";} };
 template <> struct MetaData<Avogadro::ToolGroup> { static const char* className() { return "QObject";} };
-//template <> struct MetaData<Avogadro::UndoCommand> { static const char* className() { return "QObject";} };
 
 
 template <> struct MetaData<QObject> { static const char* className() { return "QObject";} };
