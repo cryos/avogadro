@@ -21,7 +21,6 @@ class MoleculeList : public QObject
     }
     
     Molecule* addMolecule();
-    Molecule* addMoleculeCopy(Molecule *other);
 
     Molecule* at(int index)
     {

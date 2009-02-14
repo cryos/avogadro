@@ -31,15 +31,6 @@ namespace Avogadro {
     return mol;
   }
 
-  Molecule* MoleculeList::addMoleculeCopy(Molecule *other)
-  {
-    Molecule *mol;
-    mol = new Molecule(other);
-    m_molecules.append(mol);
-    connect(mol, SIGNAL(destroyed()), this, SLOT(moleculeDestroyed()));
-    return mol;
-  }
-    
   void MoleculeList::moleculeDestroyed()
   {
   
@@ -164,7 +155,6 @@ void export_Molecule()
     .add_property("instance", make_function(&MoleculeList::instance, return_value_policy<reference_existing_object>()))
     .add_property("numMolecules", &MoleculeList::numMolecules)
     .def("addMolecule", &MoleculeList::addMolecule, return_value_policy<reference_existing_object>())
-    .def("addMolecule", &MoleculeList::addMoleculeCopy, return_value_policy<reference_existing_object>())
     .def("at", &MoleculeList::at, return_value_policy<reference_existing_object>())
     ;
 
