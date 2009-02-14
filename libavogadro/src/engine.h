@@ -41,14 +41,16 @@
 #include <QSettings>
 #include <QtPlugin>
 
-#define AVOGADRO_ENGINE(t) \
+#define AVOGADRO_ENGINE(i, t)                    \
   public: \
+    QString identifier() const { return i; } \
     QString name() const { return t; } \
 
-#define AVOGADRO_ENGINE_FACTORY(c,n,d) \
+#define AVOGADRO_ENGINE_FACTORY(c,i,n,d)        \
   public: \
     Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
-    Plugin::Type type() const { return Plugin::EngineType; }; \
+    Plugin::Type type() const { return Plugin::EngineType; } \
+    QString identifier() const { return i; } \
     QString name() const { return n; } \
     QString description() const { return d; };
 

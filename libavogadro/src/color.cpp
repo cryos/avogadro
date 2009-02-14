@@ -90,6 +90,17 @@ namespace Avogadro {
     return;
   }
 
+  void Color::set(const unsigned int)
+  {
+    return;
+  }
+
+  void Color::set(const double, const double, 
+           const double, const double)
+  {
+    return;
+  }
+
   void Color::setAlpha(double alpha)
   {
     m_channels[3] = alpha;
@@ -132,9 +143,13 @@ namespace Avogadro {
   QString Color::name() const
   {
    if (m_name.isEmpty())
-     //return type();
-     return "BLEH";
+     return "Generic Color"; // should never, ever appear
     else
       return m_name;
+  }
+
+  QString Color::identifier() const
+  {
+    return "Generic Color";
   }
 }

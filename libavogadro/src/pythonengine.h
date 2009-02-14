@@ -49,6 +49,7 @@ namespace Avogadro {
 
       //! \name To python delegetad functions
       //@{
+      QString identifier() const;
       QString name() const;
       QString description() const;
       Layers layers() const;
@@ -87,6 +88,7 @@ namespace Avogadro {
       PythonEngineFactory(const QString &filename) : m_filename(filename)
       {
         PythonEngine engine(0, filename);
+        m_identifier = engine.identifier();
         m_name = engine.name();
         m_desc = engine.description();
       }
@@ -95,11 +97,12 @@ namespace Avogadro {
         return new PythonEngine(parent, m_filename);
       }
       Plugin::Type type() const { return Plugin::EngineType; }
+      QString identifier() const { return m_identifier; }
       QString name() const { return m_name; }
       QString description() const { return m_desc; }
     private:
       QString m_filename;
-      QString m_name, m_desc;
+      QString m_identifier, m_name, m_desc;
   };
 
 } // end namespace Avogadro

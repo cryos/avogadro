@@ -52,6 +52,7 @@ namespace Avogadro {
   class DrawTool : public Tool
   {
     Q_OBJECT
+      AVOGADRO_TOOL("Draw", tr("Draw"))
 
     public:
       //! Constructor
@@ -61,10 +62,8 @@ namespace Avogadro {
 
       //! \name Description methods
       //@{
-      //! Tool Name (ie DrawTool)
-      virtual QString name() const { return(tr("Draw")); }
       //! Tool Description (ie. DrawTools atoms and bonds)
-      virtual QString description() const { return(tr("Draws Things")); }
+      virtual QString description() const { return(tr("Draw and edit atoms and bonds")); }
       //@}
 
       //! \name Tool Methods
@@ -170,7 +169,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_TOOL_FACTORY(DrawTool, tr("Draw Tool"), tr("Draw molecules, insert smiles or fragments."))
+      AVOGADRO_TOOL_FACTORY(DrawTool, "Draw Tool", tr("Draw Tool"), tr("Draw molecules, insert smiles or fragments."))
   };
 
 } // end namespace Avogadro

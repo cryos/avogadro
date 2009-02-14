@@ -45,15 +45,15 @@ namespace Avogadro
   class OrbitalExtension : public Extension
   {
   Q_OBJECT
+    AVOGADRO_EXTENSION("Surfaces", tr("Surfaces"))
 
   public:
     OrbitalExtension(QObject* parent = 0);
     virtual ~OrbitalExtension();
 
-    virtual QString name() const { return QObject::tr("Surfaces"); }
     virtual QString description() const
     {
-      return QObject::tr("Create and edit cubes and surfaces.");
+      return tr("Create and edit cubes and surfaces.");
     }
 
     virtual QList<QAction *> actions() const;
@@ -126,8 +126,9 @@ namespace Avogadro
       Q_INTERFACES(Avogadro::PluginFactory)
 
       AVOGADRO_EXTENSION_FACTORY(OrbitalExtension,
-          tr("Orbital Extension"),
-          tr("Extension for calculating orbitals."))
+                                 "Calculate Surfaces",
+          tr("Calculate Surfaces"),
+          tr("Extension for calculating orbitals and other surfaces."))
 
   };
 

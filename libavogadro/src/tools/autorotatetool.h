@@ -50,6 +50,7 @@ namespace Avogadro {
   class AutoRotateTool : public Tool
   {
     Q_OBJECT
+      AVOGADRO_TOOL("AutoRotate", tr("AutoRotate"))
 
     public:
       //! Constructor
@@ -59,10 +60,8 @@ namespace Avogadro {
 
       //! \name Description methods
       //@{
-      //! Tool Name
-      virtual QString name() const { return(tr("AutoRotate")); }
       //! Tool Description
-      virtual QString description() const { return(tr("Auto Rotation Tool")); }
+      virtual QString description() const { return(tr("Automatic rotation of molecules")); }
       //@}
 
       //! \name Tool Methods
@@ -122,8 +121,8 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_TOOL_FACTORY(AutoRotateTool, tr("AutoRotate Tool"),
-        tr("This tool allows the user to rotate a molecule around any axis and a given speed."))
+      AVOGADRO_TOOL_FACTORY(AutoRotateTool, "AutoRotate Tool", tr("AutoRotate Tool"),
+        tr("This tool allows the user to rotate a molecule around any axis at a given speed."))
   };
 
 } // end namespace Avogadro

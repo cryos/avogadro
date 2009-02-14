@@ -39,7 +39,7 @@ namespace Avogadro {
   class RingEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE(tr("Ring"))
+      AVOGADRO_ENGINE("Ring", tr("Ring"))
 
     public:
       //! Constructor
@@ -106,7 +106,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(RingEngine, tr("Ring"), tr("Render ring planes."))
+      AVOGADRO_ENGINE_FACTORY(RingEngine, "Ring", tr("Ring"), tr("Render ring planes."))
   };
 
 } // end namespace Avogadro

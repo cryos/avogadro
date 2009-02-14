@@ -80,7 +80,12 @@ namespace Avogadro {
       virtual Plugin::Type type() const = 0;
 
       /**
-       * @return the name of the plugin.
+       * @return the unique, untranslated identifier for the plugin.
+       */
+      virtual QString identifier() const = 0;
+
+      /**
+       * @return the translated name of the plugin.
        */
       virtual QString name() const = 0;
 
@@ -134,7 +139,12 @@ namespace Avogadro {
       virtual Plugin::Type type() const = 0;
 
       /**
-       * @return the name of the plugin.
+       * @return the untranslated identifier of the plugin
+       */
+      virtual QString identifier() const = 0;
+
+      /**
+       * @return the translated name of the plugin.
        */
       virtual QString name() const = 0;
 

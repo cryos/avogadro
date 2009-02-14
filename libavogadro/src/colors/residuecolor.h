@@ -57,7 +57,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_COLOR_FACTORY(ResidueColor, 
+      AVOGADRO_COLOR_FACTORY(ResidueColor, "Color by Residue",
         tr("Color by Residue"), 
         tr("Color by Residue."))
   };

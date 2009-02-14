@@ -89,6 +89,21 @@ namespace Avogadro {
     delete d;
   }
 
+  QString PythonTool::identifier() const
+  {
+    if (!PyObject_HasAttrString(d->instance.ptr(), "identifier"))
+      return "Python Tool";
+  
+    try {
+      prepareToCatchError();
+      const char *name = extract<const char*>(d->instance.attr("identifier")());
+      return QString(name);
+    } catch(error_already_set const &) {
+      catchError();
+      return "Python Tool";
+    }
+  }
+
   QString PythonTool::name() const
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "name"))

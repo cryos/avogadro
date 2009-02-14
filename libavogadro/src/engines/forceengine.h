@@ -28,9 +28,6 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
-
-//#include "ui_hbondsettingswidget.h"
-
 namespace Avogadro {
 
   //! ForceEngine class.
@@ -38,7 +35,7 @@ namespace Avogadro {
   class ForceEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE(tr("Force"))
+      AVOGADRO_ENGINE("Force", tr("Force"))
 
     public:
       //! Constructor
@@ -54,57 +51,14 @@ namespace Avogadro {
       bool renderOpaque(PainterDevice *pd);
       bool renderOpaque(PainterDevice *pd, const Atom *a);
       //@}
-
-      //QWidget* settingsWidget();
-      /**
-       * Write the engine settings so that they can be saved between sessions.
-       */
-      //void writeSettings(QSettings &settings) const;
-
-      /**
-       * Read in the settings that have been saved for the engine instance.
-       */
-      //void readSettings(QSettings &settings);
-
-
-
-    private:
-      //HBondSettingsWidget *m_settingsWidget;
-      //double m_width;
-      //double m_radius;
-      //double m_angle;
-    
-    private Q_SLOTS:
-      //void settingsWidgetDestroyed();
-    
-     /**
-       * @param value width of the hydrogen bonds
-      */
-      //void setWidth(int value);
-      /**
-       * @param value cut-off radius for HBond detection
-      */
-      //void setRadius(double value);
-      /**
-       * @param value cut-off angle for HBond detection
-      */
-      //void setAngle(double value);
   };
-  /*
-  class HBondSettingsWidget : public QWidget, public Ui::HBondSettingsWidget
-  {
-    public:
-      HBondSettingsWidget(QWidget *parent=0) : QWidget(parent) {
-        setupUi(this);
-      }
-  };
-  */
+
   //! Generates instances of our ForceEngine class
   class ForceEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(ForceEngine, tr("Force"), tr("Render forces from force fields."))
+      AVOGADRO_ENGINE_FACTORY(ForceEngine, "Force", tr("Force"), tr("Render forces from force fields."))
   };
 
 } // end namespace Avogadro

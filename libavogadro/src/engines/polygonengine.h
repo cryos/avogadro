@@ -36,7 +36,7 @@ namespace Avogadro {
   class PolygonEngine : public Engine
     {
       Q_OBJECT
-      AVOGADRO_ENGINE(tr("Polygon"))
+        AVOGADRO_ENGINE("Polygon", tr("Polygon"))
 
     public:
       //! Constructor
@@ -66,7 +66,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(PolygonEngine, tr("Polygon"), tr("Render polygons."))
+      AVOGADRO_ENGINE_FACTORY(PolygonEngine, "Polygon", tr("Polygon"), tr("Render polygons."))
   };
 
 } // end namespace Avogadro
