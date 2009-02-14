@@ -11,7 +11,7 @@ class TestCamera(unittest.TestCase):
     self.glwidget = Avogadro.GLWidget()
     self.glwidget.loadDefaultEngines()
     
-    self.molecule = Avogadro.Molecule()
+    self.molecule = Avogadro.molecules.addMolecule()
     self.molecule.addAtom()
     self.glwidget.molecule = self.molecule
     self.assertNotEqual(self.glwidget.camera, None)

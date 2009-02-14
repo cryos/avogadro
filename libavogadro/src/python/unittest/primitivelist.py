@@ -4,7 +4,7 @@ from numpy import *
 
 class TestPrimitiveList(unittest.TestCase):
   def setUp(self):
-    self.molecule = Avogadro.Molecule()
+    self.molecule = Avogadro.molecules.addMolecule()
     self.list = Avogadro.PrimitiveList()
 
   def test_constructors(self):

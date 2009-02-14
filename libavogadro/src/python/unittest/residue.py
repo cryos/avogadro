@@ -4,7 +4,7 @@ from numpy import *
 
 class TestResidue(unittest.TestCase):
   def setUp(self):
-    self.molecule = Avogadro.Molecule()
+    self.molecule = Avogadro.molecules.addMolecule()
 
   def test_number(self):
     residue = self.molecule.addResidue()

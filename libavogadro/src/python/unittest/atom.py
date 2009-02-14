@@ -4,7 +4,7 @@ from numpy import *
 
 class TestAtom(unittest.TestCase):
   def setUp(self):
-    self.molecule = Avogadro.Molecule()
+    self.molecule = Avogadro.molecules.addMolecule()
 
   def test_type(self):
     atom = self.molecule.addAtom()
@@ -115,7 +115,6 @@ class TestAtom(unittest.TestCase):
     self.assertEqual(atom.partialCharge, 0.0)
     atom.partialCharge = 0.325
     self.assertEqual(atom.partialCharge, 0.325)
-
 
 
 

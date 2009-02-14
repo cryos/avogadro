@@ -4,7 +4,7 @@ from numpy import *
 
 class TestMolecule(unittest.TestCase):
   def setUp(self):
-    self.molecule = Avogadro.Molecule()
+    self.molecule = Avogadro.molecules.addMolecule()
 
   def test_fileName(self):
     self.molecule.fileName = "somefile.ext"

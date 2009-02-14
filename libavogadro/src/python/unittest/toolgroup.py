@@ -65,7 +65,7 @@ class TestToolGroup(unittest.TestCase):
     self.assertNotEqual(self.toolGroup.activeTool, None)
     
   def test_setMolecule(self):
-    molecule = Avogadro.Molecule()
+    molecule = Avogadro.molecules.addMolecule()
     self.toolGroup.setMolecule(molecule)
    
 

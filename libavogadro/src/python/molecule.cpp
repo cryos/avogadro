@@ -8,8 +8,57 @@
 #include <avogadro/residue.h>
 #include <avogadro/cube.h>
 
+#include <openbabel/mol.h>
+
+#include "molecule.h"
+
+namespace Avogadro {
+    
+  MoleculeList* MoleculeList::instance()
+  {
+    static MoleculeList *instance = 0;
+    if (!instance)
+      instance = new MoleculeList;
+    return instance;
+  }
+
+  Molecule* MoleculeList::addMolecule()
+  {
+    Molecule *mol;
+    mol = new Molecule();
+    m_molecules.append(mol);
+    connect(mol, SIGNAL(destroyed()), this, SLOT(moleculeDestroyed()));
+    return mol;
+  }
+
+  Molecule* MoleculeList::addMoleculeCopy(Molecule *other)
+  {
+    Molecule *mol;
+    mol = new Molecule(other);
+    m_molecules.append(mol);
+    connect(mol, SIGNAL(destroyed()), this, SLOT(moleculeDestroyed()));
+    return mol;
+  }
+    
+  void MoleculeList::moleculeDestroyed()
+  {
+  
+  }
+
+
+}
+
 using namespace boost::python;
 using namespace Avogadro;
+
+// defined in swig.cpp
+PyObject* Molecule_OBMol(Avogadro::Molecule &self);
+void Molecule_setOBMol(Molecule &self, PyObject *obj);
+ 
+void copy(Molecule &self, const Molecule &from)
+{
+  self = from;
+}
 
 void export_Molecule()
 {
@@ -39,9 +88,14 @@ void export_Molecule()
   Bond* (Molecule::*bond_ptr3)(const Atom*, const Atom*) = &Molecule::bond;
   Residue* (Molecule::*residue_ptr)(int) = &Molecule::residue;
 
-  class_<Avogadro::Molecule, bases<Avogadro::Primitive>, boost::noncopyable>("Molecule")
-    // constructor
-    .def(init<const Molecule&>())
+  class_<Avogadro::Molecule, bases<Avogadro::Primitive>, boost::noncopyable, 
+      std::auto_ptr<Avogadro::Molecule> >("Molecule", no_init)
+
+    // copy constructor
+    //.def(init<const Molecule&>())
+    // overloaded functions
+    .def("copy", &copy)
+    .add_property("OBMol", &Molecule_OBMol, &Molecule_setOBMol)
 
     // read/write properties
     .add_property("fileName", &Molecule::fileName, &Molecule::setFileName)
@@ -105,5 +159,22 @@ void export_Molecule()
     .def("clear", &Molecule::clear)
     .def("translate", &Molecule::translate)
     ;
+  
+  class_<MoleculeList, boost::noncopyable>("MoleculeList", no_init)
+    .add_property("instance", make_function(&MoleculeList::instance, return_value_policy<reference_existing_object>()))
+    .add_property("numMolecules", &MoleculeList::numMolecules)
+    .def("addMolecule", &MoleculeList::addMolecule, return_value_policy<reference_existing_object>())
+    .def("addMolecule", &MoleculeList::addMoleculeCopy, return_value_policy<reference_existing_object>())
+    .def("at", &MoleculeList::at, return_value_policy<reference_existing_object>())
+    ;
+
+  // module's DATA: Avogadro.molecules
+  MoleculeList *moleculeList = MoleculeList::instance();
+  reference_existing_object::apply<MoleculeList*>::type converter;
+  PyObject* pyobj = converter( moleculeList );
+  object real_obj = object( handle<>( pyobj ) );
+  scope().attr("molecules") = real_obj;
 
 }
+
+#include "molecule.moc"

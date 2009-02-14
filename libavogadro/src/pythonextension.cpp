@@ -139,6 +139,44 @@ namespace Avogadro
     return tr("&Scripts");
   }
 
+  class PythonCommand : public QUndoCommand
+  {
+    public:
+      PythonCommand(QUndoCommand *command) : m_command(command)
+      {
+        setText(m_command->text());
+      }
+
+      ~PythonCommand()
+      {
+        delete m_command;
+      }
+
+      void redo()
+      {
+        try {
+          prepareToCatchError();
+          m_command->redo();
+          catchError();
+        } catch(error_already_set const &) {
+          catchError();
+        }
+      }
+
+      void undo()
+      {
+        try {
+          prepareToCatchError();
+          m_command->undo();
+          catchError();
+        } catch(error_already_set const &) {
+          catchError();
+        }
+      }
+    private:
+      QUndoCommand *m_command;
+  };
+
   QUndoCommand* PythonExtension::performAction( QAction *action, GLWidget *widget )
   {
     if (!d->script)
@@ -159,7 +197,10 @@ namespace Avogadro
       PyObject *qobj = qconverter(action);
       object real_qobj = object(handle<>(qobj));
 
-      return extract<QUndoCommand*>(d->instance.attr("performAction")(real_qobj, real_obj));
+      object pyObj(d->instance.attr("performAction")(real_qobj, real_obj)); // new reference
+      QUndoCommand *command = extract<QUndoCommand*>(pyObj);
+
+      return new PythonCommand(command);
     } catch(error_already_set const &) {
       catchError();
     }

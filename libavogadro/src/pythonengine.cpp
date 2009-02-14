@@ -134,6 +134,7 @@ namespace Avogadro {
     if(!d->settingsWidget)
     {
       d->settingsWidget = new QWidget();
+      d->settingsWidget->setLayout( new QVBoxLayout() );
 
       try {
         prepareToCatchError();

@@ -207,12 +207,13 @@ namespace Avogadro {
     if(!d->settingsWidget)
     {
       d->settingsWidget = new QWidget();
+      d->settingsWidget->setLayout( new QVBoxLayout() );
 
       try {
         prepareToCatchError();
         QWidget *widget = extract<QWidget*>(d->instance.attr("settingsWidget")());
         if (widget)
-          d->settingsWidget->layout()->addWidget(widget); // FIXME: create layout first...
+          d->settingsWidget->layout()->addWidget(widget);
       } catch (error_already_set const &) {
         catchError();
       }
