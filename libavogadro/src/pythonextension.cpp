@@ -208,6 +208,52 @@ namespace Avogadro
     return 0;
   }
 
+  void PythonExtension::readSettings(QSettings &settings)
+  {
+    Extension::readSettings(settings);
+
+    if (!d->script)
+      return;
+    
+    if (!PyObject_HasAttrString(d->instance.ptr(), "readSettings"))
+      return;
+
+    try {
+      prepareToCatchError();
+
+      boost::python::return_by_value::apply<QSettings*>::type qconverter;
+      PyObject *qobj = qconverter(&settings);
+      object real_qobj = object(handle<>(qobj));
+
+      d->instance.attr("readSettings")(real_qobj);
+    } catch(error_already_set const &) {
+      catchError();
+    }
+  }
+
+  void PythonExtension::writeSettings(QSettings &settings) const
+  {
+    Extension::writeSettings(settings);
+
+    if (!d->script)
+      return;
+    
+    if (!PyObject_HasAttrString(d->instance.ptr(), "writeSettings"))
+      return;
+
+    try {
+      prepareToCatchError();
+
+      boost::python::return_by_value::apply<QSettings*>::type qconverter;
+      PyObject *qobj = qconverter(&settings);
+      object real_qobj = object(handle<>(qobj));
+
+      d->instance.attr("writeSettings")(real_qobj);
+    } catch(error_already_set const &) {
+      catchError();
+    }
+  }
+
   void PythonExtension::loadScript(const QString &filename)
   {
     QFileInfo info(filename);

@@ -29,6 +29,7 @@
 #include <QColor>
 #include <QMouseEvent>
 #include <QWheelEvent>
+#include <QSettings>
 
 using namespace boost::python;
 
@@ -108,6 +109,7 @@ template <> struct MetaData<QPoint> { static const char* className() { return "Q
 template <> struct MetaData<QColor> { static const char* className() { return "QColor";} };
 template <> struct MetaData<QMouseEvent> { static const char* className() { return "QMouseEvent";} };
 template <> struct MetaData<QWheelEvent> { static const char* className() { return "QWheelEvent";} };
+template <> struct MetaData<QSettings> { static const char* className() { return "QSettings";} };
  
 
 /**
@@ -359,6 +361,7 @@ void export_sip()
   QClass_converters<QColor>();
   QClass_converters<QMouseEvent>(); // to python
   QClass_converters<QWheelEvent>(); // to python
+  QClass_converters<QSettings>(); // to python
 
 
   // special case 
