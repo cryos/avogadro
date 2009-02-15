@@ -322,6 +322,12 @@ namespace Avogadro
           return;
         }
 
+        // connect signal(s)
+        if (PyObject_HasAttrString(d->instance.ptr(), "__pyqtSignals__")) {
+          QObject *obj = extract<QObject*>(d->instance);
+          connect(obj, SIGNAL(message(const QString&)), this, SIGNAL(message(const QString&)));
+        }
+
         d->script = script;
           
       } else {

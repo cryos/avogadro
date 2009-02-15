@@ -80,6 +80,38 @@ namespace Avogadro
 
     return atoms;
   }
+      
+  QList<Atom*> NeighborList::nbrs(const Eigen::Vector3f *pos)
+  {
+    m_r2.clear();
+    m_r2.reserve(m_mol->numAtoms());
+    QList<Atom*> atoms;
+    Eigen::Vector3d dpos(pos->cast<double>());
+    Eigen::Vector3i index(cellIndexes(&dpos));
+
+    std::vector<Eigen::Vector3i>::const_iterator i;
+    // Use the offset map to find neighboring cells
+    for (i = m_offsetMap.begin(); i != m_offsetMap.end(); ++i) {
+      // add the offset to the cell index for atom's cell
+      Eigen::Vector3i offset = index + *i;
+      // use the ghost map to handle indexes near border:
+      // a) periodic boundary conditions --> wrap around
+      // b) otherwise --> last empty cell
+      unsigned int cell = cellIndex(m_ghostMap.at(ghostIndex(offset)));
+
+      for (atom_iter j = m_cells[cell].begin(); j != m_cells[cell].end(); ++j) {
+        
+        const double R2 = ( *((*j)->pos()) - dpos).squaredNorm();
+        if (R2 > m_rcut2)
+          continue;
+
+        m_r2.push_back(R2);
+        atoms.append(*j);
+      }
+    }
+
+    return atoms;
+  }
 
   void NeighborList::update()
   {

@@ -36,6 +36,7 @@
 #include <avogadro/cube.h>
 #include <avogadro/mesh.h>
 #include <avogadro/meshgenerator.h>
+#include <avogadro/neighborlist.h>
 #include <Eigen/Core>
 
 #include <QProgressDialog>
@@ -306,6 +307,8 @@ namespace Avogadro
     if (!m_molecule)
       return;
 
+    NeighborList *nbrList = new NeighborList(m_molecule, 7, 2);
+
     std::vector<QColor> colors;
     for(unsigned int i=0; i < mesh->vertices().size(); ++i) {
       const Vector3f *v = mesh->vertex(i);
@@ -313,7 +316,8 @@ namespace Avogadro
       GLfloat red, green, blue;
       double energy = 0.0;
 
-      foreach(Atom *a, m_molecule->atoms()) {
+      QList<Atom*> nbrAtoms = nbrList->nbrs(v);
+      foreach(Atom *a, nbrAtoms) {
         Vector3f dist = a->pos()->cast<float>() - v->cast<float>();
         energy += a->partialCharge() / dist.squaredNorm();
       }
