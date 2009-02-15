@@ -84,7 +84,9 @@ namespace Avogadro {
       double m_bondRadius;
       int m_showMulti;
 
-    private Q_SLOTS:
+      double m_alpha; // transparency of the balls & sticks
+
+   private Q_SLOTS:
       void settingsWidgetDestroyed();
 
       /**
@@ -101,6 +103,11 @@ namespace Avogadro {
        * @param value determines where multiple bonds are shown
        */
       void setShowMulti(int value);
+
+      /**
+       * @param value opacity of the balls & sticks / 20
+       */
+      void setOpacity(int value);
 
   };
 
