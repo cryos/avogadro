@@ -1,7 +1,7 @@
 /**********************************************************************
   PythonEngine - Allow python scripts to be used as engines.
 
-  Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2008,2009 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -55,26 +55,17 @@ namespace Avogadro {
       double transparencyDepth() const;
       bool renderOpaque(PainterDevice *pd);
       QWidget* settingsWidget();
+      void writeSettings(QSettings &settings) const;
+      void readSettings(QSettings &settings);
       //@}
       
-      
-      /**
-       * Write the engine settings so that they can be saved between sessions.
-       */
-      void writeSettings(QSettings &settings) const;
+    private:
+      void loadScript(const QString &filename);
 
-      /**
-       * Read in the settings that have been saved for the engine instance.
-       */
-      void readSettings(QSettings &settings);
-
-  private:
-    void loadScript(const QString &filename);
-
-    PythonEnginePrivate * const d;
+      PythonEnginePrivate * const d;
  
-  private Q_SLOTS:
-    void settingsWidgetDestroyed();
+    private Q_SLOTS:
+      void settingsWidgetDestroyed();
   };
 
   //! Generates instances of our PythonEngine class

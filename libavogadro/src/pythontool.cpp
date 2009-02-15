@@ -1,7 +1,7 @@
 /**********************************************************************
   PythonTool - PythonTool Tool for Avogadro
 
-  Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2008,2009 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -229,6 +229,52 @@ namespace Avogadro {
   void PythonTool::settingsWidgetDestroyed()
   {
     d->settingsWidget = 0;
+  }
+
+  void PythonTool::readSettings(QSettings &settings)
+  {
+    Tool::readSettings(settings);
+
+    if (!d->script)
+      return;
+    
+    if (!PyObject_HasAttrString(d->instance.ptr(), "readSettings"))
+      return;
+
+    try {
+      prepareToCatchError();
+
+      boost::python::return_by_value::apply<QSettings*>::type qconverter;
+      PyObject *qobj = qconverter(&settings);
+      object real_qobj = object(handle<>(qobj));
+
+      d->instance.attr("readSettings")(real_qobj);
+    } catch(error_already_set const &) {
+      catchError();
+    }
+  }
+
+  void PythonTool::writeSettings(QSettings &settings) const
+  {
+    Tool::writeSettings(settings);
+
+    if (!d->script)
+      return;
+    
+    if (!PyObject_HasAttrString(d->instance.ptr(), "writeSettings"))
+      return;
+
+    try {
+      prepareToCatchError();
+
+      boost::python::return_by_value::apply<QSettings*>::type qconverter;
+      PyObject *qobj = qconverter(&settings);
+      object real_qobj = object(handle<>(qobj));
+
+      d->instance.attr("writeSettings")(real_qobj);
+    } catch(error_already_set const &) {
+      catchError();
+    }
   }
 
   void PythonTool::loadScript(const QString &filename)
