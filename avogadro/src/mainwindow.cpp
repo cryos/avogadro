@@ -251,7 +251,7 @@ namespace Avogadro
 
     ui.menuToolbars->addAction( ui.toolsDock->toggleViewAction() );
 
-    ui.enginesWidget->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Expanding);
+    ui.enginesWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
     d->enginesStacked = new QStackedLayout( ui.enginesWidget );
     //    d->enginesStacked->setSizeConstraint(QLayout::SetFixedSize);
 //    d->engineConfigurationStacked = new QStackedLayout( ui.engineConfigurationWidget );
