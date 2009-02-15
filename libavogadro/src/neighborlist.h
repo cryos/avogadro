@@ -76,6 +76,14 @@ namespace Avogadro
        */
       QList<Atom*> nbrs(Atom *atom);
       /**
+       * Get the near-neighbor atoms around @p pos. The squared distance is
+       * checked and is cached for later use (see r2() function). 
+       *
+       * @param pos The position for which to return the near-neighbors
+       * @return The near-neighbors for @p atom
+       */
+      QList<Atom*> nbrs(const Eigen::Vector3f *pos);
+      /**
        * Get the cached squared distance from the atom last used to call 
        * nbrs to the atom with @p index in the returned vector.
        * @param index The index for the atom in the vector of atoms returned by nbrs().
