@@ -29,6 +29,8 @@ class ClearCommand(QUndoCommand):
 
 # always use 'Extension' for class name
 class Extension(QObject):
+  __pyqtSignals__ = ("message(const QString&)",)
+
   def __init__(self):
     QObject.__init__(self)
 
@@ -51,6 +53,7 @@ class Extension(QObject):
     return "Python Examples"
 
   def performAction(self, action, glwidget):
+    self.emit(SIGNAL("message(const QString&)"), "performing action...")
     # return the undo command (ownership will be handled automatically)
     return ClearCommand(glwidget)
 
