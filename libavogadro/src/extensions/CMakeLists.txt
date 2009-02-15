@@ -131,7 +131,7 @@ add_library(gaussianextension MODULE ${gaussianextension_SRCS}
 target_link_libraries(gaussianextension ${LINK_LIBS})
 install(TARGETS gaussianextension DESTINATION ${DESTINATION_DIR})
 
-if(ALL_PYTHON_FOUND)
+if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   ### python terminal
   message(STATUS "Enabled python terminal")
   set(pythonterminal_SRCS pythonterminal.cpp highlighter.cpp)
@@ -145,7 +145,7 @@ if(ALL_PYTHON_FOUND)
 
   file(GLOB python_SCRIPTS "python/*.py")
   install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/extensionScripts)
-endif(ALL_PYTHON_FOUND)
+endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 
 ### Animation
 set(animationextension_SRCS animationextension.cpp animationdialog.cpp
