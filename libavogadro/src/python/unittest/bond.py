@@ -4,7 +4,7 @@ from numpy import *
 
 class TestBond(unittest.TestCase):
   def setUp(self):
-    self.molecule = Avogadro.Molecule()
+    self.molecule = Avogadro.molecules.addMolecule()
     # test with indices > 0
     for x in range(5):
       self.molecule.addAtom()

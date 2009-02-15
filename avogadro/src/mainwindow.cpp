@@ -118,10 +118,10 @@ namespace Avogadro
 
   class MainWindowPrivate
   {
-    public:
-      EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+  public:
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
-      MainWindowPrivate() : molecule( 0 ),
+    MainWindowPrivate() : molecule( 0 ),
       undoStack( 0 ), toolsFlow( 0 ), toolsLayout( 0 ),
       toolsTab(0),
       toolSettingsStacked(0), toolSettingsWidget(0), toolSettingsDock(0),
@@ -136,61 +136,61 @@ namespace Avogadro
       centerTime(0)
     {}
 
-      Molecule  *molecule;
+    Molecule  *molecule;
 
-      QString    fileName;
-      QString    fileDialogPath;
-      QUndoStack *undoStack;
+    QString    fileName;
+    QString    fileDialogPath;
+    QUndoStack *undoStack;
 
-      FlowLayout *toolsFlow;
-      QVBoxLayout *toolsLayout;
-      IconTabWidget *toolsTab;
+    FlowLayout *toolsFlow;
+    QVBoxLayout *toolsLayout;
+    IconTabWidget *toolsTab;
 
-      // we must manage this if we want it to be dynamic
-      QStackedLayout *toolSettingsStacked;
-      QWidget *toolSettingsWidget;
-      QDockWidget *toolSettingsDock;
+    // we must manage this if we want it to be dynamic
+    QStackedLayout *toolSettingsStacked;
+    QWidget *toolSettingsWidget;
+    QDockWidget *toolSettingsDock;
 
-      QStackedLayout *enginesStacked;
-      Engine         *currentSelectedEngine; // for settings widget title, etc.
+    QStackedLayout *enginesStacked;
+    Engine         *currentSelectedEngine; // for settings widget title, etc.
 
-      QTextEdit *messagesText;
+    QTextEdit *messagesText;
 
-      QList<GLWidget *> glWidgets;
-      GLWidget *glWidget;
+    QList<GLWidget *> glWidgets;
+    GLWidget *glWidget;
 
-      QVBoxLayout *centralLayout;
-      QTabWidget *centralTab;
-      FlatTabWidget *bottomFlat;
+    QVBoxLayout *centralLayout;
+    QTabWidget *centralTab;
+    FlatTabWidget *bottomFlat;
 
-      ToolGroup *toolGroup;
-      QAction    *actionRecentFile[MainWindow::maxRecentFiles];
+    ToolGroup *toolGroup;
+    QAction    *actionRecentFile[MainWindow::maxRecentFiles];
 
-      SettingsDialog *settingsDialog;
-      ImportDialog *importFile;
+    SettingsDialog *settingsDialog;
+    ImportDialog *importFile;
 
-      // used for hideMainWindowMac() / showMainWindowMac()
-      // save enable/disable status of every menu item
-      QVector< QVector <bool> > menuItemStatus;
-      bool initialized;
+    // used for hideMainWindowMac() / showMainWindowMac()
+    // save enable/disable status of every menu item
+    QVector< QVector <bool> > menuItemStatus;
+    bool initialized;
 
-      bool tabbedTools;
-      QTabWidget::TabPosition toolsTabPosition;
+    bool tabbedTools;
+    QTabWidget::TabPosition toolsTabPosition;
 
-      bool animationsEnabled;
+    bool animationsEnabled;
 
-      Quaterniond startOrientation, endOrientation;
-      Vector3d deltaTrans, startTrans;
-      double rotationAcceleration;
-      long rotationStart;
-      int rotationTime;
+    Quaterniond startOrientation, endOrientation;
+    Vector3d deltaTrans, startTrans;
+    double rotationAcceleration;
+    long rotationStart;
+    int rotationTime;
 
-      QTimer *centerTimer;
-      int centerTime;
+    QTimer *centerTimer;
+    int centerTime;
 
-      PluginManager pluginManager;
+    PluginManager pluginManager;
 
-      QMap<Engine*, QWidget*> engineSettingsWindows;
+    QMap<Engine*, QWidget*> engineSettingsWindows;
   };
 
   unsigned int getMainWindowCount()
@@ -233,6 +233,7 @@ namespace Avogadro
     // settings relies on the centralTab widget
     d->centralTab = new QTabWidget(ui.centralWidget);
     d->centralTab->setObjectName("centralTab");
+    d->centralTab->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     d->centralLayout->addWidget(d->centralTab);
 
     setAttribute( Qt::WA_DeleteOnClose );
@@ -245,11 +246,12 @@ namespace Avogadro
     d->undoStack = new QUndoStack( this );
 
     d->toolGroup = new ToolGroup( this );
-    connect(&(d->pluginManager), SIGNAL(reloadPlugins()), this, SLOT(reloadPlugins()));
+    connect(&(d->pluginManager), SIGNAL(reloadPlugins()),
+            this, SLOT(reloadPlugins()));
 
     ui.menuToolbars->addAction( ui.toolsDock->toggleViewAction() );
 
-    ui.enginesWidget->setSizePolicy( QSizePolicy::Minimum,QSizePolicy::Minimum );
+    ui.enginesWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
     d->enginesStacked = new QStackedLayout( ui.enginesWidget );
     //    d->enginesStacked->setSizeConstraint(QLayout::SetFixedSize);
 //    d->engineConfigurationStacked = new QStackedLayout( ui.engineConfigurationWidget );
@@ -263,7 +265,7 @@ namespace Avogadro
 
 #ifdef ENABLE_PYTHON
     connect(pythonError(), SIGNAL(message(const QString&)),
-        d->messagesText, SLOT(append(const QString&)));
+            d->messagesText, SLOT(append(const QString&)));
     d->messagesText->append( pythonError()->string() );
     pythonError()->setListening(true); // switch to 'listening mode'
 #endif
@@ -278,7 +280,7 @@ namespace Avogadro
       d->actionRecentFile[i]->setVisible( false );
       ui.menuOpenRecent->addAction( d->actionRecentFile[i] );
       connect( d->actionRecentFile[i], SIGNAL( triggered() ),
-          this, SLOT( openRecentFile() ) );
+              this, SLOT( openRecentFile() ) );
     }
     ui.menuOpenRecent->addSeparator();
     ui.menuOpenRecent->addAction( ui.actionClearRecent );
@@ -346,20 +348,14 @@ namespace Avogadro
   bool MainWindow::event(QEvent *event)
   {
     // delayed initialization
-    if(event->type() == QEvent::Polish)
-    {
+    if(event->type() == QEvent::Polish) {
       reloadTabbedTools();
-
       loadExtensions();
-
-      if(!molecule())
-      {
+      if(!molecule()) {
         loadFile();
       }
-
       // read settings
       readSettings();
-
       // if we don't have a molecule then load a blank file
       d->initialized = true;
     }
@@ -458,23 +454,19 @@ namespace Avogadro
   void MainWindow::reloadPlugins()
   {
     qDebug() << "MainWindow::reloadPlugins";
-
     /**
-     *  Extensions: instances are deleted by the PluginManager after writing the settings.
-     *  The QActions are removed from the menus when they are deleted. So we only have to
-     *  the new load extensions.
+     * Extensions: instances are deleted by the PluginManager after writing the
+     * settings. The QActions are removed from the menus when they are deleted.
+     * So we only have to the new load extensions.
      */
-
     loadExtensions();
     reloadTabbedTools();
-
     qDebug() << "end MainWindow::reloadPlugins";
   }
 
   void MainWindow::reloadTabbedTools()
   {
-    if(d->toolSettingsDock)
-    {
+    if(d->toolSettingsDock) {
       delete d->toolSettingsDock;
       d->toolSettingsDock = 0;
       d->toolSettingsWidget = 0;
@@ -482,7 +474,7 @@ namespace Avogadro
     }
     delete ui.toolsWidget;
     ui.toolsWidget = new QWidget();
-    ui.toolsWidget->setSizePolicy( QSizePolicy::Minimum,QSizePolicy::Minimum );
+    ui.toolsWidget->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Maximum);
 
     ui.toolsDock->setWidget(ui.toolsWidget);
 

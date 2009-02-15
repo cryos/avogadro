@@ -49,27 +49,24 @@ namespace Avogadro {
 
   PythonInterpreter::PythonInterpreter() : d(new PythonInterpreterPrivate)
   {
-    if (!m_initCount) {
-      m_initCount++;
-      qDebug() << "initializing python interpreter\n";
+    static bool isInitialized = false;
+    
+    if (!isInitialized) {
+      isInitialized = true;
+      
       try {
-        qDebug() << "m_initCount = " << m_initCount;
         Py_Initialize();
       } catch( error_already_set ) {
         PyErr_Print();
       }
-
       return;
     }
-    m_initCount++;
+      
   }
 
   PythonInterpreter::~PythonInterpreter()
   {
-    m_initCount--;
-    if (!m_initCount) {
-      //Py_Finalize();
-    }
+    //Py_Finalize();
   }
 
   void PythonInterpreter::setMolecule(Molecule *molecule)

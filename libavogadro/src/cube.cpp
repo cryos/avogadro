@@ -199,7 +199,7 @@ namespace Avogadro {
     return Vector3i(i, j, k);
   }
 
-  Vector3d Cube::position(int index) const
+  Vector3d Cube::position(unsigned int index) const
   {
     int x, y, z;
     x = static_cast<int>(index / (m_points.y()*m_points.z()));

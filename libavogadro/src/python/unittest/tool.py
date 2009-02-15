@@ -30,7 +30,7 @@ class TestTool(unittest.TestCase):
 
     
   def test_setMolecule(self):
-    molecule = Avogadro.Molecule()
+    molecule = Avogadro.molecules.addMolecule()
     for tool in self.tools:
       tool.setMolecule(molecule)
    

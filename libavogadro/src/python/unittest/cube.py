@@ -4,7 +4,7 @@ from numpy import *
 
 class TestCube(unittest.TestCase):
   def setUp(self):
-    self.molecule = Avogadro.Molecule()
+    self.molecule = Avogadro.molecules.addMolecule()
 
   def test_min(self):
     cube = self.molecule.addCube()

@@ -177,6 +177,13 @@ namespace Avogadro
     bool calculateCubeMO(Cube *cube, int state = 1);
 
     /**
+     * Calculate the electron density over the entire range of the supplied Cube.
+     * @param cube The cube to write the values of the MO into.
+     * @return True if the calculation was successful.
+     */
+    bool calculateCubeDensity(Cube *cube);
+
+    /**
      * When performing a calculation the QFutureWatcher is useful if you want
      * to update a progress bar.
      */
@@ -219,6 +226,7 @@ namespace Avogadro
     void initCalculation();  // Perform initialisation before any calculations
     /// Re-entrant single point forms of the calculations
     static void processPoint(BasisShell &shell);
+    static void processDensity(BasisShell &shell);
     static double pointS(BasisSet *set, unsigned int moIndex,
                       const double &dr2, unsigned int indexMO);
     static double pointP(BasisSet *set, unsigned int moIndex,
@@ -230,6 +238,13 @@ namespace Avogadro
     static double pointD5(BasisSet *set, unsigned int moIndex,
                       const Eigen::Vector3d &delta,
                       const double &dr2, unsigned int indexMO);
+    // Calculate the basis for the density
+    static void pointS(BasisSet *set, const double &dr2, int basis,
+                         Eigen::MatrixXd &out);
+    static void pointP(BasisSet *set, const Eigen::Vector3d &delta,
+                         const double &dr2, int basis, Eigen::MatrixXd &out);
+    static void pointD(BasisSet *set, const Eigen::Vector3d &delta,
+                         const double &dr2, int basis, Eigen::MatrixXd &out);
   };
 
 } // End namespace Avogadro

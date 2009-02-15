@@ -1,62 +1,67 @@
-import Avogadro
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+import Avogadro
 
-class AddAtomCommand(QUndoCommand):
-  def __init__(self, molecule, atomicNumber):
-    super(AddAtomCommand, self).__init__(QString("Add Atom - Python"))
-    self.molecule = molecule
-    self.atomicNumber = atomicNumber
-    self.atomId = None
+class ClearCommand(QUndoCommand):
+  def __init__(self, glwidget):
+    QUndoCommand.__init__(self)
+
+    # store the glwidget for use in undo/redo
+    self.glwidget = glwidget
+    # create a new molecule
+    self.molCopy = Avogadro.molecules.addMolecule()
+    # make a copy of the molecule for undo
+    self.molCopy.copy(glwidget.molecule)
+    # set the command's text
+    self.setText("Clear Molecule")
 
   def redo(self):
-    atom = self.molecule.newAtom()
-    atom.atomicNumber = self.atomicNumber
-    # save the id for undo method
-    self.atomId = atom.id
+    # clear the current molecule
+    self.glwidget.molecule.clear()
 
   def undo(self):
-    self.molecule.deleteAtom(self.atomId)
-    self.atomId = None
+    # Restore the molecule, we use the copy function again
+    # because we might need to undo/redo multiple times.
+    # If we just set the current molecule to molCopy, the next
+    # redo would clear it and we wouldn't have a valid copy 
+    # anymore.
+    self.glwidget.molecule.copy(self.molCopy)
 
-
+# always use 'Extension' for class name
 class Extension(QObject):
   def __init__(self):
     QObject.__init__(self)
-    # keep a reference to all commands to make sure garbage collection doesn't 
-    # delete them
-    self.commands = []
+
+  def name(self):
+    return "Example Python Extension"
+
+  def description(self):
+    return "This example clears the molecule"
 
   def actions(self):
     actions = []
 
     action = QAction(self)
-    action.setText("Add Atom")
-    actions.append(action)
-    
-    action = QAction(self)
     action.setText("Clear molecule")
     actions.append(action)
-    
-    #action = QAction(None)
-    #action.setText("Action 3")
-    #self._actions.append(action)
 
     return actions
 
-  def performAction(self, action, glwidget):
-    if action.text() == "Add Atom":
-      # AddAtomCommand(parent, molecule, atomicNumber)
-      command = AddAtomCommand(glwidget.molecule, 6)
-      self.commands.append(command) # prevent deletion
-      return command
-    elif action.text() == "Clear molecule":
-      glwidget.molecule.clear()
-      return None 
-
-    return None
-  
   def menuPath(self, action):
-    return "foo"
-    
+    return "Python Examples"
 
+  def performAction(self, action, glwidget):
+    # return the undo command (ownership will be handled automatically)
+    return ClearCommand(glwidget)
+
+  def dockWidget(self):
+    widget = QDockWidget("Python Example DockWidget")
+    label = QLabel("This is a python QDockWidget")
+    widget.setWidget(label)
+    return widget
+
+  def readSettings(self, settings):
+    self.foo = settings.value("foo", QVariant(42))
+  
+  def writeSettings(self, settings):
+    settings.setValue("foo", self.foo)

@@ -1,7 +1,7 @@
 /**********************************************************************
   PythonTool - PythonTool Tool for Avogadro
 
-  Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2008,2009 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -218,18 +218,21 @@ namespace Avogadro {
   {
     if (!d->script)
       return 0; // nothing we can do -- we don't have any real scripts
-
+            
     if(!d->settingsWidget)
     {
       d->settingsWidget = new QWidget();
+      d->settingsWidget->setLayout( new QVBoxLayout() );
 
-      try {
-        prepareToCatchError();
-        QWidget *widget = extract<QWidget*>(d->instance.attr("settingsWidget")());
-        if (widget)
-          d->settingsWidget->layout()->addWidget(widget); // FIXME: create layout first...
-      } catch (error_already_set const &) {
-        catchError();
+      if (PyObject_HasAttrString(d->instance.ptr(), "settingsWidget")) {
+        try {
+          prepareToCatchError();
+          QWidget *widget = extract<QWidget*>(d->instance.attr("settingsWidget")());
+          if (widget)
+            d->settingsWidget->layout()->addWidget(widget);
+        } catch (error_already_set const &) {
+          catchError();
+        }
       }
 
       connect(d->settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
@@ -243,20 +246,62 @@ namespace Avogadro {
     d->settingsWidget = 0;
   }
 
+  void PythonTool::readSettings(QSettings &settings)
+  {
+    Tool::readSettings(settings);
+
+    if (!d->script)
+      return;
+    
+    if (!PyObject_HasAttrString(d->instance.ptr(), "readSettings"))
+      return;
+
+    try {
+      prepareToCatchError();
+
+      boost::python::return_by_value::apply<QSettings*>::type qconverter;
+      PyObject *qobj = qconverter(&settings);
+      object real_qobj = object(handle<>(qobj));
+
+      d->instance.attr("readSettings")(real_qobj);
+    } catch(error_already_set const &) {
+      catchError();
+    }
+  }
+
+  void PythonTool::writeSettings(QSettings &settings) const
+  {
+    Tool::writeSettings(settings);
+
+    if (!d->script)
+      return;
+    
+    if (!PyObject_HasAttrString(d->instance.ptr(), "writeSettings"))
+      return;
+
+    try {
+      prepareToCatchError();
+
+      boost::python::return_by_value::apply<QSettings*>::type qconverter;
+      PyObject *qobj = qconverter(&settings);
+      object real_qobj = object(handle<>(qobj));
+
+      d->instance.attr("writeSettings")(real_qobj);
+    } catch(error_already_set const &) {
+      catchError();
+    }
+  }
+
   void PythonTool::loadScript(const QString &filename)
   {
     QFileInfo info(filename);
     d->interpreter.addSearchPath(info.canonicalPath());
     
-    pythonError()->append(tr("PythonTool: checking ") + filename + "...");
-
     PythonScript *script = new PythonScript(filename);
 
     if(script->module()) {
       // make sure there is a Tool class defined
       if (PyObject_HasAttrString(script->module().ptr(), "Tool")) {
-        pythonError()->append(tr("  + 'Tool' class found"));
-
         try {
           prepareToCatchError();
           // instantiate the new tool
@@ -278,10 +323,12 @@ namespace Avogadro {
 
       } else {
         delete script;
+        pythonError()->append(tr("PythonTool: checking ") + filename + "...");
         pythonError()->append(tr("  - script has no 'Tool' class defined"));
       }
     } else {
       delete script;
+      pythonError()->append(tr("PythonTool: checking ") + filename + "...");
       pythonError()->append(tr("  - no module"));
     }
   }

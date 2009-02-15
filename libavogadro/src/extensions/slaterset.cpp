@@ -240,7 +240,7 @@ namespace Avogadro
   }
 
   bool SlaterSet::initialize()
-  {  
+  {
     m_normalized.resize(m_overlap.cols(), m_overlap.rows());
 
     SelfAdjointEigenSolver<MatrixXd> s(m_overlap);
@@ -364,8 +364,7 @@ namespace Avogadro
     // Precompute the factor * exp (-zeta * drs)
     vector<double> expZetas(basisSize);
     for (unsigned int i = 0; i < basisSize; ++i) {
-      expZetas[i] = set->m_factors[i] * exp(- set->m_zetas[i]
-                  * dr[set->m_slaterIndices[i]]);
+      expZetas[i] = exp(- set->m_zetas[i] * dr[set->m_slaterIndices[i]]);
     }
 
     // Now calculate the value of the density at this point in space
@@ -375,25 +374,18 @@ namespace Avogadro
       for (unsigned int j = 0; j < i; ++j) {
         if (isSmall(set->m_density.coeffRef(i, j))) continue;
         double a = 0.0, b = 0.0;
-        for (unsigned int k = 0; k < basisSize; ++k) {
-          unsigned int cAtom = set->m_slaterIndices[k];
-          a += pointSlater(shell.set, deltas[cAtom], dr[cAtom], k, i,
-                             expZetas[k]);
-          b += pointSlater(shell.set, deltas[cAtom], dr[cAtom], k, j,
-                             expZetas[k]);
-        } // MOs at point done
-        rho += 2.0 * set->m_density.coeffRef(i, j) * a * b;
+        // Do the first basis
+        a = calcSlater(shell.set, deltas[set->m_slaterIndices[i]],
+                       dr[set->m_slaterIndices[i]], i);
+        b = calcSlater(shell.set, deltas[set->m_slaterIndices[j]],
+                       dr[set->m_slaterIndices[j]], j);
+        rho += 2.0 * set->m_density.coeffRef(i, j) * (a*b);
       }
       // Now calculate the matrix diagonal
-      if (isSmall(set->m_density.coeffRef(i, i))) continue;
-      double a = 0.0, tmp = 0.0;
-      for (unsigned int k = 0; k < basisSize; ++k) {
-        unsigned int cAtom = set->m_slaterIndices[k];
-        tmp = pointSlater(shell.set, deltas[cAtom], dr[cAtom], k, i,
-                                 expZetas[k]);
-        a += tmp*tmp;
-      } // MOs at diagonal done
-      rho += set->m_density.coeffRef(i, i) * a;
+      double tmp = 0.0;
+      tmp = calcSlater(shell.set, deltas[set->m_slaterIndices[i]],
+                       dr[set->m_slaterIndices[i]], i);
+      rho += set->m_density.coeffRef(i, i) * (tmp*tmp);
     }
     // Set the value
     shell.cube->setValue(shell.pos, rho);
@@ -448,6 +440,47 @@ namespace Avogadro
   {
     if (isSmall(set->m_normalized.coeffRef(slater, indexMO))) return 0.0;
     double tmp = set->m_normalized.coeffRef(slater, indexMO) * expZeta;
+    // Radial part with effective PQNs
+    for (int i = 0; i < set->m_PQNs[slater]; ++i)
+      tmp *= dr;
+    switch (set->m_slaterTypes[slater]) {
+      case S:
+        break;
+      case PX:
+        tmp *= delta.x();
+        break;
+      case PY:
+        tmp *= delta.y();
+        break;
+      case PZ:
+        tmp *= delta.z();
+        break;
+      case X2: // (x^2 - y^2)r^n
+        tmp *= delta.x() * delta.x() - delta.y() * delta.y();
+        break;
+      case XZ: // xzr^n
+        tmp *= delta.x() * delta.z();
+        break;
+      case Z2: // (2z^2 - x^2 - y^2)r^n
+        tmp *= 2.0 * delta.z() * delta.z() - delta.x() * delta.x()
+             - delta.y() * delta.y();
+        break;
+      case YZ: // yzr^n
+        tmp *= delta.y() * delta.z();
+        break;
+      case XY: // xyr^n
+        tmp *= delta.x() * delta.y();
+        break;
+      default:
+        return 0.0;
+    }
+    return tmp;
+  }
+
+  inline double SlaterSet::calcSlater(SlaterSet *set, const Eigen::Vector3d &delta,
+                      const double &dr, unsigned int slater)
+  {
+    double tmp = set->m_factors[slater] * exp(- set->m_zetas[slater] * dr);
     // Radial part with effective PQNs
     for (int i = 0; i < set->m_PQNs[slater]; ++i)
       tmp *= dr;

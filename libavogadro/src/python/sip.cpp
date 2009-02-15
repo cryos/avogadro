@@ -7,6 +7,15 @@
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/cube.h>
+#include <avogadro/engine.h>
+#include <avogadro/extension.h>
+#include <avogadro/fragment.h>
+#include <avogadro/residue.h>
+#include <avogadro/painter.h>
+#include <avogadro/pluginmanager.h>
+#include <avogadro/mesh.h>
+#include <avogadro/tool.h>
+#include <avogadro/toolgroup.h>
 #include <avogadro/molecule.h>
 #include <avogadro/glwidget.h>
 
@@ -20,6 +29,7 @@
 #include <QColor>
 #include <QMouseEvent>
 #include <QWheelEvent>
+#include <QSettings>
 
 using namespace boost::python;
 
@@ -72,16 +82,22 @@ bool init_sip_api()
 template <typename T> struct MetaData;
 
 // used by toPyQt(...)
-// Atom* -> QObject*
-template <> struct MetaData<Avogadro::Atom> { static const char* className() { return "QObject";} }; 
-// Bond* -> QObject*
-template <> struct MetaData<Avogadro::Bond> { static const char* className() { return "QObject";} }; 
-// Cube* -> QObject*
-template <> struct MetaData<Avogadro::Cube> { static const char* className() { return "Qobject";} };
-// Molecule* -> QObject*
-template <> struct MetaData<Avogadro::Molecule> { static const char* className() { return "QObject";} };
-// GLWidget* -> QGLWidget*
-template <> struct MetaData<Avogadro::GLWidget> { static const char* className() { return "QGLWidget";} };
+template <> struct MetaData<Avogadro::Atom> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::Bond> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::Cube> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::Engine> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::Extension> { static const char* className() { return "QObject";} }; 
+template <> struct MetaData<Avogadro::Fragment> { static const char* className() { return "QObject";} }; 
+template <> struct MetaData<Avogadro::GLWidget> { static const char* className() { return "QGLWidget";} }; 
+template <> struct MetaData<Avogadro::Mesh> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::Molecule> { static const char* className() { return "QObject";} }; 
+template <> struct MetaData<Avogadro::Painter> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::PluginManager> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::Primitive> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::Residue> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::Tool> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::ToolGroup> { static const char* className() { return "QObject";} };
+
 
 template <> struct MetaData<QObject> { static const char* className() { return "QObject";} };
 template <> struct MetaData<QWidget> { static const char* className() { return "QWidget";} };
@@ -93,6 +109,7 @@ template <> struct MetaData<QPoint> { static const char* className() { return "Q
 template <> struct MetaData<QColor> { static const char* className() { return "QColor";} };
 template <> struct MetaData<QMouseEvent> { static const char* className() { return "QMouseEvent";} };
 template <> struct MetaData<QWheelEvent> { static const char* className() { return "QWheelEvent";} };
+template <> struct MetaData<QSettings> { static const char* className() { return "QSettings";} };
  
 
 /**
@@ -140,7 +157,11 @@ struct QClass_converters
   {
     if (!sip_API->api_wrapper_check(obj_ptr))
       throw_error_already_set();
+    // transfer ownership from python to C++
+    sip_API->api_transfer(obj_ptr, 1);
+    // reinterpret to sipWrapper
     sipWrapper *wrapper = reinterpret_cast<sipWrapper*>(obj_ptr);
+    // return the C++ pointer
     return wrapper->u.cppPtr;
   }
     
@@ -310,28 +331,37 @@ void export_sip()
   if (!init_sip_api()) {
     std::cout << "Could not initialize SIP API !" << std::endl;
     return;
-  } else {
-    std::cout << "SIP API initialized !" << std::endl;
-  }
+  } 
 
   // toPyQt functions
   def("toPyQt", &toPyQt<Avogadro::Atom>);
   def("toPyQt", &toPyQt<Avogadro::Bond>);
   def("toPyQt", &toPyQt<Avogadro::Cube>);
-  def("toPyQt", &toPyQt<Avogadro::Molecule>);
+  def("toPyQt", &toPyQt<Avogadro::Engine>);
+  def("toPyQt", &toPyQt<Avogadro::Extension>);
+  def("toPyQt", &toPyQt<Avogadro::Fragment>);
   def("toPyQt", &toPyQt<Avogadro::GLWidget>);
- 
+  def("toPyQt", &toPyQt<Avogadro::Mesh>);
+  def("toPyQt", &toPyQt<Avogadro::Molecule>);
+  def("toPyQt", &toPyQt<Avogadro::Painter>);
+  def("toPyQt", &toPyQt<Avogadro::PluginManager>);
+  def("toPyQt", &toPyQt<Avogadro::Primitive>);
+  def("toPyQt", &toPyQt<Avogadro::Residue>);
+  def("toPyQt", &toPyQt<Avogadro::Tool>);
+  def("toPyQt", &toPyQt<Avogadro::ToolGroup>);
+  
   // QClass* <--> PyQt objects 
   QClass_converters<QObject>();
-  QClass_converters<QWidget>();
-  QClass_converters<QAction>();
+  QClass_converters<QWidget>(); // from python
+  QClass_converters<QAction>(); // from/to python
   QClass_converters<QDockWidget>();
-  QClass_converters<QUndoCommand>();
+  QClass_converters<QUndoCommand>(); // from python
   QClass_converters<QUndoStack>();
   QClass_converters<QPoint>();
   QClass_converters<QColor>();
-  QClass_converters<QMouseEvent>();
-  QClass_converters<QWheelEvent>();
+  QClass_converters<QMouseEvent>(); // to python
+  QClass_converters<QWheelEvent>(); // to python
+  QClass_converters<QSettings>(); // to python
 
 
   // special case 

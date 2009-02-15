@@ -17,7 +17,7 @@ class TestColor(unittest.TestCase):
     color1 = Avogadro.Color(1.0, 0.0, 0.0, 1.0)
     self.assertNotEqual(color1, None)
 
-    molecule = Avogadro.Molecule()
+    molecule = Avogadro.molecules.addMolecule()
     atom = molecule.addAtom()
     atom.atomicNumber = 6
     color2 = Avogadro.Color(atom)
@@ -35,7 +35,7 @@ class TestColor(unittest.TestCase):
       widget = color.settingsWidget
 
   def test_set(self):
-    molecule = Avogadro.Molecule()
+    molecule = Avogadro.molecules.addMolecule()
     atom = molecule.addAtom()
     atom.atomicNumber = 6
  

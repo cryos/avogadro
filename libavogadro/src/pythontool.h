@@ -1,7 +1,7 @@
 /**********************************************************************
   PythonTool - PythonTool Tool for Avogadro
 
-  Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2008,2009 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -61,6 +61,8 @@ namespace Avogadro {
       QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
       bool paint(GLWidget *widget);
       QWidget *settingsWidget();
+      void writeSettings(QSettings &settings) const;
+      void readSettings(QSettings &settings);
       //@}
 
     private:

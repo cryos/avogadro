@@ -30,8 +30,10 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 #include <avogadro/color.h>
+#include <avogadro/mesh.h>
 
-#include "iso.h"
+#include <QPointer>
+
 #include "ui_orbitalsettingswidget.h"
 
 namespace Avogadro {
@@ -81,8 +83,8 @@ namespace Avogadro {
 
     protected:
       OrbitalSettingsWidget *m_settingsWidget;
-      Mesh *m_mesh1;
-      Mesh *m_mesh2;
+      QPointer<Mesh> m_mesh1;
+      QPointer<Mesh> m_mesh2;
       Eigen::Vector3d m_min, m_max;
       Color  m_posColor;
       Color  m_negColor;

@@ -7,7 +7,7 @@ from numpy import *
 #
 class TestFragment(unittest.TestCase):
   def setUp(self):
-    self.molecule = Avogadro.Molecule()
+    self.molecule = Avogadro.molecules.addMolecule()
 
   def test_name(self):
     fragment = self.molecule.addRing() # Ring = Fragment

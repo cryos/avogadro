@@ -9,6 +9,8 @@ include_directories(
 # use all cpp files in this directory
 FILE(GLOB wrapper_SRCS "*.cpp")
 
+qt4_automoc(molecule.cpp)
+
 ADD_LIBRARY(python-module MODULE ${wrapper_SRCS})
 SET_TARGET_PROPERTIES(python-module PROPERTIES OUTPUT_NAME Avogadro)
 SET_TARGET_PROPERTIES(python-module PROPERTIES PREFIX "")

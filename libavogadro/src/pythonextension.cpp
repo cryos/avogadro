@@ -31,6 +31,7 @@
 #include <QApplication>
 #include <QUndoCommand>
 #include <QAction>
+#include <QDockWidget>
 #include <QFileInfo>
 #include <QDebug>
 
@@ -43,12 +44,13 @@ namespace Avogadro
   class PythonExtensionPrivate
   {
     public:
-      PythonExtensionPrivate() : script(0)
+      PythonExtensionPrivate() : script(0), dockWidget(0)
       {}
 
       PythonInterpreter      interpreter;
       PythonScript          *script;
       boost::python::object  instance;
+      QDockWidget           *dockWidget;
   };
  
   PythonExtension::PythonExtension(QObject *parent, const QString &filename) : 
@@ -61,6 +63,8 @@ namespace Avogadro
   {
     if (d->script)
       delete d->script;
+    if (d->dockWidget)
+      d->dockWidget->deleteLater();
     delete d;
   }
 
@@ -155,6 +159,44 @@ namespace Avogadro
     return tr("&Scripts");
   }
 
+  class PythonCommand : public QUndoCommand
+  {
+    public:
+      PythonCommand(QUndoCommand *command) : m_command(command)
+      {
+        setText(m_command->text());
+      }
+
+      ~PythonCommand()
+      {
+        delete m_command;
+      }
+
+      void redo()
+      {
+        try {
+          prepareToCatchError();
+          m_command->redo();
+          catchError();
+        } catch(error_already_set const &) {
+          catchError();
+        }
+      }
+
+      void undo()
+      {
+        try {
+          prepareToCatchError();
+          m_command->undo();
+          catchError();
+        } catch(error_already_set const &) {
+          catchError();
+        }
+      }
+    private:
+      QUndoCommand *m_command;
+  };
+
   QUndoCommand* PythonExtension::performAction( QAction *action, GLWidget *widget )
   {
     if (!d->script)
@@ -175,7 +217,10 @@ namespace Avogadro
       PyObject *qobj = qconverter(action);
       object real_qobj = object(handle<>(qobj));
 
-      return extract<QUndoCommand*>(d->instance.attr("performAction")(real_qobj, real_obj));
+      object pyObj(d->instance.attr("performAction")(real_qobj, real_obj)); // new reference
+      QUndoCommand *command = extract<QUndoCommand*>(pyObj);
+
+      return new PythonCommand(command);
     } catch(error_already_set const &) {
       catchError();
     }
@@ -183,13 +228,87 @@ namespace Avogadro
     return 0;
   }
 
+  QDockWidget* PythonExtension::dockWidget()
+  {
+    if (!d->script)
+      return 0; // nothing we can do
+
+    if(!d->dockWidget)
+    {
+      if (PyObject_HasAttrString(d->instance.ptr(), "dockWidget")) {
+        try {
+          prepareToCatchError();
+          d->dockWidget = extract<QDockWidget*>(d->instance.attr("dockWidget")());
+          d->dockWidget->setObjectName(d->dockWidget->windowTitle());
+        } catch (error_already_set const &) {
+          d->dockWidget = 0;
+          catchError();
+        }
+      }
+
+      if (d->dockWidget)
+        connect(d->dockWidget, SIGNAL(destroyed()), this, SLOT(dockWidgetDestroyed()));
+    }
+
+    return d->dockWidget;
+  }
+
+  void PythonExtension::dockWidgetDestroyed()
+  {
+    d->dockWidget = 0;
+  }
+
+  void PythonExtension::readSettings(QSettings &settings)
+  {
+    Extension::readSettings(settings);
+
+    if (!d->script)
+      return;
+    
+    if (!PyObject_HasAttrString(d->instance.ptr(), "readSettings"))
+      return;
+
+    try {
+      prepareToCatchError();
+
+      boost::python::return_by_value::apply<QSettings*>::type qconverter;
+      PyObject *qobj = qconverter(&settings);
+      object real_qobj = object(handle<>(qobj));
+
+      d->instance.attr("readSettings")(real_qobj);
+    } catch(error_already_set const &) {
+      catchError();
+    }
+  }
+
+  void PythonExtension::writeSettings(QSettings &settings) const
+  {
+    Extension::writeSettings(settings);
+
+    if (!d->script)
+      return;
+    
+    if (!PyObject_HasAttrString(d->instance.ptr(), "writeSettings"))
+      return;
+
+    try {
+      prepareToCatchError();
+
+      boost::python::return_by_value::apply<QSettings*>::type qconverter;
+      PyObject *qobj = qconverter(&settings);
+      object real_qobj = object(handle<>(qobj));
+
+      d->instance.attr("writeSettings")(real_qobj);
+    } catch(error_already_set const &) {
+      catchError();
+    }
+  }
+
   void PythonExtension::loadScript(const QString &filename)
   {
     QFileInfo info(filename);
     d->interpreter.addSearchPath(info.canonicalPath());
       
-    pythonError()->append(tr("PythonExtension: checking ") + filename + "...");
-
     PythonScript *script = new PythonScript(filename);
 
     if (script->module()) {
@@ -207,10 +326,12 @@ namespace Avogadro
           
       } else {
         delete script;
+        pythonError()->append(tr("PythonExtension: checking ") + filename + "...");
         pythonError()->append(tr("  - script has no 'Extension' class defined"));
       }
     } else {
       delete script;
+      pythonError()->append(tr("PythonExtension: checking ") + filename + "...");
       pythonError()->append(tr("  - no module"));
     }
   }

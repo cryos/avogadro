@@ -88,7 +88,7 @@ namespace Avogadro
 
   BSDYEngine::BSDYEngine(QObject *parent) : Engine(parent),
       m_settingsWidget(0), m_atomRadiusPercentage(0.3), m_bondRadius(0.1),
-      m_showMulti(true)
+      m_showMulti(true), m_alpha(1.)
   {
     setDescription(tr("Renders primitives using Balls (atoms) and Sticks (bonds)."));
   }
@@ -100,6 +100,7 @@ namespace Avogadro
     engine->m_atomRadiusPercentage = m_atomRadiusPercentage;
     engine->m_bondRadius = m_bondRadius;
     engine->m_showMulti = m_showMulti;
+    engine->m_alpha = m_alpha;
     engine->setEnabled(isEnabled());
 
     return engine;
@@ -116,6 +117,10 @@ namespace Avogadro
   {
 //    glPushAttrib( GL_TRANSFORM_BIT );
 
+    // Render the opaque balls & sticks if m_alpha is 1
+    if (m_alpha < 0.999) {
+      return true;
+    }
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
 
@@ -172,33 +177,70 @@ namespace Avogadro
     // Render selections when not renderquick
     Color *map = colorMap();
     if (!map) map = pd->colorMap();
-    map->setToSelectionColor();
-    pd->painter()->setColor(map);
 
-    // enable depth mast for bonds
-    foreach(const Bond *b, bonds()) {
-      if (pd->isSelected(b)) {
-        Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
-        Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
-        Vector3d v1(*atom1->pos());
-        Vector3d v2(*atom2->pos());
-        double shift = 0.15;
-        int order = b->order();
-        if (order == 1)
-          pd->painter()->drawCylinder(v1, v2, SEL_BOND_EXTRA_RADIUS + m_bondRadius);
-        else
-          pd->painter()->drawMultiCylinder( v1, v2, SEL_BOND_EXTRA_RADIUS + m_bondRadius, order, shift );
+    glDisable( GL_NORMALIZE );
+    glEnable( GL_RESCALE_NORMAL );
+    foreach(const Atom *a, atoms()) {
+      // First render the atom if it is transparent.
+      if (m_alpha < 0.999 && m_alpha > 0.001) {
+        map->set(a);
+        map->setAlpha(m_alpha);
+        pd->painter()->setColor(map);
+        pd->painter()->drawSphere(a->pos(), radius(a));
+      }
+      // If the atom is selected render the selection
+      if (pd->isSelected(a)) {
+        map->setToSelectionColor();
+        pd->painter()->setColor(map);
+        pd->painter()->drawSphere(a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a));
       }
     }
-    glDisable(GL_NORMALIZE);
-    glEnable(GL_RESCALE_NORMAL);
 
-    foreach(const Atom *a, atoms()) {
-      if (pd->isSelected(static_cast<const Primitive *>(a)))
-        pd->painter()->drawSphere(a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a));
+    glDisable( GL_RESCALE_NORMAL );
+    glEnable( GL_NORMALIZE );
+    foreach(const Bond *b, bonds()) {
+      // If the bond is not selected and balls and sticks are opaque do not render it
+      if (!pd->isSelected(b) && m_alpha > 0.999) continue;
+
+      Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
+      Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
+      if (!atom1 || !atom2) {
+        qDebug() << "Invalid bond atom IDs" << b->beginAtomId() << atom1
+                 << b->endAtomId() << atom2 << "Bond" << b->id();
+        continue;
+      }
+
+      Vector3d v1(*atom1->pos());
+      Vector3d v2(*atom2->pos());
+      Vector3d d = v2 - v1;
+      d.normalize();
+      Vector3d v3((v1 + v2 + d*(radius(atom1) - radius(atom2))) / 2);
+
+      double shift = 0.15;
+      int order = 1;
+      if (m_showMulti) order = b->order();
+
+      // The "inner" bond has to be rendered first.
+      if (m_alpha < 0.999 && m_alpha > 0.001) {
+        map->set(atom1);
+        map->setAlpha(m_alpha);
+        pd->painter()->setColor( map );
+        pd->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
+
+        map->set(atom2);
+        map->setAlpha(m_alpha);
+        pd->painter()->setColor( map );
+        pd->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
+      }
+
+      // Render the selected bond.
+      if (pd->isSelected(b)) {
+        map->setToSelectionColor();
+        pd->painter()->setColor(map);
+        pd->painter()->drawMultiCylinder( v1, v2,
+                           SEL_BOND_EXTRA_RADIUS + m_bondRadius, order, shift );
+      }
     }
-    glDisable(GL_RESCALE_NORMAL);
-    glEnable(GL_NORMALIZE);
     return true;
   }
 
@@ -304,6 +346,12 @@ namespace Avogadro
     emit changed();
   }
 
+  void BSDYEngine::setOpacity(int value)
+  {
+    m_alpha = 0.05 * value;
+    emit changed();
+  }
+
   double BSDYEngine::radius( const PainterDevice *pd, const Primitive *p ) const
   {
     // Atom radius
@@ -344,10 +392,12 @@ namespace Avogadro
       connect(m_settingsWidget->atomRadiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setAtomRadiusPercentage(int)));
       connect(m_settingsWidget->bondRadiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setBondRadius(int)));
       connect(m_settingsWidget->showMulti, SIGNAL(stateChanged(int)), this, SLOT(setShowMulti(int)));
+      connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
       connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
       m_settingsWidget->atomRadiusSlider->setValue(10*m_atomRadiusPercentage);
       m_settingsWidget->bondRadiusSlider->setValue(20*m_bondRadius);
       m_settingsWidget->showMulti->setCheckState((Qt::CheckState)m_showMulti);
+      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
     }
     return m_settingsWidget;
   }
@@ -364,6 +414,7 @@ namespace Avogadro
     settings.setValue("atomRadius", 10*m_atomRadiusPercentage);
     settings.setValue("bondRadius", 20*m_bondRadius);
     settings.setValue("showMulti", m_showMulti);
+    settings.setValue("opacity", 20*m_alpha);
   }
 
   void BSDYEngine::readSettings(QSettings &settings)
@@ -372,11 +423,13 @@ namespace Avogadro
     setAtomRadiusPercentage(settings.value("atomRadius", 3).toInt());
     setBondRadius(settings.value("bondRadius", 2).toInt());
     setShowMulti(settings.value("showMulti", 2).toInt());
+    setOpacity(settings.value("opacity", 20).toInt());
 
     if (m_settingsWidget) {
       m_settingsWidget->atomRadiusSlider->setValue(10*m_atomRadiusPercentage);
       m_settingsWidget->bondRadiusSlider->setValue(20*m_bondRadius);
       m_settingsWidget->showMulti->setCheckState((Qt::CheckState)m_showMulti);
+      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
     }
   }
 

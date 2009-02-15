@@ -44,7 +44,7 @@ class TestEngine(unittest.TestCase):
       engine.layers
     
 #  def test_primitives(self):
-#    molecule = Avogadro.Molecule()
+#    molecule = Avogadro.molecules.addMolecule()
 #    for i in range(10):
 #      molecule.addAtom()
 #
