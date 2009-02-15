@@ -29,7 +29,11 @@
 #include <avogadro/plugin.h>
 #include <avogadro/color.h>
 
+#include "ui_residuecolorsettings.h"
+
 namespace Avogadro {
+
+  class ResidueColorSettingsWidget;
 
   /**
    * @class ResidueColor residuecolor.h <avogadro/residuecolor.h>
@@ -41,6 +45,8 @@ namespace Avogadro {
    */
   class ResidueColor: public Color
   {
+    Q_OBJECT
+
   public:
     ResidueColor();
     virtual ~ResidueColor();
@@ -51,6 +57,26 @@ namespace Avogadro {
     virtual void set(const Primitive *);
 
     virtual QString name() const { return "Color by Residue"; }
+
+    virtual QWidget* settingsWidget();
+
+  private Q_SLOTS:
+      void settingsWidgetDestroyed();
+      void setColorScheme(int colorScheme);
+
+  private:
+    ResidueColorSettingsWidget *m_settingsWidget;
+    int      m_colorScheme;
+  };
+
+  class ResidueColorSettingsWidget : 
+    public QWidget, 
+    public Ui::ResidueColorSettings
+  {
+    public:
+      ResidueColorSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+        setupUi(this);
+      }
   };
 
   class ResidueColorFactory : public QObject, public PluginFactory

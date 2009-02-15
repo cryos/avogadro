@@ -45,7 +45,7 @@ namespace Avogadro {
     m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false),
     m_rightButtonPressed(false), m_eyecandy(new Eyecandy)
   {
-    m_eyecandy->setColor(Color(1.0, 0.0, 0.0, 1.0));
+    m_eyecandy->setColor(1.0, 0.0, 0.0, 1.0);
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/manipulate/manipulate.png")));
     action->setToolTip(tr("Manipulation Tool (F10)\n\n"

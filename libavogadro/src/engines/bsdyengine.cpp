@@ -110,7 +110,6 @@ namespace Avogadro
     if ( m_settingsWidget ) {
       m_settingsWidget->deleteLater();
     }
-
   }
 
   bool BSDYEngine::renderOpaque( PainterDevice *pd )

@@ -75,7 +75,7 @@ namespace Avogadro {
    * \sa GLWidget::render()
    */
   class EnginePrivate;
-  class A_EXPORT Engine : public QObject, public Plugin
+  class A_EXPORT Engine : public Plugin
   {
     Q_OBJECT
 
@@ -445,6 +445,8 @@ namespace Avogadro {
        * @param map is the new colors to be used
        */
       virtual void setColorMap(Color *map);
+
+      virtual void colorMapChanged();
 
       /**
        * Slot to set the Molecule pointer for this engine.

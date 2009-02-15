@@ -44,7 +44,7 @@ namespace Avogadro {
     m_colorMode(0), m_drawBox(false), m_coloredMesh(false)
   {
     setDescription(tr("Surface rendering"));
-    m_color = Color(1.0, 0.0, 0.0, m_alpha);
+    m_color.set(1.0, 0.0, 0.0, m_alpha);
   }
 
   SurfaceEngine::~SurfaceEngine()
@@ -260,7 +260,7 @@ namespace Avogadro {
     setOpacity(settings.value("opacity", 20).toInt());
     setRenderMode(settings.value("renderMode", 0).toInt());
     setColorMode(settings.value("colorMode", 0).toInt());
-    m_color = settings.value("color").value<QColor>();
+    m_color.set(settings.value("color").value<QColor>());
     m_color.setAlpha(m_alpha);
     m_coloredMesh = settings.value("coloredMesh").toBool();
 

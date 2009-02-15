@@ -78,7 +78,6 @@ namespace Avogadro {
     private:
       RingSettingsWidget *m_settingsWidget;
       double m_alpha; // transparency of the VdW spheres
-      QVector<Color> m_ringColors;
 
       bool renderRing(const QList<unsigned long int> &ring, PainterDevice *pd); // Render the given ring
 

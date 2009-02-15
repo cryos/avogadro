@@ -28,6 +28,7 @@
 
 #include <avogadro/global.h>
 
+#include <QObject>
 #include <QSettings> // do not remove!!
 
 namespace Avogadro {
@@ -49,8 +50,10 @@ namespace Avogadro {
   /*}*/
 
   //class PluginPrivate;
-  class A_EXPORT Plugin
+  class A_EXPORT Plugin: public QObject
   {
+    Q_OBJECT
+
     public:
       enum Type 
       {
@@ -58,7 +61,6 @@ namespace Avogadro {
         ToolType,
         ExtensionType,
         ColorType,
-        GradientType,
         OtherType,
         TypeCount // this needs to be last always
       };
@@ -67,7 +69,7 @@ namespace Avogadro {
       /**
        * Constructor
        */
-      Plugin();
+      Plugin(QObject *parent = NULL);
 
       /**
        * Destructor

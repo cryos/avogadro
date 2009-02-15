@@ -38,7 +38,7 @@ namespace Avogadro {
       QAction *activateAction;
   };
 
-  Tool::Tool(QObject *parent) : QObject(parent), d(new ToolPrivate)
+  Tool::Tool(QObject *parent) : Plugin(parent), d(new ToolPrivate)
   {
     d->activateAction = new QAction(this);
     d->activateAction->setCheckable(true);

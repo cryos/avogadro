@@ -42,6 +42,15 @@ using Eigen::Vector3d;
 
 namespace Avogadro {
 
+  const float chainColors[6][3] = {
+    { 1.0, 0.0, 0.0 },
+    { 0.0, 1.0, 0.0 },
+    { 0.0, 0.0, 1.0 },
+    { 1.0, 0.0, 1.0 },
+    { 1.0, 1.0, 0.0 },
+    { 0.0, 1.0, 1.0 }
+  };
+
   RibbonEngine::RibbonEngine(QObject *parent) : Engine(parent),
     m_settingsWidget(0), m_type(0), m_radius(1.0), m_useNitrogens(2)
   {
@@ -49,13 +58,6 @@ namespace Avogadro {
 
     // Initialise variables
     m_update = true;
-    // Pretty colours for the chains - we can add more. Need a colour picker...
-    m_chainColors.push_back(Color(1., 0., 0.));
-    m_chainColors.push_back(Color(0., 1., 0.));
-    m_chainColors.push_back(Color(0., 0., 1.));
-    m_chainColors.push_back(Color(1., 0., 1.));
-    m_chainColors.push_back(Color(1., 1., 0.));
-    m_chainColors.push_back(Color(0., 1., 1.));
   }
 
   Engine *RibbonEngine::clone() const
@@ -82,10 +84,10 @@ namespace Avogadro {
     // Check if the chains need updating before drawing them
     if (m_update) updateChains(pd);
 
-    pd->painter()->setColor(&m_chainColors[0]);
+    pd->painter()->setColor(chainColors[0][0], chainColors[0][1], chainColors[0][2]);
     for (int i = 0; i < m_helixes3.size(); ++i)
       pd->painter()->drawCylinder(m_helixes3[i][0], m_helixes3[i][1], 2.3);
-    pd->painter()->setColor(&m_chainColors[1]);
+    pd->painter()->setColor(chainColors[1][0], chainColors[1][1], chainColors[1][2]);
     for (int i = 0; i < m_helixes4.size(); ++i)
       pd->painter()->drawCylinder(m_helixes4[i][0], m_helixes4[i][1], 2.3);
 
@@ -93,7 +95,7 @@ namespace Avogadro {
       for (int i = 0; i < m_chains.size(); i++) {
         if (m_chains[i].size() <= 1)
           continue;
-        pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
+        pd->painter()->setColor(chainColors[i % 6][0], chainColors[i % 6][1], chainColors[i % 6][2]);
         pd->painter()->drawSpline(m_chains[i], m_radius);
       }
     }
@@ -102,7 +104,7 @@ namespace Avogadro {
       for (int i = 0; i < m_chains.size(); i++) {
         if (m_chains[i].size() <= 1)
           continue;
-        pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
+        pd->painter()->setColor(chainColors[i % 6][0], chainColors[i % 6][1], chainColors[i % 6][2]);
         pd->painter()->drawSphere(&m_chains[i][0], m_radius);
         for (int j = 1; j < m_chains[i].size(); j++) {
           pd->painter()->drawSphere(&m_chains[i][j], m_radius);
@@ -116,10 +118,10 @@ namespace Avogadro {
 
   bool RibbonEngine::renderQuick(PainterDevice *pd)
   {
-    pd->painter()->setColor(&m_chainColors[0]);
+    pd->painter()->setColor(chainColors[0][0], chainColors[0][1], chainColors[0][2]);
     for (int i = 0; i < m_helixes3.size(); ++i)
       pd->painter()->drawCylinder(m_helixes3[i][0], m_helixes3[i][1], 2.3);
-    pd->painter()->setColor(&m_chainColors[1]);
+    pd->painter()->setColor(chainColors[1][0], chainColors[1][1], chainColors[1][2]);
     for (int i = 0; i < m_helixes4.size(); ++i)
       pd->painter()->drawCylinder(m_helixes4[i][0], m_helixes4[i][1], 2.3);
 
@@ -128,7 +130,7 @@ namespace Avogadro {
     for (int i = 0; i < m_chains.size(); i++) {
       if (m_chains[i].size() <= 1)
         continue;
-      pd->painter()->setColor(&m_chainColors[i % m_chainColors.size()]);
+      pd->painter()->setColor(chainColors[i % 6][0], chainColors[i % 6][1], chainColors[i % 6][2]);
       pd->painter()->drawSphere(&m_chains[i][0], tRadius);
       for (int j = 1; j < m_chains[i].size(); j++) {
         pd->painter()->drawSphere(&m_chains[i][j], tRadius);

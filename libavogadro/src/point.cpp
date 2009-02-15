@@ -27,7 +27,7 @@
 namespace Avogadro {
 
   Point::Point(QObject *parent) : Primitive(PointType, parent), 
-      m_radius(0.5), m_color(Color(1.0, 1.0, 0.0, 1.0))
+      m_radius(0.5), m_color(1.0, 1.0, 0.0, 1.0)
   { }
 
   Point::~Point()

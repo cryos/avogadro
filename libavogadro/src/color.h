@@ -60,6 +60,7 @@ namespace Avogadro {
    */
   class A_EXPORT Color : public Plugin
   {
+    Q_OBJECT
   public:
     Color();
     virtual ~Color();
@@ -85,12 +86,6 @@ namespace Avogadro {
      * @param p the color is derived from this primitive.
      */
     Color( const Primitive *p);
-
-    /**
-     * Set the color based on the supplied QColor
-     * @param color the color to use
-     */
-    Color& operator= (const QColor &color);
 
     /**
      * Set the four components of the color
@@ -134,6 +129,8 @@ namespace Avogadro {
      */
     virtual void set(const double value, const double lo, 
                      const double mid, const double hi);
+
+    virtual void set(const QColor &color);
 
     /**
      * Set the alpha component of the color, 0.0 means totally transparent and
@@ -205,6 +202,13 @@ namespace Avogadro {
      * @return the type of the Color class.
      */
     virtual Plugin::Type type() const { return Plugin::ColorType; }
+
+  Q_SIGNALS:
+      /**
+       * Signals that something has been changed and the engine needs to render
+       * after these changes were made.
+       */
+      virtual void changed();
 
   protected:
     /**

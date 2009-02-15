@@ -89,7 +89,6 @@ namespace Avogadro {
       bool m_update;   // Is an update of the chain necessary?
       int m_useNitrogens;
       QList< QVector<Eigen::Vector3d> > m_chains;
-      QVector<Color> m_chainColors;
       
       QList< QVector<Eigen::Vector3d> > m_helixes3;
       QList< QVector<Eigen::Vector3d> > m_helixes4;

@@ -70,12 +70,12 @@ namespace Avogadro {
    * based on the required functionality of the extension and return
    * the command based on the action being peformed.
    */
-  class A_EXPORT Extension : public QObject, public Plugin
+  class A_EXPORT Extension : public Plugin
   {
     Q_OBJECT
 
     public:
-    Extension(QObject *parent) : QObject(parent) {};
+    Extension(QObject *parent) : Plugin(parent) {};
     virtual ~Extension() {};
 
     /** 

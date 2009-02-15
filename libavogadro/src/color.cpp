@@ -59,16 +59,6 @@ namespace Avogadro {
     set(p);
   }
 
-  Color& Color::operator=( const QColor& other )
-  {
-    m_channels[0] = other.red();
-    m_channels[1] = other.green();
-    m_channels[2] = other.blue();
-    m_channels[3] = other.alpha();
-
-    return *this;
-  }
-
   void Color::set(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
   {
     m_channels[0] = red;
@@ -83,6 +73,14 @@ namespace Avogadro {
     m_channels[1] = 0.6;
     m_channels[2] = 1.0;
     m_channels[3] = 0.7;
+  }
+
+  void Color::set(const QColor &color)
+  {
+    m_channels[0] = color.redF();
+    m_channels[1] = color.greenF();
+    m_channels[2] = color.blueF();
+    m_channels[3] = color.alphaF();
   }
 
   void Color::set(const Primitive *)
@@ -153,3 +151,5 @@ namespace Avogadro {
     return "Generic Color";
   }
 }
+
+#include "color.moc"

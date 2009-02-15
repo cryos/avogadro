@@ -64,7 +64,7 @@ namespace Avogadro {
    * performed by the user on the GLWidget.
    */
   class ToolPrivate;
-  class A_EXPORT Tool : public QObject, public Plugin
+  class A_EXPORT Tool : public Plugin
   {
     Q_OBJECT
 

@@ -45,8 +45,8 @@ namespace Avogadro {
   {
     setDescription(tr("Orbital Rendering"));
 
-    m_negColor = Color(1.0, 0.0, 0.0, m_alpha);
-    m_posColor = Color(0.0, 0.0, 1.0, m_alpha);
+    m_negColor.set(1.0, 0.0, 0.0, m_alpha);
+    m_posColor.set(0.0, 0.0, 1.0, m_alpha);
   }
 
   OrbitalEngine::~OrbitalEngine()

@@ -16,7 +16,6 @@ void export_Plugin()
     .value("ToolType", Plugin::ToolType)
     .value("ExtensionType", Plugin::ExtensionType)
     .value("ColorType", Plugin::ColorType)
-    .value("GradientType", Plugin::GradientType)
     .value("OtherType", Plugin::OtherType)
     .value("TypeCount", Plugin::TypeCount)
     ;
