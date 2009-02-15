@@ -136,7 +136,7 @@ namespace Avogadro {
      * @param index Index to be translated to a position.
      * @return Position of the given index.
      */
-    Eigen::Vector3d position(int index) const;
+    Eigen::Vector3d position(unsigned int index) const;
 
     /**
      * This function is very quick as it just returns the value at the point.
