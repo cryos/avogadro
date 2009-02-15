@@ -34,7 +34,9 @@ void export_Extension();
 
 BOOST_PYTHON_MODULE(Avogadro) {
 
-  try { import("PyQt4.QtCore"); } catch(...) {} // needed for PyQt4
+  try { import("PyQt4.QtCore"); } catch(...) {} // needed for toPyQt(...)
+  try { import("PyQt4.QtGui"); } catch(...) {} // needed for toPyQt(...)
+  try { import("PyQt4.QtOpenGL"); } catch(...) {} // needed for toPyQt(...)
   
   // include the Eigen converter(s)
   export_Eigen();
