@@ -269,6 +269,7 @@ namespace Avogadro
       m_progress->setRange(m_basis->watcher().progressMinimum(),
                            m_basis->watcher().progressMinimum());
       m_progress->setValue(m_basis->watcher().progressValue());
+      m_progress->show();
 
       // Connect signals and slots
       connect(&m_basis->watcher(), SIGNAL(progressValueChanged(int)),
@@ -400,7 +401,7 @@ namespace Avogadro
     // Call the calculation, starting at MO 1
     m_currentMO = 0;
     if (m_slater) {
-      // We have a slater type orbital....
+      // We have a slater type orbital
       Cube *cube = m_molecule->addCube();
       cube->setName(QString(tr("Electron Density")));
       cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
@@ -423,6 +424,7 @@ namespace Avogadro
       m_progress->setRange(m_slater->watcher().progressMinimum(),
                            m_slater->watcher().progressMinimum());
       m_progress->setValue(m_slater->watcher().progressValue());
+      m_progress->show();
 
       // Connect the signals and slots
       connect(&m_slater->watcher(), SIGNAL(progressValueChanged(int)),
@@ -436,7 +438,41 @@ namespace Avogadro
       m_orbitalDialog->enableCalculation(false);
     }
     else if (m_basis) {
-      // FIXME Not implemented yet...
+      // Gaussian type orbital
+      Cube *cube = m_molecule->addCube();
+      cube->setName(QString(tr("Electron Density")));
+      cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
+                      stepSize * BOHR_TO_ANGSTROM);
+      if (!m_timer) {
+        m_timer = new QTime;
+        m_timer->start();
+      }
+      m_basis->calculateCubeDensity(cube);
+
+      // Set up a progress dialog
+      if (!m_progress) {
+        m_progress = new QProgressDialog(m_orbitalDialog);
+        m_progress->setCancelButtonText(tr("Abort Calculation"));
+        m_progress->setWindowModality(Qt::NonModal);
+      }
+
+      // Set up the progress bar
+      m_progress->setWindowTitle(tr("Calculating Electron Density"));
+      m_progress->setRange(m_basis->watcher().progressMinimum(),
+                           m_basis->watcher().progressMinimum());
+      m_progress->setValue(m_basis->watcher().progressValue());
+      m_progress->show();
+
+      // Connect the signals and slots
+      connect(&m_basis->watcher(), SIGNAL(progressValueChanged(int)),
+              m_progress, SLOT(setValue(int)));
+      connect(&m_basis->watcher(), SIGNAL(progressRangeChanged(int, int)),
+              m_progress, SLOT(setRange(int, int)));
+      connect(m_progress, SIGNAL(canceled()),
+              this, SLOT(calculation2Canceled()));
+      connect(&m_basis->watcher(), SIGNAL(finished()),
+              this, SLOT(calculation2Done()));
+      m_orbitalDialog->enableCalculation(false);
     }
   }
 
