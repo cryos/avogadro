@@ -112,12 +112,12 @@ namespace Avogadro {
     if (!d->script)
       return false; // nothing we can do
 
-    boost::python::reference_existing_object::apply<PainterDevice*>::type converter;
-    PyObject *obj = converter(pd);
-    object real_obj = object(handle<>(obj));
-
     try {
       prepareToCatchError();
+      boost::python::reference_existing_object::apply<PainterDevice*>::type converter;
+      PyObject *obj = converter(pd);
+      object real_obj = object(handle<>(obj));
+
       d->instance.attr("renderOpaque")(real_obj);
     } catch(error_already_set const &) {
       catchError();
