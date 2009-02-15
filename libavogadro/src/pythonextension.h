@@ -62,9 +62,13 @@ namespace Avogadro {
       QList<QAction *> actions() const;
       QString menuPath(QAction *action) const;
       QUndoCommand* performAction(QAction *action, GLWidget *widget);
+      QDockWidget* dockWidget();
       void writeSettings(QSettings &settings) const;
       void readSettings(QSettings &settings);
       //@}
+
+    public Q_SLOTS:
+      void dockWidgetDestroyed();
 
     private:
       void loadScript(const QString &filename);

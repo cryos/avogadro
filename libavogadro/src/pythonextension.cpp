@@ -31,6 +31,7 @@
 #include <QApplication>
 #include <QUndoCommand>
 #include <QAction>
+#include <QDockWidget>
 #include <QFileInfo>
 #include <QDebug>
 
@@ -43,12 +44,13 @@ namespace Avogadro
   class PythonExtensionPrivate
   {
     public:
-      PythonExtensionPrivate() : script(0)
+      PythonExtensionPrivate() : script(0), dockWidget(0)
       {}
 
       PythonInterpreter      interpreter;
       PythonScript          *script;
       boost::python::object  instance;
+      QDockWidget           *dockWidget;
   };
  
   PythonExtension::PythonExtension(QObject *parent, const QString &filename) : 
@@ -61,6 +63,8 @@ namespace Avogadro
   {
     if (d->script)
       delete d->script;
+    if (d->dockWidget)
+      d->dockWidget->deleteLater();
     delete d;
   }
 
@@ -206,6 +210,36 @@ namespace Avogadro
     }
 
     return 0;
+  }
+
+  QDockWidget* PythonExtension::dockWidget()
+  {
+    if (!d->script)
+      return 0; // nothing we can do
+
+    if(!d->dockWidget)
+    {
+      if (PyObject_HasAttrString(d->instance.ptr(), "dockWidget")) {
+        try {
+          prepareToCatchError();
+          d->dockWidget = extract<QDockWidget*>(d->instance.attr("dockWidget")());
+          d->dockWidget->setObjectName(d->dockWidget->windowTitle());
+        } catch (error_already_set const &) {
+          d->dockWidget = 0;
+          catchError();
+        }
+      }
+
+      if (d->dockWidget)
+        connect(d->dockWidget, SIGNAL(destroyed()), this, SLOT(dockWidgetDestroyed()));
+    }
+
+    return d->dockWidget;
+  }
+
+  void PythonExtension::dockWidgetDestroyed()
+  {
+    d->dockWidget = 0;
   }
 
   void PythonExtension::readSettings(QSettings &settings)
