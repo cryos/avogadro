@@ -249,8 +249,9 @@ namespace Avogadro
 
     ui.menuToolbars->addAction( ui.toolsDock->toggleViewAction() );
 
+    ui.enginesWidget->setSizePolicy( QSizePolicy::Minimum,QSizePolicy::Minimum );
     d->enginesStacked = new QStackedLayout( ui.enginesWidget );
-    d->enginesStacked->setSizeConstraint(QLayout::SetFixedSize);
+    //    d->enginesStacked->setSizeConstraint(QLayout::SetFixedSize);
 //    d->engineConfigurationStacked = new QStackedLayout( ui.engineConfigurationWidget );
 //    d->enginePrimitivesStacked = new QStackedLayout( ui.enginePrimitivesWidget );
 
@@ -481,6 +482,8 @@ namespace Avogadro
     }
     delete ui.toolsWidget;
     ui.toolsWidget = new QWidget();
+    ui.toolsWidget->setSizePolicy( QSizePolicy::Minimum,QSizePolicy::Minimum );
+
     ui.toolsDock->setWidget(ui.toolsWidget);
 
     d->toolsTab = 0;
@@ -492,7 +495,7 @@ namespace Avogadro
       d->toolsLayout = new QVBoxLayout(ui.toolsWidget);
       d->toolsLayout->setContentsMargins(0, 0, 0, 0);
       d->toolsLayout->setObjectName("toolsLayout");
-      d->toolsLayout->setSizeConstraint(QLayout::SetFixedSize);
+      //      d->toolsLayout->setSizeConstraint(QLayout::SetFixedSize);
 
       d->toolsTab = new IconTabWidget(ui.toolsWidget);
       d->toolsTab->setObjectName("toolsTab");

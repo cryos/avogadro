@@ -250,8 +250,6 @@ namespace Avogadro {
       m_settingsWidget = new QWidget;
 
       QLabel* labelFF = new QLabel(tr("Force Field:"));
-      labelFF->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-      labelFF->setMaximumHeight(15);
 
       m_comboFF = new QComboBox(m_settingsWidget);
       for (unsigned int i = 0; i < m_forceFieldList.size(); ++i)
@@ -262,31 +260,22 @@ namespace Avogadro {
       if (currentFF != -1) // couldn't find it, go for index 0
         m_comboFF->setCurrentIndex(currentFF);
 
-      QHBoxLayout* hbox = new QHBoxLayout;
-      hbox->addWidget(m_comboFF);
-      hbox->addStretch(1);
       QGridLayout* grid = new QGridLayout;
       grid->addWidget(labelFF, 0, 0, Qt::AlignRight);
-      grid->addLayout(hbox, 0, 1);
+      grid->addWidget(m_comboFF, 0, 1, Qt::AlignLeft);
 
       QLabel* labelSteps = new QLabel(tr("Steps per Update:"));
       labelSteps->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-      labelSteps->setMaximumHeight(15);
 
       m_stepsSpinBox = new QSpinBox(m_settingsWidget);
       m_stepsSpinBox->setMinimum(1);
       m_stepsSpinBox->setMaximum(100);
       m_stepsSpinBox->setValue(4);
 
-      hbox = new QHBoxLayout;
-      hbox->addWidget(m_stepsSpinBox);
-      hbox->addStretch(1);
       grid->addWidget(labelSteps, 1, 0, Qt::AlignRight);
-      grid->addLayout(hbox, 1, 1);
+      grid->addWidget(m_stepsSpinBox, 1, 1, Qt::AlignLeft);
 
       QLabel* labelAlg = new QLabel(tr("Algorithm:"));
-      labelAlg->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-      labelAlg->setMaximumHeight(15);
 
       m_comboAlgorithm = new QComboBox(m_settingsWidget);
       m_comboAlgorithm->addItem(tr("Steepest Descent"));
