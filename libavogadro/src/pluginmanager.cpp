@@ -277,7 +277,7 @@ namespace Avogadro {
     }
 
     foreach (const QString& file, dir.entryList())
-      scripts.append(QString(dir.canonicalPath() + "/" + file));
+      scripts.append(QString(dir.canonicalPath() + '/' + file));
 
 #ifndef WIN32
     // Now for the system wide Python scripts
@@ -285,7 +285,7 @@ namespace Avogadro {
       + "share/libavogadro/" + type + "Scripts";
     if (dir.cd(systemScriptsPath))
       foreach (const QString& file, dir.entryList())
-        scripts.append(QString(dir.canonicalPath() + "/" + file));
+        scripts.append(QString(dir.canonicalPath() + '/' + file));
 #endif
 
     return scripts;
