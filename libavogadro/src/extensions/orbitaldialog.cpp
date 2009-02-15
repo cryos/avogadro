@@ -255,11 +255,12 @@ namespace Avogadro
     ui.calculateVdWMesh->setEnabled(true);
     // Set the indices of the combos
     ui.cubeCombo->setCurrentIndex(cubeIndex>-1 ? cubeIndex : 0);
-    ui.cubeCombo->setCurrentIndex(colorCubeIndex>-1 ? colorCubeIndex : 0);
+    ui.colorCubeCombo->setCurrentIndex(colorCubeIndex>-1 ? colorCubeIndex : 0);
     ui.surfaceCubeCombo->setCurrentIndex(surfaceCubeIndex>-1 ?
                                          surfaceCubeIndex : 0);
     ui.surfaceColorCubeCombo->setCurrentIndex(surfaceColorCubeIndex>-1 ?
                                               surfaceColorCubeIndex : 0);
+    qDebug() << cubeIndex << colorCubeIndex;
   }
 
   void OrbitalDialog::originChanged()

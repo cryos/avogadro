@@ -22,18 +22,8 @@
   02110-1301, USA.
 ***********************************************************************/
 
-/**
- * @class OBNbrList
- *
- * Based on:
- * Near-neighbor calculations using a modified cell-linked list method
- * Mattson, W.; B. M. Rice (1999). "Near-neighbor calculations using a 
- * modified cell-linked list method". Computer Physics Communications 
- * 119: 135. 
- *
- * http://dx.doi.org/10.1016/S0010-4655%2898%2900203-3
- *
- */
+#ifndef NEIGHBORLIST_H
+#define NEIGHBORLIST_H
 
 #include <avogadro/molecule.h>
 
@@ -41,7 +31,18 @@
 
 namespace Avogadro
 {
-
+  /**
+   * @class OBNbrList
+   *
+   * Based on:
+   * Near-neighbor calculations using a modified cell-linked list method
+   * Mattson, W.; B. M. Rice (1999). "Near-neighbor calculations using a
+   * modified cell-linked list method". Computer Physics Communications
+   * 119: 135.
+   *
+   * http://dx.doi.org/10.1016/S0010-4655%2898%2900203-3
+   *
+   */
   class Atom;
 
   class A_EXPORT NeighborList
@@ -66,7 +67,7 @@ namespace Avogadro
       void update();
       /**
        * Get the near-neighbor atoms for @p atom. The squared distance is
-       * checked and is cached for later use (see r2() function). 
+       * checked and is cached for later use (see r2() function).
        *
        * Note: Atoms in relative 1-2 and 1-3 positions are not returned.
        * The @p atom itself isn't added to the list.
@@ -140,7 +141,7 @@ namespace Avogadro
        * @param j Index for the first atom (indexed from 1)
        * @return True if atoms with index @p i and @p j are bonded (1-2)
        */
-      inline bool IsOneTwo(unsigned int i, unsigned int j) const 
+      inline bool IsOneTwo(unsigned int i, unsigned int j) const
       {
         std::vector<unsigned int>::const_iterator iter;
         for (iter = m_oneTwo.at(i).begin(); iter != m_oneTwo.at(i).end(); ++iter)
@@ -149,7 +150,7 @@ namespace Avogadro
 
         return false;
       }
- 
+
       /**
        * @param i Index for the first atom (indexed from 1)
        * @param j Index for the first atom (indexed from 1)
@@ -180,25 +181,27 @@ namespace Avogadro
       double                              m_edgeLength;
       int                                 m_boxSize;
       int                                 m_updateCounter;
-      
-    
+
+
       Eigen::Vector3d                     m_min, m_max;
       Eigen::Vector3i                     m_dim;
       double                              m_xyDim;
       std::vector<std::vector<Atom*> >    m_cells;
-      
+
       std::vector<Eigen::Vector3i>        m_offsetMap;
       std::vector<Eigen::Vector3i>        m_ghostMap;
       int                                 m_ghostX;
       int                                 m_ghostXY;
 
       std::vector<double>                 m_r2;
-      
+
       std::vector<std::vector<unsigned int> > m_oneTwo;
       std::vector<std::vector<unsigned int> > m_oneThree;
   };
- 
+
 } // end namespace OpenBabel
 
 //! \file nbrlist.h
 //! \brief NbrList class
+
+#endif

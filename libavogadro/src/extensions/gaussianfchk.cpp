@@ -171,6 +171,7 @@ namespace Avogadro
     }
     // Now to load in the MO coefficients
     basis->addMOs(m_MOcoeffs);
+    basis->setDensityMatrix(m_density);
   }
 
   vector<int> GaussianFchk::readArrayI(unsigned int n)
