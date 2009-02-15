@@ -144,7 +144,7 @@ if(ALL_PYTHON_FOUND)
 
 
   file(GLOB python_SCRIPTS "python/*.py")
-  install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/scripts)
+  install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/extensionScripts)
 endif(ALL_PYTHON_FOUND)
 
 ### Animation
