@@ -80,7 +80,7 @@
     return m_molecule->atomById(m_endAtomId);
   }
 
-  void Bond::setAtoms(unsigned long int atom1, unsigned long int atom2,
+  void Bond::setAtoms(unsigned long atom1, unsigned long atom2,
                       short order)
   {
     Atom *atom = m_molecule->atomById(atom1);
@@ -118,7 +118,7 @@
     return m_molecule->atomPos(m_endAtomId);
   }
 
-  unsigned long int Bond::otherAtom(unsigned long int atomId) const
+  unsigned long Bond::otherAtom(unsigned long atomId) const
   {
     if (atomId == m_beginAtomId) {
       return m_endAtomId;

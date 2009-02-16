@@ -87,7 +87,7 @@ namespace Avogadro
   {
     m_glwidget = widget;
     if (!m_orbitalDialog) {
-      m_orbitalDialog = new OrbitalDialog();
+      m_orbitalDialog = new OrbitalDialog(static_cast<QWidget *>(parent()));
       m_orbitalDialog->setGLWidget(widget);
       m_orbitalDialog->setMolecule(m_molecule);
       connect(m_orbitalDialog, SIGNAL(calculateMO(int)),
@@ -103,15 +103,13 @@ namespace Avogadro
       connect(m_orbitalDialog, SIGNAL(calculateVdWMesh(int, double)),
               this, SLOT(generateVdWMesh(int, double)));
       setDefaultCube();
-      if (loadBasis()) {
-        m_orbitalDialog->show();
-      }
-      else {
-        m_orbitalDialog->show();
-      }
+      loadBasis();
+      m_orbitalDialog->show();
     }
     else {
       m_orbitalDialog->setGLWidget(widget);
+      setDefaultCube();
+      loadBasis();
       m_orbitalDialog->show();
     }
     return 0;
@@ -144,6 +142,10 @@ namespace Avogadro
     else if (m_loadedFileName == m_molecule->fileName()) {
       return true;
     }
+    else if (QFileInfo(m_molecule->fileName()).baseName()
+             == QFileInfo(m_loadedFileName).baseName()) {
+      return true;
+    }
 
     // Everything looks good, a new basis set needs to be loaded
     // Check for files in this directory -- first the file itself
@@ -168,8 +170,14 @@ namespace Avogadro
       if (info.completeSuffix().compare("fchk", Qt::CaseInsensitive) == 0
           || info.completeSuffix().compare("fch", Qt::CaseInsensitive) == 0
           || info.completeSuffix().compare("fck", Qt::CaseInsensitive) == 0) {
-        if (m_basis)
+        if (m_slater) {
+          delete m_slater;
+          m_slater = 0;
+        }
+        if (m_basis) {
           delete m_basis;
+          m_basis = 0;
+        }
         m_basis = new BasisSet;
         GaussianFchk fchk(fullFileName, m_basis);
 
@@ -181,8 +189,14 @@ namespace Avogadro
         return true;
       }
       else if (info.completeSuffix().compare("aux", Qt::CaseInsensitive) == 0) {
-        if (m_basis)
+        if (m_slater) {
+          delete m_slater;
+          m_slater = 0;
+        }
+        if (m_basis) {
           delete m_basis;
+          m_basis = 0;
+        }
         m_slater = new SlaterSet;
         MopacAux aux(fullFileName, m_slater);
 
@@ -678,8 +692,13 @@ namespace Avogadro
     if (!m_VdWsurface)
       m_VdWsurface = new VdWSurface;
 
-    if (m_molecule)
-      m_VdWsurface->setAtoms(m_molecule);
+    // Only do the calculation if there is a molecule and it has some atoms
+    if (m_molecule) {
+      if (m_molecule->numAtoms())
+        m_VdWsurface->setAtoms(m_molecule);
+      else
+        return;
+    }
     else
       return;
 
@@ -705,6 +724,7 @@ namespace Avogadro
     m_progress->setRange(m_VdWsurface->watcher().progressMinimum(),
                          m_VdWsurface->watcher().progressMinimum());
     m_progress->setValue(m_VdWsurface->watcher().progressValue());
+    m_progress->show();
 
     connect(&m_VdWsurface->watcher(), SIGNAL(progressValueChanged(int)),
             m_progress, SLOT(setValue(int)));
@@ -714,7 +734,6 @@ namespace Avogadro
             this, SLOT(calculateVdWCanceled()));
     connect(&m_VdWsurface->watcher(), SIGNAL(finished()),
             this, SLOT(calculateVdWDone()));
-    m_progress->show();
   }
 
   void OrbitalExtension::calculateVdWDone()

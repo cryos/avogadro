@@ -56,12 +56,12 @@ namespace Avogadro {
       /**
        * Add an Atom to the Fragment.
        */
-      void addAtom(unsigned long int id);
+      void addAtom(unsigned long id);
 
       /**
        * Remove the Atom from the Fragment.
        */
-      void removeAtom(unsigned long int id);
+      void removeAtom(unsigned long id);
 
       /**
        * Set the number of the Residue, as in the file, e.g. 5A, 69, etc.
@@ -89,7 +89,7 @@ namespace Avogadro {
        * @param atomId The text id of the Atom in the Residue.
        * @return False if the atom id could not be set, true otherwise.
        */
-      bool setAtomId(unsigned long int id, QString atomId);
+      bool setAtomId(unsigned long id, QString atomId);
 
       /**
        * Set the text id of all the Atom objects.
@@ -103,7 +103,7 @@ namespace Avogadro {
        * @param id The unique id of the Atom.
        * @return The text id of the supplied atom in the Residue.
        */
-      QString atomId(unsigned long int id);
+      QString atomId(unsigned long id);
 
       /**
        * @return QList of all atom text ids in the Residue.

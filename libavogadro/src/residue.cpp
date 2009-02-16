@@ -40,7 +40,7 @@ namespace Avogadro {
   {
   }
 
-  void Residue::addAtom(unsigned long int id)
+  void Residue::addAtom(unsigned long id)
   {
     if (!m_molecule->atomById(id))
       return;
@@ -49,7 +49,7 @@ namespace Avogadro {
     m_molecule->atomById(id)->setResidue(m_id);
   }
 
-  void Residue::removeAtom(unsigned long int id)
+  void Residue::removeAtom(unsigned long id)
   {
     int index = m_atoms.indexOf(id);
     if (index > -1) {
@@ -80,7 +80,7 @@ namespace Avogadro {
     return m_chainNumber;
   }
 
-  bool Residue::setAtomId(unsigned long int id, QString atomId)
+  bool Residue::setAtomId(unsigned long id, QString atomId)
   {
     int index = m_atoms.indexOf(id);
     if (index != -1) {
@@ -109,7 +109,7 @@ namespace Avogadro {
     return false;
   }
 
-  QString Residue::atomId(unsigned long int id)
+  QString Residue::atomId(unsigned long id)
   {
     int index = m_atoms.indexOf(id);
     if (index != -1) {

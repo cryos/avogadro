@@ -1,5 +1,5 @@
 /**********************************************************************
-  Protein - Protein class 
+  Protein - Protein class
 
   Copyright (C) 2009 Tim Vandermeersch
 
@@ -45,7 +45,7 @@ namespace Avogadro {
       mutable int num4turnHelixes;
       mutable int num5turnHelixes;
   };
-      
+
   Protein::Protein(Molecule *molecule) : d(new ProteinPrivate)
   {
     d->molecule = molecule;
@@ -63,44 +63,44 @@ namespace Avogadro {
     }
 
   }
-  
+
   Protein::~Protein()
   {
   }
-      
+
   QByteArray Protein::secondaryStructure() const
   {
     return d->structure;
   }
-      
-      
+
+
   int Protein::numChains() const
   {
     return d->chains.size();
   }
-  
-  QList<unsigned long int> Protein::chainAtoms(int index) const
+
+  QList<unsigned long> Protein::chainAtoms(int index) const
   {
-    QList<unsigned long int> ids;
+    QList<unsigned long> ids;
     if (index >= d->chains.size())
       return ids;
 
     foreach (Residue *res, d->chains.at(index))
-      foreach (unsigned long int id, res->atoms())
+      foreach (unsigned long id, res->atoms())
         ids.append(id);
-      
+
     return ids;
   }
-      
-  QList<unsigned long int> Protein::chainResidues(int index) const
+
+  QList<unsigned long> Protein::chainResidues(int index) const
   {
-    QList<unsigned long int> ids;
+    QList<unsigned long> ids;
     if (index >= d->chains.size())
       return ids;
 
     foreach (Residue *res, d->chains.at(index))
       ids.append(res->id());
-      
+
     return ids;
   }
 
@@ -144,18 +144,18 @@ namespace Avogadro {
     return d->num5turnHelixes;
   }
 
-  QList<unsigned long int> Protein::helixBackboneAtoms(char c, int index)
+  QList<unsigned long> Protein::helixBackboneAtoms(char c, int index)
   {
-    QList <unsigned long int> ids;
+    QList <unsigned long> ids;
     int count = 0;
     for (int i = 0 ; i < d->structure.size(); ++i) {
       if (d->structure.at(i) == c) {
         if (count == index) {
-          
+
           while (d->structure.at(i) == c) {
             Residue *residue = d->molecule->residue(i);
-            unsigned long int O, N, C, CA;
-            foreach (unsigned long int id, residue->atoms()) {
+            unsigned long O, N, C, CA;
+            foreach (unsigned long id, residue->atoms()) {
               QString atomId = residue->atomId(id).trimmed();
               if (atomId == "N" ) N  = id;
               if (atomId == "CA") CA = id;
@@ -180,19 +180,19 @@ namespace Avogadro {
     }
 
     return ids;
-  } 
- 
-  QList<unsigned long int> Protein::helix3BackboneAtoms(int index)
+  }
+
+  QList<unsigned long> Protein::helix3BackboneAtoms(int index)
   {
     return helixBackboneAtoms('G', index);
   }
- 
-  QList<unsigned long int> Protein::helix4BackboneAtoms(int index)
+
+  QList<unsigned long> Protein::helix4BackboneAtoms(int index)
   {
     return helixBackboneAtoms('H', index);
   }
 
-  QList<unsigned long int> Protein::helix5BackboneAtoms(int index)
+  QList<unsigned long> Protein::helix5BackboneAtoms(int index)
   {
     return helixBackboneAtoms('I', index);
   }
@@ -213,21 +213,21 @@ namespace Avogadro {
       Atom *nbr1 = d->molecule->atomById(id1);
       if (nbr1 == prevN)
         continue;
-      
+
       QString nbr1Id = nbr1->residue()->atomId(nbr1->id()).trimmed();
       if (nbr1Id == "CA") {
         foreach (unsigned long id2, nbr1->neighbors()) {
           Atom *nbr2 = d->molecule->atomById(id2);
           if (nbr2 == currC)
             continue;
-      
+
           QString nbr2Id = nbr2->residue()->atomId(nbr2->id()).trimmed();
           if (nbr2Id == "N") {
             foreach (unsigned long id3, nbr2->neighbors()) {
               Atom *nbr3 = d->molecule->atomById(id3);
               if (nbr3 == nbr1)
                 continue;
-              
+
               QString nbr3Id = nbr3->residue()->atomId(nbr3->id()).trimmed();
               if (nbr3Id == "C") {
                 if (!visited.at(nbr3->residue()->index()))
@@ -241,9 +241,9 @@ namespace Avogadro {
           iterateForward(currC, nbr1, visited);
       }
     }
-  
+
   }
-  
+
   void Protein::iterateForward(Atom *prevC, Atom *currN, QVector<bool> &visited)
   {
     Residue *residue = currN->residue();
@@ -255,21 +255,21 @@ namespace Avogadro {
       Atom *nbr1 = d->molecule->atomById(id1);
       if (nbr1 == prevC)
         continue;
-      
+
       QString nbr1Id = nbr1->residue()->atomId(nbr1->id()).trimmed();
       if (nbr1Id == "CA") {
         foreach (unsigned long id2, nbr1->neighbors()) {
           Atom *nbr2 = d->molecule->atomById(id2);
           if (nbr2 == currN)
             continue;
-      
+
           QString nbr2Id = nbr2->residue()->atomId(nbr2->id()).trimmed();
           if (nbr2Id == "C") {
             foreach (unsigned long id3, nbr2->neighbors()) {
               Atom *nbr3 = d->molecule->atomById(id3);
               if (nbr3 == nbr1)
                 continue;
-              
+
               QString nbr3Id = nbr3->residue()->atomId(nbr3->id()).trimmed();
               if (nbr3Id == "N") {
                 if (!visited.at(nbr3->residue()->index()))
@@ -301,13 +301,13 @@ namespace Avogadro {
       if (residue->atoms().size() < 4)
         continue;
 
-      foreach (unsigned long int id, residue->atoms()) {
+      foreach (unsigned long id, residue->atoms()) {
         Atom *atom = d->molecule->atomById(id);
         QString atomId = residue->atomId(id).trimmed();
-        
+
         if (visited.at(atom->residue()->index()))
           continue;
-        
+
 
         if (atomId == "N")
           iterateForward(0, atom, visited);
@@ -315,16 +315,16 @@ namespace Avogadro {
           iterateBackward(0, atom, visited);
 
       } // end atoms in residue
-    
+
     }
-  
+
   }
-      
+
   void Protein::detectHBonds()
   {
     d->hbondPairs.resize(d->molecule->numResidues());
     NeighborList neighborList(d->molecule, 4, 1);
-    
+
     for (unsigned int i = 0; i < d->molecule->numAtoms(); ++i) {
       Atom *atom = d->molecule->atom(i);
       QList<Atom*> nbrs = neighborList.nbrs(atom);
@@ -340,34 +340,34 @@ namespace Avogadro {
 
         if (residue1 == residue2)
           continue;
-        
+
         if (d->hbondPairs.at(residue1->index()).contains(residue2))
           continue;
 
         int res1 = residueIndex(residue1);
         int res2 = residueIndex(residue2);
         int delta = abs(res1 - res2);
-        
+
         if (delta <= 2)
           continue;
- 
+
         // residue 1 has the N-H
-        // residue 2 has the C=O 
+        // residue 2 has the C=O
         if (residue1->atomId(atom->id()).trimmed() != "O") {
           if (residue2->atomId(nbr->id()).trimmed() != "O")
             continue;
         } else {
           Residue *swap = residue1;
           residue1 = residue2;
-          residue2 = swap;        
+          residue2 = swap;
         }
 
         Atom *H = 0, *N = 0, *C = 0, *O = 0;
-        foreach (unsigned long int id, residue1->atoms()) {
+        foreach (unsigned long id, residue1->atoms()) {
           if (residue1->atomId(id).trimmed() == "N") N = d->molecule->atomById(id);
           if (residue1->atomId(id).trimmed() == "H") H = d->molecule->atomById(id);
         }
-        foreach (unsigned long int id, residue2->atoms()) {
+        foreach (unsigned long id, residue2->atoms()) {
           if (residue2->atomId(id).trimmed() == "C") C = d->molecule->atomById(id);
           if (residue2->atomId(id).trimmed() == "O") O = d->molecule->atomById(id);
         }
@@ -376,7 +376,7 @@ namespace Avogadro {
           continue;
 
         //  C=O ~ H-N
-        //  
+        //
         //  C +0.42e   O -0.42e
         //  H +0.20e   N -0.20e
         double rON = (*O->pos() - *N->pos()).norm();
@@ -395,13 +395,13 @@ namespace Avogadro {
 
         d->hbondPairs[residue1->index()].append(residue2);
         d->hbondPairs[residue2->index()].append(residue1);
-        
+
         //qDebug() << atom->residue()->index() << "-" << nbr->residue()->index() << "=" << delta;
       }
     }
-  
+
   }
-      
+
   void Protein::detectStructure()
   {
     d->structure.resize(d->molecule->numResidues());
@@ -437,7 +437,7 @@ namespace Avogadro {
         //extendSheet(0, residue, residues);
       }
     }
-  
+
     d->num3turnHelixes = -1;
     d->num4turnHelixes = -1;
     d->num5turnHelixes = -1;
@@ -497,7 +497,7 @@ namespace Avogadro {
     clearShortPatterns('G', 3);
     clearShortPatterns('H', 4);
   }
-  
+
   void Protein::clearShortPatterns(char c, int min)
   {
     for (int i = 0 ; i < d->structure.size(); ++i) {
@@ -517,7 +517,7 @@ namespace Avogadro {
       }
     }
   }
- 
+
 } // End namespace Avogadro
 
 #include "protein.moc"

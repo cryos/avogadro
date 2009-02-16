@@ -156,16 +156,16 @@ namespace Avogadro {
               // we iterate over all residues and check if the atom is in
               // the current residue.
               foreach (Residue *residue, molecule->residues()) {
-                QList<unsigned long int> atoms = residue->atoms();
+                QList<unsigned long> atoms = residue->atoms();
                 if (atoms.contains(atom->id())) {
                   QList<Primitive *> neighborList;
 
                   // add the atoms
-                  foreach (unsigned long int id, atoms)
+                  foreach (unsigned long id, atoms)
                     neighborList.append(molecule->atomById(id));
 
                   // add the bonds
-                  foreach (unsigned long int id, residue->bonds())
+                  foreach (unsigned long id, residue->bonds())
                     neighborList.append(molecule->bondById(id));
 
                   widget->setSelected(neighborList, select);
@@ -180,16 +180,16 @@ namespace Avogadro {
               // we iterate over all residues and check if the bond is in
               // the current residue.
               foreach (Residue *residue, molecule->residues()) {
-                QList<unsigned long int> bonds = residue->bonds();
+                QList<unsigned long> bonds = residue->bonds();
                 if (bonds.contains(bond->id())) {
                   QList<Primitive *> neighborList;
 
                   // add the atoms
-                  foreach (unsigned long int id, residue->atoms())
+                  foreach (unsigned long id, residue->atoms())
                     neighborList.append(molecule->atomById(id));
 
                   // add the bonds
-                  foreach (unsigned long int id, bonds)
+                  foreach (unsigned long id, bonds)
                     neighborList.append(molecule->bondById(id));
 
                   widget->setSelected(neighborList, select);

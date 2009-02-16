@@ -80,7 +80,7 @@ namespace Avogadro {
       double m_alpha; // transparency of the VdW spheres
       QVector<Color> m_ringColors;
 
-      bool renderRing(const QList<unsigned long int> &ring, PainterDevice *pd); // Render the given ring
+      bool renderRing(const QList<unsigned long> &ring, PainterDevice *pd); // Render the given ring
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();

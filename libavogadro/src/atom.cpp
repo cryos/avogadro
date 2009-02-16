@@ -75,7 +75,7 @@ using Eigen::Vector3d;
     }
   }
 
-  void Atom::addBond(unsigned long int bond)
+  void Atom::addBond(unsigned long bond)
   {
     // Ensure that only unique bonds are added to the list
     if (m_bonds.indexOf(bond) == -1) {
@@ -94,7 +94,7 @@ using Eigen::Vector3d;
     }
   }
 
-  void Atom::removeBond(unsigned long int bond)
+  void Atom::removeBond(unsigned long bond)
   {
     int index = m_bonds.indexOf(bond);
     if (index >= 0) {
@@ -102,11 +102,11 @@ using Eigen::Vector3d;
     }
   }
 
-  QList<unsigned long int> Atom::neighbors() const
+  QList<unsigned long> Atom::neighbors() const
   {
     if (m_molecule && m_bonds.size()) {
-      QList<unsigned long int> list;
-      foreach(unsigned long int id, m_bonds) {
+      QList<unsigned long> list;
+      foreach(unsigned long id, m_bonds) {
         const Bond *bond = m_molecule->bondById(id);
         if (bond) {
           list.push_back(bond->otherAtom(m_id));
@@ -114,7 +114,7 @@ using Eigen::Vector3d;
       }
       return list;
     }
-    return QList<unsigned long int>();
+    return QList<unsigned long>();
   }
 
   Bond * Atom::bond(const Atom *other) const
@@ -133,7 +133,7 @@ using Eigen::Vector3d;
     }
   }
 
-  void Atom::setResidue(unsigned long int id)
+  void Atom::setResidue(unsigned long id)
   {
     m_residue = id;
   }
@@ -143,7 +143,7 @@ using Eigen::Vector3d;
     m_residue = residue->id();
   }
 
-  unsigned long int Atom::residueId() const
+  unsigned long Atom::residueId() const
   {
     return m_residue;
   }

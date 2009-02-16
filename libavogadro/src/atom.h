@@ -98,7 +98,7 @@ namespace Avogadro {
 
     /**
      * Set the force vector on the atom (e.g., used to display vibrations)
-     */ 
+     */
     void setForceVector(const Eigen::Vector3d &force) { m_forceVector = force; }
     /** @} */
 
@@ -122,12 +122,12 @@ namespace Avogadro {
     /**
      * @return List of bond ids to the atom.
      */
-    QList<unsigned long int> bonds() const { return m_bonds; }
+    QList<unsigned long> bonds() const { return m_bonds; }
 
     /**
      * @return List of neighbor ids to the atom (atoms bonded to that atom).
      */
-    QList<unsigned long int> neighbors() const;
+    QList<unsigned long> neighbors() const;
 
     /**
      * Use this function to get the bond between this Atom and another.
@@ -159,7 +159,7 @@ namespace Avogadro {
     /**
      * @return The Id of the Residue that the Atom is a part of.
      */
-    unsigned long int residueId() const;
+    unsigned long residueId() const;
 
     /**
      * @return A pointer to the Residue that the Atom is a part of.
@@ -199,7 +199,7 @@ namespace Avogadro {
     /**
      * Adds a reference to a bond to the atom.
      */
-    void addBond(unsigned long int bond);
+    void addBond(unsigned long bond);
 
     /**
      * Adds a reference to a bond to the atom.
@@ -214,12 +214,12 @@ namespace Avogadro {
     /**
      * Removes the reference of the bond to the atom.
      */
-    void removeBond(unsigned long int bond);
+    void removeBond(unsigned long bond);
 
     /**
      * Set the Residue that this Atom is a part of.
      */
-    void setResidue(unsigned long int id);
+    void setResidue(unsigned long id);
 
     /**
      * Set the Residue that this Atom is a part of.
@@ -230,8 +230,8 @@ namespace Avogadro {
     Molecule *m_molecule; /** Parent molecule - should always be valid. **/
     int m_pos;
     int m_atomicNumber;
-    unsigned long int m_residue;
-    QList<unsigned long int> m_bonds;
+    unsigned long m_residue;
+    QList<unsigned long> m_bonds;
     mutable double m_partialCharge;
     Eigen::Vector3d m_forceVector;
     Q_DECLARE_PRIVATE(Atom)

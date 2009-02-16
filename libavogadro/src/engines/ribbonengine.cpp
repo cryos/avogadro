@@ -176,7 +176,7 @@ namespace Avogadro {
 
     // 4-turn helixes
     for (int i = 0; i < protein.num4turnHelixes(); ++i) {
-      QList<unsigned long int> helix = protein.helix4BackboneAtoms(i);
+      QList<unsigned long> helix = protein.helix4BackboneAtoms(i);
 
       Eigen::Vector3d p1 = Eigen::Vector3d::Zero();
       for (int i = 0; i < 16; ++i)
@@ -192,9 +192,9 @@ namespace Avogadro {
       ab.normalize();
       ab *= 3.5;
 
-      p1 += ab; 
-      p2 -= ab; 
-    
+      p1 += ab;
+      p2 -= ab;
+
       QVector<Vector3d> helixPoints;
       helixPoints.append(p1);
       helixPoints.append(p2);
@@ -202,7 +202,7 @@ namespace Avogadro {
     }
     // 3-turn helixes
     for (int i = 0; i < protein.num3turnHelixes(); ++i) {
-      QList<unsigned long int> helix = protein.helix3BackboneAtoms(i);
+      QList<unsigned long> helix = protein.helix3BackboneAtoms(i);
 
       Eigen::Vector3d p1 = Eigen::Vector3d::Zero();
       for (int i = 0; i < 12; ++i)
@@ -218,16 +218,16 @@ namespace Avogadro {
       ab.normalize();
       ab *= 3.0;
 
-      p1 += ab; 
-      p2 -= ab; 
-    
+      p1 += ab;
+      p2 -= ab;
+
       QVector<Vector3d> helixPoints;
       helixPoints.append(p1);
       helixPoints.append(p2);
       m_helixes3.append(helixPoints);
     }
 
- 
+
     m_chains.clear();
     QList<Primitive *> list;
     list = primitives().subList(Primitive::ResidueType);
@@ -248,8 +248,7 @@ namespace Avogadro {
         pts.clear();
       }
 
-      QList<unsigned long int> atoms = r->atoms();
-      foreach (unsigned long int atom, atoms) {
+      foreach (unsigned long atom, r->atoms()) {
         // should be CA
         QString atomId = r->atomId(atom);
         atomId = atomId.trimmed();

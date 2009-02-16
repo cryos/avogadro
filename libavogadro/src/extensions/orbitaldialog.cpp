@@ -260,7 +260,6 @@ namespace Avogadro
                                          surfaceCubeIndex : 0);
     ui.surfaceColorCubeCombo->setCurrentIndex(surfaceColorCubeIndex>-1 ?
                                               surfaceColorCubeIndex : 0);
-    qDebug() << cubeIndex << colorCubeIndex;
   }
 
   void OrbitalDialog::originChanged()
