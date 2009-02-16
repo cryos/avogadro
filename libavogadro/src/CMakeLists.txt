@@ -98,12 +98,12 @@ endif(NOT ENABLE_PYTHON OR NOT ALL_PYTHON_FOUND)
 
 qt4_automoc(${libavogadro_SRCS})
 
-SET(libavogadro_TS
-  ${CMAKE_SOURCE_DIR}/i18n/avogadro_de.ts
-  ${CMAKE_SOURCE_DIR}/i18n/avogadro_fr.ts
-  ${CMAKE_SOURCE_DIR}/i18n/avogadro_en_GB.ts
-)
-QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
+#SET(libavogadro_TS
+#  ${CMAKE_SOURCE_DIR}/i18n/avogadro_de.ts
+#  ${CMAKE_SOURCE_DIR}/i18n/avogadro_fr.ts
+#  ${CMAKE_SOURCE_DIR}/i18n/avogadro_en_GB.ts
+#)
+#QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 
 # you have to add link_directories before you add the target
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
