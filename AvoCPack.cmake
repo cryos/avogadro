@@ -3,7 +3,7 @@
 set (CPACK_PACKAGE_NAME "Avogadro")
 set (CPACK_PACKAGE_VERSION_MAJOR 0)
 set (CPACK_PACKAGE_VERSION_MINOR 9)
-set (CPACK_PACKAGE_VERSION_PATCH 0)
+set (CPACK_PACKAGE_VERSION_PATCH 1)
 set (CPACK_PACKAGE_INSTALL_DIRECTORY "Avogadro")
 set (CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/avogadro/src/icons/avogadro.ico")
 #set (CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/avogadro/src/icons\\avogadro.ico")
@@ -30,11 +30,11 @@ if (WIN32)
     "${openbabel_SRCDIR}/windows-vc2005/iconv.dll"
     "${openbabel_SRCDIR}/windows-vc2005/libinchi.dll")
   install(FILES ${openbabel_DEPS} DESTINATION bin)
-  
+
   file(GLOB openbabel_FILES "${openbabel_DIR}/*.obf")
   set(openbabel_FILES ${openbabel_FILES} "${openbabel_DIR}/openbabel-2.dll")
   install(FILES ${openbabel_FILES} DESTINATION bin)
-  
+
   file(GLOB openbabel_FILES "${openbabel_SRCDIR}/data/*.txt")
   install(FILES ${openbabel_FILES} DESTINATION bin)
   file(GLOB openbabel_FILES "${openbabel_SRCDIR}/data/*.par")
@@ -43,7 +43,7 @@ if (WIN32)
   install(FILES ${openbabel_FILES} DESTINATION bin)
   file(GLOB openbabel_FILES "${openbabel_SRCDIR}/data/*.ff")
   install(FILES ${openbabel_FILES} DESTINATION bin)
-  
+
   set(qt_DEPS
     "${qt_BINDIR}/QtCore4.dll"
     "${qt_BINDIR}/QtGui4.dll"

@@ -9,7 +9,7 @@ ADD_DEFINITIONS(-DQT_SHARED)
 set(DESTINATION_DIR ${LIB_INSTALL_DIR}/avogadro/tools)
 
 include_directories(
-	${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
 )
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)

@@ -42,7 +42,7 @@ namespace Avogadro {
 
   OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent),
     m_settingsWidget(0), m_mesh1(0), m_mesh2(0), m_min(0., 0., 0.), m_max(0.,0.,0.),
-    m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_update(true), m_molecule(0)
+    m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_update(true)
   {
     setDescription(tr("Orbital Rendering"));
 
@@ -392,17 +392,22 @@ namespace Avogadro {
   {
     Engine::addPrimitive(primitive);
     // Updating primitives does not invalidate these surfaces...
+    if (primitive->type() == Primitive::MeshType)
+      m_update = true;
   }
 
-  void OrbitalEngine::updatePrimitive(Primitive *)
+  void OrbitalEngine::updatePrimitive(Primitive *primitive)
   {
     // Updating primitives does not invalidate these surfaces...
+    if (primitive->type() == Primitive::MeshType)
+      m_update = true;
   }
 
   void OrbitalEngine::removePrimitive(Primitive *primitive)
   {
     Engine::removePrimitive(primitive);
-    // Updating primitives does not invalidate these surfaces...
+    if (primitive->type() == Primitive::MeshType)
+      m_update = true;
   }
 
   void OrbitalEngine::writeSettings(QSettings &settings) const

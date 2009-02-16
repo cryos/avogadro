@@ -17,7 +17,6 @@ link_directories(
 include_directories(
   ${libavogadro_SOURCE_DIR}/include
   ${avogadro_SOURCE_DIR}/src
-  ${avogadro_SOURCE_DIR}/include
   ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN2_INCLUDE_DIR}
   ${GLEW_INCLUDE_DIR}

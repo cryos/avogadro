@@ -37,7 +37,7 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  DipoleEngine::DipoleEngine(QObject *parent) : Engine(parent), m_molecule(0),
+  DipoleEngine::DipoleEngine(QObject *parent) : Engine(parent),
     m_dipoleType(0), m_settingsWidget(0)
   {
     setDescription(tr("Renders dipole moments and other 3D data"));
@@ -114,7 +114,7 @@ namespace Avogadro {
       m_settingsWidget->dipoleType->setCurrentIndex(m_dipoleType);
       connect(m_settingsWidget->dipoleType, SIGNAL(activated(int)),
               this, SLOT(setDipoleType(int)));
-      connect(m_settingsWidget, SIGNAL(destroyed()), 
+      connect(m_settingsWidget, SIGNAL(destroyed()),
               this, SLOT(settingsWidgetDestroyed()));
       connect(m_settingsWidget->xDipoleSpinBox, SIGNAL(valueChanged(double)),
               this, SLOT(updateDipole(double)));

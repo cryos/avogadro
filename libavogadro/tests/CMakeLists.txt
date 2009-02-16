@@ -4,7 +4,7 @@ include_directories(
   ${libavogadro_SOURCE_DIR}/include
   ${CMAKE_SOURCE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
-  ${CMAKE_CURRENT_BINARY_DIR}/..
+  ${EIGEN2_INCLUDE_DIR}
   ${OPENBABEL2_INCLUDE_DIR}
   ${BOOST_PYTHON_INCLUDES}
   ${PYTHON_INCLUDE_PATH}
@@ -52,7 +52,7 @@ target_link_libraries(${test}test
 
 endforeach (test ${tests})
 
-  
-  
+
+
 add_test(MoleculeTest moleculetest)
 add_test(NeighborListTest neighborlisttest)
