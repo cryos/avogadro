@@ -1032,13 +1032,10 @@ namespace Avogadro{
     // Take an OBMol, copy everything we need and store this object
     Q_D(Molecule);
     qDebug() << "setOBMol called.";
-    m_lock->lockForWrite();
-    m_lock->unlock();
     clear();
     // Copy all the parts of the OBMol to our Molecule
 
     qDebug() << "Copying atoms...";
-
     // Begin by copying all of the atoms
     std::vector<OpenBabel::OBAtom*>::iterator i;
 
@@ -1162,7 +1159,6 @@ namespace Avogadro{
       property = static_cast<OpenBabel::OBPairData *>(*dIter);
       setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
     }
-
     return true;
   }
 
