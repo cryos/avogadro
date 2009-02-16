@@ -119,7 +119,7 @@ namespace Avogadro {
     /**
      * Create a new Atom object with the specified id and return a pointer to
      * it. Used when you need to recreate an Atom with the same unique id.
-     * @note Do not delete the object, use removeAtom(unsigned long int id).
+     * @note Do not delete the object, use removeAtom(unsigned long id).
      */
     Atom *addAtom(unsigned long id);
 
@@ -131,7 +131,7 @@ namespace Avogadro {
     /**
      * Delete the Atom with the unique id specified.
      */
-    void removeAtom(unsigned long int id);
+    void removeAtom(unsigned long id);
 
     /**
      * @return The Atom at the supplied index.
@@ -155,21 +155,21 @@ namespace Avogadro {
      * @param id Unique id of the Atom to set the position for.
      * @param vec Position vector to set the Atom to.
      */
-    void setAtomPos(unsigned long int id, const Eigen::Vector3d &vec);
+    void setAtomPos(unsigned long id, const Eigen::Vector3d &vec);
 
     /**
      * Set the Atom position.
      * @param id Unique id of the Atom to set the position for.
      * @param vec Position vector to set the Atom to.
      */
-    void setAtomPos(unsigned long int id, const Eigen::Vector3d *vec);
+    void setAtomPos(unsigned long id, const Eigen::Vector3d *vec);
 
     /**
      * Get the position vector of the supplied Atom.
      * @param id Unique id of the Atom.
      * @return Position vector of the Atom.
      */
-    const Eigen::Vector3d * atomPos(unsigned long int id) const;
+    const Eigen::Vector3d * atomPos(unsigned long id) const;
 
     /**
      * @return The total number of Atom objects in the molecule.
@@ -193,7 +193,7 @@ namespace Avogadro {
     /**
      * Create a new Bond object with the specified id and return a pointer to
      * it. Used when you need to recreate a Bond with the same unique id.
-     * @note Do not delete the object, use removeBond(unsigned long int id).
+     * @note Do not delete the object, use removeBond(unsigned long id).
      */
     Bond *addBond(unsigned long id);
 
@@ -205,7 +205,7 @@ namespace Avogadro {
     /**
      * Remove the Bond with the unique id specified.
      */
-    void removeBond(unsigned long int id);
+    void removeBond(unsigned long id);
 
     /**
      * @return The Bond at the supplied index.
@@ -245,7 +245,7 @@ namespace Avogadro {
     /**
      * Create a new Residue object with the specified id and return a pointer to
      * it. Used when you need to recreate a Residue with the same unique id.
-     * @note Do not delete the object, use removeResidue(unsigned long int id).
+     * @note Do not delete the object, use removeResidue(unsigned long id).
      */
     Residue *addResidue(unsigned long id);
 
@@ -257,7 +257,7 @@ namespace Avogadro {
     /**
      * Remove the residue with the unique id specified.
      */
-    void removeResidue(unsigned long int id);
+    void removeResidue(unsigned long id);
 
     /**
      * @return The residue at the supplied index.
@@ -299,7 +299,7 @@ namespace Avogadro {
     /**
      * Create a new Ring object with the specified id and return a pointer to
      * it. Used when you need to recreate a Ring with the same unique id.
-     * @note Do not delete the object, use removeRing(unsigned long int id).
+     * @note Do not delete the object, use removeRing(unsigned long id).
      */
     Fragment *addRing(unsigned long id);
 
@@ -311,7 +311,7 @@ namespace Avogadro {
     /**
      * Remove the ring with the unique id specified.
      */
-    void removeRing(unsigned long int id);
+    void removeRing(unsigned long id);
 
     /**
      * @return QList of all rings in the Molecule.
@@ -332,14 +332,14 @@ namespace Avogadro {
 
     /**
      * Create a new Cube object and return a pointer to it.
-     * @note Do not delete the object, use removeCube(unsigned long int id).
+     * @note Do not delete the object, use removeCube(unsigned long id).
      */
     Cube *addCube();
 
     /**
      * Create a new Cube object with the specified id and return a pointer to
      * it. Used when you need to recreate a Cube with the same unique id.
-     * @note Do not delete the object, use removeCube(unsigned long int id).
+     * @note Do not delete the object, use removeCube(unsigned long id).
      */
     Cube *addCube(unsigned long id);
 
@@ -351,7 +351,7 @@ namespace Avogadro {
     /**
      * Remove the Cube with the unique id specified.
      */
-    void removeCube(unsigned long int id);
+    void removeCube(unsigned long id);
 
     /**
      * @return The Cube at the supplied index.
@@ -382,14 +382,14 @@ namespace Avogadro {
 
     /**
      * Create a new Mesh object and return a pointer to it.
-     * @note Do not delete the object, use removeMesh(unsigned long int id).
+     * @note Do not delete the object, use removeMesh(unsigned long id).
      */
     Mesh * addMesh();
 
     /**
      * Create a new Mesh object with the specified id and return a pointer to
      * it. Used when you need to recreate a Mesh with the same unique id.
-     * @note Do not delete the object, use removeMesh(unsigned long int id).
+     * @note Do not delete the object, use removeMesh(unsigned long id).
      */
     Mesh *addMesh(unsigned long id);
 
@@ -401,7 +401,7 @@ namespace Avogadro {
     /**
      * Remove the Mesh with the unique id specified.
      */
-    void removeMesh(unsigned long int id);
+    void removeMesh(unsigned long id);
 
     /**
      * @return The Mesh at the supplied index.
@@ -462,7 +462,7 @@ namespace Avogadro {
      * @return The bond between the two supplied atom ids if one exists,
      * otherwise 0 is returned.
      */
-    Bond* bond(unsigned long int id1, unsigned long int id2);
+    Bond* bond(unsigned long id1, unsigned long id2);
 
     /**
      * @return The bond between the two supplied atom pointers if one exists,

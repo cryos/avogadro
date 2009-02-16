@@ -100,7 +100,7 @@ namespace Avogadro{
     return true;
   }
 
-  bool RingEngine::renderRing(const QList<unsigned long int> &ring, PainterDevice *pd)
+  bool RingEngine::renderRing(const QList<unsigned long> &ring, PainterDevice *pd)
   {
     // We need to get rid of the constness in order to get the atoms
     Molecule *mol = const_cast<Molecule *>(pd->molecule());

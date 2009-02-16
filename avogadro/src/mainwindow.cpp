@@ -474,7 +474,7 @@ namespace Avogadro
     }
     delete ui.toolsWidget;
     ui.toolsWidget = new QWidget();
-    ui.toolsWidget->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Maximum);
+    ui.toolsWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     ui.toolsDock->setWidget(ui.toolsWidget);
 

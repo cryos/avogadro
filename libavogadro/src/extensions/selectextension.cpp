@@ -230,12 +230,10 @@ namespace Avogadro {
     QList<Residue*> residues = m_molecule->residues();
     foreach (Residue *res, residues) {
       if (res->name() == resname) {
-        QList<unsigned long int> atoms = res->atoms();
-        foreach(unsigned long int atom, atoms) {
+        foreach(unsigned long atom, res->atoms()) {
           selectedAtoms.push_back(m_molecule->atomById(atom));
         }
-        QList<unsigned long int> bonds = res->bonds();
-        foreach(unsigned long int bond, bonds) {
+        foreach(unsigned long bond, res->bonds()) {
           selectedAtoms.push_back(m_molecule->bondById(bond));
         }
       }
@@ -254,12 +252,10 @@ namespace Avogadro {
     QList<Residue*> residues = m_molecule->residues();
     foreach (Residue *res, residues) {
       if (res->name() == "HOH") {
-        QList<unsigned long int> atoms = res->atoms();
-        foreach(unsigned long int atom, atoms) {
+        foreach(unsigned long atom, res->atoms()) {
           selectedAtoms.push_back(m_molecule->atomById(atom));
         }
-        QList<unsigned long int> bonds = res->bonds();
-        foreach(unsigned long int bond, bonds) {
+        foreach(unsigned long bond, res->bonds()) {
           selectedAtoms.push_back(m_molecule->bondById(bond));
         }
       }

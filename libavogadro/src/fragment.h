@@ -80,40 +80,40 @@ namespace Avogadro {
       /**
        * Add an Atom to the Fragment.
        */
-      void addAtom(unsigned long int id);
+      void addAtom(unsigned long id);
 
       /**
        * Remove the Atom from the Fragment.
        */
-      void removeAtom(unsigned long int id);
+      void removeAtom(unsigned long id);
 
       /**
        * @return QList of the unique ids of the atoms in this Fragment.
        */
-      QList<unsigned long int> atoms();
+      QList<unsigned long> atoms();
 
       /**
        * Add a Bond to the Fragment.
        */
-      void addBond(unsigned long int id);
+      void addBond(unsigned long id);
 
       /**
        * Remove the Bond from the Fragment.
        */
-      void removeBond(unsigned long int id);
+      void removeBond(unsigned long id);
 
       /**
        * @return QList of the unique ids of the bonds in this Fragment.
        */
-      QList<unsigned long int> bonds();
+      QList<unsigned long> bonds();
 
       friend class Molecule;
 
     protected:
       Molecule *m_molecule;
       QString m_name; /** The name of the Fragment. **/
-      QList<unsigned long int> m_atoms; /** QList of the atom ids. **/
-      QList<unsigned long int> m_bonds; /** QList of the bond ids. **/
+      QList<unsigned long> m_atoms; /** QList of the atom ids. **/
+      QList<unsigned long> m_bonds; /** QList of the bond ids. **/
 
     private:
       Q_DECLARE_PRIVATE(Fragment)

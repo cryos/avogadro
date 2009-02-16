@@ -169,7 +169,7 @@ namespace Avogadro{
     return atom;
   }
 
-  void Molecule::setAtomPos(unsigned long int id, const Eigen::Vector3d& vec)
+  void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d& vec)
   {
     if (id < m_atomPos->size()) {
       m_lock->lockForWrite();
@@ -178,12 +178,12 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::setAtomPos(unsigned long int id, const Eigen::Vector3d *vec)
+  void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d *vec)
   {
     if (vec) setAtomPos(id, *vec);
   }
 
-  const Eigen::Vector3d * Molecule::atomPos(unsigned long int id) const
+  const Eigen::Vector3d * Molecule::atomPos(unsigned long id) const
   {
     QReadLocker lock(m_lock);
     if (!m_atomPos)
@@ -202,7 +202,7 @@ namespace Avogadro{
     Q_D(Molecule);
     if(atom) {
       // When deleting an atom this also implicitly deletes any bonds to the atom
-      foreach (unsigned long int bond, atom->bonds()) {
+      foreach (unsigned long bond, atom->bonds()) {
         removeBond(bond);
       }
 
@@ -221,7 +221,7 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::removeAtom(unsigned long int id)
+  void Molecule::removeAtom(unsigned long id)
   {
     removeAtom(atomById(id));
   }
@@ -292,7 +292,7 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::removeBond(unsigned long int id)
+  void Molecule::removeBond(unsigned long id)
   {
     Q_D(Molecule);
     if (id < d->bonds.size()) {
@@ -466,7 +466,7 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::removeCube(unsigned long int id)
+  void Molecule::removeCube(unsigned long id)
   {
     Q_D(Molecule);
     if (id < d->cubes.size())
@@ -513,7 +513,7 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::removeMesh(unsigned long int id)
+  void Molecule::removeMesh(unsigned long id)
   {
     Q_D(Molecule);
     if (id < d->meshes.size())
@@ -580,7 +580,7 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::removeResidue(unsigned long int id)
+  void Molecule::removeResidue(unsigned long id)
   {
     Q_D(Molecule);
     if (id < d->residues.size())
@@ -623,7 +623,7 @@ namespace Avogadro{
     }
   }
 
-  void Molecule::removeRing(unsigned long int id)
+  void Molecule::removeRing(unsigned long id)
   {
     Q_D(Molecule);
     if (id < d->rings.size())
@@ -663,9 +663,9 @@ namespace Avogadro{
   {
     if (atom) {
       // Delete any connected hydrogen atoms
-      QList<unsigned long int> neighbors = atom->neighbors();
+      QList<unsigned long> neighbors = atom->neighbors();
 
-      foreach (unsigned long int a, neighbors) {
+      foreach (unsigned long a, neighbors) {
         Atom *nbrAtom = atomById(a);
         // we need to check if the atom still exists
         if (nbrAtom) {
@@ -695,7 +695,7 @@ namespace Avogadro{
     // Don't leak memory
     if (m_dipoleMoment)
       delete m_dipoleMoment;
-    
+
     m_dipoleMoment = new Vector3d(moment);
   }
 
@@ -811,7 +811,7 @@ namespace Avogadro{
     emit updated();
   }
 
-  Bond* Molecule::bond(unsigned long int id1, unsigned long int id2)
+  Bond* Molecule::bond(unsigned long id1, unsigned long id2)
   {
     // Take two atom IDs and see if we have a bond between the two
     if (atomById(id1)) {
@@ -1016,7 +1016,7 @@ namespace Avogadro{
       obproperty->SetValue(property(propertyName).toByteArray().data());
       obmol.SetData(obproperty);
     }
-    
+
     // Copy vibrations, if needed
     if (d->obvibdata != NULL) {
       obmol.SetData(d->obvibdata->Clone(&obmol));
@@ -1096,7 +1096,7 @@ namespace Avogadro{
       residue->setChainNumber(chains.value(obres->GetChain()));
       std::vector<OpenBabel::OBAtom*> obatoms = obres->GetAtoms();
       foreach (OpenBabel::OBAtom *obatom, obatoms) {
-        unsigned long int atomId = atom(obatom->GetIdx()-1)->id();
+        unsigned long atomId = atom(obatom->GetIdx()-1)->id();
         residue->addAtom(atomId);
         residue->setAtomId(atomId, obres->GetAtomID(obatom).c_str());
       }
@@ -1135,7 +1135,7 @@ namespace Avogadro{
     OpenBabel::OBConformerData *cd = static_cast<OpenBabel::OBConformerData*>(obmol->GetData(OpenBabel::OBGenericDataType::ConformerData));
     if (cd) {
       std::vector< std::vector<OpenBabel::vector3> > allForces = cd->GetForces();
-      
+
       // check for validity (i.e., we have some forces, one for each atom
       if (allForces.size() && allForces[0].size() == numAtoms()) {
         OpenBabel::vector3 force;
@@ -1257,6 +1257,13 @@ namespace Avogadro{
       emit primitiveRemoved(cube);
     }
     d->cubeList.clear();
+
+    d->meshes.resize(0);
+    foreach (Mesh *mesh, d->meshList) {
+      mesh->deleteLater();
+      emit primitiveRemoved(mesh);
+    }
+    d->meshList.clear();
 
     d->residues.resize(0);
     foreach (Residue *residue, d->residueList) {
