@@ -88,7 +88,7 @@ namespace Avogadro
 
   BSDYEngine::BSDYEngine(QObject *parent) : Engine(parent),
       m_settingsWidget(0), m_atomRadiusPercentage(0.3), m_bondRadius(0.1),
-      m_showMulti(true), m_alpha(1.)
+      m_showMulti(2), m_alpha(1.)
   {
     setDescription(tr("Renders primitives using Balls (atoms) and Sticks (bonds)."));
   }
@@ -423,7 +423,7 @@ namespace Avogadro
     setAtomRadiusPercentage(settings.value("atomRadius", 3).toInt());
     setBondRadius(settings.value("bondRadius", 2).toInt());
     setShowMulti(settings.value("showMulti", 2).toInt());
-    setOpacity(settings.value("opacity", 20).toInt());
+    setOpacity(settings.value("opacity", 100).toInt());
 
     if (m_settingsWidget) {
       m_settingsWidget->atomRadiusSlider->setValue(10*m_atomRadiusPercentage);
