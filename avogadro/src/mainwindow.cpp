@@ -2054,6 +2054,7 @@ namespace Avogadro
     QSize size = settings.value( "size", QSize( 640, 480 ) ).toSize();
     resize( size );
 
+    d->fileDialogPath = settings.value("openDialogPath").toString();
     d->animationsEnabled = settings.value( "animationsEnabled", false ).toBool();
 
     QByteArray ba = settings.value( "state" ).toByteArray();
@@ -2119,6 +2120,7 @@ namespace Avogadro
     settings.setValue( "size", size() );
     settings.setValue( "state", saveState() );
 
+    settings.setValue("openDialogPath", d->fileDialogPath);
     settings.setValue( "tabbedTools", d->tabbedTools );
     settings.setValue( "toolsTabPosition", d->toolsTabPosition );
     settings.setValue( "enginesDock", ui.enginesDock->saveGeometry());
