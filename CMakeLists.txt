@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 2.6.0)
 cmake_policy(SET CMP0003 NEW)
 
 # Use CPack to do some of our packaging
-include(AvoCPack.cmake)
+include(AvoCPack)
 
 # this is adapted from KDE's FindKDE4Internal.cmake : default the build type to
 # "release with debug info".
@@ -112,7 +112,7 @@ find_package(Eigen2 REQUIRED) # find and setup Eigen2
 ###########################################################
 option(ENABLE_PYTHON "Enable python support" ON)
 if(ENABLE_PYTHON MATCHES ON)
-  include(PythonDeps.cmake)
+  include(PythonDeps)
   if (ALL_PYTHON_FOUND)
     message(STATUS "All python dependencies found - Python support enabled")
   endif (ALL_PYTHON_FOUND)
@@ -127,7 +127,7 @@ if(ENABLE_TESTS MATCHES ON)
   set(QT_USE_QTTEST TRUE)
   enable_testing()
   include (CTest)
-  include (CTestConfig.cmake)
+  include (AvoCTestConfig)
   message(STATUS "Unit testing enabled, run make test to run them")
 endif(ENABLE_TESTS MATCHES ON)
 
