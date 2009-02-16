@@ -54,7 +54,8 @@ namespace Avogadro
 {
   OrbitalExtension::OrbitalExtension(QObject* parent) : Extension(parent),
     m_glwidget(0), m_orbitalDialog(0), m_molecule(0), m_basis(0), m_slater(0),
-    m_progress(0), m_timer(0), m_meshGen1(0), m_meshGen2(0), m_VdWsurface(0)
+    m_progress(0), m_timer(0), m_mesh1(0), m_mesh2(0), m_meshGen1(0),
+    m_meshGen2(0), m_VdWsurface(0)
   {
     QAction* action = new QAction(this);
     action->setText(tr("Create Surfaces..."));
@@ -64,13 +65,21 @@ namespace Avogadro
   OrbitalExtension::~OrbitalExtension()
   {
     if (m_orbitalDialog) {
-      delete m_orbitalDialog;
+      m_orbitalDialog->deleteLater();
       m_orbitalDialog = 0;
     }
-    if (m_basis) {
-      delete m_basis;
-      m_basis = 0;
-    }
+    delete m_basis;
+    m_basis = 0;
+    delete m_slater;
+    m_slater = 0;
+    delete m_meshGen1;
+    m_meshGen1 = 0;
+    delete m_meshGen2;
+    m_meshGen2 = 0;
+    delete m_timer;
+    m_timer = 0;
+    delete m_VdWsurface;
+    m_VdWsurface = 0;
   }
 
   QList<QAction *> OrbitalExtension::actions() const
@@ -117,7 +126,17 @@ namespace Avogadro
 
   void OrbitalExtension::setMolecule(Molecule *molecule)
   {
+    qDebug() << "Set molecule called.";
     m_molecule = molecule;
+    delete m_slater;
+    m_slater = 0;
+    delete m_basis;
+    m_basis = 0;
+    delete m_VdWsurface;
+    m_VdWsurface = 0;
+    m_mesh1 = 0;
+    m_mesh2 = 0;
+
     if (m_orbitalDialog)
       m_orbitalDialog->setMolecule(molecule);
   }
