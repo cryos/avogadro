@@ -105,7 +105,6 @@ find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Linguist REQUIRED) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
-include_directories(${EIGEN2_INCLUDE_DIR})
 
 ###########################################################
 # Python Support: Detect and report all stuff here.       #

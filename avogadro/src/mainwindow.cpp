@@ -693,8 +693,8 @@ namespace Avogadro
   }
 
   bool MainWindow::loadFile(const QString &fileName,
-			    OBFormat *format,
-			    const QString &options)
+                            OBFormat *format,
+                            const QString &options)
   {
     // Now also sets the window icon on Mac
     // http://labs.trolltech.com/blogs/2007/12/28/spotlight-on-little-things/

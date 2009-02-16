@@ -2,10 +2,7 @@ set(QT_USE_QTOPENGL true)
 
 include(${QT_USE_FILE})
 
-include_directories(${OPENBABEL_INCLUDE_DIR}
-  ${CMAKE_CURRENT_BINARY_DIR}
-  ${GLEW_INCLUDE_DIR}
-)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 set(DESTINATION_DIR ${LIB_INSTALL_DIR}/avogadro/engines)
 

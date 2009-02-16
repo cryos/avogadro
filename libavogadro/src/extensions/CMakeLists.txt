@@ -11,11 +11,6 @@ set(DESTINATION_DIR ${LIB_INSTALL_DIR}/avogadro/extensions)
 include_directories(
   ../
   ${CMAKE_CURRENT_BINARY_DIR}
-  ${OPENBABEL2_INCLUDE_DIR}
-  ${EIGEN2_INCLUDE_DIR}
-  ${AVOGADRO_INCLUDE_DIR}
-  ${BOOST_INCLUDE_DIRS}
-  ${PYTHON_INCLUDE_PATH}
 )
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
