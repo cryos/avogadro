@@ -91,12 +91,12 @@ namespace Avogadro
       // set the primitive
       PrimitiveList primitives;
       primitives.append(residues.at(i));
-      foreach (unsigned long int id, residues.at(i)->atoms()) {
+      foreach (unsigned long id, residues.at(i)->atoms()) {
         Atom *atom = molecule->atomById(id);
         if (atom)
           primitives.append(atom);
       }
-      foreach (unsigned long int id, residues.at(i)->bonds()) {
+      foreach (unsigned long id, residues.at(i)->bonds()) {
         Bond *bond = molecule->bondById(id);
         if (bond)
           primitives.append(bond);
@@ -123,12 +123,12 @@ namespace Avogadro
     // set the primitive
     PrimitiveList primitives;
       primitives.append(residue);
-    foreach (unsigned long int id, residue->atoms()) {
+    foreach (unsigned long id, residue->atoms()) {
       Atom *atom = molecule->atomById(id);
       if (atom)
         primitives.append(atom);
     }
-    foreach (unsigned long int id, residue->bonds()) {
+    foreach (unsigned long id, residue->bonds()) {
       Bond *bond = molecule->bondById(id);
       if (bond)
         primitives.append(bond);
@@ -156,12 +156,12 @@ namespace Avogadro
     // set the primitive
     PrimitiveList primitives;
     primitives.append(residue);
-    foreach (unsigned long int id, residue->atoms()) {
+    foreach (unsigned long id, residue->atoms()) {
       Atom *atom = molecule->atomById(id);
       if (atom)
         primitives.append(atom);
     }
-    foreach (unsigned long int id, residue->bonds()) {
+    foreach (unsigned long id, residue->bonds()) {
       Bond *bond = molecule->bondById(id);
       if (bond)
         primitives.append(bond);
@@ -180,7 +180,7 @@ namespace Avogadro
     model()->removeRows(m_label, primitive->index(), 1);
 
     // loop over residues below to fix their index if needed
-    if ((primitive->index() + 1) < (unsigned long int) m_label->childCount()) {
+    if ((primitive->index() + 1) < (unsigned long) m_label->childCount()) {
       for (int i = primitive->index(); i < m_label->childCount(); ++i) {
         ProjectTreeItem *item = m_label->child(i);
         item->setData(1, QString("%1").arg(i));
