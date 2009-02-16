@@ -92,7 +92,6 @@ namespace Avogadro {
       int    m_renderMode;
       bool   m_drawBox;
       bool   m_update;
-      const Molecule *m_molecule;
 
       void updateSurfaces(PainterDevice *pd);
 

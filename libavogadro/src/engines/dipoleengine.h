@@ -34,7 +34,7 @@ namespace Avogadro {
 
   //! Settings class
   class DipoleSettingsWidget;
-  
+
   //! Dipole Engine class.
   class DipoleEngine : public Engine
   {
@@ -64,9 +64,8 @@ namespace Avogadro {
 
       //! Display a window for the user to pick rendering options
       QWidget *settingsWidget();
-      
+
       private:
-        Molecule *m_molecule;
         int m_dipoleType; // type of dipole to render
         Eigen::Vector3d m_dipole; // cached dipole moment
         DipoleSettingsWidget* m_settingsWidget;
@@ -75,7 +74,7 @@ namespace Avogadro {
         void setDipoleType(int value);
         void settingsWidgetDestroyed();
         void updateDipole(double = 0.0);
-      
+
   };
 
   class DipoleSettingsWidget : public QWidget, public Ui::DipoleSettingsWidget
