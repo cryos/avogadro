@@ -303,7 +303,7 @@ void export_QList()
 {
   export_list< QList<QString> >();
   export_list< QList<GLHit> >();
-  export_list< QList<unsigned long int> >();
+  export_list< QList<unsigned long> >();
 
   /*  
   class_<QListTest>("QListTest")
