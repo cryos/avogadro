@@ -113,6 +113,7 @@ namespace Avogadro {
       void selectNone();
 
       void show();
+      void showAndActivate();
 
       void newView();
       void duplicateView();
@@ -137,6 +138,10 @@ namespace Avogadro {
       void setQuickRender(bool quick);
 
       void undoStackClean(bool clean);
+
+      void updateWindowMenu();
+      void bringAllToFront();
+      void zoom();
 
       void clearRecentFiles();
       void about();
