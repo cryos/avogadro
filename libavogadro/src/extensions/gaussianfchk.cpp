@@ -217,7 +217,6 @@ namespace Avogadro
     unsigned int i = 0, j = 0;
     unsigned int f = 1;
     // Skip the first commment line...
-    m_in.readLine();
     while (cnt < n) {
       QString line = m_in.readLine();
       QStringList list = line.split(" ", QString::SkipEmptyParts);

@@ -31,6 +31,7 @@ namespace Avogadro {
   class UnitCellExtension : public Extension
   {
     Q_OBJECT
+    AVOGADRO_EXTENSION("UnitCell", tr("UnitCell"))
 
   public:
     //! Constructor
@@ -40,8 +41,6 @@ namespace Avogadro {
 
     //! \name Description methods
     //@{
-    //! Plugin Name (ie Draw)
-    QString name() const { return QObject::tr("UnitCell"); }
     //! Plugin Description (ie. Draws atoms and bonds)
     QString description() const { return QObject::tr("Unit Cell Parameters Plugin"); };
     //! Perform Action
@@ -72,6 +71,7 @@ namespace Avogadro {
       Q_INTERFACES(Avogadro::PluginFactory)
 
       AVOGADRO_EXTENSION_FACTORY(UnitCellExtension,
+          "Unit Cell Extension",
           tr("Unit Cell Extension"),
           tr("Extension for building unit cells."))
   };
