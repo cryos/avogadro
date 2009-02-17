@@ -76,7 +76,7 @@ if(APPLE)
   EXECUTE_PROCESS(COMMAND mkdir -p ${MACOSX_BUILD_CONTENTS_DIR} )
   EXECUTE_PROCESS(COMMAND cp ${MACOSX_SRC_DIR}/avogadro.icns ${MACOSX_BUILD_CONTENTS_DIR} )
   EXECUTE_PROCESS(COMMAND cp ${MACOSX_SRC_DIR}/AvogadroDocument.icns ${MACOSX_BUILD_CONTENTS_DIR} )
-  SET( TRANSLATIONS "ar;ca;de;en;en_GB;es;fr;it;pl;pt;pt_BR;ru;zh;zh_CN;zh_TW" )
+  SET( TRANSLATIONS "ar;ca;cs;de;en;en_GB;es;fi;fr;it;pl;pt;pt_BR;ru;sv;uk;zh;zh_CN;zh_TW" )
 	FOREACH(lang ${TRANSLATIONS})
     SET( MAC_LANG_DIR ${MACOSX_BUILD_CONTENTS_DIR}/${lang}.lproj )
 	  EXECUTE_PROCESS(COMMAND
