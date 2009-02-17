@@ -195,8 +195,6 @@ namespace Avogadro
       (*m_basisShells)[i].pos = i;
     }
 
-    processDensity((*m_basisShells)[5]);
-
     // Lock the cube until we are done.
     cube->lock()->lockForWrite();
 
@@ -246,9 +244,9 @@ namespace Avogadro
           m_moIndices[i] = indexMO++;
           m_cIndices.push_back(m_gtoCN.size());
           // Normalization of the S-type orbitals (normalization used in JMol)
-          // (2 * alpha^3 / pi^3)^0.25 * exp(-alpha * r^2)
+          // (8 * alpha^3 / pi^3)^0.25 * exp(-alpha * r^2)
           for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
-            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 0.75) * 0.503958871);
+            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 0.75) * 0.71270547);
           }
           break;
         case P:
