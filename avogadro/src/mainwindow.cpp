@@ -1719,7 +1719,7 @@ namespace Avogadro
 
     // no need to animate when there are no atoms
     if(d->molecule->numAtoms() == 0)  {
-      camera->translate( d->glWidget->center() - Vector3d( 0, 0, 10 ) );
+      camera->translate( d->glWidget->center() - Vector3d( 0.0, 0.0, 20.0 ) );
       d->glWidget->update();
       return;
     }
@@ -2309,6 +2309,9 @@ namespace Avogadro
       }
       menuIndex++;
     }
+
+    // make sure the camera is set to the default -- reported by Ian Davis
+    centerView();
 
     // Now show the window and raise it
     show();
