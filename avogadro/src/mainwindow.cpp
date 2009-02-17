@@ -1372,9 +1372,12 @@ namespace Avogadro
 
     foreach(QWidget *widget, qApp->topLevelWidgets()) {
       MainWindow *window = qobject_cast<MainWindow *>( widget );
-      if (window)
+      if (window && window->isVisible())
         mainWindowList.append(window);
     }
+
+    if (mainWindowList.isEmpty())
+      return;
 
     qSort(mainWindowList.begin(), mainWindowList.end(), windowComparison);
 
@@ -2389,6 +2392,13 @@ namespace Avogadro
 
   void MainWindow::hideMainWindowMac()
   {
+    // First remove the last menu item on the "Window" menu
+    // i.e., the action which refers to this window
+    QAction *lastAction = ui.menuSettings->actions().last();
+    ui.menuSettings->removeAction(lastAction);
+    ui.menuSettings->actions().last(); // and last separator
+    ui.menuSettings->removeAction(lastAction);
+
     d->menuItemStatus.clear();
     QVector<bool> status;
 
@@ -2418,6 +2428,7 @@ namespace Avogadro
     // Clear the molecule
     loadFile();
     hide();
+    updateWindowMenu();
   }
 
   void MainWindow::showMainWindowMac()
