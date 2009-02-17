@@ -1657,8 +1657,11 @@ namespace Avogadro {
 
   void GamessInputDialog::generateClicked()
   {
+    QFileInfo defaultFile(m_inputData->m_molecule->fileName());
+    QString defaultFileName = defaultFile.canonicalPath() + "/" + defaultFile.baseName() + ".inp";
+    
     QString fileName = QFileDialog::getSaveFileName(this, tr("Export Input Deck"),
-        "", tr("GAMESS Input Deck (*.inp)"));
+        defaultFileName, tr("GAMESS Input Deck (*.inp)"));
 
     if(fileName == "") return;
 

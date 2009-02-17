@@ -152,8 +152,10 @@ namespace Avogadro
 
   void QChemInputDialog::generateClicked()
   {
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultFileName = defaultFile.canonicalPath() + "/" + defaultFile.baseName() + ".qcin";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save QChem Input Deck"),
-                                "", tr("QChem Input Deck (*.qchem)"));
+                                defaultFileName, tr("QChem Input Deck (*.qcin)"));
     QFile file(fileName);
     // FIXME This really should pop up a warning if the file cannot be opened
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
