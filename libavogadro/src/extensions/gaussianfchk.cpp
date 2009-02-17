@@ -104,7 +104,7 @@ namespace Avogadro
       qDebug() << "MO coefficients, n =" << m_MOcoeffs.size();
     }
     else if (key == "Total SCF Density") {
-      readDensityMatrix(list.at(2).toInt());
+      readDensityMatrix(list.at(2).toInt(), 16);
       qDebug() << "SCF density matrix read in" << m_density.rows();
     }
 
@@ -179,6 +179,9 @@ namespace Avogadro
     vector<int> tmp;
     while (tmp.size() < n) {
       QString line = m_in.readLine();
+      if (line.isEmpty())
+        return tmp;
+      
       QStringList list = line.split(" ", QString::SkipEmptyParts);
       for (int i = 0; i < list.size(); ++i)
         tmp.push_back(list.at(i).toInt());
@@ -191,6 +194,9 @@ namespace Avogadro
     vector<double> tmp;
     while (tmp.size() < n) {
       QString line = m_in.readLine();
+      if (line.isEmpty())
+        return tmp;
+      
       if (width == 0) { // we can split by spaces
         QStringList list = line.split(" ", QString::SkipEmptyParts);
         for (int i = 0; i < list.size(); ++i)
@@ -210,7 +216,7 @@ namespace Avogadro
     return tmp;
   }
 
-  bool GaussianFchk::readDensityMatrix(unsigned int n)
+  bool GaussianFchk::readDensityMatrix(unsigned int n, int width)
   {
     m_density.resize(m_numBasisFunctions, m_numBasisFunctions);
     unsigned int cnt = 0;
@@ -219,16 +225,36 @@ namespace Avogadro
     // Skip the first commment line...
     while (cnt < n) {
       QString line = m_in.readLine();
-      QStringList list = line.split(" ", QString::SkipEmptyParts);
-      for (int k = 0; k < list.size(); ++k) {
-        //m_overlap.part<Eigen::SelfAdjoint>()(i, j) = list.at(k).toDouble();
-        m_density(i, j) = m_density(j, i) = list.at(k).toDouble();
-        ++i; ++cnt;
-        if (i == f) {
-          // We need to move down to the next row and increment f - lower tri
-          i = 0;
-          ++f;
-          ++j;
+      if (line.isEmpty())
+        return false;
+        
+      if (width == 0) { // we can split by spaces
+        QStringList list = line.split(" ", QString::SkipEmptyParts);
+        for (int k = 0; k < list.size(); ++k) {
+          //m_overlap.part<Eigen::SelfAdjoint>()(i, j) = list.at(k).toDouble();
+          m_density(i, j) = m_density(j, i) = list.at(k).toDouble();
+          ++i; ++cnt;
+          if (i == f) {
+            // We need to move down to the next row and increment f - lower tri
+            i = 0;
+            ++f;
+            ++j;
+          }
+        }
+      } else { // Q-Chem files use 16-character fields
+        int maxColumns = 80 / width;
+        for (int c = 0; c < maxColumns; ++c) {
+          QString substring = line.mid(c * width, width);
+          if (substring.length() != width)
+            break;
+          m_density(i, j) = m_density(j, i) = substring.toDouble();
+          ++i; ++cnt;
+          if (i == f) {
+            // We need to move down to the next row and increment f - lower tri
+            i = 0;
+            ++f;
+            ++j;
+          }
         }
       }
     }
