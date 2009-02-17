@@ -323,10 +323,6 @@ namespace Avogadro
 
     // Change the "Settings" menu to be Window
     ui.menuSettings->setTitle(tr("Window"));
-    // and remove the trailing separator
-    QAction *lastSettingsAction = ui.menuSettings->actions().last();
-    if (lastSettingsAction->isSeparator())
-      ui.menuSettings->removeAction( lastSettingsAction );
 
     // Remove all menu icons (violates Apple interface guidelines)
     // This is a not-quite-hidden Qt call on the Mac
@@ -351,6 +347,35 @@ namespace Avogadro
     if(event->type() == QEvent::Polish) {
       reloadTabbedTools();
       loadExtensions();
+
+      // Check every menu for "extra" separators
+      foreach( QAction *menu, menuBar()->actions() ) {
+
+        QList<QAction *> removeThese;
+
+        QAction *firstAction = menu->menu()->actions().first();
+        if (firstAction->isSeparator())
+          removeThese.append( firstAction );
+
+        QAction *lastAction = menu->menu()->actions().last();
+        if (lastAction->isSeparator())
+          removeThese.append( lastAction );
+
+        int multipleSeparatorCount = 0;
+        foreach( QAction *menuItem, menu->menu()->actions() ) {
+          if (menuItem->isSeparator()) {
+            if (multipleSeparatorCount)
+              removeThese.append(menuItem);
+            multipleSeparatorCount++;
+          } else
+            multipleSeparatorCount = 0;
+        } // end foreach (menuItems)
+
+        foreach (QAction *separator, removeThese) {
+          menu->menu()->removeAction(separator);
+        }
+      }
+
       if(!molecule()) {
         loadFile();
       }
