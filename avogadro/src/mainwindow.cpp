@@ -1382,9 +1382,9 @@ namespace Avogadro
     foreach (MainWindow *widget, mainWindowList) {
       QAction *windowAction = new QAction(widget);
       if (!widget->d->fileName.isEmpty())
-        windowAction->setText(widget->d->fileName);
+        windowAction->setText(QFileInfo(widget->d->fileName).fileName());
       else
-        windowAction->setText("Untitled");
+        windowAction->setText(tr("Untitled"));
 
       if (widget->d->fileName == d->fileName) {
         windowAction->setCheckable(true);
