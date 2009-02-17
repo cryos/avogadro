@@ -46,7 +46,8 @@ namespace Avogadro {
       //delete d;
   }
 
-  Color::Color( GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha ) : d(0)
+  Color::Color(const GLfloat red, const GLfloat green, 
+               const GLfloat blue, const GLfloat alpha ) : d(0)
   {
     m_channels[0] = red;
     m_channels[1] = green;
@@ -59,7 +60,8 @@ namespace Avogadro {
     set(p);
   }
 
-  void Color::set(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+  void Color::set(const GLfloat red, const GLfloat green, 
+                  const GLfloat blue, const GLfloat alpha)
   {
     m_channels[0] = red;
     m_channels[1] = green;
@@ -88,12 +90,12 @@ namespace Avogadro {
     return;
   }
 
-  void Color::set(const unsigned int)
+  void Color::setIndex(const unsigned int)
   {
     return;
   }
 
-  void Color::set(const double, const double, 
+  void Color::setGradient(const double, const double, 
            const double, const double)
   {
     return;

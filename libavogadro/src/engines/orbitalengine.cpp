@@ -291,7 +291,7 @@ namespace Avogadro {
 
   Engine::ColorTypes OrbitalEngine::colorTypes() const
   {
-    return Engine::ColorGradients;
+    return Engine::IndexedColors;
   }
 
   void OrbitalEngine::setOrbital1(int)

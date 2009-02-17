@@ -77,8 +77,8 @@ namespace Avogadro {
      * @param alpha The opacity of the color
      * \sa set()
      */
-    Color( GLfloat red, GLfloat green, GLfloat blue,
-        GLfloat alpha = 1.0 );
+    Color(const GLfloat red, const GLfloat green, 
+          const GLfloat blue, const GLfloat alpha = 1.0 );
 
     /**
      * Set the color based on the supplied Primitive.
@@ -98,8 +98,8 @@ namespace Avogadro {
      * @param blue The blue component
      * @param alpha The opacity of the color
      */
-    virtual void set(GLfloat red, GLfloat green, GLfloat blue,
-                     GLfloat alpha = 1.0 );
+    virtual void set(const GLfloat red, const GLfloat green, 
+                     const GLfloat blue, const GLfloat alpha = 1.0 );
 
     /**
      * Set the color to the selection color
@@ -118,7 +118,7 @@ namespace Avogadro {
      * Set the color based on the supplied index (e.g., in an indexed color table)
      * @param index the color is derived from this value
      */
-    virtual void set(const unsigned int index);
+    virtual void setIndex(const unsigned int index);
     
     /**
      * Set the color based on the supplied floating point value (e.g., a gradient)
@@ -127,8 +127,8 @@ namespace Avogadro {
      * @param mid the middle point of the range (e.g., 0.0)
      * @param hi the high point of the range
      */
-    virtual void set(const double value, const double lo, 
-                     const double mid, const double hi);
+    virtual void setGradient(const double value, const double lo, 
+                             const double mid, const double hi);
 
     virtual void set(const QColor &color);
 
