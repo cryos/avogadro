@@ -30,6 +30,7 @@
 
 #include "gaussianinputdialog.h"
 #include "qcheminputdialog.h"
+#include "mopacinputdialog.h"
 
 namespace Avogadro
 {
@@ -69,6 +70,7 @@ namespace Avogadro
   private:
     GaussianInputDialog* m_gaussianInputDialog;
     QChemInputDialog* m_qchemInputDialog;
+    MOPACInputDialog* m_mopacInputDialog;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
 

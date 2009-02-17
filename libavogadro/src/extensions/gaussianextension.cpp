@@ -28,7 +28,7 @@ namespace Avogadro
 {
 
   GaussianExtension::GaussianExtension(QObject* parent) : Extension(parent),
-    m_gaussianInputDialog(0), m_qchemInputDialog(0), m_molecule(0)
+                                                          m_gaussianInputDialog(0), m_qchemInputDialog(0), m_mopacInputDialog(0), m_molecule(0)
   {
     QAction* action = new QAction(this);
     action->setText(tr("Gaussian Input..."));
@@ -38,6 +38,10 @@ namespace Avogadro
     action->setText(tr("Q-Chem Input..."));
     action->setData("QChem");
     m_actions.append(action);
+    action = new QAction(this);
+    action->setText(tr("MOPAC Input..."));
+    action->setData("MOPAC");
+    m_actions.append(action);
   }
 
   GaussianExtension::~GaussianExtension()
@@ -46,6 +50,8 @@ namespace Avogadro
     m_gaussianInputDialog = 0;
     delete m_qchemInputDialog;
     m_qchemInputDialog = 0;
+    delete m_mopacInputDialog;
+    m_mopacInputDialog = 0;
   }
 
   QList<QAction *> GaussianExtension::actions() const
@@ -78,6 +84,15 @@ namespace Avogadro
       else
         m_qchemInputDialog->show();
     }
+    else if (action->data() == "MOPAC") {
+      if (!m_mopacInputDialog) {
+        m_mopacInputDialog = new MOPACInputDialog();
+        m_mopacInputDialog->setMolecule(m_molecule);
+        m_mopacInputDialog->show();
+      }
+      else
+        m_mopacInputDialog->show();
+    }
     return 0;
   }
 
@@ -88,6 +103,8 @@ namespace Avogadro
       m_gaussianInputDialog->setMolecule(m_molecule);
     if (m_qchemInputDialog)
       m_qchemInputDialog->setMolecule(m_molecule);
+    if (m_mopacInputDialog)
+      m_mopacInputDialog->setMolecule(m_molecule);
   }
 
   void GaussianExtension::writeSettings(QSettings &settings) const
@@ -95,6 +112,9 @@ namespace Avogadro
     Extension::writeSettings(settings);
     if (m_gaussianInputDialog) {
       m_gaussianInputDialog->writeSettings(settings);
+    }
+    if (m_mopacInputDialog) {
+      m_mopacInputDialog->writeSettings(settings);
     }
   }
 
@@ -109,6 +129,17 @@ namespace Avogadro
       m_gaussianInputDialog->readSettings(settings);
       if (m_molecule) {
         m_gaussianInputDialog->setMolecule(m_molecule);
+      }
+    }
+    
+    if (m_mopacInputDialog) {
+      m_mopacInputDialog->readSettings(settings);
+    }
+    else {
+      m_mopacInputDialog = new MOPACInputDialog();
+      m_mopacInputDialog->readSettings(settings);
+      if (m_molecule) {
+        m_mopacInputDialog->setMolecule(m_molecule);
       }
     }
   }
