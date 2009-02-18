@@ -116,10 +116,11 @@ install(TARGETS vibrationextension DESTINATION ${DESTINATION_DIR})
 ### Gaussian input deck generator
 set(gaussianextension_SRCS gaussianextension.cpp
   gaussianinputdialog.cpp
-  qcheminputdialog.cpp)
+  qcheminputdialog.cpp mopacinputdialog.cpp)
 qt4_wrap_ui(gaussianextension_UIS_H
   gaussianinputdialog.ui
-  qcheminputdialog.ui)
+  qcheminputdialog.ui
+  mopacinputdialog.ui)
 qt4_automoc(${gaussianextension_SRCS})
 add_library(gaussianextension MODULE ${gaussianextension_SRCS}
   ${gaussianextension_UIS_H})
