@@ -76,8 +76,13 @@ namespace Avogadro
       m_numBasisFunctions = list.at(1).toInt();
       qDebug() << "Number of basis functions =" << m_numBasisFunctions;
     }
-    else if (key == "Atomic numbers")
+    else if (key == "Atomic numbers") {
       m_aNums = readArrayI(list.at(2).toInt());
+      if (static_cast<int>(m_aNums.size()) != list.at(2).toInt())
+        qDebug() << "Reading atomic numbers failed.";
+      else
+        qDebug() << "Reading atomic numbers succeeded.";
+    }
     // Now we get to the meat of it - coordinates of the atoms
     else if (key == "Current cartesian coordinates")
       m_aPos = readArrayD(list.at(2).toInt(), 16);
@@ -101,11 +106,16 @@ namespace Avogadro
     }
     else if (key == "Alpha MO coefficients") {
       m_MOcoeffs = readArrayD(list.at(2).toInt(), 16);
-      qDebug() << "MO coefficients, n =" << m_MOcoeffs.size();
+      if (static_cast<int>(m_MOcoeffs.size()) == list.at(2).toInt())
+        qDebug() << "MO coefficients, n =" << m_MOcoeffs.size();
+      else
+        qDebug() << "Error, MO coefficients, n =" << m_MOcoeffs.size();
     }
     else if (key == "Total SCF Density") {
-      readDensityMatrix(list.at(2).toInt(), 16);
-      qDebug() << "SCF density matrix read in" << m_density.rows();
+      if (readDensityMatrix(list.at(2).toInt(), 16))
+        qDebug() << "SCF density matrix read in" << m_density.rows();
+      else
+        qDebug() << "Error reading in the SCF density matrix.";
     }
 
   }
@@ -177,30 +187,67 @@ namespace Avogadro
   vector<int> GaussianFchk::readArrayI(unsigned int n)
   {
     vector<int> tmp;
+    tmp.reserve(n);
+    bool ok = false;
     while (tmp.size() < n) {
+      if (m_in.atEnd()) {
+        qDebug() << "GaussianFchk::readArrayI could not read all elements"
+                 << n << "expected" << tmp.size() << "parsed.";
+        return tmp;
+      }
       QString line = m_in.readLine();
       if (line.isEmpty())
         return tmp;
       
       QStringList list = line.split(" ", QString::SkipEmptyParts);
-      for (int i = 0; i < list.size(); ++i)
-        tmp.push_back(list.at(i).toInt());
+      for (int i = 0; i < list.size(); ++i) {
+        if (tmp.size() >= n) {
+          qDebug() << "Too many variables read in. File may be inconsistent."
+                   << tmp.size() << "of" << n;
+          return tmp;
+        }
+        tmp.push_back(list.at(i).toInt(&ok));
+        if (!ok) {
+          qDebug() << "Warning: problem converting string to integer:"
+                   << list.at(i) << "in GaussianFchk::readArrayI.";
+          return tmp;
+        }
+      }
     }
     return tmp;
   }
 
   vector<double> GaussianFchk::readArrayD(unsigned int n, int width)
   {
+    // FIXME Should return a bool and operate on a vector by reference
     vector<double> tmp;
+    tmp.reserve(n);
+    bool ok = false;
     while (tmp.size() < n) {
+      if (m_in.atEnd()) {
+        qDebug() << "GaussianFchk::readArrayD could not read all elements"
+                 << n << "expected" << tmp.size() << "parsed.";
+        return tmp;
+      }
       QString line = m_in.readLine();
       if (line.isEmpty())
         return tmp;
-      
+
       if (width == 0) { // we can split by spaces
         QStringList list = line.split(" ", QString::SkipEmptyParts);
-        for (int i = 0; i < list.size(); ++i)
-          tmp.push_back(list.at(i).toDouble());
+        for (int i = 0; i < list.size(); ++i) {
+          if (tmp.size() >= n) {
+            qDebug() << "Too many variables read in. File may be inconsistent."
+                     << tmp.size() << "of" << n;
+            return tmp;
+          }
+          tmp.push_back(list.at(i).trimmed().toDouble(&ok));
+          if (!ok) {
+            qDebug() << "Warning: problem converting string to double:"
+                     << list.at(i) << "in GaussianFchk::readArrayD.";
+            return tmp;
+          }
+        }
       }
       else { // Q-Chem files use 16 character fields
         int maxColumns = 80 / width;
@@ -208,9 +255,18 @@ namespace Avogadro
           QString substring = line.mid(i * width, width);
           if (substring.length() != width)
             break;
-          tmp.push_back(substring.toDouble());
+          if (tmp.size() >= n) {
+            qDebug() << "Too many variables read in. File may be inconsistent."
+                     << tmp.size() << "of" << n;
+            return tmp;
+          }
+          tmp.push_back(substring.toDouble(&ok));
+          if (!ok) {
+            qDebug() << "Warning: problem converting string to double:"
+                     << substring << "in GaussianFchk::readArrayD.";
+            return tmp;
+          }
         }
-
       }
     }
     return tmp;
@@ -218,12 +274,18 @@ namespace Avogadro
 
   bool GaussianFchk::readDensityMatrix(unsigned int n, int width)
   {
+    // This function reads in the lower triangular density matrix
     m_density.resize(m_numBasisFunctions, m_numBasisFunctions);
     unsigned int cnt = 0;
     unsigned int i = 0, j = 0;
     unsigned int f = 1;
-    // Skip the first commment line...
+    bool ok = false;
     while (cnt < n) {
+      if (m_in.atEnd()) {
+        qDebug() << "GaussianFchk::readDensityMatrix could not read all elements"
+                 << n << "expected" << cnt << "parsed.";
+        return false;
+      }
       QString line = m_in.readLine();
       if (line.isEmpty())
         return false;
@@ -231,29 +293,55 @@ namespace Avogadro
       if (width == 0) { // we can split by spaces
         QStringList list = line.split(" ", QString::SkipEmptyParts);
         for (int k = 0; k < list.size(); ++k) {
-          //m_overlap.part<Eigen::SelfAdjoint>()(i, j) = list.at(k).toDouble();
-          m_density(i, j) = m_density(j, i) = list.at(k).toDouble();
-          ++i; ++cnt;
-          if (i == f) {
-            // We need to move down to the next row and increment f - lower tri
-            i = 0;
-            ++f;
-            ++j;
+          if (cnt >= n) {
+            qDebug() << "Too many variables read in. File may be inconsistent."
+                     << cnt << "of" << n;
+            return false;
+          }
+          // Read in lower half matrix
+          m_density(i, j) = list.at(k).toDouble(&ok);
+          if (ok) { // Valid double converted, carry on
+            ++j; ++cnt;
+            if (j == f) {
+              // We need to move down to the next row and increment f - lower tri
+              j = 0;
+              ++f;
+              ++i;
+            }
+          }
+          else { // Invalid conversion of a string to double
+            qDebug() << "Warning: problem converting string to double:"
+                     << list.at(k) << "\nIn GaussianFchk::readDensityMatrix.";
+            return false;
           }
         }
-      } else { // Q-Chem files use 16-character fields
+      }
+      else { // Q-Chem files use 16-character fields
         int maxColumns = 80 / width;
         for (int c = 0; c < maxColumns; ++c) {
           QString substring = line.mid(c * width, width);
           if (substring.length() != width)
             break;
-          m_density(i, j) = m_density(j, i) = substring.toDouble();
-          ++i; ++cnt;
-          if (i == f) {
-            // We need to move down to the next row and increment f - lower tri
-            i = 0;
-            ++f;
-            ++j;
+          else if (cnt >= n) {
+            qDebug() << "Too many variables read in. File may be inconsistent."
+                     << cnt << "of" << n;
+            return false;
+          }
+          // Read in lower half matrix
+          m_density(i, j) = substring.toDouble(&ok);
+          if (ok) { // Valid double converted, carry on
+            ++j; ++cnt;
+            if (j == f) {
+              // We need to move down to the next row and increment f - lower tri
+              j = 0;
+              ++f;
+              ++i;
+            }
+          }
+          else { // Invalid conversion of a string to double
+            qDebug() << "Warning: problem converting string to double:"
+                     << substring << "\nIn GaussianFchk::readDensityMatrix.";
+            return false;
           }
         }
       }
