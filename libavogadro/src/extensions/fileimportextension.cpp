@@ -190,7 +190,7 @@ namespace Avogadro
       qDebug() << "Attempting to read parm file...";
       readParmFile(mol);
       qDebug() << "Parm file read...";
-      m_glwidget->setMolecule(mol);
+      emit moleculeChanged(mol);
       oldMol->deleteLater();
     }
 

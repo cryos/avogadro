@@ -37,13 +37,14 @@
 #include <QDebug>
 
 using namespace OpenBabel;
+using namespace std;
 
 namespace Avogadro
 {
   MOPACInputDialog::MOPACInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
       m_theoryType(PM6), m_multiplicity(1), m_charge(0),
-      m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
+      m_coordType(CARTESIAN), m_dirty(false), m_warned(false), m_process(0)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -100,7 +101,7 @@ namespace Avogadro
     // Add atom coordinates
     updatePreviewText();
   }
-
+  
   void MOPACInputDialog::showEvent(QShowEvent *)
   {
     updatePreviewText();
@@ -150,21 +151,69 @@ namespace Avogadro
 
   void MOPACInputDialog::generateClicked()
   {
-    QFileInfo defaultFile(m_molecule->fileName());
-    QString defaultFileName = defaultFile.canonicalPath() + "/" + defaultFile.baseName() + ".mop";
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save MOPAC Input Deck"),
-                                                    defaultFileName, tr("MOPAC Input Deck (*.mop)"));
-    QFile file(fileName);
-    // FIXME This really should pop up a warning if the file cannot be opened
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-      return;
-
-    QTextStream out(&file);
-    out << ui.previewText->toPlainText();
+    saveInputFile();
   }
 
   void MOPACInputDialog::computeClicked()
   {
+    if (m_process != 0) {
+      QMessageBox::warning(this, tr("MOPAC Running."),
+                           tr("MOPAC is already running. Wait until the previous calculation is finished."));      
+      return;
+    }
+    
+    QString fileName = saveInputFile();
+    
+#ifdef Q_WS_WIN
+    QString mopacPath("C:\Program Files\MOPAC\MOPAC2009.exe");
+#else
+    QString mopacPath("/opt/mopac/MOPAC2009.exe");
+#endif
+
+    QFileInfo info(mopacPath);
+    if (!info.exists() || !info.isExecutable()) {
+      QMessageBox::warning(this, tr("MOPAC Not Installed."),
+                           tr("The MOPAC executable, cannot be found."));
+      return;
+    }
+    
+    m_process = new QProcess(this);
+    QFileInfo input(fileName);
+    m_process->setWorkingDirectory(input.absolutePath());
+
+    QStringList arguments;
+    arguments << fileName;
+    m_inputFile = fileName; // save for reading in output
+
+    m_process->start(mopacPath, arguments);
+    if (!m_process->waitForStarted()) {
+      QMessageBox::warning(this, tr("MOPAC failed to start."),
+                           tr("MOPAC did not start. Perhaps it is not installed correctly."));
+    }
+    connect(m_process, SIGNAL(finished(int)), this, SLOT(finished(int)));
+  }
+
+  void MOPACInputDialog::finished(int exitCode)
+  {
+    disconnect(m_process, 0, this, 0);
+    m_process->deleteLater();
+    m_process = 0;
+
+    if (exitCode) {
+      QMessageBox::warning(this, tr("MOPAC Crashed."),
+                           tr("MOPAC did not run correctly. Perhaps it is not installed correctly."));
+     return;
+    }
+    
+    if (!m_molecule)
+      return;
+
+    // we have a successful run. Read in the results and close the dialog
+    QFileInfo inputFile(m_inputFile);
+    QString outputFile = inputFile.canonicalPath() + "/" + inputFile.baseName() + ".out";
+    emit readOutput(outputFile);
+    
+    close();
   }
 
   void MOPACInputDialog::moreClicked()
@@ -192,6 +241,26 @@ namespace Avogadro
       deckDirty(true);
     else
       deckDirty(false);
+  }
+  
+  QString MOPACInputDialog::saveInputFile()
+  {
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultPath = defaultFile.canonicalPath();
+    qDebug () << "default path:" << defaultPath;
+    
+    QString defaultFileName = defaultFile.canonicalPath() + "/" + defaultFile.baseName() + ".mop";
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save MOPAC Input Deck"),
+                                                    defaultFileName, tr("MOPAC Input Deck (*.mop)"));
+    QFile file(fileName);
+    // FIXME This really should pop up a warning if the file cannot be opened
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+      return "";
+
+    QTextStream out(&file);
+    out << ui.previewText->toPlainText();
+    
+    return fileName;
   }
 
   void MOPACInputDialog::setTitle()
@@ -277,7 +346,7 @@ namespace Avogadro
     QString buffer;
     QTextStream mol(&buffer);
 
-    mol << " ";
+    mol << " AUX AUTOSYM ";
     mol << "CHARGE=" << m_charge << " ";
     switch (m_multiplicity)
       {
@@ -372,7 +441,7 @@ namespace Avogadro
               aIndex = a->GetIdx();
             if (atom->GetIdx() > 2)
               bIndex = b->GetIdx();
-            if (atom->GetIdx() > 4)
+            if (atom->GetIdx() > 3)
               cIndex = c->GetIdx();
 
             mol << ' ' << aIndex << ' ' << bIndex << ' ' << cIndex << '\n';
@@ -391,7 +460,7 @@ namespace Avogadro
       case SP:
         return "NOOPT";
       case FREQ:
-        return "FORCES";
+        return "FORCE";
       case OPT:
       default:
         return "";

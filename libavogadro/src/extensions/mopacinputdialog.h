@@ -27,6 +27,7 @@
 #define MOPACINPUTDIALOG_H
 
 #include <QDialog>
+#include <QProcess>
 
 #include <avogadro/glwidget.h>
 
@@ -43,6 +44,7 @@ namespace Avogadro
     ~MOPACInputDialog();
 
     void setMolecule(Molecule *molecule);
+    void setWidget(GLWidget *widget);
 
     enum calculationType{SP, OPT, FREQ};
     enum theoryType{AM1, MNDO, MNDOD, PM3, PM6, RM1};
@@ -79,6 +81,10 @@ namespace Avogadro
     coordType m_coordType;
     bool m_dirty;
     bool m_warned;
+    QProcess *m_process;
+    QString m_inputFile;
+
+    QString saveInputFile();
 
     // Generate an input deck as a string
     QString generateInputDeck();
@@ -88,6 +94,9 @@ namespace Avogadro
 
     // Enable/disable form elements
     void deckDirty(bool);
+
+  Q_SIGNALS:
+    void readOutput(const QString outputFileName);
 
   public Q_SLOTS:
     void updatePreviewText();
@@ -100,6 +109,8 @@ namespace Avogadro
     void enableFormClicked();
     void moreClicked();
     void previewEdited();
+    
+    void finished(int);
 
     void setTitle();
     void setCalculation(int);

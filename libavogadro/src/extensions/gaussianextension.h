@@ -66,6 +66,9 @@ namespace Avogadro
      * @param settings Settings variable to read settings from.
      */
     void readSettings(QSettings &settings);
+    
+  public Q_SLOTS:
+    void readOutputFile(const QString filename);
 
   private:
     GaussianInputDialog* m_gaussianInputDialog;
@@ -73,6 +76,8 @@ namespace Avogadro
     MOPACInputDialog* m_mopacInputDialog;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
+    
+    GLWidget *m_widget;
 
   };
 
