@@ -135,8 +135,9 @@ namespace Avogadro
       }
     }
 
-    if (!m_dirty)
+    if (!m_dirty) {
       ui.previewText->setText(generateInputDeck());
+    }
   }
 
   void MOPACInputDialog::resetClicked()
@@ -224,8 +225,18 @@ namespace Avogadro
         m_theoryType = AM1;
         break;
       case 1:
+        m_theoryType = MNDO;
+        break;
+      case 2:
+        m_theoryType = MNDOD;
+        break;
+      case 3:
         m_theoryType = PM3;
         break;
+      case 5:
+        m_theoryType = RM1;
+        break;
+      case 4:
       default:
         m_theoryType = PM6;
       }
@@ -266,46 +277,57 @@ namespace Avogadro
     QString buffer;
     QTextStream mol(&buffer);
 
-    // Begin the job specification
-    mol << "$rem\n";
+    mol << " ";
+    mol << "CHARGE=" << m_charge << " ";
+    switch (m_multiplicity)
+      {
+      case 2:
+        mol << "DOUBLET ";
+        break;
+      case 3:
+        mol << "TRIPLET ";
+        break;
+      case 4:
+        mol << "QUARTET ";
+        break;
+      case 5:
+        mol << "QUINTET ";
+        break;
+      case 1:
+      default:
+        mol << "SINGLET ";
+      }
 
-    // Now for the calculation type
-    mol << "   JOBTYPE " << getCalculationType(m_calculationType) << "\n";
+    mol << getCalculationType(m_calculationType) << " ";
+    mol << getTheoryType(m_theoryType) << "\n";
 
-    // Now specify the job type etc
-    mol << "   EXCHANGE " << getTheoryType(m_theoryType) << "\n";
-
-    // End the job spec section
-    mol << "$end\n\n";
-
-    // Title line
-    mol << "$comment\n" << m_title << "\n$end\n\n";
-
-    // Begin the molecule specification
-    mol << "$molecule\n";
-
-    // Now for the charge and multiplicity
-    mol << "   " << m_charge << " " << m_multiplicity << "\n";
+    mol << m_title << "\n\n";
 
     // Now to output the actual molecular coordinates
+    QString optimizationFlag;
+    if (m_calculationType == SP)
+      optimizationFlag = " 0 "; // we could actually obey constraints easily
+    else
+      optimizationFlag = " 1 ";
+
     // Cartesian coordinates
     if (m_molecule && m_coordType == CARTESIAN)
       {
-        QTextStream mol(&buffer);
         QList<Atom *> atoms = m_molecule->atoms();
         foreach (Atom *atom, atoms) {
           mol << qSetFieldWidth(4) << right
               << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
               << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
-              << fixed << right << atom->pos()->x() << atom->pos()->y()
-              << atom->pos()->z()
+              << fixed << right 
+              << atom->pos()->x() << optimizationFlag 
+              << atom->pos()->y() << optimizationFlag 
+              << atom->pos()->z() << optimizationFlag 
               << qSetFieldWidth(0) << "\n";
         }
       }
     // Z-matrix
     else if (m_molecule && m_coordType == ZMATRIX)
       {
-        QTextStream mol(&buffer);
         OBAtom *a, *b, *c;
         double r, w, t;
 
@@ -331,27 +353,32 @@ namespace Avogadro
               t += 360.0;
 
             mol << qSetFieldWidth(4) << right
-                << QString(etab.GetSymbol(atom->GetAtomicNum())
-                           + QString::number(atom->GetIdx()));
+                << QString(etab.GetSymbol(atom->GetAtomicNum()));
+
+            QString buffer = QString("%1 %2 %3 %4 %5 %6")
+              .arg(r, 10, 'f', 6)
+              .arg(optimizationFlag)
+              .arg(w, 10, 'f', 6)
+              .arg(optimizationFlag)
+              .arg(t, 10, 'f', 6)
+              .arg(optimizationFlag);
+
+            mol << buffer;
+
+            int aIndex, bIndex, cIndex;
+            aIndex = bIndex = cIndex = 0;
+
             if (atom->GetIdx() > 1)
-              mol << qSetFieldWidth(6) << right
-                  << QString(etab.GetSymbol(a->GetAtomicNum())
-                             + QString::number(a->GetIdx())) << qSetFieldWidth(15)
-                  << qSetRealNumberPrecision(5) << forcepoint << fixed << right << r;
+              aIndex = a->GetIdx();
             if (atom->GetIdx() > 2)
-              mol << qSetFieldWidth(6) << right
-                  << QString(etab.GetSymbol(b->GetAtomicNum())
-                             + QString::number(b->GetIdx())) << qSetFieldWidth(15)
-                  << qSetRealNumberPrecision(5) << forcepoint << fixed << right << w;
-            if (atom->GetIdx() > 3)
-              mol << qSetFieldWidth(6) << right
-                  << QString(etab.GetSymbol(c->GetAtomicNum())
-                             + QString::number(c->GetIdx())) << qSetFieldWidth(15)
-                  << qSetRealNumberPrecision(5) << forcepoint << fixed << right << t;
-            mol << qSetFieldWidth(0) << "\n";
+              bIndex = b->GetIdx();
+            if (atom->GetIdx() > 4)
+              cIndex = c->GetIdx();
+
+            mol << ' ' << aIndex << ' ' << bIndex << ' ' << cIndex << '\n';
           }
       }
-    mol << "$end\n\n";
+    mol << "\n\n";
 
     return buffer;
   }
