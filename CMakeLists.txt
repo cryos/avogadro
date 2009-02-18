@@ -120,7 +120,6 @@ else(ENABLE_PYTHON MATCHES ON)
   message(STATUS "Python support disabled.")
 endif(ENABLE_PYTHON MATCHES ON)
 
-
 # Unit testing, mainly useful for developers and so defaults to off
 option(ENABLE_TESTS "Enable unit testing" OFF)
 if(ENABLE_TESTS MATCHES ON)
@@ -184,13 +183,17 @@ add_subdirectory(libavogadro)
 add_subdirectory(avogadro)
 add_subdirectory(doc)
 
-# Linux Default: /usr/local/share/avogadro/fragments
+# Linux/Windows default: ${PREFIX}/share/avogadro/fragments
 set(avogadro_FRAGMENTS share/avogadro)
-
 if(APPLE)
   set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")
 endif(APPLE)
 
 # When installing, make sure to install some fragments
-INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
         DESTINATION ${avogadro_FRAGMENTS})
+
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin CACHE INTERNAL
+  "Where to put the executables for Avogadro")
+set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/${LIB_INSTALL_DIR} CACHE INTERNAL
+  "Where to put the libraries for Avogadro")

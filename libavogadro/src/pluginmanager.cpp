@@ -448,9 +448,7 @@ namespace Avogadro {
 
     QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
 
-    //
     // Load the static plugins first
-    //
     PluginFactory *bsFactory = qobject_cast<PluginFactory *>(new BSDYEngineFactory);
     if (bsFactory) {
       ef[bsFactory->type()].append(bsFactory);
@@ -467,11 +465,9 @@ namespace Avogadro {
       qDebug() << "Instantiation of the static element color plugin failed.";
     }
 
-    //
     // Set up the paths
-    //
     QStringList pluginPaths;
-
+    // Environment variables can override default paths
     foreach (const QString &variable, QProcess::systemEnvironment()) {
       QStringList split1 = variable.split('=');
       if (split1[0] == "AVOGADRO_PLUGINS") {
@@ -479,13 +475,14 @@ namespace Avogadro {
           pluginPaths << path;
       }
     }
-
+    // If no environment variables are set then find the plugins
     if (!pluginPaths.size()) {
-      #ifdef WIN32
-        pluginPaths << QCoreApplication::applicationDirPath() + "/avogadro";
-      #else
+      // Make it relative
+      pluginPaths << QCoreApplication::applicationDirPath()
+                     + "/../" + QString(INSTALL_LIBDIR);
+      #ifdef Q_WS_MAC
         QString prefixPath = QString(INSTALL_PREFIX) + '/'
-            + QString(INSTALL_LIBDIR) + "/avogadro";
+                           + QString(INSTALL_LIBDIR) + "/avogadro";
         pluginPaths << prefixPath;
       #endif
     }
@@ -495,10 +492,16 @@ namespace Avogadro {
 
     // Load the plugins
     foreach (const QString& path, pluginPaths) {
-      loadPluginDir(path + "/colors", settings);
-      loadPluginDir(path + "/engines", settings);
-      loadPluginDir(path + "/extensions", settings);
-      loadPluginDir(path + "/tools", settings);
+      QFileInfo info(path + "/../CMakeCache.txt");
+      if (info.exists()) { // In a build directory
+        loadPluginDir(path, settings);
+      }
+      else { // Installed file layout
+        loadPluginDir(path + "/avogadro/colors", settings);
+        loadPluginDir(path + "/avogadro/engines", settings);
+        loadPluginDir(path + "/avogadro/extensions", settings);
+        loadPluginDir(path + "/avogadro/tools", settings);
+      }
     }
 
 #ifdef ENABLE_PYTHON
