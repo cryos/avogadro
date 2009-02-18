@@ -136,6 +136,11 @@ namespace Avogadro {
      * Can be used to notify the MainWindow to refresh the QActions for this extension.
      */
     void actionsChanged(Extension*);
+  
+    /**
+      * Can be used to notify the MainWindow to change the molecule to a new one.
+      */
+    void moleculeChanged(Molecule *);
 
   };
 

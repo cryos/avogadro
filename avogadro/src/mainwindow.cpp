@@ -186,7 +186,7 @@ namespace Avogadro
 
     QTimer *centerTimer;
     int centerTime;
-
+    
     PluginManager pluginManager;
 
     QMap<Engine*, QWidget*> engineSettingsWindows;
@@ -740,7 +740,7 @@ namespace Avogadro
       openFile( action->data().toString() );
     }
   }
-
+  
   bool MainWindow::loadFile(const QString &fileName,
                             OBFormat *format,
                             const QString &options)
@@ -2056,6 +2056,14 @@ namespace Avogadro
     d->undoStack->clear();
 
     d->molecule = molecule;
+
+    QString newFileName = molecule->fileName();
+    setFileName(newFileName);
+
+    if (newFileName.isEmpty()) {
+      setWindowFilePath(tr("untitled") + ".cml");
+    }
+    
     connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ), this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ), this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveRemoved( Primitive * ) ), this, SLOT( documentWasModified() ) );
@@ -2357,6 +2365,7 @@ namespace Avogadro
       if(dockWidget)
       {
         addDockWidget(Qt::RightDockWidgetArea, dockWidget);
+        dockWidget->hide();
         ui.menuToolbars->addAction(dockWidget->toggleViewAction());
       }
 
@@ -2372,6 +2381,8 @@ namespace Avogadro
             d->messagesText, SLOT(append(QString)));
       connect(extension, SIGNAL( actionsChanged(Extension*) ),
             this, SLOT(addActionsToMenu(Extension*)));
+      connect(extension, SIGNAL( moleculeChanged(Molecule *)),
+            this, SLOT(setMolecule(Molecule *)));
     }
   }
 
@@ -2471,6 +2482,7 @@ namespace Avogadro
     }
 
     connect( this, SIGNAL( moleculeChanged( Molecule * ) ), gl, SLOT( setMolecule( Molecule * ) ) );
+    
     gl->setMolecule(d->molecule);
     gl->setObjectName(QString::fromUtf8("glWidget"));
     gl->setUndoStack( d->undoStack );
