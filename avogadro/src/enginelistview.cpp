@@ -73,6 +73,7 @@ namespace Avogadro {
         
     // improves display performance
     setUniformItemSizes(true);
+    setAlternatingRowColors(true); // looks better
   }
 
   EngineListView::~EngineListView()
