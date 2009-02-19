@@ -754,8 +754,6 @@ namespace Avogadro
     if(fileName.isEmpty()) {
       setFileName(fileName);
       setMolecule(new Molecule(this));
-      shownName = tr("untitled") + ".cml";
-      setWindowFilePath(shownName);
       return true;
     }
 
@@ -1384,15 +1382,16 @@ namespace Avogadro
 
     qSort(mainWindowList.begin(), mainWindowList.end(), windowComparison);
 
+    unsigned int untitledCount = 0;
     ui.menuSettings->addSeparator();
     foreach (MainWindow *widget, mainWindowList) {
       QAction *windowAction = new QAction(widget);
       if (!widget->d->fileName.isEmpty())
         windowAction->setText(QFileInfo(widget->d->fileName).fileName());
       else
-        windowAction->setText(tr("Untitled"));
+        windowAction->setText(tr("Untitled") + ' ' + QString::number(++untitledCount));
 
-      if (widget->d->fileName == d->fileName) {
+      if (widget == this) {
         windowAction->setCheckable(true);
         windowAction->setChecked(true);
       }
