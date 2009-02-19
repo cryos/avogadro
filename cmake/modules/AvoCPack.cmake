@@ -23,7 +23,17 @@ if (WIN32)
   if(NOT qt_BINDIR)
     set (qt_BINDIR "C:/qt/4.4.3/bin")
   endif(NOT qt_BINDIR)
+  if(NOT python_DIR)
+    set (python_DIR "C:/src/python-2.6.1") # already contains sip & numpy modules (see wiki)
+  endif(NOT python_DIR)
+  if(NOT boost_python_DIR)
+    set (boost_python_DIR "C:/src/boost_1_38_0")
+  endif(NOT boost_python_DIR)
+  if(NOT pyqt_DIR)
+    set (pyqt_DIR "C:/src/PyQt-win-gpl-4.4.4")
+  endif(NOT pyqt_DIR)
 
+  # openbabel
   set(openbabel_DEPS
     "${openbabel_SRCDIR}/windows-vc2005/zlib1.dll"
     "${openbabel_SRCDIR}/windows-vc2005/libxml2.dll"
@@ -44,11 +54,47 @@ if (WIN32)
   file(GLOB openbabel_FILES "${openbabel_SRCDIR}/data/*.ff")
   install(FILES ${openbabel_FILES} DESTINATION bin)
 
+  # Qt
   set(qt_DEPS
     "${qt_BINDIR}/QtCore4.dll"
     "${qt_BINDIR}/QtGui4.dll"
     "${qt_BINDIR}/QtOpenGL4.dll")
   install(FILES ${qt_DEPS} DESTINATION bin)
+
+  ##########
+  # Python #
+  ##########
+
+  # python library
+  set(python_DEPS
+    "${python_DIR}/libs/python26.dll")
+  install(FILES ${python_DEPS} DESTINATION bin)
+  
+  # lib/*: (includes all sip & numpy runtime files needed)
+  file(GLOB python_lib_FILES "${python_DIR}/lib/*.py") 
+  install(FILES ${python_lib_FILES} DESTINATION bin/lib)
+  #file(GLOB_RECURSE python_lib_FILES "${python_DIR}/lib/site-packages/*.*") 
+  #install(FILES ${python_lib_FILES} DESTINATION bin/lib)
+
+  add_custom_command(TARGET python_lib_FILES POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy "${python_DIR}/lib" bin)
+
+  # boost python
+  set(boost_python_DEPS
+    "${boost_python_DIR}/lib/boost_python-vc90-mt-1_38.dll")
+  install(FILES ${boost_python_DEPS} DESTINATION bin)
+  
+
+  # PyQt4
+  set(pyqt_DEPS
+    "${pyqt_DIR}/__init__.py"
+    "${pyqt_DIR}/Qt/Qt.pyd"
+    "${pyqt_DIR}/QtCore/QtCore.pyd"
+    "${pyqt_DIR}/QtGui/QtGui.pyd"
+    "${pyqt_DIR}/QtOpenGL/QtOpenGL.pyd"
+    "${pyqt_DIR}/QtCore/QtCore.pyd")
+  install(FILES ${pyqt_DEPS} DESTINATION bin/lib/site-packages/PyQt4)
+ 
 endif (WIN32)
 
 include(CPack)

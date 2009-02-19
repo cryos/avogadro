@@ -558,6 +558,6 @@ void Molecule_setOBMol(Avogadro::Molecule &self, PyObject *obj)
   if (!thisAttr)
     throw_error_already_set();
 
-  OpenBabel::OBMol *mol = ((PySwigObject*)thisAttr)->ptr;
+  OpenBabel::OBMol *mol = static_cast<OpenBabel::OBMol*>( ((PySwigObject*)thisAttr)->ptr );
   self.setOBMol(mol);
 }
