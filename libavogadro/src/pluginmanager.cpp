@@ -678,8 +678,6 @@ namespace Avogadro {
     qDebug() << "Searching for plugins in" << directory;
     foreach (const QString& fileName, dir.entryList(QDir::Files)) {
       // load the factory
-      qDebug() << " plugin attempt: " << fileName;
-
       QPluginLoader loader(dir.absoluteFilePath(fileName));
       QObject *instance = loader.instance();
       PluginFactory *factory = qobject_cast<PluginFactory *>(instance);
