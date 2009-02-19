@@ -367,9 +367,12 @@ namespace Avogadro
       loadExtensions();
 
       // Check every menu for "extra" separators
+      QList<QAction *> removeThese;
       foreach( QAction *menu, menuBar()->actions() ) {
+        if (menu->menu()->actions().isEmpty())
+          continue;
 
-        QList<QAction *> removeThese;
+        removeThese.clear();
 
         QAction *firstAction = menu->menu()->actions().first();
         if (firstAction->isSeparator())
