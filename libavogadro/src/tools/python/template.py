@@ -9,26 +9,26 @@ class Tool(QObject):
   # widget = GLWidget
   def paint(self, widget):
     # Painter
-    print "paint(", widget, ")"
+    print("paint(", widget, ")")
 
   # widget = GLWidget
   # mouseEvent = QMouseEvent
   def mousePressEvent(self, widget, mouseEvent):
-    print "mousePressEvent(", widget, ",", mouseEvent, ")"
+    print("mousePressEvent(", widget, ",", mouseEvent, ")")
     mouseEvent.accept()
     return None
   
   def mouseMoveEvent(self, widget, mouseEvent):
-    print "mouseMoveEvent(", widget, ",", mouseEvent, ")"
+    print("mouseMoveEvent(", widget, ",", mouseEvent, ")")
     mouseEvent.accept()
     return None
 
   def mouseReleaseEvent(self, widget, mouseEvent):
-    print "mouseReleaseEvent(", widget, ",", mouseEvent, ")"
+    print("mouseReleaseEvent(", widget, ",", mouseEvent, ")")
     mouseEvent.accept()
     return None
 
   def wheelEvent(self, widget, wheelEvent):
-    print "wheelEvent(", widget, ",", wheelEvent, ")"
+    print("wheelEvent(", widget, ",", wheelEvent, ")")
     wheelEvent.accept()
     return None

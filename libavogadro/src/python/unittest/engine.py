@@ -21,11 +21,11 @@ class TestEngine(unittest.TestCase):
 
   def test_settingsWidget(self):
     for engine in self.engines:
-      print engine.name
+      print(engine.name)
       if engine.name != "Orbitals":
         widget = engine.settingsWidget
       else:
-        print "FIXME: OrbitalEngine::settingsWidget() not working!"
+        print("FIXME: OrbitalEngine::settingsWidget() not working!")
 
   def test_alias(self):
     for engine in self.engines:
@@ -89,7 +89,7 @@ class TestEngine(unittest.TestCase):
         del clonedEngine
         self.assertEqual(engine.name, name)
       else:
-        print "FIXME: PythonEngine::clone() is not working..."
+        print("FIXME: PythonEngine::clone() is not working...")
 
 
 

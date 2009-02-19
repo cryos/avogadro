@@ -105,7 +105,7 @@ class TestMolecule(unittest.TestCase):
     self.assertEqual(self.molecule.numAtoms, 1)
 
   def test_calculatePartialCharges(self):
-    print "FIXME: implement test_calculate_partialCharges"
+    print("FIXME: implement test_calculate_partialCharges")
 
   def test_addCube(self):
     for i in range(5):
@@ -371,7 +371,7 @@ class TestMolecule(unittest.TestCase):
     self.molecule.farthestAtom
 
   def test_translate(self):
-    print "FIXME: Molecule::translate(Eigen::Vector3d isn't implemented)"
+    print("FIXME: Molecule::translate(Eigen::Vector3d isn't implemented)")
     # just check the method is there and accepts the array
     atom = self.molecule.addAtom()
     vec = array([1., 2., 3.])
