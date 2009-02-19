@@ -13,8 +13,8 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   # Boost Python
   message(STATUS "[1/5] Boost Python")
   # CMake's new FindBoost has an option to look for additional versions
-  # e.g., there's now a 1.37.0 (and thus 1.37) release.
-  set(Boost_ADDITIONAL_VERSIONS "1.37" "1.37.0")
+  # e.g., there's now a 1.37 and 1.38 release.
+  set(Boost_ADDITIONAL_VERSIONS "1.37" "1.37.0" "1.38" "1.38.0")
   find_package(Boost COMPONENTS python)
   if (Boost_PYTHON_FOUND)
     message(STATUS "Boost Python found...")

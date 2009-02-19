@@ -34,12 +34,12 @@ namespace Avogadro {
 
   //! Settings class
   class DipoleSettingsWidget;
-  
+
   //! Dipole Engine class.
   class DipoleEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE(tr("Dipole"))
+    AVOGADRO_ENGINE("Dipole", tr("Dipole"))
 
     public:
       //! Constructor
@@ -64,9 +64,8 @@ namespace Avogadro {
 
       //! Display a window for the user to pick rendering options
       QWidget *settingsWidget();
-      
+
       private:
-        Molecule *m_molecule;
         int m_dipoleType; // type of dipole to render
         Eigen::Vector3d m_dipole; // cached dipole moment
         DipoleSettingsWidget* m_settingsWidget;
@@ -75,7 +74,7 @@ namespace Avogadro {
         void setDipoleType(int value);
         void settingsWidgetDestroyed();
         void updateDipole(double = 0.0);
-      
+
   };
 
   class DipoleSettingsWidget : public QWidget, public Ui::DipoleSettingsWidget
@@ -91,7 +90,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(DipoleEngine, tr("Dipole"), tr("Render dipole moments."))
+    AVOGADRO_ENGINE_FACTORY(DipoleEngine, "Dipole", tr("Dipole"), tr("Render dipole moments."))
   };
 
 } // end namespace Avogadro

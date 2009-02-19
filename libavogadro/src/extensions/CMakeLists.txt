@@ -11,11 +11,6 @@ set(DESTINATION_DIR ${LIB_INSTALL_DIR}/avogadro/extensions)
 include_directories(
   ../
   ${CMAKE_CURRENT_BINARY_DIR}
-  ${OPENBABEL2_INCLUDE_DIR}
-  ${EIGEN2_INCLUDE_DIR}
-  ${AVOGADRO_INCLUDE_DIR}
-  ${BOOST_INCLUDE_DIRS}
-  ${PYTHON_INCLUDE_PATH}
 )
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
@@ -73,12 +68,12 @@ target_link_libraries(selectextension ${LINK_LIBS})
 install(TARGETS selectextension DESTINATION ${DESTINATION_DIR})
 
 ### unit cells
-#set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)
-#qt4_wrap_ui(unitcellextension_UIS_H unitcellparamdialog.ui)
-#qt4_automoc(${unitcellextension_SRCS})
-#add_library(unitcellextension MODULE ${unitcellextension_SRCS} ${unitcellextension_UIS_H})
-#target_link_libraries(unitcellextension ${LINK_LIBS})
-#install(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
+set(unitcellextension_SRCS unitcellextension.cpp unitcellparamdialog.cpp)
+qt4_wrap_ui(unitcellextension_UIS_H unitcellparamdialog.ui)
+qt4_automoc(${unitcellextension_SRCS})
+add_library(unitcellextension MODULE ${unitcellextension_SRCS} ${unitcellextension_UIS_H})
+target_link_libraries(unitcellextension ${LINK_LIBS})
+install(TARGETS unitcellextension DESTINATION ${DESTINATION_DIR})
 
 ### h->methyl
 set(h2methylextension_SRCS h2methylextension.cpp)
@@ -121,17 +116,18 @@ install(TARGETS vibrationextension DESTINATION ${DESTINATION_DIR})
 ### Gaussian input deck generator
 set(gaussianextension_SRCS gaussianextension.cpp
   gaussianinputdialog.cpp
-  qcheminputdialog.cpp)
+  qcheminputdialog.cpp mopacinputdialog.cpp)
 qt4_wrap_ui(gaussianextension_UIS_H
   gaussianinputdialog.ui
-  qcheminputdialog.ui)
+  qcheminputdialog.ui
+  mopacinputdialog.ui)
 qt4_automoc(${gaussianextension_SRCS})
 add_library(gaussianextension MODULE ${gaussianextension_SRCS}
   ${gaussianextension_UIS_H})
 target_link_libraries(gaussianextension ${LINK_LIBS})
 install(TARGETS gaussianextension DESTINATION ${DESTINATION_DIR})
 
-if(ALL_PYTHON_FOUND)
+if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   ### python terminal
   message(STATUS "Enabled python terminal")
   set(pythonterminal_SRCS pythonterminal.cpp highlighter.cpp)
@@ -145,7 +141,7 @@ if(ALL_PYTHON_FOUND)
 
   file(GLOB python_SCRIPTS "python/*.py")
   install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/extensionScripts)
-endif(ALL_PYTHON_FOUND)
+endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 
 ### Animation
 set(animationextension_SRCS animationextension.cpp animationdialog.cpp

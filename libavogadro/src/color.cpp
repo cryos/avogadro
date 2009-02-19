@@ -46,7 +46,8 @@ namespace Avogadro {
       //delete d;
   }
 
-  Color::Color( GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha ) : d(0)
+  Color::Color(const GLfloat red, const GLfloat green, 
+               const GLfloat blue, const GLfloat alpha ) : d(0)
   {
     m_channels[0] = red;
     m_channels[1] = green;
@@ -59,17 +60,8 @@ namespace Avogadro {
     set(p);
   }
 
-  Color& Color::operator=( const QColor& other )
-  {
-    m_channels[0] = other.red();
-    m_channels[1] = other.green();
-    m_channels[2] = other.blue();
-    m_channels[3] = other.alpha();
-
-    return *this;
-  }
-
-  void Color::set(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+  void Color::set(const GLfloat red, const GLfloat green, 
+                  const GLfloat blue, const GLfloat alpha)
   {
     m_channels[0] = red;
     m_channels[1] = green;
@@ -85,7 +77,26 @@ namespace Avogadro {
     m_channels[3] = 0.7;
   }
 
+  void Color::set(const QColor &color)
+  {
+    m_channels[0] = color.redF();
+    m_channels[1] = color.greenF();
+    m_channels[2] = color.blueF();
+    m_channels[3] = color.alphaF();
+  }
+
   void Color::set(const Primitive *)
+  {
+    return;
+  }
+
+  void Color::setIndex(const unsigned int)
+  {
+    return;
+  }
+
+  void Color::setGradient(const double, const double, 
+           const double, const double)
   {
     return;
   }
@@ -132,9 +143,15 @@ namespace Avogadro {
   QString Color::name() const
   {
    if (m_name.isEmpty())
-     //return type();
-     return "BLEH";
+     return "Generic Color"; // should never, ever appear
     else
       return m_name;
   }
+
+  QString Color::identifier() const
+  {
+    return "Generic Color";
+  }
 }
+
+#include "color.moc"

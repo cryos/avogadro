@@ -51,6 +51,7 @@ namespace Avogadro {
   class NavigateTool : public Tool
   {
     Q_OBJECT
+      AVOGADRO_TOOL("Navigate", tr("Navigate"))
 
   public:
     /**
@@ -63,16 +64,9 @@ namespace Avogadro {
     virtual ~NavigateTool();
 
     /**
-     * @name Description methods
-     * @{
-     * Tool Name (i.e. Navigate)
-     */
-     virtual QString name() const { return(tr("Navigate")); }
-
-    /**
      *Tool Description (i.e. Navigation Tool)
      */
-    virtual QString description() const { return(tr("Navigation Tool")); }
+    virtual QString description() const { return(tr("Translate, rotate, and zoom around the current view")); }
     //@}
 
     /** \name Tool Methods
@@ -127,7 +121,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_TOOL_FACTORY(NavigateTool, tr("Navigate Tool"), tr("Tool for navigating."))
+      AVOGADRO_TOOL_FACTORY(NavigateTool, "Navigate Tool", tr("Navigate Tool"), tr("Tool for navigating."))
   };
 
 } // end namespace Avogadro

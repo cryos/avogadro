@@ -38,12 +38,12 @@ namespace Avogadro
   class ShaderExtension : public Extension
   {
   Q_OBJECT
+  AVOGADRO_EXTENSION("GLSL Shaders", tr("GLSL Shaders"))
 
   public:
     ShaderExtension(QObject* parent = 0);
     virtual ~ShaderExtension();
 
-    virtual QString name() const { return QObject::tr("GLSL Shader"); }
     virtual QString description() const
     {
       return QObject::tr("Load and use OpenGL 2.0 GLSL shaders");
@@ -135,7 +135,7 @@ namespace Avogadro
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_EXTENSION_FACTORY(ShaderExtension,
+      AVOGADRO_EXTENSION_FACTORY(ShaderExtension, "GLSL Shader Extensions",
         tr("GLSL Shader Extension"),
         tr("Extension for loading and using GLSL shader programs."))
   };

@@ -57,8 +57,9 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_COLOR_FACTORY(ElementColor, tr("Color by Element"), 
-        tr("Color by Element (carbon = grey, oxygen = red, ...)."))
+    AVOGADRO_COLOR_FACTORY(ElementColor, "Color by Element", 
+                             tr("Color by Element"), 
+                             tr("Color by Element (carbon = grey, oxygen = red, ...)."))
   };
 
 

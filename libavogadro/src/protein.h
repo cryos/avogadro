@@ -1,5 +1,5 @@
 /**********************************************************************
-  Protein - Protein class 
+  Protein - Protein class
 
   Copyright (C) 2009 Tim Vandermeersch
 
@@ -41,8 +41,8 @@ namespace Avogadro {
    *
    * http://en.wikipedia.org/wiki/Secondary_structure#The_DSSP_code
    *
-   * The secondary structure is assigned based on hydrogen bonding 
-   * patterns. There are eight types of secondary structure that 
+   * The secondary structure is assigned based on hydrogen bonding
+   * patterns. There are eight types of secondary structure that
    * DSSP defines:
    *
    * * G = 3-turn helix (310 helix). Min length 3 residues.
@@ -53,13 +53,13 @@ namespace Avogadro {
    * * B = residue in isolated β-bridge (single pair β-sheet hydrogen bond formation)
    * * S = bend (the only non-hydrogen-bond based assignment)
    *
-   * Amino acid residues which are not in any of the above 
+   * Amino acid residues which are not in any of the above
    * conformations are assigned as the eighth type '-' = Coil.
-   * The helices (G,H and I) and sheet conformations are all required 
-   * to have a reasonable length. This means that 2 adjacent residues 
-   * in the primary structure must form the same hydrogen bonding 
-   * pattern. If the helix or sheet hydrogen bonding pattern is too 
-   * short they are designated as T or B, respectively. 
+   * The helices (G,H and I) and sheet conformations are all required
+   * to have a reasonable length. This means that 2 adjacent residues
+   * in the primary structure must form the same hydrogen bonding
+   * pattern. If the helix or sheet hydrogen bonding pattern is too
+   * short they are designated as T or B, respectively.
    */
   class A_EXPORT Protein : public QObject
   {
@@ -83,24 +83,24 @@ namespace Avogadro {
        */
       int numChains() const;
 
-      QList<unsigned long int> chainAtoms(int index) const;
-      QList<unsigned long int> chainResidues(int index) const;
+      QList<unsigned long> chainAtoms(int index) const;
+      QList<unsigned long> chainResidues(int index) const;
 
       int num3turnHelixes() const;
       int num4turnHelixes() const;
       int num5turnHelixes() const;
-  
-      QList<unsigned long int> helix3BackboneAtoms(int index);
-      QList<unsigned long int> helix4BackboneAtoms(int index);
-      QList<unsigned long int> helix5BackboneAtoms(int index);
-  
+
+      QList<unsigned long> helix3BackboneAtoms(int index);
+      QList<unsigned long> helix4BackboneAtoms(int index);
+      QList<unsigned long> helix5BackboneAtoms(int index);
+
     private:
       void sortResiduesByChain();
       void iterateForward(Atom *prevCA, Atom *currN, QVector<bool> &visited);
       void iterateBackward(Atom *prevN, Atom *currCA, QVector<bool> &visited);
-      
+
       void detectHBonds();
-      
+
       void detectStructure();
       void extendHelix(char c, int turn, Residue *residue, const QVector<Residue*> &residues);
       void extendSheet(int delta, Residue *residue, const QVector<Residue*> &residues);
@@ -108,9 +108,9 @@ namespace Avogadro {
       void clearShortPatterns(char c, int min);
 
       int residueIndex(Residue *residue) const;
-      
+
       int numHelixes(char c) const;
-      QList<unsigned long int> helixBackboneAtoms(char c, int index);
+      QList<unsigned long> helixBackboneAtoms(char c, int index);
 
       ProteinPrivate * const d;
   };

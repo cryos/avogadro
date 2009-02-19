@@ -119,7 +119,11 @@ namespace Avogadro {
        */
       void setColor(const Color &color)
       {
-        m_color = color;
+        float red = color.red();
+        float green = color.green();
+        float blue = color.blue();
+        float alpha = color.alpha();
+        m_color.set(red, green, blue, alpha);
       }
 
       void mousePressed(QMouseEvent *event) { emit mousePressEvent(this, event); }

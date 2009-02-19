@@ -56,8 +56,9 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_COLOR_FACTORY(IndexColor, tr("Color by Index"), 
-        tr("Color by Index (red, orange, yellow, green, blue, violet)."))
+      AVOGADRO_COLOR_FACTORY(IndexColor, "Color by Index", 
+                             tr("Color by Index"), 
+                             tr("Color by Index (red, orange, yellow, green, blue, violet)."))
   };
 
 

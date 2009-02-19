@@ -41,6 +41,7 @@ namespace Avogadro {
  class AlignTool : public Tool
   {
     Q_OBJECT
+      AVOGADRO_TOOL("Align", tr("Align"))
 
     public:
       //! Constructor
@@ -51,7 +52,6 @@ namespace Avogadro {
       //! \name Description methods
       //@{
       //! Tool Name (i.e. Align)
-      virtual QString name() const { return(tr("Align")); }
       //! Tool Description (i.e. Align molecules)
       virtual QString description() const { return(tr("Align molecules")); }
       //@}
@@ -94,7 +94,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_TOOL_FACTORY(AlignTool, tr("Align Tool"), tr("Align  molecules with XYZ axes."))
+      AVOGADRO_TOOL_FACTORY(AlignTool, "Align Tool", tr("Align Tool"), tr("Align  molecules with XYZ axes."))
   };
 
 } // end namespace Avogadro

@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 2.6.0)
 cmake_policy(SET CMP0003 NEW)
 
 # Use CPack to do some of our packaging
-include(AvoCPack.cmake)
+include(AvoCPack)
 
 # this is adapted from KDE's FindKDE4Internal.cmake : default the build type to
 # "release with debug info".
@@ -105,7 +105,6 @@ find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Linguist REQUIRED) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
-include_directories(${EIGEN2_INCLUDE_DIR})
 
 ###########################################################
 # Python Support: Detect and report all stuff here.       #
@@ -113,7 +112,7 @@ include_directories(${EIGEN2_INCLUDE_DIR})
 ###########################################################
 option(ENABLE_PYTHON "Enable python support" ON)
 if(ENABLE_PYTHON MATCHES ON)
-  include(PythonDeps.cmake)
+  include(PythonDeps)
   if (ALL_PYTHON_FOUND)
     message(STATUS "All python dependencies found - Python support enabled")
   endif (ALL_PYTHON_FOUND)
@@ -121,14 +120,13 @@ else(ENABLE_PYTHON MATCHES ON)
   message(STATUS "Python support disabled.")
 endif(ENABLE_PYTHON MATCHES ON)
 
-
 # Unit testing, mainly useful for developers and so defaults to off
 option(ENABLE_TESTS "Enable unit testing" OFF)
 if(ENABLE_TESTS MATCHES ON)
   set(QT_USE_QTTEST TRUE)
   enable_testing()
   include (CTest)
-  include (CTestConfig.cmake)
+  include (AvoCTestConfig)
   message(STATUS "Unit testing enabled, run make test to run them")
 endif(ENABLE_TESTS MATCHES ON)
 
@@ -185,13 +183,17 @@ add_subdirectory(libavogadro)
 add_subdirectory(avogadro)
 add_subdirectory(doc)
 
-# Linux Default: /usr/local/share/avogadro/fragments
+# Linux/Windows default: ${PREFIX}/share/avogadro/fragments
 set(avogadro_FRAGMENTS share/avogadro)
-
 if(APPLE)
   set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")
 endif(APPLE)
 
 # When installing, make sure to install some fragments
-INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
         DESTINATION ${avogadro_FRAGMENTS})
+
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin CACHE INTERNAL
+  "Where to put the executables for Avogadro")
+set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/${LIB_INSTALL_DIR} CACHE INTERNAL
+  "Where to put the libraries for Avogadro")

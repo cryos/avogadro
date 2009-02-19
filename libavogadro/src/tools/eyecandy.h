@@ -37,8 +37,9 @@ namespace Avogadro {
       Eyecandy() : m_color(1.0, 1.0, 0.3, 1.0) {}
       ~Eyecandy() {}
 
-      void setColor(const Color &color);
-      Color color() const;
+      void setColor(const double red, const double green, 
+                    const double blue, const double alpha);
+      Color *color();
 
       void drawRotation(GLWidget *widget, const Eigen::Vector3d *center,
                         double radius, double xAngle, double yAngle);

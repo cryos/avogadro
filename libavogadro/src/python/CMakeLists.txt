@@ -1,5 +1,7 @@
 include_directories(
   ${libavogadro_SOURCE_DIR}/include
+  ${CMAKE_SOURCE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
   ${OPENBABEL2_INCLUDE_DIR}
   ${BOOST_PYTHON_INCLUDES}
   ${PYTHON_INCLUDE_PATH}
@@ -9,7 +11,7 @@ include_directories(
 # use all cpp files in this directory
 FILE(GLOB wrapper_SRCS "*.cpp")
 
-qt4_automoc(molecule.cpp)
+qt4_automoc(moleculelist.cpp)
 
 ADD_LIBRARY(python-module MODULE ${wrapper_SRCS})
 SET_TARGET_PROPERTIES(python-module PROPERTIES OUTPUT_NAME Avogadro)

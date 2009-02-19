@@ -80,7 +80,6 @@
 #include <QCheckBox>
 #include <QColorDialog>
 #include <QFileDialog>
-#include <QGLFramebufferObject>
 #include <QHBoxLayout>
 #include <QMessageBox>
 #include <QPluginLoader>
@@ -187,7 +186,7 @@ namespace Avogadro
 
     QTimer *centerTimer;
     int centerTime;
-
+    
     PluginManager pluginManager;
 
     QMap<Engine*, QWidget*> engineSettingsWindows;
@@ -311,10 +310,8 @@ namespace Avogadro
 
 #ifdef Q_WS_MAC
     // Find the Avogadro global preferences action
-    // and move it to the File menu (where it will be found)
-    // for the Mac Application menu
-    ui.menuSettings->removeAction( ui.configureAvogadroAction );
-    ui.menuFile->addAction( ui.configureAvogadroAction );
+    // and make sure it ends up in the Mac Application menu
+    ui.configureAvogadroAction->setMenuRole(QAction::PreferencesRole);
 
     // Turn off the file toolbar (not really Mac-native)
     // Fixes PR#1965004
@@ -323,10 +320,27 @@ namespace Avogadro
 
     // Change the "Settings" menu to be Window
     ui.menuSettings->setTitle(tr("Window"));
-    // and remove the trailing separator
-    QAction *lastSettingsAction = ui.menuSettings->actions().last();
-    if (lastSettingsAction->isSeparator())
-      ui.menuSettings->removeAction( lastSettingsAction );
+    QAction *firstAction = ui.menuSettings->actions().first();
+    QAction *minimizeAction = new QAction(this);
+    minimizeAction->setText(tr("&Minimize"));
+    minimizeAction->setShortcut(QKeySequence(tr("Ctrl+M")));
+    connect(minimizeAction, SIGNAL(triggered()), this, SLOT(showMinimized()));
+    ui.menuSettings->insertAction(firstAction, minimizeAction);
+
+    QAction *zoomAction = new QAction(this);
+    zoomAction->setText(tr("&Zoom"));
+    connect(zoomAction, SIGNAL(triggered()), this, SLOT(zoom()));
+    ui.menuSettings->insertAction(firstAction, zoomAction);
+    ui.menuSettings->insertSeparator(firstAction);
+
+    ui.menuSettings->addSeparator();
+    QAction *raiseAction = new QAction(this);
+    raiseAction->setText(tr("Bring All to Front"));
+    connect(raiseAction, SIGNAL(triggered()), this, SLOT(bringAllToFront()));
+    ui.menuSettings->addAction(raiseAction);
+    ui.menuSettings->addSeparator();
+
+    updateWindowMenu();
 
     // Remove all menu icons (violates Apple interface guidelines)
     // This is a not-quite-hidden Qt call on the Mac
@@ -351,6 +365,35 @@ namespace Avogadro
     if(event->type() == QEvent::Polish) {
       reloadTabbedTools();
       loadExtensions();
+
+      // Check every menu for "extra" separators
+      foreach( QAction *menu, menuBar()->actions() ) {
+
+        QList<QAction *> removeThese;
+
+        QAction *firstAction = menu->menu()->actions().first();
+        if (firstAction->isSeparator())
+          removeThese.append( firstAction );
+
+        QAction *lastAction = menu->menu()->actions().last();
+        if (lastAction->isSeparator())
+          removeThese.append( lastAction );
+
+        int multipleSeparatorCount = 0;
+        foreach( QAction *menuItem, menu->menu()->actions() ) {
+          if (menuItem->isSeparator()) {
+            if (multipleSeparatorCount)
+              removeThese.append(menuItem);
+            multipleSeparatorCount++;
+          } else
+            multipleSeparatorCount = 0;
+        } // end foreach (menuItems)
+
+        foreach (QAction *separator, removeThese) {
+          menu->menu()->removeAction(separator);
+        }
+      }
+
       if(!molecule()) {
         loadFile();
       }
@@ -358,6 +401,12 @@ namespace Avogadro
       readSettings();
       // if we don't have a molecule then load a blank file
       d->initialized = true;
+    }
+    else if(event->type() == QEvent::ActivationChange 
+            || event->type() == QEvent::WindowActivate) {
+#ifdef Q_WS_MAC
+      updateWindowMenu();
+#endif
     }
 
     return QMainWindow::event(event);
@@ -474,7 +523,7 @@ namespace Avogadro
     }
     delete ui.toolsWidget;
     ui.toolsWidget = new QWidget();
-    ui.toolsWidget->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Maximum);
+    ui.toolsWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     ui.toolsDock->setWidget(ui.toolsWidget);
 
@@ -691,10 +740,10 @@ namespace Avogadro
       openFile( action->data().toString() );
     }
   }
-
+  
   bool MainWindow::loadFile(const QString &fileName,
-			    OBFormat *format,
-			    const QString &options)
+                            OBFormat *format,
+                            const QString &options)
   {
     // Now also sets the window icon on Mac
     // http://labs.trolltech.com/blogs/2007/12/28/spotlight-on-little-things/
@@ -856,6 +905,9 @@ namespace Avogadro
 
     setFileName( fileName );
     setWindowFilePath(shownName);
+#ifdef Q_WS_MAC
+    updateWindowMenu();
+#endif
     statusBar()->showMessage( tr("File Loaded..."), 5000 );
     d->toolGroup->setActiveTool(tr("Navigate"));
     return true;
@@ -1107,7 +1159,6 @@ namespace Avogadro
     qDebug() << "Exported filename:" << fileName;
 
     // render it (with alpha channel)
-    //QImage exportImage = d->glWidget->grabFrameBuffer( true );
     d->glWidget->raise();
     d->glWidget->repaint();
     QPixmap pixmap = QPixmap::grabWindow( d->glWidget->winId() );
@@ -1277,6 +1328,76 @@ namespace Avogadro
     updateRecentFileActions();
   }
 
+  void MainWindow::zoom()
+  {
+    if (isMaximized())
+      showNormal();
+    else
+      showMaximized();
+  }
+
+  void MainWindow::bringAllToFront()
+  {
+    foreach(QWidget *widget, qApp->topLevelWidgets()) {
+      MainWindow *window = qobject_cast<MainWindow *>( widget );
+      if (window)
+        raise();
+    }
+  }
+  
+  bool windowComparison(const MainWindow *first, const MainWindow *second)
+  {
+    return first->windowTitle() > second->windowTitle();
+  }
+
+  void MainWindow::updateWindowMenu()
+  {
+    // first remove actions at end of Window menu
+    bool removeItem = false;
+    QList<QAction *> removeThese;
+    foreach (QAction *menuItem, ui.menuSettings->actions()) {
+      if (menuItem->text() == tr("Bring All to Front")) {
+        removeItem = true;
+        continue;
+      }
+      if (removeItem)
+        removeThese.append(menuItem);
+    }
+
+    foreach (QAction *action, removeThese) {
+      ui.menuSettings->removeAction(action);
+    }
+
+    QList<MainWindow *> mainWindowList;
+
+    foreach(QWidget *widget, qApp->topLevelWidgets()) {
+      MainWindow *window = qobject_cast<MainWindow *>( widget );
+      if (window && window->isVisible())
+        mainWindowList.append(window);
+    }
+
+    if (mainWindowList.isEmpty())
+      return;
+
+    qSort(mainWindowList.begin(), mainWindowList.end(), windowComparison);
+
+    ui.menuSettings->addSeparator();
+    foreach (MainWindow *widget, mainWindowList) {
+      QAction *windowAction = new QAction(widget);
+      if (!widget->d->fileName.isEmpty())
+        windowAction->setText(QFileInfo(widget->d->fileName).fileName());
+      else
+        windowAction->setText(tr("Untitled"));
+
+      if (widget->d->fileName == d->fileName) {
+        windowAction->setCheckable(true);
+        windowAction->setChecked(true);
+      }
+      connect(windowAction, SIGNAL(triggered()), widget, SLOT(showAndActivate()));
+      ui.menuSettings->addAction(windowAction);
+    }
+  }
+
   void MainWindow::about()
   {
     AboutDialog * about = new AboutDialog( this );
@@ -1407,7 +1528,10 @@ namespace Avogadro
   {
     QMimeData *mimeData = new QMimeData;
     // we also save an image for copy/paste to office programs, presentations, etc.
-    QImage clipboardImage = d->glWidget->grabFrameBuffer(true);
+    d->glWidget->raise();
+    d->glWidget->repaint();
+    QPixmap pixmap = QPixmap::grabWindow( d->glWidget->winId() );
+    QImage clipboardImage = pixmap.toImage();
 
     Molecule *moleculeCopy = d->molecule;
     if (!selectedItems.isEmpty()) { // we only want to copy the selected items
@@ -1719,7 +1843,7 @@ namespace Avogadro
 
     // no need to animate when there are no atoms
     if(d->molecule->numAtoms() == 0)  {
-      camera->translate( d->glWidget->center() - Vector3d( 0, 0, 10 ) );
+      camera->translate( d->glWidget->center() - Vector3d( 0.0, 0.0, 20.0 ) );
       d->glWidget->update();
       return;
     }
@@ -1775,6 +1899,13 @@ namespace Avogadro
           this, SLOT(centerStep()));
       d->centerTimer->start(10);
     }
+  }
+
+  void MainWindow::showAndActivate()
+  {
+    showNormal();
+    raise();
+    activateWindow();
   }
 
   void MainWindow::fullScreen()
@@ -1860,7 +1991,6 @@ namespace Avogadro
     connect( ui.actionImport_File, SIGNAL( triggered() ), this, SLOT( importFile() ) );
     connect( ui.actionExportGraphics, SIGNAL( triggered() ), this, SLOT( exportGraphics() ) );
     connect( ui.actionExportGL2PS, SIGNAL(triggered()), this, SLOT(exportGL2PS()));
-//    ui.actionExportGraphics->setEnabled( QGLFramebufferObject::hasOpenGLFramebufferObjects() );
 #ifdef Q_WS_MAC
     connect( ui.actionQuit, SIGNAL( triggered() ), this, SLOT( macQuit() ) );
     connect( ui.actionQuitTool, SIGNAL( triggered() ), this, SLOT( macQuit() ) );
@@ -1926,6 +2056,14 @@ namespace Avogadro
     d->undoStack->clear();
 
     d->molecule = molecule;
+
+    QString newFileName = molecule->fileName();
+    setFileName(newFileName);
+
+    if (newFileName.isEmpty()) {
+      setWindowFilePath(tr("untitled") + ".cml");
+    }
+    
     connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ), this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ), this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveRemoved( Primitive * ) ), this, SLOT( documentWasModified() ) );
@@ -2051,9 +2189,10 @@ namespace Avogadro
     if (desktop.screenNumber(this) == -1) // it's not on a screen
       move(originalPosition);
 #endif
-    QSize size = settings.value( "size", QSize( 640, 480 ) ).toSize();
+    QSize size = settings.value( "size", QSize(720,540) ).toSize();
     resize( size );
 
+    d->fileDialogPath = settings.value("openDialogPath").toString();
     d->animationsEnabled = settings.value( "animationsEnabled", false ).toBool();
 
     QByteArray ba = settings.value( "state" ).toByteArray();
@@ -2119,6 +2258,7 @@ namespace Avogadro
     settings.setValue( "size", size() );
     settings.setValue( "state", saveState() );
 
+    settings.setValue("openDialogPath", d->fileDialogPath);
     settings.setValue( "tabbedTools", d->tabbedTools );
     settings.setValue( "toolsTabPosition", d->toolsTabPosition );
     settings.setValue( "enginesDock", ui.enginesDock->saveGeometry());
@@ -2225,6 +2365,7 @@ namespace Avogadro
       if(dockWidget)
       {
         addDockWidget(Qt::RightDockWidgetArea, dockWidget);
+        dockWidget->hide();
         ui.menuToolbars->addAction(dockWidget->toggleViewAction());
       }
 
@@ -2240,6 +2381,8 @@ namespace Avogadro
             d->messagesText, SLOT(append(QString)));
       connect(extension, SIGNAL( actionsChanged(Extension*) ),
             this, SLOT(addActionsToMenu(Extension*)));
+      connect(extension, SIGNAL( moleculeChanged(Molecule *)),
+            this, SLOT(setMolecule(Molecule *)));
     }
   }
 
@@ -2260,6 +2403,13 @@ namespace Avogadro
 
   void MainWindow::hideMainWindowMac()
   {
+    // First remove the last menu item on the "Window" menu
+    // i.e., the action which refers to this window
+    QAction *lastAction = ui.menuSettings->actions().last();
+    ui.menuSettings->removeAction(lastAction);
+    ui.menuSettings->actions().last(); // and last separator
+    ui.menuSettings->removeAction(lastAction);
+
     d->menuItemStatus.clear();
     QVector<bool> status;
 
@@ -2289,6 +2439,7 @@ namespace Avogadro
     // Clear the molecule
     loadFile();
     hide();
+    updateWindowMenu();
   }
 
   void MainWindow::showMainWindowMac()
@@ -2307,6 +2458,9 @@ namespace Avogadro
       }
       menuIndex++;
     }
+
+    // make sure the camera is set to the default -- reported by Ian Davis
+    centerView();
 
     // Now show the window and raise it
     show();
@@ -2328,6 +2482,7 @@ namespace Avogadro
     }
 
     connect( this, SIGNAL( moleculeChanged( Molecule * ) ), gl, SLOT( setMolecule( Molecule * ) ) );
+    
     gl->setMolecule(d->molecule);
     gl->setObjectName(QString::fromUtf8("glWidget"));
     gl->setUndoStack( d->undoStack );

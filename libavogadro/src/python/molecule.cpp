@@ -10,36 +10,6 @@
 
 #include <openbabel/mol.h>
 
-#include "molecule.h"
-
-namespace Avogadro {
-    
-  MoleculeList* MoleculeList::instance()
-  {
-    static MoleculeList *instance = 0;
-    if (!instance)
-      instance = new MoleculeList;
-    return instance;
-  }
-
-  Molecule* MoleculeList::addMolecule()
-  {
-    Molecule *mol;
-    mol = new Molecule();
-    m_molecules.append(mol);
-    connect(mol, SIGNAL(destroyed()), this, SLOT(moleculeDestroyed()));
-    return mol;
-  }
-
-  void MoleculeList::moleculeDestroyed()
-  {
-    Molecule* mol = static_cast<Molecule*>(sender());
-    int index = m_molecules.indexOf(mol);
-    m_molecules.removeAt(index);  
-  }
-
-}
-
 using namespace boost::python;
 using namespace Avogadro;
 
@@ -57,23 +27,23 @@ void export_Molecule()
 
   // define function pointers to handle overloading
   Atom* (Molecule::*addAtom_ptr1)() = &Molecule::addAtom;
-  Atom* (Molecule::*addAtom_ptr2)(unsigned long int) = &Molecule::addAtom;
+  Atom* (Molecule::*addAtom_ptr2)(unsigned long) = &Molecule::addAtom;
   void (Molecule::*removeAtom_ptr1)(Atom*) = &Molecule::removeAtom;
-  void (Molecule::*removeAtom_ptr2)(unsigned long int) = &Molecule::removeAtom;
-  void (Molecule::*setAtomPos_ptr1)(unsigned long int, const Eigen::Vector3d &) = &Molecule::setAtomPos;
+  void (Molecule::*removeAtom_ptr2)(unsigned long) = &Molecule::removeAtom;
+  void (Molecule::*setAtomPos_ptr1)(unsigned long, const Eigen::Vector3d &) = &Molecule::setAtomPos;
   Bond* (Molecule::*addBond_ptr1)() = &Molecule::addBond;
-  Bond* (Molecule::*addBond_ptr2)(unsigned long int) = &Molecule::addBond;
+  Bond* (Molecule::*addBond_ptr2)(unsigned long) = &Molecule::addBond;
   void (Molecule::*removeBond_ptr1)(Bond*) = &Molecule::removeBond;
-  void (Molecule::*removeBond_ptr2)(unsigned long int) = &Molecule::removeBond;
+  void (Molecule::*removeBond_ptr2)(unsigned long) = &Molecule::removeBond;
   Cube* (Molecule::*addCube_ptr1)() = &Molecule::addCube;
   void (Molecule::*removeCube_ptr1)(Cube*) = &Molecule::removeCube;
-  void (Molecule::*removeCube_ptr2)(unsigned long int) = &Molecule::removeCube;
+  void (Molecule::*removeCube_ptr2)(unsigned long) = &Molecule::removeCube;
   Residue* (Molecule::*addResidue_ptr1)() = &Molecule::addResidue;
   void (Molecule::*removeResidue_ptr1)(Residue*) = &Molecule::removeResidue;
-  void (Molecule::*removeResidue_ptr2)(unsigned long int) = &Molecule::removeResidue;
+  void (Molecule::*removeResidue_ptr2)(unsigned long) = &Molecule::removeResidue;
   Fragment* (Molecule::*addRing_ptr1)() = &Molecule::addRing;
   void (Molecule::*removeRing_ptr1)(Fragment*) = &Molecule::removeRing;
-  void (Molecule::*removeRing_ptr2)(unsigned long int) = &Molecule::removeRing;
+  void (Molecule::*removeRing_ptr2)(unsigned long) = &Molecule::removeRing;
   Atom* (Molecule::*atom_ptr)(int) = &Molecule::atom;
   Bond* (Molecule::*bond_ptr1)(int) = &Molecule::bond;
   Bond* (Molecule::*bond_ptr2)(unsigned long, unsigned long) = &Molecule::bond;
@@ -152,20 +122,5 @@ void export_Molecule()
     .def("translate", &Molecule::translate)
     ;
   
-  class_<MoleculeList, boost::noncopyable>("MoleculeList", no_init)
-    .add_property("instance", make_function(&MoleculeList::instance, return_value_policy<reference_existing_object>()))
-    .add_property("numMolecules", &MoleculeList::numMolecules)
-    .def("addMolecule", &MoleculeList::addMolecule, return_value_policy<reference_existing_object>())
-    .def("at", &MoleculeList::at, return_value_policy<reference_existing_object>())
-    ;
-
-  // module's DATA: Avogadro.molecules
-  MoleculeList *moleculeList = MoleculeList::instance();
-  reference_existing_object::apply<MoleculeList*>::type converter;
-  PyObject* pyobj = converter( moleculeList );
-  object real_obj = object( handle<>( pyobj ) );
-  scope().attr("molecules") = real_obj;
-
 }
 
-#include "molecule.moc"

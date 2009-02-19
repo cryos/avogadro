@@ -302,13 +302,13 @@ namespace Avogadro
 
   void GLPainter::setColor (const Color *color)
   {
-    d->color = *color;
+    d->color.set(color->red(), color->green(), color->blue(), color->alpha());
   }
 
   void GLPainter::setColor (const QColor *color)
   {
-    d->color = Color(color->redF(), color->greenF(), color->blueF(),
-                     color->alphaF());
+    d->color.set(color->redF(), color->greenF(), color->blueF(),
+                 color->alphaF());
   }
 
   void GLPainter::setColor ( float red, float green, float blue, float alpha )
@@ -1032,7 +1032,7 @@ namespace Avogadro
     Color color;
     if (normalWind) {
       for(unsigned int i = 0; i < v.size(); ++i) {
-        color = Color(c[i].redF(), c[i].greenF(), c[i].blueF(), c[i].alphaF());
+        color.set(c[i].redF(), c[i].greenF(), c[i].blueF(), c[i].alphaF());
         color.applyAsMaterials();
         glNormal3fv(n[i].data());
         glVertex3fv(v[i].data());
@@ -1041,7 +1041,7 @@ namespace Avogadro
     /// FIXME - this is a fudge to fix the negative windings right now - FIXME!
     else {
       for(unsigned int i = v.size(); i > 0; --i) {
-        color = Color(c[i].redF(), c[i].greenF(), c[i].blueF(), c[i].alphaF());
+        color.set(c[i].redF(), c[i].greenF(), c[i].blueF(), c[i].alphaF());
         color.apply();
         color.applyAsMaterials();
         Eigen::Vector3f tmp = n[i-1] * -1;

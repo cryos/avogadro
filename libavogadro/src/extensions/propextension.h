@@ -51,6 +51,7 @@ namespace Avogadro {
   class PropertiesExtension : public Extension
   {
     Q_OBJECT
+      AVOGADRO_EXTENSION("Properties", tr("Properties"))
 
     public:
       //! Constructor
@@ -60,8 +61,6 @@ namespace Avogadro {
 
       //! \name Description methods
       //@{
-      //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("Properties"); }
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("Properties Plugin"); };
 
@@ -115,6 +114,7 @@ namespace Avogadro {
     Q_INTERFACES(Avogadro::PluginFactory)
 
     AVOGADRO_EXTENSION_FACTORY(PropertiesExtension,
+                               "Properties",
         tr("Properties Extension"),
       tr("Extension with dialogs for displaying atom, bond, "
           "angle and tosion properties. It also includes a cartesian coordinate editor."))

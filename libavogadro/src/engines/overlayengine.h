@@ -38,7 +38,7 @@ namespace Avogadro {
   class OverlayEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE(tr("Overlay"))
+      AVOGADRO_ENGINE("Overlay", tr("Overlay"))
 
     public:
       //! Constructor
@@ -99,7 +99,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(OverlayEngine, tr("Overlay"), tr("Render electrostatic potential (ESP) gradient gradient."))
+      AVOGADRO_ENGINE_FACTORY(OverlayEngine, "Overlay", tr("Overlay"), tr("Render electrostatic potential (ESP) gradient gradient."))
   };
 
 } // end namespace Avogadro

@@ -49,6 +49,7 @@ namespace Avogadro {
   class PythonTerminal : public Extension
   {
     Q_OBJECT
+      AVOGADRO_EXTENSION("Python Terminal", tr("Python Terminal"))
 
     public:
       //! Constructor
@@ -56,7 +57,6 @@ namespace Avogadro {
       //! Deconstructor
       virtual ~PythonTerminal();
 
-      virtual QString name() const { return QObject::tr("Python Terminal"); }
       virtual QString description() const { return QObject::tr("Python Terminal"); };
 
       virtual QList<QAction *> actions() const;
@@ -109,6 +109,7 @@ namespace Avogadro {
       Q_INTERFACES(Avogadro::PluginFactory)
 
       AVOGADRO_EXTENSION_FACTORY(PythonTerminal,
+                                 "Python Terminal",
         tr("Python Terminal"),
         tr("Extension to provide an interactive python terminal."))
   };

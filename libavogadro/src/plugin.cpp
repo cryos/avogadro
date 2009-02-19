@@ -30,15 +30,8 @@
 
 namespace Avogadro {
 
-  /*
-  class PluginPrivate
-  {
-    public:
-      PluginPrivate() {}
-  };
-  */
-
-  Plugin::Plugin() /*, d(new PluginPrivate)*/
+  Plugin::Plugin(QObject *parent) : QObject(parent)
+  /*, d(new PluginPrivate)*/
   {
   }
 
@@ -46,15 +39,6 @@ namespace Avogadro {
   {
     //delete d;
   }
-
-  /*
-  Plugin& Plugin::operator= (const Plugin &plugin)
-  {
-    Q_UNUSED(plugin)
-
-    return *this;
-  }
-  */
 
   QString Plugin::description() const
   {
@@ -79,3 +63,5 @@ namespace Avogadro {
   }
 
 } // end namespace Avogadro
+
+#include "plugin.moc"

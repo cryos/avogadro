@@ -72,18 +72,18 @@ namespace Avogadro
 
   void POVPainter::setColor (const Color *color)
   {
-    d->color = *color;
+    d->color.set(color->red(), color->green(), color->blue(), color->alpha());
   }
 
   void POVPainter::setColor (const QColor *color)
   {
-    d->color = Color(color->redF(), color->greenF(), color->blueF(),
+    d->color.set(color->redF(), color->greenF(), color->blueF(),
                      color->alphaF());
   }
 
   void POVPainter::setColor (float red, float green, float blue, float alpha)
   {
-    d->color = Color(red, green, blue, alpha);
+    d->color.set(red, green, blue, alpha);
   }
 
   void POVPainter::setPlaneNormal (Vector3d planeNormalVector)

@@ -32,11 +32,17 @@
 #include <QtPlugin>
 #include <QWheelEvent>
 
-#define AVOGADRO_TOOL_FACTORY(c,n,d) \
+#define AVOGADRO_TOOL(i, t)                    \
+  public: \
+    QString identifier() const { return i; } \
+    QString name() const { return t; } \
+
+#define AVOGADRO_TOOL_FACTORY(c,i,n,d)          \
   public: \
     Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
-    Plugin::Type type() const { return Plugin::ToolType; }; \
-    QString name() const { return n; }; \
+    Plugin::Type type() const { return Plugin::ToolType; } \
+    QString identifier() const { return i; } \
+    QString name() const { return n; } \
     QString description() const { return d; };
 
 class QAction;
@@ -58,7 +64,7 @@ namespace Avogadro {
    * performed by the user on the GLWidget.
    */
   class ToolPrivate;
-  class A_EXPORT Tool : public QObject, public Plugin
+  class A_EXPORT Tool : public Plugin
   {
     Q_OBJECT
 

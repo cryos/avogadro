@@ -195,8 +195,6 @@ namespace Avogadro
       (*m_basisShells)[i].pos = i;
     }
 
-    processDensity((*m_basisShells)[5]);
-
     // Lock the cube until we are done.
     cube->lock()->lockForWrite();
 
@@ -246,9 +244,9 @@ namespace Avogadro
           m_moIndices[i] = indexMO++;
           m_cIndices.push_back(m_gtoCN.size());
           // Normalization of the S-type orbitals (normalization used in JMol)
-          // (2 * alpha^3 / pi^3)^0.25 * exp(-alpha * r^2)
+          // (8 * alpha^3 / pi^3)^0.25 * exp(-alpha * r^2)
           for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
-            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 0.75) * 0.503958871);
+            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 0.75) * 0.71270547);
           }
           break;
         case P:
@@ -363,7 +361,6 @@ namespace Avogadro
 
   void BasisSet::processDensity(BasisShell &shell)
   {
-    /// FIXME This is currently not working... Need to check out the reason why.
     BasisSet *set = shell.set;
     unsigned int atomsSize = set->m_numAtoms;
     unsigned int basisSize = set->m_symmetry.size();
@@ -376,7 +373,6 @@ namespace Avogadro
 
     // Calculate our position
     Vector3d pos = shell.tCube->position(shell.pos) * ANGSTROM_TO_BOHR;
-
     // Calculate the deltas for the position
     for (unsigned int i = 0; i < atomsSize; ++i) {
       deltas.push_back(pos - set->m_atomPos[i]);
@@ -408,7 +404,6 @@ namespace Avogadro
     for (unsigned int i = 0; i < matrixSize; ++i) {
       // Calculate the off-diagonal parts of the matrix
       for (unsigned int j = 0; j < i; ++j) {
-      //  tmp += a*b;
         rho += 2.0 * set->m_density.coeffRef(i, j)
              * (values.coeffRef(i, 0) * values.coeffRef(j, 0));
       }

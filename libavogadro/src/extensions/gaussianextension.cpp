@@ -24,19 +24,39 @@
 
 #include "gaussianextension.h"
 
+#include <openbabel/mol.h>
+#include <openbabel/obconversion.h>
+
+#include <avogadro/molecule.h>
+
+#include <QMessageBox>
+
+using namespace OpenBabel;
+using namespace std;
+
 namespace Avogadro
 {
 
   GaussianExtension::GaussianExtension(QObject* parent) : Extension(parent),
-    m_gaussianInputDialog(0), m_qchemInputDialog(0), m_molecule(0)
+                                                          m_gaussianInputDialog(0), m_qchemInputDialog(0), m_mopacInputDialog(0), m_molecule(0)
   {
     QAction* action = new QAction(this);
     action->setText(tr("Gaussian Input..."));
     action->setData("Gaussian");
     m_actions.append(action);
+
     action = new QAction(this);
     action->setText(tr("Q-Chem Input..."));
     action->setData("QChem");
+    m_actions.append(action);
+
+    action = new QAction(this);
+    action->setText(tr("MOPAC Input..."));
+    action->setData("MOPAC");
+    m_actions.append(action);
+
+    action = new QAction(this);
+    action->setSeparator(true);
     m_actions.append(action);
   }
 
@@ -46,6 +66,8 @@ namespace Avogadro
     m_gaussianInputDialog = 0;
     delete m_qchemInputDialog;
     m_qchemInputDialog = 0;
+    delete m_mopacInputDialog;
+    m_mopacInputDialog = 0;
   }
 
   QList<QAction *> GaussianExtension::actions() const
@@ -58,8 +80,10 @@ namespace Avogadro
     return tr("&Extensions");
   }
 
-  QUndoCommand* GaussianExtension::performAction(QAction *action, GLWidget *)
+  QUndoCommand* GaussianExtension::performAction(QAction *action, GLWidget *widget)
   {
+    m_widget = widget;
+    
     if (action->data() == "Gaussian") {
       if (!m_gaussianInputDialog) {
         m_gaussianInputDialog = new GaussianInputDialog();
@@ -78,6 +102,18 @@ namespace Avogadro
       else
         m_qchemInputDialog->show();
     }
+    else if (action->data() == "MOPAC") {
+      if (!m_mopacInputDialog) {
+        m_mopacInputDialog = new MOPACInputDialog();
+        connect(m_mopacInputDialog, SIGNAL(readOutput(QString)),
+          this, SLOT(readOutputFile(QString)));  
+        m_mopacInputDialog->setMolecule(m_molecule);
+        m_mopacInputDialog->show();
+      }
+      else {
+        m_mopacInputDialog->show();
+      }
+    }
     return 0;
   }
 
@@ -88,6 +124,41 @@ namespace Avogadro
       m_gaussianInputDialog->setMolecule(m_molecule);
     if (m_qchemInputDialog)
       m_qchemInputDialog->setMolecule(m_molecule);
+    if (m_mopacInputDialog)
+      m_mopacInputDialog->setMolecule(m_molecule);
+  }
+
+  void GaussianExtension::readOutputFile(const QString filename)
+  {
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    OBConversion conv;
+    OBFormat     *inFormat = conv.FormatFromExt(( filename.toAscii() ).data() );
+    if ( !inFormat || !conv.SetInFormat( inFormat ) ) {
+      QApplication::restoreOverrideCursor();
+      QMessageBox::warning(m_widget, tr("Avogadro"),
+        tr("Cannot read file format of file %1.").arg(filename));
+      return;
+    }
+
+    ifstream ifs;
+    ifs.open((filename.toAscii()).data());
+    if (!ifs) { // shouldn't happen, already checked file above
+      QApplication::restoreOverrideCursor();
+      QMessageBox::warning(m_widget, tr("Avogadro"),
+        tr("Cannot read file %1.").arg( filename ) );
+      return;
+    }
+
+    OBMol *obmol = new OBMol;
+    if (conv.Read(obmol, &ifs)) {
+      Molecule *mol = new Molecule;
+      mol->setOBMol(obmol);
+      mol->setFileName(filename);
+      emit moleculeChanged(mol);
+      m_molecule = mol;
+    }
+    
+    QApplication::restoreOverrideCursor();
   }
 
   void GaussianExtension::writeSettings(QSettings &settings) const
@@ -95,6 +166,9 @@ namespace Avogadro
     Extension::writeSettings(settings);
     if (m_gaussianInputDialog) {
       m_gaussianInputDialog->writeSettings(settings);
+    }
+    if (m_mopacInputDialog) {
+      m_mopacInputDialog->writeSettings(settings);
     }
   }
 
@@ -109,6 +183,19 @@ namespace Avogadro
       m_gaussianInputDialog->readSettings(settings);
       if (m_molecule) {
         m_gaussianInputDialog->setMolecule(m_molecule);
+      }
+    }
+    
+    if (m_mopacInputDialog) {
+      m_mopacInputDialog->readSettings(settings);
+    }
+    else {
+      m_mopacInputDialog = new MOPACInputDialog();
+      connect(m_mopacInputDialog, SIGNAL(readOutput(QString)),
+        this, SLOT(readOutputFile(QString)));
+      m_mopacInputDialog->readSettings(settings);
+      if (m_molecule) {
+        m_mopacInputDialog->setMolecule(m_molecule);
       }
     }
   }

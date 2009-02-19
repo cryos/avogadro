@@ -16,7 +16,6 @@ void export_Plugin()
     .value("ToolType", Plugin::ToolType)
     .value("ExtensionType", Plugin::ExtensionType)
     .value("ColorType", Plugin::ColorType)
-    .value("GradientType", Plugin::GradientType)
     .value("OtherType", Plugin::OtherType)
     .value("TypeCount", Plugin::TypeCount)
     ;
@@ -24,6 +23,7 @@ void export_Plugin()
   class_<Avogadro::Plugin, boost::noncopyable>("Plugin", no_init)
     // read-only poperties 
     .add_property("type", &Plugin::type)
+    .add_property("identifier", &Plugin::identifier)
     .add_property("name", &Plugin::name)
     .add_property("description", &Plugin::description)
     .add_property("settingsWidget", make_function(&Plugin::settingsWidget, 
@@ -33,6 +33,7 @@ void export_Plugin()
   
   class_<Avogadro::PluginFactory, boost::noncopyable>("PluginFactory", no_init)
     .add_property("type", &PluginFactory::type)
+    .add_property("identifier", &PluginFactory::identifier)
     .add_property("name", &PluginFactory::name)
     .add_property("description", &PluginFactory::description)
     //.def("createInstance", &PluginFactory::createInstance, return_value_policy<reference_existing_object>())

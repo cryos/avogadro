@@ -38,6 +38,7 @@ namespace Avogadro {
  class SelectExtension : public Extension
   {
     Q_OBJECT
+      AVOGADRO_EXTENSION("Selections", tr("Selections"))
     
     public:
       //! Constructor
@@ -47,8 +48,6 @@ namespace Avogadro {
 
       //! \name Description methods
       //@{
-      //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("Selections"); }
       //! Plugin Description (ie. Draws atoms and bonds)
       virtual QString description() const { return QObject::tr("Selection Plugin"); };
       //! Perform Action
@@ -81,6 +80,7 @@ namespace Avogadro {
     Q_INTERFACES(Avogadro::PluginFactory)
 
     AVOGADRO_EXTENSION_FACTORY(SelectExtension,
+                               "Select",
       tr("Select Extension"),
       tr("Extension with various select actions."))
 

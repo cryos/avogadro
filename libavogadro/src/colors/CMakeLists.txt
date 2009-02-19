@@ -21,8 +21,9 @@ set(LINK_LIBS "avogadro-lib")
 
 ### residuecolor
 set(residuecolor_SRCS residuecolor.cpp)
+qt4_wrap_ui(residuecolor_UIS residuecolorsettings.ui)
 qt4_automoc(${residuecolor_SRCS})
-add_library(residuecolor MODULE ${residuecolor_SRCS})
+add_library(residuecolor MODULE ${residuecolor_SRCS} ${residuecolor_UIS})
 target_link_libraries(residuecolor ${LINK_LIBS})
 install(TARGETS residuecolor DESTINATION ${DESTINATION_DIR})
 

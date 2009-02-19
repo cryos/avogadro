@@ -28,6 +28,7 @@
 
 #include <avogadro/global.h>
 
+#include <QObject>
 #include <QSettings> // do not remove!!
 
 namespace Avogadro {
@@ -49,8 +50,10 @@ namespace Avogadro {
   /*}*/
 
   //class PluginPrivate;
-  class A_EXPORT Plugin
+  class A_EXPORT Plugin: public QObject
   {
+    Q_OBJECT
+
     public:
       enum Type 
       {
@@ -58,7 +61,6 @@ namespace Avogadro {
         ToolType,
         ExtensionType,
         ColorType,
-        GradientType,
         OtherType,
         TypeCount // this needs to be last always
       };
@@ -67,7 +69,7 @@ namespace Avogadro {
       /**
        * Constructor
        */
-      Plugin();
+      Plugin(QObject *parent = NULL);
 
       /**
        * Destructor
@@ -80,7 +82,12 @@ namespace Avogadro {
       virtual Plugin::Type type() const = 0;
 
       /**
-       * @return the name of the plugin.
+       * @return the unique, untranslated identifier for the plugin.
+       */
+      virtual QString identifier() const = 0;
+
+      /**
+       * @return the translated name of the plugin.
        */
       virtual QString name() const = 0;
 
@@ -134,7 +141,12 @@ namespace Avogadro {
       virtual Plugin::Type type() const = 0;
 
       /**
-       * @return the name of the plugin.
+       * @return the untranslated identifier of the plugin
+       */
+      virtual QString identifier() const = 0;
+
+      /**
+       * @return the translated name of the plugin.
        */
       virtual QString name() const = 0;
 

@@ -386,13 +386,14 @@ namespace Avogadro {
 //    glDepthMask(GL_TRUE);
   }
 
-  void Eyecandy::setColor(const Color &color)
+  void Eyecandy::setColor(const double red, const double green, 
+                          const double blue, const double alpha)
   {
-    m_color = color;
+    m_color.set(red, green, blue, alpha);
   }
 
-  Color Eyecandy::color() const
+  Color *Eyecandy::color()
   {
-    return m_color;
+    return &m_color;
   }
 }

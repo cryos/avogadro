@@ -41,6 +41,7 @@ namespace Avogadro {
   class GamessExtension : public Extension
   {
     Q_OBJECT
+      AVOGADRO_EXTENSION("GAMESS", tr("GAMESS"))
 
     public:
       //! Constructor
@@ -50,10 +51,8 @@ namespace Avogadro {
 
       //! \name Description methods
       //@{
-      //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("GAMESS"); }
       //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("GAMESS Input Deck Generator"); };
+      virtual QString description() const { return tr("GAMESS Input Deck Generator"); };
 
       //! Perform Action
       virtual QList<QAction *> actions() const;
@@ -115,7 +114,7 @@ namespace Avogadro {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
 
-      AVOGADRO_EXTENSION_FACTORY(GamessExtension, tr("GAMESS Extension"), tr("Extension for creating input files for the GAMESS"
+        AVOGADRO_EXTENSION_FACTORY(GamessExtension, "GAMESS Extension", tr("GAMESS Extension"), tr("Extension for creating input files for the GAMESS"
           " quantum chemistry package."))
   };
 

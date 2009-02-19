@@ -145,9 +145,8 @@ namespace Avogadro
       m_warned = true;
       QMessageBox msgBox;
 
-      msgBox.setWindowTitle("Gaussian Input Deck Generator Warning");
-      msgBox.setText("Would you like to update the preview text, losing all "
-        "changes made in the Gaussian input deck preview pane?");
+      msgBox.setWindowTitle(tr("Gaussian Input Deck Generator Warning"));
+      msgBox.setText(tr("Would you like to update the preview text, losing all changes made in the Gaussian input deck preview pane?"));
       msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
 
       switch (msgBox.exec()) {
@@ -184,15 +183,25 @@ namespace Avogadro
 
   void GaussianInputDialog::generateClicked()
   {
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultFileName = defaultFile.canonicalPath() + "/" + defaultFile.baseName() + ".com";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Gaussian Input Deck"),
-                                "", tr("Gaussian Input Deck (*.com)"));
+                                defaultFileName, tr("Gaussian Input Deck (*.com)"));
+
     QFile file(fileName);
     // FIXME This really should pop up a warning if the file cannot be opened
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
       return;
 
+    QString previewText = ui.previewText->toPlainText();
+    QString checkpointName = QFileInfo(fileName).baseName();
+    checkpointName.prepend("%Chk=");
+    checkpointName.append(".chk");
+    
+    previewText.replace(QString("%Chk=checkpoint.chk"), checkpointName, Qt::CaseInsensitive);
+
     QTextStream out(&file);
-    out << ui.previewText->toPlainText();
+    out << previewText;
   }
 
   void GaussianInputDialog::moreClicked()
@@ -384,8 +393,9 @@ namespace Avogadro
     // These directives are required before the job specification
     if (m_procs > 1)
       mol << "%NProcShared=" << m_procs << "\n";
-    if (m_chk)
+    if (m_chk) {
       mol << "%Chk=checkpoint.chk\n";
+    }
 
     // Now specify the job type etc
     mol << "#p " << getTheoryType(m_theoryType);

@@ -41,14 +41,14 @@ namespace Avogadro {
   Fragment::~Fragment()
   { }
 
-  void Fragment::addAtom(unsigned long int id)
+  void Fragment::addAtom(unsigned long id)
   {
     if (!m_atoms.contains(id)) {
       m_atoms.push_back(id);
     }
   }
 
-  void Fragment::removeAtom(unsigned long int id)
+  void Fragment::removeAtom(unsigned long id)
   {
     int index = m_atoms.indexOf(id);
     if (index > -1) {
@@ -56,19 +56,19 @@ namespace Avogadro {
     }
   }
 
-  QList<unsigned long int> Fragment::atoms()
+  QList<unsigned long> Fragment::atoms()
   {
     return m_atoms;
   }
 
-  void Fragment::addBond(unsigned long int id)
+  void Fragment::addBond(unsigned long id)
   {
     if (!m_bonds.contains(id)) {
       m_bonds.push_back(id);
     }
   }
 
-  void Fragment::removeBond(unsigned long int id)
+  void Fragment::removeBond(unsigned long id)
   {
     int index = m_bonds.indexOf(id);
     if (index > -1) {
@@ -76,7 +76,7 @@ namespace Avogadro {
     }
   }
 
-  QList<unsigned long int> Fragment::bonds()
+  QList<unsigned long> Fragment::bonds()
   {
     return m_bonds;
   }

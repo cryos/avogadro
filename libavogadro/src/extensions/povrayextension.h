@@ -37,12 +37,12 @@ namespace Avogadro
   class POVRayExtension : public Extension
   {
   Q_OBJECT
+    AVOGADRO_EXTENSION("POV-Ray", tr("POV-Ray"))
 
   public:
     POVRayExtension(QObject* parent = 0);
     virtual ~POVRayExtension();
 
-    virtual QString name() const { return QObject::tr("POV-Ray"); }
     virtual QString description() const
     {
       return QObject::tr("Export images rendered using POV-Ray");
@@ -102,6 +102,7 @@ namespace Avogadro
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
     AVOGADRO_EXTENSION_FACTORY(POVRayExtension,
+                               "POV-Ray Extension",
         tr("POV-Ray Extension"),
         tr("Extension for creating POV-Ray files and"
           " rendering them using the command line POV-Ray program."))

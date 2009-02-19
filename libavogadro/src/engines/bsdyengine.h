@@ -38,7 +38,7 @@ namespace Avogadro {
   class BSDYEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE(tr("Ball and Stick"))
+    AVOGADRO_ENGINE("Ball and Stick", tr("Ball and Stick"))
 
     public:
       //! Constructor
@@ -84,7 +84,9 @@ namespace Avogadro {
       double m_bondRadius;
       int m_showMulti;
 
-    private Q_SLOTS:
+      double m_alpha; // transparency of the balls & sticks
+
+   private Q_SLOTS:
       void settingsWidgetDestroyed();
 
       /**
@@ -102,6 +104,11 @@ namespace Avogadro {
        */
       void setShowMulti(int value);
 
+      /**
+       * @param value opacity of the balls & sticks / 20
+       */
+      void setOpacity(int value);
+
   };
 
   class BSDYSettingsWidget : public QWidget, public Ui::BSDYSettingsWidget
@@ -116,7 +123,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(BSDYEngine, tr("Ball and Stick"), tr("Ball and stick display type."))
+    AVOGADRO_ENGINE_FACTORY(BSDYEngine, "Ball and Stick", tr("Ball and Stick"), tr("Ball and stick display type."))
   };
 
 

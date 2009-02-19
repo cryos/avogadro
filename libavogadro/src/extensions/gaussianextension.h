@@ -30,18 +30,18 @@
 
 #include "gaussianinputdialog.h"
 #include "qcheminputdialog.h"
+#include "mopacinputdialog.h"
 
 namespace Avogadro
 {
   class GaussianExtension : public Extension
   {
   Q_OBJECT
-
+    AVOGADRO_EXTENSION("Gaussian Input Deck", tr("Gaussian Input Deck"))
   public:
     GaussianExtension(QObject* parent = 0);
     virtual ~GaussianExtension();
 
-    virtual QString name() const { return QObject::tr("Gaussian Input Deck"); }
     virtual QString description() const
     {
       return QObject::tr("Gaussian input deck generator");
@@ -66,12 +66,18 @@ namespace Avogadro
      * @param settings Settings variable to read settings from.
      */
     void readSettings(QSettings &settings);
+    
+  public Q_SLOTS:
+    void readOutputFile(const QString filename);
 
   private:
     GaussianInputDialog* m_gaussianInputDialog;
     QChemInputDialog* m_qchemInputDialog;
+    MOPACInputDialog* m_mopacInputDialog;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
+    
+    GLWidget *m_widget;
 
   };
 
@@ -79,7 +85,7 @@ namespace Avogadro
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_EXTENSION_FACTORY(GaussianExtension,
+      AVOGADRO_EXTENSION_FACTORY(GaussianExtension, "Gaussian Extension",
         tr("Gaussian Extension"),
         tr("Extension for creating input files for the Gaussian"
           " quantum chemistry package."))

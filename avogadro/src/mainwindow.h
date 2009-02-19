@@ -113,6 +113,7 @@ namespace Avogadro {
       void selectNone();
 
       void show();
+      void showAndActivate();
 
       void newView();
       void duplicateView();
@@ -137,6 +138,10 @@ namespace Avogadro {
       void setQuickRender(bool quick);
 
       void undoStackClean(bool clean);
+
+      void updateWindowMenu();
+      void bringAllToFront();
+      void zoom();
 
       void clearRecentFiles();
       void about();
@@ -169,6 +174,11 @@ namespace Avogadro {
        * Add an extension's actions to the menu
        */
       void addActionsToMenu(Extension *extension);
+      
+      /**
+       * @param molecule set the current molecule and take ownership
+       */
+      void setMolecule(Molecule *molecule);
 
     Q_SIGNALS:
       void moleculeChanged(Molecule *);
@@ -204,11 +214,6 @@ namespace Avogadro {
       //! Find an existing main window by filename
       //! \return a pointer to the appropriate window, or NULL if none exists
       MainWindow* findMainWindow(const QString &fileName);
-
-      /**
-       * @param molecule set the current molecule and take ownership
-       */
-      void setMolecule(Molecule *molecule);
 
       /**
        * @return the current molecule for this window

@@ -45,7 +45,7 @@ namespace Avogadro {
   class SurfaceEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE(tr("Surface"))
+      AVOGADRO_ENGINE("Surface", tr("Surface"))
 
     public:
       //! Constructor
@@ -131,8 +131,8 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(SurfaceEngine, tr("Surface"),
-                            tr("Compute and render Van der Waals surfaces."))
+      AVOGADRO_ENGINE_FACTORY(SurfaceEngine, "Surface", tr("Surface"),
+                            tr("Render Van der Waals surfaces."))
 
   };
 

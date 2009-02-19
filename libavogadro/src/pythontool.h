@@ -51,6 +51,7 @@ namespace Avogadro {
 
       //! \name To python delegated functions
       //@{
+      QString identifier() const;
       QString name() const;
       QString description() const; 
       QUndoCommand* mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event);
@@ -82,6 +83,7 @@ namespace Avogadro {
       PythonToolFactory(const QString &filename) : m_filename(filename)
       {
         PythonTool tool(0, filename);
+        m_identifier = tool.identifier();
         m_name = tool.name();
         m_desc = tool.description();
       }
@@ -90,11 +92,12 @@ namespace Avogadro {
         return new PythonTool(parent, m_filename); 
       }
       Plugin::Type type() const { return Plugin::ToolType; }
+      QString identifier() const { return m_identifier; }
       QString name() const { return m_name; }
       QString description() const { return m_desc; }
     private:
       QString m_filename;
-      QString m_name, m_desc;
+      QString m_identifier, m_name, m_desc;
   };
 
 

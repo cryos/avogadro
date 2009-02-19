@@ -76,6 +76,21 @@ namespace Avogadro {
     return engine;
   }
 
+  QString PythonEngine::identifier() const
+  {
+    if (!PyObject_HasAttrString(d->instance.ptr(), "identifier"))
+      return "Unknown Python Engine";
+  
+    try {
+      prepareToCatchError();
+      const char *name = extract<const char*>(d->instance.attr("identifier")());
+      return QString(name);
+    } catch(error_already_set const &) {
+      catchError();
+      return "Unknown Python Engine";
+    }
+  }
+
   QString PythonEngine::name() const
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "name"))

@@ -29,6 +29,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
+#include <avogadro/color.h>
 
 namespace Avogadro {
 
@@ -38,7 +39,7 @@ namespace Avogadro {
     EnginePrivate() {}
   };
 
-  Engine::Engine(QObject *parent) : QObject(parent), d(new EnginePrivate),
+  Engine::Engine(QObject *parent) : Plugin(parent), d(new EnginePrivate),
     m_shader(0), m_pd(0), m_molecule(0), m_colorMap(0), m_enabled(false),
     m_customPrims(false)
   {
@@ -207,7 +208,15 @@ namespace Avogadro {
 
   void Engine::setColorMap(Color *map)
   {
+    m_colorMap->disconnect(this);
     m_colorMap = map;
+    connect(m_colorMap, SIGNAL(changed()),
+            this, SLOT(colorMapChanged()));
+    emit changed();
+  }
+
+  void Engine::colorMapChanged()
+  {
     emit changed();
   }
 

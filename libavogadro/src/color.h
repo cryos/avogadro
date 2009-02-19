@@ -36,11 +36,12 @@
 #include <QGLWidget> // for GLfloat
 #include <QColor> // for returning QColor
 
-#define AVOGADRO_COLOR_FACTORY(c,n,d) \
+#define AVOGADRO_COLOR_FACTORY(c,i,n,d)         \
   public: \
     Plugin *createInstance(QObject *parent = 0) { Q_UNUSED(parent); return new c(); } \
     Plugin::Type type() const { return Plugin::ColorType; }; \
-    QString name() const { return n; }; \
+    QString identifier() const { return i; } \
+    QString name() const { return n; } \
     QString description() const { return d; }; 
 
 namespace Avogadro {
@@ -59,6 +60,7 @@ namespace Avogadro {
    */
   class A_EXPORT Color : public Plugin
   {
+    Q_OBJECT
   public:
     Color();
     virtual ~Color();
@@ -75,8 +77,8 @@ namespace Avogadro {
      * @param alpha The opacity of the color
      * \sa set()
      */
-    Color( GLfloat red, GLfloat green, GLfloat blue,
-        GLfloat alpha = 1.0 );
+    Color(const GLfloat red, const GLfloat green, 
+          const GLfloat blue, const GLfloat alpha = 1.0 );
 
     /**
      * Set the color based on the supplied Primitive.
@@ -84,12 +86,6 @@ namespace Avogadro {
      * @param p the color is derived from this primitive.
      */
     Color( const Primitive *p);
-
-    /**
-     * Set the color based on the supplied QColor
-     * @param color the color to use
-     */
-    Color& operator= (const QColor &color);
 
     /**
      * Set the four components of the color
@@ -102,8 +98,8 @@ namespace Avogadro {
      * @param blue The blue component
      * @param alpha The opacity of the color
      */
-    virtual void set(GLfloat red, GLfloat green, GLfloat blue,
-                     GLfloat alpha = 1.0 );
+    virtual void set(const GLfloat red, const GLfloat green, 
+                     const GLfloat blue, const GLfloat alpha = 1.0 );
 
     /**
      * Set the color to the selection color
@@ -117,6 +113,24 @@ namespace Avogadro {
      * @param p the color is derived from this primitive.
      */
     virtual void set(const Primitive *p);
+
+    /**
+     * Set the color based on the supplied index (e.g., in an indexed color table)
+     * @param index the color is derived from this value
+     */
+    virtual void setIndex(const unsigned int index);
+    
+    /**
+     * Set the color based on the supplied floating point value (e.g., a gradient)
+     * @param value the floating point number to consider
+     * @param lo the low point of the range
+     * @param mid the middle point of the range (e.g., 0.0)
+     * @param hi the high point of the range
+     */
+    virtual void setGradient(const double value, const double lo, 
+                             const double mid, const double hi);
+
+    virtual void set(const QColor &color);
 
     /**
      * Set the alpha component of the color, 0.0 means totally transparent and
@@ -177,13 +191,24 @@ namespace Avogadro {
      */
     virtual void setName(const QString& name);
     /**
-     * @return the name of this instance of the class.
+     * @return the translated name of this instance of the class.
      */
     virtual QString name() const;
+    /**
+     * @return the untranslated identifier of this color plugin
+     */
+    virtual QString identifier() const;
     /**
      * @return the type of the Color class.
      */
     virtual Plugin::Type type() const { return Plugin::ColorType; }
+
+  Q_SIGNALS:
+      /**
+       * Signals that something has been changed and the engine needs to render
+       * after these changes were made.
+       */
+      virtual void changed();
 
   protected:
     /**

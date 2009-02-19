@@ -39,7 +39,7 @@ namespace Avogadro {
   class RingEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE(tr("Ring"))
+      AVOGADRO_ENGINE("Ring", tr("Ring"))
 
     public:
       //! Constructor
@@ -78,9 +78,8 @@ namespace Avogadro {
     private:
       RingSettingsWidget *m_settingsWidget;
       double m_alpha; // transparency of the VdW spheres
-      QVector<Color> m_ringColors;
 
-      bool renderRing(const QList<unsigned long int> &ring, PainterDevice *pd); // Render the given ring
+      bool renderRing(const QList<unsigned long> &ring, PainterDevice *pd); // Render the given ring
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();
@@ -106,7 +105,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(RingEngine, tr("Ring"), tr("Render ring planes."))
+      AVOGADRO_ENGINE_FACTORY(RingEngine, "Ring", tr("Ring"), tr("Render ring planes."))
   };
 
 } // end namespace Avogadro

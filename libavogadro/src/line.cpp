@@ -27,8 +27,9 @@
 namespace Avogadro {
 
   Line::Line(QObject *parent) : Primitive(LineType, parent),
-      m_width(1.0), m_color(Color(1.0, 1.0, 0.0, 1.0))
-  { }
+      m_width(1.0), m_color(1.0, 1.0, 0.0, 1.0)
+  {
+  }
 
   Line::~Line()
   { }

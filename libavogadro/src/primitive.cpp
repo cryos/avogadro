@@ -40,19 +40,21 @@ namespace Avogadro {
 
   Primitive::Primitive(QObject *parent) : QObject(parent),
     d_ptr(new PrimitivePrivate), m_type(Primitive::OtherType), m_id(FALSE_ID),
-    m_lock(new QReadWriteLock) {}
+    m_index(FALSE_ID), m_lock(new QReadWriteLock)
+  {}
 
   Primitive::Primitive(enum Type type, QObject *parent) : QObject(parent),
-    d_ptr(new PrimitivePrivate), m_type(type), m_id(FALSE_ID),
+    d_ptr(new PrimitivePrivate), m_type(type), m_id(FALSE_ID), m_index(FALSE_ID),
     m_lock(new QReadWriteLock)
   {}
 
   Primitive::Primitive(PrimitivePrivate &dd, QObject *parent) : QObject(parent),
-    d_ptr(&dd)
+    d_ptr(&dd), m_type(Primitive::OtherType), m_id(FALSE_ID), m_index(FALSE_ID),
+    m_lock(new QReadWriteLock)
   {}
 
   Primitive::Primitive(PrimitivePrivate &dd, enum Type type, QObject *parent)
-    : QObject(parent), d_ptr(&dd), m_type(type), m_id(FALSE_ID),
+    : QObject(parent), d_ptr(&dd), m_type(type), m_id(FALSE_ID), m_index(FALSE_ID),
     m_lock(new QReadWriteLock)
   {}
 

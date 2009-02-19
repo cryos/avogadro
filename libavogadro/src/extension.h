@@ -32,11 +32,17 @@
 #include <QSettings>
 #include <QtPlugin>
 
-#define AVOGADRO_EXTENSION_FACTORY(c,n,d) \
+#define AVOGADRO_EXTENSION(i, t)                    \
+  public: \
+    QString identifier() const { return i; } \
+    QString name() const { return t; } \
+
+#define AVOGADRO_EXTENSION_FACTORY(c,i,n,d)     \
   public: \
     Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
-    Plugin::Type type() const { return Plugin::ExtensionType; }; \
-    QString name() const { return n; }; \
+    Plugin::Type type() const { return Plugin::ExtensionType; } \
+    QString identifier() const { return i; } \
+    QString name() const { return n; } \
     QString description() const { return d; }; 
 
 class QDockWidget;
@@ -64,12 +70,12 @@ namespace Avogadro {
    * based on the required functionality of the extension and return
    * the command based on the action being peformed.
    */
-  class A_EXPORT Extension : public QObject, public Plugin
+  class A_EXPORT Extension : public Plugin
   {
     Q_OBJECT
 
     public:
-    Extension(QObject *parent) : QObject(parent) {};
+    Extension(QObject *parent) : Plugin(parent) {};
     virtual ~Extension() {};
 
     /** 
@@ -78,7 +84,7 @@ namespace Avogadro {
     Plugin::Type type() const;
 
     /** 
-     * Plugin Type Name (Tools)
+     * Plugin Type Name (Extensions)
      */
     QString typeName() const;
  
@@ -130,6 +136,11 @@ namespace Avogadro {
      * Can be used to notify the MainWindow to refresh the QActions for this extension.
      */
     void actionsChanged(Extension*);
+  
+    /**
+      * Can be used to notify the MainWindow to change the molecule to a new one.
+      */
+    void moleculeChanged(Molecule *);
 
   };
 

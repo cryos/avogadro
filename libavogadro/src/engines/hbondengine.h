@@ -39,7 +39,7 @@ namespace Avogadro {
   class HBondEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE(tr("Hydrogen Bond"))
+      AVOGADRO_ENGINE("Hydrogen Bond", tr("Hydrogen Bond"))
 
     public:
       //! Constructor
@@ -110,7 +110,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(HBondEngine, tr("Hydrogen Bond"), tr("Render hydrogen bonds"))
+      AVOGADRO_ENGINE_FACTORY(HBondEngine, "Hydrogen Bond", tr("Hydrogen Bond"), tr("Render hydrogen bonds"))
   };
 
 } // end namespace Avogadro

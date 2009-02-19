@@ -57,6 +57,7 @@ namespace Avogadro {
 
       //! @name To python delegated functions
       //@{
+      QString identifier() const;
       QString name() const;
       QString description() const;
       QList<QAction *> actions() const;
@@ -85,6 +86,7 @@ namespace Avogadro {
       PythonExtensionFactory(const QString &filename) : m_filename(filename)
       {
         PythonExtension extension(0, filename);
+        m_identifier = extension.identifier();
         m_name = extension.name();
         m_desc = extension.description();
       }
@@ -93,11 +95,12 @@ namespace Avogadro {
         return new PythonExtension(parent, m_filename);
       }
       Plugin::Type type() const { return Plugin::ExtensionType; }
+      QString identifier() const { return m_identifier; }
       QString name() const { return m_name; }
       QString description() const { return m_desc; }
     private:
       QString m_filename;
-      QString m_name, m_desc;
+      QString m_identifier, m_name, m_desc;
   };
 
 } // end namespace Avogadro

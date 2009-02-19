@@ -88,8 +88,8 @@ namespace Avogadro{
     pd->painter()->setColor(map);
 
     QVector<const Vector3d*> atoms;
-    QList<unsigned long int> neighbors = a->neighbors();
-    foreach (unsigned long int neighbor, neighbors) {
+    QList<unsigned long> neighbors = a->neighbors();
+    foreach (unsigned long neighbor, neighbors) {
       atoms.push_back(pd->molecule()->atomById(neighbor)->pos());
     }
 

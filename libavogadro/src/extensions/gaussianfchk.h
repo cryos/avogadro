@@ -46,7 +46,7 @@ namespace Avogadro
     void load(BasisSet* basis);
     std::vector<int> readArrayI(unsigned int n);
     std::vector<double> readArrayD(unsigned int n, int width = 0);
-    bool readDensityMatrix(unsigned int n);
+    bool readDensityMatrix(unsigned int n, int width = 0);
 
     int m_electrons;
     unsigned int m_numBasisFunctions;

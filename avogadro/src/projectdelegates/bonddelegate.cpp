@@ -128,7 +128,7 @@ namespace Avogadro
     model()->removeRows(m_label, primitive->index(), 1);
 
     // loop over all atoms to fix their index if needed
-    if ((primitive->index() + 1) < (unsigned long int) m_label->childCount()) {
+    if ((primitive->index() + 1) < (unsigned long) m_label->childCount()) {
       for (int i = primitive->index(); i < m_label->childCount(); ++i) {
         ProjectTreeItem *item = m_label->child(i);
         item->setData(0, tr("bond %1").arg(i));
