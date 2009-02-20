@@ -630,7 +630,7 @@ namespace Avogadro{
       removeRing(d->rings[id]);
   }
 
-  void Molecule::addHydrogens(Atom *a)
+  void Molecule::addHydrogens(Atom *a, const QList<unsigned long> &ids)
   {
     // Construct an OBMol, call AddHydrogens and translate the changes
     OpenBabel::OBMol obmol = OBMol();
@@ -640,10 +640,14 @@ namespace Avogadro{
       obmol.AddHydrogens();
     // All new atoms in the OBMol must be the additional hydrogens
     unsigned int numberAtoms = numAtoms();
-    for (unsigned int i = numberAtoms+1; i <= obmol.NumAtoms(); ++i) {
+    for (unsigned int i = numberAtoms+1, j = 0; i <= obmol.NumAtoms(); ++i, ++j) {
       if (obmol.GetAtom(i)->IsHydrogen()) {
         OpenBabel::OBAtom *obatom = obmol.GetAtom(i);
-        Atom *atom = addAtom();
+        Atom *atom;
+        if (ids.isEmpty())
+          atom = addAtom();
+        else
+          atom = addAtom(ids.at(j));
         atom->setOBAtom(obatom);
         // Get the neighbor atom
         OpenBabel::OBBondIterator iter;
@@ -1318,6 +1322,9 @@ namespace Avogadro{
         bond->setIndex(e->bonds[i]->index());
         d->bonds[i] = bond;
         d->bondList.push_back(bond);
+        // Add the bond to it's atoms
+        bond->beginAtom()->addBond(bond);
+        bond->endAtom()->addBond(bond);
         emit primitiveAdded(bond);
       }
     }
