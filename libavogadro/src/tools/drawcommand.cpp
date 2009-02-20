@@ -85,12 +85,7 @@ namespace Avogadro {
   {
     qDebug() << "AdjustHydrogensPreCommand::undo()";
 
-    // invert the list too produce exactly the same ids
-    QList<unsigned long> reverseList;
-    for (int i = d->atomIds.size() - 1; i >= 0; --i)
-      reverseList.append(d->atomIds.at(i));
-
-    foreach (unsigned long id, reverseList) {
+    foreach (unsigned long id, d->atomIds) {
       Atom *atom = d->molecule->atomById(id);
 
       if (atom) {
@@ -250,8 +245,10 @@ namespace Avogadro {
 
   AddAtomDrawCommand::~AddAtomDrawCommand()
   {
-    delete d->postCommand;
-    d->postCommand = 0;
+    if (d->postCommand) {
+      delete d->postCommand;
+      d->postCommand = 0;
+    }
     delete d;
   }
 
@@ -379,7 +376,8 @@ namespace Avogadro {
 
   class AddBondDrawCommandPrivate {
     public:
-      AddBondDrawCommandPrivate() : molecule(0), bond(0), id(-1), beginAtomId(-1), endAtomId(-1), prevId(false) {};
+      AddBondDrawCommandPrivate() : molecule(0), bond(0), id(-1), beginAtomId(-1), endAtomId(-1), 
+          prevId(false), preCommand(0), postCommand(0) {};
 
       Molecule *molecule;
       Bond *bond;
@@ -390,9 +388,13 @@ namespace Avogadro {
       Eigen::Vector3d pos;
       unsigned int order;
       int adjustValence;
+
+      QUndoCommand *preCommand;
+      QUndoCommand *postCommand;
   };
 
-  AddBondDrawCommand::AddBondDrawCommand(Molecule *molecule, Atom *beginAtom, Atom *endAtom, unsigned int order, int adjustValence) : d(new AddBondDrawCommandPrivate)
+  AddBondDrawCommand::AddBondDrawCommand(Molecule *molecule, Atom *beginAtom, Atom *endAtom, 
+      unsigned int order, int adjustValence) : d(new AddBondDrawCommandPrivate)
   {
     qDebug() << "AddBondDrawCommand(begin=" << beginAtom->id() << ", end=" << endAtom->id() 
              << ", adj=" << adjustValence << ")"; 
@@ -404,7 +406,8 @@ namespace Avogadro {
     d->adjustValence = adjustValence;
   }
 
-  AddBondDrawCommand::AddBondDrawCommand(Molecule *molecule, Bond *bond, int adjustValence) : d(new AddBondDrawCommandPrivate)
+  AddBondDrawCommand::AddBondDrawCommand(Molecule *molecule, Bond *bond, int adjustValence) 
+      : d(new AddBondDrawCommandPrivate)
   {
     qDebug() << "AddBondDrawCommand(begin=" << bond->beginAtomId() << ", end=" << bond->endAtomId() 
              << ", adj=" << adjustValence << ")"; 
@@ -422,6 +425,14 @@ namespace Avogadro {
 
   AddBondDrawCommand::~AddBondDrawCommand()
   {
+    if (d->preCommand) {
+      delete d->preCommand;
+      d->preCommand = 0; 
+    }
+    if (d->postCommand) {
+      delete d->postCommand;
+      d->postCommand = 0; 
+    }
     delete d;
   }
 
@@ -458,55 +469,58 @@ namespace Avogadro {
   void AddBondDrawCommand::redo()
   {
     qDebug() << "AddBondDrawCommand::redo()";
-    if(d->bond) { // already created the bond
-      Atom* beginAtom = d->molecule->atomById(d->bond->beginAtomId());
-      Atom* endAtom = d->molecule->atomById(d->bond->endAtomId());
+    if (d->bond) { // already created the bond
       if (d->adjustValence) {
-        if (!beginAtom->isHydrogen() && !endAtom->isHydrogen()) {
-          d->molecule->removeHydrogens(beginAtom);
-          d->molecule->removeHydrogens(endAtom);
-
-          d->molecule->addHydrogens(beginAtom);
-          d->molecule->addHydrogens(endAtom);
-        }
-
+        QList<unsigned long> ids;
+        ids.append(d->bond->beginAtomId());
+        ids.append(d->bond->endAtomId());
+        d->preCommand = new AdjustHydrogensPreCommand(d->molecule, ids);
+        d->preCommand->redo();
+        d->postCommand = new AdjustHydrogensPostCommand(d->molecule, ids);
+        d->postCommand->redo();
       }
       d->bond = 0;
       return;
     }
 
+    if (d->adjustValence) {
+      if (!d->preCommand) {
+        QList<unsigned long> ids;
+        ids.append(d->beginAtomId);
+        ids.append(d->endAtomId);
+        d->preCommand = new AdjustHydrogensPreCommand(d->molecule, ids);
+      }
+      d->preCommand->redo();
+    }
+
     Atom *beginAtom = d->molecule->atomById(d->beginAtomId);
     Atom *endAtom = d->molecule->atomById(d->endAtomId);
 
-    if(!beginAtom || !endAtom)
-    {
+    if (!beginAtom || !endAtom)
       return;
-    }
-
+    
     Bond *bond;
-    if(d->prevId)
-    {
+    if (d->id != static_cast<unsigned long>(-1)) {
       bond = d->molecule->addBond(d->id);
-    }
-    else
-    {
+    } else {
       bond = d->molecule->addBond();
       d->id = bond->id();
-      d->prevId = true;
     }
+    
     bond->setOrder(d->order);
     bond->setBegin(beginAtom);
     bond->setEnd(endAtom);
-    if (d->adjustValence) {
-      if (!beginAtom->isHydrogen() && !endAtom->isHydrogen())
-      {
-        d->molecule->removeHydrogens(beginAtom);
-        d->molecule->removeHydrogens(endAtom);
 
-        d->molecule->addHydrogens(endAtom);
-        d->molecule->addHydrogens(beginAtom);
+    if (d->adjustValence) {
+      if (!d->postCommand) {
+        QList<unsigned long> ids;
+        ids.append(d->beginAtomId);
+        ids.append(d->endAtomId);
+        d->postCommand = new AdjustHydrogensPostCommand(d->molecule, ids);
       }
+      d->postCommand->redo();
     }
+    
     d->molecule->update();
   }
 
