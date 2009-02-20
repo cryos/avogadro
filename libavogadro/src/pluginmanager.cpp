@@ -480,11 +480,11 @@ namespace Avogadro {
       // Make it relative
       pluginPaths << QCoreApplication::applicationDirPath()
                      + "/../" + QString(INSTALL_LIBDIR);
-      #ifdef Q_WS_MAC
+#ifdef Q_WS_MAC
         QString prefixPath = QString(INSTALL_PREFIX) + '/'
-                           + QString(INSTALL_LIBDIR) + "/avogadro";
+          + QString(INSTALL_LIBDIR);
         pluginPaths << prefixPath;
-      #endif
+#endif
     }
 
     QSettings settings;
