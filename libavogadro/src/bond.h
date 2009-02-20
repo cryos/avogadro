@@ -182,6 +182,7 @@ namespace Avogadro {
     unsigned long m_beginAtomId, m_endAtomId;
     short m_order;
     mutable bool m_isAromatic;
+    mutable Eigen::Vector3d m_midPos;
     Molecule *m_molecule;
     /* shared d_ptr with Primitive */
     Q_DECLARE_PRIVATE(Bond)

@@ -109,8 +109,8 @@
 
   const Eigen::Vector3d * Bond::midPos() const
   {
-    // FIXME Implement this function
-    return 0;
+    m_midPos = (*(m_molecule->atomPos(m_beginAtomId)) + *(m_molecule->atomPos(m_endAtomId)) ) / 2.0;
+    return &m_midPos;
   }
 
   const Eigen::Vector3d * Bond::endPos() const
