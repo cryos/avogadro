@@ -35,6 +35,34 @@ namespace Avogadro {
   class Atom;
   class Bond;
 
+  class AdjustHydrogensPreCommandPrivate;
+  class AdjustHydrogensPreCommand : public QUndoCommand
+  {
+  public:
+    AdjustHydrogensPreCommand(Molecule *molecule, const QList<unsigned long> &atomIds = QList<unsigned long>());
+    ~AdjustHydrogensPreCommand();
+ 
+    virtual void undo();
+    virtual void redo();
+
+  private:
+    AdjustHydrogensPreCommandPrivate * const d;
+  };
+
+  class AdjustHydrogensPostCommandPrivate;
+  class AdjustHydrogensPostCommand : public QUndoCommand
+  {
+  public:
+    AdjustHydrogensPostCommand(Molecule *molecule, const QList<unsigned long> &atomIds = QList<unsigned long>());
+    ~AdjustHydrogensPostCommand();
+ 
+    virtual void undo();
+    virtual void redo();
+
+  private:
+    AdjustHydrogensPostCommandPrivate * const d;
+  };
+
   class AddAtomDrawCommandPrivate;
   class AddAtomDrawCommand : public QUndoCommand
   {
