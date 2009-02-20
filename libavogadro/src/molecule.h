@@ -428,7 +428,8 @@ namespace Avogadro {
      * Add hydrogens to the molecule.
      * @param atom If supplied only add hydrogens to the specified atom.
      */
-    void addHydrogens(Atom *atom = 0, const QList<unsigned long> &ids = QList<unsigned long>());
+    void addHydrogens(Atom *atom = 0, const QList<unsigned long> &atomIds = QList<unsigned long>(),
+        const QList<unsigned long> &bondIds = QList<unsigned long>());
 
     /**
      * Remove all hydrogens from the molecule.
