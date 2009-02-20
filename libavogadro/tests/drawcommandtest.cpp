@@ -95,22 +95,54 @@ class DrawCommandTest : public QObject
      */
     void cleanup();
 
+    /**
+     * Test AdjustHydrogensPreCommand
+     */
+    void AdjustHydrogensPreCommand_methane();
+    /**
+     * Test AdjustHydrogensPreCommand
+     */
+    void AdjustHydrogensPostCommand_methane();
 
-    // 1x AddAtom
-    void AddAtomDrawCommand_methane();
-    void AddAtomDrawCommand_ammonia();
-    void AddAtomDrawCommand_water();
+
+    /** 
+     * Test AddAtomDrawCommand(molecule, pos, element, adj=1)
+     */
+    void AddAtom_methane();
+    /** 
+     * Test AddAtomDrawCommand(molecule, atom, adj=1)
+     */
+    void AddAtom_ammonia();
+    /** 
+     * Test AddAtomDrawCommand(molecule, pos, element, adj=0)
+     * Test AddAtomDrawCommand(molecule, atom, adj=0)
+     */
+    void AddAtom_water();
+
+ 
+    /**
+     * Test ChangeElementDrawCommand(molecule, atom, oldElement, adj=1);
+     */
+    void ChangeElement_ethane();
+    /**
+     * Test ChangeElementDrawCommand(molecule, atom, oldElement, adj=0);
+     */
+    void ChangeElement_carbon();
+
+    /** 
+     * Test AddAtomDrawCommand(molecule, index, adj=1)
+     */ 
+    void DeleteAtom_methane();
 
     // 2x AddAtom + AddBond
+    /*
     void AddAtomDrawCommand_ethane();
     void AddAtomDrawCommand_methanol();
 
     // Crashers...
     void AddAtom_AddBond_DeleteAtom();
     void AddAtom_ChangeElement_DeleteAtom();
-
-    void AdjustHydrogensPreCommand_methane();
-    void AdjustHydrogensPostCommand_methane();
+*/
 };
 
 void DrawCommandTest::initTestCase()
@@ -156,45 +188,107 @@ void DrawCommandTest::loopUndoRedo()
   // save the index
   int cmdIndex = m_undoStack->index();
 
-  //debugMolecule();
   for (int i = 0; i < 10; ++i) {
     m_undoStack->setIndex(0); // undo all
     QCOMPARE(m_molecule->numAtoms(), (unsigned int) 0);
   
     m_undoStack->setIndex(cmdIndex); // redo all
     QCOMPARE(m_molecule->numAtoms(), numAtoms);
-    debugMolecule();
   }
 
 }
 
-void DrawCommandTest::AddAtomDrawCommand_methane()
+void DrawCommandTest::AddAtom_methane()
 {
   // redo will be called automatically, the index will also be increased
   m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 4);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 6);
+  QCOMPARE(m_molecule->atomById(1)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(2)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(3)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(4)->atomicNumber(), 1);
 
   loopUndoRedo();  
+
+  // check if all atom & bond ids are still the same
+  foreach (Atom *atom, m_molecule->atoms())
+    QCOMPARE(atom->index(), atom->id());
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->index(), bond->id());
+
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 4);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 6);
+  QCOMPARE(m_molecule->atomById(1)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(2)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(3)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(4)->atomicNumber(), 1);
 }
 
-void DrawCommandTest::AddAtomDrawCommand_ammonia()
+void DrawCommandTest::AddAtom_ammonia()
 {
+  Atom *atom = m_molecule->addAtom();
+  atom->setAtomicNumber(7);
+
   // redo will be called automatically, the index will also be increased
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 7, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom, 1) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 4);
-  
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 3);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 3);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 7);
+  QCOMPARE(m_molecule->atomById(1)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(2)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(3)->atomicNumber(), 1);
+
   loopUndoRedo();  
+
+  // check if the hydrogens still have the same ids
+  foreach (Atom *atom, m_molecule->atoms())
+    QCOMPARE(atom->index(), atom->id());
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->index(), bond->id());
+
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 4);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 3);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 3);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 7);
+  QCOMPARE(m_molecule->atomById(1)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(2)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(3)->atomicNumber(), 1);
 }
 
-void DrawCommandTest::AddAtomDrawCommand_water()
+void DrawCommandTest::AddAtom_water()
 {
   // redo will be called automatically, the index will also be increased
   m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 8, 1) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 3);
-  
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 2);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 2);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 8);
+  QCOMPARE(m_molecule->atomById(1)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(2)->atomicNumber(), 1);
+ 
   loopUndoRedo();  
+
+  // check if the hydrogens still have the same ids
+  foreach (Atom *atom, m_molecule->atoms())
+    QCOMPARE(atom->index(), atom->id());
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->index(), bond->id());
+
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 3);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 2);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 2);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 8);
+  QCOMPARE(m_molecule->atomById(1)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(2)->atomicNumber(), 1);
 }
 
+/*
 void DrawCommandTest::AddAtomDrawCommand_ethane()
 {
   // redo will be called automatically, the index will also be increased
@@ -296,8 +390,7 @@ void DrawCommandTest::AddAtom_AddBond_DeleteAtom()
   m_undoStack->setIndex(cmdIndex-4); // undo AddAtom
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 0);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 0);
- 
-  /* 
+/////////// 
   bond->setOrder(2);
   m_undoStack->push( new ChangeBondOrderDrawCommand(m_molecule, bond, 1, 2) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) offset + 6);
@@ -308,8 +401,7 @@ void DrawCommandTest::AddAtom_AddBond_DeleteAtom()
 
   m_undoStack->push( new DeleteBondDrawCommand(m_molecule, bond->index(), 2) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) offset + 10);
-  */
-
+///////////
   loopUndoRedo();
 }
 
@@ -358,6 +450,7 @@ void DrawCommandTest::AddAtom_ChangeElement_DeleteAtom()
 
   loopUndoRedo();
 }
+*/
 
 void DrawCommandTest::AdjustHydrogensPreCommand_methane()
 {
@@ -392,6 +485,8 @@ void DrawCommandTest::AdjustHydrogensPreCommand_methane()
   // check if the hydrogens still have the same ids
   foreach (Atom *atom, m_molecule->atoms())
     QCOMPARE(atom->index(), atom->id());
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->index(), bond->id());
 
 
 }
@@ -426,9 +521,127 @@ void DrawCommandTest::AdjustHydrogensPostCommand_methane()
   // check if the hydrogens still have the same ids
   foreach (Atom *atom, m_molecule->atoms())
     QCOMPARE(atom->index(), atom->id());
-
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->index(), bond->id());
 
 }
+
+
+void DrawCommandTest::ChangeElement_ethane()
+{
+  // Add carbon --> CH4
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
+
+  Atom *hydrogen = m_molecule->atom(1); // first hydrogen
+
+  // Change H to C --> H3C--CH3
+  hydrogen->setAtomicNumber(6);
+  m_undoStack->push( new ChangeElementDrawCommand(m_molecule, hydrogen, 1, 1) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 7);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 4);
+  QCOMPARE((int)m_molecule->atomById(1)->valence(), 4);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 6);
+  QCOMPARE(m_molecule->atomById(1)->atomicNumber(), 6);
+  QCOMPARE(m_molecule->atomById(2)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(3)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(4)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(5)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(6)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(7)->atomicNumber(), 1);
+
+  loopUndoRedo();
+
+  // check if the hydrogens still have the same ids
+  foreach (Atom *atom, m_molecule->atoms())
+    QCOMPARE(atom->index(), atom->id());
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->index(), bond->id());
+
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 7);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 4);
+  QCOMPARE((int)m_molecule->atomById(1)->valence(), 4);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 6);
+  QCOMPARE(m_molecule->atomById(1)->atomicNumber(), 6);
+  QCOMPARE(m_molecule->atomById(2)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(3)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(4)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(5)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(6)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(7)->atomicNumber(), 1);
+}
+
+void DrawCommandTest::ChangeElement_carbon()
+{
+  // Add carbon
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 0) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 1);
+
+  Atom *carbon = m_molecule->atom(0); // first hydrogen
+
+  // Change C to O
+  carbon->setAtomicNumber(8);
+  m_undoStack->push( new ChangeElementDrawCommand(m_molecule, carbon, 6, 0) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 1);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 0);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 0);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 8);
+
+  loopUndoRedo();
+
+  // check if the hydrogens still have the same ids
+  foreach (Atom *atom, m_molecule->atoms())
+    QCOMPARE(atom->index(), atom->id());
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->index(), bond->id());
+
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 1);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 0);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 0);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 8);
+}
+
+void DrawCommandTest::DeleteAtom_methane()
+{
+  // redo will be called automatically, the index will also be increased
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 4);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 6);
+  QCOMPARE(m_molecule->atomById(1)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(2)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(3)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(4)->atomicNumber(), 1);
+  
+  m_undoStack->push( new DeleteAtomDrawCommand(m_molecule, 0, 1) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 0);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 0);
+ 
+  loopUndoRedo();  
+
+  m_undoStack->undo(); // undo DeleteAtom
+
+  debugMolecule();
+
+  // check if all atom & bond ids are still the same
+  foreach (Atom *atom, m_molecule->atoms())
+    QCOMPARE(atom->index(), atom->id());
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->index(), bond->id());
+
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 4);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 6);
+  QCOMPARE(m_molecule->atomById(1)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(2)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(3)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atomById(4)->atomicNumber(), 1);
+}
+
 
 
 QTEST_MAIN(DrawCommandTest)
