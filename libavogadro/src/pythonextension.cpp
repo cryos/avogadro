@@ -219,6 +219,8 @@ namespace Avogadro
 
       object pyObj(d->instance.attr("performAction")(real_qobj, real_obj)); // new reference
       QUndoCommand *command = extract<QUndoCommand*>(pyObj);
+      if (!command)
+        return 0;
 
       return new PythonCommand(command);
     } catch(error_already_set const &) {
