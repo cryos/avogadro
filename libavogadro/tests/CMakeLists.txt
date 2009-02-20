@@ -31,6 +31,7 @@ link_directories(
 #  avogadro-lib)
 
 set(tests
+    drawcommand
     molecule
     neighborlist
    )
@@ -54,5 +55,6 @@ endforeach (test ${tests})
 
 
 
+add_test(DrawCommandTest drawcommandtest)
 add_test(MoleculeTest moleculetest)
 add_test(NeighborListTest neighborlisttest)
