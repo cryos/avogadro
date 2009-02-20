@@ -84,8 +84,13 @@ namespace Avogadro {
   void AdjustHydrogensPreCommand::undo()
   {
     qDebug() << "AdjustHydrogensPreCommand::undo()";
- 
-    foreach (unsigned long id, d->atomIds) {
+
+    // invert the list too produce exactly the same ids
+    QList<unsigned long> reverseList;
+    for (int i = d->atomIds.size() - 1; i >= 0; --i)
+      reverseList.append(d->atomIds.at(i));
+
+    foreach (unsigned long id, reverseList) {
       Atom *atom = d->molecule->atomById(id);
 
       if (atom) {
@@ -489,7 +494,6 @@ namespace Avogadro {
       d->id = bond->id();
       d->prevId = true;
     }
-    qDebug() << "id = " << d->id;
     bond->setOrder(d->order);
     bond->setBegin(beginAtom);
     bond->setEnd(endAtom);
@@ -569,7 +573,7 @@ namespace Avogadro {
 
   class ChangeElementDrawCommandPrivate {
     public:
-      ChangeElementDrawCommandPrivate() : molecule(0), id(0), preCommand(0), postCommand(0) {};
+      ChangeElementDrawCommandPrivate() : molecule(0), id(-1), preCommand(0), postCommand(0) {};
 
       Molecule *molecule;
       unsigned int newElement, oldElement;
@@ -665,17 +669,22 @@ namespace Avogadro {
 
   class ChangeBondOrderDrawCommandPrivate {
     public:
-      ChangeBondOrderDrawCommandPrivate() : molecule(0), id(-1) {};
+      ChangeBondOrderDrawCommandPrivate() : molecule(0), id(-1), preCommand(0), postCommand(0) {};
 
       Molecule *molecule;
       unsigned long id;
       unsigned int addBondOrder, oldBondOrder;
       int adjustValence;
+
+      QUndoCommand *preCommand;
+      QUndoCommand *postCommand;
   };
 
-  ChangeBondOrderDrawCommand::ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond, unsigned int oldBondOrder, int adjustValence) : d(new ChangeBondOrderDrawCommandPrivate)
+  ChangeBondOrderDrawCommand::ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond, 
+      unsigned int oldBondOrder, int adjustValence) : d(new ChangeBondOrderDrawCommandPrivate)
   {
-    qDebug() << "ChangeBondOrderDrawCommand(id=" << bond->id() << ", old=" << oldBondOrder << ", adj=" << adjustValence << ")";  
+    qDebug() << "ChangeBondOrderDrawCommand(id=" << bond->id() << ", old=" << oldBondOrder 
+             << ", adj=" << adjustValence << ")";  
     setText(QObject::tr("Change Bond Order"));
     d->molecule = molecule;
     d->id = bond->id();
@@ -686,6 +695,14 @@ namespace Avogadro {
 
   ChangeBondOrderDrawCommand::~ChangeBondOrderDrawCommand()
   {
+    if (d->preCommand) {
+      delete d->preCommand;
+      d->preCommand = 0; 
+    }
+    if (d->postCommand) {
+      delete d->postCommand;
+      d->postCommand = 0; 
+    }
     delete d;
   }
 
@@ -693,21 +710,19 @@ namespace Avogadro {
   {
     qDebug() << "ChangeBondOrderDrawCommand::undo()";
     Bond *bond = d->molecule->bondById(d->id);
-    if(bond)
-    {
+    
+    if (bond) {
+      // Remove Hydrogens if needed
+      if (d->adjustValence)
+        d->postCommand->undo();
+
       // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
       bond->setOrder(d->oldBondOrder);
-      if (d->adjustValence) {
-        Atom *a1, *a2;
-        a1 = d->molecule->atomById(bond->beginAtomId());
-        a2 = d->molecule->atomById(bond->endAtomId());
-
-        d->molecule->removeHydrogens(a1);
-        d->molecule->removeHydrogens(a2);
-
-        d->molecule->addHydrogens(a1);
-        d->molecule->addHydrogens(a2);
-      }
+ 
+      // Add Hydrogens if needed
+      if (d->adjustValence)
+        d->preCommand->undo();
+      
       d->molecule->update();
     }
   }
@@ -716,20 +731,32 @@ namespace Avogadro {
   {
     qDebug() << "ChangeBondOrderDrawCommand::redo()";
     Bond *bond = d->molecule->bondById(d->id);
-    if(bond)
-    {
+    if (bond) {      
+      // Remove Hydrogens if needed
+      if (d->adjustValence) {
+        if (!d->preCommand) {
+          QList<unsigned long> ids;
+          ids.append(bond->beginAtomId());
+          ids.append(bond->endAtomId());
+          d->preCommand = new AdjustHydrogensPreCommand(d->molecule, ids);
+        }
+        d->preCommand->redo();
+      }
+ 
       // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
       bond->setOrder(d->addBondOrder);
-      if (d->adjustValence) {
-        Atom *a1, *a2;
-        a1 = d->molecule->atomById(bond->beginAtomId());
-        a2 = d->molecule->atomById(bond->endAtomId());
-        d->molecule->removeHydrogens(a1);
-        d->molecule->removeHydrogens(a2);
 
-        d->molecule->addHydrogens(a1);
-        d->molecule->addHydrogens(a2);
+      // Add Hydrogens if needed
+      if (d->adjustValence) {
+        if (!d->postCommand) {
+          QList<unsigned long> ids;
+          ids.append(bond->beginAtomId());
+          ids.append(bond->endAtomId());
+          d->postCommand = new AdjustHydrogensPostCommand(d->molecule, ids);
+        }
+        d->postCommand->redo();
       }
+
       d->molecule->update();
     }
   }

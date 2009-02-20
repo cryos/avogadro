@@ -133,7 +133,18 @@ class DrawCommandTest : public QObject
      * Test AddAtomDrawCommand(molecule, index, adj=1)
      */ 
     void DeleteAtom_methane();
+    /** 
+     * Test AddAtomDrawCommand(molecule, index, adj=0)
+     */ 
+    void DeleteAtom_carbon();
 
+
+    /**
+     * Test ChangeBondOrderDrawCommand(molecule, index, adj=1)
+     */
+    void ChangeBondOrder_ethane();
+    
+    
     // 2x AddAtom + AddBond
     /*
     void AddAtomDrawCommand_ethane();
@@ -624,8 +635,6 @@ void DrawCommandTest::DeleteAtom_methane()
 
   m_undoStack->undo(); // undo DeleteAtom
 
-  debugMolecule();
-
   // check if all atom & bond ids are still the same
   foreach (Atom *atom, m_molecule->atoms())
     QCOMPARE(atom->index(), atom->id());
@@ -642,6 +651,104 @@ void DrawCommandTest::DeleteAtom_methane()
   QCOMPARE(m_molecule->atomById(4)->atomicNumber(), 1);
 }
 
+void DrawCommandTest::DeleteAtom_carbon()
+{
+  // redo will be called automatically, the index will also be increased
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 0) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 1);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 0);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 0);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 6);
+  
+  m_undoStack->push( new DeleteAtomDrawCommand(m_molecule, 0, 0) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 0);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 0);
+ 
+  loopUndoRedo();  
+
+  m_undoStack->undo(); // undo DeleteAtom
+
+  // check if all atom & bond ids are still the same
+  foreach (Atom *atom, m_molecule->atoms())
+    QCOMPARE(atom->index(), atom->id());
+
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 1);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 0);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 0);
+  QCOMPARE(m_molecule->atomById(0)->atomicNumber(), 6);
+}
+
+void DrawCommandTest::ChangeBondOrder_ethane()
+{
+  // Add 1st C --> CH4
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
+  // Add 2nd C --> CH4  CH4
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 10);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 8);
+
+  // Add C-C bond --> H3C--CH3
+  Atom *beginAtom = m_molecule->atomById(0); // C1
+  Atom *endAtom = m_molecule->atomById(5); // C2
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1, 2) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
+  QCOMPARE((int)beginAtom->valence(), 4);
+  QCOMPARE((int)endAtom->valence(), 4);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 7);
+
+  Bond *bond = m_molecule->bond(beginAtom, endAtom);
+  QVERIFY(bond);
+  QCOMPARE(bond->id(), (unsigned long) 8);
+
+  // save the atom & bond ids since they are no longer the same as indexes
+  QList<unsigned long> atomIds, bondIds;
+  foreach (Atom *atom, m_molecule->atoms())
+    atomIds.append(atom->id());
+  foreach (Bond *bond, m_molecule->bonds())
+    bondIds.append(bond->id());
+
+  debugMolecule();
+
+  bond->setOrder(2);
+  m_undoStack->push( new ChangeBondOrderDrawCommand(m_molecule, bond, 1, 2) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 6);
+
+  m_undoStack->undo(); // undo ChangeBondOrder 1 -> 2
+  debugMolecule();
+
+  // check if all atom & bond ids are still the same
+  foreach (Atom *atom, m_molecule->atoms())
+    QCOMPARE(atom->id(), atomIds.at(atom->index()));
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->id(), bondIds.at(bond->index()));
+
+  m_undoStack->redo(); 
+  loopUndoRedo();
+
+  m_undoStack->undo(); // undo ChangeBondOrder 1 -> 2
+  
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 7);
+
+  // check if all atom & bond ids are still the same
+  foreach (Atom *atom, m_molecule->atoms())
+    QCOMPARE(atom->id(), atomIds.at(atom->index()));
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->id(), bondIds.at(bond->index()));
+
+  QCOMPARE((int)m_molecule->atom(0)->valence(), 4);
+  QCOMPARE((int)m_molecule->atom(1)->valence(), 4);
+  QCOMPARE(m_molecule->atom(0)->atomicNumber(), 6);
+  QCOMPARE(m_molecule->atom(1)->atomicNumber(), 6);
+  QCOMPARE(m_molecule->atom(2)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atom(3)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atom(4)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atom(5)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atom(6)->atomicNumber(), 1);
+  QCOMPARE(m_molecule->atom(7)->atomicNumber(), 1);
+}
 
 
 QTEST_MAIN(DrawCommandTest)
