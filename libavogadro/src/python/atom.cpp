@@ -4,6 +4,7 @@
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
+#include <avogadro/residue.h>
 #include <avogadro/molecule.h>
 
 using namespace boost::python;
@@ -20,6 +21,8 @@ void export_Atom()
     .add_property("atomicNumber", &Atom::atomicNumber, &Atom::setAtomicNumber)
     .add_property("partialCharge", &Atom::partialCharge, &Atom::setPartialCharge)
     // read-only properties
+    .add_property("residue", make_function(&Atom::residue, return_value_policy<reference_existing_object>()))
+    .add_property("residueId", &Atom::residueId)
     .add_property("bonds", &Atom::bonds)
     .add_property("neighbors", &Atom::neighbors)
     .add_property("valence", &Atom::valence)

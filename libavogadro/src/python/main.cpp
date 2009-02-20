@@ -17,6 +17,7 @@ void export_Bond();
 void export_Fragment();
 void export_Residue();
 void export_Molecule();
+void export_MoleculeList();
 void export_Cube();
 void export_Camera();
 void export_GLWidget();
@@ -49,6 +50,7 @@ BOOST_PYTHON_MODULE(Avogadro) {
 
   export_Primitive();
   export_Molecule();
+  export_MoleculeList();
   export_Atom();
   export_Bond();
   export_Fragment();
