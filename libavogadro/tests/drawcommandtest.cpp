@@ -73,26 +73,6 @@ class DrawCommandTest : public QObject
 
   private slots:
     /**
-     * Called before the first test function is executed.
-     */
-    void initTestCase();
-
-    /**
-     * Called after the last test function is executed.
-     */
-    void cleanupTestCase();
-
-    /**
-     * Called before each test function is executed.
-     */
-    void init();
-
-    /**
-     * Called after every test function.
-     */
-    void cleanup();
-
-    /**
      * Test AdjustHydrogensPreCommand
      */
     void AdjustHydrogensPreCommand_methane();
@@ -129,7 +109,7 @@ class DrawCommandTest : public QObject
     /** 
      * Test AddAtomDrawCommand(molecule, index, adj=1)
      */ 
-    //void DeleteAtom_methane();
+    void DeleteAtom_methane();
     /** 
      * Test AddAtomDrawCommand(molecule, index, adj=0)
      */ 
@@ -166,8 +146,36 @@ class DrawCommandTest : public QObject
     void AddAtom_ChangeElement_DeleteAtom();
 */
     
-    void DeleteAtom_methane();
+  
+    
     // Crashers...
+    void crash1();
+    void crash2();
+    void crash3();
+
+    void DeleteAtom_ethane();
+
+    /**
+     * Called before the first test function is executed.
+     */
+    void initTestCase();
+
+    /**
+     * Called after the last test function is executed.
+     */
+    void cleanupTestCase();
+
+    /**
+     * Called before each test function is executed.
+     */
+    void init();
+
+    /**
+     * Called after every test function.
+     */
+    void cleanup();
+
+
 };
 
 void DrawCommandTest::initTestCase()
@@ -213,13 +221,26 @@ void DrawCommandTest::loopUndoRedo()
   // save the index
   int cmdIndex = m_undoStack->index();
 
+  // save all atom & bond ids
+  QList<unsigned long> atomIds, bondIds;
+  foreach (Atom *atom, m_molecule->atoms())
+    atomIds.append(atom->id());
+  foreach (Bond *bond, m_molecule->bonds())
+    bondIds.append(bond->id());
+
   for (int i = 0; i < 10; ++i) {
     m_undoStack->setIndex(0); // undo all
     QCOMPARE(m_molecule->numAtoms(), (unsigned int) 0);
-  
     m_undoStack->setIndex(cmdIndex); // redo all
     QCOMPARE(m_molecule->numAtoms(), numAtoms);
   }
+
+  // check if all atom & bond ids are still the same
+  foreach (Atom *atom, m_molecule->atoms())
+    QCOMPARE(atom->id(), atomIds.at(atom->index()));
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->id(), bondIds.at(bond->index()));
+
 
 }
 
@@ -668,6 +689,51 @@ void DrawCommandTest::DeleteAtom_methane()
   QCOMPARE(m_molecule->atomById(4)->atomicNumber(), 1);
 }
 
+void DrawCommandTest::DeleteAtom_ethane()
+{
+  Atom *atom1 = m_molecule->addAtom();
+  atom1->setAtomicNumber(6);
+  Atom *atom2 = m_molecule->addAtom();
+  atom2->setAtomicNumber(6);
+  Bond *bond1 = m_molecule->addBond();
+  bond1->setAtoms(atom1->id(), atom2->id(), 1);
+  // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom1, 2) );
+  // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom2, 2) );
+  // AddBondDrawCommand(begin= 0 , end= 1 , adj= 2 )
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond1, 1) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 7);
+  QCOMPARE((int)m_molecule->atomById(0)->valence(), 4);
+  
+  m_undoStack->push( new DeleteAtomDrawCommand(m_molecule, 0, 1) );
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
+
+  //debugMolecule();
+ 
+  QList<unsigned long> atomIds, bondIds;
+  foreach (Atom *atom, m_molecule->atoms())
+    atomIds.append(atom->id());
+  foreach (Bond *bond, m_molecule->bonds())
+    bondIds.append(bond->id());
+
+  //debugMolecule();
+  loopUndoRedo();
+  //debugMolecule();
+
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
+
+  // check if all atom & bond ids are still the same
+  foreach (Atom *atom, m_molecule->atoms())
+    QCOMPARE(atom->id(), atomIds.at(atom->index()));
+  foreach (Bond *bond, m_molecule->bonds())
+    QCOMPARE(bond->id(), bondIds.at(bond->index()));
+
+}
+
 void DrawCommandTest::DeleteAtom_carbon()
 {
   // redo will be called automatically, the index will also be increased
@@ -966,7 +1032,7 @@ void DrawCommandTest::DeleteBond_ethane()
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 10);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 8);
 
-  debugMolecule();
+  //debugMolecule();
   // save the atom & bond ids since they are no longer the same as indexes
   QList<unsigned long> atomIds, bondIds;
   foreach (Atom *atom, m_molecule->atoms())
@@ -1006,7 +1072,7 @@ void DrawCommandTest::DeleteBond_ethane()
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 10);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 8);
  
-  debugMolecule();
+  //debugMolecule();
 
   // check if all atom & bond ids are still the same
   foreach (Atom *atom, m_molecule->atoms())
@@ -1026,6 +1092,119 @@ void DrawCommandTest::DeleteBond_ethane()
   QCOMPARE(m_molecule->atom(7)->atomicNumber(), 1);
 }
     
+void DrawCommandTest::crash1()
+{
+  Atom *beginAtom = m_molecule->addAtom();
+  beginAtom->setAtomicNumber(6);
+  Atom *endAtom = m_molecule->addAtom();
+  endAtom->setAtomicNumber(6);
+  Bond *bond = m_molecule->addBond();
+  bond->setAtoms(beginAtom->id(), endAtom->id(), 1);
+  
+  //AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, beginAtom, 2) );
+  //AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, endAtom, 2) );
+  //AddBondDrawCommand(begin= 0 , end= 1 , adj= 2 ) 
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond, 1) );
+  //ChangeBondOrderDrawCommand(id= 0 , old= 1 , adj= 2 ) 
+  bond->setOrder(2);
+  m_undoStack->push( new ChangeBondOrderDrawCommand(m_molecule, bond, 1, 1) );
+
+  //debugMolecule();
+  loopUndoRedo();
+  //debugMolecule();
+}
+
+void DrawCommandTest::crash2()
+{
+  Atom *atom1 = m_molecule->addAtom();
+  atom1->setAtomicNumber(6);
+  Atom *atom2 = m_molecule->addAtom();
+  atom2->setAtomicNumber(6);
+  Bond *bond1 = m_molecule->addBond();
+  bond1->setAtoms(atom1->id(), atom2->id(), 1);
+  // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom1, 2) );
+  // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom2, 2) );
+  // AddBondDrawCommand(begin= 0 , end= 1 , adj= 2 )
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond1, 1) );
+ 
+  Atom *atom3 = m_molecule->addAtom();
+  atom3->setAtomicNumber(6);
+  Bond *bond2 = m_molecule->addBond();
+  bond2->setAtoms(atom3->id(), atom2->id(), 1);
+  // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom3, 2) );
+  // AddBondDrawCommand(begin= 8 , end= 1 , adj= 2 ) 
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond2, 1) );
+ 
+  Atom *atom4 = m_molecule->addAtom();
+  atom4->setAtomicNumber(6);
+  Bond *bond3 = m_molecule->addBond();
+  bond3->setAtoms(atom2->id(), atom4->id(), 1);
+  // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom4, 2) );
+  // AddBondDrawCommand(begin= 1 , end= 15 , adj= 2 )
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond3, 1) );
+
+  // ChangeBondOrderDrawCommand(id= 13 , old= 1 , adj= 2 )
+  Bond *bond = m_molecule->bondById(13);
+  bond->setOrder(2);
+  m_undoStack->push( new ChangeBondOrderDrawCommand(m_molecule, bond, 1, 1) );
+
+  // ChangeElementDrawCommand(id= 0 , old= 6 , adj= 2 )
+  atom1->setAtomicNumber(8);
+  m_undoStack->push( new ChangeElementDrawCommand(m_molecule, atom1, 6, 0) );
+  // ChangeElementDrawCommand(id= 15 , old= 6 , adj= 2 ) 
+  atom4->setAtomicNumber(8);
+  m_undoStack->push( new ChangeElementDrawCommand(m_molecule, atom4, 6, 0) );
+  
+  // DeleteAtomDrawCommand(id= 8 , adj= 2 ) 
+  m_undoStack->push( new DeleteAtomDrawCommand(m_molecule, atom3->index(), 2) );
+  
+  //debugMolecule();
+  loopUndoRedo();
+  //debugMolecule();
+}
+
+void DrawCommandTest::crash3()
+{
+  Atom *atom1 = m_molecule->addAtom();
+  atom1->setAtomicNumber(6);
+  Atom *atom2 = m_molecule->addAtom();
+  atom2->setAtomicNumber(6);
+  Bond *bond1 = m_molecule->addBond();
+  bond1->setAtoms(atom1->id(), atom2->id(), 1);
+  // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom1, 2) );
+  // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom2, 2) );
+  // AddBondDrawCommand(begin= 0 , end= 1 , adj= 2 )
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond1, 1) );
+  // ChangeBondOrderDrawCommand(id= 0 , old= 1 , adj= 2 ) 
+  bond1->setOrder(2);
+  m_undoStack->push( new ChangeBondOrderDrawCommand(m_molecule, bond1, 1, 1) );
+
+  // DeleteAtomDrawCommand(id= 1 , adj= 2 ) 
+  m_undoStack->push( new DeleteAtomDrawCommand(m_molecule, atom2->index(), 2) );
+
+  Atom *atom3 = m_molecule->addAtom();
+  atom3->setAtomicNumber(6);
+  Bond *bond2 = m_molecule->addBond();
+  bond2->setAtoms(atom1->id(), atom3->id(), 1);
+  // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom3, 2) );
+  // AddBondDrawCommand(begin= 14 , end= 0 , adj= 2 ) 
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond2, 1) );
+
+  //debugMolecule();
+  loopUndoRedo();
+  //debugMolecule();
+
+}
+
 
 QTEST_MAIN(DrawCommandTest)
 

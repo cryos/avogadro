@@ -32,6 +32,9 @@
 
 #include <QDebug>
 
+// use this for creating drawcommand unit tests
+//#define DEBUG_COMMANDS 1
+
 using namespace OpenBabel;
 
 namespace Avogadro {
@@ -53,7 +56,9 @@ namespace Avogadro {
   AdjustHydrogensPreCommand::AdjustHydrogensPreCommand(Molecule *molecule, const QList<unsigned long> &atomIds) 
       : d(new AdjustHydrogensPreCommandPrivate)
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AdjustHydrogensPreCommand()";
+#endif
     d->molecule = molecule;
     d->atomIds = atomIds;
 
@@ -83,7 +88,9 @@ namespace Avogadro {
 
   void AdjustHydrogensPreCommand::undo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AdjustHydrogensPreCommand::undo()";
+#endif
 
     foreach (unsigned long id, d->atomIds) {
       Atom *atom = d->molecule->atomById(id);
@@ -100,7 +107,9 @@ namespace Avogadro {
 
   void AdjustHydrogensPreCommand::redo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AdjustHydrogensPreCommand::redo()";
+#endif
 
     foreach (unsigned long id, d->atomIds) {
       Atom *atom = d->molecule->atomById(id);
@@ -132,7 +141,9 @@ namespace Avogadro {
   AdjustHydrogensPostCommand::AdjustHydrogensPostCommand(Molecule *molecule, const QList<unsigned long> &atomIds) 
       : d(new AdjustHydrogensPostCommandPrivate)
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AdjustHydrogensPostCommand()";
+#endif
     d->molecule = molecule;
     d->atomIds = atomIds;
   }
@@ -144,7 +155,9 @@ namespace Avogadro {
 
   void AdjustHydrogensPostCommand::undo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AdjustHydrogensPostCommand::undo()";
+#endif
  
     foreach (unsigned long id, d->atomIds) {
       Atom *atom = d->molecule->atomById(id);
@@ -161,7 +174,9 @@ namespace Avogadro {
 
   void AdjustHydrogensPostCommand::redo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AdjustHydrogensPostCommand::redo()";
+#endif
 
     if (d->hydrogenIds.isEmpty()) {
       foreach (unsigned long id, d->atomIds) {
@@ -179,7 +194,9 @@ namespace Avogadro {
               if (nbr->isHydrogen()) {
                 Bond *bond = d->molecule->bond(id, nbrId);
                 if (!bond) {
+#ifdef DEBUG_COMMANDS
                   qDebug() << "Error, AdjustHydrogensPostCommand::redo...";
+#endif
                   continue;
                 }
                 d->hydrogenIds[id].append(nbrId);
@@ -228,7 +245,9 @@ namespace Avogadro {
   AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos, unsigned int element, 
       int adjustValence) : d(new AddAtomDrawCommandPrivate)
   {
-    qDebug() << "AddAtomDrawCommand(element=" << element << ", adj=" << adjustValence << ")"; 
+#ifdef DEBUG_COMMANDS
+    qDebug() << "AddAtomDrawCommand_ctor1(element=" << element << ", adj=" << adjustValence << ")"; 
+#endif
     setText(QObject::tr("Add Atom"));
     d->molecule = molecule;
     d->pos = pos;
@@ -239,7 +258,9 @@ namespace Avogadro {
   AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, Atom *atom, int adjustValence) 
       : d(new AddAtomDrawCommandPrivate)
   {
-    qDebug() << "AddAtomDrawCommand(element=" << atom->atomicNumber() << ", adj=" << adjustValence << ")"; 
+#ifdef DEBUG_COMMANDS
+    qDebug() << "AddAtomDrawCommand_ctor2(element=" << atom->atomicNumber() << ", adj=" << adjustValence << ")"; 
+#endif
     setText(QObject::tr("Add Atom"));
     d->molecule = molecule;
     d->pos = *atom->pos();
@@ -260,7 +281,9 @@ namespace Avogadro {
 
   void AddAtomDrawCommand::undo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AddAtomDrawCommand::undo()";
+#endif
     Atom *atom = d->molecule->atomById(d->id);
     if (atom) {
       // Remove the previously add hydrogens if needed
@@ -273,14 +296,17 @@ namespace Avogadro {
 
   void AddAtomDrawCommand::redo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AddAtomDrawCommand::redo()";
+#endif
 
     if (d->atom) { // initial creation
       if (d->adjustValence) {
         QList<unsigned long> ids;
         ids.append(d->id);
         d->postCommand = new AdjustHydrogensPostCommand(d->molecule, ids);
-        d->postCommand->redo();
+        if (d->adjustValence == 1)
+          d->postCommand->redo();
       }
       d->atom = 0;
       return;
@@ -302,7 +328,8 @@ namespace Avogadro {
         ids.append(d->id);
         d->postCommand = new AdjustHydrogensPostCommand(d->molecule, ids);
       }
-      d->postCommand->redo();
+      if (d->adjustValence == 1)
+        d->postCommand->redo();
     }
 
     atom->update();
@@ -317,6 +344,7 @@ namespace Avogadro {
       DeleteAtomDrawCommandPrivate() : id(-1), preCommand(0), postCommand(0) {};
 
       Molecule *molecule;
+      Molecule moleculeCopy;
       unsigned long id;
       Eigen::Vector3d pos;
       unsigned int element;
@@ -331,9 +359,12 @@ namespace Avogadro {
   {
     setText(QObject::tr("Delete Atom"));
     d->molecule = molecule;
+    d->moleculeCopy = *molecule;
     Atom *atom = molecule->atom(index);
     d->id = atom->id();
+#ifdef DEBUG_COMMANDS
     qDebug() << "DeleteAtomDrawCommand(id=" << d->id << ", adj=" << adjustValence << ")"; 
+#endif
     d->element = atom->atomicNumber();
     d->pos = *(atom->pos());
     d->adjustValence = adjustValence;
@@ -354,8 +385,11 @@ namespace Avogadro {
 
   void DeleteAtomDrawCommand::undo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "DeleteAtomDrawCommand::undo()";
+#endif
 
+/*
     if (d->adjustValence)
       d->postCommand->undo();
 
@@ -365,26 +399,34 @@ namespace Avogadro {
     
     if (d->adjustValence)
       d->preCommand->undo();
+*/
+    // copy for now...
+    *d->molecule = d->moleculeCopy;
 
     d->molecule->update();
   }
 
   void DeleteAtomDrawCommand::redo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "DeleteAtomDrawCommand::redo()";
+#endif
     Atom *atom = d->molecule->atomById(d->id);
     if (atom) {
       QList<unsigned long> neighbors;
 
       if (d->adjustValence) {
         if (!d->preCommand) {
+          QList<unsigned long> ids;
           foreach (unsigned long id, atom->neighbors()) {
             if (!d->molecule->atomById(id)->isHydrogen())
               neighbors.append(id);
+              ids.append(id);
           }
 
-          QList<unsigned long> ids;
           ids.append(atom->id());
+          // Delete all hydrogens on the to be deleted atom and its heavy atom neighbors
+          // The hydrogen ids are saved along with thier bond ids
           d->preCommand = new AdjustHydrogensPreCommand(d->molecule, ids);
         }
         d->preCommand->redo();
@@ -395,6 +437,8 @@ namespace Avogadro {
 
       if (d->adjustValence) {
         if (!d->postCommand)
+          // Add hydrogens to the heavy atom neighbors of the delted atom
+          // Uses new ids the first time, reuses these on successive calls
           d->postCommand = new AdjustHydrogensPostCommand(d->molecule, neighbors);
         d->postCommand->redo();
       }
@@ -429,8 +473,10 @@ namespace Avogadro {
   AddBondDrawCommand::AddBondDrawCommand(Molecule *molecule, Atom *beginAtom, Atom *endAtom, 
       unsigned int order, int adjustValence) : d(new AddBondDrawCommandPrivate)
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AddBondDrawCommand(begin=" << beginAtom->id() << ", end=" << endAtom->id() 
              << ", adj=" << adjustValence << ")"; 
+#endif
     setText(QObject::tr("Add Bond"));
     d->molecule = molecule;
     d->beginAtomId = beginAtom->id();
@@ -442,8 +488,10 @@ namespace Avogadro {
   AddBondDrawCommand::AddBondDrawCommand(Molecule *molecule, Bond *bond, int adjustValence) 
       : d(new AddBondDrawCommandPrivate)
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AddBondDrawCommand(begin=" << bond->beginAtomId() << ", end=" << bond->endAtomId() 
              << ", adj=" << adjustValence << ")"; 
+#endif
  
     setText(QObject::tr("Add Bond"));
     d->molecule = molecule;
@@ -471,7 +519,9 @@ namespace Avogadro {
 
   void AddBondDrawCommand::undo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AddBondDrawCommand::undo()";
+#endif
     Bond *bond = d->molecule->bondById(d->id);
     if (bond) {
       // Remove the previously add hydrogens if needed
@@ -490,7 +540,9 @@ namespace Avogadro {
 
   void AddBondDrawCommand::redo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "AddBondDrawCommand::redo()";
+#endif
     if (d->bond) { // already created the bond
       if (d->adjustValence) {
         QList<unsigned long> ids;
@@ -576,14 +628,18 @@ namespace Avogadro {
 
   void DeleteBondDrawCommand::undo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "DeleteBondDrawCommand::undo()";
+#endif
     *d->molecule = d->moleculeCopy;
     d->molecule->update();
   }
 
   void DeleteBondDrawCommand::redo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "DeleteBondDrawCommand::redo()";
+#endif
     Bond *bond = d->molecule->bondById(d->id);
     if(bond)
     {
@@ -623,7 +679,9 @@ namespace Avogadro {
   ChangeElementDrawCommand::ChangeElementDrawCommand(Molecule *molecule, Atom *atom, unsigned int oldElement, 
       int adjustValence) : d(new ChangeElementDrawCommandPrivate)
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "ChangeElementDrawCommand(id=" << atom->id() << ", old=" << oldElement << ", adj=" << adjustValence << ")";  
+#endif
     setText(QObject::tr("Change Element"));
     d->molecule = molecule;
     d->newElement = atom->atomicNumber();
@@ -647,7 +705,9 @@ namespace Avogadro {
 
   void ChangeElementDrawCommand::undo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "ChangeElementDrawCommand::undo()";
+#endif
     Atom *atom = d->molecule->atomById(d->id);
 
     if (atom) {
@@ -668,7 +728,9 @@ namespace Avogadro {
 
   void ChangeElementDrawCommand::redo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "ChangeElementDrawCommand::redo()";
+#endif
     Atom *atom = d->molecule->atomById(d->id);
 
     if (atom) {
@@ -719,8 +781,10 @@ namespace Avogadro {
   ChangeBondOrderDrawCommand::ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond, 
       unsigned int oldBondOrder, int adjustValence) : d(new ChangeBondOrderDrawCommandPrivate)
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "ChangeBondOrderDrawCommand(id=" << bond->id() << ", old=" << oldBondOrder 
              << ", adj=" << adjustValence << ")";  
+#endif
     setText(QObject::tr("Change Bond Order"));
     d->molecule = molecule;
     d->id = bond->id();
@@ -744,7 +808,9 @@ namespace Avogadro {
 
   void ChangeBondOrderDrawCommand::undo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "ChangeBondOrderDrawCommand::undo()";
+#endif
     Bond *bond = d->molecule->bondById(d->id);
     
     if (bond) {
@@ -765,7 +831,9 @@ namespace Avogadro {
 
   void ChangeBondOrderDrawCommand::redo()
   {
+#ifdef DEBUG_COMMANDS
     qDebug() << "ChangeBondOrderDrawCommand::redo()";
+#endif
     Bond *bond = d->molecule->bondById(d->id);
     if (bond) {      
       // Remove Hydrogens if needed
