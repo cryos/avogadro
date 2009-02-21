@@ -236,7 +236,8 @@ namespace Avogadro {
     d->adjustValence = adjustValence;
   }
 
-  AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, Atom *atom, int adjustValence) : d(new AddAtomDrawCommandPrivate)
+  AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, Atom *atom, int adjustValence) 
+      : d(new AddAtomDrawCommandPrivate)
   {
     qDebug() << "AddAtomDrawCommand(element=" << atom->atomicNumber() << ", adj=" << adjustValence << ")"; 
     setText(QObject::tr("Add Atom"));
@@ -316,21 +317,25 @@ namespace Avogadro {
       DeleteAtomDrawCommandPrivate() : id(-1), preCommand(0), postCommand(0) {};
 
       Molecule *molecule;
-      Molecule moleculeCopy;
       unsigned long id;
+      Eigen::Vector3d pos;
+      unsigned int element;
       int adjustValence;
-      
+ 
       QUndoCommand *preCommand;
       QUndoCommand *postCommand;
   };
 
-  DeleteAtomDrawCommand::DeleteAtomDrawCommand(Molecule *molecule, int index, int adjustValence) : d(new DeleteAtomDrawCommandPrivate)
+  DeleteAtomDrawCommand::DeleteAtomDrawCommand(Molecule *molecule, int index, int adjustValence) 
+      : d(new DeleteAtomDrawCommandPrivate)
   {
     setText(QObject::tr("Delete Atom"));
     d->molecule = molecule;
-    d->moleculeCopy = *molecule;
-    d->id = molecule->atom(index)->id();
+    Atom *atom = molecule->atom(index);
+    d->id = atom->id();
     qDebug() << "DeleteAtomDrawCommand(id=" << d->id << ", adj=" << adjustValence << ")"; 
+    d->element = atom->atomicNumber();
+    d->pos = *(atom->pos());
     d->adjustValence = adjustValence;
   }
 
@@ -350,7 +355,17 @@ namespace Avogadro {
   void DeleteAtomDrawCommand::undo()
   {
     qDebug() << "DeleteAtomDrawCommand::undo()";
-    *d->molecule = d->moleculeCopy;
+
+    if (d->adjustValence)
+      d->postCommand->undo();
+
+    Atom *atom = d->molecule->addAtom(d->id);
+    atom->setAtomicNumber(d->element);
+    atom->setPos(d->pos);
+    
+    if (d->adjustValence)
+      d->preCommand->undo();
+
     d->molecule->update();
   }
 
@@ -794,7 +809,8 @@ namespace Avogadro {
       Molecule moleculeCopy, generatedMolecule;
   };
 
-  InsertFragmentCommand::InsertFragmentCommand(Molecule *molecule, Molecule &generatedMolecule) : d(new InsertFragmentCommandPrivate)
+  InsertFragmentCommand::InsertFragmentCommand(Molecule *molecule, Molecule &generatedMolecule) 
+      : d(new InsertFragmentCommandPrivate)
   {
     setText(QObject::tr("Insert Fragment"));
     d->molecule = molecule;
