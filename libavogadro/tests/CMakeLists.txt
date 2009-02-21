@@ -1,3 +1,5 @@
+set(QT_USE_QTOPENGL true)
+
 include(${QT_USE_FILE})
 
 include_directories(
@@ -32,9 +34,11 @@ link_directories(
 
 set(tests
     drawcommand
+    hydrogenscommand
     molecule
     neighborlist
    )
+
 
 foreach (test ${tests})
 message(STATUS "Test:  ${test}")
@@ -55,6 +59,7 @@ endforeach (test ${tests})
 
 
 
-add_test(DrawCommandTest drawcommandtest)
-add_test(MoleculeTest moleculetest)
-add_test(NeighborListTest neighborlisttest)
+add_test(DrawCommandTest ${CMAKE_BINARY_DIR}/bin/drawcommandtest)
+add_test(HydrogensCommandTest ${CMAKE_BINARY_DIR}/bin/hydrogenscommandtest)
+add_test(MoleculeTest ${CMAKE_BINARY_DIR}/bin/moleculetest)
+add_test(NeighborListTest ${CMAKE_BINARY_DIR}/bin/neighborlisttest)
