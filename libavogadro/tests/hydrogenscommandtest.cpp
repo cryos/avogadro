@@ -169,8 +169,6 @@ void HydrogensCommandTest::AddHydrogens()
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 7);
 
-  //debugMolecule();
- 
   QList<unsigned long> atomIds, bondIds;
   foreach (Atom *atom, m_molecule->atoms())
     atomIds.append(atom->id());
@@ -212,7 +210,6 @@ void HydrogensCommandTest::RemoveHydrogens()
 
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 2);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 1);
- 
 }
 
 

@@ -138,13 +138,10 @@ class DrawCommandTest : public QObject
     void DeleteBond_ethane();
     
     // 2x AddAtom + AddBond
-    /*
     void AddAtomDrawCommand_ethane();
     void AddAtomDrawCommand_methanol();
-
     void AddAtom_AddBond_DeleteAtom();
     void AddAtom_ChangeElement_DeleteAtom();
-*/
     
   
     
@@ -334,7 +331,6 @@ void DrawCommandTest::AddAtom_water()
   QCOMPARE(m_molecule->atomById(2)->atomicNumber(), 1);
 }
 
-/*
 void DrawCommandTest::AddAtomDrawCommand_ethane()
 {
   // redo will be called automatically, the index will also be increased
@@ -436,18 +432,7 @@ void DrawCommandTest::AddAtom_AddBond_DeleteAtom()
   m_undoStack->setIndex(cmdIndex-4); // undo AddAtom
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 0);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 0);
-/////////// 
-  bond->setOrder(2);
-  m_undoStack->push( new ChangeBondOrderDrawCommand(m_molecule, bond, 1, 2) );
-  QCOMPARE(m_molecule->numAtoms(), (unsigned int) offset + 6);
-
-  bond->setOrder(3);
-  m_undoStack->push( new ChangeBondOrderDrawCommand(m_molecule, bond, 2, 2) );
-  QCOMPARE(m_molecule->numAtoms(), (unsigned int) offset + 4);
-
-  m_undoStack->push( new DeleteBondDrawCommand(m_molecule, bond->index(), 2) );
-  QCOMPARE(m_molecule->numAtoms(), (unsigned int) offset + 10);
-///////////
+  
   loopUndoRedo();
 }
 
@@ -496,7 +481,6 @@ void DrawCommandTest::AddAtom_ChangeElement_DeleteAtom()
 
   loopUndoRedo();
 }
-*/
 
 void DrawCommandTest::AdjustHydrogensPreCommand_methane()
 {
