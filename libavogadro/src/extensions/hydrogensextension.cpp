@@ -170,7 +170,7 @@ namespace Avogadro {
 
   void HydrogensCommand::undo()
   {
-    *m_molecule = m_moleculeCopy;
+    *m_molecule = *m_moleculeCopy;
     m_molecule->update();
   }
 

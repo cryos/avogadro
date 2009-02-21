@@ -143,7 +143,6 @@ void HydrogensCommandTest::loopUndoRedo()
 
   for (int i = 0; i < 10; ++i) {
     m_undoStack->setIndex(0); // undo all
-    QCOMPARE(m_molecule->numAtoms(), (unsigned int) 0);
     m_undoStack->setIndex(cmdIndex); // redo all
     QCOMPARE(m_molecule->numAtoms(), numAtoms);
   }
