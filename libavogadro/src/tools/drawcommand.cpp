@@ -177,8 +177,13 @@ namespace Avogadro {
             Atom *nbr = d->molecule->atomById(nbrId);
             if (nbr) 
               if (nbr->isHydrogen()) {
+                Bond *bond = d->molecule->bond(id, nbrId);
+                if (!bond) {
+                  qDebug() << "Error, AdjustHydrogensPostCommand::redo...";
+                  continue;
+                }
                 d->hydrogenIds[id].append(nbrId);
-                d->bondIds[id].append(d->molecule->bond(id, nbrId)->id());
+                d->bondIds[id].append(bond->id());
               }
           }
         }
@@ -308,12 +313,15 @@ namespace Avogadro {
 
   class DeleteAtomDrawCommandPrivate {
     public:
-      DeleteAtomDrawCommandPrivate() : id(-1) {};
+      DeleteAtomDrawCommandPrivate() : id(-1), preCommand(0), postCommand(0) {};
 
       Molecule *molecule;
       Molecule moleculeCopy;
       unsigned long id;
       int adjustValence;
+      
+      QUndoCommand *preCommand;
+      QUndoCommand *postCommand;
   };
 
   DeleteAtomDrawCommand::DeleteAtomDrawCommand(Molecule *molecule, int index, int adjustValence) : d(new DeleteAtomDrawCommandPrivate)
@@ -328,6 +336,14 @@ namespace Avogadro {
 
   DeleteAtomDrawCommand::~DeleteAtomDrawCommand()
   {
+    if (d->preCommand) {
+      delete d->preCommand;
+      d->preCommand = 0; 
+    }
+    if (d->postCommand) {
+      delete d->postCommand;
+      d->postCommand = 0; 
+    }
     delete d;
   }
 
@@ -342,30 +358,32 @@ namespace Avogadro {
   {
     qDebug() << "DeleteAtomDrawCommand::redo()";
     Atom *atom = d->molecule->atomById(d->id);
-    if(atom)
-    {
-      QList<Atom*> neighbors;
+    if (atom) {
+      QList<unsigned long> neighbors;
 
       if (d->adjustValence) {
-        // Delete any hydrogens on this atom
-        d->molecule->removeHydrogens(atom);
-        // Now that we've deleted any attached hydrogens,
-        // Adjust the valence on any bonded atom
-        foreach (unsigned long id, atom->neighbors()) {
-          Atom *nbr = d->molecule->atomById(id);
-          d->molecule->removeHydrogens(d->molecule->atomById(id));
-          neighbors.append(nbr);
+        if (!d->preCommand) {
+          foreach (unsigned long id, atom->neighbors()) {
+            if (!d->molecule->atomById(id)->isHydrogen())
+              neighbors.append(id);
+          }
+
+          QList<unsigned long> ids;
+          ids.append(atom->id());
+          d->preCommand = new AdjustHydrogensPreCommand(d->molecule, ids);
         }
+        d->preCommand->redo();
       }
 
       // Delete the atom, also deletes the bonds
       d->molecule->removeAtom(atom);
 
       if (d->adjustValence) {
-        // Finally, add back hydrogens to neighbors
-        foreach (Atom *nbr, neighbors)
-          d->molecule->addHydrogens(nbr);
+        if (!d->postCommand)
+          d->postCommand = new AdjustHydrogensPostCommand(d->molecule, neighbors);
+        d->postCommand->redo();
       }
+
       d->molecule->update();
     }
   }
@@ -440,29 +458,18 @@ namespace Avogadro {
   {
     qDebug() << "AddBondDrawCommand::undo()";
     Bond *bond = d->molecule->bondById(d->id);
-    if(bond)
-    {
-      Atom* beginAtom = d->molecule->atomById(bond->beginAtomId());
-      Atom* endAtom = d->molecule->atomById(bond->endAtomId());
+    if (bond) {
+      // Remove the previously add hydrogens if needed
+      if (d->adjustValence)
+        d->postCommand->undo();
 
       d->molecule->removeBond(bond);
-      if (d->adjustValence) {
-        if (!beginAtom->isHydrogen()) {
-          d->molecule->removeHydrogens(beginAtom);
-        }
-        if (!endAtom->isHydrogen()) {
-          d->molecule->removeHydrogens(endAtom);
-        }
-
-        if (!beginAtom->isHydrogen()) {
-          d->molecule->addHydrogens(beginAtom);
-        }
-        if (!endAtom->isHydrogen()) {
-          d->molecule->addHydrogens(endAtom);
-        }
-      }
+      
+      // Remove the previously add hydrogens if needed
+      if (d->adjustValence)
+        d->preCommand->undo();
+     
       d->molecule->update();
-      return;
     }
   }
 
