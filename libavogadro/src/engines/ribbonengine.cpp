@@ -94,18 +94,14 @@ namespace Avogadro {
     */
 
     pd->painter()->setColor(chainColors[0][0], chainColors[0][1], chainColors[0][2]);
-
-    int numQuadrilaterals = m_helixPoints.size() / 4;
-    for (int j = 0; j < numQuadrilaterals; ++j) {
-      pd->painter()->drawLine(m_helixPoints.at(j*4  ), m_helixPoints.at(j*4+1), 2.0);
-      pd->painter()->drawLine(m_helixPoints.at(j*4+2), m_helixPoints.at(j*4+3), 2.0);
-     
-      glDisable( GL_CULL_FACE );
-      // FIXME: add normals... 
-      pd->painter()->drawTriangle(m_helixPoints.at(j*4), m_helixPoints.at(j*4+1), m_helixPoints.at(j*4+2));
-      pd->painter()->drawTriangle(m_helixPoints.at(j*4), m_helixPoints.at(j*4+3), m_helixPoints.at(j*4+2));
-      glEnable( GL_CULL_FACE );
+    int numTriangles = m_normals.size();
+    glDisable( GL_CULL_FACE );
+    for (int i = 0; i < numTriangles; ++i) {
+      pd->painter()->drawTriangle(m_triangles.at(i*3), m_triangles.at(i*3+1), 
+          m_triangles.at(i*3+2), m_normals.at(i));
     }
+    glEnable( GL_CULL_FACE );
+
 
     pd->painter()->setColor(chainColors[0][0], chainColors[0][1], chainColors[0][2]);
     for (int i = 0; i < m_helixes3.size(); ++i)
@@ -139,23 +135,15 @@ namespace Avogadro {
 
   bool RibbonEngine::renderQuick(PainterDevice *pd)
   {
-    // draw debug points...
-    /*
-    pd->painter()->setColor(0.0, 1.0, 0.0);
-    foreach (const Eigen::Vector3d &p, m_debugPoints)
-      pd->painter()->drawSphere(&p, 0.1);
-    */
-
     pd->painter()->setColor(chainColors[0][0], chainColors[0][1], chainColors[0][2]);
-
-    int numQuadrilaterals = m_helixPoints.size() / 4;
-    for (int j = 0; j < numQuadrilaterals; ++j) {
-      glDisable( GL_CULL_FACE );
-      // FIXME: add normals... 
-      pd->painter()->drawTriangle(m_helixPoints.at(j*4), m_helixPoints.at(j*4+1), m_helixPoints.at(j*4+2));
-      pd->painter()->drawTriangle(m_helixPoints.at(j*4), m_helixPoints.at(j*4+3), m_helixPoints.at(j*4+2));
-      glEnable( GL_CULL_FACE );
+    int numTriangles = m_normals.size();
+    glDisable( GL_CULL_FACE );
+    for (int i = 0; i < numTriangles; ++i) {
+      pd->painter()->drawTriangle(m_triangles.at(i*3), m_triangles.at(i*3+1), 
+          m_triangles.at(i*3+2), m_normals.at(i));
     }
+    glEnable( GL_CULL_FACE );
+
 
     pd->painter()->setColor(chainColors[0][0], chainColors[0][1], chainColors[0][2]);
     for (int i = 0; i < m_helixes3.size(); ++i)
@@ -213,8 +201,15 @@ namespace Avogadro {
     const Molecule *molecule = pd->molecule();
     Protein protein((Molecule*)molecule);
 
+
+    m_triangles.clear();
+    m_normals.clear(); 
     // 4-turn helixes
     for (int i = 0; i < protein.num4turnHelixes(); ++i) {
+      QList<Eigen::Vector3d> helixPoints;
+      QList<Eigen::Vector3d> helixAxis;
+      QList<Eigen::Vector3d> helixNormals;
+ 
       // all N, CA, C, O atoms in that order
       QList<unsigned long> helix = protein.helix4BackboneAtoms(i);
       int numResidues = helix.size() / 4;
@@ -238,7 +233,6 @@ namespace Avogadro {
         helixCenters.append(p2);
       }
 
-      QList<Eigen::Vector3d> helixPoints;
       for (int i = 0; i < numResidues - 1; ++i) {
         // the axis points
         Eigen::Vector3d P1 = helixCenters.at(0);
@@ -263,6 +257,8 @@ namespace Avogadro {
         double angle = acos( r1.dot(r2) / (r1.norm() * r2.norm()) );
 
         helixPoints.append(posN1);
+        helixNormals.append(r1);
+        helixAxis.append(axis);
 
         double incHeight = deltaHeight / 4.0;
         double incRadius = deltaRadius / 4.0;
@@ -279,31 +275,26 @@ namespace Avogadro {
           Eigen::Vector3d newPoint = m * (lastPoint - onLine) + onLine;
           newPoint += axis * incHeight;
           helixPoints.append(newPoint);
+          helixNormals.append(newPoint - onLine);
+          helixAxis.append(axis);
         }
 
-        // helixPoints now contains all points along the helix.
-        // Use axis to move parallel to the helix 
-        
-        // copy to m_debugPoints for now...
-        foreach (const Eigen::Vector3d &p, helixPoints)
-          m_debugPoints.append(p);
-        /*
-        // add a row above
-        foreach (const Eigen::Vector3d &p, helixPoints)
-          m_debugPoints.append(p + axis);
-        // and below
-        foreach (const Eigen::Vector3d &p, helixPoints)
-          m_debugPoints.append(p - axis);
-        */
-        
-        for (int j = 0; j < helixPoints.size() - 1; ++j) {
-          m_helixPoints.append(helixPoints.at(j  ) + axis);
-          m_helixPoints.append(helixPoints.at(j+1) + axis);
-          m_helixPoints.append(helixPoints.at(j+1) - axis);
-          m_helixPoints.append(helixPoints.at(j  ) - axis);
-        }
       }
 
+      for (int i = 0; i < helixNormals.size() - 1; ++i) {
+        Eigen::Vector3d axis(helixAxis.at(i));
+        m_triangles.append(helixPoints.at(i) + axis);
+        m_triangles.append(helixPoints.at(i+1) - axis);
+        m_triangles.append(helixPoints.at(i) - axis);
+ 
+        m_triangles.append(helixPoints.at(i) + axis);
+        m_triangles.append(helixPoints.at(i+1) + axis);
+        m_triangles.append(helixPoints.at(i+1) - axis);
+        
+        m_normals.append(helixNormals.at(i));
+        m_normals.append(helixNormals.at(i));
+      }
+      
     }
     // 3-turn helixes
     for (int i = 0; i < protein.num3turnHelixes(); ++i) {

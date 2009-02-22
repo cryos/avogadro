@@ -90,7 +90,9 @@ namespace Avogadro {
       int m_useNitrogens;
       QList< QVector<Eigen::Vector3d> > m_chains;
       
-      QList<Eigen::Vector3d> m_helixPoints;
+      QList<Eigen::Vector3d> m_triangles;
+      QList<Eigen::Vector3d> m_normals;
+
       QList<Eigen::Vector3d> m_debugPoints;
       
       QList< QVector<Eigen::Vector3d> > m_helixes3;
