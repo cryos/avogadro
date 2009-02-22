@@ -577,6 +577,8 @@ namespace Avogadro
 
     d->toolGroup->removeAllTools();
     d->toolGroup->append(d->pluginManager.tools());
+    if (d->molecule)
+      d->toolGroup->setActiveTool(tr("Navigate"));
 
     //qDebug() << "pluginManager.tools().size() = " << d->pluginManager.tools().size();
 
