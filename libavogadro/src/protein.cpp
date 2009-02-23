@@ -29,6 +29,8 @@
 #include <avogadro/neighborlist.h>
 
 #include <QVector>
+#include <QVariant>
+#include <QStringList>
 #include <QDebug>
 
 namespace Avogadro {
@@ -50,16 +52,18 @@ namespace Avogadro {
   {
     d->molecule = molecule;
     sortResiduesByChain();
-    detectHBonds();
-    detectStructure();
+    if (!extractFromPDB()) {
+      detectHBonds();
+      detectStructure();
+    }
 
     foreach (const QVector<Residue*> &residues, d->chains) { // for each chain
-      qDebug() << "chain: " << d->chains.indexOf(residues);
+      //qDebug() << "chain: " << d->chains.indexOf(residues);
       QByteArray chain;
       foreach (Residue *residue, residues) { // for each residue in the chain
         chain.append( d->structure.at(residue->index()) );
       }
-      qDebug() << chain;
+      //qDebug() << chain;
     }
 
   }
@@ -71,6 +75,158 @@ namespace Avogadro {
   QByteArray Protein::secondaryStructure() const
   {
     return d->structure;
+  }
+
+  bool Protein::extractFromPDB()
+  {
+    bool found = false;
+
+    /*
+    COLUMNS        DATA  TYPE     FIELD         DEFINITION
+    -----------------------------------------------------------------------------------
+     1 -  6        Record name    "HELIX "
+     8 - 10        Integer        serNum        Serial number of the helix. This starts
+                                                at 1  and increases incrementally.
+    12 - 14        LString(3)     helixID       Helix  identifier. In addition to a serial
+                                                number, each helix is given an 
+                                                alphanumeric character helix identifier.
+    16 - 18        Residue name   initResName   Name of the initial residue.
+    20             Character      initChainID   Chain identifier for the chain containing
+                                                this  helix.
+    22 - 25        Integer        initSeqNum    Sequence number of the initial residue.
+    26             AChar          initICode     Insertion code of the initial residue.
+    28 - 30        Residue  name  endResName    Name of the terminal residue of the helix.
+    32             Character      endChainID    Chain identifier for the chain containing
+                                                this  helix.
+    34 - 37        Integer        endSeqNum     Sequence number of the terminal residue.
+    38             AChar          endICode      Insertion code of the terminal residue.
+    39 - 40        Integer        helixClass    Helix class (see below).
+    41 - 70        String         comment       Comment about this helix.
+    72 - 76        Integer        length        Length of this helix.
+    */
+
+    QVariant helix = d->molecule->property("HELIX");
+    if (helix.isValid()) {
+      found = true;
+
+      QStringList lines = helix.toString().split("\n");
+      foreach (const QString &line, lines) {
+        /*
+        qDebug() << "line:" << line;
+        QStringList tokens = line.split(" ", QString::SkipEmptyParts);
+        foreach (const QString &token, tokens) {
+          qDebug() << "    token:" << token;
+        }
+        */
+
+        bool ok;
+        QString helixID = line.mid(5, 3);
+
+        // 
+        // initial residue
+        //
+        QString initResName = line.mid(9, 3);
+
+        QString initChainID = line.mid(13, 1);
+        int initChainNum = -1;
+        foreach (Residue *residue, d->molecule->residues()) {
+          if (QString(residue->chainID()) != initChainID)
+            continue;
+          initChainNum = residue->chainNumber();
+        }
+
+        if (initChainNum < 0) {
+          qDebug() << "Protein: Error, invalid initChainID for helix" << helixID;
+          return false;
+        }
+
+        int initSeqNum = line.mid(15, 4).toInt(&ok) - 1;
+        if (!ok) {
+          qDebug() << "Protein: Error, can't read interger from initSeqNum for helix" << helixID;
+          return false;
+        }
+
+        if (initSeqNum >= d->chains.at(initChainNum).size()) {
+          qDebug() << "Protein: Error, initSeqNum is larger than the number "
+              "of residues in the chain for helix" << helixID;
+          return false;
+        }
+
+        Residue *initResidue = d->chains.at(initChainNum).at(initSeqNum);
+        if (initResidue->name() != initResName) {
+          qDebug() << "Protein: Error, initResName does not match the residue "
+              "at the specified position for helix" << helixID;
+          qDebug() << initResName << "!=" << initResidue->name();
+          return false;
+        }
+        
+        // 
+        // end residue
+        //
+        QString endResName = line.mid(21, 3);
+
+        QString endChainID = line.mid(25, 1);
+        int endChainNum = -1;
+        foreach (Residue *residue, d->molecule->residues()) {
+          if (QString(residue->chainID()) != endChainID)
+            continue;
+          endChainNum = residue->chainNumber();
+        }
+
+        if (endChainNum < 0) {
+          qDebug() << "Protein: Error, invalid endChainID for helix" << helixID;
+          return false;
+        }
+
+        int endSeqNum = line.mid(27, 4).toInt(&ok) - 1;
+        if (!ok) {
+          qDebug() << "Protein: Error, can't read interger from endSeqNum for helix" << helixID;
+          return false;
+        }
+
+        if (endSeqNum >= d->chains.at(endChainNum).size()) {
+          qDebug() << "Protein: Error, endSeqNum is larger than the number "
+              "of residues in the chain for helix" << helixID;
+          return false;
+        }
+
+        Residue *endResidue = d->chains.at(endChainNum).at(endSeqNum);
+        if (endResidue->name() != endResName) {
+          qDebug() << "Protein: Error, endResName does not match the residue "
+              "at the specified position for helix" << helixID;
+          qDebug() << endResName << "!=" << endResidue->name();
+          return false;
+        }
+
+        int helixClass = line.mid(32, 2).toInt(&ok);
+        if (!ok) {
+          qDebug() << "Protein: Error, can't read helix class for helix" << helixID;
+          return false;
+        }
+
+        QChar key;
+        switch (helixClass) {
+          case 1:
+            key = 'H';
+            break;
+          default:
+            key = 'X';
+            break;
+        }
+
+        for (int i = initSeqNum; i < endSeqNum; ++i) {
+          Residue *residue = d->chains.at(initChainNum).at(i);
+          d->structure[(int)residue->index()] = 'H';
+        }
+
+      }
+    }
+
+    d->num3turnHelixes = -1;
+    d->num4turnHelixes = -1;
+    d->num5turnHelixes = -1; 
+
+    return found;
   }
 
 
@@ -287,6 +443,10 @@ namespace Avogadro {
 
   void Protein::sortResiduesByChain()
   {
+    d->structure.resize(d->molecule->numResidues());
+    for (int i = 0 ; i < d->structure.size(); ++i)
+      d->structure[i] = '-';
+
     // determine the number of chains
     unsigned int numChains = 0;
     foreach (Residue *residue, d->molecule->residues()) {
@@ -404,11 +564,6 @@ namespace Avogadro {
 
   void Protein::detectStructure()
   {
-    d->structure.resize(d->molecule->numResidues());
-    for (int i = 0 ; i < d->structure.size(); ++i)
-      d->structure[i] = '-';
-
-
     foreach (const QVector<Residue*> &residues, d->chains) { // for each chain
 
       foreach (Residue *residue, residues) { // for each residue in the chain

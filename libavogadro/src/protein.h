@@ -95,6 +95,8 @@ namespace Avogadro {
       QList<unsigned long> helix5BackboneAtoms(int index);
 
     private:
+      bool extractFromPDB();
+      
       void sortResiduesByChain();
       void iterateForward(Atom *prevCA, Atom *currN, QVector<bool> &visited);
       void iterateBackward(Atom *prevN, Atom *currCA, QVector<bool> &visited);
