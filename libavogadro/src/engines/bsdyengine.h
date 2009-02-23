@@ -38,7 +38,8 @@ namespace Avogadro {
   class BSDYEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE("Ball and Stick", tr("Ball and Stick"))
+    AVOGADRO_ENGINE("Ball and Stick", tr("Ball and Stick"),
+                      tr("Renders primitives using Balls (atoms) and Sticks (bonds)"))
 
     public:
       //! Constructor
@@ -123,8 +124,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(BSDYEngine,
-                            tr("Renders primitives using Balls (atoms) and Sticks (bonds)"));
+    AVOGADRO_ENGINE_FACTORY(BSDYEngine);
   };
 
 } // end namespace Avogadro

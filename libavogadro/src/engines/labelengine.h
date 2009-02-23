@@ -42,7 +42,7 @@ namespace Avogadro {
   class LabelEngine : public Engine
   {
     Q_OBJECT
-      AVOGADRO_ENGINE("Label", tr("Label"))
+    AVOGADRO_ENGINE("Label", tr("Label"), tr("Renders atom and bond labels"))
 
     public:
       //! Constructor
@@ -104,7 +104,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(LabelEngine, tr("Renders atom and bond labels"))
+      AVOGADRO_ENGINE_FACTORY(LabelEngine)
   };
 
 } // end namespace Avogadro

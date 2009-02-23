@@ -41,7 +41,8 @@ namespace Avogadro {
   class WireEngine : public Engine
   {
     Q_OBJECT
-      AVOGADRO_ENGINE("Wireframe", tr("Wireframe"))
+    AVOGADRO_ENGINE("Wireframe", tr("Wireframe"),
+                    tr("Renders bonds as wires (lines), ideal for very large (bio)molecules"))
 
     public:
       //! Constructor
@@ -110,8 +111,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(WireEngine,
-        tr("Renders bonds as wires (lines), this display type is ideal for very large (bio)molecules"))
+    AVOGADRO_ENGINE_FACTORY(WireEngine)
   };
 
 } // end namespace Avogadro

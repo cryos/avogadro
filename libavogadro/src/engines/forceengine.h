@@ -35,7 +35,8 @@ namespace Avogadro {
   class ForceEngine : public Engine
   {
     Q_OBJECT
-      AVOGADRO_ENGINE("Force", tr("Force"))
+    AVOGADRO_ENGINE("Force", tr("Force"),
+                    tr("Renders force displacements on atoms"))
 
     public:
       //! Constructor
@@ -58,7 +59,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(ForceEngine, tr("Renders force displacements on atoms"))
+    AVOGADRO_ENGINE_FACTORY(ForceEngine)
   };
 
 } // end namespace Avogadro

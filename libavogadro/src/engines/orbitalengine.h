@@ -45,7 +45,8 @@ namespace Avogadro {
   class OrbitalEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE("Orbitals", tr("Orbitals"))
+    AVOGADRO_ENGINE("Orbitals", tr("Orbitals"),
+                    tr("Renders molecular orbitals"))
 
     public:
       //! Constructor
@@ -146,7 +147,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(OrbitalEngine, tr("Renders molecular orbitals"))
+    AVOGADRO_ENGINE_FACTORY(OrbitalEngine)
   };
 
 } // end namespace Avogadro

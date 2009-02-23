@@ -39,7 +39,8 @@ namespace Avogadro {
   class DipoleEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE("Dipole", tr("Dipole"))
+    AVOGADRO_ENGINE("Dipole", tr("Dipole"),
+                    tr("Renders molecular dipole moments"))
 
     public:
       //! Constructor
@@ -90,7 +91,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(DipoleEngine, tr("Renders molecular dipole moments"))
+    AVOGADRO_ENGINE_FACTORY(DipoleEngine)
   };
 
 } // end namespace Avogadro

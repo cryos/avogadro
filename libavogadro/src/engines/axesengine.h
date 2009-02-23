@@ -34,7 +34,8 @@ namespace Avogadro {
   class AxesEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE("Axes", tr("Axes"))
+    AVOGADRO_ENGINE("Axes", tr("Axes"), 
+                    tr("Renders the x, y, and z axes at the origin"))
 
     public:
       //! Constructor
@@ -64,8 +65,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(AxesEngine, 
-                            tr("Renders the x, y, and z axes at the origin"))
+    AVOGADRO_ENGINE_FACTORY(AxesEngine)
   };
 
 } // end namespace Avogadro

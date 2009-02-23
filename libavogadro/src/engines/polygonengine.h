@@ -36,7 +36,8 @@ namespace Avogadro {
   class PolygonEngine : public Engine
     {
       Q_OBJECT
-        AVOGADRO_ENGINE("Polygon", tr("Polygon"))
+      AVOGADRO_ENGINE("Polygon", tr("Polygon"),
+                      tr("Renders atoms as tetrahedra, octahedra, and other polygons"))
 
     public:
       //! Constructor
@@ -66,7 +67,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(PolygonEngine, tr("Renders atoms as tetrahedra, octahedra, and other polygons"))
+    AVOGADRO_ENGINE_FACTORY(PolygonEngine)
   };
 
 } // end namespace Avogadro

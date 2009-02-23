@@ -40,7 +40,8 @@ namespace Avogadro {
   class StickEngine : public Engine
   {
     Q_OBJECT
-      AVOGADRO_ENGINE("Stick", tr("Stick"))
+    AVOGADRO_ENGINE("Stick", tr("Stick"),
+                    tr("Renders molecules as sticks"))
 
     public:
       //! Constructor
@@ -104,7 +105,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(StickEngine, tr("Renders molecules as sticks"))
+    AVOGADRO_ENGINE_FACTORY(StickEngine)
   };
 
 } // end namespace Avogadro

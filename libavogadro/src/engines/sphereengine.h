@@ -41,7 +41,8 @@ namespace Avogadro {
   class SphereEngine : public Engine
   {
     Q_OBJECT
-      AVOGADRO_ENGINE("Van der Waals Spheres", tr("Van der Waals Spheres"))
+    AVOGADRO_ENGINE("Van der Waals Spheres", tr("Van der Waals Spheres"),
+                    tr("Renders atoms as Van der Waals spheres"))
 
     public:
       //! Constructor
@@ -109,7 +110,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(SphereEngine, tr("Renders atoms as Van der Waals spheres"))
+    AVOGADRO_ENGINE_FACTORY(SphereEngine)
   };
 
 } // end namespace Avogadro

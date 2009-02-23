@@ -38,7 +38,8 @@ namespace Avogadro {
   class CartoonEngine : public Engine
   {
     Q_OBJECT
-      AVOGADRO_ENGINE("Cartoon", tr("Cartoon"))
+      AVOGADRO_ENGINE("Cartoon", tr("Cartoon"),
+                      tr("Renders protein secundary structure"))
 
     public:
       //! Constructor
@@ -102,7 +103,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(CartoonEngine, tr("Renders protein secundary structure"))
+    AVOGADRO_ENGINE_FACTORY(CartoonEngine)
   };
 
 } // end namespace Avogadro

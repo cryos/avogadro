@@ -38,7 +38,8 @@ namespace Avogadro {
   class OverlayEngine : public Engine
   {
     Q_OBJECT
-      AVOGADRO_ENGINE("Overlay", tr("Overlay"))
+    AVOGADRO_ENGINE("Overlay", tr("Overlay"),
+                    tr("Renders color scale for gradients"))
 
     public:
       //! Constructor
@@ -99,7 +100,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(OverlayEngine, tr("Renders color scale for gradients"))
+    AVOGADRO_ENGINE_FACTORY(OverlayEngine)
   };
 
 } // end namespace Avogadro
