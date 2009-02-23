@@ -44,8 +44,6 @@ namespace Avogadro {
     m_settingsWidget(0), m_mesh1(0), m_mesh2(0), m_min(0., 0., 0.), m_max(0.,0.,0.),
     m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_update(true)
   {
-    setDescription(tr("Orbital Rendering"));
-
     m_negColor.set(1.0, 0.0, 0.0, m_alpha);
     m_posColor.set(0.0, 0.0, 1.0, m_alpha);
   }

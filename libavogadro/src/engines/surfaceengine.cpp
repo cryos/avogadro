@@ -43,7 +43,6 @@ namespace Avogadro {
     m_settingsWidget(0), m_mesh(0), m_alpha(0.5), m_renderMode(0),
     m_colorMode(0), m_drawBox(false)
   {
-    setDescription(tr("Surface rendering"));
     m_color.set(1.0, 0.0, 0.0, m_alpha);
   }
 

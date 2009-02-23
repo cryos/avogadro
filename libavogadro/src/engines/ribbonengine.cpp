@@ -52,12 +52,10 @@ namespace Avogadro {
   };
 
   RibbonEngine::RibbonEngine(QObject *parent) : Engine(parent),
-    m_settingsWidget(0), m_type(0), m_radius(1.0), m_useNitrogens(2)
+                                                m_settingsWidget(0), m_type(0),
+                                                m_radius(1.0), m_update(true),
+                                                m_useNitrogens(2)
   {
-    setDescription(tr("Renders residues as ribbons"));
-
-    // Initialise variables
-    m_update = true;
   }
 
   Engine *RibbonEngine::clone() const

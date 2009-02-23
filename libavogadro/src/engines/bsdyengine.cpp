@@ -89,9 +89,7 @@ namespace Avogadro
   BSDYEngine::BSDYEngine(QObject *parent) : Engine(parent),
       m_settingsWidget(0), m_atomRadiusPercentage(0.3), m_bondRadius(0.1),
       m_showMulti(2), m_alpha(1.)
-  {
-    setDescription(tr("Renders primitives using Balls (atoms) and Sticks (bonds)."));
-  }
+  {  }
 
   Engine *BSDYEngine::clone() const
   {

@@ -40,7 +40,6 @@ namespace Avogadro{
 
   PolygonEngine::PolygonEngine(QObject *parent) : Engine(parent)
   {
-    setDescription(tr("Renders structures as polygons"));
   }
 
   Engine *PolygonEngine::clone() const

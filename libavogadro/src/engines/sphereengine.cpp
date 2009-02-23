@@ -44,9 +44,8 @@ using namespace Eigen;
 namespace Avogadro {
 
   SphereEngine::SphereEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
-  m_alpha(1.)
+  m_alpha(1.0)
   {
-    setDescription(tr("Renders atoms as Van der Waals spheres"));
   }
 
   SphereEngine::~SphereEngine()

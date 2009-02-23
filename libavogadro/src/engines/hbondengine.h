@@ -110,7 +110,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(HBondEngine, "Hydrogen Bond", tr("Hydrogen Bond"), tr("Render hydrogen bonds"))
+      AVOGADRO_ENGINE_FACTORY(HBondEngine, tr("Renders hydrogen bonds"))
   };
 
 } // end namespace Avogadro

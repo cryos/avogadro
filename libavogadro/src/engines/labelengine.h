@@ -104,7 +104,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(LabelEngine, "Label", tr("Label"), tr("Render various atom labels."))
+      AVOGADRO_ENGINE_FACTORY(LabelEngine, tr("Renders atom and bond labels"))
   };
 
 } // end namespace Avogadro

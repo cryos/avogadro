@@ -146,7 +146,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(OrbitalEngine, "Orbitals", tr("Orbitals"), tr("Render molecular orbitals."))
+      AVOGADRO_ENGINE_FACTORY(OrbitalEngine, tr("Renders molecular orbitals"))
   };
 
 } // end namespace Avogadro

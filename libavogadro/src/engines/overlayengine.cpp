@@ -43,7 +43,6 @@ namespace Avogadro {
   OverlayEngine::OverlayEngine(QObject *parent) : Engine(parent),
   m_settingsWidget(0)
   {
-    setDescription(tr("Renders overlays"));
   }
 
   Engine *OverlayEngine::clone() const

@@ -50,7 +50,6 @@ namespace Avogadro {
   HBondEngine::HBondEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
                                               m_width(2), m_radius(2.0), m_angle(120)
   {
-    setDescription(tr("Renders hydrogen bonds"));
   }
 
   Engine *HBondEngine::clone() const

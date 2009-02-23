@@ -48,7 +48,6 @@ namespace Avogadro {
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
   m_atomType(1), m_bondType(2), m_settingsWidget(0)
   {
-    setDescription(tr("Renders primitive labels"));
   }
 
   Engine *LabelEngine::clone() const

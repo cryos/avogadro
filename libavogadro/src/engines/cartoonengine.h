@@ -102,7 +102,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(CartoonEngine, "Cartoon", tr("Cartoon"), tr("Render protein secundary structure."))
+    AVOGADRO_ENGINE_FACTORY(CartoonEngine, tr("Renders protein secundary structure"))
   };
 
 } // end namespace Avogadro

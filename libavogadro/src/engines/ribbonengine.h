@@ -115,7 +115,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(RibbonEngine, "Ribbon", tr("Ribbon"), tr("Render ribbons."))
+      AVOGADRO_ENGINE_FACTORY(RibbonEngine, tr("Renders protein backbones as ribbons"))
   };
 
 } // end namespace Avogadro

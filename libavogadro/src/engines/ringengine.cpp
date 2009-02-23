@@ -54,8 +54,6 @@ namespace Avogadro{
   RingEngine::RingEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
     m_alpha(1.0)
   {
-    setDescription(tr("Renders rings"));
-    // Pretty colours for the chains - we can add more. Need a colour picker...
   }
 
   Engine *RingEngine::clone() const

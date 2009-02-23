@@ -41,18 +41,23 @@
 #include <QSettings>
 #include <QtPlugin>
 
-#define AVOGADRO_ENGINE(i, t)                    \
+#define AVOGADRO_ENGINE(i, t)                                \
   public: \
-    QString identifier() const { return i; } \
-    QString name() const { return t; } \
+  static QString staticIdentifier() { return i; }            \
+    QString identifier() const { return i; }                 \
+    static QString staticName() { return t; }                \
+    QString name() const { return t; }                       \
 
-#define AVOGADRO_ENGINE_FACTORY(c,i,n,d)        \
+#define AVOGADRO_ENGINE_FACTORY(c,d)                         \
   public: \
-    Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
+    Plugin *createInstance(QObject *parent = 0)              \
+      { c *instance = new c(parent);                         \
+        instance->setDescription(d);                         \
+        return instance;}                                    \
     Plugin::Type type() const { return Plugin::EngineType; } \
-    QString identifier() const { return i; } \
-    QString name() const { return n; } \
-    QString description() const { return d; };
+    QString identifier() const { return c::staticIdentifier(); } \
+    QString name() const { return c::staticName(); }         \
+    QString description() const { return d; }
 
 namespace Avogadro {
 
@@ -446,6 +451,10 @@ namespace Avogadro {
        */
       virtual void setColorMap(Color *map);
 
+      /**
+       * Accept that the color map changed and call for an update
+       * (e.g., the user modified the settings)
+       */
       virtual void colorMapChanged();
 
       /**

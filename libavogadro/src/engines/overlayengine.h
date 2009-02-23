@@ -99,7 +99,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(OverlayEngine, "Overlay", tr("Overlay"), tr("Render electrostatic potential (ESP) gradient gradient."))
+      AVOGADRO_ENGINE_FACTORY(OverlayEngine, tr("Renders color scale for gradients"))
   };
 
 } // end namespace Avogadro

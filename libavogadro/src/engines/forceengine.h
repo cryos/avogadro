@@ -58,7 +58,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(ForceEngine, "Force", tr("Force"), tr("Render forces from force fields."))
+      AVOGADRO_ENGINE_FACTORY(ForceEngine, tr("Renders force displacements on atoms"))
   };
 
 } // end namespace Avogadro

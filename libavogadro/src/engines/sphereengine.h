@@ -109,7 +109,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(SphereEngine, "Van der Waals Spheres", tr("Van der Waals Spheres"), tr("Render Van der Waals spheres."))
+      AVOGADRO_ENGINE_FACTORY(SphereEngine, tr("Renders atoms as Van der Waals spheres"))
   };
 
 } // end namespace Avogadro

@@ -40,8 +40,6 @@ namespace Avogadro {
   DipoleEngine::DipoleEngine(QObject *parent) : Engine(parent),
     m_dipoleType(0), m_settingsWidget(0)
   {
-    setDescription(tr("Renders dipole moments and other 3D data"));
-
     m_dipole.x() = 0.0;
     m_dipole.y() = 0.0;
     m_dipole.z() = 0.0;

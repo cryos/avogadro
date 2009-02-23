@@ -40,9 +40,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   ForceEngine::ForceEngine(QObject *parent) : Engine(parent)
-  {
-    setDescription(tr("Renders forces on atoms"));
-  }
+  {  }
 
   Engine *ForceEngine::clone() const
   {

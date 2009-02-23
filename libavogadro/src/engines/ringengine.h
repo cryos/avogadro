@@ -105,7 +105,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(RingEngine, "Ring", tr("Ring"), tr("Render ring planes."))
+      AVOGADRO_ENGINE_FACTORY(RingEngine, tr("Renders rings with colored planes"))
   };
 
 } // end namespace Avogadro
