@@ -699,11 +699,11 @@ namespace Avogadro
   void OrbitalExtension::meshGenerated()
   {
     Engine *engine = m_orbitalDialog->currentEngine();
-    QSettings settings;
-    engine->writeSettings(settings);
-    settings.setValue("mesh1Id", static_cast<int>(m_mesh1->id()));
-    settings.setValue("mesh2Id", static_cast<int>(m_mesh2->id()));
     if (engine) {
+      QSettings settings;
+      engine->writeSettings(settings);
+      settings.setValue("mesh1Id", static_cast<int>(m_mesh1->id()));
+      settings.setValue("mesh2Id", static_cast<int>(m_mesh2->id()));
       engine->readSettings(settings);
       engine->setEnabled(true);
       m_molecule->update();
