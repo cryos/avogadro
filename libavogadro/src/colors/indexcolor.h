@@ -40,6 +40,10 @@ namespace Avogadro {
    */
   class IndexColor: public Color
   {
+    Q_OBJECT
+    AVOGADRO_COLOR("IndexColor", tr("Color by Index"),
+                   tr("Color by Index (red, orange, yellow, green, blue, violet)."))
+
   public:
     IndexColor();
     virtual ~IndexColor();
@@ -48,17 +52,13 @@ namespace Avogadro {
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
     void set(const Primitive *);
-    
-    QString name() const { return "Color by Index"; }
   };
 
   class IndexColorFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_COLOR_FACTORY(IndexColor, "Color by Index", 
-                             tr("Color by Index"), 
-                             tr("Color by Index (red, orange, yellow, green, blue, violet)."))
+    AVOGADRO_COLOR_FACTORY(IndexColor)
   };
 
 

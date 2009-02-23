@@ -36,13 +36,22 @@
 #include <QGLWidget> // for GLfloat
 #include <QColor> // for returning QColor
 
-#define AVOGADRO_COLOR_FACTORY(c,i,n,d)         \
+#define AVOGADRO_COLOR(i, t, d)                 \
+  public: \
+    static QString staticIdentifier() { return i; }          \
+    QString identifier() const { return i; }                 \
+    static QString staticName() { return t; }                \
+    QString name() const { if (m_name.isEmpty()) return t; else return m_name; } \
+    static QString staticDescription() { return d; }         \
+    QString description() const { return d; }
+
+#define AVOGADRO_COLOR_FACTORY(c)         \
   public: \
     Plugin *createInstance(QObject *parent = 0) { Q_UNUSED(parent); return new c(); } \
     Plugin::Type type() const { return Plugin::ColorType; }; \
-    QString identifier() const { return i; } \
-    QString name() const { return n; } \
-    QString description() const { return d; }; 
+    QString identifier() const { return c::staticIdentifier(); } \
+    QString name() const { return c::staticName(); }         \
+    QString description() const { return c::staticDescription(); }
 
 namespace Avogadro {
 

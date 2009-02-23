@@ -46,6 +46,8 @@ namespace Avogadro {
   class ResidueColor: public Color
   {
     Q_OBJECT
+    AVOGADRO_COLOR("ResidueColor", tr("Color by Residue"),
+                     tr("Color by Residue (amino acid type, hydrophobicity, ..."))
 
   public:
     ResidueColor();
@@ -55,8 +57,6 @@ namespace Avogadro {
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
     virtual void set(const Primitive *);
-
-    virtual QString name() const { return "Color by Residue"; }
 
     virtual QWidget* settingsWidget();
 
@@ -83,9 +83,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_COLOR_FACTORY(ResidueColor, "Color by Residue",
-        tr("Color by Residue"), 
-        tr("Color by Residue."))
+    AVOGADRO_COLOR_FACTORY(ResidueColor)
   };
 
 

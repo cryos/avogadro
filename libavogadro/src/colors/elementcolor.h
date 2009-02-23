@@ -41,6 +41,10 @@ namespace Avogadro {
    */
   class ElementColor: public Color
   {
+    Q_OBJECT
+    AVOGADRO_COLOR("ElementColor", tr("Color by Element"),
+                   tr("Color by Element (carbon = grey, oxygen = red, ...)."))
+
   public:
     ElementColor();
     virtual ~ElementColor();
@@ -49,17 +53,13 @@ namespace Avogadro {
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
     void set(const Primitive *);
-    
-    QString name() const { return "Color by Element"; }
   };
 
   class ElementColorFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_COLOR_FACTORY(ElementColor, "Color by Element", 
-                             tr("Color by Element"), 
-                             tr("Color by Element (carbon = grey, oxygen = red, ...)."))
+    AVOGADRO_COLOR_FACTORY(ElementColor)
   };
 
 
