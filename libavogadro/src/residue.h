@@ -84,6 +84,16 @@ namespace Avogadro {
       unsigned int chainNumber();
 
       /**
+       * Set the chain ID (' ', 'A', 'B', ...) that this residue belongs to.
+       */
+      void setChainID(char id);
+      /**
+       * @return The chain ID (' ', 'A', 'B', ...) that the residue belongs to.
+       */
+      char chainID();
+
+
+      /**
        * Set the text id of the Atom.
        * @param id The unique id of the Atom.
        * @param atomId The text id of the Atom in the Residue.
@@ -114,6 +124,7 @@ namespace Avogadro {
       QString m_number; /** Residue number as in the file, e.g. 5A, 69, etc. **/
       QList<QString> m_atomId; /** Atom text ids. **/
       unsigned int m_chainNumber; /** The chain number that the residue belongs to. **/
+      char m_chainID;
 
   };
 
