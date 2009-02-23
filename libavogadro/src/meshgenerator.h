@@ -1,7 +1,7 @@
 /**********************************************************************
   MeshGenerator - Class to generate meshes from volumetric data
 
-  Copyright (C) 2008 by Marcus D. Hanwell
+  Copyright (C) 2008-2009 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -44,11 +44,10 @@
    * @author Marcus D. Hanwell
    *
    * This class implements a method of generating an isosurface Mesh from
-   * volumetric data. In the case of the MeshGenerator class it expects a
-   * Cube as an input, an isosurface value and optionally a bounding box.
-   * If no bounding box is supplied the mesh will be generated over the entire
-   * Cube. The tables and the basic code is taken from the public domain code
-   * written by Cory Bloyd (marchingsource.cpp) and available at,
+   * volumetric data using the marching cubes algorithm. In the case of the
+   * MeshGenerator class it expects a Cube as an input and an isosurface value.
+   * The tables and the basic code is taken from the public domain code written
+   * by Cory Bloyd (marchingsource.cpp) and available at,
    * http://local.wasp.uwa.edu.au/~pbourke/geometry/polygonise/
    *
    * You must first initialize the class and then call run() to actually
@@ -62,7 +61,7 @@
     /**
      * Constructor.
      */
-    MeshGenerator(QObject *parent = 0);
+    explicit MeshGenerator(QObject *parent = 0);
 
     /**
      * Constructor. Can be used to initialize the MeshGenerator.
@@ -71,13 +70,13 @@
      * @param iso The iso value of the surface.
      * @return True if the MeshGenerator was successfully initialized.
      */
-    explicit MeshGenerator(const Cube *cube, Mesh *mesh, float iso,
-                           bool reverse = false, QObject *parent = 0);
+    MeshGenerator(const Cube *cube, Mesh *mesh, float iso,
+                  bool reverse = false, QObject *parent = 0);
 
     /**
      * Destructor.
      */
-    virtual ~MeshGenerator();
+    ~MeshGenerator();
 
     /**
      * Initialization function, set up the MeshGenerator ready to find an
@@ -144,7 +143,6 @@
     Eigen::Vector3i m_dim; /** The dimensions of the cube. */
     std::vector<Eigen::Vector3f> m_vertices, m_normals;
     std::vector<unsigned int> m_indices;
-    std::vector< std::vector<unsigned int> > m_vDone;
 
     /**
      * These are the tables of constants for the marching cubes and tetrahedra
@@ -162,13 +160,6 @@
     static const long  aiCubeEdgeFlags[256];
     static const int   a2iTriangleConnectionTable[256][16];
   };
-
-  inline float MeshGenerator::offset(float val1, float val2)
-  {
-    if (val2 - val1 == 0.0f)
-      return 0.5;
-    return (m_iso - val1) / (val2 - val1);
-  }
 
  } // End namespace Avogadro
 

@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>SurfaceSettingsWidget</class>
- <widget class="QWidget" name="SurfaceSettingsWidget" >
-  <property name="geometry" >
+ <widget class="QWidget" name="SurfaceSettingsWidget">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,120 +10,120 @@
     <height>209</height>
    </rect>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" >
-    <widget class="QLabel" name="opacityLabel" >
-     <property name="text" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="opacityLabel">
+     <property name="text">
       <string>Opacity:</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" >
-    <widget class="QSlider" name="opacitySlider" >
-     <property name="minimum" >
+   <item row="0" column="1">
+    <widget class="QSlider" name="opacitySlider">
+     <property name="minimum">
       <number>0</number>
      </property>
-     <property name="maximum" >
+     <property name="maximum">
       <number>20</number>
      </property>
-     <property name="singleStep" >
+     <property name="singleStep">
       <number>1</number>
      </property>
-     <property name="pageStep" >
+     <property name="pageStep">
       <number>2</number>
      </property>
-     <property name="value" >
+     <property name="value">
       <number>10</number>
      </property>
-     <property name="sliderPosition" >
+     <property name="sliderPosition">
       <number>10</number>
      </property>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="invertedAppearance" >
+     <property name="invertedAppearance">
       <bool>false</bool>
      </property>
-     <property name="tickPosition" >
+     <property name="tickPosition">
       <enum>QSlider::TicksBothSides</enum>
      </property>
-     <property name="tickInterval" >
+     <property name="tickInterval">
       <number>4</number>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="renderLabel" >
-     <property name="text" >
+   <item row="1" column="0">
+    <widget class="QLabel" name="renderLabel">
+     <property name="text">
       <string>Render:</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="QComboBox" name="renderCombo" >
+   <item row="1" column="1">
+    <widget class="QComboBox" name="renderCombo">
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Fill</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Lines</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Points</string>
       </property>
      </item>
     </widget>
    </item>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="colorLabel" >
-     <property name="text" >
+   <item row="2" column="0">
+    <widget class="QLabel" name="colorLabel">
+     <property name="text">
       <string>Color:</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1" >
-    <widget class="QComboBox" name="colorCombo" >
-     <property name="enabled" >
-      <bool>false</bool>
+   <item row="2" column="1">
+    <widget class="QComboBox" name="colorCombo">
+     <property name="enabled">
+      <bool>true</bool>
      </property>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Custom Color</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Electrostatic Potential (ESP)</string>
       </property>
      </item>
     </widget>
    </item>
-   <item row="3" column="0" >
-    <widget class="QLabel" name="label" >
-     <property name="text" >
+   <item row="3" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
       <string>Draw Box:</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1" >
-    <layout class="QHBoxLayout" name="horizontalLayout" >
+   <item row="3" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QCheckBox" name="drawBoxCheck" >
-       <property name="text" >
+      <widget class="QCheckBox" name="drawBoxCheck">
+       <property name="text">
         <string/>
        </property>
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer" >
-       <property name="orientation" >
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>40</width>
          <height>20</height>
@@ -132,18 +133,18 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="0" >
-    <widget class="QLabel" name="customColorLabel" >
-     <property name="text" >
+   <item row="4" column="0">
+    <widget class="QLabel" name="customColorLabel">
+     <property name="text">
       <string>Custom Color:</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="1" >
-    <layout class="QHBoxLayout" >
+   <item row="4" column="1">
+    <layout class="QHBoxLayout">
      <item>
-      <widget class="ColorButton" native="1" name="customColorButton" >
-       <property name="minimumSize" >
+      <widget class="ColorButton" name="customColorButton" native="true">
+       <property name="minimumSize">
         <size>
          <width>36</width>
          <height>21</height>
@@ -153,10 +154,10 @@
      </item>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>40</width>
          <height>20</height>
@@ -166,12 +167,12 @@
      </item>
     </layout>
    </item>
-   <item row="5" column="0" >
+   <item row="5" column="0">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>40</height>
@@ -185,7 +186,7 @@
   <customwidget>
    <class>ColorButton</class>
    <extends>QWidget</extends>
-   <header location="global" >avogadro/colorbutton.h</header>
+   <header location="global">avogadro/colorbutton.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

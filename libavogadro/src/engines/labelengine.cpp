@@ -36,7 +36,6 @@
 #include <avogadro/residue.h>
 #include <avogadro/molecule.h>
 
-#include <QGLWidget> // for OpenGL bits
 #include <QDebug>
 
 #include <openbabel/mol.h>

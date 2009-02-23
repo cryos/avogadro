@@ -808,10 +808,10 @@ namespace Avogadro
       if (m_orbitalDialog->colorBy() == 1) {
         qDebug() << "Calculating approximate ESP mapping...";
         calculateESP(m_mesh1);
-        settings.setValue("coloredMesh", true);
+        settings.setValue("colorMode", 1);
       }
       else
-        settings.setValue("coloredMesh", false);
+        settings.setValue("colorMode", 0);
 
       settings.setValue("meshId", static_cast<int>(m_mesh1->id()));
       engine->readSettings(settings);

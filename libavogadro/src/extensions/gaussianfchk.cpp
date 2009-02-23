@@ -131,25 +131,20 @@ namespace Avogadro
 
     // Set up the GTO primitive counter, go through the shells and add them
     int nGTO = 0;
-    for (unsigned int i = 0; i < m_shellTypes.size(); ++i)
-    {
-      if (m_shellTypes.at(i) == -1)
-      {
+    for (unsigned int i = 0; i < m_shellTypes.size(); ++i) {
+      if (m_shellTypes.at(i) == -1)  {
         // SP orbital type - actually have to add two shells
         int s = basis->addBasis(m_shelltoAtom.at(i) - 1, S);
         int p = basis->addBasis(m_shelltoAtom.at(i) - 1, P);
-        for (int j = 0; j < m_shellNums.at(i); ++j)
-        {
+        for (int j = 0; j < m_shellNums.at(i); ++j) {
           basis->addGTO(s, m_c.at(nGTO), m_a.at(nGTO));
           basis->addGTO(p, m_csp.at(nGTO), m_a.at(nGTO));
           nGTO++;
         }
       }
-      else
-      {
+      else {
         orbital type;
-        switch (m_shellTypes.at(i))
-        {
+        switch (m_shellTypes.at(i)) {
           case 0:
             type = S;
             break;
@@ -172,16 +167,17 @@ namespace Avogadro
             type = S;
         }
         int b = basis->addBasis(m_shelltoAtom.at(i) - 1, type);
-        for (int j = 0; j < m_shellNums.at(i); ++j)
-        {
+        for (int j = 0; j < m_shellNums.at(i); ++j) {
           basis->addGTO(b, m_c.at(nGTO), m_a.at(nGTO));
           nGTO++;
         }
       }
     }
     // Now to load in the MO coefficients
-    basis->addMOs(m_MOcoeffs);
-    basis->setDensityMatrix(m_density);
+    if (m_MOcoeffs.size())
+      basis->addMOs(m_MOcoeffs);
+    if (m_density.rows())
+      basis->setDensityMatrix(m_density);
   }
 
   vector<int> GaussianFchk::readArrayI(unsigned int n)

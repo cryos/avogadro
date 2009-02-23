@@ -6,7 +6,6 @@ set (CPACK_PACKAGE_VERSION_MINOR 9)
 set (CPACK_PACKAGE_VERSION_PATCH 1)
 set (CPACK_PACKAGE_INSTALL_DIRECTORY "Avogadro")
 set (CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/avogadro/src/icons/avogadro.ico")
-#set (CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/avogadro/src/icons\\avogadro.ico")
 set (CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
 
 set (CPACK_PACKAGE_EXECUTABLES "avogadro" "Avogadro")
@@ -33,7 +32,7 @@ if (WIN32)
     set (pyqt_DIR "C:/src/PyQt-win-gpl-4.4.4")
   endif(NOT pyqt_DIR)
 
-  # openbabel
+  # OpenBabel
   set(openbabel_DEPS
     "${openbabel_SRCDIR}/windows-vc2005/zlib1.dll"
     "${openbabel_SRCDIR}/windows-vc2005/libxml2.dll"
@@ -44,7 +43,7 @@ if (WIN32)
   file(GLOB openbabel_FILES "${openbabel_DIR}/*.obf")
   set(openbabel_FILES ${openbabel_FILES} "${openbabel_DIR}/openbabel-2.dll")
   install(FILES ${openbabel_FILES} DESTINATION bin)
-
+  # Data files needed by OpenBabel
   file(GLOB openbabel_FILES "${openbabel_SRCDIR}/data/*.txt")
   install(FILES ${openbabel_FILES} DESTINATION bin)
   file(GLOB openbabel_FILES "${openbabel_SRCDIR}/data/*.par")
@@ -61,40 +60,39 @@ if (WIN32)
     "${qt_BINDIR}/QtOpenGL4.dll")
   install(FILES ${qt_DEPS} DESTINATION bin)
 
-  ##########
-  # Python #
-  ##########
 
-  # python library
-  set(python_DEPS
-    "${python_DIR}/libs/python26.dll")
-  install(FILES ${python_DEPS} DESTINATION bin)
-  
-  # lib/*: (includes all sip & numpy runtime files needed)
-  file(GLOB python_lib_FILES "${python_DIR}/lib/*.py") 
-  install(FILES ${python_lib_FILES} DESTINATION bin/lib)
-  #file(GLOB_RECURSE python_lib_FILES "${python_DIR}/lib/site-packages/*.*") 
-  #install(FILES ${python_lib_FILES} DESTINATION bin/lib)
+  if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
+    # Python support - optionally enabled and installed
 
-  add_custom_command(TARGET python_lib_FILES POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy "${python_DIR}/lib" bin)
+    # python library
+    set(python_DEPS "${python_DIR}/libs/python26.dll")
+    install(FILES ${python_DEPS} DESTINATION bin)
 
-  # boost python
-  set(boost_python_DEPS
-    "${boost_python_DIR}/lib/boost_python-vc90-mt-1_38.dll")
-  install(FILES ${boost_python_DEPS} DESTINATION bin)
-  
+    # lib/*: (includes all sip & numpy runtime files needed)
+    file(GLOB python_lib_FILES "${python_DIR}/lib/*.py")
+    install(FILES ${python_lib_FILES} DESTINATION bin/lib)
+    #file(GLOB_RECURSE python_lib_FILES "${python_DIR}/lib/site-packages/*.*")
+    #install(FILES ${python_lib_FILES} DESTINATION bin/lib)
 
-  # PyQt4
-  set(pyqt_DEPS
-    "${pyqt_DIR}/__init__.py"
-    "${pyqt_DIR}/Qt/Qt.pyd"
-    "${pyqt_DIR}/QtCore/QtCore.pyd"
-    "${pyqt_DIR}/QtGui/QtGui.pyd"
-    "${pyqt_DIR}/QtOpenGL/QtOpenGL.pyd"
-    "${pyqt_DIR}/QtCore/QtCore.pyd")
-  install(FILES ${pyqt_DEPS} DESTINATION bin/lib/site-packages/PyQt4)
- 
+    add_custom_command(TARGET python_lib_FILES POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy "${python_DIR}/lib" bin)
+
+    # boost python
+    set(boost_python_DEPS
+      "${boost_python_DIR}/lib/boost_python-vc90-mt-1_38.dll")
+    install(FILES ${boost_python_DEPS} DESTINATION bin)
+
+    # PyQt4
+    set(pyqt_DEPS
+      "${pyqt_DIR}/__init__.py"
+      "${pyqt_DIR}/Qt/Qt.pyd"
+      "${pyqt_DIR}/QtCore/QtCore.pyd"
+      "${pyqt_DIR}/QtGui/QtGui.pyd"
+      "${pyqt_DIR}/QtOpenGL/QtOpenGL.pyd"
+      "${pyqt_DIR}/QtCore/QtCore.pyd")
+    install(FILES ${pyqt_DEPS} DESTINATION bin/lib/site-packages/PyQt4)
+  endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
+
 endif (WIN32)
 
 include(CPack)

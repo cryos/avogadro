@@ -41,7 +41,7 @@ namespace Avogadro {
 
   SurfaceEngine::SurfaceEngine(QObject *parent) : Engine(parent),
     m_settingsWidget(0), m_mesh(0), m_alpha(0.5), m_renderMode(0),
-    m_colorMode(0), m_drawBox(false), m_coloredMesh(false)
+    m_colorMode(0), m_drawBox(false)
   {
     setDescription(tr("Surface rendering"));
     m_color.set(1.0, 0.0, 0.0, m_alpha);
@@ -70,7 +70,7 @@ namespace Avogadro {
     {
       if (m_mesh) {
         if (m_mesh->stable()) {
-          if (m_coloredMesh)
+          if (m_colorMode)
             pd->painter()->drawColorMesh(*m_mesh, m_renderMode);
           else {
             pd->painter()->setColor(&m_color);
@@ -89,7 +89,7 @@ namespace Avogadro {
     {
       if (m_mesh) {
         if (m_mesh->stable()) {
-          if (m_coloredMesh)
+          if (m_colorMode)
             pd->painter()->drawColorMesh(*m_mesh, m_renderMode);
           else {
             pd->painter()->setColor(&m_color);
@@ -109,7 +109,7 @@ namespace Avogadro {
 
     if (m_mesh) {
       if (m_mesh->stable()) {
-          if (m_coloredMesh)
+          if (m_colorMode)
             pd->painter()->drawColorMesh(*m_mesh, m_renderMode);
           else {
             pd->painter()->setColor(&m_color);
@@ -249,7 +249,6 @@ namespace Avogadro {
     settings.setValue("renderMode", m_renderMode);
     settings.setValue("colorMode", m_colorMode);
     settings.setValue("color", m_color.color());
-    settings.setValue("coloredMesh", m_coloredMesh);
     if (m_mesh)
       settings.setValue("meshId", static_cast<int>(m_mesh->id()));
   }
@@ -262,7 +261,6 @@ namespace Avogadro {
     setColorMode(settings.value("colorMode", 0).toInt());
     m_color.set(settings.value("color").value<QColor>());
     m_color.setAlpha(m_alpha);
-    m_coloredMesh = settings.value("coloredMesh").toBool();
 
     if (m_molecule)
       m_mesh = m_molecule->meshById(settings.value("meshId", 0).toInt());

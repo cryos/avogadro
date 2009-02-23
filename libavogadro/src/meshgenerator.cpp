@@ -1,7 +1,7 @@
 /**********************************************************************
   MeshGenerator - Class to generate meshes from volumetric data
 
-  Copyright (C) 2008 by Marcus D. Hanwell
+  Copyright (C) 2008-2009 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -138,17 +138,16 @@ namespace Avogadro {
     return normal;
   }
 
-//unsigned int index = pos.x()*m_points.y()*m_points.z() +
-//                         pos.y()*m_points.z() +
-//                         pos.z();
-
-  unsigned long MeshGenerator::duplicate(const Vector3i &i, const Vector3f &)
+  inline float MeshGenerator::offset(float val1, float val2)
   {
-    if (i.z()) {
-//      foreach(unsigned long index, m_vDone[i.x()*i.y() + i.z()-1) {
+    if (val2 - val1 == 0.0f)
+      return 0.5;
+    return (m_iso - val1) / (val2 - val1);
+  }
 
-//      }
-    }
+  unsigned long MeshGenerator::duplicate(const Vector3i &, const Vector3f &)
+  {
+    // FIXME Not implemented yet.
     return 0;
   }
 

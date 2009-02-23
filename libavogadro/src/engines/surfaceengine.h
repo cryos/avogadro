@@ -96,7 +96,6 @@ namespace Avogadro {
       int    m_renderMode;
       int    m_colorMode;
       bool   m_drawBox;
-      bool   m_coloredMesh;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();
