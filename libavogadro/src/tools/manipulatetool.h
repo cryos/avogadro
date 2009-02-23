@@ -50,19 +50,14 @@ namespace Avogadro {
   class ManipulateTool : public Tool
   {
     Q_OBJECT
-      AVOGADRO_TOOL("Manipulate", tr("Manipulate"))
+      AVOGADRO_TOOL("Manipulate", tr("Manipulate"),
+                    tr("Translate, rotate, and adjust atoms and fragments"))
 
     public:
       //! Constructor
       ManipulateTool(QObject *parent = 0);
       //! Deconstructor
       virtual ~ManipulateTool();
-
-      //! \name Description methods
-      //@{
-      //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Manipulation Tool")); }
-      //@}
 
       //! \name Tool Methods
       //@{
@@ -121,7 +116,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_TOOL_FACTORY(ManipulateTool, "Manipulate Tool", tr("Manipulate Tool"), tr("Tool for manipulating atoms (moving atoms)."))
+    AVOGADRO_TOOL_FACTORY(ManipulateTool)
   };
 
 } // end namespace Avogadro

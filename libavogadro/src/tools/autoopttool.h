@@ -91,19 +91,14 @@ namespace Avogadro {
   class AutoOptTool : public Tool
   {
     Q_OBJECT
-      AVOGADRO_TOOL("AutoOptimization", tr("AutoOptimization"))
+      AVOGADRO_TOOL("AutoOptimization", tr("AutoOptimization"),
+                    tr("Automatic optimization of molecular geometry"))
 
     public:
       //! Constructor
       AutoOptTool(QObject *parent = 0);
       //! Deconstructor
       virtual ~AutoOptTool();
-
-      //! \name Description methods
-      //@{
-      //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Automatic optimization of molecular geometry")); }
-      //@}
 
       //! \name Tool Methods
       //@{
@@ -199,7 +194,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_TOOL_FACTORY(AutoOptTool, "AutoOpt Tool", tr("AutoOpt Tool"), tr("Tool for interactivly optimizing a molecule."))
+    AVOGADRO_TOOL_FACTORY(AutoOptTool)
   };
 
 } // end namespace Avogadro

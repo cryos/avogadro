@@ -43,7 +43,7 @@
 
 #define AVOGADRO_ENGINE(i, t)                                \
   public: \
-  static QString staticIdentifier() { return i; }            \
+    static QString staticIdentifier() { return i; }          \
     QString identifier() const { return i; }                 \
     static QString staticName() { return t; }                \
     QString name() const { return t; }                       \

@@ -62,19 +62,14 @@ namespace Avogadro {
   class BondCentricTool : public Tool
   {
     Q_OBJECT
-      AVOGADRO_TOOL("Bond Centric Manipulate", tr("Bond Centric Manipulate"))
+      AVOGADRO_TOOL("Bond Centric Manipulate", tr("Bond Centric Manipulate"),
+                  tr("Manipulation of bond lengths, angles, and torsions"))
 
     public:
       //! Constructor
       BondCentricTool(QObject *parent = 0);
       //! Deconstructor
       virtual ~BondCentricTool();
-
-      //! \name Description methods
-      //@{
-      //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Bond Centric Manipulation Tool")); }
-      //@}
 
       //! \name Tool Methods
       //@{
@@ -420,7 +415,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_TOOL_FACTORY(BondCentricTool, "Bond Centric Tool", tr("Bond Centric Tool"), tr("Bond centric manipulation tool."))
+    AVOGADRO_TOOL_FACTORY(BondCentricTool)
   };
 
 } // end namespace Avogadro

@@ -48,19 +48,14 @@ namespace Avogadro {
   class SelectRotateTool : public Tool
   {
     Q_OBJECT
-      AVOGADRO_TOOL("Selection", tr("Selection"))
+    AVOGADRO_TOOL("Selection", tr("Selection"),
+                  tr("Select atoms, residues, and molecules"))
 
     public:
       //! Constructor
       SelectRotateTool(QObject *parent = 0);
       //! Deconstructor
       virtual ~SelectRotateTool();
-
-      //! \name Description methods
-      //@{
-      //! Tool Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return(tr("Selection Tool")); }
-      //@}
 
       //! \name Tool Methods
       //@{
@@ -114,8 +109,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_TOOL_FACTORY(SelectRotateTool, "Select-Rotate Tool", tr("Select-Rotate Tool"),
-        tr("Tool for selecting atoms, residues and molecules."))
+    AVOGADRO_TOOL_FACTORY(SelectRotateTool)
   };
 
 } // end namespace Avogadro

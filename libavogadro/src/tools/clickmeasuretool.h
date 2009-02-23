@@ -45,19 +45,14 @@ namespace Avogadro {
  class ClickMeasureTool : public Tool
   {
     Q_OBJECT
-      AVOGADRO_TOOL("Measure", tr("Measure"))
+    AVOGADRO_TOOL("Measure", tr("Measure"),
+                  tr("Measure bond lengths, angles, and dihedrals"))
 
     public:
       //! Constructor
       ClickMeasureTool(QObject *parent = 0);
       //! Destructor
       virtual ~ClickMeasureTool();
-
-      //! \name Description methods
-      //@{
-      //! Tool Description (ie. ClickMeasureTools atoms and bonds)
-      virtual QString description() const { return(tr("Click to Measure Tool")); }
-      //@}
 
       //! \name Tool Methods
       //@{
@@ -107,8 +102,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_TOOL_FACTORY(ClickMeasureTool, "Measure Tool", tr("Measure Tool"),
-        tr("Tool for measuring distances, angles and torsion angles between atoms.."))
+    AVOGADRO_TOOL_FACTORY(ClickMeasureTool)
   };
 
 } // end namespace Avogadro
