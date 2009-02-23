@@ -33,7 +33,7 @@
 #include <QDebug>
 
 // use this for creating drawcommand unit tests
-//#define DEBUG_COMMANDS 1
+// #define DEBUG_COMMANDS 1
 
 using namespace OpenBabel;
 
@@ -344,8 +344,10 @@ namespace Avogadro {
       DeleteAtomDrawCommandPrivate() : id(-1), preCommand(0), postCommand(0) {};
 
       Molecule *molecule;
-      Molecule moleculeCopy;
       unsigned long id;
+      QList<unsigned long> bonds;
+      QList<short> bondOrders;
+      QList<unsigned long> neighbors;
       Eigen::Vector3d pos;
       unsigned int element;
       int adjustValence;
@@ -359,7 +361,6 @@ namespace Avogadro {
   {
     setText(QObject::tr("Delete Atom"));
     d->molecule = molecule;
-    d->moleculeCopy = *molecule;
     Atom *atom = molecule->atom(index);
     d->id = atom->id();
 #ifdef DEBUG_COMMANDS
@@ -389,19 +390,22 @@ namespace Avogadro {
     qDebug() << "DeleteAtomDrawCommand::undo()";
 #endif
 
-/*
     if (d->adjustValence)
       d->postCommand->undo();
 
     Atom *atom = d->molecule->addAtom(d->id);
     atom->setAtomicNumber(d->element);
     atom->setPos(d->pos);
+     
+    // Add the bonds again...
+    foreach (unsigned long id, d->bonds) {
+      int index = d->bonds.indexOf(id);
+      Bond *bond = d->molecule->addBond(id);
+      bond->setAtoms(d->id, d->neighbors.at(index), d->bondOrders.at(index));
+    }
     
     if (d->adjustValence)
       d->preCommand->undo();
-*/
-    // copy for now...
-    *d->molecule = d->moleculeCopy;
 
     d->molecule->update();
   }
@@ -412,6 +416,20 @@ namespace Avogadro {
     qDebug() << "DeleteAtomDrawCommand::redo()";
 #endif
     Atom *atom = d->molecule->atomById(d->id);
+    
+    d->bonds.clear();
+    d->bondOrders.clear();
+    d->neighbors.clear();
+    foreach (unsigned long id, atom->neighbors()) {
+      Atom *nbr = d->molecule->atomById(id);
+      if (nbr->isHydrogen()) continue;
+      Bond *bond = d->molecule->bond(id, atom->id());
+      
+      d->neighbors.append(id);
+      d->bonds.append(bond->id());
+      d->bondOrders.append(bond->order());
+    }
+
     if (atom) {
       QList<unsigned long> neighbors;
 
