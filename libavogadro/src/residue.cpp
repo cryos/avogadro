@@ -80,6 +80,17 @@ namespace Avogadro {
     return m_chainNumber;
   }
 
+  void Residue::setChainID(char id)
+  {
+    m_chainID = id;
+  }
+
+  char Residue::chainID()
+  {
+    return m_chainID;
+  }
+
+
   bool Residue::setAtomId(unsigned long id, QString atomId)
   {
     int index = m_atoms.indexOf(id);
