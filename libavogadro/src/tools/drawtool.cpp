@@ -97,6 +97,12 @@ namespace Avogadro {
   // Handle a user click
   QUndoCommand* DrawTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
+    // check if we are still doing a drag (prevents crash when clicking the right button while dragging)
+    if (m_beginAtom || m_endAtom) {
+      event->accept();
+      return 0;
+    }
+
     Molecule *molecule = widget->molecule();
     if(!molecule) {
       return 0;
