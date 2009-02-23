@@ -195,8 +195,6 @@ namespace Avogadro
      */
      void calculationComplete();
 
-  Q_SIGNALS:
-
   private:
     // New storage of the data
     std::vector<Eigen::Vector3d> m_atomPos;  // Atom position vectors

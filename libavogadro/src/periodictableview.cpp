@@ -29,9 +29,7 @@
 
 #include <openbabel/data.h>
 
-#include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
-#include <QGraphicsView>
 #include <QPainter>
 #include <QStyleOption>
 #include <QFont>
@@ -44,11 +42,9 @@ namespace OpenBabel{
 
 namespace Avogadro {
 
-  ElementItem::ElementItem(int elementNumber) : m_width(26), m_height(26)
+  ElementItem::ElementItem(int elementNumber) : m_width(26), m_height(26),
+    m_element(elementNumber)
   {
-    // Set up some reasonable defaults for our item
-    m_element = elementNumber;
-
     // Want these items to be selectable
     setFlags(QGraphicsItem::ItemIsSelectable);
 
@@ -58,7 +54,6 @@ namespace Avogadro {
     m_color->setRgbF(color[0], color[1], color[2]);
     // Set some custom data to make it easy to figure out which element we are
     setData(0, m_element);
-    setData(1, 8 + m_element);
   }
 
   ElementItem::~ElementItem()
@@ -104,10 +99,9 @@ namespace Avogadro {
     painter->drawText(rect, Qt::AlignCenter, m_symbol);
   }
 
-  ElementDetail::ElementDetail(int elementNumber) : m_width(100), m_height(70)
+  ElementDetail::ElementDetail(int elementNumber) : m_width(100), m_height(70),
+    m_element(elementNumber)
   {
-    // Set up some reasonable defaults for our item
-    m_element = elementNumber;
   }
 
   QRectF ElementDetail::boundingRect() const
@@ -380,11 +374,9 @@ namespace Avogadro {
             this, SLOT(elementClicked(int)));
   }
 
-  PeriodicTableView::PeriodicTableView(QGraphicsScene *scene, QWidget *parent) :
-    QGraphicsView(scene, parent)
+  PeriodicTableView::~PeriodicTableView()
   {
-    connect(scene, SIGNAL(elementChanged(int)),
-            this, SLOT(elementClicked(int)));
+    delete scene();
   }
 
   void PeriodicTableView::elementClicked(int id)

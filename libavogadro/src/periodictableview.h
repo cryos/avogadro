@@ -214,13 +214,12 @@ namespace Avogadro {
      * Constructor - contructs a new PeriodicTableView with an internal instance
      * of PeriodicTableScene.
      */
-    PeriodicTableView(QWidget *parent = 0);
+    explicit PeriodicTableView(QWidget *parent = 0);
 
     /**
-     * Constructor - used to construct a PeriodicTableView with a copy of an
-     * existing PeriodicTableScene.
+     * Destructor.
      */
-    explicit PeriodicTableView(QGraphicsScene *scene, QWidget *parent = 0);
+    ~PeriodicTableView();
 
   private Q_SLOTS:
     /**

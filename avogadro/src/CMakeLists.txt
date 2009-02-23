@@ -19,9 +19,12 @@ include_directories(
   ${avogadro_SOURCE_DIR}/src
   ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN2_INCLUDE_DIR}
-  ${GLEW_INCLUDE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
 )
+
+if(GLEW_FOUND)
+  include_directories(${GLEW_INCLUDE_DIR})
+endif(GLEW_FOUND)
 
 include(${QT_USE_FILE})
 

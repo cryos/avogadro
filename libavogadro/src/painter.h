@@ -60,7 +60,7 @@ namespace Avogadro
     /**
      * Destructor.
      */
-    ~Painter();
+    virtual ~Painter();
 
     /**
      * @return the current global quality setting.

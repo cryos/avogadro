@@ -38,7 +38,7 @@ class QReadWriteLock;
 
 namespace Avogadro {
 
-// Define the overflow resulting from long (-1) as the negative result
+// Define the overflow resulting from long (-1) as the error/not found
 const unsigned long FALSE_ID = -1;
 
   /**
