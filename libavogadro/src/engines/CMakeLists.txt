@@ -77,6 +77,14 @@ add_library(ribbonengine MODULE ${ribbonengine_SRCS} ${ribbonengine_UIS} )
 target_link_libraries(ribbonengine ${LINK_LIBS})
 install(TARGETS ribbonengine DESTINATION ${DESTINATION_DIR})
 
+# Cartoon engine (biological structure)
+set(cartoonengine_SRCS cartoonengine.cpp)
+#qt4_wrap_ui(cartoonengine_UIS cartoonsettingswidget.ui)
+qt4_automoc(${cartoonengine_SRCS})
+add_library(cartoonengine MODULE ${cartoonengine_SRCS} ${cartoonengine_UIS} )
+target_link_libraries(cartoonengine ${LINK_LIBS})
+install(TARGETS cartoonengine DESTINATION ${DESTINATION_DIR})
+
 # Ring engine - display cyclic rings
 set(ringengine_SRCS ringengine.cpp)
 qt4_wrap_ui(ringengine_UIS ringsettingswidget.ui)

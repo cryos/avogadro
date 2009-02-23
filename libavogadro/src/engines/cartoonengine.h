@@ -1,7 +1,8 @@
 /**********************************************************************
-  RibbonEngine - Engine for "ribbon" display
+  CartoonEngine - Engine for protein structures.
 
-  Copyright (C) 2007 by Marcus D. Hanwell
+  Copyright (C) 2009 by Tim Vandermeersch
+  Some portions Copyright (C) 2007-2008 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -22,32 +23,31 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef RIBBONENGINE_H
-#define RIBBONENGINE_H
+#ifndef CARTOONENGINE_H
+#define CARTOONENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
 
-#include "ui_ribbonsettingswidget.h"
+//#include "ui_ribbonsettingswidget.h"
 
 namespace Avogadro {
 
-  //! Ribbon Engine class.
-  class RibbonSettingsWidget;
-  class RibbonEngine : public Engine
+  //! CartoonEngine class.
+  class CartoonEngine : public Engine
   {
     Q_OBJECT
-      AVOGADRO_ENGINE("Ribbon", tr("Ribbon"))
+      AVOGADRO_ENGINE("Cartoon", tr("Cartoon"))
 
     public:
       //! Constructor
-      RibbonEngine(QObject *parent=0);
+      CartoonEngine(QObject *parent=0);
 
       Engine *clone() const;
 
       //! Deconstructor
-      ~RibbonEngine();
+      ~CartoonEngine();
 
       //! \name Render Methods
       //@{
@@ -59,8 +59,6 @@ namespace Avogadro {
       ColorTypes colorTypes() const;
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
-
-      QWidget* settingsWidget();
 
       void setPrimitives(const PrimitiveList &primitives);
 
@@ -82,40 +80,29 @@ namespace Avogadro {
     private:
       void updateChains(PainterDevice *pd);
 
-      RibbonSettingsWidget *m_settingsWidget;
-
       int m_type;      // Type of ribbon rendering to do
-      double m_radius; // Ribbon radius
+      double m_radius; // Cartoon radius
       bool m_update;   // Is an update of the chain necessary?
       int m_useNitrogens;
       QList< QVector<Eigen::Vector3d> > m_chains;
       
-    private Q_SLOTS:
-      void settingsWidgetDestroyed();
+      QList<Eigen::Vector3d> m_triangles;
+      QList<Eigen::Vector3d> m_normals;
 
-      /**
-       * @param value opacity of the VdW spheres / 20
-       */
-      void setType(int value);
-      void setRadius(int value);
-      void setUseNitrogens(int setting);
+      QList<Eigen::Vector3d> m_debugPoints;
+      
+      QList< QVector<Eigen::Vector3d> > m_helixes3;
+      QList< QVector<Eigen::Vector3d> > m_helixes4;
+      QList< QVector<Eigen::Vector3d> > m_helixes5;
 
   };
 
-  class RibbonSettingsWidget : public QWidget, public Ui::RibbonSettingsWidget
-  {
-    public:
-      RibbonSettingsWidget(QWidget *parent=0) : QWidget(parent) {
-        setupUi(this);
-      }
-  };
-
-  //! Generates instances of our RibbonEngine class
-  class RibbonEngineFactory : public QObject, public PluginFactory
+  //! Generates instances of our CartoonEngine class
+  class CartoonEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_ENGINE_FACTORY(RibbonEngine, "Ribbon", tr("Ribbon"), tr("Render ribbons."))
+    AVOGADRO_ENGINE_FACTORY(CartoonEngine, "Cartoon", tr("Cartoon"), tr("Render protein secundary structure."))
   };
 
 } // end namespace Avogadro
