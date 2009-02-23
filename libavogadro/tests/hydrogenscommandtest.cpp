@@ -212,9 +212,6 @@ void HydrogensCommandTest::RemoveHydrogens()
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 1);
 }
 
-
-
 QTEST_MAIN(HydrogensCommandTest)
 
 #include "moc_hydrogenscommandtest.cxx"
-

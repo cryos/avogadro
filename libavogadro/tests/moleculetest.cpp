@@ -208,4 +208,3 @@ void MoleculeTest::removeBond()
 QTEST_MAIN(MoleculeTest)
 
 #include "moc_moleculetest.cxx"
-

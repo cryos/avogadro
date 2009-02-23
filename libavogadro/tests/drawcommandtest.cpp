@@ -1189,8 +1189,6 @@ void DrawCommandTest::crash3()
 
 }
 
-
 QTEST_MAIN(DrawCommandTest)
 
 #include "moc_drawcommandtest.cxx"
-
