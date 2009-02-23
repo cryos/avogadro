@@ -1102,6 +1102,7 @@ namespace Avogadro{
         chains[obres->GetChain()] = chainNumber;
         chainNumber++;
       }
+      residue->setChainID(obres->GetChain());
       residue->setChainNumber(chains.value(obres->GetChain()));
       std::vector<OpenBabel::OBAtom*> obatoms = obres->GetAtoms();
       foreach (OpenBabel::OBAtom *obatom, obatoms) {
