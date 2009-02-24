@@ -46,7 +46,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
-  m_atomType(1), m_bondType(2), m_settingsWidget(0)
+  m_atomType(1), m_bondType(0), m_settingsWidget(0)
   {
   }
 
@@ -244,7 +244,7 @@ namespace Avogadro {
   {
     Engine::readSettings(settings);
     setAtomType(settings.value("atomLabel", 1).toInt());
-    setBondType(settings.value("bondLabel", 3).toInt());
+    setBondType(settings.value("bondLabel", 0).toInt());
     if(m_settingsWidget) {
       m_settingsWidget->atomType->setCurrentIndex(m_atomType);
       m_settingsWidget->bondType->setCurrentIndex(m_bondType);
