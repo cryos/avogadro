@@ -41,10 +41,19 @@ using namespace std;
 
 namespace Avogadro
 {
+
+#ifdef Q_WS_WIN
+    QString mopacPath("C:\Program Files\MOPAC\MOPAC2009.exe");
+#else
+    QString mopacPath("/opt/mopac/MOPAC2009.exe");
+#endif
+
   MOPACInputDialog::MOPACInputDialog(QWidget *parent, Qt::WindowFlags f)
-    : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
+    : QDialog(parent, f), m_molecule(0), m_title("Title"),
+      m_calculationType(OPT),
       m_theoryType(PM6), m_multiplicity(1), m_charge(0),
-      m_coordType(CARTESIAN), m_dirty(false), m_warned(false), m_process(0)
+      m_coordType(CARTESIAN), m_dirty(false), m_warned(false), m_process(0),
+      m_progress(0)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -105,6 +114,12 @@ namespace Avogadro
   void MOPACInputDialog::showEvent(QShowEvent *)
   {
     updatePreviewText();
+
+    QFileInfo info(mopacPath);
+    if (!info.exists() || !info.isExecutable()) {
+      ui.computeButton->hide();
+    } else
+      ui.computeButton->show();
   }
 
   void MOPACInputDialog::updatePreviewText()
@@ -164,12 +179,6 @@ namespace Avogadro
     
     QString fileName = saveInputFile();
     
-#ifdef Q_WS_WIN
-    QString mopacPath("C:\Program Files\MOPAC\MOPAC2009.exe");
-#else
-    QString mopacPath("/opt/mopac/MOPAC2009.exe");
-#endif
-
     QFileInfo info(mopacPath);
     if (!info.exists() || !info.isExecutable()) {
       QMessageBox::warning(this, tr("MOPAC Not Installed."),
@@ -191,13 +200,41 @@ namespace Avogadro
                            tr("MOPAC did not start. Perhaps it is not installed correctly."));
     }
     connect(m_process, SIGNAL(finished(int)), this, SLOT(finished(int)));
+    m_progress = new QProgressDialog(this);
+    m_progress->setRange(0,0); // indeterminate progress
+    m_progress->setLabelText(tr("Running MOPAC calculation..."));
+    m_progress->show();
+    connect(m_progress, SIGNAL(canceled()), this, SLOT(stopProcess()));
+  }
+
+  void MOPACInputDialog::stopProcess()
+  {
+    if (m_progress) {
+      m_progress->deleteLater();
+      m_progress = 0;
+    } 
+
+    disconnect(m_process, 0, this, 0); // don't send a "finished" signal
+    m_process->close();
+    m_process->deleteLater();
+    m_process = 0;
   }
 
   void MOPACInputDialog::finished(int exitCode)
   {
-    disconnect(m_process, 0, this, 0);
-    m_process->deleteLater();
-    m_process = 0;
+    if (m_progress) {
+      m_progress->cancel();
+      m_progress->deleteLater();
+      m_progress = 0;
+    } 
+
+    if (m_process) {
+      disconnect(m_process, 0, this, 0);
+      m_process->deleteLater();
+      m_process = 0;
+    } else {
+      return; // we probably cancelled
+    }
 
     if (exitCode) {
       QMessageBox::warning(this, tr("MOPAC Crashed."),
@@ -247,9 +284,10 @@ namespace Avogadro
   {
     QFileInfo defaultFile(m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();
-    qDebug () << "default path:" << defaultPath;
+    if (defaultPath.isEmpty())
+      defaultPath = QDir::homePath();
     
-    QString defaultFileName = defaultFile.canonicalPath() + "/" + defaultFile.baseName() + ".mop";
+    QString defaultFileName = defaultPath + "/" + defaultFile.baseName() + ".mop";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save MOPAC Input Deck"),
                                                     defaultFileName, tr("MOPAC Input Deck (*.mop)"));
     QFile file(fileName);
@@ -346,7 +384,7 @@ namespace Avogadro
     QString buffer;
     QTextStream mol(&buffer);
 
-    mol << " AUX AUTOSYM ";
+    mol << " AUX ";
     mol << "CHARGE=" << m_charge << " ";
     switch (m_multiplicity)
       {
