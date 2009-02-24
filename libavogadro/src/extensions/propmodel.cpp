@@ -253,7 +253,7 @@ namespace Avogadro
         case 2:
           return tr("Bond Order");
         case 3:
-          return trUtf8("Length (Å)");
+          return tr("Length (Å)");
         case 4:
           return tr("Rotatable");
         }
@@ -270,7 +270,7 @@ namespace Avogadro
         case 2:
           return tr("End Atom");
         case 3:
-          return trUtf8("Angle (°)");
+          return tr("Angle (°)");
         }
       } else
         return tr("Angle %1").arg(section + 1);
@@ -278,15 +278,12 @@ namespace Avogadro
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return tr("Atom Index") + '1';
         case 1:
-          return tr("Atom Index") + '2';
         case 2:
-          return tr("Atom Index") + '3';
         case 3:
-          return tr("Atom Index") + '4';
+          return tr("Atom Index %1").arg(section +1);
         case 4:
-          return trUtf8("Torsion (°)");
+          return tr("Torsion (°)");
         }
       } else
         return tr("Torsion %1").arg(section + 1);
@@ -294,11 +291,11 @@ namespace Avogadro
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return trUtf8("X (Å)");
+          return tr("X (Å)");
         case 1:
-          return trUtf8("Y (Å)");
+          return tr("Y (Å)");
         case 2:
-          return trUtf8("Z (Å)");
+          return tr("Z (Å)");
         }
       } else
         return tr("Atom %1").arg(section + 1);
