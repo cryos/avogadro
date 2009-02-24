@@ -61,7 +61,7 @@ namespace Avogadro
       m_efpDialog( 0 ), m_qmDialog( 0 )
   {
     QAction *action = new QAction( this );
-    action->setText( tr("Input Deck Generator..." ));
+    action->setText( tr("Input Generator..." ));
     m_actions.append( action );
     action->setData( InputDeckAction );
 
