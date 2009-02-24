@@ -57,6 +57,7 @@ namespace Avogadro {
   {
     public:
       QString name;
+      QString identifier;
       QString description;
       QString fileName;
       QString absoluteFilePath;
@@ -73,15 +74,16 @@ namespace Avogadro {
 
   PluginItem::PluginItem(
       const QString &name,
+      const QString &identifier,
       const QString &description,
       Plugin::Type type,
       const QString &fileName,
       const QString &filePath,
       PluginFactory *factory,
-      bool enabled
-      ) : d(new PluginItemPrivate)
+      bool enabled) : d(new PluginItemPrivate)
   {
     d->name = name;
+    d->identifier = identifier;
     d->description = description;
     d->type = type;
     d->fileName = fileName;
@@ -103,6 +105,11 @@ namespace Avogadro {
   QString PluginItem::name() const
   {
     return d->name;
+  }
+
+  QString PluginItem::identifier() const
+  {
+    return d->identifier;
   }
 
   QString PluginItem::description() const
@@ -138,6 +145,11 @@ namespace Avogadro {
   void PluginItem::setName( const QString &name )
   {
     d->name = name;
+  }
+
+  void PluginItem::setIdentifier( const QString &identifier )
+  {
+    d->identifier = identifier;
   }
 
   void PluginItem::setDescription( const QString &description )
@@ -190,7 +202,8 @@ namespace Avogadro {
 
   bool PluginManagerPrivate::factoriesLoaded = false;
 
-  PluginManager::PluginManager(QObject *parent) : QObject(parent), d(new PluginManagerPrivate)
+  PluginManager::PluginManager(QObject *parent) : QObject(parent),
+                                                  d(new PluginManagerPrivate)
   {
   }
 
@@ -321,13 +334,13 @@ namespace Avogadro {
     return d->colors;
   }
 
-  PluginFactory * PluginManager::factory(const QString &name, Plugin::Type type)
+  PluginFactory * PluginManager::factory(const QString &id, Plugin::Type type)
   {
     loadFactories();
     if(type < Plugin::TypeCount) {
       foreach(PluginFactory *factory,
               PluginManagerPrivate::m_enabledFactories()[type]) {
-        if(factory->name() == name) {
+        if(factory->identifier() == id) {
           return factory;
         }
       }
@@ -336,11 +349,11 @@ namespace Avogadro {
     return 0;
   }
 
-  Extension* PluginManager::extension(const QString &name, QObject *parent)
+  Extension* PluginManager::extension(const QString &id, QObject *parent)
   {
     loadFactories();
     foreach(PluginFactory *factory, factories(Plugin::ExtensionType)) {
-      if (factory->name() == name) {
+      if (factory->identifier() == id) {
         Extension *extension = static_cast<Extension *>(factory->createInstance(parent));
         return extension;
       }
@@ -349,11 +362,11 @@ namespace Avogadro {
     return 0;
   }
 
-  Tool* PluginManager::tool(const QString &name, QObject *parent)
+  Tool* PluginManager::tool(const QString &id, QObject *parent)
   {
     loadFactories();
     foreach(PluginFactory *factory, factories(Plugin::ToolType)) {
-      if (factory->name() == name) {
+      if (factory->identifier() == id) {
         Tool *tool = static_cast<Tool *>(factory->createInstance(parent));
         return tool;
       }
@@ -362,11 +375,11 @@ namespace Avogadro {
     return 0;
   }
 
-  Color* PluginManager::color(const QString &name, QObject *parent)
+  Color* PluginManager::color(const QString &id, QObject *parent)
   {
     loadFactories();
     foreach(PluginFactory *factory, factories(Plugin::ColorType)) {
-      if (factory->name() == name) {
+      if (factory->identifier() == id) {
         Color *color = static_cast<Color *>(factory->createInstance(parent));
         return color;
       }
@@ -375,12 +388,12 @@ namespace Avogadro {
     return 0;
   }
 
-  Engine* PluginManager::engine(const QString &name, QObject *parent)
+  Engine* PluginManager::engine(const QString &id, QObject *parent)
   {
     loadFactories();
 
     foreach(PluginFactory *factory, factories(Plugin::EngineType)) {
-      if (factory->name() == name) {
+      if (factory->identifier() == id) {
         Engine *engine = static_cast<Engine *>(factory->createInstance(parent));
         return engine;
       }
@@ -398,6 +411,17 @@ namespace Avogadro {
       names.append(factory->name());
 
     return names;
+  }
+
+  QList<QString> PluginManager::identifiers(Plugin::Type type)
+  {
+    loadFactories();
+
+    QList<QString> ids;
+    foreach(PluginFactory *factory, factories(type))
+      ids.append(factory->identifier());
+
+    return ids;
   }
 
   QList<QString> PluginManager::descriptions(Plugin::Type type)
@@ -557,10 +581,11 @@ namespace Avogadro {
     QVector< QList<PluginFactory *> > &df = PluginManagerPrivate::m_disabledFactories();
 
     // create the PluginItem
-    PluginItem *item = new PluginItem(factory->name(), factory->description(),
+    PluginItem *item = new PluginItem(factory->name(), factory->identifier(), 
+                                      factory->description(),
         factory->type(), fileInfo.fileName(), fileInfo.absoluteFilePath(), factory);
     // add the factory to the correct list
-    if(settings.value(factory->name(), true).toBool()) {
+    if(settings.value(factory->identifier(), true).toBool()) {
       ef[factory->type()].append(factory);
       item->setEnabled(true);
     } else {
@@ -658,7 +683,7 @@ namespace Avogadro {
     for(int i=0; i<Plugin::TypeCount; i++) {
       settings.beginGroup(QString::number(i));
       foreach(PluginItem *item, PluginManagerPrivate::m_items()[i]) {
-        settings.setValue(item->name(), item->isEnabled());
+        settings.setValue(item->identifier(), item->isEnabled());
       }
       settings.endGroup();
     }

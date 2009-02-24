@@ -48,8 +48,13 @@ namespace Avogadro {
   {
   public:
     PluginItem();
-    PluginItem(int type, const QString &fileName, const QString &filePath, PluginFactory *factory);
-    PluginItem( const QString &name, const QString &description, Plugin::Type type, const QString &fileName, const QString &filePath, PluginFactory *factory = 0, bool enabled = true);
+    //    PluginItem(int type, const QString &fileName, 
+    //               const QString &filePath, PluginFactory *factory);
+    PluginItem(const QString &name, const QString &identifier,
+               const QString &description,
+               Plugin::Type type, const QString &fileName, 
+               const QString &filePath, PluginFactory *factory = 0, 
+               bool enabled = true);
     ~PluginItem();
 
     /**
@@ -65,13 +70,18 @@ namespace Avogadro {
     /**
      * The plugin description (Draw, Stick, ...)
      */
-
     QString description() const;
+
+    /**
+     * The plugin unique, untranslated identifier
+     */
+    QString identifier() const;
+
     /**
      * The plugin filename (libdrawtool.so, libaligntool.dll, ...)
      */
-
     QString fileName() const;
+
     /**
      * The absolute file path
      */
@@ -93,6 +103,11 @@ namespace Avogadro {
      * Set the plugin name (Draw, Stick, ...)
      */
     void setName( const QString &name );
+
+    /**
+     * Set the plugin unique, untranslated identifier
+     */
+    void setIdentifier( const QString &id );
 
     /**
      * Set the plugin description
@@ -150,41 +165,46 @@ namespace Avogadro {
     static QList<PluginFactory *> factories( Plugin::Type type );
 
     /**
-     * Get the PluginFactory of type @p type with plugin name @p name.
+     * Get the PluginFactory of type @p type with plugin identifier @p id.
      */
-    static PluginFactory *factory(const QString &name, Plugin::Type type);
+    static PluginFactory *factory(const QString &id, Plugin::Type type);
 
     /**
-     * Get a new instance of the extension with name @name
-     * @return 0 if there is no extension plugin with name @nam
+     * Get a new instance of the extension with identifier @p id
+     * @return 0 if there is no extension plugin with identifier @p id
      */
-    Extension *extension(const QString &name, QObject *parent = 0);
+    Extension *extension(const QString &id, QObject *parent = 0);
 
     /**
-     * Get a new instance of the tool with name @name
-     * @return 0 if there is no tool plugin with name @nam
+     * Get a new instance of the tool with identifier @p id
+     * @return 0 if there is no tool plugin with identifier @p id
      */
-    Tool *tool(const QString &name, QObject *parent = 0);
+    Tool *tool(const QString &id, QObject *parent = 0);
 
     /**
-     * Get a new instance of the color with name @name
-     * @return 0 if there is no color plugin with name @nam
+     * Get a new instance of the color with identifier @p id
+     * @return 0 if there is no color plugin with identifier @p id
      */
-    Color *color(const QString &name, QObject *parent = 0);
+    Color *color(const QString &id, QObject *parent = 0);
 
     /**
-     * Get a new instance of the color with name @name
-     * @return 0 if there is no engine plugin with name @nam
+     * Get a new instance of the color with identifier @p id
+     * @return 0 if there is no engine plugin with identifier @p id
      */
-    Engine *engine(const QString &name, QObject *parent = 0);
+    Engine *engine(const QString &id, QObject *parent = 0);
 
     /**
-     * Get a list with the plugin names of type @type
+     * Get a list with the plugin names of type @p type
      */
     QList<QString> names(Plugin::Type type);
 
     /**
-     * Get a list with the plugin descriptions of type @type
+     * Get a list with the plugin identifiers of type @p type
+     */
+    QList<QString> identifiers(Plugin::Type type);
+
+    /**
+     * Get a list with the plugin descriptions of type @p type
      */
     QList<QString> descriptions(Plugin::Type type);
 
