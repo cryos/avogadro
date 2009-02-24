@@ -106,12 +106,14 @@ namespace Avogadro
         return QVariant();
 
       Atom *atom = m_molecule->atom(index.row());
-      OBMol obmol = m_molecule->OBMol();
-      OpenBabel::OBAtom *obatom = obmol.GetAtom(index.row() + 1);
 
       switch (index.column()) {
       case 0: // type
-        return obatom->GetType();
+        {
+          OBMol obmol = m_molecule->OBMol();
+          OpenBabel::OBAtom *obatom = obmol.GetAtom(index.row() + 1);
+          return obatom->GetType();
+        }
       case 1: // atomic number
         return atom->atomicNumber();
       case 2: // partial charge
@@ -207,10 +209,8 @@ namespace Avogadro
         return QString::number(atom->pos()->z(), 'f', 5);
       }
     } else if (m_type == ConformerType) {
-      if (index.row() >= m_molecule->numConformers())
+      if (static_cast<unsigned int>(index.row()) >= m_molecule->numConformers())
         return QVariant();
-
-      OBMol obmol = m_molecule->OBMol();
 
       switch (index.column()) {
       case 0: // energy
@@ -253,7 +253,7 @@ namespace Avogadro
         case 2:
           return tr("Bond Order");
         case 3:
-          return tr("Length (Å)");
+          return trUtf8("Length (Å)");
         case 4:
           return tr("Rotatable");
         }
@@ -270,7 +270,7 @@ namespace Avogadro
         case 2:
           return tr("End Atom");
         case 3:
-          return tr("Angle (°)");
+          return trUtf8("Angle (°)");
         }
       } else
         return tr("Angle %1").arg(section + 1);
@@ -286,7 +286,7 @@ namespace Avogadro
         case 3:
           return tr("Atom Index") + '4';
         case 4:
-          return tr("Torsion (°)");
+          return trUtf8("Torsion (°)");
         }
       } else
         return tr("Torsion %1").arg(section + 1);
@@ -294,11 +294,11 @@ namespace Avogadro
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return tr("X (Å)");
+          return trUtf8("X (Å)");
         case 1:
-          return tr("Y (Å)");
+          return trUtf8("Y (Å)");
         case 2:
-          return tr("Z (Å)");
+          return trUtf8("Z (Å)");
         }
       } else
         return tr("Atom %1").arg(section + 1);

@@ -28,6 +28,7 @@
 
 #include <QDialog>
 #include <QProcess>
+#include <QProgressDialog>
 
 #include <avogadro/glwidget.h>
 
@@ -82,6 +83,7 @@ namespace Avogadro
     bool m_dirty;
     bool m_warned;
     QProcess *m_process;
+    QProgressDialog *m_progress;
     QString m_inputFile;
 
     QString saveInputFile();
@@ -111,6 +113,7 @@ namespace Avogadro
     void previewEdited();
     
     void finished(int);
+    void stopProcess();
 
     void setTitle();
     void setCalculation(int);

@@ -2063,7 +2063,7 @@ namespace Avogadro {
       {
         settings.setArrayIndex(i);
         Engine *engine = d->engines.at(i);
-        settings.setValue("engineName", engine->name());
+        settings.setValue("engineID", engine->identifier());
         engine->writeSettings(settings);
       }
     settings.endArray();
@@ -2083,7 +2083,7 @@ namespace Avogadro {
     for(int i=0; i<count; i++)
     {
       settings.setArrayIndex(i);
-      QString engineClass = settings.value("engineName", QString()).toString();
+      QString engineClass = settings.value("engineID", QString()).toString();
 
       PluginFactory *factory;
       if(!engineClass.isEmpty() && (factory = PluginManager::factory(engineClass, Plugin::EngineType)))

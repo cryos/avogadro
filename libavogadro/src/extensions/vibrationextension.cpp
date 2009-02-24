@@ -50,9 +50,8 @@ namespace Avogadro {
     action->setText(tr("Vibrations..."));
     m_actions.append(action);
 
-    QWidget *parentWidget = static_cast<QWidget*>(parent);
-    m_widget = parentWidget;
-    m_dialog = new VibrationDialog(parentWidget);
+    m_widget =  static_cast<GLWidget*>(parent);
+    m_dialog = new VibrationDialog(m_widget);
     connect(m_dialog, SIGNAL(selectedMode(int)),
             this, SLOT(updateMode(int)));
   }
@@ -100,6 +99,8 @@ namespace Avogadro {
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
 
     if (m_vibrations->GetLx().size() != 0) {
+      enableForceDisplay();
+
       vector<vector3> displacementVectors = m_vibrations->GetLx()[mode];
       vector3 displacement;
       
@@ -132,6 +133,19 @@ namespace Avogadro {
     }
 
     return NULL;
+  }
+
+  void VibrationExtension::enableForceDisplay()
+  {
+    if (!m_widget)
+      return;
+
+    foreach (Engine *engine, m_widget->engines()) {
+      if (engine->identifier() == "Force") {
+        engine->setEnabled(true);
+      }
+    }
+    m_widget->update();
   }
 
 } // end namespace Avogadro

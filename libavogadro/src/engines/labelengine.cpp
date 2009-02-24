@@ -97,7 +97,7 @@ namespace Avogadro {
       QString str;
       switch(m_atomType) {
         case 1: // Atom index
-          str = QString::number(a->index());
+          str = QString::number(a->index() + 1);
           break;
         case 3: // Atomic Symbol
           str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
@@ -172,7 +172,7 @@ namespace Avogadro {
           str = QString::number(b->length(), 'g', 4);
           break;
         case 2:
-          str = QString::number(b->index());
+          str = QString::number(b->index() + 1);
           break;
         case 4:
           str = QString::number(b->id());
