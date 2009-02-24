@@ -1192,46 +1192,50 @@ void GamessSystemGroup::InitData( void )
 }
 void GamessSystemGroup::WriteToFile( ostream &File )
 {
-  long test;
   char Out[GAMESS_BUFF_LEN];
 
   //Punch the group label
-  File << " $SYSTEM ";
-  //Time limit
-  test = TimeLimit;
-  if ( test==0 ) test = 600;
-  sprintf( Out,"TIMLIM=%ld ",test );
-  File << Out;
-  //Memory
-  if ( Memory ) {
+  if (MemDDI || GetParallel() || KDiag || GetCoreFlag()
+      || GetBalanceType() || GetXDR()) {
+    File << " $SYSTEM ";
+    /*
+    //Time limit
+    long test = TimeLimit;
+    if ( test==0 ) test = 600;
+    sprintf( Out,"TIMLIM=%ld ",test );
+    File << Out;
+    //Memory
+    if ( Memory ) {
     sprintf( Out, "MEMORY=%ld ", ( long )Memory );
     File << Out;
+    }
+    */
+    if ( MemDDI ) {
+      sprintf( Out, "MEMDDI=%ld ", ( long )MemDDI );
+      File << Out;
+    } //PARALL
+    if ( GetParallel() ) {
+      sprintf( Out, "PARALL=.TRUE. " );
+      File << Out;
+    } //diag method
+    if ( KDiag ) {
+      sprintf( Out, "KDIAG=%d ", KDiag );
+      File << Out;
+    } //core flag
+    if ( GetCoreFlag() ) {
+      sprintf( Out, "COREFL=.TRUE. " );
+      File << Out;
+    } //Balance type
+    if ( GetBalanceType() ) {
+      sprintf( Out, "BALTYP=NXTVAL " );
+      File << Out;
+    } //XDR
+    if ( GetXDR() ) {
+      sprintf( Out, "XDR=.TRUE. " );
+      File << Out;
+    }
+    File << "$END" << endl;
   }
-  if ( MemDDI ) {
-    sprintf( Out, "MEMDDI=%ld ", ( long )MemDDI );
-    File << Out;
-  } //PARALL
-  if ( GetParallel() ) {
-    sprintf( Out, "PARALL=.TRUE. " );
-    File << Out;
-  } //diag method
-  if ( KDiag ) {
-    sprintf( Out, "KDIAG=%d ", KDiag );
-    File << Out;
-  } //core flag
-  if ( GetCoreFlag() ) {
-    sprintf( Out, "COREFL=.TRUE. " );
-    File << Out;
-  } //Balance type
-  if ( GetBalanceType() ) {
-    sprintf( Out, "BALTYP=NXTVAL " );
-    File << Out;
-  } //XDR
-  if ( GetXDR() ) {
-    sprintf( Out, "XDR=.TRUE. " );
-    File << Out;
-  }
-  File << "$END" << endl;
 }
 //#pragma mark GamessBasisGroup
 //GamessBasisGroup member functions

@@ -131,22 +131,6 @@ namespace Avogadro {
         this, SLOT( updatePreviewText() ) );
     connect( ui.basicOnRightCombo, SIGNAL( currentIndexChanged( int ) ),
         this, SLOT( basicChanged() ) );
-
-    // Time
-    connect( ui.basicTimeDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( setBasicTime( double ) ) );
-    connect( ui.basicTimeDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( updatePreviewText() ) );
-    connect( ui.basicTimeDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( basicChanged() ) );
-
-    // Memory
-    connect( ui.basicMemoryDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( setBasicMemory( double ) ) );
-    connect( ui.basicMemoryDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( updatePreviewText() ) );
-    connect( ui.basicMemoryDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( basicChanged() ) );
   }
 
   void GamessInputDialog::connectAdvanced()
@@ -229,10 +213,6 @@ namespace Avogadro {
     setBasicOnLeft(0);
     ui.basicOnRightCombo->setCurrentIndex( 2 );
     setBasicOnRight(2);
-    ui.basicTimeDouble->setValue( 10.0 );
-    setBasicTime(10.0);
-    ui.basicMemoryDouble->setValue( 50.0 );
-    setBasicMemory(50.0);
     updateBasicWidgets();
 
     blockChildrenSignals(ui.basicWidget, false);
@@ -387,9 +367,6 @@ namespace Avogadro {
       setBasicOnLeft( ui.basicOnLeftCombo->currentIndex() );
     }
     setBasicOnRight( ui.basicOnRightCombo->currentIndex() );
-
-    setBasicTime( ui.basicTimeDouble->value() );
-    setBasicMemory( ui.basicMemoryDouble->value() );
 
     m_advancedChanged = false;
     ui.basicWidget->setEnabled( true );
@@ -667,18 +644,6 @@ namespace Avogadro {
   void GamessInputDialog::updateSystemWidgets()
   {
     blockChildrenSignals( ui.systemWidget, true );
-
-    // timeLimitText
-    ui.systemTimeDouble->setValue( m_inputData->System->GetConvertedTime());
-
-    // timeLimitUnitCombo
-    ui.systemTimeCombo->setCurrentIndex( m_inputData->System->GetTimeUnits() - 1 );
-
-    // memoryText
-    ui.systemMemoryDouble->setValue( m_inputData->System->GetConvertedMem() );
-
-    // memoryUnitCombo
-    ui.systemMemoryCombo->setCurrentIndex( m_inputData->System->GetMemUnits() - 1 );
 
     // memDDI edit
     ui.systemDDIDouble->setValue( m_inputData->System->GetConvertedMemDDI() );
@@ -1132,34 +1097,6 @@ namespace Avogadro {
 
   void GamessInputDialog::connectSystem()
   {
-    connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( setSystemTime( double ) ) );
-    connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( updatePreviewText() ) );
-    connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( advancedChanged() ) );
-
-    connect( ui.systemTimeCombo, SIGNAL( currentIndexChanged( int ) ),
-        this, SLOT( setSystemTimeUnits( int ) ) );
-    connect( ui.systemTimeCombo, SIGNAL( currentIndexChanged( int ) ),
-        this, SLOT( updatePreviewText() ) );
-    connect( ui.systemTimeCombo, SIGNAL( currentIndexChanged( int ) ),
-        this, SLOT( advancedChanged() ) );
-
-    connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( setSystemMemory( double ) ) );
-    connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( updatePreviewText() ) );
-    connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
-        this, SLOT( advancedChanged() ) );
-
-    connect( ui.systemMemoryCombo, SIGNAL( currentIndexChanged( int ) ),
-        this, SLOT( setSystemMemoryUnits( int ) ) );
-    connect( ui.systemMemoryCombo, SIGNAL( currentIndexChanged( int ) ),
-        this, SLOT( updatePreviewText() ) );
-    connect( ui.systemMemoryCombo, SIGNAL( currentIndexChanged( int ) ),
-        this, SLOT( advancedChanged() ) );
-
     connect( ui.systemDDIDouble, SIGNAL( valueChanged( double ) ),
         this, SLOT( setSystemDDI( double ) ) );
     connect( ui.systemDDIDouble, SIGNAL( valueChanged( double ) ),
@@ -1895,18 +1832,6 @@ namespace Avogadro {
     m_inputData->Control->SetCharge( charge );
   }
 
-  void GamessInputDialog::setBasicTime( double val )
-  {
-    m_inputData->System->SetConvertedTime( val );
-  }
-
-  void GamessInputDialog::setBasicMemory( double val )
-  {
-    // this should be the default
-    // m_inputData->System->SetMemUnits(megaBytesUnit);
-    m_inputData->System->SetConvertedMem( val );
-  }
-
   // Basis Slots
   void GamessInputDialog::setBasisSet( int index )
   {
@@ -2094,30 +2019,6 @@ namespace Avogadro {
     m_inputData->Data->SetUseSym( state );
   }
 
-
-  // System Slots
-  void GamessInputDialog::setSystemTime( double val )
-  {
-    m_inputData->System->SetConvertedTime( val );
-  }
-
-  void GamessInputDialog::setSystemTimeUnits( int index )
-  {
-    m_inputData->System->SetTimeUnits(( TimeUnit )( index+1 ) );
-    ui.systemTimeDouble->setValue( m_inputData->System->GetConvertedTime() );
-
-  }
-
-  void GamessInputDialog::setSystemMemory( double val )
-  {
-    m_inputData->System->SetConvertedMem( val );
-  }
-
-  void GamessInputDialog::setSystemMemoryUnits( int index )
-  {
-    m_inputData->System->SetMemUnits(( MemoryUnit )( index+1 ) );
-    ui.systemMemoryDouble->setValue( m_inputData->System->GetConvertedMem() );
-  }
 
   void GamessInputDialog::setSystemDDI( double val )
   {

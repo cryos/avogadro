@@ -170,8 +170,6 @@ namespace Avogadro
       void setBasicIn( int index );
       void setBasicOnLeft( int index );
       void setBasicOnRight( int index );
-      void setBasicTime( double val );
-      void setBasicMemory( double val );
 
       //! Basis Slots
       void setBasisSet( int index );
@@ -206,10 +204,6 @@ namespace Avogadro
       void setDataSymmetry( bool state );
 
       //! System Slots;
-      void setSystemTime( double val );
-      void setSystemTimeUnits( int index );
-      void setSystemMemory( double val );
-      void setSystemMemoryUnits( int index );
       void setSystemDDI( double val );
       void setSystemDDIUnits( int index );
       void setSystemProduce( bool state );
