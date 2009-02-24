@@ -37,7 +37,8 @@ namespace Avogadro {
  class HydrogensExtension : public Extension
   {
     Q_OBJECT
-      AVOGADRO_EXTENSION("Hydrogens", tr("Hydrogens"))
+    AVOGADRO_EXTENSION("Hydrogens", tr("Hydrogens"),
+                       tr("Add or remove hydrogens"))
 
     public:
       //! Constructor
@@ -45,10 +46,6 @@ namespace Avogadro {
       //! Deconstructor
       virtual ~HydrogensExtension();
 
-      //! \name Description methods
-      //@{
-      //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("Hydrogens Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
@@ -92,12 +89,7 @@ namespace Avogadro {
   {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
-
-      AVOGADRO_EXTENSION_FACTORY(HydrogensExtension,
-                                 "Hydrogens Extension",
-          tr("Hydrogens Extension"),
-          tr("Extension to add or delete hydrogens."))
-
+      AVOGADRO_EXTENSION_FACTORY(HydrogensExtension)
   };
 
 

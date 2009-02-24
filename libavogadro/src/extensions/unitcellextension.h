@@ -31,7 +31,8 @@ namespace Avogadro {
   class UnitCellExtension : public Extension
   {
     Q_OBJECT
-    AVOGADRO_EXTENSION("UnitCell", tr("UnitCell"))
+    AVOGADRO_EXTENSION("UnitCell", tr("Unit Cell"),
+                       tr("Build and display crystallographic unit cells"))
 
   public:
     //! Constructor
@@ -39,21 +40,16 @@ namespace Avogadro {
     //! Destructor
     ~UnitCellExtension();
 
-    //! \name Description methods
-    //@{
-    //! Plugin Description (ie. Draws atoms and bonds)
-    QString description() const { return QObject::tr("Unit Cell Parameters Plugin"); };
     //! Perform Action
     QList<QAction *> actions() const;
     QUndoCommand* performAction(QAction *action, GLWidget *widget);
     QString menuPath(QAction *action) const;
     void setMolecule(Molecule *molecule);
-    //@}
 
   public Q_SLOTS:
     void unitCellDisplayChanged(int a, int b, int c);
     void unitCellParametersChanged(double a, double b, double c,
-                                     double alpha, double beta, double gamma);
+                                   double alpha, double beta, double gamma);
 
     void deleteUnitCell();
     void fillUnitCell();
@@ -69,11 +65,7 @@ namespace Avogadro {
   {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
-
-      AVOGADRO_EXTENSION_FACTORY(UnitCellExtension,
-          "Unit Cell Extension",
-          tr("Unit Cell Extension"),
-          tr("Extension for building unit cells."))
+      AVOGADRO_EXTENSION_FACTORY(UnitCellExtension)
   };
 
 } // end namespace Avogadro

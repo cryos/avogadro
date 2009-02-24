@@ -37,7 +37,9 @@ namespace Avogadro {
  class WiiTrackExtension : public Extension
   {
     Q_OBJECT
-    
+      AVOGADRO_EXTENSION("WiiTrack", tr("Wii Tracking"),
+                         tr("Track motion using Wii remotes"))
+
    public slots:
      void redraw(); 
    public:
@@ -46,19 +48,11 @@ namespace Avogadro {
       //! Deconstructor
       virtual ~WiiTrackExtension();
 
-      //! \name Description methods
-      //@{
-      //! Plugin Name (ie Draw)
-      virtual QString name() const { return QObject::tr("WiiTrack"); }
-      //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("WiiTrack Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, Molecule *molecule,
                                           GLWidget *widget, QTextEdit *messages=NULL);
       virtual QString menuPath(QAction *action) const;
-      //@}
-      
       
     private:
       QList<QAction *> m_actions;
@@ -83,9 +77,7 @@ namespace Avogadro {
   {
     Q_OBJECT;
     Q_INTERFACES(Avogadro::ExtensionFactory);
-
-    public:
-    Extension *createInstance(QObject *parent = 0) { return new WiiTrackExtension(parent); }
+    AVOGADRO_EXTENSION_FACTORY(WiiTrackExtension)
   };
 
 } // end namespace Avogadro

@@ -37,15 +37,11 @@ namespace Avogadro
   class GaussianExtension : public Extension
   {
   Q_OBJECT
-    AVOGADRO_EXTENSION("Gaussian Input Deck", tr("Gaussian Input Deck"))
+    AVOGADRO_EXTENSION("Gaussian Input Deck", tr("Gaussian Input Deck"), 
+                       tr("Create input files for quantum chemistry packages like Gaussian"))
   public:
     GaussianExtension(QObject* parent = 0);
     virtual ~GaussianExtension();
-
-    virtual QString description() const
-    {
-      return QObject::tr("Gaussian input deck generator");
-    }
 
     virtual QList<QAction *> actions() const;
 
@@ -85,11 +81,7 @@ namespace Avogadro
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_EXTENSION_FACTORY(GaussianExtension, "Gaussian Extension",
-        tr("Gaussian Extension"),
-        tr("Extension for creating input files for the Gaussian"
-          " quantum chemistry package."))
- 
+    AVOGADRO_EXTENSION_FACTORY(GaussianExtension) 
   };
 
 } // End namespace Avogadro

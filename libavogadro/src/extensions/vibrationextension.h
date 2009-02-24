@@ -41,7 +41,8 @@ namespace Avogadro {
  class VibrationExtension : public Extension
   {
     Q_OBJECT
-      AVOGADRO_EXTENSION("Vibration", tr("Vibration"))
+    AVOGADRO_EXTENSION("Vibration", tr("Vibration"),
+                       tr("Visualize vibrational modes from quantum chemistry calculations"))
 
     public:
       //! Constructor
@@ -49,17 +50,12 @@ namespace Avogadro {
       //! Deconstructor
       virtual ~VibrationExtension();
 
-      //! \name Description methods
-      //@{
-      //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return QObject::tr("Vibration Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
       virtual QString menuPath(QAction *action) const;
 
       virtual void setMolecule(Molecule *molecule);
-      //@}
 
     public slots:
       void updateMode(int mode);
@@ -77,12 +73,7 @@ namespace Avogadro {
   {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
-
-      AVOGADRO_EXTENSION_FACTORY(VibrationExtension,
-                                 "Vibration Extension",
-          tr("Vibration Extension"),
-          tr("Extension for visualizing vibrational modes from calculations."))
-
+      AVOGADRO_EXTENSION_FACTORY(VibrationExtension)
   };
 
 

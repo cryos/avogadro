@@ -41,7 +41,8 @@ namespace Avogadro {
  class AnimationExtension : public Extension
   {
     Q_OBJECT
-      AVOGADRO_EXTENSION("Animation", tr("Animation"))
+    AVOGADRO_EXTENSION("Animation", tr("Animation"), 
+                       tr("Animate trajectories, reactions, and vibratins."))
 
     public:
       //! Constructor
@@ -49,10 +50,6 @@ namespace Avogadro {
       //! Deconstructor
       virtual ~AnimationExtension();
 
-      //! \name Description methods
-      //@{
-      //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return tr("Animation Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
@@ -94,8 +91,7 @@ namespace Avogadro {
   {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
-
-        AVOGADRO_EXTENSION_FACTORY(AnimationExtension, "Animate", tr("Animate Extension"), tr("Extension for animating trajectories."))
+      AVOGADRO_EXTENSION_FACTORY(AnimationExtension)
   };
 
 } // end namespace Avogadro

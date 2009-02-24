@@ -32,18 +32,22 @@
 #include <QSettings>
 #include <QtPlugin>
 
-#define AVOGADRO_EXTENSION(i, t)                    \
+#define AVOGADRO_EXTENSION(i, t, d)          \
   public: \
-    QString identifier() const { return i; } \
-    QString name() const { return t; } \
+    static QString staticIdentifier() { return i; }          \
+    QString identifier() const { return i; }                 \
+    static QString staticName() { return t; }                \
+    QString name() const { return t; }                       \
+    static QString staticDescription() { return d; }         \
+    QString description() const { return d; }
 
-#define AVOGADRO_EXTENSION_FACTORY(c,i,n,d)     \
+#define AVOGADRO_EXTENSION_FACTORY(c)     \
   public: \
     Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
     Plugin::Type type() const { return Plugin::ExtensionType; } \
-    QString identifier() const { return i; } \
-    QString name() const { return n; } \
-    QString description() const { return d; }; 
+    QString identifier() const { return c::staticIdentifier(); } \
+    QString name() const { return c::staticName(); }         \
+    QString description() const { return c::staticDescription(); }
 
 class QDockWidget;
 class QUndoCommand;

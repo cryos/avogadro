@@ -51,18 +51,14 @@ namespace Avogadro {
  class ForceFieldExtension : public Extension
   {
     Q_OBJECT
-      AVOGADRO_EXTENSION("ForceField", tr("ForceField"))
+    AVOGADRO_EXTENSION("ForceField", tr("ForceField"),
+                       tr("Optimize molecules and generate conformers using molecular mechanics force fields"))
 
     public:
       //! Constructor
       ForceFieldExtension(QObject *parent=0);
       //! Deconstructor
       virtual ~ForceFieldExtension();
-
-      //! \name Description methods
-      //@{
-      //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return tr("ForceField Plugin"); };
 
       /** @return a menu path for the extension's actions */
       virtual QString menuPath(QAction *action) const;
@@ -178,9 +174,7 @@ namespace Avogadro {
   {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
-
-        AVOGADRO_EXTENSION_FACTORY(ForceFieldExtension, "Force Field Extension", tr("Force Field Extension"), tr("Extension for optimizing molecules and conformer generation."))
-
+      AVOGADRO_EXTENSION_FACTORY(ForceFieldExtension)
   };
 
 } // end namespace Avogadro

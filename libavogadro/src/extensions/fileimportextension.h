@@ -40,16 +40,12 @@ namespace Avogadro
   class FileImportExtension : public Extension
   {
   Q_OBJECT
-    AVOGADRO_EXTENSION("Import Trajectory", tr("Import Trajectory"))
+  AVOGADRO_EXTENSION("Import Trajectory", tr("Import Trajectory"),
+                     tr("Import trajectory files"))
 
   public:
     FileImportExtension(QObject* parent = 0);
     virtual ~FileImportExtension();
-
-    virtual QString description() const
-    {
-      return tr("Import chemical files");
-    }
 
     /**
      * @return a list of actions which this widget can perform
@@ -115,11 +111,7 @@ namespace Avogadro
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_EXTENSION_FACTORY(FileImportExtension,
-                               "Import Trajectories", 
-        tr("Import Trajectories"),
-        tr("Extension for importing molecular trajectories."))
-
+    AVOGADRO_EXTENSION_FACTORY(FileImportExtension)
   };
 
 } // End namespace Avogadro

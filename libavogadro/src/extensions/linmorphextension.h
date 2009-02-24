@@ -23,7 +23,6 @@
 #ifndef LINMORPHEXTENSION_H
 #define LINMORPHEXTENSION_H
 
-
 #include <avogadro/extension.h>
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
@@ -39,28 +38,23 @@ namespace Avogadro {
   class LinMorphExtension : public Extension
   {
     Q_OBJECT
+    AVOGADRO_EXTENSION("LinMorph", tr("Linear Morph"),
+                       tr("Create linear interpolation for animations"))
+
       public:
       //! Constructor
       LinMorphExtension(QObject *parent=0);
       //! Deconstructor
       virtual ~LinMorphExtension();
 
-      virtual QString name() const { return QObject::tr("Lin Morph"); }
-      virtual QString description() const { return QObject::tr("Lin Morph Extension."); };
-
       virtual QString menuPath(QAction *action) const;
-
-
       virtual QList<QAction *> actions() const;
-
 
       virtual QDockWidget * dockWidget();
       virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
 
       virtual void setMolecule(Molecule *molecule);
       
-
-
   protected:
       Molecule *m_molecule;
       Molecule *m_secondMolecule;
@@ -99,7 +93,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)  
-    AVOGADRO_EXTENSION_FACTORY(LinMorphExtension, tr("LinMorph Extension"), tr("Extension for producing LinMorph trajectories."))
+    AVOGADRO_EXTENSION_FACTORY(LinMorphExtension)
   };
 
 }

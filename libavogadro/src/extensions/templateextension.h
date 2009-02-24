@@ -31,15 +31,14 @@ namespace Avogadro {
   class TemplateExtension : public Extension
   {
     Q_OBJECT
+      AVOGADRO_EXTENSION("Template", tr("Template"),
+                         tr("Example extension"))
 
     public:
       //! Constructor
       TemplateExtension(QObject *parent=0);
       //! Deconstructor
       virtual ~TemplateExtension();
-
-      virtual QString name() const { return QObject::tr("Template"); }
-      virtual QString description() const { return QObject::tr("Template for developing extensions"); };
 
       virtual QList<QAction *> actions() const;
       virtual QString menuPath(QAction *action) const;
@@ -61,10 +60,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::ExtensionFactory)
-
-    AVOGADRO_EXTENSION_FACTORY(TemplateExtension, 
-        tr("Template Extension"),
-        tr("Template Extension Example"));
+    AVOGADRO_EXTENSION_FACTORY(TemplateExtension)
   };
 
 } // end namespace Avogadro

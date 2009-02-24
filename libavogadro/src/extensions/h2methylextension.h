@@ -39,7 +39,8 @@ namespace Avogadro {
  class H2MethylExtension : public Extension
   {
     Q_OBJECT
-      AVOGADRO_EXTENSION("H2Methyl", tr("H2Methyl"))
+      AVOGADRO_EXTENSION("H2Methyl", tr("H2Methyl"),
+                         tr("Transform hydrogens to methyl groups"))
 
     public:
       //! Constructor
@@ -47,10 +48,6 @@ namespace Avogadro {
       //! Deconstructor
       virtual ~H2MethylExtension();
 
-      //! \name Description methods
-      //@{
-      //! Plugin Description (ie. Draws atoms and bonds)
-      virtual QString description() const { return tr("H2Methyl Plugin"); };
       //! Perform Action
       virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
@@ -86,12 +83,7 @@ namespace Avogadro {
   {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
-
-      AVOGADRO_EXTENSION_FACTORY(H2MethylExtension,
-                                 "H2Methyl Extension",
-          tr("H2Methyl Extension"),
-          tr("Extension for transforming hydrogens to methyl groups."))
-
+      AVOGADRO_EXTENSION_FACTORY(H2MethylExtension)
   };
 
 
