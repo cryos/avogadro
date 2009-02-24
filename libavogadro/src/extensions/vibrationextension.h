@@ -57,6 +57,8 @@ namespace Avogadro {
 
       virtual void setMolecule(Molecule *molecule);
 
+      void enableForceDisplay();
+
     public slots:
       void updateMode(int mode);
 
@@ -66,7 +68,7 @@ namespace Avogadro {
       OpenBabel::OBVibrationData *m_vibrations;
       VibrationDialog *m_dialog;
       Molecule *m_molecule;
-      QWidget *m_widget;
+      GLWidget *m_widget;
   };
 
   class VibrationExtensionFactory : public QObject, public PluginFactory
