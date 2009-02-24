@@ -95,10 +95,11 @@ namespace Avogadro{
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
-    d_ptr(new MoleculePrivate), m_atomPos(0), m_dipoleMoment(0),
+                                        d_ptr(new MoleculePrivate), 
+                                        m_fileName(""),
+                                        m_atomPos(0), m_dipoleMoment(0),
     m_invalidPartialCharges(true), m_invalidAromaticity(true)
   {
-    m_fileName = QDir::homePath() + "/untitled";
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
   }
 
