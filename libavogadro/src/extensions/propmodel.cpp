@@ -109,9 +109,11 @@ namespace Avogadro
 
       switch (index.column()) {
       case 0: // type
-        OBMol obmol = m_molecule->OBMol();
-        OpenBabel::OBAtom *obatom = obmol.GetAtom(index.row() + 1);
-        return obatom->GetType();
+        {
+          OBMol obmol = m_molecule->OBMol();
+          OpenBabel::OBAtom *obatom = obmol.GetAtom(index.row() + 1);
+          return obatom->GetType();
+        }
       case 1: // atomic number
         return atom->atomicNumber();
       case 2: // partial charge
