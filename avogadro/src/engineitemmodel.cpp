@@ -56,7 +56,7 @@ namespace Avogadro {
 		// (Honestly, the dataChanged signal should come from endInsertRows)
 		// But at least in Qt 4.4, we need to signal manually
 		QModelIndex begin = createIndex(0, 0);
-		QModelIndex end = createIndex(row, 0);
+		QModelIndex end = createIndex(list.size() - 1, 0);
 		emit dataChanged(begin, end);
 
     connect(engine, SIGNAL(changed()), this, SLOT(engineChanged()));
